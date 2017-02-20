@@ -67,6 +67,7 @@
         <compiler.debug>true</compiler.debug>
         <library-path dir="${lib.dir}" includes="*.swc" append="true"/>
 		<library-path dir="${lib.dir}/flexunit" includes="*.swc" append="true"/>
+		<library-path dir="${lib.dir}/mockolate" includes="*.swc" append="true"/>
 		<define name="CONFIG::release" value="false"/>
 		<define name="CONFIG::debug" value="true"/>
 		<define name="CONFIG::AIR" value="false"/>
