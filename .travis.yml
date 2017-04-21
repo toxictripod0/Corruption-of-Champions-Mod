@@ -56,3 +56,4 @@ deploy:
   on:
     # only deploy from the instance that runs the release build
     condition: "$BUILD = release"
+    all_branches: true
