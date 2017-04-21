@@ -43,7 +43,11 @@ env:
     - BUILD="release"
     - BUILD="test-debug"
     - BUILD="test-release"
+
     
+# time for some sed magic!
+# replace the COMMIT placeholder with the commit SHA of the build
+before_deploy: sed -i s/COMMIT/$TRAVIS_COMMIT/ bintray.json
 # if a release build completes successfully, push the binary to bintray
 deploy:
   # do not remove the files we want to upload

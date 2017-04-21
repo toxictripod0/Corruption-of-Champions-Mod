@@ -8,12 +8,12 @@
     },
 
     "version": {
-        "name": "0.5"
+        "name": "COMMIT"
     },
 
     "files":
         [
-        {"includePattern": "target/(CoC-release.swf)", "uploadPattern": "$1"}
+        {"includePattern": "target/CoC-release.swf", "uploadPattern": "CoC-release-COMMIT.swf"}
         ],
     "publish": false
 }
