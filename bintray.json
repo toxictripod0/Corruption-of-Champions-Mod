@@ -15,5 +15,5 @@
         [
         {"includePattern": "target/CoC-release.swf", "uploadPattern": "CoC-release-COMMIT.swf"}
         ],
-    "publish": false
+    "publish": true
 }
