@@ -56,7 +56,6 @@ deploy:
   file: bintray.json
   user: brrritssocold
   key: $TRAVIS_ENV_BINTARY_API_KEY
-  dry-run: true
   on:
     # only deploy from the instance that runs the release build
     condition: "$BUILD = release"
