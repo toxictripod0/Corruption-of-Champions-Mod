@@ -43,3 +43,16 @@ env:
     - BUILD="release"
     - BUILD="test-debug"
     - BUILD="test-release"
+    
+# if a release build completes successfully, push the binary to bintray
+deploy:
+  # do not remove the files we want to upload
+  skip_cleanup: true
+  provider: bintray
+  file: bintray.json
+  user: brrritssocold
+  key: $TRAVIS_ENV_BINTARY_API_KEY
+  dry-run: true
+  on:
+    # only deploy from the instance that runs the release build
+    condition: "$BUILD = release"
