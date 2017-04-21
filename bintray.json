@@ -1,0 +1,19 @@
+{
+    "package": {
+        "name": "game-binary",
+        "repo": "Corruption-of-Champions-Mod",
+        "subject": "brrritssocold",
+        "public_download_numbers": false,
+        "public_stats": false
+    },
+
+    "version": {
+        "name": "0.5"
+    },
+
+    "files":
+        [
+        {"includePattern": "target/(CoC-release.swf)", "uploadPattern": "$1"}
+        ],
+    "publish": false
+}
