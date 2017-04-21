@@ -30,6 +30,7 @@ script:
 
 after_success:
   - sonar-scanner
+  - ant $BUILD
 
 env:
   global:
@@ -40,4 +41,5 @@ env:
   matrix:
     # different configurations that should be built
     - BUILD="release"
-    - BUILD="debug"
+    - BUILD="test-debug"
+    - BUILD="test-release"
