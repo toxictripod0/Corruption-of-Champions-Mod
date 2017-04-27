@@ -17,6 +17,7 @@ package classes.Scenes.Areas
 		public var oasis:Oasis = new Oasis();
 		public var sandTrapScene:SandTrapScene = new SandTrapScene();
 		public var sandWitchScene:SandWitchScene = new SandWitchScene();
+		public var ghoulScene:GhoulScene = new GhoulScene();
 		public var wanderer:Wanderer = new Wanderer();
 		public function Desert()
 		{
@@ -125,6 +126,11 @@ package classes.Scenes.Areas
 				choices[choices.length] = kGAMECLASS.dungeons.desertcave.fightCumWitch;
 				args[args.length] = -8008;
 			}
+			
+			//Encounter Ghoul
+			choices[choices.length] = ghoulScene.ghoulEncounter;
+			args[args.length] = -8008;
+			
 			//Encounter Mimic
 			if (player.level >= 3 || model.time.days >= 20) {
 				choices[choices.length] = getGame().mimicScene.mimicTentacleStart;
