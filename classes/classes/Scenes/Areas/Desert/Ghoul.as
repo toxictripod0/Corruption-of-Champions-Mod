@@ -8,6 +8,7 @@
 package classes.Scenes.Areas.Desert {
 	import classes.*;
 	import classes.internals.*;
+	import classes.internals.WeightedDrop;
 	
 	public class Ghoul extends Monster {
 	
@@ -485,27 +486,6 @@ package classes.Scenes.Areas.Desert {
 		];
 
 		public function Ghoul() {
-		var cockTypes:Array = randomChoice(COCK_VARIATIONS);
-		var vaginaVirgin:Array = randomChoice(VIRGIN_VARIATIONS);
-		var analLoose:Array = randomChoice(ANALLOOSE_VARIATIONS);
-		var analWet:Array = randomChoice(ANALWET_VARIATIONS);
-		var hipRate:Array = randomChoice(HIP_VARIATIONS);
-		var buttRate:Array = randomChoice(BUTT_VARIATIONS);
-		var legType:Array = randomChoice(LEG_VARIATIONS);
-		var armsType:Array = randomChoice(ARM_VARIATIONS);
-		var skinColour:Array = randomChoice(SKINCOLOUR_VARIATIONS);
-		var skinsType:Array = randomChoice(SKINTYPE_VARIATIONS);
-		var hairColours:Array = randomChoice(HAIRCOLOUR_VARIATIONS);
-		var hairTypes:Array = randomChoice(HAIRTYPE_VARIATIONS);
-		var faceTypes:Array = randomChoice(FACE_VARIATIONS);
-		var earTypes:Array = randomChoice(EARS_VARIATIONS);
-		var tongueTypes:Array = randomChoice(TONGUE_VARIATIONS);
-		var eyeTypes:Array = randomChoice(EYES_VARIATIONS);
-		var weaponTypes:Array = randomChoice(WEAPON_VARIATIONS);
-		var armorTypes:Array = randomChoice(ARMOR_VARIATIONS);
-		var tailTypes:Array = randomChoice(TAIL_VARIATIONS);
-		var hornTypes:Array = randomChoice(HORN_VARIATIONS);
-		var wingTypes:Array = randomChoice(WING_VARIATIONS);
 		if (!monster.ghoulReveal) {
 			this.a = "the ";
 			this.short = "hyena";
@@ -527,7 +507,7 @@ package classes.Scenes.Areas.Desert {
 			this.tallness = 36;
 			this.hipRating = HIP_RATING_AVERAGE;
 			this.buttRating = BUTT_RATING_AVERAGE;
-			this.lowerBody = LOWER_BODY_DOG;
+			this.lowerBody = LOWER_BODY_TYPE_DOG;
 			this.armType = ARM_TYPE_PREDATOR;
 
 			this.skinTone = "tan";
@@ -540,7 +520,6 @@ package classes.Scenes.Areas.Desert {
 
 			this.faceType = FACE_DOG;
 			this.earType = EARS_DOG;
-			this.eyeType = EYES_DOG;
 
 			initStrTouSpeInte(45,30,55,25);
 			initLibSensCor(0,0,50);
@@ -569,13 +548,33 @@ package classes.Scenes.Areas.Desert {
 			this.tailType = TAIL_TYPE_DOG;
 			
 			checkMonster();
-			}
-		else {
+		} else {
+		var cockTypes:Array = randomChoice(COCK_VARIATIONS);
+		var vaginaVirgin:Array = randomChoice(VIRGIN_VARIATIONS);
+		var analLoose:Array = randomChoice(ANALLOOSE_VARIATIONS);
+		var analWet:Array = randomChoice(ANALWET_VARIATIONS);
+		var hipRate:Array = randomChoice(HIP_VARIATIONS);
+		var buttRate:Array = randomChoice(BUTT_VARIATIONS);
+		var legType:Array = randomChoice(LEG_VARIATIONS);
+		var armsType:Array = randomChoice(ARM_VARIATIONS);
+		var skinColour:Array = randomChoice(SKINCOLOUR_VARIATIONS);
+		var skinsType:Array = randomChoice(SKINTYPE_VARIATIONS);
+		var hairColours:Array = randomChoice(HAIRCOLOUR_VARIATIONS);
+		var hairTypes:Array = randomChoice(HAIRTYPE_VARIATIONS);
+		var faceTypes:Array = randomChoice(FACE_VARIATIONS);
+		var earTypes:Array = randomChoice(EARS_VARIATIONS);
+		var tongueTypes:Array = randomChoice(TONGUE_VARIATIONS);
+		var eyeTypes:Array = randomChoice(EYES_VARIATIONS);
+		var weaponTypes:Array = randomChoice(WEAPON_VARIATIONS);
+		var armorTypes:Array = randomChoice(ARMOR_VARIATIONS);
+		var tailTypes:Array = randomChoice(TAIL_VARIATIONS);
+		var hornTypes:Array = randomChoice(HORN_VARIATIONS);
+		var wingTypes:Array = randomChoice(WING_VARIATIONS);
 			this.a = "the ";
 			this.short = "ghoul";
 			this.imageName = "ghoul";
-			this.long = "The ghoul is one of the more bizarre things you've seen, with a " + faceTypes[0] + " face, " + armsType[0] + " arms, and a " + legType[0] + " lower body. Its face is complete with " + eyeTypes[0] + " eyes and a " + tongueTypes[0] + " tongue. It also has " + wingTypes[0] + " wings, " + hornTypes[0] + " horns, and " if (this.tailType != TAIL_TYPE_NONE) { "a " + tailTypes[0] + " tail." } else { "no tail." } + " It has " + hairColours[0] + " " + hairTypes[0] + "hair, " + skinColours[0] + " " + skinTypes[0] + ", " + hipRate[0] + " hips, and a " + buttRate[0] + " butt. It weilds a " + weaponTypes[0] + " for a weapon and wears " + armorTypes[0] + " as armor.";
-			if (rand(2) == 0 {
+			this.long = "The ghoul is one of the more bizarre things you've seen, with a " + faceTypes[0] + " face, " + armsType[0] + " arms, and a " + legType[0] + " lower body. Its face is complete with " + eyeTypes[0] + " eyes and a " + tongueTypes[0] + " tongue. It also has " + wingTypes[0] + " wings, " + hornTypes[0] + " horns, and a " + tailTypes[0] + " tail above its [ass]. It has " + hairColours[0] + " " + hairTypes[0] + "hair, " + skinColour[0] + " " + skinsType[0] + ", " + hipRate[0] + " hips, and a " + buttRate[0] + " butt. It weilds a " + weaponTypes[0] + " for a weapon and wears " + armorTypes[0] + " as armor.";
+			if (rand(2) == 0) {
 				this.createCock = (rand(4) + 5,rand(2) + 1,cockTypes[0]);
 				this.balls = 2;
 				this.ballSize = rand(2) + 1;
@@ -590,12 +589,12 @@ package classes.Scenes.Areas.Desert {
 			this.tallness = rand(18) + 59;
 			this.hipRating = HIP_RATING_hipRate[0];
 			this.buttRating = BUTT_RATING_buttRate[0];
-			this.lowerBody = LOWER_BODY_legType[0];
+			this.lowerBody = LOWER_BODY_TYPE_legType[0];
 			this.armType = ARM_TYPE_armsType[0];
 
 			this.skinTone = "skinColour[0]";
 			this.skinType = SKIN_TYPE_skinsType[0];
-			if (rand(2) == 0 {
+			if (rand(2) == 0) {
 				this.hairColor = hairColours[0];
 				this.hairLength = rand(25) + 1;
 				this.hairType = HAIR_hairTypes[0];
@@ -629,30 +628,29 @@ package classes.Scenes.Areas.Desert {
 
 			this.drop = new WeightedDrop(consumables.ECTOPLS);
 
-			this.special1 = ;
-			this.special2 = ;
-			this.special3 = ;
+			this.special1 = ghoulBlind;
+			this.special2 = ghoulMagic;
 
-			if (rand(2) == 0 {
+			if (rand(2) == 0) {
 				this.tailType = TAIL_TYPE_tailTypes[0];
 			} else {
 				this.tailType = TAIL_TYPE_NONE;
 			}
 
-			if (rand(2) == 0 {
+			if (rand(2) == 0) {
 				this.hornType = HORNS_hornTypes[0];
 				this.horns = rand(3) + 2;
 			} else {
 				this.hornType = HORNS_NONE;
 			}
 
-			if (rand(2) == 0 {
+			if (rand(2) == 0) {
 				this.wingType = WING_TYPE_wingTypes[0];
 			} else {
 				this.wingType = WING_TYPE_NONE;
 			}
 
-			if (rand(2) == 0 {
+			if (rand(2) == 0) {
 				this.antennae = ANTENNAE_BEE;
 			} else {
 				this.antennae = ANTENNAE_NONE;
@@ -661,3 +659,6 @@ package classes.Scenes.Areas.Desert {
 			checkMonster();
 			}
 		}
+	}
+}
+asdsa
