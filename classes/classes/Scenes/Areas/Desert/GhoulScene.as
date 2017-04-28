@@ -6,12 +6,13 @@ package classes.Scenes.Areas.Desert {
 
 	import classes.*;
 	import classes.GlobalFlags.kFLAGS;
+	import classes.GlobalFlags.kGAMECLASS;
 
 	public class GhoulScene extends BaseContent {
 	
 		public function GhoulScene() { }
 		
-		public function ghoulEncounter() {
+		public function ghoulEncounter():void {
 			outputText("As you wander the desert, your eyes catch something moving. You look in its direction. It's a hyena. Not a hyena-morph, but a literal hyena. If that wasn't weird enough, you're pretty certain anything hyena would be found ", false);
 				if (flags[kFLAGS.TIMES_EXPLORED_PLAINS] > 0) {
 					outputText("at the Plains.", false);
@@ -22,7 +23,7 @@ package classes.Scenes.Areas.Desert {
 			startCombat(new Ghoul());
 		}
 		
-		public function ghoulWon() {
+		public function ghoulWon():void {
 			combat.cleanupAfterCombat();
 			clearOutput();
 			if (player.HP <= 0) {
