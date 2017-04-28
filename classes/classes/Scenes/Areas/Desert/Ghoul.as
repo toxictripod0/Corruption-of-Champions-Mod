@@ -11,8 +11,11 @@ package classes.Scenes.Areas.Desert.as  {
 	
 	public class Ghoul extends Monster {
 	
-		if (monster.HP < monster.eMaxHP() && player.hasStatusEffect(StatusEffects.FirstAttack)) {
-			//idk. turns from hyena to ghost
+		public var ghoulReveal:Boolean = false;
+	
+		if (!monster.ghoulReveal && monster.HP < monster.eMaxHP()) {
+		    if (silly()) outputText("/n/n<b>A wild Ghoul appeared!</b>", false);
+		    monster.ghoulReveal = true;
 		}
 	
 		protected function specialattackhere():void {
@@ -58,330 +61,387 @@ package classes.Scenes.Areas.Desert.as  {
 				game.desert.ghoulScene.ghoulWon();
 			}
 		}
+		
+		public function randomRange(minNum:Number, maxNum:Number):Number {
+			return (Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum);
+		}
+		
+		private const COCK_VARIATIONS:Array = [
+			["HUMAN"],
+			["HORSE"],
+			["DOG"],
+			["DEMON"],
+			["TENTACLE"],
+			["CAT"],
+			["LIZARD"],
+			["ANEMONE"],
+			["KANGAROO"],
+			["DRAGON"],
+			["DISPLACER"],
+			["FOX"],
+			["BEE"],
+			["PIG"],
+			["AVIAN"],
+			["RHINO"],
+			["ECHIDNA"],
+			["WOLF"]
+		];
+		
+		private const VIRGIN_VARIATIONS:Array = [
+			["true"],
+			["false"]
+		];
+		
+		private const ANALLOOSE_VARIATIONS:Array = [
+			["VIRGIN"],
+			["TIGHT"],
+			["NORMAL"],
+			["LOOSE"],
+			["STRETCHED"],
+			["GAPING"]
+		];
+		
+		private const ANALWET_VARIATIONS:Array = [
+			["DRY"],
+			["NORMAL"],
+			["MOIST"],
+			["SLIMY"],
+			["DROOLING"],
+			["SLIME_DROOLING"]
+		];
+		
+		private const HIP_VARIATIONS:Array = [
+			["BOYISH"],
+			["SLENDER"],
+			["AVERAGE"],
+			["AMPLE"],
+			["CURVY"],
+			["FERTILE"],
+			["INHUMANLY_WIDE"]
+		];
+		
+		private const BUTT_VARIATIONS:Array = [
+			["BUTTLESS"],
+			["TIGHT"],
+			["AVERAGE"],
+			["NOTICEABLE"],
+			["LARGE"],
+			["JIGGLY"],
+			["EXPANSIVE"],
+			["HUGE"],
+			["INCONCEIVABLY_BIG"]
+		];
+		
+		private const LEG_VARIATIONS:Array = [
+			["HUMAN"],
+			["HOOFED"],
+			["DOG"],
+			["NAGA"],
+			["DEMONIC_HIGH_HEELS"],
+			["DEMONIC_CLAWS"],
+			["BEE"],
+			["GOO"],
+			["CAT"],
+			["LIZARD"],
+			["PONY"],
+			["BUNNY"],
+			["HARPY"],
+			["KANGAROO"],
+			["CHITINOUS_SPIDER_LEGS"],
+			["DRIDER_LOWER_BODY"],
+			["FOX"],
+			["DRAGON"],
+			["RACCOON"],
+			["FERRET"],
+			["CLOVEN_HOOFED"],
+			["ECHIDNA"],
+			["SALAMANDER"],
+			["WOLF"]
+		];
+		
+		private const ARM_VARIATIONS:Array = [
+			["HUMAN"],
+			["HARPY"],
+			["SPIDER"],
+			["PREDATOR"],
+			["SALAMANDER"],
+			["WOLF"]
+		];
+		
+		private const SKINCOLOUR_VARIATIONS:Array = [
+			["albino"],
+			["aphotic blue-black"],
+			["ashen grayish-blue"],
+			["ashen"],
+			["black"],
+			["blue"],
+			["brown"],
+			["cerulean"],
+			["dark green"],
+			["dark"],
+			["ebony"],
+			["emerald"],
+			["ghostly pale"],
+			["gray"],
+			["grayish-blue"],
+			["green"],
+			["indigo"],
+			["light"],
+			["milky white"],
+			["olive"],
+			["orange and black striped"],
+			["orange"],
+			["pale white"],
+			["pale yellow"],
+			["pale"],
+			["pink"],
+			["purple"],
+			["red"],
+			["rough gray"],
+			["sable"],
+			["sanguine"],
+			["shiny black"],
+			["silver"],
+			["tan"],
+			["white"]
+		];
+		
+		private const SKINTYPE_VARIATIONS:Array = [
+			["PLAIN"],
+			["FUR"],
+			["LIZARD_SCALES"],
+			["GOO"],
+			["DRAGON_SCALES"]
+		];
+		
+		private const HAIRCOLOUR_VARIATIONS:Array = [
+			["auburn"],
+			["black and orange"],
+			["black and white spotted"],
+			["black and yellow"],
+			["black"],
+			["blond"],
+			["blonde"],
+			["blue"],
+			["brown"],
+			["cerulean"],
+			["dark blue"],
+			["deep red"],
+			["emerald"],
+			["golden blonde"],
+			["golden-blonde"],
+			["gray"],
+			["green"],
+			["light blonde"],
+			["midnight black"],
+			["orange"],
+			["pink"],
+			["platinum blonde"],
+			["purple"],
+			["red"],
+			["reddish-orange"],
+			["sandy blonde"],
+			["sandy brown"],
+			["shiny black"],
+			["silver blonde"],
+			["silver-white"],
+			["silver"],
+			["white and black"],
+			["white"]
+		];
+		
+		private const HAIRTYPE_VARIATIONS:Array = [
+			["NORMAL"],
+			["FEATHER"],
+			["GHOST"],
+			["GOO"],
+			["ANEMONE"],
+			["QUILL"],
+			["BASILISK_SPINES"],
+			["BASILISK_PLUME"]
+		];
+		
+		private const FACETYPE_VARIATIONS:Array = [
+			fuck you
+		];
 
 		public function Ghoul() {
+		var cockTypes:Array = randomChoice(COCK_VARIATIONS);
+		var vaginaVirgin:Array = randomChoice(VIRGIN_VARIATIONS);
+		var analLoose:Array = randomChoice(ANALLOOSE_VARIATIONS);
+		var analWet:Array = randomChoice(ANALWET_VARIATIONS);
+		var hipRate:Array = randomChoice(HIP_VARIATIONS);
+		var buttRate:Array = randomChoice(BUTT_VARIATIONS);
+		var legType:Array = randomChoice(LEG_VARIATIONS);
+		var armsType:Array = randomChoice(ARM_VARIATIONS);
+		var skinColour:Array = randomChoice(SKINCOLOUR_VARIATIONS);
+		var skinsType:Array = randomChoice(SKINTYPE_VARIATIONS);
+		var hairColours:Array = randomChoice(HAIRCOLOUR_VARIATIONS);
+		var hairTypes:Array = randomChoice(HAIRTYPE_VARIATIONS);
+		var faceTypes:Array = randomChoice(FACE_VARIATIONS);
+		var earTypes:Array = randomChoice(EARS_VARIATIONS);
+		var tongueTypes:Array = randomChoice(TONGUE_VARIATIONS);
+		var eyeTypes:Array = randomChoice(EYES_VARIATIONS);
+		var weaponTypes:Array = randomChoice(WEAPON_VARIATIONS);
+		var armorTypes:Array = randomChoice(ARMOR_VARIATIONS);
+		var tailTypes:Array = randomChoice(TAIL_VARIATIONS);
+		var hornTypes:Array = randomChoice(HORN_VARIATIONS);
+		var wingTypes:Array = randomChoice(WING_VARIATIONS);
 		if (monster.HP == monster.eMaxHP()) {
-			///*REQUIRED*/ this.a = "a";
-			///*REQUIRED*/ this.short = "short";
-			///*OPTIONAL*/ // this.imageName = "imageName"; // default ""
-			///*REQUIRED*/ this.long = "long";
-			///*OPTIONAL*/ //this.plural = true|false; // default false
+			this.a = "the ";
+			this.short = "hyena";
+			this.imageName = "ghoulhyena";
+			this.long = "to be written";
+		if (rand(2) == 0) {
+			this.createCock(6,1,CockTypesEnum.DOG);
+			this.balls = 2;
+			this.ballSize = 1;
+		} else {
+			this.createVagina(false,2,2);
+			this.createBreastRow(2,1);
+			this.createBreastRow(2,1);
+			this.createBreastRow(2,1);
+		}
+			
+			this.ass.analLooseness = ANAL_LOOSENESS_NORMAL;
+			this.ass.analWetness = ANAL_WETNESS_DRY;
+			
+			this.tallness = 36;
+			this.hipRating = HIP_RATING_AVERAGE;
+			this.buttRating = BUTT_RATING_AVERAGE;
+			this.lowerBody = LOWER_BODY_DOG;
+			this.armType = ARM_TYPE_PREDATOR;
 
-			//// 2. Gender, genitals, and pronouns (also see "note for 2." below)
-			//// 2.1. Male
-			///*REQUIRED*/ this.createCock(length,thickness,type); // defaults 5.5,1,human; could be called multiple times
-			///*OPTIONAL*/ //this.balls = numberOfBalls; // default 0
-			///*OPTIONAL*/ //this.ballSize = ; // default 0. should be set if balls>0
-			///*OPTIONAL*/ //this.cumMultiplier = ; // default 1
-			///*OPTIONAL*/ //this.hoursSinceCum = ; // default 0
-			//// 2.2. Female
-			///*REQUIRED*/ this.createVagina(virgin=true|false,VAGINA_WETNESS_,VAGINA_LOOSENESS_); // default true,normal,tight
-			///*OPTIONAL*/ //this.createStatusEffect(StatusEffects.BonusVCapacity, bonus, 0, 0, 0);
-			//// 2.3. Hermaphrodite
-			//// Just create cocks and vaginas. Last call determines pronouns.
-			//// 2.4. Genderless
-			///*REQUIRED*/ initGenderless(); // this functions removes genitals!
+			this.skinTone = "tan";
+			this.skinType = SKIN_TYPE_FUR;
+			this.skinDesc = "spotted fur";
 
-			//// Note for 2.: during initialization pronouns are set in:
-			//// * createCock: he/him/his
-			//// * createVagina: she/her/her
-			//// * initGenderless: it/it/its
-			//// If plural=true, they are replaced with: they/them/their
-			//// If you want to customize pronouns:
-			///*OPTIONAL*/ //this.pronoun1 = "he";
-			///*OPTIONAL*/ //this.pronoun2 = "him";
-			///*OPTIONAL*/ //this.pronoun3 = "his";
-			//// Another note for 2.: gender is automatically calculated in createCock,
-			//// createVagina, initGenderless. If you want to change it, set this.gender
-			//// after these method calls.
+			this.hairColor = "tan";
+			this.hairLength = 2;
+			this.hairType = HAIR_NORMAL;
 
-			//// 3. Breasts
-			///*REQUIRED*/ this.createBreastRow(size,nipplesPerBreast); // default 0,1
-			//// Repeat for multiple breast rows
-			//// You can call just `this.createBreastRow();` for flat breasts
-			//// Note useful method: this.createBreastRow(Appearance.breastCupInverse("C")); // "C" -> 3
+			this.faceType = FACE_DOG;
+			this.earType = EARS_DOG;
+			this.eyeType = EYES_DOG;
 
-			//// 4. Ass
-			///*OPTIONAL*/ //this.ass.analLooseness = ANAL_LOOSENESS_; // default TIGHT
-			///*OPTIONAL*/ //this.ass.analWetness = ANAL_WETNESS_; // default DRY
-			///*OPTIONAL*/ //this.createStatusEffect(StatusEffects.BonusACapacity, bonus, 0, 0, 0);
-			//// 5. Body
-			///*REQUIRED*/ this.tallness = ;
-			///*OPTIONAL*/ //this.hipRating = HIP_RATING_; // default boyish
-			///*OPTIONAL*/ //this.buttRating = BUTT_RATING_; // default buttless
-			///*OPTIONAL*/ //this.lowerBody = LOWER_BODY_; //default human
-			///*OPTIONAL*/ //this.armType = ARM_TYPE_; // default human
+			initStrTouSpeInte(45,30,55,25);
+			initLibSensCor(0,0,50);
 
-			//// 6. Skin
-			///*OPTIONAL*/ //this.skinTone = "skinTone"; // default "albino"
-			///*OPTIONAL*/ //this.skinType = SKIN_TYPE_; // default PLAIN
-			///*OPTIONAL*/ //this.skinDesc = "skinDesc"; // default "skin" if this.skinType is not set, else Appearance.DEFAULT_SKIN_DESCS[skinType]
-			///*OPTIONAL*/ //this.skinAdj = "skinAdj"; // default ""
+			this.weaponName = "teeth";
+			this.weaponVerb = "bite";
+			this.weaponAttack = 3;
 
-			//// 7. Hair
-			///*OPTIONAL*/ //this.hairColor = ; // default "no"
-			///*OPTIONAL*/ //this.hairLength = ; // default 0
-			///*OPTIONAL*/ //this.hairType = HAIR_; // default NORMAL
+			this.armorName = "fur";
+			this.armorDef = 1;
 
-			//// 8. Face
-			///*OPTIONAL*/ //this.faceType = FACE_; // default HUMAN
-			///*OPTIONAL*/ //this.earType = EARS_; // default HUMAN
-			///*OPTIONAL*/ //this.tongueType = TONGUE_; // default HUMAN
-			///*OPTIONAL*/ //this.eyeType = EYES_; // default HUMAN
+			this.bonusHP = 100;
+			this.lust = 0;
+			this.lustVuln = 0;
+			this.temperment = TEMPERMENT_AVOID_GRAPPLES;
+			this.fatigue = 0;
 
-			//// 9. Primary stats.
-			///*REQUIRED*/ initStrTouSpeInte(,,,);
-			///*REQUIRED*/ initLibSensCor(,,);
+			this.level = 4;
+			this.gems = rand(25);
 
-			//// 10. Weapon
-			///*REQUIRED*/ this.weaponName = "weaponName";
-			///*REQUIRED*/ this.weaponVerb = "weaponVerb";
-			///*OPTIONAL*/ //this.weaponAttack = ; // default 0
-			///*OPTIONAL*/ //this.weaponPerk = "weaponPerk"; // default ""
-			///*OPTIONAL*/ //this.weaponValue = ; // default 0
+			this.drop = new WeightedDrop(consumables.ECTOPLS);
 
-			//// 11. Armor
-			///*REQUIRED*/ this.armorName = "armorName";
-			///*OPTIONAL*/ //this.armorDef = ; // default 0
-			///*OPTIONAL*/ //this.armorPerk = "armorPerk"; // default ""
-			///*OPTIONAL*/ //this.armorValue = ; // default 0
+			this.special1 = hyenaBite;
+			this.special2 = hyenaClaw;
 
-			//// 12. Combat
-			///*OPTIONAL*/ //this.bonusHP = ; // default 0
-			///*OPTIONAL*/ //this.lust = ; // default 0
-			///*OPTIONAL*/ //this.lustVuln = ; // default 1
-			///*OPTIONAL*/ //this.temperment = TEMPERMENT; // default AVOID_GRAPPLES
-			///*OPTIONAL*/ //this.fatigue = ; // default 0
-
-			//// 13. Level
-			///*REQUIRED*/ this.level = ;
-			///*REQUIRED*/ this.gems = ;
-			///*OPTIONAL*/ //this.additionalXP = ; // default 0
-
-			//// 14. Drop
-			//// 14.1. No drop
-			///*REQUIRED*/ this.drop = NO_DROP;
-			//// 14.2. Fixed drop
-			///*REQUIRED*/ this.drop = new WeightedDrop(dropItemType);
-			//// 14.3. Random weighted drop
-			///*REQUIRED*/ this.drop = new WeightedDrop()...
-			//// Append with calls like:
-			//// .add(itemType,itemWeight)
-			//// .addMany(itemWeight,itemType1,itemType2,...)
-			//// Example:
-			//// this.drop = new WeightedDrop()
-			//// 		.add(A,2)
-			//// 		.add(B,10)
-			//// 		.add(C,1)
-			//// 	will drop B 10 times more often than C, and 5 times more often than A.
- 			//// 	To be precise, \forall add(A_i,w_i): P(A_i)=w_i/\sum_j w_j
-			//// 14.4. Random chained check drop
-			///*REQUIRED*/ this.drop = new ChainedDrop(optional defaultDrop)...
-			//// Append with calls like:
-			//// .add(itemType,chance)
-			//// .elseDrop(defaultDropItem)
-			////
-			//// Example 1:
-			//// init14ChainedDrop(A)
-			//// 		.add(B,0.01)
-			//// 		.add(C,0.5)
-			//// 	will FIRST check B vs 0.01 chance,
-			//// 	if it fails, C vs 0.5 chance,
-			//// 	else A
-			////
-			//// 	Example 2:
-			//// 	init14ChainedDrop()
-			//// 		.add(B,0.01)
-			//// 		.add(C,0.5)
-			//// 		.elseDrop(A)
-			//// 	for same result
-
-			//// 15. Special attacks. No need to set them if the monster has custom AI.
-			//// Values are either combat event numbers (5000+) or function references
-			///*OPTIONAL*/ //this.special1 = ; //default 0
-			///*OPTIONAL*/ //this.special2 = ; //default 0
-			///*OPTIONAL*/ //this.special3 = ; //default 0
-
-			//// 16. Tail
-			///*OPTIONAL*/ //this.tailType = TAIL_TYPE_; // default NONE
-			///*OPTIONAL*/ //this.tailVenom = ; // default 0
-			///*OPTIONAL*/ //this.tailRecharge = ; // default 5
-
-			//// 17. Horns
-			///*OPTIONAL*/ //this.hornType = HORNS_; // default NONE
-			///*OPTIONAL*/ //this.horns = numberOfHorns; // default 0
-
-			//// 18. Wings
-			///*OPTIONAL*/ //this.wingType = WING_TYPE_; // default NONE
-			///*OPTIONAL*/ //this.wingDesc = ; // default Appearance.DEFAULT_WING_DESCS[wingType]
-
-			//// 19. Antennae
-			///*OPTIONAL*/ //this.antennae = ANTENNAE_; // default NONE
-
-			//// REQUIRED !!!
-			//// In debug mode will throw an error for uninitialized monster
-			//checkMonster();
+			this.tailType = TAIL_TYPE_DOG;
+			
+			checkMonster();
 			}
-		else if (monster.HP < monster.eMaxHP()) {
-			///*REQUIRED*/ this.a = "a";
-			///*REQUIRED*/ this.short = "short";
-			///*OPTIONAL*/ // this.imageName = "imageName"; // default ""
-			///*REQUIRED*/ this.long = "long";
-			///*OPTIONAL*/ //this.plural = true|false; // default false
+		else if (monster.ghoulReveal) {
+			this.a = "the ";
+			this.short = "ghoul";
+			this.imageName = "ghoul";
+			this.long = "to be written";
+		if (rand(2) == 0 {
+			this.createCock = (rand(4) + 5,rand(2) + 1,type);
+			this.balls = 2;
+			this.ballSize = rand(2) + 1;
+			this.createBreastRow = 0,1;
+		} else {
+			this.createVagina = (false,rand(6) + 1,rand(7) + 1);
+			this.createBreastRow = (rand(5) + 1,rand(2) + 1);
+		}
+			
+			this.ass.analLooseness = ANAL_LOOSENESS_;
+			this.ass.analWetness = ANAL_WETNESS_;
+			
+			this.tallness = rand(18) + 59;
+			this.hipRating = HIP_RATING_;
+			this.buttRating = BUTT_RATING_;
+			this.lowerBody = LOWER_BODY_;
+			this.armType = ARM_TYPE_;
 
-			//// 2. Gender, genitals, and pronouns (also see "note for 2." below)
-			//// 2.1. Male
-			///*REQUIRED*/ this.createCock(length,thickness,type); // defaults 5.5,1,human; could be called multiple times
-			///*OPTIONAL*/ //this.balls = numberOfBalls; // default 0
-			///*OPTIONAL*/ //this.ballSize = ; // default 0. should be set if balls>0
-			///*OPTIONAL*/ //this.cumMultiplier = ; // default 1
-			///*OPTIONAL*/ //this.hoursSinceCum = ; // default 0
-			//// 2.2. Female
-			///*REQUIRED*/ this.createVagina(virgin=true|false,VAGINA_WETNESS_,VAGINA_LOOSENESS_); // default true,normal,tight
-			///*OPTIONAL*/ //this.createStatusEffect(StatusEffects.BonusVCapacity, bonus, 0, 0, 0);
-			//// 2.3. Hermaphrodite
-			//// Just create cocks and vaginas. Last call determines pronouns.
-			//// 2.4. Genderless
-			///*REQUIRED*/ initGenderless(); // this functions removes genitals!
+			this.skinTone = "skinTone";
+			this.skinType = SKIN_TYPE_;
+		if (rand(2) == 0 {
+			this.hairColor = ;
+			this.hairLength = rand(25) + 1;
+			this.hairType = HAIR_;
+		} else {
+			this.hairLength = 0;
+			this.hairType = HAIR_;
+		}
 
-			//// Note for 2.: during initialization pronouns are set in:
-			//// * createCock: he/him/his
-			//// * createVagina: she/her/her
-			//// * initGenderless: it/it/its
-			//// If plural=true, they are replaced with: they/them/their
-			//// If you want to customize pronouns:
-			///*OPTIONAL*/ //this.pronoun1 = "he";
-			///*OPTIONAL*/ //this.pronoun2 = "him";
-			///*OPTIONAL*/ //this.pronoun3 = "his";
-			//// Another note for 2.: gender is automatically calculated in createCock,
-			//// createVagina, initGenderless. If you want to change it, set this.gender
-			//// after these method calls.
+			this.faceType = FACE_;
+			this.earType = EARS_;
+			this.tongueType = TONGUE_;
+			this.eyeType = EYES_;
 
-			//// 3. Breasts
-			///*REQUIRED*/ this.createBreastRow(size,nipplesPerBreast); // default 0,1
-			//// Repeat for multiple breast rows
-			//// You can call just `this.createBreastRow();` for flat breasts
-			//// Note useful method: this.createBreastRow(Appearance.breastCupInverse("C")); // "C" -> 3
+			initStrTouSpeInte(,,,);
+			initLibSensCor(,,);
 
-			//// 4. Ass
-			///*OPTIONAL*/ //this.ass.analLooseness = ANAL_LOOSENESS_; // default TIGHT
-			///*OPTIONAL*/ //this.ass.analWetness = ANAL_WETNESS_; // default DRY
-			///*OPTIONAL*/ //this.createStatusEffect(StatusEffects.BonusACapacity, bonus, 0, 0, 0);
-			//// 5. Body
-			///*REQUIRED*/ this.tallness = ;
-			///*OPTIONAL*/ //this.hipRating = HIP_RATING_; // default boyish
-			///*OPTIONAL*/ //this.buttRating = BUTT_RATING_; // default buttless
-			///*OPTIONAL*/ //this.lowerBody = LOWER_BODY_; //default human
-			///*OPTIONAL*/ //this.armType = ARM_TYPE_; // default human
+			this.weaponName = "weaponName";
+			this.weaponVerb = "slash";
+			this.weaponAttack = rand(4) + 2;
 
-			//// 6. Skin
-			///*OPTIONAL*/ //this.skinTone = "skinTone"; // default "albino"
-			///*OPTIONAL*/ //this.skinType = SKIN_TYPE_; // default PLAIN
-			///*OPTIONAL*/ //this.skinDesc = "skinDesc"; // default "skin" if this.skinType is not set, else Appearance.DEFAULT_SKIN_DESCS[skinType]
-			///*OPTIONAL*/ //this.skinAdj = "skinAdj"; // default ""
+			this.armorName = "armorName";
+			this.armorDef = rand(5) + 2;
 
-			//// 7. Hair
-			///*OPTIONAL*/ //this.hairColor = ; // default "no"
-			///*OPTIONAL*/ //this.hairLength = ; // default 0
-			///*OPTIONAL*/ //this.hairType = HAIR_; // default NORMAL
+			this.bonusHP = 100;
+			this.lust = 0;
+			this.lustVuln = 0;
+			this.temperment = TEMPERMENT_AVOID_GRAPPLES;
+			this.fatigue = 0;
 
-			//// 8. Face
-			///*OPTIONAL*/ //this.faceType = FACE_; // default HUMAN
-			///*OPTIONAL*/ //this.earType = EARS_; // default HUMAN
-			///*OPTIONAL*/ //this.tongueType = TONGUE_; // default HUMAN
-			///*OPTIONAL*/ //this.eyeType = EYES_; // default HUMAN
+			this.level = 4;
+			this.gems = rand(25);
 
-			//// 9. Primary stats.
-			///*REQUIRED*/ initStrTouSpeInte(,,,);
-			///*REQUIRED*/ initLibSensCor(,,);
+			this.drop = new WeightedDrop(consumables.ECTOPLS);
 
-			//// 10. Weapon
-			///*REQUIRED*/ this.weaponName = "weaponName";
-			///*REQUIRED*/ this.weaponVerb = "weaponVerb";
-			///*OPTIONAL*/ //this.weaponAttack = ; // default 0
-			///*OPTIONAL*/ //this.weaponPerk = "weaponPerk"; // default ""
-			///*OPTIONAL*/ //this.weaponValue = ; // default 0
+			this.special1 = ; //default 0
+			this.special2 = ; //default 0
+			this.special3 = ; //default 0
 
-			//// 11. Armor
-			///*REQUIRED*/ this.armorName = "armorName";
-			///*OPTIONAL*/ //this.armorDef = ; // default 0
-			///*OPTIONAL*/ //this.armorPerk = "armorPerk"; // default ""
-			///*OPTIONAL*/ //this.armorValue = ; // default 0
+		if (rand(2) == 0 {
+			this.tailType = TAIL_TYPE_;
+		} else {
+			this.tailType = TAIL_TYPE_NONE;
+		}
 
-			//// 12. Combat
-			///*OPTIONAL*/ //this.bonusHP = ; // default 0
-			///*OPTIONAL*/ //this.lust = ; // default 0
-			///*OPTIONAL*/ //this.lustVuln = ; // default 1
-			///*OPTIONAL*/ //this.temperment = TEMPERMENT; // default AVOID_GRAPPLES
-			///*OPTIONAL*/ //this.fatigue = ; // default 0
+		if (rand(2) == 0 {
+			this.hornType = HORNS_;
+			this.horns = rand(4) + 1;
+		} else {
+			this.hornType = HORNS_NONE;
+		}
 
-			//// 13. Level
-			///*REQUIRED*/ this.level = ;
-			///*REQUIRED*/ this.gems = ;
-			///*OPTIONAL*/ //this.additionalXP = ; // default 0
+		if (rand(2) == 0 {
+			this.wingType = WING_TYPE_;
+		} else {
+			this.wingType = WING_TYPE_NONE;
+		}
 
-			//// 14. Drop
-			//// 14.1. No drop
-			///*REQUIRED*/ this.drop = NO_DROP;
-			//// 14.2. Fixed drop
-			///*REQUIRED*/ this.drop = new WeightedDrop(dropItemType);
-			//// 14.3. Random weighted drop
-			///*REQUIRED*/ this.drop = new WeightedDrop()...
-			//// Append with calls like:
-			//// .add(itemType,itemWeight)
-			//// .addMany(itemWeight,itemType1,itemType2,...)
-			//// Example:
-			//// this.drop = new WeightedDrop()
-			//// 		.add(A,2)
-			//// 		.add(B,10)
-			//// 		.add(C,1)
-			//// 	will drop B 10 times more often than C, and 5 times more often than A.
- 			//// 	To be precise, \forall add(A_i,w_i): P(A_i)=w_i/\sum_j w_j
-			//// 14.4. Random chained check drop
-			///*REQUIRED*/ this.drop = new ChainedDrop(optional defaultDrop)...
-			//// Append with calls like:
-			//// .add(itemType,chance)
-			//// .elseDrop(defaultDropItem)
-			////
-			//// Example 1:
-			//// init14ChainedDrop(A)
-			//// 		.add(B,0.01)
-			//// 		.add(C,0.5)
-			//// 	will FIRST check B vs 0.01 chance,
-			//// 	if it fails, C vs 0.5 chance,
-			//// 	else A
-			////
-			//// 	Example 2:
-			//// 	init14ChainedDrop()
-			//// 		.add(B,0.01)
-			//// 		.add(C,0.5)
-			//// 		.elseDrop(A)
-			//// 	for same result
-
-			//// 15. Special attacks. No need to set them if the monster has custom AI.
-			//// Values are either combat event numbers (5000+) or function references
-			///*OPTIONAL*/ //this.special1 = ; //default 0
-			///*OPTIONAL*/ //this.special2 = ; //default 0
-			///*OPTIONAL*/ //this.special3 = ; //default 0
-
-			//// 16. Tail
-			///*OPTIONAL*/ //this.tailType = TAIL_TYPE_; // default NONE
-			///*OPTIONAL*/ //this.tailVenom = ; // default 0
-			///*OPTIONAL*/ //this.tailRecharge = ; // default 5
-
-			//// 17. Horns
-			///*OPTIONAL*/ //this.hornType = HORNS_; // default NONE
-			///*OPTIONAL*/ //this.horns = numberOfHorns; // default 0
-
-			//// 18. Wings
-			///*OPTIONAL*/ //this.wingType = WING_TYPE_; // default NONE
-			///*OPTIONAL*/ //this.wingDesc = ; // default Appearance.DEFAULT_WING_DESCS[wingType]
-
-			//// 19. Antennae
-			///*OPTIONAL*/ //this.antennae = ANTENNAE_; // default NONE
-
-			//// REQUIRED !!!
-			//// In debug mode will throw an error for uninitialized monster
-			//checkMonster();
+		if (rand(2) == 0 {
+			this.antennae = ANTENNAE_BEE;
+		} else {
+			this.antennae = ANTENNAE_NONE;
+		}
+			
+			checkMonster();
 			}
 		}
