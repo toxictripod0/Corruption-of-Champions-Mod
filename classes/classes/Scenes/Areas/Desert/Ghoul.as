@@ -5,7 +5,7 @@
 // If win: Ghoul eats them (I PROMISE I don't have a vore fetish), PC suffers stat drop
 // If lose: They poof away.
 
-package classes.Scenes.Areas.Desert.as  {
+package classes.Scenes.Areas.Desert {
 	import classes.*;
 	import classes.internals.*;
 	
