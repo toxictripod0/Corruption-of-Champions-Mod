@@ -261,8 +261,168 @@ package classes.Scenes.Areas.Desert.as  {
 			["BASILISK_PLUME"]
 		];
 		
-		private const FACETYPE_VARIATIONS:Array = [
-			fuck you
+		private const FACE_VARIATIONS:Array = [
+			["HUMAN"],
+			["HORSE"],
+			["DOG"],
+			["COW_MINOTAUR"],
+			["SHARK_TEETH"],
+			["SNAKE_FANGS"],
+			["CAT"],
+			["LIZARD"],
+			["BUNNY"],
+			["KANGAROO"],
+			["SPIDER_FANGS"],
+			["FOX"],
+			["DRAGON"],
+			["RACCOON_MASK"],
+			["RACCOON"],
+			["BUCKTEETH"],
+			["MOUSE"],
+			["FERRET_MASK"],
+			["FERRET"],
+			["PIG"],
+			["BOAR"],
+			["RHINO"],
+			["ECHIDNA"],
+			["DEER"],
+			["WOLF"]
+		];
+		
+		private const EARS_VARIATIONS:Array = [
+			["HUMAN"],
+			["HORSE"],
+			["DOG"],
+			["COW"],
+			["ELVIN"],
+			["CAT"],
+			["LIZARD"],
+			["BUNNY"],
+			["KANGAROO"],
+			["FOX"],
+			["DRAGON"],
+			["RACCOON"],
+			["MOUSE"],
+			["FERRET"],
+			["PIG"],
+			["RHINO"],
+			["ECHIDNA"],
+			["DEER"],
+			["WOLF"]
+		];
+		
+		private const TONGUE_VARIATIONS:Array = [
+			["HUMAN"],
+			["SNAKE"],
+			["DEMONIC"],
+			["DRACONIC"],
+			["ECHIDNA"],
+			["LIZARD"]
+		];
+		
+		private const EYES_VARIATIONS:Array = [
+			["HUMAN"],
+			["FOUR_SPIDER_EYES"],
+			["BLACK_EYES_SAND_TRAP"],
+			["LIZARD"],
+			["DRAGON"],
+			["BASILISK"],
+			["WOLF"]
+		];
+		
+		private const WEAPON_VARIATIONS:Array = [
+			["sword"],
+			["rapier"],
+			["scimitar"],
+			["katana"],
+			["halberd"],
+			["axe"],
+			["dagger"]
+		];
+		
+		private const ARMOR_VARIATIONS:Array = [
+			["Bee Armor"],
+			["Chainmail Armor"],
+			["Dragonscale Armor"],
+			["Gel Armor"],
+			["Leather Armor"],
+			["Platemail Armor"],
+			["Samurai Armor"],
+			["Scalemail Armor"],
+			["Spider-Silk Armor"],
+			["Ballroom Dress"],
+			["Leather Robes"],
+			["Bondage Straps"],
+			["Chainmail Bikini"],
+			["Classy Suitclothes"],
+			["Comfortable Clothes"],
+			["Green Adventurer's Clothes"],
+			["Kimono"],
+			["Nurse's Outfit"],
+			["Overalls"],
+			["Robes"],
+			["Rubber Outfit"],
+			["Bodysuit"],
+			["Slutty Swimwear"],
+			["Spider-Silk Robes"],
+			["Scandalously Seductive Armor"],
+			["Wizard's Robes"],
+			["Birthday Suit"]
+		];
+		
+		private const TAIL_VARIATIONS:Array = [
+			["HORSE"],
+			["DOG"],
+			["DEMONIC"],
+			["COW"],
+			["SPIDER_ADBOMEN"],
+			["BEE_ABDOMEN"],
+			["SHARK"],
+			["CAT"],
+			["LIZARD"],
+			["RABBIT"],
+			["HARPY"],
+			["KANGAROO"],
+			["FOX"],
+			["DRACONIC"],
+			["RACCOON"],
+			["MOUSE"],
+			["FERRET"],
+			["BEHEMOTH"],
+			["PIG"],
+			["SCORPION"],
+			["GOAT"],
+			["RHINO"],
+			["ECHIDNA"],
+			["DEER"],
+			["SALAMANDER"],
+			["WOLF"]
+		];
+		
+		private const HORN_VARIATIONS:Array = [
+			["DEMON"],
+			["COW_MINOTAUR"],
+			["DRACONIC_X2"],
+			["DRACONIC_X4_12_INCH_LONG"],
+			["ANTLERS"],
+			["GOAT"],
+			["UNICORN"],
+			["RHINO"]
+		];
+		
+		private const WING_VARIATIONS:Array = [
+			["BEE_LIKE_SMALL"],
+			["BEE_LIKE_LARGE"],
+			["HARPY"],
+			["IMP"],
+			["IMP_LARGE"],
+			["BAT_LIKE_TINY"],
+			["BAT_LIKE_LARGE"],
+			["SHARK_FIN"],
+			["FEATHERED_LARGE"],
+			["DRACONIC_SMALL"],
+			["DRACONIC_LARGE"],
+			["GIANT_DRAGONFLY"]
 		];
 
 		public function Ghoul() {
@@ -287,22 +447,21 @@ package classes.Scenes.Areas.Desert.as  {
 		var tailTypes:Array = randomChoice(TAIL_VARIATIONS);
 		var hornTypes:Array = randomChoice(HORN_VARIATIONS);
 		var wingTypes:Array = randomChoice(WING_VARIATIONS);
-		if (monster.HP == monster.eMaxHP()) {
+		if (!monster.ghoulReveal) {
 			this.a = "the ";
 			this.short = "hyena";
 			this.imageName = "ghoulhyena";
 			this.long = "to be written";
-		if (rand(2) == 0) {
-			this.createCock(6,1,CockTypesEnum.DOG);
-			this.balls = 2;
-			this.ballSize = 1;
-		} else {
-			this.createVagina(false,2,2);
-			this.createBreastRow(2,1);
-			this.createBreastRow(2,1);
-			this.createBreastRow(2,1);
-		}
-			
+			if (rand(2) == 0) {
+				this.createCock(6,1,CockTypesEnum.DOG);
+				this.balls = 2;
+				this.ballSize = 1;
+			} else {
+				this.createVagina(false,2,2);
+				this.createBreastRow(2,1);
+				this.createBreastRow(2,1);
+				this.createBreastRow(2,1);
+			}
 			this.ass.analLooseness = ANAL_LOOSENESS_NORMAL;
 			this.ass.analWetness = ANAL_WETNESS_DRY;
 			
@@ -352,21 +511,20 @@ package classes.Scenes.Areas.Desert.as  {
 			
 			checkMonster();
 			}
-		else if (monster.ghoulReveal) {
+		else {
 			this.a = "the ";
 			this.short = "ghoul";
 			this.imageName = "ghoul";
 			this.long = "to be written";
-		if (rand(2) == 0 {
-			this.createCock = (rand(4) + 5,rand(2) + 1,type);
-			this.balls = 2;
-			this.ballSize = rand(2) + 1;
-			this.createBreastRow = 0,1;
-		} else {
-			this.createVagina = (false,rand(6) + 1,rand(7) + 1);
-			this.createBreastRow = (rand(5) + 1,rand(2) + 1);
-		}
-			
+			if (rand(2) == 0 {
+				this.createCock = (rand(4) + 5,rand(2) + 1,type);
+				this.balls = 2;
+				this.ballSize = rand(2) + 1;
+				this.createBreastRow = 0,1;
+			} else {
+				this.createVagina = (false,rand(6) + 1,rand(7) + 1);
+				this.createBreastRow = (rand(5) + 1,rand(2) + 1);
+			}
 			this.ass.analLooseness = ANAL_LOOSENESS_;
 			this.ass.analWetness = ANAL_WETNESS_;
 			
@@ -378,15 +536,14 @@ package classes.Scenes.Areas.Desert.as  {
 
 			this.skinTone = "skinTone";
 			this.skinType = SKIN_TYPE_;
-		if (rand(2) == 0 {
-			this.hairColor = ;
-			this.hairLength = rand(25) + 1;
-			this.hairType = HAIR_;
-		} else {
-			this.hairLength = 0;
-			this.hairType = HAIR_;
-		}
-
+			if (rand(2) == 0 {
+				this.hairColor = ;
+				this.hairLength = rand(25) + 1;
+				this.hairType = HAIR_;
+			} else {
+				this.hairLength = 0;
+				this.hairType = HAIR_;
+			}
 			this.faceType = FACE_;
 			this.earType = EARS_;
 			this.tongueType = TONGUE_;
@@ -417,30 +574,30 @@ package classes.Scenes.Areas.Desert.as  {
 			this.special2 = ; //default 0
 			this.special3 = ; //default 0
 
-		if (rand(2) == 0 {
-			this.tailType = TAIL_TYPE_;
-		} else {
-			this.tailType = TAIL_TYPE_NONE;
-		}
+			if (rand(2) == 0 {
+				this.tailType = TAIL_TYPE_;
+			} else {
+				this.tailType = TAIL_TYPE_NONE;
+			}
 
-		if (rand(2) == 0 {
-			this.hornType = HORNS_;
-			this.horns = rand(4) + 1;
-		} else {
-			this.hornType = HORNS_NONE;
-		}
+			if (rand(2) == 0 {
+				this.hornType = HORNS_;
+				this.horns = rand(4) + 1;
+			} else {
+				this.hornType = HORNS_NONE;
+			}
 
-		if (rand(2) == 0 {
-			this.wingType = WING_TYPE_;
-		} else {
-			this.wingType = WING_TYPE_NONE;
-		}
+			if (rand(2) == 0 {
+				this.wingType = WING_TYPE_;
+			} else {
+				this.wingType = WING_TYPE_NONE;
+			}
 
-		if (rand(2) == 0 {
-			this.antennae = ANTENNAE_BEE;
-		} else {
-			this.antennae = ANTENNAE_NONE;
-		}
+			if (rand(2) == 0 {
+				this.antennae = ANTENNAE_BEE;
+			} else {
+				this.antennae = ANTENNAE_NONE;
+			}
 			
 			checkMonster();
 			}
