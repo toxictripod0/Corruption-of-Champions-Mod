@@ -1,6 +1,6 @@
 // By Foxwells
 // Ghouls! Cuz wynaut? We already have one spirit entity.
-// Will first appear as a normal hyena, first damaging turns them into ghost form. Like a Zoroark, I guess.
+// Will first appear as a normal hyena, first damaging turns them into ghost form. Like a Zoroark.
 // Can't be lusted because they're, well, flesh-hungry ghosts. They don't wanna fuck.
 // If win: Ghoul eats them (I PROMISE I don't have a vore fetish), PC suffers stat drop
 // If lose: They poof away.
@@ -11,6 +11,8 @@ package classes.Scenes.Areas.Desert.as  {
 	
 	public class Ghoul extends Monster {
 	
+		public var spellCostBlind:int = 8;
+		public var spellCostGhoulMagic:int = 12;
 		public var ghoulReveal:Boolean = false;
 	
 		if (!monster.ghoulReveal && monster.HP < monster.eMaxHP()) {
@@ -19,23 +21,76 @@ package classes.Scenes.Areas.Desert.as  {
 			monster.ghoulReveal = true;
 		}
 	
-		protected function specialattackhere():void {
-			// I'll think of something, give me time
+		protected function hyenaBite():void {
 			if(findStatusEffect(StatusEffects.Blind) >= 0) { //Blind
-				outputText("ghoul misses here", false);
+				outputText("The hyena lunges for you, aiming to bite you, but misses entirely due to its blindness!", false);
 				combatRoundOver();
 				return;
 			}
 			if (player.getEvasionRoll()) { //Evading
-				outputText("you evade here", false);
+				outputText("The hyena lunges for you, aiming to bite you, but easily move out of the way.", false);
 				combatRoundOver();
 				return;
 			}
 			else { //Damage
-				outputText("successful attack here", false);
-				var damage:int = (some formula here);
+				outputText("The hyena lunges for you, sinking its teeth into you.", false);
+				var damage:int = (rand(10) + 5);
 				damage = player.reduceDamage(damage);
 				player.takeDamage(damage, true);
+			}
+			combatRoundOver();
+		}
+	
+		protected function hyenaClaw():void {
+			if(findStatusEffect(StatusEffects.Blind) >= 0) { //Blind
+				outputText("The hyena slashes its paw at you, but misses due to its blindness!", false);
+				combatRoundOver();
+				return;
+			}
+			if (player.getEvasionRoll()) { //Evading
+				outputText("The hyena slashes its paw at you, but you easily move out of the way.", false);
+				combatRoundOver();
+				return;
+			}
+			else { //Damage
+				outputText("The hyena slashes its paw at you, raking down hard and causing you to yelp in pain.", false);
+				var damage:int = (rand(5) + 5);
+				damage = player.reduceDamage(damage);
+				player.takeDamage(damage, true);
+			}
+			combatRoundOver();
+		}
+		
+		protected function ghoulBlind():void {
+			if (fatigue <= (100 - spellCostBlind)) {
+				outputText("The ghoul glares and points at you! A bright flash erupts before you! ");
+				if (rand(player.inte / 5) <= 4) {
+					outputText("<b>You are blinded!</b>");
+					player.createStatusEffect(StatusEffects.Blind, 1 + rand(3), 0, 0, 0);
+				}
+				else {
+					outputText("You manage to blink in the nick of time!");
+				}
+				fatigue += spellCostBlind;
+			}
+			combatRoundOver();
+		}
+		
+		protected function ghoulMagic():void {
+			if (fatigue <= (100 - spellCostGhoulMagic)) {
+				outputText("The ghoul chants out an incantation, and a dark alchemic circle forms around your feet. ", false);
+				if (player.getEvasionRoll()) { //Evading
+					outputText("You jump out of the circle before anything happens. Where you'd just been erupts in flames.", false);
+					combatRoundOver();
+					return;
+				}
+				else { //Damage
+					outputText("Blackened flames burst from the circle, causing you to seize with pain as they scorch every inch of your body.", false);
+					var damage:int = (rand(10) + 10);
+					damage = player.reduceDamage(damage);
+					player.takeDamage(damage, true);
+				}
+				fatigue += spellCostGhoulMagic;
 			}
 			combatRoundOver();
 		}
@@ -43,8 +98,15 @@ package classes.Scenes.Areas.Desert.as  {
 		override protected function performCombatAction():void {
 			var chooser:Number = 0;
 			chooser = rand(10);
-			if (chooser < 6) whatever(); //60% chance
-			if (chooser >= 6 && chooser < 9) whatever(); //40% chance
+			if (!monster.ghoulReveal) {
+				if (chooser <= 3) hyenaClaw();
+				else if (chooser >= 8) hyenaBite();
+				else eAttack();
+			} else {
+				if (chooser < 3) ghoulMagic();
+				else if (chooser >= 8) ghoulBlind();
+				else eAttack();
+			}
 		}
 
 		override public function defeated(hpVictory:Boolean):void
