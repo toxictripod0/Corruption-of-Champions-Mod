@@ -62,10 +62,6 @@ package classes.Scenes.Areas.Desert.as  {
 			}
 		}
 		
-		public function randomRange(minNum:Number, maxNum:Number):Number {
-			return (Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum);
-		}
-		
 		private const COCK_VARIATIONS:Array = [
 			["HUMAN"],
 			["HORSE"],
@@ -500,7 +496,7 @@ package classes.Scenes.Areas.Desert.as  {
 			this.fatigue = 0;
 
 			this.level = 4;
-			this.gems = rand(25);
+			this.gems = rand(25) + 5;
 
 			this.drop = new WeightedDrop(consumables.ECTOPLS);
 
@@ -517,46 +513,46 @@ package classes.Scenes.Areas.Desert.as  {
 			this.imageName = "ghoul";
 			this.long = "to be written";
 			if (rand(2) == 0 {
-				this.createCock = (rand(4) + 5,rand(2) + 1,type);
+				this.createCock = (rand(4) + 5,rand(2) + 1,cockTypes[0]);
 				this.balls = 2;
 				this.ballSize = rand(2) + 1;
 				this.createBreastRow = 0,1;
 			} else {
-				this.createVagina = (false,rand(6) + 1,rand(7) + 1);
+				this.createVagina = (vaginaVirgin[0],rand(6) + 1,rand(7) + 1);
 				this.createBreastRow = (rand(5) + 1,rand(2) + 1);
 			}
-			this.ass.analLooseness = ANAL_LOOSENESS_;
-			this.ass.analWetness = ANAL_WETNESS_;
+			this.ass.analLooseness = ANAL_LOOSENESS_analLoose[0];
+			this.ass.analWetness = ANAL_WETNESS_analWet[0];
 			
 			this.tallness = rand(18) + 59;
-			this.hipRating = HIP_RATING_;
-			this.buttRating = BUTT_RATING_;
-			this.lowerBody = LOWER_BODY_;
-			this.armType = ARM_TYPE_;
+			this.hipRating = HIP_RATING_hipRate[0];
+			this.buttRating = BUTT_RATING_buttRate[0];
+			this.lowerBody = LOWER_BODY_legType[0];
+			this.armType = ARM_TYPE_armsType[0];
 
-			this.skinTone = "skinTone";
-			this.skinType = SKIN_TYPE_;
+			this.skinTone = "skinColour[0]";
+			this.skinType = SKIN_TYPE_skinsType[0];
 			if (rand(2) == 0 {
-				this.hairColor = ;
+				this.hairColor = hairColours[0];
 				this.hairLength = rand(25) + 1;
-				this.hairType = HAIR_;
+				this.hairType = HAIR_hairTypes[0];
 			} else {
 				this.hairLength = 0;
-				this.hairType = HAIR_;
+				this.hairType = HAIR_hairTypes[0];
 			}
-			this.faceType = FACE_;
-			this.earType = EARS_;
-			this.tongueType = TONGUE_;
-			this.eyeType = EYES_;
+			this.faceType = FACE_faceTypes[0];
+			this.earType = EARS_earTypes[0];
+			this.tongueType = TONGUE_tongueTypes[0];
+			this.eyeType = EYES_eyeTypes[0];
 
-			initStrTouSpeInte(,,,);
-			initLibSensCor(,,);
+			initStrTouSpeInte(45,30,55,25);
+			initLibSensCor(0,0,50);
 
-			this.weaponName = "weaponName";
+			this.weaponName = "weaponType[0]";
 			this.weaponVerb = "slash";
 			this.weaponAttack = rand(4) + 2;
 
-			this.armorName = "armorName";
+			this.armorName = "armorTypes[0]";
 			this.armorDef = rand(5) + 2;
 
 			this.bonusHP = 100;
@@ -566,29 +562,29 @@ package classes.Scenes.Areas.Desert.as  {
 			this.fatigue = 0;
 
 			this.level = 4;
-			this.gems = rand(25);
+			this.gems = rand(25) + 5;
 
 			this.drop = new WeightedDrop(consumables.ECTOPLS);
 
-			this.special1 = ; //default 0
-			this.special2 = ; //default 0
-			this.special3 = ; //default 0
+			this.special1 = ;
+			this.special2 = ;
+			this.special3 = ;
 
 			if (rand(2) == 0 {
-				this.tailType = TAIL_TYPE_;
+				this.tailType = TAIL_TYPE_tailTypes[0];
 			} else {
 				this.tailType = TAIL_TYPE_NONE;
 			}
 
 			if (rand(2) == 0 {
-				this.hornType = HORNS_;
-				this.horns = rand(4) + 1;
+				this.hornType = HORNS_hornTypes[0];
+				this.horns = rand(3) + 2;
 			} else {
 				this.hornType = HORNS_NONE;
 			}
 
 			if (rand(2) == 0 {
-				this.wingType = WING_TYPE_;
+				this.wingType = WING_TYPE_wingTypes[0];
 			} else {
 				this.wingType = WING_TYPE_NONE;
 			}
