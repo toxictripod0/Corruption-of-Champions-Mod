@@ -510,7 +510,7 @@ package classes.Scenes.Areas.Desert.as  {
 			this.a = "the ";
 			this.short = "hyena";
 			this.imageName = "ghoulhyena";
-			this.long = "to be written";
+			this.long = "The hyena appears to be a regular spotted hyena, with pale brown fur covered in dark brown spots. Its forequarters are strong and muscular while its hindquarters are notably underdeveloped in comparison. It has a flat snout ending in a black nose, and curved, erect ears tipped in black. Its eyes watch you closely in case you try any sudden movements. There seem to be no other hyenas in sight, and you can't stop thinking about how odd it is that there's even a hyena in a desert.";
 			if (rand(2) == 0) {
 				this.createCock(6,1,CockTypesEnum.DOG);
 				this.balls = 2;
@@ -574,7 +574,7 @@ package classes.Scenes.Areas.Desert.as  {
 			this.a = "the ";
 			this.short = "ghoul";
 			this.imageName = "ghoul";
-			this.long = "to be written";
+			this.long = "The ghoul is one of the more bizarre things you've seen, with a " + faceTypes[0] + " face, " + armsType[0] + " arms, and a " + legType[0] + " lower body. Its face is complete with " + eyeTypes[0] + " eyes and a " + tongueTypes[0] + " tongue. It also has " + wingTypes[0] + " wings, " + hornTypes[0] + " horns, and " if (this.tailType != TAIL_TYPE_NONE) { "a " + tailTypes[0] + " tail." } else { "no tail." } + " It has " + hairColours[0] + " " + hairTypes[0] + "hair, " + skinColours[0] + " " + skinTypes[0] + ", " + hipRate[0] + " hips, and a " + buttRate[0] + " butt. It weilds a " + weaponTypes[0] + " for a weapon and wears " + armorTypes[0] + " as armor.";
 			if (rand(2) == 0 {
 				this.createCock = (rand(4) + 5,rand(2) + 1,cockTypes[0]);
 				this.balls = 2;
