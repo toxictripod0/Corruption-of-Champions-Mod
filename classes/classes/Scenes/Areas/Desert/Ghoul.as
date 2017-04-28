@@ -14,8 +14,9 @@ package classes.Scenes.Areas.Desert.as  {
 		public var ghoulReveal:Boolean = false;
 	
 		if (!monster.ghoulReveal && monster.HP < monster.eMaxHP()) {
-		    if (silly()) outputText("/n/n<b>A wild Ghoul appeared!</b>", false);
-		    monster.ghoulReveal = true;
+			outputText("\n\nYour " + player.weaponName + "strikes the hyena, causing it to recoil and vanish in a cloud of sandy dust. You stumble back in surprise and look up to see a snarling, ghostly creature in the air. Your enemy wasn't a hyena. It was a ghoul!", false);
+			if (silly()) outputText("\n\n<b>The wild Ghoul's illusion wore off!</b>", false);
+			monster.ghoulReveal = true;
 		}
 	
 		protected function specialattackhere():void {
