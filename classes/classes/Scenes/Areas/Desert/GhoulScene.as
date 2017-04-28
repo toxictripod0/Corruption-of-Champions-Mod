@@ -10,9 +10,12 @@ package classes.Scenes.Areas.Desert {
 
 	public class GhoulScene extends BaseContent {
 	
-		public function GhoulScene() { }
+		public function GhoulScene() {
+			
+		}
 		
 		public function ghoulEncounter():void {
+			clearOutput();
 			outputText("As you wander the desert, your eyes catch something moving. You look in its direction. It's a hyena. Not a hyena-morph, but a literal hyena. If that wasn't weird enough, you're pretty certain anything hyena would be found ", false);
 				if (flags[kFLAGS.TIMES_EXPLORED_PLAINS] > 0) {
 					outputText("at the Plains.", false);
