@@ -2135,6 +2135,7 @@ package classes
 			WING_TYPE_DRACONIC_LARGE,
 			WING_TYPE_GIANT_DRAGONFLY,
 			WING_TYPE_IMP_LARGE,
+			WING_TYPE_HARPY,
 		];
 
 		//PC can fly?

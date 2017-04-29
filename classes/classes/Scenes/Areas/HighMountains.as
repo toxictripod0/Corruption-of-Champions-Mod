@@ -18,7 +18,14 @@ package classes.Scenes.Areas
 		public var minotaurMobScene:MinotaurMobScene = new MinotaurMobScene();
 		public var izumiScenes:IzumiScene = new IzumiScene();
 		public var phoenixScene:PhoenixScene = new PhoenixScene();
-		
+		public var cockatriceScene:CockatriceScene = new CockatriceScene();
+
+		public static const GENERIC_HARPY:int = 1;
+		public static const BASILISK:int      = 2;
+		public static const SOPHIE:int        = 3;
+		public static const IZUMI:int         = 4;
+		public static const COCKATRICE:int    = 5;
+
 		public function HighMountains()
 		{
 		}
@@ -33,6 +40,12 @@ package classes.Scenes.Areas
 		//Explore High Mountain
 		public function exploreHighMountain():void
 		{
+			var choices:Array = [
+				GENERIC_HARPY,
+				BASILISK,
+				SOPHIE,
+				IZUMI,
+			];
 			flags[kFLAGS.DISCOVERED_HIGH_MOUNTAIN]++;
 			doNext(playerMenu);
 			
@@ -41,10 +54,12 @@ package classes.Scenes.Areas
 				return;
 			}
 			
-			var chooser:Number = rand(4);
+			if (true || flags[kFLAGS.COCKATRICES_UNLOCKED] > 0)
+				choices.push(COCKATRICE);
+			var chooser:Number = randomChoice(choices);
 			//Boosts mino and hellhound rates!
 			if (player.findPerk(PerkLib.PiercedFurrite) >= 0 && rand(3) == 0) {
-				chooser = 1;
+				chooser = BASILISK;
 			}
 			//Helia monogamy fucks
 			if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !kGAMECLASS.helScene.followerHel()) {
@@ -100,39 +115,41 @@ package classes.Scenes.Areas
 				return;
 			}
 			trace("Chooser goin for" + chooser);
-			
-			//Generic harpy
-			if (chooser == 0) {
-				outputText("A harpy wings out of the sky and attacks!", true);
-				if (flags[kFLAGS.CODEX_ENTRY_HARPIES] <= 0) {
-					flags[kFLAGS.CODEX_ENTRY_HARPIES] = 1;
-					outputText("\n\n<b>New codex entry unlocked: Harpies!</b>")
-				}
-				startCombat(new Harpy());
-				spriteSelect(26);
-				return;
-			}
-			//Basilisk!
-			if (chooser == 1) {
-				basiliskScene.basiliskGreeting();
-				return;
-			}
-			//Sophie
-			if (chooser == 2) {
-				if (flags[kFLAGS.SOPHIE_BIMBO] > 0 || flags[kFLAGS.SOPHIE_DISABLED_FOREVER] > 0 || kGAMECLASS.sophieFollowerScene.sophieFollower()) {
+
+			switch (chooser) {
+				case GENERIC_HARPY:
 					outputText("A harpy wings out of the sky and attacks!", true);
+					if (flags[kFLAGS.CODEX_ENTRY_HARPIES] <= 0) {
+						flags[kFLAGS.CODEX_ENTRY_HARPIES] = 1;
+						outputText("\n\n<b>New codex entry unlocked: Harpies!</b>")
+					}
 					startCombat(new Harpy());
 					spriteSelect(26);
-				}
-				else {
-					if (flags[kFLAGS.MET_SOPHIE_COUNTER] == 0) kGAMECLASS.sophieScene.meetSophie();
-					else kGAMECLASS.sophieScene.meetSophieRepeat();
-				}
-			}
-			if (chooser == 3) 
-			{
-				this.izumiScenes.encounter();
-				return;
+					return;
+
+				case BASILISK:
+					basiliskScene.basiliskGreeting();
+					return;
+
+				case SOPHIE:
+					if (flags[kFLAGS.SOPHIE_BIMBO] > 0 || flags[kFLAGS.SOPHIE_DISABLED_FOREVER] > 0 || kGAMECLASS.sophieFollowerScene.sophieFollower()) {
+						outputText("A harpy wings out of the sky and attacks!", true);
+						startCombat(new Harpy());
+						spriteSelect(26);
+					}
+					else {
+						if (flags[kFLAGS.MET_SOPHIE_COUNTER] == 0) kGAMECLASS.sophieScene.meetSophie();
+						else kGAMECLASS.sophieScene.meetSophieRepeat();
+					}
+					return;
+
+				case IZUMI:
+					this.izumiScenes.encounter();
+					return;
+
+				case COCKATRICE:
+					cockatriceScene.greeting();
+					return;
 			}
 		}
 		//\"<i>Chicken Harpy</i>\" by Jay Gatsby and not Savin he didn't do ANYTHING
