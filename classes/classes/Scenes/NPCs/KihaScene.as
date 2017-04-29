@@ -881,6 +881,7 @@ private function analRapuzulaKiha():void {
 			outputText("The display makes you feel righteous.\n\n", false);
 			//[Player receives: 1x Inquisitor's Robes]
 			flags[kFLAGS.GOTTEN_INQUISITOR_ARMOR] = 1;
+			flags[kFLAGS.GOTTEN_INQUISITOR_ROBES] = 1;
 			inventory.takeItem(armors.I_ROBES, camp.returnToCampUseOneHour);
 		}
 
@@ -896,6 +897,7 @@ private function analRapuzulaKiha():void {
 			outputText("The display makes you feel like a badass.\n\n", false);
 			//[Player receives 1x Inquisitor's Corset]
 			flags[kFLAGS.GOTTEN_INQUISITOR_ARMOR] = 1;
+			flags[kFLAGS.GOTTEN_INQUISITOR_CORSET] = 1;
 			inventory.takeItem(armors.I_CORST, camp.returnToCampUseOneHour);
 		}
 }
