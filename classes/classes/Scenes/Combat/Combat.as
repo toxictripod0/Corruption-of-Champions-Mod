@@ -2,6 +2,7 @@
 package classes.Scenes.Combat 
 {
 	import classes.*;
+	import classes.internals.*;
 	import classes.GlobalFlags.*;
 	import classes.Items.*;
 	import classes.Scenes.Areas.Bog.*;
@@ -887,7 +888,7 @@ package classes.Scenes.Combat
 			if (!ghoulReveal && monster is Ghoul) {
 				outputText("Your " + kGAMECLASS.player.weaponName + " strikes the hyena, causing it to recoil and vanish in a cloud of sandy dust. You stumble back in surprise and look up to see a snarling, ghostly creature in the air. Your enemy wasn't a hyena. <b>It was a ghoul!</b>\n\n", false);
 				if (silly()) outputText("<b>The wild Ghoul's illusion wore off!</b>\n\n", false);
-				ghoulReveal = true;
+				this.ghoulReveal = true;
 			}
 			
 			//ANEMONE SHIT
