@@ -18,6 +18,7 @@ public static const SKIN_TYPE_GOO:int                                           
 public static const SKIN_TYPE_UNDEFINED:int                                         =    4; // DEPRECATED, silently discarded upon loading a saved game
 public static const SKIN_TYPE_DRAGON_SCALES:int                                     =    5;
 public static const SKIN_TYPE_FISH_SCALES:int                                       =    6; // NYI, for future use
+public static const SKIN_TYPE_FEATHERED:int                                         =    7;
 
 // hairType
 public static const HAIR_NORMAL:int                                                =     0;
@@ -61,6 +62,7 @@ public static const FACE_RHINO:int                                              
 public static const FACE_ECHIDNA:int                                                =   22;
 public static const FACE_DEER:int                                                   =   23;
 public static const FACE_WOLF:int                                                   =   24;
+public static const FACE_COCKATRICE:int                                             =   25;
 
 // tongueType
 public static const TONGUE_HUMAN:int                                                =   0;
@@ -78,6 +80,7 @@ public static const EYES_LIZARD:int                                             
 public static const EYES_DRAGON:int                                                 =   4; // Slightly different description/TF and *maybe* in the future(!) grant different perks/combat abilities
 public static const EYES_BASILISK:int                                               =   5;
 public static const EYES_WOLF:int                                                   =   6;
+public static const EYES_COCKATRICE:int                                             =   7;
 
 // earType
 public static const EARS_HUMAN:int                                                  =   0;
@@ -99,6 +102,7 @@ public static const EARS_RHINO:int                                              
 public static const EARS_ECHIDNA:int                                                =  16;
 public static const EARS_DEER:int                                                   =  17;
 public static const EARS_WOLF:int                                                   =  18;
+public static const EARS_COCKATRICE:int                                             =  19;
 
 // hornType
 public static const HORNS_NONE:int                                                  =   0;
@@ -127,6 +131,7 @@ public static const ARM_TYPE_SPIDER:int                                         
 public static const ARM_TYPE_PREDATOR:int                                           =   4;
 public static const ARM_TYPE_SALAMANDER:int                                         =   5;
 public static const ARM_TYPE_WOLF:int                                               =   6;
+public static const ARM_TYPE_COCKATRICE:int                                         =   7;
 
 // clawType
 public static const CLAW_TYPE_NORMAL:int                                            =   0;
@@ -137,6 +142,7 @@ public static const CLAW_TYPE_CAT:int                                           
 public static const CLAW_TYPE_DOG:int                                               =   5; // NYI! Placeholder for now!! (See http://tiny.cc/coc-revamp-claws)
 public static const CLAW_TYPE_RAPTOR:int                                            =   6; // NYI! Placeholder for now!! (See http://tiny.cc/coc-revamp-claws) Giev teh Rapturs :-)
 public static const CLAW_TYPE_MANTIS:int                                            =   7; // NYI! Placeholder for Xianxia mod (See http://tiny.cc/coc-xianxia-mod)
+public static const CLAW_TYPE_COCKATRICE:int                                        =   8;
 
 // tailType
 public static const TAIL_TYPE_NONE:int                                              =   0;
@@ -166,6 +172,7 @@ public static const TAIL_TYPE_ECHIDNA:int                                       
 public static const TAIL_TYPE_DEER:int                                              =  24;
 public static const TAIL_TYPE_SALAMANDER:int                                        =  25;
 public static const TAIL_TYPE_WOLF:int                                              =  26;
+public static const TAIL_TYPE_COCKATRICE:int                                        =  27;
 
 // wingType
 public static const WING_TYPE_NONE:int                                              =   0;
@@ -210,6 +217,7 @@ public static const LOWER_BODY_TYPE_ECHIDNA:int                                 
 public static const LOWER_BODY_TYPE_DEERTAUR:int                                    =  24; // DEPRECATED, use LOWER_BODY_TYPE_CLOVEN_HOOFED and legCount=4
 public static const LOWER_BODY_TYPE_SALAMANDER:int                                  =  25;
 public static const LOWER_BODY_TYPE_WOLF:int                                        =  26;
+public static const LOWER_BODY_TYPE_COCKATRICE:int                                  =  27;
 
 // underBody
 public static const UNDER_BODY_TYPE_NONE:int                                        =   0;

@@ -16,6 +16,7 @@ package classes.Scenes.Areas.HighMountains
 		{
 			wingType = WING_TYPE_FEATHERED_LARGE;
 			wingDesc = "large, feathered";
+			spe += 10;
 		}
 
 		public function basiliskSpeed(player:Player, amount:Number = 0):void
@@ -106,25 +107,27 @@ package classes.Scenes.Areas.HighMountains
 			           +" [if (monster.canFly) Every so often he spreads his large feathered wings in an attempt to intimidate you.]"
 			           +" His lizard like feet occasionally gouge into the rubble of the plateau, flinging it up as he shifts his stance. ";
 			// this.plural = false;
-			this.createCock(6,2);
+			this.createCock(8,2, CockTypesEnum.LIZARD);
 			this.balls = 2;
 			this.ballSize = 2;
+			this.cumMultiplier = 4;
 			createBreastRow(0);
 			this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
 			this.ass.analWetness = ANAL_WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,30,0,0,0);
 			this.tallness = 6*12+2;
-			this.hipRating = HIP_RATING_SLENDER+1;
-			this.buttRating = BUTT_RATING_AVERAGE;
-			this.lowerBody = LOWER_BODY_TYPE_LIZARD;
-			this.faceType = FACE_LIZARD;
-			this.earType = EARS_LIZARD;
-			this.eyeType = EYES_BASILISK;
-			this.hairType = HAIR_BASILISK_SPINES;
-			this.skinTone = "grey-green";
+			this.hipRating = HIP_RATING_AMPLE;
+			this.buttRating = BUTT_RATING_TIGHT;
+			this.lowerBody = LOWER_BODY_TYPE_COCKATRICE;
+			this.faceType = FACE_COCKATRICE;
+			this.tongueType = TONGUE_LIZARD;
+			this.earType = EARS_COCKATRICE;
+			this.eyeType = EYES_COCKATRICE;
+			this.hairType = HAIR_FEATHER;
+			this.skinTone = "midnight blue";
 			this.skinType = SKIN_TYPE_LIZARD_SCALES;
 			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[SKIN_TYPE_LIZARD_SCALES];
-			this.hairColor = "grey-green";
+			this.hairColor = "blue";
 			this.hairLength = 2;
 			/*
 			// Bassy:
@@ -135,27 +138,25 @@ package classes.Scenes.Areas.HighMountains
 			initLibSensCor(70, 30, 80);
 			*/
 			initStrTouSpeInte(65, 50, 85, 70);
-			initLibSensCor(50, 25, 20);
-			this.weaponName = "claws";
+			initLibSensCor(65, 25, 20);
+			this.weaponName = "talons";
 			this.weaponVerb = "claw";
 			this.weaponAttack = 30;
-			this.armorName = "feathers";
-			this.armorDef = 0;
+			this.armorName = "scales and feathers";
+			this.armorDef = 10;
 			this.armorPerk = "";
 			this.armorValue = 70;
 			this.bonusHP = 200;
 			this.lust = 30;
 			this.lustVuln = .5;
 			this.temperment = TEMPERMENT_RANDOM_GRAPPLES;
-			this.level = 12;
+			this.level = 14;
 			this.gems = rand(10) + 10;
 			this.drop = new ChainedDrop().add(consumables.REPTLUM,0.9);
-			this.tailType = TAIL_TYPE_LIZARD;
+			this.tailType = TAIL_TYPE_COCKATRICE;
 			this.tailRecharge = 0;
 			this.createPerk(PerkLib.BasiliskResistance, 0, 0, 0, 0);
 			checkMonster();
 		}
-		
 	}
-
 }

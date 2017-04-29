@@ -2148,6 +2148,7 @@
 					[SKIN_TYPE_UNDEFINED, "undefined flesh"],
 					[SKIN_TYPE_DRAGON_SCALES, "scales"],
 					[SKIN_TYPE_FISH_SCALES, "scales"],
+					[SKIN_TYPE_FEATHERED, "feathers"],
 				]
 		);
 		public static const DEFAULT_SKIN_DESCS:Object = createMapFromPairs(
@@ -2208,6 +2209,7 @@
 					[FACE_WOLF, "wolf"],
 					[FACE_ECHIDNA, "echidna"],
 					[FACE_DEER, "deer"],
+					[FACE_COCKATRICE, "cockatrice"],
 				]
 		);
 		public static const DEFAULT_TONGUE_NAMES:Object = createMapFromPairs(
@@ -2229,6 +2231,7 @@
 					[EYES_WOLF, "wolf"],
 					[EYES_DRAGON, "dragon"],
 					[EYES_BASILISK, "basilisk"],
+					[EYES_COCKATRICE, "cockatrice"],
 				]
 		);
 		public static const DEFAULT_EARS_NAMES:Object = createMapFromPairs(
@@ -2252,6 +2255,7 @@
 					[EARS_WOLF, "wolf"],
 					[EARS_ECHIDNA, "echidna"],
 					[EARS_DEER, "deer"],
+					[EARS_COCKATRICE, "cockatrice"],
 				]
 		);
 		public static const DEFAULT_HORNS_NAMES:Object = createMapFromPairs(
@@ -2280,6 +2284,7 @@
 					[ARM_TYPE_WOLF, "wolf"],
 					[ARM_TYPE_PREDATOR, "predator"],
 					[ARM_TYPE_SALAMANDER, "salamander"],
+					[ARM_TYPE_COCKATRICE, "cockatrice"],
 				]
 		);
 		public static const DEFAULT_TAIL_NAMES:Object = createMapFromPairs(
@@ -2310,6 +2315,7 @@
 					[TAIL_TYPE_ECHIDNA, "echidna"],
 					[TAIL_TYPE_DEER, "deer"],
 					[TAIL_TYPE_SALAMANDER, "salamander"],
+					[TAIL_TYPE_COCKATRICE, "cockatrice"],
 				]
 		);
 		public static const DEFAULT_WING_NAMES:Object = createMapFromPairs(
@@ -2374,6 +2380,7 @@
 					[LOWER_BODY_TYPE_ECHIDNA, "echidna"],
 					[LOWER_BODY_TYPE_ECHIDNA, "deertaur"],
 					[LOWER_BODY_TYPE_SALAMANDER, "salamander"],
+					[LOWER_BODY_TYPE_COCKATRICE, "cockatrice"],
 				]
 		);
 		public static const DEFAULT_PIERCING_NAMES:Object = createMapFromPairs(
