@@ -9,7 +9,7 @@ package classes.Scenes.Areas.HighMountains
 
 	public class CockatriceScene extends BaseContent
 	{
-		public function BasiliskScene() {}
+		public function CockatriceScene() {}
 
 		//Intros and Fight Texts. 
 		public function greeting():void
