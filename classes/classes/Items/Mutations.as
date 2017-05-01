@@ -8776,6 +8776,7 @@ public function wolfPepper(type: Number, player: Player): void {
 					temp = 1;
 					while (temp < player.bRows()) {
 						if (player.breastRows[temp].breastRating < 1) player.breastRows[temp].breastRating = 1;
+						temp++;
 					}
 				}
 				changes++;
