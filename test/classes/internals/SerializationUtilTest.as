@@ -114,6 +114,25 @@ package classes.internals
 		public function deserializeWithNonSerializableType():void {
 			SerializationUtils.deserializeVector(new Array(), String);
 		}
+		
+		[Test]
+		public function castVectorCheckProperties():void {
+			var destinationVector:Vector.<SerializationDummy> = new Vector.<SerializationDummy>();
+			
+			SerializationUtils.castVector(destinationVector, testVector, SerializationDummy);
+			
+			assertThat(destinationVector[TEST_INSTANCES - 1], hasProperties({foo: TEST_INSTANCES - 1}));
+			assertThat(destinationVector[TEST_INSTANCES - 1].getBar(), equalTo(TEST_INSTANCES));
+		}
+		
+		[Test]
+		public function castVectorCheckType():void {
+			var destinationVector:Vector.<SerializationDummy> = new Vector.<SerializationDummy>();
+			
+			SerializationUtils.castVector(destinationVector, testVector, SerializationDummy);
+			
+			assertThat(destinationVector[TEST_INSTANCES - 1], instanceOf(SerializationDummy));
+		}
 	}
 }
 

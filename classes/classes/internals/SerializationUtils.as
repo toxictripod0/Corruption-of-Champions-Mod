@@ -68,5 +68,22 @@ package classes.internals
 			
 			return serialized;
 		}
+		
+		/**
+		 * Casts a vector from one type to another. DOES NO VALIDATION.
+		 * @param	destinationVector vector where casted elements will be put
+		 * @param	sourceVector where elements for casting will be read from
+		 * @param	destinationType the class to cast to
+		 */
+		public static function castVector(destinationVector:*, sourceVector:*, destinationType:Class):void {
+			/**
+			 * If anyone has a better idea, i'm all ears.
+			 * Implement your solution and see if the tests pass.
+			 */
+			
+			for each(var element:* in sourceVector) {
+				destinationVector.push(element as destinationType);
+			}
+		}
 	}
 }
