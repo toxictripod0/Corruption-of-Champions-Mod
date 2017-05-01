@@ -83,7 +83,7 @@ package classes.Scenes.Areas.HighMountains
 
 		
 		//wins
-		public function defeatBasilisk():void {
+		public function defeatCockatrice():void {
 			spriteSelect(75);
 			clearOutput();
 	
@@ -246,7 +246,7 @@ package classes.Scenes.Areas.HighMountains
 		}
 		
 		//Player Defeated:
-		public function loseToBasilisk():void {
+		public function loseToCockatrice():void {
 			spriteSelect(75);
 			clearOutput();
 			//Speed 0 loss: 

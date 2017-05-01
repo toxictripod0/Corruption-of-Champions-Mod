@@ -1,7 +1,7 @@
 package classes.Scenes.Areas.HighMountains
 {
 	import classes.*;
-	import classes.internals.ChainedDrop;
+	import classes.internals.WeightedDrop;
 	import classes.GlobalFlags.*
 	
 	/**
@@ -10,7 +10,9 @@ package classes.Scenes.Areas.HighMountains
 	 */
 	public class Cockatrice extends Monster 
 	{
-		public var omgItsPeenkee:Boolean = false;
+		public var spellCostCompulsion:int = 20;
+		public var spellCostTailSwipe:int  = 25;
+		public var spellCostSandAttack:int = 15;
 
 		public function wingify():void
 		{
@@ -22,10 +24,16 @@ package classes.Scenes.Areas.HighMountains
 		//special 1: cockatrice compulsion attack
 		//(Check vs. Intelligence/Sensitivity, loss = recurrent speed loss each
 		//round, one time lust increase):
-		private function compulsion():void {
+		private function compulsion():void
+		{
+			if (fatigue > (100 - spellCostCompulsion)) {
+				// Normal attack because too fatigued
+				eAttack();
+				return;
+			}
 			outputText("The cockatrice opens its beak and, staring at you, utters words in its melodic tongue. The song wraps around your mind,"
 			          +" working and burrowing at the edges of your resolve, suggesting, compelling,"
-			          +" then demanding you to look into the cockatrice’s eyes.");
+			          +" then demanding you to look into the cockatrice’s eyes.  ");
 			//Success:
 			if (player.inte / 5 + rand(20) < 24 + player.newGamePlusMod() * 5) {
 				//Immune to Basilisk?
@@ -50,17 +58,53 @@ package classes.Scenes.Areas.HighMountains
 			else {
 				outputText("You concentrate, focus your mind and resist the cockatrice’s musical compulsion.");
 			}
+			fatigue += spellCostCompulsion;
 			game.combat.combatRoundOver();
 		}
 
-
+		//Special 2: cockatrice sand attack (blinds for 2-4 turns, 50% chance of success on hit):
+		private function sandAttack():void
+		{
+			if (fatigue > (100 - spellCostSandAttack)) {
+				// Normal attack because too fatigued
+				eAttack();
+				return;
+			}
+			outputText("The cockatrice [if (monster.canFly)unfurls his wings, flapping them hard against the ground. He whips up a flurry of loose"
+			          +" dirt and rocks, directing it at you as he soars above you.|sweeps his tail along the ground, whipping up a flurry of loose"
+			          +" dirt and small rocks. With a swift movement he then swipes across at you, flinging debris in your direction.]  ");
+			if (player.spe / 5 + rand(20) < 28 + player.newGamePlusMod() * 5) { // dodge chance here
+				if (rand(2) == 0) {
+					// Hit
+					outputText("The dirt and rocks engulf you, causing you to try to cover your eyes. You fail to move fast enough,"
+					          +" dirt getting in your eyes, making them stream with tears and temporarily blinding you.");
+					player.createStatusEffect(StatusEffects.Blind, 2 + rand(3), 0, 0, 0);
+				} else {
+					// Miss
+					outputText("The dirt and rocks engulf you, causing you to cover your eyes."
+					          +" You manage to cover them fast enough to block out the dirt, it showering you for a while before it settles again.");
+				}
+			} else {
+				// Fail
+				outputText("You thankfully manage to avoid the attack entirely, the mess of dust and dirt going wide of you.");
+			}
+			fatigue += spellCostSandAttack;
+			game.combat.combatRoundOver();
+		}
 
 		//Special 3: basilisk tail swipe (Small physical damage):
-		private function tailSwipe():void {
+		private function tailSwipe():void
+		{
+			if (fatigue > (100 - spellCostTailSwipe)) {
+				// Normal attack because too fatigued
+				eAttack();
+				return;
+			}
 			outputText("The cockatrice suddenly whips its tail at you, swiping your " + player.feet() + " from under you!  You quickly stagger upright, being sure to hold the creature's feet in your vision.  ");
 			var damage:Number = int((str + 20) - Math.random()*(player.tou+player.armorDef));
 			damage = player.takeDamage(damage, true);
 			if (damage == 0) outputText("The fall didn't harm you at all.  ");
+			fatigue += spellCostTailSwipe;
 			game.combat.combatRoundOver();
 		}
 
@@ -70,22 +114,23 @@ package classes.Scenes.Areas.HighMountains
 		override protected function performCombatAction():void
 		{
 			if (!player.hasStatusEffect(StatusEffects.BasiliskCompulsion) && rand(3) == 0 && !hasStatusEffect(StatusEffects.Blind)) compulsion();
-			else if (rand(3) == 0) tailSwipe();
+			else if (rand(4) == 0) tailSwipe();
+			else if (rand(3) == 0) sandAttack();
 			else eAttack();
 		}
 
 		override public function defeated(hpVictory:Boolean):void
 		{
-			game.highMountains.basiliskScene.defeatBasilisk();
+			game.highMountains.cockatriceScene.defeatCockatrice();
 		}
 
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
 		{
-			if (pcCameWorms){
-				outputText("\n\nThe basilisk smirks, but waits for you to finish...");
+			if (pcCameWorms) {
+				outputText("\n\nThe cockatrice smirks, but waits for you to finish...");
 				doNext(game.combat.endLustLoss);
 			} else {
-				game.highMountains.basiliskScene.loseToBasilisk();
+				game.highMountains.cockatriceScene.loseToCockatrice();
 			}
 		}
 
@@ -147,7 +192,11 @@ package classes.Scenes.Areas.HighMountains
 			this.temperment = TEMPERMENT_RANDOM_GRAPPLES;
 			this.level = 14;
 			this.gems = rand(10) + 10;
-			this.drop = new ChainedDrop().add(consumables.REPTLUM,0.9);
+			this.drop = new WeightedDrop()
+				.add(consumables.REPTLUM, 40)
+				.add(consumables.GLDSEED, 40)
+				.add(consumables.TOTRICE, 10)
+				.add(null,                10);
 			this.tailType = TAIL_TYPE_COCKATRICE;
 			this.tailRecharge = 0;
 			this.createPerk(PerkLib.BasiliskResistance, 0, 0, 0, 0);
