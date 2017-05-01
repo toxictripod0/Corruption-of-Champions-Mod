@@ -12,8 +12,9 @@ package classes.internals
 		/**
 		 * Serialize a class so it can be stored. Any state that is not serialized will be lost and replace with the
 		 * default value on deserialization.
-		 * The variables can either be stored manually, or if only public variables are used, AMF can be used to simplify the process.
-		 * The class is responsible for initalizing it's storage, either by creating an empty arrary or assigining an object.
+		 * The variables need to be stored manually. If you only have primitive public variables, use AMF directly and SerializeAMF for Vectors for simpler
+		 * serialization.
+		 * The class is responsible for initalizing its storage by creating an empty arrary.
 		 * 
 		 * e.g.:
 		 * relativeRootObject.foo = intValue;
@@ -27,6 +28,7 @@ package classes.internals
 		/**
 		 * Deserialize a class, restoring it's state. Deserialization requires some form of default constructor, this can be achieved
 		 * with all parameters having a default value.
+		 * Objects stored with AMF have to be restored in Saves.as.
 		 * 
 		 * @param	relativeRootObject the object this class should read from
 		 */

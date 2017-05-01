@@ -28,5 +28,21 @@ package classes.internals
 			
 			return serialized;
 		}
+		
+		
+		/**
+		 * Serializes a Vector into an array using AMF.
+		 * @param	vector to serialize
+		 * @return a array containing the serialized vector
+		 */
+		public static function serializeVectorWithAMF(vector:Vector.<SerializableAMF>):Array {
+			var serialized:* = [];
+			
+			for each(var element:SerializableAMF in vector) {
+				serialized.push(element);
+			}
+			
+			return serialized;
+		}
 	}
 }
