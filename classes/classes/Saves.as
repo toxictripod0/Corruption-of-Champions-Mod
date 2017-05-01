@@ -883,7 +883,6 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile.data.clawTone = player.clawTone;
 		saveFile.data.clawType = player.clawType;
 		// </mod>
-		saveFile.data.wingDesc = player.wingDesc;
 		saveFile.data.wingType = player.wingType;
 		saveFile.data.wingColor = player.wingColor;
 		saveFile.data.lowerBody = player.lowerBody;
@@ -1775,7 +1774,6 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		player.clawType = (saveFile.data.clawType == undefined) ? CLAW_TYPE_NORMAL : saveFile.data.clawType;
 		// </mod>
 
-		player.wingDesc = saveFile.data.wingDesc;
 		player.wingType = saveFile.data.wingType;
 		player.wingColor = saveFile.data.wingColor || "no";
 		player.lowerBody = saveFile.data.lowerBody;
