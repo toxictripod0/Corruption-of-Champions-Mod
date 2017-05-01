@@ -10,7 +10,6 @@ package classes.BodyParts
 		include "../../../includes/appearanceDefs.as";
 
 		public var type:Number  = WING_TYPE_NONE;
-		public var desc:String  = "non-existant";
 		public var color:String = "no";
 
 		public function Wings() {}
@@ -18,7 +17,6 @@ package classes.BodyParts
 		public function restore():void
 		{
 			type  = WING_TYPE_NONE;
-			desc  = "non-existant";
 			color = "no";
 		}
 
@@ -26,7 +24,6 @@ package classes.BodyParts
 		{
 			if (p.hasOwnProperty('type'))  type  = p.type;
 			if (p.hasOwnProperty('color')) color = p.color;
-			if (p.hasOwnProperty('desc'))  desc  = p.desc;
 		}
 
 		public function setAllProps(p:Object):void

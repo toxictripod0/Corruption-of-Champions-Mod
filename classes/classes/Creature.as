@@ -268,10 +268,9 @@ package classes
 		public var wings:Wings = new Wings();
 		public function get wingType():Number { return wings.type; }
 		public function set wingType(value:Number):void { wings.type = value; }
-		public function get wingDesc():String { return wings.desc; }
-		public function set wingDesc(value:String):void { wings.desc = value; }
 		public function get wingColor():String { return wings.color; }
 		public function set wingColor(value:String):void { wings.color = value; }
+		public var wingDesc:String = "non-existant";
 
 		/* lowerBody:
 		0 - normal
