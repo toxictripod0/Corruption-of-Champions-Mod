@@ -81,6 +81,39 @@ package classes.internals
 			
 			assertThat(testObject[TEST_INSTANCES - 1], instanceOf(AMFSerializationDummy));
 		}
+		
+		[Test]
+		public function deserializeVectorSize():void {
+			testObject = SerializationUtils.serializeVector(testVector);
+			
+			var vector:Vector.<Serializable> = SerializationUtils.deserializeVector(testObject, SerializationDummy);
+			
+			assertThat(vector, arrayWithSize(TEST_INSTANCES));
+		}
+		
+		[Test]
+		public function deserializeVectorType():void {
+			testObject = SerializationUtils.serializeVector(testVector);
+			
+			var vector:Vector.<Serializable> = SerializationUtils.deserializeVector(testObject, SerializationDummy);
+			
+			assertThat(vector[TEST_INSTANCES - 1], instanceOf(SerializationDummy));
+		}
+		
+		[Test]
+		public function deserializeVectorLastElementProperties():void {
+			testObject = SerializationUtils.serializeVector(testVector);
+			
+			var vector:Vector.<Serializable> = SerializationUtils.deserializeVector(testObject, SerializationDummy);
+			
+			assertThat(vector[TEST_INSTANCES - 1], hasProperties({foo: TEST_INSTANCES - 1}));
+			assertThat((vector[TEST_INSTANCES - 1] as SerializationDummy).getBar(), equalTo(TEST_INSTANCES));
+		}
+		
+		[Test(expected="ArgumentError")]
+		public function deserializeWithNonSerializableType():void {
+			SerializationUtils.deserializeVector(new Array(), String);
+		}
 	}
 }
 
@@ -93,10 +126,14 @@ class SerializationDummy implements Serializable
 	public var foo:int;
 	private var bar:int;
 	
-	public function SerializationDummy(foo:int, bar:int)
+	public function SerializationDummy(foo:int = -1, bar:int = -1)
 	{
 		this.foo = foo;
 		this.bar = bar;
+	}
+	
+	public function getBar():int {
+		return this.bar;
 	}
 	
 	public function serialize(relativeRootObject:*):void
