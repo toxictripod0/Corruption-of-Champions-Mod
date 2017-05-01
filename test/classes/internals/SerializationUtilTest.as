@@ -133,6 +133,37 @@ package classes.internals
 			
 			assertThat(destinationVector[TEST_INSTANCES - 1], instanceOf(SerializationDummy));
 		}
+		
+		[Test(expected="ArgumentError")]
+		public function deserializeWithNonSerializableAMFType():void {
+			SerializationUtils.deserializeVectorWithAMF(new Array(), String);
+		}
+		
+		private function deserializeAMF():Vector.<SerializableAMF> {
+			testObject = SerializationUtils.serializeVectorWithAMF(testAMFVector);
+			return SerializationUtils.deserializeVectorWithAMF(testObject, AMFSerializationDummy);
+		}
+		
+		[Test]
+		public function deserializeVectorWithAMFSize():void {
+			var vector:Vector.<SerializableAMF> = deserializeAMF();
+			
+			assertThat(vector, arrayWithSize(TEST_INSTANCES));
+		}
+		
+		[Test]
+		public function deserializeVectorWithAMFType():void {
+			var vector:Vector.<SerializableAMF> = deserializeAMF();
+			
+			assertThat(vector[TEST_INSTANCES - 1], instanceOf(SerializableAMF));
+		}
+		
+		[Test]
+		public function deserializeVectorWithAMFProperty():void {
+			var vector:Vector.<SerializableAMF> = deserializeAMF();
+			
+			assertThat(vector[TEST_INSTANCES - 1], hasProperties({foo: TEST_INSTANCES - 1, bar: TEST_INSTANCES}));
+		}
 	}
 }
 
@@ -173,7 +204,7 @@ class AMFSerializationDummy implements SerializableAMF
 	public var foo:int;
 	public var bar:int;
 	
-	public function AMFSerializationDummy(foo:int, bar:int)
+	public function AMFSerializationDummy(foo:int = -2, bar:int = -2)
 	{
 		this.foo = foo;
 		this.bar = bar;
