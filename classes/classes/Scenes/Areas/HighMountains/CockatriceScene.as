@@ -58,7 +58,7 @@ package classes.Scenes.Areas.HighMountains
 				          +" You ready your [weapon] as the creature shows no sign of slowing."
 				          +" Looks like you have a fight on your hands!");
 				//(spd loss)
-				cockatrice.basiliskSpeed(player, 5);
+				Basilisk.speedReduce(player, 5);
 				cockatrice.wingify();
 			}
 			//Standard encounter:

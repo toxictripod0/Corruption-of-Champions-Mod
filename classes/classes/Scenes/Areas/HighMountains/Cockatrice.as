@@ -19,18 +19,6 @@ package classes.Scenes.Areas.HighMountains
 			spe += 10;
 		}
 
-		public function basiliskSpeed(player:Player, amount:Number = 0):void
-		{
-			if (player.spe - amount < 1) {
-				amount = player.spe - 1;
-				if (amount < 0) amount = 0;
-			}
-			player.spe -= amount;
-			if (player.hasStatusEffect(StatusEffects.BasiliskSlow)) player.addStatusValue(StatusEffects.BasiliskSlow,1,amount);
-			else player.createStatusEffect(StatusEffects.BasiliskSlow,amount,0,0,0);
-			showStatDown( 'spe' );
-		}
-
 		//special 1: basilisk mental compulsion attack
 		//(Check vs. Intelligence/Sensitivity, loss = recurrent speed loss each
 		//round, one time lust increase):
@@ -46,7 +34,7 @@ package classes.Scenes.Areas.HighMountains
 					outputText("You can't help yourself... you glimpse the reptile's grey, slit eyes. You look away quickly, but you can picture them in your mind's eye, staring in at your thoughts, making you feel sluggish and unable to coordinate. Something about the helplessness of it feels so good... you can't banish the feeling that really, you want to look in the basilisk's eyes forever, for it to have total control over you.", false);
 					game.dynStats("lus", 3);
 					//apply status here
-					basiliskSpeed(player,20);
+					Basilisk.speedReduce(player,20);
 					player.createStatusEffect(StatusEffects.BasiliskCompulsion,0,0,0,0);
 					flags[kFLAGS.BASILISK_RESISTANCE_TRACKER] += 2;
 				}
