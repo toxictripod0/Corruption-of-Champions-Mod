@@ -896,6 +896,7 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		// </mod>
 		saveFile.data.wingDesc = player.wingDesc;
 		saveFile.data.wingType = player.wingType;
+		saveFile.data.wingColor = player.wingColor;
 		saveFile.data.lowerBody = player.lowerBody;
 		saveFile.data.legCount = player.legCount;
 		saveFile.data.tailType = player.tailType;
@@ -1787,6 +1788,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 
 		player.wingDesc = saveFile.data.wingDesc;
 		player.wingType = saveFile.data.wingType;
+		player.wingColor = saveFile.data.wingColor || "no";
 		player.lowerBody = saveFile.data.lowerBody;
 		player.tailType = saveFile.data.tailType;
 		player.tailVenom = saveFile.data.tailVenum;
@@ -2313,6 +2315,10 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 public function unFuckSave():void
 {
 	//Fixing shit!
+	if (player.wings.type == WING_TYPE_FEATHERED_LARGE && player.wings.color == "no") {
+		// Player has harpy wings from an old save, let's fix its color
+		player.wings.color = player.hasFur() ? player.furColor : player.hairColor;
+	}
 
 	// Fix duplicate elven bounty perks
 	if (player.findPerk(PerkLib.ElvenBounty) >= 0) {

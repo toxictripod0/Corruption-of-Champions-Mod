@@ -54,7 +54,16 @@ package classes.Items.Consumables
 				outputText("\n\nYou have no special or furry underbody.");
 				game.addButtonDisabled(2, "Under Fur", "You have no special or furry underbody!");
 			}
-			
+
+			if (game.player.wings.canDye()) {
+				outputText("\n\nYou have " + game.player.wingColor + " wings.");
+				if (game.player.wingColor != _color) game.addButton(1, "Wings", dyeWings);
+				else game.addButtonDisabled(1, "Fur", "Your already have " + _color + " wings!");
+			} else {
+				outputText("\n\nYour wings can't be dyed.");
+				game.addButtonDisabled(1, "Fur", "Your wings can't be dyed!");
+			}
+
 			game.addButton(4, "Nevermind", dyeCancel);
 			return true;
 		}
@@ -84,11 +93,7 @@ package classes.Items.Consumables
 			outputText("You rub the dye into your fur, then use a bucket of cool lakewater to rinse clean a few minutes later.  ");
 			game.player.furColor = _color;
 			outputText("You now have " + game.player.furColor + " fur.");
-			if (game.player.lust > 50) {
-				outputText("\n\nThe cool water calms your urges somewhat, letting you think more clearly.");
-				game.dynStats("lus", -15);
-			}
-			game.inventory.itemGoNext();
+			finalize();
 		}
 		
 		private function dyeUnderBodyFur():void
@@ -97,11 +102,16 @@ package classes.Items.Consumables
 			outputText("You rub the dye into your fur on your underside, then use a bucket of cool lakewater to rinse clean a few minutes later.  ");
 			game.player.underBody.skin.furColor = _color;
 			outputText("You now have " + game.player.underBody.skin.furColor + " fur on your underside.");
-			if (game.player.lust > 50) {
-				outputText("\n\nThe cool water calms your urges somewhat, letting you think more clearly.");
-				game.dynStats("lus", -15);
-			}
-			game.inventory.itemGoNext();
+			finalize();
+		}
+		
+		private function dyeWings():void
+		{
+			clearOutput();
+			outputText("You rub the dye into your [wings], then use a bucket of cool lakewater to rinse clean a few minutes later.  ");
+			game.player.wingColor = _color;
+			outputText("You now have " + game.player.wingColor + " wings.");
+			finalize();
 		}
 		
 		private function dyeCancel():void {
@@ -109,6 +119,14 @@ package classes.Items.Consumables
 			outputText("You put the dye away.\n\n");
 			game.inventory.returnItemToInventory(this);
 		}
-	}
 
+		private function finalize():void
+		{
+			if (game.player.lust > 50) {
+				outputText("\n\nThe cool water calms your urges somewhat, letting you think more clearly.");
+				game.dynStats("lus", -15);
+			}
+			game.inventory.itemGoNext();
+		}
+	}
 }

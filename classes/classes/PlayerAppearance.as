@@ -495,7 +495,7 @@ package classes
 			if (player.wingType == WING_TYPE_SHARK_FIN) 
 				outputText("  A large shark-like fin has sprouted between your shoulder blades.  With it you have far more control over swimming underwater.");
 			if (player.wingType == WING_TYPE_FEATHERED_LARGE) 
-				outputText("  A pair of large, feathery wings sprout from your back.  Though you usually keep the " + player.furColor + "-colored wings folded close, they can unfurl to allow you to soar as gracefully as a harpy.");
+				outputText("  A pair of large, feathery wings sprout from your back.  Though you usually keep the " + player.wings.color + "-colored wings folded close, they can unfurl to allow you to soar as gracefully as a harpy.");
 			if (player.wingType == WING_TYPE_DRACONIC_SMALL) 
 				outputText("  Small, vestigial wings sprout from your shoulders.  They might look like bat's wings, but the membranes are covered in fine, delicate scales.");
 			else if (player.wingType == WING_TYPE_DRACONIC_LARGE) 

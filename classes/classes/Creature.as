@@ -3,6 +3,7 @@ package classes
 {
 	import classes.BodyParts.Skin;
 	import classes.BodyParts.UnderBody;
+	import classes.BodyParts.Wings;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.PerkType;
@@ -264,10 +265,13 @@ package classes
 		10 - small dagron
 		11 - trogdor wings
 		12 - sandtrap wings*/
-		private var _wingType:Number = WING_TYPE_NONE;
-		public var wingDesc:String = "non-existant";
-		public function get wingType():Number { return _wingType; }
-		public function set wingType(value:Number):void { _wingType = value; }
+		public var wings:Wings = new Wings();
+		public function get wingType():Number { return wings.type; }
+		public function set wingType(value:Number):void { wings.type = value; }
+		public function get wingDesc():String { return wings.desc; }
+		public function set wingDesc(value:String):void { wings.desc = value; }
+		public function get wingColor():String { return wings.color; }
+		public function set wingColor(value:String):void { wings.color = value; }
 
 		/* lowerBody:
 		0 - normal
@@ -2143,7 +2147,7 @@ package classes
 			//web also makes false!
 			if (hasStatusEffect(StatusEffects.Web))
 				return false;
-			return canFlyWings.indexOf(_wingType) != -1;
+			return canFlyWings.indexOf(wingType) != -1;
 
 		}
 
