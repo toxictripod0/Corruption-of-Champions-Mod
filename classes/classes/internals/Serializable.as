@@ -10,15 +10,15 @@ package classes.internals
 	public interface Serializable 
 	{
 		/**
-		 * Serialize a class so it can be stored. Any state that is not serialized will be lost and replace with the
+		 * Serialize a class so it can be stored. Any state that is not serialized will be lost and replaced with the
 		 * default value on deserialization.
-		 * The variables need to be stored manually. If you only have primitive public variables, use AMF directly and SerializeAMF for Vectors for simpler
-		 * serialization.
-		 * The class is responsible for initalizing its storage by creating an empty arrary.
+		 * The class variables need to be stored manually.
+		 * The object that is passed in must be initialized so class can write to it.
 		 * 
 		 * e.g.:
 		 * relativeRootObject.foo = intValue;
 		 * relativeRootObject.bar = StringValue;
+		 * relativeRootObject.baz = [];
 		 * this.complexObject.serialize(relativeRootObject.baz);
 		 * 
 		 * @param	relativeRootObject the object this class should write to 
@@ -28,7 +28,6 @@ package classes.internals
 		/**
 		 * Deserialize a class, restoring it's state. Deserialization requires some form of default constructor, this can be achieved
 		 * with all parameters having a default value.
-		 * Objects stored with AMF have to be restored in Saves.as.
 		 * 
 		 * @param	relativeRootObject the object this class should read from
 		 */
