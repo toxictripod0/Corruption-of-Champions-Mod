@@ -534,7 +534,7 @@ package classes.Scenes.Areas.Desert {
 				this.level = 4;
 				this.gems = rand(25) + 5;
 
-				this.drop = new WeightedDrop(consumables.ECTOPLS);
+				this.drop = new WeightedDrop(consumables.ECTOPLS, 1);
 
 				this.tailType = rand(26);
 				this.horns = rand(4);
