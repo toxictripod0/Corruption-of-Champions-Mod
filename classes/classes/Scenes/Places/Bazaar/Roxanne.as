@@ -261,8 +261,6 @@ protected function roxanneDrinkingContest():void {
 			LOGGER.debug("Starting loss scene: Normal");
 			doNext(roxanneReamsYouNormal);
 		}
-		//Reset roxanne's cock
-		flags[kFLAGS.ROXANNE_TIME_WITHOUT_SEX] = 1;
 	}
 	//[WIN]
 	else {
@@ -515,6 +513,7 @@ private function roxanneReamsYouNormal():void {
 	player.orgasm();
 	dynStats("int", -1);
 	applyHangover();
+	resetRoxanneSexTimeCounter();
 	doNext(camp.returnToCampUseFourHours);
 }
 
@@ -579,6 +578,7 @@ private function roxanneFucksYourAssOHGODITSHUGE():void {
 	player.orgasm();
 	dynStats("int", -1);
 	applyHangover();
+	resetRoxanneSexTimeCounter();
 	doNext(camp.returnToCampUseFourHours);
 }
 	
@@ -669,7 +669,12 @@ private function bigBootyRoxanneContestLoss():void {
 	player.orgasm();
 	dynStats("int", -1);
 	applyHangover();
+	resetRoxanneSexTimeCounter();
 	doNext(camp.returnToCampUseFourHours);
+}
+
+private function resetRoxanneSexTimeCounter():void {
+	flags[kFLAGS.ROXANNE_TIME_WITHOUT_SEX] = 1;
 }
 }
 }
