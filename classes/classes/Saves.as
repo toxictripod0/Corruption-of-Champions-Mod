@@ -7,6 +7,8 @@ package classes
 	import classes.Scenes.Inventory;
 	import classes.Scenes.Places.TelAdre.Katherine;
 	import classes.internals.LoggerFactory;
+	import classes.internals.Serializable;
+	import classes.internals.SerializationUtils;
 	import mx.logging.ILogger;
 
 	CONFIG::AIR 
@@ -915,11 +917,6 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 
 		
 		saveFile.data.cocks = [];
-		
-		/**
-		 * An array has to be used instead of a Vector, or saving will not work.
-		 */
-		saveFile.data.vaginas = [];
 		saveFile.data.breastRows = [];
 		saveFile.data.perks = [];
 		saveFile.data.statusAffects = [];
@@ -945,11 +942,7 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 			saveFile.data.cocks[i].sock = player.cocks[i].sock;
 		}
 		
-		for each (var vagina:VaginaClass in player.vaginas) {
-			var toStore:Array = [];
-			vagina.serialize(toStore);
-			saveFile.data.vaginas.push(toStore);
-		}
+		saveFile.data.vaginas = SerializationUtils.serializeVector(player.vaginas as Vector.<*>);
 		
 		//NIPPLES
 		saveFile.data.nippleLength = player.nippleLength;
@@ -1853,14 +1846,9 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			}
 				//trace("LoadOne Cock i(" + i + ")");
 		}
-
-		//Populate Vaginal Array
-		for each (var element:Array in saveFile.data.vaginas)
-		{
-			var vagina:VaginaClass = new VaginaClass();
-			vagina.deserialize(element);
-			player.vaginas.push(vagina);
-		}
+		player.vaginas = new Vector.<VaginaClass>();
+		SerializationUtils.deserializeVector(player.vaginas as Vector.<*>, saveFile.data.vaginas, VaginaClass);
+		
 		//NIPPLES
 		if (saveFile.data.nippleLength == undefined)
 			player.nippleLength = .25;
