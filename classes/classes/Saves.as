@@ -913,7 +913,12 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		   myLocalData.data.girlEffectArray.push(new Array());
 		 }*/
 
+		
 		saveFile.data.cocks = [];
+		
+		/**
+		 * An array has to be used instead of a Vector, or saving will not work.
+		 */
 		saveFile.data.vaginas = [];
 		saveFile.data.breastRows = [];
 		saveFile.data.perks = [];
@@ -939,28 +944,13 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 			saveFile.data.cocks[i].pLongDesc = player.cocks[i].pLongDesc;
 			saveFile.data.cocks[i].sock = player.cocks[i].sock;
 		}
-		//Set Vaginal Array
-		for (i = 0; i < player.vaginas.length; i++)
-		{
-			saveFile.data.vaginas.push([]);
+		
+		for each (var vagina:VaginaClass in player.vaginas) {
+			var toStore:Array = [];
+			vagina.serialize(toStore);
+			saveFile.data.vaginas.push(toStore);
 		}
-		//Populate Vaginal Array
-		for (i = 0; i < player.vaginas.length; i++)
-		{
-			saveFile.data.vaginas[i].type = player.vaginas[i].type;
-			saveFile.data.vaginas[i].vaginalWetness = player.vaginas[i].vaginalWetness;
-			saveFile.data.vaginas[i].vaginalLooseness = player.vaginas[i].vaginalLooseness;
-			saveFile.data.vaginas[i].fullness = player.vaginas[i].fullness;
-			saveFile.data.vaginas[i].virgin = player.vaginas[i].virgin;
-			saveFile.data.vaginas[i].labiaPierced = player.vaginas[i].labiaPierced;
-			saveFile.data.vaginas[i].labiaPShort = player.vaginas[i].labiaPShort;
-			saveFile.data.vaginas[i].labiaPLong = player.vaginas[i].labiaPLong;
-			saveFile.data.vaginas[i].clitPierced = player.vaginas[i].clitPierced;
-			saveFile.data.vaginas[i].clitPShort = player.vaginas[i].clitPShort;
-			saveFile.data.vaginas[i].clitPLong = player.vaginas[i].clitPLong;
-			saveFile.data.vaginas[i].clitLength = player.vaginas[i].clitLength;
-			saveFile.data.vaginas[i].recoveryProgress = player.vaginas[i].recoveryProgress;
-		}
+		
 		//NIPPLES
 		saveFile.data.nippleLength = player.nippleLength;
 		//Set Breast Array
@@ -1863,55 +1853,13 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			}
 				//trace("LoadOne Cock i(" + i + ")");
 		}
-		//Set Vaginal Array
-		for (i = 0; i < saveFile.data.vaginas.length; i++)
-		{
-			player.createVagina();
-		}
+
 		//Populate Vaginal Array
-		for (i = 0; i < saveFile.data.vaginas.length; i++)
+		for each (var element:Array in saveFile.data.vaginas)
 		{
-			player.vaginas[i].vaginalWetness = saveFile.data.vaginas[i].vaginalWetness;
-			player.vaginas[i].vaginalLooseness = saveFile.data.vaginas[i].vaginalLooseness;
-			player.vaginas[i].fullness = saveFile.data.vaginas[i].fullness;
-			player.vaginas[i].virgin = saveFile.data.vaginas[i].virgin;
-			if (saveFile.data.vaginas[i].type == undefined) player.vaginas[i].type = 0;
-			else player.vaginas[i].type = saveFile.data.vaginas[i].type;
-			if (saveFile.data.vaginas[i].labiaPierced == undefined) {
-				player.vaginas[i].labiaPierced = 0;
-				player.vaginas[i].labiaPShort = "";
-				player.vaginas[i].labiaPLong = "";
-				player.vaginas[i].clitPierced = 0;
-				player.vaginas[i].clitPShort = "";
-				player.vaginas[i].clitPLong = "";
-				player.vaginas[i].clitLength = VaginaClass.DEFAULT_CLIT_LENGTH;
-				player.vaginas[i].recoveryProgress = 0;
-			}
-			else
-			{
-				player.vaginas[i].labiaPierced = saveFile.data.vaginas[i].labiaPierced;
-				player.vaginas[i].labiaPShort = saveFile.data.vaginas[i].labiaPShort;
-				player.vaginas[i].labiaPLong = saveFile.data.vaginas[i].labiaPLong;
-				player.vaginas[i].clitPierced = saveFile.data.vaginas[i].clitPierced;
-				player.vaginas[i].clitPShort = saveFile.data.vaginas[i].clitPShort;
-				player.vaginas[i].clitPLong = saveFile.data.vaginas[i].clitPLong;
-				player.vaginas[i].clitLength = saveFile.data.vaginas[i].clitLength;
-				player.vaginas[i].recoveryProgress = saveFile.data.vaginas[i].recoveryProgress;
-				
-				
-				// backwards compatibility
-				//TODO is there a better way to do this?
-				if(saveFile.data.vaginas[i].clitLength == undefined) {
-					player.vaginas[i].clitLength = VaginaClass.DEFAULT_CLIT_LENGTH;
-					trace("Clit length was not loaded, setting to default.");
-				}
-				
-				if(saveFile.data.vaginas[i].recoveryProgress == undefined) {
-					player.vaginas[i].recoveryProgress = 0;
-					trace("Stretch counter was not loaded, setting to 0.");
-				}
-			}
-				//trace("LoadOne Vagina i(" + i + ")");
+			var vagina:VaginaClass = new VaginaClass();
+			vagina.deserialize(element);
+			player.vaginas.push(vagina);
 		}
 		//NIPPLES
 		if (saveFile.data.nippleLength == undefined)

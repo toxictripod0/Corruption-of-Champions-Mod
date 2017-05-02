@@ -1,8 +1,9 @@
 ﻿package classes
 {
+	import classes.internals.Serializable;
 	import classes.internals.Utils;
 
-	public class VaginaClass
+	public class VaginaClass implements Serializable
 	{
 		include "../../includes/appearanceDefs.as";
 		public static const DEFAULT_CLIT_LENGTH:Number = 0.5;
@@ -136,6 +137,67 @@
 			}
 			
 			return stretched;
+		}
+		
+		public function serialize(relativeRootObject:*):void 
+		{
+			relativeRootObject.type = this.type;
+			relativeRootObject.vaginalWetness = this.vaginalWetness;
+			relativeRootObject.vaginalLooseness = this.vaginalLooseness;
+			relativeRootObject.fullness = this.fullness;
+			relativeRootObject.virgin = this.virgin;
+			relativeRootObject.labiaPierced = this.labiaPierced;
+			relativeRootObject.labiaPShort = this.labiaPShort;
+			relativeRootObject.labiaPLong = this.labiaPLong;
+			relativeRootObject.clitPierced = this.clitPierced;
+			relativeRootObject.clitPShort = this.clitPShort;
+			relativeRootObject.clitPLong = this.clitPLong;
+			relativeRootObject.clitLength = this.clitLength;
+			relativeRootObject.recoveryProgress = this.recoveryProgress;
+		}
+		
+		public function deserialize(relativeRootObject:*):void 
+		{
+			this.vaginalWetness = relativeRootObject.vaginalWetness;
+			this.vaginalLooseness = relativeRootObject.vaginalLooseness;
+			this.fullness = relativeRootObject.fullness;
+			this.virgin = relativeRootObject.virgin;
+			if (relativeRootObject.type == undefined) this.type = 0;
+			else this.type = relativeRootObject.type;
+			if (relativeRootObject.labiaPierced == undefined) {
+				this.labiaPierced = 0;
+				this.labiaPShort = "";
+				this.labiaPLong = "";
+				this.clitPierced = 0;
+				this.clitPShort = "";
+				this.clitPLong = "";
+				this.clitLength = VaginaClass.DEFAULT_CLIT_LENGTH;
+				this.recoveryProgress = 0;
+			}
+			else
+			{
+				this.labiaPierced = relativeRootObject.labiaPierced;
+				this.labiaPShort = relativeRootObject.labiaPShort;
+				this.labiaPLong = relativeRootObject.labiaPLong;
+				this.clitPierced = relativeRootObject.clitPierced;
+				this.clitPShort = relativeRootObject.clitPShort;
+				this.clitPLong = relativeRootObject.clitPLong;
+				this.clitLength = relativeRootObject.clitLength;
+				this.recoveryProgress = relativeRootObject.recoveryProgress;
+				
+				
+				// backwards compatibility
+				//TODO is there a better way to do this?
+				if(relativeRootObject.clitLength == undefined) {
+					this.clitLength = VaginaClass.DEFAULT_CLIT_LENGTH;
+					trace("Clit length was not loaded, setting to default.");
+				}
+				
+				if(relativeRootObject.recoveryProgress == undefined) {
+					this.recoveryProgress = 0;
+					trace("Stretch counter was not loaded, setting to 0.");
+				}
+			}
 		}
 	}
 }
