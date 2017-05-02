@@ -37,12 +37,6 @@ package classes.helper
 			eventTriggeredFlag = false;
 		}
 		
-		[After]
-		public function tearDown():void
-		{
-			
-		}
-		
 		private function setFlagEvent():void {
 			eventTriggeredFlag = true;
 		}
