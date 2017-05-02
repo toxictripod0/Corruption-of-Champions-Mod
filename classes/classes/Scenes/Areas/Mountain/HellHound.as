@@ -142,7 +142,7 @@
 			this.drop = new WeightedDrop()
 					.add(consumables.CANINEP, 6)
 					.add(consumables.WOLF_PP, 1)
-					.addmany(2,
+					.addMany(2,
 						consumables.BULBYPP,
 						consumables.KNOTTYP,
 						consumables.BLACKPP,
