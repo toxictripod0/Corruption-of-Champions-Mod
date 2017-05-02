@@ -134,7 +134,7 @@ package classes.Scenes.Areas.GlacialRift
 			this.temperment = TEMPERMENT_AVOID_GRAPPLES;
 			this.level = 22;
 			this.gems = 40 + rand(25);
-			this.drop = new WeightedDrop(consumables.WOLF_PP);
+			this.drop = new WeightedDrop(consumables.WOLF_PP, 1);
 			this.special1 = amarokClaw;
 			this.special2 = amarokTail;
 			this.tailType = TAIL_TYPE_WOLF;
