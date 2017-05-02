@@ -1,4 +1,4 @@
-﻿package classes 
+package classes 
 {
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
@@ -98,6 +98,7 @@
 			var silly:Boolean = flags[kFLAGS.SILLY_MODE_ENABLE_FLAG];
 			var easy:Boolean = flags[kFLAGS.EASY_MODE_ENABLE_FLAG];
 			var sprite:Boolean = flags[kFLAGS.SHOW_SPRITES_FLAG];
+			var prison:Boolean = flags[kFLAGS.PRISON_ENABLED];
 			mainView.setButtonText(0, "Newgame"); // b1Text.text = "Newgame";
 			//flags[kFLAGS.CUSTOM_PC_ENABLED] = 0;
 			

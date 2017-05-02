@@ -123,6 +123,8 @@ package classes
 				outputText("\n\n<b>Easy Mode On: Bad-ends can be ignored.</b>");
 			if (flags[kFLAGS.SILLY_MODE_ENABLE_FLAG])
 				outputText("\n\n<b>SILLY MODE ENGAGED: Crazy, nonsensical, and possibly hilarious things may occur.</b>");
+			if (flags[kFLAGS.PRISON_ENABLED])
+				outputText("\n\n<b>PRISON ENABLED: The prison can be accessed. WARNING: The prison is very buggy and may break your game. Enter it at your own risk!</b>");
 			if (flags[kFLAGS.ITS_EVERY_DAY])
 				outputText("\n\n<b>Eternal holiday enabled.</b>");
 			if (kGAMECLASS.plains.bunnyGirl.isItEaster())
