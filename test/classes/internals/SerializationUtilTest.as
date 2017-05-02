@@ -39,6 +39,10 @@ package classes.internals
 			}
 		}
 		
+		private function getTestObject():* {
+			return SerializationUtils.serializeVector(testVector as Vector.<*>);
+		}
+		
 		[Before]
 		public function setUp():void
 		{
@@ -53,7 +57,7 @@ package classes.internals
 		[Test]
 		public function serializeVectorObjectSize():void
 		{
-			testObject = SerializationUtils.serializeVector(testVector);
+			testObject = getTestObject();
 			
 			assertThat(testObject, arrayWithSize(TEST_INSTANCES));
 		}
@@ -61,7 +65,7 @@ package classes.internals
 		[Test]
 		public function serializeVectorLastObjectValue():void
 		{
-			testObject = SerializationUtils.serializeVector(testVector);
+			testObject = getTestObject();
 			
 			assertThat(testObject[TEST_INSTANCES - 1], hasProperties({foo: TEST_INSTANCES - 1, bar: TEST_INSTANCES}));
 		}
@@ -84,7 +88,7 @@ package classes.internals
 		
 		[Test]
 		public function deserializeVectorSize():void {
-			testObject = SerializationUtils.serializeVector(testVector);
+			testObject = getTestObject();
 			
 			var vector:Vector.<Serializable> = SerializationUtils.deserializeVector(testObject, SerializationDummy);
 			
@@ -93,7 +97,7 @@ package classes.internals
 		
 		[Test]
 		public function deserializeVectorType():void {
-			testObject = SerializationUtils.serializeVector(testVector);
+			testObject = getTestObject();
 			
 			var vector:Vector.<Serializable> = SerializationUtils.deserializeVector(testObject, SerializationDummy);
 			
@@ -102,7 +106,7 @@ package classes.internals
 		
 		[Test]
 		public function deserializeVectorLastElementProperties():void {
-			testObject = SerializationUtils.serializeVector(testVector);
+			testObject = getTestObject();
 			
 			var vector:Vector.<Serializable> = SerializationUtils.deserializeVector(testObject, SerializationDummy);
 			

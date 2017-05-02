@@ -17,11 +17,11 @@ package classes.internals
 		 * @param	vector to serialize
 		 * @return a array containing the serialized vector
 		 */
-		public static function serializeVector(vector:Vector.<Serializable>):Array {
+		public static function serializeVector(vector:Vector.<*>):Array {
 			var serialized:* = [];
 			
 			for each(var element:Serializable in vector) {
-				var obj:Object = new Object();
+				var obj:Array = [];
 				serialized.push(obj);
 				
 				element.serialize(obj);
