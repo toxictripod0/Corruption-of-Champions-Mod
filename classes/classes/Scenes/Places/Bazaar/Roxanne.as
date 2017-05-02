@@ -1,9 +1,11 @@
 ﻿package classes.Scenes.Places.Bazaar{
 	import classes.*;
 	import classes.GlobalFlags.kFLAGS;
+	import mx.logging.ILogger;
+	import classes.internals.LoggerFactory;
 
 	public class Roxanne extends BazaarAbstractContent implements TimeAwareInterface {
-
+		private static const LOGGER:ILogger = LoggerFactory.getLogger(Roxanne);
 //Roxanne Poisontail
 //-no hair, 
 //-stand roughly 5'11\" in height, 
@@ -179,7 +181,7 @@ private function roxanneDrinkingContestLoseDeliberately():void {
 	roxanneDrinkingContest();
 }
 
-private function roxanneDrinkingContest():void {
+protected function roxanneDrinkingContest():void {
 	spriteSelect(78);
 	clearOutput();
 	outputText("Roxanne ", false);
@@ -235,6 +237,7 @@ private function roxanneDrinkingContest():void {
 	//If score is less than 30-50 (Strahza is inconsistant!)
 	//[Lose!] 
 	if (score < (45 + rand(20))) {
+		LOGGER.debug("Lost to Roxanne with a score of {0}", score);
 		//Increment loss count!
 		flags[kFLAGS.ROXANNE_DRINING_CONTEST_LOST]++;
 		//Set who won contast last
@@ -247,15 +250,23 @@ private function roxanneDrinkingContest():void {
 		outputText("  A scaled hand slaps your " + player.buttDescript() + " spinning you around to fall drunkenly into the pirate's soft, cushy chest.  \"<i>Don't worry, I'll be gentle,</i>\" she whispers, hooking an arm around your sagging frame.", false);
 		//CHOOSE SEX SCENE
 		//Chance of big booty butt loss!
-		if (player.buttRating > 12 && player.tone <= 50 && flags[kFLAGS.ROXANNE_DRINING_CONTEST_LOST] > 1 && rand(2) == 0) doNext(bigBootyRoxanneContestLoss);
-		//TO huge or regular anal
-		else if (flags[kFLAGS.ROXANNE_TIME_WITHOUT_SEX] >= 200) doNext(roxanneFucksYourAssOHGODITSHUGE);
-		else doNext(roxanneReamsYouNormal);
+		if (player.buttRating > 12 && player.tone <= 50 && flags[kFLAGS.ROXANNE_DRINING_CONTEST_LOST] > 1 && rand(2) == 0){
+			LOGGER.debug("Starting loss scene: Big booty");
+			doNext(bigBootyRoxanneContestLoss);
+		} else if (flags[kFLAGS.ROXANNE_TIME_WITHOUT_SEX] >= 200) {
+			//TO huge or regular anal
+			LOGGER.debug("Starting loss scene: Huge");
+			doNext(roxanneFucksYourAssOHGODITSHUGE);
+		} else {
+			LOGGER.debug("Starting loss scene: Normal");
+			doNext(roxanneReamsYouNormal);
+		}
 		//Reset roxanne's cock
 		flags[kFLAGS.ROXANNE_TIME_WITHOUT_SEX] = 1;
 	}
 	//[WIN]
 	else {
+		LOGGER.debug("Won against Roxanne with a score of {0}", score);
 		//Increment win count!
 		flags[kFLAGS.ROXANNE_DRINING_CONTEST_WON]++;
 		//Set who won contest last
