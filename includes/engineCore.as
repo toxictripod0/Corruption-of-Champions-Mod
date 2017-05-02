@@ -27,6 +27,8 @@ import flash.text.TextFormat;
 // 
 // model.maxHP = maxHP;
 
+public static const MAX_BUTTON_INDEX:int = 14;
+
 public function maxHP():Number {
 	return player.maxHP();
 }
@@ -206,7 +208,7 @@ public function displayHeader(string:String):void {
 }
 
 public function buttonIsVisible(index:int):Boolean {
-	if ( index < 0 || index > 14 ) {
+	if ( index < 0 || index > MAX_BUTTON_INDEX ) {
 		return undefined;
 	}
 	else {
@@ -246,7 +248,7 @@ public function buttonTextIsOneOf(index:int, possibleLabels:Array):Boolean {
 public function getButtonText(index:int):String {
 	var matches:*;
 
-	if (index < 0 || index > 14) {
+	if (index < 0 || index > MAX_BUTTON_INDEX) {
 		return '';
 	}
 	else {
@@ -510,7 +512,7 @@ public function addButton(pos:int, text:String = "", func1:Function = null, arg1
 	var callback:Function;
 
 	//Let the mainView decide if index is valid
-	if (pos > 14) {
+	if (pos > MAX_BUTTON_INDEX) {
 		trace("INVALID BUTTON");
 		return;
 	}
@@ -567,7 +569,7 @@ public function removeButton(arg:*):void {
 		buttonToRemove = mainView.indexOfButtonWithLabel( arg as String );
 	}
 	if (arg is Number) {
-		if (arg < 0 || arg > 14) return;
+		if (arg < 0 || arg > MAX_BUTTON_INDEX) return;
 		buttonToRemove = Math.round(arg);
 	}
 	mainView.hideBottomButton( buttonToRemove );
@@ -577,7 +579,7 @@ public function removeButton(arg:*):void {
  * Hides all bottom buttons.
  */
 public function menu():void { //The newer, simpler menu - blanks all buttons so addButton can be used
-	for (var i:int = 0; i <= 14; i++) {
+	for (var i:int = 0; i <= MAX_BUTTON_INDEX; i++) {
 		mainView.hideBottomButton(i);
 		mainView.bottomButtons[i].alpha = 1; // Dirty hack.
 	}
