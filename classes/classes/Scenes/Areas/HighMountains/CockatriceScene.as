@@ -18,7 +18,7 @@ package classes.Scenes.Areas.HighMountains
 			//spriteSelect(75);
 			clearOutput();
 			//First encounter: 
-			if (flags[kFLAGS.TIMES_ENCOUNTERED_COCKATRICE] == 0) {
+			if (flags[kFLAGS.TIMES_ENCOUNTERED_COCKATRICES] == 0) {
 				outputText("As you follow the trails in the high mountains, the rocky terrain becomes less stable, the path devolving into a series"
 				          +" of loose crags with gravel like sediment surrounding large boulders and rough stepping stone-like structures. As you"
 				          +" cling to the rock face trying to step from one rock to another you see something in the distance. A figure, perched on"
@@ -77,7 +77,7 @@ package classes.Scenes.Areas.HighMountains
 				outputText("\n\n<b>New codex entry unlocked: Cockatrices!</b>")
 			}
 			startCombat(cockatrice);
-			flags[kFLAGS.TIMES_ENCOUNTERED_COCKATRICE]++;
+			flags[kFLAGS.TIMES_ENCOUNTERED_COCKATRICES]++;
 		}
 		
 

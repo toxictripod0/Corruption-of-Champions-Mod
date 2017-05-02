@@ -193,9 +193,9 @@ package classes.Scenes.Areas.HighMountains
 			this.level = 14;
 			this.gems = rand(10) + 10;
 			this.drop = new WeightedDrop()
-				.add(consumables.REPTLUM, 40)
-				.add(consumables.GLDSEED, 40)
-				.add(consumables.TOTRICE, 10)
+				.add(consumables.REPTLUM, 35)
+				.add(consumables.GLDSEED, 35)
+				.add(consumables.TOTRICE, 20)
 				.add(null,                10);
 			this.tailType = TAIL_TYPE_COCKATRICE;
 			this.tailRecharge = 0;

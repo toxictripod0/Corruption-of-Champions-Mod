@@ -1316,7 +1316,7 @@ public static const UNKNOWN_FLAG_NUMBER_01307:int                               
 public static const UNKNOWN_FLAG_NUMBER_01308:int                                   = 1308;
 public static const UNKNOWN_FLAG_NUMBER_01309:int                                   = 1309;
 public static const COCKATRICES_UNLOCKED:int                                        = 1310; // Are cockatrice encounters unlocked?
-public static const TIMES_ENCOUNTERED_COCKATRICE:int                                = 1311; // Times encountered cockatrices
+public static const TIMES_ENCOUNTERED_COCKATRICES:int                               = 1311; // Times encountered cockatrices
 public static const CODEX_ENTRY_COCKATRICES:int                                     = 1312; // Cockatrices codex entry unlocked
 public static const UNKNOWN_FLAG_NUMBER_01313:int                                   = 1313;
 public static const UNKNOWN_FLAG_NUMBER_01314:int                                   = 1314;

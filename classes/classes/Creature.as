@@ -2548,6 +2548,11 @@ package classes
 			return (bonusFertility() + fertility);
 		}
 
+		public function hasBeak():Boolean
+		{
+			return [FACE_BEAK, FACE_COCKATRICE].indexOf(faceType) != -1;
+		}
+
 		public function hasScales():Boolean
 		{
 			return [SKIN_TYPE_LIZARD_SCALES, SKIN_TYPE_DRAGON_SCALES, SKIN_TYPE_FISH_SCALES].indexOf(skinType) != -1;

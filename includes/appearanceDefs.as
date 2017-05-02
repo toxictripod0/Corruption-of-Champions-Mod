@@ -63,6 +63,7 @@ public static const FACE_ECHIDNA:int                                            
 public static const FACE_DEER:int                                                   =   23;
 public static const FACE_WOLF:int                                                   =   24;
 public static const FACE_COCKATRICE:int                                             =   25;
+public static const FACE_BEAK:int                                                   =   26;
 
 // tongueType
 public static const TONGUE_HUMAN:int                                                =   0;
