@@ -511,7 +511,12 @@ package classes
 				outputText("\n<b>You can adjust your double attack settings.</b>");
 				addButton(button++,"Dbl Options",doubleAttackOptions);
 			}
-		}
+		
+			if (player.findPerk(PerkLib.AscensionTolerance) >= 0){
+				outputText("\n<b>You can adjust your Corruption Tolerance threshold.</b>");
+				addButton(button++,"Tol. Options",ascToleranceOption,null,null,null,"Set whether or not Corruption Tolerance is applied.");
+			}
+}
 
 		public function doubleAttackOptions():void {
 			clearOutput();
@@ -549,6 +554,31 @@ package classes
 			flags[kFLAGS.DOUBLE_ATTACK_STYLE] = 2;
 			doubleAttackOptions();
 		}
+		
+		public function ascToleranceOption():void{
+			clearOutput();
+			menu();
+			if (player.perkv2(PerkLib.AscensionTolerance) == 0){
+				outputText("Corruption Tolerance is under effect, giving you " + player.corruptionTolerance() + " tolerance on most corruption events." +
+				"\n\nYou can disable this perk's effects at any time.<b>Some camp followers may leave you immediately after doing this. Save beforehand!</b>");
+				addButton(0, "Disable", disableTolerance);
+			}else addButtonDisabled(0, "Disable", "The perk is already disabled.");
+			if (player.perkv2(PerkLib.AscensionTolerance) == 1){
+				outputText("Ascension Tolerance is not under effect. You may enable it at any time.");
+				addButton(1, "Enable", enableTolerance);
+			}else addButtonDisabled(1, "Enable", "The perk is already enabled.");
+			addButton(4, "Back", displayPerks);
+		}
+		
+		public function disableTolerance():void{
+			player.setPerkValue(PerkLib.AscensionTolerance, 2, 1);
+			ascToleranceOption();
+		}
+		public function enableTolerance():void{
+			player.setPerkValue(PerkLib.AscensionTolerance, 2, 0);
+			ascToleranceOption();
+		}
+
 		
 		//------------
 		// LEVEL UP
