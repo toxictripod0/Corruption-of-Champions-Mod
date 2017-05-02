@@ -1886,7 +1886,7 @@ use namespace kGAMECLASS;
 		}
 		
 		public function corruptionTolerance():int {
-			var temp:int = perkv1(PerkLib.AscensionTolerance) * 5;
+			var temp:int = perkv1(PerkLib.AscensionTolerance) * 5 * (1 - perkv2(PerkLib.AscensionTolerance));
 			if (flags[kFLAGS.MEANINGLESS_CORRUPTION] > 0) temp += 100;
 			return temp;
 		}
