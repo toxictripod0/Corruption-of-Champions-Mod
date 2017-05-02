@@ -1,4 +1,4 @@
-﻿import classes.*;
+import classes.*;
 import flash.text.TextFormat;
 // // import flash.events.MouseEvent;
 // 
@@ -33,7 +33,6 @@ public function maxHP():Number {
 
 public function silly():Boolean {
 	return flags[kFLAGS.SILLY_MODE_ENABLE_FLAG] == 1;
-
 }
 
 /**
