@@ -18,6 +18,7 @@ package classes.internals
 		private var testObject:*;
 		private var testVector:Vector.<Serializable>;
 		private var testAMFVector:Vector.<SerializableAMF>;
+		private var deserializedVector:Vector.<*>
 		
 		public function SerializationUtilTest()
 		{
@@ -49,6 +50,7 @@ package classes.internals
 			testObject = null;
 			testVector = new Vector.<Serializable>();
 			testAMFVector = new Vector.<SerializableAMF>();
+			deserializedVector = new Vector.<*>();
 			
 			buildVector(TEST_INSTANCES);
 			buildAmfVector(TEST_INSTANCES);
@@ -90,33 +92,43 @@ package classes.internals
 		public function deserializeVectorSize():void {
 			testObject = getTestObject();
 			
-			var vector:Vector.<Serializable> = SerializationUtils.deserializeVector(testObject, SerializationDummy);
+			SerializationUtils.deserializeVector(deserializedVector, testObject, SerializationDummy);
 			
-			assertThat(vector, arrayWithSize(TEST_INSTANCES));
+			assertThat(deserializedVector, arrayWithSize(TEST_INSTANCES));
 		}
 		
 		[Test]
 		public function deserializeVectorType():void {
 			testObject = getTestObject();
 			
-			var vector:Vector.<Serializable> = SerializationUtils.deserializeVector(testObject, SerializationDummy);
+			SerializationUtils.deserializeVector(deserializedVector,testObject, SerializationDummy);
 			
-			assertThat(vector[TEST_INSTANCES - 1], instanceOf(SerializationDummy));
+			assertThat(deserializedVector[TEST_INSTANCES - 1], instanceOf(SerializationDummy));
 		}
 		
 		[Test]
 		public function deserializeVectorLastElementProperties():void {
 			testObject = getTestObject();
 			
-			var vector:Vector.<Serializable> = SerializationUtils.deserializeVector(testObject, SerializationDummy);
+			SerializationUtils.deserializeVector(deserializedVector, testObject, SerializationDummy);
 			
-			assertThat(vector[TEST_INSTANCES - 1], hasProperties({foo: TEST_INSTANCES - 1}));
-			assertThat((vector[TEST_INSTANCES - 1] as SerializationDummy).getBar(), equalTo(TEST_INSTANCES));
+			assertThat(deserializedVector[TEST_INSTANCES - 1], hasProperties({foo: TEST_INSTANCES - 1}));
+			assertThat((deserializedVector[TEST_INSTANCES - 1] as SerializationDummy).getBar(), equalTo(TEST_INSTANCES));
 		}
 		
 		[Test(expected="ArgumentError")]
 		public function deserializeWithNonSerializableType():void {
-			SerializationUtils.deserializeVector(new Array(), String);
+			SerializationUtils.deserializeVector(new Vector.<*>(), new Array(), String);
+		}
+				
+		[Test(expected="ArgumentError")]
+		public function deserializeWithNullDestination():void {
+			SerializationUtils.deserializeVector(null, new Array(), SerializationDummy);
+		}
+		
+		[Test(expected="ArgumentError")]
+		public function deserializeWithNullSource():void {
+			SerializationUtils.deserializeVector(new Vector.<*>(), null, SerializationDummy);
 		}
 		
 		[Test]

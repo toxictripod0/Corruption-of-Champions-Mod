@@ -32,25 +32,30 @@ package classes.internals
 		
 		/**
 		 * Deserializes a Array into a Vector of Serializable
+		 * @param   destinationVector Vector where deserialized items will be written
 		 * @param	serializedVector an Array containing the serialized vector
 		 * @param	type of the serialized Vector
 		 * @return a deserialized Vector
 		 */
-		public static function deserializeVector(serializedVector:Array, type:Class):Vector.<Serializable> {
+		public static function deserializeVector(destinationVector:Vector.<*>, serializedVector:Array, type:Class):void {
 			// 'is' will only work on an instance
 			if (!(new type() is Serializable)) {
 				throw new ArgumentError("Type must implement Serializable");
 			}
 			
-			var deserialized:Vector.<Serializable> = new Vector.<Serializable>();
+			if (destinationVector == null) {
+				throw new ArgumentError("Destination Vector cannot be null");
+			}
+			
+			if (serializedVector == null) {
+				throw new ArgumentError("Serialized Vector cannot be null");
+			}
 			
 			for each(var element:Object in serializedVector) {
 				var instance:Serializable = new type();
 				instance.deserialize(element)
-				deserialized.push(instance);
+				destinationVector.push(instance);
 			}
-			
-			return deserialized;
 		}
 		
 		
