@@ -2,11 +2,14 @@
 {
 	import classes.internals.Serializable;
 	import classes.internals.Utils;
+	import mx.logging.ILogger;
+	import classes.internals.LoggerFactory;
 
 	public class VaginaClass implements Serializable
 	{
 		include "../../includes/appearanceDefs.as";
 		public static const DEFAULT_CLIT_LENGTH:Number = 0.5;
+		private static const LOGGER:ILogger = LoggerFactory.getLogger(VaginaClass);
 		
 		//constructor
 		public function VaginaClass(vaginalWetness:Number = 1, vaginalLooseness:Number = 0, virgin:Boolean = false, clitLength:Number = DEFAULT_CLIT_LENGTH)
@@ -141,6 +144,7 @@
 		
 		public function serialize(relativeRootObject:*):void 
 		{
+			LOGGER.debug("Serializing vagina...")
 			relativeRootObject.type = this.type;
 			relativeRootObject.vaginalWetness = this.vaginalWetness;
 			relativeRootObject.vaginalLooseness = this.vaginalLooseness;
@@ -158,13 +162,21 @@
 		
 		public function deserialize(relativeRootObject:*):void 
 		{
+			LOGGER.debug("Deserializing vagina...")
 			this.vaginalWetness = relativeRootObject.vaginalWetness;
 			this.vaginalLooseness = relativeRootObject.vaginalLooseness;
 			this.fullness = relativeRootObject.fullness;
 			this.virgin = relativeRootObject.virgin;
-			if (relativeRootObject.type == undefined) this.type = 0;
-			else this.type = relativeRootObject.type;
+			
+			if (relativeRootObject.type == undefined) {
+				this.type = 0;
+				LOGGER.warn("Vagina type not set, setting to {0}", this.type);
+			}else{
+				this.type = relativeRootObject.type;
+			}
+			
 			if (relativeRootObject.labiaPierced == undefined) {
+				LOGGER.warn("Labia pierced not set, resetting labia and clit data");
 				this.labiaPierced = 0;
 				this.labiaPShort = "";
 				this.labiaPLong = "";
@@ -188,12 +200,12 @@
 			
 			if(relativeRootObject.clitLength == undefined) {
 				this.clitLength = VaginaClass.DEFAULT_CLIT_LENGTH;
-				trace("Clit length was not loaded, setting to default.");
+				LOGGER.warn("Clit length was not loaded, setting to default({0})", this.clitLength);
 			}
 			
 			if(relativeRootObject.recoveryProgress == undefined) {
 				this.recoveryProgress = 0;
-				trace("Stretch counter was not loaded, setting to 0.");
+				LOGGER.warn("Stretch counter was not loaded, setting to {0}", this.recoveryProgress);
 			}
 		}
 	}
