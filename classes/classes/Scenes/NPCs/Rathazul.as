@@ -2,8 +2,9 @@
 	import classes.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
+import classes.Scenes.API.Encounter;
 
-	public class Rathazul extends NPCAwareContent implements TimeAwareInterface {
+public class Rathazul extends NPCAwareContent implements TimeAwareInterface, Encounter {
 
 //const RATHAZUL_DEBIMBO_OFFERED:int = 744;
 
@@ -40,11 +41,13 @@
 		//End of Interface Implementation
 		
 		public function returnToRathazulMenu():void {
-			if (player.hasStatusEffect(StatusEffects.CampRathazul))
-				campRathazul();
-			else encounterRathazul();
+			if (player.hasStatusEffect(StatusEffects.CampRathazul)) campRathazul();
+			else execEncounter();
 		}
 
+	public function encounterName():String {
+		return "rathazul";
+	}
 		public function mixologyXP():Number
 		{
 			//Failsafe
@@ -76,7 +79,11 @@
 			}
 		}
 
-public function encounterRathazul():void {
+	public function encounterChance():Number {
+		return !player.hasStatusEffect(StatusEffects.CampRathazul) ? 0.5 : 0;
+	}
+
+	public function execEncounter():void {
 	spriteSelect(49);
 	clearOutput();
 	if (flags[kFLAGS.MARBLE_PURIFICATION_STAGE] == 2 && player.hasStatusEffect(StatusEffects.MetRathazul))
@@ -378,7 +385,7 @@ private function rathazulWorkOffer():Boolean {
 		}
 		//Silly Mode: Straight-up kill Rathazul (He'll revive, this is silly mode. Just, no longer a follower)
 		//I blame the Wikia Discord chat for this, they egged me on
-		if (flags[kFLAGS.SILLY_MODE_ENABLE_FLAG] == true && player.hasStatusEffect(StatusEffects.CampRathazul)) {
+		if (silly() && player.hasStatusEffect(StatusEffects.CampRathazul)) {
 			addButton(4, "Flirt", getThatRatAss, null, null, null, "Try to score with Rathazul.");
 		}
 		//These will be filled in.
@@ -1237,7 +1244,7 @@ private function getThatRatAss():void {
 	outputText("\"<i>No. And please do not as me that again.\n- Rathazul</i>\"\n\n");
 	outputText("Sheesh, what a drama queen. A simple \"No thanks\" would've been fine. You toss the note aside with a huff and turn back to camp.\n\n");
 	outputText("Still though, thinking about that rat ass gets you turned on...");
-	game.dynStats("lus", 10);
+	dynStats("lus", 10);
 	doNext(camp.returnToCampUseOneHour);
 }
 

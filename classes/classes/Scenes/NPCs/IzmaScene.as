@@ -2,9 +2,9 @@
 	import classes.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
+import classes.Scenes.API.Encounter;
 
-	public class IzmaScene extends NPCAwareContent implements TimeAwareInterface
-	{
+public class IzmaScene extends NPCAwareContent implements TimeAwareInterface, Encounter {
 
 //const IZMA_NO_COCK:int = 439;
 //const ASKED_IZMA_ABOUT_WANG_REMOVAL:int = 440;
@@ -77,7 +77,19 @@ public function totalIzmaChildren():int {
 	return (flags[kFLAGS.IZMA_CHILDREN_SHARKGIRLS] + flags[kFLAGS.IZMA_CHILDREN_TIGERSHARKS]);
 }
 
-public function meetIzmaAtLake():void {
+	public function encounterChance():Number {
+		return flags[kFLAGS.IZMA_ENCOUNTER_COUNTER] > 0
+			   && flags[kFLAGS.TIMES_EXPLORED_LAKE] >= 10
+			   && (flags[kFLAGS.IZMA_WORMS_SCARED] == 0 || !player.hasStatusEffect(StatusEffects.Infested))
+			   && flags[kFLAGS.IZMA_FOLLOWER_STATUS] <= 0
+				? 0.2 : 0;
+	}
+
+	public function encounterName():String {
+		return "izma";
+	}
+
+	public function execEncounter():void {
 	spriteSelect(32);
 	clearOutput();
 	//(PC scared Izma off with worms) (Izmacounter = 0)
@@ -212,7 +224,7 @@ private function sharkBookMenus(free:Boolean = false):void {
 		addButton(1, "E.Guide", sharkEdgingGuideLOL, null, null, null, "This book will teach you how to be a better person. This should reduce your libido and corruption.");
 		addButton(2, "Porn", sharkgirlPronz, null, null, null, "Exactly what it says on the tin. For the perverted, of course. This should definitely make you horny.");
 	}
-	addButton(4, "Back", flags[kFLAGS.IZMA_FOLLOWER_STATUS] <= 0 ? meetIzmaAtLake : izmaFollowerMenu);	
+	addButton(4, "Back", flags[kFLAGS.IZMA_FOLLOWER_STATUS] <= 0 ? execEncounter : izmaFollowerMenu);
 }
 
 //[C.Manual]
@@ -1365,7 +1377,7 @@ private function izmaLakeTurnedDownCampSex():void {
 	addButton(0, "Equals", izmaLakeSexAsEquals);
 	addButton(1, "Dominate", izmaLakeDominate);
 	addButton(2, "Submit", submitToLakeIzma);
-	addButton(14, "Back", meetIzmaAtLake);
+	addButton(14, "Back", execEncounter);
 }
 
 //[Equals]
@@ -1377,7 +1389,7 @@ private function izmaLakeSexAsEquals():void {
 	if (player.gender == 0) {
 		outputText("Izma looks you over, and then shakes her head sadly. \"<i>I'm sorry, " + player.short + ", but... you still don't really have anything for me to play with.  If you want us to do it as equals, you'll need to grow a cock or a pussy.  How about you have one of us take charge, instead?</i>\"\n\n", false);
 		//[dom/sub])
-		doNext(meetIzmaAtLake);
+		doNext(execEncounter);
 	}
 	//otherwise route to current no-fight sex choices
 	else chooseYourIzmaWeapon();
