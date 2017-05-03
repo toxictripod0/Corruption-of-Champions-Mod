@@ -54,7 +54,7 @@ package classes.Scenes.Areas
 				return;
 			}
 			
-			if (true || flags[kFLAGS.COCKATRICES_UNLOCKED] > 0)
+			if (flags[kFLAGS.COCKATRICES_UNLOCKED] > 0)
 				choices.push(COCKATRICE);
 			var chooser:Number = randomChoice(choices);
 			//Boosts mino and hellhound rates!
