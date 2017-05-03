@@ -184,19 +184,16 @@
 				this.clitPLong = relativeRootObject.clitPLong;
 				this.clitLength = relativeRootObject.clitLength;
 				this.recoveryProgress = relativeRootObject.recoveryProgress;
-				
-				
-				// backwards compatibility
-				//TODO is there a better way to do this?
-				if(relativeRootObject.clitLength == undefined) {
-					this.clitLength = VaginaClass.DEFAULT_CLIT_LENGTH;
-					trace("Clit length was not loaded, setting to default.");
-				}
-				
-				if(relativeRootObject.recoveryProgress == undefined) {
-					this.recoveryProgress = 0;
-					trace("Stretch counter was not loaded, setting to 0.");
-				}
+			}
+			
+			if(relativeRootObject.clitLength == undefined) {
+				this.clitLength = VaginaClass.DEFAULT_CLIT_LENGTH;
+				trace("Clit length was not loaded, setting to default.");
+			}
+			
+			if(relativeRootObject.recoveryProgress == undefined) {
+				this.recoveryProgress = 0;
+				trace("Stretch counter was not loaded, setting to 0.");
 			}
 		}
 	}
