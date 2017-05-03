@@ -3336,10 +3336,10 @@ package classes.Scenes.Dungeons
 			else outputText("\n\nThe cum witch says, \"<i>Oh, you lack a gender.  Why don't you pick up some sexual equipment and come back for some real fun.</i>\"");
 			//[Virility] [Fertility] [Nevermind]
 			menu();
-			if (player.findPerk(PerkLib.MagicalVirility)) addButtonDisabled(1, "Virility", "You already posess this blessing.");
+			if (player.findPerk(PerkLib.MagicalVirility) >= 0) addButtonDisabled(0, "Virility", "You already posess this blessing.");
 			else if (player.hasCock()) addButton(0,"Virility",cumWitchBlessed, true, null, null, "Receive the blessing of virility. This will increase your cum production and virility rating.");
 			else addButtonDisabled(0, "Virility", "This scene requires you to have cock.");
-			if (player.findPerk(PerkLib.MagicalFertility)) addButtonDisabled(1, "Fertility", "You already posess this blessing.");
+			if (player.findPerk(PerkLib.MagicalFertility) >= 0) addButtonDisabled(1, "Fertility", "You already posess this blessing.");
 			else if (player.hasVagina()) addButton(1, "Fertility", cumWitchBlessed, false, null, null, "Receive the blessing of fertility. This will increase your pregnancy speed and fertility rating.");
 			else addButtonDisabled(1, "Fertility", "This scene requires you to have vagina.");
 			addButton(4,"Nevermind",changeMindAboutBlessings, null, null, null, "Nevermind that! Drop the subject. You'll be able to come back if you want.");

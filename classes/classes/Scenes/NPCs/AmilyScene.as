@@ -635,11 +635,13 @@ package classes.Scenes.NPCs
 			}
 			addButton(1, "Talk", talkToAmily);
 			//Amily is not a herm but is ok with herm-daddying!
-			if (player.hasItem(consumables.P_DRAFT) && flags[kFLAGS.AMILY_WANG_LENGTH] == 0 && flags[kFLAGS.AMILY_HERM_QUEST] == 2 && flags[kFLAGS.AMILY_AFFECTION] >= 40 && player.gender == 3) {
-				outputText("You could probably bring up the efficiency of having two hermaphrodite mothers, particularly since you have this purified incubi draft handy.\n\n", false);
-				addButton(3, "Efficiency", makeAmilyAHerm);
-			} else {
-				addDisabledButton(3, "Efficiency", "You could probably bring up the efficiency of having two hermaphrodite mothers, should you find a bottle of purified incubi draft.");
+			if (flags[kFLAGS.AMILY_WANG_LENGTH] == 0) {
+				if (player.hasItem(consumables.P_DRAFT) && flags[kFLAGS.AMILY_WANG_LENGTH] == 0 && flags[kFLAGS.AMILY_HERM_QUEST] == 2 && flags[kFLAGS.AMILY_AFFECTION] >= 40 && player.gender == 3) {
+					outputText("You could probably bring up the efficiency of having two hermaphrodite mothers, particularly since you have this purified incubi draft handy.\n\n", false);
+					addButton(3, "Efficiency", makeAmilyAHerm);
+				} else {
+					addDisabledButton(3, "Efficiency", "You could probably bring up the efficiency of having two hermaphrodite mothers, should you find a bottle of purified incubi draft.");
+				}
 			}
 			addButton(14, "Leave", camp.returnToCampUseOneHour);
 		}
