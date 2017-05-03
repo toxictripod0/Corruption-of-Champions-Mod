@@ -2553,6 +2553,11 @@ package classes
 			return [FACE_BEAK, FACE_COCKATRICE].indexOf(faceType) != -1;
 		}
 
+		public function hasFeathers():Boolean
+		{
+			return skinType == SKIN_TYPE_FEATHERED;
+		}
+
 		public function hasScales():Boolean
 		{
 			return [SKIN_TYPE_LIZARD_SCALES, SKIN_TYPE_DRAGON_SCALES, SKIN_TYPE_FISH_SCALES].indexOf(skinType) != -1;
