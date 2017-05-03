@@ -639,7 +639,7 @@ internal function beatSandwitch():void {
 		
 		addButton(0, "Rape", sandwitchRaped);
 		if (player.hasKeyItem("Deluxe Dildo") >= 0)
-			addButton(1, "Dildo Rape");
+			addButton(1, "Dildo Rape", sandwitchGetsDildoed);
 		addButton(2, "Taunt Her", sandwitchSpanking);
 		if (!player.isGenderless() && player.canOviposit())
 			addButton(3, "Lay Eggs", ovipositSandWitches);
