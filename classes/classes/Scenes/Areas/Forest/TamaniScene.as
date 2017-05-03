@@ -1,8 +1,9 @@
 ﻿package classes.Scenes.Areas.Forest{
 	import classes.*;
 	import classes.GlobalFlags.kFLAGS;
+import classes.Scenes.API.Encounter;
 
-	public class TamaniScene extends BaseContent implements TimeAwareInterface {
+public class TamaniScene extends BaseContent implements TimeAwareInterface,Encounter {
 
 //const TIMES_OVIPOSITED_TAMANI:int = 581;
 //const TAMANI_TIME_OUT:int = 580;
@@ -29,6 +30,25 @@ Males:
 */
 
 		public var pregnancy:PregnancyStore;
+	public var tamaniDaughtersScene:TamainsDaughtersScene = new TamainsDaughtersScene();
+
+	public function encounterChance():Number {
+		return flags[kFLAGS.TAMANI_TIME_OUT] == 0
+			   && player.gender > 0
+			   && flags[kFLAGS.TAMANI_BAD_ENDED] == 0
+			   && (player.totalCocks() > 0
+				   || player.hasKeyItem("Deluxe Dildo") < 0) ? 1 : 0;
+	}
+
+	public function encounterName():String {
+		return "tamani";
+	}
+
+	public function execEncounter():void {
+		if (player.totalCocks() > 0 && flags[kFLAGS.TAMANI_DAUGHTER_PREGGO_COUNTDOWN] == 0 && flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] >= 24) {
+			tamaniDaughtersScene.encounterTamanisDaughters();
+		} else encounterTamani();
+	}
 
 		public function TamaniScene()
 		{

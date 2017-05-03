@@ -2,12 +2,39 @@
 	
 	import classes.*;
 	import classes.GlobalFlags.*;
-	
+import classes.Scenes.API.Encounter;
+
 	//const PUMPKIN_FUCK_YEAR_DONE:int = 522;
 	
-	public class Fera extends BaseContent 
+	public class Fera extends BaseContent implements Encounter
 	{
 		public function Fera() {}
+
+
+		public function encounterName():String {
+			return "Fera";
+		}
+
+		public function encounterChance():Number {
+			return isItHalloween() ? 1 : 0;
+		}
+
+		public function execEncounter():void {
+			//If Fera isn't free yet...
+			if (player.findPerk(PerkLib.FerasBoonBreedingBitch) < 0 && player.findPerk(PerkLib.FerasBoonAlpha) < 0) {
+				if (date.fullYear > flags[kFLAGS.PUMPKIN_FUCK_YEAR_DONE]) {
+					kGAMECLASS.fera.pumpkinFuckEncounter();
+				}
+			}
+			//Fera is free!
+			else {
+				if (flags[kFLAGS.FERAS_TRAP_SPRUNG_YEAR] == 0) {
+					if (date.fullYear > flags[kFLAGS.FERAS_GLADE_EXPLORED_YEAR]) {
+						kGAMECLASS.fera.feraSceneTwoIntroduction();
+					}
+				}
+			}
+		}
 
 		public function isItHalloween():Boolean {
 			return ((date.date >= 28 && date.month == 9) || (date.date < 2 && date.month == 10) || flags[kFLAGS.ITS_EVERY_DAY] > 0);

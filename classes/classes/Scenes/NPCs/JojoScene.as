@@ -1,6 +1,8 @@
 ﻿package classes.Scenes.NPCs{
 	import classes.GlobalFlags.*;
 	import classes.*;
+import classes.Scenes.API.Encounter;
+import classes.Scenes.API.Encounters;
 
 	public class JojoScene extends NPCAwareContent implements TimeAwareInterface {
 
@@ -12,6 +14,44 @@
 			pregnancy.addPregnancyEventSet(PregnancyStore.PREGNANCY_PLAYER, 150, 120, 96, 72, 48);
 			CoC.timeAwareClassAdd(this);
 		}
+
+		public function jojoEncounterFn():void {
+			clearOutput();
+			if (flags[kFLAGS.JOJO_STATUS] == 0) {
+				if (player.cor < 25) {
+					lowCorruptionJojoEncounter();
+				} else {
+					highCorruptionJojoEncounter();
+				}
+			} else if (flags[kFLAGS.JOJO_STATUS] >= 2) { //Angry/Horny Jojo
+				corruptJojoEncounter();
+			} else { // JOJO_STATUS is 1 or Negative (indicates rape is disabled.)
+				repeatJojoEncounter();
+			}
+		}
+
+	private var _jojoForest:Encounter = null;
+	public function get jojoForest():Encounter {
+		const game:CoC = kGAMECLASS;
+		if (_jojoForest == null) _jojoForest = Encounters.build({
+			name  : "jojo",
+			call  : jojoEncounterFn,
+			when  : function ():Boolean {
+				return !(player.hasStatusEffect(StatusEffects.PureCampJojo) ||
+						 camp.campCorruptJojo() ||
+						 flags[kFLAGS.JOJO_DEAD_OR_GONE] > 0 ||
+						 (player.level < 4
+						  && player.cor < 25
+						  && time.days < 28)
+				);
+			},
+			chance: function ():Number {
+				if (flags[kFLAGS.JOJO_STATUS] >= 2) return game.commonEncounters.furriteMod();
+				return 1;
+			}
+		});
+		return _jojoForest;
+	}
 
 		//Implementation of TimeAwareInterface
 		public function timeChange():Boolean
