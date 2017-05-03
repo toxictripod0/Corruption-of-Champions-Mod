@@ -1,4 +1,4 @@
-﻿package classes
+package classes
 {
 
 	import classes.BodyParts.UnderBody;
@@ -456,17 +456,6 @@ public function deleteScreen():void
 		s++;
 	}
 	addButton(14, "Back", returnToSaveMenu);
-	/*
-	choices("Slot 1", delFuncs[0], 
-			"Slot 2", delFuncs[1], 
-			"Slot 3", delFuncs[2], 
-			"Slot 4", delFuncs[3], 
-			"Slot 5", delFuncs[4], 
-			"Slot 6", delFuncs[5], 
-			"Slot 7", delFuncs[6], 
-			"Slot 8", delFuncs[7], 
-			"Slot 9", delFuncs[8], 
-			"Back", returnToSaveMenu);*/
 }
 
 public function confirmDelete():void
@@ -619,6 +608,7 @@ public function savePermObject(isFile:Boolean):void {
 		
 		saveFile.data.flags[kFLAGS.SHOW_SPRITES_FLAG] = flags[kFLAGS.SHOW_SPRITES_FLAG];
 		saveFile.data.flags[kFLAGS.SILLY_MODE_ENABLE_FLAG] = flags[kFLAGS.SILLY_MODE_ENABLE_FLAG];
+		saveFile.data.flags[kFLAGS.PRISON_ENABLED] = flags[kFLAGS.PRISON_ENABLED];
 		saveFile.data.flags[kFLAGS.WATERSPORTS_ENABLED] = flags[kFLAGS.WATERSPORTS_ENABLED];
 		
 		saveFile.data.flags[kFLAGS.USE_OLD_INTERFACE] = flags[kFLAGS.USE_OLD_INTERFACE];
@@ -671,6 +661,7 @@ public function loadPermObject():void {
 			
 			if (saveFile.data.flags[kFLAGS.SHOW_SPRITES_FLAG] != undefined) flags[kFLAGS.SHOW_SPRITES_FLAG] = saveFile.data.flags[kFLAGS.SHOW_SPRITES_FLAG];
 			if (saveFile.data.flags[kFLAGS.SILLY_MODE_ENABLE_FLAG] != undefined) flags[kFLAGS.SILLY_MODE_ENABLE_FLAG] = saveFile.data.flags[kFLAGS.SILLY_MODE_ENABLE_FLAG];
+			if (saveFile.data.flags[kFLAGS.PRISON_ENABLED] != undefined) flags[kFLAGS.PRISON_ENABLED] = saveFile.data.flags[kFLAGS.PRISON_ENABLED];
 			
 			if (saveFile.data.flags[kFLAGS.USE_OLD_INTERFACE] != undefined) flags[kFLAGS.USE_OLD_INTERFACE] = saveFile.data.flags[kFLAGS.USE_OLD_INTERFACE];
 			if (saveFile.data.flags[kFLAGS.USE_OLD_FONT] != undefined) flags[kFLAGS.USE_OLD_FONT] = saveFile.data.flags[kFLAGS.USE_OLD_FONT];
@@ -894,7 +885,6 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile.data.clawTone = player.clawTone;
 		saveFile.data.clawType = player.clawType;
 		// </mod>
-		saveFile.data.wingDesc = player.wingDesc;
 		saveFile.data.wingType = player.wingType;
 		saveFile.data.lowerBody = player.lowerBody;
 		saveFile.data.legCount = player.legCount;
@@ -1785,7 +1775,6 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		player.clawType = (saveFile.data.clawType == undefined) ? CLAW_TYPE_NORMAL : saveFile.data.clawType;
 		// </mod>
 
-		player.wingDesc = saveFile.data.wingDesc;
 		player.wingType = saveFile.data.wingType;
 		player.lowerBody = saveFile.data.lowerBody;
 		player.tailType = saveFile.data.tailType;
