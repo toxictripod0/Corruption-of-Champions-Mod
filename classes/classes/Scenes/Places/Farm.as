@@ -1139,7 +1139,7 @@ public function cockPumping():void {
 		outputText("\n\nYou go", false);
 	}
 	outputText(" on your way, whistling happily and feeling like taking a nap.", false);
-	player.orgasm();
+	player.orgasm('Dick');
 	doNext(camp.returnToCampUseOneHour);
 }
 
