@@ -1,6 +1,8 @@
 package classes.Scenes.Places.Bazaar{
 	import classes.*;
 	import classes.GlobalFlags.kFLAGS;
+	import classes.internals.IRandomNumber;
+	import classes.internals.RandomNumber;
 	import mx.logging.ILogger;
 	import classes.internals.LoggerFactory;
 	import classes.display.SpriteDb;
@@ -8,6 +10,8 @@ package classes.Scenes.Places.Bazaar{
 
 	public class Roxanne extends BazaarAbstractContent implements TimeAwareInterface {
 		private static const LOGGER:ILogger = LoggerFactory.getLogger(Roxanne);
+		
+		private var randomNumber:IRandomNumber;
 //Roxanne Poisontail
 //-no hair, 
 //-stand roughly 5'11\" in height, 
@@ -43,9 +47,10 @@ WIN:
 //226 -Is PC losing the Roxanne's drinking contest intentionally?
 //227 -Drinking Contest Bonus Score
 
-		public function Roxanne()
+		public function Roxanne(randomNumber:IRandomNumber = null)
 		{
 			CoC.timeAwareClassAdd(this);
+			this.randomNumber = randomNumber;
 		}
 
 		//Implementation of TimeAwareInterface

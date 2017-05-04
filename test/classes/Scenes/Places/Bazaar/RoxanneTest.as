@@ -105,8 +105,7 @@ package classes.Scenes.Places.Bazaar{
 			assertThat(cut.collectedOutput, hasItem(startsWith("Gosh, Roxanne is so strong...")));
 		}
 		
-		[Ignore(description="Needs injected RNG")]
-		[Test(description="This test may show sporadic failures due to the use of rand() in the code under test")] 
+		[Test] 
         public function roxanneRepeatedStretchingWithBigBooty():void {
 			setRoxanneLargeSize();
 			player.buttRating = Appearance.BUTT_RATING_EXPANSIVE;
@@ -123,8 +122,7 @@ package classes.Scenes.Places.Bazaar{
 			assertThat(cut.collectedOutput, hasItem(startsWith("Gods, your head is swimming!")));
 		}
 		
-		[Ignore(description="Needs injected RNG")]
-		[Test(description="This test may show sporadic failures due to the use of rand() in the code under test")] 
+		[Test] 
         public function roxanneCounterResetWithBigBooty():void {
 			setRoxanneLargeSize();
 			player.buttRating = Appearance.BUTT_RATING_EXPANSIVE;
@@ -143,9 +141,15 @@ package classes.Scenes.Places.Bazaar{
 }
 
 import classes.Scenes.Places.Bazaar.Roxanne;
+import classes.internals.IRandomNumber;
+import classes.internals.RandomNumber;
 
 class RoxanneForTest extends Roxanne {
 	public var collectedOutput:Vector.<String> = new Vector.<String>(); 
+	
+	public function RoxanneForTest() {
+		super(new RandomNumberMock());
+	}
 
 	public function roxanneDrinkingContestTest():void {
 		super.roxanneDrinkingContest();
@@ -153,5 +157,19 @@ class RoxanneForTest extends Roxanne {
 	
 	override protected function outputText(output:String):void {
 		collectedOutput.push(output);
+	}
+}
+
+class RandomNumberMock implements IRandomNumber {
+	public var valueToReturn:int = 0;
+	
+	public function random(max:int):int 
+	{
+		return valueToReturn;
+	}
+	
+	public function randomCorrected(max:int):int 
+	{
+		return valueToReturn;
 	}
 }
