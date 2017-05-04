@@ -67,7 +67,7 @@ package classes
 			else if (player.faceType == FACE_RACCOON_MASK) 
 			{
 				//appearance for skinheads
-				if (!player.hasFurOrScales()) 
+				if (!player.isFurryOrScaley()) 
 				{
 					outputText("  Your face is human in shape and structure, with [skin]");
 					if ((player.skinTone == "ebony" || player.skinTone == "black") && (player.hasPlainSkin() || player.hasGooSkin())) 
@@ -78,7 +78,7 @@ package classes
 				else 
 				{
 					//(black/midnight furscales)
-					if (((player.furColor == "black" || player.furColor == "midnight") && player.hasFurOrScales())) 
+					if (((player.furColor == "black" || player.furColor == "midnight") && player.isFurryOrScaley())) 
 						outputText("  Under your [skinFurScales] hides a black raccoon mask, barely visible due to your inky hue, and");
 					else outputText("  Your [skinFurScales] are decorated with a sly-looking raccoon mask, and under them");
 					outputText(" you have a human-shaped head with [skin.noadj].");
