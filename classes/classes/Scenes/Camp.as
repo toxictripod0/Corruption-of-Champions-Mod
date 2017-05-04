@@ -2033,18 +2033,6 @@ private function farmFound():Boolean { //Returns true as soon as any known dunge
 //-----------------
 private function placesKnown():Boolean { //Returns true as soon as any known place is found
 	if (placesCount() > 0) return true;
-	//No need for redundant code!
-	/*if (flags[kFLAGS.BAZAAR_ENTERED] > 0) return true;
-	if (player.hasStatusEffect(StatusEffects.BoatDiscovery)) return true;
-	if (flags[kFLAGS.FOUND_CATHEDRAL] == 1) return true;
-	if (dungeonFound()) return true;
-	if (farmFound()) return true;
-	if (flags[kFLAGS.OWCA_UNLOCKED] == 1) return true;
-	if (player.findStatusEffect(StatusEffects.HairdresserMeeting) >= 0) return true;
-	if (player.statusEffectv1(StatusEffects.TelAdre) >= 1) return true;
-	if (flags[kFLAGS.AMILY_VILLAGE_ACCESSIBLE] > 0) return true;
-	if (flags[kFLAGS.MET_MINERVA] >= 4) return true;
-	if (flags[kFLAGS.PRISON_CAPTURE_COUNTER] > 0) return true;*/
 	return false;
 }
 
