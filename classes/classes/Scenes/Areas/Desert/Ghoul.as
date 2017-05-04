@@ -19,7 +19,7 @@ package classes.Scenes.Areas.Desert {
 		public var spellCostGhoulMagic:int = 12;
 		
 		protected function hyenaBite():void {
-			if(findStatusEffect(StatusEffects.Blind) >= 0) { //Blind
+			if(hasStatusEffect(StatusEffects.Blind)) { //Blind
 				outputText("The hyena lunges for you, aiming to bite you, but misses entirely due to its blindness!", false);
 				combatRoundOver();
 				return;
@@ -39,7 +39,7 @@ package classes.Scenes.Areas.Desert {
 		}
 	
 		protected function hyenaClaw():void {
-			if(findStatusEffect(StatusEffects.Blind) >= 0) { //Blind
+			if(hasStatusEffect(StatusEffects.Blind)) { //Blind
 				outputText("The hyena slashes its paw at you, but misses due to its blindness!", false);
 				combatRoundOver();
 				return;
