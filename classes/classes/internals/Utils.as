@@ -344,6 +344,11 @@ package classes.internals
 			return false;
 		}
 		
+		/**
+		 * Generate a random number from 0 to max - 1 inclusive.
+		 * @param	max the upper limit for the generated number
+		 * @return a number from 0 to max - 1 inclusive
+		 */
 		public static function rand(max:Number):int
 		{
 			return int(Math.random() * max);
