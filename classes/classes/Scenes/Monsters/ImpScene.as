@@ -139,7 +139,6 @@ package classes.Scenes.Monsters
 				dynStats("cor", 1);
 				//Preggers chance!
 				player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP);
-				player.cuntChange(monster.cockArea(0), true, true, false);
 			}
 			player.orgasm('Vaginal');
 			dynStats("cor", 1);
