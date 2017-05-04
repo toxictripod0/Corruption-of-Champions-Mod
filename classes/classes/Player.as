@@ -786,6 +786,20 @@ use namespace kGAMECLASS;
 				if (isTaur())
 					race = "raccoon-taur";
 			}
+			if (sheepScore() >= 4) {
+				if (legCount == 4 && lowerBody == 21) {
+					race = "sheep-taur";
+				}
+				else if (gender == 0 || gender == 3) {
+					race = "sheep-morph";
+				}
+				else if (gender == 1 && hornType == 10) {
+					race = "ram-morph";
+				}
+				else {
+					race = "sheep-" +mf("boy","girl");
+				}
+			}
 			if (wolfScore() >= 4) {
 				if (hasFur() || gender == 0 || gender == 3) {
 					race = "wolf-morph";
@@ -1567,6 +1581,27 @@ use namespace kGAMECLASS;
 			if (kanga >= 2 && hasFur())
 				kanga++;
 			return kanga;
+		}
+
+		//Sheep score
+		public function sheepScore():Number
+		{
+			var sheepCounter:Number = 0;
+			if (earType == 19)
+				sheepCounter++;
+			if (hornType == 9)
+				sheepCounter++;
+			if (hornType == 10)
+				sheepCounter++;
+			if (tailType == 27)
+				sheepCounter++;
+			if (lowerBody == 21 && legCount == 2)
+				sheepCounter++;
+			if (hairType == 8)
+				sheepCounter++;
+			if (hasWool())
+				sheepCounter++;
+			return sheepCounter;
 		}
 
 		//sharkscore
@@ -2574,6 +2609,11 @@ use namespace kGAMECLASS;
 				}
 			}
 			//Alter max stats depending on race
+			if (sheepScore() >= 4) {
+				maxSpe += 10;
+				maxInt -= 10;
+				maxTou += 10;
+			}
 			if (wolfScore() >= 4) {
 				maxSpe -= 10;
 				maxInt += 5;
