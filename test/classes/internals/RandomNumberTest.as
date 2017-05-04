@@ -10,7 +10,7 @@ package classes.internals
 	
 	public class RandomNumberTest
 	{
-		private static const RANDOM_NUMBER_ITERATIONS:int = 100;
+		private static const RANDOM_NUMBER_ITERATIONS:int = 10000;
 		private static const RANDOM_NUMBER_MAX:int = 5;
 		
 		private var cut:RandomNumber;
