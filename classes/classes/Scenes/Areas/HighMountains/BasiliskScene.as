@@ -51,7 +51,15 @@ package classes.Scenes.Areas.HighMountains
 			else {
 				outputText("You notice a large boulder ahead. There is something curiously shaped about it. A small, wet grey shape on it catches your eye...\n\n");
 		
-				outputText("You look away in the nick of time, and ready yourself to fight as the basilisk slides from his hiding place and advances upon you, his deadly eyes and sharp claws glinting coldly in the sunlight.");
+				outputText("You ");
+				if (!(player.hasPerk(PerkLib.BasiliskResistance) || player.canUseStare()))
+					outputText("look away in the nick of time, and ");
+				outputText("ready yourself to fight as the basilisk slides from his hiding place and advances upon you, his deadly eyes and sharp claws glinting coldly in the sunlight.");
+				
+				if (player.hasKeyItem("Laybans") >= 0) {
+					outputText("  You quickly put on your Laybans, so you won't be forced to fight blindly.");
+				}
+				
 				if (flags[kFLAGS.CODEX_ENTRY_BASILISKS] <= 0) {
 					flags[kFLAGS.CODEX_ENTRY_BASILISKS] = 1;
 					outputText("\n\n<b>New codex entry unlocked: Basilisks!</b>")
@@ -237,9 +245,19 @@ package classes.Scenes.Areas.HighMountains
 				outputText("Moving has become intensely difficult. You cannot explain why something that came naturally to you ten minutes ago is now like wading neck deep through quicksand, but that is what moving your limbs now feels like. With a huge, straining amount of effort, you desperately raise your arms and crane your neck away from the basilisk as he approaches you, but with a pathetic amount of ease the creature slides through your guard, grabs you by the chin and looks directly into your eyes. Your reactions are so slow your mind's screaming order for your eyelids to close takes several seconds for your nerves to compute, by which time it is far too late.\n\n", false);
 			}
 			//HP loss: 
-			else if (player.HP < 1) outputText("You fall to your hands and knees, battered and broken. You can't summon the strength or willpower to struggle as the basilisk strides towards you, roughly pulls you to your feet, grabs your chin and forces you to look directly into his face. With one last show of defiance you close your eyes, to which the basilisk responds by backhanding you with increasing force. It is a lost battle and, afraid that it will start using his claws instead, you meekly open your eyes to stare into depthless, watery grey.\n\n", false);
+			else if (player.HP < 1) {
+				outputText("You fall to your hands and knees, battered and broken. You can't summon the strength or willpower to struggle as the basilisk strides towards you, roughly pulls you to your feet, grabs your chin");
+				if (player.hasKeyItem("Laybans") >= 0)
+					outputText(", removes your glasses");
+				outputText(" and forces you to look directly into his face. With one last show of defiance you close your eyes, to which the basilisk responds by backhanding you with increasing force. It is a lost battle and, afraid that it will start using his claws instead, you meekly open your eyes to stare into depthless, watery grey.\n\n", false);
+			}
 			//Lust loss: 
-			else outputText("You can't help yourself. Something about the powerlessness the basilisk instills in you turns you on beyond belief. You don't struggle as the basilisk strides towards you, roughly pulls you to your feet, grabs your chin and forces you to look directly into his face. You want to thank the creature for the privilege of staring into the spellbinding infinity of his grey eyes again. The words freeze on your lips.\n\n", false);
+			else {
+				outputText("You can't help yourself. Something about the powerlessness the basilisk instills in you turns you on beyond belief. You don't struggle as the basilisk strides towards you, roughly pulls you to your feet, grabs your chin");
+				if (player.hasKeyItem("Laybans") >= 0)
+					outputText(", removes your glasses");
+				outputText(" and forces you to look directly into his face. You want to thank the creature for the privilege of staring into the spellbinding infinity of his grey eyes again. The words freeze on your lips.\n\n", false);
+			}
 		
 			outputText("You stare deep into the creature's eyes. There really is an infinity in there, a grey fractal abyss which spirals upwards and downwards forever. You want nothing more than to spend the rest of your life following him... when the basilisk's pupils dilate, and you feel his hypnotic compulsion press upon your mind, it is as if the universe itself is speaking to you, and you can no sooner resist it than a tadpole can an endless, grey waterfall.\n\n", false);
 		
