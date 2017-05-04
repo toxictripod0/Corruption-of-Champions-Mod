@@ -859,7 +859,7 @@
 			outputText("You down the potion, grimacing at the strong taste.", true);
 			//CHANCE OF BAD END - 20% if face/tail/skin/cock are appropriate.
 			//If hooved bad end doesn't appear till centaured
-			if (player.hasFur() && player.faceType == FACE_HORSE && player.tailType == TAIL_TYPE_HORSE && (player.lowerBody != LOWER_BODY_TYPE_HOOFED)) {
+			if (player.hasFur() && player.faceType == FACE_HORSE && player.tailType == TAIL_TYPE_HORSE && (player.lowerBody != LOWER_BODY_TYPE_HOOFED || player.isTaur())) {
 				//WARNINGS
 				//Repeat warnings
 				if (player.hasStatusEffect(StatusEffects.HorseWarning) && rand(3) == 0) {
@@ -1581,6 +1581,142 @@
 			}
 			player.refillHunger(20);
 		}
+		
+		
+		// Clovis, written by MissBlackthorne and coded by Foxwells
+		public function clovis(player:Player):void {
+			var tfSource: String = "clovis";
+			changes = 0;
+			changeLimit = 1;
+			// Add to change limit
+			if (rand(2) == 0) changeLimit++;
+			if (rand(2) == 0) changeLimit++;
+			// Perk change limit modifiers
+			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
+			if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
+			outputText("You open the bottle of Clovis, its sweet smell making you feel carefree. You drink the contents and relax to the sensation it brings, feeling like you're being cuddled by a big fluffy cloud.", false);
+			// Stat changes!
+			if (player.inte > 90 && rand(3) == 0 && changes < changeLimit) {
+				dynStats("int", -(rand(1) + 1));
+				outputText("\n\nThe sense of calm the potion gives you slowly fades into dopey bliss. You haven't a care in the world, not even the fact that you've got a little dumber.", false);
+				changes++;
+			}
+			if (rand(3) == 0 && changes < changeLimit) {
+				dynStats("tou", rand(1) + 1);
+				outputText("\n\nYou feel a wave of stubborn pride wash over you as you finish the potion. You’re sure nothing could stop you now, not even the demons.", false);
+				changes++;
+			}
+			if (player.spe < 75 && rand(3) == 0 && changes < changeLimit) {
+				dynStats("spe", rand(2) + 1);
+				outputText("\n\nYou feel oddly compelled to jump from rock to rock across a nearby stream, a sense of sure footedness and increased agility deep within you. To your surprise, you make it across with no trouble. The damp and uneven rocks are barely a challenge to your increased speed.", false);
+				changes++;
+			}
+			if (rand(3) == 0 && changes < changeLimit) {
+				dynStats("sens", -(rand(1) + 1));
+				outputText("\n\nYou feel less sensitive to the touch, a slight numbness pervading your body as if truly wrapped in cotton wool. The numbness eventually fades, leaving you now less affected by the lusty touches of your foes.", false);
+				changes++;
+			}
+			if (rand(3) == 0 && changes < changeLimit) {
+				dynStats("cor", -(rand(3) + 2));
+				outputText("\n\nYou close your eyes as your mind becomes clearer, a purging white searing through your being. It envelops you in its fluffy softness as it chases out the taint, first burning but then soothing. As you open your eyes, you feel you have regained some of your purity that this perverted realm seeks to claim.", false);
+				changes++;
+			}
+			if (player.tallness > 67 && rand(2) == 0 && changes < changeLimit) {
+				player.tallness -= (1 + rand(4));
+				outputText("\n\nYou blink as you feel your center of gravity shift lower. You look down and realize the ground is closer now. You appear to have gotten shorter!", false);
+				changes++;
+			}
+			if (player.buttRating < 6 && rand(3) == 0 && changes < changeLimit) {
+				player.buttRating += (1 + rand(1));
+				if (player.buttRating > 6) {
+					player.buttRating = 6;
+				}
+				outputText("\n\nYou feel your clothes tighten around your [butt], your behind expanding. Thankfully, it stops before your clothes can't handle it. As you run your hand over the tight fabric, you can't help but grope the now plumper flesh.", false);
+			}
+			if (player.earType != EARS_SHEEP && rand(3) == 0 && changes < changeLimit) {
+				if (player.earType == -1) { outputText("\n\nTwo painful nubs begin sprouting from your head, growing out in a tear-drop shape and flopping over. To top it off, wool coats them.", false); } else { outputText("\n\nYou feel your ears shift and elongate, becoming much floppier. They take on a more tear drop shape, flopping at the side of your head cutely as a light coat of downy wool forms on them.", false);	}		
+				player.earType = EARS_SHEEP;
+				player.earValue = 2;
+				outputText(" <b>You now have sheep ears!</b>", false);
+				changes++;
+			}
+			if (player.tailType != TAIL_TYPE_SHEEP && rand(3) == 0 && changes < changeLimit) {
+				outputText("\n\nYou feel the flesh above your [butt] knotting and changing. It twists and writhes around itself, lengthening before flopping straight down. With a slight poof, a coat of soft and fluffy wool coats it, your new tail taking on the wooly appearance of a sheep's.", false);
+				player.tailType = TAIL_TYPE_SHEEP;
+				outputText(" <b>You now have a sheep's tail!</b>", false);
+				changes++;
+			}
+			if (player.lowerBody != LOWER_BODY_TYPE_CLOVEN_HOOFED && player.tailType == TAIL_TYPE_SHEEP && rand(3) == 0 && changes < changeLimit) {
+				outputText("\n\nYou feel a strange tightness from your feet and nearly topple over as your balance shifts. You're balancing on your toes for some reason. You look down in amazement as your legs slim and shorten, your feet elongating and darkening at the ends, all morphing until you're balancing on two sheep legs, complete with cute little hooves.", false);
+				player.lowerBody = LOWER_BODY_TYPE_CLOVEN_HOOFED;
+				player.legCount = 2;
+				outputText(" <b>You now have sheep hooves!</b>", false);
+				changes++;
+			}
+			if (player.hornType != HORNS_SHEEP && player.hornType != HORNS_RAM && player.earType == EARS_SHEEP && rand(3) == 0 && changes < changeLimit) {
+					if (player.hornType != HORNS_NONE) {
+						outputText("\n\nYou feel your horns suddenly crumble, falling apart in large chunks until they flake away into nothing.");
+					} 
+					outputText("\n\nYou grip your head as a surge of pain hits you. A pair of horns slowly emerge from your skull, curling out and forward in a half circle. The ribbed curls remind you of the horns of the sheep back in Ingnam. <b>You now have sheep horns!</b>", false);
+				player.hornType = HORNS_SHEEP;
+				player.horns = 1;
+				changes++;
+			}
+			if (rand(3) == 0 && changes < changeLimit && player.legCount == 2 && player.lowerBody == LOWER_BODY_TYPE_CLOVEN_HOOFED && player.hornType == HORNS_SHEEP && player.tailType == TAIL_TYPE_SHEEP && player.earType == EARS_SHEEP && !player.hasWool()) {
+			    var sheepWoolColors: Array = [
+				"white",
+				"black",
+				"gray",
+				"silver",
+				"brown",
+				"moorit"
+			    ];
+				if (!player.hasFur()) {
+					outputText("\n\nWith an almost audible \*POMF\*, a soft fleece erupts from your body. The fleece covers all of your midsection and thighs, thick and fluffy. It doesn't fully hide your sexual features, instead obscuring them in an enticing manner. You can't help but run your hands over your soft, " + player.furColor + " wool, reveling in plushness. <b>You now have sheep wool!</b>");
+				} else {
+					outputText("\n\nYou feel your fur suddenly stand on end, every follicle suddenly detaching and leaving your skin bare. As you stand with a pile of shed fur around your feet, you feel your skin tingle, and you're sure it isn't from the cold. With an almost audible \*POMF\*, a soft fleece erupts from your body. The fleece covers all of your midsection and thighs, thick and fluffy. It doesn't fully hide your sexual features, instead obscuring them in an enticing manner. You can't help but run your hands over your soft, " + player.furColor + " wool, reveling in plushness. <b>You now have sheep wool!</b>", false);
+				}
+				player.skinType = SKIN_TYPE_WOOL;
+				player.skinDesc = "wool";
+				player.setFurColor(sheepWoolColors, {
+					type: UNDER_BODY_TYPE_WOOL
+				}, true);
+				changes++;
+			}
+			if (player.hornType == HORNS_SHEEP && player.hasWool() && player.femininity <= 45 && rand(3) == 0 && changes < changeLimit) {
+					outputText("\n\nYou feel a familiar pain in your head. Your horns are growing! More ribbed horn emerges from your scalp, your horns slowly curling around fully as they thicken. Once a full ring of horn is complete they lengthen until the pointed ends face forward, tucked under your ears. You run your fingers over your curled horns in awe. These could seriously do some damage! Or at least stun your foes. <b>You now have the horns of a ram!</b>", false);
+				player.hornType = HORNS_RAM;
+				player.horns = 2;
+				changes++;
+			}
+			if (player.hornType == HORNS_RAM && rand(3) == 0 && changes < changeLimit) {
+				outputText("\n\nYou groan and clutch your head as your horns stretch out, becoming even longer.", false);
+				player.hornType = HORNS_RAM;
+				player.horns += (1 + rand(3));
+				changes++;
+			}
+			if (player.hasWool() && player.hairType != HAIR_WOOL && player.femininity >= 65 && rand(3) == 0 && changes < changeLimit) {
+				outputText("\n\nYour hair suddenly poofs out as if you had filled it with static. You attempt to smooth it down, but you can't seem to straighten it out properly. It keeps bouncing back in a cushion-like manner. You in a nearby puddle. Your hair is now much thicker, it having become rather curly and bouffant like the wool of a sheep. You realize that <b>you now have woolen hair!</b>", false);
+				player.hairType = HAIR_WOOL;
+				changes++;
+			}
+			if (player.hipRating < 10 && player.femininity >= 65 && rand(3) == 0 && changes < changeLimit) {
+				outputText("\n\nYou grip your hips as they shift, getting wider and altering your stance. Your hips seem much more fitting for a sheep now, all big and cuddly.", false);
+				player.hipRating += (rand(1) + 1);
+				if (player.hipRating > 10) {
+					player.hipRating = 10;
+				}
+				changes++;
+			}
+			if (player.breastRows[0].breastRating < 5 && player.femininity >= 65 && rand(3) == 0 && changes < changeLimit) {
+				player.breastRows[0].breastRating += (rand(1) + 1);
+				if (player.breastRows[0].breastRating > 5) {
+					player.breastRows[0].breastRating = 5;
+				}
+				outputText("\n\nYour breasts feel constrained and painful against your top as they grow larger by the moment, finally stopping as they reach " + player.breastRows[0].breastRating + " size. You rub the tender orbs as you get used to your larger breast flesh.", false);
+				changes++;
+			}
+		}
 
 // Fuck yo dog shit we full-on wolf bitches now -Foxwells
 public function wolfPepper(type: Number, player: Player): void {
@@ -1624,6 +1760,8 @@ public function wolfPepper(type: Number, player: Player): void {
     }
     //MUTATIONZZZZZ
     //PRE-CHANGES: become biped, remove horns, remove wings, give human tongue, remove claws, remove antennea
+    //no claws
+    if (rand(4) == 0) updateClaws();
     //remove antennae
     if (player.antennae != ANTENNAE_NONE && rand(3) == 0 && changes < changeLimit) {
         outputText("\n\nYou tilt your head down as a wave of dizziness passes over you. Your antennae fall to the ground. You touch where they were on your head and confirm that they did indeed just fall off. <b>You have lost your anntenae!</b>", false);
@@ -1663,42 +1801,13 @@ public function wolfPepper(type: Number, player: Player): void {
         changes++;
     }
     //normal legs
-    if (player.lowerBody != LOWER_BODY_TYPE_HUMAN && rand(4) == 0 && changes < changeLimit) {
-        outputText("\n\nYou collapse as your legs shift and twist. By the time the pain subsides, you notice that you have normal legs and normal feet. <b>You now have normal feet!</b>");
-        player.lowerBody = LOWER_BODY_TYPE_HUMAN;
-        player.legCount = 2;
-        changes++;
-    }
+    if (player.lowerBody != LOWER_BODY_TYPE_WOLF && rand(4) == 0) restoreLegs(tfSource);
     //normal arms
-    if (player.armType != ARM_TYPE_HUMAN && rand(4) == 0 && changes < changeLimit) {
-        outputText("\n\nYour unusual arms change more and more until they are normal human arms, leaving [skinfurscales] behind. <b>You have normal human arms.</b>");
-        updateClaws();
-        player.armType = ARM_TYPE_HUMAN;
-        changes++;
-    }
+    if (rand(4) == 0 && player.armType != ARM_TYPE_WOLF) restoreArms(tfSource);
     //remove feather hair
-    if (changes < changeLimit && player.hairType == HAIR_FEATHER && rand(4) == 0) {
-        //(long):
-        if (player.hairLength >= 6) outputText("\n\nA lock of your downy-soft feather-hair droops over your eye.  Before you can blow the offending down away, you realize the feather is collapsing in on itself.  It continues to curl inward until all that remains is a normal strand of hair.  <b>Your hair is no longer feathery!</b>", false);
-        //(short)
-        else outputText("\n\nYou run your fingers through your downy-soft feather-hair while you await the effects of the item you just ingested.  While your hand is up there, it detects a change in the texture of your feathers.  They're completely disappearing, merging down into strands of regular hair.  <b>Your hair is no longer feathery!</b>", false);
-        player.hairType = HAIR_NORMAL;
-        changes++;
-    }
+    if (rand(4) == 0) removeFeatheryHair();
     //remove basilisk hair
-    if (changes < changeLimit && player.hairType != HAIR_NORMAL && rand(4) == 0) {
-        if (player.hairType == HAIR_BASILISK_PLUME) {
-            outputText("\n\nA lock of your feathery plume droops over your eye. Before you can blow the offending down away, you realize the feather is collapsing in on itself. It continues to curl inward until all that remains is a normal strand of hair.");
-            outputText("\n\n<b>Your hair is no longer feathery!</b>");
-        } else {
-            outputText("\n\nYou feel a tingling on your scalp. You reach up to your basilisk spines to find out what is happening. The moment your hand touches a spine, it comes loose and falls in front of you. One after another the other spines fall out, until all the spines that once decorated your head now lay around you, leaving you with a bald head.");
-            outputText("\n\n<b>You realize, that you'll grow normal human hair again!</b>");
-            flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] = 0;
-            player.hairLength = 0;
-        }
-        player.hairType = HAIR_NORMAL;
-        changes++;
-    }
+    if (rand(4) == 0) removeBassyHair()
     //MUTATIONZ AT ANY TIME: wolf dick, add/decrease breasts, decrease breast size if above D
     //get a wolf dick
     //if ya genderless we give ya a dick cuz we nice like that
@@ -1946,49 +2055,49 @@ public function wolfPepper(type: Number, player: Player): void {
                     changes++;
                 }
             }
-            //MUTATIONZ LEVEL 2: fur->arms fur+tail+ears->face stophair->nohair fur+tail->legs
-            //gain wolf face
-            if (player.faceType != FACE_WOLF && player.earType == EARS_WOLF && player.tailType == TAIL_TYPE_WOLF && player.skinType == SKIN_TYPE_FUR && rand(5) == 0 && changes < changeLimit) {
-                outputText("\n\nYou screech in pain as the bones of your face begin to rearrange themselves. Your [skinFurScales] practically melts off you, dropping onto the ground with heavy streams of blood. You put your hands to your face, writhing, blackness covering your vision as pain overwhelms you. But as quickly as it came, it stops, and you pull your shaking hands from your face. You scramble to the nearest reflective surface. <b>You have a wolf's face!</b>", false);
-                player.faceType == FACE_WOLF;
-                changes++;
-            }
-            //no hair
-            if (player.hairLength > 0 && rand(5) == 0 && changes < changeLimit) {
-                outputText("\n\nYou grip your head as your scalp burns in pain. Your hands seem to fall away, though, and bring clumps of hair with. Before you know it, your hair is falling right off your head without you touching it. It's only a matter of seconds before it's all gone.", false);
-                player.hairLength == 0;
-                changes++;
-            }
-            //wolf arms
-            if (player.armType != ARM_TYPE_WOLF && player.skinType == SKIN_TYPE_FUR && rand(4) == 0 && changes < changeLimit) {
-                outputText("\n\nYou hold your arms to your chest and absent-mindedly squeeze them, trying to get rid of a feeling of discomfort. When it fails to go away, you look down in annoyance at whatever could be bothering you, only to see that your hands have turned to wolf paws and your arms are slim but muscular. They're built strong, but have difficulty moving in any direction but back and forth. <b>You now have wolf arms.</b>");
-                player.armType = ARM_TYPE_WOLF;
-                updateClaws(CLAW_TYPE_NORMAL);
-                changes++;
-            }
-            //legz
-            if (player.legCount == 2 && player.lowerBody != LOWER_BODY_TYPE_WOLF && player.tailType == TAIL_TYPE_WOLF && player.skinType == SKIN_TYPE_FUR && rand(4) == 0 && changes < changeLimit) {
-                //Hooman feets
-                if (player.lowerBody == LOWER_BODY_TYPE_HUMAN) outputText("\n\nYou stumble and fall, howling in pain as your legs and feet break apart and reform into wolf-like legs and paws. The worst of the pain eventually passes, but you're still left whimpering for a while. <b>You now have paws!</b>", false);
-                //Hooves -> Paws
-                else if (player.lowerBody == LOWER_BODY_TYPE_HOOFED) outputText("\n\nYou feel your hooves suddenly splinter, growing into five unique digits. Their flesh softens as your hooves reshape into furred paws.", false);
-                else outputText("\n\nYour lower body is suddenly wracked by pain, causing you to collapse onto the ground in agony. Once it passes, you discover that you're standing on fur-covered paws. <b>You now have paws!</b>", false);
-                player.lowerBody = LOWER_BODY_TYPE_WOLF;
-                changes++;
-            }
-            //MUTATIONZ LEVEL 3: face->eyes
-            if (player.eyeType != EYES_WOLF && player.faceType == FACE_WOLF && rand(4) == 0 && changes < changeLimit) {
-                outputText("\n\nYou feel a sudden surge of pain in your face as your eyes begin to change. You close them and feel something wet slide under your eyelids. You jump in surprise. The feeling's gone, but now the distance is a blurred view, and greens seem to be mixed with yellows.", false);
-                outputText("\n\nYou turn to a nearby reflective surface to investigate. Your eyes have massive amber irises and are dipped into your face, hiding any sign of your sclera. Blackness surrounds them and emphasise the wolfish shape of your face. You blink a few times as you stare at your reflection. <b>You now have wolf eyes!</b> Your peripherals and night vision has probably improved, too.", false);
-                player.eyeType == EYES_WOLF;
-                changes++;
-            }
-            //MISC CRAP
-            if (rand(5) == 0) mutations.updateOvipositionPerk(tfSource);
-            if (rand(3) == 0) outputText(player.modTone(100, 4), false);
-            if (rand(3) == 0) outputText(player.modThickness(75, 3), false);
-            player.refillHunger(10);
+        //MUTATIONZ LEVEL 2: fur->arms fur+tail+ears->face stophair->nohair fur+tail->legs
+        //gain wolf face
+        if (player.faceType != FACE_WOLF && player.earType == EARS_WOLF && player.tailType == TAIL_TYPE_WOLF && player.skinType == SKIN_TYPE_FUR && rand(5) == 0 && changes < changeLimit) {
+            outputText("\n\nYou screech in pain as the bones of your face begin to rearrange themselves. Your [skinFurScales] practically melts off you, dropping onto the ground with heavy streams of blood. You put your hands to your face, writhing, blackness covering your vision as pain overwhelms you. But as quickly as it came, it stops, and you pull your shaking hands from your face. You scramble to the nearest reflective surface. <b>You have a wolf's face!</b>", false);
+            player.faceType == FACE_WOLF;
+            changes++;
         }
+        //no hair
+        if (player.hairLength > 0 && rand(5) == 0 && changes < changeLimit) {
+            outputText("\n\nYou grip your head as your scalp burns in pain. Your hands seem to fall away, though, and bring clumps of hair with. Before you know it, your hair is falling right off your head without you touching it. It's only a matter of seconds before it's all gone.", false);
+            player.hairLength == 0;
+            changes++;
+        }
+        //wolf arms
+        if (player.armType != ARM_TYPE_WOLF && player.skinType == SKIN_TYPE_FUR && rand(4) == 0 && changes < changeLimit) {
+            outputText("\n\nYou hold your arms to your chest and absent-mindedly squeeze them, trying to get rid of a feeling of discomfort. When it fails to go away, you look down in annoyance at whatever could be bothering you, only to see that your hands have turned to wolf paws and your arms are slim but muscular. They're built strong, but have difficulty moving in any direction but back and forth. <b>You now have wolf arms.</b>");
+            player.armType = ARM_TYPE_WOLF;
+            updateClaws(CLAW_TYPE_NORMAL);
+            changes++;
+        }
+        //legz
+        if (player.legCount == 2 && player.lowerBody != LOWER_BODY_TYPE_WOLF && player.tailType == TAIL_TYPE_WOLF && player.skinType == SKIN_TYPE_FUR && rand(4) == 0 && changes < changeLimit) {
+            //Hooman feets
+            if (player.lowerBody == LOWER_BODY_TYPE_HUMAN) outputText("\n\nYou stumble and fall, howling in pain as your legs and feet break apart and reform into wolf-like legs and paws. The worst of the pain eventually passes, but you're still left whimpering for a while. <b>You now have paws!</b>", false);
+            //Hooves -> Paws
+            else if (player.lowerBody == LOWER_BODY_TYPE_HOOFED) outputText("\n\nYou feel your hooves suddenly splinter, growing into five unique digits. Their flesh softens as your hooves reshape into furred paws. <b>You now have paws!</b>", false);
+            else outputText("\n\nYour lower body is suddenly wracked by pain, causing you to collapse onto the ground in agony. Once it passes, you discover that you're standing on fur-covered paws. <b>You now have paws!</b>", false);
+            player.lowerBody = LOWER_BODY_TYPE_WOLF;
+            changes++;
+        }
+        //MUTATIONZ LEVEL 3: face->eyes
+        if (player.eyeType != EYES_WOLF && player.faceType == FACE_WOLF && rand(4) == 0 && changes < changeLimit) {
+            outputText("\n\nYou feel a sudden surge of pain in your face as your eyes begin to change. You close them and feel something wet slide under your eyelids. You jump in surprise. The feeling's gone, but now the distance is a blurred view, and greens seem to be mixed with yellows.", false);
+            outputText("\n\nYou turn to a nearby reflective surface to investigate. Your eyes have massive amber irises and are dipped into your face, hiding any sign of your sclera. Blackness surrounds them and emphasise the wolfish shape of your face. You blink a few times as you stare at your reflection. <b>You now have wolf eyes!</b> Your peripherals and night vision has probably improved, too.", false);
+            player.eyeType == EYES_WOLF;
+            changes++;
+        }
+        //MISC CRAP
+        if (rand(5) == 0) mutations.updateOvipositionPerk(tfSource);
+        if (rand(3) == 0) outputText(player.modTone(100, 4), false);
+        if (rand(3) == 0) outputText(player.modThickness(75, 3), false);
+        player.refillHunger(10);
+    }
 
 //1-Oversized Pepper (+size, thickness)
 //2-Double Pepper (+grows second cock or changes two cocks to dogcocks)
@@ -4523,7 +4632,6 @@ public function wolfPepper(type: Number, player: Player): void {
 				if (player.wingType > WING_TYPE_NONE) outputText("Your wings fold into themselves, merging together with your back.  ", false);
 				outputText("You groan and slump down in pain, almost instantly regretting eating the tooth. You start sweating profusely and panting loudly, feeling the space between your shoulder blades shifting about. You hastily remove your " + player.armorName + " just in time before a strange fin-like structure bursts from in-between your shoulders. You examine it carefully and make a few modifications to your " + player.armorName + " to accommodate your new fin.", false);
 				player.wingType = WING_TYPE_SHARK_FIN;
-				player.wingDesc = "";
 				changes++;
 			}
 			if (changes == 0) {
@@ -4728,7 +4836,6 @@ public function wolfPepper(type: Number, player: Player): void {
 			player.lowerBody = LOWER_BODY_TYPE_HUMAN;
 			player.legCount = 2;
 			player.wingType = WING_TYPE_NONE;
-			player.wingDesc = "non-existant";
 			player.tailType = TAIL_TYPE_NONE;
 			player.tongueType = TONGUE_HUMAN;
 			player.tailRecharge = 0;
@@ -6704,15 +6811,13 @@ public function wolfPepper(type: Number, player: Player): void {
 			if (player.wingType == WING_TYPE_NONE && changes < changeLimit && (type == 1 || player.armType == ARM_TYPE_HARPY) && rand(4) == 0) {
 				outputText("\n\nPain lances through your back, the muscles knotting oddly and pressing up to bulge your " + player.skinDesc + ". It hurts, oh gods does it hurt, but you can't get a good angle to feel at the source of your agony. A loud crack splits the air, and then your body is forcing a pair of narrow limbs through a gap in your " + player.armorName + ". Blood pumps through the new appendages, easing the pain as they fill out and grow. Tentatively, you find yourself flexing muscles you didn't know you had, and <b>you're able to curve the new growths far enough around to behold your brand new, " + player.hairColor + " wings.</b>", false);
 				player.wingType = WING_TYPE_FEATHERED_LARGE;
-				player.wingDesc = "large, feathered";
 				changes++;
 			}
 			//-Remove old wings
-			if (player.wingType != WING_TYPE_FEATHERED_LARGE && player.wingType > WING_TYPE_NONE && changes < changeLimit && rand(4) == 0) {
-				if (player.wingType != WING_TYPE_SHARK_FIN) outputText("\n\nSensation fades from your " + player.wingDesc + " wings slowly but surely, leaving them dried out husks that break off to fall on the ground. Your back closes up to conceal the loss, as smooth and unbroken as the day you entered the portal.", false);
-				else outputText("\n\nSensation fades from your large fin slowly but surely, leaving it a dried out husk that breaks off to fall on the ground. Your back closes up to conceal the loss, as smooth and unbroken as the day you entered the portal.", false);
+			if ([WING_TYPE_NONE, WING_TYPE_FEATHERED_LARGE].indexOf(player.wingType) == -1 && changes < changeLimit && rand(4) == 0) {
+				if (player.wingType != WING_TYPE_SHARK_FIN) outputText("\n\nSensation fades from your [wings] slowly but surely, leaving them dried out husks that break off to fall on the ground. Your back closes up to conceal the loss, as smooth and unbroken as the day you entered the portal.");
+				else outputText("\n\nSensation fades from your large fin slowly but surely, leaving it a dried out husk that breaks off to fall on the ground. Your back closes up to conceal the loss, as smooth and unbroken as the day you entered the portal.");
 				player.wingType = WING_TYPE_NONE;
-				player.wingDesc = "non-existant";
 				changes++;
 			}
 			//-Feathery Arms
@@ -7613,7 +7718,6 @@ public function wolfPepper(type: Number, player: Player): void {
 			if (rand(4) == 0 && (player.wingType == WING_TYPE_BEE_LIKE_SMALL || player.wingType == WING_TYPE_BEE_LIKE_LARGE) && changes < changeLimit) {
 				outputText("\n\nYour wings twitch and flap involuntarily.  You crane your neck to look at them as best you are able; from what you can see, they seem to be shriveling and curling up.  They're starting to look a lot like they did when they first popped out, wet and new.  <b>As you watch, they shrivel all the way, then recede back into your body.</b>", false);
 				player.wingType = WING_TYPE_NONE;
-				player.wingDesc = "non-existent";
 				changes++;
 			}
 			//-hair morphs to anemone tentacles, retains color, hair shrinks back to med-short('shaggy') and stops growing, lengthening treatments don't work and goblins won't cut it, but more anemone items can lengthen it one level at a time
@@ -8800,6 +8904,7 @@ public function wolfPepper(type: Number, player: Player): void {
 					temp = 1;
 					while (temp < player.bRows()) {
 						if (player.breastRows[temp].breastRating < 1) player.breastRows[temp].breastRating = 1;
+						temp++;
 					}
 				}
 				changes++;
@@ -8980,7 +9085,6 @@ public function wolfPepper(type: Number, player: Player): void {
 				//Wings Fall Out: You feel a sharp pinching sensation in your shoulders and you cringe slightly.  Your former dragonfly wings make soft, papery sounds as they fall into the dirt behind you.
 				changes++;
 				player.wingType = WING_TYPE_GIANT_DRAGONFLY;
-				player.wingDesc = "giant dragonfly";
 			}
 			if (changes == 0) {
 				outputText("\n\nWell... that didn't amount to much.");
@@ -9498,14 +9602,12 @@ public function wolfPepper(type: Number, player: Player): void {
 					outputText("\n\n", false);
 					outputText("Your small demonic wings stretch and grow, tingling with the pleasure of being attached to such a tainted body.  You stretch over your shoulder to stroke them as they unfurl, turning into full-sized demon-wings.  <b>Your demonic wings have grown!</b>", false);
 					player.wingType = WING_TYPE_BAT_LIKE_LARGE;
-					player.wingDesc = "large, bat-like";
 				}
 				else if (player.wingType == WING_TYPE_SHARK_FIN) {
 					outputText("\n\n", false);
 					outputText("The muscles around your shoulders bunch up uncomfortably, changing to support the new bat-like wings growing from your back.  You twist your head as far as you can for a look and realize your fin has changed into ", false);
 					outputText("small ", false);
 					player.wingType = WING_TYPE_BAT_LIKE_TINY;
-					player.wingDesc = "tiny, bat-like";
 					outputText("bat-like demon-wings!", false);
 				}
 				else if (player.wingType == WING_TYPE_BEE_LIKE_SMALL || player.wingType == WING_TYPE_BEE_LIKE_LARGE) {
@@ -9514,12 +9616,10 @@ public function wolfPepper(type: Number, player: Player): void {
 					if (player.wingType == WING_TYPE_BEE_LIKE_SMALL) {
 						outputText("small ", false);
 						player.wingType = WING_TYPE_BAT_LIKE_TINY;
-						player.wingDesc = "tiny, bat-like";
 					}
 					else {
 						outputText("large ", false);
 						player.wingType = WING_TYPE_BAT_LIKE_LARGE;
-						player.wingDesc = "large, bat-like";
 					}
 					outputText("<b>bat-like demon-wings!</b>", false);
 				}
@@ -9528,7 +9628,6 @@ public function wolfPepper(type: Number, player: Player): void {
 					outputText("\n\n", false);
 					outputText("A knot of pain forms in your shoulders as they tense up.  With a surprising force, a pair of small demonic wings sprout from your back, ripping a pair of holes in the back of your " + player.armorName + ".  <b>You now have tiny demonic wings</b>.", false);
 					player.wingType = WING_TYPE_BAT_LIKE_TINY;
-					player.wingDesc = "tiny, bat-like";
 				}
 				flags[kFLAGS.TIMES_TRANSFORMED]++;
 			}

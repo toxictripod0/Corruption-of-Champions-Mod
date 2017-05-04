@@ -4,8 +4,9 @@ package classes.Scenes.Areas.Forest
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Items.Mutations;
+import classes.Scenes.API.Encounter;
 
-	public class ErlKingScene extends BaseContent
+public class ErlKingScene extends BaseContent implements Encounter
 	{
 		public function ErlKingScene()
 		{
@@ -17,7 +18,15 @@ package classes.Scenes.Areas.Forest
 		protected function get changeLimit():int { return mutations.changeLimit; }
 		protected function set changeLimit(val:int):void { mutations.changeLimit = val; }
 
-		public function encounterWildHunt():void
+	public function encounterName():String {
+		return "erlking";
+	}
+
+	public function encounterChance():Number {
+		return flags[kFLAGS.ERLKING_DISABLED] == 0 ? 2 : 0;
+	}
+
+	public function execEncounter():void
 		{
 			if (flags[kFLAGS.WILD_HUNT_ENCOUNTERS] == 0)
 			{
@@ -1058,15 +1067,15 @@ package classes.Scenes.Areas.Forest
 				changes++;
 			}
 			//Change legs to cloven hooves
-			if (rand(4) == 0 && changes < changeLimit && player.earType == EARS_DEER && player.tailType == TAIL_TYPE_DEER && player.hasFur() && (player.lowerBody != LOWER_BODY_TYPE_DEERTAUR && player.lowerBody != LOWER_BODY_TYPE_CLOVEN_HOOFED)) {
+			if (rand(4) == 0 && changes < changeLimit && player.earType == EARS_DEER && player.tailType == TAIL_TYPE_DEER && player.hasFur() && player.lowerBody != LOWER_BODY_TYPE_CLOVEN_HOOFED) {
 				if (player.lowerBody == LOWER_BODY_TYPE_HOOFED) {
 					outputText("\n\nYou feel a sharp stinging sensation from your hooves, accompanied by a loud CRACK.  You look down in alarm, prancing from one hooved foot to another, realizing that your solid, heavy hooves have been replaced with delicate, cloven hooves.  You squint, also noting a subtle thinness across your legs in general--if you had to guess, you’d hazard that you’re looking <b>more deer-like than horse-like</b>.");
 				}
 				else {
 					outputText("\n\nYou feel a strange tightness from your feet and nearly topple over as your balance shifts.  You’re balancing on your toes for some reason.  You look down in amazement as your legs slim and lengthen, your feet elongating and darkening at the ends until you’re balancing on <b>two, graceful deer legs</b>.");
 				}
-				if (player.isTaur()) player.lowerBody = LOWER_BODY_TYPE_DEERTAUR;
-				else player.lowerBody = LOWER_BODY_TYPE_CLOVEN_HOOFED;
+				player.lowerBody = LOWER_BODY_TYPE_CLOVEN_HOOFED;
+				if (!player.isTaur() && !player.isBiped()) player.legCount = 2;
 				changes++;
 			}
 			// Genital Changes

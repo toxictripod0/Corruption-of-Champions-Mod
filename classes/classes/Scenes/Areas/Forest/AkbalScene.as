@@ -7,12 +7,22 @@ package classes.Scenes.Areas.Forest
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Items.Armors.LustyMaidensArmor;
+import classes.Scenes.API.Encounter;
 
-	public class AkbalScene extends BaseContent
+public class AkbalScene extends BaseContent implements Encounter
 	{
+
+	public function encounterChance():Number {
+		return 1;
+	}
+
 		public function AkbalScene()
 		{
 		}
+
+	public function encounterName():String {
+		return "akbal";
+	}
 
 		public function akbalDefeated(hpVictory:Boolean):void{
 			flags[kFLAGS.AKBAL_SUBMISSION_STATE] = 1;
@@ -679,8 +689,7 @@ package classes.Scenes.Areas.Forest
 		//2. AKBAL'S MY BITCH
 
 		//[First Encounter]
-		public function supahAkabalEdition():void
-		{
+		public function execEncounter():void {
 			spriteSelect(2);
 			//Make sure that the buttchange is set correctly
 			//when submitting.  Gotta stretch em all!
@@ -721,7 +730,10 @@ package classes.Scenes.Areas.Forest
 
 			outputText("The aura pouring forth from this 'Akbal' is anything but god-like; you recognize the demon for what it truly is.  Yet its ivory teeth and sharp claws prove to you that it can make good on its threat.  What do you do?", false);
 			//Talk / Fight / Run
-			simpleChoices("Talk", superAkbalioTalk, "Fight", startuAkabalFightomon, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
+			menu();
+			addButton(0, "Talk", superAkbalioTalk);
+			addButton(1, "Fight", startuAkabalFightomon);
+			addButton(14, "Leave", camp.returnToCampUseOneHour);
 		}
 
 		//[Talk]
@@ -732,7 +744,9 @@ package classes.Scenes.Areas.Forest
 			outputText("After a few moments of silence you ask, \"<i>What do you mean, 'submit'?</i>\" Akbal grins, revealing a row of wicked ivory teeth as he opens his mouth. You suddenly feel the demon's powerful body pinning you down, a wide tongue licking your neck and claws tickling your back in a way that is both horrifying and sensual. Yet after a moment of taking it in, you realize that he is still there in front of you, unmoved and grinning. You can guess what the image means: he wants you to become his mate for a day to make up for invading his territory.  What do you do?\n\n", false);
 
 			//Submit / Fight
-			simpleChoices("Fight", startuAkabalFightomon, "Submit", akbalSubmit, "", null, "", null, "", null);
+			menu();
+			addButton(0, "Fight", startuAkabalFightomon);
+			addButton(1, "Submit", akbalSubmit);
 		}
 
 		//[Encounter if previously submitted]
@@ -743,7 +757,10 @@ package classes.Scenes.Areas.Forest
 			outputText("As you walk through the forest, you hear a purring coming from behind you.  Turning around reveals that Akbal has come to find you.  He uses his head to push you in the direction of his territory, obviously wanting to dominate you again.\n\n", false);
 			outputText("What do you do?", false);
 			//Submit / Deny / Fight
-			simpleChoices("Submit", akbalSubmit, "Deny", akbalDeny, "Fight", startuAkabalFightomon, "", null, "", null);
+			menu();
+			addButton(0, "Submit", akbalSubmit);
+			addButton(1, "Deny", akbalDeny);
+			addButton(4, "Fight", startuAkabalFightomon);
 		}
 
 		//[Deny]
@@ -767,7 +784,9 @@ package classes.Scenes.Areas.Forest
 			else
 				outputText("dodging roll places you a good distance away from him.  Do you fight or flee?\n\n", false);
 			//Fight / Flee
-			simpleChoices("Fight", startuAkabalFightomon, "", null, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
+			menu();
+			addButton(0, "Fight", startuAkabalFightomon);
+			addButton(14, "Leave", camp.returnToCampUseOneHour);
 		}
 
 		//[Encounter if previously fought and lost]
@@ -778,7 +797,10 @@ package classes.Scenes.Areas.Forest
 			outputText("A chorus of laughter sounds inside your mind as the jaguar demon, Akbal, drops to the ground in front of you.  His masculine voice says, \"<i>Well, if it isn't the defiant welp who, in all their great idiocy, has wandered into my territory again.  Will you submit, or do I have to teach you another harsh lesson?</i>\"\n\n", false);
 
 			//Submit / Fight / Run
-			simpleChoices("Submit", akbalSubmit, "Fight", startuAkabalFightomon, "", null, "", null, "Leave", camp.returnToCampUseOneHour);
+			menu();
+			addButton(0, "Submit", akbalSubmit);
+			addButton(1, "Fight", startuAkabalFightomon);
+			addButton(14, "Leave", camp.returnToCampUseOneHour);
 		}
 
 		//[Fight]

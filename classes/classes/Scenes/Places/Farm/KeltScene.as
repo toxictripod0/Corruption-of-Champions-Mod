@@ -190,18 +190,27 @@ private function keltRequiresNakedness():void {
 	outputText("He slaps a hand on his bare chest proudly, and you realize that he means for you to strip down naked.  When you protest, his eyes narrow with irritation, and his sneer becomes more cruel.\r\r", false);
 	outputText("\"<i>Didn't know you were a coward, too.  That's fine... go fuck off, then.  You can't handle it, then go back to your camp and braid your hair, or something.  If you wait long enough, I'm sure a nice minotaur will come along to make you his bitch.  'Bout all you're good for, right?</i>\"\r\r", false);
 	outputText("Do you obey his demand?", false);
-	if (player.cor > 70 - player.corruptionTolerance() && player.inte > 40 && !player.isTaur()) {
-		outputText("\n\n<b>If you fight back and take him down a peg, you might never see him again...</b>");
-		simpleChoices("Reluctantly", keltReluctantlyGetNaked, "Eagerly", keltEagerlyGetNaked, "Fight Back", keltResistance, "", null, "Never", keltRefuseNakedness);
-		return;
-	}
-	else simpleChoices("Reluctantly", keltReluctantlyGetNaked, "Eagerly", keltEagerlyGetNaked, "", null, "", null, "Never", keltRefuseNakedness);
+	
 	//(Corruption higher than 60 automatically chooses eagerly)
-	if (player.cor + player.lib + player.lust >= 180) {
+	if (player.cor + player.lib + (player.lust * 100 / player.maxLust()) >= 180) {
 		outputText(" Of course you do.  You love putting on a show.", false);
 		// go eagerly.
 		doNext(keltEagerlyGetNaked);
+		return;
 	}
+	
+	menu();
+	addButton(0, "Reluctantly", keltReluctantlyGetNaked);
+	addButton(1, "Eagerly", keltEagerlyGetNaked);
+	
+	if (player.inte > 40 && (player.cor > 70 - player.corruptionTolerance() || player.findPerk(PerkLib.Sadist) >= 0 || player.findPerk(PerkLib.Pervert) >= 0) && !player.isTaur()) {
+		outputText("\n\n<b>If you fight back and take him down a peg, you might never see him again...</b>");
+		addButton(3, "Turn Tables", keltResistance);
+	} else {
+		addDisabledButton(3, "Turn Tables", "Someone hard and smart enough could probably catch him off-guard... Being a taur defenitely doesn't help, though.");
+	}
+	
+	addButton(4, "Never", keltRefuseNakedness);
 }
 
 //Naked Requirement, Never
@@ -345,12 +354,18 @@ private function keltRequiresBlowjobs():void {
 		doNext(keltBlowjobRequirementEagerly);
 		return;
 	}
-	simpleChoices("Shamefully", keltBlowjobRequirementShamefully, "Eagerly", keltBlowjobRequirementEagerly, "Never!", keltBlowjobRequirementNever, "", null, "FIGHT!", kelly.fightToBeatKelt);
 	//Never!			Shamefully			Eagerly
-	if (player.inte > 40 && player.cor > 70 - player.corruptionTolerance() && !player.isTaur()) {
+	menu();
+	addButton(0, "Shamefully", keltBlowjobRequirementShamefully);
+	addButton(1, "Eagerly", keltBlowjobRequirementEagerly);
+	addButton(2, "Never!", keltBlowjobRequirementNever);
+	if (player.inte > 40 && (player.cor > 70 - player.corruptionTolerance() || player.findPerk(PerkLib.Sadist) >= 0 || player.findPerk(PerkLib.Pervert) >= 0) && !player.isTaur()) {
 		outputText("\n\n<b>If you fight back and take him down a peg, you might never see him again...</b>");
-		addButton(3, "Fight Back", keltResistance);
+		addButton(3, "Turn Tables", keltResistance);
+	} else {
+		addDisabledButton(3, "Turn Tables", "Someone hard and smart enough could probably catch him off-guard... Being a taur defenitely doesn't help, though.");
 	}
+	addButton(4, "FIGHT!", kelly.fightToBeatKelt);
 }
 
 //Blowjob Requirement, Never
@@ -485,11 +500,16 @@ private function keltMainEncounterAfterNakedReq():void {
 				outputText("\r\rYou're not certain you want to practice naked again... particularly with the way Kelt is looking at you, his arrogant smirk plastered on his face.  Do you agree to his terms?", false);
 				//(Yes[+5 Submissive]			No[Never event])
 				//Link this to reluctant && never
-				simpleChoices("Yes", keltReluctantlyGetNaked, "No", keltRefuseNakedness, "", null, "", null, "FIGHT!", kelly.fightToBeatKelt);
-				if (player.inte > 40 && player.cor > 70 - player.corruptionTolerance() && !player.isTaur()) {
+				menu();
+				addButton(0, "Yes", keltReluctantlyGetNaked);
+				addButton(1, "No", keltRefuseNakedness);
+				if (player.inte > 40 && (player.cor > 70 - player.corruptionTolerance() || player.findPerk(PerkLib.Sadist) >= 0 || player.findPerk(PerkLib.Pervert) >= 0) && !player.isTaur()) {
 					outputText("\n\n<b>If you fight back and take him down a peg, you might never see him again...</b>");
-					addButton(2, "Fight Back",keltResistance);
+					addButton(2, "Turn Tables", keltResistance);
+				} else {
+					addDisabledButton(2, "Turn Tables", "Someone hard and smart enough could probably catch him off-guard... Being a taur defenitely doesn't help, though.");
 				}
+				addButton(4, "FIGHT!", kelly.fightToBeatKelt);
 				return;
 			}
 		}
@@ -596,7 +616,7 @@ private function keltMainEncounter3():void {
 			outputText("Some time later, Kelt's enormous cock softens enough to slip out of your abused cunt, a virtual torrent of cum flowing out afterwards.  You lay on the bale of hay, panting tiredly, hands pressed to your full belly.  Kelt looks down at you, and snorts.\r\r", false);
 			outputText("\"<i>That's a good look for you.  Come back tomorrow if it doesn't take, slut.  I'll be glad to do the job again.</i>\"\r\r", false);
 			player.slimeFeed();
-			player.orgasm();
+			player.orgasm('Vaginal');
 			outputText("He leaves you without another word.", false);
 			//(+5 Submissive)
 			player.addStatusValue(StatusEffects.Kelt,2,5);
@@ -731,7 +751,7 @@ private function keltMainEncounterPostBlowjob():void {
 			//(+10 Submissiveness)
 			if (player.buttChange(70,true)) outputText("\r\r", false);
 			player.addStatusValue(StatusEffects.Kelt,2,10);
-			player.orgasm();
+			player.orgasm('Anal');
 			dynStats("cor", 1);
 			return;
 		}
@@ -771,7 +791,10 @@ private function keltMainEncounterPostBlowjob():void {
 		else {
 			outputText("Despite the need, despite the desire, you are still in control of yourself enough to make a choice.  Do you submit to the centaur's will, and your own hunger?  Or will you somehow find the strength to walk away?", false);
 			//Submit				Resist!
-			simpleChoices("Submit", keltSubmitGivingBJ, "Resist", keltResistGivingBJ, "", null, "", null, "FIGHT!", kelly.fightToBeatKelt);
+			menu();
+			addButton(0, "Submit", keltSubmitGivingBJ);
+			addButton(1, "Resist", keltResistGivingBJ);
+			addButton(4, "FIGHT!", kelly.fightToBeatKelt);
 			return;
 		}
 	}
@@ -918,11 +941,13 @@ private function keltBadEndEpilogue():void {
 private function keltResistance():void {
 	spriteSelect(35);
 	outputText("You close your eyes, ", true);
-	if (player.faceType == FACE_HORSE || player.faceType == FACE_DOG) outputText("a low growl building in the back of your throat", false);
+	if (player.hasMuzzle()) outputText("a low growl building in the back of your throat", false);
 	else outputText("fighting anger-fueled muscle-spasms", false); 
 	outputText(" as Kelt's insults go too far.  You've had just about enough of his disingenuous assertions!\r\r", false);
 	outputText("An idea on how to put him in his place slowly forms in the back of your mind, though you're sure pulling it off would humiliate the puffed-up centaur into never his showing his face around the farm again.  Do you do it?", false);
-	doYesNo(fuckKeltsShitUp,keltResistancePussyOut);
+	menu();
+	addButton(0, "Yes", fuckKeltsShitUp);
+	addButton(1, "No", keltResistancePussyOut);
 }
 private function keltResistancePussyOut():void {
 	spriteSelect(35);
@@ -1057,7 +1082,7 @@ private function fuckKeltsShitUp():void {
 		outputText("Taking pity on him, you turn and release the rope, shoving his exhausted body over.  He hits the ground hard and his tightly bound cock bounces in the dirt underneath him.  You gingerly untie the bulging centaur-shaft, noting how massively bloated it is with pent up arousal.  As each layer of rope is peeled off, cum starts to leak from him in greater and greater quantities.  With the release of the last knot, he begins spurting helplessly.  You pat his flank and say, \"<i>Good bitch.  Now why don't you go find some succubus milk so you can look the part?</i>\"\r\r", false);
 		outputText("You redress before the comatose centaur gets a chance to come to his senses, and wonder if he'll recover enough of his pride to face you again.", false);
 	}
-	player.orgasm();
+	player.orgasm('Generic');
 	dynStats("int", 2, "cor", 4);
 	player.createStatusEffect(StatusEffects.KeltOff,0,0,0,0);
 	doNext(camp.returnToCampUseOneHour);
