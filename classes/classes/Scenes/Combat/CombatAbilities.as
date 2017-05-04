@@ -1432,6 +1432,10 @@ package classes.Scenes.Combat
 			if (player.hornType == HORNS_COW_MINOTAUR && player.horns >= 6) {
 				addButton(button++, "Gore", goreAttack, null, null, null, "Lower your head and charge your opponent, attempting to gore them on your horns.  This attack is stronger and easier to land with large horns.");
 			}
+			//Rams Attack - requires rams horns
+			if (player.hornType == HORNS_RAM && player.horns >= 2) {
+				addButton(button++, "Horn Stun", ramsStun, null, null, null, "Use a ramming headbutt to try and stun your foe. \n\nFatigue Cost: " + player.physicalCost(10) + "");
+			}
 			//Upheaval - requires rhino horn
 			if (player.hornType == HORNS_RHINO && player.horns >= 2 && player.faceType == FACE_RHINO) {
 				addButton(button++, "Upheaval", upheavalAttack, null, null, null, "Send your foe flying with your dual nose mounted horns. \n\nFatigue Cost: " + player.physicalCost(15) + "");
@@ -2033,6 +2037,102 @@ package classes.Scenes.Combat
 		 	combat.checkAchievementDamage(damage);
 			flags[kFLAGS.LAST_ATTACK_TYPE] = 0;
 			//Victory ORRRRR enemy turn.
+			if (monster.HP > 0 && monster.lust < monster.eMaxLust()) monster.doAI();
+			else {
+				if (monster.HP <= 0) doNext(combat.endHpVictory);
+				if (monster.lust >= monster.eMaxLust()) doNext(combat.endLustVictory);
+			}
+		}
+		
+		 // Fingers crossed I did ram attack right -Foxwells
+		public function ramsStun():void { // More or less copy/pasted from upheaval
+			clearOutput();
+			if (monster.short == "worms") {
+				outputText("Taking advantage of your new natural weapon, you quickly charge at the freak of nature. Sensing impending danger, the creature willingly drops its cohesion, causing the mass of worms to fall to the ground with a sick, wet 'thud', leaving your horns to stab only at air.\n\n");
+				monster.doAI();
+				return;
+			}
+			if (player.fatigue + player.physicalCost(10) > player.maxFatigue()) {
+				outputText("You're too fatigued to use a charge attack!");
+				doNext(combat.combatMenu);
+				return;
+			}
+			player.changeFatigue(10,2);
+			var damage:Number = 0;
+			//Amily!
+			if (monster.hasStatusEffect(StatusEffects.Concentration)) {
+				outputText("Amily easily glides around your attack thanks to her complete concentration on your movements.\n\n");
+				monster.doAI();
+				return;
+			}
+			//Bigger horns = better chance of not missing
+			//Tiny horns - 30% hit
+			if (player.horns < 6) {
+				temp = 30;
+			}
+			//Small horns - 60% hit
+			if (player.horns >= 6 && player.horns < 12) {
+				temp = 60;
+			}
+			//bigger horns - 75% hit
+			if (player.horns >= 12 && player.horns < 20) {
+				temp = 75;
+			}
+			//huge horns - 90% hit
+			if (player.horns >= 20) {
+				temp = 80;
+			}
+			//Vala, who is a Fuckening
+			if (monster.short == "Vala") {
+				temp = 20;
+			}
+			//Account for monster speed - up to -50%.
+			temp -= monster.spe/2;
+			//Account for player speed - up to +50%
+			temp += player.spe/2;
+			//Hit & calculation
+			if (temp >= rand(100)) {
+				damage = int((player.str + ((player.spe * 0.2) + (player.level * 2)) * (monster.damagePercent() / 100)) * 0.7);
+				if (damage < 0) damage = 5;
+				//Normal
+				outputText("You lower your horns towards your opponent. With a quick charge, you catch them off guard, sending them sprawling to the ground! ");
+				//Critical
+				if (combat.combatCritical()) {
+					outputText("<b>Critical hit! </b>");
+					damage *= 1.75;
+				}
+				//Capping damage
+				if (damage > player.level * 10 + 100) damage = player.level * 10 + 100;
+				if (damage > 0) {
+					if (player.findPerk(PerkLib.HistoryFighter) >= 0) damage *= 1.1;
+					if (player.jewelryEffectId == JewelryLib.MODIFIER_ATTACK_POWER) damage *= 1 + (player.jewelryEffectMagnitude / 100);
+					if (player.countCockSocks("red") > 0) damage *= (1 + player.countCockSocks("red") * 0.02);
+					//Rounding to a whole numbr
+					damage = int(damage);
+					damage = combat.doDamage(damage, true);
+				}
+			// How likely you'll stun
+			// Uses the same roll as damage except ensured unique
+			if (!monster.hasStatusEffect(StatusEffects.Stunned) && temp >= rand(99)) {
+				outputText("<b>Your impact also manages to stun " + monster.a + monster.short + "!</b> ");
+				monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
+			}
+				outputText("\n\n");
+			}
+			//Miss
+			else {
+				//Special vala stuffs
+				if (monster.short == "Vala") {
+					outputText("You lower your head and charge Vala, but she just flutters up higher, grabs hold of your horns as you close the distance, and smears her juicy, fragrant cunt against your nose.  The sensual smell and her excited moans stun you for a second, allowing her to continue to use you as a masturbation aid, but she quickly tires of such foreplay and flutters back with a wink.\n\n");
+					dynStats("lus", 5);
+				}
+				else outputText("You lower your horns towards your opponent. With a quick charge you attempt to knock them to the ground. They manage to dodge out of the way at the last minute, leaving you panting and annoyed.");
+			}
+			//We're done, enemy time
+			outputText("\n\n");
+			flags[kFLAGS.LAST_ATTACK_TYPE] = 0;
+		 	combat.checkAchievementDamage(damage);
+			//Victory/monster attack
 			if (monster.HP > 0 && monster.lust < monster.eMaxLust()) monster.doAI();
 			else {
 				if (monster.HP <= 0) doNext(combat.endHpVictory);
