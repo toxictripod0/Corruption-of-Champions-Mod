@@ -1695,7 +1695,7 @@
 				player.horns += (1 + rand(3));
 				changes++;
 			}
-			if (player.hasWool() && player.femininity >= 65 && rand(3) == 0 && changes < changeLimit) {
+			if (player.hasWool() && player.hairType != HAIR_WOOL && player.femininity >= 65 && rand(3) == 0 && changes < changeLimit) {
 				outputText("\n\nYour hair suddenly poofs out as if you had filled it with static. You attempt to smooth it down, but you can't seem to straighten it out properly. It keeps bouncing back in a cushion-like manner. You in a nearby puddle. Your hair is now much thicker, it having become rather curly and bouffant like the wool of a sheep. You realize that <b>you now have woolen hair!</b>", false);
 				player.hairType = HAIR_WOOL;
 				changes++;
