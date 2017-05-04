@@ -64,10 +64,11 @@ public function keltEncounter():void {
 	spriteSelect(35);
 	//Clear screen, set next button, and count how many times hes been encountered
 	clearOutput();
+	if (!player.hasStatusEffect(StatusEffects.Kelt))
+		player.createStatusEffect(StatusEffects.Kelt, 0, 0, 0, 0);
 	player.addStatusValue(StatusEffects.Kelt,3,1);
 	//If First Encounter
-	if (!player.hasStatusEffect(StatusEffects.Kelt)) {
-		player.createStatusEffect(StatusEffects.Kelt, 0, 0, 1, 0);
+	if (player.statusEffectv3(StatusEffects.Kelt) <= 1) {
 		keltFirstTime();
 	}
 	//Repeated encounter

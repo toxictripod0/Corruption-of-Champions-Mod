@@ -3674,7 +3674,7 @@ private function TeaseHighAnalXPArian():void {
 	else	
 		outputText(images.showImage("arianmale-camp-dreamingArian"));
 	flags[kFLAGS.ARIAN_MORNING] = 1;
-	outputText("\n\nFirst, you decide to check what exactly is Arian dreaming about...");
+	outputText("First, you decide to check what exactly is Arian dreaming about...");
 	outputText("\n\n\"<i>...[name]... no... don't stuff that turkey... stuff me....  I wanna be tasty too.</i>\"");
 	outputText("\n\nIs [Arian ey] dreaming about food, or sex?");
 	//(if PC has a cock)
@@ -3777,7 +3777,7 @@ public function wakeUpAfterArianSleep():void {
 		}
 		else { // AnalXP <= 100
 			//(PC fucked and came inside Arian, couldn't pull out. Wake up with a morning wood and surprisingly... still inside the lizan.)
-			outputText("\n\nYou feel a sudden urge to hump and wake up, only to find yourself still deeply lodged inside the greedy lizan's wanton rosebud.  Recalling the previous night and your little quickie in the night, you smile.  It's no wonder you're feeling particularly rested this morning.  [Arian Eir] greedy butt is as clingy as it was during the night... refusing to yield and let your shaft go.");
+			outputText("You feel a sudden urge to hump and wake up, only to find yourself still deeply lodged inside the greedy lizan's wanton rosebud.  Recalling the previous night and your little quickie in the night, you smile.  It's no wonder you're feeling particularly rested this morning.  [Arian Eir] greedy butt is as clingy as it was during the night... refusing to yield and let your shaft go.");
 			outputText("\n\nWell, if [Arian ey]'s really that desperate for a buttfuck... you wrap your arms around your reptilian lover's waist, both affectionately and as a way to maintain your position, and start to thrust your pelvis, pistoning your morning wood inside the insatiable asshole you've encouraged in your lover.");
 			outputText("\n\nArian moans and begins bucking back; then after a couple pumps [Arian ey] opens [Arian eir] eyes.  \"<i>Oh... [name]?  Oh!  This feels good...  W-what are you doing?</i>\"");
 			outputText("\n\nJust giving [Arian em] what [Arian ey] clearly wants so badly, you reply in a distracted tone; you're starting to get into a nice rhythm here and you don't want to lose it.");

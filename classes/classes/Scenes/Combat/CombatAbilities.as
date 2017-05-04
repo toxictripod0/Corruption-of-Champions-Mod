@@ -1742,6 +1742,12 @@ package classes.Scenes.Combat
 				//Keep it from going over 100
 				player.changeStatusValue(StatusEffects.Kelt, 1, 100);
 			}
+			// Practice makes perfect!
+			if (player.statusEffectv1(StatusEffects.Kelt) < 100) {
+				if (!player.hasStatusEffect(StatusEffects.Kelt))
+					player.createStatusEffect(StatusEffects.Kelt, 0, 0, 0, 0);
+				player.addStatusValue(StatusEffects.Kelt, 1, 1);
+			}
 			if (monster.hasStatusEffect(StatusEffects.Sandstorm) && rand(10) > 1) {
 				outputText("Your shot is blown off target by the tornado of sand and wind.  Damn!\n\n");
 				monster.doAI();
