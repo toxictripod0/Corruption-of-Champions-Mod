@@ -20,6 +20,7 @@ package classes.Scenes.Areas
 		public var oasis:Oasis = new Oasis();
 		public var sandTrapScene:SandTrapScene = new SandTrapScene();
 		public var sandWitchScene:SandWitchScene = new SandWitchScene();
+		public var ghoulScene:GhoulScene = new GhoulScene();
 		public var wanderer:Wanderer = new Wanderer();
 		public function Desert()
 		{
@@ -50,6 +51,10 @@ package classes.Scenes.Areas
 						name  : "sandtrap",
 						chance: 0.5,
 						call  : sandTrapScene.encounterASandTarp
+					}, {
+						name  : "ghoul",
+						chance: 0.5,
+						call  : ghoulScene.ghoulEncounter
 					}, {
 						name: "sandwitch",
 						when: function ():Boolean {
