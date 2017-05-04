@@ -2153,6 +2153,7 @@ private function giveKatherineAnItem(page:int = 0):void {
 	var hasJob:Boolean = flags[kFLAGS.KATHERINE_UNLOCKED] >= 4;
 	var button:int = 0;
 	menu();
+	addButton(14, "Back", giveKatherineAnItem);
 	// list pages
 	if (page == 0) {
 		addButton(button++, "Transformatives", giveKatherineAnItem, 1);
@@ -2162,6 +2163,7 @@ private function giveKatherineAnItem(page:int = 0):void {
 		
 		if (hasJob) addButton(button++, "Dyes", giveKatherineAnItem, 3);
 		else addDisabledButton(button++, "Dyes", "She likes her current hair color.");
+		addButton(14, "Back", katherineMenu);
 	}
 	//Transformatives
 	if (page == 1) {
@@ -2225,19 +2227,19 @@ private function giveKatherineAnItem(page:int = 0):void {
 		
 		if (!hasClothing(KBIT_CLOTHES_B_DRESS) && player.hasItem(armors.B_DRESS)) addButton(button++, "Long Dress", giveKatClothesLongDress);
 		else if (hasClothing(KBIT_CLOTHES_B_DRESS)) addDisabledButton(button++, "Long Dress", "She already owns a long dress.");
-		else addDisabledButton(button++, "Long Dress", "You think she can use a bodysuit.");
+		else addDisabledButton(button++, "Long Dress", "You think she can use a long dress.");
 		
 		if (!hasClothing(KBIT_CLOTHES_NURSECL) && player.hasItem(armors.NURSECL)) addButton(button++, "NurseClothes", giveKatClothesNurseOutfit);
-		else if (hasClothing(KBIT_CLOTHES_NURSECL)) addDisabledButton(button++, "NurseClothes", "She already owns a bodysuit.");
+		else if (hasClothing(KBIT_CLOTHES_NURSECL)) addDisabledButton(button++, "NurseClothes", "She already owns a nurse clothes.");
 		else addDisabledButton(button++, "NurseClothes", "You think she can use a nurse clothes.");
 		
 		if (!hasClothing(KBIT_CLOTHES_SS_ROBE) && player.hasItem(armors.SS_ROBE)) addButton(button++, "Silk Robe", giveKatClothesSilkRobe);
-		else if (hasClothing(KBIT_CLOTHES_SS_ROBE)) addDisabledButton(button++, "Bodysuit", "She already owns a silk robe.");
-		else addDisabledButton(button++, "Bodysuit", "You think she can use a silk robe.");
+		else if (hasClothing(KBIT_CLOTHES_SS_ROBE)) addDisabledButton(button++, "Silk Robe", "She already owns a silk robe.");
+		else addDisabledButton(button++, "Silk Robe", "You think she can use a silk robe.");
 		
 		if (!hasClothing(KBIT_CLOTHES_TUBETOP) && player.hasItem(armors.TUBETOP)) addButton(button++, "Tube Top", giveKatClothesTubeTop);
 		else if (hasClothing(KBIT_CLOTHES_TUBETOP)) addDisabledButton(button++, "Tube Top", "She already owns a tube top.");
-		else addDisabledButton(button++, "Bodysuit", "You think she can use a tube top.");
+		else addDisabledButton(button++, "Tube Top", "You think she can use a tube top.");
 	}
 	//Dyes
 	if (page == 3) {
@@ -2258,7 +2260,6 @@ private function giveKatherineAnItem(page:int = 0):void {
 		dyeButton("flaming red", consumables.RED_DYE, giveKatDyeRed);
 		dyeButton("snow white", consumables.WHITEDY, giveKatDyeWhite);
 	}
-	addButton(14, "Back", katherineMenu);
 }
 
 //Reducto

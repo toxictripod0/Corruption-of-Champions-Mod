@@ -57,7 +57,7 @@ package classes.Scenes.Places.Bazaar{
 			var testFunction:Function = function():void {
 				cut.roxanneDrinkingContestTest();
 				fireButtons.fireNextButtonEvent();
-			}
+			};
 
 			repeatEvent(testFunction);
 			
@@ -87,7 +87,7 @@ package classes.Scenes.Places.Bazaar{
 				cut.roxanneDrinkingContestTest();
 				fireButtons.fireNextButtonEvent();
 				setRoxanneLargeSize();
-			}
+			};
 			
 			repeatEvent(testFunction);
 			
@@ -115,7 +115,7 @@ package classes.Scenes.Places.Bazaar{
 				cut.roxanneDrinkingContestTest();
 				fireButtons.fireNextButtonEvent();
 				setRoxanneLargeSize();
-			}
+			};
 			
 			repeatEvent(testFunction);
 			
@@ -132,7 +132,7 @@ package classes.Scenes.Places.Bazaar{
 			var testFunction:Function = function():void {
 				cut.roxanneDrinkingContestTest();
 				fireButtons.fireNextButtonEvent();
-			}
+			};
 			
 			repeatEvent(testFunction);
 			

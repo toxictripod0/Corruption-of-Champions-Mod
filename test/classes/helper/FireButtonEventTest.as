@@ -20,10 +20,6 @@ package classes.helper
 		private var cut:FireButtonEvent;
 		private var eventTriggeredFlag:Boolean;
 		
-		public function FireButtonEventTest()
-		{
-		}
-		
 		[BeforeClass]
 		public static function setUpClass():void
 		{
