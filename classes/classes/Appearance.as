@@ -28,8 +28,6 @@
 		{
 			if (i_creature.hasFur())
 				return "fur";
-			else if (i_creature.hasWool())
-				return "wool";
 			else
 				return "hair";
 		}
