@@ -606,25 +606,8 @@ package classes.Scenes.NPCs
 						outputText("suggests that it's no joking matter.\n\n", false);
 					}
 			}
-			//Sex / Talk / Talk then sex
-			var sex:Function = determineAmilySexEvent();
-			menu();
-			if (sex != null) {
-				addButton(0, "Sex", sex);
-				addButton(2, "Both", (sex == null ? null : talkThenSexWithAmily));
-			} else {
-				addDisabledButton(0, "Sex");
-				addDisabledButton(2, "Both");
-			}
-			addButton(1, "Talk", talkToAmily);
-			//Amily is not a herm but is ok with herm-daddying!
-			if (player.hasItem(consumables.P_DRAFT) && flags[kFLAGS.AMILY_WANG_LENGTH] == 0 && flags[kFLAGS.AMILY_HERM_QUEST] == 2 && flags[kFLAGS.AMILY_AFFECTION] >= 40 && player.gender == 3) {
-				outputText("You could probably bring up the efficiency of having two hermaphrodite mothers, particularly since you have this purified incubi draft handy.\n\n", false);
-				addButton(3, "Efficiency", makeAmilyAHerm);
-			} else {
-				addDisabledButton(3, "Efficiency", "You could probably bring up the efficiency of having two hermaphrodite mothers, should you find a bottle of purified incubi draft.");
-			}
-			addButton(14, "Leave", camp.returnToCampUseOneHour);
+			
+			amilyVillageMenu();
 			
 			//Set flag for 'last gender met as'
 			flags[kFLAGS.AMILY_PC_GENDER] = player.gender;
@@ -633,6 +616,34 @@ package classes.Scenes.NPCs
 			outputText("You enter the ruined village cautiously. There are burnt-down houses, smashed-in doorways, ripped-off roofs... everything is covered with dust and grime. You explore for an hour, but you cannot find any sign of another living being, or anything of value. The occasional footprint from an imp or a goblin turns up in the dirt, but you don't see any of the creatures themselves. It looks like time and passing demons have stripped the place bare since it was originally abandoned. Finally, you give up and leave. You feel much easier when you're outside of the village - you had the strangest sensation of being watched while you were in there.", false);
 			doNext(13);
 			return;*/
+		}
+		
+		/**
+		 * Generic encounter menu.
+		 */
+		private function amilyVillageMenu():void
+		{
+			//Sex / Talk / Talk then sex
+			var sex:Function = determineAmilySexEvent();
+			menu();
+			if (sex != null) {
+				addButton(0, "Sex", sex);
+				addButton(2, "Both", talkThenSexWithAmily);
+			} else {
+				addDisabledButton(0, "Sex");
+				addDisabledButton(2, "Both");
+			}
+			addButton(1, "Talk", talkToAmily);
+			//Amily is not a herm but is ok with herm-daddying!
+			if (flags[kFLAGS.AMILY_WANG_LENGTH] == 0) {
+				if (player.hasItem(consumables.P_DRAFT) && flags[kFLAGS.AMILY_WANG_LENGTH] == 0 && flags[kFLAGS.AMILY_HERM_QUEST] == 2 && flags[kFLAGS.AMILY_AFFECTION] >= 40 && player.gender == 3) {
+					outputText("You could probably bring up the efficiency of having two hermaphrodite mothers, particularly since you have this purified incubi draft handy.\n\n", false);
+					addButton(3, "Efficiency", makeAmilyAHerm);
+				} else {
+					addDisabledButton(3, "Efficiency", "You could probably bring up the efficiency of having two hermaphrodite mothers, should you find a bottle of purified incubi draft.");
+				}
+			}
+			addButton(14, "Leave", camp.returnToCampUseOneHour);
 		}
 
 		private function determineAmilySexEvent(forced:Boolean = false):Function {
@@ -5159,6 +5170,8 @@ package classes.Scenes.NPCs
 						outputText("\"<i>I...</i>\" She swallows hard. \"<i>This is a great shock, I must confess, but... But I care too much to lose you. I don't care if you've got a pussy of your own, now. I still want to be with you.</i>\" She smiles at you, feebly. \"<i>So, as I was saying, what do you want to talk about?</i>\"\n\n", false);
 						//(The player is considered as having completed the herm-specific part of Amily's quest.)
 						flags[kFLAGS.AMILY_HERM_QUEST] = 2;
+						amilyVillageMenu();
+						return;
 					}
 				}
 				//[Any to Genderless]
@@ -5171,11 +5184,15 @@ package classes.Scenes.NPCs
 					else if (flags[kFLAGS.AMILY_AFFECTION] < 40) {
 						outputText("She shakes her head sadly. \"<i>I guess this kind of puts a kink in our relationship, doesn't it? Still, I'll always be willing to talk with you.</i>\"\n\n", false);
 						//(The player can only Talk with Amily on each remeeting until they have become a gender other than Genderless.)
+						amilyVillageMenu();
+						return;
 					}
 					//High Affection:
 					else {
 						outputText("She looks upset and concerned - but for your sake, not hers. \"<i>I can't imagine what catastrophe robbed you like this. Please, find a way to change yourself back? Man, woman, even herm, I can't bear to see you like this... but I'll give you all the support I can.</i>\"\n\n", false);
 						//(The player can only Talk with Amily on each remeeting until they have become a gender other than Genderless.)
+						amilyVillageMenu();
+						return;
 					}
 				}
 			}
@@ -5190,7 +5207,11 @@ package classes.Scenes.NPCs
 						//FEN: Increase affection!
 						flags[kFLAGS.AMILY_AFFECTION] += 15;
 						//FEN: If PC has had any kids with her, set as good to go!
-						if (flags[kFLAGS.PC_TIMES_BIRTHED_AMILYKIDS] > 0) flags[kFLAGS.AMILY_OFFER_ACCEPTED] = 1;
+						if (flags[kFLAGS.PC_TIMES_BIRTHED_AMILYKIDS] > 0) {
+							flags[kFLAGS.AMILY_OFFER_ACCEPTED] = 1;
+							amilyVillageMenu();
+							return;
+						} // otherwise leave and proceed next time
 					}
 					//Medium Affection:
 					else if (flags[kFLAGS.AMILY_AFFECTION] < 40) {
@@ -5199,7 +5220,11 @@ package classes.Scenes.NPCs
 						//FEN: Increase affection!
 						flags[kFLAGS.AMILY_AFFECTION] += 5;
 						//FEN: If PC has had any kids with her, set as good to go!
-						if (flags[kFLAGS.PC_TIMES_BIRTHED_AMILYKIDS] > 0) flags[kFLAGS.AMILY_OFFER_ACCEPTED] = 1;
+						if (flags[kFLAGS.PC_TIMES_BIRTHED_AMILYKIDS] > 0) {
+							flags[kFLAGS.AMILY_OFFER_ACCEPTED] = 1;
+							amilyVillageMenu();
+							return;
+						} // otherwise leave and proceed next time
 					}
 					//High Affection:
 					else {
@@ -5230,13 +5255,16 @@ package classes.Scenes.NPCs
 							outputText("She looks you up and down, swallows forcefully, then looks determined. \"<i>I... I never dreamed I would say this to a hermaphrodite, but... but I know you, and I love you. If you still want to be with me, I'll stay with you.</i>\" She gives you wry grin. \"<i>Besides, I guess this means that now you and I can have children, anyway.</i>\"", false);
 							//(Player counts as having finished the herm variant of Amily's quest.)
 							flags[kFLAGS.AMILY_HERM_QUEST] = 2;
+							amilyVillageMenu();
+							return;
 						}
 					}
 					//Amily grew a dick for you.
 					else {
 						outputText("Amily looks you up and down, blushes and says, \"<i>Did you get a little jealous of me and decide to have some fun for yourself?  I-I didn't want it to be this way, but I guess we can both repopulate my race now.  How wonderful.</i>\"", false);
 						flags[kFLAGS.AMILY_HERM_QUEST] = 2;
-
+						amilyVillageMenu();
+						return;
 					}
 				}
 				//[Any to Genderless]
@@ -5276,15 +5304,7 @@ package classes.Scenes.NPCs
 						//mark as agreed to preg-quest!
 						flags[kFLAGS.AMILY_OFFER_ACCEPTED] = 1;
 						//(Use the Remeeting scene options.)
-						menu();
-						addDisabledButton(0, "Sex");
-						addDisabledButton(2, "Both");
-						
-						addButton(1, "Talk", talkToAmily);
-						if (player.lust >= 33) {
-							addButton(0, "Sex", sexWithAmily);
-							addButton(2, "Both", talkThenSexWithAmily);
-						}
+						amilyVillageMenu();
 						return;
 					}
 					//High Affection:
@@ -5295,15 +5315,7 @@ package classes.Scenes.NPCs
 						//mark as agreed to preg-quest!
 						flags[kFLAGS.AMILY_OFFER_ACCEPTED] = 1;
 						//(Use the Remeeting scene options.)
-						menu();
-						addDisabledButton(0, "Sex");
-						addDisabledButton(2, "Both");
-						
-						addButton(1, "Talk", talkToAmily);
-						if (player.lust >= 33) {
-							addButton(0, "Sex", sexWithAmily);
-							addButton(2, "Both", talkThenSexWithAmily);
-						}
+						amilyVillageMenu();
 						return;
 					}
 				}
@@ -5314,19 +5326,23 @@ package classes.Scenes.NPCs
 						outputText("\"<i>Well, I guess it's nice to see another woman around... though I could have used you as all male. So, do you want to talk?</i>\" Amily asks.\n\n", false);
 						//(Amily gains a small amount of Affection, begin the Female variant of Amily's quest.)
 						flags[kFLAGS.AMILY_AFFECTION] += 2;
-						doNext(talkToAmily);
+						amilyVillageMenu();
 						return;
 					}
 					//Medium Affection:
 					else if (flags[kFLAGS.AMILY_AFFECTION] < 40) {
 						outputText("\"<i>You didn't need to change yourself for my sake... but, I do like having somebody who can really understand what life in this world is like.</i>\" Amily notes.", false);
 						//(Amily's affection remains unchanged, but the quest switches to the female variant.)
+						amilyVillageMenu();
+						return;
 					}
 					//High Affection:
 					else {
 						outputText("Amily looks kind of disappointed. \"<i>I will always love you no matter who you are, but... I was kind of used to that nice cock of yours, love.</i>\" She shakes her head. \"<i>Ah, well, if it's you, then sex is sex to me.</i>\" She smiles.", false);
 						//Set love confession to: GO!
 						flags[kFLAGS.AMILY_CONFESSED_LESBIAN] = 2;
+						amilyVillageMenu();
+						return;
 					}
 				}
 				//[Any to Genderless]
@@ -5339,11 +5355,15 @@ package classes.Scenes.NPCs
 					else if (flags[kFLAGS.AMILY_AFFECTION] < 40) {
 						outputText("She shakes her head sadly. \"<i>I guess this kind of puts a kink in our relationship, doesn't it? Still, I'll always be willing to talk with you.</i>\"\n\n", false);
 						//(The player can only Talk with Amily on each remeeting until they have become a gender other than Genderless.)
+						amilyVillageMenu();
+						return;
 					}
 					//High Affection:
 					else {
 						outputText("She looks upset and concerned - but for your sake, not hers. \"<i>I can't imagine what catastrophe robbed you like this. Please, find a way to change yourself back? Man, woman, even herm, I can't bear to see you like this... but I'll give you all the support I can.</i>\"\n\n", false);
 						//(The player can only Talk with Amily on each remeeting until they have become a gender other than Genderless.)
+						amilyVillageMenu();
+						return;
 					}
 				}
 			}
