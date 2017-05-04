@@ -43,11 +43,11 @@ package classes.internals
 				throw new ArgumentError("Type must implement Serializable");
 			}
 			
-			if (destinationVector == null) {
+			if (destinationVector === null) {
 				throw new ArgumentError("Destination Vector cannot be null");
 			}
 			
-			if (serializedVector == null) {
+			if (serializedVector === null) {
 				throw new ArgumentError("Serialized Vector cannot be null");
 			}
 			
