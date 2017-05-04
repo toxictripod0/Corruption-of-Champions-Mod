@@ -18,7 +18,7 @@ package classes.internals
 		private var testObject:*;
 		private var testVector:Vector.<Serializable>;
 		private var testAMFVector:Vector.<SerializableAMF>;
-		private var deserializedVector:Vector.<*>
+		private var deserializedVector:Vector.<*>;
 		
 		public function SerializationUtilTest()
 		{

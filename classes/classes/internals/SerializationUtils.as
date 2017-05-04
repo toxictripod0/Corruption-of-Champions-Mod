@@ -53,7 +53,7 @@ package classes.internals
 			
 			for each(var element:Object in serializedVector) {
 				var instance:Serializable = new type();
-				instance.deserialize(element)
+				instance.deserialize(element);
 				destinationVector.push(instance);
 			}
 		}
