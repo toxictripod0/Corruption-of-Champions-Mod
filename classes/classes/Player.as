@@ -763,8 +763,12 @@ use namespace kGAMECLASS;
 			{
 				if (hasDragonWingsAndFire())
 					race = isBasilisk() ? "dracolisk" : "dragonewt";
-				else
-					race = isBasilisk() ? "basilisk"  : "lizan";
+				else {
+					if (lowerBody == LOWER_BODY_TYPE_HARPY && hasScales() && InCollection(wingType, WING_TYPE_DRACONIC_LARGE, WING_TYPE_HARPY, WING_TYPE_FEATHERED_LARGE, WING_TYPE_BAT_LIKE_LARGE))
+						race = "cockatrice"; // should also have avian face, but we have no such thing for now
+					else
+						race = isBasilisk() ? "basilisk"  : "lizan";
+				}
 				if (isTaur())
 					race += "-taur";
 				if (lizardScore() >= 9)
