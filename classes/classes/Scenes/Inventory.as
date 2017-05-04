@@ -93,11 +93,11 @@ package classes.Scenes
 			}
 			
 			if (!getGame().inCombat && flags[kFLAGS.DELETE_ITEMS] == 1) {
-				addButton(11, "Trash Items", deleteItems, null, null, null, "Trash your items, one by one.\n\nClick to trash all in a stack.\nClick twice to stop.", "Trash Items");
+				addButton(11, "Trash All", deleteItems, null, null, null, "Trash your items, one by one.\n\nClick to trash all in a stack.\nClick twice to stop.", "Trash Items");
 			} else if (!getGame().inCombat && flags[kFLAGS.DELETE_ITEMS] == 2) {
-				addButton(11, "Trash Items", deleteItems, null, null, null, "Trash all of your items in a stack.\n\nClick to stop.\nClick twice to trash your items one by one.", "Trash Items");
+				addButton(11, "Trash Stop", deleteItems, null, null, null, "Trash all of your items in a stack.\n\nClick to stop.\nClick twice to trash your items one by one.", "Trash Items");
 			} else if (!getGame().inCombat && flags[kFLAGS.DELETE_ITEMS] == 0) {
-				addButton(11, "Trash Items", deleteItems, null, null, null, "Start throwing away your items.\n\nClick to trash your items one by one.\nClick twice to trash all in a stack.", "Trash Items");
+				addButton(11, "Trash One", deleteItems, null, null, null, "Start throwing away your items.\n\nClick to trash your items one by one.\nClick twice to trash all in a stack.", "Trash Items");
 			}
 			
 			
