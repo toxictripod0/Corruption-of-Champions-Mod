@@ -648,6 +648,14 @@ public function owcaTavern():void {
 	} else {
 		addButton(3, "MinotaurCum", owcaBuySetup, consumables.MINOCUM);
 	}
+	
+	outputText("\nClovis: " + (80 - (flags[kFLAGS.OWCAS_ATTITUDE]/2)) + " gems");
+	if ((80 - (flags[kFLAGS.OWCAS_ATTITUDE]/2)) > player.gems) {
+		addDisabledButton(4, "Clovis");
+	} else {
+		addButton(4, "Clovis", owcaBuySetup, consumables.CLOVERS);
+	}
+	
 	outputText("</i>");
 	
 	addButton(14, "Back", gangbangVillageStuff);
