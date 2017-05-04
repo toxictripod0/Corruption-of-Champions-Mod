@@ -923,10 +923,6 @@ package classes
 			return -1;
 		}
 
-		[Deprecated(replacement="indexOfStatusEffect(), statusEffectByType(), or hasStatusEffect() instead")]
-		public function findStatusEffect(stype:StatusEffectType):int {
-			return indexOfStatusEffect(stype);
-		}
 		public function statusEffectByType(stype:StatusEffectType):StatusEffectClass {
 			var idx:int = indexOfStatusEffect(stype);
 			return idx<0 ? null : statusEffects[idx];
