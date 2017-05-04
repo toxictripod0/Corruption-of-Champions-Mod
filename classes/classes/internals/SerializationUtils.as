@@ -18,7 +18,7 @@ package classes.internals
 		 * @return a array containing the serialized vector
 		 */
 		public static function serializeVector(vector:Vector.<*>):Array {
-			var serialized:* = [];
+			var serialized:Array = [];
 			
 			for each(var element:Serializable in vector) {
 				var obj:Array = [];
@@ -65,7 +65,7 @@ package classes.internals
 		 * @return a array containing the serialized vector
 		 */
 		public static function serializeVectorWithAMF(vector:Vector.<SerializableAMF>):Array {
-			var serialized:* = [];
+			var serialized:Array = [];
 			
 			for each(var element:SerializableAMF in vector) {
 				serialized.push(element);

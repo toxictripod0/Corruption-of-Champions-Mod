@@ -15,7 +15,7 @@ package classes.internals
 	{
 		private static const TEST_INSTANCES:int = 5;
 		
-		private var testObject:*;
+		private var testObject:Array;
 		private var testVector:Vector.<Serializable>;
 		private var testAMFVector:Vector.<SerializableAMF>;
 		private var deserializedVector:Vector.<*>;
