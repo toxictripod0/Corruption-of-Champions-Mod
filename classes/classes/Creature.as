@@ -2574,6 +2574,11 @@ package classes
 			return skin.hasFur();
 		}
 
+		public function hasWool():Boolean
+		{
+			return skin.hasWool();
+		}
+
 		public function hasFurOrScales():Boolean
 		{
 			return hasFur() || hasScales();
