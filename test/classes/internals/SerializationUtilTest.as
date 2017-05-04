@@ -20,10 +20,6 @@ package classes.internals
 		private var testAMFVector:Vector.<SerializableAMF>;
 		private var deserializedVector:Vector.<*>;
 		
-		public function SerializationUtilTest()
-		{
-		}
-		
 		private function buildVector(instances:int):void
 		{
 			for (var i:int = 0; i < instances; i++)
