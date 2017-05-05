@@ -6049,29 +6049,6 @@ public function wolfPepper(type: Number, player: Player): void {
 			flags[kFLAGS.TIMES_TRANSFORMED] += changes;
 		}
 
-/*
-		public function wingStick(player:Player):void
-		{
-			outputText("You toss a wingstick at your foe!  It flies straight and true, almost as if it has a mind of its own as it arcs towards " + monster.a + monster.short + "!\n", true);
-			//1% dodge for each point of speed over 80
-			if (monster.spe - 80 > rand(100) + 1 || monster.short == "lizan rogue") {
-				outputText("Somehow " + monster.a + monster.short + "'", false);
-				if (!monster.plural) outputText("s", false);
-				outputText(" incredible speed allows " + monster.pronoun2 + " to avoid the spinning blades!  The deadly device shatters when it impacts something in the distance.", false);
-			}
-			//Not dodged
-			else {
-				var damage:Number = 40 + rand(61);
-				outputText(monster.capitalA + monster.short + " is hit with the wingstick!  It breaks apart as it lacerates " + monster.pronoun2 + ". (" + damage + ")", false);
-				monster.HP -= damage;
-				if (monster.HP < 0) monster.HP = 0;
-			}
-			if (monster.short == "lizan rogue") {
-				outputText("You fling the wingstick with all your might and its aim is true. The moment it nears the lizan, though, he catches it with a flick of his wrist.  It appears he is too fast and well trained for normal projectile attacks.");
-			}
-		}
-*/
-
 		public function neonPinkEgg(pregnantChange:Boolean,player:Player):void
 		{
 			var tfSource:String = "neonPinkEgg";
