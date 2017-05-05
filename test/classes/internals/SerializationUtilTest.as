@@ -8,7 +8,7 @@ package classes.internals
 	import org.hamcrest.text.*;
 	import org.hamcrest.collection.*;
 	
-	import classes.internals.Serializable;
+	import classes.internals.ISerializable;
 	import classes.internals.SerializableAMF;
 	
 	public class SerializationUtilTest
@@ -16,7 +16,7 @@ package classes.internals
 		private static const TEST_INSTANCES:int = 5;
 		
 		private var testObject:Array;
-		private var testVector:Vector.<Serializable>;
+		private var testVector:Vector.<ISerializable>;
 		private var testAMFVector:Vector.<SerializableAMF>;
 		private var deserializedVector:Vector.<*>;
 		
@@ -44,7 +44,7 @@ package classes.internals
 		public function setUp():void
 		{
 			testObject = null;
-			testVector = new Vector.<Serializable>();
+			testVector = new Vector.<ISerializable>();
 			testAMFVector = new Vector.<SerializableAMF>();
 			deserializedVector = new Vector.<*>();
 			
@@ -179,11 +179,11 @@ package classes.internals
 	}
 }
 
-import classes.internals.Serializable;
+import classes.internals.ISerializable;
 import classes.internals.SerializableAMF;
 import flash.errors.IllegalOperationError;
 
-class SerializationDummy implements Serializable
+class SerializationDummy implements ISerializable
 {
 	public var foo:int;
 	private var bar:int;

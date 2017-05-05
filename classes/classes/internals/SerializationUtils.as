@@ -20,7 +20,7 @@ package classes.internals
 		public static function serializeVector(vector:Vector.<*>):Array {
 			var serialized:Array = [];
 			
-			for each(var element:Serializable in vector) {
+			for each(var element:ISerializable in vector) {
 				var obj:Array = [];
 				serialized.push(obj);
 				
@@ -39,7 +39,7 @@ package classes.internals
 		 */
 		public static function deserializeVector(destinationVector:Vector.<*>, serializedVector:Array, type:Class):void {
 			// 'is' will only work on an instance
-			if (!(new type() is Serializable)) {
+			if (!(new type() is ISerializable)) {
 				throw new ArgumentError("Type must implement Serializable");
 			}
 			
@@ -52,7 +52,7 @@ package classes.internals
 			}
 			
 			for each(var element:Object in serializedVector) {
-				var instance:Serializable = new type();
+				var instance:ISerializable = new type();
 				instance.deserialize(element);
 				destinationVector.push(instance);
 			}
