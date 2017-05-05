@@ -29,6 +29,8 @@ package classes
 				combatStats += "<b>Bow Skill:</b> " + Math.round(player.statusEffectv1(StatusEffects.Kelt)) + " / 100\n";
 				
 			combatStats += "<b>Critical Hit Chance:</b> " + Math.round(combat.getCritChance()) + "%\n";	
+				
+			combatStats += "<b>Dodge Chance:</b> " + Math.round(player.getEvasionChance()) + "% (W/o speed-based)\n";	
 			
 			combatStats += "<b>Damage Resistance:</b> " + (100 - Math.round(player.damagePercent(true))) + "-" + (100 - Math.round(player.damagePercent(true) - player.damageToughnessModifier(true))) + "% (Higher is better.)\n";
 

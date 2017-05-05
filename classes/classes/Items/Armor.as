@@ -41,7 +41,7 @@ package classes.Items
 			desc += "\n\nType: ";
 			if (perk == "Light" || perk == "Medium" || perk == "Heavy") {
 				desc += "Armor (" + perk + ")";
-			}
+			} else if (perk == "Adornment") desc += "Adornment ";
 			else desc += "Clothing ";
 			//Defense
 			desc += "\nDefense: " + String(def);
