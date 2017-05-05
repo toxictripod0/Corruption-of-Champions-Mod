@@ -3594,9 +3594,6 @@ package classes
 			if (hasPerk(PerkLib.ImmovableObject) && tou >= 75) {
 				mult *= 0.9;
 			}
-			if (hasPerk(PerkLib.Juggernaut) && tou >= 75 && armorPerk == "Heavy") {
-				mult *= 0.9;
-			}			
 			
 			//--STATUS AFFECTS--
 			//Black cat beer = 25% reduction!
@@ -3685,6 +3682,8 @@ package classes
 		
 		/**
 		* Look into perks and special effects and @return summery extra chance to avoid attack granted by them.
+		* 
+		* Is overriden in Player to work with Unhindered.
 		*/
 		public function getEvasionChance():Number
 		{
@@ -3692,7 +3691,6 @@ package classes
 			if (hasPerk(PerkLib.Evade)) chance += 10;
 			if (hasPerk(PerkLib.Flexibility)) chance += 6;
 			if (hasPerk(PerkLib.Misdirection) && armorName == "red, high-society bodysuit") chance += 10;
-			if (hasPerk(PerkLib.Unhindered) && InCollection(armorName, "nothing")) chance += 10;
 			return chance;
 		}
 	   
@@ -3701,6 +3699,7 @@ package classes
 		public const EVASION_FLEXIBILITY:String = "Flexibility";
 		public const EVASION_MISDIRECTION:String = "Misdirection";
 		public const EVASION_UNHINDERED:String = "Unhindered";
+		protected var evasionRoll:Number = 0;
 	   
 		/**
 	    * Try to avoid and @return a reason if successfull or null if failed to evade.
@@ -3708,6 +3707,8 @@ package classes
 		* If attacker is null then you can specify attack speed for enviromental and non-combat cases. If no speed and attacker specified and then only perks would be accounted.
 		* 
 		* This does NOT account blind!
+		* 
+		* Is overriden in Player to work with Unhindered.
 	    */
 		public function getEvasionReason(useMonster:Boolean = true, attackSpeed:int = int.MIN_VALUE):String
 		{
@@ -3716,14 +3717,12 @@ package classes
 			if (attackSpeed != int.MIN_VALUE && spe - attackSpeed > 0 && int(Math.random() * (((spe - attackSpeed) / 4) + 80)) > 80) return "Speed";
 			//note, Player.speedDodge is still used, since this function can't return how close it was
 
-			var roll:Number = rand(100);
+			evasionRoll = rand(100);
 
 			// perks
-			if (hasPerk(PerkLib.Evade) && ((roll = roll - 10) < 0)) 
-			return "Evade";
-			if (hasPerk(PerkLib.Flexibility) && ((roll = roll - 6) < 0)) return "Flexibility";
-			if (hasPerk(PerkLib.Misdirection) && armorName == "red, high-society bodysuit" && ((roll = roll - 10) < 0)) return "Misdirection";
-			if (hasPerk(PerkLib.Unhindered) && InCollection(armorName, "nothing") && ((roll = roll - 10) < 0)) return "Unhindered";
+			if (hasPerk(PerkLib.Evade) && ((evasionRoll = evasionRoll - 10) < 0)) return "Evade";
+			if (hasPerk(PerkLib.Flexibility) && ((evasionRoll = evasionRoll - 6) < 0)) return "Flexibility";
+			if (hasPerk(PerkLib.Misdirection) && armorName == "red, high-society bodysuit" && ((evasionRoll = evasionRoll - 10) < 0)) return "Misdirection";
 			return null;
 		}
 	   
