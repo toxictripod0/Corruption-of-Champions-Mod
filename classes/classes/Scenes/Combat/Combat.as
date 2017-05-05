@@ -863,13 +863,9 @@ package classes.Scenes.Combat
 			//Bonus sand trap damage!
 			if (monster.hasStatusEffect(StatusEffects.Level)) damage = Math.round(damage * 1.75);
 			//Determine if critical hit!
-			var crit:Boolean = false;
-			var critChance:int = 5;
-			if (player.findPerk(PerkLib.Tactician) >= 0 && player.inte >= 50) critChance += (player.inte - 50) / 5;
-			if (rand(100) < critChance) {
-				crit = true;
+			var crit:Boolean = combatCritical();
+			if (crit)
 				damage *= 1.75;
-			}
 			//Apply AND DONE!
 			damage *= (monster.damagePercent(false, true) / 100);
 			//Damage post processing!
@@ -1097,12 +1093,17 @@ package classes.Scenes.Combat
 			return player.findPerk(PerkLib.Parry) >= 0 && player.spe >= 50 && player.str >= 50 && rand(100) < ((player.spe - 50) / 5) && player.weapon != WeaponLib.FISTS;
 			trace("Parried!");
 		}
+		
 		public function combatCritical():Boolean {
-			var critChance:int = 4;
-			if (player.findPerk(PerkLib.Tactician) >= 0 && player.inte >= 50) critChance += (player.inte - 50) / 10;
-			if (player.findPerk(PerkLib.Blademaster) >= 0 && (player.weaponVerb == "slash" || player.weaponVerb == "cleave" || player.weaponVerb == "keen cut")) critChance += 5;
+			return rand(100) <= getCritChance();
+		}
+		
+		public function getCritChance():Number {
+			var critChance:Number = 5;
+			if (player.findPerk(PerkLib.Tactician) >= 0 && player.inte >= 50) critChance += (player.inte - 50) / 5;
+			if (player.findPerk(PerkLib.Blademaster) >= 0 && (player.weaponVerb == "slash" || player.weaponVerb == "cleave" || player.weaponVerb == "keen cut") && player.shield == ShieldLib.NOTHING) critChance += 5;
 			if (player.jewelry.effectId == JewelryLib.MODIFIER_CRITICAL) critChance += player.jewelry.effectMagnitude;
-			return rand(100) <= critChance;
+			return critChance;
 		}
 
 		public function combatBlock(doFatigue:Boolean = false):Boolean {
