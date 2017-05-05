@@ -8396,36 +8396,6 @@ public function wolfPepper(type: Number, player: Player): void {
 			flags[kFLAGS.TIMES_TRANSFORMED] += changes;
 		}
 
-//Unbimbo Yourself:*
-/* Now handled by DeBimbo.as
-		public function deBimbo(player:Player):void
-		{
-			clearOutput();
-			if (player.findPerk(PerkLib.BimboBrains) < 0 && player.findPerk(PerkLib.FutaFaculties) < 0 && player.findPerk(PerkLib.BroBrains) < 0) {
-				outputText("You can't use this right now, and it's too expensive to waste!\n\n");
-				if (debug) {}
-				else {
-					inventory.takeItem(consumables.DEBIMBO);
-				}
-				return;
-			}
-			outputText("Well, time to see what this smelly, old rat was on about!  You pinch your nose and swallow the foul-tasting mixture with a grimace.  Oh, that's just <i>nasty!</i>  You drop the vial, which shatters on the ground, clutching at your head as a wave of nausea rolls over you.  Stumbling back against a rock for support, you close your eyes.  A constant, pounding ache throbs just behind your temples, and for once, you find yourself speechless.  A pained groan slips through your lips as thoughts and memories come rushing back.  One after another, threads of cognizant thought plow through the simple matrices of your bimbo mind, shredding and replacing them.");
-			outputText("\n\nYou... you were an air-headed ditz!  A vacuous, idiot-girl with nothing between her ears but hunger for dick and pleasure!  You shudder as your faculties return, the pain diminishing with each passing moment.");
-			if (player.findPerk(PerkLib.BimboBrains) >= 0) {
-				outputText("\n\n(<b>Perk Removed:  Bimbo Brains - Your intelligence and speech patterns are no longer limited to that of a bimbo.</b>)");
-				player.removePerk(PerkLib.BimboBrains);
-			}
-			else if (player.findPerk(PerkLib.FutaFaculties) >= 0) {
-				outputText("\n\n(<b>Perk Removed:  Futa Faculties - Your intelligence and speech patterns are no longer limited to that of a futanari bimbo.</b>)");
-				player.removePerk(PerkLib.FutaFaculties);
-			}			
-			else if (player.findPerk(PerkLib.BroBrains) >= 0) {
-				outputText("\n\n(<b>Perk Removed:  Bro Brains - Your intelligence gains are no longer hampered. You now gain intelligence at a normal pace.</b>)");
-				player.removePerk(PerkLib.BroBrains);
-			}
-		}
-*/
-
 		public function fishFillet(player:Player):void
 		{
 			clearOutput();
