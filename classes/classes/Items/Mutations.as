@@ -4333,7 +4333,7 @@ public function wolfPepper(type: Number, player: Player): void {
 			player.refillHunger(15);
 		}
 
-		public function gooGasmic(player:Player):void
+		public function wetCloth(player:Player):void
 		{
 			var tfSource:String = "gooGasmic";
 			outputText("You take the wet cloth in hand and rub it over your body, smearing the strange slime over your " + player.skinDesc + " slowly.", true);
