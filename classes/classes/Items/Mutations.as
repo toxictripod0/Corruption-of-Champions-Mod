@@ -9685,7 +9685,7 @@ public function wolfPepper(type: Number, player: Player): void {
 		}
 		
 		//Ferret Fruit
-		public function ferretTF(player:Player):void
+		public function ferretFruit(player:Player):void
 		{
 			var tfSource:String = "ferretTF";
 			//CoC Ferret TF (Ferret Fruit)
