@@ -23,12 +23,6 @@ package classes.Scenes.Areas
 		public var phoenixScene:PhoenixScene = new PhoenixScene();
 		public var cockatriceScene:CockatriceScene = new CockatriceScene();
 
-		public static const GENERIC_HARPY:int = 1;
-		public static const BASILISK:int      = 2;
-		public static const SOPHIE:int        = 3;
-		public static const IZUMI:int         = 4;
-		public static const COCKATRICE:int    = 5;
-
 		public function HighMountains()
 		{
 		}
@@ -123,12 +117,6 @@ package classes.Scenes.Areas
 		//Explore High Mountain
 		public function exploreHighMountain():void
 		{
-			var choices:Array = [
-				GENERIC_HARPY,
-				BASILISK,
-				SOPHIE,
-				IZUMI,
-			];
 			flags[kFLAGS.DISCOVERED_HIGH_MOUNTAIN]++;
 			explorationEncounter.execEncounter();
 		}
