@@ -6,6 +6,10 @@
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.GlobalFlags.kACHIEVEMENTS;
 
+	/**
+	 * This class performs the various mutations on the player, transforming one or more
+	 * aspects of their appearance.
+	 */
 	public final class Mutations extends MutationsHelper
 	{
 		private static var _instance:Mutations = new Mutations();
