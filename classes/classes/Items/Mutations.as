@@ -7838,6 +7838,12 @@ public function wolfPepper(type: Number, player: Player): void {
 			player.refillHunger(5);
 		}
 
+		/**
+		 * Transformation for Fox Berry or (enhanced) Vixen's Vigor
+		 * 
+		 * @param	enhanced if true, it's Vixen's Vigor
+		 * @param	player affected by the item
+		 */
 		public function foxTF(enhanced:Boolean,player:Player):void
 		{
 			var tfSource:String = "foxTF";
