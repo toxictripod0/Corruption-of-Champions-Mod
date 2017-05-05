@@ -24,11 +24,6 @@
 
 		public static function init():Mutations { return _instance; }
 
-//const FOX_BAD_END_WARNING:int = 477;
-//const TIMES_MET_CHICKEN_HARPY:int = 652;
-//const EGGS_BOUGHT:int = 653;
-//const BIKINI_ARMOR_BONUS:int = 769;
-
 //Cerulean P.
 		public function ceruleanPotion(player:Player):void
 		{
