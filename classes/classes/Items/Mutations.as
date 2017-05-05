@@ -9513,6 +9513,10 @@ public function wolfPepper(type: Number, player: Player): void {
 //perk - fuck if i know
 //maybe some pregnancy-accelerating thing
 
+		/**
+		 * Changes shared by succubi milk and incubi draft
+		 * @param	player affected by the mutation
+		 */
 		private function demonChanges(player:Player):void
 		{
 			//Change tail if already horned.
