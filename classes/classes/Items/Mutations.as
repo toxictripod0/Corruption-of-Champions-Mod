@@ -7217,27 +7217,6 @@ public function wolfPepper(type: Number, player: Player): void {
 			player.refillHunger(5);
 			flags[kFLAGS.TIMES_TRANSFORMED] += changes;
 		}
-		
-/*
-		public function applyLustStick(player:Player):void
-		{
-			clearOutput();
-			if (player.hasStatusEffect(StatusEffects.LustStickApplied)) {
-				player.addStatusValue(StatusEffects.LustStickApplied, 1, 12 + rand(12));
-				outputText("You carefully open the sweet-smelling tube and smear the lipstick over the coat you already have on your lips.  <b>No doubt another layer will make it last even longer!</b>  ", false);
-				outputText("You finish and pucker your lips, feeling fairly sexy with your new, thicker makeup on.\n\n", false);
-			}
-			else {
-				player.createStatusEffect(StatusEffects.LustStickApplied, 24, 0, 0, 0);
-				outputText("You carefully open the sweet-smelling tube and smear the lipstick over your lips.  ", false);
-				if (player.hasCock()) outputText("It tingles a little, but the drugs have little to no effect on you now.", false);
-				else outputText("Honestly, it amazes you that something as little as a kiss can make a man putty in your hands.", false);
-				outputText("  You finish and pucker your lips, feeling fairly sexy with your new makeup on.\n\n", false);
-			}
-			dynStats("lus", 1);
-
-		}
-*/
 
 		public function broBrew(player:Player):void
 		{
