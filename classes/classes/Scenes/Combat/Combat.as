@@ -1798,6 +1798,8 @@ package classes.Scenes.Combat
 		}
 		public function beginCombatImmediate(monster:Monster, _plotFight:Boolean):void {
 			beginCombat(monster, _plotFight);
+			if (prison.inPrison && prison.prisonCombatAutoLose) endLustLoss();
+			else playerMenu();
 		}
 		
 		public function display():void {
