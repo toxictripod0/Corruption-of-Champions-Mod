@@ -9579,23 +9579,6 @@ public function wolfPepper(type: Number, player: Player): void {
 			outputText("You take a bite into the pigtail truffle. It oddly tastes like bacon. You eventually finish eating. ");
 			player.refillHunger(20);
 			//-----------------------
-			// BAD END ALERT!
-			//-----------------------
-			/*if (rand(5) == 0 && player.pigScore() >= 5 && player.findPerk(PerkLib.TransformationResistance) < 0) {
-				if (flags[kFLAGS.PIG_BAD_END_WARNING] == 0) {
-					outputText("\n\nYou find yourself idly daydreaming of flailing about in the mud, letting go of all of your troubles. Eventually, you shake off the thought. Why would you do something like that? Maybe you should cut back on all the truffles?");
-					dynStats("inte", -3);
-				}
-				else {
-					outputText("\n\nAs you down the last of your truffle, your entire body begins to convulse violently. Your vision becomes blurry, and you black out.");
-					outputText("\n\nWhen you awaken, you are greeted by a large dog licking at your face. The dog seems oddly familiar. \"<i>Bessy, whatcha doin’ girl?</i>\" a voice calls. The voice seems familiar as well. A funny-looking pig on two legs soon appears at the dog’s side. \"<i>Now, now, what do we have here?</i>\" The pig inspects you for a moment, eventually finding a hint of pigtail truffle on your snout.");
-					outputText("\n\n\"<i>Ah no...</i>\" he says sadly, shaking his head. \"<i>Come with me little " + player.mf("guy", "gal") + ",  I’ve got a place for ya.</i>\"  He then leads you to his shack, nestled in a small clearing in a nearby forest. \"<i>You don’t need ‘ta worry about a thing.  Come ‘ta think of it...</i>\"  he taps his chin for a moment,  \"<i>I know what I could use you for. You could be my own personal truffle hog! The more truffles, the better!</i>\"");
-					outputText("\n\nYou take wonderfully to your new job. Finding truffles is fun, and the funny pig takes great care of you. You couldn’t ask for better. Sure, the world is full of demons and the like, but here, you’re safe, and that’s all you care about.");
-					getGame().gameOver();
-					return;
-				}
-			}*/
-			//-----------------------
 			// SIZE MODIFICATIONS
 			//-----------------------
 			//Increase thickness
