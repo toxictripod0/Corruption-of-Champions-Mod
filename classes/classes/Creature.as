@@ -588,6 +588,11 @@ package classes
 		}
 		public function orgasm(type:String = 'Default', real:Boolean = true):void
 		{
+			// None-tails original doc includes ability to recover fatigue with after-combat sex. Though it could be OP...
+			//if (game.inCombat && game.monster != null && (hasPerk(PerkLib.EnlightenedNinetails) || hasPerk(PerkLib.CorruptedNinetails))) {
+				//fatigue -= game.monster.level * 2;
+				//if (fatigue < 0) fatigue = 0;
+			//}
 			switch (type) {
 				// Start with that, whats easy
 				case 'Vaginal': if (kGAMECLASS.bimboProgress.ableToProgress() || flags[kFLAGS.TIMES_ORGASM_VAGINAL] < 10) flags[kFLAGS.TIMES_ORGASM_VAGINAL]++; break;
@@ -2511,7 +2516,7 @@ package classes
 
 		public function cuntChangeNoDisplay(cArea : Number) : Boolean {
 			if (vaginas.length == 0) return false;
-			var stretched : Boolean = vaginas[0].stretch(cArea, !hasPerk(PerkLib.FerasBoonMilkingTwat));
+			var stretched : Boolean = vaginas[0].stretch(cArea, vaginalCapacityBonus(), hasPerk(PerkLib.FerasBoonMilkingTwat));
 			
 			// Delay stretch recovery
 			if (cArea >= .5 * vaginalCapacity()) {
