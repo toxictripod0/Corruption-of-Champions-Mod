@@ -4665,19 +4665,6 @@ public function wolfPepper(type: Number, player: Player): void {
 			// Remove gills
 			if (rand(4) == 0 && player.hasGills() && changes < changeLimit) updateGills();
 
-			//9e) Penis
-			/*
-			 if (player.cockTotal() > 0) {
-			 //(If multiple penis, insert "one of your")
-			 outputText("\n\nAs the liquid takes effect, ", false);
-			 //(if multicock)
-			 if (player.cockTotal() > 1) outputText("one of ", false);
-			 outputText("your " + player.multiCockDescriptLight() + " starts to throb painfully and swell to its full size.  With a horrifying ripping sensation, your cock splits down the middle, the pain causing you to black out momentarily.", false);
-			 outputText("When you awaken, you quickly look down to see that where ", false);
-			 //(if multicock)
-			 if (player.cockTotal() > 1) outputText("one of ", false);
-			 outputText("your " + player.multiCockDescriptLight() + " was, you now have two pointed reptilian cocks, still stiff and pulsing.", false);
-			 }*/
 			//Default change - blah
 			if (changes == 0) outputText("\n\nRemakarbly, the snake-oil has no effect.  Should you really be surprised at snake-oil NOT doing anything?", false);
 			player.refillHunger(5);
