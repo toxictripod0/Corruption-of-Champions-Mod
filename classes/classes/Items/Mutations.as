@@ -24,7 +24,6 @@
 
 		public static function init():Mutations { return _instance; }
 
-//Cerulean P.
 		public function ceruleanPotion(player:Player):void
 		{
 			
@@ -51,7 +50,6 @@
 			player.refillHunger(20);
 		}
 
-//Vitality Tincture
 		public function vitalityTincture(player:Player):void
 		{
 			
@@ -74,7 +72,6 @@
 			player.refillHunger(10);
 		}
 
-//Scholar's Tea
 		public function scholarsTea(player:Player):void
 		{
 			
@@ -89,7 +86,6 @@
 			player.refillHunger(10);
 		}
 
-		/* ITEMZZZZZ FUNCTIONS GO HERE */
 		public function incubiDraft(tainted:Boolean,player:Player):void
 		{
 			var tfSource:String = "incubiDraft";
@@ -2846,8 +2842,6 @@ public function wolfPepper(type: Number, player: Player): void {
 			if (rand(5) == 0) updateOvipositionPerk(tfSource);
 		}
 	
-		//pureHoney moved to BeeHoney.as
-		
 		public function succubisDelight(tainted:Boolean,player:Player):void
 		{
 			player.slimeFeed();
@@ -7102,7 +7096,6 @@ public function wolfPepper(type: Number, player: Player): void {
 			flags[kFLAGS.TIMES_TRANSFORMED] += changes;
 		}
 
-//[Giant Chocolate Cupcake] – 500 gems
 		public function giantChocolateCupcake(player:Player):void
 		{
 			clearOutput();
@@ -7562,7 +7555,6 @@ public function wolfPepper(type: Number, player: Player): void {
 //bottle of ectoplasm. Regular stat-stuff include higher speed, (reduced libido?), reduced sensitivity, and higher intelligence. First-tier effects include 50/50 chance of sable skin with bone-white veins or ivory skin with onyx veins. Second tier, \"wisp-like legs that flit back and forth between worlds,\" or \"wisp-like legs\" for short. Third tier gives an \"Ephemeral\" perk, makes you (10%, perhaps?) tougher to hit, and gives you a skill that replaces tease/seduce—allowing the PC to possess the creature and force it to masturbate to gain lust. Around the same effectiveness as seduce.
 //Mouseover script: \"The green-tinted, hardly corporeal substance flows like a liquid inside its container. It makes you feel...uncomfortable, as you observe it.\"
 
-//Bottle of Ectoplasm Text
 		public function ectoplasm(player:Player):void
 		{
 			var tfSource:String = "ectoplasm";
@@ -7666,9 +7658,6 @@ public function wolfPepper(type: Number, player: Player): void {
 			player.refillHunger(20);
 		}
 
-
-//TF item - Shriveled Tentacle
-//tooltip:
 		public function shriveledTentacle(player:Player):void
 		{
 			var tfSource:String = "shriveledTentacle";
@@ -7756,9 +7745,6 @@ public function wolfPepper(type: Number, player: Player): void {
 			flags[kFLAGS.TIMES_TRANSFORMED] += changes;
 		}
 
-//ITEMS START
-
-//Numb Rocks
 		public function numbRocks(player:Player):void
 		{
 			clearOutput();
@@ -7807,7 +7793,6 @@ public function wolfPepper(type: Number, player: Player): void {
 			player.refillHunger(20);
 		}
 
-//2. Sensitivity Draft
 		public function sensitivityDraft(player:Player):void
 		{
 			player.slimeFeed();
@@ -8297,8 +8282,6 @@ public function wolfPepper(type: Number, player: Player): void {
 			player.refillHunger(5);
 		}
 		
-		//Item: Dragon Egg (Z) (FEN CODED TO HERE - OR AT LEAST COPIED INTO THE CODE FOR FUTURE CODING)
-		//Itemdescription - "A large, solid egg, easily the size of your clenched fist.  Its shell color is reddish-white, with blue splotches."
 		public function eatEmberEgg(player:Player):void
 		{
 			clearOutput();
@@ -8317,12 +8300,6 @@ public function wolfPepper(type: Number, player: Player): void {
 			player.refillHunger(50);
 		}
 
-
-//Inventory Description:
-//9999A shining teardrop-shaped jewel.  An eerie blue flame dances beneath the surface.
-//Fox Jewel (Magatama)
-
-//Consume:
 		public function foxJewel(mystic:Boolean,player:Player):void
 		{
 			var tfSource:String = "foxJewel";
@@ -8783,7 +8760,7 @@ public function wolfPepper(type: Number, player: Player): void {
 			}
 		}
 */
-//Fish Fillet
+
 		public function fishFillet(player:Player):void
 		{
 			clearOutput();
@@ -8800,7 +8777,7 @@ public function wolfPepper(type: Number, player: Player): void {
 			HPChange(Math.round(player.maxHP() * .25), true);
 			player.refillHunger(30);
 		}
-		//Behemoth Cum
+
 		public function behemothCum(player:Player):void
 		{
 			clearOutput();
@@ -8811,7 +8788,7 @@ public function wolfPepper(type: Number, player: Player): void {
 			player.refillHunger(25);
 			player.orgasm('Lips',false);
 		}
-		//Urta's Cum
+
 		public function urtaCum(player:Player):void
 		{
 			clearOutput();
@@ -8822,8 +8799,7 @@ public function wolfPepper(type: Number, player: Player): void {
 			player.refillHunger(25);
 			player.orgasm('Lips',false);
 		}
-//Trap Oil
-//Flavour Description: A round, opaque glass vial filled with a clear, viscous fluid.  It has a symbol inscribed on it, a circle with a cross and arrow pointing out of it in opposite directions.  It looks and smells entirely innocuous.
+
 		public function trapOil(player:Player):void
 		{
 			var tfSource:String = "trapOil";
@@ -9096,8 +9072,6 @@ public function wolfPepper(type: Number, player: Player): void {
 			flags[kFLAGS.TIMES_TRANSFORMED] += changes;
 		}
 
-//PurPeac
-//Purity Peach - Inventory
 		public function purityPeach(player:Player):void
 		{
 			clearOutput();
@@ -9107,10 +9081,6 @@ public function wolfPepper(type: Number, player: Player): void {
 			player.refillHunger(25);
 		}
 
-//New Item: "Purple Fruit"
-//This sweet-smelling produce looks like an eggplant but feels almost squishy, and rubbery to the touch. Holding it to your ear, you think you can hear some fluid sloshing around inside.
-
-//>When Used
 		public function purpleFruitEssrayle(player:Player):void
 		{
 			player.slimeFeed();
@@ -9131,11 +9101,6 @@ public function wolfPepper(type: Number, player: Player): void {
 			player.boostLactation(3 * player.bRows());
 			player.refillHunger(30);
 		}
-
-//TF Items
-//Ringtail Fig/RingFig (please do not change the fruit type to suit whimsy because I have some plans for figs)
-//tooltip:
-//A dried fig with two lobes and thin dark rings just below its stem.  The skin is wrinkly and it looks vaguely like a bulging scrotum.
 
 		public function ringtailFig(player:Player):void
 		{
@@ -9312,12 +9277,6 @@ public function wolfPepper(type: Number, player: Player): void {
 			flags[kFLAGS.TIMES_TRANSFORMED] += changes;
 		}
 
-//MouseCo
-//tooltip:
-//A handful of rare aromatic beans with sharp creases in the middle, making them look like small mouse ears.  Allegedly very popular and plentiful before the mice-folk were wiped out.
-
-
-//Mouse Cocoa/MousCoco (you can change the name if you're saddlesore I guess but I'll make fun of you for having no plausible source of chocolate for your bakery if you do)
 		public function mouseCocoa(player:Player):void
 		{
 			var tfSource:String = "mouseCocoa";
@@ -9681,7 +9640,6 @@ public function wolfPepper(type: Number, player: Player): void {
 			player.refillHunger(15);
 		}
 		
-		//Ferret Fruit
 		public function ferretFruit(player:Player):void
 		{
 			var tfSource:String = "ferretTF";
