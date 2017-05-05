@@ -3,6 +3,8 @@
 	import classes.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Scenes.Areas.Forest.KitsuneScene;
+	import classes.GlobalFlags.kGAMECLASS;
+	import classes.GlobalFlags.kACHIEVEMENTS;
 
 	public final class Mutations extends MutationsHelper
 	{
@@ -17,10 +19,6 @@
 		}
 
 		public static function init():Mutations { return _instance; }
-
-		import classes.GlobalFlags.kGAMECLASS;
-		import classes.GlobalFlags.kACHIEVEMENTS;
-// import classes.ItemSlotClass;
 
 //const FOX_BAD_END_WARNING:int = 477;
 //const TIMES_MET_CHICKEN_HARPY:int = 652;
