@@ -5234,7 +5234,7 @@ public function wolfPepper(type: Number, player: Player): void {
 			}
 		}
 
-		public function catTransformation(player:Player):void
+		public function whiskerFruit(player:Player):void
 		{
 			var tfSource:String = "catTransformation";
 			if (player.hasReptileScales() && player.hasDragonWings() && player.tongueType == TONGUE_DRACONIC)
