@@ -4602,7 +4602,7 @@ public function wolfPepper(type: Number, player: Player): void {
 			//Skin
 			if (((player.skinTone != "rough gray" && player.skinTone != "orange and black striped") || !player.hasPlainSkin()) && rand(7) == 0 && changes < changeLimit) {
 				outputText("\n\n", false);
-				if (player.hasFurOrScales()) outputText("Your " + player.skinDesc + " falls out, collecting on the floor and exposing your supple skin underneath.  ", false);
+				if (player.isFurryOrScaley()) outputText("Your " + player.skinDesc + " falls out, collecting on the floor and exposing your supple skin underneath.  ", false);
 				else if (player.hasGooSkin()) outputText("Your gooey skin solidifies, thickening up as your body starts to solidify into a more normal form. ", false);
 				else if (type == 0) outputText("Your skin itches and tingles becoming slightly rougher and turning gray.  ", false);
 				if (type == 0) {
@@ -5691,7 +5691,7 @@ public function wolfPepper(type: Number, player: Player): void {
 			//-Grows second lizard dick if only 1 dick
 			if (player.countCocksOfType(CockTypesEnum.LIZARD) == 1 && player.cocks.length == 1 && rand(4) == 0 && changes < changeLimit) {
 				outputText("\n\nA knot of pressure forms in your groin, forcing you off your " + player.feet() + " as you try to endure it.  You examine the affected area and see a lump starting to bulge under your " + player.skinDesc + ", adjacent to your " + player.cockDescript(0) + ".  The flesh darkens, turning purple", false);
-				if (player.hasFurOrScales())
+				if (player.isFurryOrScaley())
 					outputText(" and shedding " + player.skinDesc, false);
 				outputText(" as the bulge lengthens, pushing out from your body.  Too surprised to react, you can only pant in pain and watch as the fleshy lump starts to take on a penis-like appearance.  <b>You're growing a second lizard-cock!</b>  It doesn't stop growing until it's just as long as its brother and the same shade of shiny purple.  A dribble of cum oozes from its tip, and you feel relief at last.", false);
 
@@ -8566,19 +8566,20 @@ public function wolfPepper(type: Number, player: Player): void {
 				//9999 - pending tats system
 			}
 			//Nipples Turn Back:
-			if (player.hasStatusEffect(StatusEffects.BlackNipples) && changes < changeLimit && rand(3) == 0) {
+			if (!player.hasFur() && player.hasStatusEffect(StatusEffects.BlackNipples) && changes < changeLimit && rand(3) == 0) {
 				outputText("\n\nSomething invisible brushes against your " + player.nippleDescript(0) + ", making you twitch.  Undoing your clothes, you take a look at your chest and find that your nipples have turned back to their natural flesh colour.");
 				changes++;
 				player.removeStatusEffect(StatusEffects.BlackNipples);
 			}
 			//Debugcunt
-			if (changes < changeLimit && rand(3) == 0 && player.vaginaType() == 5 && player.hasVagina()) {
+			if (!player.hasFur() && changes < changeLimit && rand(3) == 0 && player.vaginaType() == 5 && player.hasVagina()) {
 				outputText("\n\nSomething invisible brushes against your sex, making you twinge.  Undoing your clothes, you take a look at your vagina and find that it has turned back to its natural flesh colour.");
 				player.vaginaType(0);
 				changes++;
 			}
-			// Kitsunes should have normal arms. exspecially skinny arms with claws are somewhat weird (Stadler76).
+			// Kitsunes should have normal arms and legs. exspecially skinny arms with claws are somewhat weird (Stadler76).
 			if (player.hasPlainSkin() && rand(4) == 0) restoreArms(tfSource);
+			if (player.hasPlainSkin() && rand(4) == 0) restoreLegs(tfSource);
 
 			if (changes == 0) {
 				outputText("\n\nOdd.  You don't feel any different.");
@@ -9273,7 +9274,7 @@ public function wolfPepper(type: Number, player: Player): void {
 					}
 					outputText("Shaking your head a bit, you wait for your energy to return, then examine your appearance.  ");
 					//(if player skinTone = ebony/black/ebony with tats and no fur/scales or if black/midnight fur or if black scales
-					if (((player.skinTone == "ebony" || player.skinTone == "black") && (player.hasPlainSkin() || player.hasGooSkin())) || ((player.hairColor == "black" || player.hairColor == "midnight") && player.hasFurOrScales())) {
+					if (((player.skinTone == "ebony" || player.skinTone == "black") && (player.hasPlainSkin() || player.hasGooSkin())) || ((player.hairColor == "black" || player.hairColor == "midnight") && player.isFurryOrScaley())) {
 						outputText("Nothing seems different at first.  Strange... you look closer and discover a darker, mask-line outline on your already inky visage.  <b>You now have a barely-visible raccoon mask.</b>");
 					}
 					else outputText("A dark, almost black mask shades the " + player.skinFurScales() + " around your eyes and over the topmost portion of your nose, lending you a criminal air!  <b>You now have a raccoon mask!</b>");
@@ -9282,7 +9283,7 @@ public function wolfPepper(type: Number, player: Player): void {
 				else {
 					outputText("\n\nA sudden migraine sweeps over you and you clutch your head in agony as your nose collapses back to human dimensions.  A worrying numb spot grows around your eyes, and you entertain several horrible premonitions until it passes as suddenly as it came.  Checking your reflection in your water barrel, you find ");
 					//[(if black/midnight fur or if black scales)
-					if (((player.hairColor == "black" || player.hairColor == "midnight") && player.hasFurOrScales())) outputText("your face apparently returned to normal shape, albeit still covered in " + player.skinFurScales() + ".  You look closer and discover a darker, mask-line outline on your already inky visage.  <b>You now have a barely-visible raccoon mask on your otherwise normal human face.</b>");
+					if (((player.hairColor == "black" || player.hairColor == "midnight") && player.isFurryOrScaley())) outputText("your face apparently returned to normal shape, albeit still covered in " + player.skinFurScales() + ".  You look closer and discover a darker, mask-line outline on your already inky visage.  <b>You now have a barely-visible raccoon mask on your otherwise normal human face.</b>");
 					else if ((player.skinTone == "ebony" || player.skinTone == "black") && (player.hasPlainSkin() || player.hasGooSkin())) outputText("your face apparently returned to normal shape.  You look closer and discover a darker, mask-line outline on your already inky visage.  <b>You now have a barely-visible raccoon mask on your normal human face.</b>");
 					else outputText("your face returned to human dimensions, but shaded by a black mask around the eyes and over the nose!  <b>You now have a humanoid face with a raccoon mask!</b>");
 				}

@@ -749,7 +749,7 @@ package classes.Scenes.Combat
 			if (player.hasStatusEffect(StatusEffects.Blind)) {
 				outputText("You attempt to attack, but as blinded as you are right now, you doubt you'll have much luck!  ", false);
 			}
-			if (monster is Basilisk && player.findPerk(PerkLib.BasiliskResistance) < 0 && !isWieldingRangedWeapon()) {
+			if (monster is Basilisk && !(player.hasPerk(PerkLib.BasiliskResistance) || player.canUseStare() || player.hasKeyItem("Laybans") >= 0 || isWieldingRangedWeapon())) {
 				if (monster.hasStatusEffect(StatusEffects.Blind))
 					outputText("Blind basilisk can't use his eyes, so you can actually aim your strikes!  ", false);
 				//basilisk counter attack (block attack, significant speed loss): 
