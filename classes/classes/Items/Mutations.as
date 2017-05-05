@@ -4272,13 +4272,7 @@ public function wolfPepper(type: Number, player: Player): void {
 				outputText("\n\nThe slippery slime numbs your " + player.skinDesc + " slightly, leaving behind only gentle warmth.", false);
 				dynStats("sen", -1);
 			}
-			/*Calculate goopiness
-			 var goopiness:Number = 0;
-			 if (player.hasGooSkin()) goopiness+=2;
-			 if (player.hair.indexOf("gooey") != -1) goopiness++;
-			 if (player.hasVagina()) {
-			 if (player.vaginalCapacity() >= 9000) goopiness++;
-			 }*/
+
 			//Cosmetic changes based on 'goopyness'
 			if (rand(5) == 0) updateOvipositionPerk(tfSource);
 			//Remove wings
