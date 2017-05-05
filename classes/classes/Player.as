@@ -285,6 +285,9 @@ use namespace kGAMECLASS;
 				else if (armorPerk == "Medium") speedBonus += Math.round(spe/13);
 				if (speedBonus > 15) speedBonus = 15;
 			}
+			if (hasPerk(PerkLib.Juggernaut) && tou >= 75 && armorPerk == "Heavy") {
+				speedBonus += 10;
+			}
 			armorDef += speedBonus
 			//Acupuncture effect
 			if (hasPerk(PerkLib.ChiReflowDefense)) armorDef *= UmasShop.NEEDLEWORK_DEFENSE_DEFENSE_MULTI;
