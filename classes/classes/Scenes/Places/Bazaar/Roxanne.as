@@ -245,8 +245,13 @@ protected function roxanneDrinkingContest():void {
 		//Gain big bonus
 		flags[kFLAGS.ROXANNE_DRINKING_CONTEST_BONUS_SCORE] += 10;
 		outputText("Giggling and nearly tripping up on your own " + player.feet() + ", you stumble up to the corrupted deer-taur.  He looks at your wobbling stance, nearly-vacant eyes, and dopey grin before he shakes his head from side to side and says, \"<i>No.</i>\"  ", false);
-		if (flags[kFLAGS.ROXANNE_DRINKING_CONTEST_LOSE_ON_PURPOSE] == 0) outputText("Nooooo! You're cut off! That means Roxanne won...", false);
-		else outputText("Yessss!  You finally got so drunk that Roxanne has no excuse not to pack your drunk ass full of lizan-spoo!", false);
+		
+		if (flags[kFLAGS.ROXANNE_DRINKING_CONTEST_LOSE_ON_PURPOSE] == 0) {
+			outputText("Nooooo! You're cut off! That means Roxanne won...", false);
+		}else{
+			outputText("Yessss!  You finally got so drunk that Roxanne has no excuse not to pack your drunk ass full of lizan-spoo!", false);
+		}
+		
 		outputText("  A scaled hand slaps your " + player.buttDescript() + " spinning you around to fall drunkenly into the pirate's soft, cushy chest.  \"<i>Don't worry, I'll be gentle,</i>\" she whispers, hooking an arm around your sagging frame.", false);
 		//CHOOSE SEX SCENE
 		//Chance of big booty butt loss!

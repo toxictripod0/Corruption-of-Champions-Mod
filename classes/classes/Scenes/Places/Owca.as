@@ -648,6 +648,14 @@ public function owcaTavern():void {
 	} else {
 		addButton(3, "MinotaurCum", owcaBuySetup, consumables.MINOCUM);
 	}
+	
+	outputText("\nClovis: " + (80 - (flags[kFLAGS.OWCAS_ATTITUDE]/2)) + " gems");
+	if ((80 - (flags[kFLAGS.OWCAS_ATTITUDE]/2)) > player.gems) {
+		addDisabledButton(4, "Clovis");
+	} else {
+		addButton(4, "Clovis", owcaBuySetup, consumables.CLOVERS);
+	}
+	
 	outputText("</i>");
 	
 	addButton(14, "Back", gangbangVillageStuff);
@@ -657,6 +665,7 @@ private function owcaBuySetup(item:ItemType):void {
 	if (item == consumables.SHEEPMK) buyOwcaShit(item,(180 - flags[kFLAGS.OWCAS_ATTITUDE]));
 	else if (item == consumables.GOB_ALE) buyOwcaShit(item,(60 - Math.round(flags[kFLAGS.OWCAS_ATTITUDE]/2)));
 	else if (item == consumables.BROBREW) buyOwcaShit(item,2000);
+	else if (item == consumables.CLOVERS) buyOwcaShit(item,(80 - Math.round(flags[kFLAGS.OWCAS_ATTITUDE]/2)));
 	else buyOwcaShit(item,(300 - flags[kFLAGS.OWCAS_ATTITUDE]));
 }
 

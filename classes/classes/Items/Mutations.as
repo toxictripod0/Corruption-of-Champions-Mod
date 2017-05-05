@@ -1581,6 +1581,142 @@
 			}
 			player.refillHunger(20);
 		}
+		
+		
+		// Clovis, written by MissBlackthorne and coded by Foxwells
+		public function clovis(player:Player):void {
+			var tfSource: String = "clovis";
+			changes = 0;
+			changeLimit = 1;
+			// Add to change limit
+			if (rand(2) == 0) changeLimit++;
+			if (rand(2) == 0) changeLimit++;
+			// Perk change limit modifiers
+			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
+			if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
+			outputText("You open the bottle of Clovis, its sweet smell making you feel carefree. You drink the contents and relax to the sensation it brings, feeling like you're being cuddled by a big fluffy cloud.", false);
+			// Stat changes!
+			if (player.inte > 90 && rand(3) == 0 && changes < changeLimit) {
+				dynStats("int", -(rand(1) + 1));
+				outputText("\n\nThe sense of calm the potion gives you slowly fades into dopey bliss. You haven't a care in the world, not even the fact that you've got a little dumber.", false);
+				changes++;
+			}
+			if (rand(3) == 0 && changes < changeLimit) {
+				dynStats("tou", rand(1) + 1);
+				outputText("\n\nYou feel a wave of stubborn pride wash over you as you finish the potion. You’re sure nothing could stop you now, not even the demons.", false);
+				changes++;
+			}
+			if (player.spe < 75 && rand(3) == 0 && changes < changeLimit) {
+				dynStats("spe", rand(2) + 1);
+				outputText("\n\nYou feel oddly compelled to jump from rock to rock across a nearby stream, a sense of sure footedness and increased agility deep within you. To your surprise, you make it across with no trouble. The damp and uneven rocks are barely a challenge to your increased speed.", false);
+				changes++;
+			}
+			if (rand(3) == 0 && changes < changeLimit) {
+				dynStats("sens", -(rand(1) + 1));
+				outputText("\n\nYou feel less sensitive to the touch, a slight numbness pervading your body as if truly wrapped in cotton wool. The numbness eventually fades, leaving you now less affected by the lusty touches of your foes.", false);
+				changes++;
+			}
+			if (rand(3) == 0 && changes < changeLimit) {
+				dynStats("cor", -(rand(3) + 2));
+				outputText("\n\nYou close your eyes as your mind becomes clearer, a purging white searing through your being. It envelops you in its fluffy softness as it chases out the taint, first burning but then soothing. As you open your eyes, you feel you have regained some of your purity that this perverted realm seeks to claim.", false);
+				changes++;
+			}
+			if (player.tallness > 67 && rand(2) == 0 && changes < changeLimit) {
+				player.tallness -= (1 + rand(4));
+				outputText("\n\nYou blink as you feel your center of gravity shift lower. You look down and realize the ground is closer now. You appear to have gotten shorter!", false);
+				changes++;
+			}
+			if (player.buttRating < 6 && rand(3) == 0 && changes < changeLimit) {
+				player.buttRating += (1 + rand(1));
+				if (player.buttRating > 6) {
+					player.buttRating = 6;
+				}
+				outputText("\n\nYou feel your clothes tighten around your [butt], your behind expanding. Thankfully, it stops before your clothes can't handle it. As you run your hand over the tight fabric, you can't help but grope the now plumper flesh.", false);
+			}
+			if (player.earType != EARS_SHEEP && rand(3) == 0 && changes < changeLimit) {
+				if (player.earType == -1) { outputText("\n\nTwo painful nubs begin sprouting from your head, growing out in a tear-drop shape and flopping over. To top it off, wool coats them.", false); } else { outputText("\n\nYou feel your ears shift and elongate, becoming much floppier. They take on a more tear drop shape, flopping at the side of your head cutely as a light coat of downy wool forms on them.", false);	}		
+				player.earType = EARS_SHEEP;
+				player.earValue = 2;
+				outputText(" <b>You now have sheep ears!</b>", false);
+				changes++;
+			}
+			if (player.tailType != TAIL_TYPE_SHEEP && rand(3) == 0 && changes < changeLimit) {
+				outputText("\n\nYou feel the flesh above your [butt] knotting and changing. It twists and writhes around itself, lengthening before flopping straight down. With a slight poof, a coat of soft and fluffy wool coats it, your new tail taking on the wooly appearance of a sheep's.", false);
+				player.tailType = TAIL_TYPE_SHEEP;
+				outputText(" <b>You now have a sheep's tail!</b>", false);
+				changes++;
+			}
+			if (player.lowerBody != LOWER_BODY_TYPE_CLOVEN_HOOFED && player.tailType == TAIL_TYPE_SHEEP && rand(3) == 0 && changes < changeLimit) {
+				outputText("\n\nYou feel a strange tightness from your feet and nearly topple over as your balance shifts. You're balancing on your toes for some reason. You look down in amazement as your legs slim and shorten, your feet elongating and darkening at the ends, all morphing until you're balancing on two sheep legs, complete with cute little hooves.", false);
+				player.lowerBody = LOWER_BODY_TYPE_CLOVEN_HOOFED;
+				player.legCount = 2;
+				outputText(" <b>You now have sheep hooves!</b>", false);
+				changes++;
+			}
+			if (player.hornType != HORNS_SHEEP && player.hornType != HORNS_RAM && player.earType == EARS_SHEEP && rand(3) == 0 && changes < changeLimit) {
+					if (player.hornType != HORNS_NONE) {
+						outputText("\n\nYou feel your horns suddenly crumble, falling apart in large chunks until they flake away into nothing.");
+					} 
+					outputText("\n\nYou grip your head as a surge of pain hits you. A pair of horns slowly emerge from your skull, curling out and forward in a half circle. The ribbed curls remind you of the horns of the sheep back in Ingnam. <b>You now have sheep horns!</b>", false);
+				player.hornType = HORNS_SHEEP;
+				player.horns = 1;
+				changes++;
+			}
+			if (rand(3) == 0 && changes < changeLimit && player.legCount == 2 && player.lowerBody == LOWER_BODY_TYPE_CLOVEN_HOOFED && player.hornType == HORNS_SHEEP && player.tailType == TAIL_TYPE_SHEEP && player.earType == EARS_SHEEP && !player.hasWool()) {
+			    var sheepWoolColors: Array = [
+				"white",
+				"black",
+				"gray",
+				"silver",
+				"brown",
+				"moorit"
+			    ];
+				if (!player.hasFur()) {
+					outputText("\n\nWith an almost audible \*POMF\*, a soft fleece erupts from your body. The fleece covers all of your midsection and thighs, thick and fluffy. It doesn't fully hide your sexual features, instead obscuring them in an enticing manner. You can't help but run your hands over your soft, " + player.furColor + " wool, reveling in plushness. <b>You now have sheep wool!</b>");
+				} else {
+					outputText("\n\nYou feel your fur suddenly stand on end, every follicle suddenly detaching and leaving your skin bare. As you stand with a pile of shed fur around your feet, you feel your skin tingle, and you're sure it isn't from the cold. With an almost audible \*POMF\*, a soft fleece erupts from your body. The fleece covers all of your midsection and thighs, thick and fluffy. It doesn't fully hide your sexual features, instead obscuring them in an enticing manner. You can't help but run your hands over your soft, " + player.furColor + " wool, reveling in plushness. <b>You now have sheep wool!</b>", false);
+				}
+				player.skinType = SKIN_TYPE_WOOL;
+				player.skinDesc = "wool";
+				player.setFurColor(sheepWoolColors, {
+					type: UNDER_BODY_TYPE_WOOL
+				}, true);
+				changes++;
+			}
+			if (player.hornType == HORNS_SHEEP && player.hasWool() && player.femininity <= 45 && rand(3) == 0 && changes < changeLimit) {
+					outputText("\n\nYou feel a familiar pain in your head. Your horns are growing! More ribbed horn emerges from your scalp, your horns slowly curling around fully as they thicken. Once a full ring of horn is complete they lengthen until the pointed ends face forward, tucked under your ears. You run your fingers over your curled horns in awe. These could seriously do some damage! Or at least stun your foes. <b>You now have the horns of a ram!</b>", false);
+				player.hornType = HORNS_RAM;
+				player.horns = 2;
+				changes++;
+			}
+			if (player.hornType == HORNS_RAM && rand(3) == 0 && changes < changeLimit) {
+				outputText("\n\nYou groan and clutch your head as your horns stretch out, becoming even longer.", false);
+				player.hornType = HORNS_RAM;
+				player.horns += (1 + rand(3));
+				changes++;
+			}
+			if (player.hasWool() && player.hairType != HAIR_WOOL && player.femininity >= 65 && rand(3) == 0 && changes < changeLimit) {
+				outputText("\n\nYour hair suddenly poofs out as if you had filled it with static. You attempt to smooth it down, but you can't seem to straighten it out properly. It keeps bouncing back in a cushion-like manner. You in a nearby puddle. Your hair is now much thicker, it having become rather curly and bouffant like the wool of a sheep. You realize that <b>you now have woolen hair!</b>", false);
+				player.hairType = HAIR_WOOL;
+				changes++;
+			}
+			if (player.hipRating < 10 && player.femininity >= 65 && rand(3) == 0 && changes < changeLimit) {
+				outputText("\n\nYou grip your hips as they shift, getting wider and altering your stance. Your hips seem much more fitting for a sheep now, all big and cuddly.", false);
+				player.hipRating += (rand(1) + 1);
+				if (player.hipRating > 10) {
+					player.hipRating = 10;
+				}
+				changes++;
+			}
+			if (player.breastRows[0].breastRating < 5 && player.femininity >= 65 && rand(3) == 0 && changes < changeLimit) {
+				player.breastRows[0].breastRating += (rand(1) + 1);
+				if (player.breastRows[0].breastRating > 5) {
+					player.breastRows[0].breastRating = 5;
+				}
+				outputText("\n\nYour breasts feel constrained and painful against your top as they grow larger by the moment, finally stopping as they reach " + player.breastRows[0].breastRating + " size. You rub the tender orbs as you get used to your larger breast flesh.", false);
+				changes++;
+			}
+		}
 
 // Fuck yo dog shit we full-on wolf bitches now -Foxwells
 public function wolfPepper(type: Number, player: Player): void {
@@ -4466,7 +4602,7 @@ public function wolfPepper(type: Number, player: Player): void {
 			//Skin
 			if (((player.skinTone != "rough gray" && player.skinTone != "orange and black striped") || !player.hasPlainSkin()) && rand(7) == 0 && changes < changeLimit) {
 				outputText("\n\n", false);
-				if (player.hasFurOrScales()) outputText("Your " + player.skinDesc + " falls out, collecting on the floor and exposing your supple skin underneath.  ", false);
+				if (player.isFurryOrScaley()) outputText("Your " + player.skinDesc + " falls out, collecting on the floor and exposing your supple skin underneath.  ", false);
 				else if (player.hasGooSkin()) outputText("Your gooey skin solidifies, thickening up as your body starts to solidify into a more normal form. ", false);
 				else if (type == 0) outputText("Your skin itches and tingles becoming slightly rougher and turning gray.  ", false);
 				if (type == 0) {
@@ -5555,7 +5691,7 @@ public function wolfPepper(type: Number, player: Player): void {
 			//-Grows second lizard dick if only 1 dick
 			if (player.countCocksOfType(CockTypesEnum.LIZARD) == 1 && player.cocks.length == 1 && rand(4) == 0 && changes < changeLimit) {
 				outputText("\n\nA knot of pressure forms in your groin, forcing you off your " + player.feet() + " as you try to endure it.  You examine the affected area and see a lump starting to bulge under your " + player.skinDesc + ", adjacent to your " + player.cockDescript(0) + ".  The flesh darkens, turning purple", false);
-				if (player.hasFurOrScales())
+				if (player.isFurryOrScaley())
 					outputText(" and shedding " + player.skinDesc, false);
 				outputText(" as the bulge lengthens, pushing out from your body.  Too surprised to react, you can only pant in pain and watch as the fleshy lump starts to take on a penis-like appearance.  <b>You're growing a second lizard-cock!</b>  It doesn't stop growing until it's just as long as its brother and the same shade of shiny purple.  A dribble of cum oozes from its tip, and you feel relief at last.", false);
 
@@ -8426,19 +8562,20 @@ public function wolfPepper(type: Number, player: Player): void {
 				//9999 - pending tats system
 			}
 			//Nipples Turn Back:
-			if (player.hasStatusEffect(StatusEffects.BlackNipples) && changes < changeLimit && rand(3) == 0) {
+			if (!player.hasFur() && player.hasStatusEffect(StatusEffects.BlackNipples) && changes < changeLimit && rand(3) == 0) {
 				outputText("\n\nSomething invisible brushes against your " + player.nippleDescript(0) + ", making you twitch.  Undoing your clothes, you take a look at your chest and find that your nipples have turned back to their natural flesh colour.");
 				changes++;
 				player.removeStatusEffect(StatusEffects.BlackNipples);
 			}
 			//Debugcunt
-			if (changes < changeLimit && rand(3) == 0 && player.vaginaType() == 5 && player.hasVagina()) {
+			if (!player.hasFur() && changes < changeLimit && rand(3) == 0 && player.vaginaType() == 5 && player.hasVagina()) {
 				outputText("\n\nSomething invisible brushes against your sex, making you twinge.  Undoing your clothes, you take a look at your vagina and find that it has turned back to its natural flesh colour.");
 				player.vaginaType(0);
 				changes++;
 			}
-			// Kitsunes should have normal arms. exspecially skinny arms with claws are somewhat weird (Stadler76).
+			// Kitsunes should have normal arms and legs. exspecially skinny arms with claws are somewhat weird (Stadler76).
 			if (player.hasPlainSkin() && rand(4) == 0) restoreArms(tfSource);
+			if (player.hasPlainSkin() && rand(4) == 0) restoreLegs(tfSource);
 
 			if (changes == 0) {
 				outputText("\n\nOdd.  You don't feel any different.");
@@ -9133,7 +9270,7 @@ public function wolfPepper(type: Number, player: Player): void {
 					}
 					outputText("Shaking your head a bit, you wait for your energy to return, then examine your appearance.  ");
 					//(if player skinTone = ebony/black/ebony with tats and no fur/scales or if black/midnight fur or if black scales
-					if (((player.skinTone == "ebony" || player.skinTone == "black") && (player.hasPlainSkin() || player.hasGooSkin())) || ((player.hairColor == "black" || player.hairColor == "midnight") && player.hasFurOrScales())) {
+					if (((player.skinTone == "ebony" || player.skinTone == "black") && (player.hasPlainSkin() || player.hasGooSkin())) || ((player.hairColor == "black" || player.hairColor == "midnight") && player.isFurryOrScaley())) {
 						outputText("Nothing seems different at first.  Strange... you look closer and discover a darker, mask-line outline on your already inky visage.  <b>You now have a barely-visible raccoon mask.</b>");
 					}
 					else outputText("A dark, almost black mask shades the " + player.skinFurScales() + " around your eyes and over the topmost portion of your nose, lending you a criminal air!  <b>You now have a raccoon mask!</b>");
@@ -9142,7 +9279,7 @@ public function wolfPepper(type: Number, player: Player): void {
 				else {
 					outputText("\n\nA sudden migraine sweeps over you and you clutch your head in agony as your nose collapses back to human dimensions.  A worrying numb spot grows around your eyes, and you entertain several horrible premonitions until it passes as suddenly as it came.  Checking your reflection in your water barrel, you find ");
 					//[(if black/midnight fur or if black scales)
-					if (((player.hairColor == "black" || player.hairColor == "midnight") && player.hasFurOrScales())) outputText("your face apparently returned to normal shape, albeit still covered in " + player.skinFurScales() + ".  You look closer and discover a darker, mask-line outline on your already inky visage.  <b>You now have a barely-visible raccoon mask on your otherwise normal human face.</b>");
+					if (((player.hairColor == "black" || player.hairColor == "midnight") && player.isFurryOrScaley())) outputText("your face apparently returned to normal shape, albeit still covered in " + player.skinFurScales() + ".  You look closer and discover a darker, mask-line outline on your already inky visage.  <b>You now have a barely-visible raccoon mask on your otherwise normal human face.</b>");
 					else if ((player.skinTone == "ebony" || player.skinTone == "black") && (player.hasPlainSkin() || player.hasGooSkin())) outputText("your face apparently returned to normal shape.  You look closer and discover a darker, mask-line outline on your already inky visage.  <b>You now have a barely-visible raccoon mask on your normal human face.</b>");
 					else outputText("your face returned to human dimensions, but shaded by a black mask around the eyes and over the nose!  <b>You now have a humanoid face with a raccoon mask!</b>");
 				}

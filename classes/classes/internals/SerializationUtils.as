@@ -18,7 +18,7 @@ package classes.internals
 		 * @return a array containing the serialized vector
 		 */
 		public static function serializeVector(vector:Vector.<*>):Array {
-			var serialized:* = [];
+			var serialized:Array = [];
 			
 			for each(var element:Serializable in vector) {
 				var obj:Array = [];
@@ -43,17 +43,17 @@ package classes.internals
 				throw new ArgumentError("Type must implement Serializable");
 			}
 			
-			if (destinationVector == null) {
+			if (destinationVector === null) {
 				throw new ArgumentError("Destination Vector cannot be null");
 			}
 			
-			if (serializedVector == null) {
+			if (serializedVector === null) {
 				throw new ArgumentError("Serialized Vector cannot be null");
 			}
 			
 			for each(var element:Object in serializedVector) {
 				var instance:Serializable = new type();
-				instance.deserialize(element)
+				instance.deserialize(element);
 				destinationVector.push(instance);
 			}
 		}
@@ -65,7 +65,7 @@ package classes.internals
 		 * @return a array containing the serialized vector
 		 */
 		public static function serializeVectorWithAMF(vector:Vector.<SerializableAMF>):Array {
-			var serialized:* = [];
+			var serialized:Array = [];
 			
 			for each(var element:SerializableAMF in vector) {
 				serialized.push(element);

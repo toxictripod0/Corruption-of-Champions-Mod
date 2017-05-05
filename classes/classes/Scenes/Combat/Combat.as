@@ -2,9 +2,11 @@
 package classes.Scenes.Combat 
 {
 	import classes.*;
+	import classes.internals.*;
 	import classes.GlobalFlags.*;
 	import classes.Items.*;
 	import classes.Scenes.Areas.Bog.*;
+	import classes.Scenes.Areas.Desert;
 	import classes.Scenes.Areas.Desert.*;
 	import classes.Scenes.Areas.Forest.*;
 	import classes.Scenes.Areas.GlacialRift.*;
@@ -44,6 +46,8 @@ package classes.Scenes.Combat
 		//Used to display image of the enemy while fighting
 		//Set once during beginCombat() to prevent it from changing every combat turn
 		private var imageText:String = "";
+		
+		public var ghoulReveal:Boolean = false;
 		
 		public function get inCombat():Boolean {
 			return getGame().inCombat;
@@ -745,7 +749,7 @@ package classes.Scenes.Combat
 			if (player.hasStatusEffect(StatusEffects.Blind)) {
 				outputText("You attempt to attack, but as blinded as you are right now, you doubt you'll have much luck!  ", false);
 			}
-			if (monster is Basilisk && player.findPerk(PerkLib.BasiliskResistance) < 0 && !isWieldingRangedWeapon()) {
+			if (monster is Basilisk && !(player.hasPerk(PerkLib.BasiliskResistance) || player.canUseStare() || player.hasKeyItem("Laybans") >= 0 || isWieldingRangedWeapon())) {
 				if (monster.hasStatusEffect(StatusEffects.Blind))
 					outputText("Blind basilisk can't use his eyes, so you can actually aim your strikes!  ", false);
 				//basilisk counter attack (block attack, significant speed loss): 
@@ -859,13 +863,9 @@ package classes.Scenes.Combat
 			//Bonus sand trap damage!
 			if (monster.hasStatusEffect(StatusEffects.Level)) damage = Math.round(damage * 1.75);
 			//Determine if critical hit!
-			var crit:Boolean = false;
-			var critChance:int = 5;
-			if (player.findPerk(PerkLib.Tactician) >= 0 && player.inte >= 50) critChance += (player.inte - 50) / 5;
-			if (rand(100) < critChance) {
-				crit = true;
+			var crit:Boolean = combatCritical();
+			if (crit)
 				damage *= 1.75;
-			}
 			//Apply AND DONE!
 			damage *= (monster.damagePercent(false, true) / 100);
 			//Damage post processing!
@@ -879,6 +879,13 @@ package classes.Scenes.Combat
 			if (player.countCockSocks("red") > 0) damage *= (1 + player.countCockSocks("red") * 0.02);
 			//One final round
 			damage = Math.round(damage);
+			
+			//GHOUL REVEAL, HOPEFULLY
+			if (!ghoulReveal && monster is Ghoul) {
+				outputText("Your " + kGAMECLASS.player.weaponName + " strikes the hyena, causing it to recoil and vanish in a cloud of sandy dust. You stumble back in surprise and look up to see a snarling, ghostly creature in the air. Your enemy wasn't a hyena. <b>It was a ghoul!</b>\n\n", false);
+				if (silly()) outputText("<b>The wild Ghoul's illusion wore off!</b>\n\n", false);
+				this.ghoulReveal = true;
+			}
 			
 			//ANEMONE SHIT
 			if (monster.short == "anemone" && !isWieldingRangedWeapon()) {
@@ -1086,12 +1093,17 @@ package classes.Scenes.Combat
 			return player.findPerk(PerkLib.Parry) >= 0 && player.spe >= 50 && player.str >= 50 && rand(100) < ((player.spe - 50) / 5) && player.weapon != WeaponLib.FISTS;
 			trace("Parried!");
 		}
+		
 		public function combatCritical():Boolean {
-			var critChance:int = 4;
-			if (player.findPerk(PerkLib.Tactician) >= 0 && player.inte >= 50) critChance += (player.inte - 50) / 10;
-			if (player.findPerk(PerkLib.Blademaster) >= 0 && (player.weaponVerb == "slash" || player.weaponVerb == "cleave" || player.weaponVerb == "keen cut")) critChance += 5;
+			return rand(100) <= getCritChance();
+		}
+		
+		public function getCritChance():Number {
+			var critChance:Number = 5;
+			if (player.findPerk(PerkLib.Tactician) >= 0 && player.inte >= 50) critChance += (player.inte - 50) / 5;
+			if (player.findPerk(PerkLib.Blademaster) >= 0 && (player.weaponVerb == "slash" || player.weaponVerb == "cleave" || player.weaponVerb == "keen cut") && player.shield == ShieldLib.NOTHING) critChance += 5;
 			if (player.jewelry.effectId == JewelryLib.MODIFIER_CRITICAL) critChance += player.jewelry.effectMagnitude;
-			return rand(100) <= critChance;
+			return critChance;
 		}
 
 		public function combatBlock(doFatigue:Boolean = false):Boolean {
