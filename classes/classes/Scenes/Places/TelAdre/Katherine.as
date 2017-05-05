@@ -4558,7 +4558,7 @@ public function suckedNFuckedByKat():void {
 
 	outputText("But it's Katherine who cums first.  With a muffled yowl of delight she floods your hole");
 	if (player.hasVagina() && cockNumber > 1) outputText("s");
-	outputText(" with her spunk, gushing hot kitty-kum into your depths.  Your belly begins to swell from the spunk, bulging into a visible paunch");
+	outputText(" with her spunk, gushing hot kitty-cum into your depths.  Your belly begins to swell from the spunk, bulging into a visible paunch");
 	if (cumQ() > 500) outputText(" and it doesn't stop, growing and growing until you look pregnant and ready to deliver");
 	if (cumQ() > 1500) outputText(" and her " + (hasBalls() ? "swollen balls keep on going; by the time they finally run" : "massive prostate keeps on going; by the time it finally runs") + " dry, your belly is so heavy with deposited cum that you look like you're having triplets");
 	outputText(".  She slumps forward with a groan of blissed-out relief, spent from her climax.\n\n");
@@ -6240,7 +6240,7 @@ private function bedroomBondage():void {
 		
 		outputText("You position yourself on the bed and line " + (player.cocks.length > 1 ? "up one of your dicks" : "your cock") + " with Kath’s slit.  " + (hasCock() ? "Her cum is still dripping on your back when you push inside her.  " : "") + "She’s incredibly wet and her pussy opens itself before you, " + (hasCock() ? "almost like it’s jealous of the treatment her male side received" : "begging for more even though she's shaking her head") + ".\n\n");
 
-		outputText("Unlike Katherine you haven’t cum yet and your cocks are aching for release.  You stroke her ");
+		outputText("Unlike Katherine you haven’t cum yet and your " + (player.cocks.length > 1 ? "cocks are" : "cock is") + " aching for release.  You stroke her ");
 		if (pregSize() == 0) {
 			outputText("flat tummy and ask her where she wants your seed.\n\n");
 			if (doneSubmissive(KBIT_SUB_BED_BOND))
