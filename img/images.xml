@@ -1529,6 +1529,14 @@
 				<ImageFile>./img/monster-chameleongirl</ImageFile>
 				<ImageFile>./img/monster-chameleongirl_1</ImageFile>
 			</ImageSet>
+			<ImageSet id="monster-cockatrice">
+				<ImageFile>./img/monster-cockatrice</ImageFile>
+				<ImageFile>./img/monster-cockatrice_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="monster-cockatricewithwings">
+				<ImageFile>./img/monster-cockatricewithwings</ImageFile>
+				<ImageFile>./img/monster-cockatricewithwings_1</ImageFile>
+			</ImageSet>
 			<ImageSet id="monster-corrupteddrider">
 				<ImageFile>./img/monster-corrupteddrider</ImageFile>
 				<ImageFile>./img/monster-corrupteddrider_1</ImageFile>
@@ -1564,6 +1572,10 @@
 			<ImageSet id="monster-fetishzealot">
 				<ImageFile>./img/monster-fetishzealot</ImageFile>
 				<ImageFile>./img/monster-fetishzealot_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="monster-ghoul">
+				<ImageFile>./img/monster-ghoul</ImageFile>
+				<ImageFile>./img/monster-ghoul_1</ImageFile>
 			</ImageSet>
 			<ImageSet id="monster-gnoll">
 				<ImageFile>./img/monster-gnoll</ImageFile>

@@ -19,6 +19,7 @@ package classes.Scenes.Areas.HighMountains
 			wingType = WING_TYPE_FEATHERED_LARGE;
 			wingDesc = "large, feathered";
 			spe += 10;
+			imageName += "withwings";
 		}
 
 		//special 1: cockatrice compulsion attack
