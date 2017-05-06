@@ -3,7 +3,13 @@
 	import classes.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Scenes.Areas.Forest.KitsuneScene;
+	import classes.GlobalFlags.kGAMECLASS;
+	import classes.GlobalFlags.kACHIEVEMENTS;
 
+	/**
+	 * This class performs the various mutations on the player, transforming one or more
+	 * aspects of their appearance.
+	 */
 	public final class Mutations extends MutationsHelper
 	{
 		private static var _instance:Mutations = new Mutations();
@@ -18,16 +24,6 @@
 
 		public static function init():Mutations { return _instance; }
 
-		import classes.GlobalFlags.kGAMECLASS;
-		import classes.GlobalFlags.kACHIEVEMENTS;
-// import classes.ItemSlotClass;
-
-//const FOX_BAD_END_WARNING:int = 477;
-//const TIMES_MET_CHICKEN_HARPY:int = 652;
-//const EGGS_BOUGHT:int = 653;
-//const BIKINI_ARMOR_BONUS:int = 769;
-
-//Cerulean P.
 		public function ceruleanPotion(player:Player):void
 		{
 			
@@ -54,7 +50,6 @@
 			player.refillHunger(20);
 		}
 
-//Vitality Tincture
 		public function vitalityTincture(player:Player):void
 		{
 			
@@ -77,7 +72,6 @@
 			player.refillHunger(10);
 		}
 
-//Scholar's Tea
 		public function scholarsTea(player:Player):void
 		{
 			
@@ -92,7 +86,6 @@
 			player.refillHunger(10);
 		}
 
-		/* ITEMZZZZZ FUNCTIONS GO HERE */
 		public function incubiDraft(tainted:Boolean,player:Player):void
 		{
 			var tfSource:String = "incubiDraft";
@@ -2849,8 +2842,6 @@ public function wolfPepper(type: Number, player: Player): void {
 			if (rand(5) == 0) updateOvipositionPerk(tfSource);
 		}
 	
-		//pureHoney moved to BeeHoney.as
-		
 		public function succubisDelight(tainted:Boolean,player:Player):void
 		{
 			player.slimeFeed();
@@ -3024,77 +3015,6 @@ public function wolfPepper(type: Number, player: Player): void {
 			}
 			player.refillHunger(15);
 		}
-
-		//Oviposition Elixer!
-		/*
-		 v1 = egg type.
-		 v2 = size - 0 for normal, 1 for large
-		 v3 = quantity
-		 EGG TYPES-
-		 0 - brown - ass expansion
-		 1 - purple - hip expansion
-		 2 - blue - vaginal removal and/or growth of existing maleness
-		 3 - pink - dick removal and/or fertility increase.
-		 4 - white - breast growth.  If lactating increases lactation.
-		 5 - rubbery black
-		 6 -
-		 */
-/* Now handled by OvipositionElixir.as
-		public function ovipositionElixer(player:Player):void
-		{
-			player.slimeFeed();
-			changes = 0;
-			//Females!
-			outputText("You pop the cork and gulp down the thick greenish fluid.  The taste is unusual and unlike anything you've tasted before.", true);
-			if (player.pregnancyType == PregnancyStore.PREGNANCY_GOO_STUFFED) {
-				outputText("\n\nFor a moment you feel even more bloated than you already are. That feeling is soon replaced by a dull throbbing pain. It seems that with Valeria's goo filling your womb the ovielixir is unable to work its magic on you.");
-				return;
-			}
-			if (player.pregnancyType == PregnancyStore.PREGNANCY_WORM_STUFFED) {
-				outputText("\n\nFor a moment you feel even more bloated than you already are. That feeling is soon replaced by a dull throbbing pain. It seems that with the worms filling your womb the ovielixir is unable to work its magic on you.");
-				return;
-			}
-			//If player already has eggs, chance of size increase!
-			if (player.pregnancyType == PregnancyStore.PREGNANCY_OVIELIXIR_EGGS) {
-				if (player.hasStatusEffect(StatusEffects.Eggs)) {
-					//If eggs are small, chance of increase!
-					if (player.statusEffectv2(StatusEffects.Eggs) == 0) {
-						//1 in 2 chance!
-						if (rand(3) == 0) {
-							player.addStatusValue(StatusEffects.Eggs,2,1);
-							outputText("\n\nYour pregnant belly suddenly feels heavier and more bloated than before.  You wonder what the elixir just did.", false);
-							changes++;
-						}
-					}
-					//Chance of quantity increase!
-					if (rand(2) == 0) {
-						outputText("\n\nA rumble radiates from your uterus as it shifts uncomfortably and your belly gets a bit larger.", false);
-						player.addStatusValue(StatusEffects.Eggs,3,rand(4) + 1);
-						changes++;
-					}
-				}
-			}
-			//If the player is not pregnant, get preggers with eggs!
-			if (player.pregnancyIncubation == 0) {
-				outputText("\n\nThe elixir has an immediate effect on your belly, causing it to swell out slightly as if pregnant.  You guess you'll be laying eggs sometime soon!", false);
-				player.knockUp(PregnancyStore.PREGNANCY_OVIELIXIR_EGGS, PregnancyStore.INCUBATION_OVIELIXIR_EGGS, 1, 1);
-				//v1 = egg type.
-				//v2 = size - 0 for normal, 1 for large
-				//v3 = quantity
-				player.createStatusEffect(StatusEffects.Eggs, rand(6), 0, (5 + rand(3)), 0);
-				changes++;
-			}
-			//If no changes, speed up pregnancy.
-			if (changes == 0 && player.pregnancyIncubation > 20 && player.pregnancyType != PregnancyStore.PREGNANCY_BUNNY) {
-				outputText("\n\nYou gasp as your pregnancy suddenly leaps forwards, your belly bulging outward a few inches as it gets closer to time for birthing.", false);
-				var newIncubation:int = player.pregnancyIncubation - int(player.pregnancyIncubation * .3 + 10);
-				if (newIncubation < 2) newIncubation = 2;
-				player.knockUpForce(player.pregnancyType, newIncubation);
-				trace("Pregger Count New total:" + player.pregnancyIncubation);
-			}
-			player.refillHunger(10);
-		}
-*/
 
 //butt expansion
 		public function brownEgg(large:Boolean,player:Player):void
@@ -4333,7 +4253,7 @@ public function wolfPepper(type: Number, player: Player): void {
 			player.refillHunger(15);
 		}
 
-		public function gooGasmic(player:Player):void
+		public function wetCloth(player:Player):void
 		{
 			var tfSource:String = "gooGasmic";
 			outputText("You take the wet cloth in hand and rub it over your body, smearing the strange slime over your " + player.skinDesc + " slowly.", true);
@@ -4352,13 +4272,7 @@ public function wolfPepper(type: Number, player: Player): void {
 				outputText("\n\nThe slippery slime numbs your " + player.skinDesc + " slightly, leaving behind only gentle warmth.", false);
 				dynStats("sen", -1);
 			}
-			/*Calculate goopiness
-			 var goopiness:Number = 0;
-			 if (player.hasGooSkin()) goopiness+=2;
-			 if (player.hair.indexOf("gooey") != -1) goopiness++;
-			 if (player.hasVagina()) {
-			 if (player.vaginalCapacity() >= 9000) goopiness++;
-			 }*/
+
 			//Cosmetic changes based on 'goopyness'
 			if (rand(5) == 0) updateOvipositionPerk(tfSource);
 			//Remove wings
@@ -4751,56 +4665,10 @@ public function wolfPepper(type: Number, player: Player): void {
 			// Remove gills
 			if (rand(4) == 0 && player.hasGills() && changes < changeLimit) updateGills();
 
-			//9e) Penis
-			/*
-			 if (player.cockTotal() > 0) {
-			 //(If multiple penis, insert "one of your")
-			 outputText("\n\nAs the liquid takes effect, ", false);
-			 //(if multicock)
-			 if (player.cockTotal() > 1) outputText("one of ", false);
-			 outputText("your " + player.multiCockDescriptLight() + " starts to throb painfully and swell to its full size.  With a horrifying ripping sensation, your cock splits down the middle, the pain causing you to black out momentarily.", false);
-			 outputText("When you awaken, you quickly look down to see that where ", false);
-			 //(if multicock)
-			 if (player.cockTotal() > 1) outputText("one of ", false);
-			 outputText("your " + player.multiCockDescriptLight() + " was, you now have two pointed reptilian cocks, still stiff and pulsing.", false);
-			 }*/
 			//Default change - blah
 			if (changes == 0) outputText("\n\nRemakarbly, the snake-oil has no effect.  Should you really be surprised at snake-oil NOT doing anything?", false);
 			player.refillHunger(5);
 		}
-
-/*
-		public function extensionSerum(player:Player):void
-		{
-			clearOutput();
-			if (flags[kFLAGS.INCREASED_HAIR_GROWTH_SERUM_TIMES_APPLIED] > 2) {
-				outputText("<b>No way!</b>  Your head itches like mad from using the rest of these, and you will NOT use another.\n", false);
-				if (!debug) {
-					inventory.takeItem(consumables.EXTSERM);
-				}
-				return;
-			}
-			outputText("You open the bottle of hair extension serum and follow the directions carefully, massaging it into your scalp and being careful to keep it from getting on any other skin.  You wash off your hands with lakewater just to be sure.", false);
-			if (flags[kFLAGS.INCREASED_HAIR_GROWTH_TIME_REMAINING] <= 0) {
-				outputText("\n\nThe tingling on your head lets you know that it's working!", false);
-				flags[kFLAGS.INCREASED_HAIR_GROWTH_TIME_REMAINING] = 7;
-				flags[kFLAGS.INCREASED_HAIR_GROWTH_SERUM_TIMES_APPLIED] = 1;
-			}
-			else if (flags[kFLAGS.INCREASED_HAIR_GROWTH_SERUM_TIMES_APPLIED] == 1) {
-				outputText("\n\nThe tingling intensifies, nearly making you feel like tiny invisible faeries are massaging your scalp.", false);
-				flags[kFLAGS.INCREASED_HAIR_GROWTH_SERUM_TIMES_APPLIED]++;
-			}
-			else if (flags[kFLAGS.INCREASED_HAIR_GROWTH_SERUM_TIMES_APPLIED] == 2) {
-				outputText("\n\nThe tingling on your scalp is intolerable!  It's like your head is a swarm of angry ants, though you could swear your hair is growing so fast that you can feel it weighing you down more and more!", false);
-				flags[kFLAGS.INCREASED_HAIR_GROWTH_SERUM_TIMES_APPLIED]++;
-			}
-			if (flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] > 0 && player.hairType != 4) {
-				flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] = 0;
-				outputText("\n\n<b>Somehow you know that your " + player.hairDescript() + " is growing again.</b>", false);
-			}
-			if (flags[kFLAGS.INCREASED_HAIR_GROWTH_TIME_REMAINING] < 7) flags[kFLAGS.INCREASED_HAIR_GROWTH_TIME_REMAINING] = 7;
-		}
-		*/
 
 		public function superHummus(player:Player):void
 		{
@@ -5234,7 +5102,7 @@ public function wolfPepper(type: Number, player: Player): void {
 			}
 		}
 
-		public function catTransformation(player:Player):void
+		public function whiskerFruit(player:Player):void
 		{
 			var tfSource:String = "catTransformation";
 			if (player.hasReptileScales() && player.hasDragonWings() && player.tongueType == TONGUE_DRACONIC)
@@ -6181,29 +6049,6 @@ public function wolfPepper(type: Number, player: Player): void {
 			flags[kFLAGS.TIMES_TRANSFORMED] += changes;
 		}
 
-/*
-		public function wingStick(player:Player):void
-		{
-			outputText("You toss a wingstick at your foe!  It flies straight and true, almost as if it has a mind of its own as it arcs towards " + monster.a + monster.short + "!\n", true);
-			//1% dodge for each point of speed over 80
-			if (monster.spe - 80 > rand(100) + 1 || monster.short == "lizan rogue") {
-				outputText("Somehow " + monster.a + monster.short + "'", false);
-				if (!monster.plural) outputText("s", false);
-				outputText(" incredible speed allows " + monster.pronoun2 + " to avoid the spinning blades!  The deadly device shatters when it impacts something in the distance.", false);
-			}
-			//Not dodged
-			else {
-				var damage:Number = 40 + rand(61);
-				outputText(monster.capitalA + monster.short + " is hit with the wingstick!  It breaks apart as it lacerates " + monster.pronoun2 + ". (" + damage + ")", false);
-				monster.HP -= damage;
-				if (monster.HP < 0) monster.HP = 0;
-			}
-			if (monster.short == "lizan rogue") {
-				outputText("You fling the wingstick with all your might and its aim is true. The moment it nears the lizan, though, he catches it with a flick of his wrist.  It appears he is too fast and well trained for normal projectile attacks.");
-			}
-		}
-*/
-
 		public function neonPinkEgg(pregnantChange:Boolean,player:Player):void
 		{
 			var tfSource:String = "neonPinkEgg";
@@ -7109,7 +6954,6 @@ public function wolfPepper(type: Number, player: Player): void {
 			flags[kFLAGS.TIMES_TRANSFORMED] += changes;
 		}
 
-//[Giant Chocolate Cupcake] – 500 gems
 		public function giantChocolateCupcake(player:Player):void
 		{
 			clearOutput();
@@ -7377,27 +7221,6 @@ public function wolfPepper(type: Number, player: Player): void {
 			player.refillHunger(5);
 			flags[kFLAGS.TIMES_TRANSFORMED] += changes;
 		}
-		
-/*
-		public function applyLustStick(player:Player):void
-		{
-			clearOutput();
-			if (player.hasStatusEffect(StatusEffects.LustStickApplied)) {
-				player.addStatusValue(StatusEffects.LustStickApplied, 1, 12 + rand(12));
-				outputText("You carefully open the sweet-smelling tube and smear the lipstick over the coat you already have on your lips.  <b>No doubt another layer will make it last even longer!</b>  ", false);
-				outputText("You finish and pucker your lips, feeling fairly sexy with your new, thicker makeup on.\n\n", false);
-			}
-			else {
-				player.createStatusEffect(StatusEffects.LustStickApplied, 24, 0, 0, 0);
-				outputText("You carefully open the sweet-smelling tube and smear the lipstick over your lips.  ", false);
-				if (player.hasCock()) outputText("It tingles a little, but the drugs have little to no effect on you now.", false);
-				else outputText("Honestly, it amazes you that something as little as a kiss can make a man putty in your hands.", false);
-				outputText("  You finish and pucker your lips, feeling fairly sexy with your new makeup on.\n\n", false);
-			}
-			dynStats("lus", 1);
-
-		}
-*/
 
 		public function broBrew(player:Player):void
 		{
@@ -7569,7 +7392,6 @@ public function wolfPepper(type: Number, player: Player): void {
 //bottle of ectoplasm. Regular stat-stuff include higher speed, (reduced libido?), reduced sensitivity, and higher intelligence. First-tier effects include 50/50 chance of sable skin with bone-white veins or ivory skin with onyx veins. Second tier, \"wisp-like legs that flit back and forth between worlds,\" or \"wisp-like legs\" for short. Third tier gives an \"Ephemeral\" perk, makes you (10%, perhaps?) tougher to hit, and gives you a skill that replaces tease/seduce—allowing the PC to possess the creature and force it to masturbate to gain lust. Around the same effectiveness as seduce.
 //Mouseover script: \"The green-tinted, hardly corporeal substance flows like a liquid inside its container. It makes you feel...uncomfortable, as you observe it.\"
 
-//Bottle of Ectoplasm Text
 		public function ectoplasm(player:Player):void
 		{
 			var tfSource:String = "ectoplasm";
@@ -7673,9 +7495,6 @@ public function wolfPepper(type: Number, player: Player): void {
 			player.refillHunger(20);
 		}
 
-
-//TF item - Shriveled Tentacle
-//tooltip:
 		public function shriveledTentacle(player:Player):void
 		{
 			var tfSource:String = "shriveledTentacle";
@@ -7763,9 +7582,6 @@ public function wolfPepper(type: Number, player: Player): void {
 			flags[kFLAGS.TIMES_TRANSFORMED] += changes;
 		}
 
-//ITEMS START
-
-//Numb Rocks
 		public function numbRocks(player:Player):void
 		{
 			clearOutput();
@@ -7814,7 +7630,6 @@ public function wolfPepper(type: Number, player: Player): void {
 			player.refillHunger(20);
 		}
 
-//2. Sensitivity Draft
 		public function sensitivityDraft(player:Player):void
 		{
 			player.slimeFeed();
@@ -7842,6 +7657,12 @@ public function wolfPepper(type: Number, player: Player): void {
 			player.refillHunger(5);
 		}
 
+		/**
+		 * Transformation for Fox Berry or (enhanced) Vixen's Vigor
+		 * 
+		 * @param	enhanced if true, it's Vixen's Vigor
+		 * @param	player affected by the item
+		 */
 		public function foxTF(enhanced:Boolean,player:Player):void
 		{
 			var tfSource:String = "foxTF";
@@ -8298,8 +8119,6 @@ public function wolfPepper(type: Number, player: Player): void {
 			player.refillHunger(5);
 		}
 		
-		//Item: Dragon Egg (Z) (FEN CODED TO HERE - OR AT LEAST COPIED INTO THE CODE FOR FUTURE CODING)
-		//Itemdescription - "A large, solid egg, easily the size of your clenched fist.  Its shell color is reddish-white, with blue splotches."
 		public function eatEmberEgg(player:Player):void
 		{
 			clearOutput();
@@ -8318,12 +8137,6 @@ public function wolfPepper(type: Number, player: Player): void {
 			player.refillHunger(50);
 		}
 
-
-//Inventory Description:
-//9999A shining teardrop-shaped jewel.  An eerie blue flame dances beneath the surface.
-//Fox Jewel (Magatama)
-
-//Consume:
 		public function foxJewel(mystic:Boolean,player:Player):void
 		{
 			var tfSource:String = "foxJewel";
@@ -8587,204 +8400,6 @@ public function wolfPepper(type: Number, player: Player): void {
 			flags[kFLAGS.TIMES_TRANSFORMED] += changes;
 		}
 
-/* Moved to KitsuneGift.as
-//Kitsune's Gift
-		public function kitsunesGift(player:Player):void
-		{
-			clearOutput();
-			outputText("Curiosity gets the best of you, and you decide to open the package.  After all, what's the worst that could happen?\n\n");
-			//Opening the gift randomly results in one of the following:
-//			menuLoc = MENU_LOCATION_KITSUNE_GIFT;
-			
-			switch(rand(12)) {
-			//[Fox Jewel]
-				case 0: 
-				outputText("As the paper falls away, you carefully lift the cover of the box, your hands trembling nervously.  The inside of the box is lined with purple velvet, and to your delight, sitting in the center is a small teardrop-shaped jewel!");
-				outputText("\n\n<b>You've received a shining Fox Jewel from the kitsune's gift!  How generous!</b>  ");
-				inventory.takeItem(consumables.FOXJEWL, inventory.inventoryMenu);
-				break;
-
-			//[Fox Berries]
-				case 1:
-				outputText("As the paper falls away, you carefully lift the cover of the box, your hands trembling nervously.  The inside of the box is lined with purple velvet, and to your delight, there is a small cluster of orange-colored berries sitting in the center!");
-				outputText("\n\n<b>You've received a fox berry from the kitsune's gift!  How generous!</b>  ");
-				//add Fox Berries to inventory
-				inventory.takeItem(consumables.FOXBERY, inventory.inventoryMenu);
-				break;
-
-			//[Gems]
-				case 2:
-				outputText("As the paper falls away, you carefully lift the cover of the box, your hands trembling nervously.  The inside of the box is lined with purple velvet, and to your delight, it is filled to the brim with shining gems!");
-				var gems:int = 2 + rand(20);
-				outputText("\n\n<b>You've received " + num2Text(gems) + " shining gems from the kitsune's gift!  How generous!</b>");
-				player.gems += gems;
-				//add X gems to inventory
-				statScreenRefresh();
-				break;
-
-			//[Kitsune Tea/Scholar's Tea] //Just use Scholar's Tea and drop the "trick" effect if you don't want to throw in another new item.
-				case 3:
-				outputText("As the paper falls away, you carefully lift the cover of the box, your hands trembling nervously.  The inside of the box is lined with purple velvet, and to your delight, it contains a small bag of dried tea leaves!");
-				outputText("\n\n<b>You've received a bag of tea from the kitsune's gift!  How thoughtful!</b>  ");
-				//add Kitsune Tea/Scholar's Tea to inventory
-				inventory.takeItem(consumables.SMART_T, inventory.inventoryMenu);
-				break;
-
-			//[Hair Dye]
-				case 4:
-				outputText("As the paper falls away, you carefully lift the cover of the box, your hands trembling nervously.  The inside of the box is lined with purple velvet, and to your delight, it contains a small vial filled with hair dye!");
-				var itype:ItemType = [
-					consumables.RED_DYE,
-					consumables.BLOND_D,
-					consumables.BLACK_D,
-					consumables.WHITEDY
-				][rand(4)];
-
-				outputText("\n\n<b>You've received " + itype.longName + " from the kitsune's gift!  How generous!</b>  ");
-				//add <color> Dye to inventory
-				inventory.takeItem(itype, inventory.inventoryMenu);
-				break;
-
-			//[Knowledge Spell]
-				case 5:
-				outputText("As the paper falls away, you carefully lift the cover of the box, your hands trembling nervously.  The inside of the box is lined with purple velvet, but it seems like there's nothing else inside.  As you peer into the box, a glowing circle filled with strange symbols suddenly flashes to life!  Light washes over you, and your mind is suddenly assaulted with new knowledge...  and the urge to use that knowledge for mischief!");
-
-				outputText("\n\n<b>The kitsune has shared some of its knowledge with you!</b>  But in the process, you've gained some of the kitsune's promiscuous trickster nature...");
-				//Increase INT and Libido, +10 LUST
-				dynStats("int", 4, "sen", 2, "lus", 10);
-				break;
-
-			//[Thief!]
-				case 6:
-				outputText("As the paper falls away, you carefully lift the cover of the box, your hands trembling nervously.  The inside of the box is lined with purple velvet, and sitting in the center is an artfully crafted paper doll.  Before your eyes, the doll springs to life, dancing about fancifully.  Without warning, it leaps into your item pouch, then hops away and gallavants into the woods, carting off a small fortune in gems.");
-
-				outputText("\n\n<b>The kitsune's familiar has stolen your gems!</b>");
-				// Lose X gems as though losing in battle to a kitsune
-				player.gems -= 2 + rand(15);
-				statScreenRefresh();
-				break;
-
-			//[Prank]
-				case 7:
-				outputText("As the paper falls away, you carefully lift the cover of the box, your hands trembling nervously.  The inside of the box is lined with purple velvet, and sitting in the center is an artfully crafted paper doll.  Before your eyes, the doll springs to life, dancing about fancifully.  Without warning, it pulls a large calligraphy brush from thin air and leaps up into your face, then hops away and gallavants off into the woods.  Touching your face experimentally, you come away with a fresh coat of black ink on your fingertips.");
-
-				outputText("\n\n<b>The kitsune's familiar has drawn all over your face!</b>  The resilient marks take about an hour to completely scrub off in the nearby stream.  You could swear you heard some mirthful snickering among the trees while you were cleaning yourself off.");
-				//Advance time 1 hour, -20 LUST
-				dynStats("lus", -20);
-				break;
-
-			//[Aphrodisiac]
-				case 8:
-				outputText("As the paper falls away, you carefully lift the cover of the box, your hands trembling nervously.  The inside of the box is lined with purple velvet, and sitting in the center is an artfully crafted paper doll.  Before your eyes, the doll springs to life, dancing about fancifully.  Without warning, it tosses a handful of sweet-smelling pink dust into your face, then hops over the rim of the box and gallavants off into the woods.  Before you know what has happened, you feel yourself growing hot and flushed, unable to keep your hands away from your groin.");
-				outputText("\n\n<b>Oh no!  The kitsune's familiar has hit you with a powerful aphrodisiac!  You are debilitatingly aroused and can think of nothing other than masturbating.</b>");
-				//+100 LUST
-				dynStats("lus=", player.maxLust(), "resisted", false);
-				break;
-
-			//[Wither]
-				case 9:
-				outputText("As the paper falls away, you carefully lift the cover of the box, your hands trembling nervously.  The inside of the box is lined with purple velvet, and sitting in the center is an artfully crafted paper doll.  Before your eyes, the doll springs to life, dancing about fancifully.  Without warning, it tosses a handful of sour-smelling orange powder into your face, then hops over the rim of the box and gallavants off into the woods.  Before you know what has happened, you feel the strength draining from your muscles, withering away before your eyes.");
-				outputText("\n\n<b>Oh no!  The kitsune's familiar has hit you with a strength draining spell!  Hopefully it's only temporary...</b>");
-				dynStats("str", -5, "tou", -5);
-				break;
-
-			//[Dud]
-				case 10:
-				outputText("As the paper falls away, you carefully lift the cover of the box, your hands trembling nervously.  The inside of the box is lined with purple velvet, but to your disappointment, the only other contents appear to be nothing more than twigs, leaves, and other forest refuse.");
-				outputText("\n\n<b>It seems the kitsune's gift was just a pile of useless junk!  What a ripoff!</b>");
-				break;
-
-			//[Dud...  Or is it?]
-				case 11:
-				outputText("As the paper falls away, you carefully lift the cover of the box, your hands trembling nervously.  The inside of the box is lined with purple velvet, but to your disappointment, the only other contents appear to be nothing more than twigs, leaves, and other forest refuse.  Upon further investigation, though, you find a shard of shiny black chitinous plating mixed in with the other useless junk.");
-					outputText("\n\n<b>At least you managed to salvage a shard of black chitin from it...</b>  ");
-				inventory.takeItem(useables.B_CHITN, inventory.inventoryMenu);
-				break;
-
-				default: trace("Kitsune's gift roll foobar..."); break;
-			}
-		}
-*/
-
-		/*
-		 Perk
-
-		 Corrupted Nine-tails:
-		 Description: The mystical energy of the nine-tails surges through you, filling you with phenomenal cosmic power!  Your boundless magic allows you to recover quickly after casting spells, but your method of attaining it has corrupted the transformation, preventing you from achieving true enlightenment.
-		 Effect: Recover 1-3 Fatigue per Round in combat, 3 per hour out of combat.  Victory sex recovers fatigue equal to 2x the enemy's level.  Also applies Masochist and Sadist perks, if they are not already.
-		 //Alternatively, add the same effects as Masochist and Sadist but don't allow stacking, this way the effects can be removed if the player loses the corrupted nine-tails perk.
-		 Requirements: Have fox ears and obtain your 9th tail from the Mystic Jewel item.  Must maintain at least 80 corruption and 80 intelligence, fox ears and 9 tails, or lose the perk.
-
-		 Corrupted Fox Fire
-		 Fatigue Cost: 35
-		 Deals direct damage and lust regardless of enemy defenses.  Especially effective against non-corrupted targets.
-		 Cast: outputText( "Holding out your palm, you conjure corrupted purple flame that dances across your fingertips.  You launch it at the " + monster.short + " with a ferocious throw, and it bursts on impact, showering dazzling lavender sparks everywhere." );
-
-		 Terror
-		 Fatigue Cost: 25
-		 Inflicts fear and reduces enemy SPD.
-		 Cast: outputText( "The world goes dark, an inky shadow blanketing everything in sight as you fill the " + monster.short + "'s mind with visions of otherworldly terror that defy description."  + ((succeed) ? "They cower in horror as they succumb to your illusion, believing themselves beset by eldritch horrors beyond their wildest nightmares." : "The dark fog recedes as quickly as it rolled in as they push back your illusions, resisting your hypnotic influence.") );
-
-		 Seal
-		 Fatigue Cost: 35
-		 Seals enemy abilities, preventing them from using their specials.
-		 Cast: outputText( "You make a series of gestures, chanting in a strange tongue.  " + ((succeed) ? "A symbol made of flames appears on the " + monster.short + "'s body, temporarily preventing them from using any special abilities!" : "A symbol made of flames appears on the " + monster.short + "'s body, but it dissipates as quickly as it was formed, failing to properly seal them." ) );
-
-		 Enlightened Nine-tails:
-		 Description: The mystical energy of the nine-tails surges through you, filling you with phenomenal cosmic power!  Your boundless magic allows you to recover quickly after casting spells.
-		 Effect: Recover 1-3 Fatigue per Round in combat, 3 per hour out of combat.  Provides a buff to Tease.  Victory sex recovers fatigue equal to 2x the enemy's level.
-		 Requirements: Have fox ears and obtain your 9th tail from spiritual enlightenment.  Must maintain at least 80 intelligence, fox ears and 9 tails, or lose the perk.
-
-		 Fox Fire
-		 Fatigue Cost: 35
-		 Deals direct damage and lust regardless of enemy defenses.  Especially effective against corrupted targets.
-		 Cast: outputText( "Holding out your palm, you conjure an ethereal blue flame that dances across your fingertips.  You launch it at the " + monster.short + " with a ferocious throw, and it bursts on impact, showering dazzling azure sparks everywhere.");
-
-		 Illusion
-		 Fatigue Cost: 25
-		 Decrease enemy hit chance and increase their susceptibility to lust attacks.
-		 Cast: outputText( "The world begins to twist and distort around you as reality bends to your will, the " + monster.short + "'s mind blanketed in the thick fog of your illusions." + ((succeed) ? "They stumble humorously to and fro, unable to keep pace with the shifting illusions that cloud their perceptions" : "Like the snapping of a rubber band, reality falls back into its rightful place as they resist your illusory conjurations." ) );
-
-		 Seal
-		 Fatigue Cost: 35
-		 Seals enemy abilities, preventing them from using their specials.
-		 Cast: outputText( "You make a series of gestures, chanting in a strange tongue.  " + ((succeed) ? "A symbol made of flames appears on the " + monster.short + "'s body, temporarily preventing them from using any special abilities!" : "A symbol made of flames appears on the " + monster.short + "'s body, but it dissipates as quickly as it was formed, failing to properly seal them." ) );
-		 Teases
-
-		 // Specific to tentacle beasts
-		 outputText( "You find yourself unable to stifle a flirtatious giggle, waggling your fingers at the tentacle beast and grinning.  You stroll fearlessly up to the writhing abomination and run your hands through its thick, foliage-like coat, your tail" + ((player.tailVenum > 1) ? "s" : "" ) + " curling around its wriggling limbs.  " + ((succeed) ? "The creature's wild thrashing is quelled by confusion and arousal, a few of its limbs running along your face tenderly before you break away.  The beast resumes its savage flailing, but you can tell your touch had an effect on it." : "The creature is unmoved by your tender caresses, swinging a thick limb at you violently.  Thankfully, you are able to break away from it unscathed, but it's obvious that you're going to have to try harder to fluster this beast.") );
-		 */
-
-//Unbimbo Yourself:*
-/* Now handled by DeBimbo.as
-		public function deBimbo(player:Player):void
-		{
-			clearOutput();
-			if (player.findPerk(PerkLib.BimboBrains) < 0 && player.findPerk(PerkLib.FutaFaculties) < 0 && player.findPerk(PerkLib.BroBrains) < 0) {
-				outputText("You can't use this right now, and it's too expensive to waste!\n\n");
-				if (debug) {}
-				else {
-					inventory.takeItem(consumables.DEBIMBO);
-				}
-				return;
-			}
-			outputText("Well, time to see what this smelly, old rat was on about!  You pinch your nose and swallow the foul-tasting mixture with a grimace.  Oh, that's just <i>nasty!</i>  You drop the vial, which shatters on the ground, clutching at your head as a wave of nausea rolls over you.  Stumbling back against a rock for support, you close your eyes.  A constant, pounding ache throbs just behind your temples, and for once, you find yourself speechless.  A pained groan slips through your lips as thoughts and memories come rushing back.  One after another, threads of cognizant thought plow through the simple matrices of your bimbo mind, shredding and replacing them.");
-			outputText("\n\nYou... you were an air-headed ditz!  A vacuous, idiot-girl with nothing between her ears but hunger for dick and pleasure!  You shudder as your faculties return, the pain diminishing with each passing moment.");
-			if (player.findPerk(PerkLib.BimboBrains) >= 0) {
-				outputText("\n\n(<b>Perk Removed:  Bimbo Brains - Your intelligence and speech patterns are no longer limited to that of a bimbo.</b>)");
-				player.removePerk(PerkLib.BimboBrains);
-			}
-			else if (player.findPerk(PerkLib.FutaFaculties) >= 0) {
-				outputText("\n\n(<b>Perk Removed:  Futa Faculties - Your intelligence and speech patterns are no longer limited to that of a futanari bimbo.</b>)");
-				player.removePerk(PerkLib.FutaFaculties);
-			}			
-			else if (player.findPerk(PerkLib.BroBrains) >= 0) {
-				outputText("\n\n(<b>Perk Removed:  Bro Brains - Your intelligence gains are no longer hampered. You now gain intelligence at a normal pace.</b>)");
-				player.removePerk(PerkLib.BroBrains);
-			}
-		}
-*/
-//Fish Fillet
 		public function fishFillet(player:Player):void
 		{
 			clearOutput();
@@ -8801,7 +8416,7 @@ public function wolfPepper(type: Number, player: Player): void {
 			HPChange(Math.round(player.maxHP() * .25), true);
 			player.refillHunger(30);
 		}
-		//Behemoth Cum
+
 		public function behemothCum(player:Player):void
 		{
 			clearOutput();
@@ -8812,7 +8427,7 @@ public function wolfPepper(type: Number, player: Player): void {
 			player.refillHunger(25);
 			player.orgasm('Lips',false);
 		}
-		//Urta's Cum
+
 		public function urtaCum(player:Player):void
 		{
 			clearOutput();
@@ -8823,8 +8438,7 @@ public function wolfPepper(type: Number, player: Player): void {
 			player.refillHunger(25);
 			player.orgasm('Lips',false);
 		}
-//Trap Oil
-//Flavour Description: A round, opaque glass vial filled with a clear, viscous fluid.  It has a symbol inscribed on it, a circle with a cross and arrow pointing out of it in opposite directions.  It looks and smells entirely innocuous.
+
 		public function trapOil(player:Player):void
 		{
 			var tfSource:String = "trapOil";
@@ -9097,8 +8711,6 @@ public function wolfPepper(type: Number, player: Player): void {
 			flags[kFLAGS.TIMES_TRANSFORMED] += changes;
 		}
 
-//PurPeac
-//Purity Peach - Inventory
 		public function purityPeach(player:Player):void
 		{
 			clearOutput();
@@ -9108,10 +8720,6 @@ public function wolfPepper(type: Number, player: Player): void {
 			player.refillHunger(25);
 		}
 
-//New Item: "Purple Fruit"
-//This sweet-smelling produce looks like an eggplant but feels almost squishy, and rubbery to the touch. Holding it to your ear, you think you can hear some fluid sloshing around inside.
-
-//>When Used
 		public function purpleFruitEssrayle(player:Player):void
 		{
 			player.slimeFeed();
@@ -9132,11 +8740,6 @@ public function wolfPepper(type: Number, player: Player): void {
 			player.boostLactation(3 * player.bRows());
 			player.refillHunger(30);
 		}
-
-//TF Items
-//Ringtail Fig/RingFig (please do not change the fruit type to suit whimsy because I have some plans for figs)
-//tooltip:
-//A dried fig with two lobes and thin dark rings just below its stem.  The skin is wrinkly and it looks vaguely like a bulging scrotum.
 
 		public function ringtailFig(player:Player):void
 		{
@@ -9313,12 +8916,6 @@ public function wolfPepper(type: Number, player: Player): void {
 			flags[kFLAGS.TIMES_TRANSFORMED] += changes;
 		}
 
-//MouseCo
-//tooltip:
-//A handful of rare aromatic beans with sharp creases in the middle, making them look like small mouse ears.  Allegedly very popular and plentiful before the mice-folk were wiped out.
-
-
-//Mouse Cocoa/MousCoco (you can change the name if you're saddlesore I guess but I'll make fun of you for having no plausible source of chocolate for your bakery if you do)
 		public function mouseCocoa(player:Player):void
 		{
 			var tfSource:String = "mouseCocoa";
@@ -9511,6 +9108,10 @@ public function wolfPepper(type: Number, player: Player): void {
 //perk - fuck if i know
 //maybe some pregnancy-accelerating thing
 
+		/**
+		 * Changes shared by succubi milk and incubi draft
+		 * @param	player affected by the mutation
+		 */
 		private function demonChanges(player:Player):void
 		{
 			//Change tail if already horned.
@@ -9678,8 +9279,7 @@ public function wolfPepper(type: Number, player: Player): void {
 			player.refillHunger(15);
 		}
 		
-		//Ferret Fruit
-		public function ferretTF(player:Player):void
+		public function ferretFruit(player:Player):void
 		{
 			var tfSource:String = "ferretTF";
 			//CoC Ferret TF (Ferret Fruit)
@@ -9982,23 +9582,6 @@ public function wolfPepper(type: Number, player: Player): void {
 			if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
 			outputText("You take a bite into the pigtail truffle. It oddly tastes like bacon. You eventually finish eating. ");
 			player.refillHunger(20);
-			//-----------------------
-			// BAD END ALERT!
-			//-----------------------
-			/*if (rand(5) == 0 && player.pigScore() >= 5 && player.findPerk(PerkLib.TransformationResistance) < 0) {
-				if (flags[kFLAGS.PIG_BAD_END_WARNING] == 0) {
-					outputText("\n\nYou find yourself idly daydreaming of flailing about in the mud, letting go of all of your troubles. Eventually, you shake off the thought. Why would you do something like that? Maybe you should cut back on all the truffles?");
-					dynStats("inte", -3);
-				}
-				else {
-					outputText("\n\nAs you down the last of your truffle, your entire body begins to convulse violently. Your vision becomes blurry, and you black out.");
-					outputText("\n\nWhen you awaken, you are greeted by a large dog licking at your face. The dog seems oddly familiar. \"<i>Bessy, whatcha doin’ girl?</i>\" a voice calls. The voice seems familiar as well. A funny-looking pig on two legs soon appears at the dog’s side. \"<i>Now, now, what do we have here?</i>\" The pig inspects you for a moment, eventually finding a hint of pigtail truffle on your snout.");
-					outputText("\n\n\"<i>Ah no...</i>\" he says sadly, shaking his head. \"<i>Come with me little " + player.mf("guy", "gal") + ",  I’ve got a place for ya.</i>\"  He then leads you to his shack, nestled in a small clearing in a nearby forest. \"<i>You don’t need ‘ta worry about a thing.  Come ‘ta think of it...</i>\"  he taps his chin for a moment,  \"<i>I know what I could use you for. You could be my own personal truffle hog! The more truffles, the better!</i>\"");
-					outputText("\n\nYou take wonderfully to your new job. Finding truffles is fun, and the funny pig takes great care of you. You couldn’t ask for better. Sure, the world is full of demons and the like, but here, you’re safe, and that’s all you care about.");
-					getGame().gameOver();
-					return;
-				}
-			}*/
 			//-----------------------
 			// SIZE MODIFICATIONS
 			//-----------------------

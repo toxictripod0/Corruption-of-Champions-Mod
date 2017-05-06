@@ -299,7 +299,7 @@ package classes.Scenes.Combat
 				outputText("\n<b>You'll need to close some distance before you can use any physical attacks!</b>");
 				if (isWieldingRangedWeapon()) {
 					if (flags[kFLAGS.FLINTLOCK_PISTOL_AMMO] <= 0 && player.weaponName == "flintlock pistol") addButton(0, "Reload&Approach", approachAfterKnockback, null, null, null, "Reload your flintlock pistol while approaching.", "Reload and Approach");
-					else addButton(0, "Shoot&Approach", approachAfterKnockback, null, null, null, "Fire a round at your opponent and approach.", "Reload and Approach");
+					else addButton(0, "Shoot&Approach", approachAfterKnockback, null, null, null, "Land a shot at your opponent and approach.", "Fire and Approach");
 				}
 				else addButton(0, "Approach", approachAfterKnockback, null, null, null, "Close some distance between you and your opponent.");
 				if (player.hasKeyItem("Bow") >= 0 || player.hasKeyItem("Kelt's Bow") >= 0) addButton(5, "Bow", combatAbilities.fireBow);
@@ -1798,6 +1798,8 @@ package classes.Scenes.Combat
 		}
 		public function beginCombatImmediate(monster:Monster, _plotFight:Boolean):void {
 			beginCombat(monster, _plotFight);
+			if (prison.inPrison && prison.prisonCombatAutoLose) endLustLoss();
+			else playerMenu();
 		}
 		
 		public function display():void {

@@ -783,8 +783,9 @@ private function doCamp():void { //Only called by playerMenu
 		}
 	}
 	
-	//Menu
+	dynStats(); // workaround for #484 'statbars do not fit in their place'
 	
+	//Menu
 	menu();
 	addButton(0, "Explore", exploreEvent, null, null, null, "Explore to find new regions and visit any discovered regions.");
 	addButton(1, "Places", placesEvent, null, null, null, "Visit any places you have discovered so far.");
@@ -2411,6 +2412,7 @@ private function totalChildrenForAscension():int { //Sorted alphabetically
 	amount += flags[kFLAGS.LYNNETTE_BABY_COUNT]; //Lynnette
 	amount += flags[kFLAGS.MARBLE_KIDS]; //Marble
 	amount += flags[kFLAGS.MINERVA_CHILDREN]; //Minerva
+	amount += Math.pow(flags[kFLAGS.ANT_KIDS] + flags[kFLAGS.PHYLLA_DRIDER_BABIES_COUNT], 0.4); // Phylla, at 5000 ant children it would count as 30 other kids.
 	amount += flags[kFLAGS.SHEILA_JOEYS] + flags[kFLAGS.SHEILA_IMPS]; //Sheila
 	amount += sophieBimbo.sophieChildren(); //Sophie
 	amount += (flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] / 4); //Tamani

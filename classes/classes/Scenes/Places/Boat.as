@@ -63,6 +63,8 @@ import classes.Scenes.Areas.Lake.*;
 	}
 
 	public function boatExplore():void {
+			// XXX: This is supposed to be displayed for all encounters except Fetish Zealot. I guess new system doesn't allow this without putting it to every other encounter. Or removing clearOutput() from them.
+			clearOutput();
 			player.addStatusValue(StatusEffects.BoatDiscovery, 1, 1);
 			outputText("You reach the dock without any incident and board the small rowboat.  The water is calm and placid, perfect for rowing.  ", true);
 			if (flags[kFLAGS.FACTORY_SHUTDOWN] == 2) {
@@ -70,8 +72,8 @@ import classes.Scenes.Areas.Lake.*;
 				if (player.inte > 40) outputText("You realize what it smells like – sex.  ", false);
 			}
 			outputText("You set out, wondering if you'll find any strange islands or creatures in the lake.\n\n", false);
-
-
+			
+			explorationEncounter.execEncounter();
 		}
 
 		private function nothingSpecial():void {
