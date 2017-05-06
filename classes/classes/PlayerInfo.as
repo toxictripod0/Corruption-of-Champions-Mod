@@ -28,6 +28,10 @@ package classes
 			if (player.hasKeyItem("Bow") >= 0 || player.hasKeyItem("Kelt's Bow") >= 0)
 				combatStats += "<b>Bow Skill:</b> " + Math.round(player.statusEffectv1(StatusEffects.Kelt)) + " / 100\n";
 				
+			combatStats += "<b>Critical Hit Chance:</b> " + Math.round(combat.getCritChance()) + "%\n";	
+				
+			combatStats += "<b>Dodge Chance:</b> " + Math.round(player.getEvasionChance()) + "% (W/o speed-based)\n";	
+			
 			combatStats += "<b>Damage Resistance:</b> " + (100 - Math.round(player.damagePercent(true))) + "-" + (100 - Math.round(player.damagePercent(true) - player.damageToughnessModifier(true))) + "% (Higher is better.)\n";
 
 			combatStats += "<b>Lust Resistance:</b> " + (100 - Math.round(player.lustPercent())) + "% (Higher is better.)\n";
