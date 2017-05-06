@@ -783,8 +783,9 @@ private function doCamp():void { //Only called by playerMenu
 		}
 	}
 	
-	//Menu
+	dynStats(); // workaround for #484 'statbars do not fit in their place'
 	
+	//Menu
 	menu();
 	addButton(0, "Explore", exploreEvent, null, null, null, "Explore to find new regions and visit any discovered regions.");
 	addButton(1, "Places", placesEvent, null, null, null, "Visit any places you have discovered so far.");
