@@ -279,10 +279,7 @@ private function armorShops():void {
 	addButton(3, "Weapons", weaponShop);
 	addButton(4, "Jewelry", jewelShopEntry);
 	addButton(5, "Clinic", umasShop.enterClinic);
-	if (flags[kFLAGS.CAMP_CABIN_PROGRESS] >= 4)
-	{
-		addButton(6, "Carpenter", carpentryShopEntry);
-	}
+	addButton(6, "Carpenter", carpentryShopEntry);
 	addButton(14,"Back",telAdreMenu);
 }
 
@@ -1968,35 +1965,55 @@ public function carpentryShopInside():void {
 	outputText("<i>So what will it be?</i>\n\n");
 	if (player.hasKeyItem("Carpenter's Toolbox") >= 0) camp.cabinProgress.checkMaterials();
 	menu();
-	addButton(0, "Buy Nails", carpentryShopBuyNails);
+	if (player.hasKeyItem("Carpenter's Toolbox") >= 0) {
+		addButton(0, "Buy Nails", carpentryShopBuyNails);
+	} else {
+		addDisabledButton(0, "Buy Nails", "You don't have a toolbox. How are you going to carry nails safely?");
+	}
 	addButton(1, "Buy Wood", carpentryShopBuyWood);
 	addButton(2, "Buy Stones", carpentryShopBuyStone);
-	addButton(5, "Sell Nails", carpentryShopSellNails);	
-	addButton(6, "Sell Wood", carpentryShopSellWood);
-	addButton(7, "Sell Stones", carpentryShopSellStone);
-	addButton(10, "Toolbox", carpentryShopBuySet);
-	addButton(11, "Nail box", carpentryShopBuyNailbox);
+	if (player.keyItemv1("Carpenter's Toolbox") > 0) {
+		addButton(5, "Sell Nails", carpentryShopSellNails);	
+	} else {
+		addDisabledButton(5, "Sell Nails", "You have no nails to sell.");	
+	}
+	if (flags[kFLAGS.CAMP_CABIN_WOOD_RESOURCES] >= 0) {
+		addButton(6, "Sell Wood", carpentryShopSellWood);
+	} else {
+		addDisabledButton(6, "Sell Wood", "You have no wood to sell.");
+	}
+	if (flags[kFLAGS.CAMP_CABIN_STONE_RESOURCES] >= 0) {
+		addButton(7, "Sell Stones", carpentryShopSellStone);
+	} else {
+		addDisabledButton(7, "Sell Stones", "You have no stones to sell.");
+	}
+	if (player.hasKeyItem("Carpenter's Toolbox") < 0) {
+		addButton(10, "Toolbox", carpentryShopBuySet);
+		addDisabledButton(11, "Nail box", "You need a Carpenter's Toolbox to make use of this.");
+	} else {
+		addDisabledButton(10, "Toolbox", "You already own a set of carpentry tools.");
+		if (player.hasKeyItem("Carpenter's Nail Box") < 0) {
+			addButton(11, "Nail box", carpentryShopBuyNailbox);
+		} else {
+			addDisabledButton(11, "Nail box", "You already own a nail box.");
+		}
+	}
+	
 	//addButton(12, "StoneBuildingsGuide", carpentryShopBuySet3);
 	addButton(14, "Leave", telAdreMenu);
 }
 //Buy nails
 public function carpentryShopBuyNails():void {
 	clearOutput();
-	if (player.hasKeyItem("Carpenter's Toolbox") >= 0) {
-		outputText("You ask him if he has nails for sale. He replies \"<i>Certainly! I've got nails. Your toolbox can hold up to two hundred nails. I'll be selling nails at a price of two gems per nail.</i>\" \n\n");
-		camp.cabinProgress.checkMaterials(1);
-		menu();
-		addButton(0, "Buy 10", carpentryShopBuyNailsAmount, 10);
-		addButton(1, "Buy 25", carpentryShopBuyNailsAmount, 25);
-		addButton(2, "Buy 50", carpentryShopBuyNailsAmount, 50);
-		addButton(3, "Buy 75", carpentryShopBuyNailsAmount, 75);
-		addButton(4, "Buy 100", carpentryShopBuyNailsAmount, 100);
-		addButton(14, "Back", carpentryShopInside)
-	}
-	else {
-		outputText("You ask him if he has nails for sale. He replies \"<i>I do. But I'm sorry, my friend. You don't have a toolbox. How are you going to carry nails safely?</i>\" ");
-		doNext(carpentryShopInside);
-	}
+	outputText("You ask him if he has nails for sale. He replies \"<i>Certainly! I've got nails. Your toolbox can hold up to " + camp.cabinProgress.maxNailSupply() + " nails. I'll be selling nails at a price of two gems per nail.</i>\" \n\n");
+	camp.cabinProgress.checkMaterials(1);
+	menu();
+	addButton(0, "Buy 10", carpentryShopBuyNailsAmount, 10);
+	addButton(1, "Buy 25", carpentryShopBuyNailsAmount, 25);
+	addButton(2, "Buy 50", carpentryShopBuyNailsAmount, 50);
+	addButton(3, "Buy 75", carpentryShopBuyNailsAmount, 75);
+	addButton(4, "Buy 100", carpentryShopBuyNailsAmount, 100);
+	addButton(14, "Back", carpentryShopInside)
 }
 
 private function carpentryShopBuyNailsAmount(amount:int):void {
@@ -2232,7 +2249,9 @@ public function carpentryShopBuySet():void {
 		doNext(carpentryShopInside);
 		return;
 	}
-	outputText("You walk around for a while until you see a wooden toolbox. It's filled with assorted tools. One of them is a hammer. Another one is a saw. Even another is an axe. There is a measuring tape. There's even a book with hundreds of pages, all about how to use tools and it even has project instructions! There's also a compartment in the toolbox for nails. Just what you need to build your cabin. \n\n");
+	outputText("You walk around for a while until you see a wooden toolbox. It's filled with assorted tools. One of them is a hammer. Another one is a saw. Even another is an axe. There is a measuring tape. There's even a book with hundreds of pages, all about how to use tools and it even has project instructions! There's also a compartment in the toolbox for nails.");
+	if (flags[kFLAGS.CAMP_CABIN_PROGRESS] >= 4) outputText(" Just what you need to build your cabin.\n\n");
+	else outputText(" Would be handy should you want to build something to make your life more comfortable.\n\n");
 	outputText("\"<i>Two hundred gems and it's all yours,</i>\" the shopkeeper says.\n\n");
 	if (player.gems >= 200) {
 		outputText("Do you buy it?");

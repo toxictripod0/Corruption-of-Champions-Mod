@@ -60,7 +60,7 @@ import classes.Scenes.API.Encounters;
 				name: "lumber",
 				call: gatherWoods,
 				when: function ():Boolean {
-					return flags[kFLAGS.CAMP_CABIN_PROGRESS] >= 4
+					return (flags[kFLAGS.CAMP_CABIN_PROGRESS] >= 4 || player.hasKeyItem("Carpenter's Toolbox") >= 0)
 						   && flags[kFLAGS.CAMP_CABIN_WOOD_RESOURCES] < maxWoodSupply();
 				}
 			});
@@ -69,7 +69,7 @@ import classes.Scenes.API.Encounters;
 			combat.cleanupAfterCombat();
 			outputText("While exploring the forest, you survey the trees. The trees are at the right thickness. You could cut down the trees. \n\n");
 			menu();
-			if (player.fatigue > player.maxFatigue() - 30) {
+			if (player.fatigueLeft() < 30) {
 				outputText("<b>You are too tired to consider cutting down the trees. Perhaps some rest will suffice?</b>");
 				doNext(camp.returnToCampUseOneHour);
 				return;
