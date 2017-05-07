@@ -4,6 +4,7 @@ package classes.internals
 
 	/**
 	 * Class for performing chained random actions (function/method calls) derived from ChainedDrop by aimozg 
+	 * @since May 7, 2017
 	 * @author Stadler76
 	 */
 	public class ChainedAction implements RandomAction 
@@ -27,7 +28,7 @@ package classes.internals
 			return this;
 		}
 
-		public function elseAction(action:*):ChainedAction
+		public function elseAction(action:Function):ChainedAction
 		{
 			this.defaultAction = action;
 			return this;
@@ -41,7 +42,9 @@ package classes.internals
 					return;
 				}
 			}
-			defaultAction();
+
+			if (defaultAction != null)
+				defaultAction();
 		}
 	}
 }
