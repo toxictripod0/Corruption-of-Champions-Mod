@@ -1332,62 +1332,42 @@ package classes
 		//-----------------
 		//-- GAME MODES
 		//-----------------
-		private function chooseModeNormal():void {
-			outputText("You have chosen Normal Mode. This is a classic gameplay mode. \n\n<b>Difficulty can be adjusted at any time.</b>", true);
-			flags[kFLAGS.HARDCORE_MODE] = 0;
-			flags[kFLAGS.HUNGER_ENABLED] = 0;
-			flags[kFLAGS.GAME_DIFFICULTY] = 0;
-			doNext(startTheGame);
+		private function chooseModeDifficulty():void {
+			if (flags[kFLAGS.GAME_DIFFICULTY] < 3)
+				flags[kFLAGS.GAME_DIFFICULTY]++;
+			else
+				flags[kFLAGS.GAME_DIFFICULTY] = 0;
+			chooseGameModes();
 		}	
 
 		private function chooseModeSurvival():void {
-			outputText("You have chosen Survival Mode. This is similar to the normal mode but with hunger enabled. \n\n<b>Difficulty can be adjusted at any time.</b>", true);
-			flags[kFLAGS.HARDCORE_MODE] = 0;
-			flags[kFLAGS.HUNGER_ENABLED] = 0.5;
-			flags[kFLAGS.GAME_DIFFICULTY] = 0;
-			player.hunger = 80;
-			doNext(startTheGame);
-		}	
-
-		private function chooseModeRealistic():void {
-			outputText("You have chosen Realistic Mode. In this mode, hunger is enabled so you have to eat periodically. Also, your cum production is capped and having oversized parts will weigh you down. \n\n<b>Difficulty can be adjusted at any time.</b>", true);
-			flags[kFLAGS.HARDCORE_MODE] = 0;
-			flags[kFLAGS.HUNGER_ENABLED] = 1;
-			flags[kFLAGS.GAME_DIFFICULTY] = 0;
-			player.hunger = 80;
-			doNext(startTheGame);
+			if (flags[kFLAGS.HUNGER_ENABLED] < 1) {
+				flags[kFLAGS.HUNGER_ENABLED] += 0.5;
+				player.hunger = 80;
+			} else {
+				flags[kFLAGS.HUNGER_ENABLED] = 0;
+				player.hunger = 0;
+			}
+			chooseGameModes();
 		}
 
 		private function chooseModeHardcore():void {
-			outputText("You have chosen Hardcore Mode. In this mode, hunger is enabled so you have to eat periodically. In addition, the game forces autosave and if you encounter a Bad End, your save file is <b>DELETED</b>! \n\nDebug Mode and Easy Mode are disabled in this game mode. \n\nPlease choose a slot to save in. You may not make multiple copies of saves. \n\n<b>Difficulty is locked to hard.</b>", true);
-			flags[kFLAGS.HARDCORE_MODE] = 1;
-			flags[kFLAGS.HUNGER_ENABLED] = 1;
-			flags[kFLAGS.GAME_DIFFICULTY] = 1;
-			player.hunger = 80;
-			menu();
-			for (var i:int = 0; i < 14; i++) {
-				addButton(i, "Slot " + (i + 1), chooseSlotHardcore, (i + 1));
-			}
-			addButton(14, "Back", chooseGameModes);
+			if (flags[kFLAGS.HARDCORE_MODE] == 0) flags[kFLAGS.HARDCORE_MODE] = 1;
+			else flags[kFLAGS.HARDCORE_MODE] = 0;
+			chooseGameModes();
 		}
 
-		private function chooseModeBrutalHardcore():void {
-			outputText("You have chosen Brutal Hardcore Mode. This is the HARDEST mode of all. \n\n<b>Difficulty is locked to <i>EXTREME</i>.</b>", true);
-			flags[kFLAGS.HARDCORE_MODE] = 1;
-			flags[kFLAGS.HUNGER_ENABLED] = 1;
-			flags[kFLAGS.GAME_DIFFICULTY] = 3;
-			player.hunger = 80;
+		private function chooseModeHardcoreSlot():void {
+			clearOutput();
+			outputText("You have chosen Hardcore Mode. In this mode, the game forces autosave and if you encounter a Bad End, your save file is <b>DELETED</b>! \n\nDebug Mode and Easy Mode are disabled in this game mode. \n\nPlease choose a slot to save in. You may not make multiple copies of saves.");
 			menu();
 			for (var i:int = 0; i < 14; i++) {
-				addButton(i, "Slot " + (i + 1), chooseSlotHardcore, (i + 1));
+				addButton(i, "Slot " + (i + 1), function(slot:int):* {
+					flags[kFLAGS.HARDCORE_SLOT] = "CoC_" + slot;
+					startTheGame();
+				}, i + 1);
 			}
 			addButton(14, "Back", chooseGameModes);
-		}
-
-		//Choose Hardcore slot.
-		private function chooseSlotHardcore(num:int):void {
-			flags[kFLAGS.HARDCORE_SLOT] = "CoC_" + num;
-			startTheGame();
 		}
 
 		//GRIMDARK!
@@ -1403,21 +1383,31 @@ package classes
 		
 		//Choose the game mode when called!
 		private function chooseGameModes():void {
-			outputText("Choose a game mode.\n\n", true);
-			outputText("<b>Normal mode:</b> Classic Corruption of Champions gameplay.\n", false);
-			outputText("<b>Survival mode:</b> Like normal but with hunger enabled.\n", false);
-			outputText("<b>Realistic mode:</b> You get hungry from time to time and cum production is capped. In addition, it's a bad idea to have oversized parts. \n", false);
-			outputText("<b>Hardcore mode:</b> In addition to Realistic mode, the game forces save and if you get a Bad End, your save file is deleted. For the veteran CoC players only.\n", false);
-			outputText("<b>Brutal Hardcore mode:</b> Like hardcore mode, but the difficulty is locked to extreme! How long can you survive?\n", false);
-			if (debug) outputText("<b>Grimdark mode:</b> (In dev) In the grimdark future, there are only rape and corruptions. Lots of things are changed and Lethice has sent out her minions to wall the borders and put up a lot of puzzles. Can you defeat her in this mode in as few bad ends as possible?\n", false);
+			clearOutput();
+			outputText("Choose a game mode.\n\n");
+			outputText("<b>Survival:</b> ");
+			if (flags[kFLAGS.HUNGER_ENABLED] == 0) outputText("Normal Mode. You don't have to eat.\n");
+			if (flags[kFLAGS.HUNGER_ENABLED] == 0.5) outputText("Survival Mode. You get hungry from time to time.\n");
+			if (flags[kFLAGS.HUNGER_ENABLED] == 1) outputText("Realistic Mode. You get hungry from time to time and cum production is capped. In addition, it's a bad idea to have oversized parts.\n");
+			
+			outputText("<b>Hardcore:</b> ");
+			if (flags[kFLAGS.HARDCORE_MODE] == 0) outputText("Normal Mode. You choose when you want to save and load.\n");
+			if (flags[kFLAGS.HARDCORE_MODE] == 1) outputText("Hardcore Mode. The game forces save and if you get a Bad End, your save file is deleted. Disables difficulty selection, debug mode, Low Standarts and Hyper Happy mode once the game is started. For the veteran CoC players only.\n");
+			
+			outputText("<b>Difficulty:</b> ");
+			if (flags[kFLAGS.GAME_DIFFICULTY] == 0) outputText("Normal Mode. No stats changes. Game is nice and simple.\n");
+			if (flags[kFLAGS.GAME_DIFFICULTY] == 1) outputText("Hard Mode. Enemies have would have extra 25% HP and 15% damage.\n");
+			if (flags[kFLAGS.GAME_DIFFICULTY] == 2) outputText("Nightmare Mode. Enemies would have extra 50% HP and 30% damage.\n");
+			if (flags[kFLAGS.GAME_DIFFICULTY] == 3) outputText("Extreme Mode. Enemies would have extra 100% HP and 50% damage.\n");
+			
+			if (debug) outputText("<b>Grimdark mode:</b> (In dev) In the grimdark future, there are only rape and corruptions. Lots of things are changed and Lethice has sent out her minions to wall the borders and put up a lot of puzzles. Can you defeat her in this mode in as few bad ends as possible?\n");
 			
 			menu();
-			addButton(0, "Normal", chooseModeNormal);
-			addButton(1, "Survival", chooseModeSurvival);
-			addButton(2, "Realistic", chooseModeRealistic);
-			addButton(3, "Hardcore", chooseModeHardcore);
-			addButton(4, "Brutal HC", chooseModeBrutalHardcore);
+			addButton(0, "Survival", chooseModeSurvival);
+			addButton(1, "Hardcore", chooseModeHardcore);
+			addButton(2, "Difficulty", chooseModeDifficulty);
 			if (debug) addButton(12, "Grimdark", chooseModeGrimdark);
+			addButton(14, "Start!", flags[kFLAGS.HARDCORE_MODE] == 1 ? chooseModeHardcoreSlot : startTheGame);
 		}
 
 		private function startTheGame():void {
