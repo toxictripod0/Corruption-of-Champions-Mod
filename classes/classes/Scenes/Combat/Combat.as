@@ -2173,6 +2173,9 @@ package classes.Scenes.Combat
 			if (debug) escapeMod -= 300;
 			if (player.canFly()) escapeMod -= 20;
 			if (player.tailType == TAIL_TYPE_RACCOON && player.earType == EARS_RACCOON && player.findPerk(PerkLib.Runner) >= 0) escapeMod -= 25;
+			if (monster.hasStatusEffect(StatusEffects.Blind)) escapeMod -= 35;
+			if (monster.hasStatusEffect(StatusEffects.Illusion)) escapeMod -= 20; // Not as much as blindness, but it also affects speed by itself.
+			if (player.hasStatusEffect(StatusEffects.Blind) && (!player.canFly() || monster.canFly())) escapeMod += 35; // If you can fly you don't have to see where the sky is. But if your foe can fly too, it won't give you much.
 			if (monster.hasStatusEffect(StatusEffects.Stunned)) escapeMod -= 50;
 			
 			//Big tits doesn't matter as much if ya can fly!
