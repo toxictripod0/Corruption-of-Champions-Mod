@@ -59,7 +59,7 @@ package classes.Scenes.Areas.Desert {
 		}
 		
 		protected function ghoulBlind():void {
-			if (fatigue <= (100 - spellCostBlind)) {
+			if (fatigueLeft() >= spellCostBlind) {
 				outputText("The ghoul glares and points at you! A bright flash erupts before you! ");
 				if (rand(player.inte / 5) <= 4) {
 					outputText("<b>You are blinded!</b>");
@@ -74,7 +74,7 @@ package classes.Scenes.Areas.Desert {
 		}
 		
 		protected function ghoulMagic():void {
-			if (fatigue <= (100 - spellCostGhoulMagic)) {
+			if (fatigueLeft() >= spellCostGhoulMagic) {
 				outputText("The ghoul chants out an incantation, and a dark alchemic circle forms around your feet. ", false);
 				if (player.getEvasionRoll()) { //Evading
 					outputText("You jump out of the circle before anything happens. Where you'd just been erupts in flames.", false);
@@ -99,8 +99,8 @@ package classes.Scenes.Areas.Desert {
 				if (chooser <= 5) hyenaClaw();
 				else if (chooser >= 6) hyenaBite();
 			} else if (game.combat.ghoulReveal) {
-				if (chooser < 3) ghoulMagic();
-				else if (chooser >= 8) ghoulBlind();
+				if (chooser < 3 && fatigueLeft() >= spellCostGhoulMagic) ghoulMagic();
+				else if (chooser >= 8 && fatigueLeft() >= spellCostBlind) ghoulBlind();
 				else eAttack();
 			}
 		}
