@@ -1740,15 +1740,15 @@ public function weaponShop():void {
 	
 	menu();
 	addButton(0, consumables.W_STICK.shortName, weaponBuy, consumables.W_STICK);
-	addButton(0, weapons.CLAYMOR.shortName, weaponBuy, weapons.CLAYMOR);
-	addButton(0, weapons.WARHAMR.shortName, weaponBuy, weapons.WARHAMR);
-	addButton(0, weapons.KATANA.shortName, weaponBuy, weapons.KATANA);
-	addButton(0, weapons.SPEAR.shortName, weaponBuy, weapons.SPEAR);
-	addButton(0, weapons.WHIP.shortName, weaponBuy, weapons.WHIP);
-	addButton(0, weapons.W_STAFF.shortName, weaponBuy, weapons.W_STAFF);
-	addButton(0, weapons.S_GAUNT.shortName, weaponBuy, weapons.S_GAUNT);
-	addButton(0, weapons.DAGGER.shortName, weaponBuy, weapons.DAGGER);
-	addButton(0, weapons.SCIMITR.shortName, weaponBuy, weapons.SCIMITR);
+	addButton(1, weapons.CLAYMOR.shortName, weaponBuy, weapons.CLAYMOR);
+	addButton(2, weapons.WARHAMR.shortName, weaponBuy, weapons.WARHAMR);
+	addButton(3, weapons.KATANA.shortName, weaponBuy, weapons.KATANA);
+	addButton(4, weapons.SPEAR.shortName, weaponBuy, weapons.SPEAR);
+	addButton(5, weapons.WHIP.shortName, weaponBuy, weapons.WHIP);
+	addButton(6, weapons.W_STAFF.shortName, weaponBuy, weapons.W_STAFF);
+	addButton(7, weapons.S_GAUNT.shortName, weaponBuy, weapons.S_GAUNT);
+	addButton(8, weapons.DAGGER.shortName, weaponBuy, weapons.DAGGER);
+	addButton(9, weapons.SCIMITR.shortName, weaponBuy, weapons.SCIMITR);
 	addButton(10, weapons.MACE.shortName, weaponBuy, weapons.MACE);
 	addButton(11, weapons.FLAIL.shortName, weaponBuy, weapons.FLAIL);
 	if (player.hasKeyItem("Sheila's Lethicite") >= 0 || flags[kFLAGS.SHEILA_LETHICITE_FORGE_DAY] > 0) {
@@ -1977,12 +1977,12 @@ public function carpentryShopInside():void {
 	} else {
 		addDisabledButton(5, "Sell Nails", "You have no nails to sell.");	
 	}
-	if (flags[kFLAGS.CAMP_CABIN_WOOD_RESOURCES] >= 0) {
+	if (flags[kFLAGS.CAMP_CABIN_WOOD_RESOURCES] > 0) {
 		addButton(6, "Sell Wood", carpentryShopSellWood);
 	} else {
 		addDisabledButton(6, "Sell Wood", "You have no wood to sell.");
 	}
-	if (flags[kFLAGS.CAMP_CABIN_STONE_RESOURCES] >= 0) {
+	if (flags[kFLAGS.CAMP_CABIN_STONE_RESOURCES] > 0) {
 		addButton(7, "Sell Stones", carpentryShopSellStone);
 	} else {
 		addDisabledButton(7, "Sell Stones", "You have no stones to sell.");
