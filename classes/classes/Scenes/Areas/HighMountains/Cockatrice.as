@@ -1,6 +1,7 @@
 package classes.Scenes.Areas.HighMountains
 {
 	import classes.*;
+	import classes.internals.WeightedAction;
 	import classes.internals.WeightedDrop;
 	import classes.GlobalFlags.*
 	
@@ -131,32 +132,16 @@ package classes.Scenes.Areas.HighMountains
 
 		override protected function performCombatAction():void
 		{
-			var sum:Number = 0;
-			var actionChoices:Array = [
-				[40, sandAttack],
-				[40, cockaTease],
-				[30, tailSwipe],
-				[30, eAttack],
-			];
+			var actionChoices:WeightedAction = new WeightedAction()
+				.add(sandAttack, 40)
+				.add(cockaTease, 40)
+				.add(tailSwipe,  30)
+				.add(eAttack,    30)
+
 			if (!player.hasStatusEffect(StatusEffects.BasiliskCompulsion) && !hasStatusEffect(StatusEffects.Blind))
-				actionChoices.push([40, compulsion]);
+				actionChoices.add(compulsion, 40);
 
-			for each (var item:Array in actionChoices)
-				sum += item[0];
-
-			var choice:Number = Math.random() * sum;
-
-			for each (item in actionChoices) {
-				choice -= item[0];
-				if (choice <= 0) {
-					item[1]();
-					return;
-				}
-			}
-
-			// Failsafe, should never happen
-			trace('Cockatrice.performCombatAction failsafe called');
-			eAttack();
+			actionChoices.exec();
 		}
 
 		override public function defeated(hpVictory:Boolean):void
