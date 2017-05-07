@@ -109,15 +109,54 @@ package classes.Scenes.Areas.HighMountains
 			game.combat.combatRoundOver();
 		}
 
+		//Tease attack
+		private function cockaTease():void
+		{
+			if (rand(2) == 0) {
+				outputText("The cockatrice turns around slowly, looking over his shoulder as he slowly lifts his tail to reveal his tight rump."
+				          +" He rubs his clawed fingers over the taut flesh of his feathered cheeks, before his tail cracks against one cheek"
+				          +" like a whip. You can’t help but flush at his brazen display.");
+			} else {
+				outputText("The cockatrice casually leans against a nearby rock, a scaled finger trailing down his lithe stomach and tracing around"
+				          +" the edge of his genital slit as he looks to the distance. As the tip of his thick purple member starts to peek out he"
+				          +" looks over at you with a smouldering gaze, cocking his head to the side as if beckoning you to ‘come play’."
+				          +" You seriously consider his offer as you feel your loins burn with desire.");
+			}
+			game.dynStats("lus", 12 + rand(player.lib / 8));
+			game.combat.combatRoundOver();
+		}
+
 		//basilisk physical attack: With lightning speed, the basilisk slashes you with its index claws!
 		//Noun: claw
 
 		override protected function performCombatAction():void
 		{
-			if (!player.hasStatusEffect(StatusEffects.BasiliskCompulsion) && rand(3) == 0 && !hasStatusEffect(StatusEffects.Blind)) compulsion();
-			else if (rand(4) == 0) tailSwipe();
-			else if (rand(3) == 0) sandAttack();
-			else eAttack();
+			var sum:Number = 0;
+			var actionChoices:Array = [
+				[40, sandAttack],
+				[40, cockaTease],
+				[30, tailSwipe],
+				[30, eAttack],
+			];
+			if (!player.hasStatusEffect(StatusEffects.BasiliskCompulsion) && !hasStatusEffect(StatusEffects.Blind))
+				actionChoices.push([40, compulsion]);
+
+			for each (var item:Array in actionChoices)
+				sum += item[0];
+
+			var choice:Number = Math.random() * sum;
+
+			for each (item in actionChoices) {
+				choice -= item[0];
+				if (choice <= 0) {
+					item[1]();
+					return;
+				}
+			}
+
+			// Failsafe, should never happen
+			trace('Cockatrice.performCombatAction failsafe called');
+			eAttack();
 		}
 
 		override public function defeated(hpVictory:Boolean):void
