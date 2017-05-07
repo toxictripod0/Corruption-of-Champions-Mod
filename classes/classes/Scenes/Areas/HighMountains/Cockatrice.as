@@ -136,7 +136,7 @@ package classes.Scenes.Areas.HighMountains
 				.add(sandAttack, 40)
 				.add(cockaTease, 40)
 				.add(tailSwipe,  30)
-				.add(eAttack,    30)
+				.add(eAttack,    20)
 
 			if (!player.hasStatusEffect(StatusEffects.BasiliskCompulsion) && !hasStatusEffect(StatusEffects.Blind))
 				actionChoices.add(compulsion, 40);
