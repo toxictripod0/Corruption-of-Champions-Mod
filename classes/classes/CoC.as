@@ -188,8 +188,9 @@ package classes
 		public var shields:ShieldLib = new ShieldLib();
 		public var miscItems:MiscItemLib = new MiscItemLib();
 		// Scenes/
+		public var exploration:Exploration = new Exploration();
 		public var achievementList:Achievements = new Achievements();
-		public var camp:Camp = new Camp(campInitialize);
+		public var camp:Camp = new Camp(campInitialize, exploration);
 		public var dreams:Dreams = new Dreams();
 		public var dungeons:DungeonCore = new DungeonCore();
 		public var followerInteractions:FollowerInteractions = new FollowerInteractions();
@@ -212,8 +213,7 @@ package classes
 		public var plains:Plains = new Plains();
 		public var swamp:Swamp = new Swamp();
 		public var volcanicCrag:VolcanicCrag = new VolcanicCrag();
-		
-		public var exploration:Exploration = new Exploration(); //Goes last in order to get it working.
+
 		// Scenes/Combat/
 		public var combat:Combat = new Combat();
 		// Scenes/Dungeons

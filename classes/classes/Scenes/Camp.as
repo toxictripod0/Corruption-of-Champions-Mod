@@ -1,4 +1,4 @@
-package classes.Scenes {
+﻿package classes.Scenes {
 	import classes.*;
 	import classes.GlobalFlags.kACHIEVEMENTS;
 	import classes.GlobalFlags.kFLAGS;
@@ -14,8 +14,10 @@ package classes.Scenes {
 
 
 	public class Camp extends NPCAwareContent {
+		private var exploration:Exploration;
 
-		protected function set timeQ(value:Number):void {
+		protected function set timeQ(value:Number):void
+		{
 			kGAMECLASS.timeQ = value;
 		}
 		private function get campQ():Boolean {
@@ -27,8 +29,10 @@ package classes.Scenes {
 		protected function hasItemInStorage(itype:ItemType):Boolean {
 			return kGAMECLASS.inventory.hasItemInStorage(itype);
 		}
-		public function Camp(campInitialize:Function) {
+
+		public function Camp(campInitialize:Function, exploration:Exploration) {
 			campInitialize(doCamp); //Pass the doCamp function up to CoC. This way doCamp is private but the CoC class itself can call it.
+			this.exploration = exploration;
 		}
 
 		public var cabinProgress:CabinProgress = new CabinProgress();
