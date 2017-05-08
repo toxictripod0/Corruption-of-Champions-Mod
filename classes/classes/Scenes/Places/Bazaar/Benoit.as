@@ -1,6 +1,7 @@
 ﻿package classes.Scenes.Places.Bazaar {
 	import classes.*;
 	import classes.GlobalFlags.kFLAGS;
+	import classes.Items.Consumable;
 
 //  TIMES_IN_BENOITS:int = 562;
 //  BENOIT_AFFECTION:int = 563;
@@ -416,7 +417,11 @@ private function benoitTransactBuy(slot:int = 1):void {
 	
 	player.gems -= int(buyMod * itype.value);
 	statScreenRefresh();
-	inventory.takeItem(itype, benoitsBuyMenu);
+	
+	if (flags[kFLAGS.SHIFT_KEY_DOWN] == 1 && itype is Consumable) {
+		(itype as Consumable).useItem();
+		doNext(benoitsBuyMenu);
+	} else inventory.takeItem(itype, benoitsBuyMenu);
 }
 
 private function benoitSellTransact(slot:int, sellMod:int):void {
