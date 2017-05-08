@@ -1,4 +1,6 @@
 package classes.Scenes{
+	import classes.DefaultDict;
+	import classes.GlobalFlags.kFLAGS;
     import org.flexunit.asserts.*;
 	import org.hamcrest.assertThat;
 	import org.hamcrest.core.*;
@@ -13,6 +15,7 @@ package classes.Scenes{
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Player;
 	import classes.Scenes.Areas.Forest;
+	import classes.StatusEffects;
 	
     public class ForestTest {
 		private var player:Player;
@@ -27,8 +30,26 @@ package classes.Scenes{
         public function setUp():void {
 			player = new Player();
 			kGAMECLASS.player = player;
+			kGAMECLASS.achievements = new DefaultDict();
+			kGAMECLASS.flags = new DefaultDict();
 			
 			cut = new Forest();
         }
+		
+		[Test]
+		public function discoverDeepwoods():void {
+			player.flags[kFLAGS.TIMES_EXPLORED_FOREST] = 30;
+			
+			cut.exploreForest();
+			
+			assertThat(player.hasStatusEffect(StatusEffects.ExploredDeepwoods));
+		}
+		
+		[Test]
+		public function exploreForestIncrementsCounter():void {
+			cut.exploreForest();
+			
+			assertThat(player.flags[kFLAGS.TIMES_EXPLORED_FOREST], equalTo(1));
+		}
     }
 }

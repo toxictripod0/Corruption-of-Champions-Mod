@@ -1,4 +1,5 @@
 package classes.Scenes{
+	import classes.DefaultDict;
 	import classes.GlobalFlags.kACHIEVEMENTS;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Player;
@@ -37,6 +38,7 @@ package classes.Scenes{
 			kGAMECLASS.player = player;
 			player.flags[kFLAGS.HISTORY_PERK_SELECTED] = 2
 			player.flags[kFLAGS.MOD_SAVE_VERSION] = kGAMECLASS.modSaveVersion;
+			kGAMECLASS.achievements = new DefaultDict();
 			
 			exploration = new Exploration();
 			cut = new Camp(campInitialize, exploration);
