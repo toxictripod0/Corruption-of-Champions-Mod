@@ -29,13 +29,36 @@ import classes.Scenes.API.FnHelpers;
 
 		public function Forest() { }
 
-		public function discover():void {
+		public function deepwoodsDiscovered():Boolean {
+			return player.hasStatusEffect(StatusEffects.ExploredDeepwoods);
+		}
+
+		public function exploreDeepwoods():void
+		{
 			clearOutput();
-			outputText(images.showImage("area-forest"));
-			outputText("You walk for quite some time, roaming the hard-packed and pink-tinged earth of the demon-realm.  Rust-red rocks speckle the wasteland, as barren and lifeless as anywhere else you've been.  A cool breeze suddenly brushes against your face, as if gracing you with its presence.  You turn towards it and are confronted by the lush foliage of a very old looking forest.  You smile as the plants look fairly familiar and non-threatening.  Unbidden, you remember your decision to test the properties of this place, and think of your campsite as you walk forward.  Reality seems to shift and blur, making you dizzy, but after a few minutes you're back, and sure you'll be able to return to the forest with similar speed.\n\n<b>You have discovered the Forest!</b>");
-			flags[kFLAGS.TIMES_EXPLORED]++;
-			flags[kFLAGS.TIMES_EXPLORED_FOREST]++;
+			//Increment deepwoods exploration counter.
+			player.addStatusValue(StatusEffects.ExploredDeepwoods, 1, 1);
+			deepwoodsEncounter.execEncounter();
+		}
+
+		private function deepwoodsWalkFn():void {
+			outputText("You enjoy a peaceful walk in the deepwoods.  It gives you time to think over the recent, disturbing events.", true);
+			dynStats("tou", .5, "int", 1);
 			doNext(camp.returnToCampUseOneHour);
+		}
+
+		public function tentacleBeastDeepwoodsEncounterFn():void {
+			if (player.gender > 0) flags[kFLAGS.GENDERLESS_CENTAUR_MADNESS] = 0;
+			//Tentacle avoidance chance due to dangerous plants
+			if (player.hasKeyItem("Dangerous Plants") >= 0 && player.inte / 2 > rand(50)) {
+				trace("TENTACLE'S AVOIDED DUE TO BOOK!");
+				outputText("Using the knowledge contained in your 'Dangerous Plants' book, you determine a tentacle beast's lair is nearby, do you continue?  If not you could return to camp.\n\n", true);
+				menu();
+				addButton(0,"Continue", tentacleBeastScene.encounter);
+				addButton(4, "Leave", camp.returnToCampUseOneHour);
+			}else {
+				tentacleBeastScene.encounter();
+			}
 		}
 
 		//==============================
