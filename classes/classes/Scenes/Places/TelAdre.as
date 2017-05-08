@@ -2,6 +2,7 @@
 	import classes.*;
 	import classes.GlobalFlags.*;
 	import classes.Items.Armor;
+	import classes.Items.Consumable;
 	import classes.Scenes.Dungeons.DeepCave.ValaScene;
 	import classes.Scenes.Places.TelAdre.*;
 
@@ -1139,7 +1140,11 @@ private function oswaldTransactBuy(slot:int = 1):void {
 	outputText("After examining what you've picked out with his fingers, Oswald hands it over, names the price and accepts your gems with a curt nod.\n\n");
 	player.gems -= int(buyMod * itype.value);
 	statScreenRefresh();
-	inventory.takeItem(itype, oswaldBuyMenu);
+	
+	if (flags[kFLAGS.SHIFT_KEY_DOWN] == 1 && itype is Consumable) {
+		(itype as Consumable).useItem();
+		doNext(oswaldBuyMenu);
+	} else inventory.takeItem(itype, oswaldBuyMenu);
 }
 	
 private function oswaldPawnMenu(returnFromSelling:Boolean = false):void { //Moved here from Inventory.as

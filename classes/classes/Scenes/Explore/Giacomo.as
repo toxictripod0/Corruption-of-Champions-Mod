@@ -241,7 +241,10 @@ package classes.Scenes.Explore {
 			spriteSelect(23);
 
 			player.gems -= 15;
-			inventory.takeItem(consumables.VITAL_T, potionMenu);
+			if (flags[kFLAGS.SHIFT_KEY_DOWN] == 1) {
+				consumables.VITAL_T.useItem();
+				doNext(potionMenu);
+			} else inventory.takeItem(consumables.VITAL_T, potionMenu);
 			statScreenRefresh();
 		}
 		
@@ -262,7 +265,10 @@ package classes.Scenes.Explore {
 			spriteSelect(23);
 
 			player.gems -= 15;
-			inventory.takeItem(consumables.SMART_T, potionMenu);
+			if (flags[kFLAGS.SHIFT_KEY_DOWN] == 1) {
+				consumables.SMART_T.useItem();
+				doNext(potionMenu);
+			} else inventory.takeItem(consumables.SMART_T, potionMenu);
 			statScreenRefresh();
 		}
 		
@@ -283,7 +289,10 @@ package classes.Scenes.Explore {
 			spriteSelect(23);
 
 			player.gems -= 75;
-			inventory.takeItem(consumables.CERUL_P, potionMenu);
+			if (flags[kFLAGS.SHIFT_KEY_DOWN] == 1) {
+				consumables.CERUL_P.useItem();
+				doNext(potionMenu);
+			} else inventory.takeItem(consumables.CERUL_P, potionMenu);
 			statScreenRefresh();
 		}
 		
