@@ -13,10 +13,13 @@ package classes.Scenes
 	import classes.Scenes.Explore.ExploreDebug;
 	import classes.Scenes.Monsters.*;
 	import classes.display.SpriteDb;
-	import classes.internals.*;
+	import mx.logging.ILogger;
+	import classes.internals.LoggerFactory;
 
 	public class Exploration extends BaseContent
 	{
+		private static const LOGGER:ILogger = LoggerFactory.getLogger(Exploration);
+		
 		public var exploreDebug:ExploreDebug = new ExploreDebug();
 
 		public function Exploration() {}
@@ -589,7 +592,7 @@ package classes.Scenes
 		 * @return true if all areas have been visted at least once
 		 */
 		public function hasExploredAllZones():Boolean {
-			return flags[kFLAGS.TIMES_EXPLORED_FOREST] > 0
+			return hasDiscoveredForest()
 			&& flags[kFLAGS.TIMES_EXPLORED_LAKE] > 0
 			&& flags[kFLAGS.TIMES_EXPLORED_DESERT] > 0
 			&& flags[kFLAGS.TIMES_EXPLORED_MOUNTAIN] > 0
@@ -599,6 +602,32 @@ package classes.Scenes
 			&& flags[kFLAGS.DISCOVERED_HIGH_MOUNTAIN] > 0
 			&& flags[kFLAGS.BOG_EXPLORED] > 0
 			&& flags[kFLAGS.DISCOVERED_GLACIAL_RIFT] > 0;
+		}
+		
+		/**
+		 * Get the number of times the forest was explored.
+		 * @return number of forest visits
+		 */
+		public function exploredForestCount():int {
+			return flags[kFLAGS.TIMES_EXPLORED_FOREST];
+		}
+
+		/**
+		 * Explore the forest, increasing the exploration count.
+		 * @return number of times the forest was explored
+		 */
+		public function exploreForest():int {
+			flags[kFLAGS.TIMES_EXPLORED_FOREST]++;
+			LOGGER.debug("Explored forest, current count is {0}", exploredForestCount());
+			return flags[kFLAGS.TIMES_EXPLORED_FOREST];
+		}
+		
+		/**
+		 * Check if the forest has been discovered.
+		 * @return true if the forest has been explored at least once
+		 */
+		public function hasDiscoveredForest():Boolean {
+			return flags[kFLAGS.TIMES_EXPLORED_FOREST] > 0;
 		}
 	}
 }

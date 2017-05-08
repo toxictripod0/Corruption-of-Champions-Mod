@@ -1,4 +1,5 @@
 package classes.Scenes{
+	import classes.DefaultDict;
     import org.flexunit.asserts.*;
 	import org.hamcrest.assertThat;
 	import org.hamcrest.core.*;
@@ -28,10 +29,10 @@ package classes.Scenes{
         public function setUp():void {
 			player = new Player();
 			kGAMECLASS.player = player;
-			
+			kGAMECLASS.flags = new DefaultDict();
 			cut = new Exploration();
-        }  
-     
+        }
+		
         [Test] 
         public function explorerAchievmentAwarded():void {
 			player.flags[kFLAGS.TIMES_EXPLORED_FOREST] = 1;
@@ -47,5 +48,34 @@ package classes.Scenes{
 			
 			assertThat(cut.hasExploredAllZones(), equalTo(true));
         }
+		
+		[Test]
+		public function forestExploredCountNotVisited():void {
+			assertThat(cut.exploredForestCount(), equalTo(0));
+		}
+		
+		[Test]
+		public function forestExploredCountVisited():void {
+			player.flags[kFLAGS.TIMES_EXPLORED_FOREST]++;
+			
+			assertThat(cut.exploredForestCount(), equalTo(1));
+		}
+				
+		[Test]
+		public function exploreForest():void {
+			assertThat(cut.exploreForest(), equalTo(1));
+		}
+		
+		[Test]
+		public function hasNotDiscoveredForest():void {
+			assertThat(cut.hasDiscoveredForest(), equalTo(false));
+		}
+		
+		[Test]
+		public function hasDiscoveredForest():void {
+			cut.exploreForest();
+			
+			assertThat(cut.hasDiscoveredForest(), equalTo(true));
+		}
     }
 }
