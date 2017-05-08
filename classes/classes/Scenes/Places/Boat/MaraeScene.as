@@ -23,6 +23,7 @@ public class MaraeScene extends AbstractBoatContent implements TimeAwareInterfac
 			}
 			if (flags[kFLAGS.HOLLI_FUCKED_TODAY] == 1) flags[kFLAGS.HOLLI_FUCKED_TODAY] = 0; //Holli Fuck Tracking
 		}
+
 		return false;
 	}
 
@@ -47,7 +48,7 @@ public class MaraeScene extends AbstractBoatContent implements TimeAwareInterfac
 					flags[kFLAGS.MARAE_QUEST_START] = 1;
 					outputText("\"<i>You seem so surprised by me, Champion.   I suppose that is inevitable.  Your origin is not of Mareth, our land, and few save for the demons remember me,</i>\" says the tree.\n\n", false);
 					outputText("You take a step back, amazed to find such a creature, apparently uncorrupted.  ", false);
-					if (player.lib + player.cor > 80) outputText("Your eyes can't help but take note of the tree-woman's shapely breasts, and wonder if they feel like tits or wood.  ", false);
+					if (player.lib + player.cor > (80 - player.corruptionTolerance())) outputText("Your eyes can't help but take note of the tree-woman's shapely breasts, and wonder if they feel like tits or wood.  ", false);
 					outputText("Feeling a bit confused, you introduce yourself and ask her who she is.\n\n", false);
 					outputText("\"<i>Me?</i>\" she asks, \"<i>I am the life-goddess Marae.  I am Mareth, for my roots touch every part of it.   Or I was.  Before THEY came.</i>\"\n\n", false);
 					outputText("You suggest, \"<i>The demons?</i>\"\n\n", false);
@@ -56,7 +57,7 @@ public class MaraeScene extends AbstractBoatContent implements TimeAwareInterfac
 					outputText("She sighs heavily, and you notice the bark of her nipples stiffening.  Her brow creases with something approximating worry as she continues, \"<i>They know of me.  My power originally kept them far from the shores of the lake, but they seek to corrupt me – to make me like them.   They've used magic and industry to trap the pure rains in the clouds around their mountain, starving me, and in its place they spill their tainted sexual fluids.   For... years now, my furthest reaches have been bathed in their vile cum.   While my power is great, I... I cannot resist forever.  My reach has dwindled to little more than this lake.  Parts of me have already fallen, taking the surrounding life with them.  I do not know how much longer I can endure... even now, the desire to mate with you rises within me.</i>\"\n\n", false);
 					outputText("She practically begs, \"<i>Please champion, you must help me.  The demons have a factory at the foot of the mountains.  It produces much of the fluid they use to taint me.  If you could find a way to shut it down, I... all of Mareth, might stand a chance.</i>\"\n\n", false);
 					outputText("You nod, understanding.  She commands, \"<i>Now go, there is nothing to be gained by your presence here.  Return if you manage to close that vile place.</i>\"\n\n", false);
-					if (player.lib + player.cor > 80) {
+					if (player.lib + player.cor > (80 - player.corruptionTolerance())) {
 						outputText("You could leave, but the desire to feel her breast will not go away.  What do you do?", false);
 						menu();
 						addButton(0, "Boob", grabHerBoob);

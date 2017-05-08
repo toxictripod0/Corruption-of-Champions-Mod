@@ -647,9 +647,9 @@ private function talkToBenoit():void {
 		outputText("\n\nYou feel a blush creep across your [face] as you thank the blind basilisk, hugging " + benoitMF("him", "her")
 		          +" to you tight before you leave");
 		// Equip only, if you have hair and if it's not gooey.
-		outputText((hasSolidHair && player.cor < 55) ? ", slipping the pin into your [hair] as you exit the store." : ".");
+		outputText((hasSolidHair && player.cor < Math.max(80, (55 + player.corruptionTolerance()))) ? ", slipping the pin into your [hair] as you exit the store." : ".");
 		// value1: hairPinIsEquipped, value2: just (re)equipped, but TF not triggered yet.
-		if (hasSolidHair && player.cor < 55)
+		if (hasSolidHair && player.cor < Math.max(80, (55 + player.corruptionTolerance())))
 			player.createKeyItem("Feathery hair-pin", 1, 1, 0, 0);
 		else
 			player.createKeyItem("Feathery hair-pin", 0, 0, 0, 0);
@@ -932,7 +932,7 @@ private function benoitHairPinTalk():void
 
 private function benoitHairPinTFCheck():void
 {
-	if (player.cor < 30 && player.isFemaleOrHerm() && player.featheryHairPinEquipped() && [HAIR_BASILISK_PLUME, HAIR_GOO].indexOf(player.hairType) == -1)
+	if (player.cor < Math.max(80, (30 + player.corruptionTolerance())) && player.isFemaleOrHerm() && player.featheryHairPinEquipped() && [HAIR_BASILISK_PLUME, HAIR_GOO].indexOf(player.hairType) == -1)
 	{
 		outputText("\n\nYou feel the hair pin " + benoitMF("Benoit", "Benoite") + " gave you heat up, a gentle warmth suffusing through your body."
 		          +" Something tells you that if you let it, this feminine hair piece will evoke some sort of change.");
@@ -1334,7 +1334,7 @@ public function equipUnequipHairPin():void
 			outputText("You try to slide the hair pin into your " + player.hairDescript() + ", but their semi-liquid state isn't enough to hold it in"
 			          +" place. The pin falls to the ground with a wet splat the moment you let it go. With a sigh you clean it up and then you put"
 			          +" it back.");
-		else if (player.cor >= 55)
+		else if (player.cor >= Math.max(80, (55 + player.corruptionTolerance())))
 				outputText("You go to slide the hair-pin into your " + player.hairDescript() + ", but the moment it touches your scalp it heats up,"
 			              +" causing you to drop it in shock. Seems it doesn't want you dirty its purity... you pick it up and put it back into your"
 			              +" inventory for now.");

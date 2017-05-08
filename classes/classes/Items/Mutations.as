@@ -367,8 +367,8 @@
 			dynStats("sen", 1, "lus", 10);
 			//-Raises corruption by 1 to 50, then by .5 to 75, then by .25 to 100.
 			if (!purified) {
-				if (player.cor < 50) dynStats("cor", 1);
-				else if (player.cor < 75) dynStats("cor", .5);
+				if (player.cor < (50 + player.corruptionTolerance())) dynStats("cor", 1);
+ 				else if (player.cor < (75 + player.corruptionTolerance())) dynStats("cor", .5);
 				else dynStats("cor", .25);
 			}
 			outputText("\n\nIntermittent waves of numbness wash through your body, turning into a warm tingling that makes you feel sensitive all over.  The warmth flows through you, converging in your loins and bubbling up into lust.", false);
@@ -2862,15 +2862,15 @@ public function wolfPepper(type: Number, player: Player): void {
 			//high corruption
 			if (player.cor >= 66) outputText("  You lick your lips, marvelling at how thick and sticky it is.", false);
 			//Corruption increase
-			if ((player.cor < 50 || rand(2)) && tainted) {
+			if ((player.cor < (50 + player.corruptionTolerance()) || rand(2)) && tainted) {
 				outputText("\n\nThe drink makes you feel... dirty.", false);
 				temp = 1;
 				//Corrupts the uncorrupted faster
-				if (player.cor < 50) temp++;
-				if (player.cor < 40) temp++;
-				if (player.cor < 30) temp++;
+ 				if (player.cor < (50 + player.corruptionTolerance())) temp++;
+ 				if (player.cor < (40 + player.corruptionTolerance())) temp++;
+ 				if (player.cor < (30 + player.corruptionTolerance())) temp++;
 				//Corrupts the very corrupt slower
-				if (player.cor >= 90) temp = .5;
+				if (player.cor >= (90 + player.corruptionTolerance())) temp = .5;
 				if (tainted) dynStats("cor", temp);
 				else dynStats("cor", 0);
 				changes++;
@@ -2948,15 +2948,15 @@ public function wolfPepper(type: Number, player: Player): void {
 			//high corruption
 			if (player.cor >= 66) outputText("  You lick your lips, marvelling at how thick and sticky it is.", false);
 			//Corruption increase
-			if (player.cor < 50 || rand(2)) {
+			if (player.cor < (50 - player.corruptionTolerance()) || rand(2)) {
 				outputText("\n\nThe drink makes you feel... dirty.", false);
 				temp = 1;
-				//Corrupts the uncorrupted faster
-				if (player.cor < 50) temp++;
-				if (player.cor < 40) temp++;
-				if (player.cor < 30) temp++;
-				//Corrupts the very corrupt slower
-				if (player.cor >= 90) temp = .5;
+  				//Corrupts the uncorrupted faster
+ 				if (player.cor < (50 - player.corruptionTolerance())) temp++;
+ 				if (player.cor < (40 - player.corruptionTolerance())) temp++;
+ 				if (player.cor < (30 - player.corruptionTolerance())) temp++;
+  				//Corrupts the very corrupt slower
+ 				if (player.cor >= (90 + player.corruptionTolerance())) temp = .5;
 				dynStats("cor", temp + 2);
 				changes++;
 			}
@@ -3776,7 +3776,7 @@ public function wolfPepper(type: Number, player: Player): void {
 			//apply an effect where the player really wants
 			//to give their milk to other creatures
 			//(capable of getting them addicted):
-			if (!player.hasStatusEffect(StatusEffects.Feeder) && player.biggestLactation() >= 3 && rand(2) == 0 && player.biggestTitSize() >= 5 && player.cor >= 35) {
+			if (!player.hasStatusEffect(StatusEffects.Feeder) && player.biggestLactation() >= 3 && rand(2) == 0 && player.biggestTitSize() >= 5 && player.cor >= (35 - player.corruptionTolerance())) {
 				outputText("\n\nYou start to feel a strange desire to give your milk to other creatures.  For some reason, you know it will be very satisfying.\n\n<b>(You have gained the 'Feeder' perk!)</b>", false);
 				player.createStatusEffect(StatusEffects.Feeder, 0, 0, 0, 0);
 				player.createPerk(PerkLib.Feeder, 0, 0, 0, 0);
@@ -7521,7 +7521,7 @@ public function wolfPepper(type: Number, player: Player): void {
 				dynStats("spe", -1);
 			}
 			//- corruption increases by 1 up to low threshold (~20)
-			if (rand(3) == 0 && player.cor < 20 && changes < changeLimit) {
+			if (rand(3) == 0 && player.cor < (20 + player.corruptionTolerance()) && changes < changeLimit) {
 				outputText("\n\nYou shiver, a sudden feeling of cold rushing through your extremities.", false);
 				changes++;
 				dynStats("cor", 1);
@@ -8081,8 +8081,8 @@ public function wolfPepper(type: Number, player: Player): void {
 			dynStats("lus", -25, "cor", (-3 - rand(2)), "resisted", false);
 			HPChange(20 + (5 * player.level) + rand(5 * player.level), true);
 			player.refillHunger(10);
-			if (player.cor > 50) dynStats("cor", -1);
-			if (player.cor > 75) dynStats("cor", -1);
+ 			if (player.cor > (50 - player.corruptionTolerance())) dynStats("cor", -1);
+ 			if (player.cor > (75 - player.corruptionTolerance())) dynStats("cor", -1);
 		}
 		
 		public function calmMint(player:Player):void
@@ -8182,7 +8182,7 @@ public function wolfPepper(type: Number, player: Player): void {
 				if (player.tou > 66) dynStats("tou", -1);
 				changes++;
 			}
-			if (mystic && changes < changeLimit && rand(2) == 0 && player.cor < 100) {
+			if (mystic && changes < changeLimit && rand(2) == 0 && player.cor < (100 + player.corruptionTolerance())) {
 				if (player.cor < 33) outputText("\n\nA sense of dirtiness comes over you, like the magic of this gem is doing some perverse impropriety to you.");
 				else if (player.cor < 66) outputText("\n\nA tingling wave of sensation rolls through you, but you have no idea what exactly just changed.  It must not have been that important.");
 				else outputText("\n\nThoughts of mischief roll across your consciousness, unbounded by your conscience or any concern for others.  You should really have some fun - who cares who it hurts, right?");
@@ -8603,7 +8603,7 @@ public function wolfPepper(type: Number, player: Player): void {
 					if (player.fertility > 0) outputText("mostly ");
 					outputText("sterile system.");
 					//[Low/No fertility + Trap/Corruption  >70:
-					if (player.cor > 70) outputText("  For some reason the fact that you cannot function as nature intended makes you feel helpless and submissive.  Perhaps the only way to be a useful creature now is to find a dominant, fertile being willing to plow you full of eggs? You shake the alien, yet oddly alluring thought away.");
+					if (player.cor > (70 - player.corruptionTolerance())) outputText("  For some reason the fact that you cannot function as nature intended makes you feel helpless and submissive.  Perhaps the only way to be a useful creature now is to find a dominant, fertile being willing to plow you full of eggs? You shake the alien, yet oddly alluring thought away.");
 				}
 				player.fertility -= 1 + rand(3);
 				if (player.fertility < 4) player.fertility = 4;
@@ -9202,9 +9202,9 @@ public function wolfPepper(type: Number, player: Player): void {
 				flags[kFLAGS.TIMES_TRANSFORMED]++;
 			}
 			//Grow demon wings
-			if (player.wingType != WING_TYPE_BAT_LIKE_LARGE && rand(8) == 0 && player.cor >= 50) {
+			if (player.wingType != WING_TYPE_BAT_LIKE_LARGE && rand(8) == 0 && player.cor >= (50 - player.corruptionTolerance())) {
 				//grow smalls to large
-				if (player.wingType == WING_TYPE_BAT_LIKE_TINY && player.cor >= 75) {
+				if (player.wingType == WING_TYPE_BAT_LIKE_TINY && player.cor >= (75 - player.corruptionTolerance())) {
 					outputText("\n\n", false);
 					outputText("Your small demonic wings stretch and grow, tingling with the pleasure of being attached to such a tainted body.  You stretch over your shoulder to stroke them as they unfurl, turning into full-sized demon-wings.  <b>Your demonic wings have grown!</b>", false);
 					player.wingType = WING_TYPE_BAT_LIKE_LARGE;

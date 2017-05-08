@@ -1121,7 +1121,7 @@ package classes
 					_add(new PerkClass(PerkLib.WellAdjusted));
 				}
 				//Slot 5 - minimum libido
-				if (player.lib >= 60 && player.cor >= 50) {
+				if (player.lib >= 60 && player.cor >= (50 - player.corruptionTolerance())) {
 					_add(new PerkClass(PerkLib.Masochist));
 				}
 			}
@@ -1133,28 +1133,28 @@ package classes
 			// CORRUPTION
 			//------------
 			//Slot 7 - Corrupted Libido - lust raises 10% slower.
-			if (player.cor >= 25) {
+			if (player.cor >= (25 - player.corruptionTolerance())) {
 					_add(new PerkClass(PerkLib.CorruptedLibido,20,0,0,0));
 			}
 			//Slot 7 - Seduction (Must have seduced Jojo
-			if (player.cor >= 50) {
+			if (player.cor >= (50 - player.corruptionTolerance())) {
 					_add(new PerkClass(PerkLib.Seduction));
 			}
 			//Slot 7 - Nymphomania
-			if (player.findPerk(PerkLib.CorruptedLibido) >= 0 && player.cor >= 75) {
+			if (player.findPerk(PerkLib.CorruptedLibido) >= 0 && player.cor >= (75 - player.corruptionTolerance())) {
 					_add(new PerkClass(PerkLib.Nymphomania));
 			}
 			//Slot 7 - UNFINISHED :3
-			if (player.minLust() >= 20 && player.findPerk(PerkLib.CorruptedLibido) >= 0 && player.cor >= 50) {
+			if (player.minLust() >= 20 && player.findPerk(PerkLib.CorruptedLibido) >= 0 && player.cor >= (50 - player.corruptionTolerance())) {
 					_add(new PerkClass(PerkLib.Acclimation));
 			}
 			//Tier 1 Corruption Perks - acclimation over-rides
 			if (player.level >= 6)
 			{
-				if (player.cor >= 60 && player.findPerk(PerkLib.CorruptedLibido) >= 0) {
+				if (player.cor >= (60 - player.corruptionTolerance()) && player.findPerk(PerkLib.CorruptedLibido) >= 0) {
 					_add(new PerkClass(PerkLib.Sadist));
 				}
-				if (player.findPerk(PerkLib.CorruptedLibido) >= 0 && player.cor >= 70) {
+				if (player.findPerk(PerkLib.CorruptedLibido) >= 0 && player.cor >= (70 - player.corruptionTolerance())) {
 					_add(new PerkClass(PerkLib.ArousingAura));
 				}
 			}
