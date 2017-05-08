@@ -1,8 +1,4 @@
 package classes.Scenes{
-	import classes.GlobalFlags.kACHIEVEMENTS;
-	import classes.GlobalFlags.kFLAGS;
-	import classes.Player;
-	import classes.StatusEffects;
     import org.flexunit.asserts.*;
 	import org.hamcrest.assertThat;
 	import org.hamcrest.core.*;
@@ -11,20 +7,17 @@ package classes.Scenes{
 	import org.hamcrest.text.*;
 	
 	import flash.display.Stage;
-	
+	import classes.GlobalFlags.kACHIEVEMENTS;
+	import classes.GlobalFlags.kFLAGS;
+	import classes.Player;
+	import classes.StatusEffects;
 	import classes.CoC;
-	import classes.Scenes.Inventory;
-	import classes.Saves;
 	import classes.helper.StageLocator;
 	import classes.GlobalFlags.kGAMECLASS;
 	
-    public class CampTest {
+    public class ExplorationTest {
 		private var player:Player;
-        private var cut:Camp;
-		private var exploration:Exploration;
-		
-		private var doCamp:Function;
-		private function campInitialize(passDoCamp:Function):void { doCamp = passDoCamp; }
+		private var cut:Exploration;
 		
 		[BeforeClass]
 		public static function setUpClass():void {
@@ -35,11 +28,8 @@ package classes.Scenes{
         public function setUp():void {
 			player = new Player();
 			kGAMECLASS.player = player;
-			player.flags[kFLAGS.HISTORY_PERK_SELECTED] = 2
-			player.flags[kFLAGS.MOD_SAVE_VERSION] = kGAMECLASS.modSaveVersion;
 			
-			exploration = new Exploration();
-			cut = new Camp(campInitialize, exploration);
+			cut = new Exploration();
         }  
      
         [Test] 
@@ -55,9 +45,7 @@ package classes.Scenes{
 			player.flags[kFLAGS.BOG_EXPLORED] = 1;
 			player.flags[kFLAGS.DISCOVERED_GLACIAL_RIFT] = 1;
 			
-			doCamp();
-			
-			assertThat(kGAMECLASS.achievements[kACHIEVEMENTS.ZONE_EXPLORER], equalTo(1));
+			assertThat(cut.hasExploredAllZones(), equalTo(true));
         }
     }
 }

@@ -583,5 +583,22 @@ package classes.Scenes
 			inRoomedDungeonResume = kGAMECLASS.owca.gangbangVillageStuff;
 			inRoomedDungeonResume();
 		}
+		
+		/**
+		 * Query if the player has explored all areas.
+		 * @return true if all areas have been visted at least once
+		 */
+		public function hasExploredAllZones():Boolean {
+			return flags[kFLAGS.TIMES_EXPLORED_FOREST] > 0
+			&& flags[kFLAGS.TIMES_EXPLORED_LAKE] > 0
+			&& flags[kFLAGS.TIMES_EXPLORED_DESERT] > 0
+			&& flags[kFLAGS.TIMES_EXPLORED_MOUNTAIN] > 0
+			&& flags[kFLAGS.TIMES_EXPLORED_PLAINS] > 0
+			&& flags[kFLAGS.TIMES_EXPLORED_SWAMP] > 0
+			&& player.hasStatusEffect(StatusEffects.ExploredDeepwoods)
+			&& flags[kFLAGS.DISCOVERED_HIGH_MOUNTAIN] > 0
+			&& flags[kFLAGS.BOG_EXPLORED] > 0
+			&& flags[kFLAGS.DISCOVERED_GLACIAL_RIFT] > 0;
+		}
 	}
 }
