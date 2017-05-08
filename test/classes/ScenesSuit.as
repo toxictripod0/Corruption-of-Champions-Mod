@@ -1,4 +1,5 @@
 package classes {
+	import classes.Scenes.CampTest;
 	import classes.Scenes.NPCsSuit;
 	import classes.Scenes.PlacesSuit;
 	import classes.Scenes.AreasSuit;
@@ -10,5 +11,6 @@ package classes {
 		 public var placesSuit:PlacesSuit;
 		 public var npcsSuit:NPCsSuit;
 		 public var areasSuit:AreasSuit;
+		 public var campTest:CampTest;
 	}
 }
