@@ -59,5 +59,23 @@ package classes.Scenes{
 			
 			assertThat(kGAMECLASS.achievements[kACHIEVEMENTS.ZONE_EXPLORER], equalTo(1));
         }
+		
+		[Test] 
+        public function rangerAchievmentAwarded():void {
+			player.flags[kFLAGS.TIMES_EXPLORED_FOREST] = 100;
+			
+			doCamp();
+			
+			assertThat(kGAMECLASS.achievements[kACHIEVEMENTS.ZONE_FOREST_RANGER], equalTo(1));
+        }
+		
+		[Test] 
+        public function rangerAchievmentNotAwarded():void {
+			player.flags[kFLAGS.TIMES_EXPLORED_FOREST] = 2;
+			
+			doCamp();
+			
+			assertThat(kGAMECLASS.achievements[kACHIEVEMENTS.ZONE_FOREST_RANGER], equalTo(0));
+        }
     }
 }
