@@ -30,7 +30,7 @@ package classes.Scenes.Combat
 		}
 		
 		public function getWhiteMagicLustCap():Number {
-			var whiteLustCap:int = player.maxLust() * 0.75;
+			var whiteLustCap:Number = player.maxLust() * 0.75;
 			if (player.findPerk(PerkLib.Enlightened) >= 0 && player.cor < (10 + player.corruptionTolerance())) whiteLustCap += (player.maxLust() * 0.1);
 			if (player.findPerk(PerkLib.FocusedMind) >= 0) whiteLustCap += (player.maxLust() * 0.1);
 			return whiteLustCap;

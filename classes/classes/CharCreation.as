@@ -191,6 +191,8 @@ package classes
 			player.hairLength = 5;
 			player.skinType = SKIN_TYPE_PLAIN;
 			player.underBody.restore();
+			player.lowerBody = LOWER_BODY_TYPE_HUMAN;
+			player.legCount = 2;
 			player.faceType = FACE_HUMAN;
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) player.tailType = TAIL_TYPE_NONE;
 			player.tongueType = TONGUE_HUMAN;
@@ -200,6 +202,7 @@ package classes
 			player.tone = 50;
 			player.thickness = 50;
 			player.skinDesc = "skin";
+			player.skinAdj = "";
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) {
 				player.balls = 0;
 				player.ballSize = 0;
