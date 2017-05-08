@@ -191,14 +191,19 @@ package classes.Scenes.NPCs
 			return 60;
 		}
 
-		private function emberHasCock():Boolean
+		public function emberHasCock():Boolean
 		{
 			return (flags[kFLAGS.EMBER_GENDER] == 1 || flags[kFLAGS.EMBER_GENDER] == 3);
 		}
 
-		private function emberHasVagina():Boolean
+		public function emberHasVagina():Boolean
 		{
 			return (flags[kFLAGS.EMBER_GENDER] == 2 || flags[kFLAGS.EMBER_GENDER] == 3);
+		}
+
+		public function emberIsHerm():Boolean
+		{
+			return flags[kFLAGS.EMBER_GENDER] == 3;
 		}
 		
 		public function emberChildren():int
