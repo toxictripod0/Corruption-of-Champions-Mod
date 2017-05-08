@@ -29,9 +29,6 @@ import classes.Scenes.API.FnHelpers;
 
 		public function Forest() { }
 
-		public function isDiscovered():Boolean {
-			return flags[kFLAGS.TIMES_EXPLORED_FOREST] > 0;
-		}
 		public function discover():void {
 			clearOutput();
 			outputText(images.showImage("area-forest"));
