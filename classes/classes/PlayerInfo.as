@@ -622,11 +622,11 @@ package classes
 				outputText("\n<b><u>Ongoing Status Effects</u></b>\n" + statEffects, false);
 			// End Ongoing Stat Effects
 			menu();
+			addButton(0, "Next", playerMenu);
 			if (player.statPoints > 0) {
 				outputText("\n\n<b>You have " + num2Text(player.statPoints) + " attribute point" + (player.statPoints == 1 ? "" : "s") + " to distribute.");
 				addButton(1, "Stat Up", attributeMenu);
 			}
-			doNext(playerMenu);
 		}
 		
 		//------------
