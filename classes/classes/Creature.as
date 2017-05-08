@@ -3735,5 +3735,23 @@ package classes
 		{
 			return getEvasionReason(useMonster, attackSpeed) != null;
 		}
+		
+		public function maxFatigue():Number
+		{
+			var max:Number = 100;
+			if (findPerk(PerkLib.ImprovedEndurance) >= 0) max += 20;
+			if (findPerk(PerkLib.AscensionEndurance) >= 0) max += perkv1(PerkLib.AscensionEndurance) * 5;
+			if (max > 999) max = 999;
+			return max;
+		}
+		
+		/**
+		 *Get the remaining fatigue of the Creature.
+		 *@return maximum amount of fatigue that still can be used
+		 */
+		public function fatigueLeft():Number
+		{
+			return maxFatigue() - fatigue;
+		}
 	}
 }

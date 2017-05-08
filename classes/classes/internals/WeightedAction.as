@@ -2,6 +2,7 @@ package classes.internals
 {
 	/**
 	 * Class for performing weighted random actions (function/method calls) derived from WeightedDrop by aimozg
+	 * @since May 7, 2017
 	 * @author Stadler76
 	 */
 	public class WeightedAction implements RandomAction 
@@ -33,7 +34,7 @@ package classes.internals
 			return this;
 		}
 
-		public function exec():void 
+		public function exec():void
 		{
 			var random:Number = Math.random()*sum;
 			var action:Function = null;
@@ -42,10 +43,9 @@ package classes.internals
 				action = pair[0];
 				random -= pair[1];
 			}
-			if (action == null)
-				return;
 
-			action();
+			if (action != null)
+				action();
 		}
 
 		public function clone():WeightedAction
