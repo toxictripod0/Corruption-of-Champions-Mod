@@ -11,11 +11,14 @@ import classes.Scenes.API.Encounters;
 import classes.Scenes.API.FnHelpers;
 	import classes.Scenes.API.IExplorable;
 	import classes.Scenes.Areas.Forest.*;
+	import classes.Scenes.Exploration;
 	
 	use namespace kGAMECLASS;
 
 	public class Forest extends BaseContent implements IExplorable
 	{
+		private var exploration:Exploration;
+		
 		public var akbalScene:AkbalScene = new AkbalScene();
 		public var beeGirlScene:BeeGirlScene = new BeeGirlScene();
 		public var corruptedGlade:CorruptedGlade = new CorruptedGlade();
@@ -27,24 +30,19 @@ import classes.Scenes.API.FnHelpers;
 		public var erlkingScene:ErlKingScene = new ErlKingScene();
 		// public var dullahanScene:DullahanScene = new DullahanScene(); // [INTERMOD:8chan]
 
-		public function Forest() { }
-
-		public function deepwoodsDiscovered():Boolean {
-			return player.hasStatusEffect(StatusEffects.ExploredDeepwoods);
+		public function discover():void {
+			//TODO figure out how to best handle discovery between Area and Exploration classes
 		}
-
-		public function exploreDeepwoods():void
+		
+		public function isDiscovered():Boolean 
 		{
-			clearOutput();
-			//Increment deepwoods exploration counter.
-			player.addStatusValue(StatusEffects.ExploredDeepwoods, 1, 1);
-			deepwoodsEncounter.execEncounter();
+			//TODO implement correct forrest discovery
+			//TODO add test for forest discovery
+			return false;
 		}
-
-		private function deepwoodsWalkFn():void {
-			outputText("You enjoy a peaceful walk in the deepwoods.  It gives you time to think over the recent, disturbing events.", true);
-			dynStats("tou", .5, "int", 1);
-			doNext(camp.returnToCampUseOneHour);
+		
+		public function Forest(exploration:Exploration) {
+			this.exploration = exploration;
 		}
 
 		public function tentacleBeastDeepwoodsEncounterFn():void {
@@ -52,7 +50,7 @@ import classes.Scenes.API.FnHelpers;
 			//Tentacle avoidance chance due to dangerous plants
 			if (player.hasKeyItem("Dangerous Plants") >= 0 && player.inte / 2 > rand(50)) {
 				trace("TENTACLE'S AVOIDED DUE TO BOOK!");
-				outputText("Using the knowledge contained in your 'Dangerous Plants' book, you determine a tentacle beast's lair is nearby, do you continue?  If not you could return to camp.\n\n", true);
+				outputText("Using the knowledge contained in your 'Dangerous Plants' book, you determine a tentacle beast's lair is nearby, do you continue?  If not you could return to camp.\n\n");
 				menu();
 				addButton(0,"Continue", tentacleBeastScene.encounter);
 				addButton(4, "Leave", camp.returnToCampUseOneHour);
@@ -82,7 +80,7 @@ import classes.Scenes.API.FnHelpers;
 						name  : "deepwoods",
 						call  : kGAMECLASS.deepWoods.discover,
 						when  : function ():Boolean {
-							return (flags[kFLAGS.TIMES_EXPLORED_FOREST] >= 20) && !player.hasStatusEffect(StatusEffects.ExploredDeepwoods);
+							return (exploration.exploredForestCount() >= 20) && !player.hasStatusEffect(StatusEffects.ExploredDeepwoods);
 						},
 						chance: Encounters.ALWAYS
 					}, {
@@ -107,7 +105,7 @@ import classes.Scenes.API.FnHelpers;
 						name  : "marble",
 						call  : marbleVsImp,
 						when  : function ():Boolean {
-							return flags[kFLAGS.TIMES_EXPLORED_FOREST] > 0 &&
+							return exploration.hasDiscoveredForest() &&
 								   !player.hasStatusEffect(StatusEffects.MarbleRapeAttempted)
 								   && !player.hasStatusEffect(StatusEffects.NoMoreMarble)
 								   && player.hasStatusEffect(StatusEffects.Marble)
@@ -211,10 +209,8 @@ import classes.Scenes.API.FnHelpers;
 		public function explore():void
 		{
 			clearOutput();
-			//Increment forest exploration counter.
-			flags[kFLAGS.TIMES_EXPLORED_FOREST]++;
+			exploration.exploreForest();
 			forestEncounter.execEncounter();
 		}
-
 	}
 }

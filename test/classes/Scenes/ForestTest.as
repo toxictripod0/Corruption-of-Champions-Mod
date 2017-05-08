@@ -20,6 +20,7 @@ package classes.Scenes{
     public class ForestTest {
 		private var player:Player;
         private var cut:Forest;
+		private var exploration:Exploration;
 		
 		[BeforeClass]
 		public static function setUpClass():void {
@@ -32,8 +33,8 @@ package classes.Scenes{
 			kGAMECLASS.player = player;
 			kGAMECLASS.achievements = new DefaultDict();
 			kGAMECLASS.flags = new DefaultDict();
-			
-			cut = new Forest();
+			exploration = new Exploration();
+			cut = new Forest(exploration);
         }
 		
 		[Test]
