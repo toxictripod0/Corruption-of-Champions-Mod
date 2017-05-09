@@ -145,7 +145,7 @@
 		
 		public function serialize(relativeRootObject:*):void 
 		{
-			LOGGER.debug("Serializing vagina...")
+			LOGGER.debug("Serializing vagina...");
 			relativeRootObject.type = this.type;
 			relativeRootObject.vaginalWetness = this.vaginalWetness;
 			relativeRootObject.vaginalLooseness = this.vaginalLooseness;
@@ -163,7 +163,7 @@
 		
 		public function deserialize(relativeRootObject:*):void 
 		{
-			LOGGER.debug("Deserializing vagina...")
+			LOGGER.debug("Deserializing vagina...");
 			this.vaginalWetness = relativeRootObject.vaginalWetness;
 			this.vaginalLooseness = relativeRootObject.vaginalLooseness;
 			this.fullness = relativeRootObject.fullness;
