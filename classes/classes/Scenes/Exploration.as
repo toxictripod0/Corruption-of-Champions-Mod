@@ -13,16 +13,25 @@ package classes.Scenes
 	import classes.Scenes.Explore.ExploreDebug;
 	import classes.Scenes.Monsters.*;
 	import classes.display.SpriteDb;
+	import classes.internals.ISerializable;
 	import mx.logging.ILogger;
 	import classes.internals.LoggerFactory;
 
-	public class Exploration extends BaseContent
+	public class Exploration extends BaseContent implements ISerializable
 	{
+		private  static const SERIALIZATION_VERSION_PROPERTY:String = "serializationVersion";
+		private static const FOREST_EXPLORED_COUNTER_PROPERTY:String = "forestExploredCounter";
+		
 		private static const LOGGER:ILogger = LoggerFactory.getLogger(Exploration);
+		private static var serializationVersion:int = 1;
+		
+		private var forestExploredCounter:int;
 		
 		public var exploreDebug:ExploreDebug = new ExploreDebug();
 
-		public function Exploration() {}
+		public function Exploration() {
+			this.forestExploredCounter = 0;
+		}
 
 		//const MET_OTTERGIRL:int = 777;
 		//const HAS_SEEN_MINO_AND_COWGIRL:int = 892;
@@ -638,6 +647,51 @@ package classes.Scenes
 		 */
 		public function hasDiscoveredForest():Boolean {
 			return flags[kFLAGS.TIMES_EXPLORED_FOREST] > 0;
+		}
+		
+		public function serialize(relativeRootObject:*):void 
+		{
+			LOGGER.debug("Serializing...");
+			relativeRootObject[SERIALIZATION_VERSION_PROPERTY] = Exploration.serializationVersion;
+			relativeRootObject[FOREST_EXPLORED_COUNTER_PROPERTY] = this.exploredForestCount();
+		}
+		
+		public function deserialize(relativeRootObject:*):void 
+		{
+			LOGGER.debug("Deserializing...");
+			serializedVersionCheck(relativeRootObject);
+			upgradeSerializationVersion(relativeRootObject);
+			
+			this.forestExploredCounter = relativeRootObject[FOREST_EXPLORED_COUNTER_PROPERTY];
+			LOGGER.debug("Forest explore count: {0}", this.forestExploredCounter);
+			flags[kFLAGS.TIMES_EXPLORED_FOREST] = this.forestExploredCounter;
+		}
+		
+		/**
+		 * Check the version of the serialized data.
+		 * @param	relativeRootObject the loaded serialized data
+		 */
+		private function serializedVersionCheck(relativeRootObject:*):void {
+			var version:int = relativeRootObject[SERIALIZATION_VERSION_PROPERTY];
+			if (version > Exploration.serializationVersion) {
+				LOGGER.error("Serialized version is {0}, but the current version is {1}. Backward compatibility is not guaranteed!", version, Exploration.serializationVersion);
+			}else{
+				LOGGER.debug("Serialized version is {0}", version);
+			}
+		}
+		
+		/**
+		 * Upgrade from an earlier version of the serialized data.
+		 * @param	relativeRootObject the loaded serialized data
+		 */
+		private function upgradeSerializationVersion(relativeRootObject:*):void {
+			var version:int = relativeRootObject[SERIALIZATION_VERSION_PROPERTY] as int;
+			switch (version) {
+				case 0: {
+					LOGGER.debug("Version was 0, handling legacy data...");
+					relativeRootObject[FOREST_EXPLORED_COUNTER_PROPERTY] = flags[kFLAGS.TIMES_EXPLORED_FOREST];
+				}
+			}
 		}
 	}
 }
