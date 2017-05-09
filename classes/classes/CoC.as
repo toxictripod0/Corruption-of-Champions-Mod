@@ -257,7 +257,7 @@ package classes
 		public var milkWaifu:MilkWaifu = new MilkWaifu();
 		public var raphael:Raphael = new Raphael();
 		public var rathazul:Rathazul = new Rathazul();
-		public var sheilaScene:SheilaScene = new SheilaScene();
+		public var sheilaScene:SheilaScene = new SheilaScene(exploration);
 		public var shouldraFollower:ShouldraFollower = new ShouldraFollower();
 		public var shouldraScene:ShouldraScene = new ShouldraScene();
 		public var sophieBimbo:SophieBimbo = new SophieBimbo();
