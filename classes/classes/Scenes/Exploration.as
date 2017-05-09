@@ -23,7 +23,7 @@ package classes.Scenes
 		private static const FOREST_EXPLORED_COUNTER_PROPERTY:String = "forestExploredCounter";
 		
 		private static const LOGGER:ILogger = LoggerFactory.getLogger(Exploration);
-		private static var serializationVersion:int = 1;
+		public static const SERIALIZATION_VERSION:int = 1;
 		
 		private var forestExploredCounter:int;
 		
@@ -652,7 +652,7 @@ package classes.Scenes
 		public function serialize(relativeRootObject:*):void 
 		{
 			LOGGER.debug("Serializing...");
-			relativeRootObject[SERIALIZATION_VERSION_PROPERTY] = Exploration.serializationVersion;
+			relativeRootObject[SERIALIZATION_VERSION_PROPERTY] = Exploration.SERIALIZATION_VERSION;
 			relativeRootObject[FOREST_EXPLORED_COUNTER_PROPERTY] = this.exploredForestCount();
 		}
 		
@@ -673,8 +673,8 @@ package classes.Scenes
 		 */
 		private function serializedVersionCheck(relativeRootObject:*):void {
 			var version:int = relativeRootObject[SERIALIZATION_VERSION_PROPERTY];
-			if (version > Exploration.serializationVersion) {
-				LOGGER.error("Serialized version is {0}, but the current version is {1}. Backward compatibility is not guaranteed!", version, Exploration.serializationVersion);
+			if (version > Exploration.SERIALIZATION_VERSION) {
+				LOGGER.error("Serialized version is {0}, but the current version is {1}. Backward compatibility is not guaranteed!", version, Exploration.SERIALIZATION_VERSION);
 			}else{
 				LOGGER.debug("Serialized version is {0}", version);
 			}
