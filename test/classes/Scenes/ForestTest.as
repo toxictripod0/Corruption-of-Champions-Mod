@@ -41,14 +41,14 @@ package classes.Scenes{
 		public function discoverDeepwoods():void {
 			exploration.exploreForest(30);
 			
-			cut.exploreForest();
+			cut.explore();
 			
 			assertThat(player.hasStatusEffect(StatusEffects.ExploredDeepwoods));
 		}
 		
 		[Test]
 		public function exploreForestIncrementsCounter():void {
-			cut.exploreForest();
+			cut.explore();
 			
 			assertThat(exploration.exploredForestCount(), equalTo(1));
 		}

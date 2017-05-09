@@ -1,4 +1,5 @@
 package classes{
+	import classes.Scenes.Exploration;
     import org.flexunit.asserts.*;
 	import org.hamcrest.assertThat;
 	import org.hamcrest.core.*;
@@ -13,6 +14,7 @@ package classes{
 	import classes.Saves;
 	import classes.helper.StageLocator;
 	import classes.GlobalFlags.kGAMECLASS;
+	import classes.GlobalFlags.kFLAGS;
 	
     public class SavesTest {
 		private static const TEST_VERSION:String = "test";
@@ -38,6 +40,7 @@ package classes{
 				
 			cut = new Saves(kGAMECLASS.gameStateDirectGet, kGAMECLASS.gameStateDirectSet);
 			kGAMECLASS.inventory = new Inventory(cut);
+			kGAMECLASS.exploration = new Exploration();
         }  
      
         [Test] 
@@ -73,6 +76,15 @@ package classes{
 			cut.loadGame(TEST_SAVE_GAME);
 			
 			assertThat(kGAMECLASS.exploration.exploredForestCount(), equalTo(1));
+		}
+		
+		[Test]
+		public function forestExplorationFlagRemoved():void {
+			kGAMECLASS.exploration.exploreForest(5);
+			cut.saveGame(TEST_SAVE_GAME, false);
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.flags[kFLAGS.TIMES_EXPLORED_FOREST], equalTo(0));
 		}
     }
 }
