@@ -50,12 +50,13 @@ package classes.Scenes
 				flags[kFLAGS.TIMES_EXPLORED]++;
 				doNext(camp.returnToCampUseOneHour);
 				return;
-			} else if (flags[kFLAGS.TIMES_EXPLORED_FOREST] <= 0) {
+			} else if (exploredForestCount() <= 0) {
 				clearOutput();
+				
 				outputText(images.showImage("area-forest"));
 				outputText("You walk for quite some time, roaming the hard-packed and pink-tinged earth of the demon-realm.  Rust-red rocks speckle the wasteland, as barren and lifeless as anywhere else you've been.  A cool breeze suddenly brushes against your face, as if gracing you with its presence.  You turn towards it and are confronted by the lush foliage of a very old looking forest.  You smile as the plants look fairly familiar and non-threatening.  Unbidden, you remember your decision to test the properties of this place, and think of your campsite as you walk forward.  Reality seems to shift and blur, making you dizzy, but after a few minutes you're back, and sure you'll be able to return to the forest with similar speed.\n\n<b>You have discovered the Forest!</b>");
-				flags[kFLAGS.TIMES_EXPLORED]++;
-				flags[kFLAGS.TIMES_EXPLORED_FOREST]++;
+				exploreForest();
+				
 				doNext(camp.returnToCampUseOneHour);
 				return;
 			}
@@ -69,16 +70,18 @@ package classes.Scenes
 			}*/
 			hideMenus();
 			menu();
+			
 			addButton(0, "Explore", tryDiscover).hint("Explore to find new regions and visit any discovered regions.");
-			if (flags[kFLAGS.TIMES_EXPLORED_FOREST] > 0) addButton(1, "Forest", kGAMECLASS.forest.explore).hint("Visit the lush forest. \n\nRecommended level: 1" + (player.level < 6 ? "\n\nBeware of Tentacle Beasts!" : "") + (debug ? "\n\nTimes explored: " + flags[kFLAGS.TIMES_EXPLORED_FOREST] : ""));
+			if (hasDiscoveredForest()) {
+				addButton(1, "Forest", kGAMECLASS.forest.explore).hint("Visit the lush forest. \n\nRecommended level: 1" + (player.level < 6 ? "\n\nBeware of Tentacle Beasts!" : "") + (debug ? "\n\nTimes explored: " + exploredForestCount() : ""));
+			}
+			
 			if (flags[kFLAGS.TIMES_EXPLORED_LAKE] > 0) addButton(2, "Lake", kGAMECLASS.lake.explore).hint("Visit the lake and explore the beach. \n\nRecommended level: 1" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.TIMES_EXPLORED_LAKE] : ""));
 			if (flags[kFLAGS.TIMES_EXPLORED_DESERT] > 0) addButton(3, "Desert", kGAMECLASS.desert.explore).hint("Visit the dry desert. \n\nRecommended level: 2" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.TIMES_EXPLORED_DESERT] : ""));
-
 			if (flags[kFLAGS.TIMES_EXPLORED_MOUNTAIN] > 0) addButton(5, "Mountain", kGAMECLASS.mountain.explore).hint("Visit the mountain. \n\nRecommended level: 5" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.TIMES_EXPLORED_MOUNTAIN] : ""));
 			if (flags[kFLAGS.TIMES_EXPLORED_SWAMP] > 0) addButton(6, "Swamp", kGAMECLASS.swamp.explore).hint("Visit the wet swamplands. \n\nRecommended level: 12" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.TIMES_EXPLORED_SWAMP] : ""));
 			if (flags[kFLAGS.TIMES_EXPLORED_PLAINS] > 0) addButton(7, "Plains", kGAMECLASS.plains.explore).hint("Visit the plains. \n\nRecommended level: 10" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.TIMES_EXPLORED_PLAINS] : ""));
 			if (player.hasStatusEffect(StatusEffects.ExploredDeepwoods)) addButton(8, "Deepwoods", kGAMECLASS.deepWoods.explore).hint("Visit the dark, bioluminescent deepwoods. \n\nRecommended level: 5" + (debug ? "\n\nTimes explored: " + player.statusEffectv1(StatusEffects.ExploredDeepwoods) : ""));
-
 			if (flags[kFLAGS.DISCOVERED_HIGH_MOUNTAIN] > 0) addButton(10, "High Mountain", kGAMECLASS.highMountains.explore).hint("Visit the high mountains where basilisks and harpies are found. \n\nRecommended level: 10" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.DISCOVERED_HIGH_MOUNTAIN] : ""));
 			if (flags[kFLAGS.BOG_EXPLORED] > 0) addButton(11, "Bog", kGAMECLASS.bog.explore).hint("Visit the dark bog. \n\nRecommended level: 14" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.BOG_EXPLORED] : ""));
 			if (flags[kFLAGS.DISCOVERED_GLACIAL_RIFT] > 0) addButton(12, "Glacial Rift", kGAMECLASS.glacialRift.explore).hint("Visit the chilly glacial rift. \n\nRecommended level: 16" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.DISCOVERED_GLACIAL_RIFT] : ""));
@@ -618,7 +621,7 @@ package classes.Scenes
 		 * @return number of forest visits
 		 */
 		public function exploredForestCount():int {
-			return flags[kFLAGS.TIMES_EXPLORED_FOREST];
+			return forestExploredCounter;
 		}
 
 		/**
@@ -630,9 +633,9 @@ package classes.Scenes
 			LOGGER.debug("Attempting to explore forest with delta {0}", delta);
 			checkDelta(delta);
 			
-			flags[kFLAGS.TIMES_EXPLORED_FOREST] += delta;
+			forestExploredCounter += delta;
 			LOGGER.debug("Explored forest, current count is {0}", exploredForestCount());
-			return flags[kFLAGS.TIMES_EXPLORED_FOREST];
+			return forestExploredCounter;
 		}
 		
 		private function checkDelta(delta:int):void {
@@ -646,14 +649,14 @@ package classes.Scenes
 		 * @return true if the forest has been explored at least once
 		 */
 		public function hasDiscoveredForest():Boolean {
-			return flags[kFLAGS.TIMES_EXPLORED_FOREST] > 0;
+			return exploredForestCount() > 0;
 		}
 		
 		public function serialize(relativeRootObject:*):void 
 		{
 			LOGGER.debug("Serializing...");
 			relativeRootObject[SERIALIZATION_VERSION_PROPERTY] = Exploration.SERIALIZATION_VERSION;
-			relativeRootObject[FOREST_EXPLORED_COUNTER_PROPERTY] = this.exploredForestCount();
+			relativeRootObject[FOREST_EXPLORED_COUNTER_PROPERTY] = exploredForestCount();
 		}
 		
 		public function deserialize(relativeRootObject:*):void 
@@ -662,9 +665,8 @@ package classes.Scenes
 			serializedVersionCheck(relativeRootObject);
 			upgradeSerializationVersion(relativeRootObject);
 			
-			this.forestExploredCounter = relativeRootObject[FOREST_EXPLORED_COUNTER_PROPERTY];
-			LOGGER.debug("Forest explore count: {0}", this.forestExploredCounter);
-			flags[kFLAGS.TIMES_EXPLORED_FOREST] = this.forestExploredCounter;
+			forestExploredCounter = relativeRootObject[FOREST_EXPLORED_COUNTER_PROPERTY];
+			LOGGER.debug("Forest explore count: {0}", forestExploredCounter);
 		}
 		
 		/**

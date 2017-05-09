@@ -42,7 +42,7 @@ package classes.Scenes{
 		
         [Test] 
         public function explorerAchievmentAwarded():void {
-			player.flags[kFLAGS.TIMES_EXPLORED_FOREST] = 1;
+			cut.exploreForest();
 			player.flags[kFLAGS.TIMES_EXPLORED_LAKE] = 1;
 			player.flags[kFLAGS.TIMES_EXPLORED_DESERT] = 1;
 			player.flags[kFLAGS.TIMES_EXPLORED_MOUNTAIN] = 1;
@@ -63,7 +63,7 @@ package classes.Scenes{
 		
 		[Test]
 		public function forestExploredCountVisited():void {
-			player.flags[kFLAGS.TIMES_EXPLORED_FOREST]++;
+			cut.exploreForest();
 			
 			assertThat(cut.exploredForestCount(), equalTo(1));
 		}

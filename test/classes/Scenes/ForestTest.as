@@ -39,7 +39,7 @@ package classes.Scenes{
 		
 		[Test]
 		public function discoverDeepwoods():void {
-			player.flags[kFLAGS.TIMES_EXPLORED_FOREST] = 30;
+			exploration.exploreForest(30);
 			
 			cut.exploreForest();
 			
@@ -50,7 +50,7 @@ package classes.Scenes{
 		public function exploreForestIncrementsCounter():void {
 			cut.exploreForest();
 			
-			assertThat(player.flags[kFLAGS.TIMES_EXPLORED_FOREST], equalTo(1));
+			assertThat(exploration.exploredForestCount(), equalTo(1));
 		}
     }
 }

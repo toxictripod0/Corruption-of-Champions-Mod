@@ -46,7 +46,7 @@ package classes.Scenes{
      
         [Test] 
         public function explorerAchievmentAwarded():void {
-			player.flags[kFLAGS.TIMES_EXPLORED_FOREST] = 1;
+			exploration.exploreForest();
 			player.flags[kFLAGS.TIMES_EXPLORED_LAKE] = 1;
 			player.flags[kFLAGS.TIMES_EXPLORED_DESERT] = 1;
 			player.flags[kFLAGS.TIMES_EXPLORED_MOUNTAIN] = 1;
@@ -64,7 +64,7 @@ package classes.Scenes{
 		
 		[Test] 
         public function rangerAchievmentAwarded():void {
-			player.flags[kFLAGS.TIMES_EXPLORED_FOREST] = 100;
+			exploration.exploreForest(100);
 			
 			doCamp();
 			
@@ -73,7 +73,7 @@ package classes.Scenes{
 		
 		[Test] 
         public function rangerAchievmentNotAwarded():void {
-			player.flags[kFLAGS.TIMES_EXPLORED_FOREST] = 2;
+			exploration.exploreForest(2);
 			
 			doCamp();
 			
