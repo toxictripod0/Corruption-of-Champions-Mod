@@ -169,14 +169,14 @@
 			this.fullness = relativeRootObject.fullness;
 			this.virgin = relativeRootObject.virgin;
 			
-			if (relativeRootObject.type == undefined) {
+			if (relativeRootObject.type === undefined) {
 				this.type = 0;
 				LOGGER.warn("Vagina type not set, setting to {0}", this.type);
 			}else{
 				this.type = relativeRootObject.type;
 			}
 			
-			if (relativeRootObject.labiaPierced == undefined) {
+			if (relativeRootObject.labiaPierced === undefined) {
 				LOGGER.warn("Labia pierced not set, resetting labia and clit data");
 				this.labiaPierced = 0;
 				this.labiaPShort = "";
@@ -199,12 +199,12 @@
 				this.recoveryProgress = relativeRootObject.recoveryProgress;
 			}
 			
-			if(relativeRootObject.clitLength == undefined) {
+			if(relativeRootObject.clitLength === undefined) {
 				this.clitLength = VaginaClass.DEFAULT_CLIT_LENGTH;
 				LOGGER.warn("Clit length was not loaded, setting to default({0})", this.clitLength);
 			}
 			
-			if(relativeRootObject.recoveryProgress == undefined) {
+			if(relativeRootObject.recoveryProgress === undefined) {
 				this.recoveryProgress = 0;
 				LOGGER.warn("Stretch counter was not loaded, setting to {0}", this.recoveryProgress);
 			}
