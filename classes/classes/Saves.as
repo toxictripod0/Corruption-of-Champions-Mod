@@ -808,6 +808,9 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 				saveFile.data.flags[i] = flags[i];
 			}
 		}
+		
+		saveFile.data.exploration = [];
+		kGAMECLASS.exploration.serialize(saveFile.data.exploration);
 				
 		//CLOTHING/ARMOR
 		saveFile.data.armorId = player.armor.id;
@@ -2196,6 +2199,11 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			player.autoSave = false;
 		else
 			player.autoSave = saveFile.data.autoSave;
+			
+		if (saveFile.data.exploration === undefined) {
+			LOGGER.debug("No property for exploration, creating empty array so serialization will work");
+			saveFile.data.exploration = [];
+		}
 		
 		// Fix possible old save for Plot & Exploration
 		flags[kFLAGS.TIMES_EXPLORED_LAKE]     = (flags[kFLAGS.TIMES_EXPLORED_LAKE] || saveFile.data.exploredLake || 0);
@@ -2203,6 +2211,8 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		flags[kFLAGS.TIMES_EXPLORED_FOREST]   = (flags[kFLAGS.TIMES_EXPLORED_FOREST] || saveFile.data.exploredForest || 0);
 		flags[kFLAGS.TIMES_EXPLORED_DESERT]   = (flags[kFLAGS.TIMES_EXPLORED_DESERT] || saveFile.data.exploredDesert || 0);
 		flags[kFLAGS.TIMES_EXPLORED]          = (flags[kFLAGS.TIMES_EXPLORED] || saveFile.data.explored || 0);
+		
+		kGAMECLASS.exploration.deserialize(saveFile.data.exploration);
  
 		flags[kFLAGS.JOJO_STATUS]        = (flags[kFLAGS.JOJO_STATUS] || saveFile.data.monk || 0);
 		flags[kFLAGS.SANDWITCH_SERVICED] = (flags[kFLAGS.SANDWITCH_SERVICED] || saveFile.data.sand || 0);

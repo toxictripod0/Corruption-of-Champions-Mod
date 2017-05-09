@@ -63,5 +63,16 @@ package classes{
 			
 			assertThat(kGAMECLASS.player.vaginas[0].recoveryProgress, equalTo(VAGINA_RECOVERY_PROGRESS));
         }
+		
+		[Test]
+		public function explorationSaved():void {
+			kGAMECLASS.exploration.exploreForest();
+			
+			cut.saveGame(TEST_SAVE_GAME, false);
+			kGAMECLASS.exploration.exploreForest(5);
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.exploration.exploredForestCount(), equalTo(1));
+		}
     }
 }
