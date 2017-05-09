@@ -67,6 +67,21 @@ package classes.Scenes{
 		}
 		
 		[Test]
+		public function exploreForestWithPositiveDelta():void {
+			assertThat(cut.exploreForest(42), equalTo(42));
+		}
+		
+		[Test(expected="ArgumentError")]
+		public function exploreForestWithZeroDelta():void {
+			cut.exploreForest(0);
+		}
+		
+		[Test(expected="ArgumentError")]
+		public function exploreForestWithNegativeDelta():void {
+			cut.exploreForest( -1);
+		}
+		
+		[Test]
 		public function hasNotDiscoveredForest():void {
 			assertThat(cut.hasDiscoveredForest(), equalTo(false));
 		}

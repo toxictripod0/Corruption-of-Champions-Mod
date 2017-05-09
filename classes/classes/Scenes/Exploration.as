@@ -614,12 +614,22 @@ package classes.Scenes
 
 		/**
 		 * Explore the forest, increasing the exploration count.
+		 * @param delta amount to increase the counter, default 1, must be positive
 		 * @return number of times the forest was explored
 		 */
-		public function exploreForest():int {
-			flags[kFLAGS.TIMES_EXPLORED_FOREST]++;
+		public function exploreForest(delta:int = 1):int {
+			LOGGER.debug("Attempting to explore forest with delta {0}", delta);
+			checkDelta(delta);
+			
+			flags[kFLAGS.TIMES_EXPLORED_FOREST] += delta;
 			LOGGER.debug("Explored forest, current count is {0}", exploredForestCount());
 			return flags[kFLAGS.TIMES_EXPLORED_FOREST];
+		}
+		
+		private function checkDelta(delta:int):void {
+			if (delta < 1) {
+				throw new ArgumentError("Delta value must be 1 or greater");
+			}
 		}
 		
 		/**
