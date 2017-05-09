@@ -447,7 +447,7 @@ the text from being too boring.
 			 */
 			debug = false; //DEBUG, used all over the place
 			ver = "1.0.2_mod_1.4.4"; //Version NUMBER
-			version = ver + " (<b>1,000,000 Views!</b>)"; //Version TEXT
+			version = ver + " (<b>Bug Fixfest</b>)"; //Version TEXT
 
 			//Indicates if building for mobile?
 			mobile = false;
