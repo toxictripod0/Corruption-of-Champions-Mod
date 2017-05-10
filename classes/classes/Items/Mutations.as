@@ -3040,7 +3040,7 @@ public function wolfPepper(type: Number, player: Player): void {
 			//You lotta imp? Time to turn male!
 			//Unless you're one of the hyper happy assholes I guess
 			//For real tho doesn't seem like female imps exist? Guess they're goblins
-			if (player.impScore >= 4 && changes < changeLimit && !flags[kFLAGS.HYPER_HAPPY]) {
+			if (player.impScore() >= 4 && changes < changeLimit && !flags[kFLAGS.HYPER_HAPPY]) {
 				if (player.bRows() > 1) {
 					outputText("\n\nYou stumble back when your center of balance shifts, and though you adjust before you can fall over, you're left to watch in awe as your extra breasts shrink down, disappearing completely into your body. The nipples even fade away until they're gone completely. <b>You've lost your extra breasts due to being an imp!</b>", false);
 					player.breastRows.length = 1;
