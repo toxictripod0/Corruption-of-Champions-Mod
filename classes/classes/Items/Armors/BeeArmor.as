@@ -14,7 +14,7 @@ package classes.Items.Armors
 		
 		override public function useText():void
 		{
-			outputText("\n\nYou" + game.player.clothedOrNaked(" first strip yourself naked and ") + " equip your armor, one piece at a time. \n\nFirst, you clamber into the breastplate. ");
+			outputText("You" + game.player.clothedOrNaked(" first strip yourself naked and ") + " equip your armor, one piece at a time. \n\nFirst, you clamber into the breastplate. ");
 			if (getGame().player.isBiped()) //Some variants.
 			{
 				if (getGame().player.lowerBody == 0) outputText("Then you put your feet into your boots. With the boots fully equipped, you move on to the next piece. ");

@@ -2211,7 +2211,7 @@ private function buildCampWallPrompt():void {
 	}
 	else {
 		outputText("You can continue work on building the wall that surrounds your camp.\n\n");
-		outputText("Segments complete: " + Math.floor(flags[kFLAGS.CAMP_WALL_PROGRESS] / 20) + "/5\n");
+		outputText("Segments complete: " + Math.floor(flags[kFLAGS.CAMP_WALL_PROGRESS] / 20) + "/5\n\n");
 	}
 	kGAMECLASS.camp.cabinProgress.checkMaterials();
 	outputText("\n\nIt will cost 100 nails and 100 wood to work on a segment of the wall.\n\n");
