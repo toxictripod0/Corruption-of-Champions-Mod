@@ -2056,7 +2056,7 @@ public function wolfPepper(type: Number, player: Player): void {
             changes++;
         }
         //no hair
-        if (player.hairType == HAIR_NORMAL && flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] == 1 player.hairLength > 0 && rand(5) == 0 && changes < changeLimit) {
+        if (player.hairType == HAIR_NORMAL && flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] > 0 && player.hairLength > 0 && rand(5) == 0 && changes < changeLimit) {
             outputText("\n\nYou grip your head as your scalp burns in pain. Your hands seem to fall away, though, and bring clumps of hair with. Before you know it, your hair is falling right off your head without you touching it. It's only a matter of seconds before it's all gone.", false);
             player.hairLength = 0;
             changes++;
