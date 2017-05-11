@@ -2864,7 +2864,7 @@ public function wolfPepper(type: Number, player: Player): void {
 			}
 			
 			//Imp wings - I just kinda robbed this from demon changes ~Foxwells
-			if (rand(3) == 0 && changes < changeLimit && player.wingType != (WING_TYPE_IMP || WING_TYPE_IMP_LARGE) && player.cor >= (25 - player.corruptionTolerance())) {
+			if (rand(3) == 0 && changes < changeLimit && [WING_TYPE_IMP_LARGE, WING_TYPE_IMP].indexOf(player.wingType) == -1 && player.cor >= (25 - player.corruptionTolerance())) {
 				//grow smalls to large
 				if (player.wingType == WING_TYPE_IMP && player.cor >= (50 - player.corruptionTolerance())) {
 					outputText("\n\n", false);
@@ -2886,7 +2886,7 @@ public function wolfPepper(type: Number, player: Player): void {
 				else {
 					outputText("\n\n", false);
 					outputText("The muscles around your shoulders bunch up uncomfortably, changing to support your wings as you feel their weight increasing.  You twist your head as far as you can for a look and realize they've changed into ", false);
-					if (player.wingType == (WING_TYPE_BEE_LIKE_SMALL || WING_TYPE_HARPY || WING_TYPE_DRACONIC_SMALL || WING_TYPE_IMP)) {
+					if ([WING_TYPE_BEE_LIKE_SMALL, WING_TYPE_HARPY, WING_TYPE_DRACONIC_SMALL, WING_TYPE_IMP].indexOf(player.wingType) != -1) {
 						outputText("small ", false);
 						player.wingType = WING_TYPE_IMP;
 					}
@@ -2917,7 +2917,7 @@ public function wolfPepper(type: Number, player: Player): void {
 			}
 			
 			//Feets, needs red/orange skin and tail
-			if (player.skinTone == ("red" || "orange") && player.tailType == TAIL_TYPE_IMP && player.lowerBody != LOWER_BODY_TYPE_IMP && rand(3) == 0 && changes < changeLimit) {
+			if (["red", "orange"].indexOf(player.skinTone) != -1 && player.tailType == TAIL_TYPE_IMP && player.lowerBody != LOWER_BODY_TYPE_IMP && rand(3) == 0 && changes < changeLimit) {
 				outputText("\n\nEvery muscle and sinew below your hip tingles and you begin to stagger. Seconds after you sit down, pain explodes in your " + player.feet() + ". Something hard breaks through your sole from the inside out as your " + player.feet() + " splinter and curve cruelly. The pain slowly diminishes and your eyes look along a skinny, human leg that splinters at the foot into three long claw with a smaller back one for balance. When you relax, your feet grip the ground easily. <b>Your lower body is now that of an imp.</b>", false);
 				player.lowerBody = LOWER_BODY_TYPE_IMP;
 				player.legCount = 2;
@@ -2926,7 +2926,7 @@ public function wolfPepper(type: Number, player: Player): void {
 		}
 			
 			//Imp ears, needs red/orange skin and horns
-			if (player.hornType == HORNS_IMP && player.skinTone == ("red" || "orange") && player.earType != EARS_IMP && rand(3) == 0 && changes < changeLimit) {
+			if (player.hornType == HORNS_IMP && ["red", "orange"].indexOf(player.skinTone) != -1 && player.earType != EARS_IMP && rand(3) == 0 && changes < changeLimit) {
 				outputText("\n\nYour head suddenly pulses in pain, causing you to double over and grip at it. You feel your ears elongate and curl in slightly, ending at points not much unlike elves. These, however, jut out of the side of your head and are coned, focusing on every sound around you. A realization strikes you. <b>Your ears are now that of an imp!</b>", false);
 				player.earType = EARS_IMP;
 				dynStats("cor", 2);
@@ -2949,9 +2949,9 @@ public function wolfPepper(type: Number, player: Player): void {
 			}
 			
 			//Imp claws, needs orange/red skin. Also your hands turn human.
-			if (player.skinTone == ("red" || "orange") && player.clawType != CLAW_TYPE_IMP && rand(3) == 0 && changes < changeLimit) {
-				if (player.armType == ARM_TYPE_HUMAN) {
-					outputText("\n\nYour arms twist and mangle, warping back into human arms. But that, you realize, is just the beginning.", false);
+			if (["red", "orange"].indexOf(player.skinTone) != -1 && player.clawType != CLAW_TYPE_IMP && rand(3) == 0 && changes < changeLimit) {
+				if (player.armType != ARM_TYPE_HUMAN) {
+					outputText("\n\nYour arms twist and mangle, warping back into human-like arms. But that, you realize, is just the beginning.", false);
 				}
 				if (player.clawType == CLAW_TYPE_NORMAL) {
 					outputText("\n\nYour hands suddenly ache in pain, and all you can do is curl them up to you. Against your body, you feel them form into three long claws, with a smaller one replacing your thumb but just as versatile. <b>You have imp claws!</b>", false);
@@ -2966,7 +2966,7 @@ public function wolfPepper(type: Number, player: Player): void {
 			}
 			
 			//Changes hair to red/dark red, shortens it, sets it normal
-			if (player.hairColor != ("red" || "dark red") && rand(3) == 0 && changes < changeLimit) {
+			if (["red", "dark red"].indexOf(player.hairColor) == -1 && rand(3) == 0 && changes < changeLimit) {
 				outputText("\n\nYour hair suddenly begins to shed, rapidly falling down around you before it's all completely gone. Just when you think things are over, more hair sprouts from your head, slightly curled and color different.", false);
 				if (rand(2) != 0) {
 					player.hairColor = "red";
