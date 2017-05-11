@@ -1032,11 +1032,10 @@ use namespace kGAMECLASS;
 			if (wingType == WING_TYPE_IMP)
 				impCounter++;
 			if (wingType == WING_TYPE_IMP_LARGE)
-				impCounter++;
-				impCounter++;
+				impCounter += 2;
 			if (lowerBody == LOWER_BODY_TYPE_IMP)
 				impCounter++;
-			if (hasPlainSkin() && skinTone == ("red" || "orange"))
+			if (hasPlainSkin() && ["red", "orange"].indexOf(player.skinTone) != -1)
 				impCounter++;
 			if (hornType == HORNS_IMP)
 				impCounter++;
@@ -1051,12 +1050,9 @@ use namespace kGAMECLASS;
 			if (bRows() == 2) //Each extra row takes off a point
 				impCounter--;
 			if (bRows() == 3)
-				impCounter--;
-				impCounter--;
+				impCounter -= 2;
 			if (bRows() == 4) //If you have more than 4 why are trying to be an imp
-				impCounter--;
-				impCounter--;
-				impCounter--;
+				impCounter -= 3;
 			return impCounter;
 		}
 
