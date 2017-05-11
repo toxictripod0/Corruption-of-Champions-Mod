@@ -1709,7 +1709,7 @@ package classes.Items
 				if (player.breastRows[0].breastRating > 5) {
 					player.breastRows[0].breastRating = 5;
 				}
-				outputText("\n\nYour breasts feel constrained and painful against your top as they grow larger by the moment, finally stopping as they reach " + player.breastRows[0].breastRating + " size. You rub the tender orbs as you get used to your larger breast flesh.", false);
+				outputText("\n\nYour breasts feel constrained and painful against your top as they grow larger by the moment, finally stopping as they reach " + player.breastCup(0) + "-cup. You rub the tender orbs as you get used to your larger breast flesh.", false);
 				changes++;
 			}
 		}
