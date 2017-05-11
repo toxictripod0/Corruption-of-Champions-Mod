@@ -1221,17 +1221,6 @@ package classes.Items
 			}
 			//NON - GENDER SPECIFIC CHANGES
 			//Tail -> Ears -> Fur -> Face
-			//Centaur if hooved
-			if (changes < changeLimit && rand(6) == 0 && player.lowerBody == LOWER_BODY_TYPE_HOOFED && !player.isTaur()) {
-				changes++;
-				outputText("\n\nImmense pain overtakes you as you feel your backbone snap.  The agony doesn't stop, blacking you out as your spine lengthens, growing with new flesh from your backside as the bones of your legs flex and twist.  Muscle groups shift and rearrange themselves as the change completes, the pain dying away as your consciousness returns.  <b>You now have the lower body of a centaur</b>.", false);
-				if (player.gender > 0) {
-					outputText("  After taking a moment to get used to your new body, you notice that your genitals now reside between the back legs on your centaur body.", false);
-				}
-				dynStats("spe", 3);
-				player.legCount = 4;
-				kGAMECLASS.rathazul.addMixologyXP(20);
-			}
 			//Remove odd eyes
 			if (changes < changeLimit && rand(5) == 0 && player.eyeType > EYES_HUMAN) {
 				if (player.eyeType == EYES_BLACK_EYES_SAND_TRAP) {
