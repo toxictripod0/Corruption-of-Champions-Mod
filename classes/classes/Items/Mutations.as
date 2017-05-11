@@ -9464,7 +9464,7 @@ public function wolfPepper(type: Number, player: Player): void {
 				else {
 					outputText("\n\n", false);
 					outputText("The muscles around your shoulders bunch up uncomfortably, changing to support your wings as you feel their weight increasing.  You twist your head as far as you can for a look and realize they've changed into ", false);
-					if (player.wingType == (WING_TYPE_BEE_LIKE_SMALL || WING_TYPE_HARPY || WING_TYPE_DRACONIC_SMALL || WING_TYPE_IMP)) {
+					if ([WING_TYPE_BEE_LIKE_SMALL, WING_TYPE_HARPY, WING_TYPE_IMP, WING_TYPE_DRACONIC_SMALL].indexOf(player.wingType) != -1) {
 						outputText("small ", false);
 						player.wingType = WING_TYPE_BAT_LIKE_TINY;
 					}
