@@ -1035,7 +1035,7 @@ use namespace kGAMECLASS;
 				impCounter += 2;
 			if (lowerBody == LOWER_BODY_TYPE_IMP)
 				impCounter++;
-			if (hasPlainSkin() && ["red", "orange"].indexOf(player.skinTone) != -1)
+			if (hasPlainSkin() && ["red", "orange"].indexOf(skinTone) != -1)
 				impCounter++;
 			if (hornType == HORNS_IMP)
 				impCounter++;
