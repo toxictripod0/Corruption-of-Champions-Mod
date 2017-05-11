@@ -137,13 +137,14 @@ package classes.Scenes
 			transformativeArray.push(consumables.BOARTRU);
 			transformativeArray.push(consumables.BULBYPP);
 			transformativeArray.push(consumables.CANINEP);
+			transformativeArray.push(consumables.CLOVERS);
 			transformativeArray.push(consumables.DBLPEPP);
 			transformativeArray.push(consumables.DRAKHRT);
 			transformativeArray.push(consumables.DRYTENT);
 			transformativeArray.push(consumables.ECTOPLS);
 			transformativeArray.push(consumables.EQUINUM);
-			transformativeArray.push(consumables.FOXBERY);
 			//Page 2
+			transformativeArray.push(consumables.FOXBERY);
 			transformativeArray.push(consumables.FOXJEWL);
 			transformativeArray.push(consumables.FRRTFRT);
 			transformativeArray.push(consumables.GLDRIND);
@@ -155,8 +156,8 @@ package classes.Scenes
 			transformativeArray.push(consumables.KANGAFT);
 			transformativeArray.push(consumables.KNOTTYP);
 			transformativeArray.push(consumables.LABOVA_);
-			transformativeArray.push(consumables.LARGEPP);
 			//Page 3
+			transformativeArray.push(consumables.LARGEPP);
 			transformativeArray.push(consumables.MAGSEED);
 			transformativeArray.push(consumables.MGHTYVG);
 			transformativeArray.push(consumables.MOUSECO);
@@ -168,8 +169,8 @@ package classes.Scenes
 			transformativeArray.push(consumables.PROBOVA);
 			transformativeArray.push(consumables.P_DRAFT);
 			transformativeArray.push(consumables.P_S_MLK);
-			transformativeArray.push(consumables.PSDELIT);
 			//Page 4
+			transformativeArray.push(consumables.PSDELIT);
 			transformativeArray.push(consumables.PURHONY);
 			transformativeArray.push(consumables.SATYR_W);
 			transformativeArray.push(consumables.SDELITE);
@@ -181,8 +182,8 @@ package classes.Scenes
 			transformativeArray.push(consumables.S_GOSSR);
 			transformativeArray.push(consumables.SALAMFW);
 			transformativeArray.push(consumables.SHARK_T);
-			transformativeArray.push(consumables.SNAKOIL);
 			//Page 5
+			transformativeArray.push(consumables.SNAKOIL);
 			transformativeArray.push(consumables.SPHONEY);
 			transformativeArray.push(consumables.TAURICO);
 			transformativeArray.push(consumables.TRAPOIL);
@@ -191,6 +192,7 @@ package classes.Scenes
 			transformativeArray.push(consumables.VIXVIGR);
 			transformativeArray.push(consumables.W_FRUIT);
 			transformativeArray.push(consumables.WETCLTH);
+			transformativeArray.push(consumables.WOLF_PP);
 			
 			//------------
 			// Consumables

@@ -1719,7 +1719,6 @@ public function wolfPepper(type: Number, player: Player): void {
     var crit: Number = 1;
     changes = 0;
     changeLimit = 1;
-    if (type == 1) changeLimit += 2;
     if (rand(2) == 0) changeLimit++;
     if (rand(2) == 0) changeLimit++;
     if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
@@ -1762,7 +1761,7 @@ public function wolfPepper(type: Number, player: Player): void {
         changes++;
     }
     //remove horns
-    if (player.hornType != HORNS_NONE && player.horns > 0 && rand(3) == 0 && changes < changeLimit) {
+    if ((player.hornType != HORNS_NONE || player.horns > 0) && rand(3) == 0 && changes < changeLimit) {
         outputText("\n\nYou feel your horns crumble, falling apart in large chunks until they flake away into nothing.", false);
         player.horns = 0;
         player.hornType = HORNS_NONE;
@@ -1800,7 +1799,7 @@ public function wolfPepper(type: Number, player: Player): void {
     //remove feather hair
     if (rand(4) == 0) removeFeatheryHair();
     //remove basilisk hair
-    if (rand(4) == 0) removeBassyHair()
+    if (rand(4) == 0) removeBassyHair();
     //MUTATIONZ AT ANY TIME: wolf dick, add/decrease breasts, decrease breast size if above D
     //get a wolf dick
     //if ya genderless we give ya a dick cuz we nice like that
@@ -1816,7 +1815,7 @@ public function wolfPepper(type: Number, player: Player): void {
     }
     //if ya got a dick that's ok too we'll change it to wolf
     if (player.hasCock()) { //shamelessly copy/pasted from dog cock
-        if (player.wolfCocks() < player.cocks.length && ((changes < changeLimit && rand(1.6)) || type == 1) == 0) {
+        if (player.wolfCocks() < player.cocks.length && changes < changeLimit && rand(2) == 0) {
             //Select first non-wolf cock
             temp = player.cocks.length;
             temp2 = 0;
@@ -1848,7 +1847,7 @@ public function wolfPepper(type: Number, player: Player): void {
         //titties for those who got titties
         //wolfs have 8 nips so, 4 rows max. fen has no power here I'm making a wolf not a dog.
         //tbh also shamelessly copy/pasted from dog and adjusted according
-        if (player.breastRows.length > 0 && player.breastRows.length < 3) {
+        if (player.breastRows.length > 0 && player.breastRows.length <= 4) {
             if (player.breastRows[0].breastRating > 0) {
                 if (player.breastRows.length < 4 && rand(2) == 0 && changes < changeLimit) {
                     player.createBreastRow();
@@ -1941,12 +1940,13 @@ public function wolfPepper(type: Number, player: Player): void {
             player.removeBreastRow(player.breastRows.length - 1, 1);
         }
         //Grow breasts if has vagina and has no breasts/nips
-        else if (player.hasVagina() && rand(2) == 0 && changes < changeLimit) {
+        else if (player.hasVagina() && player.bRows() == 0 && player.breastRows[0].breastRating == 0 && player.nippleLength == 0 && rand(2) == 0 && changes < changeLimit) {
             outputText("\n\nYour chest tingles uncomfortably as your center of balance shifts. <b>You now have a pair of D-cup breasts.</b>", false);
             outputText(" A sensitive nub grows on the summit of each tit, becoming a new nipple.", false);
             player.createBreastRow();
             player.breastRows[0].breastRating = 4;
             player.breastRows[0].breasts = 2;
+	    player.nippleLength = 0.25;
             dynStats("sen", 4, "lus", 6);
             changes++;
         }
@@ -2043,22 +2043,22 @@ public function wolfPepper(type: Number, player: Player): void {
                 flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] = 1;
                 changes++;
             } else if (player.hairType == HAIR_NORMAL && flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] == 0 && changes < changeLimit && rand(5) == 0) {
-                outputText("You reach up and feel the top of your head as it begins to tingle.You put a hand on the top of your head.Nothing feels like it 's changed, but somehow, you get the feeling that your hair won't be growing anymore.", false);
+                outputText("You reach up and feel the top of your head as it begins to tingle. You put a hand on your head to investigate. Nothing feels like it's changed, but somehow, you get the feeling that your hair won't be growing anymore.", false);
                     flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] = 1;
                     changes++;
                 }
             }
         //MUTATIONZ LEVEL 2: fur->arms fur+tail+ears->face stophair->nohair fur+tail->legs
         //gain wolf face
-        if (player.faceType != FACE_WOLF && player.earType == EARS_WOLF && player.tailType == TAIL_TYPE_WOLF && player.skinType == SKIN_TYPE_FUR && rand(5) == 0 && changes < changeLimit) {
+        if (player.faceType != FACE_WOLF && player.earType == EARS_WOLF && player.tailType == TAIL_TYPE_WOLF && player.hasFur() && rand(5) == 0 && changes < changeLimit) {
             outputText("\n\nYou screech in pain as the bones of your face begin to rearrange themselves. Your [skinFurScales] practically melts off you, dropping onto the ground with heavy streams of blood. You put your hands to your face, writhing, blackness covering your vision as pain overwhelms you. But as quickly as it came, it stops, and you pull your shaking hands from your face. You scramble to the nearest reflective surface. <b>You have a wolf's face!</b>", false);
-            player.faceType == FACE_WOLF;
+            player.faceType = FACE_WOLF;
             changes++;
         }
         //no hair
-        if (player.hairLength > 0 && rand(5) == 0 && changes < changeLimit) {
+        if (player.hairType == HAIR_NORMAL && flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] > 0 && player.hairLength > 0 && rand(5) == 0 && changes < changeLimit) {
             outputText("\n\nYou grip your head as your scalp burns in pain. Your hands seem to fall away, though, and bring clumps of hair with. Before you know it, your hair is falling right off your head without you touching it. It's only a matter of seconds before it's all gone.", false);
-            player.hairLength == 0;
+            player.hairLength = 0;
             changes++;
         }
         //wolf arms
@@ -2082,7 +2082,7 @@ public function wolfPepper(type: Number, player: Player): void {
         if (player.eyeType != EYES_WOLF && player.faceType == FACE_WOLF && rand(4) == 0 && changes < changeLimit) {
             outputText("\n\nYou feel a sudden surge of pain in your face as your eyes begin to change. You close them and feel something wet slide under your eyelids. You jump in surprise. The feeling's gone, but now the distance is a blurred view, and greens seem to be mixed with yellows.", false);
             outputText("\n\nYou turn to a nearby reflective surface to investigate. Your eyes have massive amber irises and are dipped into your face, hiding any sign of your sclera. Blackness surrounds them and emphasise the wolfish shape of your face. You blink a few times as you stare at your reflection. <b>You now have wolf eyes!</b> Your peripherals and night vision has probably improved, too.", false);
-            player.eyeType == EYES_WOLF;
+            player.eyeType = EYES_WOLF;
             changes++;
         }
         //MISC CRAP
