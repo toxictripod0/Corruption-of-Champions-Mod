@@ -84,7 +84,7 @@ package classes.Scenes.Monsters
 					menu();
 					addButton(0, "Fight", function():*{
 						player.createStatusEffect(StatusEffects.KnockedBack, 0, 0, 0, 0);
-						new Mimic(mimicAppearance)
+						startCombat(new Mimic(mimicAppearance));
 					});
 					addButton(14, "Leave", camp.returnToCampUseOneHour);
 					return;
