@@ -51,19 +51,19 @@ package classes.Scenes
 			hideMenus();
 			menu();
 			addButton(0, "Explore", tryDiscover, null, null, null, "Explore to find new regions and visit any discovered regions.");
-			if (flags[kFLAGS.TIMES_EXPLORED_FOREST] > 0) addButton(1, "Forest", kGAMECLASS.forest.exploreForest, null, null, null, "Visit the lush forest. \n\nRecommended level: 1" + (player.level < 6 ? "\n\nBeware of Tentacle Beasts!" : "") + (debug ? "\n\nTimes explored: " + flags[kFLAGS.TIMES_EXPLORED_FOREST] : ""));
-			if (flags[kFLAGS.TIMES_EXPLORED_LAKE] > 0) addButton(2, "Lake", kGAMECLASS.lake.exploreLake, null, null, null, "Visit the lake and explore the beach. \n\nRecommended level: 1" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.TIMES_EXPLORED_LAKE] : ""));
-			if (flags[kFLAGS.TIMES_EXPLORED_DESERT] > 0) addButton(3, "Desert", kGAMECLASS.desert.exploreDesert, null, null, null, "Visit the dry desert. \n\nRecommended level: 2" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.TIMES_EXPLORED_DESERT] : ""));
+			if (flags[kFLAGS.TIMES_EXPLORED_FOREST] > 0) addButton(1, "Forest", kGAMECLASS.forest.explore, null, null, null, "Visit the lush forest. \n\nRecommended level: 1" + (player.level < 6 ? "\n\nBeware of Tentacle Beasts!" : "") + (debug ? "\n\nTimes explored: " + flags[kFLAGS.TIMES_EXPLORED_FOREST] : ""));
+			if (flags[kFLAGS.TIMES_EXPLORED_LAKE] > 0) addButton(2, "Lake", kGAMECLASS.lake.explore, null, null, null, "Visit the lake and explore the beach. \n\nRecommended level: 1" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.TIMES_EXPLORED_LAKE] : ""));
+			if (flags[kFLAGS.TIMES_EXPLORED_DESERT] > 0) addButton(3, "Desert", kGAMECLASS.desert.explore, null, null, null, "Visit the dry desert. \n\nRecommended level: 2" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.TIMES_EXPLORED_DESERT] : ""));
 
-			if (flags[kFLAGS.TIMES_EXPLORED_MOUNTAIN] > 0) addButton(5, "Mountain", kGAMECLASS.mountain.exploreMountain, null, null, null, "Visit the mountain. \n\nRecommended level: 5" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.TIMES_EXPLORED_MOUNTAIN] : ""));
-			if (flags[kFLAGS.TIMES_EXPLORED_SWAMP] > 0) addButton(6, "Swamp", kGAMECLASS.swamp.exploreSwamp, null, null, null, "Visit the wet swamplands. \n\nRecommended level: 12" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.TIMES_EXPLORED_SWAMP] : ""));
-			if (flags[kFLAGS.TIMES_EXPLORED_PLAINS] > 0) addButton(7, "Plains", kGAMECLASS.plains.explorePlains, null, null, null, "Visit the plains. \n\nRecommended level: 10" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.TIMES_EXPLORED_PLAINS] : ""));
+			if (flags[kFLAGS.TIMES_EXPLORED_MOUNTAIN] > 0) addButton(5, "Mountain", kGAMECLASS.mountain.explore, null, null, null, "Visit the mountain. \n\nRecommended level: 5" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.TIMES_EXPLORED_MOUNTAIN] : ""));
+			if (flags[kFLAGS.TIMES_EXPLORED_SWAMP] > 0) addButton(6, "Swamp", kGAMECLASS.swamp.explore, null, null, null, "Visit the wet swamplands. \n\nRecommended level: 12" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.TIMES_EXPLORED_SWAMP] : ""));
+			if (flags[kFLAGS.TIMES_EXPLORED_PLAINS] > 0) addButton(7, "Plains", kGAMECLASS.plains.explore, null, null, null, "Visit the plains. \n\nRecommended level: 10" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.TIMES_EXPLORED_PLAINS] : ""));
 			if (player.hasStatusEffect(StatusEffects.ExploredDeepwoods)) addButton(8, "Deepwoods", kGAMECLASS.forest.exploreDeepwoods, null, null, null, "Visit the dark, bioluminescent deepwoods. \n\nRecommended level: 5" + (debug ? "\n\nTimes explored: " + player.statusEffectv1(StatusEffects.ExploredDeepwoods) : ""));
 
-			if (flags[kFLAGS.DISCOVERED_HIGH_MOUNTAIN] > 0) addButton(10, "High Mountain", kGAMECLASS.highMountains.exploreHighMountain, null, null, null, "Visit the high mountains where basilisks and harpies are found. \n\nRecommended level: 10" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.DISCOVERED_HIGH_MOUNTAIN] : ""));
-			if (flags[kFLAGS.BOG_EXPLORED] > 0) addButton(11, "Bog", kGAMECLASS.bog.exploreBog, null, null, null, "Visit the dark bog. \n\nRecommended level: 14" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.BOG_EXPLORED] : ""));
-			if (flags[kFLAGS.DISCOVERED_GLACIAL_RIFT] > 0) addButton(12, "Glacial Rift", kGAMECLASS.glacialRift.exploreGlacialRift, null, null, null, "Visit the chilly glacial rift. \n\nRecommended level: 16" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.DISCOVERED_GLACIAL_RIFT] : ""));
-			if (flags[kFLAGS.DISCOVERED_VOLCANO_CRAG] > 0) addButton(13, "Volcanic Crag", kGAMECLASS.volcanicCrag.exploreVolcanicCrag, null, null, null, "Visit the infernal volcanic crag. \n\nRecommended level: 20" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.DISCOVERED_VOLCANO_CRAG] : ""));
+			if (flags[kFLAGS.DISCOVERED_HIGH_MOUNTAIN] > 0) addButton(10, "High Mountain", kGAMECLASS.highMountains.explore, null, null, null, "Visit the high mountains where basilisks and harpies are found. \n\nRecommended level: 10" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.DISCOVERED_HIGH_MOUNTAIN] : ""));
+			if (flags[kFLAGS.BOG_EXPLORED] > 0) addButton(11, "Bog", kGAMECLASS.bog.explore, null, null, null, "Visit the dark bog. \n\nRecommended level: 14" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.BOG_EXPLORED] : ""));
+			if (flags[kFLAGS.DISCOVERED_GLACIAL_RIFT] > 0) addButton(12, "Glacial Rift", kGAMECLASS.glacialRift.explore, null, null, null, "Visit the chilly glacial rift. \n\nRecommended level: 16" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.DISCOVERED_GLACIAL_RIFT] : ""));
+			if (flags[kFLAGS.DISCOVERED_VOLCANO_CRAG] > 0) addButton(13, "Volcanic Crag", kGAMECLASS.volcanicCrag.explore, null, null, null, "Visit the infernal volcanic crag. \n\nRecommended level: 20" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.DISCOVERED_VOLCANO_CRAG] : ""));
 			if (debug) addButton(9, "Debug", exploreDebug.doExploreDebug);
 			//addButton(4, "Next", explorePageII);
 			addButton(14, "Back", playerMenu);
@@ -465,7 +465,7 @@ package classes.Scenes
 			outputText("\n\nTo the north is the path to the Deepwoods, separated by a wall of huge tree trunks though the knot-hole like opening had a " + (player.hasKeyItem("Gate Key - Deepwoods") >= 0 ? "gate installed but it's now open. " : "<b>locked gate installed to keep you from entering</b>."));
 			outputText("\n\nTo the west is the path to desert " + (player.hasKeyItem("Gate Key - Desert") >= 0 ? "which is now unlocked since you have the key. " : "though <b>there's a locked gate</b>.") + "");
 			outputText("\n\nTo the south is the path to the wasteland where Ingnam is located. To the east is the path to the lake.");
-			addButton(0, "Explore", kGAMECLASS.forest.exploreForest);
+			addButton(0, "Explore", kGAMECLASS.forest.explore);
 			return false;
 		}
 		
@@ -486,7 +486,7 @@ package classes.Scenes
 			outputText("\n\nTo the north is the path leading to the mountains.");
 			outputText("\n\nTo the south is the path leading to the swamp " + (player.hasKeyItem("Gate Key - Swamp") >= 0 ? "which is now unlocked since you have the key. " : "though <b>there's a locked gate in the way</b>.") + "");
 			outputText("\n\nTo the west is the path back to the forest.");
-			addButton(0, "Explore", kGAMECLASS.lake.exploreLake);
+			addButton(0, "Explore", kGAMECLASS.lake.explore);
 			if (player.hasStatusEffect(StatusEffects.BoatDiscovery)) addButton(1, "Boat", kGAMECLASS.boat.boatExplore);
 			return false;
 		}
@@ -494,7 +494,7 @@ package classes.Scenes
 		public function desertZoneFunc():Boolean {
 			clearOutput();
 			outputText("<b><u>Desert</u></b>\n");
-			addButton(0, "Explore", kGAMECLASS.desert.exploreDesert);
+			addButton(0, "Explore", kGAMECLASS.desert.explore);
 			if (player.hasStatusEffect(StatusEffects.TelAdre)) addButton(1, "Tel'Adre", visitTelAdre);
 			if (flags[kFLAGS.DISCOVERED_WITCH_DUNGEON] > 0) addButton(2, "Desert Cave", kGAMECLASS.dungeons.desertcave.enterDungeon);
 			return false;
@@ -503,7 +503,7 @@ package classes.Scenes
 		public function mountainZoneFunc():Boolean {
 			clearOutput();
 			outputText("<b><u>Mountain</u></b>\n");
-			addButton(0, "Explore", kGAMECLASS.mountain.exploreMountain);
+			addButton(0, "Explore", kGAMECLASS.mountain.explore);
 			if (flags[kFLAGS.FACTORY_FOUND] > 0) addButton(1, "Factory", getGame().dungeons.factory.enterDungeon);
 			return false;
 		}
@@ -511,42 +511,42 @@ package classes.Scenes
 		public function highmountainZoneFunc():Boolean {
 			clearOutput();
 			outputText("<b><u>High Mountain</u></b>\n");
-			addButton(0, "Explore", kGAMECLASS.highMountains.exploreHighMountain);
+			addButton(0, "Explore", kGAMECLASS.highMountains.explore);
 			return false;
 		}
 		
 		public function plainsZoneFunc():Boolean {
 			clearOutput();
 			outputText("<b><u>Plains</u></b>\n");
-			addButton(0, "Explore", kGAMECLASS.plains.explorePlains);
+			addButton(0, "Explore", kGAMECLASS.plains.explore);
 			return false;
 		}
 		
 		public function swampZoneFunc():Boolean {
 			clearOutput();
 			outputText("<b><u>Swamp</u></b>\n");
-			addButton(0, "Explore", kGAMECLASS.swamp.exploreSwamp);
+			addButton(0, "Explore", kGAMECLASS.swamp.explore);
 			return false;
 		}
 		
 		public function bogZoneFunc():Boolean {
 			clearOutput();
 			outputText("<b><u>Bog</u></b>\n");
-			addButton(0, "Explore", kGAMECLASS.bog.exploreBog);
+			addButton(0, "Explore", kGAMECLASS.bog.explore);
 			return false;
 		}
 		
 		public function glacialriftZoneFunc():Boolean {
 			clearOutput();
 			outputText("<b><u>Glacial Rift</u></b>\n");
-			addButton(0, "Explore", kGAMECLASS.glacialRift.exploreGlacialRift);
+			addButton(0, "Explore", kGAMECLASS.glacialRift.explore);
 			return false;
 		}
 		
 		public function volcaniccragZoneFunc():Boolean {
 			clearOutput();
 			outputText("<b><u>Volcanic Crag</u></b>\n");
-			addButton(0, "Explore", kGAMECLASS.volcanicCrag.exploreVolcanicCrag);
+			addButton(0, "Explore", kGAMECLASS.volcanicCrag.explore);
 			return false;
 		}
 		

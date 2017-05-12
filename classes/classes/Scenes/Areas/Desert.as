@@ -9,11 +9,12 @@ package classes.Scenes.Areas
 	import classes.Scenes.API.Encounter;
 	import classes.Scenes.API.Encounters;
 	import classes.Scenes.API.FnHelpers;
+	import classes.Scenes.API.IExplorable;
 	import classes.Scenes.Areas.Desert.*;
 
 	use namespace kGAMECLASS;
 
-	public class Desert extends BaseContent
+	public class Desert extends BaseContent implements IExplorable
 	{
 		public var antsScene:AntsScene = new AntsScene();
 		public var nagaScene:NagaScene = new NagaScene();
@@ -144,7 +145,7 @@ package classes.Scenes.Areas
 			return _desertEncounter;
 		}
 		//Explore desert
-		public function exploreDesert():void {
+		public function explore():void {
 			flags[kFLAGS.TIMES_EXPLORED_DESERT]++;
 			desertEncounter.execEncounter();
 		}
