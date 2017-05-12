@@ -9,11 +9,12 @@ package classes.Scenes.Areas
 import classes.Scenes.API.Encounter;
 import classes.Scenes.API.Encounters;
 import classes.Scenes.API.FnHelpers;
+	import classes.Scenes.API.IExplorable;
 	import classes.Scenes.Areas.Forest.*;
 	
 	use namespace kGAMECLASS;
 
-	public class Forest extends BaseContent
+	public class Forest extends BaseContent implements IExplorable
 	{
 		public var akbalScene:AkbalScene = new AkbalScene();
 		public var beeGirlScene:BeeGirlScene = new BeeGirlScene();
@@ -26,6 +27,7 @@ import classes.Scenes.API.FnHelpers;
 		public var erlkingScene:ErlKingScene = new ErlKingScene();
 		// public var dullahanScene:DullahanScene = new DullahanScene(); // [INTERMOD:8chan]
 
+		//TODO extract deepwoods to own class
 		public function Forest() { }
 
 		public function isDiscovered():Boolean {
@@ -260,7 +262,7 @@ import classes.Scenes.API.FnHelpers;
 			//end event
 			doNext(camp.returnToCampUseOneHour);
 		}
-		public function exploreForest():void
+		public function explore():void
 		{
 			clearOutput();
 			//Increment forest exploration counter.

@@ -51,7 +51,7 @@ package classes.Scenes
 			hideMenus();
 			menu();
 			addButton(0, "Explore", tryDiscover, null, null, null, "Explore to find new regions and visit any discovered regions.");
-			if (flags[kFLAGS.TIMES_EXPLORED_FOREST] > 0) addButton(1, "Forest", kGAMECLASS.forest.exploreForest, null, null, null, "Visit the lush forest. \n\nRecommended level: 1" + (player.level < 6 ? "\n\nBeware of Tentacle Beasts!" : "") + (debug ? "\n\nTimes explored: " + flags[kFLAGS.TIMES_EXPLORED_FOREST] : ""));
+			if (flags[kFLAGS.TIMES_EXPLORED_FOREST] > 0) addButton(1, "Forest", kGAMECLASS.forest.explore, null, null, null, "Visit the lush forest. \n\nRecommended level: 1" + (player.level < 6 ? "\n\nBeware of Tentacle Beasts!" : "") + (debug ? "\n\nTimes explored: " + flags[kFLAGS.TIMES_EXPLORED_FOREST] : ""));
 			if (flags[kFLAGS.TIMES_EXPLORED_LAKE] > 0) addButton(2, "Lake", kGAMECLASS.lake.explore, null, null, null, "Visit the lake and explore the beach. \n\nRecommended level: 1" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.TIMES_EXPLORED_LAKE] : ""));
 			if (flags[kFLAGS.TIMES_EXPLORED_DESERT] > 0) addButton(3, "Desert", kGAMECLASS.desert.explore, null, null, null, "Visit the dry desert. \n\nRecommended level: 2" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.TIMES_EXPLORED_DESERT] : ""));
 
@@ -465,7 +465,7 @@ package classes.Scenes
 			outputText("\n\nTo the north is the path to the Deepwoods, separated by a wall of huge tree trunks though the knot-hole like opening had a " + (player.hasKeyItem("Gate Key - Deepwoods") >= 0 ? "gate installed but it's now open. " : "<b>locked gate installed to keep you from entering</b>."));
 			outputText("\n\nTo the west is the path to desert " + (player.hasKeyItem("Gate Key - Desert") >= 0 ? "which is now unlocked since you have the key. " : "though <b>there's a locked gate</b>.") + "");
 			outputText("\n\nTo the south is the path to the wasteland where Ingnam is located. To the east is the path to the lake.");
-			addButton(0, "Explore", kGAMECLASS.forest.exploreForest);
+			addButton(0, "Explore", kGAMECLASS.forest.explore);
 			return false;
 		}
 		
