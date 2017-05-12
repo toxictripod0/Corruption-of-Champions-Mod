@@ -52,7 +52,7 @@ package classes.Scenes
 			menu();
 			addButton(0, "Explore", tryDiscover, null, null, null, "Explore to find new regions and visit any discovered regions.");
 			if (flags[kFLAGS.TIMES_EXPLORED_FOREST] > 0) addButton(1, "Forest", kGAMECLASS.forest.exploreForest, null, null, null, "Visit the lush forest. \n\nRecommended level: 1" + (player.level < 6 ? "\n\nBeware of Tentacle Beasts!" : "") + (debug ? "\n\nTimes explored: " + flags[kFLAGS.TIMES_EXPLORED_FOREST] : ""));
-			if (flags[kFLAGS.TIMES_EXPLORED_LAKE] > 0) addButton(2, "Lake", kGAMECLASS.lake.exploreLake, null, null, null, "Visit the lake and explore the beach. \n\nRecommended level: 1" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.TIMES_EXPLORED_LAKE] : ""));
+			if (flags[kFLAGS.TIMES_EXPLORED_LAKE] > 0) addButton(2, "Lake", kGAMECLASS.lake.explore, null, null, null, "Visit the lake and explore the beach. \n\nRecommended level: 1" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.TIMES_EXPLORED_LAKE] : ""));
 			if (flags[kFLAGS.TIMES_EXPLORED_DESERT] > 0) addButton(3, "Desert", kGAMECLASS.desert.exploreDesert, null, null, null, "Visit the dry desert. \n\nRecommended level: 2" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.TIMES_EXPLORED_DESERT] : ""));
 
 			if (flags[kFLAGS.TIMES_EXPLORED_MOUNTAIN] > 0) addButton(5, "Mountain", kGAMECLASS.mountain.exploreMountain, null, null, null, "Visit the mountain. \n\nRecommended level: 5" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.TIMES_EXPLORED_MOUNTAIN] : ""));
@@ -486,7 +486,7 @@ package classes.Scenes
 			outputText("\n\nTo the north is the path leading to the mountains.");
 			outputText("\n\nTo the south is the path leading to the swamp " + (player.hasKeyItem("Gate Key - Swamp") >= 0 ? "which is now unlocked since you have the key. " : "though <b>there's a locked gate in the way</b>.") + "");
 			outputText("\n\nTo the west is the path back to the forest.");
-			addButton(0, "Explore", kGAMECLASS.lake.exploreLake);
+			addButton(0, "Explore", kGAMECLASS.lake.explore);
 			if (player.hasStatusEffect(StatusEffects.BoatDiscovery)) addButton(1, "Boat", kGAMECLASS.boat.boatExplore);
 			return false;
 		}
