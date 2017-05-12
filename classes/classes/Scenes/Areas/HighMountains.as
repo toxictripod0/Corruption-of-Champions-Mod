@@ -9,11 +9,12 @@ package classes.Scenes.Areas
 	import classes.Scenes.API.Encounter;
 	import classes.Scenes.API.Encounters;
 	import classes.Scenes.API.FnHelpers;
+	import classes.Scenes.API.IExplorable;
 	import classes.Scenes.Areas.HighMountains.*;
 
 	use namespace kGAMECLASS;
 
-	public class HighMountains extends BaseContent
+	public class HighMountains extends BaseContent implements IExplorable
 	{
 		public var basiliskScene:BasiliskScene = new BasiliskScene();
 		public var harpyScene:HarpyScene = new HarpyScene();
@@ -115,7 +116,7 @@ package classes.Scenes.Areas
 			return _explorationEncounter;
 		}
 		//Explore High Mountain
-		public function exploreHighMountain():void
+		public function explore():void
 		{
 			flags[kFLAGS.DISCOVERED_HIGH_MOUNTAIN]++;
 			explorationEncounter.execEncounter();

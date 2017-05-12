@@ -9,11 +9,12 @@ package classes.Scenes.Areas
 import classes.Scenes.API.Encounter;
 import classes.Scenes.API.Encounters;
 import classes.Scenes.API.FnHelpers;
+	import classes.Scenes.API.IExplorable;
 	import classes.Scenes.Areas.Lake.*;
 
 	use namespace kGAMECLASS;
 
-	public class Lake extends BaseContent
+	public class Lake extends BaseContent implements IExplorable
 	{
 		
 		public var fetishCultistScene:FetishCultistScene = new FetishCultistScene();
@@ -94,7 +95,7 @@ import classes.Scenes.API.FnHelpers;
 		}
 
 		//Explore Lake
-		public function exploreLake():void {
+		public function explore():void {
 			//Increment exploration count
 			flags[kFLAGS.TIMES_EXPLORED_LAKE]++;
 			exploreEncounter.execEncounter();
