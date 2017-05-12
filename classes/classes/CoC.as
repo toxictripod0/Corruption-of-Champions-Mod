@@ -201,6 +201,7 @@ the text from being too boring.
 		public var bog:Bog = new Bog();
 		public var desert:Desert = new Desert();
 		public var forest:Forest = new Forest();
+		public var deepWoods:DeepWoods = new DeepWoods(forest);
 		public var glacialRift:GlacialRift = new GlacialRift();
 		public var highMountains:HighMountains = new HighMountains();
 		public var lake:Lake = new Lake();

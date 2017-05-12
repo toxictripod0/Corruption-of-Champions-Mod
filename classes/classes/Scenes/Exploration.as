@@ -9,6 +9,7 @@ package classes.Scenes
 	import classes.Scenes.API.Encounter;
 	import classes.Scenes.API.Encounters;
 	import classes.Scenes.API.FnHelpers;
+	import classes.Scenes.Areas.DeepWoods;
 	import classes.Scenes.Explore.ExploreDebug;
 	import classes.Scenes.Monsters.*;
 
@@ -58,7 +59,7 @@ package classes.Scenes
 			if (flags[kFLAGS.TIMES_EXPLORED_MOUNTAIN] > 0) addButton(5, "Mountain", kGAMECLASS.mountain.explore, null, null, null, "Visit the mountain. \n\nRecommended level: 5" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.TIMES_EXPLORED_MOUNTAIN] : ""));
 			if (flags[kFLAGS.TIMES_EXPLORED_SWAMP] > 0) addButton(6, "Swamp", kGAMECLASS.swamp.explore, null, null, null, "Visit the wet swamplands. \n\nRecommended level: 12" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.TIMES_EXPLORED_SWAMP] : ""));
 			if (flags[kFLAGS.TIMES_EXPLORED_PLAINS] > 0) addButton(7, "Plains", kGAMECLASS.plains.explore, null, null, null, "Visit the plains. \n\nRecommended level: 10" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.TIMES_EXPLORED_PLAINS] : ""));
-			if (player.hasStatusEffect(StatusEffects.ExploredDeepwoods)) addButton(8, "Deepwoods", kGAMECLASS.forest.exploreDeepwoods, null, null, null, "Visit the dark, bioluminescent deepwoods. \n\nRecommended level: 5" + (debug ? "\n\nTimes explored: " + player.statusEffectv1(StatusEffects.ExploredDeepwoods) : ""));
+			if (player.hasStatusEffect(StatusEffects.ExploredDeepwoods)) addButton(8, "Deepwoods", kGAMECLASS.deepWoods.explore, null, null, null, "Visit the dark, bioluminescent deepwoods. \n\nRecommended level: 5" + (debug ? "\n\nTimes explored: " + player.statusEffectv1(StatusEffects.ExploredDeepwoods) : ""));
 
 			if (flags[kFLAGS.DISCOVERED_HIGH_MOUNTAIN] > 0) addButton(10, "High Mountain", kGAMECLASS.highMountains.explore, null, null, null, "Visit the high mountains where basilisks and harpies are found. \n\nRecommended level: 10" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.DISCOVERED_HIGH_MOUNTAIN] : ""));
 			if (flags[kFLAGS.BOG_EXPLORED] > 0) addButton(11, "Bog", kGAMECLASS.bog.explore, null, null, null, "Visit the dark bog. \n\nRecommended level: 14" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.BOG_EXPLORED] : ""));
@@ -474,7 +475,7 @@ package classes.Scenes
 			outputText("<b><u>Deepwoods</u></b>\n");
 			outputText("This zone seems to be relatively untouched by the previous war. The Deepwoods is densely packed with trees, even more than the forest. Glowing moss and fungus dimly light the deepwoods, ensuring that you'll always be able to see even at night.");
 			outputText("\n\nTo the south is the way back to the forest.");
-			addButton(0, "Explore", kGAMECLASS.forest.exploreDeepwoods);
+			addButton(0, "Explore", kGAMECLASS.deepWoods.explore);
 			if (flags[kFLAGS.DISCOVERED_DUNGEON_2_ZETAZ] > 0) addButton(1, "Deep Cave", getGame().dungeons.deepcave.enterDungeon);
 			return false;
 		}
