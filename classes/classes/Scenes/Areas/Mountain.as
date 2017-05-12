@@ -9,12 +9,13 @@ package classes.Scenes.Areas
 	import classes.Scenes.API.Encounter;
 	import classes.Scenes.API.Encounters;
 	import classes.Scenes.API.FnHelpers;
+	import classes.Scenes.API.IExplorable;
 	import classes.Scenes.Areas.Mountain.*;
 	import classes.Scenes.Quests.UrtaQuest.MinotaurLord;
 
 	use namespace kGAMECLASS;
 
-	public class Mountain extends BaseContent
+	public class Mountain extends BaseContent implements IExplorable
 	{
 		public var hellHoundScene:HellHoundScene = new HellHoundScene();
 		public var infestedHellhoundScene:InfestedHellhoundScene = new InfestedHellhoundScene();
@@ -151,7 +152,7 @@ package classes.Scenes.Areas
 			;
 			return _explorationEncounter
 		}
-		public function exploreMountain():void
+		public function explore():void
 		{
 			flags[kFLAGS.TIMES_EXPLORED_MOUNTAIN]++;
 			var chooser:Number;
