@@ -13,11 +13,12 @@ package classes.Scenes.Areas
 	import classes.Scenes.API.Encounter;
 	import classes.Scenes.API.Encounters;
 	import classes.Scenes.API.FnHelpers;
+	import classes.Scenes.API.IExplorable;
 	import classes.Scenes.Areas.VolcanicCrag.*;
 	
 	use namespace kGAMECLASS;
 	
-	public class VolcanicCrag extends BaseContent
+	public class VolcanicCrag extends BaseContent implements IExplorable
 	{
 		public var behemothScene:BehemothScene = new BehemothScene();
 		/* [INTERMOD:8chan]
@@ -73,7 +74,7 @@ package classes.Scenes.Areas
 		});
 	}
 
-		public function exploreVolcanicCrag():void {
+		public function explore():void {
 			flags[kFLAGS.DISCOVERED_VOLCANO_CRAG]++;
 			doNext(playerMenu);
 			explorationEncounter.execEncounter();
