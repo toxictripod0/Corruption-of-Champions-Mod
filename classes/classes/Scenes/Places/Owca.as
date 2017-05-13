@@ -858,7 +858,7 @@ public function beatUpOwca():void {
 	} else {
 		addDisabledButton(0, "Rape Rebecc");
 	}
-	if (player.hasStatusEffect(StatusEffects.KnowsWhitefire) || player.findPerk(PerkLib.FireLord) >= 0 || player.findPerk(PerkLib.Hellfire) >= 0 || player.findPerk(PerkLib.EnlightenedNinetails) >= 0 || player.findPerk(PerkLib.CorruptedNinetails) >= 0) {
+	if (player.hasStatusEffect(StatusEffects.KnowsWhitefire) || player.hasStatusEffect(StatusEffects.KnowsBlackfire) || player.findPerk(PerkLib.FireLord) >= 0 || player.findPerk(PerkLib.Hellfire) >= 0 || player.findPerk(PerkLib.EnlightenedNinetails) >= 0 || player.findPerk(PerkLib.CorruptedNinetails) >= 0) {
 		addButton(1, "Torch Village", torchOwcaMotherFuckers);
 	} else {
 		addDisabledButton(1, "Torch Village");
