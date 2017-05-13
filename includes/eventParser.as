@@ -4,6 +4,8 @@ import classes.Player;
 import classes.Items.Consumable;
 import classes.Scenes.Areas.Lake;
 import classes.Scenes.Camp.ScarredBlade;
+import classes.internals.Profiling;
+
 import coc.view.MainView;
 
 //Used to jump the fuck out of pregnancy scenarios for menus.
@@ -116,6 +118,12 @@ public function errorPrint(details:* = null):void
 //Argument is time passed.  Pass to event parser if nothing happens.
 // The time argument is never actually used atm, everything is done with timeQ instead...
 public function goNext(time:Number, needNext:Boolean):Boolean  {
+	Profiling.Begin("eventParser","goNext",time);
+	var rslt:Boolean = goNextWrapped(time,needNext);
+	Profiling.End("eventParser","goNext");
+	return rslt;
+}
+private function goNextWrapped(time:Number, needNext:Boolean):Boolean  {
 	//Update system time
 	//date = new Date();
 	//trace ("MONTH: " + date.month + " DATE: " + date.date + " MINUTES: " + date.minutes);

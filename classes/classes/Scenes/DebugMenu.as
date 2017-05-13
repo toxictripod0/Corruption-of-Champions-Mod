@@ -5,6 +5,8 @@ package classes.Scenes
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.MainViewManager;
+	import classes.internals.Profiling;
+
 	import flash.utils.describeType;
 	import flash.utils.*
 	
@@ -36,6 +38,7 @@ package classes.Scenes
 		
 		public function accessDebugMenu():void {
 			//buildArray();
+			Profiling.LogProfilingReport();
 			if (!getGame().inCombat) {
 				hideMenus();
 				mainView.nameBox.visible = false;

@@ -1,5 +1,6 @@
 import classes.*;
 import flash.text.TextFormat;
+import classes.internals.Profiling;
 
 public static const MAX_BUTTON_INDEX:int = 14;
 
@@ -685,10 +686,12 @@ public function testDynStatsEvent():void {
  */
 public function dynStats(... args):void
 {
+	Profiling.Begin("engineCore","dynStats");
 	// Check num of args, we should have a multiple of 2
 	if ((args.length % 2) != 0)
 	{
 		trace("dynStats aborted. Keys->Arguments could not be matched");
+		Profiling.End("engineCore","dynStats");
 		return;
 	}
 	
@@ -743,6 +746,7 @@ public function dynStats(... args):void
 		else
 		{
 			trace("dynStats aborted. Expected a key and got SHIT");
+			Profiling.End("engineCore","dynStats");
 			return;
 		}
 	}
@@ -766,7 +770,7 @@ public function dynStats(... args):void
 		  newLust - player.lust,
 		  newCor - player.cor,
 		  argVals[8],argVals[9]);
-	
+	Profiling.End("engineCore","dynStats");
 }
 
 public function stats(stre:Number, toug:Number, spee:Number, intel:Number, libi:Number, sens:Number, lust2:Number, corr:Number, resisted:Boolean = true, noBimbo:Boolean = false):void
