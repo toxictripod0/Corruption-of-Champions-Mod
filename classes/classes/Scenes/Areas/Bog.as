@@ -13,11 +13,12 @@ package classes.Scenes.Areas
 	import classes.Scenes.API.Encounter;
 	import classes.Scenes.API.Encounters;
 	import classes.Scenes.API.FnHelpers;
+	import classes.Scenes.API.IExplorable;
 	import classes.Scenes.Areas.Bog.*;
 
 	use namespace kGAMECLASS;
 
-	public class Bog extends BaseContent
+	public class Bog extends BaseContent implements IExplorable
 	{
 		public var frogGirlScene:FrogGirlScene = new FrogGirlScene();
 		public var chameleonGirlScene:ChameleonGirlScene = new ChameleonGirlScene();
@@ -104,7 +105,7 @@ package classes.Scenes.Areas
 					});
 			return _explorationEncounter;
 		}
-		public function exploreBog():void
+		public function explore():void
 		{
 			explorationEncounter.execEncounter();
 			flags[kFLAGS.BOG_EXPLORED]++;

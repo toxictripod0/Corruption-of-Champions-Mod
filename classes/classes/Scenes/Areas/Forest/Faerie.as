@@ -162,7 +162,7 @@ private function faerieShooAway():void {
 	doNext(camp.returnToCampUseOneHour);
 }
 
-private function faerieDoNothing():void {
+protected function faerieDoNothing():void {
 	spriteSelect(17);
 	clearOutput();
 	if (player.nippleLength >= 1) {
@@ -181,7 +181,7 @@ private function faerieDoNothing():void {
 		doNext(camp.returnToCampUseOneHour);
 		return;
 	}
-	if (player.getClitLength() >= 1.0 && player.getClitLength() <= 4.5 && player.hasVagina() && rand(2) == 0) {
+	if (player.hasVagina() && player.getClitLength() >= 1.0 && player.getClitLength() <= 4.5 && rand(2) == 0) {
 		outputText("A smile crosses her face and she flutters down to your crotch. She starts by scissoring you despite the size difference, driving your clit into her despite its erect state. Compared to her, it looks massive. She swings one leg over it and starts impaling herself on it. Your taut clitoris barely fits inside her, and the tight confines on your sensitive nub are enough to make you weak in the knees. Staggering to the ground, you grab hold of her frail body in your fist and thrust her roughly on your engorged button. She wails in both pain and pleasure, being crushed and stretched open at once. Her cries of pain combined with the intense stimulation on your most sensitive part bring you to a quick orgasm.\n\n", false);
 		if (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_DROOLING) outputText("You drench the poor faerie completely in your female juices, soaking her hair and body. Overwhelmed and spent, you drop her to the ground and catch your breath. She licks up what's around her face, but is too weak to do anything else but lie in the dirt.\n\n", false);
 		else outputText("Shuddering, you maintain your composure and keep going, trying to ride the high for another. Eventually you look down and you can see the faerie's eyes have glazed over and rolled to the back of her head. Her cunt has started clamping down on you a lot harder, evidence of her state of near-constant orgasm. The random clenching brings you off again very quickly and you have an intense orgasm, joining your fae cohort.\n\n", false);

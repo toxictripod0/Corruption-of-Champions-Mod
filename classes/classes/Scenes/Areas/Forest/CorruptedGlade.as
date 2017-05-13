@@ -313,8 +313,8 @@ public class CorruptedGlade extends BaseContent implements TimeAwareInterface,En
 			if (player.findPerk(PerkLib.EnlightenedNinetails) >= 0 || player.findPerk(PerkLib.CorruptedNinetails) >= 0) {
 				addButton(button++, "Fox Fire", destroyTheCorruptedGlades, 1);
 			}
-			if (player.hasStatusEffect(StatusEffects.KnowsWhitefire)) {
-				addButton(button++, "Whitefire", destroyTheCorruptedGlades, 2);
+			if (player.hasStatusEffect(StatusEffects.KnowsWhitefire) || player.hasStatusEffect(StatusEffects.KnowsBlackfire)) {
+				addButton(button++, "Fire", destroyTheCorruptedGlades, 2);
 			}
 			if (player.hasKeyItem("Carpenter's Toolbox") >= 0 || player.weapon == weapons.L__AXE) {
 				addButton(button++, "Axe", destroyTheCorruptedGlades, 3);
@@ -342,10 +342,10 @@ public class CorruptedGlade extends BaseContent implements TimeAwareInterface,En
 					destroyAmount++;
 					player.changeFatigue(20, 1);
 					break;
-				case 2: //Whitefire
-					outputText("You narrow your eyes, focusing your mind with deadly intent. You snap your fingers and the glade is enveloped in a flash of white flames! By the time the fire dies out, charred plants are all that remain of the glade.\n\n");
+				case 2: //Whitefire/Blackfire
+					outputText("You narrow your eyes, focusing your mind with deadly intent. You snap your fingers and the glade is enveloped in a flash of flames! By the time the fire dies out, charred plants are all that remain of the glade.\n\n");
 					destroyAmount++;
-					player.changeFatigue(20, 1);
+					player.changeFatigue(25, 1);
 					break;
 				case 3: //Axe
 					outputText("You grab an axe from your toolbox and hack away at the plants without mercy. Eventually, you manage to chop down every perverted plant in the glade save for some of the trees. They gradually wither away. ");

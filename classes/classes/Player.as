@@ -2067,7 +2067,7 @@ use namespace kGAMECLASS;
 		}
 		
 		public function corruptionTolerance():int {
-			var temp:int = perkv1(PerkLib.AscensionTolerance) * 5;
+			var temp:int = perkv1(PerkLib.AscensionTolerance) * 5 * (1 - perkv2(PerkLib.AscensionTolerance));
 			if (flags[kFLAGS.MEANINGLESS_CORRUPTION] > 0) temp += 100;
 			return temp;
 		}
@@ -2152,7 +2152,7 @@ use namespace kGAMECLASS;
 
 		public function spellCount():Number
 		{
-			return [StatusEffects.KnowsArouse, StatusEffects.KnowsHeal, StatusEffects.KnowsMight, StatusEffects.KnowsCharge, StatusEffects.KnowsBlind, StatusEffects.KnowsWhitefire].filter(function(item:StatusEffectType, index:int, array:Array):Boolean {
+			return [StatusEffects.KnowsArouse, StatusEffects.KnowsHeal, StatusEffects.KnowsMight, StatusEffects.KnowsCharge, StatusEffects.KnowsBlind, StatusEffects.KnowsWhitefire, StatusEffects.KnowsBlackfire].filter(function(item:StatusEffectType, index:int, array:Array):Boolean {
 						return this.hasStatusEffect(item); }, this).length;
 		}
 
