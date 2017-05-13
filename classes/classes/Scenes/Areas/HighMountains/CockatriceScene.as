@@ -4,6 +4,7 @@
 package classes.Scenes.Areas.HighMountains
 {
 	import classes.*;
+	import classes.Items.ArmorLib;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 
@@ -84,167 +85,646 @@ package classes.Scenes.Areas.HighMountains
 		
 		//wins
 		public function defeatCockatrice():void {
-			spriteSelect(75);
+			//spriteSelect(75);
 			clearOutput();
 	
 			if (flags[kFLAGS.SFW_MODE] > 0) {
-				outputText("You smile in satisfaction as the " + monster.short + " collapses, unable to continue fighting.", true);
+				clearOutput();
+				outputText("You smile in satisfaction as the " + monster.short + " collapses, unable to continue fighting.");
 				combat.cleanupAfterCombat();
 				return;
 			}
+			outputText("The Cockatrice falls to his knees panting as he looks over at you.  ");
 			//Player HP victory: 
-			if (monster.HP < 1) outputText("Unable to stand anymore, the basilisk shakily sinks down on one knee, drops his head and looks at the ground, evidently demonstrating submission.", false);
+			if (monster.HP < 1)
+				outputText("He looks thoroughly beaten, feathers ruffled and face dirtied from debris that rose during the battle."
+				          +" The defiant look in his eyes is all that's left of his previous manic energy.  ");
 			//Player Lust victory: 
-			else outputText("No longer able to control his raging erection, the basilisk closes his eyes and sinks to one knee. He would probably be attempting to signal his submission to you if he weren't furiously masturbating his long, purple cock, which has emerged straining from the creature's genital slit.", false);
-			
+			else
+				outputText("He lazily strokes his purple length as he looks up at you with a come-hither gaze. His ruffled feathers,"
+				          +" dirtied scales and leisurely pumps manage to make him look quite dashing, even in defeat.  ");
 			menu();
-			addDisabledButton(0, "Tongue", "This scene requires you to have genitals and sufficient arousal");
-			addDisabledButton(1, "Ass (Gentle)", "This scene requires you to have fitting cock and sufficient arousal.");
-			addDisabledButton(2, "Ass (Cruel)", "This scene requires you to have fitting cock, high corruption and sufficient arousal.");
-			addDisabledButton(3, "Lay Eggs", "This scene requires you to have ovipositor and enough eggs. Bee oviposition requires genitals as well.");
+			addDisabledButton(0, "Ride Him Vag", "This scene requires you to have a vag and sufficient arousal");
+			addDisabledButton(1, "Ride Him Anal", "This scene requires you to have sufficient arousal.");
+			addDisabledButton(2, "Buttfuck", "This scene requires you to have a fitting cock and sufficient arousal.");
+			addDisabledButton(3, "Oral (Cock)", "This scene requires you to have a cock and sufficient arousal.");
+			addDisabledButton(4, "Oral (Vag)", "This scene requires you to have a vag and sufficient arousal.");
+			addDisabledButton(5, "Taur sex", "This scene requires you to be a taur or drider, having a cock and/or a vagina and sufficient arousal.");
+			//addDisabledButton(6, "Lay Eggs", "This scene requires you to have ovipositor and enough eggs. Bee oviposition requires genitals as well.");
 			
 			if (player.lust >= 33) {
-				outputText(" Certain that the creature won't dare try and turn his eyes on you again, you take your time to look the tall reptile over directly for the first time. Perhaps you could use him to satisfy your baser urges. If so, what part of him do you choose?", false);
-				//[Tongue][Ass]
-				addButton(0, "Tongue", tongueBasiliskSmex, null, null, null, "Put that creature's tongue to a good use.");
+				outputText("What do you do with him?");
+				if (player.hasVagina()) {
+					addButton(0, "Ride Him Vag", cockatriceRideHimVag, null, null, null, "Let him fuck your pussy.");
+				}
+				addButton(1, "Ride Him Anal", cockatriceRideHimAnal, null, null, null, "Let him fuck your butt.");
 				if (player.cockThatFits(monster.analCapacity()) >= 0) {
-					addButton(1, "Ass (Gentle)", defeatBasiliskAndAnal, false, null, null, "Fuck the basilisk's ass gently!");
-					if (player.cor >= 66 - player.corruptionTolerance() || player.findPerk(PerkLib.Sadist) >= 0)
-						addButton(2, "Ass (Cruel)", defeatBasiliskAndAnal, true, null, null, "Dominate and fuck the basilisk in the ass! He wouldn't like it though.");
+					addButton(2, "Buttfuck", cockatriceButtfuck, null, null, null, "Fuck the cockatrices's ass!");
+				}
+				if (player.hasCock()) {
+					addButton(3, "Oral (Cock)", cockatriceOralCock, null, null, null, "Get a blowjob!");
+				}
+				if (player.hasVagina()) {
+					addButton(4, "Oral (Vag)", cockatriceOralVag, null, null, null, "Get a vaginal blowjob!");
+				}
+				if (player.isTaur() && (player.hasVagina() || player.hasCock())) {
+					addButton(5, "Taur sex", cockatriceTaurButtFuck, null, null, null, "Let him fuck your tauric butt!");
+				}
+				if (player.isDrider() && (player.hasVagina() || player.hasCock())) {
+					addButton(5, "Drider sex", cockatriceDriderButtFuck, null, null, null, "Let him fuck your drider butt!");
 				}
 			}
-			
+
+			/*
 			if (player.canOvipositSpider()) {
-				addButton(3, "Lay Eggs", driderPCEggLaysBasilisk, null, null, null, "Lay your eggs in the basilisk.");
+				addButton(6, "Lay Eggs", driderPCEggLaysCockatrice, null, null, null, "Lay your eggs in the cockatrice.");
 			}
 			if (player.canOvipositBee() && !player.isGenderless()) {
-				addButton(3, "Lay Eggs", layBeeEggsInABasilisk, null, null, null, "Lay your eggs in the basilisk.");
+				addButton(6, "Lay Eggs", layBeeEggsInACockatrice, null, null, null, "Lay your eggs in the cockatrice.");
 			}
-			
+			*/
+
 			addButton(14, "Leave", combat.cleanupAfterCombat);
 		}
-		
+
 		//Player Victory sex:
-		// "<i>Tongue"<i>
-		private function tongueBasiliskSmex():void {
-			spriteSelect(75);
+
+		//Cockatrice fucks PCs vag
+		private function cockatriceRideHimVag():void
+		{
+			//spriteSelect(75);
 			clearOutput();
-			outputText("You tap your jaw as you stare down at the defeated reptile, smiling at his oddly formal gesture of surrender. You'd very much like to take some satisfaction from the basilisk, extract a bit of pleasurable payment for what he tried to do to you: but the more you get to look at him properly, the more difficult doing that seems. The tall, thin creature is all angles, tough scales and pointed edges. You don't like the thought of putting your genitals anywhere near his sickle claws or curved fangs.\n\n", false);
-		
-			outputText("It is as you are taking in this latter article that the basilisk swallows nervously, and you get a glimpse inside his mouth at a long, sticky, pale purple tongue, another gift of his reptilian ancestors. It's the only part you've seen of him so far which looks... soft. Pliable. Your smile widens and you step forward, slowly loosening your " + player.armorName + ".\n\n", false);
-		
-			outputText("<i>First things first</i>, you think. <i>Better put some protection on.</i> You take a long rag out of your pocket and, after considering the oblong shape of the basilisk's head, tie it vertically around his eyes, tying the blindfold under his chin like a headscarf. \"<i>I'm not saying I don't trust you,</i>\" you tell him as you work, \"<i>but... I don't trust you.</i>\" The creature accepts this treatment quite meekly. All of his fight and cunning seem to have completely run out of him now that you've established your superiority, and the feeling of power this gives you sends blood rushing eagerly towards your crotch. \"<i>Now...put your claws behind your back and open your mouth,</i>\" you breathe. \"<i>I want to see that nice soft tongue of yours, worm.</i>\" You can't understand him, but apparently he can understand you, and he slowly complies. He kneels in front of you, blindfolded with his long, wet tongue lolling out" + player.clothedOrNakedLower(", as you tear away your undergarments") + ".\n\n", false);
-		
-			//Male/Herm: 
+			rideCockatriceForeplay();
+			outputText("\n\nHis cute begging face and the way he keeps his tongue working your [if (hasCock)turgid cock|hungry cunt] regardless of"
+			          +" your actions speeds up your decision, making you push him back by his firm but downy shoulders. You slowly make your way to"
+			          +" your knees, letting him get a good look at your body as you do so. His breath is coming out in short pants now, devouring"
+			          +" you with his raking gaze[if (isLactating) and licking his lips as he gets an eyeful of your milky nipples]."
+			          +" Slipping your hand around his curved reptilian length you align him with your hungry cunt, the tip now only centimetres"
+			          +" away from your heated flesh. His low groan and feeble attempt to buck his hips show how much he wants this too,"
+			          +" but with a slight squeeze you easily halt him.");
+			outputText("\n\n\"P…please…\" he hisses, a somewhat melodic nature to his husky voice. If it weren’t for how much you wanted this too,"
+			          +" you’d happily continue to tease him so you could have his hypnotic melody caress your senses further. With a small nod you"
+			          +" push yourself down on him, smirking as he watches inch after inch disappear into you. He whimpers and shudders under you,"
+			          +" squirts of pre coating your insides as his tail thrashes.");
+			outputText("\n\nThe combination of his tapered length and it’s bumpy texture causes you to sigh as you reach the bottom of his length,"
+			          +" your hot cunt pressing against his cool scales. With a slight squawk, pupils dilated into large circles, he pulls you"
+			          +" forward into a heavy open mouthed kiss.  Your [tongue] and his slide across one another, his head tilted to the side to give"
+			          +" you better access to his beak as his hand [if (hairLength > 0)threads into your [hair]|cups the back of your head].");
+			outputText("\n\nYou begin to rise up his length, the bumps rubbing firmly against your clit with each inch that leaves you. As you reach"
+			          +" the tip you slam your hips back down, relishing the feeling of his length rapidly stretching you as the tip pokes your womb."
+			          +" You keep this pace as you break the kiss, the regular ascent and rapid descent making lewd");
+			if (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_WET)
+				outputText(" squelching");
+			else
+				outputText(" slapping");
+			outputText(" noises as you get closer to your peak. As you ride him the cockatrice suddenly lunges his forward, trapping one of you"
+			          +" [nipples] in his mouth. He sucks hungrily as he feels your walls tightening around him, eager to bring you to a climax."
+			          +" His hand goes to");
+			if (player.breastRows.length > 1)
+				outputText(" one of your other nipples");
+			else
+				outputText(" your other nipple");
+			outputText(" as he sucks, pinching your nipple, causing a symphony of gentle suckling, eager fucking and pleasurable pain to encapsulate"
+			          +" you. This tips you over the edge as the pair of you thrust together, burying his member deep in your fluttering passage."
+			          +" You cry out as you cum [if (cumQuantity > 150)soaking your thighs and his member], your slick channel trying to wring out"
+			          +" his seed.");
 			if (player.hasCock()) {
-				outputText("\"<i>Wrap it around me,</i>\" you demand gruffly, poking your " + player.cockDescript(0) + " lightly against the end of his tongue. Slowly, the basilisk does as you ask. He is clumsy at first, taking time to get a sense of your girth and hardness as he tastes and licks blindly, but he quickly grows into the task. Starting from just above your head, he curls his tongue right around your prick and then inches his way upwards, spiraling his long, incredibly flexible organ around you. The more you feel this thing's tongue, the more you know you made the right choice here; the shifting, wet sensation as he snakes his way upwards towards your base is incredible, and gets better the more of your " + player.cockDescript(0) + " is swathed in mouth muscle. It is unlike any tongue you've felt before... there is some kind of adhesive property in the basilisk's saliva which makes his soft flesh stick like a leech once it is on you.\n\n", false); 
-		
-				//Single cock: 
-				if (player.cockTotal() == 1) {
-					outputText("Once he has wrapped around as much of your cock as he can, you take a moment to control yourself in this dizzying, soft yet tight vice grip your serpent sub now has you in. \"<i>Squeeze. Work it, nice and slow,</i>\" you say huskily. The basilisk's tongue slides up and down your length, its saliva slathering every inch, the sticky, sucking sensation encompassing your cock on all sides. It squeezes you softly and then relaxes... squeezes you, then relaxes, as he continues to spiral around and around. It is everything you can do not to go over the edge straight away; you hold back desperately, staring upwards. To blow your load before properly enjoying what is turning out to be a truly unbelievable suck would be a terrible crime. You look downwards and manage to pull yourself back a bit by laughing hugely at the sight. With the basilisk's tongue spiralled around you, your " + player.cockDescript(0) + " looks like nothing so much as an obscene candy cane. The basilisk seems to take your hysterical laughter for anger or contempt, because he hastily increases his pace, forcing his sticky muscle up and down as fast as he can. You lean back and lose yourself in the blissful, sucking, enveloping sensation.\n\n", false);
-		
-					outputText("You last for as long as you can before, with a euphoric sigh, you reach your peak. Your " + player.cockDescript(0) + " bulges and then rockets out stream after stream of jizz. Directly in the line of fire, the blind basilisk takes his minute-long facial with as much dignity as he can muster- which is to say, none at all.\n\n", false);
-				}
-				//Multicock: 
-				else {
-					outputText("The basilisk wraps himself around part of your " + player.cockDescript(0) + "... and then stops. Confused and frustrated, you look down. The tip of his tongue has touched your " + player.cockDescript(1) + ", and cautiously, it begins to inch his way downwards and around, working towards your second tip. \"<i>Oh, aren't you a clever girl,</i>\" you sigh, revelling in the sensation of both of your cocks trapped in the dizzying, soft yet tight vice grip your serpent sub now has you in. The basilisk grunts at the humiliating commentary. \"<i>Squeeze. Work them, nice and slow,</i>\" you say huskily. The basilisk's tongue slides up and down your length, its saliva slathering every inch, the sticky, sucking sensation encompassing your cocks on all sides. It squeezes you softly and then relaxes... squeezes you, then relaxes, as it continues to spiral around and around. He bends forward, investing more of his tongue around you, inching his way further up your " + player.cockDescript(1) + ". His tip comes off you with a sucking sound, and he begins to tease the head of your second prick, circling it and lavishing it with attention as he continues to work your two lengths. \"<i>How... where did you learn to do that?!</i>\" you gasp, and are immediately grateful the basilisk can't respond to your query. It is everything you can do not to go over the edge straight away; you hold back desperately, staring upwards. To blow your load before properly enjoying what is turning out to be a truly unbelievable suck would be a terrible crime. You look downwards and manage to pull yourself back a bit by laughing hugely at the sight. With the basilisk's tongue spiralled around you, your " + player.cockDescript(0) + " looks like nothing so much as an obscene candy cane. The basilisk seems to take your hysterical laughter for anger or contempt, because he hastily increases his pace, forcing his sticky muscle up and down as fast as he can. You lean back and lose yourself in the blissful, sucking, enveloping, teasing sensation.\n\n", false);
-					outputText("You last for as long as you can before, with a euphoric sigh, you reach your peak. Your " + player.cockDescript(0) + " and " + player.cockDescript(1) + " both bulge and then rocket out streams of jizz in concert. Directly in the line of fire, the blind basilisk takes his minute-long double facial with as much dignity as it can muster- which is to say, none at all.\n\n", false);
-				}
-				//Both go to: 
-				outputText("You look beatifically down at him when you are finished and notice that despite himself the basilisk has got more than a bit turned on by your fairly callous treatment of it; the creature is finding it difficult to kneel properly with his long, purple erection poking against the ground. You smile with satisfaction at how successfully you've managed to paint his face white with your seed. \"<i>That's a good look for you. We really must do this again,</i>\" you say as you loosen his blindfold just a little before taking your leave. You chance a look back. The creature is staggering in the opposite direction, wiping his face with a claw and trying not to bump his cock into anything, looking very dazed indeed. You grin and make your way back to camp.", false);
+				outputText(" Your");
+				if (player.balls > 0)
+					outputText(" balls churn and tighten, roiling seed begging to be released and your");
+				outputText(" [cock] lets loose");
+				if (player.cumQ() <= 150)
+					outputText(" a few squirts of pearlescent cum, coating your bellies.");
+				else if (player.cumQ() <= 350)
+					outputText(" squirt after squirt of pearlescent cum, coating your bellies.");
+				else if (player.cumQ() <= 1000)
+					outputText(" several thick ropes of pearlescent cum, coating your chests and bellies with a thick layer of spooge.");
+				else
+					outputText(" several thick ropes of pearlescent cum, dousing you both like a perverse fountain.");
 			}
-			//Female: 
-			else if (player.hasVagina()) {
-				outputText("\"<i>Lick me,</i>\" you tell the basilisk brusquely, as you push your hips out and present your " + player.vaginaDescript(0) + " to his tongue. You decide you'll take your reward standing up; the sight of the beast on his knees in front of you is quite pleasing.\n\n", false);
-		
-				outputText("The basilisk slowly does as you ask, leaning forward and pushing his long, slick tongue against your lips. It is clumsy at first; unable to see, it has to feel with his slick mouth muscle, licking around the limits of your " + player.vaginaDescript(0) + " before pushing inside. The creature inadvertently frustrates you, and so when it finally finds your hole it is welcoming and wet.\n\n", false);
-		
-				outputText("The basilisk finds your " + player.clitDescript() + " and, after circling it slowly and thoughtfully for a while, pushes his tongue into your wet vagina. You gasp as he inches himself further up you, bending his face in. The creature's tongue isn't like any you ever felt before; longer than a human cock and infinitely more flexible, it is able to caress you at a depth you didn't think possible. He pulls himself out a little and you discover another positive to it: there seems to be an adhesive quality to his saliva which causes it to stick to flesh it is attached to. As he withdraws slightly, your tender inner walls go with it before parting from his tongue slowly and luxuriantly. The sensation makes you gasp as you spasm and orgasm on the spot. The basilisk is treated to a gush of a girlcum straight down his nostrils and he coughs dryly, withdrawing itself intuitively. Immediately you grind your " + player.vaginaDescript(0) + " right into his face, bending over him and gripping his head spines, denying it air. \"<i>You stop when I say you can, not before,</i>\" you growl at him. Quickly, submissively, the lizard applies himself to you again. You smile with great pleasure. There is no way you're letting a tongue as fantastic as this go easily.\n\n", false);
-		
-				outputText("You make the basilisk pleasure you for what seems like hours. He lavishes attention on your deepest, most sensitive spots with his incredibly long and flexible tongue, his sticky saliva pushing and pulling you to astonishing, mind blowing heights. The creature is able to hunch his tongue up against your " + player.clitDescript() + " whilst still inside you, brushing over and around him, giving it just enough attention to tease you to madness; it drives you to orgasm after orgasm. \"<i>You've done this before, haven't you?</i>\" you pant as you begin to flagrantly grind yourself against the basilisk's scaly snout. \"<i>You must have. How can a fucking lizard be an expert at cunn- ahhhhh!</i>\" You spasm wildly, once again drowning the blindfolded reptile with your juices. With a hugely satisfied sigh, you finally step away from the creature.\n\n", false);
-		
-				outputText("You look beatifically down at him and notice that despite himself the basilisk has got more than a bit turned on by your fairly callous treatment of it; the creature is finding it difficult to kneel properly with his long, purple erection poking against the ground. His tongue flops weakly out of his girl-cum-spattered mouth, evidently too weak to even curl back up, and you grin as you imagine how much it must ache from the workout you gave him. \"<i>That's a good look for you. We really must do this again,</i>\" you say breezily as you loosen his blindfold just a little before taking your leave, shaking the weariness out of your knees as you go. You chance a look back; the creature is staggering in the opposite direction, wiping his face with a claw and trying not to bump his cock into anything, looking very dazed indeed. You grin and make your way back to camp.", false);
-			}
-			player.orgasm('Generic');
+			outputText("\n\nUnder you, the cockatrice groans, his cock twitching as his seed begins to surge up it, bloating his member a little as"
+			          +" it jets out in thick ropes, determined to thoroughly coat your womb. The pair of you lay there panting for a while, him"
+			          +" running a hand through your hair as he chirps softly. When you finally climb off him,"
+			          +" [if (cumQuantity > 350)your body slick with your release, with] his seed dripping down your thighs as you");
+			outputText(player.armor != ArmorLib.NOTHING ? " get dressed," : " grab your gear,");
+			outputText(" you can’t help but smile at him. Already standing again he shakes himself, trying to get himself presentable, but his"
+			          +" feathers are puffed out in random directions. The goofball has sex-hair! With a slight laugh, you give him a kiss on the tip"
+			          +" of his beak before telling him you had fun.");
+			outputText("\n\n\"So did I. Let’s do this again sometime.\" he says with a smile before giving himself one last smooth over before"
+			          +" [if (monster.canFly)spreading his wings and taking off|running off deeper into the mountains with a bouncy stride].");
+			player.orgasm('Vaginal');
 			dynStats("lib-", 1);
 			combat.cleanupAfterCombat();
 		}
-		
-		//basilisk Defeat: Anal 
-		private function defeatBasiliskAndAnal(corrupt:Boolean):void {
-			spriteSelect(75);
+
+		//Cockatrice fucks PCs butt
+		private function cockatriceRideHimAnal():void
+		{
+			//spriteSelect(75);
 			clearOutput();
-			var x:Number = player.cockThatFits(monster.analCapacity());
-			//Requires: Corruption 70 or more, cock (for now) 
-			//Prelude: 
-			outputText("You stand over the kneeling basilisk, your mind boiling with lust and anger. You want to " + (corrupt ? "really" : "") + " punish this loathsome lizard for daring to mess with you, for daring to try to force his unsettling, paralyzing magic on you. As you weigh up your options, the tall reptile slides an eye open and chances a look upwards. ");
-			if (corrupt) {
-				outputText("Whatever he sees in your face causes him to flinch and immediately close it again, but even this tiny show of defiance enrages you. \"<i>Open them again and I will close them. Permanently,</i>\" you snarl. The creature has given you a stroke of inspiration, though. If only there was something... you look around you, and a gleam of light catches your eye; a somewhat clear, still pool of water lies about two dozen yards away. A cruel grin splits your face: <i>providence</i>.\n\n");
-				outputText("You slap a hand on the scruff of the basilisk's neck, gripping as much of his leathery hide as you can. \"<i>Crawl,</i>\" you snap, tugging him in the direction you want him to go. The basilisk meekly does as he is told at first, feeling out in front of him with his claws blindly and following your lead. It must take another peep at where he is being taken about two thirds of the way there however, because judging by the way he starts thrashing his limbs and tail around in protest, he guesses what you have in mind. You have already broken his physical resistance though and you are able to ignore his pathetic pawing at your " + player.armorName + ", dragging the defeated reptile by the back of his neck the rest of the way. You push your " + player.leg() + " savagely into his back and grip his spines as you position his head over the smooth, liquid mirror of the pool. \"<i>Open your eyes,</i>\" you command. The basilisk clenches them tighter. You sigh and shove his head under the cold water, holding it there until his struggles grow weak and spasmodic before finally releasing. You hum and examine your nails as the reptile heaves for air and coughs miserably, waiting patiently for the ripples on the pool's surface to subside. \"<i>Open your eyes,</i>\" you say again, in exactly the same tone. This time, the basilisk does as you say. A smile curves your lips as you feel the creature tense and then freeze under you. Staring at his reflection, he falls helplessly under his own spell.\n\n", false);
-			}
-			else {
-				outputText("Whatever he sees in your face causes him to flinch and immediately close it again, whimpering in fear. \"<i>If you submit, I'll go easy on you,</i>\" you assure. But safety first, of course. If only there was something... you look around you, and a gleam of light catches your eye; a somewhat clear, still pool of water lies about two dozen yards away. A merry grin splits your face: <i>providence</i>.\n\n");
-				outputText("You gently guide the basilisk on the direction you want to go. \"<i>Crawl,</i>\" you instruct, tugging him in the direction you want him to go. The basilisk meekly does as he is told at first, feeling out in front of him with his claws blindly and following your lead. It must take another peep at where he is being taken about two thirds of the way there however, because judging by the way he keeps his claws dug deep into the earth in protest, he guesses what you have in mind and lets out a faint whimper. You whisper into his ear and tell him, \"<i>It's for a good reason. I'll promise to take good care of you.</i>\" Your words sink deep within the basilisk's mind and he starts to comply you again but he keeps his eyes closed. You gently position the basilisk's head over the liquid mirror of the pool. \"<i>Open your eyes for two seconds,</i>\" you command. The basilisk hesitates but obeys you anyway and opens his eyes for two seconds then closes his eyelids immediately. You can feel his reptilian scales stiffening as he is effectively frozen by his own spell.\n\n");
-			}
-			//High Corruption: 
-			if (corrupt) {
-				outputText("You get off the basilisk and walk around him, giving him a cautious tap in the flank. No response; the creature is well and truly paralyzed. Knowing your prey is going nowhere, you undress at leisure, allowing your " + player.cockDescript(x) + " to slide out and feel the fresh air. You kneel over the creature's hindquarters and rub yourself back and forth along his scales, hardening as you enjoy the warm, leathery sensation. As the need to fuck takes hold of you, you try to get at the basilisk's tight, muscled ass, but his long tail, frozen in place, is in the way. You pull at him, but the paralyzed flesh is impossible to move. \"<i>Lift your tail!</i>\" you snap in frustration. Immediately the tail lifts, raising up and back over the basilisk until his behind is unprotected, before freezing into place again. Your eyes widen ever so slightly as you realize how much power you have given yourself over the reptile; caught in a feedback loop of his own hypnosis, mind emptied, he is helplessly deferential to whatever anyone says to him. A mad yet oddly tempting image of a dancing basilisk flits through your head... but no, your straining cock reminds you that there are more important matters at hand. Without preamble, you grasp the creature's hindquarters and push your " + player.cockDescript(x) + " against his tight anus.\n\n", false);
-				outputText("The going is tough at first, even if your fuck toy is incapable of tensing itself. You push past his sphincter slowly, working his passage, feeding more of yourself in bit by bit. Without lubrication the sensation is incredibly tight for you and undoubtedly not very pleasurable for your partner... not that you care. It emits a dry moan through his still mouth as you slowly begin to buck against it more roughly. \"<i>Relax,</i>\" you hiss; it is not a suggestion. The creature's back passage eases, allowing you to slip further in suddenly. This delightful sensation makes you drool pre-cum, lubricating the basilisk's hole and breaking the friction, allowing you to begin to thrust against the creature.\n\n", false);
-				outputText("The basilisk is clearly something of a novice when it comes to anal rape; his passage is incredibly tight and grips you like a fist, forcing more pre-cum out of you, making your efforts easier and more pleasurable as you begin to roughly fuck your paralyzed victim harder and harder, losing yourself in that clenchingly tight ass. ", false);
-				//[(13 inches or less:)
-				if (player.cocks[x].cockLength <= 13) {
-					outputText("Soon your " + player.hipDescript() + " are clapping a staccato rhythm against his warm, muscly butt,", false);
-					if (player.balls > 0) outputText(" your " + player.ballsDescriptLight() + " slapping against him,", false);
-					outputText(" the creature taking every inch of your length before you pull out and thrust all the way in again, forcing ragged gasps from the reptile's still throat.\n\n", false);
+			rideCockatriceForeplay();
+			outputText("\n\nHis large rounded pupils give him a cute, almost puppy dog look, as he stares up at you. If it werent for his flushed"
+			          +" face and lolling tongue adding such a lewd edge, you’d sweep him up into a big hug and pet him. But you have a better idea,"
+			          +" one that will make this face seem absolutely innocent by the time you’re done with him. You push him down to the ground by"
+			          +" his shoulders, his warm downy feathers caressing your hands as you then kneel down to the same level.");
+			outputText("\n\nFor such a lithe creature he has surprisingly good muscle definition, his athletic shoulders supporting your weight with"
+			          +" ease. You position yourself so his cock is sandwiched between your [butt], gently grinding his length back and forth."
+			          +" Between his copious amount of precum slathering your pucker and the variety of nubs that decorate his length you can’t help"
+			          +" but let out a small groan. As you drag his tip across your [asshole], delighting in every spark of pleasure you get as his"
+			          +" nubs run over your sensitive flesh, you feel his hands slide to your hips. His eyes are closed as he pants lustily, his"
+			          +" lower body tense as he tries to resist thrusting into you and destroying this teasing rhythm you’ve built up. Each twitch of"
+			          +" his cock results in another spurt of precum lubing up your cheeks, letting his length glide smoothly between them.");
+			outputText("\n\nYou smirk as you suddenly raise your hips, just enough to let his tip rest against your clenched ring, but not enough to"
+			          +" let him enter. He lets out a hiss, claws digging into your [butt].");
+			outputText("\n\"P…please…\" he hisses, a somewhat melodic nature to his husky voice as you feel his thick cock pressing against your"
+			          +" entrance with a little more pressure. While you know you’d love to tease him longer, you want his thick reptile cock in you"
+			          +" more. You rock your hips a couple more times, spreading his pre over your entrance before pushing down.");
+			outputText("\n\nAs his thick tip slides into your pucker");
+			if (player.ass.analLooseness <= ANAL_LOOSENESS_TIGHT)
+				outputText(" stretching your tight passage open");
+			outputText(" you can’t help but moan. The nubs along his shaft each rub against your sensitive pucker as you slowly take his whole"
+			          +" length, and you can’t help but");
+			if (player.ass.analLooseness <= ANAL_LOOSENESS_TIGHT)
+				outputText(" feel full.");
+			else
+				outputText(" enjoy his size in your practised asshole.");
+			outputText(" His hands come to rest on your ass, squeezing your cheeks lightly as he leans forward and draws you into an open mouthed"
+			          +" kiss. He gently rocks his hips, making sure he’s snuggly inside you before he urges you to move with a gentle lift.");
+			outputText("\n\nYou begin your ascent, reveling in the way his nubby shaft drags across your insides as his tongue intertwines with your"
+			          +" own. You feel a spurt of pre cum splash against your insides, pasting them with slick warmth as you slide back down him. You"
+			          +" increase your pace, beginning to bounce on his cock as he lets out a slight squawk in surprise before settling into your"
+			          +" rhythm and thrusting with you. You can feel his cock twitch as you ride him, your ass slapping against his thighs with each"
+			          +" thrust and your tunnel clenching around him rhythmically, trying to squeeze his release from him as his nubby purple shaft"
+			          +" rakes down your sensitive walls.");
+			outputText("\n\nHe whines as his claws rake into your cheeks, hips bucking in short, jerky bursts. You can feel his length pulse and"
+			          +" twitch inside you as he looks you in the eye pleadingly. With a single rise and fall of your hips and a tight squeeze,"
+			          +" you hilt him in your twitching passage. You gasp as his thick hot cum shoots into you, coating your insides with a layer of"
+			          +" his masculine slime [if (hasCock)and hitting your prostate with surprising force]. You feel a ripple of pleasure rip through"
+			          +" you as you cum");
+			if (player.hasCock() || player.hasVagina()) {
+				if (player.hasVagina())
+					outputText(" your pussy soaking your thighs");
+				if (player.hasCock() && player.hasVagina())
+					outputText(" and");
+				if (player.hasCock()) {
+					outputText(" your cock spurting onto his scaled belly, as your testicles shudder as they dispense your");
+					if (player.cumQ() < 50)
+						outputText(" small load.");
+					else if (player.cumQ() < 100)
+						outputText(" medium load.");
+					else if (player.cumQ() < 150)
+						outputText(" large load.");
+					else
+						outputText(" colossal load.");
 				}
-				//(More than 13 inches:)
-				else {
-					outputText("You force as much of your huge member as you can into the creature's anus, clutching onto the creature's warm, muscly butt as you pull out and thrust yourself in again, brutally driving a bit more of yourself in each time, forcing ragged gasps from the reptile's still throat. ", false);
-					//[(if balls)
-					if (player.balls > 0) outputText("Your " + player.ballsDescriptLight() + " swing heavily underneath your shaft, swelling as your rhythm picks up. ", false);
-					outputText("At the end of your reach you push against something spongy and yielding. The basilisk emits a dry moan and underneath him you see that you have forced his long, thin, shining cock from his genital slit. With a cruel smile you thrust into him again and again, holding onto your depth at the height of your thrust just a little each time to put pressure on the helpless basilisk's prostate, forcing the creature into an involuntary, straining erection. You slip one hand under his frozen legs and begin to pump the creature in time with your rhythm, leaning over it as you do, whispering every dark thought that bubbles up through your corrupt mind into his ear; telling him what a pathetic slutty little fuck toy he is, how turned on he is by your assault on it, how grateful he should be that you have deigned to give him your cock, knowing your words are sinking into his hypnotically stilled and pliable mind as easily as your " + player.cockDescript(x) + " is into his cum-oiled hole.\n\n", false);
-				}
-				
-				outputText("He has to accept your every word as he has to accept your dick, and it isn't long before with a ragged moan he cums, not a muscle moving except his desperately spasming cock, his jizz spattering into the pool and onto his arms as you slam into him with everything you've got. You last a little longer, continuing to mercilessly milk the basilisk until you see his purple cock is straining without producing anything before ", false);
-				//<(13 inches or less:) 
-				if (player.cocks[x].cockLength <= 13) outputText("gripping his hips and pushing every inch of yourself in and reaching a glorious, skin tingling peak.", false);
-				//(More than 13 inches:)
-				else outputText("gripping his hips and pushing as much of your huge, bulging cock into him as you can, his stomach bulging as you reach a glorious, skin tingling peak.", false);
-				outputText(" You continue to fuck the creature as you ejaculate, forcing your tainted jizz deep inside him, glorying in how the spurting lubricant allows you to fuck his hole even better. Eventually, after a series of orgasms which feel like the sky is falling, you finally pull out of the basilisk's ravaged anus with a deeply satisfied sigh. Your cum dribbles out of the creature's gaping butt; the only regret you feel in your deep haze is that there is nothing at hand to plug it in with. You sit back and allow yourself to bask in the afterglow, safe in the knowledge that there will be no retaliation forthcoming from your partner.\n\n", false);
-				outputText("You are shaken out of him by an urgent, rasping moan from the basilisk. You sense movement overhead and look up. The lizard has seen in the water's reflection what you can take in with your own eyes; several harpies circling overhead like vultures, waiting patiently for you to leave. The smiles which plaster their faces are possibly the least kindly you have ever seen. The basilisk whines again, this time with a desperate pleading edge. You kneel down and comfortingly stroke your victim's scaled head, glorying in the moment of false hope you give him. \"<i>Get hard,</i>\" you whisper. The creature clenches as his no doubt aching cock strains to attention again. \"<i>Don't worry,</i>\" you murmur into his ear. \"<i>I'm sure the nice birdies will shake you out of it. Eventually.</i>\" You get up, dress yourself, and leave. A pitiless grin slowly spreads across your face as behind you, the opening strains of what promises to be a very long, violent, and feathery rape reach your ears...", false);
-			}
-			//Low Corruption:
-			else {
-				outputText("You get off the basilisk and walk around him, giving him a cautious tap in the flank. Delayed response; the creature is somewhat paralyzed. " + player.clothedOrNakedLower("Knowing your opponent is going nowhere, you undress at leisure, allowing your " + player.cockDescript(x) + " to slide out and feel the fresh air. ") + "You kneel over the creature's hindquarters and rub yourself back and forth along his scales, hardening as you enjoy the warm, leathery sensation. As the need to fuck takes hold of you, you try to get at the basilisk's tight, muscled ass, but his long tail, nearly frozen in place, is in the way. You pull at him and it takes " + (player.str < 60 ? "a lot of effort to move" : "some effort to move") + ". A mad yet oddly tempting image of a dancing basilisk flits through your head... but no, your straining cock reminds you that there are more important matters at hand. You spit all over your hands and apply the makeshift lube all over your " + player.cockDescript(x) + " Without preamble, you grasp the creature's hindquarters and slowly push your " + player.cockDescript(x) + " against his tight anus.\n\n", false);
-				outputText("The going is tough at first, even if your fuck toy is incapable of tensing itself. You push past his sphincter slowly, working his passage, feeding more of yourself in bit by bit. With lubrication the sensation is incredibly tight for you and quite pleasurable for your partner. He emits a moan through his still mouth as you slowly begin to buck against it more roughly. \"<i>Relax,</i>\" you suggest. The creature's back passage eases, allowing you to slip further in suddenly. This delightful sensation makes you drool pre-cum, lubricating the basilisk's hole and breaking the friction, allowing you to begin to thrust against the creature.\n\n", false);
-				outputText("The basilisk is clearly something of a novice when it comes to anal sex; his passage is incredibly tight and grips you like a fist, forcing more pre-cum out of you, making your efforts easier and more pleasurable as you begin to gently fuck your paralyzed opponent harder and harder, losing yourself in that clenchingly tight ass. ", false);
-				//[(13 inches or less:)
-				if (player.cocks[x].cockLength <= 13) {
-					outputText("Soon your " + player.hipDescript() + " are clapping a staccato rhythm against his warm, muscly butt,", false);
-					if (player.balls > 0) outputText(" your " + player.ballsDescriptLight() + " slapping against him,", false);
-					outputText(" the creature taking every inch of your length before you pull out and thrust all the way in again, forcing ragged gasps from the reptile's still throat.\n\n", false);
-				}
-				//(More than 13 inches:)
-				else {
-					outputText("You force as much of your huge member as you can into the creature's anus, clutching onto the creature's warm, muscly butt as you pull out and thrust yourself in again, comfortably driving a bit more of yourself in each time, forcing ragged gasps from the reptile's still throat. ", false);
-					//[(if balls)
-					if (player.balls > 0) outputText("Your " + player.ballsDescriptLight() + " swing heavily underneath your shaft, swelling as your rhythm picks up. ", false);
-					outputText("At the end of your reach you push against something spongy and yielding. The basilisk emits a dry moan and underneath him you see that you have forced his long, thin, shining cock from his genital slit. With a cruel smile you thrust into him again and again, holding onto your depth at the height of your thrust just a little each time to put pressure on the helpless basilisk's prostate, forcing the creature into an involuntary, straining erection. You slip one hand under his frozen legs and begin to pump the creature in time with your rhythm, leaning over it as you do, whispering every thought that bubbles up through your mind into his ear; telling him what a pathetic opponent he is, how turned on he is by your assault on it, how grateful he should be that you have deigned to give him your cock, knowing your words are sinking into his hypnotically stilled and pliable mind as easily as your " + player.cockDescript(x) + " is into his cum-oiled hole.\n\n", false);
-				}
-				
-				outputText("He has to accept your every word as he has to accept your dick, and it isn't long before with a ragged moan he cums, not a muscle moving except his desperately spasming cock, his jizz spattering into the pool and onto his arms as you slam into him with everything you've got. You last a little longer, continuing to mercifully milk the basilisk until you see his purple cock is straining without producing anything before ", false);
-				//<(13 inches or less:) 
-				if (player.cocks[x].cockLength <= 13) outputText("gripping his hips and pushing every inch of yourself in and reaching a glorious, skin tingling peak.", false);
-				//(More than 13 inches:)
-				else outputText("gripping his hips and pushing as much of your huge, bulging cock into him as you can, his stomach bulging as you reach a glorious, skin tingling peak.", false);
-				outputText(" You continue to fuck the creature as you ejaculate, forcing your jizz deep inside him, glorying in how the spurting lubricant allows you to fuck his hole even better. Eventually, after a series of orgasms which feel like the sky is falling, you finally pull out of the basilisk's used anus with a deeply satisfied sigh. Your cum dribbles out of the creature's gaping butt; the only regret you feel is starting the whole thing in the first place. At least he did learn a lesson not to mess with you.\n\n", false);
-				outputText("You are shaken out of him by an urgent, rasping moan from the basilisk. You sense movement overhead and look up. The lizard has seen in the water's reflection what you can take in with your own eyes; several harpies circling overhead like vultures, waiting patiently for you to leave. The smiles which plaster their faces are possibly the least kindly you have ever seen. From your hunch, you suspect he'll get back up in a minute and scare off the harpies. You get up" + player.clothedOrNakedLower(", dress yourself,") + " and leave. A pitiful frown slowly spreads across your face as behind you, you already feel the footsteps of the basilisk slowly retreating.", false);
-			}
-			player.orgasm('Dick');
-			if (corrupt) dynStats("cor", 1);
+			} else
+				outputText(" your asshole twitching and hungrily wringing him dry.");
+			outputText("\n\nYou both sit there for a while, enjoying the afterglow and the warmth of each others bodies. You spend a little time"
+			          +" enjoying the softness of his feathers on your skin before you remove yourself from him with a wet ‘shlorp’.");
+			if (player.armor != ArmorLib.NOTHING)
+				outputText(" As you get dressed you give him another glance over.");
+			else
+				outputText(" As you grab your gear you give him another glance over.");
+			outputText(" Already standing again he shakes himself, trying to get himself presentable, but it does nothing as his feathers are puffed"
+			          +" out in random directions. The goofball has sex-hair! With a slight laugh, you give him a kiss on the tip of his beak before"
+			          +" telling him you had fun.");
+			outputText("\n\n\"So did I. Let’s do this again sometime.\" he says with a smile before giving himself one last smooth over before"
+			          +" [if (monster.canFly)spreading his wings and taking off|running off deeper into the mountains with a bouncy stride].");
+			player.orgasm('Anal');
+			dynStats("lib-", 1);
 			combat.cleanupAfterCombat();
 		}
-		
+
+		//PC fucks Cockatrices butt
+		private function cockatriceButtfuck():void
+		{
+			//spriteSelect(75);
+			clearOutput();
+			outputText("You make your way over to him, [if (hasArmor) stripping yourself of your [armor] piece by piece, putting on quite the show,]"
+			          +" a sensuous sway in your [hips]. He looks up at you from the ground, confusion and lust in his eyes as you bare yourself to"
+			          +" him. Throughout the fight you couldn't keep your eyes off his firm, downy rump and now you're gonna claim it for yourself.");
+			outputText("\n\nYou order him onto his knees, gently nudging his side as he slowly positions himself, tail drooped over his back end."
+			          +" The movement is slow and fluid, his lithe form rippling under his feathers as he rolls onto his hands and knees before"
+			          +" looking at you for further instructions. As you appraise his form, you can't help but circle him, taking in every detail of"
+			          +" his lithe, fit frame before setting your gaze on your intended target. Reaching down you firmly grope his behind, getting a"
+			          +" good feel of those firm cheeks and their soft feathers. He squawks in surprise, jolting forward and thrashing his tail.");
+			outputText("\n\nNow, you can't be having that, such a naughty tail getting in your way. You tell him to raise his tail as you get down on"
+			          +" [if (isNaga)your coils|[if (isGoo)the ground|your knees]] behind him, cooing about what what a good boy he is as you cup his"
+			          +" cheeks affectionately, your thumbs pressing in lightly. Once his tail is moved to the side you can get get a good look at"
+			          +" him, the raised base making his cheeks spread a little.");
+			outputText("\n\nAs you follow his slightly wide hips with your finger tips and trace over his fluffy rear, you gently tease his cheeks"
+			          +" apart so you can see what you have to work with. Between his small, muscular cheeks rests a tight pucker,"
+			          +" twitching slightly as you run a finger over it. While he definitely doesn't do it often,"
+			          +" he evidently is no stranger to some butt loving on occasion.");
+			outputText("\n\nYou suck your fingers a little as you stroke his lower back, coating them with saliva before beginning to tease his ass."
+			          +" You gently push your finger in up to the first knuckle, feeling his warm insides cling to you, resulting in a breathy"
+			          +" whimper from the cockatrice. With some slow wiggling and turning you begin to lube his entrance, squeezing and massaging"
+			          +" his butt and the base of his tail with your free hand.");
+			outputText("\n\nBefore long you manage to slip your finger into him entirely, crooking it now and then to drag against his sensitive"
+			          +" insides. Each movement brings a shiver to his frame and a slight jerk to his hips, his breath hitching now and then as you"
+			          +" slowly begin to withdraw.");
+			outputText("\n\nHis purple member strains out from its slit, pre beading at the tip as you knead his behind. Running your free hand up"
+			          +" and over his length you use his slick pre to further lube your fingers before introducing a second, this time at as much"
+			          +" faster pace. He groans by the time your fingers are at their furthest, his cock twitching towards his belly as his walls"
+			          +" stretch around your fingers.");
+			outputText("\n\nThrusting them in and out, you try to stretch him slowly while you make sure his tight tunnel is sufficiently slick."
+			          +" Once your fingers are moving smoothly back and forth you stroke your [cock] to full hardness. You line yourself up before"
+			          +" pulling out your fingers entirely and pushing your [cockhead] into him with a slow constant pressure, relishing in the tight"
+			          +" heat that now engulfs you along with the panting whine you draw out from his chest.");
+			if (player.longestCockLength() <= 12) {
+				outputText(" You slowly feed more of your [cock] into him, reveling in the hot, twitching walls that cling to you, trying to wring"
+				          +" you dry with each inch you see disappear.");
+				if (player.balls > 0) {
+					outputText(" Your [balls] " + (player.balls == 1 ? "presses" : "press") + " firmly against his fluffy cheeks,"
+					          +" caressed by his downy plumage in a delightful way.");
+				}
+			} else {
+				outputText(" You slowly try to feed more of your [cock] into his tight cavity, but soon the crushing tightness becomes too much"
+				          +" to handle. You sigh a little as you withdraw to a more comfortable position, disappointed you’re too big to give him a"
+				          +" proper reaming.");
+			}
+			outputText(" Each movement you make causes him to shudder, his cock steadily leaking pre as he moans at first in pain"
+			          +" and soon in pleasure.");
+			outputText("\n\nYou soon begin to thrust, first slowly, gently making sure he’s good and stretched for you, but soon speed up as his now"
+			          +" relaxed tunnel lets you bury yourself deep and clings to you hungrily. You can feel the head of your cock push against his"
+			          +" prostate with each thrust, causing him to moan out his appreciation as his cock jerks and spurts jets of cum onto the ground"
+			          +" and his belly. As he begins to enjoy himself, joining your thrusts as best he can, you surprise him with a sharp spank to"
+			          +" one of those tight cheeks, grabbing a handful as you do so. His tail thrashes and his ring tightens, and you can feel"
+			          +" yourself swell from the crushing hold he has on you.");
+			outputText("\n\nWith a groan you spank him again, this time the other cheek just as you hilt yourself. It feels so good in his pucker,"
+			          +" his walls spasming around you while his ring clenches tight around your base. You continue to thrust into him, humping away"
+			          +" at him as he shivers and moans under you begging for more.");
+			if (player.balls > 0)
+				outputText(" You feel your [balls] churning, heavy with thick seed that you can’t wait to pour into him.");
+			else
+				outputText(" You feel heat welling up in your middle, your cock swelling in preparation of the filling you’re going to give him.");
+			outputText(" With one last thrust you ready yourself for release, smacking those firm cheeks one more time, only to let out a strangled"
+			          +" groan as your cock pulses within him with no effect,");
+			if (player.balls > 0)
+				outputText(" your balls tightening and clenching as " + (player.balls == 1 ? "it gets" : "they get") + " hotter and hotter");
+			else
+				outputText("while the heat in your belly blazes into an inferno");
+			outputText("[if (player.hasKnot) and your knot swells, further plugging you inside him].");
+			if (player.cocks.length > 1) {
+				outputText(" Your other " + (player.cocks.length > 2 ? "cocks only manage" : "cock only manages")
+				          +" to spurt white tinged pre that dribbles down your lengths.");
+			}
+			outputText(" His tight ring stopped you from cumming like some sort of buttslut cock ring!");
+			outputText("\n\nThe cockatrice however cums explosively, his bumpy purple length spurting thick reptile cream along the ground and up his"
+			          +" chest, some even reaching the underside of his beak before trailing off. He quivers under you, spent and panting, while you"
+			          +" try to thrust your way to completion as his sphincter loosens its grip and he relaxes in post orgasmic haze."
+			          +" You cum with a whimper[if (cumNormal) spurts of cum coating his insides|[if (cumMedium) as ropes of cum coat his insides,"
+			          +" filling him to the brim with heat|[if (cumHigh) as thick jets of cum coat his insides, filling him entirely and spurting"
+			          +" out around your [cock]| as you flood his ass, cum coating his insides and backwashing the pair of you into a sticky mess]]],"
+			          +" while the heat [if (player.balls > 0)and tightness in your [balls]|in your belly] finally begins to subside.");
+			if (player.cocks.length > 1) {
+				outputText(" Your other " + (player.cocks.length > 2 ? "cocks coat" : "cock coats") + " his behind further, leaving his ruffled"
+				          +" feathers and the underside of his tail a sticky mess, a satisfying sight making his ass look thoroughly claimed.");
+			}
+			outputText("\n\nYou slip out of him with a wet slurp [if (player.hasKnot)although your knot makes it a little difficult] and you let"
+			          +" yourself fall back onto the ground, marveling at how you’ve fucked his tight ass into a hungry dripping hole. You rest for a"
+			          +" while before cleaning yourself up[if (hasArmor) and redressing], fully satisfied by this encounter. You leave him there"
+			          +" resting and wonder if you’ll get to do this again next time.");
+			player.orgasm('Anal');
+			dynStats("lib-", 1);
+			combat.cleanupAfterCombat();
+		}
+
+		//Cockatrice gives the PC a blowjob
+		private function cockatriceOralCock():void
+		{
+			//spriteSelect(75);
+			clearOutput();
+			outputText("You casually approach him [if (hasArmor)stripping your [armor] and tossing it aside confidently]");
+			outputText(", admiring his prone form. The cockatrice lays on his back, tail lazily resting between his legs as he runs a clawed finger"
+			          +" over his pecs. His sapphire eyes are fixed firmly on you, drinking in your naked form. His eyes linger on your"
+			          +" [if (hasBreasts)[breasts]|chest] for a while, making your nipples pebble before trailing down to your [cock], your erect"
+			          +" shaft[if (cocks > 1)s] making him lick his lips.");
+			outputText("\n\nHe definitely know what you expect of him, which makes this a lot easier.");
+			outputText("\n\"Time for a little fun.\" you smile as you stand over him and cup his fluffy cheek, guiding him towards your shaft."
+			          +" He willingly opens his beak, forked tongue snaking out to drag along the [cockhead] in a torturously slow lick. The forked"
+			          +" tips tease your urethra as he withdraws, making you shudder. He seems pleased with this, licking you again, his flexible"
+			          +" tongue curling around your length as he tastes you base to tip. His movements become bolder as you encourage him with"
+			          +" affectionate rubs of the cheek, and before long he’s actively slurping along your length, swirling around the tip as it"
+			          +" begins to bead precum.[if (player.balls > 0) He gently laps at your [balls] every now and then, ensuring they get as through"
+			          +" a tongue bath as your shaft[if (hasVagina) and even lifts them up to give your feminine half a good taste too.]"
+			          +"|[if (hasVagina) Occasionally his tongue slips further down, seeking out your heated slit, refusing to leave your feminine"
+			          +" half untouched.]]");
+			outputText("\n\nOnce you’re covered in a shiny layer of saliva, he takes [if (player.longestCockLength > 12) as much as he can manage of]"
+			          +" your length into his mouth. His beak is surprisingly soft, more like a firm rubber, and wonderfully warm and wet inside."
+			          +" You guide his movements as you sigh in pleasure, helping him establish a steady rhythm as he gently sucks. His tongue pushes"
+			          +" up against you with each withdrawal, making sure you get all the stimulation he can offer to the tip. He strokes himself as"
+			          +" he sucks, hungrily devouring your length like a worm in response to your moans. You can feel yourself beginning to twitch"
+			          +" and pulse in his mouth, your hips starting to jerk with each of his movements and you lace your hands into his feathers,"
+			          +" cupping the back of his head.");
+			outputText("\n\nWith a moaning whisper of encouragement you thrust your hips harder, burying"
+			          +" [if (player.longestCockLength <= 12)your cock in his throat|as much of your cock in his throat as you can],"
+			          +" reveling in the tight space and sudden spasms that almost crush your length. His eyes water as he tries to keep up, pretty"
+			          +" much humping his hand, while his free hand comes up to"
+			          +" [if (player.balls > 0 cup your [balls][if (hasVagina) and thumb your slit|[if (hasVagina)thumb your slit|cup your behind]]]."
+			          +" You feel [if (player.balls > 0)your balls clench up as they flood with heat|heat pool in your belly] as your cock jerks,"
+			          +" before you explosively release into his belly."
+			          +" [if (cumNormal) A few ropes of cum fill his belly, with the last spurt painting his tongue as you withdraw."
+			          +"|[if (cumMedium) A few thick ropes of cum fill his belly, with the last spurt filling his mouth as you withdraw."
+			          +"|[if (cumHigh) Thick ropes of cum flow into his belly, with you flooding his mouth as you withdraw. His cheeks bulge but he"
+			          +" manages to contain most of it, with only a little dribbling down his chin."
+			          +"| Thick streams of cum flood into his belly actively bloating him into having a little paunch.You withdraw from him slowly,"
+			          +" flooding his mouth just as much. His cheeks bulge before he gags, your virility just too much for him to handle as cum"
+			          +" spills from his beak and down his chest. The final jets you release into the open, giving him a facial that makes his"
+			          +" feathered features turn blue to white.]]]");
+			outputText("\n\nYou let yourself fall to [if (isNaga)your coils|[if (isGoo)the ground|your knees]], panting"
+			          +" [if (hasVagina)while your pussy gushes] and heavily as you enjoy the post orgasmic glow in your now spent"
+			          +" organ[if (cocks > 1)s]. Once you get your strength back you [if (hasArmor)redress and] look over at the Cockatrice."
+			          +" He’s laid on the ground with a content and sleepy gaze [if (cumQuantity > 1000) under those layers of thick cum],"
+			          +" hands on his belly and spent member. He gives you a smile, blushing as he lets out a small belch. Seems he enjoyed himself"
+			          +" as much as you did. Waving goodbye you turn to return to camp.");
+			player.orgasm('Dick');
+			dynStats("lib-", 1);
+			combat.cleanupAfterCombat();
+		}
+
+		//Cockatrice gives the PC a blowjob
+		private function cockatriceOralVag():void
+		{
+			//spriteSelect(75);
+			clearOutput();
+			outputText("You casually approach him[if (hasArmor) stripping your [armor] and tossing it aside confidently], admiring his prone form."
+			          +" The cockatrice lays on his back, tail lazily resting between his legs as he runs a clawed finger over his pecs. His sapphire"
+			          +" eyes are fixed firmly on you, drinking in your naked form. His eyes linger on your [if (hasBreasts)[breasts]|chest] for a"
+			          +" while, making your nipples pebble before trailing down to your [pussy], your [pussy] making him lick his lips.");
+			outputText("\n\nHe definitely know what you expect of him, which makes this a lot easier.");
+			outputText("\n\"Time for a little fun.\" you smile as you stand over him and cup his fluffy cheek, guiding him towards your slit"
+			          +"[if (player.balls > 0) as you move your balls out of the way]. His forked tongue slips out as he opens his beak, gently"
+			          +" running over your mound as his hot breath tickles your [if (vaginalWetness <= 2)slick|slopping] lips. You whine a little,"
+			          +" wanting him to lick with more force, before pushing into his beak a little harder. Your clit rubs against the curve of his"
+			          +" beak, the firmness against your [clit] exquisite. His tongue delves into your slit, suddenly startling you as it curls up"
+			          +" into you before stroking through your puffy wet lips. The flick against your clit as he moves his head back coupled with the"
+			          +" drag of his firm beak make your knees jerk and your tunnel clench.");
+			outputText("\n\nHe slips his scaled hands around your backside, cupping your cheeks with his thumb claws scratching you lightly. With a"
+			          +" slow and deliberate movement he pulls you close and begins to lick you with firm and confident strokes, eager to drink your"
+			          +" feminine nectar. His cock stands[if (hasCock) like your own,] painfully erect, pre beading at the tip and slowly sliding"
+			          +" down the shaft like wax from a candle. Grinding his face into your needy [cunt], his tongue delves into your tunnel,"
+			          +" writhing along your inner walls, seeking out that deep, spongy spot. A warmth builds within your belly, a coiling tightness"
+			          +" causing you to seek out a matching rhythm to his tongue.");
+			outputText("\n\nWith a melodic hum that travels through his beak and up into your eager bitch-button, his tongue thrusts up against that"
+			          +" elusive spot, causing your knees to lock, trapping his face between your thighs. Your [cunt] spasms, trying to milk the"
+			          +" intruder as though it were a cock as you thoroughly juice yourself. As you ride out your orgasm"
+			          +"[if (hasCock) your cock weakly shooting into the air,] the cockatrice tries to drink up as much of your juices as he can, the"
+			          +" rest dripping down his chin and chest. Panting as you blissfully let the fuzzy post orgasmic haze engulf you, you step back,"
+			          +" admiring the way he glistens with your honey, his feathers matted.");
+			outputText("\n\nOnce you get full control of your [if (isNaga)coils|[if (isGoo)mound|legs]] back, you [if (hasArmor)redress and] thank"
+			          +" him for his efforts, kissing him on the tip of his beak and tasting yourself on him. You then turn to leave, listening to"
+			          +" the lazy ‘fap’ of him working his purple shaft as he lick himself clean.");
+			player.orgasm('Vagina');
+			dynStats("lib-", 1);
+			combat.cleanupAfterCombat();
+		}
+
+		//Cockatrice buttfuck (Taur version)
+		private function cockatriceTaurButtFuck():void
+		{
+			//spriteSelect(75);
+			clearOutput();
+			outputText("As you decide what to do with the cockatrice, your loins heated with arousal, you realise a you’ll have a hard time managing"
+			          +" anything, what with your tauric form being less than compatible with what many folk are packing. Looking around briefly,"
+			          +" you notice an alcove on the mountainside which spawns a brilliant idea. You could use the rock to pin him at the right"
+			          +" height to fuck your ass with that nubby reptile cock of his. Talk about between a rock and a hard place!");
+			outputText("\n\nGrabbing his arm you lead him to the gap, turning before pinning him eagerly with your rump, grinding your tauric rear"
+			          +" against him enthusiastically. His surprised squawk quickly devolves into a moan like cooing as his hard cock is engulfed in"
+			          +" the embrace of your [hips]. His fluffy plumage tickles your thighs, while his scaled belly glides across your flesh."
+			          +" Each bounce of your rear rubs his thighs against your"
+			          +" [if (player.balls > 0)ball[if (player.balls > 1)s]|[if (hasVagina)cunt|butt]]"
+			          +" while his member prods at your backdoor, slowly lubing you up with his slick pre. His clawed fingers grip your flanks"
+			          +" tightly as he tries to push into you, but your grinding ensures he can’t get the angle right. At one point you purposefully"
+			          +" push against him hard, feeling his cock crushed between your bodies as he whines with need.");
+			outputText("\n\n\"P-please…\" he hisses as his claws dig into your flesh, his round pupils making his begging cute but pitiful."
+			          +" You contemplate playing with him longer, idly toying with the idea of rubbing him to release a few times, only to pin him"
+			          +" again and get him wonderfully backed up.");
+			outputText("\n\"Show me how much you want it.\" you say with a smirk, looking over your shoulder at him. With a grunt of effort and"
+			          +" purple flushed cheeks he nods, stilling himself suddenly. Confusion is evident on your face before your expression melts"
+			          +" into a shocked ‘o’. Something has squirmed up against your"
+			          +" [if (hasVagina)pussy|[if (player.balls > 0)ball[if (player.balls > 1)s]|cock]], something thick and scaly, rubbing itself"
+			          +" over you like a perverse fleshy dildo, seeking out your genitals with surprising accuracy."
+			          +" [if (hasVagina == false)It coils around your cock, squeezing you in tight pulses[if (player.balls > 0) as closer to the"
+			          +" base gently rubs back and forth against your [balls]], hugging you in a warm and soft sheath that flexes with each movement."
+			          +" That’s one impressive tail!|It prods the entrance to your pussy, the tapered tip slowly working its way in and stretching"
+			          +" you as more of it follows. Slow thrusts cause the scaly appendage to rub your clit each time it stretches you wide, making"
+			          +" you feel full as you clench around the intruder. That’s one talented tail!] All the while his cock remains pressed against"
+			          +" your back door, twitching and oozing as his tail works your sex.");
+			outputText("\n\nWith a quick shift of your hips and a dip of your forelegs, you manage to slip his length into your"
+			          +" [if (analLooseness <= 1)tight|practised] passageway, reveling in the dual stimulation you are receiving. His nubby length"
+			          +" drags along your walls with each backwards thrust you make, while those delightful bumps tease your"
+			          +" [if (analLooseness > 1)stretched|eager] ring on each exit. His tail’s ministrations lessen as you fuck yourself on his cock,"
+			          +" his hips bucking to meet you each time you thrust instead. [if (hasVagina == false) The looser grip on your cock lets you"
+			          +" glide through his coiled tail with ease, giving you a smooth tailjob, with his tail tensing each time you clench on his"
+			          +" purple prick. | Though his tails thrusts are weaker now, your movements make up for it, fucking you on both his cock and his"
+			          +" tail, the two tapered lengths rubbing against other another through the thin wall separating them.] His cock twitches as his"
+			          +" claws dig into your rear, his hips pumping into you hard as he pulls you against him as best he can. With a forceful thrust"
+			          +" he blows his load in your ass, seed coating your innards while his tail"
+			          +" [if (hasCock)ripples around your cock|thrusts deep into your cunt]. Your"
+			          +"[if (hasCock) cock twitches and bloats as he wrings your length,"
+			          +" shooting your load onto the ground[if (cumQuantity > 350) forming a sizable puddle beneath you]."
+			          +"| cunt spasms as he hits your cervix, coating his tail with femcum as you shudder"
+			          +"[if (issquirter), liberally soaking your crotch and his thighs before tapering off].] You both remain there panting for a"
+			          +" while, your legs struggling to hold both of you up while you enjoy the warmth in your gut. You slowly separate and help one"
+			          +" another to a more comfy spot where you can recover.");
+			outputText("\n\nOnce you feel your strength return to your legs you bid him farewell, noting you may have actually tired him out as he"
+			          +" curls up for a nap, feathers puffed out at random angles from your rough treatment.");
+			player.orgasm('Anal');
+			dynStats("lib-", 1);
+			combat.cleanupAfterCombat();
+		}
+
+		//Cockatrice buttfuck (Drider version)
+		private function cockatriceDriderButtFuck():void
+		{
+			const CHOICE_PUSSY:int = 1;
+			const CHOICE_COCK:int  = 2;
+			var choice:int;
+			if (player.hasCock() && player.hasVagina()) // 50/50 chance for herms
+				choice = rand(2) == 0 ? CHOICE_PUSSY : CHOICE_COCK;
+			else
+				choice = player.hasVagina() ? CHOICE_PUSSY : CHOICE_COCK;
+			//spriteSelect(75);
+			clearOutput();
+			outputText("As you decide what to do with the cockatrice, your loins heated with arousal, you realise a you’ll have a hard time managing"
+			          +" anything, what with your spider like form being less than compatible with what many folk are packing. Looking around"
+			          +" briefly, you notice an alcove on the mountainside which spawns a brilliant idea. You could tie him up in there and get him"
+			          +" to use that nubby reptile cock to fuck your ass!");
+			outputText("\n\nTaking him by the hand, you lead him to the alcove before using some of your spider silk to tie him up by his arms,"
+			          +" holding him in between the two walls. He struggles a little before you shush him and turn around.");
+			outputText("\n\"I’m gonna fuck you nice and hard.\" you smile as you back up, positioning your abdomen below him so his thighs rest"
+			          +" either side of it, like some kind of parody of him riding you. As he slides towards where your human and spider halves meet,"
+			          +" you feel his length pressing between your [if (buttRating <= 4)tight|plush] cheeks"
+			          +" while his feathered thighs hug your hips.");
+			outputText("\n\nYou gently rock back and forth, making his length grind [if (buttRating <= 4)against|between] your cheeks as he swings"
+			          +" slightly. As you use your behind to tease his girthy cock you run your hands over your chest"
+			          +" [if (hasbreasts)cupping your [breasts]|trailing over your pecs] as you pinch your [nipples]. You feel wetness trail down"
+			          +" your crack, the cockatrice breathing heavily as he enjoys the show and his cock slides against your pucker easier. The nubby"
+			          +" texture of his cock makes you shudder, your asshole quivering as your [if (hasCock)[cock] hardens|[cunt] moistens].");
+
+			if (choice == CHOICE_PUSSY) {
+				outputText("\n\nYou chuckle as you slip two fingers into your [pussy], exaggerating each thrust and moan as you continue to rock"
+				          +" against his freely leaking cock. You look at the cockatrice over your shoulder with a lusty gaze as you pick up speed,"
+				          +" starting to schlick yourself with earnest, you clit poking out and begging for your touch."
+				          +" [if (player.balls > 0) You cup your [balls] with your free hand, rolling them between your fingers as they begin to roil"
+				          +" with seed][if (player.balls > 0 && hasCock), while][if (hasCock) your [cock] smears pre on your belly in a steady"
+				          +" bubbling stream, wanting to be buried in a warm, snug hole.] Before long your pussy is leaking nectar as you flick your"
+				          +" [clit] while you dip your fingers into your hot and sticky passage, coating them liberally before you wave them under"
+				          +" his nose teasingly. His nostrils flare and he moans, shaking his hips to hump at you as best he can, your lusty scent"
+				          +" speaking to his pleasure drunk mind. You slip your fingers into his mouth and he greedily sucks them clean with closed"
+				          +" eyes, jumping out of this submissive bliss as you spear yourself on his cock.");
+			} else {
+				outputText("\n\nYou chuckle as you stroke your [cock], exaggerating each stroke and moan as you continue to rock against his freely"
+				          +" leaking cock. You look at the cockatrice over your shoulder with a lusty gaze as you pick up speed, starting to jack"
+				          +" yourself as pre beads at the tip. [if (player.balls > 0 || hasVagina) You [if (player.balls > 0)cup your [balls],"
+				          +" rolling them between your fingers as they begin to roil with seed] [if (player.balls > 0 && hasVagina) and you]"
+				          +" [if (hasVagina) feel your pussy slowly leak juices, coating your thighs in sticky girl juices while ignored].]"
+				          +" Before long a steady stream of pre leaks from your [cock] and you run a fingertip through it before waving them under"
+				          +" his nose teasingly. His nostrils flare and he moans, shaking his hips to hump at you as best he can, your lusty scent"
+				          +" speaking to his pleasure drunk mind. You slip your fingers into his mouth and he greedily sucks them clean with closed"
+				          +" eyes, jumping out of this submissive bliss as you spear yourself on his cock.");
+			}
+
+			outputText("\n\nThe pair of you spend a moment enjoying the sensation of you finally being joined before you buck your hips, starting to"
+			          +" use the swaying silk ropes to make him fuck your [if (analLooseness <= 1)tight|spread] butthole. As his length pulls out,"
+			          +" the nubs slowly drag and catch on your inner walls, rubbing on your entrance as each one pops out before rapidly spearing"
+			          +" you again as he buries his length in you, spreading you open[if (hasCock) as the pointed tip prods your prostate]."
+			          +" Each thrust fills the silence with moans and the slap of flesh on flesh, your behind slowly become a little rosy from the"
+			          +" force of fucking. You continue to pleasure yourself as you rhythmically clench your tunnel, eager on making him fill you"
+			          +" before you cum. The cockatrice’s cock twitches in your ass as he grips your hips with his thighs, humping at your behind"
+			          +" desperately as he tried to hold back. With a pulsing shudder, his cock swells and lets loose rope after rope of hot cum deep"
+			          +" into your ass. He nips your shoulder as he empties himself into you, triggering you to lose your cool. You cum hard,"
+			          +" [if (hasCock) your [cock] spurting pearly white cum against the wall"
+			          +" [if (cumQuantity > 350) painting it white by the time it stops]][if (hasCock == true && hasVagina == true) and]"
+			          +" [if (hasVagina) your [pussy] soaking your thighs as your walls flutter]"
+			          +"[if (player.balls > 0), heat spreading through your clenched [balls] as"
+			          +" [if (player.balls > 1)they slowly relax|it slowly relaxes]].");
+			outputText("\n\nYou slowly move away and blush as your pucker feels cold, no doubt from the absence of his girthy member."
+			          +" Turning as you try to retain your composure while seed slowly drips down your cheeks, you untie the cockatrice and help him"
+			          +" to the ground, rubbing his shoulders for a while as you both enjoy the afterglow in each others company. Once you feel ready"
+			          +" you bid him goodbye, teasingly saying you’ll have to come back again tomorrow, laughing as his eyes widen and his cock"
+			          +" twitches slightly.");
+			player.orgasm('Anal');
+			dynStats("lib-", 1);
+			combat.cleanupAfterCombat();
+		}
+
+		private function rideCockatriceForeplay():void
+		{
+			const FOREPLAY_NEUTRAL:int = 0;
+			const FOREPLAY_BLOWJOB:int = 1;
+			const FOREPLAY_VAGINAL:int = 2;
+			var chooser:Number = FOREPLAY_NEUTRAL;
+
+			// Intro text 
+			outputText("You slowly make your way over to the cockatrice,");
+			player.biggestTitSize();
+			if (player.armor != ArmorLib.NOTHING) 
+				outputText(" stripping out of your [armor] as you approach,");
+			outputText(" standing over him as you give him a good look over. Now he isn’t rushing you, you can see he has quite the charming face,"
+			          +" a dashing mix of mischievous and kind. As you present yourself to him, he looks up at you,");
+			if (player.biggestTitSize() >= BREAST_CUP_H)
+				outputText(" or at least tries to, his view of your face obstructed by your bountiful breast flesh.");
+			else {
+				outputText(" as if asking for permission with his gaze. While he may be head level with your groin which would suggest your intent,"
+				          +" he hasn’t moved to touch you once.");
+			}
+			outputText(" The moment you tell him to start he smiles, scaled hands slowly sliding up the back of your"
+			          +" [if (isNaga)serpentine lower body|calves]. Surprisingly smooth and warm, his powerful grip massages up your"
+			          +" [if (isNaga)tail|legs], palms coming to rest on your [butt] as he leans forward. The heat of his breath on your"
+			          +" [if (hasCock)[cocks]|[if (hasVagina)[vagina]|crotch]] makes you shudder.");
+
+			if (player.hasVagina() && player.hasCock())
+				chooser = rand(2) == 0 ? FOREPLAY_VAGINAL : FOREPLAY_BLOWJOB;
+			else if (player.hasVagina())
+				chooser = FOREPLAY_VAGINAL;
+			else if (player.hasCock())
+				chooser = FOREPLAY_BLOWJOB;
+			else
+				chooser = FOREPLAY_NEUTRAL;
+
+			switch (chooser) {
+				case FOREPLAY_VAGINAL:
+					outputText("\n\nWith a slowness that seems unnatural for a creature that was moments ago bouncing around like a ferret hopped up"
+					          +" on sugar, he licks at your folds, his forked tongue dragging over your clit as he nuzzles you affectionately."
+					          +" He slowly increases his pace, his tongue dipping into your [vagina] with each lick. He nuzzles your clit as he"
+					          +" drives his tongue deeper, fucking you with his tongue with each leisurely flick. His clawed fingers grip your [butt]"
+					          +" a little tighter as he looks up at you beggingly. His purple member is slick with pre, his hips gently pumping with"
+					          +" the desire to sheathe himself in your slick cunt."
+					          +"[if (hasCock) Your neglected [cock] leaks in arousal, pre beading at the tip as you contemplate how you want this.]");
+					break;
+
+				case FOREPLAY_BLOWJOB:
+					var cockLength:Number = player.longestCockLength();
+					outputText("\n\nWith a slowness that seems unnatural for a creature that was moments ago bouncing around like a ferret hopped up"
+					          +" on sugar, he licks tentatively at your hardening [cock], his forked tongue slowly flicking across the tip."
+					          +" [if (hasVagina) Your pussies walls shudders in sympathetic pleasure, disappointment of not being filled ignored as"
+					          +" your bodies shared pleasure helps temporarily sate your dual sexes.] Opening his beak he slowly engulfs the head,"
+					          +" his tongue curling around it as he sucks. You’re surprised by how soft his beak is, the edge not hard and sharp as"
+					          +" you had expected, but more like a layer of firm rubber. You groan and slide your hands into his feathers, gently"
+					          +" rubbing behind his feathered ears as encouragement. He eagerly shoves more of your cock into his mouth with a slight"
+					          +" purr, his forked tongue flicking over the tip as he rubs and kneeds your buttcheeks.");
+
+					if (cockLength <= 5) {
+						outputText(" As the wet heat of his mouth and the gentle suction tease your [cock] you can’t help but force your length deeper"
+						          +" into his mouth, your hips pumping gently. He takes your length with ease, his beak brushing against your crotch"
+						          +" [if (hasVagina) your slit dripping | as your [balls] hit his chin] with each thrust.");
+					} else if (cockLength <= 12) {
+						outputText(" As the wet heat of his mouth and the gentle suction tease your [cock] you can’t help but force your length deeper"
+						          +" into his mouth, your hips pumping gently. With some difficulty he manages to take your length, your [cock]"
+						          +" entering his throat with each stroke. His beak brushes against your crotch"
+						          +" [if (hasVagina) your slit dripping | as your [balls] hit his chin] with each thrust.");
+					} else if (cockLength <= 18) {
+						outputText(" As the wet heat of his mouth and the gentle suction tease your  [cock] you can’t help but force your length"
+						          +" deeper into his mouth, your hips pumping gently. He barely manages to take your length, his throat bulging"
+						          +" obscenely as you thrust.");
+						if (player.hasVagina() || player.balls > 0) {
+							if (player.hasVagina())
+								outputText(" Your slit drips");
+							if (player.balls > 0)
+								outputText(" [if (hasVagina)and your|Your] [balls] swing[if (player.balls == 1)s] roughly");
+							outputText(" with each cock sheathing thrust.");
+						}
+					} else /* if (cockLength > 18) */ {
+						outputText(" As the wet heat of his mouth and the gentle suction tease your [cock] you can’t help but force your length deeper"
+						          +" into his mouth, your hips pumping gently. Unfortunately your sheer size halts you making much progress, much of"
+						          +" your length still simply exposed to the open air, rather than buried deep in his clenching throat.");
+						if (player.hasVagina() || player.balls > 0) {
+							if (player.hasVagina())
+								outputText(" Your slit drips");
+							if (player.balls > 0)
+								outputText(" [if (hasVagina)and your|Your] [balls] swing[if (player.balls == 1)s] roughly");
+							outputText(" with each incomplete thrust.");
+						}
+						outputText(" You notice his purple member is slick with pre, straining out of his genital slit."
+						          +" You contemplate how you you could best use this as you drag your length out of his throat.");
+					}
+					break;
+
+				case FOREPLAY_NEUTRAL:
+				default:
+					outputText("\n\nWith a slowness that seems unnatural for a creature that was moments ago bouncing around like a ferret hopped up"
+					          +" on sugar, he examines you with a curious look. Your lack of genitals seems to have stumped him. After a moment of"
+					          +" silence you sigh, removing yourself from his grip and drag him over to a nearby rock. The flat slab is perfect for"
+					          +" you to bend over, presenting your [ass] to him with a slight wiggle. Your [breasts] rub gently against the cool"
+					          +" surface as you tell him to get you nice and slick.");
+					outputText("\n\nYour [nipples] harden as you feel the heat of his breath against your cheeks, his clawed fingers gently digging"
+					          +" in as they spread your cheeks so that your [butthole] is exposed. You shiver as his moist breath ghosts over your"
+					          +" fluttering tunnel, gasping as something thick and wet begins to probe your depths. His tongue pushes past your ring"
+					          +" of muscle with ease, its reptilian forks tickling your sensitive inner walls. As his tongue retreats his hands slide"
+					          +" up your sides, gripping your [hips] as he then gives your crack a long, hard lick. As his tongue flicks against your"
+					          +" cheeks, you grind your [chest] across the rock, a painful pleasure delighting your senses.");
+					outputText("His next rough lick is in a circular motion, punctuated by affectionate nips to your [butt] before jabbing his"
+					          +" tongue back inside you. You know that at this point he’s slipped at least an inch of tongue into you, and he doesn't"
+					          +" seem inclined to stop until he’s tasted as much of you as he can. As he works his tongue deeper you hear him"
+					          +" whimper. With a smirk you turn your gaze to his thick purple member, his throbbing length straining against his"
+					          +" belly, a slick trail of pre painting his scales.You decide he’s done a good job on getting you warmed up with that"
+					          +" tongue of his, now its time to see if he’s just as good with that thick cock of his.");
+			}
+		}
+
+
 		//Player Defeated:
 		public function loseToCockatrice():void {
 			spriteSelect(75);
