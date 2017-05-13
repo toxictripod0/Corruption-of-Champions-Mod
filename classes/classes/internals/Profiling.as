@@ -19,7 +19,7 @@ public class Profiling {
 		return true;
 	}
 	private static function shouldReportProfiling(classname:String, origMethodName:String, dt:Number, pfcount:int):Boolean {
-		return true;//dt > 100;
+		return dt > 100;
 	}
 	public static function LogProfilingReport():void {
 		for (var key:String in PF_COUNT) {
