@@ -104,7 +104,7 @@ public function treeMenu(output:Boolean = true):void {
 		} else {
 			addDisabledButton(2, "Ride Tentacle");
 		}
-		if (player.findPerk(PerkLib.Dragonfire) >= 0 || player.findPerk(PerkLib.FireLord) >= 0 || player.findPerk(PerkLib.Hellfire) >= 0 || player.hasStatusEffect(StatusEffects.KnowsWhitefire) || player.findPerk(PerkLib.EnlightenedNinetails) >= 0 || player.findPerk(PerkLib.CorruptedNinetails) >= 0) {
+		if (player.findPerk(PerkLib.Dragonfire) >= 0 || player.findPerk(PerkLib.FireLord) >= 0 || player.findPerk(PerkLib.Hellfire) >= 0 || player.hasStatusEffect(StatusEffects.KnowsWhitefire) || player.hasStatusEffect(StatusEffects.KnowsBlackfire) || player.findPerk(PerkLib.EnlightenedNinetails) >= 0 || player.findPerk(PerkLib.CorruptedNinetails) >= 0) {
 			if (output) outputText("\n\nIt could be burned down with your supernatural fire, but it would definitely tire you.");
 			addButton(3, "Torch It", torchP3Tree);
 		} else {
@@ -424,7 +424,7 @@ public function flowerGrowsToP3():void {
 	} else {
 		addDisabledButton(2, "Ride Tentacle");
 	}
-	if (player.findPerk(PerkLib.Dragonfire) >= 0 || player.findPerk(PerkLib.FireLord) >= 0 || player.findPerk(PerkLib.Hellfire) >= 0 || player.hasStatusEffect(StatusEffects.KnowsWhitefire) || player.findPerk(PerkLib.EnlightenedNinetails) >= 0 || player.findPerk(PerkLib.CorruptedNinetails) >= 0) {
+	if (player.findPerk(PerkLib.Dragonfire) >= 0 || player.findPerk(PerkLib.FireLord) >= 0 || player.findPerk(PerkLib.Hellfire) >= 0 || player.hasStatusEffect(StatusEffects.KnowsWhitefire) || player.hasStatusEffect(StatusEffects.KnowsBlackfire) || player.findPerk(PerkLib.EnlightenedNinetails) >= 0 || player.findPerk(PerkLib.CorruptedNinetails) >= 0) {
 		outputText(", though you suppose you could burn it down with magical fire if you set your mind to it");
 		addButton(3, "Torch It", torchP3Tree);
 	} else {
@@ -537,12 +537,12 @@ private function torchP3Tree():void {
 	//Requires fire-based attack and fatigue at or below 30.  Maxes fatigue and removes the tree.
 	outputText("This has gone on long enough!  This thing cannot continue to grow in your camp any longer, and you have just the means to remove it: fire.  ");
 	//[(nerdfire)
-	if (player.hasStatusEffect(StatusEffects.KnowsWhitefire)) outputText("Closing your eyes to focus, you gather your energies, and unleash your white, supernatural flames upon the thing.");
+	if (player.hasStatusEffect(StatusEffects.KnowsBlackfire) || player.hasStatusEffect(StatusEffects.KnowsWhitefire)) outputText("Closing your eyes to focus, you gather your energies, and unleash your supernatural flames upon the thing.");
 	//(bromancefire)
 	else if (player.findPerk(PerkLib.FireLord) >= 0) outputText("Sucking in your breath, you inflate your chest and stir the embers of the jaguar demon's gift.  Dredging up an enormous pine-green fireball, you exhale and launch it at the tree.");
 	else outputText("Sucking in your breath, you inflate your chest and stir the embers of your fiery gift.  Dredging up an enormous fireball, you exhale and launch it at the tree.");
 	outputText("  It goes up by the torch, though the fire starts to fade sooner than you would expect.  You huff, but repeat the action, layering a new blaze atop the previous one; you put all your concentration into this new conflagration, stoking the inferno with every ounce of your ");
-	if (player.hasStatusEffect(StatusEffects.KnowsWhitefire)) outputText("magical will");
+	if (player.hasStatusEffect(StatusEffects.KnowsBlackfire) || player.hasStatusEffect(StatusEffects.KnowsWhitefire)) outputText("magical will");
 	else outputText("breath");
 	outputText(".");
 	
