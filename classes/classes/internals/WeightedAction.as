@@ -25,6 +25,15 @@ package classes.internals
 			return this;
 		}
 
+		public function addMany(weight:Number, ..._actions):WeightedAction
+		{
+			for each (var action:Function in _actions) {
+				actions.push([action, weight]);
+				sum += weight;
+			}
+			return this;
+		}
+
 		public function exec():void
 		{
 			var random:Number = Math.random()*sum;
