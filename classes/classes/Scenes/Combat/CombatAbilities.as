@@ -101,6 +101,8 @@ package classes.Scenes.Combat
 						addButton(7, "Might", spellMight, null, null, null, "The Might spell draws upon your lust and uses it to fuel a temporary increase in muscle size and power.  It does carry the risk of backfiring and raising lust, like all black magic used on oneself.  \n\nFatigue Cost: " + player.spellCost(25) + "");
 					else outputText("<b>You are already under the effects of Might and cannot cast it again.</b>\n\n");
 				}
+				
+				if (player.hasStatusEffect(StatusEffects.KnowsBlackfire)) addButton(8, "Blackfire", spellBlackfire, null, null, null, "Blackfire is the black magic variant of Whitefire. It is a potent fire based attack that will burn your foe with flickering black and purple flames, ignoring their physical toughness and most armors.\n\nFatigue Cost: " + player.spellCost(40) + "");
 			}
 			// JOJO ABILITIES -- kind makes sense to stuff it in here along side the white magic shit (also because it can't fit into M. Specials :|
 			if (player.findPerk(PerkLib.CleansingPalm) >= 0 && player.cor < (10 + player.corruptionTolerance())) {
@@ -498,6 +500,77 @@ package classes.Scenes.Combat
 			if (player.lust >= player.maxLust()) doNext(combat.endLustLoss);
 			else monster.doAI();
 			return;
+		}
+		
+		//Blackfire. A stronger but more costly version of Whitefire.
+		public function spellBlackfire():void {
+			clearOutput();
+			if (player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + player.spellCost(40) > player.maxFatigue()) {
+				outputText("You are too tired to cast this spell.", true);
+				doNext(magicMenu);
+				return;
+			}
+			doNext(combat.combatMenu);
+			player.changeFatigue(40, 1);
+			if (monster.hasStatusEffect(StatusEffects.Shell)) {
+				outputText("As soon as your magic touches the multicolored shell around " + monster.a + monster.short + ", it sizzles and fades to nothing.  Whatever that thing is, it completely blocks your magic!\n\n");
+				flags[kFLAGS.SPELLS_CAST]++;
+				spellPerkUnlock();
+				monster.doAI();
+				return;
+			}
+			if (monster is Doppleganger)
+			{
+				(monster as Doppleganger).handleSpellResistance("blackfire");
+				flags[kFLAGS.SPELLS_CAST]++;
+				spellPerkUnlock();
+				return;
+			}
+			if (monster is FrostGiant && player.hasStatusEffect(StatusEffects.GiantBoulder)) {
+				(monster as FrostGiant).giantBoulderHit(2);
+				monster.doAI();
+				return;
+			}
+			outputText("You narrow your eyes, channeling your lust with deadly intent.");
+			//Backfire calculation
+			var backfire:int = 25;
+			if (player.findPerk(PerkLib.FocusedMind) >= 0) backfire = 15;
+			if (rand(100) < backfire) {
+				outputText(" An errant sexual thought crosses your mind, and you lose control of the spell! Your ", false);
+				if (player.gender == 0) outputText(player.assholeDescript() + " tingles with a desire to be filled as your libido spins out of control.", false);
+				if (player.gender == 1) {
+					if (player.cockTotal() == 1) outputText(player.cockDescript(0) + " twitches obscenely and drips with pre-cum as your libido spins out of control.", false);
+					else outputText(player.multiCockDescriptLight() + " twitch obscenely and drip with pre-cum as your libido spins out of control.", false);
+				}
+				if (player.gender == 2) outputText(player.vaginaDescript(0) + " becomes puffy, hot, and ready to be touched as the magic diverts into it.", false);
+				if (player.gender == 3) outputText(player.vaginaDescript(0) + " and " + player.multiCockDescriptLight() + " overfill with blood, becoming puffy and incredibly sensitive as the magic focuses on them.", false);
+				dynStats("lib", 1, "lus", (rand(20) + 10)); //Git gud
+			}
+			else {
+				outputText(" You snap your fingers and " + monster.a + monster.short + " is enveloped in a flash of black and purple flames!\n", true);
+				temp = int(30 + (player.inte / 3 + rand(player.inte / 2)) * player.spellMod());
+				//High damage to goes.
+				temp = calcInfernoMod(temp);
+				if (monster.short == "goo-girl") temp = Math.round(temp * 1.5);
+				if (monster.short == "tentacle beast") temp = Math.round(temp * 1.2);
+				outputText(monster.capitalA + monster.short + " takes <b><font color=\"#800000\">" + temp + "</font></b> damage.", false);
+				//Using fire attacks on goo
+				if (monster.short == "goo-girl") {
+					outputText("  Your flames lick the girl's body and she opens her mouth in pained protest as you evaporate much of her moisture. When the fire passes, she seems a bit smaller and her slimy " + monster.skinTone + " skin has lost some of its shimmer.", false);
+					if (monster.findPerk(PerkLib.Acid) < 0) monster.createPerk(PerkLib.Acid,0,0,0,0);
+				}
+				if (monster.short == "Holli" && !monster.hasStatusEffect(StatusEffects.HolliBurning)) (monster as Holli).lightHolliOnFireMagically();
+				outputText("\n\n", false);
+				combat.checkAchievementDamage(temp);
+				flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
+				flags[kFLAGS.SPELLS_CAST]++;
+				spellPerkUnlock();
+				monster.HP -= temp;
+				statScreenRefresh();
+			}
+			if (player.lust >= player.maxLust()) doNext(combat.endLustLoss);
+			else if (monster.HP < 1) doNext(combat.endHpVictory);
+			else monster.doAI();
 		}
 		
 		//SPECIAL SPELLS
