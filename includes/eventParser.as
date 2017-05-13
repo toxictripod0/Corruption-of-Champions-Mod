@@ -4,7 +4,8 @@ import classes.Player;
 import classes.Items.Consumable;
 import classes.Scenes.Areas.Lake;
 import classes.Scenes.Camp.ScarredBlade;
-import classes.internals.Profiling;
+import classes.internals.profiling.Begin;
+import classes.internals.profiling.End;
 
 import coc.view.MainView;
 
@@ -118,9 +119,9 @@ public function errorPrint(details:* = null):void
 //Argument is time passed.  Pass to event parser if nothing happens.
 // The time argument is never actually used atm, everything is done with timeQ instead...
 public function goNext(time:Number, needNext:Boolean):Boolean  {
-	Profiling.Begin("eventParser","goNext",time);
+	Begin("eventParser","goNext",time);
 	var rslt:Boolean = goNextWrapped(time,needNext);
-	Profiling.End("eventParser","goNext");
+	End("eventParser","goNext");
 	return rslt;
 }
 private function goNextWrapped(time:Number, needNext:Boolean):Boolean  {
