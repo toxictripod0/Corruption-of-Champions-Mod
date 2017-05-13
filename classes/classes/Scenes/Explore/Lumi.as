@@ -135,7 +135,7 @@ public function lumiEnhance():void {
 		addDisabledButton(btn++, consumables.FOXBERY.shortName);
 	}
 	if (player.hasItem(consumables.FOXJEWL)) {
-		addButton(1, consumables.FOXJEWL.shortName, lumiEnhanceGo, consumables.FOXJEWL, undefined, undefined);
+		addButton(btn++, consumables.FOXJEWL.shortName, lumiEnhanceGo, consumables.FOXJEWL, undefined, undefined);
 	} else {
 		addDisabledButton(btn++, consumables.FOXJEWL.shortName);
 	}
