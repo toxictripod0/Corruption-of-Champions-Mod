@@ -857,7 +857,7 @@ package classes.Scenes.Dungeons.AnzuPalace
 			if (flags[kFLAGS.ANZU_FED_COUNTER] == 0) {
 				outputText("\n\n\"<i>Huh, that was…nice.</i>\"");
 				outputText("\n\nYou say that you’re glad that he liked his drink, and despite his embarrassment, he managed to even enjoy it. Anzu answers with a soft laugh, and giving your breast a look, he asks you.");
-				outputText("\n\n\"<i>So, i'd likei’dyou’d like to repeat it again, when your breasts feel to full again…Well  if you don’t mind</i>\"");
+				outputText("\n\n\"<i>So, i'd like to repeat it again, when your breasts feel to full again… Well if you don’t mind</i>\"");
 				outputText("\n\nOf course, but for now, they’re quite empty. You’ll return to the camp for rest and return to him when you’re in the mood to give him milk again. After saying your goodbyes to the avian, you find your way through the Rift and return safely to your camp.");
 			}
 			else {

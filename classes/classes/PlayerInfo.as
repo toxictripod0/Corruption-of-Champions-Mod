@@ -663,7 +663,7 @@ package classes
 			menu();
 			if (flags[kFLAGS.DOUBLE_ATTACK_STYLE] == 0) {
 				outputText("You will currently always double attack in combat.  If your strength exceeds sixty, your double-attacks will be done at sixty strength in order to double-attack.");
-				outputText("\n\nYou can change it to double attack until sixty strength and then dynamicly switch to single attacks.");
+				outputText("\n\nYou can change it to double attack until sixty strength and then dynamically switch to single attacks.");
 				outputText("\nYou can change it to always single attack.");
 			}
 			else if (flags[kFLAGS.DOUBLE_ATTACK_STYLE] == 1) {
