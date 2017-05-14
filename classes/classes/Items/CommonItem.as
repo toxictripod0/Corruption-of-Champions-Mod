@@ -22,8 +22,8 @@ package classes.Items
 		public function clearOutput():void{
 			kGAMECLASS.clearOutput();
 		}
-		public function outputText(text:String):void{
-			kGAMECLASS.outputText(text);
+		public function outputText(text:String, clearOutput:Boolean = false):void{
+			kGAMECLASS.outputText(text, clearOutput);
 		}
 
 		public function CommonItem(id:String, shortName:String=null, longName:String=null, value:Number=0, description:String=null)
