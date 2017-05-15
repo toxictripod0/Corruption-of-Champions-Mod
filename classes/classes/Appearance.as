@@ -1871,7 +1871,7 @@ package classes
 					if (rand(7) == 0) return "colossal, muscly ass";
 					options = ["ginormous, muscle-bound ",
 						"colossal yet toned ",
-						"strong, tremdously large ",
+						"strong, tremendously large ",
 						"tremendous, muscled ",
 						"ginormous, toned ",
 						"colossal, well-defined "];
@@ -2434,7 +2434,7 @@ package classes
 			[ANAL_WETNESS_DRY, "dry"],
 			[ANAL_WETNESS_NORMAL, "normal"],
 			[ANAL_WETNESS_MOIST, "moist"],
-			[ANAL_WETNESS_SLIMY, "slimym"],
+			[ANAL_WETNESS_SLIMY, "slimy"],
 			[ANAL_WETNESS_DROOLING, "drooling"],
 			[ANAL_WETNESS_SLIME_DROOLING, "slime-drooling"],
 		];
@@ -2479,7 +2479,7 @@ package classes
 		 */
 		public static function describeByScale(value:Number, scale:Array, lessThan:String = "less than", moreThan:String = "more than"):String
 		{
-			if (scale.length == 0) return "undescribeale";
+			if (scale.length == 0) return "indescribable";
 			if (scale.length == 1) return "about " + scale[0][1];
 			if (value < scale[0][0]) return lessThan + " " + scale[0][1];
 			if (value == scale[0][0]) return scale[0][1];
