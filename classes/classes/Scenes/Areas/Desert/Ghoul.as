@@ -429,7 +429,7 @@ package classes.Scenes.Areas.Desert {
 		
 		private const HORN_VARIATIONS:Array = [
 			["demon"],
-			["cow"]
+			["cow"],
 			["minotaur"],
 			["2 draconic"],
 			["4, 12-inch long draconic"],

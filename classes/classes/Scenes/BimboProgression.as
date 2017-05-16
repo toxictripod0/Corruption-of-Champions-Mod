@@ -44,7 +44,7 @@ package classes.Scenes
 			outputText("Minimal lust: " + flags[kFLAGS.BIMBOSKIRT_MINIMUM_LUST] + "\n");
 			outputText("\n");
 			
-			outputText("<b>Face</b>: " + player.faceDesc() + ", feminity " + player.femininity + "\n");
+			outputText("<b>Face</b>: " + player.faceDesc() + ", femininity " + player.femininity + "\n");
 			outputText("<b>Tone</b>: " + player.tone + "\n");
 			outputText("<b>Hair</b>: length " + Math.round(player.hairLength) + ", " + player.hairDescript() + "\n");
 			outputText("<b>Tits</b>: " + player.breastDescript(0) + ", size: " + player.breastRows[0].breastRating + " (" + player.breastCup(0) + ") with " + player.nippleDescript(0) + " of size " + player.nippleLength + "\n");

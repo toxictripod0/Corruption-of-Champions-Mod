@@ -1063,7 +1063,7 @@ public function openTamanisSatchel():void {
 	}
 	menu();
 	if (player.keyItemv1("Tamani's Satchel") > 0) {
-		outputText("\nThere " + (player.keyItemv1("Tamani's Satchel") == 1 ? "is a container" : "are two containers") + " of pasty sustance labelled as 'Reducto'.");
+		outputText("\nThere " + (player.keyItemv1("Tamani's Satchel") == 1 ? "is a container" : "are two containers") + " of pasty substance labelled as 'Reducto'.");
 		addButton(0, consumables.REDUCTO.shortName, satchelTakeItem, consumables.REDUCTO, 1);
 		isEmpty = false;
 	}
