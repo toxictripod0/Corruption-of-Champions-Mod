@@ -1,8 +1,8 @@
-package classes.Scenes.NPCs{
+package classes.Scenes.NPCs {
 	import classes.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
-import classes.Scenes.API.Encounter;
+	import classes.Scenes.API.Encounter;
 
 public class Rathazul extends NPCAwareContent implements TimeAwareInterface, Encounter {
 
@@ -756,6 +756,7 @@ private function craftEbonweaveArmorForReal(type:int = 0):void {
 	else { //Undergarments
 		player.destroyItems(useables.EBNFLWR, 3);
 	}
+	player.gems -= 500;
 	clearOutput();
 	var itype:ItemType;
 	switch(type) {
