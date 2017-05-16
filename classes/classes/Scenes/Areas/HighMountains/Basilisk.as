@@ -144,7 +144,7 @@ package classes.Scenes.Areas.HighMountains
 			this.level = 12;
 			this.gems = rand(10) + 10;
 			this.drop = new ChainedDrop().add(consumables.REPTLUM, 0.9)
-					.add(useables.EBNFLWR, 0.1);
+					.elseDrop(useables.EBNFLWR);
 			this.tailType = TAIL_TYPE_LIZARD;
 			this.tailRecharge = 0;
 			this.createPerk(PerkLib.BasiliskResistance, 0, 0, 0, 0);
