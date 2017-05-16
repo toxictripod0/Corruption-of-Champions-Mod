@@ -32,7 +32,7 @@ package classes.Items
 				PerkLib.WizardsEndurance,15,0,0,0);
 		public const EBNROBE:Armor = new ArmorWithPerk("EWRobe", "Ebonweave Robe", "Ebonweave Robe", "an Ebonweave Robe", 9, 3000, "This robe is made of ebonweave, a material created using refined Ebonbloom petals. This robe is comfortable, yet more protective than chainmail. It has a mystical aura to it.", "Medium",
 				PerkLib.WizardsEndurance,30,0,0,0);
-		public const EBNIROB:Armor = new ArmorWithPerk("EWIRobe", "Indescent Ebonweave Robe", "Indescent Ebonweave Robe", "an Indescent Ebonweave Robe", 6, 3000, "More of a longcoat than a robe, this outfit is crafted from refined Ebonbloom petals. Discrete straps centered around the belt keep the front open.", "Light",
+		public const EBNIROB:Armor = new ArmorWithPerk("EWIRobe", "Indecent Ebonweave Robe", "Indecent Ebonweave Robe", "an Indecent Ebonweave Robe", 6, 3000, "More of a longcoat than a robe, this outfit is crafted from refined Ebonbloom petals. Discrete straps centered around the belt keep the front open.", "Light",
 				PerkLib.WizardsEndurance,30,0,0,0,"",
 				PerkLib.SluttySeduction,5,0,0,0,"Your revealing robes allow you access to 'Seduce', an improved form of 'Tease'.", true);
 		public const FULLCHN:Armor = new Armor("FullChn","Full Chain","full-body chainmail","a full suit of chainmail armor",8,150,"This full suit of chainmail armor covers its wearer from head to toe in protective steel rings.","Medium");
