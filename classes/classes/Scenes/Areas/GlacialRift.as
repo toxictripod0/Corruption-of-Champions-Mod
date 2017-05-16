@@ -16,12 +16,13 @@ package classes.Scenes.Areas
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Scenes.API.Encounter;
 	import classes.Scenes.API.Encounters;
+ 	import classes.Scenes.API.IExplorable;
 	import classes.Scenes.Areas.GlacialRift.*;
 	import classes.Scenes.NPCs.GooArmor;
 
 	use namespace kGAMECLASS;
 	
-	public class GlacialRift extends BaseContent
+ 	public class GlacialRift extends BaseContent implements IExplorable
 	{
 		public var valkyrieScene:ValkyrieScene = new ValkyrieScene();
 		public var yetiScene:YetiScene = new YetiScene();
@@ -103,7 +104,7 @@ package classes.Scenes.Areas
 		});
 	}
 
-		public function exploreGlacialRift():void {
+ 		public function explore():void {
 			flags[kFLAGS.DISCOVERED_GLACIAL_RIFT]++;
 			doNext(playerMenu);
 			explorationEncounter.execEncounter();
