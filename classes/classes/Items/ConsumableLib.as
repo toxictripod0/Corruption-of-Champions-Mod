@@ -156,7 +156,7 @@ package classes.Items
 		public const PRNPKR :SimpleConsumable  = mk("PrnsPkr", "P.Pucker", "a vial of pinkish fluid", m.princessPucker, "A vial filled with a viscous pink liquid. A label reads \"Princess Pucker\".");
 		public const SENSDRF:SimpleConsumable = mk("SensDrf","SensDraft", "a bottle of sensitivity draft", m.sensitivityDraft, "This carefully labelled potion is a 'Sensitivity Draft', and if the diagrams are any indication, it will make your body more sensitive.", 15);
 		public const SMART_T:SimpleConsumable = mk("Smart T","Scholars T.", "a cup of scholar's tea", m.scholarsTea, "This powerful brew supposedly has mind-strengthening effects.");
-		public const VITAL_T:SimpleConsumable = mk("Vital T", "Vitality T.", "a vitality tincture", m.vitalityTincture, "This potent tea is supposedly good for the strengthening the body.");
+		public const VITAL_T:Consumable = new VitalityTincture();
 		public const W_STICK:WingStick = new WingStick();
 		
 		//TRANSFORMATIVE ITEMS
