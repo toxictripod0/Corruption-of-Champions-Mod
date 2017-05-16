@@ -19,10 +19,6 @@ package classes.Items.Consumables
 			super("Wolf Pp","Wolf Pp", "a Wolf Pepper", ConsumableLib.DEFAULT_VALUE, "The pepper is shiny and black, bulbous at the base but long and narrow at the tip. It has a fuzzy feel to it and it smells spicy. Somehow, you know it's different from the usual Canine Peppers you see.")
 		}
 		
-		private function dynStats(... args):void {
-			game.dynStats(args);
-		}
-		
 		// Fuck yo dog shit we full-on wolf bitches now -Foxwells
 		override public function useItem():Boolean
 		{

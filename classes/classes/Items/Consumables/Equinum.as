@@ -20,10 +20,6 @@ package classes.Items.Consumables
 			super("Equinum", "Equinum", "a vial of Equinum", ConsumableLib.DEFAULT_VALUE, "This is a long flared vial with a small label that reads, \"<i>Equinum</i>\".  It is likely this potion is tied to horses in some way.");
 		}
 		
-		private function dynStats(... args):void {
-			game.dynStats(args);
-		}
-		
 		override public function useItem():Boolean {
 			var mutationsHelper:MutationsHelper = new MutationsHelper();
 			

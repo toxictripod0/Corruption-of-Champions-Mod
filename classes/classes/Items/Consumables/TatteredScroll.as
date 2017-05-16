@@ -14,10 +14,6 @@ package classes.Items.Consumables
 			super("TScroll","TScroll", "a tattered scroll", ConsumableLib.DEFAULT_VALUE, "This tattered scroll is written in strange symbols, yet you have the feeling that if you tried to, you could decipher it.");
 		}
 		
-		private function dynStats(... args):void {
-			game.dynStats(args);
-		}
-		
 		override public function useItem():Boolean
 		{
 			var temp:int = 0;

@@ -16,10 +16,6 @@ package classes.Items.Consumables
 			super("Clovis", "Clovis", "a bottle of Clovis", ConsumableLib.DEFAULT_VALUE, "This bottle is in the shape of a 4-leaf-clover and contains a soft pink potion. An image of a sheep is on the label along with text, \"<i>Clovis - to help you to live in clover</i>\".");
 		}
 		
-		private function dynStats(... args):void {
-			game.dynStats(args);
-		}
-		
 		override public function useItem():Boolean
 		{
 			var tfSource: String = "clovis";
