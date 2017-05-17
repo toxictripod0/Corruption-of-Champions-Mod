@@ -16,13 +16,13 @@ package classes.Scenes.Areas
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Scenes.API.Encounter;
 	import classes.Scenes.API.Encounters;
-	import classes.Scenes.API.IExplorable;
+ 	import classes.Scenes.API.IExplorable;
 	import classes.Scenes.Areas.GlacialRift.*;
 	import classes.Scenes.NPCs.GooArmor;
 
 	use namespace kGAMECLASS;
 	
-	public class GlacialRift extends BaseContent implements IExplorable
+ 	public class GlacialRift extends BaseContent implements IExplorable
 	{
 		public var valkyrieScene:ValkyrieScene = new ValkyrieScene();
 		public var yetiScene:YetiScene = new YetiScene();
@@ -104,7 +104,7 @@ package classes.Scenes.Areas
 		});
 	}
 
-		public function explore():void {
+ 		public function explore():void {
 			flags[kFLAGS.DISCOVERED_GLACIAL_RIFT]++;
 			doNext(playerMenu);
 			explorationEncounter.execEncounter();
@@ -178,6 +178,7 @@ package classes.Scenes.Areas
 		}
 
 		private function amarokEncounter():void {
+			spriteSelect(109);
 			outputText("As your feet carry you through the barren tundra, you can't shake the feeling of being watched. Your paranoia gets the better of you, and you come to a stop to listen for anything nearby. You hear nothing. You turn around just to be sure, and see nothing. You laugh at your silliness and continue walking, now with a hand on your " + player.weaponName + ". As though on cue, you hear a snarl from behind you. You whip around and strike with your " + player.weaponName + ", barely keeping an enormous wolf from tackling you. Between its black fur and golden eyes, you aren't quite sure how you managed to miss it. It hardly matters, though-- the wolf, most definitely an Amarok, has already recovered and is preparing another attack. It's time for a fight!", true);
 			startCombat(new Amarok());
 		}
