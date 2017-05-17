@@ -826,7 +826,7 @@ import classes.GlobalFlags.kFLAGS;
 				(hairLength >= 40 && tempHair < 40) ||
 				(hairLength >= 40 && hairLength >= tallness && tempHair < tallness)
 			) {
-				game.outputText("\n<b>Your hair's growth has reached a new threshhold, giving you " + hairDescript() + ".\n</b>", false);
+				game.outputText("\n<b>Your hair's growth has reached a new threshold, giving you " + hairDescript() + ".\n</b>", false);
 				return true;
 			}
 			return false;
@@ -841,23 +841,23 @@ import classes.GlobalFlags.kFLAGS;
 				return true;
 			}
 			else if (beardLength >= 0.2 && tempBeard < 0.2) {
-				game.outputText("\n<b>Your beard's growth has reached a new threshhold, giving you " + beardDescript() + ".\n</b>", false);
+				game.outputText("\n<b>Your beard's growth has reached a new threshold, giving you " + beardDescript() + ".\n</b>", false);
 				return true;
 			}
 			else if (beardLength >= 0.5 && tempBeard < 0.5) {
-				game.outputText("\n<b>Your beard's growth has reached a new threshhold, giving you " + beardDescript() + ".\n</b>", false);
+				game.outputText("\n<b>Your beard's growth has reached a new threshold, giving you " + beardDescript() + ".\n</b>", false);
 				return true;
 			}
 			else if (beardLength >= 1.5 && tempBeard < 1.5) {
-				game.outputText("\n<b>Your beard's growth has reached a new threshhold, giving you " + beardDescript() + ".\n</b>", false);
+				game.outputText("\n<b>Your beard's growth has reached a new threshold, giving you " + beardDescript() + ".\n</b>", false);
 				return true;
 			}
 			else if (beardLength >= 3 && tempBeard < 3) {
-				game.outputText("\n<b>Your beard's growth has reached a new threshhold, giving you " + beardDescript() + ".\n</b>", false);
+				game.outputText("\n<b>Your beard's growth has reached a new threshold, giving you " + beardDescript() + ".\n</b>", false);
 				return true;
 			}
 			else if (beardLength >= 6 && tempBeard < 6) {
-				game.outputText("\n<b>Your beard's growth has reached a new threshhold, giving you " + beardDescript() + ".\n</b>", false);
+				game.outputText("\n<b>Your beard's growth has reached a new threshold, giving you " + beardDescript() + ".\n</b>", false);
 				return true;
 			}
 

@@ -934,7 +934,7 @@ package classes.Scenes.Dungeons.D3
 				outputText(" The townsfolk lynched their traitorous leaders right there and then under the watchful eyes of the Champion. " + player.mf("He","She") + " nodded approvingly when they gave their last twitches, seemingly happy to let small-town justice run its course.");
 			}
 			outputText("\n\nLife continued on. A new council was chosen, but it was Champion [name] that most people followed. " + player.mf("He","She") + " had left on the cusp of adulthood and returned a grizzled");
-			outputText(" warrior. With a seemingly infallable champion there to defend it");
+			outputText(" warrior. With a seemingly infallible champion there to defend it");
 			if(getGame().camp.companionsCount() > 0)
 			{
 				outputText(" to say nothing of " + player.mf("his","her") + " bizarre friend");

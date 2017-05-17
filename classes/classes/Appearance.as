@@ -2271,7 +2271,7 @@ package classes
 		);
 		public static const DEFAULT_HORNS_NAMES:Object = createMapFromPairs(
 				[
-					[HORNS_NONE, "non-existant"],
+					[HORNS_NONE, "non-existent"],
 					[HORNS_DEMON, "demon"],
 					[HORNS_COW_MINOTAUR, "cow"],
 					[HORNS_DRACONIC_X2, "2 draconic"],
@@ -2286,7 +2286,7 @@ package classes
 		);
 		public static const DEFAULT_ANTENNAE_NAMES:Object = createMapFromPairs(
 				[
-					[ANTENNAE_NONE, "non-existant"],
+					[ANTENNAE_NONE, "non-existent"],
 					[ANTENNAE_BEE, "bee"],
 				]
 		);
@@ -2302,7 +2302,7 @@ package classes
 		);
 		public static const DEFAULT_TAIL_NAMES:Object = createMapFromPairs(
 				[
-					[TAIL_TYPE_NONE, "non-existant"],
+					[TAIL_TYPE_NONE, "non-existent"],
 					[TAIL_TYPE_HORSE, "horse"],
 					[TAIL_TYPE_DOG, "dog"],
 					[TAIL_TYPE_DEMONIC, "demonic"],
@@ -2334,7 +2334,7 @@ package classes
 		);
 		public static const DEFAULT_WING_NAMES:Object = createMapFromPairs(
 				[
-					[WING_TYPE_NONE, "non-existant"],
+					[WING_TYPE_NONE, "non-existent"],
 					[WING_TYPE_BEE_LIKE_SMALL, "small bee-like"],
 					[WING_TYPE_BEE_LIKE_LARGE, "large bee-like"],
 					[WING_TYPE_HARPY, "harpy"],
@@ -2351,7 +2351,7 @@ package classes
 		);
 		public static const DEFAULT_WING_DESCS:Object = createMapFromPairs(
 				[
-					[WING_TYPE_NONE, "non-existant"],
+					[WING_TYPE_NONE, "non-existent"],
 					[WING_TYPE_BEE_LIKE_SMALL, "small bee-like"],
 					[WING_TYPE_BEE_LIKE_LARGE, "large bee-like"],
 					[WING_TYPE_HARPY, "large feathery"],

@@ -50,7 +50,7 @@ public function minoVictoryRapeChoices():void {
 	
 	addDisabledButton(0, "Use Cock", "This scene requires you to have fitting cock and sufficient arousal.");
 	addDisabledButton(1, "Use Vagina", "This scene requires you to have vagina and sufficient arousal.");
-	addDisabledButton(2, "Use Both", "This scene requires you to be herm and to have sufficient arousal. This scene can't accomodate taurs.");
+	addDisabledButton(2, "Use Both", "This scene requires you to be herm and to have sufficient arousal. This scene can't accommodate taurs.");
 	addDisabledButton(3, "TentacleDick", "This scene requires you to have at least two cocks, at least one of them should be tentacle and have sufficient arousal.");
 	addDisabledButton(4, "UrethraFuck", "This scene requires you to have long enough, bot not too thick cock and sufficient arousal.");
 	addDisabledButton(5, "MakeHimSuck", "This scene requires you to have fitting cock and sufficient arousal.");
@@ -774,7 +774,7 @@ public function minoCumUpdate():Boolean {
 		//Clear addiction if addicted!
 		if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] > 0) {
 			//Clear addiction text
-			outputText("\n<b>For the first time in a long while, your head is clear and devoid of the unnatural need for minotaur cum. You've overcome your dependance on it, ", false);
+			outputText("\n<b>For the first time in a long while, your head is clear and devoid of the unnatural need for minotaur cum. You've overcome your dependence on it, ", false);
 			if (player.cor > 60) outputText("but miss the tingling apathy and fuzziness that filled your head every time one of them was squirting inside you.", false);
 			else outputText("and resolve to give the beasts a wide berth from now on.", false);
 			outputText("</b>\n", false);
@@ -854,7 +854,7 @@ public function minoCumUpdate():Boolean {
 public function minoAddictionFuck():void {
 	spriteSelect(44);
 	clearOutput();
-	outputText("While exploring the mountains, a familiar musky scent works its way into your nostrils.   Sniffing hungrily, you begin shaking, nearly convulsing with need.   You don't think, you act, sprinting heedlessly around the rock obstructions that litter the jagged mountain-side, chasing down your need.  Rounding a sharp bend, you sigh happily as the smell noticably increases in strength.  A few feet away is a minotaur, covered in shaggy fur and snacking on fruit.  Ecstatic, you scrabble forwards, sending tiny rocks everywhere.   The minotaur looks up, at first with a frown, then with a gradually widening grin as he recognizes the look in your eyes.\n\n", false);
+	outputText("While exploring the mountains, a familiar musky scent works its way into your nostrils.   Sniffing hungrily, you begin shaking, nearly convulsing with need.   You don't think, you act, sprinting heedlessly around the rock obstructions that litter the jagged mountain-side, chasing down your need.  Rounding a sharp bend, you sigh happily as the smell noticeably increases in strength.  A few feet away is a minotaur, covered in shaggy fur and snacking on fruit.  Ecstatic, you scrabble forwards, sending tiny rocks everywhere.   The minotaur looks up, at first with a frown, then with a gradually widening grin as he recognizes the look in your eyes.\n\n", false);
 		
 	outputText("He tosses aside the fruit, forgotten as his veiny shaft forces aside his loincloth, proud and dripping.   You NEED him, and you drop to your knees and masturbate, knowing that soon he'll be filling you full of what you need.   The blatant sexual show does the trick, and you shudder as the drooling horse-cock gets closer and closer to you.   At the last moment the minotaur picks you up, and tosses you backwards, into a cave.  Your hope sinks, but then he starts to advance upon you again, and you know the time for waiting is over...", false);
 	

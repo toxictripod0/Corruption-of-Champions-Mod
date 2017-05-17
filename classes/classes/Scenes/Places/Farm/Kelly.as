@@ -763,7 +763,7 @@ private function approachKelly():void {
 		addButton(6,"Give CanineP",giveKellyAPepper);
 	}
 	if (flags[kFLAGS.KELLY_VAGINALLY_FUCKED_COUNT] > 0 && flags[kFLAGS.KELLY_DISOBEYING_COUNTER] >= 3 && player.hasCock()) {
-		outputText("\n<b>It looks like Kelly has taken to pleasuring herself again in your absense.  Do you want to take care of that?</b>");
+		outputText("\n<b>It looks like Kelly has taken to pleasuring herself again in your absence.  Do you want to take care of that?</b>");
 		addButton(7,"Punish",punishKelly);
 	}
 	if (flags[kFLAGS.TIMES_PUNISHED_KELLY] > 0 && flags[kFLAGS.KELLY_REWARD_COOLDOWN] == 0 && rand(3) == 0) {

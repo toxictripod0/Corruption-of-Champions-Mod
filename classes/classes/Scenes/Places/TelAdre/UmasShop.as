@@ -1584,7 +1584,7 @@
 			{
 				addButton(2, "Fingerbang", sexGetFingered);
 			} else {
-				addDisabledButton(2, "Fingerbang", "This scene requires you to have vagina. It can't accomodate taurs.");
+				addDisabledButton(2, "Fingerbang", "This scene requires you to have vagina. It can't accommodate taurs.");
 			}
 
 			if (player.hasCock()) // Has a dick

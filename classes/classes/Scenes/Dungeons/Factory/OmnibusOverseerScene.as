@@ -80,7 +80,7 @@ package classes.Scenes.Dungeons.Factory
 				player.breastRows[0].breastRating += 3;
 				if (player.nippleLength < .75) {
 					player.nippleLength += .5;
-					outputText("Your " + player.nippleDescript(0) + "s grow hard and sensitive, becoming much more noticable inside your " + player.armorName + ".  It appears your nipples are have grown larger to match.", false);
+					outputText("Your " + player.nippleDescript(0) + "s grow hard and sensitive, becoming much more noticeable inside your " + player.armorName + ".  It appears your nipples are have grown larger to match.", false);
 				}
 			}
 			//Multiple Rows...
@@ -101,7 +101,7 @@ package classes.Scenes.Dungeons.Factory
 				}
 				if (player.nippleLength < .75) {
 					player.nippleLength += .5;
-					outputText("Your " + player.nippleDescript(0) + "s grow hard and sensitive, becoming much more noticable inside your " + player.armorName + ".  It appears your nipples are have grown larger to match.", false);
+					outputText("Your " + player.nippleDescript(0) + "s grow hard and sensitive, becoming much more noticeable inside your " + player.armorName + ".  It appears your nipples are have grown larger to match.", false);
 				}
 			}
 			outputText("\n\n", false);

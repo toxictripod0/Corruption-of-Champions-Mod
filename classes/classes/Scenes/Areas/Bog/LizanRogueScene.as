@@ -162,7 +162,7 @@ package classes.Scenes.Areas.Bog
 				}
 				else {
 					outputText("\n\nLike a snake his tongue slithers from his lips and begins to encircle your swollen [cock]. The long saliva dripping muscle covers your [cock] in dripping gobs of spit as it forms coils, slowly pulling your [cock] towards the lizan's obviously experienced mouth. He closes his lips around the first 10 inches of your [cock], unable to fit anymore into his mouth. He drags his lips across your impressive [cock] with obvious relish, maybe its not often he gets to service a cock as big as yours. The combination of the rapid cooling sensation combined with the awe inspiring suction has you trembling before long.");
-					outputText("\n\nHe suddenly twists his head, a movement that almost brings you to your knees. He begins to bob up and down and you watch as your [cock] is partially engulfed again and again. His tongue coils with each fluid motion and unwraps everytime he pulls off. The intense sensation almost brings you to your peak but before you reach that glorious point of no return he pulls off your [cockHead] with an audible pop, licking his lips and giving you a self satisfied smile.");
+					outputText("\n\nHe suddenly twists his head, a movement that almost brings you to your knees. He begins to bob up and down and you watch as your [cock] is partially engulfed again and again. His tongue coils with each fluid motion and unwraps every time he pulls off. The intense sensation almost brings you to your peak but before you reach that glorious point of no return he pulls off your [cockHead] with an audible pop, licking his lips and giving you a self satisfied smile.");
 				}
 			}
 			else { //Multi cocks

@@ -1193,7 +1193,7 @@ private function quiksilverFawkesEndGame():void {
 
 	outputText("You don't have the chance to respond before the sounds of snapping branches and rustling leaves near camp.  Raphael jumps up and dives into the barrel you keep in camp for the storage of water, hiding himself and leaving you to face the oncoming threats by yourself.\n\n", false);
 
-	outputText("In the hazy distance, you spot a massive shadow rushing through the mist and it dissapears before you get a good look.  An eerie silence follows and you sharpen your eyes and hearing to the danger.  When you look up, your heart sinks as the massive shape has jumped up and now descends on you from above.  It happens so fast that you barely realize what's going on.  Before you know it, you're sent sliding across the floor with the dark shape on top of you, pinning you down to the ground with its weight.\n\n", false); 
+	outputText("In the hazy distance, you spot a massive shadow rushing through the mist and it disappears before you get a good look.  An eerie silence follows and you sharpen your eyes and hearing to the danger.  When you look up, your heart sinks as the massive shape has jumped up and now descends on you from above.  It happens so fast that you barely realize what's going on.  Before you know it, you're sent sliding across the floor with the dark shape on top of you, pinning you down to the ground with its weight.\n\n", false); 
 
 	outputText("<i>\"Smelled of elderberries, huh?\"</i> it snarls.  <i>\"And what was that about my mother?\"</i> When you open your eyes again, you're greeted by a row of razor-sharp white teeth, set in a pitch-black face. Above them, two smoldering yellow eyes stare down on you, infuriated.\n\n", false);
 

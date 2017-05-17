@@ -404,7 +404,7 @@ package classes.Scenes.Areas.Swamp
 				else outputText("unending", false);
 				outputText(" jizz-ropes on your groin and the base of the drider's slimy stalk.", false);
 			}
-			outputText("  The sounds coming from your throat are gutteral, animalistic, and utterly inhuman, but you're too busy cumming... cumming so hard with each orb dropping into your already-packed womb, lost in motherly bliss.\n\n", false);
+			outputText("  The sounds coming from your throat are guttural, animalistic, and utterly inhuman, but you're too busy cumming... cumming so hard with each orb dropping into your already-packed womb, lost in motherly bliss.\n\n", false);
 
 			outputText("Vocalizing like an animal, you climax over and over in a seemingly endless rut, swiveling your hips while your muscles milk the ovipositor, practically pulling the eggs into your hungry womb.  When the last one is packed tightly into your uterus, your " + player.vaginaDescript() + " keeps milking it, a hollow ring of disappointment penetrating your fog as you realize the pleasure has come to an end.  The thick, egg-laying organ slowly shrivels, shrinking down enough that it slides free.  As it's pulled out, a river of slime comes with it, released to pour out of your overstuffed cooch.\n\n", false);
 

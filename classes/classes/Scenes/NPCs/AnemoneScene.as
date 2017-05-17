@@ -761,7 +761,7 @@ package classes.Scenes.NPCs
 			if (!player.isTaur()) {
 				addButton(1, "Hotdog", hotdogTheAnemone);
 			} else {
-				addDisabledButton(1, "Hotdog", "This scene does not accomodate taurs.");
+				addDisabledButton(1, "Hotdog", "This scene does not accommodate taurs.");
 			}
 			addButton(2, "Fuck Off", fuckingAssholelessAnemoneeeez);
 		}

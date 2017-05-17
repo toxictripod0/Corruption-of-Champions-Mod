@@ -330,7 +330,7 @@ package classes.Scenes.Dungeons
 			//HP
 			if (player.HP < 1) {
 				outputText("Slumping down under the weight of your myriad injuries, you fitfilly struggle to hold yourself upright.  The struggle proves to be in vain when your [legs] fold and the ground rushes up, filling your view with hard-packed earth for the split-second before you impact.  Stars and blackness fill your vision as you lie there dazed, too hurt to even make an attempt at rising.  High-pitched, feminine titters of laugher irritate your ears as the girls react to your state.  Well, you'll show them.  You use every ounce of your willpower to force your arms into action, and with all the speed of a wallowing pig, you roll yourself over.  The effect is less than impressive, but at least you can see the crowd of woman looming over you.  The shadows from their numerous, milky bosoms cast you into darkness as the enormity of your defeat sets in.");
-				outputText("\n\nA short witch shoulders through her sisters to appraise you.  Her sisters part before her confident strides with a suprising degree of deference, even though this woman is at least a foot shorter than most of them.  She doesn't even have huge breasts!  They might be double-D's or E's if she's lucky.  Obscuring a great deal of the right half of her face, a swirling tattoo with patterns intricate enough to make your vision swim clearly differentiates her from her cohorts.");
+				outputText("\n\nA short witch shoulders through her sisters to appraise you.  Her sisters part before her confident strides with a surprising degree of deference, even though this woman is at least a foot shorter than most of them.  She doesn't even have huge breasts!  They might be double-D's or E's if she's lucky.  Obscuring a great deal of the right half of her face, a swirling tattoo with patterns intricate enough to make your vision swim clearly differentiates her from her cohorts.");
 				outputText("\n\n\"<i>An interloper, huh?  Well, now that you've found us, we can't exactly let you go free, can we, sisters?</i>\" the diminutive enchantress says with an icy undercurrent of dark promise.  A murmured but incomprehensive babble of assent is voiced by the crowd.  Shit, you're in deep here.  The tattooed tramp casually hovers her palm over your face and begins to chant nonsensical words.  Any second now, there'll be an explosion of flame, or a clap of sandstone, and you'll be burned or pulped into the next world...  You close your eyes and breathe deep, savoring what's sure to be your last breath of cool, fresh air.");
 				outputText("\n\nYour pain fades under a numbing explosion of warmth, leaving you feeling whole and hale.  Is this... death?  The pleasant heat slowly circulates through your extremities before nestling in your chest.  Your heart beats faster, pounded on by an overexcited drummer somewhere inside you.  Wait, dead people don't have heartbeats.  You open your eyes and look up into the witch's smiling face, illuminated by her glowing tattoos as the rest of your injuries vanish.  Rolling her wrist to make her hand and fingers twirl above you, she stokes the artificial calefaction hotter.  A twitch within your [armor] alerts you to a new feeling that's spreading through you - lust.  The hotter it gets, the faster your heart beats and the harder [eachCock] grows.  You whimper as the ardor savages your restraint, causing you to whimper and paw at your tenting, twitching bulge.  Scraping against the insides of your gear, your [nipples] are in no better shape.  They faintly ache to be touched");
 				if (player.hasFuckableNipples()) outputText(", fondled, and fucked");
@@ -2336,7 +2336,7 @@ package classes.Scenes.Dungeons
 				//Resisting Options
 				outputText("\n\nThe Sand Mother cringes back in her throne, eyeing you warily.  It appears you've made an enemy, however, at least it is an enemy that fears you.  There's a chest full of potions of La Bova and Lactaid behind her throne");
 				if (flags[kFLAGS.SAND_WITCH_LOOT_TAKEN] >= 5) outputText(", though right now it sits empty.  You'll need to wait for them to restock it");
-				else outputText(", and noone could stop you from taking them");
+				else outputText(", and no one could stop you from taking them");
 				outputText(".");
 				sandMotherPOMenu();
 			}
@@ -3385,10 +3385,10 @@ package classes.Scenes.Dungeons
 			else outputText("\n\nThe cum witch says, \"<i>Oh, you lack a gender.  Why don't you pick up some sexual equipment and come back for some real fun.</i>\"");
 			//[Virility] [Fertility] [Nevermind]
 			menu();
-			if (player.findPerk(PerkLib.MagicalVirility) >= 0) addButtonDisabled(0, "Virility", "You already posess this blessing.");
+			if (player.findPerk(PerkLib.MagicalVirility) >= 0) addButtonDisabled(0, "Virility", "You already possess this blessing.");
 			else if (player.hasCock()) addButton(0,"Virility",cumWitchBlessed, true, null, null, "Receive the blessing of virility. This will increase your cum production and virility rating.");
 			else addButtonDisabled(0, "Virility", "This scene requires you to have cock.");
-			if (player.findPerk(PerkLib.MagicalFertility) >= 0) addButtonDisabled(1, "Fertility", "You already posess this blessing.");
+			if (player.findPerk(PerkLib.MagicalFertility) >= 0) addButtonDisabled(1, "Fertility", "You already possess this blessing.");
 			else if (player.hasVagina()) addButton(1, "Fertility", cumWitchBlessed, false, null, null, "Receive the blessing of fertility. This will increase your pregnancy speed and fertility rating.");
 			else addButtonDisabled(1, "Fertility", "This scene requires you to have vagina.");
 			addButton(4,"Nevermind",changeMindAboutBlessings, null, null, null, "Nevermind that! Drop the subject. You'll be able to come back if you want.");
