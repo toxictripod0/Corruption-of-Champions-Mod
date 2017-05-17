@@ -451,7 +451,7 @@ private function buyFoxBerry():void {
 	statScreenRefresh();
 	
 	if (flags[kFLAGS.SHIFT_KEY_DOWN] == 1) {
-		consumables.RINGFIG.useItem();
+		consumables.FOXBERY.useItem();
 		doNext(ingredientsMenu);
 	} else inventory.takeItem(consumables.FOXBERY, ingredientsMenu);
 }
