@@ -1748,7 +1748,7 @@ public function wolfPepper(type: Number, player: Player): void {
     }
     if (player.inte < 60 && rand(7) == 0 && changes < changeLimit) {
         dynStats("int", (1 * crit));
-        outputText("\n\nThe spiciness makes your head twirl, but you manage to gather yourself. A strange scene of clarity comes over you in the aftermath, and you feel ", false);
+        outputText("\n\nThe spiciness makes your head twirl, but you manage to gather yourself. A strange sense of clarity comes over you in the aftermath, and you feel ", false);
         if (crit > 1) outputText("a lot ", false);
         outputText("smarter somehow.", false);
         changes++;
