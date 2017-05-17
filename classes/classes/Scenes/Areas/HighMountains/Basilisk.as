@@ -126,7 +126,6 @@ package classes.Scenes.Areas.HighMountains
 			this.hairType = HAIR_BASILISK_SPINES;
 			this.skinTone = "grey-green";
 			this.skinType = SKIN_TYPE_LIZARD_SCALES;
-			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[SKIN_TYPE_LIZARD_SCALES];
 			this.hairColor = "grey-green";
 			this.hairLength = 2;
 			initStrTouSpeInte(85, 70, 35, 70);
@@ -144,7 +143,8 @@ package classes.Scenes.Areas.HighMountains
 			this.temperment = TEMPERMENT_RANDOM_GRAPPLES;
 			this.level = 12;
 			this.gems = rand(10) + 10;
-			this.drop = new ChainedDrop().add(consumables.REPTLUM,0.9);
+			this.drop = new ChainedDrop().add(consumables.REPTLUM, 0.9)
+					.elseDrop(useables.EBNFLWR);
 			this.tailType = TAIL_TYPE_LIZARD;
 			this.tailRecharge = 0;
 			this.createPerk(PerkLib.BasiliskResistance, 0, 0, 0, 0);

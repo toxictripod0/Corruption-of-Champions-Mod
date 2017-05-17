@@ -1772,6 +1772,10 @@ package classes.Scenes.Combat
 			if (player.findPerk(PerkLib.Spellsword) >= 0 && player.lust < combatAbilities.getWhiteMagicLustCap()) {
 				combatAbilities.spellChargeWeapon(true); // XXX: message?
 			}
+			//Raises lust~ Not disabled because it's an item perk :3
+			if (player.findPerk(PerkLib.WellspringOfLust) >= 0 && player.lust < 50) {
+				player.lust = 50;
+			}
 			monster.str += 25 * player.newGamePlusMod();
 			monster.tou += 25 * player.newGamePlusMod();
 			monster.spe += 25 * player.newGamePlusMod();

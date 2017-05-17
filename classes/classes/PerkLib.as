@@ -352,6 +352,8 @@ package classes
 				"Spellcasting now consumes health instead of fatigue!",null,true);
 		public static const SluttySeduction:SluttySeductionPerk = new SluttySeductionPerk();
 		public static const WizardsEndurance:WizardsEndurancePerk = new WizardsEndurancePerk();
+		public static const WellspringOfLust:PerkType = mk("Wellspring of Lust", "Wellspring of Lust",
+				"At the beginning of combat, lust raises to black magic threshold if lust is below black magic threshold.");
 
 		// Weapon perks
 		public static const WizardsFocus:WizardsFocusPerk = new WizardsFocusPerk();
