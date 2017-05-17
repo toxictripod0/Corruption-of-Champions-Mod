@@ -278,7 +278,7 @@ private function acceptYoga():void {
 		if ((player.spe >= 50 || player.findPerk(PerkLib.Flexibility)) && !player.isTaur()) {
 			addButton(2, "Tantric Sex", cottonTantricSex);
 		} else {
-			addDisabledButton(2, "Tantric Sex", "This scene requires you to have enough flexibility. It does not accomodate taurs.");
+			addDisabledButton(2, "Tantric Sex", "This scene requires you to have enough flexibility. It does not accommodate taurs.");
 		}
 		addButton(14, "Leave", leaveCotton);
 	}
@@ -324,7 +324,7 @@ private function acceptYoga():void {
 		if ((player.spe >= 50 || player.findPerk(PerkLib.Flexibility)) && !player.isTaur()) {
 			addButton(2, "Tantric Sex", cottonTantricSex);
 		} else {
-			addDisabledButton(2, "Tantric Sex", "This scene requires you to have enough flexibility. It does not accomodate taurs.");
+			addDisabledButton(2, "Tantric Sex", "This scene requires you to have enough flexibility. It does not accommodate taurs.");
 		}
 		addButton(14, "Leave", leaveCotton);
 	}
@@ -355,7 +355,7 @@ private function acceptYoga():void {
 		if ((player.spe >= 50 || player.findPerk(PerkLib.Flexibility)) && !player.isTaur()) {
 			addButton(2, "Tantric Sex", cottonTantricSex);
 		} else {
-			addDisabledButton(2, "Tantric Sex", "This scene requires you to have enough flexibility. It does not accomodate taurs.");
+			addDisabledButton(2, "Tantric Sex", "This scene requires you to have enough flexibility. It does not accommodate taurs.");
 		}
 		addButton(14, "Leave", leaveCotton);
 	}

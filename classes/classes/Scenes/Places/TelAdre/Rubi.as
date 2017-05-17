@@ -1505,7 +1505,7 @@ private function rubiAppearance():void {
 
 	outputText("\n\nBetween [rubi eir] legs is a ");
 	if (flags[kFLAGS.RUBI_COCK_SIZE] > 0) {
-		outputText(rubiCock() + ", which starts to perk up under your scrutiny. From experience, you know it can reach a impressive " + flags[kFLAGS.RUBI_COCK_SIZE] + " inches when erect.  ");
+		outputText(rubiCock() + ", which starts to perk up under your scrutiny. From experience, you know it can reach an impressive " + flags[kFLAGS.RUBI_COCK_SIZE] + " inches when erect.  ");
 		outputText("Under [rubi eir] cock swings a set of ");
 		if (flags[kFLAGS.RUBI_BLU_BALLS] >= 4 && flags[kFLAGS.RUBI_BLU_BALLS] < 9) outputText("cum-swollen ");
 		else if (flags[kFLAGS.RUBI_BLU_BALLS] >= 9) outputText("engorged, blue-tinged ");

@@ -1195,7 +1195,7 @@ import classes.Items.*
 			[WING_TYPE_IMP_LARGE, "(13) IMP_LARGE"],
 		];
 		private static const WING_DESC_CONSTANTS:Array = [
-			"(none)","non-existant","tiny hidden","huge","small",
+			"(none)","non-existent","tiny hidden","huge","small",
 			"giant gragonfly","large bee-like","small bee-like",
 			"large, feathered","fluffy featherly","large white feathered","large crimson feathered",
 			"large, bat-like","two large pairs of bat-like",

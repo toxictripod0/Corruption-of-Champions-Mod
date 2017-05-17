@@ -925,7 +925,7 @@ private function snipermanders():void {
 	if (player.lowerBody == LOWER_BODY_TYPE_LIZARD) outputText(", even with your own lizard legs");
 	outputText(", and you find yourself having to correct her grip on the haft several times.  But, finally, you get her ready to shoot.");
 	
-	outputText("\n\nYou slip behind " + flags[kFLAGS.HELSPAWN_NAME] + ", putting your arms on hers as you guide her through nocking an arrow, head resting on her fist, a lone finger outstretched toward the dessicated dummy.");
+	outputText("\n\nYou slip behind " + flags[kFLAGS.HELSPAWN_NAME] + ", putting your arms on hers as you guide her through nocking an arrow, head resting on her fist, a lone finger outstretched toward the desiccated dummy.");
 	
 	outputText("\n\nBreathing hard, the young salamander draws back the bowstring, lining up on her target.  She chews on her lower lip, eyes squinting, deep in concentration, wanting to make this first shot count - to make you proud.  She looses the arrow, and gasps as it bolts away with lethal force... and sails across camp, well away from the target.");
 	//If Rath is @ camp:
