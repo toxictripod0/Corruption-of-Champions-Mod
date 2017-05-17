@@ -707,7 +707,7 @@ private function rubiSexMenu():void {
 	// 2 - always on
 	addDisabledButton(3, "Release", "This scene requires Rubi to be pent up.");
 	addDisabledButton(4, "Train", "This scene requires you to have overly large cock and high enough Rubi affection.");
-	addDisabledButton(5, "Train", "This scene requires Rubi to have decently sized cock and high enough affection.");
+	addDisabledButton(5, "Get Fucked", "This scene requires Rubi to have decently sized cock and high enough affection.");
 	addDisabledButton(6, "Hotdogging", "This scene requires you to have cock.");
 	
 	if (player.lust >= 33) {
