@@ -4644,7 +4644,7 @@ package classes.Scenes.NPCs
 			else outputText("  The babies need their cum, " + player.mf("Master","Mistress") + ". They won't grow strong and healthy and slutty if you don't flood their womb with your hot baby-making juice! Please, cum and fill me with cum, for their sake?", false);
 			outputText("</i>\"\n\n", false);
 
-			outputText("It pleases you to see how much of a eager bitch she really is. You step close and take hold of her hip, then further tease her by rubbing your shaft along her slit, slickening it with her juices.", false);
+			outputText("It pleases you to see how much of an eager bitch she really is. You step close and take hold of her hip, then further tease her by rubbing your shaft along her slit, slickening it with her juices.", false);
 			//[(if Amily has balls)
 			if (flags[kFLAGS.AMILY_HAS_BALLS_AND_SIZE] > 0) outputText("  Her balls do get in the way, but they form a nice cushion to rub your " + player.cockDescript(0) + " on, further stimulating you.", false);
 			outputText("  Amily squeals in glee and wraps her legs around your " + player.hipDescript() + ". She is too well-trained to use them to slam you into her crotch, but you can feel the muscles in them quivering with the urge to pull you into proper penetrative position. You smile wickedly; as much as you want to plow her depths and fuck her raw, you also want to see just how far you can go before she breaks... \"<i>" + player.mf("Master","Mistress") + "... please... why are you torturing yourself? Give yourself over to your loving mousy slut; lose yourself between my legs, let my needy cunt swallow your " + player.cockDescript(0) + " and milk you as only I can. No two-bit whore of a succubus will ever bring you the pleasure I will...</i>\" Amily moans pleadingly, her tail rising up to caress your " + player.assDescript() + ", her hands playing with her " + amilyTits() + ".\n\n", false);
@@ -5779,7 +5779,7 @@ package classes.Scenes.NPCs
 					outputText("You pick up a bowl and carefully pour the contents of the ", false);
 					if (player.hasItem(consumables.L_DRAFT)) outputText("Lust Draft ", false);
 					else outputText("Fuck Draft ", false);
-					outputText("and Goblin Ale inside, then you produce a wooden branch and begin stirring the contents until they are mixed together. Slowly you dip a finger and take a experimental lick; you're almost knocked back by the strong taste, your ", false);
+					outputText("and Goblin Ale inside, then you produce a wooden branch and begin stirring the contents until they are mixed together. Slowly you dip a finger and take an experimental lick; you're almost knocked back by the strong taste, your ", false);
 					if (player.hasCock()) outputText(player.cockDescript(0) + " jumps up to attention", false);
 					if (player.hasCock() && player.hasVagina()) outputText(", and your ", false);
 					if (player.hasVagina()) outputText(player.vaginaDescript() + " nearly juices itself", false);

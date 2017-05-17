@@ -2737,7 +2737,7 @@ private function fuckYvonneInZeBlacksmith():void {
 	outputText("  With a thoroughly cream-stuffed twat beneath you, you ");
 	if (player.hasKnot(x)) outputText("pop");
 	else outputText("pull");
-	outputText(" out, accompanied by a exhalation of female pleasure.");
+	outputText(" out, accompanied by an exhalation of female pleasure.");
 	outputText("\n\nYvonne staggers up on her footpaws, groaning the whole time, a trail of white dribbling on the floor behind her.  Her tail wags happily, and she grabs you, pulling you into her sweaty bosom as she affectionately squeezes your [butt].  You aren't released until you feel dizzy, half-suffocated by her preponderance of breast-tissues and potent pheromones.");
 	outputText("\n\nYvonne tosses you your gear, and you dress in a daze.  Before you've completely finished, she's pushing you out into the street, covered in sex-stink and stumbling over your own [feet].  She calls out after you, \"<i>Thanks babe, I gotta mop this mess up!</i>\"");
 	player.orgasm('Dick');

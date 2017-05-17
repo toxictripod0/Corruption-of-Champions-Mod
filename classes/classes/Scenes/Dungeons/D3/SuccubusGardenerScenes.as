@@ -138,7 +138,7 @@
 				//Dicks need to grow
 				if (player.biggestCockLength() <= 30)
 				{
-					outputText("\n\nGlowing orange goo leaks from the oversized slit in thick beads. You briefly wonder what purpose the odd coloration could serve when the feeling of your cock"+ ((player.cocks.length > 1) ? "s" : "") +" stretching answers. It's making you grow bigger, somehow! The sensation is akin to stretching long-dormant muscles... an subtle flexing of unrealized potential that makes you aware of just how much you can do, or in this case, how big you can get. Your vision swims as your body works to keep up with the sudden change, and you close your eyes to keep from sicking up.");
+					outputText("\n\nGlowing orange goo leaks from the oversized slit in thick beads. You briefly wonder what purpose the odd coloration could serve when the feeling of your cock"+ ((player.cocks.length > 1) ? "s" : "") +" stretching answers. It's making you grow bigger, somehow! The sensation is akin to stretching long-dormant muscles... a subtle flexing of unrealized potential that makes you aware of just how much you can do, or in this case, how big you can get. Your vision swims as your body works to keep up with the sudden change, and you close your eyes to keep from sicking up.");
 
 					outputText("\n\nThe tentacle starts sliding up and down. At first, it's motions are slow and languid, giving you plenty of time to feel the supple slickness of its interior texture against you, but as your mass increases, so too does the speed of its up-and-down pumping motion. Even when it's pushing down, it somehow maintains a gentle suction that the velvety walls are tight against you, allowing you to subsume yourself in slippery cunt. The bigger you get, the better it feels. You aren't sure whether you're simply feeling more and more pussy at once or if you're somehow getting more sensitive, but it's enough to make your eyes roll back and your " + player.multiCockDescriptLight() + " practically piss pre-cum.");
 
@@ -183,7 +183,7 @@
 		private function endHer():void
 		{
 			clearOutput();
-			outputText("You circle behind her an put and end to her evil while she is busy with her pet, then turn to walk away. When you look back over your shoulder, her body is gone. Nothing remains but an empty pathway.");
+			outputText("You circle behind her and put an end to her evil while she is busy with her pet, then turn to walk away. When you look back over your shoulder, her body is gone. Nothing remains but an empty pathway.");
 
 			flags[kFLAGS.D3_GARDENER_DEFEATED] = GARDENER_KILLED;
 

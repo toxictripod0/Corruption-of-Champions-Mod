@@ -1271,7 +1271,7 @@ package classes.Items
 			//Ears - requires tail
 			if (player.earType != EARS_HORSE && player.tailType == TAIL_TYPE_HORSE && changes < changeLimit && rand(3) == 0) {
 				if (player.earType == -1) outputText("\n\nTwo painful lumps sprout on the top of your head, forming into tear-drop shaped ears, covered with short fur.  ", false);
-				if (player.earType == EARS_HUMAN) outputText("\n\nYour ears tug painfully on your face as they begin shifting, moving upwards to the top of your head and transforming into a upright animalistic ears.  ", false);
+				if (player.earType == EARS_HUMAN) outputText("\n\nYour ears tug painfully on your face as they begin shifting, moving upwards to the top of your head and transforming into an upright animalistic ears.  ", false);
 				if (player.earType == EARS_DOG) outputText("\n\nYour ears change shape, morphing into from their doglike shape into equine-like ears!  ", false);
 				if (player.earType > EARS_DOG) outputText("\n\nYour ears change shape, morphing into teardrop-shaped horse ears!  ", false);
 				player.earType = EARS_HORSE;
@@ -1748,7 +1748,7 @@ public function wolfPepper(type: Number, player: Player): void {
     }
     if (player.inte < 60 && rand(7) == 0 && changes < changeLimit) {
         dynStats("int", (1 * crit));
-        outputText("\n\nThe spiciness makes your head twirl, but you manage to gather yourself. A strange sence of clarity comes over you in the aftermath, and you feel ", false);
+        outputText("\n\nThe spiciness makes your head twirl, but you manage to gather yourself. A strange scene of clarity comes over you in the aftermath, and you feel ", false);
         if (crit > 1) outputText("a lot ", false);
         outputText("smarter somehow.", false);
         changes++;
@@ -1759,7 +1759,7 @@ public function wolfPepper(type: Number, player: Player): void {
     if (rand(4) == 0) updateClaws();
     //remove antennae
     if (player.antennae != ANTENNAE_NONE && rand(3) == 0 && changes < changeLimit) {
-        outputText("\n\nYou tilt your head down as a wave of dizziness passes over you. Your antennae fall to the ground. You touch where they were on your head and confirm that they did indeed just fall off. <b>You have lost your anntenae!</b>", false);
+        outputText("\n\nYou tilt your head down as a wave of dizziness passes over you. Your antennae fall to the ground. You touch where they were on your head and confirm that they did indeed just fall off. <b>You have lost your antennae!</b>", false);
         player.antennae = ANTENNAE_NONE;
         changes++;
     }
@@ -7840,7 +7840,7 @@ public function wolfPepper(type: Number, player: Player): void {
 				}
 			}
 			else if (rand(4) == 0 && player.inte > 15) {
-				outputText("\n\nNumbness clouds your mind, making you feel slow witted and dull.  Maybe these candies weren't such a exceptio... fantas... good idea.", false);
+				outputText("\n\nNumbness clouds your mind, making you feel slow witted and dull.  Maybe these candies weren't such an exceptio... fantas... good idea.", false);
 				dynStats("int", -(1 + rand(5)));
 			}
 			if (player.findPerk(PerkLib.ThickSkin) < 0 && player.sens < 30 && rand(4) == 0) {

@@ -1017,7 +1017,7 @@ public class ErlKingScene extends BaseContent implements Encounter
 			//Gain deer ears
 			if (rand(3) == 0 && changes < changeLimit && player.earType != EARS_DEER) {
 				if (player.earType == -1) outputText("\n\nTwo painful lumps sprout on the top of your head, forming into tear-drop shaped ears, covered with short fur.  ");
-				if (player.earType == EARS_HUMAN) outputText("\n\nYour ears tug painfully on your face as they begin shifting, moving upwards to the top of your head and transforming into a upright animalistic ears.  ");
+				if (player.earType == EARS_HUMAN) outputText("\n\nYour ears tug painfully on your face as they begin shifting, moving upwards to the top of your head and transforming into an upright animalistic ears.  ");
 				if (player.earType == EARS_DOG) outputText("\n\nYour ears change shape, morphing into from their doglike shape into deer-like ears!  ");
 				if (player.earType > EARS_DOG) outputText("\n\nYour ears change shape, morphing into teardrop-shaped deer ears!  ");
 				outputText("<b>You now have deer ears.</b>");
