@@ -40,7 +40,7 @@ package classes.Items
 			//Value
 			desc += "\nBase value: " + String(value);
 			//Naga wearable?
-			if (type == 0 && perk == "NagaWearable" && game.player.isNaga()) desc += "\nNagas aren't restricted from wearing this type of lower undergarment.";
+			if (type == 1 && perk == "NagaWearable" && game.player.isNaga()) desc += "\nNagas aren't restricted from wearing this type of lower undergarment.";
 			return desc;
 		}
 		
@@ -54,6 +54,12 @@ package classes.Items
 				case "dragonscale loincloth":
 				case "dragonscale thong":
 					return 2;
+				case "Ebonweave vest":
+				case "Ebonweave corset":
+				case "Ebonweave jockstrap":
+				case "Ebonweave thong":
+				case "Ebonweave loincloth":
+					return 3;
 				default:
 					return 0;
 			}
@@ -70,6 +76,11 @@ package classes.Items
 					return 1;
 				case "fundoshi":
 				case "fur loincloth":
+				case "Ebonweave vest":
+				case "Ebonweave corset":
+				case "Ebonweave jockstrap":
+				case "Ebonweave thong":
+				case "Ebonweave loincloth":
 					return 2;
 				case "latex bra":
 				case "latex shorts":
