@@ -308,9 +308,9 @@ import classes.Items.*
 			materialArray.push(useables.B_CHITN);
 			materialArray.push(useables.T_SSILK);
 			materialArray.push(useables.D_SCALE);
+			materialArray.push(useables.EBNFLWR);
 			materialArray.push(useables.IMPSKLL);
 			materialArray.push(useables.LETHITE);
-			materialArray.push(null);
 			materialArray.push(null);
 			materialArray.push(null);
 			materialArray.push(null);
@@ -389,10 +389,14 @@ import classes.Items.*
 			armourArray.push(armors.CHBIKNI);
 			armourArray.push(armors.CLSSYCL);
 			armourArray.push(armors.DBARMOR);
+			armourArray.push(armors.EBNARMR);
+			armourArray.push(armors.EBNROBE);
+			armourArray.push(armors.EBNJACK);
+			//Page 2
+			armourArray.push(armors.EBNIROB);
 			armourArray.push(armors.FULLCHN);
 			armourArray.push(armors.FULLPLT);
 			armourArray.push(armors.GELARMR);
-			//Page 2
 			armourArray.push(armors.GOOARMR);
 			armourArray.push(armors.I_CORST);
 			armourArray.push(armors.I_ROBES);
@@ -401,11 +405,11 @@ import classes.Items.*
 			armourArray.push(armors.LEATHRA);
 			armourArray.push(armors.URTALTA);
 			armourArray.push(armors.LMARMOR);
+			//Page 3
 			armourArray.push(armors.LTHCARM);
 			armourArray.push(armors.LTHRPNT);
 			armourArray.push(armors.LTHRROB);
 			armourArray.push(armors.M_ROBES);
-			//Page 3
 			armourArray.push(armors.TBARMOR);
 			armourArray.push(armors.NURSECL);
 			armourArray.push(armors.OVERALL);
@@ -414,11 +418,11 @@ import classes.Items.*
 			armourArray.push(armors.S_SWMWR);
 			armourArray.push(armors.SAMUARM);
 			armourArray.push(armors.SCALEML);
+			//Page 4
 			armourArray.push(armors.SEDUCTA);
 			armourArray.push(armors.SEDUCTU);
 			armourArray.push(armors.SS_ROBE);
 			armourArray.push(armors.SSARMOR);
-			//Page 4
 			armourArray.push(armors.T_BSUIT);
 			armourArray.push(armors.TUBETOP);
 			armourArray.push(armors.W_ROBES);
@@ -439,10 +443,18 @@ import classes.Items.*
 			undergarmentArray.push(undergarments.LTX_BRA);
 			undergarmentArray.push(undergarments.LTXSHRT);
 			undergarmentArray.push(undergarments.LTXTHNG);
-			undergarmentArray.push(undergarments.SS_BRA);
 			//Page 2
+			undergarmentArray.push(undergarments.SS_BRA);
 			undergarmentArray.push(undergarments.SS_LOIN);
 			undergarmentArray.push(undergarments.SSPANTY);
+			undergarmentArray.push(undergarments.EBNCRST);
+			undergarmentArray.push(undergarments.EBNVEST);
+			undergarmentArray.push(undergarments.EBNJOCK);
+			undergarmentArray.push(undergarments.EBNTHNG);
+			undergarmentArray.push(undergarments.EBNCLTH);
+			undergarmentArray.push(undergarments.EBNRJCK);
+			undergarmentArray.push(undergarments.EBNRTNG);
+			undergarmentArray.push(undergarments.EBNRLNC);
 			
 			//------------
 			// Accessories

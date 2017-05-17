@@ -96,7 +96,7 @@ package classes.Items.Undergarments {
 				case "runed Ebonweave jockstrap":
 				case "runed Ebonweave thong":
 				case "runed Ebonweave loincloth":
-					return 2;
+					return 3;
 				default:
 					return 0;
 			}

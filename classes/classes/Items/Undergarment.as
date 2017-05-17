@@ -59,6 +59,9 @@ package classes.Items
 				case "Ebonweave jockstrap":
 				case "Ebonweave thong":
 				case "Ebonweave loincloth":
+				case "runed Ebonweave jockstrap":
+				case "runed Ebonweave thong":
+				case "runed Ebonweave loincloth":
 					return 3;
 				default:
 					return 0;
@@ -86,6 +89,9 @@ package classes.Items
 				case "latex shorts":
 				case "latex thong":
 				case "stockings and garters":
+				case "runed Ebonweave jockstrap":
+				case "runed Ebonweave thong":
+				case "runed Ebonweave loincloth":
 					return 3;
 				default:
 					return 0;
