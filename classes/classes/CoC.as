@@ -448,7 +448,7 @@ the text from being too boring.
 			 */
 			debug = false; //DEBUG, used all over the place
 			ver = "1.0.2_mod_1.4.5"; //Version NUMBER
-			version = ver + " (<b>Under-the-hood changes</b>)"; //Version TEXT
+			version = ver + " (<b>Blackfire + Ebonweave</b>)"; //Version TEXT
 
 			//Indicates if building for mobile?
 			mobile = false;
