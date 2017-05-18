@@ -2308,7 +2308,7 @@ private function useReductoOnKat():void {
 		} else {
 			addDisabledButton(3, "Breasts");
 		}
-		addButton(15, "Back", giveKatherineAnItem);
+		addButton(14, "Back", giveKatherineAnItem);
     }
 }
 
