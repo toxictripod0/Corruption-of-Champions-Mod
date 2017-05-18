@@ -817,7 +817,7 @@ package classes.Scenes.Places.Prison
 		public function prisonCaptorFeedingAnalTrainingAccept():void
 		{
 			clearOutput();
-			outputText("(Placehoder) You meekly agree and clumsily pound her dick into your ass while masturbating, but don't orgasm exactly when she does. You have to keep fucking away with an ass stuffed with cum until you finally manage to cum, and then lick her dick clean greatful to have the ordeal overwith. She is happy, but since you didn't put your heart into it you get a bowl of cum. Try harder next time!",false);
+			outputText("(Placehoder) You meekly agree and clumsily pound her dick into your ass while masturbating, but don't orgasm exactly when she does. You have to keep fucking away with an ass stuffed with cum until you finally manage to cum, and then lick her dick clean grateful to have the ordeal overwith. She is happy, but since you didn't put your heart into it you get a bowl of cum. Try harder next time!",false);
 			outputText("\n\nOut of thin air she produces a pitiful loaf of bread and crumbles it into a bowl. With a smile of supreme satisfaction, she begins to milk her cock into it. Before long, the bowl is overflowing with her sticky seed. She sets it on the ground and gives you a playful wink before leaving you alone in the cell.\n\n",false);
 			if (prison.prisonIsRestrained())
 			{

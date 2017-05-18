@@ -707,7 +707,7 @@ private function rubiSexMenu():void {
 	// 2 - always on
 	addDisabledButton(3, "Release", "This scene requires Rubi to be pent up.");
 	addDisabledButton(4, "Train", "This scene requires you to have overly large cock and high enough Rubi affection.");
-	addDisabledButton(5, "Train", "This scene requires Rubi to have decently sized cock and high enough affection.");
+	addDisabledButton(5, "Get Fucked", "This scene requires Rubi to have decently sized cock and high enough affection.");
 	addDisabledButton(6, "Hotdogging", "This scene requires you to have cock.");
 	
 	if (player.lust >= 33) {
@@ -1505,7 +1505,7 @@ private function rubiAppearance():void {
 
 	outputText("\n\nBetween [rubi eir] legs is a ");
 	if (flags[kFLAGS.RUBI_COCK_SIZE] > 0) {
-		outputText(rubiCock() + ", which starts to perk up under your scrutiny. From experience, you know it can reach a impressive " + flags[kFLAGS.RUBI_COCK_SIZE] + " inches when erect.  ");
+		outputText(rubiCock() + ", which starts to perk up under your scrutiny. From experience, you know it can reach an impressive " + flags[kFLAGS.RUBI_COCK_SIZE] + " inches when erect.  ");
 		outputText("Under [rubi eir] cock swings a set of ");
 		if (flags[kFLAGS.RUBI_BLU_BALLS] >= 4 && flags[kFLAGS.RUBI_BLU_BALLS] < 9) outputText("cum-swollen ");
 		else if (flags[kFLAGS.RUBI_BLU_BALLS] >= 9) outputText("engorged, blue-tinged ");

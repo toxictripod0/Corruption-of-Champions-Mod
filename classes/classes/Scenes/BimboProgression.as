@@ -273,7 +273,7 @@ package classes.Scenes
 						if (rand(10) == 0 || (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_DROOLING && rand(2)==0)) {
 							outputText("pressing it harder and harder. You start moaning, your hands shaking, unable to think straight. Your well-lubricated [pussy] aches for it, and you give so much desired push. ");
 							player.cuntChange(8, true, true, true);
-							outputText(" You scream in pain an pleasure, as your [pussy] stretches, accommodating to a throbbing item inside. You take a deep breath, then push again, this time further. It becomes impossible to think of anything but wild urge in your [vagina].");
+							outputText(" You scream in pain and pleasure, as your [pussy] stretches, accommodating to a throbbing item inside. You take a deep breath, then push again, this time further. It becomes impossible to think of anything but wild urge in your [vagina].");
 							player.cuntChange(16, true, true, false);
 							getGame().dynStats("cor", 3);
 							useDildo = 2;

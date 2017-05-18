@@ -1287,7 +1287,7 @@ private function finalGayFinallee(road:int = 0):void {
 			player.gems -= 3 + rand(4);
 			if (player.gems < 0) player.gems = 0;
 		}
-		outputText(".  You redress yourself before realizing something.  You have acquired something extra: A lust draft potion with an brown ribbon tied to it.  A note at the end reads: \"<i>I'll always remember the face you made trying to wrap your cute lips around my giant dick.</i>\"  There's no name on the note but you have a good idea who left it for you, judging by the drawn bear paw print in the corner.  You pocket the lust draft and leave the tent to head back to the bazaar in the morning light.\n\n");
+		outputText(".  You redress yourself before realizing something.  You have acquired something extra: A lust draft potion with a brown ribbon tied to it.  A note at the end reads: \"<i>I'll always remember the face you made trying to wrap your cute lips around my giant dick.</i>\"  There's no name on the note but you have a good idea who left it for you, judging by the drawn bear paw print in the corner.  You pocket the lust draft and leave the tent to head back to the bazaar in the morning light.\n\n");
 		player.orgasm('Anal');
 		dynStats("sen", 5);
 		model.time.days++;

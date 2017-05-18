@@ -943,7 +943,7 @@ private function loseToDaughtersWithTamaniThere():void {
 		if (player.totalCocks() > 1) outputText("one of ", false);
 		outputText("your trembling " + player.multiCockDescriptLight() + ", feeling it leak pre-cum in anticipation of getting to knock up some of these beautiful curvy women.", false);
 	}
-	outputText("  Tamani pushes her way to the front of the pack, her daughters looking disappointed but yielding to their mother's authority for the time being.  She walks over to you, stepping over your fallen form and uncorking a a potion.  You grunt as she drops her jiggling ass down on your ", false);
+	outputText("  Tamani pushes her way to the front of the pack, her daughters looking disappointed but yielding to their mother's authority for the time being.  She walks over to you, stepping over your fallen form and uncorking a potion.  You grunt as she drops her jiggling ass down on your ", false);
 	if (player.biggestTitSize() < 1) outputText("chest", false);
 	else outputText(player.allBreastsDescript(), false);
 	outputText(" and says, \"<i>Now husband, you've let your daughters beat you fair and square, so now it's time to take your medicine and give them their reward for becoming so strong.</i>\"\n\n", false);

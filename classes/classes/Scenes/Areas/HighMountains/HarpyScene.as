@@ -36,7 +36,7 @@ package classes.Scenes.Areas.HighMountains
 			addDisabledButton(0, "Anal", "This scene requires you to have fitting cock and sufficient arousal.");
 			addDisabledButton(1, "Pussy", "This scene requires you to have fitting cock and sufficient arousal.");
 			addDisabledButton(2, "Oral", "This scene requires you to have genitals and sufficient arousal.");
-			addDisabledButton(3, "Scissor", "This scene requires you to have vagina and sufficient arousal. It does not accomodate naga tail.");
+			addDisabledButton(3, "Scissor", "This scene requires you to have vagina and sufficient arousal. It does not accommodate naga tail.");
 			addDisabledButton(4, "Clit Fuck", "This scene requires you to have huge clit and sufficient arousal.");
 			addDisabledButton(5, "Lay Eggs", "This scene requires you to have spider ovipositor, fangs and enough eggs.");
 			

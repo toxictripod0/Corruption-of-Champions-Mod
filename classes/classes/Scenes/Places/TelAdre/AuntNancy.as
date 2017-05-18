@@ -435,7 +435,7 @@ private function auntNancyPoonPartIII():void {
 		if (player.hasVagina()) outputText(player.vaginaDescript(0) + " and ", false);
 		outputText(player.assholeDescript() + ".\n\n", false);
 
-		outputText("You howl in pleasure, feeling the orgasm coursing through you like hot metal up and down your spine.  You let out a exclamation of pleasure of your own, as you feel her hands tighten on your " + player.chestDesc() + ", and soon you too are luxuriating in the feeling of her body against yours, inside of you, pressing all your most vulnerable places.", false);
+		outputText("You howl in pleasure, feeling the orgasm coursing through you like hot metal up and down your spine.  You let out an exclamation of pleasure of your own, as you feel her hands tighten on your " + player.chestDesc() + ", and soon you too are luxuriating in the feeling of her body against yours, inside of you, pressing all your most vulnerable places.", false);
 		//[If PC has a vagina and is a squirter and/or is lactating:] 
 		if (player.wetness() >= 5 || player.biggestLactation() >= 1)
 			outputText("  Her hands are soon drenched in your body's wonderful secretions, just as your", false);
