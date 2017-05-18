@@ -7,7 +7,7 @@ package classes.Items.Weapons
 	public class MidnightRapier extends Weapon {
 		
 		public function MidnightRapier() {
-			super("MRapier", "MRapier", "midnight rapier", "a black rapier", "slash", 15, 1250, "This rapier is forged from a metal that is as dark as a starless night. Its blade shows some signs of use, but its power is no less tremendous.", "midnightRapier");
+			super("MRapier", "MRapier", "midnight rapier", "a midnight rapier", "slash", 15, 1250, "This rapier is forged from a metal that is as dark as a starless night. Its blade shows some signs of use, but its power is no less tremendous.", "midnightRapier");
 		}
 		
 		override public function get attack():Number {
