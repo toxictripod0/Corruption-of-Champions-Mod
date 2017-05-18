@@ -132,10 +132,10 @@
 			} else {
 				addDisabledButton(0, "Male", "This scene requires you to have cock.");
 			}
-			if (player.hasCock()) {
+			if (player.hasVagina()) {
 				addButton(1, "Female", vagFuckXmasElf);
 			} else {
-				addDisabledButton(1, "Female", "This scene requires you to have cock.");
+				addDisabledButton(1, "Female", "This scene requires you to have vagina.");
 			}
 		}
 
