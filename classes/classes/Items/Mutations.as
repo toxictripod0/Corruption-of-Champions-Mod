@@ -29,15 +29,16 @@ package classes.Items
 			
 			player.slimeFeed();
 			//Repeat genderless encounters
+			clearOutput();
 			if (player.gender == 0 && flags[kFLAGS.CERULEAN_POTION_NEUTER_ATTEMPTED] > 0) {
-				outputText("You take another sip of the Cerulean Potion.  You find it soothing and become very excited about the possibility of another visit from the succubus.", true);
+				outputText("You take another sip of the Cerulean Potion.  You find it soothing and become very excited about the possibility of another visit from the succubus.");
 			}
 			else if (player.gender == 3 && flags[kFLAGS.CERULEAN_SUCCUBUS_HERM_COUNTER] > 0) {
-				outputText("With anticipation, you chug down another bottle of the Cerulean Potion. A warm sensation radiates out from your stomach as you feel the potion course through your body.", true);
+				outputText("With anticipation, you chug down another bottle of the Cerulean Potion. A warm sensation radiates out from your stomach as you feel the potion course through your body.");
 			}
 			//All else
 			else {
-				outputText("The liquid tastes rather bland and goes down easily. ", true);
+				outputText("The liquid tastes rather bland and goes down easily. ");
 				//Special repeat texts
 				if (player.hasStatusEffect(StatusEffects.RepeatSuccubi)) outputText("You look forwards to tonight's encounter.");
 				//First timer huh?
@@ -54,7 +55,8 @@ package classes.Items
 		{
 			
 			player.slimeFeed();
-			outputText("You down the contents of the bottle. The liquid is thick and tastes remarkably like cherries. Within moments, you feel much more fit and healthy.", true);
+			clearOutput();
+			outputText("You down the contents of the bottle. The liquid is thick and tastes remarkably like cherries. Within moments, you feel much more fit and healthy.");
 			//str change
 			temp = rand(3);
 			dynStats("str", temp);
@@ -68,7 +70,7 @@ package classes.Items
 			dynStats("tou", temp);
 			//Chance of fitness change
 			if (HPChange(50, false)) outputText("  Any aches, pains and bruises you have suffered no longer hurt and you feel much better.");
-			if (rand(3) == 0) outputText(player.modTone(95, 3), false);
+			if (rand(3) == 0) outputText(player.modTone(95, 3));
 			player.refillHunger(10);
 		}
 
@@ -76,8 +78,9 @@ package classes.Items
 		{
 			
 			player.slimeFeed();
-			outputText("Following the merchant's instructions, you steep and drink the tea. Its sharp taste fires up your palate and in moments, you find yourself more alert and insightful. As your mind wanders, a creative, if somewhat sordid, story comes to mind. It is a shame that you do not have writing implements as you feel you could make a coin or two off what you have conceived. The strange seller was not lying about the power of the tea.", true);
-			if (rand(3) == 0) outputText(player.modTone(15, 1), false);
+			clearOutput();
+			outputText("Following the merchant's instructions, you steep and drink the tea. Its sharp taste fires up your palate and in moments, you find yourself more alert and insightful. As your mind wanders, a creative, if somewhat sordid, story comes to mind. It is a shame that you do not have writing implements as you feel you could make a coin or two off what you have conceived. The strange seller was not lying about the power of the tea.");
+			if (rand(3) == 0) outputText(player.modTone(15, 1));
 			//Now NERFED!
 			if (player.inte < 40) dynStats("int", 1.5 + rand(4));
 			else if (player.inte < 60) dynStats("int", 1 + rand(3));
@@ -96,7 +99,8 @@ package classes.Items
 			var rando:Number = rand(100);
 			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) rando += 10;
 			if (player.findPerk(PerkLib.TransformationResistance) >= 0) rando -= 10;
-			outputText("The draft is slick and sticky, ", true);
+			clearOutput();
+			outputText("The draft is slick and sticky, ");
 			if (player.cor <= 33) outputText("just swallowing it makes you feel unclean.");
 			if (player.cor > 33 && player.cor <= 66) outputText("reminding you of something you just can't place.");
 			if (player.cor > 66) outputText("deliciously sinful in all the right ways.");
@@ -252,8 +256,8 @@ package classes.Items
 			if (rand(5) == 0) updateOvipositionPerk(tfSource);
 			//Demonic changes - higher chance with higher corruption.
 			if (rand(40) + player.cor / 3 > 35 && tainted) demonChanges(player);
-			if (rand(4) == 0 && tainted) outputText(player.modFem(5, 2), false);
-			if (rand(4) == 0 && tainted) outputText(player.modThickness(30, 2), false);
+			if (rand(4) == 0 && tainted) outputText(player.modFem(5, 2));
+			if (rand(4) == 0 && tainted) outputText(player.modThickness(30, 2));
 			player.refillHunger(10);
 		}
 
@@ -282,7 +286,8 @@ package classes.Items
 
 		public function tatteredScroll(player:Player):void
 		{
-			outputText("Your wobbly " + player.legs() + " give out underneath you as your body's willpower seems to evaporate, your mouth reading the words on the scroll with a backwards sounding sing-song voice.\n\n", true);
+			clearOutput();
+			outputText("Your wobbly " + player.legs() + " give out underneath you as your body's willpower seems to evaporate, your mouth reading the words on the scroll with a backwards sounding sing-song voice.\n\n");
 			if (player.hairColor == "sandy blonde") {
 				outputText("Your mouth forms a smile of its own volition, reading, \"<i>Tresed eht retaw llahs klim ruoy.</i>\"\n\n");
 				if (player.breastRows.length == 0 || player.biggestTitSize() == 0) {
@@ -434,7 +439,8 @@ package classes.Items
 			var temp2:Number = 0;
 			var temp3:Number = 0;
 			//Set up output
-			outputText("You drink the bubbling red fluid, tasting the tangy iron after-taste.", true);
+			clearOutput();
+			outputText("You drink the bubbling red fluid, tasting the tangy iron after-taste.");
 			//STATS
 			//Strength h
 			if (rand(3) == 0 && changes < changeLimit) {
@@ -563,8 +569,8 @@ package classes.Items
 					if (player.bRows() >= 3) outputText("abdomen");
 					else outputText("chest");
 					outputText(". The " + player.nippleDescript(player.breastRows.length - 1) + "s even fade until nothing but ");
-					if (player.hasFur()) outputText(player.hairColor + " " + player.skinDesc, false);
-					else outputText(player.skinTone + " " + player.skinDesc, false);
+					if (player.hasFur()) outputText(player.hairColor + " " + player.skinDesc);
+					else outputText(player.skinTone + " " + player.skinDesc);
 					outputText(" remains. <b>You've lost a row of breasts!</b>");
 					dynStats("sen", -5);
 					player.removeBreastRow(player.breastRows.length - 1, 1);
@@ -809,9 +815,9 @@ package classes.Items
 				changes++;
 			}
 			//Give you that mino build!
-			if (rand(4) == 0) outputText(player.modFem(5, 10), false);
-			if (rand(4) == 0) outputText(player.modTone(85, 3), false);
-			if (rand(4) == 0) outputText(player.modThickness(70, 4), false);
+			if (rand(4) == 0) outputText(player.modFem(5, 10));
+			if (rand(4) == 0) outputText(player.modTone(85, 3));
+			if (rand(4) == 0) outputText(player.modThickness(70, 4));
 			//Default
 			if (changes == 0) {
 				outputText("\n\nMinotaur-like vitality surges through your body, invigorating and arousing you!\n");
@@ -849,7 +855,8 @@ package classes.Items
 			// For example: FurColorsEnum.HORSE, ScaleColorsEnum.LIZARD, SkinTonesEnum.HUMAN, SkinTonesEnum:SALAMANDER, HairColorsEnum.HUMAN and so on (Stadler76)
 			var horseFurColors:Array = ["brown", "chocolate", "auburn", "sandy brown", "caramel", "peach", "black", "midnight black", "dark gray", "gray", "light gray", "silver", "white", "brown and white", "black and white"];
 			//Set up output
-			outputText("You down the potion, grimacing at the strong taste.", true);
+			clearOutput();
+			outputText("You down the potion, grimacing at the strong taste.");
 			//CHANCE OF BAD END - 20% if face/tail/skin/cock are appropriate.
 			if (player.hasFur() && player.faceType == FACE_HORSE && player.tailType == TAIL_TYPE_HORSE && player.lowerBody == LOWER_BODY_TYPE_HOOFED) {
 				//WARNINGS
@@ -1020,7 +1027,8 @@ package classes.Items
 						outputText("\n\nOne of your penises begins to feel strange.  You pull down your clothes to take a look and see the skin of your " + player.cockDescript(temp) + " darkening to a mottled brown and black pattern.");
 						if (temp == -1) {
 							CoC_Settings.error("");
-							outputText("FUKKKK ERROR NO COCK XFORMED", true);
+							clearOutput();
+							outputText("FUKKKK ERROR NO COCK XFORMED");
 						}
 						//Already have a sheath
 						if (player.countCocksOfType(CockTypesEnum.HORSE) > 1 || player.dogCocks() > 0) outputText("  Your sheath tingles and begins growing larger as the cock's base shifts to lie inside it.");
@@ -1305,7 +1313,7 @@ package classes.Items
 			// Remove gills
 			if (rand(4) == 0 && player.hasGills() && changes < changeLimit) updateGills();
 
-			if (rand(3) == 0) outputText(player.modTone(60, 1), false);
+			if (rand(3) == 0) outputText(player.modTone(60, 1));
 			//FAILSAFE CHANGE
 			if (changes == 0) {
 				outputText("\n\nInhuman vitality spreads through your body, invigorating you!\n");
@@ -1323,7 +1331,8 @@ package classes.Items
 			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
 			if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
 			player.slimeFeed();
-			outputText("You down the potion, grimacing at the strong taste.", true);
+			clearOutput();
+			outputText("You down the potion, grimacing at the strong taste.");
 			if (changes < changeLimit && rand(2) == 0 && player.spe < 80) {
 				changes++;
 				outputText("\n\nAfter drinking the potion, you feel a bit faster.");
@@ -1377,9 +1386,10 @@ package classes.Items
 			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) rando += 10;
 			if (player.findPerk(PerkLib.TransformationResistance) >= 0) rando -= 10;
 			if (rando >= 90 && !tainted) rando -= 10;
-			if (player.cor < 35) outputText("You wonder why in the gods' names you would drink such a thing, but you have to admit, it is the best thing you have ever tasted.", true);
+			clearOutput();
+			if (player.cor < 35) outputText("You wonder why in the gods' names you would drink such a thing, but you have to admit, it is the best thing you have ever tasted.");
 			if (player.cor >= 35 && player.cor < 70) {
-				outputText("You savor the incredible flavor as you greedily gulp it down.", true);
+				outputText("You savor the incredible flavor as you greedily gulp it down.");
 				if (player.gender == 2 || player.gender == 3) {
 					outputText("  The taste alone makes your " + player.vaginaDescript(0) + " feel ");
 					if (player.vaginas[0].vaginalWetness == VAGINA_WETNESS_DRY) outputText("tingly.");
@@ -1391,9 +1401,9 @@ package classes.Items
 				else if (player.hasCock()) outputText("  You feel a building arousal, but it doesn't affect your cock.");
 			}
 			if (player.cor >= 70) {
-				outputText("You pour the milk down your throat, chugging the stuff as fast as you can.  You want more.", true);
+				outputText("You pour the milk down your throat, chugging the stuff as fast as you can.  You want more.");
 				if (player.gender == 2 || player.gender == 3) {
-					outputText("  Your " + player.vaginaDescript(0), false);
+					outputText("  Your " + player.vaginaDescript(0));
 					if (player.vaginas.length > 1) outputText(" quiver in orgasm, ");
 					if (player.vaginas.length == 1) outputText(" quivers in orgasm, ");
 					if (player.vaginas[0].vaginalWetness == VAGINA_WETNESS_DRY) outputText("becoming slightly sticky.");
@@ -1568,12 +1578,12 @@ package classes.Items
 			//Demonic changes - higher chance with higher corruption.
 			if (rand(40) + player.cor / 3 > 35 && tainted) demonChanges(player);
 			if (tainted) {
-				outputText(player.modFem(100, 2), false);
-				if (rand(3) == 0) outputText(player.modTone(15, 2), false);
+				outputText(player.modFem(100, 2));
+				if (rand(3) == 0) outputText(player.modTone(15, 2));
 			}
 			else {
-				outputText(player.modFem(90, 1), false);
-				if (rand(3) == 0) outputText(player.modTone(20, 2), false);
+				outputText(player.modFem(90, 1));
+				if (rand(3) == 0) outputText(player.modTone(20, 2));
 			}
 			player.refillHunger(20);
 		}
@@ -1936,8 +1946,8 @@ package classes.Items
 				if (player.bRows() >= 3) outputText("abdomen");
 				else outputText("chest");
 				outputText(". The " + player.nippleDescript(player.breastRows.length - 1) + "s even fade until nothing but ");
-				if (player.hasFur()) outputText(player.hairColor + " " + player.skinDesc, false);
-				else outputText(player.skinTone + " " + player.skinDesc, false);
+				if (player.hasFur()) outputText(player.hairColor + " " + player.skinDesc);
+				else outputText(player.skinTone + " " + player.skinDesc);
 				outputText(" remains. <b>You've lost a row of breasts!</b>");
 				dynStats("sen", -5);
 				player.removeBreastRow(player.breastRows.length - 1, 1);
@@ -2071,8 +2081,8 @@ package classes.Items
 			}
 			//MISC CRAP
 			if (rand(5) == 0) updateOvipositionPerk(tfSource);
-			if (rand(3) == 0) outputText(player.modTone(100, 4), false);
-			if (rand(3) == 0) outputText(player.modThickness(75, 3), false);
+			if (rand(3) == 0) outputText(player.modTone(100, 4));
+			if (rand(3) == 0) outputText(player.modThickness(75, 3));
 			player.refillHunger(10);
 		}
 
@@ -2985,8 +2995,8 @@ package classes.Items
 				if (player.bRows() >= 3) outputText("abdomen");
 				else outputText("chest");
 				outputText(". The " + player.nippleDescript(player.breastRows.length - 1) + "s even fade until nothing but ");
-				if (player.hasFur()) outputText(player.hairColor + " " + player.skinDesc, false);
-				else outputText(player.skinTone + " " + player.skinDesc, false);
+				if (player.hasFur()) outputText(player.hairColor + " " + player.skinDesc);
+				else outputText(player.skinTone + " " + player.skinDesc);
 				outputText(" remains. <b>You've lost a row of breasts!</b>");
 				dynStats("sen", -5);
 				player.removeBreastRow(player.breastRows.length - 1, 1);
@@ -3067,7 +3077,8 @@ package classes.Items
 			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
 			if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
 			//Generic drinking text
-			outputText("You uncork the bottle and drink down the strange substance, struggling to down the thick liquid.", true);
+			clearOutput();
+			outputText("You uncork the bottle and drink down the strange substance, struggling to down the thick liquid.");
 			//low corruption thoughts
 			if (player.cor < 33) outputText("  This stuff is gross, why are you drinking it?");
 			//high corruption
@@ -3134,7 +3145,7 @@ package classes.Items
 				changes++;
 			}
 			if (player.balls > 0 && rand(3) == 0) {
-				outputText(player.modFem(12, 3), false);
+				outputText(player.modFem(12, 3));
 			}
 			player.refillHunger(10);
 		}
@@ -3153,7 +3164,8 @@ package classes.Items
 			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
 			if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
 			//Generic drinking text
-			outputText("You uncork the bottle and drink down the strange substance, struggling to down the thick liquid.", true);
+			clearOutput();
+			outputText("You uncork the bottle and drink down the strange substance, struggling to down the thick liquid.");
 			//low corruption thoughts
 			if (player.cor < 33) outputText("  This stuff is gross, why are you drinking it?");
 			//high corruption
@@ -3222,7 +3234,7 @@ package classes.Items
 				changes++;
 			}
 			if (player.balls > 0 && rand(3) == 0) {
-				outputText(player.modFem(12, 5), false);
+				outputText(player.modFem(12, 5));
 			}
 			player.refillHunger(15);
 		}
@@ -3230,20 +3242,21 @@ package classes.Items
 //butt expansion
 		public function brownEgg(large:Boolean,player:Player):void
 		{
-			outputText("You devour the egg, momentarily sating your hunger.\n\n", true);
+			clearOutput();
+			outputText("You devour the egg, momentarily sating your hunger.\n\n");
 			if (!large) {
-				outputText("You feel a bit of additional weight on your backside as your " + player.buttDescript() + " gains a bit more padding.", true);
+				outputText("You feel a bit of additional weight on your backside as your " + player.buttDescript() + " gains a bit more padding.");
 				player.buttRating++;
 				player.refillHunger(20);
 			}
 			else {
-				outputText("Your " + player.buttDescript() + " wobbles, nearly throwing you off balance as it grows much bigger!", true);
+				outputText("Your " + player.buttDescript() + " wobbles, nearly throwing you off balance as it grows much bigger!");
 				player.buttRating += 2 + rand(3);
 				player.refillHunger(60);
 			}
 			if (rand(3) == 0) {
-				if (large) outputText(player.modThickness(100, 8), false);
-				else outputText(player.modThickness(95, 3), false);
+				if (large) outputText(player.modThickness(100, 8));
+				else outputText(player.modThickness(95, 3));
 			}
 			
 		}
@@ -3251,7 +3264,8 @@ package classes.Items
 //hip expansion
 		public function purpleEgg(large:Boolean,player:Player):void
 		{
-			outputText("You devour the egg, momentarily sating your hunger.\n\n", true);
+			clearOutput();
+			outputText("You devour the egg, momentarily sating your hunger.\n\n",);
 			if (!large || player.hipRating > 20) {
 				outputText("You stumble as you feel your " + player.hipDescript() + " widen, altering your gait slightly.");
 				player.hipRating++;
@@ -3263,15 +3277,16 @@ package classes.Items
 				player.refillHunger(60);
 			}
 			if (rand(3) == 0) {
-				if (large) outputText(player.modThickness(80, 8), false);
-				else outputText(player.modThickness(80, 3), false);
+				if (large) outputText(player.modThickness(80, 8));
+				else outputText(player.modThickness(80, 3));
 			}
 		}
 
 //Femminess
 		public function pinkEgg(large:Boolean,player:Player):void
 		{
-			outputText("You devour the egg, momentarily sating your hunger.\n\n", true);
+			clearOutput();
+			outputText("You devour the egg, momentarily sating your hunger.\n\n");
 			if (!large) {
 				//Remove a dick
 				if (player.cocks.length > 0) {
@@ -3317,17 +3332,18 @@ package classes.Items
 				player.refillHunger(60);
 			}
 			if (rand(3) == 0) {
-				if (large) outputText(player.modFem(100, 8), false);
-				else outputText(player.modFem(95, 3), false);
+				if (large) outputText(player.modFem(100, 8));
+				else outputText(player.modFem(95, 3));
 			}
 		}
 
 //Maleness
 		public function blueEgg(large:Boolean,player:Player):void
 		{
+			clearOutput();
 			var temp2:Number = 0;
 			var temp3:Number = 0;
-			outputText("You devour the egg, momentarily sating your hunger.", true);
+			outputText("You devour the egg, momentarily sating your hunger.");
 			if (!large) {
 				//Kill pussies!
 				if (player.vaginas.length > 0) {
@@ -3471,16 +3487,17 @@ package classes.Items
 				player.refillHunger(60);
 			}
 			if (rand(3) == 0) {
-				if (large) outputText(player.modFem(0, 8), false);
-				else outputText(player.modFem(5, 3), false);
+				if (large) outputText(player.modFem(0, 8));
+				else outputText(player.modFem(5, 3));
 			}
 		}
 
 //Nipplezzzzz
 		public function whiteEgg(large:Boolean,player:Player):void
 		{
+			clearOutput();
 			var temp2:Number = 0;
-			outputText("You devour the egg, momentarily sating your hunger.", true);
+			outputText("You devour the egg, momentarily sating your hunger.");
 			if (!large) {
 				//Grow nipples
 				if (player.nippleLength < 3 && player.biggestTitSize() > 0) {
@@ -3517,7 +3534,8 @@ package classes.Items
 
 		public function blackRubberEgg(large:Boolean,player:Player):void
 		{
-			outputText("You devour the egg, momentarily sating your hunger.", true);
+			clearOutput();
+			outputText("You devour the egg, momentarily sating your hunger.");
 			//Small
 			if (!large) {
 				//Change skin to normal if not flawless!
@@ -3614,21 +3632,23 @@ package classes.Items
 
 		public function purePearl(player:Player):void
 		{
+			clearOutput();
 			if (player.findPerk(PerkLib.PurityBlessing) >= 0) {
 				outputText("As you're about to cram the pearl into your mouth, your instincts remind you that you shouldn't waste the pearl since you already have the perk. You put it back into your pack. ");
 				inventory.takeItem(consumables.P_PEARL, inventory.inventoryMenu);
 				return;
 			}
-			outputText("You cram the pearl in your mouth and swallow it like a giant pill with some difficulty.  Surprisingly there is no discomfort, only a cool calming sensation that springs up from your core.", true);
+			outputText("You cram the pearl in your mouth and swallow it like a giant pill with some difficulty.  Surprisingly there is no discomfort, only a cool calming sensation that springs up from your core.");
 			dynStats("lib", -5, "lus", -25, "cor", -10);
 			player.createPerk(PerkLib.PurityBlessing, 0, 0, 0, 0);
 		}
 		
 		public function lactaid(player:Player):void
 		{
+			clearOutput();
 			player.slimeFeed();
 			var i:Number = 0;
-			outputText("You gulp down the bottle of lactaid, easily swallowing the creamy liquid.", true);
+			outputText("You gulp down the bottle of lactaid, easily swallowing the creamy liquid.");
 			//Bump up size!
 			if (player.averageBreastSize() < 8) {
 				outputText("\n\n");
@@ -3653,14 +3673,15 @@ package classes.Items
 			}
 			dynStats("lus", 10);
 			if (rand(3) == 0) {
-				outputText(player.modFem(95, 1), false);
+				outputText(player.modFem(95, 1));
 			}
 		}
 		public function milkPotion(player:Player):void
 		{
+			clearOutput();
 			player.slimeFeed();
 			var i:Number = 0;
-			outputText("You drink the milk potion.  It tastes like milk.", true);
+			outputText("You drink the milk potion.  It tastes like milk.");
 			//Player doesn't lactate
 			if (player.biggestLactation() < 1) {
 				outputText("\n\n");
@@ -3777,7 +3798,8 @@ package classes.Items
 			//LaBova:
 			//ItemDesc: "A bottle containing a misty fluid with a grainy texture, it has a long neck and a ball-like base.  The label has a stylized picture of a well endowed cowgirl nursing two guys while they jerk themselves off.  "
 			//ItemUseText:
-			outputText("You drink the ", true);
+			clearOutput();
+			outputText("You drink the ");
 			if (enhanced) outputText("Pro Bova");
 			else outputText("La Bova");
 			outputText(".  The drink has an odd texture, but is very sweet.  It has a slight aftertaste of milk.");
@@ -4149,16 +4171,17 @@ package classes.Items
 				player.vaginaType(0);
 				changes++;
 			}
-			if (rand(3) == 0) outputText(player.modFem(79, 3), false);
-			if (rand(3) == 0) outputText(player.modThickness(70, 4), false);
-			if (rand(5) == 0) outputText(player.modTone(10, 5), false);
+			if (rand(3) == 0) outputText(player.modFem(79, 3));
+			if (rand(3) == 0) outputText(player.modThickness(70, 4));
+			if (rand(5) == 0) outputText(player.modTone(10, 5));
 			player.refillHunger(20);
 		}
 
 
 		public function blackSpellbook(player:Player):void
 		{
-			outputText("You open the small black book, and discover it to be an instructional book on the use of black magic.  Most of it is filled with generic information about black magic - how it is drawn from emotions (typically lust), and how it has the power to affect bodies and emotions.  It also warns against using it on oneself, as it is difficult to draw on your emotions while meddling with your own body.  In no time at all you've read the whole thing, but it disappears into thin air before you can put it away.", true);
+			clearOutput();
+			outputText("You open the small black book, and discover it to be an instructional book on the use of black magic.  Most of it is filled with generic information about black magic - how it is drawn from emotions (typically lust), and how it has the power to affect bodies and emotions.  It also warns against using it on oneself, as it is difficult to draw on your emotions while meddling with your own body.  In no time at all you've read the whole thing, but it disappears into thin air before you can put it away.");
 			if (player.inte < 30) {
 				outputText("\n\nYou feel greatly enlightened by your time spent reading.");
 				dynStats("int", 4);
@@ -4196,7 +4219,8 @@ package classes.Items
 
 		public function whiteSpellbook(player:Player):void
 		{
-			outputText("You open the white tome, and discover it to be an instructional book on the use of white magic.  Most of it is filled with generic information about white magic - how it is drawn for mental focus, is difficult to use when tired or aroused, and can be used to create and control energy.  In no time at all you've read the whole thing, but it disappears into thin air before you can put it away.", true);
+			clearOutput();
+			outputText("You open the white tome, and discover it to be an instructional book on the use of white magic.  Most of it is filled with generic information about white magic - how it is drawn for mental focus, is difficult to use when tired or aroused, and can be used to create and control energy.  In no time at all you've read the whole thing, but it disappears into thin air before you can put it away.");
 			if (player.inte < 30) {
 				outputText("\n\nYou feel greatly enlightened by your time spent reading.");
 				dynStats("int", 4);
@@ -4235,11 +4259,12 @@ package classes.Items
 		public function lustDraft(fuck:Boolean,player:Player):void
 		{
 			player.slimeFeed();
-			outputText("You drink the ", true);
+			clearOutput();
+			outputText("You drink the ");
 			if (fuck) outputText("red");
 			else outputText("pink");
 			outputText(" potion, and its unnatural warmth immediately flows to your groin.");
-			dynStats("lus", (30 + rand(player.lib / 10)), "resisted");
+			dynStats("lus", (30 + rand(player.lib / 10)), "resisted", false);
 
 			//Heat/Rut for those that can have them if "fuck draft"
 			if (fuck) {
@@ -4283,7 +4308,8 @@ package classes.Items
 			if (rand(5) == 0) changeLimit++;
 			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
 			if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
-			outputText("You drink the ale, finding it to have a remarkably smooth yet potent taste.  You lick your lips and sneeze, feeling slightly tipsy.", true);
+			clearOutput();
+			outputText("You drink the ale, finding it to have a remarkably smooth yet potent taste.  You lick your lips and sneeze, feeling slightly tipsy.");
 			dynStats("lus", 15);
 			//Stronger
 			if (player.str > 50) {
@@ -4391,8 +4417,8 @@ package classes.Items
 				if (player.bRows() >= 3) outputText("abdomen");
 				else outputText("chest");
 				outputText(". The " + player.nippleDescript(player.breastRows.length - 1) + "s even fade until nothing but ");
-				if (player.hasFur()) outputText(player.hairColor + " " + player.skinDesc, false);
-				else outputText(player.skinTone + " " + player.skinDesc, false);
+				if (player.hasFur()) outputText(player.hairColor + " " + player.skinDesc);
+				else outputText(player.skinTone + " " + player.skinDesc);
 				outputText(" remains. <b>You've lost a row of breasts!</b>");
 				dynStats("sen", -5);
 				player.removeBreastRow(player.breastRows.length - 1, 1);
@@ -4419,7 +4445,7 @@ package classes.Items
 				changes++;
 				outputText("\n\nWhoah, that was weird.  You just hallucinated that your ");
 				if (player.hasFur()) outputText("skin");
-				else outputText(player.skinDesc, false);
+				else outputText(player.skinDesc);
 				outputText(" turned " + player.skinTone + ".  No way!  It's staying, it really changed color!");
 				kGAMECLASS.rathazul.addMixologyXP(20);
 			}
@@ -4466,8 +4492,9 @@ package classes.Items
 
 		public function wetCloth(player:Player):void
 		{
+			clearOutput();
 			var tfSource:String = "gooGasmic";
-			outputText("You take the wet cloth in hand and rub it over your body, smearing the strange slime over your " + player.skinDesc + " slowly.", true);
+			outputText("You take the wet cloth in hand and rub it over your body, smearing the strange slime over your " + player.skinDesc + " slowly.");
 			//Stat changes
 			//libido up to 80
 			if (player.lib < 80) {
@@ -4592,9 +4619,9 @@ package classes.Items
 					player.changeStatusValue(StatusEffects.SlimeCraving, 1, 0);
 				}
 			}
-			if (rand(2) == 0) outputText(player.modFem(85, 3), false);
-			if (rand(2) == 0) outputText(player.modThickness(20, 3), false);
-			if (rand(2) == 0) outputText(player.modTone(15, 5), false);
+			if (rand(2) == 0) outputText(player.modFem(85, 3));
+			if (rand(2) == 0) outputText(player.modThickness(20, 3));
+			if (rand(2) == 0) outputText(player.modTone(15, 5));
 		}
 
 
@@ -4608,8 +4635,9 @@ package classes.Items
 			if (rand(2) == 0) changeLimit++;
 			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
 			if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
-			if (type == 0) outputText("You have no idea why, but you decide to eat the pointed tooth. To your surprise, it's actually quite brittle, turning into a fishy-tasting dust. You figure it must just be a tablet made to look like a shark's tooth.", true);
-			else if (type == 1) outputText("You have no idea why, but you decide to eat the pointed, glowing tooth. To your surprise, it's actually quite brittle, crumbling into a fishy-tasting dust. Maybe it's just a tablet made to look like a shark's tooth.", true);
+			clearOutput();
+			if (type == 0) outputText("You have no idea why, but you decide to eat the pointed tooth. To your surprise, it's actually quite brittle, turning into a fishy-tasting dust. You figure it must just be a tablet made to look like a shark's tooth.");
+			else if (type == 1) outputText("You have no idea why, but you decide to eat the pointed, glowing tooth. To your surprise, it's actually quite brittle, crumbling into a fishy-tasting dust. Maybe it's just a tablet made to look like a shark's tooth.");
 			//STATS
 			//Increase strength 1-2 points (Up to 50) (60 for tiger)
 			if (((player.str < 60 && type == 1) || player.str < 50) && rand(3) == 0) {
@@ -5020,8 +5048,8 @@ package classes.Items
 			if ((player.skinTone != "tan" && player.skinTone != "olive" && player.skinTone != "dark" && player.skinTone != "light") && changes < changeLimit && rand(5) == 0) {
 				changes++;
 				outputText("\n\nIt takes a while for you to notice, but <b>");
-				if (player.hasFur()) outputText("the skin under your " + player.furColor + " " + player.skinDesc, false);
-				else outputText("your " + player.skinDesc, false);
+				if (player.hasFur()) outputText("the skin under your " + player.furColor + " " + player.skinDesc);
+				else outputText("your " + player.skinDesc);
 				outputText(" has changed to become ");
 				temp = rand(4);
 				if (temp == 0) player.skinTone = "tan";
@@ -5211,8 +5239,8 @@ package classes.Items
 				if (player.breastRows.length >= 3) outputText("abdomen");
 				else outputText("chest");
 				outputText(". The " + player.nippleDescript(player.breastRows.length - 1) + "s even fade until nothing but ");
-				if (player.hasFur()) outputText(player.hairColor + " " + player.skinDesc, false);
-				else outputText(player.skinTone + " " + player.skinDesc, false);
+				if (player.hasFur()) outputText(player.hairColor + " " + player.skinDesc);
+				else outputText(player.skinTone + " " + player.skinDesc);
 				outputText(" remains. <b>You've lost a row of breasts!</b>");
 				dynStats("sen", -5);
 				player.removeBreastRow(player.breastRows.length - 1, 1);
@@ -5626,10 +5654,10 @@ package classes.Items
 				dynStats("lus", 3);
 			}
 			if (changes < changeLimit) {
-				if (rand(2) == 0) outputText(player.modThickness(5, 2), false);
-				if (rand(2) == 0) outputText(player.modTone(76, 2), false);
-				if (player.gender < 2) if (rand(2) == 0) outputText(player.modFem(65, 1), false);
-				else outputText(player.modFem(85, 2), false);
+				if (rand(2) == 0) outputText(player.modThickness(5, 2));
+				if (rand(2) == 0) outputText(player.modTone(76, 2));
+				if (player.gender < 2) if (rand(2) == 0) outputText(player.modFem(65, 1));
+				else outputText(player.modFem(85, 2));
 			}
 			player.refillHunger(20);
 			flags[kFLAGS.TIMES_TRANSFORMED] += changes;
@@ -5771,7 +5799,7 @@ package classes.Items
 			if (player.countCocksOfType(CockTypesEnum.LIZARD) == 1 && player.cocks.length == 1 && rand(4) == 0 && changes < changeLimit) {
 				outputText("\n\nA knot of pressure forms in your groin, forcing you off your " + player.feet() + " as you try to endure it.  You examine the affected area and see a lump starting to bulge under your " + player.skinDesc + ", adjacent to your " + player.cockDescript(0) + ".  The flesh darkens, turning purple");
 				if (player.isFurryOrScaley())
-					outputText(" and shedding " + player.skinDesc, false);
+					outputText(" and shedding " + player.skinDesc);
 				outputText(" as the bulge lengthens, pushing out from your body.  Too surprised to react, you can only pant in pain and watch as the fleshy lump starts to take on a penis-like appearance.  <b>You're growing a second lizard-cock!</b>  It doesn't stop growing until it's just as long as its brother and the same shade of shiny purple.  A dribble of cum oozes from its tip, and you feel relief at last.");
 
 				player.createCock();
@@ -6335,7 +6363,7 @@ package classes.Items
 				//Libido over 60? FUCK YEAH!
 				else if (player.lib < 80) {
 					outputText("\n\nYou fan your neck and start to pant as your " + player.skinTone + " skin begins to flush red with heat");
-					if (!player.hasPlainSkin()) outputText(" through your " + player.skinDesc, false);
+					if (!player.hasPlainSkin()) outputText(" through your " + player.skinDesc);
 					outputText(".  ");
 					if (player.gender == 1) outputText("Compression tightens down on " + player.sMultiCockDesc() + " as it strains against your " + player.armorName + ".  You struggle to fight down your heightened libido, but it's hard – so very hard.");
 					else if (player.gender == 0) outputText("Sexual hunger seems to gnaw at your " + player.assholeDescript() + ", demanding it be filled, but you try to resist your heightened libido.  It's so very, very hard.");
@@ -6377,17 +6405,17 @@ package classes.Items
 					outputText(".  Meanwhile, your crotch... your crotch is filled with such heavenly sensations from ");
 					if (player.gender == 1) {
 						outputText(player.sMultiCockDesc() + " and your ");
-						if (player.balls > 0) outputText(player.ballsDescriptLight(), false);
-						else outputText(player.assholeDescript(), false);
+						if (player.balls > 0) outputText(player.ballsDescriptLight());
+						else outputText(player.assholeDescript());
 					}
-					else if (player.gender == 2) outputText("your " + player.vaginaDescript(0) + " and " + player.clitDescript(), false);
+					else if (player.gender == 2) outputText("your " + player.vaginaDescript(0) + " and " + player.clitDescript());
 					else if (player.gender == 3) {
 						outputText(player.sMultiCockDesc() + ", ");
 						if (player.balls > 0) outputText(player.ballsDescriptLight() + ", ");
-						outputText(player.vaginaDescript(0) + ", and " + player.clitDescript(), false);
+						outputText(player.vaginaDescript(0) + ", and " + player.clitDescript());
 					}
 					//oh god genderless
-					else outputText("you " + player.assholeDescript(), false);
+					else outputText("you " + player.assholeDescript());
 					outputText(" that you have to stay stock-still to keep yourself from falling down and masturbating on the spot.  Thankfully the orgy of tactile bliss fades after a minute, but you still feel way more sensitive than your previous norm.  This will take some getting used to!");
 				}
 			}
@@ -6397,7 +6425,7 @@ package classes.Items
 				if (player.gender < 2) buffer += player.modFem(61, 4);
 				else buffer += player.modFem(90, 4);
 				if (buffer != "") {
-					outputText(buffer, false);
+					outputText(buffer);
 					changes++;
 				}
 			}
@@ -6503,7 +6531,7 @@ package classes.Items
 				if (player.isTaur()) outputText("\n\nYour quadrupedal hind-quarters seizes, overbalancing your surprised front-end and causing you to stagger and fall to your side.  Pain lances throughout, contorting your body into a tightly clenched ball of pain while tendons melt and bones break, melt, and regrow.  When it finally stops, <b>you look down to behold your new pair of fur-covered rabbit feet</b>!");
 				//Non-taurs
 				else {
-					outputText("\n\nNumbness envelops your " + player.legs() + " as they pull tighter and tighter.  You overbalance and drop on your " + player.assDescript(), false);
+					outputText("\n\nNumbness envelops your " + player.legs() + " as they pull tighter and tighter.  You overbalance and drop on your " + player.assDescript());
 					if (player.tailType > TAIL_TYPE_NONE) outputText(", nearly smashing your tail flat");
 					else outputText(" hard enough to sting");
 					outputText(" while the change works its way through you.  Once it finishes, <b>you discover that you now have fuzzy bunny feet and legs</b>!");
@@ -6576,7 +6604,7 @@ package classes.Items
 				//Libido over 60? FUCK YEAH!
 				else if (player.lib < 80) {
 					outputText("\n\nYou fan your neck and start to pant as your " + player.skinTone + " skin begins to flush red with heat");
-					if (!player.hasPlainSkin()) outputText(" through your " + player.skinDesc, false);
+					if (!player.hasPlainSkin()) outputText(" through your " + player.skinDesc);
 					outputText(".  ");
 					if (player.gender == 1) outputText("Compression tightens down on " + player.sMultiCockDesc() + " as it strains against your " + player.armorName + ".  You struggle to fight down your heightened libido, but it's hard – so very hard.");
 					else if (player.gender == 0) outputText("Sexual hunger seems to gnaw at your " + player.assholeDescript() + ", demanding it be filled, but you try to resist your heightened libido.  It's so very, very hard.");
@@ -6733,8 +6761,8 @@ package classes.Items
 				if (player.breastRows.length >= 3) outputText("abdomen");
 				else outputText("chest");
 				outputText(". The " + player.nippleDescript(player.breastRows.length - 1) + "s even fade until nothing but ");
-				if (player.hasFur()) outputText(player.hairColor + " " + player.skinDesc, false);
-				else outputText(player.skinTone + " " + player.skinDesc, false);
+				if (player.hasFur()) outputText(player.hairColor + " " + player.skinDesc);
+				else outputText(player.skinTone + " " + player.skinDesc);
 				outputText(" remains. <b>You've lost a row of breasts!</b>");
 				dynStats("sen", -5);
 				player.removeBreastRow(player.breastRows.length - 1, 1);
@@ -6780,14 +6808,14 @@ package classes.Items
 			//-Femininity to 85
 			if (player.femininity < 85 && changes < changeLimit && rand(3) == 0) {
 				changes++;
-				outputText(player.modFem(85, 3 + rand(5)), false);
+				outputText(player.modFem(85, 3 + rand(5)));
 			}
 			//-Skin color change – tan, olive, dark, light
 			if ((player.skinTone != "tan" && player.skinTone != "olive" && player.skinTone != "dark" && player.skinTone != "light") && changes < changeLimit && rand(5) == 0) {
 				changes++;
 				outputText("\n\nIt takes a while for you to notice, but <b>");
-				if (player.hasFur()) outputText("the skin under your " + player.hairColor + " " + player.skinDesc, false);
-				else outputText("your " + player.skinDesc, false);
+				if (player.hasFur()) outputText("the skin under your " + player.hairColor + " " + player.skinDesc);
+				else outputText("your " + player.skinDesc);
 				outputText(" has changed to become ");
 				temp = rand(4);
 				if (temp == 0) player.skinTone = "tan";
@@ -6823,7 +6851,7 @@ package classes.Items
 			}
 			//-Body thickness to 25ish
 			if (player.thickness > 25 && changes < changeLimit && rand(3) == 0) {
-				outputText(player.modThickness(25, 3 + rand(4)), false);
+				outputText(player.modThickness(25, 3 + rand(4)));
 				changes++;
 			}
 			//Remove odd eyes
@@ -7168,8 +7196,8 @@ package classes.Items
 			outputText("You hesitantly take a bite.  It's sweet, as you'd expect, but there's also a slightly salty, chocolaty undercurrent of flavor.  Even knowing what the minotaur put in Maddie's mix, you find yourself grateful that this new creation doesn't seem to have any of his 'special seasonings'.  It wouldn't do to be getting drugged up while you're slowly devouring the massive, muffin-molded masterpiece. Before you know it, most of the cupcake is gone and you polish off the last chocolaty bites before licking your fingers clean.\n\n");
 			outputText("Gods, you feel heavy!  You waddle slightly as your body begins thickening, swelling until you feel as wide as a house.  Lethargy spreads through your limbs, and you're forced to sit still a little while until you let out a lazy burp.\n\n");
 			outputText("As you relax in your sugar-coma, you realize your muscle definition is fading away, disappearing until your " + player.skinDesc + " looks nearly as soft and spongy as Maddie's own.  You caress the soft, pudgy mass and shiver in delight, dimly wondering if this is how the cupcake-girl must feel all the time.");
-			outputText(player.modTone(0, 100), false);
-			outputText(player.modThickness(100, 100), false);
+			outputText(player.modTone(0, 100));
+			outputText(player.modThickness(100, 100));
 			player.refillHunger(100);
 		}
 
@@ -7329,8 +7357,8 @@ package classes.Items
 				if (player.bRows() >= 3) outputText("abdomen");
 				else outputText("chest");
 				outputText(". The " + player.nippleDescript(player.breastRows.length - 1) + "s even fade until nothing but ");
-				if (player.hasFur()) outputText(player.hairColor + " " + player.skinDesc, false);
-				else outputText(player.skinTone + " " + player.skinDesc, false);
+				if (player.hasFur()) outputText(player.hairColor + " " + player.skinDesc);
+				else outputText(player.skinTone + " " + player.skinDesc);
 				outputText(" remains. <b>You've lost a row of breasts!</b>");
 				dynStats("sen", -5);
 				player.removeBreastRow(player.breastRows.length - 1, 1);
@@ -7803,7 +7831,7 @@ package classes.Items
 				if (!player.hasStatusEffect(StatusEffects.Dysfunction)) {
 					outputText("\n\nUnfortunately, the skin of ");
 					if (player.cockTotal() > 0) {
-						outputText(player.sMultiCockDesc(), false);
+						outputText(player.sMultiCockDesc());
 						if (player.hasVagina()) outputText(" and");
 						outputText(" ");
 					}
@@ -7827,7 +7855,7 @@ package classes.Items
 			if (player.findPerk(PerkLib.ThickSkin) < 0 && player.sens < 30 && rand(4) == 0) {
 				outputText("Slowly, ");
 				if (player.hasPlainSkin()) outputText("your skin");
-				else outputText("the skin under your " + player.skinDesc, false);
+				else outputText("the skin under your " + player.skinDesc);
 				outputText(" begins to feel duller, almost... thicker.  You pinch yourself and find that your epidermis feels more resistant to damage, almost like natural armor!\n<b>(Thick Skin - Perk Gained!)</b>");
 				player.createPerk(PerkLib.ThickSkin, 0, 0, 0, 0);
 			}
@@ -8272,7 +8300,8 @@ package classes.Items
 		public function sheepMilk(player:Player):void
 		{
 			player.slimeFeed();
-			outputText("You gulp the bottle's contents, and its sweet taste immediately invigorates you, making you feel calm and concentrated", true);
+			clearOutput();
+			outputText("You gulp the bottle's contents, and its sweet taste immediately invigorates you, making you feel calm and concentrated");
 			//-30 fatigue, -2 libido, -10 lust]
 			player.changeFatigue(-30);
 			dynStats("lib", -.25, "lus", -10, "cor", -0.5);
@@ -8282,10 +8311,11 @@ package classes.Items
 		public function springWater(player:Player):void
 		{
 			player.slimeFeed();
-			outputText("The water is cool and sweet to the taste, and every swallow makes you feel calmer, cleaner, and refreshed.  You drink until your thirst is quenched, feeling purer in both mind and body. ", true);
+			clearOutput();
+			outputText("The water is cool and sweet to the taste, and every swallow makes you feel calmer, cleaner, and refreshed.  You drink until your thirst is quenched, feeling purer in both mind and body. ");
 			//-30 fatigue, -2 libido, -10 lust]
 			player.changeFatigue(-10);
-			dynStats("lus", -25, "cor", (-3 - rand(2)), "resisted");
+			dynStats("lus", -25, "cor", (-3 - rand(2)), "resisted", false);
 			HPChange(20 + (5 * player.level) + rand(5 * player.level), true);
 			player.refillHunger(10);
  			if (player.cor > (50 - player.corruptionTolerance())) dynStats("cor", -1);
@@ -8294,21 +8324,23 @@ package classes.Items
 		
 		public function calmMint(player:Player):void
 		{
-			outputText("Eating the sprig of raw mint is a bit of a stretch, but you manage to gulp it down.  As the strong minty flavor overwhelms your taste buds, your mind feels calmer, and a relaxed sensation spreads through your body.", true);
-			dynStats("lib", -1, "lust", -10, "inte", 0.5, "resisted");
+			clearOutput();
+			outputText("Eating the sprig of raw mint is a bit of a stretch, but you manage to gulp it down.  As the strong minty flavor overwhelms your taste buds, your mind feels calmer, and a relaxed sensation spreads through your body.");
+			dynStats("lib", -1, "lust", -10, "inte", 0.5, "resisted", false);
 			player.refillHunger(5);
 		}
 		
 		public function iceShard(player:Player):void
 		{
-			outputText("You give the icicle a tentative lick, careful not to stick your tongue to it. It tastes refreshing, like cool, clear glacier water.  The ice readily dissolves against the heat of your mouth as you continue to lick away at it.  Before long, the icicle has dwindled into a sliver small enough to pop into your mouth.  As the pinprick of ice melts you slide your chilled tongue around your mouth, savoring the crisp feeling.\n\n", true)
+			clearOutput();
+			outputText("You give the icicle a tentative lick, careful not to stick your tongue to it. It tastes refreshing, like cool, clear glacier water.  The ice readily dissolves against the heat of your mouth as you continue to lick away at it.  Before long, the icicle has dwindled into a sliver small enough to pop into your mouth.  As the pinprick of ice melts you slide your chilled tongue around your mouth, savoring the crisp feeling.\n\n")
 			if (rand(2) == 0 && (player.str < 75 || player.tou < 75)) {
-				outputText("The rush of cold tenses your muscles and fortifies your body, making you feel hardier than ever.  ", false)
+				outputText("The rush of cold tenses your muscles and fortifies your body, making you feel hardier than ever.  ");
 				if (player.str < 75) dynStats("str", ((1 + rand(5)) / 5))
 				if (player.tou < 75) dynStats("tou", ((1 + rand(5)) / 5))
 			}
 			if (rand(2) == 0 && (player.spe > 25)) {
-				outputText("You feel a chill spread through you; when it passes, you feel more slothful and sluggish.  ", false)
+				outputText("You feel a chill spread through you; when it passes, you feel more slothful and sluggish.  ");
 				if (player.spe > 25) dynStats("spe", -((1 + rand(5)) / 5))
 			}
 			if (rand(2) == 0) {
@@ -8406,7 +8438,7 @@ package classes.Items
 			//from high to low
 			//Your facial features harden as your body becomes more androgynous.
 			if (((mystic && rand(2) == 0) || (!mystic && rand(4) == 0)) && changes < changeLimit && player.femininity != 50) {
-				outputText(player.modFem(50, 2), false);
+				outputText(player.modFem(50, 2));
 				changes++;
 			}
 			//[decrease muscle tone toward 40]
@@ -9004,7 +9036,7 @@ package classes.Items
 			}
 			//gain thickness or lose tone or whatever - standard message
 			if (rand(4) == 0 && player.thickness < 80 && changes < changeLimit) {
-				outputText(player.modThickness(80, 2), false);
+				outputText(player.modThickness(80, 2));
 				changes++;
 			}
 			if (rand(5) == 0) updateOvipositionPerk(tfSource);
@@ -9924,7 +9956,7 @@ package classes.Items
 			}
 			outputText("\n\nYou lick your lips clean, savoring the taste of the Winter Pudding.  You feel kinda antsy...");
 			//[Decrease player tone by 5, Increase Lust by 20, Destroy item.]
-			dynStats("lus", (10+player.lib/10), "resisted");
+			dynStats("lus", (10+player.lib/10), "resisted", false);
 			
 			//[Optional, give the player antlers! (30% chance) Show this description if the player doesn't have horns already.]
 			if (player.horns == 0 && rand(2) == 0) {
@@ -10024,7 +10056,8 @@ package classes.Items
 		}
 		
 		public function purityPhilter(player:Player):void {
-			outputText("You uncap the small silver vial and place it to your lips. Tilting your head back, you pour the cold tasteless liquid down your throat.\n\n", true);
+			clearOutput();
+			outputText("You uncap the small silver vial and place it to your lips. Tilting your head back, you pour the cold tasteless liquid down your throat.\n\n");
 			if (player.cor < 20) outputText("You shiver as your body is suffused with a cold, refreshing feeling. You feel much calmer than before.");
 			if (player.cor >= 20 && player.cor < 40) outputText("You break out into a cold sweat as the freezing liquid surges through your body. Despite the discomfort, your thoughts do seem clearer.");
 			if (player.cor >= 40 && player.cor < 60) outputText("As the freezing liquid hits your stomach, you suddenly feel like you're standing in a blizzard. Your hands and feet go numb, and even though you've never felt colder in your life, you're covered in sweat. Eventually, you begin to feel more normal, and your thoughts definitely seem clearer.");
