@@ -1237,8 +1237,6 @@ use namespace kGAMECLASS;
 				wolfCounter++;
 			if (lowerBody == LOWER_BODY_TYPE_WOLF)
 				wolfCounter++;
-			if (armType == ARM_TYPE_WOLF)
-				wolfCounter++;
 			if (eyeType == EYES_WOLF)
 				wolfCounter+=2;
 			if (hasFur() && wolfCounter > 0) //Only counts if we got wolf features
