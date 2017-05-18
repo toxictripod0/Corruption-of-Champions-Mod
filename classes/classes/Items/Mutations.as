@@ -1999,7 +1999,8 @@ package classes.Items
 					"golden",
 					"silver",
 					"brown",
-					"auburn", ["black", "gray"],
+					"auburn",
+					["black", "gray"],
 					["black", "brown"],
 					["black", "silver"],
 					["black", "auburn"],
@@ -2069,7 +2070,7 @@ package classes.Items
 				changes++;
 			}
 			//MISC CRAP
-			if (rand(5) == 0) mutations.updateOvipositionPerk(tfSource);
+			if (rand(5) == 0) updateOvipositionPerk(tfSource);
 			if (rand(3) == 0) outputText(player.modTone(100, 4), false);
 			if (rand(3) == 0) outputText(player.modThickness(75, 3), false);
 			player.refillHunger(10);
