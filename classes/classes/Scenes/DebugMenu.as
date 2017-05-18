@@ -351,13 +351,14 @@ import classes.Items.*
 			weaponArray.push(weapons.L_STAFF);
 			weaponArray.push(weapons.L_WHIP);
 			weaponArray.push(weapons.MACE);
+			weaponArray.push(weapons.MRAPIER);
 			weaponArray.push(weapons.PIPE);
 			weaponArray.push(weapons.PTCHFRK);			
 			weaponArray.push(weapons.RIDINGC);
 			weaponArray.push(weapons.RRAPIER);
 			weaponArray.push(weapons.S_BLADE);
-			weaponArray.push(weapons.S_GAUNT);
 			//Page 3
+			weaponArray.push(weapons.S_GAUNT);
 			weaponArray.push(weapons.SCARBLD);
 			weaponArray.push(weapons.SCIMITR);
 			weaponArray.push(weapons.SPEAR);
@@ -365,6 +366,7 @@ import classes.Items.*
 			weaponArray.push(weapons.W_STAFF);
 			weaponArray.push(weapons.WARHAMR);
 			weaponArray.push(weapons.WHIP);
+			weaponArray.push(weapons.U_SWORD);
 			
 			//------------
 			// Shields
