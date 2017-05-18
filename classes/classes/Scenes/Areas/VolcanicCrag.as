@@ -81,12 +81,14 @@ package classes.Scenes.Areas
 		}
 
 		private function lootDrakHrt():void {
-			outputText("While you're minding your own business, you spot a flower. You walk over to it, pick it up and smell it. By Marae, it smells amazing! It looks like Drake's Heart as the legends foretold. ", true);
+			clearOutput();
+			outputText("While you're minding your own business, you spot a flower. You walk over to it, pick it up and smell it. By Marae, it smells amazing! It looks like Drake's Heart as the legends foretold. ");
 			inventory.takeItem(consumables.DRAKHRT, camp.returnToCampUseOneHour);
 		}
 
 		private function walk():void {
-			outputText("You spend one hour exploring the infernal landscape but you don't manage to find anything interesting.", true);
+			clearOutput();
+			outputText("You spend one hour exploring the infernal landscape but you don't manage to find anything interesting.");
 			doNext(camp.returnToCampUseOneHour);
 		}
 
