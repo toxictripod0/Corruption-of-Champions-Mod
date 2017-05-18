@@ -162,7 +162,7 @@ private function rapeBunBun():void {
 private function bunbunFucksYourVag():void {
 	spriteSelect(13);
 	clearOutput();
-	outputText("A anticipatory grin widens across your " + player.face() + " as you speedily disrobe, discarding your " + player.armorName, false);
+	outputText("An anticipatory grin widens across your " + player.face() + " as you speedily disrobe, discarding your " + player.armorName, false);
 	
 	if (player.weaponName != "fists") outputText(" and " + player.weaponName, false);
 	outputText(" in a hurry.   Meanwhile the bunny looks on in a semi-aroused stupor, stroking her length with one hand while her other teases one of the hard nubs of her nipples.  You sigh with excitement as you position yourself above her, lining up her somewhat angular crown with the entrance to your " + player.vaginaDescript(0) + " before you start to drop.", false);

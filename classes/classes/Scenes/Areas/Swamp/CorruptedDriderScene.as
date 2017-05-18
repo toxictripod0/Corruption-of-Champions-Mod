@@ -361,7 +361,7 @@ package classes.Scenes.Areas.Swamp
 			else outputText("lust", false);
 			outputText(" pouring from all four of her eyes.  Now nude, you saunter over with a gleam in your eyes and a telltale tingling in your loins.  You move around some of the eight, sprawled-out legs and close in on her side.  With a mighty heave, you help to lift her up onto her shaking legs, then keep pushing, tipping her dangerously to the side.  She cries out in surprise as she flips over, rolling onto her back while her spindly, chitinous legs flail uselessly at the muggy air.\n\n", false);
 
-			outputText("Like this, you're treated to a perfect view of ALL of the web-woman's endowments.  Her four D-cup tits flatten slightly against her torso now that she's on her back, hanging slightly to the side.  At her crotch, you can see her glistening, black-lipped sex puffing up, the tip of her large button already peeking out of her tempting box.  Just below that, the black and " + monster.hairColor + "-striped exoskeleton of her spider-half starts, merging down into an bulbous, arachnid shape.  At the very bottom of it all is the huge bulk of her abdomen, covered with numerous spinnerets and with a wide, mostly-retracted organ near the back.\n\n", false);
+			outputText("Like this, you're treated to a perfect view of ALL of the web-woman's endowments.  Her four D-cup tits flatten slightly against her torso now that she's on her back, hanging slightly to the side.  At her crotch, you can see her glistening, black-lipped sex puffing up, the tip of her large button already peeking out of her tempting box.  Just below that, the black and " + monster.hairColor + "-striped exoskeleton of her spider-half starts, merging down into a bulbous, arachnid shape.  At the very bottom of it all is the huge bulk of her abdomen, covered with numerous spinnerets and with a wide, mostly-retracted organ near the back.\n\n", false);
 
 			outputText("The spider's look of ", false);
 			if (monster.HP < 1) {
@@ -404,7 +404,7 @@ package classes.Scenes.Areas.Swamp
 				else outputText("unending", false);
 				outputText(" jizz-ropes on your groin and the base of the drider's slimy stalk.", false);
 			}
-			outputText("  The sounds coming from your throat are gutteral, animalistic, and utterly inhuman, but you're too busy cumming... cumming so hard with each orb dropping into your already-packed womb, lost in motherly bliss.\n\n", false);
+			outputText("  The sounds coming from your throat are guttural, animalistic, and utterly inhuman, but you're too busy cumming... cumming so hard with each orb dropping into your already-packed womb, lost in motherly bliss.\n\n", false);
 
 			outputText("Vocalizing like an animal, you climax over and over in a seemingly endless rut, swiveling your hips while your muscles milk the ovipositor, practically pulling the eggs into your hungry womb.  When the last one is packed tightly into your uterus, your " + player.vaginaDescript() + " keeps milking it, a hollow ring of disappointment penetrating your fog as you realize the pleasure has come to an end.  The thick, egg-laying organ slowly shrivels, shrinking down enough that it slides free.  As it's pulled out, a river of slime comes with it, released to pour out of your overstuffed cooch.\n\n", false);
 
@@ -432,7 +432,7 @@ package classes.Scenes.Areas.Swamp
 			else outputText("lust", false);
 			outputText(" pouring from all four of her eyes.  Now nude, you saunter over with a gleam in your eyes and a telltale tingling in your loins.  You move around some of the eight, sprawled-out legs and close in on her side.  With a mighty heave, you help to lift her up onto her shaking legs, then keep pushing, tipping her dangerously to the side.  She cries out in surprise as she flips over, rolling onto her back while her spindly, chitinous legs flail uselessly at the muggy air.\n\n", false);
 
-			outputText("Like this, you're treated to a perfect view of ALL of the web-woman's endowments.  Her four D-cup tits flatten slightly against her torso now that she's on her back, hanging slightly to the side.  At her crotch, you can see her glistening, black-lipped sex puffing up, the tip of her large button already peeking out of her tempting box.  Just below that, the black and " + monster.hairColor + "-striped exoskeleton of her spider-half starts, merging down into an bulbous, arachnid shape.  At the very bottom of it all is the huge bulk of her abdomen, covered with numerous spinnerets and with a wide, mostly-retracted organ near the back.\n\n", false);
+			outputText("Like this, you're treated to a perfect view of ALL of the web-woman's endowments.  Her four D-cup tits flatten slightly against her torso now that she's on her back, hanging slightly to the side.  At her crotch, you can see her glistening, black-lipped sex puffing up, the tip of her large button already peeking out of her tempting box.  Just below that, the black and " + monster.hairColor + "-striped exoskeleton of her spider-half starts, merging down into a bulbous, arachnid shape.  At the very bottom of it all is the huge bulk of her abdomen, covered with numerous spinnerets and with a wide, mostly-retracted organ near the back.\n\n", false);
 
 			outputText("The spider's look of ", false);
 			if (monster.HP < 1) {

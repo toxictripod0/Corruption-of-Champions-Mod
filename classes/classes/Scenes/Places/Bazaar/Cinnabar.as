@@ -323,7 +323,7 @@ private function fuckCinnabarHugerAndCorruptedEr():void {
 	else outputText("It's too much for your utterly encapsulated member and violated anus, and your poor prostate practically wrings itself dry as it tries to unload.", false);
 	outputText("  A half-second later your " + player.cockDescript(x) + " joins it, your internal muscles clenching and convulsing, heaving the jizz from your body in one huge, gooey blast.\n\n", false);
 	
-	outputText("Cinnabar pulls her dirty paw out and grins like a mouse with a chunk of cheese, massaging her distorting neck while you empty every ounce of cum from your " + player.ballsDescriptLight() + " into her over-stretched womb-filled body.  She squeaks, \"<i>No-ohhhh-ormally I LIKE being a mewling slut for " + player.mf("studs","bitches") + " like you, but if you won't treat a cum-sleeve like me with respect, then I'm going to teach it to you.</i>\"  You nod dumbly, still locked in an climax that ", false);
+	outputText("Cinnabar pulls her dirty paw out and grins like a mouse with a chunk of cheese, massaging her distorting neck while you empty every ounce of cum from your " + player.ballsDescriptLight() + " into her over-stretched womb-filled body.  She squeaks, \"<i>No-ohhhh-ormally I LIKE being a mewling slut for " + player.mf("studs","bitches") + " like you, but if you won't treat a cum-sleeve like me with respect, then I'm going to teach it to you.</i>\"  You nod dumbly, still locked in a climax that ", false);
 	if (player.cumQ() < 250) outputText("makes your body churn well after you're empty.", false);
 	else if (player.cumQ() < 500) outputText("causes her hugely-stretched lips to glaze white.", false);
 	else if (player.cumQ() < 1000) outputText("causes her lips to glaze and her belly to bloat.", false);

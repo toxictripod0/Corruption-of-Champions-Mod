@@ -710,7 +710,7 @@ public function amilyUrtaSex():void {
 
 	outputText("Urta's face lights up in hungry delight and she promptly gets up and hurries off to one of the backrooms.  Amily also arises, face red with shame, and quickly follows her, with you bringing up the rear.\n\n", false);
 
-	outputText("Once the three of you are in a empty room, you lock the door behind you as Urta and Amily both strip down, eyeing each other and you with equal attention.  \"<i>So... are you going to partake?  Or just watch?</i>\" Amily asks, hesitantly.", false);
+	outputText("Once the three of you are in an empty room, you lock the door behind you as Urta and Amily both strip down, eyeing each other and you with equal attention.  \"<i>So... are you going to partake?  Or just watch?</i>\" Amily asks, hesitantly.", false);
 	
 	//Watch (only game in town for now, so suppress the choice buttons and route right to this)
 	menu();

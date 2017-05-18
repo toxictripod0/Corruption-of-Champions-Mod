@@ -3723,7 +3723,7 @@ private function katherineSeeVala():void {
 	outputText("Vala flies over quickly.  When she arrives you pat the seat next to you. You’re sitting between your submissive cat " + catGirl("girl", "morph") + " on one side and your supersized faerie on the other.  You certainly walked a strange path to wind up here.");
 	menu();
 	addDisabledButton(1, "Eat Out", "This scene requires Kath to have cock.");
-	addDisabledButton(2, "Dbl Stuff", "This scene requires both Kath and you to have cock. It does not accomodate taurs.");
+	addDisabledButton(2, "Dbl Stuff", "This scene requires both Kath and you to have cock. It does not accommodate taurs.");
 	
 	addButton(0, "Fist Them", telAdre.katherineThreesome.fistKathAndVala);
 	if (hasCock()) { //All but the fisting scene require Kath be a herm

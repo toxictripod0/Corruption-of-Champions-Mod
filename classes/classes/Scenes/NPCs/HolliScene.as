@@ -1385,7 +1385,7 @@ private function holliPlaysWithPenisesBadEnd():void {
 	
 	outputText("\n\n\"<i>N-no... ah!</i>\" the brown-haired girl yelps as Holli's shaft slides into her precum-slicked pussy on the next return swing.  Gibbering and drooling, the deflowered maiden is rocked back and forth with both dicks stretching her hole, rubbing in opposite directions as she swings; when one pulls out, the other slides further in.  The girl shudders and locks up as her first orgasm hits, but in spite of her sensitized nerves and cries for respite, the branches continue to sway between her lovers.");
 	
-	outputText("\n\nBy the time the girl reaches her third orgasm, her partners are tense and near the breaking point; with an shudder and a stilling of the shaking branches, the silent one opens " + player.mf("his", "her") + " mouth in mute ecstasy and ejaculates, ");
+	outputText("\n\nBy the time the girl reaches her third orgasm, her partners are tense and near the breaking point; with a shudder and a stilling of the shaking branches, the silent one opens " + player.mf("his", "her") + " mouth in mute ecstasy and ejaculates, ");
 	if (player.cocks.length > 1) outputText("spraying the girl's stomach and tits with waste seed from " + player.mf("his", "her") + " unused manhood and ");
 	outputText(" filling the Champion's pussy with so much semen it cascades from her stretched hole as Holli continues to pump.");
 
