@@ -144,7 +144,7 @@ package classes.Scenes {
 			//In Ingnam or not in cabin.
 			if (flags[kFLAGS.IN_INGNAM] > 0 || flags[kFLAGS.CAMP_BUILT_CABIN] <= 0) {
 				if (player.cor < 15) {
-					outputText("You sheepishly find some rocks to hide in, where ", false);
+					outputText("You sheepishly find some rocks to hide in, where ");
 					if (player.armor == armors.GOOARMR) {
 						if (player.lowerGarment != UndergarmentLib.NOTHING) outputText("you remove your goo-soaked [lowerGarment] then ");
 						outputText("you reach your hand into your goo-covered groin.");
@@ -154,7 +154,7 @@ package classes.Scenes {
 					outputText("\n\n");
 				}
 				if (player.cor >= 15 && player.cor < 30) {
-					outputText("You make sure you are alone and ", false);
+					outputText("You make sure you are alone and ");
 					if (player.armor == armors.GOOARMR) {
 						if (player.lowerGarment != UndergarmentLib.NOTHING) outputText("you remove your goo-soaked [lowerGarment] then ");
 						outputText("you reach your hand into your goo-covered groin.");
@@ -164,7 +164,7 @@ package classes.Scenes {
 					outputText("\n\n");
 				}
 				if (player.cor >= 30 && player.cor < 60) {
-					outputText("You happily ", false);
+					outputText("You happily ");
 					if (player.armor == armors.GOOARMR) {
 						if (player.lowerGarment != UndergarmentLib.NOTHING) outputText("remove your goo-soaked [lowerGarment] and ");
 						outputText("reach your hand into your goo-covered groin");
@@ -204,7 +204,7 @@ package classes.Scenes {
 			//In cabin
 			else {
 				if (player.cor < 15) {
-					outputText("You sheepishly enter your cabin and make sure to close the cabin door and shutters of your window to ensure privacy. ", false);
+					outputText("You sheepishly enter your cabin and make sure to close the cabin door and shutters of your window to ensure privacy. ");
 					if (player.armor == armors.GOOARMR) {
 						outputText("You ");
 						if (player.lowerGarment != UndergarmentLib.NOTHING) outputText("remove your goo-soaked [lowerGarment] and you ");
@@ -215,7 +215,7 @@ package classes.Scenes {
 					outputText("\n\n");
 				}
 				if (player.cor >= 15 && player.cor < 30) {
-					outputText("You enter your cabin and close the door, forgetting to close the shutters. ", false);
+					outputText("You enter your cabin and close the door, forgetting to close the shutters. ");
 					if (player.armor == armors.GOOARMR) {
 						outputText("You ");
 						if (player.lowerGarment != UndergarmentLib.NOTHING) outputText("remove your goo-soaked [lowerGarment] and you ");
@@ -226,7 +226,7 @@ package classes.Scenes {
 					outputText("\n\n");
 				}
 				if (player.cor >= 30 && player.cor < 60) {
-					outputText("You enter your cabin and leave the shutters open. ", false);
+					outputText("You enter your cabin and leave the shutters open. ");
 					if (player.armor == armors.GOOARMR) {
 						outputText("You ");
 						if (player.lowerGarment != UndergarmentLib.NOTHING) outputText("remove your goo-soaked [lowerGarment] and you ");
@@ -237,7 +237,7 @@ package classes.Scenes {
 					outputText("\n\n");
 				}
 				if (player.cor >= 60 && player.cor < 80) {
-					outputText("You enter your cabin and leave the shutters and door open, hoping someone might notice you. ", false);
+					outputText("You enter your cabin and leave the shutters and door open, hoping someone might notice you. ");
 					if (player.armor == armors.GOOARMR) {
 						outputText("You ");
 						if (player.lowerGarment != UndergarmentLib.NOTHING) outputText("remove your goo-soaked [lowerGarment] and you ");
@@ -248,7 +248,7 @@ package classes.Scenes {
 					outputText("\n\n");
 				}	
 				if (player.cor >= 80) {
-					outputText("You enter your cabin and leave the shutters and door open. You move your bed so you're visible from the window, hopefully to draw someone's attention. ", false);
+					outputText("You enter your cabin and leave the shutters and door open. You move your bed so you're visible from the window, hopefully to draw someone's attention. ");
 					if (player.armor == armors.GOOARMR) {
 						outputText("You ");
 						if (player.lowerGarment != UndergarmentLib.NOTHING) outputText("remove your goo-soaked [lowerGarment] and you ");
@@ -1024,20 +1024,20 @@ package classes.Scenes {
 		{
 			/*DUPLICATE WITH SCENE BELOW)
 			//different based on libido
-			if (player.lib < 45) outputText("You grip your " + player.cockDescript(0) + " and begin cautiously guiding it towards ", false);
-			if (player.lib >= 45 && player.lib < 70) outputText("Shivering with anticipation, you place the tip of your " + player.cockDescript(0) + " against the opening of ", false);
-			if (player.lib >= 70) outputText("Without hesitation, you shove the tip of your " + player.cockDescript(0) + " into ", false);
+			if (player.lib < 45) outputText("You grip your " + player.cockDescript(0) + " and begin cautiously guiding it towards ");
+			if (player.lib >= 45 && player.lib < 70) outputText("Shivering with anticipation, you place the tip of your " + player.cockDescript(0) + " against the opening of ");
+			if (player.lib >= 70) outputText("Without hesitation, you shove the tip of your " + player.cockDescript(0) + " into ");
 			//More than one row?
 			if (player.breastRows.length > 1) outputText("one of the ",false);
 			if (player.breastRows.length == 1) outputText("one of your ",false);
 			//More than 1 nip per boob?
-			if (player.averageNipplesPerBreast() > 1) outputText("many ", false);
+			if (player.averageNipplesPerBreast() > 1) outputText("many ");
 			//Different based on looseness (again)
-			if (player.averageVaginalLooseness() < 2) outputText("painfully stretched nipples", false);
-			if (player.averageVaginalLooseness() >= 2 && player.averageVaginalLooseness() < 4) outputText("freakishly swollen nipples", false);
-			if (player.averageVaginalLooseness() >= 4) outputText("huge, bloated cunt-nipples", false);
+			if (player.averageVaginalLooseness() < 2) outputText("painfully stretched nipples");
+			if (player.averageVaginalLooseness() >= 2 && player.averageVaginalLooseness() < 4) outputText("freakishly swollen nipples");
+			if (player.averageVaginalLooseness() >= 4) outputText("huge, bloated cunt-nipples");
 			if (player.breastRows.length > 1) outputText(" on one of your lower breasts",false);
-			outputText(". ", false);*/
+			outputText(". ");*/
 			
 			//different based on player.libido
 			if (player.lib < 45)
@@ -1065,14 +1065,14 @@ package classes.Scenes {
 				}
 				outputText("tip of your " + player.cockDescript() + " against the opening of ");
 		/* Old method
-				if (player.countCocksOfType(CockTypesEnum.HORSE) > 0) outputText("Shivering with anticipation, you place the flared tip of your " + horseDescript(0) + " against the opening of ", false);
-				else if (player.countCocksOfType(CockTypesEnum.HUMAN) > 0) outputText("Shivering with anticipation, you place the tip of your " + player.cockDescript(0) + " against the opening of ", false);
-				else if (player.dogCocks() > 0) outputText("Shivering with anticipation, you place the pointed tip of your " + dogDescript(0) + " against the opening of ", false);
-				else if (player.countCocksOfType(CockTypesEnum.TENTACLE) > 0) outputText("Shivering with anticipation, you place the bulbous tip of your " + player.cockDescript(0) + " against the opening of ", false);
-				else if (player.countCocksOfType(CockTypesEnum.DEMON) > 0) outputText("Shivering with anticipation, you place the bump-encircled tip of your " + player.cockDescript(0) + " against the opening of ", false);
-				else if (player.countCocksOfType(CockTypesEnum.CAT) > 0) outputText("Shivering with anticipation, you place the tip of your " + player.cockDescript(0) + " against the opening of ", false);
-				else if (player.countCocksOfType(CockTypesEnum.ANEMONE) > 0 || player.countCocksOfType(CockTypesEnum.DISPLACER) > 0) outputText("Shivering with anticipation, you place the wriggling tip of your " + player.cockDescript(0) + " against the opening of ", false);
-				else outputText("Shivering with anticipation, you place the tip of your " + player.cockDescript(0) + " against the opening of ", false);
+				if (player.countCocksOfType(CockTypesEnum.HORSE) > 0) outputText("Shivering with anticipation, you place the flared tip of your " + horseDescript(0) + " against the opening of ");
+				else if (player.countCocksOfType(CockTypesEnum.HUMAN) > 0) outputText("Shivering with anticipation, you place the tip of your " + player.cockDescript(0) + " against the opening of ");
+				else if (player.dogCocks() > 0) outputText("Shivering with anticipation, you place the pointed tip of your " + dogDescript(0) + " against the opening of ");
+				else if (player.countCocksOfType(CockTypesEnum.TENTACLE) > 0) outputText("Shivering with anticipation, you place the bulbous tip of your " + player.cockDescript(0) + " against the opening of ");
+				else if (player.countCocksOfType(CockTypesEnum.DEMON) > 0) outputText("Shivering with anticipation, you place the bump-encircled tip of your " + player.cockDescript(0) + " against the opening of ");
+				else if (player.countCocksOfType(CockTypesEnum.CAT) > 0) outputText("Shivering with anticipation, you place the tip of your " + player.cockDescript(0) + " against the opening of ");
+				else if (player.countCocksOfType(CockTypesEnum.ANEMONE) > 0 || player.countCocksOfType(CockTypesEnum.DISPLACER) > 0) outputText("Shivering with anticipation, you place the wriggling tip of your " + player.cockDescript(0) + " against the opening of ");
+				else outputText("Shivering with anticipation, you place the tip of your " + player.cockDescript(0) + " against the opening of ");
 		*/
 			}
 			else {
@@ -1156,16 +1156,16 @@ package classes.Scenes {
 					}
 					outputText("your " + player.cockDescript() + " and y");
 		/* Old method
-					if (player.countCocksOfType(CockTypesEnum.HUMAN) > 0) outputText("Slick juices dribble down the skin of your " + player.cockDescript(0) + " and y", false);
-					else if (player.countCocksOfType(CockTypesEnum.HORSE) > 0) outputText("Slick juices dribble down the mottled skin of your " + horseDescript(0) + " and y", false);
-					else if (player.dogCocks() > 0) outputText("Slick juices dribble down the red, shiny skin of your " + dogDescript(0) + " and y", false);
-					else if (player.countCocksOfType(CockTypesEnum.TENTACLE) > 0) outputText("Slick juices dribble down the rubbery skin of your " + player.cockDescript(0) + " and y", false);
-					else if (player.countCocksOfType(CockTypesEnum.DEMON) > 0) outputText("Slick juices dribble down the shiny purplish skin and nodules of your " + player.cockDescript(0) + " and y", false);
-					else if (player.countCocksOfType(CockTypesEnum.LIZARD) > 0) outputText("Slick juices dribble down the bumpy purple skin of your " + player.cockDescript(0) + " and y", false);
-					else if (player.countCocksOfType(CockTypesEnum.CAT) > 0) outputText("Slick juices dribble over the pink, spiny protrusions that cover your " + player.cockDescript(0) + " and y", false);
-					else if (player.countCocksOfType(CockTypesEnum.ANEMONE) > 0) outputText("Slick juices dribble over the nearly transparent skin of your " + player.cockDescript(0) + " and y", false);
-					else if (player.countCocksOfType(CockTypesEnum.DISPLACER) > 0) outputText("Slick juices dribble over the dusky purple of your " + player.cockDescript(0) + " and y", false);
-					else outputText("Slick juices dribble down the skin of your " + player.cockDescript(0) + " and y", false);
+					if (player.countCocksOfType(CockTypesEnum.HUMAN) > 0) outputText("Slick juices dribble down the skin of your " + player.cockDescript(0) + " and y");
+					else if (player.countCocksOfType(CockTypesEnum.HORSE) > 0) outputText("Slick juices dribble down the mottled skin of your " + horseDescript(0) + " and y");
+					else if (player.dogCocks() > 0) outputText("Slick juices dribble down the red, shiny skin of your " + dogDescript(0) + " and y");
+					else if (player.countCocksOfType(CockTypesEnum.TENTACLE) > 0) outputText("Slick juices dribble down the rubbery skin of your " + player.cockDescript(0) + " and y");
+					else if (player.countCocksOfType(CockTypesEnum.DEMON) > 0) outputText("Slick juices dribble down the shiny purplish skin and nodules of your " + player.cockDescript(0) + " and y");
+					else if (player.countCocksOfType(CockTypesEnum.LIZARD) > 0) outputText("Slick juices dribble down the bumpy purple skin of your " + player.cockDescript(0) + " and y");
+					else if (player.countCocksOfType(CockTypesEnum.CAT) > 0) outputText("Slick juices dribble over the pink, spiny protrusions that cover your " + player.cockDescript(0) + " and y");
+					else if (player.countCocksOfType(CockTypesEnum.ANEMONE) > 0) outputText("Slick juices dribble over the nearly transparent skin of your " + player.cockDescript(0) + " and y");
+					else if (player.countCocksOfType(CockTypesEnum.DISPLACER) > 0) outputText("Slick juices dribble over the dusky purple of your " + player.cockDescript(0) + " and y");
+					else outputText("Slick juices dribble down the skin of your " + player.cockDescript(0) + " and y");
 		*/
 				}
 				else outputText("Slick juices squirt out from around your " + player.cockDescript() + " and y");
@@ -1207,15 +1207,15 @@ package classes.Scenes {
 					}
 					outputText("your " + player.cockDescript() + " and y");
 		/* Old method
-					if (player.countCocksOfType(CockTypesEnum.HUMAN) > 0) outputText("Rivulets of milky girlcum drizzle down the skin of your " + player.cockDescript(0) + " and y", false);
-					else if (player.countCocksOfType(CockTypesEnum.HORSE) > 0) outputText("Rivulets of milky girlcum drizzle down the mottled skin of your " + horseDescript(0) + " and y", false);
-					else if (player.dogCocks() > 0) outputText("Rivulets of milky girlcum drizzle down the red, shiny skin of your " + dogDescript(0) + " and y", false);
-					else if (player.countCocksOfType(CockTypesEnum.TENTACLE) > 0) outputText("Rivulets of milky girlcum drizzle down the rubbery skin of your " + player.cockDescript(0) + " and y", false);
-					else if (player.countCocksOfType(CockTypesEnum.DEMON) > 0) outputText("Rivulets of milky girlcum drizzle down the shiny purplish skin and nodules of your " + player.cockDescript(0) + " and y", false);
-					else if (player.countCocksOfType(CockTypesEnum.CAT) > 0) outputText("Rivulets of milky girlcum drizzle down the spiny, pink flesh of your " + player.cockDescript(0) + " and y", false);
-					else if (player.countCocksOfType(CockTypesEnum.LIZARD) > 0 || player.countCocksOfType(CockTypesEnum.DISPLACER)) outputText("Rivulets of milky girlcum drizzle over the purplish, knotted flesh of your " + player.cockDescript(0) + " and y", false);
-					else if (player.countCocksOfType(CockTypesEnum.ANEMONE) > 0) outputText("Rivulets of milky girlcum drizzle and drip from the many tiny tentacles of your " + player.cockDescript(0) + " and y", false);
-					else outputText("Rivulets of milky girlcum drizzle over the sensitive skin of your " + player.cockDescript(0) + " and y", false);
+					if (player.countCocksOfType(CockTypesEnum.HUMAN) > 0) outputText("Rivulets of milky girlcum drizzle down the skin of your " + player.cockDescript(0) + " and y");
+					else if (player.countCocksOfType(CockTypesEnum.HORSE) > 0) outputText("Rivulets of milky girlcum drizzle down the mottled skin of your " + horseDescript(0) + " and y");
+					else if (player.dogCocks() > 0) outputText("Rivulets of milky girlcum drizzle down the red, shiny skin of your " + dogDescript(0) + " and y");
+					else if (player.countCocksOfType(CockTypesEnum.TENTACLE) > 0) outputText("Rivulets of milky girlcum drizzle down the rubbery skin of your " + player.cockDescript(0) + " and y");
+					else if (player.countCocksOfType(CockTypesEnum.DEMON) > 0) outputText("Rivulets of milky girlcum drizzle down the shiny purplish skin and nodules of your " + player.cockDescript(0) + " and y");
+					else if (player.countCocksOfType(CockTypesEnum.CAT) > 0) outputText("Rivulets of milky girlcum drizzle down the spiny, pink flesh of your " + player.cockDescript(0) + " and y");
+					else if (player.countCocksOfType(CockTypesEnum.LIZARD) > 0 || player.countCocksOfType(CockTypesEnum.DISPLACER)) outputText("Rivulets of milky girlcum drizzle over the purplish, knotted flesh of your " + player.cockDescript(0) + " and y");
+					else if (player.countCocksOfType(CockTypesEnum.ANEMONE) > 0) outputText("Rivulets of milky girlcum drizzle and drip from the many tiny tentacles of your " + player.cockDescript(0) + " and y");
+					else outputText("Rivulets of milky girlcum drizzle over the sensitive skin of your " + player.cockDescript(0) + " and y");
 		*/
 				}
 				else {
@@ -1253,15 +1253,15 @@ package classes.Scenes {
 							outputText("its length white.  Y");
 					}
 		/* Old method
-					if (player.countCocksOfType(CockTypesEnum.HUMAN) > 0) outputText("Milky girlcum squirts out from around your " + player.cockDescript(0) + ", staining it white.  Y", false);
-					else if (player.countCocksOfType(CockTypesEnum.HORSE) > 0) outputText("Milky girlcum squirts out from around your " + horseDescript(0) + ", staining its mottled skin white.  Y", false);
-					else if (player.dogCocks() > 0) outputText("Milky girlcum squirts out from around your " + dogDescript(0) + ", staining its shiny skin white.  Y", false);
-					else if (player.countCocksOfType(CockTypesEnum.TENTACLE) > 0) outputText("Milky girlcum squirts out from around your " + player.cockDescript(0) + ", staining its rubbery skin white.  Y", false);
-					else if (player.countCocksOfType(CockTypesEnum.DEMON) > 0) outputText("Milky girlcum squirts out from around your " + player.cockDescript(0) + ", staining its purplish-skin white.  Y", false);
-					else if (player.countCocksOfType(CockTypesEnum.CAT) > 0) outputText("Milky girlcum squirts out from around your " + player.cockDescript(0) + ", staining the pink kitty-skin white.  Y", false);
-					else if (player.countCocksOfType(CockTypesEnum.LIZARD) > 0 || player.countCocksOfType(CockTypesEnum.DISPLACER) > 0) outputText("Milky girlcum squirts out from around your " + player.cockDescript(0) + ", staining the purple, knotty flesh white.  Y", false);
-					else if (player.countCocksOfType(CockTypesEnum.ANEMONE) > 0) outputText("Milky girlcum squirts out from around your " + player.cockDescript(0) + ", staining the odd aquatic shaft wide.  Y", false);
-					else outputText("Milky girlcum squirts out from around your " + player.cockDescript(0) + ", staining its length white.  Y", false);
+					if (player.countCocksOfType(CockTypesEnum.HUMAN) > 0) outputText("Milky girlcum squirts out from around your " + player.cockDescript(0) + ", staining it white.  Y");
+					else if (player.countCocksOfType(CockTypesEnum.HORSE) > 0) outputText("Milky girlcum squirts out from around your " + horseDescript(0) + ", staining its mottled skin white.  Y");
+					else if (player.dogCocks() > 0) outputText("Milky girlcum squirts out from around your " + dogDescript(0) + ", staining its shiny skin white.  Y");
+					else if (player.countCocksOfType(CockTypesEnum.TENTACLE) > 0) outputText("Milky girlcum squirts out from around your " + player.cockDescript(0) + ", staining its rubbery skin white.  Y");
+					else if (player.countCocksOfType(CockTypesEnum.DEMON) > 0) outputText("Milky girlcum squirts out from around your " + player.cockDescript(0) + ", staining its purplish-skin white.  Y");
+					else if (player.countCocksOfType(CockTypesEnum.CAT) > 0) outputText("Milky girlcum squirts out from around your " + player.cockDescript(0) + ", staining the pink kitty-skin white.  Y");
+					else if (player.countCocksOfType(CockTypesEnum.LIZARD) > 0 || player.countCocksOfType(CockTypesEnum.DISPLACER) > 0) outputText("Milky girlcum squirts out from around your " + player.cockDescript(0) + ", staining the purple, knotty flesh white.  Y");
+					else if (player.countCocksOfType(CockTypesEnum.ANEMONE) > 0) outputText("Milky girlcum squirts out from around your " + player.cockDescript(0) + ", staining the odd aquatic shaft wide.  Y");
+					else outputText("Milky girlcum squirts out from around your " + player.cockDescript(0) + ", staining its length white.  Y");
 		*/
 				}
 			}
@@ -1442,15 +1442,15 @@ package classes.Scenes {
 							outputText("swallowing it completely.  ");
 					}
 		/* Old method
-					if (player.countCocksOfType(CockTypesEnum.HUMAN) > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + player.cockDescript(0) + " and begin to slide down its length, swallowing it completely. ", false);
-					else if (player.countCocksOfType(CockTypesEnum.HORSE) > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the flared tip of your " + horseDescript(0) + " and begin to slide down its length, swallowing it completely. ", false);
-					else if (player.dogCocks() > 0 || player.countCocksOfType(CockTypesEnum.DISPLACER) > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + dogDescript(0) + " and begin to slide down its length, even swallowing your bulging knot without difficulty. ", false);
-					else if (player.countCocksOfType(CockTypesEnum.TENTACLE) > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + player.cockDescript(0) + " and begin to slide down its length, swallowing it completely as it twists and pulses on its own, fucking your nipple.  ", false);
-					else if (player.countCocksOfType(CockTypesEnum.DEMON) > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + player.cockDescript(0) + " and begin to slide down its length, swallowing it completely as each bump and nodule makes you quiver with unholy pleasures.  ", false);
-					else if (player.countCocksOfType(CockTypesEnum.CAT) > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + player.cockDescript(0) + " and begin to slide down its length, swallowing it completely as each springy barb makes you quiver with pleasure.  ", false);
-					else if (player.countCocksOfType(CockTypesEnum.LIZARD) > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + player.cockDescript(0) + " and begin to slide down its length, swallowing it completely as each of the bulgy knots along its length stretch the orifice further.  ", false);
-					else if (player.countCocksOfType(CockTypesEnum.ANEMONE) > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + player.cockDescript(0) + " and begin to slide down its length, swallowing it completely and leaving a searing trail of desire in its path.  ", false);
-					else outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + player.cockDescript(0) + " and begin to slide down its length, swallowing it completely. ", false);
+					if (player.countCocksOfType(CockTypesEnum.HUMAN) > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + player.cockDescript(0) + " and begin to slide down its length, swallowing it completely. ");
+					else if (player.countCocksOfType(CockTypesEnum.HORSE) > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the flared tip of your " + horseDescript(0) + " and begin to slide down its length, swallowing it completely. ");
+					else if (player.dogCocks() > 0 || player.countCocksOfType(CockTypesEnum.DISPLACER) > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + dogDescript(0) + " and begin to slide down its length, even swallowing your bulging knot without difficulty. ");
+					else if (player.countCocksOfType(CockTypesEnum.TENTACLE) > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + player.cockDescript(0) + " and begin to slide down its length, swallowing it completely as it twists and pulses on its own, fucking your nipple.  ");
+					else if (player.countCocksOfType(CockTypesEnum.DEMON) > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + player.cockDescript(0) + " and begin to slide down its length, swallowing it completely as each bump and nodule makes you quiver with unholy pleasures.  ");
+					else if (player.countCocksOfType(CockTypesEnum.CAT) > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + player.cockDescript(0) + " and begin to slide down its length, swallowing it completely as each springy barb makes you quiver with pleasure.  ");
+					else if (player.countCocksOfType(CockTypesEnum.LIZARD) > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + player.cockDescript(0) + " and begin to slide down its length, swallowing it completely as each of the bulgy knots along its length stretch the orifice further.  ");
+					else if (player.countCocksOfType(CockTypesEnum.ANEMONE) > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + player.cockDescript(0) + " and begin to slide down its length, swallowing it completely and leaving a searing trail of desire in its path.  ");
+					else outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + player.cockDescript(0) + " and begin to slide down its length, swallowing it completely. ");
 		*/
 				}
 				outputText("You revel in the sensation as you slowly stroke your " + player.cockDescript() + " in and out of your distended nipple. Your shaft is enveloped in the warm, wet embrace of your freakish tit, and ");
