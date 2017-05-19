@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Debug pane and related functions
 	Author: Fake-Name
 */
@@ -295,7 +295,7 @@ convert "
 "derp a herp"
 
 
-	]]>, true, true);
+	]]>);
 
 
 	menu();
@@ -334,7 +334,7 @@ public function eventTesterGo():void {
 	trace("Temp = ", temp);
 
 	menu();
-	outputText(temp, true, true);
+	outputText(temp);
 
 	addButton(14, "Back", eventTester);
 	output.flush();
