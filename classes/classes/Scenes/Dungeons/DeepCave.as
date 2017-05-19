@@ -54,7 +54,7 @@ package classes.Scenes.Dungeons
 		private function exitDungeon():void {
 			kGAMECLASS.inDungeon = false;
 			clearOutput();
-			outputText("You leave the cave behind and take off through the deepwoods back towards camp.);
+			outputText("You leave the cave behind and take off through the deepwoods back towards camp.");
 			doNext(camp.returnToCampUseOneHour);	
 		}
 		
@@ -62,7 +62,7 @@ package classes.Scenes.Dungeons
 			clearOutput();
 			if (flags[kFLAGS.ZETAZ_DOOR_UNLOCKED] <= 0)
 			{
-				outputText("The door won't budge.);
+				outputText("The door won't budge.");
 				doNext(roomGatheringHall);
 				return;
 			}
@@ -71,7 +71,7 @@ package classes.Scenes.Dungeons
 		private function checkExit():void {
 			clearOutput();
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] >= 3 && flags[kFLAGS.ZETAZ_DEFEATED_AND_KILLED] <= 0) {
-				outputText("The door appears to be locked as if by magic! You'll have to defeat Zetaz before you can leave.);
+				outputText("The door appears to be locked as if by magic! You'll have to defeat Zetaz before you can leave.");
 				doNext(roomGatheringHall);
 				return;
 			}
