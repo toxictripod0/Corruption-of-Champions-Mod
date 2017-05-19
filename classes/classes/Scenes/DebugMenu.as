@@ -47,7 +47,8 @@ import classes.Items.*
 				mainView.nameBox.maxChars = 16;
 				mainView.nameBox.restrict = null;
 				mainView.nameBox.width = 140;
-				outputText("Welcome to the super secret debug menu!", true);
+				clearOutput();
+				outputText("Welcome to the super secret debug menu!");
 				menu();
 				addButton(0, "Spawn Items", itemSpawnMenu, null, null, null, "Spawn any items of your choice, including items usually not obtainable through gameplay.");
 				addButton(1, "Change Stats", statChangeMenu, null, null, null, "Change your core stats.");
@@ -519,7 +520,8 @@ import classes.Items.*
 
 		
 		private function statChangeMenu():void {
-			outputText("Which attribute would you like to alter?", true);
+			clearOutput();
+			outputText("Which attribute would you like to alter?");
 			menu();
 			addButton(0, "Strength", statChangeAttributeMenu, "str");
 			addButton(1, "Toughness", statChangeAttributeMenu, "tou");
@@ -533,7 +535,8 @@ import classes.Items.*
 		
 		private function statChangeAttributeMenu(stats:String = ""):void {
 			var attribute:* = stats;
-			outputText("Increment or decrement by how much?", true);
+			clearOutput();
+			outputText("Increment or decrement by how much?");
 			addButton(0, "Add 1", statChangeApply, stats, 1);
 			addButton(1, "Add 5", statChangeApply, stats, 5);
 			addButton(2, "Add 10", statChangeApply, stats, 10);
@@ -554,8 +557,9 @@ import classes.Items.*
 		}
 		
 		private function styleHackMenu():void {
-			menu()
-			outputText("TEST STUFFZ", true);
+			menu();
+			clearOutput();
+			outputText("TEST STUFFZ");
 			addButton(0, "ASPLODE", styleHackMenu);
 			addButton(1, "Scorpion Tail", changeScorpionTail);
 			addButton(2, "Be Manticore", getManticoreKit, null, null, null, "Gain everything needed to become a Manticore-morph.");
