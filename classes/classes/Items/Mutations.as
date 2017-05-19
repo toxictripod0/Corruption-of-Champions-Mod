@@ -3265,7 +3265,7 @@ package classes.Items
 		public function purpleEgg(large:Boolean,player:Player):void
 		{
 			clearOutput();
-			outputText("You devour the egg, momentarily sating your hunger.\n\n",);
+			outputText("You devour the egg, momentarily sating your hunger.\n\n");
 			if (!large || player.hipRating > 20) {
 				outputText("You stumble as you feel your " + player.hipDescript() + " widen, altering your gait slightly.");
 				player.hipRating++;
