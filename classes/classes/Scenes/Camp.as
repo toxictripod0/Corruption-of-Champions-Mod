@@ -1496,6 +1496,7 @@ private function swimInStreamFinish():void {
 }
 
 private function examinePortal():void {
+	clearOutput();
 	if (flags[kFLAGS.CAMP_PORTAL_PROGRESS] <= 0) {
 		clearOutput();
 		outputText("You walk over to the portal, reminded by how and why you came. You wonder if you can go back to Ingnam. You start by picking up a small pebble and throw it through the portal. It passes through the portal. As you walk around the portal, you spot the pebble at the other side. Seems like you can't get back right now.")
@@ -1503,7 +1504,6 @@ private function examinePortal():void {
 		doNext(camp.returnToCampUseOneHour);
 		return;
 	}
-	clearOutput();
 	else outputText("You walk over to the portal, reminded by how and why you came. You let out a sigh, knowing you can't return to Ingnam.")
 	doNext(playerMenu);
 }
