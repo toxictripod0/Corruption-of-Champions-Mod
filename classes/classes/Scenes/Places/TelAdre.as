@@ -967,7 +967,7 @@ private function piercingRemove():void {
 		return;
 	}
 	if (player.tou < 6) {
-	c	learOutput();
+		clearOutput();
 		outputText("Yara looks you up and down before refusing you outright, \"<i>You don't look so good " + player.short + ".  I don't think your body could handle it right now.</i>\"");
 		doNext(piercingStudio);
 		return;
