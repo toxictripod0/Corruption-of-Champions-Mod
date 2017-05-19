@@ -55,7 +55,7 @@ package classes.Scenes.Dungeons
 			kGAMECLASS.inDungeon = false;
 			clearOutput();
 			outputText("You leave the cave behind and take off through the deepwoods back towards camp.");
-			doNext(camp.returnToCampUseOneHour);	
+			doNext(camp.returnToCampUseOneHour);
 		}
 		
 		private function checkDoor1():void {
@@ -363,8 +363,8 @@ package classes.Scenes.Dungeons
 			
 			outputText("Grabbing the center one by his horns, you pull him forwards until your shaft is pressed against the back of his throat.  He gags audibly, but you pull him back before it can overwhelm him, only to slam it in deep again.  ");
 			outputText("The girly imp to your left, seeing how occupied your " + player.cockDescript(0) + " is, shifts his attention down to your ");
-			if (player.balls > 0) outputText(player.ballsDescriptLight(), false);
-			else if (player.hasVagina()) outputText(player.vaginaDescript(0), false);
+			if (player.balls > 0) outputText(player.ballsDescriptLight());
+			else if (player.hasVagina()) outputText(player.vaginaDescript(0));
 			else outputText("ass");
 			outputText(", licking with care");
 			if (player.balls == 0) outputText(" and plunging deep inside");
@@ -1049,7 +1049,7 @@ package classes.Scenes.Dungeons
 		public function roomEntrance():void {
 			clearOutput();
 			kGAMECLASS.dungeonLoc = DungeonCore.DUNGEON_CAVE_ENTRANCE;
-			outputText("<b><u>The Cave Entrance</u></b>\n);
+			outputText("<b><u>The Cave Entrance</u></b>\n");
 			outputText("The entrance to this cave is far bigger than the cave itself.  It looks to be a totally natural formation.  Outside, to the south, is a veritable jungle of plant-life.  There are massive trees, vines, and ferns everywhere.  The cave grows narrower the further north you go, until it's little more than a claustrophobic tunnel burrowing deep into the earth.");
 			dungeons.setDungeonButtons(roomTunnel, null, null, null);
 			addButton(11, "Leave", exitDungeon);
@@ -1069,7 +1069,7 @@ package classes.Scenes.Dungeons
 		public function roomTunnel():void {
 			kGAMECLASS.dungeonLoc = DungeonCore.DUNGEON_CAVE_TUNNEL;
 			clearOutput();
-			outputText("<b><u>Cave Tunnel</u></b>\n);
+			outputText("<b><u>Cave Tunnel</u></b>\n");
 			outputText("This cave tunnel slants downwards to the north, and upwards to the south.  You can see sunlight and feel a fresh breeze from the latter direction, though the walls and air around you are damp with moisture.  You realize that the floor of this cave is fairly smooth and even, as if some attempt had been made to level it out.  You can see a bricked up wall along the north end of the tunnel.  It has a crudely fashioned wooden door in the center of it.");
 			dungeons.setDungeonButtons(roomGatheringHall, roomEntrance, null, null);
 		}
@@ -1077,7 +1077,7 @@ package classes.Scenes.Dungeons
 		public function roomGatheringHall():void {
 			kGAMECLASS.dungeonLoc = DungeonCore.DUNGEON_CAVE_GATHERING_HALL;
 			clearOutput();
-			outputText("<b><u>Gathering Hall</u></b>\n);
+			outputText("<b><u>Gathering Hall</u></b>\n");
 			outputText("This room is clearly some kind of dining or gathering hall.  The chamber's shape has been hewn from the surrounding stone, and judging by the visible tool-marks, it wasn't done with a great deal of care.  Two long wooden tables fill out the room.  They're surprisingly well made, though it appears that part of their legs were hacked off with axes to lower their overall height.  You can't help but wonder where they were stolen from.  The tables haven't been cleaned in ages, as evidenced by their many stains and a number of half-rotten bones that still rest on their battered surfaces.  Two rows of crudely crafted chairs flank their better-made brethren, made to accommodate very short beings.");
 			//[Imp Mob Fight]
 			if (flags[kFLAGS.ZETAZ_IMP_HORDE_DEFEATED] == 0) {
@@ -1093,7 +1093,7 @@ package classes.Scenes.Dungeons
 		public function roomFungusCavern():void {
 			kGAMECLASS.dungeonLoc = DungeonCore.DUNGEON_CAVE_FUNGUS_CAVERN;
 			clearOutput();
-			outputText("<b><u>Fungus Cavern</u></b>\n);
+			outputText("<b><u>Fungus Cavern</u></b>\n");
 			outputText("This cavern is huge!  Though you can see the edge of a large stalactite to the west, the rest of the cave disappears into darkness beyond twenty or thirty feet away.  The floor is covered in spongy, leaf-shaped fungus.  They're huge, shiny, and purple, and they cover the cavern floor for as far as the illumination will reach.  ");
 			if (flags[kFLAGS.ZETAZ_FUNGUS_ROOM_DEFEATED] == 0) {
 				outputText("A strange, sweet smell hangs in the cavern's humid air, probably coming from the copious fungal flora.  At the edge of your vision you can see a humanoid skeleton propped up against a stalagmite.  There's a rapier laying a few feet in front of it, and it still looks as good as new.  What do you do?");
@@ -1115,7 +1115,7 @@ package classes.Scenes.Dungeons
 		public function roomTortureRoom():void {
 			kGAMECLASS.dungeonLoc = DungeonCore.DUNGEON_CAVE_TORTURE_ROOM;
 			clearOutput();
-			outputText("<b><u>Filthy Torture Room</u></b>\n);
+			outputText("<b><u>Filthy Torture Room</u></b>\n");
 			outputText("You step into a dank room, outfitted somewhere between a prison cell and a torture chamber. The ceiling of the sulfur-lined room is hung with an inventive variety of shackles, chains, and devices whose intent are not clear to you. Against the north wall, there appears to be an alchemy lab, laden with a dizzying collection of vials, flasks, and beakers. Against the south, there is a long, sinister-looking wooden rack bearing a sequence of progressively larger and thicker devices, carved to resemble monstrous cocks.  ");
 			dungeons.setDungeonButtons(roomSecretPassage, null, roomGatheringHall, null);
 			//Vala here?
@@ -1151,7 +1151,7 @@ package classes.Scenes.Dungeons
 		public function roomSecretPassage():void {
 			kGAMECLASS.dungeonLoc = DungeonCore.DUNGEON_CAVE_SECRET_TUNNEL;
 			clearOutput();
-			outputText("<b><u>Secret Tunnel</u></b>\n);
+			outputText("<b><u>Secret Tunnel</u></b>\n");
 			outputText("This passage is the least livable area that you've seen out of the entire cave.  The walls and floor are little more than dirt and rocks, and explosions of dust burst from the ceiling with each tentative movement you make.  For a moment, a wave of claustrophobia threatens to rob you of your nerve, but you blink the pervasive particles from your eyes and focus on why you're here.  ");
 			//If zetaz not yet defeated
 			if (flags[kFLAGS.DEFEATED_ZETAZ] == 0) outputText("You're going to find Zetaz and pay him back for drugging you on your first day here.  ");
