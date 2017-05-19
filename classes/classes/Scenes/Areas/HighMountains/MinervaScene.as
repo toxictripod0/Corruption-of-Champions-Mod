@@ -1,4 +1,4 @@
-﻿package classes.Scenes.Areas.HighMountains {
+package classes.Scenes.Areas.HighMountains {
 	import classes.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
@@ -252,7 +252,7 @@ public function repeatEncounterMinerva():void {
 	outputText("You make your way up the mountain, looking for the oasis tower that you know has to be around here somewhere in the thick mist.  With a bit of searching, you locate the right path and head for the oasis, finally reaching it.  Panting from your long trek, you enter the tower through its crumbling doorway, wondering if Minerva will be home.");
 	if (flags[kFLAGS.MET_MINERVA] == 4)
 	{
-		outputText("\n\n<b>You have visited her enough times to be able to remember where to go. Unlocked Oasis Tower in Places menu!</b>", false);
+		outputText("\n\n<b>You have visited her enough times to be able to remember where to go. Unlocked Oasis Tower in Places menu!</b>");
 	}
 	outputText("\n\nUpon entering the humble home, you assess the state of the oasis.  The usual fruit trees and the clean pond are still here. Upon taking a closer look, you spot Minerva in the spring as she floats out from behind the cover of a tree.  The shark-like harpy is relaxing in the pure waters like she normally does.");
 	outputText("\n\nAs you approach the pond, she catches sight of you and twists in the water, swimming to the shore and wading out to greet you.  Her smooth sharkskin is glossy and dripping wet from her recent swim, the rolling moisture accentuating her well-defined curves.");
@@ -1360,7 +1360,8 @@ private function pcGetsEatenOutByMinerva():void {
 
 private function chooseVagOrAss():void {
 	if (player.hasVagina()) {
-		outputText("\"<i>So, which of your hole would you like me to fuck?</i>\" the siren asks.", true)
+		clearOutput();
+		outputText("\"<i>So, which of your hole would you like me to fuck?</i>\" the siren asks.")
 		menu();
 		addButton(0, "Vagina", minervaLapSex);
 		addButton(1, "Ass", getButtFuckedYouSlut);
@@ -1523,7 +1524,7 @@ private function getPurePeach():void {
 private function getMint():void {
 	clearOutput();
 	minervaSprite();
-	outputText("There are many strange herbs growing around the spring, fed by whatever power resides in the water.  Finally, you locate a sprig of something that resembles mint, but silver in color, and decide to pluck it.  Stowing it carefully amongst your belongings, you thank Minerva for sharing the contents of her 'garden' with you and then head back to camp.", true)
+	outputText("There are many strange herbs growing around the spring, fed by whatever power resides in the water.  Finally, you locate a sprig of something that resembles mint, but silver in color, and decide to pluck it.  Stowing it carefully amongst your belongings, you thank Minerva for sharing the contents of her 'garden' with you and then head back to camp.")
 	inventory.takeItem(consumables.C__MINT, camp.returnToCampUseOneHour);
 }
 
@@ -1542,7 +1543,7 @@ C. Mint - Eating the sprig of raw mint is a bit of a stretch, but you manage to 
 public function getADrinkYouBitch():void {
 	clearOutput();
 	minervaSprite();
-	outputText("You ask Minerva if she's okay with allowing you to drink from her spring.  She replies with a nod, a smile and a casual wave towards the pool.  Making it quite clear that you can drink your fill.", true);
+	outputText("You ask Minerva if she's okay with allowing you to drink from her spring.  She replies with a nod, a smile and a casual wave towards the pool.  Making it quite clear that you can drink your fill.");
 	//[Bottle] [Drink]
 	//[Drink]
 	menu();
@@ -1551,39 +1552,41 @@ public function getADrinkYouBitch():void {
 	addButton(4, "Back", genericMenu, true);
 }
 private function drinkDirectly():void {
-	outputText("Approaching the pristine pond, you kneel on the shore and dip your hands into the water, cupping them together and lifting them out to scoop up a decent drink.  The water is cool and sweet to the taste, and every swallow makes you feel calmer, cleaner, and refreshed.  You drink until your thirst is quenched, feeling purer in both mind and body.  ", true);
-	dynStats("lus", -25, "cor", -.5, "resisted", false);
+	clearOutput();
+	outputText("Approaching the pristine pond, you kneel on the shore and dip your hands into the water, cupping them together and lifting them out to scoop up a decent drink.  The water is cool and sweet to the taste, and every swallow makes you feel calmer, cleaner, and refreshed.  You drink until your thirst is quenched, feeling purer in both mind and body.  ");
+	dynStats("lus", -25, "cor", -.5, "resisted");
 	player.refillHunger(15);
 	if (player.cor > 50) dynStats("cor", -1);
 	if (player.cor > 75) dynStats("cor", -1);
 	doNext(camp.returnToCampUseOneHour);	
 }
 private function getBottle():void {
-	outputText("Pulling out a small waterskin, you dip it into the crystal clear water, filling the container with the cool, clean spring water before placing it in your pack.  ", true)
+	clearOutput();
+	outputText("Pulling out a small waterskin, you dip it into the crystal clear water, filling the container with the cool, clean spring water before placing it in your pack.  ")
 	inventory.takeItem(consumables.S_WATER, camp.returnToCampUseOneHour);
 }
 
 private function sleepWithMinerva():void {
 	clearOutput();
 	minervaSprite();
-	outputText(images.showImage("minerva-sleepwith"), false);
-	outputText("You walk over to the siren and give her a hug. You tell her that you want to sleep with her. \"<i>Oh, really? You want to sleep with me?</i>\" she says. You nod.\n\n", false);
-	outputText("Minerva guides you to the most comfortable spot.  She takes off her tube top, exposing her breasts completely.\n\n", false);
-	if (player.armorName == "goo armor") outputText("You take your time to get the metal platebody off until you're completely naked save for the goo-girl covering you.  ", false)
-	else outputText("You take your time to get your " + player.armorName + " off until you're completely naked.  ", false)
-	outputText("You lay next to Minerva while you rest your head on her soft breasts.  ", false)
-	if (player.armorName == "goo armor") outputText("Valeria, your goo-girl companion, envelopes you and Minerva, helping to keep you and Minerva warm.  ", false)
-	outputText("\"<i>Sweet dreams,</i>\" she says as you finally close your eyes.  ", false)
+	outputText(images.showImage("minerva-sleepwith"));
+	outputText("You walk over to the siren and give her a hug. You tell her that you want to sleep with her. \"<i>Oh, really? You want to sleep with me?</i>\" she says. You nod.\n\n");
+	outputText("Minerva guides you to the most comfortable spot.  She takes off her tube top, exposing her breasts completely.\n\n");
+	if (player.armorName == "goo armor") outputText("You take your time to get the metal platebody off until you're completely naked save for the goo-girl covering you.  ")
+	else outputText("You take your time to get your " + player.armorName + " off until you're completely naked.  ")
+	outputText("You lay next to Minerva while you rest your head on her soft breasts.  ")
+	if (player.armorName == "goo armor") outputText("Valeria, your goo-girl companion, envelopes you and Minerva, helping to keep you and Minerva warm.  ")
+	outputText("\"<i>Sweet dreams,</i>\" she says as you finally close your eyes.  ")
 	doNext(sleepWithMinervaProcess);
 }
 private function sleepWithMinervaII():void {
 	clearOutput();
 	outputText(images.showImage("minerva-sleepwith2"), false);
-	outputText("<b>Ten hours pass...</b>\n\n", false)
-	outputText("You wake up, feeling refreshed. You thank Minerva for letting you sleep with her and you hug her, making sure to give her a good kiss. \"<i>Ohhhhh,</i>\" she moans and even blushes! You break the kiss. \"<i>Darling, come back anytime, ok?</i>\" she says. \n\n", false)
-	if (player.armorName == "goo armor") outputText("Valeria encases you once more and you get suited up ", false)
-	else outputText("You get re-dressed in your " + player.armorName + " ", false)
-	outputText("and you leave the tower to return to your camp. \n\n", false)
+	outputText("<b>Ten hours pass...</b>\n\n")
+	outputText("You wake up, feeling refreshed. You thank Minerva for letting you sleep with her and you hug her, making sure to give her a good kiss. \"<i>Ohhhhh,</i>\" she moans and even blushes! You break the kiss. \"<i>Darling, come back anytime, ok?</i>\" she says. \n\n")
+	if (player.armorName == "goo armor") outputText("Valeria encases you once more and you get suited up ")
+	else outputText("You get re-dressed in your " + player.armorName + " ")
+	outputText("and you leave the tower to return to your camp. \n\n")
 	awardAchievement("Getaway", kACHIEVEMENTS.GENERAL_GETAWAY);
 	sleepWithMinervaHeal();
 	doNext(camp.returnToCampUseOneHour);
