@@ -1,6 +1,6 @@
 //Dungeon 2: Deep Cave
 package classes.Scenes.Dungeons 
-{
+{ 
 	import classes.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
