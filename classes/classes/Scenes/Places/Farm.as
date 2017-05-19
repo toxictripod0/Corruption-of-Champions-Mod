@@ -89,9 +89,14 @@ public function farmExploreEncounter():void {
 			outputText("\n\nShe spins about and trots back to her farm, picking up a pitchfork as she goes.  It looks like you won't have access to the farm any more, at least until you come up with a way to deal with Whitney.");
 			flags[kFLAGS.WHITNEY_FLIPPED_OUT_OVER_KELLY] = 1;
 		}
-		clearOutput();
-		else if (flags[kFLAGS.WHITNEY_FLIPPED_OUT_OVER_KELLY] == 1) outputText("You aren't welcome on the farm proper, but you can see Kelly cantering about the fields, looking for you.");
-		else outputText("Whitney's farm is remarkably large for such a humble operation.  What do you want to do?");
+		else if (flags[kFLAGS.WHITNEY_FLIPPED_OUT_OVER_KELLY] == 1) {
+			clearOutput();
+			outputText("You aren't welcome on the farm proper, but you can see Kelly cantering about the fields, looking for you.");
+		}
+		else {
+			clearOutput();
+			outputText("Whitney's farm is remarkably large for such a humble operation.  What do you want to do?");
+		}
 		menu();
 		var keltEvent:Number = 0;
 		var milkYou:Number = 0;
