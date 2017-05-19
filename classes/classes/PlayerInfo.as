@@ -49,7 +49,7 @@ package classes
 				combatStats += "<b>Tease Skill:</b>  " + player.teaseLevel + " / 5 (Exp: MAX)\n";	
 				
 			if (combatStats != "")
-				outputText("<b><u>Combat Stats</u></b>\n" + combatStats, false);
+				outputText("<b><u>Combat Stats</u></b>\n" + combatStats);
 			// End Combat Stats
 			
 			if (prison.inPrison || flags[kFLAGS.PRISON_CAPTURE_COUNTER] > 0) prison.displayPrisonStats();
@@ -178,7 +178,7 @@ package classes
 				childStats += "<b>Number of Adult Minotaur Offspring:</b> " + flags[kFLAGS.ADULT_MINOTAUR_OFFSPRINGS] + "\n";
 			
 			if (childStats != "")
-				outputText("\n<b><u>Children</u></b>\n" + childStats, false);
+				outputText("\n<b><u>Children</u></b>\n" + childStats);
 			// End Children Stats
 
 			// Begin Body Stats
@@ -267,7 +267,7 @@ package classes
 			}
 			
 			if (bodyStats != "")
-				outputText("\n<b><u>Body Stats</u></b>\n" + bodyStats, false);
+				outputText("\n<b><u>Body Stats</u></b>\n" + bodyStats);
 			// End Body Stats
 			
 			
@@ -381,7 +381,7 @@ package classes
 			}
 			
 			if (raceScores != "")
-				outputText("\n<b><u>Racial Scores</u></b>\n" + raceScores, false);
+				outputText("\n<b><u>Racial Scores</u></b>\n" + raceScores);
 			// End Racial Scores display -Foxwells
 
 			// Begin Misc Stats
@@ -463,7 +463,7 @@ package classes
 			}
 			
 			if (addictStats != "")
-				outputText("\n<b><u>Addictions</u></b>\n" + addictStats, false);
+				outputText("\n<b><u>Addictions</u></b>\n" + addictStats);
 			// End Addition Stats
 			
 			// Begin Interpersonal Stats
@@ -582,7 +582,7 @@ package classes
 			}
 			
 			if (interpersonStats != "")
-				outputText("\n<b><u>Interpersonal Stats</u></b>\n" + interpersonStats, false);
+				outputText("\n<b><u>Interpersonal Stats</u></b>\n" + interpersonStats);
 			// End Interpersonal Stats
 			
 			// Begin Ongoing Stat Effects
@@ -619,7 +619,7 @@ package classes
 				statEffects += "Dysfunction - " + player.statusEffectv1(StatusEffects.Dysfunction) + " hours remaining. (Disables masturbation)\n";
 
 			if (statEffects != "")
-				outputText("\n<b><u>Ongoing Status Effects</u></b>\n" + statEffects, false);
+				outputText("\n<b><u>Ongoing Status Effects</u></b>\n" + statEffects);
 			// End Ongoing Stat Effects
 			menu();
 			addButton(0, "Next", playerMenu);
@@ -636,15 +636,15 @@ package classes
 			clearOutput();
 			displayHeader("Perks");
 			for (var i:int = 0; i < player.perks.length; i++) {
-				outputText("<b>" + player.perks[i].perkName + "</b> - " + player.perks[i].perkDesc + "\n", false);
+				outputText("<b>" + player.perks[i].perkName + "</b> - " + player.perks[i].perkDesc + "\n");
 			}
 			menu();
 			var button:int = 0;
 			addButton(button++, "Next", playerMenu);
 			if (player.perkPoints > 0) {
-				outputText("\n<b>You have " + num2Text(player.perkPoints) + " perk point", false);
-				if (player.perkPoints > 1) outputText("s", false);
-				outputText(" to spend.</b>", false);
+				outputText("\n<b>You have " + num2Text(player.perkPoints) + " perk point");
+				if (player.perkPoints > 1) outputText("s");
+				outputText(" to spend.</b>");
 				addButton(button++, "Perk Up", perkBuyMenu);
 			}
 			if (player.findPerk(PerkLib.DoubleAttack) >= 0) {
@@ -867,7 +867,7 @@ package classes
 			}
 			if (player.tempStr + player.tempTou + player.tempSpe + player.tempInt <= 0 || player.statPoints > 0)
 			{
-				outputText("\nYou may allocate your remaining stat points later.", false);
+				outputText("\nYou may allocate your remaining stat points later.");
 			}
 			dynStats("str", player.tempStr, "tou", player.tempTou, "spe", player.tempSpe, "int", player.tempInt, "noBimbo", true); //Ignores bro/bimbo perks.
 			player.tempStr = 0;
