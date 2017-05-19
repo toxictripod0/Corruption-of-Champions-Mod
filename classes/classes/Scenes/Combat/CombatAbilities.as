@@ -1694,8 +1694,8 @@ package classes.Scenes.Combat
 			if (damage >= 30) {
 				outputText("Your powerful bite <b>mutilates</b> " + monster.a + monster.short + "! ");
 			}
-			if (damage > 0) outputText("<b>(<font color=\"#800000\">" + damage + "</font>)</b>", false)
-			else outputText("<b>(<font color=\"#000080\">" + damage + "</font>)</b>", false)
+			if (damage > 0) outputText("<b>(<font color=\"#800000\">" + damage + "</font>)</b>")
+			else outputText("<b>(<font color=\"#000080\">" + damage + "</font>)</b>")
 			outputText("\n\n");
 		 	combat.checkAchievementDamage(damage);
 			//Kick back to main if no damage occured!
