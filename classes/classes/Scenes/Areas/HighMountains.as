@@ -30,7 +30,8 @@ package classes.Scenes.Areas
 			return flags[kFLAGS.DISCOVERED_HIGH_MOUNTAIN] > 0;
 		}
 		public function discover():void {
-			outputText("While exploring the mountain, you come across a relatively safe way to get at its higher reaches.  You judge that with this route you'll be able to get about two thirds of the way up the mountain.  With your newfound discovery fresh in your mind, you return to camp.\n\n(<b>High Mountain exploration location unlocked!</b>)", true);
+			clearOutput();
+			outputText("While exploring the mountain, you come across a relatively safe way to get at its higher reaches.  You judge that with this route you'll be able to get about two thirds of the way up the mountain.  With your newfound discovery fresh in your mind, you return to camp.\n\n(<b>High Mountain exploration location unlocked!</b>)");
 			flags[kFLAGS.DISCOVERED_HIGH_MOUNTAIN]++;
 			doNext(camp.returnToCampUseOneHour);
 		}
@@ -124,7 +125,8 @@ package classes.Scenes.Areas
 		}
 
 		public function harpyEncounter():void {
-			outputText("A harpy wings out of the sky and attacks!", true);
+			clearOutput();
+			outputText("A harpy wings out of the sky and attacks!");
 			if (flags[kFLAGS.CODEX_ENTRY_HARPIES] <= 0) {
 				flags[kFLAGS.CODEX_ENTRY_HARPIES] = 1;
 				outputText("\n\n<b>New codex entry unlocked: Harpies!</b>")

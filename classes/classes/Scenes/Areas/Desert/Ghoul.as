@@ -20,17 +20,17 @@ package classes.Scenes.Areas.Desert {
 		
 		protected function hyenaBite():void {
 			if(hasStatusEffect(StatusEffects.Blind)) { //Blind
-				outputText("The hyena lunges for you, aiming to bite you, but misses entirely due to its blindness!", false);
+				outputText("The hyena lunges for you, aiming to bite you, but misses entirely due to its blindness!");
 				combatRoundOver();
 				return;
 			}
 			if (player.getEvasionRoll()) { //Evading
-				outputText("The hyena lunges for you, aiming to bite you, but easily move out of the way.", false);
+				outputText("The hyena lunges for you, aiming to bite you, but easily move out of the way.");
 				combatRoundOver();
 				return;
 			}
 			else { //Damage
-				outputText("The hyena lunges for you, sinking its teeth into you. ", false);
+				outputText("The hyena lunges for you, sinking its teeth into you. ");
 				var damage:int = (rand(10) + 5);
 				damage = player.reduceDamage(damage);
 				player.takeDamage(damage, true);
@@ -40,17 +40,17 @@ package classes.Scenes.Areas.Desert {
 	
 		protected function hyenaClaw():void {
 			if(hasStatusEffect(StatusEffects.Blind)) { //Blind
-				outputText("The hyena slashes its paw at you, but misses due to its blindness!", false);
+				outputText("The hyena slashes its paw at you, but misses due to its blindness!");
 				combatRoundOver();
 				return;
 			}
 			if (player.getEvasionRoll()) { //Evading
-				outputText("The hyena slashes its paw at you, but you easily move out of the way.", false);
+				outputText("The hyena slashes its paw at you, but you easily move out of the way.");
 				combatRoundOver();
 				return;
 			}
 			else { //Damage
-				outputText("The hyena slashes its paw at you, raking down hard and causing you to yelp in pain. ", false);
+				outputText("The hyena slashes its paw at you, raking down hard and causing you to yelp in pain. ");
 				var damage:int = (rand(5) + 5);
 				damage = player.reduceDamage(damage);
 				player.takeDamage(damage, true);
@@ -75,14 +75,14 @@ package classes.Scenes.Areas.Desert {
 		
 		protected function ghoulMagic():void {
 			if (fatigueLeft() >= spellCostGhoulMagic) {
-				outputText("The ghoul chants out an incantation, and a dark alchemic circle forms around your feet. ", false);
+				outputText("The ghoul chants out an incantation, and a dark alchemic circle forms around your feet. ");
 				if (player.getEvasionRoll()) { //Evading
-					outputText("You jump out of the circle before anything happens. Where you'd just been erupts in flames.", false);
+					outputText("You jump out of the circle before anything happens. Where you'd just been erupts in flames.");
 					combatRoundOver();
 					return;
 				}
 				else { //Damage
-					outputText("Blackened flames burst from the circle, causing you to seize with pain as they scorch every inch of your body.", false);
+					outputText("Blackened flames burst from the circle, causing you to seize with pain as they scorch every inch of your body.");
 					var damage:int = (rand(10) + 10);
 					damage = player.reduceDamage(damage);
 					player.takeDamage(damage, true);
@@ -107,7 +107,7 @@ package classes.Scenes.Areas.Desert {
 		
 		override public function defeated(hpVictory:Boolean):void
 		{
-			outputText("The ghoul lets out a furious screech as your attacks become too much to bear, and vanishes in a dusty cloud of sand. You're left staring at the spot, wondering if you just hallucinated everything that happened.", false);
+			outputText("The ghoul lets out a furious screech as your attacks become too much to bear, and vanishes in a dusty cloud of sand. You're left staring at the spot, wondering if you just hallucinated everything that happened.");
 			game.combat.cleanupAfterCombat();
 			game.combat.ghoulReveal = false;
 		}
@@ -115,7 +115,7 @@ package classes.Scenes.Areas.Desert {
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
 		{
 			if(pcCameWorms){
-				outputText("\nThe ghoul lets out a disgusted noise and vanishes without a word.", false);
+				outputText("\nThe ghoul lets out a disgusted noise and vanishes without a word.");
 				doNext(game.combat.endLustLoss);
 			} else {
 				game.desert.ghoulScene.ghoulWon();

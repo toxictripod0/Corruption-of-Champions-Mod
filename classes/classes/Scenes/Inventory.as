@@ -187,7 +187,7 @@ package classes.Scenes
 				else outputText("next to your bedroll.");	
 				addButton(10, "J.Box Put", inventory.pickItemToPlaceInJewelryBox);
 				if (inventory.jewelryBoxDescription()) addButton(11, "J.Box Take", inventory.pickItemToTakeFromJewelryBox);
-				outputText("\n\n", false);
+				outputText("\n\n");
 			}
 			//Dresser
 			if (flags[kFLAGS.CAMP_CABIN_FURNITURE_DRESSER] > 0) {
@@ -272,11 +272,13 @@ package classes.Scenes
 		
 		public function giveHumanizer():void {
 			if (flags[kFLAGS.TIMES_CHEATED_COUNTER] > 0) {
-				outputText("<b>I was a cheater until I took an arrow to the knee...</b>", true);
+				clearOutput();
+				outputText("<b>I was a cheater until I took an arrow to the knee...</b>");
 				getGame().gameOver();
 				return;
 			}
-			outputText("I AM NOT A CROOK.  BUT YOU ARE!  <b>CHEATER</b>!\n\n", true);
+			clearOutput();
+			outputText("I AM NOT A CROOK.  BUT YOU ARE!  <b>CHEATER</b>!\n\n");
 			inventory.takeItem(consumables.HUMMUS_, playerMenu);
 			flags[kFLAGS.TIMES_CHEATED_COUNTER]++;
 		}

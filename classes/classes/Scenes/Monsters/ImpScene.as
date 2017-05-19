@@ -72,9 +72,10 @@ package classes.Scenes.Monsters
 			}
 			// " + (condomed ? "": "") + "
 			//Single cock
+			clearOutput();
 			outputText(images.showImage("imp-win-male-fuck"), false);
 			if (player.cocks.length == 1) {
-				outputText("With a demonic smile you grab the insensible imp and lift him from the ground by his neck.  The reduced airflow doesn't seem to slow his feverish masturbation at all, and only serves to make him harder.", true);
+				outputText("With a demonic smile you grab the insensible imp and lift him from the ground by his neck.  The reduced airflow doesn't seem to slow his feverish masturbation at all, and only serves to make him harder.");
 				if (!player.isTaur()) {
 					outputText("  You casually unclasp your " + player.armorName + " and reveal your " + player.cockDescript(x) + ", ", false);
 					if (player.breastRows.length > 0 && player.breastRows[0].breastRating > 2) outputText("smashing him against your " + player.breastDescript(0) + " while you jerk hard on your " + player.cockDescript(x) + ", bringing it to a full, throbbing erection.", false);
@@ -94,7 +95,7 @@ package classes.Scenes.Monsters
 			}
 			//Multicock
 			if (player.cocks.length >= 2) {
-				outputText("With a demonic smile you grab the insensible imp and lift him from the ground by his neck.  The reduced airflow doesn't seem to slow his feverish masturbation at all, and only serves to make him harder.", true);
+				outputText("With a demonic smile you grab the insensible imp and lift him from the ground by his neck.  The reduced airflow doesn't seem to slow his feverish masturbation at all, and only serves to make him harder.");
 				if (!player.isTaur()) {
 					outputText("  You casually unclasp your " + player.armorName + " and reveal your " + player.multiCockDescriptLight() + ", ", false);
 					if (player.breastRows.length > 0 && player.breastRows[0].breastRating > 2) outputText("smashing him against your " + player.breastDescript(0) + " while you jerk hard on one of your " + player.cockDescript(x) + "s, bringing it to a full, throbbing erection.", false);
@@ -1299,6 +1300,7 @@ package classes.Scenes.Monsters
 			}
 			//Lust loss
 			if (player.lust >= player.maxLust()) {
+				clearOutput();
 				//50% chance of sprocket rape for super-thick people. 
 				if (player.cocks.length >= 1 && rand(2) == 0) {
 					if (player.cocks[0].cockThickness >= 4) {
@@ -1350,7 +1352,7 @@ package classes.Scenes.Monsters
 					//Alternate male-only case
 					if (player.gender == 1 && rand(2) == 0) {
 						outputText(images.showImage("imp-loss-male-fuck"), false);
-						outputText("Your eyes glaze over with lust as the imp's dark magic destroys your will to continue fighting. You sink to your ", true);
+						outputText("Your eyes glaze over with lust as the imp's dark magic destroys your will to continue fighting. You sink to your ");
 						if (player.isTaur()) outputText("hocks and knees, your " + player.cockDescript(0) + " hurting from the massive blood pressure caused by your unbridled lust. He approaches you and stops about two feet in front of you, watching with delight your helpless state", false);
 						else outputText("knees, pull out your " + player.cockDescript(0) + " and begin mindlessly stroking yourself as the imp approaches you, a wicked grin on his face. Your mind races with thoughts and images of sucking the imp's cock. He approaches you and stops about two feet in front of you, watching with delight as you succumb to your own lust", false);
 						outputText(". Your eyes glance down to his waist and see a massive bulge form under his loincloth, the sight of which causes your " + player.cockDescript(0) + " to twitch and begin leaking pre-cum.\n\n", false);

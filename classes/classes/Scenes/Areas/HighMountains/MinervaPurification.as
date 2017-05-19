@@ -876,34 +876,35 @@ package classes.Scenes.Areas.HighMountains
 		private function sleepWithMinerva():void {
 			clearOutput();
 			kGAMECLASS.highMountains.minervaScene.minervaSprite();
-			outputText(images.showImage("minerva-sleepwith-pure"), false);
-			outputText("You walk over to the siren and give her a hug. You tell her that you want to sleep with her. \"<i>Of course! I'd love to spend the night with you,</i>\" she says. \n\n", true);
-			if (flags[kFLAGS.MINERVA_TOWER_TREE] > 0) outputText("Minerva guides you to the most comfortable spot under the huge oak tree. Being under the tree gives you a great sense of shelter. She takes off her tube top, exposing her breasts completely.\n\n", false);
-			else outputText("Minerva guides you to the most comfortable spot. She takes off her tube top, exposing her breasts completely.\n\n", false);
-			if (player.armorName == "goo armor") outputText("You take your time to get the metal platebody off until you're completely naked save for the goo-girl covering you. ", false)
-			else outputText("You take your time to get your " + player.armorName + " off until you're completely naked. ", false)
-			outputText("You lay next to Minerva while you rest your head on her soft breasts. ", false)
-			if (player.armorName == "goo armor") outputText("Valeria, your goo-girl companion, envelopes you and Minerva, helping to keep you and Minerva warm. ", false)
-			outputText("\"<i>Sweet dreams, love,</i>\" she says as you finally close your eyes. ", false)
+			outputText(images.showImage("minerva-sleepwith-pure"));
+			outputText("You walk over to the siren and give her a hug. You tell her that you want to sleep with her. \"<i>Of course! I'd love to spend the night with you,</i>\" she says. \n\n");
+			if (flags[kFLAGS.MINERVA_TOWER_TREE] > 0) outputText("Minerva guides you to the most comfortable spot under the huge oak tree. Being under the tree gives you a great sense of shelter. She takes off her tube top, exposing her breasts completely.\n\n");
+			else outputText("Minerva guides you to the most comfortable spot. She takes off her tube top, exposing her breasts completely.\n\n");
+			if (player.armorName == "goo armor") outputText("You take your time to get the metal platebody off until you're completely naked save for the goo-girl covering you. ")
+			else outputText("You take your time to get your " + player.armorName + " off until you're completely naked. ")
+			outputText("You lay next to Minerva while you rest your head on her soft breasts. ")
+			if (player.armorName == "goo armor") outputText("Valeria, your goo-girl companion, envelopes you and Minerva, helping to keep you and Minerva warm. ")
+			outputText("\"<i>Sweet dreams, love,</i>\" she says as you finally close your eyes. ")
 			doNext(sleepWithMinervaProcess);
 		}
 		private function sleepWithMinervaII():void {
 			clearOutput();
 			kGAMECLASS.highMountains.minervaScene.minervaSprite();
 			outputText(images.showImage("minerva-sleepwith2-pure"), false);
-			outputText("<b>Ten hours pass...</b>\n\n", false);
-			outputText("You wake up, feeling refreshed. You thank Minerva for letting you sleep with her and you hug her, making sure to give her a good kiss. \"<i>Ohhhhh,</i>\" she moans and even blushes! You break the kiss. \"<i>Darling, come back anytime, ok?</i>\" she says. \n\n", false)
-			if (player.armorName == "goo armor") outputText("Valeria encases you once more and you get suited up ", false)
-			else outputText("You get re-dressed in your " + player.armorName + " ", false)
-			outputText("and you leave the tower to return to your camp. \n\n", false)
+			outputText("<b>Ten hours pass...</b>\n\n");
+			outputText("You wake up, feeling refreshed. You thank Minerva for letting you sleep with her and you hug her, making sure to give her a good kiss. \"<i>Ohhhhh,</i>\" she moans and even blushes! You break the kiss. \"<i>Darling, come back anytime, ok?</i>\" she says. \n\n")
+			if (player.armorName == "goo armor") outputText("Valeria encases you once more and you get suited up ")
+			else outputText("You get re-dressed in your " + player.armorName + " ")
+			outputText("and you leave the tower to return to your camp. \n\n")
 			awardAchievement("Getaway", kACHIEVEMENTS.GENERAL_GETAWAY);
 			dynStats("cor", -4);
 			sleepWithMinervaHeal();
 			doNext(camp.returnToCampUseOneHour);
 		}
 		private function sleepWithMinervaPostBirthing():void {
-			outputText("<b>Three hours pass...</b>\n\n", true)
-			outputText("You wake up, feeling refreshed. You take a good look at your newborn sirenic daughters. Already, they have grown quite a bit! They're now four feet tall. You thank Minerva for letting you sleep with her and you hug her. Next, you pick up the sirenic daughters and give them a playful hug.\n\n", false)
+			clearOutput();
+			outputText("<b>Three hours pass...</b>\n\n");
+			outputText("You wake up, feeling refreshed. You take a good look at your newborn sirenic daughters. Already, they have grown quite a bit! They're now four feet tall. You thank Minerva for letting you sleep with her and you hug her. Next, you pick up the sirenic daughters and give them a playful hug.\n\n");
 			outputText("They look so excited! They yell \"<i>" + player.mf("Daddy!", "Mommy!") +  "</i>\" You finally set them down on the ground and tell Minerva and her daughters that you have to return to your camp.");
 			outputText("\"<i>Come back any time, love,</i>\" she says before she kisses you on your cheek. You finally set your way back to your camp.");
 			awardAchievement("Getaway", kACHIEVEMENTS.GENERAL_GETAWAY);
@@ -1140,7 +1141,8 @@ package classes.Scenes.Areas.HighMountains
 		//Choose your hole to be stuffed.
 		private function chooseVagOrAss():void {
 			if (player.hasVagina()) {
-				outputText("\"<i>So, which of your hole would you like me to fuck?</i>\" the siren asks.", true)
+				clearOutput();
+				outputText("\"<i>So, which of your hole would you like me to fuck?</i>\" the siren asks.")
 				menu();
 				addButton(0, "Vagina", minervaLapSex);
 				addButton(1, "Ass", getButtFuckedYouSlut);
@@ -1155,7 +1157,7 @@ package classes.Scenes.Areas.HighMountains
 			clearOutput();
 			kGAMECLASS.highMountains.minervaScene.minervaSprite();
 			flags[kFLAGS.TIMES_MINERVA_SEXED]++;
-			outputText(images.showImage("minerva-sex-lapsex-pure"), false);
+			outputText(images.showImage("minerva-sex-lapsex-pure"));
 			outputText("Thinking about just what kind of heated, heart-pounding, lusty fun you want to have with your siren lover, your eyes look the shark-like harpy up and down, taking in her features. Her legs, her curvy hips... your eyes travel past the thick growing bulge in her shorts, up past her scarred, toned belly and to the siren's large, luscious breasts before finally reaching her face. Grinning to the golden and white herm, you decide what you want from her.");
 			
 			outputText("\n\nWithout a second thought, you approach Minerva and slide an arm around her bare back, your other hand reaching for her shorts, slowly giving the tight bulge a squeeze and rubbing it, the tentacled organ starting to swell almost instantly. \"<i>Ooohh! Someone knows what they want!</i>\" She grins and puts an arm around you, pulling you against her, \"<i>How about we get started and have some fun?</i>\"");
