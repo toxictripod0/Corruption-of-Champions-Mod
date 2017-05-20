@@ -201,7 +201,7 @@ package classes.Items
 		public const SALAMFW:SimpleConsumable = mk("SalamFW","SalamFW", "a hip flask of Salamander Firewater", m.salamanderfirewater, "This hip flask contains high-proof beverage called 'Salamander Firewater', which one sip can make your throat feel like it been set on fire.  What would happen if you drink the contents of the whole flask?");
 		public const SATYR_W:SatyrWine        = new SatyrWine();
 		public const SHARK_T:SimpleConsumable = mk("Shark.T","Shark.T", "a sharp shark tooth", curry(m.sharkTooth,0), "A glinting white tooth, very sharp and intimidating.");
-		public const SNAKOIL:SimpleConsumable = mk("SnakOil", "SnakOil", "a vial of snake oil", m.snakeOil, "A vial the size of your fist made of dark brown glass. It contains what appears to be an oily, yellowish liquid. The odor is abominable.");
+		public const SNAKOIL:Consumable = new SnakeOil();
 		public const SPHONEY:Consumable		  = new BeeHoney(false, true);
 		public const TAURICO:SimpleConsumable = mk("Taurico","Taurinum", "a vial of Taurinum", m.taurinum, "This is a long flared vial with a small label that reads, \"<i>Taurinum</i>\".  It is likely this potion is tied to centaurs in some way.");
 		public const TRAPOIL:SimpleConsumable = mk("TrapOil","TrapOil", "a vial of trap oil", m.trapOil, "A round, opaque glass vial filled with a clear, viscous fluid.  It has a symbol inscribed on it, a circle with a cross and arrow pointing out of it in opposite directions.  It looks and smells entirely innocuous.");
