@@ -26,7 +26,7 @@ package classes.Items.Consumables
 				player.lust -= 20 + rand(40);
 			}
 			
-			if (rand(5) == 0) {
+			if (rand(5) === 0) {
 				if (!player.hasStatusEffect(StatusEffects.Dysfunction)) {
 					outputText("\n\nUnfortunately, the skin of ");
 					if (player.cockTotal() > 0) {
@@ -47,11 +47,11 @@ package classes.Items.Consumables
 					player.addStatusValue(StatusEffects.Dysfunction, 1, 50 + rand(100));
 				}
 			}
-			else if (rand(4) == 0 && player.inte > 15) {
+			else if (rand(4) === 0 && player.inte > 15) {
 				outputText("\n\nNumbness clouds your mind, making you feel slow witted and dull.  Maybe these candies weren't such an exceptio... fantas... good idea.");
 				dynStats("int", -(1 + rand(5)));
 			}
-			if (player.findPerk(PerkLib.ThickSkin) < 0 && player.sens < 30 && rand(4) == 0) {
+			if (player.findPerk(PerkLib.ThickSkin) < 0 && player.sens < 30 && rand(4) === 0) {
 				outputText("Slowly, ");
 				if (player.hasPlainSkin()) outputText("your skin");
 				else outputText("the skin under your " + player.skinDesc);
