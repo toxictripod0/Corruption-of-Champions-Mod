@@ -2551,46 +2551,6 @@ package classes.Items
 			player.refillHunger(20);
 		}
 
-
-		public function blackSpellbook(player:Player):void
-		{
-			clearOutput();
-			outputText("You open the small black book, and discover it to be an instructional book on the use of black magic.  Most of it is filled with generic information about black magic - how it is drawn from emotions (typically lust), and how it has the power to affect bodies and emotions.  It also warns against using it on oneself, as it is difficult to draw on your emotions while meddling with your own body.  In no time at all you've read the whole thing, but it disappears into thin air before you can put it away.");
-			if (player.inte < 30) {
-				outputText("\n\nYou feel greatly enlightened by your time spent reading.");
-				dynStats("int", 4);
-			}
-			else if (player.inte < 60) {
-				outputText("\n\nSpending some time reading was probably good for you, and you definitely feel smarter for it.");
-				dynStats("int", 2);
-			}
-			else if (player.inte < 80) {
-				outputText("\n\nAfter reading the small tome your already quick mind feels invigorated.");
-				dynStats("int", 1);
-			}
-			else {
-				outputText("\n\nThe contents of the book did little for your already considerable intellect.");
-				dynStats("int", .6);
-			}
-			//Smart enough for arouse and doesnt have it
-			if (player.inte >= 25 && !player.hasStatusEffect(StatusEffects.KnowsArouse)) {
-				outputText("\n\nYou blink in surprise, assaulted by the knowledge of a <b>new spell: Arouse.</b>");
-				player.createStatusEffect(StatusEffects.KnowsArouse, 0, 0, 0, 0);
-				return;
-			}
-			//Smart enough for arouse and doesnt have it
-			if (player.inte >= 30 && !player.hasStatusEffect(StatusEffects.KnowsHeal)) {
-				outputText("\n\nYou blink in surprise, assaulted by the knowledge of a <b>new spell: Heal.</b>");
-				player.createStatusEffect(StatusEffects.KnowsHeal, 0, 0, 0, 0);
-				return;
-			}
-			//Smart enough for arouse and doesnt have it
-			if (player.inte >= 40 && !player.hasStatusEffect(StatusEffects.KnowsMight)) {
-				outputText("\n\nYou blink in surprise, assaulted by the knowledge of a <b>new spell: Might.</b>");
-				player.createStatusEffect(StatusEffects.KnowsMight, 0, 0, 0, 0);
-			}
-		}
-
 		public function whiteSpellbook(player:Player):void
 		{
 			clearOutput();
