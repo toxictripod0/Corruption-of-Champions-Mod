@@ -4273,20 +4273,6 @@ package classes.Items
 			flags[kFLAGS.TIMES_TRANSFORMED] += changes;
 		}
 
-		public function springWater(player:Player):void
-		{
-			player.slimeFeed();
-			clearOutput();
-			outputText("The water is cool and sweet to the taste, and every swallow makes you feel calmer, cleaner, and refreshed.  You drink until your thirst is quenched, feeling purer in both mind and body. ");
-			//-30 fatigue, -2 libido, -10 lust]
-			player.changeFatigue(-10);
-			dynStats("lus", -25, "cor", (-3 - rand(2)), "resisted", false);
-			HPChange(20 + (5 * player.level) + rand(5 * player.level), true);
-			player.refillHunger(10);
- 			if (player.cor > (50 - player.corruptionTolerance())) dynStats("cor", -1);
- 			if (player.cor > (75 - player.corruptionTolerance())) dynStats("cor", -1);
-		}
-		
 		public function calmMint(player:Player):void
 		{
 			clearOutput();
