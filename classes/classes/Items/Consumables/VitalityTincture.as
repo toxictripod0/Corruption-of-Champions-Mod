@@ -25,9 +25,9 @@ package classes.Items.Consumables
 			temp = rand(3);
 			game.dynStats("str", temp);
 			//Garunteed toughness if no str
-			if (temp == 0) {
+			if (temp === 0) {
 				temp = rand(3);
-				if (temp == 0) {
+				if (temp === 0) {
 					temp = 1;
 				}
 			}
@@ -42,7 +42,7 @@ package classes.Items.Consumables
 				outputText("  Any aches, pains and bruises you have suffered no longer hurt and you feel much better.");
 			}
 			
-			if (rand(3) == 0) {
+			if (rand(3) === 0) {
 				outputText(player.modTone(95, 3));
 			}
 			player.refillHunger(10);
