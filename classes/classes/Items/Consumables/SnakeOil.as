@@ -44,8 +44,8 @@ package classes.Items.Consumables
 			clearOutput();
 			changes = 0;
 			changeLimit = 1;
-			if (rand(2) == 0) changeLimit++;
-			if (rand(2) == 0) changeLimit++;
+			if (rand(2) === 0) changeLimit++;
+			if (rand(2) === 0) changeLimit++;
 			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
 			if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
 			//b) Description while used
@@ -53,36 +53,36 @@ package classes.Items.Consumables
 			//(if outside combat)
 			if (!kGAMECLASS.inCombat) outputText("  Minutes pass as you start wishing you had water with you, to get rid of the aftertaste.");
 			//+ speed to 70!
-			if (player.spe < 70 && rand(2) == 0) {
+			if (player.spe < 70 && rand(2) === 0) {
 				dynStats("spe", (2 - (player.spe / 10 / 5)));
 				outputText("\n\nYour muscles quiver, feeling ready to strike as fast as a snake!");
 				if (player.spe < 40) outputText("  Of course, you're nowhere near as fast as that.");
 				changes++;
 			}
-			if (rand(5) == 0) {
+			if (rand(5) === 0) {
 				mutationsHelper.updateOvipositionPerk(tfSource);
 			}
 			//Removes wings
-			if (player.wingType > WING_TYPE_NONE && rand(3) == 0 && changes < changeLimit) {
-				if (player.wingType == WING_TYPE_SHARK_FIN) outputText("\n\nA wave of tightness spreads through your back, and it feels as if someone is stabbing a dagger into your spine.  After a moment the pain passes, though your fin is gone!");
+			if (player.wingType > WING_TYPE_NONE && rand(3) === 0 && changes < changeLimit) {
+				if (player.wingType === WING_TYPE_SHARK_FIN) outputText("\n\nA wave of tightness spreads through your back, and it feels as if someone is stabbing a dagger into your spine.  After a moment the pain passes, though your fin is gone!");
 				else outputText("\n\nA wave of tightness spreads through your back, and it feels as if someone is stabbing a dagger into each of your shoulder-blades.  After a moment the pain passes, though your wings are gone!");
 				player.wingType = WING_TYPE_NONE;
 				changes++;
 			}
 			//Removes antennae
-			if (player.antennae > ANTENNAE_NONE && rand(3) == 0 && changes < changeLimit) {
+			if (player.antennae > ANTENNAE_NONE && rand(3) === 0 && changes < changeLimit) {
 				outputText("\n\nThe muscles in your brow clench tightly, and you feel a tremendous pressure on your upper forehead.  When it passes, you touch yourself and discover your antennae have vanished!");
 				player.antennae = ANTENNAE_NONE;
 				changes++;
 			}
 			//9c) II The tongue (sensitivity bonus, stored as a perk?)
-			if (changes == 0 && rand(3) == 0) {
+			if (changes === 0 && rand(3) === 0) {
 				mutationsHelper.gainSnakeTongue();
 			}
 			//9c) III The fangs
-			if (changes == 0 && player.tongueType == TONGUE_SNAKE && player.faceType != FACE_SNAKE_FANGS && rand(3) == 0 && changes < changeLimit) {
+			if (changes === 0 && player.tongueType === TONGUE_SNAKE && player.faceType !== FACE_SNAKE_FANGS && rand(3) === 0 && changes < changeLimit) {
 				outputText("\n\nWithout warning, you feel your canine teeth jump almost an inch in size, clashing on your gums, cutting yourself quite badly. As you attempt to find a new way to close your mouth without dislocating your jaw, you notice that they are dripping with a bitter, khaki liquid.  Watch out, and <b>try not to bite your tongue with your poisonous fangs!</b>");
-				if (player.faceType != FACE_HUMAN && player.faceType != FACE_SHARK_TEETH && player.faceType != FACE_BUNNY && player.faceType != FACE_SPIDER_FANGS) {
+				if (player.faceType !== FACE_HUMAN && player.faceType !== FACE_SHARK_TEETH && player.faceType !== FACE_BUNNY && player.faceType !== FACE_SPIDER_FANGS) {
 					outputText("  As the change progresses, your " + player.face() + " reshapes.  The sensation is far more pleasant than teeth cutting into gums, and as the tingling transformation completes, <b>you've gained with a normal-looking, human visage.</b>");
 				}
 				player.faceType = FACE_SNAKE_FANGS;
@@ -90,7 +90,7 @@ package classes.Items.Consumables
 			}
 			//9c) I The tail ( http://tvtropes.org/pmwiki/pmwiki.php/Main/TransformationIsAFreeAction ) (Shouldn't we try to avert this? -Ace)
 			//Should the enemy "kill" you during the transformation, it skips the scene and immediately goes to tthe rape scene. (Now that I'm thinking about it, we should add some sort of appendix where the player realizes how much he's/she's changed. -Ace)
-			if (changes == 0 && player.faceType == FACE_SNAKE_FANGS && player.lowerBody != LOWER_BODY_TYPE_NAGA && rand(4) == 0 && changes < changeLimit) {
+			if (changes === 0 && player.faceType === FACE_SNAKE_FANGS && player.lowerBody !== LOWER_BODY_TYPE_NAGA && rand(4) === 0 && changes < changeLimit) {
 				outputText("\n\nYou find it increasingly harder to keep standing as your legs start feeling weak.  You swiftly collapse, unable to maintain your own weight.");
 				//(If used in combat, you lose a turn here. Half-corrupted Jojo and the Naga won't attack you during that period, but other monsters will)
 				//FUCK NO
@@ -126,12 +126,12 @@ package classes.Items.Consumables
 				changes++;
 			}
 			// Remove gills
-			if (rand(4) == 0 && player.hasGills() && changes < changeLimit) {
+			if (rand(4) === 0 && player.hasGills() && changes < changeLimit) {
 				mutationsHelper.updateGills();
 			}
 
 			//Default change - blah
-			if (changes == 0) outputText("\n\nRemakarbly, the snake-oil has no effect.  Should you really be surprised at snake-oil NOT doing anything?");
+			if (changes === 0) outputText("\n\nRemakarbly, the snake-oil has no effect.  Should you really be surprised at snake-oil NOT doing anything?");
 			player.refillHunger(5);
 			
 			return false;
