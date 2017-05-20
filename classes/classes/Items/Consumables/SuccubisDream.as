@@ -25,8 +25,8 @@ package classes.Items.Consumables
 			crit += rand(2) + 1;
 			changeLimit = 1;
 			//Chances to up the max number of changes
-			if (rand(2) == 0) changeLimit++;
-			if (rand(2) == 0) changeLimit++;
+			if (rand(2) === 0) changeLimit++;
+			if (rand(2) === 0) changeLimit++;
 			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
 			if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
 			//Generic drinking text
@@ -55,7 +55,7 @@ package classes.Items.Consumables
 					player.balls = 4;
 					outputText("\n\nIncredible pain scythes through your crotch, doubling you over.  You stagger around, struggling to pull open your " + player.armorName + ".  In shock, you barely register the sight before your eyes: <b>You have four balls.</b>");
 				}
-				if (player.balls == 0) {
+				if (player.balls === 0) {
 					player.balls = 2;
 					outputText("\n\nIncredible pain scythes through your crotch, doubling you over.  You stagger around, struggling to pull open your " + player.armorName + ".  In shock, you barely register the sight before your eyes: <b>You have balls!</b>");
 					player.ballSize = 1;
@@ -63,7 +63,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Makes your balls biggah! (Or cummultiplier higher if futa!)
-			if (rand(1.5) == 0 && changes < changeLimit && player.balls > 0 && player.cocks.length > 0) {
+			if (rand(1.5) === 0 && changes < changeLimit && player.balls > 0 && player.cocks.length > 0) {
 				player.ballSize++;
 				//They grow slower as they get bigger...
 				if (player.ballSize > 10) player.ballSize -= .5;
@@ -73,8 +73,8 @@ package classes.Items.Consumables
 				dynStats("lib", 1, "lus", 3);
 			}
 			//Boost cum multiplier
-			if (changes < changeLimit && rand(2) == 0 && player.cocks.length > 0) {
-				if (player.cumMultiplier < 6 && rand(2) == 0 && changes < changeLimit) {
+			if (changes < changeLimit && rand(2) === 0 && player.cocks.length > 0) {
+				if (player.cumMultiplier < 6 && rand(2) === 0 && changes < changeLimit) {
 					//Temp is the max it can be raised to
 					temp = 3;
 					//Lots of cum raises cum multiplier cap to 6 instead of 3
@@ -85,7 +85,7 @@ package classes.Items.Consumables
 					else {
 						player.cumMultiplier += .4 * crit;
 						//Flavor text
-						if (player.balls == 0) outputText("\n\nYou feel a churning inside your body as something inside you changes.");
+						if (player.balls === 0) outputText("\n\nYou feel a churning inside your body as something inside you changes.");
 						if (player.balls > 0) outputText("\n\nYou feel a churning in your " + player.ballsDescriptLight() + ".  It quickly settles, leaving them feeling somewhat more dense.");
 						if (crit > 1) outputText("  A bit of milky pre dribbles from your " + player.multiCockDescriptLight() + ", pushed out by the change.");
 						dynStats("lib", 1);
@@ -94,12 +94,12 @@ package classes.Items.Consumables
 				}
 			}
 			//Fail-safe
-			if (changes == 0) {
+			if (changes === 0) {
 				outputText("\n\nYour groin tingles, making it feel as if you haven't cum in a long time.");
 				player.hoursSinceCum += 100;
 				changes++;
 			}
-			if (player.balls > 0 && rand(3) == 0) {
+			if (player.balls > 0 && rand(3) === 0) {
 				outputText(player.modFem(12, 5));
 			}
 			player.refillHunger(15);
