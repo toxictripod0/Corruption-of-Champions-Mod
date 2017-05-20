@@ -36,18 +36,18 @@ package classes.Items.Consumables
 			}
 
 			//Cosmetic changes based on 'goopyness'
-			if (rand(5) == 0) {
+			if (rand(5) === 0) {
 				mutationsHelper.updateOvipositionPerk(tfSource);
 			}
 			//Remove wings
 			if (player.wingType > WING_TYPE_NONE) {
-				if (player.wingType == WING_TYPE_SHARK_FIN) outputText("\n\nYou sigh, feeling a hot wet tingling down your back.  It tickles slightly as you feel your fin slowly turn to sludge, dripping to the ground as your body becomes more goo-like.");
+				if (player.wingType === WING_TYPE_SHARK_FIN) outputText("\n\nYou sigh, feeling a hot wet tingling down your back.  It tickles slightly as you feel your fin slowly turn to sludge, dripping to the ground as your body becomes more goo-like.");
 				else outputText("\n\nYou sigh, feeling a hot wet tingling down your back.  It tickles slightly as you feel your wings slowly turn to sludge, dripping to the ground as your body becomes more goo-like.");
 				player.wingType = WING_TYPE_NONE;
 				return false;
 			}
 			//Goopy hair
-			if (player.hairType != 3) {
+			if (player.hairType !== 3) {
 				player.hairType = 3;
 				//if bald
 				if (player.hairLength <= 0) {
@@ -56,7 +56,7 @@ package classes.Items.Consumables
 				}
 				else {
 					//if hair isnt rubbery or latexy
-					if (player.hairColor.indexOf("rubbery") == -1 && player.hairColor.indexOf("latex-textured") == -1) {
+					if (player.hairColor.indexOf("rubbery") === -1 && player.hairColor.indexOf("latex-textured") === -1) {
 						outputText("\n\nYour head buzzes pleasantly, feeling suddenly hot and wet.  You instinctively reach up to feel the source of your wetness, and discover your hair has become a slippery, gooey mess.  From time to time it drips, running down your back to the crack of your " + player.buttDescript() + ".");
 					}
 					//Latexy stuff
@@ -64,7 +64,7 @@ package classes.Items.Consumables
 						outputText("\n\nYour oddly inorganic hair shifts, becoming partly molten as rivulets of liquid material roll down your back.  How strange.");
 					}
 				}
-				if (player.hairColor != "green" && player.hairColor != "purple" && player.hairColor != "blue" && player.hairColor != "cerulean" && player.hairColor != "emerald") {
+				if (player.hairColor !== "green" && player.hairColor !== "purple" && player.hairColor !== "blue" && player.hairColor !== "cerulean" && player.hairColor !== "emerald") {
 					outputText("  Stranger still, the hue of your semi-liquid hair changes to ");
 					var blah:int = rand(10);
 					if (blah <= 2) player.hairColor = "green";
@@ -78,7 +78,7 @@ package classes.Items.Consumables
 				return false;
 			}
 			//1.Goopy skin
-			if (player.hairType == 3 && (player.skinDesc != "skin" || player.skinAdj != "slimy")) {
+			if (player.hairType === 3 && (player.skinDesc !== "skin" || player.skinAdj !== "slimy")) {
 				if (player.hasPlainSkin()) outputText("\n\nYou sigh, feeling your " + player.armorName + " sink into you as your skin becomes less solid, gooey even.  You realize your entire body has become semi-solid and partly liquid!");
 				else if (player.hasFur()) outputText("\n\nYou sigh, suddenly feeling your fur become hot and wet.  You look down as your " + player.armorName + " sinks partway into you.  With a start you realize your fur has melted away, melding into the slime-like coating that now serves as your skin.  You've become partly liquid and incredibly gooey!");
 				else if (player.hasScales()) outputText("\n\nYou sigh, feeling slippery wetness over your scales.  You reach to scratch it and come away with a slippery wet coating.  Your scales have transformed into a slimy goop!  Looking closer, you realize your entire body has become far more liquid in nature, and is semi-solid.  Your " + player.armorName + " has even sunk partway into you.");
@@ -86,7 +86,7 @@ package classes.Items.Consumables
 				player.skinDesc = "skin";
 				player.skinAdj = "slimy";
 				player.underBody.restore();
-				if (player.skinTone != "green" && player.skinTone != "purple" && player.skinTone != "blue" && player.skinTone != "cerulean" && player.skinTone != "emerald") {
+				if (player.skinTone !== "green" && player.skinTone !== "purple" && player.skinTone !== "blue" && player.skinTone !== "cerulean" && player.skinTone !== "emerald") {
 					outputText("  Stranger still, your skintone changes to ");
 					var blaht:int = rand(10);
 					if (blaht <= 2) player.skinTone = "green";
@@ -95,7 +95,7 @@ package classes.Items.Consumables
 					else if (blaht <= 8) player.skinTone = "cerulean";
 					else player.skinTone = "emerald";
 					outputText(player.skinTone + "!");
-					if (player.armType != ARM_TYPE_HUMAN || player.clawType != CLAW_TYPE_NORMAL) {
+					if (player.armType !== ARM_TYPE_HUMAN || player.clawType !== CLAW_TYPE_NORMAL) {
 						mutationsHelper.restoreArms(tfSource);
 					}
 				}
@@ -104,7 +104,7 @@ package classes.Items.Consumables
 			////1a.Make alterations to dick/vaginal/nippular descriptors to match
 			//DONE EXCEPT FOR TITS & MULTIDICKS (UNFINISHED KINDA)
 			//2.Goo legs
-			if (player.skinAdj == "slimy" && player.skinDesc == "skin" && player.lowerBody != LOWER_BODY_TYPE_GOO) {
+			if (player.skinAdj === "slimy" && player.skinDesc === "skin" && player.lowerBody !== LOWER_BODY_TYPE_GOO) {
 				outputText("\n\nYour viewpoint rapidly drops as everything below your " + player.buttDescript() + " and groin melts together into an amorphous blob.  Thankfully, you discover you can still roll about on your new slimey undercarriage, but it's still a whole new level of strange.");
 				player.tallness -= 3 + rand(2);
 				if (player.tallness < 36) {
@@ -147,9 +147,9 @@ package classes.Items.Consumables
 					player.changeStatusValue(StatusEffects.SlimeCraving, 1, 0);
 				}
 			}
-			if (rand(2) == 0) outputText(player.modFem(85, 3));
-			if (rand(2) == 0) outputText(player.modThickness(20, 3));
-			if (rand(2) == 0) outputText(player.modTone(15, 5));
+			if (rand(2) === 0) outputText(player.modFem(85, 3));
+			if (rand(2) === 0) outputText(player.modThickness(20, 3));
+			if (rand(2) === 0) outputText(player.modTone(15, 5));
 			
 			return false;
 		}
