@@ -7840,14 +7840,7 @@ package classes.Items
 		public function prisonCumStew(player:Player):void {
 			prison.prisonItemBread(true);
 		}
-		
-		public function trailMix(player:Player):void {
-			outputText("You eat the trail mix. You got energy boost from it!");
-			player.refillHunger(30);
-			player.changeFatigue(-20);
-			HPChange(Math.round(player.maxHP() * 0.1), true);
-		}
-		
+
 		//Retro UTG stuff!
 		public function healPill(player:Player):void {
 			var rand:int = Math.random() * 100;
