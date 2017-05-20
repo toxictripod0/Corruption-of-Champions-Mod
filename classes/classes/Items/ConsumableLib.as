@@ -146,7 +146,7 @@ package classes.Items
 		public const L_DRAFT:SimpleConsumable = mk("L.Draft","LustDraft", "a vial of roiling bubble-gum pink fluid", curry(m.lustDraft,false), "This vial of bright pink fluid bubbles constantly inside the glass, as if eager to escape.  It smells very sweet, and has \"Lust\" inscribed on the side of the vial.", 20);
 		public const LACTAID:Consumable = new Lactaid();
 		public const LUSTSTK:LustStick        = new LustStick();
-		public const MILKPTN:SimpleConsumable = mk("MilkPtn","ProLactaid", "a bottle labelled \"Pro Lactaid\"", m.milkPotion, "A bottle filled with white liquid which is distilled from Lactaid and LaBovas.  Rathazul mentioned that this potion will greatly improve your lactation. There's the possibility of permanently lactating, even if you're a male.", 120);
+		public const MILKPTN:Consumable = new MilkPotion();
 		public const NUMBOIL:SimpleConsumable = mk("NumbOil","Numb Oil", "a bottle of numbing oil", m.numbingOil, "This bottle feels a bit warm to the touch. From the look of the label on the bottle of oil, you suspect this will make you less sensitive.", 100);
 		public const NUMBROX:SimpleConsumable = mk("NumbRox","Numb Rox", "a strange packet of candy called 'Numb Rocks'", m.numbRocks, "This packet of innocuous looking 'candy' guarantees to reduce troublesome sensations and taste delicious.", 15);
 		public const OVIELIX:OvipositionElixir = new OvipositionElixir();
