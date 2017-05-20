@@ -147,7 +147,7 @@ package classes.Items
 		public const LACTAID:Consumable = new Lactaid();
 		public const LUSTSTK:LustStick        = new LustStick();
 		public const MILKPTN:Consumable = new MilkPotion();
-		public const NUMBOIL:SimpleConsumable = mk("NumbOil","Numb Oil", "a bottle of numbing oil", m.numbingOil, "This bottle feels a bit warm to the touch. From the look of the label on the bottle of oil, you suspect this will make you less sensitive.", 100);
+		public const NUMBOIL:Consumable = new NumbingOil();
 		public const NUMBROX:SimpleConsumable = mk("NumbRox","Numb Rox", "a strange packet of candy called 'Numb Rocks'", m.numbRocks, "This packet of innocuous looking 'candy' guarantees to reduce troublesome sensations and taste delicious.", 15);
 		public const OVIELIX:OvipositionElixir = new OvipositionElixir();
 		public const OVI_MAX:OvipositionMax = new OvipositionMax();
