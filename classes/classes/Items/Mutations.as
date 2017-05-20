@@ -4273,14 +4273,6 @@ package classes.Items
 			flags[kFLAGS.TIMES_TRANSFORMED] += changes;
 		}
 
-		public function calmMint(player:Player):void
-		{
-			clearOutput();
-			outputText("Eating the sprig of raw mint is a bit of a stretch, but you manage to gulp it down.  As the strong minty flavor overwhelms your taste buds, your mind feels calmer, and a relaxed sensation spreads through your body.");
-			dynStats("lib", -1, "lust", -10, "inte", 0.5, "resisted", false);
-			player.refillHunger(5);
-		}
-		
 		public function iceShard(player:Player):void
 		{
 			clearOutput();
