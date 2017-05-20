@@ -24,7 +24,7 @@ package classes.Items.Consumables
 			clearOutput();
 			//Text for when the player uses the bottle:
 			//[before the player is addicted, Addiction < 30]
-			if (player.statusEffectv2(StatusEffects.Marble) < 30 && player.statusEffectv3(StatusEffects.Marble) == 0) outputText("You gulp down the bottle's contents; Marble makes some good tasting milk.\n\n");
+			if (player.statusEffectv2(StatusEffects.Marble) < 30 && player.statusEffectv3(StatusEffects.Marble) === 0) outputText("You gulp down the bottle's contents; Marble makes some good tasting milk.\n\n");
 			//[before the player is addicted, Addiction < 50]
 			else if (player.statusEffectv3(StatusEffects.Marble) <= 0) outputText("You gulp down the bottle's contents; Marble makes some really good tasting milk.\n\n");
 			else if (player.statusEffectv3(StatusEffects.Marble) > 0) {
