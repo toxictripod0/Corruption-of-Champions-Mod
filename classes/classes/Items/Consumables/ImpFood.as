@@ -20,8 +20,6 @@ package classes.Items.Consumables
 		}
 		
 		override public function useItem():Boolean {
-			var mutationsHelper:MutationsHelper = new MutationsHelper();
-			
 			var tfSource:String = "impFood";
 			var temp:int = 0;
 			changes = 0;

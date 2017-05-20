@@ -21,8 +21,6 @@ package classes.Items.Consumables
 		}
 		
 		override public function useItem():Boolean {
-			var mutationsHelper:MutationsHelper = new MutationsHelper();
-			
 			var tfSource:String = "equinum";
 			player.slimeFeed();
 			//Changes done

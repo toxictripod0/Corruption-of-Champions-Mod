@@ -22,8 +22,6 @@ package classes.Items.Consumables
 		// Fuck yo dog shit we full-on wolf bitches now -Foxwells
 		override public function useItem():Boolean
 		{
-			var mutationsHelper:MutationsHelper = new MutationsHelper();
-			
 			var tfSource:String = "wolfPepper";
 			var temp:int = 0; // best variable name ever!
 			var temp2:Number = 0;
