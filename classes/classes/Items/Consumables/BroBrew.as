@@ -39,14 +39,14 @@ package classes.Items.Consumables
 					player.createCock();
 					player.cocks[0].cockLength = 10;
 					player.cocks[0].cockThickness = 2;
-					if (player.balls == 0) {
+					if (player.balls === 0) {
 						outputText("  Right on cue, two cum-laden testicles drop in behind it, their contents swirling and churning.");
 						player.balls = 2;
 						player.ballSize = 3;
 					}
 					outputText("\n\n");
 				}
-				else if (player.balls == 0) {
+				else if (player.balls === 0) {
 					outputText("A swelling begins behind your man-meat, and you're assailed with an incredibly peculiar sensation as two sperm-filled balls drop into a newly-formed scrotum.  Frikkin' sweet!\n\n");
 					player.balls = 2;
 					player.ballSize = 3;
@@ -139,12 +139,12 @@ package classes.Items.Consumables
 			//(No dick)
 			else {
 				outputText("You hear a straining, tearing noise before you realize it's coming from your underwear.  Pulling open your " + player.armorName + ", you gasp in surprise at the huge, throbbing manhood that now lies between your " + player.hipDescript() + ".  It rapidly stiffens to a full, ten inches, and goddamn, it feels fucking good.  You should totally find a warm hole to fuck!");
-				if (player.balls == 0) outputText("  Two rounded orbs drop down below, filling out a new, fleshy sac above your " + player.legs() + ".  Sweet!  You can probably cum buckets with balls like these.");
+				if (player.balls === 0) outputText("  Two rounded orbs drop down below, filling out a new, fleshy sac above your " + player.legs() + ".  Sweet!  You can probably cum buckets with balls like these.");
 				outputText("\n\n");
 				player.createCock();
 				player.cocks[0].cockLength = 12;
 				player.cocks[0].cockThickness = 2.75;
-				if (player.balls == 0) {
+				if (player.balls === 0) {
 					player.balls = 2;
 					player.ballSize = 3;
 				}
