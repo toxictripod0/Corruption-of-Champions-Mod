@@ -4273,13 +4273,6 @@ package classes.Items
 			flags[kFLAGS.TIMES_TRANSFORMED] += changes;
 		}
 
-		public function akbalSaliva(player:Player):void
-		{
-			outputText("You uncork the vial and chug down the saliva.  ");
-			HPChange((player.maxHP() / 4), true);
-			player.refillHunger(5);
-		}
-		
 		public function eatEmberEgg(player:Player):void
 		{
 			clearOutput();

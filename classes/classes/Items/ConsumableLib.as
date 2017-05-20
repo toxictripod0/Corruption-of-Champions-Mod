@@ -131,7 +131,7 @@ package classes.Items
 		public const P_PEARL:Consumable = new PurePearl();
 		
 		//NON-TRANSFORMATIVE ITEMS
-		public const AKBALSL:SimpleConsumable = mk("AkbalSl","AkbalSlv", "a vial of Akbal's saliva", m.akbalSaliva,"This corked vial of Akbal's saliva is said to contain healing properties. ");
+		public const AKBALSL:Consumable = new AkbalSaliva();
 		public const C__MINT:Consumable = new Mint();
 		public const CERUL_P:Consumable = new CeruleanPotion();
 		public const CLOVERS:Consumable = new Clovis();
