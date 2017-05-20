@@ -70,7 +70,7 @@ package classes.Items.Consumables
 				trace("1 cock purged.");
 			}
 			//Reset dongs!
-			if (player.gender == 1 || player.gender == 3) {
+			if (player.gender === 1 || player.gender === 3) {
 				player.createCock();
 				player.cocks[0].cockLength = 6;
 				player.cocks[0].cockThickness = 1;
