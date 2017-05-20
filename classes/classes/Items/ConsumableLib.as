@@ -122,7 +122,7 @@ package classes.Items
 		
 		//MAGIC BOOKS
 		public const B__BOOK:Consumable = new BlackSpellBook();
-		public const W__BOOK:SimpleConsumable = mk("W. Book","W. Book", "a small book with a pristine white cover", m.whiteSpellbook, "This white book is totally unmarked, and the cover is devoid of any lettering or title.  A shiny brass clasp keeps the covers closed until you are ready to read it.", 40);
+		public const W__BOOK:Consumable = new WhiteSpellBook();
 		
 		//RARE ITEMS (Permanent effects, gives perks on consumption.)
 		public const BIMBOLQ:BimboLiqueur = new BimboLiqueur();
