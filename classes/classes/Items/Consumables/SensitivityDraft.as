@@ -25,7 +25,7 @@ package classes.Items.Consumables
 				outputText("\n\nThankfully, the draft invigorates your groin, replacing the numbness with waves of raw sensation.  It seems your crotch is back to normal and <b>you can masturbate again!</b>");
 				player.removeStatusEffect(StatusEffects.Dysfunction);
 			}
-			if (rand(4) == 0 && !player.hasStatusEffect(StatusEffects.LustyTongue)) {
+			if (rand(4) === 0 && !player.hasStatusEffect(StatusEffects.LustyTongue)) {
 				outputText("The constant tingling in your mouth grows and grows, particularly around your lips, until they feel as sensitive as ");
 				if (player.hasVagina()) outputText("your");
 				else outputText("a woman's");
