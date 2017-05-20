@@ -127,7 +127,7 @@ package classes.Items
 		//RARE ITEMS (Permanent effects, gives perks on consumption.)
 		public const BIMBOLQ:BimboLiqueur = new BimboLiqueur();
 		public const BROBREW:SimpleConsumable = mk("BroBrew","BroBrew", "a can of Bro Brew", m.broBrew, "This aluminum can is labelled as 'Bro Brew'.  It even has a picture of a muscly, bare-chested man flexing on it.  A small label in the corner displays: \"Demon General's Warning: Bro Brew's effects are as potent (and irreversible) as they are refreshing.", 1000);
-		public const HUMMUS2:SimpleConsumable = mk("Hummus2","S.Hummus", "a blob of cheesy-looking super hummus", m.superHummus, "This pile of hummus doesn't look that clean, and you really don't remember where you got it from.  It looks bland.  So bland that you feel blander just by looking at it.");
+		public const HUMMUS2:Consumable = new SuperHummus();
 		public const P_PEARL:Consumable = new PurePearl();
 		
 		//NON-TRANSFORMATIVE ITEMS
