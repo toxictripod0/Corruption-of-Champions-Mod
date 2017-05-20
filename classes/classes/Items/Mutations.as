@@ -3922,33 +3922,6 @@ package classes.Items
 //bottle of ectoplasm. Regular stat-stuff include higher speed, (reduced libido?), reduced sensitivity, and higher intelligence. First-tier effects include 50/50 chance of sable skin with bone-white veins or ivory skin with onyx veins. Second tier, \"wisp-like legs that flit back and forth between worlds,\" or \"wisp-like legs\" for short. Third tier gives an \"Ephemeral\" perk, makes you (10%, perhaps?) tougher to hit, and gives you a skill that replaces tease/seduce—allowing the PC to possess the creature and force it to masturbate to gain lust. Around the same effectiveness as seduce.
 //Mouseover script: \"The green-tinted, hardly corporeal substance flows like a liquid inside its container. It makes you feel...uncomfortable, as you observe it.\"
 
-		public function sensitivityDraft(player:Player):void
-		{
-			player.slimeFeed();
-			clearOutput();
-			outputText("You pop the cork on this small vial and drink down the clear liquid.  It makes your lips and tongue tingle strangely, letting you feel each globule of spit in your mouth and each breath of air as it slides past your lips.");
-
-			if (player.hasStatusEffect(StatusEffects.Dysfunction)) {
-				outputText("\n\nThankfully, the draft invigorates your groin, replacing the numbness with waves of raw sensation.  It seems your crotch is back to normal and <b>you can masturbate again!</b>");
-				player.removeStatusEffect(StatusEffects.Dysfunction);
-			}
-			if (rand(4) == 0 && !player.hasStatusEffect(StatusEffects.LustyTongue)) {
-				outputText("The constant tingling in your mouth grows and grows, particularly around your lips, until they feel as sensitive as ");
-				if (player.hasVagina()) outputText("your");
-				else outputText("a woman's");
-				outputText(" lower lips.  You'll have to be careful not to lick them!");
-				//(Lustytongue status)
-				player.createStatusEffect(StatusEffects.LustyTongue, 25, 0, 0, 0);
-			}
-			outputText("\n\nAfter the wave of sensation passes, your " + player.skinDesc + " feels a little more receptive to touch.  ");
-			if (player.lust > 70 || player.lib > 70) {
-				outputText("You shiver and think of how much better it'll make sex and masturbation.");
-			}
-			else outputText("You worry it'll make it harder to resist the attentions of a demon.");
-			dynStats("sen", 10, "lus", 5);
-			player.refillHunger(5);
-		}
-
 		/**
 		 * Transformation for Fox Berry or (enhanced) Vixen's Vigor
 		 * 
