@@ -208,7 +208,7 @@ package classes.Items
 		public const TSCROLL:Consumable = new TatteredScroll();
 		public const TSTOOTH:SimpleConsumable = mk("TSTooth","TSTooth", "a glowing tiger shark tooth", curry(m.sharkTooth, 1),"This looks like a normal shark tooth, though with an odd purple glow.");
 		public const VIXVIGR:SimpleConsumable = mk("VixVigr","VixVigr", "a bottle labelled \"Vixen's Vigor\"", curry(m.foxTF, true), "This small medicine bottle contains something called \"Vixen's Vigor\", supposedly distilled from common fox-berries.  It is supposed to be a great deal more potent, and a small warning label warns of \"extra boobs\", whatever that means.", 30);
-		public const W_FRUIT:SimpleConsumable = mk("W.Fruit","W.Fruit", "a piece of whisker-fruit", m.whiskerFruit, "This small, peach-sized fruit has tiny whisker-like protrusions growing from the sides.");
+		public const W_FRUIT:Consumable = new WhiskerFruit();
 		public const WETCLTH:Consumable = new WetCloth();
 		public const WOLF_PP:Consumable = new WolfPepper();
 
