@@ -2133,39 +2133,6 @@ package classes.Items
 			}
 		}
 		
-		public function lactaid(player:Player):void
-		{
-			clearOutput();
-			player.slimeFeed();
-			var i:Number = 0;
-			outputText("You gulp down the bottle of lactaid, easily swallowing the creamy liquid.");
-			//Bump up size!
-			if (player.averageBreastSize() < 8) {
-				outputText("\n\n");
-				if (player.breastRows.length == 1) player.growTits((1 + rand(5)), 1, true, 1);
-				else player.growTits(1 + rand(2), player.breastRows.length, true, 1);
-			}
-			//Player doesn't lactate
-			if (player.biggestLactation() < 1) {
-				outputText("\n\n");
-				outputText("You feel your " + player.nippleDescript(0) + "s become tight and engorged.  A single droplet of milk escapes each, rolling down the curves of your breasts.  <b>You are now lactating!</b>");
-				for (i = 0; i < player.breastRows.length; i++) {
-					player.breastRows[i].lactationMultiplier += 2;
-				}
-			}
-			//Boost lactation
-			else {
-				outputText("\n\n");
-				outputText("Milk leaks from your " + player.nippleDescript(0) + "s in thick streams.  You're lactating even more!");
-				for (i = 0; i < player.breastRows.length; i++) {
-					player.breastRows[i].lactationMultiplier += 1 + rand(10) / 10;
-				}
-			}
-			dynStats("lus", 10);
-			if (rand(3) == 0) {
-				outputText(player.modFem(95, 1));
-			}
-		}
 		public function milkPotion(player:Player):void
 		{
 			clearOutput();
