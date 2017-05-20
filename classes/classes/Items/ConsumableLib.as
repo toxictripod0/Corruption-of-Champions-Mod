@@ -126,7 +126,7 @@ package classes.Items
 		
 		//RARE ITEMS (Permanent effects, gives perks on consumption.)
 		public const BIMBOLQ:BimboLiqueur = new BimboLiqueur();
-		public const BROBREW:SimpleConsumable = mk("BroBrew","BroBrew", "a can of Bro Brew", m.broBrew, "This aluminum can is labelled as 'Bro Brew'.  It even has a picture of a muscly, bare-chested man flexing on it.  A small label in the corner displays: \"Demon General's Warning: Bro Brew's effects are as potent (and irreversible) as they are refreshing.", 1000);
+		public const BROBREW:Consumable = new BroBrew();
 		public const HUMMUS2:Consumable = new SuperHummus();
 		public const P_PEARL:Consumable = new PurePearl();
 		
