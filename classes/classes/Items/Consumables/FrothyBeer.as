@@ -29,7 +29,7 @@ package classes.Items.Consumables
 			else {
 				player.addStatusValue(StatusEffects.Drunk, 2, 1);
 				if (player.statusEffectv1(StatusEffects.Drunk) < 2) player.addStatusValue(StatusEffects.Drunk, 1, 1);
-				if (player.statusEffectv2(StatusEffects.Drunk) == 2) {
+				if (player.statusEffectv2(StatusEffects.Drunk) === 2) {
 					outputText("\n\n<b>You feel a bit drunk. Maybe you should cut back on the beers?</b>");
 				}
 				//Get so drunk you end up peeing! Genderless can still urinate.
