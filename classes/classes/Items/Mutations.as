@@ -3922,54 +3922,6 @@ package classes.Items
 //bottle of ectoplasm. Regular stat-stuff include higher speed, (reduced libido?), reduced sensitivity, and higher intelligence. First-tier effects include 50/50 chance of sable skin with bone-white veins or ivory skin with onyx veins. Second tier, \"wisp-like legs that flit back and forth between worlds,\" or \"wisp-like legs\" for short. Third tier gives an \"Ephemeral\" perk, makes you (10%, perhaps?) tougher to hit, and gives you a skill that replaces tease/seduce—allowing the PC to possess the creature and force it to masturbate to gain lust. Around the same effectiveness as seduce.
 //Mouseover script: \"The green-tinted, hardly corporeal substance flows like a liquid inside its container. It makes you feel...uncomfortable, as you observe it.\"
 
-		public function numbRocks(player:Player):void
-		{
-			clearOutput();
-			//Numb rocks lower lust significantly but have a chance of inducing the masturbation preventing effect from minotaur.
-			outputText("You pop open the package of numb rocks and dump it into your waiting mouth.  The strange candy fizzes and pops, leaving the nerves on your tongue feeling a bit deadened as you swallow the sweet mess.");
-
-			if (player.lust >= 33) {
-				outputText("\n\nThe numbness spreads through your body, bringing with it a sense of calm that seems to muffle your sexual urges.");
-				player.lust -= 20 + rand(40);
-			}
-			if (rand(5) == 0) {
-				if (!player.hasStatusEffect(StatusEffects.Dysfunction)) {
-					outputText("\n\nUnfortunately, the skin of ");
-					if (player.cockTotal() > 0) {
-						outputText(player.sMultiCockDesc());
-						if (player.hasVagina()) outputText(" and");
-						outputText(" ");
-					}
-					if (player.hasVagina()) {
-						if (!player.hasCock()) outputText("your ");
-						outputText(player.vaginaDescript(0) + " ");
-					}
-					if (!(player.hasCock() || player.hasVagina())) outputText(player.assholeDescript() + " ");
-					outputText(" numbs up too.  You give yourself a gentle touch, but are quite disturbed when you realize you can barely feel it.  You can probably still fuck something to get off, but regular masturbation is out of the question...");
-					player.createStatusEffect(StatusEffects.Dysfunction, 50 + rand(100), 0, 0, 0);
-				}
-				else {
-					outputText("\n\nSadly your groin becomes even more deadened to sensation.  You wonder how much longer you'll have to wait until you can please yourself again.");
-					player.addStatusValue(StatusEffects.Dysfunction, 1, 50 + rand(100));
-				}
-			}
-			else if (rand(4) == 0 && player.inte > 15) {
-				outputText("\n\nNumbness clouds your mind, making you feel slow witted and dull.  Maybe these candies weren't such an exceptio... fantas... good idea.");
-				dynStats("int", -(1 + rand(5)));
-			}
-			if (player.findPerk(PerkLib.ThickSkin) < 0 && player.sens < 30 && rand(4) == 0) {
-				outputText("Slowly, ");
-				if (player.hasPlainSkin()) outputText("your skin");
-				else outputText("the skin under your " + player.skinDesc);
-				outputText(" begins to feel duller, almost... thicker.  You pinch yourself and find that your epidermis feels more resistant to damage, almost like natural armor!\n<b>(Thick Skin - Perk Gained!)</b>");
-				player.createPerk(PerkLib.ThickSkin, 0, 0, 0, 0);
-			}
-			outputText("\n\nAfter the sensations pass, your " + player.skinDesc + " feels a little less receptive to touch.");
-			dynStats("sen", -3);
-			if (player.sens < 1) player.sens = 1;
-			player.refillHunger(20);
-		}
-
 		public function sensitivityDraft(player:Player):void
 		{
 			player.slimeFeed();

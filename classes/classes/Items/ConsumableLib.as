@@ -148,7 +148,7 @@ package classes.Items
 		public const LUSTSTK:LustStick        = new LustStick();
 		public const MILKPTN:Consumable = new MilkPotion();
 		public const NUMBOIL:Consumable = new NumbingOil();
-		public const NUMBROX:SimpleConsumable = mk("NumbRox","Numb Rox", "a strange packet of candy called 'Numb Rocks'", m.numbRocks, "This packet of innocuous looking 'candy' guarantees to reduce troublesome sensations and taste delicious.", 15);
+		public const NUMBROX:Consumable = new NumbRocks();
 		public const OVIELIX:OvipositionElixir = new OvipositionElixir();
 		public const OVI_MAX:OvipositionMax = new OvipositionMax();
 		public const PEPPWHT:SimpleConsumable = mk("PeppWht","PeppWht", "a vial of peppermint white", function(player:Player):void{getGame().xmas.xmasMisc.peppermintWhite(player)}, "This tightly corked glass bottle gives of a pepperminty smell and reminds you of the winter holidays.  How odd.", 120);
