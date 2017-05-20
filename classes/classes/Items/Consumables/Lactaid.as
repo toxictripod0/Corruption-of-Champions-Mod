@@ -22,7 +22,7 @@ package classes.Items.Consumables
 			//Bump up size!
 			if (player.averageBreastSize() < 8) {
 				outputText("\n\n");
-				if (player.breastRows.length == 1) player.growTits((1 + rand(5)), 1, true, 1);
+				if (player.breastRows.length === 1) player.growTits((1 + rand(5)), 1, true, 1);
 				else player.growTits(1 + rand(2), player.breastRows.length, true, 1);
 			}
 			//Player doesn't lactate
@@ -42,7 +42,7 @@ package classes.Items.Consumables
 				}
 			}
 			dynStats("lus", 10);
-			if (rand(3) == 0) {
+			if (rand(3) === 0) {
 				outputText(player.modFem(95, 1));
 			}
 			
