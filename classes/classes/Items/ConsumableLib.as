@@ -152,7 +152,7 @@ package classes.Items
 		public const OVIELIX:OvipositionElixir = new OvipositionElixir();
 		public const OVI_MAX:OvipositionMax = new OvipositionMax();
 		public const PEPPWHT:SimpleConsumable = mk("PeppWht","PeppWht", "a vial of peppermint white", function(player:Player):void{getGame().xmas.xmasMisc.peppermintWhite(player)}, "This tightly corked glass bottle gives of a pepperminty smell and reminds you of the winter holidays.  How odd.", 120);
-		public const PPHILTR:SimpleConsumable = mk("PPhiltr","P.Philter", "a vial of purity philter", m.purityPhilter, "This silver vial feels cool to the touch. In fact, it feels a bit cold. Given the label, you suspect this will help to erase corruption.", 100);
+		public const PPHILTR:Consumable = new PurityPhilter();
 		public const PRNPKR :SimpleConsumable  = mk("PrnsPkr", "P.Pucker", "a vial of pinkish fluid", m.princessPucker, "A vial filled with a viscous pink liquid. A label reads \"Princess Pucker\".");
 		public const SENSDRF:SimpleConsumable = mk("SensDrf","SensDraft", "a bottle of sensitivity draft", m.sensitivityDraft, "This carefully labelled potion is a 'Sensitivity Draft', and if the diagrams are any indication, it will make your body more sensitive.", 15);
 		public const SMART_T:Consumable = new ScholarsTea();
