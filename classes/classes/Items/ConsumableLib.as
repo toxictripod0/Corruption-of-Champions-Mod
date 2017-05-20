@@ -102,7 +102,7 @@ package classes.Items
 		public const FR_BEER:Consumable = new FrothyBeer();
 		public const GODMEAD:SimpleConsumable = mk("GodMead","GodMead", "a pint of god's mead", m.godMead,"A horn of potent, honey-colored mead. A single whiff makes your head swim and your thoughts turn to violence and heroism.");
 		public const H_BISCU:Consumable = new HardBiscuits();
-		public const IZYMILK:SimpleConsumable = mk("IzyMilk","IzyMilk", "a bottle of Isabella's milk", m.isabellaMilk, "This is a bottle of Isabella's milk.  Isabella seems fairly certain it will invigorate you.");
+		public const IZYMILK:Consumable = new IsabellaMilk();
 		public const M__MILK:Consumable = new MarbleMilk();
 		public const MINOCUM:SimpleConsumable = mk("MinoCum", "MinoCum", "a sealed bottle of minotaur cum", curry(m.minotaurCum, false), "This bottle of minotaur cum looks thick and viscous.  You know it has narcotic properties, but aside from that its effects are relatively unknown.", 60);
 		public const P_BREAD:SimpleConsumable = mk("P.Bread", "P.Bread", "a stale loaf of prison bread", m.prisonBread, "An impossibly hard loaf of stale bread.  Despite its age, still quite nutritious.");

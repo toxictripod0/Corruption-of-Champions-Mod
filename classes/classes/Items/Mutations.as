@@ -3922,16 +3922,6 @@ package classes.Items
 //bottle of ectoplasm. Regular stat-stuff include higher speed, (reduced libido?), reduced sensitivity, and higher intelligence. First-tier effects include 50/50 chance of sable skin with bone-white veins or ivory skin with onyx veins. Second tier, \"wisp-like legs that flit back and forth between worlds,\" or \"wisp-like legs\" for short. Third tier gives an \"Ephemeral\" perk, makes you (10%, perhaps?) tougher to hit, and gives you a skill that replaces tease/seduce—allowing the PC to possess the creature and force it to masturbate to gain lust. Around the same effectiveness as seduce.
 //Mouseover script: \"The green-tinted, hardly corporeal substance flows like a liquid inside its container. It makes you feel...uncomfortable, as you observe it.\"
 
-		public function isabellaMilk(player:Player):void
-		{
-			player.slimeFeed();
-			clearOutput();
-			outputText("You swallow down the bottle of Isabella's milk.");
-			if (player.fatigue > 0) outputText("  You feel much less tired! (-33 fatigue)");
-			player.changeFatigue(-33);
-			player.refillHunger(20);
-		}
-
 		public function shriveledTentacle(player:Player):void
 		{
 			var tfSource:String = "shriveledTentacle";
