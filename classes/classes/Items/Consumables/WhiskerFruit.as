@@ -22,22 +22,22 @@ package classes.Items.Consumables
 			var temp:int = 0;
 			var tfSource:String = "catTransformation";
 			
-			if (player.hasReptileScales() && player.hasDragonWings() && player.tongueType == TONGUE_DRACONIC)
+			if (player.hasReptileScales() && player.hasDragonWings() && player.tongueType === TONGUE_DRACONIC)
 				tfSource = "catTransformation-dragonne";
 			changes = 0;
 			changeLimit = 1;
 			var temp2:Number = 0;
 			var temp3:Number = 0;
-			if (rand(2) == 0) changeLimit++;
-			if (rand(2) == 0) changeLimit++;
-			if (rand(3) == 0) changeLimit++;
+			if (rand(2) === 0) changeLimit++;
+			if (rand(2) === 0) changeLimit++;
+			if (rand(3) === 0) changeLimit++;
 			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
 			if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
 			//Text go!
 			clearOutput();
 			outputText("You take a bite of the fruit and gulp it down. It's thick and juicy and has an almost overpowering sweetness. Nevertheless, it is delicious and you certainly could use a meal.  You devour the fruit, stopping only when the hard, nubby pit is left; which you toss aside.");
 			//Speed raises up to 75
-			if (player.spe < 75 && rand(3) == 0 && changes < changeLimit) {
+			if (player.spe < 75 && rand(3) === 0 && changes < changeLimit) {
 				//low speed
 				if (player.spe <= 30) {
 					outputText("\n\nYou feel... more balanced, sure of step. You're certain that you've become just a little bit faster.");
@@ -56,37 +56,37 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Strength raises to 40
-			if (player.str < 40 && rand(3) == 0 && changes < changeLimit) {
-				if (rand(2) == 0) outputText("\n\nYour muscles feel taut, like a coiled spring, and a bit more on edge.");
+			if (player.str < 40 && rand(3) === 0 && changes < changeLimit) {
+				if (rand(2) === 0) outputText("\n\nYour muscles feel taut, like a coiled spring, and a bit more on edge.");
 				else outputText("\n\nYou arch your back as your muscles clench painfully.  The cramp passes swiftly, leaving you feeling like you've gotten a bit stronger.");
 				dynStats("str", 1);
 				changes++;
 			}
 			//Strength ALWAYS drops if over 60
 			//Does not add to change total
-			else if (player.str > 60 && rand(2) == 0) {
+			else if (player.str > 60 && rand(2) === 0) {
 				outputText("\n\nShivers run from your head to your toes, leaving you feeling weak.  Looking yourself over, your muscles seemed to have lost some bulk.");
 				dynStats("str", -2);
 			}
 			//Toughness drops if over 50
 			//Does not add to change total
-			if (player.tou > 50 && rand(2) == 0) {
+			if (player.tou > 50 && rand(2) === 0) {
 				outputText("\n\nYour body seems to compress momentarily, becoming leaner and noticeably less tough.");
 				dynStats("tou", -2);
 			}
 			//Intelliloss
-			if (rand(4) == 0 && changes < changeLimit) {
+			if (rand(4) === 0 && changes < changeLimit) {
 				//low intelligence
 				if (player.inte < 15) outputText("\n\nYou feel like something is slipping away from you but can't figure out exactly what's happening.  You scrunch up your " + player.face() + ", trying to understand the situation.  Before you can reach any kind of conclusion, something glitters in the distance, distracting your feeble mind long enough for you to forget the problem entirely.");
 				//medium intelligence
 				else if (player.inte < 50) {
 					outputText("\n\nYour mind feels somewhat sluggish, and you wonder if you should just lie down ");
-					if (rand(2) == 0) {
+					if (rand(2) === 0) {
 						outputText("somewhere and ");
 						temp = rand(3);
-						if (temp == 0) outputText("toss a ball around or something");
-						else if (temp == 1) outputText("play with some yarn");
-						else if (temp == 2) outputText("take a nap and stop worrying");
+						if (temp === 0) outputText("toss a ball around or something");
+						else if (temp === 1) outputText("play with some yarn");
+						else if (temp === 2) outputText("take a nap and stop worrying");
 					}
 					else outputText("in the sun and let your troubles slip away");
 					outputText(".");
@@ -97,7 +97,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Libido gain
-			if (player.lib < 80 && changes < changeLimit && rand(4) == 0) {
+			if (player.lib < 80 && changes < changeLimit && rand(4) === 0) {
 				//Cat dicked folks
 				if (player.countCocksOfType(CockTypesEnum.CAT) > 0) {
 					temp = player.findFirstCockType(CockTypesEnum.CAT);
@@ -118,7 +118,7 @@ package classes.Items.Consumables
 			
 			//Sexual changes would go here if I wasn't a tard.
 			//Heat
-			if (rand(4) == 0 && changes < changeLimit) 
+			if (rand(4) === 0 && changes < changeLimit) 
 			{
 				var intensified:Boolean = player.inHeat;
         
@@ -126,7 +126,7 @@ package classes.Items.Consumables
 				{
 					if (intensified) 
 					{
-						if (rand(2) == 0) outputText("\n\nThe itch inside your " + player.vaginaDescript(0) + " is growing stronger, and you desperately want to find a nice cock to massage the inside.");
+						if (rand(2) === 0) outputText("\n\nThe itch inside your " + player.vaginaDescript(0) + " is growing stronger, and you desperately want to find a nice cock to massage the inside.");
 						else outputText("\n\nThe need inside your " + player.vaginaDescript(0) + " grows even stronger.  You desperately need to find a mate to 'scratch your itch' and fill your womb with kittens.  It's difficult NOT to think about a cock slipping inside your moist fuck-tunnel, and at this point you'll have a hard time resisting ANY male who approaches.");
 					}
 					else 
@@ -143,7 +143,7 @@ package classes.Items.Consumables
 			}
 			
 			//Shrink the boobalies down to A for men or C for girls.
-			if (changes < changeLimit && rand(4) == 0 && !flags[kFLAGS.HYPER_HAPPY]) {
+			if (changes < changeLimit && rand(4) === 0 && !flags[kFLAGS.HYPER_HAPPY]) {
 				temp2 = 0;
 				temp3 = 0;
 				//Determine if shrinkage is required
@@ -160,13 +160,13 @@ package classes.Items.Consumables
 							//Big change
 							if (player.breastRows[k].breastRating > 10) {
 								player.breastRows[k].breastRating -= 2 + rand(3);
-								if (temp3 == 0) outputText("\n\nThe " + player.breastDescript(0) + " on your chest wobble for a second, then tighten up, losing several cup-sizes in the process!");
+								if (temp3 === 0) outputText("\n\nThe " + player.breastDescript(0) + " on your chest wobble for a second, then tighten up, losing several cup-sizes in the process!");
 								else outputText("  The change moves down to your " + num2Text2(k + 1) + " row of " + player.breastDescript(0) + ". They shrink greatly, losing a couple cup-sizes.");
 							}
 							//Small change
 							else {
 								player.breastRows[k].breastRating -= 1;
-								if (temp3 == 0) outputText("\n\nAll at once, your sense of gravity shifts.  Your back feels a sense of relief, and it takes you a moment to realize your " + player.breastDescript(k) + " have shrunk!");
+								if (temp3 === 0) outputText("\n\nAll at once, your sense of gravity shifts.  Your back feels a sense of relief, and it takes you a moment to realize your " + player.breastDescript(k) + " have shrunk!");
 								else outputText("  Your " + num2Text2(k + 1) + " row of " + player.breastDescript(k) + " gives a tiny jiggle as it shrinks, losing some off its mass.");
 							}
 							//Increment changed rows
@@ -178,9 +178,9 @@ package classes.Items.Consumables
 				if (temp3 > 0) changes++;
 			}
 			//Cat dangly-doo.
-			if (player.cockTotal() > 0 && player.countCocksOfType(CockTypesEnum.CAT) < player.cockTotal() && (player.earType == EARS_CAT || rand(3) > 0) && (player.tailType == TAIL_TYPE_CAT || rand(3) > 0) && changes < changeLimit && rand(4) == 0) {
+			if (player.cockTotal() > 0 && player.countCocksOfType(CockTypesEnum.CAT) < player.cockTotal() && (player.earType === EARS_CAT || rand(3) > 0) && (player.tailType === TAIL_TYPE_CAT || rand(3) > 0) && changes < changeLimit && rand(4) === 0) {
 				//loop through and find a non-cat wang.
-				for (var i:Number = 0; i < (player.cockTotal()) && player.cocks[i].cockType == CockTypesEnum.CAT; i++) { }
+				for (var i:Number = 0; i < (player.cockTotal()) && player.cocks[i].cockType === CockTypesEnum.CAT; i++) { }
 				outputText("\n\nYour " + player.cockDescript(i) + " swells up with near-painful arousal and begins to transform.  It turns pink and begins to narrow until the tip is barely wide enough to accommodate your urethra.  Barbs begin to sprout from its flesh, if you can call the small, fleshy nubs barbs. They start out thick around the base of your " + Appearance.cockNoun(CockTypesEnum.HUMAN) + " and shrink towards the tip. The smallest are barely visible. <b>Your new feline dong throbs powerfully</b> and spurts a few droplets of cum.  ");
 				if (!player.hasSheath()) {
 					outputText("Then, it begins to shrink and sucks itself inside your body.  Within a few moments, a fleshy sheath is formed.");
@@ -192,16 +192,16 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Cat penorz shrink
-			if (player.countCocksOfType(CockTypesEnum.CAT) > 0 && rand(3) == 0 && changes < changeLimit && !flags[kFLAGS.HYPER_HAPPY]) {
+			if (player.countCocksOfType(CockTypesEnum.CAT) > 0 && rand(3) === 0 && changes < changeLimit && !flags[kFLAGS.HYPER_HAPPY]) {
 				//loop through and find a cat wang.
 				temp = 0;
 				for (var j:Number = 0; j < (player.cockTotal()); j++) {
-					if (player.cocks[j].cockType == CockTypesEnum.CAT && player.cocks[j].cockLength > 6) {
+					if (player.cocks[j].cockType === CockTypesEnum.CAT && player.cocks[j].cockLength > 6) {
 						temp = 1;
 						break;
 					}
 				}
-				if (temp == 1) {
+				if (temp === 1) {
 					//lose 33% size until under 10, then lose 2" at a time
 					if (player.cocks[j].cockLength > 16) {
 						outputText("\n\nYour " + player.cockDescript(j) + " tingles, making your sheath feel a little less tight.  It dwindles in size, losing a full third of its length and a bit of girth before the change finally stops.");
@@ -217,7 +217,7 @@ package classes.Items.Consumables
 					j++;
 					for (j; j < player.cocks.length; j++) {
 						//Found another cat wang!
-						if (player.cocks[j].cockType == CockTypesEnum.CAT) {
+						if (player.cocks[j].cockType === CockTypesEnum.CAT) {
 							//Long enough - change it
 							if (player.cocks[j].cockLength > 6) {
 								if (player.cocks[j].cockLength > 16)
@@ -234,50 +234,50 @@ package classes.Items.Consumables
 					outputText("  Although the package is smaller, it feels even more sensitive – as if it retained all sensation of its larger size in its smaller form.");
 					dynStats("sen", 5);
 					//Make note of other dicks changing
-					if (temp2 == 1) outputText("  Upon further inspection, all your " + Appearance.cockNoun(CockTypesEnum.CAT) + "s have shrunk!");
+					if (temp2 === 1) outputText("  Upon further inspection, all your " + Appearance.cockNoun(CockTypesEnum.CAT) + "s have shrunk!");
 					changes++;
 				}
 			}
-			if (rand(5) == 0) {
+			if (rand(5) === 0) {
 				mutationsHelper.updateOvipositionPerk(tfSource);
 			}
 			//Body type changes.  Teh rarest of the rare.
 			//DA EARZ
-			if (player.earType != EARS_CAT && rand(5) == 0 && changes < changeLimit) {
+			if (player.earType !== EARS_CAT && rand(5) === 0 && changes < changeLimit) {
 				//human to cat:
-				if (player.earType == EARS_HUMAN) {
-					if (rand(2) == 0) outputText("\n\nThe skin on the sides of your face stretches painfully as your ears migrate upwards, towards the top of your head. They shift and elongate a little, fur growing on them as they become feline in nature. <b>You now have cat ears.</b>");
+				if (player.earType === EARS_HUMAN) {
+					if (rand(2) === 0) outputText("\n\nThe skin on the sides of your face stretches painfully as your ears migrate upwards, towards the top of your head. They shift and elongate a little, fur growing on them as they become feline in nature. <b>You now have cat ears.</b>");
 					else outputText("\n\nYour ears begin to tingle. You reach up with one hand and gently rub them. They appear to be growing fur. Within a few moments, they've migrated up to the top of your head and increased in size. The tingling stops and you find yourself hearing noises in a whole new way. <b>You now have cat ears.</b>");
 				}
 				//non human to cat:
 				else {
-					if (rand(2) == 0) outputText("\n\nYour ears change shape, morphing into pointed, feline ears!  They swivel about reflexively as you adjust to them.  <b>You now have cat ears.</b>");
+					if (rand(2) === 0) outputText("\n\nYour ears change shape, morphing into pointed, feline ears!  They swivel about reflexively as you adjust to them.  <b>You now have cat ears.</b>");
 					else outputText("\n\nYour ears tingle and begin to change shape. Within a few moments, they've become long and feline.  Thanks to the new fuzzy organs, you find yourself able to hear things that eluded your notice up until now. <b>You now have cat ears.</b>");
 				}
 				player.earType = EARS_CAT;
 				changes++;
 			}
 			//DA TAIL (IF ALREADY HAZ URZ)
-			if (player.tailType != TAIL_TYPE_CAT && player.earType == EARS_CAT && rand(5) == 0 && changes < changeLimit) {
-				if (player.tailType == TAIL_TYPE_NONE) {
+			if (player.tailType !== TAIL_TYPE_CAT && player.earType === EARS_CAT && rand(5) === 0 && changes < changeLimit) {
+				if (player.tailType === TAIL_TYPE_NONE) {
 					temp = rand(3);
-					if (temp == 0) outputText("\n\nA pressure builds in your backside. You feel under your " + player.armorName + " and discover an odd bump that seems to be growing larger by the moment. In seconds it passes between your fingers, bursts out the back of your clothes and grows most of the way to the ground. A thick coat of fur springs up to cover your new tail. You instinctively keep adjusting it to improve your balance. <b>You now have a cat-tail.</b>");
-					if (temp == 1) outputText("\n\nYou feel your backside shift and change, flesh molding and displacing into a long, flexible tail! <b>You now have a cat tail.</b>");
-					if (temp == 2) outputText("\n\nYou feel an odd tingling in your spine and your tail bone starts to throb and then swell. Within a few moments it begins to grow, adding new bones to your spine. Before you know it, you have a tail. Just before you think it's over, the tail begins to sprout soft, glossy " + player.furColor + " fur. <b>You now have a cat tail.</b>");
+					if (temp === 0) outputText("\n\nA pressure builds in your backside. You feel under your " + player.armorName + " and discover an odd bump that seems to be growing larger by the moment. In seconds it passes between your fingers, bursts out the back of your clothes and grows most of the way to the ground. A thick coat of fur springs up to cover your new tail. You instinctively keep adjusting it to improve your balance. <b>You now have a cat-tail.</b>");
+					if (temp === 1) outputText("\n\nYou feel your backside shift and change, flesh molding and displacing into a long, flexible tail! <b>You now have a cat tail.</b>");
+					if (temp === 2) outputText("\n\nYou feel an odd tingling in your spine and your tail bone starts to throb and then swell. Within a few moments it begins to grow, adding new bones to your spine. Before you know it, you have a tail. Just before you think it's over, the tail begins to sprout soft, glossy " + player.furColor + " fur. <b>You now have a cat tail.</b>");
 				}
 				else outputText("\n\nYou pause and tilt your head... something feels different.  Ah, that's what it is; you turn around and look down at your tail as it starts to change shape, narrowing and sprouting glossy fur. <b>You now have a cat tail.</b>");
 				player.tailType = TAIL_TYPE_CAT;
 				changes++;
 			}
 			//Da paws (if already haz ears & tail)
-			if (player.tailType == TAIL_TYPE_CAT && player.earType == EARS_CAT && rand(5) == 0 && changes < changeLimit && player.lowerBody != LOWER_BODY_TYPE_CAT) {
+			if (player.tailType === TAIL_TYPE_CAT && player.earType === EARS_CAT && rand(5) === 0 && changes < changeLimit && player.lowerBody !== LOWER_BODY_TYPE_CAT) {
 				//hoof to cat:
-				if (player.lowerBody == LOWER_BODY_TYPE_HOOFED) {
+				if (player.lowerBody === LOWER_BODY_TYPE_HOOFED) {
 					outputText("\n\nYou feel your hooves suddenly splinter, growing into five unique digits. Their flesh softens as your hooves reshape into furred cat paws. <b>You now have cat paws.</b>");
 					if (player.isTaur()) outputText("  You feel woozy and collapse on your side.  When you wake, you're no longer a centaur and your body has returned to a humanoid shape.");
 				}
 				//Goo to cat
-				else if (player.lowerBody == LOWER_BODY_TYPE_GOO) {
+				else if (player.lowerBody === LOWER_BODY_TYPE_GOO) {
 					outputText("\n\nYour lower body rushes inward, molding into two leg-like shapes that gradually stiffen up.  In moments they solidify into digitigrade legs, complete with soft, padded cat-paws.  <b>You now have cat-paws!</b>");
 				}
 				//non hoof to cat:
@@ -287,7 +287,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//TURN INTO A FURRAH!  OH SHIT
-			if (player.tailType == TAIL_TYPE_CAT && player.earType == EARS_CAT && rand(5) == 0 && changes < changeLimit && player.lowerBody == LOWER_BODY_TYPE_CAT && !player.hasFur()) {
+			if (player.tailType === TAIL_TYPE_CAT && player.earType === EARS_CAT && rand(5) === 0 && changes < changeLimit && player.lowerBody === LOWER_BODY_TYPE_CAT && !player.hasFur()) {
 				var catFurColors:Array = [
 					"brown",
 					"chocolate",
@@ -316,29 +316,29 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//CAT-FACE!  FULL ON FURRY!  RAGE AWAY NEKOZ
-			if (player.tailType == TAIL_TYPE_CAT && player.earType == EARS_CAT && rand(5) == 0 && changes < changeLimit && player.lowerBody == LOWER_BODY_TYPE_CAT && (player.hasFur() || (player.hasReptileScales() && player.dragonneScore() >= 4)) && player.faceType != FACE_CAT) {
+			if (player.tailType === TAIL_TYPE_CAT && player.earType === EARS_CAT && rand(5) === 0 && changes < changeLimit && player.lowerBody === LOWER_BODY_TYPE_CAT && (player.hasFur() || (player.hasReptileScales() && player.dragonneScore() >= 4)) && player.faceType !== FACE_CAT) {
 				//Gain cat face, replace old face
 				temp = rand(3);
-				if (temp == 0) outputText("\n\nYour face is wracked with pain. You throw back your head and scream in agony as you feel your cheekbones breaking and shifting, reforming into something... different. You find a puddle to view your reflection and discover <b>your face is now a cross between human and feline features.</b>");
-				else if (temp == 1) outputText("\n\nMind-numbing pain courses through you as you feel your facial bones rearranging.  You clutch at your face in agony as your skin crawls and shifts, your visage reshaping to replace your facial characteristics with those of a feline. <b>You now have an anthropomorphic cat-face.</b>");
+				if (temp === 0) outputText("\n\nYour face is wracked with pain. You throw back your head and scream in agony as you feel your cheekbones breaking and shifting, reforming into something... different. You find a puddle to view your reflection and discover <b>your face is now a cross between human and feline features.</b>");
+				else if (temp === 1) outputText("\n\nMind-numbing pain courses through you as you feel your facial bones rearranging.  You clutch at your face in agony as your skin crawls and shifts, your visage reshaping to replace your facial characteristics with those of a feline. <b>You now have an anthropomorphic cat-face.</b>");
 				else outputText("\n\nYour face is wracked with pain. You throw back your head and scream in agony as you feel your cheekbones breaking and shifting, reforming into something else. <b>Your facial features rearrange to take on many feline aspects.</b>");
 				player.faceType = FACE_CAT;
 				changes++;
 			}
 			// Remove gills
-			if (rand(4) == 0 && player.hasGills() && changes < changeLimit) {
+			if (rand(4) === 0 && player.hasGills() && changes < changeLimit) {
 				mutationsHelper.updateGills();
 			}
 			//FAILSAFE CHANGE
-			if (changes == 0) {
+			if (changes === 0) {
 				outputText("\n\nInhuman vitality spreads through your body, invigorating you!\n");
 				game.HPChange(50, true);
 				dynStats("lus", 3);
 			}
 			if (changes < changeLimit) {
-				if (rand(2) == 0) outputText(player.modThickness(5, 2));
-				if (rand(2) == 0) outputText(player.modTone(76, 2));
-				if (player.gender < 2) if (rand(2) == 0) outputText(player.modFem(65, 1));
+				if (rand(2) === 0) outputText(player.modThickness(5, 2));
+				if (rand(2) === 0) outputText(player.modTone(76, 2));
+				if (player.gender < 2) if (rand(2) === 0) outputText(player.modFem(65, 1));
 				else outputText(player.modFem(85, 2));
 			}
 			player.refillHunger(20);
