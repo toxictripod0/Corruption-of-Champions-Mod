@@ -24,11 +24,11 @@ package classes.Items.Consumables
 			
 			clearOutput();
 			outputText("Your wobbly " + player.legs() + " give out underneath you as your body's willpower seems to evaporate, your mouth reading the words on the scroll with a backwards sounding sing-song voice.\n\n");
-			if (player.hairColor == "sandy blonde") {
+			if (player.hairColor === "sandy blonde") {
 				outputText("Your mouth forms a smile of its own volition, reading, \"<i>Tresed eht retaw llahs klim ruoy.</i>\"\n\n");
-				if (player.breastRows.length == 0 || player.biggestTitSize() == 0) {
+				if (player.breastRows.length === 0 || player.biggestTitSize() === 0) {
 					outputText("You grow a perfectly rounded pair of C-cup breasts!  ");
-					if (player.breastRows.length == 0) player.createBreastRow();
+					if (player.breastRows.length === 0) player.createBreastRow();
 					player.breastRows[0].breasts = 2;
 					player.breastRows[0].breastRating = 3;
 					if (player.breastRows[0].nipplesPerBreast < 1) player.breastRows[0].nipplesPerBreast = 1;
@@ -63,7 +63,7 @@ package classes.Items.Consumables
 					}
 					dynStats("lib", 1, "sen", 4, "lus", 15);
 				}
-				if (player.biggestLactation() == 0) {
+				if (player.biggestLactation() === 0) {
 					outputText("A pleasurable release suddenly erupts from your nipples!  Twin streams of milk are spraying from your breasts, soaking into the ground immediately.  It stops all too soon, though a voice in your head assures you that you can lactate quite often now.  ");
 					player.boostLactation(1);
 					dynStats("lib", .5, "sen", 1, "lus", 10);
