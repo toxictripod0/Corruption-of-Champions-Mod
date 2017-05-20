@@ -99,7 +99,7 @@ package classes.Items
 		public const C_BREAD:CumBread         = new CumBread();
 		public const CCUPCAK:SimpleConsumable = mk("CCupcak","CCupcak", "a gigantic, chocolate cupcake", m.giantChocolateCupcake, "A gigantic, chocolate cupcake. You could easily get full from eating this!", 250);
 		public const FISHFIL:SimpleConsumable = mk("FishFil", "FishFil", "a fish fillet", m.fishFillet, "A perfectly cooked piece of fish.  You're not sure what type of fish is, since you're fairly certain \"delicious\" is not a valid species.");
-		public const FR_BEER:SimpleConsumable = mk("Fr Beer", "Fr Beer", "a mug of frothy beer", m.frothyBeer, "A bottle of beer from The Black Cock.");
+		public const FR_BEER:Consumable = new FrothyBeer();
 		public const GODMEAD:SimpleConsumable = mk("GodMead","GodMead", "a pint of god's mead", m.godMead,"A horn of potent, honey-colored mead. A single whiff makes your head swim and your thoughts turn to violence and heroism.");
 		public const H_BISCU:SimpleConsumable = mk("H.Bisct", "H.Biscuits", "a pack of hard biscuits", m.hardBiscuits, "These biscuits are tasteless, but they can stay edible for an exceedingly long time.", 5);
 		public const IZYMILK:SimpleConsumable = mk("IzyMilk","IzyMilk", "a bottle of Isabella's milk", m.isabellaMilk, "This is a bottle of Isabella's milk.  Isabella seems fairly certain it will invigorate you.");
