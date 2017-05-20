@@ -7841,11 +7841,6 @@ package classes.Items
 			prison.prisonItemBread(true);
 		}
 		
-		public function hardBiscuits(player:Player):void {
-			outputText("You eat the flavorless biscuits. It satisfies your hunger a bit, but not much else.");
-			player.refillHunger(15);
-		}
-		
 		public function trailMix(player:Player):void {
 			outputText("You eat the trail mix. You got energy boost from it!");
 			player.refillHunger(30);
