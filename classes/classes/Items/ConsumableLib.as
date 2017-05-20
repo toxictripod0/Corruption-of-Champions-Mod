@@ -100,7 +100,7 @@ package classes.Items
 		public const CCUPCAK:Consumable = new GiantChocolateCupcake();
 		public const FISHFIL:SimpleConsumable = mk("FishFil", "FishFil", "a fish fillet", m.fishFillet, "A perfectly cooked piece of fish.  You're not sure what type of fish is, since you're fairly certain \"delicious\" is not a valid species.");
 		public const FR_BEER:Consumable = new FrothyBeer();
-		public const GODMEAD:SimpleConsumable = mk("GodMead","GodMead", "a pint of god's mead", m.godMead,"A horn of potent, honey-colored mead. A single whiff makes your head swim and your thoughts turn to violence and heroism.");
+		public const GODMEAD:Consumable = new GodMead();
 		public const H_BISCU:Consumable = new HardBiscuits();
 		public const IZYMILK:Consumable = new IsabellaMilk();
 		public const M__MILK:Consumable = new MarbleMilk();
