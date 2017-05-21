@@ -113,7 +113,7 @@ package classes.Items
 		public const SHEEPMK:Consumable = new SheepMilk();
 		public const S_WATER:Consumable = new SpringWater();
 		public const TRAILMX:Consumable = new TrailMix();
-		public const URTACUM:SimpleConsumable = mk("UrtaCum", "UrtaCum", "a sealed bottle of Urta's cum", m.urtaCum, "This bottle of Urta's cum looks thick and viscous.  It's quite delicious.", 15);
+		public const URTACUM:Consumable = new UrtaCum();
 		public const W_PDDNG:SimpleConsumable = mk("W.Pddng","W.Pudding", "a slice of winter pudding", m.winterPudding,"A slice of delicious Winter Pudding.  It smells delicious. \n\nNote: Eating this might cause antlers to grow from your head.", 35);
  
 		//GROWERS/SHRINKERS

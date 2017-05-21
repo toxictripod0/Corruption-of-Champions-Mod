@@ -4536,17 +4536,6 @@ package classes.Items
 			flags[kFLAGS.TIMES_TRANSFORMED] += changes;
 		}
 
-		public function urtaCum(player:Player):void
-		{
-			clearOutput();
-			outputText("You uncork the bottle and drink the vulpine cum; it tastes great. Urta definitely produces good-tasting cum!");
-			dynStats("sens", 1, "lus", 5 + (player.cor / 5));
-			HPChange(Math.round(player.maxHP() * .25), true);
-			player.slimeFeed();
-			player.refillHunger(25);
-			player.orgasm('Lips',false);
-		}
-
 		public function trapOil(player:Player):void
 		{
 			var tfSource:String = "trapOil";
