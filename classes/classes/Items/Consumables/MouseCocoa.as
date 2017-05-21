@@ -35,9 +35,9 @@ package classes.Items.Consumables
 			clearOutput();
 			changes = 0;
 			changeLimit = 1;
-			if (rand(2) == 0) changeLimit++;
-			if (rand(3) == 0) changeLimit++;
-			if (rand(3) == 0) changeLimit++;
+			if (rand(2) === 0) changeLimit++;
+			if (rand(3) === 0) changeLimit++;
+			if (rand(3) === 0) changeLimit++;
 			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
 			if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
 			//use:
@@ -47,7 +47,7 @@ package classes.Items.Consumables
 
 			//stat changes:
 			//lose height + gain speed (42" height floor, no speed ceiling but no speed changes without height change)
-			if (player.tallness >= 45 && changes < changeLimit && rand(3) == 0) {
+			if (player.tallness >= 45 && changes < changeLimit && rand(3) === 0) {
 				//not horse
 				if (!player.isTaur()) outputText("\n\nYou tap your [feet] idly against the rock you sit upon as you enjoy the treat; it takes several minutes before you realize you don't reach as far down as you did when you sat down!  In shock, you jerk upright and leap off, nearly falling forward as your body moves more responsively than before!  Experimentally, you move in place as you look down at your now-closer [feet]; the sensation of a more compact agility stays with you.");
 				//horse
@@ -62,7 +62,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//lose tough
-			if (player.tou > 50 && changes < changeLimit && rand(3) == 0) {
+			if (player.tou > 50 && changes < changeLimit && rand(3) === 0) {
 				outputText("\n\nYou feel a bit less sturdy, both physically and mentally.  In fact, you'd prefer to have somewhere to hide for the time being, until your confidence returns.  The next few minutes are passed in a mousey funk - even afterward, you can't quite regain the same sense of invincibility you had before.");
 				changes++;
 				dynStats("tou", -1);
@@ -72,7 +72,7 @@ package classes.Items.Consumables
 
 			//SEXYYYYYYYYYYY
 			//vag-anal capacity up for non-goo (available after PC < 5 ft; capacity ceiling reasonable but not horse-like or gooey)
-			if (player.tallness < 60 && (player.analCapacity() < 100 || (player.vaginalCapacity() < 100 && player.hasVagina())) && changes < changeLimit && rand(3) == 0) {
+			if (player.tallness < 60 && (player.analCapacity() < 100 || (player.vaginalCapacity() < 100 && player.hasVagina())) && changes < changeLimit && rand(3) === 0) {
 				outputText("\n\nYour ");
 				if (player.vaginalCapacity() < 100 && player.hasVagina()) outputText("[vagina]");
 				else outputText("[asshole]");
@@ -97,7 +97,7 @@ package classes.Items.Consumables
 			}
 			//fem fertility up and heat (suppress if pregnant)
 			//not already in heat (add heat and lust)
-			if (player.statusEffectv2(StatusEffects.Heat) < 30 && rand(2) == 0 && changes < changeLimit) {
+			if (player.statusEffectv2(StatusEffects.Heat) < 30 && rand(2) === 0 && changes < changeLimit) {
 
         var intensified:Boolean = player.inHeat;
         if (player.goIntoHeat(false)) {
@@ -127,14 +127,14 @@ package classes.Items.Consumables
           changes++;
         }
       }
-			if (rand(5) == 0) {
+			if (rand(5) === 0) {
 				mutationsHelper.updateOvipositionPerk(tfSource);
 			}
 			//bodypart changes:
 			//gain ears
-			if (player.earType != EARS_MOUSE && changes < changeLimit && rand(4) == 0) {
+			if (player.earType !== EARS_MOUSE && changes < changeLimit && rand(4) === 0) {
 				outputText("\n\nYour ears ");
-				if (player.earType == EARS_HORSE || player.earType == EARS_COW || player.earType == EARS_DOG || player.earType == EARS_BUNNY || player.earType == EARS_KANGAROO) outputText("shrink suddenly");
+				if (player.earType === EARS_HORSE || player.earType === EARS_COW || player.earType === EARS_DOG || player.earType === EARS_BUNNY || player.earType === EARS_KANGAROO) outputText("shrink suddenly");
 				else outputText("pull away from your head");
 				outputText(", like they're being pinched, and you can distinctly feel the auricles taking a rounded shape through the pain.  Reaching up to try and massage away their stings, <b>you're not terribly surprised when you find a pair of fuzzy mouse's ears poking through your " + player.hairDescript() + ".</b>");
 				player.earType = EARS_MOUSE;
@@ -142,11 +142,11 @@ package classes.Items.Consumables
 			}
 			//gain tail
 			//from no tail
-			if (player.earType == EARS_MOUSE && player.tailType != TAIL_TYPE_MOUSE && changes < changeLimit && rand(4) == 0) {
+			if (player.earType === EARS_MOUSE && player.tailType !== TAIL_TYPE_MOUSE && changes < changeLimit && rand(4) === 0) {
 				//from other tail
 				if (player.tailType > TAIL_TYPE_NONE) {
 					outputText("\n\nYour tail clenches and itches simultaneously, leaving you wondering whether to cry out or try to scratch it.  The question is soon answered as the pain takes the forefront; looking backward is a horrible strain, but when you manage it, you can see your old appendage ");
-					if (player.tailType == TAIL_TYPE_HORSE) outputText("elongating");
+					if (player.tailType === TAIL_TYPE_HORSE) outputText("elongating");
 					else outputText("compressing");
 					outputText(" into a long, thin line.  With a shudder, it begins to shed until it's completely, starkly nude.  <b>Your new mouse tail looks a bit peaked.</b>");
 				}
@@ -155,21 +155,21 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//get teeth - from human, bunny, coonmask, or other humanoid teeth faces
-			if (player.earType == EARS_MOUSE && (player.faceType == FACE_HUMAN || player.faceType == FACE_SHARK_TEETH || player.faceType == FACE_BUNNY || player.faceType == FACE_SPIDER_FANGS || player.faceType == FACE_RACCOON_MASK) && rand(4) == 0 && changes < changeLimit) {
+			if (player.earType === EARS_MOUSE && (player.faceType === FACE_HUMAN || player.faceType === FACE_SHARK_TEETH || player.faceType === FACE_BUNNY || player.faceType === FACE_SPIDER_FANGS || player.faceType === FACE_RACCOON_MASK) && rand(4) === 0 && changes < changeLimit) {
 				outputText("\n\nYour teeth grind on their own, and you feel a strange, insistent pressure just under your nose.  As you open your mouth and run your tongue along them, you can feel ");
-				if (player.faceType != FACE_HUMAN) outputText("the sharp teeth receding and ");
+				if (player.faceType !== FACE_HUMAN) outputText("the sharp teeth receding and ");
 				outputText("your incisors lengthening.  It's not long before they're twice as long as their neighbors and the obvious growth stops, but the pressure doesn't go away completely.  <b>Well, you now have mouse incisors and your face aches a tiny bit - wonder if they're going to keep growing?</b>");
 				player.faceType = FACE_BUCKTEETH;
 				changes++;
 			}
 			//get mouse muzzle from mouse teeth or other muzzle
-			if (player.hasFur() && player.faceType != FACE_MOUSE && (player.faceType != FACE_HUMAN || player.faceType != FACE_SHARK_TEETH || player.faceType != FACE_BUNNY || player.faceType != FACE_SPIDER_FANGS || player.faceType != FACE_RACCOON_MASK) && rand(4) == 0 && changes < changeLimit) {
+			if (player.hasFur() && player.faceType !== FACE_MOUSE && (player.faceType !== FACE_HUMAN || player.faceType !== FACE_SHARK_TEETH || player.faceType !== FACE_BUNNY || player.faceType !== FACE_SPIDER_FANGS || player.faceType !== FACE_RACCOON_MASK) && rand(4) === 0 && changes < changeLimit) {
 				outputText("\n\nA wave of light-headedness hits you, and you black out.  In your unconsciousness, you dream of chewing - food, wood, cloth, paper, leather, even metal... whatever you can fit in your mouth, even if it doesn't taste like anything much.  For several minutes you just chew and chew your way through a parade of ordinary objects, savoring the texture of each one against your teeth, until finally you awaken.  Your teeth work, feeling longer and more prominent than before, and you hunt up your reflection.  <b>Your face has shifted to resemble a mouse's, down to the whiskers!</b>");
 				player.faceType = FACE_MOUSE;
 				changes++;
 			}
 			//get fur
-			if ((!player.hasFur() || (player.hasFur() && (player.furColor != "brown" && player.furColor != "white"))) && changes < changeLimit && rand(4) == 0) {
+			if ((!player.hasFur() || (player.hasFur() && (player.furColor !== "brown" && player.furColor !== "white"))) && changes < changeLimit && rand(4) === 0) {
 				//from skinscales
 				if (!player.hasFur()) {
 					outputText("\n\nYour " + player.skinFurScales() + " itch");
