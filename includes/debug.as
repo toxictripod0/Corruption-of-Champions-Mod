@@ -46,6 +46,7 @@ public function doThatTestingThang():void
 	//
 	//
 
+	clearOutput();
 	outputText(<![CDATA[
 
 <b>Parser Tests!</b>
@@ -334,6 +335,7 @@ public function eventTesterGo():void {
 	trace("Temp = ", temp);
 
 	menu();
+	clearOutput();
 	outputText(temp);
 
 	addButton(14, "Back", eventTester);

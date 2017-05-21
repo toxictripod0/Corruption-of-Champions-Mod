@@ -137,7 +137,6 @@ public function rawOutputText(output:String, purgeText:Boolean = false):void
  * Output the text on main text interface.
  * @param	output The text to show. It can be formatted such as bold, italics, and underline tags.
  * @param	purgeText Clear the old text.
- * @param	parseAsMarkdown Parses the text using Markdown.
  */
 public function outputText(output:String):void
 {
