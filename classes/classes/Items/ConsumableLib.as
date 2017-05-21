@@ -153,7 +153,7 @@ package classes.Items
 		public const OVI_MAX:OvipositionMax = new OvipositionMax();
 		public const PEPPWHT:SimpleConsumable = mk("PeppWht","PeppWht", "a vial of peppermint white", function(player:Player):void{getGame().xmas.xmasMisc.peppermintWhite(player)}, "This tightly corked glass bottle gives of a pepperminty smell and reminds you of the winter holidays.  How odd.", 120);
 		public const PPHILTR:Consumable = new PurityPhilter();
-		public const PRNPKR :SimpleConsumable  = mk("PrnsPkr", "P.Pucker", "a vial of pinkish fluid", m.princessPucker, "A vial filled with a viscous pink liquid. A label reads \"Princess Pucker\".");
+		public const PRNPKR :Consumable = new PrincessPucker();
 		public const SENSDRF:Consumable = new SensitivityDraft();
 		public const SMART_T:Consumable = new ScholarsTea();
 		public const VITAL_T:Consumable = new VitalityTincture();
