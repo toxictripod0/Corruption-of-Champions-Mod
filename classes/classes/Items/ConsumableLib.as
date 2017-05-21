@@ -195,7 +195,7 @@ package classes.Items
 		public const PROBOVA:SimpleConsumable = mk("ProBova","ProBova", "a bottle containing a misty fluid labeled \"ProBova\"", curry(m.laBova, true, true), "This cloudy potion has been enhanced by the alchemist Lumi to imbue its drinker with cow-like attributes.");
 		public const PURHONY:BeeHoney			= new BeeHoney(true, false);
 		public const REPTLUM:Consumable = new Reptilum();
-		public const RINGFIG:SimpleConsumable = mk("RingFig","RingFig","a ringtail fig", m.ringtailFig,"A dried fig with two lobes and thin dark rings just below its stem.  The skin is wrinkly and it looks vaguely like a bulging scrotum.");
+		public const RINGFIG:Consumable = new RingtailFig();
 		public const RIZZART:RizzaRoot			= new RizzaRoot();
 		public const S_GOSSR:SimpleConsumable = mk("S.Gossr","S.Gossr", "a bundle of pink, gossamer webbing", curry(m.sweetGossamer,0), "These strands of gooey pink gossamer seem quite unlike the normal silk that spider-morphs produce.  It smells sweet and is clearly edible, but who knows what it might do to you?");
 		public const SALAMFW:Consumable = new Salamanderfirewater();
