@@ -1864,7 +1864,7 @@ package classes.Scenes.Combat
 			}
 			if (debug){
 				outputText("\n----------------------------\n");
-				outputText(monster.generateDebugDescription(),false);
+				outputText(monster.generateDebugDescription());
 			}
 		}
 		public function showMonsterLust():void {

@@ -137,11 +137,9 @@ public function rawOutputText(output:String, purgeText:Boolean = false):void
  * Output the text on main text interface.
  * @param	output The text to show. It can be formatted such as bold, italics, and underline tags.
  * @param	purgeText Clear the old text.
- * @param	parseAsMarkdown Parses the text using Markdown.
  */
 public function outputText(output:String, 
-						purgeText:Boolean = false, 
-						parseAsMarkdown:Boolean = false):void
+						purgeText:Boolean = false):void
 {
 	// we have to purge the output text BEFORE calling parseText, because if there are scene commands in 
 	// the parsed text, parseText() will write directly to the output
@@ -156,7 +154,7 @@ public function outputText(output:String,
 		clearOutput();
 	}
 
-	output = this.parser.recursiveParser(output, parseAsMarkdown);
+	output = this.parser.recursiveParser(output);
 
 	//OUTPUT!
 	if (purgeText) {
