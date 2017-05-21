@@ -2768,24 +2768,24 @@ import flash.errors.IllegalOperationError;
 		public function buttChangeNoDisplay(cArea:Number):Boolean {
 			var stretched:Boolean = false;
 			//cArea > capacity = autostreeeeetch half the time.
-			if (cArea >= analCapacity() && rand(2) == 0) {
+			if (cArea >= analCapacity() && rng.random(2) === 0) {
 				ass.analLooseness++;
 				stretched = true;
 				//Reset butt stretchin recovery time
 				if (hasStatusEffect(StatusEffects.ButtStretched)) changeStatusValue(StatusEffects.ButtStretched,1,0);
 			}
 			//If within top 10% of capacity, 25% stretch
-			if (cArea < analCapacity() && cArea >= .9*analCapacity() && rand(4) == 0) {
+			if (cArea < analCapacity() && cArea >= .9*analCapacity() && rng.random(4) === 0) {
 				ass.analLooseness++;
 				stretched = true;
 			}
 			//if within 75th to 90th percentile, 10% stretch
-			if (cArea < .9 * analCapacity() && cArea >= .75 * analCapacity() && rand(10) == 0) {
+			if (cArea < .9 * analCapacity() && cArea >= .75 * analCapacity() && rng.random(10) === 0) {
 				ass.analLooseness++;
 				stretched = true;
 			}
 			//Anti-virgin
-			if (ass.analLooseness == 0) {
+			if (ass.analLooseness === 0) {
 				ass.analLooseness++;
 				stretched = true;
 			}
