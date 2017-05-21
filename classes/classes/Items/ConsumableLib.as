@@ -109,7 +109,7 @@ package classes.Items
 		public const P_M_CUM:SimpleConsumable = mk("P.M.Cum","P.MinoCum", "a sealed bottle of purified minotaur cum", curry(m.minotaurCum, true), "This bottle of minotaur cum looks thick and viscous.  You know it has narcotic properties, but aside from that its effects are relatively unknown.  This bottle of cum has been purified to prevent corruption and addiction.", 80);
 		public const P_WHSKY:PhoukaWhiskey    = new PhoukaWhiskey();
 		public const PROMEAD:Consumable = new ProMead();
-		public const PURPEAC:SimpleConsumable = mk("PurPeac", "PurPeac", "a pure peach", m.purityPeach, "This is a peach from Minerva's spring, yellowy-orange with red stripes all over it.", 10);
+		public const PURPEAC:Consumable = new PurityPeach();
 		public const SHEEPMK:Consumable = new SheepMilk();
 		public const S_WATER:Consumable = new SpringWater();
 		public const TRAILMX:Consumable = new TrailMix();
