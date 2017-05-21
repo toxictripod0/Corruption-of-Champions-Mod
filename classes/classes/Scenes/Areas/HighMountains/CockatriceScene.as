@@ -135,15 +135,6 @@ package classes.Scenes.Areas.HighMountains
 				}
 			}
 
-			/*
-			if (player.canOvipositSpider()) {
-				addButton(6, "Lay Eggs", driderPCEggLaysCockatrice, null, null, null, "Lay your eggs in the cockatrice.");
-			}
-			if (player.canOvipositBee() && !player.isGenderless()) {
-				addButton(6, "Lay Eggs", layBeeEggsInACockatrice, null, null, null, "Lay your eggs in the cockatrice.");
-			}
-			*/
-
 			addButton(14, "Leave", combat.cleanupAfterCombat);
 		}
 
@@ -213,6 +204,7 @@ package classes.Scenes.Areas.HighMountains
 			outputText("\n\n\"So did I. Let’s do this again sometime.\" he says with a smile before giving himself one last smooth over before"
 			          +" [if (monster.canFly)spreading his wings and taking off|running off deeper into the mountains with a bouncy stride].");
 			player.orgasm('Vaginal');
+			player.cuntChange(monster.cockArea(0), true);
 			dynStats("lib-", 1);
 			combat.cleanupAfterCombat();
 		}
@@ -268,11 +260,11 @@ package classes.Scenes.Areas.HighMountains
 					outputText(" and");
 				if (player.hasCock()) {
 					outputText(" your cock spurting onto his scaled belly, as your testicles shudder as they dispense your");
-					if (player.cumQ() < 50)
+					if (player.cumQ() < 150)
 						outputText(" small load.");
-					else if (player.cumQ() < 100)
+					else if (player.cumQ() < 350)
 						outputText(" medium load.");
-					else if (player.cumQ() < 150)
+					else if (player.cumQ() < 1000)
 						outputText(" large load.");
 					else
 						outputText(" colossal load.");
@@ -386,6 +378,7 @@ package classes.Scenes.Areas.HighMountains
 			          +" while before cleaning yourself up[if (hasArmor) and redressing], fully satisfied by this encounter. You leave him there"
 			          +" resting and wonder if you’ll get to do this again next time.");
 			player.orgasm('Anal');
+			player.buttChange(80, true);
 			dynStats("lib-", 1);
 			combat.cleanupAfterCombat();
 		}
@@ -531,6 +524,7 @@ package classes.Scenes.Areas.HighMountains
 			outputText("\n\nOnce you feel your strength return to your legs you bid him farewell, noting you may have actually tired him out as he"
 			          +" curls up for a nap, feathers puffed out at random angles from your rough treatment.");
 			player.orgasm('Anal');
+			player.buttChange(80, true);
 			dynStats("lib-", 1);
 			combat.cleanupAfterCombat();
 		}
@@ -566,7 +560,7 @@ package classes.Scenes.Areas.HighMountains
 			if (choice == CHOICE_PUSSY) {
 				outputText("\n\nYou chuckle as you slip two fingers into your [pussy], exaggerating each thrust and moan as you continue to rock"
 				          +" against his freely leaking cock. You look at the cockatrice over your shoulder with a lusty gaze as you pick up speed,"
-				          +" starting to schlick yourself with earnest, you clit poking out and begging for your touch."
+				          +" starting to schlick yourself with earnest, your clit poking out and begging for your touch."
 				          +" [if (player.balls > 0) You cup your [balls] with your free hand, rolling them between your fingers as they begin to roil"
 				          +" with seed][if (player.balls > 0 && hasCock), while][if (hasCock) your [cock] smears pre on your belly in a steady"
 				          +" bubbling stream, wanting to be buried in a warm, snug hole.] Before long your pussy is leaking nectar as you flick your"
@@ -606,6 +600,7 @@ package classes.Scenes.Areas.HighMountains
 			          +" you bid him goodbye, teasingly saying you’ll have to come back again tomorrow, laughing as his eyes widen and his cock"
 			          +" twitches slightly.");
 			player.orgasm('Anal');
+			player.buttChange(80, true);
 			dynStats("lib-", 1);
 			combat.cleanupAfterCombat();
 		}
@@ -709,7 +704,8 @@ package classes.Scenes.Areas.HighMountains
 					          +" silence you sigh, removing yourself from his grip and drag him over to a nearby rock. The flat slab is perfect for"
 					          +" you to bend over, presenting your [ass] to him with a slight wiggle. Your [breasts] rub gently against the cool"
 					          +" surface as you tell him to get you nice and slick.");
-					outputText("\n\nYour [nipples] harden as you feel the heat of his breath against your cheeks, his clawed fingers gently digging"
+					outputText("\n\nYour [nipples] [if (hasNippleCunts == true || isLactating == true)moisten|harden] as you feel the heat of his"
+					          +" breath against your cheeks, his clawed fingers gently digging"
 					          +" in as they spread your cheeks so that your [butthole] is exposed. You shiver as his moist breath ghosts over your"
 					          +" fluttering tunnel, gasping as something thick and wet begins to probe your depths. His tongue pushes past your ring"
 					          +" of muscle with ease, its reptilian forks tickling your sensitive inner walls. As his tongue retreats his hands slide"
@@ -1139,116 +1135,6 @@ package classes.Scenes.Areas.HighMountains
 			player.orgasm('Anal');
 			player.minoCumAddiction(10);
 			player.slimeFeed();
-		}
-		
-		private function driderPCEggLaysBasilisk():void {
-			spriteSelect(75);
-			clearOutput();
-			outputText("Leaning back on your carapace-clad abdomen, you try and look over your defeated opponent. Even slumped over in ");
-			if (monster.HP < 1) outputText("exhaustion");
-			else outputText("arousal");
-			outputText(", the basilisk is still striving to meet your eyes with its own. Clenching your teeth, you avert your eyes and stomp forward blindly, colliding roughly with the spined lizard, knocking him flat on his back on the rocky ground.");
-			
-			outputText("\n\nReaching behind you, you gather a handful of webbing before glaring down at the stunned basilisk. He's looking around, dazedly, when you reach down and grab his shoulder, dragging him roughly along as you head towards a convenient nearby boulder. ");
-			if (silly()) outputText("Pinning him between a rock and a hardening place, ");
-			outputText("Shoving him up against the cool stone, ");
-			outputText("you plaster the web across his face, neatly blindfolding the irritating lizard. The creature lets out a frightened hiss, which you completely ignore as you bodily toss him atop the rock before clambering after him, your spider limbs allowing you to easily traverse the stone. A bit of artful rearrangement and a lot of webbing sees the creature spread-eagled across the boulder, limbs pulled taut by the thick, sticky strings.");
-			
-			outputText("\n\nYou feel your breath quicken and your cheeks flush as your ovipositor slides free, dripping lube, leaving trails across the stone as you ready yourself to give the egg-thief what he wanted. Maybe not <i>exactly</i>, but you have no intention of allowing him to complain, in any case. Spreading your eight legs wide, you lower yourself down until your ");
-			if (player.hasVagina()) outputText("already-dripping pussy");
-			if (player.gender == 3) outputText(" and ");
-			if (player.hasCock()) outputText("[eachCock]");
-			outputText(" hangs");
-			//if (player.gender != 3) outputText("s");
-			outputText(" just over his mouth.");
-			//[(if PC has eggs in vag or Oviposition)
-			if (player.findPerk(PerkLib.BasiliskWomb) >= 0 || player.findPerk(PerkLib.Oviposition) >= 0 || player.pregnancyType == PregnancyStore.PREGNANCY_OVIELIXIR_EGGS) outputText(" You watch with idle amusement as the scent of your excitement perks up the basilisk's reptilian member, rising until it reaches its impressive full length. <i>Maybe some other time</i>, you think to yourself, as you set about the business of unloading your overfull abdomen.");
-			outputText("You can feel the eggs sliding into position, weighing down your extended ovipositor as you slide it up the bound basilisk's thigh, prodding at his taut backdoor. The sensation of the heavy organ forcing open his tight hole sends a shiver through his body, and it isn't long before the lube-drooling appendage forces its way in; you sink down further, practically resting your body atop him as you release a happy sigh.");
-			
-			outputText("\n\nThe segmented shaft works forward, driving in up to its second ring, wiggling and thrusting in an attempt to slide even deeper into your bound slut. The anal stimulation proves to be too much for the tied lizard, and with another hiss he blows his load beneath you, spraying his seed across your chitin undercarriage. It's utterly unacceptable that he's enjoying this more than you, and you glare down at him before shoving your ");
-			if (player.hasCock()) outputText("cock");
-			else outputText("cunt");
-			outputText(" up against his half-open mouth, smearing your free-running juices across his scaled face. You wait a few seconds, just enjoying the feeling of his hot breath against your oversensitive sex, before you state your intentions in an imperious tone. \"<i>Lick.</i>\"");
-			outputText("\n\nThe creature hesitates below you, and you take the opportunity to inch your ovipositor even further, burying nearly the entire organ into the basilisk's warm clenching hole. Another spurt of your thick lube proves to be all the encouragement he needs, and his lengthy tongue extends to ");
-			if (player.hasCock()) outputText("wrap tightly around your waiting prick");
-			else outputText("burrow deep into your needy slit");
-			outputText(". You coo in delight at the sensation, and begin to grind yourself against his face as you wait for your egg-laying to begin.");
-			outputText("\n\nThe monster's stomach bloats as a final rush of goo fills his bowels in preparation for your ");
-			if (player.fertilizedEggs() == 0) outputText("un");
-			outputText("fertilized orbs, providing you with a moment's warning before the ecstasy-inducing ripple of an egg sliding deep into him rolls your eyes backwards in pleasure. You twitch and squirm atop the bound basilisk, mashing your ");
-			if (player.hasCock()) outputText("dick");
-			else outputText("cunt");
-			outputText(" against his face while your egg-laden tube pumps away, each pulse forcing another egg through his squeezing ring and sending trills of intoxicating euphoria up your spine. You lose yourself in the act, your heartbeat racing in time with contractions of your ovipositor, spraying ");
-			if (player.hasCock()) outputText("semen");
-			else outputText("femcum");
-			outputText(" across your partner's face and neck.");
-			outputText("\n\nYou feel his stomach beneath you, bloated so far as to scrape at your chitinous underside, and you nearly collapse on top of him as your thick spider-tube frees itself with an audible pop. Green slime leaks down the side of the boulder from his gaping ass, and his tongue hangs idle at the corner of his mouth, both of you panting heavily as you attempt to regain your breath. You catch yours first, and skitter off the boulder to the ground below, pausing to glance back at the tied beast");
-			//(if corruption >= 50 
-			if (player.cor >= 50) outputText(" before heading off towards your camp. The harpies will probably free him from your webs... eventually.");
-			else outputText(". You reach up and slice him free from the webbing, carefully placing him on the ground below. The blindfold stays, though. You're kind, not stupid. With your good deed for the day complete, you gather yourself up and head back to camp.");
-			player.dumpEggs();
-			player.orgasm('Ovi');
-			combat.cleanupAfterCombat();
-		}
-		
-		private function layBeeEggsInABasilisk():void {
-			spriteSelect(75);
-			clearOutput();
-			outputText("Completely destroyed, the basilisk lays face down on the ground, struggling pathetically to get up. You giggle at the attempt as you ");
-			if (player.wingType == WING_TYPE_BEE_LIKE_SMALL || player.wingType == WING_TYPE_BEE_LIKE_LARGE ) outputText("buzz lightly over to the basilisk's writhing body");
-			else outputText("saunter arrogantly over to the basilisk's crumpled up figure");
-			outputText(" and lightly nudge him in his ribs with your [foot]. His eyes are closed from to the ");
-			if (monster.HP < 1) outputText("pain");
-			else outputText("arousal");
-			outputText(" he's currently suffering through, but you know they won't stay that way for long. You zealously search through your bags for some extra undergarments and wrap them around the lizard beast's scaly visage; with a quick afterthought, you reach for his talons and tie them to his face, atop his eyes in mock mourning for what is about to happen. You let out another perverse giggle and wonder vaguely if there is anything more you can do to make this situation more humiliating for the beast.");
-			
-			//[(if pc is horse or unsexed)
-			if (player.isTaur() || player.gender == 0) outputText("\n\nYou drool messily on your hand and cup it to the basilisk's hole; he hisses in displeasure - though he must have had an inkling of what was coming, the visceral sensation of having his asshole lubed for entry is probably sending his imagination careening off in reckless, tormenting anticipation.");
-			
-			else if (player.hasCock()) {
-				outputText("\n\nYou remove just enough of your [armor] to expose yourself and grab hold of your increasing length");
-				if (player.totalCocks()) outputText("s");
-				outputText("; rubbing enthusiastically, you start at the base but end in a gentle stroke at the sensitive tip. With you doing your best to milk as much pre as you can, the viscous ooze that dribbles out of your dong");
-				if (player.totalCocks()) outputText("s");
-				outputText(" lands with soft pitters on the overgrown lizard's back, the intense mountain sun baking the gunk onto the scales. You sigh in languor, but remember you're doing this for a reason.");
-			}
-			//(else if pc has vag:
-			else outputText("\n\nYou tap a finger against your cheek, then have an idea. Making quick work of your [armor] you dip your fingers into your personal honey jar, flicking the contents enticingly but quickly, to get some lube to dribble out onto your hands. Once a decent amount has been deposited into your waiting palm, you slap the viscous concoction under the basilisk's nostrils and smear it lasciviously all around. The basilisk coughs as his way of breathing is momentarily interrupted, but you ignore it in favor of reaching for more honey to rub.");
-			
-			outputText("\n\nYour victim squirms at the sensations forced upon him, but as weak as he is, another firm [foot] to his ribs makes him rethink his resistance. Your overburdened abdomen throbs, reminding you of your purpose, and you tilt the basilisk's hips up toward the sky for a better angle to insert yourself; a sigh of relief escapes your lips as you release your ovipositor from your bee abdomen. You take your time arranging yourself ");
-			if (player.isTaur()) outputText("above");
-			else outputText("behind");
-			outputText(" the desperately-squirming lizard, delighting in the fear-scented air around the beast as your ovipositor slaps his cheeks in search of his tight little black hole. Aside from the difference in feel, you know once you hit the sweet spot by the rigid jolt from the basilisk as his worst fear is confirmed. You openly laugh this time, and enjoy the feel of the lizard squirming under you as your bulbous appendage painstakingly, slowly works its way inside his anus. Dry and tight, you really have to force your way, but the feeling is amazing, and it just keeps getting better. It probably doesn't feel too great for the basilisk, but that's not exactly your problem. The slit at the end of your ovipositor widens, leaking golden liquid, and the squirming basilisk halts its struggles and relaxes as the narcotics in the slime work their way into the bloodstream. You begin humming in a fashion similar to the giant bees you now resemble as you enjoy the blissful sensation of the eggs progressing through the long tubular organ, stretching the reptile's pucker to accommodate your ");
-			if (player.fertilizedEggs()) outputText("fertilized offspring");
-			else outputText("burdensome load");
-			outputText(".");
-			
-			outputText("\n\nThe basilisk twitches each time an egg runs over his prostate, and his purple prick jolts in time. The mind-numbing ooze paired with the sensation of the eggs is clearly no longer seen as unpleasant by the beast; his tongue has even begun to dangle and drool. The seemingly endless mixture of eggs and slime continues to work its way into the basilisk's intestines; you yourself have been enjoying the sensation too.");
-			
-			//[(female or small-dicked horse, or unsexed)
-			if (player.isTaur() || player.gender == 0) {
-				outputText("\n\nThere's nothing to distract you from the pleasure; ");
-				//[(U)
-				if (player.gender == 0) outputText("no needy cock or cunt demanding a caress - except the basilisk's, and you care not a bit about that one.");
-				else if (player.isTaur()) outputText("even if you wanted to reach your genitals, your arms resolutely refuse to bend that way, so you focus on the slippery, silky feelings travelling along your ovipositor.");
-			}
-			if (player.hasCock()) {
-				outputText("\n\nYour seeping member");
-				if (player.cockTotal() > 1) outputText("s");
-				outputText(" demand");
-				if (player.cockTotal() == 1) outputText("s");
-				outputText(" attention, and you don't deny them, as you resume the pleasurable stroking you started earlier. More white cream leaks out, landing on the earth and the basilisk's back. The combined titillation of your ovipositor massaging the overgrown lizard's anus from the inside out and the stroking of " + player.sMultiCockDesc() + " is more than your overly-sensitised body can handle for long. Soon, the tell-tale feeling at the base of your spine ");
-				if (player.balls > 0) outputText("and inside your balls ");
-				outputText("is more than you can take, and ropes of thick semen coat the basilisk from the cheeks of its ass to the back of its head. You give a guttural groan as your orgasm hurries the last of your eggs up the long black organ that is your ovipositor to be deposited into the tightly packed cavern that you've made the basilisk's intestines into.");
-			}
-			//(no-horse vag: 
-			else if (player.hasVagina()) {
-				outputText("\n\nYour body demanding more feeling to push it over the edge, you begin simultaneously massaging your [nipple] and frigging your [clit] joy buzzer. More of your juices drip out and leak down your thighs; the basilisk shudders again and you imagine how bizarre it must feel for the beast to be invaded in such a way. You lick your lower lip before biting into it gently, then pinch and tug at your hardened nipples, moaning as you climb higher and higher towards your peak. Your lower lips try to clench around empty air, wanting fulfillment. Today's orgasm is meant for something else though, and you let out a cry as you forcefully jam shut the basilisk's back door and leak girl cum all over the floor.");
-			}
-			outputText("\n\nAs you remove your depleted appendage from the violated basilisk's ass, he falls to the side, no longer able to keep himself upright. Laying like this, you can see the beast's horribly-distended stomach, almost able to make out the outline of each individual egg but for the scales in the way. You nod approvingly and bend down to give to the lizard a quick kiss on the cheek for being such a good sport about the whole thing - though, not being an idiot, you don't untie him. After that, you buzz away contentedly, idly thinking about returning the next time you'll need a receptacle for your eggs.");
-			player.dumpEggs();
-			player.orgasm('Ovi');
-			combat.cleanupAfterCombat();
 		}
 	}
 }
