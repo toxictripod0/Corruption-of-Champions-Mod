@@ -220,9 +220,9 @@
 			kGAMECLASS.rawOutputText(output, purgeText);
 		}
 
-		protected function outputText(output:String, purgeText:Boolean = false, parseAsMarkdown:Boolean = false):void
+		protected function outputText(output:String, purgeText:Boolean = false):void
 		{
-			kGAMECLASS.outputText(output, purgeText, parseAsMarkdown);
+			kGAMECLASS.outputText(output, purgeText);
 		}
 		
 		protected function clearOutput():void

@@ -151,7 +151,7 @@ class RoxanneForTest extends Roxanne {
 		super.roxanneDrinkingContest();
 	}
 	
-	override protected function outputText(output:String, purgeText:Boolean = false, parseAsMarkdown:Boolean = false):void {
+	override protected function outputText(output:String, purgeText:Boolean = false):void {
 		collectedOutput.push(output);
 	}
 }
