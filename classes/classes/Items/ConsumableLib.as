@@ -98,7 +98,7 @@ package classes.Items
 		public const BIMBOCH:SimpleConsumable = mk("BimboCh","BimboCh", "a bottle of bimbo champagne", curry(function(player:Player):void{getGame().telAdre.niamh.bimboChampagne(player,true,true)}), "A bottle of bimbo champagne. Drinking this might incur temporary bimbofication.", 1);
 		public const C_BREAD:CumBread         = new CumBread();
 		public const CCUPCAK:Consumable = new GiantChocolateCupcake();
-		public const FISHFIL:SimpleConsumable = mk("FishFil", "FishFil", "a fish fillet", m.fishFillet, "A perfectly cooked piece of fish.  You're not sure what type of fish is, since you're fairly certain \"delicious\" is not a valid species.");
+		public const FISHFIL:Consumable = new FishFillet();
 		public const FR_BEER:Consumable = new FrothyBeer();
 		public const GODMEAD:Consumable = new GodMead();
 		public const H_BISCU:Consumable = new HardBiscuits();
