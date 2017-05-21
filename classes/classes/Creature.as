@@ -25,9 +25,14 @@ import classes.internals.profiling.Begin;
 import classes.internals.profiling.End;
 
 import flash.errors.IllegalOperationError;
+import classes.internals.LoggerFactory;
+import flash.display.InteractiveObject;
+import flash.errors.IllegalOperationError;
+import mx.logging.ILogger;
 
 	public class Creature extends Utils
 	{
+		private static const LOGGER:ILogger = LoggerFactory.getLogger(Creature);
 
 		include "../../includes/appearanceDefs.as";
 
@@ -2797,9 +2802,11 @@ import flash.errors.IllegalOperationError;
 				//Reset the timer on it to 0 when restretched.
 				else changeStatusValue(StatusEffects.ButtStretched,1,0);
 			}
+			
 			if (stretched) {
-				trace("BUTT STRETCHED TO " + (ass.analLooseness) + ".");
+				LOGGER.debug("Butt Stretched to {0}", ass.analLooseness);
 			}
+			
 			return stretched;
 		}
 
