@@ -18,19 +18,19 @@ package classes.Items.Consumables
 		{
 			changes = 0;
 			changeLimit = 1;
-			if (rand(3) == 0) changeLimit++;
+			if (rand(3) === 0) changeLimit++;
 			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
 			if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
 			player.slimeFeed();
 			clearOutput();
 			outputText("You down the potion, grimacing at the strong taste.");
-			if (changes < changeLimit && rand(2) == 0 && player.spe < 80) {
+			if (changes < changeLimit && rand(2) === 0 && player.spe < 80) {
 				changes++;
 				outputText("\n\nAfter drinking the potion, you feel a bit faster.");
 				dynStats("spe", 1);
 			}
 			//classic horse-taur version
-			if (changes < changeLimit && rand(2) == 0 && player.lowerBody == LOWER_BODY_TYPE_HOOFED && !player.isTaur()) {
+			if (changes < changeLimit && rand(2) === 0 && player.lowerBody === LOWER_BODY_TYPE_HOOFED && !player.isTaur()) {
 				changes++;
 				outputText("\n\nImmense pain overtakes you as you feel your backbone snap.  The agony doesn't stop, blacking you out as your spine lengthens, growing with new flesh from your backside as the bones of your legs flex and twist.  Muscle groups shift and rearrange themselves as the change completes, the pain dying away as your consciousness returns.  <b>You now have the lower body of a centaur</b>.");
 				if (player.gender > 0) {
@@ -41,17 +41,17 @@ package classes.Items.Consumables
 				player.legCount = 4;
 			}
 			//generic version
-			if (player.lowerBody != LOWER_BODY_TYPE_HOOFED && !player.isTaur()) {
-				if (changes < changeLimit && rand(3) == 0) {
+			if (player.lowerBody !== LOWER_BODY_TYPE_HOOFED && !player.isTaur()) {
+				if (changes < changeLimit && rand(3) === 0) {
 					changes++;
-					//else if (player.lowerBody == LOWER_BODY_TYPE_DOG) outputText("\n\nYou stagger as your paws change, curling up into painful angry lumps of flesh.  They get tighter and tighter, harder and harder, until at last they solidify into hooves!");
-					if (player.lowerBody == LOWER_BODY_TYPE_NAGA) {
+					//else if (player.lowerBody === LOWER_BODY_TYPE_DOG) outputText("\n\nYou stagger as your paws change, curling up into painful angry lumps of flesh.  They get tighter and tighter, harder and harder, until at last they solidify into hooves!");
+					if (player.lowerBody === LOWER_BODY_TYPE_NAGA) {
 						outputText("\n\nYou collapse as your sinuous snake-tail tears in half, shifting into legs.  The pain is immense, particularly in your new feet as they curl inward and transform into hooves!");
 						player.lowerBody = LOWER_BODY_TYPE_HOOFED;
 					}
 					//Catch-all
 					else {	
-						if (player.lowerBody == LOWER_BODY_TYPE_HUMAN)
+						if (player.lowerBody === LOWER_BODY_TYPE_HUMAN)
 							player.lowerBody = LOWER_BODY_TYPE_HOOFED;
 						outputText("\n\nImmense pain overtakes you as you feel your backbone snap.  The agony doesn't stop, blacking you out as your spine lengthens, growing with new flesh from your backside as the bones of your legs flex and twist.  Muscle groups shift and rearrange themselves as the change completes, the pain dying away as your consciousness returns.  <b>You now have the lower body of a feral beast!</b>");
 					}
