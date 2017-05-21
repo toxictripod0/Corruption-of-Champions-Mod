@@ -20,7 +20,7 @@ package classes.Items.Consumables
 
 			outputText("Echoing the sensation in your head is an answering tingle in your body.  The sudden shock of citrusy sour has left you slightly less inclined to fuck, a little more focused on your priorities.\n\n");
 			
-			if (rand(2) == 0)
+			if (rand(2) === 0)
 			{
 				dynStats("lus-", 20, "lib-", 2);
 			}
@@ -29,9 +29,9 @@ package classes.Items.Consumables
 				dynStats("lus-", 20, "sen-", 2);
 			}
 			
-			if (player.hairColor != "pink")
+			if (player.hairColor !== "pink")
 			{
-				if (rand(5) == 0)
+				if (rand(5) === 0)
 				{
 					outputText("A slight tingle across your scalp draws your attention to your hair.  It seems your " + player.hairColor + " is rapidly gaining a distinctly pink hue, growing in from the roots!\n\n");
 					player.hairColor = "pink";
