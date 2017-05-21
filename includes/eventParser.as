@@ -39,8 +39,8 @@ public function playerMenu():void {
 }
 
 public function gameOver(clear:Boolean = false):void { //Leaves text on screen unless clear is set to true
-	var textChoices:Number = rand(4);
-	if (silly && rand(5) == 0 && flags[kFLAGS.HARDCORE_MODE] == 0) textChoices = 4 + rand(5); //20% chance of humourous bad end texts.
+	var textChoices:Number = rand(5);
+	if (silly && rand(5) == 0 && flags[kFLAGS.HARDCORE_MODE] == 0) textChoices = 5 + rand(4); //20% chance of humourous bad end texts.
 	if (clear) clearOutput();
 	outputText("\n\n<font color=\"#800000\">");
 	//Standard
@@ -48,12 +48,12 @@ public function gameOver(clear:Boolean = false):void { //Leaves text on screen u
 	if (textChoices == 1) outputText("<b>Game over, man! Game over!</b>");
 	if (textChoices == 2) outputText("<b>You just got Bad-Ended!</b>");
 	if (textChoices == 3) outputText("<b>Your adventures have come to an end...</b>");
+	if (textChoices == 4) outputText("<b>Oh dear, you are bad-ended!</b>");	//Runescape
 	//Silly Mode
-	if (textChoices == 4) outputText("<b>Don't lose hope... " + player.short + "! Stay determined!</b>"); //Undertale
-	if (textChoices == 5) outputText("<b>Wasted</b>"); //Grand Theft Auto V
-	if (textChoices == 6) outputText("<b>Ya dun goofed</b>"); //One of the memes
-	if (textChoices == 7) outputText("<b>Git gud</b>");	//One of the memes
-	if (textChoices == 8) outputText("<b>Oh dear, you are bad-ended!</b>");	//Runescape
+	if (textChoices == 5) outputText("<b>Don't lose hope... " + player.short + "! Stay determined!</b>"); //Undertale
+	if (textChoices == 6) outputText("<b>Wasted</b>"); //Grand Theft Auto V
+	if (textChoices == 7) outputText("<b>Ya dun goofed</b>"); //One of the memes
+	if (textChoices == 8) outputText("<b>Git gud</b>");	//One of the memes
 	outputText("</font>");
 	//Delete save on hardcore.
 	if (flags[kFLAGS.HARDCORE_MODE] > 0) {
@@ -399,8 +399,20 @@ private function goNextWrapped(time:Number, needNext:Boolean):Boolean  {
 		return true;
 	}
 	//Drop beautiful sword if corrupted!
-	if (player.weaponPerk == "holySword" && player.cor >= 35) {
+	if (player.weaponPerk == "holySword" && player.cor >= (35 + player.corruptionTolerance())) {
 		outputText("<b>\nThe <u>" + player.weaponName + "</u> grows hot in your hand, until you are forced to drop it.  Whatever power inhabits this blade appears to be unhappy with you.  Touching it gingerly, you realize it is no longer hot, but as soon as you go to grab the hilt, it nearly burns you.\n\nYou realize you won't be able to use it right now, but you could probably keep it in your inventory.</b>\n\n");
+		inventory.takeItem(player.setWeapon(WeaponLib.FISTS), playerMenu);
+		return true;
+	}
+	//Drop ugly sword if uncorrupt
+	if (player.weaponPerk == "uglySword" && player.cor < (70 - player.corruptionTolerance())) {
+		outputText("<b>\nThe <u>" + player.weaponName + "</u> grows hot in your hand, until you are forced to drop it. Whatever power inhabits this blade appears to be disgusted with your purity. Touching it gingerly, you realize it is no longer hot, but as soon as you go to grab the hilt, it nearly burns you.\n\nYou realize you won't be able to use it right now, but you could probably keep it in your inventory.</b>\n\n");
+		inventory.takeItem(player.setWeapon(WeaponLib.FISTS), playerMenu);
+		return true;
+	}
+	//Drop midnight rapier if uncorrupt
+	if (player.weaponPerk == "midnightRapier" && player.cor < (90 - player.corruptionTolerance())) {
+		outputText("<b>\nThe <u>" + player.weaponName + "</u> grows hot in your hand, until you are forced to drop it. Whatever power inhabits this blade appears to be disgusted with your purity. Touching it gingerly, you realize it is no longer hot, but as soon as you go to grab the hilt, it nearly burns you.\n\nYou realize you won't be able to use it right now, but you could probably keep it in your inventory.</b>\n\n");
 		inventory.takeItem(player.setWeapon(WeaponLib.FISTS), playerMenu);
 		return true;
 	}

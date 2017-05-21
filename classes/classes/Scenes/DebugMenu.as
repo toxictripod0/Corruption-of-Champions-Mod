@@ -47,7 +47,8 @@ import classes.Items.*
 				mainView.nameBox.maxChars = 16;
 				mainView.nameBox.restrict = null;
 				mainView.nameBox.width = 140;
-				outputText("Welcome to the super secret debug menu!", true);
+				clearOutput();
+				outputText("Welcome to the super secret debug menu!");
 				menu();
 				addButton(0, "Spawn Items", itemSpawnMenu, null, null, null, "Spawn any items of your choice, including items usually not obtainable through gameplay.");
 				addButton(1, "Change Stats", statChangeMenu, null, null, null, "Change your core stats.");
@@ -308,9 +309,9 @@ import classes.Items.*
 			materialArray.push(useables.B_CHITN);
 			materialArray.push(useables.T_SSILK);
 			materialArray.push(useables.D_SCALE);
+			materialArray.push(useables.EBNFLWR);
 			materialArray.push(useables.IMPSKLL);
 			materialArray.push(useables.LETHITE);
-			materialArray.push(null);
 			materialArray.push(null);
 			materialArray.push(null);
 			materialArray.push(null);
@@ -351,13 +352,14 @@ import classes.Items.*
 			weaponArray.push(weapons.L_STAFF);
 			weaponArray.push(weapons.L_WHIP);
 			weaponArray.push(weapons.MACE);
+			weaponArray.push(weapons.MRAPIER);
 			weaponArray.push(weapons.PIPE);
 			weaponArray.push(weapons.PTCHFRK);			
 			weaponArray.push(weapons.RIDINGC);
 			weaponArray.push(weapons.RRAPIER);
 			weaponArray.push(weapons.S_BLADE);
-			weaponArray.push(weapons.S_GAUNT);
 			//Page 3
+			weaponArray.push(weapons.S_GAUNT);
 			weaponArray.push(weapons.SCARBLD);
 			weaponArray.push(weapons.SCIMITR);
 			weaponArray.push(weapons.SPEAR);
@@ -365,6 +367,7 @@ import classes.Items.*
 			weaponArray.push(weapons.W_STAFF);
 			weaponArray.push(weapons.WARHAMR);
 			weaponArray.push(weapons.WHIP);
+			weaponArray.push(weapons.U_SWORD);
 			
 			//------------
 			// Shields
@@ -389,10 +392,14 @@ import classes.Items.*
 			armourArray.push(armors.CHBIKNI);
 			armourArray.push(armors.CLSSYCL);
 			armourArray.push(armors.DBARMOR);
+			armourArray.push(armors.EBNARMR);
+			armourArray.push(armors.EBNROBE);
+			armourArray.push(armors.EBNJACK);
+			//Page 2
+			armourArray.push(armors.EBNIROB);
 			armourArray.push(armors.FULLCHN);
 			armourArray.push(armors.FULLPLT);
 			armourArray.push(armors.GELARMR);
-			//Page 2
 			armourArray.push(armors.GOOARMR);
 			armourArray.push(armors.I_CORST);
 			armourArray.push(armors.I_ROBES);
@@ -401,11 +408,11 @@ import classes.Items.*
 			armourArray.push(armors.LEATHRA);
 			armourArray.push(armors.URTALTA);
 			armourArray.push(armors.LMARMOR);
+			//Page 3
 			armourArray.push(armors.LTHCARM);
 			armourArray.push(armors.LTHRPNT);
 			armourArray.push(armors.LTHRROB);
 			armourArray.push(armors.M_ROBES);
-			//Page 3
 			armourArray.push(armors.TBARMOR);
 			armourArray.push(armors.NURSECL);
 			armourArray.push(armors.OVERALL);
@@ -414,11 +421,11 @@ import classes.Items.*
 			armourArray.push(armors.S_SWMWR);
 			armourArray.push(armors.SAMUARM);
 			armourArray.push(armors.SCALEML);
+			//Page 4
 			armourArray.push(armors.SEDUCTA);
 			armourArray.push(armors.SEDUCTU);
 			armourArray.push(armors.SS_ROBE);
 			armourArray.push(armors.SSARMOR);
-			//Page 4
 			armourArray.push(armors.T_BSUIT);
 			armourArray.push(armors.TUBETOP);
 			armourArray.push(armors.W_ROBES);
@@ -439,10 +446,18 @@ import classes.Items.*
 			undergarmentArray.push(undergarments.LTX_BRA);
 			undergarmentArray.push(undergarments.LTXSHRT);
 			undergarmentArray.push(undergarments.LTXTHNG);
-			undergarmentArray.push(undergarments.SS_BRA);
 			//Page 2
+			undergarmentArray.push(undergarments.SS_BRA);
 			undergarmentArray.push(undergarments.SS_LOIN);
 			undergarmentArray.push(undergarments.SSPANTY);
+			undergarmentArray.push(undergarments.EBNCRST);
+			undergarmentArray.push(undergarments.EBNVEST);
+			undergarmentArray.push(undergarments.EBNJOCK);
+			undergarmentArray.push(undergarments.EBNTHNG);
+			undergarmentArray.push(undergarments.EBNCLTH);
+			undergarmentArray.push(undergarments.EBNRJCK);
+			undergarmentArray.push(undergarments.EBNRTNG);
+			undergarmentArray.push(undergarments.EBNRLNC);
 			
 			//------------
 			// Accessories
@@ -505,7 +520,8 @@ import classes.Items.*
 
 		
 		private function statChangeMenu():void {
-			outputText("Which attribute would you like to alter?", true);
+			clearOutput();
+			outputText("Which attribute would you like to alter?");
 			menu();
 			addButton(0, "Strength", statChangeAttributeMenu, "str");
 			addButton(1, "Toughness", statChangeAttributeMenu, "tou");
@@ -519,7 +535,8 @@ import classes.Items.*
 		
 		private function statChangeAttributeMenu(stats:String = ""):void {
 			var attribute:* = stats;
-			outputText("Increment or decrement by how much?", true);
+			clearOutput();
+			outputText("Increment or decrement by how much?");
 			addButton(0, "Add 1", statChangeApply, stats, 1);
 			addButton(1, "Add 5", statChangeApply, stats, 5);
 			addButton(2, "Add 10", statChangeApply, stats, 10);
@@ -540,8 +557,9 @@ import classes.Items.*
 		}
 		
 		private function styleHackMenu():void {
-			menu()
-			outputText("TEST STUFFZ", true);
+			menu();
+			clearOutput();
+			outputText("TEST STUFFZ");
 			addButton(0, "ASPLODE", styleHackMenu);
 			addButton(1, "Scorpion Tail", changeScorpionTail);
 			addButton(2, "Be Manticore", getManticoreKit, null, null, null, "Gain everything needed to become a Manticore-morph.");
@@ -1183,7 +1201,7 @@ import classes.Items.*
 			[WING_TYPE_IMP_LARGE, "(13) IMP_LARGE"],
 		];
 		private static const WING_DESC_CONSTANTS:Array = [
-			"(none)","non-existant","tiny hidden","huge","small",
+			"(none)","non-existent","tiny hidden","huge","small",
 			"giant gragonfly","large bee-like","small bee-like",
 			"large, feathered","fluffy featherly","large white feathered","large crimson feathered",
 			"large, bat-like","two large pairs of bat-like",

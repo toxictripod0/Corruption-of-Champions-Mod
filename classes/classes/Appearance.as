@@ -1,4 +1,4 @@
-﻿package classes
+package classes
 {
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
@@ -1871,7 +1871,7 @@
 					if (rand(7) == 0) return "colossal, muscly ass";
 					options = ["ginormous, muscle-bound ",
 						"colossal yet toned ",
-						"strong, tremdously large ",
+						"strong, tremendously large ",
 						"tremendous, muscled ",
 						"ginormous, toned ",
 						"colossal, well-defined "];
@@ -2269,12 +2269,13 @@
 					[EARS_ECHIDNA, "echidna"],
 					[EARS_DEER, "deer"],
 					[EARS_SHEEP, "sheep"],
+					[EARS_IMP, "imp"],
 					[EARS_COCKATRICE, "cockatrice"],
 				]
 		);
 		public static const DEFAULT_HORNS_NAMES:Object = createMapFromPairs(
 				[
-					[HORNS_NONE, "non-existant"],
+					[HORNS_NONE, "non-existent"],
 					[HORNS_DEMON, "demon"],
 					[HORNS_COW_MINOTAUR, "cow"],
 					[HORNS_DRACONIC_X2, "2 draconic"],
@@ -2284,11 +2285,12 @@
 					[HORNS_RHINO, "rhino"],
 					[HORNS_SHEEP, "sheep"],
 					[HORNS_RAM, "ram"],
+					[HORNS_IMP, "imp"],
 				]
 		);
 		public static const DEFAULT_ANTENNAE_NAMES:Object = createMapFromPairs(
 				[
-					[ANTENNAE_NONE, "non-existant"],
+					[ANTENNAE_NONE, "non-existent"],
 					[ANTENNAE_BEE, "bee"],
 				]
 		);
@@ -2305,7 +2307,7 @@
 		);
 		public static const DEFAULT_TAIL_NAMES:Object = createMapFromPairs(
 				[
-					[TAIL_TYPE_NONE, "non-existant"],
+					[TAIL_TYPE_NONE, "non-existent"],
 					[TAIL_TYPE_HORSE, "horse"],
 					[TAIL_TYPE_DOG, "dog"],
 					[TAIL_TYPE_DEMONIC, "demonic"],
@@ -2332,12 +2334,13 @@
 					[TAIL_TYPE_DEER, "deer"],
 					[TAIL_TYPE_SALAMANDER, "salamander"],
 					[TAIL_TYPE_SHEEP, "sheep"],
+					[TAIL_TYPE_IMP, "imp"],
 					[TAIL_TYPE_COCKATRICE, "cockatrice"],
 				]
 		);
 		public static const DEFAULT_WING_NAMES:Object = createMapFromPairs(
 				[
-					[WING_TYPE_NONE, "non-existant"],
+					[WING_TYPE_NONE, "non-existent"],
 					[WING_TYPE_BEE_LIKE_SMALL, "small bee-like"],
 					[WING_TYPE_BEE_LIKE_LARGE, "large bee-like"],
 					[WING_TYPE_HARPY, "harpy"],
@@ -2354,7 +2357,7 @@
 		);
 		public static const DEFAULT_WING_DESCS:Object = createMapFromPairs(
 				[
-					[WING_TYPE_NONE, "non-existant"],
+					[WING_TYPE_NONE, "non-existent"],
 					[WING_TYPE_BEE_LIKE_SMALL, "small bee-like"],
 					[WING_TYPE_BEE_LIKE_LARGE, "large bee-like"],
 					[WING_TYPE_HARPY, "large feathery"],
@@ -2397,6 +2400,7 @@
 					[LOWER_BODY_TYPE_ECHIDNA, "echidna"],
 					[LOWER_BODY_TYPE_ECHIDNA, "deertaur"],
 					[LOWER_BODY_TYPE_SALAMANDER, "salamander"],
+					[LOWER_BODY_TYPE_IMP, "imp"],
 					[LOWER_BODY_TYPE_COCKATRICE, "cockatrice"],
 				]
 		);
@@ -2437,7 +2441,7 @@
 			[ANAL_WETNESS_DRY, "dry"],
 			[ANAL_WETNESS_NORMAL, "normal"],
 			[ANAL_WETNESS_MOIST, "moist"],
-			[ANAL_WETNESS_SLIMY, "slimym"],
+			[ANAL_WETNESS_SLIMY, "slimy"],
 			[ANAL_WETNESS_DROOLING, "drooling"],
 			[ANAL_WETNESS_SLIME_DROOLING, "slime-drooling"],
 		];
@@ -2482,7 +2486,7 @@
 		 */
 		public static function describeByScale(value:Number, scale:Array, lessThan:String = "less than", moreThan:String = "more than"):String
 		{
-			if (scale.length == 0) return "undescribeale";
+			if (scale.length == 0) return "indescribable";
 			if (scale.length == 1) return "about " + scale[0][1];
 			if (value < scale[0][0]) return lessThan + " " + scale[0][1];
 			if (value == scale[0][0]) return scale[0][1];

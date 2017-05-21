@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Created by aimozg on 06.01.14.
  */
 package classes.Scenes.Areas
@@ -33,7 +33,8 @@ import classes.Scenes.API.FnHelpers;
 			return flags[kFLAGS.TIMES_EXPLORED_FOREST] > 0;
 		}
 		public function discover():void {
-			outputText("You walk for quite some time, roaming the hard-packed and pink-tinged earth of the demon-realm.  Rust-red rocks speckle the wasteland, as barren and lifeless as anywhere else you've been.  A cool breeze suddenly brushes against your face, as if gracing you with its presence.  You turn towards it and are confronted by the lush foliage of a very old looking forest.  You smile as the plants look fairly familiar and non-threatening.  Unbidden, you remember your decision to test the properties of this place, and think of your campsite as you walk forward.  Reality seems to shift and blur, making you dizzy, but after a few minutes you're back, and sure you'll be able to return to the forest with similar speed.\n\n<b>You have discovered the Forest!</b>", true);
+			clearOutput();
+			outputText("You walk for quite some time, roaming the hard-packed and pink-tinged earth of the demon-realm.  Rust-red rocks speckle the wasteland, as barren and lifeless as anywhere else you've been.  A cool breeze suddenly brushes against your face, as if gracing you with its presence.  You turn towards it and are confronted by the lush foliage of a very old looking forest.  You smile as the plants look fairly familiar and non-threatening.  Unbidden, you remember your decision to test the properties of this place, and think of your campsite as you walk forward.  Reality seems to shift and blur, making you dizzy, but after a few minutes you're back, and sure you'll be able to return to the forest with similar speed.\n\n<b>You have discovered the Forest!</b>");
 			flags[kFLAGS.TIMES_EXPLORED]++;
 			flags[kFLAGS.TIMES_EXPLORED_FOREST]++;
 			doNext(camp.returnToCampUseOneHour);
@@ -124,7 +125,7 @@ import classes.Scenes.API.FnHelpers;
 			//Tentacle avoidance chance due to dangerous plants
 			if (player.hasKeyItem("Dangerous Plants") >= 0 && player.inte / 2 > rand(50)) {
 				trace("TENTACLE'S AVOIDED DUE TO BOOK!");
-				outputText("Using the knowledge contained in your 'Dangerous Plants' book, you determine a tentacle beast's lair is nearby, do you continue?  If not you could return to camp.\n\n", false);
+				outputText("Using the knowledge contained in your 'Dangerous Plants' book, you determine a tentacle beast's lair is nearby, do you continue?  If not you could return to camp.\n\n");
 				menu();
 				addButton(0, "Continue", tentacleBeastScene.encounter);
 				addButton(4, "Leave", camp.returnToCampUseOneHour);
@@ -135,7 +136,7 @@ import classes.Scenes.API.FnHelpers;
 		}
 
 		public function tripOnARoot():void {
-			outputText("You trip on an exposed root, scraping yourself somewhat, but otherwise the hour is uneventful.", false);
+			outputText("You trip on an exposed root, scraping yourself somewhat, but otherwise the hour is uneventful.");
 			player.takeDamage(10);
 			doNext(camp.returnToCampUseOneHour);
 		}
@@ -154,16 +155,16 @@ import classes.Scenes.API.FnHelpers;
 		}
 		public function forestWalkFn():void {
 			if (player.cor < 80) {
-				outputText("You enjoy a peaceful walk in the woods, it gives you time to think.", false);
+				outputText("You enjoy a peaceful walk in the woods, it gives you time to think.");
 				dynStats("tou", .5, "int", 1);
 			}
 			else {
-				outputText("As you wander in the forest, you keep ", false);
-				if (player.gender == 1) outputText("stroking your half-erect " + player.multiCockDescriptLight() + " as you daydream about fucking all kinds of women, from weeping tight virgins to lustful succubi with gaping, drooling fuck-holes.", false);
-				if (player.gender == 2) outputText("idly toying with your " + player.vaginaDescript(0) + " as you daydream about getting fucked by all kinds of monstrous cocks, from minotaurs' thick, smelly dongs to demons' towering, bumpy pleasure-rods.", false);
-				if (player.gender == 3) outputText("stroking alternatively your " + player.multiCockDescriptLight() + " and your " + player.vaginaDescript(0) + " as you daydream about fucking all kinds of women, from weeping tight virgins to lustful succubi with gaping, drooling fuck-holes, before, or while, getting fucked by various monstrous cocks, from minotaurs' thick, smelly dongs to demons' towering, bumpy pleasure-rods.", false);
-				if (player.gender == 0) outputText("daydreaming about sex-demons with huge sexual attributes, and how you could please them.", false);
-				outputText("", false);
+				outputText("As you wander in the forest, you keep ");
+				if (player.gender == 1) outputText("stroking your half-erect " + player.multiCockDescriptLight() + " as you daydream about fucking all kinds of women, from weeping tight virgins to lustful succubi with gaping, drooling fuck-holes.");
+				if (player.gender == 2) outputText("idly toying with your " + player.vaginaDescript(0) + " as you daydream about getting fucked by all kinds of monstrous cocks, from minotaurs' thick, smelly dongs to demons' towering, bumpy pleasure-rods.");
+				if (player.gender == 3) outputText("stroking alternatively your " + player.multiCockDescriptLight() + " and your " + player.vaginaDescript(0) + " as you daydream about fucking all kinds of women, from weeping tight virgins to lustful succubi with gaping, drooling fuck-holes, before, or while, getting fucked by various monstrous cocks, from minotaurs' thick, smelly dongs to demons' towering, bumpy pleasure-rods.");
+				if (player.gender == 0) outputText("daydreaming about sex-demons with huge sexual attributes, and how you could please them.");
+				outputText("");
 				dynStats("tou", .5, "lib", .25, "lus", player.lib / 5);
 			}
 			doNext(camp.returnToCampUseOneHour);

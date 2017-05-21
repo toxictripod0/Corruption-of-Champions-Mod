@@ -12,7 +12,7 @@ package classes.Items.Armors
 	public class BimboSkirt extends ArmorWithPerk {
 		
 		public function BimboSkirt() {
-			super("BimboSk","BimboSk","bimbo skirt","a skirt that looks like it belongs on a bimbo",1,50,"A tight, cleavage-inducing halter top and an extremely short miniskirt.  The sexual allure of this item is undoubtable.","Light", PerkLib.SluttySeduction,10,0,0,0,"Your delightfully slutty yet upbeat garb helps you seduce your foes!", false, false);
+			super("BimboSk","BimboSk","bimbo skirt","a skirt that looks like it belongs on a bimbo",1,50,"A tight, cleavage-inducing halter top and an extremely short miniskirt.  The sexual allure of this item is undoubtable.","Light", PerkLib.SluttySeduction,10,0,0,0,"Your delightfully slutty yet upbeat garb helps you seduce your foes!", null,0,0,0,0,"", false, false);
 		}
 		
 		override public function useText():void { //Produces any text seen when equipping the armor normally
