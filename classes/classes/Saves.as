@@ -2250,7 +2250,7 @@ public function unFuckSave():void
 		}
 	}
 	
-	if (player.hasStatusEffect(StatusEffects.KnockedBack))
+	while (player.hasStatusEffect(StatusEffects.KnockedBack))
 	{
 		player.removeStatusEffect(StatusEffects.KnockedBack);
 	}
