@@ -24,9 +24,9 @@ package classes.Items.Consumables
 			clearOutput();
 			changes = 0;
 			changeLimit = 1;
-			if (rand(2) == 0) changeLimit++;
-			if (rand(3) == 0) changeLimit++;
-			if (rand(3) == 0) changeLimit++;
+			if (rand(2) === 0) changeLimit++;
+			if (rand(3) === 0) changeLimit++;
+			if (rand(3) === 0) changeLimit++;
 			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
 			if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
 			outputText("You pour some of the oil onto your hands and ");
@@ -35,52 +35,52 @@ package classes.Items.Consumables
 			outputText("rub it into your arms and chest.  The substance is warm, coating and ever so slightly numbing; it quickly sinks into your skin, leaving you feeling smooth and sleek.");
 
 			//Speed Increase:
-			if (player.spe < 100 && rand(3) == 0 && changes < changeLimit) {
+			if (player.spe < 100 && rand(3) === 0 && changes < changeLimit) {
 				outputText("\n\nYou feel fleet and lighter on your toes; you sense you could dodge, dart or skip away from anything.");
 				dynStats("spe", 1);
 				changes++;
 			}
 			//Strength Loss:
-			else if (player.str > 40 && rand(3) == 0 && changes < changeLimit) {
+			else if (player.str > 40 && rand(3) === 0 && changes < changeLimit) {
 				outputText("\n\nA sense of helplessness settles upon you as your limbs lose mass, leaving you feeling weaker and punier.");
 				dynStats("str", -1);
 				changes++;
 			}
 			//Sensitivity Increase:
-			if (player.sens < 70 && player.hasCock() && rand(3) == 0 && changes < changeLimit) {
+			if (player.sens < 70 && player.hasCock() && rand(3) === 0 && changes < changeLimit) {
 				outputText("\n\nA light breeze brushes over you and your skin tingles.  You have become more sensitive to physical sensation.");
 				dynStats("sen", 5);
 				changes++;
 			}
 			//Libido Increase:
-			if (player.lib < 70 && player.hasVagina() && rand(3) == 0 && changes < changeLimit) {
+			if (player.lib < 70 && player.hasVagina() && rand(3) === 0 && changes < changeLimit) {
 				outputText("\n\nYou feel your blood quicken and rise, and a desire to... hunt builds within you.");
 				dynStats("lib", 2);
 				if (player.lib < 30) dynStats("lib", 2);
 				changes++;
 			}
 			//Body Mass Loss:
-			if (player.thickness > 40 && rand(3) == 0 && changes < changeLimit) {
+			if (player.thickness > 40 && rand(3) === 0 && changes < changeLimit) {
 				outputText("\n\nYou feel an odd tightening sensation in your midriff, as if you were becoming narrower and lither.  You frown downwards, and then turn your arms around, examining them closely.  Is it just you or have you lost weight?");
 				player.modThickness(40, 3);
 				changes++;
 			}
 
 			//Thigh Loss: (towards “girly”)
-			if (player.hipRating >= 10 && rand(4) == 0 && changes < changeLimit) {
+			if (player.hipRating >= 10 && rand(4) === 0 && changes < changeLimit) {
 				outputText("\n\nYou touch your thighs speculatively.  It's not just your imagination; you've lost a bit of weight around your waist.");
 				player.hipRating--;
 				if (player.hipRating > 15) player.hipRating -= 2 + rand(3);
 				changes++;
 			}
 			//Thigh Gain: (towards “girly”)
-			if (player.hipRating < 6 && rand(4) == 0 && changes < changeLimit) {
+			if (player.hipRating < 6 && rand(4) === 0 && changes < changeLimit) {
 				outputText("\n\nYou touch your thighs speculatively.  You think you may have gained a little weight around your waist.");
 				player.hipRating++;
 				changes++;
 			}
 			//Breast Loss: (towards A cup)
-			if (player.biggestTitSize() > 1 && rand(4) == 0 && changes < changeLimit) {
+			if (player.biggestTitSize() > 1 && rand(4) === 0 && changes < changeLimit) {
 				outputText("\n\nYou gasp as you feel a compressing sensation in your chest and around your [fullChest].  The feeling quickly fades however, leaving you feeling like you have lost a considerable amount of weight from your upper body.");
 				temp = 0;
 				while (temp < player.bRows()) {
@@ -95,7 +95,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Breast Gain: (towards A cup)
-			if (player.biggestTitSize() < 1 || player.breastRows[0].breastRating < 1 && rand(4) == 0 && changes < changeLimit) {
+			if (player.biggestTitSize() < 1 || player.breastRows[0].breastRating < 1 && rand(4) === 0 && changes < changeLimit) {
 				outputText("\n\nYou feel a vague swelling sensation in your [fullChest], and you frown downwards.  You seem to have gained a little weight on your chest.  Not enough to stand out, but- you cup yourself carefully- certainly giving you the faintest suggestion of boobs.");
 				player.breastRows[0].breastRating = 1;
 				if (player.bRows() > 1) {
@@ -108,17 +108,17 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Penis Reduction towards 3.5 Inches:
-			if (player.longestCockLength() >= 3.5 && player.hasCock() && rand(2) == 0 && changes < changeLimit) {
+			if (player.longestCockLength() >= 3.5 && player.hasCock() && rand(2) === 0 && changes < changeLimit) {
 				outputText("\n\nYou flinch and gasp as your " + player.multiCockDescriptLight() + " suddenly become");
-				if (player.cockTotal() == 1) outputText("s");
+				if (player.cockTotal() === 1) outputText("s");
 				outputText(" incredibly sensitive and retract into your body.  Anxiously you pull down your underclothes to examine your nether regions.  To your relief ");
-				if (player.cockTotal() == 1) outputText("it is");
+				if (player.cockTotal() === 1) outputText("it is");
 				else outputText("they are");
 				outputText(" still present, and as you touch ");
-				if (player.cockTotal() == 1) outputText("it");
+				if (player.cockTotal() === 1) outputText("it");
 				else outputText("them");
 				outputText(", the sensitivity fades, however - a blush comes to your cheeks - ");
-				if (player.cockTotal() == 1) outputText("it seems");
+				if (player.cockTotal() === 1) outputText("it seems");
 				else outputText("they seem");
 				outputText(" to have become smaller.");
 				temp = 0;
@@ -139,7 +139,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Testicle Reduction:
-			if (player.balls > 0 && player.hasCock() && (player.ballSize > 1 || !player.hasStatusEffect(StatusEffects.Uniball)) && rand(4) == 0 && changes < changeLimit) {
+			if (player.balls > 0 && player.hasCock() && (player.ballSize > 1 || !player.hasStatusEffect(StatusEffects.Uniball)) && rand(4) === 0 && changes < changeLimit) {
 				outputText("\n\nYou feel a delicate tightening sensation around your [balls].  The sensation upon this most sensitive part of your anatomy isn't painful, but the feeling of your balls getting smaller is intense enough that you stifle anything more than a sharp intake of breath only with difficulty.");
 				player.ballSize--;
 				if (player.ballSize > 8) player.ballSize--;
@@ -158,7 +158,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Anal Wetness Increase:
-			if (player.ass.analWetness < 5 && rand(4) == 0 && changes < changeLimit) {
+			if (player.ass.analWetness < 5 && rand(4) === 0 && changes < changeLimit) {
 				if (player.ass.analWetness < 4) outputText("\n\nYour eyes widen in shock as you feel oily moisture bead out of your [asshole].  Your asshole has become wetter and more pliable.");
 				//Anal Wetness Increase Final (always loose):
 				else outputText("\n\nYou moan as clear, odorless oil dribbles out of your [asshole], this time in enough quantity to stain your [armor].  Your back passage feels incredibly sensitive, wet and accommodating.  Your ass is ready to be plowed by anything, and always will be.");
@@ -169,7 +169,7 @@ package classes.Items.Consumables
 				dynStats("sen", 2);
 			}
 			//Fertility Decrease:
-			if (player.hasVagina() && rand(4) == 0 && changes < changeLimit) {
+			if (player.hasVagina() && rand(4) === 0 && changes < changeLimit) {
 				outputText("\n\nThe vague numbness in your skin sinks slowly downwards, and you put a hand on your lower stomach as the sensation centers itself there.  ");
 				dynStats("sen", -2);
 				//High fertility:
@@ -189,9 +189,9 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Male Effects
-			if (player.gender == 1) {
+			if (player.gender === 1) {
 				//Femininity Increase Final (max femininity allowed increased by +10):
-				if (rand(4) == 0 && changes < changeLimit) {
+				if (rand(4) === 0 && changes < changeLimit) {
 					if (player.femininity < 70 && player.femininity >= 60) {
 						outputText("\n\nYou laugh as you feel your features once again soften, before stopping abruptly.  Your laugh sounded more like a girly giggle than anything else.  Feeling slightly more sober, you touch the soft flesh of your face prospectively.  The trap oil has changed you profoundly, making your innate maleness... difficult to discern, to say the least.  You suspect you could make yourself look even more like a girl now if you wanted to.");
 						if (player.findPerk(PerkLib.Androgyny) < 0) {
@@ -210,16 +210,16 @@ package classes.Items.Consumables
 					}
 				}
 				//Muscle tone reduction:
-				if (player.tone > 20 && rand(4) == 0 && changes < changeLimit) {
+				if (player.tone > 20 && rand(4) === 0 && changes < changeLimit) {
 					outputText("\n\nYou sink a finger into your arm inquiringly.  You seem to have lost some of your muscle definition, leaving you looking softer.");
 					player.tone -= 10;
 					changes++;
 				}
 			}
 			//Female Effects
-			else if (player.gender == 2) {
+			else if (player.gender === 2) {
 				//Masculinity Increase:
-				if (player.femininity > 30 && rand(4) == 0 && changes < changeLimit) {
+				if (player.femininity > 30 && rand(4) === 0 && changes < changeLimit) {
 					player.femininity -= 10;
 					if (player.femininity < 30) {
 						player.femininity = 30;
@@ -236,38 +236,38 @@ package classes.Items.Consumables
 					changes++;
 				}
 				//Muscle tone gain:
-				if (player.tone < 80 && rand(4) == 0 && changes < changeLimit) {
+				if (player.tone < 80 && rand(4) === 0 && changes < changeLimit) {
 					outputText("\n\nYou flex your arm in interest.  Although you have become thinner, your muscles seem to have become more defined.");
 					player.tone += 10;
 					changes++;
 				}
 			}
-			if (rand(5) == 0) {
+			if (rand(5) === 0) {
 				mutationsHelper.updateOvipositionPerk(tfSource);
 			}
 			//Nipples Turn Black:
-			if (!player.hasStatusEffect(StatusEffects.BlackNipples) && rand(6) == 0 && changes < changeLimit) {
+			if (!player.hasStatusEffect(StatusEffects.BlackNipples) && rand(6) === 0 && changes < changeLimit) {
 				outputText("\n\nA tickling sensation plucks at your nipples and you cringe, trying not to giggle.  Looking down you are in time to see the last spot of flesh tone disappear from your [nipples].  They have turned an onyx black!");
 				player.createStatusEffect(StatusEffects.BlackNipples, 0, 0, 0, 0);
 				changes++;
 			}
 			//Remove odd eyes
-			if (player.eyeType == EYES_FOUR_SPIDER_EYES && rand(2) == 0 && changes < changeLimit) {
+			if (player.eyeType === EYES_FOUR_SPIDER_EYES && rand(2) === 0 && changes < changeLimit) {
 				outputText("\n\nYou blink and stumble, a wave of vertigo threatening to pull your " + player.feet() + " from under you.  As you steady and open your eyes, you realize something seems different.  Your vision is changed somehow.");
-				if (player.eyeType == EYES_FOUR_SPIDER_EYES) outputText("  Your multiple, arachnid eyes are gone!</b>");
+				if (player.eyeType === EYES_FOUR_SPIDER_EYES) outputText("  Your multiple, arachnid eyes are gone!</b>");
 				outputText("  <b>You have normal, humanoid eyes again.</b>");
 				player.eyeType = EYES_HUMAN;
 				changes++;
 			}
 			//PC Trap Effects
-			if (player.eyeType != EYES_BLACK_EYES_SAND_TRAP && rand(4) == 0 && changes < changeLimit) {
+			if (player.eyeType !== EYES_BLACK_EYES_SAND_TRAP && rand(4) === 0 && changes < changeLimit) {
 				player.eyeType = EYES_BLACK_EYES_SAND_TRAP;
 				//Eyes Turn Black:
 				outputText("\n\nYou blink, and then blink again.  It feels like something is irritating your eyes.  Panic sets in as black suddenly blooms in the corner of your left eye and then your right, as if drops of ink were falling into them.  You calm yourself down with the thought that rubbing at your eyes will certainly make whatever is happening to them worse; through force of will you hold your hands behind your back and wait for the strange affliction to run its course.  The strange inky substance pools over your entire vision before slowly fading, thankfully taking the irritation with it.  As soon as it goes you stride quickly over to the stream and stare at your reflection.  <b>Your pupils, your irises, your entire eye has turned a liquid black</b>, leaving you looking vaguely like the many half insect creatures which inhabit these lands.  You find you are merely grateful the change apparently hasn't affected your vision.");
 				changes++;
 			}
 			//Vagina Turns Black:
-			if (player.hasVagina() && player.vaginaType() != 5 && rand(4) == 0 && changes < changeLimit) {
+			if (player.hasVagina() && player.vaginaType() !== 5 && rand(4) === 0 && changes < changeLimit) {
 				outputText("\n\nYour [vagina] feels... odd.  You undo your clothes and gingerly inspect your nether regions.  The tender pink color of your sex has disappeared, replaced with smooth, marble blackness starting at your lips and working inwards.");
 				//(Wet:
 				if (player.wetness() >= 3) outputText("  Your natural lubrication makes it gleam invitingly.");
@@ -280,13 +280,13 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Dragonfly Wings:
-			if (player.wingType != WING_TYPE_GIANT_DRAGONFLY && rand(4) == 0 && changes < changeLimit) {
+			if (player.wingType !== WING_TYPE_GIANT_DRAGONFLY && rand(4) === 0 && changes < changeLimit) {
 				outputText("\n\nYou scream and fall to your knees as incredible pain snags at your shoulders, as if needle like hooks were being sunk into your flesh just below your shoulder blades.  After about five seconds of white hot, keening agony it is with almost sexual relief that something splits out of your upper back.  You clench the dirt as you slide what feel like giant leaves of paper into the open air.  Eventually the sensation passes and you groggily get to your feet.  You can barely believe what you can see by craning your neck behind you - <b>you've grown a set of four giant dragonfly wings</b>, thinner, longer and more pointed than the ones you've seen upon the forest bee girls, but no less diaphanous and beautiful.  You cautiously flex the new muscle groups in your shoulder blades and gasp as your new wings whirr and lift you several inches off the ground.  What fun this is going to be!");
 				//Wings Fall Out: You feel a sharp pinching sensation in your shoulders and you cringe slightly.  Your former dragonfly wings make soft, papery sounds as they fall into the dirt behind you.
 				changes++;
 				player.wingType = WING_TYPE_GIANT_DRAGONFLY;
 			}
-			if (changes == 0) {
+			if (changes === 0) {
 				outputText("\n\nWell... that didn't amount to much.");
 			}
 			flags[kFLAGS.TIMES_TRANSFORMED] += changes;
