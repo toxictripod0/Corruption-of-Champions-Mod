@@ -4273,24 +4273,6 @@ package classes.Items
 			flags[kFLAGS.TIMES_TRANSFORMED] += changes;
 		}
 
-		public function eatEmberEgg(player:Player):void
-		{
-			clearOutput();
-			//Effect:
-			//Boosts the special effect of Dragonbreath by 20% for 1 use. ie: if Tainted's breath weapon has a 80% chance to stun on hit, +20% equals 100% chance to stun.
-			outputText("You crack the shell easily and swallow the large yolk and the copious amounts of albumen - the yolk is blue, while the rest is crimson-tinted.  It tastes like... well, it tastes mostly of spiced mint, you think.");
-			if (player.findPerk(PerkLib.Dragonfire) >= 0) {
-				if (player.hasStatusEffect(StatusEffects.DragonBreathCooldown)) player.removeStatusEffect(StatusEffects.DragonBreathCooldown);
-				else {
-					if (!player.hasStatusEffect(StatusEffects.DragonBreathBoost)) player.createStatusEffect(StatusEffects.DragonBreathBoost, 0, 0, 0, 0);
-				}
-				//(if PC has breath weapon)
-				outputText("\n\nA sudden surge of energy fills your being and you feel like you could blast anything to atoms with a single breath, like the mighty dragons of legends.");
-			}
-			player.changeFatigue( -20);
-			player.refillHunger(50);
-		}
-
 		public function foxJewel(mystic:Boolean,player:Player):void
 		{
 			var tfSource:String = "foxJewel";
