@@ -203,7 +203,7 @@ package classes.Items
 		public const SHARK_T:SimpleConsumable = mk("Shark.T","Shark.T", "a sharp shark tooth", curry(m.sharkTooth,0), "A glinting white tooth, very sharp and intimidating.");
 		public const SNAKOIL:Consumable = new SnakeOil();
 		public const SPHONEY:Consumable		  = new BeeHoney(false, true);
-		public const TAURICO:SimpleConsumable = mk("Taurico","Taurinum", "a vial of Taurinum", m.taurinum, "This is a long flared vial with a small label that reads, \"<i>Taurinum</i>\".  It is likely this potion is tied to centaurs in some way.");
+		public const TAURICO:Consumable = new Taurinum();
 		public const TRAPOIL:Consumable = new TrapOil();
 		public const TSCROLL:Consumable = new TatteredScroll();
 		public const TSTOOTH:SimpleConsumable = mk("TSTooth","TSTooth", "a glowing tiger shark tooth", curry(m.sharkTooth, 1),"This looks like a normal shark tooth, though with an odd purple glow.");
