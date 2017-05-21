@@ -22,7 +22,7 @@ package classes.Scenes.Areas.Mountain
 			if (temp <= 0) temp = 1;
 			if (temp > 0) player.takeDamage(temp);
 			outputText("The worm colony strikes at you with its makeshift limbs. It strikes you for ");
-			outputText(String(temp), false);
+			outputText(String(temp));
 			outputText(" damage and the limb splatters, dispersing the worms comprising the false arm.");	
 			statScreenRefresh();
 			outputText("\n");
