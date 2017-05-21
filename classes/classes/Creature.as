@@ -16,7 +16,11 @@ import classes.StatusEffects.Combat.CombatStrBuff;
 import classes.StatusEffects.Combat.CombatTouBuff;
 import classes.internals.Profiling;
 import classes.internals.Utils;
-	import classes.Scenes.Places.TelAdre.UmasShop;
+import classes.internals.IRandomNumber;
+import classes.internals.RandomNumber;
+import classes.internals.Utils;
+import classes.VaginaClass;
+import classes.Scenes.Places.TelAdre.UmasShop;
 import classes.internals.profiling.Begin;
 import classes.internals.profiling.End;
 
@@ -40,6 +44,35 @@ import flash.errors.IllegalOperationError;
 		//"a" refers to how the article "a" should appear in text. 
 		private var _short:String = "You";
 		private var _a:String = "a ";
+		
+		/**
+		 * Normally creatures do not need a unique RNG,
+		 * so to avoid unnecessary memory usage they use the default instance.
+		 */
+		private static const DEFAULT_RNG:IRandomNumber = new RandomNumber();
+		private var _rng:IRandomNumber = DEFAULT_RNG;
+		
+		/**
+		 * Set the RNG this class uses. Intended for testing.
+		 * @param	rng to use for random numbers
+		 * @return the RNG that was set
+		 */
+		public function set rng(rng:IRandomNumber):void {
+			if (rng === null) {
+				throw new ArgumentError("RNG cannot be null");
+			}
+			
+			this._rng = rng;
+		}
+		
+		/**
+		 * Get the RNG this class uses. Intended for testing.
+		 * @return the RNG used
+		 */
+		public function get rng():IRandomNumber {
+			return this._rng;
+		}
+		
 		public function get short():String { return _short; }
 		public function set short(value:String):void { _short = value; }
 		public function get a():String { return _a; }

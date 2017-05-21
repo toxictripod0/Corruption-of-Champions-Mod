@@ -1,4 +1,6 @@
 package classes{
+	import classes.internals.IRandomNumber;
+	import classes.internals.RandomNumber;
     import org.flexunit.asserts.*;
 	import org.hamcrest.assertThat;
 	import org.hamcrest.core.*;
@@ -58,7 +60,8 @@ package classes{
 		}
          
         [Before]
-        public function setUp():void {  
+        public function setUp():void {
+			cut = new Creature();
 			noVagina = new Creature();
 			
 			oneVagina = new Creature();
@@ -558,6 +561,21 @@ package classes{
 			noVagina.createVagina();
 			
 			assertThat(noVagina.gender, equalTo(GENDER_HERM));
+		}
+		
+		[Test]
+		public function setNewRng():void {
+			var rng:IRandomNumber = new RandomNumber();
+			
+			cut.rng = rng;
+			
+			assertThat(cut.rng, strictlyEqualTo(rng))
+		}
+		
+		
+		[Test(expected="ArgumentError")]
+		public function setNullForRng():void {
+			cut.rng = null;
 		}
     }
 }
