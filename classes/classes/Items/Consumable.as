@@ -31,6 +31,8 @@ package classes.Items
 		protected function get flags():DefaultDict { return kGAMECLASS.flags; }
 		protected function get camp():Camp { return kGAMECLASS.camp; }
 		protected function doNext(eventNo:Function):void { kGAMECLASS.doNext(eventNo); }
+		
+		protected var mutationsHelper:MutationsHelper = new MutationsHelper();
 
 		public function Consumable(id:String, shortName:String = null, longName:String = null, value:Number = 0, description:String = null) {
 			super(id, shortName, longName, value, description);
@@ -49,6 +51,14 @@ package classes.Items
 			//Value
 			desc += "\nBase value: " + String(value);
 			return desc;
+		}
+		
+		/**
+		 * Delegate function for legacy 'Mutations.as' code.
+		 * @param	... args stat change parameters
+		 */
+		protected function dynStats(... args):void {
+			game.dynStats.apply(null, args);
 		}
 		
 /*
