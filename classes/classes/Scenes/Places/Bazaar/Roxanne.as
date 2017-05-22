@@ -47,7 +47,7 @@ WIN:
 //226 -Is PC losing the Roxanne's drinking contest intentionally?
 //227 -Drinking Contest Bonus Score
 
-		public function Roxanne(randomNumber:IRandomNumber = null)
+		public function Roxanne(randomNumber:IRandomNumber)
 		{
 			CoC.timeAwareClassAdd(this);
 			this.randomNumber = randomNumber;

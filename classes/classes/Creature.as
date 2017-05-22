@@ -2771,6 +2771,7 @@ import mx.logging.ILogger;
 		}
 
 		public function buttChangeNoDisplay(cArea:Number):Boolean {
+			LOGGER.debug("Attempting anal stretch for {0} with anal capacity of {1} vs a cock area of {2}", this, analCapacity(), cArea);
 			var stretched:Boolean = false;
 			//cArea > capacity = autostreeeeetch half the time.
 			if (cArea >= analCapacity() && rng.random(2) === 0) {
