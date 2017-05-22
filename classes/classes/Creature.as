@@ -1,4 +1,4 @@
-﻿//CoC Creature.as
+//CoC Creature.as
 package classes
 {
 	import classes.BodyParts.Skin;
@@ -575,7 +575,7 @@ package classes
 		//Functions			
 		public function orgasmReal():void
 		{
-			game.dynStats("lus=", 0, "res", false);
+			game.dynStats("lus=", 0, "res");
 			hoursSinceCum = 0;
 			flags[kFLAGS.TIMES_ORGASMED]++;
 			

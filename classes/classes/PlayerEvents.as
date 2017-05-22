@@ -50,12 +50,12 @@ package classes {
 			}
 			//Normal
 			if (player.findPerk(PerkLib.WellAdjusted) < 0) {
-				dynStats("lus", player.lib * 0.04, "resisted", false); //Raise lust
-				if (player.findPerk(PerkLib.Lusty) >= 0) dynStats("lus", player.lib * 0.02, "resisted", false); //Double lust rise if lusty.
+				dynStats("lus", player.lib * 0.04, "resisted"); //Raise lust
+				if (player.findPerk(PerkLib.Lusty) >= 0) dynStats("lus", player.lib * 0.02, "resisted"); //Double lust rise if lusty.
 			}
 			else { //Well adjusted perk
-				dynStats("lus", player.lib * 0.02, "resisted", false); //Raise lust
-				if (player.findPerk(PerkLib.Lusty) >= 0) dynStats("lus", player.lib * 0.01, "resisted", false); //Double lust rise if lusty.
+				dynStats("lus", player.lib * 0.02, "resisted"); //Raise lust
+				if (player.findPerk(PerkLib.Lusty) >= 0) dynStats("lus", player.lib * 0.01, "resisted"); //Double lust rise if lusty.
 			}
 			//Feathery hairpin Effects
 			if (player.featheryHairPinEquipped() && mutations.lizardHairChange("PlayerEvents-benoitHairPin") != 0)
@@ -162,7 +162,7 @@ package classes {
 					flags[kFLAGS.VALERIA_FLUIDS]--;
 				}
 				else if (player.armor == armors.GOOARMR) {
-					dynStats("lus", 2 + (player.lib / 10), "resisted", false);
+					dynStats("lus", 2 + (player.lib / 10), "resisted");
 					needNext = true;
 				}
 				if (flags[kFLAGS.VALERIA_FLUIDS] > 100) flags[kFLAGS.VALERIA_FLUIDS] = 100;
@@ -301,7 +301,7 @@ package classes {
 			if (player.findPerk(PerkLib.Androgyny) < 0) { //Fix femininity ratings if out of whack!
 				var textHolder:String = player.fixFemininity();
 				if (textHolder != "") {
-					outputText(textHolder, false);
+					outputText(textHolder);
 					needNext = true;
 				}
 			}
