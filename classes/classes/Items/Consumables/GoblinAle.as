@@ -66,11 +66,11 @@ package classes.Items.Consumables
 				changes++;
 			}
 			if (rand(5) === 0) {
-				mutationsHelper.updateOvipositionPerk(tfSource);
+				mutations.updateOvipositionPerk(tfSource);
 			}
 			//Restore arms to become human arms again
 			if (rand(4) === 0) {
-				mutationsHelper.restoreArms(tfSource);
+				mutations.restoreArms(tfSource);
 			}
 			//SEXYTIEMS
 			//Multidick killa!
@@ -166,7 +166,7 @@ package classes.Items.Consumables
 					if (rand(2) === 0) player.skinTone = "pale yellow";
 					else player.skinTone = "grayish-blue";
 				}
-				mutationsHelper.updateClaws(player.clawType);
+				mutations.updateClaws(player.clawType);
 				changes++;
 				outputText("\n\nWhoah, that was weird.  You just hallucinated that your ");
 				if (player.hasFur()) outputText("skin");
@@ -188,7 +188,7 @@ package classes.Items.Consumables
 			}
 			// Remove gills
 			if (rand(4) === 0 && player.hasGills() && changes < changeLimit) {
-				mutationsHelper.updateGills();
+				mutations.updateGills();
 			}
 
 			//Nipples Turn Back:
