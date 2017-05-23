@@ -575,7 +575,7 @@ package classes
 		//Functions			
 		public function orgasmReal():void
 		{
-			game.dynStats("lus=", 0, "res");
+			game.dynStats("lus=", 0, "res", false);
 			hoursSinceCum = 0;
 			flags[kFLAGS.TIMES_ORGASMED]++;
 			
