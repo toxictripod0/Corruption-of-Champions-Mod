@@ -2085,7 +2085,7 @@ use namespace kGAMECLASS;
 				if (oldHunger < 1 && hunger >= 100) kGAMECLASS.awardAchievement("Champion Needs Food Badly ", kACHIEVEMENTS.REALISTIC_CHAMPION_NEEDS_FOOD);
 				if (oldHunger >= 90) kGAMECLASS.awardAchievement("Glutton ", kACHIEVEMENTS.REALISTIC_GLUTTON);
 				if (hunger > oldHunger) kGAMECLASS.mainView.statsView.showStatUp("hunger");
-				game.dynStats("lus", 0, "resisted");
+				game.dynStats("lus", 0, "resisted", false);
 				kGAMECLASS.statScreenRefresh();
 			}
 		}
@@ -2099,7 +2099,7 @@ use namespace kGAMECLASS;
 			hunger -= amnt;
 			if (hunger < 0) hunger = 0;
 			if (hunger < oldHunger && flags[kFLAGS.USE_OLD_INTERFACE] == 0) kGAMECLASS.mainView.statsView.showStatDown('hunger');
-			game.dynStats("lus", 0, "resisted");
+			game.dynStats("lus", 0, "resisted", false);
 		}
 		
 		public function corruptionTolerance():int {
@@ -2267,7 +2267,7 @@ use namespace kGAMECLASS;
 				// fatigueDown.visible = true;
 				// fatigueUp.visible = false;
 			}
-			kGAMECLASS.dynStats("lus", 0, "resisted"); //Force display fatigue up/down by invoking zero lust change.
+			kGAMECLASS.dynStats("lus", 0, "resisted", false); //Force display fatigue up/down by invoking zero lust change.
 			if (fatigue > maxFatigue()) fatigue = maxFatigue();
 			if (fatigue < 0) fatigue = 0;
 			kGAMECLASS.statScreenRefresh();
