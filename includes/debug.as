@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Debug pane and related functions
 	Author: Fake-Name
 */

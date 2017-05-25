@@ -174,6 +174,7 @@ the text from being too boring.
 		public var playerAppearance:PlayerAppearance = new PlayerAppearance();
 		public var playerInfo:PlayerInfo = new PlayerInfo();
 		public var saves:Saves = new Saves(gameStateDirectGet, gameStateDirectSet);
+		public var perkTree:PerkTree = new PerkTree();
 		// Items/
 		public var mutations:Mutations = Mutations.init();
 		public var consumables:ConsumableLib = new ConsumableLib();

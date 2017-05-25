@@ -1144,7 +1144,7 @@ package classes.Scenes
 							//genderless: 
 							else outputText("  Your [vagina] begins twitching, aching for something to push through it over and over again.");
 							outputText("  Seated in your own slime, you moan softly, unable to keep your hands off yourself.");
-							dynStats("lus=", player.maxLust(), "resisted");
+							dynStats("lus=", player.maxLust(), "resisted", false);
 							displayedUpdate = true;
 						}
 						else {

@@ -469,8 +469,8 @@ private function buyHardBiscuits():void {
 	
 	if (flags[kFLAGS.SHIFT_KEY_DOWN] == 1) {
 		consumables.H_BISCU.useItem();
-		doNext(ingredientsMenu);
-	} else inventory.takeItem(consumables.H_BISCU, ingredientsMenu);
+		doNext(checkBakeryMenu);
+	} else inventory.takeItem(consumables.H_BISCU, checkBakeryMenu);
 }
 
 private function buyTrailMix():void {
@@ -486,8 +486,8 @@ private function buyTrailMix():void {
 	
 	if (flags[kFLAGS.SHIFT_KEY_DOWN] == 1) {
 		consumables.TRAILMX.useItem();
-		doNext(ingredientsMenu);
-	} else inventory.takeItem(consumables.TRAILMX, ingredientsMenu);
+		doNext(checkBakeryMenu);
+	} else inventory.takeItem(consumables.TRAILMX, checkBakeryMenu);
 }
 
 private function buyHummus():void {
@@ -503,8 +503,8 @@ private function buyHummus():void {
 	
 	if (flags[kFLAGS.SHIFT_KEY_DOWN] == 1) {
 		consumables.HUMMUS_.useItem();
-		doNext(ingredientsMenu);
-	} else inventory.takeItem(consumables.HUMMUS_, ingredientsMenu);
+		doNext(checkBakeryMenu);
+	} else inventory.takeItem(consumables.HUMMUS_, checkBakeryMenu);
 }
 
 private function easterBakeSale():void {
