@@ -218,6 +218,7 @@ package classes.Scenes.Places.Bazaar {
 			if (rand(8) == 0) {
 				outputText("With a long sigh, he grabs a book from a nearby shelf and shoves it into your arms, saying, \"<i>Here. Take this and leave me to do my damn job. This isn't a fucking playground.</i>\"\n\n");
 				outputText("You frown. You'd only wanted to talk. Still, you mumble a thanks and quickly back out of the store. You read the book and blink with new knowledge when you're done-- <b>you have learned the spell Blackfire!</b>");
+				player.createStatusEffect(StatusEffects.KnowsBlackfire, 0, 0, 0, 0);
 			}
 			else {
 				if (rand(4) == 0) {
