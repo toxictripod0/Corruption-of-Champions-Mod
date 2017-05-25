@@ -53,7 +53,11 @@ package classes.Items.Consumables
 				outputText("\n\nYou blink in surprise, assaulted by the knowledge of a <b>new spell: Might.</b>");
 				player.createStatusEffect(StatusEffects.KnowsMight, 0, 0, 0, 0);
 			}
-			
+			//Smart enough for blackfire and doesnt have it
+			if (player.inte >= 50 && !player.hasStatusEffect(StatusEffects.KnowsBlackfire)) {
+				outputText("\n\nYou blink in surprise, assaulted by the knowledge of a <b>new spell: Blackfire.</b>");
+				player.createStatusEffect(StatusEffects.KnowsBlackfire, 0, 0, 0, 0);
+			}
 			return false;
 		}
 	}
