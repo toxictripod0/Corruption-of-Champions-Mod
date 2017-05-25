@@ -2173,6 +2173,31 @@ package classes
 			return eyeType == EYES_BASILISK;
 		}
 
+		public function isHoofed():Boolean
+		{
+			return [
+				LOWER_BODY_TYPE_HOOFED,
+				LOWER_BODY_TYPE_CENTAUR,
+				LOWER_BODY_TYPE_CLOVEN_HOOFED,
+				LOWER_BODY_TYPE_DEERTAUR,
+			].indexOf(lowerBody) != -1;
+		}
+
+		public function isCentaur():Boolean
+		{
+			return isTaur() && isHoofed();
+		}
+
+		public function isBimbo():Boolean
+		{
+			if (hasPerk(PerkLib.BimboBody)) return true;
+			if (hasPerk(PerkLib.BimboBrains)) return true;
+			if (hasPerk(PerkLib.FutaForm)) return true;
+			if (hasPerk(PerkLib.FutaFaculties)) return true;
+
+			return false;
+		}
+
 		//check for vagoo
 		public function hasVagina():Boolean
 		{

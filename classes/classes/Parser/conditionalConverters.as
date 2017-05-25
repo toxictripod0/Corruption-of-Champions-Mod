@@ -39,6 +39,8 @@
 				"milkquantity"		: function(thisPtr:*):* {return  kGAMECLASS.player.lactationQ();},
 				"hasvagina"			: function(thisPtr:*):* {return  kGAMECLASS.player.hasVagina();},
 				"istaur"			: function(thisPtr:*):* {return  kGAMECLASS.player.isTaur();},
+				"ishoofed"			: function(thisPtr:*):* {return  kGAMECLASS.player.isHoofed();},
+				"iscentaur"			: function(thisPtr:*):* {return  kGAMECLASS.player.isCentaur();},
 				"isnaga"			: function(thisPtr:*):* {return  kGAMECLASS.player.isNaga();},
 				"isgoo"				: function(thisPtr:*):* {return  kGAMECLASS.player.isGoo();},
 				"isbiped"			: function(thisPtr:*):* {return  kGAMECLASS.player.isBiped();},
@@ -60,6 +62,7 @@
 				"hasnipplecunts"	: function(thisPtr:*):* {return  kGAMECLASS.player.hasFuckableNipples();},
 				"canfly"			: function(thisPtr:*):* {return  kGAMECLASS.player.canFly();},
 				"islactating"		: function(thisPtr:*):* {return  (kGAMECLASS.player.lactationQ() > 0);},
+				"isbimbo"			: function(thisPtr:*):* {return  kGAMECLASS.player.isBimbo();},
 				"true"				: function(thisPtr:*):* {return  true;},
 				"false"				: function(thisPtr:*):* {return  false;},
 				
