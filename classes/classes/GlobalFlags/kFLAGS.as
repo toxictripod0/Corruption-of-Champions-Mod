@@ -2346,8 +2346,8 @@ public static const TIMES_MINO_MUTUAL:int                                   	   
 public static const BIMBO_MINISKIRT_PROGRESS_DISABLED:int                           = 2338;
 public static const AMAROK_LOSSES:int                                               = 2339; //Counts losses to Amarok. 5 = bad end
 public static const MRAPIER_BOUGHT:int                                  	    = 2340; //You only get one due to its OPness
-public static const UNKNOWN_FLAG_NUMBER_02341:int                                   = 2341;
-public static const UNKNOWN_FLAG_NUMBER_02342:int                                   = 2342;
+public static const GOTTEN_INQUISITOR_CORSET:int                                    = 2341;
+public static const GOTTEN_INQUISITOR_ROBES:int                                     = 2342;
 public static const UNKNOWN_FLAG_NUMBER_02343:int                                   = 2343;
 public static const UNKNOWN_FLAG_NUMBER_02344:int                                   = 2344;
 public static const UNKNOWN_FLAG_NUMBER_02345:int                                   = 2345;
