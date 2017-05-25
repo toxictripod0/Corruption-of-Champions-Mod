@@ -75,7 +75,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			if (rand(5) === 0) {
-				mutationsHelper.updateOvipositionPerk(tfSource);
+				mutations.updateOvipositionPerk(tfSource);
 			}
 			//bodypart changes:
 			if (player.tailType !== TAIL_TYPE_RACCOON && rand(4) === 0 && changes < changeLimit) {

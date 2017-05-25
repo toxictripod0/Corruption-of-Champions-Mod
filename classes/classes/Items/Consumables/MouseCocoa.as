@@ -128,7 +128,7 @@ package classes.Items.Consumables
         }
       }
 			if (rand(5) === 0) {
-				mutationsHelper.updateOvipositionPerk(tfSource);
+				mutations.updateOvipositionPerk(tfSource);
 			}
 			//bodypart changes:
 			//gain ears

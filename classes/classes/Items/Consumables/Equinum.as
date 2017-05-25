@@ -6,7 +6,6 @@ package classes.Items.Consumables
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Items.Consumable;
 	import classes.Items.ConsumableLib;
-	import classes.Items.MutationsHelper;
 	import classes.PerkLib;
 	import classes.StatusEffects;
 	
@@ -161,14 +160,14 @@ package classes.Items.Consumables
 				}
 			}
 			if (rand(5) === 0) {
-				mutationsHelper.updateOvipositionPerk(tfSource);
+				mutations.updateOvipositionPerk(tfSource);
 			}
 			//Restore arms to become human arms again
 			if (rand(4) === 0) {
-				mutationsHelper.restoreArms(tfSource);
+				mutations.restoreArms(tfSource);
 			}
 			//Remove feathery hair
-			mutationsHelper.removeFeatheryHair();
+			mutations.removeFeatheryHair();
 			//
 			//SEXUAL CHARACTERISTICS
 			//
@@ -504,7 +503,7 @@ package classes.Items.Consumables
 			}
 			// Remove gills
 			if (rand(4) === 0 && player.hasGills() && changes < changeLimit) {
-				mutationsHelper.updateGills();
+				mutations.updateGills();
 			}
 
 			if (rand(3) === 0) outputText(player.modTone(60, 1));

@@ -45,12 +45,12 @@ package classes.Items.Consumables
 			//-----------------------
 			//1st priority: Change lower body to bipedal.
 			if (rand(4) === 0 && changes < changeLimit) {
-				mutationsHelper.restoreLegs(tfSource);
+				mutations.restoreLegs(tfSource);
 			}
 			
 			//Remove Oviposition Perk
 			if (rand(5) === 0) {
-				mutationsHelper.updateOvipositionPerk(tfSource);
+				mutations.updateOvipositionPerk(tfSource);
 			}
 			//Remove Incorporeality Perk
 			if (player.findPerk(PerkLib.Incorporeality) >= 0 && player.perkv4(PerkLib.Incorporeality) === 0 && changes < changeLimit && rand(10) === 0) {
@@ -72,7 +72,7 @@ package classes.Items.Consumables
 				else if (temp === 3) player.skinTone = "light";
 				outputText(player.skinTone + " colored.</b>");
 				player.underBody.skin.tone = player.skin.tone;
-				mutationsHelper.updateClaws(player.clawType);
+				mutations.updateClaws(player.clawType);
 			}
 			//Change skin to normal
 			if (!player.hasPlainSkin() && (player.earType === EARS_HUMAN || player.earType === EARS_ELFIN) && rand(4) === 0 && changes < changeLimit) {
@@ -87,7 +87,7 @@ package classes.Items.Consumables
 			}
 			//Restore arms to become human arms again
 			if (rand(4) === 0) {
-				mutationsHelper.restoreArms(tfSource);
+				mutations.restoreArms(tfSource);
 			}
 			//-----------------------
 			// MINOR TRANSFORMATIONS
@@ -125,7 +125,7 @@ package classes.Items.Consumables
 			}
 			//Removes gills
 			if (rand(4) === 0 && player.hasGills() && changes < changeLimit) {
-				mutationsHelper.updateGills();
+				mutations.updateGills();
 			}
 			//Nipples Turn Back:
 			if (player.hasStatusEffect(StatusEffects.BlackNipples) && changes < changeLimit && rand(3) === 0) {
@@ -134,7 +134,7 @@ package classes.Items.Consumables
 				player.removeStatusEffect(StatusEffects.BlackNipples);
 			}
 			//Remove feathery hair
-			mutationsHelper.removeFeatheryHair();
+			mutations.removeFeatheryHair();
 			//Remove anemone hair
 			if (changes < changeLimit && player.hairType === HAIR_ANEMONE && rand(3) === 0) {
 				//-insert anemone hair removal into them under whatever criteria you like, though hair removal should precede abdomen growth; here's some sample text:
@@ -152,7 +152,7 @@ package classes.Items.Consumables
 			}
 			//Remove bassy hair
 			if ([HAIR_BASILISK_PLUME, HAIR_BASILISK_SPINES].indexOf(player.hairType) !== -1 && changes < changeLimit && rand(4) === 0)
-				mutationsHelper.removeBassyHair();
+				mutations.removeBassyHair();
 			//Restart hair growth
 			if (flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] > 0 && changes < changeLimit && rand(3) === 0) {
 				outputText("\n\nYou feel an itching sensation in your scalp as you realize the change. <b>Your hair is growing normally again!</b>");

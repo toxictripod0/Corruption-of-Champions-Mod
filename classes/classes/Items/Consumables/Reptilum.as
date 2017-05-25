@@ -225,18 +225,18 @@ package classes.Items.Consumables
 			}
 			//-VAGs
 			if (player.hasVagina() && rand(5) === 0 && player.lizardScore() > 3) {
-				mutationsHelper.updateOvipositionPerk(tfSource); // does all the magic, nuff said!
+				mutations.updateOvipositionPerk(tfSource); // does all the magic, nuff said!
 			}
 
 			//Physical changes:
 			//-Existing horns become draconic, max of 4, max length of 1'
 			if (!player.hasDragonHorns(true) && changes < changeLimit && rand(5) === 0){
-				mutationsHelper.gainDraconicHorns(tfSource);
+				mutations.gainDraconicHorns(tfSource);
 			}
 			
 			//-Hair changes
 			if (changes < changeLimit && rand(4) === 0) {
-				mutationsHelper.lizardHairChange(tfSource);
+				mutations.lizardHairChange(tfSource);
 			}
 			//Remove beard!
 			if (player.hasBeard() && changes < changeLimit && rand(3) === 0) {
@@ -265,7 +265,7 @@ package classes.Items.Consumables
 			//Gain predator arms
 			if (player.armType !== ARM_TYPE_PREDATOR && player.hasReptileScales() && player.lowerBody === LOWER_BODY_TYPE_LIZARD && changes < changeLimit && rand(3) === 0) {
 				player.armType = ARM_TYPE_PREDATOR;
-				mutationsHelper.updateClaws(CLAW_TYPE_LIZARD);
+				mutations.updateClaws(CLAW_TYPE_LIZARD);
 				outputText("\n\nYou scratch your biceps absentmindedly, but no matter how much you scratch, you can't get rid of the itch.  After a longer moment of ignoring it you finally glance down in irritation, only to discover that your arms former appearance has changed into those of some reptilian killer with " + player.skinFurScales() + " and short " + player.clawTone + " claws replacing your fingernails.");
 				outputText("\n<b>You now have reptilian arms.</b>");
 				changes++
@@ -273,7 +273,7 @@ package classes.Items.Consumables
 			//Claw transition
 			if (player.armType === ARM_TYPE_PREDATOR && player.hasLizardScales() && player.clawType !== CLAW_TYPE_LIZARD && changes < changeLimit && rand(3) === 0) {
 				outputText("\n\nYour " + player.claws() + " change a little to become reptilian.");
-				mutationsHelper.updateClaws(CLAW_TYPE_LIZARD);
+				mutations.updateClaws(CLAW_TYPE_LIZARD);
 				outputText(" <b>You now have " + player.claws() + ".</b>");
 				changes++
 			}
@@ -309,10 +309,10 @@ package classes.Items.Consumables
 			//-Scales – color changes to red, green, white, blue, or black.  Rarely: purple or silver.
 			if (!player.hasLizardScales() && player.earType === EARS_LIZARD && player.tailType === TAIL_TYPE_LIZARD && player.lowerBody === LOWER_BODY_TYPE_LIZARD && changes < changeLimit && rand(5) === 0) {
 				//(fur)
-				var newSkinTones:Array = mutationsHelper.newLizardSkinTone();
+				var newSkinTones:Array = mutations.newLizardSkinTone();
 				if (player.hasFur()) {
 					player.skin.tone = newSkinTones[0];
-					mutationsHelper.updateClaws(player.clawType);
+					mutations.updateClaws(player.clawType);
 					outputText("\n\nYou scratch yourself, and come away with a large clump of " + player.furColor + " fur.  Panicked, you look down"
 					          +" and realize that your fur is falling out in huge clumps.  It itches like mad, and you scratch your body"
 					          +" relentlessly, shedding the remaining fur with alarming speed.  Underneath the fur your skin feels incredibly"
@@ -326,7 +326,7 @@ package classes.Items.Consumables
 					          +" scratch yourself, and when you're finally done, you look yourself over. New scales have grown to replace your"
 					          +" peeled off [skinFurScales].");
 					player.skin.tone = newSkinTones[0];
-					mutationsHelper.updateClaws(player.clawType);
+					mutations.updateClaws(player.clawType);
 				}
 				//(no fur)
 				else {
@@ -336,7 +336,7 @@ package classes.Items.Consumables
 					          +" well that they may as well be seamless.  You peel back your " + player.armorName + " and the transformation has"
 					          +" already finished on the rest of your body.");
 					player.skin.tone = newSkinTones[0];
-					mutationsHelper.updateClaws(player.clawType);
+					mutations.updateClaws(player.clawType);
 				}
 				player.skin.setProps({
 					type: SKIN_TYPE_LIZARD_SCALES,
@@ -360,15 +360,15 @@ package classes.Items.Consumables
 			//-Lizard tongue
 			if (player.tongueType === TONGUE_SNAKE && changes < changeLimit && rand(10) < 6) {
 				// Higher (60%) chance to be 'fixed' if old variant
-				mutationsHelper.gainLizardTongue();
+				mutations.gainLizardTongue();
 			}
 
 			if ([TONGUE_LIZARD, TONGUE_SNAKE].indexOf(player.tongueType) === -1 && player.hasReptileFace() && changes < changeLimit && rand(3) === 0) {
-				mutationsHelper.gainLizardTongue();
+				mutations.gainLizardTongue();
 			}
 			//-Remove Gills
 			if (rand(4) === 0 && player.hasGills() && changes < changeLimit) {
-				mutationsHelper.updateGills();
+				mutations.updateGills();
 			}
 			//<mod name="Reptile eyes" author="Stadler76">
 			//-Lizard eyes
