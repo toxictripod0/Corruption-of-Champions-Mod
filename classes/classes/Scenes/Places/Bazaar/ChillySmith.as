@@ -64,10 +64,6 @@ package classes.Scenes.Places.Bazaar {
 		public function transactionNo(shop:int):void {
 			if (shop == 1) buySomeWeapons();
 			else buySomeArmor();
-			clearOutput();
-			outputText("Sun shrugs.\"<i>All right.</i>\"");
-			menu();
-			addButton(0, "Next", shop);
 		}
 		
 		public function smithButton(setButtonOnly:Boolean = false):void { //Shop button/appearance blurb
@@ -118,7 +114,7 @@ package classes.Scenes.Places.Bazaar {
 				addShopItem(8, weapons.MRAPIER, 8000, 1); //One-buy and one-own only given its power.
 			}
 			else {
-				addButtonDisabled(8, weapons.MRapier, "There's none in stock.", "");
+				addButtonDisabled(8, weapons.MRAPIER.shortName, "There's none in stock.", "");
 			}
 			
 			addButton(4, "Back", buySomeShit);
