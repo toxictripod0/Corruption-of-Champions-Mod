@@ -448,8 +448,8 @@ the text from being too boring.
 			 * Debug, Version, etc
 			 */
 			debug = false; //DEBUG, used all over the place
-			ver = "1.0.2_mod_1.4.5"; //Version NUMBER
-			version = ver + " (<b>Blackfire + Ebonweave</b>)"; //Version TEXT
+			ver = "1.0.2_mod_1.4.6"; //Version NUMBER
+			version = ver + " (<b>The Chill Smith</b>)"; //Version TEXT
 
 			//Indicates if building for mobile?
 			mobile = false;
