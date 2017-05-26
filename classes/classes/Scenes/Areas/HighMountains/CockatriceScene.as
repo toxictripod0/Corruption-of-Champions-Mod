@@ -104,33 +104,36 @@ package classes.Scenes.Areas.HighMountains
 				outputText("He lazily strokes his purple length as he looks up at you with a come-hither gaze. His ruffled feathers,"
 				          +" dirtied scales and leisurely pumps manage to make him look quite dashing, even in defeat.  ");
 			menu();
-			addDisabledButton(0, "Ride Him Vag", "This scene requires you to have a vag and sufficient arousal");
-			addDisabledButton(1, "Ride Him Anal", "This scene requires you to have sufficient arousal.");
-			addDisabledButton(2, "Buttfuck", "This scene requires you to have a fitting cock and sufficient arousal.");
-			addDisabledButton(3, "Oral (Cock)", "This scene requires you to have a cock and sufficient arousal.");
-			addDisabledButton(4, "Oral (Vag)", "This scene requires you to have a vag and sufficient arousal.");
+			addDisabledButton(0, "Ride Him Vag", "This scene requires you to have a vag, not being a taur or drider and sufficient arousal");
+			addDisabledButton(1, "Ride Him Anal", "This scene requires you to be neither taur nor drider and have sufficient arousal.");
+			addDisabledButton(2, "Buttfuck", "This scene requires you to have a fitting cock, not being a taur or drider and sufficient arousal.");
+			addDisabledButton(3, "Oral (Cock)", "This scene requires you to have a cock, not being a taur or drider and sufficient arousal.");
+			addDisabledButton(4, "Oral (Vag)", "This scene requires you to have a vag, not being a taur or drider and sufficient arousal.");
 			addDisabledButton(5, "Taur sex", "This scene requires you to be a taur or drider, having a cock and/or a vagina and sufficient arousal.");
 			
 			if (player.lust >= 33) {
 				outputText("What do you do with him?");
-				if (player.hasVagina()) {
-					addButton(0, "Ride Him Vag", cockatriceRideHimVag, null, null, null, "Let him fuck your pussy.");
-				}
-				addButton(1, "Ride Him Anal", cockatriceRideHimAnal, null, null, null, "Let him fuck your butt.");
-				if (player.cockThatFits(monster.analCapacity()) >= 0) {
-					addButton(2, "Buttfuck", cockatriceButtfuck, null, null, null, "Fuck the cockatrices's ass!");
-				}
-				if (player.hasCock()) {
-					addButton(3, "Oral (Cock)", cockatriceOralCock, null, null, null, "Get a blowjob!");
-				}
-				if (player.hasVagina()) {
-					addButton(4, "Oral (Vag)", cockatriceOralVag, null, null, null, "Get a vaginal blowjob!");
-				}
-				if (player.isTaur() && (player.hasVagina() || player.hasCock())) {
-					addButton(5, "Taur sex", cockatriceTaurButtFuck, null, null, null, "Let him fuck your tauric butt!");
-				}
-				if (player.isDrider() && (player.hasVagina() || player.hasCock())) {
-					addButton(5, "Drider sex", cockatriceDriderButtFuck, null, null, null, "Let him fuck your drider butt!");
+				if (!player.isTaur() && !player.isDrider()) {
+					if (player.hasVagina()) {
+						addButton(0, "Ride Him Vag", cockatriceRideHimVag, null, null, null, "Let him fuck your pussy.");
+					}
+					addButton(1, "Ride Him Anal", cockatriceRideHimAnal, null, null, null, "Let him fuck your butt.");
+					if (player.cockThatFits(monster.analCapacity()) >= 0) {
+						addButton(2, "Buttfuck", cockatriceButtfuck, null, null, null, "Fuck the cockatrices's ass!");
+					}
+					if (player.hasCock()) {
+						addButton(3, "Oral (Cock)", cockatriceOralCock, null, null, null, "Get a blowjob!");
+					}
+					if (player.hasVagina()) {
+						addButton(4, "Oral (Vag)", cockatriceOralVag, null, null, null, "Get a vaginal blowjob!");
+					}
+				} else {
+					if (player.isTaur() && (player.hasVagina() || player.hasCock())) {
+						addButton(5, "Taur sex", cockatriceTaurButtFuck, null, null, null, "Let him fuck your tauric butt!");
+					}
+					if (player.isDrider() && (player.hasVagina() || player.hasCock())) {
+						addButton(5, "Drider sex", cockatriceDriderButtFuck, null, null, null, "Let him fuck your drider butt!");
+					}
 				}
 			}
 
@@ -281,6 +284,7 @@ package classes.Scenes.Areas.HighMountains
 			          +" telling him you had fun.");
 			outputText("\n\n\"So did I. Let’s do this again sometime.\" he says with a smile before giving himself one last smooth over before"
 			          +" [if (monster.canFly)spreading his wings and taking off|running off deeper into the mountains with a bouncy stride].");
+			player.buttChange(80, true);
 			player.orgasm('Anal');
 			dynStats("lib-", 1);
 			combat.cleanupAfterCombat();
@@ -376,8 +380,7 @@ package classes.Scenes.Areas.HighMountains
 			          +" yourself fall back onto the ground, marveling at how you’ve fucked his tight ass into a hungry dripping hole. You rest for a"
 			          +" while before cleaning yourself up[if (hasArmor) and redressing], fully satisfied by this encounter. You leave him there"
 			          +" resting and wonder if you’ll get to do this again next time.");
-			player.orgasm('Anal');
-			player.buttChange(80, true);
+			player.orgasm('Dick');
 			dynStats("lib-", 1);
 			combat.cleanupAfterCombat();
 		}
@@ -387,19 +390,19 @@ package classes.Scenes.Areas.HighMountains
 		{
 			//spriteSelect(75);
 			clearOutput();
-			outputText("You casually approach him [if (hasArmor)stripping your [armor] and tossing it aside confidently]");
-			outputText(", admiring his prone form. The cockatrice lays on his back, tail lazily resting between his legs as he runs a clawed finger"
-			          +" over his pecs. His sapphire eyes are fixed firmly on you, drinking in your naked form. His eyes linger on your"
+			outputText("You casually approach him [if (hasArmor)stripping your [armor] and tossing it aside confidently], admiring his prone form."
+			          +" The cockatrice lays on his back, tail lazily resting between his legs as he runs a clawed finger over his pecs."
+			          +" His sapphire eyes are fixed firmly on you, drinking in your naked form. His eyes linger on your"
 			          +" [if (hasBreasts)[breasts]|chest] for a while, making your nipples pebble before trailing down to your [cock], your erect"
 			          +" shaft[if (cocks > 1)s] making him lick his lips.");
-			outputText("\n\nHe definitely know what you expect of him, which makes this a lot easier.");
-			outputText("\n\"Time for a little fun.\" you smile as you stand over him and cup his fluffy cheek, guiding him towards your shaft."
+			outputText("\n\nHe definitely know what you expect of him, which makes this a lot easier."
+			          +"\n\"Time for a little fun.\" you smile as you stand over him and cup his fluffy cheek, guiding him towards your shaft."
 			          +" He willingly opens his beak, forked tongue snaking out to drag along the [cockhead] in a torturously slow lick. The forked"
 			          +" tips tease your urethra as he withdraws, making you shudder. He seems pleased with this, licking you again, his flexible"
 			          +" tongue curling around your length as he tastes you base to tip. His movements become bolder as you encourage him with"
 			          +" affectionate rubs of the cheek, and before long he’s actively slurping along your length, swirling around the tip as it"
-			          +" begins to bead precum.[if (player.balls > 0) He gently laps at your [balls] every now and then, ensuring they get as through"
-			          +" a tongue bath as your shaft[if (hasVagina) and even lifts them up to give your feminine half a good taste too.]"
+			          +" begins to bead precum.[if (player.balls > 0) He gently laps at your [balls] every now and then, ensuring they get as"
+			          +" thorough a tongue bath as your shaft[if (hasVagina) and even lifts them up to give your feminine half a good taste too.]"
 			          +"|[if (hasVagina) Occasionally his tongue slips further down, seeking out your heated slit, refusing to leave your feminine"
 			          +" half untouched.]]");
 			outputText("\n\nOnce you’re covered in a shiny layer of saliva, he takes [if (player.longestCockLength > 12) as much as he can manage of]"
@@ -413,7 +416,7 @@ package classes.Scenes.Areas.HighMountains
 			          +" [if (player.longestCockLength <= 12)your cock in his throat|as much of your cock in his throat as you can],"
 			          +" reveling in the tight space and sudden spasms that almost crush your length. His eyes water as he tries to keep up, pretty"
 			          +" much humping his hand, while his free hand comes up to"
-			          +" [if (player.balls > 0 cup your [balls][if (hasVagina) and thumb your slit|[if (hasVagina)thumb your slit|cup your behind]]]."
+			          +" [if (player.balls > 0)cup your [balls][if (hasVagina) and thumb your slit]|[if (hasVagina)thumb your slit|cup your behind]]."
 			          +" You feel [if (player.balls > 0)your balls clench up as they flood with heat|heat pool in your belly] as your cock jerks,"
 			          +" before you explosively release into his belly."
 			          +" [if (cumNormal) A few ropes of cum fill his belly, with the last spurt painting his tongue as you withdraw."
@@ -583,7 +586,7 @@ package classes.Scenes.Areas.HighMountains
 			          +" use the swaying silk ropes to make him fuck your [if (analLooseness <= 1)tight|spread] butthole. As his length pulls out,"
 			          +" the nubs slowly drag and catch on your inner walls, rubbing on your entrance as each one pops out before rapidly spearing"
 			          +" you again as he buries his length in you, spreading you open[if (hasCock) as the pointed tip prods your prostate]."
-			          +" Each thrust fills the silence with moans and the slap of flesh on flesh, your behind slowly become a little rosy from the"
+			          +" Each thrust fills the silence with moans and the slap of flesh on flesh, your behind slowly becoming a little rosy from the"
 			          +" force of fucking. You continue to pleasure yourself as you rhythmically clench your tunnel, eager on making him fill you"
 			          +" before you cum. The cockatrice’s cock twitches in your ass as he grips your hips with his thighs, humping at your behind"
 			          +" desperately as he tried to hold back. With a pulsing shudder, his cock swells and lets loose rope after rope of hot cum deep"
@@ -727,7 +730,7 @@ package classes.Scenes.Areas.HighMountains
 			clearOutput();
 
 			if ((player.isTaur() || player.isDrider()) && player.hasVagina())
-				cockatriceLossVaginal(); // Maybe later this could be replaced with a taur/drider vag sex scene?
+				cockatriceLossOral(); // Maybe later this could be replaced with a taur/drider vag sex scene?
 			else if (player.isTaur() || player.isDrider())
 				cockatriceLossOral();
 			else if (player.hasVagina())
