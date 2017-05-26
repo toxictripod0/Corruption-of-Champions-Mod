@@ -415,7 +415,7 @@ public function saveLoad(e:MouseEvent = null):void
 
 private function saveToFile():void {
 	clearOutput();
-	saveGameObject(null, false);
+	saveGameObject(null, true);
 }
 
 private function loadFromFile():void {
