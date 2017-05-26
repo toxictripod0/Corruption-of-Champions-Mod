@@ -218,7 +218,10 @@ package classes.Scenes.Places.Bazaar {
 			}
 			else {
 				if (rand(4) == 0) {
-					outputText("Sun reaches into his pocket and and crams a handful of Gems against your chest, saying, \"<i>I'm gonna pay you five dollars to fuck off.</i>\" You give a confused thanks and back away.");
+					outputText("Sun reaches into his pocket and and crams a handful of Gems against your chest, saying, \"<i>I'm gonna pay you five ");
+					if (silly()) outputText("dollars");
+					else outputText("Gems");
+					outputText(" to fuck off.</i>\" You give a confused thanks and back away.");
 					player.gems += 5;
 				}
 				else {
