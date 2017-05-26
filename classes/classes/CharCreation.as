@@ -414,6 +414,7 @@ package classes
 				var gameMode:Number = flags[kFLAGS.HUNGER_ENABLED];
 				var hardcoreMode:int = flags[kFLAGS.HARDCORE_MODE];
 				var hardcoreSlot:String = flags[kFLAGS.HARDCORE_SLOT];
+				var mrapierBought:int = flags[kFLAGS.MRAPIER_BOUGHT];
 				
 			}
 			//Clear plot storage array!
@@ -426,6 +427,7 @@ package classes
 				flags[kFLAGS.HUNGER_ENABLED] = gameMode;
 				flags[kFLAGS.HARDCORE_MODE] = hardcoreMode;
 				flags[kFLAGS.HARDCORE_SLOT] = hardcoreSlot;
+				flags[kFLAGS.MRAPIER_BOUGHT] = mrapierBought;
 				if (player.findPerk(PerkLib.Misdirection) > 0) flags[kFLAGS.RAPHAEL_INTELLIGENCE_TRAINING];
 				if (player.findPerk(PerkLib.RapierTraining) > 0) flags[kFLAGS.RAPHAEL_RAPIER_TRANING] == 4;
 			}

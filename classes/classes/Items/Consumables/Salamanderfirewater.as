@@ -181,7 +181,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			if (rand(5) === 0) {
-				mutationsHelper.updateOvipositionPerk(tfSource);
+				mutations.updateOvipositionPerk(tfSource);
 			}
 			//Physical changes:
 			//Tail - 1st gain reptilian tail, 2nd unlocks enhanced with fire tail whip attack
@@ -217,7 +217,7 @@ package classes.Items.Consumables
 			if (player.armType !== ARM_TYPE_SALAMANDER && player.lowerBody === LOWER_BODY_TYPE_SALAMANDER && changes < changeLimit && rand(3) === 0) {
 				outputText("\n\nYou scratch your biceps absentmindedly, but no matter how much you scratch, you can't get rid of the itch.  After a longer moment of ignoring it you finally glance down in irritation, only to discover that your arms former appearance has changed into those of a salamander with leathery, red scales and short, fiery-red claws replacing your fingernails.  <b>You now have salamander arms.</b>");
 				player.armType = ARM_TYPE_SALAMANDER;
-				mutationsHelper.updateClaws(CLAW_TYPE_SALAMANDER);
+				mutations.updateClaws(CLAW_TYPE_SALAMANDER);
 				changes++;
 			}
 			//Remove odd eyes
@@ -253,7 +253,7 @@ package classes.Items.Consumables
 				if (player.hasFur()) outputText("the skin under your " + player.furColor + " " + player.skinDesc + " has ");
 				else outputText("your " + player.skinDesc + (player.skinDesc.indexOf("scales") !== -1 ? " have " : " has "));
 				player.skinTone = randomChoice(humanSkinColors);
-				mutationsHelper.updateClaws(player.clawType);
+				mutations.updateClaws(player.clawType);
 				outputText("changed to become " + player.skinTone + " colored.</b>");
 			}
 			//Change skin to normal
@@ -268,7 +268,7 @@ package classes.Items.Consumables
 			}
 			//Removing gills
 			if (rand(4) === 0 && player.hasGills() && changes < changeLimit) {
-				mutationsHelper.updateGills();
+				mutations.updateGills();
 			}
 			//FAILSAFE CHANGE
 			if (changes === 0) {

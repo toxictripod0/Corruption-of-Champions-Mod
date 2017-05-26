@@ -379,7 +379,6 @@ public function saveLoad(e:MouseEvent = null):void
 	//addButton(5, "Save to File", saveToFile);
 	addButton(6, "Load File", loadFromFile);
 	//addButton(8, "AutoSave: " + autoSaveSuffix, autosaveToggle);
-	clearOutput();
 	addButton(14, "Back", kGAMECLASS.gameOver);
 	
 	
@@ -416,7 +415,7 @@ public function saveLoad(e:MouseEvent = null):void
 
 private function saveToFile():void {
 	clearOutput();
-	saveGameObject(null, false);
+	saveGameObject(null, true);
 }
 
 private function loadFromFile():void {

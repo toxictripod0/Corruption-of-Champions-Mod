@@ -22,6 +22,7 @@ public function Bazaar(){
 		public var fapArena:FapArena = new FapArena();
 		public var lilium:Lilium = new Lilium();
 		public var roxanne:Roxanne = new Roxanne();
+		public var chillySmith:ChillySmith = new ChillySmith();
 
 //[Find Travelling Bazaar]
 public function findBazaar():void {
@@ -94,6 +95,7 @@ public function enterTheBazaarAndMenu(demons:Boolean = true):void {
 	if (flags[kFLAGS.BAZAAR_ENTERED] == 0) flags[kFLAGS.BAZAAR_ENTERED] = 1;
 	outputText("You breeze past the crimson guard and enter the interior of the Bizarre Bazaar.  The ground is hard-packed, trampled as if walked over by hundreds of hooves, paws, and feet.  A massive bonfire rages in the center of the clearing, crackling and popping as it consumes its fuel gluttonously.  Surrounding the blazing behemoth are tiny, wheeled food-carts with vendors hawking everything from sausage to something called a 'marshmallow'.  Huge wagons ring the clearing, many set up to display exotic wares or services.  You can see everything from dancing centaurs to demons browsing the wares, but it seems an uneasy truce of sorts reigns here.  Then again, maybe the demons have just not had the chance to openly attack this place yet.");
 	outputText("\n\nOne of the wagons proudly proclaims itself to be \"Greta's Garments,\" though both 'G's are emphasized with cute, stylized devil horns, and the 'S' is shaped in the form of a spaded, demonic tail.  Obviously it must some kind of clothing shop.");
+	chillySmith.smithButton();
 	roxanne.RoxanneAppearance();
 	benoit.setBenoitShop();
 	fapArena.fapAppearance();
@@ -146,6 +148,7 @@ private function shopMenu():void {
 	benoit.setBenoitShop(true);
 	addButton(1, "G. Garments", gretasGarments);
 	addButton(2, "S. Squeeze", theSlipperySqueeze);
+	chillySmith.smithButton(true);
 	addButton(4, "Back", enterTheBazaarAndMenu);
 }
 
