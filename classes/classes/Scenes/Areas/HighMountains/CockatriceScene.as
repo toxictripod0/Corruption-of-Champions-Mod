@@ -60,18 +60,19 @@ package classes.Scenes.Areas.HighMountains
 				          +" Looks like you have a fight on your hands!");
 				//(spd loss)
 				Basilisk.speedReduce(player, 5);
-				cockatrice.wingify();
 			}
 			//Standard encounter:
 			else {
-				outputText("As you once again climb high in the mountains, you spend some time catching your breath on a rocky plateau to avoid the"
-				          +" loose gravelly ground. You see a brightly coloured creature in the distance, hopping from stone to stone with ease and"
-				          +" what seems to be enjoyment. As you let out a sigh and move to leave the creature notices you, speedily moving from rock"
-				          +" to rock with flaps of its feathers. It approaches squawking with excitement, not slowing in the slightest as it reaches"
-				          +" the plateau. You now see it clearly, it's a cockatrice, and you know it won’t or can’t halt in such an excitable state."
-				          +" Looks like you’ll have to fight!");
 				if (rand(100) < 40) // 40% chance of wings
 					cockatrice.wingify();
+				outputText("As you once again climb high in the mountains, you spend some time catching your breath on a rocky plateau to avoid the"
+				          +" loose gravelly ground. You see a brightly coloured creature in the distance,");
+				if (cockatrice.canFly())
+					outputText(" feathered wings unfurled to aid its movements,");
+				outputText(" hopping from stone to stone with ease and what seems to be enjoyment. As you let out a sigh and move to leave the"
+				          +" creature notices you, speedily moving from rock to rock with flaps of its feathers. It approaches squawking with"
+				          +" excitement, not slowing in the slightest as it reaches the plateau. You now see it clearly, it's a cockatrice, and you"
+				          +" know it won’t or can’t halt in such an excitable state. Looks like you’ll have to fight!");
 			}
 			if (flags[kFLAGS.CODEX_ENTRY_COCKATRICES] <= 0) {
 				flags[kFLAGS.CODEX_ENTRY_COCKATRICES] = 1;
