@@ -782,12 +782,8 @@ use namespace kGAMECLASS;
 			{
 				if (hasDragonWingsAndFire())
 					race = isBasilisk() ? "dracolisk" : "dragonewt";
-				else {
-					if (lowerBody == LOWER_BODY_TYPE_HARPY && hasScales() && InCollection(wingType, WING_TYPE_DRACONIC_LARGE, WING_TYPE_HARPY, WING_TYPE_FEATHERED_LARGE, WING_TYPE_BAT_LIKE_LARGE))
-						race = "cockatrice"; // should also have avian face, but we have no such thing for now
-					else
-						race = isBasilisk() ? "basilisk"  : "lizan";
-				}
+				else
+					race = isBasilisk() ? "basilisk"  : "lizan";
 				if (isTaur())
 					race += "-taur";
 				if (lizardScore() >= 9)
@@ -800,6 +796,16 @@ use namespace kGAMECLASS;
 					race = "dragon-" + mf("man", "girl");
 				if (isTaur())
 					race = "dragon-taur";
+			}
+			if (cockatriceScore() >= 4)
+			{
+				race = "cockatrice-morph";
+				if (cockatriceScore() >= 8)
+					race = "cockatrice";
+				if (faceType == 0)
+					race = "cockatrice-" + mf("boy", "girl");
+				if (isTaur())
+					race = "cockatrice-taur";
 			}
 			if (raccoonScore() >= 4)
 			{
@@ -1019,6 +1025,37 @@ use namespace kGAMECLASS;
 			}
 			
 			return race;
+		}
+
+		//cockatrice rating
+		public function cockatriceScore():Number
+		{
+			var cockatriceCounter:Number = 0;
+			if (earType == EARS_COCKATRICE)
+				cockatriceCounter++;
+			if (tailType == TAIL_TYPE_COCKATRICE)
+				cockatriceCounter++;
+			if (lowerBody == LOWER_BODY_TYPE_COCKATRICE)
+				cockatriceCounter++;
+			if (faceType == FACE_COCKATRICE)
+				cockatriceCounter++;
+			if (eyeType == EYES_COCKATRICE)
+				cockatriceCounter++;
+			if (armType == ARM_TYPE_COCKATRICE)
+				cockatriceCounter++;
+			if (tongueType == TONGUE_LIZARD)
+				cockatriceCounter++;
+			if (cockatriceCounter > 2) {
+				if (wingType == WING_TYPE_FEATHERED_LARGE)
+					cockatriceCounter++;
+				if (skinType == SKIN_TYPE_LIZARD_SCALES)
+					cockatriceCounter++;
+				if (underBody.type == UNDER_BODY_TYPE_COCKATRICE)
+					cockatriceCounter++;
+				if (lizardCocks() > 0)
+					cockatriceCounter++;
+			}
+			return cockatriceCounter;
 		}
 
 		//imp rating

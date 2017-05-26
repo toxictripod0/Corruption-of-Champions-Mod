@@ -1,4 +1,4 @@
-// The comment structure in the following section is very specific, as the comment contents
+﻿// The comment structure in the following section is very specific, as the comment contents
 // are actually parsed into regexes that are used by my refactoring tool to refactor
 // the relevant descriptions.
 
@@ -238,6 +238,7 @@ public static const UNDER_BODY_TYPE_DRAGON:int                                  
 public static const UNDER_BODY_TYPE_FUR:int                                         =   3;
 public static const UNDER_BODY_TYPE_NAGA:int                                        =   4;
 public static const UNDER_BODY_TYPE_WOOL:int                                        =   5;
+public static const UNDER_BODY_TYPE_COCKATRICE:int                                  =   6;
 
 // piercingtypesNOPEDISABLED
 public static const PIERCING_TYPE_NONE:int                                          =   0;

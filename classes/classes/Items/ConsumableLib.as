@@ -204,7 +204,7 @@ package classes.Items
 		public const SNAKOIL:Consumable = new SnakeOil();
 		public const SPHONEY:Consumable		  = new BeeHoney(false, true);
 		public const TAURICO:Consumable = new Taurinum();
-		public const TOTRICE:SimpleConsumable = mk("ToTrice","Ton o' Trice", "a ton o' trice", curry(m.goldenSeed,0),"This seed looks and smells absolutely delicious.  Though it has an unusual color, the harpies prize these nuts as delicious treats.  Eating one might induce some physical transformations.");
+		public const TOTRICE:Consumable = new TonOTrice();
 		public const TRAPOIL:Consumable = new TrapOil();
 		public const TSCROLL:Consumable = new TatteredScroll();
 		public const TSTOOTH:SimpleConsumable = mk("TSTooth","TSTooth", "a glowing tiger shark tooth", curry(m.sharkTooth, 1),"This looks like a normal shark tooth, though with an odd purple glow.");
