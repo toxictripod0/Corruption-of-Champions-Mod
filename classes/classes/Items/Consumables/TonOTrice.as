@@ -31,6 +31,7 @@ package classes.Items.Consumables
 		override public function useItem():Boolean
 		{
 			var tfSource:String = "TonOTrice";
+			var i:int;
 			player.slimeFeed();
 			// init stuff
 			changes = 0;
@@ -99,6 +100,98 @@ package classes.Items.Consumables
 				//+1 if above 75.
 				dynStats("lib", 1);
 				changes++;
+			}
+
+			//Sexual changes
+
+			//-Lactation stoppage.
+			if (player.biggestLactation() >= 1 && changes < changeLimit && rand(4) == 0) {
+				outputText("\n\n[if (totalNipples == 2)Both of your|All of your many] nipples relax. It's a strange feeling, and you pull back your"
+				          +" top to touch one. It feels fine, though there doesn't seem to be any milk leaking out.  You give it a squeeze and marvel"
+				          +" when nothing [if (hasNippleCunts)but sexual fluid] escapes it. <b>You are no longer lactating.</b> That makes sense,"
+				          +" only mammals lactate!  Smiling, you muse at how much time this will save you when cleaning your gear.");
+				if (player.findPerk(PerkLib.Feeder) >= 0 || player.hasStatusEffect(StatusEffects.Feeder)) {
+					outputText("\n\n(<b>Feeder perk lost!</b>)");
+					player.removePerk(PerkLib.Feeder);
+					player.removeStatusEffect(StatusEffects.Feeder);
+				}
+				changes++;
+				//Loop through and reset lactation
+				for (i = 0; i < player.breastRows.length; i++) {
+					player.breastRows[i].lactationMultiplier = 0;
+				}
+			}
+
+			//-Nipples reduction to 1 per tit.
+			if (player.averageNipplesPerBreast() > 1 && changes < changeLimit && rand(4) == 0) {
+				outputText("\n\nA chill runs over your [allBreasts] and vanishes. You stick a hand under your [armor] and discover that your extra"
+				          +" nipples are missing! You're down to just one per [if (biggestTitSize < 1)'breast'|breast].");
+				changes++;
+				//Loop through and reset nipples
+				for (i = 0; i < player.breastRows.length; i++) {
+					player.breastRows[i].nipplesPerBreast = 1;
+				}
+			}
+
+			//Remove additional breasts
+			if (changes < changeLimit && player.breastRows.length > 1 && rand(3) == 0) {
+				outputText("\n\nYou stumble back when your center of balance shifts, and though you adjust before you can fall over, you're left to"
+				          +" watch in awe as your bottom-most " + player.breastDescript(player.breastRows.length - 1) + " shrink down,"
+				          +" disappearing completely into your [if (breastRows >= 3)abdomen|chest]."
+				          +" The " + player.nippleDescript(player.breastRows.length - 1) + "s even fade until nothing but ");
+				if (player.hasFur()) outputText(player.furColor + " " + player.skinDesc);
+				else outputText(player.skinTone + " " + player.skinDesc);
+				outputText(" remains. <b>You've lost a row of breasts!</b>");
+				dynStats("sen", -5);
+				player.removeBreastRow(player.breastRows.length - 1, 1);
+				changes++;
+			}
+
+			if (player.isFemaleOrHerm()) {
+				//Breasts > D cup - Decrease breast size by up to 3 cups
+				if (player.isFemaleOrHerm() && player.biggestTitSize() > BREAST_CUP_D && changes < changeLimit && rand(3) == 0) {
+					for (i = 0; i < player.breastRows.length; i++) {
+						if (player.breastRows[i].breastRating > BREAST_CUP_D)
+							player.breastRows[i].breastRating -= 1 + rand(3);
+					}
+					outputText("\n\nYour breasts feel tight[if (hasArmor), your [armor] feeling looser around your chest]. You watch in shock as your"
+							  +" breast flesh rapidly diminishes, shrinking into your chest. They finally stop when they reach [breastcup] size."
+							  +" You feel a little lighter.");
+					dynStats("spe", 1);
+					changes++;
+				}
+
+				//Breasts < B cup - Increase breast size by 1 cup
+				if (player.isFemaleOrHerm() && player.smallestTitSize() < BREAST_CUP_B && changes < changeLimit && rand(3) == 0) {
+					for (i = 0; i < player.breastRows.length; i++) {
+						if (player.breastRows[i].breastRating < BREAST_CUP_B)
+							player.breastRows[i].breastRating++;
+					}
+					outputText("\n\nYour breasts feel constrained and painful against your top as they grow larger by the moment, finally stopping as"
+							  +" they reach [breastcup] size. You rub the tender orbs as you get used to your larger breast flesh.");
+					dynStats("lib", 1);
+					changes++;
+				}
+
+				//Hips > 12 - decrease hip size by 1-3 sizes
+				if (player.hipRating > 12 && changes < changeLimit && rand(3) == 0) {
+					outputText("\n\nYou stumble a bit as the bones in your pelvis rearrange themselves painfully. Your hips have narrowed.");
+					player.hipRating -= 1 + rand(3);
+					changes++;
+				}
+
+				//Hips < 6 - increase hip size by 1-3 sizes
+				if (player.hipRating < 6 && changes < changeLimit && rand(3) == 0) {
+					outputText("\n\nYou stumble as you feel the bones in your hips grinding, expanding your hips noticeably.");
+					player.hipRating += 1 + rand(3);
+					changes++;
+				}
+
+				if (player.nippleLength > 1 && changes < changeLimit && rand(3) == 0) {
+					outputText("\n\nWith a sudden pinch your [nipples] get smaller and smaller,"
+							  +" stopping when they are roughly half their previous size");
+					player.nippleLength /= 2;
+				}
 			}
 
 			//FAILSAFE CHANGE

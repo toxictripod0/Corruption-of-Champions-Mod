@@ -1,4 +1,4 @@
-//CoC Creature.as
+﻿//CoC Creature.as
 package classes
 {
 	import classes.BodyParts.Skin;
@@ -2170,7 +2170,7 @@ package classes
 
 		public function canUseStare():Boolean
 		{
-			return eyeType == EYES_BASILISK;
+			return [EYES_BASILISK, EYES_COCKATRICE].indexOf(eyeType) != -1;
 		}
 
 		public function isHoofed():Boolean
