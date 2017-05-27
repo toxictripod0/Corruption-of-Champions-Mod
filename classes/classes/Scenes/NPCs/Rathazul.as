@@ -683,7 +683,7 @@ private function craftDragonscaleArmorForReal(type:int = 0):void {
 	inventory.takeItem(itype, returnToRathazulMenu);
 }
 
-private function craftLethiciteStaff():void {
+public function craftLethiciteStaff():void {
 	spriteSelect(49);
 	clearOutput();
 	player.destroyItems(useables.LETHITE, 5);
@@ -691,16 +691,15 @@ private function craftLethiciteStaff():void {
 		outputText("You present Rathazul the Wizard's Staff and pieces of Lethicite. He sets the staff aside and looks over the Lethicite in awe. You stifle a laugh at his expression. You'd think he'd never seen pieces Lethicite before. He jumps at your noise, nearly dropping the Lethicite in the process. He scrambles to keep them in his paws and looks up at you once they're secured against his chest. \"<i>Right,</i>\" he breathes. \"<i>I will see what I can do.</i>\" He then grabs the staff and ushers away, leaving you to sit and wait for him to be done.");
 		outputText("\n\nAn hour of worrying noises and concerning clouds of smoke later, and Rathazul comes back to you, covered in purple dust. He tries to shake some of it off, but gets cut short by coughing. You pat his back and ask if he's okay.\n\n\"<i>Fine, fine,</i>\" he mumbles in reply. \"<i>Just fine... Nothing a thorough washing can't resolve.</i>\" He holds out the staff for you. \"<i>Here. I was able to infuse the Lethicite with the staff. Be careful with it. I'm not making a new one until I clear out my lungs.</i>\"\n\nAs soon as you take the staff, he turns away and begins to head toward the river, grumbling to himself.");
 		outputText("You look over the staff. It's topped by a glowing orb of Lethicite whose corruption seems to have seeped down into the rest of the staff. The staff's surface is smooth and hard, nothing of the wood it was made of before. It's no longer a pale brown, but a metallic purple, and");
-			if (game.player.cor < 33) {
+			if (player.cor < 33) {
 				outputText(" seems to ooze corruption. You suppress a shudder. In your pure hands, though, you're confident it will only be used for good.\n\n");
 			}
-			else if (game.player.cor >= 33 && game.player.cor < 66) {
+			else if (player.cor >= 33 && player.cor < 66) {
 				outputText(" brims with corruption. You take a slow breath to steady yourself. You're holding a strongly influential weapon. In the wrong hands, it could easily corrupt someone, but you're sure you can control it.\n\n");
 			}
-			else if (game.player.cor >= 66 && game.player.cor <= 100) {
+			else if (player.cor >= 66 && player.cor <= 100) {
 				outputText(" radiates corruption. You breathe, feeling its power flow through you and relishing in the sensation. When you open your eyes, you find yourself smiling. You and this staff are going to get along get well.\n\n");
 			}
-		outputText("You put the Lethicite Staff in your inventory for now.");
 	player.addStatusValue(StatusEffects.MetRathazul, 2, 1);
 	inventory.takeItem(weapons.L_STAFF, returnToRathazulMenu);
 }
@@ -721,7 +720,7 @@ public function craftEbonweaveArmor():void {
 			addButton(1, "Jacket", craftEbonweaveArmorForReal, 1, null, null, armors.EBNJACK.description);
 			addButton(2, "Robe", craftEbonweaveArmorForReal, 2, null, null, armors.EBNROBE.description);
 		} else {
-			outputText("\n\nYou realize you're still a bit short on Ebonblooms for the robes and armor, but you can have indescent robes or undergarments made instead.");
+			outputText("\n\nYou realize you're still a bit short on Ebonbloom for the robes and armor, but you can have indecent robes or undergarments made instead.");
 			addDisabledButton(0, "Armor", "You must have 10 Ebonblooms to make it.");
 			addDisabledButton(1, "Jacket", "You must have 8 Ebonblooms to make it.");
 			addDisabledButton(2, "Robe", "You must have 8 Ebonblooms to make it.");
@@ -729,8 +728,8 @@ public function craftEbonweaveArmor():void {
 		if (player.hasItem(useables.EBNFLWR, 8)) {
 			addButton(3, "IndecRo", craftEbonweaveArmorForReal, 3, null, null, armors.EBNIROB.description);
 		} else {
-			outputText("\n\nYou realize you're still a bit short on Ebonblooms for the indescent robes, but you can have undergarments made instead.");
-			addDisabledButton(3, "IndecRo", "You must have 8 Ebonblooms to make it.");
+			outputText("\n\nYou realize you're still a bit short on Ebonbloom for the indecent robes, but you can have undergarments made instead.");
+			addDisabledButton(3, "IndecRo", "You must have 8 Ebonbloom to make it.");
 		}
 		addButton(5, "Vest", craftEbonweaveArmorForReal, 4, null, null, undergarments.EBNVEST.description);
 		addButton(6, "Corset", craftEbonweaveArmorForReal, 5, null, null, undergarments.EBNCRST.description);
@@ -751,7 +750,7 @@ private function craftEbonweaveArmorForReal(type:int = 0):void {
 	if (type == 0 || type == 1 || type == 2) { //Armor, robes, jacket
 		player.destroyItems(useables.EBNFLWR, 10);
 	}
-	else if (type == 3) { //Indescent robes
+	else if (type == 3) { //Indecent robes
 		player.destroyItems(useables.EBNFLWR, 8);
 	}
 	else { //Undergarments
@@ -777,7 +776,7 @@ private function craftEbonweaveArmorForReal(type:int = 0):void {
 			outputText("Hanging on Rathazul’s rack is a long, flowing robe. The dark gray cloth ripples in the wind, but shines in the light as metal would. You run your fingers over the robe, feeling the soft material give at your touch. You also note a hood at the top. It hangs limply down the backside of the robe, but it’d be easy to pull up to shield your eyes from harsh sunlight or rain. Beyond the physical aspects, you can feel a magical power flow through this robe. You get the feeling the power will be quite helpful when casting magic. You thank Rathazul and collect your new robe.");
 			itype = armors.EBNROBE;
 			break;
-		case 3: //Indescent Robes
+		case 3: //Indecent Robes
 			outputText("Rathazul takes the flowers, nods slightly, then gets to work. You decide to take a walk in the meantime.\n\nWhen you come back, you notice something unusual. ");
 			outputText("Hanging Rathazul’s rack is a long, flowing robe. The dark gray cloth ripples in the wind, but shines in the light as metal would. Upon closer inspection, you realize that the robe is more of a longcoat, meant to display your chest and groin. You run your fingers over the dark gray garment, feeling the soft material give at your touch. You also note a hood at the top. It hangs limply down the back, but it could be pulled up to shield your eyes from harsh sunlight or rain. Moving your hands through the coat, you find a layer of ebonweave straps lining the inside, likely to keep the front of the robe open and prevent it from disrupting your balance. The straps are so subtle that you doubt you’ll even notice them while wearing the robe. Beyond the physical elements, though, you can feel a magical power flow through the coat. The power gives you the impression that it will be very useful when casting spells. You thank Rathazul and collect your new robe.");
 			itype = armors.EBNIROB;
