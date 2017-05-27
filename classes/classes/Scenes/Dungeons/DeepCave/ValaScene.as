@@ -599,6 +599,7 @@ package classes.Scenes.Dungeons.DeepCave
 			spriteSelect(60);
 			clearOutput();
 			menu();
+			addDisabledButton(0, "Faeries", "This option is only available once per week. It requires you to have genitals.");
 			//(First meeting)
 			if (flags[kFLAGS.ENCOUNTERED_VALA_AT_BAR] == 0) {
 				flags[kFLAGS.ENCOUNTERED_VALA_AT_BAR]++;
@@ -606,6 +607,7 @@ package classes.Scenes.Dungeons.DeepCave
 				
 				//Goto cleansedFirstRemeet();
 				//[Next]
+				menu();
 				addButton(0,"Next",cleansedFirstRemeet);
 				return;
 			}
@@ -626,7 +628,7 @@ package classes.Scenes.Dungeons.DeepCave
 			else {
 				outputText("You take a seat and flag the fairy barmaid over. Vala is dressed in her long, emerald, sleeveless dress, the imp tally tattoos on her backside hidden from sight. Her thick bracelets jangle around her wrists, purple hair in its modest bun, plain white apron hiding her swollen chest. She smiles as she approaches and reaches to hug your head into her breast when she reaches you \"<i>Why, if it isn't my favorite customer.</i>\" She gives you a kiss on the cheek and places a drink on your table. \"<i>From me, as always. I can never repay my debt to you, but it sure is fun trying. Can I get you anything from the back room?</i>\"");
 				//Once per week special!
-				if (flags[kFLAGS.WEEKLY_FAIRY_ORGY_COUNTDOWN] == 0) {
+				if (flags[kFLAGS.WEEKLY_FAIRY_ORGY_COUNTDOWN] == 0 && !player.isGenderless()) {
 					outputText("\n\nA thought occurs to her and she leans in, conspiratorially. \"<i>Actually, some of my sisters are visiting from the forest today. Should we spend some time with them, or do I get you all for myself?</i>\"");
 					//[Fairies][You][Leave]
 					addButton(0,"Faeries",faerieOrgyFuck);	
@@ -815,7 +817,7 @@ package classes.Scenes.Dungeons.DeepCave
 			if (player.hasVagina()) {
 				addButton(1, "Female", faerieOrgyFuckFemaleContinue);
 			} else {
-				addDisabledButton(0, "Male", "This scene requires you to have vagina.");
+				addDisabledButton(1, "Female", "This scene requires you to have vagina.");
 			}
 		}
 			
@@ -957,9 +959,14 @@ package classes.Scenes.Dungeons.DeepCave
 			outputText("\n\nVala reaches down between her legs and begins to piston a finger inside herself, the digit easily as wide as both your arms combined, yet, in her sloppy, oozing cunt, it's barely big enough.  Slowly, her growth diminishes, only fading once she's tall enough to make you question if you could even measure her height.  Her voice echoes out with enough force to vibrate through you, \"<i>Ha!  I'd like to see the imps try anything now!</i>\"  Of course her words still maintain their girlish pitch, something made more clear when she stoops down to circle surprisingly delicate fingers around your waist before lifting you in front her face.  Her glistening lips, cute nose, and big, pink eyes dominate your view.  What do you ask her to do?");
 			//[Dom Me] [Lick Me]
 			menu();
-			addButton(0,"Dom Me",bigValaDomsPC);
-			if (player.hasCock()) addButton(1,"Lick Me",bigValaLicksOffDudes);
-			if (kGAMECLASS.vapula.vapulaSlave() && player.gender > 0 && (player.hasCock() || (player.hasVagina() && player.hasKeyItem("Demonic Strap-On") >= 0))) {
+			addButton(0, "Dom Me", bigValaDomsPC);
+			
+			addDisabledButton(1, "Lick Me", "This scene requires you to have cock.");
+			if (player.hasCock()) addButton(1, "Lick Me", bigValaLicksOffDudes);
+			
+			addDisabledButton(2, "Dom Vapula", "This scene requires you to have cock or vagina and demonic strap-on.");
+			addDisabledButton(3, "Vapula3Some", "This scene requires you to have cock or vagina and demonic strap-on.");
+			if (kGAMECLASS.vapula.vapulaSlave() && (player.hasCock() || (player.hasVagina() && player.hasKeyItem("Demonic Strap-On") >= 0))) {
 				addButton(2,"Dom Vapula",valaDommyVapula3Some);
 				addButton(3,"Vapula3Some",valaLoveyVapula3Some);
 			}

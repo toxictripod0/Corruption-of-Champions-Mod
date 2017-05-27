@@ -211,14 +211,17 @@ package classes.Scenes.Places.Bazaar {
 		public function theFuckIsYouWho():void { //Talk stuff
 			clearOutput();
 			outputText("You walk up to Sun and give him a merry greeting. He glances you up and down, looking less than pleased.\n\n");
-			if (rand(8) == 0) {
+			if (rand(10) == 0) {
 				outputText("With a long sigh, he grabs a book from a nearby shelf and shoves it into your arms, saying, \"<i>Here. Take this and leave me to do my damn job. This isn't a fucking playground.</i>\"\n\n");
 				outputText("You frown. You'd only wanted to talk. Still, you mumble a thanks and quickly back out of the store. You read the book and blink with new knowledge when you're done-- <b>you have learned the spell Blackfire!</b>");
 				player.createStatusEffect(StatusEffects.KnowsBlackfire, 0, 0, 0, 0);
 			}
 			else {
 				if (rand(4) == 0) {
-					outputText("Sun reaches into his pocket and and crams a handful of Gems against your chest, saying, \"<i>I'm gonna pay you five dollars to fuck off.</i>\" You give a confused thanks and back away.");
+					outputText("Sun reaches into his pocket and and crams a handful of Gems against your chest, saying, \"<i>I'm gonna pay you five ");
+					if (silly()) outputText("dollars");
+					else outputText("Gems");
+					outputText(" to fuck off.</i>\" You give a confused thanks and back away.");
 					player.gems += 5;
 				}
 				else {
@@ -226,6 +229,7 @@ package classes.Scenes.Places.Bazaar {
 					else outputText("\"<i>I have a boyfriend.</i>\" He jabs a thumb in Harmony's direction. You glance at Harmony, then blink at Sun a couple times. That wasn't what you really wanted, but okay. You give him a congrats and duck out of the store.");
 				}
 			}
+			menu();
 			addButton(0, "Next", camp.returnToCampUseOneHour);
 		}
 		
