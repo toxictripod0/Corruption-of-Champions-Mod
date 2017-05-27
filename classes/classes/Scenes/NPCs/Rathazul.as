@@ -683,7 +683,7 @@ private function craftDragonscaleArmorForReal(type:int = 0):void {
 	inventory.takeItem(itype, returnToRathazulMenu);
 }
 
-private function craftLethiciteStaff():void {
+public function craftLethiciteStaff():void {
 	spriteSelect(49);
 	clearOutput();
 	player.destroyItems(useables.LETHITE, 5);
@@ -691,16 +691,15 @@ private function craftLethiciteStaff():void {
 		outputText("You present Rathazul the Wizard's Staff and pieces of Lethicite. He sets the staff aside and looks over the Lethicite in awe. You stifle a laugh at his expression. You'd think he'd never seen pieces Lethicite before. He jumps at your noise, nearly dropping the Lethicite in the process. He scrambles to keep them in his paws and looks up at you once they're secured against his chest. \"<i>Right,</i>\" he breathes. \"<i>I will see what I can do.</i>\" He then grabs the staff and ushers away, leaving you to sit and wait for him to be done.");
 		outputText("\n\nAn hour of worrying noises and concerning clouds of smoke later, and Rathazul comes back to you, covered in purple dust. He tries to shake some of it off, but gets cut short by coughing. You pat his back and ask if he's okay.\n\n\"<i>Fine, fine,</i>\" he mumbles in reply. \"<i>Just fine... Nothing a thorough washing can't resolve.</i>\" He holds out the staff for you. \"<i>Here. I was able to infuse the Lethicite with the staff. Be careful with it. I'm not making a new one until I clear out my lungs.</i>\"\n\nAs soon as you take the staff, he turns away and begins to head toward the river, grumbling to himself.");
 		outputText("You look over the staff. It's topped by a glowing orb of Lethicite whose corruption seems to have seeped down into the rest of the staff. The staff's surface is smooth and hard, nothing of the wood it was made of before. It's no longer a pale brown, but a metallic purple, and");
-			if (game.player.cor < 33) {
+			if (player.cor < 33) {
 				outputText(" seems to ooze corruption. You suppress a shudder. In your pure hands, though, you're confident it will only be used for good.\n\n");
 			}
-			else if (game.player.cor >= 33 && game.player.cor < 66) {
+			else if (player.cor >= 33 && player.cor < 66) {
 				outputText(" brims with corruption. You take a slow breath to steady yourself. You're holding a strongly influential weapon. In the wrong hands, it could easily corrupt someone, but you're sure you can control it.\n\n");
 			}
-			else if (game.player.cor >= 66 && game.player.cor <= 100) {
+			else if (player.cor >= 66 && player.cor <= 100) {
 				outputText(" radiates corruption. You breathe, feeling its power flow through you and relishing in the sensation. When you open your eyes, you find yourself smiling. You and this staff are going to get along get well.\n\n");
 			}
-		outputText("You put the Lethicite Staff in your inventory for now.");
 	player.addStatusValue(StatusEffects.MetRathazul, 2, 1);
 	inventory.takeItem(weapons.L_STAFF, returnToRathazulMenu);
 }
