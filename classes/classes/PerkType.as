@@ -199,7 +199,7 @@ import flash.utils.Dictionary;
 		public function requireCor(value:int):PerkType {
 			requirements.push({
 				fn  : function(player:Player):Boolean {
-					return player.cor < value - player.corruptionTolerance();
+					return player.cor >= value - player.corruptionTolerance();
 				},
 				text: "Corruption " + value,
 				type: "cor",

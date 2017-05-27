@@ -819,7 +819,7 @@ package classes.Scenes.NPCs
 			if (player.hasVagina()) {
 				addButton(1, "Drunk", ceraphUrtaRoleplayDrunk);
 			} else {
-				addDisabledButton(0, "Sober", "This scene requires you to have vagina.");
+				addDisabledButton(1, "Drunk", "This scene requires you to have vagina.");
 			}
 		}
 
