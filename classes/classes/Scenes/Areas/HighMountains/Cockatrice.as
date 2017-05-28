@@ -39,13 +39,13 @@ package classes.Scenes.Areas.HighMountains
 			//Success:
 			if (player.inte / 5 + rand(20) < 24 + player.newGamePlusMod() * 5) {
 				//Immune to Basilisk?
-				if (player.findPerk(PerkLib.BasiliskResistance) >= 0 || player.canUseStare()) {
+				if (player.findPerk(PerkLib.BasiliskResistance) >= 0 || player.canUseStare() || player.hasKeyItem("Laybans") >= 0) {
 					outputText("You can't help yourself... you glimpse the cockatrice’s lightning blue eyes. However, no matter how much you look"
 					          +" into the eyes, you do not see anything wrong. All you can see is the cockatrice."
 					          +" The cockatrice curses as he finds out that you're immune!");
 				}
 				else {
-					outputText("You concentrate, but can’t help but look into those lightning blue orbs.You look away quickly, but you can picture"
+					outputText("You concentrate, but can’t help but look into those lightning blue orbs. You look away quickly, but you can picture"
 					          +" them in your mind’s eye, staring in at your thoughts, making you feel sluggish and unable to coordinate."
 					          +" Something about the helplessness of it feels so good... you can’t banish the feeling that really,"
 					          +" you want to look in the cockatrice’s eyes forever, for it to have total control over you.");
