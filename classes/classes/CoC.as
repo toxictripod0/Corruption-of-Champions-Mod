@@ -8,7 +8,12 @@
 package classes
 {
 	// BREAKING ALL THE RULES.
-	import classes.GlobalFlags.kFLAGS; // This file contains most of the persistent gamestate flags.
+	import classes.GlobalFlags.kFLAGS;
+import classes.display.SpriteDb;
+
+import flash.display.BitmapData;
+
+// This file contains most of the persistent gamestate flags.
 	import classes.GlobalFlags.kGAMECLASS; // This file creates the gameclass that the game will run within.
 	import classes.GlobalFlags.kACHIEVEMENTS; // This file creates the flags for the achievements system.
 	import classes.Scenes.Combat.Combat;
@@ -607,6 +612,22 @@ the text from being too boring.
 			{
 				_updateHack.x = 0;
 				_updateHack.removeEventListener(Event.ENTER_FRAME, moveHackUpdate);
+			}
+		}
+
+		public function spriteSelect(choice:Object = 0):void {
+			// Inlined call from lib/src/coc/view/MainView.as
+			// TODO: When flags goes away, if it goes away, replace this with the appropriate settings thing.
+			if (choice <= 0 || choice == null || flags[kFLAGS.SHOW_SPRITES_FLAG] == 1) {
+				mainViewManager.hideSprite();
+			} else {
+				if (choice is Class) {
+					mainViewManager.showSpriteBitmap(SpriteDb.bitmapData(choice as Class));
+				} else if (choice is Number) {
+					mainViewManager.showSpriteBitmap(SpriteDb.bitmapDataFromIndex(int(choice)));
+				} else {
+					mainViewManager.hideSprite();
+				}
 			}
 		}
 	}
