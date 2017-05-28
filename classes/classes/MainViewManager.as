@@ -326,6 +326,7 @@ import flash.utils.setTimeout;
 			rescaleSprite(element);
 		}
 		public function showSpriteBitmap(bmp:BitmapData):void {
+			if (!bmp) return;
 			mainView.spriteOld.visible = false;
 			var element:MovieClip = mainView.sprite;
 			element.gotoAndStop(200);
