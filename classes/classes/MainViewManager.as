@@ -307,24 +307,6 @@ import flash.utils.setTimeout;
 			mainView.spriteOld.visible = false;
 		}
 		
-			// Inlined from lib/src/coc/view/MainView.as
-			var type:Boolean = flags[kFLAGS.SPRITE_STYLE] == 0;
-			var element:MovieClip;
-			var other:MovieClip;
-			if (type) {
-				other = mainView.spriteOld;
-				element = mainView.sprite;
-			} else if (type == 1) {
-				other = mainView.sprite;
-				element = mainView.spriteOld;
-			} else {
-				return;
-			}
-			other.visible = false;
-			element.visible = true;
-			element.gotoAndStop(frame);
-			rescaleSprite(element);
-		}
 		public function showSpriteBitmap(bmp:BitmapData):void {
 			if (!bmp) return;
 			mainView.spriteOld.visible = false;

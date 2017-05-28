@@ -22,10 +22,10 @@ package classes.Scenes.NPCs{
 		private var checkedHeliaIsabellaThreesome:int;
 		
 		public function spriteChooser():void {
-			if (flags[kFLAGS.HEL_ISABELLA_THREESOME_ENABLED] >= 1 && flags[kFLAGS.HEL_BONUS_POINTS] < 150) spriteSelect(SpriteDb.s_hel-sprite_BB); //bandanna, no pale flame
+			if (flags[kFLAGS.HEL_ISABELLA_THREESOME_ENABLED] >= 1 && flags[kFLAGS.HEL_BONUS_POINTS] < 150) spriteSelect(SpriteDb.s_hel_sprite_BB); //bandanna, no pale flame
 			else if (flags[kFLAGS.HEL_ISABELLA_THREESOME_ENABLED] == 0 && flags[kFLAGS.HEL_BONUS_POINTS] >= 150) spriteSelect(SpriteDb.s_hel_sprite_PF); //no bandanna, pale flame
 			else if (flags[kFLAGS.HEL_ISABELLA_THREESOME_ENABLED] >= 1 && flags[kFLAGS.HEL_BONUS_POINTS] >= 150) spriteSelect(SpriteDb.s_hel_sprite_BB_PF); //bandanna, pale flame
-			else spriteSelect(SpriteDb.s_hel-sprite); //no bandanna, no pale flame
+			else spriteSelect(SpriteDb.s_hel_sprite); //no bandanna, no pale flame
 		}
 		
 		//Implementation of TimeAwareInterface

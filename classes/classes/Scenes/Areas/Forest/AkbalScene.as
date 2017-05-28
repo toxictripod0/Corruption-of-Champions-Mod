@@ -883,7 +883,7 @@ public class AkbalScene extends BaseContent implements Encounter
 				//[+ 4-12 Corruption]
 				dynStats("cor", 4 + rand(8));
 				//[+ 1-2 Speed]
-				dynStats("spe", 1 + rand(SpriteDb.s_akbal));
+				dynStats("spe", 1 + rand(2));
 				player.orgasm('Anal');
 				//[Chance of butt growth]
 				if (player.buttRating < 8)
@@ -961,7 +961,7 @@ public class AkbalScene extends BaseContent implements Encounter
 				//[+ 4-12 Corruption]
 				dynStats("cor", 4 + rand(8));
 				//[+ 1-2 Speed]
-				dynStats("spe", 1 + rand(SpriteDb.s_akbal));
+				dynStats("spe", 1 + rand(2));
 				player.orgasm('Anal');
 				//[Chance of butt growth]
 				if (player.buttRating < 8)
@@ -1041,7 +1041,7 @@ public class AkbalScene extends BaseContent implements Encounter
 			//[+ 4-12 Corruption]
 			dynStats("cor", 4 + rand(8));
 			//[+ 1-2 Speed]
-			dynStats("spe", 1 + rand(SpriteDb.s_akbal));
+			dynStats("spe", 1 + rand(2));
 			player.orgasm('Anal');
 			//[Chance of butt growth]
 			if (player.buttRating < 8)
