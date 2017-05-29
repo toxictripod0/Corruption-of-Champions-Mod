@@ -959,4 +959,3 @@ public function isPeaceful():Boolean {
 public function doNothing():void {
 	//This literally does nothing.
 }
-

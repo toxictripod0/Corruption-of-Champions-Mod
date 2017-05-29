@@ -306,7 +306,6 @@ import flash.utils.setTimeout;
 			mainView.sprite.visible = false;
 			mainView.spriteOld.visible = false;
 		}
-		
 		public function showSpriteBitmap(bmp:BitmapData):void {
 			if (!bmp) return;
 			mainView.spriteOld.visible = false;

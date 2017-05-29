@@ -274,6 +274,7 @@ public class SpriteDb {
 	public static var s_goblinWarrior_8bit:Class;
 	public static function get s_goblinWarrior(): Class {
 		return is8bit ? s_goblinWarrior_8bit : s_goblinWarrior_16bit;
+
 	}
 	[Embed(source="../../../res/sprites/googirlsprite.png")]
 	public static var s_googirlsprite_16bit:Class;
@@ -831,7 +832,7 @@ public class SpriteDb {
 		if (!(e is Bitmap)) return null;
 		return (e as Bitmap).bitmapData;
 	}
-	
+  
 	public function SpriteDb() {
 	}
 }
