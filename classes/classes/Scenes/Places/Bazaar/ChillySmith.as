@@ -111,7 +111,7 @@ package classes.Scenes.Places.Bazaar {
 			addShopItem(6, weapons.SPEAR  , 450, 1);
 			addShopItem(7, weapons.U_SWORD, 800, 1);
 			if (flags[kFLAGS.MRAPIER_BOUGHT] == 0 && !player.hasItem(weapons.MRAPIER, 1) && !inventory.hasItemInStorage(weapons.MRAPIER)) {
-				addShopItem(8, weapons.MRAPIER, 8000, 1); //One-buy and one-own only given its power.
+				addShopItem(8, weapons.MRAPIER, 25000, 1); //One-buy and one-own only given its power.
 			}
 			else {
 				addButtonDisabled(8, weapons.MRAPIER.shortName, "There's none in stock.", "");
