@@ -20,6 +20,13 @@ public class SpriteDb {
 	public static function get s_akbal(): Class {
 		return is8bit ? s_akbal_8bit : s_akbal_16bit;
 	}
+	[Embed(source="../../../res/sprites/amarok.png")]
+	public static var s_amarok_16bit:Class;
+	[Embed(source="../../../res/sprites8bit/amarok-old.png")]
+	public static var s_amarok_8bit:Class;
+	public static function get s_amarok(): Class {
+		return is8bit ? s_amarok_8bit : s_amarok_16bit;
+	}
 	[Embed(source="../../../res/sprites/amily.png")]
 	public static var s_amily_16bit:Class;
 	[Embed(source="../../../res/sprites8bit/amily-old.png")]
@@ -40,6 +47,13 @@ public class SpriteDb {
 	public static var s_anemone_8bit:Class;
 	public static function get s_anemone(): Class {
 		return is8bit ? s_anemone_8bit : s_anemone_16bit;
+	}
+	[Embed(source="../../../res/sprites/arian.png")]
+	public static var s_arian_16bit:Class;
+	[Embed(source="../../../res/sprites8bit/arian-old.png")]
+	public static var s_arian_8bit:Class;
+	public static function get s_arian(): Class {
+		return is8bit ? s_arian_8bit : s_arian_16bit;
 	}
 	[Embed(source="../../../res/sprites8bit/assmole-old.png")]
 	public static var s_assmole_8bit:Class;
@@ -94,6 +108,13 @@ public class SpriteDb {
 	public static function get s_chickenHarpy(): Class {
 		return is8bit ? null : s_chickenHarpy_16bit;
 	}
+	[Embed(source="../../../res/sprites/chillySmith.png")]
+	public static var s_chillySmith_16bit:Class;
+	[Embed(source="../../../res/sprites8bit/chillySmith-old.png")]
+	public static var s_chillySmith_8bit:Class;
+	public static function get s_chillySmith(): Class {
+		return is8bit ? s_chillySmith_8bit : s_chillySmith_16bit;
+	}
 	[Embed(source="../../../res/sprites/christmas elf.png")]
 	public static var s_christmas_elf_16bit:Class;
 	[Embed(source="../../../res/sprites8bit/xmas-elf-old.png")]
@@ -131,6 +152,13 @@ public class SpriteDb {
 	public static var s_cotton_8bit:Class;
 	public static function get s_cotton(): Class {
 		return is8bit ? s_cotton_8bit : s_cotton_16bit;
+	}
+	[Embed(source="../../../res/sprites/cumwitch.png")]
+	public static var s_cumwitch_16bit:Class;
+	[Embed(source="../../../res/sprites8bit/cumwitch-old.png")]
+	public static var s_cumwitch_8bit:Class;
+	public static function get s_cumWitch(): Class {
+		return is8bit ? s_cumwitch_8bit : s_cumwitch_16bit;
 	}
 	[Embed(source="../../../res/sprites/dickworms.png")]
 	public static var s_dickworms_16bit:Class;
@@ -226,20 +254,27 @@ public class SpriteDb {
 	public static function get s_goblin(): Class {
 		return is8bit ? s_goblin_8bit : s_goblin_16bit;
 	}
-	[Embed(source="../../../res/sprites/goblinElder.png")]
-	public static var s_goblinElder_16bit:Class;
-	public static function get s_goblinElder(): Class {
-		return is8bit ? null : s_goblinElder_16bit;
+	[Embed(source="../../../res/sprites/priscilla.png")]
+	public static var s_priscilla_16bit:Class;
+	[Embed(source="../../../res/sprites8bit/priscilla-old.png")]
+	public static var s_priscilla_8bit:Class;
+	public static function get s_priscilla(): Class {
+		return is8bit ? s_priscilla_8bit : s_priscilla_16bit;
 	}
 	[Embed(source="../../../res/sprites/goblinShaman.png")]
 	public static var s_goblinShaman_16bit:Class;
+	[Embed(source="../../../res/sprites8bit/goblinShaman-old.png")]
+	public static var s_goblinShaman_8bit:Class;
 	public static function get s_goblinShaman(): Class {
-		return is8bit ? null : s_goblinShaman_16bit;
+		return is8bit ? s_goblinShaman_8bit : s_goblinShaman_16bit;
 	}
 	[Embed(source="../../../res/sprites/goblinWarrior.png")]
 	public static var s_goblinWarrior_16bit:Class;
+	[Embed(source="../../../res/sprites8bit/goblinWarrior-old.png")]
+	public static var s_goblinWarrior_8bit:Class;
 	public static function get s_goblinWarrior(): Class {
-		return is8bit ? null : s_goblinWarrior_16bit;
+		return is8bit ? s_goblinWarrior_8bit : s_goblinWarrior_16bit;
+
 	}
 	[Embed(source="../../../res/sprites/googirlsprite.png")]
 	public static var s_googirlsprite_16bit:Class;
@@ -262,12 +297,33 @@ public class SpriteDb {
 	public static function get s_harpy(): Class {
 		return is8bit ? s_harpy_8bit : s_harpy_16bit;
 	}
-	[Embed(source="../../../res/sprites/hel_sprite.png")]
+	[Embed(source="../../../res/sprites/hel-sprite.png")]
 	public static var s_hel_sprite_16bit:Class;
-	[Embed(source="../../../res/sprites8bit/helia-old.png")]
+	[Embed(source="../../../res/sprites8bit/hel-sprite-old.png")]
 	public static var s_hel_sprite_8bit:Class;
 	public static function get s_hel_sprite(): Class {
 		return is8bit ? s_hel_sprite_8bit : s_hel_sprite_16bit;
+	}
+	[Embed(source="../../../res/sprites/hel-sprite_BB.png")]
+	public static var s_hel_sprite_BB_16bit:Class;
+	[Embed(source="../../../res/sprites8bit/hel-sprite_BB-old.png")]
+	public static var s_hel_sprite_BB_8bit:Class;
+	public static function get s_hel_sprite_BB(): Class {
+		return is8bit ? s_hel_sprite_BB_8bit : s_hel_sprite_BB_16bit;
+	}
+	[Embed(source="../../../res/sprites/hel-sprite_PF.png")]
+	public static var s_hel_sprite_PF_16bit:Class;
+	[Embed(source="../../../res/sprites8bit/hel-sprite_PF-old.png")]
+	public static var s_hel_sprite_PF_8bit:Class;
+	public static function get s_hel_sprite_PF(): Class {
+		return is8bit ? s_hel_sprite_PF_8bit : s_hel_sprite_PF_16bit;
+	}
+	[Embed(source="../../../res/sprites/hel-sprite_BB_PF.png")]
+	public static var s_hel_sprite_BB_PF_16bit:Class;
+	[Embed(source="../../../res/sprites8bit/hel-sprite_BB_PF-old.png")]
+	public static var s_hel_sprite_BB_PF_8bit:Class;
+	public static function get s_hel_sprite_BB_PF(): Class {
+		return is8bit ? s_hel_sprite_BB_PF_8bit : s_hel_sprite_BB_PF_16bit;
 	}
 	[Embed(source="../../../res/sprites/hellhound.png")]
 	public static var s_hellhound_16bit:Class;
@@ -292,14 +348,14 @@ public class SpriteDb {
 	}
 	[Embed(source="../../../res/sprites/impOverlord.png")]
 	public static var s_impOverlord_16bit:Class;
-//	[Embed(source="../../../res/sprites8bit/impOverlord-old.png")]
+	[Embed(source="../../../res/sprites8bit/impOverlord-old.png")]
 	public static var s_impOverlord_8bit:Class;
 	public static function get s_impOverlord(): Class {
 		return is8bit ? s_impOverlord_8bit : s_impOverlord_16bit;
 	}
 	[Embed(source="../../../res/sprites/impWarlord.png")]
 	public static var s_impWarlord_16bit:Class;
-//	[Embed(source="../../../res/sprites8bit/impWarlord-old.png")]
+	[Embed(source="../../../res/sprites8bit/impWarlord-old.png")]
 	public static var s_impWarlord_8bit:Class;
 	public static function get s_impWarlord(): Class {
 		return is8bit ? s_impWarlord_8bit : s_impWarlord_16bit;
@@ -376,21 +432,21 @@ public class SpriteDb {
 	}
 	[Embed(source="../../../res/sprites/kitsune_black.png")]
 	public static var s_kitsune_black_16bit:Class;
-//	[Embed(source="../../../res/sprites8bit/kitsune_black-old.png")]
+	[Embed(source="../../../res/sprites8bit/kitsune_black-old.png")]
 	public static var s_kitsune_black_8bit:Class;
 	public static function get s_kitsune_black(): Class {
 		return is8bit ? s_kitsune_black_8bit : s_kitsune_black_16bit;
 	}
 	[Embed(source="../../../res/sprites/kitsune_blonde.png")]
 	public static var s_kitsune_blonde_16bit:Class;
-//	[Embed(source="../../../res/sprites8bit/kitsune_blonde-old.png")]
+	[Embed(source="../../../res/sprites8bit/kitsune_blonde-old.png")]
 	public static var s_kitsune_blonde_8bit:Class;
 	public static function get s_kitsune_blonde(): Class {
 		return is8bit ? s_kitsune_blonde_8bit : s_kitsune_blonde_16bit;
 	}
 	[Embed(source="../../../res/sprites/kitsune_red.png")]
 	public static var s_kitsune_red_16bit:Class;
-//	[Embed(source="../../../res/sprites8bit/kitsune_red-old.png")]
+	[Embed(source="../../../res/sprites8bit/kitsune_red-old.png")]
 	public static var s_kitsune_red_8bit:Class;
 	public static function get s_kitsune_red(): Class {
 		return is8bit ? s_kitsune_red_8bit : s_kitsune_red_16bit;
@@ -617,7 +673,7 @@ public class SpriteDb {
 	}
 	[Embed(source="../../../res/sprites/sophieBimbo.png")]
 	public static var s_sophieBimbo_16bit:Class;
-//	[Embed(source="../../../res/sprites8bit/sophieBimbo-old.png")]
+	[Embed(source="../../../res/sprites8bit/sophieBimbo-old.png")]
 	public static var s_sophieBimbo_8bit:Class;
 	public static function get s_sophieBimbo(): Class {
 		return is8bit ? s_sophieBimbo_8bit : s_sophieBimbo_16bit;
@@ -776,128 +832,7 @@ public class SpriteDb {
 		if (!(e is Bitmap)) return null;
 		return (e as Bitmap).bitmapData;
 	}
-	public static function bitmapDataFromIndex(index:int):BitmapData {
-		return bitmapData(classFromIndex(index));
-	}
-	public static function classFromIndex(index:int):Class {
-		switch(index) {
-			case 1: return s_urta;
-			case 2: return s_akbal;
-			case 3: return s_amily;
-			case 4: return s_anemone;
-			case 5: return s_assmole;
-			case 6: return s_bee_girl;
-			case 7: return s_ceraph;
-			case 8: return s_cerulean_succubus;
-			case 9: return s_christmas_elf;
-			case 10: return s_cloaked_dominika;
-			case 11: return s_club_gnoll;
-			case 12: return s_cotton;
-			case 13: return s_easter_bunneh;
-			case 14: return s_edryn;
-			case 15: return s_exgartuan;
-			case 16: return s_factory_omnibus;
-			case 17: return s_faerie;
-			case 18: return s_fenimp;
-			case 19: return s_fetish_cultist;
-			case 20: return s_fetish_zealot;
-			case 21: return s_ghostGirl;
-			case 22: return s_ghostGirl2;
-			case 23: return s_giacomo;
-			case 24: return s_goblin;
-			case 25: return s_green_slime;
-			case 26: return s_harpy;
-			case 27: return s_hellhound;
-			case 28: return s_ifris;
-			case 29: return s_imp;
-			case 30: return s_incubus_mechanic;
-			case 31: return s_isabella;
-			case 32: return s_izma;
-			case 33: return s_jasun;
-			case 34: return s_jojo;
-			case 35: return s_kelt;
-			case 36: return s_lottie;
-			case 37: return s_lumi;
-			case 38: return s_lynette;
-			case 39: return s_maddie;
-			case 40: return s_marae;
-			case 41: return s_marble;
-			case 42: return s_markus_and_lucia;
-			case 43: return s_melinda;
-			case 44: return s_minotaur;
-			case 45: return s_naga;
-			case 46: return s_oasis_demons;
-			case 47: return s_oswald;
-			case 48: return s_raphael;
-			case 49: return s_rathazul;
-			case 50: return s_sandwich;
-			case 51: return s_scylla;
-			case 52: return s_sean;
-			case 53: return s_sophie;
-			case 54: return s_spear_gnoll;
-			case 55: return s_succubus_secretary;
-			case 56: return s_tamani;
-			case 57: return s_tamani_s_daughters;
-			case 58: return s_uncloaked_dominika;
-			case 59: return s_vagrant_cats;
-			case 60: return s_vala;
-			case 61: return s_victoria;
-			case 62: return s_whitney;
-			case 63: return s_yara;
-			case 64: return s_yvonne;
-			case 65: return s_amily_defurr;
-			case 66: return s_ghostGirl;
-			case 68: return s_hel_sprite;
-			case 69: return s_googirlsprite;
-			case 70: return s_sharkgirl;
-			case 71: return s_kida;
-			case 72: return s_kiha;
-			case 73: return s_spidergirl;
-			case 74: return s_spiderguy;
-			case 75: return s_basilisk;
-			case 76: return s_dickworms;
-			case 77: return s_drider;
-			case 78: return s_poisontail;
-			case 79: return s_valeria;
-			case 80: return s_weaponsmith;
-			case 81: return s_jojoTentacle;
-			case 82: return s_scyllaAndBear;
-			case 83: return s_sophieBimbo;
-			case 84: return s_urtaDrunk;
-			case 85: return s_valaSlave;
-			case 86: return s_rogar;
-			case 87: return s_ceraphClothed;
-			case 88: return s_ceraphGoblin;
-			case 89: return s_chameleon;
-			case 90: return s_chickenHarpy;
-			case 91: return s_cinnabar;
-			case 92: return s_corruptedGlade;
-			case 93: return s_lilium;
-			case 94: return s_minotaurSons;
-			case 95: return s_minerva;
-			case 96: return s_mrsCoffee;
-			case 97: return s_sandtrap;
-			case 98: return s_satyr;
-			case 99: return s_stuckSatyr;
-			case 100: return s_tentacleMonster;
-			case 101: return s_rubi_hornless;
-			case 102: return s_rubi_horns;
-			case 103: return s_venus;
-			case 104: return s_kitsune_black;
-			case 105: return s_kitsune_blonde;
-			case 106: return s_kitsune_red;
-			case 120: return s_minerva_pure;
-			case 121: return s_minerva_corrupt;
-			case 122: return s_goblinElder;
-			case 123: return s_goblinWarrior;
-			case 124: return s_goblinShaman;
-			case 125: return s_impWarlord;
-			case 126: return s_impOverlord;
-			case 128: return s_katherine_vagrant;
-		}
-		return null;
-	}
-
+  
 	public function SpriteDb() {
 	}
 }

@@ -4,8 +4,8 @@
 package classes.Scenes.Monsters
 {
 	import classes.*;
-import classes.display.SpriteDb;
-import classes.internals.*;
+	import classes.display.SpriteDb;
+	import classes.internals.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Items.Armors.LustyMaidensArmor;

@@ -8,6 +8,8 @@ package classes.Scenes.Places.Farm
 	import classes.ItemSlotClass;
 	import classes.Scenes.Dungeons.DeepCave.EncapsulationPod;
 	import classes.StatusEffects;
+	import classes.display.SpriteDb;
+	import classes.internals.*;
 	
 	/**
 	 * ...
@@ -729,7 +731,7 @@ package classes.Scenes.Places.Farm
 		public function rootScene():void
 		{
 			clearOutput();
-			spriteSelect(62);
+			spriteSelect(SpriteDb.s_whitney);
 			
 			if (flags[kFLAGS.WHITNEY_DISABLED_FOR_DAY] == 2)
 			{
