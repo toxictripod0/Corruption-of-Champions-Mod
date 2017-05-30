@@ -5,6 +5,8 @@ package classes.Scenes.Places.Bazaar {
 	import classes.Player;
 	import classes.Scenes.Inventory;
 	import classes.StatusEffects;
+	import classes.display.SpriteDb;
+	import classes.internals.*;
 	
 // By Foxwells
 // Sun, the Bizarre Bazaar's Weaponsmith/Blacksmith
@@ -77,7 +79,7 @@ package classes.Scenes.Places.Bazaar {
 		}
 		
 		public function smithShop():void { //Entrance, buttons
-			spriteSelect(113);
+			spriteSelect(SpriteDb.s_chillySmith);
 			clearOutput();
 			outputText("You make your way into ");
 			if (silly()) outputText("the Chili's");

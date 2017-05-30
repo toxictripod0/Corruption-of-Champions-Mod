@@ -3,6 +3,8 @@ package classes.Scenes.Places.Bazaar
 	import classes.GlobalFlags.*;
 	import classes.Items.Mutations;
 	import classes.*;
+	import classes.display.SpriteDb;
+	import classes.internals.*;
 	/**
 	 * The Black Cock by Foxxling
 	 * @author Kitteh6660
@@ -56,7 +58,7 @@ package classes.Scenes.Places.Bazaar
 		
 		public function enterTheBlackCock():void {
 			clearOutput();
-			spriteSelect(-1);
+			spriteSelect(null);
 			outputText(images.showImage("location-bazaar-theblackcock"));
 			//General descriptor
 			outputText("You enter the tent to find much of what you'd expect: A bunch of wooden tables and a sectioned-off portion in the back where you presume the cooking happens. Next to the flap leading into the kitchen there is a big \"keep out\" sign stuck into the ground through the tent's bottom. ");

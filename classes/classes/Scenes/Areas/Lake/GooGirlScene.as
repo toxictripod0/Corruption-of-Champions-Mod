@@ -6,8 +6,10 @@ package classes.Scenes.Areas.Lake
 	import classes.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
-import classes.Scenes.API.Encounter;
-import classes.Scenes.API.Encounters;
+	import classes.Scenes.API.Encounter;
+	import classes.Scenes.API.Encounters;
+	import classes.display.SpriteDb;
+	import classes.internals.*;
 
 public class GooGirlScene extends AbstractLakeContent implements Encounter {
 		public function GooGirlScene()
@@ -61,7 +63,7 @@ public class GooGirlScene extends AbstractLakeContent implements Encounter {
 
 	public function encounterSlime():void {
 		flags[kFLAGS.TIMES_MET_OOZE]++;
-		spriteSelect(25);
+		spriteSelect(SpriteDb.s_green_slime);
 		clearOutput();
 		//High int starts on even footing.
 		if (player.inte >= 25) {
@@ -109,7 +111,7 @@ public class GooGirlScene extends AbstractLakeContent implements Encounter {
 		public function encounterGooGirl():void
 		{
 			clearOutput();
-			spriteSelect(69);
+			spriteSelect(SpriteDb.s_googirlsprite);
 			outputText("As you walk around the lake, you notice a pale red light pulsing in the ");
 			if (!flags[kFLAGS.FACTORY_SHUTDOWN] == 2) outputText("sapphire ");
 			else outputText("murky ");

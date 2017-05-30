@@ -959,19 +959,3 @@ public function isPeaceful():Boolean {
 public function doNothing():void {
 	//This literally does nothing.
 }
-
-public function spriteSelect(choice:Number = 0):void {
-	var type:int = flags[kFLAGS.SPRITE_STYLE]; //0 for new, 1 for old.
-	if (flags[kFLAGS.SHOW_SPRITES_FLAG] == 0)
-	{
-		mainView.selectSprite(choice, type);
-	}
-	else
-	{
-		if (choice >= 0)
-		{
-			trace ("hiding sprite because flags");
-			mainView.selectSprite(-1);
-		}
-	}
-}
