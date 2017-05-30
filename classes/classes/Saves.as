@@ -1832,7 +1832,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			player.eyeCount = saveFile.data.eyeCount;
 			
 		if (saveFile.data.underBody == undefined) {
-			player.underBody = UNDER_BODY_TYPE_NONE;
+			player.underBody.type = UNDER_BODY_TYPE_NONE;
 		}
 		else
 			player.underBody = saveFile.data.underBody;
