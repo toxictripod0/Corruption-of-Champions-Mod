@@ -1792,18 +1792,28 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		player.hipRating = saveFile.data.hipRating;
 		player.buttRating = saveFile.data.buttRating;
 		
+		if (player.lowerBody > 3 && player.lowerBody < 5) { //Bitch's way of saying 4. So we can delete LOWER_BODY_TYPE_CENTAUR
+			player.lowerBody = LOWER_BODY_TYPE_HOOFED;
+			player.legCount = 4;
+		}
+		
+		if (player.lowerBody > 23 && player.lowerBody < 25) {
+			player.lowerBody = LOWER_BODY_TYPE_CLOVEN_HOOFED;
+			player.legCount = 4;
+		}
+		
 		if (saveFile.data.legCount == undefined) {
 			if (player.lowerBody == LOWER_BODY_TYPE_DRIDER_LOWER_BODY) {
 				player.legCount = 8;
 			}
-			else if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR) {
+			else if (player.lowerBody > 3 && player.lowerBody < 5) {
 				player.legCount = 4;
 				player.lowerBody = LOWER_BODY_TYPE_HOOFED;
 			}
 			else if (player.lowerBody == LOWER_BODY_TYPE_PONY) {
 				player.legCount = 4;
 			}
-			else if (player.lowerBody == LOWER_BODY_TYPE_DEERTAUR) {
+			else if (player.lowerBody > 23 && player.lowerBody < 25) {
 				player.legCount = 4;
 				player.lowerBody = LOWER_BODY_TYPE_CLOVEN_HOOFED;
 			}
@@ -1891,8 +1901,12 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			}
 				//trace("LoadOne Cock i(" + i + ")");
 		}
+		
 		player.vaginas = new Vector.<VaginaClass>();
 		SerializationUtils.deserializeVector(player.vaginas as Vector.<*>, saveFile.data.vaginas, VaginaClass);
+		
+		if (player.hasVagina() && player.vaginaType() != 5 && player.vaginaType() != 0)
+			player.vaginaType(0);
 		
 		//NIPPLES
 		if (saveFile.data.nippleLength == undefined)
