@@ -1792,12 +1792,12 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		player.hipRating = saveFile.data.hipRating;
 		player.buttRating = saveFile.data.buttRating;
 		
-		if (player.lowerBody > 3 && player.lowerBody < 5) { //Bitch's way of saying 4. So we can delete LOWER_BODY_TYPE_CENTAUR
+		if (player.lowerBody === 4) {
 			player.lowerBody = LOWER_BODY_TYPE_HOOFED;
 			player.legCount = 4;
 		}
 		
-		if (player.lowerBody > 23 && player.lowerBody < 25) {
+		if (player.lowerBody === 24) {
 			player.lowerBody = LOWER_BODY_TYPE_CLOVEN_HOOFED;
 			player.legCount = 4;
 		}
