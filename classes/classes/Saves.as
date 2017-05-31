@@ -881,6 +881,7 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile.data.hairLength = player.hairLength;
 		saveFile.data.beardLength = player.beardLength;
 		saveFile.data.eyeType = player.eyeType;
+		saveFile.data.eyeCount = player.eyeCount;
 		saveFile.data.beardStyle = player.beardStyle;
 		saveFile.data.skinType = player.skinType;
 		saveFile.data.skinTone = player.skinTone;
@@ -1818,6 +1819,25 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		}
 		else
 			player.legCount = saveFile.data.legCount;
+			
+		if (saveFile.data.eyeCount == undefined) {
+			if (player.eyeType == EYES_SPIDER) {
+				player.eyeCount = 4;
+			}
+			else if (player.eyeType == EYES_FOUR_SPIDER_EYES) {
+				player.eyeType = EYES_SPIDER;
+				player.eyeCount = 4;
+			}
+			else player.eyeCount = 2;
+		}
+		else
+			player.eyeCount = saveFile.data.eyeCount;
+			
+		if (saveFile.data.underBody == undefined) {
+			player.underBody.type = UNDER_BODY_TYPE_NONE;
+		}
+		else
+			player.underBody = saveFile.data.underBody;
 		
 		//Sexual Stuff
 		player.balls = saveFile.data.balls;

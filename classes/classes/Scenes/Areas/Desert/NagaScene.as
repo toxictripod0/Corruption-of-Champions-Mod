@@ -3,6 +3,8 @@ package classes.Scenes.Areas.Desert {
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Items.ArmorLib;
+	import classes.display.SpriteDb;
+	import classes.internals.*;
 
 	public class NagaScene extends BaseContent{
 	public function NagaScene(){
@@ -12,7 +14,7 @@ package classes.Scenes.Areas.Desert {
 //v1 - players last fuck was as naga - 1 = true, 0 = false
 //v2 - player has ever fucked as a naga.  1 = true, 0 = false
 public function nagaEncounter():void {
-	spriteSelect(45);
+	spriteSelect(SpriteDb.s_naga);
 	//Create status if needed
 	if (!player.hasStatusEffect(StatusEffects.Naga)) player.createStatusEffect(StatusEffects.Naga,0,0,0,0);
 	clearOutput();

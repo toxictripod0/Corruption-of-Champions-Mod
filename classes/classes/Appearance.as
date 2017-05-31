@@ -2244,6 +2244,7 @@ package classes
 					[EYES_WOLF, "wolf"],
 					[EYES_DRAGON, "dragon"],
 					[EYES_BASILISK, "basilisk"],
+					[EYES_SPIDER, "spider"],
 					[EYES_COCKATRICE, "cockatrice"],
 				]
 		);

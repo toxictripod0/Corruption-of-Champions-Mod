@@ -6,6 +6,8 @@ package classes.Scenes.NPCs{
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kACHIEVEMENTS;
 	import classes.GlobalFlags.kGAMECLASS;
+	import classes.display.SpriteDb;
+	import classes.internals.*;
 
 	public class Urta extends NPCAwareContent implements TimeAwareInterface {
 
@@ -102,8 +104,8 @@ package classes.Scenes.NPCs{
 		//End of Interface Implementation
 		
 public function urtaSprite():void {
-	if (urtaDrunk()) spriteSelect(84);
-	else spriteSelect(1);
+	if (urtaDrunk()) spriteSelect(SpriteDb.s_urtaDrunk);
+	else spriteSelect(SpriteDb.s_urta);
 }
 
 public function urtaCapacity():Number {

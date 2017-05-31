@@ -1093,10 +1093,11 @@ package classes.Items
 				}
 				else {
 					outputText("\n\nYou blink and stumble, a wave of vertigo threatening to pull your " + player.feet() + " from under you.  As you steady and open your eyes, you realize something seems different.  Your vision is changed somehow.");
-					if (player.eyeType == EYES_FOUR_SPIDER_EYES) outputText("  Your multiple, arachnid eyes are gone!</b>");
+					if (player.eyeType == EYES_FOUR_SPIDER_EYES || player.eyeType == EYES_SPIDER) outputText("  Your arachnid eyes are gone!</b>");
 					outputText("  <b>You have normal, humanoid eyes again.</b>");
 				}
 				player.eyeType = EYES_HUMAN;
+				player.eyeCount = 2;
 				changes++;
 			}
 			//Master Furry Appearance Order:
@@ -2233,10 +2234,11 @@ package classes.Items
 				}
 				else {
 					outputText("\n\nYou blink and stumble, a wave of vertigo threatening to pull your " + player.feet() + " from under you.  As you steady and open your eyes, you realize something seems different.  Your vision is changed somehow.");
-					if (player.eyeType == EYES_FOUR_SPIDER_EYES) outputText("  Your multiple, arachnid eyes are gone!</b>");
+					if (player.eyeType == EYES_FOUR_SPIDER_EYES || player.eyeType == EYES_SPIDER) outputText("  Your arachnid eyes are gone!</b>");
 					outputText("  <b>You have normal, humanoid eyes again.</b>");
 				}
 				player.eyeType = EYES_HUMAN;
+				player.eyeCount = 2;
 				changes++;
 			}
 			//Tail TF
@@ -2870,10 +2872,11 @@ package classes.Items
 				}
 				else {
 					outputText("\n\nYou blink and stumble, a wave of vertigo threatening to pull your " + player.feet() + " from under you.  As you steady and open your eyes, you realize something seems different.  Your vision is changed somehow.");
-					if (player.eyeType == EYES_FOUR_SPIDER_EYES) outputText("  Your multiple, arachnid eyes are gone!</b>");
+					if (player.eyeType == EYES_FOUR_SPIDER_EYES || player.eyeType == EYES_SPIDER) outputText("  Your arachnid eyes are gone!</b>");
 					outputText("  <b>You have normal, humanoid eyes again.</b>");
 				}
 				player.eyeType = EYES_HUMAN;
+				player.eyeCount = 2;
 				changes++;
 			}
 			//****************
@@ -3064,10 +3067,11 @@ package classes.Items
 				}
 				else {
 					outputText("\n\nYou blink and stumble, a wave of vertigo threatening to pull your " + player.feet() + " from under you.  As you steady and open your eyes, you realize something seems different.  Your vision is changed somehow.");
-					if (player.eyeType == EYES_FOUR_SPIDER_EYES) outputText("  Your multiple, arachnid eyes are gone!</b>");
+					if (player.eyeType == EYES_FOUR_SPIDER_EYES || player.eyeType == EYES_SPIDER) outputText("  Your arachnid eyes are gone!</b>");
 					outputText("  <b>You have normal, humanoid eyes again.</b>");
 				}
 				player.eyeType = EYES_HUMAN;
+				player.eyeCount = 2;
 				changes++;
 			}
 			//****************
@@ -3383,7 +3387,8 @@ package classes.Items
 			}
 			//eyes!
 			if (player.hasPlainSkin() && (player.faceType != FACE_SPIDER_FANGS || player.faceType != FACE_HUMAN) && player.eyeType == EYES_HUMAN && rand(4) == 0 && changes < changeLimit) {
-				player.eyeType = EYES_FOUR_SPIDER_EYES;
+				player.eyeType = EYES_SPIDER;
+				player.eyeCount = 4;
 				changes++;
 				outputText("\n\nYou suddenly get the strangest case of double vision.  Stumbling and blinking around, you clutch at your face, but you draw your hands back when you poke yourself in the eye.  Wait, those fingers were on your forehead!  You tentatively run your fingertips across your forehead, not quite believing what you felt.  <b>There's a pair of eyes on your forehead, positioned just above your normal ones!</b>  This will take some getting used to!");
 				dynStats("int", 5);

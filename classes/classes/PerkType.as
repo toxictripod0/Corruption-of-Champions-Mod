@@ -201,8 +201,9 @@ import flash.utils.Dictionary;
 				fn  : function(player:Player):Boolean {
 					return player.cor >= value - player.corruptionTolerance();
 				},
-				text: "Corruption " + value,
-				type: "cor",
+				text: "Corruption &gt; " + value,
+				type: "attr-gt",
+				attr: "cor",
 				value: value
 			});
 			return this;
