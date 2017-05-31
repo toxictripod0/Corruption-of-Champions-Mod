@@ -148,9 +148,7 @@ public function outputText(output:String):void
 	// It's needed since those buttons are available even when in the event-tester
 	mainView.hideTestInputPanel();
 
-	output = this.parser.recursiveParser(output);
-
-		this.output.text(output);
+	this.output.text(output);
 		//if (!debug) mainText.htmlText = currentText;
 	/*if (debug)
 	{
