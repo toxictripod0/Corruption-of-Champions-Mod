@@ -1806,14 +1806,14 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			if (player.lowerBody == LOWER_BODY_TYPE_DRIDER_LOWER_BODY) {
 				player.legCount = 8;
 			}
-			else if (player.lowerBody > 3 && player.lowerBody < 5) {
+			else if (player.lowerBody == 4) {
 				player.legCount = 4;
 				player.lowerBody = LOWER_BODY_TYPE_HOOFED;
 			}
 			else if (player.lowerBody == LOWER_BODY_TYPE_PONY) {
 				player.legCount = 4;
 			}
-			else if (player.lowerBody > 23 && player.lowerBody < 25) {
+			else if (player.lowerBody == 24) {
 				player.legCount = 4;
 				player.lowerBody = LOWER_BODY_TYPE_CLOVEN_HOOFED;
 			}
