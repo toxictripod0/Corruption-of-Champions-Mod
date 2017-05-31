@@ -119,7 +119,7 @@ public static const HORNS_SHEEP:int                                             
 public static const HORNS_RAM:int                                                   =  10;
 public static const HORNS_IMP:int                                                   =  11;
 
-// antennae -- ALL ANTENNAE DEPRICATED, USE HORNS_ANTENNAE
+// antennae
 public static const ANTENNAE_NONE:int                                               =   0;
 public static const ANTENNAE_BEE:int                                                =   2;
 
@@ -198,6 +198,7 @@ public static const LOWER_BODY_TYPE_HUMAN:int                                   
 public static const LOWER_BODY_TYPE_HOOFED:int                                      =   1;
 public static const LOWER_BODY_TYPE_DOG:int                                         =   2;
 public static const LOWER_BODY_TYPE_NAGA:int                                        =   3;
+//public static const LOWER_BODY_TYPE_CENTAUR:int                                   =   4; //DEPRECATED
 public static const LOWER_BODY_TYPE_DEMONIC_HIGH_HEELS:int                          =   5;
 public static const LOWER_BODY_TYPE_DEMONIC_CLAWS:int                               =   6;
 public static const LOWER_BODY_TYPE_BEE:int                                         =   7;
@@ -215,8 +216,9 @@ public static const LOWER_BODY_TYPE_DRAGON:int                                  
 public static const LOWER_BODY_TYPE_RACCOON:int                                     =  19;
 public static const LOWER_BODY_TYPE_FERRET:int                                      =  20;
 public static const LOWER_BODY_TYPE_CLOVEN_HOOFED:int                               =  21;
-//public static const LOWER_BODY_TYPE_RHINO:int                                       =  22;
+//public static const LOWER_BODY_TYPE_RHINO:int                                     =  22;
 public static const LOWER_BODY_TYPE_ECHIDNA:int                                     =  23;
+//public static const LOWER_BODY_TYPE_DEERTAUR:int                                  =  24; //DEPRECATED
 public static const LOWER_BODY_TYPE_SALAMANDER:int                                  =  25;
 public static const LOWER_BODY_TYPE_WOLF:int                                        =  26;
 public static const LOWER_BODY_TYPE_IMP:int                                         =  27;
