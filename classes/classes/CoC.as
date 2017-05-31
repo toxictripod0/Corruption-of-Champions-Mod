@@ -9,9 +9,9 @@ package classes
 {
 	// BREAKING ALL THE RULES.
 	import classes.GlobalFlags.kFLAGS;
-import classes.display.SpriteDb;
-
-import flash.display.BitmapData;
+	import classes.display.SpriteDb;
+	import classes.internals.*;
+	import flash.display.BitmapData;
 
 // This file contains most of the persistent gamestate flags.
 	import classes.GlobalFlags.kGAMECLASS; // This file creates the gameclass that the game will run within.
@@ -620,8 +620,6 @@ the text from being too boring.
 			} else {
 				if (choice is Class) {
 					mainViewManager.showSpriteBitmap(SpriteDb.bitmapData(choice as Class));
-				} else if (choice is Number) {
-					mainViewManager.showSpriteBitmap(SpriteDb.bitmapDataFromIndex(int(choice)));
 				} else {
 					mainViewManager.hideSprite();
 				}

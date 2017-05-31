@@ -3,6 +3,8 @@ package classes.Scenes.Places.Bazaar
 	import classes.GlobalFlags.*;
 	import classes.Items.Mutations;
 	import classes.*;
+	import classes.display.SpriteDb;
+	import classes.internals.*;
 	/**
 	 * The Black Cock by Foxxling
 	 * @author Kitteh6660
@@ -56,7 +58,7 @@ package classes.Scenes.Places.Bazaar
 		
 		public function enterTheBlackCock():void {
 			clearOutput();
-			spriteSelect(-1);
+			spriteSelect(null);
 			outputText(images.showImage("location-bazaar-theblackcock"));
 			//General descriptor
 			outputText("You enter the tent to find much of what you'd expect: A bunch of wooden tables and a sectioned-off portion in the back where you presume the cooking happens. Next to the flap leading into the kitchen there is a big \"keep out\" sign stuck into the ground through the tent's bottom. ");
@@ -1865,9 +1867,10 @@ package classes.Scenes.Places.Bazaar
 			//Remove gills
 			if (rand(3) == 0 && changes < changeLimit && player.hasGills()) mutations.updateGills();
 
-			if (rand(3) == 0 && changes < changeLimit && player.eyeType == EYES_FOUR_SPIDER_EYES) {
-				outputText("\n\nYour two forehead eyes start throbbing painfully, your sight in them eventually going dark. You touch your forehead to inspect your eyes, only to find out that they have disappeared. <b>You only have two eyes now!</b>");
+			if (rand(3) == 0 && changes < changeLimit && player.eyeType == EYES_FOUR_SPIDER_EYES || player.eyeType == EYES_SPIDER) {
+				outputText("\n\nYour eyes start throbbing painfully, your sight in them eventually going dark. You touch your head to inspect your eyes, only to find out that they have changed. <b>You have human eyes now!</b>");
 				player.eyeType == EYES_HUMAN;
+				player.eyeCount = 2;
 				changes++;
 			}
 			if (rand(3) == 0 && changes < changeLimit && player.averageNipplesPerBreast() > 4) {

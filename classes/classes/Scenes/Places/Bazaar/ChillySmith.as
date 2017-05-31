@@ -5,6 +5,8 @@ package classes.Scenes.Places.Bazaar {
 	import classes.Player;
 	import classes.Scenes.Inventory;
 	import classes.StatusEffects;
+	import classes.display.SpriteDb;
+	import classes.internals.*;
 	
 // By Foxwells
 // Sun, the Bizarre Bazaar's Weaponsmith/Blacksmith
@@ -77,7 +79,7 @@ package classes.Scenes.Places.Bazaar {
 		}
 		
 		public function smithShop():void { //Entrance, buttons
-			spriteSelect(113);
+			spriteSelect(SpriteDb.s_chillySmith);
 			clearOutput();
 			outputText("You make your way into ");
 			if (silly()) outputText("the Chili's");
@@ -111,7 +113,7 @@ package classes.Scenes.Places.Bazaar {
 			addShopItem(6, weapons.SPEAR  , 450, 1);
 			addShopItem(7, weapons.U_SWORD, 800, 1);
 			if (flags[kFLAGS.MRAPIER_BOUGHT] == 0 && !player.hasItem(weapons.MRAPIER, 1) && !inventory.hasItemInStorage(weapons.MRAPIER)) {
-				addShopItem(8, weapons.MRAPIER, 8000, 1); //One-buy and one-own only given its power.
+				addShopItem(8, weapons.MRAPIER, 25000, 1); //One-buy and one-own only given its power.
 			}
 			else {
 				addButtonDisabled(8, weapons.MRAPIER.shortName, "There's none in stock.", "");

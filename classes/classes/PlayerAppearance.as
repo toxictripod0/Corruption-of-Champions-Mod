@@ -261,8 +261,8 @@ package classes
 			//M/F stuff!
 			outputText("  It has " + player.faceDesc() + ".");
 			//Eyes
-			if (player.eyeType == EYES_FOUR_SPIDER_EYES) 
-				outputText("  In addition to your primary two eyes, you have a second, smaller pair on your forehead.");
+			if (player.eyeType == EYES_SPIDER) 
+				outputText(" Your eyes are normal, save for their black irises, making them ominous and hypnotizing.");
 			else if (player.eyeType == EYES_BLACK_EYES_SAND_TRAP) 
 				outputText("  Your eyes are solid spheres of inky, alien darkness.");
 			else if (player.eyeType == EYES_WOLF) 
@@ -280,6 +280,7 @@ package classes
 				if (player.eyeType == EYES_BASILISK)
 					outputText(" Others seem compelled to look into them.");
 			}
+			if (player.eyeCount > 2) outputText(" In addition to your primary two eyes, you have " + player.eyeCount + " eyes positioned on your forehead.");
 
 			//Hair
 			//Hair
