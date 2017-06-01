@@ -63,7 +63,7 @@ package classes.Items.Consumables
 			//PRE-CHANGES: become biped, remove horns, remove wings, give human tongue, remove claws, remove antennea
 			//no claws
 			if (rand(4) === 0) {
-				mutations.updateClaws();
+				mutations.changeClaws(CLAW_TYPE_NORMAL);
 			}
 			//remove antennae
 			if (player.antennae !== ANTENNAE_NONE && rand(3) === 0 && changes < changeLimit) {
@@ -106,19 +106,15 @@ package classes.Items.Consumables
 			}
 			//normal legs
 			if (player.lowerBody !== LOWER_BODY_TYPE_WOLF && rand(4) === 0) {
-				mutations.restoreLegs(tfSource);
+				mutations.changeLegs(LOWER_BODY_TYPE_HUMAN);
 			}
 			//normal arms
 			if (rand(4) === 0) {
-				mutations.restoreArms(tfSource);
+				mutations.changeArms(ARM_TYPE_HUMAN);
 			}
-			//remove feather hair
+			//remove unusual hair
 			if (rand(4) === 0) {
-				mutations.removeFeatheryHair();
-			}
-			//remove basilisk hair
-			if (rand(4) === 0) {
-				mutations.removeBassyHair();
+				mutations.changeHair(HAIR_NORMAL, "black");
 			}
 			//MUTATIONZ AT ANY TIME: wolf dick, add/decrease breasts, decrease breast size if above D
 			//get a wolf dick
@@ -388,7 +384,7 @@ package classes.Items.Consumables
 			}
 			//MISC CRAP
 			if (rand(5) === 0) {
-				mutations.updateOvipositionPerk(tfSource);
+				mutations.changeOviPerk(false);
 			}
 			if (rand(3) === 0) {
 				outputText(player.modTone(100, 4));
