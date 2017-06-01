@@ -198,7 +198,7 @@ public static const LOWER_BODY_TYPE_HUMAN:int                                   
 public static const LOWER_BODY_TYPE_HOOFED:int                                      =   1;
 public static const LOWER_BODY_TYPE_DOG:int                                         =   2;
 public static const LOWER_BODY_TYPE_NAGA:int                                        =   3;
-//public static const LOWER_BODY_TYPE_CENTAUR:int                                   =   4; //DEPRECATED
+//public static const LOWER_BODY_TYPE_CENTAUR:int                                   =   4; //DEPRECATED - USE HOOFED + LEGCOUNT 4
 public static const LOWER_BODY_TYPE_DEMONIC_HIGH_HEELS:int                          =   5;
 public static const LOWER_BODY_TYPE_DEMONIC_CLAWS:int                               =   6;
 public static const LOWER_BODY_TYPE_BEE:int                                         =   7;
@@ -218,7 +218,7 @@ public static const LOWER_BODY_TYPE_FERRET:int                                  
 public static const LOWER_BODY_TYPE_CLOVEN_HOOFED:int                               =  21;
 //public static const LOWER_BODY_TYPE_RHINO:int                                     =  22;
 public static const LOWER_BODY_TYPE_ECHIDNA:int                                     =  23;
-//public static const LOWER_BODY_TYPE_DEERTAUR:int                                  =  24; //DEPRECATED
+//public static const LOWER_BODY_TYPE_DEERTAUR:int                                  =  24;//DEPRECATED - USE CLOVEN HOOFED + LEGCOUNT 4
 public static const LOWER_BODY_TYPE_SALAMANDER:int                                  =  25;
 public static const LOWER_BODY_TYPE_WOLF:int                                        =  26;
 public static const LOWER_BODY_TYPE_IMP:int                                         =  27;
