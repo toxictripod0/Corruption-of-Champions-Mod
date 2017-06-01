@@ -2,8 +2,7 @@ package classes.Scenes.Areas.Mountain {
 	import classes.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
-	import classes.Items.
-	s.LustyMaidensArmor;
+	import classes.Items.Armors.LustyMaidensArmor;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
 
