@@ -29,8 +29,6 @@ import flash.utils.setTimeout;
 
 		protected var _currentText:String = "";
 		protected var _history:Array = [""];
-		public function get currentText():String { return _currentText; }
-		public function set currentText(value:String):void { _currentText = value; }
 
 		public function get mainViewManager():MainViewManager { return kGAMECLASS.mainViewManager; }
 		public function forceUpdate():void { kGAMECLASS.forceUpdate(); }
