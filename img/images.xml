@@ -817,6 +817,42 @@
 				<ImageFile>./img/goblinelder-win-male-goblincondomed</ImageFile>
 				<ImageFile>./img/goblinelder-win-male-goblincondomed_1</ImageFile>
 			</ImageSet>
+			<ImageSet id="googirl-loss-female">
+				<ImageFile>./img/googirl-loss-female</ImageFile>
+				<ImageFile>./img/googirl-loss-female_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="googirl-loss-male">
+				<ImageFile>./img/googirl-loss-male</ImageFile>
+				<ImageFile>./img/googirl-loss-male_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="googirl-win-female">
+				<ImageFile>./img/googirl-win-female</ImageFile>
+				<ImageFile>./img/googirl-win-female_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="googirl-win-male">
+				<ImageFile>./img/googirl-win-male</ImageFile>
+				<ImageFile>./img/googirl-win-male_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="harpy-loss-female">
+				<ImageFile>./img/harpy-loss-female</ImageFile>
+				<ImageFile>./img/harpy-loss-female_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="harpy-loss-male">
+				<ImageFile>./img/harpy-loss-male</ImageFile>
+				<ImageFile>./img/harpy-loss-male_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="harpy-win-female">
+				<ImageFile>./img/harpy-win-female</ImageFile>
+				<ImageFile>./img/harpy-win-female_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="harpy-win-male">
+				<ImageFile>./img/harpy-win-male</ImageFile>
+				<ImageFile>./img/harpy-win-male_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="harpy-win-male-oral">
+				<ImageFile>./img/harpy-win-male-oral</ImageFile>
+				<ImageFile>./img/harpy-win-male-oral_1</ImageFile>
+			</ImageSet>
 			<ImageSet id="harry-intro">
 				<ImageFile>./img/harry-intro</ImageFile>
 				<ImageFile>./img/harry-intro_1</ImageFile>
@@ -1916,6 +1952,22 @@
 			<ImageSet id="monster-zetaz">
 				<ImageFile>./img/monster-zetaz</ImageFile>
 				<ImageFile>./img/monster-zetaz_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="naga-loss-female">
+				<ImageFile>./img/naga-loss-female</ImageFile>
+				<ImageFile>./img/naga-loss-female_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="naga-loss-male">
+				<ImageFile>./img/naga-loss-male</ImageFile>
+				<ImageFile>./img/naga-loss-male_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="naga-win-female">
+				<ImageFile>./img/naga-win-female</ImageFile>
+				<ImageFile>./img/naga-win-female_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="naga-win-male">
+				<ImageFile>./img/naga-win-male</ImageFile>
+				<ImageFile>./img/naga-win-male_1</ImageFile>
 			</ImageSet>
 			<ImageSet id="niamh-approach-in-bar">
 				<ImageFile>./img/niamh-approach-in-bar</ImageFile>
