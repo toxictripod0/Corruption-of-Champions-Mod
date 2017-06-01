@@ -243,7 +243,7 @@ package classes.Items.Consumables
 				}
 			}
 			if (rand(5) === 0) {
-				mutations.updateOvipositionPerk(tfSource);
+				mutations.changeOviPerk(false);
 			}
 			//Nipples Turn Black:
 			if (!player.hasStatusEffect(StatusEffects.BlackNipples) && rand(6) === 0 && changes < changeLimit) {

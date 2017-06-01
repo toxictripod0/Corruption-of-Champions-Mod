@@ -160,14 +160,14 @@ package classes.Items.Consumables
 				}
 			}
 			if (rand(5) === 0) {
-				mutations.updateOvipositionPerk(tfSource);
+				mutations.changeOviPerk(false);
 			}
 			//Restore arms to become human arms again
 			if (rand(4) === 0) {
-				mutations.restoreArms(tfSource);
+				mutations.changeArms(ARM_TYPE_HUMAN, true);
 			}
 			//Remove feathery hair
-			mutations.removeFeatheryHair();
+			mutations.changeHair(HAIR_NORMAL, "brown");
 			//
 			//SEXUAL CHARACTERISTICS
 			//
@@ -504,7 +504,7 @@ package classes.Items.Consumables
 			}
 			// Remove gills
 			if (rand(4) === 0 && player.hasGills() && changes < changeLimit) {
-				mutations.updateGills();
+				mutations.changeGills(GILLS_NONE);
 			}
 
 			if (rand(3) === 0) outputText(player.modTone(60, 1));

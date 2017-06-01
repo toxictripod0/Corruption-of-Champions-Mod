@@ -1845,7 +1845,7 @@ package classes
 			else // totally random one
 			{
 				player.lowerBody = rand(21) + 1; // since it is not a enum, it is impossible to make it auto-ajust...
-				if (player.lowerBody > 3 && player.lowerBody < 5) {
+				if (player.lowerBody == 4) {
 					player.lowerBody = LOWER_BODY_TYPE_HOOFED;
 					player.legCount = 4;
 				}
