@@ -1969,6 +1969,22 @@
 				<ImageFile>./img/monster-zetaz</ImageFile>
 				<ImageFile>./img/monster-zetaz_1</ImageFile>
 			</ImageSet>
+			<ImageSet id="naga-loss-female">
+				<ImageFile>./img/naga-loss-female</ImageFile>
+				<ImageFile>./img/naga-loss-female_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="naga-loss-male">
+				<ImageFile>./img/naga-loss-male</ImageFile>
+				<ImageFile>./img/naga-loss-male_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="naga-win-female">
+				<ImageFile>./img/naga-win-female</ImageFile>
+				<ImageFile>./img/naga-win-female_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="naga-win-male">
+				<ImageFile>./img/naga-win-male</ImageFile>
+				<ImageFile>./img/naga-win-male_1</ImageFile>
+			</ImageSet>
 			<ImageSet id="niamh-approach-in-bar">
 				<ImageFile>./img/niamh-approach-in-bar</ImageFile>
 				<ImageFile>./img/niamh-approach-in-bar_1</ImageFile>
