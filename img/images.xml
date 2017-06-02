@@ -5,6 +5,8 @@
 				<ImageFile>./img/akbal-deepwoods-bigbuttanaled</ImageFile>
 				<ImageFile>./img/akbal-deepwoods-bigbuttanaled_1</ImageFile>
 			</ImageSet>
+			
+			
 			<ImageSet id="akbal-deepwoods-female-bindakbal">
 				<ImageFile>./img/akbal-deepwoods-female-bindakbal</ImageFile>
 				<ImageFile>./img/akbal-deepwoods-female-bindakbal_1</ImageFile>
@@ -724,6 +726,10 @@
 			<ImageSet id="frida-order-cake">
 				<ImageFile>./img/frida-order-cake</ImageFile>
 				<ImageFile>./img/frida-order-cake_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="gargoyle-cathedral">
+				<ImageFile>./img/gargoyle-cathedral</ImageFile>
+				<ImageFile>./img/gargoyle-cathedral_1</ImageFile>
 			</ImageSet>
 			<ImageSet id="goblin-loss-female-bimbodildo">
 				<ImageFile>./img/goblin-loss-female-bimbodildo</ImageFile>
