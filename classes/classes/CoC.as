@@ -11,7 +11,16 @@ package classes
 	import classes.GlobalFlags.kFLAGS;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
-	import flash.display.BitmapData;
+
+import coc.view.Main;
+
+import coc.view.MainLayout;
+
+import flash.display.BitmapData;
+import flash.display.DisplayObjectContainer;
+import flash.utils.setTimeout;
+
+import mx.flash.UIMovieClip;
 
 // This file contains most of the persistent gamestate flags.
 	import classes.GlobalFlags.kGAMECLASS; // This file creates the gameclass that the game will run within.
@@ -128,7 +137,7 @@ the text from being too boring.
 		
 	[SWF( width="1000", height="800", pageTitle="Corruption of Champions" )]
 
-	public class CoC extends MovieClip 
+	public class CoC extends MovieClip
 	{
 		{
 			/*
@@ -392,17 +401,22 @@ the text from being too boring.
 			// let the logging begin!
 			Log.addTarget(traceTarget);
 		}
-		
+
+		private var stageToUse:DisplayObjectContainer = null;
+
+		override public function get stage():Stage {
+			if (stageToUse != null) return stageToUse.stage;
+			return super.stage;
+		}
 		/**
 		 * Create the main game instance.
 		 * If a stage is injected it will be use instead of the one from the superclass.
 		 * 
 		 * @param injectedStage if not null, it will be used instead of this.stage
 		 */
-		public function CoC(injectedStage:Stage = null)
+		public function CoC(injectedStage:DisplayObjectContainer = null)
 		{
-			var stageToUse:Stage;
-			
+
 			if (injectedStage != null) {
 				stageToUse = injectedStage;
 			}else{
@@ -422,10 +436,17 @@ the text from being too boring.
 			this.parser = new Parser(this, CoC_Settings);
 
 			this.model = new GameModel();
-			this.mainView = new MainView(/*this.model*/);
+			try {
+				this.mainView = new MainView(/*this.model*/);
+			} catch (e:Error) {
+				trace(e, e.getStackTrace());
+				return;
+			}
 			this.mainView.name = "mainView";
+			this.mainView.addEventListener("addedToStage",Utils.curry(_postInit,stageToUse));
 			stageToUse.addChild( this.mainView );
-
+		}
+		private function _postInit(stageToUse:DisplayObjectContainer,e:Event):void{
 			// Hooking things to MainView.
 			this.mainView.onNewGameClick = charCreation.newGameGo;
 			this.mainView.onAppearanceClick = playerAppearance.appearance;
@@ -458,8 +479,8 @@ the text from being too boring.
 			mobile = false;
 			model.mobile = mobile;
 
-			this.images = new ImageManager(stageToUse);
-			this.inputManager = new InputManager(stageToUse, false);
+			this.images = new ImageManager(stageToUse.stage, mainView);
+			this.inputManager = new InputManager(stageToUse.stage, mainView, false);
 			include "../../includes/ControlBindings.as";
 			
 			//} endregion
@@ -578,21 +599,24 @@ the text from being too boring.
 			mainView.statsView.hideUpDown();
 
 			this.addFrameScript( 0, this.run );
+			//setTimeout(this.run,0);
 		}
 
 		public function run():void
 		{
-			mainMenu.mainMenu();
+			if (mainMenu) mainMenu.mainMenu();
 			this.stop();
 
-			_updateHack.name = "wtf";
-			_updateHack.graphics.beginFill(0xFF0000, 1);
-			_updateHack.graphics.drawRect(0, 0, 2, 2);
-			_updateHack.graphics.endFill();
+			if (_updateHack) {
+				_updateHack.name = "wtf";
+				_updateHack.graphics.beginFill(0xFF0000, 1);
+				_updateHack.graphics.drawRect(0, 0, 2, 2);
+				_updateHack.graphics.endFill();
 
-			stage.addChild(_updateHack);
-			_updateHack.x = 999;
-			_updateHack.y = 799;
+				stage.addChild(_updateHack);
+				_updateHack.x = 999;
+				_updateHack.y = 799;
+			}
 		}
 
 		public function forceUpdate():void
@@ -624,6 +648,15 @@ the text from being too boring.
 					mainViewManager.hideSprite();
 				}
 			}
+		}
+
+		public static function main(container:DisplayObjectContainer):void {
+//			MainView._layout = layout;
+
+			container.addChild(new CoC(container.stage).mainView);
+			/*var e:DisplayObjectContainer = main.parent;
+			while (e && !e.stage) e = e.parent;
+			new CoC(e?e.stage:null);*/
 		}
 	}
 }

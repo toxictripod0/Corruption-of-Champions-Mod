@@ -1,39 +1,29 @@
 //The code that is responsible for managing MainView.
 package classes 
 {
-	import classes.*
-	import classes.GlobalFlags.kFLAGS;
-	import classes.GlobalFlags.kGAMECLASS;
+import classes.GlobalFlags.kFLAGS;
+import classes.GlobalFlags.kGAMECLASS;
 
-import flash.display.Bitmap;
+import coc.view.BitmapDataSprite;
+import coc.view.MainLayout;
+
+import coc.view.MainView;
+import coc.view.StatsLayout;
+
 import flash.display.BitmapData;
-import flash.display.IBitmapDrawable;
-import flash.display.Shape;
-	import flash.display.GradientType;
-	import flash.events.Event;
-	import flash.events.TimerEvent;
-	import flash.text.TextFormat;
-	
-	import coc.view.MainView;
-	import coc.view.CoCButton;
-	
-	import flash.events.MouseEvent;
+import flash.display.DisplayObject;
+import flash.display.DisplayObjectContainer;
+import flash.display.MovieClip;
+import flash.display.Sprite;
+import flash.display.Stage;
+import flash.events.KeyboardEvent;
+import flash.events.TimerEvent;
+import flash.text.TextFormat;
+import flash.ui.Keyboard;
+import flash.utils.Timer;
+import flash.utils.getQualifiedClassName;
 
-	import flash.display.MovieClip;
-    import flash.display.Sprite;
-    import flash.display.DisplayObject;
-	import flash.display.DisplayObjectContainer;
-	
-	import flash.text.Font;
-	import flash.text.TextFormat;
-	import flash.text.TextFormatAlign;
-	import flash.text.TextFieldAutoSize;
-	
-	import flash.events.KeyboardEvent;
-	import flash.ui.Keyboard;
-	
-	import flash.utils.Timer;
-import flash.utils.setTimeout;
+import mx.core.BitmapAsset;
 
 //import fl.transition.Tween;
 	//import fl.transition.easing.*
@@ -82,10 +72,10 @@ import flash.utils.setTimeout;
 			barsDecorated = true;
 			var barsToDecorate:Array = ["strBar", "touBar", "speBar", "inteBar", "libBar", "sensBar", "corBar", "HPBar", "lustBar", "fatigueBar", "hungerBar", "esteemBar", "willBar", "obeyBar", "xpBar"];
 			for (var i:int = 0; i < barsToDecorate.length; i++) {
-				var marker:Sprite = new StatsBarTrim() as Sprite;
+				var marker:Sprite = new BitmapDataSprite(MainLayout.StatsBarTrim);
 				marker.name = barsToDecorate[i] + "Trim";
-				marker.x = mainView[barsToDecorate[i]].x - 2;
-				marker.y = mainView[barsToDecorate[i]].y + 18;
+				marker.x = mainView.statsView[barsToDecorate[i]].x - 2;
+				marker.y = mainView.statsView[barsToDecorate[i]].y + 18;
 				mainView.statsView.addChildAt(marker, mainView.statsView.numChildren);
 			}
 		}
@@ -95,20 +85,20 @@ import flash.utils.setTimeout;
 		//------------
 		//Hide hunger bar, necessary if either of the 2 conditions happen: We either switch to the old interface or we have hunger disabled.
 		public function hideHungerBar():void {
-			if (mainView.statsView.getChildByName("hungerBar") != null) {
-				mainView.hungerBar.visible = false;
-				mainView.hungerNum.visible = false;
-				mainView.hungerText.visible = false;
-				mainView.hungerDown.visible = false;
-				mainView.hungerUp.visible = false;
+			if (mainView.statsView.hungerBar != null) {
+				mainView.statsView.hungerBar.visible = false;
+				mainView.statsView.hungerNum.visible = false;
+				mainView.statsView.hungerText.visible = false;
+				mainView.statsView.hungerDown.visible = false;
+				mainView.statsView.hungerUp.visible = false;
 				mainView.statsView.getChildByName("hungerBarTrim").visible = false;
 			}
 		}
 		public function showHungerBar():void {
-			if (mainView.statsView.getChildByName("hungerBar") != null) {
-				mainView.hungerBar.visible = true;
-				mainView.hungerNum.visible = true;
-				mainView.hungerText.visible = true;
+			if (mainView.statsView.hungerBar != null) {
+				mainView.statsView.hungerBar.visible = true;
+				mainView.statsView.hungerNum.visible = true;
+				mainView.statsView.hungerText.visible = true;
 				//mainView.hungerDown.visible = false;
 				//mainView.hungerUp.visible = false;
 				mainView.statsView.getChildByName("hungerBarTrim").visible = true;
@@ -116,59 +106,59 @@ import flash.utils.setTimeout;
 		}
 		
 		public function hidePrisonBar():void {
-			mainView.levelNum.visible = true;
-			mainView.levelText.visible = true;
-			mainView.xpNum.visible = true;
-			mainView.xpText.visible = true;
-			mainView.gemsNum.visible = true;
-			mainView.gemsText.visible = true;
+			mainView.statsView.levelNum.visible = true;
+			mainView.statsView.levelText.visible = true;
+			mainView.statsView.xpNum.visible = true;
+			mainView.statsView.xpText.visible = true;
+			mainView.statsView.gemsNum.visible = true;
+			mainView.statsView.gemsText.visible = true;
 			//Hide willpower
-			mainView.willBar.visible = false;
-			mainView.willNum.visible = false;
-			mainView.willText.visible = false;
-			mainView.willDown.visible = false;
-			mainView.willUp.visible = false;
+			mainView.statsView.willBar.visible = false;
+			mainView.statsView.willNum.visible = false;
+			mainView.statsView.willText.visible = false;
+			mainView.statsView.willDown.visible = false;
+			mainView.statsView.willUp.visible = false;
 			mainView.statsView.getChildByName("willBarTrim").visible = false;
 			//Hide self-esteem
-			mainView.esteemBar.visible = false;
-			mainView.esteemNum.visible = false;
-			mainView.esteemText.visible = false;
-			mainView.esteemDown.visible = false;
-			mainView.esteemUp.visible = false;
+			mainView.statsView.esteemBar.visible = false;
+			mainView.statsView.esteemNum.visible = false;
+			mainView.statsView.esteemText.visible = false;
+			mainView.statsView.esteemDown.visible = false;
+			mainView.statsView.esteemUp.visible = false;
 			mainView.statsView.getChildByName("esteemBarTrim").visible = false;
 			//Hide obedience
-			mainView.obeyBar.visible = false;
-			mainView.obeyNum.visible = false;
-			mainView.obeyText.visible = false;
-			mainView.obeyDown.visible = false;
-			mainView.obeyUp.visible = false;
+			mainView.statsView.obeyBar.visible = false;
+			mainView.statsView.obeyNum.visible = false;
+			mainView.statsView.obeyText.visible = false;
+			mainView.statsView.obeyDown.visible = false;
+			mainView.statsView.obeyUp.visible = false;
 			mainView.statsView.getChildByName("obeyBarTrim").visible = false;
 		}
 		public function showPrisonBar():void {
-			mainView.levelNum.visible = false;
-			mainView.levelText.visible = false;
-			mainView.xpNum.visible = false;
-			mainView.xpText.visible = false;
-			mainView.gemsNum.visible = false;
-			mainView.gemsText.visible = false;
+			mainView.statsView.levelNum.visible = false;
+			mainView.statsView.levelText.visible = false;
+			mainView.statsView.xpNum.visible = false;
+			mainView.statsView.xpText.visible = false;
+			mainView.statsView.gemsNum.visible = false;
+			mainView.statsView.gemsText.visible = false;
 			//Show willpower
-			if (flags[kFLAGS.USE_OLD_INTERFACE] == 0) mainView.willBar.visible = true;
-			mainView.willNum.visible = true;
-			mainView.willText.visible = true;
+			if (flags[kFLAGS.USE_OLD_INTERFACE] == 0) mainView.statsView.willBar.visible = true;
+			mainView.statsView.willNum.visible = true;
+			mainView.statsView.willText.visible = true;
 			//mainView.willDown.visible = false;
 			//mainView.willUp.visible = false;
 			mainView.statsView.getChildByName("willBarTrim").visible = true;
 			//Show self-esteem
-			if (flags[kFLAGS.USE_OLD_INTERFACE] == 0) mainView.esteemBar.visible = true;
-			mainView.esteemNum.visible = true;
-			mainView.esteemText.visible = true;
+			if (flags[kFLAGS.USE_OLD_INTERFACE] == 0) mainView.statsView.esteemBar.visible = true;
+			mainView.statsView.esteemNum.visible = true;
+			mainView.statsView.esteemText.visible = true;
 			//mainView.esteemDown.visible = false;
 			//mainView.esteemUp.visible = false;
 			mainView.statsView.getChildByName("esteemBarTrim").visible = true;
 			//Show obedience
-			if (flags[kFLAGS.USE_OLD_INTERFACE] == 0) mainView.obeyBar.visible = true;
-			mainView.obeyNum.visible = true;
-			mainView.obeyText.visible = true;
+			if (flags[kFLAGS.USE_OLD_INTERFACE] == 0) mainView.statsView.obeyBar.visible = true;
+			mainView.statsView.obeyNum.visible = true;
+			mainView.statsView.obeyText.visible = true;
 			//mainView.obeyDown.visible = false;
 			//mainView.obeyUp.visible = false;
 			mainView.statsView.getChildByName("obeyBarTrim").visible = true;
@@ -176,107 +166,107 @@ import flash.utils.setTimeout;
 		
 		//Hide XP bar. (For old menus)
 		public function hideExperienceBar():void {
-			mainView.xpBar.visible = false;
+			mainView.statsView.xpBar.visible = false;
 		}
 		public function showExperienceBar():void {
-			mainView.xpBar.visible = true;
+			mainView.statsView.xpBar.visible = true;
 		}
 		
 		//Hide min lust bar. (For old menus)
 		public function hideMinLustBar():void {
-			mainView.minLustBar.visible = false;
+			mainView.statsView.minLustBar.visible = false;
 		}
 		public function showMinLustBar():void {
-			mainView.minLustBar.visible = true;
+			mainView.statsView.minLustBar.visible = true;
 		}
 		
 		public function setTheme():void {
 			var i:int = 0; //Will be used for array.
 			if (!arraySet) {
 				arraySet = true;
-				oldFormat = mainView.timeText.getTextFormat();
+				oldFormat = mainView.statsView.timeText.getTextFormat();
 				oldFormat.size = null;
 				oldFormat.align = null;
-				newFormat = mainView.strNum.getTextFormat();
+				newFormat = mainView.statsView.strNum.getTextFormat();
 				newFormat.size = null;
 				newFormat.align = null;
 				colorableTexts.push(
 					//Core stats
-					mainView.strText, mainView.strNum, 
-					mainView.touText, mainView.touNum, 
-					mainView.speText, mainView.speNum, 
-					mainView.inteText, mainView.inteNum, 
-					mainView.libText, mainView.libNum, 
-					mainView.senText, mainView.senNum, 
-					mainView.corText, mainView.corNum, 
+					mainView.statsView.strText, mainView.statsView.strNum,
+					mainView.statsView.touText, mainView.statsView.touNum,
+					mainView.statsView.speText, mainView.statsView.speNum,
+					mainView.statsView.inteText, mainView.statsView.inteNum,
+					mainView.statsView.libText, mainView.statsView.libNum,
+					mainView.statsView.senText, mainView.statsView.senNum,
+					mainView.statsView.corText, mainView.statsView.corNum,
 					//Combat stats
-					mainView.HPText, mainView.HPNum, 
-					mainView.lustText, mainView.lustNum, 
-					mainView.fatigueText, mainView.fatigueNum,
-					mainView.hungerText, mainView.hungerNum,
+					mainView.statsView.HPText, mainView.statsView.HPNum,
+					mainView.statsView.lustText, mainView.statsView.lustNum,
+					mainView.statsView.fatigueText, mainView.statsView.fatigueNum,
+					mainView.statsView.hungerText, mainView.statsView.hungerNum,
 					//Prison stats
-					mainView.willText, mainView.willNum, 
-					mainView.esteemText, mainView.esteemNum, 
-					mainView.obeyText, mainView.obeyNum,
+					mainView.statsView.willText, mainView.statsView.willNum,
+					mainView.statsView.esteemText, mainView.statsView.esteemNum,
+					mainView.statsView.obeyText, mainView.statsView.obeyNum,
 					//Advancement
-					mainView.levelText, mainView.levelNum, 
-					mainView.xpText, mainView.xpNum, 
-					mainView.gemsText, mainView.gemsNum,
+					mainView.statsView.levelText, mainView.statsView.levelNum,
+					mainView.statsView.xpText, mainView.statsView.xpNum,
+					mainView.statsView.gemsText, mainView.statsView.gemsNum,
 					//Misc
-					mainView.nameText,
-					mainView.coreStatsText,
-					mainView.combatStatsText,
-					mainView.advancementText,
-					mainView.timeText
+					mainView.statsView.nameText,
+					mainView.statsView.coreStatsText,
+					mainView.statsView.combatStatsText,
+					mainView.statsView.advancementText,
+					mainView.statsView.timeText
 				);
 				fontableTexts.push(
 					//Core stats
-					mainView.strText, mainView.strNum, 
-					mainView.touText, mainView.touNum, 
-					mainView.speText, mainView.speNum, 
-					mainView.inteText, mainView.inteNum, 
-					mainView.libText, mainView.libNum, 
-					mainView.senText, mainView.senNum, 
-					mainView.corText, mainView.corNum, 
+					mainView.statsView.strText, mainView.statsView.strNum,
+					mainView.statsView.touText, mainView.statsView.touNum,
+					mainView.statsView.speText, mainView.statsView.speNum,
+					mainView.statsView.inteText, mainView.statsView.inteNum,
+					mainView.statsView.libText, mainView.statsView.libNum,
+					mainView.statsView.senText, mainView.statsView.senNum,
+					mainView.statsView.corText, mainView.statsView.corNum,
 					//Combat stats
-					mainView.HPText, mainView.HPNum, 
-					mainView.lustText, mainView.lustNum, 
-					mainView.fatigueText, mainView.fatigueNum,
-					mainView.hungerText, mainView.hungerNum,
+					mainView.statsView.HPText, mainView.statsView.HPNum,
+					mainView.statsView.lustText, mainView.statsView.lustNum,
+					mainView.statsView.fatigueText, mainView.statsView.fatigueNum,
+					mainView.statsView.hungerText, mainView.statsView.hungerNum,
 					//Prison stats
-					mainView.willText, mainView.willNum, 
-					mainView.esteemText, mainView.esteemNum, 
-					mainView.obeyText, mainView.obeyNum,
+					mainView.statsView.willText, mainView.statsView.willNum,
+					mainView.statsView.esteemText, mainView.statsView.esteemNum,
+					mainView.statsView.obeyText, mainView.statsView.obeyNum,
 					//Advancement
-					mainView.levelText, mainView.levelNum, 
-					mainView.xpText, mainView.xpNum, 
-					mainView.gemsText, mainView.gemsNum
+					mainView.statsView.levelText, mainView.statsView.levelNum,
+					mainView.statsView.xpText, mainView.statsView.xpNum,
+					mainView.statsView.gemsText, mainView.statsView.gemsNum
 				);
 				bars.push(
 					//Core stats
-					mainView.strBar,
-					mainView.touBar,
-					mainView.speBar,
-					mainView.inteBar,
-					mainView.libBar,
-					mainView.sensBar,
-					mainView.corBar,
+					mainView.statsView.strBar,
+					mainView.statsView.touBar,
+					mainView.statsView.speBar,
+					mainView.statsView.inteBar,
+					mainView.statsView.libBar,
+					mainView.statsView.sensBar,
+					mainView.statsView.corBar,
 					//Combat stats
-					mainView.HPBar,
-					mainView.lustBar,
-					mainView.fatigueBar,
-					mainView.hungerBar,
+					mainView.statsView.HPBar,
+					mainView.statsView.lustBar,
+					mainView.statsView.fatigueBar,
+					mainView.statsView.hungerBar,
 					//Prison stats
-					mainView.willBar,
-					mainView.esteemBar,
-					mainView.obeyBar,
+					mainView.statsView.willBar,
+					mainView.statsView.esteemBar,
+					mainView.statsView.obeyBar,
 					//Advancement
-					mainView.xpBar
+					mainView.statsView.xpBar
 				);
 			}
 			//Set background
-			mainView.background.gotoAndStop(flags[kFLAGS.BACKGROUND_STYLE] + 1);
-			mainView.sideBarBG.gotoAndStop(flags[kFLAGS.BACKGROUND_STYLE] + 1);
+			mainView.background.bdClass = MainLayout.Backgrounds[flags[kFLAGS.BACKGROUND_STYLE]];
+			mainView.statsView.sideBarBG.bdClass = StatsLayout.SidebarBackgrounds[flags[kFLAGS.BACKGROUND_STYLE]];
 			//Set font
 			if (flags[kFLAGS.USE_OLD_FONT] > 0) {
 				for (i = 0; i < fontableTexts.length; i++) {
@@ -348,88 +338,88 @@ import flash.utils.setTimeout;
 				showExperienceBar();
 			}
 			//Set bars
-			mainView.strBar.width = (player.str * (baseWidth / player.getMaxStats("str")));
-			mainView.touBar.width = (player.tou * (baseWidth / player.getMaxStats("tou")));
-			mainView.speBar.width = (player.spe * (baseWidth / player.getMaxStats("spe")));
-			mainView.inteBar.width = (player.inte * (baseWidth / player.getMaxStats("inte")));
-			mainView.libBar.width = (player.lib * (baseWidth / 100));
-			mainView.sensBar.width = (player.sens * (baseWidth / 100));
-			mainView.corBar.width = (player.cor * (baseWidth / 100));
+			mainView.statsView.strBar.width = (player.str * (baseWidth / player.getMaxStats("str")));
+			mainView.statsView.touBar.width = (player.tou * (baseWidth / player.getMaxStats("tou")));
+			mainView.statsView.speBar.width = (player.spe * (baseWidth / player.getMaxStats("spe")));
+			mainView.statsView.inteBar.width = (player.inte * (baseWidth / player.getMaxStats("inte")));
+			mainView.statsView.libBar.width = (player.lib * (baseWidth / 100));
+			mainView.statsView.sensBar.width = (player.sens * (baseWidth / 100));
+			mainView.statsView.corBar.width = (player.cor * (baseWidth / 100));
 
-			mainView.HPBar.width = ((player.HP / player.maxHP() * 100) * (baseWidth / 100));
-			mainView.lustBar.width = ((player.lust / player.maxLust() * 100) * (baseWidth / 100));
-			mainView.minLustBar.width = ((player.minLust() / player.maxLust() * 100) * (baseWidth / 100));
-			mainView.fatigueBar.width = ((player.fatigue / player.maxFatigue() * 100) * (baseWidth / 100));
+			mainView.statsView.HPBar.width = ((player.HP / player.maxHP() * 100) * (baseWidth / 100));
+			mainView.statsView.lustBar.width = ((player.lust / player.maxLust() * 100) * (baseWidth / 100));
+			mainView.statsView.minLustBar.width = ((player.minLust() / player.maxLust() * 100) * (baseWidth / 100));
+			mainView.statsView.fatigueBar.width = ((player.fatigue / player.maxFatigue() * 100) * (baseWidth / 100));
 			
 			//Hunger bar
-			mainView.hungerBar.width = (player.hunger * (baseWidth / 100));
+			mainView.statsView.hungerBar.width = (player.hunger * (baseWidth / 100));
 			//Experience bar.
 			if (!prison.inPrison) {
-				if (player.level < kGAMECLASS.levelCap) mainView.xpBar.width = (((player.XP / player.requiredXP()) * 100) * (baseWidth / 100));
-				else mainView.xpBar.width = (100 * (baseWidth / 100)); //Display XP bar at 100% if level is capped.
-				if (player.XP >= player.requiredXP()) mainView.xpBar.width = baseWidth; //Set to 100% if XP exceeds the requirement.
+				if (player.level < kGAMECLASS.levelCap) mainView.statsView.xpBar.width = (((player.XP / player.requiredXP()) * 100) * (baseWidth / 100));
+				else mainView.statsView.xpBar.width = (100 * (baseWidth / 100)); //Display XP bar at 100% if level is capped.
+				if (player.XP >= player.requiredXP()) mainView.statsView.xpBar.width = baseWidth; //Set to 100% if XP exceeds the requirement.
 			}
 			//Prison bars
 			else {
-				mainView.esteemBar.width = (player.esteem * (baseWidth / 100));
-				mainView.willBar.width = (player.will * (baseWidth / 100));
-				mainView.obeyBar.width = (player.obey * (baseWidth / 100));
+				mainView.statsView.esteemBar.width = (player.esteem * (baseWidth / 100));
+				mainView.statsView.willBar.width = (player.will * (baseWidth / 100));
+				mainView.statsView.obeyBar.width = (player.obey * (baseWidth / 100));
 			}
 			
-			mainView.strNum.text = String(Math.floor(player.str));
-			mainView.touNum.text = String(Math.floor(player.tou));
-			mainView.speNum.text = String(Math.floor(player.spe));
-			mainView.inteNum.text = String(Math.floor(player.inte));
-			mainView.libNum.text = String(Math.floor(player.lib));
-			mainView.senNum.text = String(Math.floor(player.sens));
-			mainView.corNum.text = String(Math.floor(player.cor));
+			mainView.statsView.strNum.text = String(Math.floor(player.str));
+			mainView.statsView.touNum.text = String(Math.floor(player.tou));
+			mainView.statsView.speNum.text = String(Math.floor(player.spe));
+			mainView.statsView.inteNum.text = String(Math.floor(player.inte));
+			mainView.statsView.libNum.text = String(Math.floor(player.lib));
+			mainView.statsView.senNum.text = String(Math.floor(player.sens));
+			mainView.statsView.corNum.text = String(Math.floor(player.cor));
 			//Old interface is removed for now.
 			//if (flags[kFLAGS.USE_OLD_INTERFACE] <= 0) 
-			mainView.HPNum.text = Math.floor(player.HP) + "/" + Math.floor(player.maxHP());
+			mainView.statsView.HPNum.text = Math.floor(player.HP) + "/" + Math.floor(player.maxHP());
 			//else mainView.HPNum.text = "" + Math.floor(player.HP);
 			
 			//if (flags[kFLAGS.USE_OLD_INTERFACE] <= 0) 
-			mainView.lustNum.text = Math.floor(player.lust) + "/" + player.maxLust();
+			mainView.statsView.lustNum.text = Math.floor(player.lust) + "/" + player.maxLust();
 			//else mainView.lustNum.text = "" + Math.floor(player.lust);
 			
 			//if (flags[kFLAGS.USE_OLD_INTERFACE] <= 0) 
-			mainView.fatigueNum.text = Math.floor(player.fatigue) + "/" + player.maxFatigue();
+			mainView.statsView.fatigueNum.text = Math.floor(player.fatigue) + "/" + player.maxFatigue();
 			//else Math.floor(player.fatigue);
 			
 			if ((flags[kFLAGS.HUNGER_ENABLED] > 0 || prison.inPrison) && flags[kFLAGS.URTA_QUEST_STATUS] != 0.75 && flags[kFLAGS.USE_OLD_INTERFACE] <= 0) {
 				showHungerBar();
-				mainView.hungerNum.text = Math.floor(player.hunger) + "/" + 100;
+				mainView.statsView.hungerNum.text = Math.floor(player.hunger) + "/" + 100;
 			}
 			else {
 				hideHungerBar();
 			}
 			if (prison.inPrison) {
 				showPrisonBar();
-				mainView.willNum.text = Math.floor(player.will) + ""; //"/" + 100;
-				mainView.esteemNum.text = Math.floor(player.esteem) + ""; //"/" + 100;
-				mainView.obeyNum.text = Math.floor(player.obey) + ""; //"/" + player.obeySoftCap ? 50 : 100;
+				mainView.statsView.willNum.text = Math.floor(player.will) + ""; //"/" + 100;
+				mainView.statsView.esteemNum.text = Math.floor(player.esteem) + ""; //"/" + 100;
+				mainView.statsView.obeyNum.text = Math.floor(player.obey) + ""; //"/" + player.obeySoftCap ? 50 : 100;
 			}
 			else {
 				hidePrisonBar();
 			}
 			//Display experience numbers.
-			mainView.levelNum.text = String(player.level);
-			if (player.level < kGAMECLASS.levelCap) mainView.xpNum.text = Math.floor(player.XP) + "/" + Math.floor(player.requiredXP());
-			else mainView.xpNum.text = "MAX";
-			mainView.gemsNum.text = addComma(Math.floor(player.gems)) + "";
+			mainView.statsView.levelNum.text = String(player.level);
+			if (player.level < kGAMECLASS.levelCap) mainView.statsView.xpNum.text = Math.floor(player.XP) + "/" + Math.floor(player.requiredXP());
+			else mainView.statsView.xpNum.text = "MAX";
+			mainView.statsView.gemsNum.text = addComma(Math.floor(player.gems)) + "";
 			
 			//Get rid of the space before colon. (For new)
 			//if (flags[kFLAGS.USE_OLD_INTERFACE] <= 0) {
-				mainView.strText.text = "Strength:";
-				mainView.touText.text = "Toughness:";
-				mainView.speText.text = "Speed:";
-				mainView.inteText.text = "Intelligence:";
-				mainView.libText.text = "Libido:";
-				mainView.senText.text = "Sensitivity:";
-				mainView.corText.text = "Corruption:";
-				mainView.HPText.text = "HP:";
-				mainView.lustText.text = "Lust:";
-				mainView.fatigueText.text = "Fatigue:";
+				mainView.statsView.strText.text = "Strength:";
+				mainView.statsView.touText.text = "Toughness:";
+				mainView.statsView.speText.text = "Speed:";
+				mainView.statsView.inteText.text = "Intelligence:";
+				mainView.statsView.libText.text = "Libido:";
+				mainView.statsView.senText.text = "Sensitivity:";
+				mainView.statsView.corText.text = "Corruption:";
+				mainView.statsView.HPText.text = "HP:";
+				mainView.statsView.lustText.text = "Lust:";
+				mainView.statsView.fatigueText.text = "Fatigue:";
 			/*} else {
 				mainView.strText.text = "Strength    :";
 				mainView.touText.text = "Toughness   :";
@@ -447,12 +437,12 @@ import flash.utils.setTimeout;
 			}*/
 
 			//Headers
-			mainView.nameText.htmlText = "<b>Name: " + player.short + "</b>";
-			if (prison.inPrison) mainView.advancementText.htmlText = "<b>Prison Stats</b>";
-			else mainView.advancementText.htmlText = "<b>Advancement</b>";
+			mainView.statsView.nameText.htmlText = "<b>Name: " + player.short + "</b>";
+			if (prison.inPrison) mainView.statsView.advancementText.htmlText = "<b>Prison Stats</b>";
+			else mainView.statsView.advancementText.htmlText = "<b>Advancement</b>";
 			
 			//Time display
-			mainView.timeBG.alpha = 0;
+			mainView.statsView.timeBG.alpha = 0;
 			var hoursDisplay:String = "";
 			var minutesDisplay:String = "";
 			
@@ -465,12 +455,12 @@ import flash.utils.setTimeout;
 			if (model.time.minutes < 10) minutesDisplay = "0" + model.time.minutes;
 			else minutesDisplay = "" + model.time.minutes;
 			
-			mainView.timeText.htmlText = "<u>Day#: " + model.time.days + "</u>\n";
+			mainView.statsView.timeText.htmlText = "<u>Day#: " + model.time.days + "</u>\n";
 			if (flags[kFLAGS.USE_12_HOURS] == 0) {
-				mainView.timeText.htmlText += "Time: " + hoursDisplay + ":" + minutesDisplay + "";
+				mainView.statsView.timeText.htmlText += "Time: " + hoursDisplay + ":" + minutesDisplay + "";
 			}
 			else {
-				mainView.timeText.htmlText += "Time: " + hoursDisplay + ":" + minutesDisplay + ((model.time.hours + getGame().timeQ) < 12 ? "am" : "pm");
+				mainView.statsView.timeText.htmlText += "Time: " + hoursDisplay + ":" + minutesDisplay + ((model.time.hours + getGame().timeQ) < 12 ? "am" : "pm");
 			}
 			//Set theme!
 			setTheme();
@@ -532,6 +522,36 @@ import flash.utils.setTimeout;
 			if (event.keyCode == Keyboard.SHIFT) {
 				flags[kFLAGS.SHIFT_KEY_DOWN] = 0;
 			}
+		}
+		public function traceSelf():void {
+			function chdump(obj:DisplayObject, depth:int, alpha:Number, visible:Boolean, scaleX:Number, scaleY:Number):void {
+				alpha = alpha*obj.alpha;
+				visible = visible && obj.visible;
+				scaleX = scaleX * obj.scaleX;
+				scaleY = scaleY * obj.scaleY;
+				var s:String = repeatString("  ",depth) +
+							   getQualifiedClassName(obj) +
+							   " '" + obj.name + "' ("
+							   + (obj.x|0) + ","+(obj.y|0)+"; "
+							   + (obj.width|0)+"x"+(obj.height|0)+
+							   "), a="+obj.alpha+"="+alpha+
+							   ", v="+obj.visible+"="+visible+
+							   ", sx="+obj.scaleX+"="+scaleX+
+							   ", sy="+obj.scaleY+"="+scaleY;
+				if (obj is DisplayObjectContainer) {
+					var doc:DisplayObjectContainer = obj as DisplayObjectContainer;
+					var i:int, n:int= doc.numChildren;
+					trace(s+":");
+					for (i = 0; i < n; i++) {
+						var child:DisplayObject = doc.getChildAt(i);
+						chdump(child, depth + 1,alpha,visible,scaleX,scaleY);
+					}
+				} else {
+					trace(s+";");
+				}
+			}
+			var obj:Stage = getGame().stage;
+			chdump(obj, 0, obj.alpha,obj.visible,obj.scaleX,obj.scaleY);
 		}
 	}
 }

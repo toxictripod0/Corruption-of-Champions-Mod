@@ -343,6 +343,7 @@ inputManager.AddBindableControl(
 		"History",
 		"Show text history",
 		function():void {
+			kGAMECLASS.mainViewManager.traceSelf();
 			kGAMECLASS.output.showHistory();
 		});
 
