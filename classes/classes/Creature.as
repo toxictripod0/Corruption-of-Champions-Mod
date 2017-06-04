@@ -2178,9 +2178,7 @@ package classes
 		{
 			return [
 				LOWER_BODY_TYPE_HOOFED,
-				LOWER_BODY_TYPE_CENTAUR,
 				LOWER_BODY_TYPE_CLOVEN_HOOFED,
-				LOWER_BODY_TYPE_DEERTAUR,
 			].indexOf(lowerBody) != -1;
 		}
 
