@@ -694,7 +694,7 @@ package classes.Scenes.Combat
 				monster.doAI();
 				return;
 			}
-			if (flags[kFLAGS.PC_FETISH] >= 3 && !getGame().urtaQuest.isUrta() && !isWieldingRangedWeapon()) {
+			if ((flags[kFLAGS.PC_FETISH] >= 3 && rand(3) > 0) && !getGame().urtaQuest.isUrta() && !isWieldingRangedWeapon()) {
 				outputText("You attempt to attack, but at the last moment your body wrenches away, preventing you from even coming close to landing a blow!  Ceraph's piercings have made normal attack impossible!  Maybe you could try something else?\n\n");
 				monster.doAI();
 				return;

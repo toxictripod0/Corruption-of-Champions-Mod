@@ -303,8 +303,6 @@ the text from being too boring.
 		public var bindings:Bindings = new Bindings();
 		public var output:Output = Output.init();
 		public var measurements:Measurements = Measurements.init();
-		public function get currentText():String { return output.currentText; }
-		public function set currentText(text:String):void { output.currentText = text; }
 		/****
 			This is used purely for bodges while we get things cleaned up.
 			Hopefully, anything you stick to this object can be removed eventually.
@@ -517,8 +515,7 @@ the text from being too boring.
 			model.time = time;
 
 			//The string holds all the "story" text, mainly used in engineCore
-			currentText = "";
-			//}endregion 
+			//}endregion
 
 			// These are toggled between by the [home] key.
 			mainView.textBGWhite.visible = false;

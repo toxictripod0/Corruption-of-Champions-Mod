@@ -230,7 +230,7 @@ package classes
 		
 		protected function clearOutput():void
 		{
-			kGAMECLASS.currentText = "";
+			kGAMECLASS.output.clear();
 			kGAMECLASS.mainView.clearOutputText();
 		}
 

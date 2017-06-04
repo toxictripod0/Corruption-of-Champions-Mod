@@ -1369,11 +1369,11 @@ package classes
 			}
 			//MONEY!
 			if (player.gems == 0) 
-				outputText("\n\n<b>Your money-purse is devoid of any currency.");
+				outputText("\n\n<b>Your money-purse is devoid of any currency.</b>");
 			else if (player.gems == 1) 
-				outputText("\n\n<b>You have " + addComma(Math.floor(player.gems)) + " shining gem, collected in your travels.");
+				outputText("\n\n<b>You have " + addComma(Math.floor(player.gems)) + " shining gem, collected in your travels.</b>");
 			else if (player.gems > 1) 
-				outputText("\n\n<b>You have " + addComma(Math.floor(player.gems)) + " shining gems, collected in your travels.");
+				outputText("\n\n<b>You have " + addComma(Math.floor(player.gems)) + " shining gems, collected in your travels.</b>");
 			else {
 				outputText("\n\n<b>Something is wrong with your gems!</b>");
 			}
