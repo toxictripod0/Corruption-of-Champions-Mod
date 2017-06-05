@@ -113,7 +113,7 @@ package classes.Items.Consumables
 				           +" They are smooth and look nearly as tough as iron.");
 				player.skin.setProps({type: SKIN_TYPE_DRAGON_SCALES, adj: "tough", desc: "shield-shaped dragon scales"});
 				//def bonus of scales
-				player.underBody.type = UNDER_BODY_TYPE_DRAGON;
+				player.underBody.type = UNDER_BODY_TYPE_REPTILE;
 				player.underBody.copySkin({        // copy the main skin props to the underBody skin ...
 					desc: "ventral dragon scales"  // ... and only override the desc
 				});

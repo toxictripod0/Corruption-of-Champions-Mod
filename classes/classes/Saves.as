@@ -1846,7 +1846,10 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		}
 		else
 			player.underBody = saveFile.data.underBody;
-		
+
+		if (player.underBody.type == UNDER_BODY_TYPE_DRAGON)
+			player.underBody.type = UNDER_BODY_TYPE_REPTILE;
+
 		//Sexual Stuff
 		player.balls = saveFile.data.balls;
 		player.cumMultiplier = saveFile.data.cumMultiplier;
