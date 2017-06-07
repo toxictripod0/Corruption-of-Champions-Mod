@@ -19,59 +19,51 @@ import flash.text.TextField;
 
 	import flash.events.MouseEvent;
 
-	public class CoCButton extends MovieClip {
+	public class CoCButton extends Block {
 
-		[Embed(source="../../../res/ui/button0.jpg")]
-		public static var buttonBackground0:Class;
-		[Embed(source="../../../res/ui/button1.jpg")]
-		public static var buttonBackground1:Class;
-		[Embed(source="../../../res/ui/button2.jpg")]
-		public static var buttonBackground2:Class;
-		[Embed(source="../../../res/ui/button3.jpg")]
-		public static var buttonBackground3:Class;
-		[Embed(source="../../../res/ui/button4.jpg")]
-		public static var buttonBackground4:Class;
-		[Embed(source="../../../res/ui/button5.jpg")]
-		public static var buttonBackground5:Class;
-		[Embed(source="../../../res/ui/button6.jpg")]
-		public static var buttonBackground6:Class;
-		[Embed(source="../../../res/ui/button7.jpg")]
-		public static var buttonBackground7:Class;
-		[Embed(source="../../../res/ui/button8.jpg")]
-		public static var buttonBackground8:Class;
-		[Embed(source="../../../res/ui/button9.jpg")]
-		public static var buttonBackground9:Class;
+		[Embed(source='../../../res/ui/Shrewsbury-Titling_Bold.ttf',
+				advancedAntiAliasing='true',
+				fontName='ShrewsburyTitlingBold',
+				embedAsCFF='false')]
+		private static const ButtonLabelFont:Class;
+		public static const ButtonLabelFontName:String = (new ButtonLabelFont() as Font).fontName;
 
-//		public static const ButtonLabelFontName:String = "Shrewsbury Titling Bold";
-		public static const ButtonLabelFontName:String = "Palatino Linotype";
 
-		public static const
-			// How far down from the top of our registration point the TF is.
-			LABEL_FIELD_Y_OFFSET:Number = 9,
-			LABEL_FIELD_HEIGHT:Number = 25;
+		private var _labelField:TextField,
+					_backgroundGraphic:BitmapDataSprite,
+					_enabled:Boolean = true,
+					_callback:Function;
 
-		protected var
-			_labelField:TextField,
-			_backgroundGraphic:Sprite,
-			_callback:Function;
+		public var toolTipHeader:String,
+				   toolTipText:String;
 
-		public var
-			toolTipHeader:String,
-			toolTipText:String;
-
-		public function CoCButton(labelField:TextField = null, backgroundGraphic:Sprite = null):void {
-			if (backgroundGraphic) {
-				this.x = backgroundGraphic.x;
-				this.y = backgroundGraphic.y;
-			}
-			
-			this.labelField = labelField;
-			this.backgroundGraphic = backgroundGraphic;
+		/**
+		 * @param options  enabled, labelText, bitmapClass, callback
+		 */
+		public function CoCButton(options:Object = null):void {
+			super();
+			_backgroundGraphic = addBitmapDataSprite({
+				stretch: true,
+				width  : MainView.BTN_W,
+				height : MainView.BTN_H
+			});
+			_labelField        = addTextField({
+				width            : MainView.BTN_W,
+				embedFonts       : true,
+				y                : 8,
+				height           : MainView.BTN_H - 8,
+				defaultTextFormat: {
+					font : ButtonLabelFontName,
+					size : 18,
+					align: 'center'
+				}
+			});
 
 			this.mouseChildren = true;
-			this.buttonMode = true;
-			this.visible = true;
-			
+			this.buttonMode    = true;
+			this.visible       = true;
+			UIUtils.setProperties(this, options);
+
 			this.addEventListener(MouseEvent.ROLL_OVER, this.hover);
 			this.addEventListener(MouseEvent.ROLL_OUT, this.dim);
 			this.addEventListener(MouseEvent.CLICK, this.click);
@@ -81,14 +73,14 @@ import flash.text.TextField;
 
 		//////// Mouse Events... ////////
 
-		public function hover(event: MouseEvent = null):void {
-			if (this.backgroundGraphic)
-				this.backgroundGraphic.alpha = 0.5;
+		public function hover(event:MouseEvent = null):void {
+			if (this._backgroundGraphic)
+				this._backgroundGraphic.alpha = enabled ? 0.5 : 0.4;
 		}
 
 		public function dim(event:MouseEvent = null):void {
-			if (this.backgroundGraphic)
-				this.backgroundGraphic.alpha = 1;
+			if (this._backgroundGraphic)
+				this._backgroundGraphic.alpha = enabled ? 1 : 0.4;
 		}
 
 		public function click(event:MouseEvent = null):void {
@@ -100,59 +92,29 @@ import flash.text.TextField;
 
 		//////// Getters and Setters ////////
 
-		public function get labelField():TextField {
-			return this._labelField;
+		public function get enabled():Boolean {
+			return _enabled;
 		}
 
-		public function set labelField(value:TextField):void {
-			// TODO: Remove previous labelField?
-
-			this._labelField = value;
-
-			if (! this._labelField) return;
-
-			this.addChild(this._labelField);
-			
-			//Workaround for formatting
-			var fmt:TextFormat = this._labelField.getTextFormat();
-			fmt.bold = true;
-			this._labelField.defaultTextFormat = fmt;
-			
-			this._labelField.mouseEnabled = false;
-			
-			this._labelField.x = 0;
-			this._labelField.y = LABEL_FIELD_Y_OFFSET;
-			this._labelField.width = this.width;
-			this._labelField.height = LABEL_FIELD_HEIGHT;
-		}
-
-		public function get backgroundGraphic():Sprite {
-			return this._backgroundGraphic;
-		}
-
-		public function set backgroundGraphic(value:Sprite):void {
-			// TODO: Remove previous background graphic?
-
-			this._backgroundGraphic = value;
-
-			if (! this._backgroundGraphic) return;
-
-			this.addChildAt(this._backgroundGraphic, 0);
-
-			this._backgroundGraphic.mouseEnabled = true;
-
-			this._backgroundGraphic.x = 0;
-			this._backgroundGraphic.y = 0;
-
-			this.width = this._backgroundGraphic.width;
+		public function set enabled(value:Boolean):void {
+			_enabled                      = value;
+			this._labelField.alpha        = value ? 1 : 0.4;
+			this._backgroundGraphic.alpha = value ? 1 : 0.4;
 		}
 
 		public function get labelText():String {
-			return this.labelField.text;
+			return this._labelField.text;
 		}
 
 		public function set labelText(value:String):void {
-			this.labelField.text = value;
+			this._labelField.text = value;
+		}
+
+		public function set bitmapClass(value:Class):void {
+			_backgroundGraphic.bitmapClass = value;
+		}
+		public function get bitmapClass():Class {
+			return null;
 		}
 
 		public function get callback():Function {
@@ -161,29 +123,6 @@ import flash.text.TextField;
 
 		public function set callback(value:Function):void {
 			this._callback = value;
-		}
-
-		//// Overrides. ////
-		override public function get width():Number {
-			return this.backgroundGraphic ? this.backgroundGraphic.width: 0;
-		}
-
-		override public function set width(value:Number):void {
-			if (this.backgroundGraphic)
-				this.backgroundGraphic.width = value;
-
-			if (this.labelField)
-				this.labelField.width = value;
-		}
-
-		override public function get height():Number {
-			return this.backgroundGraphic ? this.backgroundGraphic.height: 0;
-		}
-
-		override public function set height(value:Number):void {
-			if (this.backgroundGraphic)
-				this.backgroundGraphic.height = value;
-			// TODO: Do anything to the text field?
 		}
 	}
 }

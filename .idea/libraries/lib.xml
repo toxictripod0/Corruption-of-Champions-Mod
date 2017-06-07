@@ -2,8 +2,8 @@
   <library name="lib" type="flex">
     <CLASSES>
       <root url="file://$PROJECT_DIR$/lib/bin/flexunit" />
-      <root url="jar://$PROJECT_DIR$/lib/bin/fl.core.ComponentShim.swc!/" />
       <root url="jar://$PROJECT_DIR$/lib/bin/MainView.swc!/" />
+      <root url="jar://$PROJECT_DIR$/lib/bin/ScrollPane.swc!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

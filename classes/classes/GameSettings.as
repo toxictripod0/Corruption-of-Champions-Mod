@@ -1,10 +1,10 @@
-package classes 
+package classes
 {
 	import classes.GlobalFlags.*;
 
-import coc.view.MainLayout;
+
 import coc.view.MainView;
-import coc.view.StatsLayout;
+import coc.view.StatsView;
 
 import flash.display.StageQuality;
 	import flash.text.TextFormat;
@@ -14,9 +14,9 @@ import flash.display.StageQuality;
 	 */
 	public class GameSettings extends BaseContent
 	{
-		
+
 		public function GameSettings() {}
-		
+
 		public function settingsScreenMain():void
 		{
 			kGAMECLASS.saves.savePermObject(false);
@@ -48,12 +48,12 @@ import flash.display.StageQuality;
 		public function settingsScreenGameSettings():void {
 			clearOutput();
 			displayHeader("Gameplay Settings");
-			
+
 			if (flags[kFLAGS.HARDCORE_MODE] > 0) outputText("<font color=\"#ff0000\">Hardcore mode is enabled. Cheats are disabled.</font>\n\n");
 
 			if (debug) outputText("Debug Mode: <font color=\"#008000\"><b>ON</b></font>\n Items will not be consumed by use, fleeing always succeeds, and bad-ends can be ignored.");
 			else outputText("Debug Mode: <font color=\"#800000\"><b>OFF</b></font>\n Items consumption will occur as normal.");
-			
+
 			outputText("\n\n");
 			switch(flags[kFLAGS.GAME_DIFFICULTY]) {
 				case 0:
@@ -76,22 +76,22 @@ import flash.display.StageQuality;
 			else outputText("Easy Mode: <font color=\"#800000\"><b>OFF</b></font>\n Bad-ends can ruin your game and combat is challenging.");
 
 			outputText("\n\n");*/
-			
+
 			outputText("\n\n");
-			
+
 			if (flags[kFLAGS.SILLY_MODE_ENABLE_FLAG]) outputText("Silly Mode: <font color=\"#008000\"><b>ON</b></font>\n Crazy, nonsensical, and possibly hilarious things may occur.");
 			else outputText("Silly Mode: <font color=\"#800000\"><b>OFF</b></font>\n You're an incorrigible stick-in-the-mud with no sense of humor.");
 
 			outputText("\n\n");
-				
+
 			if (flags[kFLAGS.PRISON_ENABLED] == false) outputText("Prison: <font color=\"#008000\"><b>OFF</b></font>\nThe prison cannot be accessed.");
 			else outputText("Prison: <font color=\"#800000\"><b>ON</b></font>\nThe prison can be accessed. WARNING: The prison is very buggy and may break your game. Enter it at your own risk!");
-				
+
 			outputText("\n\n");
-			
+
 			outputText("<b>The following flags are not fully implemented yet (e.g. they don't apply in <i>all</i> cases where they could be relevant).</b>\n");
 			outputText("Additional note: You <b>must</b> be <i>in a game session</i> (e.g. load your save, hit \"Main Menu\", change the flag settings, and then hit \"Resume\") to change these flags. They're saved into the saveGame file, so if you load a save, it will clear them to the state in that save.");
-			
+
 			outputText("\n\n");
 
 			if (flags[kFLAGS.LOW_STANDARDS_FOR_ALL]) outputText("Low standards Mode: <font color=\"#008000\"><b>ON</b></font>\n NPCs ignore body type preferences. \n (Not gender preferences though. You still need the right hole.)");
@@ -101,19 +101,19 @@ import flash.display.StageQuality;
 
 			if (flags[kFLAGS.HYPER_HAPPY]) outputText("Hyper Happy Mode: <font color=\"#008000\"><b>ON</b></font>\n Only reducto and humus shrink endowments. \n Incubus draft doesn't affect breasts, and succubi milk doesn't affect cocks.");
 			else outputText("Hyper Happy Mode: <font color=\"#800000\"><b>OFF</b></font>\n Male enhancement potions shrink female endowments, and vice versa.");
-				
-			outputText("\n\n");		
-				
+
+			outputText("\n\n");
+
 			if (flags[kFLAGS.SFW_MODE] >= 1) outputText("SFW Mode: <font color=\"#008000\"><b>ON</b></font>\n Sex scenes are disabled and adult materials are hidden.");
 			else outputText("SFW Mode: <font color=\"#800000\"><b>OFF</b></font>\n Sex scenes are enabled.");
-				
+
 			outputText("\n\n");
-				
+
 			if (flags[kFLAGS.WATERSPORTS_ENABLED] >= 1 && flags[kFLAGS.SFW_MODE] <= 0) outputText("Watersports: <font color=\"#008000\"><b>Enabled</b></font>\n Watersports scenes are enabled. (You kinky person)");
 			else outputText("Watersports: <font color=\"#800000\"><b>Disabled</b></font>\n Watersports scenes are disabled.");
-				
+
 			outputText("\n\n");
-			
+
 			if (flags[kFLAGS.AUTO_LEVEL] >= 1) outputText("Automatic Leveling: <font color=\"#008000\"><b>ON</b></font>\n Leveling up is done automatically once you accumulate enough experience.");
 			else outputText("Automatic Leveling: <font color=\"#800000\"><b>OFF</b></font>\n Leveling up is done manually.");
 
@@ -126,15 +126,15 @@ import flash.display.StageQuality;
 			addButton(2, "Silly Toggle", toggleSillyFlag, null, null, null, "Toggles silly mode. Funny, crazy and nonsensical scenes may occur if enabled.");
 			addButton(3, "Low Standards", toggleStandards);
 			addButton(4, "Hyper Happy", toggleHyperHappy);
-			
+
 			addButton(5, "SFW Toggle", toggleSFW, null, null, null, "Toggles SFW Mode. If enabled, sex scenes are hidden and all adult materials are censored. \n\nCurrently under development, only disables most sex scenes. Soon, it'll disable rape scenes."); //Softcore Mode
 			addButton(6, "Auto level", toggleAutoLevel, null, null, null, "Toggles automatic leveling when you accumulate sufficient experience.");
 			if (flags[kFLAGS.PRISON_ENABLED] == true) {
 				addButton(7, "No Prison", togglePrison, null, null, null, "Turn off the prison.");
 			} else {
 				addButton(7, "Yes Prison", togglePrison, null, null, null, "Turn on the prison.\n\n<font color=\"#080000\">WARNING: The prison is very buggy and may break your game. Enter it at your own risk!</font>"); }
-			if (player.str > 0) addButton(8, "Enable Surv", enableSurvivalPrompt, null, null, null, "Enable Survival mode. This will enable hunger. \n\n<font color=\"#080000\">Note: This is permanent and cannot be turned off!</font>", "Enable Survival Mode");	
-			if (player.str > 0) addButton(9, "Enable Real", enableRealisticPrompt, null, null, null, "Enable Realistic mode. This will make the game a bit realistic. \n\n<font color=\"#080000\">Note: This is permanent and cannot be turned off! Do not turn this on if you have hyper endowments.</font>", "Enable Realistic Mode");	
+			if (player.str > 0) addButton(8, "Enable Surv", enableSurvivalPrompt, null, null, null, "Enable Survival mode. This will enable hunger. \n\n<font color=\"#080000\">Note: This is permanent and cannot be turned off!</font>", "Enable Survival Mode");
+			if (player.str > 0) addButton(9, "Enable Real", enableRealisticPrompt, null, null, null, "Enable Realistic mode. This will make the game a bit realistic. \n\n<font color=\"#080000\">Note: This is permanent and cannot be turned off! Do not turn this on if you have hyper endowments.</font>", "Enable Realistic Mode");
 			addButton(10, "Fetishes", fetishSubMenu, null, null, null, "Toggle some of the weird fetishes such as watersports and worms.");
 
 			if (flags[kFLAGS.HUNGER_ENABLED] >= 0.5)
@@ -172,7 +172,7 @@ import flash.display.StageQuality;
 				debug = false;
 			else
 				debug = true;
-				
+
 			mainView.showMenuButton(MainView.MENU_DATA);
 			settingsScreenGameSettings();
 			return;
@@ -185,7 +185,7 @@ import flash.display.StageQuality;
 				flags[kFLAGS.PRISON_ENABLED] = false;
 			else
 				flags[kFLAGS.PRISON_ENABLED] = true;
-				
+
 			mainView.showMenuButton(MainView.MENU_DATA);
 			settingsScreenGameSettings();
 			return;
@@ -283,7 +283,7 @@ import flash.display.StageQuality;
 
 		public function toggleAutoLevel():void {
 			flags[kFLAGS.AUTO_LEVEL] ^= 1;
-			settingsScreenGameSettings();	
+			settingsScreenGameSettings();
 		}
 
 		public function fetishSubMenu():void {
@@ -365,22 +365,22 @@ import flash.display.StageQuality;
 		public function settingsScreenInterfaceSettings():void {
 			clearOutput();
 			displayHeader("Interface Settings");
-			
+
 			/*if (flags[kFLAGS.USE_OLD_INTERFACE] >= 1) outputText("Stats Pane Style: <b>Old</b>\n Old stats panel will be used.");
 			else  outputText("Stats Pane Style: <b>New</b>\n New stats panel will be used.");
-				
+
 			outputText("\n\n");*/
-			
+
 			if (flags[kFLAGS.USE_OLD_FONT] >= 1) outputText("Font: <b>Lucida Sans Typewriter</b>\n");
 			else outputText("Font: <b>Palatino Linotype</b>\n");
-				
+
 			outputText("\n\n");
-			
+
 			if (flags[kFLAGS.IMAGEPACK_OFF] == 0) outputText("Image Pack: <font color=\"#008000\"><b>ON</b></font>\n Image pack is enabled.");
 			else outputText("Image Pack: <font color=\"#800000\"><b>OFF</b></font>\n Image pack is disabled.");
-				
+
 			outputText("\n\n");
-			
+
 			if (flags[kFLAGS.SHOW_SPRITES_FLAG] == 0) {
 				outputText("Sprites: <font color=\"#008000\"><b>ON</b></font>\n You like to look at pretty pictures.");
 				outputText("\n\n");
@@ -393,14 +393,14 @@ import flash.display.StageQuality;
 				outputText("Sprites: <font color=\"#800000\"><b>OFF</b></font>\n There are only words. Nothing else.");
 				outputText("\n\n\n");
 			}
-			
+
 			outputText("\n\n");
-			
+
 			if (flags[kFLAGS.USE_12_HOURS] > 0) outputText("Time Format: <b>12 hours</b>\n Time will display in 12 hours format (AM/PM)");
 			else outputText("Time Format: <b>24 hours</b>\n Time will display in 24 hours format.");
-				
+
 			outputText("\n\n");
-			
+
 			if (flags[kFLAGS.USE_METRICS] > 0) outputText("Measurement: <b>Metric</b>\n Height and cock size will be measured in metres and centimetres.");
 			else outputText("Measurement: <b>Imperial</b>\n Height and cock size will be measured in feet and inches.");
 
@@ -446,7 +446,7 @@ import flash.display.StageQuality;
 			addButton(0, "Normal", setTextBackground, 0);
 			addButton(1, "White", setTextBackground, 1);
 			addButton(2, "Tan", setTextBackground, 2);
-			
+
 			addButton(14, "Back", settingsScreenInterfaceSettings);
 		}
 
@@ -455,7 +455,7 @@ import flash.display.StageQuality;
 			addButton(0, "Off", toggleSpritesFlag, true, 0, null, "Turn off the sprites completely");
 			addButton(1, "Old", toggleSpritesFlag, false, 1, null, "Use the 8-bit sprites from older versions of CoC.");
 			addButton(2, "New", toggleSpritesFlag, false, 0, null, "Use the 16-bit sprites in current versions of CoC.");
-			
+
 			addButton(14, "Back", settingsScreenInterfaceSettings);
 		}
 
@@ -470,9 +470,9 @@ import flash.display.StageQuality;
 		}
 
 		public function setMainBackground(type:int):void {
-			flags[kFLAGS.BACKGROUND_STYLE] = type;
-			mainView.background.bdClass = MainLayout.Backgrounds[flags[kFLAGS.BACKGROUND_STYLE]];
-			mainView.statsView.sideBarBG.bdClass = StatsLayout.SidebarBackgrounds[flags[kFLAGS.BACKGROUND_STYLE]];
+			flags[kFLAGS.BACKGROUND_STYLE]           = type;
+			mainView.background.bitmapClass          = MainView.Backgrounds[flags[kFLAGS.BACKGROUND_STYLE]];
+			mainView.statsView.setBackground(StatsView.SidebarBackgrounds[flags[kFLAGS.BACKGROUND_STYLE]]);
 			settingsScreenInterfaceSettings();
 		}
 
@@ -506,7 +506,7 @@ import flash.display.StageQuality;
 			{
 				mainView.textBGWhite.visible = false;
 				mainView.textBGTan.visible = false;
-			}		
+			}
 		}
 
 		public function cycleQuality():void {
@@ -554,13 +554,13 @@ import flash.display.StageQuality;
 		public function incFontSize():void
 		{
 			var fmt:TextFormat = mainView.mainText.getTextFormat();
-			
+
 			if (fmt.size == null) fmt.size = 20;
-			
+
 			fmt.size = (fmt.size as Number) + 1;
-			
+
 			if ((fmt.size as Number) > 32) fmt.size = 32;
-			
+
 			trace("Font size set to: " + (fmt.size as Number));
 			mainView.mainText.setTextFormat(fmt);
 			flags[kFLAGS.CUSTOM_FONT_SIZE] = fmt.size;
@@ -569,13 +569,13 @@ import flash.display.StageQuality;
 		public function decFontSize():void
 		{
 			var fmt:TextFormat = mainView.mainText.getTextFormat();
-			
+
 			if (fmt.size == null) fmt.size = 20;
-			
+
 			fmt.size = (fmt.size as Number) - 1;
-			
+
 			if ((fmt.size as Number) < 14) fmt.size = 14;
-			
+
 			trace("Font size set to: " + (fmt.size as Number));
 			mainView.mainText.setTextFormat(fmt);
 			flags[kFLAGS.CUSTOM_FONT_SIZE] = fmt.size;
@@ -588,7 +588,7 @@ import flash.display.StageQuality;
 			mainView.mainText.setTextFormat(fmt);
 			flags[kFLAGS.CUSTOM_FONT_SIZE] = 0;
 		}
-		
+
 	}
 
 }

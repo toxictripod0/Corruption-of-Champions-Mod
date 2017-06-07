@@ -1,27 +1,25 @@
-package classes 
+package classes
 {
 
 	import classes.GlobalFlags.*;
 	import classes.Scenes.Achievements;
 
-import coc.view.MainLayout;
-import coc.view.MainView;
-import coc.view.StatsLayout;
+	import coc.view.MainView;
 
 public class MainMenu extends BaseContent
 	{
-		
+
 		public function MainMenu() {}
-		
+
 		//------------
 		// MAIN MENU
 		//------------
 		//MainMenu - kicks player out to the main menu
-		public function mainMenu():void 
+		public function mainMenu():void
 		{
 			var game:CoC = kGAMECLASS;
 			game.stage.focus = game.mainView.mainText;
-			
+
 			if (CONFIG::debug)
 				CoC_Settings.debugBuild = true;
 			else
@@ -35,8 +33,6 @@ public class MainMenu extends BaseContent
 			game.mainView.eventTestInput.x = -10207.5;
 			game.mainView.eventTestInput.y = -1055.1;
 			hideStats();
-			game.mainView.background.bdClass = MainLayout.Backgrounds[flags[kFLAGS.BACKGROUND_STYLE]];
-			game.mainView.statsView.sideBarBG.bdClass = StatsLayout.SidebarBackgrounds[flags[kFLAGS.BACKGROUND_STYLE]];
 			game.mainViewManager.startUpButtons();
 			game.saves.loadPermObject();
 			game.mainViewManager.setTheme();
@@ -45,7 +41,7 @@ public class MainMenu extends BaseContent
 			mainView.hideAllMenuButtons();
 			mainView.showMenuButton(MainView.MENU_NEW_MAIN);
 			mainView.showMenuButton(MainView.MENU_DATA);
-			
+
 			mainView.newGameButton.toolTipText = "Start a new game.";
 			mainView.dataButton.toolTipHeader = "New Game";
 			mainView.dataButton.toolTipText = "Save or load your files.";
@@ -61,7 +57,7 @@ public class MainMenu extends BaseContent
 			clearOutput();
 			//outputText("<img src=\"logo\" id=\"coc-logo\" height=\"300\" width=\"400\" />\n");
 			outputText("<b>Corruption of Champions (" + game.version + ")</b>");
-			
+
 			if (CoC_Settings.debugBuild)
 				outputText(" Debug Build");
 			else
@@ -81,12 +77,12 @@ public class MainMenu extends BaseContent
 			addButton(2, "Instructions", howToPlay, null, null, null, "How to play.  Starting tips.  And hotkeys for easy left-handed play...");
 			addButton(3, "Achievements", game.achievementList.achievementsScreen, null, null, null, "View all achievements you have unlocked so far.");
 			addButton(4, "Mod Thread", openURL, "https://forum.fenoxo.com/threads/coc-revamp-mod.3/", null, null, "Check the official mod thread on Fenoxo's forum.");
-				
+
 			addButton(5, "Credits", creditsScreen, null, null, null, "See a list of all the cool people who have contributed to content for this game!");
 			addButton(6, "Image Credits", imageCreditsScreen, null, null, null, "Check out who contributed to the image pack.");
 			addButton(7, "Debug Info", game.debugPane, null, null, null, "View debug information. You can also input to access any scenes, if you know the function names!");
 		}
-		
+
 		public function startupScreenBody():void {
 			// NO FUCKING DECENT MULTI-LINE STRING LITERALS BECAUSE FUCKING STUPID
 			// WTF ACTIONSCRIPT YOUR DEV'S ARE ON CRACK
@@ -139,7 +135,7 @@ public class MainMenu extends BaseContent
 				outputText("\n\n<b>It's Helia's Birthday Month!</b>");
 
 		}
-		
+
 		//------------
 		// INSTRUCTIONS
 		//------------
@@ -356,7 +352,7 @@ public class MainMenu extends BaseContent
 			doNext(mainMenu);
 		}
 
-		
+
 	}
 
 }

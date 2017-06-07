@@ -14,7 +14,6 @@ package classes
 
 import coc.view.Main;
 
-import coc.view.MainLayout;
 
 import flash.display.BitmapData;
 import flash.display.DisplayObjectContainer;
@@ -145,7 +144,7 @@ the text from being too boring.
 			 * logging before any of the class variables are initialized.
 			 * This is done because they could log messages during construction.
 			 */
-			
+
 			 CoC.setUpLogging();
 		}
 
@@ -209,7 +208,7 @@ the text from being too boring.
 		public var masturbation:Masturbation = new Masturbation();
 		public var pregnancyProgress:PregnancyProgression = new PregnancyProgression();
 		public var bimboProgress:BimboProgression = new BimboProgression();
-		
+
 		// Scenes/Areas/
 		public var commonEncounters:CommonEncounters = new CommonEncounters(); // Common dependencies go first
 
@@ -224,7 +223,7 @@ the text from being too boring.
 		public var plains:Plains = new Plains();
 		public var swamp:Swamp = new Swamp();
 		public var volcanicCrag:VolcanicCrag = new VolcanicCrag();
-		
+
 		public var exploration:Exploration = new Exploration(); //Goes last in order to get it working.
 		// Scenes/Combat/
 		public var combat:Combat = new Combat();
@@ -297,7 +296,7 @@ the text from being too boring.
 		public var xmas:XmasBase = new XmasBase();
 		// Scenes/Quests/
 		public var urtaQuest:UrtaQuest = new UrtaQuest();
-		
+
 		public var mainMenu:MainMenu = new MainMenu();
 		public var gameSettings:GameSettings = new GameSettings();
 		public var debugMenu:DebugMenu = new DebugMenu();
@@ -350,25 +349,25 @@ the text from being too boring.
 		public var funcs:Array;
 		public var oldStats:*; // I *think* this is a generic object
 		public var inputManager:InputManager;
-		
+
 		public var kFLAGS_REF:*;
 		public var kACHIEVEMENTS_REF:*;
-		
+
 		public function get inCombat():Boolean { return _gameState == 1; }
 		public function set inCombat(value:Boolean):void { _gameState = (value ? 1 : 0); }
 		
 		public function gameStateDirectGet():int { return _gameState; }
 		public function gameStateDirectSet(value:int):void { _gameState = value; }
-		
+
 		public function rand(max:int):int { return Utils.rand(max); }
 
 		//System time
 		public var date:Date = new Date();
-		
+
 		//Mod save version.
 		public var modSaveVersion:Number = 15;
 		public var levelCap:Number = 120;
-		
+
 		//dungeoneering variables (If it ain't broke, don't fix it)
 		public var inDungeon:Boolean = false;
 		public var dungeonLoc:int = 0;
@@ -379,14 +378,14 @@ the text from being too boring.
 
 		public var timeQ:Number = 0;
 		public var campQ:Boolean = false;
-		
+
 		private static var traceTarget:TraceTarget;
-		
+
 		private static function setUpLogging():void {
 			traceTarget = new TraceTarget();
 
 			traceTarget.level = LogEventLevel.WARN;
-			
+
 			CONFIG::debug
 			{
 				traceTarget.level = LogEventLevel.DEBUG;
@@ -411,7 +410,7 @@ the text from being too boring.
 		/**
 		 * Create the main game instance.
 		 * If a stage is injected it will be use instead of the one from the superclass.
-		 * 
+		 *
 		 * @param injectedStage if not null, it will be used instead of this.stage
 		 */
 		public function CoC(injectedStage:DisplayObjectContainer = null)
@@ -422,7 +421,7 @@ the text from being too boring.
 			}else{
 				stageToUse = this.stage;
 			}
-		
+
 			// Cheatmode.
 			kGAMECLASS = this;
 			
@@ -432,7 +431,7 @@ the text from being too boring.
 			this.kACHIEVEMENTS_REF = kACHIEVEMENTS; 
 			// cheat for the parser to be able to find kFLAGS
 			// If you're not the parser, DON'T USE THIS
-			
+
 			this.parser = new Parser(this, CoC_Settings);
 
 			this.model = new GameModel();
@@ -482,7 +481,7 @@ the text from being too boring.
 			this.images = new ImageManager(stageToUse.stage, mainView);
 			this.inputManager = new InputManager(stageToUse.stage, mainView, false);
 			include "../../includes/ControlBindings.as";
-			
+
 			//} endregion
 
 			/**
@@ -546,7 +545,7 @@ the text from being too boring.
 			//Workaround.
 			exploration.configureRooms();
 			d3.configureRooms();
-			
+
 			temp = 0; //Fenoxo loves his temps
 
 			//Used to set what each action buttons displays and does.
@@ -573,8 +572,8 @@ the text from being too boring.
 			// ******************************************************************************************
 
 			mainView.aCb.dataProvider = new DataProvider([{label:"TEMP",perk:new PerkClass(PerkLib.Acclimation)}]);
-			mainView.aCb.addEventListener(Event.CHANGE, playerInfo.changeHandler); 
-			
+			mainView.aCb.addEventListener(Event.CHANGE, playerInfo.changeHandler);
+
 			//Register the classes we need to be able to serialize and reconstitute so
 			// they'll get reconstituted into the correct class when deserialized
 			registerClassAlias("AssClass", AssClass);
