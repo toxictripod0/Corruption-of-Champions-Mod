@@ -1847,8 +1847,11 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		else
 			player.underBody = saveFile.data.underBody;
 
-		if (player.underBody.type == UNDER_BODY_TYPE_DRAGON)
-			player.underBody.type = UNDER_BODY_TYPE_REPTILE;
+		// Fix deprecated and merged underBody-types
+		switch (player.underBody.type) {
+			case UNDER_BODY_TYPE_DRAGON: player.underBody.type = UNDER_BODY_TYPE_REPTILE; break;
+			case UNDER_BODY_TYPE_WOOL:   player.underBody.type = UNDER_BODY_TYPE_FURRY;   break;
+		}
 
 		//Sexual Stuff
 		player.balls = saveFile.data.balls;

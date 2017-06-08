@@ -254,7 +254,7 @@ If set to true (the default), the underBody is restored before setting the other
 
 ##### Example
 ```as3
-player.setFurColor(catFurColors, {type: UNDER_BODY_TYPE_FUR}, true);
+player.setFurColor(catFurColors, {type: UNDER_BODY_TYPE_FURRY}, true);
 ```
 See the example above for potential `catFurColors`
 

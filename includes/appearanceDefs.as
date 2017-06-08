@@ -227,9 +227,9 @@ public static const LOWER_BODY_TYPE_IMP:int                                     
 public static const UNDER_BODY_TYPE_NONE:int                                        =   0;
 public static const UNDER_BODY_TYPE_REPTILE:int                                     =   1;
 public static const UNDER_BODY_TYPE_DRAGON:int                                      =   2; // Deprecated. Changed to 1 (UNDER_BODY_TYPE_REPTILE) upon loading a savegame
-public static const UNDER_BODY_TYPE_FUR:int                                         =   3;
+public static const UNDER_BODY_TYPE_FURRY:int                                       =   3;
 public static const UNDER_BODY_TYPE_NAGA:int                                        =   4;
-public static const UNDER_BODY_TYPE_WOOL:int                                        =   5;
+public static const UNDER_BODY_TYPE_WOOL:int                                        =   5; // Deprecated. Changed to 3 (UNDER_BODY_TYPE_FURRY) upon loading a savegame
 
 // piercingtypesNOPEDISABLED
 public static const PIERCING_TYPE_NONE:int                                          =   0;
