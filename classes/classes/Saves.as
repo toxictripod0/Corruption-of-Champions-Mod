@@ -1844,7 +1844,8 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		if (saveFile.data.underBody == undefined) {
 			player.underBody.type = UNDER_BODY_TYPE_NONE;
 		}
-		else player.underBody.setAllProps(saveFile.data.underBody);
+		else
+			player.underBody = saveFile.data.underBody;
 		
 		//Sexual Stuff
 		player.balls = saveFile.data.balls;
