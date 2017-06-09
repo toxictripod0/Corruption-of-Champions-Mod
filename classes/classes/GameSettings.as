@@ -1,12 +1,9 @@
 package classes
 {
 	import classes.GlobalFlags.*;
-
-
-import coc.view.MainView;
-import coc.view.StatsView;
-
-import flash.display.StageQuality;
+	import coc.view.MainView;
+	import coc.view.StatsView;
+	import flash.display.StageQuality;
 	import flash.text.TextFormat;
 	/**
 	 * ...

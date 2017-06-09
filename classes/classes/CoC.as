@@ -401,20 +401,15 @@ the text from being too boring.
 			Log.addTarget(traceTarget);
 		}
 
-		private var stageToUse:DisplayObjectContainer = null;
-
-		override public function get stage():Stage {
-			if (stageToUse != null) return stageToUse.stage;
-			return super.stage;
-		}
 		/**
 		 * Create the main game instance.
 		 * If a stage is injected it will be use instead of the one from the superclass.
 		 *
 		 * @param injectedStage if not null, it will be used instead of this.stage
 		 */
-		public function CoC(injectedStage:DisplayObjectContainer = null)
+		public function CoC(injectedStage:Stage = null)
 		{
+			var stageToUse:Stage;
 
 			if (injectedStage != null) {
 				stageToUse = injectedStage;
@@ -598,12 +593,11 @@ the text from being too boring.
 			mainView.statsView.hideUpDown();
 
 			this.addFrameScript( 0, this.run );
-			//setTimeout(this.run,0);
 		}
 
 		public function run():void
 		{
-			if (mainMenu) mainMenu.mainMenu();
+			mainMenu.mainMenu();
 			this.stop();
 
 			if (_updateHack) {
@@ -647,15 +641,6 @@ the text from being too boring.
 					mainViewManager.hideSprite();
 				}
 			}
-		}
-
-		public static function main(container:DisplayObjectContainer):void {
-//			MainView._layout = layout;
-
-			container.addChild(new CoC(container.stage).mainView);
-			/*var e:DisplayObjectContainer = main.parent;
-			while (e && !e.stage) e = e.parent;
-			new CoC(e?e.stage:null);*/
 		}
 	}
 }

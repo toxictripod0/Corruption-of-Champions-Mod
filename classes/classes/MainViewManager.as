@@ -1,22 +1,22 @@
 //The code that is responsible for managing MainView.
 package classes 
 {
-import classes.GlobalFlags.kFLAGS;
-import classes.GlobalFlags.kGAMECLASS;
+	import classes.GlobalFlags.kFLAGS;
+	import classes.GlobalFlags.kGAMECLASS;
 
-import coc.view.BitmapDataSprite;
-import coc.view.MainView;
-import coc.view.StatsView;
+	import coc.view.BitmapDataSprite;
+	import coc.view.MainView;
+	import coc.view.StatsView;
 
-import flash.display.BitmapData;
-import flash.display.DisplayObject;
-import flash.display.DisplayObjectContainer;
-import flash.display.Stage;
-import flash.events.KeyboardEvent;
-import flash.events.TimerEvent;
-import flash.ui.Keyboard;
-import flash.utils.Timer;
-import flash.utils.getQualifiedClassName;
+	import flash.display.BitmapData;
+	import flash.display.DisplayObject;
+	import flash.display.DisplayObjectContainer;
+	import flash.display.Stage;
+	import flash.events.KeyboardEvent;
+	import flash.events.TimerEvent;
+	import flash.ui.Keyboard;
+	import flash.utils.Timer;
+	import flash.utils.getQualifiedClassName;
 
 	public class MainViewManager extends BaseContent
 	{

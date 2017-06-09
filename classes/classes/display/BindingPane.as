@@ -118,6 +118,7 @@ import mx.core.ScrollControlBase;
 			{
 				UpdateContentObjects();
 			}
+
 			this.source = _content;
 			update();
 		}

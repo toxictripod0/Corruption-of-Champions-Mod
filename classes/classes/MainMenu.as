@@ -3,10 +3,9 @@ package classes
 
 	import classes.GlobalFlags.*;
 	import classes.Scenes.Achievements;
-
 	import coc.view.MainView;
 
-public class MainMenu extends BaseContent
+	public class MainMenu extends BaseContent
 	{
 
 		public function MainMenu() {}
@@ -17,8 +16,7 @@ public class MainMenu extends BaseContent
 		//MainMenu - kicks player out to the main menu
 		public function mainMenu():void
 		{
-			var game:CoC = kGAMECLASS;
-			game.stage.focus = game.mainView.mainText;
+			kGAMECLASS.stage.focus = kGAMECLASS.mainView.mainText;
 
 			if (CONFIG::debug)
 				CoC_Settings.debugBuild = true;
@@ -29,15 +27,15 @@ public class MainMenu extends BaseContent
 			{
 				mainView.removeChild(mainView.aCb);
 			}*/
-			game.mainViewManager.registerShiftKeys();
-			game.mainView.eventTestInput.x = -10207.5;
-			game.mainView.eventTestInput.y = -1055.1;
+			kGAMECLASS.mainViewManager.registerShiftKeys();
+			kGAMECLASS.mainView.eventTestInput.x = -10207.5;
+			kGAMECLASS.mainView.eventTestInput.y = -1055.1;
 			hideStats();
-			game.mainViewManager.startUpButtons();
-			game.saves.loadPermObject();
-			game.mainViewManager.setTheme();
+			kGAMECLASS.mainViewManager.startUpButtons();
+			kGAMECLASS.saves.loadPermObject();
+			kGAMECLASS.mainViewManager.setTheme();
 			//Reset newgame buttons
-			mainView.setMenuButton(MainView.MENU_NEW_MAIN, "New Game", game.charCreation.newGameFromScratch);
+			mainView.setMenuButton(MainView.MENU_NEW_MAIN, "New Game", kGAMECLASS.charCreation.newGameFromScratch);
 			mainView.hideAllMenuButtons();
 			mainView.showMenuButton(MainView.MENU_NEW_MAIN);
 			mainView.showMenuButton(MainView.MENU_DATA);
@@ -53,10 +51,10 @@ public class MainMenu extends BaseContent
 			mainView.appearanceButton.toolTipText = "View your appearance.";
 			mainView.appearanceButton.toolTipHeader = "Appearance";
 			//Sets game state to 3, used for determining back functionality of save/load menu.
-			game.gameStateDirectSet(3);
+			kGAMECLASS.gameStateDirectSet(3);
 			clearOutput();
 			//outputText("<img src=\"logo\" id=\"coc-logo\" height=\"300\" width=\"400\" />\n");
-			outputText("<b>Corruption of Champions (" + game.version + ")</b>");
+			outputText("<b>Corruption of Champions (" + kGAMECLASS.version + ")</b>");
 
 			if (CoC_Settings.debugBuild)
 				outputText(" Debug Build");
@@ -73,14 +71,14 @@ public class MainMenu extends BaseContent
 			menu();
 			if (player.str > 0) addButton(0, "Resume", playerMenu, null, null, null, "Get back to gameplay?");
 			else addButtonDisabled(0, "Resume", "Please start or load a game first.");
-			addButton(1, "Settings", game.gameSettings.settingsScreenMain, null, null, null, "Configure game settings and enable cheats.");
+			addButton(1, "Settings", kGAMECLASS.gameSettings.settingsScreenMain, null, null, null, "Configure game settings and enable cheats.");
 			addButton(2, "Instructions", howToPlay, null, null, null, "How to play.  Starting tips.  And hotkeys for easy left-handed play...");
-			addButton(3, "Achievements", game.achievementList.achievementsScreen, null, null, null, "View all achievements you have unlocked so far.");
+			addButton(3, "Achievements", kGAMECLASS.achievementList.achievementsScreen, null, null, null, "View all achievements you have unlocked so far.");
 			addButton(4, "Mod Thread", openURL, "https://forum.fenoxo.com/threads/coc-revamp-mod.3/", null, null, "Check the official mod thread on Fenoxo's forum.");
 
 			addButton(5, "Credits", creditsScreen, null, null, null, "See a list of all the cool people who have contributed to content for this game!");
 			addButton(6, "Image Credits", imageCreditsScreen, null, null, null, "Check out who contributed to the image pack.");
-			addButton(7, "Debug Info", game.debugPane, null, null, null, "View debug information. You can also input to access any scenes, if you know the function names!");
+			addButton(7, "Debug Info", kGAMECLASS.debugPane, null, null, null, "View debug information. You can also input to access any scenes, if you know the function names!");
 		}
 
 		public function startupScreenBody():void {

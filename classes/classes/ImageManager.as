@@ -4,9 +4,8 @@
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 
-import coc.view.MainView;
-
-import flash.display.Loader;
+	import coc.view.MainView;
+	import flash.display.Loader;
 	import flash.display.Stage;
 	import flash.display.MovieClip;
 	import flash.errors.IOError;

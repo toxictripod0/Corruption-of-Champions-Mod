@@ -3,7 +3,7 @@
 	import classes.display.BindingPane;
 	import coc.view.MainView;
 	import fl.controls.UIScrollBar;
-//	import fl.containers.ScrollPane;
+	import fl.containers.ScrollPane;
 	import flash.display.Stage;
 	import flash.events.Event;
 	import flash.events.KeyboardEvent;
