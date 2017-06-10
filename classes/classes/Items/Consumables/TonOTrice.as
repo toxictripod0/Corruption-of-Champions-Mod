@@ -147,6 +147,15 @@ package classes.Items.Consumables
 				changes++;
 			}
 
+			//-Butt > 5 - decrease butt size
+			if (player.buttRating > 5 && changes < changeLimit && rand(4) == 0) {
+				changes++;
+				player.buttRating--;
+				outputText("\n\nA feeling of tightness starts in your [butt], increasing gradually. The sensation grows and grows, but as it does"
+				          +" your center of balance shifts. You reach back to feel yourself, and sure enough your [butt] is shrinking into a"
+				          +" more manageable size.");
+			}
+
 			if (player.isFemaleOrHerm()) {
 				//Breasts > D cup - Decrease breast size by up to 3 cups
 				if (player.isFemaleOrHerm() && player.biggestTitSize() > BREAST_CUP_D && changes < changeLimit && rand(3) == 0) {
@@ -155,8 +164,8 @@ package classes.Items.Consumables
 							player.breastRows[i].breastRating -= 1 + rand(3);
 					}
 					outputText("\n\nYour breasts feel tight[if (hasArmor), your [armor] feeling looser around your chest]. You watch in shock as your"
-							  +" breast flesh rapidly diminishes, shrinking into your chest. They finally stop when they reach [breastcup] size."
-							  +" You feel a little lighter.");
+					          +" breast flesh rapidly diminishes, shrinking into your chest. They finally stop when they reach [breastcup] size."
+					          +" You feel a little lighter.");
 					dynStats("spe", 1);
 					changes++;
 				}
@@ -168,7 +177,7 @@ package classes.Items.Consumables
 							player.breastRows[i].breastRating++;
 					}
 					outputText("\n\nYour breasts feel constrained and painful against your top as they grow larger by the moment, finally stopping as"
-							  +" they reach [breastcup] size. You rub the tender orbs as you get used to your larger breast flesh.");
+					          +" they reach [breastcup] size. You rub the tender orbs as you get used to your larger breast flesh.");
 					dynStats("lib", 1);
 					changes++;
 				}
@@ -189,9 +198,205 @@ package classes.Items.Consumables
 
 				if (player.nippleLength > 1 && changes < changeLimit && rand(3) == 0) {
 					outputText("\n\nWith a sudden pinch your [nipples] get smaller and smaller,"
-							  +" stopping when they are roughly half their previous size");
+					          +" stopping when they are roughly half their previous size");
 					player.nippleLength /= 2;
 				}
+
+				if (player.hasVagina() && player.vaginas[0].vaginalWetness < 3 && changes < changeLimit && rand(4) == 0) {
+					outputText("\n\nYour [cunt]'s internal walls feel a tingly wave of strange tightness which then transitions into a long"
+					          +" stretching sensation, like you were made of putty. Experimentally, you slip a couple of fingers inside to find"
+					          +" you've become looser and more pliable, ready to take those monster cocks. Or better yet, to lay eggs.");
+					player.vaginas[0].vaginalWetness++
+					changes++;
+				}
+
+				//Increase tone (up to 65)
+				if (player.tone < 65 && rand(3) == 0) {
+					outputText(player.modTone(65, 2));
+				}
+
+				//Decrease thickness (down to 35)
+				if (player.thickness > 35 && rand(3) == 0) {
+					outputText(player.modThickness(35, 5));
+				}
+
+				if (rand(5) == 0 && player.cockatriceScore() > 3) {
+					mutations.updateOvipositionPerk(tfSource); // does all the magic, nuff said!
+				}
+			}
+
+			if (player.isMale()) {
+				//Breasts > B cup - decrease by 1 cup size
+				if (player.biggestTitSize() > BREAST_CUP_B && changes < changeLimit && rand(3) == 0) {
+					for (i = 0; i < player.breastRows.length; i++) {
+						if (player.breastRows[i].breastRating > BREAST_CUP_B)
+							player.breastRows[i].breastRating--;
+					}
+					outputText("\n\nYour breasts feel tight[if (hasArmor), your [armor] feeling looser around your chest]. You watch in shock as your"
+					          +" breast flesh rapidly diminishes, shrinking into your chest. They finally stop when they reach [breastcup] size."
+					          +" You feel a little lighter.");
+					dynStats("spe", 1);
+					changes++;
+				}
+
+				if (player.nippleLength > 1 && changes < changeLimit && rand(3) == 0) {
+					outputText("\n\nWith a sudden pinch your [nipples] get smaller and smaller,"
+					          +" stopping when they are roughly half their previous size");
+					player.nippleLength /= 2;
+				}
+
+				//Hips > 10 - decrease hip size by 1-3 sizes
+				if (player.hipRating > 10 && changes < changeLimit && rand(3) == 0) {
+					outputText("\n\nYou stumble a bit as the bones in your pelvis rearrange themselves painfully. Your hips have narrowed.");
+					player.hipRating -= 1 + rand(3);
+					changes++;
+				}
+
+				//Hips < 2 - increase hip size by 1-3 sizes
+				if (player.hipRating < 2 && changes < changeLimit && rand(3) == 0) {
+					outputText("\n\nYou stumble as you feel the bones in your hips grinding, expanding your hips noticeably.");
+					player.hipRating += 1 + rand(3);
+					changes++;
+				}
+
+				//Increase tone (up to 70)
+				if (player.tone < 70 && rand(3) == 0) {
+					outputText(player.modTone(65, 2));
+				}
+
+				//Decrease thickness (down to 35)
+				if (player.thickness > 35 && rand(3) == 0) {
+					outputText(player.modThickness(35, 5));
+				}
+			}
+
+			if (player.isMaleOrHerm()) {
+				//Cock < 6 inches - increase by 1-2 inches
+				if (player.shortestCockLength() < 6 && rand(3) == 0 && changes < changeLimit) {
+					var increment:Number = player.increaseCock(player.shortestCockIndex(), 1 + rand(2));
+					outputText("Your [if (cocks > 1)shortest] cock fills to its normal size, but doesn’t just stop there. Your cock feels incredibly tight as a few more inches of length seem to pour out from your crotch. Your cock has gained " + increment + " inches.");
+					changes++;
+				}
+
+				//Shrink oversized cocks
+				if (player.biggestCockLength() > 16 && rand(3) == 0 && changes < changeLimit) {
+					var idx:int = player.biggestCockIndex();
+						outputText("\n\nYou feel a tightness in your groin like someone tugging on your shaft from behind you. Once the sensation"
+						          +" fades you check inside your [lower armor] and see that your [if (cocks > 1)largest] [cock] has shrunk to a"
+						          +" slightly shorter length.");
+					player.cocks[idx].cockLength -= (rand(10) + 5) / 10;
+					if (player.cocks[idx].cockThickness > 3) {
+						outputText(" Your " + player.cockDescript(idx) + " definitely got a bit thinner as well.");
+						player.cocks[idx].cockThickness -= (rand(4) + 1) / 10;
+					}
+					changes++;
+				}
+
+				//Cock thickness <2 - Increase cock thickness
+				if (player.smallestCockArea() < 12 && rand(3) == 0 && changes < changeLimit) {
+					outputText("[if (cocks > 1) One of your cocks|Your cock] feels swollen and heavy. With a firm, but gentle, squeeze, you confirm"
+					          +" your suspicions. It is definitely thicker.");
+					player.cocks[player.thinnestCockIndex()].thickenCock(1.5);
+					changes++;
+				}
+			}
+
+			//-Lizard dick - first one
+			if (player.countCocksOfType(CockTypesEnum.LIZARD) == 0 && player.cockTotal() > 0 && changes < changeLimit && rand(4) == 0) {
+				//Find the first non-lizzy dick
+				for (i = 0; i < player.cocks.length; i++) {
+					//Stop loopahn when dick be found
+					if (player.cocks[i].cockType !== CockTypesEnum.LIZARD) break;
+				}
+				outputText("\n\nA slow tingle warms your groin.  Before it can progress any further, you yank back your [armor] to investigate."
+				          +"  Your " + player.cockDescript(i) + " is changing!  It ripples loosely from [if (hasSheath)sheath|base] to tip,"
+				          +" undulating and convulsing as its color lightens, darkens, and finally settles on a purplish hue."
+				          +"  Your " + Appearance.cockNoun(CockTypesEnum.HUMAN) + " resolves itself into a bulbous form, with a slightly pointed tip."
+				          +"  The 'bulbs' throughout its shape look like they would provide an interesting ride for your sexual partners,"
+				          +" but the perverse, alien pecker ");
+				if (player.cor < 33) outputText("horrifies you.");
+				else if (player.cor < 66) outputText("is a little strange for your tastes.");
+				else {
+					outputText("looks like it might be more fun to receive than use on others.  ");
+					if (player.hasVagina()) outputText("Maybe you could find someone else with one to ride?");
+					else outputText("Maybe you should test it out on someone and ask them exactly how it feels?");
+				}
+				outputText("  <b>You now have a bulbous, lizard-like cock.</b>");
+				//Actually xform it nau
+				if (player.hasSheath()) {
+					player.cocks[i].cockType = CockTypesEnum.LIZARD;
+					if (!player.hasSheath())
+						outputText("\n\nYour sheath tightens and starts to smooth out, revealing ever greater amounts of your "
+						          + player.cockDescript(i) + "'s lower portions.  After a few moments"
+						          +" <b>your groin is no longer so animalistic – the sheath is gone.</b>");
+				}
+				else player.cocks[i].cockType = CockTypesEnum.LIZARD;
+				changes++;
+				dynStats("lib", 3, "lus", 10);
+			}
+			//(CHANGE OTHER DICK)
+			//Requires 1 lizard cock, multiple cocks
+			if (player.cockTotal() > 1 && player.countCocksOfType(CockTypesEnum.LIZARD) > 0 && player.cockTotal() > player.countCocksOfType(CockTypesEnum.LIZARD) && rand(4) == 0 && changes < changeLimit) {
+				outputText("\n\nA familiar tingle starts in your crotch, and before you can miss the show, you pull open your [armor]."
+				          +"  As if operating on a cue, ");
+				for (i = 0; i < player.cocks.length; i++) {
+					//Stop loopahn when dick be found
+					if (player.cocks[i].cockType !== CockTypesEnum.LIZARD) break;
+				}
+				if (player.cockTotal() == 2) outputText("your other dick");
+				else outputText("another one of your dicks");
+				outputText(" starts to change into the strange reptilian shape you've grown familiar with.  It warps visibly, trembling and radiating"
+				          +" pleasurable feelings back to you as the transformation progresses.  ");
+				if (player.cumQ() < 50) outputText("pre-cum oozes from the tip");
+				else if (player.cumQ() < 700) outputText("Thick pre-cum rains from the tip");
+				else outputText("A wave of pre-cum splatters on the ground");
+				outputText(" from the pleasure of the change.  In moments <b>you have a bulbous, lizard-like cock.</b>");
+				//(REMOVE SHEATH IF NECESSARY)
+				if (player.hasSheath()) {
+					player.cocks[i].cockType = CockTypesEnum.LIZARD;
+					if (!player.hasSheath())
+						outputText("\n\nYour sheath tightens and starts to smooth out, revealing ever greater amounts of your "
+						          + player.cockDescript(i) + "'s lower portions.  After a few moments"
+						          +" <b>your groin is no longer so animalistic – the sheath is gone.</b>");
+				}
+				else player.cocks[i].cockType = CockTypesEnum.LIZARD;
+				changes++;
+				dynStats("lib", 3, "lus", 10);
+			}
+
+			//--Worms leave if 100% lizard dicks?
+			//Require mammals?
+			if (player.countCocksOfType(CockTypesEnum.LIZARD) == player.cockTotal() && changes < changeLimit && player.hasStatusEffect(StatusEffects.Infested)) {
+				outputText("\n\nLike rats from a sinking ship, worms escape from your body in a steady stream.  Surprisingly, the sensation is"
+				          +" remarkably pleasant, similar to the pleasure of sexual release in a way.  Though they seem inexhaustible, the tiny,"
+				          +" cum-slimed invertebrates slow to a trickle.  The larger worm-kin inside you stirs as if disturbed from a nap, coming"
+				          +" loose from whatever moorings it had attached itself to in the interior of your form.  It slowly works its way up your"
+				          +" urethra, stretching to an almost painful degree with every lurching motion. Your dick bloats out around the base,"
+				          +" stretched like the ovipositor on a bee-girl in order to handle the parasitic creature,"
+				          +" but thankfully, the ordeal is a brief one.");
+				if (player.balls > 1)
+					outputText("  The remaining " + num2Text(player.balls - 1) + " slither out the pre-stretched holes with ease,"
+					          +" though the last one hangs from your tip for a moment before dropping to the ground.");
+				outputText("  The white creature joins its kin on the ground and slowly slithers away.  Perhaps they prefer mammals? In any event,"
+				          +" <b>you are no longer infected with worms</b>.");
+				player.removeStatusEffect(StatusEffects.Infested);
+				changes++;
+			}
+
+			//Increase height up to 5ft 7in.
+			if (player.tallness < 67 && changes < changeLimit && rand(5) == 0) {
+				outputText("\n\nYou shift uncomfortably as you realize you feel off balance."
+				          +" Gazing down, you realize you have grown SLIGHTLY taller.");
+				player.tallness += rand(3) + 1;
+				changes++;
+			}
+
+			//Decrease height down to a maximum of 6ft 8in.
+			if (player.tallness > 80 && changes < changeLimit && rand(5) == 0) {
+				outputText("\n\nYour skin crawls, making you close your eyes and shiver. When you open them again the world seems... different."
+				          +" After a bit of investigation, you realize you've become shorter!");
+				player.tallness -= rand(3) + 1;
+				changes++;
 			}
 
 			//FAILSAFE CHANGE
@@ -200,6 +405,7 @@ package classes.Items.Consumables
 				game.HPChange(50, true);
 				dynStats("lus", 3);
 			}
+
 			player.refillHunger(20);
 			game.flags[kFLAGS.TIMES_TRANSFORMED] += changes;
 			return false;

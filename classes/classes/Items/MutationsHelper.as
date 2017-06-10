@@ -426,6 +426,7 @@ package classes.Items
 
 				case "reptilum":
 				case "echidnaTFs":
+				case "TonOTrice":
 					if (player.findPerk(PerkLib.Oviposition) >= 0) return 0;
 					outputText("\n\nDeep inside yourself there is a change.  It makes you feel a little woozy, but passes quickly."
 					          +"  Beyond that, you aren't sure exactly what just happened, but you are sure it originated from your womb.\n");

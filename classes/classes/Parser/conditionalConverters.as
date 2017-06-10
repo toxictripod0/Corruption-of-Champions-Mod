@@ -47,6 +47,7 @@
 				"hasbreasts"		: function(thisPtr:*):* {return  (kGAMECLASS.player.biggestTitSize() >= 1);},
 				"hasballs"			: function(thisPtr:*):* {return  (kGAMECLASS.player.balls > 0);},
 				"hascock"			: function(thisPtr:*):* {return  kGAMECLASS.player.hasCock();},
+				"hassheath"			: function(thisPtr:*):* {return  kGAMECLASS.player.hasSheath();},
 				"isherm"			: function(thisPtr:*):* {return  (kGAMECLASS.player.gender == 3);},
 				"cumnormal"			: function(thisPtr:*):* {return  (kGAMECLASS.player.cumQ() <= 150);},
 				"cummedium"			: function(thisPtr:*):* {return  (kGAMECLASS.player.cumQ() > 150 && kGAMECLASS.player.cumQ() <= 350);},
