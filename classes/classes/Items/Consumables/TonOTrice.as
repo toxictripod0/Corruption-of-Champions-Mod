@@ -399,6 +399,59 @@ package classes.Items.Consumables
 				changes++;
 			}
 
+			//Physical changes:
+			//Face TF
+			if (player.faceType != FACE_COCKATRICE && player.armType == ARM_TYPE_COCKATRICE && player.lowerBody == LOWER_BODY_TYPE_COCKATRICE && changes < changeLimit && rand(3) == 0) {
+				outputText("\n\nYour head is suddenly wracked with pain. You throw back your head and scream in agony as you feel your skull’s"
+				          +" structure shifting, reforming into something... different. Your lower face elongates, your nose and lips fusing into the"
+				          +" new upper half of your mouth while your jaw soon catches it up as they both harden. Your larger upper lip curves over"
+				          +" your lower, ending in a pointed tip as it changes colour to a shade of yellow. Small feathers rapidly sprout from your"
+				          +" skin, covering it in [feather colour] feathers. Once your face stops it’s rapid transformation you run your hands over"
+				          +" your face. You have a beak like muzzle, though instead of sharp edges, the lips are firm and rubbery, allowing you the"
+				          +" same amount of facial expression as before while being solid enough to crack open seeds and nuts like that of a bird.");
+				outputText("\n<b>You have a cockatrice face!</b>");
+				player.faceType = FACE_COCKATRICE;
+				changes++;
+			}
+			//Hair TF
+			if (player.hairType != HAIR_FEATHER && changes < changeLimit && rand(4) == 0) {
+				outputText("\n\nA tingling starts in your scalp, getting worse and worse until you're itching like mad, the feathery strands of your"
+				          +" hair tickling your fingertips while you scratch like a dog itching a flea. When you pull back your hand, you're treated"
+				          +" to the sight of downy fluff trailing from your [claws]. A realization dawns on you - you have feathers for hair,"
+				          +" just like a harpy!");
+				player.hairType = HAIR_FEATHER;
+				changes++;
+			}
+			//Eye TF
+			if (player.eyeType != EYES_COCKATRICE && player.faceType == FACE_COCKATRICE && player.underBody.type == UNDER_BODY_TYPE_COCKATRICE && player.earType == EARS_COCKATRICE && changes < changeLimit && rand(3) == 0) {
+				outputText("\n\nYour eyes suddenly burn, tears streaming down your cheeks. Your irises grow, taking up your entire eye as a spiderweb"
+				          +" of light blue crawls across your now vibrant blue eyes, looking like lightning strikes. Your pupils rapidly grow to"
+				          +" match, elongating into slit like shapes, similar to that of a feline. When your eyes stop watering you finally get a"
+				          +" look at yourself. Your eyes are now the same as that of the cockatrice you met in the mountains! Your excitement over"
+				          +" this causes your pupils to widen into large circles, giving you a cute and excited look. Seems you won’t be able to have"
+				          +" much of a poker face anymore.");
+				outputText("\n<b>You now have cockatrice eyes!</b>");
+				player.eyeType = EYES_COCKATRICE;
+				player.eyeCount = 2;
+			}
+			//Lizard tongue TF
+			if (player.tongueType != TONGUE_LIZARD && player.faceType == FACE_COCKATRICE && changes < changeLimit && rand(3) == 0) {
+				mutations.gainLizardTongue();
+			}
+			//Ears TF
+			if (player.earType != EARS_COCKATRICE && player.faceType == FACE_COCKATRICE && changes < changeLimit && rand(3) == 0) {
+				outputText("A prickling sensation suddenly fills your ears; unpleasant, but hardly painful. It grows and grows until you can't stand"
+				          +" it any more, and reach up to scratch at them. To your surprise, you find them melting away like overheated candles."
+				          +" You panic as they fade into nothingness, leaving you momentarily deaf and dazed, stumbling around in confusion."
+				          +" Then, all of a sudden, hearing returns to you.  Gratefully investigating, you find you now have a pair of avian"
+				          +" ear-holes, one on either side of your head. A sudden pain strikes your temples, and you feel long feathers sprout from"
+				          +" the side you your head, the longest being vertical while the 3 shorter ones come out at a 1 o'clock, 2 o'clock and"
+				          +" 3 o'clock angle. With a little patience, you begin to adjust these feathers just like ears to aid your hearing.");
+				outputText("\n<b>You now have cockatrice ears!</b>");
+				player.earType = EARS_COCKATRICE;
+				changes++;
+			}
+
 			//FAILSAFE CHANGE
 			if (changes == 0) {
 				outputText("\n\nInhuman vitality spreads through your body, invigorating you!\n");

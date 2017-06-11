@@ -257,6 +257,13 @@ package classes
 				else if (player.hasScales())
 					outputText("  It's covered in [skinFurScales], making your face looks more unusual.");
 			}
+			if (player.faceType == FACE_COCKATRICE)
+			{
+				if (player.underBody.skin.type == SKIN_TYPE_FEATHERED)
+					outputText("You have a cockatrice’s face, complete with " + player.furColor + " feathered skin and a muzzle like beak.");
+				else
+					outputText("You have a cockatrice’s face, complete with [skinFurScales] and a muzzle like beak.");
+			}
 			//</mod>
 			//M/F stuff!
 			outputText("  It has " + player.faceDesc() + ".");
@@ -267,6 +274,9 @@ package classes
 				outputText("  Your eyes are solid spheres of inky, alien darkness.");
 			else if (player.eyeType == EYES_WOLF) 
 				outputText("  Your amber eyes are circled by darkness to help keep the sun from obscuring your view and have a second eyelid to keep them wet. You're rather near-sighted, but your peripherals are great!");
+			else if (player.eyeType == EYES_COCKATRICE)
+				outputText("  You have electric blue eyes spiderwebbed with lightning like streaks that signal their power and slit reptilian pupils."
+				          +" When excited your pupils dilate into wide circles.");
 			else if (player.faceType != FACE_CAT && player.hasReptileEyes())
 			{
 				outputText("  Your eyes are");
@@ -392,6 +402,10 @@ package classes
 						outputText("  Limp antennae also grow from just behind your hairline, waving and swaying in the breeze with your ears.");
 					else outputText("  Floppy antennae also grow from just behind your hairline, bouncing and swaying in the breeze.");
 				}
+			}
+			if (player.earType == EARS_COCKATRICE) {
+				outputText("  From the sides of your head protrude a quartet of feathers, the longest being vertical while the 3 shorter ones come"
+				          +" out at a 1 o'clock, 2 o'clock and 3 o'clock angle. Behind them hides the avian hole that is your ear.");
 			}
 			
 			//Beards!

@@ -2735,6 +2735,18 @@ use namespace kGAMECLASS;
 					maxInt += 5;
 				}
 			}
+			if (cockatriceScore() >= 8) {
+				maxStr += 5;
+				maxSpe += 25;
+				maxInt += 15;
+			} else if (cockatriceScore() >= 6) {
+				maxSpe += 20;
+				maxInt += 5;
+			} else if (cockatriceScore() >= 4) {
+				maxStr -= 5;
+				maxSpe += 10;
+				maxInt += 5;
+			}
 			if (dragonScore() >= 4) {
 				maxStr += 5;
 				maxTou += 10;
