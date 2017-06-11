@@ -215,6 +215,20 @@ package classes.Items
 			return ["invalid", "invalid"]; // Will never happen. Suppresses 'Error: Function does not return a value.'
 		}
 
+		public function newCockatriceColors():Array
+		{
+			var cockatriceColors:Array = [
+				["Blue",   "Turquoise", "Blue"],
+				["Orange", "Red",       "Orange"],
+				["Green",  "Yellow",    "Green"],
+				["Purple", "Pink",      "Purple"],
+				["Black",  "White",     "Black"],
+				["Blonde", "Brown",     "Blonde"],
+				["White",  "Grey",      "White"],
+			];
+			return randomChoice(cockatriceColors);
+		}
+
 		public function updateClaws(clawType:int = CLAW_TYPE_NORMAL):String
 		{
 			var clawTone:String = "";

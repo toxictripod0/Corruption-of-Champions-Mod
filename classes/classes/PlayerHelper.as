@@ -76,6 +76,11 @@ package classes
 			return underBodies.indexOf(underBody.type) != -1;
 		}
 
+		public function hasCockatriceSkin():Boolean
+		{
+			return skinType == SKIN_TYPE_LIZARD_SCALES && underBody.type == UNDER_BODY_TYPE_COCKATRICE;
+		}
+
 		public function hasDragonWings(large:Boolean = false):Boolean
 		{
 			if (large)

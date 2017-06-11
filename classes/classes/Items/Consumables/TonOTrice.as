@@ -451,6 +451,35 @@ package classes.Items.Consumables
 				player.earType = EARS_COCKATRICE;
 				changes++;
 			}
+			//Body TF
+			if (!player.hasCockatriceSkin() && player.faceType == FACE_COCKATRICE && changes < changeLimit && rand(3) == 0) {
+				var colorChoice:Array = mutations.newCockatriceColors();
+				outputText("\n\nYour body feels hot and your skin feels tight, making you fall to your knees in a bout of lightheadedness."
+				          +" You kneel there panting as the pressure increases, sweat dripping from your brow. You don’t know how long you can take"
+				          +" this and soon you drift into unconsciousness.");
+				outputText("\nWhen you awaken you check yourself to see what has changed now that the overwhelming pressure has left your body."
+				          +" The first thing you notice is feathers, lots and lots of feathers that now cover your body in a downy layer."
+				          +" Around your neck a ruff of soft fluffy feathers has formed like that of an exotic bird. As you look down to your [chest]"
+				          +" you see that from your chest to your groin you are covered in a layer of cream scales.");
+				outputText("\n<b>Your body is now covered in scales and feathers!</b>");
+
+				player.skin.setAllProps({
+					type:     SKIN_TYPE_LIZARD_SCALES,
+					furColor: colorChoice[0], // Primary feather color
+					tone:     colorChoice[2],
+					desc:     "scales"
+				});
+				player.underBody.setAllProps({
+					type: UNDER_BODY_TYPE_COCKATRICE,
+					skin: {
+						type:     SKIN_TYPE_FEATHERED,
+						furColor: colorChoice[1], // Secondary feather color
+						tone:     colorChoice[2],
+						desc:     "feathers"
+					}
+				});
+				changes++;
+			}
 
 			//FAILSAFE CHANGE
 			if (changes == 0) {

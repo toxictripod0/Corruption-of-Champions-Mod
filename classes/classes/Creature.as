@@ -2597,7 +2597,7 @@ package classes
 
 		public function hasFeathers():Boolean
 		{
-			return skinType == SKIN_TYPE_FEATHERED;
+			return skin.hasFeathers();
 		}
 
 		public function hasScales():Boolean
@@ -2638,6 +2638,11 @@ package classes
 		public function isFurry():Boolean
 		{
 			return skin.isFurry();
+		}
+
+		public function isFluffy():Boolean
+		{
+			return skin.isFluffy();
 		}
 
 		public function isFurryOrScaley():Boolean

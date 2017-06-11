@@ -558,8 +558,12 @@ package classes
 				outputText("  Your arms are covered by [skinFurScales] and your fingernails are now " + player.claws() + ".");
 			//Done with head bits. Move on to body stuff
 			// <mod name="BodyParts.UnderBody" author="Stadler76">
-			if (player.hasDifferentUnderBody())
+			if (player.hasCockatriceSkin()) {
+				outputText("You’ve got a thick layer of " + player.furColor + " feathers covering your body, while [skinFurScales] coat you from"
+				          +" chest to groin. Around your neck is a ruff of [underBody.skinFurScales] which tends to puff out with your emotions.");
+			} else if (player.hasDifferentUnderBody()) {
 				outputText("  While most of your body is covered by [skinFurScales] you have [underBody.skinFurScales] covering your belly.");
+			}
 			// </mod>
 			//Horse lowerbody, other lowerbody texts appear lower
 			if (player.isTaur()) 
