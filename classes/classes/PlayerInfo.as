@@ -383,6 +383,9 @@ import flash.events.Event;
 			if (player.beeScore() > 0) {
 				raceScores += "<b>Bee Score:</b> " + player.beeScore() + "\n";
 			}
+			if (player.cockatriceScore() > 0) {
+				raceScores += "<b>Cockatrice Score:</b> " + player.cockatriceScore() + "\n";
+			}
 			
 			if (raceScores != "")
 				outputText("\n<b><u>Racial Scores</u></b>\n" + raceScores);

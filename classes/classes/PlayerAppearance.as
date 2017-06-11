@@ -260,9 +260,9 @@ package classes
 			if (player.faceType == FACE_COCKATRICE)
 			{
 				if (player.underBody.skin.type == SKIN_TYPE_FEATHERED)
-					outputText("You have a cockatrice’s face, complete with " + player.furColor + " feathered skin and a muzzle like beak.");
+					outputText("  You have a cockatrice’s face, complete with " + player.furColor + " feathered skin and a muzzle like beak.");
 				else
-					outputText("You have a cockatrice’s face, complete with [skinFurScales] and a muzzle like beak.");
+					outputText("  You have a cockatrice’s face, complete with [skinFurScales] and a muzzle like beak.");
 			}
 			//</mod>
 			//M/F stuff!
@@ -555,7 +555,13 @@ package classes
 			else if (player.armType == ARM_TYPE_SALAMANDER)
 				outputText("  Shining thick, leathery red scales cover your arms from the biceps down and your fingernails are now short, fiery-red curved claws.");
 			else if (player.armType == ARM_TYPE_PREDATOR)
-				outputText("  Your arms are covered by [skinFurScales] and your fingernails are now " + player.claws() + ".");
+				outputText("  Your arms are covered by [skinFurScales] and your fingernails are now [claws].");
+			else if (player.armType == ARM_TYPE_COCKATRICE) {
+				outputText("  Your arms are covered in " + (player.hasCockatriceSkin() ? player.furColor : player.hairColor) + " feathers from the"
+				          +" shoulder down to the elbow where they stop in a fluffy cuff. A handful of long feathers grow from your elbow in the form"
+				          +" of vestigial wings, and while they may not let you fly, they certainly help you jump. Your lower arm is coated in"
+				          +" leathery " + player.skinTone + " scales and your fingertips terminate in deadly looking reptilian claws.");
+			}
 			//Done with head bits. Move on to body stuff
 			// <mod name="BodyParts.UnderBody" author="Stadler76">
 			if (player.hasCockatriceSkin()) {
@@ -921,7 +927,13 @@ package classes
 			else if (player.lowerBody == LOWER_BODY_TYPE_CLOVEN_HOOFED) 
 				outputText("  " + Num2Text(player.legCount)+ " digitigrade legs form below your [hips], ending in cloven hooves.");
 			else if (player.lowerBody == LOWER_BODY_TYPE_IMP) 
-				outputText(" " + Num2Text(player.legCount)+ " digitigrade legs form below your [hips], ending in clawed feet. Three extend out the front, and one smaller one is in the back to keep your balance.");
+				outputText(" " + Num2Text(player.legCount) + " digitigrade legs form below your [hips], ending in clawed feet. Three extend out the front, and one smaller one is in the back to keep your balance.");
+			else if (player.lowerBody == LOWER_BODY_TYPE_COCKATRICE) {
+				outputText(" " + Num2Text(player.legCount) + " digitigrade legs grow down from your [hips], ending in clawed feet."
+				          +" There are three long toes on the front, and a small hind-claw on the back."
+				          +" A layer of " + (player.hasCockatriceSkin() ? player.furColor : player.hairColor) + " feathers covers your legs from the"
+				          +" hip to the knee, ending in a puffy cuff.");
+			}
 			if (player.findPerk(PerkLib.Incorporeality) >= 0)
 				outputText("  Of course, your " + player.legs() + " are partially transparent due to their ghostly nature."); // isn't goo transparent anyway?
 			outputText("\n");
