@@ -12,8 +12,11 @@
 			outputText("The imp mutters something to himself. Before you have time to react the demonic creature's hand is filled with a bright red fire that he hurls at you.  The flames lick at your body leaving a painful burn on you torso, as well as an arousing heat in your groin. ");
 			//[-HP // +Lust(minor)]
 			var damage:int = 40 + rand(10);
+			var lust:int = player.lust;
 			player.takeDamage(damage, true);
 			game.dynStats("lus", 20 + player.cor / 10);
+			lust = player.lust - lust;
+			outputText(" <b>(<font color=\"#ff00ff\">" + lust + " </font>)</b>\n\n");
 			combatRoundOver();
 		}
 		
@@ -36,7 +39,10 @@
 		{
 			outputText("Lowering his loincloth the imp reveals his inhumanly thick shaft.  He smirks and licks his lips as he gives his cock a squeeze, milking a few beads of clear pre from the tip.  You shake your head and try to ignore your growing need.");
 			//[+Lust]
+			var lust:int = player.lust;
 			game.dynStats("lus", 5 + player.lib / 5 + player.cor / 5);
+			lust = player.lust - lust;
+			outputText(" <b>(<font color=\"#ff00ff\">" + lust + " </font>)</b>\n\n");
 			combatRoundOver();
 		}
 
@@ -47,7 +53,10 @@
 			var damage:int = 3 + rand(10);
 			player.takeDamage(damage, true);
 			//[-HP(minor) // +Lust]
+			var lust:int = player.lust;
 			game.dynStats("lus", 5 + player.sens / 4 + player.cor / 10);
+			lust = player.lust - lust;
+			outputText(" <b>(<font color=\"#ff00ff\">" + lust + " </font>)</b>\n\n");
 			combatRoundOver();
 		}
         override protected function performCombatAction():void

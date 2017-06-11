@@ -31,6 +31,7 @@ package classes.Scenes.Monsters
 		
 		protected function lustMagicAttack():void {
 			outputText("You see " + a + short + " make sudden arcane gestures at you!\n\n");
+			var lust:int = player.lust;
 			game.dynStats("lus", player.lib / 10 + player.cor / 10 + 10);
 			if (player.lust < 30) outputText("You feel strangely warm.  ");
 			if (player.lust >= 30 && player.lust < 60) outputText("Blood rushes to your groin as a surge of arousal hits you, making your knees weak.  ");
@@ -64,7 +65,8 @@ package classes.Scenes.Monsters
 						
 				}
 			}
-			outputText("\n");
+			lust = player.lust - lust;
+			outputText(" <b>(<font color=\"#ff00ff\">" + lust + " </font>)</b>\n\n");
 			if (player.lust >= player.maxLust())
 				doNext(game.combat.endLustLoss);
 			else doNext(game.playerMenu);
