@@ -91,7 +91,10 @@ package classes.Scenes.Monsters
 			//[-HP // +Lust(minor)]
 			var damage:int = 80 + rand(20);
 			player.takeDamage(damage, true);
+			var lust:int = player.lust;
 			game.dynStats("lus", 20 + player.cor / 10);
+			lust = player.lust - lust;
+			outputText(" <b>(<font color=\"#ff00ff\">" + lust + " </font>)</b>\n\n");
 			combatRoundOver();
 		}
 
@@ -100,7 +103,10 @@ package classes.Scenes.Monsters
 		{
 			outputText("Lowering his loincloth the imp reveals his inhumanly thick shaft.  He smirks and licks his lips as he gives his cock a squeeze, milking a few beads of clear pre from the tip.  You shake your head and try to ignore your growing need.");
 			//[+Lust]
+			var lust:int = player.lust;
 			game.dynStats("lus", 15 + player.lib / 5 + player.cor / 5);
+			lust = player.lust - lust;
+			outputText(" <b>(<font color=\"#ff00ff\">" + lust + " </font>)</b>\n\n");
 			combatRoundOver();
 		}
 
@@ -111,7 +117,10 @@ package classes.Scenes.Monsters
 			var damage:int = 12 + rand(25);
 			player.takeDamage(damage, true);
 			//[-HP(minor) // +Lust]
+			var lust:int = player.lust;
 			game.dynStats("lus", 25 + player.sens / 4 + player.cor / 10);
+			lust = player.lust - lust;
+			outputText(" <b>(<font color=\"#ff00ff\">" + lust + " </font>)</b>\n\n");
 			combatRoundOver();
 		}
 		
@@ -135,7 +144,10 @@ package classes.Scenes.Monsters
 			else {
 				outputText("The cum lands on you, staining your [armor] and the cum even gets on your [skinfurscales]! You feel aroused from his cum.");
 				player.slimeFeed();
+				var lust:int = player.lust;
 				game.dynStats("lus", 30 + player.sens / 4 + player.cor / 10);
+				lust = player.lust - lust;
+				outputText(" <b>(<font color=\"#ff00ff\">" + lust + " </font>)</b>\n\n");
 			}
 			combatRoundOver();
 		}

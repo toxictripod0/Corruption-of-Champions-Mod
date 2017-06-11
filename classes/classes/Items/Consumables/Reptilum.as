@@ -344,7 +344,7 @@ package classes.Items.Consumables
 					adj: "",
 					desc: "scales"
 				});
-				player.underBody.type = UNDER_BODY_TYPE_LIZARD;
+				player.underBody.type = UNDER_BODY_TYPE_REPTILE;
 				player.underBody.copySkin({ // copy the main skin props to the underBody skin ...
 					desc: "ventral scales", // ... and only override the desc
 					tone: newSkinTones[1]   // ... and the color (tone)

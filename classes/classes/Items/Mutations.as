@@ -3746,7 +3746,7 @@ package classes.Items
 							colorChoices = KitsuneScene.basicKitsuneFur;
 				else
 					colorChoices = foxFurColors;
-				player.setFurColor(colorChoices, {type: UNDER_BODY_TYPE_FUR}, true);
+				player.setFurColor(colorChoices, {type: UNDER_BODY_TYPE_FURRY}, true);
 				changes++;
 			}
 			//[Grow Fox Legs]
@@ -4018,7 +4018,7 @@ package classes.Items
 			var tone:Array = mystic ? ["dark", "ebony", "ashen", "sable", "milky white"] : ["tan", "olive", "light"];
 			//[Change Skin Type: remove fur or scales, change skin to Tan, Olive, or Light]
 			var theFurColor:String = player.furColor;
-			if (player.hasFur() && player.underBody.type == UNDER_BODY_TYPE_FUR && player.furColor != player.underBody.skin.furColor)
+			if (player.hasFur() && player.underBody.type == UNDER_BODY_TYPE_FURRY && player.furColor != player.underBody.skin.furColor)
 				theFurColor = player.furColor + " and " + player.underBody.skin.furColor;
 
 			if ((player.hasFur() 

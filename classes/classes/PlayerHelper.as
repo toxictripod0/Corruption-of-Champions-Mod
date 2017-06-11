@@ -65,8 +65,7 @@ package classes
 		public function hasReptileUnderBody(withSnakes:Boolean = false):Boolean
 		{
 			var underBodies:Array = [
-				UNDER_BODY_TYPE_LIZARD,
-				UNDER_BODY_TYPE_DRAGON,
+				UNDER_BODY_TYPE_REPTILE,
 			];
 
 			if (withSnakes) {
