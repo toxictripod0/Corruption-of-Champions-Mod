@@ -2544,8 +2544,8 @@ public function unFuckSave():void
 	//Rigidly enforce cock size caps
 	if (player.hasCock()) {
 		for (var i:int = 0; i < player.cocks.length; i++) {
-			if (player.cocks[i].cockLength > 499.9) player.cocks[i].cockLength = 499.9;
-			if (player.cocks[i].cockThickness > 99.9) player.cocks[i].cockThickness = 99.9;
+			if (player.cocks[i].cockLength > 9999.9) player.cocks[i].cockLength = 9999.9;
+			if (player.cocks[i].cockThickness > 999.9) player.cocks[i].cockThickness = 999.9;
 		}
 	}
 	//If converting from vanilla, set Grimdark flag to 0.
