@@ -565,7 +565,7 @@ package classes
 			//Done with head bits. Move on to body stuff
 			// <mod name="BodyParts.UnderBody" author="Stadler76">
 			if (player.hasCockatriceSkin()) {
-				outputText("You’ve got a thick layer of " + player.furColor + " feathers covering your body, while [skinFurScales] coat you from"
+				outputText("  You’ve got a thick layer of " + player.furColor + " feathers covering your body, while [skinFurScales] coat you from"
 				          +" chest to groin. Around your neck is a ruff of [underBody.skinFurScales] which tends to puff out with your emotions.");
 			} else if (player.hasDifferentUnderBody()) {
 				outputText("  While most of your body is covered by [skinFurScales] you have [underBody.skinFurScales] covering your belly.");
@@ -869,6 +869,11 @@ package classes
 			else if (player.tailType == TAIL_TYPE_IMP) 
 			{
 				outputText(" A thin imp tail almost as long as you are tall hangs from above your [butt], dotted at the end with a small puff of hair.");
+			}
+			else if (player.tailType == TAIL_TYPE_COCKATRICE) 
+			{
+				outputText(" A thick, scaly, prehensile reptilian tail hangs from your [butt], about half as long as you are tall."
+				          +" The first inch or so is feathered, terminating in a 'v'shape and giving way to your " + player.skinTone + " scales.");
 			}
 			//</mod>
 			//LOWERBODY SPECIAL

@@ -42,6 +42,11 @@ package classes
 			return hasUnderBody(noSnakes) && underBody.skin.hasFur();
 		}
 
+		public function hasFeatheredUnderBody(noSnakes:Boolean = false):Boolean
+		{
+			return hasUnderBody(noSnakes) && underBody.skin.hasFeathers();
+		}
+
 		public function hasDragonHorns(fourHorns:Boolean = false):Boolean
 		{
 			return (!fourHorns && horns > 0 && hornType == HORNS_DRACONIC_X2) || hornType == HORNS_DRACONIC_X4_12_INCH_LONG;

@@ -218,13 +218,13 @@ package classes.Items
 		public function newCockatriceColors():Array
 		{
 			var cockatriceColors:Array = [
-				["Blue",   "Turquoise", "Blue"],
-				["Orange", "Red",       "Orange"],
-				["Green",  "Yellow",    "Green"],
-				["Purple", "Pink",      "Purple"],
-				["Black",  "White",     "Black"],
-				["Blonde", "Brown",     "Blonde"],
-				["White",  "Grey",      "White"],
+				["blue",   "turquoise", "blue"],
+				["orange", "red",       "orange"],
+				["green",  "yellow",    "green"],
+				["purple", "pink",      "purple"],
+				["black",  "white",     "black"],
+				["blonde", "brown",     "blonde"],
+				["white",  "grey",      "white"],
 			];
 			return randomChoice(cockatriceColors);
 		}

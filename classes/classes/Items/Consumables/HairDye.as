@@ -41,6 +41,10 @@ package classes.Items.Consumables
 				outputText("\n\nYou have " + game.player.furColor + " fur.");
 				if (game.player.furColor != _color) game.addButton(1, "Fur", dyeFur);
 				else game.addButtonDisabled(1, "Fur", "Your already have " + _color + " fur!");
+			} else if (game.player.hasFeathers() || game.player.hasCockatriceSkin()) {
+				outputText("\n\nYou have " + game.player.furColor + " feathers.");
+				if (game.player.furColor != _color) game.addButton(1, "Feathers", dyeFeathers);
+				else game.addButtonDisabled(1, "Feathers", "Your already have " + _color + " feathers!");
 			} else {
 				outputText("\n\nYou have no fur.");
 				game.addButtonDisabled(1, "Fur", "You have no fur!");
@@ -50,6 +54,10 @@ package classes.Items.Consumables
 				outputText("\n\nYou have " + game.player.underBody.skin.furColor + " fur on your underbody.");
 				if (game.player.furColor != _color) game.addButton(2, "Under Fur", dyeUnderBodyFur);
 				else game.addButtonDisabled(2, "Under Fur", "Your already have " + _color + " fur on your underbody!");
+			} else if (game.player.hasFeatheredUnderBody()) {
+				outputText("\n\nYou have " + game.player.underBody.skin.furColor + " feathers on your underbody.");
+				if (game.player.furColor != _color) game.addButton(2, "Under Feathers", dyeUnderBodyFeathers);
+				else game.addButtonDisabled(2, "Under Feathers", "Your already have " + _color + " feathers on your underbody!");
 			} else {
 				outputText("\n\nYou have no special or furry underbody.");
 				game.addButtonDisabled(2, "Under Fur", "You have no special or furry underbody!");
@@ -57,11 +65,11 @@ package classes.Items.Consumables
 
 			if (game.player.wings.canDye()) {
 				outputText("\n\nYou have " + game.player.wingColor + " wings.");
-				if (game.player.wingColor != _color) game.addButton(1, "Wings", dyeWings);
-				else game.addButtonDisabled(1, "Fur", "Your already have " + _color + " wings!");
+				if (game.player.wingColor != _color) game.addButton(3, "Wings", dyeWings);
+				else game.addButtonDisabled(3, "Wings", "Your already have " + _color + " wings!");
 			} else {
 				outputText("\n\nYour wings can't be dyed.");
-				game.addButtonDisabled(1, "Fur", "Your wings can't be dyed!");
+				game.addButtonDisabled(3, "Wings", "Your wings can't be dyed!");
 			}
 
 			game.addButton(4, "Nevermind", dyeCancel);
@@ -102,6 +110,24 @@ package classes.Items.Consumables
 			outputText("You rub the dye into your fur on your underside, then use a bucket of cool lakewater to rinse clean a few minutes later.  ");
 			game.player.underBody.skin.furColor = _color;
 			outputText("You now have " + game.player.underBody.skin.furColor + " fur on your underside.");
+			finalize();
+		}
+		
+		private function dyeFeathers():void
+		{
+			clearOutput();
+			outputText("You rub the dye into your feathers, then use a bucket of cool lakewater to rinse clean a few minutes later.  ");
+			game.player.furColor = _color;
+			outputText("You now have " + game.player.furColor + " feathers.");
+			finalize();
+		}
+		
+		private function dyeUnderBodyFeathers():void
+		{
+			clearOutput();
+			outputText("You rub the dye into your feathers on your underside, then use a bucket of cool lakewater to rinse clean a few minutes later.  ");
+			game.player.underBody.skin.furColor = _color;
+			outputText("You now have " + game.player.underBody.skin.furColor + " feathers on your underside.");
 			finalize();
 		}
 		
