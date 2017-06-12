@@ -402,11 +402,24 @@ package classes.Items.Consumables
 			}
 
 			//Physical changes:
-			//Removes antennae
-			if (player.antennae != ANTENNAE_NONE && rand(3) == 0 && changes < changeLimit) {
+			//Removes other antennae
+			if (player.hasNonCockatriceAntennae() && rand(3) == 0 && changes < changeLimit) {
 				outputText("\n\nThe muscles in your brow clench tightly, and you feel a tremendous pressure on your upper forehead."
 				          +" When it passes, you touch yourself and discover your antennae have vanished!");
 				player.antennae = ANTENNAE_NONE;
+				changes++;
+			}
+			//Gain antennae like feathers
+			if (player.antennae == ANTENNAE_NONE && player.faceType == FACE_COCKATRICE && player.earType == EARS_COCKATRICE && rand(3) == 0 && changes < changeLimit) {
+				// Other antennae types are handled above! (Stadler76)
+				outputText("\n\nYour forehead suddenly itches, making you run your fingers through your hairline as you try to scratch. Under your"
+				          +" roving fingertips you feel your pores stretch as the shaft of one of your feathers gets thicker and sturdier. A sudden"
+				          +" pressure builds and then fades, making you groan as you hold your head tight. You tentatively run your fingers over the"
+				          +" two spots where the feeling originated, only to feel the body of a long, soft and extravagant quill like feather on each"
+				          +" side. While sturdy enough to support themselves these " + player.hairColor + " feathers flop daintily as you move."
+				          +" They seem to move with your eyebrows, helping convey your expressions.");
+				outputText("\n<b>You’ve got antennae like eyebrow feathers!</b>");
+				player.antennae = ANTENNAE_COCKATRICE;
 				changes++;
 			}
 			//Removes horns

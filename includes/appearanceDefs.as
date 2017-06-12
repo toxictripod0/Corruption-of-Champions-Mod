@@ -124,9 +124,10 @@ public static const HORNS_SHEEP:int                                             
 public static const HORNS_RAM:int                                                   =  10;
 public static const HORNS_IMP:int                                                   =  11;
 
-// antennae -- ALL ANTENNAE DEPRICATED, USE HORNS_ANTENNAE
+// antennae
 public static const ANTENNAE_NONE:int                                               =   0;
 public static const ANTENNAE_BEE:int                                                =   2;
+public static const ANTENNAE_COCKATRICE:int                                         =   3;
 
 // gillType
 public static const GILLS_NONE:int                                                  =   0;

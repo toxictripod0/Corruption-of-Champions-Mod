@@ -344,6 +344,8 @@ package classes
 				//</mod>
 				if (player.antennae == ANTENNAE_BEE) 
 					outputText("  Floppy antennae also appear on your skull, bouncing and swaying in the breeze.");
+				else if (player.antennae == ANTENNAE_COCKATRICE)
+					outputText("  Two long antennae like feathers sit on your hairline, curling over the shape of your head.");
 			}
 			//not bald
 			else 
@@ -402,6 +404,11 @@ package classes
 						outputText("  Limp antennae also grow from just behind your hairline, waving and swaying in the breeze with your ears.");
 					else outputText("  Floppy antennae also grow from just behind your hairline, bouncing and swaying in the breeze.");
 				}
+				else if (player.antennae == ANTENNAE_COCKATRICE)
+				{
+					outputText("  Two long antennae like feathers sit on your hairline, curling over the shape of your head.");
+				}
+
 			}
 			if (player.earType == EARS_COCKATRICE) {
 				outputText("  From the sides of your head protrude a quartet of feathers, the longest being vertical while the 3 shorter ones come"

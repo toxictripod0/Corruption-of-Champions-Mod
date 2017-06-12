@@ -1043,6 +1043,8 @@ use namespace kGAMECLASS;
 				cockatriceCounter++;
 			if (armType == ARM_TYPE_COCKATRICE)
 				cockatriceCounter++;
+			if (antennae == ANTENNAE_COCKATRICE)
+				cockatriceCounter++;
 			if (tongueType == TONGUE_LIZARD)
 				cockatriceCounter++;
 			if (cockatriceCounter > 2) {

@@ -85,6 +85,11 @@ package classes
 			return skinType == SKIN_TYPE_LIZARD_SCALES && underBody.type == UNDER_BODY_TYPE_COCKATRICE;
 		}
 
+		public function hasNonCockatriceAntennae():Boolean
+		{
+			return [ANTENNAE_NONE, ANTENNAE_COCKATRICE].indexOf(antennae) == -1
+		}
+
 		public function hasDragonWings(large:Boolean = false):Boolean
 		{
 			if (large)
