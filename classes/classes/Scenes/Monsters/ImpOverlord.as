@@ -90,7 +90,7 @@ package classes.Scenes.Monsters
 			//[-HP // +Lust(minor)]
 			var damage:int = 80 + rand(20);
 			player.takeDamage(damage, true);
-			var lustDmg:int = 20 + player.cor / 10);
+			var lustDmg:int = 20 + player.cor / 10;
 			player.takelustDamage(lustDmg, true);
 			combatRoundOver();
 		}
