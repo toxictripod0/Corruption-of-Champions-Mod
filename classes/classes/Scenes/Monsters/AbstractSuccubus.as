@@ -168,7 +168,7 @@ package classes.Scenes.Monsters
 					outputText(".");
 					//50%ish chance of success for the tight butted.
 					if (rand(100) <= (70 + buttRating * 2)) {
-						lustDmg = rand(buttRating) + 9);
+						lustDmg = rand(buttRating) + 9;
 						outputText("\nThe display is quite arousing.");
 					}
 					else outputText("\nYou're unimpressed.\n\n");
@@ -209,7 +209,7 @@ package classes.Scenes.Monsters
 				//rand(vaginas*2 + cocks*2) + wetness and/or length/6
 				if (rand(101) <= (65 + vaginas.length * 10 + cocks.length * 10)) {
 					outputText("\nThe display is quite arousing.");
-					lustDmg = rand(vaginas.length * 2 + cocks.length * 2) + 13);
+					lustDmg = rand(vaginas.length * 2 + cocks.length * 2) + 13;
 				}
 				else outputText("\nYou're unimpressed.\n\n");
 			player.takelustDamage(lustDmg, true);
