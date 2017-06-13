@@ -67,7 +67,7 @@ package classes.Scenes.Monsters
 			else if (spellChooser == 3 && fatigue <= (100 - spellCostArouse)) {
 				outputText("She makes a series of arcane gestures, drawing on her lust to inflict it upon you! ");
 				var lustDmg:int = (inte / 10) + (player.lib / 10) + rand(10) * spellMultiplier();
-				lustDmg = lustDamage * (player.lustPercent() / 100);
+				lustDmg = lustDmg * (player.lustPercent() / 100);
 				player.takelustDamage(lustDmg, true);
 				fatigue += spellCostArouse;
 			}
