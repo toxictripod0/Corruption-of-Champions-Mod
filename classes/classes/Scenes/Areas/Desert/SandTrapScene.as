@@ -358,7 +358,7 @@ public function birfSandTarps():void {
 	//Libido <30:
 	if (player.lib < 33) outputText("\n\nYou pick yourself up wearily, flap the flytraps you have birthed away and make your way back to camp.  This whole experience has been deeply unnerving, and you vow to make sure you don't have to repeat it.");
 	//Libido 30-65: 
-	else if (player.lib < 66) outputText("\n\nYou spend a moment enjoying your post-natal haze, then haul yourself out of it, flap the flytraps you have birthed away, and make your way back to camp.  Though this experience has been deeply unnerving, you can't help but acknowledge it has also been incredibly erotic.");
+	else if (player.lib100 < 66) outputText("\n\nYou spend a moment enjoying your post-natal haze, then haul yourself out of it, flap the flytraps you have birthed away, and make your way back to camp.  Though this experience has been deeply unnerving, you can't help but acknowledge it has also been incredibly erotic.");
 	//Libido >65: 
 	else outputText("\n\nYou smile lazily, then lie back and glory in the sensual haze the oil has left you in.  After you have spent many minutes lying listening to the happy twittering of your flytrap children above you, you reluctantly get up.  You only hope that you get to experience the unearthly wonder of birthing these strange creatures again, and again, and again.");
 	player.buttChange(25,true,true,false);

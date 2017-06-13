@@ -42,8 +42,8 @@ package classes.Scenes.Monsters
 					outputText(capitalA + short + " pulls out a blue vial and uncaps it, swiftly downing its contents.");
 					if (HPRatio() < 1) {
 						outputText("  She looks to have recovered from some of her wounds!\n");
-						addHP((eMaxHP() / 4) * multiplier);
-						if (short == "Tamani") addHP((eMaxHP() / 4) * multiplier);
+						addHP((maxHP() / 4) * multiplier);
+						if (short == "Tamani") addHP((maxHP() / 4) * multiplier);
 					}
 					else outputText("  There doesn't seem to be any effect.\n");
 					combatRoundOver();

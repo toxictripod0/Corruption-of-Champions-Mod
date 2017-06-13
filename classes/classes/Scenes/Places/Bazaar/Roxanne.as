@@ -302,7 +302,7 @@ private function roxanneGivesABlowjob():void {
 	clearOutput();
 	var x:Number = player.biggestCockIndex();
 	outputText("You open the lower portion of your " + player.armorName + " and, pulling it back, hang out your " + player.multiCockDescriptLight() + "; ");
-	if (player.lust < 70) outputText("it stiffens to a full, erect state.");
+	if (player.lust100 < 70) outputText("it stiffens to a full, erect state.");
 	else outputText("the already-hard cock-flesh stands proud and erect.");
 	outputText("  Roxanne giggles drunkenly, her half-lidded eyes looking up as she wobbles back and forth on her knees.  \"<i>I don't do thish that much, but when you've got a dick that getsh as big as mine... you learn just where the good spotsh are.</i>\"\n\n");
 	
@@ -398,7 +398,7 @@ private function roxanneRimjob():void {
 	outputText("Roxanne groans and gives your " + player.buttDescript() + " a raunchy squeeze, making love to your cheeks as her tongue worships your asshole.  She murmurs, \"<i>Thish would be sho much better if it was jussht foreplay.  Why don't you lose next time, okay babe?</i>\"  You moan out loud when her tongue returns to its task, arching your back and whimpering from the intense, anal pleasure.  ");
 	if (player.hasCock()) {
 		outputText(player.SMultiCockDesc() + " ");
-		if (player.lust < 70) outputText("hardens");
+		if (player.lust100 < 70) outputText("hardens");
 		else outputText("pulses with need");
 		outputText(", a bead of pre-cum already hanging from the tip.  ");
 	}

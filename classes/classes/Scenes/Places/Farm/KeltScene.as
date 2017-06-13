@@ -358,7 +358,7 @@ private function keltRequiresBlowjobs():void {
 	outputText("You swallow hard.  You don't have to take this!  Kelt is an arrogant, abusive, well-hung, enticing, delicious... you shake your head, thoughts clouded.  The cock grows larger and thicker by the second, and the musk of it delights your senses.  Part of you reasons that one little blowjob won't hurt... right?");
 	outputText("\r\rDo you submit?");
 	//(Corruption higher than 80 automatically chooses Eagerly)
-	if (player.cor + player.lib + player.lust >= 200 && player.inte < 60) {
+	if (player.cor + player.lib100 + player.lust100 >= 200 && player.inte < 60) {
 		outputText("  Of course you do, slut that you are.");
 		doNext(keltBlowjobRequirementEagerly);
 		return;
@@ -494,9 +494,9 @@ private function keltMainEncounterAfterNakedReq():void {
 		if (rand(10) <= 5) {
 			outputText("Kelt looks down your body scornfully, and claims he is unwilling to teach you unless you are willing to learn naked again.  ");
 			//(Corruption 60+, or Submissive 60+: 
-			if ((player.cor + player.lib + player.lust >= 180 && player.inte < 30) || player.statusEffectv2(StatusEffects.Kelt) >= 60) {
+			if ((player.cor + player.lib100 + player.lust100 >= 180 && player.inte < 30) || player.statusEffectv2(StatusEffects.Kelt) >= 60) {
 				outputText("This time, the idea turns you on a little, and you agree automatically, stripping naked before Kelt with enthusiasm.  He obviously enjoys the show, and you are incredibly aroused by his attention.  Part of you reasons that if training naked is better, maybe you should just strip down right away, each time?  The thought is more than a little stimulating.");
-				if ((player.cor + player.lib + player.lust >= 220 && player.inte < 40) || player.statusEffectv2(StatusEffects.Kelt) >= 70) {
+				if ((player.cor + player.lib100 + player.lust100 >= 220 && player.inte < 40) || player.statusEffectv2(StatusEffects.Kelt) >= 70) {
 					outputText("  <b>With a lusty smile, you decide to ALWAYS get naked before practicing.</b>");
 					player.createStatusEffect(StatusEffects.NakedOn,0,0,0,0);
 				}
@@ -526,9 +526,9 @@ private function keltMainEncounterAfterNakedReq():void {
 		else {
 			outputText("Kelt looks at your clothes sourly once more, and mocks you for what he calls 'human sensitivity'.  He does not, however, directly tell you to take them off.\r\r");
 			//(Corruption 60+, or Submissive 60+:
-			if ((player.cor + player.lib + player.lust >= 180 && player.inte < 40)|| player.statusEffectv2(StatusEffects.Kelt) >= 60) {
+			if ((player.cor + player.lib100 + player.lust100 >= 180 && player.inte < 40)|| player.statusEffectv2(StatusEffects.Kelt) >= 60) {
 				outputText("This time, though, the idea turns you on a little.  You ask Kelt if he would prefer to see you naked, and begin stripping down in front of him.  He seems surprised but obviously enjoys the show, and you are incredibly aroused by his attention.  Part of you reasons that if training naked is better, maybe you should just strip down right away, each time?  The thought is more than a little stimulating.");
-				if ((player.cor + player.lib + player.lust >= 220 && player.inte < 40) || player.statusEffectv2(StatusEffects.Kelt) >= 75) {
+				if ((player.cor + player.lib100 + player.lust100 >= 220 && player.inte < 40) || player.statusEffectv2(StatusEffects.Kelt) >= 75) {
 					outputText("  <b>You cast a seductive smile Kelt's way and decide you should always strip before practice</b>.");
 					player.createStatusEffect(StatusEffects.NakedOn,0,0,0,0);
 				}
@@ -721,7 +721,7 @@ private function keltMainEncounterPostBlowjob():void {
 	//(Blowjob Requirement On)
 	if (player.hasStatusEffect(StatusEffects.BlowjobOn)) {
 		//(Submissiveness 75+, Lust 60+)
-		if (player.lust >= 75 || player.statusEffectv2(StatusEffects.Kelt) >= 90 && rand(2) == 0) {
+		if (player.lust100 >= 75 || player.statusEffectv2(StatusEffects.Kelt) >= 90 && rand(2) == 0) {
 			outputText(images.showImage("kelt-farm-smallbarn"));
 			outputText("It is almost too much to wait for your meeting with Kelt today.  His familiar musk enflames your senses, making you ache with need.  You try to wriggle your ass enticingly for Kelt as the two of you walk, eager to start in on the usual blowjob.  Even you don't usually hunger after it this much, but a need for Kelt's cock fills you to the core.  You long for nothing more than to service your mighty stud.\r\r");
 			outputText("To your surprise, Kelt leads you not towards the practice field, but towards a small barn, near the edge of the field.  When you meekly ask why he's taken you here, his brow clouds and he lashes out, striking you with casual violence.  ");
@@ -791,7 +791,7 @@ private function keltMainEncounterPostBlowjob():void {
 		outputText("\"<i>Not today, bitch.  I think it's time you gave a little back.  So be a good little whore, and get to work on my cock.  I'm gonna bust a nut in that pretty little mouth before I do any more teaching.</i>\"\r\r");
 		outputText("A shiver of desire and a tremor of fear run through you.  You had hoped to avoid this requirement.  A hunger lies within you... the thought of once more slurping down centaur cum is all but irresistible.  But you fear that with each time, you are losing yourself more and more...\r\r");
 		//(Submissiveness +80, or Corruption +80)
-		if (player.cor + player.lib + player.lust >= 220 && player.statusEffectv2(StatusEffects.Kelt) >= 80) {
+		if (player.cor + player.lib100 + player.lust100 >= 220 && player.statusEffectv2(StatusEffects.Kelt) >= 80) {
 			outputText("You try to resist the need.  You honestly try.  But this time, there is just no stopping it.  Your desire for Kelt to cum within you again is so great, you fall to your knees immediately before him, waiting hungrily for your treat.  A part of you wonders why you ever resisted in the first place... in fact, why not suck him off before every lesson?  Surely that would make him like you more...\r\r");
 			doNext(keltSubmitGivingBJ);
 			return;

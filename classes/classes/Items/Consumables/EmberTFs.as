@@ -70,7 +70,7 @@ package classes.Items.Consumables
 				//Randomly choose one of those locations
 				select = choices[rand(choices.length)];
 				output.text("\n\nYour " + player.cockDescript(select) + " tingles as pins and needles sweep across it.  You pull open your [armor] to watch as it changes; the tip elongates and tapers, like a spear; a series of ridges form along the shaft, giving it an almost segmented look, and a prominent knot swells at its base.  You can't resist stroking it, until it begins dripping pre; ");
-				if (player.sens >= 50) output.text("however, it's not until you press on your new, sensitive knot that you manage to blow your load and enjoy the last few spasms of pleasure as it finally finishes changing.");
+				if (player.sens100 >= 50) output.text("however, it's not until you press on your new, sensitive knot that you manage to blow your load and enjoy the last few spasms of pleasure as it finally finishes changing.");
 				else output.text("but you sternly rein in your hands and tuck them into your armpits as the arousing changes run their course.");
 				output.text("  <b>You now have a dragon penis.</b>");
 				//lose lust if sens>=50, gain lust if else

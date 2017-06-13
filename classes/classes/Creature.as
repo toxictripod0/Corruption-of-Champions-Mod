@@ -138,7 +138,17 @@ package classes
 		public var level:Number = 0;
 		public var gems:Number = 0;
 		public var additionalXP:Number = 0;
-				
+
+		public function get str100():Number { return 100*str/getMaxStats('str'); }
+		public function get tou100():Number { return 100*tou/getMaxStats('tou'); }
+		public function get spe100():Number { return 100*spe/getMaxStats('spe'); }
+		public function get inte100():Number { return 100*inte/getMaxStats('inte'); }
+		public function get lib100():Number { return 100*lib/getMaxStats('lib'); }
+		public function get sens100():Number { return 100*sens/getMaxStats('sens'); }
+		public function get fatigue100():Number { return 100*fatigue/maxFatigue(); }
+		public function get hp100():Number { return 100*HP/maxHP(); }
+		public function get lust100():Number { return 100*lust/maxLust(); }
+
 		//Appearance Variables
 		/**
 		 * Get the gender of the creature, based on its genitalia or lack thereof. Not to be confused with gender identity by femininity.
@@ -1546,7 +1556,7 @@ package classes
 			if (index < 0) index = biggestCockIndex();
 			var isPierced:Boolean = (cocks.length == 1) && (cocks[index].isPierced); //Only describe as pierced or sock covered if the creature has just one cock
 			var hasSock:Boolean = (cocks.length == 1) && (cocks[index].sock != "");
-			var isGooey:Boolean = (skinType == CoC.SKIN_TYPE_GOO);
+			var isGooey:Boolean = (skinType == SKIN_TYPE_GOO);
 			return Appearance.cockAdjective(cocks[index].cockType, cocks[index].cockLength, cocks[index].cockThickness, lust, cumQ(), isPierced, hasSock, isGooey);
 		}
 		
@@ -1854,7 +1864,7 @@ package classes
 				percent += 0.05;
 			if (hasPerk(PerkLib.FertilityPlus))
 				percent += 0.03;
-			if (hasPerk(PerkLib.FertilityMinus) && lib < 25) //Reduces virility by 3%.
+			if (hasPerk(PerkLib.FertilityMinus) && lib100 < 25) //Reduces virility by 3%.
 				percent -= 0.03;
 			if (hasPerk(PerkLib.PiercedFertite))
 				percent += 0.03;
@@ -1916,7 +1926,7 @@ package classes
 				quantity *= 1.3;
 			if (hasPerk(PerkLib.FertilityPlus))
 				quantity *= 1.5;
-			if (hasPerk(PerkLib.FertilityMinus) && lib < 25)
+			if (hasPerk(PerkLib.FertilityMinus) && lib100 < 25)
 				quantity *= 0.7;
 			if (hasPerk(PerkLib.MessyOrgasms))
 				quantity *= 1.5;
@@ -1960,7 +1970,7 @@ package classes
 			//Alter capacity by perks.
 			if (hasPerk(PerkLib.BroBody)) cumCap *= 1.3;
 			if (hasPerk(PerkLib.FertilityPlus)) cumCap *= 1.5;
-			if (hasPerk(PerkLib.FertilityMinus) && lib < 25) cumCap *= 0.7;
+			if (hasPerk(PerkLib.FertilityMinus) && lib100 < 25) cumCap *= 0.7;
 			if (hasPerk(PerkLib.MessyOrgasms)) cumCap *= 1.5;
 			if (hasPerk(PerkLib.OneTrackMind)) cumCap *= 1.1;
 			if (hasPerk(PerkLib.MaraesGiftStud)) cumCap += 350;
@@ -2542,7 +2552,7 @@ package classes
 				counter += statusEffectv1(StatusEffects.Heat);
 			if (hasPerk(PerkLib.FertilityPlus))
 				counter += 15;
-			if (hasPerk(PerkLib.FertilityMinus) && lib < 25)
+			if (hasPerk(PerkLib.FertilityMinus) && lib100 < 25)
 				counter -= 15;
 			if (hasPerk(PerkLib.MaraesGiftFertility))
 				counter += 50;
@@ -3738,7 +3748,38 @@ package classes
 			if (max > 999) max = 999;
 			return max;
 		}
-		
+		public function getMaxStats(stats:String):int {
+			return 100;
+		}
+		public function maxHP():Number
+		{
+			var max:Number = 0;
+			max += int(tou * 2 + 50);
+			if (findPerk(PerkLib.Tank) >= 0) max += 50;
+			if (findPerk(PerkLib.Tank2) >= 0) max += Math.round(tou);
+			if (findPerk(PerkLib.ChiReflowDefense) >= 0) max += UmasShop.NEEDLEWORK_DEFENSE_EXTRA_HP;
+			if (flags[kFLAGS.GRIMDARK_MODE] >= 1)
+				max += level * 5;
+			else
+				max += level * 15;
+			if (jewelryEffectId == JewelryLib.MODIFIER_HP) max += jewelryEffectMagnitude;
+			max *= 1 + (countCockSocks("green") * 0.02);
+			max = Math.round(max);
+			if (max > 9999) max = 9999;
+			return max;
+		}
+
+		public function maxLust():Number
+		{
+			var max:Number = 100;
+			if (this == game.player && game.player.demonScore() >= 4) max += 20;
+			if (findPerk(PerkLib.ImprovedSelfControl) >= 0) max += 20;
+			if (findPerk(PerkLib.BroBody) >= 0 || findPerk(PerkLib.BimboBody) >= 0 || findPerk(PerkLib.FutaForm) >= 0) max += 20;
+			if (findPerk(PerkLib.OmnibusGift) >= 0) max += 15;
+			if (findPerk(PerkLib.AscensionDesires) >= 0) max += perkv1(PerkLib.AscensionDesires) * 5;
+			if (max > 999) max = 999;
+			return max;
+		}
 		/**
 		 *Get the remaining fatigue of the Creature.
 		 *@return maximum amount of fatigue that still can be used

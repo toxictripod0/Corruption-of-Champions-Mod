@@ -311,7 +311,7 @@ package classes
 			}
 			//Possible arousal descriptors
 			else if (rand(3) == 0 && !haveDescription) {
-				if (i_creature.lust > 50 && i_creature.lust < 75) {
+				if (i_creature.lust100 > 50 && i_creature.lust100 < 75) {
 					options = ["erect ",
 						"perky ",
 						"erect ",
@@ -320,7 +320,7 @@ package classes
 					description += randomChoice(options);
 					haveDescription = true;
 				}
-				if (i_creature.lust >= 75) {
+				if (i_creature.lust100 >= 75) {
 					options = ["throbbing ",
 						"trembling ",
 						"needy ",
@@ -1018,7 +1018,7 @@ package classes
 			 }*/
 			//FINAL FALLBACKS - lust descriptors
 			//Lust stuff
-			else if (i_creature.lust > 90) {
+			else if (i_creature.lust100 > 90) {
 				//lots of cum? drippy.
 				if (i_creature.cumQ() > 50 && i_creature.cumQ() < 200 && rand(2) == 0) {
 					//for hroses and dogs
@@ -1041,7 +1041,7 @@ package classes
 				}
 			}
 			//A little less lusty, but still lusty.
-			else if (i_creature.lust > 75) {
+			else if (i_creature.lust100 > 75) {
 				if (descripts == 0 && i_creature.cumQ() > 50 && i_creature.cumQ() < 200 && rand(2) == 0) {
 					description += "pre-leaking";
 					descripts = 1;
@@ -1057,7 +1057,7 @@ package classes
 				}
 			}
 			//Not lusty at all, fallback adjective
-			else if (i_creature.lust > 50) description += "hard";
+			else if (i_creature.lust100 > 50) description += "hard";
 			else description += "ready";
 			return description;
 		}
@@ -1327,7 +1327,7 @@ package classes
 
 			}
 			//lusty
-			if (i_creature.lust > 90 && (description == "") && rand(2) == 0 && !i_forcedSize) {
+			if (i_creature.lust100 > 90 && (description == "") && rand(2) == 0 && !i_forcedSize) {
 				options = ["eager",
 					"full",
 					"needy",
@@ -1566,7 +1566,7 @@ package classes
 				 descript += "mare-";
 				 }*/
 				//Horny descriptors - 75% chance
-				if (i_creature.lust > 70 && rand(4) < 3 && !haveDescription) {
+				if (i_creature.lust100 > 70 && rand(4) < 3 && !haveDescription) {
 					options = ["throbbing ",
 						"pulsating ",
 						"hard "];
@@ -1574,7 +1574,7 @@ package classes
 					haveDescription = true;
 				}
 				//High libido - always use if no other descript
-				if (i_creature.lib > 50 && rand(2) == 0 && !haveDescription) {
+				if (i_creature.lib100 > 50 && rand(2) == 0 && !haveDescription) {
 					options = ["insatiable ",
 						"greedy ",
 						"demanding ",

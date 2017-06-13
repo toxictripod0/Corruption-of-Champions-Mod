@@ -70,7 +70,7 @@ package classes.Scenes.Monsters
 			clearOutput();
 			if (doSFWloss()) return;
 			var x:int;
-			if (player.lust <= 99) outputText("You collapse, utterly beaten. To make sure you'll be easier to handle, the victorious elder saunters up, pink arousing flames glow in her left hand. She exposes your nether regions and throws the pink flames right into your groin! You are unable to fight back. \n\n");
+			if (player.lust100 <= 99) outputText("You collapse, utterly beaten. To make sure you'll be easier to handle, the victorious elder saunters up, pink arousing flames glow in her left hand. She exposes your nether regions and throws the pink flames right into your groin! You are unable to fight back. \n\n");
 
 			if (player.cockThatFits(monster.vaginalCapacity()) >= 0 && player.hasCock() && (!player.hasVagina() || rand(2) == 0)) 
 			{

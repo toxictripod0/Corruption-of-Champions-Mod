@@ -2480,20 +2480,20 @@ private function weightLifting():void {
 	//TEXTS!
 	outputText("You walk up to the weights and begin your workout.  ");
 	//(< 25 str)
-	if (player.str < 25) outputText("You have to start out on the smaller weights to the left side of the rack due to your strength, but even so, you manage to work up a good burn and a modest sweat.");
+	if (player.str100 < 25) outputText("You have to start out on the smaller weights to the left side of the rack due to your strength, but even so, you manage to work up a good burn and a modest sweat.");
 	//(< 40 str)
-	else if (player.str < 40) outputText("You heft a few of the weights and select some of the ones just to the left of the middle.  It doesn't take you long to work up a sweat, but you push on through a variety of exercises that leave your body feeling sore and exhausted.");
+	else if (player.str100 < 40) outputText("You heft a few of the weights and select some of the ones just to the left of the middle.  It doesn't take you long to work up a sweat, but you push on through a variety of exercises that leave your body feeling sore and exhausted.");
 	//(< 60 str)
-	else if (player.str < 60) outputText("You smile when you grip a few of the heavier weights on the rack and start to do some lifts.  With a start, you realize you're probably stronger now than Ingnam's master blacksmith, Ben.  Wow!  This realization fuels you to push yourself even harder, and you spend nearly an hour doing various strength-building exercises with the weights.");
+	else if (player.str100 < 60) outputText("You smile when you grip a few of the heavier weights on the rack and start to do some lifts.  With a start, you realize you're probably stronger now than Ingnam's master blacksmith, Ben.  Wow!  This realization fuels you to push yourself even harder, and you spend nearly an hour doing various strength-building exercises with the weights.");
 	//(<80 str)
-	else if (player.str < 80) outputText("You confidently grab the heaviest dumbbells in the place and heft them.  It doesn't take long for you to work up a lather of sweat and feel the burn thrumming through your slowly tiring form.  The workout takes about an hour, but you feel you made some good progress today.");
+	else if (player.str100 < 80) outputText("You confidently grab the heaviest dumbbells in the place and heft them.  It doesn't take long for you to work up a lather of sweat and feel the burn thrumming through your slowly tiring form.  The workout takes about an hour, but you feel you made some good progress today.");
 	//(<90)
-	else if (player.str < 90) outputText("You grab the heaviest weights they have and launch into an exercise routine that leaves you panting from exertion.  Setting the weights aside, you flex and marvel at yourself – you could probably arm wrestle a minotaur or two and come out victorious!");
+	else if (player.str100 < 90) outputText("You grab the heaviest weights they have and launch into an exercise routine that leaves you panting from exertion.  Setting the weights aside, you flex and marvel at yourself – you could probably arm wrestle a minotaur or two and come out victorious!");
 	//(else)
 	else outputText("This place barely has anything left to challenge you, but you take the heaviest weights you can get your mitts on and get to it.  By the time an hour has passed, you've worked up a good sweat, but without heavier weights you probably won't get any stronger.");
 	//Stat changes HERE!
-	if (player.str < 90) dynStats("str", .5);
-	if (player.tou < 40) dynStats("tou", .3);
+	if (player.str100 < 90) dynStats("str", .5);
+	if (player.tou100 < 40) dynStats("tou", .3);
 	//Body changes here
 	//Muscleness boost!
 	outputText(player.modTone(85,5+rand(5)));
@@ -2531,20 +2531,20 @@ private function goJogging():void {
 	//Text!
 	outputText("You hit the jogging track, ");
 	//(<25 tou)
-	if (player.tou < 25) outputText("but you get so winded you have to stop after a few minutes.  Determined to improve, you force yourself to stay at a fast walk until you can run again.");
+	if (player.tou100 < 25) outputText("but you get so winded you have to stop after a few minutes.  Determined to improve, you force yourself to stay at a fast walk until you can run again.");
 	//(<40 tou)
-	else if (player.tou < 40) outputText("but your performance isn't that great.  You nearly stop jogging a few times but manage to push through until you're completely exhausted.");
+	else if (player.tou100 < 40) outputText("but your performance isn't that great.  You nearly stop jogging a few times but manage to push through until you're completely exhausted.");
 	//(<60 tou)
-	else if (player.tou < 60) outputText("and you do quite well.  You jog around for nearly an hour, working up a healthy lather of sweat.  Even your " + player.legs() + " tingle and burn with exhaustion.");
+	else if (player.tou100 < 60) outputText("and you do quite well.  You jog around for nearly an hour, working up a healthy lather of sweat.  Even your " + player.legs() + " tingle and burn with exhaustion.");
 	//(<80 tou)
-	else if (player.tou < 80) outputText("and it doesn't faze you in the slightest.  You run lap after lap at a decent clip, working yourself until you're soaked with sweat and fairly tired.");
+	else if (player.tou100 < 80) outputText("and it doesn't faze you in the slightest.  You run lap after lap at a decent clip, working yourself until you're soaked with sweat and fairly tired.");
 	//(<90 tou)
-	else if (player.tou < 90) outputText("and you have a terrific time.  You can keep yourself just below your sprinting speed for the entire time, though you work up a huge amount of sweat in the process.");
+	else if (player.tou100 < 90) outputText("and you have a terrific time.  You can keep yourself just below your sprinting speed for the entire time, though you work up a huge amount of sweat in the process.");
 	//else)
 	else outputText("and it barely challenges you.  You run at a sprint half the time and still don't feel like you're improving in the slightest.  Still, you do manage to burn a lot of calories.");
 	//Stat changes HERE!
-	if (player.spe < 40) dynStats("spe", .3);
-	if (player.tou < 90) dynStats("tou", .5);
+	if (player.spe100 < 40) dynStats("spe", .3);
+	if (player.tou100 < 90) dynStats("tou", .5);
 
 	//If butt is over 15 guaranteed reduction
 	if (player.buttRating >= 15) {
@@ -2635,7 +2635,7 @@ private function letsDoYaraSex(girl:Boolean = true):void {
 		}
 	}
 	outputText("Her eyes widen as you begin to ");
-	if (player.lust < 50) outputText("protest");
+	if (player.lust100 < 50) outputText("protest");
 	else outputText("speak");
 	outputText(", neatly silencing you with the lust-filled fires simmering in her eyes.  \"<i>Call it quality testing,</i>\" she purrs.  Her free hand runs up and down your inner thigh, the ticklish teasing nearly making your head spin.  Licking her lips in anticipation, Yara wiggles out of her clothes and clambers onto the chair, kneeling on the armrests.  Due to her awkward posture, you find your gaze drifting to her wide-spread legs.  Nestled there, twinkling with a radiant luster, is a golden ring, looped through her already-throbbing clit.  A blush darkens her cheeks as she notices your stare, but she seems almost empowered by it.\n\n");
 

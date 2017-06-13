@@ -986,7 +986,7 @@ package classes.Scenes.Dungeons.DeepCave
 			//{Male:}
 			if (player.gender == 1) {
 				outputText("\n\nShuddering from the onslaught of female pheromones, you find your body responding without meaning to.  [EachCock]");
-				if (player.lust >= 70) outputText(", already hard, begins to bead with pre-cum, mixing with the slut-leakings that have found their way under your equipment.");
+				if (player.lust100 >= 70) outputText(", already hard, begins to bead with pre-cum, mixing with the slut-leakings that have found their way under your equipment.");
 				else outputText(" stiffens immediately to a full, throbbing hardness.");
 				outputText("  Your body is imminently ready for breeding, erect and wanting so badly to be freed from your constricting garb, but you know that with what you asked, you won't get to sate it.");
 				if (player.biggestCockArea() >= 150) outputText("  If only you weren't so big - you can't expand to your full size, and the tightness is almost emasculating at how it constrains your size, keeping you small enough to fit inside your [armor] but still hard as a stone, only this stone is having the pre squeezed out of it.");
@@ -1000,7 +1000,7 @@ package classes.Scenes.Dungeons.DeepCave
 			//{Herm:}
 			else if (player.gender == 3) {
 				outputText("\n\nShuddering from the onslaught of lusty pheromones, you find [eachCock] responding even before you realize what's going on.  ");
-				if (player.lust >= 70) outputText("You may have already been uncomfortably hard, but you start leaking pre-cum all over the inside of your [armor].  Of course, the copious fem-jizz that's already seeped inside your gear absorbs the extra fluid with little to no complaint.");
+				if (player.lust100 >= 70) outputText("You may have already been uncomfortably hard, but you start leaking pre-cum all over the inside of your [armor].  Of course, the copious fem-jizz that's already seeped inside your gear absorbs the extra fluid with little to no complaint.");
 				else outputText("You get hard with alarming rapidity.  Being so close to such a gloriously large quim seems to overpower your better sense, and you're forced to give in to your body's imperative.");
 				outputText("  Inside your undergarments, everything is already turning into a swampy, slimy mess thanks to Vala's secretions, and your own feminine drippings don't help any.  Your lips and dick");
 				if (player.cockTotal() > 1) outputText("s");
