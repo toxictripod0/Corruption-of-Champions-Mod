@@ -609,14 +609,14 @@ use namespace kGAMECLASS;
 			return returnDamage;
 		}
 		
-		public function takelustDamage(lustDmg:Number, display:Boolean = false):Number{
+		public function takelustDamage(lustDmg:Number, display:Boolean = false, applyRes:Boolean = false):Number{
 			//Round
 			lustDmg = Math.round(lustDmg);
 			var lust:int = game.player.lust;
 			// we return "1 damage received" if it is in (0..1) but deduce no HP
 			var returnlustDmg:int = (lustDmg>0 && lustDmg<1)?1:lustDmg;
 			if (lustDmg>0){
-				//game.lustChange(-lustDmg, display);
+				//game.lustChange(-lustDmg, display, "resisted", resist);
 				game.dynStats("lus", lustDmg);
 				lust = game.player.lust - lust;
 				if (display) game.output.text(" <b>(<font color=\"#ff00ff\">" + lust + "</font>)</b> ");
