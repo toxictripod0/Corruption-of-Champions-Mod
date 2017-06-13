@@ -137,7 +137,7 @@ package classes.Scenes.Monsters
 			else {
 				outputText("The cum lands on you, staining your [armor] and the cum even gets on your [skinfurscales]! You feel aroused from his cum.");
 				player.slimeFeed();
-				var lust:int = 30 + player.sens / 4 + player.cor / 10;
+				var lustDmg:int = 30 + player.sens / 4 + player.cor / 10;
 				player.takelustDamage(lustDmg, true);
 			}
 			combatRoundOver();
