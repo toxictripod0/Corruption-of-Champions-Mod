@@ -72,7 +72,7 @@ package classes.Scenes.Monsters
 				outputText("\nYou’re far too distracted to notice the needle injected into the back of your neck, but by the time she flips back into her original position you already feel the contents of the syringe beginning to take effect.");
 				lustDmg = rand(player.lib/4) +20;
 			}
-			player.takelustDamage(lustDmg, true);
+			player.takeLustDamage(lustDmg, true);
 			combatRoundOver();
 		}
 		//Dual Shot
