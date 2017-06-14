@@ -162,11 +162,11 @@ package classes.Scenes.Areas.Swamp
 				else outputText("seductively");
 				outputText(" undress, tossing your " + player.armorName + " to the side to fully expose yourself, just like your soon-to-be lover.");
 				if (player.hasCock()) {
-					if (player.lust < 70) {
+					if (player.lust100 < 70) {
 						if (player.cockTotal() > 1) outputText("  Each of y");
 						else outputText("  Y");
 						outputText("our ");
-						if (player.lust < 33) outputText("flaccid");
+						if (player.lust100 < 33) outputText("flaccid");
 						else outputText("half-erect");
 						outputText(" member");
 						if (player.cockTotal()) outputText("s");
@@ -289,7 +289,7 @@ package classes.Scenes.Areas.Swamp
 			//(Noncombat Intro:) 
 			if (!getGame().inCombat) {
 				outputText("You shuck your " + player.armorName + " and toss it aside, feeling " + player.sMultiCockDesc() + " ");
-				if (player.lust < 70) outputText("twitch and begin to stiffen in anticipation of sex with the beautiful spider-maid.");
+				if (player.lust100 < 70) outputText("twitch and begin to stiffen in anticipation of sex with the beautiful spider-maid.");
 				else outputText("twitch, already hard and aching for the touch of the beautiful spider-maid.");
 				outputText("  Striding forward, you close to an arms-length away before she stops you with an outstretched palm.  She says, \"<i>Not yet, lie down over there so I can take you properly.</i>\"\n\n");
 			}
@@ -307,7 +307,7 @@ package classes.Scenes.Areas.Swamp
 			outputText("\n\n");
 
 			outputText("Once again, the inhuman brunette turns around, bobbing her ass above your prone body, and unconsciously, ");
-			if (player.lust >= 80) outputText("you thrust up as if you could somehow mate with her vagina in spite of your restraints");
+			if (player.lust100 >= 80) outputText("you thrust up as if you could somehow mate with her vagina in spite of your restraints");
 			else outputText("you grow harder and harder, entranced by the sexy sight");
 			outputText(".  She giggles at you before squirting another few strands of webbing at you, this time directly at your " + player.cockDescript(x) + ".  It sticks snugly around the ");
 			if (!player.hasSheath()) outputText("base");
@@ -394,7 +394,7 @@ package classes.Scenes.Areas.Swamp
 			//(Consensual)
 			if (!getGame().inCombat) {
 				outputText("You hastily remove your " + player.armorName + " and toss it aside, glad to be able to let " + player.sMultiCockDesc() + " flop out and breathe.  The spider-girl's eyes widen as she takes in ALL of your ");
-				if (player.lust < 70) outputText("expanding");
+				if (player.lust100 < 70) outputText("expanding");
 				else outputText("hard");
 				outputText(" length.  Her expression of incredulous disbelief is actually kind of cute, so you start stroking yourself to make it even bigger.\n\n");
 
@@ -490,7 +490,7 @@ package classes.Scenes.Areas.Swamp
 			}
 			
 			outputText("The spider-girl drops to her knees and wobbles unsteadily");
-			if (monster.lust >= monster.eMaxLust()) outputText(", thrusting two of her carapace-covered finger-tips deep into her sloppy box as she gives into her lust.  She actually has the temerity to demand, \"<i>Fuck me, fuck me now!</i>\"");
+			if (monster.lust >= monster.maxLust()) outputText(", thrusting two of her carapace-covered finger-tips deep into her sloppy box as she gives into her lust.  She actually has the temerity to demand, \"<i>Fuck me, fuck me now!</i>\"");
 			else outputText(", too wounded to fight back or run away.");
 			
 			menu();
@@ -528,7 +528,7 @@ package classes.Scenes.Areas.Swamp
 			outputText(".  You slap her hands away and pry her legs open, getting a nice, close look at her vagina.\n\n");
 
 			outputText("Her pussy is dark, like her nipples, though the lips of her sex are closer to a pure midnight-black than the dusky skin of those tiny nubs.  A sheen of feminine lube has built up over her vulva, making her outer labia and skin glisten noticeably in the muted sunlight that filters down to the swamp floor.  Around her vagina, the skin rapidly fades from dark chocolate back to the porcelain white of the rest of her body.  You prod and play with the moist slit, feeling the soft skin part around your fingers like a soft velvet glove.  She grows wetter in response, giving up plaintive little moans at your incursion");
-			if (monster.lust >= monster.eMaxLust()) outputText(" until she's panting and her tiny clit has emerged, hard as a rock");
+			if (monster.lust >= monster.maxLust()) outputText(" until she's panting and her tiny clit has emerged, hard as a rock");
 			outputText(".\n\n");
 
 			outputText("The spider-kin's honeyed onyx-hued pussy is irresistible, and you remove your " + player.armorName + " to prepare for the coming sex.  While you're distracted, the defeated arachnid-morph begins to masturbate while watching you with wide, eager eyes.  You grab a nearby vine and yank the slut's hands away from her pussy.  She protests, but you smirk and inform her she won't get her mitts back until she gets you off.  The spider-girl nods mutely, though confusion crosses her face once you start circling her, coming up next to her chest.\n\n");
@@ -586,14 +586,14 @@ package classes.Scenes.Areas.Swamp
 			clearOutput();
 			spriteSelect(SpriteDb.s_spidergirl);
 			outputText("You push the spider-girl onto her back, getting a good long look at your conquest before you take off your " + player.armorName + ".  At the sight of your " + player.multiCockDescriptLight() + ", she ");
-			if (monster.lust <= 99) outputText("relaxes a bit.  The smell of an aroused female wafts up from her, reminding you that is probably what she wanted from the get-go.");
+			if (monster.lust100 <= 99) outputText("relaxes a bit.  The smell of an aroused female wafts up from her, reminding you that is probably what she wanted from the get-go.");
 			else outputText("salivates, both holes dripping liquid in anticipation of the coming sex.  The smell of sex fills the air, and you realize you're about to give her exactly what she wants.");
 			outputText("  It doesn't matter - you're going to fuck her pussy full of cum.\n\n");
 
 			outputText("The spider-girl spreads her legs wide, giving you a nice view of the strange, glossy black entrance that is her slit.  Unlike her arms and legs, her pussy lips aren't shining onyx due to a carapace, but because of their pigmentation and dripping moisture.  The dark skin fades from its dusky hue to a porcelain white, drawing your gaze to lock upon that slowly-blooming, midnight-black tunnel.  Spellbound, you watch as she completely submits, stroking two fingers over the puffy lips of her vulva before sinking her fingers into the welcoming depths of her cunt.\n\n");
 
 			outputText("You advance, " + player.sMultiCockDesc() + " ");
-			if (player.lust < 70) outputText("thickening ");
+			if (player.lust100 < 70) outputText("thickening ");
 			else outputText("pulsating");
 			outputText(" and ready to penetrate that beckoning, arachnid pussy.  The moist lips slip around your " + player.cockDescript(x) + " easily, squelching wetly while you slide home.  You gasp from the sudden change, rocking your " + player.hipDescript() + " slowly against the spider-morph's while you acclimate yourself, reveling in the heat of her loins.  She grabs your head in that moment, guiding you down with a weak tug to place your lips upon her breast, and with a smile, you start to suckle the chocolate skin of her nub.\n\n");
 
@@ -654,10 +654,10 @@ package classes.Scenes.Areas.Swamp
 			clearOutput();
 			spriteSelect(SpriteDb.s_spidergirl);
 			outputText("You peel off your " + player.armorName + " while you gaze disdainfully down at your prize.  ");
-			if (monster.lust >= monster.eMaxLust()) outputText("She's moaning plaintively and happily fingering herself, practically offering her juicy box to you.");
+			if (monster.lust100 >= monster.maxLust()) outputText("She's moaning plaintively and happily fingering herself, practically offering her juicy box to you.");
 			else outputText("She's groaning painfully and struggling to move before falling back down, legs akimbo, inadvertently displaying her pussy to you.");
 			outputText("  Sighing, you grab her narrow frame, admiring the lightness of her body as you heft her up and position her onto her hands and knees.  ");
-			if (monster.lust >= monster.eMaxLust()) outputText("She mewls with disappointment.  ");
+			if (monster.lust100 >= monster.maxLust()) outputText("She mewls with disappointment.  ");
 			outputText("This is a much better position for her; ass-up, with her pussy and pucker fully exposed.\n\n");
 
 			outputText("The spider-morph looks back fearfully, but she flexes her back to raise up her abdomen and allow you easier access to her holes like the obedient slut she truly is.  You wrap your arms around the heavy, exoskeletal organ and step forward, leveraging your " + player.cockDescript(x) + " to slide it into her welcoming pussy.  The arachnid cunt sucks you in with a wet slurp, welcoming your cock to the oozing sheath with uncommon eagerness until the plush black pussy lips are compressing against your loins.  You have trouble not giving into the hot, moist pressure of the silken canal and rutting her like a beast then and there, but a tighter, better hole beckons for your now-lubricated fuck-stick's attention.\n\n");

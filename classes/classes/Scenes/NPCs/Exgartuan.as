@@ -963,8 +963,8 @@ private function exgartuanSleepSurprise():void {
 		//[-100 lust, then +10 lust immediately, +1 libido to 60, then +.5 libido to 80, then +.25 libido.  +1 sensitivity.  +1 corruption]
 		player.orgasm('Dick');
 		dynStats("sen", 1, "cor", 1);
-		if (player.lib < 60) dynStats("lib", 1);
-		else if (player.lib < 80) dynStats("lib", .5);
+		if (player.lib100 < 60) dynStats("lib", 1);
+		else if (player.lib100 < 80) dynStats("lib", .5);
 		else dynStats("lib", .25);
 		dynStats("lus", 10);
 		flags[kFLAGS.TIMES_AUTOFELLATIOED_EXGARTUAN]++;

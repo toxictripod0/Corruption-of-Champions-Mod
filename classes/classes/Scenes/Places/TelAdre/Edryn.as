@@ -220,7 +220,7 @@ public function edrynBarTalk():void {
 	//Catch all
 	else {
 		//Turned on chicks can hit on her
-		if (player.hasVagina() && player.lust > 70) {
+		if (player.hasVagina() && player.lust100 > 70) {
 			outputText("and as wet as you are right now, you find her scent to be intriguing.  Some part of you is curious what it would taste like.  When the centauress returns you compliment her on her shapely backside, but she only smiles politely and informs you that she \"<i>doesn't swing for your team,</i>\" whatever that means.  The rest of the conversation is quite pleasant, but all good things must come to an end.");
 			cheatTime(1);
 			doNext(telAdre.barTelAdre);

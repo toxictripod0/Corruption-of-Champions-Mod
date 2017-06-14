@@ -723,8 +723,8 @@ private function loseToIzma():void {
 			outputText("Izma shakes her head, grinning wryly.  \"<i>Looks like somebody needs to get more discipline before they try a sex-off.</i>\"\n\n");
 		}
 		outputText("As you collapse in defeat, you're aware of the pretty tigershark stalking around you and removing her clothing.  She grabs hard on your " + player.armorName + " and undresses you with minimal effort, revealing your ");
-		if (player.lust < 40) outputText("limp cock and barely-engorged cunt");
-		else if (player.lust < 70) outputText("turgid erection and moist cunt");
+		if (player.lust100 < 40) outputText("limp cock and barely-engorged cunt");
+		else if (player.lust100 < 70) outputText("turgid erection and moist cunt");
 		else outputText("throbbing erection and slavering cunt.");
 		outputText("\n\n");
 

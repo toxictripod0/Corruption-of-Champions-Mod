@@ -291,7 +291,7 @@ public class ErlKingScene extends BaseContent implements Encounter
 
 			outputText("It seems the Erlking has no interest in chasing prey that won’t run.\n\n");
 
-			if (player.inte < 80) player.inte++;
+			if (player.inte100 < 80) player.inte++;
 
 			menu();
 			doNext(camp.returnToCampUseOneHour);

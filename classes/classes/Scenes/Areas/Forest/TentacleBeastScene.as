@@ -669,7 +669,7 @@ private function centaurGenderlessRetardation():void {
 	if (flags[kFLAGS.GENDERLESS_CENTAUR_MADNESS] == 0 || player.balls == 0) {
 		flags[kFLAGS.GENDERLESS_CENTAUR_MADNESS] = 1;
 		outputText("Tentacles wrap around your legs before you can make a move to stop them, binding you tightly and coiling upwards.  One slides slowly along your underside, making you shiver in ");
-		if (player.cor < 50 && player.lust < 70) outputText("dread");
+		if (player.cor < 50 && player.lust100 < 70) outputText("dread");
 		else outputText("anticipation");
 		outputText(", but stops when it reaches your haunches.  Another starts testing the same area, briefly touching your " + player.assholeDescript() + " but clearly not finding what it's looking for.\n\n");
 	
@@ -700,7 +700,7 @@ private function centaurGenderlessRetardation():void {
 	//(Followup scene, if pc has seen above at least once, is unsexed centaur and has balls: -Z)
 	else {
 		outputText("Tentacles wrap around your legs before you can make a move to stop them, binding you tightly and coiling upwards.  One slides slowly along your underside, making you shiver in ");
-		if (player.cor < 50 && player.lust < 70) outputText("dread");
+		if (player.cor < 50 && player.lust100 < 70) outputText("dread");
 		else outputText("anticipation");
 		outputText(", slipping forward to probe between your haunches.  It arrives at and discovers your " + player.sackDescript() + " with some little ceremony, stroking and fondling it.\n\n");
 

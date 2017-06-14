@@ -171,10 +171,10 @@ public function campRathazul():void {
 	}
 	var offered:Boolean;
 	//Rat is definitely not sexy!
-	if (player.lust > 50) dynStats("lus", -1);
-	if (player.lust > 65) dynStats("lus", -5);
-	if (player.lust > 80) dynStats("lus", -5);
-	if (player.lust > 90) dynStats("lus", -5);
+	if (player.lust100 > 50) dynStats("lus", -1);
+	if (player.lust100 > 65) dynStats("lus", -5);
+	if (player.lust100 > 80) dynStats("lus", -5);
+	if (player.lust100 > 90) dynStats("lus", -5);
 	//Introduction
 	outputText(images.showImage("rathazul-camp"));
 	outputText("Rathazul looks up from his equipment and gives you an uncertain smile.\n\n\"<i>Oh, don't mind me,</i>\" he says, \"<i>I'm just running some tests here.  Was there something you needed, " + player.short + "?</i>\"\n\n");

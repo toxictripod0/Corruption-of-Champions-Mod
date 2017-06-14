@@ -1100,7 +1100,7 @@ private function arianMagicLessons():void {
 	outputText("\n\nArian nods.  \"<i>Of course!  Now where do I begin....</i>\"");
 	
 	//(if PC int < 25) //Basics!
-	if (player.inte < 25) {
+	if (player.inte100 < 25) {
 		outputText("\n\nYou let Arian know you're actually pretty new to magic in general, so maybe [Arian ey] could teach you a few basics?  Arian nods.  \"<i>Very well...</i>\"  Arian clears [Arian eir] throat.");
 		outputText("\n\n\"<i>The basis of all magic is mental strength, or more appropriately, your willpower - the desire, the wish, the passion to make something that is not... be.  Which is the reason mages study so hard to begin with.</i>\"");
 		outputText("\n\nYou pay attention to Arian's every word, making mental notes of the more important lessons....");
@@ -1112,7 +1112,7 @@ private function arianMagicLessons():void {
 		else outputText("return to your duties.");
 	}
 	//(else if PC int < 50 //Teach Charge Weapon if PC doesn't know.
-	else if (player.inte < 50) {
+	else if (player.inte100 < 50) {
 		outputText("\n\nYou tell Arian you've got the fundamentals down, so why not cover something a bit more advanced?");
 		outputText("\n\nArian taps [Arian eir] chin in thought, then smiles.  \"<i>I know!  Let's talk about channeling.</i>\"");
 		outputText("\n\nChanneling? You ask.");
@@ -1133,7 +1133,7 @@ private function arianMagicLessons():void {
 			player.createStatusEffect(StatusEffects.KnowsCharge,0,0,0,0);
 		}
 	}
-	else if (player.inte < 75) {
+	else if (player.inte100 < 75) {
 		//Teach Blind if PC doesn't know.
 		outputText("\n\nYou say you have a pretty good understanding of how magic works now, so you'd like [Arian em] to get started on the more complex theories.");
 		outputText("\n\nArian rubs [Arian eir] chin in thought.  \"<i>Hmm.... Aha!  Let's discuss conjuration.  This is where we start getting to the more complex theories and methods.  I know I don't have to say it, but pay attention.  Conjuration is an important art for any mage.</i>\"");
@@ -1177,8 +1177,8 @@ private function arianMagicLessons():void {
 	}
 	flags[kFLAGS.ARIAN_LESSONS]++;
 	dynStats("int", 1);
-	if (player.inte < 75) dynStats("int", 1);
-	if (player.inte < 50) dynStats("int", 1);
+	if (player.inte100 < 75) dynStats("int", 1);
+	if (player.inte100 < 50) dynStats("int", 1);
 	doNext(camp.returnToCampUseOneHour);
 }
 //Sex:

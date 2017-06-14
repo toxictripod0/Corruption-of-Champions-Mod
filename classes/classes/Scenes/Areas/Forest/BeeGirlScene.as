@@ -294,7 +294,7 @@ package classes.Scenes.Areas.Forest
 			clearOutput();
 			spriteSelect(SpriteDb.s_bee_girl);
 			outputText("The handmaiden seems to be quite happy to talk to you for a little while.  She is quite interested in the tales you have to share, and you have a chance to hear a bit about the world from her.  After the two of you have been talking for awhile, you notice that she has been running her hand over her lady bits and you ask her about it.  <i>“Oh?  Well, I’m juzzzt zzzo horny right now, do you think you could help me out with that?  You can keep zzzome of the honey for later, and it could do zzzome incredible thingzzz to you.”</i>  Do you take her up on her offer?”</i>");
-			if (player.inte < 50) dynStats("int", 0.5);
+			if (player.inte100 < 50) dynStats("int", 0.5);
 			menu();
 			addButton(0, "Yes", freeHoneyEvent);
 			addButton(1, "No", beeEncounterDutyLeave);
@@ -922,7 +922,7 @@ package classes.Scenes.Areas.Forest
 				outputText(" cover them with your own fluids.\n\n");
 				outputText(images.showImage("beegirl-loss-female"));
 				outputText("She raises her drenched hand, gives it a playful lick, and moves it down to your " + player.vaginaDescript() + " while you do the same to hers.  You gasp as her honey covered lower fingers quickly slip inside your " + player.vaginaDescript(0) + " and start to wriggle around.  You try to focus on matching her stimulations.  While you can hear her gasp in enjoyment from your ministrations, you can barely keep your mind straight let alone match her expert movements.  Keeping your brain from becoming mush becomes especially difficult when she brings her thumb and index finger to your " + player.clitDescript() + ".\n\n");
-				if (player.sens < 40)
+				if (player.sens100 < 40)
 					outputText("Still, you manage to hold on against the sensations and continue to run your fingers through her honey coated lower lips while hers plow through yours.  It is actually a pretty fun bonding experience, and you feel oddly close to the bee at the end when both of you cum over each others fingers together.");
 				else
 					outputText("It’s too much, you can’t take it anymore.  Your mind goes blank from the incredible feeling of her ministrations (the honey itself probably doesn’t help either) and you pull your hand out of the bee girl’s honey pot.  You don’t even register her brief disappointment, being too enraptured by your own pleasure.  All you can do is run your honey covered hand all over your body, trying to get as much stimulation as possible.  " + (player.hasBreasts() ? "Paying special attention to your " + player.allBreastsDescript() : "") + ".  In the end, you aren’t sure if it’s the insectoid girl who brings you to mind shattering orgasm or you.");
@@ -1315,7 +1315,7 @@ package classes.Scenes.Areas.Forest
 				//Fan-submitted - female funtimes with a bit o' end breathplay
 				if (player.gender == 2) {
 					clearOutput();
-					if (player.lust < 100) outputText("Barely conscious, you look up as the bee approaches.  ");
+					if (player.lust100 < 100) outputText("Barely conscious, you look up as the bee approaches.  ");
 					else outputText("Overcome with desire, you look up as the bee approaches.  ");
 					outputText("You feel weary and weak as your body begins to betray you to the pheromones of your foe.  You try and struggle as she moves over you, holding your hands against the ground as her chest pushes into your face, blocking sunlight and air as you protest. Your " + player.armorName + " are pulled from your body as the bee-girl moves on top of you.\n\n");
 					outputText("A sharp pain hits your stomach as the bee-girl's stinger penetrates your flesh. Before you can cry out, a sickening warmth floods from the wound, washing away the pain and oozing through your body. Your " + player.vaginaDescript(0) + " juices flow between your ");
@@ -1473,7 +1473,7 @@ package classes.Scenes.Areas.Forest
 			if (x < 0) x = 0;
 			//TAURS GO!
 			if (player.isTaur()) {
-				if (monster.lust >= monster.eMaxLust()) outputText("The bee-girl plops onto her flower with her legs splayed out, letting you get a clear look at her dripping honeypot. She watches you nervously as you approach, letting her stinger slide out in a pointless threat. She seems taken aback when you smile down at her, but returns the gesture with a nervous smile of her own.\n\n");
+				if (monster.lust >= monster.maxLust()) outputText("The bee-girl plops onto her flower with her legs splayed out, letting you get a clear look at her dripping honeypot. She watches you nervously as you approach, letting her stinger slide out in a pointless threat. She seems taken aback when you smile down at her, but returns the gesture with a nervous smile of her own.\n\n");
 				else outputText("The bee-girl plops onto her flower, barely conscious from the beating she's taken.  Her legs are splayed drunkenly, letting you get a clear look at her dripping honeypot. She watches through heavily, lidded eyes as you approach, letting her stinger slide out in a weak threat.  She seems taken aback when you smile down at her, but returns the gesture with a nervous, scared smile of her own.\n\n");
 
 				outputText("You reach down and stroke her hair. She flinches from your hand at first before realizing that you genuinely mean her no harm. Her own hand reaches to slide up your arm as you pull yourself down to kiss her. She happily kisses you back, her long, thin, dexterous tongue wrapping around your own.\n\n");

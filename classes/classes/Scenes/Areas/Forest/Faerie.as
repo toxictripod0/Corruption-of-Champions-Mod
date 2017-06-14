@@ -44,7 +44,7 @@ public class Faerie extends BaseContent implements Encounter{
 			return;
 		}
 		dynStats("lus", player.lib/10+2);
-		if (player.lust >= 90) {
+		if (player.lust100 >= 90) {
 			outputText("\n\nYou groan miserably with frustration. Desperate for stimulation, you sink to your knees and start jacking off, the faerie's visage still fresh in your mind. You catch a fleeting glimpse of yourself tightly gripping the faerie's legs in each of your fists, dragging her toward ");
 			if (player.cockTotal() == 1) outputText("your dick");
 			else outputText("one of your dicks");

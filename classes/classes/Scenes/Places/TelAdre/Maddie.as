@@ -164,7 +164,7 @@ private function talkToMaddie():void {
 		var x:Number = player.cockThatFits(60);
 		if (x < 0) x = 0;
 		outputText("\"<i>Dad said my name is Madeleine, but that's no fun.  Just call me Maddie.  You've got lots of icing like Dad, right?  I-I... need more icing.  It's in my recipe,</i>\" says Maddie.  The baked broad strips your " + player.armorName + " to expose your " + player.multiCockDescriptLight() + ".  Cooing with excitement, she examines your ");
-		if (player.lust >= 75) outputText("rock-hard");
+		if (player.lust100 >= 75) outputText("rock-hard");
 		else outputText("hardening");
 		outputText(" shaft");
 		if (player.cockTotal() > 1) outputText("s");

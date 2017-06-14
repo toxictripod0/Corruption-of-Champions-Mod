@@ -1288,7 +1288,7 @@ package classes
 				outputText(".  ");
 				if (player.vaginas.length > 1) 
 					outputText("You have " + player.vaginas.length+ " " + player.vaginaDescript(0) + "s, with " + inchesOrCentimetres(player.getClitLength()) + "-centimetre clits each.  ");
-				if (player.lib < 50 && player.lust < 50) //not particularly horny
+				if (player.lib100 < 50 && player.lust100 < 50) //not particularly horny
 				
 				{
 					//Wetness
@@ -1310,7 +1310,7 @@ package classes
 							outputText("the massive hole that is your " + player.vaginaDescript(0) + ".  ");
 					}
 				}
-				if ((player.lib>=50 || player.lust >=50) && (player.lib< 80 && player.lust < 80)) //kinda horny
+				if ((player.lib100>=50 || player.lust100 >=50) && (player.lib100< 80 && player.lust100 < 80)) //kinda horny
 				
 				{
 					//Wetness
@@ -1334,7 +1334,7 @@ package classes
 					if (player.vaginas[0].vaginalLooseness>= VAGINA_LOOSENESS_GAPING_WIDE) 
 						outputText("the massive hole that is your " + player.vaginaDescript(0) + ".  ");
 				}
-				if ((player.lib> 80 || player.lust > 80)) //WTF horny!
+				if ((player.lib100> 80 || player.lust100 > 80)) //WTF horny!
 				
 				{
 					//Wetness

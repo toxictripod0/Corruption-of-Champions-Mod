@@ -88,7 +88,7 @@ package classes.Items.Consumables
 				outputText("You rub the dye into your " + game.player.hairDescript() + ", then use a bucket of cool lakewater to rinse clean a few minutes later.  ");
 				game.player.hairColor = _color;
 				outputText("You now have " + game.player.hairDescript() + ".");
-				if (game.player.lust > 50) {
+				if (game.player.lust100 > 50) {
 					outputText("\n\nThe cool water calms your urges somewhat, letting you think more clearly.");
 					game.dynStats("lus", -15);
 				}
@@ -112,7 +112,7 @@ package classes.Items.Consumables
 			outputText("You now have " + game.player.underBody.skin.furColor + " fur on your underside.");
 			finalize();
 		}
-		
+
 		private function dyeFeathers():void
 		{
 			clearOutput();
@@ -121,7 +121,7 @@ package classes.Items.Consumables
 			outputText("You now have " + game.player.furColor + " feathers.");
 			finalize();
 		}
-		
+
 		private function dyeUnderBodyFeathers():void
 		{
 			clearOutput();
@@ -130,7 +130,7 @@ package classes.Items.Consumables
 			outputText("You now have " + game.player.underBody.skin.furColor + " feathers on your underside.");
 			finalize();
 		}
-		
+
 		private function dyeWings():void
 		{
 			clearOutput();
@@ -139,7 +139,7 @@ package classes.Items.Consumables
 			outputText("You now have " + game.player.wingColor + " wings.");
 			finalize();
 		}
-		
+
 		private function dyeCancel():void {
 			clearOutput();
 			outputText("You put the dye away.\n\n");
@@ -148,7 +148,7 @@ package classes.Items.Consumables
 
 		private function finalize():void
 		{
-			if (game.player.lust > 50) {
+			if (game.player.lust100 > 50) {
 				outputText("\n\nThe cool water calms your urges somewhat, letting you think more clearly.");
 				game.dynStats("lus", -15);
 			}

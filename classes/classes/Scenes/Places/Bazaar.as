@@ -367,10 +367,10 @@ private function joeysMassageWifNoExtraJizz():void {
 	}
 	//(reduces libido significantly if very high, reduces lust, and reduces sensitivity to 40)
 	player.orgasm('Generic');
-	if (player.lib > 20) dynStats("lib", -.5);
-	if (player.lib > 80) dynStats("lib", -1);
-	if (player.lib > 60) dynStats("lib", -1);
-	if (player.sens > 40) dynStats("lib", -.5);
+	if (player.lib100 > 20) dynStats("lib", -.5);
+	if (player.lib100 > 80) dynStats("lib", -1);
+	if (player.lib100 > 60) dynStats("lib", -1);
+	if (player.sens100 > 40) dynStats("lib", -.5);
 	doNext(camp.returnToCampUseOneHour);
 }
 	
@@ -419,10 +419,10 @@ private function joeysMassageWithEXTRASpooge():void {
 	outputText("Joey leaves, his poofy tail bobbing back and forth.  You can see his thong is distended, virtually packed with his own still-pumping spooge, and you marvel at his perverse ingenuity when you realize his thong is waterproofed and shaped to guide all the jizz between his thighs and into his back-door.  Kinky.");
 	player.cumMultiplier += 2;
 	player.orgasm('Dick');
-	if (player.lib > 20) dynStats("lib", -.5);
-	if (player.lib > 80) dynStats("lib", -1);
-	if (player.lib > 60) dynStats("lib", -1);
-	if (player.sens > 40) dynStats("sen", -4);
+	if (player.lib100 > 20) dynStats("lib", -.5);
+	if (player.lib100 > 80) dynStats("lib", -1);
+	if (player.lib100 > 60) dynStats("lib", -1);
+	if (player.sens100 > 40) dynStats("sen", -4);
 	doNext(camp.returnToCampUseOneHour);
 }
 private function joeyBigBalls():void {
