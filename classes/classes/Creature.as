@@ -1,8 +1,9 @@
-//CoC Creature.as
+﻿//CoC Creature.as
 package classes
 {
 	import classes.BodyParts.Skin;
 	import classes.BodyParts.UnderBody;
+	import classes.BodyParts.Wings;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.PerkType;
@@ -264,10 +265,12 @@ package classes
 		10 - small dagron
 		11 - trogdor wings
 		12 - sandtrap wings*/
-		private var _wingType:Number = WING_TYPE_NONE;
+		public var wings:Wings = new Wings();
+		public function get wingType():Number { return wings.type; }
+		public function set wingType(value:Number):void { wings.type = value; }
+		public function get wingColor():String { return wings.color; }
+		public function set wingColor(value:String):void { wings.color = value; }
 		public var wingDesc:String = "non-existant";
-		public function get wingType():Number { return _wingType; }
-		public function set wingType(value:Number):void { _wingType = value; }
 
 		/* lowerBody:
 		0 - normal
@@ -2153,6 +2156,7 @@ package classes
 			WING_TYPE_DRACONIC_LARGE,
 			WING_TYPE_GIANT_DRAGONFLY,
 			WING_TYPE_IMP_LARGE,
+			WING_TYPE_HARPY,
 		];
 
 		//PC can fly?
@@ -2161,13 +2165,36 @@ package classes
 			//web also makes false!
 			if (hasStatusEffect(StatusEffects.Web))
 				return false;
-			return canFlyWings.indexOf(_wingType) != -1;
+			return canFlyWings.indexOf(wingType) != -1;
 
 		}
 
 		public function canUseStare():Boolean
 		{
-			return eyeType == EYES_BASILISK;
+			return [EYES_BASILISK, EYES_COCKATRICE].indexOf(eyeType) != -1;
+		}
+
+		public function isHoofed():Boolean
+		{
+			return [
+				LOWER_BODY_TYPE_HOOFED,
+				LOWER_BODY_TYPE_CLOVEN_HOOFED,
+			].indexOf(lowerBody) != -1;
+		}
+
+		public function isCentaur():Boolean
+		{
+			return isTaur() && isHoofed();
+		}
+
+		public function isBimbo():Boolean
+		{
+			if (hasPerk(PerkLib.BimboBody)) return true;
+			if (hasPerk(PerkLib.BimboBrains)) return true;
+			if (hasPerk(PerkLib.FutaForm)) return true;
+			if (hasPerk(PerkLib.FutaFaculties)) return true;
+
+			return false;
 		}
 
 		//check for vagoo
@@ -2563,6 +2590,16 @@ package classes
 			return (bonusFertility() + fertility);
 		}
 
+		public function hasBeak():Boolean
+		{
+			return [FACE_BEAK, FACE_COCKATRICE].indexOf(faceType) != -1;
+		}
+
+		public function hasFeathers():Boolean
+		{
+			return skin.hasFeathers();
+		}
+
 		public function hasScales():Boolean
 		{
 			return [SKIN_TYPE_LIZARD_SCALES, SKIN_TYPE_DRAGON_SCALES, SKIN_TYPE_FISH_SCALES].indexOf(skinType) != -1;
@@ -2601,6 +2638,11 @@ package classes
 		public function isFurry():Boolean
 		{
 			return skin.isFurry();
+		}
+
+		public function isFluffy():Boolean
+		{
+			return skin.isFluffy();
 		}
 
 		public function isFurryOrScaley():Boolean
@@ -2749,7 +2791,7 @@ package classes
 				case CLAW_TYPE_NORMAL: return "fingernails";
 				case CLAW_TYPE_LIZARD: return "short curved" + toneText + "claws";
 				case CLAW_TYPE_DRAGON: return "powerful, thick curved" + toneText + "claws";
-				// Since mander arms are hardcoded and the others are NYI, we're done here for now
+				// Since mander and cockatrice arms are hardcoded and the others are NYI, we're done here for now
 			}
 			return "fingernails";
 		}

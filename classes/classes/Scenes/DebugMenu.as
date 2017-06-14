@@ -191,6 +191,7 @@ import classes.Items.*
 			transformativeArray.push(consumables.SNAKOIL);
 			transformativeArray.push(consumables.SPHONEY);
 			transformativeArray.push(consumables.TAURICO);
+			transformativeArray.push(consumables.TOTRICE);
 			transformativeArray.push(consumables.TRAPOIL);
 			transformativeArray.push(consumables.TSCROLL);
 			transformativeArray.push(consumables.TSTOOTH);
