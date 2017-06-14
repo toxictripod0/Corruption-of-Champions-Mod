@@ -64,7 +64,7 @@ package classes.Scenes.Monsters
 						
 				}
 			}
-			player.takelustDamage(lustDmg, true);
+			player.takeLustDamage(lustDmg, true);
 			if (player.lust >= player.maxLust())
 				doNext(game.combat.endLustLoss);
 			else doNext(game.playerMenu);

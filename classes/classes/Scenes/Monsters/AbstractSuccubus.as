@@ -113,7 +113,7 @@ package classes.Scenes.Monsters
 				}
 				outputText("! ");
 				player.takeDamage(damage, true);
-				player.takelustDamage(lustDmg, true);
+				player.takeLustDamage(lustDmg, true);
 			}
 			else {
 				outputText("The succubus flicks her wrist, allowing a whip-like cord to slither out from the palm of her clawed hand.  She cracks the whip experimentally, cackling with glee.");
@@ -173,7 +173,7 @@ package classes.Scenes.Monsters
 					}
 					else outputText("\nYou're unimpressed.\n\n");
 				}
-			player.takelustDamage(lustDmg, true);
+			player.takeLustDamage(lustDmg, true);
 			}
 			//Jiggly-tits
 			if (temp == 1 && breastRows[0].breastRating >= 2) {
@@ -200,7 +200,7 @@ package classes.Scenes.Monsters
 					}
 					else outputText("\nYou're unimpressed.\n\n");
 				}
-			player.takelustDamage(lustDmg, true);
+			player.takeLustDamage(lustDmg, true);
 			}
 			//Genetals flash!
 			if (temp == 2) {
@@ -212,7 +212,7 @@ package classes.Scenes.Monsters
 					lustDmg = rand(vaginas.length * 2 + cocks.length * 2) + 13;
 				}
 				else outputText("\nYou're unimpressed.\n\n");
-			player.takelustDamage(lustDmg, true);
+			player.takeLustDamage(lustDmg, true);
 			}
 			combatRoundOver();
 		}

@@ -62,7 +62,7 @@ package classes.Scenes.Monsters
 				outputText("He makes a series of arcane gestures, drawing on his lust to inflict it upon you! ");
 				var lustDmg:int = (inte / 5) + rand(10);
 				lustDmg = lustDmg * (player.lustPercent() / 100);
-				player.takelustDamage(lustDmg, true);
+				player.takeLustDamage(lustDmg, true);
 				fatigue += spellCostArouse;
 			}
 			//Heal
@@ -91,7 +91,7 @@ package classes.Scenes.Monsters
 			var damage:int = 80 + rand(20);
 			player.takeDamage(damage, true);
 			var lustDmg:int = 20 + player.cor / 10;
-			player.takelustDamage(lustDmg, true);
+			player.takeLustDamage(lustDmg, true);
 			combatRoundOver();
 		}
 
@@ -101,7 +101,7 @@ package classes.Scenes.Monsters
 			outputText("Lowering his loincloth the imp reveals his inhumanly thick shaft.  He smirks and licks his lips as he gives his cock a squeeze, milking a few beads of clear pre from the tip.  You shake your head and try to ignore your growing need.");
 			//[+Lust]
 			var lustDmg:int = 15 + player.lib / 5 + player.cor / 5;
-			player.takelustDamage(lustDmg, true);
+			player.takeLustDamage(lustDmg, true);
 			combatRoundOver();
 		}
 
@@ -113,7 +113,7 @@ package classes.Scenes.Monsters
 			player.takeDamage(damage, true);
 			//[-HP(minor) // +Lust]
 			var lustDmg:int = 25 + player.sens / 4 + player.cor / 10;
-			player.takelustDamage(lustDmg, true);
+			player.takeLustDamage(lustDmg, true);
 			combatRoundOver();
 		}
 		
@@ -138,7 +138,7 @@ package classes.Scenes.Monsters
 				outputText("The cum lands on you, staining your [armor] and the cum even gets on your [skinfurscales]! You feel aroused from his cum.");
 				player.slimeFeed();
 				var lustDmg:int = 30 + player.sens / 4 + player.cor / 10;
-				player.takelustDamage(lustDmg, true);
+				player.takeLustDamage(lustDmg, true);
 			}
 			combatRoundOver();
 		}
