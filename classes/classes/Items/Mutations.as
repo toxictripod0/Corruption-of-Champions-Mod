@@ -2679,7 +2679,7 @@ package classes.Items
 			if (changes < changeLimit && player.hairType == 4 && rand(2) == 0) {
 				//-insert anemone hair removal into them under whatever criteria you like, though hair removal should precede abdomen growth; here's some sample text:
 				outputText("\n\nAs you down the seed, your head begins to feel heavier.  Reaching up, you notice your tentacles becoming soft and somewhat fibrous.  Pulling one down reveals that it feels soft and fluffy, almost feathery; you watch as it dissolves into many thin, feathery strands.  <b>Your hair is now like that of a harpy!</b>");
-				player.hairType = 1;
+				player.hairType = HAIR_FEATHER;
 				changes++;
 			}
 			//-Strength increase to 70
@@ -2905,15 +2905,19 @@ package classes.Items
 			}
 			//-Propah Wings
 			if (player.wingType == WING_TYPE_NONE && changes < changeLimit && (type == 1 || player.armType == ARM_TYPE_HARPY) && rand(4) == 0) {
-				outputText("\n\nPain lances through your back, the muscles knotting oddly and pressing up to bulge your " + player.skinDesc + ". It hurts, oh gods does it hurt, but you can't get a good angle to feel at the source of your agony. A loud crack splits the air, and then your body is forcing a pair of narrow limbs through a gap in your " + player.armorName + ". Blood pumps through the new appendages, easing the pain as they fill out and grow. Tentatively, you find yourself flexing muscles you didn't know you had, and <b>you're able to curve the new growths far enough around to behold your brand new, " + player.hairColor + " wings.</b>");
-				player.wingType = WING_TYPE_FEATHERED_LARGE;
+				outputText("\n\nPain lances through your back, the muscles knotting oddly and pressing up to bulge your " + player.skinDesc + ". It hurts, oh gods does it hurt, but you can't get a good angle to feel at the source of your agony. A loud crack splits the air, and then your body is forcing a pair of narrow limbs through a gap in your " + player.armorName + ". Blood pumps through the new appendages, easing the pain as they fill out and grow. Tentatively, you find yourself flexing muscles you didn't know you had, and");
+				player.wings.setProps({
+					type: WING_TYPE_FEATHERED_LARGE,
+					color: player.hasFur() ? player.furColor : player.hairColor
+				});
+				outputText(" <b>you're able to curve the new growths far enough around to behold your brand new, " + player.wings.color + " wings.</b>");
 				changes++;
 			}
 			//-Remove old wings
-			if ([WING_TYPE_NONE, WING_TYPE_FEATHERED_LARGE].indexOf(player.wingType) == -1 && changes < changeLimit && rand(4) == 0) {
+			if (player.wingType != WING_TYPE_FEATHERED_LARGE && player.wingType > WING_TYPE_NONE && changes < changeLimit && rand(4) == 0) {
 				if (player.wingType != WING_TYPE_SHARK_FIN) outputText("\n\nSensation fades from your [wings] slowly but surely, leaving them dried out husks that break off to fall on the ground. Your back closes up to conceal the loss, as smooth and unbroken as the day you entered the portal.");
 				else outputText("\n\nSensation fades from your large fin slowly but surely, leaving it a dried out husk that breaks off to fall on the ground. Your back closes up to conceal the loss, as smooth and unbroken as the day you entered the portal.");
-				player.wingType = WING_TYPE_NONE;
+				player.wings.restore();
 				changes++;
 			}
 			//-Feathery Arms
@@ -2924,9 +2928,9 @@ package classes.Items
 				updateClaws();
 			}
 			//-Feathery Hair
-			if (player.hairType != 1 && changes < changeLimit && (type == 1 || player.faceType == FACE_HUMAN) && rand(4) == 0) {
+			if (player.hairType != HAIR_FEATHER && changes < changeLimit && (type == 1 || player.faceType == FACE_HUMAN) && rand(4) == 0) {
 				outputText("\n\nA tingling starts in your scalp, getting worse and worse until you're itching like mad, the feathery strands of your hair tickling your fingertips while you scratch like a dog itching a flea. When you pull back your hand, you're treated to the sight of downy fluff trailing from your fingernails. A realization dawns on you - you have feathers for hair, just like a harpy!");
-				player.hairType = 1;
+				player.hairType = HAIR_FEATHER;
 				changes++;
 			}
 			//-Human face
@@ -3742,7 +3746,7 @@ package classes.Items
 							colorChoices = KitsuneScene.basicKitsuneFur;
 				else
 					colorChoices = foxFurColors;
-				player.setFurColor(colorChoices, {type: UNDER_BODY_TYPE_FUR}, true);
+				player.setFurColor(colorChoices, {type: UNDER_BODY_TYPE_FURRY}, true);
 				changes++;
 			}
 			//[Grow Fox Legs]
@@ -4014,7 +4018,7 @@ package classes.Items
 			var tone:Array = mystic ? ["dark", "ebony", "ashen", "sable", "milky white"] : ["tan", "olive", "light"];
 			//[Change Skin Type: remove fur or scales, change skin to Tan, Olive, or Light]
 			var theFurColor:String = player.furColor;
-			if (player.hasFur() && player.underBody.type == UNDER_BODY_TYPE_FUR && player.furColor != player.underBody.skin.furColor)
+			if (player.hasFur() && player.underBody.type == UNDER_BODY_TYPE_FURRY && player.furColor != player.underBody.skin.furColor)
 				theFurColor = player.furColor + " and " + player.underBody.skin.furColor;
 
 			if ((player.hasFur() 

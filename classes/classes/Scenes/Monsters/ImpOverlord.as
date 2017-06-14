@@ -60,10 +60,9 @@ package classes.Scenes.Monsters
 			//Arouse
 			else if (spellChooser == 3 && fatigue <= (maxFatigue() - spellCostArouse)) {
 				outputText("He makes a series of arcane gestures, drawing on his lust to inflict it upon you! ");
-				var lustDamage:int = (inte / 5) + rand(10);
-				lustDamage = lustDamage * (player.lustPercent() / 100);
-				game.dynStats("lus", lustDamage, "resisted", false);
-				outputText(" <b>(<font color=\"#ff00ff\">" + (Math.round(lustDamage * 10) / 10) + "</font>)</b>");
+				var lustDmg:int = (inte / 5) + rand(10);
+				lustDmg = lustDmg * (player.lustPercent() / 100);
+				player.takeLustDamage(lustDmg, true);
 				fatigue += spellCostArouse;
 			}
 			//Heal
@@ -91,7 +90,8 @@ package classes.Scenes.Monsters
 			//[-HP // +Lust(minor)]
 			var damage:int = 80 + rand(20);
 			player.takeDamage(damage, true);
-			game.dynStats("lus", 20 + player.cor / 10);
+			var lustDmg:int = 20 + player.cor / 10;
+			player.takeLustDamage(lustDmg, true);
 			combatRoundOver();
 		}
 
@@ -100,7 +100,8 @@ package classes.Scenes.Monsters
 		{
 			outputText("Lowering his loincloth the imp reveals his inhumanly thick shaft.  He smirks and licks his lips as he gives his cock a squeeze, milking a few beads of clear pre from the tip.  You shake your head and try to ignore your growing need.");
 			//[+Lust]
-			game.dynStats("lus", 15 + player.lib / 5 + player.cor / 5);
+			var lustDmg:int = 15 + player.lib / 5 + player.cor / 5;
+			player.takeLustDamage(lustDmg, true);
 			combatRoundOver();
 		}
 
@@ -111,7 +112,8 @@ package classes.Scenes.Monsters
 			var damage:int = 12 + rand(25);
 			player.takeDamage(damage, true);
 			//[-HP(minor) // +Lust]
-			game.dynStats("lus", 25 + player.sens / 4 + player.cor / 10);
+			var lustDmg:int = 25 + player.sens / 4 + player.cor / 10;
+			player.takeLustDamage(lustDmg, true);
 			combatRoundOver();
 		}
 		
@@ -135,7 +137,8 @@ package classes.Scenes.Monsters
 			else {
 				outputText("The cum lands on you, staining your [armor] and the cum even gets on your [skinfurscales]! You feel aroused from his cum.");
 				player.slimeFeed();
-				game.dynStats("lus", 30 + player.sens / 4 + player.cor / 10);
+				var lustDmg:int = 30 + player.sens / 4 + player.cor / 10;
+				player.takeLustDamage(lustDmg, true);
 			}
 			combatRoundOver();
 		}

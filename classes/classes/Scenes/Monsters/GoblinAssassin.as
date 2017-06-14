@@ -57,20 +57,22 @@ package classes.Scenes.Monsters
 		}
 		//Lust Needle
 		protected function lustNeedle():void {
+			var lustDmg:int;
 			outputText("With a swift step, the assassin vanishes, her movements too quick for you to follow. You take a sharp breath as you feel her ample thighs clench your head in between them, her slick cunt in full view as you take in her scent.");
 			//Miss
 			if (player.getEvasionRoll()) 
 			{
 				//Miss: 
 				outputText("\nYou’ve already prepared, however, as you hold your breath and grab the goblin by her sides. Unhindered by her advance, you take the opportunity to move backwards, throwing the goblin off balance and leaving you only faintly smelling of her pussy.");
-				game.dynStats("lus", rand(player.lib/10) +4);
+				lustDmg = rand(player.lib/10) +4;
 			}
 			//Hit: 
 			else 
 			{
 				outputText("\nYou’re far too distracted to notice the needle injected into the back of your neck, but by the time she flips back into her original position you already feel the contents of the syringe beginning to take effect.");
-				game.dynStats("lus", rand(player.lib/4) +20);
+				lustDmg = rand(player.lib/4) +20;
 			}
+			player.takeLustDamage(lustDmg, true);
 			combatRoundOver();
 		}
 		//Dual Shot

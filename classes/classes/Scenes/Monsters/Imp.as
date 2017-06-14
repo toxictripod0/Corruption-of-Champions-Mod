@@ -31,7 +31,7 @@ package classes.Scenes.Monsters
 		
 		protected function lustMagicAttack():void {
 			outputText("You see " + a + short + " make sudden arcane gestures at you!\n\n");
-			game.dynStats("lus", player.lib / 10 + player.cor / 10 + 10);
+			var lustDmg:int = player.lib / 10 + player.cor / 10 + 10;
 			if (player.lust100 < 30) outputText("You feel strangely warm.  ");
 			if (player.lust100 >= 30 && player.lust100 < 60) outputText("Blood rushes to your groin as a surge of arousal hits you, making your knees weak.  ");
 			if (player.lust100 >= 60) outputText("Images of yourself fellating and fucking the imp assault your mind, unnaturally arousing you.  ");
@@ -64,7 +64,7 @@ package classes.Scenes.Monsters
 						
 				}
 			}
-			outputText("\n");
+			player.takeLustDamage(lustDmg, true);
 			if (player.lust >= player.maxLust())
 				doNext(game.combat.endLustLoss);
 			else doNext(game.playerMenu);

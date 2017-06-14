@@ -694,7 +694,7 @@ package classes.Scenes.Combat
 				monster.doAI();
 				return;
 			}
-			if ((flags[kFLAGS.PC_FETISH] >= 3 && rand(3) > 0) && !getGame().urtaQuest.isUrta() && !isWieldingRangedWeapon()) {
+			if ((flags[kFLAGS.PC_FETISH] >= 3 && (rand(3) > 0 || monster is Ceraph)) && !getGame().urtaQuest.isUrta() && !isWieldingRangedWeapon()) {
 				outputText("You attempt to attack, but at the last moment your body wrenches away, preventing you from even coming close to landing a blow!  Ceraph's piercings have made normal attack impossible!  Maybe you could try something else?\n\n");
 				monster.doAI();
 				return;
@@ -754,8 +754,7 @@ package classes.Scenes.Combat
 					outputText("Blind basilisk can't use his eyes, so you can actually aim your strikes!  ");
 				//basilisk counter attack (block attack, significant speed loss): 
 				else if (player.inte/5 + rand(20) < 25) {
-					outputText("Holding the basilisk in your peripheral vision, you charge forward to strike it.  Before the moment of impact, the reptile shifts its posture, dodging and flowing backward skillfully with your movements, trying to make eye contact with you. You find yourself staring directly into the basilisk's face!  Quickly you snap your eyes shut and recoil backwards, swinging madly at the lizard to force it back, but the damage has been done; you can see the terrible grey eyes behind your closed lids, and you feel a great weight settle on your bones as it becomes harder to move.");
-					Basilisk.basiliskSpeed(player,20);
+					Basilisk.speedReduce(player,20);
 					player.removeStatusEffect(StatusEffects.FirstAttack);
 					combatRoundOver();
 					flags[kFLAGS.BASILISK_RESISTANCE_TRACKER] += 2;
@@ -1464,7 +1463,7 @@ package classes.Scenes.Combat
 			}
 			//Basilisk compulsion
 			if (player.hasStatusEffect(StatusEffects.BasiliskCompulsion)) {
-				Basilisk.basiliskSpeed(player,15);
+				Basilisk.speedReduce(player,15);
 				//Continuing effect text: 
 				outputText("<b>You still feel the spell of those grey eyes, making your movements slow and difficult, the remembered words tempting you to look into its eyes again. You need to finish this fight as fast as your heavy limbs will allow.</b>\n\n");
 				flags[kFLAGS.BASILISK_RESISTANCE_TRACKER]++;
