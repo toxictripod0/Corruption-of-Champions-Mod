@@ -159,7 +159,7 @@ package classes.Scenes.Areas.VolcanicCrag
 				//Story-telling!
 				
 			}
-			outputText("\n\nYou play with your lover and offspring for a while, then heead back to camp.");
+			outputText("\n\nYou play with your lover and offspring for a while, then head back to camp.");
 			dynStats("lib", -1, "lus", -20, "resisted", false, "noBimbo", true);
 			doNext(camp.returnToCampUseOneHour);
 		}
