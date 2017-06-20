@@ -2670,6 +2670,22 @@ package classes
 			return skinType == SKIN_TYPE_PLAIN;
 		}
 
+		// Yet another workaround for Kitsunes ... (Stadler76)
+		public function get hairOrFurColors():String
+		{
+			if (!isFluffy())
+				return hairColor;
+
+			if (!underBody.skin.isFluffy())
+				return furColor;
+
+			// Uses formatStringArray in case we add more skin layers
+			return formatStringArray([
+				furColor,
+				underBody.skin.furColor,
+			]);
+		}
+
 		public function isBiped():Boolean
 		{
 			return legCount == 2;
