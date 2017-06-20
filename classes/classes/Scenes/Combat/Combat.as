@@ -474,8 +474,7 @@ package classes.Scenes.Combat
 			else if (player.hasStatusEffect(StatusEffects.NagaBind)) {
 				clearOutput();
 				outputText("The naga's grip on you tightens as you relax into the stimulating pressure.");
-				var lustDmg:int = player.sens / 5 + 5;
-				player.takeLustDamage(lustDmg, true);
+				player.takeLustDamage(player.sens / 5 + 5, true);
 				takeDamage(5 + rand(5));
 				combatRoundOver();
 			}
@@ -489,8 +488,7 @@ package classes.Scenes.Combat
 				else if (player.hasVagina())
 					outputText("The creature continues sucking your clit and now has latched two more suckers on your nipples, amplifying your growing lust. You must escape or you will become a mere toy to this thing!");
 				else outputText("The creature continues probing at your asshole and has now latched " + num2Text(player.totalNipples()) + " more suckers onto your nipples, amplifying your growing lust.  You must escape or you will become a mere toy to this thing!");
-				var lustDmg:int = 8 + player.sens / 10;
-				player.takeLustDamage(lustDmg, true);
+				player.takeLustDamage(8 + player.sens / 10, true);
 				combatRoundOver();
 			}
 			else if (player.hasStatusEffect(StatusEffects.GiantGrabbed)) {
@@ -618,8 +616,7 @@ package classes.Scenes.Combat
 					else if (player.hasVagina())
 						outputText("The creature continues sucking your clit and now has latched two more suckers on your nipples, amplifying your growing lust. You must escape or you will become a mere toy to this thing!");
 					else outputText("The creature continues probing at your asshole and has now latched " + num2Text(player.totalNipples()) + " more suckers onto your nipples, amplifying your growing lust.  You must escape or you will become a mere toy to this thing!");
-					var lustDmg:int = 3 + player.sens / 10 + player.lib / 20;
-					player.takeLustDamage(lustDmg, true);
+					player.takeLustDamage(3 + player.sens / 10 + player.lib / 20, true);
 					combatRoundOver();
 				}
 			}
@@ -637,7 +634,7 @@ package classes.Scenes.Combat
 			clearOutput();
 			if (monster.short == "frost giant" && (player.hasStatusEffect(StatusEffects.GiantBoulder))) {
 				lustDmg = 10 + rand(player.lib / 5 + player.cor / 8);
-				dynStats("lus", temp2, "resisted", false);
+				player.takeLustDamage(lustDmg, true, false);
 				(monster as FrostGiant).giantBoulderFantasize();
 				monster.doAI();
 				return;
