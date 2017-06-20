@@ -415,7 +415,7 @@ package classes.Scenes.Combat
 				if (player.gender == 3) outputText("aching cock and thirsty pussy towards the nearest thing willing to fuck it.");
 				if (player.gender == 0) outputText("groin, before remember there is nothing there to caress.");
 			}
-			var lustDmg:int = 10 + player.sens / 10);
+			var lustDmg:int = 10 + player.sens / 10;
 			player.takeLustDamage(lustDmg, true);
 			combatRoundOver();
 		}
