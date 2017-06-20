@@ -1589,7 +1589,7 @@ package classes.Scenes.Combat
 				outputText("You feel something shift inside you, making you feel warm.  Finding the desire to fight this... hunk gets harder and harder.\n\n");
 				player.takeLustDamage((player.statusEffectv1(StatusEffects.DemonSeed) + int(player.sens/30) + int(player.lib/30) + int(player.cor/30)), true);
 			}
-			if (player.inHeat && player.vaginas.length > 0 && monster.totalCocks() > 0) 
+			if (player.inHeat && player.vaginas.length > 0 && monster.totalCocks() > 0) {
 				player.takeLustDamage((rand(player.lib/5) + 3 + rand(5)), true);
 				outputText("Your " + player.vaginaDescript(0) + " clenches with an instinctual desire to be touched and filled.  ");
 				outputText("If you don't end this quickly you'll give in to your heat.\n\n");
