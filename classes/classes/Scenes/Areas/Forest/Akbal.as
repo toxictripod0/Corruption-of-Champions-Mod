@@ -87,8 +87,7 @@ package classes.Scenes.Areas.Forest
 			{
 				outputText("You hear whispering in your head. Akbal begins speaking to you as he circles you, telling all the ways he'll dominate you once he beats the fight out of you.");
 				//(Lust increase)
-				var lustDmg:int = 7 + (100 - player.inte) / 10;
-				player.takeLustDamage(lustDmg, true);
+				player.takeLustDamage(7 + (100 - player.inte) / 10, true);
 				player.createStatusEffect(StatusEffects.Whispered,0,0,0,0);
 			}
 			//Continuous Lust Attack - 
