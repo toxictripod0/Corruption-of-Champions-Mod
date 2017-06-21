@@ -2670,16 +2670,16 @@ package classes
 			return skinType == SKIN_TYPE_PLAIN;
 		}
 
-		// Yet another workaround for Kitsunes ... (Stadler76)
 		public function get hairOrFurColors():String
 		{
 			if (!isFluffy())
 				return hairColor;
 
-			if (!underBody.skin.isFluffy())
+			if (!underBody.skin.isFluffy() || ["no", furColor].indexOf(underBody.skin.furColor) != -1)
 				return furColor;
 
 			// Uses formatStringArray in case we add more skin layers
+			// If more layers are added, we'd probably need some remove duplicates function
 			return formatStringArray([
 				furColor,
 				underBody.skin.furColor,
