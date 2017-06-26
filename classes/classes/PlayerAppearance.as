@@ -567,7 +567,7 @@ package classes
 				outputText("  Your arms are covered in " + (player.hasCockatriceSkin() ? player.furColor : player.hairColor) + " feathers from the"
 				          +" shoulder down to the elbow where they stop in a fluffy cuff. A handful of long feathers grow from your elbow in the form"
 				          +" of vestigial wings, and while they may not let you fly, they certainly help you jump. Your lower arm is coated in"
-				          +" leathery " + player.skinTone + " scales and your fingertips terminate in deadly looking reptilian claws.");
+				          +" leathery " + player.skinTone + " scales and your fingertips terminate in deadly looking avian talons.");
 			}
 			//Done with head bits. Move on to body stuff
 			// <mod name="BodyParts.UnderBody" author="Stadler76">
