@@ -2624,7 +2624,11 @@ use namespace kGAMECLASS;
 			var maxTou:int = 100;
 			var maxSpe:int = 100;
 			var maxInt:int = 100;
-			
+			//Apply New Game+
+			maxStr += ascensionFactor();
+			maxTou += ascensionFactor();
+			maxSpe += ascensionFactor();
+			maxInt += ascensionFactor();
 			//Alter max speed if you have oversized parts. (Realistic mode)
 			if (flags[kFLAGS.HUNGER_ENABLED] >= 1)
 			{
@@ -2669,134 +2673,6 @@ use namespace kGAMECLASS;
 					maxSpe = UmasShop.NEEDLEWORK_DEFENSE_SPEED_CAP;
 				}
 			}
-			//Alter max stats depending on race
-			if (impScore() >= 4) {
-				maxSpe += 10;
-				maxInt -= 5;
-			}
-			if (sheepScore() >= 4) {
-				maxSpe += 10;
-				maxInt -= 10;
-				maxTou += 10;
-			}
-			if (wolfScore() >= 4) {
-				maxSpe -= 10;
-				maxInt += 5;
-				maxTou += 10;
-				maxStr += 5;
-			}
-			if (minoScore() >= 4) {
-				maxStr += 20;
-				maxTou += 10;
-				maxInt -= 10;
-			}
-			if (lizardScore() >= 4) {
-				maxInt += 10;
-				if (isBasilisk()) {
-					// Needs more balancing, especially other races, since dracolisks are quite OP right now!
-					maxTou += 5;
-					maxInt += 5;
-				}
-			}
-			if (dragonScore() >= 4) {
-				maxStr += 5;
-				maxTou += 10;
-				maxInt += 10;
-			}
-			if (dogScore() >= 4) {
-				maxSpe += 10;
-				maxInt -= 10;
-			}
-			if (foxScore() >= 4) {
-				maxStr -= 10;
-				maxSpe += 5;
-				maxInt += 5;
-			}
-			if (catScore() >= 4) {
-				maxSpe += 5;
-			}
-			if (bunnyScore() >= 4) {
-				maxSpe += 10;
-			}
-			if (raccoonScore() >= 4) {
-				maxSpe += 15;
-			}
-			if (horseScore() >= 4 && !isTaur() && !isNaga()) {
-				maxSpe += 15;
-				maxTou += 10;
-				maxInt -= 10;
-			}
-			if (gooScore() >= 3) {
-				maxTou += 10;
-				maxSpe -= 10;
-			}
-			if (kitsuneScore() >= 4) {
-				if (tailType == 13) {
-					if (tailVenom == 1) {
-						maxStr -= 2;
-						maxSpe += 2;
-						maxInt += 1;
-					}
-					else if (tailVenom >= 2 && tailVenom < 9) {
-						maxStr -= tailVenom + 1;
-						maxSpe += tailVenom + 1;
-						maxInt += (tailVenom/2) + 0.5;
-					}
-					else if (tailVenom >= 9) {
-						maxStr -= 10;
-						maxSpe += 10;
-						maxInt += 5;
-					}
-				}
-			}
-			if (beeScore() >= 4) {
-				maxSpe += 5;
-				maxTou += 5;
-			}
-			if (spiderScore() >= 4) {
-				maxInt += 15;
-				maxTou += 5;
-				maxStr -= 10;
-			}
-			if (sharkScore() >= 4) {
-				maxStr += 10;
-				maxSpe += 5;
-				maxInt -= 5;
-			}
-			if (harpyScore() >= 4) {
-				maxSpe += 15;
-				maxTou -= 10;
-			}
-			if (sirenScore() >= 4) {
-				maxStr += 5;
-				maxSpe += 20;
-				maxTou -= 5;
-			}
-			if (demonScore() >= 4) {
-				maxSpe += 5;
-				maxInt += 5;
-			}
-			if (rhinoScore() >= 4) {
-				maxStr += 15;
-				maxTou += 15;
-				maxSpe -= 10;
-				maxInt -= 10;
-			}
-			if (satyrScore() >= 4) {
-				maxStr += 5;
-				maxSpe += 5;
-			}
-			if (salamanderScore() >= 4) {
-				maxStr += 5;
-				maxTou += 5;
-			}
-			if (isNaga()) maxSpe += 10;
-			if (isTaur() || isDrider()) maxSpe += 20;
-			//Apply New Game+
-			maxStr += ascensionFactor();
-			maxTou += ascensionFactor();
-			maxSpe += ascensionFactor();
-			maxInt += ascensionFactor();
 			//Might
 			if (hasStatusEffect(StatusEffects.Might)) {
 				maxStr += statusEffectv1(StatusEffects.Might);
