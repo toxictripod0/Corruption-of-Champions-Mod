@@ -106,6 +106,7 @@ use namespace kGAMECLASS;
 		private var _upperGarment:Undergarment = UndergarmentLib.NOTHING;
 		private var _lowerGarment:Undergarment = UndergarmentLib.NOTHING;
 		private var _modArmorName:String = "";
+		public function get hunger100():Number { return 100*hunger/maxHunger(); }
 
 		//override public function set armors
 		override public function set armorValue(value:Number):void
@@ -608,6 +609,22 @@ use namespace kGAMECLASS;
 			}
 			return returnDamage;
 		}
+		
+		public function takeLustDamage(lustDmg:Number, display:Boolean = true, applyRes:Boolean = false):Number{
+			//Round
+			lustDmg = Math.round(lustDmg);
+			var lust:int = game.player.lust;
+			// we return "1 damage received" if it is in (0..1) but deduce no Lust
+			var returnlustDmg:int = (lustDmg>0 && lustDmg<1)?1:lustDmg;
+			if (lustDmg>0){
+				//game.lustChange(-lustDmg, display, "resisted", applyRes);
+				game.dynStats("lus", lustDmg, "resisted", applyRes);
+				lust = game.player.lust - lust;
+				if (display) game.output.text(" <b>(<font color=\"#ff00ff\">" + lust + "</font>)</b> ");
+				game.mainView.statsView.showStatUp('lust');
+			}
+			return returnlustDmg;
+		}
 
 		/**
 		 * @return 0: did not avoid; 1-3: avoid with varying difference between
@@ -782,12 +799,8 @@ use namespace kGAMECLASS;
 			{
 				if (hasDragonWingsAndFire())
 					race = isBasilisk() ? "dracolisk" : "dragonewt";
-				else {
-					if (lowerBody == LOWER_BODY_TYPE_HARPY && hasScales() && InCollection(wingType, WING_TYPE_DRACONIC_LARGE, WING_TYPE_HARPY, WING_TYPE_FEATHERED_LARGE, WING_TYPE_BAT_LIKE_LARGE))
-						race = "cockatrice"; // should also have avian face, but we have no such thing for now
-					else
-						race = isBasilisk() ? "basilisk"  : "lizan";
-				}
+				else
+					race = isBasilisk() ? "basilisk"  : "lizan";
 				if (isTaur())
 					race += "-taur";
 				if (lizardScore() >= 9)
@@ -800,6 +813,16 @@ use namespace kGAMECLASS;
 					race = "dragon-" + mf("man", "girl");
 				if (isTaur())
 					race = "dragon-taur";
+			}
+			if (cockatriceScore() >= 4)
+			{
+				race = "cockatrice-morph";
+				if (cockatriceScore() >= 8)
+					race = "cockatrice";
+				if (faceType == 0)
+					race = "cockatrice-" + mf("boy", "girl");
+				if (isTaur())
+					race = "cockatrice-taur";
 			}
 			if (raccoonScore() >= 4)
 			{
@@ -1021,6 +1044,39 @@ use namespace kGAMECLASS;
 			return race;
 		}
 
+		//cockatrice rating
+		public function cockatriceScore():Number
+		{
+			var cockatriceCounter:Number = 0;
+			if (earType == EARS_COCKATRICE)
+				cockatriceCounter++;
+			if (tailType == TAIL_TYPE_COCKATRICE)
+				cockatriceCounter++;
+			if (lowerBody == LOWER_BODY_TYPE_COCKATRICE)
+				cockatriceCounter++;
+			if (faceType == FACE_COCKATRICE)
+				cockatriceCounter++;
+			if (eyeType == EYES_COCKATRICE)
+				cockatriceCounter++;
+			if (armType == ARM_TYPE_COCKATRICE)
+				cockatriceCounter++;
+			if (antennae == ANTENNAE_COCKATRICE)
+				cockatriceCounter++;
+			if (cockatriceCounter > 2) {
+				if (tongueType == TONGUE_LIZARD)
+					cockatriceCounter++;
+				if (wingType == WING_TYPE_FEATHERED_LARGE)
+					cockatriceCounter++;
+				if (skinType == SKIN_TYPE_LIZARD_SCALES)
+					cockatriceCounter++;
+				if (underBody.type == UNDER_BODY_TYPE_COCKATRICE)
+					cockatriceCounter++;
+				if (lizardCocks() > 0)
+					cockatriceCounter++;
+			}
+			return cockatriceCounter;
+		}
+
 		//imp rating
 		public function impScore():Number
 		{
@@ -1137,21 +1193,21 @@ use namespace kGAMECLASS;
 		public function cowScore():Number
 		{
 			var minoCounter:Number = 0;
-			if (faceType == 0)
+			if (earType == EARS_COW)
 				minoCounter++;
-			if (faceType == 3)
+			if (tailType == TAIL_TYPE_COW)
+				minoCounter++;
+			if (hornType == HORNS_COW_MINOTAUR)
+				minoCounter++;
+			if (faceType == FACE_HUMAN && minoCounter > 0)
+				minoCounter++;
+			if (faceType == FACE_COW_MINOTAUR)
 				minoCounter--;
-			if (earType == 3)
-				minoCounter++;
-			if (tailType == 4)
-				minoCounter++;
-			if (hornType == 2)
-				minoCounter++;
-			if (lowerBody == 1 && minoCounter > 0)
+			if (lowerBody == LOWER_BODY_TYPE_HOOFED && minoCounter > 0)
 				minoCounter++;
 			if (tallness >= 73 && minoCounter > 0)
 				minoCounter++;
-			if (vaginas.length > 0)
+			if (vaginas.length > 0 && minoCounter > 0)
 				minoCounter++;
 			if (biggestTitSize() > 4 && minoCounter > 0)
 				minoCounter++;
@@ -1375,11 +1431,7 @@ use namespace kGAMECLASS;
 				lizardCounter++;
 			if (tailType == TAIL_TYPE_LIZARD)
 				lizardCounter++;
-			if ([TONGUE_LIZARD, TONGUE_SNAKE].indexOf(tongueType) != -1)
-				lizardCounter++;
 			if (lowerBody == LOWER_BODY_TYPE_LIZARD)
-				lizardCounter++;
-			if (lizardCocks() > 0)
 				lizardCounter++;
 			if (hasDragonHorns())
 				lizardCounter++;
@@ -1387,12 +1439,18 @@ use namespace kGAMECLASS;
 				lizardCounter++;
 			if (armType == ARM_TYPE_PREDATOR && clawType == CLAW_TYPE_LIZARD)
 				lizardCounter++;
-			if (hasReptileScales())
-				lizardCounter++;
 			if (eyeType == EYES_LIZARD)
 				lizardCounter++;
-			if (lizardCounter >= 4 && eyeType == EYES_BASILISK)
-				lizardCounter++;
+			if (lizardCounter > 2) {
+				if ([TONGUE_LIZARD, TONGUE_SNAKE].indexOf(tongueType) != -1)
+					lizardCounter++;
+				if (lizardCocks() > 0)
+					lizardCounter++;
+				if (eyeType == EYES_BASILISK)
+					lizardCounter++;
+				if (hasReptileScales())
+					lizardCounter++;
+			}
 			return lizardCounter;
 		}
 
@@ -1462,13 +1520,13 @@ use namespace kGAMECLASS;
 				kitsuneCounter++;
 			//If the character's kitsune score is greater than 1 and:
 			//If the character has "blonde","black","red","white", or "silver" hair, +1
-			if (kitsuneCounter > 0 && (InCollection(furColor, KitsuneScene.basicKitsuneHair) || InCollection(furColor, KitsuneScene.elderKitsuneColors)))
+			if (kitsuneCounter > 0 && (InCollection(hairOrFurColors, convertMixedToStringArray(KitsuneScene.basicKitsuneHair)) || InCollection(hairOrFurColors, KitsuneScene.elderKitsuneColors)))
 				kitsuneCounter++;
 			//If the character's femininity is 40 or higher, +1
 			if (kitsuneCounter > 0 && femininity >= 40)
 				kitsuneCounter++;
 			//If the character has fur, scales, or gooey skin, -1
-			if (hasFur() && !InCollection(furColor, KitsuneScene.basicKitsuneFur) && !InCollection(furColor, KitsuneScene.elderKitsuneColors))
+			if (hasFur() && !InCollection(hairOrFurColors, convertMixedToStringArray(KitsuneScene.basicKitsuneFur)) && !InCollection(hairOrFurColors, KitsuneScene.elderKitsuneColors))
 				kitsuneCounter--;
 			if (hasScales())
 				kitsuneCounter -= 2;
@@ -1687,8 +1745,6 @@ use namespace kGAMECLASS;
 			var mutantCounter:Number = 0;
 			if (faceType > 0)
 				mutantCounter++;
-			if (hasPlainSkin())
-				mutantCounter++;
 			if (tailType > 0)
 				mutantCounter++;
 			if (cocks.length > 1)
@@ -1698,6 +1754,8 @@ use namespace kGAMECLASS;
 			if (hasFuckableNipples())
 				mutantCounter++;
 			if (breastRows.length > 1)
+				mutantCounter++;
+			if (mutantCounter > 1 && hasPlainSkin())
 				mutantCounter++;
 			if (faceType == 1)
 			{
@@ -1761,7 +1819,7 @@ use namespace kGAMECLASS;
 				pigCounter++;
 			if (tailType == TAIL_TYPE_PIG)
 				pigCounter++;
-			if (faceType == FACE_PIG || FACE_BOAR)
+			if ([FACE_PIG, FACE_BOAR].indexOf(faceType) != -1)
 				pigCounter++;
 			if (lowerBody == LOWER_BODY_TYPE_CLOVEN_HOOFED)
 				pigCounter += 2;
@@ -2063,14 +2121,14 @@ use namespace kGAMECLASS;
 				var weightChange:int = 0;
 				
 				hunger += amnt;
-				if (hunger > 100)
+				if (hunger > maxHunger())
 				{
 					while (hunger > 110 && !game.prison.inPrison) {
 						weightChange++;
 						hunger -= 10;
 					}
 					modThickness(100, weightChange);
-					hunger = 100;
+					hunger = maxHunger();
 				}
 				if (hunger > oldHunger && flags[kFLAGS.USE_OLD_INTERFACE] == 0) kGAMECLASS.mainView.statsView.showStatUp('hunger');
 				//game.dynStats("lus", 0, "resisted");
@@ -2078,10 +2136,10 @@ use namespace kGAMECLASS;
 				//Messages
 				if (hunger < 10) outputText("<b>You still need to eat more. </b>");
 				else if (hunger >= 10 && hunger < 25) outputText("<b>You are no longer starving but you still need to eat more. </b>");
-				else if (hunger >= 25 && hunger < 50) outputText("<b>The growling sound in your stomach seems to quiet down. </b>");
-				else if (hunger >= 50 && hunger < 75) outputText("<b>Your stomach no longer growls. </b>");
-				else if (hunger >= 75 && hunger < 90) outputText("<b>You feel so satisfied. </b>");
-				else if (hunger >= 90) outputText("<b>Your stomach feels so full. </b>");
+				else if (hunger >= 25 && hunger100 < 50) outputText("<b>The growling sound in your stomach seems to quiet down. </b>");
+				else if (hunger100 >= 50 && hunger100 < 75) outputText("<b>Your stomach no longer growls. </b>");
+				else if (hunger100 >= 75 && hunger100 < 90) outputText("<b>You feel so satisfied. </b>");
+				else if (hunger100 >= 90) outputText("<b>Your stomach feels so full. </b>");
 				if (weightChange > 0) outputText("<b>You feel like you've put on some weight. </b>");
 				kGAMECLASS.awardAchievement("Tastes Like Chicken ", kACHIEVEMENTS.REALISTIC_TASTES_LIKE_CHICKEN);
 				if (oldHunger < 1 && hunger >= 100) kGAMECLASS.awardAchievement("Champion Needs Food Badly ", kACHIEVEMENTS.REALISTIC_CHAMPION_NEEDS_FOOD);
@@ -2302,7 +2360,7 @@ use namespace kGAMECLASS;
 		
 		public function addToWornClothesArray(armor:Armor):void {
 			for (var i:int = 0; i < previouslyWornClothes.length; i++) {
-				if (previouslyWornClothes[i] == armor.shortName) return; //Already have?
+				if (previouslyWornClothes[i].shortName == armor.shortName) return; //Already have?
 			}
 			previouslyWornClothes.push(armor.shortName);
 		}
@@ -2619,7 +2677,7 @@ use namespace kGAMECLASS;
 			return min;
 		}
 		
-		public function getMaxStats(stats:String):int {
+		public override function getMaxStats(stats:String):int {
 			var maxStr:int = 100;
 			var maxTou:int = 100;
 			var maxSpe:int = 100;

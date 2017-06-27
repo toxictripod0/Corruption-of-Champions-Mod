@@ -774,7 +774,7 @@ private function victoryAllThePenetrationsMinotaurGangBang():void {
 	clearOutput();
 	spriteSelect(SpriteDb.s_minotaurSons);
 	outputText("Deciding you wanted the same thing as your sons, you strip out of your " + player.armorName + " and instruct the horny, defeated minotaurs to shed what's left of their loincloths.  They obey");
-	if (monster.lust >= monster.eMaxLust()) outputText(" nearly instantly, too aroused to turn down the idea of their mother doing ANYTHING with their hard shafts.");
+	if (monster.lust >= monster.maxLust()) outputText(" nearly instantly, too aroused to turn down the idea of their mother doing ANYTHING with their hard shafts.");
 	else outputText(" somewhat sluggishly as they work to get nude for you, despite their wounds.  As they finish, they start to move a bit faster, recovering from the battle quicker than you would have thought.");
 	outputText("  You saunter over to the closest cock and admire the twitching hardness of it, caressing the somewhat equine shaft with gentle touches as you position yourself squarely above it.\n\n");
 	
@@ -927,7 +927,7 @@ private function forceMinitaurToGiveOral(choice:Number = 0):void {
 		if (player.isTaur()) outputText("flex your " + player.multiCockDescriptLight() + " to slap against your belly.");
 		else outputText("stroke your " + player.multiCockDescriptLight() + " with one hand.");
 		outputText("  " + player.SMultiCockDesc() + " ");
-		if (player.lust < 50) outputText("grows hard");
+		if (player.lust100 < 50) outputText("grows hard");
 		else outputText("gets even harder");
 		outputText(" before his eyes, and the minotaur licks his lips reflexively, clearly enjoying the thought of fellating you.\n\n");
 		

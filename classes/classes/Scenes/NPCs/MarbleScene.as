@@ -860,7 +860,7 @@ private function drinkMarbleMilk():void {
 	player.changeFatigue(-20);
 	//(increase player lust by a 20 and libido, if player lust is over a threshold like 60, trigger milk sex scene)
 	dynStats("lib", 1, "lus", 20);
-	if (player.lust > 60) {
+	if (player.lust100 > 60) {
 		marbleMilkSex(false);
 		doNext(camp.returnToCampUseOneHour);
 		return;
@@ -1189,7 +1189,7 @@ private function playerDrinksMarbleMilk():void {
 	//(increase player lust by a 20 and libido, 
 	dynStats("lib", 1, "lus", 20, "cor", 1);
 	//if player lust is over a threshold like 60, trigger milk sex scene)
-	if (player.lust >= 60) {
+	if (player.lust100 >= 60) {
 		outputText("\n\n");
 		marbleMilkSex(false);
 	}
@@ -1396,7 +1396,7 @@ private function addictionGiveIn():void {
 	//(increase player lust by a 20 and libido
 	dynStats("lib", 1, "lus", 20);
 	//if player lust is over a threshold like 60, trigger milk sex scene)
-	if (player.lust >= 60) {
+	if (player.lust100 >= 60) {
 		outputText("\n\n");
 		marbleMilkSex(false);
 	}
@@ -1663,7 +1663,7 @@ public function postAddictionCampMornings(extra:Boolean = true):void {
 		if (player.cor < (30 + player.corruptionTolerance())) dynStats("cor", 1);
 		dynStats("cor", 1);
 	}
-	if (player.lib < 40) dynStats("lib", .1);
+	if (player.lib100 < 40) dynStats("lib", .1);
 	player.refillHunger(20);
 	player.slimeFeed();
 	if (!extra) return;
@@ -1963,23 +1963,15 @@ public function marbleStatusChange(affection:Number, addiction:Number, isAddicte
 
 private function applyMarblesMilk():void {
 	player.slimeFeed();
-	var str:Number = 5;
-	var tou:Number = 10;
+	var str:Number = player.str;
+	var tou:Number = player.tou;
 	//Marble's milk - effect
 	//Increases player toughness by 10 and strength by 5 for several hours (suggest 12).
 	if (!player.hasStatusEffect(StatusEffects.MarblesMilk)) {
 		player.createStatusEffect(StatusEffects.MarblesMilk,12,0,0,0);
-		if (player.str + 5 > 100) {
-			str = 100 - player.str;
-			if (str < 0) str = 0;
-		}
-		if (player.tou + 10 > 100) {
-			tou = 100 - player.tou;
-			if (tou < 0) tou = 0;
-		}
-		dynStats("str", str,"tou", tou);
-		player.changeStatusValue(StatusEffects.MarblesMilk,2,str);
-		player.changeStatusValue(StatusEffects.MarblesMilk,3,tou);
+		dynStats("str", 5,"tou", 10);
+		player.changeStatusValue(StatusEffects.MarblesMilk,2,player.str-str);
+		player.changeStatusValue(StatusEffects.MarblesMilk,3,player.tou-tou);
 	}
 	else {
 		player.addStatusValue(StatusEffects.MarblesMilk,1,12);
@@ -2295,7 +2287,7 @@ private function talkWithMarbleAtCamp():void {
 		else if (player.findPerk(PerkLib.MaraesGiftStud) >= 0)
 			outputText("You continue and tell her how your attempt to get Marae's Lethicite turned out.  Marble can't believe you tried that, but when she hears what happened next, her eyes go wide and she actually starts masturbating in front of you.  At the end of your tale, Marble looks at you a bit nervously and asks, \"<i>So sweetie, does that mean you're going to breed with me?</i>\" <i>Hmm, </i> you think, <i>might not be a bad idea.</i>");
 		//increase the player's lust by 35 if they are under 50, so they can breed right away
-		if (player.lust<50) dynStats("lus", 35);
+		if (player.lust100<50) dynStats("lus", 35);
 		if (player.findPerk(PerkLib.MaraesGiftFertility) < 0 && player.findPerk(PerkLib.MaraesGiftStud) < 0) {
 			outputText("You finish your tale by recounting how you ran away.  She isn't really sure how to respond to your decision, but Marble does thank you for not leaving her behind and joining Marae.");
 		}

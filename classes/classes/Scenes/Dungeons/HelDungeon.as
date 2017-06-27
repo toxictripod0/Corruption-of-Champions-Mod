@@ -350,7 +350,7 @@ package classes.Scenes.Dungeons
 			spriteSelect(SpriteDb.s_valeria);
 			clearOutput();
 			outputText("Succumbing to your ");
-			if (monster.lust >= monster.eMaxLust()) outputText("erotic abilities");
+			if (monster.lust >= monster.maxLust()) outputText("erotic abilities");
 			else outputText("skill in battle");
 			outputText(", the armored goo slumps backwards against the wall, unable to stand.  You loom over her, grinning as you contemplate what to do with your helpless opponent.");
 

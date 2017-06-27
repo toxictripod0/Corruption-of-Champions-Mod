@@ -171,10 +171,10 @@ public function campRathazul():void {
 	}
 	var offered:Boolean;
 	//Rat is definitely not sexy!
-	if (player.lust > 50) dynStats("lus", -1);
-	if (player.lust > 65) dynStats("lus", -5);
-	if (player.lust > 80) dynStats("lus", -5);
-	if (player.lust > 90) dynStats("lus", -5);
+	if (player.lust100 > 50) dynStats("lus", -1);
+	if (player.lust100 > 65) dynStats("lus", -5);
+	if (player.lust100 > 80) dynStats("lus", -5);
+	if (player.lust100 > 90) dynStats("lus", -5);
 	//Introduction
 	outputText(images.showImage("rathazul-camp"));
 	outputText("Rathazul looks up from his equipment and gives you an uncertain smile.\n\n\"<i>Oh, don't mind me,</i>\" he says, \"<i>I'm just running some tests here.  Was there something you needed, " + player.short + "?</i>\"\n\n");
@@ -1239,6 +1239,15 @@ private function rathazulAlchemyMenu():void {
 		addButtonDisabled(5, "ProLactaid", "Rathazul doesn't know how to make this yet. Try buying more from him.");
 		addButtonDisabled(6, "Taurinum", "Rathazul doesn't know how to make this yet. Try buying more from him.");
 	}
+	if (player.statusEffectv2(StatusEffects.MetRathazul) >= 5 && flags[kFLAGS.TIMES_ENCOUNTERED_COCKATRICES] > 0) {
+		if (player.gems >= 100 && player.hasItem(consumables.REPTLUM, 1) && player.hasItem(consumables.GLDSEED, 1))
+			addButton(7, "Ton o' Trice", rathazulMakesCockatricePotion, null, null, null, "Ask him to brew a special potion that could aid in becoming a cockatrice. \n\nCost: 100 Gems \nNeeds 1 Reptilum and 1 Golden Seed.");
+		else
+			addButtonDisabled(7, "Ton o' Trice", "You don't have everything needed for this item.\n\nCost: 100 Gems\nNeeds 1 Reptilum and 1 Golden Seed.");
+	} else {
+		addButtonDisabled(7, "Ton o' Trice", "Rathazul doesn't know how to make this yet. Try buying more from him.");
+	}
+
 	addButton(14, "Back", returnToRathazulMenu);
 }
 
@@ -1356,7 +1365,29 @@ private function rathazulMakesTaurPotion():void {
 	inventory.takeItem(consumables.TAURICO, returnToRathazulMenu);
 }
 
-
+private function rathazulMakesCockatricePotion():void {
+	spriteSelect(SpriteDb.s_rathazul);
+	clearOutput();
+	if (player.gems < 100) {
+		outputText("\"<i>I'm sorry but you don't have the gems for this service,</i>\" Rathazul says.");
+		doNext(returnToRathazulMenu);
+		return;
+	}
+	else if (!(player.hasItem(consumables.REPTLUM, 1) && player.hasItem(consumables.GLDSEED, 1))) {
+		outputText("\"<i>I'm sorry but you don't have the materials I need. I need one vial of Reptilum and one golden seed,</i>\" Rathazul says.");
+		doNext(returnToRathazulMenu);
+		return;
+	}
+	player.destroyItems(consumables.REPTLUM, 1);
+	player.destroyItems(consumables.GLDSEED, 1);
+	player.gems -= 100;
+	statScreenRefresh();
+	outputText("You hand over one vial of Reptilum, one golden seed and one hundred gems to Rathazul, which he gingerly takes them and proceeds to make a special potion for you.");
+	outputText("\n\nAfter a while, the rat hands you a bottle labeled \"Ton o' Trice\" and nods.");
+	addMixologyXP(8);
+	player.addStatusValue(StatusEffects.MetRathazul, 2, 1);
+	inventory.takeItem(consumables.TOTRICE, returnToRathazulMenu);
+}
 
 private function growLethiciteDefense():void {
 	spriteSelect(SpriteDb.s_rathazul);

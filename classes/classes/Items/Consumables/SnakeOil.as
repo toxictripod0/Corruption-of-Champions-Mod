@@ -53,10 +53,10 @@ package classes.Items.Consumables
 			//(if outside combat)
 			if (!kGAMECLASS.inCombat) outputText("  Minutes pass as you start wishing you had water with you, to get rid of the aftertaste.");
 			//+ speed to 70!
-			if (player.spe < 70 && rand(2) === 0) {
+			if (player.spe100 < 70 && rand(2) === 0) {
 				dynStats("spe", (2 - (player.spe / 10 / 5)));
 				outputText("\n\nYour muscles quiver, feeling ready to strike as fast as a snake!");
-				if (player.spe < 40) outputText("  Of course, you're nowhere near as fast as that.");
+				if (player.spe100 < 40) outputText("  Of course, you're nowhere near as fast as that.");
 				changes++;
 			}
 			if (rand(5) === 0) {
@@ -70,10 +70,8 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Removes antennae
-			if (player.antennae > ANTENNAE_NONE && rand(3) === 0 && changes < changeLimit) {
-				outputText("\n\nThe muscles in your brow clench tightly, and you feel a tremendous pressure on your upper forehead.  When it passes, you touch yourself and discover your antennae have vanished!");
-				player.antennae = ANTENNAE_NONE;
-				changes++;
+			if (player.antennae != ANTENNAE_NONE && rand(3) === 0 && changes < changeLimit) {
+				mutations.removeAntennae();
 			}
 			//9c) II The tongue (sensitivity bonus, stored as a perk?)
 			if (changes === 0 && rand(3) === 0) {

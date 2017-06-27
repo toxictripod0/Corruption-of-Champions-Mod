@@ -45,7 +45,7 @@ package classes.Scenes.Areas.HighMountains
 				}
 				var basilisk:Basilisk = new Basilisk();
 				//(spd loss)
-				Basilisk.basiliskSpeed(player,5);
+				Basilisk.speedReduce(player,5);
 				flags[kFLAGS.TIMES_ENCOUNTERED_BASILISK]++;
 				startCombat(basilisk);
 			}

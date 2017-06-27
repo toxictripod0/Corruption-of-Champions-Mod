@@ -786,7 +786,7 @@ private function milkJojoFirst():void {
 			if (flags[kFLAGS.PC_COCK_MILKED_COUNTER] > 0) outputText("You know from experience that machine usually takes an hour before it will allow release");
 			else outputText("You figure the machine will probably pump him for quite a while before it allows release");
 			outputText(", and you're getting quite turned on from the show.  You shuck your " + player.armorName + " and pull out " + player.oMultiCockDesc() + ", feeling ");
-			if (player.lust < 50) outputText("it stiffen in your hand");
+			if (player.lust100 < 50) outputText("it stiffen in your hand");
 			else outputText("it's rigidity with your hand");
 			outputText(".  For his part, Jojo doesn't even notice.  He just moans, squirms, and twitches any time he's brought particularly close to orgasm.  You sigh, wishing you were small enough to fit inside him, but there's more than one way to fuck a mouse.  Resting your heavy male endowment between his asscheeks, you twirl his tail around your member and turn it into an impromptu cock-ring.  Jojo cranes his head back to see what's going on.  His blush seems to deepen three shades at the sight.  Giving him a wink, you start rocking back and forth.  His ass serves as the perfect hotdog 'bun' while the tightness of his tail keeps your " + player.cockDescript(x) + " so hard it feels like it could burst.\n\n");
 		}
@@ -795,7 +795,7 @@ private function milkJojoFirst():void {
 			if (flags[kFLAGS.PC_COCK_MILKED_COUNTER] > 0) outputText("You know from experience that machine usually takes an hour before it will allow release");
 			else outputText("You figure the machine will probably pump him for quite a while before it allows release");
 			outputText(", and you're getting quite turned on from the show.  You shuck your " + player.armorName + " and pull out " + player.oMultiCockDesc() + ", feeling ");
-			if (player.lust < 50) outputText("it stiffen in your hand");
+			if (player.lust100 < 50) outputText("it stiffen in your hand");
 			else outputText("it's rigidity with your hand");
 			outputText(".  For his part, Jojo doesn't even notice.  He just moans, squirms, and twitches any time he's brought particularly close to orgasm.  You smile and push forward, sheathing yourself inside Jojo's spasming asshole.  His happily convulsing muscles clamp tight around you, seizing your " + player.cockDescript(x) + " in his hot innards.  Swatting his plump, furry cheeks, you start to fuck him, noting that the machine all but stops its rhythmic motions.  It seems pounding Jojo's prostate into mush is as effective at milking his dick as the unholy semen-seeking machinery.\n\n");
 		}
@@ -1102,11 +1102,11 @@ public function jojoFollowerMeditate():void {
 		else if (player.cor > 40)
 			cleanse -= 1;
 		dynStats("cor", cleanse - player.countCockSocks("alabaster"));
-		if (player.str < 45) dynStats("str", 1); //Str boost to 45
-		if (player.tou < 45) dynStats("tou", 1); //Tou boost to 45
-		if (player.spe < 75) dynStats("spe", 1); //Speed boost to 75
-		if (player.inte < 80) dynStats("int", 1); //Int boost to 80
-		if (player.lib > 0) dynStats("lib", -1); //Libido lower to 15
+		if (player.str100 < 45) dynStats("str", 1); //Str boost to 45
+		if (player.tou100 < 45) dynStats("tou", 1); //Tou boost to 45
+		if (player.spe100 < 75) dynStats("spe", 1); //Speed boost to 75
+		if (player.inte100 < 80) dynStats("int", 1); //Int boost to 80
+		if (player.lib100 > 0) dynStats("lib", -1); //Libido lower to 15
 		flags[kFLAGS.JOJO_LAST_MEDITATION] = model.time.days;
 		player.addStatusValue(StatusEffects.JojoMeditationCount, 1, 1);
 	}
@@ -3141,10 +3141,10 @@ public function apparantlyJojoDOESlift():void
 		outputText(enlightenedBlurbs[rand(enlightenedBlurbs.length)] + "\n\n");
 	}
 	//Boost attributes!
-	if (player.str < 50) dynStats("str", 0.5);
-	if (player.str < 80) dynStats("str", 0.5);
-	if (player.inte < 50) dynStats("inte", 0.5);
-	if (player.inte < 80) dynStats("inte", 0.5);
+	if (player.str100 < 50) dynStats("str", 0.5);
+	if (player.str100 < 80) dynStats("str", 0.5);
+	if (player.inte100 < 50) dynStats("inte", 0.5);
+	if (player.inte100 < 80) dynStats("inte", 0.5);
 	menu();
 	doNext(camp.returnToCampUseOneHour);
 }
@@ -3267,42 +3267,42 @@ private function anallyFuckTheMouseButtSlut():void {
 	//First and second time
 	if (flags[kFLAGS.JOJO_ANAL_XP] < 3) {
 		//Intro
-		if (flags[kFLAGS.JOJO_ANAL_XP] < 1) outputText("\n\n\"<i>Just go gentle,</i>\" Jojo says with a whimpered look on his face as he gets down on all fours.");
-		else outputText("\n\n\"<i>Even though we've done it before, still, just go gentle please,</i>\" Jojo says with a whimpered look on his face as he gets down on all fours.");
+		if (flags[kFLAGS.JOJO_ANAL_XP] < 1) outputText("\n\n\"<i>Just be gentle,</i>\" Jojo whimpers as he gets down on all fours.");
+		else outputText("\n\n\"<i>Even though we've done it before, still, just be gentle, please,</i>\" Jojo says, nervous as he gets down on all fours.");
 		//Check anal tightness
 		outputText("\n\nYou gently caress Jojo’s toned, quivering butt-cheeks and get a good glance at his anus. ");
-		if (flags[kFLAGS.JOJO_ANAL_XP] < 1) outputText("It’s a bit too tight to suddenly insert your " + player.cockDescript(x) + " into. You’ll have to stretch it out a little. You warn Jojo that you’ll be inserting your hand in first. Jojo feels like he was almost regretting this, but nods. You slick your fingers up with some saliva, and then gently start to probe Jojo’s pucker, trying to stretch it out a little. ");
-		else outputText("You decide to test it out again. You warn Jojo that you’ll be inserting your hand in first. Jojo says, \"<i>If you have to.</i>\" You slick your fingers up with some saliva, and then gently start to probe Jojo’s pucker, testing out the looseness.");
+		if (flags[kFLAGS.JOJO_ANAL_XP] < 1) outputText("He’s too tight to stick your " + player.cockDescript(x) + " in right off; he needs stretching. You warn Jojo that you're going to start by fingering him, and he shakes with trepidation as he nods. You slick your hand up with some spit and then go for it. ");
+		else outputText("You warn Jojo you're going to test him with your hand first. \"<i>If you have to,</i>\" he says, closing his eyes. You slick your fingers up with some saliva, and then gently probe Jojo’s pucker.");
 		//Anal fingering and stretching
-		outputText("\n\nThe second your digits invade Jojo’s bowels, his cock starts leaking precum. Jojo’s face kept flickering between pain and arousal. Jojo must really be sensitive. "); 
-		if (flags[kFLAGS.JOJO_ANAL_XP] < 1) outputText("You stretch out Jojo’s bowels as much as you can and it should be just enough for insertion. ");
-		else outputText("Hmm... his ass seems more stretched out compared to last time; you should be able to insert without worry. ");
+		outputText("\n\nJojo's cock starts leaking precum the moment your fingers breach his entrance, and he quivers. You're not sure if he's pained or aroused, but he might not know, either: he's really sensitive. "); 
+		if (flags[kFLAGS.JOJO_ANAL_XP] < 1) outputText("You take your time about it, since he's worried enough, but eventually you think you might be able to get your cock in.");
+		else outputText("He relaxes much faster than he did last time. You should be good.");
 		//Get lubed up and get your cock into Jojo's anus.
-		outputText("\n\nYou spit on your hands and apply saliva evenly all over your " + player.cockDescript(x) + " to get it all lubed up. Deeming the lubrication sufficient, you let Jojo know that you’re going to start and you slowly slide your " + player.cockDescript(x) + " into Jojo’s butthole. " + (flags[kFLAGS.JOJO_ANAL_XP] > 0 ? "His sphincter closes around you tightly. By Marae, he’s tight as ever!" : "By Marae, he's tight!") + " ");
+		outputText("\n\nYou spit on your hands and rub it all over your " + player.cockDescript(x) + ", getting it lubed up. You tell Jojo you're going in and you slowly slide your " + player.cockDescript(x) + " into Jojo’s butthole as he clenches around you. " + (flags[kFLAGS.JOJO_ANAL_XP] > 0 ? "By Marae, he’s tight as ever!" : "By Marae, he's tight!") + " ");
 		if (flags[kFLAGS.JOJO_ANAL_XP] < 1) {
 			outputText("<b>Jojo has lost his anal virginity!</b>");
 			outputText("\n\nYou ask him if he’s all right. \"<i>Yes. It feels strange and it hurt a little... but it’s not bad! Keep going,</i>\" Jojo says. ");
 		}
 		else {
-			outputText("\n\nJojo starts panting in arousal. You ask him is he’s ok. Jojo gives you a thumbs-up. \"<i>I’m... fine. Keep going.</i>\" ");
+			outputText("\n\nJojo starts panting in arousal. You ask him if he’s ok and he gives you a thumbs-up. \"<i>I’m... fine. Keep going.</i>\" ");
 		}
-		outputText("His cock reaches full erection, ready to cum at any time. You smile at him and start to pick up the pace while keeping it at comfortable level. As you feel his loosening up, you decide to go faster and harder. Jojo starts moaning in both ecstasy and pain, releasing a shrill squeak with every thrust.");
+		outputText("His cock reaches full mast, ready to cum at any time. You smile at him and start to pick up the pace while keeping it at comfortable level. As you feel him loosening up, you decide to go faster and harder. Jojo starts moaning in both ecstasy and pain, releasing a shrill squeak with every thrust.");
 		//ORGASM!
 		outputText("\n\nEventually, you can’t hold back any more and you unleash your seed right into his bowels. ");
 		if (flags[kFLAGS.JOJO_ANAL_XP] < 1) {
 			outputText("Jojo orgasms as well, cumming all over the grass.");
-			outputText("\n\nNow spent, you lay next to Jojo. There’s small trail of cum leaking out of Jojo’s ass. \"<i>It’s a new experience. I’m willing to try it again,</i>\" Jojo says smilingly. You smile knowingly; you knew the two of you will do this often.");
+			outputText("\n\nNow spent, you lay next to Jojo. There’s small trail of cum leaking out of Jojo’s ass. \"<i>It’s a new experience. I’m willing to try it again,</i>\" Jojo says, smiling, and you smile back. You know you'll be doing this often.");
 		}
 		else {
-			outputText("Jojo starts pumping his hips in order to suck all the cum into his bowels. He, soon, orgasms as well, cumming all over the grass.");
-			outputText("\n\nNow spent, you lay next to Jojo. There’s small trail of cum leaking out of Jojo’s ass. You tell Jojo that he’s seems to really like anal. Jojo blushes. You laugh, telling your little butt slut that there more in store for him.");
+			outputText("Jojo pumps back into you, taking it all, before cumming all over the grass.");
+			outputText("\n\nNow spent, you lay next to Jojo. There’s a small trail of cum leaking out of Jojo’s ass. You tell Jojo that he seems to really like anal. Jojo blushes. You laugh, telling your little butt slut that there's more in store for him.");
 		}
 	}
 	//Third+ time
 	else {
-		outputText("\n\nJojo gets on all fours in a hurry, sticking his firm ass in the air for you to see. Jojo is such an anal slut. Jojo starts stretching his butt cheeks apart, looking at you with an eager face.");
+		outputText("\n\nJojo gets on all fours in a hurry, sticking his firm ass in the air for you to see as he spreads his cheeks apart. The little slut's so eager for you.");
 		//Check anal tightness
-		outputText("\n\nHis eagerness makes your " + player.multiCockDescriptLight() + " hard. You gently caress Jojo’s toned, quivering butt-cheeks and get a good glance at his anus. You decide to test it out again. You warn Jojo that you’ll be inserting your hand in first. Jojo says, “Hurry up.” You smile at his response. You slick your fingers up with some saliva, and then gently start to probe Jojo’s pucker, testing out the looseness.");
+		outputText("\n\nAnd you're eager, too: your " + player.multiCockDescriptLight() + "is already hard. You gently caress Jojo’s toned, quivering butt-cheeks and get a good glance at his anus. You decide to test it out again. You warn Jojo that you’ll be inserting your hand in first. Jojo says, “Hurry up.” You smile at his response. You slick your fingers up with some saliva, and then gently start to probe Jojo’s pucker, testing out the looseness.");
 		//Anal fingering and stretching
 		outputText("\n\nThe second your digits invade Jojo’s bowels, his cock starts leaking precum. Jojo’s face kept flickering between pain and arousal. Jojo must really be sensitive. "); 
 		outputText("Hmm... his ass seems more stretched out compared to the second time; you should be able to insert without worry. ");
