@@ -60,5 +60,15 @@ package classes{
 			assertThat(kGAMECLASS.player.isFemaleOrHerm(), equalTo(true))
 			assertThat(kGAMECLASS.player.hasVirginVagina(), equalTo(false))
         }
+		
+		[Test] 
+        public function testMirvanna():void {
+			var func:Function = findCharFunction(CharSpecial.MIRVANNA_NAME);
+			
+			func();
+			
+			assertThat(kGAMECLASS.player.isFemaleOrHerm(), equalTo(true))
+			assertThat(kGAMECLASS.player.hasVirginVagina(), equalTo(false))
+        }
     }
 }
