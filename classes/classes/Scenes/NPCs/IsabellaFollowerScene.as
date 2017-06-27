@@ -349,7 +349,7 @@ protected function campIzzySexMenu():void {
 	spriteSelect(SpriteDb.s_isabella);
 	menu();
 	addDisabledButton(2, "Hotdog");
-	addDisabledButton(4, "TentacleSex");
+	addDisabledButton(4, "TentacleSex", "Requires you to have at least 3 tentacle cocks of considerable length.");
 	addDisabledButton(5, "Get Sucked");
 	addDisabledButton(6, "Fuck Her");
 	
