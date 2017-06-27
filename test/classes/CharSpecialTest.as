@@ -22,6 +22,7 @@ package classes{
 				}
 			}
 			
+			fail("No special character found with the name: "+ name)
 			return null;
 		}
 		
@@ -34,16 +35,15 @@ package classes{
         public function setUp():void {
 			cut = new CharSpecial();
 			kGAMECLASS.player = new Player();
-        }  
+			
+			// guard asserts
+			assertThat(kGAMECLASS.player.isFemaleOrHerm(), equalTo(false))
+			assertThat(kGAMECLASS.player.isMaleOrHerm(), equalTo(false))
+        }
      
 		[Test] 
         public function testEtisNonVirgin():void {
 			var func:Function = findCharFunction("Etis");
-			
-			// guard asserts
-			assertThat(func, notNullValue())
-			assertThat(kGAMECLASS.player.isFemaleOrHerm(), equalTo(false))
-			assertThat(kGAMECLASS.player.isMaleOrHerm(), equalTo(false))
 			
 			func();
 			
@@ -54,11 +54,6 @@ package classes{
 		[Test] 
         public function testChimeraNonVirgin():void {
 			var func:Function = findCharFunction("Chimera");
-			
-			// guard asserts
-			assertThat(func, notNullValue()) 
-			assertThat(kGAMECLASS.player.isFemaleOrHerm(), equalTo(false))
-			assertThat(kGAMECLASS.player.isMaleOrHerm(), equalTo(false))
 			
 			func();
 			
