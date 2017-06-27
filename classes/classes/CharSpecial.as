@@ -765,7 +765,6 @@ package classes
 			player.spe+=3;
 			player.inte+=2;
 			player.str += 3;
-			player.setClitLength(.5);
 			player.fertility = 20;
 			player.hairLength= 15;
 			player.createBreastRow();
@@ -773,6 +772,7 @@ package classes
 			player.createCock();
 			player.tallness = 73;
 			player.breastRows[0].breastRating = 5;
+			player.setClitLength(.5);
 			player.vaginas[0].vaginalWetness = VAGINA_WETNESS_SLICK;
 			player.vaginas[0].vaginalLooseness = VAGINA_LOOSENESS_LOOSE;
 			player.vaginas[0].virgin = false;
