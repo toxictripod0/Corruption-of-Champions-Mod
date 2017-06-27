@@ -345,7 +345,7 @@ protected function isabellasAppearance():void {
 	doNext(callForFollowerIsabella);
 }
 
-private function campIzzySexMenu():void {
+protected function campIzzySexMenu():void {
 	spriteSelect(SpriteDb.s_isabella);
 	menu();
 	addDisabledButton(2, "Hotdog");
