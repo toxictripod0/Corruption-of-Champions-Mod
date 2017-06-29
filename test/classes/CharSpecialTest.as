@@ -25,7 +25,7 @@ package classes{
 				}
 			}
 			
-			fail("No special character found with the name: "+ name)
+			fail("No special character found with the name: " + name);
 			return null;
 		}
 		
@@ -40,8 +40,8 @@ package classes{
 			kGAMECLASS.player = new Player();
 			
 			// guard asserts
-			assertThat(kGAMECLASS.player.isFemaleOrHerm(), equalTo(false))
-			assertThat(kGAMECLASS.player.isMaleOrHerm(), equalTo(false))
+			assertThat(kGAMECLASS.player.isFemaleOrHerm(), equalTo(false));
+			assertThat(kGAMECLASS.player.isMaleOrHerm(), equalTo(false));
         }
 		
 		[Test(descrition="Execute every custom character function to see what breaks")]
@@ -74,8 +74,8 @@ package classes{
 			
 			func();
 			
-			assertThat(kGAMECLASS.player.isFemaleOrHerm(), equalTo(true))
-			assertThat(kGAMECLASS.player.hasVirginVagina(), equalTo(false))
+			assertThat(kGAMECLASS.player.isFemaleOrHerm(), equalTo(true));
+			assertThat(kGAMECLASS.player.hasVirginVagina(), equalTo(false));
         }
 		
 		[Test] 
@@ -84,8 +84,8 @@ package classes{
 			
 			func();
 			
-			assertThat(kGAMECLASS.player.isFemaleOrHerm(), equalTo(true))
-			assertThat(kGAMECLASS.player.hasVirginVagina(), equalTo(false))
+			assertThat(kGAMECLASS.player.isFemaleOrHerm(), equalTo(true));
+			assertThat(kGAMECLASS.player.hasVirginVagina(), equalTo(false));
         }
 		
 		[Test] 
@@ -94,8 +94,8 @@ package classes{
 			
 			func();
 			
-			assertThat(kGAMECLASS.player.isFemaleOrHerm(), equalTo(true))
-			assertThat(kGAMECLASS.player.hasVirginVagina(), equalTo(false))
+			assertThat(kGAMECLASS.player.isFemaleOrHerm(), equalTo(true));
+			assertThat(kGAMECLASS.player.hasVirginVagina(), equalTo(false));
         }
 		
 		[Test]
