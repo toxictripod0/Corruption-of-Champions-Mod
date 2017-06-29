@@ -22,6 +22,7 @@ package classes
 		public static const LUCINA_NAME: String = "Lucina";
 		public static const NAVORN_NAME: String = "Navorn";
 		public static const LUKAZ_NAME: String = "Lukaz";
+		public static const MARA_NAME: String = "Mara";
 		
 		
 		public function CharSpecial() {}
@@ -53,7 +54,7 @@ package classes
 			//[ "Kitteh6660", customKitteh6660, true, "" ],
 			[ "Leah", customLeah, true, "No Notes Available." ],
 			[ LUKAZ_NAME, customLukaz, true, "No Notes Available." ],
-			[ "Mara", customMara, true, "You're a bunny-girl with bimbo-tier curves, jiggly and soft, a curvy, wet girl with a bit of a flirty past." ],
+			[ MARA_NAME, customMara, true, "You're a bunny-girl with bimbo-tier curves, jiggly and soft, a curvy, wet girl with a bit of a flirty past." ],
 			[ "Mihari", customMihari, true, "The portal is not something you fear, not with your imposing armor and inscribed spellblade.  You're much faster and stronger than every champion that came before you, but will it be enough?" ],
 			[ MIRVANNA_NAME, customMirvanna, true, "You're an equine dragon-herm with a rather well-proportioned body.  Ingnam is certainly going to miss having you whoring yourself out around town.  You don't think they'll miss cleaning up all the messy sex, though." ],
 			[ "Nami", customNami, true, "Your exotic appearance caused you some trouble growing up, but you buried your nose in books until it came time to go through the portal." ],
