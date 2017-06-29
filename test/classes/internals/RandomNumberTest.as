@@ -10,6 +10,12 @@ package classes.internals
 	
 	public class RandomNumberTest
 	{
+		/**
+		 * If the max is 5, odds of not rolling a 5 (with 0 to 5): 5/6
+		 * Chance of not rolling a 5 for n iterations: (5/6)^n
+		 * 
+		 * so (5/6)^10000 = 1.5400666762244415926880991148594e-792
+		 */
 		private static const RANDOM_NUMBER_ITERATIONS:int = 10000;
 		private static const RANDOM_NUMBER_MAX:int = 5;
 		
