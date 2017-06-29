@@ -13,6 +13,9 @@ package classes{
 	import classes.helper.StageLocator;
 	
     public class CharSpecialTest {
+		private static const CHAR_NAME_INDEX:int = 0;
+		private static const CHAR_FUNCTION_INDEX:int = 1;
+		
         private var cut:CharSpecial;
 		
 		private function findCharFunction(name:String):Function {
@@ -40,6 +43,30 @@ package classes{
 			assertThat(kGAMECLASS.player.isFemaleOrHerm(), equalTo(false))
 			assertThat(kGAMECLASS.player.isMaleOrHerm(), equalTo(false))
         }
+		
+		[Test(descrition="Execute every custom character function to see what breaks")]
+		public function testCheckForRuntimeErrors():void {
+			var failedCharInit:Vector.<String> = new Vector.<String>();
+			
+			for (var index:int = 1; index < cut.customs.length; index++) {
+					// reset the player, as the init functions will change the instance state
+					kGAMECLASS.player = new Player();
+					
+					var charCreation:Function = cut.customs[index][CHAR_FUNCTION_INDEX];
+					
+					try{
+						if (charCreation != null) {
+							charCreation();
+						}
+					}catch (error:Error) {
+						failedCharInit.push(cut.customs[index][CHAR_NAME_INDEX]);
+					}
+			}
+			
+			if (failedCharInit.length != 0) {	
+				fail("The following char creations failed: " + failedCharInit.join());
+			}
+		}
      
 		[Test] 
         public function testEtisNonVirgin():void {
