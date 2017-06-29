@@ -915,21 +915,16 @@ package classes
 			player.furColor = "silver";
 			player.faceType = FACE_FOX;
 			player.earType = EARS_FOX;
-			player.createBreastRow();
-			player.createBreastRow();
-			player.createBreastRow();
-			player.breastRows[0].breastRating = 5;
-			player.breastRows[0].nipplesPerBreast = 4;
+			
+			player.createBreastRow(BREAST_CUP_DD,4);
+			player.createBreastRow(BREAST_CUP_DD,4);
+			player.createBreastRow(BREAST_CUP_DD,4);
+			player.createBreastRow(BREAST_CUP_DD,4);
 			player.breastRows[0].fuckable = true;
-			player.breastRows[1].breastRating = 5;
-			player.breastRows[1].nipplesPerBreast = 4;
 			player.breastRows[1].fuckable = true;
-			player.breastRows[2].breastRating = 5;
-			player.breastRows[2].nipplesPerBreast = 4;
 			player.breastRows[2].fuckable = true;
-			player.breastRows[3].breastRating = 5;
-			player.breastRows[3].nipplesPerBreast = 4;
 			player.breastRows[3].fuckable = true;
+			
 			if (!player.hasCock()) player.createCock();
 			player.createCock();
 			player.createCock();

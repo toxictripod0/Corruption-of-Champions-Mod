@@ -245,5 +245,50 @@ package classes{
 			
 			assertThat(player.breastRows[0].breastRating, equalTo(4));
 		}
+		
+		[Test]
+		public function testNavornBreastRows() : void {
+			var func : Function = findCharFunction(CharSpecial.NAVORN_NAME);
+			
+			func();
+			
+			assertThat(player.bRows(), equalTo(4));
+		}
+		
+		[Test]
+		public function testNavornBreastFuckable() : void {
+			var func : Function = findCharFunction(CharSpecial.NAVORN_NAME);
+			
+			func();
+			
+			assertThat(player.breastRows[0].fuckable, equalTo(true));
+			assertThat(player.breastRows[1].fuckable, equalTo(true));
+			assertThat(player.breastRows[2].fuckable, equalTo(true));
+			assertThat(player.breastRows[3].fuckable, equalTo(true));
+		}
+		
+		[Test]
+		public function testNavornBreastRating() : void {
+			var func : Function = findCharFunction(CharSpecial.NAVORN_NAME);
+			
+			func();
+			
+			assertThat(player.breastRows[0].breastRating, equalTo(5));
+			assertThat(player.breastRows[1].breastRating, equalTo(5));
+			assertThat(player.breastRows[2].breastRating, equalTo(5));
+			assertThat(player.breastRows[3].breastRating, equalTo(5));
+		}
+		
+		[Test]
+		public function testNavornNippelsPerBreast() : void {
+			var func : Function = findCharFunction(CharSpecial.NAVORN_NAME);
+			
+			func();
+			
+			assertThat(player.breastRows[0].nipplesPerBreast, equalTo(4));
+			assertThat(player.breastRows[1].nipplesPerBreast, equalTo(4));
+			assertThat(player.breastRows[2].nipplesPerBreast, equalTo(4));
+			assertThat(player.breastRows[3].nipplesPerBreast, equalTo(4));
+		}
     }
 }
