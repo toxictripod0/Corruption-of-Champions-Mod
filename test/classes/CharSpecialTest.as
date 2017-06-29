@@ -191,5 +191,41 @@ package classes{
 			
 			assertThat(player.breastRows[0].breastRating, equalTo(4))
 		}
+		
+		[Test]
+		public function testKattiBreastRowCount() : void {
+			var func : Function = findCharFunction(CharSpecial.KATTI_NAME);
+			
+			func();
+			
+			assertThat(player.bRows(), equalTo(1));
+		}
+
+		[Test]
+		public function testKattiBreastRating() : void {
+			var func : Function = findCharFunction(CharSpecial.KATTI_NAME);
+			
+			func();
+			
+			assertThat(player.breastRows[0].breastRating, equalTo(19));
+		}
+		
+		[Test]
+		public function testKattiNippleLength() : void {
+			var func : Function = findCharFunction(CharSpecial.KATTI_NAME);
+			
+			func();
+			
+			assertThat(player.nippleLength, equalTo(4.5));
+		}
+		
+		[Test]
+		public function testKattiBreastFuckable() : void {
+			var func : Function = findCharFunction(CharSpecial.KATTI_NAME);
+			
+			func();
+			
+			assertThat(player.breastRows[0].fuckable, equalTo(true));
+		}
     }
 }

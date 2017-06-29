@@ -525,7 +525,7 @@ package classes
 			player.tailType = TAIL_TYPE_RABBIT;
 			//Face: Human
 			//Breasts: H-cup with 4.5 inch fuckable nipples"
-			player.breastRows[0].breastRating = 19;
+			player.createBreastRow(Appearance.BREAST_CUP_H);
 			player.nippleLength = 4.5;
 			player.breastRows[0].fuckable = true;
 		}
