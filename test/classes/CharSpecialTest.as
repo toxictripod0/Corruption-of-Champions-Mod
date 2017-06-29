@@ -121,5 +121,38 @@ package classes{
 			
 			assertThat(kGAMECLASS.player.breastRows[0].breastRating, equalTo(5));
 		}
+		
+		[Test]
+		public function testCharaunBreastRows() : void {
+			var func : Function = findCharFunction(CharSpecial.CHARAUN_NAME);
+			
+			func();
+			
+			assertThat(player.bRows(), equalTo(4));
+		}
+		
+		[Test]
+		public function testCharaunBreastFuckable() : void {
+			var func : Function = findCharFunction(CharSpecial.CHARAUN_NAME);
+			
+			func();
+			
+			assertThat(player.breastRows[0].fuckable, equalTo(true));
+			assertThat(player.breastRows[1].fuckable, equalTo(true));
+			assertThat(player.breastRows[2].fuckable, equalTo(true));
+			assertThat(player.breastRows[3].fuckable, equalTo(true));
+		}
+		
+		[Test]
+		public function testCharaunBreastRating() : void {
+			var func : Function = findCharFunction(CharSpecial.CHARAUN_NAME);
+			
+			func();
+			
+			assertThat(player.breastRows[0].breastRating, equalTo(4));
+			assertThat(player.breastRows[1].breastRating, equalTo(3));
+			assertThat(player.breastRows[2].breastRating, equalTo(2));
+			assertThat(player.breastRows[3].breastRating, equalTo(1));
+		}
     }
 }
