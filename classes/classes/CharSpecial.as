@@ -14,6 +14,7 @@ package classes
 	public class CharSpecial extends BaseContent
 	{
 		public static const MIRVANNA_NAME:String = "Mirvanna";
+		public static const ARIA_NAME: String = "Aria";
 		
 		public function CharSpecial() {}
 		
@@ -21,7 +22,7 @@ package classes
 		public const customs:Array = [
 			// 
 			[ "Without pre-defined history:", null, false, "" ],
-			[ "Aria", customAria, false, "It's really no surprise that you were sent through the portal to deal with the demons - you look enough like one as-is.  Your numerous fetish-inducing piercings, magical fox-tails, and bimbo-licious personality were all the motivation the elders needed to keep you from corrupting the village youth." ],
+			[ ARIA_NAME, customAria, false, "It's really no surprise that you were sent through the portal to deal with the demons - you look enough like one as-is.  Your numerous fetish-inducing piercings, magical fox-tails, and bimbo-licious personality were all the motivation the elders needed to keep you from corrupting the village youth." ],
 			[ "Betram", customBetram, false, "You're quite the foxy herm, and as different as you were compared to the rest of Ingnam, it's no surprise you were sent through first." ],
 			[ "Charaun", customCharaun, false, "As a gifted fox with a juicy, thick knot, a wet cunt, and magical powers, you have no problems with being chosen as champion." ],
 			[ "Cody", customCody, false, "Your orange and black tiger stripes make you cut a more imposing visage than normal, and with your great strength, armor, and claymore, you're a natural pick for champion." ],

@@ -100,7 +100,7 @@ package classes{
 		
 		[Test]
 		public function testAriaHasBreastrow() : void {
-			var func : Function = findCharFunction("Aria");
+			var func : Function = findCharFunction(CharSpecial.ARIA_NAME);
 			
 			func();
 			
@@ -109,7 +109,7 @@ package classes{
 		
 		[Test]
 		public function testAriaBreastRating() : void {
-			var func : Function = findCharFunction("Aria");
+			var func : Function = findCharFunction(CharSpecial.ARIA_NAME);
 			
 			func();
 			
