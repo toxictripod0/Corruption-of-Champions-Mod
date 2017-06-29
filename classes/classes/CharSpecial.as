@@ -115,7 +115,7 @@ package classes
 			player.tailType = TAIL_TYPE_FOX;
 			player.tailVenom = 9;
 			player.createPerk(PerkLib.EnlightenedNinetails, 0, 0, 0, 0);
-			player.breastRows[0].breastRating = 5;
+			player.createBreastRow(Appearance.BREAST_CUP_DD);
 			player.femininity = 100;
 			player.lowerBody = LOWER_BODY_TYPE_DEMONIC_HIGH_HEELS;
 			player.skinTone = "pink";

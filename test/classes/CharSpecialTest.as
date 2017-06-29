@@ -97,5 +97,23 @@ package classes{
 			assertThat(kGAMECLASS.player.isFemaleOrHerm(), equalTo(true))
 			assertThat(kGAMECLASS.player.hasVirginVagina(), equalTo(false))
         }
+		
+		[Test]
+		public function testAriaHasBreastrow() : void {
+			var func : Function = findCharFunction("Aria");
+			
+			func();
+			
+			assertThat(kGAMECLASS.player.bRows(), equalTo(1));
+		}
+		
+		[Test]
+		public function testAriaBreastRating() : void {
+			var func : Function = findCharFunction("Aria");
+			
+			func();
+			
+			assertThat(kGAMECLASS.player.breastRows[0].breastRating, equalTo(5));
+		}
     }
 }
