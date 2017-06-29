@@ -600,7 +600,7 @@ package classes
 			player.tone = 60;
 			player.hairLength = 30;
 			player.hairColor = "light blonde";
-			player.breastRows[0].breastRating = 4;
+			player.createBreastRow(Appearance.BREAST_CUP_D);
 			player.skinTone = "light";
 			//Bow skill 100 (Sorry Kelt, I can't hear your insults over my mad Robin Hood skillz)
 			player.createStatusEffect(StatusEffects.Kelt,100,0,0,0);

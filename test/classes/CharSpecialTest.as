@@ -227,5 +227,23 @@ package classes{
 			
 			assertThat(player.breastRows[0].fuckable, equalTo(true));
 		}
+		
+		[Test]
+		public function testLucinaBreastRowCount() : void {
+			var func : Function = findCharFunction(CharSpecial.LUCINA_NAME);
+			
+			func();
+			
+			assertThat(player.bRows(), equalTo(1));
+		}
+
+		[Test]
+		public function testLucinaBreastRating() : void {
+			var func : Function = findCharFunction(CharSpecial.LUCINA_NAME);
+			
+			func();
+			
+			assertThat(player.breastRows[0].breastRating, equalTo(4));
+		}
     }
 }
