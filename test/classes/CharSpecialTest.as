@@ -290,5 +290,15 @@ package classes{
 			assertThat(player.breastRows[2].nipplesPerBreast, equalTo(4));
 			assertThat(player.breastRows[3].nipplesPerBreast, equalTo(4));
 		}
+		
+				
+		[Test]
+		public function testLukazIsMale() : void {
+			var func : Function = findCharFunction(CharSpecial.LUKAZ_NAME);
+			
+			func();
+			
+			assertThat(player.isMale(), equalTo(true));
+		}
     }
 }

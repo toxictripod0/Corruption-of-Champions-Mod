@@ -649,7 +649,6 @@ package classes
 			player.thickness = 50;
 			player.skinDesc = "skin";
 			player.hoursSinceCum = 0;
-			player.setClitLength(0);
 			player.ass.analLooseness = 0;
 			player.ass.analWetness = 0;
 			player.ass.fullness = 0;
