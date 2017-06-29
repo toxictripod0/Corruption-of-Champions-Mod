@@ -17,6 +17,7 @@ package classes{
 		private static const CHAR_FUNCTION_INDEX:int = 1;
 		
         private var cut:CharSpecial;
+		private var player : Player;
 		
 		private function findCharFunction(name:String):Function {
 			for (var t:Number = 0; t < cut.customs.length; t++) {
@@ -37,12 +38,17 @@ package classes{
         [Before]
         public function setUp():void {
 			cut = new CharSpecial();
-			kGAMECLASS.player = new Player();
+			resetPlayer();
 			
 			// guard asserts
 			assertThat(kGAMECLASS.player.isFemaleOrHerm(), equalTo(false));
 			assertThat(kGAMECLASS.player.isMaleOrHerm(), equalTo(false));
         }
+		
+		private function resetPlayer() : void {
+			kGAMECLASS.player = new Player();
+			this.player = kGAMECLASS.player;
+		}
 		
 		[Test(descrition="Execute every custom character function to see what breaks")]
 		public function testCheckForRuntimeErrors():void {
@@ -50,7 +56,7 @@ package classes{
 			
 			for (var index:int = 1; index < cut.customs.length; index++) {
 					// reset the player, as the init functions will change the instance state
-					kGAMECLASS.player = new Player();
+					resetPlayer();
 					
 					var charCreation:Function = cut.customs[index][CHAR_FUNCTION_INDEX];
 					
