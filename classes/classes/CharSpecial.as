@@ -680,12 +680,12 @@ package classes
 			outputText("You're a bunny-girl with bimbo-tier curves, jiggly and soft, a curvy, wet girl with a bit of a flirty past.");
 			player.spe+=3;
 			player.inte+=2;
-			player.setClitLength(.5);
 			player.tone = 30;
 			player.fertility = 10;
 			player.hairLength= 15;
 			player.createBreastRow();
 			player.createVagina();
+			player.setClitLength(.5);
 			player.tallness = 67;
 			player.breastRows[0].breastRating = 7;
 			player.vaginas[0].vaginalWetness = VAGINA_WETNESS_SLICK;

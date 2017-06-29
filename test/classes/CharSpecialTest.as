@@ -300,5 +300,14 @@ package classes{
 			
 			assertThat(player.isMale(), equalTo(true));
 		}
+		
+		[Test]
+		public function testMaraClitLength() : void {
+			var func : Function = findCharFunction(CharSpecial.MARA_NAME);
+			
+			func();
+			
+			assertThat(player.getClitLength(), equalTo(0.5));
+		}
     }
 }
