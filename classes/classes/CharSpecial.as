@@ -436,7 +436,7 @@ package classes
 			player.cocks[0].cockLength = 10;
 			player.cocks[0].cockThickness = 4;
 			if (!player.hasVagina()) player.createVagina();
-			player.breastRows[0].breastRating = 4;
+			player.createBreastRow(Appearance.BREAST_CUP_D);
 			player.hairLength = 10;
 			player.setArmor(armors.GELARMR);
 		}

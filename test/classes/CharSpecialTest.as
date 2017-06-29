@@ -173,5 +173,23 @@ package classes{
 			
 			assertThat(player.breastRows[0].breastRating, equalTo(21))
 		}
+		
+		[Test]
+		public function testHikariBreastRowCount() : void {
+			var func : Function = findCharFunction(CharSpecial.HIKARI_NAME);
+			
+			func();
+			
+			assertThat(player.bRows(), equalTo(1))
+		}
+		
+		[Test]
+		public function testHikariBreastRating() : void {
+			var func : Function = findCharFunction(CharSpecial.HIKARI_NAME);
+			
+			func();
+			
+			assertThat(player.breastRows[0].breastRating, equalTo(4))
+		}
     }
 }
