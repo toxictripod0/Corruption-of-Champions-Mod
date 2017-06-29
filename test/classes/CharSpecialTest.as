@@ -162,7 +162,7 @@ package classes{
 			
 			func();
 			
-			assertThat(player.bRows(), equalTo(1))
+			assertThat(player.bRows(), equalTo(1));
 		}
 		
 		[Test]
@@ -171,7 +171,7 @@ package classes{
 			
 			func();
 			
-			assertThat(player.breastRows[0].breastRating, equalTo(21))
+			assertThat(player.breastRows[0].breastRating, equalTo(21));
 		}
 		
 		[Test]
@@ -180,7 +180,7 @@ package classes{
 			
 			func();
 			
-			assertThat(player.bRows(), equalTo(1))
+			assertThat(player.bRows(), equalTo(1));
 		}
 		
 		[Test]
@@ -189,7 +189,7 @@ package classes{
 			
 			func();
 			
-			assertThat(player.breastRows[0].breastRating, equalTo(4))
+			assertThat(player.breastRows[0].breastRating, equalTo(4));
 		}
 		
 		[Test]
