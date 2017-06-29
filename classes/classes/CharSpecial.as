@@ -385,7 +385,7 @@ package classes
 			//Hair length: Very long
 			player.hairLength = 22;
 			//Breast size: HH
-			player.breastRows[0].breastRating = 21;
+			player.createBreastRow(Appearance.BREAST_CUP_HH);
 			//Femininity/Beauty: Very high
 			player.femininity = 90;
 			// Height: 5'4

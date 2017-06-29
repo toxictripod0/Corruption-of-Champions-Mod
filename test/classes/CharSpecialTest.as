@@ -154,5 +154,24 @@ package classes{
 			assertThat(player.breastRows[2].breastRating, equalTo(2));
 			assertThat(player.breastRows[3].breastRating, equalTo(1));
 		}
+		
+			
+		[Test]
+		public function testGalateaBreastRowCount() : void {
+			var func : Function = findCharFunction(CharSpecial.GALATEA_NAME);
+			
+			func();
+			
+			assertThat(player.bRows(), equalTo(1))
+		}
+		
+		[Test]
+		public function testGalateaBreastRating() : void {
+			var func : Function = findCharFunction(CharSpecial.GALATEA_NAME);
+			
+			func();
+			
+			assertThat(player.breastRows[0].breastRating, equalTo(21))
+		}
     }
 }
