@@ -257,6 +257,13 @@ package classes
 				else if (player.hasScales())
 					outputText("  It's covered in [skinFurScales], making your face looks more unusual.");
 			}
+			if (player.faceType == FACE_COCKATRICE)
+			{
+				if (player.underBody.skin.type == SKIN_TYPE_FEATHERED)
+					outputText("  You have a cockatrice’s face, complete with " + player.furColor + " feathered skin and a muzzle like beak.");
+				else
+					outputText("  You have a cockatrice’s face, complete with [skinFurScales] and a muzzle like beak.");
+			}
 			//</mod>
 			//M/F stuff!
 			outputText("  It has " + player.faceDesc() + ".");
@@ -267,6 +274,9 @@ package classes
 				outputText("  Your eyes are solid spheres of inky, alien darkness.");
 			else if (player.eyeType == EYES_WOLF) 
 				outputText("  Your amber eyes are circled by darkness to help keep the sun from obscuring your view and have a second eyelid to keep them wet. You're rather near-sighted, but your peripherals are great!");
+			else if (player.eyeType == EYES_COCKATRICE)
+				outputText("  You have electric blue eyes spiderwebbed with lightning like streaks that signal their power and slit reptilian pupils."
+				          +" When excited your pupils dilate into wide circles.");
 			else if (player.faceType != FACE_CAT && player.hasReptileEyes())
 			{
 				outputText("  Your eyes are");
@@ -334,6 +344,8 @@ package classes
 				//</mod>
 				if (player.antennae == ANTENNAE_BEE) 
 					outputText("  Floppy antennae also appear on your skull, bouncing and swaying in the breeze.");
+				else if (player.antennae == ANTENNAE_COCKATRICE)
+					outputText("  Two long antennae like feathers sit on your hairline, curling over the shape of your head.");
 			}
 			//not bald
 			else 
@@ -392,6 +404,15 @@ package classes
 						outputText("  Limp antennae also grow from just behind your hairline, waving and swaying in the breeze with your ears.");
 					else outputText("  Floppy antennae also grow from just behind your hairline, bouncing and swaying in the breeze.");
 				}
+				else if (player.antennae == ANTENNAE_COCKATRICE)
+				{
+					outputText("  Two long antennae like feathers sit on your hairline, curling over the shape of your head.");
+				}
+
+			}
+			if (player.earType == EARS_COCKATRICE) {
+				outputText("  From the sides of your head protrude a quartet of feathers, the longest being vertical while the 3 shorter ones come"
+				          +" out at a 1 o'clock, 2 o'clock and 3 o'clock angle. Behind them hides the avian hole that is your ear.");
 			}
 			
 			//Beards!
@@ -523,7 +544,7 @@ package classes
 			if (player.wingType == WING_TYPE_SHARK_FIN) 
 				outputText("  A large shark-like fin has sprouted between your shoulder blades.  With it you have far more control over swimming underwater.");
 			if (player.wingType == WING_TYPE_FEATHERED_LARGE) 
-				outputText("  A pair of large, feathery wings sprout from your back.  Though you usually keep the " + player.furColor + "-colored wings folded close, they can unfurl to allow you to soar as gracefully as a harpy.");
+				outputText("  A pair of large, feathery wings sprout from your back.  Though you usually keep the " + player.wings.color + "-colored wings folded close, they can unfurl to allow you to soar as gracefully as a harpy.");
 			if (player.wingType == WING_TYPE_DRACONIC_SMALL) 
 				outputText("  Small, vestigial wings sprout from your shoulders.  They might look like bat's wings, but the membranes are covered in fine, delicate scales.");
 			else if (player.wingType == WING_TYPE_DRACONIC_LARGE) 
@@ -541,11 +562,21 @@ package classes
 			else if (player.armType == ARM_TYPE_SALAMANDER)
 				outputText("  Shining thick, leathery red scales cover your arms from the biceps down and your fingernails are now short, fiery-red curved claws.");
 			else if (player.armType == ARM_TYPE_PREDATOR)
-				outputText("  Your arms are covered by [skinFurScales] and your fingernails are now " + player.claws() + ".");
+				outputText("  Your arms are covered by [skinFurScales] and your fingernails are now [claws].");
+			else if (player.armType == ARM_TYPE_COCKATRICE) {
+				outputText("  Your arms are covered in " + (player.hasCockatriceSkin() ? player.furColor : player.hairColor) + " feathers from the"
+				          +" shoulder down to the elbow where they stop in a fluffy cuff. A handful of long feathers grow from your elbow in the form"
+				          +" of vestigial wings, and while they may not let you fly, they certainly help you jump. Your lower arm is coated in"
+				          +" leathery " + player.skinTone + " scales and your fingertips terminate in deadly looking avian talons.");
+			}
 			//Done with head bits. Move on to body stuff
 			// <mod name="BodyParts.UnderBody" author="Stadler76">
-			if (player.hasDifferentUnderBody())
+			if (player.hasCockatriceSkin()) {
+				outputText("  You’ve got a thick layer of " + player.furColor + " feathers covering your body, while [skinFurScales] coat you from"
+				          +" chest to groin. Around your neck is a ruff of [underBody.skinFurScales] which tends to puff out with your emotions.");
+			} else if (player.hasDifferentUnderBody()) {
 				outputText("  While most of your body is covered by [skinFurScales] you have [underBody.skinFurScales] covering your belly.");
+			}
 			// </mod>
 			//Horse lowerbody, other lowerbody texts appear lower
 			if (player.isTaur()) 
@@ -783,8 +814,8 @@ package classes
 			else if (player.tailType == TAIL_TYPE_FOX) 
 			{
 				if (player.tailVenom <= 1) 
-					outputText("  A swishing " + player.furColor + " fox's brush extends from your " + player.assDescript() + ", curling around your body - the soft fur feels lovely.");
-				else outputText("  " + Num2Text(player.tailVenom) + " swishing " + player.furColor + " fox's tails extend from your " + player.assDescript() + ", curling around your body - the soft fur feels lovely.");
+					outputText("  A swishing [hairOrFurColors] fox's brush extends from your [ass], curling around your body - the soft fur feels lovely.");
+				else outputText("  " + Num2Text(player.tailVenom) + " swishing [hairOrFurColors] fox's tails extend from your [ass], curling around your body - the soft fur feels lovely.");
 			}
 			else if (player.tailType == TAIL_TYPE_DRACONIC) 
 			{
@@ -846,6 +877,11 @@ package classes
 			{
 				outputText(" A thin imp tail almost as long as you are tall hangs from above your [butt], dotted at the end with a small puff of hair.");
 			}
+			else if (player.tailType == TAIL_TYPE_COCKATRICE) 
+			{
+				outputText(" A thick, scaly, prehensile reptilian tail hangs from your [butt], about half as long as you are tall."
+				          +" The first inch or so is feathered, terminating in a 'v'shape and giving way to your " + player.skinTone + " scales.");
+			}
 			//</mod>
 			//LOWERBODY SPECIAL
 			if (player.lowerBody == LOWER_BODY_TYPE_HUMAN) 
@@ -903,7 +939,13 @@ package classes
 			else if (player.lowerBody == LOWER_BODY_TYPE_CLOVEN_HOOFED) 
 				outputText("  " + Num2Text(player.legCount)+ " digitigrade legs form below your [hips], ending in cloven hooves.");
 			else if (player.lowerBody == LOWER_BODY_TYPE_IMP) 
-				outputText(" " + Num2Text(player.legCount)+ " digitigrade legs form below your [hips], ending in clawed feet. Three extend out the front, and one smaller one is in the back to keep your balance.");
+				outputText(" " + Num2Text(player.legCount) + " digitigrade legs form below your [hips], ending in clawed feet. Three extend out the front, and one smaller one is in the back to keep your balance.");
+			else if (player.lowerBody == LOWER_BODY_TYPE_COCKATRICE) {
+				outputText(" " + Num2Text(player.legCount) + " digitigrade legs grow down from your [hips], ending in clawed feet."
+				          +" There are three long toes on the front, and a small hind-claw on the back."
+				          +" A layer of " + (player.hasCockatriceSkin() ? player.furColor : player.hairColor) + " feathers covers your legs from the"
+				          +" hip to the knee, ending in a puffy cuff.");
+			}
 			if (player.findPerk(PerkLib.Incorporeality) >= 0)
 				outputText("  Of course, your " + player.legs() + " are partially transparent due to their ghostly nature."); // isn't goo transparent anyway?
 			outputText("\n");
@@ -1246,7 +1288,7 @@ package classes
 				outputText(".  ");
 				if (player.vaginas.length > 1) 
 					outputText("You have " + player.vaginas.length+ " " + player.vaginaDescript(0) + "s, with " + inchesOrCentimetres(player.getClitLength()) + "-centimetre clits each.  ");
-				if (player.lib < 50 && player.lust < 50) //not particularly horny
+				if (player.lib100 < 50 && player.lust100 < 50) //not particularly horny
 				
 				{
 					//Wetness
@@ -1268,7 +1310,7 @@ package classes
 							outputText("the massive hole that is your " + player.vaginaDescript(0) + ".  ");
 					}
 				}
-				if ((player.lib>=50 || player.lust >=50) && (player.lib< 80 && player.lust < 80)) //kinda horny
+				if ((player.lib100>=50 || player.lust100 >=50) && (player.lib100< 80 && player.lust100 < 80)) //kinda horny
 				
 				{
 					//Wetness
@@ -1292,7 +1334,7 @@ package classes
 					if (player.vaginas[0].vaginalLooseness>= VAGINA_LOOSENESS_GAPING_WIDE) 
 						outputText("the massive hole that is your " + player.vaginaDescript(0) + ".  ");
 				}
-				if ((player.lib> 80 || player.lust > 80)) //WTF horny!
+				if ((player.lib100> 80 || player.lust100 > 80)) //WTF horny!
 				
 				{
 					//Wetness

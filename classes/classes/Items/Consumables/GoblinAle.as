@@ -33,18 +33,18 @@ package classes.Items.Consumables
 			outputText("You drink the ale, finding it to have a remarkably smooth yet potent taste.  You lick your lips and sneeze, feeling slightly tipsy.");
 			dynStats("lus", 15);
 			//Stronger
-			if (player.str > 50) {
+			if (player.str100 > 50) {
 				dynStats("str", -1);
-				if (player.str > 70) dynStats("str", -1);
-				if (player.str > 90) dynStats("str", -2);
+				if (player.str100 > 70) dynStats("str", -1);
+				if (player.str100 > 90) dynStats("str", -2);
 				outputText("\n\nYou feel a little weaker, but maybe it's just the alcohol.");
 			}
 			///Less tough
-			if (player.tou > 50) {
+			if (player.tou100 > 50) {
 				outputText("\n\nGiggling, you poke yourself, which only makes you giggle harder when you realize how much softer you feel.");
 				dynStats("tou", -1);
-				if (player.tou > 70) dynStats("tou", -1);
-				if (player.tou > 90) dynStats("tou", -2);
+				if (player.tou100 > 70) dynStats("tou", -1);
+				if (player.tou100 > 90) dynStats("tou", -2);
 			}
 			//antianemone corollary:
 			if (changes < changeLimit && player.hairType === 4 && rand(2) === 0) {
@@ -60,7 +60,7 @@ package classes.Items.Consumables
 				player.tallness -= (1 + rand(5));
 			}
 			//Speed boost
-			if (rand(3) === 0 && player.spe < 50 && changes < changeLimit) {
+			if (rand(3) === 0 && player.spe100 < 50 && changes < changeLimit) {
 				dynStats("spe", 1 + rand(2));
 				outputText("\n\nYou feel like dancing, and stumble as your legs react more quickly than you'd think.  Is the alcohol slowing you down or are you really faster?  You take a step and nearly faceplant as you go off balance.  It's definitely both.");
 				changes++;
@@ -109,18 +109,16 @@ package classes.Items.Consumables
 			}
 			//GENERAL APPEARANCE STUFF BELOW
 			//REMOVAL STUFF
-			//Removes wings and antennaes!
+			//Removes wings!
 			if ((player.wingType === WING_TYPE_BEE_LIKE_SMALL || player.wingType === WING_TYPE_BEE_LIKE_LARGE || player.wingType >= WING_TYPE_HARPY) && changes < changeLimit && rand(4) === 0) {
 				if (player.wingType === WING_TYPE_SHARK_FIN) outputText("\n\nYour back tingles, feeling lighter.  Something lands behind you with a 'thump', and when you turn to look, you see your fin has fallen off.  This might be the best (and worst) booze you've ever had!  <b>You no longer have a fin!</b>");
 				else outputText("\n\nYour shoulders tingle, feeling lighter.  Something lands behind you with a 'thump', and when you turn to look you see your wings have fallen off.  This might be the best (and worst) booze you've ever had!  <b>You no longer have wings!</b>");
 				player.wingType = WING_TYPE_NONE;
 				changes++;
 			}
-			//Removes wings and antennaes!
-			if (player.antennae > ANTENNAE_NONE && changes < changeLimit && rand(3) === 0) {
-				outputText("\n\nYour " + player.hairDescript() + " itches so you give it a scratch, only to have your antennae fall to the ground.  What a relief.  <b>You've lost your antennae!</b>");
-				changes++;
-				player.antennae = ANTENNAE_NONE;
+			//Removes antennae!
+			if (player.antennae != ANTENNAE_NONE && changes < changeLimit && rand(3) === 0) {
+				mutations.removeAntennae();
 			}
 			//Remove odd eyes
 			if (changes < changeLimit && rand(5) === 0 && player.eyeType > EYES_HUMAN) {

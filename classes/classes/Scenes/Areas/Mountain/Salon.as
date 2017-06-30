@@ -737,7 +737,7 @@ private function fuckLynnette():void {
 	else {
 		outputText("Lynnette licks her lips at your decision and sashays forward, her immense hips rocking with enough sensuality that her plush ass is practically having a sexquake.  \"<i>You'll understand if we do a quick check then, right, [name]?</i>\" She doesn't wait for an answer, pressing herself against you so that you can get a good feel of her soft, sopping-wet tits conform to the shape of your body, letting the moist heat that seems to radiate from every pore of Lynnette's petite shape soak into your exposed " + player.skinFurScales() + ".  Her hand dives right into your underwear without asking, seizing tight around [oneCock] to heft it.");
 		outputText("\n\nYou give up an appreciative groan, [eachCock] twitching in lewd enjoyment as ");
-		if (player.lust <= 75) outputText("it fills to full size almost immediately");
+		if (player.lust100 <= 75) outputText("it fills to full size almost immediately");
 		else outputText("it's fully-erect state makes itself known");
 		outputText(". Lynnette strokes a few times to make sure you're suitably engorged and then shifts lower, squeezing ");
 		if (player.balls == 0) outputText("around your [sheath] to get a feel for how pent-up you are");

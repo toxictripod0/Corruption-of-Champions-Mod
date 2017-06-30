@@ -117,14 +117,14 @@ public function rawOutputText(output:String, purgeText:Boolean = false):void
 		//if (!debug) mainText.htmlText = output;
 		//trace("Purging and writing Text", output);
 		clearOutput();
-		this.output.text(output);
+		this.output.raw(output);
 		mainView.setOutputText( output );
 		// mainText.htmlText = output;
 	}
 	else
 	{
 		//trace("Adding Text");
-		this.output.text(output);
+		this.output.raw(output);
 		mainView.appendOutputText( output );
 		// mainText.htmlText += output;
 	}

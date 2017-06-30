@@ -24,7 +24,8 @@ package classes.Scenes.Areas
 		public var minotaurMobScene:MinotaurMobScene = new MinotaurMobScene();
 		public var izumiScenes:IzumiScene = new IzumiScene();
 		public var phoenixScene:PhoenixScene = new PhoenixScene();
-		
+		public var cockatriceScene:CockatriceScene = new CockatriceScene();
+
 		public function HighMountains()
 		{
 		}
@@ -97,14 +98,12 @@ package classes.Scenes.Areas
 					}, {
 						name: "basilisk",
 						call: basiliskScene.basiliskGreeting
-					/* [INTERMOD:Stadler76]
 					}, {
 						name: "cockatrice",
 						call: cockatriceScene.greeting,
 						when: function():Boolean {
 							return flags[kFLAGS.COCKATRICES_UNLOCKED] > 0;
 						}
-					*/
 					}, {
 						name: "sophie",
 						when: function ():Boolean {

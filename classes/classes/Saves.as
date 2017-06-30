@@ -902,6 +902,7 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile.data.clawType = player.clawType;
 		// </mod>
 		saveFile.data.wingType = player.wingType;
+		saveFile.data.wingColor = player.wingColor;
 		saveFile.data.lowerBody = player.lowerBody;
 		saveFile.data.legCount = player.legCount;
 		saveFile.data.tailType = player.tailType;
@@ -1785,6 +1786,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		// </mod>
 
 		player.wingType = saveFile.data.wingType;
+		player.wingColor = saveFile.data.wingColor || "no";
 		player.lowerBody = saveFile.data.lowerBody;
 		player.tailType = saveFile.data.tailType;
 		player.tailVenom = saveFile.data.tailVenum;
@@ -1841,12 +1843,13 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		else
 			player.eyeCount = saveFile.data.eyeCount;
 			
-		if (saveFile.data.underBody == undefined) {
-			player.underBody.type = UNDER_BODY_TYPE_NONE;
+
+		// Fix deprecated and merged underBody-types
+		switch (player.underBody.type) {
+			case UNDER_BODY_TYPE_DRAGON: player.underBody.type = UNDER_BODY_TYPE_REPTILE; break;
+			case UNDER_BODY_TYPE_WOOL:   player.underBody.type = UNDER_BODY_TYPE_FURRY;   break;
 		}
-		else
-			player.underBody = saveFile.data.underBody;
-		
+
 		//Sexual Stuff
 		player.balls = saveFile.data.balls;
 		player.cumMultiplier = saveFile.data.cumMultiplier;
@@ -2297,6 +2300,10 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 public function unFuckSave():void
 {
 	//Fixing shit!
+	if (player.wings.type == WING_TYPE_FEATHERED_LARGE && player.wings.color == "no") {
+		// Player has harpy wings from an old save, let's fix its color
+		player.wings.color = player.hasFur() ? player.furColor : player.hairColor;
+	}
 
 	// Fix duplicate elven bounty perks
 	if (player.findPerk(PerkLib.ElvenBounty) >= 0) {
@@ -2537,8 +2544,8 @@ public function unFuckSave():void
 	//Rigidly enforce cock size caps
 	if (player.hasCock()) {
 		for (var i:int = 0; i < player.cocks.length; i++) {
-			if (player.cocks[i].cockLength > 499.9) player.cocks[i].cockLength = 499.9;
-			if (player.cocks[i].cockThickness > 99.9) player.cocks[i].cockThickness = 99.9;
+			if (player.cocks[i].cockLength > 9999.9) player.cocks[i].cockLength = 9999.9;
+			if (player.cocks[i].cockThickness > 999.9) player.cocks[i].cockThickness = 999.9;
 		}
 	}
 	//If converting from vanilla, set Grimdark flag to 0.

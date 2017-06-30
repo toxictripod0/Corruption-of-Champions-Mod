@@ -514,7 +514,7 @@ private function talkToKaiju():void {
 		flags[kFLAGS.KAIJU_TALK_CYCLE] = 0;
 	}
 	doNext(camp.returnToCampUseOneHour);
-	if (player.inte < 50) dynStats("int", 1);
+	if (player.inte100 < 50) dynStats("int", 1);
 	if (player.lib > 50) dynStats("lib", -1);
 }
 

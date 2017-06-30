@@ -163,6 +163,48 @@ package classes.Items
 			return false;
 		}
 
+		/**
+		 * Removes antennae and display different loss texts depending on the type, if any.
+		 * @param	inline  If true, display a short inline text (No bold part, no line breaks)
+		 * @return	true:   lost them, false: no change
+		 * @author	Stadler76
+		 */
+		public function removeAntennae(inline:Boolean = false):Boolean
+		{
+			if (player.antennae == ANTENNAE_NONE)
+				return false;
+
+			if (inline) {
+				switch (player.antennae) {
+					case ANTENNAE_COCKATRICE:
+					case ANTENNAE_BEE:
+					default:
+						outputText(" Antennae pop free, and float lightly down towards the floor. ");
+				}
+			} else {
+				switch (player.antennae) {
+					case ANTENNAE_COCKATRICE:
+						outputText("\n\nYou feel your antennae like feathers shrivel at the root, the pair of soft quills falling softly to the"
+						          +" ground as your pores close.");
+						outputText("\n<b>You’ve lost your antennae like feathers!</b>");
+						break;
+
+					case ANTENNAE_BEE:
+						outputText("\n\nYour [hair] itches so you give it a scratch, only to have your antennae fall to the ground. What a relief.");
+						outputText("\n<b>You've lost your antennae!</b>");
+						break;
+
+					default: // should not happen, but just in case ... (Stadler76)
+						outputText("\n\nThe muscles in your brow clench tightly, and you feel a tremendous pressure on your upper forehead."
+						          +" When it passes, you touch yourself and discover <b>your antennae have vanished</b>!");
+				}
+			}
+
+			player.antennae = ANTENNAE_NONE;
+			changes++;
+			return true;
+		}
+
 		public function removeBassyHair():Boolean
 		{
 			// Failsafe, duh
@@ -213,6 +255,20 @@ package classes.Items
 			}
 
 			return ["invalid", "invalid"]; // Will never happen. Suppresses 'Error: Function does not return a value.'
+		}
+
+		public function newCockatriceColors():Array
+		{
+			var cockatriceColors:Array = [
+				["blue",   "turquoise", "blue"],
+				["orange", "red",       "orange"],
+				["green",  "yellow",    "green"],
+				["purple", "pink",      "purple"],
+				["black",  "white",     "black"],
+				["blonde", "brown",     "blonde"],
+				["white",  "grey",      "white"],
+			];
+			return randomChoice(cockatriceColors);
 		}
 
 		public function updateClaws(clawType:int = CLAW_TYPE_NORMAL):String
@@ -426,6 +482,7 @@ package classes.Items
 
 				case "reptilum":
 				case "echidnaTFs":
+				case "TonOTrice":
 					if (player.findPerk(PerkLib.Oviposition) >= 0) return 0;
 					outputText("\n\nDeep inside yourself there is a change.  It makes you feel a little woozy, but passes quickly."
 					          +"  Beyond that, you aren't sure exactly what just happened, but you are sure it originated from your womb.\n");

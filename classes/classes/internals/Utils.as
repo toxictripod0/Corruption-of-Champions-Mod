@@ -296,6 +296,10 @@ package classes.internals
 		{
 			return int(Math.random() * max);
 		}
+		public static function trueOnceInN(n:Number):Boolean
+		{
+			return Math.random()*n < 1;
+		}
 
 		public static function validateNonNegativeNumberFields(o:Object, func:String, nnf:Array):String
 		{

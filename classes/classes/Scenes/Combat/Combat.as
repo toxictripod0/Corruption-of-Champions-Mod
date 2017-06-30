@@ -92,7 +92,7 @@ package classes.Scenes.Combat
 				//Clear itemswapping in case it hung somehow
 		//No longer used:		itemSwapping = false;
 				//Player won
-				if (monster.HP < 1 || monster.lust >= monster.eMaxLust()) {
+				if (monster.HP < 1 || monster.lust >= monster.maxLust()) {
 					awardPlayer(nextFunc);
 				}
 				//Player lost
@@ -167,7 +167,9 @@ package classes.Scenes.Combat
 		{
 			clearOutput();
 			outputText("You close the distance between you and " + monster.a + monster.short + " as quickly as possible.\n\n");
-			player.removeStatusEffect(StatusEffects.KnockedBack);
+			while (player.hasStatusEffect(StatusEffects.KnockedBack)) {
+				player.removeStatusEffect(StatusEffects.KnockedBack);
+			}
 			if (player.weaponName == "flintlock pistol") {
 				if (flags[kFLAGS.FLINTLOCK_PISTOL_AMMO] <= 0) {
 					flags[kFLAGS.FLINTLOCK_PISTOL_AMMO] = 4;
@@ -415,7 +417,8 @@ package classes.Scenes.Combat
 				if (player.gender == 3) outputText("aching cock and thirsty pussy towards the nearest thing willing to fuck it.");
 				if (player.gender == 0) outputText("groin, before remember there is nothing there to caress.");
 			}
-			dynStats("lus", 10 + player.sens / 10);
+			var lustDmg:int = 10 + player.sens / 10;
+			player.takeLustDamage(lustDmg, true);
 			combatRoundOver();
 		}
 
@@ -432,7 +435,8 @@ package classes.Scenes.Combat
 			else if (monster.hasStatusEffect(StatusEffects.MinotaurEntangled)) {
 				clearOutput();
 				outputText("You sigh and relax in the chains, eying the well-endowed minotaur as you await whatever rough treatment he desires to give.  His musky, utterly male scent wafts your way on the wind, and you feel droplets of your lust dripping down your thighs.  You lick your lips as you watch the pre-cum drip from his balls, eager to get down there and worship them.  Why did you ever try to struggle against this fate?\n\n");
-				dynStats("lus", 30 + rand(5), "resisted", false);
+				var lustDmg:int = 30 + rand(5);
+				player.takeLustDamage(lustDmg, true, false);
 				monster.doAI();
 			}
 			else if (player.hasStatusEffect(StatusEffects.Whispered)) {
@@ -472,7 +476,7 @@ package classes.Scenes.Combat
 			else if (player.hasStatusEffect(StatusEffects.NagaBind)) {
 				clearOutput();
 				outputText("The naga's grip on you tightens as you relax into the stimulating pressure.");
-				dynStats("lus", player.sens / 5 + 5);
+				player.takeLustDamage(player.sens / 5 + 5, true);
 				takeDamage(5 + rand(5));
 				combatRoundOver();
 			}
@@ -486,7 +490,7 @@ package classes.Scenes.Combat
 				else if (player.hasVagina())
 					outputText("The creature continues sucking your clit and now has latched two more suckers on your nipples, amplifying your growing lust. You must escape or you will become a mere toy to this thing!");
 				else outputText("The creature continues probing at your asshole and has now latched " + num2Text(player.totalNipples()) + " more suckers onto your nipples, amplifying your growing lust.  You must escape or you will become a mere toy to this thing!");
-				dynStats("lus", (8 + player.sens / 10));
+				player.takeLustDamage(8 + player.sens / 10, true);
 				combatRoundOver();
 			}
 			else if (player.hasStatusEffect(StatusEffects.GiantGrabbed)) {
@@ -586,7 +590,8 @@ package classes.Scenes.Combat
 				}
 				else {
 					outputText("The naga's grip on you tightens as you struggle to break free from the stimulating pressure.");
-					dynStats("lus", player.sens / 10 + 2);
+					var lustDmg:int = player.sens / 10 + 2;
+					player.takeLustDamage(lustDmg, true);
 					takeDamage(7 + rand(5));
 				}
 				combatRoundOver();
@@ -613,7 +618,7 @@ package classes.Scenes.Combat
 					else if (player.hasVagina())
 						outputText("The creature continues sucking your clit and now has latched two more suckers on your nipples, amplifying your growing lust. You must escape or you will become a mere toy to this thing!");
 					else outputText("The creature continues probing at your asshole and has now latched " + num2Text(player.totalNipples()) + " more suckers onto your nipples, amplifying your growing lust.  You must escape or you will become a mere toy to this thing!");
-					dynStats("lus", (3 + player.sens / 10 + player.lib / 20));
+					player.takeLustDamage(3 + player.sens / 10 + player.lib / 20, true);
 					combatRoundOver();
 				}
 			}
@@ -626,12 +631,12 @@ package classes.Scenes.Combat
 
 		//Fantasize
 		public function fantasize():void {
-			var temp2:Number = 0;
+			var lustDmg:int =  0;
 			doNext(combatMenu);
 			clearOutput();
 			if (monster.short == "frost giant" && (player.hasStatusEffect(StatusEffects.GiantBoulder))) {
-				temp2 = 10 + rand(player.lib / 5 + player.cor / 8);
-				dynStats("lus", temp2, "resisted", false);
+				lustDmg = 10 + rand(player.lib / 5 + player.cor / 8);
+				player.takeLustDamage(lustDmg, true, false);
 				(monster as FrostGiant).giantBoulderFantasize();
 				monster.doAI();
 				return;
@@ -640,34 +645,35 @@ package classes.Scenes.Combat
 				outputText("As you fantasize, you feel Valeria rubbing her gooey body all across your sensitive skin");
 				if (player.gender > 0) outputText(" and genitals");
 				outputText(", arousing you even further.\n");
-				temp2 = 25 + rand(player.lib/8+player.cor/8)
+				lustDmg = 25 + rand(player.lib/8+player.cor/8)
 			}	
 			else if (player.balls > 0 && player.ballSize >= 10 && rand(2) == 0) {
 				outputText("You daydream about fucking " + monster.a + monster.short + ", feeling your balls swell with seed as you prepare to fuck " + monster.pronoun2 + " full of cum.\n");
-				temp2 = 5 + rand(player.lib/8+player.cor/8);
+				lustDmg = 5 + rand(player.lib/8+player.cor/8);
 				outputText("You aren't sure if it's just the fantasy, but your " + player.ballsDescriptLight() + " do feel fuller than before...\n");
 				player.hoursSinceCum += 50;
 			}
 			else if (player.biggestTitSize() >= 6 && rand(2) == 0) {
 				outputText("You fantasize about grabbing " + monster.a + monster.short + " and shoving " + monster.pronoun2 + " in between your jiggling mammaries, nearly suffocating " + monster.pronoun2 + " as you have your way.\n");
-				temp2 = 5 + rand(player.lib/8+player.cor/8)
+				lustDmg = 5 + rand(player.lib/8+player.cor/8)
 			}
 			else if (player.biggestLactation() >= 6 && rand(2) == 0) {
 				outputText("You fantasize about grabbing " + monster.a + monster.short + " and forcing " + monster.pronoun2 + " against a " + player.nippleDescript(0) + ", and feeling your milk let down.  The desire to forcefeed SOMETHING makes your nipples hard and moist with milk.\n");
-				temp2 = 5 + rand(player.lib/8+player.cor/8)
+				lustDmg = 5 + rand(player.lib/8+player.cor/8)
 			}
 			else {
 				outputText("You fill your mind with perverted thoughts about " + monster.a + monster.short + ", picturing " + monster.pronoun2 + " in all kinds of perverse situations with you.\n");	
-				temp2 = 10+rand(player.lib/5+player.cor/8);		
+				lustDmg = 10+rand(player.lib/5+player.cor/8);		
 			}
-			if (temp2 >= 20) outputText("The fantasy is so vivid and pleasurable you wish it was happening now.  You wonder if " + monster.a + monster.short + " can tell what you were thinking.\n\n");
+			if (lustDmg >= 20) outputText("The fantasy is so vivid and pleasurable you wish it was happening now.  You wonder if " + monster.a + monster.short + " can tell what you were thinking.\n\n");
 			else outputText("\n");
-			dynStats("lus", temp2, "resisted", false);
+			player.takeLustDamage(lustDmg, true, false);
 			if (player.lust >= player.maxLust()) {
 				if (monster.short == "pod") {
-					outputText("<b>You nearly orgasm, but the terror of the situation reasserts itself, muting your body's need for release.  If you don't escape soon, you have no doubt you'll be too fucked up to ever try again!</b>\n\n");
+					outputText("<b>You nearly orgasm, but the terror of the situation reasserts itself, muting your body's need for release.  If you don't escape soon, you have no doubt you'll be too fucked up to ever try again!</b>");
 					player.lust = 99;
-					dynStats("lus", -25);
+					player.takeLustDamage(-25, true);
+					outputText("\n\n");
 				}
 				else {
 					doNext(endLustLoss);
@@ -694,7 +700,7 @@ package classes.Scenes.Combat
 				monster.doAI();
 				return;
 			}
-			if ((flags[kFLAGS.PC_FETISH] >= 3 && rand(3) > 0) && !getGame().urtaQuest.isUrta() && !isWieldingRangedWeapon()) {
+			if ((flags[kFLAGS.PC_FETISH] >= 3 && (rand(3) > 0 || monster is Ceraph)) && !getGame().urtaQuest.isUrta() && !isWieldingRangedWeapon()) {
 				outputText("You attempt to attack, but at the last moment your body wrenches away, preventing you from even coming close to landing a blow!  Ceraph's piercings have made normal attack impossible!  Maybe you could try something else?\n\n");
 				monster.doAI();
 				return;
@@ -754,8 +760,7 @@ package classes.Scenes.Combat
 					outputText("Blind basilisk can't use his eyes, so you can actually aim your strikes!  ");
 				//basilisk counter attack (block attack, significant speed loss): 
 				else if (player.inte/5 + rand(20) < 25) {
-					outputText("Holding the basilisk in your peripheral vision, you charge forward to strike it.  Before the moment of impact, the reptile shifts its posture, dodging and flowing backward skillfully with your movements, trying to make eye contact with you. You find yourself staring directly into the basilisk's face!  Quickly you snap your eyes shut and recoil backwards, swinging madly at the lizard to force it back, but the damage has been done; you can see the terrible grey eyes behind your closed lids, and you feel a great weight settle on your bones as it becomes harder to move.");
-					Basilisk.basiliskSpeed(player,20);
+					Basilisk.speedReduce(player,20);
 					player.removeStatusEffect(StatusEffects.FirstAttack);
 					combatRoundOver();
 					flags[kFLAGS.BASILISK_RESISTANCE_TRACKER] += 2;
@@ -897,7 +902,7 @@ package classes.Scenes.Combat
 						outputText("You stare into her hangdog expression and lose most of the killing intensity you had summoned up for your attack, stopping a few feet short of hitting her.\n");
 						damage = 0;
 						//Kick back to main if no damage occured!
-						if (monster.HP > 0 && monster.lust < monster.eMaxLust()) {
+						if (monster.HP > 0 && monster.lust < monster.maxLust()) {
 							if (player.hasStatusEffect(StatusEffects.FirstAttack)) {
 								attack();
 								return;
@@ -996,7 +1001,7 @@ package classes.Scenes.Combat
 						monster.teased(monster.lustVuln * (20 + player.cor / 15));
 						if (rand(2) == 0) {
 							outputText(" You get a sexual thrill from it. ");
-							dynStats("lus", 1);
+							player.takeLustDamage(1, true);
 						}
 						
 					}
@@ -1008,7 +1013,7 @@ package classes.Scenes.Combat
 						monster.teased(monster.lustVuln * (25 + player.cor / 10));
 						if (rand(2) == 0) {
 							outputText(" You get a sexual thrill from it. ");
-							dynStats("lus", 1);
+							player.takeLustDamage(1, true);
 						}
 					}
 				}
@@ -1039,23 +1044,22 @@ package classes.Scenes.Combat
 			
 			if (monster is JeanClaude && !player.hasStatusEffect(StatusEffects.FirstAttack))
 			{
-				if (monster.HP < 1 || monster.lust >= monster.eMaxLust())
-				{
+				if (monster.HP < 1 || monster.lust >= monster.maxLust()) {
 					// noop
 				}
-				if (player.lust <= 30)
+				if (player.lust100 <= 30)
 				{
 					outputText("\n\nJean-Claude doesn’t even budge when you wade into him with your [weapon].");
 
 					outputText("\n\n“<i>Why are you attacking me, slave?</i>” he says. The basilisk rex sounds genuinely confused. His eyes pulse with hot, yellow light, reaching into you as he opens his arms, staring around as if begging the crowd for an explanation. “<i>You seem lost, unable to understand, lashing out at those who take care of you. Don’t you know who you are? Where you are?</i>” That compulsion in his eyes, that never-ending heat, it’s... it’s changing things. You need to finish this as fast as you can.");
 				}
-				else if (player.lust <= 50)
+				else if (player.lust100 <= 50)
 				{
 					outputText("\n\nAgain your [weapon] thumps into Jean-Claude. Again it feels wrong. Again it sends an aching chime through you, that you are doing something that revolts your nature.");
 
 					outputText("\n\n“<i>Why are you fighting your master, slave?</i>” he says. He is bigger than he was before. Or maybe you are smaller. “<i>You are confused. Put your weapon down- you are no warrior, you only hurt yourself when you flail around with it. You have forgotten what you were trained to be. Put it down, and let me help you.</i>” He’s right. It does hurt. Your body murmurs that it would feel so much better to open up and bask in the golden eyes fully, let it move you and penetrate you as it may. You grit your teeth and grip your [weapon] harder, but you can’t stop the warmth the hypnotic compulsion is building within you.");
 				}
-				else if (player.lust <= 80)
+				else if (player.lust100 <= 80)
 				{
 					outputText("\n\n“<i>Do you think I will be angry at you?</i>” growls Jean-Claude lowly. Your senses feel intensified, his wild, musky scent rich in your nose. It’s hard to concentrate... or rather it’s hard not to concentrate on the sweat which runs down his hard, defined frame, the thickness of his bulging cocks, the assured movement of his powerful legs and tail, and the glow, that tantalizing, golden glow, which pulls you in and pushes so much delicious thought and sensation into your head…  “<i>I am not angry. You will have to be punished, yes, but you know that is only right, that in the end you will accept and enjoy being corrected. Come now, slave. You only increase the size of the punishment with this silliness.</i>”");
 				}
@@ -1064,7 +1068,7 @@ package classes.Scenes.Combat
 					outputText("\n\nYou can’t... there is a reason why you keep raising your weapon against your master, but what was it? It can’t be that you think you can defeat such a powerful, godly alpha male as him. And it would feel so much better to supplicate yourself before the glow, lose yourself in it forever, serve it with your horny slut body, the only thing someone as low and helpless as you could possibly offer him. Master’s mouth is moving but you can no longer tell where his voice ends and the one in your head begins... only there is a reason you cling to like you cling onto your [weapon], whatever it is, however stupid and distant it now seems, a reason to keep fighting...");
 				}
 				
-				dynStats("lus", 25);
+				player.takeLustDamage(25, true);
 			}
 			
 			outputText("\n");
@@ -1072,7 +1076,7 @@ package classes.Scenes.Combat
 			if (player.weaponName.indexOf("staff") != -1 && player.findPerk(PerkLib.StaffChanneling) >= 0) flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 			checkAchievementDamage(damage);
 			//Kick back to main if no damage occured!
-			if (monster.HP >= 1 && monster.lust < monster.eMaxLust()) {
+			if (monster.HP >= 1 && monster.lust < monster.maxLust()) {
 				if (player.hasStatusEffect(StatusEffects.FirstAttack)) {
 					attack();
 					return;
@@ -1134,7 +1138,7 @@ package classes.Scenes.Combat
 		public function doDamage(damage:Number, apply:Boolean = true, display:Boolean = false):Number {
 			if (player.findPerk(PerkLib.Sadist) >= 0) {
 				damage *= 1.2;
-				dynStats("lus", 3);
+				player.takeLustDamage(3, true);
 			}
 			if (monster.HP - damage <= 0) {
 				/* No monsters use this perk, so it's been removed for now
@@ -1340,7 +1344,7 @@ package classes.Scenes.Combat
 			}
 			if (player.findPerk(PerkLib.HistoryWhore) >= 0) {
 				var bonusGems3:int = (monster.gems * 0.04) * player.teaseLevel;
-				if (monster.lust >= monster.eMaxLust()) monster.gems += bonusGems3;
+				if (monster.lust >= monster.maxLust()) monster.gems += bonusGems3;
 			}
 			if (player.findPerk(PerkLib.AscensionFortune) >= 0) {
 				monster.gems *= 1 + (player.perkv1(PerkLib.AscensionFortune) * 0.1);
@@ -1407,13 +1411,14 @@ package classes.Scenes.Combat
 			if (player.hasStatusEffect(StatusEffects.LustStones)) {
 				//[When witches activate the stones for goo bodies]
 				if (player.isGoo()) {
-					outputText("<b>The stones start vibrating again, making your liquid body ripple with pleasure.  The witches snicker at the odd sight you are right now.\n\n</b>");
+					outputText("<b>The stones start vibrating again, making your liquid body ripple with pleasure.  The witches snicker at the odd sight you are right now.</b>");
 				}
 				//[When witches activate the stones for solid bodies]
 				else {
-					outputText("<b>The smooth stones start vibrating again, sending another wave of teasing bliss throughout your body.  The witches snicker at you as you try to withstand their attack.\n\n</b>");
+					outputText("<b>The smooth stones start vibrating again, sending another wave of teasing bliss throughout your body.  The witches snicker at you as you try to withstand their attack.</b>");
 				}
-				dynStats("lus", player.statusEffectv1(StatusEffects.LustStones) + 4);
+				player.takeLustDamage(player.statusEffectv1(StatusEffects.LustStones) + 4, true);
+				outputText("\n\n");
 			}
 			if (player.hasStatusEffect(StatusEffects.WebSilence)) {
 				if (player.statusEffectv1(StatusEffects.WebSilence) >= 2 || rand(20) + 1 + player.str/10 >= 15) {
@@ -1465,7 +1470,7 @@ package classes.Scenes.Combat
 			}
 			//Basilisk compulsion
 			if (player.hasStatusEffect(StatusEffects.BasiliskCompulsion)) {
-				Basilisk.basiliskSpeed(player,15);
+				Basilisk.speedReduce(player,15);
 				//Continuing effect text: 
 				outputText("<b>You still feel the spell of those grey eyes, making your movements slow and difficult, the remembered words tempting you to look into its eyes again. You need to finish this fight as fast as your heavy limbs will allow.</b>\n\n");
 				flags[kFLAGS.BASILISK_RESISTANCE_TRACKER]++;
@@ -1488,13 +1493,13 @@ package classes.Scenes.Combat
 				outputText("<b>Your muscles twitch in agony as the acid keeps burning you. <b>(<font color=\"#800000\">" + slap + "</font>)</b></b>\n\n");
 			}
 			if (player.findPerk(PerkLib.ArousingAura) >= 0 && monster.lustVuln > 0 && player.cor >= (70 - player.corruptionTolerance())) {
-				if (monster.lust < 50) outputText("Your aura seeps into " + monster.a + monster.short + " but does not have any visible effects just yet.\n\n");
-				else if (monster.lust < 60) {
+				if (monster.lust100 < 50) outputText("Your aura seeps into " + monster.a + monster.short + " but does not have any visible effects just yet.\n\n");
+				else if (monster.lust100 < 60) {
 					if (!monster.plural) outputText(monster.capitalA + monster.short + " starts to squirm a little from your unholy presence.\n\n");
 					else outputText(monster.capitalA + monster.short + " start to squirm a little from your unholy presence.\n\n");
 				}
-				else if (monster.lust < 75) outputText("Your arousing aura seems to be visibly affecting " + monster.a + monster.short + ", making " + monster.pronoun2 + " squirm uncomfortably.\n\n");
-				else if (monster.lust < 85) {
+				else if (monster.lust100 < 75) outputText("Your arousing aura seems to be visibly affecting " + monster.a + monster.short + ", making " + monster.pronoun2 + " squirm uncomfortably.\n\n");
+				else if (monster.lust100 < 85) {
 					if (!monster.plural) outputText(monster.capitalA + monster.short + "'s skin colors red as " + monster.pronoun1 + " inadvertently basks in your presence.\n\n");
 					else outputText(monster.capitalA + monster.short + "' skin colors red as " + monster.pronoun1 + " inadvertently bask in your presence.\n\n");
 				}
@@ -1505,52 +1510,60 @@ package classes.Scenes.Combat
 				monster.lust += monster.lustVuln * (2 + rand(4));
 			}
 			if (player.hasStatusEffect(StatusEffects.Bound) && flags[kFLAGS.PC_FETISH] >= 2) {
-				outputText("The feel of tight leather completely immobilizing you turns you on more and more.  Would it be so bad to just wait and let her play with you like this?\n\n");
-				dynStats("lus", 3);
+				outputText("The feel of tight leather completely immobilizing you turns you on more and more.  Would it be so bad to just wait and let her play with you like this?");
+				player.takeLustDamage(3, true);
+				outputText("\n\n");
 			}
 			if (player.hasStatusEffect(StatusEffects.GooArmorBind)) {
 				if (flags[kFLAGS.PC_FETISH] >= 2) {
-					outputText("The feel of the all-encapsulating goo immobilizing your helpless body turns you on more and more.  Maybe you should just wait for it to completely immobilize you and have you at its mercy.\n\n");
-					dynStats("lus", 3);
+					outputText("The feel of the all-encapsulating goo immobilizing your helpless body turns you on more and more.  Maybe you should just wait for it to completely immobilize you and have you at its mercy.");
+					player.takeLustDamage(3, true);
 				}
-				else outputText("You're utterly immobilized by the goo flowing around you.  You'll have to struggle free!\n\n");
+				else outputText("You're utterly immobilized by the goo flowing around you.  You'll have to struggle free!");
+				outputText("\n\n");
 			}
 			if (player.hasStatusEffect(StatusEffects.HarpyBind)) {
 				if (flags[kFLAGS.PC_FETISH] >= 2) {
-					outputText("The harpies are holding you down and restraining you, making the struggle all the sweeter!\n\n");
-					dynStats("lus", 3);
+					outputText("The harpies are holding you down and restraining you, making the struggle all the sweeter!");
+					player.takeLustDamage(3, true);
+					outputText("\n\n");
 				}
 				else outputText("You're restrained by the harpies so that they can beat on you with impunity.  You'll need to struggle to break free!\n\n");
 			}
 			if (player.hasStatusEffect(StatusEffects.NagaBind) && flags[kFLAGS.PC_FETISH] >= 2) {
-				outputText("Coiled tightly by the naga and utterly immobilized, you can't help but become aroused thanks to your bondage fetish.\n\n");
-				dynStats("lus", 5);
+				outputText("Coiled tightly by the naga and utterly immobilized, you can't help but become aroused thanks to your bondage fetish.");
+				player.takeLustDamage(5, true);
+				outputText("\n\n");
 			}
 			if (player.hasStatusEffect(StatusEffects.TentacleBind)) {
 				outputText("You are firmly trapped in the tentacle's coils.  <b>The only thing you can try to do is struggle free!</b>\n\n");
 				if (flags[kFLAGS.PC_FETISH] >= 2) {
-					outputText("Wrapped tightly in the tentacles, you find it hard to resist becoming more and more aroused...\n\n");
-					dynStats("lus", 3);
+					outputText("Wrapped tightly in the tentacles, you find it hard to resist becoming more and more aroused...");
+					player.takeLustDamage(3, true);
+					outputText("\n\n");
 				}
 			}
 			if (player.hasStatusEffect(StatusEffects.DriderKiss)) {
 				//(VENOM OVER TIME: WEAK)
 				if (player.statusEffectv1(StatusEffects.DriderKiss) == 0) {
-					outputText("Your heart hammers a little faster as a vision of the drider's nude, exotic body on top of you assails you.  It'll only get worse if she kisses you again...\n\n");
-					dynStats("lus", 8);
+					outputText("Your heart hammers a little faster as a vision of the drider's nude, exotic body on top of you assails you.  It'll only get worse if she kisses you again...");
+					player.takeLustDamage(8, true);
+					outputText("\n\n");
 				}
 				//(VENOM OVER TIME: MEDIUM)
 				else if (player.statusEffectv1(StatusEffects.DriderKiss) == 1) {
 					outputText("You shudder and moan, nearly touching yourself as your ");
 					if (player.gender > 0) outputText("loins tingle and leak, hungry for the drider's every touch.");
 					else outputText("asshole tingles and twitches, aching to be penetrated.");
-					outputText("  Gods, her venom is getting you so hot.  You've got to end this quickly!\n\n");
-					dynStats("lus", 15);
+					outputText("  Gods, her venom is getting you so hot.  You've got to end this quickly!");
+					player.takeLustDamage(15, true);
+					outputText("\n\n");
 				}
 				//(VENOM OVER TIME: MAX)
 				else {
-					outputText("You have to keep pulling your hands away from your crotch - it's too tempting to masturbate here on the spot and beg the drider for more of her sloppy kisses.  Every second that passes, your arousal grows higher.  If you don't end this fast, you don't think you'll be able to resist much longer.  You're too turned on... too horny... too weak-willed to resist much longer...\n\n");
-					dynStats("lus", 25);
+					outputText("You have to keep pulling your hands away from your crotch - it's too tempting to masturbate here on the spot and beg the drider for more of her sloppy kisses.  Every second that passes, your arousal grows higher.  If you don't end this fast, you don't think you'll be able to resist much longer.  You're too turned on... too horny... too weak-willed to resist much longer...");
+					player.takeLustDamage(25, true);
+					outputText("\n\n");
 				}
 			}
 			//Harpy lip gloss
@@ -1562,39 +1575,42 @@ package classes.Scenes.Combat
 				}		
 				else if (rand(5) == 0) {
 					if (rand(2) == 0) outputText("A fantasy springs up from nowhere, dominating your thoughts for a few moments.  In it, you're lying down in a soft nest.  Gold-rimmed lips are noisily slurping around your " + player.cockDescript(0) + ", smearing it with her messy aphrodisiac until you're completely coated in it.  She looks up at you knowingly as the two of you get ready to breed the night away...\n\n");		
-					else outputText("An idle daydream flutters into your mind.  In it, you're fucking a harpy's asshole, clutching tightly to her wide, feathery flanks as the tight ring of her pucker massages your " + player.cockDescript(0) + ".  She moans and turns around to kiss you on the lips, ensuring your hardness.  Before long her feverish grunts of pleasure intensify, and you feel the egg she's birthing squeezing against you through her internal walls...\n\n");
-					dynStats("lus", 20);
+					else outputText("An idle daydream flutters into your mind.  In it, you're fucking a harpy's asshole, clutching tightly to her wide, feathery flanks as the tight ring of her pucker massages your " + player.cockDescript(0) + ".  She moans and turns around to kiss you on the lips, ensuring your hardness.  Before long her feverish grunts of pleasure intensify, and you feel the egg she's birthing squeezing against you through her internal walls...");
+					player.takeLustDamage(20, true);
+					outputText("\n\n");
 				}
 			}
 			if (player.hasStatusEffect(StatusEffects.StoneLust)) {
 				if (player.vaginas.length > 0) {
-					if (player.lust < 40) outputText("You squirm as the smooth stone orb vibrates within you.\n\n");
-					if (player.lust >= 40 && player.lust < 70) outputText("You involuntarily clench around the magical stone in your twat, in response to the constant erotic vibrations.\n\n");
-					if (player.lust >= 70 && player.lust < 85) outputText("You stagger in surprise as a particularly pleasant burst of vibrations erupt from the smooth stone sphere in your " + player.vaginaDescript(0) + ".\n\n");
-					if (player.lust >= 85) outputText("The magical orb inside of you is making it VERY difficult to keep your focus on combat, white-hot lust suffusing your body with each new motion.\n\n");
+					if (player.lust100 < 40) outputText("You squirm as the smooth stone orb vibrates within you.");
+					if (player.lust100 >= 40 && player.lust100 < 70) outputText("You involuntarily clench around the magical stone in your twat, in response to the constant erotic vibrations.");
+					if (player.lust100 >= 70 && player.lust100 < 85) outputText("You stagger in surprise as a particularly pleasant burst of vibrations erupt from the smooth stone sphere in your " + player.vaginaDescript(0) + ".");
+					if (player.lust100 >= 85) outputText("The magical orb inside of you is making it VERY difficult to keep your focus on combat, white-hot lust suffusing your body with each new motion.");
 				}
 				else {
-					outputText("The orb continues vibrating in your ass, doing its best to arouse you.\n\n");
+					outputText("The orb continues vibrating in your ass, doing its best to arouse you.");
 				}
-				dynStats("lus", 7 + int(player.sens)/10);
+				player.takeLustDamage(7 + int(player.sens)/10, true);
+				outputText("\n\n");
 			}
 			if (player.hasStatusEffect(StatusEffects.KissOfDeath)) {
 				//Effect 
-				outputText("Your lips burn with an unexpected flash of heat.  They sting and burn with unholy energies as a puff of ectoplasmic gas escapes your lips.  That puff must be a part of your soul!  It darts through the air to the succubus, who slurps it down like a delicious snack.  You feel feverishly hot and exhausted...\n\n");
-				dynStats("lus", 5);
-				takeDamage(15);		
+				outputText("Your lips burn with an unexpected flash of heat.  They sting and burn with unholy energies as a puff of ectoplasmic gas escapes your lips.  That puff must be a part of your soul!  It darts through the air to the succubus, who slurps it down like a delicious snack.  You feel feverishly hot and exhausted...");
+				player.takeLustDamage(5, true);
+				takeDamage(15);	
+				outputText("\n\n");
 			}
 			if (player.hasStatusEffect(StatusEffects.DemonSeed)) {
 				outputText("You feel something shift inside you, making you feel warm.  Finding the desire to fight this... hunk gets harder and harder.\n\n");
-				dynStats("lus", (player.statusEffectv1(StatusEffects.DemonSeed) + int(player.sens/30) + int(player.lib/30) + int(player.cor/30)));
+				player.takeLustDamage((player.statusEffectv1(StatusEffects.DemonSeed) + int(player.sens/30) + int(player.lib/30) + int(player.cor/30)), true);
 			}
 			if (player.inHeat && player.vaginas.length > 0 && monster.totalCocks() > 0) {
-				dynStats("lus", (rand(player.lib/5) + 3 + rand(5)));
+				player.takeLustDamage((rand(player.lib/5) + 3 + rand(5)), true);
 				outputText("Your " + player.vaginaDescript(0) + " clenches with an instinctual desire to be touched and filled.  ");
 				outputText("If you don't end this quickly you'll give in to your heat.\n\n");
 			}
 			if (player.inRut && player.totalCocks() > 0 && monster.hasVagina()) {
-				dynStats("lus", (rand(player.lib/5) + 3 + rand(5)));
+				player.takeLustDamage((rand(player.lib/5) + 3 + rand(5)), true);
 				if (player.totalCocks() > 1) outputText("Each of y");
 				else outputText("Y");
 				if (monster.plural) outputText("our " + player.multiCockDescriptLight() + " dribbles pre-cum as you think about plowing " + monster.a + monster.short + " right here and now, fucking " + monster.pronoun3 + " " + monster.vaginaDescript() + "s until they're totally fertilized and pregnant.\n\n");
@@ -1653,8 +1669,9 @@ package classes.Scenes.Combat
 			}
 			//Bondage straps + bondage fetish
 			if (flags[kFLAGS.PC_FETISH] >= 2 && player.armorName == "barely-decent bondage straps") {
-				outputText("The feeling of the tight, leather straps holding tightly to your body while exposing so much of it turns you on a little bit more.\n\n");
-				dynStats("lus", 2);
+				outputText("The feeling of the tight, leather straps holding tightly to your body while exposing so much of it turns you on a little bit more.");
+				player.takeLustDamage(2, true);
+				outputText("\n\n");
 			}
 			//Giant boulder
 			if (player.hasStatusEffect(StatusEffects.GiantBoulder)) {
@@ -1671,29 +1688,32 @@ package classes.Scenes.Combat
 			}
 			//Drider Incubus' purple haze
 			if (player.hasStatusEffect(StatusEffects.PurpleHaze)) {
-				outputText("<b>The purple haze is filling your vision with unsubtle erotic imagery, arousing you.</b>\n\n");
-				dynStats("lus", 3);
+				outputText("<b>The purple haze is filling your vision with unsubtle erotic imagery, arousing you.</b>");
+				player.takeLustDamage(3, true);
+				outputText("\n\n");
 			}
 			//Minotaur King's musk
 			if (player.hasStatusEffect(StatusEffects.MinotaurKingMusk)) {
-				outputText("<b>The smell of the minotaur pheronome is intense, turning you on. You should try to deal with him as soon as possible.</b>\n\n");
-				dynStats("lus", 2);
+				outputText("<b>The smell of the minotaur pheronome is intense, turning you on. You should try to deal with him as soon as possible.</b>");
+				player.takeLustDamage(2, true);
+				outputText("\n\n");
 			}
 			//Minotaur King Touched
 			if (player.hasStatusEffect(StatusEffects.MinotaurKingsTouch)) {
-				outputText("<b>The residual cum from the Minotaur King continues to arouse you.</b>\n\n");
-				dynStats("lus", 1);
+				outputText("<b>The residual cum from the Minotaur King continues to arouse you.</b>");
+				player.takeLustDamage(1, true);
+				outputText("\n\n");
 			}
 			//Pigby's Hands
 			if (player.hasStatusEffect(StatusEffects.PigbysHands)) {
-				dynStats("lus", 3);
+				player.takeLustDamage(3, true);
 			}
 			//Whip Silence
 			if (player.hasStatusEffect(StatusEffects.WhipSilence)) {
 				if (player.statusEffectv1(StatusEffects.WhipSilence) > 0) {
 					outputText("<b>You are silenced by the burning cord wrapped around your neck. It's painful... and arousing too.</b> ");
 					player.takeDamage(10 + rand(8), true);
-					dynStats("lus", 4);
+					player.takeLustDamage(4, true);
 					player.addStatusValue(StatusEffects.WhipSilence, 1, -1);
 					outputText("\n\n");
 				}
@@ -1769,7 +1789,7 @@ package classes.Scenes.Combat
 			if (player.findPerk(PerkLib.Battlemage) >= 0 && player.lust >= 50) {
 				combatAbilities.spellMight(true); // XXX: message?
 			}
-			if (player.findPerk(PerkLib.Spellsword) >= 0 && player.lust < combatAbilities.getWhiteMagicLustCap()) {
+			if (player.findPerk(PerkLib.Spellsword) >= 0 && player.lust100 < combatAbilities.getWhiteMagicLustCap()) {
 				combatAbilities.spellChargeWeapon(true); // XXX: message?
 			}
 			//Raises lust~ Not disabled because it's an item perk :3
@@ -1789,7 +1809,7 @@ package classes.Scenes.Combat
 			else if (player.newGamePlusMod() == 2) monster.lustVuln *= 0.65;
 			else if (player.newGamePlusMod() == 3) monster.lustVuln *= 0.5;
 			else if (player.newGamePlusMod() >= 4) monster.lustVuln *= 0.4;
-			monster.HP = monster.eMaxHP();
+			monster.HP = monster.maxHP();
 			monster.XP = monster.totalXP();
 			if (player.weaponName == "flintlock pistol") flags[kFLAGS.FLINTLOCK_PISTOL_AMMO] = 4;
 			if (player.weaponName == "blunderbuss") flags[kFLAGS.FLINTLOCK_PISTOL_AMMO] = 12;
@@ -1819,9 +1839,9 @@ package classes.Scenes.Combat
 			var lustDisplay:String = "";
 			var math:Number = monster.HPRatio();
 			//hpDisplay = "(<b>" + String(int(math * 1000) / 10) + "% HP</b>)";
-			hpDisplay = Math.floor(monster.HP) + " / " + monster.eMaxHP() + " (" + (int(math * 1000) / 10) + "%)";
-			lustDisplay = Math.floor(monster.lust) + " / " + monster.eMaxLust();;
-
+			hpDisplay   = Math.floor(monster.HP) + " / " + monster.maxHP() + " (" + (int(math * 1000) / 10) + "%)";
+			lustDisplay = Math.floor(monster.lust) + " / " + monster.maxLust();
+			;
 			//imageText set in beginCombat()
 			outputText(imageText);
 			
@@ -1900,118 +1920,118 @@ package classes.Scenes.Combat
 			}
 			if (monster.short == "harpy") {
 				//(Enemy slightly aroused) 
-				if (monster.lust >= 45 && monster.lust < 70) outputText("The harpy's actions are becoming more and more erratic as she runs her mad-looking eyes over your body, her chest jiggling, clearly aroused.  ");
+				if (monster.lust100 >= 45 && monster.lust100 < 70) outputText("The harpy's actions are becoming more and more erratic as she runs her mad-looking eyes over your body, her chest jiggling, clearly aroused.  ");
 				//(Enemy moderately aroused) 
-				if (monster.lust >= 70 && monster.lust < 90) outputText("She stops flapping quite so frantically and instead gently sways from side to side, showing her soft, feathery body to you, even twirling and raising her tail feathers, giving you a glimpse of her plush pussy, glistening with fluids.");
+				if (monster.lust100 >= 70 && monster.lust100 < 90) outputText("She stops flapping quite so frantically and instead gently sways from side to side, showing her soft, feathery body to you, even twirling and raising her tail feathers, giving you a glimpse of her plush pussy, glistening with fluids.");
 				//(Enemy dangerously aroused) 
-				if (monster.lust >= 90) outputText("You can see her thighs coated with clear fluids, the feathers matted and sticky as she struggles to contain her lust.");
+				if (monster.lust100 >= 90) outputText("You can see her thighs coated with clear fluids, the feathers matted and sticky as she struggles to contain her lust.");
 			}
 			else if (monster is Clara)
 			{
 				//Clara is becoming aroused
-				if (monster.lust <= 40)	 {}
-				else if (monster.lust <= 65) outputText("The anger in her motions is weakening.");
+				if (monster.lust100 <= 40)	 {}
+				else if (monster.lust100 <= 65) outputText("The anger in her motions is weakening.");
 				//Clara is somewhat aroused
-				else if (monster.lust <= 75) outputText("Clara seems to be becoming more aroused than angry now.");
+				else if (monster.lust100 <= 75) outputText("Clara seems to be becoming more aroused than angry now.");
 				//Clara is very aroused
-				else if (monster.lust <= 85) outputText("Clara is breathing heavily now, the signs of her arousal becoming quite visible now.");
+				else if (monster.lust100 <= 85) outputText("Clara is breathing heavily now, the signs of her arousal becoming quite visible now.");
 				//Clara is about to give in
 				else outputText("It looks like Clara is on the verge of having her anger overwhelmed by her lusts.");
 			}
 			//{Bonus Lust Descripts}
 			else if (monster.short == "Minerva") {
-				if (monster.lust < 40) {}
+				if (monster.lust100 < 40) {}
 				//(40)
-				else if (monster.lust < 60) outputText("Letting out a groan Minerva shakes her head, focusing on the fight at hand.  The bulge in her short is getting larger, but the siren ignores her growing hard-on and continues fighting.  ");
+				else if (monster.lust100 < 60) outputText("Letting out a groan Minerva shakes her head, focusing on the fight at hand.  The bulge in her short is getting larger, but the siren ignores her growing hard-on and continues fighting.  ");
 				//(60) 
-				else if (monster.lust < 80) outputText("Tentacles are squirming out from the crotch of her shorts as the throbbing bulge grows bigger and bigger, becoming harder and harder... for Minerva to ignore.  A damp spot has formed just below the bulge.  ");
+				else if (monster.lust100 < 80) outputText("Tentacles are squirming out from the crotch of her shorts as the throbbing bulge grows bigger and bigger, becoming harder and harder... for Minerva to ignore.  A damp spot has formed just below the bulge.  ");
 				//(80)
 				else outputText("She's holding onto her weapon for support as her face is flushed and pain-stricken.  Her tiny, short shorts are painfully holding back her quaking bulge, making the back of the fabric act like a thong as they ride up her ass and struggle against her cock.  Her cock-tentacles are lashing out in every direction.  The dampness has grown and is leaking down her leg.");
 			}
 			else if (monster.short == "Cum Witch") {
 				//{Bonus Lust Desc (40+)}
-				if (monster.lust < 40) {}
-				else if (monster.lust < 50) outputText("Her nipples are hard, and poke two visible tents into the robe draped across her mountainous melons.  ");
+				if (monster.lust100 < 40) {}
+				else if (monster.lust100 < 50) outputText("Her nipples are hard, and poke two visible tents into the robe draped across her mountainous melons.  ");
 				//{Bonus Lust Desc (50-75)}
-				else if (monster.lust < 75) outputText("Wobbling dangerously, you can see her semi-hard shaft rustling the fabric as she moves, evidence of her growing needs.  ");
+				else if (monster.lust100 < 75) outputText("Wobbling dangerously, you can see her semi-hard shaft rustling the fabric as she moves, evidence of her growing needs.  ");
 				//{75+}
-				if (monster.lust >= 75) outputText("Swelling obscenely, the Cum Witch's thick cock stands out hard and proud, its bulbous tip rustling through the folds of her fabric as she moves and leaving dark smears in its wake.  ");
+				if (monster.lust100 >= 75) outputText("Swelling obscenely, the Cum Witch's thick cock stands out hard and proud, its bulbous tip rustling through the folds of her fabric as she moves and leaving dark smears in its wake.  ");
 				//(85+}
-				if (monster.lust >= 85) outputText("Every time she takes a step, those dark patches seem to double in size.  ");
+				if (monster.lust100 >= 85) outputText("Every time she takes a step, those dark patches seem to double in size.  ");
 				//{93+}
-				if (monster.lust >= 93) outputText("There's no doubt about it, the Cum Witch is dripping with pre-cum and so close to caving in.  Hell, the lower half of her robes are slowly becoming a seed-stained mess.  ");
+				if (monster.lust100 >= 93) outputText("There's no doubt about it, the Cum Witch is dripping with pre-cum and so close to caving in.  Hell, the lower half of her robes are slowly becoming a seed-stained mess.  ");
 				//{Bonus Lust Desc (60+)}
-				if (monster.lust >= 70) outputText("She keeps licking her lips whenever she has a moment, and she seems to be breathing awfully hard.  ");
+				if (monster.lust100 >= 70) outputText("She keeps licking her lips whenever she has a moment, and she seems to be breathing awfully hard.  ");
 			}
 			else if (monster.short == "Kelt") {
 				//Kelt Lust Levels
 				//(sub 50)
-				if (monster.lust < 50) outputText("Kelt actually seems to be turned off for once in his miserable life.  His maleness is fairly flaccid and droopy.  ");
+				if (monster.lust100 < 50) outputText("Kelt actually seems to be turned off for once in his miserable life.  His maleness is fairly flaccid and droopy.  ");
 				//(sub 60)
-				else if (monster.lust < 60) outputText("Kelt's gotten a little stiff down below, but he still seems focused on taking you down.  ");
+				else if (monster.lust100 < 60) outputText("Kelt's gotten a little stiff down below, but he still seems focused on taking you down.  ");
 				//(sub 70)
-				else if (monster.lust < 70) outputText("Kelt's member has grown to its full size and even flared a little at the tip.  It bobs and sways with every movement he makes, reminding him how aroused you get him.  ");
+				else if (monster.lust100 < 70) outputText("Kelt's member has grown to its full size and even flared a little at the tip.  It bobs and sways with every movement he makes, reminding him how aroused you get him.  ");
 				//(sub 80)
-				else if (monster.lust < 80) outputText("Kelt is unabashedly aroused at this point.  His skin is flushed, his manhood is erect, and a thin bead of pre has begun to bead underneath.  ");
+				else if (monster.lust100 < 80) outputText("Kelt is unabashedly aroused at this point.  His skin is flushed, his manhood is erect, and a thin bead of pre has begun to bead underneath.  ");
 				//(sub 90)
-				else if (monster.lust < 90) outputText("Kelt seems to be having trouble focusing.  He keeps pausing and flexing his muscles, slapping his cock against his belly and moaning when it smears his pre-cum over his equine underside.  ");
+				else if (monster.lust100 < 90) outputText("Kelt seems to be having trouble focusing.  He keeps pausing and flexing his muscles, slapping his cock against his belly and moaning when it smears his pre-cum over his equine underside.  ");
 				//(sub 100) 
 				else outputText("There can be no doubt that you're having quite the effect on Kelt.  He keeps fidgeting, dripping pre-cum everywhere as he tries to keep up the facade of fighting you.  His maleness is continually twitching and bobbing, dripping messily.  He's so close to giving in...");
 			}
 			else if (monster.short == "green slime") {
-				if (monster.lust >= 45 && monster.lust < 65) outputText("A lump begins to form at the base of the figure's torso, where its crotch would be.  "); 
-				if (monster.lust >= 65 && monster.lust < 85) outputText("A distinct lump pulses at the base of the slime's torso, as if something inside the creature were trying to escape.  ");
-				if (monster.lust >= 85 && monster.lust < 93) outputText("A long, thick pillar like a small arm protrudes from the base of the slime's torso.  ");
-				if (monster.lust >= 93) outputText("A long, thick pillar like a small arm protrudes from the base of the slime's torso.  Its entire body pulses, and it is clearly beginning to lose its cohesion.  ");
+				if (monster.lust100 >= 45 && monster.lust100 < 65) outputText("A lump begins to form at the base of the figure's torso, where its crotch would be.  ");
+				if (monster.lust100 >= 65 && monster.lust100 < 85) outputText("A distinct lump pulses at the base of the slime's torso, as if something inside the creature were trying to escape.  ");
+				if (monster.lust100 >= 85 && monster.lust100 < 93) outputText("A long, thick pillar like a small arm protrudes from the base of the slime's torso.  ");
+				if (monster.lust100 >= 93) outputText("A long, thick pillar like a small arm protrudes from the base of the slime's torso.  Its entire body pulses, and it is clearly beginning to lose its cohesion.  ");
 			}
 			else if (monster.short == "Sirius, a naga hypnotist") {
-				if (monster.lust < 40) {}
-				else if (monster.lust >= 40) outputText("You can see the tip of his reptilian member poking out of its protective slit. ");
-				else if (monster.lust >= 60) outputText("His cock is now completely exposed and half-erect, yet somehow he still stays focused on your eyes and his face is inexpressive.  ");
+				if (monster.lust100 < 40) {}
+				else if (monster.lust100 >= 40) outputText("You can see the tip of his reptilian member poking out of its protective slit. ");
+				else if (monster.lust100 >= 60) outputText("His cock is now completely exposed and half-erect, yet somehow he still stays focused on your eyes and his face is inexpressive.  ");
 				else outputText("His cock is throbbing hard, you don't think it will take much longer for him to pop.   Yet his face still looks inexpressive... despite the beads of sweat forming on his brow.  ");
 
 			}
 			else if (monster.short == "kitsune") {
 				//Kitsune Lust states:
 				//Low
-				if (monster.lust > 30 && monster.lust < 50) outputText("The kitsune's face is slightly flushed.  She fans herself with her hand, watching you closely.");
+				if (monster.lust100 > 30 && monster.lust100 < 50) outputText("The kitsune's face is slightly flushed.  She fans herself with her hand, watching you closely.");
 				//Med
-				else if (monster.lust > 30 && monster.lust < 75) outputText("The kitsune's cheeks are bright pink, and you can see her rubbing her thighs together and squirming with lust.");
+				else if (monster.lust100 > 30 && monster.lust100 < 75) outputText("The kitsune's cheeks are bright pink, and you can see her rubbing her thighs together and squirming with lust.");
 				//High
-				else if (monster.lust > 30) {
+				else if (monster.lust100 > 30) {
 					//High (redhead only)
 					if (monster.hairColor == "red") outputText("The kitsune is openly aroused, unable to hide the obvious bulge in her robes as she seems to be struggling not to stroke it right here and now.");
 					else outputText("The kitsune is openly aroused, licking her lips frequently and desperately trying to hide the trail of fluids dripping down her leg.");
 				}
 			}
 			else if (monster.short == "demons") {
-				if (monster.lust > 30 && monster.lust < 60) outputText("The demons lessen somewhat in the intensity of their attack, and some even eye up your assets as they strike at you.");
-				if (monster.lust >= 60 && monster.lust < 80) outputText("The demons are obviously steering clear from damaging anything you might use to fuck and they're starting to leave their hands on you just a little longer after each blow. Some are starting to cop quick feels with their other hands and you can smell the demonic lust of a dozen bodies on the air.");
-				if (monster.lust >= 80) outputText(" The demons are less and less willing to hit you and more and more willing to just stroke their hands sensuously over you. The smell of demonic lust is thick on the air and part of the group just stands there stroking themselves openly.");
+				if (monster.lust100 > 30 && monster.lust100 < 60) outputText("The demons lessen somewhat in the intensity of their attack, and some even eye up your assets as they strike at you.");
+				if (monster.lust100 >= 60 && monster.lust100 < 80) outputText("The demons are obviously steering clear from damaging anything you might use to fuck and they're starting to leave their hands on you just a little longer after each blow. Some are starting to cop quick feels with their other hands and you can smell the demonic lust of a dozen bodies on the air.");
+				if (monster.lust100 >= 80) outputText(" The demons are less and less willing to hit you and more and more willing to just stroke their hands sensuously over you. The smell of demonic lust is thick on the air and part of the group just stands there stroking themselves openly.");
 			}
 			else {
 				if (monster.plural) {
-					if (monster.lust > 50 && monster.lust < 60) outputText(monster.capitalA + monster.short + "' skin remains flushed with the beginnings of arousal.  ");
-					if (monster.lust >= 60 && monster.lust < 70) outputText(monster.capitalA + monster.short + "' eyes constantly dart over your most sexual parts, betraying " + monster.pronoun3 + " lust.  ");
+					if (monster.lust100 > 50 && monster.lust100 < 60) outputText(monster.capitalA + monster.short + "' skin remains flushed with the beginnings of arousal.  ");
+					if (monster.lust100 >= 60 && monster.lust100 < 70) outputText(monster.capitalA + monster.short + "' eyes constantly dart over your most sexual parts, betraying " + monster.pronoun3 + " lust.  ");
 					if (monster.cocks.length > 0) {
-						if (monster.lust >= 70 && monster.lust < 85) outputText(monster.capitalA + monster.short + " are having trouble moving due to the rigid protrusion in " + monster.pronoun3 + " groins.  ");
-						if (monster.lust >= 85) outputText(monster.capitalA + monster.short + " are panting and softly whining, each movement seeming to make " + monster.pronoun3 + " bulges more pronounced.  You don't think " + monster.pronoun1 + " can hold out much longer.  ");
+						if (monster.lust100 >= 70 && monster.lust100 < 85) outputText(monster.capitalA + monster.short + " are having trouble moving due to the rigid protrusion in " + monster.pronoun3 + " groins.  ");
+						if (monster.lust100 >= 85) outputText(monster.capitalA + monster.short + " are panting and softly whining, each movement seeming to make " + monster.pronoun3 + " bulges more pronounced.  You don't think " + monster.pronoun1 + " can hold out much longer.  ");
 					}
 					if (monster.vaginas.length > 0) {
-						if (monster.lust >= 70 && monster.lust < 85) outputText(monster.capitalA + monster.short + " are obviously turned on, you can smell " + monster.pronoun3 + " arousal in the air.  ");
-						if (monster.lust >= 85) outputText(monster.capitalA + monster.short + "' " + monster.vaginaDescript() + "s are practically soaked with their lustful secretions.  ");
+						if (monster.lust100 >= 70 && monster.lust100 < 85) outputText(monster.capitalA + monster.short + " are obviously turned on, you can smell " + monster.pronoun3 + " arousal in the air.  ");
+						if (monster.lust100 >= 85) outputText(monster.capitalA + monster.short + "' " + monster.vaginaDescript() + "s are practically soaked with their lustful secretions.  ");
 					}
 				}
 				else {
-					if (monster.lust > 50 && monster.lust < 60) outputText(monster.capitalA + monster.short + "'s skin remains flushed with the beginnings of arousal.  ");
-					if (monster.lust >= 60 && monster.lust < 70) outputText(monster.capitalA + monster.short + "'s eyes constantly dart over your most sexual parts, betraying " + monster.pronoun3 + " lust.  ");
+					if (monster.lust100 > 50 && monster.lust100 < 60) outputText(monster.capitalA + monster.short + "'s skin remains flushed with the beginnings of arousal.  ");
+					if (monster.lust100 >= 60 && monster.lust100 < 70) outputText(monster.capitalA + monster.short + "'s eyes constantly dart over your most sexual parts, betraying " + monster.pronoun3 + " lust.  ");
 					if (monster.cocks.length > 0) {
-						if (monster.lust >= 70 && monster.lust < 85) outputText(monster.capitalA + monster.short + " is having trouble moving due to the rigid protrusion in " + monster.pronoun3 + " groin.  ");
-						if (monster.lust >= 85) outputText(monster.capitalA + monster.short + " is panting and softly whining, each movement seeming to make " + monster.pronoun3 + " bulge more pronounced.  You don't think " + monster.pronoun1 + " can hold out much longer.  ");
+						if (monster.lust100 >= 70 && monster.lust100 < 85) outputText(monster.capitalA + monster.short + " is having trouble moving due to the rigid protrusion in " + monster.pronoun3 + " groin.  ");
+						if (monster.lust100 >= 85) outputText(monster.capitalA + monster.short + " is panting and softly whining, each movement seeming to make " + monster.pronoun3 + " bulge more pronounced.  You don't think " + monster.pronoun1 + " can hold out much longer.  ");
 					}
 					if (monster.vaginas.length > 0) {
-						if (monster.lust >= 70 && monster.lust < 85) outputText(monster.capitalA + monster.short + " is obviously turned on, you can smell " + monster.pronoun3 + " arousal in the air.  ");
-						if (monster.lust >= 85) outputText(monster.capitalA + monster.short + "'s " + monster.vaginaDescript() + " is practically soaked with her lustful secretions.  ");
+						if (monster.lust100 >= 70 && monster.lust100 < 85) outputText(monster.capitalA + monster.short + " is obviously turned on, you can smell " + monster.pronoun3 + " arousal in the air.  ");
+						if (monster.lust100 >= 85) outputText(monster.capitalA + monster.short + "'s " + monster.vaginaDescript() + " is practically soaked with her lustful secretions.  ");
 					}
 				}
 			}
@@ -2027,7 +2047,7 @@ package classes.Scenes.Combat
 				doNext(endHpVictory);
 				return true;
 			}
-			if (monster.lust >= monster.eMaxLust()) {
+			if (monster.lust >= monster.maxLust()) {
 				doNext(endLustVictory);
 				return true;
 			}
@@ -2195,7 +2215,7 @@ package classes.Scenes.Combat
 			//ANEMONE OVERRULES NORMAL RUN
 			if (monster.short == "anemone") {
 				//Autosuccess - less than 60 lust
-				if (player.lust < 60) {
+				if (player.lust100 < 60) {
 					outputText("Marshalling your thoughts, you frown at the strange girl and turn to march up the beach.  After twenty paces inshore you turn back to look at her again.  The anemone is clearly crestfallen by your departure, pouting heavily as she sinks beneath the water's surface.");
 					inCombat = false;
 					clearStatuses(false);

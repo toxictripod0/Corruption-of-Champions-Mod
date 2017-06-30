@@ -65,7 +65,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//- If speed is > 80, increase speed:
-			if (player.spe < 80 && rand(3) === 0 && changes < changeLimit) {
+			if (player.spe100 < 80 && rand(3) === 0 && changes < changeLimit) {
 				outputText("\n\nYour muscles begin to twitch rapidly, but the feeling is not entirely unpleasant.  In fact, you feel like running.");
 				dynStats("spe",1);
 				changes++;

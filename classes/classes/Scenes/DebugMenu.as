@@ -191,6 +191,7 @@ import classes.Items.*
 			transformativeArray.push(consumables.SNAKOIL);
 			transformativeArray.push(consumables.SPHONEY);
 			transformativeArray.push(consumables.TAURICO);
+			transformativeArray.push(consumables.TOTRICE);
 			transformativeArray.push(consumables.TRAPOIL);
 			transformativeArray.push(consumables.TSCROLL);
 			transformativeArray.push(consumables.TSTOOTH);
@@ -1381,7 +1382,7 @@ import classes.Items.*
 			player.skinAdj = "tough";
 			player.skinDesc = "shield-shaped dragon scales";
 			player.furColor = player.hairColor;
-			player.underBody.type = UNDER_BODY_TYPE_DRAGON;
+			player.underBody.type = UNDER_BODY_TYPE_REPTILE;
 			player.underBody.copySkin({        // copy the main skin props to the underBody skin ...
 				desc: "ventral dragon scales"  // ... and only override the desc
 			});

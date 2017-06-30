@@ -786,7 +786,7 @@ private function scyllaPtVShare():void {
 	} else {
 		addDisabledButton(1, "Milk", "This scene requires you to be a milk addict.");
 	}
-	if (player.lib >= 85 || player.minLust() >= 20) {
+	if (player.lib100 >= 85 || player.minLust() >= 20) {
 		addButton(2, "Sex", scyllaPtVSex);
 	} else {
 		addDisabledButton(2, "Sex", "This scene requires you to have extreme libido or high minimal lust.");
@@ -955,7 +955,7 @@ private function scyllaPtVCumV():void {
 	clearOutput();
 	outputText(images.showImage("scylla-help-round-five-jizz-pt-five"));
 	//[Sensitivity down ]
-	if (player.sens > 10) dynStats("sen", -1);
+	if (player.sens100 > 10) dynStats("sen", -1);
 	outputText("Abby weakly protests the theft, but Scylla's eyes are closed, lost in the cum-filled world between the goblin's defenseless legs. Pastie flutters overhead and laughs, drunkenly slurring something about 'just desserts,' but you can't concentrate on anything right now. Sleep sounds like such a good idea that you happily pass out. When you wake, you find the girls have gone, though Scylla cleaned up the room and left you a note and several drinks. She apologizes for any pain that Abby may have caused you, but thanks you for your help in the demonstration. Your body still hurts a bit, but all in all, not a bad session. Abby's right - the minotaurs can't rape you if you use them first. Their cum may be addicting, but you're the Champion: you take what you want.\n\n");
 	doNext(camp.returnToCampUseOneHour);
 }
