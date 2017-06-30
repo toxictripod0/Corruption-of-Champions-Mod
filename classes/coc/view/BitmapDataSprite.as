@@ -13,34 +13,13 @@ import flash.geom.Matrix;
 public class BitmapDataSprite extends Sprite {
 	public function BitmapDataSprite(options:Object = null) {
 		super();
-		var n:int = 0;
-		if (options) for (var key:String in options) {
+		if (options) {
+			if ('stretch' in options) stretch = options.stretch;
+			if ('repeat' in options) repeat = options.stretch;
+			for (var key:String in options) {
 			if (options.hasOwnProperty(key)) {
 				var value:* = options[key];
-				n++;
-				switch (key) {
-					case "bitmap":
-						_bitmap = value as Bitmap;
-						break;
-					case "bitmapClass":
-						_bitmap = (new (value as Class)()) as Bitmap;
-						break;
-					case "fillColor":
-						_fillColor = UIUtils.convertColor(value);
-						break;
-					case "width":
-						_width = +value;
-						break;
-					case "height":
-						_height = +value;
-						break;
-					case "stretch":
-						_stretch = !!value;
-						break;
-					case "repeat":
-						_repeat = !!value;
-						break;
-					default:
+					if (key == "fillColor") value = UIUtils.convertColor(value);
 						if (key in this) {
 							this[key] = value;
 						} else {
@@ -49,7 +28,6 @@ public class BitmapDataSprite extends Sprite {
 				}
 			}
 		}
-		if (n) redraw();
 	}
 	private var _bitmap:Bitmap   = null;
 	private var _fillColor:uint  = 0;

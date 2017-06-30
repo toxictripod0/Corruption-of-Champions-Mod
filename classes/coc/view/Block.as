@@ -126,12 +126,31 @@ public class Block extends Sprite {
 		invalidateLayout();
 	}
 
-
+	private function get xmin():Number {
+		var xmin:Number = 0;
+		if (_container) {
+			for (var i:int = 0, n:int = numElements; i < n; i++) {
+				xmin = Math.min(xmin, getElementAt(i).x);
+			}
+		}
+		return xmin;
+	}
+	private function get ymin():Number {
+		var ymin:Number = 0;
+		if (_container) {
+			for (var i:int = 0, n:int = numElements; i < n; i++) {
+				ymin = Math.min(ymin, getElementAt(i).y);
+			}
+		}
+		return ymin;
+	}
 	override public function get width():Number {
-		return explicitWidth || super.width;
+		if (explicitWidth) return explicitWidth;
+		return super.width-xmin;
 	}
 	override public function get height():Number {
-		return explicitHeight || super.height;
+		if (explicitHeight) return explicitHeight;
+		return super.height-ymin;
 	}
 	override public function set width(value:Number):void {
 		if (width != value) {
@@ -153,8 +172,8 @@ public class Block extends Sprite {
 			graphics.endFill();
 		}
 		if (width && height) {
-			super.width = width;
-			super.height = height;
+			super.width  = width+Math.max(0,-xmin);
+			super.height = height+Math.max(0,-ymin);
 		}
 	}
 	public function get layoutConfig():Object {
@@ -260,6 +279,7 @@ public class Block extends Sprite {
 			case "none":
 				break;
 			default:
+				trace("Unknown layout config type ", type);
 				break;
 		}
 		dispatchEvent(new Event(ON_LAYOUT, true, true));

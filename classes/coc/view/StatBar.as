@@ -17,7 +17,7 @@ public class StatBar extends Block {
 	private static function factoryReset():Object {
 		return {
 			width      : 200,
-			height     : 30,
+			height     : 28,
 			minValue   : 0,
 			maxValue   : 100,
 			value      : 0,
@@ -29,9 +29,10 @@ public class StatBar extends Block {
 			hasBar     : true,
 			hasMinBar  : false,
 			barAlpha   : 0.4,
-			barHeight  : 28,
+			barHeight  : 1.0, // relative to height
 			barColor   : '#0000ff',
-			minBarColor: '#8080ff'
+			minBarColor: '#8080ff',
+			bgColor    : null
 		};
 	}
 	private static var DEFAULT_OPTIONS:Object     = factoryReset();
@@ -44,6 +45,7 @@ public class StatBar extends Block {
 
 	private var _bar:BitmapDataSprite;
 	private var _minBar:BitmapDataSprite;
+	private var _bgBar:BitmapDataSprite;
 	private var _arrowUp:BitmapDataSprite;
 	private var _arrowDown:BitmapDataSprite;
 	private var _nameLabel:TextField;
@@ -56,54 +58,50 @@ public class StatBar extends Block {
 		return this.height-2;
 	}
 
-	/**
-	 * options.width      : default 200
-	 * options.height     : default 30
-	 * options.minValue   : default 0
-	 * options.maxValue   : default 100
-	 * options.value      : default 0
-	 * options.statName   : default ""
-	 * options.showMax    : default false
-	 * options.isUp       : default false
-	 * options.isDown     : default false
-	 * options.hasGauge   : default true
-	 * options.hasBar     : default true
-	 * options.hasMinBar  : default false
-	 * options.barAlpha   : default 0.4
-	 * options.barHeight  : default 28
-	 * options.barColor   : default '#0000ff'
-	 * options.minBarColor: default '#8080ff'
-	 */
 	public function StatBar(options:Object) {
 		super();
 		options          = Utils.extend({},DEFAULT_OPTIONS, options);
-		var arrowSz:Number = options.height-2;
-		var barWidth:Number = options.width-arrowSz-2;
+		var myWidth:Number = options.width;
+		var myHeight:Number = options.height;
+		var arrowSz:Number  = myHeight - 2;
+		var barWidth:Number = myWidth - arrowSz - 2;
 		if (options.hasBar) {
+			var barX:Number = 1;
+			var barHeight:Number = myHeight*options.barHeight;
+			var barY:Number = myHeight - barHeight;
+			if (options.bgColor != null) {
+				_bgBar = addBitmapDataSprite({
+					x:barX,y:barY,
+					alpha:options.barAlpha,
+					fillColor:options.bgColor,
+					width:barWidth,
+					height:barHeight
+				})
+			}
 			_bar = addBitmapDataSprite({
-				x        : 1,
-				y        : options.height - options.barHeight,
+				x        : barX,
+				y        : barY,
 				alpha    : options.barAlpha,
 				fillColor: options.barColor,
 				width    : 0,
-				height   : options.barHeight
+				height   : barHeight
 			});
 			if (options.hasMinBar) {
 				_minBar = addBitmapDataSprite({
-					x        : _bar.x,
-					y        : y,
+					x        : barX,
+					y        : barY,
 					alpha    : options.barAlpha,
 					fillColor: options.minBarColor,
 					width    : 0,
-					height   : _bar.height
+					height   : barHeight
 				});
 			}
 			if (options.hasGauge) {
 				/*gauge=*/
 				addBitmapDataSprite({
 					x          : 0,
-					y          : options.height - 10,
-					width      : barWidth,
+					y          : myHeight - 10,
+					width      : barWidth+2,
 					height     : 10,
 					stretch    : true,
 					bitmapClass: StatsBarBottom
@@ -111,22 +109,21 @@ public class StatBar extends Block {
 			}
 		}
 		_nameLabel  = addTextField({
-			x:4,y:2,
+			x                : 6, y: 4,
 			width: barWidth,
-			height:options.height,
+			height           : myHeight - 4,
 			defaultTextFormat: {
-				font: 'Times New Roman',
-				size: 20
+				font: 'Georgia',
+				size: 15
 			}
 		});
 		_valueLabel = addTextField({
-			x:0,y:0,
+			x                : 0, y: myHeight-30,
 			width: barWidth,
-			height: options.height,
+			height           : 30,
 			defaultTextFormat: {
-				font: 'Times New Roman',
-				bold: true,
-				size: 24,
+				font : 'Georgia',
+				size : 22,
 				align: 'right'
 			}
 		});
@@ -135,7 +132,7 @@ public class StatBar extends Block {
 			width: arrowSz,
 			height: arrowSz,
 			stretch: true,
-			x: 1+(options.width-arrowSz),
+			x          : myWidth - arrowSz - 1,
 			y: 1,
 			visible: false
 		});
@@ -144,7 +141,7 @@ public class StatBar extends Block {
 			width: arrowSz,
 			height: arrowSz,
 			stretch: true,
-			x: 1+(options.width-arrowSz),
+			x          : myWidth - arrowSz - 1,
 			y: 1,
 			visible: false
 		});

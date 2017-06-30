@@ -6,6 +6,7 @@ import classes.Player;
 import classes.internals.Utils;
 
 import flash.text.TextField;
+import flash.text.TextFormat;
 
 public class StatsView extends Block {
 	[Embed(source = "../../../res/ui/sidebar1.png")]
@@ -39,9 +40,13 @@ public class StatsView extends Block {
 	private var senBar:StatBar;
 	private var corBar:StatBar;
 	private var hpBar:StatBar;
+	/* [INTERMOD: xianxia]
+	private var wrathBar:StatBar;
+	*/
 	private var lustBar:StatBar;
 	private var fatigueBar:StatBar;
 	/* [INTERMOD: xianxia]
+	private var manaBar:StatBar;
 	private var soulforceBar:StatBar;
 	*/
 	private var hungerBar:StatBar;
@@ -51,6 +56,9 @@ public class StatsView extends Block {
 	private var levelBar:StatBar;
 	private var xpBar:StatBar;
 	private var gemsBar:StatBar;
+	/* [INTERMOD: xianxia]
+	private var spiritstonesBar:StatBar;
+	*/
 
 	private var allStats:Array;
 
@@ -65,7 +73,7 @@ public class StatsView extends Block {
 				type: 'flow',
 				direction: 'column',
 				ignoreHidden: true,
-				gap: 0
+				gap: 1
 			}
 		});
 		const LABEL_FORMAT:Object = {
@@ -79,9 +87,7 @@ public class StatsView extends Block {
 		};
 		StatBar.setDefaultOptions({
 			barColor: '#600000',
-			width: innerWidth,
-			height: 28,
-			barHeight: 26
+			width: innerWidth
 		});
 		sideBarBG     = addBitmapDataSprite({
 			width: MainView.STATBAR_W,
@@ -94,7 +100,7 @@ public class StatsView extends Block {
 		coreStatsText = addTextField({
 			text: 'Core stats:',
 			defaultTextFormat: LABEL_FORMAT
-		},{before:4});
+		},{before:1});
 		addElement(strBar = new StatBar({statName: "Strength:"}));
 		addElement(touBar = new StatBar({statName: "Toughness:"}));
 		addElement(speBar = new StatBar({statName: "Speed:"}));
@@ -108,9 +114,11 @@ public class StatsView extends Block {
 		combatStatsText = addTextField({
 			text: 'Combat stats',
 			defaultTextFormat: LABEL_FORMAT
-		},{before:4});
+		},{before:1});
 		addElement(hpBar = new StatBar({
 			statName: "HP:",
+			barColor: '#00ff00',
+			bgColor : '#ff0000',
 			showMax : true
 		}));
 		addElement(lustBar = new StatBar({
@@ -119,12 +127,24 @@ public class StatsView extends Block {
 			hasMinBar  : true,
 			showMax    : true
 		}));
+		/* [INTERMOD: xianxia]
+		addElement(wrathBar = new StatBar({
+			statName: "Wrath:",
+			showMax : true
+		}));
+		*/
 		addElement(fatigueBar = new StatBar({
 			statName: "Fatigue:"
 		}));
 		/* [INTERMOD: xianxia]
+		addElement(manaBar = new StatBar({
+			statName: "Mana:",
+		//	barColor: '#0000ff',
+			showMax : true
+		}));
 		addElement(soulforceBar = new StatBar({
 			statName: "Soulforce:",
+		//	barColor: '#ffd700',
 			showMax : true
 		}));
 		*/
@@ -147,7 +167,7 @@ public class StatsView extends Block {
 		advancementText = addTextField({
 			text:'Advancement',
 			defaultTextFormat: LABEL_FORMAT
-		},{before:4});
+		},{before:1});
 		addElement(levelBar = new StatBar({
 			statName: "Level:",
 			hasBar  : false
@@ -159,10 +179,16 @@ public class StatsView extends Block {
 			statName: "Gems:",
 			hasBar: false
 		}));
+		/* [INTERMOD: xianxia]
+		addElement(spiritstonesBar = new StatBar({
+			statName: "Spirit Stones:",
+			hasBar: false
+		}));
+		*/
 		timeText = addTextField({
 			htmlText: '<u>Day#: 0</u>\nTime: 00:00',
 			defaultTextFormat: TIME_FORMAT
-		},{before:4});
+		},{before:1});
 		///////////////////////////
 		allStats = [];
 		for (var ci:int = 0, cn:int = this.numElements; ci < cn; ci++) {
@@ -222,11 +248,17 @@ public class StatsView extends Block {
 				return corBar;
 			case 'hp':
 				return hpBar;
+			/* [INTERMOD: xianxia]
+			case 'wrath':
+				return wrathBar;
+			*/
 			case 'lust':
 				return lustBar;
 			case 'fatigue':
 				return fatigueBar;
 			/* [INTERMOD: xianxia]
+			case 'mana':
+				return manaBar;
 			case 'soulforce':
 				return soulforceBar;
 			*/
@@ -238,6 +270,10 @@ public class StatsView extends Block {
 				return xpBar;
 			case 'gems':
 				return gemsBar;
+			/* [INTERMOD: xianxia]
+			case 'spiritstones':
+				return spiritstonesBar;
+			*/
 		}
 		return null;
 	}
@@ -269,30 +305,41 @@ public class StatsView extends Block {
 		/* [INTERMOD: xianxia]
 		wisBar.maxValue       = maxes.wis;
 		wisBar.value          = player.wis;
+		libBar.maxValue       = maxes.lib;
 		*/
 		libBar.value          = player.lib;
 		senBar.value          = player.sens;
 		corBar.value          = player.cor;
 		hpBar.maxValue        = player.maxHP();
 		hpBar.value           = player.HP;
+		/* [INTERMOD: xianxia]
+		wrathBar.maxValue 	  = player.maxWrath();
+		wrathBar.value    	  = player.wrath;
+		*/
 		lustBar.maxValue      = player.maxLust();
 		lustBar.minValue      = player.minLust();
 		lustBar.value         = player.lust;
 		fatigueBar.maxValue   = player.maxFatigue();
 		fatigueBar.value      = player.fatigue;
 		/* [INTERMOD: xianxia]
+		manaBar.maxValue 	  = player.maxMana();
+		manaBar.value    	  = player.mana;
 		soulforceBar.maxValue = player.maxSoulforce();
 		soulforceBar.value    = player.soulforce;
+	//	soulforceBar.valueText= (player.soulforce/player.maxSoulforce()).toFixed(2)+'%';
 		*/
 		hungerBar.maxValue    = player.maxHunger();
 		hungerBar.value       = player.hunger;
 		var inPrison:Boolean          = game.prison.inPrison;
-		esteemBar.visible     = inPrison;
-		willBar.visible       = inPrison;
-		obeyBar.visible       = inPrison;
-		levelBar.visible      = !inPrison;
-		xpBar.visible         = !inPrison;
-		gemsBar.visible       = !inPrison;
+		esteemBar.visible     		  = inPrison;
+		willBar.visible      		  = inPrison;
+		obeyBar.visible       		  = inPrison;
+		levelBar.visible      		  = !inPrison;
+		xpBar.visible         		  = !inPrison;
+		gemsBar.visible       		  = !inPrison;
+		/* [INTERMOD: xianxia]
+		spiritstonesBar.visible       = !inPrison;
+		*/
 		if (inPrison) {
 			advancementText.htmlText = "<b>Prison Stats</b>";
 			esteemBar.maxValue       = 100;
@@ -313,6 +360,9 @@ public class StatsView extends Block {
 				xpBar.valueText = 'MAX';
 			}
 			gemsBar.valueText = Utils.addComma(Math.floor(player.gems));
+			/* [INTERMOD: xianxia]
+			spiritstonesBar.valueText = game.flags[kFLAGS.SPIRIT_STONES];
+			*/
 		}
 
 		var minutesDisplay:String = "" + game.model.time.minutes;
@@ -339,24 +389,26 @@ public class StatsView extends Block {
 	public function setTheme(font:String,
 							 textColor:uint,
 							 barAlpha:Number):void {
+		var dtf:TextFormat;
 		for each(var e:StatBar in allStats) {
-			e.valueLabel.defaultTextFormat.color = textColor;
-			e.valueLabel.defaultTextFormat.font = font;
-			e.valueLabel.setTextFormat(e.valueLabel.defaultTextFormat);
-			e.nameLabel.defaultTextFormat.color = textColor;
-			e.nameLabel.setTextFormat(e.nameLabel.defaultTextFormat);
+			dtf = e.valueLabel.defaultTextFormat;
+			dtf.color = textColor;
+			dtf.font = font;
+			e.valueLabel.defaultTextFormat = dtf;
+			e.valueLabel.setTextFormat(dtf);
+			dtf = e.nameLabel.defaultTextFormat;
+			dtf.color = textColor;
+			e.nameLabel.defaultTextFormat = dtf;
+			e.nameLabel.setTextFormat(dtf);
 			if (e.bar) e.bar.alpha    = barAlpha;
-			if (e.minBar) e.minBar.alpha = (1 - (1 - barAlpha) * 2);
+			if (e.minBar) e.minBar.alpha = (1 - (1 - barAlpha) / 2); // 2 times less transparent than bar
 		}
-		nameText.defaultTextFormat.color        = textColor;
-		nameText.setTextFormat(nameText.defaultTextFormat);
-		coreStatsText.defaultTextFormat.color   = textColor;
-		coreStatsText.setTextFormat(coreStatsText.defaultTextFormat);
-		combatStatsText.defaultTextFormat.color = textColor;
-		combatStatsText.setTextFormat(combatStatsText.defaultTextFormat);
-		advancementText.defaultTextFormat.color = textColor;
-		advancementText.setTextFormat(advancementText.defaultTextFormat);
-		timeText.defaultTextFormat.color        = textColor;
+		for each(var tf:TextField in [nameText,coreStatsText,combatStatsText,advancementText,timeText]) {
+			dtf = tf.defaultTextFormat;
+			dtf.color = textColor;
+			tf.defaultTextFormat = dtf;
+			tf.setTextFormat(dtf);
+		}
 	}
 }
 }

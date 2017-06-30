@@ -12,7 +12,6 @@ package classes
 	import classes.display.SpriteDb;
 	import classes.internals.*;
 
-import coc.view.Main;
 
 
 import flash.display.BitmapData;
