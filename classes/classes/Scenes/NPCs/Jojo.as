@@ -56,6 +56,15 @@ if (lust >= maxLust()) {
 			doNext(game.playerMenu);
 		}
 		
+		
+		public static function getNameJojoOrJoy() : String {
+			if (kGAMECLASS.flags[kFLAGS.JOJO_BIMBO_STATE] >= 3) {
+				return "Joy";
+			}else{
+				return "Jojo";
+			}
+		}
+		
 		public function Jojo()
 		{
 			trace("Jojo Constructor!");
