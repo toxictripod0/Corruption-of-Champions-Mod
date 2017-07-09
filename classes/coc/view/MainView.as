@@ -12,7 +12,10 @@
  ****/
 
 package coc.view {
+import coc.view.UIUtils;
+
 import fl.controls.ComboBox;
+import fl.controls.ScrollBarDirection;
 import fl.controls.UIScrollBar;
 
 import flash.display.Sprite;
@@ -91,10 +94,18 @@ public class MainView extends Block {
 	internal static const STATBAR_Y:Number = TOPROW_Y + TOPROW_H;
 	internal static const STATBAR_H:Number = 600;
 
-	internal static const TEXTZONE_X:Number = STATBAR_W;
-	internal static const TEXTZONE_Y:Number = TOPROW_H;
-	internal static const TEXTZONE_W:Number = 770;//SCREEN_W-STATBAR_W+GAP;
-	internal static const TEXTZONE_H:Number = 600;
+	/*
+	 // I'd like to have the position calculable, but the borders are part of the bg picture so have to use magic numbers
+	 internal static const TEXTZONE_X:Number = STATBAR_RIGHT; // left = statbar right
+	 internal static const TEXTZONE_Y:Number = TOPROW_BOTTOM; // top = toprow bottom
+	 internal static const TEXTZONE_W:Number = 770; // width = const
+	 internal static const TEXTZONE_H:Number = SCREEN_H - TOPROW_H - BOTTOM_H; // height = screen height - toprow height - buttons height, so calculated later
+	 */
+	internal static const TEXTZONE_X:Number = 208; // left = const
+	internal static const TEXTZONE_Y:Number = 52; // top = const
+	internal static const TEXTZONE_W:Number = 769; // width = const
+	internal static const VSCROLLBAR_W:Number = 15;
+	internal static const TEXTZONE_H:Number = 602; // height = const
 
 	internal static const SPRITE_W:Number = 80;
 	internal static const SPRITE_H:Number = 80;
@@ -211,30 +222,49 @@ public class MainView extends Block {
 			wordWrap         : true,
 			x                : TEXTZONE_X,
 			y                : TEXTZONE_Y,
-			width            : TEXTZONE_W,
+			width            : TEXTZONE_W - VSCROLLBAR_W,
 			height           : TEXTZONE_H,
+			mouseEnabled     : true,
 			defaultTextFormat: {
 				size: 20
 			}
 		});
+		scrollBar = new UIScrollBar();
+		UIUtils.setProperties(scrollBar,{
+			name: "scrollBar",
+			direction: "vertical",
+			scrollTarget: mainText,
+			x: mainText.x + mainText.width,
+			y: mainText.y,
+			height: mainText.height,
+			width: VSCROLLBAR_W
+		});
+		addElement(scrollBar);
 		nameBox        = addTextField({
-			border : true,
-			type   : 'input',
-			visible: false,
-			width  : 160,
-			height : 25
+			border      : true,
+			background  : '#FFFFFF',
+			type        : 'input',
+			visible     : false,
+			width       : 160,
+			height      : 25,
+			defaultTextFormat: {
+				size: 16,
+				font: 'Arial'
+			}
 		});
 		eventTestInput = addTextField({
 			type             : 'input',
+			background       : '#FFFFFF',
 			border           : 'true',
 			visible          : false,
 			text             : 'Paste event text & codes here.',
 			x                : TEXTZONE_X,
 			y                : TEXTZONE_Y,
-			width            : TEXTZONE_W,
-			height           : TEXTZONE_H,
+			width            : TEXTZONE_W - VSCROLLBAR_W - GAP,
+			height           : TEXTZONE_H - GAP,
 			defaultTextFormat: {
-				size: 16
+				size: 16,
+				font: 'Arial'
 			}
 		});
 		addElement(sprite = new BitmapDataSprite({
@@ -242,12 +272,6 @@ public class MainView extends Block {
 			y      : SPRITE_Y,
 			stretch: true
 		}));
-		scrollBar = new UIScrollBar();
-//		scrollBar.name = "scrollBar";
-//		scrollBar.direction = "vertical";
-//		scrollBar.visible = true;
-//		addChild(scrollBar);
-//		scrollBar.scrollTargetName = "mainText";
 		// Init subviews.
 		this.statsView = new StatsView(this/*, this.model*/);
 		this.statsView.y = STATBAR_Y;
@@ -267,8 +291,6 @@ public class MainView extends Block {
 		this.toolTipView = new ToolTipView(this/*, this.model*/);
 		this.toolTipView.hide();
 		this.addElement(this.toolTipView);
-		// disable interaction for any remaining TFs.
-		disableMouseForMostTextFields();
 
 		// hook!
 		hookBottomButtons();
@@ -309,29 +331,6 @@ public class MainView extends Block {
 	}
 
 	// Removes the need for some code in input.as and InitializeUI.as.
-	protected function disableMouseForMostTextFields():void {
-		var ci:int, t:TextField;
-
-		for (ci = 0; ci < this.numChildren; ++ci) {
-			t = this.getChildAt(ci) as TextField;
-
-			if (!t) {
-				continue;
-			}
-
-			switch (t) {
-				case this.mainText:
-				case this.nameBox:
-				case this.eventTestInput:
-					t.mouseEnabled = true;
-					break;
-
-				default:
-					t.mouseEnabled = false;
-					break;
-			}
-		}
-	}
 
 	// This creates the bottom buttons,
 	// positions them,
