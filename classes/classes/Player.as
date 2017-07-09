@@ -3386,7 +3386,7 @@ use namespace kGAMECLASS;
 				skinTone = (choice is Array) ? choice[0] : choice;
 
 			if (doCopySkin)
-				underBody.copySkin();
+				copySkinToUnderBody();
 
 			if (choice is Array)
 				if (what == "fur")
