@@ -74,6 +74,9 @@ package classes
 				mainView.statsView.toggleHungerBar(false);
 			}
 			mainView.statsView.refreshStats(getGame());
+			mainView.charView.setCharacter(player);
+			mainView.charView.redraw();
+			mainView.charView.visible = true;
 			//Set theme!
 			setTheme();
 		}

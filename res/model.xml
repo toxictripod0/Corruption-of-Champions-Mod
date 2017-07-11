@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<model name="demo" dir="./res/char/" width="32" height="48">
+    <palette>
+        <property name="hair" src="hairColor">
+            <color name="red">#bf7540</color>
+            <color name="auburn">#732d26</color>
+            <color name="blonde">#ebd69e</color>
+            <color name="flaxen">#a68059</color>
+            <color name="brown">#674f42</color>
+            <color name="black">#373839</color>
+            <color name="gray">#75726c</color>
+            <color name="white">#aeaba3</color>
+            <color name="raven">#101728</color>
+            <color name="snowy">#dddfe4</color>
+
+            <color name="iridescent gray">#999999</color>
+            <default>#777777</default>
+        </property>
+        <property name="skin" src="skinTone">
+            <color name="pale">#f2e8e3</color>
+            <color name="light">#feebd7</color>
+            <color name="fair">#eeccaa</color>
+            <color name="olive">#eee2aa</color>
+            <color name="bronze">#dcba74</color>
+            <color name="mahogany">#8f583d</color>
+            <color name="russet">#603020</color>
+            <color name="dark">#4d2619</color>
+            <color name="ebony">#29293d</color>
+
+            <color name="albino">#f2e8e3</color>
+            <color name="leaf green">#4db34d</color>
+            <default>#ffa000</default>
+        </property>
+        <property name="iris" src="eyeColor">
+            <color name="blue">#68a9ca</color>
+            <color name="aqua">#a0c5c5</color>
+            <color name="green">#4e7e4e</color>
+            <color name="amber">#ca9168</color>
+            <color name="hazel">#ad7852</color>
+            <color name="brown">#7e624e</color>
+            <color name="dark">#564b43</color>
+            <color name="red">#b34d4d</color>
+            <color name="pink">#d8c0d8</color>
+            <color name="purple">#7f619e</color>
+            <color name="steel">#808080</color>
+            <color name="gray">#999999</color>
+            <color name="silver">#b3b3b3</color>
+            <color name="golden">#bd9442</color>
+            <color name="crystal">#e3e8e8</color>
+            <color name="ruby">#e25050</color>
+            <color name="topaz">#dada58</color>
+            <color name="malachyte">#4db34d</color>
+            <color name="emerald">#58da58</color>
+            <color name="beryll">#68ca99</color>
+            <color name="sapphire">#5c70d6</color>
+            <color name="amethyst">#b288dd</color>
+            <default>#0000ff</default>
+        </property>
+    </palette>
+    <colorkeys>
+        <key src="#FF00DC" base="hair"/>
+        <key src="#7F006E" base="hair" transform="darken(25)"/>
+        <key src="#FACE8D" base="skin"/>
+        <key src="#BC9B6D" base="skin" transform="darken(25)"/>
+        <key src="#7C6647" base="skin" transform="darken(50)"/>
+        <key src="#1E1911" base="skin" transform="darken(75)"/>
+        <!--<key src="#F9A98E" base="nipples"/>-->
+        <!--<key src="#FFFFFF" base="sclera"/>-->
+        <key src="#0026FF" base="iris"/>
+    </colorkeys>
+    <layers>
+        <if test="hairLength>0">
+            <layer file="hair1.png"/>
+        </if>
+        <layer file="eyes1.png"/>
+        <layer file="mouth1.png"/>
+        <layer file="head1.png"/>
+        <layer file="larm1.png"/>
+        <if test="breastRows.length>0">
+            <switch>
+                <case test="breastRows[0].breastRating>0">
+                    <layer file="breasts1-1.png"/>
+                </case>
+                <default>
+                    <layer file="breasts1-0.png"/>
+                </default>
+            </switch>
+        </if>
+        <layer file="body1.png"/>
+        <layer file="legs1.png"/>
+        <layer file="rarm1.png"/>
+    </layers>
+</model>
