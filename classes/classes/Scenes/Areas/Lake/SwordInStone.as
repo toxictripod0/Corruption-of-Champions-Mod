@@ -43,11 +43,15 @@ public class SwordInStone extends AbstractLakeContent implements Encounter {
 				
 				player.createStatusEffect(StatusEffects.BSwordBroken,0,0,0,0);
 			}
+			//Picture is here
+			outputText(images.showImage(item-Bsword));
 		}
 
 		private function tryToTakeSwordInStone():void 
 		{
 			clearOutput();
+			//Picture is here
+			outputText(images.showImage(item-Bsword));
 			//if corrupted...
 			if (player.cor >= 25 + player.corruptionTolerance()) 
 			{
@@ -74,8 +78,6 @@ public class SwordInStone extends AbstractLakeContent implements Encounter {
 			
 				outputText("The blade itself is three and a half feet of the purest, shining steel you have ever seen.  It truly is a beautiful blade.\n\n");
 				dynStats("lib", -(player.lib/3), "lus", -15);
-				//Picture is here
-				outputText(images.showImage(item-Bsword));
 				inventory.takeItem(weapons.B_SWORD, camp.returnToCampUseOneHour);
 				player.createStatusEffect(StatusEffects.TookBlessedSword,0,0,0,0);
 			}
