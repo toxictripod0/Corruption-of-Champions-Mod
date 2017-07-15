@@ -130,12 +130,21 @@ import classes.Scenes.API.Encounter;
 			outputText("  She pays particularly close attention ");
 			
 			//Picture is here
-			if (player.cocks[x].cockType == CockTypesEnum.HORSE) outputText(images.showImage("callu-sex-flare"));
-			else if (player.hasKnot(x)) outputText(images.showImage("callu-sex-knot"));
-			else if (player.cocks[x].cockType == CockTypesEnum.DEMON) outputText(images.showImage("callu-sex-prick"));
-			else if (player.cocks[x].cockType == CockTypesEnum.ANEMONE) outputText(images.showImage("callu-sex-tentacle"));
-			else if (player.cocks[x].cockType == CockTypesEnum.LIZARD) outputText(images.showImage("callu-sex-reptilian"));
+			if (player.cocks[x].cockType == CockTypesEnum.AVIAN) outputText(images.showImage("callu-sex-avian"));
+			else if (player.cocks[x].cockType == CockTypesEnum.CAT) outputText(images.showImage("callu-sex-cat"));
+			else if (player.cocks[x].cockType == CockTypesEnum.DEMON) outputText(images.showImage("callu-sex-demon"));
+			else if (player.cocks[x].cockType == CockTypesEnum.DOG) outputText(images.showImage("callu-sex-dog"));
+			else if (player.cocks[x].cockType == CockTypesEnum.DRAGON) outputText(images.showImage("callu-sex-dragon"));
+			else if (player.cocks[x].cockType == CockTypesEnum.ECHIDNA) outputText(images.showImage("callu-sex-echidna"));
+			else if (player.cocks[x].cockType == CockTypesEnum.FOX) outputText(images.showImage("callu-sex-fox"));
+			else if (player.cocks[x].cockType == CockTypesEnum.HORSE) outputText(images.showImage("callu-sex-horse"));
+			else if (player.cocks[x].cockType == CockTypesEnum.HUMAN) outputText(images.showImage("callu-sex-human"));
+			else if (player.cocks[x].cockType == CockTypesEnum.KANGAROO) outputText(images.showImage("callu-sex-kangaroo"));
+			else if (player.cocks[x].cockType == CockTypesEnum.LIZARD) outputText(images.showImage("callu-sex-lizard"));
+			else if (player.cocks[x].cockType == CockTypesEnum.TENTACLE) outputText(images.showImage("callu-sex-tentacle"));
+			else if (player.cocks[x].cockType == CockTypesEnum.WOLF) outputText(images.showImage("callu-sex-wolf"));
 			else outputText(images.showImage("callu-sex-fuck"));
+			
 			
 			//[equine]
 			if (player.cocks[x].cockType == CockTypesEnum.HORSE) outputText("to your flare, sucking, teasing and ");
