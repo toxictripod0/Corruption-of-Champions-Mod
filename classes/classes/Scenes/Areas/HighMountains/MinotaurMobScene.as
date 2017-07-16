@@ -810,7 +810,7 @@ private function victoryAllThePenetrationsMinotaurGangBang():void {
 	player.buttChange(60,true,true,false);
 	outputText("\n\n");
 	//Picture is here
-	outputText(images.showImage("minotaur-gangbang"));
+	outputText(images.showImage("minomob-gangbang"));
 	outputText("While beginning to rock your hips, you ask, \"<i>Would any of you boys like to help Momma with her other hole?</i>\"  A dribbling dick appears before your face as if by magic.  You lick your lips as the smell of his pre-cum slowly overpowers your conscious thought and look up at the marvelous cock's owner as you open wide.  He plunges forward, sliding along your tongue as if it's a red carpet laid out for his use.  The dick buries itself into your throat, the leaking pre obliterating your gag reflex along the way. You put your hand on his belly to indicate he should remain still, and he reluctantly agrees, for now.  Deliberately, you rock your " + player.hipDescript() + " up and down, fucking your sons' twin penises while the action works your throat up and down the dick in your mouth.");
 	if (player.hasFuckableNipples() && flags[kFLAGS.ADULT_MINOTAUR_OFFSPRINGS] >= 4) outputText("  There's still more you could be doing.");
 	outputText("\n\n");
