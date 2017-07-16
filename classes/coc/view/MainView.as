@@ -654,11 +654,17 @@ public class MainView extends Block {
 		this.scrollBar.update();
 	}
 
+	/**
+	 * @param text A HTML text to append. Should not contain unclosed tags
+	 */
 	public function appendOutputText(text:String):void {
 		this.mainText.htmlText += text;
 		this.scrollBar.update();
 	}
 
+	/**
+	 * @param text A HTML text to append. Should not contain unclosed tags
+	 */
 	public function setOutputText(text:String):void {
 		// Commenting out for now, because this is annoying to see flooding the trace.
 		// trace("MainView#setOutputText(): This is never called in the main outputText() function.  Possible bugs that were patched over by updating text manually?");
