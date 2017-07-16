@@ -911,6 +911,7 @@ private function forceMinitaurToGiveOral(choice:Number = 0):void {
 		else if (player.getClitLength() >= 1) outputText(", until the large, womanly organ is revealed.");
 		else outputText(", revealing its cute button self.");
 		outputText("\n\n");
+		
 		outputText("The girly 'monster' crawls forward, ");
 		if (player.isTaur()) outputText("disappearing under your hind-legs as he attends to his newly commanded duty.");
 		else outputText("looking up at you longingly as he leans in towards your entrance.");
