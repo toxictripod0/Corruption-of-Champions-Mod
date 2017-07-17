@@ -27,6 +27,8 @@ private function serviceLowCorruption():void
 		outputText("You try to wrap one of your hands around the erection, but end up having to use both to get a firm grip.");
 	}
 	outputText("  In spite of its appearance the thing is very soft and spongy, although a strong pulse periodically makes it surge in your hand, pushing itself into the cracks between your fingers.  Looking back at the thing's face you slowly begin to pump up and down the massive erection, which grows moist and then a little slick as some of the creature's thin green fluid seeps out onto your hands.  You feel slightly flush and start moving faster, the slime reacting positively to your ministrations.  The rest of its body seems to pulse as well, the definition in its body returning as you continue.  It even begins moving its hips in time with you, its facial features slowly becoming less and less pronounced as its erection gains more definition, clearly forming into a " + monster.cockDescriptShort(0) + ".\n\n");
+	//Picture is here
+	outputText(images.showImage("greenslime-oral"));
 	//Big peoples!
 	if (player.tallness >= 82)
 	{
@@ -75,6 +77,8 @@ private function serviceLowCorruptionHighLust():void
 		outputText("\n\n");
 	}
 	//Next PG
+	//Picture is here
+	outputText(images.showImage("greenslime-oral"));
 	//Get it hard
 	outputText("As you continue to work the creature's mass its erection gains more and more definition, slowly but surely turning into an unmistakable human penis.  ");
 	//And here begins the giant goddamn height split.  Hoo boy.
@@ -287,12 +291,12 @@ private function maleRapesOoze():void {
 		if (player.cockTotal() > 1) outputText("Shrugging, you decide to go with the closest thing available and walk towards its head.  You spend a moment deciding which of your organs to ravage the creature with, eventually settling on the largest,  ");
 		else outputText("Shrugging, you decide to go with the closest thing available and walk towards its head, pulling out your " + player.cockDescript(0) + " as you do so.  You kneel over the thing's head and stroke your penis lightly to ensure it is fully ready,  ");
 		//Balls ftw
-		if (player.balls > 1) outputText("anointing the slime's face with your " + player.sackDescript() + " as you do.  ");
+		if (player.balls > 1) outputText("anointing the slime's face with your " + player.sackDescript() + " as you do.\n");
 		//Ball-less bitches
-		else outputText("probing at the 'mouth' of the creature with your free hand.  ");
-		//Continue the setup...
+		else outputText("probing at the 'mouth' of the creature with your free hand.\n");
 		//Picture is here
-		outputText(images.showImage("greenslime-male-rape-orally"));
+		outputText(images.showImage("greenslime-rape-orally"));
+		//Continue the setup...
 		outputText("You pull back for a moment and aim your penis downward, resting the ");
 		//!! PENISTYPE
 		switch(player.cocks[0].cockType)
@@ -350,13 +354,13 @@ private function maleRapesOoze():void {
 		   	outputText("You shrug at the lack of obvious orifices and decide to go for the most common one, choosing the ");
 			if (player.cockTotal() == 2) outputText("larger");
 			else outputText("largest");
-			outputText(" of your" + player.multiCockDescriptLight() + " as you grab the slime and roughly try to turn it over.  Surprisingly it maintains its cohesion and flops onto its side, its erection flopping wetly onto the ground.  ");
+			outputText(" of your" + player.multiCockDescriptLight() + " as you grab the slime and roughly try to turn it over.  Surprisingly it maintains its cohesion and flops onto its side, its erection flopping wetly onto the ground.\n");
 		}
 		//Single dicks
-		else outputText("You shrug at the lack of obvious orifices and decide to go for the most common one, pulling out your " + player.cockDescript(0) + " as you grab the slime and roughly try to turn it over.  Surprisingly it maintains its cohesion and flops onto its side, its erection flopping wetly onto the ground.  ");
+		else outputText("You shrug at the lack of obvious orifices and decide to go for the most common one, pulling out your " + player.cockDescript(0) + " as you grab the slime and roughly try to turn it over.  Surprisingly it maintains its cohesion and flops onto its side, its erection flopping wetly onto the ground.\n");
 		//Picture is here
-		outputText(images.showImage("greenslime-male-rape-anally"));
-		outputText("  You position your member around where you think the asshole would be and push, smiling as the membrane moves aside and you penetrate into a tight, deep hole.  ");
+		outputText(images.showImage("greenslime-rape-anally"));
+		outputText("You position your member around where you think the asshole would be and push, smiling as the membrane moves aside and you penetrate into a tight, deep hole.  ");
 		if (player.cocks[0].cockLength >= 24) outputText("By the time you finally bottom out, your " + player.cockDescript(0) + " is nearly halfway through its torso.");
 		else if (player.cocks[0].cockLength >= 48) outputText("By the time you finally bottom out, your " + player.cockDescript(0) + " reaches nearly into the slime's neck.");
 		else if (player.cocks[0].cockLength >= 60) outputText("Your penis keeps going deeper and deeper, through the chest, neck, and head, before finally stretching the slime as far as it needs to go to accommodate the full length of your " + player.cockDescript(0) + ".");
@@ -406,8 +410,6 @@ private function femaleRapesOoze():void {
 		//this line designed to return helpful text if something goes wrong.it should work. i think. maybe. i have no idea, this project is my first experience with as3.
 		outputText("<<ERROR: breast size check returned invalid number -" + String(player.biggestTitSize()) + "- at green slime' player win + vagina + high lust;>>");
 	}*/
-	//Picture is here
-	outputText(images.showImage("greenslime-female-rape"));
 	outputText("Before long you cannot take the temptation anymore and lift your hind end into the air, moaning softly as you rub the tip of its cock against your " + player.vaginaDescript(0) + ".");
 	//defloration text
 	if (player.vaginas[0].virgin)
@@ -415,22 +417,24 @@ private function femaleRapesOoze():void {
 		//low corruption reveres this loss
 		if (player.cor <= 20)
 		{
-			outputText("  You hesitate for a moment as you hover over the creature, a sudden surge of nervousness comes over you.  This is a moment that only comes once.  You let your weight push the creature into you, slowly at first, then forcing yourself down as far you can go.  You gasp at the initial pain, but it quickly dissipates as the creature's fluids coat your interior with a cool, soothing fluid.  ");
+			outputText("  You hesitate for a moment as you hover over the creature, a sudden surge of nervousness comes over you.  This is a moment that only comes once.  You let your weight push the creature into you, slowly at first, then forcing yourself down as far you can go.  You gasp at the initial pain, but it quickly dissipates as the creature's fluids coat your interior with a cool, soothing fluid.\n");
 		}
 		//higher corruption tosses it aside
 		else
 		{
-			outputText("  You smile as you ram yourself onto the creature, finally removing your virginity.  You quickly start moving and give a pleased gasp as the creature's fluids coat your interior with a cool, soothing fluid.  ");
+			outputText("  You smile as you ram yourself onto the creature, finally removing your virginity.  You quickly start moving and give a pleased gasp as the creature's fluids coat your interior with a cool, soothing fluid.\n");
 		}
 	}
 	else if (player.vaginalCapacity() >= 18)
 	{
-		outputText("  You enthusiastically lower yourself onto the slime's cock, letting out a small gasp of surprise as it slides inside of you.  The creature quickly understands your intentions and reaches up with its hands, beginning to pump you furiously.  ");
+		outputText("  You enthusiastically lower yourself onto the slime's cock, letting out a small gasp of surprise as it slides inside of you.  The creature quickly understands your intentions and reaches up with its hands, beginning to pump you furiously.\n");
 	}
 	else
 	{
-		outputText("  You hesitate at the sheer size of the slime's cock and the creature, sensing your hesitation, reaches up with its strong arms and grips your ass, forcefully pushing you onto itself.  ");
+		outputText("  You hesitate at the sheer size of the slime's cock and the creature, sensing your hesitation, reaches up with its strong arms and grips your ass, forcefully pushing you onto itself.\n");
 	}
+	//Picture is here
+	outputText(images.showImage("greenslime-rape-vagoo"));
 	outputText("The thing's cock, though rigid, somehow manages to squish and expand wherever needed to conform perfectly to your insides, adapting to your " + player.vaginaDescript(0) + " with ease as you ride it.");
 	//penis arousal text
 	if (player.cockTotal() > 0)
@@ -541,12 +545,12 @@ private function oozeButtRapesYou():void
 private function oozeRapesYouOrally():void
 {
 	player.slimeFeed();
-	//Picture is here
-	outputText(images.showImage("greenslime-loss-oral"));
 	outputText("You collapse under the beating from the slime's soft but heavy fists, dazed and disoriented.  The creature surges forward, covering you and forcing you to the ground as it rests on your gut, putting just enough of its apparently enormous weight onto you to keep you pinned.  It leans forward, its massive upper body easily shadowing you, and ");
 	//Low corrupppppption blush!
 	if (player.cor < 20) outputText("you blush as ");
 	outputText("a large erection shaped like a human's dick forms at the bottom of its torso.  The creature thrusts its hips forward, pushing this new appendage against your face and making its intent very clear.\n");
+	//Picture is here
+	outputText(images.showImage("greenslime-oral"));
 	//slutty
 	if (player.cor >= 70)
 	{
@@ -611,13 +615,13 @@ private function oozeRapesYouVaginally():void
 		outputText("You begin to feel a tingle in your nethers as your " + player.vaginaDescript(0) + " grows wet.  Without warning the creature pulls your legs apart and draws its member back along your crotch, pausing a moment to rest the tip on your sex.  You watch it with equal parts excitement and anxiety and steel yourself as it holds there for a moment.");
 		//!!NOTE
 		//i was considering, as a twist from the usual pattern with events in CoC and in going with the idea that the lake is a sort of low-corruption zone, that the slime would actually just let virgins be - or possibly divert to the oral/anal events.  regardless, heres the text.
-		if (player.vaginas[0].virgin) outputText("The thing slowly presses against you to penetrate and you grab at the grass beneath you, absolutely certain that it won't fit.  You bite your bottom lip as the cock pierces your virginity, arcing your back as a sharp pang of pain runs through you.  You let out a stuttering gasp as it penetrates deeper into your body, filling the contours of your interior perfectly.  As it does it coats your inside with a tingling, soothing fluid that quickly turns whatever pain you may have felt into a wonderful pleasure.  When the creature finally bottoms out inside you, what remains of its length seems to slide back into the creature's body.  ");
+		if (player.vaginas[0].virgin) outputText("The thing slowly presses against you to penetrate and you grab at the grass beneath you, absolutely certain that it won't fit.  You bite your bottom lip as the cock pierces your virginity, arcing your back as a sharp pang of pain runs through you.  You let out a stuttering gasp as it penetrates deeper into your body, filling the contours of your interior perfectly.  As it does it coats your inside with a tingling, soothing fluid that quickly turns whatever pain you may have felt into a wonderful pleasure.  When the creature finally bottoms out inside you, what remains of its length seems to slide back into the creature's body.\n");
 		//Middle coochie
-		else if (player.vaginalCapacity() < 18) outputText("The thing slowly presses against you to penetrate and you grab at the grass beneath you, almost entirely certain that it won't fit.  You bite your bottom lip to hold in a moan as the cock slides into your " + player.vaginaDescript(0) + ", its girth squeezing down to comfortably slide into you.  You let out a pleasant sigh as it penetrates deeper into your body, filling the contours of your interior perfectly until it finally bottoms out.  What remains of its length seems to slide back into the creature's body as it pulls your hips against its trunk.  ");
+		else if (player.vaginalCapacity() < 18) outputText("The thing slowly presses against you to penetrate and you grab at the grass beneath you, almost entirely certain that it won't fit.  You bite your bottom lip to hold in a moan as the cock slides into your " + player.vaginaDescript(0) + ", its girth squeezing down to comfortably slide into you.  You let out a pleasant sigh as it penetrates deeper into your body, filling the contours of your interior perfectly until it finally bottoms out.  What remains of its length seems to slide back into the creature's body as it pulls your hips against its trunk.\n");
 		//Ginormo coochie
-		else if (player.vaginalCapacity() <= 30) outputText("The thing slowly presses against you to penetrate and you grab at the grass beneath you.  A soft moan escapes your lips as the cock slides into your " + player.vaginaDescript(0) + ", its girth changing slightly to fit you almost perfectly, stretching you just the right amount.  Your moan grows louder as it penetrates deeper into your body, filling the contours of your interior perfectly until your hips finally touch its trunk.  There's a short pause and you gasp as the slime's member then grows inside you, lengthening to fill your " + player.vaginaDescript(0) + " perfectly.  ");
+		else if (player.vaginalCapacity() <= 30) outputText("The thing slowly presses against you to penetrate and you grab at the grass beneath you.  A soft moan escapes your lips as the cock slides into your " + player.vaginaDescript(0) + ", its girth changing slightly to fit you almost perfectly, stretching you just the right amount.  Your moan grows louder as it penetrates deeper into your body, filling the contours of your interior perfectly until your hips finally touch its trunk.  There's a short pause and you gasp as the slime's member then grows inside you, lengthening to fill your " + player.vaginaDescript(0) + " perfectly.\n");
 		//MEGA coochie
-		else outputText("The thing slowly presses against you to penetrate and you grab at the grass beneath you.  A soft moan escapes your lips as the cock slides into your " + player.vaginaDescript(0) + ", its girth changing slightly to fit you almost perfectly, stretching you just the right amount.  Your moan grows louder as it penetrates deeper into your body, filling the contours of your interior perfectly until your hips finally touch its trunk.  There's a short pause and you gasp as the slime's member then grows inside you, lengthening until it nearly fills your " + player.vaginaDescript(0) + ".  ");
+		else outputText("The thing slowly presses against you to penetrate and you grab at the grass beneath you.  A soft moan escapes your lips as the cock slides into your " + player.vaginaDescript(0) + ", its girth changing slightly to fit you almost perfectly, stretching you just the right amount.  Your moan grows louder as it penetrates deeper into your body, filling the contours of your interior perfectly until your hips finally touch its trunk.  There's a short pause and you gasp as the slime's member then grows inside you, lengthening until it nearly fills your " + player.vaginaDescript(0) + ".\n");
 		player.cuntChange(monster.cockArea(0),true,false,true);
 		//Picture is here
 		outputText(images.showImage("greenslime-loss-vag"));
@@ -658,11 +662,11 @@ private function oozeRapesYouVaginally():void
 		{
 			//!!NOTE
 			//same as before with the virginity
-			outputText("The thing slowly presses against you to penetrate and you grab at the grass beneath you, certain that it won't fit, but excited to finally have sex for the first time.  You bite your bottom lip as the cock pierces your virginity, arcing your back as a sharp pang of pain runs through you.  You let out a stuttering gasp as it penetrates deeper into your body, filling the contours of your interior perfectly.  As it does it coats your inside with a tingling, soothing fluid that quickly turns whatever pain you may have felt into a wonderful pleasure.  When the creature finally bottoms out inside you, what remains of its length seems to slide back into the creature's body.  ");
+			outputText("The thing slowly presses against you to penetrate and you grab at the grass beneath you, certain that it won't fit, but excited to finally have sex for the first time.  You bite your bottom lip as the cock pierces your virginity, arcing your back as a sharp pang of pain runs through you.  You let out a stuttering gasp as it penetrates deeper into your body, filling the contours of your interior perfectly.  As it does it coats your inside with a tingling, soothing fluid that quickly turns whatever pain you may have felt into a wonderful pleasure.  When the creature finally bottoms out inside you, what remains of its length seems to slide back into the creature's body.\n");
 			player.cuntChange(15, true);
 		}
 		//TIGHT
-		else if (player.vaginalCapacity() < 18) outputText("It finally begins to penetrate you and you grab at the grass beneath you, excited and anxious for it to try and squeeze itself into you.  You bite your bottom lip hold in a moan loudly as the cock slides into your " + player.vaginaDescript(0) + ", its girth squeezing down to comfortably slide into you.  You let out a pleasant sigh as it penetrates deeper into your body, filling the contours of your interior perfectly until it finally bottoms out.  What remains of its length seems to slide back into the creatures body as it pulls your hips against it's trunk.  ");
+		else if (player.vaginalCapacity() < 18) outputText("It finally begins to penetrate you and you grab at the grass beneath you, excited and anxious for it to try and squeeze itself into you.  You bite your bottom lip hold in a moan loudly as the cock slides into your " + player.vaginaDescript(0) + ", its girth squeezing down to comfortably slide into you.  You let out a pleasant sigh as it penetrates deeper into your body, filling the contours of your interior perfectly until it finally bottoms out.  What remains of its length seems to slide back into the creatures body as it pulls your hips against it's trunk.\n");
 		//Loose
 		else
 		{
@@ -711,6 +715,8 @@ private function oozeRapesYouVaginally():void
 
 internal function rapeOozeWithMilk():void {
 	clearOutput();
+	//Picture is here
+	outputText(images.showImage("greenslime-rape-oral"));
 	outputText("You look over the ooze, wondering what to do about your need to nurse now that it has lost cohesion. After a while of puzzling things out, you decide to wing it, " + player.clothedOrNaked("removing the top of your " + player.armorName + " and ") + "pressing the mess of a monster to your " + player.breastDescript(0) + " and giving it a squeeze to get the milk to it. The slime responds almost immediately, applying pressure from the base of your " + player.breastDescript(0) + " to the tip of your " + player.nippleDescript(0) + ", earning it a shot of milk to your immense satisfaction. As it tends to your " + player.nippleDescript(0) + ", it slowly works its way down your body, almost lovingly ");
 
 	// [If male- 
