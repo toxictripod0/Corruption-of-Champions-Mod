@@ -157,10 +157,10 @@ public class MainView extends Block {
 		super();
 		addElement(blackBackground = new BitmapDataSprite({
 			bitmapClass: ButtonBackground2,
-			x          : -SCREEN_W / 2,
-			width      : SCREEN_W * 2,
-			height     : SCREEN_H * 2,
-			y          : -SCREEN_H / 2,
+			x          : -SCREEN_W,
+			width      : SCREEN_W,
+			height     : SCREEN_H,
+			y          : -SCREEN_H,
 			fillColor  : '#000000'
 		}), {});
 		addElement(background = new BitmapDataSprite({
