@@ -716,7 +716,7 @@ private function oozeRapesYouVaginally():void
 internal function rapeOozeWithMilk():void {
 	clearOutput();
 	//Picture is here
-	outputText(images.showImage("greenslime-rape-oral"));
+	outputText(images.showImage("greenslime-rape-orally"));
 	outputText("You look over the ooze, wondering what to do about your need to nurse now that it has lost cohesion. After a while of puzzling things out, you decide to wing it, " + player.clothedOrNaked("removing the top of your " + player.armorName + " and ") + "pressing the mess of a monster to your " + player.breastDescript(0) + " and giving it a squeeze to get the milk to it. The slime responds almost immediately, applying pressure from the base of your " + player.breastDescript(0) + " to the tip of your " + player.nippleDescript(0) + ", earning it a shot of milk to your immense satisfaction. As it tends to your " + player.nippleDescript(0) + ", it slowly works its way down your body, almost lovingly ");
 
 	// [If male- 
