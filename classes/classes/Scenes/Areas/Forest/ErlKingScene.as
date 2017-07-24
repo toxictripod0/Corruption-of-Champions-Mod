@@ -357,8 +357,6 @@ public class ErlKingScene extends BaseContent implements Encounter
 			// If your score is below 100, Gangbang by his Hounds (canine anthros).  
 			// If the PC is a kitsune, bunny, or harpy, disregard Wild Points because the Erlking will ALWAYS opt to do the PC personally.  
 			// The Erlking leaves the PC a nicely-wrapped gift of foxberries or canine peppers,  The Hunt reverts to 0 points.
-			//Picture is here
-			outputText(images.showImage("wildhunt-hounds"));
 			outputText("You run through the woods, heart pounding so hard you feel it might leap out of your throat.  Despite your best efforts, though, the fog still closes in.  With it comes the sound of the hounds, running alongside you, hidden in the thick haze. \n\n");
 
 			outputText("With the Hounds on your right, you juke left, nearly running into a tree, but stumble past it, only to hear the Hounds again on your left.  You turn right, still running, unable to shake the feeling that you’re being driven, but too panicked to figure a way out. \n\n");
@@ -445,9 +443,10 @@ public class ErlKingScene extends BaseContent implements Encounter
 
 		protected function repeatWildHuntAWinnerIsYou():void
 		{
-			outputText("Spirited clapping fills the woods.  The Hounds fall silent, sitting obediently on their haunches as the Erlking walks into the clearing, dismounting and looking up at you.\n\n");
 			//Picture is here
-			outputText(images.showImage("wildhunt-huntsman"));
+			outputText(images.showImage("wildhunt-hounds"));
+			outputText("Spirited clapping fills the woods.  The Hounds fall silent, sitting obediently on their haunches as the Erlking walks into the clearing, dismounting and looking up at you.\n\n");
+			
 			outputText("“<i>A spirited chase,</i>” he says, his black-gloved hands still chipping a sharp staccato through the cold air.  “<i>I have not had such fun in ages.</i>” The clearing is awash with a dim glow - it seems the Erlking’s golden antlers are lit with their own inner fire.\n\n");
 
 			outputText("“<i>And so, my hind, my prey, you have a choice,</i>” he says, his refined tones ringing through the air.  Through the net you can see the fog receding from the forest floor.  You take a few experimental breaths, and feel your head begin to clear.  \n\n");
@@ -649,10 +648,10 @@ public class ErlKingScene extends BaseContent implements Encounter
 					
 					player.cuntChange(12 * 3, true, true, false);
 					outputText("\n\n");
-
-					outputText("You gasp, shuddering in delight as he begins to push in and out of you.  His hands shift, holding you under the arms, fucking you against the tree.  The rough bark scratches your back as he thrusts deep inside you.  You feel the triple rings of his prepuce rubbing against your inner walls.\n\n");
 					//Picture is here
 					outputText(images.showImage("wildhunt-prey-female"));
+					outputText("You gasp, shuddering in delight as he begins to push in and out of you.  His hands shift, holding you under the arms, fucking you against the tree.  The rough bark scratches your back as he thrusts deep inside you.  You feel the triple rings of his prepuce rubbing against your inner walls.\n\n");
+					
 					outputText("His speed builds, and his strong arms lift you up, sliding you up and down his shaft, letting your own weight fuck you against his dick, over and over.  You moan, body quaking as you cum, his shaft grinding deep against your womb.  After several minutes of steady rhythm, he grunts, pushing you down, and a moment later, he climaxes inside you, pumping you full of hot, thick cum.  You shudder as he floods you with jet after jet of his thick seed.\n\n");
 
 					outputText("You wrap your arms around him, clinging to him as he shifts his grip, bearing you up as you quake with aftershocks of pleasure.  One arm holds you up, close to his muscular chest, his other gloved hand strokes your [hair], as the fog rolls in.\n\n");
@@ -672,10 +671,10 @@ public class ErlKingScene extends BaseContent implements Encounter
 					
 					player.buttChange(12 * 3, true, true, false);
 					outputText("\n\n");
-
-					outputText("You gasp, shuddering in delight as he begins to push in and out of you.  His hands shift, one at the small of your back, steadying you, fucking you against the tree.  The other squeezes tight around your dick, jacking you off, gloved hand stroking you roughly in time to his thrusts.  The coarse bark of the tree scratches at your back as you feel the triple rings of his prepuce rubbing against the inner walls of your [asshole].  \n\n");
 					//Picture is here
 					outputText(images.showImage("wildhunt-prey-male"));
+					outputText("You gasp, shuddering in delight as he begins to push in and out of you.  His hands shift, one at the small of your back, steadying you, fucking you against the tree.  The other squeezes tight around your dick, jacking you off, gloved hand stroking you roughly in time to his thrusts.  The coarse bark of the tree scratches at your back as you feel the triple rings of his prepuce rubbing against the inner walls of your [asshole].  \n\n");
+					
 					outputText("You moan, body quaking as you cum, spurting cum over his chest and your own, his shaft grinding deep inside you.  He pushes you down, and a moment later, he climaxes inside you pumping you full of hot, thick cum.  He floods your bowels with jet after jet of his thick seed, your belly swelling slightly outward from the volume of cum.\n\n");
 
 					outputText("You wrap your arms around him, clinging to him as he shifts his grip, holding you up as you quake with aftershocks of pleasure.  One arm holds you up, close to his now-sticky, muscular chest, his other gloved hand still slowly stroking your cock, as the fog rolls in.\n\n");
@@ -812,15 +811,24 @@ public class ErlKingScene extends BaseContent implements Encounter
 
 				outputText("“<i>No, my Lord,</i>” She croons, rising up to her knees, lapping at your dick.  Once she’s finished cleaning, she helps you with your [armor].  You nod a goodbye to her and begin walking, smirking in amusement at the trickle of cum running down her taut cheeks and down her legs as she waves farewell.\n\n");
 			}
-
-			player.createKeyItem("Golden Antlers", 0, 0, 0, 0);
 			player.orgasm('Generic');
 			dynStats("lust=", 0);
+			menu();
+			doNext(takeGoldenAntlers);
+		}
+		
+		
+		protected function takeGoldenAntlers():void
+		{
+			clearOutput();
+			//Picture is here
+			outputText(images.showImage("item-gAntlers"));
+			player.createKeyItem("Golden Antlers", 0, 0, 0, 0);
 			if (flags[kFLAGS.ERLKING_CANE_OBTAINED] == 0) {
 				inventory.takeItem(weapons.HNTCANE, camp.returnToCampUseOneHour);
 				flags[kFLAGS.ERLKING_CANE_OBTAINED] = 1;
-				return;
 			}
+			menu();
 			doNext(camp.returnToCampUseOneHour);
 		}
 
