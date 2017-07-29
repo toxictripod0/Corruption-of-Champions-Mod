@@ -1579,6 +1579,8 @@ use namespace kGAMECLASS;
 				dragonCounter++;
 			if (eyeType == EYES_DRAGON)
 				dragonCounter++;
+			if (hasDragonNeck())
+				dragonCounter++;
 			return dragonCounter;
 		}
 

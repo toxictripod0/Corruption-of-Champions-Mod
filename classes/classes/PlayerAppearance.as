@@ -527,6 +527,30 @@ package classes
 				else
 					outputText("  It has developed its own cute little spiral. You estimate it to be about "+numInchesOrCentimetres(12)+" long, "+numInchesOrCentimetres(2)+" thick and very sturdy. A very useful natural weapon.");
 			}
+			// neckLen
+			if (player.neck.type == NECK_TYPE_DRACONIC)
+			{
+				// length description
+				if (player.hasDragonNeck())
+					outputText("  Your neck starts at the backside of your head and is about two and a half feet long, roughly six inches longer, than your arm length.");
+				else {
+					var lengthText:String = "";
+					if (player.neck.len < 8) lengthText = "a few inches longer";
+					else if (player.neck.len < 13) lengthText = "somewhat longer";
+					else if (player.neck.len < 18) lengthText = "very long";
+					else lengthText = "extremely long";
+					outputText("  Where normal humans have a short neck, yours is " + lengthText + ", measuring " + player.neck.len + " inches.");
+				}
+
+				// bending your neck
+				if (player.hasDragonNeck())
+					outputText("  You manage to bend it in every direction you want and can easily take a look at your back.");
+				else {
+					if (player.neck.len < 10) outputText("  You can bend it a bit more than others with some effort.");
+					else if (player.neck.len < 16) outputText("  You can bend it more than others with low effort.");
+					else outputText("  You are able to bend it in almost every direction and with some effort you even manage to take a glimpse at your back.");
+				}
+			}
 			//BODY PG HERE
 			outputText("\n\nYou have a humanoid shape with the usual torso, arms, hands, and fingers.");
 			//WINGS!
