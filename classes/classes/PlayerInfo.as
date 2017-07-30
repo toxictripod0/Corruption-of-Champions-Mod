@@ -357,7 +357,7 @@ import flash.events.Event;
 				raceScores += "<b>Raccoon Score:</b> " + player.raccoonScore() + "\n";
 			}
 			if (player.bunnyScore() > 0) {
-				raceScores += "<b>Naga Score:</b> " + player.bunnyScore() + "\n";
+				raceScores += "<b>Bunny Score:</b> " + player.bunnyScore() + "\n";
 			}
 			if (player.kangaScore() > 0) {
 				raceScores += "<b>Kangaroo Score:</b> " + player.kangaScore() + "\n";
