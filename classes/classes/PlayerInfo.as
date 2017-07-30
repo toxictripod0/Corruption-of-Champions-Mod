@@ -631,7 +631,7 @@ import flash.events.Event;
 			menu();
 			addButton(0, "Next", playerMenu);
 			if (player.statPoints > 0) {
-				outputText("\n\n<b>You have " + num2Text(player.statPoints) + " attribute point" + (player.statPoints == 1 ? "" : "s") + " to distribute.");
+				outputText("\n\n<b>You have " + num2Text(player.statPoints) + " attribute point" + (player.statPoints == 1 ? "" : "s") + " to distribute.</b>");
 				addButton(1, "Stat Up", attributeMenu);
 			}
 		}
