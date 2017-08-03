@@ -148,6 +148,38 @@ package classes.Items
 			return false;
 		}
 
+		public function restoreNeck(tfSource:String):Boolean
+		{
+			trace('called restoreNeck("' + tfSource + '")');
+			var tsParts:Array = tfSource.split("-");
+			if (tsParts.length > 1 && tsParts[0] != "reptilum") // probably later dracolisks would get an elongated neck, too (shorter than the dragon version)
+				tfSource = tsParts[0];
+
+			if (changes >= changeLimit) return false;
+
+			switch (player.neck.type) {
+				case NECK_TYPE_DRACONIC:
+					if (tfSource == "EmberTFs" || player.dragonScore() >= 9)
+						return false;
+
+					outputText("\n\n<b>Your draconic neck[if (neckPos) and its position on your head revert|reverts] to its normal"
+					          +" [if (neckPos)position and] length.</b> ");
+					break;
+
+				case NECK_TYPE_COCKATRICE:
+					if (tfSource == "TonOTrice" || player.cockatriceScore() >= 7)
+						return false;
+
+					outputText("\n\nYou neck starts to tingle and the feathers that decorate your neck begin fall out until"
+					          +" <b>you're left with a normal neck!</b>");
+					break;
+			}
+
+			changes++;
+			player.neck.restore();
+			return true;
+		}
+
 		public function removeFeatheryHair():Boolean
 		{
 			if (changes < changeLimit && player.hairType == HAIR_FEATHER && rand(4) == 0) {

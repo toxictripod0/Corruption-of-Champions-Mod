@@ -550,6 +550,8 @@ package classes
 					else if (player.neck.len < 16) outputText("  You can bend it more than others with low effort.");
 					else outputText("  You are able to bend it in almost every direction and with some effort you even manage to take a glimpse at your back.");
 				}
+			} else if (player.neck.type == NECK_TYPE_COCKATRICE) {
+				outputText("  Around your neck is a ruff of [neckColor] feathers which tends to puff out with your emotions.");
 			}
 			//BODY PG HERE
 			outputText("\n\nYou have a humanoid shape with the usual torso, arms, hands, and fingers.");
@@ -598,7 +600,7 @@ package classes
 			// <mod name="BodyParts.UnderBody" author="Stadler76">
 			if (player.hasCockatriceSkin()) {
 				outputText("  You’ve got a thick layer of " + player.furColor + " feathers covering your body, while [skinFurScales] coat you from"
-				          +" chest to groin. Around your neck is a ruff of [underBody.skinFurScales] which tends to puff out with your emotions.");
+				          +" chest to groin.");
 			} else if (player.hasDifferentUnderBody()) {
 				outputText("  While most of your body is covered by [skinFurScales] you have [underBody.skinFurScales] covering your belly.");
 			}

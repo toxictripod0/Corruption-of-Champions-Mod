@@ -207,10 +207,14 @@ package classes.Items.Consumables
 				}
 				changes++;
 			}
+			//Restore non dragon neck
+			if (player.neck.type != NECK_TYPE_DRACONIC && changes < changeLimit && rand(4) == 0)
+				mutations.restoreNeck(tfSource);
 			//Gain Dragon Neck
 			//public function hasDraconicBackSide():Boolean { return hasDragonWings(true) && skinType == SKIN_TYPE_DRACONIC && hasReptileTail() && hasReptileArms() && hasReptileLegs(); }
 			//If you are considered a dragon-morph and if your backside is dragon-ish enough, your neck is eager to allow you to take a look at it, right? ;-)
-			if (!drakesHeart && !player.hasDragonNeck() && player.dragonScore() >= 6 && player.hasDraconicBackSide() && changes < changeLimit) {
+			if (!drakesHeart && !player.hasDragonNeck() && player.dragonScore() >= 6 && player.hasDraconicBackSide() && player.faceType == FACE_DRAGON && changes < changeLimit) {
+				mutations.restoreNeck(tfSource);
 				var nlChange:int = 4 + rand(5);
 				if (!player.hasNormalNeck()) { // Note: hasNormalNeck checks the length, not the type!
 					player.neck.modify(nlChange);
