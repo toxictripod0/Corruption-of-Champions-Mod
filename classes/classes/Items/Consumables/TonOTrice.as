@@ -503,7 +503,7 @@ package classes.Items.Consumables
 				mutations.restoreNeck(tfSource);
 			//Body TF
 			if (!player.hasCockatriceSkin() && player.faceType == FACE_COCKATRICE && changes < changeLimit && rand(3) == 0) {
-				mutations.restoreNeck(tfSource);
+				mutations.restoreNeck(tfSource + "-forceRestoreNeck");
 				var colorChoice:Array = mutations.newCockatriceColors();
 				outputText("\n\nYour body feels hot and your skin feels tight, making you fall to your knees in a bout of lightheadedness."
 				          +" You kneel there panting as the pressure increases, sweat dripping from your brow. You don’t know how long you can take"

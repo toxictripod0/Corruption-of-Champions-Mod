@@ -155,11 +155,11 @@ package classes.Items
 			if (tsParts.length > 1 && tsParts[0] != "reptilum") // probably later dracolisks would get an elongated neck, too (shorter than the dragon version)
 				tfSource = tsParts[0];
 
-			if (changes >= changeLimit) return false;
+			var forceRestore:Boolean = tsParts.indexOf("forceRestoreNeck") != -1;
 
 			switch (player.neck.type) {
 				case NECK_TYPE_DRACONIC:
-					if (tfSource == "EmberTFs" || player.dragonScore() >= 9)
+					if (tfSource == "EmberTFs" || (!forceRestore && player.dragonScore() >= 9))
 						return false;
 
 					outputText("\n\n<b>Your draconic neck[if (neckPos) and its position on your head revert|reverts] to its normal"
@@ -167,15 +167,15 @@ package classes.Items
 					break;
 
 				case NECK_TYPE_COCKATRICE:
-					if (tfSource == "TonOTrice" || player.cockatriceScore() >= 7)
+					if (tfSource == "TonOTrice" || (!forceRestore && player.cockatriceScore() >= 7))
 						return false;
 
-					outputText("\n\nYou neck starts to tingle and the feathers that decorate your neck begin fall out until"
+					outputText("\n\nYou neck starts to tingle and the feathers that decorate your neck begin to fall out until"
 					          +" <b>you're left with a normal neck!</b>");
 					break;
 			}
 
-			changes++;
+			if (!forceRestore) changes++;
 			player.neck.restore();
 			return true;
 		}
