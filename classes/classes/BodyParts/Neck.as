@@ -68,5 +68,15 @@ package classes.BodyParts
 		{
 			return type == NECK_TYPE_COCKATRICE;
 		}
+
+		public function hasDyeColor(_color:String):Boolean
+		{
+			return color == _color;
+		}
+
+		public function applyDye(_color:String):void
+		{
+			color = _color;
+		}
 	}
 }

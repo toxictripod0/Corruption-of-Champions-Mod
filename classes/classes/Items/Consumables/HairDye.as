@@ -74,7 +74,7 @@ package classes.Items.Consumables
 
 			if (game.player.neck.canDye()) {
 				outputText("\n\nYou have a [neckColor] neck.");
-				if (game.player.neck.color != _color) game.addButton(5, "Neck", dyeNeck);
+				if (!game.player.neck.hasDyeColor(_color)) game.addButton(5, "Neck", dyeNeck);
 				else game.addButtonDisabled(5, "Neck", "Your already have a " + _color + " neck!");
 			} else {
 				outputText("\n\nYour neck can't be dyed.");
@@ -153,7 +153,7 @@ package classes.Items.Consumables
 		{
 			clearOutput();
 			outputText("You rub the dye onto your [neck], then use a bucket of cool lakewater to rinse clean a few minutes later.  ");
-			game.player.neck.color = _color;
+			game.player.neck.applyDye(_color);
 			outputText("You now have a [neckColor] neck.");
 			finalize();
 		}
