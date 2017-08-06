@@ -5,7 +5,7 @@ package classes.BodyParts
 	 * @since December 19, 2016
 	 * @author Stadler76
 	 */
-	public class Neck 
+	public class Neck extends BaseBodyPart
 	{
 		include "../../../includes/appearanceDefs.as";
 
@@ -64,17 +64,17 @@ package classes.BodyParts
 			return len >= _nlMax[type];
 		}
 
-		public function canDye():Boolean
+		override public function canDye():Boolean
 		{
 			return type == NECK_TYPE_COCKATRICE;
 		}
 
-		public function hasDyeColor(_color:String):Boolean
+		override public function hasDyeColor(_color:String):Boolean
 		{
 			return color == _color;
 		}
 
-		public function applyDye(_color:String):void
+		override public function applyDye(_color:String):void
 		{
 			color = _color;
 		}

@@ -108,6 +108,7 @@
 				"boy"						: function(thisPtr:*):* { return kGAMECLASS.player.mf("boy", "girl"); },
 				"guy"						: function(thisPtr:*):* { return kGAMECLASS.player.mf("guy", "girl"); },
 				"wings"						: function(thisPtr:*):* { return kGAMECLASS.player.wingsDescript(); },
+				"wingcolor"					: function(thisPtr:*):* { return kGAMECLASS.player.wings.color; },
 				"tail"						: function(thisPtr:*):* { return kGAMECLASS.player.tailDescript(); },
 				"onetail"					: function(thisPtr:*):* { return kGAMECLASS.player.oneTailDescript(); },
 
