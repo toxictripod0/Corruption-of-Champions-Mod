@@ -173,6 +173,10 @@ package classes.Items
 					outputText("\n\nYou neck starts to tingle and the feathers that decorate your neck begin to fall out until"
 					          +" <b>you're left with a normal neck!</b>");
 					break;
+
+				default:
+					player.neck.restore(); // Restore leftovers. Failsafe!
+					return false;
 			}
 
 			if (!forceRestore) changes++;

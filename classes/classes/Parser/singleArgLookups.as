@@ -72,6 +72,7 @@
 				"multicock"					: function(thisPtr:*):* { return kGAMECLASS.player.multiCockDescriptLight(); },
 				"multicockdescriptlight"	: function(thisPtr:*):* { return kGAMECLASS.player.multiCockDescriptLight(); },
 				"name"						: function(thisPtr:*):* { return kGAMECLASS.player.short;},
+				"neck"						: function(thisPtr:*):* { return kGAMECLASS.player.neckDescript(); },
 				"neckcolor"					: function(thisPtr:*):* { return kGAMECLASS.player.neck.color;},
 				"nipple"					: function(thisPtr:*):* { return kGAMECLASS.player.nippleDescript(0);},
 				"nipples"					: function(thisPtr:*):* { return kGAMECLASS.player.nippleDescript(0) + "s";},
