@@ -610,7 +610,7 @@ use namespace kGAMECLASS;
 			return returnDamage;
 		}
 
-		public function takeLustDamage(lustDmg:Number, display:Boolean = true, applyRes:Boolean = false):Number{
+		public function takeLustDamage(lustDmg:Number, display:Boolean = true, applyRes:Boolean = true):Number{
 			//Round
 			lustDmg = Math.round(lustDmg);
 			var lust:int = game.player.lust;
