@@ -242,6 +242,12 @@ public static const UNDER_BODY_TYPE_NAGA:int                                    
 public static const UNDER_BODY_TYPE_WOOL:int                                        =   5; // Deprecated. Changed to 3 (UNDER_BODY_TYPE_FURRY) upon loading a savegame
 public static const UNDER_BODY_TYPE_COCKATRICE:int                                  =   6;
 
+// rearBody
+public static const REAR_BODY_NONE:int                                              =   0;
+public static const REAR_BODY_DRACONIC_MANE:int                                     =   1;
+public static const REAR_BODY_DRACONIC_SPIKES:int                                   =   2;
+public static const REAR_BODY_SHARK_FIN:int                                         =   3;
+
 // neckType
 public static const NECK_TYPE_NORMAL:int                                            =   0; // normal human neck. neckLen = 2 inches
 public static const NECK_TYPE_DRACONIC:int                                          =   1; // (western) dragon neck. neckLen = 2-30 inches

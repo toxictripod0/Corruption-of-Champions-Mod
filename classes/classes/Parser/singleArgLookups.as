@@ -80,6 +80,8 @@
 				"pg"						: function(thisPtr:*):* { return "\n\n";},
 				"pussy"						: function(thisPtr:*):* { return kGAMECLASS.player.vaginaDescript(); },
 				"race"						: function(thisPtr:*):* { return kGAMECLASS.player.race(); },
+				"rearbody"					: function(thisPtr:*):* { return kGAMECLASS.player.rearBodyDescript(); },
+				"rearbodycolor"				: function(thisPtr:*):* { return kGAMECLASS.player.rearBody.color; },
 				"sack"						: function(thisPtr:*):* { return kGAMECLASS.player.sackDescript(); },
 				"sheath"					: function(thisPtr:*):* { return kGAMECLASS.player.sheathDescript(); },
 				"shield"					: function(thisPtr:*):* { return kGAMECLASS.player.shieldName; },

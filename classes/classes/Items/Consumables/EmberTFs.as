@@ -207,6 +207,47 @@ package classes.Items.Consumables
 				}
 				changes++;
 			}
+			// <mod name="BodyParts.RearBody" author="Stadler76">
+			//Gain Dragon Rear Body
+			if (!drakesHeart && !player.hasDragonRearBody() && (player.hasDragonNeck() || flags[kFLAGS.EMBER_ROUNDFACE] == 1) && player.dragonScore() >= 4 && player.hasDraconicBackSide() && changes < changeLimit && rand(3) == 0) {
+				var emberRear:Number = player.fetchEmberRearBody();
+				switch (emberRear) {
+					case REAR_BODY_DRACONIC_MANE:
+						// if (player.hairLength == 0) // Let's simply ignore baldness here for now. It wouldn't affect the PCs mane anyway.
+						outputText("\n\nYou feel a sudden tingle just above your spine. Eager to see, what is the cause of it you bend your"
+						          +" [if (hasDragonNeck)draconic neck|tail] to take a closer look at it. Looking at your"
+						          +" [if (hasDragonNeck)back|tail] you see tiny splotches of hair beginning to grow out of your scaly skin. The hair"
+						          +" grows longer and the splotches grow until they slowly merge to a vertical strip right above your spine.");
+						outputText("\n\nTracing your spine, a mane of hair has grown; starting at the base of your neck and continuing down your"
+						          +" tail, ending on the tip of your tail in a small tuft. It is the same color as the hair on your head,"
+						          +" but shorter and denser; it has grown in a thick vertical strip, maybe two inches wide. It reminds you vaguely"
+						          +" of a horse's mane. <b>You now have a hairy mane on your rear.</b>");
+						player.rearBody.setAllProps({
+							type:  REAR_BODY_DRACONIC_MANE,
+							color: player.hairColor
+						});
+						break;
+
+					case REAR_BODY_DRACONIC_SPIKES:
+						// Teh spiky mane, similar to the hairy one.
+						outputText("\n\nYou feel a sudden pain coming from your spine. Eager to see, what is the cause of it you bend your"
+						          +" [if (hasDragonNeck)draconic neck|tail] to take a closer look at it. You watch your [if (hasDragonNeck)back|tail]"
+						          +" in growing pain as small bulges start emerging from your spine, growing bigger and bigger, until you feel a"
+						          +" sudden burst of pain, when small spikes begin to break through your skin. Hardly bearing the growing pain you"
+						          +" continue watching them slowly growing longer curving backwards until finally the pain has ceased.");
+						outputText("\n\nTracing your spine, a row of short steel-gray and curved backwards spikes protrude; starting at the base of"
+						          +" your neck and continuing down your tail, ending on the tip of your tail. They've grown in a thick vertical"
+						          +" strip, maybe an inch wide and two inches high. It reminds you very vaguely of a horse's mane.");
+						outputText("  <b>Your rear is now decorated with a row of curved spikes.</b>");
+						player.rearBody.setAllProps({type: REAR_BODY_DRACONIC_SPIKES});
+						break;
+
+					default:
+						// this should hopefully never happen
+						trace("Invalid Ember rearBody: " + emberRear);
+				}
+			}
+			// </mod>
 			//Restore non dragon neck
 			if (player.neck.type != NECK_TYPE_DRACONIC && changes < changeLimit && rand(4) == 0)
 				mutations.restoreNeck(tfSource);

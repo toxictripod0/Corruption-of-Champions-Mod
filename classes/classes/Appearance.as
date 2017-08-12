@@ -2045,6 +2045,11 @@ package classes
 			return description;
 		}
 
+		public static function rearBodyDescript(i_creature:Creature):String
+		{
+			return DEFAULT_REAR_BODY_NAMES[i_creature.rearBody.type];
+		}
+
 		public static function neckDescript(i_creature:Creature):String
 		{
 			return DEFAULT_NECK_NAMES[i_creature.neck.type] + " neck";
@@ -2353,6 +2358,14 @@ package classes
 					[TAIL_TYPE_SHEEP, "sheep"],
 					[TAIL_TYPE_IMP, "imp"],
 					[TAIL_TYPE_COCKATRICE, "cockatrice"],
+				]
+		);
+		public static const DEFAULT_REAR_BODY_NAMES:Object = createMapFromPairs(
+				[
+					[REAR_BODY_NONE, "none"],
+					[REAR_BODY_DRACONIC_MANE, "draconic hairy mane"],
+					[REAR_BODY_DRACONIC_SPIKES, "draconic spiky mane"],
+					[REAR_BODY_SHARK_FIN, "shark fin"],
 				]
 		);
 		public static const DEFAULT_NECK_NAMES:Object = createMapFromPairs(

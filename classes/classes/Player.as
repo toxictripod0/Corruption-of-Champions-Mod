@@ -1583,6 +1583,8 @@ use namespace kGAMECLASS;
 				dragonCounter++;
 			if (hasDragonNeck())
 				dragonCounter++;
+			if (hasDragonRearBody())
+				dragonCounter++;
 			return dragonCounter;
 		}
 

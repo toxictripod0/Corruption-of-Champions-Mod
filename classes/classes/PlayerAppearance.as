@@ -579,6 +579,28 @@ package classes
 			else if (player.wingType == WING_TYPE_GIANT_DRAGONFLY) 
 				outputText("  Giant dragonfly wings hang from your shoulders.  At a whim, you could twist them into a whirring rhythm fast enough to lift you off the ground and allow you to fly.");
 
+			// <mod name="BodyParts.RearBody" author="Stadler76">
+			// rearBody
+			switch (player.rearBody.type) {
+				case REAR_BODY_SHARK_FIN:
+					outputText("  A large shark-like fin has sprouted between your shoulder blades."
+					          +" With it you have far more control over swimming underwater.");
+					break;
+				case REAR_BODY_DRACONIC_MANE:
+					outputText("  Tracing your spine, a mane of [rearBodyColor] hair grows; starting at the base of your neck and continuing down"
+					          +" your tail, ending on the tip of your tail in a small tuft. It grows in a thick vertical strip,"
+					          +" maybe two inches wide. It reminds you vaguely of a horse's mane.");
+					break;
+
+				case REAR_BODY_DRACONIC_SPIKES:
+					// Teh spiky mane, similar to the hairy one.
+					outputText("  Tracing your spine, a row of short steel-gray and curved backwards spikes protrude; starting at the base of your"
+					          +" neck and continuing down your tail, ending on the tip of your tail. They've grown in a thick vertical strip,"
+					          +" maybe an inch wide and two inches high. It reminds you very vaguely of a horse's mane.");
+					break;
+			}
+			// </mod>
+
 			//Wing arms
 			if (player.armType == ARM_TYPE_HARPY) 
 				outputText("  Feathers hang off your arms from shoulder to wrist, giving them a slightly wing-like look.");
