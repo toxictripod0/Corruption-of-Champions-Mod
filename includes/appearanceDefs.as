@@ -195,7 +195,7 @@ public static const WING_TYPE_HARPY:int                                         
 public static const WING_TYPE_IMP:int                                               =   5;
 public static const WING_TYPE_BAT_LIKE_TINY:int                                     =   6;
 public static const WING_TYPE_BAT_LIKE_LARGE:int                                    =   7;
-public static const WING_TYPE_SHARK_FIN:int                                         =   8;
+public static const WING_TYPE_SHARK_FIN:int                                         =   8; // Deprecated, moved to the rearBody slot.
 public static const WING_TYPE_FEATHERED_LARGE:int                                   =   9;
 public static const WING_TYPE_DRACONIC_SMALL:int                                    =  10;
 public static const WING_TYPE_DRACONIC_LARGE:int                                    =  11;

@@ -568,8 +568,6 @@ package classes
 				outputText("  A pair of tiny bat-like demon-wings sprout from your back, flapping cutely, but otherwise being of little use.");
 			if (player.wingType == WING_TYPE_BAT_LIKE_LARGE) 
 				outputText("  A pair of large bat-like demon-wings fold behind your shoulders.  With a muscle-twitch, you can extend them, and use them to soar gracefully through the air.");
-			if (player.wingType == WING_TYPE_SHARK_FIN) 
-				outputText("  A large shark-like fin has sprouted between your shoulder blades.  With it you have far more control over swimming underwater.");
 			if (player.wingType == WING_TYPE_FEATHERED_LARGE) 
 				outputText("  A pair of large, feathery wings sprout from your back.  Though you usually keep the " + player.wings.color + "-colored wings folded close, they can unfurl to allow you to soar as gracefully as a harpy.");
 			if (player.wingType == WING_TYPE_DRACONIC_SMALL) 

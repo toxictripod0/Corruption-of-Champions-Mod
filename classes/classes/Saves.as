@@ -1801,6 +1801,12 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		player.hipRating = saveFile.data.hipRating;
 		player.buttRating = saveFile.data.buttRating;
 		
+
+		if (player.wingType == 8) {
+			player.wings.restore();
+			player.rearBody.setAllProps({type: REAR_BODY_SHARK_FIN});
+		}
+
 		if (player.lowerBody === 4) {
 			player.lowerBody = LOWER_BODY_TYPE_HOOFED;
 			player.legCount = 4;

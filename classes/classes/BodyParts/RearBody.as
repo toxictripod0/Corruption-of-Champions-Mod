@@ -12,14 +12,14 @@ package classes.BodyParts
 		include "../../../includes/appearanceDefs.as";
 
 		public var type:Number = REAR_BODY_NONE;
-		public var color:String = "";
+		public var color:String = "no";
 
 		public function RearBody() {}
 
 		public function restore():void
 		{
 			type  = REAR_BODY_NONE;
-			color = "";
+			color = "no";
 		}
 
 		public function setProps(p:Object):void
