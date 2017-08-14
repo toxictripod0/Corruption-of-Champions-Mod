@@ -2178,7 +2178,7 @@ package classes.Scenes.Combat
 			}
 			if (player.fatigue + player.physicalCost(10) > player.maxFatigue()) {
 				outputText("You're too fatigued to use a charge attack!");
-				doNext(combat.combatMenu);
+				doNext(curry(combat.combatMenu,false));
 				return;
 			}
 			player.changeFatigue(10,2);
@@ -2241,6 +2241,7 @@ package classes.Scenes.Combat
 				outputText("<b>Your impact also manages to stun " + monster.a + monster.short + "!</b> ");
 				monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
 			}
+				outputText("<b>(<font color=\"" + mainViewManager.colorHpMinus() + "\">" + damage + "</font>)</b>");
 				outputText("\n\n");
 			}
 			//Miss
