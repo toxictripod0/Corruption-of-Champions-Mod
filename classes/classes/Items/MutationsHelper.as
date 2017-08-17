@@ -206,11 +206,14 @@ package classes.Items
 					if (tfSource == "EmberTFs" || (!forceRestore && player.dragonScore() >= 11))
 						return false;
 
-					// Copy&Paste just in case we come up with different (better?) loss texts.
 					if (player.rearBody.type == REAR_BODY_DRACONIC_MANE)
-						outputText("\n\nYou feel a tingling on your backside, telling you that <b>your hairy draconic mane is disappearing.</b>");
+						outputText("\n\nYou feel a tingling just above your spine. Your glimpse at your back and see hair falling down from it."
+						          +" First in strands, then in bigger and bigger chunks until"
+						          +" <b>your hairy draconic mane has completely disappeared.</b>");
 					else
-						outputText("\n\nYou feel a tingling on your backside, telling you that <b>your spiky draconic mane is disappearing.</b>");
+						outputText("\n\nYour spine starts to make painful cracking sounds and you feel something retracting back into your rear."
+						          +" Soon after the pain ceased the skin above your spine fuses and closes the holes where your spikes once were."
+						          +" <b>The spikes on your rear have disappeared.</b>");
 					break;
 
 				default:
