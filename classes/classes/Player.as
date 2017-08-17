@@ -1733,11 +1733,11 @@ use namespace kGAMECLASS;
 		public function sharkScore():Number
 		{
 			var sharkCounter:Number = 0;
-			if (faceType == 4)
+			if (faceType == FACE_SHARK_TEETH)
 				sharkCounter++;
-			if (wingType == 8)
+			if (rearBody.type == REAR_BODY_SHARK_FIN)
 				sharkCounter++;
-			if (tailType == 7)
+			if (tailType == TAIL_TYPE_SHARK)
 				sharkCounter++;
 			//skin counting only if PC got any other shark traits
 			if (hasPlainSkin() && sharkCounter > 0)

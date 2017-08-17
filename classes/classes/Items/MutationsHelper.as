@@ -159,7 +159,7 @@ package classes.Items
 
 			switch (player.neck.type) {
 				case NECK_TYPE_DRACONIC:
-					if (tfSource == "EmberTFs" || (!forceRestore && player.dragonScore() >= 9))
+					if (tfSource == "EmberTFs" || (!forceRestore && player.dragonScore() >= 11))
 						return false;
 
 					outputText("\n\n<b>Your draconic neck[if (neckPos) and its position on your head revert|reverts] to its normal"
@@ -181,6 +181,45 @@ package classes.Items
 
 			if (!forceRestore) changes++;
 			player.neck.restore();
+			return true;
+		}
+
+		public function restoreRearBody(tfSource:String):Boolean
+		{
+			trace('called restoreRearBody("' + tfSource + '")');
+			var tsParts:Array = tfSource.split("-");
+			tfSource = tsParts[0];
+
+			var forceRestore:Boolean = tsParts.indexOf("forceRestoreRearBody") != -1;
+
+			switch (player.rearBody.type) {
+				case REAR_BODY_SHARK_FIN:
+					if (tfSource == "sharkTooth" || (!forceRestore && player.sharkScore() >= 3))
+						return false;
+
+					outputText("A wave of tightness spreads through your back, and it feels as if someone is stabbing a dagger into your spine."
+					          +" After a moment the pain passes, though your fin is gone!");
+					break;
+
+				case REAR_BODY_DRACONIC_MANE:
+				case REAR_BODY_DRACONIC_SPIKES:
+					if (tfSource == "EmberTFs" || (!forceRestore && player.dragonScore() >= 11))
+						return false;
+
+					// Copy&Paste just in case we come up with different (better?) loss texts.
+					if (player.rearBody.type == REAR_BODY_DRACONIC_MANE)
+						outputText("\n\nYou feel a tingling on your backside, telling you that <b>your hairy draconic mane is disappearing.</b>");
+					else
+						outputText("\n\nYou feel a tingling on your backside, telling you that <b>your spiky draconic mane is disappearing.</b>");
+					break;
+
+				default:
+					player.rearBody.restore();
+					return false;
+			}
+
+			if (!forceRestore) changes++;
+			player.rearBody.restore();
 			return true;
 		}
 

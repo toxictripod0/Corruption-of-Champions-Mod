@@ -1461,6 +1461,8 @@ package classes.Scenes.Places.Bazaar
 			//Transformations
 			//Neck restore
 			if (player.neck.type != NECK_TYPE_NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
+			//Rear body restore
+			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
 			//Ovi perk loss
 			if (rand(5) == 0) mutations.updateOvipositionPerk(tfSource);
 
@@ -1584,6 +1586,8 @@ package classes.Scenes.Places.Bazaar
 			}
 			//Neck restore
 			if (player.neck.type != NECK_TYPE_NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
+			//Rear body restore
+			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
 			//Ovi perk loss
 			if (rand(5) == 0) mutations.updateOvipositionPerk(tfSource);
 			// Special TFs
@@ -2074,6 +2078,8 @@ package classes.Scenes.Places.Bazaar
 			}
 			//Neck restore
 			if (player.neck.type != NECK_TYPE_NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
+			//Rear body restore
+			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
 			//Ovi perk gain
 			if (rand(4) == 0 && changes < changeLimit && player.echidnaScore() >= 3 && player.hasVagina() && player.findPerk(PerkLib.Oviposition) < 0) {
 				mutations.updateOvipositionPerk(tfSource);

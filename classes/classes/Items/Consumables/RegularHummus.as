@@ -60,6 +60,8 @@ package classes.Items.Consumables
 			//Restore neck
 			if (player.neck.type != NECK_TYPE_NORMAL && changes < changeLimit && rand(5) == 0)
 				mutations.restoreNeck(tfSource);
+			//Rear body restore
+			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
 			//-Skin color change – light, fair, olive, dark, ebony, mahogany, russet
 			if ((player.skinTone !== "light" && player.skinTone !== "fair" && player.skinTone !== "olive" && player.skinTone !== "dark" && player.skinTone !== "ebony" && player.skinTone !== "mahogany" && player.skinTone !== "russet") && changes < changeLimit && rand(5) === 0) {
 				changes++;
