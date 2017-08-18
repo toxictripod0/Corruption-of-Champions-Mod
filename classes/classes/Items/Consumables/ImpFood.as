@@ -301,7 +301,7 @@ package classes.Items.Consumables
 				changes++;
 				dynStats("cor", 20);
 			}
-			
+			game.flags[kFLAGS.TIMES_TRANSFORMED] += changes;
 			return false;
 		}
 	}
