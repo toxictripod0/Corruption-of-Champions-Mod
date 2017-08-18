@@ -568,8 +568,6 @@ package classes
 				outputText("  A pair of tiny bat-like demon-wings sprout from your back, flapping cutely, but otherwise being of little use.");
 			if (player.wingType == WING_TYPE_BAT_LIKE_LARGE) 
 				outputText("  A pair of large bat-like demon-wings fold behind your shoulders.  With a muscle-twitch, you can extend them, and use them to soar gracefully through the air.");
-			if (player.wingType == WING_TYPE_SHARK_FIN) 
-				outputText("  A large shark-like fin has sprouted between your shoulder blades.  With it you have far more control over swimming underwater.");
 			if (player.wingType == WING_TYPE_FEATHERED_LARGE) 
 				outputText("  A pair of large, feathery wings sprout from your back.  Though you usually keep the " + player.wings.color + "-colored wings folded close, they can unfurl to allow you to soar as gracefully as a harpy.");
 			if (player.wingType == WING_TYPE_DRACONIC_SMALL) 
@@ -578,6 +576,28 @@ package classes
 				outputText("  Magnificent wings sprout from your shoulders.  When unfurled they stretch further than your arm span, and a single beat of them is all you need to set out toward the sky.  They look a bit like bat's wings, but the membranes are covered in fine, delicate scales and a wicked talon juts from the end of each bone.");
 			else if (player.wingType == WING_TYPE_GIANT_DRAGONFLY) 
 				outputText("  Giant dragonfly wings hang from your shoulders.  At a whim, you could twist them into a whirring rhythm fast enough to lift you off the ground and allow you to fly.");
+
+			// <mod name="BodyParts.RearBody" author="Stadler76">
+			// rearBody
+			switch (player.rearBody.type) {
+				case REAR_BODY_SHARK_FIN:
+					outputText("  A large shark-like fin has sprouted between your shoulder blades."
+					          +" With it you have far more control over swimming underwater.");
+					break;
+				case REAR_BODY_DRACONIC_MANE:
+					outputText("  Tracing your spine, a mane of [rearBodyColor] hair grows; starting at the base of your neck and continuing down"
+					          +" your tail, ending on the tip of your tail in a small tuft. It grows in a thick vertical strip,"
+					          +" maybe two inches wide. It reminds you vaguely of a horse's mane.");
+					break;
+
+				case REAR_BODY_DRACONIC_SPIKES:
+					// Teh spiky mane, similar to the hairy one.
+					outputText("  Tracing your spine, a row of short steel-gray and curved backwards spikes protrude; starting at the base of your"
+					          +" neck and continuing down your tail, ending on the tip of your tail. They've grown in a thick vertical strip,"
+					          +" maybe an inch wide and two inches high. It reminds you very vaguely of a horse's mane.");
+					break;
+			}
+			// </mod>
 
 			//Wing arms
 			if (player.armType == ARM_TYPE_HARPY) 
