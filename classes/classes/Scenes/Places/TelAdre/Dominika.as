@@ -137,18 +137,18 @@ private function acceptDominikasKnowledge():void {
 	}
 
 	//If no dominika cooldown up
-	var spellList:Vector.<Object> = new <Object>[
-			{status:StatusEffects.KnowsArouse, name:"Arouse", color:"Black"},
-			{status:StatusEffects.KnowsHeal, name:"Heal", color:"Black"},
-			{status:StatusEffects.KnowsMight, name:"Might", color:"Black"},
-			{status:StatusEffects.KnowsCharge, name:"Charge Weapon", color:"White"},
-			{status:StatusEffects.KnowsBlind, name:"Blind", color:"White"},
-			{status:StatusEffects.KnowsWhitefire, name:"Whitefire", color:"White"},
-			];
+	var spellList:Array = [
+		{status:StatusEffects.KnowsArouse, name:"Arouse", color:"Black"},
+		{status:StatusEffects.KnowsHeal, name:"Heal", color:"Black"},
+		{status:StatusEffects.KnowsMight, name:"Might", color:"Black"},
+		{status:StatusEffects.KnowsCharge, name:"Charge Weapon", color:"White"},
+		{status:StatusEffects.KnowsBlind, name:"Blind", color:"White"},
+		{status:StatusEffects.KnowsWhitefire, name:"Whitefire", color:"White"},
+	];
 	var knowsallDominikaSpells:Boolean = true;
 	var knowssomeDominikaSpells:Boolean = false;
-	for each(var spell:Object in spellList){
-		trace(spell);
+	var spell:Object;
+	for each(spell in spellList){
 		if (player.hasStatusEffect(spell.status)){
 			knowssomeDominikaSpells = true;
 		}else{
@@ -175,11 +175,10 @@ private function acceptDominikasKnowledge():void {
 			outputText("You take a step backwards in surprise, but your experience with magic makes you realize that she's not doing anything dangerous. You explain that you've learned a bit of sorcery from books, and she nods thoughtfully. \"<i>I see,</i>\" she muses, stroking her chin. \"<i>I think I may be able to show you a thing or two. Let's see here...</i>\"\n\n");
 			outputText("Dominika seems to be quite good at magic, and you find yourself picking up the spell she demonstrates fairly quickly.");
 			//(Player receives random unlearned spell.)
-			for each(var spell:Object in spellList){
-				trace(spell);
+			for each(spell in spellList){
 				if (!player.hasStatusEffect(spell.status)){
 					player.createStatusEffect(spell.status, 0, 0, 0, 0);
-					outputText("\n\n<b>New " + spell.color + " Spell Learned: " + spell.name + "</b>");
+					outputText("\n\n<b>New " + spell.color + " Magic Spell Learned: " + spell.name + "</b>");
 					dynStats("int", 2);
 					break;
 				}
