@@ -2,6 +2,8 @@
  * Coded by aimozg on 10.07.2017.
  */
 package coc.view {
+import classes.internals.LoggerFactory;
+
 import coc.view.charview.CaseBlock;
 import coc.view.charview.CharViewSprite;
 import coc.view.charview.IfBlock;
@@ -18,8 +20,10 @@ import flash.events.Event;
 import flash.geom.Point;
 import flash.geom.Rectangle;
 
-public class CharView extends Sprite {
+import mx.logging.ILogger;
 
+public class CharView extends Sprite {
+	private static const LOGGER:ILogger = LoggerFactory.getLogger(CharView);
 	private var loading:Boolean;
 	private var sprites:Object = {}; // spritesheet/spritemap -> CharViewSprite
 	private var composite:CompositeImage;
@@ -52,18 +56,18 @@ public class CharView extends Sprite {
 		try {
 			loading = true;
 			clearAll();
-			if (loaderLocation == "external") trace("loading XML res/model.xml");
+			if (loaderLocation == "external") LOGGER.info("loading XML res/model.xml");
 			CoCLoader.loadText("res/model.xml", function (success:Boolean, result:String, e:Event):void {
 				if (success) {
 					init(XML(result));
 				} else {
-					trace("XML file not found: " + e);
+					LOGGER.warn("XML file not found: " + e);
 					loading = false;
 				}
 			}, loaderLocation);
 		} catch (e:Error) {
 			loading = false;
-			trace("[ERROR]\n" + e.getStackTrace());
+			LOGGER.error(e.message+"\n" + e.getStackTrace());
 		}
 	}
 	private function clearAll():void {
@@ -236,10 +240,10 @@ public class CharView extends Sprite {
 	private function loadSpritemap(xml:XML, sm:XML):void {
 		const filename:String = sm.@file;
 		var path:String       = xml.@dir + filename;
-		if (loaderLocation == "external") trace('loading spritemap ' + path);
+		if (loaderLocation == "external") LOGGER.info('loading spritemap ' + path);
 		CoCLoader.loadImage(path, function (success:Boolean, result:BitmapData, e:Event):void {
 			if (!success) {
-				trace("Spritemap file not found: " + e);
+				LOGGER.warn("Spritemap file not found: " + e);
 				ss_loaded++;
 				if (pendingRedraw) redraw();
 				return;
@@ -266,10 +270,10 @@ public class CharView extends Sprite {
 		const cellwidth:int   = ss.@cellwidth;
 		const cellheight:int  = ss.@cellheight;
 		var path:String       = xml.@dir + filename;
-		if (loaderLocation == "external") trace('loading spritesheet ' + path);
+		if (loaderLocation == "external") LOGGER.info('loading spritesheet ' + path);
 		CoCLoader.loadImage(path, function (success:Boolean, result:BitmapData, e:Event):void {
 			if (!success) {
-				trace("Spritesheet file not found: " + e);
+				LOGGER.warn("Spritesheet file not found: " + e);
 				ss_loaded++;
 				if (pendingRedraw) redraw();
 				return;

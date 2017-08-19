@@ -305,7 +305,6 @@ public class MainView extends Block {
 		charView.x       = 0;
 		charView.y       = TEXTZONE_Y;
 		charView.visible = false;
-		charView.reload("external");
 		addElement(charView);
 	}
 

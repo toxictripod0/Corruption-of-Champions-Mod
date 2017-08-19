@@ -2,9 +2,14 @@
  * Coded by aimozg on 28.07.2017.
  */
 package coc.view.charview {
+import classes.internals.LoggerFactory;
+
 import coc.view.Color;
 
+import mx.logging.ILogger;
+
 public class KeyColor {
+	private static const LOGGER:ILogger = LoggerFactory.getLogger(KeyColor);
 	private var _src:uint;
 	private var _base:String;
 	private var tfs:/*String*/Array;
@@ -27,7 +32,7 @@ public class KeyColor {
 					baseValue = Color.lighten(baseValue, fvalue);
 					break;
 				default:
-					trace("Error: invalid color transform '" + tf + "'");
+					LOGGER.error("Invalid color transform '" + tf + "'");
 					break;
 			}
 		}

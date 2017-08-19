@@ -2,14 +2,18 @@
  * Coded by aimozg on 04.06.2017.
  */
 package coc.view {
+import classes.internals.LoggerFactory;
 import classes.internals.Utils;
 
 import flash.display.Bitmap;
 import flash.display.Sprite;
 import flash.geom.Matrix;
 
+import mx.logging.ILogger;
+
 [Style(name="fillColor", type="uint", format="Color", inherit="no")]
 public class BitmapDataSprite extends Sprite {
+	private static const LOGGER:ILogger = LoggerFactory.getLogger(BitmapDataSprite);
 	public function BitmapDataSprite(options:Object = null) {
 		super();
 		options = Utils.extend({},options);
@@ -28,7 +32,7 @@ public class BitmapDataSprite extends Sprite {
 						if (key in this) {
 							this[key] = value;
 						} else {
-							trace("Unknown BitmapDataSprite property", key)
+							LOGGER.warn("Unknown BitmapDataSprite property", key)
 						}
 				}
 			}

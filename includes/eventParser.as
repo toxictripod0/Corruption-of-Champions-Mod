@@ -17,7 +17,6 @@ import coc.view.MainView;
 
 public function playerMenu():void {
 	mainViewManager.hidePlayerDoll();
-	mainViewManager.tweenInStats();
 	if (!inCombat) spriteSelect(null);
 	mainView.setMenuButton(MainView.MENU_NEW_MAIN, "New Game", charCreation.newGameGo);
 	mainView.nameBox.visible = false;

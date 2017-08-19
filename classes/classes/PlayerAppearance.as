@@ -13,8 +13,7 @@ package classes
 		protected function shortSuffix(...args):String { return measurements.shortSuffix.apply(null, args); }
 
 		public function appearance():void {
-			mainViewManager.showPlayerDoll(debug);
-			mainViewManager.tweenOutStats();
+			if (CoC_Settings.charviewEnabled) mainViewManager.showPlayerDoll(debug);
 			funcs = new Array();
 			args = new Array();
 			//Temp vars
