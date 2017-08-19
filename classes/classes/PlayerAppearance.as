@@ -13,6 +13,8 @@ package classes
 		protected function shortSuffix(...args):String { return measurements.shortSuffix.apply(null, args); }
 
 		public function appearance():void {
+			mainViewManager.showPlayerDoll(debug);
+			mainViewManager.tweenOutStats();
 			funcs = new Array();
 			args = new Array();
 			//Temp vars

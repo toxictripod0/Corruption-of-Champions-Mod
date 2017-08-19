@@ -302,9 +302,10 @@ public class MainView extends Block {
 		this.scaleY = 1;
 		charView         = new CharView();
 		charView.name    = "charview";
-		charView.x       = sprite.x;
-		charView.y       = sprite.y;
+		charView.x       = 0;
+		charView.y       = TEXTZONE_Y;
 		charView.visible = false;
+		charView.reload("external");
 		addElement(charView);
 	}
 

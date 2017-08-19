@@ -87,11 +87,17 @@ import flash.ui.Keyboard;
 				mainView.statsView.toggleHungerBar(false);
 			}
 			mainView.statsView.refreshStats(getGame());
+			//Set theme!
+			setTheme();
+		}
+		public function showPlayerDoll(reload:Boolean=false):void {
+			if (reload) mainView.charView.reload("external");
 			mainView.charView.setCharacter(player);
 			mainView.charView.redraw();
 			mainView.charView.visible = true;
-			//Set theme!
-			setTheme();
+		}
+		public function hidePlayerDoll():void {
+			mainView.charView.visible = false;
 		}
 
 		//Show/hide stats bars.
