@@ -295,7 +295,7 @@ package classes.Scenes.Combat
 			temp = calcInfernoMod(temp);
 			if (monster.short == "goo-girl") temp = Math.round(temp * 1.5);
 			if (monster.short == "tentacle beast") temp = Math.round(temp * 1.2);
-			outputText(monster.capitalA + monster.short + " takes <b><font color=\"#800000\">" + temp + "</font></b> damage.");
+			outputText(monster.capitalA + monster.short + " takes <b><font color=\"" + mainViewManager.colorHpMinus() + "\">" + temp + "</font></b> damage.");
 			//Using fire attacks on the goo]
 			if (monster.short == "goo-girl") {
 				outputText("  Your flames lick the girl's body and she opens her mouth in pained protest as you evaporate much of her moisture. When the fire passes, she seems a bit smaller and her slimy " + monster.skinTone + " skin has lost some of its shimmer.");
@@ -2178,7 +2178,7 @@ package classes.Scenes.Combat
 			}
 			if (player.fatigue + player.physicalCost(10) > player.maxFatigue()) {
 				outputText("You're too fatigued to use a charge attack!");
-				doNext(combat.combatMenu);
+				doNext(curry(combat.combatMenu,false));
 				return;
 			}
 			player.changeFatigue(10,2);
@@ -2241,6 +2241,7 @@ package classes.Scenes.Combat
 				outputText("<b>Your impact also manages to stun " + monster.a + monster.short + "!</b> ");
 				monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
 			}
+				outputText("<b>(<font color=\"" + mainViewManager.colorHpMinus() + "\">" + damage + "</font>)</b>");
 				outputText("\n\n");
 			}
 			//Miss
@@ -2285,19 +2286,7 @@ package classes.Scenes.Combat
 				monster.doAI();
 				return;
 			}
-			//Bigger horns = better success chance.
-			//Small horns - 60% hit
-			if (player.horns >= 6 && player.horns < 12) {
-				temp = 60;
-			}
-			//bigger horns - 75% hit
-			if (player.horns >= 12 && player.horns < 20) {
-				temp = 75;
-			}
-			//huge horns - 90% hit
-			if (player.horns >= 20) {
-				temp = 80;
-			}
+			temp = 80; // Basic chance. Just as minos with fully grown horns.
 			//Vala dodgy bitch!
 			if (monster.short == "Vala") {
 				temp = 20;
@@ -2308,8 +2297,6 @@ package classes.Scenes.Combat
 			temp += player.spe/2;
 			//Hit & calculation
 			if (temp >= rand(100)) {
-				var horns:Number = player.horns;
-				if (player.horns > 40) player.horns = 40;
 				damage = int(player.str + (player.tou / 2) + (player.spe / 2) + (player.level * 2) * 1.2 * (monster.damagePercent() / 100)); //As normal attack + horn length bonus
 				if (damage < 0) damage = 5;
 				//Normal

@@ -1,22 +1,24 @@
 package classes.BodyParts 
 {
+	import classes.Creature;
+
 	/**
-	 * Container class for the players wings
-	 * @since May 01, 2017
+	 * Container class for the players rear body
+	 * @since December 20, 2016
 	 * @author Stadler76
 	 */
-	public class Wings extends BaseBodyPart
+	public class RearBody extends BaseBodyPart
 	{
 		include "../../../includes/appearanceDefs.as";
 
-		public var type:Number  = WING_TYPE_NONE;
+		public var type:Number = REAR_BODY_NONE;
 		public var color:String = "no";
 
-		public function Wings() {}
+		public function RearBody() {}
 
 		public function restore():void
 		{
-			type  = WING_TYPE_NONE;
+			type  = REAR_BODY_NONE;
 			color = "no";
 		}
 
@@ -34,7 +36,7 @@ package classes.BodyParts
 
 		override public function canDye():Boolean
 		{
-			return [WING_TYPE_HARPY, WING_TYPE_FEATHERED_LARGE].indexOf(type) != -1;
+			return type == REAR_BODY_DRACONIC_MANE;
 		}
 
 		override public function hasDyeColor(_color:String):Boolean
@@ -45,6 +47,14 @@ package classes.BodyParts
 		override public function applyDye(_color:String):void
 		{
 			color = _color;
+		}
+
+		public function toObject():Object
+		{
+			return {
+				type:  type,
+				color: color
+			};
 		}
 	}
 }

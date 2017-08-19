@@ -54,6 +54,7 @@ the text from being too boring.
 
 	import classes.AssClass; // Creates the class that holds ass-related variables as described above. 
 	import classes.BreastRowClass; // Creates the class that holds breast-related variables.
+	import classes.BodyParts.Neck;
 	import classes.BodyParts.Skin;
 	import classes.BodyParts.UnderBody;
 	import classes.Items.*; // This pulls in all the files in the Items folder. Basically any inventory item in the game
@@ -133,7 +134,7 @@ the text from being too boring.
 	// Add in descriptions for the include statements. Many of the description text code is inside of these.
 	// Suggest moving or removing old comments referencing things that aren't needed anymore.
 		
-	[SWF( width="1000", height="800", pageTitle="Corruption of Champions" )]
+	[SWF( width="1000", height="800", backgroundColor="0x000000", pageTitle="Corruption of Champions" )]
 
 	public class CoC extends MovieClip
 	{
@@ -465,8 +466,8 @@ the text from being too boring.
 			 * Debug, Version, etc
 			 */
 			debug = false; //DEBUG, used all over the place
-			ver = "1.0.2_mod_1.4.7"; //Version NUMBER
-			version = ver + " (<b>Bug Fixin</b>)"; //Version TEXT
+			ver = "1.0.2_mod_1.4.8"; //Version NUMBER
+			version = ver + " (<b>COCKatrices ahoy</b>)"; //Version TEXT
 
 			//Indicates if building for mobile?
 			mobile = false;
@@ -582,6 +583,7 @@ the text from being too boring.
 			registerClassAlias("Player", Player);
 			registerClassAlias("StatusEffectClass", StatusEffectClass);
 			registerClassAlias("VaginaClass", VaginaClass);
+			registerClassAlias("Neck", Neck);
 			registerClassAlias("Skin", Skin);
 			registerClassAlias("UnderBody", UnderBody);
 			//registerClassAlias("Enum", Enum);

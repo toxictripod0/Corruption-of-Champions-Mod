@@ -1,6 +1,8 @@
 ﻿//CoC Creature.as
 package classes
 {
+	import classes.BodyParts.Neck;
+	import classes.BodyParts.RearBody;
 	import classes.BodyParts.Skin;
 	import classes.BodyParts.UnderBody;
 	import classes.BodyParts.Wings;
@@ -231,6 +233,8 @@ package classes
 		public var clawTone:String = "";
 		public var clawType:Number = CLAW_TYPE_NORMAL;
 		// </mod>
+		public var rearBody:RearBody = new RearBody();
+		public var neck:Neck = new Neck();
 		public var underBody:UnderBody = new UnderBody();
 
 		/*EarType
@@ -2822,6 +2826,7 @@ package classes
 				case CLAW_TYPE_NORMAL: return "fingernails";
 				case CLAW_TYPE_LIZARD: return "short curved" + toneText + "claws";
 				case CLAW_TYPE_DRAGON: return "powerful, thick curved" + toneText + "claws";
+				case CLAW_TYPE_IMP:    return "long" + toneText + "claws";
 				// Since mander and cockatrice arms are hardcoded and the others are NYI, we're done here for now
 			}
 			return "fingernails";

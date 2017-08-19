@@ -158,10 +158,10 @@ public class MainView extends Block {
 		super();
 		addElement(blackBackground = new BitmapDataSprite({
 			bitmapClass: ButtonBackground2,
-			x          : -SCREEN_W / 2,
-			width      : SCREEN_W * 2,
-			height     : SCREEN_H * 2,
-			y          : -SCREEN_H / 2,
+			x          : -SCREEN_W,
+			width      : SCREEN_W,
+			height     : SCREEN_H,
+			y          : -SCREEN_H,
 			fillColor  : '#000000'
 		}), {});
 		addElement(background = new BitmapDataSprite({
@@ -661,11 +661,17 @@ public class MainView extends Block {
 		this.scrollBar.update();
 	}
 
+	/**
+	 * @param text A HTML text to append. Should not contain unclosed tags
+	 */
 	public function appendOutputText(text:String):void {
 		this.mainText.htmlText += text;
 		this.scrollBar.update();
 	}
 
+	/**
+	 * @param text A HTML text to append. Should not contain unclosed tags
+	 */
 	public function setOutputText(text:String):void {
 		// Commenting out for now, because this is annoying to see flooding the trace.
 		// trace("MainView#setOutputText(): This is never called in the main outputText() function.  Possible bugs that were patched over by updating text manually?");
