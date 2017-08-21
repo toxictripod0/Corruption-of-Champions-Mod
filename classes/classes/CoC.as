@@ -8,7 +8,8 @@
 package classes
 {
 	// BREAKING ALL THE RULES.
-	import classes.GlobalFlags.kFLAGS;
+import classes.CoC_Settings;
+import classes.GlobalFlags.kFLAGS;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
 
@@ -432,6 +433,7 @@ the text from being too boring.
 			this.model = new GameModel();
 			try {
 				this.mainView = new MainView(/*this.model*/);
+				if (CoC_Settings.charviewEnabled) this.mainView.charView.reload();
 			} catch (e:Error) {
 				trace(e, e.getStackTrace());
 				return;

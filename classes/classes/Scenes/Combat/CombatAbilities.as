@@ -2286,19 +2286,7 @@ package classes.Scenes.Combat
 				monster.doAI();
 				return;
 			}
-			//Bigger horns = better success chance.
-			//Small horns - 60% hit
-			if (player.horns >= 6 && player.horns < 12) {
-				temp = 60;
-			}
-			//bigger horns - 75% hit
-			if (player.horns >= 12 && player.horns < 20) {
-				temp = 75;
-			}
-			//huge horns - 90% hit
-			if (player.horns >= 20) {
-				temp = 80;
-			}
+			temp = 80; // Basic chance. Just as minos with fully grown horns.
 			//Vala dodgy bitch!
 			if (monster.short == "Vala") {
 				temp = 20;
@@ -2309,8 +2297,6 @@ package classes.Scenes.Combat
 			temp += player.spe/2;
 			//Hit & calculation
 			if (temp >= rand(100)) {
-				var horns:Number = player.horns;
-				if (player.horns > 40) player.horns = 40;
 				damage = int(player.str + (player.tou / 2) + (player.spe / 2) + (player.level * 2) * 1.2 * (monster.damagePercent() / 100)); //As normal attack + horn length bonus
 				if (damage < 0) damage = 5;
 				//Normal
