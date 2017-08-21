@@ -46,6 +46,7 @@ package classes
 			sec.value2 = value2;
 			sec.value3 = value3;
 			sec.value4 = value4;
+			return sec;
 		}
 
 

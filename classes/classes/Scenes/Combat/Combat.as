@@ -84,7 +84,7 @@ package classes.Scenes.Combat
 			if (prison.inPrison && prison.prisonCombatWinEvent != null) nextFunc = prison.prisonCombatWinEvent;
 			if (inCombat) {
 				//clear status
-				clearStatuses(false);
+				clearStatuses();
 				
 				//reset the stored image for next monster
 				imageText = "";
@@ -1369,8 +1369,8 @@ package classes.Scenes.Combat
 		}
 
 		//Clear statuses
-		public function clearStatuses(visibility:Boolean):void {
-			player.clearStatuses(visibility);
+		public function clearStatuses():void {
+			player.clearStatuses();
 		}
 		//Update combat status effects
 		private function combatStatusesUpdate():void {
@@ -2099,7 +2099,7 @@ package classes.Scenes.Combat
 				clearOutput();
 				outputText("You flex the muscles in your back and, shaking clear of the sand, burst into the air!  Wasting no time you fly free of the sandtrap and its treacherous pit.  \"One day your wings will fall off, little ant,\" the snarling voice of the thwarted androgyne carries up to you as you make your escape.  \"And I will be waiting for you when they do!\"");
 				inCombat = false;
-				clearStatuses(false);
+				clearStatuses();
 				doNext(camp.returnToCampUseOneHour);
 				return;
 			}
@@ -2132,7 +2132,7 @@ package classes.Scenes.Combat
 				//(Free run away) 
 				outputText("You slink away while the pack of brutes is arguing.  Once they finish that argument, they'll be sorely disappointed!");
 				inCombat = false;
-				clearStatuses(false);
+				clearStatuses();
 				doNext(camp.returnToCampUseOneHour);
 				return;
 			}
@@ -2171,7 +2171,7 @@ package classes.Scenes.Combat
 			if (monster.short == "lizan rogue") {
 				outputText("As you retreat the lizan doesn't even attempt to stop you. When you look back to see if he's still there you find nothing but the empty bog around you.");
 				inCombat = false;
-				clearStatuses(false);
+				clearStatuses();
 				doNext(camp.returnToCampUseOneHour);
 				return;
 			}
@@ -2219,7 +2219,7 @@ package classes.Scenes.Combat
 				if (player.lust100 < 60) {
 					outputText("Marshalling your thoughts, you frown at the strange girl and turn to march up the beach.  After twenty paces inshore you turn back to look at her again.  The anemone is clearly crestfallen by your departure, pouting heavily as she sinks beneath the water's surface.");
 					inCombat = false;
-					clearStatuses(false);
+					clearStatuses();
 					doNext(camp.returnToCampUseOneHour);
 					return;
 				}
@@ -2228,7 +2228,7 @@ package classes.Scenes.Combat
 					//Success
 					if (player.spe > rand(monster.spe+escapeMod)) {
 						inCombat = false;
-						clearStatuses(false);
+						clearStatuses();
 						outputText("Marshalling your thoughts, you frown at the strange girl and turn to march up the beach.  After twenty paces inshore you turn back to look at her again.  The anemone is clearly crestfallen by your departure, pouting heavily as she sinks beneath the water's surface.");
 						doNext(camp.returnToCampUseOneHour);
 						return;
@@ -2248,7 +2248,7 @@ package classes.Scenes.Combat
 				if (player.hasStatusEffect(StatusEffects.KnockedBack)) {
 					outputText("It's not very difficult to run from the immobile creature.");
 					inCombat = false;
-					clearStatuses(false);
+					clearStatuses();
 					doNext(camp.returnToCampUseOneHour);
 				} else {
 					if (player.spe > rand(monster.spe + escapeMod) || player.getEvasionRoll()) {
@@ -2271,7 +2271,7 @@ package classes.Scenes.Combat
 					outputText("You easily outpace the dragon, who begins hurling imprecations at you.  \"What the hell, [name], you weenie; are you so scared that you can't even stick out your punishment?\"");
 					outputText("\n\nNot to be outdone, you call back, \"Sucks to you!  If even the mighty Last Ember of Hope can't catch me, why do I need to train?  Later, little bird!\"");
 					inCombat = false;
-					clearStatuses(false);
+					clearStatuses();
 					doNext(camp.returnToCampUseOneHour);
 				}
 				//Fail: 
@@ -2287,7 +2287,7 @@ package classes.Scenes.Combat
 				if (prison.inPrison) {
 					outputText("You quickly bolt out of the main entrance and after hiding for a good while, there's no sign of " + monster.a + " " + monster.short + ". You sneak back inside to retrieve whatever you had before you were captured. ");
 					inCombat = false;
-					clearStatuses(false);
+					clearStatuses();
 					prison.prisonEscapeSuccessText();
 					doNext(prison.prisonEscapeFinalePart1);
 					return;
@@ -2305,7 +2305,7 @@ package classes.Scenes.Combat
 				}
 				if (monster is Ghoul) ghoulReveal = false;
 				inCombat = false;
-				clearStatuses(false);
+				clearStatuses();
 				doNext(camp.returnToCampUseOneHour);
 				return;
 			}
@@ -2316,7 +2316,7 @@ package classes.Scenes.Combat
 				if (monster.short == "Izma") {
 					outputText("\n\nAs you leave the tigershark behind, her taunting voice rings out after you.  \"<i>Oooh, look at that fine backside!  Are you running or trying to entice me?  Haha, looks like we know who's the superior specimen now!  Remember: next time we meet, you owe me that ass!</i>\"  Your cheek tingles in shame at her catcalls.");
 				}
-				clearStatuses(false);
+				clearStatuses();
 				doNext(camp.returnToCampUseOneHour);
 				return;
 			}

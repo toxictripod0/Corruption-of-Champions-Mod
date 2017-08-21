@@ -1,4 +1,4 @@
-package classes.Scenes.Quests{
+﻿package classes.Scenes.Quests{
 	import classes.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
@@ -1564,7 +1564,7 @@ public function nagaPleaseNagaStoleMyDick():void {
 	outputText("\n\n\"<i>You invade my territory... ssstep on my tail... and have the gall to tell me you're not going to make up for it!</i>\"  He hisses ominously.  \"<i>Hey, it was an acci-</i>\"  \"<i>Worthlesss female!  You are mine!</i>\"  He charges at you!");
 
 	outputText("\n\n<b>It's a fight!</b>");
-	kGAMECLASS.combat.clearStatuses(false);
+	kGAMECLASS.combat.clearStatuses();
 	startCombat(new Sirius());
 }
 
@@ -1781,7 +1781,7 @@ private function gnollAlphaBitchIntro():void {
 
 	outputText("\n\nHow wrong you are.  A spear smacks into the ground, the tip exploding into some sticky, restraining substance by your foot.  A high pitched war-cry chases the missile, barely giving you the warning you need to avoid the onrushing gnoll!  This one doesn't quite look like what you'd expect from their race, but she's moving too fast to really dwell on it.");
 	outputText("\n\n<b>It's a fight!</b>");
-	kGAMECLASS.combat.clearStatuses(false);
+	kGAMECLASS.combat.clearStatuses();
 	startCombat(new GnollSpearThrower());
 	monster.bonusHP = 350;
 	monster.short = "alpha gnoll";
@@ -2221,7 +2221,7 @@ private function introSuccubiAndMinotaur():void {
 	outputText("\n\nThe minotaur lord thunders towards you, picking up the loose chain to use a weapon.  It's a fight!");
 
 	//{start fight}
-	kGAMECLASS.combat.clearStatuses(false);
+	kGAMECLASS.combat.clearStatuses();
 	startCombat(new MinotaurLord());
 }
 
@@ -2488,7 +2488,7 @@ public function beatMinoLordOnToSuccubi():void {
 	outputText("\n\n\"<i>We'll see how your tune changes when you're licking my heels and begging for a drop of my milk!</i>\"  She snaps her whip angrily.");
 
 	outputText("\n\n<b>It's a fight!</b>");
-	kGAMECLASS.combat.clearStatuses(false);
+	kGAMECLASS.combat.clearStatuses();
 	player.setWeapon(weapons.URTAHLB);
 	//player.weapon = weapons.URTAHLB;
 	startCombat(new MilkySuccubus(),true);

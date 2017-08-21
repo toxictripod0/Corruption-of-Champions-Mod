@@ -196,7 +196,7 @@ package classes.Scenes.Areas.Mountain
 				flags[kFLAGS.IZMA_WORMS_SCARED] = 1;
 				//clear status
 				kGAMECLASS.inCombat = false;
-				kGAMECLASS.combat.clearStatuses(false);
+				kGAMECLASS.combat.clearStatuses();
 				doNext(camp.returnToCampUseOneHour);
 				return;
 			}
