@@ -585,10 +585,6 @@ the text from being too boring.
 			registerClassAlias("Player", Player);
 			registerClassAlias("StatusEffectClass", StatusEffectClass);
 			registerClassAlias("VaginaClass", VaginaClass);
-			registerClassAlias("Neck", Neck);
-			registerClassAlias("Skin", Skin);
-			registerClassAlias("UnderBody", UnderBody);
-			//registerClassAlias("Enum", Enum);
 
 			//Hide sprites
 			mainView.hideSprite();
