@@ -1,4 +1,4 @@
-﻿//CoC Creature.as
+﻿﻿//CoC Creature.as
 package classes
 {
 	import classes.BodyParts.Neck;
@@ -918,20 +918,29 @@ package classes
 		
 		//{region StatusEffects
 		//Create a status
-		public function createStatusEffect(stype:StatusEffectType, value1:Number, value2:Number, value3:Number, value4:Number):void
+		public function createStatusEffect(stype:StatusEffectType, value1:Number, value2:Number, value3:Number, value4:Number, fireEvent:Boolean = true):StatusEffectClass
 		{
-			var newStatusEffect:StatusEffectClass = new StatusEffectClass(stype,value1,value2,value3,value4);
+			var newStatusEffect:StatusEffectClass = stype.create(this,value1,value2,value3,value4);
 			statusEffects.push(newStatusEffect);
-			//trace("createStatusEffect -> "+statusEffects.join(","));
-			//trace("NEW STATUS APPLIED TO PLAYER!: " + statusName);
+			if (fireEvent) newStatusEffect.onAttach();
+			return newStatusEffect;
 		}
 		
 		//Remove a status
-		public function removeStatusEffect(stype:StatusEffectType):void {
+		public function removeStatusEffect(stype:StatusEffectType, fireEvent:Boolean = true):StatusEffectClass
+		{
 			var counter:Number = indexOfStatusEffect(stype);
-			if (counter < 0) return;
+			if (counter < 0) return null;
+			var sec:StatusEffectClass = statusEffects[counter];
 			statusEffects.splice(counter, 1);
-			//trace("removeStatusEffect -> "+statusEffects.join(","));
+			if (fireEvent) sec.onRemove();
+			return sec;
+		}
+		public function removeStatusEffectInstance(sec:StatusEffectClass, fireEvent:Boolean = true):void {
+			var i:int = statusEffects.indexOf(sec);
+			if (i < 0) return;
+			statusEffects.splice(i, 1);
+			if (fireEvent) sec.onRemove();
 		}
 		
 		public function indexOfStatusEffect(stype:StatusEffectType):int {

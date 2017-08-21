@@ -385,7 +385,7 @@ package classes
 			player.removeStatuses();
 			if (statusTemp.length > 0) {
 				for (i = 0; i < statusTemp.length; i++) {
-					player.createStatusEffect(statusTemp[i].stype, statusTemp[i].value1, statusTemp[i].value2, statusTemp[i].value3, statusTemp[i].value4);
+					player.createStatusEffect(statusTemp[i].stype, statusTemp[i].value1, statusTemp[i].value2, statusTemp[i].value3, statusTemp[i].value4, false);
 				}
 			}
 			//Clear perks

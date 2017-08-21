@@ -3,14 +3,15 @@
  */
 package classes.StatusEffects
 {
-	import classes.StatusEffectType;
+import classes.StatusEffectClass;
+import classes.StatusEffectType;
 
-	public class CombatStatusEffect extends StatusEffectType
+	public class CombatStatusEffect extends StatusEffectClass
 	{
 
-		public function CombatStatusEffect(id:String)
+		public function CombatStatusEffect(stype:StatusEffectType)
 		{
-			super(id);
+			super(stype);
 		}
 	}
 }

@@ -1,4 +1,4 @@
-﻿//MARBLE_BOYS = Number of boys birthed
+﻿﻿//MARBLE_BOYS = Number of boys birthed
 //MARBLE_PURIFIED = Marble purified
 //CLARA_PURIFIED = Is clara purified?
 //CLARA_IMPRISONED = Is Clara Imprisoned?
@@ -1355,7 +1355,7 @@ package classes.Scenes.NPCs {
 		flags[kFLAGS.MARBLE_PURIFIED] = 1;
 		player.changeStatusValue(StatusEffects.Marble,4,10);
 		getGame().inCombat = false;
-		player.clearStatuses(false);
+		player.clearStatuses();
 		//Marble's breast size is set to 0 (integer, 0=DD cups, 1=G cups, 2=HH, 3=J)
 		//advance time of day by 4 hours
 		//end event

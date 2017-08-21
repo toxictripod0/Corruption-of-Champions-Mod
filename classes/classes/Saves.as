@@ -2099,7 +2099,8 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 					saveFile.data.statusAffects[i].value1,
 					saveFile.data.statusAffects[i].value2,
 					saveFile.data.statusAffects[i].value3,
-					saveFile.data.statusAffects[i].value4);
+					saveFile.data.statusAffects[i].value4,
+					false);
 				//trace("StatusEffect " + player.statusEffect(i).stype.id + " loaded.");
 		}
 		//Make sure keyitems exist!
