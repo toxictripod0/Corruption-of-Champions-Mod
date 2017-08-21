@@ -2566,6 +2566,11 @@ package classes.Scenes.Combat
 		//hit
 		public function tailWhipAttack():void {
 			clearOutput();
+			if (player.fatigue + player.physicalCost(15) > player.maxFatigue()) {
+				outputText("You are too tired to perform a tail whip.");
+				doNext(curry(combat.combatMenu,false));
+				return;
+			}
 			//miss
 			if ((player.hasStatusEffect(StatusEffects.Blind) && rand(2) == 0) || (monster.spe - player.spe > 0 && int(Math.random()*(((monster.spe-player.spe)/4)+80)) > 80)) {
 				outputText("Twirling like a top, you swing your tail, but connect with only empty air.");
@@ -2583,12 +2588,18 @@ package classes.Scenes.Combat
 				monster.addStatusValue(StatusEffects.CoonWhip,2,2);
 				if (player.tailType == TAIL_TYPE_RACCOON) monster.addStatusValue(StatusEffects.CoonWhip,2,2);
 			}
+			player.changeFatigue(15,2);
 			outputText("\n\n");
 			monster.doAI();
 		}
 		
 		public function tailSlapAttack():void {
 			clearOutput();
+			if (player.fatigue + player.physicalCost(30) > player.maxFatigue()) {
+				outputText("You are too tired to perform a tail slap.");
+				doNext(curry(combat.combatMenu,false));
+				return;
+			}
 			outputText("With a simple thought you set your tail ablaze.");
 			//miss
 			if((player.hasStatusEffect(StatusEffects.Blind) && rand(2) == 0) || (monster.spe - player.spe > 0 && int(Math.random()*(((monster.spe-player.spe)/4)+80)) > 80)) {
@@ -2603,7 +2614,7 @@ package classes.Scenes.Combat
 				outputText("  Your tail slams against " + monster.a + monster.short + ", dealing <b><font color=\"#800000\">" + damage + "</font></b> damage! ");
 				combat.checkAchievementDamage(damage);
 			}
-			player.changeFatigue(40,2);
+			player.changeFatigue(30,2);
 			outputText("\n\n");
 			monster.doAI();
 		}

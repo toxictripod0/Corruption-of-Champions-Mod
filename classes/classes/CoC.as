@@ -466,8 +466,8 @@ the text from being too boring.
 			 * Debug, Version, etc
 			 */
 			debug = false; //DEBUG, used all over the place
-			ver = "1.0.2_mod_1.4.8"; //Version NUMBER
-			version = ver + " (<b>COCKatrices ahoy</b>)"; //Version TEXT
+			ver = "1.0.2_mod_1.4.9"; //Version NUMBER
+			version = ver + " (<b>Bug Fixfest</b>)"; //Version TEXT
 
 			//Indicates if building for mobile?
 			mobile = false;
