@@ -69,6 +69,7 @@ Applies the color to the bodypart
 
 ### toObject()
 Returns an object with all the public propertys that should be stored in a save file.
+
 Used in:
 - `Neck`
 - `RearBody`
