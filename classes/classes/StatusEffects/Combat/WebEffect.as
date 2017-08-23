@@ -18,13 +18,7 @@ public class WebEffect extends CombatStatusEffect{
 	}
 	public function increase():void {
 		//Only apply as much speed slow as necessary.
-		var amount:Number = 25;
-		if (host.spe - amount < 1) {
-			amount = host.spe - 1;
-		}
-		//Apply changes, display arrows, and track speed lost
-		host.spe -= amount;
-		if (playerHost) showStatDown('spe');
+		var amount:Number = host.dynStats('spe',-25).spe;
 		value1 += amount;
 	}
 }

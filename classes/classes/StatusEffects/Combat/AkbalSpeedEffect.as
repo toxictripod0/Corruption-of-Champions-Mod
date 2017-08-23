@@ -12,15 +12,13 @@ public class AkbalSpeedEffect extends CombatStatusEffect {
 
 
 	override public function onCombatEnd():void {
-		if (playerHost) dynStats("spe", -value1);
-		else host.spe -= value1;
+		host.spe -= value1;
 		super.onCombatEnd();
 	}
 
 	public function increase():void {
-		value1 = player.spe / 5 * -1;
-		if (playerHost) value1 = dynStats("spe", value1).spe;
-		else host.spe += value1;
+		value1 = host.spe / 5 * -1;
+		value1 = host.dynStats("spe", value1).spe;
 	}
 }
 }

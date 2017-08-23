@@ -59,7 +59,7 @@ public function HPChange(changeNum:Number, display:Boolean):Number
 			mainView.statsView.showStatDown( 'hp' );
 		}
 	}
-	dynStats("lust", 0, "resisted", false) //Workaround to showing the arrow.
+	player.dynStats("lust", 0, "resisted", false) //Workaround to showing the arrow.
 	statScreenRefresh();
 	return player.HP - before;
 }
@@ -639,29 +639,11 @@ public function awardAchievement(title:String, achievement:*, display:Boolean = 
 	else outputText("\n<b>ERROR: Invalid achievement!</b>");
 }
 
-// returns OLD OP VAL
-public function applyOperator(old:Number, op:String, val:Number):Number {
-	switch(op) {
-		case "=":
-			return val;
-		case "+":
-			return old + val;
-		case "-":
-			return old - val;
-		case "*":
-			return old * val;
-		case "/":
-			return old / val;
-		default:
-			trace("applyOperator(" + old + ",'" + op + "'," + val + ") unknown op");
-			return old;
-	}
-}
 
 public function testDynStatsEvent():void {
 	clearOutput();
 	outputText("Old: "+player.str+" "+player.tou+" "+player.spe+" "+player.inte+" "+player.lib+" "+player.sens+" "+player.lust+"\n");
-	dynStats("tou", 1, "spe+", 2, "int-", 3, "lib*", 2, "sen=", 25,"lust/",2);
+	player.dynStats("tou", 1, "spe+", 2, "int-", 3, "lib*", 2, "sen=", 25,"lust/",2);
 	outputText("Mod: 0 1 +2 -3 *2 =25 /2\n");
 	outputText("New: "+player.str+" "+player.tou+" "+player.spe+" "+player.inte+" "+player.lib+" "+player.sens+" "+player.lust+"\n");
 	doNext(playerMenu);
@@ -677,237 +659,10 @@ public function testDynStatsEvent():void {
  *
  * @return Object of (newStat-oldStat) with keys str, tou, spe, int, lib, sen, lus, cor
  * */
-public function dynStats(... args):Object
-{
-	Begin("engineCore","dynStats");
-	// Check num of args, we should have a multiple of 2
-	if ((args.length % 2) != 0)
-	{
-		trace("dynStats aborted. Keys->Arguments could not be matched");
-		Profiling.End("engineCore","dynStats");
-		return {str:0,tou:0,spe:0,int:0,lib:0,sen:0,lus:0,cor:0};
-	}
-	
-	var argNamesFull:Array 	= 	["strength", "toughness", "speed", "intellect", "libido", "sensitivity", "lust", "corruption", "resisted", "noBimbo"]; // In case somebody uses full arg names etc
-	var argNamesShort:Array = 	["str", 	"tou", 	"spe", 	"int", 	"lib", 	"sen", 	"lus", 	"cor", 	"res", 	"bim"]; // Arg names
-	var argVals:Array = 		[0, 		0,	 	0, 		0, 		0, 		0, 		0, 		0, 		true, 	false]; // Default arg values
-	var argOps:Array = 			["+",	"+",    "+",    "+",    "+",    "+",    "+",    "+",    "=",    "="];   // Default operators
-	
-	for (var i:int = 0; i < args.length; i += 2)
-	{
-		if (typeof(args[i]) == "string")
-		{
-			// Make sure the next arg has the POSSIBILITY of being correct
-			if ((typeof(args[i + 1]) != "number") && (typeof(args[i + 1]) != "boolean"))
-			{
-				trace("dynStats aborted. Next argument after argName is invalid! arg is type " + typeof(args[i + 1]));
-				continue;
-			}
-			
-			var argIndex:int = -1;
-			
-			// Figure out which array to search
-			var argsi:String = (args[i] as String);
-			if (argsi == "lust") argsi = "lus";
-			if (argsi == "sens") argsi = "sen";
-			if (argsi == "inte") argsi = "int";
-			if (argsi.length <= 4) // Short
-			{
-				argIndex = argNamesShort.indexOf(argsi.slice(0, 3));
-				if (argsi.length == 4 && argIndex != -1) argOps[argIndex] = argsi.charAt(3);
-			}
-			else // Full
-			{
-				if ("+-*/=".indexOf(argsi.charAt(argsi.length - 1)) != -1) {
-					argIndex = argNamesFull.indexOf(argsi.slice(0, argsi.length - 1));
-					if (argIndex != -1) argOps[argIndex] = argsi.charAt(argsi.length - 1);
-				} else {
-					argIndex = argNamesFull.indexOf(argsi);
-				}
-			}
-			
-			if (argIndex == -1) // Shit fucked up, welp
-			{
-				trace("Couldn't find the arg name " + argsi + " in the index arrays. Welp!");
-				continue;
-			}
-			else // Stuff the value into our "values" array
-			{
-				argVals[argIndex] = args[i + 1];
-			}
-		}
-		else
-		{
-			trace("dynStats aborted. Expected a key and got SHIT");
-			Profiling.End("engineCore","dynStats");
-			return {str:0,tou:0,spe:0,int:0,lib:0,sen:0,lus:0,cor:0};
-		}
-	}
-	// Got this far, we have values to statsify
-	var newStr:Number = applyOperator(player.str, argOps[0], argVals[0]);
-	var newTou:Number = applyOperator(player.tou, argOps[1], argVals[1]);
-	var newSpe:Number = applyOperator(player.spe, argOps[2], argVals[2]);
-	var newInte:Number = applyOperator(player.inte, argOps[3], argVals[3]);
-	var newLib:Number = applyOperator(player.lib, argOps[4], argVals[4]);
-	var newSens:Number = applyOperator(player.sens, argOps[5], argVals[5]);
-	var newLust:Number = applyOperator(player.lust, argOps[6], argVals[6]);
-	var newCor:Number = applyOperator(player.cor, argOps[7], argVals[7]);
-	// Because lots of checks and mods are made in the stats(), calculate deltas and pass them. However, this means that the '=' operator could be resisted
-	// In future (as I believe) stats() should be replaced with dynStats(), and checks and mods should be made here
-	var r:Object = stats(newStr - player.str,
-		  newTou - player.tou,
-		  newSpe - player.spe,
-		  newInte - player.inte,
-		  newLib - player.lib,
-		  newSens - player.sens,
-		  newLust - player.lust,
-		  newCor - player.cor,
-		  argVals[8],argVals[9]);
-	End("engineCore","dynStats");
-	return r;
+public function dynStats(... args):Object {
+	return player.dynStats.apply(player,args);
 }
 
-private function stats(stre:Number, toug:Number, spee:Number, intel:Number, libi:Number, sens:Number, lust2:Number, corr:Number, resisted:Boolean = true, noBimbo:Boolean = false):Object
-{
-	//Easy mode cuts lust gains!
-	if (flags[kFLAGS.EASY_MODE_ENABLE_FLAG] == 1 && lust2 > 0 && resisted) lust2 /= 2;
-	var prevStr:Number  = player.str;
-	var prevTou:Number  = player.tou;
-	var prevSpe:Number  = player.spe;
-	var prevInt:Number  = player.inte;
-	var prevLib:Number  = player.lib;
-	var prevSen:Number  = player.sens;
-	var prevLus:Number  = player.lust;
-	var prevCor:Number  = player.cor;
-
-	//Set original values to begin tracking for up/down values if
-	//they aren't set yet.
-	//These are reset when up/down arrows are hidden with 
-	//hideUpDown();
-	//Just check str because they are either all 0 or real values
-	if (oldStats.oldStr == 0) {
-		oldStats.oldStr = player.str;
-		oldStats.oldTou = player.tou;
-		oldStats.oldSpe = player.spe;
-		oldStats.oldInte = player.inte;
-		oldStats.oldLib = player.lib;
-		oldStats.oldSens = player.sens;
-		oldStats.oldCor = player.cor;
-		oldStats.oldHP = player.HP;
-		oldStats.oldLust = player.lust;
-		oldStats.oldFatigue = player.fatigue;
-		oldStats.oldHunger = player.hunger;
-	}
-	//MOD CHANGES FOR PERKS
-	//Bimbos learn slower
-	if (!noBimbo)
-	{
-		if (player.findPerk(PerkLib.FutaFaculties) >= 0 || player.findPerk(PerkLib.BimboBrains) >= 0  || player.findPerk(PerkLib.BroBrains) >= 0) {
-			if (intel > 0) intel /= 2;
-			if (intel < 0) intel *= 2;
-		}
-		if (player.findPerk(PerkLib.FutaForm) >= 0 || player.findPerk(PerkLib.BimboBody) >= 0  || player.findPerk(PerkLib.BroBody) >= 0) {
-			if (libi > 0) libi *= 2;
-			if (libi < 0) libi /= 2;
-		}
-	}
-	
-	// Uma's Perkshit
-	if (player.findPerk(PerkLib.ChiReflowSpeed)>=0 && spee < 0) spee *= UmasShop.NEEDLEWORK_SPEED_SPEED_MULTI;
-	if (player.findPerk(PerkLib.ChiReflowLust)>=0 && libi > 0) libi *= UmasShop.NEEDLEWORK_LUST_LIBSENSE_MULTI;
-	if (player.findPerk(PerkLib.ChiReflowLust)>=0 && sens > 0) sens *= UmasShop.NEEDLEWORK_LUST_LIBSENSE_MULTI;
-	
-	//Apply lust changes in NG+.
-	if (resisted) lust2 *= 1 + (player.newGamePlusMod() * 0.2);
-	
-	//lust resistance
-	if (lust2 > 0 && resisted) lust2 *= player.lustPercent()/100;
-	if (libi > 0 && player.findPerk(PerkLib.PurityBlessing) >= 0) libi *= 0.75;
-	if (corr > 0 && player.findPerk(PerkLib.PurityBlessing) >= 0) corr *= 0.5;
-	if (corr > 0 && player.findPerk(PerkLib.PureAndLoving) >= 0) corr *= 0.75;
-	if (corr > 0 && player.weapon == weapons.HNTCANE) corr *= 0.5;
-	if (player.findPerk(PerkLib.AscensionMoralShifter) >= 0) corr *= 1 + (player.perkv1(PerkLib.AscensionMoralShifter) * 0.2);
-	//Change original stats
-	player.str+=stre;
-	player.tou+=toug;
-	player.spe+=spee;
-	player.inte+=intel;
-	player.lib += libi;
-	//Add HP for toughness change.
-	if (toug > 0) HPChange(toug * 2, false);
-
-	if (player.sens > 50 && sens > 0) sens/=2;
-	if (player.sens > 75 && sens > 0) sens/=2;
-	if (player.sens > 90 && sens > 0) sens/=2;
-	if (player.sens > 50 && sens < 0) sens*=2;
-	if (player.sens > 75 && sens < 0) sens*=2;
-	if (player.sens > 90 && sens < 0) sens*=2;
-	
-	player.sens+=sens;
-	player.lust+=lust2;
-	player.cor += corr;
-	
-	//Bonus gain for perks!
-	if (player.findPerk(PerkLib.Strong) >= 0 && stre >= 0) player.str+=stre*player.perk(player.findPerk(PerkLib.Strong)).value1;
-	if (player.findPerk(PerkLib.Tough) >= 0 && toug >= 0) player.tou+=toug*player.perk(player.findPerk(PerkLib.Tough)).value1;
-	if (player.findPerk(PerkLib.Fast) >= 0 && spee >= 0) player.spe+=spee*player.perk(player.findPerk(PerkLib.Fast)).value1;
-	if (player.findPerk(PerkLib.Smart) >= 0 && intel >= 0) player.inte+=intel*player.perk(player.findPerk(PerkLib.Smart)).value1;
-	if (player.findPerk(PerkLib.Lusty) >= 0 && libi >= 0) player.lib+=libi*player.perk(player.findPerk(PerkLib.Lusty)).value1;
-	if (player.findPerk(PerkLib.Sensitive) >= 0 && sens >= 0) player.sens += sens * player.perk(player.findPerk(PerkLib.Sensitive)).value1;
-	
-	//Keep stats in bounds
-	var maxes:Object = player.getAllMaxStats();
-	//Minimum libido. Rewritten.
-	var minLib:Number = 0;
-
-	if (player.gender > 0) minLib = 15;
-	else minLib = 10;
-
-	if (player.armorName == "lusty maiden's armor") {
-		if (minLib < 50)
-		{
-			minLib = 50;
-		}
-	}
-	if (minLib < (player.minLust() * 2 / 3))
-	{
-		minLib = (player.minLust() * 2 / 3);
-	}
-	if (player.jewelryEffectId == JewelryLib.PURITY)
-	{
-		minLib -= player.jewelryEffectMagnitude;
-	}
-	if (player.findPerk(PerkLib.PurityBlessing) >= 0) {
-		minLib -= 2;
-	}
-	if (player.findPerk(PerkLib.HistoryReligious) >= 0) {
-		minLib -= 2;
-	}
-	player.cor = Utils.boundFloat(0,player.cor,100);
-	player.str = Utils.boundFloat(1,player.str,maxes.str);
-	player.tou = Utils.boundFloat(1,player.tou,maxes.tou);
-	player.spe = Utils.boundFloat(1,player.spe,maxes.spe);
-	player.inte = Utils.boundFloat(1,player.inte,maxes.inte);
-	player.lib = Utils.boundFloat(minLib,player.lib,100);
-	player.sens = Utils.boundFloat(10,player.sens,100);
-	player.HP = Utils.boundFloat(-Infinity,player.HP,maxHP());
-	player.lust = Utils.boundFloat(player.minLust(),player.lust,player.maxLust());
-
-	//Refresh the stat pane with updated values
-	//mainView.statsView.showUpDown();
-	showUpDown();
-	statScreenRefresh();
-	return {
-		str:prevStr-stre,
-		tou:prevTou-toug,
-		spe:prevSpe-spee,
-		int:prevInt-intel,
-		lib:prevLib-libi,
-		sen:prevSen-sens,
-		lus:prevLus-lust2,
-		cor:prevCor-corr
-	};
-}
 	
 public function showUpDown():void { //Moved from StatsView.
 	function _oldStatNameFor(statName:String):String {

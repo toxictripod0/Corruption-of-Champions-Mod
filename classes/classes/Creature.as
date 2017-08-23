@@ -6,13 +6,17 @@ package classes
 	import classes.BodyParts.Skin;
 	import classes.BodyParts.UnderBody;
 	import classes.BodyParts.Wings;
-	import classes.GlobalFlags.kGAMECLASS;
+import classes.GlobalFlags.kGAMECLASS;
+import classes.GlobalFlags.kGAMECLASS;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Items.JewelryLib;
-	import classes.internals.Utils;
+import classes.internals.Profiling;
+import classes.internals.Utils;
 	import classes.Scenes.Places.TelAdre.UmasShop;
+import classes.internals.profiling.Begin;
+import classes.internals.profiling.End;
 
-	import flash.errors.IllegalOperationError;
+import flash.errors.IllegalOperationError;
 
 	public class Creature extends Utils
 	{
@@ -148,6 +152,66 @@ package classes
 		public function get fatigue100():Number { return 100*fatigue/maxFatigue(); }
 		public function get hp100():Number { return 100*HP/maxHP(); }
 		public function get lust100():Number { return 100*lust/maxLust(); }
+
+		/**
+		 * @return keys: str, tou, spe, inte
+		 */
+		public function getAllMaxStats():Object {
+			return {
+				str:100,
+				tou:100,
+				spe:100,
+				inte:100
+			};
+		}
+
+		/**
+		 * Modify stats.
+		 *
+		 * Arguments should come in pairs nameOp:String, value:Number/Boolean <br/>
+		 * where nameOp is ( stat_name + [operator] ) and value is operator argument<br/>
+		 * valid operators are "=" (set), "+", "-", "*", "/", add is default.<br/>
+		 * valid stat_names are "str", "tou", "spe", "int", "lib", "sen", "lus", "cor" or their full names; also "resisted"/"res" (apply lust resistance, default true) and "noBimbo"/"bim" (do not apply bimbo int gain reduction, default false)
+		 *
+		 * @return Object of (newStat-oldStat) with keys str, tou, spe, int, lib, sen, lus, cor
+		 * */
+		public function dynStats(... args):Object {
+			Begin("Creature","dynStats");
+			var argz:Object = parseDynStatsArgs(this, args);
+			var prevStr:Number  = str;
+			var prevTou:Number  = tou;
+			var prevSpe:Number  = spe;
+			var prevInt:Number  = inte;
+			var prevLib:Number  = lib;
+			var prevSen:Number  = sens;
+			var prevLus:Number  = lust;
+			var prevCor:Number  = cor;
+			modStats(argz.str, argz.tou, argz.spe, argz.inte, argz.lib, argz.sens, argz.lust, argz.cor, argz.resisted,argz.noBimbo);
+			End("Creature","dynStats");
+			return {
+				str:str-prevStr,
+				tou:tou-prevTou,
+				spe:spe-prevSpe,
+				int:inte-prevInt,
+				lib:lib-prevLib,
+				sen:sens-prevSen,
+				lus:lust-prevLus,
+				cor:cor-prevCor
+			};
+		}
+		public function modStats(dstr:Number, dtou:Number, dspe:Number, dinte:Number, dlib:Number, dsens:Number, dlust:Number, dcor:Number, resisted:Boolean = true, noBimbo:Boolean = false):void {
+
+			var maxes:Object = getAllMaxStats();
+			str = Utils.boundFloat(1,str+dstr,maxes.str);
+			tou = Utils.boundFloat(1,tou+dtou,maxes.tou);
+			spe = Utils.boundFloat(1,spe+dspe,maxes.spe);
+			inte = Utils.boundFloat(1,inte+dinte,maxes.inte);
+			lib = Utils.boundFloat(1,lib+dlib,100);
+			sens = Utils.boundFloat(10,sens+dsens,100);
+			lust = Utils.boundFloat(0,lust+dlust,maxLust());
+			cor = Utils.boundFloat(0,cor+dcor,100);
+			if (dtou>0) HP = Utils.boundFloat(-Infinity,HP+dtou*2,maxHP());
+		}
 
 		//Appearance Variables
 		/**
@@ -589,7 +653,7 @@ package classes
 		//Functions			
 		public function orgasmReal():void
 		{
-			game.dynStats("lus=", 0, "res", false);
+			dynStats("lus=", 0, "res", false);
 			hoursSinceCum = 0;
 			flags[kFLAGS.TIMES_ORGASMED]++;
 			
@@ -3679,7 +3743,7 @@ package classes
 			//Take damage you masochist!
 			if (hasPerk(PerkLib.Masochist) && lib >= 60) {
 				mult *= 0.8;
-				if (short == game.player.short && !displayMode) game.dynStats("lus", 2);
+				if (short == game.player.short && !displayMode) dynStats("lus", 2);
 			}
 			if (hasPerk(PerkLib.ImmovableObject) && tou >= 75) {
 				mult *= 0.9;
@@ -3868,6 +3932,115 @@ package classes
 		public function fatigueLeft():Number
 		{
 			return maxFatigue() - fatigue;
+		}
+		// returns OLD OP VAL
+		public static function applyOperator(old:Number, op:String, val:Number):Number {
+			switch(op) {
+				case "=":
+					return val;
+				case "+":
+					return old + val;
+				case "-":
+					return old - val;
+				case "*":
+					return old * val;
+				case "/":
+					return old / val;
+				default:
+					trace("applyOperator(" + old + ",'" + op + "'," + val + ") unknown op");
+					return old;
+			}
+		}
+		/**
+		 * Generate increments for stats
+		 *
+		 * @return Object of (newStat-oldStat) with keys str, tou, spe, int, lib, sen, lus, cor, resisted, noBimbo
+		 * */
+		public static function parseDynStatsArgs(c:Creature, args:Array):Object {
+			// Check num of args, we should have a multiple of 2
+			if ((args.length % 2) != 0)
+			{
+				trace("dynStats aborted. Keys->Arguments could not be matched");
+				return {str:0,tou:0,spe:0,int:0,lib:0,sen:0,lus:0,cor:0};
+			}
+
+			var argNamesFull:Array 	= 	["strength", "toughness", "speed", "intellect", "libido", "sensitivity", "lust", "corruption", "resisted", "noBimbo"]; // In case somebody uses full arg names etc
+			var argNamesShort:Array = 	["str", 	"tou", 	"spe", 	"int", 	"lib", 	"sen", 	"lus", 	"cor", 	"res", 	"bim"]; // Arg names
+			var argVals:Array = 		[0, 		0,	 	0, 		0, 		0, 		0, 		0, 		0, 		true, 	false]; // Default arg values
+			var argOps:Array = 			["+",	"+",    "+",    "+",    "+",    "+",    "+",    "+",    "=",    "="];   // Default operators
+
+			for (var i:int = 0; i < args.length; i += 2)
+			{
+				if (typeof(args[i]) == "string")
+				{
+					// Make sure the next arg has the POSSIBILITY of being correct
+					if ((typeof(args[i + 1]) != "number") && (typeof(args[i + 1]) != "boolean"))
+					{
+						trace("dynStats aborted. Next argument after argName is invalid! arg is type " + typeof(args[i + 1]));
+						continue;
+					}
+
+					var argIndex:int = -1;
+
+					// Figure out which array to search
+					var argsi:String = (args[i] as String);
+					if (argsi == "lust") argsi = "lus";
+					if (argsi == "sens") argsi = "sen";
+					if (argsi == "inte") argsi = "int";
+					if (argsi.length <= 4) // Short
+					{
+						argIndex = argNamesShort.indexOf(argsi.slice(0, 3));
+						if (argsi.length == 4 && argIndex != -1) argOps[argIndex] = argsi.charAt(3);
+					}
+					else // Full
+					{
+						if ("+-*/=".indexOf(argsi.charAt(argsi.length - 1)) != -1) {
+							argIndex = argNamesFull.indexOf(argsi.slice(0, argsi.length - 1));
+							if (argIndex != -1) argOps[argIndex] = argsi.charAt(argsi.length - 1);
+						} else {
+							argIndex = argNamesFull.indexOf(argsi);
+						}
+					}
+
+					if (argIndex == -1) // Shit fucked up, welp
+					{
+						trace("Couldn't find the arg name " + argsi + " in the index arrays. Welp!");
+						continue;
+					}
+					else // Stuff the value into our "values" array
+					{
+						argVals[argIndex] = args[i + 1];
+					}
+				}
+				else
+				{
+					trace("dynStats aborted. Expected a key and got SHIT");
+					return {str:0,tou:0,spe:0,int:0,lib:0,sen:0,lus:0,cor:0};
+				}
+			}
+			// Got this far, we have values to statsify
+			var newStr:Number = applyOperator(c.str, argOps[0], argVals[0]);
+			var newTou:Number = applyOperator(c.tou, argOps[1], argVals[1]);
+			var newSpe:Number = applyOperator(c.spe, argOps[2], argVals[2]);
+			var newInte:Number = applyOperator(c.inte, argOps[3], argVals[3]);
+			var newLib:Number = applyOperator(c.lib, argOps[4], argVals[4]);
+			var newSens:Number = applyOperator(c.sens, argOps[5], argVals[5]);
+			var newLust:Number = applyOperator(c.lust, argOps[6], argVals[6]);
+			var newCor:Number = applyOperator(c.cor, argOps[7], argVals[7]);
+			// Because lots of checks and mods are made in the stats(), calculate deltas and pass them. However, this means that the '=' operator could be resisted
+			// In future (as I believe) stats() should be replaced with dynStats(), and checks and mods should be made here
+			return {
+				str     : newStr - c.str,
+				tou     : newTou - c.tou,
+				spe     : newSpe - c.spe,
+				int     : newInte - c.inte,
+				lib     : newLib - c.lib,
+				sen     : newSens - c.sens,
+				lus     : newLust - c.lust,
+				cor     : newCor - c.cor,
+				resisted: argVals[8],
+				noBimbo : argVals[9]
+			};
 		}
 	}
 }
