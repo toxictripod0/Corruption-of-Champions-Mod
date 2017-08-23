@@ -19,7 +19,7 @@ public class AkbalSpeedEffect extends CombatStatusEffect {
 
 	public function increase():void {
 		value1 = player.spe / 5 * -1;
-		if (playerHost) dynStats("spe", value1);
+		if (playerHost) value1 = dynStats("spe", value1).spe;
 		else host.spe += value1;
 	}
 }

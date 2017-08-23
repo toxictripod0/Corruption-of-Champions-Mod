@@ -96,7 +96,7 @@ use namespace kGAMECLASS;
 		public var itemSlots:/*ItemSlotClass*/Array;
 		
 		public var prisonItemSlots:Array = [];
-		public var previouslyWornClothes:/*Armor*/Array = []; //For tracking achievement.
+		public var previouslyWornClothes:/*String*/Array = []; //For tracking achievement.
 		
 		private var _weapon:Weapon = WeaponLib.FISTS;
 		private var _armor:Armor = ArmorLib.COMFORTABLE_UNDERCLOTHES;
@@ -2695,6 +2695,9 @@ use namespace kGAMECLASS;
 			 */
 			else return 100;
 		}
+		/**
+		 * @return keys: str, tou, spe, inte
+		 */
 		public function getAllMaxStats():Object {
 			var maxStr:int = 100;
 			var maxTou:int = 100;

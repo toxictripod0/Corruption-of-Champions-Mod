@@ -1,4 +1,4 @@
-﻿﻿//MARBLE_BOYS = Number of boys birthed
+﻿//MARBLE_BOYS = Number of boys birthed
 //MARBLE_PURIFIED = Marble purified
 //CLARA_PURIFIED = Is clara purified?
 //CLARA_IMPRISONED = Is Clara Imprisoned?
@@ -1515,7 +1515,7 @@ package classes.Scenes.NPCs {
 			//Restore 30 fatigue
 			player.changeFatigue(-30);
 			//increase lust by 15
-			kGAMECLASS.stats(0,0,0,0,0,0,15,0);
+			dynStats("lus",15);
 			//increase Marble lust by 10
 			flags[kFLAGS.MARBLE_LUST] += 10;
 			flags[kFLAGS.MARBLE_TIME_SINCE_NURSED_IN_HOURS] = 0;

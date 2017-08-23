@@ -41,7 +41,7 @@ package classes
 			}
 
 		public function create(host:Creature,value1:Number, value2:Number, value3:Number, value4:Number):StatusEffectClass {
-			var sec:StatusEffectClass = _secClazz.length == 2 ? new _secClazz(this,host) : new _secClazz(host);
+			var sec:StatusEffectClass = _secClazz.length == 2 ? new _secClazz(this,host) : new _secClazz(this);
 			sec.value1 = value1;
 			sec.value2 = value2;
 			sec.value3 = value3;

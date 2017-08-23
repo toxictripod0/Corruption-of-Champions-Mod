@@ -1,4 +1,4 @@
-import classes.*;
+﻿import classes.*;
 import flash.text.TextFormat;
 
 // at least one import or other usage of *class* so it won't be marked unused.
@@ -674,8 +674,10 @@ public function testDynStatsEvent():void {
  * where nameOp is ( stat_name + [operator] ) and value is operator argument<br/>
  * valid operators are "=" (set), "+", "-", "*", "/", add is default.<br/>
  * valid stat_names are "str", "tou", "spe", "int", "lib", "sen", "lus", "cor" or their full names; also "resisted"/"res" (apply lust resistance, default true) and "noBimbo"/"bim" (do not apply bimbo int gain reduction, default false)
- */
-public function dynStats(... args):void
+ *
+ * @return Object of (newStat-oldStat) with keys str, tou, spe, int, lib, sen, lus, cor
+ * */
+public function dynStats(... args):Object
 {
 	Begin("engineCore","dynStats");
 	// Check num of args, we should have a multiple of 2
@@ -683,7 +685,7 @@ public function dynStats(... args):void
 	{
 		trace("dynStats aborted. Keys->Arguments could not be matched");
 		Profiling.End("engineCore","dynStats");
-		return;
+		return {str:0,tou:0,spe:0,int:0,lib:0,sen:0,lus:0,cor:0};
 	}
 	
 	var argNamesFull:Array 	= 	["strength", "toughness", "speed", "intellect", "libido", "sensitivity", "lust", "corruption", "resisted", "noBimbo"]; // In case somebody uses full arg names etc
@@ -738,7 +740,7 @@ public function dynStats(... args):void
 		{
 			trace("dynStats aborted. Expected a key and got SHIT");
 			Profiling.End("engineCore","dynStats");
-			return;
+			return {str:0,tou:0,spe:0,int:0,lib:0,sen:0,lus:0,cor:0};
 		}
 	}
 	// Got this far, we have values to statsify
@@ -752,7 +754,7 @@ public function dynStats(... args):void
 	var newCor:Number = applyOperator(player.cor, argOps[7], argVals[7]);
 	// Because lots of checks and mods are made in the stats(), calculate deltas and pass them. However, this means that the '=' operator could be resisted
 	// In future (as I believe) stats() should be replaced with dynStats(), and checks and mods should be made here
-	stats(newStr - player.str,
+	var r:Object = stats(newStr - player.str,
 		  newTou - player.tou,
 		  newSpe - player.spe,
 		  newInte - player.inte,
@@ -762,13 +764,22 @@ public function dynStats(... args):void
 		  newCor - player.cor,
 		  argVals[8],argVals[9]);
 	End("engineCore","dynStats");
+	return r;
 }
 
-public function stats(stre:Number, toug:Number, spee:Number, intel:Number, libi:Number, sens:Number, lust2:Number, corr:Number, resisted:Boolean = true, noBimbo:Boolean = false):void
+private function stats(stre:Number, toug:Number, spee:Number, intel:Number, libi:Number, sens:Number, lust2:Number, corr:Number, resisted:Boolean = true, noBimbo:Boolean = false):Object
 {
 	//Easy mode cuts lust gains!
 	if (flags[kFLAGS.EASY_MODE_ENABLE_FLAG] == 1 && lust2 > 0 && resisted) lust2 /= 2;
-	
+	var prevStr:Number  = player.str;
+	var prevTou:Number  = player.tou;
+	var prevSpe:Number  = player.spe;
+	var prevInt:Number  = player.inte;
+	var prevLib:Number  = player.lib;
+	var prevSen:Number  = player.sens;
+	var prevLus:Number  = player.lust;
+	var prevCor:Number  = player.cor;
+
 	//Set original values to begin tracking for up/down values if
 	//they aren't set yet.
 	//These are reset when up/down arrows are hidden with 
@@ -822,7 +833,9 @@ public function stats(stre:Number, toug:Number, spee:Number, intel:Number, libi:
 	player.spe+=spee;
 	player.inte+=intel;
 	player.lib += libi;
-	
+	//Add HP for toughness change.
+	if (toug > 0) HPChange(toug * 2, false);
+
 	if (player.sens > 50 && sens > 0) sens/=2;
 	if (player.sens > 75 && sens > 0) sens/=2;
 	if (player.sens > 90 && sens > 0) sens/=2;
@@ -843,24 +856,13 @@ public function stats(stre:Number, toug:Number, spee:Number, intel:Number, libi:
 	if (player.findPerk(PerkLib.Sensitive) >= 0 && sens >= 0) player.sens += sens * player.perk(player.findPerk(PerkLib.Sensitive)).value1;
 	
 	//Keep stats in bounds
-	if (player.cor < 0) player.cor = 0;
-	if (player.cor > 100) player.cor= 100;
-	if (player.str > player.getMaxStats("str")) player.str = player.getMaxStats("str");
-	if (player.str < 1) player.str = 1;
-	if (player.tou > player.getMaxStats("tou")) player.tou = player.getMaxStats("tou");
-	if (player.tou < 1) player.tou = 1;
-	if (player.spe > player.getMaxStats("spe")) player.spe = player.getMaxStats("spe");
-	if (player.spe < 1) player.spe = 1;
-	if (player.inte > player.getMaxStats("inte")) player.inte= player.getMaxStats("inte");
-	if (player.inte < 1) player.inte = 1;
-	if (player.lib > 100) player.lib = 100;
-	if (player.lib < 0) player.lib = 0;
+	var maxes:Object = player.getAllMaxStats();
 	//Minimum libido. Rewritten.
 	var minLib:Number = 0;
-	
+
 	if (player.gender > 0) minLib = 15;
 	else minLib = 10;
-	
+
 	if (player.armorName == "lusty maiden's armor") {
 		if (minLib < 50)
 		{
@@ -881,36 +883,30 @@ public function stats(stre:Number, toug:Number, spee:Number, intel:Number, libi:
 	if (player.findPerk(PerkLib.HistoryReligious) >= 0) {
 		minLib -= 2;
 	}
-	//Applies minimum libido.
-	if (player.lib < minLib)
-	{
-		player.lib = minLib;
-	}
-	
-	//Minimum sensitivity.
-	if (player.sens > 100) player.sens = 100;
-	if (player.sens < 10) player.sens = 10;
-	
-	//Add HP for toughness change.
-	if (toug > 0) HPChange(toug * 2, false);
-	//Reduce hp if over max
-	if (player.HP > maxHP()) player.HP = maxHP();
-	
-	//Combat bounds
-	if (player.lust > player.maxLust()) player.lust = player.maxLust();
-	//if (player.lust < player.lib) {
-	//        player.lust=player.lib;
-	//
-	//Update to minimum lust if lust falls below it.
-	if (player.lust < player.minLust()) player.lust = player.minLust();
-	//worms moved to minLust() in Player.as.
-	if (player.lust > player.maxLust()) player.lust = player.maxLust();
-	if (player.lust < 0) player.lust = 0;
+	player.cor = Utils.boundFloat(0,player.cor,100);
+	player.str = Utils.boundFloat(1,player.str,maxes.str);
+	player.tou = Utils.boundFloat(1,player.tou,maxes.tou);
+	player.spe = Utils.boundFloat(1,player.spe,maxes.spe);
+	player.inte = Utils.boundFloat(1,player.inte,maxes.inte);
+	player.lib = Utils.boundFloat(minLib,player.lib,100);
+	player.sens = Utils.boundFloat(10,player.sens,100);
+	player.HP = Utils.boundFloat(-Infinity,player.HP,maxHP());
+	player.lust = Utils.boundFloat(player.minLust(),player.lust,player.maxLust());
 
 	//Refresh the stat pane with updated values
 	//mainView.statsView.showUpDown();
 	showUpDown();
 	statScreenRefresh();
+	return {
+		str:prevStr-stre,
+		tou:prevTou-toug,
+		spe:prevSpe-spee,
+		int:prevInt-intel,
+		lib:prevLib-libi,
+		sen:prevSen-sens,
+		lus:prevLus-lust2,
+		cor:prevCor-corr
+	};
 }
 	
 public function showUpDown():void { //Moved from StatsView.
