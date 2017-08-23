@@ -1,4 +1,4 @@
-﻿﻿//CoC Creature.as
+﻿//CoC Creature.as
 package classes
 {
 	import classes.BodyParts.Neck;
@@ -8,13 +8,10 @@ package classes
 	import classes.BodyParts.Wings;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.GlobalFlags.kFLAGS;
-	import classes.PerkType;
-	import classes.StatusEffectType;
 	import classes.Items.JewelryLib;
 	import classes.internals.Utils;
-	import classes.VaginaClass;
 	import classes.Scenes.Places.TelAdre.UmasShop;
-	import flash.display.InteractiveObject;
+
 	import flash.errors.IllegalOperationError;
 
 	public class Creature extends Utils
@@ -925,7 +922,14 @@ package classes
 			if (fireEvent) newStatusEffect.onAttach();
 			return newStatusEffect;
 		}
-		
+		public function addStatusEffect(sec:StatusEffectClass,fireEvent:Boolean = true):void {
+			if (sec.host != this) {
+				sec.attach(this,fireEvent);
+			} else {
+				statusEffects.push(sec);
+				if (fireEvent) sec.onAttach();
+			}
+		}
 		//Remove a status
 		public function removeStatusEffect(stype:StatusEffectType, fireEvent:Boolean = true):StatusEffectClass
 		{

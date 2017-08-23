@@ -1,39 +1,23 @@
 ﻿//Combat 2.0
 package classes.Scenes.Combat 
 {
-	import classes.*;
-	import classes.internals.*;
-	import classes.GlobalFlags.*;
-	import classes.Items.*;
-	import classes.Scenes.Areas.Bog.*;
-	import classes.Scenes.Areas.Desert;
-	import classes.Scenes.Areas.Desert.*;
-	import classes.Scenes.Areas.Forest.*;
-	import classes.Scenes.Areas.GlacialRift.*;
-	import classes.Scenes.Areas.HighMountains.*;
-	import classes.Scenes.Areas.Lake.*;
-	import classes.Scenes.Areas.Mountain.*;
-	import classes.Scenes.Areas.Plains.*;
-	import classes.Scenes.Areas.Swamp.*;
-	import classes.Scenes.Areas.VolcanicCrag.*;
-	import classes.Scenes.Dungeons.DeepCave.*;
-	import classes.Scenes.Dungeons.DesertCave.*;
-	import classes.Scenes.Dungeons.D3.*;
-	import classes.Scenes.Dungeons.Factory.*;
-	import classes.Scenes.Dungeons.HelDungeon.*;
-	import classes.Scenes.Monsters.*;
-	import classes.Scenes.NPCs.*;
-	import classes.Scenes.Places.Boat.*;
-	import classes.Scenes.Places.Farm.*;
-	import classes.Scenes.Places.Owca.*;
-	import classes.Scenes.Places.Prison.*;
-	import classes.Scenes.Quests.UrtaQuest.*;
-	import classes.Scenes.Places.TelAdre.UmasShop;
+import classes.*;
+import classes.GlobalFlags.*;
+import classes.Items.*;
+import classes.Scenes.Areas.Desert.*;
+import classes.Scenes.Areas.Forest.*;
+import classes.Scenes.Areas.GlacialRift.*;
+import classes.Scenes.Areas.HighMountains.*;
+import classes.Scenes.Areas.Mountain.*;
+import classes.Scenes.Dungeons.D3.*;
+import classes.Scenes.Dungeons.HelDungeon.*;
+import classes.Scenes.Monsters.*;
+import classes.Scenes.NPCs.*;
+import classes.Scenes.Places.TelAdre.UmasShop;
 
-	import coc.view.MainView;
-	import classes.internals.Utils;
+import coc.view.MainView;
 
-	public class Combat extends BaseContent
+public class Combat extends BaseContent
 	{
 		public function Combat() {}
 		
@@ -1371,6 +1355,10 @@ package classes.Scenes.Combat
 		//Clear statuses
 		public function clearStatuses():void {
 			player.clearStatuses();
+			for (var a:/*StatusEffectClass*/Array=monster.statusEffects.slice(),n:int=a.length,i:int=0;i<n;i++) {
+				// Using a copy of array because some effects will be removed
+				a[i].onCombatEnd();
+			}
 		}
 		//Update combat status effects
 		private function combatStatusesUpdate():void {

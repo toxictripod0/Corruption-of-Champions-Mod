@@ -3,7 +3,7 @@
 	public class StatusEffectClass extends BaseContent
 	{
 		//constructor
-		public function StatusEffectClass(stype:StatusEffectType,host:Creature)
+		public function StatusEffectClass(stype:StatusEffectType)
 		{
 			this._stype = stype;
 		}
@@ -55,6 +55,14 @@
 		}
 		public function remove(fireEvent:Boolean = true):void {
 			_host.removeStatusEffectInstance(this,fireEvent);
+		}
+		public function attach(host:Creature,fireEvent:Boolean = true):void {
+			_host = host;
+			host.addStatusEffect(this,fireEvent);
+		}
+
+		protected static function register(id:String,statusEffectClass:Class = null):StatusEffectType {
+			return new StatusEffectType(id,statusEffectClass || StatusEffectClass);
 		}
 	}
 }

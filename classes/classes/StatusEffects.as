@@ -1,6 +1,7 @@
 package classes
 {
-	import classes.StatusEffects.CombatStatusEffect;
+import classes.StatusEffects.Combat.*;
+import classes.StatusEffects.CombatStatusEffect;
 
 	/**
 	 * IMPORTANT NOTE:
@@ -259,97 +260,85 @@ package classes
 		public static const grouchy:StatusEffectType = mk("grouchy");
 		
 		// combat
-		public static const AcidSlap:StatusEffectType = mkCombat("Acid Slap");
-		public static const AkbalSpeed:StatusEffectType = mkCombat("Akbal Speed");
-		public static const AmilyVenom:StatusEffectType = mkCombat("Amily Venom");
-		public static const AnemoneVenom:StatusEffectType = mkCombat("Anemone Venom");
-		public static const AttackDisabled:StatusEffectType = mkCombat("Attack Disabled");
-		public static const BasiliskCompulsion:StatusEffectType = mkCombat("Basilisk Compulsion");
-		public static const BasiliskSlow:StatusEffectType = mkCombat("BasiliskSlow");
-		public static const Berzerking:StatusEffectType = mkCombat("Berzerking");
-		public static const Blind:StatusEffectType = mkCombat("Blind");
-		public static const Bound:StatusEffectType = mkCombat("Bound");
-		public static const CalledShot:StatusEffectType = mkCombat("Called Shot");
-		public static const ChargeWeapon:StatusEffectType = mkCombat("Charge Weapon");
-		public static const Chokeslam:StatusEffectType = mkCombat("Chokeslam");
-		public static const Confusion:StatusEffectType = mkCombat("Confusion");
-		public static const DemonSeed:StatusEffectType = mkCombat("DemonSeed");
-		public static const Disarmed:StatusEffectType = mkCombat("Disarmed");
-		public static const DriderKiss:StatusEffectType = mkCombat("Drider Kiss");
-
-		public static const FirstAttack:StatusEffectType = mkCombat("FirstAttack");
-		public static const GiantGrabbed:StatusEffectType = mkCombat("Giant Grabbed");
-		public static const GiantStrLoss:StatusEffectType = mkCombat("GiantStrLoss");
-		public static const GnollSpear:StatusEffectType = mkCombat("Gnoll Spear");
-		public static const GooArmorBind:StatusEffectType = mkCombat("GooArmorBind");
-		public static const GooArmorSilence:StatusEffectType = mkCombat("GooArmorSilence");
-		public static const GooBind:StatusEffectType = mkCombat("GooBind");
-		public static const HarpyBind:StatusEffectType = mkCombat("HarpyBind");
-		public static const HolliConstrict:StatusEffectType = mkCombat("Holli Constrict");
-		public static const InfestAttempted:StatusEffectType = mkCombat("infestAttempted");
-		public static const IsabellaStunned:StatusEffectType = mkCombat("Isabella Stunned");
-		public static const IzmaBleed:StatusEffectType = mkCombat("Izma Bleed");
-		public static const KissOfDeath:StatusEffectType = mkCombat("Kiss of Death");
-		public static const LizanBlowpipe:StatusEffectType = mkCombat("Lizan Blowpipe");
-		public static const LustStones:StatusEffectType = mkCombat("lust stones");
-		public static const lustvenom:StatusEffectType = mkCombat("lust venom");
-		public static const Lustzerking:StatusEffectType = mkCombat("Lustzerking");
-		public static const Might:StatusEffectType = mkCombat("Might");
-		public static const NagaBind:StatusEffectType = mkCombat("Naga Bind");
-		public static const NagaVenom:StatusEffectType = mkCombat("Naga Venom");
-		public static const NoFlee:StatusEffectType = mkCombat("NoFlee");
-		public static const ParalyzeVenom:StatusEffectType = mkCombat("paralyze venom");
-		public static const PhysicalDisabled:StatusEffectType = mkCombat("Physical Disabled");
-		public static const Poison:StatusEffectType = mkCombat("Poison");
-		public static const Sandstorm:StatusEffectType = mkCombat("sandstorm");
-		public static const Sealed:StatusEffectType = mkCombat("Sealed");
-		public static const SheilaOil:StatusEffectType = mkCombat("Sheila Oil");
-		public static const Shielding:StatusEffectType = mkCombat("Sheilding");
-		public static const StoneLust:StatusEffectType = mkCombat("Stone Lust");
-		public static const Stunned:StatusEffectType = mkCombat("Stunned");
-		public static const TailWhip:StatusEffectType = mkCombat("Tail Whip");
-		public static const TemporaryHeat:StatusEffectType = mkCombat("Temporary Heat");
-		public static const TentacleBind:StatusEffectType = mkCombat("TentacleBind");
-		public static const ThroatPunch:StatusEffectType = mkCombat("Throat Punch");
-		public static const Titsmother:StatusEffectType = mkCombat("Titsmother");
-		public static const TwuWuv:StatusEffectType = mkCombat("Twu Wuv");
-		public static const UBERWEB:StatusEffectType = mkCombat("UBERWEB");
-		public static const Web:StatusEffectType = mkCombat("Web");
-		public static const WebSilence:StatusEffectType = mkCombat("Web-Silence");
-		public static const Whispered:StatusEffectType = mkCombat("Whispered");
-		
-		public static const RemovedArmor:StatusEffectType = mkCombat("Removed Armor");
-		public static const JCLustLevel:StatusEffectType = mkCombat("JC Lust Level");
-		public static const MirroredAttack:StatusEffectType = mkCombat("Mirrored Attack");
-		public static const KnockedBack:StatusEffectType = mkCombat("Knocked Back");
-		public static const Tentagrappled:StatusEffectType = mkCombat("Tentagrappled");
-		public static const TentagrappleCooldown:StatusEffectType = mkCombat("Tentagrapple Cooldown");
-		public static const ShowerDotEffect:StatusEffectType = mkCombat("Shower Dot Effect");
-		public static const GardenerSapSpeed:StatusEffectType = mkCombat("Sap Speed");
-		public static const VineHealUsed:StatusEffectType = mkCombat("Vine Heal Used");
-		
-		public static const DriderIncubusVenom:StatusEffectType = mkCombat("Drider Incubus Venom");
-		public static const PurpleHaze:StatusEffectType = mkCombat("PurpleHaze");
-		public static const TaintedMind:StatusEffectType = mkCombat("Tainted Mind");
-		public static const MinotaurKingMusk:StatusEffectType = mkCombat("Minotaur King Musk");
-		public static const MinotaurKingsTouch:StatusEffectType = mkCombat("Minotaur Kings Touch");
-		public static const PigbysHands:StatusEffectType = mkCombat("Pigbys Hands");
-		public static const WhipSilence:StatusEffectType = mkCombat("Whip-Silence");
-
+		public static const AcidSlap:StatusEffectType = mk("Acid Slap", CombatStatusEffect);
+		public static const AkbalSpeed:StatusEffectType = mk("Akbal Speed", AkbalSpeedEffect);
+		public static const AmilyVenom:StatusEffectType = mk("Amily Venom", CombatStatusEffect);
+		public static const AnemoneVenom:StatusEffectType = mk("Anemone Venom", CombatStatusEffect);
+		public static const AttackDisabled:StatusEffectType = mk("Attack Disabled", CombatStatusEffect);
+		public static const BasiliskCompulsion:StatusEffectType = mk("Basilisk Compulsion", CombatStatusEffect);
+		public static const BasiliskSlow:StatusEffectType = mk("BasiliskSlow", CombatStatusEffect);
+		public static const Berzerking:StatusEffectType = mk("Berzerking", CombatStatusEffect);
+		public static const Blind:StatusEffectType = mk("Blind", CombatStatusEffect);
+		public static const Bound:StatusEffectType = mk("Bound", CombatStatusEffect);
+		public static const CalledShot:StatusEffectType = mk("Called Shot", CombatStatusEffect);
+		public static const ChargeWeapon:StatusEffectType = mk("Charge Weapon", CombatStatusEffect);
+		public static const Chokeslam:StatusEffectType = mk("Chokeslam", CombatStatusEffect);
+		public static const Confusion:StatusEffectType = mk("Confusion", CombatStatusEffect);
+		public static const DemonSeed:StatusEffectType = mk("DemonSeed", CombatStatusEffect);
+		public static const Disarmed:StatusEffectType = mk("Disarmed", CombatStatusEffect);
+		public static const DriderKiss:StatusEffectType = mk("Drider Kiss", CombatStatusEffect);
+		public static const FirstAttack:StatusEffectType = mk("FirstAttack", CombatStatusEffect);
+		public static const GiantGrabbed:StatusEffectType = mk("Giant Grabbed", CombatStatusEffect);
+		public static const GiantStrLoss:StatusEffectType = mk("GiantStrLoss", CombatStatusEffect);
+		public static const GnollSpear:StatusEffectType = mk("Gnoll Spear", CombatStatusEffect);
+		public static const GooArmorBind:StatusEffectType = mk("GooArmorBind", CombatStatusEffect);
+		public static const GooArmorSilence:StatusEffectType = mk("GooArmorSilence", CombatStatusEffect);
+		public static const GooBind:StatusEffectType = mk("GooBind", CombatStatusEffect);
+		public static const HarpyBind:StatusEffectType = mk("HarpyBind", CombatStatusEffect);
+		public static const HolliConstrict:StatusEffectType = mk("Holli Constrict", CombatStatusEffect);
+		public static const InfestAttempted:StatusEffectType = mk("infestAttempted", CombatStatusEffect);
+		public static const IsabellaStunned:StatusEffectType = mk("Isabella Stunned", CombatStatusEffect);
+		public static const IzmaBleed:StatusEffectType = mk("Izma Bleed", CombatStatusEffect);
+		public static const KissOfDeath:StatusEffectType = mk("Kiss of Death", CombatStatusEffect);
+		public static const LizanBlowpipe:StatusEffectType = mk("Lizan Blowpipe", CombatStatusEffect);
+		public static const LustStones:StatusEffectType = mk("lust stones", CombatStatusEffect);
+		public static const lustvenom:StatusEffectType = mk("lust venom", CombatStatusEffect);
+		public static const Lustzerking:StatusEffectType = mk("Lustzerking", CombatStatusEffect);
+		public static const Might:StatusEffectType = mk("Might", CombatStatusEffect);
+		public static const NagaBind:StatusEffectType = mk("Naga Bind", CombatStatusEffect);
+		public static const NagaVenom:StatusEffectType = mk("Naga Venom", CombatStatusEffect);
+		public static const NoFlee:StatusEffectType = mk("NoFlee", CombatStatusEffect);
+		public static const ParalyzeVenom:StatusEffectType = mk("paralyze venom", CombatStatusEffect);
+		public static const PhysicalDisabled:StatusEffectType = mk("Physical Disabled", CombatStatusEffect);
+		public static const Poison:StatusEffectType = mk("Poison", CombatStatusEffect);
+		public static const Sandstorm:StatusEffectType = mk("sandstorm", CombatStatusEffect);
+		public static const Sealed:StatusEffectType = mk("Sealed", CombatStatusEffect);
+		public static const SheilaOil:StatusEffectType = mk("Sheila Oil", CombatStatusEffect);
+		public static const Shielding:StatusEffectType = mk("Sheilding", CombatStatusEffect);
+		public static const StoneLust:StatusEffectType = mk("Stone Lust", CombatStatusEffect);
+		public static const Stunned:StatusEffectType = mk("Stunned", CombatStatusEffect);
+		public static const TailWhip:StatusEffectType = mk("Tail Whip", CombatStatusEffect);
+		public static const TemporaryHeat:StatusEffectType = mk("Temporary Heat", CombatStatusEffect);
+		public static const TentacleBind:StatusEffectType = mk("TentacleBind", CombatStatusEffect);
+		public static const ThroatPunch:StatusEffectType = mk("Throat Punch", CombatStatusEffect);
+		public static const Titsmother:StatusEffectType = mk("Titsmother", CombatStatusEffect);
+		public static const TwuWuv:StatusEffectType = mk("Twu Wuv", CombatStatusEffect);
+		public static const UBERWEB:StatusEffectType = mk("UBERWEB", CombatStatusEffect);
+		public static const Web:StatusEffectType = WebEffect.TYPE;
+		public static const WebSilence:StatusEffectType = mk("Web-Silence", CombatStatusEffect);
+		public static const Whispered:StatusEffectType = mk("Whispered", CombatStatusEffect);
+		public static const RemovedArmor:StatusEffectType = mk("Removed Armor", CombatStatusEffect);
+		public static const JCLustLevel:StatusEffectType = mk("JC Lust Level", CombatStatusEffect);
+		public static const MirroredAttack:StatusEffectType = mk("Mirrored Attack", CombatStatusEffect);
+		public static const KnockedBack:StatusEffectType = mk("Knocked Back", CombatStatusEffect);
+		public static const Tentagrappled:StatusEffectType = mk("Tentagrappled", CombatStatusEffect);
+		public static const TentagrappleCooldown:StatusEffectType = mk("Tentagrapple Cooldown", CombatStatusEffect);
+		public static const ShowerDotEffect:StatusEffectType = mk("Shower Dot Effect", CombatStatusEffect);
+		public static const GardenerSapSpeed:StatusEffectType = mk("Sap Speed", CombatStatusEffect);
+		public static const VineHealUsed:StatusEffectType = mk("Vine Heal Used", CombatStatusEffect);
+		public static const DriderIncubusVenom:StatusEffectType = mk("Drider Incubus Venom", CombatStatusEffect);
+		public static const PurpleHaze:StatusEffectType = mk("PurpleHaze", CombatStatusEffect);
+		public static const TaintedMind:StatusEffectType = mk("Tainted Mind", CombatStatusEffect);
+		public static const MinotaurKingMusk:StatusEffectType = mk("Minotaur King Musk", CombatStatusEffect);
+		public static const MinotaurKingsTouch:StatusEffectType = mk("Minotaur Kings Touch", CombatStatusEffect);
+		public static const PigbysHands:StatusEffectType = mk("Pigbys Hands", CombatStatusEffect);
+		public static const WhipSilence:StatusEffectType = mk("Whip-Silence", CombatStatusEffect);
 		/**
-		 * Creates non-combat status affect
+		 * Creates status affect
 		 */
-		private static function mk(id:String):StatusEffectType
+		private static function mk(id:String, clazz:Class = null):StatusEffectType
 		{
-			return new StatusEffectType(id,StatusEffectClass);
-		}
-
-		/**
-		 * Creates combat status affect
-		 */
-		private static function mkCombat(id:String):StatusEffectType
-		{
-			return new StatusEffectType(id,CombatStatusEffect);
+			return new StatusEffectType(id,clazz ? clazz : StatusEffectClass);
 		}
 	}
 }

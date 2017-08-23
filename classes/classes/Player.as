@@ -2791,17 +2791,6 @@ use namespace kGAMECLASS;
 
 		public function clearStatuses():void
 		{
-			while(hasStatusEffect(StatusEffects.Web)) {
-				spe += statusEffectv1(StatusEffects.Web);
-				kGAMECLASS.mainView.statsView.showStatUp( 'spe' );
-				// speUp.visible = true;
-				// speDown.visible = false;
-				removeStatusEffect(StatusEffects.Web);
-			}
-			if (kGAMECLASS.monster.hasStatusEffect(StatusEffects.Sandstorm)) kGAMECLASS.monster.removeStatusEffect(StatusEffects.Sandstorm);
-			if (kGAMECLASS.monster.hasStatusEffect(StatusEffects.TailWhip)) {
-				kGAMECLASS.monster.removeStatusEffect(StatusEffects.TailWhip);
-			}
 			if (hasStatusEffect(StatusEffects.AkbalSpeed)) {
 				kGAMECLASS.dynStats("spe", statusEffectv1(StatusEffects.AkbalSpeed) * -1);
 				removeStatusEffect(StatusEffects.AkbalSpeed);
