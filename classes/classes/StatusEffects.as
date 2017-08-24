@@ -298,7 +298,7 @@ import classes.StatusEffects.CombatStatusEffect;
 		public static const NagaBind:StatusEffectType = mk("Naga Bind", CombatStatusEffect);
 		public static const NagaVenom:StatusEffectType = NagaVenomEffect.TYPE;
 		public static const NoFlee:StatusEffectType = mk("NoFlee", CombatStatusEffect);
-		public static const ParalyzeVenom:StatusEffectType = mk("paralyze venom", CombatStatusEffect);
+		public static const ParalyzeVenom:StatusEffectType = ParalyzeVenomEffect.TYPE;
 		public static const PhysicalDisabled:StatusEffectType = mk("Physical Disabled", CombatStatusEffect);
 		public static const Poison:StatusEffectType = mk("Poison", CombatStatusEffect);
 		public static const Sandstorm:StatusEffectType = mk("sandstorm", CombatStatusEffect);
