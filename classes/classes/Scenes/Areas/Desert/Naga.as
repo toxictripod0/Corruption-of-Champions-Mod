@@ -15,14 +15,12 @@ import classes.internals.*;
 			var venom:NagaVenomEffect = player.statusEffectByType(StatusEffects.NagaVenom) as NagaVenomEffect;
 			if (!venom) {
 				outputText("The venom's effects are almost instantaneous; your vision begins to blur and it becomes increasingly harder to stand.");
-				venom = new NagaVenomEffect();
-				player.addStatusEffect(venom);
+				player.addStatusEffect(new NagaVenomEffect());
 			}
 			else {
 				outputText("The venom's effects intensify as your vision begins to blur and it becomes increasingly harder to stand.");
-
+				venom.increase();
 			}
-			venom.increase();
 			combatRoundOver();
 		}
 		

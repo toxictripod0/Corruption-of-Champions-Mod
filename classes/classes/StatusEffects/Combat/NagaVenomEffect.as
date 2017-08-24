@@ -1,28 +1,19 @@
 package classes.StatusEffects.Combat {
 import classes.PerkLib;
 import classes.StatusEffectType;
-import classes.StatusEffects.CombatStatusEffect;
 
-public class NagaVenomEffect extends CombatStatusEffect {
+public class NagaVenomEffect extends CombatDebuff {
 
 	public static const TYPE:StatusEffectType = register("Naga Venom",NagaVenomEffect);
 	public function NagaVenomEffect() {
-		super(TYPE);
+		super(TYPE,'spe');
 	}
 
-	override public function onCombatEnd():void {
-		host.modSpe(value1,false);
-		super.onCombatEnd();
-	}
-
-	public function increase():void {
-		// -3 speed first, -2 speed next, additiional damage if speed minimal
-		var debuff:Number = host.modSpe(value1 == 0 ? -3 : -2);
-		if (debuff == 0) host.takeDamage(5+rand(5));
+	override protected function apply(first:Boolean):void {
+		var debuff:* = debuffHost('spe',first?-3:-2);
+		if (debuff.spe == 0) host.takeDamage(5+rand(5));
 		host.takeDamage(5+rand(5));
-		value1 -= debuff;
 	}
-
 
 	override public function onCombatRound():void {
 		//Chance to cleanse!
@@ -31,10 +22,9 @@ public class NagaVenomEffect extends CombatStatusEffect {
 			remove();
 			return;
 		}
-		var debuff:Number = host.modSpe(-2);
-		if (debuff == 0) host.takeDamage(5);
+		var debuff:* = debuffHost('spe',-2);
+		if (debuff.spe == 0) host.takeDamage(5);
 		host.takeDamage(2);
-		value1 -= debuff;
 		if (playerHost) outputText("You wince in pain and try to collect yourself, the naga's venom still plaguing you.\n\n");
 	}
 }
