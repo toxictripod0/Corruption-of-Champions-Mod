@@ -2,12 +2,14 @@
  * Coded by aimozg on 22.08.2017.
  */
 package classes.StatusEffects.Combat {
+import classes.StatusEffectType;
 import classes.StatusEffects;
 import classes.StatusEffects.CombatStatusEffect;
 
 public class AkbalSpeedEffect extends CombatStatusEffect {
+	public static const TYPE:StatusEffectType = register("Akbal Speed",AkbalSpeedEffect);
 	public function AkbalSpeedEffect() {
-		super(StatusEffects.AkbalSpeed)
+		super(TYPE);
 	}
 
 
@@ -20,4 +22,5 @@ public class AkbalSpeedEffect extends CombatStatusEffect {
 		value1 += host.modSpe(host.spe / 5 * -1);
 	}
 }
+
 }

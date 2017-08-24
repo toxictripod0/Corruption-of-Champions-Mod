@@ -109,11 +109,7 @@ import classes.internals.WeightedDrop;
 			{
 				outputText("Akbal's eyes fill with light, and a strange sense of fear begins to paralyze your limbs.");
 				//(Speed decrease)
-				var ase:AkbalSpeedEffect = player.statusEffectByType(StatusEffects.AkbalSpeed) as AkbalSpeedEffect;
-				if (ase == null) {
-					ase = new AkbalSpeedEffect();
-					player.addStatusEffect(ase);
-				}
+				var ase:AkbalSpeedEffect = player.createOrFindStatusEffect(StatusEffects.AkbalSpeed) as AkbalSpeedEffect;
 				ase.increase();
 			}
 			//*Special Attack B - 

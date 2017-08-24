@@ -261,8 +261,8 @@ import classes.StatusEffects.CombatStatusEffect;
 		
 		// combat
 		public static const AcidSlap:StatusEffectType = mk("Acid Slap", CombatStatusEffect);
-		public static const AkbalSpeed:StatusEffectType = mk("Akbal Speed", AkbalSpeedEffect);
-		public static const AmilyVenom:StatusEffectType = mk("Amily Venom", CombatStatusEffect);
+		public static const AkbalSpeed:StatusEffectType = AkbalSpeedEffect.TYPE;
+		public static const AmilyVenom:StatusEffectType = AmilyVenomEffect.TYPE;
 		public static const AnemoneVenom:StatusEffectType = mk("Anemone Venom", CombatStatusEffect);
 		public static const AttackDisabled:StatusEffectType = mk("Attack Disabled", CombatStatusEffect);
 		public static const BasiliskCompulsion:StatusEffectType = mk("Basilisk Compulsion", CombatStatusEffect);

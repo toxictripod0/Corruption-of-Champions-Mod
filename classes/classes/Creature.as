@@ -1015,6 +1015,12 @@ import flash.errors.IllegalOperationError;
 	}
 		
 		//{region StatusEffects
+		public function createOrFindStatusEffect(stype:StatusEffectType):StatusEffectClass
+		{
+			var sec:StatusEffectClass = statusEffectByType(stype);
+			if (!sec) sec = createStatusEffect(stype,0,0,0,0);
+			return sec;
+		}
 		//Create a status
 		public function createStatusEffect(stype:StatusEffectType, value1:Number, value2:Number, value3:Number, value4:Number, fireEvent:Boolean = true):StatusEffectClass
 		{

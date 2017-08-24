@@ -2893,12 +2893,8 @@ use namespace kGAMECLASS;
 
 		public function clearStatuses():void
 		{
-			if (hasStatusEffect(StatusEffects.AkbalSpeed)) {
-				kGAMECLASS.dynStats("spe", statusEffectv1(StatusEffects.AkbalSpeed) * -1);
-				removeStatusEffect(StatusEffects.AkbalSpeed);
-			}
 			if (hasStatusEffect(StatusEffects.AmilyVenom)) {
-				kGAMECLASS.dynStats("str", statusEffectv1(StatusEffects.AmilyVenom),"spe", statusEffectv2(StatusEffects.AmilyVenom));
+
 				removeStatusEffect(StatusEffects.AmilyVenom);
 			}
 			if (kGAMECLASS.monster.hasStatusEffect(StatusEffects.TwuWuv)) {
