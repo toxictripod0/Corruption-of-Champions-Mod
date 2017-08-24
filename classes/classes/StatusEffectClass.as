@@ -42,16 +42,25 @@
 		 * Called when the effect is applied to the creature, after adding to its list of effects.
 		 */
 		public function onAttach():void {
-
+			// do nothing
 		}
 		/**
 		 * Called when the effect is removed from the creature, after removing from its list of effects.
 		 */
 		public function onRemove():void {
-
+			// do nothing
 		}
+		/**
+		 * Called after combat in player.clearStatuses()
+		 */
 		public function onCombatEnd():void {
-
+			// do nothing
+		}
+		/**
+		 * Called during combat in combatStatusesUpdate() for player, then for monster
+		 */
+		public function onCombatRound():void {
+			// do nothing
 		}
 		public function remove(fireEvent:Boolean = true):void {
 			_host.removeStatusEffectInstance(this,fireEvent);

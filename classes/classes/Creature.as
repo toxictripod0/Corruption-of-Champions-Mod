@@ -3939,6 +3939,7 @@ import flash.errors.IllegalOperationError;
 		public function getMaxStats(stats:String):int {
 			return 100;
 		}
+
 		public function maxHP():Number
 		{
 			var max:Number = 0;
@@ -3977,6 +3978,10 @@ import flash.errors.IllegalOperationError;
 			if (findPerk(PerkLib.AscensionDesires) >= 0) max += perkv1(PerkLib.AscensionDesires) * 5;
 			if (max > 999) max = 999;
 			return max;
+		}
+		public function takeDamage(damage:Number, display:Boolean = false):Number {
+			HP = boundFloat(0,HP-Math.round(damage),HP);
+			return (damage > 0 && damage < 1) ? 1 : damage;
 		}
 		/**
 		 *Get the remaining fatigue of the Creature.

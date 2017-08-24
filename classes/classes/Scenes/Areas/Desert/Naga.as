@@ -1,7 +1,8 @@
 package classes.Scenes.Areas.Desert
 {
 	import classes.*;
-	import classes.internals.*;
+import classes.StatusEffects.Combat.NagaVenomEffect;
+import classes.internals.*;
 
 	public class Naga extends Monster
 	{
@@ -11,35 +12,17 @@ package classes.Scenes.Areas.Desert
 			//(Deals damage over 4-5 turns, invariably reducing 
 			//your speed. It wears off once combat is over.)
 			outputText("The naga strikes with the speed of a cobra, sinking her fangs into your flesh!  ");
-			if (!player.hasStatusEffect(StatusEffects.NagaVenom)) {
+			var venom:NagaVenomEffect = player.statusEffectByType(StatusEffects.NagaVenom) as NagaVenomEffect;
+			if (!venom) {
 				outputText("The venom's effects are almost instantaneous; your vision begins to blur and it becomes increasingly harder to stand.");
-				if (player.spe > 4) {
-					//stats(0,0,-3,0,0,0,0,0);
-					player.spe -= 3;
-					showStatDown( 'spe' );
-					// speUp.visible = false;
-					// speDown.visible = true;
-					player.createStatusEffect(StatusEffects.NagaVenom,3,0,0,0);
-				}
-				else {
-					player.createStatusEffect(StatusEffects.NagaVenom,0,0,0,0);
-					player.takeDamage(5+rand(5));
-				}
-				player.takeDamage(5+rand(5));
+				venom = new NagaVenomEffect();
+				player.addStatusEffect(venom);
 			}
 			else {
 				outputText("The venom's effects intensify as your vision begins to blur and it becomes increasingly harder to stand.");
-				if (player.spe > 3) {
-					//stats(0,0,-2,0,0,0,0,0);
-					player.spe -= 2;
-					showStatDown( 'spe' );
-					// speUp.visible = false;
-					// speDown.visible = true;
-					player.addStatusValue(StatusEffects.NagaVenom,1,2);
-				}
-				else player.takeDamage(5+rand(5));
-				player.takeDamage(5+rand(5));
+
 			}
+			venom.increase();
 			combatRoundOver();
 		}
 		

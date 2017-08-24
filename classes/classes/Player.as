@@ -589,7 +589,7 @@ use namespace kGAMECLASS;
 			return int(damage * damageMultiplier);
 		}
 
-		public function takeDamage(damage:Number, display:Boolean = false):Number{
+		public override function takeDamage(damage:Number, display:Boolean = false):Number{
 			//Round
 			damage = Math.round(damage);
 			// we return "1 damage received" if it is in (0..1) but deduce no HP
@@ -2893,27 +2893,10 @@ use namespace kGAMECLASS;
 
 		public function clearStatuses():void
 		{
-			if (hasStatusEffect(StatusEffects.AmilyVenom)) {
-
-				removeStatusEffect(StatusEffects.AmilyVenom);
-			}
 			if (kGAMECLASS.monster.hasStatusEffect(StatusEffects.TwuWuv)) {
 				inte += kGAMECLASS.monster.statusEffectv1(StatusEffects.TwuWuv);
 				kGAMECLASS.statScreenRefresh();
 				kGAMECLASS.mainView.statsView.showStatUp( 'inte' );
-			}
-			if (hasStatusEffect(StatusEffects.NagaVenom)) {
-				spe += statusEffectv1(StatusEffects.NagaVenom);
-				kGAMECLASS.mainView.statsView.showStatUp( 'spe' );
-				//stats(0,0,statusEffectv1(StatusEffects.NagaVenom),0,0,0,0,0);
-				removeStatusEffect(StatusEffects.NagaVenom);
-			}
-			if (hasStatusEffect(StatusEffects.CalledShot)) {
-				spe += statusEffectv1(StatusEffects.CalledShot);
-				kGAMECLASS.mainView.statsView.showStatUp( 'spe' );
-				// speDown.visible = false;
-				// speUp.visible = true;
-				removeStatusEffect(StatusEffects.CalledShot);
 			}
 			if (hasStatusEffect(StatusEffects.ParalyzeVenom)) {
 				str += statusEffectv1(StatusEffects.ParalyzeVenom);

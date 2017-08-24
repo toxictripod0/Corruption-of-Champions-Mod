@@ -1605,26 +1605,7 @@ public class Combat extends BaseContent
 				if (monster.plural) outputText("our " + player.multiCockDescriptLight() + " dribbles pre-cum as you think about plowing " + monster.a + monster.short + " right here and now, fucking " + monster.pronoun3 + " " + monster.vaginaDescript() + "s until they're totally fertilized and pregnant.\n\n");
 				else outputText("our " + player.multiCockDescriptLight() + " dribbles pre-cum as you think about plowing " + monster.a + monster.short + " right here and now, fucking " + monster.pronoun3 + " " + monster.vaginaDescript() + " until it's totally fertilized and pregnant.\n\n");
 			}
-			if (player.hasStatusEffect(StatusEffects.NagaVenom)) {
-				//Chance to cleanse!
-				if (player.findPerk(PerkLib.Medicine) >= 0 && rand(100) <= 14) {
-					outputText("You manage to cleanse the naga venom from your system with your knowledge of medicine!\n\n");
-					player.spe += player.statusEffectv1(StatusEffects.NagaVenom);
-					mainView.statsView.showStatUp( 'spe' );
-					// speUp.visible = true;
-					// speDown.visible = false;
-					player.removeStatusEffect(StatusEffects.NagaVenom);
-				}
-				else if (player.spe > 3) {
-					player.addStatusValue(StatusEffects.NagaVenom,1,2);
-					//stats(0,0,-2,0,0,0,0,0);
-					player.spe -= 2;
-				}
-				else takeDamage(5);
-				outputText("You wince in pain and try to collect yourself, the naga's venom still plaguing you.\n\n");
-				takeDamage(2);
-			}
-			else if (player.hasStatusEffect(StatusEffects.TemporaryHeat)) {
+			if (player.hasStatusEffect(StatusEffects.TemporaryHeat)) {
 				//Chance to cleanse!
 				if (player.findPerk(PerkLib.Medicine) >= 0 && rand(100) <= 14) {
 					outputText("You manage to cleanse the heat and rut drug from your system with your knowledge of medicine!\n\n");
@@ -1710,6 +1691,13 @@ public class Combat extends BaseContent
 					outputText("The cord has finally came loose and falls off your neck. It dissipates immediately. You can cast spells again now!\n\n");
 					player.removeStatusEffect(StatusEffects.WhipSilence);
 				}
+			}
+			for (var a:/*StatusEffectClass*/Array=player.statusEffects.slice(),n:int=a.length,i:int=0;i<n;i++) {
+				// Using a copy of array because some effects will be removed
+				a[i].onCombatRound();
+			}
+			for (a=monster.statusEffects.slice(),n=a.length,i=0;i<n;i++) {
+				a[i].onCombatRound();
 			}
 			regeneration(true);
 			if (player.lust >= player.maxLust()) doNext(endLustLoss);

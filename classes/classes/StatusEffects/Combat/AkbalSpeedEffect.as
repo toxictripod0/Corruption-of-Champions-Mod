@@ -3,7 +3,6 @@
  */
 package classes.StatusEffects.Combat {
 import classes.StatusEffectType;
-import classes.StatusEffects;
 import classes.StatusEffects.CombatStatusEffect;
 
 public class AkbalSpeedEffect extends CombatStatusEffect {
