@@ -12,14 +12,13 @@ public class WebEffect extends CombatStatusEffect{
 	}
 
 	override public function onCombatEnd():void {
-		host.spe += value1;
-		if (playerHost) showStatUp('spe');
-		super.onCombatEnd(); // or remove();
+		host.modSpe(-value1,false);
+		if (playerHost) showStatUp("spe");
+		super.onCombatEnd();
 	}
+
 	public function increase():void {
-		//Only apply as much speed slow as necessary.
-		var amount:Number = host.dynStats('spe',-25).spe;
-		value1 += amount;
+		value1 += host.modSpe(-25);
 	}
 }
 }

@@ -212,6 +212,42 @@ import flash.errors.IllegalOperationError;
 			cor = Utils.boundFloat(0,cor+dcor,100);
 			if (dtou>0) HP = Utils.boundFloat(-Infinity,HP+dtou*2,maxHP());
 		}
+		/**
+		 * Modify Strength by `delta`. If scale = true, apply perk & effect modifiers. Return actual increase applied.
+		 */
+		public function modStr(delta:Number,scale:Boolean=true):Number {
+			if (scale) return dynStats('str',delta).str;
+			var s0:Number = str;
+			str = Utils.boundFloat(1,str+delta,getMaxStats('str'));
+			return str-s0;
+		}
+		/**
+		 * Modify Toughness by `delta`. If scale = true, apply perk & effect modifiers. Return actual increase applied.
+		 */
+		public function modTou(delta:Number,scale:Boolean=true):Number {
+			if (scale) return dynStats('tou',delta).tou;
+			var s0:Number = tou;
+			tou = Utils.boundFloat(1,tou+delta,getMaxStats('tou'));
+			return tou-s0;
+		}
+		/**
+		 * Modify Speed by `delta`. If scale = true, apply perk & effect modifiers. Return actual increase applied.
+		 */
+		public function modSpe(delta:Number,scale:Boolean=true):Number {
+			if (scale) return dynStats('spe',delta).spe;
+			var s0:Number = spe;
+			spe = Utils.boundFloat(1,spe+delta,getMaxStats('spe'));
+			return spe-s0;
+		}
+		/**
+		 * Modify Intelligence by `delta`. If scale = true, apply perk & effect modifiers. Return actual increase applied.
+		 */
+		public function modInt(delta:Number,scale:Boolean=true):Number {
+			if (scale) return dynStats('inte',delta).inte;
+			var s0:Number = inte;
+			inte = Utils.boundFloat(1,inte+delta,getMaxStats('int'));
+			return inte-s0;
+		}
 
 		//Appearance Variables
 		/**
