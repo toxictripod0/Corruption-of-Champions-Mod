@@ -3,22 +3,16 @@
  */
 package classes.StatusEffects.Combat {
 import classes.StatusEffectType;
-import classes.StatusEffects.CombatStatusEffect;
 
-public class AkbalSpeedEffect extends CombatStatusEffect {
+public class AkbalSpeedEffect extends CombatBuff {
 	public static const TYPE:StatusEffectType = register("Akbal Speed",AkbalSpeedEffect);
 	public function AkbalSpeedEffect() {
-		super(TYPE);
+		super(TYPE,'spe');
 	}
 
 
-	override public function onCombatEnd():void {
-		host.modSpe(-value1,false);
-		super.onCombatEnd();
-	}
-
-	public function increase():void {
-		value1 += host.modSpe(host.spe / 5 * -1);
+	override protected function apply(firstTime:Boolean):void {
+		buffHost('spe', -host.spe / 5 * -1);
 	}
 }
 

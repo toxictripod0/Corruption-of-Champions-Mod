@@ -3,24 +3,15 @@
  */
 package classes.StatusEffects.Combat {
 import classes.StatusEffectType;
-import classes.StatusEffects.CombatStatusEffect;
 
-public class AmilyVenomEffect extends CombatStatusEffect {
+public class AmilyVenomEffect extends CombatBuff {
 	public static const TYPE:StatusEffectType = register("Amily Venom",AmilyVenomEffect);
 	public function AmilyVenomEffect() {
-		super(TYPE);
+		super(TYPE,'str','spe');
 	}
 
-
-	override public function onCombatEnd():void {
-		host.dynStats("str", value1,"spe", value2, "scale", false);
-		super.onCombatEnd();
+	override protected function apply(firstTime:Boolean):void {
+		buffHost('str', -2 - rand(5),'spe', -2 - rand(5));
 	}
-
-	public function increase():void {
-		var poison:Number = 2 + rand(5);
-		var deltas:* = host.dynStats("str",-poison,"spe",-poison);
-		value1 = -deltas.str;
-		value2 = -deltas.spe;
-	}
-}}
+}
+}

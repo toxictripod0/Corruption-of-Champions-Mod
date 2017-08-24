@@ -11,8 +11,9 @@ package classes.Scenes.Combat
 	import classes.Scenes.Monsters.Mimic;
 	import classes.Scenes.NPCs.*;
 	import classes.Scenes.Places.TelAdre.UmasShop;
+import classes.StatusEffects.Combat.MightEffect;
 
-	public class CombatAbilities extends BaseContent
+public class CombatAbilities extends BaseContent
 	{
 		public function CombatAbilities() {}
 		
@@ -449,25 +450,9 @@ package classes.Scenes.Combat
 		//and increasing lust by 15.
 		public function spellMight(silent:Boolean = false):void {
 			
-			var doEffect:Function = function():* {
-				player.createStatusEffect(StatusEffects.Might,0,0,0,0);
-				temp = 10 * player.spellMod();
-				if (temp > 100) temp = 100;
-				tempStr = temp;
-				tempTou = temp;
-				//if (player.str + temp > 100) tempStr = 100 - player.str;
-				//if (player.tou + temp > 100) tempTou = 100 - player.tou;
-				player.changeStatusValue(StatusEffects.Might,1,tempStr);
-				player.changeStatusValue(StatusEffects.Might,2,tempTou);
-				mainView.statsView.showStatUp('str');
-				mainView.statsView.showStatUp('tou');
-				player.str += player.statusEffectv1(StatusEffects.Might);
-				player.tou += player.statusEffectv2(StatusEffects.Might);
-				statScreenRefresh();
-			}
-			
+
 			if (silent)	{ // for Battlemage
-				doEffect.call();
+				player.addStatusEffect(new MightEffect());
 				return;
 			}
 			
@@ -479,8 +464,6 @@ package classes.Scenes.Combat
 			}
 			doNext(combat.combatMenu);
 			player.changeFatigue(25,1);
-			var tempStr:Number = 0;
-			var tempTou:Number = 0;
 			if (monster is FrostGiant && player.hasStatusEffect(StatusEffects.GiantBoulder)) {
 				(monster as FrostGiant).giantBoulderHit(2);
 				monster.doAI();
@@ -504,7 +487,7 @@ package classes.Scenes.Combat
 			}
 			else {
 				outputText("The rush of success and power flows through your body.  You feel like you can do anything!");
-				doEffect.call();
+				player.addStatusEffect(new MightEffect());
 			}
 			outputText("\n\n");
 			flags[kFLAGS.SPELLS_CAST]++;
@@ -675,15 +658,10 @@ package classes.Scenes.Combat
 			}
 			if (player.hasStatusEffect(StatusEffects.Might)) {
 				outputText("\nYou feel a bit weaker as your strength-enhancing spell wears off.");
-				player.str -= player.statusEffectv1(StatusEffects.Might);
-				player.tou -= player.statusEffectv2(StatusEffects.Might);
 				player.removeStatusEffect(StatusEffects.Might);
-				showStatDown("str");
-				showStatDown("tou");
-				statScreenRefresh();
 			}
 			//Remove opponent's effects
-				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) {
+			if (monster.hasStatusEffect(StatusEffects.ChargeWeapon)) {
 				outputText("\nThe glow around " + monster.a + monster.short + "'s " + monster.weaponName + " fades completely.");
 				monster.weaponAttack -= monster.statusEffectv1(StatusEffects.ChargeWeapon);
 				monster.removeStatusEffect(StatusEffects.ChargeWeapon);
@@ -694,17 +672,14 @@ package classes.Scenes.Combat
 				monster.removeStatusEffect(StatusEffects.Fear);
 			}
 			if (monster.hasStatusEffect(StatusEffects.Illusion)) {
-				outputText("\nThe reality around " + monster.a + " " + monster.short + " finally snaps back in place as your illusion spell fades.");
+				outputText("\nThe reality around " + monster.a + " " + monster.short + " finally snaps back in place as " + monster.pronoun3 +" illusion spell fades.");
 				monster.spe += monster.statusEffectv1(StatusEffects.Illusion);
 				monster.removeStatusEffect(StatusEffects.Illusion);
 			}
 
 			if (player.hasStatusEffect(StatusEffects.Might)) {
 				outputText("\nYou feel a bit weaker as your strength-enhancing spell wears off.");
-				monster.str -= monster.statusEffectv1(StatusEffects.Might);
-				monster.tou -= monster.statusEffectv2(StatusEffects.Might);
-				monster.removeStatusEffect(StatusEffects.Might);
-				statScreenRefresh();
+				player.removeStatusEffect(StatusEffects.Might);
 			}
 			if (monster.hasStatusEffect(StatusEffects.Shell)) {
 				outputText("\nThe magical shell around " + monster.a + " " + monster.short + " shatters!");

@@ -2,22 +2,17 @@ package classes.StatusEffects.Combat {
 import classes.StatusEffectType;
 import classes.StatusEffects.CombatStatusEffect;
 
-public class CalledShotEffect extends CombatStatusEffect {
+public class CalledShotEffect extends CombatBuff {
 
 	public static const TYPE:StatusEffectType = register("Called Shot",CalledShotEffect);
 	public function CalledShotEffect() {
-		super(TYPE);
+		super(TYPE,'spe');
 	}
 
-	override public function onCombatEnd():void {
-		host.modSpe(value1,false);
-		super.onCombatEnd();
-	}
 
-	public function increase():void {
-		value1 -= host.modSpe( -20-rand(5));
+	override protected function apply(firstTime:Boolean):void {
+		buffHost('spe', -20 - rand(5));
 	}
-
 }
 
 }

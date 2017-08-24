@@ -2,7 +2,7 @@ package classes.StatusEffects.Combat {
 import classes.PerkLib;
 import classes.StatusEffectType;
 
-public class NagaVenomEffect extends CombatDebuff {
+public class NagaVenomEffect extends CombatBuff {
 
 	public static const TYPE:StatusEffectType = register("Naga Venom",NagaVenomEffect);
 	public function NagaVenomEffect() {
@@ -10,7 +10,7 @@ public class NagaVenomEffect extends CombatDebuff {
 	}
 
 	override protected function apply(first:Boolean):void {
-		var debuff:* = debuffHost('spe',first?-3:-2);
+		var debuff:* = buffHost('spe',first?-3:-2);
 		if (debuff.spe == 0) host.takeDamage(5+rand(5));
 		host.takeDamage(5+rand(5));
 	}
@@ -22,7 +22,7 @@ public class NagaVenomEffect extends CombatDebuff {
 			remove();
 			return;
 		}
-		var debuff:* = debuffHost('spe',-2);
+		var debuff:* = buffHost('spe',-2);
 		if (debuff.spe == 0) host.takeDamage(5);
 		host.takeDamage(2);
 		if (playerHost) outputText("You wince in pain and try to collect yourself, the naga's venom still plaguing you.\n\n");

@@ -3991,6 +3991,22 @@ import flash.errors.IllegalOperationError;
 		{
 			return maxFatigue() - fatigue;
 		}
+
+		public function spellMod():Number {
+			var mod:Number = 1;
+			if (hasPerk(PerkLib.Archmage) && inte >= 75) mod += .5;
+			if (hasPerk(PerkLib.Channeling) && inte >= 60) mod += .5;
+			if (hasPerk(PerkLib.Mage) && inte >= 50) mod += .5;
+			if (hasPerk(PerkLib.Spellpower) && inte >= 50) mod += .5;
+			if (hasPerk(PerkLib.WizardsFocus)) {
+				mod += perkv1(PerkLib.WizardsFocus);
+			}
+			if (hasPerk(PerkLib.ChiReflowMagic)) mod += UmasShop.NEEDLEWORK_MAGIC_SPELL_MULTI;
+			if (jewelryEffectId == JewelryLib.MODIFIER_SPELL_POWER) mod += (jewelryEffectMagnitude / 100);
+			if (countCockSocks("blue") > 0) mod += (countCockSocks("blue") * .05);
+			if (hasPerk(PerkLib.AscensionMysticality)) mod *= 1 + (perkv1(PerkLib.AscensionMysticality) * 0.05);
+			return mod;
+		}
 		// returns OLD OP VAL
 		public static function applyOperator(old:Number, op:String, val:Number):Number {
 			switch(op) {

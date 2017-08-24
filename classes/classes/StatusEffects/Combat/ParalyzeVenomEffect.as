@@ -1,27 +1,22 @@
 package classes.StatusEffects.Combat {
 import classes.StatusEffectType;
-import classes.StatusEffects.CombatStatusEffect;
 
-public class ParalyzeVenomEffect extends CombatStatusEffect {
+public class ParalyzeVenomEffect extends CombatBuff {
 
 	public static const TYPE:StatusEffectType = register("paralyze venom",ParalyzeVenomEffect);
 	public function ParalyzeVenomEffect() {
-		super(TYPE);
+		super(TYPE,'str','spe');
 	}
 
-	override public function onCombatEnd():void {
-		host.dynStats('str',value1,'spe',value2,'scale',false);
-		if (playerHost && (value1!=0||value2!=0)) {
+
+	override public function onRemove():void {
+		if (playerHost) {
 			outputText("<b>You feel quicker and stronger as the paralyzation venom in your veins wears off.</b>\n\n");
 		}
-		super.onCombatEnd();
 	}
 
-	public function increase():void {
-		// -3, -3 first venom; -2, -2 if already poisoned
-		var debuff:* = host.dynStats('str',value1?-2:-3,'spe',value2?-2:-3);
-		value1 -= debuff.str;
-		value2 -= debuff.spe;
+	override protected function apply(firstTime:Boolean):void {
+		buffHost('str',firstTime?-2:-3,'spe',firstTime?-2:-3);
 	}
 
 }
