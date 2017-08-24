@@ -59,7 +59,7 @@ public function HPChange(changeNum:Number, display:Boolean):Number
 			mainView.statsView.showStatDown( 'hp' );
 		}
 	}
-	player.dynStats("lust", 0, "resisted", false) //Workaround to showing the arrow.
+	player.dynStats("lust", 0, "scale", false); //Workaround to showing the arrow.
 	statScreenRefresh();
 	return player.HP - before;
 }
@@ -655,7 +655,8 @@ public function testDynStatsEvent():void {
  * Arguments should come in pairs nameOp:String, value:Number/Boolean <br/>
  * where nameOp is ( stat_name + [operator] ) and value is operator argument<br/>
  * valid operators are "=" (set), "+", "-", "*", "/", add is default.<br/>
- * valid stat_names are "str", "tou", "spe", "int", "lib", "sen", "lus", "cor" or their full names; also "resisted"/"res" (apply lust resistance, default true) and "noBimbo"/"bim" (do not apply bimbo int gain reduction, default false)
+ * valid stat_names are "str", "tou", "spe", "int", "lib", "sen", "lus", "cor" or their full names;
+ * also "scaled"/"sca" (default true: apply resistances, perks; false - force values)
  *
  * @return Object of (newStat-oldStat) with keys str, tou, spe, int, lib, sen, lus, cor
  * */

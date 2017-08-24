@@ -1489,7 +1489,7 @@ private function swimInStreamFinish():void {
 	{
 		outputText("You feel a bit dirtier after swimming in the tainted waters. \n\n");
 		dynStats("cor", 0.5);
-		dynStats("lust", 15, "resisted", true);
+		dynStats("lust", 15, "scale", true);
 	}
 	outputText("Eventually, you swim back to the riverbank and dry yourself off");
 	if (player.armorName != "slutty swimwear") outputText(" before you re-dress yourself in your " + player.armorName);
@@ -1523,17 +1523,17 @@ private function watchSunset():void {
 		if (player.cor < 33) 
 		{
 			outputText("A wave of nostalgia washes over you as you remember your greatest moments from your childhood.");
-			dynStats("cor", -1, "lib", -1, "lust", -30, "resisted", false);
+			dynStats("cor", -1, "lib", -1, "lust", -30, "scale", false);
 		}
 		if (player.cor >= 33 && player.cor < 66) 
 		{
 			outputText("A wave of nostalgia washes over you as you remember your greatest moments from your childhood. Suddenly, your memories are somewhat twisted from some of the perverted moments. You shake your head and just relax.");
-			dynStats("cor", -0.5, "lib", -1, "lust", -20, "resisted", false);
+			dynStats("cor", -0.5, "lib", -1, "lust", -20, "scale", false);
 		}
 		if (player.cor >= 66) 
 		{
 			outputText("A wave of nostalgia washes over you as you remember your greatest moments from your childhood. Suddenly, your memories twist into some of the dark and perverted moments. You chuckle at that moment but you shake your head and focus on relaxing.");
-			dynStats("cor", 0, "lib", -1, "lust", -10, "resisted", false);
+			dynStats("cor", 0, "lib", -1, "lust", -10, "scale", false);
 		}
 	}
 	//Greatest moments GO!
@@ -1542,17 +1542,17 @@ private function watchSunset():void {
 		if (player.cor < 33) 
 		{
 			outputText("You reflect back on your greatest adventures and how curiosity got the best of you. You remember some of the greatest places you discovered.");
-			dynStats("lust", -30, "resisted", false);
+			dynStats("lust", -30, "scale", false);
 		}
 		if (player.cor >= 33 && player.cor < 66) 
 		{
 			outputText("You reflect back on your greatest adventures. Of course, some of them involved fucking and getting fucked by the denizens of Mareth. You suddenly open your eyes from the memory and just relax, wondering why you thought of that in the first place.");
-			dynStats("lust", -20, "resisted", false);
+			dynStats("lust", -20, "scale", false);
 		}
 		if (player.cor >= 66) 
 		{
 			outputText("You reflect back on your greatest adventures. You chuckle at the moments you were dominating and the moments you were submitting. You suddenly open your eyes from the memory and just relax.");
-			dynStats("lust", -10, "resisted", false);
+			dynStats("lust", -10, "scale", false);
 		}
 	}
 	//Greatest moments GO!
@@ -1562,7 +1562,7 @@ private function watchSunset():void {
 		if (rand(2) == 0) outputText("do");
 		else outputText("accomplish");
 		outputText(" before you went through the portal. You felt a bit sad that you didn't get to achieve your old goals.");
-		dynStats("lust", -30, "resisted", false);
+		dynStats("lust", -30, "scale", false);
 
 	}
 	outputText("\n\nAfter the thought, you spend a good while relaxing and watching the sun setting. By now, the sun has already set below the horizon. The sky is glowing orange after the sunset. It looks like you could explore more for a while.")
@@ -1593,7 +1593,7 @@ private function watchStars():void {
 			outputText("\n\nSomehow, one of them spells out \"ERROR\". Maybe you should let Kitteh6660 know?");
 	}
 	outputText("\n\nYou let your mind wander and relax.");
-	dynStats("lus", -15, "resisted", false);
+	dynStats("lus", -15, "scale", false);
 	doNext(camp.returnToCampUseOneHour);
 }
 

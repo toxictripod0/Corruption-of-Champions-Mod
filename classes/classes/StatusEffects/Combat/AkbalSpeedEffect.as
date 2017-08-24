@@ -13,7 +13,6 @@ public class AkbalSpeedEffect extends CombatStatusEffect {
 
 	override public function onCombatEnd():void {
 		host.modSpe(-value1,false);
-		if (playerHost) showStatUp("spe");
 		super.onCombatEnd();
 	}
 

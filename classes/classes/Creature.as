@@ -171,7 +171,8 @@ import flash.errors.IllegalOperationError;
 		 * Arguments should come in pairs nameOp:String, value:Number/Boolean <br/>
 		 * where nameOp is ( stat_name + [operator] ) and value is operator argument<br/>
 		 * valid operators are "=" (set), "+", "-", "*", "/", add is default.<br/>
-		 * valid stat_names are "str", "tou", "spe", "int", "lib", "sen", "lus", "cor" or their full names; also "resisted"/"res" (apply lust resistance, default true) and "noBimbo"/"bim" (do not apply bimbo int gain reduction, default false)
+		 * valid stat_names are "str", "tou", "spe", "int", "lib", "sen", "lus", "cor" or their full names;
+		 * also "scaled"/"sca" (default true: apply resistances, perks; false - force values)
 		 *
 		 * @return Object of (newStat-oldStat) with keys str, tou, spe, int, lib, sen, lus, cor
 		 * */
@@ -186,7 +187,7 @@ import flash.errors.IllegalOperationError;
 			var prevSen:Number  = sens;
 			var prevLus:Number  = lust;
 			var prevCor:Number  = cor;
-			modStats(argz.str, argz.tou, argz.spe, argz.inte, argz.lib, argz.sens, argz.lust, argz.cor, argz.resisted,argz.noBimbo);
+			modStats(argz.str, argz.tou, argz.spe, argz.inte, argz.lib, argz.sens, argz.lust, argz.cor, argz.sca);
 			End("Creature","dynStats");
 			return {
 				str:str-prevStr,
@@ -199,16 +200,16 @@ import flash.errors.IllegalOperationError;
 				cor:cor-prevCor
 			};
 		}
-		public function modStats(dstr:Number, dtou:Number, dspe:Number, dinte:Number, dlib:Number, dsens:Number, dlust:Number, dcor:Number, resisted:Boolean = true, noBimbo:Boolean = false):void {
+		public function modStats(dstr:Number, dtou:Number, dspe:Number, dinte:Number, dlib:Number, dsens:Number, dlust:Number, dcor:Number, scale:Boolean = true):void {
 
 			var maxes:Object = getAllMaxStats();
 			str = Utils.boundFloat(1,str+dstr,maxes.str);
 			tou = Utils.boundFloat(1,tou+dtou,maxes.tou);
 			spe = Utils.boundFloat(1,spe+dspe,maxes.spe);
 			inte = Utils.boundFloat(1,inte+dinte,maxes.inte);
-			lib = Utils.boundFloat(1,lib+dlib,100);
-			sens = Utils.boundFloat(10,sens+dsens,100);
-			lust = Utils.boundFloat(0,lust+dlust,maxLust());
+			lib = Utils.boundFloat(minLib(),lib+dlib,100);
+			sens = Utils.boundFloat(minSens(),sens+dsens,100);
+			lust = Utils.boundFloat(minLust(),lust+dlust,maxLust());
 			cor = Utils.boundFloat(0,cor+dcor,100);
 			if (dtou>0) HP = Utils.boundFloat(-Infinity,HP+dtou*2,maxHP());
 		}
@@ -3950,6 +3951,16 @@ import flash.errors.IllegalOperationError;
 			return max;
 		}
 
+		public function minLib():Number {
+			return 1;
+		}
+		public function minSens():Number {
+			return 10;
+		}
+		public function minLust():Number {
+			return 100;
+		}
+
 		public function maxLust():Number
 		{
 			var max:Number = 100;
@@ -3990,20 +4001,20 @@ import flash.errors.IllegalOperationError;
 		/**
 		 * Generate increments for stats
 		 *
-		 * @return Object of (newStat-oldStat) with keys str, tou, spe, int, lib, sen, lus, cor, resisted, noBimbo
+		 * @return Object of (newStat-oldStat) with keys str, tou, spe, int, lib, sen, lus, cor, scale
 		 * */
 		public static function parseDynStatsArgs(c:Creature, args:Array):Object {
 			// Check num of args, we should have a multiple of 2
 			if ((args.length % 2) != 0)
 			{
 				trace("dynStats aborted. Keys->Arguments could not be matched");
-				return {str:0,tou:0,spe:0,int:0,lib:0,sen:0,lus:0,cor:0};
+				return {str:0,tou:0,spe:0,int:0,lib:0,sen:0,lus:0,cor:0,scale:true};
 			}
 
-			var argNamesFull:Array 	= 	["strength", "toughness", "speed", "intellect", "libido", "sensitivity", "lust", "corruption", "resisted", "noBimbo"]; // In case somebody uses full arg names etc
-			var argNamesShort:Array = 	["str", 	"tou", 	"spe", 	"int", 	"lib", 	"sen", 	"lus", 	"cor", 	"res", 	"bim"]; // Arg names
-			var argVals:Array = 		[0, 		0,	 	0, 		0, 		0, 		0, 		0, 		0, 		true, 	false]; // Default arg values
-			var argOps:Array = 			["+",	"+",    "+",    "+",    "+",    "+",    "+",    "+",    "=",    "="];   // Default operators
+			var argNamesFull:Array 	= 	["strength", "toughness", "speed", "intellect", "libido", "sensitivity", "lust", "corruption", "scale"]; // In case somebody uses full arg names etc
+			var argNamesShort:Array = 	["str", 	"tou", 	"spe", 	"int", 	"lib", 	"sen", 	"lus", 	"cor", 	"res", 	"sca"]; // Arg names
+			var argVals:Array = 		[0, 		0,	 	0, 		0, 		0, 		0, 		0, 		0, 		true, ]; // Default arg values
+			var argOps:Array = 			["+",	"+",    "+",    "+",    "+",    "+",    "+",    "+",    "="];   // Default operators
 
 			for (var i:int = 0; i < args.length; i += 2)
 			{
@@ -4023,6 +4034,8 @@ import flash.errors.IllegalOperationError;
 					if (argsi == "lust") argsi = "lus";
 					if (argsi == "sens") argsi = "sen";
 					if (argsi == "inte") argsi = "int";
+					if (argsi == "resisted") argsi = "sca";
+					if (argsi == "res") argsi = "sca";
 					if (argsi.length <= 4) // Short
 					{
 						argIndex = argNamesShort.indexOf(argsi.slice(0, 3));
@@ -4051,7 +4064,7 @@ import flash.errors.IllegalOperationError;
 				else
 				{
 					trace("dynStats aborted. Expected a key and got SHIT");
-					return {str:0,tou:0,spe:0,int:0,lib:0,sen:0,lus:0,cor:0};
+					return {str:0,tou:0,spe:0,int:0,lib:0,sen:0,lus:0,cor:0,scale:true};
 				}
 			}
 			// Got this far, we have values to statsify
@@ -4074,8 +4087,7 @@ import flash.errors.IllegalOperationError;
 				sen     : newSens - c.sens,
 				lus     : newLust - c.lust,
 				cor     : newCor - c.cor,
-				resisted: argVals[8],
-				noBimbo : argVals[9]
+				scale   : argVals[8]
 			};
 		}
 	}

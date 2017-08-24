@@ -1349,7 +1349,7 @@ public class Combat extends BaseContent
 			player.gems += monster.gems;
 			player.XP += monster.XP;
 			mainView.statsView.showStatUp('xp');
-			dynStats("lust", 0, "resisted", false); //Forces up arrow.
+			dynStats("lust", 0, "scale", false); //Forces up arrow.
 		}
 
 		//Clear statuses
@@ -1803,7 +1803,7 @@ public class Combat extends BaseContent
 			if (player.weaponName == "flintlock pistol") flags[kFLAGS.FLINTLOCK_PISTOL_AMMO] = 4;
 			if (player.weaponName == "blunderbuss") flags[kFLAGS.FLINTLOCK_PISTOL_AMMO] = 12;
 			if (prison.inPrison && prison.prisonCombatAutoLose) {
-				dynStats("lus", player.maxLust(), "resisted", false);
+				dynStats("lus", player.maxLust(), "scale", false);
 				doNext(endLustLoss);
 				return;
 			}

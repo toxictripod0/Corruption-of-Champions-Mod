@@ -619,8 +619,8 @@ use namespace kGAMECLASS;
 			// we return "1 damage received" if it is in (0..1) but deduce no Lust
 			var returnlustDmg:int = (lustDmg>0 && lustDmg<1)?1:lustDmg;
 			if (lustDmg>0){
-				//game.lustChange(-lustDmg, display, "resisted", applyRes);
-				game.dynStats("lus", lustDmg, "resisted", applyRes);
+				//game.lustChange(-lustDmg, display, "scale", applyRes);
+				game.dynStats("lus", lustDmg, "scale", applyRes);
 				lust = game.player.lust - lust;
 				if (display) game.output.text(" <b>(<font color=\"#ff00ff\">" + lust + "</font>)</b> ");
 				game.mainView.statsView.showStatUp('lust');
@@ -2139,7 +2139,7 @@ use namespace kGAMECLASS;
 					hunger = maxHunger();
 				}
 				if (hunger > oldHunger && flags[kFLAGS.USE_OLD_INTERFACE] == 0) kGAMECLASS.mainView.statsView.showStatUp('hunger');
-				//game.dynStats("lus", 0, "resisted");
+				//game.dynStats("lus", 0, "scale");
 				if (nl) outputText("\n");
 				//Messages
 				if (hunger < 10) outputText("<b>You still need to eat more. </b>");
@@ -2153,7 +2153,7 @@ use namespace kGAMECLASS;
 				if (oldHunger < 1 && hunger >= 100) kGAMECLASS.awardAchievement("Champion Needs Food Badly ", kACHIEVEMENTS.REALISTIC_CHAMPION_NEEDS_FOOD);
 				if (oldHunger >= 90) kGAMECLASS.awardAchievement("Glutton ", kACHIEVEMENTS.REALISTIC_GLUTTON);
 				if (hunger > oldHunger) kGAMECLASS.mainView.statsView.showStatUp("hunger");
-				game.dynStats("lus", 0, "resisted", false);
+				game.dynStats("lus", 0, "scale", false);
 				kGAMECLASS.statScreenRefresh();
 			}
 		}
@@ -2167,7 +2167,7 @@ use namespace kGAMECLASS;
 			hunger -= amnt;
 			if (hunger < 0) hunger = 0;
 			if (hunger < oldHunger && flags[kFLAGS.USE_OLD_INTERFACE] == 0) kGAMECLASS.mainView.statsView.showStatDown('hunger');
-			game.dynStats("lus", 0, "resisted", false);
+			game.dynStats("lus", 0, "scale", false);
 		}
 		
 		public function corruptionTolerance():int {
@@ -2335,7 +2335,7 @@ use namespace kGAMECLASS;
 				// fatigueDown.visible = true;
 				// fatigueUp.visible = false;
 			}
-			kGAMECLASS.dynStats("lus", 0, "resisted", false); //Force display fatigue up/down by invoking zero lust change.
+			kGAMECLASS.dynStats("lus", 0, "scale", false); //Force display fatigue up/down by invoking zero lust change.
 			if (fatigue > maxFatigue()) fatigue = maxFatigue();
 			if (fatigue < 0) fatigue = 0;
 			kGAMECLASS.statScreenRefresh();
@@ -2593,8 +2593,36 @@ use namespace kGAMECLASS;
 			}
 		}
 
+		public override function minLib():Number {
+			var minLib:Number = 0;
+
+			if (gender > 0) minLib = 15;
+			else minLib = 10;
+
+			if (armorName == "lusty maiden's armor") {
+				if (minLib < 50)
+				{
+					minLib = 50;
+				}
+			}
+			if (minLib < (minLust() * 2 / 3))
+			{
+				minLib = (minLust() * 2 / 3);
+			}
+			if (jewelryEffectId == JewelryLib.PURITY)
+			{
+				minLib -= jewelryEffectMagnitude;
+			}
+			if (findPerk(PerkLib.PurityBlessing) >= 0) {
+				minLib -= 2;
+			}
+			if (findPerk(PerkLib.HistoryReligious) >= 0) {
+				minLib -= 2;
+			}
+			return minLib;
+		}
 		//Determine minimum lust
-		public function minLust():Number
+		public override function minLust():Number
 		{
 			var min:Number = 0;
 			var minCap:Number = 100;
@@ -2685,10 +2713,7 @@ use namespace kGAMECLASS;
 			return min;
 		}
 
-		override public function modStats(dstr:Number, dtou:Number, dspe:Number, dinte:Number, dlib:Number, dsens:Number, dlust:Number, dcor:Number, resisted:Boolean = true, noBimbo:Boolean = false):void {
-
-			//Easy mode cuts lust gains!
-			if (flags[kFLAGS.EASY_MODE_ENABLE_FLAG] == 1 && dlust > 0 && resisted) dlust /= 2;
+		override public function modStats(dstr:Number, dtou:Number, dspe:Number, dinte:Number, dlib:Number, dsens:Number, dlust:Number, dcor:Number, scale:Boolean = true):void {
 
 			//Set original values to begin tracking for up/down values if
 			//they aren't set yet.
@@ -2711,104 +2736,51 @@ use namespace kGAMECLASS;
 			}
 			//MOD CHANGES FOR PERKS
 			//Bimbos learn slower
-			if (!noBimbo)
-			{
-				if (findPerk(PerkLib.FutaFaculties) >= 0 || findPerk(PerkLib.BimboBrains) >= 0  || findPerk(PerkLib.BroBrains) >= 0) {
+			if (scale) {
+				//Easy mode cuts lust gains!
+				if (flags[kFLAGS.EASY_MODE_ENABLE_FLAG] == 1 && dlust > 0 && scale) dlust /= 2;
+
+				if (findPerk(PerkLib.FutaFaculties) >= 0 || findPerk(PerkLib.BimboBrains) >= 0 || findPerk(PerkLib.BroBrains) >= 0) {
 					if (dinte > 0) dinte /= 2;
 					if (dinte < 0) dinte *= 2;
 				}
-				if (findPerk(PerkLib.FutaForm) >= 0 || findPerk(PerkLib.BimboBody) >= 0  || findPerk(PerkLib.BroBody) >= 0) {
+				if (findPerk(PerkLib.FutaForm) >= 0 || findPerk(PerkLib.BimboBody) >= 0 || findPerk(PerkLib.BroBody) >= 0) {
 					if (dlib > 0) dlib *= 2;
 					if (dlib < 0) dlib /= 2;
 				}
+
+				// Uma's Perkshit
+				if (findPerk(PerkLib.ChiReflowSpeed) >= 0 && dspe < 0) dspe *= UmasShop.NEEDLEWORK_SPEED_SPEED_MULTI;
+				if (findPerk(PerkLib.ChiReflowLust) >= 0 && dlib > 0) dlib *= UmasShop.NEEDLEWORK_LUST_LIBSENSE_MULTI;
+				if (findPerk(PerkLib.ChiReflowLust) >= 0 && dsens > 0) dsens *= UmasShop.NEEDLEWORK_LUST_LIBSENSE_MULTI;
+
+				//Apply lust changes in NG+.
+				if (scale) dlust *= 1 + (newGamePlusMod() * 0.2);
+
+				//lust resistance
+				if (dlust > 0 && scale) dlust *= lustPercent() / 100;
+				if (dlib > 0 && findPerk(PerkLib.PurityBlessing) >= 0) dlib *= 0.75;
+				if (dcor > 0 && findPerk(PerkLib.PurityBlessing) >= 0) dcor *= 0.5;
+				if (dcor > 0 && findPerk(PerkLib.PureAndLoving) >= 0) dcor *= 0.75;
+				if (dcor > 0 && weapon == kGAMECLASS.weapons.HNTCANE) dcor *= 0.5;
+				if (findPerk(PerkLib.AscensionMoralShifter) >= 0) dcor *= 1 + (perkv1(PerkLib.AscensionMoralShifter) * 0.2);
+				if (sens > 50 && dsens > 0) dsens/=2;
+				if (sens > 75 && dsens > 0) dsens/=2;
+				if (sens > 90 && dsens > 0) dsens/=2;
+				if (sens > 50 && dsens < 0) dsens*=2;
+				if (sens > 75 && dsens < 0) dsens*=2;
+				if (sens > 90 && dsens < 0) dsens*=2;
+				//Bonus gain for perks!
+				if (findPerk(PerkLib.Strong) >= 0 && dstr >= 0) dstr*=1+perk(findPerk(PerkLib.Strong)).value1;
+				if (findPerk(PerkLib.Tough) >= 0 && dtou >= 0) dtou*=1+perk(findPerk(PerkLib.Tough)).value1;
+				if (findPerk(PerkLib.Fast) >= 0 && dspe >= 0) dspe*=1+perk(findPerk(PerkLib.Fast)).value1;
+				if (findPerk(PerkLib.Smart) >= 0 && dinte >= 0) dinte*=1+perk(findPerk(PerkLib.Smart)).value1;
+				if (findPerk(PerkLib.Lusty) >= 0 && dlib >= 0) dlib*=1+perk(findPerk(PerkLib.Lusty)).value1;
+				if (findPerk(PerkLib.Sensitive) >= 0 && dsens >= 0) dsens*= 1+ perk(findPerk(PerkLib.Sensitive)).value1;
 			}
-
-			// Uma's Perkshit
-			if (findPerk(PerkLib.ChiReflowSpeed)>=0 && dspe < 0) dspe *= UmasShop.NEEDLEWORK_SPEED_SPEED_MULTI;
-			if (findPerk(PerkLib.ChiReflowLust)>=0 && dlib > 0) dlib *= UmasShop.NEEDLEWORK_LUST_LIBSENSE_MULTI;
-			if (findPerk(PerkLib.ChiReflowLust)>=0 && dsens > 0) dsens *= UmasShop.NEEDLEWORK_LUST_LIBSENSE_MULTI;
-
-			//Apply lust changes in NG+.
-			if (resisted) dlust *= 1 + (newGamePlusMod() * 0.2);
-
-			//lust resistance
-			if (dlust > 0 && resisted) dlust *= lustPercent()/100;
-			if (dlib > 0 && findPerk(PerkLib.PurityBlessing) >= 0) dlib *= 0.75;
-			if (dcor > 0 && findPerk(PerkLib.PurityBlessing) >= 0) dcor *= 0.5;
-			if (dcor > 0 && findPerk(PerkLib.PureAndLoving) >= 0) dcor *= 0.75;
-			if (dcor > 0 && weapon == kGAMECLASS.weapons.HNTCANE) dcor *= 0.5;
-			if (findPerk(PerkLib.AscensionMoralShifter) >= 0) dcor *= 1 + (perkv1(PerkLib.AscensionMoralShifter) * 0.2);
-			//Change original stats
-			str+=dstr;
-			tou+=dtou;
-			spe+=dspe;
-			inte+=dinte;
-			lib += dlib;
-			//Add HP for toughness change.
-			if (dtou > 0) kGAMECLASS.HPChange(dtou * 2, false);
-
-			if (sens > 50 && dsens > 0) dsens/=2;
-			if (sens > 75 && dsens > 0) dsens/=2;
-			if (sens > 90 && dsens > 0) dsens/=2;
-			if (sens > 50 && dsens < 0) dsens*=2;
-			if (sens > 75 && dsens < 0) dsens*=2;
-			if (sens > 90 && dsens < 0) dsens*=2;
-
-			sens+=dsens;
-			lust+=dlust;
-			cor += dcor;
-
-			//Bonus gain for perks!
-			if (findPerk(PerkLib.Strong) >= 0 && dstr >= 0) str+=dstr*perk(findPerk(PerkLib.Strong)).value1;
-			if (findPerk(PerkLib.Tough) >= 0 && dtou >= 0) tou+=dtou*perk(findPerk(PerkLib.Tough)).value1;
-			if (findPerk(PerkLib.Fast) >= 0 && dspe >= 0) spe+=dspe*perk(findPerk(PerkLib.Fast)).value1;
-			if (findPerk(PerkLib.Smart) >= 0 && dinte >= 0) inte+=dinte*perk(findPerk(PerkLib.Smart)).value1;
-			if (findPerk(PerkLib.Lusty) >= 0 && dlib >= 0) lib+=dlib*perk(findPerk(PerkLib.Lusty)).value1;
-			if (findPerk(PerkLib.Sensitive) >= 0 && dsens >= 0) sens += dsens * perk(findPerk(PerkLib.Sensitive)).value1;
-
-			//Keep stats in bounds
-			var maxes:Object = getAllMaxStats();
-			//Minimum libido. Rewritten.
-			var minLib:Number = 0;
-
-			if (gender > 0) minLib = 15;
-			else minLib = 10;
-
-			if (armorName == "lusty maiden's armor") {
-				if (minLib < 50)
-				{
-					minLib = 50;
-				}
-			}
-			if (minLib < (minLust() * 2 / 3))
-			{
-				minLib = (minLust() * 2 / 3);
-			}
-			if (jewelryEffectId == JewelryLib.PURITY)
-			{
-				minLib -= jewelryEffectMagnitude;
-			}
-			if (findPerk(PerkLib.PurityBlessing) >= 0) {
-				minLib -= 2;
-			}
-			if (findPerk(PerkLib.HistoryReligious) >= 0) {
-				minLib -= 2;
-			}
-			cor = boundFloat(0,cor,100);
-			str = boundFloat(1,str,maxes.str);
-			tou = boundFloat(1,tou,maxes.tou);
-			spe = boundFloat(1,spe,maxes.spe);
-			inte = boundFloat(1,inte,maxes.inte);
-			lib = boundFloat(minLib,lib,100);
-			sens = boundFloat(10,sens,100);
-			HP = boundFloat(-Infinity,HP,maxHP());
-			lust = boundFloat(minLust(),lust,maxLust());
-
-			//Refresh the stat pane with updated values
-			//mainView.statsView.showUpDown();
-			kGAMECLASS.showUpDown();
-			kGAMECLASS.statScreenRefresh();
+			super.modStats(dstr, dtou, dspe, dinte, dlib, dsens, dlust, dcor, false);
 		}
+
 
 		public override function getMaxStats(stats:String):int {
 			var obj:Object = getAllMaxStats();
@@ -3369,7 +3341,7 @@ use namespace kGAMECLASS;
 				effect.value1 += 5 * intensity;
 				effect.value2 += 5 * intensity;
 				effect.value3 += 48 * intensity;
-				game.dynStats("lib", 5 * intensity, "resisted", false, "noBimbo", true);
+				game.dynStats("lib", 5 * intensity, "scale", false);
 			}
 			//Go into heat.  Heats v1 is bonus fertility, v2 is bonus libido, v3 is hours till it's gone
 			else {
@@ -3377,7 +3349,7 @@ use namespace kGAMECLASS;
 					outputText("\n\nYour mind clouds as your " + vaginaDescript(0) + " moistens.  Your hands begin stroking your body from top to bottom, your sensitive skin burning with desire.  Fantasies about bending over and presenting your needy pussy to a male overwhelm you as <b>you realize you have gone into heat!</b>");
 				}
 				createStatusEffect(StatusEffects.Heat, 10 * intensity, 15 * intensity, 48 * intensity, 0);
-				game.dynStats("lib", 15 * intensity, "resisted", false, "noBimbo", true);
+				game.dynStats("lib", 15 * intensity, "scale", false);
 			}
 			return true;
 		}
@@ -3404,7 +3376,7 @@ use namespace kGAMECLASS;
 				addStatusValue(StatusEffects.Rut, 1, 100 * intensity);
 				addStatusValue(StatusEffects.Rut, 2, 5 * intensity);
 				addStatusValue(StatusEffects.Rut, 3, 48 * intensity);
-				game.dynStats("lib", 5 * intensity, "resisted", false, "noBimbo", true);
+				game.dynStats("lib", 5 * intensity, "scale", false);
 			}
 			else {
 				if (output) {
@@ -3415,7 +3387,7 @@ use namespace kGAMECLASS;
 				//v2 - bonus libido
 				//v3 - time remaining!
 				createStatusEffect(StatusEffects.Rut, 150 * intensity, 5 * intensity, 100 * intensity, 0);
-				game.dynStats("lib", 5 * intensity, "resisted", false, "noBimbo", true);
+				game.dynStats("lib", 5 * intensity, "scale", false);
 			}
 			
 			return true;

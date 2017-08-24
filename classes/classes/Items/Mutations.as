@@ -2119,7 +2119,7 @@ package classes.Items
 			if (fuck) outputText("red");
 			else outputText("pink");
 			outputText(" potion, and its unnatural warmth immediately flows to your groin.");
-			dynStats("lus", (30 + rand(player.lib / 10)), "resisted", false);
+			dynStats("lus", (30 + rand(player.lib / 10)), "scale", false);
 
 			//Heat/Rut for those that can have them if "fuck draft"
 			if (fuck) {
@@ -4432,7 +4432,7 @@ package classes.Items
 			}
 			outputText("\n\nYou lick your lips clean, savoring the taste of the Winter Pudding.  You feel kinda antsy...");
 			//[Decrease player tone by 5, Increase Lust by 20, Destroy item.]
-			dynStats("lus", (10+player.lib/10), "resisted", false);
+			dynStats("lus", (10+player.lib/10), "scale", false);
 			
 			//[Optional, give the player antlers! (30% chance) Show this description if the player doesn't have horns already.]
 			if (player.horns == 0 && rand(2) == 0) {
