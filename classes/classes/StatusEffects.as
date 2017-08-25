@@ -266,7 +266,7 @@ import classes.StatusEffects.CombatStatusEffect;
 		public static const AnemoneVenom:StatusEffectType = AnemoneVenomEffect.TYPE;
 		public static const AttackDisabled:StatusEffectType = mk("Attack Disabled", CombatStatusEffect);
 		public static const BasiliskCompulsion:StatusEffectType = mk("Basilisk Compulsion", CombatStatusEffect);
-		public static const BasiliskSlow:StatusEffectType = mk("BasiliskSlow", CombatStatusEffect);
+		public static const BasiliskSlow:StatusEffectType = BasiliskSlowEffect.TYPE;
 		public static const Berzerking:StatusEffectType = mk("Berzerking", CombatStatusEffect);
 		public static const Blind:StatusEffectType = mk("Blind", CombatStatusEffect);
 		public static const Bound:StatusEffectType = mk("Bound", CombatStatusEffect);

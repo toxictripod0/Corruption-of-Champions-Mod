@@ -2893,13 +2893,6 @@ use namespace kGAMECLASS;
 					flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = flags[kFLAGS.PLAYER_DISARMED_WEAPON_ID];
 				}
 			}
-			if (hasStatusEffect(StatusEffects.BasiliskSlow)) {
-				spe += statusEffectv1(StatusEffects.BasiliskSlow);
-				kGAMECLASS.mainView.statsView.showStatUp( 'spe' );
-				// speUp.visible = true;
-				// speDown.visible = false;
-				removeStatusEffect(StatusEffects.BasiliskSlow);
-			}
 			if (hasStatusEffect(StatusEffects.GiantStrLoss)) {
 				str += statusEffectv1(StatusEffects.GiantStrLoss);
 				removeStatusEffect(StatusEffects.GiantStrLoss);

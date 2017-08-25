@@ -44,6 +44,15 @@ public class TemporaryBuff extends StatusEffectClass{
 		if (stat4) dsargs.push(stat4,-value4);
 		host.dynStats.apply(host,dsargs);
 	}
+	public function buffValue(stat:String):Number {
+		switch (stat) {
+			case stat1:return value1;
+			case stat2:return value2;
+			case stat3:return value3;
+			case stat4:return value4;
+			default: return 0;
+		}
+	}
 	protected function apply(firstTime:Boolean):void {
 		// buffHost('str',-1);
 	}

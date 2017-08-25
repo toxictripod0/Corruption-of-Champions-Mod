@@ -11,6 +11,7 @@ package classes.Scenes.Combat
 	import classes.Scenes.Monsters.Mimic;
 	import classes.Scenes.NPCs.*;
 	import classes.Scenes.Places.TelAdre.UmasShop;
+import classes.StatusEffects.Combat.BasiliskSlowEffect;
 import classes.StatusEffects.Combat.MightEffect;
 
 public class CombatAbilities extends BaseContent
@@ -1400,7 +1401,8 @@ public class CombatAbilities extends BaseContent
 			var theMonster:String = monster.a + monster.short;
 			var TheMonster:String = monster.capitalA + monster.short;
 			var stareTraining:Number = flags[kFLAGS.BASILISK_RESISTANCE_TRACKER] / 100;
-			var slowEffect:Number = monster.statusEffectv1(StatusEffects.BasiliskSlow);
+			var bse:BasiliskSlowEffect = monster.createOrFindStatusEffect(StatusEffects.BasiliskSlow) as BasiliskSlowEffect;
+			var slowEffect:Number = -bse.buffValue('spe');
 			var oldSpeed:Number = monster.spe;
 			var speedDiff:int = 0;
 			var message:String = "";
@@ -1456,13 +1458,8 @@ public class CombatAbilities extends BaseContent
 				        + monster.pronoun3 + " thoughts, making " + monster.pronoun2 + " feel sluggish and unable to coordinate. Something about the"
 				        + " helplessness of it feels so good... " + monster.pronoun1 + " can't banish the feeling that really, " + monster.pronoun1
 				        + " wants to look into your eyes forever, for you to have total control over " + monster.pronoun2 + ". ";
-				if (slowEffect > 0)
-					monster.addStatusValue(StatusEffects.BasiliskSlow, 1, 1);
-				else
-					monster.createStatusEffect(StatusEffects.BasiliskSlow, 1, 0, 0, 0);
 				slowEffect++;
-				if (monster.spe > 1) monster.spe -= 16 + stareTraining * 8 - slowEffect * (4 + stareTraining * 2);
-				if (monster.spe < 1) monster.spe = 1;
+				bse.applyEffect(16 + stareTraining * 8 - slowEffect * (4 + stareTraining * 2));
 				flags[kFLAGS.BASILISK_RESISTANCE_TRACKER] += 4;
 				speedDiff = Math.round(oldSpeed - monster.spe);
 				output.text(message + combat.getDamageText(speedDiff) + "\n\n");
