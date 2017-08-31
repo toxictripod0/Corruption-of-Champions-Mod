@@ -326,7 +326,7 @@ import classes.StatusEffects.CombatStatusEffect;
 		public static const ShowerDotEffect:StatusEffectType = mk("Shower Dot Effect", CombatStatusEffect);
 		public static const GardenerSapSpeed:StatusEffectType = GardenerSapSpeedDebuff.TYPE;
 		public static const VineHealUsed:StatusEffectType = mk("Vine Heal Used", CombatStatusEffect);
-		public static const DriderIncubusVenom:StatusEffectType = mk("Drider Incubus Venom", CombatStatusEffect);
+		public static const DriderIncubusVenom:StatusEffectType = DriderIncubusVenomDebuff.TYPE;
 		public static const PurpleHaze:StatusEffectType = mk("PurpleHaze", CombatStatusEffect);
 		public static const TaintedMind:StatusEffectType = mk("Tainted Mind", CombatStatusEffect);
 		public static const MinotaurKingMusk:StatusEffectType = mk("Minotaur King Musk", CombatStatusEffect);

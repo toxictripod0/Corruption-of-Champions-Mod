@@ -1647,15 +1647,6 @@ public class Combat extends BaseContent
 			if (player.hasStatusEffect(StatusEffects.GiantBoulder)) {
 				outputText("<b>There is a large boulder coming your way. If you don't avoid it in time, you might take some serious damage.</b>\n\n");
 			}
-			if (player.hasStatusEffect(StatusEffects.DriderIncubusVenom)) {
-				//Chance to cleanse!
-				if (player.findPerk(PerkLib.Medicine) >= 0 && rand(100) <= 14) {
-					outputText("You manage to cleanse the drider incubus venom from your system with your knowledge of medicine!\n\n");
-					player.str += player.statusEffectv1(StatusEffects.DriderIncubusVenom);
-					mainView.statsView.showStatUp('str');
-					player.removeStatusEffect(StatusEffects.DriderIncubusVenom);
-				}
-			}
 			//Drider Incubus' purple haze
 			if (player.hasStatusEffect(StatusEffects.PurpleHaze)) {
 				outputText("<b>The purple haze is filling your vision with unsubtle erotic imagery, arousing you.</b>");
