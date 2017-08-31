@@ -1,7 +1,7 @@
 package classes.Scenes.NPCs
 {
 	import classes.*;
-import classes.StatusEffects.Combat.AmilyVenomEffect;
+import classes.StatusEffects.Combat.AmilyVenomDebuff;
 
 /**
 	 * ...
@@ -188,7 +188,7 @@ import classes.StatusEffects.Combat.AmilyVenomEffect;
 			else {
 				outputText("Amily dashes at you and swipes her knife at you, surprisingly slowly.  You easily dodge the attack; but it was a feint - her other hand tries to strike at you with a poisoned dart. However, she only manages to scratch you, only causing your muscles to grow slightly numb.");
 				//Set status
-				var venom:AmilyVenomEffect = player.createOrFindStatusEffect(StatusEffects.AmilyVenom) as AmilyVenomEffect;
+				var venom:AmilyVenomDebuff = player.createOrFindStatusEffect(StatusEffects.AmilyVenom) as AmilyVenomDebuff;
 				venom.increase();
 				//If PC is reduced to 0 Speed and Strength, normal defeat by HP plays.
 				if (player.spe <= 2 && player.str <= 2) {

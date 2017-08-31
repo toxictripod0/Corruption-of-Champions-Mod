@@ -2,10 +2,10 @@ package classes.StatusEffects.Combat {
 import classes.PerkLib;
 import classes.StatusEffectType;
 
-public class NagaVenomEffect extends CombatBuff {
+public class NagaVenomDebuff extends CombatBuff {
 
-	public static const TYPE:StatusEffectType = register("Naga Venom",NagaVenomEffect);
-	public function NagaVenomEffect() {
+	public static const TYPE:StatusEffectType = register("Naga Venom",NagaVenomDebuff);
+	public function NagaVenomDebuff() {
 		super(TYPE,'spe');
 	}
 

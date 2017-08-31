@@ -4,9 +4,9 @@
 package classes.StatusEffects.Combat {
 import classes.StatusEffectType;
 
-public class AmilyVenomEffect extends CombatBuff {
-	public static const TYPE:StatusEffectType = register("Amily Venom",AmilyVenomEffect);
-	public function AmilyVenomEffect() {
+public class AmilyVenomDebuff extends CombatBuff {
+	public static const TYPE:StatusEffectType = register("Amily Venom",AmilyVenomDebuff);
+	public function AmilyVenomDebuff() {
 		super(TYPE,'str','spe');
 	}
 

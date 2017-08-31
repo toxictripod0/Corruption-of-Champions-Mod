@@ -4,9 +4,9 @@
 package classes.StatusEffects.Combat {
 import classes.StatusEffectType;
 
-public class WebEffect extends CombatBuff{
-	public static const TYPE:StatusEffectType = register("Web",WebEffect);
-	public function WebEffect() {
+public class WebDebuff extends CombatBuff{
+	public static const TYPE:StatusEffectType = register("Web",WebDebuff);
+	public function WebDebuff() {
 		super(TYPE, 'spe');
 	}
 

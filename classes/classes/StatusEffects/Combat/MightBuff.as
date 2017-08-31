@@ -4,9 +4,9 @@
 package classes.StatusEffects.Combat {
 import classes.StatusEffectType;
 
-public class MightEffect extends CombatBuff {
-	public static const TYPE:StatusEffectType = register("Might",MightEffect);
-	public function MightEffect() {
+public class MightBuff extends CombatBuff {
+	public static const TYPE:StatusEffectType = register("Might",MightBuff);
+	public function MightBuff() {
 		super(TYPE,'str','tou');
 	}
 

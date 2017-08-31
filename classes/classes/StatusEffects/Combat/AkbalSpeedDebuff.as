@@ -4,9 +4,9 @@
 package classes.StatusEffects.Combat {
 import classes.StatusEffectType;
 
-public class AkbalSpeedEffect extends CombatBuff {
-	public static const TYPE:StatusEffectType = register("Akbal Speed",AkbalSpeedEffect);
-	public function AkbalSpeedEffect() {
+public class AkbalSpeedDebuff extends CombatBuff {
+	public static const TYPE:StatusEffectType = register("Akbal Speed",AkbalSpeedDebuff);
+	public function AkbalSpeedDebuff() {
 		super(TYPE,'spe');
 	}
 

@@ -1,7 +1,7 @@
 package classes.Scenes.Areas.Desert
 {
 	import classes.*;
-import classes.StatusEffects.Combat.NagaVenomEffect;
+import classes.StatusEffects.Combat.NagaVenomDebuff;
 import classes.internals.*;
 
 	public class Naga extends Monster
@@ -12,10 +12,10 @@ import classes.internals.*;
 			//(Deals damage over 4-5 turns, invariably reducing 
 			//your speed. It wears off once combat is over.)
 			outputText("The naga strikes with the speed of a cobra, sinking her fangs into your flesh!  ");
-			var venom:NagaVenomEffect = player.statusEffectByType(StatusEffects.NagaVenom) as NagaVenomEffect;
+			var venom:NagaVenomDebuff = player.statusEffectByType(StatusEffects.NagaVenom) as NagaVenomDebuff;
 			if (!venom) {
 				outputText("The venom's effects are almost instantaneous; your vision begins to blur and it becomes increasingly harder to stand.");
-				player.addStatusEffect(new NagaVenomEffect());
+				player.addStatusEffect(new NagaVenomDebuff());
 			}
 			else {
 				outputText("The venom's effects intensify as your vision begins to blur and it becomes increasingly harder to stand.");

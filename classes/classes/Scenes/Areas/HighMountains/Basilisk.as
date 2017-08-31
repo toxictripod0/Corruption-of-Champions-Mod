@@ -1,7 +1,7 @@
 package classes.Scenes.Areas.HighMountains
 {
 	import classes.*;
-import classes.StatusEffects.Combat.BasiliskSlowEffect;
+import classes.StatusEffects.Combat.BasiliskSlowDebuff;
 import classes.internals.ChainedAction;
 	import classes.internals.ChainedDrop;
 	import classes.GlobalFlags.*
@@ -14,7 +14,7 @@ import classes.internals.ChainedAction;
 	{
 
 		public static function speedReduce(player:Player,amount:Number = 0):void {
-			var bse:BasiliskSlowEffect = player.createOrFindStatusEffect(StatusEffects.BasiliskSlow) as BasiliskSlowEffect;
+			var bse:BasiliskSlowDebuff = player.createOrFindStatusEffect(StatusEffects.BasiliskSlow) as BasiliskSlowDebuff;
 			bse.applyEffect(amount);
 		}
 

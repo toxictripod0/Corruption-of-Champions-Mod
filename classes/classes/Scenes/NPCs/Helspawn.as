@@ -2,7 +2,7 @@ package classes.Scenes.NPCs
 {
 	import classes.*;
 	import classes.GlobalFlags.kFLAGS;
-import classes.StatusEffects.Combat.CalledShotEffect;
+import classes.StatusEffects.Combat.CalledShotDebuff;
 
 public class Helspawn extends Monster
 	{
@@ -46,7 +46,7 @@ private function calledShot():void {
 	if (damage <= 0 || (rand(2) == 0 && (player.getEvasionRoll()))) outputText("\nYou avoid the hit!");
 	else {
 		outputText("\nOne of her arrows smacks right into your [leg], nearly bowling you over.  God DAMN that hurt! You're going to be limping for a while! ");
-		var sec:CalledShotEffect = player.createOrFindStatusEffect(StatusEffects.CalledShot) as CalledShotEffect;
+		var sec:CalledShotDebuff = player.createOrFindStatusEffect(StatusEffects.CalledShot) as CalledShotDebuff;
 		sec.increase();
 		damage = player.takeDamage(damage, true);
 	}

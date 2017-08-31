@@ -1,9 +1,9 @@
 package classes.StatusEffects.Combat {
 import classes.StatusEffectType;
 
-public class GnollSpearEffect extends CombatBuff {
-	public static const TYPE:StatusEffectType = register("Gnoll Spear",GnollSpearEffect);
-	public function GnollSpearEffect() {
+public class GnollSpearDebuff extends CombatBuff {
+	public static const TYPE:StatusEffectType = register("Gnoll Spear",GnollSpearDebuff);
+	public function GnollSpearDebuff() {
 		super(TYPE,'spe');
 	}
 

@@ -1,10 +1,10 @@
 package classes.StatusEffects.Combat {
 import classes.StatusEffectType;
 
-public class ParalyzeVenomEffect extends CombatBuff {
+public class ParalyzeVenomDebuff extends CombatBuff {
 
-	public static const TYPE:StatusEffectType = register("paralyze venom",ParalyzeVenomEffect);
-	public function ParalyzeVenomEffect() {
+	public static const TYPE:StatusEffectType = register("paralyze venom",ParalyzeVenomDebuff);
+	public function ParalyzeVenomDebuff() {
 		super(TYPE,'str','spe');
 	}
 

@@ -1,14 +1,14 @@
 package classes.Scenes.Areas.GlacialRift 
 {
 	import classes.*;
-import classes.StatusEffects.Combat.GiantStrLoss;
+import classes.StatusEffects.Combat.GiantStrLossDebuff;
 import classes.internals.WeightedDrop;
 	import classes.GlobalFlags.kFLAGS;
 	
 	public class FrostGiant extends Monster
 	{
 		private function giantStrengthLoss(magnitude:int = 0):void {
-			var gsl:GiantStrLoss = player.createOrFindStatusEffect(StatusEffects.GiantStrLossEffect) as GiantStrLoss;
+			var gsl:GiantStrLossDebuff = player.createOrFindStatusEffect(StatusEffects.GiantStrLoss) as GiantStrLossDebuff;
 			gsl.applyEffect(magnitude);
 		}
 		

@@ -2,7 +2,7 @@
 {
 	import classes.*;
 	import classes.GlobalFlags.*;
-import classes.StatusEffects.Combat.ParalyzeVenomEffect;
+import classes.StatusEffects.Combat.ParalyzeVenomDebuff;
 import classes.internals.ChainedDrop;
 
 	public class BeeGirl extends Monster {
@@ -65,11 +65,11 @@ import classes.internals.ChainedDrop;
 			//Paralise the other 50%!
 			else {
 				outputText("Searing pain lances through you as " + a + short + " manages to sting you!  You stagger back a step and nearly trip, finding it hard to move yourself.");
-				var paralyze:ParalyzeVenomEffect = player.statusEffectByType(StatusEffects.ParalyzeVenom) as ParalyzeVenomEffect;
+				var paralyze:ParalyzeVenomDebuff = player.statusEffectByType(StatusEffects.ParalyzeVenom) as ParalyzeVenomDebuff;
 				if (paralyze) {
 					outputText("  It's getting much harder to move, you're not sure how many more stings like that you can take!");
 				} else {
-					paralyze = new ParalyzeVenomEffect();
+					paralyze = new ParalyzeVenomDebuff();
 					player.addStatusEffect(paralyze);
 					outputText("  You've fallen prey to paralyzation venom!  Better end this quick!");
 				}

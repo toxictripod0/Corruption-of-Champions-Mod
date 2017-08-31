@@ -11,8 +11,8 @@ package classes.Scenes.Combat
 	import classes.Scenes.Monsters.Mimic;
 	import classes.Scenes.NPCs.*;
 	import classes.Scenes.Places.TelAdre.UmasShop;
-import classes.StatusEffects.Combat.BasiliskSlowEffect;
-import classes.StatusEffects.Combat.MightEffect;
+import classes.StatusEffects.Combat.BasiliskSlowDebuff;
+import classes.StatusEffects.Combat.MightBuff;
 
 public class CombatAbilities extends BaseContent
 	{
@@ -453,7 +453,7 @@ public class CombatAbilities extends BaseContent
 			
 
 			if (silent)	{ // for Battlemage
-				player.addStatusEffect(new MightEffect());
+				player.addStatusEffect(new MightBuff());
 				return;
 			}
 			
@@ -488,7 +488,7 @@ public class CombatAbilities extends BaseContent
 			}
 			else {
 				outputText("The rush of success and power flows through your body.  You feel like you can do anything!");
-				player.addStatusEffect(new MightEffect());
+				player.addStatusEffect(new MightBuff());
 			}
 			outputText("\n\n");
 			flags[kFLAGS.SPELLS_CAST]++;
@@ -1398,14 +1398,14 @@ public class CombatAbilities extends BaseContent
 		//Stare
 		public function paralyzingStare():void
 		{
-			var theMonster:String = monster.a + monster.short;
-			var TheMonster:String = monster.capitalA + monster.short;
-			var stareTraining:Number = flags[kFLAGS.BASILISK_RESISTANCE_TRACKER] / 100;
-			var bse:BasiliskSlowEffect = monster.createOrFindStatusEffect(StatusEffects.BasiliskSlow) as BasiliskSlowEffect;
-			var slowEffect:Number = -bse.buffValue('spe');
-			var oldSpeed:Number = monster.spe;
-			var speedDiff:int = 0;
-			var message:String = "";
+			var theMonster:String      = monster.a + monster.short;
+			var TheMonster:String      = monster.capitalA + monster.short;
+			var stareTraining:Number   = flags[kFLAGS.BASILISK_RESISTANCE_TRACKER] / 100;
+			var bse:BasiliskSlowDebuff = monster.createOrFindStatusEffect(StatusEffects.BasiliskSlow) as BasiliskSlowDebuff;
+			var slowEffect:Number      = -bse.buffValue('spe');
+			var oldSpeed:Number        = monster.spe;
+			var speedDiff:int          = 0;
+			var message:String         = "";
 			if (stareTraining > 1) stareTraining = 1;
 
 			output.clear();

@@ -1,9 +1,9 @@
 package classes.StatusEffects.Combat {
 import classes.StatusEffectType;
 
-public class AnemoneVenomEffect extends CombatBuff {
-	public static const TYPE:StatusEffectType = register("Anemone Venom",AnemoneVenomEffect);
-	public function AnemoneVenomEffect() {
+public class AnemoneVenomDebuff extends CombatBuff {
+	public static const TYPE:StatusEffectType = register("Anemone Venom",AnemoneVenomDebuff);
+	public function AnemoneVenomDebuff() {
 		super(TYPE,'str','spe');
 	}
 

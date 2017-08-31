@@ -6,8 +6,8 @@ package classes.Scenes.Areas.Swamp
 	import classes.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Items.WeaponLib;
-import classes.StatusEffects.Combat.WebEffect;
-import classes.StatusEffects.Combat.WebEffect;
+import classes.StatusEffects.Combat.WebDebuff;
+import classes.StatusEffects.Combat.WebDebuff;
 
 public class AbstractSpiderMorph extends Monster
 	{
@@ -58,12 +58,12 @@ public class AbstractSpiderMorph extends Monster
 			}
 			//Got hit
 			else {
-				var web:WebEffect = player.statusEffectByType(StatusEffects.Web) as WebEffect;
+				var web:WebDebuff = player.statusEffectByType(StatusEffects.Web) as WebDebuff;
 				if (web == null) {
 					outputText("The silky strands hit you, webbing around you and making it hard to move with any degree of speed.");
 					if (player.canFly()) outputText("  Your wings struggle uselessly in the bindings, no longer able to flap fast enough to aid you.");
 					outputText("\n");
-					web = new WebEffect();
+					web = new WebDebuff();
 					player.addStatusEffect(web);
 				}
 				else {

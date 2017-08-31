@@ -1,7 +1,7 @@
 package classes.Scenes.Areas.Forest
 {
 	import classes.*;
-import classes.StatusEffects.Combat.AkbalSpeedEffect;
+import classes.StatusEffects.Combat.AkbalSpeedDebuff;
 import classes.internals.WeightedDrop;
 
 	public class Akbal extends Monster
@@ -109,7 +109,7 @@ import classes.internals.WeightedDrop;
 			{
 				outputText("Akbal's eyes fill with light, and a strange sense of fear begins to paralyze your limbs.");
 				//(Speed decrease)
-				var ase:AkbalSpeedEffect = player.createOrFindStatusEffect(StatusEffects.AkbalSpeed) as AkbalSpeedEffect;
+				var ase:AkbalSpeedDebuff = player.createOrFindStatusEffect(StatusEffects.AkbalSpeed) as AkbalSpeedDebuff;
 				ase.increase();
 			}
 			//*Special Attack B - 

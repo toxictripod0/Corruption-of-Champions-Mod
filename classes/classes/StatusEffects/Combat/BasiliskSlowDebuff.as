@@ -1,9 +1,9 @@
 package classes.StatusEffects.Combat {
 import classes.StatusEffectType;
 
-public class BasiliskSlowEffect extends CombatBuff {
-	public static const TYPE:StatusEffectType = register("BasiliskSlow",BasiliskSlowEffect);
-	public function BasiliskSlowEffect() {
+public class BasiliskSlowDebuff extends CombatBuff {
+	public static const TYPE:StatusEffectType = register("BasiliskSlow",BasiliskSlowDebuff);
+	public function BasiliskSlowDebuff() {
 		super(TYPE,'spe');
 	}
 

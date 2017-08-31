@@ -4,9 +4,9 @@
 package classes.StatusEffects.Combat {
 import classes.StatusEffectType;
 
-public class GiantStrLoss extends CombatBuff {
-	public static const TYPE:StatusEffectType = register("GiantStrLoss",GiantStrLoss);
-	public function GiantStrLoss() {
+public class GiantStrLossDebuff extends CombatBuff {
+	public static const TYPE:StatusEffectType = register("GiantStrLoss",GiantStrLossDebuff);
+	public function GiantStrLossDebuff() {
 		super(TYPE,'str');
 	}
 

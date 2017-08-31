@@ -1,7 +1,7 @@
 package classes.Scenes.Areas.Plains
 {
 	import classes.*;
-import classes.StatusEffects.Combat.GnollSpearEffect;
+import classes.StatusEffects.Combat.GnollSpearDebuff;
 import classes.internals.*;
 
 	/**

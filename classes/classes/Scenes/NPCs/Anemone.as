@@ -1,7 +1,7 @@
 package classes.Scenes.NPCs
 {
 	import classes.*;
-import classes.StatusEffects.Combat.AnemoneVenomEffect;
+import classes.StatusEffects.Combat.AnemoneVenomDebuff;
 import classes.internals.WeightedDrop;
 
 	public class Anemone extends Monster
@@ -24,7 +24,7 @@ import classes.internals.WeightedDrop;
 		public function applyVenom(str:Number = 1):void
 		{
 			//First application
-			var ave:AnemoneVenomEffect = player.createOrFindStatusEffect(StatusEffects.AnemoneVenom) as AnemoneVenomEffect;
+			var ave:AnemoneVenomDebuff = player.createOrFindStatusEffect(StatusEffects.AnemoneVenom) as AnemoneVenomDebuff;
 			ave.applyEffect(str);
 		}
 
