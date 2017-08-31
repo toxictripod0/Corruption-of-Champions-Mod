@@ -2893,10 +2893,6 @@ use namespace kGAMECLASS;
 					flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = flags[kFLAGS.PLAYER_DISARMED_WEAPON_ID];
 				}
 			}
-			if (hasStatusEffect(StatusEffects.GiantStrLoss)) {
-				str += statusEffectv1(StatusEffects.GiantStrLoss);
-				removeStatusEffect(StatusEffects.GiantStrLoss);
-			}
 			if (hasStatusEffect(StatusEffects.LizanBlowpipe)) {
 				str += statusEffectv1(StatusEffects.LizanBlowpipe);
 				tou += statusEffectv2(StatusEffects.LizanBlowpipe);
