@@ -290,7 +290,7 @@ import classes.StatusEffects.CombatStatusEffect;
 		public static const IsabellaStunned:StatusEffectType = mk("Isabella Stunned", CombatStatusEffect);
 		public static const IzmaBleed:StatusEffectType = mk("Izma Bleed", CombatStatusEffect);
 		public static const KissOfDeath:StatusEffectType = mk("Kiss of Death", CombatStatusEffect);
-		public static const LizanBlowpipe:StatusEffectType = mk("Lizan Blowpipe", CombatStatusEffect);
+		public static const LizanBlowpipe:StatusEffectType = LizanBlowpipeDebuff.TYPE;
 		public static const LustStones:StatusEffectType = mk("lust stones", CombatStatusEffect);
 		public static const lustvenom:StatusEffectType = mk("lust venom", CombatStatusEffect);
 		public static const Lustzerking:StatusEffectType = mk("Lustzerking", CombatStatusEffect);

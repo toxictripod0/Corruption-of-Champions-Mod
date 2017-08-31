@@ -2170,7 +2170,7 @@ use namespace kGAMECLASS;
 			game.dynStats("lus", 0, "scale", false);
 		}
 		
-		public function corruptionTolerance():int {
+		public override function corruptionTolerance():int {
 			var temp:int = perkv1(PerkLib.AscensionTolerance) * 5 * (1 - perkv2(PerkLib.AscensionTolerance));
 			if (flags[kFLAGS.MEANINGLESS_CORRUPTION] > 0) temp += 100;
 			return temp;
@@ -2892,13 +2892,6 @@ use namespace kGAMECLASS;
 				else {
 					flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = flags[kFLAGS.PLAYER_DISARMED_WEAPON_ID];
 				}
-			}
-			if (hasStatusEffect(StatusEffects.LizanBlowpipe)) {
-				str += statusEffectv1(StatusEffects.LizanBlowpipe);
-				tou += statusEffectv2(StatusEffects.LizanBlowpipe);
-				spe += statusEffectv3(StatusEffects.LizanBlowpipe);
-				sens -= statusEffectv4(StatusEffects.LizanBlowpipe);
-				removeStatusEffect(StatusEffects.LizanBlowpipe);
 			}
 			if (hasStatusEffect(StatusEffects.GardenerSapSpeed))
 			{

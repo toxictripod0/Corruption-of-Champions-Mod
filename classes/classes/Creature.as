@@ -3988,6 +3988,9 @@ import flash.errors.IllegalOperationError;
 			lust = boundFloat(minLust(),lust+Math.round(lustDmg),maxLust());
 			return (lustDmg > 0 && lustDmg < 1) ? 1 : lustDmg;
 		}
+		public function corruptionTolerance():int {
+			return 0;
+		}
 		/**
 		 *Get the remaining fatigue of the Creature.
 		 *@return maximum amount of fatigue that still can be used
