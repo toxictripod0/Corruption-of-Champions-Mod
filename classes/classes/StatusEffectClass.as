@@ -1,6 +1,9 @@
 ﻿package classes
 {
-	public class StatusEffectClass extends BaseContent
+import classes.GlobalFlags.kGAMECLASS;
+import classes.internals.Utils;
+
+	public class StatusEffectClass extends Utils
 	{
 		//constructor
 		public function StatusEffectClass(stype:StatusEffectType)
@@ -62,16 +65,22 @@
 		public function onCombatRound():void {
 			// do nothing
 		}
-		public function remove(fireEvent:Boolean = true):void {
-			_host.removeStatusEffectInstance(this,fireEvent);
+		public function remove(/*fireEvent:Boolean = true*/):void {
+			_host.removeStatusEffectInstance(this/*,fireEvent*/);
+			_host = null;
 		}
-		public function attach(host:Creature,fireEvent:Boolean = true):void {
+		public function attach(host:Creature/*,fireEvent:Boolean = true*/):void {
+			if (_host == host) return;
+			if (_host != null) remove();
 			_host = host;
-			host.addStatusEffect(this,fireEvent);
+			host.addStatusEffect(this/*,fireEvent*/);
 		}
 
 		protected static function register(id:String,statusEffectClass:Class = null):StatusEffectType {
 			return new StatusEffectType(id,statusEffectClass || StatusEffectClass);
+		}
+		protected static function get game():CoC {
+			return kGAMECLASS;
 		}
 	}
 }

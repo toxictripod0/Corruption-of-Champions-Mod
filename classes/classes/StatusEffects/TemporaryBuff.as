@@ -43,6 +43,7 @@ public class TemporaryBuff extends StatusEffectClass{
 		if (stat3) dsargs.push(stat3,-value3);
 		if (stat4) dsargs.push(stat4,-value4);
 		host.dynStats.apply(host,dsargs);
+		value1 = value2 = value3 = value4 = 0;
 	}
 	public function buffValue(stat:String):Number {
 		switch (stat) {
@@ -54,7 +55,6 @@ public class TemporaryBuff extends StatusEffectClass{
 		}
 	}
 	protected function apply(firstTime:Boolean):void {
-		// buffHost('str',-1);
 	}
 	override public function onAttach():void {
 		super.onAttach();

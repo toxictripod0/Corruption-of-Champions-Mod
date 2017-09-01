@@ -1029,29 +1029,30 @@ import flash.errors.IllegalOperationError;
 			if (fireEvent) newStatusEffect.onAttach();
 			return newStatusEffect;
 		}
-		public function addStatusEffect(sec:StatusEffectClass,fireEvent:Boolean = true):void {
+		public function addStatusEffect(sec:StatusEffectClass/*,fireEvent:Boolean = true*/):void {
 			if (sec.host != this) {
-				sec.attach(this,fireEvent);
+				sec.remove();
+				sec.attach(this/*,fireEvent*/);
 			} else {
 				statusEffects.push(sec);
-				if (fireEvent) sec.onAttach();
+				/*if (fireEvent) */sec.onAttach();
 			}
 		}
 		//Remove a status
-		public function removeStatusEffect(stype:StatusEffectType, fireEvent:Boolean = true):StatusEffectClass
+		public function removeStatusEffect(stype:StatusEffectType/*, fireEvent:Boolean = true*/):StatusEffectClass
 		{
 			var counter:Number = indexOfStatusEffect(stype);
 			if (counter < 0) return null;
 			var sec:StatusEffectClass = statusEffects[counter];
 			statusEffects.splice(counter, 1);
-			if (fireEvent) sec.onRemove();
+			/*if (fireEvent) */sec.onRemove();
 			return sec;
 		}
-		public function removeStatusEffectInstance(sec:StatusEffectClass, fireEvent:Boolean = true):void {
+		public function removeStatusEffectInstance(sec:StatusEffectClass/*, fireEvent:Boolean = true*/):void {
 			var i:int = statusEffects.indexOf(sec);
 			if (i < 0) return;
 			statusEffects.splice(i, 1);
-			if (fireEvent) sec.onRemove();
+			/*if (fireEvent) */sec.onRemove();
 		}
 		
 		public function indexOfStatusEffect(stype:StatusEffectType):int {
@@ -1138,15 +1139,16 @@ import flash.errors.IllegalOperationError;
 			return (effect==null)?defaultValue:effect.value4;
 		}
 
-		public function removeStatuses():void
+		public function removeStatuses(fireEvent:Boolean):void
 		{
-			var counter:Number = statusEffects.length;
-			while (counter > 0)
-			{
-				counter--;
-				statusEffects.splice(counter, 1);
+			if (!fireEvent) {
+				statusEffects.splice(0,statusEffects.length);
+			} else {
+				for (var a:/*StatusEffects*/Array=statusEffects.slice(),n:int=a.length,i:int=0;i<n;i++) {
+					if (statusEffects.indexOf(a[i])>=0) a[i].remove();
+				}
 			}
-		}		
+		}
 		
 		public function biggestTitSize():Number
 		{
@@ -3987,9 +3989,6 @@ import flash.errors.IllegalOperationError;
 			if (applyRes) lustDmg *= lustPercent()/100;
 			lust = boundFloat(minLust(),lust+Math.round(lustDmg),maxLust());
 			return (lustDmg > 0 && lustDmg < 1) ? 1 : lustDmg;
-		}
-		public function corruptionTolerance():int {
-			return 0;
 		}
 		/**
 		 *Get the remaining fatigue of the Creature.

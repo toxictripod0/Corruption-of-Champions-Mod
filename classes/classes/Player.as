@@ -2170,7 +2170,7 @@ use namespace kGAMECLASS;
 			game.dynStats("lus", 0, "scale", false);
 		}
 		
-		public override function corruptionTolerance():int {
+		public function corruptionTolerance():int {
 			var temp:int = perkv1(PerkLib.AscensionTolerance) * 5 * (1 - perkv2(PerkLib.AscensionTolerance));
 			if (flags[kFLAGS.MEANINGLESS_CORRUPTION] > 0) temp += 100;
 			return temp;

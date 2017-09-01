@@ -19,7 +19,7 @@ public class DriderIncubusVenomDebuff extends CombatBuff {
 	override public function onCombatRound():void {
 		//Chance to cleanse!
 		if (host.findPerk(PerkLib.Medicine) >= 0 && rand(100) <= 14) {
-			if (playerHost) outputText("You manage to cleanse the drider incubus venom from your system with your knowledge of medicine!\n\n");
+			if (playerHost) game.outputText("You manage to cleanse the drider incubus venom from your system with your knowledge of medicine!\n\n");
 			remove();
 		}
 	}
