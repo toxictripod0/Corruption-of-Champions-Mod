@@ -61,6 +61,7 @@ public class TemporaryBuff extends StatusEffectClass{
 		apply(true);
 	}
 	public function increase():void {
+		if (host == null) return;
 		apply(false);
 	}
 	override public function onRemove():void {

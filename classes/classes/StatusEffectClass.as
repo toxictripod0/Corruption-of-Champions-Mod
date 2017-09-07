@@ -66,8 +66,17 @@ import classes.internals.Utils;
 			// do nothing
 		}
 		public function remove(/*fireEvent:Boolean = true*/):void {
+			if (_host == null) return;
 			_host.removeStatusEffectInstance(this/*,fireEvent*/);
 			_host = null;
+		}
+		public function removedFromHostList(fireEvent:Boolean):void {
+			if (fireEvent) onRemove();
+			_host = null;
+		}
+		public function addedToHostList(host:Creature,fireEvent:Boolean):void {
+			_host = host;
+			if (fireEvent) onAttach();
 		}
 		public function attach(host:Creature/*,fireEvent:Boolean = true*/):void {
 			if (_host == host) return;
