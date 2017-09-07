@@ -174,7 +174,7 @@ import flash.errors.IllegalOperationError;
 		 * valid stat_names are "str", "tou", "spe", "int", "lib", "sen", "lus", "cor" or their full names;
 		 * also "scaled"/"sca" (default true: apply resistances, perks; false - force values)
 		 *
-		 * @return Object of (newStat-oldStat) with keys str, tou, spe, int, lib, sen, lus, cor
+		 * @return Object of (newStat-oldStat) with keys str, tou, spe, inte, lib, sen, lus, cor
 		 * */
 		public function dynStats(... args):Object {
 			Begin("Creature","dynStats");
@@ -193,7 +193,7 @@ import flash.errors.IllegalOperationError;
 				str:str-prevStr,
 				tou:tou-prevTou,
 				spe:spe-prevSpe,
-				int:inte-prevInt,
+				inte:inte-prevInt,
 				lib:lib-prevLib,
 				sen:sens-prevSen,
 				lus:lust-prevLus,
@@ -4035,14 +4035,14 @@ import flash.errors.IllegalOperationError;
 		/**
 		 * Generate increments for stats
 		 *
-		 * @return Object of (newStat-oldStat) with keys str, tou, spe, int, lib, sen, lus, cor, scale
+		 * @return Object of (newStat-oldStat) with keys str, tou, spe, inte, lib, sen, lus, cor, scale
 		 * */
 		public static function parseDynStatsArgs(c:Creature, args:Array):Object {
 			// Check num of args, we should have a multiple of 2
 			if ((args.length % 2) != 0)
 			{
 				trace("dynStats aborted. Keys->Arguments could not be matched");
-				return {str:0,tou:0,spe:0,int:0,lib:0,sen:0,lus:0,cor:0,scale:true};
+				return {str:0,tou:0,spe:0,inte:0,lib:0,sen:0,lus:0,cor:0,scale:true};
 			}
 
 			var argNamesFull:Array 	= 	["strength", "toughness", "speed", "intellect", "libido", "sensitivity", "lust", "corruption", "scale"]; // In case somebody uses full arg names etc
@@ -4098,7 +4098,7 @@ import flash.errors.IllegalOperationError;
 				else
 				{
 					trace("dynStats aborted. Expected a key and got SHIT");
-					return {str:0,tou:0,spe:0,int:0,lib:0,sen:0,lus:0,cor:0,scale:true};
+					return {str:0,tou:0,spe:0,inte:0,lib:0,sen:0,lus:0,cor:0,scale:true};
 				}
 			}
 			// Got this far, we have values to statsify
@@ -4116,7 +4116,7 @@ import flash.errors.IllegalOperationError;
 				str     : newStr - c.str,
 				tou     : newTou - c.tou,
 				spe     : newSpe - c.spe,
-				int     : newInte - c.inte,
+				inte    : newInte - c.inte,
 				lib     : newLib - c.lib,
 				sen     : newSens - c.sens,
 				lus     : newLust - c.lust,
