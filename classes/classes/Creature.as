@@ -1026,7 +1026,7 @@ import flash.errors.IllegalOperationError;
 		{
 			var newStatusEffect:StatusEffectClass = stype.create(this,value1,value2,value3,value4);
 			statusEffects.push(newStatusEffect);
-			if (fireEvent) newStatusEffect.onAttach();
+			newStatusEffect.addedToHostList(this,fireEvent);
 			return newStatusEffect;
 		}
 		public function addStatusEffect(sec:StatusEffectClass/*,fireEvent:Boolean = true*/):void {
@@ -1035,7 +1035,7 @@ import flash.errors.IllegalOperationError;
 				sec.attach(this/*,fireEvent*/);
 			} else {
 				statusEffects.push(sec);
-				/*if (fireEvent) */sec.onAttach();
+				sec.addedToHostList(this,true);
 			}
 		}
 		//Remove a status
@@ -1045,14 +1045,14 @@ import flash.errors.IllegalOperationError;
 			if (counter < 0) return null;
 			var sec:StatusEffectClass = statusEffects[counter];
 			statusEffects.splice(counter, 1);
-			/*if (fireEvent) */sec.onRemove();
+			sec.removedFromHostList(true);
 			return sec;
 		}
 		public function removeStatusEffectInstance(sec:StatusEffectClass/*, fireEvent:Boolean = true*/):void {
 			var i:int = statusEffects.indexOf(sec);
 			if (i < 0) return;
 			statusEffects.splice(i, 1);
-			/*if (fireEvent) */sec.onRemove();
+			sec.removedFromHostList(true);
 		}
 		
 		public function indexOfStatusEffect(stype:StatusEffectType):int {
@@ -1141,12 +1141,9 @@ import flash.errors.IllegalOperationError;
 
 		public function removeStatuses(fireEvent:Boolean):void
 		{
-			if (!fireEvent) {
-				statusEffects.splice(0,statusEffects.length);
-			} else {
-				for (var a:/*StatusEffects*/Array=statusEffects.slice(),n:int=a.length,i:int=0;i<n;i++) {
-					if (statusEffects.indexOf(a[i])>=0) a[i].remove();
-				}
+			var a:/*StatusEffectClass*/Array=statusEffects.splice(0,statusEffects.length);
+			for (var n:int=a.length,i:int=0;i<n;i++) {
+				a[i].removedFromHostList(fireEvent);
 			}
 		}
 		
