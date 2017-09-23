@@ -259,6 +259,11 @@ import classes.StatusEffects.CombatStatusEffect;
 		public static const horny:StatusEffectType = mk("horny");
 		public static const grouchy:StatusEffectType = mk("grouchy");
 		
+		// universal combat debuffs
+		public static const GenericCombatStrDebuff:StatusEffectType  = CombatStrDebuff.TYPE;
+		public static const GenericCombatSpeDebuff:StatusEffectType  = CombatSpeDebuff.TYPE;
+		public static const GenericCombatTouDebuff:StatusEffectType  = CombatTouDebuff.TYPE;
+		public static const GenericCombatInteDebuff:StatusEffectType = CombatInteDebuff.TYPE;
 		// combat
 		public static const AcidSlap:StatusEffectType = mk("Acid Slap", CombatStatusEffect);
 		public static const AkbalSpeed:StatusEffectType = AkbalSpeedDebuff.TYPE;
