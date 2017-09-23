@@ -10,10 +10,10 @@ import classes.GlobalFlags.kGAMECLASS;
 import classes.GlobalFlags.kGAMECLASS;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Items.JewelryLib;
-import classes.StatusEffects.Combat.CombatInteDebuff;
-import classes.StatusEffects.Combat.CombatSpeDebuff;
-import classes.StatusEffects.Combat.CombatStrDebuff;
-import classes.StatusEffects.Combat.CombatTouDebuff;
+import classes.StatusEffects.Combat.CombatInteBuff;
+import classes.StatusEffects.Combat.CombatSpeBuff;
+import classes.StatusEffects.Combat.CombatStrBuff;
+import classes.StatusEffects.Combat.CombatTouBuff;
 import classes.internals.Profiling;
 import classes.internals.Utils;
 	import classes.Scenes.Places.TelAdre.UmasShop;
@@ -1157,31 +1157,31 @@ import flash.errors.IllegalOperationError;
 		}
 		
 		/**
-		 * Applies (creates or increases) a combat-long debuff to stat.
+		 * Applies (creates or increases) a combat-long buff to stat.
 		 * Stat is fully restored after combat.
 		 * Different invocations are indistinguishable - do not use this if you need
-		 * to check for _specific_ debuff source (poison etc) mid-battle
+		 * to check for _specific_ buff source (poison etc) mid-battle
 		 * @param stat 'str','spe','tou','inte'
-		 * @param debuff Creature stat is decremented by this value.
+		 * @param buff Creature stat is incremented by this value.
 		 * @return (oldStat-newStat)
 		 */
-		public function addCombatDebuff(stat:String,debuff:Number):Number {
+		public function addCombatBuff(stat:String, buff:Number):Number {
 			switch(stat) {
 				case 'str':
-					return (createOrFindStatusEffect(StatusEffects.GenericCombatStrDebuff)
-							as CombatStrDebuff).applyEffect(debuff);
+					return (createOrFindStatusEffect(StatusEffects.GenericCombatStrBuff)
+							as CombatStrBuff).applyEffect(buff);
 				case 'spe':
-					return (createOrFindStatusEffect(StatusEffects.GenericCombatSpeDebuff)
-							as CombatSpeDebuff).applyEffect(debuff);
+					return (createOrFindStatusEffect(StatusEffects.GenericCombatSpeBuff)
+							as CombatSpeBuff).applyEffect(buff);
 				case 'tou':
-					return (createOrFindStatusEffect(StatusEffects.GenericCombatTouDebuff)
-							as CombatTouDebuff).applyEffect(debuff);
+					return (createOrFindStatusEffect(StatusEffects.GenericCombatTouBuff)
+							as CombatTouBuff).applyEffect(buff);
 				case 'int':
 				case 'inte':
-					return (createOrFindStatusEffect(StatusEffects.GenericCombatInteDebuff)
-							as CombatInteDebuff).applyEffect(debuff);
+					return (createOrFindStatusEffect(StatusEffects.GenericCombatInteBuff)
+							as CombatInteBuff).applyEffect(buff);
 			}
-			trace("/!\\ ERROR: addCombatDebuff('"+stat+"', "+debuff+")");
+			trace("/!\\ ERROR: addCombatBuff('"+stat+"', "+buff+")");
 			return 0;
 		}
 		/*

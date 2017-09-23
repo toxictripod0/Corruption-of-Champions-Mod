@@ -260,10 +260,10 @@ import classes.StatusEffects.CombatStatusEffect;
 		public static const grouchy:StatusEffectType = mk("grouchy");
 		
 		// universal combat debuffs
-		public static const GenericCombatStrDebuff:StatusEffectType  = CombatStrDebuff.TYPE;
-		public static const GenericCombatSpeDebuff:StatusEffectType  = CombatSpeDebuff.TYPE;
-		public static const GenericCombatTouDebuff:StatusEffectType  = CombatTouDebuff.TYPE;
-		public static const GenericCombatInteDebuff:StatusEffectType = CombatInteDebuff.TYPE;
+		public static const GenericCombatStrBuff:StatusEffectType  = CombatStrBuff.TYPE;
+		public static const GenericCombatSpeBuff:StatusEffectType  = CombatSpeBuff.TYPE;
+		public static const GenericCombatTouBuff:StatusEffectType  = CombatTouBuff.TYPE;
+		public static const GenericCombatInteBuff:StatusEffectType = CombatInteBuff.TYPE;
 		// combat
 		public static const AcidSlap:StatusEffectType = mk("Acid Slap", CombatStatusEffect);
 		public static const AkbalSpeed:StatusEffectType = AkbalSpeedDebuff.TYPE;
