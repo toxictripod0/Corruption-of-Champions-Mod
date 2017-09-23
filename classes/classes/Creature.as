@@ -10,6 +10,10 @@ import classes.GlobalFlags.kGAMECLASS;
 import classes.GlobalFlags.kGAMECLASS;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Items.JewelryLib;
+import classes.StatusEffects.Combat.CombatInteBuff;
+import classes.StatusEffects.Combat.CombatSpeBuff;
+import classes.StatusEffects.Combat.CombatStrBuff;
+import classes.StatusEffects.Combat.CombatTouBuff;
 import classes.internals.Profiling;
 import classes.internals.Utils;
 	import classes.Scenes.Places.TelAdre.UmasShop;
@@ -217,7 +221,7 @@ import flash.errors.IllegalOperationError;
 		 * Modify Strength by `delta`. If scale = true, apply perk & effect modifiers. Return actual increase applied.
 		 */
 		public function modStr(delta:Number,scale:Boolean=true):Number {
-			if (scale) return dynStats('str',delta).str;
+			if (scale) return dynStats('str',delta)['str'];
 			var s0:Number = str;
 			str = Utils.boundFloat(1,str+delta,getMaxStats('str'));
 			return str-s0;
@@ -226,7 +230,7 @@ import flash.errors.IllegalOperationError;
 		 * Modify Toughness by `delta`. If scale = true, apply perk & effect modifiers. Return actual increase applied.
 		 */
 		public function modTou(delta:Number,scale:Boolean=true):Number {
-			if (scale) return dynStats('tou',delta).tou;
+			if (scale) return dynStats('tou',delta)['tou'];
 			var s0:Number = tou;
 			tou = Utils.boundFloat(1,tou+delta,getMaxStats('tou'));
 			return tou-s0;
@@ -235,7 +239,7 @@ import flash.errors.IllegalOperationError;
 		 * Modify Speed by `delta`. If scale = true, apply perk & effect modifiers. Return actual increase applied.
 		 */
 		public function modSpe(delta:Number,scale:Boolean=true):Number {
-			if (scale) return dynStats('spe',delta).spe;
+			if (scale) return dynStats('spe',delta)['spe'];
 			var s0:Number = spe;
 			spe = Utils.boundFloat(1,spe+delta,getMaxStats('spe'));
 			return spe-s0;
@@ -244,7 +248,7 @@ import flash.errors.IllegalOperationError;
 		 * Modify Intelligence by `delta`. If scale = true, apply perk & effect modifiers. Return actual increase applied.
 		 */
 		public function modInt(delta:Number,scale:Boolean=true):Number {
-			if (scale) return dynStats('inte',delta).inte;
+			if (scale) return dynStats('inte',delta)['inte'];
 			var s0:Number = inte;
 			inte = Utils.boundFloat(1,inte+delta,getMaxStats('int'));
 			return inte-s0;
@@ -1014,6 +1018,11 @@ import flash.errors.IllegalOperationError;
 		return perk(counter).value4;
 	}
 		
+		/*
+		
+		[    S T A T U S   E F F E C T S    ]
+		
+		*/
 		//{region StatusEffects
 		public function createOrFindStatusEffect(stype:StatusEffectType):StatusEffectClass
 		{
@@ -1147,6 +1156,39 @@ import flash.errors.IllegalOperationError;
 			}
 		}
 		
+		/**
+		 * Applies (creates or increases) a combat-long buff to stat.
+		 * Stat is fully restored after combat.
+		 * Different invocations are indistinguishable - do not use this if you need
+		 * to check for _specific_ buff source (poison etc) mid-battle
+		 * @param stat 'str','spe','tou','inte'
+		 * @param buff Creature stat is incremented by this value.
+		 * @return (oldStat-newStat)
+		 */
+		public function addCombatBuff(stat:String, buff:Number):Number {
+			switch(stat) {
+				case 'str':
+					return (createOrFindStatusEffect(StatusEffects.GenericCombatStrBuff)
+							as CombatStrBuff).applyEffect(buff);
+				case 'spe':
+					return (createOrFindStatusEffect(StatusEffects.GenericCombatSpeBuff)
+							as CombatSpeBuff).applyEffect(buff);
+				case 'tou':
+					return (createOrFindStatusEffect(StatusEffects.GenericCombatTouBuff)
+							as CombatTouBuff).applyEffect(buff);
+				case 'int':
+				case 'inte':
+					return (createOrFindStatusEffect(StatusEffects.GenericCombatInteBuff)
+							as CombatInteBuff).applyEffect(buff);
+			}
+			trace("/!\\ ERROR: addCombatBuff('"+stat+"', "+buff+")");
+			return 0;
+		}
+		/*
+		
+		[    ? ? ?    ]
+		
+		*/
 		public function biggestTitSize():Number
 		{
 			if (breastRows.length == 0)
