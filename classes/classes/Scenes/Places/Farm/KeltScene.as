@@ -85,6 +85,7 @@ public function keltEncounter():void {
 			if (((player.lib + player.lust) < 30 && player.inte >= 50) || !player.hasStatusEffect(StatusEffects.KeltBadEndWarning))
 			{
 				player.createStatusEffect(StatusEffects.KeltBadEndWarning, 0, 0, 0, 0);
+				outputText(images.showImage("kelt-dream"));
 				outputText("You race towards the farm, only one thought on your mind.  Kelt... your master, your love, your hunger.  Your head is filled with thoughts of his cock, and you fancifully dream of how he will use it on you today.  Once, you had a mission of some kind... an important duty.  The stray thought vanishes almost instantly, though.  Of course you have a duty!  To be fucked by Kelt, whenever he wants to!\r\r")
 				outputText("Suddenly, another thought crosses your mind. You have a feeling that if you meet him, it could be the end of your adventures. Do you give in to your thoughts and submit to Kelt for the final time or resist?")
 				doYesNo(keltSubmissiveBadEnd, defySubmission);
@@ -98,6 +99,7 @@ public function keltEncounter():void {
 			if (player.inte > rand(40) && player.statusEffectv2(StatusEffects.Kelt) < 130 && !player.hasStatusEffect(StatusEffects.KeltBadEndWarning)) {
 				player.createStatusEffect(StatusEffects.KeltBadEndWarning,0,0,0,0);
 				clearOutput();
+				outputText(images.showImage("kelt-dream"));
 				outputText("You approach the farm, ready for another archery lesson.  Kelt is oblivious to your presence, busy practicing with his own bow for the moment.  The wind shifts and blows his musk your way.  Unconsciously, you breathe deeply, sending heat racing between your rear legs.  Alarm bells go off in your mind as you realize what his presence is doing to you, and you run away to your camp before he can notice you.  It's clear to you that you can't resist him much longer; the next time you meet him, you'll probably volunteer to become his brood-mare.  Perhaps you should avoid Kelt and the farm until you feel his influence less keenly.");
 				dynStats("lus", player.lib/5 + 10);
 				doNext(camp.returnToCampUseOneHour);
@@ -126,6 +128,8 @@ public function keltEncounter():void {
 //Introduction
 private function keltFirstTime():void {
 	outputText("As you approach Whitney's farm, you notice a figure in the pastures, way in the distance.  It seems to be someone riding a horse, to your surprise... possibly even Whitney herself.  You hadn't expected to find real horses in this forsaken realm.  If you could somehow trade for one, it would be a real help.  Energized by the idea, you hop the fence, approaching the distant figure.\r\r");
+
+	outputText(images.showImage("kelt-encounter"));
 	outputText("As you get closer, however, the figure comes into view.  The rider is not Whitney, but rather a muscular man.  And the horse has no head... where its head should be is... with a start, you realize that this is no horse and rider.  The figure is a large, male centaur!\r\r");
 	outputText("Wariness growing, you slow down.  But it is too late... the centaur has seen you.  With a snort, he gallops closer, imposingly tall.  You drop into a fighting stance, ready if he should attack you, and the centaur draws to a halt a few feet away.\r\rHe looks scornfully at you, and laughs, ");
 	outputText("\"<i>Don't be stupid.  You'd never even get close to me.  If I wanted to kill you, you would have been dead a long time ago.  My name is Kelt.</i>\"\r\r");
@@ -168,6 +172,7 @@ private function chooseToFinishKelt():void {
 //Give Kelt the Bad End!
 private function youBadEndKeltForGood():void {
 	clearOutput();
+	outputText(images.showImage("item-kelt'sBow"));
 	outputText("Without a second thought, you grab Kelt by his neck. The centaur yells \"<i>Nooooo! Don't you do that, bitch!</i>\"\n\n");
 	outputText("With an abrupt twist, you snap his neck, ending his life. You grab the bow from Kelt. Seeing how it looks stronger than your flimsy bow, you snap the old bow and throw it onto the ground. You are proud of the newly-taken bow.\n\n");
 	outputText("<b>(You got Kelt's Bow!)</b>");
@@ -182,6 +187,7 @@ private function youBadEndKeltForGood():void {
 
 private function leaveKelt4Good():void {
 	clearOutput();
+	outputText(images.showImage("item-kelt'sBow"));
 	outputText("Determining he's not worth your time, you walk away. Somehow, you've got the feeling that you won't be seeing him again.");
 	outputText("You also find the bow that Kelt left behind. Seeing how it looks stronger than your flimsy bow, you snap the old bow and throw it onto the ground. You are proud of the newly-taken bow.\n\n");
 	outputText("<b>(You got Kelt's Bow!)</b>");
@@ -193,12 +199,13 @@ private function leaveKelt4Good():void {
 
 //Naked Requirement
 private function keltRequiresNakedness():void {
+	clearOutput();
+	outputText(images.showImage("kelt-encounter"));
 	outputText("Once more, you encounter Kelt the centaur at Whitney's farm.  You approach him to ask for another archery lesson, but Kelt is already scowling at you as you draw near.\r\r");
 	outputText("\"<i>I can't teach you like this,</i>\" he sneers.  \"<i>Your balance is all fucked up.  I know colts who can shoot better than you.  You really want to learn the skill?  Then you're gonna have to practice like a centaur.  You'd never see me wearing armor!</i>\"\r\r");
 	outputText("He slaps a hand on his bare chest proudly, and you realize that he means for you to strip down naked.  When you protest, his eyes narrow with irritation, and his sneer becomes more cruel.\r\r");
 	outputText("\"<i>Didn't know you were a coward, too.  That's fine... go fuck off, then.  You can't handle it, then go back to your camp and braid your hair, or something.  If you wait long enough, I'm sure a nice minotaur will come along to make you his bitch.  'Bout all you're good for, right?</i>\"\r\r");
 	outputText("Do you obey his demand?");
-	
 	//(Corruption higher than 60 automatically chooses eagerly)
 	if (player.cor + player.lib + (player.lust * 100 / player.maxLust()) >= 180) {
 		outputText(" Of course you do.  You love putting on a show.");
@@ -206,7 +213,6 @@ private function keltRequiresNakedness():void {
 		doNext(keltEagerlyGetNaked);
 		return;
 	}
-	
 	menu();
 	addButton(0, "Reluctantly", keltReluctantlyGetNaked);
 	addButton(1, "Eagerly", keltEagerlyGetNaked);
@@ -217,7 +223,6 @@ private function keltRequiresNakedness():void {
 	} else {
 		addDisabledButton(3, "Turn Tables", "Someone hard and smart enough could probably catch him off-guard... Being a taur defenitely doesn't help, though.");
 	}
-	
 	addButton(4, "Never", keltRefuseNakedness);
 }
 
@@ -287,7 +292,6 @@ private function keltEagerlyGetNaked():void {
 
 //Naked Requirement, Reluctantly
 private function keltReluctantlyGetNaked():void {
-
 	doNext(camp.returnToCampUseOneHour);
 	spriteSelect(SpriteDb.s_kelt);
 	clearOutput();
@@ -341,8 +345,10 @@ private function keltReluctantlyGetNaked():void {
 
 //Blowjob Requirement
 private function keltRequiresBlowjobs():void {
+	clearOutput();
 	spriteSelect(SpriteDb.s_kelt);
 	player.createStatusEffect(StatusEffects.KeltBJ,0,0,0,0);
+	outputText(images.showImage("kelt-encounter"));
 	outputText("Crossing the field of Whitney's farm, your heart begins to beat a little bit faster as you spy Kelt the centaur off in the distance.  You can't help but admire his powerful flanks and his proud stature as he runs freely.  Perhaps a little pleased with yourself, you also take a good look at his dangling equipment, sheathed yet sizable.  The sight is entrancing.\r\r");
 	outputText("A grin crosses your face, despite yourself.  Kelt can be insufferable sometimes.  Most times.  Okay, at all times.  But there is something about him that makes you feel... right, somehow.  Sure he insults you... but he is so strong, so powerful.  So masculine, for lack of a better word.  Infuriating, arrogant, and utterly in control.  Somehow, the combination makes you feel weak at the knees.\r\r");
 	outputText("\"<i>Enjoying the sights, are we?</i>\"\r\r");
@@ -381,6 +387,7 @@ private function keltRequiresBlowjobs():void {
 private function keltBlowjobRequirementNever(newl:Boolean = true):void {
 	spriteSelect(SpriteDb.s_kelt);
 	if (newl) clearOutput();
+	outputText(images.showImage("kelt-encounter"));
 	outputText("You struggle, trying to hold onto your fragmented thoughts. Something about Kelt's scent, or presence, is overwhelming.  The temptation to give in is almost overpowering, but you set your teeth, close your eyes, and furiously try to ignore your hammering heart.\r\r");
 	outputText("Kelt's feet move almost uncertainly, hooves pawing at the ground and resetting themselves.  He almost seems confused for a moment, hips bucking forward experimentally.  When there is no further sensation, his confusion begins to be replaced by anger.\r\r");
 	outputText("He spends a few moments cursing you, swollen cock still sometimes pumping forward as though expecting you to latch on at any moment. The centaur is obviously unused to rejection.  The temptation bites harder than ever as his cruel words shame you.  Wouldn't it be easier to just give in?  To give this powerful male what he wants, so he'll like you again?  The cock hovers teasingly within reach, just waiting to give you a glorious taste... but you fight the alien urge, and keep your mouth shut.\r\r");
@@ -399,7 +406,6 @@ private function keltBlowjobRequirementShamefully(newl:Boolean = true):void {
 	spriteSelect(SpriteDb.s_kelt);
 	if (newl) clearOutput();
 	player.slimeFeed();
-	outputText(images.showImage("kelt-farm-shamefulbj"));
 	outputText("The thought of going through with it is appalling.  The thought of not wrapping your lips around that glorious member is equally unthinkable.\r\r");
 	outputText("Face flushed with lust and shame, you reach up hesitantly to wrap your hand around the growing member, feeling its wondrous heat.  Kelt lets out a satisfied groan, his hips bucking forward involuntarily.  The flared head of his massive cock drools precum lewdly, and you hesitate once more, torn.  But with the warmth of his cock beneath your hand, there is no going back.\r\r");
 	outputText("Leaning forward, you lap meekly at the head, tasting his precum on the tip of your tongue.  The salty, gooey ooze sets your senses on fire with need... have you ever tasted something so wonderful?  A second taste begets a third, and a fourth, and soon enough, you have stretched your lips wide to suck in that swollen head, intent on slurping every little drop you can.\r\r");
@@ -407,6 +413,8 @@ private function keltBlowjobRequirementShamefully(newl:Boolean = true):void {
 	outputText("Kelt does not give you long to mourn your loss.  One of his hooves paws restlessly at the ground, animalistic, as he pushes his hips forward once again.  You gag slightly as the flared head rams into the back of your throat insistently.  Hoping to give some relief to your impatient abuser, you begin masturbating the length of his cock with your hands, even while suckling on the tip.  His underside shivers a little with pleasure, and you feel a shaming little burst of pleasure for pleasing him.\r\r");
 	outputText("\"<i>Mmm...I knew it from the moment I saw you.  Quite the talented little cocksucker you are.  Deeper, bitch.  I want you to choke on my spunk.</i>\"\r\r");
 	outputText("You try your best to ignore the cruel words, even as some part of you quivers with pleasure.  Degrading and insulting as this is,  the thought of pleasuring this powerful creature fills you with a strange sort of happiness.  You open wider, leaning forward and trying to suck in more glorious cock.  Your teacher obliges you with a thrust of the hips, and his head pushes crudely into the recesses of your throat.  You gag for air, wincing as your throat is spread wide, but Kelt lets out a groan of satisfaction, pumping his hips steadily in an attempt to bury more of his member down your gullet.\r\r");
+	
+	outputText(images.showImage("kelt-farm-shamefulbj"));
 	outputText("\"<i>Ahhh, yeah... fuck, bitch, you sure feel pretty good.  I could get used to this.  How about you, huh?  You like the taste of my cock, little whore?</i>\"\r\r");
 	outputText("It hurts to admit it, but you do.  It tastes wonderful, and every so often, a hot little splurt of precum slides down your throat.  His heavy testicles, each easily the size of a cantelope, sway back and forth enticingly below him, right before your eyes.  You imagine how full those nuts must be, building up jet after jet of spunk just for you; ready to explode and seed your belly full of his cum.  Your last resistance crumbles, and you redouble your efforts, desperate to bring relief to your great master.\r\r");
 	outputText("Your diligence is soon rewarded.  With a grunt of need, Kelt shoves forward one last time, burying almost half of his nearly three-foot length deep inside your throat as his cock tenses, then explodes.  You are paralyzed, split open by the massive cock as it begins unloading thick blasts of salty cream deep straight into your stomach.  Your throat is spread so tightly you can feel every splurt pulse down the length of his erection, again and again, ceaselessly.  Your stomach is bloated moments later, but still his orgasm continues, your belly visibly bulging periodically as another stream of seed is planted deep inside you.\r\r");
@@ -430,7 +438,6 @@ private function keltBlowjobRequirementEagerly(newl:Boolean = true):void {
 	// This is never called with arguments, so newl will always be true. Can this be simplified?
 	if (newl) clearOutput();
 	player.slimeFeed();
-	outputText(images.showImage("kelt-farm-eagerbj"));
 	outputText("It is like someone answered your prayers.  You eagerly agree, babbling your thanks to Kelt as you are faced with the massive cock, growing harder and harder.  He snorts scornfully.\r\r");
 	outputText("\"<i>I didn't ask for your thanks, slut,</i>\" he says cruelly.  \"<i>I asked for you to suck my cock.  Now open wide and choke it down, or I'm aiming for your ass.</i>\"\r\r");
 	outputText("That thought sends another quiver of pleasure through you, but you leap to obey Kelt's orders, even so.  Maybe if you do a good enough job, he'll fuck your ass too...?  Face flushed with excitement, you reach up to wrap your hand around the growing member, feeling its wondrous heat.  Kelt lets out a satisfied groan, his hips bucking forward involuntarily.  The flared head of his massive cock drools precum lewdly, and you immediately lean forward, lapping hungrily.  No sense in letting even a single drop go to waste!\r\r");
@@ -439,6 +446,8 @@ private function keltBlowjobRequirementEagerly(newl:Boolean = true):void {
 	outputText("Kelt does not give you long to savor your fulfillment.  One of his hooves paws restlessly at the ground, animalistic, as he pushes his hips forward once again.  You gag slightly as the flared head rams into the back of your throat insistently.  Understanding that his needs must come first, you begin masturbating the length of his cock with your hands, even while trying to slurp more of it into your mouth.  His underside shivers a little with pleasure, and you feel a little burst of pride... he's enjoying it!\r\r");
 	outputText("\"<i>Mmm... I knew it from the moment I saw you.  Quite the talented little cocksucker you are.  Deeper, bitch.  I want you to choke on my spunk.</i>\"\r\r");
 	outputText("His insulting words cause a feeling of deep-seated happiness to well up inside you.  How could you have known, before?  You thought yourself a hero, a Champion... but this is what feels right.  A slutty, cocksucking whore... that's what you were meant to be!  You open wider, leaning forward and trying to suck in more glorious cock.  Your master obliges you with a thrust of the hips, and his head pushes crudely into the recesses of your throat.  You gag for air, wincing as your throat is spread wide, but Kelt lets out a groan of satisfaction, pumping his hips steadily in an attempt to bury more of his member down your gullet.\r\r");
+	
+	outputText(images.showImage("kelt-farm-eagerbj"));
 	outputText("\"<i>Ahhh, yeah... fuck, bitch, you sure feel pretty good.  I could get used to this.  How about you, huh?  You like the taste of my cock, little whore?</i>\"\r\r");
 	outputText("You barely hear the words, so enflamed are your senses.  His cock tastes wonderful, and every so often, a hot little splurt of precum slides down your throat.  His heavy testicles, each easily the size of a cantelope, sway back and forth enticingly below him, right before your eyes.  You imagine how full those nuts must be, building up jet after jet of spunk just for you; ready to explode, to seed your belly full of his cum.  Your last bit of self worth crumbles, and you redouble your efforts, desperate to bring relief to your great master; desperate to be fucked, at any cost.\r\r");
 	outputText("Your diligence is soon rewarded.  With a grunt of need, Kelt shoves forward one last time, burying almost half of his nearly three-foot length deep inside your throat as his cock tenses, then explodes.  You are paralyzed with ecstasy, split open by the massive cock as it begins unloading thick blasts of salty cream deep into your stomach.  Your throat is spread so tightly you can feel every splurt pulse down the length of his erection, again and again, ceaselessly.  Your stomach is bloated moments later, but still his orgasm continues, your belly visibly bulging periodically as another stream of seed is planted deep inside you.");
@@ -458,6 +467,8 @@ private function keltBlowjobRequirementEagerly(newl:Boolean = true):void {
 
 //Normal Encounter
 private function keltMainEncounter():void {
+	clearOutput();
+	outputText(images.showImage("kelt-encounter"));
 	spriteSelect(SpriteDb.s_kelt);
 	outputText("Once more, you encounter Kelt the centaur at Whitney's farm.  He smirks at you, and asks if the fool has come once more to learn from the master.\r\r");
 	//(Submissive 0-30: 
@@ -466,7 +477,6 @@ private function keltMainEncounter():void {
 	else if (player.statusEffectv2(StatusEffects.Kelt) <= 70) outputText("You nod reluctantly, and Kelt grins.  He may be arrogant, but he is rather good.  ");
 	//(Submissive 70-100: 
 	else outputText("You nod enthusiastically, almost begging him to teach you.  ");
-
 	//(Before Naked Requirement)
 	if (player.statusEffectv3(StatusEffects.Kelt) <= 3) {
 		outputText("Kelt seems to find the idea of training a human almost comical, but suggests that if you want to follow him around for a while, he has no problem with it.  Though his attitude is annoying, you resolve to learn what you can.\r\r");
@@ -544,10 +554,12 @@ private function keltMainEncounterAfterNakedReq():void {
 
 //Normal Encounter 2
 private function keltMainEncounter2():void {
+	clearOutput();
 	//Used for randomization
 	var temporary:Number = 0;
 	//(No bow equipped)
 	if (player.hasKeyItem("Bow") < 0) {
+		outputText(images.showImage("item-bow"));
 		outputText("\"<i>Here,</i>\" Kelt says, tossing you a spare bow.  \"<i>You can use this, for right now.  We train colts on it... you know, before their balls drop.  Should be just about right for your level.  Keep it if you want.</i>\"\r\r");
 		outputText("Despite his mocking description, the bow he gives you really is a decent weapon.  You take it up and start towards the practice field, Kelt following behind.\r\r");
 		if (player.hasKeyItem("Bow") < 0) player.createKeyItem("Bow",0,0,0,0);
@@ -566,9 +578,11 @@ private function keltMainEncounter2():void {
 }
 
 private function keltMainEncounter3():void {
+	clearOutput();
 	var temporary:Number = 0;
 	//(Clothed)
 	if (!player.hasStatusEffect(StatusEffects.NakedOn)) {
+		outputText(images.showImage("kelt-archery"));
 		outputText("Kelt is arrogant, crude, and all too often cruel as he mocks your attempts at archery again and again.  Despite all this, however, he obviously does know what he's doing.  You try to ignore his insults and lewd comments as best as you can and focus on the archery.  In the end, you feel you've learned a lot, though Kelt remains snide.\r\r");
 		temp = rand(4);
 		//(25% Chance: 
@@ -590,7 +604,6 @@ private function keltMainEncounter3():void {
 	else {
 		//(Naked, Player in Heat:)
 		if (player.inHeat && player.gender > 1) {
-			outputText(images.showImage("kelt-farm-female-inheat"));
 			outputText("You line up as normal to begin practicing, shooting at the distant targets while Kelt criticizes your technique... usually in as loud, lewd, and offensive a way as possible.  Today, however, he seems particularly energetic.  He looms over you, distractingly close, his hooves stomping at the ground like an anxious horse.  His insults are as harsh as ever... perhaps even more cruel than usual as he mocks your attempts to hit the targets.\r\r");
 			outputText("One shot goes wide, and Kelt furiously demands that you go to retrieve the arrow, lodged in a nearby bale of hay.  You do so quickly, snapping to obey his orders with a little shiver of pleasure.  Somehow, it feels right to obey his every wish; to do what you can to satisfy him.  His scent has been distracting you... the rich, masculine power of him.  How had you never noticed before what a spectacular creature Kelt was?\r\r");
 			outputText("You lean over to pluck the arrow from the haystack, and feel a sharp blow to the back of your head, knocking you over and sending your consciousness spinning.  Dizzily, you realize Kelt is standing over you, tossing aside the bow he just used to crack you in the head.  Between his horse legs, a massive manhood is dropping from his sheath, flanked by testes the size of softballs.  A lewd grin is on his face.\r\r");
@@ -602,7 +615,7 @@ private function keltMainEncounter3():void {
 			else if (player.statusEffectv2(StatusEffects.Kelt) <= 70) outputText("You put forth a token effort to escape, but it is obvious from the beginning that there is no way to get out from under the heavy weight of the centaur.  Besides, the desire running through you is palpable... in a way, you want this to happen.  So much so that as Kelt is thrusting, trying to line up his cock, you raise your hips to help him out, silently longing for penetration.\r\r");
 			//(Submissive, 70-100: 
 			else outputText("The masculine scent of him is overpowering, desperate.  Your body wants nothing more than to submit to Kelt's ferocious desires, and your mind agrees.  Eagerly, you thrust your hips up, reaching back with one hand to guide his cock to your wet pussy.  Kelt snorts his approval, and you feel a shivering tremor of lust run through you.\r\r");
-		
+
 			outputText("The centaur's cock has truly equine proportions, being easily two and a half feet long and over three inches thick.  ");
 			//(Vagina, Small: 
 			if (player.vaginalCapacity() <= 16) outputText("The fit seems impossible, but Kelt could care less about your comfort, and shoves the flared head into you without hesitation.  You let out a scream, feeling like you are being torn apart by his cock as it rudely presses against your insides, spreading you wide open.  Kelt thrusts with growing frustration, but can fit no more than half his cock inside of you, despite his best efforts.  Every twitch makes you cry out as your tight pussy squeezes and milks that massive organ.\r\r");
@@ -612,6 +625,8 @@ private function keltMainEncounter3():void {
 			else outputText("It seems like a perfect fit for your gaping, hungry pussy as Kelt rams the flared head deep into you.  You feel that glorious manhood filling you like few cocks can these days, spreading you wide and searching out your depths.  Kelt lets out a pleased laugh when he bottoms out with you just barely able to accommodate his size.  His heavy balls slap pleasantly against your ass as you groan with pleasure, filled to the core with cock.");
 			player.cuntChange(50,true,true,false);
 			outputText("\n\n");
+
+			outputText(images.showImage("kelt-farm-female-inheat"));
 			outputText("From then on, the ride only becomes rougher.  Kelt begins pumping his hips steadily, deep and hard, intent on burying as much of his manhood as possible with each thrust.  He gives little thought to your pleasure, but it hardly matters.  With a cock that size, you cannot help but moan with each buck of his hips.\r\r");
 			outputText("\"<i>Not too bad, not too bad!  You make for a pretty decent fuck!  Maybe after you bear a couple of my foals, I'll add you to my harem.  You'd like that, wouldn't you?  You just can't wait to get a bellyful of centaurs, can you?</i>\"\r\r");
 			//(Submissive, 0-30: 
@@ -639,6 +654,7 @@ private function keltMainEncounter3():void {
 		temporary = rand(5);
 		//(Naked, 60% Chance)
 		if (temporary <= 2) {
+			outputText(images.showImage("event-archery"));
 			outputText("The lesson proceeds as normal, with you taking shots while Kelt arrogantly critiques your style, tossing out colorful and creative insults whenever possible.  He has no shame about mocking your body as much as he laughs at your archery, and makes several crude comments about what it might be good for.");
 			//(Submissive, 0-30:
 			if (player.statusEffectv2(StatusEffects.Kelt) <= 30) outputText("You try to ignore the foul remarks, telling yourself that this is simply the way he is.  It does not help, though, that at times you feel Kelt's eyes wandering across you lustfully.  At least some of his comments are not mockeries, but suggestions.  The entire experience makes you feel a little more uncomfortable around the abusive centaur.");
@@ -657,6 +673,7 @@ private function keltMainEncounter3():void {
 		if (player.biggestTitSize() == 0 && temporary == 3) temporary = 4;
 		//(Naked, 20% Chance)
 		if (temporary == 3) {
+			outputText(images.showImage("kelt-boobs"));
 			outputText("The practice begins as normal, but something is a little different today.  To your surprise, Kelt's regular insults and comments seem to be a little less harsh and a little more bemused.  Although he still insults your achievements and mocks your failures, he almost seems entertained by your efforts.  His apparent good mood is not necessarily better... without his usual fiery insults, you are a little unsure of how your progress is going.  One shot goes long, and to your surprise, Kelt doesn't yell at you.  Instead, he laughs heartily.  Flushed and a little embarrassed, you ask what you did wrong.\r\r");
 			outputText("\"<i>Isn't it obvious?</i>\" he asks, grinning down at you in sardonic amusement. \"<i>You were way off balance.  Of course, I would be too, if I had a couple of extra pounds of fat hanging off my chest.</i>\"\r\r");
 			outputText("Indignantly, you cover your breasts with your hands, telling him to be serious.  He laughs again, more cruelly this time.\r\r");
@@ -693,6 +710,7 @@ private function keltMainEncounter3():void {
 		//(Naked, 20% Chance)
 		if (temporary == 4)
 		{
+			outputText(images.showImage("kelt-archery"));
 			outputText("Nothing you do today seems to please your tutor, however.  He roars at you for every mistake, explodes at every misfire, and merely sneers contemptuously at every actual hit.  While his contempt for your efforts is nothing new, he seems particularly agitated today.  His aggressive behavior begins to distract you, and finally, you make a huge mistake.  Your shot goes flying, nowhere near the target, and Kelt is suddenly right behind you.\r\r");
 			outputText("\"<i>You stupid slut!</i>\" he roars out, backhanding you with casual contempt.  You stumble to the ground, dazed but uninjured, as he rants.  \"<i>Hit the FUCKING target!  It's not hard, you dirty whore!  Maybe if you weren't so focused on FUCKING DICK you'd be able to get a single shot in!  Stand up... I said stand up, fucker!</i>\"\r\r");
 			outputText("Thrown off guard by his aggressive attitude, you hastily stand, and at his command, face the target, trembling slightly. Kelt looms over you from behind, and grabs you roughly by the hair.  Then, with his other hand, he crudely shoves two fingers up your ass.  You let out a cry of shock, but Kelt growls and tightens his grip on your hair.\r\r");
@@ -718,11 +736,11 @@ private function keltMainEncounter3():void {
 }
 
 private function keltMainEncounterPostBlowjob():void {
+	clearOutput();
 	//(Blowjob Requirement On)
 	if (player.hasStatusEffect(StatusEffects.BlowjobOn)) {
 		//(Submissiveness 75+, Lust 60+)
 		if (player.lust100 >= 75 || player.statusEffectv2(StatusEffects.Kelt) >= 90 && rand(2) == 0) {
-			outputText(images.showImage("kelt-farm-smallbarn"));
 			outputText("It is almost too much to wait for your meeting with Kelt today.  His familiar musk enflames your senses, making you ache with need.  You try to wriggle your ass enticingly for Kelt as the two of you walk, eager to start in on the usual blowjob.  Even you don't usually hunger after it this much, but a need for Kelt's cock fills you to the core.  You long for nothing more than to service your mighty stud.\r\r");
 			outputText("To your surprise, Kelt leads you not towards the practice field, but towards a small barn, near the edge of the field.  When you meekly ask why he's taken you here, his brow clouds and he lashes out, striking you with casual violence.  ");
 			outputText("\"<i>Bitch!  I said get in there.  Do I need to repeat myself, you stupid whore?\"</i>\r\r");
@@ -739,6 +757,8 @@ private function keltMainEncounterPostBlowjob():void {
 			outputText("body with no concern for your well being.");
 			player.buttChange(70,true, true, false);
 			outputText("\r\r");
+
+			outputText(images.showImage("kelt-farm-smallbarn"));
 			outputText("You can't help it... at the thought of being used as his worthless fucktoy, you suffer a mild orgasm of your own, crying out your submission to this powerful creature.");
 			//(Penis: 
 			if (player.totalCocks() > 0) outputText("  Beneath you, pressed firmly into the harsh wood of the mounting board, your " + player.cockDescript(0) + " erupts, splattering your stomach with your own cum.  As the thick semen slides down towards your face, you begin slipping on your own warm seed, rocking back and forth with each harsh pounding Kelt delivers to your backside.");
@@ -766,9 +786,10 @@ private function keltMainEncounterPostBlowjob():void {
 		}
 		//(Otherwise)
 		else {
-			outputText(images.showImage("kelt-farm-eagerbj"));
 			outputText("As you move out to the practice field, you feel Kelt's eyes on you, staring intensely and maybe a little hungrily.  Knowing what is coming, you deliberately sway your hips as best as you can, trying to show off for his benefit.  It apparently helps, as you only get about halfway before Kelt growls in a familiar tone of voice, \"<i>On your knees, bitch.</i>\"\r\r");
 			outputText("Excitement rushing through you, you anxiously kneel before him, mouth wide open and heart fluttering.  Kelt immediately moves over you, grinding his cock forcefully into your face.  He seems to enjoy teasing you with it above anything else, as you wait anxiously for his command, nuzzling his cock but unable to do more until he allows it.\r\r");
+
+			outputText(images.showImage("kelt-farm-eagerbj"));
 			outputText("\"<i>Alright, bitch.  Swallow my cock.</i>\"\r\r");
 			outputText("Nothing could give you more pleasure.  Experienced by now, you open wide enough to slurp the head of his member in greedily, taking a mere moment to savor the wonderful taste of his precum before opening your throat to his use.  Grunting to himself, Kelt takes your invitation gladly, and you begin deepthroating him worshipfully, stroking his exposed shaft and fondling his bloated testicles when possible, trying to encourage every drop of wonderful cum.\r\r");
 			outputText("Though he lasts some time, it is still too short before he groans aloud and begins spewing thick seed into your stomach.  Rapturous, you gulp it down eagerly, feeling it warm your insides and slide into your stuffed belly.  By the time he is finished, your stomach is so packed it aches... but the feeling of contentment at being full of his seed once more is far more satisfying.  Kelt allows you to clean his cock before pulling away.\r\r");
@@ -786,6 +807,7 @@ private function keltMainEncounterPostBlowjob():void {
 	}
 	//(Blowjob Requirement Off, 40% Chance)
 	else if (rand(10) <= 3) {
+		outputText(images.showImage("event-archery"));
 		outputText("You move towards the practice field, trying to ignore the way Kelt openly and hungrily eyes your naked body.  He has become more and more open about his lust for you.  Despite yourself, you can't help but enjoy his attentions.\r\r");
 		outputText("Once at the field, you move to draw an arrow and begin practice, when Kelt roughly pushes you down to your knees.\r\r");
 		outputText("\"<i>Not today, bitch.  I think it's time you gave a little back.  So be a good little whore, and get to work on my cock.  I'm gonna bust a nut in that pretty little mouth before I do any more teaching.</i>\"\r\r");
@@ -798,6 +820,7 @@ private function keltMainEncounterPostBlowjob():void {
 		}
 		//Otherwise)
 		else {
+			outputText(images.showImage("kelt-dream"));
 			outputText("Despite the need, despite the desire, you are still in control of yourself enough to make a choice.  Do you submit to the centaur's will, and your own hunger?  Or will you somehow find the strength to walk away?");
 			//Submit				Resist!
 			menu();
@@ -839,6 +862,7 @@ private function keltSubmitGivingBJ():void {
 private function continueAfterBJ():void {
 	spriteSelect(SpriteDb.s_kelt);
 	clearOutput();
+	outputText(images.showImage("event-archery"));
 	outputText("After a brief rest, you manage to get back to practicing archery.  ");
 	keltMainEncounter3();
 }
@@ -847,8 +871,9 @@ private function keltReluctantGivingBJ():void {
 	spriteSelect(SpriteDb.s_kelt);
 	player.slimeFeed();
 	clearOutput();
-	outputText(images.showImage("kelt-farm-reluctantbj"));
 	outputText("Kelt immediately moves over you, grinding his cock forcefully into your face.  He seems to enjoy teasing you with it above anything else as you wait anxiously for his command, nuzzling his cock but unable to do more until he allows it.  The musky scent of it fills you with a desire you don't dare admit to... but is present all the same.\r\r");
+
+	outputText(images.showImage("kelt-farm-reluctantbj"));
 	outputText("\"<i>Alright, bitch.  Swallow my cock.</i>\"\r\r");
 	outputText("Nothing could give you more pleasure.  You try to restrain yourself, forcing yourself to stroke the shaft experimentally a few times... but your hunger will not be contained.  Flushed with need, you open wide enough to slurp the head of his member in greedily, savoring the glorious taste of that wonderful precum.  Grunting to himself with satisfaction, Kelt pushes his hips forward insistently.  Without even thinking about it, you open your throat to him, gagging slightly as his cock pushes past your tonsils and once more splits open your throat.  Those swollen testicles hang teasingly out of reach, and thoughts of his cum warming your belly urge you on further to swallow more and more wondrous cock.\r\r");
 	outputText("Kelt does not hesitate, and does more than his fair share.  Whenever you are reluctant, he firmly shoves forward, coaxing more out of your throat than you were willing to give.  Though he lasts some time, it is still too short before he groans aloud and begins spewing thick seed into your stomach.  You can feel the gooey wads warm your insides and slide into your stuffed belly, and shudder with satisfaction despite yourself.  His thick loads belong inside of you, his hungry, needy little cumdump.  By the time he is finished, your stomach is so full it aches... but the feeling of contentment at being full of his seed once more is far more cruelly satisfying to your bruised ego.  You almost feel incomplete as his slimy cock softens and withdraws from your aching throat... but you resist the need to lick it clean.");
@@ -877,6 +902,7 @@ private function keltCentaurBadEnd():void {
 		outputText("\"<i>Well, I've got no use for males, slut.  Fortunately, you still have something I can use in the meantime.</i>\"\r\r");
 		outputText("His legs rear suddenly, wrapping around the barrel of your body. You let out a startled protestation, but do not move... your body won't let you.  In fact, if anything, you push back against him, eager and ready.  Part of you is joyous, in fact.  What you wanted wasn't to fuck Kelt!  ");
 		outputText("<b>... It was for him to fuck you!</b>\r\r");
+		outputText(images.showImage("kelt-lost-male"));
 		outputText("Kelt does not hesitate in aserting his dominance, and immediately pushes his shaft towards your ass, inserting it with ease. You let out an almost feral cry of pleasure, and Kelt laughs nastily as he gets a better grip and sinks his erection in deeper, humping away at your hindquarters needfully.  His human hands wrap around you, taking hold of your chin and forcing you to turn enough to face him as he savors your wincing moans.\r\r");
 		outputText("\"<i>As I thought,</i>\" he sneers, thrusting particularly hard and making you whimper with need.  \"<i>You're no stud.  Just another gelding, wishing to be a real woman.  Well, I could use another cumdump, slut.  So consider this your initiation.  You're mine now, to use whenever I feel like it.  Hope you like the feeling of my cock, bitch.  It's gonna be the only thing you feel for a long time.</i>\"\r\r");
 		outputText("He thrusts in once more ruthlessly, completely filling your " + player.assholeDescript() + " as he ruthlessly snarls, cumming forcefully deep within you.  Your cock remains flaccid the entire time... it's obvious who the male is in this situation.  As his hot seed pumps into your abused ass, the last resistance you had crumbles, and you moan like a mare in heat, desperate for more.  Kelt obliges, never going soft, and prepares to deliver a second load to his newest harem member.  Again and again, you beg him for more, embracing your new life without regret.\r\r");
@@ -888,6 +914,7 @@ private function keltCentaurBadEnd():void {
 		outputText("\"<i>Well, man or woman, it doesn't matter to me.  You're still only good for one thing.  Time to give you a purpose, slut.</i>\"\r\r");
 		outputText("His legs rear suddenly, wrapping around the barrel of your body.  You let out a startled protestation, but do not move... your body won't let you.  In fact, if anything, you push back against him, eager and ready.  Part of you is joyous, in fact.  What you wanted wasn't to fuck Kelt!  ");
 		outputText("<b>... It was for him to fuck you!</b>\r\r");
+		outputText(images.showImage("kelt-lost-male"));
 		outputText("Kelt does not hesitate in asserting his dominance, and immediately pushes his shaft towards your ass, inserting it with ease.  You let out an almost feral cry of pleasure, and Kelt laughs nastily as he gets a better grip and sinks his erection in deeper, humping away at your hindquarters needfully.  His human hands wrap around you, taking hold of your chin and forcing you to turn enough to face him as he savors your wincing moans.\r\r");
 		outputText("\"<i>As I thought,</i>\" he sneers, thrusting particularly hard and making you whimper with need.  \"<i>You're no stud.  Just another gelding, wishing to be a real woman.  Well, I could use another cumdump, slut.  So consider this your initiation.  You're mine now, to use whenever I feel like it.  Hope you like the feeling of my cock, bitch.  It's gonna be the only thing you feel for a long time.</i>\"\r\r");
 		outputText("He thrusts in once more ruthlessly, completely filling your ass as he ruthlessly snarls, cumming forcefully deep within you.  It fills you with an intense, unknowable joy to be used in this way, to have found your purpose!  As his hot seed pumps into your abused ass, the last resistance you had crumbles, and you moan like a mare in heat, desperate for more.  Kelt obliges, never going soft, and prepares to deliver a second load to his newest harem member.  Again and again, you beg him for more, embracing your new life without regret.");
@@ -906,6 +933,7 @@ private function keltCentaurBadEnd():void {
 		outputText("\"<i>Aww... we sure got a pretty little filly here, don't we?  Still, a filly isn't really happy unless she's being fucked.  Unless her stomach is full of foals for her master.  And since you've gone to the trouble of preparing yourself for me, bitch... I guess I'll just have to do the job.</i>\"\r\r");
 		outputText("His legs rear suddenly, wrapping around the barrel of your body.  You let out a startled protestation, but do not move... your body won't let you.  In fact, if anything, you push back against him, eager and ready.  Your vagina drools anxiously, ready for him, ready to be seeded with his foals.  Part of you is joyous, in fact.  What you wanted wasn't to fuck Kelt!");
 		outputText("<b>... It was for him to fuck you!</b>\r\r");
+		outputText(images.showImage("kelt-lost-female"));
 		outputText("Kelt does not hesitate in asserting his dominance, and immediately pushes his shaft forward, finding his mark and spreading your needy entrance wide instantly.  You let out a feral cry of pleasure, Kelt laughing nastily as he gets a better grip and sinks his erection in deeper, humping away at your hindquarters needfully.  His human hands wrap around you, taking hold of your chin and forcing you to turn enough to face him as he savors your wincing moans.\r\r");
 		outputText("\"<i>As I thought,</i>\" he sneers, thrusting particularly hard and making you whimper with need.  \"<i>Archery... what a joke!  Breeding sluts don't shoot arrows.  They get fucked until they're pregnant, then get fucked again.  They kneel and suck me off when I say so, and their stomachs swell with my young.  Well, I could use another cumdump, slut.  So consider this your initiation.  You're mine now, to use whenever I feel like it.  Hope you like the feeling of my cock, bitch.  It's gonna be the only thing you feel for a long time.</i>\"\r\r");
 		outputText("He thrusts in once more ruthlessly, burying the whole length of his cock as he ruthlessly snarls, cumming forcefully deep within you.  You feel his warmth explode within you, seeking out your fertile eggs, ready to knock you up with your master's foals, and cum yourself.  As his hot seed pumps into your womb, the last resistance you had crumbles, and you moan like a mare in heat, praying for twins.  Kelt, never going soft, continues thrusting urgently, preparing to deliver a second load to his newest harem member.  Again and again, you beg him for more, embracing your new life without regret.");
@@ -924,6 +952,7 @@ private function keltSubmissiveBadEnd():void {
 	outputText("A sense of dread fills you.  No more lessons?  No more... Kelt?  Then, another shock of pain as he roughly grabs you by the hair, drags you over to a nearby bale of hay, and throws you onto it facedown.  Moments later, his heavy weight rests on top of you, swollen cock pressing into your back.\r\r");
 	outputText("\"<i>No, no more archery.  Time for your real education, bitch.  Lesson one... you are a slut, only here for my pleasure.  No more adventuring, no more exploring.  From now on, you are nothing but a hole for me to bust a nut into.  Got it?</i>\"\r\r");
 	outputText("You whimper with joy, thanking him over and over again.  A great weight has been lifted, your true purpose revealed.  How could you have not known it before?  Kelt is your master, and you are nothing but his needy slut!  The revelation fills you with ecstasy.  Eagerly you thrust back up against him, eager to be filled, desperate for satisfaction.  He grinds into you, grinning wickedly all the time.  Then, mercifully, he pulls back enough to line up his shot, and fills your ass with his cock.\r\r");
+	outputText(images.showImage("kelt-farm-smallbarn"));
 	outputText("\"<i>Ungh!  There's a good bitch.  From now on, you're mine, and mine only.  If you dare to fuck another creature, I will kill you.  Be a good slut, though, and maybe I'll give you a few foals to fill that belly.  Now moan for me, bitch.  I wanna hear you scream as I make you mine.</i>\"\r\r");
 	outputText("Scream you do, but with pleasure, as his cock erupts deep within your bowels.  This is what you wanted... this is what you always wanted.  Kelt grunts with contented release, then begins thrusting again, cock still hard as he prepares to dump a second load into his newest harem member.  Again and again, you beg him for more, embracing your new life without regret.");
 	doNext(keltBadEndEpilogue);
@@ -938,6 +967,7 @@ private function keltBadEndEpilogue():void {
 	outputText("What she found was not what she expected.  Two centaurs, wrapped in carnal bliss.  Well, the " + (player.findPerk(PerkLib.BroBody) >= 0 || player.findPerk(PerkLib.FutaForm) >= 0 || player.gender == 3 ? "hermaphrodite" : "female") + ", at least, seemed wrapped in carnal bliss.  She groaned worshipfully beneath her mate, whimpering and kneading her own watermelon sized breasts as the powerful male pumped her again and again with his oversized, equine cock.  Even as the heroine watched, fascinated, the female centaur orgasmed explosively, shouting her satisfaction to the high heavens.  If the thick puddle of juices " + (player.findPerk(PerkLib.BroBody) >= 0 || player.findPerk(PerkLib.FutaForm) >= 0 || player.gender == 3 ? "and cum " : "") + "below them " + (player.findPerk(PerkLib.BroBody) >= 0 || player.findPerk(PerkLib.FutaForm) >= 0 || player.gender == 3 ? "were" : "was") + " any judge, this must have been her last orgasm among many.  She was almost half the size of her mate, and clearly savoring every thrust of his oversized cock into her distended equine cunt, lewdly thrusting back and begging him to cum inside her again.\r\r");
 	outputText("In time, the male obliged, pulling cruelly on the centauress' hair as he let out a low roar and came forcefully.  The heroine stared in wonder as his massive balls convulsed again and again, pumping his mare full of seed.  If she listened, she could actually hear the lewd squish of every blast of semen as it filled her, pumping steady gouts of babycream into her womb." + (player.findPerk(PerkLib.BroBody) >= 0 || player.findPerk(PerkLib.FutaForm) >= 0 || player.gender == 3 ? " At the same time, she spurts a large amount of futa-cum, an obvious sign that she's a hermaphrodite." : "") + "\r\r");
 	outputText("The centaur dismounted as soon as he was satisfied, ignoring the abused mare after his needs were met.  He was obviously the dominant one, and his mate looked after him with hungry eyes, wanting more.  Two more centaurs... young females, by the look of it, emerged from the barn, hurrying over towards their mother and happily latching onto her breasts.  The mother cooed happily, letting them nurse from her full breasts, even while looking after their retreating father hopefully.  The heroine could see, looking closely, how distended the mare's stomach was... she was probably pregnant with yet another foal.  Somehow, the image seemed terribly erotic to the heroine, who bit her lip anxiously.\r\r");
+	outputText(images.showImage("badend-kelt"));
 	outputText("\"<i>Enjoying the show, fucker?  She's not bad, for a quick fuck now and then.  A little clingy, but makes for a good cumdump.  What... you jealous?</i>\"\r\r");
 	outputText("The heroine paled, and turned around to face the male, berating herself for letting him sneak up on her.  Brandishing her sword, she tried to step backwards, wary of an attack.  The centaur eyed her sword amusedly, then broke out into a nasty laugh, ");
 	outputText("\"<i>Ha!  Little bitch human, who thinks she knows how to use a sword.  You use that little stick to ward off the big bad monsters when they come for your little pussy?  Give me a break.  This is a real man's weapon.</i>\"\r\r");
@@ -974,85 +1004,62 @@ private function fuckKeltsShitUp():void {
 	clearOutput();
 	//If naga folks
 	if (player.faceType == FACE_SNAKE_FANGS && player.tongueType == TONGUE_SNAKE && player.lowerBody == LOWER_BODY_TYPE_NAGA) {
-		outputText(images.showImage("kelt-farm-naga-subkelt"));
 		outputText("Feigning a coy smile, you lick your lips with your forked tongue and beckon Kelt towards you.  The foolish stud trots over to you saying \"<i>That's more like it, worm.  Maybe when I'm done with your mouth, I'll let you have my dick in your ass, too.</i>\"  His sheath ripples and swells as his thick member begins to slowly droop out from the folded skin, hanging towards the ground.  It continues growing as he comes closer and closer, until it finally begins to grow rigid and arc towards your face.  You feel a moment of self-doubt as you breathe in his wonderful scent - wouldn't it be better, safer to just give in?  No, says a cold, reptile voice in your head.  You are the predator here and he, arrogant prey, has stepped into your trap.  Make him pay.  Make him know where his place in the world is.\r\r");
-
 		outputText("You open your mouth and, instead of attaching yourself to Kelt's cock, you lash out at lightning speed, wrapping your arms around his flanks and biting into his backside.  The satisfaction you take from burying your fangs into such a fine piece of meat is almost as great as the squeal of surprised pain it draws from Kelt.  \"<i>What are you doing, you stupid bitch?  Get off.  Now!</i>\"  You don't bother giving him a response.  He lashes out with his powerful hind legs, but you are well ahead of him; wriggling upwards you begin to wrap your long coils around his equine back.  He tries to trap your lower half under his hooves, but the poison you sank into him is already taking effect - unable to coordinate, he can only stab at you woozily.  You skilfully trip him to his knees with a flick of your scaled tip, before weaving under him and over, then around his human upper half.  He struggles weakly with his arms, but with your venom coursing through him he is simply no match for your strong, muscular coils.  You stop when you are level with his face, his arms and entire frame swaddled and trapped in your long, patterned tail.\r\r");
-
 		outputText("You take a moment to indulge in the sensation - the feeling of this big, muscled creature against your warm scales, at your mercy.  His panicky heartbeat reverberates through your frame, and he glowers at you, unable to resist, as you languidly trace the line of his proud jaw with your finger.  \"<i>Let me go now, and I promise I won't kill you.  I may have to beat you, but I won't kill you,</i>\" he growls.  You are barely listening - you are staring into his eyes.  There is something there aside from anger - is it fear?  You smirk, and slowly begin to rise above him, until your genital slit is level with his face.  As you do so, you slide the tip of your tail towards Kelt's member and gently flick its end; he grits his teeth as his big horse cock begins to strain to attention again.  You gently circumnavigate his head, tormenting him as you speak.\r\r");
+		outputText(images.showImage("kelt-farm-naga-subkelt"));
 		//If male/hermaphrodite 
 		if (player.hasCock()) {
 			//Single cock: 
 			if (player.cockTotal() == 1) {
 				outputText("\"<i>Pretty pony stepped on a snake.  Now pretty pony has to pay the price,</i>\" you say, sighing as you part your lips and allow your " + player.cockDescript(0) + " to slide out and feel the fresh air.\n\n\"<i>You put that in my mouth and I will bite it off,</i>\" snarls Kelt.\n\n\"<i>Will you?</i>\" you sneer. \"<i>I will grow one back.  You, on the other hand, will die a slow, agonising death.  Be smart.</i>\" He stares up at you, and yes, it's fear: pure, animalistic fear of a horse for a viper.  You open your mouth and bare your fangs in a wide, triumphant smile at him; venom dribbles down your chin.  He lowers his eyes and opens his mouth in submission.  Needing no further invitation, you slide your " + player.cockDescript(0) + " into his mouth, massaging your hands into his hair as you do so.\r\r");
-				
 				outputText("He is unpracticed at first, unsure; you feel his teeth rub against your length and for a moment you wonder if he actually will carry through his threat.  You tease at his horsecock with your tail, circling his head faintly and then, gently, sticking the very tip of it into his urethra.  He moans around your " + player.cockDescript(0) + " and his teeth seem to vanish, replaced with a sucking, eager wetness.  You slowly begin to feed more of your length into him.\r\r");
 			}
 			//Multiple dick: 
 			else {
 				outputText("\"<i>Pretty pony stepped on a snake.  Now pretty pony has to pay the price,</i>\" you say, sighing as you part your lips and allow your cocks to slide out and feel the fresh air.  You idly slap your " + player.cockDescript(0) + " against his face. \"<i>You put that in my mouth and I will bite it off,</i>\" snarls Kelt.\n\n\"<i>Will you?</i>\" you sneer.  \"<i>I will fuck your mouth with the next one. Then I'll grow the first one back and come and fuck you with that one again!  Be smart.</i>\"  He stares up at you, and yes, it's fear: pure, animalistic fear of a horse for a viper.  You open your mouth and bare your fangs in a wide, triumphant smile at him; venom dribbles down your chin.  He lowers his eyes and opens his mouth in submission.  Needing no further invitation, you slide your " + player.cockDescript(0) + " into his mouth, massaging your hands into his hair as you do so; your semi-distended " + player.cockDescript(1) + " bumps into his chin, an impossible-to-ignore reminder of your threat.\r\r");
-				
 				outputText("He is unpracticed at first, unsure; you feel his teeth rub against your length and for a moment you wonder if he actually will carry through his threat.  You tease at his horsecock with your tail, circling his head faintly and then, gently, sticking the very tip of it into his urethra.  He moans around your " + player.cockDescript(0) + " and his teeth seem to vanish, replaced with a sucking, eager wetness.  You slowly begin to feed more of your length into him.\r\r");
 			}
 			if (player.cocks[0].cockLength <= 10) {
 				if (player.balls > 0) outputText("Your " + player.ballsDescriptLight() + " bump into his chin as your cock finds the back of his throat. ");
 				else outputText("Your genital slit bumps into his chin as your cock finds the back of his throat. ");
 				outputText("He is now entirely engaged with your length, moving his head back and forth as his tongue slathers it with attention, perhaps in the hope that the sooner he gets you off the sooner this nightmare will end.  You smirk and grip his hair, moving his head in rhythm with your own movements.\r\r");
-				
 				outputText("You feel a mighty groan around your " + player.cockDescript(0) + " and Kelt's cock begin to pulse against your tail urgently.  Quickly and expertly, you wrap the end around the centaur's penis tightly, denying him release and rewarding yourself with another pained, muffled squeal reverberating through your prick.\r\r");
-				
 				outputText("\"<i>Ah, ah, ah,</i>\" you hiss.  \"<i>Sluts don't get off before their masters.</i>\"  A wicked idea strikes you.  Whilst still holding onto the centaur's cock with your coils, you begin to wind the tip of your tail towards Kelt's ass.  It isn't easy; you have invested the entirety of your frame into holding onto the centaur, so it is by measures that you constrict him tighter as your tail inches towards his anus.  He is bone -crushingly gripped in your coils by the time you find his sphincter, which you softly but surely sink your tip into.  Kelt struggles with the last of his strength against this final humiliation, but there is nothing he can do; with your venom plaguing his limbs, your coils wrapped hard around his frame, and your cock buried in his face, you have robbed him of everything.  His saliva coats your ");
 				if (player.balls > 0) outputText(player.ballsDescriptLight());
 				else outputText("crotch");
 				outputText(" as you begin to roughly push and pull him against your dick using his hair, feeding your tail into his ass by increments.  You feel your tip touch something which pulses, and you gently probe it as you roughly fuck his mouth, beginning to reach your peak.  Kelt only manages a few muffled screams as you milk his prostate while continuing to deny his cock release, before you silence him with a torrent of cum, which you pour directly down his throat.\r\r");
-
 				outputText("\"<i>Oh, you're soooo good at that,</i>\" you sigh, as he silently drinks your seed, his face a rictus of agonised arousal.  \"<i>That's right, take it all down.  Who would've guessed that you're a champion cock sucker?  Maybe if you drop the tough guy act, I'll let you do it some more.  We can find some pink dye for you, maybe some succubus milk, and then you can look like the pretty pony you... really... are!</i>\"\r\r");
-
 				outputText("You punctuate these last words with three final thrusts and then, spent, slowly withdraw your " + player.cockDescript(0) + " from his mouth, spit and cum trailing on your captive's lips.  Smirking, you loosen your bonds just a little by withdrawing your tail from his ass.  Kelt doesn't even orgasm; he raggedly moans as cum simply drools out of his abused dick by the bucket load.\r\r");
 				
 			}
 			//If >10 inches: 
 			else {
 				outputText("Slowly but surely you feed more of your formidable member into his mouth until you feel the back of his throat, with most of your " + player.cockDescript(0) + " still outside his lips.  The centaur is now entirely engaged with your length, moving his head back and forth as his tongue slathers it with attention, perhaps in the hope that the sooner he gets you off the sooner this nightmare will end.  You smirk and grip his hair, moving his head in rhythm with your own movements.\r\r");
-
 				outputText("You feel a mighty groan around your " + player.cockDescript(0) + " and your snake tip feels Kelt's cock begin to pulse urgently.  Quickly and expertly, you wrap the end of your tail around the centaur's penis tightly, denying him release and rewarding yourself with another pained, muffled squeal reverberating through your cock.\r\r");
-
 				outputText("\"<i>Ah, ah, ah,</i>\" you hiss.  \"<i>Sluts don't get off before their masters.</i>\"  A wicked idea strikes you.  Whilst still holding onto the centaur's cock with your coils, you begin to wind the tip of your tail towards Kelt's ass.  It isn't easy; you have invested the entirety of your frame into holding onto the centaur, so it is by measures that you constrict him tighter as your tail inches towards his anus.  He is bone-crushingly gripped in your coils by the time you find his sphincter, which you softly but surely sink your tip into.  Kelt struggles with the last of his strength against this final humiliation, but there is nothing he can do; with your venom plaguing his limbs, your coils wrapped hard around his frame, and your cock buried in his face, you have robbed him of everything.  Slowly you begin to feed even more of your " + player.cockDescript(0) + " into his mouth, until you see his throat bulge with your manhood.  The tightness of it is sensational and you groan.  You let him get used to the sensation of deepthroating you before you begin to pick up the pace, ramming the majority of your dick into his mouth until your " + player.ballsDescriptLight() + " begin to slap against his chin.  At your other end you feel your snake tip touch something which pulses, and you gently probe it as you continue to roughly fuck his mouth, beginning to reach your peak.  Kelt only manages a few muffled screams as you milk his prostate while continuing to deny his cock release, before you silence him with a torrent of cum, pouring it directly into his stomach.\r\r");
-				
 				outputText("\"<i>Oh, you're soooo good at that,</i>\" you sigh, as he silently drinks your seed, his face a rictus of agonised arousal.  \"<i>That's right, take it all down.  Who would've guessed that you're a champion cock sucker?  Maybe if you drop the tough guy act, I'll let you do it some more.  We can find some pink dye for you, maybe some succubus milk, and then you can look like the pretty pony you... really... are!</i>\"\r\r");
-
 				outputText("You punctuate these last words with three final thrusts and then, spent, slowly withdraw your " + player.cockDescript(0) + " from his mouth, spit and cum trailing on your captive's lips.  Smirking, you loosen your bonds just a little by withdrawing your tail from his ass.  Kelt doesn't even orgasm; he raggedly moans as cum simply drools out of his abused dick by the bucket load.");
 			}
 		}
 		//If Female: 
 		else if (player.hasVagina()) {
 			outputText("\"<i>Pretty pony stepped on a snake.  Now pretty pony has to pay the price,</i>\" you say, sighing as you part your lips and allow your " + player.vaginaDescript(0) + " to open and feel the fresh air. \"<i>You put your bud in my mouth and I will bite it off,</i>\" snarls Kelt. \"<i>Will you?</i>\" you sneer.  \"<i>I will grow one back.  You, on the other hand, will die a slow, agonising death.  Be smart.</i>\"  He stares up at you, and yes, it's fear: pure, animalistic fear of a horse for a viper. You open your mouth and bare your fangs in a wide, triumphant smile at him; venom dribbles down your chin.  He lowers his eyes and opens his mouth in submission. Needing no further invitation, you lower your " + player.vaginaDescript(0) + " onto his tongue, massaging your hands into his hair as you do so.\r\r");
-
 			outputText("He is unpracticed at first, unsure; you feel his teeth rub against your " + player.clitDescript() + " and for a moment you wonder if he actually will carry through his threat.  You tease at his horsecock with your tail, circling his head faintly and then, gently, sticking the very tip of it into his urethra.  He moans against your " + player.vaginaDescript(0) + " and his teeth seem to vanish, replaced with a sucking, eager wetness.  You press your abdomen against him tightly, forcing your " + player.clitDescript() + " into his mouth and his tongue into your wet hole.\r\r");
-
 			outputText("Girl cum begins to drip down Kelt's chin.  He is now entirely engaged with your " + player.vaginaDescript(0) + ", moving his head back and forth as his tongue slathers your clit with attention, perhaps in the hope that the sooner he gets you off the sooner this nightmare will end.  You smirk and grip his hair, forcing his head this way and that so that no corner of your pink opening goes without attention.\r\r");
-
 			outputText("You feel a mighty groan and Kelt's cock begin to pulse urgently against your tail.  Quickly and expertly, you wrap the end around the centaur's penis tightly, denying him release and rewarding yourself with another pained, muffled squeal reverberating through your cunt.\r\r");
-
 			outputText("\"<i>Ah, ah, ah,</i>\" you hiss.  \"<i>Sluts don't get off before their masters.</i>\"  A wicked idea strikes you.  Whilst still holding onto the centaur's cock with your coils, you begin to wind the tip of your tail towards Kelt's ass.  It isn't easy; you have invested the entirety of your frame into holding onto the centaur, so it is by measures that you constrict him tighter as your tail inches towards his anus.  He is bone-crushingly gripped in your coils by the time you find his sphincter, which you softly but surely sink your tip into.  Kelt struggles with the last of his strength against this final humiliation, but there is nothing he can do; with your venom plaguing his limbs, your coils wrapped hard around his frame, and his face buried in your genitals, you have robbed him of everything.  His saliva coats your opening as you clench your muscles and trap his tongue in your " + player.vaginaDescript(0) + " before roughly rubbing yourself against him, face-fucking him for all you are worth; the sensation you get from bouncing your clit against his upper lip is immense and you pick up the pace.  At your other end you feel your tip touch something which pulses deep in his anal passage, and you gently probe it as you roughly fuck his mouth, beginning to reach your peak.  Kelt only manages a few muffled screams as you milk his prostate while continuing to deny his cock release, before you silence him with a waterfall of girl cum, which in ecstasy you slather his entire face with.\r\r");
-			
 			outputText("\"<i>Oh, you're soooo good at that,</i>\" you sigh, as he silently accepts this treatment, his face a rictus of agonised arousal.  \"<i>That's right, keep using your tongue on me.  Like that, yes!  Who would've guessed that you're a champion carpet diver?  Maybe if you drop the tough guy act, I'll let you do it some more.  We can find some pink dye for you, maybe some succubus milk, and then you can look like the pretty pony you... really... are!</i>\"\r\r");
-	
 			outputText("You punctuate these last words with three final thrusts against his face and then, spent, you slowly pull away, spit and slime trailing on your captive's lips.  Smirking, you loosen your bonds just a little by withdrawing your tail from his ass.  Kelt doesn't even orgasm; he raggedly moans as cum simply drools out of his abused dick by the bucket load.\r\r"); 
 		}
 		//If Genderless:
 		else {
 			outputText("\"<i>Pretty pony stepped on a snake.  Now pretty pony has to pay the price,</i>\" you say. \"<i>What are you going to do, freak; read poetry at me?</i>\" sneers Kelt. \"<i>Form a book circle so we can discuss what it means to have no fucking genitals in a world built on lust?  Or is there some other way sexless nothings like you get.. .off...</i>\" he trails off as, with sinuous grace, you twist your body so that his mouth is now facing your " + player.buttDescript() + ".  You smile beatifically at him over your shoulder as you flare your " + player.hipDescript() + " and present your " + player.assholeDescript() + " to him. \"<i>I have noticed you are good at wagging your pretty little tongue, pony.  It saddens me to see you waste that talent, so I have found a good use for it.  Do otherwise and you will die a slow, agonising death.  Be smart.</i>\"  He stares up at you, and yes, it's fear: pure, animalistic fear of a horse for a viper.  You open your mouth and bare your fangs in a wide, triumphant smile at him; venom drips down your chin.  He lowers his eyes and opens his mouth in submission.  Needing no further invitation, you press your " + player.assholeDescript() + " onto him.\r\r");
-
 			outputText("He is unpracticed at first, unwilling; you feel his teeth rub against your hole");
 			outputText(". You tease at his horsecock with your tail, circling his head faintly and then, gently, sticking the very tip of it into his urethra.  He moans around your " + player.buttDescript() + " and his teeth seem to vanish, replaced with a sucking, eager wetness.  With reptilian litheness, you slowly lean backwards and press your hands onto the back of his head, pushing his face more into yourself.  You giggle at the sensation as his tongue pushes into your anal passage, slathering it with attention, perhaps in the hope that the sooner he gets you off the sooner this nightmare will end.  Smirking and gripping his hair, you move his head in rhythm with your own sinuous movements.\r\r");
-			
 			outputText("You feel a mighty groan reverberate through you and Kelt's cock begin to pulse urgently against your tail.  Quickly and expertly, you wrap the end around the centaur's penis tightly, denying him release and rewarding yourself with another pained, muffled squeal reverberating through your ass.\r\r");
-
 			outputText("\"<i>Ah, ah, ah,</i>\" you hiss.  \"<i>Sluts don't get off before their masters.</i>\"  A wicked idea strikes you.  Whilst still holding onto the centaur's cock with your coils, you begin to wind the tip of your tail towards Kelt's ass.  It isn't easy; you have invested the entirety of your frame into holding onto the centaur, so it is by measures that you constrict him tighter as your tail inches towards his anus.  He is bone-crushingly gripped in your coils by the time you find his sphincter, which you softly but surely sink your tip into.  Kelt struggles with the last of his strength against this final humiliation, but there is nothing he can do; with your venom plaguing his limbs, your coils wrapped hard around his frame, and his tongue buried in your ass, you have robbed him of everything.  His saliva coats your opening as you clench your muscles and trap his tongue deep inside before roughly rubbing your " + player.buttDescript() + " against him, face-fucking him for all you are worth; the soft, slippery sensation inside you is immense and you pick up the pace.  At your other end you feel your tip touch something which pulses deep in his anal passage, and you gently probe it as you roughly fuck his mouth, beginning to reach your peak.  Kelt only manages a few muffled screams as you milk his prostate while continuing to deny his cock release, before you feel something clench inside of you and you begin to ride your strange but satisfying anal orgasm.\r\r");
-
 			outputText("\"<i>Oh, you're soooo good at that,</i>\" you sigh, as he silently accepts the utter humiliation, his face a rictus of agonised arousal.  \"<i>That's right, keep using your tongue on me.  Like that, yes!  Who would've guessed that you're a champion ass licker?  Maybe if you drop the tough guy act, I'll let you do it some more.  We can find some pink dye for you, maybe some succubus milk, and then you can look like the pretty pony you... really... are!</i>\"\r\r");
-
 			outputText("You punctuate these last words with three final backward thrusts against his face and then, spent, you slowly pull away, spit trailing from your ass onto your captive's lips.  Smirking, you loosen your bonds just a little by withdrawing your tail from his ass.  Kelt doesn't even orgasm; he raggedly moans as cum simply drools out of his abused dick by the bucket load.\r\r");
 		}
 		//All go to: 
@@ -1060,7 +1067,6 @@ private function fuckKeltsShitUp():void {
 	}
 	//Standard anti-kelt scene
 	else {
-		outputText(images.showImage("kelt-farm-subkelt"));
 		outputText("Feigning a coy smile, you drop to your knees and beckon Kelt towards you.  The foolish stud trots over saying, \"<i>That's more like it, slut.  Maybe when I'm done with your mouth, I'll let you have my dick in your ass too.</i>\"  His sheath ripples and swells as his thick member begins to slowly droop out from the folded skin, hanging towards the ground.  It continues growing as he comes closer and closer, until it finally begins to grow rigid and arc up to point at your face.  You breathe in your master's wonderful scent an — No!  You won't cave in to him this time!\r\r");
 		outputText("You grip his dick just below the flare and yank it down hard, stepping up and back until you're behind the beast.  His flexible horse-dick seems to be handling the angle well, so you pull it back further until Kelt dances about uncomfortably, trying to relax the pressure on his exposed member.  He barks, \"<i>You really have no fucking clue what you're doing, do you, bitch?</i>\"\r\r");
 		outputText("Your cheeks color, but your anger drives away the urge to submit.  A quick jerk on his flared dong makes Kelt whinny painfully, and he lashes out with a vicious kick from his hind legs.  You anticipate such a move, and dodge, bending his length further just as his backside starts lifting up.  The pain robs his kick of any strength, and you're able to sidestep one leg and force the other aside with a block before it can connect.  He lands hard, wobbling and whinnying uncomfortably, even starting to cry, \"<i>Ah, oww... please, just stop hurting me!</i>\"\r\r");
@@ -1091,6 +1097,7 @@ private function fuckKeltsShitUp():void {
 			else outputText("taking as much as he can deep into his throat.  Even though his entire neck is distorted by your massive member, his throat simply isn't long enough to take any more.  You writhe as the throat-fucking brings you to ");
 			outputText("an explosive orgasm.  You deposit your cream directly into his belly, making him burp when you pull out, dripping on the centaur's abused lips.\r\r");
 		}
+		outputText(images.showImage("kelt-farm-subkelt"));
 		outputText("Taking pity on him, you turn and release the rope, shoving his exhausted body over.  He hits the ground hard and his tightly bound cock bounces in the dirt underneath him.  You gingerly untie the bulging centaur-shaft, noting how massively bloated it is with pent up arousal.  As each layer of rope is peeled off, cum starts to leak from him in greater and greater quantities.  With the release of the last knot, he begins spurting helplessly.  You pat his flank and say, \"<i>Good bitch.  Now why don't you go find some succubus milk so you can look the part?</i>\"\r\r");
 		outputText("You redress before the comatose centaur gets a chance to come to his senses, and wonder if he'll recover enough of his pride to face you again.");
 	}

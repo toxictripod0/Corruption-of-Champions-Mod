@@ -357,7 +357,7 @@ import flash.events.Event;
 				raceScores += "<b>Raccoon Score:</b> " + player.raccoonScore() + "\n";
 			}
 			if (player.bunnyScore() > 0) {
-				raceScores += "<b>Naga Score:</b> " + player.bunnyScore() + "\n";
+				raceScores += "<b>Bunny Score:</b> " + player.bunnyScore() + "\n";
 			}
 			if (player.kangaScore() > 0) {
 				raceScores += "<b>Kangaroo Score:</b> " + player.kangaScore() + "\n";
@@ -631,7 +631,7 @@ import flash.events.Event;
 			menu();
 			addButton(0, "Next", playerMenu);
 			if (player.statPoints > 0) {
-				outputText("\n\n<b>You have " + num2Text(player.statPoints) + " attribute point" + (player.statPoints == 1 ? "" : "s") + " to distribute.");
+				outputText("\n\n<b>You have " + num2Text(player.statPoints) + " attribute point" + (player.statPoints == 1 ? "" : "s") + " to distribute.</b>");
 				addButton(1, "Stat Up", attributeMenu);
 			}
 		}
@@ -911,7 +911,7 @@ import flash.events.Event;
 			{
 				outputText("\nYou may allocate your remaining stat points later.");
 			}
-			dynStats("str", player.tempStr, "tou", player.tempTou, "spe", player.tempSpe, "int", player.tempInt, "noBimbo", true); //Ignores bro/bimbo perks.
+			dynStats("str", player.tempStr, "tou", player.tempTou, "spe", player.tempSpe, "int", player.tempInt, "scale", false);
 			player.tempStr = 0;
 			player.tempTou = 0;
 			player.tempSpe = 0;
@@ -934,14 +934,14 @@ import flash.events.Event;
 				doNext(playerMenu);
 				return;
 			}
-			outputText("Please select a perk from the drop-down list, then click 'Okay'.  You can press 'Skip' to save your perk point for later.\n\n");
+			outputText("Please select a perk from the drop-down list, then click 'Okay'.  You can press 'Skip' to save your perk point for later.\n\n\n");
 			mainView.aCb.x = 210;
 			mainView.aCb.y = 112;
 			
 			if (mainView.aCb.parent == null) {
 				mainView.addChild(mainView.aCb);
-				mainView.aCb.visible = true;
 			}
+			mainView.aCb.visible = true;
 			menu();
 			addButton(1, "Skip", perkSkip);
 		}
@@ -965,7 +965,7 @@ import flash.events.Event;
 			clearOutput();
 			var selected:PerkClass = ComboBox(event.target).selectedItem.perk;
 			mainView.aCb.move(210, 85);
-			outputText("You have selected the following perk:\n\n");
+			outputText("You have selected the following perk:\n\n\n");
 			outputText("<b>" + selected.perkName + ":</b> " + selected.perkLongDesc);
 			var unlocks:Array = kGAMECLASS.perkTree.listUnlocks(selected.ptype);
 			if (unlocks.length>0){

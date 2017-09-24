@@ -885,6 +885,16 @@ import classes.GlobalFlags.kFLAGS;
 		{
 			return Appearance.oneTailDescript(this);
 		}
+
+		public function neckDescript():String
+		{
+			return Appearance.neckDescript(this);
+		}
+
+		public function rearBodyDescript():String
+		{
+			return Appearance.rearBodyDescript(this);
+		}
 		
 		public function wingsDescript():String
 		{
@@ -894,6 +904,16 @@ import classes.GlobalFlags.kFLAGS;
 		public function eyesDescript():String
 		{
 			return Appearance.eyesDescript(this);
+		}
+
+		public function extraEyesDescript():String
+		{
+			return Appearance.extraEyesDescript(this);
+		}
+
+		public function extraEyesDescriptShort():String
+		{
+			return Appearance.extraEyesDescriptShort(this);
 		}
 
 		public function nagaLowerBodyColor2():String

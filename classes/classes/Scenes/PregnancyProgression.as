@@ -1144,7 +1144,7 @@ package classes.Scenes
 							//genderless: 
 							else outputText("  Your [vagina] begins twitching, aching for something to push through it over and over again.");
 							outputText("  Seated in your own slime, you moan softly, unable to keep your hands off yourself.");
-							dynStats("lus=", player.maxLust(), "resisted", false);
+							dynStats("lus=", player.maxLust(), "scale", false);
 							displayedUpdate = true;
 						}
 						else {
@@ -1259,7 +1259,7 @@ package classes.Scenes
 						//genderless: 
 						else outputText("  Your asshole begins twitching, aching for something to push through it over and over again.");
 						outputText("  Seated in your own slime, you moan softly, unable to keep your hands off yourself.");
-						dynStats("lus=", player.maxLust(), "resisted", false);
+						dynStats("lus=", player.maxLust(), "scale", false);
 						displayedUpdate = true;
 					}
 				}
@@ -1434,6 +1434,7 @@ package classes.Scenes
 			//Give birth (if it's time) to beeeeeeez
 			if (player.buttPregnancyIncubation == 1 && player.buttPregnancyType == PregnancyStore.PREGNANCY_BEE_EGGS) {
 				outputText("\n");
+				outputText(images.showImage("birth-beegirl"));
 				outputText("There is a sudden gush of honey-colored fluids from your ass.  Before panic can set in, a wonderful scent overtakes you, making everything ok.  ");
 				if (player.cockTotal() > 0) outputText("The muzzy feeling that fills your head seems to seep downwards, making your equipment hard and tight.  ");
 				if (player.vaginas.length > 0) outputText("Your " + player.vaginaDescript(0) + " becomes engorged and sensitive.  ");
@@ -1543,6 +1544,7 @@ package classes.Scenes
 			if (player.pregnancyType == PregnancyStore.PREGNANCY_BUNNY && player.pregnancyIncubation == 1) {
 				outputText("\n");
 				displayedUpdate = true;
+				outputText(images.showImage("birth-bunny"));
 				if (player.vaginas.length == 0) {
 					outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  You look down and behold a vagina.  ");
 					player.createVagina();
@@ -1573,6 +1575,7 @@ package classes.Scenes
 			//Anemone birfs
 			//Anemone Pregnancy
 			if (player.pregnancyType == PregnancyStore.PREGNANCY_ANEMONE && player.pregnancyIncubation == 1) {
+				outputText(images.showImage("birth-anemone"));
 				outputText("\n");
 				displayedUpdate = true;
 				if (player.vaginas.length == 0) {
@@ -1654,6 +1657,7 @@ package classes.Scenes
 			}
 			//Give birth if it's time (to an imp!)
 			if (player.pregnancyIncubation == 1 && player.pregnancyType == PregnancyStore.PREGNANCY_IMP) {
+				outputText(images.showImage("birth-imp"));
 				outputText("\n");
 				//Add imp birth status - used to control frequency of night imp gangbag
 				if (player.hasStatusEffect(StatusEffects.BirthedImps)) player.addStatusValue(StatusEffects.BirthedImps,1,1);
@@ -1712,6 +1716,7 @@ package classes.Scenes
 			}
 			//Give birth if it's time (to a cowgirl!)
 			if (player.pregnancyIncubation == 1 && player.pregnancyType == PregnancyStore.PREGNANCY_MARBLE) {
+				outputText(images.showImage("birth-cowgirl"));
 				if (prison.prisonLetter.deliverChildWhileInPrison()) return displayedUpdate;
 				player.knockUpForce(); //Clear Pregnancy
 				player.boostLactation(.01);
@@ -1786,6 +1791,7 @@ package classes.Scenes
 			}
 			//Give birth if it's time (to a minotaur!)
 			if (player.pregnancyIncubation == 1 && player.pregnancyType == PregnancyStore.PREGNANCY_MINOTAUR) {
+				outputText(images.showImage("birth-minotaur"));
 				if (player.vaginas.length == 0) {
 					outputText("\nYou feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.\n");
 					player.createVagina();
@@ -2027,7 +2033,7 @@ package classes.Scenes
 							outputText("You are interrupted as you find yourself overtaken by an uncontrollable urge to undress and squat.   You berate yourself for giving in to the urge for a moment before feeling something shift.  You hear the splash of fluid on the ground and look down to see a thick greenish fluid puddling underneath you.  There is no time to ponder this development as a rounded object passes down your birth canal, spreading your feminine lips apart and forcing a blush to your cheeks.  It plops into the puddle with a splash, and you find yourself feeling visibly delighted to be laying such healthy eggs.   Another egg works its way down and you realize the process is turning you on more and more.   In total you lay ");
 							outputText(eggDescript()); 
 							outputText(", driving yourself to the very edge of orgasm.");
-							dynStats("lus=", player.maxLust(), "resisted", false);
+							dynStats("lus=", player.maxLust(), "scale", false);
 						}
 						//High quantity
 						else {
@@ -2037,7 +2043,7 @@ package classes.Scenes
 							if (player.getClitLength() <= 2) outputText("pulling your folds wide and playing with your clit as another egg pops free from your diminishing belly.  You make wet 'schlick'ing sounds as you spread the slime around, vigorously frigging yourself until "); 
 							outputText("you quiver in orgasm, popping out the last of your eggs as your body twitches nervelessly on the ground.   In total you lay " + eggDescript() + ".");
 							player.orgasm('Vaginal');
-							dynStats("resisted", false);
+							dynStats("scale", false);
 						}
 					}
 					//Large egg scene
@@ -2054,7 +2060,7 @@ package classes.Scenes
 						if (player.statusEffectv3(StatusEffects.Eggs) >= 11) outputText("Your swollen belly doesn't seem to be done with you, as yet another egg pushes its way to freedom.   The stimulation so soon after orgasm pushes you into a pleasure-stupor.  If anyone or anything discovered you now, they would see you collapsed next to a pile of eggs, your fingers tracing the outline of your " + player.vaginaDescript(0) + " as more and more eggs pop free.  In time your wits return, leaving you with the realization that you are no longer pregnant.  ");
 						outputText("\n\nYou gaze down at the mess, counting " + eggDescript() + ".");
 						player.orgasm('Vaginal');
-						dynStats("resisted", false);
+						dynStats("scale", false);
 					}
 					outputText("\n\n<b>You feel compelled to leave the eggs behind, ");
 					if (player.hasStatusEffect(StatusEffects.AteEgg)) outputText("but you remember the effects of the last one you ate.\n</b>");

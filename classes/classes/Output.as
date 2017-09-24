@@ -30,7 +30,6 @@ import flash.utils.setTimeout;
 		protected var _currentText:String = "";
 		protected var _history:Array = [""];
 
-		public function get mainViewManager():MainViewManager { return kGAMECLASS.mainViewManager; }
 		public function forceUpdate():void { kGAMECLASS.forceUpdate(); }
 
 		/**
@@ -57,7 +56,7 @@ import flash.utils.setTimeout;
 			text = kGAMECLASS.parser.recursiveParser(text);
 			record(text);
 			_currentText += text;
-			if (debug) mainView.setOutputText(_currentText);
+			//if (debug) mainView.setOutputText(_currentText);
 
 			return this;
 		}
@@ -83,18 +82,7 @@ import flash.utils.setTimeout;
 		 */
 		public function flush():void
 		{
-			var fmt:TextFormat = mainView.mainText.getTextFormat();
-
-			if (flags[kFLAGS.CUSTOM_FONT_SIZE] != 0)
-				fmt.size = flags[kFLAGS.CUSTOM_FONT_SIZE];
-
-			mainView.setOutputText(_currentText);
-
-			if (flags[kFLAGS.CUSTOM_FONT_SIZE] != 0)
-				mainView.mainText.setTextFormat(fmt);
-
-			if (mainViewManager.mainColorArray[flags[kFLAGS.BACKGROUND_STYLE]] != null)
-				mainView.mainText.textColor = mainViewManager.mainColorArray[flags[kFLAGS.BACKGROUND_STYLE]];
+			mainViewManager.setText(_currentText);
 		}
 
 		/**
@@ -143,7 +131,7 @@ import flash.utils.setTimeout;
 		{
 			_currentText += text;
 			record(text);
-			mainView.setOutputText(_currentText);
+			//mainView.setOutputText(_currentText);
 			return this;
 		}
 

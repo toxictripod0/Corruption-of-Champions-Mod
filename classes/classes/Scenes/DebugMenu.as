@@ -1182,7 +1182,6 @@ import classes.Items.*
 			[WING_TYPE_IMP, "(5) IMP"],
 			[WING_TYPE_BAT_LIKE_TINY, "(6) BAT_LIKE_TINY"],
 			[WING_TYPE_BAT_LIKE_LARGE, "(7) BAT_LIKE_LARGE"],
-			[WING_TYPE_SHARK_FIN, "(8) SHARK_FIN"],
 			[WING_TYPE_FEATHERED_LARGE, "(9) FEATHERED_LARGE"],
 			[WING_TYPE_DRACONIC_SMALL, "(10) DRACONIC_SMALL"],
 			[WING_TYPE_DRACONIC_LARGE, "(11) DRACONIC_LARGE"],
@@ -1383,7 +1382,7 @@ import classes.Items.*
 			player.skinDesc = "shield-shaped dragon scales";
 			player.furColor = player.hairColor;
 			player.underBody.type = UNDER_BODY_TYPE_REPTILE;
-			player.underBody.copySkin({        // copy the main skin props to the underBody skin ...
+			player.copySkinToUnderBody({       // copy the main skin props to the underBody skin ...
 				desc: "ventral dragon scales"  // ... and only override the desc
 			});
 			player.tongueType = TONGUE_DRACONIC;

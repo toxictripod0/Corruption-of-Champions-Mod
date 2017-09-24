@@ -233,7 +233,11 @@ package classes.Items.Consumables
 			if (!player.hasDragonHorns(true) && changes < changeLimit && rand(5) === 0){
 				mutations.gainDraconicHorns(tfSource);
 			}
-			
+
+			//Neck restore
+			if (player.neck.type != NECK_TYPE_NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
+			//Rear body restore
+			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
 			//-Hair changes
 			if (changes < changeLimit && rand(4) === 0) {
 				mutations.lizardHairChange(tfSource);
@@ -345,9 +349,9 @@ package classes.Items.Consumables
 					desc: "scales"
 				});
 				player.underBody.type = UNDER_BODY_TYPE_REPTILE;
-				player.underBody.copySkin({ // copy the main skin props to the underBody skin ...
-					desc: "ventral scales", // ... and only override the desc
-					tone: newSkinTones[1]   // ... and the color (tone)
+				player.copySkinToUnderBody({ // copy the main skin props to the underBody skin ...
+					desc: "ventral scales",  // ... and only override the desc
+					tone: newSkinTones[1]    // ... and the color (tone)
 				});
 				outputText("\n\n<b>You're covered from head to toe in shiny " + player.skinTone + " scales with [underBody.skinFurScales] on your underside.</b>");
 				kGAMECLASS.rathazul.addMixologyXP(20);
