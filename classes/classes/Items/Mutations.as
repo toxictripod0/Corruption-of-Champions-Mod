@@ -245,8 +245,8 @@ package classes.Items
 			dynStats("sen", 1, "lus", 10);
 			//-Raises corruption by 1 to 50, then by .5 to 75, then by .25 to 100.
 			if (!purified) {
-				if (player.cor < (50 + player.corruptionTolerance())) dynStats("cor", 1);
- 				else if (player.cor < (75 + player.corruptionTolerance())) dynStats("cor", .5);
+				if (player.cor < 50) dynStats("cor", 1);
+ 				else if (player.cor < 75) dynStats("cor", .5);
 				else dynStats("cor", .25);
 			}
 			outputText("\n\nIntermittent waves of numbness wash through your body, turning into a warm tingling that makes you feel sensitive all over.  The warmth flows through you, converging in your loins and bubbling up into lust.");
@@ -1230,15 +1230,15 @@ package classes.Items
 			//high corruption
 			if (player.cor >= 66) outputText("  You lick your lips, marvelling at how thick and sticky it is.");
 			//Corruption increase
-			if ((player.cor < (50 + player.corruptionTolerance()) || rand(2)) && tainted) {
+			if ((player.cor < 50 || rand(2)) && tainted) {
 				outputText("\n\nThe drink makes you feel... dirty.");
-				temp = 1;
+				var temp:Number = 1;
 				//Corrupts the uncorrupted faster
- 				if (player.cor < (50 + player.corruptionTolerance())) temp++;
- 				if (player.cor < (40 + player.corruptionTolerance())) temp++;
- 				if (player.cor < (30 + player.corruptionTolerance())) temp++;
+ 				if (player.cor < 50) temp++;
+ 				if (player.cor < 40) temp++;
+ 				if (player.cor < 30) temp++;
 				//Corrupts the very corrupt slower
-				if (player.cor >= (90 + player.corruptionTolerance())) temp = .5;
+				if (player.cor >= 90) temp = .5;
 				if (tainted) dynStats("cor", temp);
 				else dynStats("cor", 0);
 				changes++;
@@ -1937,7 +1937,7 @@ package classes.Items
 			//apply an effect where the player really wants
 			//to give their milk to other creatures
 			//(capable of getting them addicted):
-			if (!player.hasStatusEffect(StatusEffects.Feeder) && player.biggestLactation() >= 3 && rand(2) == 0 && player.biggestTitSize() >= 5 && player.cor >= (35 - player.corruptionTolerance())) {
+			if (!player.hasStatusEffect(StatusEffects.Feeder) && player.biggestLactation() >= 3 && rand(2) == 0 && player.biggestTitSize() >= 5 && player.isCorruptEnough(35)) {
 				outputText("\n\nYou start to feel a strange desire to give your milk to other creatures.  For some reason, you know it will be very satisfying.\n\n<b>(You have gained the 'Feeder' perk!)</b>");
 				player.createStatusEffect(StatusEffects.Feeder, 0, 0, 0, 0);
 				player.createPerk(PerkLib.Feeder, 0, 0, 0, 0);
@@ -3922,7 +3922,7 @@ package classes.Items
 				if (player.tou100 > 66) dynStats("tou", -1);
 				changes++;
 			}
-			if (mystic && changes < changeLimit && rand(2) == 0 && player.cor < (100 + player.corruptionTolerance())) {
+			if (mystic && changes < changeLimit && rand(2) == 0 && player.cor < 100) {
 				if (player.cor < 33) outputText("\n\nA sense of dirtiness comes over you, like the magic of this gem is doing some perverse impropriety to you.");
 				else if (player.cor < 66) outputText("\n\nA tingling wave of sensation rolls through you, but you have no idea what exactly just changed.  It must not have been that important.");
 				else outputText("\n\nThoughts of mischief roll across your consciousness, unbounded by your conscience or any concern for others.  You should really have some fun - who cares who it hurts, right?");
@@ -4239,7 +4239,7 @@ package classes.Items
 				flags[kFLAGS.TIMES_TRANSFORMED]++;
 			}
 			//Grow demon wings
-			if ((player.wingType != WING_TYPE_BAT_LIKE_LARGE || player.rearBody.type == REAR_BODY_SHARK_FIN) && rand(8) == 0 && player.cor >= (50 - player.corruptionTolerance())) {
+			if ((player.wingType != WING_TYPE_BAT_LIKE_LARGE || player.rearBody.type == REAR_BODY_SHARK_FIN) && rand(8) == 0 && player.isCorruptEnough(50)) {
 				//grow smalls to large
 				if (player.wingType == WING_TYPE_BAT_LIKE_TINY && player.cor >= (75 - player.corruptionTolerance())) {
 					outputText("\n\n");

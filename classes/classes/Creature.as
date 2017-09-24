@@ -253,6 +253,33 @@ import flash.errors.IllegalOperationError;
 			inte = Utils.boundFloat(1,inte+delta,getMaxStats('int'));
 			return inte-s0;
 		}
+		public function corruptionTolerance():Number {
+			return 0;
+		}
+		public function corAdjustedUp():Number {
+			return boundFloat(0, cor + corruptionTolerance(), 100);
+		}
+		public function corAdjustedDown():Number {
+			return boundFloat(0, cor - corruptionTolerance(), 100);
+		}
+		/**
+		 * Requires corruption >= minCor, corruption tolerance relaxes the requirement (lowers the bar).
+		 * If `falseIfZero` is true, having 0 corruption makes check always fail
+		 */
+		public function isCorruptEnough(minCor:Number, falseIfZero:Boolean = false):Boolean {
+			if (falseIfZero && cor < 0.5) return false;
+			if (flags[kFLAGS.MEANINGLESS_CORRUPTION] > 0) return true;
+			return corAdjustedUp() >= minCor;
+		}
+		/**
+		 * Requires corruption < maxCor, corruption tolerance relaxes the requirement (raises the bar)
+		 * If `falseIf100` is true, having 100 corruption makes check always fail
+		 */
+		public function isPureEnough(maxCor:Number, falseIf100:Boolean = false):Boolean {
+			if (falseIf100 && cor >= 99.5) return false;
+			if (flags[kFLAGS.MEANINGLESS_CORRUPTION] > 0) return true;
+			return corAdjustedDown() < maxCor;
+		}
 
 		//Appearance Variables
 		/**
