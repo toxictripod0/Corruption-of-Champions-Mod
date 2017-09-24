@@ -1279,18 +1279,13 @@ use namespace kGAMECLASS;
 			return counter;
 		}
 		//Wolf Score
-		public function wolfScore():Number {
+		public function wolfScore():Number
+		{
 			var wolfCounter:Number = 0;
 			if (faceType == FACE_WOLF)
 				wolfCounter++;
 			if (wolfCocks() > 0)
 				wolfCounter++;
-			if (breastRows.length > 1)
-				wolfCounter++;
-			if (breastRows.length == 4)
-				wolfCounter++;
-			if (breastRows.length > 4)
-				wolfCounter--;
 			if (earType == EARS_WOLF)
 				wolfCounter++;
 			if (tailType == TAIL_TYPE_WOLF)
@@ -1301,6 +1296,14 @@ use namespace kGAMECLASS;
 				wolfCounter+=2;
 			if (hasFur() && wolfCounter > 0) //Only counts if we got wolf features
 				wolfCounter++;
+			if (wolfCounter >= 2) {
+				if (breastRows.length > 1)
+					wolfCounter++;
+				if (breastRows.length == 4)
+					wolfCounter++;
+				if (breastRows.length > 4)
+					wolfCounter--;
+			}
 			return wolfCounter;
 		}
 		//Determine Dog Rating
@@ -1317,15 +1320,17 @@ use namespace kGAMECLASS;
 				dogCounter++;
 			if (dogCocks() > 0)
 				dogCounter++;
-			if (breastRows.length > 1)
-				dogCounter++;
-			if (breastRows.length == 3)
-				dogCounter++;
-			if (breastRows.length > 3)
-				dogCounter--;
 			//Fur only counts if some canine features are present
 			if (hasFur() && dogCounter > 0)
 				dogCounter++;
+			if (dogCounter >= 2) {
+				if (breastRows.length > 1)
+					dogCounter++;
+				if (breastRows.length == 3)
+					dogCounter++;
+				if (breastRows.length > 3)
+					dogCounter--;
+			}
 			return dogCounter;
 		}
 
