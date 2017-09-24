@@ -3128,7 +3128,7 @@ package classes.Items
 				changes++;
 			}
 			//-Shorten clits to reasonable size
-			if (player.getClitLength() >= 4 && changes < changeLimit && rand(5) == 0) {
+			if (player.hasVagina() && player.getClitLength() >= 4 && changes < changeLimit && rand(5) == 0) {
 				outputText("\n\nPainful pricks work through your " + player.clitDescript() + ", all the way into its swollen clitoral sheath.  Gods, it feels afire with pain!  Agony runs up and down its length, and by the time the pain finally fades, the feminine organ has lost half its size.");
 				player.setClitLength(player.getClitLength() / 2);
 				changes++;
@@ -3240,7 +3240,7 @@ package classes.Items
 			if (player.findPerk(PerkLib.Diapause) < 0 && player.kangaScore() > 4 && rand(4) == 0 && changes < changeLimit && player.hasVagina()) {
 				//Perk name and description:
 				player.createPerk(PerkLib.Diapause, 0, 0, 0, 0);
-				outputText("\n\nYour womb rumbles as something inside it changes.\n<b>(You have gained the Diapause perk.  Pregnancies will not progress when fluid intake is scarce, and will progress much faster when it isn't.)");
+				outputText("\n\nYour womb rumbles as something inside it changes.\n<b>(You have gained the Diapause perk.  Pregnancies will not progress when fluid intake is scarce, and will progress much faster when it isn't.)</b>");
 				changes++;
 				//trigger effect: Your body reacts to the influx of nutrition, accelerating your pregnancy. Your belly bulges outward slightly.
 			}
