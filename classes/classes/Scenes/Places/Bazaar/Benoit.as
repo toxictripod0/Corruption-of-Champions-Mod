@@ -654,13 +654,14 @@ private function talkToBenoit():void {
 		          +" you of me in your travels.</i>\"");
 		outputText("\n\nYou feel a blush creep across your [face] as you thank the blind basilisk, hugging " + benoitMF("him", "her")
 		          +" to you tight before you leave");
-		// Equip only, if you have hair and if it's not gooey.
-		outputText((hasSolidHair && player.cor < 55) ? ", slipping the pin into your [hair] as you exit the store." : ".");
-		// value1: hairPinIsEquipped, value2: just (re)equipped, but TF not triggered yet.
-		if (hasSolidHair && player.cor < 55)
+		if (hasSolidHair && player.cor < 55) { // Equip only, if you have hair and if it's not gooey.
+			outputText(", slipping the pin into your [hair] as you exit the store.");
+			// value1: hairPinIsEquipped, value2: just (re)equipped, but TF not triggered yet.
 			player.createKeyItem("Feathery hair-pin", 1, 1, 0, 0);
-		else
+		} else {
+			outputText(".");
 			player.createKeyItem("Feathery hair-pin", 0, 0, 0, 0);
+		}
 		outputText("\n\n(<b>Gained Key Item: Feathery hair-pin</b>)");
 		doNext(camp.returnToCampUseOneHour);
 		return;
