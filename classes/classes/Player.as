@@ -2175,7 +2175,7 @@ use namespace kGAMECLASS;
 			game.dynStats("lus", 0, "scale", false);
 		}
 		
-		public function corruptionTolerance():int {
+		public override function corruptionTolerance():Number {
 			var temp:int = perkv1(PerkLib.AscensionTolerance) * 5 * (1 - perkv2(PerkLib.AscensionTolerance));
 			if (flags[kFLAGS.MEANINGLESS_CORRUPTION] > 0) temp += 100;
 			return temp;
@@ -2308,7 +2308,7 @@ use namespace kGAMECLASS;
 				var multi:Number = 1;
 				
 				if (hasPerk(PerkLib.HistorySlacker)) multi *= 1.2;
-				if (hasPerk(PerkLib.ControlledBreath) && cor < (30 + corruptionTolerance())) multi *= 1.1;
+				if (hasPerk(PerkLib.ControlledBreath) && isPureEnough(30)) multi *= 1.1;
 				if (hasPerk(PerkLib.SpeedyRecovery)) multi *= 1.5;
 				
 				mod *= multi;
