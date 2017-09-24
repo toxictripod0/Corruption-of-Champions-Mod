@@ -3128,7 +3128,7 @@ package classes.Items
 				changes++;
 			}
 			//-Shorten clits to reasonable size
-			if (player.getClitLength() >= 4 && changes < changeLimit && rand(5) == 0) {
+			if (player.hasVagina() && player.getClitLength() >= 4 && changes < changeLimit && rand(5) == 0) {
 				outputText("\n\nPainful pricks work through your " + player.clitDescript() + ", all the way into its swollen clitoral sheath.  Gods, it feels afire with pain!  Agony runs up and down its length, and by the time the pain finally fades, the feminine organ has lost half its size.");
 				player.setClitLength(player.getClitLength() / 2);
 				changes++;
