@@ -135,7 +135,7 @@ private function doCamp():void { //Only called by playerMenu
 	}
 	if (!marbleScene.marbleFollower())
 	{
-		if (flags[kFLAGS.MARBLE_LEFT_OVER_CORRUPTION] == 1 && player.cor <= (40 + player.corruptionTolerance()))
+		if (flags[kFLAGS.MARBLE_LEFT_OVER_CORRUPTION] == 1 && player.isPureEnough(40))
 		{
 			hideMenus();
 			marblePurification.pureMarbleDecidesToBeLessOfABitch();
@@ -147,7 +147,7 @@ private function doCamp():void { //Only called by playerMenu
 		//Cor < 50
 		//No corrupt: Jojo, Amily, or Vapula
 		//Purifying Murble
-		if (player.cor < (50 + player.corruptionTolerance()) && !campCorruptJojo() && !amilyScene.amilyCorrupt() && !vapulaSlave() 
+		if (player.isPureEnough(50) && !campCorruptJojo() && !amilyScene.amilyCorrupt() && !vapulaSlave()
 			&& flags[kFLAGS.MARBLE_PURIFICATION_STAGE] == 0 && flags[kFLAGS.MARBLE_COUNTUP_TO_PURIFYING] >= 200
 			&& player.findPerk(PerkLib.MarblesMilk) < 0)
 		{
@@ -157,13 +157,13 @@ private function doCamp():void { //Only called by playerMenu
 		}
 		if (flags[kFLAGS.MARBLE_PURIFICATION_STAGE] >= 5)
 		{
-			if (flags[kFLAGS.MARBLE_WARNED_ABOUT_CORRUPTION] == 0 && player.cor >= (50 + player.corruptionTolerance()))
+			if (flags[kFLAGS.MARBLE_WARNED_ABOUT_CORRUPTION] == 0 && !player.isPureEnough(50))
 			{
 				hideMenus();
 				marblePurification.marbleWarnsPCAboutCorruption();
 				return;
 			}
-			if (flags[kFLAGS.MARBLE_WARNED_ABOUT_CORRUPTION] == 1 && flags[kFLAGS.MARBLE_LEFT_OVER_CORRUPTION] == 0 && player.cor >= (60 + player.corruptionTolerance()))
+			if (flags[kFLAGS.MARBLE_WARNED_ABOUT_CORRUPTION] == 1 && flags[kFLAGS.MARBLE_LEFT_OVER_CORRUPTION] == 0 && !player.isPureEnough(60))
 			{
 				hideMenus();
 				marblePurification.marbleLeavesThePCOverCorruption();
@@ -798,7 +798,18 @@ private function doCamp():void { //Only called by playerMenu
 	var canFap:Boolean = !player.hasStatusEffect(StatusEffects.Dysfunction) && (flags[kFLAGS.UNABLE_TO_MASTURBATE_BECAUSE_CENTAUR] == 0 && !player.isTaur());
 	if (player.lust >= 30) {
 		addButton(8, "Masturbate", kGAMECLASS.masturbation.masturbateMenu);
-		if (((player.findPerk(PerkLib.HistoryReligious) >= 0 && player.cor <= (66 + player.corruptionTolerance())) || (player.findPerk(PerkLib.Enlightened) >= 0 && player.cor < 10)) && !(player.hasStatusEffect(StatusEffects.Exgartuan) && player.statusEffectv2(StatusEffects.Exgartuan) == 0) || flags[kFLAGS.SFW_MODE] >= 1) addButton(8, "Meditate", kGAMECLASS.masturbation.masturbateMenu);
+		if (
+				(
+						player.hasPerk(PerkLib.HistoryReligious) && player.isPureEnough(66)
+						||
+						player.hasPerk(PerkLib.Enlightened) && player.isPureEnough(10)
+				) && (
+						!player.hasStatusEffect(StatusEffects.Exgartuan)
+						||
+						player.statusEffectv2(StatusEffects.Exgartuan) != 0
+				)
+				|| flags[kFLAGS.SFW_MODE] >= 1
+		) addButton(8, "Meditate", kGAMECLASS.masturbation.masturbateMenu);
 	}
 	addButton(9, "Wait", doWait, null, null, null, "Wait for four hours.\n\nShift-click to wait until the night comes.");
 	if (player.fatigue > 40 || player.HP / player.maxHP() <= .9) addButton(9, "Rest", rest, null, null, null, "Rest for four hours.\n\nShift-click to rest until fully healed or night comes.");
@@ -2053,7 +2064,7 @@ private function dungeonFound():Boolean { //Returns true as soon as any known du
 private function farmFound():Boolean { //Returns true as soon as any known dungeon is found
 	if (player.hasStatusEffect(StatusEffects.MetWhitney) && player.statusEffectv1(StatusEffects.MetWhitney) > 1) {
 		if (flags[kFLAGS.FARM_DISABLED] == 0) return true;
-		if (player.cor >= (70 - player.corruptionTolerance()) && player.level >= 12 && getGame().farm.farmCorruption.corruptFollowers() >= 2 && flags[kFLAGS.FARM_CORRUPTION_DISABLED] == 0) return true;
+		if (player.isCorruptEnough(70) && player.level >= 12 && getGame().farm.farmCorruption.corruptFollowers() >= 2 && flags[kFLAGS.FARM_CORRUPTION_DISABLED] == 0) return true;
 	}
 	if (flags[kFLAGS.FARM_CORRUPTION_STARTED]) return true;
 	return false;

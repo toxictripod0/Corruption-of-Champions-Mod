@@ -259,7 +259,7 @@ import classes.StatusEffects.CombatStatusEffect;
 		public static const horny:StatusEffectType = mk("horny");
 		public static const grouchy:StatusEffectType = mk("grouchy");
 		
-		// universal combat debuffs
+		// universal combat buffs
 		public static const GenericCombatStrBuff:StatusEffectType  = CombatStrBuff.TYPE;
 		public static const GenericCombatSpeBuff:StatusEffectType  = CombatSpeBuff.TYPE;
 		public static const GenericCombatTouBuff:StatusEffectType  = CombatTouBuff.TYPE;

@@ -1481,7 +1481,7 @@ public class Combat extends BaseContent
 				var slap:Number = 3 + (player.maxHP() * 0.02);
 				outputText("<b>Your muscles twitch in agony as the acid keeps burning you. <b>(<font color=\"" + mainViewManager.colorHpMinus() + "\">" + slap + "</font>)</b></b>\n\n");
 			}
-			if (player.findPerk(PerkLib.ArousingAura) >= 0 && monster.lustVuln > 0 && player.cor >= (70 - player.corruptionTolerance())) {
+			if (player.findPerk(PerkLib.ArousingAura) >= 0 && monster.lustVuln > 0 && player.isCorruptEnough(70)) {
 				if (monster.lust100 < 50) outputText("Your aura seeps into " + monster.a + monster.short + " but does not have any visible effects just yet.\n\n");
 				else if (monster.lust100 < 60) {
 					if (!monster.plural) outputText(monster.capitalA + monster.short + " starts to squirm a little from your unholy presence.\n\n");

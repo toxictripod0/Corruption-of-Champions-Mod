@@ -34,7 +34,7 @@ public class CombatAbilities extends BaseContent
 		
 		public function getWhiteMagicLustCap():Number {
 			var whiteLustCap:Number = player.maxLust() * 0.75;
-			if (player.findPerk(PerkLib.Enlightened) >= 0 && player.cor < (10 + player.corruptionTolerance())) whiteLustCap += (player.maxLust() * 0.1);
+			if (player.findPerk(PerkLib.Enlightened) >= 0 && player.isPureEnough(10)) whiteLustCap += (player.maxLust() * 0.1);
 			if (player.findPerk(PerkLib.FocusedMind) >= 0) whiteLustCap += (player.maxLust() * 0.1);
 			return whiteLustCap;
 		}
@@ -107,7 +107,7 @@ public class CombatAbilities extends BaseContent
 				if (player.hasStatusEffect(StatusEffects.KnowsBlackfire)) addButton(8, "Blackfire", spellBlackfire, null, null, null, "Blackfire is the black magic variant of Whitefire. It is a potent fire based attack that will burn your foe with flickering black and purple flames, ignoring their physical toughness and most armors.\n\nFatigue Cost: " + player.spellCost(40) + "");
 			}
 			// JOJO ABILITIES -- kind makes sense to stuff it in here along side the white magic shit (also because it can't fit into M. Specials :|
-			if (player.findPerk(PerkLib.CleansingPalm) >= 0 && player.cor < (10 + player.corruptionTolerance())) {
+			if (player.findPerk(PerkLib.CleansingPalm) >= 0 && player.isPureEnough(10)) {
 				addButton(3, "C.Palm", spellCleansingPalm, null, null, null, "Unleash the power of your cleansing aura! More effective against corrupted opponents. Doesn't work on the pure.  \n\nFatigue Cost: " + player.spellCost(30) + "", "Cleansing Palm");
 			}
 			addButton(14, "Back", combat.combatMenu, false);

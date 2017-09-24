@@ -659,8 +659,10 @@ private function talkToBenoit():void {
 		// value1: hairPinIsEquipped, value2: just (re)equipped, but TF not triggered yet.
 		if (hasSolidHair && player.cor < 55)
 			player.createKeyItem("Feathery hair-pin", 1, 1, 0, 0);
-		else
+		} else {
+			outputText(".");
 			player.createKeyItem("Feathery hair-pin", 0, 0, 0, 0);
+		}
 		outputText("\n\n(<b>Gained Key Item: Feathery hair-pin</b>)");
 		doNext(camp.returnToCampUseOneHour);
 		return;

@@ -217,7 +217,7 @@ private function keltRequiresNakedness():void {
 	addButton(0, "Reluctantly", keltReluctantlyGetNaked);
 	addButton(1, "Eagerly", keltEagerlyGetNaked);
 	
-	if (player.inte > 40 && (player.cor > (70 - player.corruptionTolerance()) || player.findPerk(PerkLib.Sadist) >= 0 || player.findPerk(PerkLib.Pervert) >= 0) && !player.isTaur()) {
+	if (player.inte > 40 && (player.isCorruptEnough(70) || player.findPerk(PerkLib.Sadist) >= 0 || player.findPerk(PerkLib.Pervert) >= 0) && !player.isTaur()) {
 		outputText("\n\n<b>If you fight back and take him down a peg, you might never see him again...</b>");
 		addButton(3, "Turn Tables", keltResistance);
 	} else {
@@ -374,7 +374,7 @@ private function keltRequiresBlowjobs():void {
 	addButton(0, "Shamefully", keltBlowjobRequirementShamefully);
 	addButton(1, "Eagerly", keltBlowjobRequirementEagerly);
 	addButton(2, "Never!", keltBlowjobRequirementNever);
-	if (player.inte > 40 && (player.cor > (70 - player.corruptionTolerance()) || player.findPerk(PerkLib.Sadist) >= 0 || player.findPerk(PerkLib.Pervert) >= 0) && !player.isTaur()) {
+	if (player.inte > 40 && (player.isCorruptEnough(70) || player.findPerk(PerkLib.Sadist) >= 0 || player.findPerk(PerkLib.Pervert) >= 0) && !player.isTaur()) {
 		outputText("\n\n<b>If you fight back and take him down a peg, you might never see him again...</b>");
 		addButton(3, "Turn Tables", keltResistance);
 	} else {
@@ -522,7 +522,7 @@ private function keltMainEncounterAfterNakedReq():void {
 				menu();
 				addButton(0, "Yes", keltReluctantlyGetNaked);
 				addButton(1, "No", keltRefuseNakedness);
-				if (player.inte > 40 && (player.cor > (70 - player.corruptionTolerance()) || player.findPerk(PerkLib.Sadist) >= 0 || player.findPerk(PerkLib.Pervert) >= 0) && !player.isTaur()) {
+				if (player.inte > 40 && (player.isCorruptEnough(70) || player.findPerk(PerkLib.Sadist) >= 0 || player.findPerk(PerkLib.Pervert) >= 0) && !player.isTaur()) {
 					outputText("\n\n<b>If you fight back and take him down a peg, you might never see him again...</b>");
 					addButton(2, "Turn Tables", keltResistance);
 				} else {

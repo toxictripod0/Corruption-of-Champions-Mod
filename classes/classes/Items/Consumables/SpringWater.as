@@ -20,8 +20,8 @@ package classes.Items.Consumables
 			dynStats("lus", -25, "cor", (-3 - rand(2)), "scale", false);
 			game.HPChange(20 + (5 * player.level) + rand(5 * player.level), true);
 			player.refillHunger(10);
- 			if (player.cor > (50 - player.corruptionTolerance())) dynStats("cor", -1);
- 			if (player.cor > (75 - player.corruptionTolerance())) dynStats("cor", -1);	
+ 			if (player.cor > 50) dynStats("cor", -1);
+ 			if (player.cor > 75) dynStats("cor", -1);
 			
 			return false;
 		}
