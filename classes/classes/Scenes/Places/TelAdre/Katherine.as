@@ -3757,7 +3757,7 @@ private function katPenetrate():void {
 	if (!hasCock() || knotSize > 4) {
 		addDisabledButton(3, "SucknFuck", "This scene requires Kath to have cock with not too large knot.");
 	} else {
-		addButton(2, "SucknFuck", suckNFuck);
+		addButton(3, "SucknFuck", suckNFuck);
 	}
 	
 	addButton(14, "Back", katSexMenu);
