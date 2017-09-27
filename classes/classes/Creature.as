@@ -192,7 +192,7 @@ import flash.errors.IllegalOperationError;
 			var prevSens:Number  = sens;
 			var prevLust:Number  = lust;
 			var prevCor:Number  = cor;
-			modStats(argz.str, argz.tou, argz.spe, argz.inte, argz.lib, argz.sens, argz.lust, argz.cor, argz.sca, argz.max);
+			modStats(argz.str, argz.tou, argz.spe, argz.inte, argz.lib, argz.sens, argz.lust, argz.cor, argz.scale, argz.max);
 			End("Creature","dynStats");
 			return {
 				str:str-prevStr,
