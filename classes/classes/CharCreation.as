@@ -6,7 +6,9 @@ package classes
 	import classes.Items.Armors.GooArmor;
 	import classes.Items.*;
 	import classes.Saves;
-	import fl.controls.ComboBox;
+import classes.internals.Utils;
+
+import fl.controls.ComboBox;
 	import fl.data.DataProvider;
 	import flash.events.Event;
 	
@@ -1004,7 +1006,7 @@ package classes
 		}
 		private function chooseCockLength(length:Number):void {
 			player.cocks[0].cockLength = length;
-			player.cocks[0].cockThickness = Math.floor(((length / 5) - 0.1) * 10) / 10;
+			player.cocks[0].cockThickness = Utils.floor(((length / 5) - 0.1),1);
 			genericStyleCustomizeMenu();
 		}
 

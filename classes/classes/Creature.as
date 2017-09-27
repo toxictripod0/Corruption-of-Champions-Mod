@@ -177,6 +177,7 @@ import flash.errors.IllegalOperationError;
 		 * valid operators are "=" (set), "+", "-", "*", "/", add is default.<br/>
 		 * valid stat_names are "str", "tou", "spe", "int", "lib", "sen", "lus", "cor" or their full names;
 		 * also "scaled"/"sca" (default true: apply resistances, perks; false - force values)
+		 * and "max" (default true: don't overflow above max value)
 		 *
 		 * @return Object of (newStat-oldStat) with keys str, tou, spe, inte, lib, sens, lust, cor
 		 * */
@@ -191,7 +192,7 @@ import flash.errors.IllegalOperationError;
 			var prevSens:Number  = sens;
 			var prevLust:Number  = lust;
 			var prevCor:Number  = cor;
-			modStats(argz.str, argz.tou, argz.spe, argz.inte, argz.lib, argz.sens, argz.lust, argz.cor, argz.sca);
+			modStats(argz.str, argz.tou, argz.spe, argz.inte, argz.lib, argz.sens, argz.lust, argz.cor, argz.sca, argz.max);
 			End("Creature","dynStats");
 			return {
 				str:str-prevStr,
@@ -204,18 +205,37 @@ import flash.errors.IllegalOperationError;
 				cor:cor-prevCor
 			};
 		}
-		public function modStats(dstr:Number, dtou:Number, dspe:Number, dinte:Number, dlib:Number, dsens:Number, dlust:Number, dcor:Number, scale:Boolean = true):void {
-
-			var maxes:Object = getAllMaxStats();
-			str = Utils.boundFloat(1,str+dstr,maxes.str);
-			tou = Utils.boundFloat(1,tou+dtou,maxes.tou);
-			spe = Utils.boundFloat(1,spe+dspe,maxes.spe);
-			inte = Utils.boundFloat(1,inte+dinte,maxes.inte);
-			lib = Utils.boundFloat(minLib(),lib+dlib,100);
-			sens = Utils.boundFloat(minSens(),sens+dsens,100);
-			lust = Utils.boundFloat(minLust(),lust+dlust,maxLust());
-			cor = Utils.boundFloat(0,cor+dcor,100);
-			if (dtou>0) HP = Utils.boundFloat(-Infinity,HP+dtou*2,maxHP());
+		public function modStats(dstr:Number, dtou:Number, dspe:Number, dinte:Number, dlib:Number, dsens:Number, dlust:Number, dcor:Number, scale:Boolean, max:Boolean):void {
+			var maxes:Object;
+			if (max) {
+				maxes = getAllMaxStats();
+				maxes.lib = 100;
+				maxes.sens = 100;
+				maxes.cor = 100;
+				maxes.lust = maxLust();
+				maxes.HP = maxHP();
+			} else {
+				maxes = {
+					str:Infinity,
+					tou:Infinity,
+					spe:Infinity,
+					inte:Infinity,
+					lib:Infinity,
+					sens:Infinity,
+					cor:Infinity,
+					lust:Infinity,
+					HP:Infinity
+				}
+			}
+			str   = boundFloat(1,str+dstr,maxes.str);
+			tou   = boundFloat(1,tou+dtou,maxes.tou);
+			spe   = boundFloat(1,spe+dspe,maxes.spe);
+			inte  = boundFloat(1,inte+dinte,maxes.inte);
+			lib   = boundFloat(minLib(),lib+dlib,maxes.lib);
+			sens  = boundFloat(minSens(),sens+dsens,maxes.sens);
+			lust  = boundFloat(minLust(),lust+dlust,maxes.lust);
+			cor   = boundFloat(0,cor+dcor,maxes.cor);
+			if (dtou>0) HP = boundFloat(-Infinity,HP+dtou*2,maxes.HP);
 		}
 		/**
 		 * Modify Strength by `delta`. If scale = true, apply perk & effect modifiers. Return actual increase applied.
@@ -223,7 +243,7 @@ import flash.errors.IllegalOperationError;
 		public function modStr(delta:Number,scale:Boolean=true):Number {
 			if (scale) return dynStats('str',delta)['str'];
 			var s0:Number = str;
-			str = Utils.boundFloat(1,str+delta,getMaxStats('str'));
+			str = boundFloat(1,str+delta,getMaxStats('str'));
 			return str-s0;
 		}
 		/**
@@ -232,7 +252,7 @@ import flash.errors.IllegalOperationError;
 		public function modTou(delta:Number,scale:Boolean=true):Number {
 			if (scale) return dynStats('tou',delta)['tou'];
 			var s0:Number = tou;
-			tou = Utils.boundFloat(1,tou+delta,getMaxStats('tou'));
+			tou = boundFloat(1,tou+delta,getMaxStats('tou'));
 			return tou-s0;
 		}
 		/**
@@ -4101,21 +4121,44 @@ import flash.errors.IllegalOperationError;
 		/**
 		 * Generate increments for stats
 		 *
-		 * @return Object of (newStat-oldStat) with keys str, tou, spe, inte, lib, sens, lust, cor, scale
+		 * @return Object of (newStat-oldStat) with keys str, tou, spe, inte, lib, sens, lust, cor
+		 * and flags: scale, max
 		 * */
 		public static function parseDynStatsArgs(c:Creature, args:Array):Object {
 			// Check num of args, we should have a multiple of 2
 			if ((args.length % 2) != 0)
 			{
 				trace("dynStats aborted. Keys->Arguments could not be matched");
-				return {str:0,tou:0,spe:0,inte:0,lib:0,sens:0,lust:0,cor:0,scale:true};
+				return {str:0,tou:0,spe:0,inte:0,wis:0,lib:0,sens:0,lust:0,cor:0,scale:true,max:true};
 			}
-
-			var argNamesFull:Array 	= 	["strength", "toughness", "speed", "intellect", "libido", "sensitivity", "lust", "corruption", "scale"]; // In case somebody uses full arg names etc
-			var argNamesShort:Array = 	["str", 	"tou", 	"spe", 	"int", 	"lib", 	"sen", 	"lus", 	"cor", 	"res", 	"sca"]; // Arg names
-			var argVals:Array = 		[0, 		0,	 	0, 		0, 		0, 		0, 		0, 		0, 		true, ]; // Default arg values
-			var argOps:Array = 			["+",	"+",    "+",    "+",    "+",    "+",    "+",    "+",    "="];   // Default operators
-
+			var argDefs:Object = { //[value, operator]
+				str: [ 0, "+"],
+				tou: [ 0, "+"],
+				spe: [ 0, "+"],
+				int: [ 0, "+"],
+				lib: [ 0, "+"],
+				sen: [ 0, "+"],
+				lus: [ 0, "+"],
+				cor: [ 0, "+"],
+				scale: [ true, "="],
+				max: [ true, "="]
+			};
+			var aliases:Object = {
+				"strength":"str",
+				"toughness": "tou",
+				"speed": "spe",
+				"intellect": "int",
+				"inte": "int",
+				"libido": "lib",
+				"sensitivity": "sen",
+				"sens": "sen",
+				"lust": "lus",
+				"corruption": "cor",
+				"sca": "scale",
+				"res": "scale",
+				"resisted": "scale"
+			};
+			
 			for (var i:int = 0; i < args.length; i += 2)
 			{
 				if (typeof(args[i]) == "string")
@@ -4126,56 +4169,36 @@ import flash.errors.IllegalOperationError;
 						trace("dynStats aborted. Next argument after argName is invalid! arg is type " + typeof(args[i + 1]));
 						continue;
 					}
-
-					var argIndex:int = -1;
-
+					var argOp:String = "";
 					// Figure out which array to search
 					var argsi:String = (args[i] as String);
-					if (argsi == "lust") argsi = "lus";
-					if (argsi == "sens") argsi = "sen";
-					if (argsi == "inte") argsi = "int";
-					if (argsi == "resisted") argsi = "sca";
-					if (argsi == "res") argsi = "sca";
-					if (argsi.length <= 4) // Short
-					{
-						argIndex = argNamesShort.indexOf(argsi.slice(0, 3));
-						if (argsi.length == 4 && argIndex != -1) argOps[argIndex] = argsi.charAt(3);
+					if ("+-*/=".indexOf(argsi.charAt(argsi.length - 1)) != -1) {
+						argOp = argsi.charAt(argsi.length - 1);
+						argsi = argsi.slice(0, argsi.length - 1);
 					}
-					else // Full
-					{
-						if ("+-*/=".indexOf(argsi.charAt(argsi.length - 1)) != -1) {
-							argIndex = argNamesFull.indexOf(argsi.slice(0, argsi.length - 1));
-							if (argIndex != -1) argOps[argIndex] = argsi.charAt(argsi.length - 1);
-						} else {
-							argIndex = argNamesFull.indexOf(argsi);
-						}
-					}
-
-					if (argIndex == -1) // Shit fucked up, welp
-					{
+					if (argsi in aliases) argsi = aliases[argsi];
+					
+					if (argsi in argDefs) {
+						argDefs[argsi][0] = args[i + 1];
+						if (argOp) argDefs[argsi][1] = argOp;
+					} else {
 						trace("Couldn't find the arg name " + argsi + " in the index arrays. Welp!");
-						continue;
-					}
-					else // Stuff the value into our "values" array
-					{
-						argVals[argIndex] = args[i + 1];
 					}
 				}
 				else
 				{
 					trace("dynStats aborted. Expected a key and got SHIT");
-					return {str:0,tou:0,spe:0,inte:0,lib:0,sen:0,lus:0,cor:0,scale:true};
 				}
 			}
 			// Got this far, we have values to statsify
-			var newStr:Number = applyOperator(c.str, argOps[0], argVals[0]);
-			var newTou:Number = applyOperator(c.tou, argOps[1], argVals[1]);
-			var newSpe:Number = applyOperator(c.spe, argOps[2], argVals[2]);
-			var newInte:Number = applyOperator(c.inte, argOps[3], argVals[3]);
-			var newLib:Number = applyOperator(c.lib, argOps[4], argVals[4]);
-			var newSens:Number = applyOperator(c.sens, argOps[5], argVals[5]);
-			var newLust:Number = applyOperator(c.lust, argOps[6], argVals[6]);
-			var newCor:Number = applyOperator(c.cor, argOps[7], argVals[7]);
+			var newStr:Number = applyOperator(c.str, argDefs.str[1], argDefs.str[0]);
+			var newTou:Number = applyOperator(c.tou, argDefs.tou[1], argDefs.tou[0]);
+			var newSpe:Number = applyOperator(c.spe, argDefs.spe[1], argDefs.spe[0]);
+			var newInte:Number = applyOperator(c.inte, argDefs.int[1], argDefs.int[0]);
+			var newLib:Number = applyOperator(c.lib, argDefs.lib[1], argDefs.lib[0]);
+			var newSens:Number = applyOperator(c.sens, argDefs.sen[1], argDefs.sen[0]);
+			var newLust:Number = applyOperator(c.lust, argDefs.lus[1], argDefs.lus[0]);
+			var newCor:Number = applyOperator(c.cor, argDefs.cor[1], argDefs.cor[0]);
 			// Because lots of checks and mods are made in the stats(), calculate deltas and pass them. However, this means that the '=' operator could be resisted
 			// In future (as I believe) stats() should be replaced with dynStats(), and checks and mods should be made here
 			return {
@@ -4187,7 +4210,8 @@ import flash.errors.IllegalOperationError;
 				sens    : newSens - c.sens,
 				lust    : newLust - c.lust,
 				cor     : newCor - c.cor,
-				scale   : argVals[8]
+				scale   : argDefs.scale[0],
+				max     : argDefs.max[0]
 			};
 		}
 	}

@@ -1807,7 +1807,7 @@ public class Combat extends BaseContent
 			var lustDisplay:String = "";
 			var math:Number = monster.HPRatio();
 			//hpDisplay = "(<b>" + String(int(math * 1000) / 10) + "% HP</b>)";
-			hpDisplay   = Math.floor(monster.HP) + " / " + monster.maxHP() + " (" + (int(math * 1000) / 10) + "%)";
+			hpDisplay   = Math.floor(monster.HP) + " / " + monster.maxHP() + " (" + floor(math*100,1) + "%)";
 			lustDisplay = Math.floor(monster.lust) + " / " + monster.maxLust();
 			;
 			//imageText set in beginCombat()

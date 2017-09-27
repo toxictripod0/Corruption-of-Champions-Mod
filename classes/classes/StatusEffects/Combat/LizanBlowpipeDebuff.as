@@ -7,7 +7,7 @@ import classes.StatusEffectType;
 public class LizanBlowpipeDebuff extends CombatBuff {
 	public static const TYPE:StatusEffectType = register("Lizan Blowpipe", LizanBlowpipeDebuff);
 	public function LizanBlowpipeDebuff() {
-		super(TYPE, 'str', 'tou', 'spe', 'sen');
+		super(TYPE, 'str', 'tou', 'spe', 'sens');
 	}
 	public function debuffStrSpe():void {
 		var power:Number = 5;

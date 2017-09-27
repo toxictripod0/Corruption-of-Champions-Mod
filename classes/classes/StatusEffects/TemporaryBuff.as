@@ -39,10 +39,10 @@ public class TemporaryBuff extends StatusEffectClass{
 		if (stat3) value3 += buff[stat3];
 		if (stat4) value4 += buff[stat4];
 		LOGGER.debug("buffHost("+args.join(",")+"): " +
-					 stat1+(stat1?buff[stat1]:"")+
-					 stat2+(stat2?buff[stat2]:"")+
-					 stat3+(stat3?buff[stat3]:"")+
-					 stat4+(stat4?buff[stat4]:"")+
+					 stat1+" "+(stat1?buff[stat1]:"")+" "+
+					 stat2+" "+(stat2?buff[stat2]:"")+" "+
+					 stat3+" "+(stat3?buff[stat3]:"")+" "+
+					 stat4+" "+(stat4?buff[stat4]:"")+" "+
 					 "->("+value1+", "+value2+", "+value3+", "+value4+")");
 		return buff;
 	}
