@@ -1592,7 +1592,7 @@ public class CombatAbilities extends BaseContent
 				monster.spe -= damage/2;
 				damage = monster.lustVuln * damage;
 				//Clean up down to 1 decimal point
-				damage = Math.round(damage*10)/10;		
+				damage = round(damage,1);
 				monster.teased(damage);
 			}
 			//New lines and moving on!

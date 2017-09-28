@@ -2702,7 +2702,7 @@ use namespace kGAMECLASS;
 			return min;
 		}
 
-		override public function modStats(dstr:Number, dtou:Number, dspe:Number, dinte:Number, dlib:Number, dsens:Number, dlust:Number, dcor:Number, scale:Boolean = true):void {
+		override public function modStats(dstr:Number, dtou:Number, dspe:Number, dinte:Number, dlib:Number, dsens:Number, dlust:Number, dcor:Number, scale:Boolean, max:Boolean):void {
 
 			//Set original values to begin tracking for up/down values if
 			//they aren't set yet.
@@ -2767,7 +2767,7 @@ use namespace kGAMECLASS;
 				if (findPerk(PerkLib.Lusty) >= 0 && dlib >= 0) dlib*=1+perk(findPerk(PerkLib.Lusty)).value1;
 				if (findPerk(PerkLib.Sensitive) >= 0 && dsens >= 0) dsens*= 1+ perk(findPerk(PerkLib.Sensitive)).value1;
 			}
-			super.modStats(dstr, dtou, dspe, dinte, dlib, dsens, dlust, dcor, false);
+			super.modStats(dstr, dtou, dspe, dinte, dlib, dsens, dlust, dcor, false, max);
 			game.statScreenRefresh();
 		}
 
@@ -2788,10 +2788,10 @@ use namespace kGAMECLASS;
 		 * @return keys: str, tou, spe, inte
 		 */
 		public override function getAllMaxStats():Object {
-			var maxStr:int = 100;
-			var maxTou:int = 100;
-			var maxSpe:int = 100;
-			var maxInt:int = 100;
+			var maxStr:Number = 100;
+			var maxTou:Number = 100;
+			var maxSpe:Number = 100;
+			var maxInt:Number = 100;
 			//Apply New Game+
 			maxStr += ascensionFactor();
 			maxTou += ascensionFactor();
