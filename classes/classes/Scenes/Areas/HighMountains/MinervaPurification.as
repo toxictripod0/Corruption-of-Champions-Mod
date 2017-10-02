@@ -1231,7 +1231,7 @@ package classes.Scenes.Areas.HighMountains
 			//Romanced:
 			else outputText("\n\nThe lovestruck siren sighs and sits up, looking up at you with affection clearly written on her face. \"<i>I hope you'll come back soon, I always feel so much happier when you're around,</i>\" she says as she brings a hand to her chest, holding it over her heart.");
 			if (rand(100) <= player.totalFertility()) {
-				player.knockUpForce(PregnancyStore.PREGNANCY_MINERVA, PregnancyStore.INCUBATION_MINERVA);
+				player.knockUp(PregnancyStore.PREGNANCY_MINERVA, PregnancyStore.INCUBATION_MINERVA);
 			}
 			player.slimeFeed();
 			flags[kFLAGS.TIMES_MINERVA_LAPSEXED]++;
