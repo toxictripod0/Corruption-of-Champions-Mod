@@ -1448,14 +1448,12 @@ use namespace kGAMECLASS;
 				lizardCounter++;
 			if (armType == ARM_TYPE_PREDATOR && clawType == CLAW_TYPE_LIZARD)
 				lizardCounter++;
-			if (eyeType == EYES_LIZARD)
-				lizardCounter++;
 			if (lizardCounter > 2) {
 				if ([TONGUE_LIZARD, TONGUE_SNAKE].indexOf(tongueType) != -1)
 					lizardCounter++;
 				if (lizardCocks() > 0)
 					lizardCounter++;
-				if (eyeType == EYES_BASILISK)
+				if ([EYES_LIZARD, EYES_BASILISK].indexOf(eyeType) != -1)
 					lizardCounter++;
 				if (hasReptileScales())
 					lizardCounter++;
