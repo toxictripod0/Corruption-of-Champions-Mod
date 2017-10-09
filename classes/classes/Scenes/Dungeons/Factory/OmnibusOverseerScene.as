@@ -57,15 +57,15 @@ package classes.Scenes.Dungeons.Factory
 			}
 			outputText("What do you do?  You could use her boon increase the size of your endowments or maybe regain some of your lost humanity!  Or you could play it safe and turn down her offer.  Although then you'd have to decide to let her go or kill her.");
 			menu();
-			addButton(0, "Grow Breasts", chooseBreasts, null, null, null, "Grow a new pair of breasts if flat-chested or grow existing breasts. \n\nAnd receive something else.");
-			addButton(1, "Grow Dick", chooseDick, null, null, null, "Grow a new penis. Somehow, you have a feeling that the new cock you'll receive won't be a normal cock. \n\nAnd receive something else.");
-			addButton(2, "Normal Face", normalFace, null, null, null, "Normalize your face. This will also remove your horns or antennae and change your ears back to human ears! \n\nAnd receive something else.");
-			addButton(3, "Normal Chest", normalChest, null, null, null, "Normalize your chest. This will shrink breasts larger than E-cup to a reasonable size and remove their other unusual traits, if you have it. This will also change your skin to human skin. \n\nAnd receive something else.");
-			addButton(4, "Normal Groin", normalGroin, null, null, null, "Normalize your groin, removing any extra cocks and reset remaining cock to normal, if you have any. Or grow genitalia for genderless. \n\nAnd receive something else.");
-			addButton(5, "Normal Legs", normalLegs, null, null, null, "Turn your legs back to normal. This will also remove your tail, if you have any! \n\nAnd receive something else.");
+			addButton(0, "Grow Breasts", chooseBreasts).hint("Grow a new pair of breasts if flat-chested or grow existing breasts. \n\nAnd receive something else.");
+			addButton(1, "Grow Dick", chooseDick).hint("Grow a new penis. Somehow, you have a feeling that the new cock you'll receive won't be a normal cock. \n\nAnd receive something else.");
+			addButton(2, "Normal Face", normalFace).hint("Normalize your face. This will also remove your horns or antennae and change your ears back to human ears! \n\nAnd receive something else.");
+			addButton(3, "Normal Chest", normalChest).hint("Normalize your chest. This will shrink breasts larger than E-cup to a reasonable size and remove their other unusual traits, if you have it. This will also change your skin to human skin. \n\nAnd receive something else.");
+			addButton(4, "Normal Groin", normalGroin).hint("Normalize your groin, removing any extra cocks and reset remaining cock to normal, if you have any. Or grow genitalia for genderless. \n\nAnd receive something else.");
+			addButton(5, "Normal Legs", normalLegs).hint("Turn your legs back to normal. This will also remove your tail, if you have any! \n\nAnd receive something else.");
 			addButton(6, "More Lust", postOmnibusBoon, true, null, null, "Be always ready for sex.\n\nDo you think it is really good idea?");
-			addButton(8, "No (Let go)", letGoOmnibus, null, null, null, "Refuse the offer and let the demon go.");
-			addButton(9, "No (Kill Her)", killOmnibus, null, null, null, "Refuse the offer and kill the demon instead.");
+			addButton(8, "No (Let go)", letGoOmnibus).hint("Refuse the offer and let the demon go.");
+			addButton(9, "No (Kill Her)", killOmnibus).hint("Refuse the offer and kill the demon instead.");
 		}
 		
 		private function chooseBreasts():void {

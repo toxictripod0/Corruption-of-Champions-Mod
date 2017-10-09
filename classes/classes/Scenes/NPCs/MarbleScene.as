@@ -1,4 +1,4 @@
-package classes.Scenes.NPCs {
+﻿package classes.Scenes.NPCs {
 	import classes.*;
 	import classes.GlobalFlags.*;
 	import classes.display.SpriteDb;
@@ -2060,7 +2060,7 @@ public function interactWithMarbleAtCamp():void {
 	addButton(2, "Present", gatherEvent);
 	addButton(3, "Give Item", canGiveItem() ? giveItem : null);
 	addButton(4, "Get Milk", milkEvent);
-	addButton(5, "Release", sexEvent, null, null, null, "Get with marble for a quick cuddle and some sex.");
+	addButton(5, "Release", sexEvent).hint("Get with marble for a quick cuddle and some sex.");
 	addButton(6, "Playtime", playtime);
 	addButton(7, "Break Up", breakUpWithMarble);
 	addButton(8, goEventString, marbleGoEvent);

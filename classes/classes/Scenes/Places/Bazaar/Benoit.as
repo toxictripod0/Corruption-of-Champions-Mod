@@ -1,4 +1,4 @@
-package classes.Scenes.Places.Bazaar {
+﻿package classes.Scenes.Places.Bazaar {
 	import classes.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Items.Consumable;
@@ -369,9 +369,9 @@ public function benoitsBuyMenu():void {
 	addButton(0, flags[kFLAGS.BENOIT_1], benoitTransactBuy, 1);
 	addButton(1, flags[kFLAGS.BENOIT_2], benoitTransactBuy, 2);
 	addButton(2, flags[kFLAGS.BENOIT_3], benoitTransactBuy, 3);
-	if (player.keyItemv1("Backpack") < 5) addButton(5, "Backpack", buyBackpack, null, null, null, "This backpack will allow you to carry more items.");
+	if (player.keyItemv1("Backpack") < 5) addButton(5, "Backpack", buyBackpack).hint("This backpack will allow you to carry more items.");
 	if (flags[kFLAGS.BENOIT_PISTOL_BOUGHT] <= 0) addButton(6, "Flintlock", buyFlintlock);
-	if (flags[kFLAGS.BENOIT_CLOCK_BOUGHT] <= 0 && flags[kFLAGS.CAMP_CABIN_FURNITURE_NIGHTSTAND] > 0) addButton(7, "Alarm Clock", buyAlarmClock, null, null, null, "This mechanical clock looks like it was originally constructed by the Goblins before the corruption spread throughout Mareth.");
+	if (flags[kFLAGS.BENOIT_CLOCK_BOUGHT] <= 0 && flags[kFLAGS.CAMP_CABIN_FURNITURE_NIGHTSTAND] > 0) addButton(7, "Alarm Clock", buyAlarmClock).hint("This mechanical clock looks like it was originally constructed by the Goblins before the corruption spread throughout Mareth.");
 	addButton(14, "Back", benoitIntro);
 }
 
