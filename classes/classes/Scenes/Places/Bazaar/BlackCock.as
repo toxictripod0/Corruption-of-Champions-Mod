@@ -1235,7 +1235,7 @@ package classes.Scenes.Places.Bazaar
 			}
 			else {
 				outputText("Frida smiles at you as you take a seat in one of the barstools.");
-				if (flags[kFLAGS.BLACK_COCK_FRIDAS_CAKE_EATEN_COUNTER] > 0) outputText("\n\n\"</i>You come here for another piece of cake?<i>\"");
+				if (flags[kFLAGS.BLACK_COCK_FRIDAS_CAKE_EATEN_COUNTER] > 0) outputText("\n\n\"</i>You come here for another piece of cake?</i>\"");
 				else outputText("\n\n\"<i>You ready for a piece of cake now, hun?</i>\"");
 			}
 			if (flags[kFLAGS.CODEX_ENTRY_ECHIDNAS] <= 0) {

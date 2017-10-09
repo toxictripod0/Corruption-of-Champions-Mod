@@ -603,7 +603,7 @@ package classes.Parser
 			else
 			{
 				if (this._settingsClass.haltOnErrors) throw new Error("Invalid if statement!", textCtnt);
-				return "<b>Invalid IF Statement<b/>" + textCtnt;
+				return "<b>Invalid IF Statement</b>" + textCtnt;
 			}
 			return "";
 		}

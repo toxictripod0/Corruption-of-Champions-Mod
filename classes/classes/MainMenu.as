@@ -205,14 +205,13 @@ package classes
 			outputText("<li> Fergusson951 (github)</li>");
 			outputText("<li> aimozg (github)</li>");
 			outputText("<li> Stadler76 (github + bug fix coding)</li>");
-			outputText("<ul>");
 			outputText("</ul>");
 			outputText("<b>Typo Reporting</b>\n");
 			outputText("<ul>");
 			outputText("<li> SoS</li>");
 			outputText("<li> Prisoner416</li>");
 			outputText("<li> Chibodee</li>");
-			outputText("");
+			outputText("</ul>");
 			outputText("<b>Graphical Prettiness:</b>")
 			outputText("<ul>");;
 			outputText("<li> Dasutin (Background Images)</li>");

@@ -278,7 +278,7 @@ private function joeyAndrogyny():void {
 private function joeyMassage():void {
 	clearOutput();
 	if (player.gems < 10) {
-		outputText("Joey frowns when you realize you don't have the 10 gems.  He apologizes, \"<i>I'm sorry, " + player.short + " but I can't give freebies - our special potions cost us plenty.");
+		outputText("Joey frowns when you realize you don't have the 10 gems.  He apologizes, \"<i>I'm sorry, " + player.short + " but I can't give freebies - our special potions cost us plenty.</i>\"");
 		doNext(enterTheBazaar);
 		return;
 	}
