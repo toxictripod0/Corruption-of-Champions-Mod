@@ -386,7 +386,7 @@ public function addButtonDisabled(pos:int, text:String = "", toolTipText:String 
 		}
 	}
 
-	btn.showDisabled(text,toolTipHeader,toolTipText);
+	btn.showDisabled(text,toolTipText,toolTipHeader);
 	return btn;
 }
 
