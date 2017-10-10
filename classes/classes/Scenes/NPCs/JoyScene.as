@@ -574,7 +574,7 @@ package classes.Scenes.NPCs
 					outputText("\"<i>You look like... Well, you look... I don't know what you look like... I've never seen anything like you before, so I guess that make you, like, unique?</i>\"");
 			}
 			//Gender check
-			outputText("\n\nHaving commented on your race, the bimbo next casts her eye over your crotch and your " + player.chestDesc() + ". \"<i>You're a ");
+			outputText("\n\nHaving commented on your race, the bimbo next casts her eye over your crotch and your [chest]. \"<i>You're a ");
 			if (player.gender == GENDER_MALE) {
 				outputText(" guy, and I'm, like, super-happy that's what you are - it means I can play with your funstick.");
 			}
@@ -584,11 +584,12 @@ package classes.Scenes.NPCs
 			}
 			else if (player.gender == GENDER_HERM) {
 				if (joyHasCock()) outputText("herm and I'm sooo happy about it; we can have so much fun!");
-				else outputText("herm, with yummy " + player.breastDescript(0) + " and a cute " + player.vaginaDescript() + " for me to lick and a nice " + player.cockDescript() + " for me to suck and rub and fill my fun-holes with; I just love it when you put cream in my hungry-achey little belly.");
+				else outputText("herm, with yummy [tits] and a cute [vag] for me to lick and a nice [cock] for me to suck and rub and fill my fun-holes with; I just love it when you put cream in my hungry-achey little belly.");
 			}
 			else {
 				outputText("...Well, you're not really anything. And it's not really a lot of fun... can't you turn into a boy or a girl?");
 			}
+			outputText("</i>\"");
 			//Corruption and perk check
 			outputText("\n\nNext, Joy closes her eyes and focuses on your aura.");
 			if (player.cor < 5) { //Pure
