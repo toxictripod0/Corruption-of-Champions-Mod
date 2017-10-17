@@ -1542,7 +1542,7 @@ import fl.controls.ComboBox;
 			var countBeforeAdding:int = (page - 1) * 12;
 			menu();
 			for (var i:int = 0; i < player.perks.length; i++) {
-				if (isPermable(player.perks[i].ptype)) {
+				if (isPermable(player.perks[i].ptype) && button < 14) {
 					//Decrement count before adding buttons.
 					if (countBeforeAdding > 0) {
 						countBeforeAdding--;
@@ -1560,7 +1560,7 @@ import fl.controls.ComboBox;
 				if (button == 9) button++;
 			}
 			//Next and previous page buttons depending on conditions.
-			if (button > 14) addButton(4, "Next", ascensionPermeryMenu, page + 1);
+			if (button >= 14) addButton(4, "Next", ascensionPermeryMenu, page + 1);
 			if (page > 1) addButton(9, "Previous", ascensionPermeryMenu, page - 1);
 			addButton(14, "Back", ascensionMenu);
 		}
