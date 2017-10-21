@@ -1456,16 +1456,14 @@ package classes.Scenes.Combat
 				return;
 			}
 			if (monster.findPerk(PerkLib.BasiliskResistance) >= 0) {
-				output.text("You attempt to apply your paralyzing stare at " + theMonster + ", but you soon realize, that " + monster.pronoun1
-				           +" is immune to your eyes, so you quickly back up.\n\n");
+				output.text("You attempt to apply your paralyzing stare at " + theMonster + ", but you soon realize, that " + monster.pronoun1 + " is immune to your eyes, so you quickly back up.\n\n");
 				player.changeFatigue(10, 1);
 				monster.doAI();
 				return;
 			}
 			player.changeFatigue(20, 1);
 			if (monster.hasStatusEffect(StatusEffects.Shell)) {
-				output.text("As soon as your magic touches the multicolored shell around " + theMonster + ", it sizzles and fades to nothing."
-				           +"  Whatever that thing is, it completely blocks your magic!\n\n");
+				output.text("As soon as your magic touches the multicolored shell around " + theMonster + ", it sizzles and fades to nothing. Whatever that thing is, it completely blocks your magic!\n\n");
 				monster.doAI();
 				return;
 			}
@@ -1515,70 +1513,70 @@ package classes.Scenes.Combat
 			menu();
 			var button:int = 0;
 			if (player.hairType == 4) {
-				addButton(button++, "AnemoneSting", anemoneSting, null, null, null, "Attempt to strike an opponent with the stinging tentacles growing from your scalp.  Reduces enemy speed and increases enemy lust.", "Anemone Sting");
+				addButton(button++, "AnemoneSting", anemoneSting, null, null, null, "Attempt to strike an opponent with the stinging tentacles growing from your scalp. Reduces enemy speed and increases enemy lust. \n\nNo Fatigue Cost", "Anemone Sting");
 			}
 			//Bitez
 			if (player.faceType == FACE_SHARK_TEETH) {
-				addButton(button++, "Bite", bite, null, null, null, "Attempt to bite your opponent with your shark-teeth.");
+				addButton(button++, "Bite", bite, null, null, null, "Attempt to bite your opponent with your shark-teeth. \n\nFatigue Cost: " + player.physicalCost(25));
 			}
 			else if (player.faceType == FACE_SNAKE_FANGS) {
-				addButton(button++, "Bite", nagaBiteAttack, null, null, null, "Attempt to bite your opponent and inject venom.");
+				addButton(button++, "Bite", nagaBiteAttack, null, null, null, "Attempt to bite your opponent and inject venom. \n\nFatigue Cost: " + player.physicalCost(10));
 			}
 			else if (player.faceType == FACE_SPIDER_FANGS) {
-				addButton(button++, "Bite", spiderBiteAttack, null, null, null, "Attempt to bite your opponent and inject venom.");
+				addButton(button++, "Bite", spiderBiteAttack, null, null, null, "Attempt to bite your opponent and inject venom. \n\nFatigue Cost: " + player.physicalCost(10));
 			}
 			//Bow attack
 			if (player.hasKeyItem("Bow") >= 0 || player.hasKeyItem("Kelt's Bow") >= 0) {
-				addButton(button++, "Bow", fireBow, null, null, null, "Use a bow to fire an arrow at your opponent.");
+				addButton(button++, "Bow", fireBow, null, null, null, "Use a bow to fire an arrow at your opponent. \n\nFatigue Cost: " + player.physicalCost(25));
 			}
 			//Constrict
 			if (player.lowerBody == LOWER_BODY_TYPE_NAGA) {
-				addButton(button++, "Constrict", getGame().desert.nagaScene.nagaPlayerConstrict, null, null, null, "Attempt to bind an enemy in your long snake-tail.");
+				addButton(button++, "Constrict", getGame().desert.nagaScene.nagaPlayerConstrict, null, null, null, "Attempt to bind an enemy in your long snake-tail. \n\nFatigue Cost: " + player.physicalCost(10));
 			}
 			//Kick attackuuuu
 			else if (player.isTaur() || player.lowerBody == LOWER_BODY_TYPE_HOOFED || player.lowerBody == LOWER_BODY_TYPE_BUNNY || player.lowerBody == LOWER_BODY_TYPE_KANGAROO) {
-				addButton(button++, "Kick", kick, null, null, null, "Attempt to kick an enemy using your powerful lower body.");
+				addButton(button++, "Kick", kick, null, null, null, "Attempt to kick an enemy using your powerful lower body. \n\nFatigue Cost: " + player.physicalCost(15));
 			}
 			//Gore if mino horns
-			if (player.hornType == HORNS_COW_MINOTAUR && player.horns >= 6) {
-				addButton(button++, "Gore", goreAttack, null, null, null, "Lower your head and charge your opponent, attempting to gore them on your horns.  This attack is stronger and easier to land with large horns.");
+			if ((player.hornType == HORNS_COW_MINOTAUR || player.hornType == HORNS_ANTLERS) && player.horns >= 6) {
+				addButton(button++, "Gore", goreAttack, null, null, null, "Lower your head and charge your opponent, attempting to gore them on your horns. This attack is stronger and easier to land with large horns. \n\nFatigue Cost: " + player.physicalCost(15));
 			}
 			//Rams Attack - requires rams horns
 			if (player.hornType == HORNS_RAM && player.horns >= 2) {
-				addButton(button++, "Horn Stun", ramsStun, null, null, null, "Use a ramming headbutt to try and stun your foe. \n\nFatigue Cost: " + player.physicalCost(10) + "");
+				addButton(button++, "Horn Stun", ramsStun, null, null, null, "Use a ramming headbutt to try and stun your foe. \n\nFatigue Cost: " + player.physicalCost(10));
 			}
 			//Upheaval - requires rhino horn
 			if (player.hornType == HORNS_RHINO && player.horns >= 2 && player.faceType == FACE_RHINO) {
-				addButton(button++, "Upheaval", upheavalAttack, null, null, null, "Send your foe flying with your dual nose mounted horns. \n\nFatigue Cost: " + player.physicalCost(15) + "");
+				addButton(button++, "Upheaval", upheavalAttack, null, null, null, "Send your foe flying with your dual nose mounted horns. \n\nFatigue Cost: " + player.physicalCost(15));
 			}
 			//Infest if infested
 			if (player.hasStatusEffect(StatusEffects.Infested) && player.statusEffectv1(StatusEffects.Infested) == 5 && player.hasCock()) {
-				addButton(button++, "Infest", getGame().mountain.wormsScene.playerInfest, null, null, null, "The infest attack allows you to cum at will, launching a stream of semen and worms at your opponent in order to infest them.  Unless your foe is very aroused they are likely to simply avoid it.  Only works on males or herms. \n\nAlso great for reducing your lust.");
+				addButton(button++, "Infest", getGame().mountain.wormsScene.playerInfest, null, null, null, "The infest attack allows you to cum at will, launching a stream of semen and worms at your opponent in order to infest them. Unless your foe is very aroused they are likely to simply avoid it. Only works on males or herms. \n\nAlso great for reducing your lust. \n\nFatigue Cost: " + player.physicalCost(40));
 			}
 			//Kiss supercedes bite.
 			if (player.hasStatusEffect(StatusEffects.LustStickApplied)) {
-				addButton(button++, "Kiss", kissAttack, null, null, null, "Attempt to kiss your foe on the lips with drugged lipstick.  It has no effect on those without a penis.");
+				addButton(button++, "Kiss", kissAttack, null, null, null, "Attempt to kiss your foe on the lips with drugged lipstick.  It has no effect on those without a penis. \n\nNo Fatigue Cost");
 			}
 			switch (player.tailType) {
 				case TAIL_TYPE_BEE_ABDOMEN:
-					addButton(button++, "Sting", playerStinger, null, null, null, "Attempt to use your venomous bee stinger on an enemy.  Be aware it takes quite a while for your venom to build up, so depending on your abdomen's refractory period, you may have to wait quite a while between stings.  \n\nVenom: " + Math.floor(player.tailVenom) + "/100");
+					addButton(button++, "Sting", playerStinger, null, null, null, "Attempt to use your venomous bee stinger on an enemy. Be aware it takes quite a while for your venom to build up, so depending on your abdomen's refractory period, you may have to wait quite a while between stings. \n\nVenom: " + Math.floor(player.tailVenom) + "/100");
 					break;
 				case TAIL_TYPE_SPIDER_ADBOMEN:
-					addButton(button++, "Web", PCWebAttack, null, null, null, "Attempt to use your abdomen to spray sticky webs at an enemy and greatly slow them down.  Be aware it takes a while for your webbing to build up.  \n\nWeb Amount: " + Math.floor(player.tailVenom) + "/100");
+					addButton(button++, "Web", PCWebAttack, null, null, null, "Attempt to use your abdomen to spray sticky webs at an enemy and greatly slow them down. Be aware it takes a while for your webbing to build up. \n\nWeb Amount: " + Math.floor(player.tailVenom) + "/100");
 					break;
 				case TAIL_TYPE_SALAMANDER:
-					addButton(button++, "Tail Slap", tailSlapAttack, null, null, null, "Set your tail ablaze in red-hot flames to whip your foe with it to hurt and burn them!");
+					addButton(button++, "Tail Slap", tailSlapAttack, null, null, null, "Set your tail ablaze in red-hot flames to whip your foe with it to hurt and burn them! \n\nFatigue Cost: " + player.physicalCost(30));
 					//break;
 				case TAIL_TYPE_SHARK:
 				case TAIL_TYPE_LIZARD:
 				case TAIL_TYPE_KANGAROO:
 				case TAIL_TYPE_DRACONIC:
 				case TAIL_TYPE_RACCOON:
-					addButton(button++, "Tail Whip", tailWhipAttack, null, null, null, "Whip your foe with your tail to enrage them and lower their defense!");
+					addButton(button++, "Tail Whip", tailWhipAttack, null, null, null, "Whip your foe with your tail to enrage them and lower their defense! \n\nFatigue Cost: " + player.physicalCost(15));
 				default:
 			}
 			if (player.shield != ShieldLib.NOTHING) {
-				addButton(button++, "Shield Bash", shieldBash, null, null, null, "Bash your opponent with a shield. Has a chance to stun. Bypasses stun immunity. \n\nThe more you stun your opponent, the harder it is to stun them again.");
+				addButton(button++, "Shield Bash", shieldBash, null, null, null, "Bash your opponent with a shield. Has a chance to stun. Bypasses stun immunity. \n\nThe more you stun your opponent, the harder it is to stun them again. \n\nFatigue Cost: " + player.physicalCost(20));
 			}
 			addButton(14, "Back", combat.combatMenu, false);
 		}
@@ -2552,7 +2550,7 @@ package classes.Scenes.Combat
 		//hit
 		public function tailWhipAttack():void {
 			clearOutput();
-			if (player.fatigue + player.physicalCost(15) > player.maxFatigue()) {
+			if (player.fatigue + player.physicalCost(10) > player.maxFatigue()) {
 				outputText("You are too tired to perform a tail whip.");
 				doNext(curry(combat.combatMenu,false));
 				return;
