@@ -156,7 +156,8 @@ import classes.Scenes.API.FnHelpers;
 		}
 		public function findChitin():void {
 			outputText(images.showImage("item-bChitin"));
-			outputText("You find a large piece of insectile carapace obscured in the ferns to your left. It's mostly black with a thin border of bright yellow along the outer edge. There's still a fair portion of yellow fuzz clinging to the chitinous shard. It feels strong and flexible - maybe someone can make something of it. ");
+			outputText("You find a large piece of insectile carapace obscured in the ferns to your left. It's mostly black with a thin border of bright yellow along the outer edge. There's still a fair portion of yellow fuzz clinging to the chitinous shard. ");
+			if (player.statusEffectv2(StatusEffects.MetRathazul) == 0) outputText("It feels strong and flexible - maybe someone can make something of it. ");
 			inventory.takeItem(useables.B_CHITN, camp.returnToCampUseOneHour);
 		}
 		public function forestWalkFn():void {

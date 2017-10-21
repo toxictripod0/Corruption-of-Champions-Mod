@@ -1,4 +1,4 @@
-package classes.Scenes{
+﻿package classes.Scenes{
 	import classes.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kACHIEVEMENTS;
@@ -135,7 +135,7 @@ private function doCamp():void { //Only called by playerMenu
 	}
 	if (!marbleScene.marbleFollower())
 	{
-		if (flags[kFLAGS.MARBLE_LEFT_OVER_CORRUPTION] == 1 && player.cor <= (40 + player.corruptionTolerance()))
+		if (flags[kFLAGS.MARBLE_LEFT_OVER_CORRUPTION] == 1 && player.isPureEnough(40))
 		{
 			hideMenus();
 			marblePurification.pureMarbleDecidesToBeLessOfABitch();
@@ -147,7 +147,7 @@ private function doCamp():void { //Only called by playerMenu
 		//Cor < 50
 		//No corrupt: Jojo, Amily, or Vapula
 		//Purifying Murble
-		if (player.cor < (50 + player.corruptionTolerance()) && !campCorruptJojo() && !amilyScene.amilyCorrupt() && !vapulaSlave() 
+		if (player.isPureEnough(50) && !campCorruptJojo() && !amilyScene.amilyCorrupt() && !vapulaSlave()
 			&& flags[kFLAGS.MARBLE_PURIFICATION_STAGE] == 0 && flags[kFLAGS.MARBLE_COUNTUP_TO_PURIFYING] >= 200
 			&& player.findPerk(PerkLib.MarblesMilk) < 0)
 		{
@@ -157,13 +157,13 @@ private function doCamp():void { //Only called by playerMenu
 		}
 		if (flags[kFLAGS.MARBLE_PURIFICATION_STAGE] >= 5)
 		{
-			if (flags[kFLAGS.MARBLE_WARNED_ABOUT_CORRUPTION] == 0 && player.cor >= (50 + player.corruptionTolerance()))
+			if (flags[kFLAGS.MARBLE_WARNED_ABOUT_CORRUPTION] == 0 && !player.isPureEnough(50))
 			{
 				hideMenus();
 				marblePurification.marbleWarnsPCAboutCorruption();
 				return;
 			}
-			if (flags[kFLAGS.MARBLE_WARNED_ABOUT_CORRUPTION] == 1 && flags[kFLAGS.MARBLE_LEFT_OVER_CORRUPTION] == 0 && player.cor >= (60 + player.corruptionTolerance()))
+			if (flags[kFLAGS.MARBLE_WARNED_ABOUT_CORRUPTION] == 1 && flags[kFLAGS.MARBLE_LEFT_OVER_CORRUPTION] == 0 && !player.isPureEnough(60))
 			{
 				hideMenus();
 				marblePurification.marbleLeavesThePCOverCorruption();
@@ -522,8 +522,7 @@ private function doCamp():void { //Only called by playerMenu
 	showStats();
 	//Change settings of new game buttons to go to main menu
 	mainView.setMenuButton( MainView.MENU_NEW_MAIN, "Main Menu", kGAMECLASS.mainMenu.mainMenu );
-	mainView.newGameButton.toolTipText = "Return to main menu.";
-	mainView.newGameButton.toolTipHeader = "Main Menu";
+	mainView.newGameButton.hint("Return to main menu.","Main Menu");
 	//clear up/down arrows
 	hideUpDown();
 	//Level junk
@@ -664,13 +663,6 @@ private function doCamp():void { //Only called by playerMenu
 	
 	campSlavesMenu(true);
 
-	//Clear bee-status
-	if (player.hasStatusEffect(StatusEffects.ParalyzeVenom)) {
-		dynStats("str", player.statusEffectv1(StatusEffects.ParalyzeVenom),"spe", player.statusEffectv2(StatusEffects.ParalyzeVenom));
-		player.removeStatusEffect(StatusEffects.ParalyzeVenom);
-		outputText("<b>You feel quicker and stronger as the paralyzation venom in your veins wears off.</b>\n\n");
-	}
-	
 	//Hunger check!
 	if (flags[kFLAGS.HUNGER_ENABLED] > 0 && player.hunger < 25)
 	{
@@ -774,7 +766,7 @@ private function doCamp():void { //Only called by playerMenu
 	{
 		flags[kFLAGS.CAMP_CABIN_PROGRESS] = 1;
 		clearOutput();
-		outputText(images.showImage("camp-dreams"));
+		outputText(images.showImage("camp-dream"));
 		outputText("You realize that you have spent two weeks sleeping in tent every night. You think of something so you can sleep nicely and comfortably. Perhaps a cabin will suffice?");
 		doNext(playerMenu);
 		return;
@@ -794,24 +786,35 @@ private function doCamp():void { //Only called by playerMenu
 	
 	//Menu
 	menu();
-	addButton(0, "Explore", exploreEvent, null, null, null, "Explore to find new regions and visit any discovered regions.");
-	addButton(1, "Places", placesEvent, null, null, null, "Visit any places you have discovered so far.");
-	addButton(2, "Inventory", inventory.inventoryMenu, null, null, null, "The inventory allows you to use an item.  Be careful as this leaves you open to a counterattack when in combat.");
-	if (inventory.showStash()) addButton(3, "Stash", inventory.stash, null, null, null, "The stash allows you to store your items safely until you need them later.");
-	addButton(4, "Camp Actions", campActions, null, null, null, "Interact with the camp surroundings and also read your codex.");
-	if (followersCount() > 0) addButton(5, "Followers", campFollowers, null, null, null, "Check up on any followers or companions who are joining you in or around your camp.  You'll probably just end up sleeping with them.");
-	if (loversCount() > 0) addButton(6, "Lovers", campLoversMenu, null, null, null, "Check up on any lovers you have invited so far to your camp and interact with them.");
-	if (slavesCount() > 0) addButton(7, "Slaves", campSlavesMenu, null, null, null, "Check up on any slaves you have received and interact with them.");
+	addButton(0, "Explore", exploreEvent).hint("Explore to find new regions and visit any discovered regions.");
+	addButton(1, "Places", placesEvent).hint("Visit any places you have discovered so far.");
+	addButton(2, "Inventory", inventory.inventoryMenu).hint("The inventory allows you to use an item.  Be careful as this leaves you open to a counterattack when in combat.");
+	if (inventory.showStash()) addButton(3, "Stash", inventory.stash).hint("The stash allows you to store your items safely until you need them later.");
+	addButton(4, "Camp Actions", campActions).hint("Interact with the camp surroundings and also read your codex.");
+	if (followersCount() > 0) addButton(5, "Followers", campFollowers).hint("Check up on any followers or companions who are joining you in or around your camp.  You'll probably just end up sleeping with them.");
+	if (loversCount() > 0) addButton(6, "Lovers", campLoversMenu).hint("Check up on any lovers you have invited so far to your camp and interact with them.");
+	if (slavesCount() > 0) addButton(7, "Slaves", campSlavesMenu).hint("Check up on any slaves you have received and interact with them.");
 	var canFap:Boolean = !player.hasStatusEffect(StatusEffects.Dysfunction) && (flags[kFLAGS.UNABLE_TO_MASTURBATE_BECAUSE_CENTAUR] == 0 && !player.isTaur());
 	if (player.lust >= 30) {
 		addButton(8, "Masturbate", kGAMECLASS.masturbation.masturbateMenu);
-		if (((player.findPerk(PerkLib.HistoryReligious) >= 0 && player.cor <= (66 + player.corruptionTolerance())) || (player.findPerk(PerkLib.Enlightened) >= 0 && player.cor < 10)) && !(player.hasStatusEffect(StatusEffects.Exgartuan) && player.statusEffectv2(StatusEffects.Exgartuan) == 0) || flags[kFLAGS.SFW_MODE] >= 1) addButton(8, "Meditate", kGAMECLASS.masturbation.masturbateMenu);
+		if (
+				(
+						player.hasPerk(PerkLib.HistoryReligious) && player.isPureEnough(66)
+						||
+						player.hasPerk(PerkLib.Enlightened) && player.isPureEnough(10)
+				) && (
+						!player.hasStatusEffect(StatusEffects.Exgartuan)
+						||
+						player.statusEffectv2(StatusEffects.Exgartuan) != 0
+				)
+				|| flags[kFLAGS.SFW_MODE] >= 1
+		) addButton(8, "Meditate", kGAMECLASS.masturbation.masturbateMenu);
 	}
-	addButton(9, "Wait", doWait, null, null, null, "Wait for four hours.\n\nShift-click to wait until the night comes.");
-	if (player.fatigue > 40 || player.HP / player.maxHP() <= .9) addButton(9, "Rest", rest, null, null, null, "Rest for four hours.\n\nShift-click to rest until fully healed or night comes.");
-	if (model.time.hours >= 21 || model.time.hours < 6) addButton(9, "Sleep", doSleep, null, null, null, "Turn yourself in for the night.");
+	addButton(9, "Wait", doWait).hint("Wait for four hours.\n\nShift-click to wait until the night comes.");
+	if (player.fatigue > 40 || player.HP / player.maxHP() <= .9) addButton(9, "Rest", rest).hint("Rest for four hours.\n\nShift-click to rest until fully healed or night comes.");
+	if (model.time.hours >= 21 || model.time.hours < 6) addButton(9, "Sleep", doSleep).hint("Turn yourself in for the night.");
 
-	if (isAprilFools()) addButton(12, "Cash Shop", getGame().aprilFools.pay2WinSelection, null, null, null, "Need more gems? Want to buy special items to give you the edge? Purchase with real money!");
+	if (isAprilFools()) addButton(12, "Cash Shop", getGame().aprilFools.pay2WinSelection).hint("Need more gems? Want to buy special items to give you the edge? Purchase with real money!");
 	
 	//Remove buttons according to conditions.
 	if (model.time.hours >= 21 || model.time.hours < 6) {
@@ -1148,7 +1151,7 @@ public function campLoversMenu(descOnly:Boolean = false):void {
 		//Out getting family
 		//else outputText("Marble is out in the wilderness right now, searching for a relative.");
 		outputText("\n\n");
-		if (flags[kFLAGS.MARBLE_PURIFICATION_STAGE] != 4) addButton(6, "Marble", marbleScene.interactWithMarbleAtCamp, null, null, null, "Go to Marble the cowgirl for talk and companionship.");
+		if (flags[kFLAGS.MARBLE_PURIFICATION_STAGE] != 4) addButton(6, "Marble", marbleScene.interactWithMarbleAtCamp).hint("Go to Marble the cowgirl for talk and companionship.");
 	}
 	//Nieve
 	if (flags[kFLAGS.NIEVE_STAGE] == 5) {
@@ -1209,7 +1212,7 @@ public function campSlavesMenu(descOnly:Boolean = false):void {
 	//If Jojo is corrupted, add him to the masturbate menu.
 	if (campCorruptJojo() && flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] == 0) {
 		outputText("From time to time you can hear movement from around your camp, and you routinely find thick puddles of mouse semen.  You are sure Jojo is here if you ever need to sate yourself.\n\n");
-		addButton(11, "Jojo", jojoScene.corruptCampJojo, null, null, null, "Call your corrupted pet into camp in order to relieve your desires in a variety of sexual positions?  He's ever so willing after your last encounter with him.");
+		addButton(11, "Jojo", jojoScene.corruptCampJojo).hint("Call your corrupted pet into camp in order to relieve your desires in a variety of sexual positions?  He's ever so willing after your last encounter with him.");
 	}
 	//Bimbo Sophie
 	if (bimboSophie() && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) {
@@ -1231,7 +1234,7 @@ public function campFollowers(descOnly:Boolean = false):void {
 	//Ember
 	if (emberScene.followerEmber()) {
 		emberScene.emberCampDesc();
-		addButton(0, "Ember", emberScene.emberCampMenu, null, null, null, "Check up on Ember the dragon-" + (flags[kFLAGS.EMBER_ROUNDFACE] == 0 ? "morph" : flags[kFLAGS.EMBER_GENDER] == 1 ? "boy" : "girl" ) + "");
+		addButton(0, "Ember", emberScene.emberCampMenu).hint("Check up on Ember the dragon-" + (flags[kFLAGS.EMBER_ROUNDFACE] == 0 ? "morph" : flags[kFLAGS.EMBER_GENDER] == 1 ? "boy" : "girl" ) + "");
 	}
 	//Sophie
 	if (sophieFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) {
@@ -1254,7 +1257,7 @@ public function campFollowers(descOnly:Boolean = false):void {
 			else outputText("them");
 			outputText(" about hunting and gathering techniques.  Considering their unusual upbringing, it can't be as easy for them...\n\n");
 		}
-		addButton(1, "Sophie", sophieFollowerScene.followerSophieMainScreen, null, null, null, "Check up on Sophie the harpy.");
+		addButton(1, "Sophie", sophieFollowerScene.followerSophieMainScreen).hint("Check up on Sophie the harpy.");
 	}
 	//Pure Jojo
 	if (player.hasStatusEffect(StatusEffects.PureCampJojo)) {
@@ -1263,14 +1266,14 @@ public function campFollowers(descOnly:Boolean = false):void {
 			if (flags[kFLAGS.JOJO_LITTERS] > 0 && model.time.hours >= 16 && model.time.hours < 19) outputText("You spot the little mice you had with Joy playing about close to her tent.");
 			else outputText("Joy herself is nowhere to be found, she's probably out frolicking about or sitting atop the boulder.");
 			outputText("\n\n");
-			addButton(2, "Joy", joyScene.approachCampJoy, null, null, null, "Go find Joy around the edges of your camp and meditate with her or have sex with her.");
+			addButton(2, "Joy", joyScene.approachCampJoy).hint("Go find Joy around the edges of your camp and meditate with her or have sex with her.");
 		}
 		else {
 			outputText("There is a small bedroll for Jojo near your own");
 			if (flags[kFLAGS.CAMP_BUILT_CABIN] > 0) outputText(" cabin");
 			if (!(model.time.hours > 4 && model.time.hours < 23)) outputText(" and the mouse is sleeping on it right now.\n\n");
 			else outputText(", though the mouse is probably hanging around the camp's perimeter.\n\n");
-			addButton(2, "Jojo", jojoScene.jojoCamp, null, null, null, "Go find Jojo around the edges of your camp and meditate with him or talk about watch duty.");
+			addButton(2, "Jojo", jojoScene.jojoCamp).hint("Go find Jojo around the edges of your camp and meditate with him or talk about watch duty.");
 		}
 	}
 	//Helspawn
@@ -1288,7 +1291,7 @@ public function campFollowers(descOnly:Boolean = false):void {
 			outputText("\n\n");
 		}
 		else outputText("Tucked into a shaded corner of the rocks is a bevy of alchemical devices and equipment.  The alchemist Rathazul looks to be hard at work on the silken equipment you've commissioned him to craft.\n\n");
-		addButton(4, "Rathazul", kGAMECLASS.rathazul.returnToRathazulMenu, null, null, null, "Visit with Rathazul to see what alchemical supplies and services he has available at the moment.");
+		addButton(4, "Rathazul", kGAMECLASS.rathazul.returnToRathazulMenu).hint("Visit with Rathazul to see what alchemical supplies and services he has available at the moment.");
 	}
 	else
 	{
@@ -1321,11 +1324,11 @@ public function campFollowers(descOnly:Boolean = false):void {
 	}
 	//Shouldra
 	if (followerShouldra()) {
-		addButton(5, "Shouldra", shouldraFollower.shouldraFollowerScreen, null, null, null, "Talk to Shouldra. She is currently residing in your body.");
+		addButton(5, "Shouldra", shouldraFollower.shouldraFollowerScreen).hint("Talk to Shouldra. She is currently residing in your body.");
 	}
 	//Valeria
 	if (flags[kFLAGS.VALARIA_AT_CAMP] == 1) {
-		addButton(6, "Valeria", valeria.valeriaFollower, null, null, null, "Visit Valeria the goo-girl. You can even take and wear her as goo armor if you like.");
+		addButton(6, "Valeria", valeria.valeriaFollower).hint("Visit Valeria the goo-girl. You can even take and wear her as goo armor if you like.");
 	}
 	if (player.armor == armors.GOOARMR) {
 		addButtonDisabled(6, "Valeria", "You are currently wearing Valeria. Unequip from your Inventory menu if you want to interact with her.");
@@ -1342,26 +1345,26 @@ private function campActions():void {
 	clearOutput();
 	outputText(images.showImage("camp-doings"));
 	outputText("What would you like to do?")
-	addButton(0, "SwimInStream", swimInStream, null, null, null, "Swim in stream and relax to pass time.", "Swim In Stream");
-	addButton(1, "ExaminePortal", examinePortal, null, null, null, "Examine the portal. This scene is placeholder.", "Examine Portal"); //Examine portal.
+	addButton(0, "SwimInStream", swimInStream).hint("Swim in stream and relax to pass time.", "Swim In Stream");
+	addButton(1, "ExaminePortal", examinePortal).hint("Examine the portal. This scene is placeholder.", "Examine Portal"); //Examine portal.
 	if (model.time.hours == 19) {
-		addButton(2, "Watch Sunset", watchSunset, null, null, null, "Watch the sunset and relax."); //Relax and watch at the sunset.
+		addButton(2, "Watch Sunset", watchSunset).hint("Watch the sunset and relax."); //Relax and watch at the sunset.
 	}
 	else if (model.time.hours >= 20 && flags[kFLAGS.LETHICE_DEFEATED] > 0) {
-		addButton(2, "Stargaze", watchStars, null, null, null, "Look at the starry night sky."); //Stargaze. Only available after Lethice is defeated.
+		addButton(2, "Stargaze", watchStars).hint("Look at the starry night sky."); //Stargaze. Only available after Lethice is defeated.
 	}
 	else {
 		addButtonDisabled(2, "Watch Sky", "The option to watch sunset is available at 7pm.");
 	}
-	if (flags[kFLAGS.CAMP_CABIN_PROGRESS] > 0 && flags[kFLAGS.CAMP_CABIN_PROGRESS] < 10) addButton(3, "Build Cabin", cabinProgress.initiateCabin, null, null, null, "Work on your cabin."); //Work on cabin.
-	if (flags[kFLAGS.CAMP_CABIN_PROGRESS] >= 10 || flags[kFLAGS.CAMP_BUILT_CABIN] >= 1) addButton(3, "Enter Cabin", cabinProgress.initiateCabin, null, null, null, "Enter your cabin."); //Enter cabin for furnish.
-	addButton(4, "Read Codex", codex.accessCodexMenu, null, null, null, "Read any codex entries you have unlocked.");
-	if (player.hasKeyItem("Carpenter's Toolbox") >= 0 && flags[kFLAGS.CAMP_WALL_PROGRESS] < 100 && getCampPopulation() >= 4) addButton(5, "Build Wall", buildCampWallPrompt, null, null, null, "Build a wall around your camp to defend from the imps." + (flags[kFLAGS.CAMP_WALL_PROGRESS] >= 20 ? "\n\nProgress: " + (flags[kFLAGS.CAMP_WALL_PROGRESS]/20) + "/5 complete": "") + "");
-	if (player.hasKeyItem("Carpenter's Toolbox") >= 0 && flags[kFLAGS.CAMP_WALL_PROGRESS] >= 100 && flags[kFLAGS.CAMP_WALL_GATE] <= 0) addButton(5, "Build Gate", buildCampGatePrompt, null, null, null, "Build a gate to complete your camp defense.");
-	if (flags[kFLAGS.CAMP_WALL_PROGRESS] >= 100 && player.hasItem(useables.IMPSKLL, 1)) addButton(6, "AddImpSkull", promptHangImpSkull, null, null, null, "Add an imp skull to decorate the wall and to serve as deterrent for imps.", "Add Imp Skull");
-	if (flags[kFLAGS.LETHICE_DEFEATED] > 0) addButton(7, "Ascension", promptAscend, null, null, null, "Perform an ascension? This will restart your adventures with your levels, items, and gems carried over. The game will also get harder.");
-	//addButton(8, "Build Misc", null, null, null, null, "Build other structures than walls or cabin for your camp");
-	//addButton(9, "Craft", kGAMECLASS.crafting.accessCraftingMenu, null, null, null, "Craft some items.");
+	if (flags[kFLAGS.CAMP_CABIN_PROGRESS] > 0 && flags[kFLAGS.CAMP_CABIN_PROGRESS] < 10) addButton(3, "Build Cabin", cabinProgress.initiateCabin).hint("Work on your cabin."); //Work on cabin.
+	if (flags[kFLAGS.CAMP_CABIN_PROGRESS] >= 10 || flags[kFLAGS.CAMP_BUILT_CABIN] >= 1) addButton(3, "Enter Cabin", cabinProgress.initiateCabin).hint("Enter your cabin."); //Enter cabin for furnish.
+	addButton(4, "Read Codex", codex.accessCodexMenu).hint("Read any codex entries you have unlocked.");
+	if (player.hasKeyItem("Carpenter's Toolbox") >= 0 && flags[kFLAGS.CAMP_WALL_PROGRESS] < 100 && getCampPopulation() >= 4) addButton(5, "Build Wall", buildCampWallPrompt).hint("Build a wall around your camp to defend from the imps." + (flags[kFLAGS.CAMP_WALL_PROGRESS] >= 20 ? "\n\nProgress: " + (flags[kFLAGS.CAMP_WALL_PROGRESS]/20) + "/5 complete": "") + "");
+	if (player.hasKeyItem("Carpenter's Toolbox") >= 0 && flags[kFLAGS.CAMP_WALL_PROGRESS] >= 100 && flags[kFLAGS.CAMP_WALL_GATE] <= 0) addButton(5, "Build Gate", buildCampGatePrompt).hint("Build a gate to complete your camp defense.");
+	if (flags[kFLAGS.CAMP_WALL_PROGRESS] >= 100 && player.hasItem(useables.IMPSKLL, 1)) addButton(6, "AddImpSkull", promptHangImpSkull).hint("Add an imp skull to decorate the wall and to serve as deterrent for imps.", "Add Imp Skull");
+	if (flags[kFLAGS.LETHICE_DEFEATED] > 0) addButton(7, "Ascension", promptAscend).hint("Perform an ascension? This will restart your adventures with your levels, items, and gems carried over. The game will also get harder.");
+	//addButton(8, "Build Misc", null).hint("Build other structures than walls or cabin for your camp");
+	//addButton(9, "Craft", kGAMECLASS.crafting.accessCraftingMenu).hint("Craft some items.");
 	addButton(14, "Back", playerMenu);
 }
 
@@ -1496,7 +1499,7 @@ private function swimInStreamFinish():void {
 	{
 		outputText("You feel a bit dirtier after swimming in the tainted waters. \n\n");
 		dynStats("cor", 0.5);
-		dynStats("lust", 15, "resisted", true);
+		dynStats("lust", 15, "scale", true);
 	}
 	outputText("Eventually, you swim back to the riverbank and dry yourself off");
 	if (player.armorName != "slutty swimwear") outputText(" before you re-dress yourself in your " + player.armorName);
@@ -1505,16 +1508,15 @@ private function swimInStreamFinish():void {
 }
 
 private function examinePortal():void {
+	clearOutput();
 	outputText(images.showImage("camp-portal"));
 	if (flags[kFLAGS.CAMP_PORTAL_PROGRESS] <= 0) {
-		clearOutput();
 		outputText("You walk over to the portal, reminded by how and why you came. You wonder if you can go back to Ingnam. You start by picking up a small pebble and throw it through the portal. It passes through the portal. As you walk around the portal, you spot the pebble at the other side. Seems like you can't get back right now.");
 		flags[kFLAGS.CAMP_PORTAL_PROGRESS] = 1;
 		doNext(camp.returnToCampUseOneHour);
 		return;
 	}
 	else {
-		clearOutput();
 		outputText("You walk over to the portal, reminded by how and why you came. You let out a sigh, knowing you can't return to Ingnam.");
 	}
 	doNext(playerMenu);
@@ -1531,17 +1533,17 @@ private function watchSunset():void {
 		if (player.cor < 33) 
 		{
 			outputText("A wave of nostalgia washes over you as you remember your greatest moments from your childhood.");
-			dynStats("cor", -1, "lib", -1, "lust", -30, "resisted", false);
+			dynStats("cor", -1, "lib", -1, "lust", -30, "scale", false);
 		}
 		if (player.cor >= 33 && player.cor < 66) 
 		{
 			outputText("A wave of nostalgia washes over you as you remember your greatest moments from your childhood. Suddenly, your memories are somewhat twisted from some of the perverted moments. You shake your head and just relax.");
-			dynStats("cor", -0.5, "lib", -1, "lust", -20, "resisted", false);
+			dynStats("cor", -0.5, "lib", -1, "lust", -20, "scale", false);
 		}
 		if (player.cor >= 66) 
 		{
 			outputText("A wave of nostalgia washes over you as you remember your greatest moments from your childhood. Suddenly, your memories twist into some of the dark and perverted moments. You chuckle at that moment but you shake your head and focus on relaxing.");
-			dynStats("cor", 0, "lib", -1, "lust", -10, "resisted", false);
+			dynStats("cor", 0, "lib", -1, "lust", -10, "scale", false);
 		}
 	}
 	//Greatest moments GO!
@@ -1550,17 +1552,17 @@ private function watchSunset():void {
 		if (player.cor < 33) 
 		{
 			outputText("You reflect back on your greatest adventures and how curiosity got the best of you. You remember some of the greatest places you discovered.");
-			dynStats("lust", -30, "resisted", false);
+			dynStats("lust", -30, "scale", false);
 		}
 		if (player.cor >= 33 && player.cor < 66) 
 		{
 			outputText("You reflect back on your greatest adventures. Of course, some of them involved fucking and getting fucked by the denizens of Mareth. You suddenly open your eyes from the memory and just relax, wondering why you thought of that in the first place.");
-			dynStats("lust", -20, "resisted", false);
+			dynStats("lust", -20, "scale", false);
 		}
 		if (player.cor >= 66) 
 		{
 			outputText("You reflect back on your greatest adventures. You chuckle at the moments you were dominating and the moments you were submitting. You suddenly open your eyes from the memory and just relax.");
-			dynStats("lust", -10, "resisted", false);
+			dynStats("lust", -10, "scale", false);
 		}
 	}
 	//Greatest moments GO!
@@ -1570,7 +1572,7 @@ private function watchSunset():void {
 		if (rand(2) == 0) outputText("do");
 		else outputText("accomplish");
 		outputText(" before you went through the portal. You felt a bit sad that you didn't get to achieve your old goals.");
-		dynStats("lust", -30, "resisted", false);
+		dynStats("lust", -30, "scale", false);
 
 	}
 	outputText("\n\nAfter the thought, you spend a good while relaxing and watching the sun setting. By now, the sun has already set below the horizon. The sky is glowing orange after the sunset. It looks like you could explore more for a while.")
@@ -1601,7 +1603,7 @@ private function watchStars():void {
 			outputText("\n\nSomehow, one of them spells out \"ERROR\". Maybe you should let Kitteh6660 know?");
 	}
 	outputText("\n\nYou let your mind wander and relax.");
-	dynStats("lus", -15, "resisted", false);
+	dynStats("lus", -15, "scale", false);
 	doNext(camp.returnToCampUseOneHour);
 }
 
@@ -2024,7 +2026,7 @@ public function badEndMinLust():void {
 
 public function allNaturalSelfStimulationBeltContinuation():void {
 	clearOutput();
-	outputText(images.showImage("camp-stimBelt"));
+	outputText(images.showImage("masti-stimBelt-allNatural"));
 	outputText("In shock, you scream as you realize the nodule has instantly grown into a massive, organic dildo. It bottoms out easily and rests against your cervix as you recover from the initial shock of its penetration. As the pangs subside, the infernal appendage begins working itself. It begins undulating in long, slow strokes. It takes great care to adjust itself to fit every curve of your womb. Overwhelmed, your body begins reacting against your conscious thought and slowly thrusts your pelvis in tune to the thing.\n\n");
 	outputText("As suddenly as it penetrated you, it shifts into a different phase of operation. It buries itself as deep as it can and begins short, rapid strokes. The toy hammers your insides faster than any man could ever hope to do. You orgasm immediately and produce successive climaxes. Your body loses what motor control it had and bucks and undulates wildly as the device pistons your cunt without end. You scream at the top of your lungs. Each yell calls to creation the depth of your pleasure and lust.\n\n");
 	outputText("The fiendish belt shifts again. It buries itself as deep as it can go and you feel pressure against the depths of your womanhood. You feel a hot fluid spray inside you. Reflexively, you shout, \"<b>IT'S CUMMING! IT'S CUMMING INSIDE ME!</b>\" Indeed, each push of the prodding member floods your box with juice. It cums... and cums... and cums... and cums...\n\n");
@@ -2038,7 +2040,7 @@ public function allNaturalSelfStimulationBeltContinuation():void {
 public function allNaturalSelfStimulationBeltBadEnd():void {
 	spriteSelect(SpriteDb.s_giacomo);
 	clearOutput();
-	outputText(images.showImage("badend-stimbelt"));
+	outputText(images.showImage("badend-stimBelt"));
 	outputText("Whatever the belt is, whatever it does, it no longer matters to you.  The only thing you want is to feel the belt and its creature fuck the hell out of you, day and night.  You quickly don the creature again and it begins working its usual lustful magic on your insatiable little box.  An endless wave of orgasms take you.  All you now know is the endless bliss of an eternal orgasm.\n\n");
 	outputText("Your awareness hopelessly compromised by the belt and your pleasure, you fail to notice a familiar face approach your undulating form.  It is the very person who sold you this infernal toy.  The merchant, Giacomo.\n\n");
 	outputText("\"<i>Well, well,</i>\" Giacomo says.  \"<i>The Libertines are right.  The creature's fluids are addictive. This poor " + player.mf("man", "woman") + " is a total slave to the beast!</i>\"\n\n");
@@ -2061,7 +2063,7 @@ private function dungeonFound():Boolean { //Returns true as soon as any known du
 private function farmFound():Boolean { //Returns true as soon as any known dungeon is found
 	if (player.hasStatusEffect(StatusEffects.MetWhitney) && player.statusEffectv1(StatusEffects.MetWhitney) > 1) {
 		if (flags[kFLAGS.FARM_DISABLED] == 0) return true;
-		if (player.cor >= (70 - player.corruptionTolerance()) && player.level >= 12 && getGame().farm.farmCorruption.corruptFollowers() >= 2 && flags[kFLAGS.FARM_CORRUPTION_DISABLED] == 0) return true;
+		if (player.isCorruptEnough(70) && player.level >= 12 && getGame().farm.farmCorruption.corruptFollowers() >= 2 && flags[kFLAGS.FARM_CORRUPTION_DISABLED] == 0) return true;
 	}
 	if (flags[kFLAGS.FARM_CORRUPTION_STARTED]) return true;
 	return false;
@@ -2104,23 +2106,23 @@ public function places():Boolean {
 	//}
 	//Build menu
 	menu();
-	if (flags[kFLAGS.BAZAAR_ENTERED] > 0) addButton(0, "Bazaar", kGAMECLASS.bazaar.enterTheBazaar, null, null, null, "Visit the Bizarre Bazaar where the demons and corrupted beings hang out.");
-	if (player.hasStatusEffect(StatusEffects.BoatDiscovery)) addButton(1, "Boat", kGAMECLASS.boat.boatExplore, null, null, null, "Get on the boat and explore the lake. \n\nRecommended level: 4");
+	if (flags[kFLAGS.BAZAAR_ENTERED] > 0) addButton(0, "Bazaar", kGAMECLASS.bazaar.enterTheBazaar).hint("Visit the Bizarre Bazaar where the demons and corrupted beings hang out.");
+	if (player.hasStatusEffect(StatusEffects.BoatDiscovery)) addButton(1, "Boat", kGAMECLASS.boat.boatExplore).hint("Get on the boat and explore the lake. \n\nRecommended level: 4");
 	if (flags[kFLAGS.FOUND_CATHEDRAL] > 0) {
-		if (flags[kFLAGS.GAR_NAME] == 0) addButton(2, "Cathedral", kGAMECLASS.gargoyle.gargoylesTheShowNowOnWBNetwork, null, null, null, "Visit the ruined cathedral you've recently discovered.");
-		else addButton(2, "Cathedral", kGAMECLASS.gargoyle.returnToCathedral, null, null, null, "Visit the ruined cathedral where " + flags[kFLAGS.GAR_NAME] + " resides.");
+		if (flags[kFLAGS.GAR_NAME] == 0) addButton(2, "Cathedral", kGAMECLASS.gargoyle.gargoylesTheShowNowOnWBNetwork).hint("Visit the ruined cathedral you've recently discovered.");
+		else addButton(2, "Cathedral", kGAMECLASS.gargoyle.returnToCathedral).hint("Visit the ruined cathedral where " + flags[kFLAGS.GAR_NAME] + " resides.");
 	}
-	if (dungeonFound()) addButton(3, "Dungeons", dungeons, null, null, null, "Delve into dungeons.");
+	if (dungeonFound()) addButton(3, "Dungeons", dungeons).hint("Delve into dungeons.");
 	
-	if (farmFound()) addButton(5, "Farm", kGAMECLASS.farm.farmExploreEncounter, null, null, null, "Visit Whitney's farm.");
-	if (flags[kFLAGS.OWCA_UNLOCKED] == 1) addButton(6, "Owca", kGAMECLASS.owca.gangbangVillageStuff, null, null, null, "Visit the sheep village of Owca, known for its pit where a person is hung on the pole weekly to be gang-raped by the demons.");
-	if (flags[kFLAGS.MET_MINERVA] >= 4) addButton(7, "Oasis Tower", kGAMECLASS.highMountains.minervaScene.encounterMinerva, null, null, null, "Visit the ruined tower in the high mountains where Minerva resides.");
-	if (player.hasStatusEffect(StatusEffects.HairdresserMeeting)) addButton(8, "Salon", kGAMECLASS.mountain.salon.salonGreeting, null, null, null, "Visit the salon for hair services.");
+	if (farmFound()) addButton(5, "Farm", kGAMECLASS.farm.farmExploreEncounter).hint("Visit Whitney's farm.");
+	if (flags[kFLAGS.OWCA_UNLOCKED] == 1) addButton(6, "Owca", kGAMECLASS.owca.gangbangVillageStuff).hint("Visit the sheep village of Owca, known for its pit where a person is hung on the pole weekly to be gang-raped by the demons.");
+	if (flags[kFLAGS.MET_MINERVA] >= 4) addButton(7, "Oasis Tower", kGAMECLASS.highMountains.minervaScene.encounterMinerva).hint("Visit the ruined tower in the high mountains where Minerva resides.");
+	if (player.hasStatusEffect(StatusEffects.HairdresserMeeting)) addButton(8, "Salon", kGAMECLASS.mountain.salon.salonGreeting).hint("Visit the salon for hair services.");
 	
-	if (player.statusEffectv1(StatusEffects.TelAdre) >= 1) addButton(10, "Tel'Adre", kGAMECLASS.telAdre.telAdreMenu, null, null, null, "Visit the city of Tel'Adre in desert, easily recognized by the massive tower.");
-	if (flags[kFLAGS.AMILY_VILLAGE_ACCESSIBLE] > 0) addButton(11, "Town Ruins", kGAMECLASS.townRuins.exploreVillageRuin, null, null, null, "Visit the village ruins.");
+	if (player.statusEffectv1(StatusEffects.TelAdre) >= 1) addButton(10, "Tel'Adre", kGAMECLASS.telAdre.telAdreMenu).hint("Visit the city of Tel'Adre in desert, easily recognized by the massive tower.");
+	if (flags[kFLAGS.AMILY_VILLAGE_ACCESSIBLE] > 0) addButton(11, "Town Ruins", kGAMECLASS.townRuins.exploreVillageRuin).hint("Visit the village ruins.");
 	if (flags[kFLAGS.PRISON_CAPTURE_COUNTER] > 0) addButton(12, "Prison", kGAMECLASS.prison.prisonIntro, false, null, null, "Return to the prison and continue your life as Elly's slave.");
-	if (debug) addButton(13, "Ingnam", kGAMECLASS.ingnam.returnToIngnam, null, null, null, "Return to Ingnam for debugging purposes. Night-time event weirdness might occur. You have been warned!");
+	if (debug) addButton(13, "Ingnam", kGAMECLASS.ingnam.returnToIngnam).hint("Return to Ingnam for debugging purposes. Night-time event weirdness might occur. You have been warned!");
 	
 	//addButton(4, "Next", placesPage2);
 	addButton(14, "Back", playerMenu);
@@ -2142,18 +2144,18 @@ private function placesToPage1():void {
 private function dungeons():void {
 	menu();
 	//Turn on dungeon 1
-	if (flags[kFLAGS.FACTORY_FOUND] > 0) addButton(0, "Factory", getGame().dungeons.factory.enterDungeon, null, null, null, "Visit the demonic factory in the mountains." + (flags[kFLAGS.FACTORY_SHUTDOWN] > 0 ? "\n\nYou've managed to shut down the factory." : "The factory is still running. Marae wants you to shut down the factory!") + (kGAMECLASS.dungeons.checkFactoryClear() ? "\n\nCLEARED!" : ""));
+	if (flags[kFLAGS.FACTORY_FOUND] > 0) addButton(0, "Factory", getGame().dungeons.factory.enterDungeon).hint("Visit the demonic factory in the mountains." + (flags[kFLAGS.FACTORY_SHUTDOWN] > 0 ? "\n\nYou've managed to shut down the factory." : "The factory is still running. Marae wants you to shut down the factory!") + (kGAMECLASS.dungeons.checkFactoryClear() ? "\n\nCLEARED!" : ""));
 	//Turn on dungeon 2
-	if (flags[kFLAGS.DISCOVERED_DUNGEON_2_ZETAZ] > 0) addButton(1, "Deep Cave", getGame().dungeons.deepcave.enterDungeon, null, null, null, "Visit the cave you've found in the Deepwoods." + (flags[kFLAGS.DEFEATED_ZETAZ] > 0 ? "\n\nYou've defeated Zetaz, your old rival." : "") + (kGAMECLASS.dungeons.checkDeepCaveClear() ? "\n\nCLEARED!" : ""));
+	if (flags[kFLAGS.DISCOVERED_DUNGEON_2_ZETAZ] > 0) addButton(1, "Deep Cave", getGame().dungeons.deepcave.enterDungeon).hint("Visit the cave you've found in the Deepwoods." + (flags[kFLAGS.DEFEATED_ZETAZ] > 0 ? "\n\nYou've defeated Zetaz, your old rival." : "") + (kGAMECLASS.dungeons.checkDeepCaveClear() ? "\n\nCLEARED!" : ""));
 	//Turn on dungeon 3
-	if (flags[kFLAGS.D3_DISCOVERED] > 0) addButton(2, "Stronghold", kGAMECLASS.d3.enterD3, null, null, null, "Visit the stronghold in the high mountains that belongs to Lethice, the demon queen." + (flags[kFLAGS.LETHICE_DEFEATED] > 0 ? "\n\nYou have defeated Lethice and put an end to the demonic threats. Congratulations, you've beaten the main story!" : "") + (kGAMECLASS.dungeons.checkLethiceStrongholdClear() ? "\n\nCLEARED!" : ""));
+	if (flags[kFLAGS.D3_DISCOVERED] > 0) addButton(2, "Stronghold", kGAMECLASS.d3.enterD3).hint("Visit the stronghold in the high mountains that belongs to Lethice, the demon queen." + (flags[kFLAGS.LETHICE_DEFEATED] > 0 ? "\n\nYou have defeated Lethice and put an end to the demonic threats. Congratulations, you've beaten the main story!" : "") + (kGAMECLASS.dungeons.checkLethiceStrongholdClear() ? "\n\nCLEARED!" : ""));
 	//Side dungeons
-	if (flags[kFLAGS.DISCOVERED_WITCH_DUNGEON] > 0) addButton(5, "Desert Cave", getGame().dungeons.desertcave.enterDungeon, null, null, null, "Visit the cave you've found in the desert." + (flags[kFLAGS.SAND_WITCHES_COWED] + flags[kFLAGS.SAND_WITCHES_FRIENDLY] > 0 ? "\n\nFrom what you've known, this is the source of the Sand Witches." : "") + (kGAMECLASS.dungeons.checkSandCaveClear() ? "\n\nCLEARED!" : ""));
-	if (kGAMECLASS.dungeons.checkPhoenixTowerClear()) addButton(6, "Phoenix Tower", getGame().dungeons.heltower.returnToHeliaDungeon, null, null, null, "Re-visit the tower you went there as part of Helia's quest." + (kGAMECLASS.dungeons.checkPhoenixTowerClear() ? "\n\nYou've helped Helia in the quest and resolved the problems. \n\nCLEARED!" : ""));
+	if (flags[kFLAGS.DISCOVERED_WITCH_DUNGEON] > 0) addButton(5, "Desert Cave", getGame().dungeons.desertcave.enterDungeon).hint("Visit the cave you've found in the desert." + (flags[kFLAGS.SAND_WITCHES_COWED] + flags[kFLAGS.SAND_WITCHES_FRIENDLY] > 0 ? "\n\nFrom what you've known, this is the source of the Sand Witches." : "") + (kGAMECLASS.dungeons.checkSandCaveClear() ? "\n\nCLEARED!" : ""));
+	if (kGAMECLASS.dungeons.checkPhoenixTowerClear()) addButton(6, "Phoenix Tower", getGame().dungeons.heltower.returnToHeliaDungeon).hint("Re-visit the tower you went there as part of Helia's quest." + (kGAMECLASS.dungeons.checkPhoenixTowerClear() ? "\n\nYou've helped Helia in the quest and resolved the problems. \n\nCLEARED!" : ""));
 		//Fetish Church?
 		//Hellhound Dungeon?
 	//Non-hostile dungeons
-	if (flags[kFLAGS.ANZU_PALACE_UNLOCKED] > 0) addButton(10, "Anzu's Palace", getGame().dungeons.palace.enterDungeon, null, null, null, "Visit the palace in the Glacial Rift where Anzu the avian deity resides.");
+	if (flags[kFLAGS.ANZU_PALACE_UNLOCKED] > 0) addButton(10, "Anzu's Palace", getGame().dungeons.palace.enterDungeon).hint("Visit the palace in the Glacial Rift where Anzu the avian deity resides.");
 	addButton(14, "Back", places);
 }
 
@@ -2188,8 +2190,8 @@ private function exgartuanCampUpdate():void {
 //Wake up from a bad end.
 public function wakeFromBadEnd():void {
 	clearOutput();
-	trace("Escaping bad end!");
 	outputText(images.showImage("camp-nightmare"));
+	trace("Escaping bad end!");
 	outputText("No, it can't be.  It's all just a dream!  You've got to wake up!");
 	outputText("\n\nYou wake up and scream.  You pull out a mirror and take a look at yourself.  Yep, you look normal again.  That was the craziest dream you ever had.");
 	if (flags[kFLAGS.TIMES_BAD_ENDED] >= 2) { //FOURTH WALL BREAKER
@@ -2214,7 +2216,7 @@ public function wakeFromBadEnd():void {
 	inRoomedDungeon = false;
 	inRoomedDungeonResume = null;
 	if (getGame().inCombat) {
-		player.clearStatuses(false);
+		player.clearStatuses();
 		getGame().inCombat = false;
 	}
 	//Restore stats
@@ -2370,6 +2372,7 @@ private function buildCampGate():void {
 	flags[kFLAGS.CAMP_CABIN_WOOD_RESOURCES] -= 100;
 	player.addKeyValue("Carpenter's Toolbox", 1, -100);
 	clearOutput();
+	outputText(images.showImage("camp-wall-part4"));
 	outputText("You pull out a book titled \"Carpenter's Guide\" and flip pages until you come across instructions on how to build a gate that can be opened and closed. You spend minutes looking at the instructions and memorize the procedures.");
 	flags[kFLAGS.CAMP_WALL_GATE] = 1;
 	outputText("\n\nYou take the wood from supplies, saw the wood and cut them into planks before nailing them together. ");
@@ -2377,7 +2380,6 @@ private function buildCampGate():void {
 		outputText("\n\n" + formatStringArray(helperArray));
 		outputText(" " + (helpers == 1 ? "assists" : "assist") + " you with building the gate, helping to speed up the process and make construction less fatiguing.");
 	}
-	outputText(images.showImage("camp-wall-part4"));
 	outputText("\n\nYou eventually finish building the gate.");
 	//Gain fatigue.
 	var fatigueAmount:int = 100;

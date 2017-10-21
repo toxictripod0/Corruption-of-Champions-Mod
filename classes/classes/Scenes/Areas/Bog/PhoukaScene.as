@@ -158,7 +158,7 @@ package classes.Scenes.Areas.Bog
 				outputText(" if perhaps there's some way he could release you.")
 			else outputText(" if he really wants a taste of what you're going to give him.");
 
-			if (((player.cor + rand(125) + player.corruptionTolerance() + (player.level - 10)) * 4) <= 110) { //Players with 0% corruption have a 12% chance that the Phouka is willing to talk, players with 100% corruption have a 92% chance
+			if (((player.corAdjustedUp() + rand(125) + (player.level - 10)) * 4) <= 110) { //Players with 0% corruption have a 12% chance that the Phouka is willing to talk, players with 100% corruption have a 92% chance
 				//The phouka is not in the mood for talk, start the fight gagged as punishment for trying to talk
 				outputText("  You open your mouth to say something more to the ");
 				if (player.cor < 34)
@@ -425,7 +425,7 @@ package classes.Scenes.Areas.Bog
 			if (newScreen) clearOutput();
 			else outputText("\n\n");
 			outputText("The lusty " + phoukaName() + " continues to pound his cock into the earth as you prepare to go, oblivious to your presence.");
-			kGAMECLASS.combat.clearStatuses(false);
+			kGAMECLASS.combat.clearStatuses();
 			kGAMECLASS.combat.awardPlayer(); //This will provide loot and return to camp, 1 hour used
 		}
 
@@ -434,7 +434,7 @@ package classes.Scenes.Areas.Bog
 			clearOutput();
 			if (hpVictory) { //You win by physical damage, the phouka cheats and runs
 				outputText("The seriously injured " + phoukaName() + " stumbles backward, but before you can strike again it twists and stretches in mid-air, dropping to the ground in the form of a long black eel.  You're pretty sure you hear the eel curse at you as it dives into the mire and sinks out of view.\n\nWith your attacker gone you struggle and strain to get yourself free of the thick mass of roots and muck around your [legs].  Your lower half is soaked and you decide to head home.");
-				kGAMECLASS.combat.clearStatuses(false);
+				kGAMECLASS.combat.clearStatuses();
 				kGAMECLASS.combat.awardPlayer();  //This will provide loot and return to camp, 1 hour used
 			}
 			else { //You win by lust and have the chance to fuck the phouka if you’re horny
@@ -748,7 +748,7 @@ package classes.Scenes.Areas.Bog
 				outputText("\n\nYour sphincter clenches on the intruder, either trying to force it out or draw more in, even you can't say which.  You let out a sigh and put a hand on your belly, still heavy with a thick cum slurry.\n\nYou're just about to [if (isTaur = true)stand up when your partner thrusts forward][if (isTaur = false)roll off your spent partner when he thrusts upward] violently with his hips.  Caught off guard you try to steady yourself, only to feel his hands [if (isTaur = true)grip your flanks][if (isTaur = false)wrap around your waist].  The " + phoukaName() + " cums a second time, blasting another load of cum deep into your bowels.  Your stomach muscles are no match for this wave of spooge and [if (isTaur = true)you feel your heavy belly sink deeper into the bog][if (isTaur = false)you topple forward], stuffed with enough cum for anyone to assume you're pregnant with twins.  More than that you can feel each of the one-way valves in your gut give way, one after another, until a fountain of thick sugary sperm bubbles into your stomach.  If the " + phoukaName() + " had made one more deposit you probably would have tasted it.\n\nYour partner pushes on you, [if (isTaur = true)pulling his spent member from your rectum.  ][if (isTaur = false)rolling you off of him, wheezing, <i>“Air, air!”</i> ]He shrinks back to his normal size and recovers faster than you.  Before he leaves, he takes the time to pat your belly. <i>“Awful waste lad.  Go swallow an egg, a pink one.  That or suck down some o’ that succubi milk.  Then you come back here and I'll give you a real party.”</i>");
 				dynStats("cor", rand(1) + 3); //Extra two corruption for being enough of a pervert to want to fuck the phouka
 				if (postCombat) {
-					kGAMECLASS.combat.clearStatuses(false);
+					kGAMECLASS.combat.clearStatuses();
 					kGAMECLASS.combat.awardPlayer(); //This will provide loot and return to camp, 1 hour used
 				}
 				else doNext(camp.returnToCampUseOneHour); //Return to camp, 1 hour used
@@ -798,7 +798,7 @@ package classes.Scenes.Areas.Bog
 			outputText("  Satisfied, you march back to camp.");
 			dynStats("cor", rand(1) + 3); //Extra two corruption for being enough of a pervert to want to fuck the phouka
 			if (postCombat) {
-				kGAMECLASS.combat.clearStatuses(false);
+				kGAMECLASS.combat.clearStatuses();
 				kGAMECLASS.combat.awardPlayer();  //This will provide loot and return to camp, 1 hour used
 			}
 			else doNext(camp.returnToCampUseOneHour); //Return to camp, 1 hour used
@@ -889,7 +889,7 @@ package classes.Scenes.Areas.Bog
 					outputText("\n\nSatisfied for now you begin to put your clothes back on.  Maybe that " + phoukaName() + " will learn, maybe not.");
 					if (player.cor > 50) outputText("  But either way you plan to return and give all of them that lesson.");
 					if (postCombat) {
-						kGAMECLASS.combat.clearStatuses(false);
+						kGAMECLASS.combat.clearStatuses();
 						kGAMECLASS.combat.awardPlayer();  //This will provide loot and return to camp, 1 hour used
 					}
 					else doNext(camp.returnToCampUseOneHour); //Return to camp, 1 hour used
