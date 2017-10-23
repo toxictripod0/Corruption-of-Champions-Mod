@@ -677,10 +677,11 @@ public class CombatAbilities extends BaseContent
 				monster.spe += monster.statusEffectv1(StatusEffects.Illusion);
 				monster.removeStatusEffect(StatusEffects.Illusion);
 			}
-
-			if (player.hasStatusEffect(StatusEffects.Might)) {
-				outputText("\nYou feel a bit weaker as your strength-enhancing spell wears off.");
-				player.removeStatusEffect(StatusEffects.Might);
+			if (monster.hasStatusEffect(StatusEffects.Might)) {
+				outputText("\n" + monster.a + monster.short + " feels a bit weaker as " + monster.pronoun3 + " strength-enhancing spell wears off.");
+				monster.str -= monster.statusEffectv1(StatusEffects.Might);
+				monster.tou -= monster.statusEffectv2(StatusEffects.Might);
+				monster.removeStatusEffect(StatusEffects.Might);
 			}
 			if (monster.hasStatusEffect(StatusEffects.Shell)) {
 				outputText("\nThe magical shell around " + monster.a + " " + monster.short + " shatters!");
