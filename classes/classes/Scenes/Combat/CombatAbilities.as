@@ -1844,7 +1844,7 @@ public class CombatAbilities extends BaseContent
 				return;
 			}
 			//[Bow Response]
-			if (monster.short == "Isabella") {
+			if (monster.short == "Isabella" && !monster.hasStatusEffect(StatusEffects.Stunned)) {
 				if (monster.hasStatusEffect(StatusEffects.Blind))
 					outputText("Isabella hears the shot and turns her shield towards it, completely blocking it with her wall of steel.\n\n");
 				else outputText("You arrow thunks into Isabella's shield, completely blocked by the wall of steel.\n\n");
