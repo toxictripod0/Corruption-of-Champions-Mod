@@ -791,5 +791,19 @@ package classes.Items
 				}
 			}
 		}
+
+		public function removeExtraBreastRow(tfSource:String):void
+		{
+			trace('called removeExtraBreastRow("' + tfSource + '")');
+			if (player.breastRows.length <= 1) return;
+			outputText("\n\nYou stumble back when your center of balance shifts, and though you adjust before you can fall over,"
+			          +" you're left to watch in awe as your bottom-most " + player.breastDescript(player.breastRows.length - 1) + " shrink down,"
+			          +" disappearing completely into your [if (breastrows >= 3)abdomen|chest]. The "
+			          + player.nippleDescript(player.breastRows.length - 1) + "s even fade until nothing but"
+			          +" [if (isFluffy)[furColor] [skinDesc]|[skinTone] [skinDesc]] remains. <b>You've lost a row of breasts!</b>");
+			dynStats("sen", -5);
+			player.removeBreastRow(player.breastRows.length - 1, 1);
+			changes++;
+		}
 	}
 }
