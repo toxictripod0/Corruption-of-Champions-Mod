@@ -3357,6 +3357,7 @@ import flash.errors.IllegalOperationError;
 
 		public function breastCup(rowNum:Number):String
 		{
+			if (rowNum == -1) rowNum = this.breastRows.length - 1;
 			return Appearance.breastCup(breastRows[rowNum].breastRating);
 		}
 
@@ -3648,6 +3649,7 @@ import flash.errors.IllegalOperationError;
 		
 		public function nippleDescript(rowIdx:int):String
 		{
+			if (rowIdx == -1) rowIdx = this.breastRows.length - 1;
 			return Appearance.nippleDescription(this, rowIdx);
 		}
 
@@ -3811,7 +3813,9 @@ import flash.errors.IllegalOperationError;
 			return Appearance.sackDescript(this);
 		}
 
-		public function breastDescript(rowNum:int):String {
+		public function breastDescript(rowNum:int):String
+		{
+			if (rowNum == -1) rowNum = breastRows.length - 1;
 			//ERROR PREVENTION
 			if (breastRows.length - 1 < rowNum) {
 				CoC_Settings.error("");
