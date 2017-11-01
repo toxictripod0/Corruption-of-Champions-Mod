@@ -135,18 +135,9 @@ package classes.Items.Consumables
 				}
 			}
 
-			//Remove additional breasts
-			if (changes < changeLimit && player.breastRows.length > 1 && rand(3) == 0) {
-				outputText("\n\nYou stumble back when your center of balance shifts, and though you adjust before you can fall over, you're left to"
-				          +" watch in awe as your bottom-most " + player.breastDescript(player.breastRows.length - 1) + " shrink down,"
-				          +" disappearing completely into your [if (breastRows >= 3)abdomen|chest]."
-				          +" The " + player.nippleDescript(player.breastRows.length - 1) + "s even fade until nothing but ");
-				if (player.hasFur()) outputText(player.furColor + " " + player.skinDesc);
-				else outputText(player.skinTone + " " + player.skinDesc);
-				outputText(" remains. <b>You've lost a row of breasts!</b>");
-				dynStats("sen", -5);
-				player.removeBreastRow(player.breastRows.length - 1, 1);
-				changes++;
+			//-Remove extra breast rows
+			if (changes < changeLimit && player.breastRows.length > 1 && rand(3) == 0 && !flags[kFLAGS.HYPER_HAPPY]) {
+				mutations.removeExtraBreastRow(tfSource);
 			}
 
 			//-Butt > 5 - decrease butt size

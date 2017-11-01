@@ -68,6 +68,10 @@ package classes.Items.Consumables
 			if (rand(5) === 0) {
 				mutations.updateOvipositionPerk(tfSource);
 			}
+			//-Remove extra breast rows
+			if (changes < changeLimit && player.breastRows.length > 1 && rand(3) == 0 && !flags[kFLAGS.HYPER_HAPPY]) {
+				mutations.removeExtraBreastRow(tfSource);
+			}
 			//Removes wings and shark fin
 			if ((player.wingType != WING_TYPE_NONE || player.rearBody.type == REAR_BODY_SHARK_FIN) && rand(3) === 0 && changes < changeLimit) {
 				if (player.rearBody.type == REAR_BODY_SHARK_FIN) {
