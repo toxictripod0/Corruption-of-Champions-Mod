@@ -3406,16 +3406,7 @@ package classes.Items
 			}
 			//-Remove breast rows over 2.
 			if (changes < changeLimit && player.bRows() > 2 && rand(3) == 0 && !flags[kFLAGS.HYPER_HAPPY]) {
-				changes++;
-				outputText("\n\nYou stumble back when your center of balance shifts, and though you adjust before you can fall over, you're left to watch in awe as your bottom-most " + player.breastDescript(player.breastRows.length - 1) + " shrink down, disappearing completely into your ");
-				if (player.bRows() >= 3) outputText("abdomen");
-				else outputText("chest");
-				outputText(". The " + player.nippleDescript(player.breastRows.length - 1) + "s even fade until nothing but ");
-				if (player.hasFur()) outputText(player.hairColor + " " + player.skinDesc);
-				else outputText(player.skinTone + " " + player.skinDesc);
-				outputText(" remains. <b>You've lost a row of breasts!</b>");
-				dynStats("sen", -5);
-				player.removeBreastRow(player.breastRows.length - 1, 1);
+				removeExtraBreastRow(tfSource);
 			}
 			//-Nipples reduction to 1 per tit.
 			if (player.averageNipplesPerBreast() > 1 && changes < changeLimit && rand(4) == 0) {
