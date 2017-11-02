@@ -2778,7 +2778,9 @@ import mx.logging.ILogger;
 				ass.analLooseness++;
 				stretched = true;
 				//Reset butt stretchin recovery time
-				if (hasStatusEffect(StatusEffects.ButtStretched)) changeStatusValue(StatusEffects.ButtStretched,1,0);
+				if (hasStatusEffect(StatusEffects.ButtStretched)) {
+					changeStatusValue(StatusEffects.ButtStretched,1,0);
+				}
 			}
 			//If within top 10% of capacity, 25% stretch
 			if (cArea < analCapacity() && cArea >= .9*analCapacity() && rng.random(4) === 0) {
@@ -2795,13 +2797,20 @@ import mx.logging.ILogger;
 				ass.analLooseness++;
 				stretched = true;
 			}
-			if (ass.analLooseness > 5) ass.analLooseness = 5;
+			
+			if (ass.analLooseness > 5) {
+				ass.analLooseness = 5;
+			}
 			//Delay un-stretching
 			if (cArea >= .5 * analCapacity()) {
 				//Butt Stretched used to determine how long since last enlargement
-				if (!hasStatusEffect(StatusEffects.ButtStretched)) createStatusEffect(StatusEffects.ButtStretched,0,0,0,0);
+				if (!hasStatusEffect(StatusEffects.ButtStretched)) {
+					createStatusEffect(StatusEffects.ButtStretched,0,0,0,0);
+				}
 				//Reset the timer on it to 0 when restretched.
-				else changeStatusValue(StatusEffects.ButtStretched,1,0);
+				else {
+					changeStatusValue(StatusEffects.ButtStretched,1,0);
+				}
 			}
 			
 			if (stretched) {
