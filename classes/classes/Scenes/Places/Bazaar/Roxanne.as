@@ -59,7 +59,7 @@ WIN:
 			//Increase Roxanne's growing dick size...
 			flags[kFLAGS.ROXANNE_TIME_WITHOUT_SEX]++;
 			//Reset if she finds someone to take it (random at high values)
-			if (flags[kFLAGS.ROXANNE_TIME_WITHOUT_SEX] >= 300 && model.time.hours == 1 && rand(5) == 0) flags[kFLAGS.ROXANNE_TIME_WITHOUT_SEX] = 1;
+			if (flags[kFLAGS.ROXANNE_TIME_WITHOUT_SEX] >= 300 && model.time.hours == 1 && randomNumber.random(5) == 0) flags[kFLAGS.ROXANNE_TIME_WITHOUT_SEX] = 1;
 			//hangover status stuff
 			if (player.hasStatusEffect(StatusEffects.Hangover)) {
 			//Countdown
@@ -243,7 +243,7 @@ protected function roxanneDrinkingContest():void {
 	}
 	//If score is less than 30-50 (Strahza is inconsistant!)
 	//[Lose!] 
-	if (score < (45 + rand(20))) {
+	if (score < (45 + randomNumber.random(20))) {
 		LOGGER.debug("Lost to Roxanne with a score of {0}", score);
 		//Increment loss count!
 		flags[kFLAGS.ROXANNE_DRINING_CONTEST_LOST]++;
@@ -262,7 +262,7 @@ protected function roxanneDrinkingContest():void {
 		outputText("  A scaled hand slaps your " + player.buttDescript() + " spinning you around to fall drunkenly into the pirate's soft, cushy chest.  \"<i>Don't worry, I'll be gentle,</i>\" she whispers, hooking an arm around your sagging frame.");
 		//CHOOSE SEX SCENE
 		//Chance of big booty butt loss!
-		if (player.buttRating > 12 && player.tone <= 50 && flags[kFLAGS.ROXANNE_DRINING_CONTEST_LOST] > 1 && rand(2) == 0){
+		if (player.buttRating > 12 && player.tone <= 50 && flags[kFLAGS.ROXANNE_DRINING_CONTEST_LOST] > 1 && randomNumber.random(2) == 0){
 			LOGGER.debug("Starting loss scene: Big booty");
 			doNext(bigBootyRoxanneContestLoss);
 		} else if (flags[kFLAGS.ROXANNE_TIME_WITHOUT_SEX] >= 200) {
