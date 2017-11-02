@@ -54,8 +54,7 @@ import mx.logging.ILogger;
 		 * Normally creatures do not need a unique RNG,
 		 * so to avoid unnecessary memory usage they use the default instance.
 		 */
-		private static const DEFAULT_RNG:IRandomNumber = new RandomNumber();
-		private var _rng:IRandomNumber = DEFAULT_RNG;
+		private var _rng:IRandomNumber = Utils.DEFAULT_RNG;
 		
 		/**
 		 * Set the RNG this class uses. Intended for testing.

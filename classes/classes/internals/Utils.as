@@ -10,6 +10,11 @@ package classes.internals
 		private static const NUMBER_WORDS_CAPITAL:Array		= ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"];
 		private static const NUMBER_WORDS_POSITIONAL:Array	= ["zeroth", "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth"];
 
+		/**
+		 * Default RNG instance. Uses Utils.rand internally.
+		 */
+		public static const DEFAULT_RNG:IRandomNumber = new RandomNumber();
+		
 		public function Utils()
 		{
 		}
