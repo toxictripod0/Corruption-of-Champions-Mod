@@ -806,12 +806,20 @@ package classes.Items
 		public function removeExtraBreastRow(tfSource:String):void
 		{
 			LOGGER.debug("called removeExtraBreastRow(\"{0}\")", tfSource);
-			if (player.breastRows.length <= 1) return;
+			
+			if (player.breastRows.length <= 1) {
+				return;
+			}
+			
 			outputText("\n\nYou stumble back when your center of balance shifts, and though you adjust before you can fall over, you're left to watch"
 			          +" in awe as your bottom-most [lastbreasts] shrink down, disappearing completely into your [if (breastrows >= 3)abdomen|chest]."
 			          +" The [lastnipples] even fade until nothing but [if (isFluffy)[furColor] [skinDesc]|[skinTone] [skinDesc]] remains."
 			          +" <b>You've lost a row of breasts!</b>");
-			if (tfSource != "regularHummus") dynStats("sen", -5);
+					  
+			if (tfSource !== "regularHummus") {
+				dynStats("sen", -5);
+			}
+			
 			player.removeBreastRow(player.breastRows.length - 1, 1);
 			changes++;
 		}

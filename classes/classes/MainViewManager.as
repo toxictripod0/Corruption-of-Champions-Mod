@@ -80,7 +80,9 @@ import flash.ui.Keyboard;
 			var shadow:DropShadowFilter = new DropShadowFilter();
 			shadow.strength = 0.4;
 			if (!isDarkTheme()) {
-				if (element.filters.length < 1) element.filters = [shadow];
+				if (element.filters.length < 1) {
+					element.filters = [shadow];
+				}
 			}
 			else {
 				element.filters = [];

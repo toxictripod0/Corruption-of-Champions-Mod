@@ -369,7 +369,9 @@ public class MainView extends Block {
 			});
 			button.preCallback = (function(i:int):Function{
 				return function(b:CoCButton):void{
-					if (_onBottomButtonClick != null) _onBottomButtonClick(i);
+					if (_onBottomButtonClick !== null) {
+						_onBottomButtonClick(i);
+					}
 				};
 			})(bi);
 			this.bottomButtons.push(button);

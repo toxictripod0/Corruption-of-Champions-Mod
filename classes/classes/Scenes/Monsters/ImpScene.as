@@ -1882,27 +1882,43 @@ package classes.Scenes.Monsters
 		// NOTE: Assumes player has a cock
 		private function impLordRapeMale(overlord:Boolean):void {
 			clearOutput();
-			if      (doSFWloss())  return;
-			else if (overlord)     outputText(images.showImage("impoverlord-loss-male"));
-			else                   outputText(images.showImage("implord-loss-male"));
+			
+			if (doSFWloss()) {
+				return;
+			} else if (overlord) {
+				outputText(images.showImage("impoverlord-loss-male"));
+			} else {
+				outputText(images.showImage("implord-loss-male"));
+			}
 
 			outputText("Unable to control your lust you fall to the ground, remove your " + player.armorName + " and begin masturbating furiously.  The powerful imp saunters over to you smirking evilly as he towers over your fallen form. You look up at him nervously.  He grabs your chin with one of his clawed hands, while the other digs through his satchel.  He pulls out a vial filled with glowing green liquid, and pops the cork stopper off with his thumb. Before you can react, the demon forces open your mouth and pours the liquid in.  Instinct reacts faster than logic and you swallow the substance as it's poured down your throat.");
 			outputText("\n\nYou cough and splutter, grabbing your gut, as a hot pain fills your stomach.  The imp laughs as you roll around in agony for several long moments, before the burning turns to an arousing warmth that spreads to your [hips] and [asshole].  Groaning, you feel your cheeks flush with arousal, and your eyes glaze over once more with insatiable lust.");
 		
 			// Nr cocks?
 			outputText("\n\n");
-			if (player.cockTotal() == 1)  outputText("You feel your " + player.cockDescript(0) + " grow harder than usual and throb. You go to stroke yourself but it's far too sensitive. ");
-			else if (player.cockTotal() > 1) outputText("You feel your " + player.multiCockDescriptLight() + " grow harder than usual and throb. You go to stroke yourself but they are far too sensitive. ");
-			if (player.cockTotal() > 0) outputText("Any stroking you can do is far too little stimulation and anything else is too painful to withstand. ");
+			if (player.cockTotal() === 1)  {
+				outputText("You feel your " + player.cockDescript(0) + " grow harder than usual and throb. You go to stroke yourself but it's far too sensitive. ");
+			} else if (player.cockTotal() > 1) {
+				outputText("You feel your " + player.multiCockDescriptLight() + " grow harder than usual and throb. You go to stroke yourself but they are far too sensitive. ");
+			}
+			
+			if (player.cockTotal() > 0) {
+				outputText("Any stroking you can do is far too little stimulation and anything else is too painful to withstand. ");
+			}
+			
 			outputText("You whimper and curse in desperation. Your lust clouded mind can only think of one solution; you bend over and reveal your " + player.assholeDescript() + " to the grinning imp.  The humiliation keeps you from looking back to see the imp's reaction, but you can tell by his chuckle that this is exactly what he wanted.");
 			outputText("\n\nThe imp gets behind you; his corrupt presence makes the air feel heavy and hard to breathe.  You notice his satchel and loincloth get carelessly tossed to the ground.  Chancing a glance back, you look in aroused horror at the " + monster.cockDescript(0) + " between the imp's legs as well as his matching cum-filled balls.  Two clawed, red hands spread your [butt] revealing your [asshole].  Mercifully, the demon decides you'll need some form of lubrication and relaxation before he continues.  He leans forward and presses his tongue between your [butt] and begins lapping at your [asshole] viciously.  You can't help but mewl from the merciless attack on your tender rectum.");
 			
 			// Vagina?
-			if      (player.hasVagina())  outputText("\n\nThe imp takes a moment to pleasure your [vagina], forcing his tongue and two clawed fingers inside.  The claws scratch and tease painfully at your inner walls.  You mewl and cry out from the stimulation, as the imp's tongue moves from your [vagina] to your [clit].  You cry out in desperation as the powerful demon attacks your [clit] with his tongue.");
-			else if (player.balls > 0)    outputText("\n\nThe imp moves away from your [asshole], and begins to focus on your [balls].  He pulls one into his hand, and squeezes it cruelly while he licks and bites at your [sack].  He gives a painfully tight squeeze to the orb in his hand, which makes you cry out in painful ecstasy.  A single bead of precum gets forced out of your " + player.cockDescript(0) + ".");
+			if (player.hasVagina()) {
+				outputText("\n\nThe imp takes a moment to pleasure your [vagina], forcing his tongue and two clawed fingers inside.  The claws scratch and tease painfully at your inner walls.  You mewl and cry out from the stimulation, as the imp's tongue moves from your [vagina] to your [clit].  You cry out in desperation as the powerful demon attacks your [clit] with his tongue.");
+			} else if (player.balls > 0) {
+				outputText("\n\nThe imp moves away from your [asshole], and begins to focus on your [balls].  He pulls one into his hand, and squeezes it cruelly while he licks and bites at your [sack].  He gives a painfully tight squeeze to the orb in his hand, which makes you cry out in painful ecstasy.  A single bead of precum gets forced out of your " + player.cockDescript(0) + ".");
+			}
 			
-			if (overlord)
+			if (overlord) {
 				outputText("  You watch as the imp stands up and removes his loincloth to reveal his demonic member.  He doesn't even have to remove his armor!");			
+			}
 			
 			outputText("\n\nThe imp finally backs off from his brutal attack on your sensitive backside.  Whatever was in that vial has made your body incredibly sensitive... each caress feels like an orgasm, and each scratch feels like a stab wound.  You hope that's the only effect of the green liquid, but don't get much chance to ponder it as you feel the muscular demon press the head of his " + monster.cockDescript(0) + " against your [asshole].");
 			outputText("\n\nYou whimper in fear as you look back towards the devilish imp behind you.  He simply grins at you in response as he thrusts forward.  You yell out in pain as the " + monster.cockDescriptShort(0) + " forces its way into your [asshole].  You try to struggle away, but the imp gives you a very rough slap on the ass.  He then roughly grabs your [hips], making sure to dig his claws in just enough to deter you from struggling.");
@@ -1914,8 +1930,10 @@ package classes.Scenes.Monsters
 			outputText("\n\nWithin moments the beast is wildly thrusting in and out of your [asshole].  Pre-cum is pumping out of his " + monster.cockDescriptShort(0) + " like a faucet. The hot demon pre begins to spill back out of your abused [asshole], coating your [hips], and dripping to the ground beneath.  The imp gives you a few more rough thrusts before cumming hard into your [asshole].  The little demon's " + monster.cockDescriptShort(0) + " spasms as he continues to roughly thrust and pump you full of his burning hot demon seed.");
 			
 			outputText("\n\nThe hot seed filling your belly wakes you from your lust induced daydream and you howl in discomfort.  Your belly begins to swell with the thick seed, coating every inch of your insides with the burning, arousing sensation.  This pushes you over the edge and you orgasm.  ");
-			if (player.balls > 0)
+			if (player.balls > 0) {
 				outputText("Your [balls] clench up against your body, desperate to finally expel their contents.  ");
+			}
+			
 			outputText("Your seed spills across the ground, mixing with the copious amount of demon pre that had sloshed to the ground earlier.  You howl loudly in pleasure, as you're finally given release.");
 			
 			outputText("\n\nThe imp pulls out, but is quick to stuff a soft unknown object into your [asshole] to plug all of his delicious, corrupt seed inside of you.  You stay in position, though you're wobbling slightly from the intense experience.  The short, muscular demon looks down at you, and you look up at him concerned.  He chuckles, \"<i>Don't worry my bitch, that thing will dissolve on its own in a day or so,</i>\" the demon assures you.  He grips his " + monster.cockDescript(0) + ", which is soaked with his own juices, and holds it out towards you.");

@@ -63,57 +63,83 @@ package classes.Scenes.Areas.Desert {
 				outputText("She smiles wickedly and intones, \"<i>Tresed eht retaw llahs klim ruoy.</i>\"\n\n");
 				if (player.breastRows.length == 0 || player.biggestTitSize() == 0) {
 					outputText("You grow a perfectly rounded pair of C-cup breasts!  ");
-					if (player.breastRows.length == 0) player.createBreastRow();
+					
+					if (player.breastRows.length == 0) {
+						player.createBreastRow();
+					}
+					
 					player.breastRows[0].breasts = 2;
 					player.breastRows[0].breastRating = 3;
-					if (player.breastRows[0].nipplesPerBreast < 1) player.breastRows[0].nipplesPerBreast = 1;
+					
+					if (player.breastRows[0].nipplesPerBreast < 1) {
+						player.breastRows[0].nipplesPerBreast = 1;
+					}
+					
 					player.orgasm('Tits',false);
 					dynStats("sen", 2, "lus", 1);
 				}
+				
 				if (player.biggestTitSize() >= 1 && player.biggestTitSize() <= 2) {
 					outputText("Your breasts suddenly balloon outwards, stopping as they reach a perfectly rounded C-cup.  ");
 					player.breastRows[0].breastRating = 3;
 					player.orgasm('Tits',false);
 					dynStats("sen", 1, "lus", 1);
 				}
+				
 				if (player.breastRows[0].nipplesPerBreast < 1) {
 					outputText("Two dark spots appear on your chest, rapidly forming into sensitive nipples.  ");
 					player.breastRows[0].nipplesPerBreast = 1;
 					player.orgasm('Tits',false);
 					dynStats("sen", 2, "lus", 1);
 				}
+				
 				if (player.biggestLactation() > 0) {
 					outputText("A strong pressure builds in your chest, painful in its intensity.  You yank down your top as ");
-					if (player.biggestLactation() < 2)
+					
+					if (player.biggestLactation() < 2) {
 						outputText("powerful jets of milk spray from your nipples, spraying thick streams over the desert sands.  You moan at the sensation and squeeze your tits, hosing down the tainted earth with an offering of your milk.  You blush as the milk ends, quite embarrassed with your increased milk production.  ");
-					if (player.biggestLactation() >= 2 && player.biggestLactation() <= 2.6)
+					}
+					
+					if (player.biggestLactation() >= 2 && player.biggestLactation() <= 2.6) {
 						outputText("eruptions of milk squirt from your nipples, hosing thick streams everywhere.  The feeling of the constant gush of fluids is very erotic, and you feel yourself getting more and more turned on.  You start squeezing your breasts as the flow diminishes, anxious to continue the pleasure, but eventually all good things come to an end.  ");
-					if (player.biggestLactation() > 2.6 && player.biggestLactation() < 3)
+					}
+					
+					if (player.biggestLactation() > 2.6 && player.biggestLactation() < 3) {
 						outputText("thick hoses of milk erupt from  your aching nipples, forming puddles in the sand.  You smile at how well you're feeding the desert, your milk coating the sand faster than it can be absorbed.  The constant lactation is pleasurable... in a highly erotic way, and you find yourself moaning and pulling on your nipples, totally outside of your control.  In time you realize the milk has stopped, and even had time to soak into the sands.  You wonder at your strange thoughts and pull your hands from your sensitive nipples.  ");
-					if (player.biggestLactation() >= 3)
+					}
+					
+					if (player.biggestLactation() >= 3) {
 						outputText("you drop to your knees and grab your nipples.  With a very sexual moan you begin milking yourself, hosing out huge quantities of milk.  You pant and grunt, offering as much of your milk as you can.  It cascades down the dune in a small stream, and you can't help but blush with pride... and lust.  The erotic pleasures build as you do your best to feed the desert of all your milk.  You ride the edge of orgasm for an eternity, milk everywhere.  When you come to, you realize you're kneeling there, tugging your dry nipples.  Embarrassed, you stop, but your arousal remains.  ");
+					}
+					
 					if (player.biggestLactation() < 3) {
 						player.boostLactation(.75);
 						outputText("Your breasts feel fuller... riper... like your next milking could be even bigger.  ");
 					}
+					
 					dynStats("lib", 1, "sen", 4, "lus", 15);
 					player.orgasm('Tits',false);
 				}
-				if (player.biggestLactation() == 0) {
+				
+				if (player.biggestLactation() === 0) {
 					outputText("A pleasurable release suddenly erupts from your nipples!  Streams of milk are spraying from your breasts, soaking into the sand immediately.  It stops all too soon, though the witch assures you that you can lactate quite often now.  ");
 					player.boostLactation(1);
 					dynStats("lib", .5, "sen", 1, "lus", 10);
 					player.orgasm('Tits',false);
 				}
+				
 				outputText("The sand-witch smiles and thanks you for your offering.  You notice her dress is damp in four spots on the front.  ");
-				if (flags[kFLAGS.SANDWITCH_SERVICED] == 0) {
+				
+				if (flags[kFLAGS.SANDWITCH_SERVICED] === 0) {
 					outputText("You wonder at what her robes conceal as she vanishes into the dunes.");
 				} else {
-					if (player.cor <= 33)
+					if (player.cor <= 33) {
 						outputText("You are glad to avoid servicing her again as she vanishes into the dunes.");
-					else if (player.cor <= 66)
+					} else if (player.cor <= 66) {
 						outputText("You wonder if you should've resisted and tried for some sex as she departs.");
-					else outputText("You wish you had said no, so you could fuck with her and her magnificent quartet of breasts some more.");
+					} else {
+						outputText("You wish you had said no, so you could fuck with her and her magnificent quartet of breasts some more.");
+					}
 				}
 			}
 			else
@@ -121,6 +147,7 @@ package classes.Scenes.Areas.Desert {
 				outputText("She smiles wickedly and intones, \"<i>nuf erutuf rof riah ydnas, nus tresed eht sa ydnas.</i>\"\n\nYou feel a tingling in your scalp, and realize your hair has become a sandy blonde!");
 				player.hairColor = "sandy blonde";
 			}
+			
 			doNext(camp.returnToCampUseOneHour);
 		}
 		
