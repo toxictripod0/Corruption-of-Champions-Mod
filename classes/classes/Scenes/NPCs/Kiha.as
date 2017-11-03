@@ -1,6 +1,7 @@
 package classes.Scenes.NPCs
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.internals.ChainedDrop;
 	import classes.display.SpriteDb;
@@ -209,7 +210,7 @@ package classes.Scenes.NPCs
 			this.level = 16;
 			this.gems = rand(15) + 95;
 			this.drop = new ChainedDrop().add(useables.D_SCALE, 0.2);
-			this.wingType = WING_TYPE_DRACONIC_LARGE;
+			this.wingType = Wings.TYPE_DRACONIC_LARGE;
 			this.wingDesc = "huge";
 			this.tailType = TAIL_TYPE_LIZARD;
 			checkMonster();

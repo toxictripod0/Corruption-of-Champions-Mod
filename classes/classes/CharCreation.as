@@ -1,5 +1,6 @@
 ﻿package classes 
 {
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.GlobalFlags.kACHIEVEMENTS;
@@ -233,7 +234,7 @@ import fl.controls.ComboBox;
 					player.tailRecharge = 0;
 				}
 			}
-			player.wingType = WING_TYPE_NONE;
+			player.wingType = Wings.TYPE_NONE;
 			if (player.eyeType == EYES_BASILISK) player.eyeType = EYES_LIZARD; // Silently change them to be lizard eyes again. Simple and stupid ;)
 			//Default
 			player.skinTone = "light";

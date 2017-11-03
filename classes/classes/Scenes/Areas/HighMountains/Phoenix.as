@@ -1,6 +1,7 @@
 package classes.Scenes.Areas.HighMountains 
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.internals.ChainedDrop;
@@ -147,7 +148,7 @@ package classes.Scenes.Areas.HighMountains
 			this.drop = new ChainedDrop().add(weapons.SCIMITR,1/20)
 					.add(useables.EBNFLWR, 1/10)
 					.elseDrop(NO_DROP);
-			this.wingType = WING_TYPE_HARPY;
+			this.wingType = Wings.TYPE_HARPY;
 			this.special1 = doubleSlash;
 			this.special2 = phoenixFireBreath;
 			this.special3 = lustBang;

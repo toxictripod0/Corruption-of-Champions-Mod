@@ -1,6 +1,7 @@
 package classes.Scenes.Dungeons.HelDungeon
 {
 	import classes.*;
+	import classes.BodyParts.*;
 
 	public class HarpyQueen extends Monster
 	{
@@ -102,7 +103,7 @@ package classes.Scenes.Dungeons.HelDungeon
 			this.gems = rand(25) +160;
 			this.additionalXP = 50;
 			this.tailType = TAIL_TYPE_HARPY;
-			this.wingType = WING_TYPE_FEATHERED_LARGE;
+			this.wingType = Wings.TYPE_FEATHERED_LARGE;
 			this.drop = NO_DROP;
 			this.createPerk(PerkLib.ImprovedSelfControl, 0, 0, 0, 0);
 			checkMonster();

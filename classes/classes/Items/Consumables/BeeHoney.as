@@ -3,6 +3,7 @@
  */
 package classes.Items.Consumables
 {
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.*;
 	import classes.Items.Mutations;
 	import classes.internals.Utils;
@@ -204,14 +205,14 @@ package classes.Items.Consumables
 			}
 			//Wings
 			//Grow bigger bee wings!
-			if (changes < changeLimit && player.wingType == CoC.WING_TYPE_BEE_LIKE_SMALL && Utils.rand(4)) {
+			if (changes < changeLimit && player.wingType == Wings.TYPE_BEE_LIKE_SMALL && Utils.rand(4)) {
 				changes++;
-				player.wingType = CoC.WING_TYPE_BEE_LIKE_LARGE;
+				player.wingType = Wings.TYPE_BEE_LIKE_LARGE;
 				outputText("\n\nYour wings tingle as they grow, filling out until they are large enough to lift you from the ground and allow you to fly!  <b>You now have large bee wings!</b>  You give a few experimental flaps and begin hovering in place, a giddy smile plastered on your face by the thrill of flight.");
 			}
 
 			//Grow new bee wings if player has none.
-			if (changes < changeLimit && (player.wingType == WING_TYPE_NONE || player.rearBody.type == REAR_BODY_SHARK_FIN) && Utils.rand(4)) {
+			if (changes < changeLimit && (player.wingType == Wings.TYPE_NONE || player.rearBody.type == REAR_BODY_SHARK_FIN) && Utils.rand(4)) {
 				if (player.rearBody.type == REAR_BODY_SHARK_FIN) {
 					outputText("\n\nYou feel an itching on your large back-fin as something begins growing there.  You twist and contort yourself,"
 					          +" trying to scratch and bring yourself relief, and failing miserably.  A sense of relief erupts from you as you feel"
@@ -231,13 +232,13 @@ package classes.Items.Consumables
 					          + player.armorName + " later and you are ready to continue your journey with <b>your new bee wings</b>.");
 				}
 				changes++;
-				player.wingType = CoC.WING_TYPE_BEE_LIKE_SMALL;
+				player.wingType = Wings.TYPE_BEE_LIKE_SMALL;
 			}
 			//Melt demon wings!
-			if (changes < changeLimit && (player.wingType == CoC.WING_TYPE_BAT_LIKE_TINY || player.wingType == CoC.WING_TYPE_BAT_LIKE_LARGE)) {
+			if (changes < changeLimit && (player.wingType == Wings.TYPE_BAT_LIKE_TINY || player.wingType == Wings.TYPE_BAT_LIKE_LARGE)) {
 				changes++;
 				outputText("\n\nYour demonic wings ripple, jelly-like.  Worried, you crane back to look, and to your horror, they're melting away!  Runnels of amber honey trail down the wings' edges, building into a steady flow.  <b>In a moment, the only remnant of your wings is a puddle of honey in the dirt</b>.  Even that is gone in seconds, wicked into the dry soil.");
-				player.wingType = CoC.WING_TYPE_NONE;
+				player.wingType = Wings.TYPE_NONE;
 			}
 			//Remove gills!
 			if (Utils.rand(4) == 0 && player.hasGills() && changes < changeLimit) mutations.updateGills();

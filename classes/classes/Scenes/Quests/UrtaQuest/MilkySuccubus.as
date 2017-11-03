@@ -1,6 +1,7 @@
 package classes.Scenes.Quests.UrtaQuest
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Scenes.Monsters.AbstractSuccubus;
 	import classes.internals.*;
@@ -124,7 +125,7 @@ package classes.Scenes.Quests.UrtaQuest
 			this.drop = NO_DROP;
 			this.hornType = HORNS_DRACONIC_X2;
 			this.horns = 2;
-			this.wingType = WING_TYPE_BAT_LIKE_TINY;
+			this.wingType = Wings.TYPE_BAT_LIKE_TINY;
 			this.wingDesc = "tiny hidden";
 			this.tailType = TAIL_TYPE_DEMONIC;
 			this.special1 = kissAttack;

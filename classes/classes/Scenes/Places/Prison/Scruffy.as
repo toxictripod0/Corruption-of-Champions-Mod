@@ -1,6 +1,7 @@
 package classes.Scenes.Places.Prison 
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.Scenes.Monsters.Imp;
 	
 	public class Scruffy extends Imp
@@ -46,7 +47,7 @@ package classes.Scenes.Places.Prison
 			this.gems = rand(5) + 25;
 			this.drop = NO_DROP;
 			this.special1 = lustMagicAttack;
-			this.wingType = WING_TYPE_IMP;
+			this.wingType = Wings.TYPE_IMP;
 			checkMonster();
 		}
 		

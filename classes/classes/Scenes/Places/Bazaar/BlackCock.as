@@ -1,5 +1,6 @@
 package classes.Scenes.Places.Bazaar 
 {
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.*;
 	import classes.Items.Mutations;
 	import classes.*;
@@ -1606,7 +1607,7 @@ package classes.Scenes.Places.Bazaar
 			// Normal TFs
 			//------------
 			//Removes wings
-			if (rand(4) == 0 && changes < changeLimit && (player.wingType != WING_TYPE_NONE || player.rearBody.type == REAR_BODY_SHARK_FIN)) {
+			if (rand(4) == 0 && changes < changeLimit && (player.wingType != Wings.TYPE_NONE || player.rearBody.type == REAR_BODY_SHARK_FIN)) {
 				if (player.rearBody.type == REAR_BODY_SHARK_FIN) {
 					outputText("\n\nA wave of tightness spreads through your back, and it feels as if someone is stabbing a dagger into your spine."
 					          +" After a moment the pain passes, though your fin is gone!");

@@ -1,6 +1,7 @@
 package classes.Scenes.Areas.HighMountains
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.internals.*;
 
@@ -242,7 +243,7 @@ package classes.Scenes.Areas.HighMountains
 			this.gems = rand(25) +10;
 			this.additionalXP = 50;
 			this.drop = new WeightedDrop(consumables.PURPEAC, 1);
-			this.wingType = WING_TYPE_HARPY;
+			this.wingType = Wings.TYPE_HARPY;
 			this.wingDesc = "fluffy feathery";
 			checkMonster();
 		}

@@ -1,5 +1,6 @@
 package classes.Items.Consumables 
 {
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Items.Consumable;
 	import classes.Items.ConsumableLib;
@@ -46,7 +47,7 @@ package classes.Items.Consumables
 				mutations.updateOvipositionPerk(tfSource);
 			}
 			//Remove wings and shark fin
-			if (player.wingType != WING_TYPE_NONE || player.rearBody.type == REAR_BODY_SHARK_FIN) {
+			if (player.wingType != Wings.TYPE_NONE || player.rearBody.type == REAR_BODY_SHARK_FIN) {
 				if (player.rearBody.type == REAR_BODY_SHARK_FIN) {
 					outputText("\n\nYou sigh, feeling a hot wet tingling down your back.  It tickles slightly as you feel your fin slowly turn to"
 					          +" sludge, dripping to the ground as your body becomes more goo-like.");

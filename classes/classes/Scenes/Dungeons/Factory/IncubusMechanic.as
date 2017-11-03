@@ -1,6 +1,7 @@
 package classes.Scenes.Dungeons.Factory
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Items.Armors.LustyMaidensArmor;
 	import classes.Scenes.Dungeons.Factory;
@@ -210,7 +211,7 @@ package classes.Scenes.Dungeons.Factory
 			this.special1 = cockTripAttack;
 			this.special2 = spoogeAttack;
 			this.tailType = TAIL_TYPE_DEMONIC;
-			this.wingType = WING_TYPE_BAT_LIKE_TINY;
+			this.wingType = Wings.TYPE_BAT_LIKE_TINY;
 			this.wingDesc = "tiny hidden";
 			checkMonster();
 		}

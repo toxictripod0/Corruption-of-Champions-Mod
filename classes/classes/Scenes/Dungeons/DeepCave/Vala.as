@@ -1,6 +1,7 @@
 package classes.Scenes.Dungeons.DeepCave
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.internals.WeightedDrop;
 
@@ -141,7 +142,7 @@ package classes.Scenes.Dungeons.DeepCave
 			var wingDesc:String = "shimmering wings";
 			if (flags[kFLAGS.TIMES_PC_DEFEATED_VALA] == 0) this.drop = new WeightedDrop(consumables.NUMBROX);
 			else this.drop = NO_DROP;
-			this.wingType = WING_TYPE_BEE_LIKE_LARGE;
+			this.wingType = Wings.TYPE_BEE_LIKE_LARGE;
 			this.wingDesc = wingDesc;
 			checkMonster();
 		}

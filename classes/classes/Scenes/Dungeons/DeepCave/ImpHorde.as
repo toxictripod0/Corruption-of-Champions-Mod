@@ -1,6 +1,7 @@
 package classes.Scenes.Dungeons.DeepCave
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.internals.*;
 
 	public class ImpHorde extends Monster
@@ -225,7 +226,7 @@ package classes.Scenes.Dungeons.DeepCave
 			this.gems = 20 + rand(25);
 			this.additionalXP = 50;
 			this.drop = new WeightedDrop(armors.NURSECL, 1);
-			this.wingType = WING_TYPE_IMP;
+			this.wingType = Wings.TYPE_IMP;
 			this.wingDesc = "imp wings";
 			checkMonster();
 		}

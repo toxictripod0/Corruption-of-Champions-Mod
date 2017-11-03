@@ -1,7 +1,7 @@
 package classes.Scenes 
 {
 	import classes.*;
-import classes.BodyParts.Skin;
+	import classes.BodyParts.*;
 import classes.Items.*
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
@@ -1175,31 +1175,31 @@ import classes.Items.*
 			10,16
 		];
 		private static const WING_TYPE_CONSTANTS:Array  = [
-			[WING_TYPE_NONE, "(0) NONE"],
-			[WING_TYPE_BEE_LIKE_SMALL, "(1) BEE_LIKE_SMALL"],
-			[WING_TYPE_BEE_LIKE_LARGE, "(2) BEE_LIKE_LARGE"],
-			[WING_TYPE_HARPY, "(4) HARPY"],
-			[WING_TYPE_IMP, "(5) IMP"],
-			[WING_TYPE_BAT_LIKE_TINY, "(6) BAT_LIKE_TINY"],
-			[WING_TYPE_BAT_LIKE_LARGE, "(7) BAT_LIKE_LARGE"],
-			[WING_TYPE_FEATHERED_LARGE, "(9) FEATHERED_LARGE"],
-			[WING_TYPE_DRACONIC_SMALL, "(10) DRACONIC_SMALL"],
-			[WING_TYPE_DRACONIC_LARGE, "(11) DRACONIC_LARGE"],
-			[WING_TYPE_GIANT_DRAGONFLY, "(12) GIANT_DRAGONFLY"],
+			[Wings.TYPE_NONE, "(0) NONE"],
+			[Wings.TYPE_BEE_LIKE_SMALL, "(1) BEE_LIKE_SMALL"],
+			[Wings.TYPE_BEE_LIKE_LARGE, "(2) BEE_LIKE_LARGE"],
+			[Wings.TYPE_HARPY, "(4) HARPY"],
+			[Wings.TYPE_IMP, "(5) IMP"],
+			[Wings.TYPE_BAT_LIKE_TINY, "(6) BAT_LIKE_TINY"],
+			[Wings.TYPE_BAT_LIKE_LARGE, "(7) BAT_LIKE_LARGE"],
+			[Wings.TYPE_FEATHERED_LARGE, "(9) FEATHERED_LARGE"],
+			[Wings.TYPE_DRACONIC_SMALL, "(10) DRACONIC_SMALL"],
+			[Wings.TYPE_DRACONIC_LARGE, "(11) DRACONIC_LARGE"],
+			[Wings.TYPE_GIANT_DRAGONFLY, "(12) GIANT_DRAGONFLY"],
 			/* [INTERMOD: xianxia]
-			[WING_TYPE_BAT_LIKE_LARGE_2, "(13) BAT_LIKE_LARGE_2"],
-			[WING_TYPE_DRACONIC_HUGE, "(14) DRACONIC_HUGE"],
-			[WING_TYPE_FEATHERED_PHOENIX, "(15) FEATHERED_PHOENIX"],
-			[WING_TYPE_FEATHERED_ALICORN, "(16) FEATHERED_ALICORN"],
-			[WING_TYPE_MANTIS_LIKE_SMALL, "(17) MANTIS_LIKE_SMALL"],
-			[WING_TYPE_MANTIS_LIKE_LARGE, "(18) MANTIS_LIKE_LARGE"],
-			[WING_TYPE_MANTIS_LIKE_LARGE_2, "(19) MANTIS_LIKE_LARGE_2"],
-			[WING_TYPE_GARGOYLE_LIKE_LARGE, "(20) GARGOYLE_LIKE_LARGE"],
-			[WING_TYPE_PLANT, "(21) PLANT"],
-			[WING_TYPE_MANTICORE_LIKE_SMALL, "(22) MANTICORE_LIKE_SMALL"],
-			[WING_TYPE_MANTICORE_LIKE_LARGE, "(23) MANTICORE_LIKE_LARGE"],
+			[Wings.TYPE_BAT_LIKE_LARGE_2, "(13) BAT_LIKE_LARGE_2"],
+			[Wings.TYPE_DRACONIC_HUGE, "(14) DRACONIC_HUGE"],
+			[Wings.TYPE_FEATHERED_PHOENIX, "(15) FEATHERED_PHOENIX"],
+			[Wings.TYPE_FEATHERED_ALICORN, "(16) FEATHERED_ALICORN"],
+			[Wings.TYPE_MANTIS_LIKE_SMALL, "(17) MANTIS_LIKE_SMALL"],
+			[Wings.TYPE_MANTIS_LIKE_LARGE, "(18) MANTIS_LIKE_LARGE"],
+			[Wings.TYPE_MANTIS_LIKE_LARGE_2, "(19) MANTIS_LIKE_LARGE_2"],
+			[Wings.TYPE_GARGOYLE_LIKE_LARGE, "(20) GARGOYLE_LIKE_LARGE"],
+			[Wings.TYPE_PLANT, "(21) PLANT"],
+			[Wings.TYPE_MANTICORE_LIKE_SMALL, "(22) MANTICORE_LIKE_SMALL"],
+			[Wings.TYPE_MANTICORE_LIKE_LARGE, "(23) MANTICORE_LIKE_LARGE"],
 			*/
-			[WING_TYPE_IMP_LARGE, "(13) IMP_LARGE"],
+			[Wings.TYPE_IMP_LARGE, "(13) IMP_LARGE"],
 		];
 		private static const WING_DESC_CONSTANTS:Array = [
 			"(none)","non-existent","tiny hidden","huge","small",
@@ -1359,7 +1359,7 @@ import classes.Items.*
 			//Draconic TF
 			player.hornType = HORNS_DRACONIC_X2;
 			player.horns = 4;
-			player.wingType = WING_TYPE_BAT_LIKE_LARGE;
+			player.wingType = Wings.TYPE_BAT_LIKE_LARGE;
 			//Scorpion TF
 			player.tailType = TAIL_TYPE_SCORPION;
 			player.tailVenom = 100;
@@ -1388,7 +1388,7 @@ import classes.Items.*
 			player.tongueType = TONGUE_DRACONIC;
 			player.hornType = HORNS_DRACONIC_X2;
 			player.horns = 4;
-			player.wingType = WING_TYPE_DRACONIC_LARGE;
+			player.wingType = Wings.TYPE_DRACONIC_LARGE;
 			doNext(styleHackMenu);
 		}
 		

@@ -1,6 +1,7 @@
 package classes.Items.Consumables 
 {
 	import classes.Appearance;
+	import classes.BodyParts.*;
 	import classes.CockTypesEnum;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
@@ -564,14 +565,14 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Wings TF
-			if (player.wingType != WING_TYPE_FEATHERED_LARGE && player.armType == ARM_TYPE_COCKATRICE && changes < changeLimit && rand(4) == 0) {
+			if (player.wingType != Wings.TYPE_FEATHERED_LARGE && player.armType == ARM_TYPE_COCKATRICE && changes < changeLimit && rand(4) == 0) {
 				outputText("\n");
-				if (player.wingType != WING_TYPE_NONE) {
+				if (player.wingType != Wings.TYPE_NONE) {
 					outputText("\nSensation fades from your [wings] slowly but surely, leaving them dried out husks that break off to fall on the"
 					          +" ground. Your back closes up to conceal the loss, as smooth and unbroken as the day you entered the portal.");
 				}
 				player.wings.setProps({
-					type:  WING_TYPE_FEATHERED_LARGE,
+					type:  Wings.TYPE_FEATHERED_LARGE,
 					color: player.isFluffy() || player.hasCockatriceSkin() ? player.furColor : player.hairColor
 				});
 				outputText("\nPain lances through your back, the muscles knotting oddly and pressing up to bulge your skin. It hurts, oh gods does"

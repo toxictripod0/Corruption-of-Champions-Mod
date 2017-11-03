@@ -1,5 +1,6 @@
 package classes
 {
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Player;
@@ -2377,34 +2378,34 @@ package classes
 		);
 		public static const DEFAULT_WING_NAMES:Object = createMapFromPairs(
 				[
-					[WING_TYPE_NONE, "non-existent"],
-					[WING_TYPE_BEE_LIKE_SMALL, "small bee-like"],
-					[WING_TYPE_BEE_LIKE_LARGE, "large bee-like"],
-					[WING_TYPE_HARPY, "harpy"],
-					[WING_TYPE_IMP, "imp"],
-					[WING_TYPE_IMP_LARGE, "large imp"],
-					[WING_TYPE_BAT_LIKE_TINY, "tiny bat-like"],
-					[WING_TYPE_BAT_LIKE_LARGE, "large bat-like"],
-					[WING_TYPE_FEATHERED_LARGE, "large feathered"],
-					[WING_TYPE_DRACONIC_SMALL, "small draconic"],
-					[WING_TYPE_DRACONIC_LARGE, "large draconic"],
-					[WING_TYPE_GIANT_DRAGONFLY, "giant dragonfly"],
+					[Wings.TYPE_NONE, "non-existent"],
+					[Wings.TYPE_BEE_LIKE_SMALL, "small bee-like"],
+					[Wings.TYPE_BEE_LIKE_LARGE, "large bee-like"],
+					[Wings.TYPE_HARPY, "harpy"],
+					[Wings.TYPE_IMP, "imp"],
+					[Wings.TYPE_IMP_LARGE, "large imp"],
+					[Wings.TYPE_BAT_LIKE_TINY, "tiny bat-like"],
+					[Wings.TYPE_BAT_LIKE_LARGE, "large bat-like"],
+					[Wings.TYPE_FEATHERED_LARGE, "large feathered"],
+					[Wings.TYPE_DRACONIC_SMALL, "small draconic"],
+					[Wings.TYPE_DRACONIC_LARGE, "large draconic"],
+					[Wings.TYPE_GIANT_DRAGONFLY, "giant dragonfly"],
 				]
 		);
 		public static const DEFAULT_WING_DESCS:Object = createMapFromPairs(
 				[
-					[WING_TYPE_NONE, "non-existent"],
-					[WING_TYPE_BEE_LIKE_SMALL, "small bee-like"],
-					[WING_TYPE_BEE_LIKE_LARGE, "large bee-like"],
-					[WING_TYPE_HARPY, "large feathery"],
-					[WING_TYPE_IMP, "small"],
-					[WING_TYPE_IMP_LARGE, "large"],
-					[WING_TYPE_BAT_LIKE_TINY, "tiny, bat-like"],
-					[WING_TYPE_BAT_LIKE_LARGE, "large, bat-like"],
-					[WING_TYPE_FEATHERED_LARGE, "large, feathered"],
-					[WING_TYPE_DRACONIC_SMALL, "small, draconic"],
-					[WING_TYPE_DRACONIC_LARGE, "large, draconic"],
-					[WING_TYPE_GIANT_DRAGONFLY, "giant dragonfly"],
+					[Wings.TYPE_NONE, "non-existent"],
+					[Wings.TYPE_BEE_LIKE_SMALL, "small bee-like"],
+					[Wings.TYPE_BEE_LIKE_LARGE, "large bee-like"],
+					[Wings.TYPE_HARPY, "large feathery"],
+					[Wings.TYPE_IMP, "small"],
+					[Wings.TYPE_IMP_LARGE, "large"],
+					[Wings.TYPE_BAT_LIKE_TINY, "tiny, bat-like"],
+					[Wings.TYPE_BAT_LIKE_LARGE, "large, bat-like"],
+					[Wings.TYPE_FEATHERED_LARGE, "large, feathered"],
+					[Wings.TYPE_DRACONIC_SMALL, "small, draconic"],
+					[Wings.TYPE_DRACONIC_LARGE, "large, draconic"],
+					[Wings.TYPE_GIANT_DRAGONFLY, "giant dragonfly"],
 				]
 		);
 		public static const DEFAULT_LOWER_BODY_NAMES:Object = createMapFromPairs(

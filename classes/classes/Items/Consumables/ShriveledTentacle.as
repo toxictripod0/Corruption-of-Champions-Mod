@@ -1,5 +1,6 @@
 package classes.Items.Consumables 
 {
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Items.Consumable;
@@ -69,9 +70,9 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//-may randomly remove bee wings:
-			if (rand(4) === 0 && (player.wingType === WING_TYPE_BEE_LIKE_SMALL || player.wingType === WING_TYPE_BEE_LIKE_LARGE) && changes < changeLimit) {
+			if (rand(4) === 0 && (player.wingType === Wings.TYPE_BEE_LIKE_SMALL || player.wingType === Wings.TYPE_BEE_LIKE_LARGE) && changes < changeLimit) {
 				outputText("\n\nYour wings twitch and flap involuntarily.  You crane your neck to look at them as best you are able; from what you can see, they seem to be shriveling and curling up.  They're starting to look a lot like they did when they first popped out, wet and new.  <b>As you watch, they shrivel all the way, then recede back into your body.</b>");
-				player.wingType = WING_TYPE_NONE;
+				player.wingType = Wings.TYPE_NONE;
 				changes++;
 			}
 			//-hair morphs to anemone tentacles, retains color, hair shrinks back to med-short('shaggy') and stops growing, lengthening treatments don't work and goblins won't cut it, but more anemone items can lengthen it one level at a time

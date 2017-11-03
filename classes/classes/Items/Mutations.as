@@ -1,6 +1,7 @@
 package classes.Items
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Scenes.Areas.Forest.KitsuneScene;
 	import classes.GlobalFlags.kGAMECLASS;
@@ -2315,9 +2316,9 @@ package classes.Items
 				}
 			}
 			//FINZ R WINGS
-			if ((player.wingType != WING_TYPE_NONE || player.rearBody.type != REAR_BODY_SHARK_FIN) && changes < changeLimit && rand(3) == 0) {
+			if ((player.wingType != Wings.TYPE_NONE || player.rearBody.type != REAR_BODY_SHARK_FIN) && changes < changeLimit && rand(3) == 0) {
 				outputText("\n\n");
-				if (player.wingType != WING_TYPE_NONE) outputText("Your wings fold into themselves, merging together with your back.  ");
+				if (player.wingType != Wings.TYPE_NONE) outputText("Your wings fold into themselves, merging together with your back.  ");
 				outputText("You groan and slump down in pain, almost instantly regretting eating the tooth. You start sweating profusely and panting loudly, feeling the space between your shoulder blades shifting about. You hastily remove your " + player.armorName + " just in time before a strange fin-like structure bursts from in-between your shoulders. You examine it carefully and make a few modifications to your " + player.armorName + " to accommodate your new fin.");
 				player.rearBody.type = REAR_BODY_SHARK_FIN;
 				player.wings.restore();
@@ -2927,7 +2928,7 @@ package classes.Items
 				outputText("While humanoid in shape, they have two large, taloned toes on the front and a single claw protruding from the heel. The entire ensemble is coated in " + player.hairColor + " feathers from ankle to hip, reminding you of the bird-women of the mountains. <b>You now have harpy legs!</b>");
 			}
 			//-Feathery Tail
-			if (player.tailType != TAIL_TYPE_HARPY && changes < changeLimit && (type == 1 || player.wingType == WING_TYPE_FEATHERED_LARGE) && rand(4) == 0) {
+			if (player.tailType != TAIL_TYPE_HARPY && changes < changeLimit && (type == 1 || player.wingType == Wings.TYPE_FEATHERED_LARGE) && rand(4) == 0) {
 				//(tail)
 				if (player.tailType > TAIL_TYPE_NONE) outputText("\n\nYour tail shortens, folding into the crack of your " + player.buttDescript() + " before it disappears. A moment later, a fan of feathers erupts in its place, fluffing up and down instinctively every time the breeze shifts. <b>You have a feathery harpy tail!</b>");
 				//(no tail)
@@ -2936,17 +2937,17 @@ package classes.Items
 				changes++;
 			}
 			//-Propah Wings
-			if (player.wingType == WING_TYPE_NONE && changes < changeLimit && (type == 1 || player.armType == ARM_TYPE_HARPY) && rand(4) == 0) {
+			if (player.wingType == Wings.TYPE_NONE && changes < changeLimit && (type == 1 || player.armType == ARM_TYPE_HARPY) && rand(4) == 0) {
 				outputText("\n\nPain lances through your back, the muscles knotting oddly and pressing up to bulge your " + player.skinDesc + ". It hurts, oh gods does it hurt, but you can't get a good angle to feel at the source of your agony. A loud crack splits the air, and then your body is forcing a pair of narrow limbs through a gap in your " + player.armorName + ". Blood pumps through the new appendages, easing the pain as they fill out and grow. Tentatively, you find yourself flexing muscles you didn't know you had, and");
 				player.wings.setProps({
-					type: WING_TYPE_FEATHERED_LARGE,
+					type: Wings.TYPE_FEATHERED_LARGE,
 					color: player.hasFur() ? player.furColor : player.hairColor
 				});
 				outputText(" <b>you're able to curve the new growths far enough around to behold your brand new, " + player.wings.color + " wings.</b>");
 				changes++;
 			}
 			//-Remove old wings
-			if (([WING_TYPE_NONE, WING_TYPE_FEATHERED_LARGE].indexOf(player.wingType) == -1 || player.rearBody.type == REAR_BODY_SHARK_FIN) && changes < changeLimit && rand(4) == 0) {
+			if (([Wings.TYPE_NONE, Wings.TYPE_FEATHERED_LARGE].indexOf(player.wingType) == -1 || player.rearBody.type == REAR_BODY_SHARK_FIN) && changes < changeLimit && rand(4) == 0) {
 				if (player.rearBody.type == REAR_BODY_SHARK_FIN) {
 					outputText("\n\nSensation fades from your large fin slowly but surely, leaving it a dried out husk that breaks off to fall on the"
 					          +" ground. Your back closes up to conceal the loss, as smooth and unbroken as the day you entered the portal.");
@@ -4225,37 +4226,37 @@ package classes.Items
 				flags[kFLAGS.TIMES_TRANSFORMED]++;
 			}
 			//Grow demon wings
-			if ((player.wingType != WING_TYPE_BAT_LIKE_LARGE || player.rearBody.type == REAR_BODY_SHARK_FIN) && rand(8) == 0 && player.isCorruptEnough(50)) {
+			if ((player.wingType != Wings.TYPE_BAT_LIKE_LARGE || player.rearBody.type == REAR_BODY_SHARK_FIN) && rand(8) == 0 && player.isCorruptEnough(50)) {
 				//grow smalls to large
-				if (player.wingType == WING_TYPE_BAT_LIKE_TINY && player.cor >= (75 - player.corruptionTolerance())) {
+				if (player.wingType == Wings.TYPE_BAT_LIKE_TINY && player.cor >= (75 - player.corruptionTolerance())) {
 					outputText("\n\n");
 					outputText("Your small demonic wings stretch and grow, tingling with the pleasure of being attached to such a tainted body.  You stretch over your shoulder to stroke them as they unfurl, turning into full-sized demon-wings.  <b>Your demonic wings have grown!</b>");
-					player.wingType = WING_TYPE_BAT_LIKE_LARGE;
+					player.wingType = Wings.TYPE_BAT_LIKE_LARGE;
 				}
 				else if (player.rearBody.type == REAR_BODY_SHARK_FIN) {
 					outputText("\n\nThe muscles around your shoulders bunch up uncomfortably, changing to support the new bat-like wings growing from"
 					          +" your back.  You twist your head as far as you can for a look"
 					          +" and realize your fin has changed into small bat-like demon-wings!");
 					player.rearBody.restore();
-					player.wingType = WING_TYPE_BAT_LIKE_TINY;
+					player.wingType = Wings.TYPE_BAT_LIKE_TINY;
 				}
 				//No wings
-				else if (player.wingType == WING_TYPE_NONE) {
+				else if (player.wingType == Wings.TYPE_NONE) {
 					outputText("\n\n");
 					outputText("A knot of pain forms in your shoulders as they tense up.  With a surprising force, a pair of small demonic wings sprout from your back, ripping a pair of holes in the back of your " + player.armorName + ".  <b>You now have tiny demonic wings</b>.");
-					player.wingType = WING_TYPE_BAT_LIKE_TINY;
+					player.wingType = Wings.TYPE_BAT_LIKE_TINY;
 				}
 				//Other wing types
 				else {
 					outputText("\n\n");
 					outputText("The muscles around your shoulders bunch up uncomfortably, changing to support your wings as you feel their weight increasing.  You twist your head as far as you can for a look and realize they've changed into ");
-					if ([WING_TYPE_BEE_LIKE_SMALL, WING_TYPE_HARPY, WING_TYPE_IMP, WING_TYPE_DRACONIC_SMALL].indexOf(player.wingType) != -1) {
+					if ([Wings.TYPE_BEE_LIKE_SMALL, Wings.TYPE_HARPY, Wings.TYPE_IMP, Wings.TYPE_DRACONIC_SMALL].indexOf(player.wingType) != -1) {
 						outputText("small ");
-						player.wingType = WING_TYPE_BAT_LIKE_TINY;
+						player.wingType = Wings.TYPE_BAT_LIKE_TINY;
 					}
 					else {
 						outputText("large ");
-						player.wingType = WING_TYPE_BAT_LIKE_LARGE;
+						player.wingType = Wings.TYPE_BAT_LIKE_LARGE;
 					}
 					outputText("<b>bat-like demon-wings!</b>");
 				}

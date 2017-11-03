@@ -1,5 +1,6 @@
 package classes.Items.Consumables 
 {
+	import classes.BodyParts.*;
 	import classes.Items.Consumable;
 	import classes.Items.ConsumableLib;
 	import classes.StatusEffects;
@@ -49,7 +50,7 @@ package classes.Items.Consumables
 			player.faceType = FACE_HUMAN;
 			player.lowerBody = LOWER_BODY_TYPE_HUMAN;
 			player.legCount = 2;
-			player.wingType = WING_TYPE_NONE;
+			player.wingType = Wings.TYPE_NONE;
 			player.tailType = TAIL_TYPE_NONE;
 			player.tongueType = TONGUE_HUMAN;
 			player.tailRecharge = 0;

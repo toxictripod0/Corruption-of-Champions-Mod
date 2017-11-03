@@ -1,6 +1,7 @@
 package classes.Scenes.Areas.GlacialRift 
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.internals.WeightedDrop;
 	
 	public class Valkyrie extends Monster
@@ -176,7 +177,7 @@ package classes.Scenes.Areas.GlacialRift
 					.add(shields.GREATSH, 2)
 					.add(consumables.W__BOOK, 4)					
 					.add(null, 18);
-			this.wingType = WING_TYPE_HARPY
+			this.wingType = Wings.TYPE_HARPY
 			this.wingDesc = "fluffy feathery"
 			this.special1 = spearAttack;
 			this.special2 = shieldBash;

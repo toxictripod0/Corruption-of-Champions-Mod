@@ -1,6 +1,7 @@
 package classes.Scenes.Areas.HighMountains
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.internals.WeightedAction;
 	import classes.internals.WeightedDrop;
 	import classes.GlobalFlags.*
@@ -17,7 +18,7 @@ package classes.Scenes.Areas.HighMountains
 
 		public function wingify():void
 		{
-			wingType = WING_TYPE_FEATHERED_LARGE;
+			wingType = Wings.TYPE_FEATHERED_LARGE;
 			wingDesc = "large, feathered";
 			spe += 10;
 			imageName += "withwings";

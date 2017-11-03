@@ -1,8 +1,6 @@
 ﻿package classes
 {
-
-	import classes.BodyParts.Neck;
-	import classes.BodyParts.UnderBody;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.GlobalFlags.kACHIEVEMENTS;
 	import classes.Scenes.Inventory;
@@ -2311,7 +2309,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 public function unFuckSave():void
 {
 	//Fixing shit!
-	if (player.wings.type == WING_TYPE_FEATHERED_LARGE && player.wings.color == "no") {
+	if (player.wings.type == Wings.TYPE_FEATHERED_LARGE && player.wings.color == "no") {
 		// Player has harpy wings from an old save, let's fix its color
 		player.wings.color = player.hasFur() ? player.furColor : player.hairColor;
 	}

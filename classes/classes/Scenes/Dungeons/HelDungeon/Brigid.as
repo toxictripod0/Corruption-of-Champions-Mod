@@ -1,6 +1,7 @@
 package classes.Scenes.Dungeons.HelDungeon
 {
 	import classes.*;
+	import classes.BodyParts.*;
 
 	public class Brigid extends Monster
 	{
@@ -90,7 +91,7 @@ package classes.Scenes.Dungeons.HelDungeon
 			this.level = 19;
 			this.gems = rand(25) +140;
 			this.additionalXP = 50;
-			this.wingType = WING_TYPE_FEATHERED_LARGE;
+			this.wingType = Wings.TYPE_FEATHERED_LARGE;
 			this.tailType = TAIL_TYPE_DEMONIC;
 			this.hornType = HORNS_DEMON;
 			this.horns = 2;

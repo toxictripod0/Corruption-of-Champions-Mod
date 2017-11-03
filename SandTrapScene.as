@@ -24,7 +24,7 @@ package classes.Scenes.Areas.Desert {
 public function encounterASandTarp():void {
 	clearOutput();
 	spriteSelect(SpriteDb.s_sandtrap);
-	if (flags[kFLAGS.SANDTRAP_LOSS_REPEATS] >= 2 && player.eyeType == EYES_BLACK_EYES_SAND_TRAP && player.wingType == WING_TYPE_GIANT_DRAGONFLY) {
+	if (flags[kFLAGS.SANDTRAP_LOSS_REPEATS] >= 2 && player.eyeType == EYES_BLACK_EYES_SAND_TRAP && player.wingType == Wings.TYPE_GIANT_DRAGONFLY) {
 		sandTrapBadEnd();
 		return;
 	}
@@ -138,7 +138,7 @@ public function sandtrapmentLoss(clear:Boolean = false):void {
 		combat.cleanupAfterCombat();
 		return;
 	}
-	if (flags[kFLAGS.SANDTRAP_LOSS_REPEATS] >= 2 && player.eyeType == EYES_BLACK_EYES_SAND_TRAP && player.wingType == WING_TYPE_GIANT_DRAGONFLY) {
+	if (flags[kFLAGS.SANDTRAP_LOSS_REPEATS] >= 2 && player.eyeType == EYES_BLACK_EYES_SAND_TRAP && player.wingType == Wings.TYPE_GIANT_DRAGONFLY) {
 		loseLastFightWithSandTrap();
 		return;
 	}

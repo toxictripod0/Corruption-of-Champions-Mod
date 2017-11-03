@@ -1,6 +1,7 @@
 package classes.Scenes.Dungeons.HelDungeon
 {
 	import classes.*;
+	import classes.BodyParts.*;
 
 	public class PhoenixPlatoon extends Monster
 	{
@@ -102,7 +103,7 @@ package classes.Scenes.Dungeons.HelDungeon
 			this.hornType = HORNS_DRACONIC_X2;
 			this.horns = 2;
 			this.tailType = TAIL_TYPE_HARPY;
-			this.wingType = WING_TYPE_FEATHERED_LARGE;
+			this.wingType = Wings.TYPE_FEATHERED_LARGE;
 			this.drop = NO_DROP;
 			checkMonster();
 		}

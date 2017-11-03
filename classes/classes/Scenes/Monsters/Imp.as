@@ -1,6 +1,7 @@
 package classes.Scenes.Monsters
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.internals.*;
 	import classes.GlobalFlags.kFLAGS;
 
@@ -105,7 +106,7 @@ package classes.Scenes.Monsters
 					add(consumables.INCUBID,3).
 					add(consumables.IMPFOOD,4);
 			this.special1 = lustMagicAttack;
-			this.wingType = WING_TYPE_IMP;
+			this.wingType = Wings.TYPE_IMP;
 			checkMonster();
 		}
 

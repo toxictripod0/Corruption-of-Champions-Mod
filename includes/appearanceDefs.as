@@ -187,21 +187,6 @@ public static const TAIL_TYPE_SHEEP:int                                         
 public static const TAIL_TYPE_IMP:int                                               =  28;
 public static const TAIL_TYPE_COCKATRICE:int                                        =  29;
 
-// wingType
-public static const WING_TYPE_NONE:int                                              =   0;
-public static const WING_TYPE_BEE_LIKE_SMALL:int                                    =   1;
-public static const WING_TYPE_BEE_LIKE_LARGE:int                                    =   2;
-public static const WING_TYPE_HARPY:int                                             =   4;
-public static const WING_TYPE_IMP:int                                               =   5;
-public static const WING_TYPE_BAT_LIKE_TINY:int                                     =   6;
-public static const WING_TYPE_BAT_LIKE_LARGE:int                                    =   7;
-public static const WING_TYPE_SHARK_FIN:int                                         =   8; // Deprecated, moved to the rearBody slot.
-public static const WING_TYPE_FEATHERED_LARGE:int                                   =   9;
-public static const WING_TYPE_DRACONIC_SMALL:int                                    =  10;
-public static const WING_TYPE_DRACONIC_LARGE:int                                    =  11;
-public static const WING_TYPE_GIANT_DRAGONFLY:int                                   =  12;
-public static const WING_TYPE_IMP_LARGE:int                                         =  13;
-
 // lowerBody
 public static const LOWER_BODY_TYPE_HUMAN:int                                       =   0;
 public static const LOWER_BODY_TYPE_HOOFED:int                                      =   1;

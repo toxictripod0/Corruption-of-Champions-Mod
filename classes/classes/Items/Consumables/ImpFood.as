@@ -1,5 +1,6 @@
 package classes.Items.Consumables 
 {
+	import classes.BodyParts.*;
 	import classes.CockTypesEnum;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
@@ -79,36 +80,36 @@ package classes.Items.Consumables
 			}
 			
 			//Imp wings - I just kinda robbed this from demon changes ~Foxwells
-			if (rand(3) == 0 && changes < changeLimit && player.wingType != WING_TYPE_IMP_LARGE && player.isCorruptEnough(25)) {
+			if (rand(3) == 0 && changes < changeLimit && player.wingType != Wings.TYPE_IMP_LARGE && player.isCorruptEnough(25)) {
 				//grow smalls to large
-				if (player.wingType === WING_TYPE_IMP && player.isCorruptEnough(50)) {
+				if (player.wingType === Wings.TYPE_IMP && player.isCorruptEnough(50)) {
 					outputText("\n\n");
 					outputText("Your small imp wings stretch and grow, tingling with the pleasure of being attached to such a tainted body. You stretch over your shoulder to stroke them as they unfurl, turning into large imp-wings. <b>Your imp wings have grown!</b>");
-					player.wingType = WING_TYPE_IMP_LARGE;
+					player.wingType = Wings.TYPE_IMP_LARGE;
 				}
 				else if (player.rearBody.type === REAR_BODY_SHARK_FIN) {
 					outputText("\n\n");
 					outputText("The muscles around your shoulders bunch up uncomfortably, changing to support the new bat-like wings growing from your back. You twist your head as far as you can for a look and realize your fin has changed into imp-wings!");
 					player.rearBody.restore();
-					player.wingType = WING_TYPE_IMP;
+					player.wingType = Wings.TYPE_IMP;
 				}
 				//No wings
-				else if (player.wingType === WING_TYPE_NONE) {
+				else if (player.wingType === Wings.TYPE_NONE) {
 					outputText("\n\n");
 					outputText("A knot of pain forms in your shoulders as they tense up.  With a surprising force, a pair of small imp wings sprout from your back, ripping a pair of holes in the back of your " + player.armorName + ".  <b>You now have imp wings.</b>");
-					player.wingType = WING_TYPE_IMP;
+					player.wingType = Wings.TYPE_IMP;
 				}
 				//Other wing types
 				else {
 					outputText("\n\n");
 					outputText("The muscles around your shoulders bunch up uncomfortably, changing to support your wings as you feel their weight increasing.  You twist your head as far as you can for a look and realize they've changed into ");
-					if ([WING_TYPE_BEE_LIKE_SMALL, WING_TYPE_HARPY, WING_TYPE_DRACONIC_SMALL, WING_TYPE_IMP].indexOf(player.wingType) !== -1) {
+					if ([Wings.TYPE_BEE_LIKE_SMALL, Wings.TYPE_HARPY, Wings.TYPE_DRACONIC_SMALL, Wings.TYPE_IMP].indexOf(player.wingType) !== -1) {
 						outputText("small ");
-						player.wingType = WING_TYPE_IMP;
+						player.wingType = Wings.TYPE_IMP;
 					}
 					else {
 						outputText("large ");
-						player.wingType = WING_TYPE_IMP_LARGE;
+						player.wingType = Wings.TYPE_IMP_LARGE;
 					}
 					outputText("<b>imp-wings!</b>");
 				}

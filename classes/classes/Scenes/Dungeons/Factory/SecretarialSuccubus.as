@@ -1,6 +1,7 @@
 package classes.Scenes.Dungeons.Factory
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.Scenes.Monsters.AbstractSuccubus;
 	import classes.Scenes.Dungeons.Factory;
 	import classes.internals.*;
@@ -75,7 +76,7 @@ package classes.Scenes.Dungeons.Factory
 			this.gems = rand(25) + 10;
 			this.additionalXP = 50;
 			this.drop = new WeightedDrop(consumables.LACTAID, 1);
-			this.wingType = WING_TYPE_BAT_LIKE_TINY;
+			this.wingType = Wings.TYPE_BAT_LIKE_TINY;
 			this.wingDesc = "tiny hidden";
 			this.tailType = TAIL_TYPE_DEMONIC;
 			this.special1 = kissAttack;

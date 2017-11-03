@@ -1,5 +1,6 @@
 ﻿package classes
 {
+import classes.BodyParts.*;
 import classes.GlobalFlags.kFLAGS;
 import classes.GlobalFlags.kGAMECLASS;
 import classes.GlobalFlags.kGAMECLASS;
@@ -892,12 +893,12 @@ use namespace kGAMECLASS;
 					race = "centaur-morph";
 				else
 					if (hornType == HORNS_UNICORN) {
-						if (wingType == WING_TYPE_FEATHERED_LARGE)
+						if (wingType == Wings.TYPE_FEATHERED_LARGE)
 							race = "alicorn";
 						else
 							race = "unicorn-morph";
 					} else {
-						if (wingType == WING_TYPE_FEATHERED_LARGE)
+						if (wingType == Wings.TYPE_FEATHERED_LARGE)
 							race = "pegasus";
 						else
 							race = "equine-morph";
@@ -1011,7 +1012,7 @@ use namespace kGAMECLASS;
 				race = "naga";
 
 			if (lowerBody == LOWER_BODY_TYPE_HOOFED && isTaur()) {
-				if (wingType == WING_TYPE_FEATHERED_LARGE) {
+				if (wingType == Wings.TYPE_FEATHERED_LARGE) {
 					if (hornType == HORNS_UNICORN)
 						race = "alicorn-taur";
 					else
@@ -1069,7 +1070,7 @@ use namespace kGAMECLASS;
 			if (cockatriceCounter > 2) {
 				if (tongueType == TONGUE_LIZARD)
 					cockatriceCounter++;
-				if (wingType == WING_TYPE_FEATHERED_LARGE)
+				if (wingType == Wings.TYPE_FEATHERED_LARGE)
 					cockatriceCounter++;
 				if (skinType == SKIN_TYPE_LIZARD_SCALES)
 					cockatriceCounter++;
@@ -1089,9 +1090,9 @@ use namespace kGAMECLASS;
 				impCounter++;
 			if (tailType == TAIL_TYPE_IMP)
 				impCounter++;
-			if (wingType == WING_TYPE_IMP)
+			if (wingType == Wings.TYPE_IMP)
 				impCounter++;
-			if (wingType == WING_TYPE_IMP_LARGE)
+			if (wingType == Wings.TYPE_IMP_LARGE)
 				impCounter += 2;
 			if (lowerBody == LOWER_BODY_TYPE_IMP)
 				impCounter++;
@@ -1814,7 +1815,7 @@ use namespace kGAMECLASS;
 		public function sirenScore():Number 
 		{
 			var sirenCounter:Number = 0;
-			if (faceType == FACE_SHARK_TEETH && tailType == TAIL_TYPE_SHARK && wingType == WING_TYPE_FEATHERED_LARGE && armType == ARM_TYPE_HARPY)
+			if (faceType == FACE_SHARK_TEETH && tailType == TAIL_TYPE_SHARK && wingType == Wings.TYPE_FEATHERED_LARGE && armType == ARM_TYPE_HARPY)
 				sirenCounter+= 4;
 			if (sirenCounter > 0 && hasVagina())
 				sirenCounter++;

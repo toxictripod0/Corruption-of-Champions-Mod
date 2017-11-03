@@ -1,6 +1,7 @@
 package classes.Scenes.Dungeons.DeepCave
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.internals.*;
 
 	public class Zetaz extends Monster
@@ -192,7 +193,7 @@ package classes.Scenes.Dungeons.DeepCave
 			this.gems = rand(55) + 150;
 			this.additionalXP = 100;
 			this.drop = new WeightedDrop(consumables.BIMBOLQ, 1);
-			this.wingType = WING_TYPE_IMP;
+			this.wingType = Wings.TYPE_IMP;
 			this.wingDesc = "small";
 			this.createPerk(PerkLib.ImprovedSelfControl, 0, 0, 0, 0);
 			checkMonster();

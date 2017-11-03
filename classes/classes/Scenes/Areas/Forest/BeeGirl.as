@@ -1,6 +1,7 @@
 ﻿package classes.Scenes.Areas.Forest
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.*;
 import classes.StatusEffects.Combat.ParalyzeVenomDebuff;
 import classes.internals.ChainedDrop;
@@ -114,7 +115,7 @@ import classes.internals.ChainedDrop;
 					.add(consumables.BEEHONY, 1 / 2)
 					.elseDrop(useables.B_CHITN);
 			this.antennae = ANTENNAE_BEE;
-			this.wingType = WING_TYPE_BEE_LIKE_SMALL;
+			this.wingType = Wings.TYPE_BEE_LIKE_SMALL;
 			this.tailType = TAIL_TYPE_BEE_ABDOMEN;
 			this.tailVenom = 100;
 			this.special1 = beeStingAttack;

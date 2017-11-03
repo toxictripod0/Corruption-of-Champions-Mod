@@ -1,5 +1,6 @@
 package classes
 {
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 
 	/**
@@ -93,17 +94,17 @@ package classes
 		public function hasDragonWings(large:Boolean = false):Boolean
 		{
 			if (large)
-				return wingType == WING_TYPE_DRACONIC_LARGE;
+				return wingType == Wings.TYPE_DRACONIC_LARGE;
 			else
-				return [WING_TYPE_DRACONIC_SMALL, WING_TYPE_DRACONIC_LARGE].indexOf(wingType) != -1;
+				return [Wings.TYPE_DRACONIC_SMALL, Wings.TYPE_DRACONIC_LARGE].indexOf(wingType) != -1;
 		}
 
 		public function hasBatLikeWings(large:Boolean = false):Boolean
 		{
 			if (large)
-				return wingType == WING_TYPE_BAT_LIKE_LARGE;
+				return wingType == Wings.TYPE_BAT_LIKE_LARGE;
 			else
-				return [WING_TYPE_BAT_LIKE_TINY, WING_TYPE_BAT_LIKE_LARGE].indexOf(wingType) != -1;
+				return [Wings.TYPE_BAT_LIKE_TINY, Wings.TYPE_BAT_LIKE_LARGE].indexOf(wingType) != -1;
 		}
 
 		public function hasLeatheryWings(large:Boolean = false):Boolean

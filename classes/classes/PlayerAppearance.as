@@ -1,6 +1,7 @@
 package classes 
 {
 	import classes.*; 
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.*;
 	
 	public class PlayerAppearance extends BaseContent
@@ -557,25 +558,25 @@ package classes
 			//BODY PG HERE
 			outputText("\n\nYou have a humanoid shape with the usual torso, arms, hands, and fingers.");
 			//WINGS!
-			if (player.wingType == WING_TYPE_BEE_LIKE_SMALL) 
+			if (player.wingType == Wings.TYPE_BEE_LIKE_SMALL) 
 				outputText("  A pair of tiny-yet-beautiful bee-wings sprout from your back, too small to allow you to fly.");
-			if (player.wingType == WING_TYPE_BEE_LIKE_LARGE) 
+			if (player.wingType == Wings.TYPE_BEE_LIKE_LARGE) 
 				outputText("  A pair of large bee-wings sprout from your back, reflecting the light through their clear membranes beautifully.  They flap quickly, allowing you to easily hover in place or fly.");
-			if (player.wingType == WING_TYPE_IMP) 
+			if (player.wingType == Wings.TYPE_IMP) 
 				outputText(" A pair of imp wings sprout from your back, flapping cutely but otherwise being of little use.");
-			if (player.wingType == WING_TYPE_IMP_LARGE) 
+			if (player.wingType == Wings.TYPE_IMP_LARGE) 
 				outputText(" A pair of large imp wings fold behind your shoulders. With a muscle-twitch, you can extend them, and use them to soar gracefully through the air.");
-			if (player.wingType == WING_TYPE_BAT_LIKE_TINY) 
+			if (player.wingType == Wings.TYPE_BAT_LIKE_TINY) 
 				outputText("  A pair of tiny bat-like demon-wings sprout from your back, flapping cutely, but otherwise being of little use.");
-			if (player.wingType == WING_TYPE_BAT_LIKE_LARGE) 
+			if (player.wingType == Wings.TYPE_BAT_LIKE_LARGE) 
 				outputText("  A pair of large bat-like demon-wings fold behind your shoulders.  With a muscle-twitch, you can extend them, and use them to soar gracefully through the air.");
-			if (player.wingType == WING_TYPE_FEATHERED_LARGE) 
+			if (player.wingType == Wings.TYPE_FEATHERED_LARGE) 
 				outputText("  A pair of large, feathery wings sprout from your back.  Though you usually keep the " + player.wings.color + "-colored wings folded close, they can unfurl to allow you to soar as gracefully as a harpy.");
-			if (player.wingType == WING_TYPE_DRACONIC_SMALL) 
+			if (player.wingType == Wings.TYPE_DRACONIC_SMALL) 
 				outputText("  Small, vestigial wings sprout from your shoulders.  They might look like bat's wings, but the membranes are covered in fine, delicate scales.");
-			else if (player.wingType == WING_TYPE_DRACONIC_LARGE) 
+			else if (player.wingType == Wings.TYPE_DRACONIC_LARGE) 
 				outputText("  Magnificent wings sprout from your shoulders.  When unfurled they stretch further than your arm span, and a single beat of them is all you need to set out toward the sky.  They look a bit like bat's wings, but the membranes are covered in fine, delicate scales and a wicked talon juts from the end of each bone.");
-			else if (player.wingType == WING_TYPE_GIANT_DRAGONFLY) 
+			else if (player.wingType == Wings.TYPE_GIANT_DRAGONFLY) 
 				outputText("  Giant dragonfly wings hang from your shoulders.  At a whim, you could twist them into a whirring rhythm fast enough to lift you off the ground and allow you to fly.");
 
 			// <mod name="BodyParts.RearBody" author="Stadler76">

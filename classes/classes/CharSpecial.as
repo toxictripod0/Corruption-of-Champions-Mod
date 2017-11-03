@@ -1,5 +1,6 @@
 package classes 
 {
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.GlobalFlags.kACHIEVEMENTS;
@@ -308,7 +309,7 @@ package classes
 			player.buttRating = 5;
 			player.teaseLevel = 1;
 			//Large feathered wings (Any chance in heck I could get 'angel' as the race descriptor? Just asking. I'm fine if the answer is 'no')
-			player.wingType = WING_TYPE_FEATHERED_LARGE;
+			player.wingType = Wings.TYPE_FEATHERED_LARGE;
 			
 			//While we're on the subject, would glowing eyes be possible? I'll take normal eyes if not.
 			//Beautiful Sword
@@ -584,7 +585,7 @@ package classes
 			player.tallness = 67;
 			player.tailVenom = 0;
 			player.tailRecharge = 0;
-			player.wingType = WING_TYPE_NONE;
+			player.wingType = Wings.TYPE_NONE;
 			player.tone = 30;
 			player.thickness = 65;
 		}
@@ -658,7 +659,7 @@ package classes
 			player.horns = 0;
 			player.tailVenom = 0;
 			player.tailRecharge = 0;
-			player.wingType = WING_TYPE_NONE;
+			player.wingType = Wings.TYPE_NONE;
 			//"dog face, dog ears, draconic tail, blue fur.
 			player.faceType = FACE_DOG;
 			player.earType = EARS_DOG;
@@ -807,7 +808,7 @@ package classes
 			//Legs/Feet = Digigrade hooved 
 			player.lowerBody = LOWER_BODY_TYPE_HOOFED;
 			//Wing type = Dragon
-			player.wingType = WING_TYPE_DRACONIC_LARGE;
+			player.wingType = Wings.TYPE_DRACONIC_LARGE;
 			//Tail type = Dragon
 			player.tailType = TAIL_TYPE_DRACONIC;
 			//Cock type = Equine
@@ -969,7 +970,7 @@ package classes
 			player.vaginas[0].vaginalWetness = VAGINA_WETNESS_SLAVERING;
 			player.createStatusEffect(StatusEffects.BonusVCapacity,132,0,0,0);
 			//Virgin, high fertility like in the email I sent before.  dragon wings, nine fox tails,  dragon legs, eight DD breasts with four fuckable nipples each, dragon tongue, waist length hair, large dragon wings.
-			player.wingType = WING_TYPE_DRACONIC_LARGE;
+			player.wingType = Wings.TYPE_DRACONIC_LARGE;
 			player.tailType = TAIL_TYPE_FOX;
 			player.tailVenom = 9;
 			player.lowerBody = LOWER_BODY_TYPE_DRAGON;
@@ -1058,7 +1059,7 @@ package classes
 			player.tallness = 82;
 			player.tailVenom = 0;
 			player.tailRecharge = 0;
-			player.wingType = WING_TYPE_NONE;
+			player.wingType = Wings.TYPE_NONE;
 			//6' 10"" german-shepherd morph, face ears hands feet tail, the whole nine yards
 			player.faceType = FACE_DOG;
 			player.lowerBody = LOWER_BODY_TYPE_DOG;
@@ -1098,7 +1099,7 @@ package classes
 			player.hairColor = "deep red";
 			player.femininity = 90;
 			//She has a demonic tail and small demonic wings thanks to some encounters early on with succubus milk (that stuff is delicious!) but is otherwise still human.
-			player.wingType = WING_TYPE_BAT_LIKE_LARGE;
+			player.wingType = Wings.TYPE_BAT_LIKE_LARGE;
 			player.tailType = TAIL_TYPE_DEMONIC;
 			//I feel really weird talking about all this, so if there's anything you need to change or can't do, or if I totally misinterpreted this, just shoot me an email! jordie.wierenga@gmail.com . Thanks in advance... I'm a big fan. "	Prismere
 		}
@@ -1176,7 +1177,7 @@ package classes
 			player.createPerk(PerkLib.HistoryScholar, 0, 0, 0, 0);
 			//Apperance: Cat Ears, Large Bat Like Wings, 3 Rows of breasts (C cub, 0,2 nipples)
 			player.earType = EARS_CAT;
-			player.wingType = WING_TYPE_BAT_LIKE_LARGE;
+			player.wingType = Wings.TYPE_BAT_LIKE_LARGE;
 			//Items: Katana, Leather Armor
 			player.setWeapon(weapons.KATANA);
 			player.setArmor(armors.URTALTA);
@@ -1191,7 +1192,7 @@ package classes
 			player.setClitLength(0.25);
 			//has a self-repairing hymen in her cunt"	"Angel
 			//(means feathered wings on her back)
-			player.wingType = WING_TYPE_FEATHERED_LARGE;
+			player.wingType = Wings.TYPE_FEATHERED_LARGE;
 			//Halo (Flaming)
 			//D-cups
 			player.createBreastRow();
@@ -1289,7 +1290,7 @@ package classes
 			player.tallness = 109;
 			player.tailVenom = 0;
 			player.tailRecharge = 0;
-			player.wingType = WING_TYPE_DRACONIC_LARGE;
+			player.wingType = Wings.TYPE_DRACONIC_LARGE;
 			player.earType = EARS_HUMAN;
 			player.lowerBody = LOWER_BODY_TYPE_HUMAN;
 			player.armType = ARM_TYPE_HUMAN;
@@ -1498,12 +1499,12 @@ package classes
 			player.tallness = 67;
 			player.tailVenom = 0;
 			player.tailRecharge = 0;
-			player.wingType = WING_TYPE_NONE;
+			player.wingType = Wings.TYPE_NONE;
 			player.earType = EARS_CAT;
 			player.lowerBody = LOWER_BODY_TYPE_CAT;
 			player.tailType = TAIL_TYPE_CAT;
 			player.createPerk(PerkLib.Incorporeality,0,0,0,0);
-			player.wingType = WING_TYPE_FEATHERED_LARGE;
+			player.wingType = Wings.TYPE_FEATHERED_LARGE;
 			player.armType = ARM_TYPE_HARPY;
 			player.hornType = HORNS_DRACONIC_X2;
 			player.horns = 4;
@@ -1631,7 +1632,7 @@ package classes
 			player.tongueType = TONGUE_DRACONIC; // tongue as long as your whole body height! almost tentackle! and so much fun to use!
 			player.hornType = HORNS_DRACONIC_X2; // draconic horns adds to your exotic look, counts towards dragon score and keeps your tentacle hair out of your face! and your partners can use them as handles on occasions, letting your delicate ears uncrumpled!
 			player.horns = 8;
-			player.wingType = WING_TYPE_DRACONIC_LARGE; // wings! to fly!
+			player.wingType = Wings.TYPE_DRACONIC_LARGE; // wings! to fly!
 			
 			player.str += -10; // strength? not a kitsune way, besides, you are small and really neglected physical training
 			player.tou += 0; // still, your dragon blood makes you surprisingly tough for your size and condition
@@ -1891,17 +1892,17 @@ package classes
 			
 			var wings:Number = rand(4); // always have wings to fly... small boon to make up for lack of fighting power
 			if (wings == 0)
-				player.wingType = WING_TYPE_BAT_LIKE_LARGE;
+				player.wingType = Wings.TYPE_BAT_LIKE_LARGE;
 			else if (wings == 1)
-				player.wingType = WING_TYPE_FEATHERED_LARGE;
+				player.wingType = Wings.TYPE_FEATHERED_LARGE;
 			else if (wings == 2)
-				player.wingType = WING_TYPE_DRACONIC_LARGE;
+				player.wingType = Wings.TYPE_DRACONIC_LARGE;
 			else
-				player.wingType = WING_TYPE_GIANT_DRAGONFLY;
+				player.wingType = Wings.TYPE_GIANT_DRAGONFLY;
 				
 			
 			var arms:Number = rand(100); // if have harpy wings 33% chance to have harpy hands, otherwise 5% to have spider hands
-			if (player.wingType == WING_TYPE_FEATHERED_LARGE && rand(4) == 0)
+			if (player.wingType == Wings.TYPE_FEATHERED_LARGE && rand(4) == 0)
 				player.armType = ARM_TYPE_HARPY;
 			else if (rand(20) == 0)
 				player.armType = ARM_TYPE_SPIDER;
