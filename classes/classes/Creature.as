@@ -571,7 +571,7 @@ import flash.errors.IllegalOperationError;
 		//Fertility is a % out of 100. 
 		public var fertility:Number = 10;
 		public var nippleLength:Number = .25;
-		public var breastRows:/*BreastRowClass*/Array;
+		public var breastRows:Vector.<BreastRowClass>;
 		public var ass:AssClass = new AssClass();
 		
 		/**
@@ -733,7 +733,7 @@ import flash.errors.IllegalOperationError;
 			//The world isn't ready for typed Arrays just yet.
 			cocks = [];
 			vaginas = new Vector.<VaginaClass>();
-			breastRows = [];
+			breastRows = new Vector.<BreastRowClass>();
 			_perks = [];
 			statusEffects = [];
 			//keyItems = new Array();
