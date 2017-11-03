@@ -549,7 +549,7 @@ import flash.errors.IllegalOperationError;
 		//MALE STUFF
 		//public var cocks:Array;
 		//TODO: Tuck away into Male genital class?
-		public var cocks:/*Cock*/Array;
+		public var cocks:Vector.<Cock>;
 		//balls
 		public var balls:Number = 0;
 		public var cumMultiplier:Number = 1;
@@ -731,7 +731,7 @@ import flash.errors.IllegalOperationError;
 		{
 			//cocks = new Array();
 			//The world isn't ready for typed Arrays just yet.
-			cocks = [];
+			cocks = new Vector.<Cock>();
 			vaginas = new Vector.<VaginaClass>();
 			breastRows = new Vector.<BreastRowClass>();
 			_perks = [];
