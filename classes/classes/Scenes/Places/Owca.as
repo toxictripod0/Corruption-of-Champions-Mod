@@ -615,18 +615,18 @@ public function leaveOwcaGrimdark():void {
 public function owcaTavern():void {
 	clearOutput();
 	outputText(images.showImage("location-owca-tavern"));
-	outputText("The tavern is nice and cozy; there are a few tables and chairs scattered around in no ordered pattern, and most clients here appear to belong to the same species.  By the crude wooden bar, you see a list of all the current drinks on sale:\n<i>");
+	outputText("The tavern is nice and cozy; there are a few tables and chairs scattered around in no ordered pattern, and most clients here appear to belong to the same species.  By the crude wooden bar, you see a list of all the current drinks on sale:\n");
 	//SheepMk
 	
 	menu();
-	outputText("\nSheep Milk Bottle: " + (180 - flags[kFLAGS.OWCAS_ATTITUDE]) + " gems");
+	outputText("\n<i>Sheep Milk Bottle: " + (180 - flags[kFLAGS.OWCAS_ATTITUDE]) + " gems</i>");
 	if ((180 - flags[kFLAGS.OWCAS_ATTITUDE]) > player.gems) {
 		addDisabledButton(0, "Sheep Milk");
 	} else {
 		addButton(0, "Sheep Milk", owcaBuySetup, consumables.SHEEPMK);
 	}
 	
-	outputText("\nGoblin Ale: " + (60 - Math.round(flags[kFLAGS.OWCAS_ATTITUDE]/2)) + " gems");
+	outputText("\n<i>Goblin Ale: " + (60 - Math.round(flags[kFLAGS.OWCAS_ATTITUDE]/2)) + " gems</i>");
 	if ((60 - Math.round(flags[kFLAGS.OWCAS_ATTITUDE] / 2)) > player.gems) {
 		addDisabledButton(1, "Goblin Ale");
 	} else {
@@ -634,7 +634,7 @@ public function owcaTavern():void {
 	}
 	
 	if (rand(100) > flags[kFLAGS.OWCAS_ATTITUDE]) {
-		outputText("\nBro Brew: 2000 gems");
+		outputText("\n<i>Bro Brew: 2000 gems</i>");
 		if ((2000) > player.gems) {
 			addDisabledButton(2, "Bro Brew");
 		} else {
@@ -642,21 +642,19 @@ public function owcaTavern():void {
 		}
 	}
 	
-	outputText("\nMinotaur Cum: " + (300 - flags[kFLAGS.OWCAS_ATTITUDE]) + " gems");
+	outputText("\n<i>Minotaur Cum: " + (300 - flags[kFLAGS.OWCAS_ATTITUDE]) + " gems</i>");
 	if ((300 - flags[kFLAGS.OWCAS_ATTITUDE]) > player.gems) {
 		addDisabledButton(3, "MinotaurCum");
 	} else {
 		addButton(3, "MinotaurCum", owcaBuySetup, consumables.MINOCUM);
 	}
 	
-	outputText("\nClovis: " + (80 - (flags[kFLAGS.OWCAS_ATTITUDE]/2)) + " gems");
+	outputText("\n<i>Clovis: " + (80 - (flags[kFLAGS.OWCAS_ATTITUDE]/2)) + " gems</i>");
 	if ((80 - (flags[kFLAGS.OWCAS_ATTITUDE]/2)) > player.gems) {
 		addDisabledButton(4, "Clovis");
 	} else {
 		addButton(4, "Clovis", owcaBuySetup, consumables.CLOVERS);
 	}
-	
-	outputText("</i>");
 	
 	addButton(14, "Back", gangbangVillageStuff);
 }
