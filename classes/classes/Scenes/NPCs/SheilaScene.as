@@ -4,8 +4,8 @@
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Scenes.Camp.*;
 	import classes.Items.*;
-	import classes.Scenes.Exploration;
-
+	import classes.Scenes.Areas.Forest;
+	
 	public class SheilaScene extends NPCAwareContent implements TimeAwareInterface {
 
 //const SHEILA_CORRUPTION:int = 760;
@@ -78,13 +78,13 @@
 //-sheilaforge: counts up 1 per day once PC has turned Sheila's lethicite over to the T'A weaponsmith, modifies [Weapons] button outputs in that city's menu if sheilacite = 3
 
 		public var pregnancy:PregnancyStore;
-		private var exploration:Exploration;
+		private var forest:Forest;
 
-		public function SheilaScene(exploration:Exploration)
+		public function SheilaScene(forest:Forest)
 		{
 			pregnancy = new PregnancyStore(kFLAGS.SHEILA_PREGNANCY_TYPE, kFLAGS.SHEILA_PREGNANCY_INCUBATION, 0, 0);
 			CoC.timeAwareClassAdd(this);
-			this.exploration = exploration;
+			this.forest = forest;
 		}
 
 		//Implementation of TimeAwareInterface
@@ -2771,7 +2771,7 @@ private function forcedSheilaOral(dick:Boolean = true):void {
 		//[(no horse)
 		if (!player.isTaur()) outputText("pinch her nipple for emphasis, then grind your hips across her face, mauling her nose with your ass.  \"<i>I could fuck a tree and it wouldn't be as wooden as you in the sack");
 		//[(PC has found corrupt glade)
-		if (exploration.exploredForestCount() >= 40) outputText(" - in fact, there are quite a few I've seen who look like better lovers than you.  Maybe I should carry you to the forest and tie you to a nice pussy-shaped giant flower to give you lessons");
+		if (forest.explorationCount >= 40) outputText(" - in fact, there are quite a few I've seen who look like better lovers than you.  Maybe I should carry you to the forest and tie you to a nice pussy-shaped giant flower to give you lessons");
 		outputText(".  ");
 		//[(minotaur addiction score =/= 0%)
 		if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] > 0 || player.findPerk(PerkLib.MinotaurCumAddict) >= 0) {

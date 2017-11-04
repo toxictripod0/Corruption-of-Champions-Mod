@@ -10,6 +10,7 @@ package classes.Scenes
 	import classes.Scenes.API.Encounters;
 	import classes.Scenes.API.FnHelpers;
 	import classes.Scenes.Areas.DeepWoods;
+	import classes.Scenes.Areas.Forest;
 	import classes.Scenes.Explore.ExploreDebug;
 	import classes.Scenes.Monsters.*;
 	import classes.display.SpriteDb;
@@ -26,12 +27,12 @@ package classes.Scenes
 		private static const LOGGER:ILogger = LoggerFactory.getLogger(Exploration);
 		public static const SERIALIZATION_VERSION:int = 1;
 		
-		private var forestExploredCounter:int;
-		
 		public var exploreDebug:ExploreDebug = new ExploreDebug();
+		
+		private var forest:Forest;
 
-		public function Exploration() {
-			this.forestExploredCounter = 0;
+		public function Exploration(forest:Forest) {
+			this.forest = forest;
 		}
 
 		//const MET_OTTERGIRL:int = 777;
@@ -51,8 +52,8 @@ package classes.Scenes
 				flags[kFLAGS.TIMES_EXPLORED]++;
 				doNext(camp.returnToCampUseOneHour);
 				return;
-			} else if (exploredForestCount() <= 0) {
-				kGAMECLASS.forest.discover();
+			} else if (forest.explorationCount <= 0) {
+				forest.discover();
 				return;
 			}
 
@@ -67,8 +68,8 @@ package classes.Scenes
 			menu();
 			
 			addButton(0, "Explore", tryDiscover).hint("Explore to find new regions and visit any discovered regions.");
-			if (hasDiscoveredForest()) {
-				addButton(1, "Forest", kGAMECLASS.forest.explore).hint("Visit the lush forest. \n\nRecommended level: 1" + (player.level < 6 ? "\n\nBeware of Tentacle Beasts!" : "") + (debug ? "\n\nTimes explored: " + exploredForestCount() : ""));
+			if (forest.isDiscovered()) {
+				addButton(1, "Forest", kGAMECLASS.forest.explore).hint("Visit the lush forest. \n\nRecommended level: 1" + (player.level < 6 ? "\n\nBeware of Tentacle Beasts!" : "") + (debug ? "\n\nTimes explored: " + forest.explorationCount : ""));
 			}
 			
 			if (flags[kFLAGS.TIMES_EXPLORED_LAKE] > 0) addButton(2, "Lake", kGAMECLASS.lake.explore).hint("Visit the lake and explore the beach. \n\nRecommended level: 1" + (debug ? "\n\nTimes explored: " + flags[kFLAGS.TIMES_EXPLORED_LAKE] : ""));
@@ -599,7 +600,7 @@ package classes.Scenes
 		 * @return true if all areas have been visted at least once
 		 */
 		public function hasExploredAllZones():Boolean {
-			return hasDiscoveredForest()
+			return forest.isDiscovered()
 			&& flags[kFLAGS.TIMES_EXPLORED_LAKE] > 0
 			&& flags[kFLAGS.TIMES_EXPLORED_DESERT] > 0
 			&& flags[kFLAGS.TIMES_EXPLORED_MOUNTAIN] > 0
@@ -611,47 +612,11 @@ package classes.Scenes
 			&& flags[kFLAGS.DISCOVERED_GLACIAL_RIFT] > 0;
 		}
 		
-		/**
-		 * Get the number of times the forest was explored.
-		 * @return number of forest visits
-		 */
-		public function exploredForestCount():int {
-			return forestExploredCounter;
-		}
-
-		/**
-		 * Explore the forest, increasing the exploration count.
-		 * @param delta amount to increase the counter, default 1, must be positive
-		 * @return number of times the forest was explored
-		 */
-		public function exploreForest(delta:int = 1):int {
-			LOGGER.debug("Attempting to explore forest with delta {0}", delta);
-			checkDelta(delta);
-			
-			forestExploredCounter += delta;
-			LOGGER.debug("Explored forest, current count is {0}", exploredForestCount());
-			return forestExploredCounter;
-		}
-		
-		private function checkDelta(delta:int):void {
-			if (delta < 1) {
-				throw new ArgumentError("Delta value must be 1 or greater");
-			}
-		}
-		
-		/**
-		 * Check if the forest has been discovered.
-		 * @return true if the forest has been explored at least once
-		 */
-		public function hasDiscoveredForest():Boolean {
-			return exploredForestCount() > 0;
-		}
-		
 		public function serialize(relativeRootObject:*):void 
 		{
 			LOGGER.debug("Serializing...");
 			relativeRootObject[SERIALIZATION_VERSION_PROPERTY] = Exploration.SERIALIZATION_VERSION;
-			relativeRootObject[FOREST_EXPLORED_COUNTER_PROPERTY] = exploredForestCount();
+			relativeRootObject[FOREST_EXPLORED_COUNTER_PROPERTY] = forest.explorationCount;
 		}
 		
 		public function deserialize(relativeRootObject:*):void 
@@ -660,8 +625,8 @@ package classes.Scenes
 			SerializationUtils.serializedVersionCheck(relativeRootObject, SERIALIZATION_VERSION);
 			upgradeSerializationVersion(relativeRootObject);
 			
-			forestExploredCounter = relativeRootObject[FOREST_EXPLORED_COUNTER_PROPERTY];
-			LOGGER.debug("Forest explore count: {0}", forestExploredCounter);
+			forest.explorationCount = relativeRootObject[FOREST_EXPLORED_COUNTER_PROPERTY];
+			LOGGER.debug("Forest explore count: {0}", forest.explorationCount);
 		}
 		
 		/**

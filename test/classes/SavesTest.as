@@ -1,4 +1,5 @@
 package classes{
+	import classes.Scenes.Areas.Forest;
 	import classes.Scenes.Exploration;
     import org.flexunit.asserts.*;
 	import org.hamcrest.assertThat;
@@ -40,7 +41,9 @@ package classes{
 				
 			cut = new Saves(kGAMECLASS.gameStateDirectGet, kGAMECLASS.gameStateDirectSet);
 			kGAMECLASS.inventory = new Inventory(cut);
-			kGAMECLASS.exploration = new Exploration();
+			kGAMECLASS.forest = new Forest();
+			kGAMECLASS.exploration = new Exploration(kGAMECLASS.forest);
+			
         }  
      
         [Test] 
@@ -69,18 +72,18 @@ package classes{
 		
 		[Test]
 		public function explorationSaved():void {
-			kGAMECLASS.exploration.exploreForest();
+			kGAMECLASS.forest.explore();
 			
 			cut.saveGame(TEST_SAVE_GAME, false);
-			kGAMECLASS.exploration.exploreForest(5);
+			kGAMECLASS.forest.explorationCount = 5;
 			cut.loadGame(TEST_SAVE_GAME);
 			
-			assertThat(kGAMECLASS.exploration.exploredForestCount(), equalTo(1));
+			assertThat(kGAMECLASS.forest.explorationCount, equalTo(1));
 		}
 		
 		[Test]
 		public function forestExplorationFlagRemoved():void {
-			kGAMECLASS.exploration.exploreForest(5);
+			kGAMECLASS.forest.explorationCount = 5;
 			cut.saveGame(TEST_SAVE_GAME, false);
 			cut.loadGame(TEST_SAVE_GAME);
 			

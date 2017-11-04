@@ -2538,7 +2538,7 @@ private function updateAchievements():void {
 	if (placesCount() >= 10) awardAchievement("Sightseer", kACHIEVEMENTS.ZONE_SIGHTSEER);
 	if (flags[kFLAGS.TIMES_EXPLORED] >= 1) awardAchievement("Where am I?", kACHIEVEMENTS.ZONE_WHERE_AM_I);
 	if (flags[kFLAGS.TIMES_EXPLORED_DESERT] >= 100) awardAchievement("Dehydrated", kACHIEVEMENTS.ZONE_DEHYDRATED);
-	if (exploration.exploredForestCount() >= 100) {
+	if (kGAMECLASS.forest.explorationCount >= 100) {
 		awardAchievement("Forest Ranger", kACHIEVEMENTS.ZONE_FOREST_RANGER);
 	}
 	if (flags[kFLAGS.TIMES_EXPLORED_LAKE] >= 100) awardAchievement("Vacationer", kACHIEVEMENTS.ZONE_VACATIONER);

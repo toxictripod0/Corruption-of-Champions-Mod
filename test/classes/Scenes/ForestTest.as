@@ -33,7 +33,6 @@ package classes.Scenes{
 			kGAMECLASS.player = player;
 			kGAMECLASS.achievements = new DefaultDict();
 			kGAMECLASS.flags = new DefaultDict();
-			exploration = new Exploration();
 			cut = new Forest();
         }
 		

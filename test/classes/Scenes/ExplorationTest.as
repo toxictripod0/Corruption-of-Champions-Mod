@@ -1,5 +1,6 @@
 package classes.Scenes{
 	import classes.DefaultDict;
+	import classes.Scenes.Areas.Forest;
     import org.flexunit.asserts.*;
 	import org.hamcrest.assertThat;
 	import org.hamcrest.core.*;
@@ -23,6 +24,7 @@ package classes.Scenes{
 		private static const VERSION_PROPERTY:String = "serializationVersion";
 		
 		private var player:Player;
+		private var forest:Forest;
 		private var cut:Exploration;
 		private var serializedObject:*;
 		
@@ -34,15 +36,20 @@ package classes.Scenes{
         [Before]
         public function setUp():void {
 			player = new Player();
+			forest = new Forest();
+			
 			kGAMECLASS.player = player;
 			kGAMECLASS.flags = new DefaultDict();
+			kGAMECLASS.forest = forest;
+			
 			serializedObject = [];
-			cut = new Exploration();
+			cut = new Exploration(forest);
         }
 		
         [Test] 
         public function explorerAchievmentAwarded():void {
-			cut.exploreForest();
+			kGAMECLASS.forest.discover();
+			
 			player.flags[kFLAGS.TIMES_EXPLORED_LAKE] = 1;
 			player.flags[kFLAGS.TIMES_EXPLORED_DESERT] = 1;
 			player.flags[kFLAGS.TIMES_EXPLORED_MOUNTAIN] = 1;
@@ -55,54 +62,10 @@ package classes.Scenes{
 			
 			assertThat(cut.hasExploredAllZones(), equalTo(true));
         }
-		
-		[Test]
-		public function forestExploredCountNotVisited():void {
-			assertThat(cut.exploredForestCount(), equalTo(0));
-		}
-		
-		[Test]
-		public function forestExploredCountVisited():void {
-			cut.exploreForest();
-			
-			assertThat(cut.exploredForestCount(), equalTo(1));
-		}
-				
-		[Test]
-		public function exploreForest():void {
-			assertThat(cut.exploreForest(), equalTo(1));
-		}
-		
-		[Test]
-		public function exploreForestWithPositiveDelta():void {
-			assertThat(cut.exploreForest(42), equalTo(42));
-		}
-		
-		[Test(expected="ArgumentError")]
-		public function exploreForestWithZeroDelta():void {
-			cut.exploreForest(0);
-		}
-		
-		[Test(expected="ArgumentError")]
-		public function exploreForestWithNegativeDelta():void {
-			cut.exploreForest( -1);
-		}
-		
-		[Test]
-		public function hasNotDiscoveredForest():void {
-			assertThat(cut.hasDiscoveredForest(), equalTo(false));
-		}
-		
-		[Test]
-		public function hasDiscoveredForest():void {
-			cut.exploreForest();
-			
-			assertThat(cut.hasDiscoveredForest(), equalTo(true));
-		}
-		
+						
 		[Test]
 		public function serializeForestExplorationCounter():void {
-			cut.exploreForest(FOREST_EXPLORE_COUNT);
+			forest.explorationCount = FOREST_EXPLORE_COUNT
 			
 			cut.serialize(serializedObject);
 			
@@ -122,7 +85,7 @@ package classes.Scenes{
 			
 			cut.deserialize(serializedObject);
 			
-			assertThat(cut.exploredForestCount(), equalTo(FOREST_EXPLORE_COUNT));
+			assertThat(forest.explorationCount, equalTo(FOREST_EXPLORE_COUNT));
 		}
 		
 		[Test]
@@ -132,7 +95,7 @@ package classes.Scenes{
 			
 			cut.deserialize(serializedObject);
 			
-			assertThat(cut.exploredForestCount(), equalTo(FOREST_EXPLORE_COUNT));
+			assertThat(forest.explorationCount, equalTo(FOREST_EXPLORE_COUNT));
 		}
     }
 }

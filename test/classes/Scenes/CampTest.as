@@ -3,6 +3,7 @@ package classes.Scenes{
 	import classes.GlobalFlags.kACHIEVEMENTS;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Player;
+	import classes.Scenes.Areas.Forest;
 	import classes.StatusEffects;
     import org.flexunit.asserts.*;
 	import org.hamcrest.assertThat;
@@ -22,7 +23,7 @@ package classes.Scenes{
     public class CampTest {
 		private var player:Player;
         private var cut:Camp;
-		private var exploration:Exploration;
+		private var forest:Forest;
 		
 		private var doCamp:Function;
 		private function campInitialize(passDoCamp:Function):void { doCamp = passDoCamp; }
@@ -35,28 +36,20 @@ package classes.Scenes{
         [Before]
         public function setUp():void {
 			player = new Player();
+			forest = new Forest();
+			
 			kGAMECLASS.player = player;
+			kGAMECLASS.forest = forest;
+			
 			player.flags[kFLAGS.HISTORY_PERK_SELECTED] = 2
 			player.flags[kFLAGS.MOD_SAVE_VERSION] = kGAMECLASS.modSaveVersion;
 			kGAMECLASS.achievements = new DefaultDict();
 			
-			exploration = new Exploration();
-			cut = new Camp(campInitialize, exploration);
+			cut = new Camp(campInitialize, new MockExploration());
         }  
      
         [Test] 
         public function explorerAchievmentAwarded():void {
-			exploration.exploreForest();
-			player.flags[kFLAGS.TIMES_EXPLORED_LAKE] = 1;
-			player.flags[kFLAGS.TIMES_EXPLORED_DESERT] = 1;
-			player.flags[kFLAGS.TIMES_EXPLORED_MOUNTAIN] = 1;
-			player.flags[kFLAGS.TIMES_EXPLORED_PLAINS] = 1;
-			player.flags[kFLAGS.TIMES_EXPLORED_SWAMP] = 1;
-			player.createStatusEffect(StatusEffects.ExploredDeepwoods, 1, 0, 0, 0);
-			player.flags[kFLAGS.DISCOVERED_HIGH_MOUNTAIN] = 1;
-			player.flags[kFLAGS.BOG_EXPLORED] = 1;
-			player.flags[kFLAGS.DISCOVERED_GLACIAL_RIFT] = 1;
-			
 			doCamp();
 			
 			assertThat(kGAMECLASS.achievements[kACHIEVEMENTS.ZONE_EXPLORER], equalTo(1));
@@ -64,7 +57,7 @@ package classes.Scenes{
 		
 		[Test] 
         public function rangerAchievmentAwarded():void {
-			exploration.exploreForest(100);
+			forest.explorationCount = 100;
 			
 			doCamp();
 			
@@ -73,11 +66,24 @@ package classes.Scenes{
 		
 		[Test] 
         public function rangerAchievmentNotAwarded():void {
-			exploration.exploreForest(2);
+			forest.explorationCount = 2;
 			
 			doCamp();
 			
 			assertThat(kGAMECLASS.achievements[kACHIEVEMENTS.ZONE_FOREST_RANGER], equalTo(0));
         }
     }
+}
+
+import classes.Scenes.Exploration;
+
+class MockExploration extends Exploration {
+	public function MockExploration() 
+	{
+		super(null);
+	}
+	
+	override public function hasExploredAllZones():Boolean {
+		return true;
+	}
 }
