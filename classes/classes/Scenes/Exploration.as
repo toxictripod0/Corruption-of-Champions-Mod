@@ -16,6 +16,7 @@ package classes.Scenes
 	import classes.internals.ISerializable;
 	import mx.logging.ILogger;
 	import classes.internals.LoggerFactory;
+	import classes.internals.SerializationUtils;
 
 	public class Exploration extends BaseContent implements ISerializable
 	{
@@ -674,7 +675,7 @@ package classes.Scenes
 		 * @param	relativeRootObject the loaded serialized data
 		 */
 		private function serializedVersionCheck(relativeRootObject:*):void {
-			var version:int = relativeRootObject[SERIALIZATION_VERSION_PROPERTY];
+			var version:int = SerializationUtils.serializationVersion(relativeRootObject);
 			if (version > Exploration.SERIALIZATION_VERSION) {
 				LOGGER.error("Serialized version is {0}, but the current version is {1}. Backward compatibility is not guaranteed!", version, Exploration.SERIALIZATION_VERSION);
 			}else{
@@ -687,7 +688,7 @@ package classes.Scenes
 		 * @param	relativeRootObject the loaded serialized data
 		 */
 		private function upgradeSerializationVersion(relativeRootObject:*):void {
-			var version:int = relativeRootObject[SERIALIZATION_VERSION_PROPERTY] as int;
+			var version:int = SerializationUtils.serializationVersion(relativeRootObject);
 			switch (version) {
 				case 0: {
 					LOGGER.debug("Version was 0, handling legacy data...");

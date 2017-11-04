@@ -19,6 +19,7 @@ package classes.internals
 		private var testVector:Vector.<ISerializable>;
 		private var testAMFVector:Vector.<ISerializableAMF>;
 		private var deserializedVector:Vector.<*>;
+		private var emptySerializedObject:*;
 		
 		private function buildVector(instances:int):void
 		{
@@ -47,6 +48,7 @@ package classes.internals
 			testVector = new Vector.<ISerializable>();
 			testAMFVector = new Vector.<ISerializableAMF>();
 			deserializedVector = new Vector.<*>();
+			emptySerializedObject = [];
 			
 			buildVector(TEST_INSTANCES);
 			buildAmfVector(TEST_INSTANCES);
@@ -175,6 +177,19 @@ package classes.internals
 			var vector:Vector.<ISerializableAMF> = deserializeAMF();
 			
 			assertThat(vector[TEST_INSTANCES - 1], hasProperties({foo: TEST_INSTANCES - 1, bar: TEST_INSTANCES}));
+		}
+		
+		[Test]
+		public function serializationVersionWithNoProperty():void {
+			assertThat(SerializationUtils.serializationVersion(emptySerializedObject), equalTo(0));
+		}
+		
+				
+		[Test]
+		public function serializationVersionWithProperty():void {
+			emptySerializedObject.serializationVersion = 42;
+			
+			assertThat(SerializationUtils.serializationVersion(emptySerializedObject), equalTo(42));
 		}
 	}
 }
