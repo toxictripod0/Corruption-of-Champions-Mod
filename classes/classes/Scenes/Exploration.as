@@ -52,13 +52,7 @@ package classes.Scenes
 				doNext(camp.returnToCampUseOneHour);
 				return;
 			} else if (exploredForestCount() <= 0) {
-				clearOutput();
-				
-				outputText(images.showImage("area-forest"));
-				outputText("You walk for quite some time, roaming the hard-packed and pink-tinged earth of the demon-realm.  Rust-red rocks speckle the wasteland, as barren and lifeless as anywhere else you've been.  A cool breeze suddenly brushes against your face, as if gracing you with its presence.  You turn towards it and are confronted by the lush foliage of a very old looking forest.  You smile as the plants look fairly familiar and non-threatening.  Unbidden, you remember your decision to test the properties of this place, and think of your campsite as you walk forward.  Reality seems to shift and blur, making you dizzy, but after a few minutes you're back, and sure you'll be able to return to the forest with similar speed.\n\n<b>You have discovered the Forest!</b>");
-				exploreForest();
-				
-				doNext(camp.returnToCampUseOneHour);
+				kGAMECLASS.forest.discover();
 				return;
 			}
 

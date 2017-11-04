@@ -52,5 +52,17 @@ package classes.Scenes{
 			
 			assertThat(exploration.exploredForestCount(), equalTo(1));
 		}
+		
+		[Test]
+		public function forestNotDiscovered():void {
+			assertThat(cut.isDiscovered(), equalTo(false));
+		}
+		
+		[Test]
+		public function forestDiscovered():void {
+			cut.discover();
+			
+			assertThat(cut.isDiscovered(), equalTo(true));
+		}
     }
 }
