@@ -39,7 +39,7 @@ package classes.Scenes{
 		
 		[Test]
 		public function discoverDeepwoods():void {
-			exploration.exploreForest(30);
+			cut.explorationCount = 30;
 			
 			cut.explore();
 			
@@ -50,7 +50,7 @@ package classes.Scenes{
 		public function exploreForestIncrementsCounter():void {
 			cut.explore();
 			
-			assertThat(cut.getExplorationCount(), equalTo(1));
+			assertThat(cut.explorationCount, equalTo(1));
 		}
 		
 		[Test]
@@ -63,6 +63,18 @@ package classes.Scenes{
 			cut.discover();
 			
 			assertThat(cut.isDiscovered(), equalTo(true));
+		}
+		
+		[Test(expected = "ArgumentError")]
+		public function forestExplorationCountSetToNegative():void {
+			cut.explorationCount = -1;
+		}
+		
+		[Test]
+		public function forestExplorationCountSetToPositive():void {
+			cut.explorationCount = 2;
+			
+			assertThat(cut.explorationCount, equalTo(2));
 		}
     }
 }

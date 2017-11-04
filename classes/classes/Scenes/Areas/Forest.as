@@ -32,25 +32,25 @@ package classes.Scenes.Areas
 		public var erlkingScene:ErlKingScene = new ErlKingScene();
 		// public var dullahanScene:DullahanScene = new DullahanScene(); // [INTERMOD:8chan]
 
-		private var explorationCount:int;
+		private var _explorationCount:int;
 		
 		public function discover():void {
 			clearOutput();
 			
 			outputText(images.showImage("area-forest"));
 			outputText("You walk for quite some time, roaming the hard-packed and pink-tinged earth of the demon-realm.  Rust-red rocks speckle the wasteland, as barren and lifeless as anywhere else you've been.  A cool breeze suddenly brushes against your face, as if gracing you with its presence.  You turn towards it and are confronted by the lush foliage of a very old looking forest.  You smile as the plants look fairly familiar and non-threatening.  Unbidden, you remember your decision to test the properties of this place, and think of your campsite as you walk forward.  Reality seems to shift and blur, making you dizzy, but after a few minutes you're back, and sure you'll be able to return to the forest with similar speed.\n\n<b>You have discovered the Forest!</b>");
-			explorationCount++;
+			_explorationCount++;
 			
 			doNext(camp.returnToCampUseOneHour);
 		}
 		
 		public function isDiscovered():Boolean 
 		{
-			return explorationCount > 0;
+			return _explorationCount > 0;
 		}
 		
 		public function Forest() {
-			this.explorationCount = 0;
+			this._explorationCount = 0;
 		}
 
 		public function tentacleBeastDeepwoodsEncounterFn():void {
@@ -88,7 +88,7 @@ package classes.Scenes.Areas
 						name  : "deepwoods",
 						call  : kGAMECLASS.deepWoods.discover,
 						when  : function ():Boolean {
-							return (this.explorationCount >= 20) && !player.hasStatusEffect(StatusEffects.ExploredDeepwoods);
+							return (_explorationCount >= 20) && !player.hasStatusEffect(StatusEffects.ExploredDeepwoods);
 						},
 						chance: Encounters.ALWAYS
 					}, {
@@ -219,18 +219,28 @@ package classes.Scenes.Areas
 		{
 			clearOutput();
 			
-			explorationCount++;
-			LOGGER.debug("Explored forest, current count is {0}", explorationCount);
+			_explorationCount++;
+			LOGGER.debug("Explored forest, current count is {0}", _explorationCount);
 			
 			forestEncounter.execEncounter();
 		}
 		
+		
+		public function set explorationCount(timesExplored:int):void {
+			if (timesExplored < 0 ) {
+				LOGGER.error("Tried to set exploration count to {0}", timesExplored);
+				throw new ArgumentError("Times explored must be zero or greater.");
+			}
+			
+			this._explorationCount = timesExplored;
+		}
+		
 		/**
-		 * Returns how many times this area has been explored.
-		 * @return the number of times explored
+		 * Property for how many times this area has been explored.
+		 * Negative values will throw a exception.
 		 */
-		public function getExplorationCount():int {
-			return this.explorationCount;
+		public function get explorationCount():int {
+			return this._explorationCount;
 		}
 	}
 }
