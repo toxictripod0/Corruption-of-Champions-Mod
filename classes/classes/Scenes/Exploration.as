@@ -663,24 +663,11 @@ package classes.Scenes
 		public function deserialize(relativeRootObject:*):void 
 		{
 			LOGGER.debug("Deserializing...");
-			serializedVersionCheck(relativeRootObject);
+			SerializationUtils.serializedVersionCheck(relativeRootObject, SERIALIZATION_VERSION);
 			upgradeSerializationVersion(relativeRootObject);
 			
 			forestExploredCounter = relativeRootObject[FOREST_EXPLORED_COUNTER_PROPERTY];
 			LOGGER.debug("Forest explore count: {0}", forestExploredCounter);
-		}
-		
-		/**
-		 * Check the version of the serialized data.
-		 * @param	relativeRootObject the loaded serialized data
-		 */
-		private function serializedVersionCheck(relativeRootObject:*):void {
-			var version:int = SerializationUtils.serializationVersion(relativeRootObject);
-			if (version > Exploration.SERIALIZATION_VERSION) {
-				LOGGER.error("Serialized version is {0}, but the current version is {1}. Backward compatibility is not guaranteed!", version, Exploration.SERIALIZATION_VERSION);
-			}else{
-				LOGGER.debug("Serialized version is {0}", version);
-			}
 		}
 		
 		/**
