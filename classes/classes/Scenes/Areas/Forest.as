@@ -6,18 +6,20 @@ package classes.Scenes.Areas
 	import classes.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
-import classes.Scenes.API.Encounter;
-import classes.Scenes.API.Encounters;
-import classes.Scenes.API.FnHelpers;
+	import classes.Scenes.API.Encounter;
+	import classes.Scenes.API.Encounters;
+	import classes.Scenes.API.FnHelpers;
 	import classes.Scenes.API.IExplorable;
 	import classes.Scenes.Areas.Forest.*;
-	import classes.Scenes.Exploration;
+	
+	import classes.internals.LoggerFactory;
+	import mx.logging.ILogger;
 	
 	use namespace kGAMECLASS;
 
 	public class Forest extends BaseContent implements IExplorable
 	{
-		private var exploration:Exploration;
+		private static const LOGGER:ILogger = LoggerFactory.getLogger(Forest);
 		
 		public var akbalScene:AkbalScene = new AkbalScene();
 		public var beeGirlScene:BeeGirlScene = new BeeGirlScene();
@@ -47,8 +49,7 @@ import classes.Scenes.API.FnHelpers;
 			return explorationCount > 0;
 		}
 		
-		public function Forest(exploration:Exploration) {
-			this.exploration = exploration;
+		public function Forest() {
 			this.explorationCount = 0;
 		}
 
@@ -87,7 +88,7 @@ import classes.Scenes.API.FnHelpers;
 						name  : "deepwoods",
 						call  : kGAMECLASS.deepWoods.discover,
 						when  : function ():Boolean {
-							return (exploration.exploredForestCount() >= 20) && !player.hasStatusEffect(StatusEffects.ExploredDeepwoods);
+							return (this.explorationCount >= 20) && !player.hasStatusEffect(StatusEffects.ExploredDeepwoods);
 						},
 						chance: Encounters.ALWAYS
 					}, {
@@ -112,7 +113,7 @@ import classes.Scenes.API.FnHelpers;
 						name  : "marble",
 						call  : marbleVsImp,
 						when  : function ():Boolean {
-							return exploration.hasDiscoveredForest() &&
+							return isDiscovered() &&
 								   !player.hasStatusEffect(StatusEffects.MarbleRapeAttempted)
 								   && !player.hasStatusEffect(StatusEffects.NoMoreMarble)
 								   && player.hasStatusEffect(StatusEffects.Marble)
@@ -217,8 +218,19 @@ import classes.Scenes.API.FnHelpers;
 		public function explore():void
 		{
 			clearOutput();
+			
 			explorationCount++;
+			LOGGER.debug("Explored forest, current count is {0}", explorationCount);
+			
 			forestEncounter.execEncounter();
+		}
+		
+		/**
+		 * Returns how many times this area has been explored.
+		 * @return the number of times explored
+		 */
+		public function getExplorationCount():int {
+			return this.explorationCount;
 		}
 	}
 }

@@ -34,7 +34,7 @@ package classes.Scenes{
 			kGAMECLASS.achievements = new DefaultDict();
 			kGAMECLASS.flags = new DefaultDict();
 			exploration = new Exploration();
-			cut = new Forest(exploration);
+			cut = new Forest();
         }
 		
 		[Test]
@@ -50,7 +50,7 @@ package classes.Scenes{
 		public function exploreForestIncrementsCounter():void {
 			cut.explore();
 			
-			assertThat(exploration.exploredForestCount(), equalTo(1));
+			assertThat(cut.getExplorationCount(), equalTo(1));
 		}
 		
 		[Test]
