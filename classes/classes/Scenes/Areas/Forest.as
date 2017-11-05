@@ -11,15 +11,21 @@ package classes.Scenes.Areas
 	import classes.Scenes.API.FnHelpers;
 	import classes.Scenes.API.IExplorable;
 	import classes.Scenes.Areas.Forest.*;
+	import classes.internals.ISerializable;
+	import classes.internals.SerializationUtils;
 	
 	import classes.internals.LoggerFactory;
 	import mx.logging.ILogger;
 	
 	use namespace kGAMECLASS;
 
-	public class Forest extends BaseContent implements IExplorable
+	public class Forest extends BaseContent implements IExplorable, ISerializable
 	{
 		private static const LOGGER:ILogger = LoggerFactory.getLogger(Forest);
+		
+		private  static const SERIALIZATION_VERSION_PROPERTY:String = "serializationVersion";
+		private static const SERIALIZATION_EXPLORED_COUNTER_PROPERTY:String = "exploredCounter";
+		public static const SERIALIZATION_VERSION:int = 1;
 		
 		public var akbalScene:AkbalScene = new AkbalScene();
 		public var beeGirlScene:BeeGirlScene = new BeeGirlScene();
@@ -241,6 +247,45 @@ package classes.Scenes.Areas
 		 */
 		public function get explorationCount():int {
 			return this._explorationCount;
+		}
+		
+		public function serialize(relativeRootObject:*):void 
+		{
+			LOGGER.debug("Serializing {0}...", this);
+			relativeRootObject[SERIALIZATION_VERSION_PROPERTY] = SERIALIZATION_VERSION;
+			
+			relativeRootObject[SERIALIZATION_EXPLORED_COUNTER_PROPERTY] = _explorationCount;
+		}
+		
+		public function deserialize(relativeRootObject:*):void 
+		{
+			LOGGER.debug("Deserializing  {0}...", this);
+			SerializationUtils.serializedVersionCheck(relativeRootObject, SERIALIZATION_VERSION);
+			upgradeSerializationVersion(relativeRootObject);
+			
+			this._explorationCount = relativeRootObject[SERIALIZATION_EXPLORED_COUNTER_PROPERTY];
+			LOGGER.debug("Forest explore count: {0}", _explorationCount);
+		}
+		
+		/**
+		 * Upgrade from an earlier version of the serialized data.
+		 * This modifies the loaded object so it can be processed by the
+		 * deserialization code.
+		 * @param	relativeRootObject the loaded serialized data
+		 */
+		private function upgradeSerializationVersion(relativeRootObject:*):void {
+			var version:int = SerializationUtils.serializationVersion(relativeRootObject);
+			
+			switch (version) {
+				case 0: {
+					LOGGER.debug("Version was 0, handling legacy data...");
+					relativeRootObject[SERIALIZATION_EXPLORED_COUNTER_PROPERTY] = flags[kFLAGS.TIMES_EXPLORED_FOREST];
+					
+					// delete migrated flag to avoid confusion
+					flags[kFLAGS.TIMES_EXPLORED_FOREST] = 0;
+					LOGGER.debug("Deleted old 'TIMES_EXPLORED_FOREST' flag");
+				}
+			}
 		}
 	}
 }

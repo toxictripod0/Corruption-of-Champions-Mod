@@ -26,7 +26,7 @@ package classes.Scenes{
 		private var player:Player;
 		private var forest:Forest;
 		private var cut:Exploration;
-		private var serializedObject:*;
+		
 		
 		[BeforeClass]
 		public static function setUpClass():void {
@@ -42,7 +42,6 @@ package classes.Scenes{
 			kGAMECLASS.flags = new DefaultDict();
 			kGAMECLASS.forest = forest;
 			
-			serializedObject = [];
 			cut = new Exploration(forest);
         }
 		
@@ -62,40 +61,5 @@ package classes.Scenes{
 			
 			assertThat(cut.hasExploredAllZones(), equalTo(true));
         }
-						
-		[Test]
-		public function serializeForestExplorationCounter():void {
-			forest.explorationCount = FOREST_EXPLORE_COUNT
-			
-			cut.serialize(serializedObject);
-			
-			assertThat(serializedObject, hasProperties({forestExploredCounter: FOREST_EXPLORE_COUNT}));
-		}
-		
-		[Test]
-		public function serializeExplorationVersion():void {
-			cut.serialize(serializedObject);
-			
-			assertThat(serializedObject, hasProperties({serializationVersion: 1}));
-		}
-		
-		[Test]
-		public function deserializeFromNoVersion():void {
-			player.flags[kFLAGS.TIMES_EXPLORED_FOREST] = FOREST_EXPLORE_COUNT;
-			
-			cut.deserialize(serializedObject);
-			
-			assertThat(forest.explorationCount, equalTo(FOREST_EXPLORE_COUNT));
-		}
-		
-		[Test]
-		public function deserializeFromVersion1():void {
-			serializedObject[VERSION_PROPERTY] = 1;
-			serializedObject[FOREST_EXPLORE_PROPERTY] = FOREST_EXPLORE_COUNT;
-			
-			cut.deserialize(serializedObject);
-			
-			assertThat(forest.explorationCount, equalTo(FOREST_EXPLORE_COUNT));
-		}
     }
 }

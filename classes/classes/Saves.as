@@ -2216,12 +2216,6 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		flags[kFLAGS.TIMES_EXPLORED]          = (flags[kFLAGS.TIMES_EXPLORED] || saveFile.data.explored || 0);
 		
 		kGAMECLASS.exploration.deserialize(saveFile.data.exploration);
-		
-		// delete migrated flags to avoid confusion
-		switch (Exploration.SERIALIZATION_VERSION) {
-			case 1:
-				flags[kFLAGS.TIMES_EXPLORED_FOREST] = 0;
-		}
  
 		flags[kFLAGS.JOJO_STATUS]        = (flags[kFLAGS.JOJO_STATUS] || saveFile.data.monk || 0);
 		flags[kFLAGS.SANDWITCH_SERVICED] = (flags[kFLAGS.SANDWITCH_SERVICED] || saveFile.data.sand || 0);

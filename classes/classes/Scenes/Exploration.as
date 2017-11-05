@@ -614,19 +614,16 @@ package classes.Scenes
 		
 		public function serialize(relativeRootObject:*):void 
 		{
-			LOGGER.debug("Serializing...");
+			//TODO serialize total exploration?
+			LOGGER.debug("Serializing {0}...", this);
 			relativeRootObject[SERIALIZATION_VERSION_PROPERTY] = Exploration.SERIALIZATION_VERSION;
-			relativeRootObject[FOREST_EXPLORED_COUNTER_PROPERTY] = forest.explorationCount;
 		}
 		
 		public function deserialize(relativeRootObject:*):void 
 		{
-			LOGGER.debug("Deserializing...");
+			LOGGER.debug("Deserializing {0}...", this);
 			SerializationUtils.serializedVersionCheck(relativeRootObject, SERIALIZATION_VERSION);
 			upgradeSerializationVersion(relativeRootObject);
-			
-			forest.explorationCount = relativeRootObject[FOREST_EXPLORED_COUNTER_PROPERTY];
-			LOGGER.debug("Forest explore count: {0}", forest.explorationCount);
 		}
 		
 		/**
@@ -638,7 +635,6 @@ package classes.Scenes
 			switch (version) {
 				case 0: {
 					LOGGER.debug("Version was 0, handling legacy data...");
-					relativeRootObject[FOREST_EXPLORED_COUNTER_PROPERTY] = flags[kFLAGS.TIMES_EXPLORED_FOREST];
 				}
 			}
 		}
