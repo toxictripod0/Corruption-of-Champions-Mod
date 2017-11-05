@@ -145,5 +145,20 @@ package classes.internals
 			
 			return true;
 		}
+		
+		/**
+		 * Check that the passed object is defined.
+		 * Will initalize with a empty array if undefined or null.
+		 * If the object is defined, then it will be returned.
+		 * @param	object to check and initialize
+		 * @return a valid object. Needed because of how ActionScript handles references
+		 */
+		public static function initializeObject(object:*):* {
+			if (object === undefined || object === null) {
+				object = [];
+			}
+			
+			return object;
+		}
 	}
 }

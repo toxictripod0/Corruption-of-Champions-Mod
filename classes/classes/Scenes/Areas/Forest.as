@@ -260,11 +260,7 @@ package classes.Scenes.Areas
 		public function deserialize(relativeRootObject:*):void 
 		{
 			LOGGER.debug("Deserializing  {0}...", this);
-			
-			if (relativeRootObject === undefined) {
-				relativeRootObject = [];
-				LOGGER.warn("Passed object was undefined");
-			}
+			relativeRootObject = SerializationUtils.initializeObject(relativeRootObject);
 			
 			SerializationUtils.serializedVersionCheck(relativeRootObject, SERIALIZATION_VERSION);
 			upgradeSerializationVersion(relativeRootObject);
