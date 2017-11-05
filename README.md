@@ -33,6 +33,10 @@ If you want to skip the tests (not recommended):
 
 `ant release` or `ant debug`
 
+To list the ant targets:
+
+`ant -p`
+
 ## Testing
 To run all tests:
 
