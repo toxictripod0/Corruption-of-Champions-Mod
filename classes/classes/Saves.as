@@ -812,9 +812,8 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 			}
 		}
 		
-		saveFile.data.exploration = [];
-		kGAMECLASS.exploration.serialize(saveFile.data.exploration);
-				
+		serializeExploration(saveFile);
+		
 		//CLOTHING/ARMOR
 		saveFile.data.armorId = player.armor.id;
 		saveFile.data.weaponId = player.weapon.id;
@@ -1254,6 +1253,19 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		addButton(9, "Restore", restore, slot);
 	}
 	
+}
+
+/**
+ * Saves exploration data in a serialized format.
+ * @param	saveFile to serialize data in
+ */
+private function serializeExploration(saveFile:*):void {
+	saveFile.data.exploration = [];
+	saveFile.data.area = [];
+	saveFile.data.area.forest = [];
+	
+	kGAMECLASS.exploration.serialize(saveFile.data.exploration);
+	kGAMECLASS.forest.serialize(saveFile.data.area.forest);
 }
 
 public function restore(slotName:String):void
@@ -2211,11 +2223,10 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		// Fix possible old save for Plot & Exploration
 		flags[kFLAGS.TIMES_EXPLORED_LAKE]     = (flags[kFLAGS.TIMES_EXPLORED_LAKE] || saveFile.data.exploredLake || 0);
 		flags[kFLAGS.TIMES_EXPLORED_MOUNTAIN] = (flags[kFLAGS.TIMES_EXPLORED_MOUNTAIN] || saveFile.data.exploredMountain || 0);
-		flags[kFLAGS.TIMES_EXPLORED_FOREST]   = (flags[kFLAGS.TIMES_EXPLORED_FOREST] || saveFile.data.exploredForest || 0);
 		flags[kFLAGS.TIMES_EXPLORED_DESERT]   = (flags[kFLAGS.TIMES_EXPLORED_DESERT] || saveFile.data.exploredDesert || 0);
 		flags[kFLAGS.TIMES_EXPLORED]          = (flags[kFLAGS.TIMES_EXPLORED] || saveFile.data.explored || 0);
 		
-		kGAMECLASS.exploration.deserialize(saveFile.data.exploration);
+		deserializeExploration(saveFile);
  
 		flags[kFLAGS.JOJO_STATUS]        = (flags[kFLAGS.JOJO_STATUS] || saveFile.data.monk || 0);
 		flags[kFLAGS.SANDWITCH_SERVICED] = (flags[kFLAGS.SANDWITCH_SERVICED] || saveFile.data.sand || 0);
@@ -2325,6 +2336,15 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		}
 		doNext(playerMenu);
 	}
+}
+
+/**
+ * Loads serialized exploration data.
+ * @param	savegame the serialized data to load
+ */
+private function deserializeExploration(saveFile:*):void {
+	kGAMECLASS.exploration.deserialize(saveFile.data.exploration);
+	kGAMECLASS.forest.deserialize(saveFile.data.area.forest);
 }
 
 public function unFuckSave():void

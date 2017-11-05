@@ -71,7 +71,7 @@ package classes{
         }
 		
 		[Test]
-		public function explorationSaved():void {
+		public function forestExplorationSaved():void {
 			kGAMECLASS.forest.explore();
 			
 			cut.saveGame(TEST_SAVE_GAME, false);
