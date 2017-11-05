@@ -118,5 +118,12 @@ package classes.Scenes{
 			
 			assertThat(cut.explorationCount, equalTo(FOREST_EXPLORE_COUNT));
 		}
+		
+		[Test]
+		public function deserializeUndefined():void {
+			serializedObject = undefined;
+			
+			cut.deserialize(serializedObject);
+		}
     }
 }

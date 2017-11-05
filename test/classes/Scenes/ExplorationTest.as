@@ -26,6 +26,7 @@ package classes.Scenes{
 		private var player:Player;
 		private var forest:Forest;
 		private var cut:Exploration;
+		private var serializedObject:*;
 		
 		
 		[BeforeClass]
@@ -43,6 +44,8 @@ package classes.Scenes{
 			kGAMECLASS.forest = forest;
 			
 			cut = new Exploration(forest);
+			
+			serializedObject = [];
         }
 		
         [Test] 
@@ -61,5 +64,12 @@ package classes.Scenes{
 			
 			assertThat(cut.hasExploredAllZones(), equalTo(true));
         }
+		
+		[Test]
+		public function deserializeUndefined():void {
+			serializedObject = undefined;
+			
+			cut.deserialize(serializedObject);
+		}
     }
 }

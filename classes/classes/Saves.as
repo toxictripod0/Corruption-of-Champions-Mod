@@ -2344,6 +2344,12 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
  */
 private function deserializeExploration(saveFile:*):void {
 	kGAMECLASS.exploration.deserialize(saveFile.data.exploration);
+	
+	//TODO find a better way to do this. Util function?
+	if (!("area" in saveFile.data)) {
+		saveFile.data.area = [];
+	}
+	
 	kGAMECLASS.forest.deserialize(saveFile.data.area.forest);
 }
 
