@@ -44,7 +44,7 @@ To run all tests:
 
 To run a single test case or suite:
 
-`ant test-single -Dtestclass=full.fqn.of.class`
+`ant test-single -Dtestclass=fqn.of.class`
 
 example:
 
