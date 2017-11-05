@@ -4,6 +4,7 @@
 package classes.Scenes.Areas.Swamp
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Items.Armors.LustyMaidensArmor;
@@ -48,7 +49,7 @@ package classes.Scenes.Areas.Swamp
 				outputText("As far as you're aware, it's unlikely you'll be able to scare your stalker off, and so you simply wait for them to show themselves.  You search with your eyes and, noisily clearing your throat, make it clear you're aware of their presence.  Soft chuckling chimes around you, seeming to originate from several places in the scrub, but nothing appears.  You turn about and call again, raising your " + player.weaponName + ".  A gentle tap on the shoulder answers you, but when you look the vista is equally as desolate as the first time.  And where the hell is that laughing coming from?\n\n");
 
 				outputText("Spinning again, you lose your patience and loudly demand your ambusher present itself.  A soft tug on your ");
-				if (player.tailType > TAIL_TYPE_NONE) outputText("tail ");
+				if (player.tailType > Tail.NONE) outputText("tail ");
 				else outputText("hair ");
 				outputText("pulls you back halfway, but as you open your mouth to yell, the ground gives a quiet thump.  Just barely in your periphery, you see a white apparition with a yawning mouth stretching out to bite, and your reflexes take over, dropping your weight and rolling you away from it.\n\n");
 
@@ -98,7 +99,7 @@ package classes.Scenes.Areas.Swamp
 				}
 				if (player.cockThatFits(monster.vaginalCapacity()) >= 0) {
 					addButton(1, "Fuck Pussy", winDriderPCDickInSpiderCunt, undefined, undefined, undefined, "You could fuck her pussy, though you'd be within easy reach of her lips.  If she gets any crazy ideas, it'd be hard to stop her.");
-					if (player.tailType == TAIL_TYPE_SPIDER_ADBOMEN || player.hasItem(useables.T_SSILK)) {
+					if (player.tailType == Tail.SPIDER_ABDOMEN || player.hasItem(useables.T_SSILK)) {
 						addButton(2, "Bondage Fuck", driderVagSmartFuck, undefined, undefined, undefined, "You could bind her up with some webbing for some bondage.  Her lips are dangerous, after all.");
 					}
 				}
@@ -892,7 +893,7 @@ package classes.Scenes.Areas.Swamp
 			else outputText("stuffed with her fingers, femcum streaming down the front of her spider-half as she desperately plays with herself.");
 			outputText("  The need to bury your aching length inside that puffy snatch is almost unbearable, but you don't want to risk exposing yourself to any of her tricks, especially considering how close you'd be to her mouth as you take her.  Racking your brain for a solution, the mass of webbing that covers the canopy around this area catches your eye.");
 
-			if (player.tailType == TAIL_TYPE_SPIDER_ADBOMEN) {
+			if (player.tailType == Tail.SPIDER_ABDOMEN) {
 				outputText("\n\nA plan quickly forms in your mind and you feel your spinnerets twitch with anticipation as you ");
 				if (player.isDrider()) outputText("scuttle");
 				else outputText("saunter");

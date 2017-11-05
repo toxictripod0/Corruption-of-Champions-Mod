@@ -1,5 +1,6 @@
 ﻿package classes.Scenes.NPCs{
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.display.SpriteDb;
@@ -1194,8 +1195,8 @@ private function getIzzyBurped():void {
 			changed = true;
 		}
 		//[if no cow tail]
-		if (player.tailType != TAIL_TYPE_COW) {
-			if (player.tailType > TAIL_TYPE_NONE) outputText("  The tip of your tail reshapes into a burst of fur, the entire length changing to match.");
+		if (player.tailType != Tail.COW) {
+			if (player.tailType > Tail.NONE) outputText("  The tip of your tail reshapes into a burst of fur, the entire length changing to match.");
 			else outputText("  A tail creeps out of your " + player.armorName + ", perking up and growing rapidly.  A flare of fur bursts from the tip, the rest of the length changing to match.");
 			changed = true;
 		}
@@ -1269,7 +1270,7 @@ private function getIzzyBurped():void {
 		outputText("She rewards you by freeing one of her arms and wrapping it around your head, pulling you in between her gleaming ebony melons.  Shaking about and wrapping your head in a marshmallowy shroud of comfort, Isabella continues to force burps out, not content until all of the gas is gone.  She pulls you out of your fleshy prison after the oral venting subsides, dragging you down to the ground with her as her gassy magic begins to take hold.\n\n");
 		
 		//if meets any requirements for cow-y TF
-		if (player.lowerBody != LOWER_BODY_TYPE_HOOFED || player.horns <= 0 || player.hornType != HORNS_COW_MINOTAUR || player.earType != EARS_COW || player.tailType != TAIL_TYPE_COW || (player.hasCock() && player.longestCockLength() < 18)) {
+		if (player.lowerBody != LOWER_BODY_TYPE_HOOFED || player.horns <= 0 || player.hornType != HORNS_COW_MINOTAUR || player.earType != EARS_COW || player.tailType != Tail.COW || (player.hasCock() && player.longestCockLength() < 18)) {
 			outputText("You're not surprised when you take the now-familiar cow-" + player.mf("boy","girl") + " form, ");
 			if ((!player.hasCock() || rand(2) == 0) && player.hasVagina()) outputText("Isabella beaming with eagerness at your sloshing and swelling bosom.\n\n");
 			else if (player.hasCock()) outputText("Isabella not able to keep a little frustration from her face as your dick grows to enviable size.\n\n");

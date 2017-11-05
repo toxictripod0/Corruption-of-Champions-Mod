@@ -78,7 +78,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//remove wings
-			if ((player.wingType !== Wings.TYPE_NONE || player.rearBody.type == REAR_BODY_SHARK_FIN) && rand(3) === 0 && changes < changeLimit) {
+			if ((player.wingType !== Wings.NONE || player.rearBody.type == REAR_BODY_SHARK_FIN) && rand(3) === 0 && changes < changeLimit) {
 				if (player.rearBody.type == REAR_BODY_SHARK_FIN) {
 					outputText("\n\nA wave of tightness spreads through your back, and it feels as if someone is stabbing a dagger into your spine."
 					          +" After a moment the pain passes, though your fin is gone!");
@@ -343,13 +343,13 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Wolf tail
-			if (rand(3) === 0 && changes < changeLimit && player.tailType !== TAIL_TYPE_WOLF) {
-				if (player.tailType === TAIL_TYPE_NONE) outputText("\n\nA pressure builds on your backside. You feel under your clothes and discover an odd, thick bump that seems to be growing larger by the moment. In seconds it passes between your fingers, bursts out the back of your clothes, and grows most of the way to the ground. A nushy coat of fur springs up to cover your new tail.  ");
-				if (player.tailType === TAIL_TYPE_HORSE) outputText("\n\nYou feel a tightness in your rump, matched by the tightness with which the strands of your tail clump together. In seconds they fuse into a single, thick tail, rapidly sprouting bushy fur. ");
-				if (player.tailType === TAIL_TYPE_DEMONIC) outputText("\n\nThe tip of your tail feels strange. As you pull it around to check on it, the spaded tip disappears, quickly replaced by a bushy coat of fur over the entire surface of your tail. Your tail thickens with it. ");
-				if (player.tailType >= TAIL_TYPE_COW) outputText("\n\nYou feel your backside shift and change, flesh molding and displacing into a thick, bushy tail. ");
+			if (rand(3) === 0 && changes < changeLimit && player.tailType !== Tail.WOLF) {
+				if (player.tailType === Tail.NONE) outputText("\n\nA pressure builds on your backside. You feel under your clothes and discover an odd, thick bump that seems to be growing larger by the moment. In seconds it passes between your fingers, bursts out the back of your clothes, and grows most of the way to the ground. A nushy coat of fur springs up to cover your new tail.  ");
+				if (player.tailType === Tail.HORSE) outputText("\n\nYou feel a tightness in your rump, matched by the tightness with which the strands of your tail clump together. In seconds they fuse into a single, thick tail, rapidly sprouting bushy fur. ");
+				if (player.tailType === Tail.DEMONIC) outputText("\n\nThe tip of your tail feels strange. As you pull it around to check on it, the spaded tip disappears, quickly replaced by a bushy coat of fur over the entire surface of your tail. Your tail thickens with it. ");
+				if (player.tailType >= Tail.COW) outputText("\n\nYou feel your backside shift and change, flesh molding and displacing into a thick, bushy tail. ");
 				changes++;
-				player.tailType = TAIL_TYPE_WOLF;
+				player.tailType = Tail.WOLF;
 				outputText("<b>You now have a wolf tail!</b>");
 			}
 			//Sets hair normal
@@ -360,13 +360,13 @@ package classes.Items.Consumables
 			}
 			//MUTATIONZ LEVEL 2: fur->arms fur+tail+ears->face stophair->nohair fur+tail->legs
 			//gain wolf face
-			if (player.faceType !== FACE_WOLF && player.earType === EARS_WOLF && player.tailType === TAIL_TYPE_WOLF && player.hasFur() && rand(5) === 0 && changes < changeLimit) {
+			if (player.faceType !== FACE_WOLF && player.earType === EARS_WOLF && player.tailType === Tail.WOLF && player.hasFur() && rand(5) === 0 && changes < changeLimit) {
 				outputText("\n\nYou screech in pain as the bones of your face begin to rearrange themselves. Your [skinFurScales] practically melts off you, dropping onto the ground with heavy streams of blood. You put your hands to your face, writhing, blackness covering your vision as pain overwhelms you. But as quickly as it came, it stops, and you pull your shaking hands from your face. You scramble to the nearest reflective surface. <b>You have a wolf's face!</b>");
 				player.faceType = FACE_WOLF;
 				changes++;
 			}
 			//legz
-			if (player.legCount === 2 && player.lowerBody !== LOWER_BODY_TYPE_WOLF && player.tailType === TAIL_TYPE_WOLF && player.skinType === SKIN_TYPE_FUR && rand(4) === 0 && changes < changeLimit) {
+			if (player.legCount === 2 && player.lowerBody !== LOWER_BODY_TYPE_WOLF && player.tailType === Tail.WOLF && player.skinType === SKIN_TYPE_FUR && rand(4) === 0 && changes < changeLimit) {
 				//Hooman feets
 				if (player.lowerBody === LOWER_BODY_TYPE_HUMAN) outputText("\n\nYou stumble and fall, howling in pain as your legs and feet break apart and reform into wolf-like legs and paws. The worst of the pain eventually passes, but you're still left whimpering for a while. <b>You now have paws!</b>");
 				//Hooves -> Paws

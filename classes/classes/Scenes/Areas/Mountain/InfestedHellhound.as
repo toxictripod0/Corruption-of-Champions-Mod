@@ -1,6 +1,7 @@
 package classes.Scenes.Areas.Mountain
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.internals.*;
 
 	/**
@@ -146,7 +147,7 @@ package classes.Scenes.Areas.Mountain
 			this.special1 = hellhoundFire;
 			this.special2 = hellhoundScent;
 			this.special3 = hellHoundWormCannon;
-			this.tailType = TAIL_TYPE_DOG;
+			this.tailType = Tail.DOG;
 			checkMonster();
 		}
 

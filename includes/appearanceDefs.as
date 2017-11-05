@@ -155,38 +155,6 @@ public static const CLAW_TYPE_MANTIS:int                                        
 public static const CLAW_TYPE_IMP:int                                               =   8;
 public static const CLAW_TYPE_COCKATRICE:int                                        =   9;
 
-// tailType
-public static const TAIL_TYPE_NONE:int                                              =   0;
-public static const TAIL_TYPE_HORSE:int                                             =   1;
-public static const TAIL_TYPE_DOG:int                                               =   2;
-public static const TAIL_TYPE_DEMONIC:int                                           =   3;
-public static const TAIL_TYPE_COW:int                                               =   4;
-public static const TAIL_TYPE_SPIDER_ADBOMEN:int                                    =   5;
-public static const TAIL_TYPE_BEE_ABDOMEN:int                                       =   6;
-public static const TAIL_TYPE_SHARK:int                                             =   7;
-public static const TAIL_TYPE_CAT:int                                               =   8;
-public static const TAIL_TYPE_LIZARD:int                                            =   9;
-public static const TAIL_TYPE_RABBIT:int                                            =  10;
-public static const TAIL_TYPE_HARPY:int                                             =  11;
-public static const TAIL_TYPE_KANGAROO:int                                          =  12;
-public static const TAIL_TYPE_FOX:int                                               =  13;
-public static const TAIL_TYPE_DRACONIC:int                                          =  14;
-public static const TAIL_TYPE_RACCOON:int                                           =  15;
-public static const TAIL_TYPE_MOUSE:int                                             =  16;
-public static const TAIL_TYPE_FERRET:int                                            =  17;
-public static const TAIL_TYPE_BEHEMOTH:int                                          =  18;
-public static const TAIL_TYPE_PIG:int                                               =  19;
-public static const TAIL_TYPE_SCORPION:int                                          =  20;
-public static const TAIL_TYPE_GOAT:int                                              =  21;
-public static const TAIL_TYPE_RHINO:int                                             =  22;
-public static const TAIL_TYPE_ECHIDNA:int                                           =  23;
-public static const TAIL_TYPE_DEER:int                                              =  24;
-public static const TAIL_TYPE_SALAMANDER:int                                        =  25;
-public static const TAIL_TYPE_WOLF:int                                              =  26;
-public static const TAIL_TYPE_SHEEP:int                                             =  27;
-public static const TAIL_TYPE_IMP:int                                               =  28;
-public static const TAIL_TYPE_COCKATRICE:int                                        =  29;
-
 // lowerBody
 public static const LOWER_BODY_TYPE_HUMAN:int                                       =   0;
 public static const LOWER_BODY_TYPE_HOOFED:int                                      =   1;

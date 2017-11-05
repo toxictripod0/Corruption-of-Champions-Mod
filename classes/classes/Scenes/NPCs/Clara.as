@@ -1,6 +1,7 @@
 package classes.Scenes.NPCs
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.internals.*;
 
 	public class Clara extends Monster
@@ -163,7 +164,7 @@ package classes.Scenes.NPCs
 			this.bonusHP = 30;
 			this.gems = rand(5) + 25;
 			this.drop = NO_DROP;
-			this.tailType = TAIL_TYPE_COW;
+			this.tailType = Tail.COW;
 			//this.special1 = marbleSpecialAttackOne;
 			//this.special2 = marbleSpecialAttackTwo;
 			checkMonster();

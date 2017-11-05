@@ -47,7 +47,7 @@ package classes.Scenes.Places.Prison
 			this.gems = rand(5) + 25;
 			this.drop = NO_DROP;
 			this.special1 = lustMagicAttack;
-			this.wingType = Wings.TYPE_IMP;
+			this.wingType = Wings.IMP;
 			checkMonster();
 		}
 		

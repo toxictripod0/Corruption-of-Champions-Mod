@@ -94,17 +94,17 @@ package classes
 		public function hasDragonWings(large:Boolean = false):Boolean
 		{
 			if (large)
-				return wingType == Wings.TYPE_DRACONIC_LARGE;
+				return wingType == Wings.DRACONIC_LARGE;
 			else
-				return [Wings.TYPE_DRACONIC_SMALL, Wings.TYPE_DRACONIC_LARGE].indexOf(wingType) != -1;
+				return [Wings.DRACONIC_SMALL, Wings.DRACONIC_LARGE].indexOf(wingType) != -1;
 		}
 
 		public function hasBatLikeWings(large:Boolean = false):Boolean
 		{
 			if (large)
-				return wingType == Wings.TYPE_BAT_LIKE_LARGE;
+				return wingType == Wings.BAT_LIKE_LARGE;
 			else
-				return [Wings.TYPE_BAT_LIKE_TINY, Wings.TYPE_BAT_LIKE_LARGE].indexOf(wingType) != -1;
+				return [Wings.BAT_LIKE_TINY, Wings.BAT_LIKE_LARGE].indexOf(wingType) != -1;
 		}
 
 		public function hasLeatheryWings(large:Boolean = false):Boolean
@@ -140,7 +140,7 @@ package classes
 
 		public function hasReptileTail():Boolean
 		{
-			return [TAIL_TYPE_LIZARD, TAIL_TYPE_DRACONIC, TAIL_TYPE_SALAMANDER].indexOf(tailType) != -1;
+			return [Tail.LIZARD, Tail.DRACONIC, Tail.SALAMANDER].indexOf(tailType) != -1;
 		}
 
 		// For reptiles with predator arms I recommend to require hasReptileScales() before doing the armType TF to ARM_TYPE_PREDATOR

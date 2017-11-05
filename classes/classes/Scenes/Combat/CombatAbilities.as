@@ -1,6 +1,7 @@
 package classes.Scenes.Combat 
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.*;
 	import classes.Items.*;
 	import classes.Scenes.Areas.Forest.TentacleBeast;
@@ -1532,20 +1533,20 @@ public class CombatAbilities extends BaseContent
 				addButton(button++, "Kiss", kissAttack).hint("Attempt to kiss your foe on the lips with drugged lipstick. It has no effect on those without a penis. \n\nNo Fatigue Cost");
 			}
 			switch (player.tailType) {
-				case TAIL_TYPE_BEE_ABDOMEN:
+				case Tail.BEE_ABDOMEN:
 					addButton(button++, "Sting", playerStinger).hint("Attempt to use your venomous bee stinger on an enemy.  Be aware it takes quite a while for your venom to build up, so depending on your abdomen's refractory period, you may have to wait quite a while between stings.  \n\nVenom: " + Math.floor(player.tailVenom) + "/100");
 					break;
-				case TAIL_TYPE_SPIDER_ADBOMEN:
+				case Tail.SPIDER_ABDOMEN:
 					addButton(button++, "Web", PCWebAttack).hint("Attempt to use your abdomen to spray sticky webs at an enemy and greatly slow them down.  Be aware it takes a while for your webbing to build up.  \n\nWeb Amount: " + Math.floor(player.tailVenom) + "/100");
 					break;
-				case TAIL_TYPE_SALAMANDER:
+				case Tail.SALAMANDER:
 					addButton(button++, "Tail Slap", tailSlapAttack).hint("Set your tail ablaze in red-hot flames to whip your foe with it to hurt and burn them! \n\nFatigue Cost: " + player.physicalCost(30));
 					//break;
-				case TAIL_TYPE_SHARK:
-				case TAIL_TYPE_LIZARD:
-				case TAIL_TYPE_KANGAROO:
-				case TAIL_TYPE_DRACONIC:
-				case TAIL_TYPE_RACCOON:
+				case Tail.SHARK:
+				case Tail.LIZARD:
+				case Tail.KANGAROO:
+				case Tail.DRACONIC:
+				case Tail.RACCOON:
 					addButton(button++, "Tail Whip", tailWhipAttack).hint("Whip your foe with your tail to enrage them and lower their defense! \n\nFatigue Cost: " + player.physicalCost(15));
 				default:
 			}
@@ -1929,7 +1930,7 @@ public class CombatAbilities extends BaseContent
 			//Variant start messages!
 			if (player.lowerBody == LOWER_BODY_TYPE_KANGAROO) {
 				//(tail)
-				if (player.tailType == TAIL_TYPE_KANGAROO) outputText("You balance on your flexible kangaroo-tail, pulling both legs up before slamming them forward simultaneously in a brutal kick.  ");
+				if (player.tailType == Tail.KANGAROO) outputText("You balance on your flexible kangaroo-tail, pulling both legs up before slamming them forward simultaneously in a brutal kick.  ");
 				//(no tail) 
 				else outputText("You balance on one leg and cock your powerful, kangaroo-like leg before you slam it forward in a kick.  ");
 			}
@@ -2544,7 +2545,7 @@ public class CombatAbilities extends BaseContent
 					temp--;
 				}
 				monster.addStatusValue(StatusEffects.CoonWhip,2,2);
-				if (player.tailType == TAIL_TYPE_RACCOON) monster.addStatusValue(StatusEffects.CoonWhip,2,2);
+				if (player.tailType == Tail.RACCOON) monster.addStatusValue(StatusEffects.CoonWhip,2,2);
 			}
 			player.changeFatigue(15,2);
 			outputText("\n\n");

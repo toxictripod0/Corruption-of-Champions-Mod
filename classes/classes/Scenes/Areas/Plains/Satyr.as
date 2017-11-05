@@ -1,6 +1,7 @@
 package classes.Scenes.Areas.Plains
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.internals.*;
 
 	public class Satyr extends Monster
@@ -168,7 +169,7 @@ package classes.Scenes.Areas.Plains
 			this.level = 14;
 			this.gems = rand(25) + 25;
 			this.drop = new ChainedDrop().add(consumables.INCUBID,1/2);
-			this.tailType = TAIL_TYPE_COW;
+			this.tailType = Tail.COW;
 			checkMonster();
 		}
 		

@@ -1,6 +1,7 @@
 package classes.Scenes.NPCs
 {
 	import classes.*;
+	import classes.BodyParts.*;
 
 	public class Isabella extends Monster
 	{
@@ -207,7 +208,7 @@ package classes.Scenes.NPCs
 			this.temperment = TEMPERMENT_RANDOM_GRAPPLES;
 			this.level = 15;
 			this.gems = rand(5) + 20;
-			this.tailType = TAIL_TYPE_COW;
+			this.tailType = Tail.COW;
 			this.tailRecharge = 0;
 			this.drop = NO_DROP;
 			checkMonster();

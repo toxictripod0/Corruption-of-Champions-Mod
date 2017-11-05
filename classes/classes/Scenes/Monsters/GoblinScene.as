@@ -4,6 +4,7 @@
 package classes.Scenes.Monsters
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.display.SpriteDb;
@@ -246,7 +247,7 @@ package classes.Scenes.Monsters
 				//Buttsex toggle
 				if (player.cockThatFits(monster.analCapacity()) >= 0 && (player.isCorruptEnough(70) || player.findPerk(PerkLib.Sadist) >= 0)) addButton(3, "Dick In Ass", gobboButtSecks);
 				//Spidercondom
-				if (player.tailType == TAIL_TYPE_SPIDER_ADBOMEN && player.cockThatFits(monster.vaginalCapacity()) >= 0)
+				if (player.tailType == Tail.SPIDER_ABDOMEN && player.cockThatFits(monster.vaginalCapacity()) >= 0)
 					addButton(6, "Web Condom", goblinCondomed, 0);
 				else if (player.hasItem(useables.CONDOM) && player.cockThatFits(monster.vaginalCapacity()) >= 0)
 					addButton(6, "Use Condom", goblinCondomed, 1);

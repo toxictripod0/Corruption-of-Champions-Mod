@@ -1,6 +1,7 @@
 package classes.Scenes.Places.Owca
 {
 	import classes.*;
+	import classes.BodyParts.*;
 
 	public class Farmers extends Monster
 	{
@@ -59,7 +60,7 @@ package classes.Scenes.Places.Owca
 			this.gems = rand(25) +40;
 			this.hornType = HORNS_DEMON;
 			this.horns = 2;
-			this.tailType = TAIL_TYPE_DEMONIC;
+			this.tailType = Tail.DEMONIC;
 			this.drop = NO_DROP;
 			checkMonster();
 		}

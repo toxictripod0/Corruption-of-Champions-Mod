@@ -1,5 +1,6 @@
 package classes.Scenes.Areas.Bog {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 
 	public class FrogGirlScene extends BaseContent {
@@ -235,7 +236,7 @@ private function superBonusFrogEggsInYerCooch():void {
 	outputText("\n\nYou hear the frog girl coo as she touches her pussy against yours, smearing her slickness against your mound.  Her touch sends shivery, silvery sensations up your spine, and you feel your own wetness oozing out against her.");
 	outputText("\n\nThicker slime adheres her pussy to yours, making every grind and shove a shared sensation. As she squeezes down on her belly, pressure builds against your opening, and her pussy lips spread against yours, parting you open to take the first of her eggs.  As the jelly-like mass over her egg begins to squeeze into you, the world goes purple, then blue, then the water around you seems to rise slowly up into the air.");
 	outputText("\n\nIf you could think clearly at this point, you would attribute this to the mind-bending frog slime, but all you can think about is the sensation of your pussy spreading wider and wider, taking in another goo-covered egg.  The frog girl’s thighs clamp around you, one against your belly, the other");
-	if (player.tailType > TAIL_TYPE_NONE) outputText(" hooked over your tail,");
+	if (player.tailType > Tail.NONE) outputText(" hooked over your tail,");
 	else outputText(" clasped against your [ass],");
 	outputText(" smearing more and more of her slime against your body.");
 	player.cuntChange(25,true,true,false);

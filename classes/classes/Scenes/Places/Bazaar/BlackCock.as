@@ -1531,12 +1531,12 @@ package classes.Scenes.Places.Bazaar
 			}
 			if (rand(3) == 0 && changes < changeLimit && player.tailType == 0) {
 				outputText("\n\nYou feel an odd itchy sensation just above your [ass]. Twisting around to inspect it you find a short stubby tail that wags when you're happy. <b>You now have a goat tail.</b>");
-				player.tailType = TAIL_TYPE_GOAT;
+				player.tailType = Tail.GOAT;
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.tailType > 0 && player.tailType != TAIL_TYPE_GOAT) {
+			if (rand(3) == 0 && changes < changeLimit && player.tailType > 0 && player.tailType != Tail.GOAT) {
 				outputText("\n\nYou [tail] suddenly goes numb. Looking back you see it changing, twisting and reforming into a <b>short stubby goat-like tail</b>.");
-				player.tailType = TAIL_TYPE_GOAT;
+				player.tailType = Tail.GOAT;
 				changes++;
 			}
 			//No changes?
@@ -1607,7 +1607,7 @@ package classes.Scenes.Places.Bazaar
 			// Normal TFs
 			//------------
 			//Removes wings
-			if (rand(4) == 0 && changes < changeLimit && (player.wingType != Wings.TYPE_NONE || player.rearBody.type == REAR_BODY_SHARK_FIN)) {
+			if (rand(4) == 0 && changes < changeLimit && (player.wingType != Wings.NONE || player.rearBody.type == REAR_BODY_SHARK_FIN)) {
 				if (player.rearBody.type == REAR_BODY_SHARK_FIN) {
 					outputText("\n\nA wave of tightness spreads through your back, and it feels as if someone is stabbing a dagger into your spine."
 					          +" After a moment the pain passes, though your fin is gone!");
@@ -1731,10 +1731,10 @@ package classes.Scenes.Places.Bazaar
 				changes++;
 			}
 			//Change tail to rhino
-			if (rand(3) == 0 && changes < changeLimit && player.isBiped() && player.tailType != TAIL_TYPE_RHINO) {
+			if (rand(3) == 0 && changes < changeLimit && player.isBiped() && player.tailType != Tail.RHINO) {
 				if (player.tailType > 0) outputText("\n\nYou [tail] suddenly goes numb. Looking back you see it changing, twisting and reforming into a long ropy tail with a little " + player.furColor + " tuft at the end. <b>You now have a rhino tail.</b>");
 				else outputText("\n\nYou feel an odd itchy sensation just above your [ass]. Twisting around to inspect it you find a long ropy tail with a little " + player.furColor + " tuft on the end. <b>You now have a rhino tail.</b>");
-				player.tailType = TAIL_TYPE_RHINO;
+				player.tailType = Tail.RHINO;
 				changes++;
 			}
 			//Gain rhino horns
@@ -1920,62 +1920,62 @@ package classes.Scenes.Places.Bazaar
 				changes++;
 			}
 			//Gain Echidna tail
-			if (rand(3) == 0 && changes < changeLimit && player.earType == EARS_ECHIDNA && player.tailType != TAIL_TYPE_ECHIDNA) {
+			if (rand(3) == 0 && changes < changeLimit && player.earType == EARS_ECHIDNA && player.tailType != Tail.ECHIDNA) {
 				outputText("\n\n");
 				switch(player.tailType) {
-					case TAIL_TYPE_NONE:
+					case Tail.NONE:
 						outputText("You feel a brief pinch at the base of your spine. Reaching behind yourself, you find that a small stump has formed above your [ass], just barely enough to qualify as a tail.");
 						break;
-					case TAIL_TYPE_HARPY:
+					case Tail.HARPY:
 						outputText("You feel a soft tingle as your tail feathers fall out one by one, leaving you with just a little stump for a tail.");
 						break;
-					case TAIL_TYPE_RABBIT:
+					case Tail.RABBIT:
 						outputText("Your tiny, poofy bunny tail begins to feel chilly as its fur falls out in clumps, leaving you with just a little stump for a tail.");
 						break;
-					case TAIL_TYPE_COW:
+					case Tail.COW:
 						outputText("Your ropey cow tail begins to feel chilly as all of its fur falls out. It becomes tight as the majority of the tail’s length recedes into your body, leaving you with just a little stump for a tail.");
 						break;
-					case TAIL_TYPE_CAT:
+					case Tail.CAT:
 						outputText("Your long cat tail begins to feel chilly as all of its fur falls out. It becomes tight as the majority of the tail’s length recedes into your body, leaving you with just a little stump for a tail.");
 						break;
-					case TAIL_TYPE_DOG:
+					case Tail.DOG:
 						outputText("Your wagging dog tail begins to feel chilly as all of its fur falls out. It becomes tight as the majority of the tail’s length recedes into your body, leaving you with just a little stump for a tail.");
 						break;
-					case TAIL_TYPE_KANGAROO:
+					case Tail.KANGAROO:
 						outputText("Your tapered kangaroo tail begins to feel chilly as all of its fur falls out. It becomes tight as the majority of the tail’s length recedes into your body, leaving you with just a little stump for a tail.");
 						break;
-					case TAIL_TYPE_LIZARD:
-					case TAIL_TYPE_DRACONIC:
+					case Tail.LIZARD:
+					case Tail.DRACONIC:
 						outputText("Your long, tapered tail becomes tight as the majority of the tail’s length recedes into your body, leaving you with just a little stump for a tail. You now have an echidna tail!");
 						break;
-					case TAIL_TYPE_FOX:
+					case Tail.FOX:
 						outputText("Your swishing fox tail begins to feel chilly as all of its fur falls out. It becomes tight as the majority of the tail’s length recedes into your body, leaving you with just a little stump for a tail.");
 						break;
-					case TAIL_TYPE_RACCOON:
+					case Tail.RACCOON:
 						outputText("Your ringed raccoon tail begins to feel chilly as all of its fur falls out. It becomes tight as the majority of the tail’s length recedes into your body, leaving you with just a little stump for a tail.");
 						break;
-					case TAIL_TYPE_HORSE:
+					case Tail.HORSE:
 						if (player.isTaur()) outputText("Your shiny horse tail begins to feel chilly as all of its fur falls out. It becomes tight as the majority of the tail’s length recedes into your body, leaving you with just a little stump for a tail. This new, mismatched tail looks a bit odd on your horse lower body.");
 						else outputText("Your shiny horse tail begins to feel chilly as all of its fur falls out. It becomes tight as the majority of the tail’s length recedes into your body, leaving you with just a little stump for a tail.");
 						break;
-					case TAIL_TYPE_MOUSE:
+					case Tail.MOUSE:
 						outputText("Your bald mouse tail becomes tight as the majority of the tail’s length recedes into your body, leaving you with just a little stump for a tail.");
 						break;
-					case TAIL_TYPE_FERRET:
+					case Tail.FERRET:
 						outputText("Your tapered ferret tail begins to feel chilly as all of its fur falls out. It becomes tight as the majority of the tail’s length recedes into your body, leaving you with just a little stump for a tail.");
 						break;
-					case TAIL_TYPE_RHINO:
+					case Tail.RHINO:
 						outputText("The tip of your long rhino tail begins to itch as the fur begins to fall out. The entire length of your tail becomes tight as the majority of the tail’s length recedes into your body, leaving you with just a little stump for a tail.");
 						break;
 					default: //Catch-all
 						outputText("You groan as you feel your tail shifting and reforming. By the time the sensation is over, you find that you have a little stump for a tail.");
 				}
 				outputText(" <b>You now have an echidna tail!</b>");
-				player.tailType = TAIL_TYPE_ECHIDNA;
+				player.tailType = Tail.ECHIDNA;
 				changes++;
 			}
 			//Gain Echidna legs
-			if (rand(3) == 0 && changes < changeLimit && player.earType == EARS_ECHIDNA && player.tailType && TAIL_TYPE_ECHIDNA && player.lowerBody != LOWER_BODY_TYPE_ECHIDNA) {
+			if (rand(3) == 0 && changes < changeLimit && player.earType == EARS_ECHIDNA && player.tailType && Tail.ECHIDNA && player.lowerBody != LOWER_BODY_TYPE_ECHIDNA) {
 				outputText("\n\n");
 				switch(player.lowerBody) {
 					//Irregular lower body type
@@ -2044,7 +2044,7 @@ package classes.Scenes.Places.Bazaar
 				changes++;
 			}
 			//Gain Echidna face if you have the right conditions.
-			if (rand(4) == 0 && changes < changeLimit && player.hasFur() && player.earType == EARS_ECHIDNA && player.tailType == TAIL_TYPE_ECHIDNA && player.tongueType == TONGUE_ECHIDNA) {
+			if (rand(4) == 0 && changes < changeLimit && player.hasFur() && player.earType == EARS_ECHIDNA && player.tailType == Tail.ECHIDNA && player.tongueType == TONGUE_ECHIDNA) {
 				outputText("You groan loudly as the bones in your face begin to reshape and rearrange. Most notable, you feel your mouth lengthening into a long, thin snout. <b>You now have an echidna face!</b>");
 				player.faceType = FACE_ECHIDNA;
 				changes++;

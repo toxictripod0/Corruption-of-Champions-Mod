@@ -1,5 +1,6 @@
 package classes.Scenes.Areas.Mountain {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Items.Armors.LustyMaidensArmor;
@@ -1158,7 +1159,7 @@ private function getMinoHawtDawged():void {
 	outputText("\n\nYou let out a low whine as you try, helplessly, to grab for your crotch, but between the constant fucking and the minotaur's big arm blocking the way, you can't grab on long enough to masturbate.  Thankfully, it doesn't take the minotaur long to cum after that; there's a few more shuddering, insistent thrusts...");
 	outputText("\n\n...and then his head pushes out the top of your ass again, fountaining with his spunk. Gout after gout of it rains down on you, painting your butt, ");
 	//[if (hasTail = true)
-	if (player.tailType > TAIL_TYPE_NONE) outputText("your tail, ");
+	if (player.tailType > Tail.NONE) outputText("your tail, ");
 	outputText("your back, and even your hair with gushes of his sticky, musk-smothered seed. Your entire backside flushes with the heat of his orgasm as it starts to die down, a few last drools of the hot stuff spilling out of his cock, and he withdraws from your butt, leaving you one last gift of a single spurt lodged between your fat cheeks and slowly dripping out. The Minotaur's cum seems to make your head swim, and everything starts to go foggy...");
 	//{Loss message 'when you wake up you'll be missing gems' blah blah}
 	dynStats("lus", 15+rand(player.lib/2));

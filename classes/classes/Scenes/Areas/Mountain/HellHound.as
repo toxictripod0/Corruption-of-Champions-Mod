@@ -1,6 +1,7 @@
 package classes.Scenes.Areas.Mountain
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.internals.*;
 
 	public class HellHound extends Monster
@@ -149,7 +150,7 @@ package classes.Scenes.Areas.Mountain
 						consumables.BLACKPP,
 						consumables.DBLPEPP,
 						consumables.LARGEPP);
-			this.tailType = TAIL_TYPE_DOG;
+			this.tailType = Tail.DOG;
 			this.special1 = hellhoundFire;
 			this.special2 = hellhoundScent;
 			checkMonster();

@@ -1,6 +1,7 @@
 package classes.Scenes.Areas.Forest
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.internals.*;
 
@@ -233,7 +234,7 @@ package classes.Scenes.Areas.Forest
 			this.level = 6;
 			this.gems = rand(10) + 10;
 			this.drop = new WeightedDrop(consumables.FOXJEWL, 1);
-			this.tailType = TAIL_TYPE_FOX;
+			this.tailType = Tail.FOX;
 			checkMonster();
 		}
 

@@ -1,6 +1,7 @@
 package classes.Scenes.NPCs
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.internals.*;
 
@@ -183,7 +184,7 @@ package classes.Scenes.NPCs
 			this.skinTone = "dusky";
 			this.hairColor = "red";
 			this.hairLength = 13;
-			this.tailType = TAIL_TYPE_SALAMANDER;
+			this.tailType = Tail.SALAMANDER;
 			this.tailRecharge = 0;
 			initStrTouSpeInte(80, 70, 75, 60);
 			initLibSensCor(65, 25, 30);

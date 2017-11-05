@@ -4,6 +4,7 @@
 package classes.Scenes.NPCs
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.display.SpriteDb;
@@ -2470,7 +2471,7 @@ package classes.Scenes.NPCs
 
 			outputText("She pulls your head in, your lips locking in a passionate display, her hands tracing a line down to your chest until she's gently fondling your cock.  ");
 			//(If player has a tail)
-			if (player.tailType > TAIL_TYPE_NONE) outputText("You even feel Amily wrap her mousy tail around your own, making you chuckle softly into your lovers mouth.  ");
+			if (player.tailType > Tail.NONE) outputText("You even feel Amily wrap her mousy tail around your own, making you chuckle softly into your lovers mouth.  ");
 			else outputText("A tickling sensation hits your body, making you snort and giggle, realising that Amily's tail is fondling your thigh.  ");
 			outputText("Your eyes catch sight of Amily's swollen breasts, seeing a few drops of milk on her stiff nipples. You smirk and fondle her breasts, breaking the kiss every few moments to get a taste of her milk. Amily moans in response, tightening her grip on you every time your lips return to her own.\n\n");
 
@@ -7369,7 +7370,7 @@ package classes.Scenes.NPCs
 			}
 			//(Merge):
 			outputText("Working delicately, she carefully coats her shaft in a generous layer of the green ointment, until her cock glistens with an odd greenish sheen.  You take your position on the ground, lowering yourself down onto your knees and elbows, resting your chin on top of your hands and raising your " + player.buttDescript() + " into the air");
-			if (player.tailType > TAIL_TYPE_NONE) outputText(", moving your tail out of the way");
+			if (player.tailType > Tail.NONE) outputText(", moving your tail out of the way");
 			outputText(".\n\n");
 
 			outputText("Amily ");

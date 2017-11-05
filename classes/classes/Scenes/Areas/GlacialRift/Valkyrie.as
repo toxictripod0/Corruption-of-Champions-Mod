@@ -177,7 +177,7 @@ package classes.Scenes.Areas.GlacialRift
 					.add(shields.GREATSH, 2)
 					.add(consumables.W__BOOK, 4)					
 					.add(null, 18);
-			this.wingType = Wings.TYPE_HARPY
+			this.wingType = Wings.HARPY
 			this.wingDesc = "fluffy feathery"
 			this.special1 = spearAttack;
 			this.special2 = shieldBash;

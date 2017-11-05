@@ -100,7 +100,7 @@ package classes
 			player.tone = 0;
 			player.hipRating = 17;
 			player.buttRating = 17;
-			player.tailType = TAIL_TYPE_DEMONIC;
+			player.tailType = Tail.DEMONIC;
 			player.lowerBody = LOWER_BODY_TYPE_DEMONIC_HIGH_HEELS;
 			//Breasts: J-cups with 5 inch fuckable nipples, leaking milk
 			player.breastRows[0].breastRating = 28;
@@ -123,7 +123,7 @@ package classes
 			if (player.femininity < 80) player.femininity = 80;
 			player.createPerk(PerkLib.BimboBody, 0, 0, 0, 0);
 			player.createPerk(PerkLib.BimboBrains, 0, 0, 0, 0);
-			player.tailType = TAIL_TYPE_FOX;
+			player.tailType = Tail.FOX;
 			player.tailVenom = 9;
 			player.createPerk(PerkLib.EnlightenedNinetails, 0, 0, 0, 0);
 			player.createBreastRow(Appearance.BREAST_CUP_DD);
@@ -165,7 +165,7 @@ package classes
 			//herm, canine cock - 8", virgin, tight, wet	
 			//fox ears, tails, A cup breasts with normal nipples	Betram															
 			player.earType = EARS_FOX;
-			player.tailType = TAIL_TYPE_FOX;
+			player.tailType = Tail.FOX;
 			player.tailVenom = 1;
 			if (player.biggestTitSize() > 1) player.breastRows[0].breastRating = 1;
 			if (!player.hasCock()) {
@@ -258,7 +258,7 @@ package classes
 			player.vaginas[0].vaginalWetness = VAGINA_WETNESS_SLAVERING;
 			player.setClitLength(0.5);
 			player.fertility = 15;
-			player.tailType = TAIL_TYPE_FOX;
+			player.tailType = Tail.FOX;
 			player.tailVenom = 9;
 			player.createPerk(PerkLib.EnlightenedNinetails,0,0,0,0);
 			//if possible with fur, Hair color: "midnight black", Skin/Fur color: "ashen grayish-blue",  Height: 65", Tone: 100, Thickness: 0, Hip rating: 6, Butt rating: 3,Feminimity: 50,  ( 4 rows of breasts (Descending from the top ones: D,C,B,A), nipple length: 0.1", Fuckable, 1 nipple per breast, Tongue type: demon
@@ -309,7 +309,7 @@ package classes
 			player.buttRating = 5;
 			player.teaseLevel = 1;
 			//Large feathered wings (Any chance in heck I could get 'angel' as the race descriptor? Just asking. I'm fine if the answer is 'no')
-			player.wingType = Wings.TYPE_FEATHERED_LARGE;
+			player.wingType = Wings.FEATHERED_LARGE;
 			
 			//While we're on the subject, would glowing eyes be possible? I'll take normal eyes if not.
 			//Beautiful Sword
@@ -507,7 +507,7 @@ package classes
 			player.nippleLength = 0.2;
 			player.createBreastRow();
 			//- three fox tails
-			player.tailType = TAIL_TYPE_FOX;
+			player.tailType = Tail.FOX;
 			player.tailVenom = 3;
 			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 			//equipment;
@@ -527,7 +527,7 @@ package classes
 			//"Ears: Bunny
 			player.earType = EARS_BUNNY;
 			//Tail: Bunny
-			player.tailType = TAIL_TYPE_RABBIT;
+			player.tailType = Tail.RABBIT;
 			//Face: Human
 			//Breasts: H-cup with 4.5 inch fuckable nipples"
 			player.createBreastRow(Appearance.BREAST_CUP_H);
@@ -561,7 +561,7 @@ package classes
 			player.hairLength=13;
 			player.skinType = SKIN_TYPE_PLAIN;
 			player.faceType = FACE_HUMAN;
-			player.tailType = TAIL_TYPE_NONE;
+			player.tailType = Tail.NONE;
 			player.tongueType = TONGUE_HUMAN;
 			player.femininity = 85;
 			player.beardLength = 0;
@@ -585,7 +585,7 @@ package classes
 			player.tallness = 67;
 			player.tailVenom = 0;
 			player.tailRecharge = 0;
-			player.wingType = Wings.TYPE_NONE;
+			player.wingType = Wings.NONE;
 			player.tone = 30;
 			player.thickness = 65;
 		}
@@ -643,7 +643,7 @@ package classes
 			player.skinTone = "light";
 			player.hairColor = "brown";
 			player.faceType = FACE_HUMAN;
-			player.tailType = TAIL_TYPE_NONE;
+			player.tailType = Tail.NONE;
 			player.tongueType = TONGUE_HUMAN;
 			player.femininity = 50;
 			player.beardLength = 0;
@@ -659,11 +659,11 @@ package classes
 			player.horns = 0;
 			player.tailVenom = 0;
 			player.tailRecharge = 0;
-			player.wingType = Wings.TYPE_NONE;
+			player.wingType = Wings.NONE;
 			//"dog face, dog ears, draconic tail, blue fur.
 			player.faceType = FACE_DOG;
 			player.earType = EARS_DOG;
-			player.tailType = TAIL_TYPE_DRACONIC;
+			player.tailType = Tail.DRACONIC;
 			player.skinType = SKIN_TYPE_FUR;
 			player.hairColor = "blue";
 			player.furColor = "blue";
@@ -701,7 +701,7 @@ package classes
 			player.createPerk(PerkLib.BimboBrains, 0, 0, 0, 0);
 			player.createPerk(PerkLib.BigTits, 1.5, 0, 0, 0);
 			player.earType = EARS_BUNNY;
-			player.tailType = TAIL_TYPE_RABBIT;
+			player.tailType = Tail.RABBIT;
 			player.skinTone = "tan";
 			player.hairColor = "platinum blonde";
 			player.teaseLevel = 3;
@@ -753,7 +753,7 @@ package classes
 			player.skinDesc = "fur";
 			player.skinTone = "ashen";
 			player.skinType = SKIN_TYPE_FUR;
-			player.tailType = TAIL_TYPE_CAT;
+			player.tailType = Tail.CAT;
 			player.tallness = 55;
 			player.teaseLevel = 4;
 			player.thickness = 10;
@@ -808,9 +808,9 @@ package classes
 			//Legs/Feet = Digigrade hooved 
 			player.lowerBody = LOWER_BODY_TYPE_HOOFED;
 			//Wing type = Dragon
-			player.wingType = Wings.TYPE_DRACONIC_LARGE;
+			player.wingType = Wings.DRACONIC_LARGE;
 			//Tail type = Dragon
-			player.tailType = TAIL_TYPE_DRACONIC;
+			player.tailType = Tail.DRACONIC;
 			//Cock type = Equine
 			player.cocks[0].cockType = CockTypesEnum.HORSE;
 			player.cocks[0].cockLength = 14;
@@ -845,7 +845,7 @@ package classes
 			//Ears- Canine
 			player.earType = EARS_DOG;
 			//Tail- Canine
-			player.tailType = TAIL_TYPE_DOG;
+			player.tailType = Tail.DOG;
 			//Lower body- Canine
 			player.lowerBody = LOWER_BODY_TYPE_DOG;
 			//White Fur (if possible)
@@ -970,8 +970,8 @@ package classes
 			player.vaginas[0].vaginalWetness = VAGINA_WETNESS_SLAVERING;
 			player.createStatusEffect(StatusEffects.BonusVCapacity,132,0,0,0);
 			//Virgin, high fertility like in the email I sent before.  dragon wings, nine fox tails,  dragon legs, eight DD breasts with four fuckable nipples each, dragon tongue, waist length hair, large dragon wings.
-			player.wingType = Wings.TYPE_DRACONIC_LARGE;
-			player.tailType = TAIL_TYPE_FOX;
+			player.wingType = Wings.DRACONIC_LARGE;
+			player.tailType = Tail.FOX;
 			player.tailVenom = 9;
 			player.lowerBody = LOWER_BODY_TYPE_DRAGON;
 			player.tongueType = TONGUE_DRACONIC;
@@ -1028,7 +1028,7 @@ package classes
 			
 			player.skinType = SKIN_TYPE_PLAIN;
 			player.faceType = FACE_HUMAN;
-			player.tailType = TAIL_TYPE_NONE;
+			player.tailType = Tail.NONE;
 			player.tongueType = TONGUE_HUMAN;
 			player.femininity = 85;
 			player.beardLength = 0;
@@ -1059,11 +1059,11 @@ package classes
 			player.tallness = 82;
 			player.tailVenom = 0;
 			player.tailRecharge = 0;
-			player.wingType = Wings.TYPE_NONE;
+			player.wingType = Wings.NONE;
 			//6' 10"" german-shepherd morph, face ears hands feet tail, the whole nine yards
 			player.faceType = FACE_DOG;
 			player.lowerBody = LOWER_BODY_TYPE_DOG;
-			player.tailType = TAIL_TYPE_DOG;
+			player.tailType = Tail.DOG;
 			player.earType = EARS_DOG;
 			////"	"I'm picturing a tall, feminine German-Shepherd morph, solid white and gorgeous. She has both sets of genitals, with no balls, and a large set of breasts. She wields a large claymore and is dressed in a full chain vest and pants. 
 			//large claymore (and the strength to use it)
@@ -1099,8 +1099,8 @@ package classes
 			player.hairColor = "deep red";
 			player.femininity = 90;
 			//She has a demonic tail and small demonic wings thanks to some encounters early on with succubus milk (that stuff is delicious!) but is otherwise still human.
-			player.wingType = Wings.TYPE_BAT_LIKE_LARGE;
-			player.tailType = TAIL_TYPE_DEMONIC;
+			player.wingType = Wings.BAT_LIKE_LARGE;
+			player.tailType = Tail.DEMONIC;
 			//I feel really weird talking about all this, so if there's anything you need to change or can't do, or if I totally misinterpreted this, just shoot me an email! jordie.wierenga@gmail.com . Thanks in advance... I'm a big fan. "	Prismere
 		}
 		
@@ -1177,7 +1177,7 @@ package classes
 			player.createPerk(PerkLib.HistoryScholar, 0, 0, 0, 0);
 			//Apperance: Cat Ears, Large Bat Like Wings, 3 Rows of breasts (C cub, 0,2 nipples)
 			player.earType = EARS_CAT;
-			player.wingType = Wings.TYPE_BAT_LIKE_LARGE;
+			player.wingType = Wings.BAT_LIKE_LARGE;
 			//Items: Katana, Leather Armor
 			player.setWeapon(weapons.KATANA);
 			player.setArmor(armors.URTALTA);
@@ -1192,7 +1192,7 @@ package classes
 			player.setClitLength(0.25);
 			//has a self-repairing hymen in her cunt"	"Angel
 			//(means feathered wings on her back)
-			player.wingType = Wings.TYPE_FEATHERED_LARGE;
+			player.wingType = Wings.FEATHERED_LARGE;
 			//Halo (Flaming)
 			//D-cups
 			player.createBreastRow();
@@ -1233,7 +1233,7 @@ package classes
 			if (player.hasVagina()) player.vaginas[0].virgin = true;
 			player.tongueType = TONGUE_SNAKE;
 			player.earType = EARS_FOX;
-			player.tailType = TAIL_TYPE_FOX;
+			player.tailType = Tail.FOX;
 			player.tailVenom = 2;
 			player.inte = 30;
 			if (!player.hasStatusEffect(StatusEffects.BonusVCapacity)) player.createStatusEffect(StatusEffects.BonusVCapacity,0,0,0,0);
@@ -1265,7 +1265,7 @@ package classes
 			player.hairLength = 10;
 			player.skinType = SKIN_TYPE_PLAIN;
 			player.faceType = FACE_HUMAN;
-			player.tailType = TAIL_TYPE_FOX;
+			player.tailType = Tail.FOX;
 			player.tailVenom = 4;
 			player.tongueType = TONGUE_HUMAN;
 			player.femininity = 90;
@@ -1290,7 +1290,7 @@ package classes
 			player.tallness = 109;
 			player.tailVenom = 0;
 			player.tailRecharge = 0;
-			player.wingType = Wings.TYPE_DRACONIC_LARGE;
+			player.wingType = Wings.DRACONIC_LARGE;
 			player.earType = EARS_HUMAN;
 			player.lowerBody = LOWER_BODY_TYPE_HUMAN;
 			player.armType = ARM_TYPE_HUMAN;
@@ -1434,7 +1434,7 @@ package classes
 			player.thickness = 50;
 			player.buttRating = 12;
 			player.hipRating = 10;
-			player.tailType = TAIL_TYPE_CAT;
+			player.tailType = Tail.CAT;
 			player.lowerBody = LOWER_BODY_TYPE_CAT;
 			//Breasts: 2 E-cups on top, 2 DD-cups mid, 2 D-cups bottom, 3.5 inch nipples
 			player.createBreastRow();
@@ -1475,7 +1475,7 @@ package classes
 			player.hairLength = 10;
 			player.skinType = SKIN_TYPE_PLAIN;
 			player.faceType = FACE_HUMAN;
-			player.tailType = TAIL_TYPE_NONE;
+			player.tailType = Tail.NONE;
 			player.tongueType = TONGUE_HUMAN;
 			player.femininity = 70;
 			player.beardLength = 0;
@@ -1499,12 +1499,12 @@ package classes
 			player.tallness = 67;
 			player.tailVenom = 0;
 			player.tailRecharge = 0;
-			player.wingType = Wings.TYPE_NONE;
+			player.wingType = Wings.NONE;
 			player.earType = EARS_CAT;
 			player.lowerBody = LOWER_BODY_TYPE_CAT;
-			player.tailType = TAIL_TYPE_CAT;
+			player.tailType = Tail.CAT;
 			player.createPerk(PerkLib.Incorporeality,0,0,0,0);
-			player.wingType = Wings.TYPE_FEATHERED_LARGE;
+			player.wingType = Wings.FEATHERED_LARGE;
 			player.armType = ARM_TYPE_HARPY;
 			player.hornType = HORNS_DRACONIC_X2;
 			player.horns = 4;
@@ -1627,12 +1627,12 @@ package classes
 			player.clawTone = "ivory";
 			player.eyeType = EYES_DRAGON;
 			player.lowerBody = LOWER_BODY_TYPE_FOX;
-			player.tailType = TAIL_TYPE_FOX; // soft fur feels so lovely...
+			player.tailType = Tail.FOX; // soft fur feels so lovely...
 			player.tailVenom = 9;			
 			player.tongueType = TONGUE_DRACONIC; // tongue as long as your whole body height! almost tentackle! and so much fun to use!
 			player.hornType = HORNS_DRACONIC_X2; // draconic horns adds to your exotic look, counts towards dragon score and keeps your tentacle hair out of your face! and your partners can use them as handles on occasions, letting your delicate ears uncrumpled!
 			player.horns = 8;
-			player.wingType = Wings.TYPE_DRACONIC_LARGE; // wings! to fly!
+			player.wingType = Wings.DRACONIC_LARGE; // wings! to fly!
 			
 			player.str += -10; // strength? not a kitsune way, besides, you are small and really neglected physical training
 			player.tou += 0; // still, your dragon blood makes you surprisingly tough for your size and condition
@@ -1861,11 +1861,11 @@ package classes
 			}
 			
 			player.tailType = rand(21); // always have totally random tail
-			if (player.tailType == TAIL_TYPE_SPIDER_ADBOMEN || player.tailType == TAIL_TYPE_BEE_ABDOMEN)
+			if (player.tailType == Tail.SPIDER_ABDOMEN || player.tailType == Tail.BEE_ABDOMEN)
 			{ // insect abdomens comes with poison
 				player.tailVenom = 5;
 				player.tailRecharge = 5;
-				if (player.tailType == TAIL_TYPE_SPIDER_ADBOMEN && rand(2)==0)
+				if (player.tailType == Tail.SPIDER_ABDOMEN && rand(2)==0)
 					player.createPerk(PerkLib.SpiderOvipositor, 0, 0, 0, 0); // spider abdomen have chance 50/50 to have ovipositor
 			}
 			
@@ -1892,17 +1892,17 @@ package classes
 			
 			var wings:Number = rand(4); // always have wings to fly... small boon to make up for lack of fighting power
 			if (wings == 0)
-				player.wingType = Wings.TYPE_BAT_LIKE_LARGE;
+				player.wingType = Wings.BAT_LIKE_LARGE;
 			else if (wings == 1)
-				player.wingType = Wings.TYPE_FEATHERED_LARGE;
+				player.wingType = Wings.FEATHERED_LARGE;
 			else if (wings == 2)
-				player.wingType = Wings.TYPE_DRACONIC_LARGE;
+				player.wingType = Wings.DRACONIC_LARGE;
 			else
-				player.wingType = Wings.TYPE_GIANT_DRAGONFLY;
+				player.wingType = Wings.GIANT_DRAGONFLY;
 				
 			
 			var arms:Number = rand(100); // if have harpy wings 33% chance to have harpy hands, otherwise 5% to have spider hands
-			if (player.wingType == Wings.TYPE_FEATHERED_LARGE && rand(4) == 0)
+			if (player.wingType == Wings.FEATHERED_LARGE && rand(4) == 0)
 				player.armType = ARM_TYPE_HARPY;
 			else if (rand(20) == 0)
 				player.armType = ARM_TYPE_SPIDER;

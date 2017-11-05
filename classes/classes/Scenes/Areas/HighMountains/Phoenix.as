@@ -123,7 +123,7 @@ package classes.Scenes.Areas.HighMountains
 			this.ass.analWetness = ANAL_WETNESS_MOIST;
 			this.createStatusEffect(StatusEffects.BonusACapacity,20,0,0,0);
 			this.tallness = 6 * 12 + 6;
-			this.tailType = TAIL_TYPE_LIZARD;
+			this.tailType = Tail.LIZARD;
 			this.hipRating = HIP_RATING_CURVY;
 			this.buttRating = BUTT_RATING_JIGGLY;
 			this.lowerBody = LOWER_BODY_TYPE_HARPY;
@@ -148,7 +148,7 @@ package classes.Scenes.Areas.HighMountains
 			this.drop = new ChainedDrop().add(weapons.SCIMITR,1/20)
 					.add(useables.EBNFLWR, 1/10)
 					.elseDrop(NO_DROP);
-			this.wingType = Wings.TYPE_HARPY;
+			this.wingType = Wings.HARPY;
 			this.special1 = doubleSlash;
 			this.special2 = phoenixFireBreath;
 			this.special3 = lustBang;

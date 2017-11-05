@@ -1,6 +1,7 @@
 package classes.Items.Consumables 
 {
 	import classes.Appearance;
+	import classes.BodyParts.*;
 	import classes.CockTypesEnum;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Items.Consumable;
@@ -178,7 +179,7 @@ package classes.Items.Consumables
 				if (temp3 > 0) changes++;
 			}
 			//Cat dangly-doo.
-			if (player.cockTotal() > 0 && player.countCocksOfType(CockTypesEnum.CAT) < player.cockTotal() && (player.earType === EARS_CAT || rand(3) > 0) && (player.tailType === TAIL_TYPE_CAT || rand(3) > 0) && changes < changeLimit && rand(4) === 0) {
+			if (player.cockTotal() > 0 && player.countCocksOfType(CockTypesEnum.CAT) < player.cockTotal() && (player.earType === EARS_CAT || rand(3) > 0) && (player.tailType === Tail.CAT || rand(3) > 0) && changes < changeLimit && rand(4) === 0) {
 				//loop through and find a non-cat wang.
 				for (var i:Number = 0; i < (player.cockTotal()) && player.cocks[i].cockType === CockTypesEnum.CAT; i++) { }
 				outputText("\n\nYour " + player.cockDescript(i) + " swells up with near-painful arousal and begins to transform.  It turns pink and begins to narrow until the tip is barely wide enough to accommodate your urethra.  Barbs begin to sprout from its flesh, if you can call the small, fleshy nubs barbs. They start out thick around the base of your " + Appearance.cockNoun(CockTypesEnum.HUMAN) + " and shrink towards the tip. The smallest are barely visible. <b>Your new feline dong throbs powerfully</b> and spurts a few droplets of cum.  ");
@@ -263,19 +264,19 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//DA TAIL (IF ALREADY HAZ URZ)
-			if (player.tailType !== TAIL_TYPE_CAT && player.earType === EARS_CAT && rand(5) === 0 && changes < changeLimit) {
-				if (player.tailType === TAIL_TYPE_NONE) {
+			if (player.tailType !== Tail.CAT && player.earType === EARS_CAT && rand(5) === 0 && changes < changeLimit) {
+				if (player.tailType === Tail.NONE) {
 					temp = rand(3);
 					if (temp === 0) outputText("\n\nA pressure builds in your backside. You feel under your " + player.armorName + " and discover an odd bump that seems to be growing larger by the moment. In seconds it passes between your fingers, bursts out the back of your clothes and grows most of the way to the ground. A thick coat of fur springs up to cover your new tail. You instinctively keep adjusting it to improve your balance. <b>You now have a cat-tail.</b>");
 					if (temp === 1) outputText("\n\nYou feel your backside shift and change, flesh molding and displacing into a long, flexible tail! <b>You now have a cat tail.</b>");
 					if (temp === 2) outputText("\n\nYou feel an odd tingling in your spine and your tail bone starts to throb and then swell. Within a few moments it begins to grow, adding new bones to your spine. Before you know it, you have a tail. Just before you think it's over, the tail begins to sprout soft, glossy " + player.furColor + " fur. <b>You now have a cat tail.</b>");
 				}
 				else outputText("\n\nYou pause and tilt your head... something feels different.  Ah, that's what it is; you turn around and look down at your tail as it starts to change shape, narrowing and sprouting glossy fur. <b>You now have a cat tail.</b>");
-				player.tailType = TAIL_TYPE_CAT;
+				player.tailType = Tail.CAT;
 				changes++;
 			}
 			//Da paws (if already haz ears & tail)
-			if (player.tailType === TAIL_TYPE_CAT && player.earType === EARS_CAT && rand(5) === 0 && changes < changeLimit && player.lowerBody !== LOWER_BODY_TYPE_CAT) {
+			if (player.tailType === Tail.CAT && player.earType === EARS_CAT && rand(5) === 0 && changes < changeLimit && player.lowerBody !== LOWER_BODY_TYPE_CAT) {
 				//hoof to cat:
 				if (player.lowerBody === LOWER_BODY_TYPE_HOOFED) {
 					outputText("\n\nYou feel your hooves suddenly splinter, growing into five unique digits. Their flesh softens as your hooves reshape into furred cat paws. <b>You now have cat paws.</b>");
@@ -292,7 +293,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//TURN INTO A FURRAH!  OH SHIT
-			if (player.tailType === TAIL_TYPE_CAT && player.earType === EARS_CAT && rand(5) === 0 && changes < changeLimit && player.lowerBody === LOWER_BODY_TYPE_CAT && !player.hasFur()) {
+			if (player.tailType === Tail.CAT && player.earType === EARS_CAT && rand(5) === 0 && changes < changeLimit && player.lowerBody === LOWER_BODY_TYPE_CAT && !player.hasFur()) {
 				var catFurColors:Array = [
 					"brown",
 					"chocolate",
@@ -321,7 +322,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//CAT-FACE!  FULL ON FURRY!  RAGE AWAY NEKOZ
-			if (player.tailType === TAIL_TYPE_CAT && player.earType === EARS_CAT && rand(5) === 0 && changes < changeLimit && player.lowerBody === LOWER_BODY_TYPE_CAT && (player.hasFur() || (player.hasReptileScales() && player.dragonneScore() >= 4)) && player.faceType !== FACE_CAT) {
+			if (player.tailType === Tail.CAT && player.earType === EARS_CAT && rand(5) === 0 && changes < changeLimit && player.lowerBody === LOWER_BODY_TYPE_CAT && (player.hasFur() || (player.hasReptileScales() && player.dragonneScore() >= 4)) && player.faceType !== FACE_CAT) {
 				//Gain cat face, replace old face
 				temp = rand(3);
 				if (temp === 0) outputText("\n\nYour face is wracked with pain. You throw back your head and scream in agony as you feel your cheekbones breaking and shifting, reforming into something... different. You find a puddle to view your reflection and discover <b>your face is now a cross between human and feline features.</b>");

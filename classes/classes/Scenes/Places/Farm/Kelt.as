@@ -1,6 +1,7 @@
 package classes.Scenes.Places.Farm
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 
 	public class Kelt extends Monster
@@ -165,7 +166,7 @@ package classes.Scenes.Places.Farm
 			this.temperment = TEMPERMENT_LUSTY_GRAPPLES;
 			this.level = 6;
 			this.gems = rand(5) + 5;
-			this.tailType = TAIL_TYPE_HORSE;
+			this.tailType = Tail.HORSE;
 			this.drop = NO_DROP;
 			checkMonster();
 		}

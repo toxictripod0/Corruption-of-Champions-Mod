@@ -129,7 +129,7 @@ package classes.Scenes.Areas.HighMountains
 			this.gems = 10 + rand(4);
 			this.drop = new ChainedDrop().add(armors.W_ROBES,1/10)
 					.elseDrop(consumables.GLDSEED);
-			this.wingType = Wings.TYPE_HARPY;
+			this.wingType = Wings.HARPY;
 			this.special1 = harpyUberCharge;
 			this.special2 = harpyTease;
 			checkMonster();

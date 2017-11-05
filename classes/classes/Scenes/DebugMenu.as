@@ -1131,43 +1131,43 @@ import classes.Items.*
 			[CLAW_TYPE_MANTIS,"(7) MANTIS"],
 		];
 		private static const TAIL_TYPE_CONSTANTS:Array  = [
-			[TAIL_TYPE_NONE, "(0) NONE"],
-			[TAIL_TYPE_HORSE, "(1) HORSE"],
-			[TAIL_TYPE_DOG, "(2) DOG"],
-			[TAIL_TYPE_DEMONIC, "(3) DEMONIC"],
-			[TAIL_TYPE_COW, "(4) COW"],
-			[TAIL_TYPE_SPIDER_ADBOMEN, "(5) SPIDER_ADBOMEN"],
-			[TAIL_TYPE_BEE_ABDOMEN, "(6) BEE_ABDOMEN"],
-			[TAIL_TYPE_SHARK, "(7) SHARK"],
-			[TAIL_TYPE_CAT, "(8) CAT"],
-			[TAIL_TYPE_LIZARD, "(9) LIZARD"],
-			[TAIL_TYPE_RABBIT, "(10) RABBIT"],
-			[TAIL_TYPE_HARPY, "(11) HARPY"],
-			[TAIL_TYPE_KANGAROO, "(12) KANGAROO"],
-			[TAIL_TYPE_FOX, "(13) FOX"],
-			[TAIL_TYPE_DRACONIC, "(14) DRACONIC"],
-			[TAIL_TYPE_RACCOON, "(15) RACCOON"],
-			[TAIL_TYPE_MOUSE, "(16) MOUSE"],
-			[TAIL_TYPE_FERRET, "(17) FERRET"],
-			[TAIL_TYPE_BEHEMOTH, "(18) BEHEMOTH"],
-			[TAIL_TYPE_PIG, "(19) PIG"],
-			[TAIL_TYPE_SCORPION, "(20) SCORPION"],
-			[TAIL_TYPE_GOAT, "(21) GOAT"],
-			[TAIL_TYPE_RHINO, "(22) RHINO"],
-			[TAIL_TYPE_ECHIDNA, "(23) ECHIDNA"],
-			[TAIL_TYPE_DEER, "(24) DEER"],
-			[TAIL_TYPE_SALAMANDER, "(25) SALAMANDER"],
+			[Tail.NONE, "(0) NONE"],
+			[Tail.HORSE, "(1) HORSE"],
+			[Tail.DOG, "(2) DOG"],
+			[Tail.DEMONIC, "(3) DEMONIC"],
+			[Tail.COW, "(4) COW"],
+			[Tail.SPIDER_ABDOMEN, "(5) SPIDER_ADBOMEN"],
+			[Tail.BEE_ABDOMEN, "(6) BEE_ABDOMEN"],
+			[Tail.SHARK, "(7) SHARK"],
+			[Tail.CAT, "(8) CAT"],
+			[Tail.LIZARD, "(9) LIZARD"],
+			[Tail.RABBIT, "(10) RABBIT"],
+			[Tail.HARPY, "(11) HARPY"],
+			[Tail.KANGAROO, "(12) KANGAROO"],
+			[Tail.FOX, "(13) FOX"],
+			[Tail.DRACONIC, "(14) DRACONIC"],
+			[Tail.RACCOON, "(15) RACCOON"],
+			[Tail.MOUSE, "(16) MOUSE"],
+			[Tail.FERRET, "(17) FERRET"],
+			[Tail.BEHEMOTH, "(18) BEHEMOTH"],
+			[Tail.PIG, "(19) PIG"],
+			[Tail.SCORPION, "(20) SCORPION"],
+			[Tail.GOAT, "(21) GOAT"],
+			[Tail.RHINO, "(22) RHINO"],
+			[Tail.ECHIDNA, "(23) ECHIDNA"],
+			[Tail.DEER, "(24) DEER"],
+			[Tail.SALAMANDER, "(25) SALAMANDER"],
 			/* [INTERMOD: xianxia]
-			[TAIL_TYPE_KITSHOO, "(26) KITSHOO"],
-			[TAIL_TYPE_MANTIS_ABDOMEN, "(27) MANTIS_ABDOMEN"],
-			[TAIL_TYPE_MANTICORE_PUSSYTAIL, "(28) MANTICORE_PUSSYTAIL"],
-			[TAIL_TYPE_WOLF, "(29) WOLF"],
-			[TAIL_TYPE_GARGOYLE, "(30) GARGOYLE"],
-			[TAIL_TYPE_ORCA, "(31) ORCA"],
-			[TAIL_TYPE_YGGDRASIL, "(32) YGGDRASIL"],
+			[Tail.KITSHOO, "(26) KITSHOO"],
+			[Tail.MANTIS_ABDOMEN, "(27) MANTIS_ABDOMEN"],
+			[Tail.MANTICORE_PUSSYTAIL, "(28) MANTICORE_PUSSYTAIL"],
+			[Tail.WOLF, "(29) WOLF"],
+			[Tail.GARGOYLE, "(30) GARGOYLE"],
+			[Tail.ORCA, "(31) ORCA"],
+			[Tail.YGGDRASIL, "(32) YGGDRASIL"],
 			*/
-			[TAIL_TYPE_WOLF, "(26) WOLF"],
-			[TAIL_TYPE_SHEEP, "(27) SHEEP"],
+			[Tail.WOLF, "(26) WOLF"],
+			[Tail.SHEEP, "(27) SHEEP"],
 		];
 		private static const TAIL_COUNT_CONSTANTS:Array = [
 			[0,"0"],1,2,3,4,
@@ -1175,31 +1175,31 @@ import classes.Items.*
 			10,16
 		];
 		private static const WING_TYPE_CONSTANTS:Array  = [
-			[Wings.TYPE_NONE, "(0) NONE"],
-			[Wings.TYPE_BEE_LIKE_SMALL, "(1) BEE_LIKE_SMALL"],
-			[Wings.TYPE_BEE_LIKE_LARGE, "(2) BEE_LIKE_LARGE"],
-			[Wings.TYPE_HARPY, "(4) HARPY"],
-			[Wings.TYPE_IMP, "(5) IMP"],
-			[Wings.TYPE_BAT_LIKE_TINY, "(6) BAT_LIKE_TINY"],
-			[Wings.TYPE_BAT_LIKE_LARGE, "(7) BAT_LIKE_LARGE"],
-			[Wings.TYPE_FEATHERED_LARGE, "(9) FEATHERED_LARGE"],
-			[Wings.TYPE_DRACONIC_SMALL, "(10) DRACONIC_SMALL"],
-			[Wings.TYPE_DRACONIC_LARGE, "(11) DRACONIC_LARGE"],
-			[Wings.TYPE_GIANT_DRAGONFLY, "(12) GIANT_DRAGONFLY"],
+			[Wings.NONE, "(0) NONE"],
+			[Wings.BEE_LIKE_SMALL, "(1) BEE_LIKE_SMALL"],
+			[Wings.BEE_LIKE_LARGE, "(2) BEE_LIKE_LARGE"],
+			[Wings.HARPY, "(4) HARPY"],
+			[Wings.IMP, "(5) IMP"],
+			[Wings.BAT_LIKE_TINY, "(6) BAT_LIKE_TINY"],
+			[Wings.BAT_LIKE_LARGE, "(7) BAT_LIKE_LARGE"],
+			[Wings.FEATHERED_LARGE, "(9) FEATHERED_LARGE"],
+			[Wings.DRACONIC_SMALL, "(10) DRACONIC_SMALL"],
+			[Wings.DRACONIC_LARGE, "(11) DRACONIC_LARGE"],
+			[Wings.GIANT_DRAGONFLY, "(12) GIANT_DRAGONFLY"],
 			/* [INTERMOD: xianxia]
-			[Wings.TYPE_BAT_LIKE_LARGE_2, "(13) BAT_LIKE_LARGE_2"],
-			[Wings.TYPE_DRACONIC_HUGE, "(14) DRACONIC_HUGE"],
-			[Wings.TYPE_FEATHERED_PHOENIX, "(15) FEATHERED_PHOENIX"],
-			[Wings.TYPE_FEATHERED_ALICORN, "(16) FEATHERED_ALICORN"],
-			[Wings.TYPE_MANTIS_LIKE_SMALL, "(17) MANTIS_LIKE_SMALL"],
-			[Wings.TYPE_MANTIS_LIKE_LARGE, "(18) MANTIS_LIKE_LARGE"],
-			[Wings.TYPE_MANTIS_LIKE_LARGE_2, "(19) MANTIS_LIKE_LARGE_2"],
-			[Wings.TYPE_GARGOYLE_LIKE_LARGE, "(20) GARGOYLE_LIKE_LARGE"],
-			[Wings.TYPE_PLANT, "(21) PLANT"],
-			[Wings.TYPE_MANTICORE_LIKE_SMALL, "(22) MANTICORE_LIKE_SMALL"],
-			[Wings.TYPE_MANTICORE_LIKE_LARGE, "(23) MANTICORE_LIKE_LARGE"],
+			[Wings.BAT_LIKE_LARGE_2, "(13) BAT_LIKE_LARGE_2"],
+			[Wings.DRACONIC_HUGE, "(14) DRACONIC_HUGE"],
+			[Wings.FEATHERED_PHOENIX, "(15) FEATHERED_PHOENIX"],
+			[Wings.FEATHERED_ALICORN, "(16) FEATHERED_ALICORN"],
+			[Wings.MANTIS_LIKE_SMALL, "(17) MANTIS_LIKE_SMALL"],
+			[Wings.MANTIS_LIKE_LARGE, "(18) MANTIS_LIKE_LARGE"],
+			[Wings.MANTIS_LIKE_LARGE_2, "(19) MANTIS_LIKE_LARGE_2"],
+			[Wings.GARGOYLE_LIKE_LARGE, "(20) GARGOYLE_LIKE_LARGE"],
+			[Wings.PLANT, "(21) PLANT"],
+			[Wings.MANTICORE_LIKE_SMALL, "(22) MANTICORE_LIKE_SMALL"],
+			[Wings.MANTICORE_LIKE_LARGE, "(23) MANTICORE_LIKE_LARGE"],
 			*/
-			[Wings.TYPE_IMP_LARGE, "(13) IMP_LARGE"],
+			[Wings.IMP_LARGE, "(13) IMP_LARGE"],
 		];
 		private static const WING_DESC_CONSTANTS:Array = [
 			"(none)","non-existent","tiny hidden","huge","small",
@@ -1339,7 +1339,7 @@ import classes.Items.*
 		private function changeScorpionTail():void {
 			clearOutput();
 			outputText("<b>Your tail is now that of a scorpion's. Currently, scorpion tail has no use but it will eventually be useful for stinging.</b>");
-			player.tailType = TAIL_TYPE_SCORPION;
+			player.tailType = Tail.SCORPION;
 			player.tailVenom = 100;
 			player.tailRecharge = 5;
 			doNext(styleHackMenu);
@@ -1359,9 +1359,9 @@ import classes.Items.*
 			//Draconic TF
 			player.hornType = HORNS_DRACONIC_X2;
 			player.horns = 4;
-			player.wingType = Wings.TYPE_BAT_LIKE_LARGE;
+			player.wingType = Wings.BAT_LIKE_LARGE;
 			//Scorpion TF
-			player.tailType = TAIL_TYPE_SCORPION;
+			player.tailType = Tail.SCORPION;
 			player.tailVenom = 100;
 			player.tailRecharge = 5;
 			doNext(styleHackMenu);
@@ -1373,7 +1373,7 @@ import classes.Items.*
 			//Cat TF
 			player.faceType = FACE_CAT;
 			player.earType = EARS_CAT;
-			player.tailType = TAIL_TYPE_CAT;
+			player.tailType = Tail.CAT;
 			player.lowerBody = LOWER_BODY_TYPE_CAT;
 			player.legCount = 2;
 			//Draconic TF
@@ -1388,7 +1388,7 @@ import classes.Items.*
 			player.tongueType = TONGUE_DRACONIC;
 			player.hornType = HORNS_DRACONIC_X2;
 			player.horns = 4;
-			player.wingType = Wings.TYPE_DRACONIC_LARGE;
+			player.wingType = Wings.DRACONIC_LARGE;
 			doNext(styleHackMenu);
 		}
 		

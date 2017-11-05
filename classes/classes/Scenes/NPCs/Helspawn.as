@@ -1,6 +1,7 @@
 package classes.Scenes.NPCs
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 import classes.StatusEffects.Combat.CalledShotDebuff;
 
@@ -177,7 +178,7 @@ private function calledShot():void {
 			this.temperment = TEMPERMENT_RANDOM_GRAPPLES;
 			this.level = 12;
 			this.gems = 10 + rand(5);
-			this.tailType = TAIL_TYPE_SALAMANDER;
+			this.tailType = Tail.SALAMANDER;
 			this.tailRecharge = 0;
 			this.createStatusEffect(StatusEffects.Keen, 0, 0, 0, 0);
 			this.drop = NO_DROP;

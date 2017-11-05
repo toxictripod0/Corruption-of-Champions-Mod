@@ -201,7 +201,7 @@ import fl.controls.ComboBox;
 			player.legCount = 2;
 			player.faceType = FACE_HUMAN;
 			player.eyeCount = 2;
-			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) player.tailType = TAIL_TYPE_NONE;
+			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) player.tailType = Tail.NONE;
 			player.tongueType = TONGUE_HUMAN;
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) player.femininity = 50;
 			player.beardLength = 0;
@@ -229,12 +229,12 @@ import fl.controls.ComboBox;
 
 			}
 			else {
-				if (!(player.tailType == TAIL_TYPE_FOX || player.tailType == TAIL_TYPE_SPIDER_ADBOMEN || player.tailType == TAIL_TYPE_BEE_ABDOMEN || player.tailType == TAIL_TYPE_SCORPION)) {
+				if (!(player.tailType == Tail.FOX || player.tailType == Tail.SPIDER_ABDOMEN || player.tailType == Tail.BEE_ABDOMEN || player.tailType == Tail.SCORPION)) {
 					player.tailVenom = 0;
 					player.tailRecharge = 0;
 				}
 			}
-			player.wingType = Wings.TYPE_NONE;
+			player.wingType = Wings.NONE;
 			if (player.eyeType == EYES_BASILISK) player.eyeType = EYES_LIZARD; // Silently change them to be lizard eyes again. Simple and stupid ;)
 			//Default
 			player.skinTone = "light";

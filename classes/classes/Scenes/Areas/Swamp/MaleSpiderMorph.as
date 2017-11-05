@@ -1,6 +1,7 @@
 package classes.Scenes.Areas.Swamp
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.internals.*;
 
 	public class MaleSpiderMorph extends AbstractSpiderMorph
@@ -61,7 +62,7 @@ package classes.Scenes.Areas.Swamp
 			this.drop = new WeightedDrop().add(consumables.S_GOSSR,5)
 					.add(useables.T_SSILK,1)
 					.add(null,4);
-			this.tailType = TAIL_TYPE_SPIDER_ADBOMEN;
+			this.tailType = Tail.SPIDER_ABDOMEN;
 			this.tailRecharge = 0;
 			checkMonster();
 		}

@@ -1,6 +1,7 @@
 package classes.Scenes.Dungeons.D3 
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.internals.*;
 	import classes.Items.*
 	
@@ -98,7 +99,7 @@ package classes.Scenes.Dungeons.D3
 			hipRating = HIP_RATING_AVERAGE;
 			buttRating = BUTT_RATING_AVERAGE;
 			lowerBody = LOWER_BODY_TYPE_LIZARD;
-			tailType = TAIL_TYPE_LIZARD;
+			tailType = Tail.LIZARD;
 			skinDesc = "green-purple mottled hide";
 			initStrTouSpeInte(80, 100, 80, 60);
 			initLibSensCor(40, 40, 80);

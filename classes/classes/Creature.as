@@ -4,6 +4,7 @@ package classes
 	import classes.BodyParts.Neck;
 	import classes.BodyParts.RearBody;
 	import classes.BodyParts.Skin;
+	import classes.BodyParts.Tail;
 	import classes.BodyParts.UnderBody;
 	import classes.BodyParts.Wings;
 import classes.GlobalFlags.kGAMECLASS;
@@ -515,12 +516,16 @@ import mx.logging.ILogger;
 		14 - dagron tail
 		15 - raccoon tail
 		16 - mousetail*/
-		public var tailType:Number = TAIL_TYPE_NONE;
+		public var tail:Tail = new Tail();
+		public function get tailType():Number { return tail.type; }
+		public function set tailType(value:Number):void { tail.type = value; }
 		
 		//Tail venom is a 0-100 slider used for tail attacks. Recharges per hour.
-		public var tailVenom:Number = 0;
+		public function get tailVenom():Number { return tail.venom; }
+		public function set tailVenom(value:Number):void { tail.venom = value; }
 		//Tail recharge determines how fast venom/webs comes back per hour.
-		public var tailRecharge:Number = 5;
+		public function get tailRecharge():Number { return tail.recharge; }
+		public function set tailRecharge(value:Number):void { tail.recharge = value; }
 		
 		/*hipRating
 		0 - boyish
@@ -734,7 +739,7 @@ import mx.logging.ILogger;
 				if (hairType != HAIR_NORMAL) error += "No hair but hairType = " + hairType + ". ";
 			}
 			// 4.3. tail
-			if (tailType == TAIL_TYPE_NONE) {
+			if (tailType == Tail.NONE) {
 				if (tailVenom != 0) error += "No tail but tailVenom = "+tailVenom+". ";
 			}
 			// 4.4. horns
@@ -2415,13 +2420,13 @@ import mx.logging.ILogger;
 		}
 
 		public static const canFlyWings:Array = [
-			Wings.TYPE_BEE_LIKE_LARGE,
-			Wings.TYPE_BAT_LIKE_LARGE,
-			Wings.TYPE_FEATHERED_LARGE,
-			Wings.TYPE_DRACONIC_LARGE,
-			Wings.TYPE_GIANT_DRAGONFLY,
-			Wings.TYPE_IMP_LARGE,
-			Wings.TYPE_HARPY,
+			Wings.BEE_LIKE_LARGE,
+			Wings.BAT_LIKE_LARGE,
+			Wings.FEATHERED_LARGE,
+			Wings.DRACONIC_LARGE,
+			Wings.GIANT_DRAGONFLY,
+			Wings.IMP_LARGE,
+			Wings.HARPY,
 		];
 
 		//PC can fly?
@@ -3307,14 +3312,14 @@ import mx.logging.ILogger;
 
 		public function canOvipositSpider():Boolean
 		{
-			if (eggs() >= 10 && hasPerk(PerkLib.SpiderOvipositor) && isDrider() && tailType == TAIL_TYPE_SPIDER_ADBOMEN)
+			if (eggs() >= 10 && hasPerk(PerkLib.SpiderOvipositor) && isDrider() && tailType == Tail.SPIDER_ABDOMEN)
 				return true;
 			return false;
 		}
 
 		public function canOvipositBee():Boolean
 		{
-			if (eggs() >= 10 && hasPerk(PerkLib.BeeOvipositor) && tailType == TAIL_TYPE_BEE_ABDOMEN)
+			if (eggs() >= 10 && hasPerk(PerkLib.BeeOvipositor) && tailType == Tail.BEE_ABDOMEN)
 				return true;
 			return false;
 		}

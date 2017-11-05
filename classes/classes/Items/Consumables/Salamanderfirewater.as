@@ -1,6 +1,7 @@
 package classes.Items.Consumables 
 {
 	import classes.Appearance;
+	import classes.BodyParts.*;
 	import classes.CockTypesEnum;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Items.Consumable;
@@ -194,21 +195,21 @@ package classes.Items.Consumables
 			}
 			//Physical changes:
 			//Tail - 1st gain reptilian tail, 2nd unlocks enhanced with fire tail whip attack
-			if (player.tailType !== TAIL_TYPE_LIZARD && player.tailType !== TAIL_TYPE_SALAMANDER && changes < changeLimit && rand(3) === 0) {
+			if (player.tailType !== Tail.LIZARD && player.tailType !== Tail.SALAMANDER && changes < changeLimit && rand(3) === 0) {
 				//No tail
-				if (player.tailType === TAIL_TYPE_NONE) outputText("\n\nYou drop onto the ground as your spine twists and grows, forcing the flesh above your " + player.assDescript() + " to bulge out.  New bones form, one after another, building a tapered, prehensile tail onto the back of your body.  <b>You now have a reptilian tail!</b>");
+				if (player.tailType === Tail.NONE) outputText("\n\nYou drop onto the ground as your spine twists and grows, forcing the flesh above your " + player.assDescript() + " to bulge out.  New bones form, one after another, building a tapered, prehensile tail onto the back of your body.  <b>You now have a reptilian tail!</b>");
 				//Yes tail
 				else outputText("\n\nYou drop to the ground as your tail twists and grows, changing its shape in order to gradually taper to a point.  It flicks back and forth, prehensile and totally under your control.  <b>You now have a reptilian tail.</b>");
-				player.tailType = TAIL_TYPE_LIZARD;
+				player.tailType = Tail.LIZARD;
 				changes++;
 			}
-			if (player.tailType === TAIL_TYPE_LIZARD && changes < changeLimit && rand(3) === 0) {
+			if (player.tailType === Tail.LIZARD && changes < changeLimit && rand(3) === 0) {
 				outputText("\n\nYou feel a strange heating sensation in your tail and when you grab your own tail, you can see that it retains the same shape though the color changes to red. It becomes hotter to the touch and you let go of your tail before it gets too hot. For a brief moment it tip ignite with a red-colored flame that with as little as your merely thought vanish moment later.  Still you somehow know you can set ablaze any part or whole your tail at any moment and even use it to burn enemies after lashing them with your tail.  <b>You now have a salamander tail!</b>");
-				player.tailType = TAIL_TYPE_SALAMANDER;
+				player.tailType = Tail.SALAMANDER;
 				changes++;
 			}
 			//Legs
-			if (player.lowerBody !== LOWER_BODY_TYPE_SALAMANDER && player.tailType === TAIL_TYPE_SALAMANDER && changes < changeLimit && rand(3) === 0) {
+			if (player.lowerBody !== LOWER_BODY_TYPE_SALAMANDER && player.tailType === Tail.SALAMANDER && changes < changeLimit && rand(3) === 0) {
 				//Hooves -
 				if (player.lowerBody === LOWER_BODY_TYPE_HOOFED) outputText("\n\nYou scream in agony as you feel your hooves crack and break apart, beginning to rearrange.  Your legs change to a digitigrade shape while your feet grow claws and shift to have three toes on the front and a smaller toe on the heel.");
 				//TAURS -

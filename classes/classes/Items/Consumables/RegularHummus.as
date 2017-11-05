@@ -175,7 +175,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Removes wings
-			if ((player.wingType !== Wings.TYPE_NONE || player.rearBody.type == REAR_BODY_SHARK_FIN) && rand(5) === 0 && changes < changeLimit) {
+			if ((player.wingType !== Wings.NONE || player.rearBody.type == REAR_BODY_SHARK_FIN) && rand(5) === 0 && changes < changeLimit) {
 				if (player.rearBody.type == REAR_BODY_SHARK_FIN) {
 					outputText("\n\nA wave of tightness spreads through your back, and it feels as if someone is stabbing a dagger into your spine."
 					          +" After a moment the pain passes, though your fin is gone!");
@@ -184,13 +184,13 @@ package classes.Items.Consumables
 					outputText("\n\nA wave of tightness spreads through your back, and it feels as if someone is stabbing a dagger into each of your"
 					          +" shoulder-blades.  After a moment the pain passes, though your wings are gone!");
 				}
-				player.wingType = Wings.TYPE_NONE;
+				player.wingType = Wings.NONE;
 				changes++;
 			}
 			//Removes tail
-			if (player.tailType !== TAIL_TYPE_NONE && rand(5) === 0 && changes < changeLimit) {
+			if (player.tailType !== Tail.NONE && rand(5) === 0 && changes < changeLimit) {
 				outputText("\n\nYou feel something shifting in your backside. Then something detaches from your backside and it falls onto the ground.  <b>You no longer have a tail!</b>");
-				player.tailType = TAIL_TYPE_NONE;
+				player.tailType = Tail.NONE;
 				player.tailVenom = 0;
 				player.tailRecharge = 5;
 				changes++;

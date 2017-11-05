@@ -108,9 +108,9 @@ package classes.Scenes.Dungeons.Factory
 			this.drop = new WeightedDrop(null, 1);
 			this.special1 = lustAura;
 			this.special2 = milkAttack;
-			this.wingType = Wings.TYPE_BAT_LIKE_TINY;
+			this.wingType = Wings.BAT_LIKE_TINY;
 			this.wingDesc = "tiny hidden";
-			this.tailType = TAIL_TYPE_DEMONIC;
+			this.tailType = Tail.DEMONIC;
 			this.createPerk(PerkLib.ImprovedSelfControl, 0, 0, 0, 0);
 			checkMonster();
 		}

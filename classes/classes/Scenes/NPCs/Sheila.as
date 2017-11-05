@@ -1,6 +1,7 @@
 package classes.Scenes.NPCs
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.internals.*;
@@ -342,7 +343,7 @@ package classes.Scenes.NPCs
 						add(consumables.SUCMILK,1/3).
 						add(consumables.INCUBID,1/2);
 			}
-			this.tailType = TAIL_TYPE_KANGAROO;
+			this.tailType = Tail.KANGAROO;
 			checkMonster();
 		}
 

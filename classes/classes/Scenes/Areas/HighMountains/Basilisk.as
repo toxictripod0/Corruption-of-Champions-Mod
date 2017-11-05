@@ -1,6 +1,7 @@
 package classes.Scenes.Areas.HighMountains
 {
 	import classes.*;
+	import classes.BodyParts.*;
 import classes.StatusEffects.Combat.BasiliskSlowDebuff;
 import classes.internals.ChainedAction;
 	import classes.internals.ChainedDrop;
@@ -138,7 +139,7 @@ import classes.internals.ChainedAction;
 			this.gems = rand(10) + 10;
 			this.drop = new ChainedDrop().add(consumables.REPTLUM, 0.9)
 					.elseDrop(useables.EBNFLWR);
-			this.tailType = TAIL_TYPE_LIZARD;
+			this.tailType = Tail.LIZARD;
 			this.tailRecharge = 0;
 			this.createPerk(PerkLib.BasiliskResistance, 0, 0, 0, 0);
 			checkMonster();

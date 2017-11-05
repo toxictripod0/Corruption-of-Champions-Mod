@@ -1,5 +1,6 @@
 package classes.Items.Consumables
 {
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Items.Consumable;
 	import classes.Items.ConsumableLib;
@@ -79,13 +80,13 @@ package classes.Items.Consumables
 				outputText(" <b>You now have sheep ears!</b>");
 				changes++;
 			}
-			if (player.tailType !== TAIL_TYPE_SHEEP && rand(3) === 0 && changes < changeLimit) {
+			if (player.tailType !== Tail.SHEEP && rand(3) === 0 && changes < changeLimit) {
 				outputText("\n\nYou feel the flesh above your [butt] knotting and changing. It twists and writhes around itself, lengthening before flopping straight down. With a slight poof, a coat of soft and fluffy wool coats it, your new tail taking on the wooly appearance of a sheep's.");
-				player.tailType = TAIL_TYPE_SHEEP;
+				player.tailType = Tail.SHEEP;
 				outputText(" <b>You now have a sheep's tail!</b>");
 				changes++;
 			}
-			if (player.lowerBody !== LOWER_BODY_TYPE_CLOVEN_HOOFED && player.tailType === TAIL_TYPE_SHEEP && rand(3) === 0 && changes < changeLimit) {
+			if (player.lowerBody !== LOWER_BODY_TYPE_CLOVEN_HOOFED && player.tailType === Tail.SHEEP && rand(3) === 0 && changes < changeLimit) {
 				outputText("\n\nYou feel a strange tightness from your feet and nearly topple over as your balance shifts. You're balancing on your toes for some reason. You look down in amazement as your legs slim and shorten, your feet elongating and darkening at the ends, all morphing until you're balancing on two sheep legs, complete with cute little hooves.");
 				player.lowerBody = LOWER_BODY_TYPE_CLOVEN_HOOFED;
 				player.legCount = 2;
@@ -101,7 +102,7 @@ package classes.Items.Consumables
 				player.horns = 1;
 				changes++;
 			}
-			if (rand(3) === 0 && changes < changeLimit && player.legCount === 2 && player.lowerBody === LOWER_BODY_TYPE_CLOVEN_HOOFED && player.hornType === HORNS_SHEEP && player.tailType === TAIL_TYPE_SHEEP && player.earType === EARS_SHEEP && !player.hasWool()) {
+			if (rand(3) === 0 && changes < changeLimit && player.legCount === 2 && player.lowerBody === LOWER_BODY_TYPE_CLOVEN_HOOFED && player.hornType === HORNS_SHEEP && player.tailType === Tail.SHEEP && player.earType === EARS_SHEEP && !player.hasWool()) {
 			    var sheepWoolColors: Array = [
 				"white",
 				"black",

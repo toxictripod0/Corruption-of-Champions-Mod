@@ -553,26 +553,26 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Tail TF
-			if (player.tailType != TAIL_TYPE_COCKATRICE && changes < changeLimit && rand(4) == 0) {
+			if (player.tailType != Tail.COCKATRICE && changes < changeLimit && rand(4) == 0) {
 				outputText("\n\nA sudden dull, throbbing pain in your [butt] forces your hands to it; you can feel an ominous lump over your tail"
 				          +" bone, swelling bigger and bigger with every heartbeat.  All of a sudden, it seems to explode, jutting out and around"
 				          +" until it hovers near your ankles. The skin beneath your fingers is covered in feathers but terminates about an inch"
 				          +" later in a 'v'shape, giving way to " + player.skinTone + " scales.");
 				outputText("\n<b>You now have a cockatrice tail!</b>");
-				player.tailType = TAIL_TYPE_COCKATRICE;
+				player.tailType = Tail.COCKATRICE;
 				player.tailRecharge = 5;
 				player.tailVenom = 0;
 				changes++;
 			}
 			//Wings TF
-			if (player.wingType != Wings.TYPE_FEATHERED_LARGE && player.armType == ARM_TYPE_COCKATRICE && changes < changeLimit && rand(4) == 0) {
+			if (player.wingType != Wings.FEATHERED_LARGE && player.armType == ARM_TYPE_COCKATRICE && changes < changeLimit && rand(4) == 0) {
 				outputText("\n");
-				if (player.wingType != Wings.TYPE_NONE) {
+				if (player.wingType != Wings.NONE) {
 					outputText("\nSensation fades from your [wings] slowly but surely, leaving them dried out husks that break off to fall on the"
 					          +" ground. Your back closes up to conceal the loss, as smooth and unbroken as the day you entered the portal.");
 				}
 				player.wings.setProps({
-					type:  Wings.TYPE_FEATHERED_LARGE,
+					type:  Wings.FEATHERED_LARGE,
 					color: player.isFluffy() || player.hasCockatriceSkin() ? player.furColor : player.hairColor
 				});
 				outputText("\nPain lances through your back, the muscles knotting oddly and pressing up to bulge your skin. It hurts, oh gods does"

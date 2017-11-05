@@ -2,6 +2,7 @@
 package classes.Scenes.Combat 
 {
 import classes.*;
+import classes.BodyParts.*;
 import classes.GlobalFlags.*;
 import classes.Items.*;
 import classes.Scenes.Areas.Desert.*;
@@ -2163,7 +2164,7 @@ public class Combat extends BaseContent
 			//Calculations
 			var escapeMod:Number = 20 + monster.level * 3;
 			if (debug) escapeMod -= 300;
-			if (player.tailType == TAIL_TYPE_RACCOON && player.earType == EARS_RACCOON && player.findPerk(PerkLib.Runner) >= 0) escapeMod -= 25;
+			if (player.tailType == Tail.RACCOON && player.earType == EARS_RACCOON && player.findPerk(PerkLib.Runner) >= 0) escapeMod -= 25;
 			if (monster.hasStatusEffect(StatusEffects.Blind)) escapeMod -= 35;
 			if (monster.hasStatusEffect(StatusEffects.Illusion)) escapeMod -= 20; // Not as much as blindness, but it also affects speed by itself.
 			if (player.hasStatusEffect(StatusEffects.Blind) && (!player.canFly() || monster.canFly())) escapeMod += 35; // If you can fly you don't have to see where the sky is. But if your foe can fly too, it won't give you much.
@@ -2262,7 +2263,7 @@ public class Combat extends BaseContent
 				//Fliers flee!
 				else if (player.canFly()) outputText(monster.capitalA + monster.short + " can't catch you.");
 				//sekrit benefit: if you have coon ears, coon tail, and Runner perk, change normal Runner escape to flight-type escape
-				else if (player.tailType == TAIL_TYPE_RACCOON && player.earType == EARS_RACCOON && player.findPerk(PerkLib.Runner) >= 0) {
+				else if (player.tailType == Tail.RACCOON && player.earType == EARS_RACCOON && player.findPerk(PerkLib.Runner) >= 0) {
 					outputText("Using your running skill, you build up a head of steam and jump, then spread your arms and flail your tail wildly; your opponent dogs you as best " + monster.pronoun1 + " can, but stops and stares dumbly as your spastic tail slowly propels you several meters into the air!  You leave " + monster.pronoun2 + " behind with your clumsy, jerky, short-range flight.");
 				}
 				//Non-fliers flee
@@ -2299,7 +2300,7 @@ public class Combat extends BaseContent
 					else outputText(monster.capitalA + monster.short + " manages to grab your " + player.legs() + " and drag you back to the ground before you can fly away!");
 				}
 				//fail
-				else if (player.tailType == TAIL_TYPE_RACCOON && player.earType == EARS_RACCOON && player.findPerk(PerkLib.Runner) >= 0) outputText("Using your running skill, you build up a head of steam and jump, but before you can clear the ground more than a foot, your opponent latches onto you and drags you back down with a thud!");
+				else if (player.tailType == Tail.RACCOON && player.earType == EARS_RACCOON && player.findPerk(PerkLib.Runner) >= 0) outputText("Using your running skill, you build up a head of steam and jump, but before you can clear the ground more than a foot, your opponent latches onto you and drags you back down with a thud!");
 				//Nonflyer messages
 				else {
 					//Huge balls messages

@@ -1,6 +1,7 @@
 package classes.Scenes.Quests.UrtaQuest
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.internals.*;
@@ -199,7 +200,7 @@ package classes.Scenes.Quests.UrtaQuest
 						.elseDrop(null);
 			}
 			else this.drop = NO_DROP;
-			this.tailType = TAIL_TYPE_COW;
+			this.tailType = Tail.COW;
 			this.special1 = game.mountain.minotaurScene.minoPheromones;
 			checkMonster();
 		}

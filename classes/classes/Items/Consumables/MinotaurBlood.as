@@ -1,6 +1,7 @@
 package classes.Items.Consumables 
 {
 	import classes.Appearance;
+	import classes.BodyParts.*;
 	import classes.CockTypesEnum;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Items.Consumable;
@@ -326,7 +327,7 @@ package classes.Items.Consumables
 				}
 			}
 			//+mino horns require ears/tail
-			if (changes < changeLimit && rand(3) === 0 && player.earType === EARS_COW && player.tailType === TAIL_TYPE_COW) {
+			if (changes < changeLimit && rand(3) === 0 && player.earType === EARS_COW && player.tailType === Tail.COW) {
 				temp = 1;
 				//New horns or expanding mino horns
 				if (player.hornType === HORNS_COW_MINOTAUR || player.hornType === HORNS_NONE) {
@@ -384,24 +385,24 @@ package classes.Items.Consumables
 				}
 			}
 			//+cow ears	- requires tail
-			if (player.earType !== EARS_COW && changes < changeLimit && player.tailType === TAIL_TYPE_COW && rand(2) === 0) {
+			if (player.earType !== EARS_COW && changes < changeLimit && player.tailType === Tail.COW && rand(2) === 0) {
 				outputText("\n\nYou feel your ears tug on your scalp as they twist shape, becoming oblong and cow-like.  <b>You now have cow ears.</b>");
 				player.earType = EARS_COW;
 				changes++;
 			}
 			//+cow tail
-			if (changes < changeLimit && rand(2) === 0 && player.tailType !== TAIL_TYPE_COW) {
-				if (player.tailType === TAIL_TYPE_NONE) outputText("\n\nYou feel the flesh above your " + player.buttDescript() + " knotting and growing.  It twists and writhes around itself before flopping straight down, now shaped into a distinctly bovine form.  You have a <b>cow tail</b>.");
+			if (changes < changeLimit && rand(2) === 0 && player.tailType !== Tail.COW) {
+				if (player.tailType === Tail.NONE) outputText("\n\nYou feel the flesh above your " + player.buttDescript() + " knotting and growing.  It twists and writhes around itself before flopping straight down, now shaped into a distinctly bovine form.  You have a <b>cow tail</b>.");
 				else {
-					if (player.tailType < TAIL_TYPE_SPIDER_ADBOMEN || player.tailType > TAIL_TYPE_BEE_ABDOMEN) {
+					if (player.tailType < Tail.SPIDER_ABDOMEN || player.tailType > Tail.BEE_ABDOMEN) {
 						outputText("\n\nYour tail bunches uncomfortably, twisting and writhing around itself before flopping straight down, now shaped into a distinctly bovine form.  You have a <b>cow tail</b>.");
 					}
 					//insect
-					if (player.tailType === TAIL_TYPE_SPIDER_ADBOMEN || player.tailType === TAIL_TYPE_BEE_ABDOMEN) {
+					if (player.tailType === Tail.SPIDER_ABDOMEN || player.tailType === Tail.BEE_ABDOMEN) {
 						outputText("\n\nYour insect-like abdomen tingles pleasantly as it begins shrinking and softening, chitin morphing and reshaping until it looks exactly like a <b>cow tail</b>.");
 					}
 				}
-				player.tailType = TAIL_TYPE_COW;
+				player.tailType = Tail.COW;
 				changes++;
 			}
 			// Remove gills

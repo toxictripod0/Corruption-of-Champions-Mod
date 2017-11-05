@@ -18,7 +18,7 @@ package classes.Scenes.Areas.HighMountains
 
 		public function wingify():void
 		{
-			wingType = Wings.TYPE_FEATHERED_LARGE;
+			wingType = Wings.FEATHERED_LARGE;
 			wingDesc = "large, feathered";
 			spe += 10;
 			imageName += "withwings";
@@ -223,7 +223,7 @@ package classes.Scenes.Areas.HighMountains
 				.add(consumables.GLDSEED, 35)
 				.add(consumables.TOTRICE, 20)
 				.add(null,                10);
-			this.tailType = TAIL_TYPE_COCKATRICE;
+			this.tailType = Tail.COCKATRICE;
 			this.tailRecharge = 0;
 			this.createPerk(PerkLib.BasiliskResistance, 0, 0, 0, 0);
 			checkMonster();

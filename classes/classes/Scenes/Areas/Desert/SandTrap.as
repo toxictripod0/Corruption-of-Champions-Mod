@@ -1,6 +1,7 @@
 ﻿package classes.Scenes.Areas.Desert
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.internals.*;
 	import classes.display.SpriteDb;
 
@@ -145,7 +146,7 @@
 			this.level = 4;
 			this.gems = 2 + rand(5);
 			this.drop = new ChainedDrop(consumables.TRAPOIL).add(consumables.OVIELIX,1/3);
-			this.tailType = TAIL_TYPE_DEMONIC;
+			this.tailType = Tail.DEMONIC;
 			createStatusEffect(StatusEffects.Level,4,0,0,0);
 			checkMonster();
 		}

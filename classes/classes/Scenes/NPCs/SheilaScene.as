@@ -1,5 +1,6 @@
 ﻿package classes.Scenes.NPCs{
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Scenes.Camp.*;
 	import classes.Items.*;
@@ -3071,7 +3072,7 @@ private function sheilaCowgirlRapesYou():void {
 			//[(small cum)]
 			if (player.cumQ() <= 250) {
 				outputText("  Sheila continues moving her hips even as she comes, lost in bliss; on one particularly lofty ascent, your cock flops out, squirting a line of jizz along ");
-				if (player.tailType > TAIL_TYPE_NONE) outputText("your tail");
+				if (player.tailType > Tail.NONE) outputText("your tail");
 				else outputText("the grass");
 				outputText(", and her eyes go wide.");
 			}
@@ -3530,7 +3531,7 @@ private function normalSheilaPregNotifREPEATEDEDHelpABitchOutANDSTAYDERE():void 
 		if (player.sens >= 40) dynStats("lus", player.sens/4, "scale", false);
 	}
 	//(harpy - minimum score for birdlegs at least)
-	else if (player.lowerBody == LOWER_BODY_TYPE_HARPY && player.tailType == TAIL_TYPE_HARPY) {
+	else if (player.lowerBody == LOWER_BODY_TYPE_HARPY && player.tailType == Tail.HARPY) {
 		outputText("\n\nShe shifts in your embrace, pushing up and down and giving you fits.  \"<i>Good lord, woman, what is the matter?</i>\" you ask.");
 		
 		outputText("\n\n\"<i>Sorry, mate... your feathers are tickling me,</i>\" Sheila protests.");
@@ -5024,7 +5025,7 @@ private function winAgainstDemoNSheilaForVaginas():void {
 	if (!player.isTaur()) {
 		outputText("crawl away on your hands");
 		//[(tail or naga)
-		if (player.tailType > TAIL_TYPE_NONE && player.isNaga()) outputText(" and raise your tail");
+		if (player.tailType > Tail.NONE && player.isNaga()) outputText(" and raise your tail");
 	}
 	else outputText("clamber to your hooves and bend your forelegs");
 	outputText(" to present your eager [vagina].  Sheila sits up and places her hands on your [hips], then slides her pelvis up, teasing your lower lips with something bulbous and warm.  They sting slightly as it smears its slime along them, a not-entirely-pleasant sensation.");

@@ -1,6 +1,7 @@
 package classes.Scenes.Dungeons.Factory 
 {
 	import classes.BaseContent;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.StatusEffects;
 	import classes.PerkLib;
@@ -336,9 +337,9 @@ package classes.Scenes.Dungeons.Factory
 			else outputText("You collapse as your " + player.legs() + " are unable to support you.  The sounds of bones breaking and reshaping fills the room, but oddly you feel no pain, only mild arousal.  You blink your eyes and sigh, and when you look down again <b>you have normal human legs</b>!");
 			player.lowerBody = LOWER_BODY_TYPE_HUMAN;
 			player.legCount = 2;
-			if (player.tailType > TAIL_TYPE_NONE) {
+			if (player.tailType > Tail.NONE) {
 				outputText("  A moment later, your feel something detach from above your backside.  <b>You no longer have a tail!</b>");
-				player.tailType = TAIL_TYPE_NONE;
+				player.tailType = Tail.NONE;
 				player.tailVenom = 0;
 				player.tailRecharge = 5;
 			}

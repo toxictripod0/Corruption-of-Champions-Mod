@@ -118,7 +118,7 @@
 					add(consumables.LABOVA_,1).
 					add(consumables.INCUBID,6).
 					add(consumables.SUCMILK,6);
-			this.wingType = Wings.TYPE_IMP_LARGE;
+			this.wingType = Wings.IMP_LARGE;
 			this.special1 = lustMagicAttack;
 			checkMonster();
 		}

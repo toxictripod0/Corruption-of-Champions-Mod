@@ -1,6 +1,7 @@
 package classes.Scenes.Areas.Desert
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.internals.WeightedDrop;
 	import classes.GlobalFlags.kFLAGS;
 
@@ -132,7 +133,7 @@ package classes.Scenes.Areas.Desert
 							consumables.B__BOOK);
 			this.special1 = game.combat.packAttack;
 			this.special2 = game.combat.lustAttack;
-			this.tailType = TAIL_TYPE_DEMONIC;
+			this.tailType = Tail.DEMONIC;
 			this.hornType = HORNS_DEMON;
 			this.horns = 2;
 			checkMonster();

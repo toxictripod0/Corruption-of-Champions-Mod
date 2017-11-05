@@ -80,36 +80,36 @@ package classes.Items.Consumables
 			}
 			
 			//Imp wings - I just kinda robbed this from demon changes ~Foxwells
-			if (rand(3) == 0 && changes < changeLimit && player.wingType != Wings.TYPE_IMP_LARGE && player.isCorruptEnough(25)) {
+			if (rand(3) == 0 && changes < changeLimit && player.wingType != Wings.IMP_LARGE && player.isCorruptEnough(25)) {
 				//grow smalls to large
-				if (player.wingType === Wings.TYPE_IMP && player.isCorruptEnough(50)) {
+				if (player.wingType === Wings.IMP && player.isCorruptEnough(50)) {
 					outputText("\n\n");
 					outputText("Your small imp wings stretch and grow, tingling with the pleasure of being attached to such a tainted body. You stretch over your shoulder to stroke them as they unfurl, turning into large imp-wings. <b>Your imp wings have grown!</b>");
-					player.wingType = Wings.TYPE_IMP_LARGE;
+					player.wingType = Wings.IMP_LARGE;
 				}
 				else if (player.rearBody.type === REAR_BODY_SHARK_FIN) {
 					outputText("\n\n");
 					outputText("The muscles around your shoulders bunch up uncomfortably, changing to support the new bat-like wings growing from your back. You twist your head as far as you can for a look and realize your fin has changed into imp-wings!");
 					player.rearBody.restore();
-					player.wingType = Wings.TYPE_IMP;
+					player.wingType = Wings.IMP;
 				}
 				//No wings
-				else if (player.wingType === Wings.TYPE_NONE) {
+				else if (player.wingType === Wings.NONE) {
 					outputText("\n\n");
 					outputText("A knot of pain forms in your shoulders as they tense up.  With a surprising force, a pair of small imp wings sprout from your back, ripping a pair of holes in the back of your " + player.armorName + ".  <b>You now have imp wings.</b>");
-					player.wingType = Wings.TYPE_IMP;
+					player.wingType = Wings.IMP;
 				}
 				//Other wing types
 				else {
 					outputText("\n\n");
 					outputText("The muscles around your shoulders bunch up uncomfortably, changing to support your wings as you feel their weight increasing.  You twist your head as far as you can for a look and realize they've changed into ");
-					if ([Wings.TYPE_BEE_LIKE_SMALL, Wings.TYPE_HARPY, Wings.TYPE_DRACONIC_SMALL, Wings.TYPE_IMP].indexOf(player.wingType) !== -1) {
+					if ([Wings.BEE_LIKE_SMALL, Wings.HARPY, Wings.DRACONIC_SMALL, Wings.IMP].indexOf(player.wingType) !== -1) {
 						outputText("small ");
-						player.wingType = Wings.TYPE_IMP;
+						player.wingType = Wings.IMP;
 					}
 					else {
 						outputText("large ");
-						player.wingType = Wings.TYPE_IMP_LARGE;
+						player.wingType = Wings.IMP_LARGE;
 					}
 					outputText("<b>imp-wings!</b>");
 				}
@@ -118,10 +118,10 @@ package classes.Items.Consumables
 			}
 			
 			//Imp tail, because that's a unique thing from what I see?
-			if (player.tailType !== TAIL_TYPE_IMP && changes < changeLimit && rand(3) === 0) {
-				if (player.tailType !== TAIL_TYPE_NONE) {
+			if (player.tailType !== Tail.IMP && changes < changeLimit && rand(3) === 0) {
+				if (player.tailType !== Tail.NONE) {
 					outputText("\n\n");
-					if (player.tailType === TAIL_TYPE_SPIDER_ADBOMEN || player.tailType === TAIL_TYPE_BEE_ABDOMEN) outputText("You feel a tingling in your insectile abdomen as it stretches, narrowing, the exoskeleton flaking off as it transforms into an imp's tail, complete with a round fluffed end. ");
+					if (player.tailType === Tail.SPIDER_ABDOMEN || player.tailType === Tail.BEE_ABDOMEN) outputText("You feel a tingling in your insectile abdomen as it stretches, narrowing, the exoskeleton flaking off as it transforms into an imp's tail, complete with a round fluffed end. ");
 					else outputText("You feel a tingling in your tail. You are amazed to discover it has shifted into an imp tail, complete with a fluffy end. ");
 					outputText("<b>Your tail is an imp tail!</b>");
 				}
@@ -129,12 +129,12 @@ package classes.Items.Consumables
 					outputText("\n\nA pain builds in your backside, growing more and more pronounced. The pressure suddenly disappears with a loud ripping and tearing noise. <b>You realize you now have an imp tail</b>... complete with fluffed end.");
 				}
 				dynStats("cor", 2);
-				player.tailType = TAIL_TYPE_IMP;
+				player.tailType = Tail.IMP;
 				changes++;
 			}
 			
 			//Feets, needs red/orange skin and tail
-			if (["red", "orange"].indexOf(player.skinTone) !== -1 && player.tailType === TAIL_TYPE_IMP && player.lowerBody !== LOWER_BODY_TYPE_IMP && rand(3) === 0 && changes < changeLimit) {
+			if (["red", "orange"].indexOf(player.skinTone) !== -1 && player.tailType === Tail.IMP && player.lowerBody !== LOWER_BODY_TYPE_IMP && rand(3) === 0 && changes < changeLimit) {
 				outputText("\n\nEvery muscle and sinew below your hip tingles and you begin to stagger. Seconds after you sit down, pain explodes in your " + player.feet() + ". Something hard breaks through your sole from the inside out as your " + player.feet() + " splinter and curve cruelly. The pain slowly diminishes and your eyes look along a skinny, human leg that splinters at the foot into three long claw with a smaller back one for balance. When you relax, your feet grip the ground easily. <b>Your lower body is now that of an imp.</b>");
 				player.lowerBody = LOWER_BODY_TYPE_IMP;
 				player.legCount = 2;

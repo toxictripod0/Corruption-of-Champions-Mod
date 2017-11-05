@@ -7,6 +7,7 @@
 package classes.Scenes.Areas.GlacialRift 
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.internals.WeightedDrop;
 	
 	public class Amarok extends Monster
@@ -132,7 +133,7 @@ package classes.Scenes.Areas.GlacialRift
 			this.drop = new WeightedDrop(consumables.WOLF_PP, 1);
 			this.special1 = amarokClaw;
 			this.special2 = amarokTail;
-			this.tailType = TAIL_TYPE_WOLF;
+			this.tailType = Tail.WOLF;
 			if (!player.canFly()) {
 				this.createStatusEffect(StatusEffects.GenericRunDisabled, 0, 0, 0, 0);
 				//"Watching your movements" alluded to this. Its lore is stalking and hunting people, so I imagine you can't get away.

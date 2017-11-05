@@ -813,7 +813,7 @@ package classes.Scenes.Dungeons
 			else outputText(" and giving you an exotic, tainted appearance");
 			outputText(".  ");
 			if (player.lowerBody != LOWER_BODY_TYPE_DEMONIC_HIGH_HEELS) outputText("Your " + player.feet() + " have been changing throughout the ordeal, but you didn't notice your " + player.legs() + " becoming such lissom, lengthy legs, or your heels growing long, high-heel-like spikes.  ");
-			if (player.tailType != TAIL_TYPE_DEMONIC) outputText("A tail snakes around your leg and begins to caress your " + player.vaginaDescript(0) + ", then plunges in to fuck the squirting orifice while you drink.  ");
+			if (player.tailType != Tail.DEMONIC) outputText("A tail snakes around your leg and begins to caress your " + player.vaginaDescript(0) + ", then plunges in to fuck the squirting orifice while you drink.  ");
 			else outputText("Your tail snakes around your leg and begins to caress your " + player.vaginaDescript(0) + ", then plunges in to fuck the squirting orifice while you drink.  ");
 			outputText("The imps start hooting and cat-calling, laughing and prodding your body with their twisted demonic members as your mind starts to come apart in the seething oven of unnatural lust.\n\n");
 			//NEXT
@@ -1040,7 +1040,7 @@ package classes.Scenes.Dungeons
 			else if (player.gender == 3) {
 				outputText(images.showImage("badend-lethice"));
 				outputText("The champion was fucked and brainwashed repeatedly for a few more days until Zetaz was sure she understood her place in the world.  Once rendered completely obedient, they released her from her bindings.  It was time she was turned over to Lethice.  ");
-				if (player.wingType != Wings.TYPE_BAT_LIKE_TINY || player.wingType != Wings.TYPE_BAT_LIKE_LARGE) outputText("Zetaz gave her one of the weaker imps to penetrate and taught her to fly with her new, demonic wings.  ");
+				if (player.wingType != Wings.BAT_LIKE_TINY || player.wingType != Wings.BAT_LIKE_LARGE) outputText("Zetaz gave her one of the weaker imps to penetrate and taught her to fly with her new, demonic wings.  ");
 				else outputText("Zetaz gave her one of the weaker imps to penetrate during the journey.  ");
 				outputText("With preparations complete, Zetaz, the champion, and a few dozen imps flew to the mountain peak.\n\n");
 				

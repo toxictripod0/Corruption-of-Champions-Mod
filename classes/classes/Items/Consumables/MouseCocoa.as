@@ -1,5 +1,6 @@
 package classes.Items.Consumables 
 {
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Items.Consumable;
 	import classes.Items.ConsumableLib;
@@ -147,16 +148,16 @@ package classes.Items.Consumables
 			}
 			//gain tail
 			//from no tail
-			if (player.earType === EARS_MOUSE && player.tailType !== TAIL_TYPE_MOUSE && changes < changeLimit && rand(4) === 0) {
+			if (player.earType === EARS_MOUSE && player.tailType !== Tail.MOUSE && changes < changeLimit && rand(4) === 0) {
 				//from other tail
-				if (player.tailType > TAIL_TYPE_NONE) {
+				if (player.tailType > Tail.NONE) {
 					outputText("\n\nYour tail clenches and itches simultaneously, leaving you wondering whether to cry out or try to scratch it.  The question is soon answered as the pain takes the forefront; looking backward is a horrible strain, but when you manage it, you can see your old appendage ");
-					if (player.tailType === TAIL_TYPE_HORSE) outputText("elongating");
+					if (player.tailType === Tail.HORSE) outputText("elongating");
 					else outputText("compressing");
 					outputText(" into a long, thin line.  With a shudder, it begins to shed until it's completely, starkly nude.  <b>Your new mouse tail looks a bit peaked.</b>");
 				}
 				else outputText("\n\nA small nub pokes from your backside, and you turn to look at it.  When you do, your neck aches as if whiplashed, and you groan as your spine shifts smoothly downward like a rope being pulled, growing new vertebra behind it and expanding the nub into a naked, thin, tapered shape.  <b>Rubbing at your sore neck, you stare at your new mouse tail.</b>");
-				player.tailType = TAIL_TYPE_MOUSE;
+				player.tailType = Tail.MOUSE;
 				changes++;
 			}
 			//get teeth - from human, bunny, coonmask, or other humanoid teeth faces
@@ -180,7 +181,7 @@ package classes.Items.Consumables
 					outputText("\n\nYour " + player.skinFurScales() + " itch");
 					if (!player.hasPlainSkin()) outputText("es");
 					outputText(" all over");
-					if (player.tailType > TAIL_TYPE_NONE) outputText(", except on your tail");
+					if (player.tailType > Tail.NONE) outputText(", except on your tail");
 					outputText(".  Alarmed and suspicious, you tuck in your hands, trying to will yourself not to scratch, but it doesn't make much difference.  Tufts of ");
 					temp = rand(10);
 					if (temp < 8) {

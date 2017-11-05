@@ -1,6 +1,7 @@
 package classes.Scenes.Areas.HighMountains
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
@@ -194,7 +195,7 @@ package classes.Scenes.Areas.HighMountains
 			if (level > 14) level = 14;
 			this.level = level;
 			this.gems = rand(15) + 45;
-			this.tailType = TAIL_TYPE_COW;
+			this.tailType = Tail.COW;
 			this.special1 = game.mountain.minotaurScene.minoPheromones;
 			this.drop = NO_DROP;
 			checkMonster();

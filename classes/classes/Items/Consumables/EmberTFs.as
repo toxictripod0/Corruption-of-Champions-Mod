@@ -171,12 +171,12 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Gain Dragon Tail
-			if (player.tailType != TAIL_TYPE_DRACONIC && changes < changeLimit && rand(3) == 0) {
+			if (player.tailType != Tail.DRACONIC && changes < changeLimit && rand(3) == 0) {
 				//(If no tail)
-				if (player.tailType == TAIL_TYPE_NONE) output.text("\n\nA sudden dull, throbbing pain in your " + player.buttDescript() + " forces your hands to it; you can feel an ominous lump over your tail bone, swelling bigger and bigger with every heartbeat.  All of a sudden, it seems to explode, jutting out and around until it hovers near your ankles, the skin under your flesh hard and scaly.  <b>You now have a dragon tail flicking at your back, flexible as a whip.</b>");
+				if (player.tailType == Tail.NONE) output.text("\n\nA sudden dull, throbbing pain in your " + player.buttDescript() + " forces your hands to it; you can feel an ominous lump over your tail bone, swelling bigger and bigger with every heartbeat.  All of a sudden, it seems to explode, jutting out and around until it hovers near your ankles, the skin under your flesh hard and scaly.  <b>You now have a dragon tail flicking at your back, flexible as a whip.</b>");
 				//(If tail)
 				else output.text("\n\nAn icy sensation fills your behind as your tail suddenly goes curiously numb.  Twisting your head around, you watch as it melts and transforms into a reptilian appendage, long and flexible, its tip adorned with wicked spikes.  <b>You now have a dragon tail.</b>");
-				player.tailType = TAIL_TYPE_DRACONIC;
+				player.tailType = Tail.DRACONIC;
 				changes++
 			}
 			/*
@@ -191,25 +191,25 @@ package classes.Items.Consumables
 			 Miss: Unfortunately, you lose your sense of depth as you whirl, and the tip swings harmlessly through the air in front of your target.
 			 */
 			//Grow Dragon Wings
-			if ((player.wingType != Wings.TYPE_DRACONIC_LARGE || player.rearBody.type == REAR_BODY_SHARK_FIN) && changes < changeLimit && rand(3) == 0) {
-				if (player.wingType == Wings.TYPE_NONE) {
+			if ((player.wingType != Wings.DRACONIC_LARGE || player.rearBody.type == REAR_BODY_SHARK_FIN) && changes < changeLimit && rand(3) == 0) {
+				if (player.wingType == Wings.NONE) {
 					output.text("\n\nYou double over as waves of pain suddenly fill your shoulderblades; your back feels like it's swelling, flesh and muscles ballooning.  A sudden sound of tearing brings with it relief and you straighten up.  Upon your back now sit small, leathery wings, not unlike a bat's. <b>You now have small dragon wings.  They're not big enough to fly with, but they look adorable.</b>");
-					player.wingType = Wings.TYPE_DRACONIC_SMALL;
+					player.wingType = Wings.DRACONIC_SMALL;
 				}
 				//(If Small Dragon Wings Present)
-				else if (player.wingType == Wings.TYPE_DRACONIC_SMALL) {
+				else if (player.wingType == Wings.DRACONIC_SMALL) {
 					output.text("\n\nA not-unpleasant tingling sensation fills your wings, almost but not quite drowning out the odd, tickly feeling as they swell larger and stronger.  You spread them wide - they stretch further than your arms do - and beat them experimentally, the powerful thrusts sending gusts of wind, and almost lifting you off your feet.  <b>You now have fully-grown dragon wings, capable of winging you through the air elegantly!</b>");
-					player.wingType = Wings.TYPE_DRACONIC_LARGE;
+					player.wingType = Wings.DRACONIC_LARGE;
 				}
 				else if (player.rearBody.type == REAR_BODY_SHARK_FIN) {
 					output.text("\n\nA sensation of numbness suddenly fills your fin.  When it does away, it feels... different.  Looking back, you realize that it has been replaced by new, small wings, ones that you can only describe as draconic.  <b>Your shark-like fin has changed into dragon wings.</b>");
 					player.rearBody.restore();
-					player.wingType = Wings.TYPE_DRACONIC_SMALL;
+					player.wingType = Wings.DRACONIC_SMALL;
 				}
 				//(If other wings present)
 				else {
 					output.text("\n\nA sensation of numbness suddenly fills your wings.  When it dies away, they feel... different.  Looking back, you realize that they have been replaced by new, small wings, ones that you can only describe as draconic.  <b>Your wings have changed into dragon wings.</b>");
-					player.wingType = Wings.TYPE_DRACONIC_SMALL;
+					player.wingType = Wings.DRACONIC_SMALL;
 				}
 				changes++;
 			}

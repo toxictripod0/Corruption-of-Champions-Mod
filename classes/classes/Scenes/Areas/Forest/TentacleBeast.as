@@ -1,6 +1,7 @@
 package classes.Scenes.Areas.Forest
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.internals.*;
 	import classes.GlobalFlags.kACHIEVEMENTS;
 	import classes.GlobalFlags.kFLAGS;
@@ -146,7 +147,7 @@ package classes.Scenes.Areas.Forest
 			this.special1 = tentaclePhysicalAttack;
 			this.special2 = tentacleEntwine;
 			this.special3 = tentaclePhysicalAttack;
-			this.tailType = TAIL_TYPE_DEMONIC;
+			this.tailType = Tail.DEMONIC;
 			checkMonster();
 		}
 

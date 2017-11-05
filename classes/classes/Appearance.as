@@ -2330,35 +2330,35 @@ package classes
 		);
 		public static const DEFAULT_TAIL_NAMES:Object = createMapFromPairs(
 				[
-					[TAIL_TYPE_NONE, "non-existent"],
-					[TAIL_TYPE_HORSE, "horse"],
-					[TAIL_TYPE_DOG, "dog"],
-					[TAIL_TYPE_DEMONIC, "demonic"],
-					[TAIL_TYPE_COW, "cow"],
-					[TAIL_TYPE_SPIDER_ADBOMEN, "spider abdomen"],
-					[TAIL_TYPE_BEE_ABDOMEN, "bee abdomen"],
-					[TAIL_TYPE_SHARK, "shark"],
-					[TAIL_TYPE_CAT, "cat"],
-					[TAIL_TYPE_LIZARD, "lizard"],
-					[TAIL_TYPE_RABBIT, "rabbit"],
-					[TAIL_TYPE_HARPY, "harpy"],
-					[TAIL_TYPE_KANGAROO, "kangaroo"],
-					[TAIL_TYPE_FOX, "fox"],
-					[TAIL_TYPE_DRACONIC, "draconic"],
-					[TAIL_TYPE_RACCOON, "raccoon"],
-					[TAIL_TYPE_MOUSE, "mouse"],
-					[TAIL_TYPE_BEHEMOTH, "behemoth"],
-					[TAIL_TYPE_PIG, "pig"],
-					[TAIL_TYPE_SCORPION, "scorpion"],
-					[TAIL_TYPE_GOAT, "goat"],
-					[TAIL_TYPE_RHINO, "rhino"],
-					[TAIL_TYPE_WOLF, "wolf"],
-					[TAIL_TYPE_ECHIDNA, "echidna"],
-					[TAIL_TYPE_DEER, "deer"],
-					[TAIL_TYPE_SALAMANDER, "salamander"],
-					[TAIL_TYPE_SHEEP, "sheep"],
-					[TAIL_TYPE_IMP, "imp"],
-					[TAIL_TYPE_COCKATRICE, "cockatrice"],
+					[Tail.NONE, "non-existent"],
+					[Tail.HORSE, "horse"],
+					[Tail.DOG, "dog"],
+					[Tail.DEMONIC, "demonic"],
+					[Tail.COW, "cow"],
+					[Tail.SPIDER_ABDOMEN, "spider abdomen"],
+					[Tail.BEE_ABDOMEN, "bee abdomen"],
+					[Tail.SHARK, "shark"],
+					[Tail.CAT, "cat"],
+					[Tail.LIZARD, "lizard"],
+					[Tail.RABBIT, "rabbit"],
+					[Tail.HARPY, "harpy"],
+					[Tail.KANGAROO, "kangaroo"],
+					[Tail.FOX, "fox"],
+					[Tail.DRACONIC, "draconic"],
+					[Tail.RACCOON, "raccoon"],
+					[Tail.MOUSE, "mouse"],
+					[Tail.BEHEMOTH, "behemoth"],
+					[Tail.PIG, "pig"],
+					[Tail.SCORPION, "scorpion"],
+					[Tail.GOAT, "goat"],
+					[Tail.RHINO, "rhino"],
+					[Tail.WOLF, "wolf"],
+					[Tail.ECHIDNA, "echidna"],
+					[Tail.DEER, "deer"],
+					[Tail.SALAMANDER, "salamander"],
+					[Tail.SHEEP, "sheep"],
+					[Tail.IMP, "imp"],
+					[Tail.COCKATRICE, "cockatrice"],
 				]
 		);
 		public static const DEFAULT_REAR_BODY_NAMES:Object = createMapFromPairs(
@@ -2378,34 +2378,34 @@ package classes
 		);
 		public static const DEFAULT_WING_NAMES:Object = createMapFromPairs(
 				[
-					[Wings.TYPE_NONE, "non-existent"],
-					[Wings.TYPE_BEE_LIKE_SMALL, "small bee-like"],
-					[Wings.TYPE_BEE_LIKE_LARGE, "large bee-like"],
-					[Wings.TYPE_HARPY, "harpy"],
-					[Wings.TYPE_IMP, "imp"],
-					[Wings.TYPE_IMP_LARGE, "large imp"],
-					[Wings.TYPE_BAT_LIKE_TINY, "tiny bat-like"],
-					[Wings.TYPE_BAT_LIKE_LARGE, "large bat-like"],
-					[Wings.TYPE_FEATHERED_LARGE, "large feathered"],
-					[Wings.TYPE_DRACONIC_SMALL, "small draconic"],
-					[Wings.TYPE_DRACONIC_LARGE, "large draconic"],
-					[Wings.TYPE_GIANT_DRAGONFLY, "giant dragonfly"],
+					[Wings.NONE, "non-existent"],
+					[Wings.BEE_LIKE_SMALL, "small bee-like"],
+					[Wings.BEE_LIKE_LARGE, "large bee-like"],
+					[Wings.HARPY, "harpy"],
+					[Wings.IMP, "imp"],
+					[Wings.IMP_LARGE, "large imp"],
+					[Wings.BAT_LIKE_TINY, "tiny bat-like"],
+					[Wings.BAT_LIKE_LARGE, "large bat-like"],
+					[Wings.FEATHERED_LARGE, "large feathered"],
+					[Wings.DRACONIC_SMALL, "small draconic"],
+					[Wings.DRACONIC_LARGE, "large draconic"],
+					[Wings.GIANT_DRAGONFLY, "giant dragonfly"],
 				]
 		);
 		public static const DEFAULT_WING_DESCS:Object = createMapFromPairs(
 				[
-					[Wings.TYPE_NONE, "non-existent"],
-					[Wings.TYPE_BEE_LIKE_SMALL, "small bee-like"],
-					[Wings.TYPE_BEE_LIKE_LARGE, "large bee-like"],
-					[Wings.TYPE_HARPY, "large feathery"],
-					[Wings.TYPE_IMP, "small"],
-					[Wings.TYPE_IMP_LARGE, "large"],
-					[Wings.TYPE_BAT_LIKE_TINY, "tiny, bat-like"],
-					[Wings.TYPE_BAT_LIKE_LARGE, "large, bat-like"],
-					[Wings.TYPE_FEATHERED_LARGE, "large, feathered"],
-					[Wings.TYPE_DRACONIC_SMALL, "small, draconic"],
-					[Wings.TYPE_DRACONIC_LARGE, "large, draconic"],
-					[Wings.TYPE_GIANT_DRAGONFLY, "giant dragonfly"],
+					[Wings.NONE, "non-existent"],
+					[Wings.BEE_LIKE_SMALL, "small bee-like"],
+					[Wings.BEE_LIKE_LARGE, "large bee-like"],
+					[Wings.HARPY, "large feathery"],
+					[Wings.IMP, "small"],
+					[Wings.IMP_LARGE, "large"],
+					[Wings.BAT_LIKE_TINY, "tiny, bat-like"],
+					[Wings.BAT_LIKE_LARGE, "large, bat-like"],
+					[Wings.FEATHERED_LARGE, "large, feathered"],
+					[Wings.DRACONIC_SMALL, "small, draconic"],
+					[Wings.DRACONIC_LARGE, "large, draconic"],
+					[Wings.GIANT_DRAGONFLY, "giant dragonfly"],
 				]
 		);
 		public static const DEFAULT_LOWER_BODY_NAMES:Object = createMapFromPairs(
@@ -2594,7 +2594,7 @@ package classes
 		
 		public static function tailDescript(i_creature:Creature):String
 		{
-			if (i_creature.tailType == TAIL_TYPE_NONE)
+			if (i_creature.tailType == Tail.NONE)
 			{
 				trace("WARNING: Creature has no tails to describe.");
 				return "<b>!Creature has no tails to describe!</b>";
@@ -2602,7 +2602,7 @@ package classes
 			
 			var descript:String = "";
 			
-			if (i_creature.tailType == TAIL_TYPE_FOX && i_creature.tailVenom >= 1)
+			if (i_creature.tailType == Tail.FOX && i_creature.tailVenom >= 1)
 			{
 				// Kitsune tails, we're using tailVenom to track tail count
 				if (i_creature.tailVenom > 1)
@@ -2628,7 +2628,7 @@ package classes
 		
 		public static function oneTailDescript(i_creature:Creature):String
 		{
-			if (i_creature.tailType == TAIL_TYPE_NONE)
+			if (i_creature.tailType == Tail.NONE)
 			{
 				trace("WARNING: Creature has no tails to describe.");
 				return "<b>!Creature has no tails to describe!</b>";
@@ -2636,7 +2636,7 @@ package classes
 			
 			var descript:String = "";
 			
-			if (i_creature.tailType == TAIL_TYPE_FOX && i_creature.tailVenom >= 1)
+			if (i_creature.tailType == Tail.FOX && i_creature.tailVenom >= 1)
 			{
 				if (i_creature.tailVenom == 1)
 				{

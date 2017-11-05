@@ -2,6 +2,7 @@ package classes.Scenes.Areas.Mountain
 {
 
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.internals.*;
 
 	/**
@@ -97,7 +98,7 @@ package classes.Scenes.Areas.Mountain
 						.elseDrop(null);
 			}
 			this.special1 = game.mountain.minotaurScene.minoPheromones;
-			this.tailType = TAIL_TYPE_COW;
+			this.tailType = Tail.COW;
 			checkMonster();
 		}
 

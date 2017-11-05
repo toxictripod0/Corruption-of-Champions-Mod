@@ -1,6 +1,7 @@
 package classes.Scenes.Areas.Swamp
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
 
@@ -132,7 +133,7 @@ package classes.Scenes.Areas.Swamp
 			this.gems = rand(25) +40;
 			this.special1 = game.combat.packAttack;
 			this.special2 = game.combat.lustAttack;
-			this.tailType = TAIL_TYPE_SPIDER_ADBOMEN;
+			this.tailType = Tail.SPIDER_ABDOMEN;
 			this.drop = NO_DROP;
 			checkMonster();
 		}

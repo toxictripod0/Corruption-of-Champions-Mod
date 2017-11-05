@@ -1,6 +1,7 @@
 package classes.Scenes.Areas.VolcanicCrag 
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.internals.WeightedDrop;
 	import classes.GlobalFlags.kFLAGS;
 	
@@ -69,7 +70,7 @@ package classes.Scenes.Areas.VolcanicCrag
 			this.horns = 7;
 			this.hornType = HORNS_DRACONIC_X2
 			this.lowerBody = LOWER_BODY_TYPE_CAT
-			this.tailType = TAIL_TYPE_BEHEMOTH
+			this.tailType = Tail.BEHEMOTH
 			initStrTouSpeInte(125, 100, 80, 105);
 			initLibSensCor(35, 15, 15);
 			this.weaponName = "claws";

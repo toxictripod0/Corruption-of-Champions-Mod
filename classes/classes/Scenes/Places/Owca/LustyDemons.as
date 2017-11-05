@@ -4,6 +4,7 @@
 package classes.Scenes.Places.Owca
 {
 	import classes.*;
+	import classes.BodyParts.*;
 
 	public class LustyDemons extends Monster
 	{
@@ -83,7 +84,7 @@ package classes.Scenes.Places.Owca
 			this.gems = 150 + rand(100);
 			this.special1 = game.combat.packAttack;
 			this.special2 = game.combat.lustAttack;
-			this.tailType = TAIL_TYPE_DEMONIC;
+			this.tailType = Tail.DEMONIC;
 			this.hornType = HORNS_DEMON;
 			this.horns = 2;
 			this.drop = NO_DROP;

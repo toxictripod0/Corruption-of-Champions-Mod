@@ -1,6 +1,7 @@
 package classes.Scenes.NPCs
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.internals.*;
 	import classes.GlobalFlags.kFLAGS;
 
@@ -108,7 +109,7 @@ package classes.Scenes.NPCs
 			this.level = 7;
 			this.gems = rand(5) + 25;
 			this.drop = new WeightedDrop(weapons.L_HAMMR, 1);
-			this.tailType = TAIL_TYPE_COW;
+			this.tailType = Tail.COW;
 			this.special1 = marbleSpecialAttackOne;
 			this.special2 = marbleSpecialAttackTwo;
 			checkMonster();

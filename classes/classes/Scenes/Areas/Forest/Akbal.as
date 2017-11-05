@@ -1,6 +1,7 @@
 package classes.Scenes.Areas.Forest
 {
 	import classes.*;
+	import classes.BodyParts.*;
 import classes.StatusEffects.Combat.AkbalSpeedDebuff;
 import classes.internals.WeightedDrop;
 
@@ -209,7 +210,7 @@ import classes.internals.WeightedDrop;
 			this.special1 = akbalLustAttack;
 			this.special2 = akbalSpecial;
 			this.special3 = akbalHeal;
-			this.tailType = TAIL_TYPE_DOG;
+			this.tailType = Tail.DOG;
 			checkMonster();
 		}
 
