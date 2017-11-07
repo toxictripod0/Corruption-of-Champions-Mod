@@ -7,6 +7,8 @@ package classes
 	import classes.Saves;
 	import fl.controls.ComboBox;
 	import flash.events.Event;
+	import classes.Scenes.Inventory;
+	
 	/**
 	 * ...
 	 * @author ...
@@ -1310,7 +1312,7 @@ package classes
 			player.createKeyItem("Camp - Chest",0,0,0,0);
 			player.createKeyItem("Equipment Rack - Weapons",0,0,0,0);
 			player.createKeyItem("Equipment Rack - Armor",0,0,0,0);
-			player.createKeyItem("Equipment Storage - Jewelry Box",0,0,0,0);
+			player.createKeyItem(Inventory.STORAGE_JEWELRY_BOX,0,0,0,0);
 			player.createStatusEffect(StatusEffects.KnowsWhitefire, 0, 0, 0, 0);
 			
 			player.createPerk(PerkLib.HistoryFighter, 		0, 0, 0, 0);

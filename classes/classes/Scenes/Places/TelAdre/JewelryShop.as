@@ -1,5 +1,6 @@
 package classes.Scenes.Places.TelAdre {
 import classes.ItemType;
+import classes.Scenes.Inventory;
 
 /**
  * Updated strings
@@ -50,13 +51,13 @@ public class JewelryShop extends Shop {
         addButton(0, "Normal rings", normalRings);
         addButton(1, "Special rings", specialRings);
         addButton(2, "Enchanted rings",enchantedRings);
-        addButton(5, "Jewelry box",curry(confirmBuy, null, 500, "Equipment Storage - Jewelry Box"));
+        addButton(5, "Jewelry box",curry(confirmBuy, null, 500, Inventory.STORAGE_JEWELRY_BOX));
         addButton(14, "Leave", telAdre.telAdreMenu);
     }
     protected override function confirmBuy(itype:ItemType = null, priceOverride:int = -1, keyItem:String = ""):void {
         clearOutput();
-        if (keyItem === "Equipment Storage - Jewelry Box") {
-            if (player.hasKeyItem("Equipment Storage - Jewelry Box") >= 0) {
+        if (isJewelryBox(keyItem)) {
+            if (player.hasKeyItem(Inventory.STORAGE_JEWELRY_BOX) >= 0) {
                 outputText("<b>You already own a jewelry box!</b>");
                 doNext(inside);
                 return;
@@ -78,7 +79,7 @@ public class JewelryShop extends Shop {
 
     protected override function noBuyOption(itype:ItemType = null, keyItem:String = ""):void {
         clearOutput();
-        if(keyItem === "Equipment Storage - Jewelry Box"){
+        if(isJewelryBox(keyItem)){
             outputText("You decline with a firm hand and a shake of your head, prompting the " +
                     "merchant to whisper a growl. \"<i>Bah, fine! You'd besst have a good hiding place, then.</i>\" He leans a little " +
                     "beyond the counter on his spindly arms, taking a look at your [butt]. He's stoic at first, " +
@@ -91,7 +92,7 @@ public class JewelryShop extends Shop {
     }
 
     protected override function debit(itype:ItemType = null, priceOverride:int = -1, keyItem:String = ""):void {
-        if (keyItem === "Equipment Storage - Jewelry Box") {
+        if (isJewelryBox(keyItem)) {
             outputText("You nod a bit skeptically, but hand over the 500 gems. It's worth the " +
                     "organizational value. You reach out to take the box from the counter, but he hisses rather alarmingly, " +
                     "moving an arm to block you. Taken aback, you watch on as the odd little merchant checks the gem's " +
@@ -186,5 +187,14 @@ public class JewelryShop extends Shop {
         addButton(14, "Back", enchantedRings);
 
     }
+	
+	/**
+	 * Check if the passed key item is a Jewelry Box
+	 * @return true if a Jewelry Box
+	 */
+	private function isJewelryBox(keyItem:String):Boolean 
+	{
+		return keyItem === Inventory.STORAGE_JEWELRY_BOX;
+	}
 }
 }
