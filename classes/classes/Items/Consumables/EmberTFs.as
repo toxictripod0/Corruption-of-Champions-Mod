@@ -279,16 +279,16 @@ package classes.Items.Consumables
 				changes++;
 			}
 			// <mod name="Predator arms" author="Stadler76">
-			//Gain Dragon Arms (Derived from ARM_TYPE_SALAMANDER)
-			if (player.armType != ARM_TYPE_PREDATOR && player.hasDragonScales() && player.lowerBody == LOWER_BODY_TYPE_DRAGON && changes < changeLimit && rand(3) == 0) {
+			//Gain Dragon Arms (Derived from Arms.SALAMANDER)
+			if (player.armType != Arms.PREDATOR && player.hasDragonScales() && player.lowerBody == LOWER_BODY_TYPE_DRAGON && changes < changeLimit && rand(3) == 0) {
 				output.text("\n\nYou scratch your biceps absentmindedly, but no matter how much you scratch, you can't get rid of the itch.  After a longer moment of ignoring it you finally glance down in irritation, only to discover that your arms former appearance has changed into those of some reptilian killer with shield-shaped " + player.skinTone + " scales and powerful, thick, curved steel-gray claws replacing your fingernails.");
 				output.text("\n<b>You now have dragon arms.</b>");
-				player.armType = ARM_TYPE_PREDATOR;
+				player.armType = Arms.PREDATOR;
 				mutations.updateClaws(CLAW_TYPE_DRAGON);
 				changes++
 			}
 			//Claw transition
-			if (player.armType == ARM_TYPE_PREDATOR && player.hasDragonScales() && player.clawType != CLAW_TYPE_DRAGON && changes < changeLimit && rand(3) == 0) {
+			if (player.armType == Arms.PREDATOR && player.hasDragonScales() && player.clawType != CLAW_TYPE_DRAGON && changes < changeLimit && rand(3) == 0) {
 				output.text("\n\nYour " + player.claws() + " change  a little to become more dragon-like.");
 				mutations.updateClaws(CLAW_TYPE_DRAGON);
 				output.text(" <b>You now have " + player.claws() + ".</b>");

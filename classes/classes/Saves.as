@@ -1674,7 +1674,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		else
 			player.gillType = saveFile.data.gills ? Gills.ANEMONE : Gills.NONE;
 		if (saveFile.data.armType == undefined)
-			player.armType = ARM_TYPE_HUMAN;
+			player.armType = Arms.HUMAN;
 		else
 			player.armType = saveFile.data.armType;
 		player.hairLength = saveFile.data.hairLength;

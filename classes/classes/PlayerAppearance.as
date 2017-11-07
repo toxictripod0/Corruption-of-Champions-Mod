@@ -602,17 +602,17 @@ package classes
 			// </mod>
 
 			//Wing arms
-			if (player.armType == ARM_TYPE_HARPY) 
+			if (player.armType == Arms.HARPY) 
 				outputText("  Feathers hang off your arms from shoulder to wrist, giving them a slightly wing-like look.");
-			else if (player.armType == ARM_TYPE_WOLF) 
+			else if (player.armType == Arms.WOLF) 
 				outputText("  Your arms are shaped like a wolf's, overly muscular at your shoulders and biceps before quickly slimming down. They're covered in [furColor] fur and end in paws with just enough flexibility to be used as hands. They're rather difficult to move in directions besides back and forth.");	
-			else if (player.armType == ARM_TYPE_SPIDER) 
+			else if (player.armType == Arms.SPIDER) 
 				outputText("  Shining black exoskeleton covers your arms from the biceps down, resembling a pair of long black gloves from a distance.");	
-			else if (player.armType == ARM_TYPE_SALAMANDER)
+			else if (player.armType == Arms.SALAMANDER)
 				outputText("  Shining thick, leathery red scales cover your arms from the biceps down and your fingernails are now short, fiery-red curved claws.");
-			else if (player.armType == ARM_TYPE_PREDATOR)
+			else if (player.armType == Arms.PREDATOR)
 				outputText("  Your arms are covered by [skinFurScales] and your fingernails are now [claws].");
-			else if (player.armType == ARM_TYPE_COCKATRICE) {
+			else if (player.armType == Arms.COCKATRICE) {
 				outputText("  Your arms are covered in " + (player.hasCockatriceSkin() ? player.furColor : player.hairColor) + " feathers from the"
 				          +" shoulder down to the elbow where they stop in a fluffy cuff. A handful of long feathers grow from your elbow in the form"
 				          +" of vestigial wings, and while they may not let you fly, they certainly help you jump. Your lower arm is coated in"

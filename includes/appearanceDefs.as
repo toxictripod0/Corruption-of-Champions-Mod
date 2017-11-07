@@ -129,15 +129,6 @@ public static const ANTENNAE_NONE:int                                           
 public static const ANTENNAE_BEE:int                                                =   2;
 public static const ANTENNAE_COCKATRICE:int                                         =   3;
 
-// armType
-public static const ARM_TYPE_HUMAN:int                                              =   0;
-public static const ARM_TYPE_HARPY:int                                              =   1;
-public static const ARM_TYPE_SPIDER:int                                             =   2;
-public static const ARM_TYPE_PREDATOR:int                                           =   4;
-public static const ARM_TYPE_SALAMANDER:int                                         =   5;
-public static const ARM_TYPE_WOLF:int                                               =   6;
-public static const ARM_TYPE_COCKATRICE:int                                         =   7;
-
 // clawType
 public static const CLAW_TYPE_NORMAL:int                                            =   0;
 public static const CLAW_TYPE_LIZARD:int                                            =   1;

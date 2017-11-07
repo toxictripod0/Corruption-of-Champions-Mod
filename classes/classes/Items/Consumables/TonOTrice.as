@@ -425,7 +425,7 @@ package classes.Items.Consumables
 			}
 
 			//Face TF
-			if (player.faceType != FACE_COCKATRICE && player.armType == ARM_TYPE_COCKATRICE && player.lowerBody == LOWER_BODY_TYPE_COCKATRICE && changes < changeLimit && rand(3) == 0) {
+			if (player.faceType != FACE_COCKATRICE && player.armType == Arms.COCKATRICE && player.lowerBody == LOWER_BODY_TYPE_COCKATRICE && changes < changeLimit && rand(3) == 0) {
 				outputText("\n\nYour head is suddenly wracked with pain. You throw back your head and scream in agony as you feel your skull’s"
 				          +" structure shifting, reforming into something... different. Your lower face elongates, your nose and lips fusing into the"
 				          +" new upper half of your mouth while your jaw soon catches it up as they both harden. Your larger upper lip curves over"
@@ -477,7 +477,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Arm TF
-			if (player.armType != ARM_TYPE_COCKATRICE && changes < changeLimit && rand(4) == 0) {
+			if (player.armType != Arms.COCKATRICE && changes < changeLimit && rand(4) == 0) {
 				outputText("\n\nPrickling discomfort suddenly erupts all over your body, like every last inch of your skin has suddenly developed"
 				          +" pins and needles. You scratch yourself, hoping for relief; but soon notice lumps forming under the skin as your lower"
 				          +" arm begins to shed. A coat of " + (player.hasCockatriceSkin() ? player.furColor : player.hairColor) + " feathers sprouts"
@@ -486,7 +486,7 @@ package classes.Items.Consumables
 				          +" scales and dangerous looking talons tip your fingers. As suddenly as the itching came it fades, leaving you to marvel"
 				          +" over your new arms.");
 				outputText("\n<b>You now have cockatrice arms!</b>");
-				player.armType = ARM_TYPE_COCKATRICE;
+				player.armType = Arms.COCKATRICE;
 				mutations.updateClaws(CLAW_TYPE_COCKATRICE);
 				changes++;
 			}
@@ -565,7 +565,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Wings TF
-			if (player.wingType != Wings.FEATHERED_LARGE && player.armType == ARM_TYPE_COCKATRICE && changes < changeLimit && rand(4) == 0) {
+			if (player.wingType != Wings.FEATHERED_LARGE && player.armType == Arms.COCKATRICE && changes < changeLimit && rand(4) == 0) {
 				outputText("\n");
 				if (player.wingType != Wings.NONE) {
 					outputText("\nSensation fades from your [wings] slowly but surely, leaving them dried out husks that break off to fall on the"

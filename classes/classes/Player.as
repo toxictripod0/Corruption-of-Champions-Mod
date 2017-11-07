@@ -276,7 +276,7 @@ use namespace kGAMECLASS;
 			//'Thick' dermis descriptor adds 1!
 			if (skinAdj == "smooth") armorDef += 1;
 			//Bonus defense
-			if (armType == ARM_TYPE_SPIDER) armorDef += 2;
+			if (armType == Arms.SPIDER) armorDef += 2;
 			if (lowerBody == LOWER_BODY_TYPE_CHITINOUS_SPIDER_LEGS || lowerBody == LOWER_BODY_TYPE_BEE) armorDef += 2;
 			//Bonus when being a samurai
 			if (armor == game.armors.SAMUARM && weapon == game.weapons.KATANA) {
@@ -1061,7 +1061,7 @@ use namespace kGAMECLASS;
 				cockatriceCounter++;
 			if (eyeType == EYES_COCKATRICE)
 				cockatriceCounter++;
-			if (armType == ARM_TYPE_COCKATRICE)
+			if (armType == Arms.COCKATRICE)
 				cockatriceCounter++;
 			if (antennae == ANTENNAE_COCKATRICE)
 				cockatriceCounter++;
@@ -1100,7 +1100,7 @@ use namespace kGAMECLASS;
 				impCounter++;
 			if (hornType == HORNS_IMP)
 				impCounter++;
-			if (armType == ARM_TYPE_PREDATOR && clawType == CLAW_TYPE_IMP)
+			if (armType == Arms.PREDATOR && clawType == CLAW_TYPE_IMP)
 				impCounter++;
 			if (tallness <= 42)
 				impCounter++;
@@ -1447,7 +1447,7 @@ use namespace kGAMECLASS;
 				lizardCounter++;
 			if (hornType == HORNS_DRACONIC_X4_12_INCH_LONG)
 				lizardCounter++;
-			if (armType == ARM_TYPE_PREDATOR && clawType == CLAW_TYPE_LIZARD)
+			if (armType == Arms.PREDATOR && clawType == CLAW_TYPE_LIZARD)
 				lizardCounter++;
 			if (lizardCounter > 2) {
 				if ([TONGUE_LIZARD, TONGUE_SNAKE].indexOf(tongueType) != -1)
@@ -1583,7 +1583,7 @@ use namespace kGAMECLASS;
 				dragonCounter++;
 			if (hasDragonfire())
 				dragonCounter++;
-			if (armType == ARM_TYPE_PREDATOR && clawType == CLAW_TYPE_DRAGON)
+			if (armType == Arms.PREDATOR && clawType == CLAW_TYPE_DRAGON)
 				dragonCounter++;
 			if (eyeType == EYES_DRAGON)
 				dragonCounter++;
@@ -1790,7 +1790,7 @@ use namespace kGAMECLASS;
 		public function salamanderScore():Number
 		{
 			var salamanderCounter:Number = 0;
-			if (armType == ARM_TYPE_SALAMANDER)
+			if (armType == Arms.SALAMANDER)
 				salamanderCounter++;
 			if (lowerBody == LOWER_BODY_TYPE_SALAMANDER)
 				salamanderCounter++;
@@ -1815,7 +1815,7 @@ use namespace kGAMECLASS;
 		public function sirenScore():Number 
 		{
 			var sirenCounter:Number = 0;
-			if (faceType == FACE_SHARK_TEETH && tailType == Tail.SHARK && wingType == Wings.FEATHERED_LARGE && armType == ARM_TYPE_HARPY)
+			if (faceType == FACE_SHARK_TEETH && tailType == Tail.SHARK && wingType == Wings.FEATHERED_LARGE && armType == Arms.HARPY)
 				sirenCounter+= 4;
 			if (sirenCounter > 0 && hasVagina())
 				sirenCounter++;

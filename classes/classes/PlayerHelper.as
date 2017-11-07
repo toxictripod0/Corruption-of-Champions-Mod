@@ -143,10 +143,10 @@ package classes
 			return [Tail.LIZARD, Tail.DRACONIC, Tail.SALAMANDER].indexOf(tailType) != -1;
 		}
 
-		// For reptiles with predator arms I recommend to require hasReptileScales() before doing the armType TF to ARM_TYPE_PREDATOR
+		// For reptiles with predator arms I recommend to require hasReptileScales() before doing the armType TF to Arms.PREDATOR
 		public function hasReptileArms():Boolean
 		{
-			return armType == ARM_TYPE_SALAMANDER || (armType == ARM_TYPE_PREDATOR && hasReptileScales());
+			return armType == Arms.SALAMANDER || (armType == Arms.PREDATOR && hasReptileScales());
 		}
 
 		public function hasReptileLegs():Boolean

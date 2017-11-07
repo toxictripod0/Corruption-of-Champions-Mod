@@ -1293,7 +1293,7 @@ package classes
 			player.wingType = Wings.DRACONIC_LARGE;
 			player.earType = EARS_HUMAN;
 			player.lowerBody = LOWER_BODY_TYPE_HUMAN;
-			player.armType = ARM_TYPE_HUMAN;
+			player.armType = Arms.HUMAN;
 			player.hairLength = 69.2;
 			player.hairType = 4;
 			//Bow skill 100 (Sorry Kelt, I can't hear your insults over my mad Robin Hood skillz)
@@ -1505,7 +1505,7 @@ package classes
 			player.tailType = Tail.CAT;
 			player.createPerk(PerkLib.Incorporeality,0,0,0,0);
 			player.wingType = Wings.FEATHERED_LARGE;
-			player.armType = ARM_TYPE_HARPY;
+			player.armType = Arms.HARPY;
 			player.hornType = HORNS_DRACONIC_X2;
 			player.horns = 4;
 			player.faceType = FACE_SPIDER_FANGS;
@@ -1903,11 +1903,11 @@ package classes
 			
 			var arms:Number = rand(100); // if have harpy wings 33% chance to have harpy hands, otherwise 5% to have spider hands
 			if (player.wingType == Wings.FEATHERED_LARGE && rand(4) == 0)
-				player.armType = ARM_TYPE_HARPY;
+				player.armType = Arms.HARPY;
 			else if (rand(20) == 0)
-				player.armType = ARM_TYPE_SPIDER;
+				player.armType = Arms.SPIDER;
 			else
-				player.armType = ARM_TYPE_HUMAN;
+				player.armType = Arms.HUMAN;
 			
 			
 			// 90% to have normal hair, even chances to have feathers, anemone or goo otherwise

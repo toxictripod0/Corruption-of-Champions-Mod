@@ -1,6 +1,7 @@
 ﻿//CoC Creature.as
 package classes
 {
+	import classes.BodyParts.Arms;
 	import classes.BodyParts.Gills;
 	import classes.BodyParts.Neck;
 	import classes.BodyParts.RearBody;
@@ -582,7 +583,9 @@ import mx.logging.ILogger;
 		public var tongueType:Number = TONGUE_HUMAN;
 
 		//ArmType
-		public var armType:Number = ARM_TYPE_HUMAN;
+		public var arms:Arms = new Arms();
+		public function get armType():Number { return arms.type; }
+		public function set armType(value:Number):void { arms.type = value; }
 
 		//GillType
 		public var gills:Gills = new Gills();

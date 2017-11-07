@@ -28,7 +28,7 @@ package classes.Items
 				var hasClaws:Boolean = player.clawType != CLAW_TYPE_NORMAL;
 
 				message = "\n\n";
-				if (player.armType == ARM_TYPE_HARPY) {
+				if (player.armType == Arms.HARPY) {
 					message += "The feathers on your arms melt back into your now gooey skin.";
 					if (hasClaws) message += " Additionally your now gooey claws melt back into your fingers.";
 				} else if (hasClaws) {
@@ -36,35 +36,35 @@ package classes.Items
 				}
 
 				if (hasClaws) message += " Well, who cares, gooey claws aren't very useful in combat to begin with.";
-				if (hasClaws || player.armType == ARM_TYPE_HARPY) output.text(message + "  <b>You have normal human arms again.</b>");
+				if (hasClaws || player.armType == Arms.HARPY) output.text(message + "  <b>You have normal human arms again.</b>");
 
 				updateClaws();
-				player.armType = ARM_TYPE_HUMAN;
+				player.armType = Arms.HUMAN;
 				return 1;
 			}
 
 
-			if (changes < changeLimit && player.armType != ARM_TYPE_HUMAN) {
-				if ([ARM_TYPE_HARPY, ARM_TYPE_SPIDER, ARM_TYPE_SALAMANDER].indexOf(player.armType) >= 0)
+			if (changes < changeLimit && player.armType != Arms.HUMAN) {
+				if ([Arms.HARPY, Arms.SPIDER, Arms.SALAMANDER].indexOf(player.armType) >= 0)
 					message += "\n\nYou scratch at your biceps absentmindedly, but no matter how much you scratch, it isn't getting rid of the itch.";
 
 				switch (player.armType) {
-					case ARM_TYPE_HARPY:
+					case Arms.HARPY:
 						message += "  Glancing down in irritation, you discover that your feathery arms are shedding their feathery coating."
 						          +"  The wing-like shape your arms once had is gone in a matter of moments, leaving [skinfurscales] behind.";
 						break;
 
-					case ARM_TYPE_SPIDER:
+					case Arms.SPIDER:
 						message += "  Glancing down in irritation, you discover that your arms' chitinous covering is flaking away."
 						          +"  The glossy black coating is soon gone, leaving [skinfurscales] behind.";
 						break;
 
-					case ARM_TYPE_SALAMANDER:
+					case Arms.SALAMANDER:
 						message += "  Glancing down in irritation, you discover that your once scaly arms are shedding their scales and that"
 						          +" your claws become normal human fingernails again.";
 						break;
 
-					case ARM_TYPE_PREDATOR:
+					case Arms.PREDATOR:
 						switch (player.skinType) {
 							case SKIN_TYPE_GOO:
 								if (player.clawType != CLAW_TYPE_NORMAL)
@@ -86,7 +86,7 @@ package classes.Items
 				}
 				output.text(message + "  <b>You have normal human arms again.</b>");
 				updateClaws();
-				player.armType = ARM_TYPE_HUMAN;
+				player.armType = Arms.HUMAN;
 				changes++;
 				return 1;
 			}

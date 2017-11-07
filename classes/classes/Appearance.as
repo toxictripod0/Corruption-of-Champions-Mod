@@ -2319,13 +2319,13 @@ package classes
 		);
 		public static const DEFAULT_ARM_NAMES:Object = createMapFromPairs(
 				[
-					[ARM_TYPE_HUMAN, "human"],
-					[ARM_TYPE_HARPY, "harpy"],
-					[ARM_TYPE_SPIDER, "spider"],
-					[ARM_TYPE_WOLF, "wolf"],
-					[ARM_TYPE_PREDATOR, "predator"],
-					[ARM_TYPE_SALAMANDER, "salamander"],
-					[ARM_TYPE_COCKATRICE, "cockatrice"],
+					[Arms.HUMAN, "human"],
+					[Arms.HARPY, "harpy"],
+					[Arms.SPIDER, "spider"],
+					[Arms.WOLF, "wolf"],
+					[Arms.PREDATOR, "predator"],
+					[Arms.SALAMANDER, "salamander"],
+					[Arms.COCKATRICE, "cockatrice"],
 				]
 		);
 		public static const DEFAULT_TAIL_NAMES:Object = createMapFromPairs(

@@ -7,7 +7,6 @@ package classes.BodyParts
 	 */
 	public class Gills
 	{
-		// gillType
 		public static const NONE:int    =   0;
 		public static const ANEMONE:int =   1;
 		public static const FISH:int    =   2;

@@ -1095,30 +1095,30 @@ import classes.Items.*
 			addButton(14, "Back", bodyPartEditorRoot);
 		}
 		private static const ARM_TYPE_CONSTANTS:Array   = [
-			[ARM_TYPE_HUMAN, "(0) HUMAN"],
-			[ARM_TYPE_HARPY, "(1) HARPY"],
-			[ARM_TYPE_SPIDER, "(2) SPIDER"],
+			[Arms.HUMAN, "(0) HUMAN"],
+			[Arms.HARPY, "(1) HARPY"],
+			[Arms.SPIDER, "(2) SPIDER"],
 			/* [INTERMOD: xianxia]
-			[ARM_TYPE_MANTIS, "(3) MANTIS"],
-			[ARM_TYPE_BEE, "(4) BEE"],
+			[Arms.MANTIS, "(3) MANTIS"],
+			[Arms.BEE, "(4) BEE"],
 			*/
-			[ARM_TYPE_SALAMANDER, "(5) SALAMANDER"],
+			[Arms.SALAMANDER, "(5) SALAMANDER"],
 			/* [INTERMOD: xianxia]
-			[ARM_TYPE_PHOENIX, "(6) PHOENIX"],
-			[ARM_TYPE_PLANT, "(7) PLANT"],
-			[ARM_TYPE_SHARK, "(8) SHARK"],
-			[ARM_TYPE_GARGOYLE, "(9) GARGOYLE"],
-			[ARM_TYPE_WOLF, "(10) WOLF"],
-			[ARM_TYPE_LION, "(11) LION"],
-			[ARM_TYPE_KITSUNE, "(12) KITSUNE"],
-			[ARM_TYPE_FOX, "(13) FOX"],
-			[ARM_TYPE_LIZARD, "(14) LIZARD"],
-			[ARM_TYPE_DRAGON, "(15) DRAGON"],
-			[ARM_TYPE_YETI, "(16) YETI"],
-			[ARM_TYPE_ORCA, "(17) ORCA"],
-			[ARM_TYPE_PLANT2, "(18) PLANT2"],
+			[Arms.PHOENIX, "(6) PHOENIX"],
+			[Arms.PLANT, "(7) PLANT"],
+			[Arms.SHARK, "(8) SHARK"],
+			[Arms.GARGOYLE, "(9) GARGOYLE"],
+			[Arms.WOLF, "(10) WOLF"],
+			[Arms.LION, "(11) LION"],
+			[Arms.KITSUNE, "(12) KITSUNE"],
+			[Arms.FOX, "(13) FOX"],
+			[Arms.LIZARD, "(14) LIZARD"],
+			[Arms.DRAGON, "(15) DRAGON"],
+			[Arms.YETI, "(16) YETI"],
+			[Arms.ORCA, "(17) ORCA"],
+			[Arms.PLANT2, "(18) PLANT2"],
 			*/
-			[ARM_TYPE_WOLF, "(6) WOLF"],
+			[Arms.WOLF, "(6) WOLF"],
 		];
 		private static const CLAW_TYPE_CONSTANTS:Array = [
 			[CLAW_TYPE_NORMAL,"(0) NORMAL"],

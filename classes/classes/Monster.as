@@ -317,7 +317,7 @@
 			///*OPTIONAL*/ //this.hipRating = HIP_RATING_; // default boyish
 			///*OPTIONAL*/ //this.buttRating = BUTT_RATING_; // default buttless
 			///*OPTIONAL*/ //this.lowerBody = LOWER_BODY_; //default human
-			///*OPTIONAL*/ //this.armType = ARM_TYPE_; // default human
+			///*OPTIONAL*/ //this.armType = Arms.; // default human
 
 			//// 6. Skin
 			///*OPTIONAL*/ //this.skinTone = "skinTone"; // default "albino"

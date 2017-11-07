@@ -190,7 +190,7 @@ package classes {
 				needNext = true;
 			}
 			//Lustzerker perk
-			if (player.tailType == Tail.SALAMANDER && player.lowerBody == LOWER_BODY_TYPE_SALAMANDER && player.armType == ARM_TYPE_SALAMANDER) { //Check for gain of lustzerker - requires legs, arms and tail
+			if (player.tailType == Tail.SALAMANDER && player.lowerBody == LOWER_BODY_TYPE_SALAMANDER && player.armType == Arms.SALAMANDER) { //Check for gain of lustzerker - requires legs, arms and tail
 				if (player.findPerk(PerkLib.Lustzerker) < 0) {
 					outputText("\nAfter finishing another hip flask of firewater, you start to feel a weird, slightly unpleasant feeling inside your body-- like many tiny flames are coursing through your veins. You ponder just what's happening to you when you remember that salamanders have natural talent for entering a berserk-like state. You guess that this feeling is what it is.\n\n(<b>Gained Perk: Lustzerker</b>)");
 					player.createPerk(PerkLib.Lustzerker, 0, 0, 0, 0);

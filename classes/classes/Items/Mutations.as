@@ -2937,7 +2937,7 @@ package classes.Items
 				changes++;
 			}
 			//-Propah Wings
-			if (player.wingType == Wings.NONE && changes < changeLimit && (type == 1 || player.armType == ARM_TYPE_HARPY) && rand(4) == 0) {
+			if (player.wingType == Wings.NONE && changes < changeLimit && (type == 1 || player.armType == Arms.HARPY) && rand(4) == 0) {
 				outputText("\n\nPain lances through your back, the muscles knotting oddly and pressing up to bulge your " + player.skinDesc + ". It hurts, oh gods does it hurt, but you can't get a good angle to feel at the source of your agony. A loud crack splits the air, and then your body is forcing a pair of narrow limbs through a gap in your " + player.armorName + ". Blood pumps through the new appendages, easing the pain as they fill out and grow. Tentatively, you find yourself flexing muscles you didn't know you had, and");
 				player.wings.setProps({
 					type: Wings.FEATHERED_LARGE,
@@ -2960,10 +2960,10 @@ package classes.Items
 				changes++;
 			}
 			//-Feathery Arms
-			if (player.armType != ARM_TYPE_HARPY && changes < changeLimit && (type == 1 || player.hairType == 1) && rand(4) == 0) {
+			if (player.armType != Arms.HARPY && changes < changeLimit && (type == 1 || player.hairType == 1) && rand(4) == 0) {
 				outputText("\n\nYou smile impishly as you lick the last bits of the nut from your teeth, but when you go to wipe your mouth, instead of the usual texture of your " + player.skinDesc + " on your lips, you feel feathers! You look on in horror while more of the avian plumage sprouts from your " + player.skinDesc + ", covering your forearms until <b>your arms look vaguely like wings</b>. Your hands remain unchanged thankfully. It'd be impossible to be a champion without hands! The feathery limbs might help you maneuver if you were to fly, but there's no way they'd support you alone.");
 				changes++;
-				player.armType = ARM_TYPE_HARPY;
+				player.armType = Arms.HARPY;
 				updateClaws();
 			}
 			//-Feathery Hair
@@ -3440,12 +3440,12 @@ package classes.Items
 				changes++;
 			}
 			//(Arms to carapace-covered arms)
-			if (player.armType != ARM_TYPE_SPIDER && changes < changeLimit && rand(4) == 0) {
+			if (player.armType != Arms.SPIDER && changes < changeLimit && rand(4) == 0) {
 				outputText("\n\n");
 				//(Bird pretext)
-				if (player.armType == ARM_TYPE_HARPY) outputText("The feathers covering your arms fall away, leaving them to return to a far more human appearance.  ");
+				if (player.armType == Arms.HARPY) outputText("The feathers covering your arms fall away, leaving them to return to a far more human appearance.  ");
 				outputText("You watch, spellbound, while your forearms gradually become shiny.  The entire outer structure of your arms tingles while it divides into segments, <b>turning the " + player.skinFurScales() + " into a shiny black carapace</b>.  You touch the onyx exoskeleton and discover to your delight that you can still feel through it as naturally as your own skin.");
-				player.armType = ARM_TYPE_SPIDER;
+				player.armType = Arms.SPIDER;
 				updateClaws();
 				changes++;
 			}
@@ -3474,7 +3474,7 @@ package classes.Items
 				changes++;
 			}
 			//(Tail becomes spider abdomen GRANT WEB ATTACK)
-			if (player.tailType != Tail.SPIDER_ABDOMEN && (player.lowerBody == LOWER_BODY_TYPE_CHITINOUS_SPIDER_LEGS || player.lowerBody == LOWER_BODY_TYPE_DRIDER_LOWER_BODY) && player.armType == ARM_TYPE_SPIDER && rand(4) == 0) {
+			if (player.tailType != Tail.SPIDER_ABDOMEN && (player.lowerBody == LOWER_BODY_TYPE_CHITINOUS_SPIDER_LEGS || player.lowerBody == LOWER_BODY_TYPE_DRIDER_LOWER_BODY) && player.armType == Arms.SPIDER && rand(4) == 0) {
 				outputText("\n\n");
 				//(Pre-existing tails)
 				if (player.tailType > Tail.NONE) outputText("Your tail shudders as heat races through it, twitching violently until it feels almost as if it's on fire.  You jump from the pain at your " + player.buttDescript() + " and grab at it with your hands.  It's huge... and you can feel it hardening under your touches, firming up until the whole tail has become rock-hard and spherical in shape.  The heat fades, leaving behind a gentle warmth, and you realize your tail has become a spider's abdomen!  With one experimental clench, you even discover that it can shoot webs from some of its spinnerets, both sticky and non-adhesive ones.  That may prove useful.  <b>You now have a spider's abdomen hanging from above your " + player.buttDescript() + "!</b>\n\n");

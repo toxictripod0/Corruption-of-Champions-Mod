@@ -1473,9 +1473,9 @@ package classes.Scenes.Places.Bazaar
 				player.underBody.restore();
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.armType != ARM_TYPE_HUMAN) {
+			if (rand(3) == 0 && changes < changeLimit && player.armType != Arms.HUMAN) {
 				outputText("\n\nYou feel a pleasant heat in your arms as smoke rises from them, <b>leaving normal human arms</b>.");
-				player.armType = ARM_TYPE_HUMAN;
+				player.armType = Arms.HUMAN;
 				changes++;
 			}
 			if (rand(4) == 0 && changes < changeLimit && player.lowerBody != LOWER_BODY_TYPE_CLOVEN_HOOFED) {
@@ -1649,17 +1649,17 @@ package classes.Scenes.Places.Bazaar
 				changes++;
 			}
 			//Arms change to regular
-			if (rand(3) == 0 && changes < changeLimit && player.armType != ARM_TYPE_HUMAN) {
+			if (rand(3) == 0 && changes < changeLimit && player.armType != Arms.HUMAN) {
 				switch(player.armType) {
-					case ARM_TYPE_HARPY:
+					case Arms.HARPY:
 						outputText("\n\nYou scratch at your biceps absentmindedly, but no matter how much you scratch, it isn't getting rid of the itch. Glancing down in irritation, you discover that your feathery arms are shedding their feathery coating. The wing-like shape your arms once had is gone in a matter of moments, leaving " + player.skinDesc + " behind.");
 						break;
-					case ARM_TYPE_SPIDER:
+					case Arms.SPIDER:
 						outputText("\n\nYou scratch at your biceps absentmindedly, but no matter how much you scratch, it isn't getting rid of the itch. Glancing down in irritation, you discover that your arms' chitinous covering is flaking away. The glossy black coating is soon gone, leaving " + player.skinDesc + " behind.");
 						break;
 					default:
 				}
-				player.armType = ARM_TYPE_HUMAN;
+				player.armType = Arms.HUMAN;
 				mutations.updateClaws();
 				changes++;
 			}
@@ -1872,9 +1872,9 @@ package classes.Scenes.Places.Bazaar
 				player.hairType = HAIR_NORMAL;
 				changes++;
 			}
-			if (rand(4) == 0 && changes < changeLimit && player.armType == ARM_TYPE_HARPY) {
+			if (rand(4) == 0 && changes < changeLimit && player.armType == Arms.HARPY) {
 				outputText("\n\nYour arm feathers fall out completely, <b>leaving only the " + player.skinFurScales() + " underneath.</b>");
-				player.armType = ARM_TYPE_HUMAN;
+				player.armType = Arms.HUMAN;
 				changes++;
 			}
 			//Remove gills
