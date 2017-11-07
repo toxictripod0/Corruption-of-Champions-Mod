@@ -61,7 +61,7 @@ public class JewelryShop extends Shop {
     }
     protected override function confirmBuy(itype:ItemType = null, priceOverride:int = -1, keyItem:String = ""):void {
         clearOutput();
-        if (keyItem == "Equipment Storage - Jewelry Box") {
+        if (keyItem === "Equipment Storage - Jewelry Box") {
             if (player.hasKeyItem("Equipment Storage - Jewelry Box") >= 0) {
                 outputText("<b>You already own a jewelry box!</b>");
                 doNext(inside);
@@ -84,7 +84,7 @@ public class JewelryShop extends Shop {
 
     protected override function noBuyOption(itype:ItemType = null, keyItem:String = ""):void {
         clearOutput();
-        if(keyItem == "Equipment Storage - Jewelry Box"){
+        if(keyItem === "Equipment Storage - Jewelry Box"){
             outputText("You decline with a firm hand and a shake of your head, prompting the " +
                     "merchant to whisper a growl. \"<i>Bah, fine! You'd besst have a good hiding place, then.</i>\" He leans a little " +
                     "beyond the counter on his spindly arms, taking a look at your [butt]. He's stoic at first, " +
@@ -97,7 +97,7 @@ public class JewelryShop extends Shop {
     }
 
     protected override function debit(itype:ItemType = null, priceOverride:int = -1, keyItem:String = ""):void {
-        if (keyItem == "Equipment Storage - Jewelry Box") {
+        if (keyItem === "Equipment Storage - Jewelry Box") {
             outputText("You nod a bit skeptically, but hand over the 500 gems. It's worth the " +
                     "organizational value. You reach out to take the box from the counter, but he hisses rather alarmingly, " +
                     "moving an arm to block you. Taken aback, you watch on as the odd little merchant checks the gem's " +
