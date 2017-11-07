@@ -3,6 +3,8 @@ package classes.Items
 	import classes.*;
 	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
+	import classes.internals.LoggerFactory;
+	import mx.logging.ILogger;
 	
 	/**
 	 * Helper class to get rid of the copy&paste-mess in classes.Items.Mutations
@@ -13,6 +15,8 @@ package classes.Items
 	{
 		include "../../../includes/appearanceDefs.as";
 
+		private static const LOGGER:ILogger = LoggerFactory.getLogger(MutationsHelper);
+		
 		public var changes:int = 0;
 		public var changeLimit:int = 1;
 
@@ -20,7 +24,8 @@ package classes.Items
 
 		public function restoreArms(tfSource:String):int
 		{
-			trace('called restoreArms("' + tfSource + '")');
+			LOGGER.debug("called restoreArms(\"{0}\")", tfSource);
+			
 			var message:String = "";
 
 			if (tfSource == "gooGasmic") {
@@ -96,7 +101,8 @@ package classes.Items
 
 		public function restoreLegs(tfSource:String):Boolean
 		{
-			trace('called restoreLegs("' + tfSource + '")');
+			LOGGER.debug("called restoreLegs(\"{0}\")", tfSource);
+			
 			var doRestore:Boolean = false;
 			var tsParts:Array = tfSource.split("-");
 			tfSource = tsParts[0];
@@ -151,7 +157,8 @@ package classes.Items
 
 		public function restoreNeck(tfSource:String):Boolean
 		{
-			trace('called restoreNeck("' + tfSource + '")');
+			LOGGER.debug("called restoreNeck(\"{0}\")", tfSource);
+			
 			var tsParts:Array = tfSource.split("-");
 			if (tsParts.length > 1 && tsParts[0] != "reptilum") // probably later dracolisks would get an elongated neck, too (shorter than the dragon version)
 				tfSource = tsParts[0];
@@ -187,7 +194,8 @@ package classes.Items
 
 		public function restoreRearBody(tfSource:String):Boolean
 		{
-			trace('called restoreRearBody("' + tfSource + '")');
+			LOGGER.debug("called restoreRearBody(\"{0}\")", tfSource);
+			
 			var tsParts:Array = tfSource.split("-");
 			tfSource = tsParts[0];
 
@@ -390,7 +398,7 @@ package classes.Items
 		public function lizardHairChange(tfSource:String):int
 		{
 			var hairPinID:int = player.hasKeyItem("Feathery hair-pin");
-			trace('called lizardHairChange("' + tfSource + '")');
+			LOGGER.debug("called lizardHairChange(\"{0}\")", tfSource);
 
 			switch (tfSource) {
 				case "reptilum-lizan":
@@ -527,7 +535,8 @@ package classes.Items
 		 */
 		public function updateOvipositionPerk(tfSource:String):int
 		{
-			trace('called updateOvipositionPerk("' + tfSource + '")');
+			LOGGER.debug("called updateOvipositionPerk(\"{0}\")", tfSource);
+
 			var tsParts:Array = tfSource.split("-");
 			if (tsParts.length > 1 && ["goldenSeed", "catTransformation"].indexOf(tsParts[0]) == -1)
 				tfSource = tsParts[0];
@@ -587,7 +596,8 @@ package classes.Items
 
 		public function updateGills(newGillType:int = Gills.NONE):int
 		{
-			trace("Called updateGills(" + newGillType + ")");
+			LOGGER.debug("Called updateGills(\"{0}\")", newGillType);
+
 			var oldgillType:int = player.gillType;
 			if (player.gillType == newGillType) return 0; // no change
 
@@ -643,7 +653,7 @@ package classes.Items
 				default:
 					player.gillType = oldgillType;
 					changes--;
-					trace("ERROR: Unimplemented new gillType (" + newGillType + ") used");
+					LOGGER.error("Unimplemented new gillType (\"{0}\") used", newGillType);
 					return 0; // failsafe, should hopefully never happen
 			}
 		}
@@ -725,7 +735,8 @@ package classes.Items
 
 		public function gainDraconicHorns(tfSource:String):void
 		{
-			trace('called gainDraconicHorns("' + tfSource + '")');
+			LOGGER.debug("called gainDraconicHorns(\"{0}\")", tfSource);
+
 			var tsParts:Array = tfSource.split("-");
 			var race:String;
 
@@ -795,13 +806,21 @@ package classes.Items
 
 		public function removeExtraBreastRow(tfSource:String):void
 		{
-			trace('called removeExtraBreastRow("' + tfSource + '")');
-			if (player.breastRows.length <= 1) return;
+			LOGGER.debug("called removeExtraBreastRow(\"{0}\")", tfSource);
+			
+			if (player.breastRows.length <= 1) {
+				return;
+			}
+			
 			outputText("\n\nYou stumble back when your center of balance shifts, and though you adjust before you can fall over, you're left to watch"
 			          +" in awe as your bottom-most [lastbreasts] shrink down, disappearing completely into your [if (breastrows >= 3)abdomen|chest]."
 			          +" The [lastnipples] even fade until nothing but [if (isFluffy)[furColor] [skinDesc]|[skinTone] [skinDesc]] remains."
 			          +" <b>You've lost a row of breasts!</b>");
-			if (tfSource != "regularHummus") dynStats("sen", -5);
+					  
+			if (tfSource !== "regularHummus") {
+				dynStats("sen", -5);
+			}
+			
 			player.removeBreastRow(player.breastRows.length - 1, 1);
 			changes++;
 		}

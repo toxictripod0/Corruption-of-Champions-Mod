@@ -90,15 +90,19 @@ package classes.Scenes.Areas.Desert
 		{
 			//WAIFU GET!
 			trace("ANT WINS: " + flags[kFLAGS.ANT_ARENA_WINS] + " ANT LOSSES: " + flags[kFLAGS.ANT_ARENA_LOSSES]);
-			if (flags[kFLAGS.ANT_ARENA_WINS] - flags[kFLAGS.ANT_ARENA_LOSSES] >= 2 && flags[kFLAGS.ANT_ARENA_WINS] >= 4 && player.gender > 0 && flags[kFLAGS.PHYLLA_GEMS_HUNTED_TODAY] == 0) {
-				if (flags[kFLAGS.PHYLLA_STAY_HOME] > 0) bumpIntoTheAntColonyAfterStayHomePhylla();
-				else antGirlGoodEnd();
-			}
-			else if (flags[kFLAGS.PC_READY_FOR_ANT_COLONY_CHALLENGE] == 1)
+			if (flags[kFLAGS.ANT_ARENA_WINS] - flags[kFLAGS.ANT_ARENA_LOSSES] >= 2 && flags[kFLAGS.ANT_ARENA_WINS] >= 4 && player.gender > 0 && flags[kFLAGS.PHYLLA_GEMS_HUNTED_TODAY] === 0) {
+				if (flags[kFLAGS.PHYLLA_STAY_HOME] > 0) {
+					bumpIntoTheAntColonyAfterStayHomePhylla();
+				} else {
+					antGirlGoodEnd();
+				}
+			} else if (flags[kFLAGS.PC_READY_FOR_ANT_COLONY_CHALLENGE] === 1) {
 				antColonyChallenge();
-			else if (flags[kFLAGS.PHYLLA_SAVED] == 1)
+			} else if (flags[kFLAGS.PHYLLA_SAVED] == 1) {
 				enterTheColony();
-			else firstAntColonyEncounter();
+			} else {
+				firstAntColonyEncounter();
+			}
 		}
 
 		private function phyllaCapacity():Number

@@ -8,6 +8,7 @@
 	import classes.Items.*;
 	import classes.Saves;
 import classes.internals.Utils;
+import classes.Scenes.Inventory;
 
 import fl.controls.ComboBox;
 	import fl.data.DataProvider;
@@ -1645,7 +1646,7 @@ import fl.controls.ComboBox;
 			mainView.nameBox.visible = false;
 			boxNames.visible = false;
 			outputText("Everything fades to white and finally... black. You can feel yourself being whisked back to reality as you slowly awaken in your room. You survey your surroundings and recognize almost immediately; you are in your room inside the inn in Ingnam! You get up and look around. ");
-			if (player.hasKeyItem("Camp - Chest") >= 0 || player.hasKeyItem("Equipment Rack - Weapons") >= 0 || player.hasKeyItem("Equipment Rack - Armor") >= 0 || player.hasKeyItem("Equipment Storage - Jewelry Box") >= 0) {
+			if (player.hasKeyItem("Camp - Chest") >= 0 || player.hasKeyItem("Equipment Rack - Weapons") >= 0 || player.hasKeyItem("Equipment Rack - Armor") >= 0 || player.hasKeyItem(Inventory.STORAGE_JEWELRY_BOX) >= 0) {
 				if (player.hasKeyItem("Camp - Chest") >= 0) {
 					outputText("\n\nYou take a glance at the chest; you don't remember having it inside your room. You open the chest and look inside. ");
 					if (inventory.hasItemsInStorage()) outputText("Something clicks in your mind; they must be the old stuff you had from your previous incarnation");
@@ -1666,7 +1667,7 @@ import fl.controls.ComboBox;
 					if (inventory.shieldRackDescription()) outputText(" Something clicks in your mind; they must be the old shields you had from your previous incarnation!");
 					else outputText("It's empty and you let out a sigh but you know you can bring it to Mareth.");
 				}
-				if (player.hasKeyItem("Equipment Storage - Jewelry Box") >= 0) {
+				if (player.hasKeyItem(Inventory.STORAGE_JEWELRY_BOX) >= 0) {
 					outputText("\n\nThere is a jewelry box on the dresser. You walk over to the box, open it, and look inside. ");
 					if (inventory.jewelryBoxDescription()) outputText(" It's making sense! The contents must be from your past adventures.");
 					else outputText("It's empty and you let out a sigh but you know you can bring it to Mareth.");	
@@ -1689,7 +1690,7 @@ import fl.controls.ComboBox;
 		}
 
 		private function isSpecialKeyItem(keyName:* = null):Boolean {
-			return (keyName == "Camp - Chest" || keyName == "Camp - Murky Chest" || keyName == "Camp - Ornate Chest" || keyName == "Equipment Rack - Weapons" || keyName == "Equipment Rack - Armor" || keyName == "Equipment Rack - Shields" || keyName == "Equipment Storage - Jewelry Box" || keyName == "Backpack" || keyName == "Nieve's Tear"); 
+			return (keyName === "Camp - Chest" || keyName === "Camp - Murky Chest" || keyName === "Camp - Ornate Chest" || keyName === "Equipment Rack - Weapons" || keyName === "Equipment Rack - Armor" || keyName === "Equipment Rack - Shields" || keyName === Inventory.STORAGE_JEWELRY_BOX || keyName === "Backpack" || keyName === "Nieve's Tear"); 
 		}
 
 		private function isSpell(statusEffect:* = null):Boolean {

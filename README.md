@@ -32,3 +32,22 @@ To build run:
 If you want to skip the tests (not recommended):
 
 `ant release` or `ant debug`
+
+To list the ant targets:
+
+`ant -p`
+
+## Testing
+To run all tests:
+
+`ant test`
+
+To run a single test case or suite:
+
+`ant test-single -Dtestclass=fqn.of.class`
+
+example:
+
+`ant test-single -Dtestclass=classes.Items.MutationsTest`
+
+This allows for quick testing or debugging of classes without running all tests.
