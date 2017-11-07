@@ -492,7 +492,7 @@ package classes
 			}
 			var isPierced:Boolean = (creature.cocks.length == 1) && (creature.cocks[cockIndex].isPierced); //Only describe as pierced or sock covered if the creature has just one cock
 			var hasSock:Boolean = (creature.cocks.length == 1) && (creature.cocks[cockIndex].sock != "");
-			var isGooey:Boolean = (creature.skinType == CoC.SKIN_TYPE_GOO);
+			var isGooey:Boolean = (creature.skinType == Skin.GOO);
 			return cockDescription(cockType, creature.cocks[cockIndex].cockLength, creature.cocks[cockIndex].cockThickness, creature.lust, creature.cumQ(), isPierced, hasSock, isGooey);
 		}
 
@@ -2172,27 +2172,27 @@ package classes
 		);
 		public static const DEFAULT_SKIN_NAMES:Object = createMapFromPairs(
 				[
-					[SKIN_TYPE_PLAIN, "skin"],
-					[SKIN_TYPE_FUR, "fur"],
-					[SKIN_TYPE_LIZARD_SCALES, "scales"],
-					[SKIN_TYPE_GOO, "goo"],
-					[SKIN_TYPE_UNDEFINED, "undefined flesh"],
-					[SKIN_TYPE_DRAGON_SCALES, "scales"],
-					[SKIN_TYPE_FISH_SCALES, "scales"],
-					[SKIN_TYPE_WOOL, "wool"],
-					[SKIN_TYPE_FEATHERED, "feathers"],
+					[Skin.PLAIN, "skin"],
+					[Skin.FUR, "fur"],
+					[Skin.LIZARD_SCALES, "scales"],
+					[Skin.GOO, "goo"],
+					[Skin.UNDEFINED, "undefined flesh"],
+					[Skin.DRAGON_SCALES, "scales"],
+					[Skin.FISH_SCALES, "scales"],
+					[Skin.WOOL, "wool"],
+					[Skin.FEATHERED, "feathers"],
 				]
 		);
 		public static const DEFAULT_SKIN_DESCS:Object = createMapFromPairs(
 				[
-					[SKIN_TYPE_PLAIN, "skin"],
-					[SKIN_TYPE_FUR, "fur"],
-					[SKIN_TYPE_LIZARD_SCALES, "scales"],
-					[SKIN_TYPE_GOO, "skin"],
-					[SKIN_TYPE_UNDEFINED, "skin"],
-					[SKIN_TYPE_DRAGON_SCALES, "scales"],
-					[SKIN_TYPE_FISH_SCALES, "scales"],
-					[SKIN_TYPE_WOOL, "wool-covered skin"],
+					[Skin.PLAIN, "skin"],
+					[Skin.FUR, "fur"],
+					[Skin.LIZARD_SCALES, "scales"],
+					[Skin.GOO, "skin"],
+					[Skin.UNDEFINED, "skin"],
+					[Skin.DRAGON_SCALES, "scales"],
+					[Skin.FISH_SCALES, "scales"],
+					[Skin.WOOL, "wool-covered skin"],
 				]
 		);
 		public static const DEFAULT_HAIR_NAMES:Object = createMapFromPairs(

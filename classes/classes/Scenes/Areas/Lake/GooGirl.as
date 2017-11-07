@@ -1,6 +1,7 @@
 package classes.Scenes.Areas.Lake
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.internals.*;
 
 	public class GooGirl extends Monster
@@ -164,8 +165,8 @@ package classes.Scenes.Areas.Lake
 			this.lowerBody = LOWER_BODY_TYPE_GOO;
 			var tone:String = randomChoice("blue", "purple", "crystal");
 			this.skinTone = tone;
-			this.skinType = SKIN_TYPE_GOO;
-			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[SKIN_TYPE_GOO];
+			this.skinType = Skin.GOO;
+			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.GOO];
 			this.skinAdj = "goopey";
 			this.hairColor = tone;
 			this.hairLength = 12 + rand(10);

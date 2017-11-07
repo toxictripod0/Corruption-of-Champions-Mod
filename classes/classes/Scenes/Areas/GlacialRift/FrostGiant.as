@@ -1,6 +1,7 @@
 package classes.Scenes.Areas.GlacialRift 
 {
 	import classes.*;
+	import classes.BodyParts.*;
 import classes.StatusEffects.Combat.GiantStrLossDebuff;
 import classes.internals.WeightedDrop;
 	import classes.GlobalFlags.kFLAGS;
@@ -233,8 +234,8 @@ import classes.internals.WeightedDrop;
 			this.hipRating = HIP_RATING_BOYISH;
 			this.buttRating = BUTT_RATING_TIGHT;
 			this.skinTone = "deep blue";
-			this.skinType = SKIN_TYPE_FUR;
-			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[SKIN_TYPE_FUR];
+			this.skinType = Skin.FUR;
+			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.FUR];
 			this.hairColor = "white";
 			this.hairLength = 8;
 			initStrTouSpeInte(120, 100, 60, 75);

@@ -67,7 +67,7 @@ package classes.Items.Consumables
 				else player.skinTone = "orange";
 				outputText("begins to lose its color, fading until you're as white as an albino.  Then, starting at the crown of your head, a reddish hue rolls down your body in a wave, turning you completely " + player.skinTone + ".");
 				dynStats("cor", 2);
-				player.skinType = SKIN_TYPE_PLAIN;
+				player.skinType = Skin.PLAIN;
 				kGAMECLASS.rathazul.addMixologyXP(20);
 				changes++;
 			}

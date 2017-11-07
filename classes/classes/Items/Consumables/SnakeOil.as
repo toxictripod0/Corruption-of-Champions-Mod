@@ -129,7 +129,7 @@ package classes.Items.Consumables
 					player.underBody.setProps({
 						type: UNDER_BODY_TYPE_NAGA,
 						skin: {
-							type: SKIN_TYPE_LIZARD_SCALES,
+							type: Skin.LIZARD_SCALES,
 							tone: "green",
 							adj:  "",
 							desc: "scales"

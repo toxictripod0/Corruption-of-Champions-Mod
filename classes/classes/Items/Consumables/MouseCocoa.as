@@ -212,7 +212,7 @@ package classes.Items.Consumables
 				}
 				player.skinAdj = "";
 				player.skinDesc = "fur";
-				player.skinType = SKIN_TYPE_FUR;
+				player.skinType = Skin.FUR;
 				player.underBody.restore(); // Restore the underbody for now
 				changes++;
 			}

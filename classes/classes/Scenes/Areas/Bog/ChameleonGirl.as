@@ -1,6 +1,7 @@
 package classes.Scenes.Areas.Bog
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
 
@@ -137,7 +138,7 @@ package classes.Scenes.Areas.Bog
 			this.hipRating = HIP_RATING_AMPLE + 2;
 			this.buttRating = BUTT_RATING_LARGE;
 			this.skinTone = skinToneAdj[0];
-			this.skinType = SKIN_TYPE_PLAIN;
+			this.skinType = Skin.PLAIN;
 			this.skinDesc = "skin";
 			this.skinAdj = skinToneAdj[1];
 			this.hairColor = "black";

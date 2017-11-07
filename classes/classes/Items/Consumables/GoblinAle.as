@@ -159,7 +159,7 @@ package classes.Items.Consumables
 				if (player.hasGooSkin()) outputText("\n\nYour " + player.skinDesc + " itches incessantly, and as you scratch it shifts and changes, becoming normal human-like skin.  <b>Your skin is once again normal!</b>");
 				player.skinAdj = "";
 				player.skinDesc = "skin";
-				player.skinType = SKIN_TYPE_PLAIN;
+				player.skinType = Skin.PLAIN;
 				player.underBody.restore();
 				changes++;
 			}

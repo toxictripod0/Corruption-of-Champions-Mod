@@ -232,7 +232,7 @@ package classes.Scenes.Dungeons.Factory
 			if (!player.hasPlainSkin()) {
 				outputText("The skin on your body itches intensely as it sheds it's " + player.skinDesc + ", revealing " + player.skinTone + " skin.  ");
 				player.skinDesc = "skin";
-				player.skinType = SKIN_TYPE_PLAIN;
+				player.skinType = Skin.PLAIN;
 				player.underBody.restore();
 				temp++;
 			}

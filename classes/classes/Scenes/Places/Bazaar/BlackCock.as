@@ -1469,7 +1469,7 @@ package classes.Scenes.Places.Bazaar
 
 			if (rand(3) == 0 && changes < changeLimit && player.hasScales()) {
 				outputText("\n\nYou feel an odd rolling sensation as your scales begin to shift, spreading and reforming as they grow and disappear, <b>becoming normal human skin</b>.");
-				player.skinType = SKIN_TYPE_PLAIN;
+				player.skinType = Skin.PLAIN;
 				player.underBody.restore();
 				changes++;
 			}
@@ -1623,18 +1623,18 @@ package classes.Scenes.Places.Bazaar
 			if (rand(4) == 0 && changes < changeLimit && (!player.hasPlainSkin() || player.skinTone != "gray" || player.skinAdj != "tough")) {
 				outputText("\n\n");
 				switch(player.skinType) {
-					case SKIN_TYPE_PLAIN:
+					case Skin.PLAIN:
 						outputText("You feel an itchy sensation as your skin thickens, <b>becoming tough gray skin</b>.");
 						break;
-					case SKIN_TYPE_FUR:
+					case Skin.FUR:
 						outputText("You feel an itching sensation as your fur beings to fall off in clumps, <b>revealing tough gray skin</b> beneath it.");
 						break;
-					case SKIN_TYPE_LIZARD_SCALES:
-					case SKIN_TYPE_DRAGON_SCALES:
-					case SKIN_TYPE_FISH_SCALES:
+					case Skin.LIZARD_SCALES:
+					case Skin.DRAGON_SCALES:
+					case Skin.FISH_SCALES:
 						outputText("You feel an odd rolling sensation as your scales begin to shift, spreading and reforming as they grow and disappear, <b>becoming tough gray skin</b>.");
 						break;
-					case SKIN_TYPE_GOO:
+					case Skin.GOO:
 						outputText("You feel an itchy sensation as your gooey skin solidifies and thickens, <b>becoming tough gray skin</b>.");
 						break;
 					default:
@@ -1642,7 +1642,7 @@ package classes.Scenes.Places.Bazaar
 				}
 				player.skinTone = "gray";
 				player.skinAdj = "tough";
-				player.skinType = SKIN_TYPE_PLAIN;
+				player.skinType = Skin.PLAIN;
 				player.skinDesc = "skin";
 				player.underBody.restore();
 				mutations.updateClaws(player.clawType);
@@ -1900,7 +1900,7 @@ package classes.Scenes.Places.Bazaar
 				outputText("\n\nYou shiver, feeling a bit cold. Just as you begin to wish for something to cover up with, it seems your request is granted; <b>fur begins to grow all over your body!</b> You tug at the tufts in alarm, but they're firmly rooted and... actually pretty soft. Huh. ");
 				player.skinAdj = "";
 				player.skinDesc = "fur";
-				player.skinType = SKIN_TYPE_FUR;
+				player.skinType = Skin.FUR;
 				player.furColor = "brown";
 				player.underBody.restore(); // Restore the underbody for now
 				changes++;

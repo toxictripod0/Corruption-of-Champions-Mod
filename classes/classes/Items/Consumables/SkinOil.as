@@ -1,5 +1,6 @@
 package classes.Items.Consumables 
 {
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.internals.Utils;
 	import classes.Items.Consumable;
@@ -50,18 +51,18 @@ package classes.Items.Consumables
 					mutations.updateClaws(game.player.clawType);
 				}
 				switch (game.player.skinType) {
-					case SKIN_TYPE_PLAIN: //Plain
+					case Skin.PLAIN: //Plain
 						outputText("You " + game.player.clothedOrNaked("take a second to disrobe before uncorking the bottle of oil and rubbing", "uncork the bottle of oil and rub") + " the smooth liquid across your body. Even before you’ve covered your arms and [chest] your skin begins to tingle pleasantly all over. After your skin darkens a little, it begins to change until you have " + _color + " skin.");
 						break;
-					case SKIN_TYPE_FUR: //Fur
+					case Skin.FUR: //Fur
 						outputText("" + game.player.clothedOrNaked("Once you’ve disrobed you take the oil and", "You take the oil and") + " begin massaging it into your skin despite yourself being covered with fur. Once you’ve finished... nothing happens. Then your skin begins to tingle and soon you part your fur to reveal " + _color + " skin.");
 						break;
-					case SKIN_TYPE_LIZARD_SCALES: //Lizard scales
-					case SKIN_TYPE_DRAGON_SCALES: //Dragon scales
-					case SKIN_TYPE_FISH_SCALES:   //Fish scales
+					case Skin.LIZARD_SCALES: //Lizard scales
+					case Skin.DRAGON_SCALES: //Dragon scales
+					case Skin.FISH_SCALES:   //Fish scales
 						outputText("You " + game.player.clothedOrNaked("take a second to disrobe before uncorking the bottle of oil and rubbing", "uncork the bottle of oil and rub") + " the smooth liquid across your body. Even before you’ve covered your arms and [chest] your scaly skin begins to tingle pleasantly all over. After your skin darkens a little, it begins to change until you have " + _color + " skin.");
 						break;
-					case SKIN_TYPE_GOO: //Goo
+					case Skin.GOO: //Goo
 						outputText("You take the oil and pour the contents into your skin. The clear liquid dissolves, leaving your gooey skin unchanged. You do feel a little less thirsty though.");
 						game.player.slimeFeed();
 						break;
@@ -82,18 +83,18 @@ package classes.Items.Consumables
 					game.player.underBody.skin.tone = _color;
 				}
 				switch (game.player.underBody.skin.type) {
-					case SKIN_TYPE_PLAIN: //Plain
+					case Skin.PLAIN: //Plain
 						outputText("You " + game.player.clothedOrNaked("take a second to disrobe before uncorking the bottle of oil and rubbing", "uncork the bottle of oil and rub") + " the smooth liquid across your underbody. Even before you’ve covered your [chest] your skin begins to tingle pleasantly all over. After your skin darkens a little, it begins to change until you have " + _color + " skin on your underbody.");
 						break;
-					case SKIN_TYPE_FUR: //Fur
+					case Skin.FUR: //Fur
 						outputText("" + game.player.clothedOrNaked("Once you’ve disrobed you take the oil and", "You take the oil and") + " begin massaging it into the skin on your underbody despite yourself being covered with fur. Once you’ve finished... nothing happens. Then your skin begins to tingle and soon you part your fur on your [chest] to reveal " + _color + " skin.");
 						break;
-					case SKIN_TYPE_LIZARD_SCALES: //Lizard scales
-					case SKIN_TYPE_DRAGON_SCALES: //Dragon scales
-					case SKIN_TYPE_FISH_SCALES:   //Fish scales
+					case Skin.LIZARD_SCALES: //Lizard scales
+					case Skin.DRAGON_SCALES: //Dragon scales
+					case Skin.FISH_SCALES:   //Fish scales
 						outputText("You " + game.player.clothedOrNaked("take a second to disrobe before uncorking the bottle of oil and rubbing", "uncork the bottle of oil and rub") + " the smooth liquid across your underbody. Even before you’ve covered your [chest] your scaly skin begins to tingle pleasantly all over. After your skin darkens a little, it begins to change until you have " + _color + " skin on your underbody.");
 						break;
-					case SKIN_TYPE_GOO: //Goo
+					case Skin.GOO: //Goo
 						outputText("You take the oil and pour the contents into your skin. The clear liquid dissolves, leaving your gooey skin unchanged. You do feel a little less thirsty though.");
 						game.player.slimeFeed();
 						break;

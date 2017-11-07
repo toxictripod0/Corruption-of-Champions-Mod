@@ -509,7 +509,7 @@ package classes.Items.Consumables
 				outputText("\n<b>Your body is now covered in scales and feathers!</b>");
 
 				player.skin.setAllProps({
-					type:     SKIN_TYPE_LIZARD_SCALES,
+					type:     Skin.LIZARD_SCALES,
 					furColor: colorChoice[0], // Primary feather color
 					tone:     colorChoice[2],
 					desc:     "scales"
@@ -517,7 +517,7 @@ package classes.Items.Consumables
 				player.underBody.setAllProps({
 					type: UNDER_BODY_TYPE_COCKATRICE,
 					skin: {
-						type:     SKIN_TYPE_FEATHERED,
+						type:     Skin.FEATHERED,
 						furColor: colorChoice[1], // Secondary feather color
 						tone:     colorChoice[2],
 						desc:     "feathers"

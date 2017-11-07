@@ -1,6 +1,7 @@
 package classes.Scenes.Areas.Swamp
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
 
@@ -169,8 +170,8 @@ package classes.Scenes.Areas.Swamp
 			this.buttRating = BUTT_RATING_LARGE+1;
 			this.lowerBody = LOWER_BODY_TYPE_DRIDER_LOWER_BODY;
 			this.skinTone = skinTone;
-			this.skinType = SKIN_TYPE_PLAIN;
-			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[SKIN_TYPE_PLAIN];
+			this.skinType = Skin.PLAIN;
+			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.PLAIN];
 			this.hairColor = hairColor;
 			this.hairLength = 24;
 			initStrTouSpeInte(100, 50, 70, 100);

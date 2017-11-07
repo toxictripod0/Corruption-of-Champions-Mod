@@ -111,7 +111,7 @@ package classes.Scenes.Areas.GlacialRift
 			this.lowerBody = LOWER_BODY_TYPE_WOLF;
 			this.armType = Arms.WOLF;
 			this.skinTone = "black";
-			this.skinType = SKIN_TYPE_FUR;
+			this.skinType = Skin.FUR;
 			this.hairColor = "black";
 			this.hairLength = 3;
 			this.faceType = FACE_WOLF;

@@ -659,31 +659,31 @@ import classes.Items.*
 
 		private static const SKIN_BASE_TYPES:Array = [
 			/* [INTERMOD: xianxia]
-			[SKIN_TYPE_PLAIN,"(0) PLAIN"],
-			[SKIN_TYPE_GOO,"(3) GOO"],
-			[SKIN_TYPE_STONE,"(7) STONE"]
+			[Skin.PLAIN,"(0) PLAIN"],
+			[Skin.GOO,"(3) GOO"],
+			[Skin.STONE,"(7) STONE"]
 			*/
-			[SKIN_TYPE_PLAIN,"(0) PLAIN"],
-			[SKIN_TYPE_FUR,"(1) FUR"],
-			[SKIN_TYPE_LIZARD_SCALES,"(2) LIZARD_SCALES"],
-			[SKIN_TYPE_GOO,"(3) GOO"],
-			[SKIN_TYPE_UNDEFINED,"(4) UNDEFINED"],
-			[SKIN_TYPE_DRAGON_SCALES,"(5) DRAGON_SCALES"],
-			[SKIN_TYPE_FISH_SCALES,"(6) FISH_SCALES"],
-			[SKIN_TYPE_WOOL,"(7) WOOL"],
+			[Skin.PLAIN,"(0) PLAIN"],
+			[Skin.FUR,"(1) FUR"],
+			[Skin.LIZARD_SCALES,"(2) LIZARD_SCALES"],
+			[Skin.GOO,"(3) GOO"],
+			[Skin.UNDEFINED,"(4) UNDEFINED"],
+			[Skin.DRAGON_SCALES,"(5) DRAGON_SCALES"],
+			[Skin.FISH_SCALES,"(6) FISH_SCALES"],
+			[Skin.WOOL,"(7) WOOL"],
 		];
 		private static const SKIN_COAT_TYPES:Array = SKIN_BASE_TYPES;
 		/* [INTERMOD: xianxia]
 		private static const SKIN_COAT_TYPES:Array = [
-			[SKIN_TYPE_FUR,"(1) FUR"],
-			[SKIN_TYPE_SCALES,"(2) SCALES"],
-			[SKIN_TYPE_CHITIN,"(5) CHITIN"],
-			[SKIN_TYPE_BARK,"(6) BARK"],
-			[SKIN_TYPE_STONE,"(7) STONE"],
-			[SKIN_TYPE_TATTOED,"(8) TATTOED"],
-			[SKIN_TYPE_AQUA_SCALES,"(9) AQUA_SCALES"],
-			[SKIN_TYPE_DRAGON_SCALES,"(10) DRAGON_SCALES"],
-			[SKIN_TYPE_MOSS,"(11) MOSS"]
+			[Skin.FUR,"(1) FUR"],
+			[Skin.SCALES,"(2) SCALES"],
+			[Skin.CHITIN,"(5) CHITIN"],
+			[Skin.BARK,"(6) BARK"],
+			[Skin.STONE,"(7) STONE"],
+			[Skin.TATTOED,"(8) TATTOED"],
+			[Skin.AQUA_SCALES,"(9) AQUA_SCALES"],
+			[Skin.DRAGON_SCALES,"(10) DRAGON_SCALES"],
+			[Skin.MOSS,"(11) MOSS"]
 		];
 		*/
 		private static const SKIN_TONE_CONSTANTS:Array = [
@@ -1353,7 +1353,7 @@ import classes.Items.*
 			player.earType = EARS_CAT;
 			player.lowerBody = LOWER_BODY_TYPE_CAT;
 			player.legCount = 2;
-			player.skinType = SKIN_TYPE_FUR;
+			player.skinType = Skin.FUR;
 			player.skinDesc = "fur";
 			player.underBody.restore(); // Restore the underbody for now
 			//Draconic TF
@@ -1377,7 +1377,7 @@ import classes.Items.*
 			player.lowerBody = LOWER_BODY_TYPE_CAT;
 			player.legCount = 2;
 			//Draconic TF
-			player.skinType = SKIN_TYPE_DRAGON_SCALES;
+			player.skinType = Skin.DRAGON_SCALES;
 			player.skinAdj = "tough";
 			player.skinDesc = "shield-shaped dragon scales";
 			player.furColor = player.hairColor;

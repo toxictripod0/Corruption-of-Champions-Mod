@@ -349,7 +349,7 @@ package classes.Items.Consumables
 					mutations.updateClaws(player.clawType);
 				}
 				player.skin.setProps({
-					type: SKIN_TYPE_LIZARD_SCALES,
+					type: Skin.LIZARD_SCALES,
 					adj: "",
 					desc: "scales"
 				});

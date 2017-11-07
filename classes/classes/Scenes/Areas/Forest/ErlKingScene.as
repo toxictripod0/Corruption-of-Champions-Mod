@@ -1065,7 +1065,7 @@ public class ErlKingScene extends BaseContent implements Encounter
 			//Gain fur
 			if (rand(4) == 0 && changes < changeLimit && player.horns > 0 && !player.hasFur()) {
 				outputText("\n\nFor a moment, it looks like a ray of sunlight has shimmered through the canopy. You blink and realize that your fur has become dappled, with lighter, sun-speckled spots highlighting it.");
-				player.skinType = SKIN_TYPE_FUR;
+				player.skinType = Skin.FUR;
 				player.skinAdj = "";
 				player.skinDesc = "fur";
 				player.furColor = "brown";

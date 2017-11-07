@@ -130,7 +130,7 @@ package classes
 			player.femininity = 100;
 			player.lowerBody = LOWER_BODY_TYPE_DEMONIC_HIGH_HEELS;
 			player.skinTone = "pink";
-			player.skinType = SKIN_TYPE_FUR;
+			player.skinType = Skin.FUR;
 			player.skinDesc = "fur";
 			player.furColor = "pink";
 			player.hairColor = "pink";
@@ -264,7 +264,7 @@ package classes
 			//if possible with fur, Hair color: "midnight black", Skin/Fur color: "ashen grayish-blue",  Height: 65", Tone: 100, Thickness: 0, Hip rating: 6, Butt rating: 3,Feminimity: 50,  ( 4 rows of breasts (Descending from the top ones: D,C,B,A), nipple length: 0.1", Fuckable, 1 nipple per breast, Tongue type: demon
 			player.hairColor = "midnight black";
 			player.furColor = "ashen grayish-blue";
-			player.skinType = SKIN_TYPE_FUR;
+			player.skinType = Skin.FUR;
 			player.skinDesc = "fur";
 			player.skinTone = "ashen grayish-blue";
 			player.tallness = 65;
@@ -372,7 +372,7 @@ package classes
 			//-Cat with (black and orange tiger fur if possible) if not just Orange fur
 			player.hairColor = "black";
 			player.furColor = "black and orange striped";
-			player.skinType = SKIN_TYPE_FUR;
+			player.skinType = Skin.FUR;
 			player.skinDesc = "fur";
 			player.skinTone = "light";
 			//-Chainmail armor
@@ -559,7 +559,7 @@ package classes
 			getGame().saves.notes = "No Notes Available.";
 			player.HP = kGAMECLASS.maxHP();
 			player.hairLength=13;
-			player.skinType = SKIN_TYPE_PLAIN;
+			player.skinType = Skin.PLAIN;
 			player.faceType = FACE_HUMAN;
 			player.tailType = Tail.NONE;
 			player.tongueType = TONGUE_HUMAN;
@@ -639,7 +639,7 @@ package classes
 			getGame().saves.notes = "No Notes Available.";
 			player.HP = kGAMECLASS.maxHP();
 			player.hairLength = 1;
-			player.skinType = SKIN_TYPE_PLAIN;
+			player.skinType = Skin.PLAIN;
 			player.skinTone = "light";
 			player.hairColor = "brown";
 			player.faceType = FACE_HUMAN;
@@ -664,7 +664,7 @@ package classes
 			player.faceType = FACE_DOG;
 			player.earType = EARS_DOG;
 			player.tailType = Tail.DRACONIC;
-			player.skinType = SKIN_TYPE_FUR;
+			player.skinType = Skin.FUR;
 			player.hairColor = "blue";
 			player.furColor = "blue";
 			player.skinDesc = "fur";
@@ -752,7 +752,7 @@ package classes
 	
 			player.skinDesc = "fur";
 			player.skinTone = "ashen";
-			player.skinType = SKIN_TYPE_FUR;
+			player.skinType = Skin.FUR;
 			player.tailType = Tail.CAT;
 			player.tallness = 55;
 			player.teaseLevel = 4;
@@ -802,7 +802,7 @@ package classes
 			player.faceType = FACE_HORSE;
 			//Skin type = Black Fur
 			player.skinTone = "brown";
-			player.skinType = SKIN_TYPE_FUR;
+			player.skinType = Skin.FUR;
 			player.hairColor = "black";
 			player.skinDesc = "fur";
 			//Legs/Feet = Digigrade hooved 
@@ -849,7 +849,7 @@ package classes
 			//Lower body- Canine
 			player.lowerBody = LOWER_BODY_TYPE_DOG;
 			//White Fur (if possible)
-			player.skinType = SKIN_TYPE_FUR;
+			player.skinType = Skin.FUR;
 			player.hairColor = "white";
 			player.furColor = "white";
 			player.skinDesc = "fur";
@@ -911,7 +911,7 @@ package classes
 			//Appearence: 7ft 9in tall covered in thick shining silver fur, has a vulpine head and ears, eight breast all the same size at DD, dragon like wings, tail, and legs. With a large mare like pussy, 6 dicks, two equine, two dragon, two vulpine, all 15in long and 3 in wide, and four nuts 5 in across
 			player.tallness = 93;
 			player.skinTone = "black";
-			player.skinType = SKIN_TYPE_FUR;
+			player.skinType = Skin.FUR;
 			player.skinDesc = "fur";
 			player.hairColor = "silver";
 			player.furColor = "silver";
@@ -1026,7 +1026,7 @@ package classes
 			getGame().saves.notes = "No Notes Available.";
 			player.HP = kGAMECLASS.maxHP();
 			
-			player.skinType = SKIN_TYPE_PLAIN;
+			player.skinType = Skin.PLAIN;
 			player.faceType = FACE_HUMAN;
 			player.tailType = Tail.NONE;
 			player.tongueType = TONGUE_HUMAN;
@@ -1038,7 +1038,7 @@ package classes
 			//25 thickness
 			player.thickness = 25;
 			player.skinDesc = "fur";
-			player.skinType = SKIN_TYPE_FUR;
+			player.skinType = Skin.FUR;
 			player.skinTone = "light";
 			player.furColor = "silver";
 			player.hairColor = "silver";
@@ -1116,7 +1116,7 @@ package classes
 			player.hairColor = "red";
 			player.skinTone = "light";
 			player.skinDesc = "skin";
-			player.skinType = SKIN_TYPE_PLAIN;
+			player.skinType = Skin.PLAIN;
 			player.femininity = 100;
 			player.thickness = 25;
 			player.tone = 65;
@@ -1263,7 +1263,7 @@ package classes
 			getGame().saves.notes = "Cheater!";
 			player.HP = kGAMECLASS.maxHP();
 			player.hairLength = 10;
-			player.skinType = SKIN_TYPE_PLAIN;
+			player.skinType = Skin.PLAIN;
 			player.faceType = FACE_HUMAN;
 			player.tailType = Tail.FOX;
 			player.tailVenom = 4;
@@ -1473,7 +1473,7 @@ package classes
 			getGame().saves.notes = "No Notes Available.";
 			player.HP = kGAMECLASS.maxHP();
 			player.hairLength = 10;
-			player.skinType = SKIN_TYPE_PLAIN;
+			player.skinType = Skin.PLAIN;
 			player.faceType = FACE_HUMAN;
 			player.tailType = Tail.NONE;
 			player.tongueType = TONGUE_HUMAN;
@@ -1609,7 +1609,7 @@ package classes
 			player.buttRating = BUTT_RATING_TIGHT;
 			player.thickness = 20; // thin
 			player.tone = 20; // soft
-			player.skinType = SKIN_TYPE_FUR;
+			player.skinType = Skin.FUR;
 			player.furColor = "snow white";
 			player.skinDesc = "fur";
 			player.skinAdj = "fluffy";
@@ -1811,16 +1811,16 @@ package classes
 
 			var skin:Number = rand(100);			
 			if (skin < 50){
-				player.skinType = SKIN_TYPE_PLAIN; // skin, 50%
+				player.skinType = Skin.PLAIN; // skin, 50%
 				player.skinDesc = "skin";}
 			else if (skin < 80){
-				player.skinType = SKIN_TYPE_FUR; // fur, 30%
+				player.skinType = Skin.FUR; // fur, 30%
 				player.skinDesc = "fur";}
 			else if (skin < 95){
-				player.skinType = SKIN_TYPE_LIZARD_SCALES; // scales, 15%
+				player.skinType = Skin.LIZARD_SCALES; // scales, 15%
 				player.skinDesc = "scales";}
 			else{
-				player.skinType = SKIN_TYPE_GOO; // goo, 5%
+				player.skinType = Skin.GOO; // goo, 5%
 				player.skinDesc = "skin";
 				player.skinAdj = "slimy";}
 					

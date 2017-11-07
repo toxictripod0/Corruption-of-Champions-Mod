@@ -1819,7 +1819,7 @@ import mx.logging.ILogger;
 			if (index < 0) index = biggestCockIndex();
 			var isPierced:Boolean = (cocks.length == 1) && (cocks[index].isPierced); //Only describe as pierced or sock covered if the creature has just one cock
 			var hasSock:Boolean = (cocks.length == 1) && (cocks[index].sock != "");
-			var isGooey:Boolean = (skinType == SKIN_TYPE_GOO);
+			var isGooey:Boolean = (skinType == Skin.GOO);
 			return Appearance.cockAdjective(cocks[index].cockType, cocks[index].cockLength, cocks[index].cockThickness, lust, cumQ(), isPierced, hasSock, isGooey);
 		}
 		
@@ -2890,22 +2890,22 @@ import mx.logging.ILogger;
 
 		public function hasScales():Boolean
 		{
-			return [SKIN_TYPE_LIZARD_SCALES, SKIN_TYPE_DRAGON_SCALES, SKIN_TYPE_FISH_SCALES].indexOf(skinType) != -1;
+			return [Skin.LIZARD_SCALES, Skin.DRAGON_SCALES, Skin.FISH_SCALES].indexOf(skinType) != -1;
 		}
 
 		public function hasReptileScales():Boolean
 		{
-			return [SKIN_TYPE_LIZARD_SCALES, SKIN_TYPE_DRAGON_SCALES].indexOf(skinType) != -1;
+			return [Skin.LIZARD_SCALES, Skin.DRAGON_SCALES].indexOf(skinType) != -1;
 		}
 
 		public function hasDragonScales():Boolean
 		{
-			return skinType == SKIN_TYPE_DRAGON_SCALES;
+			return skinType == Skin.DRAGON_SCALES;
 		}
 
 		public function hasLizardScales():Boolean
 		{
-			return skinType == SKIN_TYPE_LIZARD_SCALES;
+			return skinType == Skin.LIZARD_SCALES;
 		}
 
 		public function hasNonLizardScales():Boolean
@@ -2940,12 +2940,12 @@ import mx.logging.ILogger;
 
 		public function hasGooSkin():Boolean
 		{
-			return skinType == SKIN_TYPE_GOO;
+			return skinType == Skin.GOO;
 		}
 
 		public function hasPlainSkin():Boolean
 		{
-			return skinType == SKIN_TYPE_PLAIN;
+			return skinType == Skin.PLAIN;
 		}
 
 		public function get hairOrFurColors():String

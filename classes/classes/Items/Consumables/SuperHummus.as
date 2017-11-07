@@ -57,7 +57,7 @@ package classes.Items.Consumables
 			player.horns = 0;
 			player.hornType = HORNS_NONE;
 			player.earType = EARS_HUMAN;
-			player.skinType = SKIN_TYPE_PLAIN;
+			player.skinType = Skin.PLAIN;
 			player.skinDesc = "skin";
 			player.skinAdj = "";
 			player.underBody.restore();

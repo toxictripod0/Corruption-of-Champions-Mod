@@ -100,7 +100,7 @@ package classes.Items.Consumables
 			//gain fur
 			if ((player.lowerBody === LOWER_BODY_TYPE_RACCOON && player.earType === EARS_RACCOON) && !player.hasFur() && changes < changeLimit && rand(4) === 0) {
 				outputText("\n\nYou shiver, feeling a bit cold.  Just as you begin to wish for something to cover up with, it seems your request is granted; thick, bushy fur begins to grow all over your body!  You tug at the tufts in alarm, but they're firmly rooted and... actually pretty soft.  Huh.  ");
-				player.skinType = SKIN_TYPE_FUR;
+				player.skinType = Skin.FUR;
 				player.skinAdj = "";
 				player.skinDesc = "fur";
 				player.furColor = "gray";

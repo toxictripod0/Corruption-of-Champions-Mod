@@ -193,7 +193,7 @@ import fl.controls.ComboBox;
 			}
 			player.HP = player.maxHP();
 			player.hairLength = 5;
-			player.skinType = SKIN_TYPE_PLAIN;
+			player.skinType = Skin.PLAIN;
 			player.underBody.restore();
 			player.neck.restore();
 			player.rearBody.restore();

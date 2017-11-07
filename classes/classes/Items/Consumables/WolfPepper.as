@@ -322,7 +322,7 @@ package classes.Items.Consumables
 					["white", "golden"],
 				];
 				outputText("\n\nYour " + player.skinDesc + " begins to tingle, then itch. ");
-				player.skinType = SKIN_TYPE_FUR;
+				player.skinType = Skin.FUR;
 				player.skinDesc = "fur";
 				player.setFurColor(wolfFurColors, {
 					type: UNDER_BODY_TYPE_FURRY
@@ -366,7 +366,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//legz
-			if (player.legCount === 2 && player.lowerBody !== LOWER_BODY_TYPE_WOLF && player.tailType === Tail.WOLF && player.skinType === SKIN_TYPE_FUR && rand(4) === 0 && changes < changeLimit) {
+			if (player.legCount === 2 && player.lowerBody !== LOWER_BODY_TYPE_WOLF && player.tailType === Tail.WOLF && player.skinType === Skin.FUR && rand(4) === 0 && changes < changeLimit) {
 				//Hooman feets
 				if (player.lowerBody === LOWER_BODY_TYPE_HUMAN) outputText("\n\nYou stumble and fall, howling in pain as your legs and feet break apart and reform into wolf-like legs and paws. The worst of the pain eventually passes, but you're still left whimpering for a while. <b>You now have paws!</b>");
 				//Hooves -> Paws

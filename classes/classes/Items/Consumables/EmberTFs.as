@@ -116,7 +116,7 @@ package classes.Items.Consumables
 				           +" of your [skinFurScales] hanging from your fingers.  Nevertheless you continue to scratch yourself, and when you're"
 				           +" finally done, you look yourself over. New shield-like scales have grown to replace your peeled off [skinFurScales]."
 				           +" They are smooth and look nearly as tough as iron.");
-				player.skin.setProps({type: SKIN_TYPE_DRAGON_SCALES, adj: "tough", desc: "shield-shaped dragon scales"});
+				player.skin.setProps({type: Skin.DRAGON_SCALES, adj: "tough", desc: "shield-shaped dragon scales"});
 				//def bonus of scales
 				player.underBody.type = UNDER_BODY_TYPE_REPTILE;
 				player.copySkinToUnderBody({       // copy the main skin props to the underBody skin ...
@@ -258,7 +258,7 @@ package classes.Items.Consumables
 			if (player.neck.type != NECK_TYPE_DRACONIC && changes < changeLimit && rand(4) == 0)
 				mutations.restoreNeck(tfSource);
 			//Gain Dragon Neck
-			//public function hasDraconicBackSide():Boolean { return hasDragonWings(true) && skinType == SKIN_TYPE_DRACONIC && hasReptileTail() && hasReptileArms() && hasReptileLegs(); }
+			//public function hasDraconicBackSide():Boolean { return hasDragonWings(true) && skinType == Skin.DRACONIC && hasReptileTail() && hasReptileArms() && hasReptileLegs(); }
 			//If you are considered a dragon-morph and if your backside is dragon-ish enough, your neck is eager to allow you to take a look at it, right? ;-)
 			if (!drakesHeart && !player.hasDragonNeck() && player.dragonScore() >= 6 && player.hasDraconicBackSide() && player.faceType == FACE_DRAGON && changes < changeLimit) {
 				mutations.restoreNeck(tfSource + "-forceRestoreNeck");

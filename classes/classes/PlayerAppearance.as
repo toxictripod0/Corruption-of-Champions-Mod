@@ -261,7 +261,7 @@ package classes
 			}
 			if (player.faceType == FACE_COCKATRICE)
 			{
-				if (player.underBody.skin.type == SKIN_TYPE_FEATHERED)
+				if (player.underBody.skin.type == Skin.FEATHERED)
 					outputText("  You have a cockatrice’s face, complete with [furColor] feathered skin and a muzzle like beak.");
 				else
 					outputText("  You have a cockatrice’s face, complete with [skinFurScales] and a muzzle like beak.");

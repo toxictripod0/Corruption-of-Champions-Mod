@@ -873,7 +873,7 @@ package classes.Scenes.NPCs
 			else if (player.cor > 33) outputText("and you squirm and writhe within your " + player.armorName + ", the material itching on your skin.  Ultimately, you manage to resist.");
 			else outputText("and you stifle a laugh at the ridiculous thought, ignoring your fingers while they scratch at the itch under your gear.");
 			outputText("  Your ");
-			if ([SKIN_TYPE_PLAIN, SKIN_TYPE_FUR].indexOf(player.skinType) >= 0) outputText("skin burns");
+			if ([Skin.PLAIN, Skin.FUR].indexOf(player.skinType) >= 0) outputText("skin burns");
 			else if (player.hasScales()) outputText("scales burn");
 			else outputText(player.skinDesc + " burns");
 			outputText(" hot, raging from fetish-enhanced lust and daydreams, but you shake your head in time to see a pair of inky black orbs rising from behind a nearby boulder.\n\n");

@@ -66,15 +66,15 @@ package classes.Items
 
 					case Arms.PREDATOR:
 						switch (player.skinType) {
-							case SKIN_TYPE_GOO:
+							case Skin.GOO:
 								if (player.clawType != CLAW_TYPE_NORMAL)
 									message += "\n\nYour gooey claws melt into your fingers."
 									          +" Well, who cares, gooey claws aren't very useful in combat to begin with.";
 								break;
 
-							case SKIN_TYPE_PLAIN:
-							case SKIN_TYPE_FUR:
-							case SKIN_TYPE_LIZARD_SCALES:
+							case Skin.PLAIN:
+							case Skin.FUR:
+							case Skin.LIZARD_SCALES:
 								message += "\n\nYou feel a sudden tingle in your [claws] and then you realize,"
 								          +" that they have become normal human fingernails again.";
 								break;

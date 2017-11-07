@@ -227,7 +227,7 @@ package classes.Items.Consumables
 					else player.hairColor = "brown";
 					outputText(".");
 				}
-				player.skinType = SKIN_TYPE_FUR;
+				player.skinType = Skin.FUR;
 				player.furColor = player.hairColor;
 				player.underBody.restore(); // Restore the underbody for now
 				outputText("  <b>You now have " + player.furColor + " fur!</b>");

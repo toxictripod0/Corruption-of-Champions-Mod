@@ -235,7 +235,7 @@ public function startUrtaQuest():void {
 	player.tallness = 71;
 	player.hairColor = "gray";
 	player.hairLength = 12;
-	player.skinType = SKIN_TYPE_FUR;
+	player.skinType = Skin.FUR;
 	player.skinAdj = "silky";
 	player.skinDesc = "fur";
 	player.createBreastRow();

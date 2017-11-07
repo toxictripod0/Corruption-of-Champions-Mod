@@ -455,7 +455,7 @@ package classes.Items.Consumables
 					outputText("\n\nYour " + player.skinTone + " scales begin to itch insufferably.  You reflexively scratch yourself, setting off an avalanche of discarded scales.  The itching intensifies as you madly scratch and tear at yourself, revealing a coat of " + player.furColor + " " + player.skinDesc + ".  At last the itching stops as <b>you brush a few more loose scales from your new coat of " + player.furColor + "-colored fur.</b>");
 				}
 				changes++;
-				player.skinType = SKIN_TYPE_FUR;
+				player.skinType = Skin.FUR;
 				player.skinDesc = "fur";
 				player.underBody.restore(); // Restore the underbody for now
 			}

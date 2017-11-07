@@ -1,6 +1,7 @@
 package classes.Scenes.Areas.Bog 
 {
 	import classes.*;
+	import classes.BodyParts.*;
 import classes.StatusEffects.Combat.LizanBlowpipeDebuff;
 import classes.internals.*;
 	import classes.GlobalFlags.kFLAGS;
@@ -79,7 +80,7 @@ import classes.internals.*;
 		{
 			var skinToneAdj:String = randomChoice(SKIN_VARIATIONS);
 			this.skinTone = skinToneAdj;
-			this.skinType = SKIN_TYPE_LIZARD_SCALES;
+			this.skinType = Skin.LIZARD_SCALES;
 			this.a = "the ";
 			this.short = "lizan rogue";
 			this.imageName = "lizanrogue";

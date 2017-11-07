@@ -1,6 +1,7 @@
 package classes.Scenes.Areas.GlacialRift 
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.internals.WeightedDrop;
 	
 	public class Yeti extends Monster
@@ -120,8 +121,8 @@ package classes.Scenes.Areas.GlacialRift
 			this.hipRating = HIP_RATING_BOYISH;
 			this.buttRating = BUTT_RATING_TIGHT;
 			this.skinTone = "light";
-			this.skinType = SKIN_TYPE_FUR;
-			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[SKIN_TYPE_FUR];
+			this.skinType = Skin.FUR;
+			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.FUR];
 			this.hairColor = "white";
 			this.hairLength = 8;
 			initStrTouSpeInte(95, 80, 60, 50);

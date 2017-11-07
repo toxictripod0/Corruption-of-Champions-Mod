@@ -321,7 +321,7 @@
 
 			//// 6. Skin
 			///*OPTIONAL*/ //this.skinTone = "skinTone"; // default "albino"
-			///*OPTIONAL*/ //this.skinType = SKIN_TYPE_; // default PLAIN
+			///*OPTIONAL*/ //this.skinType = Skin.; // default PLAIN
 			///*OPTIONAL*/ //this.skinDesc = "skinDesc"; // default "skin" if this.skinType is not set, else Appearance.DEFAULT_SKIN_DESCS[skinType]
 			///*OPTIONAL*/ //this.skinAdj = "skinAdj"; // default ""
 

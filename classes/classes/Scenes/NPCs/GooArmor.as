@@ -1,6 +1,7 @@
 package classes.Scenes.NPCs
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Scenes.Areas.Lake.GooGirl;
 	import classes.internals.*;
@@ -113,8 +114,8 @@ package classes.Scenes.NPCs
 			this.hipRating = HIP_RATING_AMPLE+2;
 			this.buttRating = BUTT_RATING_LARGE;
 			this.skinTone = "blue";
-			this.skinType = SKIN_TYPE_GOO;
-			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[SKIN_TYPE_GOO];
+			this.skinType = Skin.GOO;
+			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.GOO];
 			this.skinAdj = "goopey";
 			this.hairColor = "black";
 			this.hairLength = 15;
