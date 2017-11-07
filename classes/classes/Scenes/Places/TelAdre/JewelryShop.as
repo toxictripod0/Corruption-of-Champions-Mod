@@ -6,7 +6,7 @@ import classes.ItemType;
  * @ContentAuthor Starglider
  */
 public class JewelryShop extends Shop {
-    public static var firstEntry:Boolean = true;
+    private var firstEntry:Boolean = true;
 
     public function JewelryShop() {
     }
