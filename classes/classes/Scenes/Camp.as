@@ -1086,72 +1086,103 @@ public function campLoversMenu(descOnly:Boolean = false):void {
 		addButton(5, "Kiha", kihaScene.encounterKiha);
 	}
 	//MARBLE
-	if (player.hasStatusEffect(StatusEffects.CampMarble) && flags[kFLAGS.FOLLOWER_AT_FARM_MARBLE] == 0) {
+	if (player.hasStatusEffect(StatusEffects.CampMarble) && flags[kFLAGS.FOLLOWER_AT_FARM_MARBLE] === 0) {
 		temp = rand(5);
 		outputText("A second bedroll rests next to yours; a large two handed hammer sometimes rests against it, depending on whether or not its owner needs it at the time.  ");
 		//Normal Murbles
-		if (flags[kFLAGS.MARBLE_PURIFICATION_STAGE] == 4) outputText("Marble isn’t here right now; she’s still off to see her family.");
+		if (flags[kFLAGS.MARBLE_PURIFICATION_STAGE] === 4) {
+			outputText("Marble isn’t here right now; she’s still off to see her family.");
+		}
 		//requires at least 1 kid, time is just before sunset, this scene always happens at this time if the PC has at least one kid.
-		else if (flags[kFLAGS.MARBLE_KIDS] >= 1 && (model.time.hours == 19 || model.time.hours == 20)) {
+		else if (flags[kFLAGS.MARBLE_KIDS] >= 1 && (model.time.hours === 19 || model.time.hours === 20)) {
 			outputText("Marble herself is currently in the nursery, putting your ");
-			if (flags[kFLAGS.MARBLE_KIDS] == 1) outputText("child");
-			else outputText("children");
+			
+			if (flags[kFLAGS.MARBLE_KIDS] == 1) {
+				outputText("child");
+			} else {
+				outputText("children");
+			}
+			
 			outputText(" to bed.");
 		}
 		//at 6-7 in the morning, scene always displays at this time
-		else if (model.time.hours == 6 || model.time.hours == 7) outputText("Marble is off in an open area to the side of your camp right now.  She is practicing with her large hammer, going through her daily training.");
+		else if (model.time.hours === 6 || model.time.hours === 7) {
+			outputText("Marble is off in an open area to the side of your camp right now.  She is practicing with her large hammer, going through her daily training.");
+		}
 		//after nightfall, scene always displays at this time unless PC is wormed
 		else if (model.time.hours >= 21 && !player.hasStatusEffect(StatusEffects.Infested)) {
 			outputText("Marble is hanging around her bedroll waiting for you to come to bed.  However, sometimes she lies down for a bit, and sometimes she paces next to it.");
-			if (flags[kFLAGS.MARBLE_LUST] > 30) outputText("  She seems to be feeling antsy.");
+			
+			if (flags[kFLAGS.MARBLE_LUST] > 30) {
+				outputText("  She seems to be feeling antsy.");
+			}
 		}
 		else if (flags[kFLAGS.MARBLE_KIDS] > 0 && model.time.hours < 19 && model.time.hours > 7) {
 			//requires at least 6 kids, and no other parental characters in camp
-			if (rand(2) == 0 && flags[kFLAGS.MARBLE_KIDS] > 5) outputText("Marble is currently tending to your kids, but she looks a bit stressed out right now.  It looks like " + num2Text(flags[kFLAGS.MARBLE_KIDS]) + " might just be too many for her to handle on her own...");
+			if (rand(2) === 0 && flags[kFLAGS.MARBLE_KIDS] > 5) {
+				outputText("Marble is currently tending to your kids, but she looks a bit stressed out right now.  It looks like " + num2Text(flags[kFLAGS.MARBLE_KIDS]) + " might just be too many for her to handle on her own...");
+			}
 			//requires at least 4 kids
-			else if (rand(3) == 0 && flags[kFLAGS.MARBLE_KIDS] > 3) outputText("Marble herself is in the camp right now, telling a story about her travels around the world to her kids as they gather around her.  The children are completely enthralled by her words.  You can't help but smile.");
+			else if (rand(3) === 0 && flags[kFLAGS.MARBLE_KIDS] > 3) {
+				outputText("Marble herself is in the camp right now, telling a story about her travels around the world to her kids as they gather around her.  The children are completely enthralled by her words.  You can't help but smile.");
+			}
 			//Requires 2 boys
-			else if (rand(3) == 0 && flags[kFLAGS.MARBLE_BOYS] > 1)
+			else if (rand(3) === 0 && flags[kFLAGS.MARBLE_BOYS] > 1)
 			{
 				outputText("Marble herself is currently refereeing a wrestling match between two of your sons.  It seems like it's a contest to see which one of them gets to go for a ride between her breasts in a game of <i>Bull Blasters</i>, while the loser has to sit on her shoulders.");
 			}
 			//requires at least 2 kids
-			else if (rand(3) == 0 && flags[kFLAGS.MARBLE_KIDS] - flags[kFLAGS.MARBLE_BOYS] > 1) outputText("Marble herself is involved in a play fight with two of your kids brandishing small sticks.  It seems that the <i>mommy monster</i> is terrorising the camp and needs to be stopped by the <i>Mighty Moo and her sidekick Bovine Lass</i>.");
-			else if (rand(3) == 0 && flags[kFLAGS.MARBLE_KIDS] > 1) outputText("Marble herself is out right now; she's taken her kids to go visit Whitney.  You're sure though that she'll be back within the hour, so you could just wait if you needed her.");
-			else {
+			else if (rand(3) === 0 && flags[kFLAGS.MARBLE_KIDS] - flags[kFLAGS.MARBLE_BOYS] > 1) {
+				outputText("Marble herself is involved in a play fight with two of your kids brandishing small sticks.  It seems that the <i>mommy monster</i> is terrorising the camp and needs to be stopped by the <i>Mighty Moo and her sidekick Bovine Lass</i>.");
+			} else if (rand(3) === 0 && flags[kFLAGS.MARBLE_KIDS] > 1) {
+				outputText("Marble herself is out right now; she's taken her kids to go visit Whitney.  You're sure though that she'll be back within the hour, so you could just wait if you needed her.");
+			} else {
 				//requires at least 1 kid
-				if (rand(2) == 0) 
+				if (rand(2) === 0) 
 				{
 					outputText("Marble herself is nursing ");
-					if (flags[kFLAGS.MARBLE_KIDS] > 1) outputText("one of your cow-girl children");
-					else outputText("your cow-girl child");
+					if (flags[kFLAGS.MARBLE_KIDS] > 1) {
+						outputText("one of your cow-girl children");
+					} else {
+						outputText("your cow-girl child");
+					}
+					
 					outputText(" with a content look on her face.");
 				}
 				else 
 				{
 					outputText("Marble herself is watching your kid");
-					if (flags[kFLAGS.MARBLE_KIDS] > 0) outputText("s");
+					
+					if (flags[kFLAGS.MARBLE_KIDS] > 0) {
+						outputText("s");
+					}
+					
 					outputText(" playing around the camp right now.");
 				}
 			}
 		}
 		//(Choose one of these at random to display each hour)
-		else if (temp == 0) outputText("Marble herself has gone off to Whitney's farm to get milked right now.");
-		else if (temp == 1) outputText("Marble herself has gone off to Whitney's farm to do some chores right now.");
-		else if (temp == 2) outputText("Marble herself isn't at the camp right now; she is probably off getting supplies, though she'll be back soon enough.");
-		else if (temp == 3) {
+		else if (temp == 0) {
+			outputText("Marble herself has gone off to Whitney's farm to get milked right now.");
+		} else if (temp == 1) {
+			outputText("Marble herself has gone off to Whitney's farm to do some chores right now.");
+		} else if (temp == 2) {
+			outputText("Marble herself isn't at the camp right now; she is probably off getting supplies, though she'll be back soon enough.");
+		} else if (temp == 3) {
 			outputText("Marble herself is resting on her bedroll right now.");
-		}
-		else if (temp == 4) {
+		} else if (temp == 4) {
 			outputText("Marble herself is wandering around the camp right now.");
 		}
+		
 		if (temp < 3) {
 			outputText("  You're sure she'd be back in moments if you needed her.");
 		}
 		//Out getting family
 		//else outputText("Marble is out in the wilderness right now, searching for a relative.");
 		outputText("\n\n");
-		if (flags[kFLAGS.MARBLE_PURIFICATION_STAGE] != 4) addButton(6, "Marble", marbleScene.interactWithMarbleAtCamp).hint("Go to Marble the cowgirl for talk and companionship.");
+		if (flags[kFLAGS.MARBLE_PURIFICATION_STAGE] !== 4) {
+			addButton(6, "Marble", marbleScene.interactWithMarbleAtCamp).hint("Go to Marble the cowgirl for talk and companionship.");
+		}
 	}
 	//Nieve
 	if (flags[kFLAGS.NIEVE_STAGE] == 5) {
@@ -2106,23 +2137,57 @@ public function places():Boolean {
 	//}
 	//Build menu
 	menu();
-	if (flags[kFLAGS.BAZAAR_ENTERED] > 0) addButton(0, "Bazaar", kGAMECLASS.bazaar.enterTheBazaar).hint("Visit the Bizarre Bazaar where the demons and corrupted beings hang out.");
-	if (player.hasStatusEffect(StatusEffects.BoatDiscovery)) addButton(1, "Boat", kGAMECLASS.boat.boatExplore).hint("Get on the boat and explore the lake. \n\nRecommended level: 4");
-	if (flags[kFLAGS.FOUND_CATHEDRAL] > 0) {
-		if (flags[kFLAGS.GAR_NAME] == 0) addButton(2, "Cathedral", kGAMECLASS.gargoyle.gargoylesTheShowNowOnWBNetwork).hint("Visit the ruined cathedral you've recently discovered.");
-		else addButton(2, "Cathedral", kGAMECLASS.gargoyle.returnToCathedral).hint("Visit the ruined cathedral where " + flags[kFLAGS.GAR_NAME] + " resides.");
+	if (flags[kFLAGS.BAZAAR_ENTERED] > 0) {
+		addButton(0, "Bazaar", kGAMECLASS.bazaar.enterTheBazaar).hint("Visit the Bizarre Bazaar where the demons and corrupted beings hang out.");
 	}
-	if (dungeonFound()) addButton(3, "Dungeons", dungeons).hint("Delve into dungeons.");
 	
-	if (farmFound()) addButton(5, "Farm", kGAMECLASS.farm.farmExploreEncounter).hint("Visit Whitney's farm.");
-	if (flags[kFLAGS.OWCA_UNLOCKED] == 1) addButton(6, "Owca", kGAMECLASS.owca.gangbangVillageStuff).hint("Visit the sheep village of Owca, known for its pit where a person is hung on the pole weekly to be gang-raped by the demons.");
-	if (flags[kFLAGS.MET_MINERVA] >= 4) addButton(7, "Oasis Tower", kGAMECLASS.highMountains.minervaScene.encounterMinerva).hint("Visit the ruined tower in the high mountains where Minerva resides.");
-	if (player.hasStatusEffect(StatusEffects.HairdresserMeeting)) addButton(8, "Salon", kGAMECLASS.mountain.salon.salonGreeting).hint("Visit the salon for hair services.");
+	if (player.hasStatusEffect(StatusEffects.BoatDiscovery)) {
+		addButton(1, "Boat", kGAMECLASS.boat.boatExplore).hint("Get on the boat and explore the lake. \n\nRecommended level: 4");
+	}
 	
-	if (player.statusEffectv1(StatusEffects.TelAdre) >= 1) addButton(10, "Tel'Adre", kGAMECLASS.telAdre.telAdreMenu).hint("Visit the city of Tel'Adre in desert, easily recognized by the massive tower.");
-	if (flags[kFLAGS.AMILY_VILLAGE_ACCESSIBLE] > 0) addButton(11, "Town Ruins", kGAMECLASS.townRuins.exploreVillageRuin).hint("Visit the village ruins.");
-	if (flags[kFLAGS.PRISON_CAPTURE_COUNTER] > 0) addButton(12, "Prison", kGAMECLASS.prison.prisonIntro, false, null, null, "Return to the prison and continue your life as Elly's slave.");
-	if (debug) addButton(13, "Ingnam", kGAMECLASS.ingnam.returnToIngnam).hint("Return to Ingnam for debugging purposes. Night-time event weirdness might occur. You have been warned!");
+	if (flags[kFLAGS.FOUND_CATHEDRAL] > 0) {
+		if (flags[kFLAGS.GAR_NAME] === 0) {
+			addButton(2, "Cathedral", kGAMECLASS.gargoyle.gargoylesTheShowNowOnWBNetwork).hint("Visit the ruined cathedral you've recently discovered.");
+		} else {
+			addButton(2, "Cathedral", kGAMECLASS.gargoyle.returnToCathedral).hint("Visit the ruined cathedral where " + flags[kFLAGS.GAR_NAME] + " resides.");
+		}
+	}
+	
+	if (dungeonFound()) {
+		addButton(3, "Dungeons", dungeons).hint("Delve into dungeons.");
+	}
+	
+	if (farmFound()) {
+		addButton(5, "Farm", kGAMECLASS.farm.farmExploreEncounter).hint("Visit Whitney's farm.");
+	}
+	
+	if (flags[kFLAGS.OWCA_UNLOCKED] === 1) {
+		addButton(6, "Owca", kGAMECLASS.owca.gangbangVillageStuff).hint("Visit the sheep village of Owca, known for its pit where a person is hung on the pole weekly to be gang-raped by the demons.");
+	}
+	
+	if (flags[kFLAGS.MET_MINERVA] >= 4) {
+		addButton(7, "Oasis Tower", kGAMECLASS.highMountains.minervaScene.encounterMinerva).hint("Visit the ruined tower in the high mountains where Minerva resides.");
+	}
+	
+	if (player.hasStatusEffect(StatusEffects.HairdresserMeeting)) {
+		addButton(8, "Salon", kGAMECLASS.mountain.salon.salonGreeting).hint("Visit the salon for hair services.");
+	}
+	
+	if (player.statusEffectv1(StatusEffects.TelAdre) >= 1) {
+		addButton(10, "Tel'Adre", kGAMECLASS.telAdre.telAdreMenu).hint("Visit the city of Tel'Adre in desert, easily recognized by the massive tower.");
+	}
+	
+	if (flags[kFLAGS.AMILY_VILLAGE_ACCESSIBLE] > 0) {
+		addButton(11, "Town Ruins", kGAMECLASS.townRuins.exploreVillageRuin).hint("Visit the village ruins.");
+	}
+	
+	if (flags[kFLAGS.PRISON_CAPTURE_COUNTER] > 0) {
+		addButton(12, "Prison", kGAMECLASS.prison.prisonIntro, false, null, null, "Return to the prison and continue your life as Elly's slave.");
+	}
+	
+	if (debug) {
+		addButton(13, "Ingnam", kGAMECLASS.ingnam.returnToIngnam).hint("Return to Ingnam for debugging purposes. Night-time event weirdness might occur. You have been warned!");
+	}
 	
 	//addButton(4, "Next", placesPage2);
 	addButton(14, "Back", playerMenu);

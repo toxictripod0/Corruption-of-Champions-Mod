@@ -3408,7 +3408,10 @@ import mx.logging.ILogger;
 
 		public function breastCup(rowNum:Number):String
 		{
-			if (rowNum == -1) rowNum = this.breastRows.length == 0 ? 0 : this.breastRows.length - 1;
+			if (rowNum === -1) {
+				rowNum = this.breastRows.length === 0 ? 0 : this.breastRows.length - 1;
+			}
+			
 			return Appearance.breastCup(breastRows[rowNum].breastRating);
 		}
 
@@ -3700,7 +3703,10 @@ import mx.logging.ILogger;
 		
 		public function nippleDescript(rowIdx:int):String
 		{
-			if (rowIdx == -1) rowIdx = this.breastRows.length - 1;
+			if (rowIdx === -1) {
+				rowIdx = this.breastRows.length - 1;
+			}
+			
 			return Appearance.nippleDescription(this, rowIdx);
 		}
 
@@ -3866,16 +3872,21 @@ import mx.logging.ILogger;
 
 		public function breastDescript(rowNum:int):String
 		{
-			if (rowNum == -1) rowNum = breastRows.length - 1;
+			if (rowNum === -1) {
+				rowNum = breastRows.length - 1;
+			}
+			
 			//ERROR PREVENTION
 			if (breastRows.length - 1 < rowNum) {
 				CoC_Settings.error("");
 				return "<b>ERROR, breastDescript() working with invalid breastRow</b>";
 			}
-			if (breastRows.length == 0) {
+			
+			if (breastRows.length === 0) {
 				CoC_Settings.error("");
 				return "<b>ERROR, breastDescript() called when no breasts are present.</b>";
 			}
+			
 			return BreastStore.breastDescript(breastRows[rowNum].breastRating, breastRows[rowNum].lactationMultiplier);
 		}
 

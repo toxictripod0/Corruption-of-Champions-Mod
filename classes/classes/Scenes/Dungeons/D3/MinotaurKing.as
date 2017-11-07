@@ -149,15 +149,16 @@ package classes.Scenes.Dungeons.D3
 			outputText("Feinting with his axe, the Minotaur King flings a powerful backhand in your direction.");
 			var damage:Number = str + weaponAttack - rand(player.tou);
 			var evade:String = player.getEvasionReason();
-			if (damage <= 0 || evade == EVASION_SPEED || evade == EVASION_FLEXIBILITY || evade == EVASION_UNHINDERED)
+			
+			if (damage <= 0 || evade === EVASION_SPEED || evade === EVASION_FLEXIBILITY || evade === EVASION_UNHINDERED)
 			{
 				outputText(" Luckily, you dodge aside.");
 			}
-			else if (evade == EVASION_EVADE)
+			else if (evade === EVASION_EVADE)
 			{
 				outputText(" Luckily, you evade.");
 			}
-			else if (evade == EVASION_MISDIRECTION)
+			else if (evade === EVASION_MISDIRECTION)
 			{
 				outputText(" Luckily, you misdirect his attack.");
 			}

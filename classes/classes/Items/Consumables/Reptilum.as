@@ -224,7 +224,7 @@ package classes.Items.Consumables
 				}
 			}
 			//-Remove extra breast rows 
-			if (changes < changeLimit && player.breastRows.length > 1 && rand(3) == 0 && !flags[kFLAGS.HYPER_HAPPY]) { 
+			if (changes < changeLimit && player.breastRows.length > 1 && rand(3) === 0 && !flags[kFLAGS.HYPER_HAPPY]) { 
 				mutations.removeExtraBreastRow(tfSource); 
 			} 
 			//-VAGs
