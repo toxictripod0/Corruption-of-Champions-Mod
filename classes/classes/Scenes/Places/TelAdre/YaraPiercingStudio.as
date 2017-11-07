@@ -4,18 +4,20 @@ import classes.PerkLib;
 import classes.StatusEffects;
 
 public class YaraPiercingStudio extends TelAdreAbstractContent {
+	//TODO move to own classes?
+	
     /**
      * 3 variables that define bonuses for piercing.
      */
-    public const LOC_CLIT:int    = 0;
-    public const LOC_DICK:int    = 1;
-    public const LOC_EARS:int    = 2;
-    public const LOC_EYEBROW:int = 3;
-    public const LOC_LIP:int     = 4;
-    public const LOC_NIPPLES:int = 5;
-    public const LOC_NOSE:int    = 6;
-    public const LOC_TONGUE:int  = 7;
-    public const LOC_VULVA:int   = 8;
+    public static const LOC_CLIT:int    = 0;
+    public static const LOC_DICK:int    = 1;
+    public static const LOC_EARS:int    = 2;
+    public static const LOC_EYEBROW:int = 3;
+    public static const LOC_LIP:int     = 4;
+    public static const LOC_NIPPLES:int = 5;
+    public static const LOC_NOSE:int    = 6;
+    public static const LOC_TONGUE:int  = 7;
+    public static const LOC_VULVA:int   = 8;
 
     //{region PiercingVariables
 
@@ -27,20 +29,20 @@ public class YaraPiercingStudio extends TelAdreAbstractContent {
     //5) **Nipples (+1 sens, +1 lib)
     //6) **Nose (+.5 attack)
     //7) **Tongue (+1 sens)
-    public const MAT_AMETHYST:int  = 1;
-    public const MAT_DIAMOND:int   = 2;
-    public const MAT_GOLD:int      = 3;
-    public const MAT_EMERALD:int   = 4;
-    public const MAT_JADE:int      = 5;
-    public const MAT_ONYX:int      = 6;
-    public const MAT_RUBY:int      = 7;
-    public const MAT_STEEL:int     = 8;
-    public const MAT_LETHITE:int   = 9;
-    public const MAT_FERRITE:int   = 10;
-    public const MAT_FURRITE:int   = 11;
-    public const MAT_CRIMSTONE:int = 12;
-    public const MAT_ICESTONE:int  = 13;
-    public const TYPE_NONE:int   = 0;
+    public static const MAT_AMETHYST:int  = 1;
+    public static const MAT_DIAMOND:int   = 2;
+    public static const MAT_GOLD:int      = 3;
+    public static const MAT_EMERALD:int   = 4;
+    public static const MAT_JADE:int      = 5;
+    public static const MAT_ONYX:int      = 6;
+    public static const MAT_RUBY:int      = 7;
+    public static const MAT_STEEL:int     = 8;
+    public static const MAT_LETHITE:int   = 9;
+    public static const MAT_FERRITE:int   = 10;
+    public static const MAT_FURRITE:int   = 11;
+    public static const MAT_CRIMSTONE:int = 12;
+    public static const MAT_ICESTONE:int  = 13;
+    public static const TYPE_NONE:int   = 0;
     //1. Amethyst (+1 int, +1 lib)
     //2. Diamond (+2 int, -1 cor)
     //3. Gold (+1 int, +1 sens)
@@ -54,11 +56,11 @@ public class YaraPiercingStudio extends TelAdreAbstractContent {
     //11. Furrite (Attracts Furries)
     //12. Crimstone - + min lust
     //13. Icestone (-Min Lust)
-    public const TYPE_STUD:int   = 1;
-    public const TYPE_RING:int   = 2;
-    public const TYPE_LADDER:int = 3;
-    public const TYPE_HOOP:int   = 4;
-    public const TYPE_CHAIN:int  = 5;
+    public static const TYPE_STUD:int   = 1;
+    public static const TYPE_RING:int   = 2;
+    public static const TYPE_LADDER:int = 3;
+    public static const TYPE_HOOP:int   = 4;
+    public static const TYPE_CHAIN:int  = 5;
 
     //}endregion
     public function YaraPiercingStudio() {
