@@ -3,6 +3,7 @@ package classes.Items.Consumables
 	import classes.Appearance;
 	import classes.BodyParts.*;
 	import classes.CockTypesEnum;
+	import classes.Gender;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Items.Consumable;
@@ -81,7 +82,7 @@ package classes.Items.Consumables
 				outputText("\n\nA knot of fire in your gut doubles you over but passes after a few moments. As you straighten you can feel the heat"
 				          +" seeping into you, ");
 				//(DICK)
-				if (player.cocks.length > 0 && (player.gender != GENDER_HERM || rand(2) == 0)) {
+				if (player.cocks.length > 0 && (player.gender != Gender.HERM || rand(2) == 0)) {
 					outputText("filling [if (cocks > 1)each of] your [cocks] with the desire to breed. You get a bit hornier when you realize your"
 					          +" sex-drive has gotten a boost.");
 				}

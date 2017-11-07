@@ -4,12 +4,6 @@
 
 // Description constants
 
-// gender
-public static const GENDER_NONE:int                                                 =    0;
-public static const GENDER_MALE:int                                                 =    1;
-public static const GENDER_FEMALE:int                                               =    2;
-public static const GENDER_HERM:int                                                 =    3;
-
 // beardType
 public static const BEARD_NORMAL:int                                               =     0;
 public static const BEARD_GOATEE:int                                               =     1;

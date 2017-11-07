@@ -21,19 +21,19 @@ package classes.Scenes.Areas.HighMountains
 		
 		private function playerParentDesc(caps:Boolean = false):String {
 			switch(player.gender) {
-				case GENDER_NONE:
+				case Gender.NONE:
 					if (caps) return player.mf("Mommy", "Daddy");
 					else return player.mf("mommy", "daddy");
 					break;
-				case GENDER_MALE:
+				case Gender.MALE:
 					if (caps) return "Daddy";
 					else return "daddy";
 					break;
-				case GENDER_FEMALE:
+				case Gender.FEMALE:
 					if (caps) return "Mommy";
 					else return "mommy";
 					break;
-				case GENDER_HERM: //A bit wonky. I should consider the maleherms.
+				case Gender.HERM: //A bit wonky. I should consider the maleherms.
 					if (caps) return "Mommy-Daddy";
 					else return "mommy-daddy";
 					break;

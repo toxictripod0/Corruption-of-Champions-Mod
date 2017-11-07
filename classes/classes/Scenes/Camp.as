@@ -774,7 +774,7 @@ private function doCamp():void { //Only called by playerMenu
 	//Unlock something in character creation.
 	if (flags[kFLAGS.NEW_GAME_PLUS_BONUS_UNLOCKED_HERM] == 0)
 	{
-		if (player.gender == GENDER_HERM)
+		if (player.gender == Gender.HERM)
 		{
 			flags[kFLAGS.NEW_GAME_PLUS_BONUS_UNLOCKED_HERM] = 1;
 			outputText("\n\n<b>Congratulations! You have unlocked hermaphrodite option on character creation, accessible from New Game Plus!</b>");

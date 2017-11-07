@@ -1312,7 +1312,7 @@ import fl.controls.ComboBox;
 			outputText("The walk to the tainted cave is long and silent.  Elder Nomur does not speak.  There is nothing left to say.  The two of you journey in companionable silence.  Slowly the black rock of Mount Ilgast looms closer and closer, and the temperature of the air drops.  You shiver and glance at the Elder, noticing he doesn't betray any sign of the cold.  Despite his age of nearly 80, he maintains the vigor of a man half his age.  You're glad for his strength, as assisting him across this distance would be draining, and you must save your energy for the trials ahead.\n\n");
 			outputText("The entrance of the cave gapes open, sharp stalactites hanging over the entrance, giving it the appearance of a monstrous mouth.  Elder Nomur stops and nods to you, gesturing for you to proceed alone.\n\n");
 			outputText("The cave is unusually warm and damp, ");
-			if (player.gender == GENDER_FEMALE)
+			if (player.gender == Gender.FEMALE)
 				outputText("and your body seems to feel the same way, flushing as you feel a warmth and dampness between your thighs. ");
 			else outputText("and your body reacts with a sense of growing warmth focusing in your groin, your manhood hardening for no apparent reason. ");
 			outputText("You were warned of this and press forward, ignoring your body's growing needs.  A glowing purple-pink portal swirls and flares with demonic light along the back wall.  Cringing, you press forward, keenly aware that your body seems to be anticipating coming in contact with the tainted magical construct.  Closing your eyes, you gather your resolve and leap forwards.  Vertigo overwhelms you and you black out...");
@@ -1327,7 +1327,7 @@ import fl.controls.ComboBox;
 			dynStats("lus", 40, "cor", 2);
 			model.time.hours = 18;
 			outputText("You wake with a splitting headache and a body full of burning desire.  A shadow darkens your view momentarily and your training kicks in.  You roll to the side across the bare ground and leap to your feet.  A surprised looking imp stands a few feet away, holding an empty vial.  He's completely naked, an improbably sized pulsing red cock hanging between his spindly legs.  You flush with desire as a wave of lust washes over you, your mind reeling as you fight ");
-			if (player.gender == GENDER_FEMALE)
+			if (player.gender == Gender.FEMALE)
 				outputText("the urge to chase down his rod and impale yourself on it.\n\n");
 			else
 				outputText("the urge to ram your cock down his throat.  The strangeness of the thought surprises you.\n\n");

@@ -1370,16 +1370,16 @@ package classes.Scenes.Places.Bazaar
 					outputText("\n\nThe wet feeling of cold beer splashing down your [fullChest] and mixing with the semen already there only serves to heightened the pleasure of the synchronized assault on your genitals.");
 				}
 				switch(player.gender) {
-					case GENDER_NONE:
+					case Gender.NONE:
 						outputText("\n\nThe hard pounding of your asshole is getting to you and soon you're trembling as you finally feel that sweet sensation of release.");
 						break;
-					case GENDER_MALE:
+					case Gender.MALE:
 						outputText("\n\nThe pounding of your [asshole] and the hard riding of [eachCock] proves to be too much and soon you've erupted and each satyr fucking and being fucked by you responds by releasing his own seed, painting your chest, innards and throat with a white hot load.");
 						break;
-					case GENDER_FEMALE:
+					case Gender.FEMALE:
 						outputText("\n\nYou begin to tremble as every dick inside you slams in to the hilt and unloads. The hot wet gushing feeling spreading inside your [asshole], your [pussy] and throat send you over the edge as your [pussy] spurts around the dick pressing forward and unloading its corrupt baby batter into your womb.");
 						break;
-					case GENDER_HERM:
+					case Gender.HERM:
 						outputText("\n\nYou begin to tremble as every dick inside you slams in to the hilt and unloads. The hot wet gushing feeling spreading inside your [asshole], your [pussy] and throat sends you over the edge as [eachCock] swells and explodes. Your [pussy] spurts around the dick pressing forward and still unloading its hot corrupt baby batter into your womb.");
 						break;
 					default:
@@ -2072,7 +2072,7 @@ package classes.Scenes.Places.Bazaar
 				outputText(" A bit of milky pre dribbles from your " + player.multiCockDescriptLight() + ", pushed out by the change.");
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.gender == GENDER_MALE && player.averageBreastSize() > 2 && flags[kFLAGS.HYPER_HAPPY] == 0) {
+			if (rand(3) == 0 && changes < changeLimit && player.gender == Gender.MALE && player.averageBreastSize() > 2 && flags[kFLAGS.HYPER_HAPPY] == 0) {
 				outputText("\n\nYou cup your tits as they begin to tingle strangely. You can actually feel them getting smaller in your hands!");
 				player.shrinkTits();
 				changes++;

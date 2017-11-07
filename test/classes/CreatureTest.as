@@ -548,19 +548,19 @@ package classes{
 		
 		[Test]
 		public function noGender():void {
-			assertThat(noVagina.gender, equalTo(GENDER_NONE));
+			assertThat(noVagina.gender, equalTo(Gender.NONE));
 		}
 		
 		[Test]
 		public function genderIsFemale():void {
-			assertThat(oneVagina.gender, equalTo(GENDER_FEMALE));
+			assertThat(oneVagina.gender, equalTo(Gender.FEMALE));
 		}
 		
 		[Test]
 		public function genderIsMale():void {
 			noVagina.createCock(5, 1, CockTypesEnum.HUMAN);
 			
-			assertThat(noVagina.gender, equalTo(GENDER_MALE));
+			assertThat(noVagina.gender, equalTo(Gender.MALE));
 		}
 		
 		[Test]
@@ -568,7 +568,7 @@ package classes{
 			noVagina.createCock(5, 1, CockTypesEnum.HUMAN);
 			noVagina.createVagina();
 			
-			assertThat(noVagina.gender, equalTo(GENDER_HERM));
+			assertThat(noVagina.gender, equalTo(Gender.HERM));
 		}
 		
 		[Test]

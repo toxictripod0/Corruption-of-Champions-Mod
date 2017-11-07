@@ -2164,10 +2164,10 @@ package classes
 		);
 		public static const DEFAULT_GENDER_NAMES:Object = createMapFromPairs(
 				[
-					[GENDER_NONE, "genderless"],
-					[GENDER_MALE, "male"],
-					[GENDER_FEMALE, "female"],
-					[GENDER_HERM, "hermaphrodite"],
+					[Gender.NONE, "genderless"],
+					[Gender.MALE, "male"],
+					[Gender.FEMALE, "female"],
+					[Gender.HERM, "hermaphrodite"],
 				]
 		);
 		public static const DEFAULT_SKIN_NAMES:Object = createMapFromPairs(

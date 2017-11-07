@@ -351,15 +351,15 @@ import mx.logging.ILogger;
 		public function get gender():int
 		{
 			if (hasCock() && hasVagina()) {
-				return GENDER_HERM;
+				return Gender.HERM;
 			}
 			if (hasCock()) {
-				return GENDER_MALE;
+				return Gender.MALE;
 			}
 			if (hasVagina()) {
-				return GENDER_FEMALE;
+				return Gender.FEMALE;
 			}
-			return GENDER_NONE;
+			return Gender.NONE;
 		}
 		private var _tallness:Number = 0;
 		public function get tallness():Number { return _tallness; }
@@ -2571,10 +2571,10 @@ import mx.logging.ILogger;
 		public function maleFemaleHerm(caps:Boolean = false):String
 		{
 			switch (gender) {
-				case GENDER_NONE:   return caps ? mf("Genderless", "Fem-genderless") : mf("genderless", "fem-genderless");
-				case GENDER_MALE:   return caps ? mf("Male", biggestTitSize() > BREAST_CUP_A ? "Shemale" : "Femboy")             : mf("male", biggestTitSize() > BREAST_CUP_A ? "shemale" : "femboy");
-				case GENDER_FEMALE: return caps ? mf("Cuntboy", "Female")            : mf("cuntboy", "female");
-				case GENDER_HERM:   return caps ? mf("Maleherm", "Hermaphrodite")    : mf("maleherm", "hermaphrodite");
+				case Gender.NONE:   return caps ? mf("Genderless", "Fem-genderless") : mf("genderless", "fem-genderless");
+				case Gender.MALE:   return caps ? mf("Male", biggestTitSize() > BREAST_CUP_A ? "Shemale" : "Femboy")             : mf("male", biggestTitSize() > BREAST_CUP_A ? "shemale" : "femboy");
+				case Gender.FEMALE: return caps ? mf("Cuntboy", "Female")            : mf("cuntboy", "female");
+				case Gender.HERM:   return caps ? mf("Maleherm", "Hermaphrodite")    : mf("maleherm", "hermaphrodite");
 				default: return "<b>Gender error!</b>";
 			}
 		}
@@ -2584,7 +2584,7 @@ import mx.logging.ILogger;
 		 */
 		public function isMale():Boolean
 		{
-			return gender == GENDER_MALE;
+			return gender == Gender.MALE;
 		}
 		
 		/**
@@ -2592,7 +2592,7 @@ import mx.logging.ILogger;
 		 */
 		public function isFemale():Boolean
 		{
-			return gender == GENDER_FEMALE;
+			return gender == Gender.FEMALE;
 		}
 		
 		/**
@@ -2600,7 +2600,7 @@ import mx.logging.ILogger;
 		 */
 		public function isHerm():Boolean
 		{
-			return gender == GENDER_HERM;
+			return gender == Gender.HERM;
 		}
 		
 		/**
@@ -2608,7 +2608,7 @@ import mx.logging.ILogger;
 		 */
 		public function isGenderless():Boolean
 		{
-			return gender == GENDER_NONE;
+			return gender == Gender.NONE;
 		}
 
 		/**
@@ -2616,7 +2616,7 @@ import mx.logging.ILogger;
 		 */
 		public function isMaleOrHerm():Boolean
 		{
-			return (gender & GENDER_MALE) != 0;
+			return (gender & Gender.MALE) != 0;
 		}
 
 		/**
@@ -2624,7 +2624,7 @@ import mx.logging.ILogger;
 		 */
 		public function isFemaleOrHerm():Boolean
 		{
-			return (gender & GENDER_FEMALE) != 0;
+			return (gender & Gender.FEMALE) != 0;
 		}
 		
 		//Create a cock. Default type is HUMAN

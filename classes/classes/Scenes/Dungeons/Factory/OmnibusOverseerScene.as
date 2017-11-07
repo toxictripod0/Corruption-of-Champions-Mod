@@ -2,6 +2,7 @@ package classes.Scenes.Dungeons.Factory
 {
 	import classes.BaseContent;
 	import classes.BodyParts.*;
+	import classes.Gender;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.StatusEffects;
 	import classes.PerkLib;
@@ -295,7 +296,7 @@ package classes.Scenes.Dungeons.Factory
 				}		
 			}
 			//Being genderless isn't normal too...
-			if (player.gender == GENDER_NONE) {
+			if (player.gender == Gender.NONE) {
 				if (player.balls > 0 || player.femininity < 35 || rand(3) == 0) {
 					player.createCock();
 					player.cocks[0].cockType = CockTypesEnum.DEMON;

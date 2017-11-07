@@ -552,7 +552,7 @@ package classes.Scenes.NPCs
 				case "goblin":
 					outputText("\"<i>Well, you're a goblin... Sort of. Never knew a goblin who wasn't obsessed with trying to fuck everything in sight.");
 					if (player.hasCock()) outputText(" Never knew a goblin with, like, a cock of her own, either.");
-					if (player.gender == GENDER_FEMALE && !joyHasCock()) outputText(" But I've never, like, heard of a lesbian goblin before.");
+					if (player.gender == Gender.FEMALE && !joyHasCock()) outputText(" But I've never, like, heard of a lesbian goblin before.");
 					outputText("</i>\"");
 					break;
 				case "kitsune":

@@ -545,7 +545,7 @@
 				outputText("Urta shudders and her hands move back to Kath's hips.  “<i>Oh, fuck!  You're not gonna be able to walk after this.</i>”\n\n");
 				outputText("“<i>Promises, promises,</i>” Kath says in a dreamy voice.  She holds her already filled belly and lets Urta do most of the work.  Then Katherine's legs give out, leaving her totally at Urta's mercy as the fox jackhammers her cunt.  You watch Kath cum half a dozen times in a row, her body held in place only by the rock-hard flagpole inside her belly.  With one last burst of energy Urta rams home and you see her balls shrink and pull upward, driving every last drop into Kath's cum crammed belly.\n\n");
 			}
-			outputText("You " + (player.gender == GENDER_NONE ? "rub your featureless groin unhappily, wishing you could have been part of this.  Then you" : "") + "give each of your tired lovers a kiss and tell them to look after each other.  That earns a guilty look from Urta who says, “<i>We can have any kind of sex you want next time " + player.short + " - or maybe you want to stick around and have your fill?</i>”\n\n");
+			outputText("You " + (player.gender == Gender.NONE ? "rub your featureless groin unhappily, wishing you could have been part of this.  Then you" : "") + "give each of your tired lovers a kiss and tell them to look after each other.  That earns a guilty look from Urta who says, “<i>We can have any kind of sex you want next time " + player.short + " - or maybe you want to stick around and have your fill?</i>”\n\n");
 			outputText("Much as you’d like to you have to check on the portal once more, so you just tell them you’re going to take them up on that offer, probably sooner rather than later.");
 			katherine.orgasm();
 			katherine.katherineAndUrtaHadSex(true);
