@@ -119,7 +119,7 @@ package classes.Scenes.NPCs
 			this.skinAdj = "goopey";
 			this.hairColor = "black";
 			this.hairLength = 15;
-			this.hairType = HAIR_GOO;
+			this.hairType = Hair.GOO;
 			initStrTouSpeInte(60, 50, 50, 40);
 			initLibSensCor(60, 35, 50);
 			this.weaponName = "goo sword";

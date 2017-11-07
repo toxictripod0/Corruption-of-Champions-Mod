@@ -711,21 +711,21 @@ import classes.Items.*
 		];
 		*/
 		private static const HAIR_TYPE_CONSTANTS:Array = [
-			[HAIR_NORMAL,"(0) NORMAL"],
-			[HAIR_FEATHER,"(1) FEATHER"],
-			[HAIR_GHOST,"(2) GHOST"],
-			[HAIR_GOO,"(3) GOO"],
-			[HAIR_ANEMONE,"(4) ANEMONE"],
-			[HAIR_QUILL,"(5) QUILL"],
+			[Hair.NORMAL,"(0) NORMAL"],
+			[Hair.FEATHER,"(1) FEATHER"],
+			[Hair.GHOST,"(2) GHOST"],
+			[Hair.GOO,"(3) GOO"],
+			[Hair.ANEMONE,"(4) ANEMONE"],
+			[Hair.QUILL,"(5) QUILL"],
 			/* [INTERMOD: xianxia]
-			[HAIR_GORGON,"(6) GORGON"],
-			[HAIR_LEAF,"(7) LEAF"],
-			[HAIR_FLUFFY,"(8) FLUFFY"],
-			[HAIR_GRASS,"(9) GRASS"],
+			[Hair.GORGON,"(6) GORGON"],
+			[Hair.LEAF,"(7) LEAF"],
+			[Hair.FLUFFY,"(8) FLUFFY"],
+			[Hair.GRASS,"(9) GRASS"],
 			*/
-			[HAIR_BASILISK_SPINES, "(6) BASILISK_SPINES"],
-			[HAIR_BASILISK_PLUME, "(7) BASILISK_PLUME"],
-			[HAIR_WOOL, "(8) WOOL"],
+			[Hair.BASILISK_SPINES, "(6) BASILISK_SPINES"],
+			[Hair.BASILISK_PLUME, "(7) BASILISK_PLUME"],
+			[Hair.WOOL, "(8) WOOL"],
 		];
 		private static const HAIR_COLOR_CONSTANTS:Array = [
 			"blond", "brown", "black", "red", "white",

@@ -328,7 +328,7 @@
 			//// 7. Hair
 			///*OPTIONAL*/ //this.hairColor = ; // default "no"
 			///*OPTIONAL*/ //this.hairLength = ; // default 0
-			///*OPTIONAL*/ //this.hairType = HAIR_; // default NORMAL
+			///*OPTIONAL*/ //this.hairType = Hair.; // default NORMAL
 
 			//// 8. Face
 			///*OPTIONAL*/ //this.faceType = FACE_; // default HUMAN

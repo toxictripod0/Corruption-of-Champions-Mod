@@ -1,5 +1,6 @@
 ﻿package classes.Scenes.Areas.Mountain{
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
@@ -127,15 +128,15 @@ public function salonPurchaseMenu():void {
 	else if (player.femininity > 0 && player.findPerk(PerkLib.Androgyny) >= 0) sandFacialEnabled = true;
 	
 	menu();
-	if (player.hairType != HAIR_BASILISK_SPINES && player.hairLength > 2) addButton(0, "Cut Short", cutShort);
+	if (player.hairType != Hair.BASILISK_SPINES && player.hairLength > 2) addButton(0, "Cut Short", cutShort);
 	else addDisabledButton(0, "Cut Short");
 	if (player.hairLength > 13) addButton(1, "Cut Medium", cutMedium);
 	else addDisabledButton(1, "Cut Medium");
 	if (player.hairLength >= 26) addButton(2, "Cut Long", cutLong);
 	else addDisabledButton(2, "Cut Long");
-	if (player.hairType != HAIR_BASILISK_SPINES && player.hairLength < player.tallness) addButton(3, "Lengthen", hairGrow);
+	if (player.hairType != Hair.BASILISK_SPINES && player.hairLength < player.tallness) addButton(3, "Lengthen", hairGrow);
 	else addDisabledButton(3, "Lengthen");
-	if (player.hairType != HAIR_BASILISK_SPINES && player.hairLength > 0) addButton(4, "Remove Hair", removeHair);
+	if (player.hairType != Hair.BASILISK_SPINES && player.hairLength > 0) addButton(4, "Remove Hair", removeHair);
 	else addDisabledButton(4, "Remove Hair");
 	addButton(5, "Buy Products", dyeMenu);
 	if (flags[kFLAGS.SALON_MINOCUM_UNLOCKED] > 0) addButton(6, "Buy MinoCum", buyMinoCum).hint("Buy a bottle of minotaur cum for 60 gems?");

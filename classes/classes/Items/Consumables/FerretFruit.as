@@ -153,21 +153,21 @@ package classes.Items.Consumables
 			}
 			//	outputText("\n\nYou grit your teeth as a stinging sensation arises in your gills.  Within moments, the sensation passes, and <b>your gills are gone!</b>");
 			//If the PC has tentacle hair:
-			if (player.hairType === HAIR_ANEMONE && rand(4) === 0 && changes < changeLimit)
+			if (player.hairType === Hair.ANEMONE && rand(4) === 0 && changes < changeLimit)
 			{
 				outputText("\n\nYour head feels strange as the tentacles you have for hair begin to recede back into your scalp, eventually leaving you with a bald head.  Your head is not left bald for long, though.  Within moments, a full head of hair sprouts from the skin of your scalp.  <b>Your hair is normal again!</b>");
 				//Turn hair growth on.
 				flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] = 0;
-				player.hairType = HAIR_NORMAL;
+				player.hairType = Hair.NORMAL;
 				changes++;
 			}
 			//If the PC has goo hair:
-			if (player.hairType === HAIR_GOO && rand(3) === 0 && changes < changeLimit)
+			if (player.hairType === Hair.GOO && rand(3) === 0 && changes < changeLimit)
 			{
 				outputText("\n\nYour gooey hair begins to fall out in globs, eventually leaving you with a bald head.  Your head is not left bald for long, though.  Within moments, a full head of hair sprouts from the skin of your scalp.  <b>Your hair is normal again!</b>");
 				//Turn hair growth on.
 				flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] = 0;
-				player.hairType = HAIR_NORMAL;
+				player.hairType = Hair.NORMAL;
 				changes++;
 			}
 			//If the PC has four eyes:

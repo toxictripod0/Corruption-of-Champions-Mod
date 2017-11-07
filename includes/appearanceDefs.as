@@ -10,17 +10,6 @@ public static const GENDER_MALE:int                                             
 public static const GENDER_FEMALE:int                                               =    2;
 public static const GENDER_HERM:int                                                 =    3;
 
-// hairType
-public static const HAIR_NORMAL:int                                                =     0;
-public static const HAIR_FEATHER:int                                               =     1;
-public static const HAIR_GHOST:int                                                 =     2;
-public static const HAIR_GOO:int                                                   =     3;
-public static const HAIR_ANEMONE:int                                               =     4;
-public static const HAIR_QUILL:int                                                 =     5;
-public static const HAIR_BASILISK_SPINES:int                                       =     6;
-public static const HAIR_BASILISK_PLUME:int                                        =     7;
-public static const HAIR_WOOL:int                                                  =     8;
-
 // beardType
 public static const BEARD_NORMAL:int                                               =     0;
 public static const BEARD_GOATEE:int                                               =     1;

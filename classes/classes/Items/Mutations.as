@@ -2716,7 +2716,7 @@ package classes.Items
 			if (changes < changeLimit && player.hairType == 4 && rand(2) == 0) {
 				//-insert anemone hair removal into them under whatever criteria you like, though hair removal should precede abdomen growth; here's some sample text:
 				outputText("\n\nAs you down the seed, your head begins to feel heavier.  Reaching up, you notice your tentacles becoming soft and somewhat fibrous.  Pulling one down reveals that it feels soft and fluffy, almost feathery; you watch as it dissolves into many thin, feathery strands.  <b>Your hair is now like that of a harpy!</b>");
-				player.hairType = HAIR_FEATHER;
+				player.hairType = Hair.FEATHER;
 				changes++;
 			}
 			//-Strength increase to 70
@@ -2967,9 +2967,9 @@ package classes.Items
 				updateClaws();
 			}
 			//-Feathery Hair
-			if (player.hairType != HAIR_FEATHER && changes < changeLimit && (type == 1 || player.faceType == FACE_HUMAN) && rand(4) == 0) {
+			if (player.hairType != Hair.FEATHER && changes < changeLimit && (type == 1 || player.faceType == FACE_HUMAN) && rand(4) == 0) {
 				outputText("\n\nA tingling starts in your scalp, getting worse and worse until you're itching like mad, the feathery strands of your hair tickling your fingertips while you scratch like a dog itching a flea. When you pull back your hand, you're treated to the sight of downy fluff trailing from your fingernails. A realization dawns on you - you have feathers for hair, just like a harpy!");
-				player.hairType = HAIR_FEATHER;
+				player.hairType = Hair.FEATHER;
 				changes++;
 			}
 			//-Human face
@@ -3608,7 +3608,7 @@ package classes.Items
 			if (changes < changeLimit && player.hairType == 4 && rand(3) == 0) {
 				//-insert anemone hair removal into them under whatever criteria you like, though hair removal should precede abdomen growth; here's some sample text:
 				outputText("\n\nEerie flames of the jewel migrate up your body to your head, where they cover your [hair].  Though they burned nowhere else in their lazy orbit, your head begins to heat up as they congregate.  Fearful, you raise your hands to it just as the temperature peaks, but as you touch your hair, the searing heat is suddenly gone - along with your tentacles!  <b>Your hair is normal again!</b>");
-				player.hairType = HAIR_NORMAL;
+				player.hairType = Hair.NORMAL;
 				changes++;
 			}
 			//[Adjust hair length toward range of 16-26 – very long to ass-length]

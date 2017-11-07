@@ -69,7 +69,7 @@ package classes
 			// HAIR WORDS
 			//
 			switch (i_creature.hairType) {
-				case HAIR_BASILISK_SPINES:
+				case Hair.BASILISK_SPINES:
 					options = [
 						"rubbery spines",
 						"spiny crown",
@@ -77,7 +77,7 @@ package classes
 						"reptilian spines",
 					];
 					return description + randomChoice(options);
-				case HAIR_BASILISK_PLUME:
+				case Hair.BASILISK_PLUME:
 					options = [
 						"feathered hair",
 						"fluffy plume",
@@ -85,7 +85,7 @@ package classes
 						"shock of feathers",
 					];
 					return description + randomChoice(options);
-				case HAIR_WOOL:
+				case Hair.WOOL:
 					options = [
 						"woolen hair",
 						"poofy hair",
@@ -95,16 +95,16 @@ package classes
 					return description + randomChoice(options);
 			}
 			// TODO: Fix the spaghetti-code below to use a switch-case-return and it'll be
-			// case HAIR_GOO: return description + "goo-mane";
+			// case Hair.GOO: return description + "goo-mane";
 			// and so on. (Stadler76)
 			//If furry and longish hair sometimes call it a mane (50%)
 			if (i_creature.hasFur() && i_creature.hairLength > 3 && rand(2) == 0) {
-				if (i_creature.hairType == HAIR_FEATHER) description += "feather-";
-				else if (i_creature.hairType == HAIR_GHOST) description += "transparent ";
-				else if (i_creature.hairType == HAIR_GOO) description += "goo-";
-				else if (i_creature.hairType == HAIR_ANEMONE) description += "tentacle-";
-				else if (i_creature.hairType == HAIR_QUILL) description += "quill-";
-				else if (i_creature.hairType == HAIR_WOOL) description += "wool-";
+				if (i_creature.hairType == Hair.FEATHER) description += "feather-";
+				else if (i_creature.hairType == Hair.GHOST) description += "transparent ";
+				else if (i_creature.hairType == Hair.GOO) description += "goo-";
+				else if (i_creature.hairType == Hair.ANEMONE) description += "tentacle-";
+				else if (i_creature.hairType == Hair.QUILL) description += "quill-";
+				else if (i_creature.hairType == Hair.WOOL) description += "wool-";
 				description += "mane";
 				return description;
 			}
@@ -115,12 +115,12 @@ package classes
 			 return descript;
 			 }*/
 			//If nothing else used, use hair!
-			if (i_creature.hairType == HAIR_FEATHER) description += "feather-";
-			else if (i_creature.hairType == HAIR_GHOST) description += "transparent ";
-			else if (i_creature.hairType == HAIR_GOO) description += "goo-";
-			else if (i_creature.hairType == HAIR_ANEMONE) description += "tentacle-";
-			else if (i_creature.hairType == HAIR_QUILL) description += "quill-";
-			else if (i_creature.hairType == HAIR_WOOL) description += "woolen ";
+			if (i_creature.hairType == Hair.FEATHER) description += "feather-";
+			else if (i_creature.hairType == Hair.GHOST) description += "transparent ";
+			else if (i_creature.hairType == Hair.GOO) description += "goo-";
+			else if (i_creature.hairType == Hair.ANEMONE) description += "tentacle-";
+			else if (i_creature.hairType == Hair.QUILL) description += "quill-";
+			else if (i_creature.hairType == Hair.WOOL) description += "woolen ";
 			description += "hair";
 
 			return description;
@@ -2197,15 +2197,15 @@ package classes
 		);
 		public static const DEFAULT_HAIR_NAMES:Object = createMapFromPairs(
 				[
-					[HAIR_NORMAL, "normal"],
-					[HAIR_FEATHER, "feather"],
-					[HAIR_GHOST, "transparent"],
-					[HAIR_GOO, "goopy"],
-					[HAIR_ANEMONE, "tentacle"],
-					[HAIR_QUILL, "quill"],
-					[HAIR_BASILISK_SPINES, "spiny basilisk"],
-					[HAIR_BASILISK_PLUME, "feathery plume"],
-					[HAIR_WOOL, "woolen"],
+					[Hair.NORMAL, "normal"],
+					[Hair.FEATHER, "feather"],
+					[Hair.GHOST, "transparent"],
+					[Hair.GOO, "goopy"],
+					[Hair.ANEMONE, "tentacle"],
+					[Hair.QUILL, "quill"],
+					[Hair.BASILISK_SPINES, "spiny basilisk"],
+					[Hair.BASILISK_PLUME, "feathery plume"],
+					[Hair.WOOL, "woolen"],
 				]
 		);
 		public static const DEFAULT_BEARD_NAMES:Object = createMapFromPairs(

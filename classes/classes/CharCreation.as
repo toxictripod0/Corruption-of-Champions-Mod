@@ -240,7 +240,7 @@ import fl.controls.ComboBox;
 			player.skinTone = "light";
 			player.clawTone = "";
 			player.hairColor = "brown";
-			player.hairType = HAIR_NORMAL;
+			player.hairType = Hair.NORMAL;
 			player.beardLength = 0;
 			player.beardStyle = 0;
 			//Exploration

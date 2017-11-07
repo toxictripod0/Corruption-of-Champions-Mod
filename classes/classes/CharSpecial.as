@@ -1615,7 +1615,7 @@ package classes
 			player.skinAdj = "fluffy";
 			player.skinTone = "light";
 			player.hairColor = "snow white";
-			player.hairType = HAIR_ANEMONE; flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] = 1; // tentacle hair... never can have enough tentacles!
+			player.hairType = Hair.ANEMONE; flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] = 1; // tentacle hair... never can have enough tentacles!
 			player.hairLength = 42; // obscenely long, you still can use ext serum to get more, but they would drag the floor, and this wouldn't be pleasant
 			player.femininity = 55; // androgynous
 			player.beardLength = 0;
@@ -1911,8 +1911,8 @@ package classes
 			
 			
 			// 90% to have normal hair, even chances to have feathers, anemone or goo otherwise
-			if (rand(100) < 90)	player.hairType = HAIR_NORMAL;
-			else player.hairType = randomChoice(HAIR_FEATHER, HAIR_GOO, HAIR_ANEMONE);
+			if (rand(100) < 90)	player.hairType = Hair.NORMAL;
+			else player.hairType = randomChoice(Hair.FEATHER, Hair.GOO, Hair.ANEMONE);
 			
 			// wizard staff and modest robes
 			player.setWeapon(weapons.W_STAFF);

@@ -36,7 +36,7 @@ package classes.Items.Consumables
 			player.lib = 25;
 			player.cor = 5;
 			player.lust = 10;
-			player.hairType = HAIR_NORMAL;
+			player.hairType = Hair.NORMAL;
 			if (player.humanScore() > 4) {
 				outputText("\n\nYou blink and the world twists around you.  You feel more like yourself than you have in a while, but exactly how isn't immediately apparent.  Maybe you should take a look at yourself?");
 			}

@@ -1675,23 +1675,23 @@ package classes.Scenes.Places.Bazaar
 				mutations.removeAntennae();
 			}
 			//Hair turns back to normal
-			if (rand(4) == 0 && changes < changeLimit && player.hairType != HAIR_NORMAL) {
+			if (rand(4) == 0 && changes < changeLimit && player.hairType != Hair.NORMAL) {
 				switch(player.hairType) {
-					case HAIR_FEATHER:
+					case Hair.FEATHER:
 						if (player.hairLength >= 6) outputText("\n\nA lock of your downy-soft feather-hair droops over your eye. Before you can blow the offending down away, you realize the feather is collapsing in on itself. It continues to curl inward until all that remains is a normal strand of hair. <b>Your hair is no longer feathery!</b>");
 						else outputText("\n\nYou run your fingers through your downy-soft feather-hair while you await the effects of the item you just ingested. While your hand is up there, it detects a change in the texture of your feathers. They're completely disappearing, merging down into strands of regular hair. <b>Your hair is no longer feathery!</b>");
 						break;
-					case HAIR_GOO:
+					case Hair.GOO:
 						outputText("\n\nYour gooey hair begins to fall out in globs, eventually leaving you with a bald head. Your head is not left bald for long, though. Within moments, a full head of hair sprouts from the skin of your scalp. <b>Your hair is normal again!</b>");
 						break;
-					case HAIR_GHOST:
+					case Hair.GHOST:
 						break;
-					case HAIR_ANEMONE:
+					case Hair.ANEMONE:
 						outputText("\n\nYou feel something strange going in on your head. You reach your hands up to feel your tentacle-hair, only to find out that the tentacles have vanished and replaced with normal hair. <b>Your hair is normal again!</b>");
 						break;
 				}
 				changes++;
-				player.hairType = HAIR_NORMAL;
+				player.hairType = Hair.NORMAL;
 				flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] = 0;
 			}
 			//Restart hair growth
@@ -1867,9 +1867,9 @@ package classes.Scenes.Places.Bazaar
 			
 			// Normal TFs
 			//------------
-			if (rand(4) == 0 && changes < changeLimit && player.hairType != HAIR_NORMAL && player.hairType != HAIR_QUILL) {
+			if (rand(4) == 0 && changes < changeLimit && player.hairType != Hair.NORMAL && player.hairType != Hair.QUILL) {
 				outputText("\n\nYour scalp feels really strange, but the sensation is brief. You feel your hair, and you immediately notice the change. <b>It would seem that your hair is normal again!</b>");
-				player.hairType = HAIR_NORMAL;
+				player.hairType = Hair.NORMAL;
 				changes++;
 			}
 			if (rand(4) == 0 && changes < changeLimit && player.armType == Arms.HARPY) {
@@ -2038,9 +2038,9 @@ package classes.Scenes.Places.Bazaar
 				changes++;
 			}
 			//Gain quill hair
-			if (rand(4) == 0 && changes < changeLimit && flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] == 1 && player.hairType == HAIR_NORMAL) {
+			if (rand(4) == 0 && changes < changeLimit && flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] == 1 && player.hairType == Hair.NORMAL) {
 				outputText("\n\nYour scalp begins to tingle as your hair falls out in clumps, leaving you with a bald head. You aren’t bald for long, though. An uncomfortable pressure racks the entirety of your scalp as hard quills begin to sprout from your hair pores. Their growth stops as they reach shoulder length. <b>You now have quills in place of your hair!</b>");
-				player.hairType = HAIR_QUILL;
+				player.hairType = Hair.QUILL;
 				changes++;
 			}
 			//Gain Echidna face if you have the right conditions.

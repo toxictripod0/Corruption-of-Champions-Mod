@@ -7,6 +7,7 @@
 
 package classes.Scenes.Areas.Desert {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.internals.*;
 	import classes.internals.WeightedDrop;
 	import classes.GlobalFlags.kFLAGS;
@@ -514,7 +515,7 @@ package classes.Scenes.Areas.Desert {
 				this.hairColor = hairColours[0];
 				this.hairType = rand(7) + 1;
 			} else {
-				this.hairType = HAIR_NORMAL;
+				this.hairType = Hair.NORMAL;
 			}
 			this.faceType = rand(23) + 1;
 			this.earType = rand(19) + 1;

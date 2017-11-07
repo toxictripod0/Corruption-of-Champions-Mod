@@ -191,11 +191,11 @@ package classes.Items.Consumables
 					player.hairColor = "dark red";
 				}
 				outputText(" <b>You now have " + player.hairColor + "</b>");
-				if (player.hairType !== HAIR_NORMAL) {
+				if (player.hairType !== Hair.NORMAL) {
 					outputText("<b> human</b>");
 				}
 				outputText("<b> hair!</b>");
-				player.hairType = HAIR_NORMAL;
+				player.hairType = Hair.NORMAL;
 				player.hairLength = 1;
 				changes++;
 			}

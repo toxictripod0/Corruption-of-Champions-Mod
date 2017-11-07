@@ -439,12 +439,12 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Hair TF
-			if (player.hairType != HAIR_FEATHER && changes < changeLimit && rand(4) == 0) {
+			if (player.hairType != Hair.FEATHER && changes < changeLimit && rand(4) == 0) {
 				outputText("\n\nA tingling starts in your scalp, getting worse and worse until you're itching like mad, the feathery strands of your"
 				          +" hair tickling your fingertips while you scratch like a dog itching a flea. When you pull back your hand, you're treated"
 				          +" to the sight of downy fluff trailing from your [claws]. A realization dawns on you - <b>you have feathers for hair,"
 				          +" just like a harpy!</b>");
-				player.hairType = HAIR_FEATHER;
+				player.hairType = Hair.FEATHER;
 				changes++;
 			}
 			//Eye TF

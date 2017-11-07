@@ -1,6 +1,7 @@
 package classes.Scenes.NPCs
 {
 	import classes.*;
+	import classes.BodyParts.*;
 import classes.StatusEffects.Combat.AnemoneVenomDebuff;
 import classes.internals.WeightedDrop;
 
@@ -69,7 +70,7 @@ import classes.internals.WeightedDrop;
 			this.skinTone = "purple";
 			this.hairColor = "purplish-black";
 			this.hairLength = 20;
-			this.hairType = HAIR_ANEMONE;
+			this.hairType = Hair.ANEMONE;
 			initStrTouSpeInte(40, 20, 40, 50);
 			initLibSensCor(55, 35, 50);
 			this.weaponName = "tendrils";

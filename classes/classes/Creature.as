@@ -3,6 +3,7 @@ package classes
 {
 	import classes.BodyParts.Arms;
 	import classes.BodyParts.Gills;
+	import classes.BodyParts.Hair;
 	import classes.BodyParts.Neck;
 	import classes.BodyParts.RearBody;
 	import classes.BodyParts.Skin;
@@ -370,9 +371,13 @@ import mx.logging.ILogger;
 		2- ghost
 		3- goo!
 		4- anemononeoenoeneo!*/
-		public var hairType:Number = HAIR_NORMAL;
-		public var hairColor:String = "no";
-		public var hairLength:Number = 0;
+		public var hair:Hair = new Hair();
+		public function get hairType():Number { return hair.type; }
+		public function set hairType(value:Number):void { hair.type = value; }
+		public function get hairColor():String { return hair.color; }
+		public function set hairColor(value:String):void { hair.color = value; }
+		public function get hairLength():Number { return hair.length; }
+		public function set hairLength(value:Number):void { hair.length = value; }
 		
 		public function get furColor():String { return skin.furColor; }
 		public function set furColor(value:String):void { skin.furColor = value; }
@@ -742,7 +747,7 @@ import mx.logging.ILogger;
 			}
 			// 4.2. hair
 			if (hairLength <= 0) {
-				if (hairType != HAIR_NORMAL) error += "No hair but hairType = " + hairType + ". ";
+				if (hairType != Hair.NORMAL) error += "No hair but hairType = " + hairType + ". ";
 			}
 			// 4.3. tail
 			if (tailType == Tail.NONE) {
