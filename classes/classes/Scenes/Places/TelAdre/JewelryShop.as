@@ -166,9 +166,16 @@ public class JewelryShop extends Shop {
                 "eyes revealed for but a moment.\n\n" +
                 "Which tier of ring are you looking for?");
         menu();
-        addButton(0, "Tier 1 rings", tieredRings,1);
-        if (player.level >= 10 || model.time.days >= 100) addButton(1, "Tier 2 rings", tieredRings,2);
-        if (player.level >= 20 || model.time.days >= 200) addButton(2, "Tier 3 rings", tieredRings,3);
+        addButton(0, "Tier 1 rings", tieredRings, 1);
+		
+        if (player.level >= 10 || model.time.days >= 100) {
+			addButton(1, "Tier 2 rings", tieredRings,2);
+		}
+		
+        if (player.level >= 20 || model.time.days >= 200) {
+			addButton(2, "Tier 3 rings", tieredRings,3);
+		}
+		
         addButton(14,"Back",inside);
     }
     private function tieredRings(tier:int):void{
