@@ -37,7 +37,7 @@ public class JewelryShop extends Shop {
             outputText("The jewelry merchant perks his head up a little as he sees you " +
                     "approach, hailing your visit with a welcoming wave. \"<i>Kehehehe! Greetingss again, traveler. " +
                     "Ssscrounged up the gemss to adorn yoursself with my waress? Let uss hope sso...</i>\" He goes silent, " +
-                    "knitting his gauzed fingers together as he observes your perusal.")
+                    "knitting his gauzed fingers together as he observes your perusal.");
         }
 
         doNext(inside);
@@ -82,7 +82,7 @@ public class JewelryShop extends Shop {
             outputText("You decline with a firm hand and a shake of your head, prompting the " +
                     "merchant to whisper a growl. \"<i>Bah, fine! You'd besst have a good hiding place, then.</i>\" He leans a little " +
                     "beyond the counter on his spindly arms, taking a look at your [butt]. He's stoic at first, " +
-                    "but he settles down to the tune of a chuckle.")
+                    "but he settles down to the tune of a chuckle.");
         } else {
             outputText("You decline the offer, causing the merchant to scoff and cross his arms. " +
                     "\"<i>Mmn, dissappointing. Kehehehe, ssuit yourself!</i>\"");
@@ -101,7 +101,7 @@ public class JewelryShop extends Shop {
         } else {
             outputText("The minute you finish counting out your gems, he snatches them from " +
                     "your hand and replaces it with your purchase, quietly snickering to himself as he cradles the gems in " +
-                    "both hands.")
+                    "both hands.");
         }
         super.debit(itype, priceOverride, keyItem);
     }
