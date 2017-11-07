@@ -1,6 +1,7 @@
 ﻿//CoC Creature.as
 package classes
 {
+	import classes.BodyParts.Gills;
 	import classes.BodyParts.Neck;
 	import classes.BodyParts.RearBody;
 	import classes.BodyParts.Skin;
@@ -584,8 +585,10 @@ import mx.logging.ILogger;
 		public var armType:Number = ARM_TYPE_HUMAN;
 
 		//GillType
-		public var gillType:int = GILLS_NONE;
-		public function hasGills():Boolean { return gillType != GILLS_NONE; }
+		public var gills:Gills = new Gills();
+		public function get gillType():Number { return gills.type; }
+		public function set gillType(value:Number):void { gills.type = value; }
+		public function hasGills():Boolean { return gills.type != Gills.NONE; }
 
 		//Sexual Stuff		
 		//MALE STUFF

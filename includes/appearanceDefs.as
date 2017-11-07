@@ -129,11 +129,6 @@ public static const ANTENNAE_NONE:int                                           
 public static const ANTENNAE_BEE:int                                                =   2;
 public static const ANTENNAE_COCKATRICE:int                                         =   3;
 
-// gillType
-public static const GILLS_NONE:int                                                  =   0;
-public static const GILLS_ANEMONE:int                                               =   1;
-public static const GILLS_FISH:int                                                  =   2;
-
 // armType
 public static const ARM_TYPE_HUMAN:int                                              =   0;
 public static const ARM_TYPE_HARPY:int                                              =   1;

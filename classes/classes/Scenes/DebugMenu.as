@@ -979,11 +979,11 @@ import classes.Items.*
 			[ANTENNAE_BEE, "(2) BEE"],
 		];
 		private static const GILLS_TYPE_CONSTANTS:Array   = [
-			[GILLS_NONE, "(0) NONE"],
-			[GILLS_ANEMONE, "(1) ANEMONE"],
-			[GILLS_FISH, "(2) FISH"],
+			[Gills.NONE, "(0) NONE"],
+			[Gills.ANEMONE, "(1) ANEMONE"],
+			[Gills.FISH, "(2) FISH"],
 			/* [INTERMOD: xianxia]
-			[GILLS_IN_TENTACLE_LEGS, "(3) IN_TENTACLE_LEGS"],
+			[Gills.IN_TENTACLE_LEGS, "(3) IN_TENTACLE_LEGS"],
 			 */
 		];
 		private static const BEARD_STYLE_CONSTANTS:Array = [

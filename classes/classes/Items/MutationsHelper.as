@@ -1,6 +1,7 @@
 package classes.Items 
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	
 	/**
@@ -584,7 +585,7 @@ package classes.Items
 			}
 		}
 
-		public function updateGills(newGillType:int = GILLS_NONE):int
+		public function updateGills(newGillType:int = Gills.NONE):int
 		{
 			trace("Called updateGills(" + newGillType + ")");
 			var oldgillType:int = player.gillType;
@@ -595,8 +596,8 @@ package classes.Items
 
 			// for now, we only have anemone gills on the chest
 			switch (newGillType) {
-				case GILLS_NONE:
-					if (oldgillType == GILLS_ANEMONE) {
+				case Gills.NONE:
+					if (oldgillType == Gills.ANEMONE) {
 						output.text("\n\nYour chest itches, and as you reach up to scratch it, you realize your gills have withdrawn into your"
 						           +" skin.");
 					} else { // losing fish gills
@@ -607,8 +608,8 @@ package classes.Items
 					output.text("  <b>You no longer have gills!</b>");
 					return -1; // Gills lost
 
-				case GILLS_ANEMONE:
-					if (oldgillType == GILLS_FISH) {
+				case Gills.ANEMONE:
+					if (oldgillType == Gills.FISH) {
 						output.text("\n\nYou feel your gills tighten, the slits seeming to close all at once. As you let out a choked gasp your"
 						           +" gills shrink into nothingness, leaving only smooth skin behind. When you think it's over you feel something"
 						           +" emerge from under your neck, flowing down over your chest and brushing your nipples. You look in surprise as"
@@ -623,8 +624,8 @@ package classes.Items
 					output.text("\n\n<b>You now have feathery gills!</b>");
 					return 1; // Gained gills or gillType changed
 
-				case GILLS_FISH:
-					if (oldgillType == GILLS_ANEMONE) {
+				case Gills.FISH:
+					if (oldgillType == Gills.ANEMONE) {
 						output.text("\n\nYou feel your gills tingle, a vague numbness registering across their feathery exterior. You watch in awe as"
 						           +" your gill's feathery folds dry out and fall off like crisp autumn leaves. The slits of your gills then"
 						           +" rearrange themselves, becoming thinner and shorter, as they shift to the sides of your neck. They now close in"

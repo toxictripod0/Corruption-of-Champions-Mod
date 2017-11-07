@@ -1670,9 +1670,9 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		if (saveFile.data.gillType != undefined)
 			player.gillType = saveFile.data.gillType;
 		else if (saveFile.data.gills == undefined)
-			player.gillType = GILLS_NONE;
+			player.gillType = Gills.NONE;
 		else
-			player.gillType = saveFile.data.gills ? GILLS_ANEMONE : GILLS_NONE;
+			player.gillType = saveFile.data.gills ? Gills.ANEMONE : Gills.NONE;
 		if (saveFile.data.armType == undefined)
 			player.armType = ARM_TYPE_HUMAN;
 		else

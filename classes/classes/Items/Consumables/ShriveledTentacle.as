@@ -76,7 +76,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//-hair morphs to anemone tentacles, retains color, hair shrinks back to med-short('shaggy') and stops growing, lengthening treatments don't work and goblins won't cut it, but more anemone items can lengthen it one level at a time
-			if (player.gillType === GILLS_ANEMONE && player.hairType !== 4 && changes < changeLimit && rand(5) === 0) {
+			if (player.gillType === Gills.ANEMONE && player.hairType !== 4 && changes < changeLimit && rand(5) === 0) {
 				outputText("\n\nYour balance slides way off, and you plop down on the ground as mass concentrates on your head.  Reaching up, you give a little shriek as you feel a disturbingly thick, squirming thing where your hair should be.  Pulling it down in front of your eyes, you notice it's still attached to your head; what's more, it's the same color as your hair used to be.  <b>You now have squirming tentacles in place of hair!</b>  As you gaze at it, a gentle heat starts to suffuse your hand.  The tentacles must be developing their characteristic stingers!  You quickly let go; you'll have to take care to keep them from rubbing on your skin at all hours.  On the other hand, they're quite short and you find you can now flex and extend them as you would any other muscle, so that shouldn't be too hard.  You settle on a daring, windswept look for now.");
 				player.hairType = 4;
 				player.hairLength = 5;
@@ -92,8 +92,8 @@ package classes.Items.Consumables
 			}
 			
 			//-feathery gills sprout from chest and drape sensually over nipples (cumulative swimming power boost with fin, if swimming is implemented)
-			if (rand(5) === 0 && player.gillType !== GILLS_ANEMONE && player.skinTone === "aphotic blue-black" && changes < changeLimit) {
-				mutations.updateGills(GILLS_ANEMONE);
+			if (rand(5) === 0 && player.gillType !== Gills.ANEMONE && player.skinTone === "aphotic blue-black" && changes < changeLimit) {
+				mutations.updateGills(Gills.ANEMONE);
 			}
 			
 			//-[aphotic] skin tone (blue-black)
