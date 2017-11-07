@@ -8,9 +8,6 @@ public class VictoriaTailorShop extends Shop {
         sprite = 61;
     }
 
-    //-----------------
-    //-- TAILOR SHOPPE
-    //-----------------
     override protected function inside():void {
         clearOutput();
         outputText("The inside of the tailor's shop is far cleaner than anything else you've seen in the city.  The walls are painted muted gray, and the floor is carpeted with a sprawling, royal blue rug.  After glancing around, you realize WHY the walls and floor are so muted – the quiet backdrop makes the merchandise look even more amazing.  There are racks and racks of clothing, but much of it is plain comfortable clothing, and not worth spending much time investigating.  A high-pitched voice pipes up, \"<i>Can I help you?</i>\"\n\n");
