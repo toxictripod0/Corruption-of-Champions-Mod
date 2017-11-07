@@ -105,8 +105,11 @@ public class YaraPiercingStudio extends TelAdreAbstractContent {
         menu();
         var buttonsAdded:Boolean = false;
         function check(toCheck:int):Boolean{
-            if(inverse){return toCheck != 0;}
-            return toCheck == 0;
+            if (inverse){
+				return toCheck !== 0;
+			}
+			
+            return toCheck === 0;
         }
         if (player.hasVagina())
         {
@@ -170,12 +173,12 @@ public class YaraPiercingStudio extends TelAdreAbstractContent {
 
     private function chooseLoc(loc:int):void {
         doNext(pierceMenu);
-        if (loc == LOC_DICK && !player.hasCock()) {
+        if (loc === LOC_DICK && !player.hasCock()) {
             outputText("You realize you don't have a dick to pierce.  Whoops!  Better pick something else...");
             return;
         }
-        if ((loc == LOC_CLIT || loc == LOC_VULVA) && !player.hasVagina()) {
-            outputText((loc == LOC_CLIT ? "You realize you don't have a clit to pierce." : "You realize you don't have a pussy to pierce.")
+        if ((loc === LOC_CLIT || loc === LOC_VULVA) && !player.hasVagina()) {
+            outputText((loc === LOC_CLIT ? "You realize you don't have a clit to pierce." : "You realize you don't have a pussy to pierce.")
                     + "  Whoops!  Better pick something else...");
             return;
         }
@@ -210,10 +213,21 @@ public class YaraPiercingStudio extends TelAdreAbstractContent {
         }
         menu();
         addButton(0,"Stud",chooseMaterials,loc,TYPE_STUD);
-        if(loc!=LOC_TONGUE){addButton(1,"Ring",chooseMaterials,loc,TYPE_RING);}
-        if(loc==LOC_DICK){addButton(2,"Ladder",chooseMaterials,loc,TYPE_LADDER);}
-        if(loc==LOC_EARS){addButton(3,"Hoop",chooseMaterials,loc,TYPE_HOOP);}
-        if(loc==LOC_NIPPLES){addButton(4,"Chain",chooseMaterials,loc,TYPE_CHAIN);}
+        if (loc !== LOC_TONGUE){
+			addButton(1,"Ring",chooseMaterials,loc,TYPE_RING);
+		}
+        
+		if (loc === LOC_DICK){
+			addButton(2,"Ladder",chooseMaterials,loc,TYPE_LADDER);
+		}
+		
+        if (loc === LOC_EARS){
+			addButton(3,"Hoop",chooseMaterials,loc,TYPE_HOOP);
+		}
+		
+        if (loc === LOC_NIPPLES){
+			addButton(4,"Chain",chooseMaterials,loc,TYPE_CHAIN);
+		}
     }
 
     private function chooseMaterials(loc:int, type:int):void {
@@ -280,7 +294,7 @@ public class YaraPiercingStudio extends TelAdreAbstractContent {
         if (mat > 8) {
             player.gems -= 900;
         }
-        if (mat == 13) {
+        if (mat === 13) {
             player.gems -= 1000;
         }
         statScreenRefresh();
@@ -391,7 +405,7 @@ public class YaraPiercingStudio extends TelAdreAbstractContent {
                 dynStats("sen", 2);
                 break;
             case LOC_DICK:
-                if (type == 3) {
+                if (type === 3) {
                     break;
                 }
                 shortP += "cock-";
@@ -437,7 +451,7 @@ public class YaraPiercingStudio extends TelAdreAbstractContent {
                 //studs
             case TYPE_STUD:
                 //multiples
-                if (loc == 2 || loc == 5 || loc == 8) {
+                if (loc === 2 || loc === 5 || loc === 8) {
                     shortP += "studs";
                     longP += "studs";
                 }
@@ -449,7 +463,7 @@ public class YaraPiercingStudio extends TelAdreAbstractContent {
                 //2. Ring (Called prince albert on dick)
             case TYPE_RING:
                 //multiples
-                if (loc == 2 || loc == 5 || loc == 8) {
+                if (loc === 2 || loc === 5 || loc === 8) {
                     shortP += "rings";
                     longP += "rings";
                 }
@@ -466,7 +480,7 @@ public class YaraPiercingStudio extends TelAdreAbstractContent {
                 //4. Hoop (ears/nipples/clit)
             case TYPE_HOOP:
                 //multiples
-                if (loc == 2 || loc == 5 || loc == 8) {
+                if (loc === 2 || loc === 5 || loc === 8) {
                     shortP += "hoops";
                     longP += "hoops";
                 }
@@ -484,12 +498,12 @@ public class YaraPiercingStudio extends TelAdreAbstractContent {
         //Actually assign values to their real storage locations
         applyPiercing(loc, type, shortP, longP);
         //Girls
-        if (loc == 8 || loc == 0) {
+        if (loc === 8 || loc === 0) {
             yaraSex();
             return;
         }
         //Dudes
-        else if (loc == 1 && (player.cockThatFits(36) >= 0 || flags[kFLAGS.HYPER_HAPPY])) {
+        else if (loc === 1 && (player.cockThatFits(36) >= 0 || flags[kFLAGS.HYPER_HAPPY])) {
             yaraSex(false);
             return;
         }
