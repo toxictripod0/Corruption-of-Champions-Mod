@@ -8,9 +8,6 @@ import classes.ItemType;
 public class JewelryShop extends Shop {
     private var firstEntry:Boolean = true;
 
-    //-----------------
-    //-- JEWELRY STORE
-    //-----------------
     public override function enter():void {
         spriteSelect(sprite);
         clearOutput();
