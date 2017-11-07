@@ -5,6 +5,7 @@ package classes.Scenes.NPCs
 {
 	import classes.*;
 	import classes.GlobalFlags.*;
+    import classes.Scenes.Places.TelAdre.YvonneArmorShop;
 
 	public class EmberScene extends NPCAwareContent implements TimeAwareInterface
 	{
@@ -159,7 +160,7 @@ package classes.Scenes.NPCs
 			if (amount > 100) amount = 100;
 			return amount;
 		}
-		
+
 		override public function followerEmber():Boolean
 		{
 			return flags[kFLAGS.EMBER_HATCHED] > 0;
@@ -205,7 +206,7 @@ package classes.Scenes.NPCs
 		{
 			return flags[kFLAGS.EMBER_GENDER] == 3;
 		}
-		
+
 		public function emberChildren():int
 		{
 			return (flags[kFLAGS.EMBER_CHILDREN_MALES] + flags[kFLAGS.EMBER_CHILDREN_FEMALES] + flags[kFLAGS.EMBER_CHILDREN_HERMS]);
@@ -392,7 +393,7 @@ package classes.Scenes.NPCs
 			player.gems -= 200;
 			statScreenRefresh();
 			player.removeKeyItem("Dragon Eggshell");
-			inventory.takeItem(shields.DRGNSHL, telAdre.armorShop);
+			inventory.takeItem(shields.DRGNSHL, new YvonneArmorShop().enter);
 		}
 
 //Suggested Reward:
@@ -550,7 +551,7 @@ package classes.Scenes.NPCs
 			else {
 				outputText("\n\nYou stare at the egg's pulsations as the rhythm shifts slightly.  You feel a tinge of excitement, a distant expectation not your own.  Though curious about what could be inside, you decide nothing more can be done for now.");
 			}
-			
+
 			menu();
 			if (flags[kFLAGS.EMBER_EGG_FLUID_COUNT] >= 5 && flags[kFLAGS.EMBER_JACKED_ON] > 0 && flags[kFLAGS.EMBER_GENDER] > 0) {
 				outputText("\n\n<b>The egg is ready to be hatched - if you're just as ready.</b>");
@@ -560,9 +561,9 @@ package classes.Scenes.NPCs
 			} else {
 				addDisabledButton(0, "Masturbate", "This scene requires you to have genitals and sufficient arousal.");
 			}
-			
+
 			addButton(1, "Blood", giveEmberBludSausages);
-			
+
 			if (player.hasItem(consumables.INCUBID)) {
 				addButton(2, "IncubiDraft", createCallBackFunction(useIncubusDraftOnEmber, false));
 			} else {
@@ -610,7 +611,7 @@ package classes.Scenes.NPCs
 			//(If player has an item that is valid for application)
 			outputText("  The egg's rhythm suddenly changes; as if it were excited by something - something that you have brought near it.");
 			outputText("\n\nYou start fishing through your pockets, holding up the various items you have; it doesn't react to some, while others make its flashes quicken.  These you set aside.  When you've finished testing the contents of your pouches, you look at the items the egg has selected.  As you rest your hand on the egg and consider your choices, it begins to excite once more, alarming you.  You pull away and it calms down... the egg considers <b>you</b> an item as well, apparently!");
-			
+
 			menu();
 			if (flags[kFLAGS.EMBER_EGG_FLUID_COUNT] >= 5 && flags[kFLAGS.EMBER_JACKED_ON] > 0 && flags[kFLAGS.EMBER_GENDER] > 0) {
 				outputText("\n\n<b>The egg is ready to be hatched - if you're just as ready.</b>");
@@ -620,9 +621,9 @@ package classes.Scenes.NPCs
 			} else {
 				addDisabledButton(0, "Masturbate", "This scene requires you to have genitals and sufficient arousal.");
 			}
-			
+
 			addButton(1, "Blood", giveEmberBludSausages);
-			
+
 			if (player.hasItem(consumables.INCUBID)) {
 				addButton(2, "IncubiDraft", createCallBackFunction(useIncubusDraftOnEmber, false));
 			} else {
