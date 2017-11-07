@@ -8,9 +8,6 @@ import classes.ItemType;
 public class JewelryShop extends Shop {
     private var firstEntry:Boolean = true;
 
-    public function JewelryShop() {
-    }
-
     //-----------------
     //-- JEWELRY STORE
     //-----------------
