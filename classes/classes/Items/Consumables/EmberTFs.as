@@ -191,7 +191,7 @@ package classes.Items.Consumables
 			 Miss: Unfortunately, you lose your sense of depth as you whirl, and the tip swings harmlessly through the air in front of your target.
 			 */
 			//Grow Dragon Wings
-			if ((player.wingType != Wings.DRACONIC_LARGE || player.rearBody.type == REAR_BODY_SHARK_FIN) && changes < changeLimit && rand(3) == 0) {
+			if ((player.wingType != Wings.DRACONIC_LARGE || player.rearBody.type == RearBody.SHARK_FIN) && changes < changeLimit && rand(3) == 0) {
 				if (player.wingType == Wings.NONE) {
 					output.text("\n\nYou double over as waves of pain suddenly fill your shoulderblades; your back feels like it's swelling, flesh and muscles ballooning.  A sudden sound of tearing brings with it relief and you straighten up.  Upon your back now sit small, leathery wings, not unlike a bat's. <b>You now have small dragon wings.  They're not big enough to fly with, but they look adorable.</b>");
 					player.wingType = Wings.DRACONIC_SMALL;
@@ -201,7 +201,7 @@ package classes.Items.Consumables
 					output.text("\n\nA not-unpleasant tingling sensation fills your wings, almost but not quite drowning out the odd, tickly feeling as they swell larger and stronger.  You spread them wide - they stretch further than your arms do - and beat them experimentally, the powerful thrusts sending gusts of wind, and almost lifting you off your feet.  <b>You now have fully-grown dragon wings, capable of winging you through the air elegantly!</b>");
 					player.wingType = Wings.DRACONIC_LARGE;
 				}
-				else if (player.rearBody.type == REAR_BODY_SHARK_FIN) {
+				else if (player.rearBody.type == RearBody.SHARK_FIN) {
 					output.text("\n\nA sensation of numbness suddenly fills your fin.  When it does away, it feels... different.  Looking back, you realize that it has been replaced by new, small wings, ones that you can only describe as draconic.  <b>Your shark-like fin has changed into dragon wings.</b>");
 					player.rearBody.restore();
 					player.wingType = Wings.DRACONIC_SMALL;
@@ -218,7 +218,7 @@ package classes.Items.Consumables
 			if (!drakesHeart && !player.hasDragonRearBody() && (player.hasDragonNeck() || flags[kFLAGS.EMBER_ROUNDFACE] == 1) && player.dragonScore() >= 4 && player.hasDraconicBackSide() && changes < changeLimit && rand(3) == 0) {
 				var emberRear:Number = player.fetchEmberRearBody();
 				switch (emberRear) {
-					case REAR_BODY_DRACONIC_MANE:
+					case RearBody.DRACONIC_MANE:
 						// if (player.hairLength == 0) // Let's simply ignore baldness here for now. It wouldn't affect the PCs mane anyway.
 						outputText("\n\nYou feel a sudden tingle just above your spine. Eager to see, what is the cause of it you bend your"
 						          +" [if (hasDragonNeck)draconic neck|tail] to take a closer look at it. Looking at your"
@@ -229,12 +229,12 @@ package classes.Items.Consumables
 						          +" but shorter and denser; it has grown in a thick vertical strip, maybe two inches wide. It reminds you vaguely"
 						          +" of a horse's mane. <b>You now have a hairy mane on your rear.</b>");
 						player.rearBody.setAllProps({
-							type:  REAR_BODY_DRACONIC_MANE,
+							type:  RearBody.DRACONIC_MANE,
 							color: player.hairColor
 						});
 						break;
 
-					case REAR_BODY_DRACONIC_SPIKES:
+					case RearBody.DRACONIC_SPIKES:
 						// Teh spiky mane, similar to the hairy one.
 						outputText("\n\nYou feel a sudden pain coming from your spine. Eager to see, what is the cause of it you bend your"
 						          +" [if (hasDragonNeck)draconic neck|tail] to take a closer look at it. You watch your [if (hasDragonNeck)back|tail]"
@@ -245,7 +245,7 @@ package classes.Items.Consumables
 						          +" your neck and continuing down your tail, ending on the tip of your tail. They've grown in a thick vertical"
 						          +" strip, maybe an inch wide and two inches high. It reminds you very vaguely of a horse's mane.");
 						outputText("  <b>Your rear is now decorated with a row of curved spikes.</b>");
-						player.rearBody.setAllProps({type: REAR_BODY_DRACONIC_SPIKES});
+						player.rearBody.setAllProps({type: RearBody.DRACONIC_SPIKES});
 						break;
 
 					default:

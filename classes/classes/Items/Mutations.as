@@ -2316,11 +2316,11 @@ package classes.Items
 				}
 			}
 			//FINZ R WINGS
-			if ((player.wingType != Wings.NONE || player.rearBody.type != REAR_BODY_SHARK_FIN) && changes < changeLimit && rand(3) == 0) {
+			if ((player.wingType != Wings.NONE || player.rearBody.type != RearBody.SHARK_FIN) && changes < changeLimit && rand(3) == 0) {
 				outputText("\n\n");
 				if (player.wingType != Wings.NONE) outputText("Your wings fold into themselves, merging together with your back.  ");
 				outputText("You groan and slump down in pain, almost instantly regretting eating the tooth. You start sweating profusely and panting loudly, feeling the space between your shoulder blades shifting about. You hastily remove your " + player.armorName + " just in time before a strange fin-like structure bursts from in-between your shoulders. You examine it carefully and make a few modifications to your " + player.armorName + " to accommodate your new fin.");
-				player.rearBody.type = REAR_BODY_SHARK_FIN;
+				player.rearBody.type = RearBody.SHARK_FIN;
 				player.wings.restore();
 				changes++;
 			}
@@ -2947,8 +2947,8 @@ package classes.Items
 				changes++;
 			}
 			//-Remove old wings
-			if (([Wings.NONE, Wings.FEATHERED_LARGE].indexOf(player.wingType) == -1 || player.rearBody.type == REAR_BODY_SHARK_FIN) && changes < changeLimit && rand(4) == 0) {
-				if (player.rearBody.type == REAR_BODY_SHARK_FIN) {
+			if (([Wings.NONE, Wings.FEATHERED_LARGE].indexOf(player.wingType) == -1 || player.rearBody.type == RearBody.SHARK_FIN) && changes < changeLimit && rand(4) == 0) {
+				if (player.rearBody.type == RearBody.SHARK_FIN) {
 					outputText("\n\nSensation fades from your large fin slowly but surely, leaving it a dried out husk that breaks off to fall on the"
 					          +" ground. Your back closes up to conceal the loss, as smooth and unbroken as the day you entered the portal.");
 					player.rearBody.restore();
@@ -4226,14 +4226,14 @@ package classes.Items
 				flags[kFLAGS.TIMES_TRANSFORMED]++;
 			}
 			//Grow demon wings
-			if ((player.wingType != Wings.BAT_LIKE_LARGE || player.rearBody.type == REAR_BODY_SHARK_FIN) && rand(8) == 0 && player.isCorruptEnough(50)) {
+			if ((player.wingType != Wings.BAT_LIKE_LARGE || player.rearBody.type == RearBody.SHARK_FIN) && rand(8) == 0 && player.isCorruptEnough(50)) {
 				//grow smalls to large
 				if (player.wingType == Wings.BAT_LIKE_TINY && player.cor >= (75 - player.corruptionTolerance())) {
 					outputText("\n\n");
 					outputText("Your small demonic wings stretch and grow, tingling with the pleasure of being attached to such a tainted body.  You stretch over your shoulder to stroke them as they unfurl, turning into full-sized demon-wings.  <b>Your demonic wings have grown!</b>");
 					player.wingType = Wings.BAT_LIKE_LARGE;
 				}
-				else if (player.rearBody.type == REAR_BODY_SHARK_FIN) {
+				else if (player.rearBody.type == RearBody.SHARK_FIN) {
 					outputText("\n\nThe muscles around your shoulders bunch up uncomfortably, changing to support the new bat-like wings growing from"
 					          +" your back.  You twist your head as far as you can for a look"
 					          +" and realize your fin has changed into small bat-like demon-wings!");

@@ -582,17 +582,17 @@ package classes
 			// <mod name="BodyParts.RearBody" author="Stadler76">
 			// rearBody
 			switch (player.rearBody.type) {
-				case REAR_BODY_SHARK_FIN:
+				case RearBody.SHARK_FIN:
 					outputText("  A large shark-like fin has sprouted between your shoulder blades."
 					          +" With it you have far more control over swimming underwater.");
 					break;
-				case REAR_BODY_DRACONIC_MANE:
+				case RearBody.DRACONIC_MANE:
 					outputText("  Tracing your spine, a mane of [rearBodyColor] hair grows; starting at the base of your neck and continuing down"
 					          +" your tail, ending on the tip of your tail in a small tuft. It grows in a thick vertical strip,"
 					          +" maybe two inches wide. It reminds you vaguely of a horse's mane.");
 					break;
 
-				case REAR_BODY_DRACONIC_SPIKES:
+				case RearBody.DRACONIC_SPIKES:
 					// Teh spiky mane, similar to the hairy one.
 					outputText("  Tracing your spine, a row of short steel-gray and curved backwards spikes protrude; starting at the base of your"
 					          +" neck and continuing down your tail, ending on the tip of your tail. They've grown in a thick vertical strip,"

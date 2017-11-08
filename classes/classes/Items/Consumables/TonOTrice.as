@@ -495,7 +495,7 @@ package classes.Items.Consumables
 			if (player.neck.type != NECK_TYPE_COCKATRICE && changes < changeLimit && rand(4) == 0)
 				mutations.restoreNeck(tfSource);
 			//Rear body restore
-			if (player.rearBody.type != REAR_BODY_NONE && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
+			if (player.rearBody.type != RearBody.NONE && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
 			//Body TF
 			if (!player.hasCockatriceSkin() && player.faceType == Face.COCKATRICE && changes < changeLimit && rand(3) == 0) {
 				mutations.restoreNeck(tfSource + "-forceRestoreNeck");

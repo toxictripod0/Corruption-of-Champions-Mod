@@ -87,7 +87,7 @@ package classes.Items.Consumables
 					outputText("Your small imp wings stretch and grow, tingling with the pleasure of being attached to such a tainted body. You stretch over your shoulder to stroke them as they unfurl, turning into large imp-wings. <b>Your imp wings have grown!</b>");
 					player.wingType = Wings.IMP_LARGE;
 				}
-				else if (player.rearBody.type === REAR_BODY_SHARK_FIN) {
+				else if (player.rearBody.type === RearBody.SHARK_FIN) {
 					outputText("\n\n");
 					outputText("The muscles around your shoulders bunch up uncomfortably, changing to support the new bat-like wings growing from your back. You twist your head as far as you can for a look and realize your fin has changed into imp-wings!");
 					player.rearBody.restore();

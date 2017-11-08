@@ -117,7 +117,7 @@ package classes.Items.Consumables
 			//REMOVAL STUFF
 			//Removes wings!
 			if ((player.wingType != Wings.NONE) && changes < changeLimit && rand(4) === 0) {
-				if (player.rearBody.type == REAR_BODY_SHARK_FIN) {
+				if (player.rearBody.type == RearBody.SHARK_FIN) {
 					outputText("\n\nYour back tingles, feeling lighter.  Something lands behind you with a 'thump', and when you turn to look, you"
 					          +" see your fin has fallen off.  This might be the best (and worst) booze you've ever had!"
 					          +"  <b>You no longer have a fin!</b>");

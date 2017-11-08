@@ -212,8 +212,8 @@ package classes.Items.Consumables
 			}
 
 			//Grow new bee wings if player has none.
-			if (changes < changeLimit && (player.wingType == Wings.NONE || player.rearBody.type == REAR_BODY_SHARK_FIN) && Utils.rand(4)) {
-				if (player.rearBody.type == REAR_BODY_SHARK_FIN) {
+			if (changes < changeLimit && (player.wingType == Wings.NONE || player.rearBody.type == RearBody.SHARK_FIN) && Utils.rand(4)) {
+				if (player.rearBody.type == RearBody.SHARK_FIN) {
 					outputText("\n\nYou feel an itching on your large back-fin as something begins growing there.  You twist and contort yourself,"
 					          +" trying to scratch and bring yourself relief, and failing miserably.  A sense of relief erupts from you as you feel"
 					          +" something new grow out from your fin.  You hastily remove the top portion of your " + player.armorName

@@ -2363,10 +2363,10 @@ package classes
 		);
 		public static const DEFAULT_REAR_BODY_NAMES:Object = createMapFromPairs(
 				[
-					[REAR_BODY_NONE, "none"],
-					[REAR_BODY_DRACONIC_MANE, "draconic hairy mane"],
-					[REAR_BODY_DRACONIC_SPIKES, "draconic spiky mane"],
-					[REAR_BODY_SHARK_FIN, "shark fin"],
+					[RearBody.NONE, "none"],
+					[RearBody.DRACONIC_MANE, "draconic hairy mane"],
+					[RearBody.DRACONIC_SPIKES, "draconic spiky mane"],
+					[RearBody.SHARK_FIN, "shark fin"],
 				]
 		);
 		public static const DEFAULT_NECK_NAMES:Object = createMapFromPairs(

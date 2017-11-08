@@ -202,7 +202,7 @@ package classes.Items
 			var forceRestore:Boolean = tsParts.indexOf("forceRestoreRearBody") != -1;
 
 			switch (player.rearBody.type) {
-				case REAR_BODY_SHARK_FIN:
+				case RearBody.SHARK_FIN:
 					if (tfSource == "sharkTooth" || (!forceRestore && player.sharkScore() >= 3))
 						return false;
 
@@ -210,12 +210,12 @@ package classes.Items
 					          +" After a moment the pain passes, though your fin is gone!");
 					break;
 
-				case REAR_BODY_DRACONIC_MANE:
-				case REAR_BODY_DRACONIC_SPIKES:
+				case RearBody.DRACONIC_MANE:
+				case RearBody.DRACONIC_SPIKES:
 					if (tfSource == "EmberTFs" || (!forceRestore && player.dragonScore() >= 11))
 						return false;
 
-					if (player.rearBody.type == REAR_BODY_DRACONIC_MANE)
+					if (player.rearBody.type == RearBody.DRACONIC_MANE)
 						outputText("\n\nYou feel a tingling just above your spine. Your glimpse at your back and see hair falling down from it."
 						          +" First in strands, then in bigger and bigger chunks until"
 						          +" <b>your hairy draconic mane has completely disappeared.</b>");

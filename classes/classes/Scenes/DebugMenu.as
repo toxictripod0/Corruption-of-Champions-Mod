@@ -1257,14 +1257,14 @@ import classes.Items.*
 		];
 		/* [INTERMOD: xianxia]
 		private static const REAR_TYPE_CONSTANTS:Array  = [
-			[REAR_BODY_NONE, "(0) NONE"],
-			[REAR_BODY_DRACONIC_MANE, "(1) DRACONIC_MANE"],
-			[REAR_BODY_DRACONIC_SPIKES, "(2) DRACONIC_SPIKES"],
-			[REAR_BODY_FENRIR_ICE_SPIKES, "(3) FENRIR_ICE_SPIKES"],
-			[REAR_BODY_LION_MANE, "(4) LION_MANE"],
-			[REAR_BODY_BEHEMOTH, "(5) BEHEMOTH"],
-			[REAR_BODY_SHARK_FIN, "(6) SHARK_FIN"],
-			[REAR_BODY_ORCA_BLOWHOLE, "(7) ORCA_BLOWHOLE"],
+			[RearBody.NONE, "(0) NONE"],
+			[RearBody.DRACONIC_MANE, "(1) DRACONIC_MANE"],
+			[RearBody.DRACONIC_SPIKES, "(2) DRACONIC_SPIKES"],
+			[RearBody.FENRIR_ICE_SPIKES, "(3) FENRIR_ICE_SPIKES"],
+			[RearBody.LION_MANE, "(4) LION_MANE"],
+			[RearBody.BEHEMOTH, "(5) BEHEMOTH"],
+			[RearBody.SHARK_FIN, "(6) SHARK_FIN"],
+			[RearBody.ORCA_BLOWHOLE, "(7) ORCA_BLOWHOLE"],
 		];
 		*/
 		private function changeArmType(page:int=0,setIdx:int=-1):void {

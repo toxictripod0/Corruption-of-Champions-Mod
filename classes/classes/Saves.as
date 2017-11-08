@@ -1799,7 +1799,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 
 		if (player.wingType == 8) {
 			player.wings.restore();
-			player.rearBody.setAllProps({type: REAR_BODY_SHARK_FIN});
+			player.rearBody.setAllProps({type: RearBody.SHARK_FIN});
 		}
 
 		if (player.lowerBody === 4) {
