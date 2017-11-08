@@ -1407,7 +1407,7 @@ package classes.Scenes.Areas.Forest
 			}
 			if ((player.isCorruptEnough(75) || player.findPerk(PerkLib.Pervert) >= 0 || player.findPerk(PerkLib.Sadist) >= 0)
 					&& player.str >= 60
-					&& (player.tongueType == TONGUE_SNAKE || player.hasCock() || player.hasVagina() || player.biggestTitSize() >= 4)) {
+					&& (player.tongueType == Tongue.SNAKE || player.hasCock() || player.hasVagina() || player.biggestTitSize() >= 4)) {
 				addButton(7, "Self-Egg", beeGirlRapeForTheDistinguishedGentleman, undefined, undefined, undefined, "You could play with her a bit and try to make her lay eggs into herself.", "Self-Egg");
 			}
 			if (player.canOvipositSpider() && (player.faceType == Face.SNAKE_FANGS || player.faceType == Face.SPIDER_FANGS)) {
@@ -1795,7 +1795,7 @@ package classes.Scenes.Areas.Forest
 
 			//[random effects: roll for one
 			var choices:Array = [];
-			if (player.tongueType == TONGUE_SNAKE) choices[choices.length] = 0;
+			if (player.tongueType == Tongue.SNAKE) choices[choices.length] = 0;
 			if (player.hasCock()) choices[choices.length] = 1;
 			if (player.hasVagina()) choices[choices.length] = 2;
 			if (player.biggestTitSize() >= 4) choices[choices.length] = 3;

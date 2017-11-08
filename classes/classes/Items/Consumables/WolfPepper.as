@@ -91,9 +91,9 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//give human tongue
-			if (player.tongueType !== TONGUE_HUMAN && rand(3) === 0 && changes < changeLimit) {
+			if (player.tongueType !== Tongue.HUMAN && rand(3) === 0 && changes < changeLimit) {
 				outputText("\n\nYou lick the roof of your mouth, noticing that your tongue feels different. It then hits you-- <b>You have a human tongue!</b>");
-				player.tongueType === TONGUE_HUMAN;
+				player.tongueType === Tongue.HUMAN;
 				changes++;
 			}
 			//remove non-wolf eyes

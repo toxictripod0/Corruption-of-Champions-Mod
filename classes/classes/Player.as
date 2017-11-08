@@ -1068,7 +1068,7 @@ use namespace kGAMECLASS;
 			if (neck.type == NECK_TYPE_COCKATRICE)
 				cockatriceCounter++;
 			if (cockatriceCounter > 2) {
-				if (tongueType == TONGUE_LIZARD)
+				if (tongueType == Tongue.LIZARD)
 					cockatriceCounter++;
 				if (wingType == Wings.FEATHERED_LARGE)
 					cockatriceCounter++;
@@ -1450,7 +1450,7 @@ use namespace kGAMECLASS;
 			if (armType == Arms.PREDATOR && clawType == CLAW_TYPE_LIZARD)
 				lizardCounter++;
 			if (lizardCounter > 2) {
-				if ([TONGUE_LIZARD, TONGUE_SNAKE].indexOf(tongueType) != -1)
+				if ([Tongue.LIZARD, Tongue.SNAKE].indexOf(tongueType) != -1)
 					lizardCounter++;
 				if (lizardCocks() > 0)
 					lizardCounter++;
@@ -1567,7 +1567,7 @@ use namespace kGAMECLASS;
 				dragonCounter++;
 			if (tailType == Tail.DRACONIC)
 				dragonCounter++;
-			if (tongueType == TONGUE_DRACONIC)
+			if (tongueType == Tongue.DRACONIC)
 				dragonCounter++;
 			if (dragonCocks() > 0)
 				dragonCounter++;
@@ -1887,7 +1887,7 @@ use namespace kGAMECLASS;
 				echidnaCounter++;
 			if (faceType == Face.ECHIDNA)
 				echidnaCounter++;
-			if (tongueType == TONGUE_ECHIDNA)
+			if (tongueType == Tongue.ECHIDNA)
 				echidnaCounter++;
 			if (lowerBody == LOWER_BODY_TYPE_ECHIDNA)
 				echidnaCounter++;
@@ -1928,7 +1928,7 @@ use namespace kGAMECLASS;
 				dragonneCounter++;
 			if (tailType == Tail.CAT)
 				dragonneCounter++;
-			if (tongueType == TONGUE_DRACONIC)
+			if (tongueType == Tongue.DRACONIC)
 				dragonneCounter++;
 			if (hasDragonWings())
 				dragonneCounter++;

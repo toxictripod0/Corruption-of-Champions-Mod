@@ -102,9 +102,9 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Gain Dragon Tongue
-			if (changes < changeLimit && rand(3) == 0 && player.tongueType != TONGUE_DRACONIC) {
+			if (changes < changeLimit && rand(3) == 0 && player.tongueType != Tongue.DRACONIC) {
 				output.text("\n\nYour tongue suddenly falls out of your mouth and begins undulating as it grows longer.  For a moment it swings wildly, completely out of control; but then settles down and you find you can control it at will, almost like a limb.  You're able to stretch it to nearly 4 feet and retract it back into your mouth to the point it looks like a normal human tongue.  <b>You now have a draconic tongue.</b>");
-				player.tongueType = TONGUE_DRACONIC;
+				player.tongueType = Tongue.DRACONIC;
 				changes++;
 				//Note: This type of tongue should be eligible for all things you can do with demon tongue... Dunno if it's best attaching a boolean just to change the description or creating a whole new tongue type.
 			}

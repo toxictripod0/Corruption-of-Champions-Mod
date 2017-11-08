@@ -203,7 +203,7 @@ import fl.controls.ComboBox;
 			player.faceType = Face.HUMAN;
 			player.eyeCount = 2;
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) player.tailType = Tail.NONE;
-			player.tongueType = TONGUE_HUMAN;
+			player.tongueType = Tongue.HUMAN;
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) player.femininity = 50;
 			player.beardLength = 0;
 			player.beardStyle = 0;

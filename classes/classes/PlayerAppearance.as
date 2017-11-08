@@ -433,15 +433,15 @@ package classes
 			}
 			
 			//Tongue
-			if (player.tongueType == TONGUE_SNAKE) 
+			if (player.tongueType == Tongue.SNAKE) 
 				outputText("  A snake-like tongue occasionally flits between your lips, tasting the air.");
-			else if (player.tongueType == TONGUE_DEMONIC) 
+			else if (player.tongueType == Tongue.DEMONIC) 
 				outputText("  A slowly undulating tongue occasionally slips from between your lips.  It hangs nearly two feet long when you let the whole thing slide out, though you can retract it to appear normal.");
-			else if (player.tongueType == TONGUE_DRACONIC) 
+			else if (player.tongueType == Tongue.DRACONIC) 
 				outputText("  Your mouth contains a thick, fleshy tongue that, if you so desire, can telescope to a distance of about four feet.  It has sufficient manual dexterity that you can use it almost like a third arm.");
-			else if (player.tongueType == TONGUE_ECHIDNA)
+			else if (player.tongueType == Tongue.ECHIDNA)
 				outputText("  A thin echidna tongue, at least a foot long, occasionally flits out from between your lips.");
-			else if (player.tongueType == TONGUE_LIZARD)
+			else if (player.tongueType == Tongue.LIZARD)
 				outputText("  Your mouth contains a thick, fleshy lizard tongue, bringing to mind the tongue of large predatory reptiles."
 				          +" It can reach up to one foot, its forked tips tasting the air as they flick at the end of each movement.");
 			//Horns

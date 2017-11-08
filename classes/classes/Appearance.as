@@ -187,7 +187,7 @@ package classes
 		public static function tongueDescription(i_character:Character):String
 		{
 			// fallback for tongueTypes not fully implemented yet
-			if (i_character.tongueType == TONGUE_HUMAN || !DEFAULT_TONGUE_NAMES.hasOwnProperty(''+i_character.tongueType))
+			if (i_character.tongueType == Tongue.HUMAN || !DEFAULT_TONGUE_NAMES.hasOwnProperty(''+i_character.tongueType))
 				return "tongue";
 
 			return DEFAULT_TONGUE_NAMES[i_character.tongueType] + " tongue";
@@ -2248,12 +2248,12 @@ package classes
 		);
 		public static const DEFAULT_TONGUE_NAMES:Object = createMapFromPairs(
 				[
-					[TONGUE_HUMAN, "human"],
-					[TONGUE_SNAKE, "serpentine"],
-					[TONGUE_DEMONIC, "demonic"],
-					[TONGUE_DRACONIC, "draconic"],
-					[TONGUE_ECHIDNA, "echidna"],
-					[TONGUE_LIZARD, "lizard"],
+					[Tongue.HUMAN, "human"],
+					[Tongue.SNAKE, "serpentine"],
+					[Tongue.DEMONIC, "demonic"],
+					[Tongue.DRACONIC, "draconic"],
+					[Tongue.ECHIDNA, "echidna"],
+					[Tongue.LIZARD, "lizard"],
 				]
 		);
 		public static const DEFAULT_EYES_NAMES:Object = createMapFromPairs(

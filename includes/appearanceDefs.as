@@ -4,14 +4,6 @@
 
 // Description constants
 
-// tongueType
-public static const TONGUE_HUMAN:int                                                =   0;
-public static const TONGUE_SNAKE:int                                                =   1;
-public static const TONGUE_DEMONIC:int                                              =   2;
-public static const TONGUE_DRACONIC:int                                             =   3;
-public static const TONGUE_ECHIDNA:int                                              =   4;
-public static const TONGUE_LIZARD:int                                               =   5;
-
 // eyeType
 public static const EYES_HUMAN:int                                                  =   0;
 public static const EYES_FOUR_SPIDER_EYES:int                                       =   1; //DEPRECATED, USE EYES_SPIDER AND EYECOUNT = 4

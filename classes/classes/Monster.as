@@ -333,7 +333,7 @@
 			//// 8. Face
 			///*OPTIONAL*/ //this.faceType = Face.; // default HUMAN
 			///*OPTIONAL*/ //this.earType = EARS_; // default HUMAN
-			///*OPTIONAL*/ //this.tongueType = TONGUE_; // default HUMAN
+			///*OPTIONAL*/ //this.tongueType = Tongue.; // default HUMAN
 			///*OPTIONAL*/ //this.eyeType = EYES_; // default HUMAN
 
 			//// 9. Primary stats.

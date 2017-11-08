@@ -368,12 +368,12 @@ package classes.Items.Consumables
 				player.faceType = Face.LIZARD;
 			}
 			//-Lizard tongue
-			if (player.tongueType === TONGUE_SNAKE && changes < changeLimit && rand(10) < 6) {
+			if (player.tongueType === Tongue.SNAKE && changes < changeLimit && rand(10) < 6) {
 				// Higher (60%) chance to be 'fixed' if old variant
 				mutations.gainLizardTongue();
 			}
 
-			if ([TONGUE_LIZARD, TONGUE_SNAKE].indexOf(player.tongueType) === -1 && player.hasReptileFace() && changes < changeLimit && rand(3) === 0) {
+			if ([Tongue.LIZARD, Tongue.SNAKE].indexOf(player.tongueType) === -1 && player.hasReptileFace() && changes < changeLimit && rand(3) === 0) {
 				mutations.gainLizardTongue();
 			}
 			//-Remove Gills

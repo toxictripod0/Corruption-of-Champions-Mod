@@ -107,9 +107,9 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//-Human tongue
-			if (player.tongueType !== TONGUE_HUMAN && changes < changeLimit && rand(4) === 0) {
+			if (player.tongueType !== Tongue.HUMAN && changes < changeLimit && rand(4) === 0) {
 				outputText("\n\nYou feel something strange inside your face as your tongue shrinks and recedes until it feels smooth and rounded.  <b>You realize your tongue has changed back into human tongue!</b>");
-				player.tongueType = TONGUE_HUMAN;
+				player.tongueType = Tongue.HUMAN;
 				changes++;
 			}
 			//Remove odd eyes

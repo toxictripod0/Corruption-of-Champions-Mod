@@ -10,6 +10,7 @@ package classes
 	import classes.BodyParts.RearBody;
 	import classes.BodyParts.Skin;
 	import classes.BodyParts.Tail;
+	import classes.BodyParts.Tongue;
 	import classes.BodyParts.UnderBody;
 	import classes.BodyParts.Wings;
 import classes.GlobalFlags.kGAMECLASS;
@@ -592,7 +593,9 @@ import mx.logging.ILogger;
 		public var eyeCount:Number = 2;
 
 		//TongueType
-		public var tongueType:Number = TONGUE_HUMAN;
+		public var tongue:Tongue = new Tongue();
+		public function get tongueType():Number { return tongue.type; }
+		public function set tongueType(value:Number):void { tongue.type = value; }
 
 		//ArmType
 		public var arms:Arms = new Arms();
@@ -3922,7 +3925,7 @@ import mx.logging.ILogger;
 		 * Echidna 1 ft long (i'd consider it barely qualifying), demonic 2 ft long, draconic 4 ft long
 		 */
 		public function hasLongTongue():Boolean {
-			return tongueType == TONGUE_DEMONIC || tongueType == TONGUE_DRACONIC || tongueType == TONGUE_ECHIDNA;
+			return tongueType == Tongue.DEMONIC || tongueType == Tongue.DRACONIC || tongueType == Tongue.ECHIDNA;
 		}
 		
 		public function damageToughnessModifier(displayMode:Boolean = false):Number {

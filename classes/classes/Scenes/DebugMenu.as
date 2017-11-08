@@ -894,13 +894,13 @@ import classes.Items.*
 		];
 		*/
 		private static const TONGUE_TYPE_CONSTANTS:Array = [
-			[TONGUE_HUMAN, "(0) HUMAN"],
-			[TONGUE_SNAKE, "(1) SNAKE"],
-			[TONGUE_DEMONIC, "(2) DEMONIC"],
-			[TONGUE_DRACONIC, "(3) DRACONIC"],
-			[TONGUE_ECHIDNA, "(4) ECHIDNA"],
+			[Tongue.HUMAN, "(0) HUMAN"],
+			[Tongue.SNAKE, "(1) SNAKE"],
+			[Tongue.DEMONIC, "(2) DEMONIC"],
+			[Tongue.DRACONIC, "(3) DRACONIC"],
+			[Tongue.ECHIDNA, "(4) ECHIDNA"],
 			/* [INTERMOD: xianxia]
-			[TONGUE_CAT, "(5) CAT"],
+			[Tongue.CAT, "(5) CAT"],
 			*/
 		];
 		private static const EYE_TYPE_CONSTANTS:Array = [
@@ -1385,7 +1385,7 @@ import classes.Items.*
 			player.copySkinToUnderBody({       // copy the main skin props to the underBody skin ...
 				desc: "ventral dragon scales"  // ... and only override the desc
 			});
-			player.tongueType = TONGUE_DRACONIC;
+			player.tongueType = Tongue.DRACONIC;
 			player.hornType = HORNS_DRACONIC_X2;
 			player.horns = 4;
 			player.wingType = Wings.DRACONIC_LARGE;
