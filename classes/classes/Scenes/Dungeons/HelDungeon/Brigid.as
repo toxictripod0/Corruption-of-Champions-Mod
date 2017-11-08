@@ -93,7 +93,7 @@ package classes.Scenes.Dungeons.HelDungeon
 			this.additionalXP = 50;
 			this.wingType = Wings.FEATHERED_LARGE;
 			this.tailType = Tail.DEMONIC;
-			this.hornType = HORNS_DEMON;
+			this.hornType = Horns.DEMON;
 			this.horns = 2;
 			this.drop = NO_DROP;
 			checkMonster();

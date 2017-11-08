@@ -149,7 +149,7 @@ package classes.Items.Consumables
 			//Horns
 			if (changes < changeLimit && player.horns > 0 && Utils.rand(3) == 0) {
 				player.horns = 0;
-				player.hornType = CoC.HORNS_NONE;
+				player.hornType = Horns.NONE;
 				outputText("\n\nYour horns crumble, falling apart in large chunks until they flake away to nothing.");
 				changes++;
 			}

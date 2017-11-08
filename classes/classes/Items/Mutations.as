@@ -2042,9 +2042,9 @@ package classes.Items
 			//New horns or expanding mino horns
 			if (tainted && changes < changeLimit && rand(3) == 0 && player.faceType == Face.HUMAN) {
 				//Get bigger or change horns
-				if (player.hornType == HORNS_COW_MINOTAUR || player.hornType == HORNS_NONE) {
+				if (player.hornType == Horns.COW_MINOTAUR || player.hornType == Horns.NONE) {
 					//Get bigger if player has horns
-					if (player.hornType == HORNS_COW_MINOTAUR) {
+					if (player.hornType == Horns.COW_MINOTAUR) {
 						if (player.horns < 5) {
 							//Fems horns don't get bigger.
 							outputText("\n\nYour small horns get a bit bigger, stopping as medium sized nubs.");
@@ -2053,22 +2053,22 @@ package classes.Items
 						}
 					}
 					//If no horns yet..
-					if (player.hornType == HORNS_NONE || player.horns == 0) {
+					if (player.hornType == Horns.NONE || player.horns == 0) {
 						outputText("\n\nWith painful pressure, the skin on your forehead splits around two tiny nub-like horns, similar to those you would see on the cattle back in your homeland.");
-						player.hornType = HORNS_COW_MINOTAUR;
+						player.hornType = Horns.COW_MINOTAUR;
 						player.horns = 1;
 						changes++;
 					}
 					//TF other horns
-					if (player.hornType != HORNS_NONE && player.hornType != HORNS_COW_MINOTAUR && player.horns > 0) {
+					if (player.hornType != Horns.NONE && player.hornType != Horns.COW_MINOTAUR && player.horns > 0) {
 						outputText("\n\nYour horns twist, filling your skull with agonizing pain for a moment as they transform into cow-horns.");
-						player.hornType = HORNS_COW_MINOTAUR;
+						player.hornType = Horns.COW_MINOTAUR;
 					}
 				}
 				//Not mino horns, change to cow-horns
-				if (player.hornType == HORNS_DEMON || player.hornType > HORNS_COW_MINOTAUR) {
+				if (player.hornType == Horns.DEMON || player.hornType > Horns.COW_MINOTAUR) {
 					outputText("\n\nYour horns vibrate and shift as if made of clay, reforming into two small bovine nubs.");
-					player.hornType = HORNS_COW_MINOTAUR;
+					player.hornType = Horns.COW_MINOTAUR;
 					player.horns = 2;
 					changes++;
 				}
@@ -4153,23 +4153,23 @@ package classes.Items
 			}
 			//grow horns!
 			if (player.horns == 0 || (rand(player.horns + 3) == 0)) {
-				if (player.horns < 12 && (player.hornType == HORNS_NONE || player.hornType == HORNS_DEMON)) {
+				if (player.horns < 12 && (player.hornType == Horns.NONE || player.hornType == Horns.DEMON)) {
 					outputText("\n\n");
 					if (player.horns == 0) {
 						outputText("A small pair of demon horns erupts from your forehead.  They actually look kind of cute.  <b>You have horns!</b>");
 					}
 					else outputText("Another pair of demon horns, larger than the last, forms behind the first row.");
-					if (player.hornType == HORNS_NONE) player.hornType = HORNS_DEMON;
+					if (player.hornType == Horns.NONE) player.hornType = Horns.DEMON;
 					player.horns++;
 					player.horns++;
 					dynStats("cor", 3);
 				}
 				//Text for shifting horns
-				else if (player.hornType > HORNS_DEMON) {
+				else if (player.hornType > Horns.DEMON) {
 					outputText("\n\n");
 					outputText("Your horns shift, shrinking into two small demonic-looking horns.");
 					player.horns = 2;
-					player.hornType = HORNS_DEMON;
+					player.hornType = Horns.DEMON;
 					dynStats("cor", 3);
 				}
 				flags[kFLAGS.TIMES_TRANSFORMED]++;
@@ -4427,15 +4427,15 @@ package classes.Items
 			if (player.horns == 0 && rand(2) == 0) {
 				outputText("\n\nYou hear the sound of cracking branches erupting from the tip of your skull.  Small bulges on either side of your head advance outwards in a straight line, eventually spreading out in multiple directions like a miniature tree.  Investigating the exotic additions sprouting from your head, the situation becomes clear.  <b>You've grown antlers!</b>");
 				//[Player horn type changed to Antlers.]
-				player.hornType = HORNS_ANTLERS;
+				player.hornType = Horns.ANTLERS;
 				player.horns = 4 + rand(12);
 				changes++;
 			}
 			//[Show this description instead if the player already had horns when the transformation occurred.] 
-			else if (player.horns > 0 && player.hornType != HORNS_ANTLERS && rand(2) == 0) {
+			else if (player.horns > 0 && player.hornType != Horns.ANTLERS && rand(2) == 0) {
 				outputText("\n\nYou hear the sound of cracking branches erupting from the tip of your skull.  The horns on your head begin to twist and turn fanatically, their texture and size morphing considerably until they resemble something more like trees than anything else.  Branching out rebelliously, you've come to the conclusion that <b>you've somehow gained antlers!</b>");
 				//[Player horn type changed to Antlers.]
-				player.hornType = HORNS_ANTLERS;
+				player.hornType = Horns.ANTLERS;
 				player.horns = 4 + rand(12);
 				changes++;
 			}

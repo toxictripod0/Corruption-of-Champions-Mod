@@ -892,7 +892,7 @@ use namespace kGAMECLASS;
 				if (isTaur())
 					race = "centaur-morph";
 				else
-					if (hornType == HORNS_UNICORN) {
+					if (hornType == Horns.UNICORN) {
 						if (wingType == Wings.FEATHERED_LARGE)
 							race = "alicorn";
 						else
@@ -1013,12 +1013,12 @@ use namespace kGAMECLASS;
 
 			if (lowerBody == LOWER_BODY_TYPE_HOOFED && isTaur()) {
 				if (wingType == Wings.FEATHERED_LARGE) {
-					if (hornType == HORNS_UNICORN)
+					if (hornType == Horns.UNICORN)
 						race = "alicorn-taur";
 					else
 						race = "pegataur";
 				} else {
-					if (hornType == HORNS_UNICORN)
+					if (hornType == Horns.UNICORN)
 						race = "unicorn-taur";
 					else {
 						if (horseScore() >= 5)
@@ -1098,7 +1098,7 @@ use namespace kGAMECLASS;
 				impCounter++;
 			if (hasPlainSkin() && ["red", "orange"].indexOf(skinTone) != -1)
 				impCounter++;
-			if (hornType == HORNS_IMP)
+			if (hornType == Horns.IMP)
 				impCounter++;
 			if (armType == Arms.PREDATOR && clawType == CLAW_TYPE_IMP)
 				impCounter++;
@@ -1202,7 +1202,7 @@ use namespace kGAMECLASS;
 				minoCounter++;
 			if (tailType == Tail.COW)
 				minoCounter++;
-			if (hornType == HORNS_COW_MINOTAUR)
+			if (hornType == Horns.COW_MINOTAUR)
 				minoCounter++;
 			if (faceType == Face.HUMAN && minoCounter > 0)
 				minoCounter++;
@@ -1445,7 +1445,7 @@ use namespace kGAMECLASS;
 				lizardCounter++;
 			if (hasDragonHorns())
 				lizardCounter++;
-			if (hornType == HORNS_DRACONIC_X4_12_INCH_LONG)
+			if (hornType == Horns.DRACONIC_X4_12_INCH_LONG)
 				lizardCounter++;
 			if (armType == Arms.PREDATOR && clawType == CLAW_TYPE_LIZARD)
 				lizardCounter++;
@@ -1579,7 +1579,7 @@ use namespace kGAMECLASS;
 				dragonCounter++;
 			if (hasDragonHorns())
 				dragonCounter++;
-			if (hornType == HORNS_DRACONIC_X4_12_INCH_LONG)
+			if (hornType == Horns.DRACONIC_X4_12_INCH_LONG)
 				dragonCounter++;
 			if (hasDragonfire())
 				dragonCounter++;
@@ -1869,7 +1869,7 @@ use namespace kGAMECLASS;
 				rhinoCounter++;
 			if (faceType == Face.RHINO)
 				rhinoCounter++;
-			if (hornType == HORNS_RHINO)
+			if (hornType == Horns.RHINO)
 				rhinoCounter++;
 			if (rhinoCounter >= 2 && skinTone == "gray")
 				rhinoCounter++;
@@ -1909,7 +1909,7 @@ use namespace kGAMECLASS;
 				deerCounter++;
 			if (lowerBody == LOWER_BODY_TYPE_CLOVEN_HOOFED)
 				deerCounter++;
-			if (hornType == HORNS_ANTLERS && horns >= 4)
+			if (hornType == Horns.ANTLERS && horns >= 4)
 				deerCounter++;
 			if (deerCounter >= 2 && hasFur())
 				deerCounter++;
@@ -1952,7 +1952,7 @@ use namespace kGAMECLASS;
 			if (lowerBody == LOWER_BODY_TYPE_CAT)
 				catCounter++;
 			if (catCounter >= 4) {
-				if (hornType == HORNS_DEMON || hasDragonHorns())
+				if (hornType == Horns.DEMON || hasDragonHorns())
 					catCounter++;
 				if (hasLeatheryWings())
 					catCounter++;

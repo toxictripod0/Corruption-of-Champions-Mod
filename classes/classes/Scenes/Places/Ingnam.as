@@ -410,7 +410,7 @@ package classes.Scenes.Places
 				outputText("The innkeeper looks at you and says, \"<i>I can see that you have changed quite a lot! Back then, before you left, you were a human. Now look at yourself!</i>\"");
 			}
 			if (player.horns > 0 && player.hornType > 0) {
-				outputText("\n\n\"<i>Are these " + (player.hornType == HORNS_ANTLERS ? "antlers" : "horns") + "? I can imagine they must be real,</i>\" The innkeeper says before touching your [horns]. You can already feel his fingers rubbing against your [horns]. \"<i>Yes, they're real and I think you look better,</i>\" he says. You thank him for complimenting on your horns.");
+				outputText("\n\n\"<i>Are these " + (player.hornType == Horns.ANTLERS ? "antlers" : "horns") + "? I can imagine they must be real,</i>\" The innkeeper says before touching your [horns]. You can already feel his fingers rubbing against your [horns]. \"<i>Yes, they're real and I think you look better,</i>\" he says. You thank him for complimenting on your horns.");
 			}
 			if (player.wingType != Wings.NONE) {
 				outputText("\n\nNext, he looks at your wings that sprout from your back and says, \"<i>Wings? I've never seen a person with wings before!</i>\" ");

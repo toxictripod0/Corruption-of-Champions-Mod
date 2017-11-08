@@ -96,7 +96,7 @@ package classes
 			//Face: Elf ears, 4x demonic horns
 			player.earType = Ears.ELFIN;
 			player.horns = 4;
-			player.hornType = HORNS_DEMON;
+			player.hornType = Horns.DEMON;
 			//Body: Plump, no muscle tone, wide thighs, badonkulous ass, demon tail, demonic high heels
 			player.thickness = 75;
 			player.tone = 0;
@@ -798,7 +798,7 @@ package classes
 			//Ears = Horse
 			player.earType = Ears.HORSE;
 			//Horns = Dragon
-			player.hornType = HORNS_DRACONIC_X4_12_INCH_LONG;
+			player.hornType = Horns.DRACONIC_X4_12_INCH_LONG;
 			player.horns = 12;
 			//Face = Horse
 			player.faceType = Face.HORSE;
@@ -1288,7 +1288,7 @@ package classes
 			player.fertility = 50;
 			player.fatigue = 0;
 			player.horns = 0;
-			player.hornType = HORNS_NONE;
+			player.hornType = Horns.NONE;
 			player.tallness = 109;
 			player.tailVenom = 0;
 			player.tailRecharge = 0;
@@ -1508,7 +1508,7 @@ package classes
 			player.createPerk(PerkLib.Incorporeality,0,0,0,0);
 			player.wingType = Wings.FEATHERED_LARGE;
 			player.armType = Arms.HARPY;
-			player.hornType = HORNS_DRACONIC_X2;
+			player.hornType = Horns.DRACONIC_X2;
 			player.horns = 4;
 			player.faceType = Face.SPIDER_FANGS;
 			player.hairLength = 69.2;
@@ -1632,7 +1632,7 @@ package classes
 			player.tailType = Tail.FOX; // soft fur feels so lovely...
 			player.tailVenom = 9;			
 			player.tongueType = Tongue.DRACONIC; // tongue as long as your whole body height! almost tentackle! and so much fun to use!
-			player.hornType = HORNS_DRACONIC_X2; // draconic horns adds to your exotic look, counts towards dragon score and keeps your tentacle hair out of your face! and your partners can use them as handles on occasions, letting your delicate ears uncrumpled!
+			player.hornType = Horns.DRACONIC_X2; // draconic horns adds to your exotic look, counts towards dragon score and keeps your tentacle hair out of your face! and your partners can use them as handles on occasions, letting your delicate ears uncrumpled!
 			player.horns = 8;
 			player.wingType = Wings.DRACONIC_LARGE; // wings! to fly!
 			
@@ -1880,16 +1880,16 @@ package classes
 			
 			var horns:Number = rand(100); // 70% no horns, 30% to random
 			if (horns<70)
-				player.hornType = HORNS_NONE;
+				player.hornType = Horns.NONE;
 			else if (horns<80){
-				player.hornType = HORNS_DEMON;
+				player.hornType = Horns.DEMON;
 				player.horns = (rand(4)+1)*2; // 1-4 pairs
 				}
 			else if (horns<90){
-				player.hornType = HORNS_COW_MINOTAUR;
+				player.hornType = Horns.COW_MINOTAUR;
 				player.horns = 2;}
 			else{
-				player.hornType = HORNS_DRACONIC_X2;
+				player.hornType = Horns.DRACONIC_X2;
 				player.horns = 2;}
 			
 			var wings:Number = rand(4); // always have wings to fly... small boon to make up for lack of fighting power

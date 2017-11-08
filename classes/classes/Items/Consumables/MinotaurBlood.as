@@ -330,9 +330,9 @@ package classes.Items.Consumables
 			if (changes < changeLimit && rand(3) === 0 && player.earType === Ears.COW && player.tailType === Tail.COW) {
 				temp = 1;
 				//New horns or expanding mino horns
-				if (player.hornType === HORNS_COW_MINOTAUR || player.hornType === HORNS_NONE) {
+				if (player.hornType === Horns.COW_MINOTAUR || player.hornType === Horns.NONE) {
 					//Get bigger if player has horns
-					if (player.hornType === HORNS_COW_MINOTAUR) {
+					if (player.hornType === Horns.COW_MINOTAUR) {
 						//Fems horns don't get bigger.
 						if (player.vaginas.length > 0) {
 							if (player.horns > 4) {
@@ -372,15 +372,15 @@ package classes.Items.Consumables
 					//If no horns yet..
 					else {
 						outputText("\n\nWith painful pressure, the skin on your forehead splits around two tiny nub-like horns, similar to those you would see on the cattle back in your homeland.");
-						player.hornType = HORNS_COW_MINOTAUR;
+						player.hornType = Horns.COW_MINOTAUR;
 						player.horns = 2;
 						changes++;
 					}
 				}
 				//Not mino horns, change to cow-horns
-				if (player.hornType === HORNS_DEMON || player.hornType > HORNS_COW_MINOTAUR) {
+				if (player.hornType === Horns.DEMON || player.hornType > Horns.COW_MINOTAUR) {
 					outputText("\n\nYour horns vibrate and shift as if made of clay, reforming into two horns with a bovine-like shape.");
-					player.hornType = HORNS_COW_MINOTAUR;
+					player.hornType = Horns.COW_MINOTAUR;
 					changes++;
 				}
 			}

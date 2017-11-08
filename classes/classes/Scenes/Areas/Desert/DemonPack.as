@@ -134,7 +134,7 @@ package classes.Scenes.Areas.Desert
 			this.special1 = game.combat.packAttack;
 			this.special2 = game.combat.lustAttack;
 			this.tailType = Tail.DEMONIC;
-			this.hornType = HORNS_DEMON;
+			this.hornType = Horns.DEMON;
 			this.horns = 2;
 			checkMonster();
 		}

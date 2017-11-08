@@ -8,6 +8,7 @@ package classes
 	import classes.BodyParts.Face;
 	import classes.BodyParts.Gills;
 	import classes.BodyParts.Hair;
+	import classes.BodyParts.Horns;
 	import classes.BodyParts.Neck;
 	import classes.BodyParts.RearBody;
 	import classes.BodyParts.Skin;
@@ -470,8 +471,11 @@ import mx.logging.ILogger;
 		4 - Double draconic
 		5 - Antlers
 		6 - Goat*/
-		public var hornType:Number = HORNS_NONE;
-		public var horns:Number = 0;
+		public var hornsPart:Horns = new Horns();
+		public function get hornType():Number { return hornsPart.type; }
+		public function set hornType(value:Number):void { hornsPart.type = value; }
+		public function get horns():Number { return hornsPart.value; }
+		public function set horns(value:Number):void { hornsPart.value = value; }
 
 		/*Wingtype
 		0 - none
@@ -772,8 +776,8 @@ import mx.logging.ILogger;
 				if (tailVenom != 0) error += "No tail but tailVenom = "+tailVenom+". ";
 			}
 			// 4.4. horns
-			if (hornType == HORNS_NONE){
-				if (horns>0) error += "horns > 0 but hornType = HORNS_NONE. ";
+			if (hornType == Horns.NONE){
+				if (horns>0) error += "horns > 0 but hornType = Horns.NONE. ";
 			} else {
 				if (horns==0) error += "Has horns but their number 'horns' = 0. ";
 			}

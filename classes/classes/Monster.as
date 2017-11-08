@@ -415,7 +415,7 @@
 			///*OPTIONAL*/ //this.tailRecharge = ; // default 5
 
 			//// 17. Horns
-			///*OPTIONAL*/ //this.hornType = HORNS_; // default NONE
+			///*OPTIONAL*/ //this.hornType = Horns.; // default NONE
 			///*OPTIONAL*/ //this.horns = numberOfHorns; // default 0
 
 			//// 18. Wings
@@ -1046,7 +1046,7 @@
 			result += Hehas;
 			if (tailType == Tail.NONE) result += "no tail, ";
 			else result+=(Appearance.DEFAULT_TAIL_NAMES[tailType]||("tailType#"+tailType))+" tail with venom="+tailVenom+" and recharge="+tailRecharge+", ";
-			if (hornType == HORNS_NONE) result += "no horns, ";
+			if (hornType == Horns.NONE) result += "no horns, ";
 			else result += horns+" "+(Appearance.DEFAULT_HORNS_NAMES[hornType]||("hornType#"+hornType))+" horns, ";
 			if (wingType == Wings.NONE) result += "no wings, ";
 			else result += wingDesc+" wings (type "+(Appearance.DEFAULT_WING_NAMES[wingType]||("wingType#"+wingType))+"), ";

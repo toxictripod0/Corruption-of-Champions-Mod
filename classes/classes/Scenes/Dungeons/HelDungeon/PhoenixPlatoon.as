@@ -100,7 +100,7 @@ package classes.Scenes.Dungeons.HelDungeon
 			this.level = 20;
 			this.gems = rand(25) +160;
 			this.additionalXP = 50;
-			this.hornType = HORNS_DRACONIC_X2;
+			this.hornType = Horns.DRACONIC_X2;
 			this.horns = 2;
 			this.tailType = Tail.HARPY;
 			this.wingType = Wings.FEATHERED_LARGE;

@@ -181,7 +181,7 @@ package classes.Scenes.NPCs
 			this.skinTone = "red";
 			this.hairColor = "black";
 			this.hairLength = 15;
-			this.hornType = HORNS_DRACONIC_X4_12_INCH_LONG;
+			this.hornType = Horns.DRACONIC_X4_12_INCH_LONG;
 			this.horns = 4;
 			this.wingType = Wings.DRACONIC_LARGE;
 			this.tailType = Tail.DRACONIC;

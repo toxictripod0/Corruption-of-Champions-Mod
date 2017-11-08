@@ -548,7 +548,7 @@ package classes.Scenes.Areas.Desert {
 			if (this.horns > 0) {
 				this.hornType = rand(7) + 1;
 			} else {
-				this.hornType = HORNS_NONE;
+				this.hornType = Horns.NONE;
 			}
 			this.wingType = rand(13);
 			this.antennae = rand(2);

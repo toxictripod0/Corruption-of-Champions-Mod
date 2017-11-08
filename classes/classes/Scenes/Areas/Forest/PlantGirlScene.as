@@ -202,7 +202,7 @@ package classes.Scenes.Areas.Forest
 			//(proceeds to Fight 1.0, with the plant woman having 290-270 HP instead of 300, depending on the PC having horns and the like).
 			startCombat(monster);// TODO create PlantGirl
 			monster.HP -= 20;
-			if (player.horns > 0 && player.hornType > HORNS_NONE) monster.HP -= 15;
+			if (player.horns > 0 && player.hornType > Horns.NONE) monster.HP -= 15;
 			doNext(playerMenu);
 		}
 

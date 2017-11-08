@@ -71,10 +71,10 @@ package classes.Items.Consumables
 				mutations.removeAntennae();
 			}
 			//remove horns
-			if ((player.hornType !== HORNS_NONE || player.horns > 0) && rand(3) === 0 && changes < changeLimit) {
+			if ((player.hornType !== Horns.NONE || player.horns > 0) && rand(3) === 0 && changes < changeLimit) {
 				outputText("\n\nYou feel your horns crumble, falling apart in large chunks until they flake away into nothing.");
 				player.horns = 0;
-				player.hornType = HORNS_NONE;
+				player.hornType = Horns.NONE;
 				changes++;
 			}
 			//remove wings

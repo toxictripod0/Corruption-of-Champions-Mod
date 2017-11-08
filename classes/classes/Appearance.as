@@ -2297,17 +2297,17 @@ package classes
 		);
 		public static const DEFAULT_HORNS_NAMES:Object = createMapFromPairs(
 				[
-					[HORNS_NONE, "non-existent"],
-					[HORNS_DEMON, "demon"],
-					[HORNS_COW_MINOTAUR, "cow"],
-					[HORNS_DRACONIC_X2, "2 draconic"],
-					[HORNS_DRACONIC_X4_12_INCH_LONG, "four 12\" long draconic"],
-					[HORNS_ANTLERS, "deer"],
-					[HORNS_GOAT, "goat"],
-					[HORNS_RHINO, "rhino"],
-					[HORNS_SHEEP, "sheep"],
-					[HORNS_RAM, "ram"],
-					[HORNS_IMP, "imp"],
+					[Horns.NONE, "non-existent"],
+					[Horns.DEMON, "demon"],
+					[Horns.COW_MINOTAUR, "cow"],
+					[Horns.DRACONIC_X2, "2 draconic"],
+					[Horns.DRACONIC_X4_12_INCH_LONG, "four 12\" long draconic"],
+					[Horns.ANTLERS, "deer"],
+					[Horns.GOAT, "goat"],
+					[Horns.RHINO, "rhino"],
+					[Horns.SHEEP, "sheep"],
+					[Horns.RAM, "ram"],
+					[Horns.IMP, "imp"],
 				]
 		);
 		public static const DEFAULT_ANTENNAE_NAMES:Object = createMapFromPairs(

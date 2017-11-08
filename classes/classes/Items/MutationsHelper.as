@@ -748,18 +748,18 @@ package classes.Items
 				throw new Error("Unimplemented tfSource: '" + tfSource + "' used in gainDraconicHorns!");
 
 			//No dragon horns yet.
-			if (player.hornType != HORNS_DRACONIC_X2 && player.hornType != HORNS_DRACONIC_X4_12_INCH_LONG) {
+			if (player.hornType != Horns.DRACONIC_X2 && player.hornType != Horns.DRACONIC_X4_12_INCH_LONG) {
 				//Already have horns
 				if (player.horns > 0) {
 					//High quantity demon horns
-					if (player.hornType == HORNS_DEMON && player.horns > 4) {
+					if (player.hornType == Horns.DEMON && player.horns > 4) {
 						outputText("\n\nYour horns condense, twisting around each other and merging into larger, pointed protrusions.  By the time they finish you have four draconic-looking horns, each about twelve inches long.");
 						player.horns = 12;
-						player.hornType = HORNS_DRACONIC_X4_12_INCH_LONG;
+						player.hornType = Horns.DRACONIC_X4_12_INCH_LONG;
 					}
 					else {
 						outputText("\n\nYou feel your horns changing and warping, and reach back to touch them.  They have a slight curve and a gradual taper.  They must look something like the horns the dragons in your village's legends always had.");
-						player.hornType = HORNS_DRACONIC_X2;
+						player.hornType = Horns.DRACONIC_X2;
 						if (player.horns > 13) {
 							outputText("  The change seems to have shrunken the horns, they're about a foot long now.");
 							player.horns = 12;
@@ -773,14 +773,14 @@ package classes.Items
 					//-If no horns, grow a pair
 					outputText("\n\nWith painful pressure, the skin on the sides of your forehead splits around two tiny nub-like horns.  They're angled back in such a way as to resemble those you saw on the dragons in your village's legends.  A few inches of horn sprout from your head before stopping.  <b>You have about four inches of dragon-like horn.</b>");
 					player.horns = 4;
-					player.hornType = HORNS_DRACONIC_X2;
+					player.hornType = Horns.DRACONIC_X2;
 
 					changes++;
 				}
 			}
 			//ALREADY DRAGON
 			else {
-				if (player.hornType == HORNS_DRACONIC_X2) {
+				if (player.hornType == Horns.DRACONIC_X2) {
 					if (player.horns < 12) {
 						if (rand(3) == 0) {
 							outputText("\n\nYou get a headache as an inch of fresh horn escapes from your pounding skull.");
@@ -797,7 +797,7 @@ package classes.Items
 					else {
 						//--Next horn growth adds second row and brings length up to 12\"
 						outputText("\n\nA second row of horns erupts under the first, and though they are narrower, they grow nearly as long as your first row before they stop.  A sense of finality settles over you.  <b>You have as many horns as a " + race + " can grow.</b>");
-						player.hornType = HORNS_DRACONIC_X4_12_INCH_LONG;
+						player.hornType = Horns.DRACONIC_X4_12_INCH_LONG;
 						changes++;
 					}
 				}

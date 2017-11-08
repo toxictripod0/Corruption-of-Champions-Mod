@@ -951,19 +951,19 @@ import classes.Items.*
 			[Ears.SHEEP, "(19) SHEEP"],
 		];
 		private static const HORN_TYPE_CONSTANTS:Array    = [
-			[HORNS_NONE, "(0) NONE"],
-			[HORNS_DEMON, "(1) DEMON"],
-			[HORNS_COW_MINOTAUR, "(2) COW_MINOTAUR"],
-			[HORNS_DRACONIC_X2, "(3) DRACONIC_X2"],
-			[HORNS_DRACONIC_X4_12_INCH_LONG, "(4) DRACONIC_X4_12_INCH_LONG"],
-			[HORNS_ANTLERS, "(5) ANTLERS"],
-			[HORNS_GOAT, "(6) GOAT"],
-			[HORNS_UNICORN, "(7) UNICORN"],
-			[HORNS_RHINO, "(8) RHINO"],
+			[Horns.NONE, "(0) NONE"],
+			[Horns.DEMON, "(1) DEMON"],
+			[Horns.COW_MINOTAUR, "(2) COW_MINOTAUR"],
+			[Horns.DRACONIC_X2, "(3) DRACONIC_X2"],
+			[Horns.DRACONIC_X4_12_INCH_LONG, "(4) DRACONIC_X4_12_INCH_LONG"],
+			[Horns.ANTLERS, "(5) ANTLERS"],
+			[Horns.GOAT, "(6) GOAT"],
+			[Horns.UNICORN, "(7) UNICORN"],
+			[Horns.RHINO, "(8) RHINO"],
 			/* [INTERMOD: xianxia]
-			[HORNS_OAK, "(9) OAK"],
-			[HORNS_GARGOYLE, "(10) GARGOYLE"],
-			[HORNS_ORCHID, "(11) ORCHID"],
+			[Horns.OAK, "(9) OAK"],
+			[Horns.GARGOYLE, "(10) GARGOYLE"],
+			[Horns.ORCHID, "(11) ORCHID"],
 			*/
 		];
 		private static const HORN_COUNT_CONSTANTS:Array = [
@@ -1357,7 +1357,7 @@ import classes.Items.*
 			player.skinDesc = "fur";
 			player.underBody.restore(); // Restore the underbody for now
 			//Draconic TF
-			player.hornType = HORNS_DRACONIC_X2;
+			player.hornType = Horns.DRACONIC_X2;
 			player.horns = 4;
 			player.wingType = Wings.BAT_LIKE_LARGE;
 			//Scorpion TF
@@ -1386,7 +1386,7 @@ import classes.Items.*
 				desc: "ventral dragon scales"  // ... and only override the desc
 			});
 			player.tongueType = Tongue.DRACONIC;
-			player.hornType = HORNS_DRACONIC_X2;
+			player.hornType = Horns.DRACONIC_X2;
 			player.horns = 4;
 			player.wingType = Wings.DRACONIC_LARGE;
 			doNext(styleHackMenu);

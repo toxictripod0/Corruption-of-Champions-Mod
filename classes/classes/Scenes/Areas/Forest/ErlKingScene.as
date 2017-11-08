@@ -1041,20 +1041,20 @@ public class ErlKingScene extends BaseContent implements Encounter
 				changes++;
 			}
 			//Gain deer horns AKA antlers
-			if (rand(3) == 0 && changes < changeLimit && player.hornType == HORNS_NONE) {
+			if (rand(3) == 0 && changes < changeLimit && player.hornType == Horns.NONE) {
 				outputText("\n\nYou feel an immense pressure from your forehead, and you reach up, feeling the nubs of two new horns.");
-				player.hornType = HORNS_ANTLERS;
+				player.hornType = Horns.ANTLERS;
 				player.horns = 1;
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.horns > 0 && player.hornType != HORNS_ANTLERS) {
+			if (rand(3) == 0 && changes < changeLimit && player.horns > 0 && player.hornType != Horns.ANTLERS) {
 				outputText("\n\nYou feel a strange twisting sensation from your horns as they extend outwards.  You reach up to feel them and realize that you’ve now got <b>pronged, stag-like horns.</b>");
-				player.hornType = HORNS_ANTLERS;
+				player.hornType = Horns.ANTLERS;
 				player.horns = 4;
 				changes++;
 			}
 			//Increase points on deer antlers
-			if (rand(3) == 0 && changes < changeLimit && player.hornType == HORNS_ANTLERS && player.horns < 30) {
+			if (rand(3) == 0 && changes < changeLimit && player.hornType == Horns.ANTLERS && player.horns < 30) {
 				outputText("\n\nYou feel a strange twisting sensation from your antlers as they extend and split outwards.  You reach up to feel them and realize that your antlers are now even more branched out.");
 				if (player.horns < 20 && rand(2) == 0) player.horns += (1 + rand(4));
 				player.horns++;

@@ -1513,15 +1513,15 @@ public class CombatAbilities extends BaseContent
 				addButton(button++, "Kick", kick).hint("Attempt to kick an enemy using your powerful lower body. \n\nFatigue Cost: " + player.physicalCost(15));
 			}
 			//Gore if mino horns
-			if (player.hornType == HORNS_COW_MINOTAUR && player.horns >= 6) {
+			if (player.hornType == Horns.COW_MINOTAUR && player.horns >= 6) {
 				addButton(button++, "Gore", goreAttack).hint("Lower your head and charge your opponent, attempting to gore them on your horns. This attack is stronger and easier to land with large horns. \n\nFatigue Cost: " + player.physicalCost(15));
 			}
 			//Rams Attack - requires rams horns
-			if (player.hornType == HORNS_RAM && player.horns >= 2) {
+			if (player.hornType == Horns.RAM && player.horns >= 2) {
 				addButton(button++, "Horn Stun", ramsStun).hint("Use a ramming headbutt to try and stun your foe. \n\nFatigue Cost: " + player.physicalCost(10));
 			}
 			//Upheaval - requires rhino horn
-			if (player.hornType == HORNS_RHINO && player.horns >= 2 && player.faceType == Face.RHINO) {
+			if (player.hornType == Horns.RHINO && player.horns >= 2 && player.faceType == Face.RHINO) {
 				addButton(button++, "Upheaval", upheavalAttack).hint("Send your foe flying with your dual nose mounted horns. \n\nFatigue Cost: " + player.physicalCost(15));
 			}
 			//Infest if infested

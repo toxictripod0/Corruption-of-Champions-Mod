@@ -415,13 +415,13 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Removes horns
-			if (changes < changeLimit && (player.hornType != HORNS_NONE || player.horns != 0) && rand(5) == 0) {
+			if (changes < changeLimit && (player.hornType != Horns.NONE || player.horns != 0) && rand(5) == 0) {
 				outputText("\n\nYour ");
-				if (player.hornType == HORNS_UNICORN || player.hornType == HORNS_RHINO) outputText("horn");
+				if (player.hornType == Horns.UNICORN || player.hornType == Horns.RHINO) outputText("horn");
 				else outputText("horns");
 				outputText(" crumble, falling apart in large chunks until they flake away to nothing.");
 				player.horns = 0;
-				player.hornType = HORNS_NONE;
+				player.hornType = Horns.NONE;
 				changes++;
 			}
 

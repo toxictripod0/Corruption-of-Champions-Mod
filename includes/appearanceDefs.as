@@ -4,20 +4,6 @@
 
 // Description constants
 
-// hornType
-public static const HORNS_NONE:int                                                  =   0;
-public static const HORNS_DEMON:int                                                 =   1;
-public static const HORNS_COW_MINOTAUR:int                                          =   2;
-public static const HORNS_DRACONIC_X2:int                                           =   3;
-public static const HORNS_DRACONIC_X4_12_INCH_LONG:int                              =   4;
-public static const HORNS_ANTLERS:int                                               =   5;
-public static const HORNS_GOAT:int                                                  =   6;
-public static const HORNS_UNICORN:int                                               =   7;
-public static const HORNS_RHINO:int                                                 =   8;
-public static const HORNS_SHEEP:int                                                 =   9;
-public static const HORNS_RAM:int                                                   =  10;
-public static const HORNS_IMP:int                                                   =  11;
-
 // antennae
 public static const ANTENNAE_NONE:int                                               =   0;
 public static const ANTENNAE_BEE:int                                                =   2;

@@ -183,7 +183,7 @@ package classes.Scenes.Dungeons.Factory
 				if (player.horns > 0) {
 					outputText("Your horns fall off, landing on the floor with a heavy thud.  ");
 					player.horns = 0;
-					player.hornType = HORNS_NONE;
+					player.hornType = Horns.NONE;
 				}
 				mutations.removeAntennae(true);
 			}
