@@ -56,14 +56,14 @@ import classes.GlobalFlags.kFLAGS;
 				if (!hasBeard())
 					faceo += " and chiseled jawline";
 				else
-					faceo += ", chiseled jawline, and " + beard();
+					faceo += ", chiseled jawline, and " + beardDesc();
 			}
 			//10+ -20
 			else if (femininity < 20)
 			{
 				faceo = "a rugged looking " + faceDescript() + " ";
 				if (hasBeard())
-					faceo += "and " + beard();
+					faceo += "and " + beardDesc();
 				faceo += "that's surely handsome";
 			}
 			//21-28
@@ -285,7 +285,7 @@ import classes.GlobalFlags.kFLAGS;
 			return beardLength > 0;
 		}
 		
-		public function beard():String
+		public function beardDesc():String
 		{
 			if (hasBeard())
 				return "beard";

@@ -394,11 +394,11 @@ import mx.logging.ILogger;
 		1- goatee
 		2- clean-cut
 		3- mountain-man*/
-		public var beardPart:Beard = new Beard();
-		public function get beardStyle():Number { return beardPart.style; }
-		public function set beardStyle(value:Number):void { beardPart.style = value; }
-		public function get beardLength():Number { return beardPart.length; }
-		public function set beardLength(value:Number):void { beardPart.length = value; }
+		public var beard:Beard = new Beard();
+		public function get beardStyle():Number { return beard.style; }
+		public function set beardStyle(value:Number):void { beard.style = value; }
+		public function get beardLength():Number { return beard.length; }
+		public function set beardLength(value:Number):void { beard.length = value; }
 				
 		/*Skintype
 		0 - skin
