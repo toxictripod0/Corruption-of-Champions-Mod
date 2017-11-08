@@ -186,7 +186,7 @@ package classes.Items.Consumables
 				mutations.removeExtraBreastRow(tfSource);
 			}
 			//Neck restore
-			if (player.neck.type != NECK_TYPE_NORMAL && changes < changeLimit && rand(4) === 0) {
+			if (player.neck.type != Neck.NORMAL && changes < changeLimit && rand(4) === 0) {
 				mutations.restoreNeck(tfSource);
 			}
 			//Rear body restore

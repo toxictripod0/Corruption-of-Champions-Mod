@@ -492,7 +492,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Neck loss, if not cockatrice neck
-			if (player.neck.type != NECK_TYPE_COCKATRICE && changes < changeLimit && rand(4) == 0)
+			if (player.neck.type != Neck.COCKATRICE && changes < changeLimit && rand(4) == 0)
 				mutations.restoreNeck(tfSource);
 			//Rear body restore
 			if (player.rearBody.type != RearBody.NONE && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
@@ -525,19 +525,19 @@ package classes.Items.Consumables
 					}
 				});
 				player.neck.setAllProps({
-					type: NECK_TYPE_COCKATRICE,
+					type: Neck.COCKATRICE,
 					color: colorChoice[1]
 				});
 				changes++;
 			}
 			//Neck TF, if not already TFed from Body TF above
-			if (player.neck.type != NECK_TYPE_COCKATRICE && player.hasCockatriceSkin() && player.faceType == Face.COCKATRICE && changes < changeLimit && rand(3) == 0) {
+			if (player.neck.type != Neck.COCKATRICE && player.hasCockatriceSkin() && player.faceType == Face.COCKATRICE && changes < changeLimit && rand(3) == 0) {
 				mutations.restoreNeck(tfSource);
 				outputText("\n\nYour neck starts to tingle and [secondary furcolor] feathers begin to grow out of it one after another until a ruff"
 				          +" of soft fluffy feathers has formed like that of an exotic bird.");
 				outputText("\n<b>You now have a cockatrice neck!</b>");
 				player.neck.setAllProps({
-					type: NECK_TYPE_COCKATRICE,
+					type: Neck.COCKATRICE,
 					color: colorChoice[1]
 				});
 				changes++;

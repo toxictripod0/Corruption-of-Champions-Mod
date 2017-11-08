@@ -172,7 +172,7 @@ package classes.Items.Consumables
 				}
 			}
 			//Neck restore
-			if (player.neck.type != NECK_TYPE_NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type != Neck.NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
 			//Rear body restore
 			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
 			//Lose reptile oviposition!

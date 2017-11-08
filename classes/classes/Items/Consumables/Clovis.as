@@ -69,7 +69,7 @@ package classes.Items.Consumables
 				outputText("\n\nYou feel your clothes tighten around your [butt], your behind expanding. Thankfully, it stops before your clothes can't handle it. As you run your hand over the tight fabric, you can't help but grope the now plumper flesh.");
 			}
 			//Neck restore
-			if (player.neck.type != NECK_TYPE_NORMAL && changes < changeLimit && rand(4) == 0)
+			if (player.neck.type != Neck.NORMAL && changes < changeLimit && rand(4) == 0)
 				mutations.restoreNeck(tfSource);
 			//Rear body restore
 			if (player.rearBody.type != RearBody.NONE && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);

@@ -161,7 +161,7 @@ package classes
 
 		public function hasDragonNeck():Boolean
 		{
-			return neck.type == NECK_TYPE_DRACONIC && neck.isFullyGrown();
+			return neck.type == Neck.DRACONIC && neck.isFullyGrown();
 		}
 
 		public function hasNormalNeck():Boolean

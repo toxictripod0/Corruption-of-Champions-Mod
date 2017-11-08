@@ -190,7 +190,7 @@ package classes.Items
 				}
 			}
 			//Neck restore
-			if (player.neck.type != NECK_TYPE_NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type != Neck.NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
 			//Rear body restore
 			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
 			//Ovi perk loss
@@ -493,7 +493,7 @@ package classes.Items
 				}
 			}
 			//Neck restore
-			if (player.neck.type != NECK_TYPE_NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type != Neck.NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
 			//Rear body restore
 			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
 			//Ovi perk loss
@@ -618,7 +618,7 @@ package classes.Items
 				//[removed:1.4.10]//changes++;
 			}
 			//Neck restore
-			if (player.neck.type != NECK_TYPE_NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type != Neck.NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
 			//Rear body restore
 			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
 			//Ovi perk loss
@@ -1957,7 +1957,7 @@ package classes.Items
 				}
 			}
 			//Neck restore
-			if (player.neck.type != NECK_TYPE_NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type != Neck.NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
 			//Rear body restore
 			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
 			//Ovi perk loss
@@ -2244,7 +2244,7 @@ package classes.Items
 				removeExtraBreastRow(tfSource);
 			}
 			//Neck restore
-			if (player.neck.type != NECK_TYPE_NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type != Neck.NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
 			//Rear body restore
 			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
 			//Ovi perk loss
@@ -2490,7 +2490,7 @@ package classes.Items
 			}
 			//-VAGs
 			//Neck restore
-			if (player.neck.type != NECK_TYPE_NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type != Neck.NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
 			//Rear body restore
 			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
 			//Ovi perk loss
@@ -2841,7 +2841,7 @@ package classes.Items
 				}
 			}
 			//Neck restore
-			if (player.neck.type != NECK_TYPE_NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type != Neck.NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
 			//Rear body restore
 			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
 			//Ovi perk
@@ -3162,7 +3162,7 @@ package classes.Items
 				}
 			}
 			//Neck restore
-			if (player.neck.type != NECK_TYPE_NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type != Neck.NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
 			//Rear body restore
 			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
 			//Ovi perk loss
@@ -3370,7 +3370,7 @@ package classes.Items
 				changes++;
 			}
 			//Neck restore
-			if (player.neck.type != NECK_TYPE_NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type != Neck.NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
 			//Rear body restore
 			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
 			//Ovi perk loss
@@ -3755,7 +3755,7 @@ package classes.Items
 				}
 			}
 			//Neck restore
-			if (player.neck.type != NECK_TYPE_NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type != Neck.NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
 			//Rear body restore
 			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
 			//Ovi perk loss
@@ -4000,7 +4000,7 @@ package classes.Items
 			//BIG APPEARANCE CHANGES
 			//**********************
 			//Neck restore
-			if (player.neck.type != NECK_TYPE_NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type != Neck.NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
 			//Rear body restore
 			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
 			//Ovi perk loss
@@ -4315,7 +4315,7 @@ package classes.Items
 				changes++;
 			}
 			//Neck restore
-			if (player.neck.type !== NECK_TYPE_NORMAL && changes < changeLimit && rand(4) === 0) {
+			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) {
 				mutations.restoreNeck(tfSource);
 			}
 			//Rear body restore

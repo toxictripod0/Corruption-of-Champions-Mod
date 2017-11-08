@@ -2371,9 +2371,9 @@ package classes
 		);
 		public static const DEFAULT_NECK_NAMES:Object = createMapFromPairs(
 				[
-					[NECK_TYPE_NORMAL, "normal"],
-					[NECK_TYPE_DRACONIC, "long draconic"],
-					[NECK_TYPE_COCKATRICE, "feathery cockatrice"],
+					[Neck.NORMAL, "normal"],
+					[Neck.DRACONIC, "long draconic"],
+					[Neck.COCKATRICE, "feathery cockatrice"],
 				]
 		);
 		public static const DEFAULT_WING_NAMES:Object = createMapFromPairs(

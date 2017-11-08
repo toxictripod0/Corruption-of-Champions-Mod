@@ -166,7 +166,7 @@ package classes.Items
 			var forceRestore:Boolean = tsParts.indexOf("forceRestoreNeck") != -1;
 
 			switch (player.neck.type) {
-				case NECK_TYPE_DRACONIC:
+				case Neck.DRACONIC:
 					if (tfSource == "EmberTFs" || (!forceRestore && player.dragonScore() >= 11))
 						return false;
 
@@ -174,7 +174,7 @@ package classes.Items
 					          +" [if (neckPos)position and] length.</b> ");
 					break;
 
-				case NECK_TYPE_COCKATRICE:
+				case Neck.COCKATRICE:
 					if (tfSource == "TonOTrice" || (!forceRestore && player.cockatriceScore() >= 7))
 						return false;
 

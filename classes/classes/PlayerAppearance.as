@@ -530,7 +530,7 @@ package classes
 					outputText("  It has developed its own cute little spiral. You estimate it to be about "+numInchesOrCentimetres(12)+" long, "+numInchesOrCentimetres(2)+" thick and very sturdy. A very useful natural weapon.");
 			}
 			// neckLen
-			if (player.neck.type == NECK_TYPE_DRACONIC)
+			if (player.neck.type == Neck.DRACONIC)
 			{
 				// length description
 				if (player.hasDragonNeck())
@@ -552,7 +552,7 @@ package classes
 					else if (player.neck.len < 16) outputText("  You can bend it more than others with low effort.");
 					else outputText("  You are able to bend it in almost every direction and with some effort you even manage to take a glimpse at your back.");
 				}
-			} else if (player.neck.type == NECK_TYPE_COCKATRICE) {
+			} else if (player.neck.type == Neck.COCKATRICE) {
 				outputText("  Around your neck is a ruff of [neckColor] feathers which tends to puff out with your emotions.");
 			}
 			//BODY PG HERE

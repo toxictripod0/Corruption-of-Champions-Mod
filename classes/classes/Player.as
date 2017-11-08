@@ -1065,7 +1065,7 @@ use namespace kGAMECLASS;
 				cockatriceCounter++;
 			if (antennae == Antennae.COCKATRICE)
 				cockatriceCounter++;
-			if (neck.type == NECK_TYPE_COCKATRICE)
+			if (neck.type == Neck.COCKATRICE)
 				cockatriceCounter++;
 			if (cockatriceCounter > 2) {
 				if (tongueType == Tongue.LIZARD)

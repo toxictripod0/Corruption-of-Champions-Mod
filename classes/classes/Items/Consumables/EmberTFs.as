@@ -255,7 +255,7 @@ package classes.Items.Consumables
 			}
 			// </mod>
 			//Restore non dragon neck
-			if (player.neck.type != NECK_TYPE_DRACONIC && changes < changeLimit && rand(4) == 0)
+			if (player.neck.type != Neck.DRACONIC && changes < changeLimit && rand(4) == 0)
 				mutations.restoreNeck(tfSource);
 			//Gain Dragon Neck
 			//public function hasDraconicBackSide():Boolean { return hasDragonWings(true) && skinType == Skin.DRACONIC && hasReptileTail() && hasReptileArms() && hasReptileLegs(); }
@@ -267,7 +267,7 @@ package classes.Items.Consumables
 					player.neck.modify(nlChange);
 					outputText("\n\nWith less pain than the last time your neck grows a few more inches reaching " + player.neck.len + " inches.");
 				} else {
-					player.neck.modify(nlChange, NECK_TYPE_DRACONIC);
+					player.neck.modify(nlChange, Neck.DRACONIC);
 					// Growing a dragon neck may be limited to Ember's blood only in the future.
 					outputText("\n\nAfter you have finished " + (drakesHeart ? "eating the flower" : "drinking Ember's dragon blood") + " you start feeling a sudden pain in your neck. Your skin stretches and your spine grows a bit. Your neck has grown a few inches longer than that of a normal human reaching " + player.neck.len + " inches.");
 				}
