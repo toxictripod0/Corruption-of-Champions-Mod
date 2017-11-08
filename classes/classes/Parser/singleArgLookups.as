@@ -45,7 +45,7 @@
 				"extraeyesshort"			: function(thisPtr:*):* { return kGAMECLASS.player.extraEyesDescriptShort();},
 				"eyes"						: function(thisPtr:*):* { return kGAMECLASS.player.eyesDescript();},
 				"eyecount"					: function(thisPtr:*):* { return kGAMECLASS.player.eyeCount;},
-				"face"						: function(thisPtr:*):* { return kGAMECLASS.player.face(); },
+				"face"						: function(thisPtr:*):* { return kGAMECLASS.player.faceDescript(); },
 				"feet"						: function(thisPtr:*):* { return kGAMECLASS.player.feet(); },
 				"foot"						: function(thisPtr:*):* { return kGAMECLASS.player.foot(); },
 				"fullchest"					: function(thisPtr:*):* { return kGAMECLASS.player.allChestDesc(); },

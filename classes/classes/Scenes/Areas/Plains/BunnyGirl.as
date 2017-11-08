@@ -45,7 +45,7 @@ public function bunnbunbunMeet():void {
 			return;
 		}
 		outputText("While exploring the plains, you spy the familiar ears of a bunny-girl bobbing up and down behind a particularly tall patch of grasses.  You peek over the top of the grasses to find the dusky-skinned rabbit-girl playing with herself.  Both of her dainty, dextrous hands are clamped tightly around the wet, dripping length of her 14-inch cock as she hammers at the ground with her feet and humps away at her tightly-balled fists.\n\n");
-		outputText("You lean forwards for a better look, dislodging a small pebble with your " + player.foot() + " while shifting position.  The bunny-girl leaps to her feet in a panic until her terrified irises lock onto your " + player.face() + ".  Her panic turns to embarrassment and in a flash every inch of her tanned skin is colored red.  She asks, \"<i>Ummm, since I'm still in s-season, c-could we b-breed or something?  Maybe just a little fuck?</i>\"\n\n");
+		outputText("You lean forwards for a better look, dislodging a small pebble with your " + player.foot() + " while shifting position.  The bunny-girl leaps to her feet in a panic until her terrified irises lock onto your " + player.faceDescript() + ".  Her panic turns to embarrassment and in a flash every inch of her tanned skin is colored red.  She asks, \"<i>Ummm, since I'm still in s-season, c-could we b-breed or something?  Maybe just a little fuck?</i>\"\n\n");
 		
 		outputText("She claps both hands over her mouth, leaving her swollen prick to bounce precipitously while she awaits your response.\n\n");
 		
@@ -165,7 +165,7 @@ private function rapeBunBun():void {
 private function bunbunFucksYourVag():void {
 	spriteSelect(SpriteDb.s_easter_bunneh);
 	clearOutput();
-	outputText("An anticipatory grin widens across your " + player.face() + " as you speedily disrobe, discarding your " + player.armorName);
+	outputText("An anticipatory grin widens across your " + player.faceDescript() + " as you speedily disrobe, discarding your " + player.armorName);
 	
 	if (player.weaponName != "fists") outputText(" and " + player.weaponName);
 	outputText(" in a hurry.   Meanwhile the bunny looks on in a semi-aroused stupor, stroking her length with one hand while her other teases one of the hard nubs of her nipples.  You sigh with excitement as you position yourself above her, lining up her somewhat angular crown with the entrance to your " + player.vaginaDescript(0) + " before you start to drop.");

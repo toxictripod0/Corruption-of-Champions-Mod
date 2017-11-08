@@ -4702,7 +4702,7 @@ package classes.Scenes.NPCs
 			outputText("  Spent, you slump on top of Amily.");
 			//[(if PC has a pussy)
 			if (player.hasVagina()) outputText("  Despite being neglected during the act, your " + player.vaginaDescript() + " leaks fluids to join Amily's on the floor.");
-			outputText("  Amily pants loudly and sighs in satisfaction. Hesitantly, one hand dares to reach out and stroke your " + player.face() + ". \"<i>Mmm... You are the light of my world, " + player.mf("master","mistress") + ".");
+			outputText("  Amily pants loudly and sighs in satisfaction. Hesitantly, one hand dares to reach out and stroke your " + player.faceDescript() + ". \"<i>Mmm... You are the light of my world, " + player.mf("master","mistress") + ".");
 			//(if not pregnant:
 			if (!pregnancy.isPregnant) outputText("  I can only hope you've knocked me up, so I can do what I was made for,");
 			else outputText("  I almost wish I wasn't pregnant, just so I could have the pleasure of knowing you've knocked me up,");

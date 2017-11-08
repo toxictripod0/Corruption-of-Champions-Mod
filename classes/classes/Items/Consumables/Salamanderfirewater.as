@@ -250,7 +250,7 @@ package classes.Items.Consumables
 			}
 			//Human face
 			if (player.faceType !== Face.HUMAN && changes < changeLimit && rand(4) === 0) {
-				outputText("\n\nSudden agony sweeps over your " + player.face() + ", your visage turning hideous as bones twist and your jawline shifts. The pain slowly vanishes, leaving you weeping into your fingers. When you pull your hands away you realize you've been left with a completely normal, human face.");
+				outputText("\n\nSudden agony sweeps over your " + player.faceDescript() + ", your visage turning hideous as bones twist and your jawline shifts. The pain slowly vanishes, leaving you weeping into your fingers. When you pull your hands away you realize you've been left with a completely normal, human face.");
 				player.faceType = Face.HUMAN;
 				changes++;
 			}

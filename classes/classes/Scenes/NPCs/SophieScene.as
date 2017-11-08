@@ -1262,7 +1262,7 @@ private function normalLossRapuuuuSophie():void {
 	
 	outputText("Sophie's hips grind down, smothering your " + player.cockDescript(x) + " in her over-sized pussy.   It doesn't feel all that great until her legs lock around your back and the squeezing starts.  Her muscular thighs nearly immobilize you in a tight, feathery embrace.  The tension translates down to her drippy cunt, and it feels as if her massive fuck-hole is trying to strangle the cum from your " + player.cockDescript(x) + ". The older harpy's breath washes over your ");
 	if (player.tallness >= 72) outputText("neck");
-	else if (player.tallness > 48) outputText(player.face());
+	else if (player.tallness > 48) outputText(player.faceDescript());
 	else outputText("head");
 	outputText(" as she really starts to get into it.  Her gold-painted mouth glimmers in the light as she presses her supple lips against your own.  The sweet taste of her makes your head swim while she roughly tongue-fucks your mouth.  It's brutal, savage, and so hot that your " + player.cockDescript(x) + " is already tingling dangerously.\n\n");
 	

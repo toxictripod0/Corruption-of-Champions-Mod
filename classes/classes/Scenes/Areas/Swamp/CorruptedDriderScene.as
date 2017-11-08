@@ -606,7 +606,7 @@ package classes.Scenes.Areas.Swamp
 			if (player.tallness < 66) outputText("in front of you");
 			else outputText("on your face");
 			outputText(", her pussy juices squirting alongside them.  As she calms down, the herm-drider's spunk lessens in force, instead drooling out of her softening cock and landing onto your ");
-			if (player.tallness < 66) outputText(player.face() + ", sliding down across your cheeks and along your lips");
+			if (player.tallness < 66) outputText(player.faceDescript() + ", sliding down across your cheeks and along your lips");
 			else outputText("chest, trickling between your " + player.nippleDescript(0) + "s");
 			outputText(".  She pulls out her ovipositor slowly, though the bulge in your stomach remains as evidence of her work.");
 			player.buttChange(50, true, true, false);

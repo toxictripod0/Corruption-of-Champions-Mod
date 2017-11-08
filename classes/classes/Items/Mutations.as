@@ -2253,7 +2253,7 @@ package classes.Items
 			//Mouth TF
 			if (player.faceType != Face.SHARK_TEETH && rand(3) == 0 && changes < changeLimit) {
 				outputText("\n\n");
-				if (player.faceType > Face.HUMAN && player.faceType < Face.SHARK_TEETH) outputText("Your " + player.face() + " explodes with agony, reshaping into a more human-like visage.  ");
+				if (player.faceType > Face.HUMAN && player.faceType < Face.SHARK_TEETH) outputText("Your " + player.faceDescript() + " explodes with agony, reshaping into a more human-like visage.  ");
 				player.faceType = Face.SHARK_TEETH;
 				outputText("You firmly grasp your mouth, an intense pain racking your oral cavity. Your gums shift around and the bones in your jaw reset. You blink a few times wondering what just happened. You move over to a puddle to catch sight of your reflection, and you are thoroughly surprised by what you see. A set of retractable shark fangs have grown in front of your normal teeth, and your face has elongated slightly to accommodate them!  They even scare you a little.\n(Gain: 'Bite' special attack)");
 				changes++;
@@ -2595,7 +2595,7 @@ package classes.Items
 				//Human(ish) face
 				if (player.faceType == Face.HUMAN || player.faceType == Face.SHARK_TEETH) outputText("You catch your nose twitching on its own at the bottom of your vision, but as soon as you focus on it, it stops.  A moment later, some of your teeth tingle and brush past your lips, exposing a white pair of buckteeth!  <b>Your face has taken on some rabbit-like characteristics!</b>");
 				//Crazy furry TF shit
-				else outputText("You grunt as your " + player.face() + " twists and reforms.  Even your teeth ache as their positions are rearranged to match some new, undetermined order.  When the process finishes, <b>you're left with a perfectly human looking face, save for your constantly twitching nose and prominent buck-teeth.</b>");
+				else outputText("You grunt as your " + player.faceDescript() + " twists and reforms.  Even your teeth ache as their positions are rearranged to match some new, undetermined order.  When the process finishes, <b>you're left with a perfectly human looking face, save for your constantly twitching nose and prominent buck-teeth.</b>");
 				player.faceType = Face.BUNNY;
 			}
 			//DAH BUNBUN EARZ - requires poofbutt!
@@ -2736,7 +2736,7 @@ package classes.Items
 				if (player.lib100 < 90) dynStats("lib", 1);
 				//(sub 40 lib)
 				if (player.lib100 < 40) {
-					outputText("\n\nA passing flush colors your " + player.face() + " for a second as you daydream about sex. You blink it away, realizing the item seems to have affected your libido.");
+					outputText("\n\nA passing flush colors your " + player.faceDescript() + " for a second as you daydream about sex. You blink it away, realizing the item seems to have affected your libido.");
 					if (player.hasVagina()) outputText(" The moistness of your " + player.vaginaDescript() + " seems to agree.");
 					else if (player.hasCock()) outputText(" The hardness of " + player.sMultiCockDesc() + " seems to agree.");
 					dynStats("lus", 5);
@@ -2974,7 +2974,7 @@ package classes.Items
 			}
 			//-Human face
 			if (player.faceType != Face.HUMAN && changes < changeLimit && (type == 1 || (player.earType == Ears.HUMAN || player.earType == Ears.ELFIN)) && rand(4) == 0) {
-				outputText("\n\nSudden agony sweeps over your " + player.face() + ", your visage turning hideous as bones twist and your jawline shifts. The pain slowly vanishes, leaving you weeping into your fingers. When you pull your hands away you realize you've been left with a completely normal, human face.");
+				outputText("\n\nSudden agony sweeps over your " + player.faceDescript() + ", your visage turning hideous as bones twist and your jawline shifts. The pain slowly vanishes, leaving you weeping into your fingers. When you pull your hands away you realize you've been left with a completely normal, human face.");
 				player.faceType = Face.HUMAN;
 				changes++;
 			}

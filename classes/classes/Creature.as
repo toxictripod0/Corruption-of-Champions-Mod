@@ -433,9 +433,9 @@ import mx.logging.ILogger;
 		14 - fullcoon
 		15 - halfmouse
 		16 - fullmouse*/
-		public var facePart:Face = new Face();
-		public function get faceType():Number { return facePart.type; }
-		public function set faceType(value:Number):void { facePart.type = value; }
+		public var face:Face = new Face();
+		public function get faceType():Number { return face.type; }
+		public function set faceType(value:Number):void { face.type = value; }
 
 		// <mod name="Predator arms" author="Stadler76">
 		public var claws:Claws = new Claws();

@@ -61,7 +61,7 @@ import classes.GlobalFlags.kFLAGS;
 			//10+ -20
 			else if (femininity < 20)
 			{
-				faceo = "a rugged looking " + face() + " ";
+				faceo = "a rugged looking " + faceDescript() + " ";
 				if (hasBeard())
 					faceo += "and " + beard();
 				faceo += "that's surely handsome";
@@ -143,9 +143,9 @@ import classes.GlobalFlags.kFLAGS;
 			else
 			{
 				if (goal > oldN)
-					output = "\n\nThere's a tingling in your " + face() + " as it changes imperceptibly towards being more feminine. (+" + strength + ")";
+					output = "\n\nThere's a tingling in your " + faceDescript() + " as it changes imperceptibly towards being more feminine. (+" + strength + ")";
 				else if (goal < oldN)
-					output = "\n\nThere's a tingling in your " + face() + " as it changes imperceptibly towards being more masculine. (+" + strength + ")";
+					output = "\n\nThere's a tingling in your " + faceDescript() + " as it changes imperceptibly towards being more masculine. (+" + strength + ")";
 			}
 			return output;
 		}
@@ -303,7 +303,7 @@ import classes.GlobalFlags.kFLAGS;
 			return false;
 		}
 		
-		public function face():String
+		public function faceDescript():String
 		{
 			var stringo:String = "";
 			//0 - human

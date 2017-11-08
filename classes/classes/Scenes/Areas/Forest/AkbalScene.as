@@ -573,7 +573,7 @@ public class AkbalScene extends BaseContent implements Encounter
 				//({If Bipedal}
 				else
 					outputText("lock your legs around his torso, bouncing upon him with greater force");
-				outputText(".  As your mouth hangs open, the demon lunges forward, pressing his own snout against your " + player.face() + ". You can still taste the traces of his own pre on his lips and tongue, furthering your lust as you use his groin roughly, impaling yourself hard enough to leave bruises on the pair of you, while he uses his tail to ");
+				outputText(".  As your mouth hangs open, the demon lunges forward, pressing his own snout against your " + player.faceDescript() + ". You can still taste the traces of his own pre on his lips and tongue, furthering your lust as you use his groin roughly, impaling yourself hard enough to leave bruises on the pair of you, while he uses his tail to ");
 				//({if herm}
 				if (player.cockTotal() == 1)
 					outputText("wrap around your own straining shaft, the fur enhancing the effects of his pumps");

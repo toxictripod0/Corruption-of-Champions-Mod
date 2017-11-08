@@ -78,7 +78,7 @@ package classes.Items.Consumables
 			//Intelliloss
 			if (rand(4) === 0 && changes < changeLimit) {
 				//low intelligence
-				if (player.inte100 < 15) outputText("\n\nYou feel like something is slipping away from you but can't figure out exactly what's happening.  You scrunch up your " + player.face() + ", trying to understand the situation.  Before you can reach any kind of conclusion, something glitters in the distance, distracting your feeble mind long enough for you to forget the problem entirely.");
+				if (player.inte100 < 15) outputText("\n\nYou feel like something is slipping away from you but can't figure out exactly what's happening.  You scrunch up your " + player.faceDescript() + ", trying to understand the situation.  Before you can reach any kind of conclusion, something glitters in the distance, distracting your feeble mind long enough for you to forget the problem entirely.");
 				//medium intelligence
 				else if (player.inte100 < 50) {
 					outputText("\n\nYour mind feels somewhat sluggish, and you wonder if you should just lie down ");
