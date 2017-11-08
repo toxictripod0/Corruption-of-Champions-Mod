@@ -30,7 +30,7 @@ package classes.Items
 
 			if (tfSource == "gooGasmic") {
 				// skin just turned gooey. Now lets fix unusual arms.
-				var hasClaws:Boolean = player.clawType != CLAW_TYPE_NORMAL;
+				var hasClaws:Boolean = player.clawType != Claws.NORMAL;
 
 				message = "\n\n";
 				if (player.armType == Arms.HARPY) {
@@ -72,7 +72,7 @@ package classes.Items
 					case Arms.PREDATOR:
 						switch (player.skinType) {
 							case Skin.GOO:
-								if (player.clawType != CLAW_TYPE_NORMAL)
+								if (player.clawType != Claws.NORMAL)
 									message += "\n\nYour gooey claws melt into your fingers."
 									          +" Well, who cares, gooey claws aren't very useful in combat to begin with.";
 								break;
@@ -358,15 +358,15 @@ package classes.Items
 			return randomChoice(cockatriceColors);
 		}
 
-		public function updateClaws(clawType:int = CLAW_TYPE_NORMAL):String
+		public function updateClaws(clawType:int = Claws.NORMAL):String
 		{
 			var clawTone:String = "";
 			var oldClawTone:String = player.clawTone;
 
 			switch (clawType) {
-				case CLAW_TYPE_DRAGON:       clawTone = "steel-gray";   break;
-				case CLAW_TYPE_SALAMANDER:   clawTone = "fiery-red";    break;
-				case CLAW_TYPE_LIZARD:
+				case Claws.DRAGON:       clawTone = "steel-gray";   break;
+				case Claws.SALAMANDER:   clawTone = "fiery-red";    break;
+				case Claws.LIZARD:
 					// See http://www.bergenbattingcenter.com/lizard-skins-bat-grip/ for all those NYI! lizard skin colors
 					// I'm still not that happy with these claw tones. Any suggestion would be nice.
 					switch (player.skinTone) {

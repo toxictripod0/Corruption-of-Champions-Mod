@@ -4,6 +4,7 @@ package classes
 	import classes.BodyParts.Antennae;
 	import classes.BodyParts.Arms;
 	import classes.BodyParts.Beard;
+	import classes.BodyParts.Claws;
 	import classes.BodyParts.Ears;
 	import classes.BodyParts.Eyes;
 	import classes.BodyParts.Face;
@@ -437,8 +438,11 @@ import mx.logging.ILogger;
 		public function set faceType(value:Number):void { facePart.type = value; }
 
 		// <mod name="Predator arms" author="Stadler76">
-		public var clawTone:String = "";
-		public var clawType:Number = CLAW_TYPE_NORMAL;
+		public var claws:Claws = new Claws();
+		public function get clawType():Number { return claws.type; }
+		public function set clawType(value:Number):void { claws.type = value; }
+		public function get clawTone():String { return claws.tone; }
+		public function set clawTone(value:String):void { claws.tone = value; }
 		// </mod>
 		public var rearBody:RearBody = new RearBody();
 		public var neck:Neck = new Neck();
@@ -3117,15 +3121,15 @@ import mx.logging.ILogger;
 		public function skinFurScales():String { return skin.skinFurScales(); }
 
 		// <mod name="Predator arms" author="Stadler76">
-		public function claws():String
+		public function clawsDescript():String
 		{
 			var toneText:String = clawTone == "" ? " " : (", " + clawTone + " ");
 
 			switch (clawType) {
-				case CLAW_TYPE_NORMAL: return "fingernails";
-				case CLAW_TYPE_LIZARD: return "short curved" + toneText + "claws";
-				case CLAW_TYPE_DRAGON: return "powerful, thick curved" + toneText + "claws";
-				case CLAW_TYPE_IMP:    return "long" + toneText + "claws";
+				case Claws.NORMAL: return "fingernails";
+				case Claws.LIZARD: return "short curved" + toneText + "claws";
+				case Claws.DRAGON: return "powerful, thick curved" + toneText + "claws";
+				case Claws.IMP:    return "long" + toneText + "claws";
 				// Since mander and cockatrice arms are hardcoded and the others are NYI, we're done here for now
 			}
 			return "fingernails";

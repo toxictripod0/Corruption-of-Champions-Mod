@@ -4,18 +4,6 @@
 
 // Description constants
 
-// clawType
-public static const CLAW_TYPE_NORMAL:int                                            =   0;
-public static const CLAW_TYPE_LIZARD:int                                            =   1;
-public static const CLAW_TYPE_DRAGON:int                                            =   2;
-public static const CLAW_TYPE_SALAMANDER:int                                        =   3;
-public static const CLAW_TYPE_CAT:int                                               =   4; // NYI! Placeholder for now!! (See http://tiny.cc/coc-revamp-claws)
-public static const CLAW_TYPE_DOG:int                                               =   5; // NYI! Placeholder for now!! (See http://tiny.cc/coc-revamp-claws)
-public static const CLAW_TYPE_RAPTOR:int                                            =   6; // NYI! Placeholder for now!! (See http://tiny.cc/coc-revamp-claws) Giev teh Rapturs :-)
-public static const CLAW_TYPE_MANTIS:int                                            =   7; // NYI! Placeholder for Xianxia mod (See http://tiny.cc/coc-xianxia-mod)
-public static const CLAW_TYPE_IMP:int                                               =   8;
-public static const CLAW_TYPE_COCKATRICE:int                                        =   9;
-
 // lowerBody
 public static const LOWER_BODY_TYPE_HUMAN:int                                       =   0;
 public static const LOWER_BODY_TYPE_HOOFED:int                                      =   1;

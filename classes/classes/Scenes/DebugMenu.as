@@ -1121,14 +1121,14 @@ import classes.Items.*
 			[Arms.WOLF, "(6) WOLF"],
 		];
 		private static const CLAW_TYPE_CONSTANTS:Array = [
-			[CLAW_TYPE_NORMAL,"(0) NORMAL"],
-			[CLAW_TYPE_LIZARD,"(1) LIZARD"],
-			[CLAW_TYPE_DRAGON,"(2) DRAGON"],
-			[CLAW_TYPE_SALAMANDER,"(3) SALAMANDER"],
-			[CLAW_TYPE_CAT,"(4) CAT"],
-			[CLAW_TYPE_DOG,"(5) DOG"],
-			[CLAW_TYPE_RAPTOR,"(6) RAPTOR"],
-			[CLAW_TYPE_MANTIS,"(7) MANTIS"],
+			[Claws.NORMAL,"(0) NORMAL"],
+			[Claws.LIZARD,"(1) LIZARD"],
+			[Claws.DRAGON,"(2) DRAGON"],
+			[Claws.SALAMANDER,"(3) SALAMANDER"],
+			[Claws.CAT,"(4) CAT"],
+			[Claws.DOG,"(5) DOG"],
+			[Claws.RAPTOR,"(6) RAPTOR"],
+			[Claws.MANTIS,"(7) MANTIS"],
 		];
 		private static const TAIL_TYPE_CONSTANTS:Array  = [
 			[Tail.NONE, "(0) NONE"],

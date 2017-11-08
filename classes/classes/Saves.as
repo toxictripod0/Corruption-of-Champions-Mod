@@ -1784,7 +1784,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			player.rearBody.setAllProps(saveFile.data.rearBody);
 		// <mod name="Predator arms" author="Stadler76">
 		player.clawTone = (saveFile.data.clawTone == undefined) ? ""               : saveFile.data.clawTone;
-		player.clawType = (saveFile.data.clawType == undefined) ? CLAW_TYPE_NORMAL : saveFile.data.clawType;
+		player.clawType = (saveFile.data.clawType == undefined) ? Claws.NORMAL : saveFile.data.clawType;
 		// </mod>
 
 		player.wingType = saveFile.data.wingType;

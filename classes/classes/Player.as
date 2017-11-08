@@ -1100,7 +1100,7 @@ use namespace kGAMECLASS;
 				impCounter++;
 			if (hornType == Horns.IMP)
 				impCounter++;
-			if (armType == Arms.PREDATOR && clawType == CLAW_TYPE_IMP)
+			if (armType == Arms.PREDATOR && clawType == Claws.IMP)
 				impCounter++;
 			if (tallness <= 42)
 				impCounter++;
@@ -1447,7 +1447,7 @@ use namespace kGAMECLASS;
 				lizardCounter++;
 			if (hornType == Horns.DRACONIC_X4_12_INCH_LONG)
 				lizardCounter++;
-			if (armType == Arms.PREDATOR && clawType == CLAW_TYPE_LIZARD)
+			if (armType == Arms.PREDATOR && clawType == Claws.LIZARD)
 				lizardCounter++;
 			if (lizardCounter > 2) {
 				if ([Tongue.LIZARD, Tongue.SNAKE].indexOf(tongueType) != -1)
@@ -1583,7 +1583,7 @@ use namespace kGAMECLASS;
 				dragonCounter++;
 			if (hasDragonfire())
 				dragonCounter++;
-			if (armType == Arms.PREDATOR && clawType == CLAW_TYPE_DRAGON)
+			if (armType == Arms.PREDATOR && clawType == Claws.DRAGON)
 				dragonCounter++;
 			if (eyeType == Eyes.DRAGON)
 				dragonCounter++;

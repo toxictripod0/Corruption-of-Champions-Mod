@@ -1625,7 +1625,7 @@ package classes
 			
 			player.faceType = Face.FOX;
 			player.earType = Ears.FOX;
-			player.clawType = CLAW_TYPE_DOG;
+			player.clawType = Claws.DOG;
 			player.clawTone = "ivory";
 			player.eyeType = Eyes.DRAGON;
 			player.lowerBody = LOWER_BODY_TYPE_FOX;

@@ -488,7 +488,7 @@ package classes.Items.Consumables
 				          +" over your new arms.");
 				outputText("\n<b>You now have cockatrice arms!</b>");
 				player.armType = Arms.COCKATRICE;
-				mutations.updateClaws(CLAW_TYPE_COCKATRICE);
+				mutations.updateClaws(Claws.COCKATRICE);
 				changes++;
 			}
 			//Neck loss, if not cockatrice neck
