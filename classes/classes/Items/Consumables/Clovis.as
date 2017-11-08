@@ -86,9 +86,9 @@ package classes.Items.Consumables
 				outputText(" <b>You now have a sheep's tail!</b>");
 				changes++;
 			}
-			if (player.lowerBody !== LOWER_BODY_TYPE_CLOVEN_HOOFED && player.tailType === Tail.SHEEP && rand(3) === 0 && changes < changeLimit) {
+			if (player.lowerBody !== LowerBody.CLOVEN_HOOFED && player.tailType === Tail.SHEEP && rand(3) === 0 && changes < changeLimit) {
 				outputText("\n\nYou feel a strange tightness from your feet and nearly topple over as your balance shifts. You're balancing on your toes for some reason. You look down in amazement as your legs slim and shorten, your feet elongating and darkening at the ends, all morphing until you're balancing on two sheep legs, complete with cute little hooves.");
-				player.lowerBody = LOWER_BODY_TYPE_CLOVEN_HOOFED;
+				player.lowerBody = LowerBody.CLOVEN_HOOFED;
 				player.legCount = 2;
 				outputText(" <b>You now have sheep hooves!</b>");
 				changes++;
@@ -102,7 +102,7 @@ package classes.Items.Consumables
 				player.horns = 1;
 				changes++;
 			}
-			if (rand(3) === 0 && changes < changeLimit && player.legCount === 2 && player.lowerBody === LOWER_BODY_TYPE_CLOVEN_HOOFED && player.hornType === Horns.SHEEP && player.tailType === Tail.SHEEP && player.earType === Ears.SHEEP && !player.hasWool()) {
+			if (rand(3) === 0 && changes < changeLimit && player.legCount === 2 && player.lowerBody === LowerBody.CLOVEN_HOOFED && player.hornType === Horns.SHEEP && player.tailType === Tail.SHEEP && player.earType === Ears.SHEEP && !player.hasWool()) {
 			    var sheepWoolColors: Array = [
 				"white",
 				"black",

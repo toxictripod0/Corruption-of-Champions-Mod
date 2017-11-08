@@ -134,9 +134,9 @@ package classes.Items.Consumables
 			}
 			
 			//Feets, needs red/orange skin and tail
-			if (["red", "orange"].indexOf(player.skinTone) !== -1 && player.tailType === Tail.IMP && player.lowerBody !== LOWER_BODY_TYPE_IMP && rand(3) === 0 && changes < changeLimit) {
+			if (["red", "orange"].indexOf(player.skinTone) !== -1 && player.tailType === Tail.IMP && player.lowerBody !== LowerBody.IMP && rand(3) === 0 && changes < changeLimit) {
 				outputText("\n\nEvery muscle and sinew below your hip tingles and you begin to stagger. Seconds after you sit down, pain explodes in your " + player.feet() + ". Something hard breaks through your sole from the inside out as your " + player.feet() + " splinter and curve cruelly. The pain slowly diminishes and your eyes look along a skinny, human leg that splinters at the foot into three long claw with a smaller back one for balance. When you relax, your feet grip the ground easily. <b>Your lower body is now that of an imp.</b>");
-				player.lowerBody = LOWER_BODY_TYPE_IMP;
+				player.lowerBody = LowerBody.IMP;
 				player.legCount = 2;
 				dynStats("cor", 2);
 				changes++;

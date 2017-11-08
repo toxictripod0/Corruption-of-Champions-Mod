@@ -56,7 +56,7 @@ package classes.Scenes.Dungeons.Factory
 			this.tallness = rand(9) + 60;
 			this.hipRating = HIP_RATING_CURVY;
 			this.buttRating = BUTT_RATING_LARGE+1;
-			this.lowerBody = LOWER_BODY_TYPE_DEMONIC_HIGH_HEELS;
+			this.lowerBody = LowerBody.DEMONIC_HIGH_HEELS;
 			this.skinTone = "blue";
 			this.hairColor = "blond";
 			this.hairLength = 13;

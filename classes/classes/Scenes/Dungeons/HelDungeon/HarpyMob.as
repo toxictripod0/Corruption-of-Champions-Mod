@@ -92,7 +92,7 @@ package classes.Scenes.Dungeons.HelDungeon
 			this.tallness = rand(8) + 70;
 			this.hipRating = HIP_RATING_CURVY+2;
 			this.buttRating = BUTT_RATING_LARGE;
-			this.lowerBody = LOWER_BODY_TYPE_HARPY;
+			this.lowerBody = LowerBody.HARPY;
 			this.skinTone = "red";
 			this.skinType = Skin.PLAIN;
 			this.skinDesc = "feathers";

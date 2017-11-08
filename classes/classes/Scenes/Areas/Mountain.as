@@ -138,7 +138,7 @@ package classes.Scenes.Areas
 									var check2:Boolean = player.dogCocks() >= 2
 													|| (player.hasVagina() && player.pregnancyType == PregnancyStore.PREGNANCY_HELL_HOUND);
 									var check3:int = (player.tailType == Tail.DOG ? 1 : 0) +
-													 (player.lowerBody == LOWER_BODY_TYPE_DOG ? 1 : 0) +
+													 (player.lowerBody == LowerBody.DOG ? 1 : 0) +
 													 (player.hairColor == "midnight black" ? 1 : 0);
 									var check4a:Boolean = flags[kFLAGS.HELLHOUND_MASTER_PROGRESS] == 0;
 									var check4b:Boolean = flags[kFLAGS.HELLHOUND_MASTER_PROGRESS] == 1

@@ -125,7 +125,7 @@ package classes.Scenes.Areas.Mountain
 			this.tallness = 47;
 			this.hipRating = HIP_RATING_AVERAGE;
 			this.buttRating = BUTT_RATING_AVERAGE+1;
-			this.lowerBody = LOWER_BODY_TYPE_DOG;
+			this.lowerBody = LowerBody.DOG;
 			this.skinTone = "black";
 			this.skinType = Skin.FUR;
 			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.FUR];

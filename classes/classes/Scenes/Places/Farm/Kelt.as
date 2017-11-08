@@ -148,7 +148,7 @@ package classes.Scenes.Places.Farm
 			this.tallness = 84;
 			this.hipRating = HIP_RATING_AVERAGE;
 			this.buttRating = BUTT_RATING_AVERAGE+1;
-			this.lowerBody = LOWER_BODY_TYPE_HOOFED;
+			this.lowerBody = LowerBody.HOOFED;
 			this.legCount = 4;
 			this.skinTone = "tan";
 			this.hairColor = randomChoice("black","brown");

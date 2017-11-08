@@ -1212,44 +1212,44 @@ import classes.Items.*
 			"large mantis-like","small mantis-like",
 		];
 		private static const LOWER_TYPE_CONSTANTS:Array = [
-			[LOWER_BODY_TYPE_HUMAN, "(0) HUMAN"],
-			[LOWER_BODY_TYPE_HOOFED, "(1) HOOFED"],
-			[LOWER_BODY_TYPE_DOG, "(2) DOG"],
-			[LOWER_BODY_TYPE_NAGA, "(3) NAGA"],
-			[LOWER_BODY_TYPE_DEMONIC_HIGH_HEELS, "(5) DEMONIC_HIGH_HEELS"],
-			[LOWER_BODY_TYPE_DEMONIC_CLAWS, "(6) DEMONIC_CLAWS"],
-			[LOWER_BODY_TYPE_BEE, "(7) BEE"],
-			[LOWER_BODY_TYPE_GOO, "(8) GOO"],
-			[LOWER_BODY_TYPE_CAT, "(9) CAT"],
-			[LOWER_BODY_TYPE_LIZARD, "(10) LIZARD"],
-			[LOWER_BODY_TYPE_PONY, "(11) PONY"],
-			[LOWER_BODY_TYPE_BUNNY, "(12) BUNNY"],
-			[LOWER_BODY_TYPE_HARPY, "(13) HARPY"],
-			[LOWER_BODY_TYPE_KANGAROO, "(14) KANGAROO"],
-			[LOWER_BODY_TYPE_CHITINOUS_SPIDER_LEGS, "(15) CHITINOUS_SPIDER_LEGS"],
-			[LOWER_BODY_TYPE_DRIDER_LOWER_BODY, "(16) DRIDER_LOWER_BODY"],
-			[LOWER_BODY_TYPE_FOX, "(17) FOX"],
-			[LOWER_BODY_TYPE_DRAGON, "(18) DRAGON"],
-			[LOWER_BODY_TYPE_RACCOON, "(19) RACCOON"],
-			[LOWER_BODY_TYPE_FERRET, "(20) FERRET"],
-			[LOWER_BODY_TYPE_CLOVEN_HOOFED, "(21) CLOVEN_HOOFED"],
-			[LOWER_BODY_TYPE_ECHIDNA, "(23) ECHIDNA"],
-			[LOWER_BODY_TYPE_SALAMANDER, "(25) SALAMANDER"],
+			[LowerBody.HUMAN, "(0) HUMAN"],
+			[LowerBody.HOOFED, "(1) HOOFED"],
+			[LowerBody.DOG, "(2) DOG"],
+			[LowerBody.NAGA, "(3) NAGA"],
+			[LowerBody.DEMONIC_HIGH_HEELS, "(5) DEMONIC_HIGH_HEELS"],
+			[LowerBody.DEMONIC_CLAWS, "(6) DEMONIC_CLAWS"],
+			[LowerBody.BEE, "(7) BEE"],
+			[LowerBody.GOO, "(8) GOO"],
+			[LowerBody.CAT, "(9) CAT"],
+			[LowerBody.LIZARD, "(10) LIZARD"],
+			[LowerBody.PONY, "(11) PONY"],
+			[LowerBody.BUNNY, "(12) BUNNY"],
+			[LowerBody.HARPY, "(13) HARPY"],
+			[LowerBody.KANGAROO, "(14) KANGAROO"],
+			[LowerBody.CHITINOUS_SPIDER_LEGS, "(15) CHITINOUS_SPIDER_LEGS"],
+			[LowerBody.DRIDER_LOWER_BODY, "(16) DRIDER_LOWER_BODY"],
+			[LowerBody.FOX, "(17) FOX"],
+			[LowerBody.DRAGON, "(18) DRAGON"],
+			[LowerBody.RACCOON, "(19) RACCOON"],
+			[LowerBody.FERRET, "(20) FERRET"],
+			[LowerBody.CLOVEN_HOOFED, "(21) CLOVEN_HOOFED"],
+			[LowerBody.ECHIDNA, "(23) ECHIDNA"],
+			[LowerBody.SALAMANDER, "(25) SALAMANDER"],
 			/* [INTERMOD: xianxia]
-			[LOWER_BODY_TYPE_SCYLLA, "(26) SCYLLA"],
-			[LOWER_BODY_TYPE_MANTIS, "(27) MANTIS"],
-			[LOWER_BODY_TYPE_SHARK, "(29) SHARK"],
-			[LOWER_BODY_TYPE_GARGOYLE, "(30) GARGOYLE"],
-			[LOWER_BODY_TYPE_PLANT_HIGH_HEELS, "(31) PLANT_HIGH_HEELS"],
-			[LOWER_BODY_TYPE_PLANT_ROOT_CLAWS, "(32) PLANT_ROOT_CLAWS"],
-			[LOWER_BODY_TYPE_WOLF, "(33) WOLF"],
-			[LOWER_BODY_TYPE_PLANT_FLOWER, "(34) PLANT_FLOWER"],
-			[LOWER_BODY_TYPE_LION, "(35) LION"],
-			[LOWER_BODY_TYPE_YETI, "(36) YETI"],
-			[LOWER_BODY_TYPE_ORCA, "(37) ORCA"],
-			[LOWER_BODY_TYPE_YGG_ROOT_CLAWS, "(38) YGG_ROOT_CLAWS"],
+			[LowerBody.SCYLLA, "(26) SCYLLA"],
+			[LowerBody.MANTIS, "(27) MANTIS"],
+			[LowerBody.SHARK, "(29) SHARK"],
+			[LowerBody.GARGOYLE, "(30) GARGOYLE"],
+			[LowerBody.PLANT_HIGH_HEELS, "(31) PLANT_HIGH_HEELS"],
+			[LowerBody.PLANT_ROOT_CLAWS, "(32) PLANT_ROOT_CLAWS"],
+			[LowerBody.WOLF, "(33) WOLF"],
+			[LowerBody.PLANT_FLOWER, "(34) PLANT_FLOWER"],
+			[LowerBody.LION, "(35) LION"],
+			[LowerBody.YETI, "(36) YETI"],
+			[LowerBody.ORCA, "(37) ORCA"],
+			[LowerBody.YGG_ROOT_CLAWS, "(38) YGG_ROOT_CLAWS"],
 			*/
-			[LOWER_BODY_TYPE_WOLF, "(26) WOLF"],
+			[LowerBody.WOLF, "(26) WOLF"],
 		];
 		private static const LEG_COUNT_CONSTANTS:Array = [
 			1,2,4,6,8,
@@ -1351,7 +1351,7 @@ import classes.Items.*
 			//Cat TF
 			player.faceType = Face.CAT;
 			player.earType = Ears.CAT;
-			player.lowerBody = LOWER_BODY_TYPE_CAT;
+			player.lowerBody = LowerBody.CAT;
 			player.legCount = 2;
 			player.skinType = Skin.FUR;
 			player.skinDesc = "fur";
@@ -1374,7 +1374,7 @@ import classes.Items.*
 			player.faceType = Face.CAT;
 			player.earType = Ears.CAT;
 			player.tailType = Tail.CAT;
-			player.lowerBody = LOWER_BODY_TYPE_CAT;
+			player.lowerBody = LowerBody.CAT;
 			player.legCount = 2;
 			//Draconic TF
 			player.skinType = Skin.DRAGON_SCALES;

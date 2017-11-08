@@ -95,7 +95,7 @@ import classes.internals.ChainedDrop;
 			this.tallness = rand(14) + 59;
 			this.hipRating = HIP_RATING_CURVY+3;
 			this.buttRating = BUTT_RATING_EXPANSIVE;
-			this.lowerBody = LOWER_BODY_TYPE_BEE;
+			this.lowerBody = LowerBody.BEE;
 			this.skinTone = "yellow";
 			this.hairColor = randomChoice("black","black and yellow");
 			this.hairLength = 6;

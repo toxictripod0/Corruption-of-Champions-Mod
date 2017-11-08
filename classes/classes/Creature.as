@@ -11,6 +11,7 @@ package classes
 	import classes.BodyParts.Gills;
 	import classes.BodyParts.Hair;
 	import classes.BodyParts.Horns;
+	import classes.BodyParts.LowerBody;
 	import classes.BodyParts.Neck;
 	import classes.BodyParts.RearBody;
 	import classes.BodyParts.Skin;
@@ -524,8 +525,11 @@ import mx.logging.ILogger;
 		17 - foxpaws
 		18 - dragonfeet
 		19 - raccoonfeet*/
-		public var lowerBody:Number = LOWER_BODY_TYPE_HUMAN;
-		public var legCount:Number = 2;
+		public var lowerBodyPart:LowerBody = new LowerBody();
+		public function get lowerBody():Number { return lowerBodyPart.type; }
+		public function set lowerBody(value:Number):void { lowerBodyPart.type = value; }
+		public function get legCount():Number { return lowerBodyPart.legCount; }
+		public function set legCount(value:Number):void { lowerBodyPart.legCount = value; }
 
 		/*tailType:
 		0 - none
@@ -1905,7 +1909,7 @@ import mx.logging.ILogger;
 
 			if (isTaur()){
 				bonus += 50;
-			}else if (lowerBody == LOWER_BODY_TYPE_NAGA){
+			}else if (lowerBody == LowerBody.NAGA){
 				bonus += 20;
 			}
 
@@ -2487,8 +2491,8 @@ import mx.logging.ILogger;
 		public function isHoofed():Boolean
 		{
 			return [
-				LOWER_BODY_TYPE_HOOFED,
-				LOWER_BODY_TYPE_CLOVEN_HOOFED,
+				LowerBody.HOOFED,
+				LowerBody.CLOVEN_HOOFED,
 			].indexOf(lowerBody) != -1;
 		}
 
@@ -3005,7 +3009,7 @@ import mx.logging.ILogger;
 
 		public function isNaga():Boolean
 		{
-			if (lowerBody == LOWER_BODY_TYPE_NAGA)
+			if (lowerBody == LowerBody.NAGA)
 				return true;
 			return false;
 		}
@@ -3019,7 +3023,7 @@ import mx.logging.ILogger;
 
 		public function isDrider():Boolean
 		{
-			return (lowerBody == LOWER_BODY_TYPE_DRIDER_LOWER_BODY);
+			return (lowerBody == LowerBody.DRIDER_LOWER_BODY);
 		}
 
 		public function hasSpiderEyes():Boolean
@@ -3031,7 +3035,7 @@ import mx.logging.ILogger;
 
 		public function isGoo():Boolean
 		{
-			if (lowerBody == LOWER_BODY_TYPE_GOO)
+			if (lowerBody == LowerBody.GOO)
 				return true;
 			return false;
 		}

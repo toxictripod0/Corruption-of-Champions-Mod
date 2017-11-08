@@ -3531,7 +3531,7 @@ private function normalSheilaPregNotifREPEATEDEDHelpABitchOutANDSTAYDERE():void 
 		if (player.sens >= 40) dynStats("lus", player.sens/4, "scale", false);
 	}
 	//(harpy - minimum score for birdlegs at least)
-	else if (player.lowerBody == LOWER_BODY_TYPE_HARPY && player.tailType == Tail.HARPY) {
+	else if (player.lowerBody == LowerBody.HARPY && player.tailType == Tail.HARPY) {
 		outputText("\n\nShe shifts in your embrace, pushing up and down and giving you fits.  \"<i>Good lord, woman, what is the matter?</i>\" you ask.");
 		
 		outputText("\n\n\"<i>Sorry, mate... your feathers are tickling me,</i>\" Sheila protests.");
@@ -3541,7 +3541,7 @@ private function normalSheilaPregNotifREPEATEDEDHelpABitchOutANDSTAYDERE():void 
 		outputText("\n\nShe does so, resting in your downy lap for a moment, but gets up again.  You raise an eyebrow at her, but she just takes off her vest and sets it under her head, then settles, evidently at ease.  This is somewhat irritating; you're basically sitting up straight, with perfect posture.  A bit of an uncomfortable pose to hold for hours on end.");
 	}
 	//(bees with boots)
-	else if (player.lowerBody == LOWER_BODY_TYPE_BEE) {
+	else if (player.lowerBody == LowerBody.BEE) {
 		outputText("\n\nNo sooner does she get her head down than it's back up again.  You look a question at her.");
 		outputText("\n\n\"<i>Your legs are so bloody hard and cold, [name],</i>\" she clarifies brutally, tapping on the chitin digging into her back.");
 		outputText("\n\n\"<i>Well, sorry,</i>\" you answer, almost offended.  \"<i>Can't help the way god made me.</i>\"");

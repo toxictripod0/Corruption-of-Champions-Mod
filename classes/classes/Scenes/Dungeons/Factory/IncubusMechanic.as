@@ -175,7 +175,7 @@ package classes.Scenes.Dungeons.Factory
 			this.tallness = rand(9) + 70;
 			this.hipRating = HIP_RATING_AMPLE;
 			this.buttRating = BUTT_RATING_TIGHT;
-			this.lowerBody = LOWER_BODY_TYPE_DEMONIC_CLAWS;
+			this.lowerBody = LowerBody.DEMONIC_CLAWS;
 			this.skinTone = "light purple";
 			this.hairColor = "black";
 			this.hairLength = 12;

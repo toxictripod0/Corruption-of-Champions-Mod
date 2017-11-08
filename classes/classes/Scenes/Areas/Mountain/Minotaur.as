@@ -72,7 +72,7 @@ package classes.Scenes.Areas.Mountain
 			this.tallness = rand(37) + 84;
 			this.hipRating = HIP_RATING_AVERAGE;
 			this.buttRating = BUTT_RATING_AVERAGE;
-			this.lowerBody = LOWER_BODY_TYPE_HOOFED;
+			this.lowerBody = LowerBody.HOOFED;
 			this.skinTone = furColor;
 			this.skinType = Skin.FUR;
 			this.skinDesc = "shaggy fur";

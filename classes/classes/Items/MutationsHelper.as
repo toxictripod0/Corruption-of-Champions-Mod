@@ -140,13 +140,13 @@ package classes.Items
 			}
 
 			//(Non-human -> Normal Human Legs)
-			if (tfSource == "regularHummus" && player.isBiped() && player.lowerBody != LOWER_BODY_TYPE_HUMAN) {
+			if (tfSource == "regularHummus" && player.isBiped() && player.lowerBody != LowerBody.HUMAN) {
 				outputText("\n\nYou collapse as your legs shift and twist.  By the time the pain subsides, you notice that you have normal legs and normal feet.  <b>You now have normal feet!</b>");
 				doRestore = true;
 			}
 
 			if (doRestore) {
-				player.lowerBody = LOWER_BODY_TYPE_HUMAN;
+				player.lowerBody = LowerBody.HUMAN;
 				player.legCount = 2;
 				changes++;
 				return true;

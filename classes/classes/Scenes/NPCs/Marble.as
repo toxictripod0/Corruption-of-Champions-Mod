@@ -94,7 +94,7 @@ package classes.Scenes.NPCs
 			this.tallness = 6*12+4;
 			this.hipRating = HIP_RATING_CURVY;
 			this.buttRating = BUTT_RATING_LARGE;
-			this.lowerBody = LOWER_BODY_TYPE_HOOFED;
+			this.lowerBody = LowerBody.HOOFED;
 			this.skinTone = "pale";
 			this.hairColor = "brown";
 			this.hairLength = 13;

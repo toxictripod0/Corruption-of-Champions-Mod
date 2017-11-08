@@ -630,9 +630,9 @@ package classes
 			//Horse lowerbody, other lowerbody texts appear lower
 			if (player.isTaur()) 
 			{
-				if (player.lowerBody == LOWER_BODY_TYPE_HOOFED) 
+				if (player.lowerBody == LowerBody.HOOFED) 
 					outputText("  From the waist down you have the body of a horse, with all [legCountText] legs capped by hooves.");
-				else if (player.lowerBody == LOWER_BODY_TYPE_PONY) 
+				else if (player.lowerBody == LowerBody.PONY) 
 					outputText("  From the waist down you have an incredibly cute and cartoonish parody of a horse's body, with all [legCountText] legs ending in flat, rounded feet.");
 				else
 					outputText("  Where your legs would normally start you have grown the body of a feral animal, with all [legCountText] legs.");
@@ -933,17 +933,17 @@ package classes
 			}
 			//</mod>
 			//LOWERBODY SPECIAL
-			if (player.lowerBody == LOWER_BODY_TYPE_HUMAN) 
+			if (player.lowerBody == LowerBody.HUMAN) 
 				outputText("  [legCountTextUC] normal human legs grow down from your waist, ending in normal human feet.");
-			else if (player.lowerBody == LOWER_BODY_TYPE_FERRET) 
+			else if (player.lowerBody == LowerBody.FERRET) 
 				outputText("  [legCountTextUC] furry, digitigrade legs form below your [hips].  The fur is thinner on the feet, and your toes are tipped with claws.");
-			else if (player.lowerBody == LOWER_BODY_TYPE_HOOFED) 
+			else if (player.lowerBody == LowerBody.HOOFED) 
 				outputText("  Your [legCountText] legs are muscled and jointed oddly, covered in fur, and end in a bestial hooves.");
-			else if (player.lowerBody == LOWER_BODY_TYPE_WOLF) 
+			else if (player.lowerBody == LowerBody.WOLF) 
 				outputText("  You have [legCountText] digitigrade legs that end in wolf paws.");
-			else if (player.lowerBody == LOWER_BODY_TYPE_DOG) 
+			else if (player.lowerBody == LowerBody.DOG) 
 				outputText("  [legCountTextUC] digitigrade legs grow downwards from your waist, ending in dog-like hind-paws.");
-			else if (player.lowerBody == LOWER_BODY_TYPE_NAGA)
+			else if (player.lowerBody == LowerBody.NAGA)
 				if (player.hasReptileUnderBody(true)) {
 					var nagaColors:Array = ["", ""];
 					if (player.underBody.type == UNDER_BODY_TYPE_NAGA)
@@ -957,39 +957,39 @@ package classes
 				} else
 					outputText("  Below your waist your flesh is fused together into a very long snake-like tail.");
 			//Horse body is placed higher for readability purposes
-			else if (player.lowerBody == LOWER_BODY_TYPE_DEMONIC_HIGH_HEELS) 
+			else if (player.lowerBody == LowerBody.DEMONIC_HIGH_HEELS) 
 				outputText("  Your [legCountText] perfect lissome legs end in mostly human feet, apart from the horn protruding straight down from the heel that forces you to walk with a sexy, swaying gait.");
-			else if (player.lowerBody == LOWER_BODY_TYPE_DEMONIC_CLAWS) 
+			else if (player.lowerBody == LowerBody.DEMONIC_CLAWS) 
 				outputText("  Your [legCountText] lithe legs are capped with flexible clawed feet.  Sharp black nails grow where once you had toe-nails, giving you fantastic grip.");
-			else if (player.lowerBody == LOWER_BODY_TYPE_BEE) 
+			else if (player.lowerBody == LowerBody.BEE) 
 				outputText("  Your [legCountText] legs are covered in a shimmering insectile carapace up to mid-thigh, looking more like a set of 'fuck-me-boots' than exoskeleton.  A bit of downy yellow and black fur fuzzes your upper thighs, just like a bee.");
-			else if (player.lowerBody == LOWER_BODY_TYPE_GOO) 
+			else if (player.lowerBody == LowerBody.GOO) 
 				outputText("  In place of legs you have a shifting amorphous blob.  Thankfully it's quite easy to propel yourself around on.  The lowest portions of your " + player.armorName + " float around inside you, bringing you no discomfort.");
-			else if (player.lowerBody == LOWER_BODY_TYPE_CAT) 
+			else if (player.lowerBody == LowerBody.CAT) 
 				outputText("  [legCountTextUC] digitigrade legs grow downwards from your waist, ending in soft, padded cat-paws.");
-			else if (player.lowerBody == LOWER_BODY_TYPE_LIZARD) 
+			else if (player.lowerBody == LowerBody.LIZARD) 
 				outputText("  [legCountTextUC] digitigrade legs grow down from your [hips], ending in clawed feet.  There are three long toes on the front, and a small hind-claw on the back.");
-			else if(player.lowerBody == LOWER_BODY_TYPE_SALAMANDER) 
+			else if(player.lowerBody == LowerBody.SALAMANDER) 
 				outputText("  [legCountTextUC] digitigrade legs covered in thick, leathery red scales up to the mid-thigh grow down from your [hips], ending in clawed feet.  There are three long toes on the front, and a small hind-claw on the back.");
-			else if (player.lowerBody == LOWER_BODY_TYPE_BUNNY) 
+			else if (player.lowerBody == LowerBody.BUNNY) 
 				outputText("  Your [legCountText] legs thicken below the waist as they turn into soft-furred rabbit-like legs.  You even have large bunny feet that make hopping around a little easier than walking.");
-			else if (player.lowerBody == LOWER_BODY_TYPE_HARPY) 
+			else if (player.lowerBody == LowerBody.HARPY) 
 				outputText("  Your [legCountText] legs are covered with [furColor] plumage.  Thankfully the thick, powerful thighs are perfect for launching you into the air, and your feet remain mostly human, even if they are two-toed and tipped with talons.");
-			else if (player.lowerBody == LOWER_BODY_TYPE_KANGAROO) 
+			else if (player.lowerBody == LowerBody.KANGAROO) 
 				outputText("  Your [legCountText] furry legs have short thighs and long calves, with even longer feet ending in prominently-nailed toes.");
-			else if (player.lowerBody == LOWER_BODY_TYPE_CHITINOUS_SPIDER_LEGS) 
+			else if (player.lowerBody == LowerBody.CHITINOUS_SPIDER_LEGS) 
 				outputText("  Your [legCountText] legs are covered in a reflective black, insectile carapace up to your mid-thigh, looking more like a set of 'fuck-me-boots' than exoskeleton.");
-			else if (player.lowerBody == LOWER_BODY_TYPE_FOX) 
+			else if (player.lowerBody == LowerBody.FOX) 
 				outputText("  Your [legCountText] legs are crooked into high knees with hocks and long feet, like those of a fox; cute bulbous toes decorate the ends.");
-			else if (player.lowerBody == LOWER_BODY_TYPE_DRAGON) 
+			else if (player.lowerBody == LowerBody.DRAGON) 
 				outputText("  [legCountTextUC] human-like legs grow down from your [hips], sheathed in scales and ending in clawed feet.  There are three long toes on the front, and a small hind-claw on the back.");
-			else if (player.lowerBody == LOWER_BODY_TYPE_RACCOON) 
+			else if (player.lowerBody == LowerBody.RACCOON) 
 				outputText("  Your [legCountText] legs, though covered in fur, are humanlike.  Long feet on the ends bear equally long toes, and the pads on the bottoms are quite sensitive to the touch.");
-			else if (player.lowerBody == LOWER_BODY_TYPE_CLOVEN_HOOFED) 
+			else if (player.lowerBody == LowerBody.CLOVEN_HOOFED) 
 				outputText("  [legCountTextUC] digitigrade legs form below your [hips], ending in cloven hooves.");
-			else if (player.lowerBody == LOWER_BODY_TYPE_IMP) 
+			else if (player.lowerBody == LowerBody.IMP) 
 				outputText(" [legCountTextUC] digitigrade legs form below your [hips], ending in clawed feet. Three extend out the front, and one smaller one is in the back to keep your balance.");
-			else if (player.lowerBody == LOWER_BODY_TYPE_COCKATRICE) {
+			else if (player.lowerBody == LowerBody.COCKATRICE) {
 				outputText(" [legCountTextUC] digitigrade legs grow down from your [hips], ending in clawed feet."
 				          +" There are three long toes on the front, and a small hind-claw on the back."
 				          +" A layer of " + (player.hasCockatriceSkin() ? player.furColor : player.hairColor) + " feathers covers your legs from the"
@@ -1187,7 +1187,7 @@ package classes
 				outputText("\n");
 			}	
 			//Crotchial stuff - mention snake
-			if (player.lowerBody == LOWER_BODY_TYPE_NAGA && player.gender > 0) 
+			if (player.lowerBody == LowerBody.NAGA && player.gender > 0) 
 			{
 				outputText("\nYour sex");
 				if (player.gender == 3 || player.cocks.length > 1) 

@@ -1803,34 +1803,34 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		}
 
 		if (player.lowerBody === 4) {
-			player.lowerBody = LOWER_BODY_TYPE_HOOFED;
+			player.lowerBody = LowerBody.HOOFED;
 			player.legCount = 4;
 		}
 		
 		if (player.lowerBody === 24) {
-			player.lowerBody = LOWER_BODY_TYPE_CLOVEN_HOOFED;
+			player.lowerBody = LowerBody.CLOVEN_HOOFED;
 			player.legCount = 4;
 		}
 		
 		if (saveFile.data.legCount == undefined) {
-			if (player.lowerBody == LOWER_BODY_TYPE_DRIDER_LOWER_BODY) {
+			if (player.lowerBody == LowerBody.DRIDER_LOWER_BODY) {
 				player.legCount = 8;
 			}
 			else if (player.lowerBody == 4) {
 				player.legCount = 4;
-				player.lowerBody = LOWER_BODY_TYPE_HOOFED;
+				player.lowerBody = LowerBody.HOOFED;
 			}
-			else if (player.lowerBody == LOWER_BODY_TYPE_PONY) {
+			else if (player.lowerBody == LowerBody.PONY) {
 				player.legCount = 4;
 			}
 			else if (player.lowerBody == 24) {
 				player.legCount = 4;
-				player.lowerBody = LOWER_BODY_TYPE_CLOVEN_HOOFED;
+				player.lowerBody = LowerBody.CLOVEN_HOOFED;
 			}
-			else if (player.lowerBody == LOWER_BODY_TYPE_NAGA) {
+			else if (player.lowerBody == LowerBody.NAGA) {
 				player.legCount = 1;
 			}
-			else if (player.lowerBody == LOWER_BODY_TYPE_GOO) {
+			else if (player.lowerBody == LowerBody.GOO) {
 				player.legCount = 1;
 			}
 			else player.legCount = 2;

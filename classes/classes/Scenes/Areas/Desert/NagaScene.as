@@ -19,7 +19,7 @@ public function nagaEncounter():void {
 	//Create status if needed
 	if (!player.hasStatusEffect(StatusEffects.Naga)) player.createStatusEffect(StatusEffects.Naga,0,0,0,0);
 	clearOutput();
-	if (player.lowerBody == LOWER_BODY_TYPE_NAGA) {
+	if (player.lowerBody == LowerBody.NAGA) {
 		//Set 'last fuck as naga'
 		player.changeStatusValue(StatusEffects.Naga,1,1);
 		//Not met as naga before
@@ -727,7 +727,7 @@ internal function nagaRapeChoice():void {
 			addButton(1, "Female Rape", nagaVictoryFemale);
 		if (player.isGenderless())
 			addButton(2, "Genderless", nagaVictoryGenderless);
-		if (player.lowerBody == LOWER_BODY_TYPE_GOO)
+		if (player.lowerBody == LowerBody.GOO)
 			addButton(3, "Gooey Rape", gooNagaRape);
 	}
 	

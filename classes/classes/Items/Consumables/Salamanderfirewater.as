@@ -213,22 +213,22 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Legs
-			if (player.lowerBody !== LOWER_BODY_TYPE_SALAMANDER && player.tailType === Tail.SALAMANDER && changes < changeLimit && rand(3) === 0) {
+			if (player.lowerBody !== LowerBody.SALAMANDER && player.tailType === Tail.SALAMANDER && changes < changeLimit && rand(3) === 0) {
 				//Hooves -
-				if (player.lowerBody === LOWER_BODY_TYPE_HOOFED) outputText("\n\nYou scream in agony as you feel your hooves crack and break apart, beginning to rearrange.  Your legs change to a digitigrade shape while your feet grow claws and shift to have three toes on the front and a smaller toe on the heel.");
+				if (player.lowerBody === LowerBody.HOOFED) outputText("\n\nYou scream in agony as you feel your hooves crack and break apart, beginning to rearrange.  Your legs change to a digitigrade shape while your feet grow claws and shift to have three toes on the front and a smaller toe on the heel.");
 				//TAURS -
 				else if (player.isTaur()) outputText("\n\nYour lower body is wracked by pain!  Once it passes, you discover that you're standing on digitigrade legs with salamander-like claws.");
 				//feet types -
-				else if (player.lowerBody === LOWER_BODY_TYPE_HUMAN || player.lowerBody === LOWER_BODY_TYPE_DOG || player.lowerBody === LOWER_BODY_TYPE_DEMONIC_HIGH_HEELS || player.lowerBody === LOWER_BODY_TYPE_DEMONIC_CLAWS || player.lowerBody === LOWER_BODY_TYPE_BEE || player.lowerBody === LOWER_BODY_TYPE_CAT || player.lowerBody === LOWER_BODY_TYPE_LIZARD) outputText("\n\nYou scream in agony as you feel the bones in your legs break and begin to rearrange. They change to a digitigrade shape while your feet grow claws and shift to have three toes on the front and a smaller toe on the heel.");
+				else if (player.lowerBody === LowerBody.HUMAN || player.lowerBody === LowerBody.DOG || player.lowerBody === LowerBody.DEMONIC_HIGH_HEELS || player.lowerBody === LowerBody.DEMONIC_CLAWS || player.lowerBody === LowerBody.BEE || player.lowerBody === LowerBody.CAT || player.lowerBody === LowerBody.LIZARD) outputText("\n\nYou scream in agony as you feel the bones in your legs break and begin to rearrange. They change to a digitigrade shape while your feet grow claws and shift to have three toes on the front and a smaller toe on the heel.");
 				//Else –
 				else outputText("\n\nPain rips through your " + player.legs() + ", morphing and twisting them until the bones rearrange into a digitigrade configuration.  The strange legs have three-toed, clawed feet, complete with a small vestigial claw-toe on the back for added grip.");
 				outputText("  <b>You have salamander legs and claws!</b>");
-				player.lowerBody = LOWER_BODY_TYPE_SALAMANDER;
+				player.lowerBody = LowerBody.SALAMANDER;
 				player.legCount = 2;
 				changes++;
 			}
 			//Arms
-			if (player.armType !== Arms.SALAMANDER && player.lowerBody === LOWER_BODY_TYPE_SALAMANDER && changes < changeLimit && rand(3) === 0) {
+			if (player.armType !== Arms.SALAMANDER && player.lowerBody === LowerBody.SALAMANDER && changes < changeLimit && rand(3) === 0) {
 				outputText("\n\nYou scratch your biceps absentmindedly, but no matter how much you scratch, you can't get rid of the itch.  After a longer moment of ignoring it you finally glance down in irritation, only to discover that your arms former appearance has changed into those of a salamander with leathery, red scales and short, fiery-red claws replacing your fingernails.  <b>You now have salamander arms.</b>");
 				player.armType = Arms.SALAMANDER;
 				mutations.updateClaws(Claws.SALAMANDER);

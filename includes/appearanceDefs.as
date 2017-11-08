@@ -4,37 +4,6 @@
 
 // Description constants
 
-// lowerBody
-public static const LOWER_BODY_TYPE_HUMAN:int                                       =   0;
-public static const LOWER_BODY_TYPE_HOOFED:int                                      =   1;
-public static const LOWER_BODY_TYPE_DOG:int                                         =   2;
-public static const LOWER_BODY_TYPE_NAGA:int                                        =   3;
-//public static const LOWER_BODY_TYPE_CENTAUR:int                                   =   4; //DEPRECATED - USE HOOFED + LEGCOUNT 4
-public static const LOWER_BODY_TYPE_DEMONIC_HIGH_HEELS:int                          =   5;
-public static const LOWER_BODY_TYPE_DEMONIC_CLAWS:int                               =   6;
-public static const LOWER_BODY_TYPE_BEE:int                                         =   7;
-public static const LOWER_BODY_TYPE_GOO:int                                         =   8;
-public static const LOWER_BODY_TYPE_CAT:int                                         =   9;
-public static const LOWER_BODY_TYPE_LIZARD:int                                      =  10;
-public static const LOWER_BODY_TYPE_PONY:int                                        =  11;
-public static const LOWER_BODY_TYPE_BUNNY:int                                       =  12;
-public static const LOWER_BODY_TYPE_HARPY:int                                       =  13;
-public static const LOWER_BODY_TYPE_KANGAROO:int                                    =  14;
-public static const LOWER_BODY_TYPE_CHITINOUS_SPIDER_LEGS:int                       =  15;
-public static const LOWER_BODY_TYPE_DRIDER_LOWER_BODY:int                           =  16;
-public static const LOWER_BODY_TYPE_FOX:int                                         =  17;
-public static const LOWER_BODY_TYPE_DRAGON:int                                      =  18;
-public static const LOWER_BODY_TYPE_RACCOON:int                                     =  19;
-public static const LOWER_BODY_TYPE_FERRET:int                                      =  20;
-public static const LOWER_BODY_TYPE_CLOVEN_HOOFED:int                               =  21;
-//public static const LOWER_BODY_TYPE_RHINO:int                                       =  22;
-public static const LOWER_BODY_TYPE_ECHIDNA:int                                     =  23;
-//public static const LOWER_BODY_TYPE_DEERTAUR:int                                  =  24;//DEPRECATED - USE CLOVEN HOOFED + LEGCOUNT 4
-public static const LOWER_BODY_TYPE_SALAMANDER:int                                  =  25;
-public static const LOWER_BODY_TYPE_WOLF:int                                        =  26;
-public static const LOWER_BODY_TYPE_IMP:int                                         =  27;
-public static const LOWER_BODY_TYPE_COCKATRICE:int                                  =  28;
-
 // underBody
 public static const UNDER_BODY_TYPE_NONE:int                                        =   0;
 public static const UNDER_BODY_TYPE_REPTILE:int                                     =   1;

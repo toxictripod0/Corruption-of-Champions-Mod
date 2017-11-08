@@ -162,7 +162,7 @@ package classes.Scenes.Areas.Lake
 			this.tallness = rand(8) + 70;
 			this.hipRating = HIP_RATING_AMPLE;
 			this.buttRating = BUTT_RATING_LARGE;
-			this.lowerBody = LOWER_BODY_TYPE_GOO;
+			this.lowerBody = LowerBody.GOO;
 			var tone:String = randomChoice("blue", "purple", "crystal");
 			this.skinTone = tone;
 			this.skinType = Skin.GOO;

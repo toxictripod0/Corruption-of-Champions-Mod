@@ -1,6 +1,7 @@
 ﻿package classes.Scenes.Areas.Lake
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.internals.*;
 	import classes.GlobalFlags.kFLAGS;
 
@@ -52,7 +53,7 @@
 			this.tallness = rand(8) + 80;
 			this.hipRating = HIP_RATING_AMPLE;
 			this.buttRating = BUTT_RATING_LARGE;
-			this.lowerBody = LOWER_BODY_TYPE_GOO;
+			this.lowerBody = LowerBody.GOO;
 			this.skinTone = "green";
 			initStrTouSpeInte(25, 20, 10, 5);
 			initLibSensCor(50, 60, 20);

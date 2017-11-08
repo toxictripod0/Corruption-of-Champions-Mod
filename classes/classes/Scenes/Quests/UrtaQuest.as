@@ -242,7 +242,7 @@ public function startUrtaQuest():void {
 	player.breastRows[0].breastRating = 7;
 	player.nippleLength = .75;
 	player.skinTone = "black";
-	player.lowerBody = LOWER_BODY_TYPE_FOX;
+	player.lowerBody = LowerBody.FOX;
 	player.legCount = 2;
 	player.earType = Ears.FOX;
 	player.faceType = Face.FOX;

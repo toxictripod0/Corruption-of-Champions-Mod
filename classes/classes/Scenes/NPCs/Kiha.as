@@ -188,7 +188,7 @@ package classes.Scenes.NPCs
 			this.tallness = 6*12+1;
 			this.hipRating = HIP_RATING_AMPLE;
 			this.buttRating = BUTT_RATING_AVERAGE+1;
-			this.lowerBody = LOWER_BODY_TYPE_HOOFED;
+			this.lowerBody = LowerBody.HOOFED;
 			this.skinTone = "dark";
 			this.skinType = Skin.DRAGON_SCALES;
 			this.skinDesc = "skin and scales";

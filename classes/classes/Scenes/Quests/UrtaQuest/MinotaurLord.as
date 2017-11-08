@@ -174,7 +174,7 @@ package classes.Scenes.Quests.UrtaQuest
 			this.tallness = 132;
 			this.hipRating = HIP_RATING_AVERAGE;
 			this.buttRating = BUTT_RATING_AVERAGE+1;
-			this.lowerBody = LOWER_BODY_TYPE_HOOFED;
+			this.lowerBody = LowerBody.HOOFED;
 			this.skinTone = "red";
 			this.skinType = Skin.FUR;
 			this.skinDesc = "shaggy fur";

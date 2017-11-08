@@ -40,7 +40,7 @@ package classes.Scenes.Areas.Swamp
 			this.tallness = 7*12+6;
 			this.hipRating = HIP_RATING_CURVY+2;
 			this.buttRating = BUTT_RATING_LARGE+1;
-			this.lowerBody = LOWER_BODY_TYPE_CHITINOUS_SPIDER_LEGS;
+			this.lowerBody = LowerBody.CHITINOUS_SPIDER_LEGS;
 			this.skinTone = "dusky";
 			this.hairColor = "red";
 			this.hairLength = 13;

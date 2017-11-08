@@ -48,7 +48,7 @@ package classes.Items.Consumables
 			player.eyeType = Eyes.HUMAN;
 			player.antennae = Antennae.NONE;
 			player.faceType = Face.HUMAN;
-			player.lowerBody = LOWER_BODY_TYPE_HUMAN;
+			player.lowerBody = LowerBody.HUMAN;
 			player.legCount = 2;
 			player.wingType = Wings.NONE;
 			player.tailType = Tail.NONE;

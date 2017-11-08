@@ -69,7 +69,7 @@ package classes.Scenes.Areas.VolcanicCrag
 			this.faceType = Face.CAT;
 			this.horns = 7;
 			this.hornType = Horns.DRACONIC_X2
-			this.lowerBody = LOWER_BODY_TYPE_CAT
+			this.lowerBody = LowerBody.CAT
 			this.tailType = Tail.BEHEMOTH
 			initStrTouSpeInte(125, 100, 80, 105);
 			initLibSensCor(35, 15, 15);

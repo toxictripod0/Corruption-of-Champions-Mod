@@ -113,7 +113,7 @@ import classes.internals.ChainedAction;
 			this.tallness = 6*12+2;
 			this.hipRating = HIP_RATING_SLENDER+1;
 			this.buttRating = BUTT_RATING_AVERAGE;
-			this.lowerBody = LOWER_BODY_TYPE_LIZARD;
+			this.lowerBody = LowerBody.LIZARD;
 			this.faceType = Face.LIZARD;
 			this.earType = Ears.LIZARD;
 			this.eyeType = Eyes.BASILISK;

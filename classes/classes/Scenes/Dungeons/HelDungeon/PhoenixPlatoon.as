@@ -82,7 +82,7 @@ package classes.Scenes.Dungeons.HelDungeon
 			this.tallness = rand(8) + 70;
 			this.hipRating = HIP_RATING_AMPLE+2;
 			this.buttRating = BUTT_RATING_LARGE;
-			this.lowerBody = LOWER_BODY_TYPE_LIZARD;
+			this.lowerBody = LowerBody.LIZARD;
 			this.skinTone = "red";
 			this.hairColor = "black";
 			this.hairLength = 15;

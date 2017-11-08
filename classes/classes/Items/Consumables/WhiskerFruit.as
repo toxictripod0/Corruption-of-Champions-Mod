@@ -276,24 +276,24 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Da paws (if already haz ears & tail)
-			if (player.tailType === Tail.CAT && player.earType === Ears.CAT && rand(5) === 0 && changes < changeLimit && player.lowerBody !== LOWER_BODY_TYPE_CAT) {
+			if (player.tailType === Tail.CAT && player.earType === Ears.CAT && rand(5) === 0 && changes < changeLimit && player.lowerBody !== LowerBody.CAT) {
 				//hoof to cat:
-				if (player.lowerBody === LOWER_BODY_TYPE_HOOFED) {
+				if (player.lowerBody === LowerBody.HOOFED) {
 					outputText("\n\nYou feel your hooves suddenly splinter, growing into five unique digits. Their flesh softens as your hooves reshape into furred cat paws. <b>You now have cat paws.</b>");
 					if (player.isTaur()) outputText("  You feel woozy and collapse on your side.  When you wake, you're no longer a centaur and your body has returned to a humanoid shape.");
 				}
 				//Goo to cat
-				else if (player.lowerBody === LOWER_BODY_TYPE_GOO) {
+				else if (player.lowerBody === LowerBody.GOO) {
 					outputText("\n\nYour lower body rushes inward, molding into two leg-like shapes that gradually stiffen up.  In moments they solidify into digitigrade legs, complete with soft, padded cat-paws.  <b>You now have cat-paws!</b>");
 				}
 				//non hoof to cat:
 				else outputText("\n\nYou scream in agony as you feel the bones in your " + player.feet() + " break and begin to rearrange. When the pain fades, you feel surprisingly well-balanced. <b>You now have cat paws.</b>");
-				player.lowerBody = LOWER_BODY_TYPE_CAT;
+				player.lowerBody = LowerBody.CAT;
 				player.legCount = 2;
 				changes++;
 			}
 			//TURN INTO A FURRAH!  OH SHIT
-			if (player.tailType === Tail.CAT && player.earType === Ears.CAT && rand(5) === 0 && changes < changeLimit && player.lowerBody === LOWER_BODY_TYPE_CAT && !player.hasFur()) {
+			if (player.tailType === Tail.CAT && player.earType === Ears.CAT && rand(5) === 0 && changes < changeLimit && player.lowerBody === LowerBody.CAT && !player.hasFur()) {
 				var catFurColors:Array = [
 					"brown",
 					"chocolate",
@@ -322,7 +322,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//CAT-FACE!  FULL ON FURRY!  RAGE AWAY NEKOZ
-			if (player.tailType === Tail.CAT && player.earType === Ears.CAT && rand(5) === 0 && changes < changeLimit && player.lowerBody === LOWER_BODY_TYPE_CAT && (player.hasFur() || (player.hasReptileScales() && player.dragonneScore() >= 4)) && player.faceType !== Face.CAT) {
+			if (player.tailType === Tail.CAT && player.earType === Ears.CAT && rand(5) === 0 && changes < changeLimit && player.lowerBody === LowerBody.CAT && (player.hasFur() || (player.hasReptileScales() && player.dragonneScore() >= 4)) && player.faceType !== Face.CAT) {
 				//Gain cat face, replace old face
 				temp = rand(3);
 				if (temp === 0) outputText("\n\nYour face is wracked with pain. You throw back your head and scream in agony as you feel your cheekbones breaking and shifting, reforming into something... different. You find a puddle to view your reflection and discover <b>your face is now a cross between human and feline features.</b>");

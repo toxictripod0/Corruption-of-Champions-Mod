@@ -98,7 +98,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//gain fur
-			if ((player.lowerBody === LOWER_BODY_TYPE_RACCOON && player.earType === Ears.RACCOON) && !player.hasFur() && changes < changeLimit && rand(4) === 0) {
+			if ((player.lowerBody === LowerBody.RACCOON && player.earType === Ears.RACCOON) && !player.hasFur() && changes < changeLimit && rand(4) === 0) {
 				outputText("\n\nYou shiver, feeling a bit cold.  Just as you begin to wish for something to cover up with, it seems your request is granted; thick, bushy fur begins to grow all over your body!  You tug at the tufts in alarm, but they're firmly rooted and... actually pretty soft.  Huh.  ");
 				player.skinType = Skin.FUR;
 				player.skinAdj = "";
@@ -120,7 +120,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//gain feet-coon
-			if (player.earType === Ears.RACCOON && player.lowerBody !== LOWER_BODY_TYPE_RACCOON && changes < changeLimit && rand(4) === 0) {
+			if (player.earType === Ears.RACCOON && player.lowerBody !== LowerBody.RACCOON && changes < changeLimit && rand(4) === 0) {
 				//from naga non-feet (gain fatigue and lose lust)
 				if (player.isNaga()) {
 					outputText("\n\nYour body straightens and telescopes suddenly and without the length of your snake half to anchor you, you're left with your face in the dirt.  A shuffling and scraping of falling scales sounds and a terrible cramp takes you as your back half continues migrating, subducting under your [butt] and making you feel extremely bloated.  As your once prominent tail dwindles to roughly the length of your torso, a sickly ripping noise fills your head and it bursts apart, revealing two new legs!  The tattered snake-skin continues melding into your groin as you examine the fuzzy legs and long-toed, sensitive feet.  <b>Looks like you now have raccoon hind-paws...</b> and an upset stomach.");
@@ -130,9 +130,9 @@ package classes.Items.Consumables
 				//from amoeba non-feet
 				else if (player.isGoo()) outputText("\n\nYour gooey undercarriage begins to boil violently, and before you can do anything, it evaporates!  Left sitting on just the small pad of sticky half-dried slime that comprises your [butt], a sudden bulge under you is enough to push you onto your back.  Wondering idly and unable to see what's happening, you close your eyes and try to focus on what sensations you can feel from your lower body.  You feel... a swell of expansion, followed by weak muscles trying to contract for the first time, pulling flimsy, folded limbs apart and laying them flat.  As your attention wanders downward, you feel toes wiggling - far longer toes than you remember.  For several minutes you lie still and test muscles gingerly as your body solidifes, but when you can finally move again and look at your legs properly, what you see surprises you very little.  <b>You have fuzzy legs and a pair of long-toed raccoon paws!</b>");
 				//from hooves or hard feet, including centaurs and bees
-				else if (player.lowerBody === LOWER_BODY_TYPE_HOOFED || player.lowerBody === LOWER_BODY_TYPE_BEE || player.lowerBody === LOWER_BODY_TYPE_PONY || player.lowerBody === LOWER_BODY_TYPE_CHITINOUS_SPIDER_LEGS || player.isTaur()) {
+				else if (player.lowerBody === LowerBody.HOOFED || player.lowerBody === LowerBody.BEE || player.lowerBody === LowerBody.PONY || player.lowerBody === LowerBody.CHITINOUS_SPIDER_LEGS || player.isTaur()) {
 					outputText("\n\nYour [feet] feel very... wide, all of a sudden.  You clop around experimentally, finding them far less responsive and more cumbersome than usual.  On one step, one of your feet ");
-					if (player.lowerBody === LOWER_BODY_TYPE_HOOFED || player.lowerBody === LOWER_BODY_TYPE_PONY) outputText("pops right out of its hoof just in time");
+					if (player.lowerBody === LowerBody.HOOFED || player.lowerBody === LowerBody.PONY) outputText("pops right out of its hoof just in time");
 					else outputText("comes loose inside its long boot, and you pull it free with irritation only");
 					outputText(" for you to set it back down on a sharp rock!  Biting off a curse, you examine the new bare foot.  It looks much like a human's, except for the nearly-twice-as-long toes.  You find you can even use them to pick things up; the sharp rock is dropped into your hand and tossed far away.  The shed [foot] is quickly joined on the ground by its complement, revealing more long toes.  ");
 					if (player.isTaur()) outputText("For a few minutes you amuse yourself with your four prehensile feet... you even make up a game that involves juggling a stone under your body by tossing it between two feet while balancing on the others.  It's only a short while, however, before your lower stomach grumbles and a searing pain makes you miss your catch.  Anticipating what will happen, you lie down carefully and close your eyes, biting down on a soft wad of cloth.  The pain quickly returns and drives you into unconsciousness, and when you awaken, your back legs are gone.  ");
@@ -141,10 +141,10 @@ package classes.Items.Consumables
 				//from human, demon, paw feet
 				else {
 					outputText("\n\nYour toes wiggle of their own accord, drawing your attention.  Looking down, you can see them changing from their current shape, stretching into oblongs.  When they finish, your foot appears humanoid, but with long, prehensile toes!  ");
-					if ((player.lowerBody === LOWER_BODY_TYPE_HUMAN || player.lowerBody === LOWER_BODY_TYPE_DEMONIC_HIGH_HEELS || player.lowerBody === LOWER_BODY_TYPE_DEMONIC_CLAWS) && !player.hasFur()) outputText("The sensation of walking around on what feels like a second pair of hands is so weird that you miss noticing the itchy fur growing in over your legs...  ");
+					if ((player.lowerBody === LowerBody.HUMAN || player.lowerBody === LowerBody.DEMONIC_HIGH_HEELS || player.lowerBody === LowerBody.DEMONIC_CLAWS) && !player.hasFur()) outputText("The sensation of walking around on what feels like a second pair of hands is so weird that you miss noticing the itchy fur growing in over your legs...  ");
 					outputText("<b>You now have raccoon paws!</b>");
 				}
-				player.lowerBody = LOWER_BODY_TYPE_RACCOON;
+				player.lowerBody = LowerBody.RACCOON;
 				player.legCount = 2;
 				changes++;
 			}
@@ -177,7 +177,7 @@ package classes.Items.Consumables
 			}
 			//gain full-coon face (requires half-coon and fur)
 			//from humanoid - should be the only one possible
-			else if (player.faceType === Face.RACCOON_MASK && player.lowerBody === LOWER_BODY_TYPE_RACCOON && player.hasFur() && rand(4) === 0 && changes < changeLimit) {
+			else if (player.faceType === Face.RACCOON_MASK && player.lowerBody === LowerBody.RACCOON && player.hasFur() && rand(4) === 0 && changes < changeLimit) {
 				outputText("\n\nYour face pinches with tension, and you rub the bridge of your nose to release it.  The action starts a miniature slide in your bone structure, and your nose extends out in front of you!  You shut your eyes, waiting for the sinus pressure to subside, and when you open them, a triangular, pointed snout dotted with whiskers and capped by a black nose greets you!  <b>You now have a raccoon's face!</b>");
 				//from muzzleoid - should not be possible, but included if things change
 				//Your face goes numb, and you can see your snout shifting into a medium-long, tapered shape.  Closing your eyes, you rub at your forehead to try and get sensation back into it; it takes several minutes before full feeling returns.  <b>When it does, you look again at yourself and see a raccoon's pointy face, appointed with numerous whiskers and a black nose!</b>

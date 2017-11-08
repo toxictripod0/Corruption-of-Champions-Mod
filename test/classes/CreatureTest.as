@@ -12,6 +12,7 @@ package classes{
 	import classes.helper.StageLocator;
 	
 	import classes.GlobalFlags.kGAMECLASS;
+	import classes.BodyParts.LowerBody;
 	import classes.Creature;
 	import classes.CoC;
 	import classes.PerkLib;
@@ -170,7 +171,7 @@ package classes{
 		
 		[Test]
 		public function testVaginalCapacityNagaBodyBonus():void {
-			oneVagina.lowerBody = LOWER_BODY_TYPE_NAGA;
+			oneVagina.lowerBody = LowerBody.NAGA;
 			assertThat(oneVagina.isNaga(), equalTo(true)); //guard assert
 			
 			assertThat(oneVagina.vaginalCapacity(), equalTo(22));

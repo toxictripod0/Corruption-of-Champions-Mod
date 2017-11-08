@@ -537,7 +537,7 @@ public class ErlKingScene extends BaseContent implements Encounter
 			if (player.hasBreasts()) outputText("  Your chest first flattens out, then swells, as");
 			else outputText("  T");
 			outputText(" taut muscles fill in your entire frame.");
-			if (player.lowerBody == LOWER_BODY_TYPE_DOG) outputText("  Your doggie paws tingle as muscles build there, rebuilding them as stocky, athletic hound legs.");
+			if (player.lowerBody == LowerBody.DOG) outputText("  Your doggie paws tingle as muscles build there, rebuilding them as stocky, athletic hound legs.");
 			else outputText("  Your [legs] bend and crack, making you howl in pain as they rebuild themselves as onyx-clawed canine paws.");
 			outputText("\n\n");
 
@@ -1086,14 +1086,14 @@ public class ErlKingScene extends BaseContent implements Encounter
 				changes++;
 			}
 			//Change legs to cloven hooves
-			if (rand(4) == 0 && changes < changeLimit && player.earType == Ears.DEER && player.tailType == Tail.DEER && player.hasFur() && player.lowerBody != LOWER_BODY_TYPE_CLOVEN_HOOFED) {
-				if (player.lowerBody == LOWER_BODY_TYPE_HOOFED) {
+			if (rand(4) == 0 && changes < changeLimit && player.earType == Ears.DEER && player.tailType == Tail.DEER && player.hasFur() && player.lowerBody != LowerBody.CLOVEN_HOOFED) {
+				if (player.lowerBody == LowerBody.HOOFED) {
 					outputText("\n\nYou feel a sharp stinging sensation from your hooves, accompanied by a loud CRACK.  You look down in alarm, prancing from one hooved foot to another, realizing that your solid, heavy hooves have been replaced with delicate, cloven hooves.  You squint, also noting a subtle thinness across your legs in general--if you had to guess, you’d hazard that you’re looking <b>more deer-like than horse-like</b>.");
 				}
 				else {
 					outputText("\n\nYou feel a strange tightness from your feet and nearly topple over as your balance shifts.  You’re balancing on your toes for some reason.  You look down in amazement as your legs slim and lengthen, your feet elongating and darkening at the ends until you’re balancing on <b>two, graceful deer legs</b>.");
 				}
-				player.lowerBody = LOWER_BODY_TYPE_CLOVEN_HOOFED;
+				player.lowerBody = LowerBody.CLOVEN_HOOFED;
 				if (!player.isTaur() && !player.isBiped()) player.legCount = 2;
 				changes++;
 			}

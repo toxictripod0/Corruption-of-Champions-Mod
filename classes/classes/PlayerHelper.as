@@ -151,7 +151,7 @@ package classes
 
 		public function hasReptileLegs():Boolean
 		{
-			return [LOWER_BODY_TYPE_LIZARD, LOWER_BODY_TYPE_DRAGON, LOWER_BODY_TYPE_SALAMANDER].indexOf(lowerBody) != -1;
+			return [LowerBody.LIZARD, LowerBody.DRAGON, LowerBody.SALAMANDER].indexOf(lowerBody) != -1;
 		}
 
 		public function hasDraconicBackSide():Boolean
