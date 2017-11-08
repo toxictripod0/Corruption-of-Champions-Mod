@@ -96,8 +96,8 @@ package classes.Items.Consumables
 			if (!player.hasDragonHorns(true) && changes < changeLimit && rand(5) == 0)
 				mutations.gainDraconicHorns(tfSource);
 			//Gain Dragon Ears
-			if (changes < changeLimit && rand(3) == 0 && player.earType != EARS_DRAGON) {
-				player.earType = EARS_DRAGON;
+			if (changes < changeLimit && rand(3) == 0 && player.earType != Ears.DRAGON) {
+				player.earType = Ears.DRAGON;
 				output.text("\n\nA prickling sensation suddenly fills your ears; unpleasant, but hardly painful.  It grows and grows until you can't stand it any more, and reach up to scratch at them.  To your surprise, you find them melting away like overheated candles.  You panic as they fade into nothingness, leaving you momentarily deaf and dazed, stumbling around in confusion.  Then, all of a sudden, hearing returns to you.  Gratefully investigating, you find you now have a pair of reptilian ear-holes, one on either side of your head.  A sudden pain strikes your temples, and you feel bony spikes bursting through the sides of your head, three on either side, which are quickly sheathed in folds of skin to resemble fins.  With a little patience, you begin to adjust these fins just like ears to aid your hearing.  <b>You now have dragon ears!</b>");
 				changes++;
 			}
@@ -127,7 +127,7 @@ package classes.Items.Consumables
 			}
 			//<mod name="Reptile eyes" author="Stadler76">
 			//Gain Dragon Eyes
-			if (player.eyeType != Eyes.DRAGON && player.hasDragonScales() && player.earType == EARS_DRAGON && player.hasDragonHorns() && changes < changeLimit && rand(4) == 0) {
+			if (player.eyeType != Eyes.DRAGON && player.hasDragonScales() && player.earType == Ears.DRAGON && player.hasDragonHorns() && changes < changeLimit && rand(4) == 0) {
 				if (player.hasReptileEyes())
 					output.text("\n\nYour eyes change slightly in their appearance.");
 				else

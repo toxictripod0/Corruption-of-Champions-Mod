@@ -94,7 +94,7 @@ package classes
 			player.hairLength = 30;
 			player.hairColor = "orange";
 			//Face: Elf ears, 4x demonic horns
-			player.earType = EARS_ELFIN;
+			player.earType = Ears.ELFIN;
 			player.horns = 4;
 			player.hornType = HORNS_DEMON;
 			//Body: Plump, no muscle tone, wide thighs, badonkulous ass, demon tail, demonic high heels
@@ -166,7 +166,7 @@ package classes
 			//Character Creation	
 			//herm, canine cock - 8", virgin, tight, wet	
 			//fox ears, tails, A cup breasts with normal nipples	Betram															
-			player.earType = EARS_FOX;
+			player.earType = Ears.FOX;
 			player.tailType = Tail.FOX;
 			player.tailVenom = 1;
 			if (player.biggestTitSize() > 1) player.breastRows[0].breastRating = 1;
@@ -493,7 +493,7 @@ package classes
 			player.hairColor = "silver-white";
 			//- human face
 			//- fox ears 
-			player.earType = EARS_FOX;
+			player.earType = Ears.FOX;
 			//- olive complexion
 			player.skinTone = "olive";
 			//- demon tongue (oral fetish ;d)
@@ -527,7 +527,7 @@ package classes
 				player.createVagina();
 			}
 			//"Ears: Bunny
-			player.earType = EARS_BUNNY;
+			player.earType = Ears.BUNNY;
 			//Tail: Bunny
 			player.tailType = Tail.RABBIT;
 			//Face: Human
@@ -601,7 +601,7 @@ package classes
 			player.vaginas[0].virgin = false;
 			if (player.femininity < 80) player.femininity = 80;
 			player.fertility = 40;
-			player.earType = EARS_ELFIN;
+			player.earType = Ears.ELFIN;
 			player.thickness = 25;
 			player.tone = 60;
 			player.hairLength = 30;
@@ -664,7 +664,7 @@ package classes
 			player.wingType = Wings.NONE;
 			//"dog face, dog ears, draconic tail, blue fur.
 			player.faceType = Face.DOG;
-			player.earType = EARS_DOG;
+			player.earType = Ears.DOG;
 			player.tailType = Tail.DRACONIC;
 			player.skinType = Skin.FUR;
 			player.hairColor = "blue";
@@ -702,7 +702,7 @@ package classes
 			player.createPerk(PerkLib.BimboBody, 0, 0, 0, 0);
 			player.createPerk(PerkLib.BimboBrains, 0, 0, 0, 0);
 			player.createPerk(PerkLib.BigTits, 1.5, 0, 0, 0);
-			player.earType = EARS_BUNNY;
+			player.earType = Ears.BUNNY;
 			player.tailType = Tail.RABBIT;
 			player.skinTone = "tan";
 			player.hairColor = "platinum blonde";
@@ -734,7 +734,7 @@ package classes
 			player.vaginas[0].vaginalWetness = VAGINA_WETNESS_SLAVERING;
 			player.vaginas[0].virgin = true;
 			player.setClitLength(0.2);
-			player.earType = EARS_CAT;
+			player.earType = Ears.CAT;
 			player.faceType = Face.CAT;
 			player.femininity = 100;
 			player.fertility = 85;
@@ -796,7 +796,7 @@ package classes
 			//Mirvanna;
 			//Gender = Herm
 			//Ears = Horse
-			player.earType = EARS_HORSE;
+			player.earType = Ears.HORSE;
 			//Horns = Dragon
 			player.hornType = HORNS_DRACONIC_X4_12_INCH_LONG;
 			player.horns = 12;
@@ -845,7 +845,7 @@ package classes
 			//Face- Canine
 			player.faceType = Face.DOG;
 			//Ears- Canine
-			player.earType = EARS_DOG;
+			player.earType = Ears.DOG;
 			//Tail- Canine
 			player.tailType = Tail.DOG;
 			//Lower body- Canine
@@ -918,7 +918,7 @@ package classes
 			player.hairColor = "silver";
 			player.furColor = "silver";
 			player.faceType = Face.FOX;
-			player.earType = EARS_FOX;
+			player.earType = Ears.FOX;
 			
 			player.createBreastRow(BREAST_CUP_DD,4);
 			player.createBreastRow(BREAST_CUP_DD,4);
@@ -1066,7 +1066,7 @@ package classes
 			player.faceType = Face.DOG;
 			player.lowerBody = LOWER_BODY_TYPE_DOG;
 			player.tailType = Tail.DOG;
-			player.earType = EARS_DOG;
+			player.earType = Ears.DOG;
 			////"	"I'm picturing a tall, feminine German-Shepherd morph, solid white and gorgeous. She has both sets of genitals, with no balls, and a large set of breasts. She wields a large claymore and is dressed in a full chain vest and pants. 
 			//large claymore (and the strength to use it)
 			player.setWeapon(weapons.CLAYMOR);
@@ -1178,7 +1178,7 @@ package classes
 			player.createPerk(PerkLib.MessyOrgasms, 1.25, 0, 0, 0);
 			player.createPerk(PerkLib.HistoryScholar, 0, 0, 0, 0);
 			//Apperance: Cat Ears, Large Bat Like Wings, 3 Rows of breasts (C cub, 0,2 nipples)
-			player.earType = EARS_CAT;
+			player.earType = Ears.CAT;
 			player.wingType = Wings.BAT_LIKE_LARGE;
 			//Items: Katana, Leather Armor
 			player.setWeapon(weapons.KATANA);
@@ -1217,7 +1217,7 @@ package classes
 			player.setWeapon(weapons.S_BLADE);
 	
 			//Elfin ears
-			player.earType = EARS_ELFIN;
+			player.earType = Ears.ELFIN;
 			//tight asshole
 			//human tongue
 			//human face
@@ -1234,7 +1234,7 @@ package classes
 			//Character Creation	Female,virgin	A kitsune with a snake-like tongue	Sora
 			if (player.hasVagina()) player.vaginas[0].virgin = true;
 			player.tongueType = Tongue.SNAKE;
-			player.earType = EARS_FOX;
+			player.earType = Ears.FOX;
 			player.tailType = Tail.FOX;
 			player.tailVenom = 2;
 			player.inte = 30;
@@ -1293,7 +1293,7 @@ package classes
 			player.tailVenom = 0;
 			player.tailRecharge = 0;
 			player.wingType = Wings.DRACONIC_LARGE;
-			player.earType = EARS_HUMAN;
+			player.earType = Ears.HUMAN;
 			player.lowerBody = LOWER_BODY_TYPE_HUMAN;
 			player.armType = Arms.HUMAN;
 			player.hairLength = 69.2;
@@ -1430,7 +1430,7 @@ package classes
 			//Face: Gorgeous Feminine, long demonic tongue, cat ears
 			player.femininity = 100;
 			player.tongueType = Tongue.DEMONIC;
-			player.earType = EARS_CAT;
+			player.earType = Ears.CAT;
 			//Body: Very muscular, average weight, plump ass, above average thighs, cat tail and cat paws
 			player.tone = 80;
 			player.thickness = 50;
@@ -1502,7 +1502,7 @@ package classes
 			player.tailVenom = 0;
 			player.tailRecharge = 0;
 			player.wingType = Wings.NONE;
-			player.earType = EARS_CAT;
+			player.earType = Ears.CAT;
 			player.lowerBody = LOWER_BODY_TYPE_CAT;
 			player.tailType = Tail.CAT;
 			player.createPerk(PerkLib.Incorporeality,0,0,0,0);
@@ -1624,7 +1624,7 @@ package classes
 			player.beardStyle = 0;
 			
 			player.faceType = Face.FOX;
-			player.earType = EARS_FOX;
+			player.earType = Ears.FOX;
 			player.clawType = CLAW_TYPE_DOG;
 			player.clawTone = "ivory";
 			player.eyeType = Eyes.DRAGON;
@@ -1840,7 +1840,7 @@ package classes
 					player.eyeType = Eyes.BLACK_EYES_SAND_TRAP;
 
 			if (player.faceType == Face.HUMAN && rand(2)!=0) // if human face, 50% to have human ears
-				player.earType = EARS_HUMAN;
+				player.earType = Ears.HUMAN;
 			else // totally random one
 				player.earType = rand(14)+1; // since it is not a enum, it is impossible to make it auto-ajust...
 

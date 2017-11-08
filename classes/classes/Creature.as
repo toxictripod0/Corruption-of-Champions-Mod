@@ -3,6 +3,7 @@ package classes
 {
 	import classes.BodyParts.Arms;
 	import classes.BodyParts.Beard;
+	import classes.BodyParts.Ears;
 	import classes.BodyParts.Eyes;
 	import classes.BodyParts.Face;
 	import classes.BodyParts.Gills;
@@ -456,8 +457,11 @@ import mx.logging.ILogger;
 		10 - dragon
 		11 - coon
 		12 - mouse*/
-		public var earType:Number = EARS_HUMAN;
-		public var earValue:Number = 0;
+		public var ears:Ears = new Ears();
+		public function get earType():Number { return ears.type; }
+		public function set earType(value:Number):void { ears.type = value; }
+		public function get earValue():Number { return ears.value ; }
+		public function set earValue(value:Number):void { ears.value = value; }
 		
 		/*Horntype
 		1 - demonic

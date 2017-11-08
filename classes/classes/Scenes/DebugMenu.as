@@ -923,32 +923,32 @@ import classes.Items.*
 			[Eyes.SPIDER, "(7) SPIDER"],
 		];
 		private static const EAR_TYPE_CONSTANTS:Array    = [
-			[EARS_HUMAN, "(0) HUMAN"],
-			[EARS_HORSE, "(1) HORSE"],
-			[EARS_DOG, "(2) DOG"],
-			[EARS_COW, "(3) COW"],
-			[EARS_ELFIN, "(4) ELFIN"],
-			[EARS_CAT, "(5) CAT"],
-			[EARS_LIZARD, "(6) LIZARD"],
-			[EARS_BUNNY, "(7) BUNNY"],
-			[EARS_KANGAROO, "(8) KANGAROO"],
-			[EARS_FOX, "(9) FOX"],
-			[EARS_DRAGON, "(10) DRAGON"],
-			[EARS_RACCOON, "(11) RACCOON"],
-			[EARS_MOUSE, "(12) MOUSE"],
-			[EARS_FERRET, "(13) FERRET"],
-			[EARS_PIG, "(14) PIG"],
-			[EARS_RHINO, "(15) RHINO"],
-			[EARS_ECHIDNA, "(16) ECHIDNA"],
-			[EARS_DEER, "(17) DEER"],
-			[EARS_WOLF, "(18) WOLF"],
+			[Ears.HUMAN, "(0) HUMAN"],
+			[Ears.HORSE, "(1) HORSE"],
+			[Ears.DOG, "(2) DOG"],
+			[Ears.COW, "(3) COW"],
+			[Ears.ELFIN, "(4) ELFIN"],
+			[Ears.CAT, "(5) CAT"],
+			[Ears.LIZARD, "(6) LIZARD"],
+			[Ears.BUNNY, "(7) BUNNY"],
+			[Ears.KANGAROO, "(8) KANGAROO"],
+			[Ears.FOX, "(9) FOX"],
+			[Ears.DRAGON, "(10) DRAGON"],
+			[Ears.RACCOON, "(11) RACCOON"],
+			[Ears.MOUSE, "(12) MOUSE"],
+			[Ears.FERRET, "(13) FERRET"],
+			[Ears.PIG, "(14) PIG"],
+			[Ears.RHINO, "(15) RHINO"],
+			[Ears.ECHIDNA, "(16) ECHIDNA"],
+			[Ears.DEER, "(17) DEER"],
+			[Ears.WOLF, "(18) WOLF"],
 			/* [INTERMOD: xianxia]
-			[EARS_LION, "(19) LION"],
-			[EARS_YETI, "(20) YETI"],
-			[EARS_ORCA, "(21) ORCA"],
-			[EARS_SNAKE, "(22) SNAKE"],
+			[Ears.LION, "(19) LION"],
+			[Ears.YETI, "(20) YETI"],
+			[Ears.ORCA, "(21) ORCA"],
+			[Ears.SNAKE, "(22) SNAKE"],
 			*/
-			[EARS_SHEEP, "(19) SHEEP"],
+			[Ears.SHEEP, "(19) SHEEP"],
 		];
 		private static const HORN_TYPE_CONSTANTS:Array    = [
 			[HORNS_NONE, "(0) NONE"],
@@ -1350,7 +1350,7 @@ import classes.Items.*
 			outputText("<b>You are now a Manticore!</b>");
 			//Cat TF
 			player.faceType = Face.CAT;
-			player.earType = EARS_CAT;
+			player.earType = Ears.CAT;
 			player.lowerBody = LOWER_BODY_TYPE_CAT;
 			player.legCount = 2;
 			player.skinType = Skin.FUR;
@@ -1372,7 +1372,7 @@ import classes.Items.*
 			outputText("<b>You are now a Dragonne!</b>");
 			//Cat TF
 			player.faceType = Face.CAT;
-			player.earType = EARS_CAT;
+			player.earType = Ears.CAT;
 			player.tailType = Tail.CAT;
 			player.lowerBody = LOWER_BODY_TYPE_CAT;
 			player.legCount = 2;

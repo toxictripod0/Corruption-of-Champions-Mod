@@ -179,16 +179,16 @@ package classes.Items.Consumables
 				kGAMECLASS.rathazul.addMixologyXP(20);
 			}
 			//Face!
-			if (player.faceType !== Face.HUMAN && changes < changeLimit && rand(4) === 0 && player.earType === EARS_ELFIN) {
+			if (player.faceType !== Face.HUMAN && changes < changeLimit && rand(4) === 0 && player.earType === Ears.ELFIN) {
 				changes++;
 				player.faceType = Face.HUMAN;
 				outputText("\n\nAnother violent sneeze escapes you.  It hurt!  You feel your nose and discover your face has changed back into a more normal look.  <b>You have a human looking face again!</b>");
 			}
 			//Ears!
-			if (player.earType !== EARS_ELFIN && changes < changeLimit && rand(3) === 0) {
+			if (player.earType !== Ears.ELFIN && changes < changeLimit && rand(3) === 0) {
 				outputText("\n\nA weird tingling runs through your scalp as your " + player.hairDescript() + " shifts slightly.  You reach up to touch and bump <b>your new pointed elfin ears</b>.  You bet they look cute!");
 				changes++;
-				player.earType = EARS_ELFIN;
+				player.earType = Ears.ELFIN;
 			}
 			// Remove gills
 			if (rand(4) === 0 && player.hasGills() && changes < changeLimit) {

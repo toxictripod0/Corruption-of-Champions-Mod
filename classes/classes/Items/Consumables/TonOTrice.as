@@ -402,7 +402,7 @@ package classes.Items.Consumables
 				mutations.removeAntennae();
 			}
 			//Gain antennae like feathers
-			if (player.antennae == ANTENNAE_NONE && player.faceType == Face.COCKATRICE && player.earType == EARS_COCKATRICE && rand(3) == 0 && changes < changeLimit) {
+			if (player.antennae == ANTENNAE_NONE && player.faceType == Face.COCKATRICE && player.earType == Ears.COCKATRICE && rand(3) == 0 && changes < changeLimit) {
 				// Other antennae types are handled above! (Stadler76)
 				outputText("\n\nYour forehead suddenly itches, making you run your fingers through your hairline as you try to scratch. Under your"
 				          +" roving fingertips you feel your pores stretch as the shaft of one of your feathers gets thicker and sturdier. A sudden"
@@ -449,7 +449,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Eye TF
-			if (player.eyeType != Eyes.COCKATRICE && player.faceType == Face.COCKATRICE && player.underBody.type == UNDER_BODY_TYPE_COCKATRICE && player.earType == EARS_COCKATRICE && changes < changeLimit && rand(3) == 0) {
+			if (player.eyeType != Eyes.COCKATRICE && player.faceType == Face.COCKATRICE && player.underBody.type == UNDER_BODY_TYPE_COCKATRICE && player.earType == Ears.COCKATRICE && changes < changeLimit && rand(3) == 0) {
 				outputText("\n\nYour eyes suddenly burn, tears streaming down your cheeks. Your irises grow, taking up your entire eye as a spiderweb"
 				          +" of light blue crawls across your now vibrant blue eyes, looking like lightning strikes. Your pupils rapidly grow to"
 				          +" match, elongating into slit like shapes, similar to that of a feline. When your eyes stop watering you finally get a"
@@ -465,7 +465,7 @@ package classes.Items.Consumables
 				mutations.gainLizardTongue();
 			}
 			//Ears TF
-			if (player.earType != EARS_COCKATRICE && player.faceType == Face.COCKATRICE && changes < changeLimit && rand(3) == 0) {
+			if (player.earType != Ears.COCKATRICE && player.faceType == Face.COCKATRICE && changes < changeLimit && rand(3) == 0) {
 				outputText("\n\nA prickling sensation suddenly fills your ears; unpleasant, but hardly painful. It grows and grows until you can't"
 				          +" stand it any more, and reach up to scratch at them. To your surprise, you find them melting away like overheated"
 				          +" candles. You panic as they fade into nothingness, leaving you momentarily deaf and dazed, stumbling around in confusion."
@@ -474,7 +474,7 @@ package classes.Items.Consumables
 				          +" the side you your head, the longest being vertical while the 3 shorter ones come out at a 1 o'clock, 2 o'clock and"
 				          +" 3 o'clock angle. With a little patience, you begin to adjust these feathers just like ears to aid your hearing.");
 				outputText("\n<b>You now have cockatrice ears!</b>");
-				player.earType = EARS_COCKATRICE;
+				player.earType = Ears.COCKATRICE;
 				changes++;
 			}
 			//Arm TF

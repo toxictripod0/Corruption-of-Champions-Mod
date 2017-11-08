@@ -1,5 +1,6 @@
 package classes.Scenes.Dungeons.D3 
 {
+	import classes.BodyParts.*;
 	import classes.BreastRowClass;
 	import classes.Cock;
 	import classes.Monster;
@@ -299,41 +300,41 @@ package classes.Scenes.Dungeons.D3
 			
 			switch(player.earType)
 			{
-				case EARS_HORSE:
+				case Ears.HORSE:
 					str += " a pair of horse-like ears";
 					break;
-				case EARS_FERRET:
+				case Ears.FERRET:
 					str += " a small pair of rounded ferret ears";
 					break;
-				case EARS_DOG:
+				case Ears.DOG:
 					str += " a pair of dog ears";
 					break;
-				case EARS_COW:
+				case Ears.COW:
 					str += " a pair of round, floppy cow ears";
 					break;
-				case EARS_ELFIN:
+				case Ears.ELFIN:
 					str += " a large pair of pointy ears";
 					break;
-				case EARS_CAT:
+				case Ears.CAT:
 					str += " a pair of cute, fuzzy cat ears";
 					break;
-				case EARS_LIZARD:
-				case EARS_DRAGON:
+				case Ears.LIZARD:
+				case Ears.DRAGON:
 					str += " a pair of rounded protrusions with small holes";
 					break;
-				case EARS_BUNNY:
+				case Ears.BUNNY:
 					str += " a pair of floppy rabbit ears";
 					break;
-				case EARS_FOX:
+				case Ears.FOX:
 					str += " a pair of large, adept fox ears";
 					break;
-				case EARS_RACCOON:
+				case Ears.RACCOON:
 					str += " a pair of vaguely egg-shaped, furry racoon ears";
 					break;
-				case EARS_MOUSE:
+				case Ears.MOUSE:
 					str += " a pair of large, dish-shaped mouse ears";
 					break;
-				case EARS_PIG:
+				case Ears.PIG:
 					str += " a pair of pig ears";
 					break;
 				default:

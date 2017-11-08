@@ -332,7 +332,7 @@
 
 			//// 8. Face
 			///*OPTIONAL*/ //this.faceType = Face.; // default HUMAN
-			///*OPTIONAL*/ //this.earType = EARS_; // default HUMAN
+			///*OPTIONAL*/ //this.earType = Ears.; // default HUMAN
 			///*OPTIONAL*/ //this.tongueType = Tongue.; // default HUMAN
 			///*OPTIONAL*/ //this.eyeType = Eyes.; // default HUMAN
 

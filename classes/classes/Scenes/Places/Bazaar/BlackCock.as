@@ -1489,10 +1489,10 @@ package classes.Scenes.Places.Bazaar
 				player.faceType = Face.HUMAN;
 				changes++;
 			}
-			if (rand(4) == 0 && changes < changeLimit && !player.hasScales() && player.earType != EARS_ELFIN) {
+			if (rand(4) == 0 && changes < changeLimit && !player.hasScales() && player.earType != Ears.ELFIN) {
 				outputText("\n\nYou feel an odd shifting sensation on the side of your head and, reaching up to inspect it, find a <b>pair of fleshy pointed ears</b>. "); 
 				if (player.hasFur()) ("As you examine your new elvish ears you feel fur grow around them, matching the rest of you.");
-				player.earType = EARS_ELFIN;
+				player.earType = Ears.ELFIN;
 				changes++;
 			}
 			if (rand(3) == 0 && changes < changeLimit && player.hornType == HORNS_NONE) {
@@ -1593,7 +1593,7 @@ package classes.Scenes.Places.Bazaar
 			if (rand(5) == 0) mutations.updateOvipositionPerk(tfSource);
 			// Special TFs
 			//------------
-			if (rand(4) == 0 && changes < changeLimit && player.hornType != HORNS_UNICORN && player.earType == EARS_HORSE && (player.lowerBody == LOWER_BODY_TYPE_HOOFED || player.lowerBody == LOWER_BODY_TYPE_CLOVEN_HOOFED || player.horseScore() >= 3)) {
+			if (rand(4) == 0 && changes < changeLimit && player.hornType != HORNS_UNICORN && player.earType == Ears.HORSE && (player.lowerBody == LOWER_BODY_TYPE_HOOFED || player.lowerBody == LOWER_BODY_TYPE_CLOVEN_HOOFED || player.horseScore() >= 3)) {
 				outputText("\n\nYou begin to feel an annoying tingling sensation at the top of your head. Reaching up to inspect it you find the <b>sharp nub of a horn protruding from the center of your forehead</b> and growing. Once it's complete you estimate it to be about six inches long.");
 				player.hornType = HORNS_UNICORN;
 				player.horns = 6;
@@ -1719,13 +1719,13 @@ package classes.Scenes.Places.Bazaar
 				changes++;
 			}
 			//Change ears to rhino
-			if (rand(3) == 0 && changes < changeLimit && player.earType != EARS_RHINO) {
+			if (rand(3) == 0 && changes < changeLimit && player.earType != Ears.RHINO) {
 				outputText("\n\nYou feel an odd uncomfortable sensation in your ears. Reaching up you find your ears shifting into an open tube shape, once they’re done you flick them around, enjoying the sensation of your new ears swishing through the air. <b>You now have rhino ears.</b>");
-				player.earType = EARS_RHINO;
+				player.earType = Ears.RHINO;
 				changes++;
 			}
 			//Change face to rhino
-			if (rand(4) == 0 && changes < changeLimit && player.earType == EARS_RHINO && player.skinTone == "gray" && player.faceType != Face.RHINO) {
+			if (rand(4) == 0 && changes < changeLimit && player.earType == Ears.RHINO && player.skinTone == "gray" && player.faceType != Face.RHINO) {
 				outputText("\n\nYour face suddenly goes numb. You begin to hear bone cracking as you vision suddenly shifts as you face stretches out and thickens. When your face is done growing you can see the edges of your elongated mouth and noise in the center of your field of vision. They barely impede your vision though. <b>You now have a rhino face.</b>");
 				player.faceType = Face.RHINO;
 				changes++;
@@ -1906,21 +1906,21 @@ package classes.Scenes.Places.Bazaar
 				changes++;
 			}
 			//Gain Echidna ears
-			if (rand(3) == 0 && changes < changeLimit && player.earType != EARS_ECHIDNA) {
+			if (rand(3) == 0 && changes < changeLimit && player.earType != Ears.ECHIDNA) {
 				outputText("\n\n");
 				switch(player.earType) {
-					case EARS_LIZARD:
+					case Ears.LIZARD:
 						outputText("You feel a strange itching in your reptilian ears. As you scratch them, you can feel their scales flaking away, leaving you with smooth, rounded holes for ears.");
 						break;
 					default:
 						outputText("Tightness centers on your scalp, pulling your ears down from their normal shape into small bumps with holes in their centers.");
 				}
 				outputText(" <b>You now have echidna ears!</b>");
-				player.earType = EARS_ECHIDNA;
+				player.earType = Ears.ECHIDNA;
 				changes++;
 			}
 			//Gain Echidna tail
-			if (rand(3) == 0 && changes < changeLimit && player.earType == EARS_ECHIDNA && player.tailType != Tail.ECHIDNA) {
+			if (rand(3) == 0 && changes < changeLimit && player.earType == Ears.ECHIDNA && player.tailType != Tail.ECHIDNA) {
 				outputText("\n\n");
 				switch(player.tailType) {
 					case Tail.NONE:
@@ -1975,7 +1975,7 @@ package classes.Scenes.Places.Bazaar
 				changes++;
 			}
 			//Gain Echidna legs
-			if (rand(3) == 0 && changes < changeLimit && player.earType == EARS_ECHIDNA && player.tailType && Tail.ECHIDNA && player.lowerBody != LOWER_BODY_TYPE_ECHIDNA) {
+			if (rand(3) == 0 && changes < changeLimit && player.earType == Ears.ECHIDNA && player.tailType && Tail.ECHIDNA && player.lowerBody != LOWER_BODY_TYPE_ECHIDNA) {
 				outputText("\n\n");
 				switch(player.lowerBody) {
 					//Irregular lower body type
@@ -2044,7 +2044,7 @@ package classes.Scenes.Places.Bazaar
 				changes++;
 			}
 			//Gain Echidna face if you have the right conditions.
-			if (rand(4) == 0 && changes < changeLimit && player.hasFur() && player.earType == EARS_ECHIDNA && player.tailType == Tail.ECHIDNA && player.tongueType == Tongue.ECHIDNA) {
+			if (rand(4) == 0 && changes < changeLimit && player.hasFur() && player.earType == Ears.ECHIDNA && player.tailType == Tail.ECHIDNA && player.tongueType == Tongue.ECHIDNA) {
 				outputText("You groan loudly as the bones in your face begin to reshape and rearrange. Most notable, you feel your mouth lengthening into a long, thin snout. <b>You now have an echidna face!</b>");
 				player.faceType = Face.ECHIDNA;
 				changes++;

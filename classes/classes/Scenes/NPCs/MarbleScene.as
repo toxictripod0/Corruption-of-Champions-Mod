@@ -753,7 +753,7 @@ private function marblePicksYouUpInitially():void {
 	player.refillHunger(30);
 	//new paragraph
 	outputText("Once you'd had enough, you take your mouth off her teat and lean against her chest.  Marble puts her hands around you and ");
-	if (player.earType > EARS_HUMAN) outputText("gently scratches behind your ears.  ");
+	if (player.earType > Ears.HUMAN) outputText("gently scratches behind your ears.  ");
 	else outputText("lightly caresses your head.  ");
 	outputText("\"<i>Thanks for your gentle mouth, sweetie,</i>\"  she says, \"<i>Do you think you could tell me your name?  I'm Marble.</i>\"  You let out a soft sigh and tell her who you are and why you came to visit.  She giggles, \"<i>Don't worry sweetie, I feel much better now thanks to you.  I'm really glad I got to meet you in such a pleasant way.</i>\"  You decide that it is probably time to leave now and say your farewells to this cow-girl.  \"<i>Come back to visit me anytime; I'll look forward to seeing you again soon!</i>\" she says beaming at you.  With that, you leave the farm, feeling a strange sense of euphoria passing over you.");
 	//(increase affection by 30)
@@ -839,7 +839,7 @@ private function drinkMarbleMilk():void {
 	clearOutput();
 	outputText("Beaming, Marble leads you back to her room and sits down on the bed.  She invites you onto her lap and lets you start sucking at one of her nipples.  The moment that wonderful taste meets your tongue, you start gulping down the milk with reckless abandon. She sighs in pleasure in response.  From time to time, Marble gets you to switch nipples, all the while gently stroking your head");
 	//[player has animal ears]
-	if (player.earType > EARS_HUMAN) outputText(" and occasionally scratching behind your ears");
+	if (player.earType > Ears.HUMAN) outputText(" and occasionally scratching behind your ears");
 	outputText(".  ");
 	outputText("Once you've had your fill, you pull back and the two of you smile at each other.  \"<i>It's really nice for you isn't it sweetie?  Nice for me too to have someone like you that can give a good suck on my itching nipples.</i>\"\n\n");
 	//(first increase addiction by 10,

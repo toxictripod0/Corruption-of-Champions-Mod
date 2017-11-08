@@ -56,7 +56,7 @@ package classes.Items.Consumables
 			player.tailRecharge = 0;
 			player.horns = 0;
 			player.hornType = HORNS_NONE;
-			player.earType = EARS_HUMAN;
+			player.earType = Ears.HUMAN;
 			player.skinType = Skin.PLAIN;
 			player.skinDesc = "skin";
 			player.skinAdj = "";

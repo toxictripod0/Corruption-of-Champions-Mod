@@ -1,7 +1,7 @@
 package classes.BodyParts 
 {
 	/**
-	 * Container class for the players face
+	 * Container class for the players eyes
 	 * @since August 08, 2017
 	 * @author Stadler76
 	 */

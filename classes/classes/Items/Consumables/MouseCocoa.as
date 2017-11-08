@@ -138,17 +138,17 @@ package classes.Items.Consumables
 			}
 			//bodypart changes:
 			//gain ears
-			if (player.earType !== EARS_MOUSE && changes < changeLimit && rand(4) === 0) {
+			if (player.earType !== Ears.MOUSE && changes < changeLimit && rand(4) === 0) {
 				outputText("\n\nYour ears ");
-				if (player.earType === EARS_HORSE || player.earType === EARS_COW || player.earType === EARS_DOG || player.earType === EARS_BUNNY || player.earType === EARS_KANGAROO) outputText("shrink suddenly");
+				if (player.earType === Ears.HORSE || player.earType === Ears.COW || player.earType === Ears.DOG || player.earType === Ears.BUNNY || player.earType === Ears.KANGAROO) outputText("shrink suddenly");
 				else outputText("pull away from your head");
 				outputText(", like they're being pinched, and you can distinctly feel the auricles taking a rounded shape through the pain.  Reaching up to try and massage away their stings, <b>you're not terribly surprised when you find a pair of fuzzy mouse's ears poking through your " + player.hairDescript() + ".</b>");
-				player.earType = EARS_MOUSE;
+				player.earType = Ears.MOUSE;
 				changes++;
 			}
 			//gain tail
 			//from no tail
-			if (player.earType === EARS_MOUSE && player.tailType !== Tail.MOUSE && changes < changeLimit && rand(4) === 0) {
+			if (player.earType === Ears.MOUSE && player.tailType !== Tail.MOUSE && changes < changeLimit && rand(4) === 0) {
 				//from other tail
 				if (player.tailType > Tail.NONE) {
 					outputText("\n\nYour tail clenches and itches simultaneously, leaving you wondering whether to cry out or try to scratch it.  The question is soon answered as the pain takes the forefront; looking backward is a horrible strain, but when you manage it, you can see your old appendage ");
@@ -161,7 +161,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//get teeth - from human, bunny, coonmask, or other humanoid teeth faces
-			if (player.earType === EARS_MOUSE && (player.faceType === Face.HUMAN || player.faceType === Face.SHARK_TEETH || player.faceType === Face.BUNNY || player.faceType === Face.SPIDER_FANGS || player.faceType === Face.RACCOON_MASK) && rand(4) === 0 && changes < changeLimit) {
+			if (player.earType === Ears.MOUSE && (player.faceType === Face.HUMAN || player.faceType === Face.SHARK_TEETH || player.faceType === Face.BUNNY || player.faceType === Face.SPIDER_FANGS || player.faceType === Face.RACCOON_MASK) && rand(4) === 0 && changes < changeLimit) {
 				outputText("\n\nYour teeth grind on their own, and you feel a strange, insistent pressure just under your nose.  As you open your mouth and run your tongue along them, you can feel ");
 				if (player.faceType !== Face.HUMAN) outputText("the sharp teeth receding and ");
 				outputText("your incisors lengthening.  It's not long before they're twice as long as their neighbors and the obvious growth stops, but the pressure doesn't go away completely.  <b>Well, you now have mouse incisors and your face aches a tiny bit - wonder if they're going to keep growing?</b>");

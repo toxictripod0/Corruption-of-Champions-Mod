@@ -331,13 +331,13 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Ears time
-			if (rand(3) === 0 && player.earType !== EARS_WOLF && changes < changeLimit) {
+			if (rand(3) === 0 && player.earType !== Ears.WOLF && changes < changeLimit) {
 				if (player.earType === -1) outputText("\n\nTwo painful nubs begin sprouting from your head, growing and opening into canine ears. ");
-				if (player.earType === EARS_HUMAN) outputText("\n\nThe skin on the sides of your face stretches painfully as your ears migrate upwards, towards the top of your head. They shift and elongate, becoming canine in nature. ");
-				if (player.earType === EARS_HORSE) outputText("\n\nYour equine ears twist as they transform into canine versions. ");
-				if (player.earType === EARS_DOG) outputText("\n\nYour dog ears widen out, curving and becoming more aware of your surroundings. ");
-				if (player.earType > EARS_WOLF) outputText("\n\nYour ears transform, becoming more canine in appearance. ");
-				player.earType = EARS_WOLF;
+				if (player.earType === Ears.HUMAN) outputText("\n\nThe skin on the sides of your face stretches painfully as your ears migrate upwards, towards the top of your head. They shift and elongate, becoming canine in nature. ");
+				if (player.earType === Ears.HORSE) outputText("\n\nYour equine ears twist as they transform into canine versions. ");
+				if (player.earType === Ears.DOG) outputText("\n\nYour dog ears widen out, curving and becoming more aware of your surroundings. ");
+				if (player.earType > Ears.WOLF) outputText("\n\nYour ears transform, becoming more canine in appearance. ");
+				player.earType = Ears.WOLF;
 				player.earValue = 2;
 				outputText("<b>You now have wolf ears.</b>");
 				changes++;
@@ -360,7 +360,7 @@ package classes.Items.Consumables
 			}
 			//MUTATIONZ LEVEL 2: fur->arms fur+tail+ears->face stophair->nohair fur+tail->legs
 			//gain wolf face
-			if (player.faceType !== Face.WOLF && player.earType === EARS_WOLF && player.tailType === Tail.WOLF && player.hasFur() && rand(5) === 0 && changes < changeLimit) {
+			if (player.faceType !== Face.WOLF && player.earType === Ears.WOLF && player.tailType === Tail.WOLF && player.hasFur() && rand(5) === 0 && changes < changeLimit) {
 				outputText("\n\nYou screech in pain as the bones of your face begin to rearrange themselves. Your [skinFurScales] practically melts off you, dropping onto the ground with heavy streams of blood. You put your hands to your face, writhing, blackness covering your vision as pain overwhelms you. But as quickly as it came, it stops, and you pull your shaking hands from your face. You scramble to the nearest reflective surface. <b>You have a wolf's face!</b>");
 				player.faceType = Face.WOLF;
 				changes++;

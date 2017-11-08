@@ -1759,7 +1759,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		else
 			player.tongueType = saveFile.data.tongueType;
 		if (saveFile.data.earType == undefined)
-			player.earType = EARS_HUMAN;
+			player.earType = Ears.HUMAN;
 		else
 			player.earType = saveFile.data.earType;
 		if (saveFile.data.earValue == undefined)

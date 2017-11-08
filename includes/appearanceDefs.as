@@ -4,30 +4,6 @@
 
 // Description constants
 
-// earType
-public static const EARS_HUMAN:int                                                  =   0;
-public static const EARS_HORSE:int                                                  =   1;
-public static const EARS_DOG:int                                                    =   2;
-public static const EARS_COW:int                                                    =   3;
-public static const EARS_ELFIN:int                                                  =   4;
-public static const EARS_CAT:int                                                    =   5;
-public static const EARS_LIZARD:int                                                 =   6;
-public static const EARS_BUNNY:int                                                  =   7;
-public static const EARS_KANGAROO:int                                               =   8;
-public static const EARS_FOX:int                                                    =   9;
-public static const EARS_DRAGON:int                                                 =  10;
-public static const EARS_RACCOON:int                                                =  11;
-public static const EARS_MOUSE:int                                                  =  12;
-public static const EARS_FERRET:int                                                 =  13;
-public static const EARS_PIG:int                                                    =  14;
-public static const EARS_RHINO:int                                                  =  15;
-public static const EARS_ECHIDNA:int                                                =  16;
-public static const EARS_DEER:int                                                   =  17;
-public static const EARS_WOLF:int                                                   =  18;
-public static const EARS_SHEEP:int                                                  =  19;
-public static const EARS_IMP:int                                                    =  20;
-public static const EARS_COCKATRICE:int                                             =  21;
-
 // hornType
 public static const HORNS_NONE:int                                                  =   0;
 public static const HORNS_DEMON:int                                                 =   1;

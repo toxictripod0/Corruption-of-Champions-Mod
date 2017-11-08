@@ -290,7 +290,7 @@ package classes.Scenes.Areas.Bog
 			this.hairColor = "black";
 			this.hairLength = 1;
 
-			this.earType = EARS_ELFIN;
+			this.earType = Ears.ELFIN;
 
 			initStrTouSpeInte(55, 25, 80, 40);
 			initLibSensCor(75, 35, 100);
