@@ -4,12 +4,6 @@
 
 // Description constants
 
-// beardType
-public static const BEARD_NORMAL:int                                               =     0;
-public static const BEARD_GOATEE:int                                               =     1;
-public static const BEARD_CLEANCUT:int                                             =     2;
-public static const BEARD_MOUNTAINMAN:int                                          =     3;
-
 // faceType
 public static const FACE_HUMAN:int                                                  =    0;
 public static const FACE_HORSE:int                                                  =    1;

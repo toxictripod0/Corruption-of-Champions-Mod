@@ -421,7 +421,7 @@ package classes
 			//Beards!
 			if (player.beardLength > 0) {
 				outputText("  You have a " + player.beardDescript() + " ");
-				if (player.beardStyle != BEARD_GOATEE) {
+				if (player.beardStyle != Beard.GOATEE) {
 					outputText("covering your ");
 					if (rand(2) == 0) outputText("jaw");
 					else outputText("chin and cheeks")

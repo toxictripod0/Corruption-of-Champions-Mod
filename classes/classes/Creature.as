@@ -2,6 +2,7 @@
 package classes
 {
 	import classes.BodyParts.Arms;
+	import classes.BodyParts.Beard;
 	import classes.BodyParts.Gills;
 	import classes.BodyParts.Hair;
 	import classes.BodyParts.Neck;
@@ -386,8 +387,11 @@ import mx.logging.ILogger;
 		1- goatee
 		2- clean-cut
 		3- mountain-man*/
-		public var beardStyle:Number = BEARD_NORMAL;
-		public var beardLength:Number = 0;
+		public var beardPart:Beard = new Beard();
+		public function get beardStyle():Number { return beardPart.style; }
+		public function set beardStyle(value:Number):void { beardPart.style = value; }
+		public function get beardLength():Number { return beardPart.length; }
+		public function set beardLength(value:Number):void { beardPart.length = value; }
 				
 		/*Skintype
 		0 - skin

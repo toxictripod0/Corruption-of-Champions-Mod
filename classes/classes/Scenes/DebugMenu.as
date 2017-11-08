@@ -987,10 +987,10 @@ import classes.Items.*
 			 */
 		];
 		private static const BEARD_STYLE_CONSTANTS:Array = [
-			[BEARD_NORMAL,"(0) NORMAL"],
-			[BEARD_GOATEE,"(1) GOATEE"],
-			[BEARD_CLEANCUT,"(2) CLEANCUT"],
-			[BEARD_MOUNTAINMAN,"(3) MOUNTAINMAN"],
+			[Beard.NORMAL,"(0) NORMAL"],
+			[Beard.GOATEE,"(1) GOATEE"],
+			[Beard.CLEANCUT,"(2) CLEANCUT"],
+			[Beard.MOUNTAINMAN,"(3) MOUNTAINMAN"],
 		];
 		private static const BEARD_LENGTH_CONSTANTS:Array = [
 			0,0.1,0.3,2,4,

@@ -2210,10 +2210,10 @@ package classes
 		);
 		public static const DEFAULT_BEARD_NAMES:Object = createMapFromPairs(
 				[
-					[BEARD_NORMAL, "normal"],
-					[BEARD_GOATEE, "goatee"],
-					[BEARD_CLEANCUT, "clean-cut"],
-					[BEARD_MOUNTAINMAN, "mountain-man"],
+					[Beard.NORMAL, "normal"],
+					[Beard.GOATEE, "goatee"],
+					[Beard.CLEANCUT, "clean-cut"],
+					[Beard.MOUNTAINMAN, "mountain-man"],
 				]
 		);
 		public static const DEFAULT_FACE_NAMES:Object = createMapFromPairs(
