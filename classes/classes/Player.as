@@ -1063,7 +1063,7 @@ use namespace kGAMECLASS;
 				cockatriceCounter++;
 			if (armType == Arms.COCKATRICE)
 				cockatriceCounter++;
-			if (antennae == ANTENNAE_COCKATRICE)
+			if (antennae == Antennae.COCKATRICE)
 				cockatriceCounter++;
 			if (neck.type == NECK_TYPE_COCKATRICE)
 				cockatriceCounter++;

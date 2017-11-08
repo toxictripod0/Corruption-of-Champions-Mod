@@ -553,9 +553,9 @@ package classes.Scenes.Areas.Desert {
 			this.wingType = rand(13);
 			this.antennae = rand(2);
 			if (this.antennae == 2) {
-				this.antennae = ANTENNAE_BEE;
+				this.antennae = Antennae.BEE;
 			} else {
-				this.antennae = ANTENNAE_NONE;
+				this.antennae = Antennae.NONE;
 			}
 			
 			checkMonster();

@@ -972,11 +972,11 @@ import classes.Items.*
 				16,20
 		];
 		private static const ANTENNA_TYPE_CONSTANTS:Array = [
-			[ANTENNAE_NONE, "(0) NONE"],
+			[Antennae.NONE, "(0) NONE"],
 			/* [INTERMOD: xianxia]
-			[ANTENNAE_MANTIS, "(1) MANTIS"],
+			[Antennae.MANTIS, "(1) MANTIS"],
 			 */
-			[ANTENNAE_BEE, "(2) BEE"],
+			[Antennae.BEE, "(2) BEE"],
 		];
 		private static const GILLS_TYPE_CONSTANTS:Array   = [
 			[Gills.NONE, "(0) NONE"],

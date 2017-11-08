@@ -131,7 +131,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Removes antennae!
-			if (player.antennae != ANTENNAE_NONE && changes < changeLimit && rand(3) === 0) {
+			if (player.antennae != Antennae.NONE && changes < changeLimit && rand(3) === 0) {
 				mutations.removeAntennae();
 			}
 			//Remove odd eyes

@@ -4,11 +4,6 @@
 
 // Description constants
 
-// antennae
-public static const ANTENNAE_NONE:int                                               =   0;
-public static const ANTENNAE_BEE:int                                                =   2;
-public static const ANTENNAE_COCKATRICE:int                                         =   3;
-
 // clawType
 public static const CLAW_TYPE_NORMAL:int                                            =   0;
 public static const CLAW_TYPE_LIZARD:int                                            =   1;

@@ -1767,7 +1767,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		else
 			player.earValue = saveFile.data.earValue;
 		if (saveFile.data.antennae == undefined)
-			player.antennae = ANTENNAE_NONE;
+			player.antennae = Antennae.NONE;
 		else
 			player.antennae = saveFile.data.antennae;
 		player.horns = saveFile.data.horns;

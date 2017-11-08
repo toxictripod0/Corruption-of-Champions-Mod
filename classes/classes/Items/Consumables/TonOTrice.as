@@ -402,7 +402,7 @@ package classes.Items.Consumables
 				mutations.removeAntennae();
 			}
 			//Gain antennae like feathers
-			if (player.antennae == ANTENNAE_NONE && player.faceType == Face.COCKATRICE && player.earType == Ears.COCKATRICE && rand(3) == 0 && changes < changeLimit) {
+			if (player.antennae == Antennae.NONE && player.faceType == Face.COCKATRICE && player.earType == Ears.COCKATRICE && rand(3) == 0 && changes < changeLimit) {
 				// Other antennae types are handled above! (Stadler76)
 				outputText("\n\nYour forehead suddenly itches, making you run your fingers through your hairline as you try to scratch. Under your"
 				          +" roving fingertips you feel your pores stretch as the shaft of one of your feathers gets thicker and sturdier. A sudden"
@@ -411,7 +411,7 @@ package classes.Items.Consumables
 				          +" side. While sturdy enough to support themselves these " + player.hairColor + " feathers flop daintily as you move."
 				          +" They seem to move with your eyebrows, helping convey your expressions.");
 				outputText("\n<b>You’ve got antennae like eyebrow feathers!</b>");
-				player.antennae = ANTENNAE_COCKATRICE;
+				player.antennae = Antennae.COCKATRICE;
 				changes++;
 			}
 			//Removes horns

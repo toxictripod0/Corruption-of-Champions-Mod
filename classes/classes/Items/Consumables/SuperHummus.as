@@ -46,7 +46,7 @@ package classes.Items.Consumables
 			player.armType = Arms.HUMAN;
 			mutations.updateClaws();
 			player.eyeType = Eyes.HUMAN;
-			player.antennae = ANTENNAE_NONE;
+			player.antennae = Antennae.NONE;
 			player.faceType = Face.HUMAN;
 			player.lowerBody = LOWER_BODY_TYPE_HUMAN;
 			player.legCount = 2;

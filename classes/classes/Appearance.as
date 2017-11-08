@@ -2312,9 +2312,9 @@ package classes
 		);
 		public static const DEFAULT_ANTENNAE_NAMES:Object = createMapFromPairs(
 				[
-					[ANTENNAE_NONE, "non-existent"],
-					[ANTENNAE_BEE, "bee"],
-					[ANTENNAE_COCKATRICE, "cockatrice"],
+					[Antennae.NONE, "non-existent"],
+					[Antennae.BEE, "bee"],
+					[Antennae.COCKATRICE, "cockatrice"],
 				]
 		);
 		public static const DEFAULT_ARM_NAMES:Object = createMapFromPairs(

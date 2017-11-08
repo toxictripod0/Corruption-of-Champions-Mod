@@ -178,7 +178,7 @@ package classes.Scenes.Dungeons.Factory
 		private function normalFace():void {
 			spriteSelect(SpriteDb.s_factory_omnibus);
 			clearOutput();
-			if (player.horns > 0 || player.antennae > ANTENNAE_NONE) {
+			if (player.horns > 0 || player.antennae > Antennae.NONE) {
 				outputText("Your forehead itches intensely.  You cannot help but stratch madly at it.  ");
 				if (player.horns > 0) {
 					outputText("Your horns fall off, landing on the floor with a heavy thud.  ");

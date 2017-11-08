@@ -87,7 +87,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Removes antennae
-			if (player.antennae != ANTENNAE_NONE && rand(3) === 0 && changes < changeLimit) {
+			if (player.antennae != Antennae.NONE && rand(3) === 0 && changes < changeLimit) {
 				mutations.removeAntennae();
 			}
 			//9c) II The tongue (sensitivity bonus, stored as a perk?)

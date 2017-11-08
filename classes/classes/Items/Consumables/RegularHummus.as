@@ -161,7 +161,7 @@ package classes.Items.Consumables
 			// EXTRA PARTS REMOVAL
 			//-----------------------
 			//Removes antennae
-			if (player.antennae !== ANTENNAE_NONE && rand(3) === 0 && changes < changeLimit) {
+			if (player.antennae !== Antennae.NONE && rand(3) === 0 && changes < changeLimit) {
 				mutations.removeAntennae();
 			}
 			//Removes horns
