@@ -298,7 +298,7 @@ import classes.GlobalFlags.kFLAGS;
 
 		public function hasMuzzle():Boolean
 		{
-			if (faceType == FACE_HORSE || faceType == FACE_DOG || faceType == FACE_CAT || faceType == FACE_LIZARD || faceType == FACE_KANGAROO || faceType == FACE_FOX || faceType == FACE_DRAGON || faceType == FACE_RHINO || faceType == FACE_ECHIDNA || faceType == FACE_DEER || faceType == FACE_WOLF)
+			if (faceType == Face.HORSE || faceType == Face.DOG || faceType == Face.CAT || faceType == Face.LIZARD || faceType == Face.KANGAROO || faceType == Face.FOX || faceType == Face.DRAGON || faceType == Face.RHINO || faceType == Face.ECHIDNA || faceType == Face.DEER || faceType == Face.WOLF)
 				return true;
 			return false;
 		}
@@ -319,15 +319,15 @@ import classes.GlobalFlags.kFLAGS;
 			//9 - kangaface
 			if (hasMuzzle())
 			{
-				if (int(Math.random() * 3) == 0 && faceType == FACE_HORSE)
+				if (int(Math.random() * 3) == 0 && faceType == Face.HORSE)
 					stringo = "long ";
-				if (int(Math.random() * 3) == 0 && faceType == FACE_CAT)
+				if (int(Math.random() * 3) == 0 && faceType == Face.CAT)
 					stringo = "feline ";
-				if (int(Math.random() * 3) == 0 && faceType == FACE_RHINO)
+				if (int(Math.random() * 3) == 0 && faceType == Face.RHINO)
 					stringo = "rhino ";
-				if (int(Math.random() * 3) == 0 && (faceType == FACE_LIZARD || faceType == FACE_DRAGON))
+				if (int(Math.random() * 3) == 0 && (faceType == Face.LIZARD || faceType == Face.DRAGON))
 					stringo = "reptilian ";
-				if (int(Math.random() * 3) == 0 && faceType == FACE_WOLF)
+				if (int(Math.random() * 3) == 0 && faceType == Face.WOLF)
 					stringo = "canine ";
 				switch(rand(3)) {
 					case 0:
@@ -341,7 +341,7 @@ import classes.GlobalFlags.kFLAGS;
 				}
 			}
 			//3 - cowface
-			if (faceType == FACE_COW_MINOTAUR)
+			if (faceType == Face.COW_MINOTAUR)
 			{
 				if (Math.floor(Math.random() * 4) == 0)
 					stringo = "bovine ";
@@ -350,16 +350,16 @@ import classes.GlobalFlags.kFLAGS;
 				return stringo + "face";
 			}
 			//4 - sharkface-teeth
-			if (faceType == FACE_SHARK_TEETH)
+			if (faceType == Face.SHARK_TEETH)
 			{
 				if (Math.floor(Math.random() * 4) == 0)
 					stringo = "angular ";
 				return stringo + "face";
 			}
-			if (faceType == FACE_PIG || faceType == FACE_BOAR)
+			if (faceType == Face.PIG || faceType == Face.BOAR)
 			{
 				if (Math.floor(Math.random() * 4) == 0)
-					stringo = (faceType == FACE_PIG ? "pig" : "boar") + "-like ";
+					stringo = (faceType == Face.PIG ? "pig" : "boar") + "-like ";
 				if (Math.floor(Math.random() * 4) == 0)
 					return stringo + "snout";
 				return stringo + "face";

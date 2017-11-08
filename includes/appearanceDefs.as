@@ -4,35 +4,6 @@
 
 // Description constants
 
-// faceType
-public static const FACE_HUMAN:int                                                  =    0;
-public static const FACE_HORSE:int                                                  =    1;
-public static const FACE_DOG:int                                                    =    2;
-public static const FACE_COW_MINOTAUR:int                                           =    3;
-public static const FACE_SHARK_TEETH:int                                            =    4;
-public static const FACE_SNAKE_FANGS:int                                            =    5;
-public static const FACE_CAT:int                                                    =    6;
-public static const FACE_LIZARD:int                                                 =    7;
-public static const FACE_BUNNY:int                                                  =    8;
-public static const FACE_KANGAROO:int                                               =    9;
-public static const FACE_SPIDER_FANGS:int                                           =   10;
-public static const FACE_FOX:int                                                    =   11;
-public static const FACE_DRAGON:int                                                 =   12;
-public static const FACE_RACCOON_MASK:int                                           =   13;
-public static const FACE_RACCOON:int                                                =   14;
-public static const FACE_BUCKTEETH:int                                              =   15;
-public static const FACE_MOUSE:int                                                  =   16;
-public static const FACE_FERRET_MASK:int                                            =   17;
-public static const FACE_FERRET:int                                                 =   18;
-public static const FACE_PIG:int                                                    =   19;
-public static const FACE_BOAR:int                                                   =   20;
-public static const FACE_RHINO:int                                                  =   21;
-public static const FACE_ECHIDNA:int                                                =   22;
-public static const FACE_DEER:int                                                   =   23;
-public static const FACE_WOLF:int                                                   =   24;
-public static const FACE_COCKATRICE:int                                             =   25;
-public static const FACE_BEAK:int                                                   =   26;
-
 // tongueType
 public static const TONGUE_HUMAN:int                                                =   0;
 public static const TONGUE_SNAKE:int                                                =   1;

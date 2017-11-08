@@ -1402,7 +1402,7 @@ package classes.Scenes.Areas.Forest
 			if (player.hasStatusEffect(StatusEffects.Feeder) || player.lactationQ() >= 500) {
 				addButton(5, "B. Feed", milkAndHoneyAreKindaFunny, undefined, undefined, undefined, "You could have some relief.", "Breastfeed");
 			}
-			if (player.isNaga() && player.faceType == FACE_SNAKE_FANGS) {
+			if (player.isNaga() && player.faceType == Face.SNAKE_FANGS) {
 				addButton(6, "Naga", corruptNagaBitchesRapeABee, undefined, undefined, undefined, "You could focus on your snakelike, 'naga' attributes.", "Naga");
 			}
 			if ((player.isCorruptEnough(75) || player.findPerk(PerkLib.Pervert) >= 0 || player.findPerk(PerkLib.Sadist) >= 0)
@@ -1410,7 +1410,7 @@ package classes.Scenes.Areas.Forest
 					&& (player.tongueType == TONGUE_SNAKE || player.hasCock() || player.hasVagina() || player.biggestTitSize() >= 4)) {
 				addButton(7, "Self-Egg", beeGirlRapeForTheDistinguishedGentleman, undefined, undefined, undefined, "You could play with her a bit and try to make her lay eggs into herself.", "Self-Egg");
 			}
-			if (player.canOvipositSpider() && (player.faceType == FACE_SNAKE_FANGS || player.faceType == FACE_SPIDER_FANGS)) {
+			if (player.canOvipositSpider() && (player.faceType == Face.SNAKE_FANGS || player.faceType == Face.SPIDER_FANGS)) {
 				addButton(8, "LayYourEggs", layEggsInABeeSpiderLike, undefined, undefined, undefined, "You could dose her with venom and lay YOUR eggs in her.", "Lay Your Eggs");
 			}
 			
@@ -2127,7 +2127,7 @@ package classes.Scenes.Areas.Forest
 		{
 			clearOutput();
 			outputText("You stand over the defeated bee, sizing up your latest catch.  She watches you fearfully as your gaze slides down her prone form, taking in every inch of her body.  Your eyes stop over her abdomen as you notice the girl's dripping, barely concealed ovipositor.  A wide");
-			if (player.faceType == FACE_SNAKE_FANGS || player.faceType == FACE_SPIDER_FANGS) outputText(", fanged");
+			if (player.faceType == Face.SNAKE_FANGS || player.faceType == Face.SPIDER_FANGS) outputText(", fanged");
 			outputText("smile breaks across your face, and your captive quivers in response.  Her eyes flick from your mouth to your spider half, and she shivers again.");
 
 			outputText("\n\nYou lower your torso toward her, leaning in close enough that she can feel each breath on her skin.  She's frozen in place now, every muscle clenched tight with terror, and you savor her fear as you run your tongue up her neck.  Picking the insect-girl up by her shoulders, you release a contented \"<i>Mmmm</i>\" into her ear before flipping her over and dropping her, leaving the  bee face down in the dirt.");

@@ -153,7 +153,7 @@ package classes.Items.Consumables
 				mutations.removeExtraBreastRow(tfSource);
 			}
 			//Skin/fur
-			if (!player.hasPlainSkin() && changes < changeLimit && rand(4) === 0 && player.faceType === FACE_HUMAN) {
+			if (!player.hasPlainSkin() && changes < changeLimit && rand(4) === 0 && player.faceType === Face.HUMAN) {
 				if (player.hasFur()) outputText("\n\nYour fur itches incessantly, so you start scratching it.  It starts coming off in big clumps before the whole mess begins sloughing off your body.  In seconds, your skin is nude.  <b>You've lost your fur!</b>");
 				if (player.hasScales()) outputText("\n\nYour scales itch incessantly, so you scratch at them.  They start falling off wholesale, leaving you standing in a pile of scales after only a few moments.  <b>You've lost your scales!</b>");
 				if (player.hasGooSkin()) outputText("\n\nYour " + player.skinDesc + " itches incessantly, and as you scratch it shifts and changes, becoming normal human-like skin.  <b>Your skin is once again normal!</b>");
@@ -179,9 +179,9 @@ package classes.Items.Consumables
 				kGAMECLASS.rathazul.addMixologyXP(20);
 			}
 			//Face!
-			if (player.faceType !== FACE_HUMAN && changes < changeLimit && rand(4) === 0 && player.earType === EARS_ELFIN) {
+			if (player.faceType !== Face.HUMAN && changes < changeLimit && rand(4) === 0 && player.earType === EARS_ELFIN) {
 				changes++;
-				player.faceType = FACE_HUMAN;
+				player.faceType = Face.HUMAN;
 				outputText("\n\nAnother violent sneeze escapes you.  It hurt!  You feel your nose and discover your face has changed back into a more normal look.  <b>You have a human looking face again!</b>");
 			}
 			//Ears!

@@ -320,10 +320,10 @@ package classes.Items.Consumables
 			//Face change, requires Ears + Height + Hooves
 			if (player.earType === EARS_COW && player.lowerBody === LOWER_BODY_TYPE_HOOFED && player.tallness >= 90
 					&& changes < changeLimit && rand(3) === 0) {
-				if (player.faceType !== FACE_COW_MINOTAUR) {
+				if (player.faceType !== Face.COW_MINOTAUR) {
 					outputText("\n\nBones shift and twist painfully as your visage twists and morphs to resemble that of the beast whose blood you now drink.  <b>You now have a minotaur-like face.</b>");
 					changes++;
-					player.faceType = FACE_COW_MINOTAUR;
+					player.faceType = Face.COW_MINOTAUR;
 				}
 			}
 			//+mino horns require ears/tail

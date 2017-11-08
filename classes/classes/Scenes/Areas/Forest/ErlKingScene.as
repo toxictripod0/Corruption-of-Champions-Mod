@@ -588,9 +588,9 @@ public class ErlKingScene extends BaseContent implements Encounter
 			outputText("  You smile an open-mouthed doggie smile, feeling the warm churning of cum building in your throbbing balls.  You ache for release, wanting nothing more than to stroke yourself.  You raise your black-nailed hands to your cock, but stop short, knowing instinctively that masturbating is forbidden.\n\n");
 
 			outputText("Instead, you curl your stomach, trying to reach your cock with your mouth.");
-			if (player.faceType != FACE_DOG) outputText("  The world bends alarmingly as your nose pushes out, creating a black-furred muzzle where your mouth once was.");
+			if (player.faceType != Face.DOG) outputText("  The world bends alarmingly as your nose pushes out, creating a black-furred muzzle where your mouth once was.");
 			outputText("  You whine, looking directly at your pointed dog cock, and the trickle of pre running from its tip, but even your");
-			if (player.faceType != FACE_DOG) outputText(" new");
+			if (player.faceType != Face.DOG) outputText(" new");
 			outputText(" muzzle and broad, flat tongue can’t reach it.\n\n");
 
 			outputText("The Erlking... The Master, your mind corrects itself.  The Master murmurs softly to you.  “<i>Patience, Hound,</i>” he commands, pressing a strong, gloved hand against your chest, holding you down on the ground.  You go still, submissive to the Master as he kneels next to your prone form.  His other hand grasps your dick slowly, and your mind melts.\n\n");
@@ -1074,15 +1074,15 @@ public class ErlKingScene extends BaseContent implements Encounter
 				changes++;
 			}
 			//Change face to normal
-			if (rand(3) == 0 && changes < changeLimit && player.earType == EARS_DEER && (player.faceType != FACE_HUMAN && player.faceType != FACE_DEER)) {
+			if (rand(3) == 0 && changes < changeLimit && player.earType == EARS_DEER && (player.faceType != Face.HUMAN && player.faceType != Face.DEER)) {
 				outputText("\n\nYour face grows warm as suddenly your vision is engulfed in smoke, coughing and beating the smoke back you noticed a marked change in your features. Touching yourself you confirm you have a <b>normal human shaped face once again</b>.");
-				player.faceType = FACE_HUMAN;
+				player.faceType = Face.HUMAN;
 				changes++;
 			}
 			//Gain deer face
-			if (rand(4) == 0 && changes < changeLimit && player.hasFur() && player.earType == EARS_DEER && player.tailType == Tail.DEER && player.faceType != FACE_DEER) {
+			if (rand(4) == 0 && changes < changeLimit && player.hasFur() && player.earType == EARS_DEER && player.tailType == Tail.DEER && player.faceType != Face.DEER) {
 				outputText("\n\nYou feel a grinding noise from your jaw, and a massive pressure in your sinuses, as your cheeks pinch in, followed immediately by a pointing of the lower half of your face.  You frantically (and gently) feel your face, discovering, to your surprise, that you’ve <b>gained the delicate facial features of a deer.</b>");
-				player.faceType = FACE_DEER;
+				player.faceType = Face.DEER;
 				changes++;
 			}
 			//Change legs to cloven hooves

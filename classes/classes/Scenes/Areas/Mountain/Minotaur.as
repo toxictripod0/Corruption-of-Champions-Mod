@@ -80,7 +80,7 @@ package classes.Scenes.Areas.Mountain
 			this.hairLength = 3;
 			initStrTouSpeInte(hasAxe ? 75 : 50, 60, 30, 20);
 			initLibSensCor(40 + this.ballSize * 2, 15 + this.ballSize * 2, 35);
-			this.faceType = FACE_COW_MINOTAUR;
+			this.faceType = Face.COW_MINOTAUR;
 			this.weaponName = hasAxe?"axe":"fist";
 			this.weaponVerb = hasAxe?"cleave":"punch";
 			this.armorName = "thick fur";

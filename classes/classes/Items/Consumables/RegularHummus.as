@@ -101,9 +101,9 @@ package classes.Items.Consumables
 			// MINOR TRANSFORMATIONS
 			//-----------------------
 			//-Human face
-			if (player.faceType !== FACE_HUMAN && changes < changeLimit && rand(4) === 0) {
+			if (player.faceType !== Face.HUMAN && changes < changeLimit && rand(4) === 0) {
 				outputText("\n\nSudden agony sweeps over your " + player.face() + ", your visage turning hideous as bones twist and your jawline shifts. The pain slowly vanishes, leaving you weeping into your fingers. When you pull your hands away you realize you've been left with a completely normal, human face.");
-				player.faceType = FACE_HUMAN;
+				player.faceType = Face.HUMAN;
 				changes++;
 			}
 			//-Human tongue
@@ -127,7 +127,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//-Gain human ears (If you have human face)
-			if ((player.earType !== EARS_HUMAN && player.faceType === FACE_HUMAN) && changes < changeLimit && rand(4) === 0) {
+			if ((player.earType !== EARS_HUMAN && player.faceType === Face.HUMAN) && changes < changeLimit && rand(4) === 0) {
 				outputText("\n\nOuch, your head aches! It feels like your ears are being yanked out of your head, and when you reach up to hold your aching noggin, you find they've vanished! Swooning and wobbling with little sense of balance, you nearly fall a half-dozen times before <b>a pair of normal, human ears sprout from the sides of your head.</b> You had almost forgotten what human ears felt like!");
 				player.earType = EARS_HUMAN;
 				changes++;

@@ -1491,13 +1491,13 @@ public class CombatAbilities extends BaseContent
 				addButton(button++, "AnemoneSting", anemoneSting).hint("Attempt to strike an opponent with the stinging tentacles growing from your scalp. Reduces enemy speed and increases enemy lust. \n\nNo Fatigue Cost", "Anemone Sting");
 			}
 			//Bitez
-			if (player.faceType == FACE_SHARK_TEETH) {
+			if (player.faceType == Face.SHARK_TEETH) {
 				addButton(button++, "Bite", bite).hint("Attempt to bite your opponent with your shark-teeth. \n\nFatigue Cost: " + player.physicalCost(25));
 			}
-			else if (player.faceType == FACE_SNAKE_FANGS) {
+			else if (player.faceType == Face.SNAKE_FANGS) {
 				addButton(button++, "Bite", nagaBiteAttack).hint("Attempt to bite your opponent and inject venom. \n\nFatigue Cost: " + player.physicalCost(10));
 			}
-			else if (player.faceType == FACE_SPIDER_FANGS) {
+			else if (player.faceType == Face.SPIDER_FANGS) {
 				addButton(button++, "Bite", spiderBiteAttack).hint("Attempt to bite your opponent and inject venom. \n\nFatigue Cost: " + player.physicalCost(10));
 			}
 			//Bow attack
@@ -1521,7 +1521,7 @@ public class CombatAbilities extends BaseContent
 				addButton(button++, "Horn Stun", ramsStun).hint("Use a ramming headbutt to try and stun your foe. \n\nFatigue Cost: " + player.physicalCost(10));
 			}
 			//Upheaval - requires rhino horn
-			if (player.hornType == HORNS_RHINO && player.horns >= 2 && player.faceType == FACE_RHINO) {
+			if (player.hornType == HORNS_RHINO && player.horns >= 2 && player.faceType == Face.RHINO) {
 				addButton(button++, "Upheaval", upheavalAttack).hint("Send your foe flying with your dual nose mounted horns. \n\nFatigue Cost: " + player.physicalCost(15));
 			}
 			//Infest if infested

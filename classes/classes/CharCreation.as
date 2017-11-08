@@ -200,7 +200,7 @@ import fl.controls.ComboBox;
 			player.rearBody.restore();
 			player.lowerBody = LOWER_BODY_TYPE_HUMAN;
 			player.legCount = 2;
-			player.faceType = FACE_HUMAN;
+			player.faceType = Face.HUMAN;
 			player.eyeCount = 2;
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) player.tailType = Tail.NONE;
 			player.tongueType = TONGUE_HUMAN;

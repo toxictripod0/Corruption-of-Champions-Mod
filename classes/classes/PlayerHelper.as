@@ -65,7 +65,7 @@ package classes
 
 		public function hasReptileFace():Boolean
 		{
-			return [FACE_SNAKE_FANGS, FACE_LIZARD, FACE_DRAGON].indexOf(faceType) != -1;
+			return [Face.SNAKE_FANGS, Face.LIZARD, Face.DRAGON].indexOf(faceType) != -1;
 		}
 
 		public function hasReptileUnderBody(withSnakes:Boolean = false):Boolean

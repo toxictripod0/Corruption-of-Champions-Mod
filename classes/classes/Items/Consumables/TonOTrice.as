@@ -402,7 +402,7 @@ package classes.Items.Consumables
 				mutations.removeAntennae();
 			}
 			//Gain antennae like feathers
-			if (player.antennae == ANTENNAE_NONE && player.faceType == FACE_COCKATRICE && player.earType == EARS_COCKATRICE && rand(3) == 0 && changes < changeLimit) {
+			if (player.antennae == ANTENNAE_NONE && player.faceType == Face.COCKATRICE && player.earType == EARS_COCKATRICE && rand(3) == 0 && changes < changeLimit) {
 				// Other antennae types are handled above! (Stadler76)
 				outputText("\n\nYour forehead suddenly itches, making you run your fingers through your hairline as you try to scratch. Under your"
 				          +" roving fingertips you feel your pores stretch as the shaft of one of your feathers gets thicker and sturdier. A sudden"
@@ -426,7 +426,7 @@ package classes.Items.Consumables
 			}
 
 			//Face TF
-			if (player.faceType != FACE_COCKATRICE && player.armType == Arms.COCKATRICE && player.lowerBody == LOWER_BODY_TYPE_COCKATRICE && changes < changeLimit && rand(3) == 0) {
+			if (player.faceType != Face.COCKATRICE && player.armType == Arms.COCKATRICE && player.lowerBody == LOWER_BODY_TYPE_COCKATRICE && changes < changeLimit && rand(3) == 0) {
 				outputText("\n\nYour head is suddenly wracked with pain. You throw back your head and scream in agony as you feel your skull’s"
 				          +" structure shifting, reforming into something... different. Your lower face elongates, your nose and lips fusing into the"
 				          +" new upper half of your mouth while your jaw soon catches it up as they both harden. Your larger upper lip curves over"
@@ -436,7 +436,7 @@ package classes.Items.Consumables
 				          +" though instead of sharp edges, the lips are firm and rubbery, allowing you the same amount of facial expression as"
 				          +" before while being solid enough to crack open seeds and nuts like that of a bird.");
 				outputText("\n<b>You have a cockatrice face!</b>");
-				player.faceType = FACE_COCKATRICE;
+				player.faceType = Face.COCKATRICE;
 				changes++;
 			}
 			//Hair TF
@@ -449,7 +449,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Eye TF
-			if (player.eyeType != EYES_COCKATRICE && player.faceType == FACE_COCKATRICE && player.underBody.type == UNDER_BODY_TYPE_COCKATRICE && player.earType == EARS_COCKATRICE && changes < changeLimit && rand(3) == 0) {
+			if (player.eyeType != EYES_COCKATRICE && player.faceType == Face.COCKATRICE && player.underBody.type == UNDER_BODY_TYPE_COCKATRICE && player.earType == EARS_COCKATRICE && changes < changeLimit && rand(3) == 0) {
 				outputText("\n\nYour eyes suddenly burn, tears streaming down your cheeks. Your irises grow, taking up your entire eye as a spiderweb"
 				          +" of light blue crawls across your now vibrant blue eyes, looking like lightning strikes. Your pupils rapidly grow to"
 				          +" match, elongating into slit like shapes, similar to that of a feline. When your eyes stop watering you finally get a"
@@ -461,11 +461,11 @@ package classes.Items.Consumables
 				player.eyeCount = 2;
 			}
 			//Lizard tongue TF
-			if (player.tongueType != TONGUE_LIZARD && player.faceType == FACE_COCKATRICE && changes < changeLimit && rand(3) == 0) {
+			if (player.tongueType != TONGUE_LIZARD && player.faceType == Face.COCKATRICE && changes < changeLimit && rand(3) == 0) {
 				mutations.gainLizardTongue();
 			}
 			//Ears TF
-			if (player.earType != EARS_COCKATRICE && player.faceType == FACE_COCKATRICE && changes < changeLimit && rand(3) == 0) {
+			if (player.earType != EARS_COCKATRICE && player.faceType == Face.COCKATRICE && changes < changeLimit && rand(3) == 0) {
 				outputText("\n\nA prickling sensation suddenly fills your ears; unpleasant, but hardly painful. It grows and grows until you can't"
 				          +" stand it any more, and reach up to scratch at them. To your surprise, you find them melting away like overheated"
 				          +" candles. You panic as they fade into nothingness, leaving you momentarily deaf and dazed, stumbling around in confusion."
@@ -497,7 +497,7 @@ package classes.Items.Consumables
 			//Rear body restore
 			if (player.rearBody.type != REAR_BODY_NONE && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
 			//Body TF
-			if (!player.hasCockatriceSkin() && player.faceType == FACE_COCKATRICE && changes < changeLimit && rand(3) == 0) {
+			if (!player.hasCockatriceSkin() && player.faceType == Face.COCKATRICE && changes < changeLimit && rand(3) == 0) {
 				mutations.restoreNeck(tfSource + "-forceRestoreNeck");
 				var colorChoice:Array = mutations.newCockatriceColors();
 				outputText("\n\nYour body feels hot and your skin feels tight, making you fall to your knees in a bout of lightheadedness."
@@ -531,7 +531,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Neck TF, if not already TFed from Body TF above
-			if (player.neck.type != NECK_TYPE_COCKATRICE && player.hasCockatriceSkin() && player.faceType == FACE_COCKATRICE && changes < changeLimit && rand(3) == 0) {
+			if (player.neck.type != NECK_TYPE_COCKATRICE && player.hasCockatriceSkin() && player.faceType == Face.COCKATRICE && changes < changeLimit && rand(3) == 0) {
 				mutations.restoreNeck(tfSource);
 				outputText("\n\nYour neck starts to tingle and [secondary furcolor] feathers begin to grow out of it one after another until a ruff"
 				          +" of soft fluffy feathers has formed like that of an exotic bird.");

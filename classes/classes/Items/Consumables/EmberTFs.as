@@ -87,9 +87,9 @@ package classes.Items.Consumables
 			}
 			if (rand(5) == 0) mutations.updateOvipositionPerk(tfSource);
 			//Gain Dragon Head
-			if (changes < changeLimit && rand(3) === 0 && player.faceType !== FACE_DRAGON && flags[kFLAGS.EMBER_ROUNDFACE] === 0) {
+			if (changes < changeLimit && rand(3) === 0 && player.faceType !== Face.DRAGON && flags[kFLAGS.EMBER_ROUNDFACE] === 0) {
 				output.text("\n\nYou scream as your face is suddenly twisted; your facial bones begin rearranging themselves under your skin, restructuring into a long, narrow muzzle.  Spikes of agony rip through your jaws as your teeth are brutally forced from your gums, giving you new rows of fangs - long, narrow and sharp.  Your jawline begins to sprout strange growths; small spikes grow along the underside of your muzzle, giving you an increasingly inhuman visage.\n\nFinally, the pain dies down, and you look for a convenient puddle to examine your changed appearance.\n\nYour head has turned into a reptilian muzzle, with small barbs on the underside of the jaw.  <b>You now have a dragon's face.</b>");
-				player.faceType = FACE_DRAGON;
+				player.faceType = Face.DRAGON;
 				changes++;
 			}
 			//-Existing horns become draconic, max of 4, max length of 1'
@@ -260,7 +260,7 @@ package classes.Items.Consumables
 			//Gain Dragon Neck
 			//public function hasDraconicBackSide():Boolean { return hasDragonWings(true) && skinType == Skin.DRACONIC && hasReptileTail() && hasReptileArms() && hasReptileLegs(); }
 			//If you are considered a dragon-morph and if your backside is dragon-ish enough, your neck is eager to allow you to take a look at it, right? ;-)
-			if (!drakesHeart && !player.hasDragonNeck() && player.dragonScore() >= 6 && player.hasDraconicBackSide() && player.faceType == FACE_DRAGON && changes < changeLimit) {
+			if (!drakesHeart && !player.hasDragonNeck() && player.dragonScore() >= 6 && player.hasDraconicBackSide() && player.faceType == Face.DRAGON && changes < changeLimit) {
 				mutations.restoreNeck(tfSource + "-forceRestoreNeck");
 				var nlChange:int = 4 + rand(5);
 				if (!player.hasNormalNeck()) { // Note: hasNormalNeck checks the length, not the type!

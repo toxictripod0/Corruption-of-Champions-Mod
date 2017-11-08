@@ -185,7 +185,7 @@ package classes.Scenes.Areas.HighMountains
 			this.hipRating = HIP_RATING_AMPLE;
 			this.buttRating = BUTT_RATING_TIGHT;
 			this.lowerBody = LOWER_BODY_TYPE_COCKATRICE;
-			this.faceType = FACE_COCKATRICE;
+			this.faceType = Face.COCKATRICE;
 			this.tongueType = TONGUE_LIZARD;
 			this.earType = EARS_COCKATRICE;
 			this.eyeType = EYES_COCKATRICE;

@@ -331,7 +331,7 @@
 			///*OPTIONAL*/ //this.hairType = Hair.; // default NORMAL
 
 			//// 8. Face
-			///*OPTIONAL*/ //this.faceType = FACE_; // default HUMAN
+			///*OPTIONAL*/ //this.faceType = Face.; // default HUMAN
 			///*OPTIONAL*/ //this.earType = EARS_; // default HUMAN
 			///*OPTIONAL*/ //this.tongueType = TONGUE_; // default HUMAN
 			///*OPTIONAL*/ //this.eyeType = EYES_; // default HUMAN

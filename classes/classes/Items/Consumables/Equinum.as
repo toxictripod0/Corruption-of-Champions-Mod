@@ -46,7 +46,7 @@ package classes.Items.Consumables
 			clearOutput();
 			outputText("You down the potion, grimacing at the strong taste.");
 			//CHANCE OF BAD END - 20% if face/tail/skin/cock are appropriate.
-			if (player.hasFur() && player.faceType === FACE_HORSE && player.tailType === Tail.HORSE && player.lowerBody === LOWER_BODY_TYPE_HOOFED) {
+			if (player.hasFur() && player.faceType === Face.HORSE && player.tailType === Tail.HORSE && player.lowerBody === LOWER_BODY_TYPE_HOOFED) {
 				//WARNINGS
 				//Repeat warnings
 				if (player.hasStatusEffect(StatusEffects.HorseWarning) && rand(3) === 0) {
@@ -440,11 +440,11 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//HorseFace - Req's Fur && Ears
-			if (player.faceType !== FACE_HORSE && player.hasFur() && changes < changeLimit && rand(5) === 0 && player.earType === EARS_HORSE) {
-				if (player.faceType === FACE_DOG) outputText("\n\nMind-numbing pain shatters through you as you feel your facial bones rearranging.  You clutch at your face in agony as your skin crawls and shifts, your visage reshaping to replace your dog-like characteristics with those of a horse.  <b>You now have a horse's face.</b>");
+			if (player.faceType !== Face.HORSE && player.hasFur() && changes < changeLimit && rand(5) === 0 && player.earType === EARS_HORSE) {
+				if (player.faceType === Face.DOG) outputText("\n\nMind-numbing pain shatters through you as you feel your facial bones rearranging.  You clutch at your face in agony as your skin crawls and shifts, your visage reshaping to replace your dog-like characteristics with those of a horse.  <b>You now have a horse's face.</b>");
 				else outputText("\n\nMind-numbing pain shatters through you as you feel your facial bones breaking and shifting.  You clutch at yourself in agony as you feel your skin crawl and elongate under your fingers.  Eventually the pain subsides, leaving you with a face that seamlessly blends human and equine features.  <b>You have a very equine-looking face.</b>");
 				changes++;
-				player.faceType = FACE_HORSE;
+				player.faceType = Face.HORSE;
 			}
 			//Fur - if has horse tail && ears and not at changelimit
 			if (!player.hasFur() && changes < changeLimit && rand(4) === 0 && player.tailType === Tail.HORSE) {

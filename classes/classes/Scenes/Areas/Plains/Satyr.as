@@ -156,7 +156,7 @@ package classes.Scenes.Areas.Plains
 			this.skinTone = "tan";
 			this.hairColor = randomChoice("black","brown");
 			this.hairLength = 3+rand(20);
-			this.faceType = FACE_COW_MINOTAUR;
+			this.faceType = Face.COW_MINOTAUR;
 			initStrTouSpeInte(75, 70, 110, 70);
 			initLibSensCor(60, 35, 45);
 			this.weaponName = "fist";

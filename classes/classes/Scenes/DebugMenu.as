@@ -849,37 +849,37 @@ import classes.Items.*
 			addButton(14, "Back", bodyPartEditorRoot);
 		}
 		private static const FACE_TYPE_CONSTANTS:Array = [
-			[FACE_HUMAN,"(0) HUMAN"],
-			[FACE_HORSE,"(1) HORSE"],
-			[FACE_DOG,"(2) DOG"],
-			[FACE_COW_MINOTAUR,"(3) COW_MINOTAUR"],
-			[FACE_SHARK_TEETH,"(4) SHARK_TEETH"],
-			[FACE_SNAKE_FANGS,"(5) SNAKE_FANGS"],
-			[FACE_CAT,"(6) CAT"],
-			[FACE_LIZARD,"(7) LIZARD"],
-			[FACE_BUNNY,"(8) BUNNY"],
-			[FACE_KANGAROO,"(9) KANGAROO"],
-			[FACE_SPIDER_FANGS,"(10) SPIDER_FANGS"],
-			[FACE_FOX,"(11) FOX"],
-			[FACE_DRAGON,"(12) DRAGON"],
-			[FACE_RACCOON_MASK,"(13) RACCOON_MASK"],
-			[FACE_RACCOON,"(14) RACCOON"],
-			[FACE_BUCKTEETH,"(15) BUCKTEETH"],
-			[FACE_MOUSE,"(16) MOUSE"],
-			[FACE_FERRET_MASK,"(17) FERRET_MASK"],
-			[FACE_FERRET,"(18) FERRET"],
-			[FACE_PIG,"(19) PIG"],
-			[FACE_BOAR,"(20) BOAR"],
-			[FACE_RHINO,"(21) RHINO"],
-			[FACE_ECHIDNA,"(22) ECHIDNA"],
-			[FACE_DEER,"(23) DEER"],
-			[FACE_WOLF,"(24) WOLF"],
+			[Face.HUMAN,"(0) HUMAN"],
+			[Face.HORSE,"(1) HORSE"],
+			[Face.DOG,"(2) DOG"],
+			[Face.COW_MINOTAUR,"(3) COW_MINOTAUR"],
+			[Face.SHARK_TEETH,"(4) SHARK_TEETH"],
+			[Face.SNAKE_FANGS,"(5) SNAKE_FANGS"],
+			[Face.CAT,"(6) CAT"],
+			[Face.LIZARD,"(7) LIZARD"],
+			[Face.BUNNY,"(8) BUNNY"],
+			[Face.KANGAROO,"(9) KANGAROO"],
+			[Face.SPIDER_FANGS,"(10) SPIDER_FANGS"],
+			[Face.FOX,"(11) FOX"],
+			[Face.DRAGON,"(12) DRAGON"],
+			[Face.RACCOON_MASK,"(13) RACCOON_MASK"],
+			[Face.RACCOON,"(14) RACCOON"],
+			[Face.BUCKTEETH,"(15) BUCKTEETH"],
+			[Face.MOUSE,"(16) MOUSE"],
+			[Face.FERRET_MASK,"(17) FERRET_MASK"],
+			[Face.FERRET,"(18) FERRET"],
+			[Face.PIG,"(19) PIG"],
+			[Face.BOAR,"(20) BOAR"],
+			[Face.RHINO,"(21) RHINO"],
+			[Face.ECHIDNA,"(22) ECHIDNA"],
+			[Face.DEER,"(23) DEER"],
+			[Face.WOLF,"(24) WOLF"],
 			/* [INTERMOD: xianxia]
-			[FACE_MANTICORE,"(25) MANTICORE"],
-			[FACE_SALAMANDER_FANGS,"(26) SALAMANDER_FANGS"],
-			[FACE_YETI_FANGS,"(27) YETI_FANGS"],
-			[FACE_ORCA,"(28) ORCA"],
-			[FACE_PLANT_DRAGON,"(29) PLANT_DRAGON"]
+			[Face.MANTICORE,"(25) MANTICORE"],
+			[Face.SALAMANDER_FANGS,"(26) SALAMANDER_FANGS"],
+			[Face.YETI_FANGS,"(27) YETI_FANGS"],
+			[Face.ORCA,"(28) ORCA"],
+			[Face.PLANT_DRAGON,"(29) PLANT_DRAGON"]
 			*/
 		];
 		/* [INTERMOD: xianxia]
@@ -1349,7 +1349,7 @@ import classes.Items.*
 			clearOutput();
 			outputText("<b>You are now a Manticore!</b>");
 			//Cat TF
-			player.faceType = FACE_CAT;
+			player.faceType = Face.CAT;
 			player.earType = EARS_CAT;
 			player.lowerBody = LOWER_BODY_TYPE_CAT;
 			player.legCount = 2;
@@ -1371,7 +1371,7 @@ import classes.Items.*
 			clearOutput();
 			outputText("<b>You are now a Dragonne!</b>");
 			//Cat TF
-			player.faceType = FACE_CAT;
+			player.faceType = Face.CAT;
 			player.earType = EARS_CAT;
 			player.tailType = Tail.CAT;
 			player.lowerBody = LOWER_BODY_TYPE_CAT;

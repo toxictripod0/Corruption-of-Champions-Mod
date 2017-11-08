@@ -3,6 +3,7 @@ package classes
 {
 	import classes.BodyParts.Arms;
 	import classes.BodyParts.Beard;
+	import classes.BodyParts.Face;
 	import classes.BodyParts.Gills;
 	import classes.BodyParts.Hair;
 	import classes.BodyParts.Neck;
@@ -426,7 +427,9 @@ import mx.logging.ILogger;
 		14 - fullcoon
 		15 - halfmouse
 		16 - fullmouse*/
-		public var faceType:Number = FACE_HUMAN;
+		public var facePart:Face = new Face();
+		public function get faceType():Number { return facePart.type; }
+		public function set faceType(value:Number):void { facePart.type = value; }
 
 		// <mod name="Predator arms" author="Stadler76">
 		public var clawTone:String = "";
@@ -2889,7 +2892,7 @@ import mx.logging.ILogger;
 
 		public function hasBeak():Boolean
 		{
-			return [FACE_BEAK, FACE_COCKATRICE].indexOf(faceType) != -1;
+			return [Face.BEAK, Face.COCKATRICE].indexOf(faceType) != -1;
 		}
 
 		public function hasFeathers():Boolean

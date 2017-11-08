@@ -114,7 +114,7 @@ import classes.internals.ChainedAction;
 			this.hipRating = HIP_RATING_SLENDER+1;
 			this.buttRating = BUTT_RATING_AVERAGE;
 			this.lowerBody = LOWER_BODY_TYPE_LIZARD;
-			this.faceType = FACE_LIZARD;
+			this.faceType = Face.LIZARD;
 			this.earType = EARS_LIZARD;
 			this.eyeType = EYES_BASILISK;
 			this.hairType = Hair.BASILISK_SPINES;

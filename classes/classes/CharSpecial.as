@@ -562,7 +562,7 @@ package classes
 			player.HP = kGAMECLASS.maxHP();
 			player.hairLength=13;
 			player.skinType = Skin.PLAIN;
-			player.faceType = FACE_HUMAN;
+			player.faceType = Face.HUMAN;
 			player.tailType = Tail.NONE;
 			player.tongueType = TONGUE_HUMAN;
 			player.femininity = 85;
@@ -644,7 +644,7 @@ package classes
 			player.skinType = Skin.PLAIN;
 			player.skinTone = "light";
 			player.hairColor = "brown";
-			player.faceType = FACE_HUMAN;
+			player.faceType = Face.HUMAN;
 			player.tailType = Tail.NONE;
 			player.tongueType = TONGUE_HUMAN;
 			player.femininity = 50;
@@ -663,7 +663,7 @@ package classes
 			player.tailRecharge = 0;
 			player.wingType = Wings.NONE;
 			//"dog face, dog ears, draconic tail, blue fur.
-			player.faceType = FACE_DOG;
+			player.faceType = Face.DOG;
 			player.earType = EARS_DOG;
 			player.tailType = Tail.DRACONIC;
 			player.skinType = Skin.FUR;
@@ -735,7 +735,7 @@ package classes
 			player.vaginas[0].virgin = true;
 			player.setClitLength(0.2);
 			player.earType = EARS_CAT;
-			player.faceType = FACE_CAT;
+			player.faceType = Face.CAT;
 			player.femininity = 100;
 			player.fertility = 85;
 			player.hairColor = "blonde";
@@ -801,7 +801,7 @@ package classes
 			player.hornType = HORNS_DRACONIC_X4_12_INCH_LONG;
 			player.horns = 12;
 			//Face = Horse
-			player.faceType = FACE_HORSE;
+			player.faceType = Face.HORSE;
 			//Skin type = Black Fur
 			player.skinTone = "brown";
 			player.skinType = Skin.FUR;
@@ -843,7 +843,7 @@ package classes
 			player.vaginas[0].virgin = false;
 			player.ass.analLooseness = 1;
 			//Face- Canine
-			player.faceType = FACE_DOG;
+			player.faceType = Face.DOG;
 			//Ears- Canine
 			player.earType = EARS_DOG;
 			//Tail- Canine
@@ -917,7 +917,7 @@ package classes
 			player.skinDesc = "fur";
 			player.hairColor = "silver";
 			player.furColor = "silver";
-			player.faceType = FACE_FOX;
+			player.faceType = Face.FOX;
 			player.earType = EARS_FOX;
 			
 			player.createBreastRow(BREAST_CUP_DD,4);
@@ -1029,7 +1029,7 @@ package classes
 			player.HP = kGAMECLASS.maxHP();
 			
 			player.skinType = Skin.PLAIN;
-			player.faceType = FACE_HUMAN;
+			player.faceType = Face.HUMAN;
 			player.tailType = Tail.NONE;
 			player.tongueType = TONGUE_HUMAN;
 			player.femininity = 85;
@@ -1063,7 +1063,7 @@ package classes
 			player.tailRecharge = 0;
 			player.wingType = Wings.NONE;
 			//6' 10"" german-shepherd morph, face ears hands feet tail, the whole nine yards
-			player.faceType = FACE_DOG;
+			player.faceType = Face.DOG;
 			player.lowerBody = LOWER_BODY_TYPE_DOG;
 			player.tailType = Tail.DOG;
 			player.earType = EARS_DOG;
@@ -1131,7 +1131,7 @@ package classes
 			if (player.hasCock()) player.removeCock(0,1);
 			if (player.hasVagina()) player.removeVagina();
 			player.femininity = 50;
-			player.faceType = FACE_SHARK_TEETH;
+			player.faceType = Face.SHARK_TEETH;
 		}
 		
 		private function customSera():void {
@@ -1266,7 +1266,7 @@ package classes
 			player.HP = kGAMECLASS.maxHP();
 			player.hairLength = 10;
 			player.skinType = Skin.PLAIN;
-			player.faceType = FACE_HUMAN;
+			player.faceType = Face.HUMAN;
 			player.tailType = Tail.FOX;
 			player.tailVenom = 4;
 			player.tongueType = TONGUE_HUMAN;
@@ -1476,7 +1476,7 @@ package classes
 			player.HP = kGAMECLASS.maxHP();
 			player.hairLength = 10;
 			player.skinType = Skin.PLAIN;
-			player.faceType = FACE_HUMAN;
+			player.faceType = Face.HUMAN;
 			player.tailType = Tail.NONE;
 			player.tongueType = TONGUE_HUMAN;
 			player.femininity = 70;
@@ -1510,7 +1510,7 @@ package classes
 			player.armType = Arms.HARPY;
 			player.hornType = HORNS_DRACONIC_X2;
 			player.horns = 4;
-			player.faceType = FACE_SPIDER_FANGS;
+			player.faceType = Face.SPIDER_FANGS;
 			player.hairLength = 69.2;
 			player.hairColor = "dark blue";
 			player.hairType = 2;
@@ -1623,7 +1623,7 @@ package classes
 			player.beardLength = 0;
 			player.beardStyle = 0;
 			
-			player.faceType = FACE_FOX;
+			player.faceType = Face.FOX;
 			player.earType = EARS_FOX;
 			player.clawType = CLAW_TYPE_DOG;
 			player.clawTone = "ivory";
@@ -1827,11 +1827,11 @@ package classes
 				player.skinAdj = "slimy";}
 					
 			if (rand(3) != 0) // 2/3 to have human face
-				player.faceType = FACE_HUMAN;
+				player.faceType = Face.HUMAN;
 			else // totally random one
 				player.faceType = rand(20)+1; // since it is not a enum, it is impossible to make it auto-ajust...
 				
-			if (player.faceType == FACE_SPIDER_FANGS && rand(2) == 0)
+			if (player.faceType == Face.SPIDER_FANGS && rand(2) == 0)
 					player.eyeType = EYES_FOUR_SPIDER_EYES; // 50% to have spider eyes with spider fangs
 			else if (rand(20) == 0) // 5% for inhuman eyes otherwise
 				if (rand(2) == 0)
@@ -1839,7 +1839,7 @@ package classes
 				else
 					player.eyeType = EYES_BLACK_EYES_SAND_TRAP;
 
-			if (player.faceType == FACE_HUMAN && rand(2)!=0) // if human face, 50% to have human ears
+			if (player.faceType == Face.HUMAN && rand(2)!=0) // if human face, 50% to have human ears
 				player.earType = EARS_HUMAN;
 			else // totally random one
 				player.earType = rand(14)+1; // since it is not a enum, it is impossible to make it auto-ajust...

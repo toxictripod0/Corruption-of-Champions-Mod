@@ -193,9 +193,9 @@ package classes.Scenes.Dungeons.Factory
 				player.earType = EARS_HUMAN;
 			}
 			//Face
-			if (player.faceType != FACE_HUMAN) {
+			if (player.faceType != Face.HUMAN) {
 				outputText("Your facial structure rearranges itself into a normal human visage, exactly like yours was before you came to this horrid place.");
-				player.faceType = FACE_HUMAN;
+				player.faceType = Face.HUMAN;
 			}
 			postOmnibusBoon();
 		}
