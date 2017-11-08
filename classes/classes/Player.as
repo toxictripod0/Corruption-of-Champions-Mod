@@ -1074,7 +1074,7 @@ use namespace kGAMECLASS;
 					cockatriceCounter++;
 				if (skinType == Skin.LIZARD_SCALES)
 					cockatriceCounter++;
-				if (underBody.type == UNDER_BODY_TYPE_COCKATRICE)
+				if (underBody.type == UnderBody.COCKATRICE)
 					cockatriceCounter++;
 				if (lizardCocks() > 0)
 					cockatriceCounter++;

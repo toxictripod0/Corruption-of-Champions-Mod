@@ -325,7 +325,7 @@ package classes.Items.Consumables
 				player.skinType = Skin.FUR;
 				player.skinDesc = "fur";
 				player.setFurColor(wolfFurColors, {
-					type: UNDER_BODY_TYPE_FURRY
+					type: UnderBody.FURRY
 				}, true);
 				outputText("You reach down to scratch your arm absent-mindedly and pull your fingers away to find strands of " + player.furColor + " fur. You stare at it. Fur. Wait, you just grew fur?! What happened?! Your mind reeling, you do know one thing for sure: <b>you now have fur!</b>");
 				changes++;

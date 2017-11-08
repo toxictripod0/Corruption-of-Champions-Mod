@@ -449,7 +449,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Eye TF
-			if (player.eyeType != Eyes.COCKATRICE && player.faceType == Face.COCKATRICE && player.underBody.type == UNDER_BODY_TYPE_COCKATRICE && player.earType == Ears.COCKATRICE && changes < changeLimit && rand(3) == 0) {
+			if (player.eyeType != Eyes.COCKATRICE && player.faceType == Face.COCKATRICE && player.underBody.type == UnderBody.COCKATRICE && player.earType == Ears.COCKATRICE && changes < changeLimit && rand(3) == 0) {
 				outputText("\n\nYour eyes suddenly burn, tears streaming down your cheeks. Your irises grow, taking up your entire eye as a spiderweb"
 				          +" of light blue crawls across your now vibrant blue eyes, looking like lightning strikes. Your pupils rapidly grow to"
 				          +" match, elongating into slit like shapes, similar to that of a feline. When your eyes stop watering you finally get a"
@@ -516,7 +516,7 @@ package classes.Items.Consumables
 					desc:     "scales"
 				});
 				player.underBody.setAllProps({
-					type: UNDER_BODY_TYPE_COCKATRICE,
+					type: UnderBody.COCKATRICE,
 					skin: {
 						type:     Skin.FEATHERED,
 						furColor: colorChoice[1], // Secondary feather color

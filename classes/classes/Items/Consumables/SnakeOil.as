@@ -127,7 +127,7 @@ package classes.Items.Consumables
 					player.underBody.skin.tone = "light green";
 				} else {
 					player.underBody.setProps({
-						type: UNDER_BODY_TYPE_NAGA,
+						type: UnderBody.NAGA,
 						skin: {
 							type: Skin.LIZARD_SCALES,
 							tone: "green",

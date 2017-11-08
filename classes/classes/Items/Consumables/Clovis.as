@@ -119,7 +119,7 @@ package classes.Items.Consumables
 				player.skinType = Skin.WOOL;
 				player.skinDesc = "wool";
 				player.setFurColor(sheepWoolColors, {
-					type: UNDER_BODY_TYPE_FURRY
+					type: UnderBody.FURRY
 				}, true);
 				changes++;
 			}

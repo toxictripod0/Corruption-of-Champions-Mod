@@ -1854,8 +1854,8 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 
 		// Fix deprecated and merged underBody-types
 		switch (player.underBody.type) {
-			case UNDER_BODY_TYPE_DRAGON: player.underBody.type = UNDER_BODY_TYPE_REPTILE; break;
-			case UNDER_BODY_TYPE_WOOL:   player.underBody.type = UNDER_BODY_TYPE_FURRY;   break;
+			case UnderBody.DRAGON: player.underBody.type = UnderBody.REPTILE; break;
+			case UnderBody.WOOL:   player.underBody.type = UnderBody.FURRY;   break;
 		}
 
 		//Sexual Stuff

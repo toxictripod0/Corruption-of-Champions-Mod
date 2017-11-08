@@ -1069,7 +1069,7 @@ public class ErlKingScene extends BaseContent implements Encounter
 				player.skinAdj = "";
 				player.skinDesc = "fur";
 				player.furColor = "brown";
-				player.underBody.type = UNDER_BODY_TYPE_FURRY;
+				player.underBody.type = UnderBody.FURRY;
 				player.copySkinToUnderBody({furColor: "white"});
 				changes++;
 			}

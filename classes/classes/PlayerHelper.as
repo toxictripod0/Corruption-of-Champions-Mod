@@ -14,7 +14,7 @@ package classes
 
 		public function hasDifferentUnderBody():Boolean
 		{
-			if ([UNDER_BODY_TYPE_NONE, UNDER_BODY_TYPE_NAGA].indexOf(underBody.type) != -1)
+			if ([UnderBody.NONE, UnderBody.NAGA].indexOf(underBody.type) != -1)
 				return false;
 
 			/* // Example for later use
@@ -29,10 +29,10 @@ package classes
 
 		public function hasUnderBody(noSnakes:Boolean = false):Boolean
 		{
-			var normalUnderBodies:Array = [UNDER_BODY_TYPE_NONE];
+			var normalUnderBodies:Array = [UnderBody.NONE];
 
 			if (noSnakes) {
-				normalUnderBodies.push(UNDER_BODY_TYPE_NAGA);
+				normalUnderBodies.push(UnderBody.NAGA);
 			}
 
 			return normalUnderBodies.indexOf(underBody.type) == -1;
@@ -71,11 +71,11 @@ package classes
 		public function hasReptileUnderBody(withSnakes:Boolean = false):Boolean
 		{
 			var underBodies:Array = [
-				UNDER_BODY_TYPE_REPTILE,
+				UnderBody.REPTILE,
 			];
 
 			if (withSnakes) {
-				underBodies.push(UNDER_BODY_TYPE_NAGA);
+				underBodies.push(UnderBody.NAGA);
 			}
 
 			return underBodies.indexOf(underBody.type) != -1;
@@ -83,7 +83,7 @@ package classes
 
 		public function hasCockatriceSkin():Boolean
 		{
-			return skinType == Skin.LIZARD_SCALES && underBody.type == UNDER_BODY_TYPE_COCKATRICE;
+			return skinType == Skin.LIZARD_SCALES && underBody.type == UnderBody.COCKATRICE;
 		}
 
 		public function hasNonCockatriceAntennae():Boolean
