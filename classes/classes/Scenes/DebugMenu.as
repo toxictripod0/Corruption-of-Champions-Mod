@@ -904,23 +904,23 @@ import classes.Items.*
 			*/
 		];
 		private static const EYE_TYPE_CONSTANTS:Array = [
-			[EYES_HUMAN, "(0) HUMAN"],
-			[EYES_BLACK_EYES_SAND_TRAP, "(2) BLACK_EYES_SAND_TRAP"],
+			[Eyes.HUMAN, "(0) HUMAN"],
+			[Eyes.BLACK_EYES_SAND_TRAP, "(2) BLACK_EYES_SAND_TRAP"],
 			/* [INTERMOD: xianxia]
-			[EYES_CAT_SLITS, "(3) CAT_SLITS"],
-			[EYES_GORGON, "(4) GORGON"],
-			[EYES_FENRIR, "(5) FENRIR"],
-			[EYES_MANTICORE, "(6) MANTICORE"],
-			[EYES_FOX, "(7) FOX"],
-			[EYES_REPTILIAN, "(8) REPTILIAN"],
-			[EYES_SNAKE, "(9) SNAKE"],
-			[EYES_DRAGON, "(10) DRAGON"],
+			[Eyes.CAT_SLITS, "(3) CAT_SLITS"],
+			[Eyes.GORGON, "(4) GORGON"],
+			[Eyes.FENRIR, "(5) FENRIR"],
+			[Eyes.MANTICORE, "(6) MANTICORE"],
+			[Eyes.FOX, "(7) FOX"],
+			[Eyes.REPTILIAN, "(8) REPTILIAN"],
+			[Eyes.SNAKE, "(9) SNAKE"],
+			[Eyes.DRAGON, "(10) DRAGON"],
 			*/
-			[EYES_LIZARD, "(3) LIZARD"],
-			[EYES_DRAGON, "(4) DRAGON"],
-			[EYES_BASILISK, "(5) BASILISK"],
-			[EYES_WOLF, "(6) WOLF"],
-			[EYES_SPIDER, "(7) SPIDER"],
+			[Eyes.LIZARD, "(3) LIZARD"],
+			[Eyes.DRAGON, "(4) DRAGON"],
+			[Eyes.BASILISK, "(5) BASILISK"],
+			[Eyes.WOLF, "(6) WOLF"],
+			[Eyes.SPIDER, "(7) SPIDER"],
 		];
 		private static const EAR_TYPE_CONSTANTS:Array    = [
 			[EARS_HUMAN, "(0) HUMAN"],
@@ -1028,7 +1028,7 @@ import classes.Items.*
 		}
 		private function changeEyeType(page:int=0,setIdx:int=-1):void {
 			if (setIdx >= 0) player.eyeType = setIdx;
-			if (player.eyeType == EYES_SPIDER) player.eyeCount = 4;
+			if (player.eyeType == Eyes.SPIDER) player.eyeCount = 4;
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorHead, page, EYE_TYPE_CONSTANTS, changeEyeType);

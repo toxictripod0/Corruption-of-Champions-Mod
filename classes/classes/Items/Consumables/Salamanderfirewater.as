@@ -235,16 +235,16 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Remove odd eyes
-			if (changes < changeLimit && rand(4) === 0 && player.eyeType > EYES_HUMAN) {
-				if (player.eyeType === EYES_BLACK_EYES_SAND_TRAP) {
+			if (changes < changeLimit && rand(4) === 0 && player.eyeType > Eyes.HUMAN) {
+				if (player.eyeType === Eyes.BLACK_EYES_SAND_TRAP) {
 					outputText("\n\nYou feel a twinge in your eyes and you blink.  It feels like black cataracts have just fallen away from you, and you know without needing to see your reflection that your eyes have gone back to looking human.");
 				}
 				else {
 					outputText("\n\nYou blink and stumble, a wave of vertigo threatening to pull your " + player.feet() + " from under you.  As you steady and open your eyes, you realize something seems different.  Your vision is changed somehow.");
-					if (player.eyeType === EYES_FOUR_SPIDER_EYES || player.eyeType === EYES_SPIDER) outputText(" <b>Your arachnid eyes are gone!</b>");
+					if (player.eyeType === Eyes.FOUR_SPIDER_EYES || player.eyeType === Eyes.SPIDER) outputText(" <b>Your arachnid eyes are gone!</b>");
 					outputText(" <b>You have normal, humanoid eyes again.</b>");
 				}
-				player.eyeType = EYES_HUMAN;
+				player.eyeType = Eyes.HUMAN;
 				player.eyeCount = 2;
 				changes++;
 			}

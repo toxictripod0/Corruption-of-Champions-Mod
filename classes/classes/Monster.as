@@ -334,7 +334,7 @@
 			///*OPTIONAL*/ //this.faceType = Face.; // default HUMAN
 			///*OPTIONAL*/ //this.earType = EARS_; // default HUMAN
 			///*OPTIONAL*/ //this.tongueType = Tongue.; // default HUMAN
-			///*OPTIONAL*/ //this.eyeType = EYES_; // default HUMAN
+			///*OPTIONAL*/ //this.eyeType = Eyes.; // default HUMAN
 
 			//// 9. Primary stats.
 			///*REQUIRED*/ initStrTouSpeInte(,,,);

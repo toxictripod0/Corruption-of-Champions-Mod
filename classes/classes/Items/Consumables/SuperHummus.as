@@ -45,7 +45,7 @@ package classes.Items.Consumables
 			}
 			player.armType = Arms.HUMAN;
 			mutations.updateClaws();
-			player.eyeType = EYES_HUMAN;
+			player.eyeType = Eyes.HUMAN;
 			player.antennae = ANTENNAE_NONE;
 			player.faceType = Face.HUMAN;
 			player.lowerBody = LOWER_BODY_TYPE_HUMAN;
@@ -64,7 +64,7 @@ package classes.Items.Consumables
 			player.neck.restore();
 			player.rearBody.restore();
 			player.tongueType = Tongue.HUMAN;
-			player.eyeType = EYES_HUMAN;
+			player.eyeType = Eyes.HUMAN;
 			if (player.fertility > 15) player.fertility = 15;
 			if (player.cumMultiplier > 50) player.cumMultiplier = 50;
 			var virgin:Boolean = false;

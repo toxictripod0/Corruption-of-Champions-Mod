@@ -1635,7 +1635,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			player.femininity = saveFile.data.femininity;
 		//EYES
 		if (saveFile.data.eyeType == undefined)
-			player.eyeType = EYES_HUMAN;
+			player.eyeType = Eyes.HUMAN;
 		else
 			player.eyeType = saveFile.data.eyeType;
 		//BEARS
@@ -1839,11 +1839,11 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			player.legCount = saveFile.data.legCount;
 			
 		if (saveFile.data.eyeCount == undefined) {
-			if (player.eyeType == EYES_SPIDER) {
+			if (player.eyeType == Eyes.SPIDER) {
 				player.eyeCount = 4;
 			}
-			else if (player.eyeType == EYES_FOUR_SPIDER_EYES) {
-				player.eyeType = EYES_SPIDER;
+			else if (player.eyeType == Eyes.FOUR_SPIDER_EYES) {
+				player.eyeType = Eyes.SPIDER;
 				player.eyeCount = 4;
 			}
 			else player.eyeCount = 2;

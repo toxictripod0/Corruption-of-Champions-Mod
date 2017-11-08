@@ -97,15 +97,15 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//remove non-wolf eyes
-			if (changes < changeLimit && rand(3) === 0 && player.eyeType !== EYES_HUMAN && player.eyeType !== EYES_WOLF) {
-				if (player.eyeType === EYES_BLACK_EYES_SAND_TRAP) {
+			if (changes < changeLimit && rand(3) === 0 && player.eyeType !== Eyes.HUMAN && player.eyeType !== Eyes.WOLF) {
+				if (player.eyeType === Eyes.BLACK_EYES_SAND_TRAP) {
 					outputText("\n\nYou feel a twinge in your eyes and you blink. It feels like black cataracts have just fallen away from you, and you know without needing to see your reflection that your eyes have gone back to looking human.");
 				} else {
 					outputText("\n\nYou blink and stumble, a wave of vertigo threatening to pull your " + player.feet() + " from under you. As you steady and open your eyes, you realize something seems different. Your vision is changed somehow.");
-					if (player.eyeType === EYES_FOUR_SPIDER_EYES || player.eyeType == EYES_SPIDER) outputText(" Your arachnid eyes are gone!");
+					if (player.eyeType === Eyes.FOUR_SPIDER_EYES || player.eyeType == Eyes.SPIDER) outputText(" Your arachnid eyes are gone!");
 					outputText("  <b>You have normal, human eyes.</b>");
 				}
-				player.eyeType = EYES_HUMAN;
+				player.eyeType = Eyes.HUMAN;
 				player.eyeCount = 2;
 				changes++;
 			}
@@ -376,10 +376,10 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//MUTATIONZ LEVEL 3: face->eyes
-			if (player.eyeType !== EYES_WOLF && player.faceType === Face.WOLF && rand(4) === 0 && changes < changeLimit) {
+			if (player.eyeType !== Eyes.WOLF && player.faceType === Face.WOLF && rand(4) === 0 && changes < changeLimit) {
 				outputText("\n\nYou feel a sudden surge of pain in your face as your eyes begin to change. You close them and feel something wet slide under your eyelids. You jump in surprise. The feeling's gone, but now the distance is a blurred view, and greens seem to be mixed with yellows.");
 				outputText("\n\nYou turn to a nearby reflective surface to investigate. Your eyes have massive amber irises and are dipped into your face, hiding any sign of your sclera. Blackness surrounds them and emphasise the wolfish shape of your face. You blink a few times as you stare at your reflection. <b>You now have wolf eyes!</b> Your peripherals and night vision has probably improved, too.");
-				player.eyeType = EYES_WOLF;
+				player.eyeType = Eyes.WOLF;
 				changes++;
 			}
 			//MISC CRAP

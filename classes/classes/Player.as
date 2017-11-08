@@ -1059,7 +1059,7 @@ use namespace kGAMECLASS;
 				cockatriceCounter++;
 			if (faceType == Face.COCKATRICE)
 				cockatriceCounter++;
-			if (eyeType == EYES_COCKATRICE)
+			if (eyeType == Eyes.COCKATRICE)
 				cockatriceCounter++;
 			if (armType == Arms.COCKATRICE)
 				cockatriceCounter++;
@@ -1293,7 +1293,7 @@ use namespace kGAMECLASS;
 				wolfCounter++;
 			if (lowerBody == LOWER_BODY_TYPE_WOLF)
 				wolfCounter++;
-			if (eyeType == EYES_WOLF)
+			if (eyeType == Eyes.WOLF)
 				wolfCounter+=2;
 			if (hasFur() && wolfCounter > 0) //Only counts if we got wolf features
 				wolfCounter++;
@@ -1454,7 +1454,7 @@ use namespace kGAMECLASS;
 					lizardCounter++;
 				if (lizardCocks() > 0)
 					lizardCounter++;
-				if ([EYES_LIZARD, EYES_BASILISK].indexOf(eyeType) != -1)
+				if ([Eyes.LIZARD, Eyes.BASILISK].indexOf(eyeType) != -1)
 					lizardCounter++;
 				if (hasReptileScales())
 					lizardCounter++;
@@ -1585,7 +1585,7 @@ use namespace kGAMECLASS;
 				dragonCounter++;
 			if (armType == Arms.PREDATOR && clawType == CLAW_TYPE_DRAGON)
 				dragonCounter++;
-			if (eyeType == EYES_DRAGON)
+			if (eyeType == Eyes.DRAGON)
 				dragonCounter++;
 			if (hasDragonNeck())
 				dragonCounter++;

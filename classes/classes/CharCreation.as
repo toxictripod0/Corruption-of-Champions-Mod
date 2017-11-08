@@ -236,7 +236,7 @@ import fl.controls.ComboBox;
 				}
 			}
 			player.wingType = Wings.NONE;
-			if (player.eyeType == EYES_BASILISK) player.eyeType = EYES_LIZARD; // Silently change them to be lizard eyes again. Simple and stupid ;)
+			if (player.eyeType == Eyes.BASILISK) player.eyeType = Eyes.LIZARD; // Silently change them to be lizard eyes again. Simple and stupid ;)
 			//Default
 			player.skinTone = "light";
 			player.clawTone = "";

@@ -1880,9 +1880,9 @@ package classes.Scenes.Places.Bazaar
 			//Remove gills
 			if (rand(3) == 0 && changes < changeLimit && player.hasGills()) mutations.updateGills();
 
-			if (rand(3) == 0 && changes < changeLimit && player.eyeType == EYES_FOUR_SPIDER_EYES || player.eyeType == EYES_SPIDER) {
+			if (rand(3) == 0 && changes < changeLimit && player.eyeType == Eyes.FOUR_SPIDER_EYES || player.eyeType == Eyes.SPIDER) {
 				outputText("\n\nYour eyes start throbbing painfully, your sight in them eventually going dark. You touch your head to inspect your eyes, only to find out that they have changed. <b>You have human eyes now!</b>");
-				player.eyeType == EYES_HUMAN;
+				player.eyeType == Eyes.HUMAN;
 				player.eyeCount = 2;
 				changes++;
 			}

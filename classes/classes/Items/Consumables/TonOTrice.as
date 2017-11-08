@@ -449,7 +449,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Eye TF
-			if (player.eyeType != EYES_COCKATRICE && player.faceType == Face.COCKATRICE && player.underBody.type == UNDER_BODY_TYPE_COCKATRICE && player.earType == EARS_COCKATRICE && changes < changeLimit && rand(3) == 0) {
+			if (player.eyeType != Eyes.COCKATRICE && player.faceType == Face.COCKATRICE && player.underBody.type == UNDER_BODY_TYPE_COCKATRICE && player.earType == EARS_COCKATRICE && changes < changeLimit && rand(3) == 0) {
 				outputText("\n\nYour eyes suddenly burn, tears streaming down your cheeks. Your irises grow, taking up your entire eye as a spiderweb"
 				          +" of light blue crawls across your now vibrant blue eyes, looking like lightning strikes. Your pupils rapidly grow to"
 				          +" match, elongating into slit like shapes, similar to that of a feline. When your eyes stop watering you finally get a"
@@ -457,7 +457,7 @@ package classes.Items.Consumables
 				          +" this causes your pupils to widen into large circles, giving you a cute and excited look. Seems you won’t be able to have"
 				          +" much of a poker face anymore.");
 				outputText("\n<b>You now have cockatrice eyes!</b>");
-				player.eyeType = EYES_COCKATRICE;
+				player.eyeType = Eyes.COCKATRICE;
 				player.eyeCount = 2;
 			}
 			//Lizard tongue TF

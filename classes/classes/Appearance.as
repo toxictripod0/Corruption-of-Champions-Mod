@@ -2258,15 +2258,15 @@ package classes
 		);
 		public static const DEFAULT_EYES_NAMES:Object = createMapFromPairs(
 				[
-					[EYES_HUMAN, "human"],
-					[EYES_FOUR_SPIDER_EYES, "4 spider"],
-					[EYES_BLACK_EYES_SAND_TRAP, "sandtrap black"],
-					[EYES_LIZARD, "lizard"],
-					[EYES_WOLF, "wolf"],
-					[EYES_DRAGON, "dragon"],
-					[EYES_BASILISK, "basilisk"],
-					[EYES_SPIDER, "spider"],
-					[EYES_COCKATRICE, "cockatrice"],
+					[Eyes.HUMAN, "human"],
+					[Eyes.FOUR_SPIDER_EYES, "4 spider"],
+					[Eyes.BLACK_EYES_SAND_TRAP, "sandtrap black"],
+					[Eyes.LIZARD, "lizard"],
+					[Eyes.WOLF, "wolf"],
+					[Eyes.DRAGON, "dragon"],
+					[Eyes.BASILISK, "basilisk"],
+					[Eyes.SPIDER, "spider"],
+					[Eyes.COCKATRICE, "cockatrice"],
 				]
 		);
 		public static const DEFAULT_EARS_NAMES:Object = createMapFromPairs(

@@ -105,7 +105,7 @@ package classes.Scenes.Dungeons.D3
 			initLibSensCor(40, 40, 80);
 			faceType = Face.LIZARD;
 			earType = EARS_LIZARD;
-			eyeType = EYES_BASILISK;
+			eyeType = Eyes.BASILISK;
 
 			weaponName = "cutlass";
 			weaponVerb = "slash";

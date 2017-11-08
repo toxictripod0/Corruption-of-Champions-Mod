@@ -3,6 +3,7 @@ package classes
 {
 	import classes.BodyParts.Arms;
 	import classes.BodyParts.Beard;
+	import classes.BodyParts.Eyes;
 	import classes.BodyParts.Face;
 	import classes.BodyParts.Gills;
 	import classes.BodyParts.Hair;
@@ -589,8 +590,11 @@ import mx.logging.ILogger;
 		public var antennae:Number = ANTENNAE_NONE;
 
 		//Eyetype
-		public var eyeType:Number = EYES_HUMAN;
-		public var eyeCount:Number = 2;
+		public var eyes:Eyes = new Eyes();
+		public function get eyeType():Number { return eyes.type; }
+		public function set eyeType(value:Number):void { eyes.type = value; }
+		public function get eyeCount():Number { return eyes.count; }
+		public function set eyeCount(value:Number):void { eyes.count = value; }
 
 		//TongueType
 		public var tongue:Tongue = new Tongue();
@@ -2462,7 +2466,7 @@ import mx.logging.ILogger;
 
 		public function canUseStare():Boolean
 		{
-			return [EYES_BASILISK, EYES_COCKATRICE].indexOf(eyeType) != -1;
+			return [Eyes.BASILISK, Eyes.COCKATRICE].indexOf(eyeType) != -1;
 		}
 
 		public function isHoofed():Boolean
@@ -3005,7 +3009,7 @@ import mx.logging.ILogger;
 
 		public function hasSpiderEyes():Boolean
 		{
-			if (eyeType == EYES_SPIDER && eyeCount == 4)
+			if (eyeType == Eyes.SPIDER && eyeCount == 4)
 				return true;
 			return false;
 		}

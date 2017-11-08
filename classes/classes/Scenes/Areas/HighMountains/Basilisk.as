@@ -116,7 +116,7 @@ import classes.internals.ChainedAction;
 			this.lowerBody = LOWER_BODY_TYPE_LIZARD;
 			this.faceType = Face.LIZARD;
 			this.earType = EARS_LIZARD;
-			this.eyeType = EYES_BASILISK;
+			this.eyeType = Eyes.BASILISK;
 			this.hairType = Hair.BASILISK_SPINES;
 			this.skinTone = "grey-green";
 			this.skinType = Skin.LIZARD_SCALES;
