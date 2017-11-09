@@ -1,5 +1,6 @@
 package classes.Scenes.Monsters 
 {
+	import classes.BreastCup;
 	import classes.Monster;
 	import classes.StatusEffects;
 	import classes.internals.WeightedDrop;
@@ -82,7 +83,7 @@ package classes.Scenes.Monsters
 			this.balls = 0;
 			this.ballSize = 0;
 			if (type == 1)
-				createBreastRow(BREAST_CUP_JACQUES00);
+				createBreastRow(BreastCup.JACQUES00);
 			else
 				createBreastRow(0);
 			this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;

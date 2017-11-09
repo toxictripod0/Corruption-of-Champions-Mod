@@ -4038,12 +4038,12 @@ package classes.Scenes.NPCs
 			//--LACTATION--
 			if (flags[kFLAGS.AMILY_LACTATION_RATE] == 0) { //Not lactating
 				//Less than C-cup
-				if (flags[kFLAGS.AMILY_CUP_SIZE] < BREAST_CUP_C) {
+				if (flags[kFLAGS.AMILY_CUP_SIZE] < BreastCup.C) {
 					outputText("\n\nIt's quite obvious when the lactaid kicks in; her " + Appearance.breastCup(flags[kFLAGS.AMILY_CUP_SIZE]) + " breasts suddenly puff out, swelling into proud C-cup breasts, milk flowing freely from her nipples, leaving her shirt both severely strained and soaked in milk.  She squeaks in dismay, and races away, clearly going to try and clean herself up.");
-					flags[kFLAGS.AMILY_CUP_SIZE] = BREAST_CUP_C;
+					flags[kFLAGS.AMILY_CUP_SIZE] = BreastCup.C;
 				}
 				//C-cup or greater
-				else if (flags[kFLAGS.AMILY_CUP_SIZE] >= BREAST_CUP_C) {
+				else if (flags[kFLAGS.AMILY_CUP_SIZE] >= BreastCup.C) {
 					outputText("\n\n\"<i>So...  when is this supposed to start - yeek</i>!\" She suddenly squeaks in shock as she realizes her shirt is growing damp.  She hastily pulls her top open, grabbing at her dripping breasts.  \"<i>I, I just gotta go take care of this.</i>\" She explains, blushing and then scampering away.");
 				}
 			}

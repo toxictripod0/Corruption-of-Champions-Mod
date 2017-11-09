@@ -1,6 +1,7 @@
 package classes 
 {
 	import classes.BodyParts.*;
+	import classes.BreastCup;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.GlobalFlags.kACHIEVEMENTS;
@@ -128,7 +129,7 @@ package classes
 			player.tailType = Tail.FOX;
 			player.tailVenom = 9;
 			player.createPerk(PerkLib.EnlightenedNinetails, 0, 0, 0, 0);
-			player.createBreastRow(Appearance.BREAST_CUP_DD);
+			player.createBreastRow(BreastCup.DD);
 			player.femininity = 100;
 			player.lowerBody = LowerBody.DEMONIC_HIGH_HEELS;
 			player.skinTone = "pink";
@@ -275,10 +276,10 @@ package classes
 			player.hipRating = 6;
 			player.buttRating = 3;
 			player.femininity = 50;
-			player.createBreastRow(Appearance.BREAST_CUP_D);
-			player.createBreastRow(Appearance.BREAST_CUP_C);
-			player.createBreastRow(Appearance.BREAST_CUP_B);
-			player.createBreastRow(Appearance.BREAST_CUP_A);
+			player.createBreastRow(BreastCup.D);
+			player.createBreastRow(BreastCup.C);
+			player.createBreastRow(BreastCup.B);
+			player.createBreastRow(BreastCup.A);
 			player.breastRows[0].fuckable = true;
 			player.breastRows[1].fuckable = true;
 			player.breastRows[2].fuckable = true;
@@ -394,7 +395,7 @@ package classes
 			//Hair length: Very long
 			player.hairLength = 22;
 			//Breast size: HH
-			player.createBreastRow(Appearance.BREAST_CUP_HH);
+			player.createBreastRow(BreastCup.HH);
 			//Femininity/Beauty: Very high
 			player.femininity = 90;
 			// Height: 5'4
@@ -444,7 +445,7 @@ package classes
 			player.cocks[0].cockLength = 10;
 			player.cocks[0].cockThickness = 4;
 			if (!player.hasVagina()) player.createVagina();
-			player.createBreastRow(Appearance.BREAST_CUP_D);
+			player.createBreastRow(BreastCup.D);
 			player.hairLength = 10;
 			player.setArmor(armors.GELARMR);
 		}
@@ -532,7 +533,7 @@ package classes
 			player.tailType = Tail.RABBIT;
 			//Face: Human
 			//Breasts: H-cup with 4.5 inch fuckable nipples"
-			player.createBreastRow(Appearance.BREAST_CUP_H);
+			player.createBreastRow(BreastCup.H);
 			player.nippleLength = 4.5;
 			player.breastRows[0].fuckable = true;
 		}
@@ -606,7 +607,7 @@ package classes
 			player.tone = 60;
 			player.hairLength = 30;
 			player.hairColor = "light blonde";
-			player.createBreastRow(Appearance.BREAST_CUP_D);
+			player.createBreastRow(BreastCup.D);
 			player.skinTone = "light";
 			//Bow skill 100 (Sorry Kelt, I can't hear your insults over my mad Robin Hood skillz)
 			player.createStatusEffect(StatusEffects.Kelt,100,0,0,0);
@@ -920,10 +921,10 @@ package classes
 			player.faceType = Face.FOX;
 			player.earType = Ears.FOX;
 			
-			player.createBreastRow(BREAST_CUP_DD,4);
-			player.createBreastRow(BREAST_CUP_DD,4);
-			player.createBreastRow(BREAST_CUP_DD,4);
-			player.createBreastRow(BREAST_CUP_DD,4);
+			player.createBreastRow(BreastCup.DD,4);
+			player.createBreastRow(BreastCup.DD,4);
+			player.createBreastRow(BreastCup.DD,4);
+			player.createBreastRow(BreastCup.DD,4);
 			player.breastRows[0].fuckable = true;
 			player.breastRows[1].fuckable = true;
 			player.breastRows[2].fuckable = true;
@@ -1589,7 +1590,7 @@ package classes
 			player.fertility = 5;
 			
 			if (player.bRows() == 0) player.createBreastRow();			
-			player.breastRows[0].breastRating = BREAST_CUP_A; // a-cup, 'cause huge boobs wouldn't fit your small frame... in fact, you almost considered to have flats
+			player.breastRows[0].breastRating = BreastCup.A; // a-cup, 'cause huge boobs wouldn't fit your small frame... in fact, you almost considered to have flats
 			
 			player.ballSize = 0;
 			player.balls = 0;

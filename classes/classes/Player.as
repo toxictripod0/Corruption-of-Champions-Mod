@@ -2811,7 +2811,7 @@ use namespace kGAMECLASS;
 				var lim:int = isTaur() ? 9 : 4;
 				if (ballSize > lim && balls > 0) tempSpeedPenalty += Math.round((ballSize - lim) / 2);
 				//Breasts
-				lim = isTaur() ? BREAST_CUP_I : BREAST_CUP_G;
+				lim = isTaur() ? BreastCup.I : BreastCup.G;
 				if (hasBreasts() && biggestTitSize() > lim) tempSpeedPenalty += ((biggestTitSize() - lim) / 2);
 				//Cocks
 				lim = isTaur() ? 72 : 24;
@@ -3060,7 +3060,7 @@ use namespace kGAMECLASS;
 				if (cocks[0].cockLength >= 16 && cocks[0].cockLength-temp2 < 16) {
 					if (cocks.length == 1) outputText("  <b>Your " + cockDescript(0) + " would look more at home on a large horse than you.</b>");
 					if (cocks.length > 1) outputText("  <b>Your " + multiCockDescriptLight() + " would look more at home on a large horse than on your body.</b>");
-					if (biggestTitSize() >= BREAST_CUP_C) {
+					if (biggestTitSize() >= BreastCup.C) {
 						if (cocks.length == 1) outputText("  You could easily stuff your " + cockDescript(0) + " between your breasts and give yourself the titty-fuck of a lifetime.");
 						if (cocks.length > 1) outputText("  They reach so far up your chest it would be easy to stuff a few cocks between your breasts and give yourself the titty-fuck of a lifetime.");
 					}

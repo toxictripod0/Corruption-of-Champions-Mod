@@ -206,8 +206,8 @@ package classes.Scenes.Places.TelAdre {
 
 		public function initFlags():void
 		{	//These are all the flags related to Kath that have a non-zero default value
-//			flags[kFLAGS.KATHERINE_BREAST_SIZE]		= BREAST_CUP_B;
-			breasts.cupSize							= CoC.BREAST_CUP_B;
+//			flags[kFLAGS.KATHERINE_BREAST_SIZE]		= BreastCup.B;
+			breasts.cupSize							= BreastCup.B;
 			breasts.lactationLevel					= BreastStore.LACTATION_DISABLED;
 			flags[kFLAGS.KATHERINE_DICK_COUNT]		= 1;
 			flags[kFLAGS.KATHERINE_DICK_LENGTH]		= 8;
@@ -330,17 +330,17 @@ package classes.Scenes.Places.TelAdre {
 /*
 		public function breastAdj():String {
 			switch (cupSize) {
-				case BREAST_CUP_FLAT:		return "non-existent ";
-				case BREAST_CUP_A:			return "small ";
-				case BREAST_CUP_B:
-				case BREAST_CUP_C:			return "palmable ";
-				case BREAST_CUP_D:
-				case BREAST_CUP_DD:			return "sizeable ";
-				case BREAST_CUP_DD_BIG:
-				case BREAST_CUP_E:
-				case BREAST_CUP_E_BIG:
-				case BREAST_CUP_EE:
-				case BREAST_CUP_EE_BIG:
+				case BreastCup.FLAT:		return "non-existent ";
+				case BreastCup.A:			return "small ";
+				case BreastCup.B:
+				case BreastCup.C:			return "palmable ";
+				case BreastCup.D:
+				case BreastCup.DD:			return "sizeable ";
+				case BreastCup.DD_BIG:
+				case BreastCup.E:
+				case BreastCup.E_BIG:
+				case BreastCup.EE:
+				case BreastCup.EE_BIG:
 			}
 			return(" ");
 		}
@@ -390,12 +390,12 @@ package classes.Scenes.Places.TelAdre {
 
 		private function tightTopDescption():void {
 			switch (breasts.cupSize) {
-				case CoC.BREAST_CUP_FLAT:
-				case CoC.BREAST_CUP_A:
-				case CoC.BREAST_CUP_B: outputText("tight enough to showcase even her small breasts"); break
-				case CoC.BREAST_CUP_C:
-				case CoC.BREAST_CUP_D:
-				case CoC.BREAST_CUP_DD: outputText("just able to hold her bountiful breasts in check"); break;
+				case BreastCup.FLAT:
+				case BreastCup.A:
+				case BreastCup.B: outputText("tight enough to showcase even her small breasts"); break
+				case BreastCup.C:
+				case BreastCup.D:
+				case BreastCup.DD: outputText("just able to hold her bountiful breasts in check"); break;
 				default:
 			}
 			outputText("overflowing with her bountiful titflesh");
@@ -419,7 +419,7 @@ package classes.Scenes.Places.TelAdre {
 					break;
 				case KBIT_CLOTHES_C_CLOTH: //Blouse and Skirt
 					outputText("She’s wearing a clean, attractively colored blouse, which ");
-					if (breasts.cupSize < CoC.BREAST_CUP_DD)
+					if (breasts.cupSize < BreastCup.DD)
 						outputText("is just tight enough at the chest to enhance her breasts without making things too obvious.");
 					else outputText("strains to hold her bountiful breasts in check.");
 					if (milky) outputText("  The blouse is a little damp thanks to leakage from her bountiful bosom.");
@@ -2269,7 +2269,7 @@ private function giveKatherineAnItem(page:int = 0):void {
 private function useReductoOnKat():void {
 	clearOutput();
 	var dickMin:int = (flags[kFLAGS.KATHERINE_UNLOCKED] >= 4 ? 6 : 8); //If she's employed she'll go as low as 6 inches
-	if (cockLength <= dickMin && ballSize <= 1 && knotSize <= 2 && breasts.cupSize == BREAST_CUP_A) {
+	if (cockLength <= dickMin && ballSize <= 1 && knotSize <= 2 && breasts.cupSize == BreastCup.A) {
 		//If min size on all Kat parts reached:
 		outputText("She looks at the jar and then visibly thinks about it, but shakes her head.  “<i>I'm sorry, " + playerText() + ", but I don't think it's possible for that stuff to make any of my remaining parts shrink any more...");
 		if (playerMaster())
@@ -2306,7 +2306,7 @@ private function useReductoOnKat():void {
 		} else {
 			addDisabledButton(2, "Balls");
 		}
-		if (breasts.cupSize > CoC.BREAST_CUP_A) {
+		if (breasts.cupSize > BreastCup.A) {
 			addButton(3, "Breasts", useRreductoOnKatsBreasts);
 		} else {
 			addDisabledButton(3, "Breasts");
@@ -2407,13 +2407,13 @@ private function useRreductoOnKatsBreasts():void {
 	}
 	breasts.cupSize--;
 	outputText("\n\nKath sits up and begins to play with her smaller and lighter rack.\n\n");
-	if (breasts.cupSize == CoC.BREAST_CUP_A)
+	if (breasts.cupSize == BreastCup.A)
 		outputText("“<i>These are so small people might think I’m a boy.  Guess I’ll just have to act even more girly to make up for it, right?</i>”");
-	else if (breasts.cupSize == CoC.BREAST_CUP_B)
+	else if (breasts.cupSize == BreastCup.B)
 		outputText("“<i>Back to my natural size.  Nice, I’ve missed the balance I had when they were this big.  Thank you so much " + playerText() + ".</i>”");
-	else if (breasts.cupSize == CoC.BREAST_CUP_DD_BIG)
+	else if (breasts.cupSize == BreastCup.DD_BIG)
 		outputText("“<i>Oh, that’s better.  They’re a lot lighter.  It doesn’t feel like I’ve got a pair of watermelons tied to my chest anymore.</i>”");
-	else if (breasts.cupSize > CoC.BREAST_CUP_DD_BIG)
+	else if (breasts.cupSize > BreastCup.DD_BIG)
 		outputText("“<i>Oh thank Marae.  And thank you too " + playerText() + ".  I can feel some of the muscles in my lower back starting to relax.</i>”");
 	else outputText("“<i>Yes, I think I’ll get used to these smaller sweater puppies pretty quickly.</i>”");
 	outputText("\n\nShe lies back on the bed and spreads her legs wide, her cock" + cockMultiple("", "s") + " aimed at the ceiling.  “<i>Now since you’ve pawed my breasts and got me all excited I hope you aren’t planning on leaving anytime soon.</i>”");
@@ -2934,27 +2934,27 @@ private function giveKatPureSuccubusDelight():void {
 private function giveKatPureSuccubusMilk():void {
 	clearOutput();
 	var kathSubEnough:Boolean = submissiveness() >= 2;
-	if (breasts.cupSize < CoC.BREAST_CUP_DD_BIG) { //She’s willing to go up to big DD-Cup normally
+	if (breasts.cupSize < BreastCup.DD_BIG) { //She’s willing to go up to big DD-Cup normally
 		outputText("You show Kath the bottle of Succubus’ Milk and tell her that it’s been purified.  Kath takes it and tips the bottle from side to side, examining the cloudy liquid inside.\n\n");
 		outputText("“<i>So this stuff is supposed to make my breasts bigger.</i>”  She cups her " + breasts.adj() + " " + breasts.cup() + "s and asks “<i>");
-		if (breasts.cupSize == CoC.BREAST_CUP_A)
+		if (breasts.cupSize == BreastCup.A)
 			outputText("So you want me to go back to my natural size, huh?  Good stuff, I’m still not used to how small these mosquito bites are.");
-		else if (breasts.cupSize == CoC.BREAST_CUP_D)
+		else if (breasts.cupSize == BreastCup.D)
 			outputText("What?  I’m <b>still</b> not big enough for you?");
 		else outputText("I suppose I could try it.  If it’s been purified then there’s no harm in it, right?");
 		outputText("</i>”\n\n");
 		outputText("Kath quickly strips out of her clothes and stands in front of her mirror.  She grins at you and rips the cork out, downing the potion in one gulp.  She only has time to say, “<i>Oh, that tastes weird,</i>” before the magics of the milk reach her chest.\n\n");
 		outputText("As if under the effects of a set of bellows her breasts balloon out, stretching her flesh taut.  After a few moments you see them soften, the skin magically expanding enough to accommodate its new contents.  Kath moans and feels her fuller, heavier rack.  “<i>");
 		breasts.cupSize++;
-		if (breasts.cupSize == CoC.BREAST_CUP_B) {
+		if (breasts.cupSize == BreastCup.B) {
 			outputText("Yes, yes, yes!  Oh does that ever feel good.</i>”\n\n");
 			outputText("She turns and walks into your arms, hugging you against her new assets.  You feel her nipples start to harden and as you rub her back her tail begins to flick from side to side.\n\n");
 		}
-		else if (breasts.cupSize < CoC.BREAST_CUP_DD_BIG) {
+		else if (breasts.cupSize < BreastCup.DD_BIG) {
 			outputText("Mmmm yes, I always thought I could do with a bit more sand in the top of my hourglass.</i>”\n\n");
 			outputText("Kath bounces up and down a few times and watches her new rack react to her motion.  She notices you watching, turns and walks into your arms, hugging you against her new assets.  You feel her nipples start to harden and as you rub her back her tail begins to flick from side to side.\n\n");
 		}
-		else { //She's now up to BREAST_CUP_DD_BIG
+		else { //She's now up to BreastCup.DD_BIG
 			outputText("Oof.  These puppies are a lot heavier" + (breasts.lactating() ? ", especially with the milk" : "") + ".  Now I understand why some girls complain about lower back problems.</i>”\n\n");
 			outputText("She bounces up and down a few times and watches her new rack react to her motion.  “<i>Yeah, I can do this.  But I’ll need some stronger bras, that’s for sure.</i>”\n\n");
 			outputText("She turns and walks into your arms, hugging you against her new assets.  “<i>The real question is how much I should adjust my clothes.  If I don’t alter them at least a little I’m going to pop right out of them.</i>”\n\n");
@@ -2966,12 +2966,12 @@ private function giveKatPureSuccubusMilk():void {
 		dynStats("lus", 10 + player.lib / 20);
 		player.consumeItem(consumables.P_S_MLK);
 	}
-	else if (breasts.cupSize < CoC.BREAST_CUP_EE && kathSubEnough) { //Allows E-Cup, big E-Cup and EE-Cup
+	else if (breasts.cupSize < BreastCup.EE && kathSubEnough) { //Allows E-Cup, big E-Cup and EE-Cup
 		outputText("You tell Katherine to disrobe.  You have a present for her.  She hops on the bed and takes her clothes off slowly, giving you a nice little striptease.  When she’s finished you place the bottle of succubi’ milk in her hand.\n\n");
 		outputText("“<i>But " + playerText() + " I’m so big ...</i>”\n\n");
 		outputText("You cut her off by cupping her breasts in your hands.  She sucks in a breath as your thumbs begin to knead her nipples" + (breasts.lactating() ? ", drawing forth a few beads of cream" : "") + ".  You tell her that with every cup size she gets more attractive to you.  Kath squirms and moans but you keep rolling her engorged nipples around until you smell the girlcum beginning to drip from her vulva.\n\n");
 		outputText("You tell her that deep down she wants to drink, she wants to see what will happen to her breasts with another dose.  Kath’s eyes open and she stares at you lustily.  Her hands move quickly, yanking the cork and dumping the milk into her mouth.\n\n");
-		outputText("She swallows and asks, “<i>What have I done?</i>” before her " + (breasts.cupSize == CoC.BREAST_CUP_DD_BIG ? "tits" : "boobs") + " begin to swell beneath your fingers.  In just a few moments they " + (breasts.cupSize == CoC.BREAST_CUP_DD ? "are well and truly boobs" : "have expanded to epic proportions") + ".  “<i>Oh Marae!  I’m so top heavy.</i>”  Kath leans back and adjusts her posture to support her expanded rack.\n\n");
+		outputText("She swallows and asks, “<i>What have I done?</i>” before her " + (breasts.cupSize == BreastCup.DD_BIG ? "tits" : "boobs") + " begin to swell beneath your fingers.  In just a few moments they " + (breasts.cupSize == BreastCup.DD ? "are well and truly boobs" : "have expanded to epic proportions") + ".  “<i>Oh Marae!  I’m so top heavy.</i>”  Kath leans back and adjusts her posture to support her expanded rack.\n\n");
 		outputText("You kiss her and work your fingers into her mammaries.  Kath mewls and asks, “<i>I suppose you want me to show these off, huh?</i>”  You squeeze a little harder" + (breasts.lactating() ? ", forcing out a bit more of her milk" : "") + ".  “<i>Okay " + playerText() + ".  When I’m off duty everyone in town will think I’m a big breasted slut.  Guys will try to hire me on the street.  But you’d better fuck me all the time, cause I’m going to be <b>horny</b>.</i>”\n\n");
 		breasts.cupSize++;
 		addSubmissive(KBIT_SUB_GROW_BIG_BOOBS); //Have grown her breasts to E-Cup or larger
@@ -3013,7 +3013,7 @@ private function giveKatTheGiftOFMilk():void {
 			breasts.lactationLevel = BreastStore.LACTATION_NONE; //Initially Kath is at LACTATION_DISABLED. This way incrementing it will bring it to LACTATION_LIGHT
 		}
 		outputText("The two of you watch her breasts and it doesn't take long for the effects of the lactaid to kick in.  Kath's nipples engorge and her breasts plump up very slightly.  You cup them with your hands and feel a little extra weight.");
-		if (breasts.cupSize < CoC.BREAST_CUP_D) {
+		if (breasts.cupSize < BreastCup.D) {
 			breasts.cupSize++;
 			outputText("  You'd say she's a " + breasts.cup() + " now.");
 		}
@@ -3066,7 +3066,7 @@ private function giveKatTheGiftOFMilk():void {
 			outputText("Katherine puts the bottle aside, then takes your hands and places them against her chest.  “<i>Can't get enough of my cream?</i>” she asks with a wry smile.  “<i>Well OK, as long as you're always there to lick up every drop.</i>”\n\n");
 			outputText("You laugh and rub her nipples.  Kath smiles and her tail wriggles at the attention.  She pops the cork and swallows the pink liquid, then tosses the bottle aside.\n\n");
 			outputText("Again you feel that warmth from deep inside her breasts.");
-			if (breasts.cupSize < CoC.BREAST_CUP_DD_BIG) {
+			if (breasts.cupSize < BreastCup.DD_BIG) {
 				breasts.cupSize++;
 				outputText("  They expand between your fingers, plumping up nicely.  They're as firm as ever, but you'd say Katherine's a " + breasts.cup() + " now.");
 			}
@@ -3313,9 +3313,9 @@ private function giveKatClothesNurseOutfit():void {
 	clearOutput();
 	outputText("You get Kath to stand in front of the mirror and tell her to close her eyes.  When she does you pull out the three pieces of the skimpy nurse outfit and press them against her.\n\n");
 	outputText("Katherine takes each of the three pieces in turn and studies them.  “<i>This is really, really racy.  Oh sure, it covers everything; I won’t get in any trouble... but wow.</i>”  She holds the tiny white top against her " + breasts.cup() + "s and gives you a toothy smile.  “<i>");
-	if (breasts.cupSize < CoC.BREAST_CUP_C)
+	if (breasts.cupSize < BreastCup.C)
 		outputText("This top is going to make my teenie breasts look bigger, just because there’s so little fabric");
-	else if (breasts.cupSize < CoC.BREAST_CUP_DD_BIG)
+	else if (breasts.cupSize < BreastCup.DD_BIG)
 		outputText("This top will really show off my rack.  Everyone’s going to be staring");
 	else
 		outputText("I don’t know if these buttons will hold up.  I’ve got a huge load of titflesh for this itty bitty top to support");

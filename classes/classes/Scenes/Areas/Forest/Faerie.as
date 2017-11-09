@@ -24,7 +24,7 @@ public class Faerie extends BaseContent implements Encounter{
 	spriteSelect(SpriteDb.s_faerie);
 	clearOutput();
 	outputText("A faerie slightly taller and thicker than your middle finger flits about the air. Her flat chest and girlish bob of hair make her look quite cute, but the solid black stockings and leather straps covering her chest show her slutty nature. Her wings are a light red, the color of aroused genitals.\n\n");
-	if (player.cockTotal() > 0 && (player.biggestTitSize() <= BREAST_CUP_B || rand(2) == 0)) {
+	if (player.cockTotal() > 0 && (player.biggestTitSize() <= BreastCup.B || rand(2) == 0)) {
 		outputText("She seems to notice you getting hard at the sight of her and looks down. \"<i>Ew, man parts!</i>\" the faerie exclaims, flying away like a frightened bird.");
 		if (rand(player.spe/2) + player.statusEffectv1(StatusEffects.FaerieFucked) > 15) {
 			if (player.statusEffectv1(StatusEffects.FaerieFucked) < 5) {

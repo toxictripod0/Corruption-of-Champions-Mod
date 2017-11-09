@@ -204,7 +204,7 @@
 				outputText(".  May Marae help your innards.</i>”");
 			}
 			outputText("\n\nYou’re not in a position to argue.  Once you’re naked Urta sits on top of you and ");
-			if (player.biggestTitRow() > BREAST_CUP_DD)
+			if (player.biggestTitRow() > BreastCup.DD)
 				outputText("massages the sides of your breasts");
 			else if (player.balls > 0)
 				outputText("massages your nutsack");
@@ -518,7 +518,7 @@
 			outputText("Urta moans and lifts Kath high enough to plant her cockhead against Kath’s pussy.  “<i>You were asking for this all through our last shift,</i>” she growls in Kath’s ear.  Urta roughly yanks Kath back again, this time impaling her on Urta’s massive shaft.  Urta closes her eyes and starts talking to herself as she lifts Kath’s hips up and down.  “<i>Always flicking your thin black tail at me,</i>” she says, “<i>giving me that big toothy smile when you hand in your paperwork" + (flags[kFLAGS.KATHERINE_URTA_AFFECTION] > 20 ? ", then ‘I’ll see you at the bar’, and that cute little wave goodbye" : "") + ".  Admit it - you’ve been gagging for a nice fat cock.</i>”\n\n");
 			outputText("Kath just bites her lip as Urta’s jackhammering forces her hole open wider and wider.  At last the pain in her face eases up and she gives you a grin before saying, “<i>Maybe.</i>”\n\n");
 			outputText("“<i>Not maybe!</i>” bellows Urta.  “<i>You’re the sexiest little kitty in the Watch and you spend all day teasing me.  Don’t give me maybe.</i>”\n\n");
-			outputText("Kath has started to fuck back and she pulls Urta’s hands away from her hips.  With her cat-like flexibility she manages to turn around and face Urta while still grinding atop her cock.  “<i>Okay,</i>” she says, teasingly, “<i>maybe a lot.</i>”  She takes Urta’s hands and places them against " + (katherine.breasts.cupSize > BREAST_CUP_DD ? "the sides of " : "") + "her " + katherine.breasts.adj() + " breasts.\n\n");
+			outputText("Kath has started to fuck back and she pulls Urta’s hands away from her hips.  With her cat-like flexibility she manages to turn around and face Urta while still grinding atop her cock.  “<i>Okay,</i>” she says, teasingly, “<i>maybe a lot.</i>”  She takes Urta’s hands and places them against " + (katherine.breasts.cupSize > BreastCup.DD ? "the sides of " : "") + "her " + katherine.breasts.adj() + " breasts.\n\n");
 			outputText("Urta looks like she’s getting close to blowing her load.  She pants “<i>Does that turn you on?  Getting your captain all hot and bothered?</i>”\n\n");
 			outputText("Kath reaches between her legs and you realize she’s rolling Urta’s balls between her fingers.  “<i>Maybe,</i>” she replies again, infuriating Urta, who bites the back of Kath’s neck.  A few more deep thrusts and Urta’s hands go to Kath’s shoulders so she can pull Kath’s whole body down once more.  Her head tips back and bangs the wall.  At the same time Kath puts a hand against her belly and purrs as you watch it bulge with Urta’s copious seed.\n\n");
 			outputText("Once Urta is finished Kath gives Urta a poke and says, “<i>Aren’t you going to help me?  I still haven’t got off, you know.</i>”\n\n");

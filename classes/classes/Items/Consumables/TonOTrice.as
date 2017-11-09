@@ -2,6 +2,7 @@ package classes.Items.Consumables
 {
 	import classes.Appearance;
 	import classes.BodyParts.*;
+	import classes.BreastCup;
 	import classes.CockTypesEnum;
 	import classes.Gender;
 	import classes.GlobalFlags.kFLAGS;
@@ -153,9 +154,9 @@ package classes.Items.Consumables
 
 			if (player.isFemaleOrHerm()) {
 				//Breasts > D cup - Decrease breast size by up to 3 cups
-				if (player.isFemaleOrHerm() && player.biggestTitSize() > BREAST_CUP_D && changes < changeLimit && rand(3) == 0) {
+				if (player.isFemaleOrHerm() && player.biggestTitSize() > BreastCup.D && changes < changeLimit && rand(3) == 0) {
 					for (i = 0; i < player.breastRows.length; i++) {
-						if (player.breastRows[i].breastRating > BREAST_CUP_D)
+						if (player.breastRows[i].breastRating > BreastCup.D)
 							player.breastRows[i].breastRating -= 1 + rand(3);
 					}
 					outputText("\n\nYour breasts feel tight[if (hasArmor), your [armor] feeling looser around your chest]. You watch in shock as your"
@@ -166,9 +167,9 @@ package classes.Items.Consumables
 				}
 
 				//Breasts < B cup - Increase breast size by 1 cup
-				if (player.isFemaleOrHerm() && player.smallestTitSize() < BREAST_CUP_B && changes < changeLimit && rand(3) == 0) {
+				if (player.isFemaleOrHerm() && player.smallestTitSize() < BreastCup.B && changes < changeLimit && rand(3) == 0) {
 					for (i = 0; i < player.breastRows.length; i++) {
-						if (player.breastRows[i].breastRating < BREAST_CUP_B)
+						if (player.breastRows[i].breastRating < BreastCup.B)
 							player.breastRows[i].breastRating++;
 					}
 					outputText("\n\nYour breasts feel constrained and painful against your top as they grow larger by the moment, finally stopping as"
@@ -222,9 +223,9 @@ package classes.Items.Consumables
 
 			if (player.isMale()) {
 				//Breasts > B cup - decrease by 1 cup size
-				if (player.biggestTitSize() > BREAST_CUP_B && changes < changeLimit && rand(3) == 0) {
+				if (player.biggestTitSize() > BreastCup.B && changes < changeLimit && rand(3) == 0) {
 					for (i = 0; i < player.breastRows.length; i++) {
-						if (player.breastRows[i].breastRating > BREAST_CUP_B)
+						if (player.breastRows[i].breastRating > BreastCup.B)
 							player.breastRows[i].breastRating--;
 					}
 					outputText("\n\nYour breasts feel tight[if (hasArmor), your [armor] feeling looser around your chest]. You watch in shock as your"

@@ -2605,7 +2605,7 @@ import mx.logging.ILogger;
 		{
 			switch (gender) {
 				case Gender.NONE:   return caps ? mf("Genderless", "Fem-genderless") : mf("genderless", "fem-genderless");
-				case Gender.MALE:   return caps ? mf("Male", biggestTitSize() > BREAST_CUP_A ? "Shemale" : "Femboy")             : mf("male", biggestTitSize() > BREAST_CUP_A ? "shemale" : "femboy");
+				case Gender.MALE:   return caps ? mf("Male", biggestTitSize() > BreastCup.A ? "Shemale" : "Femboy")             : mf("male", biggestTitSize() > BreastCup.A ? "shemale" : "femboy");
 				case Gender.FEMALE: return caps ? mf("Cuntboy", "Female")            : mf("cuntboy", "female");
 				case Gender.HERM:   return caps ? mf("Maleherm", "Hermaphrodite")    : mf("maleherm", "hermaphrodite");
 				default: return "<b>Gender error!</b>";

@@ -670,7 +670,7 @@ import fl.controls.ComboBox;
 			player.thickness = 30;
 			player.tone += 5;
 			
-			player.breastRows[0].breastRating = BREAST_CUP_FLAT;
+			player.breastRows[0].breastRating = BreastCup.FLAT;
 			player.buttRating = BUTT_RATING_TIGHT;
 			player.hipRating = HIP_RATING_SLENDER;
 			chooseComplexion();
@@ -684,7 +684,7 @@ import fl.controls.ComboBox;
 			player.thickness = 30;
 			player.tone += 5;
 			
-			player.breastRows[0].breastRating = BREAST_CUP_B;
+			player.breastRows[0].breastRating = BreastCup.B;
 			player.buttRating = BUTT_RATING_TIGHT;
 			player.hipRating = HIP_RATING_AMPLE;
 			chooseComplexion();
@@ -694,7 +694,7 @@ import fl.controls.ComboBox;
 			player.femininity = 30;
 			player.thickness = 50;
 			
-			player.breastRows[0].breastRating = BREAST_CUP_FLAT;
+			player.breastRows[0].breastRating = BreastCup.FLAT;
 			player.buttRating = BUTT_RATING_AVERAGE;
 			player.hipRating = HIP_RATING_AVERAGE;
 			chooseComplexion();
@@ -704,7 +704,7 @@ import fl.controls.ComboBox;
 			player.femininity = 70;
 			player.thickness = 50;
 			
-			player.breastRows[0].breastRating = BREAST_CUP_C;
+			player.breastRows[0].breastRating = BreastCup.C;
 			player.buttRating = BUTT_RATING_NOTICEABLE;
 			player.hipRating = HIP_RATING_AMPLE;
 			chooseComplexion();
@@ -719,7 +719,7 @@ import fl.controls.ComboBox;
 			player.thickness = 70;
 			player.tone -= 5;
 			
-			player.breastRows[0].breastRating = BREAST_CUP_FLAT;
+			player.breastRows[0].breastRating = BreastCup.FLAT;
 			player.buttRating = BUTT_RATING_NOTICEABLE;
 			player.hipRating = HIP_RATING_AVERAGE;
 			chooseComplexion();
@@ -733,7 +733,7 @@ import fl.controls.ComboBox;
 			player.femininity = 71;
 			player.thickness = 70;
 			
-			player.breastRows[0].breastRating = BREAST_CUP_D;
+			player.breastRows[0].breastRating = BreastCup.D;
 			player.buttRating = BUTT_RATING_LARGE;
 			player.hipRating = HIP_RATING_CURVY;
 			chooseComplexion();
@@ -747,7 +747,7 @@ import fl.controls.ComboBox;
 			player.thickness = 50;
 			player.tone = 26;
 			
-			player.breastRows[0].breastRating = BREAST_CUP_A;
+			player.breastRows[0].breastRating = BreastCup.A;
 			player.buttRating = BUTT_RATING_NOTICEABLE;
 			player.hipRating = HIP_RATING_SLENDER;
 			chooseComplexion();
@@ -761,7 +761,7 @@ import fl.controls.ComboBox;
 			player.thickness = 50;
 			player.tone = 50;
 			
-			player.breastRows[0].breastRating = BREAST_CUP_A;
+			player.breastRows[0].breastRating = BreastCup.A;
 			player.buttRating = BUTT_RATING_TIGHT;
 			player.hipRating = HIP_RATING_SLENDER;
 			chooseComplexion();

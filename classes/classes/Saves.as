@@ -2496,7 +2496,7 @@ public function unFuckSave():void
 		//If dick length zero then player has never met Kath, no need to set flags. If her breast size is zero then set values for flags introduced with the employment expansion
 		if (flags[kFLAGS.KATHERINE_BREAST_SIZE] != 0) return; //Must be a new format save
 		if (flags[kFLAGS.KATHERINE_DICK_LENGTH] != 0) { 
-			flags[kFLAGS.KATHERINE_BREAST_SIZE]		= BREAST_CUP_B;
+			flags[kFLAGS.KATHERINE_BREAST_SIZE]		= BreastCup.B;
 			flags[kFLAGS.KATHERINE_BALL_SIZE]		= 1;
 			flags[kFLAGS.KATHERINE_HAIR_COLOR]		= "neon pink";
 			flags[kFLAGS.KATHERINE_HOURS_SINCE_CUM] = 200; //Give her maxed out cum for that first time

@@ -638,7 +638,7 @@ package classes.Scenes.Areas.HighMountains
 				outputText(" stripping out of your [armor] as you approach,");
 			outputText(" standing over him as you give him a good look over. Now he isn’t rushing you, you can see he has quite the charming face,"
 			          +" a dashing mix of mischievous and kind. As you present yourself to him, he looks up at you,");
-			if (player.biggestTitSize() >= BREAST_CUP_H)
+			if (player.biggestTitSize() >= BreastCup.H)
 				outputText(" or at least tries to, his view of your face obstructed by your bountiful breast flesh.");
 			else {
 				outputText(" as if asking for permission with his gaze. While he may be head level with your groin which would suggest your intent,"
