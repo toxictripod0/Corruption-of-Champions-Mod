@@ -63,9 +63,7 @@ public class YaraPiercingStudio extends TelAdreAbstractContent {
     public static const TYPE_CHAIN:int  = 5;
 
     //}endregion
-    public function YaraPiercingStudio() {
 
-    }
     //1. Stud
     //2. Ring (Called prince albert on dick)
     //3. Jacobs Ladder (dick only)
