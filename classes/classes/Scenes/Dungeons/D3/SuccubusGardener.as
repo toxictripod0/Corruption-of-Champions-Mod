@@ -7,6 +7,7 @@ package classes.Scenes.Dungeons.D3
 	import classes.PerkLib;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.GlobalFlags.kFLAGS;
+	import classes.Hips;
 	
 	/**
 	 * ...
@@ -29,7 +30,7 @@ package classes.Scenes.Dungeons.D3
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			
 			this.tallness = 8 * 12;
-			this.hipRating = HIP_RATING_AVERAGE;
+			this.hipRating = Hips.RATING_AVERAGE;
 			this.buttRating = BUTT_RATING_TIGHT;
 			
 			this.weaponName = "tentacles";

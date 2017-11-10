@@ -124,7 +124,7 @@ package classes.Scenes.Areas.HighMountains
 			this.createStatusEffect(StatusEffects.BonusACapacity,20,0,0,0);
 			this.tallness = 6 * 12 + 6;
 			this.tailType = Tail.LIZARD;
-			this.hipRating = HIP_RATING_CURVY;
+			this.hipRating = Hips.RATING_CURVY;
 			this.buttRating = BUTT_RATING_JIGGLY;
 			this.lowerBody = LowerBody.HARPY;
 			this.skinTone = "light";

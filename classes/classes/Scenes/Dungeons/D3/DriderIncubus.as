@@ -5,6 +5,7 @@ package classes.Scenes.Dungeons.D3
 	import classes.PerkLib;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.CockTypesEnum;
+	import classes.Hips;
 	
 	public class DriderIncubus extends AbstractSpiderMorph
 	{
@@ -33,7 +34,7 @@ package classes.Scenes.Dungeons.D3
 			this.balls = 2;
 			this.ballSize = 4;
 			this.hoursSinceCum = 9999;
-			this.hipRating = HIP_RATING_SLENDER;
+			this.hipRating = Hips.RATING_SLENDER;
 			this.buttRating = BUTT_RATING_TIGHT;
 			initStrTouSpeInte(65,80,90,70);
 			initLibSensCor(66,40,100);

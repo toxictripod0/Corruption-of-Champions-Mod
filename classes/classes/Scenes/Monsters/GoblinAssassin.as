@@ -131,7 +131,7 @@ package classes.Scenes.Monsters
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,50,0,0,0);
 			this.tallness = 35 + rand(4);
-			this.hipRating = HIP_RATING_AMPLE+2;
+			this.hipRating = Hips.RATING_AMPLE+2;
 			this.buttRating = BUTT_RATING_LARGE;
 			this.skinTone = "dark green";
 			this.hairColor = "blue";

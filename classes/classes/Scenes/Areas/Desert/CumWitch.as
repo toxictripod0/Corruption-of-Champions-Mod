@@ -185,7 +185,7 @@ package classes.Scenes.Areas.Desert
 			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
 			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.tallness = rand(12) + 55;
-			this.hipRating = HIP_RATING_CURVY;
+			this.hipRating = Hips.RATING_CURVY;
 			this.buttRating = BUTT_RATING_LARGE;
 			this.skinTone = "black";
 			this.hairColor = "sandy-blonde";

@@ -5,6 +5,7 @@ package classes.Scenes.Dungeons.D3
 	import classes.StatusEffects;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.PerkLib;
+	import classes.Hips;
 	
 	public class Lethice extends Monster
 	{
@@ -35,7 +36,7 @@ package classes.Scenes.Dungeons.D3
 			this.createBreastRow(8);
 			this.balls = 2;
 			this.ballSize = 4;
-			this.hipRating = HIP_RATING_SLENDER;
+			this.hipRating = Hips.RATING_SLENDER;
 			this.buttRating = BUTT_RATING_TIGHT;
 			initStrTouSpeInte(110, 110, 110, 110);
 			initLibSensCor(100, 40, 100);

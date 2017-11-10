@@ -299,7 +299,7 @@ package classes.Scenes.NPCs
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,20,0,0,0);
 			this.tallness = 6*12;
-			this.hipRating = HIP_RATING_AVERAGE;
+			this.hipRating = Hips.RATING_AVERAGE;
 			this.buttRating = BUTT_RATING_AVERAGE+1;
 			this.lowerBody = LowerBody.KANGAROO;
 			this.skinTone = "tan";

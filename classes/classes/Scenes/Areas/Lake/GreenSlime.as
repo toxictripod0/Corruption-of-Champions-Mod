@@ -51,7 +51,7 @@
 			this.ass.analLooseness = AssClass.LOOSENESS_STRETCHED;
 			this.ass.analWetness = AssClass.WETNESS_SLIME_DROOLING;
 			this.tallness = rand(8) + 80;
-			this.hipRating = HIP_RATING_AMPLE;
+			this.hipRating = Hips.RATING_AMPLE;
 			this.buttRating = BUTT_RATING_LARGE;
 			this.lowerBody = LowerBody.GOO;
 			this.skinTone = "green";

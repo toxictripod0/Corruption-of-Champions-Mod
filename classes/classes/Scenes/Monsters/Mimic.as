@@ -6,6 +6,7 @@ package classes.Scenes.Monsters
 	import classes.StatusEffects;
 	import classes.internals.WeightedDrop;
 	import classes.CockTypesEnum;
+	import classes.Hips;
 	/**
 	 * ...
 	 * @author ...
@@ -90,7 +91,7 @@ package classes.Scenes.Monsters
 			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.tallness = rand(24) + 25;
-			this.hipRating = HIP_RATING_BOYISH;
+			this.hipRating = Hips.RATING_BOYISH;
 			this.buttRating = BUTT_RATING_TIGHT;
 			if (type == 3)
 				this.skinTone = "brown";

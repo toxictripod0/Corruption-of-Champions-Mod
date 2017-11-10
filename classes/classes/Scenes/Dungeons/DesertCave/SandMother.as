@@ -125,7 +125,7 @@ package classes.Scenes.Dungeons.DesertCave
 			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.createStatusEffect(StatusEffects.BonusACapacity,50,0,0,0);
 			this.tallness = 8*12+6;
-			this.hipRating = HIP_RATING_CURVY;
+			this.hipRating = Hips.RATING_CURVY;
 			this.buttRating = BUTT_RATING_LARGE;
 			this.skinTone = "bronzed";
 			this.hairColor = "platinum-blonde";

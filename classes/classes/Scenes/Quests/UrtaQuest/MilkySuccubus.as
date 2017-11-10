@@ -100,7 +100,7 @@ package classes.Scenes.Quests.UrtaQuest
 			this.ass.analLooseness = AssClass.LOOSENESS_STRETCHED;
 			this.ass.analWetness = AssClass.WETNESS_SLIME_DROOLING;
 			this.tallness = 84;
-			this.hipRating = HIP_RATING_CURVY;
+			this.hipRating = Hips.RATING_CURVY;
 			this.buttRating = BUTT_RATING_LARGE+1;
 			this.lowerBody = LowerBody.DEMONIC_HIGH_HEELS;
 			this.skinTone = "blue";

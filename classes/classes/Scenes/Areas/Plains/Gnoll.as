@@ -382,7 +382,7 @@ package classes.Scenes.Areas.Plains
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,25,0,0,0);
 			this.tallness = 6*12;
-			this.hipRating = HIP_RATING_AMPLE;
+			this.hipRating = Hips.RATING_AMPLE;
 			this.buttRating = BUTT_RATING_TIGHT;
 			this.skinTone = "tawny";
 			this.skinType = Skin.FUR;

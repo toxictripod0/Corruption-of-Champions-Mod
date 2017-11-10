@@ -239,7 +239,7 @@ import classes.StatusEffects.Combat.AmilyVenomDebuff;
 			this.ass.analLooseness = AssClass.LOOSENESS_VIRGIN;
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.tallness = 4*12;
-			this.hipRating = HIP_RATING_AMPLE;
+			this.hipRating = Hips.RATING_AMPLE;
 			this.buttRating = BUTT_RATING_TIGHT;
 			this.skinTone = "tawny";
 			this.skinType = Skin.FUR;

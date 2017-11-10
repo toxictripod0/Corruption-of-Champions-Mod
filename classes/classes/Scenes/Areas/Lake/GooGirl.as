@@ -160,7 +160,7 @@ package classes.Scenes.Areas.Lake
 			this.ass.analWetness = AssClass.WETNESS_SLIME_DROOLING;
 			this.createStatusEffect(StatusEffects.BonusACapacity,9001,0,0,0);
 			this.tallness = rand(8) + 70;
-			this.hipRating = HIP_RATING_AMPLE;
+			this.hipRating = Hips.RATING_AMPLE;
 			this.buttRating = BUTT_RATING_LARGE;
 			this.lowerBody = LowerBody.GOO;
 			var tone:String = randomChoice("blue", "purple", "crystal");

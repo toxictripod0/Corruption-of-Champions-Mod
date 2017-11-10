@@ -174,7 +174,7 @@ package classes.Scenes.Dungeons.DeepCave
 			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.tallness = 4*12+1;
-			this.hipRating = HIP_RATING_BOYISH;
+			this.hipRating = Hips.RATING_BOYISH;
 			this.buttRating = BUTT_RATING_TIGHT;
 			this.lowerBody = LowerBody.KANGAROO;
 			this.skinTone = "red";

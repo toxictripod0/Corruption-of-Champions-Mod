@@ -123,7 +123,7 @@ package classes.Scenes.Areas.Forest
 			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
 			this.ass.analWetness = AssClass.WETNESS_SLIME_DROOLING;
 			this.tallness = rand(9) + 70;
-			this.hipRating = HIP_RATING_BOYISH;
+			this.hipRating = Hips.RATING_BOYISH;
 			this.buttRating = BUTT_RATING_BUTTLESS;
 			this.skinTone = "green";
 			this.skinType = Skin.PLAIN;

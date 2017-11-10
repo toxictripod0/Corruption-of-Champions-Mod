@@ -2488,13 +2488,13 @@ package classes
 			[AssClass.LOOSENESS_GAPING, "gaping"],
 		];
 		public static const DEFAULT_HIP_RATING_SCALES:Array = [
-			[HIP_RATING_BOYISH, "boyish"],
-			[HIP_RATING_SLENDER, "slender"],
-			[HIP_RATING_AVERAGE, "average"],
-			[HIP_RATING_AMPLE, "ample"],
-			[HIP_RATING_CURVY, "curvy"],
-			[HIP_RATING_FERTILE, "fertile"],
-			[HIP_RATING_INHUMANLY_WIDE, "inhumanly wide"],
+			[Hips.RATING_BOYISH, "boyish"],
+			[Hips.RATING_SLENDER, "slender"],
+			[Hips.RATING_AVERAGE, "average"],
+			[Hips.RATING_AMPLE, "ample"],
+			[Hips.RATING_CURVY, "curvy"],
+			[Hips.RATING_FERTILE, "fertile"],
+			[Hips.RATING_INHUMANLY_WIDE, "inhumanly wide"],
 		];
 		public static const DEFAULT_BUTT_RATING_SCALES:Array = [
 			[BUTT_RATING_BUTTLESS, "buttless"],

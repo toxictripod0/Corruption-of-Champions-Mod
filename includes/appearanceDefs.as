@@ -4,15 +4,6 @@
 
 // Description constants
 
-// hipRating
-public static const HIP_RATING_BOYISH:int                                           =   0;
-public static const HIP_RATING_SLENDER:int                                          =   2;
-public static const HIP_RATING_AVERAGE:int                                          =   4;
-public static const HIP_RATING_AMPLE:int                                            =   6;
-public static const HIP_RATING_CURVY:int                                            =  10;
-public static const HIP_RATING_FERTILE:int                                          =  15;
-public static const HIP_RATING_INHUMANLY_WIDE:int                                   =  20;
-
 // buttRating
 public static const BUTT_RATING_BUTTLESS:int                                        =   0;
 public static const BUTT_RATING_TIGHT:int                                           =   2;

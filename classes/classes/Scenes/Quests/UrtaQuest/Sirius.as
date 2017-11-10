@@ -113,7 +113,7 @@ package classes.Scenes.Quests.UrtaQuest
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,10,0,0,0);
 			this.tallness = 5*12+10;
-			this.hipRating = HIP_RATING_AMPLE+2;
+			this.hipRating = Hips.RATING_AMPLE+2;
 			this.buttRating = BUTT_RATING_LARGE;
 			this.lowerBody = LowerBody.NAGA;
 			this.skinTone = "mediterranean-toned";

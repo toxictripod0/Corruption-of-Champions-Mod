@@ -92,7 +92,7 @@ import classes.internals.*;
 			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
 			this.ass.analWetness = AssClass.WETNESS_MOIST;
 			this.tallness = 60 + rand(10);
-			this.hipRating = HIP_RATING_BOYISH;
+			this.hipRating = Hips.RATING_BOYISH;
 			this.buttRating = BUTT_RATING_TIGHT;
 			this.skinDesc = "skin";
 			this.hairColor = "black";

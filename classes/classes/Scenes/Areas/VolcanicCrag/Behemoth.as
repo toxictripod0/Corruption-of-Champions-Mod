@@ -59,7 +59,7 @@ package classes.Scenes.Areas.VolcanicCrag
 			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
 			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.tallness = 9*12;
-			this.hipRating = HIP_RATING_BOYISH;
+			this.hipRating = Hips.RATING_BOYISH;
 			this.buttRating = BUTT_RATING_TIGHT;
 			this.skinTone = "purple";
 			this.skinType = Skin.FUR;

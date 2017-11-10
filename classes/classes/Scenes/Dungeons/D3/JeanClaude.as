@@ -96,7 +96,7 @@ package classes.Scenes.Dungeons.D3
 			ass.analLooseness = 0;
 			ass.analWetness = 0;
 			
-			hipRating = HIP_RATING_AVERAGE;
+			hipRating = Hips.RATING_AVERAGE;
 			buttRating = BUTT_RATING_AVERAGE;
 			lowerBody = LowerBody.LIZARD;
 			tailType = Tail.LIZARD;

@@ -111,7 +111,7 @@ import classes.internals.ChainedAction;
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,30,0,0,0);
 			this.tallness = 6*12+2;
-			this.hipRating = HIP_RATING_SLENDER+1;
+			this.hipRating = Hips.RATING_SLENDER+1;
 			this.buttRating = BUTT_RATING_AVERAGE;
 			this.lowerBody = LowerBody.LIZARD;
 			this.faceType = Face.LIZARD;

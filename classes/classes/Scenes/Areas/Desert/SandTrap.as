@@ -127,7 +127,7 @@
 			this.ass.analLooseness = AssClass.LOOSENESS_NORMAL;
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.tallness = rand(8) + 150;
-			this.hipRating = HIP_RATING_AMPLE+2;
+			this.hipRating = Hips.RATING_AMPLE+2;
 			this.buttRating = BUTT_RATING_LARGE;
 			this.skinTone = "fair";
 			this.hairColor = "black";

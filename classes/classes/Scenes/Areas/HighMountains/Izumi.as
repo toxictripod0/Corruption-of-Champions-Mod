@@ -20,7 +20,7 @@ package classes.Scenes.Areas.HighMountains
 			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.tallness = 9*12+0;
-			this.hipRating = HIP_RATING_AVERAGE;
+			this.hipRating = Hips.RATING_AVERAGE;
 			this.buttRating = BUTT_RATING_TIGHT;
 			this.skinTone = "creamy-white";
 			this.hairColor = "golden";

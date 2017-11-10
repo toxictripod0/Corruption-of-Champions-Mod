@@ -568,7 +568,9 @@ import mx.logging.ILogger;
 		10 - curvy//flaring
 		15 - child-bearing/fertile
 		20 - inhumanly wide*/
-		public var hipRating:Number = HIP_RATING_BOYISH;
+		public var hips:Hips = new Hips();
+		public function get hipRating():Number { return hips.rating; }
+		public function set hipRating(value:Number):void { hips.rating = value; }
 		
 		/*buttRating
 		0 - buttless

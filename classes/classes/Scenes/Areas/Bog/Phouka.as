@@ -281,7 +281,7 @@ package classes.Scenes.Areas.Bog
 			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 
 			this.tallness = 5;
-			this.hipRating = HIP_RATING_SLENDER;
+			this.hipRating = Hips.RATING_SLENDER;
 			this.buttRating = BUTT_RATING_TIGHT;
 			this.lowerBody = LowerBody.HUMAN
 			this.armType = Arms.HUMAN;
