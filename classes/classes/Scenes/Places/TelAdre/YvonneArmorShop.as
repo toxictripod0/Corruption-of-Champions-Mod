@@ -64,7 +64,7 @@ public class YvonneArmorShop extends Shop {
         dynStats("lus", (10 + player.lib / 10));
 
         // Brain no want to work out the boolean logic shit here, broken out to ensure it will work as intended.
-        if (player.cockTotal() == 0) {
+        if (player.cockTotal() === 0) {
             outputText("Sorry, but you don't look like you'd be much fun.");
             outputText("</i>\"");
             doNext(inside);
@@ -76,14 +76,14 @@ public class YvonneArmorShop extends Shop {
             doNext(inside);
             return;
         }
-        else if (player.cockThatFits(75) == -1 && !flags[kFLAGS.LOW_STANDARDS_FOR_ALL]) {
+        else if (player.cockThatFits(75) === -1 && !flags[kFLAGS.LOW_STANDARDS_FOR_ALL]) {
             outputText("Sorry, but you don't look like you'd be much fun.");
             outputText("</i>\"");
             doNext(inside);
             return;
         }
 
-        if (flags[kFLAGS.YVONNE_FUCK_COUNTER] == 0) {
+        if (flags[kFLAGS.YVONNE_FUCK_COUNTER] === 0) {
             outputText("Well, I could use a quick fuck.  If you meant what you said, go change the sign to say 'out' please.");
         } else {
             outputText("You want to go again, huh?  I do love working up a sweat...");
