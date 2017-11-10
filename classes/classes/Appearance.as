@@ -11,11 +11,6 @@ package classes
 
 	public class Appearance extends Utils
 	{
-		// Eventually, this should contain the entire char appearance.
-		// At the moment, it's pretty piecemeal.
-		// TODO remove when we have proper enums for this
-		include "../../includes/appearanceDefs.as";
-
 		public static function inverseMap(x:Object):Object
 		{
 			var result:Object = {};

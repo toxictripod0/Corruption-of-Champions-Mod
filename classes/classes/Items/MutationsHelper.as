@@ -13,8 +13,6 @@ package classes.Items
 	 */
 	public class MutationsHelper extends BaseContent 
 	{
-		include "../../../includes/appearanceDefs.as";
-
 		private static const LOGGER:ILogger = LoggerFactory.getLogger(MutationsHelper);
 		
 		public var changes:int = 0;

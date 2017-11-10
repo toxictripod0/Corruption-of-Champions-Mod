@@ -47,8 +47,6 @@ import mx.logging.ILogger;
 	{
 		private static const LOGGER:ILogger = LoggerFactory.getLogger(Creature);
 
-		include "../../includes/appearanceDefs.as";
-
 		public function get game():CoC {
 			return kGAMECLASS;
 		}

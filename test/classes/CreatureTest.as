@@ -18,8 +18,6 @@ package classes{
 	import classes.PerkLib;
      
     public class CreatureTest {
-		include "../../includes/appearanceDefs.as";
-		
 		private const MAX_SUPPORTED_VAGINAS:Number = 2;
 		private const DEFAULT_CLIT_LENGTH:Number = 0.5;
 		private const TEST_CLIT_LENGTH:Number = 3;

@@ -155,9 +155,6 @@ the text from being too boring.
 		include "../../includes/eventParser.as";
 		include "../../includes/engineCore.as";
 
-		// Lots of constants
-		include "../../includes/appearanceDefs.as";
-
 		//Any classes that need to be made aware when the game is saved or loaded can add themselves to this array using saveAwareAdd.
 		//	Once in the array they will be notified by Saves.as whenever the game needs them to write or read their data to the flags array.
 		private static var _saveAwareClassList:Vector.<SaveAwareInterface> = new Vector.<SaveAwareInterface>();

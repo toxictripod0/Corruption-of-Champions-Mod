@@ -17,8 +17,6 @@ package classes.BodyParts
 		public static const WOOL:int          =   7;
 		public static const FEATHERED:int     =   8;
 
-		include "../../../includes/appearanceDefs.as";
-
 		public var type:Number = PLAIN;
 		public var tone:String = "albino";
 		public var desc:String = "skin";

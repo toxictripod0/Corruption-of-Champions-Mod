@@ -23,8 +23,6 @@ package classes{
 	
     [RunWith("org.flexunit.runners.Parameterized")]
     public class PlayerEventsVaginaLoosenessRecoveryTest {
-		include "../../includes/appearanceDefs.as";
-		
 		private const LOOSENESS:Number = VaginaClass.LOOSENESS_LOOSE;
 		
         private var cut:PlayerEvents;
