@@ -4,14 +4,6 @@
 
 // Description constants
 
-// piercingtypesNOPEDISABLED
-public static const PIERCING_TYPE_NONE:int                                          =   0;
-public static const PIERCING_TYPE_STUD:int                                          =   1;
-public static const PIERCING_TYPE_RING:int                                          =   2;
-public static const PIERCING_TYPE_LADDER:int                                        =   3;
-public static const PIERCING_TYPE_HOOP:int                                          =   4;
-public static const PIERCING_TYPE_CHAIN:int                                         =   5;
-
 // vaginatypesNOPEDISABLED
 public static const VAGINA_TYPE_HUMAN:int                                           =   0;
 public static const VAGINA_TYPE_EQUINE:int                                          =   1;

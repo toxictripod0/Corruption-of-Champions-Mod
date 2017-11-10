@@ -2440,12 +2440,12 @@ package classes
 		);
 		public static const DEFAULT_PIERCING_NAMES:Object = createMapFromPairs(
 				[
-					[PIERCING_TYPE_NONE, "none"],
-					[PIERCING_TYPE_STUD, "stud"],
-					[PIERCING_TYPE_RING, "ring"],
-					[PIERCING_TYPE_LADDER, "ladder"],
-					[PIERCING_TYPE_HOOP, "hoop"],
-					[PIERCING_TYPE_CHAIN, "chain"],
+					[Piercing.NONE, "none"],
+					[Piercing.STUD, "stud"],
+					[Piercing.RING, "ring"],
+					[Piercing.LADDER, "ladder"],
+					[Piercing.HOOP, "hoop"],
+					[Piercing.CHAIN, "chain"],
 				]
 		);
 		public static const DEFAULT_VAGINA_TYPE_NAMES:Object = createMapFromPairs(
