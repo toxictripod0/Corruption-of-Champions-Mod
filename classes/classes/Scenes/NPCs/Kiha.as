@@ -187,7 +187,7 @@ package classes.Scenes.NPCs
 			this.createStatusEffect(StatusEffects.BonusACapacity,40,0,0,0);
 			this.tallness = 6*12+1;
 			this.hipRating = Hips.RATING_AMPLE;
-			this.buttRating = BUTT_RATING_AVERAGE+1;
+			this.buttRating = Butt.RATING_AVERAGE+1;
 			this.lowerBody = LowerBody.HOOFED;
 			this.skinTone = "dark";
 			this.skinType = Skin.DRAGON_SCALES;

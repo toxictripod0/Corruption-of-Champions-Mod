@@ -6,6 +6,7 @@ package classes.Scenes.Dungeons.D3
 	import classes.PerkLib;
 	import classes.CockTypesEnum;
 	import classes.internals.WeightedDrop;
+	import classes.Butt;
 	import classes.Hips;
 	
 	public class MinotaurKing extends Monster
@@ -34,7 +35,7 @@ package classes.Scenes.Dungeons.D3
 			this.ballSize = 4;
 			this.hoursSinceCum = 9999;
 			this.hipRating = Hips.RATING_SLENDER;
-			this.buttRating = BUTT_RATING_TIGHT;
+			this.buttRating = Butt.RATING_TIGHT;
 			initStrTouSpeInte(100,100,50,60);
 			initLibSensCor(66,10,100);
 			this.weaponName = "axe";

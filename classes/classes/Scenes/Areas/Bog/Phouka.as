@@ -282,7 +282,7 @@ package classes.Scenes.Areas.Bog
 
 			this.tallness = 5;
 			this.hipRating = Hips.RATING_SLENDER;
-			this.buttRating = BUTT_RATING_TIGHT;
+			this.buttRating = Butt.RATING_TIGHT;
 			this.lowerBody = LowerBody.HUMAN
 			this.armType = Arms.HUMAN;
 

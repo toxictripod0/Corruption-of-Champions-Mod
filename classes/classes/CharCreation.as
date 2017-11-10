@@ -671,7 +671,7 @@ import fl.controls.ComboBox;
 			player.tone += 5;
 			
 			player.breastRows[0].breastRating = BreastCup.FLAT;
-			player.buttRating = BUTT_RATING_TIGHT;
+			player.buttRating = Butt.RATING_TIGHT;
 			player.hipRating = Hips.RATING_SLENDER;
 			chooseComplexion();
 		}
@@ -685,7 +685,7 @@ import fl.controls.ComboBox;
 			player.tone += 5;
 			
 			player.breastRows[0].breastRating = BreastCup.B;
-			player.buttRating = BUTT_RATING_TIGHT;
+			player.buttRating = Butt.RATING_TIGHT;
 			player.hipRating = Hips.RATING_AMPLE;
 			chooseComplexion();
 		}
@@ -695,7 +695,7 @@ import fl.controls.ComboBox;
 			player.thickness = 50;
 			
 			player.breastRows[0].breastRating = BreastCup.FLAT;
-			player.buttRating = BUTT_RATING_AVERAGE;
+			player.buttRating = Butt.RATING_AVERAGE;
 			player.hipRating = Hips.RATING_AVERAGE;
 			chooseComplexion();
 		}
@@ -705,7 +705,7 @@ import fl.controls.ComboBox;
 			player.thickness = 50;
 			
 			player.breastRows[0].breastRating = BreastCup.C;
-			player.buttRating = BUTT_RATING_NOTICEABLE;
+			player.buttRating = Butt.RATING_NOTICEABLE;
 			player.hipRating = Hips.RATING_AMPLE;
 			chooseComplexion();
 		}
@@ -720,7 +720,7 @@ import fl.controls.ComboBox;
 			player.tone -= 5;
 			
 			player.breastRows[0].breastRating = BreastCup.FLAT;
-			player.buttRating = BUTT_RATING_NOTICEABLE;
+			player.buttRating = Butt.RATING_NOTICEABLE;
 			player.hipRating = Hips.RATING_AVERAGE;
 			chooseComplexion();
 		}
@@ -734,7 +734,7 @@ import fl.controls.ComboBox;
 			player.thickness = 70;
 			
 			player.breastRows[0].breastRating = BreastCup.D;
-			player.buttRating = BUTT_RATING_LARGE;
+			player.buttRating = Butt.RATING_LARGE;
 			player.hipRating = Hips.RATING_CURVY;
 			chooseComplexion();
 		}
@@ -748,7 +748,7 @@ import fl.controls.ComboBox;
 			player.tone = 26;
 			
 			player.breastRows[0].breastRating = BreastCup.A;
-			player.buttRating = BUTT_RATING_NOTICEABLE;
+			player.buttRating = Butt.RATING_NOTICEABLE;
 			player.hipRating = Hips.RATING_SLENDER;
 			chooseComplexion();
 		}
@@ -762,7 +762,7 @@ import fl.controls.ComboBox;
 			player.tone = 50;
 			
 			player.breastRows[0].breastRating = BreastCup.A;
-			player.buttRating = BUTT_RATING_TIGHT;
+			player.buttRating = Butt.RATING_TIGHT;
 			player.hipRating = Hips.RATING_SLENDER;
 			chooseComplexion();
 		}

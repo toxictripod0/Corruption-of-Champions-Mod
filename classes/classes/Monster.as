@@ -315,7 +315,7 @@
 			//// 5. Body
 			///*REQUIRED*/ this.tallness = ;
 			///*OPTIONAL*/ //this.hipRating = Hips.RATING_; // default boyish
-			///*OPTIONAL*/ //this.buttRating = BUTT_RATING_; // default buttless
+			///*OPTIONAL*/ //this.buttRating = Butt.RATING_; // default buttless
 			///*OPTIONAL*/ //this.lowerBody = LOWER_BODY_; //default human
 			///*OPTIONAL*/ //this.armType = Arms.; // default human
 

@@ -582,7 +582,9 @@ import mx.logging.ILogger;
 		13 - expansive
 		16 - huge
 		20 - inconceivably large/big/huge etc*/
-		public var buttRating:Number = BUTT_RATING_BUTTLESS;
+		public var butt:Butt = new Butt();
+		public function get buttRating():Number { return butt.rating; }
+		public function set buttRating(value:Number):void { butt.rating = value; }
 		
 		//Piercings
 		//TODO: Pull this out into it's own class and enum.

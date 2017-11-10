@@ -97,7 +97,7 @@ package classes.Scenes.Dungeons.D3
 			ass.analWetness = 0;
 			
 			hipRating = Hips.RATING_AVERAGE;
-			buttRating = BUTT_RATING_AVERAGE;
+			buttRating = Butt.RATING_AVERAGE;
 			lowerBody = LowerBody.LIZARD;
 			tailType = Tail.LIZARD;
 			skinDesc = "green-purple mottled hide";

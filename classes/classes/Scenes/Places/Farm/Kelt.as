@@ -147,7 +147,7 @@ package classes.Scenes.Places.Farm
 			this.createStatusEffect(StatusEffects.BonusACapacity,50,0,0,0);
 			this.tallness = 84;
 			this.hipRating = Hips.RATING_AVERAGE;
-			this.buttRating = BUTT_RATING_AVERAGE+1;
+			this.buttRating = Butt.RATING_AVERAGE+1;
 			this.lowerBody = LowerBody.HOOFED;
 			this.legCount = 4;
 			this.skinTone = "tan";

@@ -125,7 +125,7 @@ package classes.Scenes.Areas.HighMountains
 			this.tallness = 6 * 12 + 6;
 			this.tailType = Tail.LIZARD;
 			this.hipRating = Hips.RATING_CURVY;
-			this.buttRating = BUTT_RATING_JIGGLY;
+			this.buttRating = Butt.RATING_JIGGLY;
 			this.lowerBody = LowerBody.HARPY;
 			this.skinTone = "light";
 			this.skinType = Skin.LIZARD_SCALES;

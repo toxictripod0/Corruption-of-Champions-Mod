@@ -183,7 +183,7 @@ package classes.Scenes.Areas.HighMountains
 			this.createStatusEffect(StatusEffects.BonusACapacity,30,0,0,0);
 			this.tallness = 6*12+2;
 			this.hipRating = Hips.RATING_AMPLE;
-			this.buttRating = BUTT_RATING_TIGHT;
+			this.buttRating = Butt.RATING_TIGHT;
 			this.lowerBody = LowerBody.COCKATRICE;
 			this.faceType = Face.COCKATRICE;
 			this.tongueType = Tongue.LIZARD;

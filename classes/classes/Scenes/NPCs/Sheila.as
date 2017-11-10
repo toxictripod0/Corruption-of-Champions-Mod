@@ -300,7 +300,7 @@ package classes.Scenes.NPCs
 			this.createStatusEffect(StatusEffects.BonusACapacity,20,0,0,0);
 			this.tallness = 6*12;
 			this.hipRating = Hips.RATING_AVERAGE;
-			this.buttRating = BUTT_RATING_AVERAGE+1;
+			this.buttRating = Butt.RATING_AVERAGE+1;
 			this.lowerBody = LowerBody.KANGAROO;
 			this.skinTone = "tan";
 			this.hairColor = "auburn";

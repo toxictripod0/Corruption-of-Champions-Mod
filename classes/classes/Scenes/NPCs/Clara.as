@@ -147,7 +147,7 @@ package classes.Scenes.NPCs
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.tallness = 6*12+4;
 			this.hipRating = Hips.RATING_CURVY;
-			this.buttRating = BUTT_RATING_LARGE;
+			this.buttRating = Butt.RATING_LARGE;
 			this.lowerBody = LowerBody.HOOFED;
 			this.skinTone = "pale";
 			this.hairColor = "brown";

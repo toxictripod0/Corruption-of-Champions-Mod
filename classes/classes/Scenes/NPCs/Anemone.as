@@ -66,7 +66,7 @@ import classes.internals.WeightedDrop;
 			this.createStatusEffect(StatusEffects.BonusACapacity,10,0,0,0);
 			this.tallness = 5*12+5;
 			this.hipRating = Hips.RATING_CURVY;
-			this.buttRating = BUTT_RATING_NOTICEABLE;
+			this.buttRating = Butt.RATING_NOTICEABLE;
 			this.skinTone = "purple";
 			this.hairColor = "purplish-black";
 			this.hairLength = 20;

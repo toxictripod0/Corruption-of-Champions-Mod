@@ -173,7 +173,7 @@ package classes.Scenes.Quests.UrtaQuest
 			this.createStatusEffect(StatusEffects.BonusACapacity,50,0,0,0);
 			this.tallness = 132;
 			this.hipRating = Hips.RATING_AVERAGE;
-			this.buttRating = BUTT_RATING_AVERAGE+1;
+			this.buttRating = Butt.RATING_AVERAGE+1;
 			this.lowerBody = LowerBody.HOOFED;
 			this.skinTone = "red";
 			this.skinType = Skin.FUR;

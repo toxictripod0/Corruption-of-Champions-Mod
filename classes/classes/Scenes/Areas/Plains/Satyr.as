@@ -151,7 +151,7 @@ package classes.Scenes.Areas.Plains
 			this.createStatusEffect(StatusEffects.BonusACapacity,20,0,0,0);
 			this.tallness = rand(37) + 64;
 			this.hipRating = Hips.RATING_AVERAGE;
-			this.buttRating = BUTT_RATING_AVERAGE+1;
+			this.buttRating = Butt.RATING_AVERAGE+1;
 			this.lowerBody = LowerBody.HOOFED;
 			this.skinTone = "tan";
 			this.hairColor = randomChoice("black","brown");

@@ -222,7 +222,7 @@ package classes.Scenes.Monsters
 			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.tallness = rand(14) + 40;
 			this.hipRating = Hips.RATING_BOYISH;
-			this.buttRating = BUTT_RATING_TIGHT;
+			this.buttRating = Butt.RATING_TIGHT;
 			this.lowerBody = LowerBody.HOOFED;
 			this.skinTone = "red";
 			initStrTouSpeInte(100, 95, 85, 66);

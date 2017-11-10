@@ -277,7 +277,7 @@ package classes.Scenes.NPCs
 			this.createStatusEffect(StatusEffects.BonusACapacity,10,0,0,0);
 			this.tallness = 5*12+5;
 			this.hipRating = Hips.RATING_INHUMANLY_WIDE;
-			this.buttRating = BUTT_RATING_EXPANSIVE;
+			this.buttRating = Butt.RATING_EXPANSIVE;
 			this.skinTone = "pink";
 			this.skinType = Skin.PLAIN;
 			this.skinDesc = "feathers";

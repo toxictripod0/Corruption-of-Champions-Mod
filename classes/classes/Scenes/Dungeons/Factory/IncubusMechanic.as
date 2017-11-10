@@ -174,7 +174,7 @@ package classes.Scenes.Dungeons.Factory
 			this.ass.analWetness = AssClass.WETNESS_SLIME_DROOLING;
 			this.tallness = rand(9) + 70;
 			this.hipRating = Hips.RATING_AMPLE;
-			this.buttRating = BUTT_RATING_TIGHT;
+			this.buttRating = Butt.RATING_TIGHT;
 			this.lowerBody = LowerBody.DEMONIC_CLAWS;
 			this.skinTone = "light purple";
 			this.hairColor = "black";

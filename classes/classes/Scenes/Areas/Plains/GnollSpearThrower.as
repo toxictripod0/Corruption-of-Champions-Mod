@@ -341,7 +341,7 @@ import classes.internals.*;
 			this.createStatusEffect(StatusEffects.BonusACapacity,25,0,0,0);
 			this.tallness = 72;
 			this.hipRating = Hips.RATING_AMPLE;
-			this.buttRating = BUTT_RATING_TIGHT;
+			this.buttRating = Butt.RATING_TIGHT;
 			this.skinTone = "tawny";
 			this.skinType = Skin.FUR;
 			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.FUR];

@@ -156,7 +156,7 @@ package classes.Scenes.Areas.Lake
 			this.createStatusEffect(StatusEffects.BonusACapacity,40,0,0,0);
 			this.tallness = 6*12;
 			this.hipRating = Hips.RATING_BOYISH+1;
-			this.buttRating = BUTT_RATING_TIGHT;
+			this.buttRating = Butt.RATING_TIGHT;
 			this.skinTone = "tan";
 			this.hairColor = "black";
 			this.hairLength = 4;

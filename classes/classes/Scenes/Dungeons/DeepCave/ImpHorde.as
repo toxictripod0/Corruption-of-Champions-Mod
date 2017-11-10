@@ -209,7 +209,7 @@ package classes.Scenes.Dungeons.DeepCave
 			this.createStatusEffect(StatusEffects.BonusACapacity,10,0,0,0);
 			this.tallness = 36;
 			this.hipRating = Hips.RATING_SLENDER;
-			this.buttRating = BUTT_RATING_TIGHT;
+			this.buttRating = Butt.RATING_TIGHT;
 			this.skinTone = "red";
 			this.hairColor = "black";
 			this.hairLength = 1;

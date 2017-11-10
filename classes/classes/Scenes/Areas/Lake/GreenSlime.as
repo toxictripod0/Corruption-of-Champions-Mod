@@ -52,7 +52,7 @@
 			this.ass.analWetness = AssClass.WETNESS_SLIME_DROOLING;
 			this.tallness = rand(8) + 80;
 			this.hipRating = Hips.RATING_AMPLE;
-			this.buttRating = BUTT_RATING_LARGE;
+			this.buttRating = Butt.RATING_LARGE;
 			this.lowerBody = LowerBody.GOO;
 			this.skinTone = "green";
 			initStrTouSpeInte(25, 20, 10, 5);

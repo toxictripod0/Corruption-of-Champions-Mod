@@ -134,7 +134,7 @@ package classes.Scenes.Monsters
 			this.createStatusEffect(StatusEffects.BonusACapacity,30,0,0,0);
 			this.tallness = 44 + rand(7);
 			this.hipRating = Hips.RATING_AMPLE+2;
-			this.buttRating = BUTT_RATING_LARGE;
+			this.buttRating = Butt.RATING_LARGE;
 			this.skinTone = "dark green";
 			this.hairColor = "indigo";
 			this.hairLength = 4;

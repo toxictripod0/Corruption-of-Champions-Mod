@@ -118,7 +118,7 @@ package classes.Scenes.Areas.Mountain
 			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.tallness = 47;
 			this.hipRating = Hips.RATING_AVERAGE;
-			this.buttRating = BUTT_RATING_AVERAGE + 1;
+			this.buttRating = Butt.RATING_AVERAGE + 1;
 			this.skinTone = "black";
 			this.skinType = Skin.FUR;
 			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.FUR];

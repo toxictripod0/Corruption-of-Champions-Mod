@@ -1609,7 +1609,7 @@ package classes
 			
 			player.tallness = 48; // 120 cm
 			player.hipRating = Hips.RATING_BOYISH;
-			player.buttRating = BUTT_RATING_TIGHT;
+			player.buttRating = Butt.RATING_TIGHT;
 			player.thickness = 20; // thin
 			player.tone = 20; // soft
 			player.skinType = Skin.FUR;
@@ -1793,7 +1793,7 @@ package classes
 			// lean build
 			player.tallness = 47+rand(43); // 118-230 cm
 			player.hipRating = Hips.RATING_BOYISH;
-			player.buttRating = BUTT_RATING_TIGHT;
+			player.buttRating = Butt.RATING_TIGHT;
 			player.thickness = rand(10)+10; // lithe
 			player.tone = rand(10)+10; // not in a good shape...
 			player.skinTone = "light";

@@ -91,7 +91,7 @@ package classes.Scenes.Dungeons.HelDungeon
 			this.ass.analWetness = AssClass.WETNESS_SLIME_DROOLING;
 			this.tallness = rand(8) + 70;
 			this.hipRating = Hips.RATING_CURVY+2;
-			this.buttRating = BUTT_RATING_LARGE;
+			this.buttRating = Butt.RATING_LARGE;
 			this.lowerBody = LowerBody.HARPY;
 			this.skinTone = "red";
 			this.skinType = Skin.PLAIN;

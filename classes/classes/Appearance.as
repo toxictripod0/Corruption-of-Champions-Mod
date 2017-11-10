@@ -2497,15 +2497,15 @@ package classes
 			[Hips.RATING_INHUMANLY_WIDE, "inhumanly wide"],
 		];
 		public static const DEFAULT_BUTT_RATING_SCALES:Array = [
-			[BUTT_RATING_BUTTLESS, "buttless"],
-			[BUTT_RATING_TIGHT, "tight"],
-			[BUTT_RATING_AVERAGE, "average"],
-			[BUTT_RATING_NOTICEABLE, "noticeable"],
-			[BUTT_RATING_LARGE, "large"],
-			[BUTT_RATING_JIGGLY, "jiggly"],
-			[BUTT_RATING_EXPANSIVE, "expansive"],
-			[BUTT_RATING_HUGE, "huge"],
-			[BUTT_RATING_INCONCEIVABLY_BIG, "inconceivably big"],
+			[Butt.RATING_BUTTLESS, "buttless"],
+			[Butt.RATING_TIGHT, "tight"],
+			[Butt.RATING_AVERAGE, "average"],
+			[Butt.RATING_NOTICEABLE, "noticeable"],
+			[Butt.RATING_LARGE, "large"],
+			[Butt.RATING_JIGGLY, "jiggly"],
+			[Butt.RATING_EXPANSIVE, "expansive"],
+			[Butt.RATING_HUGE, "huge"],
+			[Butt.RATING_INCONCEIVABLY_BIG, "inconceivably big"],
 		];
 
 		/**
