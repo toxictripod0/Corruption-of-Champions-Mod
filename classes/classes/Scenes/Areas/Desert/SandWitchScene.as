@@ -502,25 +502,40 @@ private function SWCentaurMore(argument:Number):Boolean {
 		return false;
 	}
 	//[SW_2: Split chances of occurrence between % categories as % are available]
-	if (argument == 2) {
+	if (argument === 2) {
 		//[% Player has cock(s)]
-		if (player.cockTotal() > 0 || (player.gender == 3 && rand(2) == 0)) {
+		if (player.cockTotal() > 0 || (player.gender === 3 && rand(2) === 0)) {
 			outputText("Finished with your games, pre-cum starts pooling under your throbbing " + player.cockDescript(0) + ". ");
 			//[largest cock is wide]
 			if (player.cocks[0].cockThickness >= 3) {
-				if (player.hasKnot(0)) outputText("Seeing its sheer size combined with your swollen knot causes her to gasp in terror and try to run again.  ");
-				else outputText("Seeing its sheer size causes her to gasp in fear and turn to run again.  ");
+				if (player.hasKnot(0)) {
+					outputText("Seeing its sheer size combined with your swollen knot causes her to gasp in terror and try to run again.  ");
+				} else {
+					outputText("Seeing its sheer size causes her to gasp in fear and turn to run again.  ");
+				}
 			}
 			outputText(images.showImage("sandwitch-male-taur-win-hardsex"));
 			outputText("You grab the witch and knock her down into the sand, quickly lowering your " + player.cockDescript(0) + " to be against her buttocks. ");
+			
 			//[1 cock, non-tentacle]
-			if (player.cockTotal() == 1 && player.countCocksOfType(CockTypesEnum.TENTACLE) == 0) outputText("With a single thrust, you push deep into one of her cunts, ");
+			if (player.cockTotal() === 1 && player.countCocksOfType(CockTypesEnum.TENTACLE) === 0) {
+				outputText("With a single thrust, you push deep into one of her cunts, ");
+			}
+			
 			//[1 cock, tentacle]
-			if (player.cockTotal() == 1 && player.countCocksOfType(CockTypesEnum.TENTACLE) == 1) outputText("Your " + player.cockDescript(0) + " caresses her anus teasingly, causing her to whimper in a mixture of arousal and denial.  With a single savage thrust, you push past her clenched muscles, ");
+			if (player.cockTotal() === 1 && player.countCocksOfType(CockTypesEnum.TENTACLE) === 1) {
+				outputText("Your " + player.cockDescript(0) + " caresses her anus teasingly, causing her to whimper in a mixture of arousal and denial.  With a single savage thrust, you push past her clenched muscles, ");
+			}
+			
 			//[two cocks] 
-			if (player.cockTotal() == 2) outputText("After aligning your " + player.multiCockDescriptLight() + " to her twin cunts, you push yourself deeply into her, ");
+			if (player.cockTotal() === 2) {
+				outputText("After aligning your " + player.multiCockDescriptLight() + " to her twin cunts, you push yourself deeply into her, ");
+			}
 			//[3+ cocks]
-			if (player.cockTotal() >= 3) outputText("Lining up two of your cocks to her twin cunts and another to her anus, you thrust into her without pre-amble.  Her anal muscles try to keep you out, but they are no match for the strength of your legs.  You tear into her, ");
+			if (player.cockTotal() >= 3) {
+				outputText("Lining up two of your cocks to her twin cunts and another to her anus, you thrust into her without pre-amble.  Her anal muscles try to keep you out, but they are no match for the strength of your legs.  You tear into her, ");
+			}
+			
 			outputText("eliciting a scream as your hind quarters push her forcefully over the sand. ");
 			//[largest cock is wide] 
 			if (player.cocks[0].cockThickness >= 3) {
