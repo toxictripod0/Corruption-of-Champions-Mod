@@ -1631,8 +1631,8 @@ package classes.Scenes
 					//[(dick1 exists)
 					if (player.cockTotal() > 1) outputText(", followed in short order by white squirts from " + player.sMultiCockDesc() + " remaining");
 					outputText(".  Your " + player.vaginaDescript(0) + " quivers and pulses as well, adding ");
-					if (player.vaginas[0].vaginalWetness < VAGINA_WETNESS_SLICK) outputText("a trickle");
-					else if (player.vaginas[0].vaginalWetness < VAGINA_WETNESS_SLAVERING) outputText("a squirt");
+					if (player.vaginas[0].vaginalWetness < VaginaClass.WETNESS_SLICK) outputText("a trickle");
+					else if (player.vaginas[0].vaginalWetness < VaginaClass.WETNESS_SLAVERING) outputText("a squirt");
 					else outputText("nearly a cupful of fluid");
 					outputText(" from your female orgasm to the puddle on the ground below your ass.\n\n");
 					//(gain 1 nemo-dick, reduce lust to min)]
@@ -1671,9 +1671,9 @@ package classes.Scenes
 				outputText("The pain begins to subside as your delivery continues... replaced with a building sensation of pleasure.  Arousal spikes through you as the contractions intensify, and as you feel something pass you have a tiny orgasm.\n\nYet you feel more within you, and the contractions spike again, pushing you to orgasm as you pass something else.  It repeats, over and over, nearly a dozen times you birth and orgasm.  After an eternity of procreation and pleasure, you sense your ordeal is over and collapse, unconscious.");
 				
 				
-				if (player.vaginas[0].vaginalLooseness == VAGINA_LOOSENESS_TIGHT) player.vaginas[0].vaginalLooseness++;
+				if (player.vaginas[0].vaginalLooseness == VaginaClass.LOOSENESS_TIGHT) player.vaginas[0].vaginalLooseness++;
 				//50% chance
-				if (player.vaginas[0].vaginalLooseness < VAGINA_LOOSENESS_GAPING_WIDE && rand(2) == 0) {
+				if (player.vaginas[0].vaginalLooseness < VaginaClass.LOOSENESS_GAPING_WIDE && rand(2) == 0) {
 					player.vaginas[0].vaginalLooseness++;
 					outputText("\n\n<b>Your cunt is painfully stretched from the ordeal, permanently enlarged.</b>");
 				}
@@ -1700,7 +1700,7 @@ package classes.Scenes
 					outputText("  <b>Your breasts have grown to B-cups!</b>");
 					player.growTits(1, 1, false, 3);
 				}
-				if (player.vaginas[0].vaginalWetness == VAGINA_WETNESS_DRY) player.vaginas[0].vaginalWetness++;
+				if (player.vaginas[0].vaginalWetness == VaginaClass.WETNESS_DRY) player.vaginas[0].vaginalWetness++;
 				player.orgasm('Vaginal');
 				dynStats("tou", -2, "spe", 2, "lib", 1, "sen", .5, "cor", 7);
 				if (player.buttRating < 10 && rand(2) == 0) {
@@ -1806,7 +1806,7 @@ package classes.Scenes
 					player.boostLactation(1);
 				}
 				player.cuntChange(120, true,true,false);
-				if (player.vaginas[0].vaginalWetness == VAGINA_WETNESS_DRY) player.vaginas[0].vaginalWetness++;
+				if (player.vaginas[0].vaginalWetness == VaginaClass.WETNESS_DRY) player.vaginas[0].vaginalWetness++;
 				player.orgasm('Vaginal');
 				dynStats("str", -1,"tou", -2, "spe", 3, "lib", 1, "sen", .5);
 				displayedUpdate = true;
@@ -1853,7 +1853,7 @@ package classes.Scenes
 				//FUCKING BIRTH SHIT HERE.
 				getGame().amilyScene.pcBirthsAmilysKidsQuestVersion();
 				player.cuntChange(60, true, true, false);
-				if (player.vaginas[0].vaginalWetness == VAGINA_WETNESS_DRY) player.vaginas[0].vaginalWetness++;
+				if (player.vaginas[0].vaginalWetness == VaginaClass.WETNESS_DRY) player.vaginas[0].vaginalWetness++;
 				player.orgasm('Vaginal');
 				dynStats("str", -1,"tou", -2, "spe", 3, "lib", 1, "sen", .5);
 				displayedUpdate = true;
@@ -1887,7 +1887,7 @@ package classes.Scenes
 					player.boostLactation(.5);
 				}
 				player.cuntChange(60, true,true,false);
-				if (player.vaginas[0].vaginalWetness == VAGINA_WETNESS_DRY) player.vaginas[0].vaginalWetness++;
+				if (player.vaginas[0].vaginalWetness == VaginaClass.WETNESS_DRY) player.vaginas[0].vaginalWetness++;
 				player.orgasm('Vaginal');
 				dynStats("str", -1,"tou", -2, "spe", 3, "lib", 1, "sen", .5);
 				displayedUpdate = true;
@@ -1926,7 +1926,7 @@ package classes.Scenes
 				}
 				outputText("  ");
 				player.cuntChange(100, true);
-				if (player.vaginas[0].vaginalWetness == VAGINA_WETNESS_DRY) player.vaginas[0].vaginalWetness++;
+				if (player.vaginas[0].vaginalWetness == VaginaClass.WETNESS_DRY) player.vaginas[0].vaginalWetness++;
 				player.orgasm('Vaginal');
 				dynStats("str", -1,"tou", -4, "spe", 2, "lib", 1, "sen", .5);
 				displayedUpdate = true;
@@ -1963,7 +1963,7 @@ package classes.Scenes
 					player.boostLactation(.5);
 				}
 				player.cuntChange(60, true);
-				if (player.vaginas[0].vaginalWetness == VAGINA_WETNESS_DRY) player.vaginas[0].vaginalWetness++;
+				if (player.vaginas[0].vaginalWetness == VaginaClass.WETNESS_DRY) player.vaginas[0].vaginalWetness++;
 				player.orgasm('Vaginal');
 				dynStats("str", -1,"tou", -1, "spe", 2, "lib", 1, "sen", .5);
 				displayedUpdate = true;
@@ -2049,9 +2049,9 @@ package classes.Scenes
 					//Large egg scene
 					else {
 						outputText("A sudden shift in the weight of your pregnant belly staggers you, dropping you to your knees.  You realize something is about to be birthed, and you shed your " + player.armorName + " before it can be ruined by what's coming.  A contraction pushes violently through your midsection, ");
-						if (player.vaginas[0].vaginalLooseness < VAGINA_LOOSENESS_LOOSE) outputText("stretching your tight cunt painfully, the lips opening wide ");
-						if (player.vaginas[0].vaginalLooseness >= VAGINA_LOOSENESS_LOOSE && player.vaginas[0].vaginalLooseness <= VAGINA_LOOSENESS_GAPING_WIDE) outputText("temporarily stretching your cunt-lips wide-open ");
-						if (player.vaginas[0].vaginalLooseness > VAGINA_LOOSENESS_GAPING_WIDE) outputText("parting your already gaping lips wide ");
+						if (player.vaginas[0].vaginalLooseness < VaginaClass.LOOSENESS_LOOSE) outputText("stretching your tight cunt painfully, the lips opening wide ");
+						if (player.vaginas[0].vaginalLooseness >= VaginaClass.LOOSENESS_LOOSE && player.vaginas[0].vaginalLooseness <= VaginaClass.LOOSENESS_GAPING_WIDE) outputText("temporarily stretching your cunt-lips wide-open ");
+						if (player.vaginas[0].vaginalLooseness > VaginaClass.LOOSENESS_GAPING_WIDE) outputText("parting your already gaping lips wide ");
 						outputText("as something begins sliding down your passage.  A burst of green slime soaks the ground below as the birthing begins in earnest, and the rounded surface of a strangely colored egg peaks between your lips.  You push hard and the large egg pops free at last, making you sigh with relief as it drops into the pool of slime.  The experience definitely turns you on, and you feel your clit growing free of its hood as another big egg starts working its way down your birth canal, rubbing your sensitive vaginal walls pleasurably.   You pant and moan as the contractions stretch you tightly around the next, slowly forcing it out between your nether-lips.  The sound of a gasp startles you as it pops free, until you realize it was your own voice responding to the sudden pressure and pleasure.  Aroused beyond reasonable measure, you begin to masturbate ");
 						if (player.getClitLength() > 5) outputText("your massive cock-like clit, jacking it off with the slimy birthing fluids as lube.   It pulses and twitches in time with your heartbeats, its sensitive surface overloading your fragile mind with pleasure.  ");
 						if (player.getClitLength() > 2 && player.getClitLength() <= 5) outputText("your large clit like a tiny cock, stroking it up and down between your slime-lubed thumb and fore-finger.  It twitches and pulses with your heartbeats, the incredible sensitivity of it overloading your fragile mind with waves of pleasure.  ");

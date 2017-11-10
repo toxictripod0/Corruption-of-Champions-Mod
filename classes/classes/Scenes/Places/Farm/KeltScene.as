@@ -1085,7 +1085,7 @@ private function fuckKeltsShitUp():void {
 		}
 		else if (player.hasVagina() && (player.totalCocks() == 0 || rand(2) == 0)) {
 			outputText("You spread your " + player.legs() + " and expose your " + player.vaginaDescript(0) + ".  \"<i>Lick it, bitch,</i>\" you command.  When he doesn't, you give the rope a pull, and his hooves paw at the dirt in pain.  \"<i>I said LICK!</i>\" you scream, and this time he does.  His tongue slips between your puffy folds ");
-			if (player.vaginas[0].vaginalWetness < VAGINA_WETNESS_SLICK) outputText("tasting them experimentally.  ");
+			if (player.vaginas[0].vaginalWetness < VaginaClass.WETNESS_SLICK) outputText("tasting them experimentally.  ");
 			else outputText("immediately becoming slick with your fuck-me-juices.  ");
 			outputText("\"<i>Deeper,</i>\" you sigh, and he complies, no longer capable of resistance.  You make him tonguefuck you until you come to a shuddering, cunt-clenching orgasm.");
 			if (player.totalCocks() > 0) outputText("Your " + player.cockDescript(0) + " splatters cock-cream into his hair, further humiliating him.");

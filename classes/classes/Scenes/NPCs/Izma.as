@@ -148,7 +148,7 @@ package classes.Scenes.NPCs
 			this.createCock(15,2.2);
 			this.balls = 4;
 			this.ballSize = 3;
-			this.createVagina(false, VAGINA_WETNESS_SLICK, VAGINA_LOOSENESS_LOOSE);
+			this.createVagina(false, VaginaClass.WETNESS_SLICK, VaginaClass.LOOSENESS_LOOSE);
 			this.createStatusEffect(StatusEffects.BonusVCapacity, 45, 0, 0, 0);
 			createBreastRow(Appearance.breastCupInverse("DD"));
 			this.ass.analLooseness = ANAL_LOOSENESS_NORMAL;

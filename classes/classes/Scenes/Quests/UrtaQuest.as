@@ -263,8 +263,8 @@ public function startUrtaQuest():void {
 	player.ass.analLooseness = 2;
 	player.createStatusEffect(StatusEffects.BonusVCapacity,58,0,0,0);
 	player.createVagina();
-	player.vaginas[0].vaginalWetness = VAGINA_WETNESS_DROOLING;
-	player.vaginas[0].vaginalLooseness = VAGINA_LOOSENESS_NORMAL;
+	player.vaginas[0].vaginalWetness = VaginaClass.WETNESS_DROOLING;
+	player.vaginas[0].vaginalLooseness = VaginaClass.LOOSENESS_NORMAL;
 	player.setClitLength(1);
 	player.str = 75;
 	player.tou = 80;

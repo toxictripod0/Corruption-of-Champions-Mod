@@ -2450,26 +2450,26 @@ package classes
 		);
 		public static const DEFAULT_VAGINA_TYPE_NAMES:Object = createMapFromPairs(
 				[
-					[VAGINA_TYPE_HUMAN, "human"],
-					[VAGINA_TYPE_EQUINE, "equine"],
-					[VAGINA_TYPE_BLACK_SAND_TRAP, "black sandtrap"],
+					[VaginaClass.HUMAN, "human"],
+					[VaginaClass.EQUINE, "equine"],
+					[VaginaClass.BLACK_SAND_TRAP, "black sandtrap"],
 				]
 		);
 		public static const DEFAULT_VAGINA_WETNESS_SCALES:Array = [
-			[VAGINA_WETNESS_DRY, "dry"],
-			[VAGINA_WETNESS_NORMAL, "normal"],
-			[VAGINA_WETNESS_WET, "wet"],
-			[VAGINA_WETNESS_SLICK, "slick"],
-			[VAGINA_WETNESS_DROOLING, "drooling"],
-			[VAGINA_WETNESS_SLAVERING, "slavering"],
+			[VaginaClass.WETNESS_DRY, "dry"],
+			[VaginaClass.WETNESS_NORMAL, "normal"],
+			[VaginaClass.WETNESS_WET, "wet"],
+			[VaginaClass.WETNESS_SLICK, "slick"],
+			[VaginaClass.WETNESS_DROOLING, "drooling"],
+			[VaginaClass.WETNESS_SLAVERING, "slavering"],
 		];
 		public static const DEFAULT_VAGINA_LOOSENESS_SCALES:Array = [
-			[VAGINA_LOOSENESS_TIGHT, "tight"],
-			[VAGINA_LOOSENESS_NORMAL, "normal"],
-			[VAGINA_LOOSENESS_LOOSE, "loose"],
-			[VAGINA_LOOSENESS_GAPING, "gaping"],
-			[VAGINA_LOOSENESS_GAPING_WIDE, "gaping wide"],
-			[VAGINA_LOOSENESS_LEVEL_CLOWN_CAR, "clown-car level"],
+			[VaginaClass.LOOSENESS_TIGHT, "tight"],
+			[VaginaClass.LOOSENESS_NORMAL, "normal"],
+			[VaginaClass.LOOSENESS_LOOSE, "loose"],
+			[VaginaClass.LOOSENESS_GAPING, "gaping"],
+			[VaginaClass.LOOSENESS_GAPING_WIDE, "gaping wide"],
+			[VaginaClass.LOOSENESS_LEVEL_CLOWN_CAR, "clown-car level"],
 		];
 		public static const DEFAULT_ANAL_WETNESS_SCALES:Array = [
 			[ANAL_WETNESS_DRY, "dry"],

@@ -167,7 +167,7 @@ package classes.Scenes.NPCs
 				// this.hoursSinceCum = 0;
 			}
 			if (gender >= 2) {
-				this.createVagina(game.flags[kFLAGS.EMBER_PUSSY_FUCK_COUNT] == 0, VAGINA_WETNESS_SLAVERING, VAGINA_LOOSENESS_LOOSE);
+				this.createVagina(game.flags[kFLAGS.EMBER_PUSSY_FUCK_COUNT] == 0, VaginaClass.WETNESS_SLAVERING, VaginaClass.LOOSENESS_LOOSE);
 				createBreastRow(Appearance.breastCupInverse("F"));
 			} else {
 				createBreastRow(Appearance.breastCupInverse("flat"));

@@ -2728,8 +2728,8 @@ private function marbleCampSexNew():void {
 			//if Player has a vagina
 			if (player.vaginas.length > 0) {
 				//Select one based on vagina wetness, similarly to the cum production, you should do the logic for this part
-				if (player.vaginas[0].vaginalWetness < VAGINA_WETNESS_WET) outputText("  As you recover, you see that a small amount of your girly fluids has leaked onto Marble's breasts.");
-				else if (player.vaginas[0].vaginalWetness <= VAGINA_WETNESS_SLICK) outputText("  As you recover, you see that Marble has been covered fairly liberally with your girly fluids.");
+				if (player.vaginas[0].vaginalWetness < VaginaClass.WETNESS_WET) outputText("  As you recover, you see that a small amount of your girly fluids has leaked onto Marble's breasts.");
+				else if (player.vaginas[0].vaginalWetness <= VaginaClass.WETNESS_SLICK) outputText("  As you recover, you see that Marble has been covered fairly liberally with your girly fluids.");
 				else if (player.vaginas[0].vaginalWetness <  5) outputText("  As you recover, you see that Marble is decently drenched in your girly fluids.");
 				else outputText("  It takes you a minute to recover, but upon doing so, you blush and realize just how soaked with fluid you've become.");
 			}

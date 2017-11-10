@@ -292,7 +292,7 @@ package classes.Scenes.NPCs
 			}
 			
 			// this.plural = false;
-			this.createVagina(game.flags[kFLAGS.SHEILA_XP] <= 3 && !sheilaDemon, VAGINA_WETNESS_SLICK, VAGINA_LOOSENESS_NORMAL);
+			this.createVagina(game.flags[kFLAGS.SHEILA_XP] <= 3 && !sheilaDemon, VaginaClass.WETNESS_SLICK, VaginaClass.LOOSENESS_NORMAL);
 			this.createStatusEffect(StatusEffects.BonusVCapacity, 30, 0, 0, 0);
 			this.createBreastRow(game.flags[kFLAGS.SHEILA_CORRUPTION]/10);
 			this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;

@@ -287,7 +287,7 @@ public function layFrogEggs():void {
 	outputText("\n\nWith a wince, you head back to camp, hoping that the frog slime hasn’t affected you permanently.");
 	
 	//[Vaginal gape +1/Vaginal Moistness +1/Hips +1, Sensitivity +1]
-	if (player.vaginas[0].vaginalWetness < VAGINA_WETNESS_SLAVERING) {
+	if (player.vaginas[0].vaginalWetness < VaginaClass.WETNESS_SLAVERING) {
 		player.vaginas[0].vaginalWetness++;
 		outputText("  It rapidly becomes clear that it has.  <b>Your pussy is wetter than ever.</b>");
 	}

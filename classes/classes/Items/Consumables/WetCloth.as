@@ -5,6 +5,7 @@ package classes.Items.Consumables
 	import classes.Items.Consumable;
 	import classes.Items.ConsumableLib;
 	import classes.StatusEffects;
+	import classes.VaginaClass;
 	
 	/**
 	 * Goo transformative item.
@@ -132,8 +133,8 @@ package classes.Items.Consumables
 			if (!player.hasVagina()) {
 				outputText("\n\nA wet warmth spreads through your slimey groin as a narrow gash appears on the surface of your groin.  <b>You have grown a vagina.</b>");
 				player.createVagina();
-				player.vaginas[0].vaginalWetness = VAGINA_WETNESS_DROOLING;
-				player.vaginas[0].vaginalLooseness = VAGINA_LOOSENESS_GAPING;
+				player.vaginas[0].vaginalWetness = VaginaClass.WETNESS_DROOLING;
+				player.vaginas[0].vaginalLooseness = VaginaClass.LOOSENESS_GAPING;
 				player.setClitLength(.4);
 				return false;
 			}

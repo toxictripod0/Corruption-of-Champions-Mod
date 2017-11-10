@@ -4,27 +4,6 @@
 
 // Description constants
 
-// vaginatypesNOPEDISABLED
-public static const VAGINA_TYPE_HUMAN:int                                           =   0;
-public static const VAGINA_TYPE_EQUINE:int                                          =   1;
-public static const VAGINA_TYPE_BLACK_SAND_TRAP:int                                 =   5;
-
-// vaginalWetness
-public static const VAGINA_WETNESS_DRY:int                                          =   0;
-public static const VAGINA_WETNESS_NORMAL:int                                       =   1;
-public static const VAGINA_WETNESS_WET:int                                          =   2;
-public static const VAGINA_WETNESS_SLICK:int                                        =   3;
-public static const VAGINA_WETNESS_DROOLING:int                                     =   4;
-public static const VAGINA_WETNESS_SLAVERING:int                                    =   5;
-
-// vaginalLooseness
-public static const VAGINA_LOOSENESS_TIGHT:int                                      =   0;
-public static const VAGINA_LOOSENESS_NORMAL:int                                     =   1;
-public static const VAGINA_LOOSENESS_LOOSE:int                                      =   2;
-public static const VAGINA_LOOSENESS_GAPING:int                                     =   3;
-public static const VAGINA_LOOSENESS_GAPING_WIDE:int                                =   4;
-public static const VAGINA_LOOSENESS_LEVEL_CLOWN_CAR:int                            =   5;
-
 // analwetnesslevelsNOPEDISABLED
 public static const ANAL_WETNESS_DRY:int                                            =   0;
 public static const ANAL_WETNESS_NORMAL:int                                         =   1;

@@ -47,19 +47,19 @@ package classes.Scenes.Monsters
 			}
 			if (player.lust100 >= 60 && player.hasVagina()) {
 				switch (player.vaginas[0].vaginalWetness) {
-					case VAGINA_WETNESS_NORMAL:
+					case VaginaClass.WETNESS_NORMAL:
 						outputText("Your " + player.allVaginaDescript() + " dampen" + (player.vaginas.length > 1 ? "" : "s") + " perceptibly.");
 						break;
-					case VAGINA_WETNESS_WET:
+					case VaginaClass.WETNESS_WET:
 						outputText("Your crotch becomes sticky with girl-lust.");
 						break;
-					case VAGINA_WETNESS_SLICK:
+					case VaginaClass.WETNESS_SLICK:
 						outputText("Your " + player.allVaginaDescript() + " become" + (player.vaginas.length > 1 ? "" : "s") + " sloppy and wet.");
 						break;
-					case VAGINA_WETNESS_DROOLING:
+					case VaginaClass.WETNESS_DROOLING:
 						outputText("Thick runners of girl-lube stream down the insides of your thighs.");
 						break;
-					case VAGINA_WETNESS_SLAVERING:
+					case VaginaClass.WETNESS_SLAVERING:
 						outputText("Your " + player.allVaginaDescript() + " instantly soak" + (player.vaginas.length > 1 ? "" : "s") + " your groin.");
 					default: //Dry vaginas are unaffected
 						

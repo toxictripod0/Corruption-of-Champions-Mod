@@ -75,7 +75,7 @@ package classes.Scenes.Dungeons.HelDungeon
 			this.balls = 2;
 			this.ballSize = 1;
 			this.cumMultiplier = 3;
-			this.createVagina(false, VAGINA_WETNESS_SLAVERING, VAGINA_LOOSENESS_LOOSE);
+			this.createVagina(false, VaginaClass.WETNESS_SLAVERING, VaginaClass.LOOSENESS_LOOSE);
 			createBreastRow(Appearance.breastCupInverse("D"));
 			this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
 			this.ass.analWetness = ANAL_WETNESS_DRY;

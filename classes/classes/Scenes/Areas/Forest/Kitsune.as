@@ -210,7 +210,7 @@ package classes.Scenes.Areas.Forest
 				this.cumMultiplier = 1.5;
 				this.hoursSinceCum = ballSize * 10;
 			}
-			this.createVagina(false, VAGINA_WETNESS_SLICK, VAGINA_LOOSENESS_NORMAL);
+			this.createVagina(false, VaginaClass.WETNESS_SLICK, VaginaClass.LOOSENESS_NORMAL);
 			this.createStatusEffect(StatusEffects.BonusVCapacity, 20, 0, 0, 0);
 			createBreastRow(Appearance.breastCupInverse("D"));
 			this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;

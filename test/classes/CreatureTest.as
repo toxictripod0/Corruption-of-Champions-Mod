@@ -24,7 +24,7 @@ package classes{
 		private const DEFAULT_CLIT_LENGTH:Number = 0.5;
 		private const TEST_CLIT_LENGTH:Number = 3;
 		private const CUNT_CHANGE_VALUE:Number = 5;
-		private const VAGINAL_LOOSENESS_VALUE:Number = VAGINA_LOOSENESS_LOOSE;
+		private const VAGINAL_LOOSENESS_VALUE:Number = VaginaClass.LOOSENESS_LOOSE;
 		private const VAGINAL_CAPCITY_OFFSET:Number = 2;
 		private const VAGINAL_CAPCITY_TEST_DELTA:Number = 2;
 		private const RECOVERY_COUNT:Number = 5;
@@ -116,24 +116,24 @@ package classes{
 		
 		[Test] 
         public function testVaginaTypeWithVagina():void {
-			assertThat(oneVagina.vaginaType(), equalTo(VAGINA_TYPE_HUMAN));
+			assertThat(oneVagina.vaginaType(), equalTo(VaginaClass.HUMAN));
         }
 		
 		[Test] 
         public function testSetVaginaTypeWithNoVagina():void {
-			assertThat(noVagina.vaginaType(VAGINA_TYPE_EQUINE), equalTo(-1));
+			assertThat(noVagina.vaginaType(VaginaClass.EQUINE), equalTo(-1));
         }
 		
 		[Test] 
         public function testSetVaginaTypeWithVagina():void {
-			assertThat(oneVagina.vaginaType(VAGINA_TYPE_EQUINE), equalTo(VAGINA_TYPE_EQUINE));
+			assertThat(oneVagina.vaginaType(VaginaClass.EQUINE), equalTo(VaginaClass.EQUINE));
         }
 		
 		[Test] 
         public function testReadVaginaTypeAfterSet():void {
-			oneVagina.vaginaType(VAGINA_TYPE_EQUINE);
+			oneVagina.vaginaType(VaginaClass.EQUINE);
 			
-			assertThat(oneVagina.vaginaType(), equalTo(VAGINA_TYPE_EQUINE));
+			assertThat(oneVagina.vaginaType(), equalTo(VaginaClass.EQUINE));
         }
 		
 		[Test] 

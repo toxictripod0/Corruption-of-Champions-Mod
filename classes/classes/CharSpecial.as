@@ -180,7 +180,7 @@ package classes
 			}
 			if (!player.hasVagina()) {
 				player.createVagina();
-				player.vaginas[0].vaginalWetness = VAGINA_WETNESS_WET;
+				player.vaginas[0].vaginalWetness = VaginaClass.WETNESS_WET;
 				player.setClitLength(0.25);
 			}
 			outputText("You're quite the foxy herm, and as different as you were compared to the rest of Ingnam, it's no surprise you were sent through first.");
@@ -258,7 +258,7 @@ package classes
 			player.balls = 0;
 			player.ballSize = 2;
 			player.cumMultiplier = 7500;
-			player.vaginas[0].vaginalWetness = VAGINA_WETNESS_SLAVERING;
+			player.vaginas[0].vaginalWetness = VaginaClass.WETNESS_SLAVERING;
 			player.setClitLength(0.5);
 			player.fertility = 15;
 			player.tailType = Tail.FOX;
@@ -597,8 +597,8 @@ package classes
 			//428347355782040	Character Creation	Female,wetness=wet, Looseness=normal,not a virgin, Fertility high i guess i dont really care can be up to you.	for her face normal human, ears i want Elvin, no tails, just normal skin, body thickness i want to be slender, body tone kinda athletic but not too much, hair i want really long i think like a 30 on the codex number i think and her hair color light blonde, i want her to have normal D size breast with you can choose how you want them really though i dont think i really care, nipple size i dont care, her skin color a fair light light color but not too pale, for her starting equipment i want im not sure what i want her to wear but basically i want a Elvin archer with a bow. so maybe you can do something about the clothing. i just want a Elvin character in the game since theres goblins plus another archer besides kelt a female one add to that.	Lucina
 			outputText("You're a blond, fair-skinned lass with a well-made bow and the skills to use it.  You have D-cup breasts and a very moist cunt that's seen a little action.  You're fit and trim, but not too thin, nor too well-muscled.  All in all, you're a good fit for championing your village's cause.");
 			if (!player.hasVagina()) player.createVagina();
-			player.vaginas[0].vaginalWetness = VAGINA_WETNESS_SLICK;
-			player.vaginas[0].vaginalLooseness = VAGINA_LOOSENESS_LOOSE;
+			player.vaginas[0].vaginalWetness = VaginaClass.WETNESS_SLICK;
+			player.vaginas[0].vaginalLooseness = VaginaClass.LOOSENESS_LOOSE;
 			player.vaginas[0].virgin = false;
 			if (player.femininity < 80) player.femininity = 80;
 			player.fertility = 40;
@@ -692,7 +692,7 @@ package classes
 			player.setClitLength(.5);
 			player.tallness = 67;
 			player.breastRows[0].breastRating = 7;
-			player.vaginas[0].vaginalWetness = VAGINA_WETNESS_SLICK;
+			player.vaginas[0].vaginalWetness = VaginaClass.WETNESS_SLICK;
 			player.vaginas[0].virgin = false;
 			player.tone = 20;
 			player.hipRating = 12;
@@ -731,8 +731,8 @@ package classes
 			player.breastRows[0].breastRating = 5;
 			player.buttRating = 2;
 			player.createVagina();
-			player.vaginas[0].vaginalLooseness = VAGINA_LOOSENESS_TIGHT;
-			player.vaginas[0].vaginalWetness = VAGINA_WETNESS_SLAVERING;
+			player.vaginas[0].vaginalLooseness = VaginaClass.LOOSENESS_TIGHT;
+			player.vaginas[0].vaginalWetness = VaginaClass.WETNESS_SLAVERING;
 			player.vaginas[0].virgin = true;
 			player.setClitLength(0.2);
 			player.earType = Ears.CAT;
@@ -784,8 +784,8 @@ package classes
 			player.tallness = 73;
 			player.breastRows[0].breastRating = 5;
 			player.setClitLength(.5);
-			player.vaginas[0].vaginalWetness = VAGINA_WETNESS_SLICK;
-			player.vaginas[0].vaginalLooseness = VAGINA_LOOSENESS_LOOSE;
+			player.vaginas[0].vaginalWetness = VaginaClass.WETNESS_SLICK;
+			player.vaginas[0].vaginalLooseness = VaginaClass.LOOSENESS_LOOSE;
 			player.vaginas[0].virgin = false;
 			player.tone = 20;
 			player.hipRating = 8;
@@ -838,7 +838,7 @@ package classes
 			//Looseness- Normal Starting Value
 			//Clit-size- Normal Value"
 			player.createVagina();
-			player.vaginas[0].vaginalWetness = VAGINA_WETNESS_SLICK;
+			player.vaginas[0].vaginalWetness = VaginaClass.WETNESS_SLICK;
 			player.setClitLength(0.25);
 			player.vaginas[0].type = 5;
 			player.vaginas[0].virgin = false;
@@ -970,7 +970,7 @@ package classes
 			player.tone = 75;
 			//for wetness a squirter, looseness a 2 and capacity at 140.
 			if (!player.hasVagina()) player.createVagina();
-			player.vaginas[0].vaginalWetness = VAGINA_WETNESS_SLAVERING;
+			player.vaginas[0].vaginalWetness = VaginaClass.WETNESS_SLAVERING;
 			player.createStatusEffect(StatusEffects.BonusVCapacity,132,0,0,0);
 			//Virgin, high fertility like in the email I sent before.  dragon wings, nine fox tails,  dragon legs, eight DD breasts with four fuckable nipples each, dragon tongue, waist length hair, large dragon wings.
 			player.wingType = Wings.DRACONIC_LARGE;
@@ -1011,7 +1011,7 @@ package classes
 			player.balls = 0;
 			player.createBreastRow();
 			player.createVagina();
-			player.vaginas[0].vaginalWetness = VAGINA_WETNESS_WET;
+			player.vaginas[0].vaginalWetness = VaginaClass.WETNESS_WET;
 			//1 pair DD's, 0.5"" nipples"
 			player.breastRows[0].breastRating = 5;
 			player.nippleLength = 0.5;
@@ -1417,8 +1417,8 @@ package classes
 			//Vagina: Ridiculously loose, 3 inch clitoris, dripping constantly, fertile like a bunny on steroids and non-virgin
 			player.createVagina();
 			player.setClitLength(3);
-			player.vaginas[0].vaginalWetness = VAGINA_WETNESS_DROOLING;
-			player.vaginas[0].vaginalLooseness = VAGINA_LOOSENESS_LEVEL_CLOWN_CAR;
+			player.vaginas[0].vaginalWetness = VaginaClass.WETNESS_DROOLING;
+			player.vaginas[0].vaginalLooseness = VaginaClass.LOOSENESS_LEVEL_CLOWN_CAR;
 			player.vaginas[0].virgin = false;
 			player.fertility = 50;
 			//Butt: Just as loose
@@ -1546,7 +1546,7 @@ package classes
 			player.createPerk(PerkLib.Dragonfire, 0, 0, 0, 0);
 			player.createPerk(PerkLib.BroodMother, 0, 0, 0, 0);
 			player.createPerk(PerkLib.Fertile, 1.5, 0, 0, 0);
-			player.vaginas[0].vaginalWetness = VAGINA_WETNESS_WET;
+			player.vaginas[0].vaginalWetness = VaginaClass.WETNESS_WET;
 			player.createPerk(PerkLib.WetPussy,2,0,0,0);
 			player.createPerk(PerkLib.Tough, 0.25, 0, 0, 0);
 			player.createPerk(PerkLib.Strong, 0.25, 0, 0, 0);
@@ -1582,8 +1582,8 @@ package classes
 				player.removeBreastRow(0, 1);			
 
 			player.createVagina();
-			player.vaginas[0].vaginalLooseness = VAGINA_LOOSENESS_NORMAL;
-			player.vaginas[0].vaginalWetness = VAGINA_WETNESS_WET; // wet
+			player.vaginas[0].vaginalLooseness = VaginaClass.LOOSENESS_NORMAL;
+			player.vaginas[0].vaginalWetness = VaginaClass.WETNESS_WET; // wet
 			player.vaginas[0].virgin = false;
 			player.createStatusEffect(StatusEffects.BonusVCapacity, 8000, 0, 0, 0); // Vag of Holding kitsune trait
 			player.setClitLength(0.3);

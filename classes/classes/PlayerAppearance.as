@@ -1341,21 +1341,21 @@ package classes
 				
 				{
 					//Wetness
-					if (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_WET && player.vaginas[0].vaginalWetness< VAGINA_WETNESS_DROOLING) 
+					if (player.vaginas[0].vaginalWetness >= VaginaClass.WETNESS_WET && player.vaginas[0].vaginalWetness< VaginaClass.WETNESS_DROOLING) 
 						outputText("Moisture gleams in ");
-					if (player.vaginas[0].vaginalWetness>= VAGINA_WETNESS_DROOLING) 
+					if (player.vaginas[0].vaginalWetness>= VaginaClass.WETNESS_DROOLING) 
 					{
 						outputText("Occasional beads of ");
 						outputText("lubricant drip from ");
 					}
 					//Different description based on vag looseness
-					if (player.vaginas[0].vaginalWetness>= VAGINA_WETNESS_WET) 
+					if (player.vaginas[0].vaginalWetness>= VaginaClass.WETNESS_WET) 
 					{
-						if (player.vaginas[0].vaginalLooseness< VAGINA_LOOSENESS_LOOSE) 
+						if (player.vaginas[0].vaginalLooseness< VaginaClass.LOOSENESS_LOOSE) 
 							outputText("your " + player.vaginaDescript(0) + ". ");
-						if (player.vaginas[0].vaginalLooseness>= VAGINA_LOOSENESS_LOOSE && player.vaginas[0].vaginalLooseness< VAGINA_LOOSENESS_GAPING_WIDE) 
+						if (player.vaginas[0].vaginalLooseness>= VaginaClass.LOOSENESS_LOOSE && player.vaginas[0].vaginalLooseness< VaginaClass.LOOSENESS_GAPING_WIDE) 
 							outputText("your " + player.vaginaDescript(0) + ", its lips slightly parted. ");
-						if (player.vaginas[0].vaginalLooseness>= VAGINA_LOOSENESS_GAPING_WIDE) 
+						if (player.vaginas[0].vaginalLooseness>= VaginaClass.LOOSENESS_GAPING_WIDE) 
 							outputText("the massive hole that is your " + player.vaginaDescript(0) + ".  ");
 					}
 				}
@@ -1363,54 +1363,54 @@ package classes
 				
 				{
 					//Wetness
-					if (player.vaginas[0].vaginalWetness< VAGINA_WETNESS_WET) 
+					if (player.vaginas[0].vaginalWetness< VaginaClass.WETNESS_WET) 
 						outputText("Moisture gleams in ");
-					if (player.vaginas[0].vaginalWetness>= VAGINA_WETNESS_WET && player.vaginas[0].vaginalWetness< VAGINA_WETNESS_DROOLING) 
+					if (player.vaginas[0].vaginalWetness>= VaginaClass.WETNESS_WET && player.vaginas[0].vaginalWetness< VaginaClass.WETNESS_DROOLING) 
 					{
 						outputText("Occasional beads of ");
 						outputText("lubricant drip from ");
 					}
-					if (player.vaginas[0].vaginalWetness>= VAGINA_WETNESS_DROOLING) 
+					if (player.vaginas[0].vaginalWetness>= VaginaClass.WETNESS_DROOLING) 
 					{
 						outputText("Thin streams of ");
 						outputText("lubricant occasionally dribble from ");
 					}
 					//Different description based on vag looseness
-					if (player.vaginas[0].vaginalLooseness< VAGINA_LOOSENESS_LOOSE) 
+					if (player.vaginas[0].vaginalLooseness< VaginaClass.LOOSENESS_LOOSE) 
 						outputText("your " + player.vaginaDescript(0) + ". ");
-					if (player.vaginas[0].vaginalLooseness>= VAGINA_LOOSENESS_LOOSE && player.vaginas[0].vaginalLooseness< VAGINA_LOOSENESS_GAPING_WIDE) 
+					if (player.vaginas[0].vaginalLooseness>= VaginaClass.LOOSENESS_LOOSE && player.vaginas[0].vaginalLooseness< VaginaClass.LOOSENESS_GAPING_WIDE) 
 						outputText("your " + player.vaginaDescript(0) + ", its lips slightly parted. ");
-					if (player.vaginas[0].vaginalLooseness>= VAGINA_LOOSENESS_GAPING_WIDE) 
+					if (player.vaginas[0].vaginalLooseness>= VaginaClass.LOOSENESS_GAPING_WIDE) 
 						outputText("the massive hole that is your " + player.vaginaDescript(0) + ".  ");
 				}
 				if ((player.lib100> 80 || player.lust100 > 80)) //WTF horny!
 				
 				{
 					//Wetness
-					if (player.vaginas[0].vaginalWetness< VAGINA_WETNESS_WET) 
+					if (player.vaginas[0].vaginalWetness< VaginaClass.WETNESS_WET) 
 					
 					{
 						outputText("Occasional beads of ");
 						outputText("lubricant drip from ");
 					}
-					if (player.vaginas[0].vaginalWetness>= VAGINA_WETNESS_WET && player.vaginas[0].vaginalWetness< VAGINA_WETNESS_DROOLING)
+					if (player.vaginas[0].vaginalWetness>= VaginaClass.WETNESS_WET && player.vaginas[0].vaginalWetness< VaginaClass.WETNESS_DROOLING)
 					
 					{
 						outputText("Thin streams of ");
 						outputText("lubricant occasionally dribble from ");
 					}
-					if (player.vaginas[0].vaginalWetness>= VAGINA_WETNESS_DROOLING) 
+					if (player.vaginas[0].vaginalWetness>= VaginaClass.WETNESS_DROOLING) 
 					
 					{
 						outputText("Thick streams of ");
 						outputText("lubricant drool constantly from ");
 					}
 					//Different description based on vag looseness
-					if (player.vaginas[0].vaginalLooseness< VAGINA_LOOSENESS_LOOSE) 
+					if (player.vaginas[0].vaginalLooseness< VaginaClass.LOOSENESS_LOOSE) 
 						outputText("your " + player.vaginaDescript(0) + ". ");
-					if (player.vaginas[0].vaginalLooseness>= VAGINA_LOOSENESS_LOOSE && player.vaginas[0].vaginalLooseness< VAGINA_LOOSENESS_GAPING_WIDE) 
+					if (player.vaginas[0].vaginalLooseness>= VaginaClass.LOOSENESS_LOOSE && player.vaginas[0].vaginalLooseness< VaginaClass.LOOSENESS_GAPING_WIDE) 
 						outputText("your " + player.vaginaDescript(0) + ", its lips slightly parted. ");
-					if (player.vaginas[0].vaginalLooseness>= VAGINA_LOOSENESS_GAPING_WIDE) 
+					if (player.vaginas[0].vaginalLooseness>= VaginaClass.LOOSENESS_GAPING_WIDE) 
 						outputText("the massive hole that is your cunt.  ");
 				}
 				//Line Drop for next descript!

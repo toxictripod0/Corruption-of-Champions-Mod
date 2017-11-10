@@ -9,6 +9,7 @@ package classes.Items.Consumables
 	import classes.Items.ConsumableLib;
 	import classes.PerkLib;
 	import classes.StatusEffects;
+	import classes.VaginaClass;
 	
 	/**
 	 * Equine transformative item.
@@ -317,12 +318,12 @@ package classes.Items.Consumables
 			if (player.gender === 2 || player.gender === 3) {
 				//Single vag
 				if (player.vaginas.length === 1) {
-					if (player.vaginas[0].vaginalLooseness <= VAGINA_LOOSENESS_GAPING && changes < changeLimit && rand(2) === 0) {
+					if (player.vaginas[0].vaginalLooseness <= VaginaClass.LOOSENESS_GAPING && changes < changeLimit && rand(2) === 0) {
 						outputText("\n\nYou grip your gut in pain as you feel your organs shift slightly.  When the pressure passes, you realize your " + player.vaginaDescript(0) + " has grown larger, in depth AND size.");
 						player.vaginas[0].vaginalLooseness++;
 						changes++;
 					}
-					if (player.vaginas[0].vaginalWetness <= VAGINA_WETNESS_NORMAL && changes < changeLimit && rand(2) === 0) {
+					if (player.vaginas[0].vaginalWetness <= VaginaClass.WETNESS_NORMAL && changes < changeLimit && rand(2) === 0) {
 						outputText("\n\nYour " + player.vaginaDescript(0) + " moistens perceptably, giving off an animalistic scent.");
 						player.vaginas[0].vaginalWetness++;
 						changes++;
@@ -344,7 +345,7 @@ package classes.Items.Consumables
 							temp2 = player.vaginas[temp].vaginalWetness;
 						}
 					}
-					if (player.vaginas[temp].vaginalWetness <= VAGINA_WETNESS_NORMAL && changes < changeLimit && rand(2) === 0) {
+					if (player.vaginas[temp].vaginalWetness <= VaginaClass.WETNESS_NORMAL && changes < changeLimit && rand(2) === 0) {
 						outputText("\n\nOne of your " + player.vaginaDescript(temp) + " moistens perceptably, giving off an animalistic scent.");
 						player.vaginas[temp].vaginalWetness++;
 						changes++;
@@ -363,7 +364,7 @@ package classes.Items.Consumables
 							temp2 = player.vaginas[temp].vaginalLooseness;
 						}
 					}
-					if (player.vaginas[0].vaginalLooseness <= VAGINA_LOOSENESS_GAPING && changes < changeLimit && rand(2) === 0) {
+					if (player.vaginas[0].vaginalLooseness <= VaginaClass.LOOSENESS_GAPING && changes < changeLimit && rand(2) === 0) {
 						outputText("\n\nYou grip your gut in pain as you feel your organs shift slightly.  When the pressure passes, you realize one of your " + player.vaginaDescript(temp) + " has grown larger, in depth AND size.");
 						player.vaginas[temp].vaginalLooseness++;
 						changes++;

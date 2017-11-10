@@ -1185,7 +1185,7 @@ import fl.controls.ComboBox;
 					break;
 				case PerkLib.WetPussy:
 					player.femininity += 7;
-					player.vaginas[0].vaginalWetness = VAGINA_WETNESS_WET;
+					player.vaginas[0].vaginalWetness = VaginaClass.WETNESS_WET;
 					player.createPerk(PerkLib.WetPussy, 2, 0, 0, 0);
 					break;
 			}
@@ -1262,7 +1262,7 @@ import fl.controls.ComboBox;
 			if (choice == PerkLib.HistorySlut || choice == PerkLib.HistoryWhore) {
 				if (player.hasVagina()) {
 					player.vaginas[0].virgin = false;
-					player.vaginas[0].vaginalLooseness = VAGINA_LOOSENESS_LOOSE;
+					player.vaginas[0].vaginalLooseness = VaginaClass.LOOSENESS_LOOSE;
 				}
 				player.ass.analLooseness = 1;
 			}
