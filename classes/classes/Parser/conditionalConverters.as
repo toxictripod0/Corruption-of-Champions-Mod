@@ -3,12 +3,12 @@
 		import classes.Items.ArmorLib;
 		import classes.Items.UndergarmentLib;
 
-
-
-		// Possible text arguments in the conditional of a if statement
-		// First, there is an attempt to cast the argument to a Number. If that fails,
-		// a dictionary lookup is performed to see if the argument is in the conditionalOptions[]
-		// object. If that fails, we just fall back to returning 0
+		/**
+		 * Possible text arguments in the conditional of a if statement
+		 * First, there is an attempt to cast the argument to a Number. If that fails,
+		 * a dictionary lookup is performed to see if the argument is in the conditionalOptions[]
+		 * object. If that fails, we just fall back to returning 0
+		 */
 		public var conditionalOptions:Object =
 		{
 				"strength"			: function(thisPtr:*):* {return  kGAMECLASS.player.str;},
