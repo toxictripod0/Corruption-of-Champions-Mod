@@ -1,7 +1,9 @@
 package classes.Scenes.Places.TelAdre {
 import classes.ItemType;
+import flash.errors.IllegalOperationError;
 
 public class Shop extends TelAdreAbstractContent {
+	//TODO rename Shop to AbstractShop? Because thats what it is.
     protected var sprite:int = -1;
 
     public function enter():void {
@@ -10,7 +12,14 @@ public class Shop extends TelAdreAbstractContent {
         inside();
     }
 
+	/**
+	 * This method is called when the player enters a shop.
+	 * <b>Note:</b> The subclass must override and implement this method.
+	 * @throws IllegalOperationError if the method is not implemented
+	 */
     protected function inside():void {
+		//Implement this method in the subclass
+		throw new IllegalOperationError("Method not implemented!");
     }
 
     protected function debit(itype:ItemType = null, priceOverride:int = -1, keyItem:String = ""):void {
