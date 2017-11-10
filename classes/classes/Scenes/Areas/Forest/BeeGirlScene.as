@@ -4,6 +4,7 @@
 package classes.Scenes.Areas.Forest
 {
 	import classes.*;
+	import classes.AssClass;
 	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
@@ -237,7 +238,7 @@ package classes.Scenes.Areas.Forest
 			outputText("The bee girl pulls back from you after a few minutes and pulls her abdomen between her fuzzy legs, letting it rest wedged between them.  With a delicate hand, she gently rubs her finger along a differently textured part of her carapace close to the base of the stinger.  In a moment, a knotted appendage emerges from it, her ovipositor.  She lies down on her back, and indicates that you should mount her lubricated organ with your " + player.assholeDescript() + ".  You take another steadying breath and gently lower yourself onto the organ.  As you feel each knot pass inside you, your partner gives a gentle buzz of pleasure.\n\n");
 			if (player.analCapacity() < 25) {
 				outputText("Inserting the organ into your body is a slow but sure process.  The lubrication makes it much easier to get the organ inside you, but you can definitely feel it stretching your rear entrance out.  ");
-				if (player.ass.analLooseness == CoC.ANAL_LOOSENESS_VIRGIN)
+				if (player.ass.analLooseness == AssClass.LOOSENESS_VIRGIN)
 					outputText("<b>Well, at least you’re losing your anal virginity willingly.  That’s something to be said in this world.</b>");
 				else outputText("<b>Your " + player.assholeDescript() + " has become looser thanks to the knotted appendage penetrating you.</b>");
 				player.buttChange(25, true);

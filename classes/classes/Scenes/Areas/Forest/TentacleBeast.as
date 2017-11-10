@@ -120,8 +120,8 @@ package classes.Scenes.Areas.Forest
 			this.pronoun2 = "it";
 			this.pronoun3 = "its";
 			this.createBreastRow(0,0);
-			this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-			this.ass.analWetness = ANAL_WETNESS_SLIME_DROOLING;
+			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
+			this.ass.analWetness = AssClass.WETNESS_SLIME_DROOLING;
 			this.tallness = rand(9) + 70;
 			this.hipRating = HIP_RATING_BOYISH;
 			this.buttRating = BUTT_RATING_BUTTLESS;

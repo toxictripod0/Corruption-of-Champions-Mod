@@ -142,8 +142,8 @@ package classes.Scenes.Places.Farm
 			this.cumMultiplier = 1.5;
 			this.hoursSinceCum = player.ballSize * 10;
 			this.createBreastRow(Appearance.breastCupInverse(breakLevel2?"B":"A"));
-			this.ass.analLooseness = ANAL_LOOSENESS_NORMAL;
-			this.ass.analWetness = ANAL_WETNESS_DRY;
+			this.ass.analLooseness = AssClass.LOOSENESS_NORMAL;
+			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,50,0,0,0);
 			this.tallness = 84;
 			this.hipRating = HIP_RATING_AVERAGE;

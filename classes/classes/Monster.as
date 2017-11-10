@@ -309,8 +309,8 @@
 			//// Note useful method: this.createBreastRow(Appearance.breastCupInverse("C")); // "C" -> 3
 
 			//// 4. Ass
-			///*OPTIONAL*/ //this.ass.analLooseness = ANAL_LOOSENESS_; // default TIGHT
-			///*OPTIONAL*/ //this.ass.analWetness = ANAL_WETNESS_; // default DRY
+			///*OPTIONAL*/ //this.ass.analLooseness = AssClass.LOOSENESS_; // default TIGHT
+			///*OPTIONAL*/ //this.ass.analWetness = AssClass.WETNESS_; // default DRY
 			///*OPTIONAL*/ //this.createStatusEffect(StatusEffects.BonusACapacity, bonus, 0, 0, 0);
 			//// 5. Body
 			///*REQUIRED*/ this.tallness = ;

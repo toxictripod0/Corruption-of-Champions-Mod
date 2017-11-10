@@ -115,8 +115,8 @@ package classes.Scenes.Areas.GlacialRift
 			this.ballSize = 2;
 			this.cumMultiplier = 2;
 			createBreastRow(Appearance.breastCupInverse("flat"));
-			this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-			this.ass.analWetness = ANAL_WETNESS_NORMAL;
+			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
+			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.tallness = 8*12;
 			this.hipRating = HIP_RATING_BOYISH;
 			this.buttRating = BUTT_RATING_TIGHT;

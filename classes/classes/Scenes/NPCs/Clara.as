@@ -143,8 +143,8 @@ package classes.Scenes.NPCs
 			// this.plural = false;
 			this.createVagina(false, VaginaClass.WETNESS_NORMAL, VaginaClass.LOOSENESS_NORMAL);
 			createBreastRow(Appearance.breastCupInverse("F"));
-			this.ass.analLooseness = ANAL_LOOSENESS_VIRGIN;
-			this.ass.analWetness = ANAL_WETNESS_DRY;
+			this.ass.analLooseness = AssClass.LOOSENESS_VIRGIN;
+			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.tallness = 6*12+4;
 			this.hipRating = HIP_RATING_CURVY;
 			this.buttRating = BUTT_RATING_LARGE;

@@ -1,5 +1,6 @@
 package classes.Scenes.Dungeons.Factory 
 {
+	import classes.AssClass;
 	import classes.BaseContent;
 	import classes.BodyParts.*;
 	import classes.Gender;
@@ -320,9 +321,9 @@ package classes.Scenes.Dungeons.Factory
 				outputText("\n\n");
 			}
 			//Reduce excessive anal wetness
-			if (player.ass.analWetness >= ANAL_WETNESS_SLIMY) { 
+			if (player.ass.analWetness >= AssClass.WETNESS_SLIMY) { 
 				outputText("The constant fluids leaking from your " + player.assDescript() + " slow down, then stop.  ");
-				player.ass.analWetness = ANAL_WETNESS_MOIST;
+				player.ass.analWetness = AssClass.WETNESS_MOIST;
 				temp++;
 			}
 

@@ -27,8 +27,8 @@ package classes.Scenes.Places.Prison
 			this.balls = 2;
 			this.ballSize = 1;
 			createBreastRow(0);
-			this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
-			this.ass.analWetness = ANAL_WETNESS_NORMAL;
+			this.ass.analLooseness = AssClass.LOOSENESS_STRETCHED;
+			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.tallness = 40;
 			this.hipRating = HIP_RATING_BOYISH;
 			this.buttRating = BUTT_RATING_TIGHT;

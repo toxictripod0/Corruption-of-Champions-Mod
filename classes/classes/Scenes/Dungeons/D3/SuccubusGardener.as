@@ -1,6 +1,7 @@
 package classes.Scenes.Dungeons.D3 
 {
 	import classes.Appearance;
+	import classes.AssClass;
 	import classes.Monster;
 	import classes.StatusEffects;
 	import classes.PerkLib;
@@ -24,8 +25,8 @@ package classes.Scenes.Dungeons.D3
 			this.createVagina(false, 3, 3);
 			this.createBreastRow(Appearance.breastCupInverse("FF"));
 			
-			this.ass.analLooseness = ANAL_LOOSENESS_LOOSE;
-			this.ass.analWetness = ANAL_WETNESS_DRY;
+			this.ass.analLooseness = AssClass.LOOSENESS_LOOSE;
+			this.ass.analWetness = AssClass.WETNESS_DRY;
 			
 			this.tallness = 8 * 12;
 			this.hipRating = HIP_RATING_AVERAGE;

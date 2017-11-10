@@ -241,11 +241,11 @@ package classes.Scenes.Areas.HighMountains
 			          +" entrance with a little more pressure. While you know you’d love to tease him longer, you want his thick reptile cock in you"
 			          +" more. You rock your hips a couple more times, spreading his pre over your entrance before pushing down.");
 			outputText("\n\nAs his thick tip slides into your pucker");
-			if (player.ass.analLooseness <= ANAL_LOOSENESS_TIGHT)
+			if (player.ass.analLooseness <= AssClass.LOOSENESS_TIGHT)
 				outputText(" stretching your tight passage open");
 			outputText(" you can’t help but moan. The nubs along his shaft each rub against your sensitive pucker as you slowly take his whole"
 			          +" length, and you can’t help but");
-			if (player.ass.analLooseness <= ANAL_LOOSENESS_TIGHT)
+			if (player.ass.analLooseness <= AssClass.LOOSENESS_TIGHT)
 				outputText(" feel full.");
 			else
 				outputText(" enjoy his size in your practised asshole.");

@@ -109,8 +109,8 @@ package classes.Scenes.Quests.UrtaQuest
 			this.plural = false;
 			this.createCock(14,2);
 			createBreastRow(0);
-			this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-			this.ass.analWetness = ANAL_WETNESS_DRY;
+			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
+			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,10,0,0,0);
 			this.tallness = 5*12+10;
 			this.hipRating = HIP_RATING_AMPLE+2;

@@ -277,8 +277,8 @@ package classes.Scenes.Areas.Bog
 			this.hoursSinceCum = 20;
 
 			createBreastRow(0);
-			this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-			this.ass.analWetness = ANAL_WETNESS_NORMAL;
+			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
+			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 
 			this.tallness = 5;
 			this.hipRating = HIP_RATING_SLENDER;

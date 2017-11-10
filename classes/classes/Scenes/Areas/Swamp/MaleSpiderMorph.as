@@ -34,8 +34,8 @@ package classes.Scenes.Areas.Swamp
 			this.balls = 2;
 			this.ballSize = 2;
 			createBreastRow(0);
-			this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-			this.ass.analWetness = ANAL_WETNESS_DRY;
+			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
+			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,40,0,0,0);
 			this.tallness = 7*12+6;
 			this.hipRating = HIP_RATING_CURVY+2;

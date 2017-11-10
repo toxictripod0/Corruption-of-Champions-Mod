@@ -1,5 +1,6 @@
 package classes.Scenes.Monsters 
 {
+	import classes.AssClass;
 	import classes.BreastCup;
 	import classes.Monster;
 	import classes.StatusEffects;
@@ -86,8 +87,8 @@ package classes.Scenes.Monsters
 				createBreastRow(BreastCup.JACQUES00);
 			else
 				createBreastRow(0);
-			this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-			this.ass.analWetness = ANAL_WETNESS_DRY;
+			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
+			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.tallness = rand(24) + 25;
 			this.hipRating = HIP_RATING_BOYISH;
 			this.buttRating = BUTT_RATING_TIGHT;

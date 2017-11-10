@@ -4,22 +4,6 @@
 
 // Description constants
 
-// analwetnesslevelsNOPEDISABLED
-public static const ANAL_WETNESS_DRY:int                                            =   0;
-public static const ANAL_WETNESS_NORMAL:int                                         =   1;
-public static const ANAL_WETNESS_MOIST:int                                          =   2;
-public static const ANAL_WETNESS_SLIMY:int                                          =   3;
-public static const ANAL_WETNESS_DROOLING:int                                       =   4;
-public static const ANAL_WETNESS_SLIME_DROOLING:int                                 =   5;
-
-// analloosenesslevelsNOPEDISABLED
-public static const ANAL_LOOSENESS_VIRGIN:int                                       =   0;
-public static const ANAL_LOOSENESS_TIGHT:int                                        =   1;
-public static const ANAL_LOOSENESS_NORMAL:int                                       =   2;
-public static const ANAL_LOOSENESS_LOOSE:int                                        =   3;
-public static const ANAL_LOOSENESS_STRETCHED:int                                    =   4;
-public static const ANAL_LOOSENESS_GAPING:int                                       =   5;
-
 // hipRating
 public static const HIP_RATING_BOYISH:int                                           =   0;
 public static const HIP_RATING_SLENDER:int                                          =   2;

@@ -170,8 +170,8 @@ package classes.Scenes.Dungeons.Factory
 			this.cumMultiplier = 3;
 			// this.hoursSinceCum = 0;
 			createBreastRow(0);
-			this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
-			this.ass.analWetness = ANAL_WETNESS_SLIME_DROOLING;
+			this.ass.analLooseness = AssClass.LOOSENESS_STRETCHED;
+			this.ass.analWetness = AssClass.WETNESS_SLIME_DROOLING;
 			this.tallness = rand(9) + 70;
 			this.hipRating = HIP_RATING_AMPLE;
 			this.buttRating = BUTT_RATING_TIGHT;

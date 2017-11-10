@@ -2062,10 +2062,10 @@ package classes.Scenes {
 			outputText("  You splay your " + player.legs() + " and lie there with it inside you, feeling it respond to your arousal, becoming more and more turned on by the second.\n\n");
 		
 			//(Kinda dry)
-			if (player.ass.analWetness < ANAL_WETNESS_SLIMY)
+			if (player.ass.analWetness < AssClass.WETNESS_SLIMY)
 				outputText("The thickness of the toy gradually increases, filling you more and more effectively as it reacts to your heat.  You grab it two-handed and start slamming it into your [asshole], vigorously fucking yourself with the swelling dong.  The sensations just keep getting better and better as more and more of the goblin's sex-drug leaks into you.\n\n"); 
 			//(Pretty wet)
-			else if (player.ass.analWetness < ANAL_WETNESS_SLIME_DROOLING) {
+			else if (player.ass.analWetness < AssClass.WETNESS_SLIME_DROOLING) {
 				outputText("The toy's girth seems to pulse and swell within you, spreading you wide open as it sops up your unnatural wetness and grows larger.  You grab it in a two-handed grip and begin working it in and out of your [asshole], gasping and twitching as every ridge and feature of the dildo rubs you just right.  Every inch of your [ass] tingles with a desire to be touched, rubbed, and squeezed. ");
 				if (player.cocks.length > 0) {
 					outputText("Even your " + player.multiCockDescript() + " ache");

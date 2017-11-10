@@ -178,8 +178,8 @@ package classes.Scenes.Areas.HighMountains
 			this.ballSize = 2;
 			this.cumMultiplier = 4;
 			createBreastRow(0);
-			this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-			this.ass.analWetness = ANAL_WETNESS_DRY;
+			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
+			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,30,0,0,0);
 			this.tallness = 6*12+2;
 			this.hipRating = HIP_RATING_AMPLE;
