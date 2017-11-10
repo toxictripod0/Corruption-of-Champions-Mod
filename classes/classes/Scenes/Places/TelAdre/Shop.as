@@ -25,7 +25,8 @@ public class Shop extends TelAdreAbstractContent {
     protected function debit(itype:ItemType = null, priceOverride:int = -1, keyItem:String = ""):void {
         player.gems -= priceOverride >= 0 ? priceOverride : itype.value;
         statScreenRefresh();
-        if (keyItem != "") {
+		
+        if (keyItem !== "") {
             player.createKeyItem(keyItem, 0, 0, 0, 0);
             doNext(inside);
         } else {
