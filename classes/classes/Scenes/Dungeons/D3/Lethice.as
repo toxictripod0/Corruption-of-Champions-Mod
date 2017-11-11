@@ -109,7 +109,7 @@ package classes.Scenes.Dungeons.D3
 			}
 			if (player.hasStatusEffect(StatusEffects.LethicesRapeTentacles))
 			{
-				str += "\n\n<b>A forest of black tentacles sprout from the floor, snaring any demons unlucky enough to venture close - or any champions unlucky enough to be in the center of it all.";
+				str += "\n\n<b>A forest of black tentacles sprout from the floor, snaring any demons unlucky enough to venture close - or any champions unlucky enough to be in the center of it all.</b>";
 				if (player.statusEffectv3(StatusEffects.LethicesRapeTentacles) != 0)
 				{
 					outputText(" Unfortunately, they’ve grabbed you. You need to break free to do anything!");
