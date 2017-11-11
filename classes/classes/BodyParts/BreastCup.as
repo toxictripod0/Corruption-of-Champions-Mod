@@ -1,4 +1,4 @@
-package classes 
+package classes.BodyParts 
 {
 	/**
 	 * Container class for the breastcup constants

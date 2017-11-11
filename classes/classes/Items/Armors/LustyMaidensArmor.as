@@ -3,7 +3,7 @@
  */
 package classes.Items.Armors
 {
-	import classes.BreastCup;
+	import classes.BodyParts.BreastCup;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Items.Armor;
 	import classes.CoC;

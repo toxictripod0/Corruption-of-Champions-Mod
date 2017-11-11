@@ -1,6 +1,8 @@
 package classes.Scenes.Areas.Lake
 {
 	import classes.*;
+	import classes.BodyParts.Butt;
+	import classes.BodyParts.Hips;
 	import classes.internals.*;
 
 	public class FetishZealot extends Monster

@@ -5,6 +5,7 @@ package classes.Scenes.Places.Owca
 {
 	import classes.*;
 	import classes.BodyParts.*;
+	import classes.BodyParts.Hips;
 
 	public class LustyDemons extends Monster
 	{

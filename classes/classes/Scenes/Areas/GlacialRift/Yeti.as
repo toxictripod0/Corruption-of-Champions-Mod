@@ -2,6 +2,7 @@ package classes.Scenes.Areas.GlacialRift
 {
 	import classes.*;
 	import classes.BodyParts.*;
+	import classes.BodyParts.Hips;
 	import classes.internals.WeightedDrop;
 	
 	public class Yeti extends Monster

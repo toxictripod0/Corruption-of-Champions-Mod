@@ -2,6 +2,7 @@ package classes.Scenes.Areas.HighMountains
 {
 	import classes.*;
 	import classes.BodyParts.*;
+	import classes.BodyParts.Hips;
 	import classes.internals.WeightedAction;
 	import classes.internals.WeightedDrop;
 	import classes.GlobalFlags.*

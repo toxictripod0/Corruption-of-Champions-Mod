@@ -1,5 +1,6 @@
 package classes.Scenes.NPCs 
 {
+	import classes.BodyParts.BreastCup;
 	import classes.GlobalFlags.*;
 	import classes.Items.*;
 	import classes.*;

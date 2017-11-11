@@ -2,6 +2,7 @@
 {
 	import classes.*;
 	import classes.BodyParts.*;
+	import classes.BodyParts.Butt;
 	import classes.GlobalFlags.*;
 
 	public class Jojo extends Monster

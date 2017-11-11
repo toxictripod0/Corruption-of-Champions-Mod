@@ -2,6 +2,7 @@ package classes.Scenes.Areas.Desert
 {
 	import classes.*;
 	import classes.BodyParts.*;
+	import classes.BodyParts.Hips;
 	import classes.internals.WeightedDrop;
 	import classes.GlobalFlags.kFLAGS;
 

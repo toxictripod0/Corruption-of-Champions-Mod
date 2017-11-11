@@ -1,6 +1,6 @@
 package classes.Scenes.Places.Bazaar{
 	import classes.Appearance;
-	import classes.Butt;
+	import classes.BodyParts.Butt;
 	import classes.helper.FireButtonEvent;
 	import classes.internals.IRandomNumber;
     import org.flexunit.asserts.*;

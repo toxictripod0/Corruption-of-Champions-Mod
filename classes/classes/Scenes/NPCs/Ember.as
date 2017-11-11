@@ -2,6 +2,7 @@ package classes.Scenes.NPCs
 {
 	import classes.*;
 	import classes.BodyParts.*;
+	import classes.BodyParts.Butt;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.internals.ChainedDrop;
 

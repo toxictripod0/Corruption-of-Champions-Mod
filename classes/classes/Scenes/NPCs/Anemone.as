@@ -2,6 +2,7 @@ package classes.Scenes.NPCs
 {
 	import classes.*;
 	import classes.BodyParts.*;
+import classes.BodyParts.Butt;
 import classes.StatusEffects.Combat.AnemoneVenomDebuff;
 import classes.internals.WeightedDrop;
 

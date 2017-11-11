@@ -4,12 +4,15 @@ package classes
 	import classes.BodyParts.Antennae;
 	import classes.BodyParts.Arms;
 	import classes.BodyParts.Beard;
+	import classes.BodyParts.BreastCup;
+	import classes.BodyParts.Butt;
 	import classes.BodyParts.Claws;
 	import classes.BodyParts.Ears;
 	import classes.BodyParts.Eyes;
 	import classes.BodyParts.Face;
 	import classes.BodyParts.Gills;
 	import classes.BodyParts.Hair;
+	import classes.BodyParts.Hips;
 	import classes.BodyParts.Horns;
 	import classes.BodyParts.LowerBody;
 	import classes.BodyParts.Neck;

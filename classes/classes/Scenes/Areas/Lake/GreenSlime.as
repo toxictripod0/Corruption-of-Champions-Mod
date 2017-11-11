@@ -2,6 +2,7 @@
 {
 	import classes.*;
 	import classes.BodyParts.*;
+	import classes.BodyParts.Hips;
 	import classes.internals.*;
 	import classes.GlobalFlags.kFLAGS;
 

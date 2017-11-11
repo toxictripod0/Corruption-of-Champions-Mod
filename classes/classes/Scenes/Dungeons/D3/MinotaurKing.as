@@ -6,8 +6,8 @@ package classes.Scenes.Dungeons.D3
 	import classes.PerkLib;
 	import classes.CockTypesEnum;
 	import classes.internals.WeightedDrop;
-	import classes.Butt;
-	import classes.Hips;
+	import classes.BodyParts.Butt;
+	import classes.BodyParts.Hips;
 	
 	public class MinotaurKing extends Monster
 	{

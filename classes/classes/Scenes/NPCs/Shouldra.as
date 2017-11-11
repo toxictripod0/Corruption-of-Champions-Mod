@@ -1,6 +1,8 @@
 package classes.Scenes.NPCs
 {
 	import classes.*;
+	import classes.BodyParts.Butt;
+	import classes.BodyParts.Hips;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.internals.*;
 

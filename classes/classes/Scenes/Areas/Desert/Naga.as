@@ -2,6 +2,8 @@ package classes.Scenes.Areas.Desert
 {
 	import classes.*;
 	import classes.BodyParts.*;
+import classes.BodyParts.Butt;
+import classes.BodyParts.Hips;
 import classes.StatusEffects.Combat.NagaVenomDebuff;
 import classes.internals.*;
 

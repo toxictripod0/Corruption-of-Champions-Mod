@@ -5,8 +5,8 @@ package classes.Scenes.Dungeons.D3
 	import classes.StatusEffects;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.PerkLib;
-	import classes.Butt;
-	import classes.Hips;
+	import classes.BodyParts.Butt;
+	import classes.BodyParts.Hips;
 	
 	public class Lethice extends Monster
 	{

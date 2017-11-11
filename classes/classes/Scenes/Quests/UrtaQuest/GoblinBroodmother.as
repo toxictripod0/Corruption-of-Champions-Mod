@@ -4,6 +4,8 @@
 package classes.Scenes.Quests.UrtaQuest
 {
 	import classes.*;
+	import classes.BodyParts.Butt;
+	import classes.BodyParts.Hips;
 	import classes.Scenes.Monsters.Goblin;
 	import classes.internals.*;
 

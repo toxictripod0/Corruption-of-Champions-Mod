@@ -1,6 +1,7 @@
 ﻿package classes.Scenes.Places.TelAdre 
 {
 	import classes.*;
+	import classes.BodyParts.BreastCup;
 	import classes.GlobalFlags.*;
 	import classes.Scenes.NPCs.Urta;
 

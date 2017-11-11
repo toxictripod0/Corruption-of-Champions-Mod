@@ -1,6 +1,8 @@
 package classes.Scenes.Areas.Forest
 {
 	import classes.*;
+	import classes.BodyParts.Butt;
+	import classes.BodyParts.Hips;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Scenes.Monsters.Goblin;
 	import classes.internals.*;

@@ -1,6 +1,8 @@
 package classes.Scenes.Monsters 
 {
 	import classes.*;
+	import classes.BodyParts.Butt;
+	import classes.BodyParts.Hips;
 	import classes.internals.*;
 	import classes.GlobalFlags.*;
 	

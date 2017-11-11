@@ -2,6 +2,7 @@ package classes.Scenes.Dungeons.D3
 {
 	import classes.*;
 	import classes.BodyParts.*;
+	import classes.BodyParts.Butt;
 	import classes.internals.*;
 	import classes.Items.*
 	

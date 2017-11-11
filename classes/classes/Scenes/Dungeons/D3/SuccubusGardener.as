@@ -7,8 +7,8 @@ package classes.Scenes.Dungeons.D3
 	import classes.PerkLib;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.GlobalFlags.kFLAGS;
-	import classes.Butt;
-	import classes.Hips;
+	import classes.BodyParts.Butt;
+	import classes.BodyParts.Hips;
 	
 	/**
 	 * ...

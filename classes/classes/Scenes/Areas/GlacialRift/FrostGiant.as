@@ -2,6 +2,8 @@ package classes.Scenes.Areas.GlacialRift
 {
 	import classes.*;
 	import classes.BodyParts.*;
+import classes.BodyParts.Butt;
+import classes.BodyParts.Hips;
 import classes.StatusEffects.Combat.GiantStrLossDebuff;
 import classes.internals.WeightedDrop;
 	import classes.GlobalFlags.kFLAGS;

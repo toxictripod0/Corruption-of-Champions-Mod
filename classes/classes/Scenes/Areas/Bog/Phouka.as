@@ -5,6 +5,7 @@ package classes.Scenes.Areas.Bog
 {
 	import classes.*;
 	import classes.BodyParts.*;
+	import classes.BodyParts.Hips;
 	import classes.internals.WeightedDrop;
 
 	public class Phouka extends Monster

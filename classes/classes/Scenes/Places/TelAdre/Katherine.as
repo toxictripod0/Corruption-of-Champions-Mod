@@ -1,6 +1,7 @@
 package classes.Scenes.Places.TelAdre {
 	import classes.*;
 	import classes.BodyParts.*;
+	import classes.BodyParts.BreastCup;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.display.SpriteDb;

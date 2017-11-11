@@ -1,6 +1,8 @@
 package classes.Scenes.Areas.Mountain
 {
 	import classes.*;
+	import classes.BodyParts.Butt;
+	import classes.BodyParts.Hips;
 	import classes.GlobalFlags.kFLAGS;
 
 	public class WormMass extends Monster

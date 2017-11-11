@@ -2,6 +2,8 @@
 {
 	import classes.*;
 	import classes.BodyParts.*;
+	import classes.BodyParts.Butt;
+	import classes.BodyParts.Hips;
 	import classes.internals.*;
 	import classes.display.SpriteDb;
 

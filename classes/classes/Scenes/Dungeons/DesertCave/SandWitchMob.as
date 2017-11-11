@@ -1,6 +1,8 @@
 package classes.Scenes.Dungeons.DesertCave
 {
 	import classes.*;
+	import classes.BodyParts.Butt;
+	import classes.BodyParts.Hips;
 
 	public class SandWitchMob extends Monster
 	{

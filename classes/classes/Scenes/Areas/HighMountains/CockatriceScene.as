@@ -4,6 +4,7 @@
 package classes.Scenes.Areas.HighMountains
 {
 	import classes.*;
+	import classes.BodyParts.BreastCup;
 	import classes.Items.ArmorLib;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;

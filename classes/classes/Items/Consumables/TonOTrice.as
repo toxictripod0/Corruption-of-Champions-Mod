@@ -2,7 +2,7 @@ package classes.Items.Consumables
 {
 	import classes.Appearance;
 	import classes.BodyParts.*;
-	import classes.BreastCup;
+	import classes.BodyParts.BreastCup;
 	import classes.CockTypesEnum;
 	import classes.Gender;
 	import classes.GlobalFlags.kFLAGS;

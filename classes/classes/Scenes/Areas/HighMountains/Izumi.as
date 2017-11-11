@@ -1,6 +1,8 @@
 package classes.Scenes.Areas.HighMountains 
 {
 	import classes.*;
+	import classes.BodyParts.Butt;
+	import classes.BodyParts.Hips;
 	import classes.GlobalFlags.kFLAGS;
 
 	public class Izumi extends Monster

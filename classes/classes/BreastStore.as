@@ -1,5 +1,6 @@
 package classes
 {
+	import classes.BodyParts.BreastCup;
 	import classes.internals.Utils;
 	import classes.Appearance;
 	import classes.CoC;

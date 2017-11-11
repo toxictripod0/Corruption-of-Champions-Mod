@@ -2,6 +2,7 @@ package classes.Scenes.Areas.Lake
 {
 	import classes.*;
 	import classes.BodyParts.*;
+	import classes.BodyParts.Hips;
 	import classes.internals.*;
 
 	public class GooGirl extends Monster

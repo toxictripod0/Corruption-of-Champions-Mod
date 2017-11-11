@@ -1,5 +1,6 @@
 package classes.Scenes.Areas.Forest{
 	import classes.*;
+	import classes.BodyParts.BreastCup;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Scenes.API.Encounter;
 	import classes.display.SpriteDb;

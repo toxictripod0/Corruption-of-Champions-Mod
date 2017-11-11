@@ -2,6 +2,7 @@ package classes.Scenes.NPCs
 {
 	import classes.*;
 	import classes.BodyParts.*;
+	import classes.BodyParts.Hips;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.display.SpriteDb;
 	import classes.internals.*;

@@ -1,6 +1,8 @@
 package classes.Scenes.Areas.Desert
 {
 	import classes.*;
+	import classes.BodyParts.Butt;
+	import classes.BodyParts.Hips;
 	import classes.internals.WeightedDrop;
 
 	public class CumWitch extends Monster

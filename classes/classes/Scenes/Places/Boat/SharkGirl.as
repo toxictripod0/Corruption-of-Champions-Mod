@@ -1,6 +1,8 @@
 package classes.Scenes.Places.Boat
 {
 	import classes.*;
+	import classes.BodyParts.Butt;
+	import classes.BodyParts.Hips;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
 

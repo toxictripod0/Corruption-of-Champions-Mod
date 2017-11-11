@@ -2,6 +2,7 @@ package classes.Scenes.Places.Prison
 {
 	import classes.*;
 	import classes.BodyParts.*;
+	import classes.BodyParts.Hips;
 	import classes.Scenes.Monsters.Imp;
 	
 	public class Scruffy extends Imp
