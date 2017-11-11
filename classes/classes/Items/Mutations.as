@@ -3347,34 +3347,50 @@ package classes.Items
 				//If something got thickened
 				if (temp == 1) {
 					outputText("\n\nYou can feel your " + player.multiCockDescriptLight() + " filling out in your " + player.armorName + ". Pulling ");
-					if (player.cockTotal() == 1) outputText("it");
-					else outputText("them");
+					if (player.cockTotal() == 1) {
+						outputText("it");
+					} else {
+						outputText("them");
+					}
+					
 					outputText(" out, you look closely.  ");
-					if (player.cockTotal() == 1) outputText("It's");
-					else outputText("They're");
+					
+					if (player.cockTotal() === 1) {
+						outputText("It's");
+					} else {
+						outputText("They're");
+					}
+					
 					outputText(" definitely thicker.");
 					var counter:Number;
 					changes++;
 				}
 			}
 			//[Increase to Breast Size] - up to Large DD
-			if (player.smallestTitSize() < 6 && changes < changeLimit && rand(4) == 0) {
+			if (player.smallestTitSize() < 6 && changes < changeLimit && rand(4) === 0) {
 				outputText("\n\nAfter eating it, your chest aches and tingles, and your hands reach up to scratch at it unthinkingly.  Silently, you hope that you aren't allergic to it.  Just as you start to scratch at your " + player.breastDescript(player.smallestTitRow()) + ", your chest pushes out in slight but sudden growth.");
 				player.breastRows[player.smallestTitRow()].breastRating++;
 				changes++;
 			}
 			//[Increase to Ass Size] - to 11
-			if (player.buttRating < 11 && changes < changeLimit && rand(4) == 0) {
+			if (player.buttRating < 11 && changes < changeLimit && rand(4) === 0) {
 				outputText("\n\nYou look over your shoulder at your " + player.buttDescript() + " only to see it expand just slightly. You gape in confusion before looking back at the remaining silk in your hands. You finish it anyway. Dammit!");
 				player.buttRating++;
 				changes++;
 			}
 			//Neck restore
-			if (player.neck.type != Neck.NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) {
+				mutations.restoreNeck(tfSource);
+			}
 			//Rear body restore
-			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
+			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) {
+				mutations.restoreRearBody(tfSource);
+			}
 			//Ovi perk loss
-			if (rand(5) == 0) updateOvipositionPerk(tfSource);
+			if (rand(5) === 0) {
+				updateOvipositionPerk(tfSource);
+			}
+			
 			//***************
 			//Appearance Changes
 			//***************
