@@ -402,10 +402,13 @@ public class StatsView extends Block {
 	public function setBackground(bitmapClass:Class):void {
 		sideBarBG.bitmapClass = bitmapClass;
 	}
+	
 	public function setTheme(font:String,
 							 textColor:uint,
 							 barAlpha:Number):void {
 		var dtf:TextFormat;
+		var shadowFilter:DropShadowFilter = new DropShadowFilter();
+		
 		for each(var e:StatBar in allStats) {
 			dtf = e.valueLabel.defaultTextFormat;
 			dtf.color = textColor;
@@ -416,12 +419,20 @@ public class StatsView extends Block {
 			dtf.color = textColor;
 			e.nameLabel.defaultTextFormat = dtf;
 			e.nameLabel.setTextFormat(dtf);
+			
 			if (e.bar) {
 				e.bar.alpha = barAlpha;
-				if (e.bar.filters.length < 1) e.bar.filters = [new DropShadowFilter()];
+				
+				if (e.bar.filters.length < 1) {
+					e.bar.filters = [shadowFilter];
+				}
 			}
-			if (e.minBar) e.minBar.alpha = (1 - (1 - barAlpha) / 2); // 2 times less transparent than bar
+			
+			if (e.minBar) {
+				e.minBar.alpha = (1 - (1 - barAlpha) / 2); // 2 times less transparent than bar
+			}
 		}
+		
 		for each(var tf:TextField in [nameText,coreStatsText,combatStatsText,advancementText,timeText]) {
 			dtf = tf.defaultTextFormat;
 			dtf.color = textColor;
