@@ -5,6 +5,8 @@ package classes.Scenes.Dungeons.D3
 	import classes.StatusEffects;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.CockTypesEnum;
+	import classes.BodyParts.Butt;
+	import classes.BodyParts.Hips;
 	
 	/**
 	 * ...
@@ -32,8 +34,8 @@ package classes.Scenes.Dungeons.D3
 			this.balls = 2;
 			this.ballSize = 3;
 			
-			this.hipRating = HIP_RATING_FERTILE;
-			this.buttRating = BUTT_RATING_EXPANSIVE;
+			this.hipRating = Hips.RATING_FERTILE;
+			this.buttRating = Butt.RATING_EXPANSIVE;
 			
 			initStrTouSpeInte(100, 100, 65, 65);
 			initLibSensCor(85, 40, 100);

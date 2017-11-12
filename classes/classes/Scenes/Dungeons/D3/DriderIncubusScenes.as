@@ -1,6 +1,7 @@
 package classes.Scenes.Dungeons.D3
 {
 	import classes.BaseContent;
+	import classes.BodyParts.*;
 	import classes.Items.WeaponLib;
 	import classes.StatusEffects;
 	import classes.GlobalFlags.kFLAGS;
@@ -802,7 +803,7 @@ package classes.Scenes.Dungeons.D3
 			{
 				outputText(" slither");
 			}
-			else if (player.lowerBody == LOWER_BODY_TYPE_HOOFED)
+			else if (player.lowerBody == LowerBody.HOOFED)
 			{
 				outputText(" clop");
 			}

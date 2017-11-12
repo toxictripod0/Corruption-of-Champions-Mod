@@ -4,6 +4,7 @@
 package classes.Scenes.Areas.HighMountains
 {
 	import classes.*;
+	import classes.BodyParts.BreastCup;
 	import classes.Items.ArmorLib;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
@@ -171,7 +172,7 @@ package classes.Scenes.Areas.HighMountains
 			outputText("\n\nYou begin to rise up his length, the bumps rubbing firmly against your clit with each inch that leaves you. As you reach"
 			          +" the tip you slam your hips back down, relishing the feeling of his length rapidly stretching you as the tip pokes your womb."
 			          +" You keep this pace as you break the kiss, the regular ascent and rapid descent making lewd");
-			if (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_WET)
+			if (player.vaginas[0].vaginalWetness >= VaginaClass.WETNESS_WET)
 				outputText(" squelching");
 			else
 				outputText(" slapping");
@@ -241,11 +242,11 @@ package classes.Scenes.Areas.HighMountains
 			          +" entrance with a little more pressure. While you know you’d love to tease him longer, you want his thick reptile cock in you"
 			          +" more. You rock your hips a couple more times, spreading his pre over your entrance before pushing down.");
 			outputText("\n\nAs his thick tip slides into your pucker");
-			if (player.ass.analLooseness <= ANAL_LOOSENESS_TIGHT)
+			if (player.ass.analLooseness <= AssClass.LOOSENESS_TIGHT)
 				outputText(" stretching your tight passage open");
 			outputText(" you can’t help but moan. The nubs along his shaft each rub against your sensitive pucker as you slowly take his whole"
 			          +" length, and you can’t help but");
-			if (player.ass.analLooseness <= ANAL_LOOSENESS_TIGHT)
+			if (player.ass.analLooseness <= AssClass.LOOSENESS_TIGHT)
 				outputText(" feel full.");
 			else
 				outputText(" enjoy his size in your practised asshole.");
@@ -638,7 +639,7 @@ package classes.Scenes.Areas.HighMountains
 				outputText(" stripping out of your [armor] as you approach,");
 			outputText(" standing over him as you give him a good look over. Now he isn’t rushing you, you can see he has quite the charming face,"
 			          +" a dashing mix of mischievous and kind. As you present yourself to him, he looks up at you,");
-			if (player.biggestTitSize() >= BREAST_CUP_H)
+			if (player.biggestTitSize() >= BreastCup.H)
 				outputText(" or at least tries to, his view of your face obstructed by your bountiful breast flesh.");
 			else {
 				outputText(" as if asking for permission with his gaze. While he may be head level with your groin which would suggest your intent,"

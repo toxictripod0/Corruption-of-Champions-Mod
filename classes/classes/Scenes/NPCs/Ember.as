@@ -1,6 +1,8 @@
 package classes.Scenes.NPCs
 {
 	import classes.*;
+	import classes.BodyParts.*;
+	import classes.BodyParts.Butt;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.internals.ChainedDrop;
 
@@ -166,24 +168,24 @@ package classes.Scenes.NPCs
 				// this.hoursSinceCum = 0;
 			}
 			if (gender >= 2) {
-				this.createVagina(game.flags[kFLAGS.EMBER_PUSSY_FUCK_COUNT] == 0, VAGINA_WETNESS_SLAVERING, VAGINA_LOOSENESS_LOOSE);
+				this.createVagina(game.flags[kFLAGS.EMBER_PUSSY_FUCK_COUNT] == 0, VaginaClass.WETNESS_SLAVERING, VaginaClass.LOOSENESS_LOOSE);
 				createBreastRow(Appearance.breastCupInverse("F"));
 			} else {
 				createBreastRow(Appearance.breastCupInverse("flat"));
 			}
 
-			this.ass.analLooseness = ANAL_LOOSENESS_NORMAL;
-			this.ass.analWetness = ANAL_WETNESS_DRY;
+			this.ass.analLooseness = AssClass.LOOSENESS_NORMAL;
+			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.tallness = rand(8) + 70;
-			this.hipRating = HIP_RATING_AMPLE+2;
-			this.buttRating = BUTT_RATING_LARGE;
+			this.hipRating = Hips.RATING_AMPLE+2;
+			this.buttRating = Butt.RATING_LARGE;
 			this.skinTone = "red";
 			this.hairColor = "black";
 			this.hairLength = 15;
-			this.hornType = HORNS_DRACONIC_X4_12_INCH_LONG;
+			this.hornType = Horns.DRACONIC_X4_12_INCH_LONG;
 			this.horns = 4;
-			this.wingType = WING_TYPE_DRACONIC_LARGE;
-			this.tailType = TAIL_TYPE_DRACONIC;
+			this.wingType = Wings.DRACONIC_LARGE;
+			this.tailType = Tail.DRACONIC;
 			initStrTouSpeInte(75 + Math.floor(game.emberScene.emberSparIntensity() / 3), 75 + Math.floor(game.emberScene.emberSparIntensity() / 3), 75 + Math.floor(game.emberScene.emberSparIntensity() / 3), 75 + Math.floor(game.emberScene.emberSparIntensity() / 3));
 			initLibSensCor(50, 35, game.flags[kFLAGS.EMBER_COR]);
 			this.weaponName = "claws";

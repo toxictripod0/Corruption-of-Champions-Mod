@@ -1,6 +1,8 @@
 package classes.Scenes.Areas.GlacialRift 
 {
 	import classes.*;
+	import classes.BodyParts.*;
+	import classes.BodyParts.Hips;
 	import classes.internals.WeightedDrop;
 	
 	public class Yeti extends Monster
@@ -114,14 +116,14 @@ package classes.Scenes.Areas.GlacialRift
 			this.ballSize = 2;
 			this.cumMultiplier = 2;
 			createBreastRow(Appearance.breastCupInverse("flat"));
-			this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-			this.ass.analWetness = ANAL_WETNESS_NORMAL;
+			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
+			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.tallness = 8*12;
-			this.hipRating = HIP_RATING_BOYISH;
-			this.buttRating = BUTT_RATING_TIGHT;
+			this.hipRating = Hips.RATING_BOYISH;
+			this.buttRating = Butt.RATING_TIGHT;
 			this.skinTone = "light";
-			this.skinType = SKIN_TYPE_FUR;
-			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[SKIN_TYPE_FUR];
+			this.skinType = Skin.FUR;
+			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.FUR];
 			this.hairColor = "white";
 			this.hairLength = 8;
 			initStrTouSpeInte(95, 80, 60, 50);

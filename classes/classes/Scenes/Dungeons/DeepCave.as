@@ -2,6 +2,7 @@
 package classes.Scenes.Dungeons 
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.BaseContent;
@@ -318,7 +319,7 @@ package classes.Scenes.Dungeons
 			
 			outputText("You catch yourself rubbing the spooge against your " + player.skinDesc + " and into your " + player.allBreastsDescript() + " and you shake your head, trying to clear your mind. Remember how horrible it smells, you stress to yourself. It's disgusting and you're only doing it to please the insane fairy. Still, you shiver when you reach your nipples and find your thumbs applying too much pressure to your yielding softness, rubbing the spunk across your " + player.skinDesc + " in tight circles. Your next handful is larger and the next is larger still, until you drag the bucket closer to catch more of its dripping load with your flesh. You rub the warm jizz into your flesh, reveling in the heat it bleeds into your dripping body, the smell curling around your nostrils and filtering into your brain. You slop globs of oily cum across your face and head, rubbing it into your nostrils with your pinkies.\n\n");
 			
-			outputText("You lift the bucket, ready to slurp up the whole pail when the fairy makes an off-handed comment. \"<i>The masters mix their love with minotaur beasts, to make it seep into your mind,</i>\" she sighs, wistfully, looking terribly envious of your position. The girl seems to regret giving you the addictive cum, her words dulled by your jizz-drunk senses. Dimly, some part of your mind wonders if the minotaurs' drug-like seed is already working, but it hardly matters anymore. You're too far gone by now. You put the bucket in your lap and bend down, into it. Placing the tip of your nose against its lurid surface, you breathe deeply, drinking in the odor as much as savoring the moment. Then, with relish, you submerge your " + player.face() + " into the inky abyss of the spunk bucket, inhaling the sweet honey with an open mouth, air escaping your throat and bubbling up as you suck down gulp after gulp from your full-facial meal. The imp juice shower set your skin on fire, but drinking their salty discharge fills your organs with a raging inferno that drives away your memories, one by one. You gulp mouthfuls down, without even pausing to breathe. Every swallow blanks a part of your mind, first your crusade against the demons of the cave, then the friends you've met in this world, and then even your home. The liquid passion fills your mind, burying all else. Every part of your personality is replaced by the need for ejaculate and your vision turns white as, finally, you can't seem to recall your name.");
+			outputText("You lift the bucket, ready to slurp up the whole pail when the fairy makes an off-handed comment. \"<i>The masters mix their love with minotaur beasts, to make it seep into your mind,</i>\" she sighs, wistfully, looking terribly envious of your position. The girl seems to regret giving you the addictive cum, her words dulled by your jizz-drunk senses. Dimly, some part of your mind wonders if the minotaurs' drug-like seed is already working, but it hardly matters anymore. You're too far gone by now. You put the bucket in your lap and bend down, into it. Placing the tip of your nose against its lurid surface, you breathe deeply, drinking in the odor as much as savoring the moment. Then, with relish, you submerge your " + player.faceDescript() + " into the inky abyss of the spunk bucket, inhaling the sweet honey with an open mouth, air escaping your throat and bubbling up as you suck down gulp after gulp from your full-facial meal. The imp juice shower set your skin on fire, but drinking their salty discharge fills your organs with a raging inferno that drives away your memories, one by one. You gulp mouthfuls down, without even pausing to breathe. Every swallow blanks a part of your mind, first your crusade against the demons of the cave, then the friends you've met in this world, and then even your home. The liquid passion fills your mind, burying all else. Every part of your personality is replaced by the need for ejaculate and your vision turns white as, finally, you can't seem to recall your name.");
 			
 			//[Go to Bad End 2]
 			doNext(badEndValaNumber2);
@@ -393,7 +394,7 @@ package classes.Scenes.Dungeons
 			clearOutput();
 			outputText(images.showImage("imp-win-female-fuck"));
 			outputText("You walk around to one of the demons and push him onto his back.  Your " + player.armorName + " falls to the ground around you as you disrobe, looking over your tiny conquest.  A quick ripping motion disposes of his tiny loincloth, leaving his thick demon-tool totally unprotected. You grab and squat down towards it, rubbing the corrupted tool between your legs ");
-			if (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_SLICK) outputText("and coating it with feminine drool ");
+			if (player.vaginas[0].vaginalWetness >= VaginaClass.WETNESS_SLICK) outputText("and coating it with feminine drool ");
 			outputText("as you become more and more aroused.  It parts your lips and slowly slides in.  The ring of tainted nodules tickles you just right as you take the oddly textured member further and further into your willing depths.");
 			player.cuntChange(15,true,true,false);
 			outputText("\n\n");
@@ -403,7 +404,7 @@ package classes.Scenes.Dungeons
 			outputText("You begin riding the tiny demon, lifting up, and then dropping down, feeling each of the nodes gliding along your sex-lubed walls.   As time passes and your pleasure mounts, you pick up the pace, until you're bouncing happily atop your living demon-dildo.\n\n");
 			
 			outputText("The two of you cum together, though the demon's pleasure starts first.  A blast of his tainted seed pushes you over the edge.  You sink the whole way down, feeling him bump your cervix and twitch inside you, the bumps on his dick swelling in a pulsating wave in time with each explosion of fluid.  ");
-			if (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_SLAVERING) outputText("Cunt juices splatter him as you squirt explosively, leaving a puddle underneath him.  ");
+			if (player.vaginas[0].vaginalWetness >= VaginaClass.WETNESS_SLAVERING) outputText("Cunt juices splatter him as you squirt explosively, leaving a puddle underneath him.  ");
 			else outputText("Cunt juices drip down his shaft, oozing off his balls to puddle underneath him.  ");
 			outputText("The two of you lie together, trembling happily as you're filled to the brim with tainted fluids.\n\n");
 			
@@ -703,7 +704,7 @@ package classes.Scenes.Dungeons
 			outputText(" you as you're thrown atop one of the tables.   You grunt as leather straps are produced and laid over your form to restrain you.  In the span of a minute you're completely immobilized from the neck down, and your " + player.legs() + " are kept spread to allow easy access to your " + player.vaginaDescript(0) + ".\n\n");
 			
 			outputText("Shuffling as they remove their garments, the entire gang of imps, as well as Zetaz, are completely nude.  They've all grown full and hard from the sight of your nubile, restrained body, and in spite of yourself you get ");
-			if (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_DROOLING) outputText("even more wet ");
+			if (player.vaginas[0].vaginalWetness >= VaginaClass.WETNESS_DROOLING) outputText("even more wet ");
 			else outputText("a little wet ");
 			outputText("from the masculine scent the aroused penises are producing.  ");
 			if (player.cor < 33) outputText("How could you be turned on by such a repulsive situation?  You're going to be raped, brainwashed, and either kept as a pet or tossed in a milking tube for the rest of your life and your body is acting like some horny slut!");
@@ -721,8 +722,8 @@ package classes.Scenes.Dungeons
 			outputText("  Warm slipperiness slides over your lips again, feeling nearly as good as it would on your lower lips, and you pull your rebellious tongue back into your mouth with a gasp of pleasure.\n\n");
 			
 			outputText("This must be what Zetaz was waiting for, and the imp carefully injects the next chemical cocktail into the other side of your neck while you're distracted by orally masturbating your new mouth.  Your " + player.vaginaDescript(0) + " ");
-			if (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_DROOLING) outputText("gushes fresh fluids into a puddle on the table");
-			else if (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_WET) outputText("drools a heavy flow of liquid arousal onto the hardwood table");
+			if (player.vaginas[0].vaginalWetness >= VaginaClass.WETNESS_DROOLING) outputText("gushes fresh fluids into a puddle on the table");
+			else if (player.vaginas[0].vaginalWetness >= VaginaClass.WETNESS_WET) outputText("drools a heavy flow of liquid arousal onto the hardwood table");
 			else outputText("begins to dribble a steady flow of liquid on to the table's girl-slicked boards");
 			outputText(".  ");
 			if (player.inHeat) outputText("D");
@@ -791,7 +792,7 @@ package classes.Scenes.Dungeons
 			outputText("The sounds of numerous footfalls and clinking glass signal that the mob of imps has returned, bringing what sounds like hundreds of vials worth of their foul concoctions.  Zetaz releases your tumescent member and reaches over for something, then returns to your view bearing a ring gag.  Even turned on, defeated, and immobilized on a table, you try your best to fight him, but all that gets you is slapped.  The imp's palm smacks you hard enough to stun you and leave your ears ringing, and when you blink the stars from your eyes, your mouth is forced open with your tongue hanging out lewdly.\n\n");
 			
 			outputText("Another of Zetaz's brothers, or perhaps sons, hands him a tube with a funnel, and he easily threads the funnel's tube through the ring gag.  Foul remnants of whatever it was used for last leave a sour taste on your tongue, but worse yet is the knowledge that you're going to be force-fed tainted, body-altering, mind-melting drugs.  A drop of pre-cum hits your belly and your thighs grow ");
-			if (player.vaginas[0].vaginalWetness < VAGINA_WETNESS_DROOLING) outputText("sticky");
+			if (player.vaginas[0].vaginalWetness < VaginaClass.WETNESS_DROOLING) outputText("sticky");
 			else outputText("soaked");
 			outputText(" from the thoughts.  ");
 			if (player.cor < 33) outputText("Are you really being turned on by such lewd, debased thoughts?");
@@ -811,8 +812,8 @@ package classes.Scenes.Dungeons
 			if (player.horns > 0) outputText(" and adding to your existing pair");
 			else outputText(" and giving you an exotic, tainted appearance");
 			outputText(".  ");
-			if (player.lowerBody != LOWER_BODY_TYPE_DEMONIC_HIGH_HEELS) outputText("Your " + player.feet() + " have been changing throughout the ordeal, but you didn't notice your " + player.legs() + " becoming such lissom, lengthy legs, or your heels growing long, high-heel-like spikes.  ");
-			if (player.tailType != TAIL_TYPE_DEMONIC) outputText("A tail snakes around your leg and begins to caress your " + player.vaginaDescript(0) + ", then plunges in to fuck the squirting orifice while you drink.  ");
+			if (player.lowerBody != LowerBody.DEMONIC_HIGH_HEELS) outputText("Your " + player.feet() + " have been changing throughout the ordeal, but you didn't notice your " + player.legs() + " becoming such lissom, lengthy legs, or your heels growing long, high-heel-like spikes.  ");
+			if (player.tailType != Tail.DEMONIC) outputText("A tail snakes around your leg and begins to caress your " + player.vaginaDescript(0) + ", then plunges in to fuck the squirting orifice while you drink.  ");
 			else outputText("Your tail snakes around your leg and begins to caress your " + player.vaginaDescript(0) + ", then plunges in to fuck the squirting orifice while you drink.  ");
 			outputText("The imps start hooting and cat-calling, laughing and prodding your body with their twisted demonic members as your mind starts to come apart in the seething oven of unnatural lust.\n\n");
 			//NEXT
@@ -840,7 +841,7 @@ package classes.Scenes.Dungeons
 			outputText("You envision yourself on all fours, being taken in both openings by a pair of imps while you suck off a shadowy figure that your mind recognizes as your lord and master.  " + player.SMultiCockDesc() + " spurts and squirts with each penetration as your twin violators get off and stuff you full of their yummy imp cum, glazing your insides with corrupted white goo.  Maybe you'll get pregnant this time?  It's been a few weeks since your last litter.  You suck harder on your master's penis and caress his balls until he shows his affection by giving you a salty treat.  He pulls out and blasts a few ropes over your face and hair, so you do your best to look slutty to encourage him.  When he finishes, you lick your lips and beam at your master, Zetaz.\n\n");
 			outputText("Wait- what!?  You shake your head and clear away the fantasy, though your sexual organs' constant delightful throbbings aren't doing much to help.  Zetaz is still fucking your pussy, taking it with long slow strokes that would've made your demonic legs give out ages ago if you weren't hanging on a wall.  The chanting is so loud, so insidious.  You can feel it snaking through your brain, twisting your thoughts and ideas.  You close your eyes, desperate to fight it, but it only enhances the sensation of dick-milking and being fucked by your- no, by that demon!\n\n");
 			outputText("Glancing down at him, you remark that the little bastard is quite handsome for an imp.  With his perfect jawline and marvelous cock, you find yourself hard-pressed to justify resisting him so long ago.    How did you resist his charms?  His cock feels soooo fucking good inside you.  With an explosive burst, " + player.sMultiCockDesc() + " erupts again, squirting thick arousal and submission into the milker while your " + player.vaginaDescript(0) + " wrings Zetaz's nodule-ringed cock incessantly.  His turgid member bulges obscenely, and he starts to cum inside you, squirting master's thick seed into your breeding hole.  Breeding hole?  Why would you call your slutty fuck-hole a breeding hole?  Something seems off about that last thought, but you can't place it.\n\n");
-			outputText("Your master finishes squirting inside you and withdraws, pawing at your milk-leaking teats for a moment as you continue to shudder and cum like a good bitch.  Wow, you really are a good bitch aren't you?  Pride wells in your breast as the imp's chanting reaches a crescendo and a relaxed smile forms on your " + player.face() + ".  Yes, you're a good, breeding bitch.   Master is smiling up at you and you know you've made him feel very happy.  Hopefully he'll come back soon and fuck you some more.  Your pussy feels so empty without him.");
+			outputText("Your master finishes squirting inside you and withdraws, pawing at your milk-leaking teats for a moment as you continue to shudder and cum like a good bitch.  Wow, you really are a good bitch aren't you?  Pride wells in your breast as the imp's chanting reaches a crescendo and a relaxed smile forms on your " + player.faceDescript() + ".  Yes, you're a good, breeding bitch.   Master is smiling up at you and you know you've made him feel very happy.  Hopefully he'll come back soon and fuck you some more.  Your pussy feels so empty without him.");
 			player.orgasm('Vaginal');
 			dynStats("cor", 50);
 			doNext(zetazBadEndEpilogue);
@@ -1039,7 +1040,7 @@ package classes.Scenes.Dungeons
 			else if (player.gender == 3) {
 				outputText(images.showImage("badend-lethice"));
 				outputText("The champion was fucked and brainwashed repeatedly for a few more days until Zetaz was sure she understood her place in the world.  Once rendered completely obedient, they released her from her bindings.  It was time she was turned over to Lethice.  ");
-				if (player.wingType != WING_TYPE_BAT_LIKE_TINY || player.wingType != WING_TYPE_BAT_LIKE_LARGE) outputText("Zetaz gave her one of the weaker imps to penetrate and taught her to fly with her new, demonic wings.  ");
+				if (player.wingType != Wings.BAT_LIKE_TINY || player.wingType != Wings.BAT_LIKE_LARGE) outputText("Zetaz gave her one of the weaker imps to penetrate and taught her to fly with her new, demonic wings.  ");
 				else outputText("Zetaz gave her one of the weaker imps to penetrate during the journey.  ");
 				outputText("With preparations complete, Zetaz, the champion, and a few dozen imps flew to the mountain peak.\n\n");
 				

@@ -1,5 +1,6 @@
 ﻿package classes.Scenes.Quests{
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Scenes.Areas.Plains.GnollSpearThrower;
@@ -234,18 +235,18 @@ public function startUrtaQuest():void {
 	player.tallness = 71;
 	player.hairColor = "gray";
 	player.hairLength = 12;
-	player.skinType = SKIN_TYPE_FUR;
+	player.skinType = Skin.FUR;
 	player.skinAdj = "silky";
 	player.skinDesc = "fur";
 	player.createBreastRow();
 	player.breastRows[0].breastRating = 7;
 	player.nippleLength = .75;
 	player.skinTone = "black";
-	player.lowerBody = LOWER_BODY_TYPE_FOX;
+	player.lowerBody = LowerBody.FOX;
 	player.legCount = 2;
-	player.earType = EARS_FOX;
-	player.faceType = FACE_FOX;
-	player.tailType = TAIL_TYPE_FOX;
+	player.earType = Ears.FOX;
+	player.faceType = Face.FOX;
+	player.tailType = Tail.FOX;
 	player.tailVenom = 1;
 	player.createCock();
 	player.cocks[0].cockType = CockTypesEnum.HORSE;
@@ -262,8 +263,8 @@ public function startUrtaQuest():void {
 	player.ass.analLooseness = 2;
 	player.createStatusEffect(StatusEffects.BonusVCapacity,58,0,0,0);
 	player.createVagina();
-	player.vaginas[0].vaginalWetness = VAGINA_WETNESS_DROOLING;
-	player.vaginas[0].vaginalLooseness = VAGINA_LOOSENESS_NORMAL;
+	player.vaginas[0].vaginalWetness = VaginaClass.WETNESS_DROOLING;
+	player.vaginas[0].vaginalLooseness = VaginaClass.LOOSENESS_NORMAL;
 	player.setClitLength(1);
 	player.str = 75;
 	player.tou = 80;
@@ -575,7 +576,7 @@ private function urtaPutsHerDickInPCsWithDicks(truth:Boolean):void {
 	outputText("You push " + player2.short + " down onto the ground, glad that " + player2.mf("he","she") + "'s not wearing " + player2.mf("his","her") + " gear right now.  Unfortunately, you've still got to get out of yours, an action made all the more difficult by the heat welling up in your groin.  Your rebellious cock is already half-stiff, lifting the hem of your armored skirt away from your thighs.  Fingers scrabbling, you struggle with your chestpiece's bindings.  Your nipples stiffen, scraping against the inside of it while you fight to remove it.  You straddle " + player2.short + "'s waist to hold " + player2.mf("him","her") + " down while you work the bothersome, restraining material free, practically grinding your semi-rigid dick against " + player2.mf("his","hers") + " in excitement.  " + player2.mf("His","Her") + " hands begin aiding you in your task, allowing your tightly compressed breasts to finally, happily breathe.   They jiggle as they flop free, and to your delight, " + player2.short + "'s eyes lock on them.");
 	outputText("\n\nGrabbing hold of " + player2.mf("his","her") + " head, you pull " + player2.short + "'s lips to one of your puckered nipples.  " + player2.mf("He","She") + " swallows it immediately, grabbing hold of your tits to squeeze and fondle them, openly enjoying the fruits of your womanly shape.  Tingles of electric enjoyment fire from your unrestrained areola when " + player2.mf("he","she") + " squeezes down on the other with " + player2.mf("his","her") + " fingers, expertly twisting the little nub around to give you the maximum pleasure.  In no time flat, you're humping " + player2.mf("his","her") + " " + player2.cockDescript(player2.biggestCockIndex()) + " openly, letting " + player2.mf("him","her") + " guide your motions with deft, controlling touches to your onyx nipples.  Your pre-cum bubbles out unhindered, the thick gobs swaying and splattering on " + player2.mf("his","her") + " belly and rigid tool, quickly lubricating the phallic embrace into a sticky, hot mess.");
 	outputText("\n\n" + player2.short + " releases your tender tits after a few particularly sloppy thrusts.  You can feel " + player2.mf("his","her") + " " + player2.cockDescript(player2.biggestCockIndex()) + " releasing some of its own pre-cum onto your cock's thick spooge-vein, and " + player2.mf("his","her") + " hands fall to grab at the blanket below, unintentionally clenching at the waves of pleasure you're giving " + player2.mf("him","her") + ".  You bend now, onto all fours");
-	if (player2.tallness < 60) outputText(" and let your tits hang over " + player2.mf("his","her") + " " + player2.face());
+	if (player2.tallness < 60) outputText(" and let your tits hang over " + player2.mf("his","her") + " " + player2.faceDescript());
 	else if (player2.tallness < 76) outputText(" and let your tits swing between you");
 	else if (player2.tallness < 84) outputText(" and let your tits smash into " + player2.mf("his","her"));
 	else outputText(" and let your tits sway over " + player2.mf("his","her") + " belly");
@@ -784,7 +785,7 @@ private function putUrtasWangInPCsCunt(truth:Boolean):void {
 	if (player2.isTaur())
 	{
 		outputText("and climb off the 'taur-" + player2.mf("man","woman") + ".  " + player2.mf("He","She") + " smirks up at you, until you bid " + player2.mf("him","her") + " to rise, telling " + player2.mf("him","her") + " that you plan to mount " + player2.mf("him","her") + " like the fertile filly " + player2.mf("he","her") + " is. Reluctantly, " + player2.short + " clatters up onto " + player2.mf("his","her") + " hooves.");
-		if (player2.tailType > TAIL_TYPE_NONE) outputText("  You stroke " + player2.mf("his","her") + " tail as you shift it aside");
+		if (player2.tailType > Tail.NONE) outputText("  You stroke " + player2.mf("his","her") + " tail as you shift it aside");
 		else outputText("  You stroke " + player2.mf("his","her") + " swollen sex as you admire it");
 		outputText(", making sure you've got the perfect view of " + player2.mf("his","her") + " lube-slimed horse-cunt.  Unbidden, your cock thickens, disgorging a potent trail of animal-pre down its underside in anticipation.");
 		if (player2.wetness() >= 4) outputText("  Fuck, " + player2.mf("he","she") + "'s wetter than Edryn!  Just look at those heavy trails of slick moisture as they run down " + player2.mf("his","her") + " rump and hindlegs.");
@@ -2947,7 +2948,7 @@ private function getKnockedUpWithGodChild():void {
 	}
 	//{CONTINUE HERE}
 	outputText("\n\nPulling out, Urta swats your [butt], lingering just long enough to give it a familiar squeeze.  She commands, \"<i>Ass up in the air, I'm going to take you like an animal!</i>\"  Holding it one-handed, the furry hermaphrodite slaps her equine phallus against you, encouraging you to roll over.  You're horny as hell, your [vagina] hanging open in the shape of the recently departed animal dong, and you willingly assume the position, [butt] up in the air");
-	if (player.tailType > TAIL_TYPE_NONE) outputText(", though getting your tail angled right to allow her entrance is a bit of a challenge");
+	if (player.tailType > Tail.NONE) outputText(", though getting your tail angled right to allow her entrance is a bit of a challenge");
 	else if (player.isTaur()) outputText(", though getting down on your hands and forelegs is a bit challenging for you");
 	else outputText(", [face] buried in your blankets soaked with Urta's musky fluid");
 	outputText(".");

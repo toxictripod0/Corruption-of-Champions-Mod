@@ -1,5 +1,6 @@
 package classes.Items.Consumables 
 {
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Items.Consumable;
@@ -50,7 +51,7 @@ package classes.Items.Consumables
 			if (changes < changeLimit && player.hairType === 4 && rand(2) === 0) {
 				//-insert anemone hair removal into them under whatever criteria you like, though hair removal should precede abdomen growth; here's some sample text:
 				outputText("\n\nAs you down the potent ale, your head begins to feel heavier - and not just from the alcohol!  Reaching up, you notice your tentacles becoming soft and somewhat fibrous.  Pulling one down reveals that it feels smooth, silky, and fibrous; you watch as it dissolves into many thin, hair-like strands.  <b>Your hair is now back to normal!</b>");
-				player.hairType = HAIR_NORMAL;
+				player.hairType = Hair.NORMAL;
 				changes++;
 			}
 			//Shrink
@@ -66,7 +67,7 @@ package classes.Items.Consumables
 				//[removed:1.4.10]//changes++;
 			}
 			//Neck restore
-			if (player.neck.type != NECK_TYPE_NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type != Neck.NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
 			//Rear body restore
 			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
 			//Ovi perk loss
@@ -115,8 +116,8 @@ package classes.Items.Consumables
 			//GENERAL APPEARANCE STUFF BELOW
 			//REMOVAL STUFF
 			//Removes wings!
-			if ((player.wingType != WING_TYPE_NONE) && changes < changeLimit && rand(4) === 0) {
-				if (player.rearBody.type == REAR_BODY_SHARK_FIN) {
+			if ((player.wingType != Wings.NONE) && changes < changeLimit && rand(4) === 0) {
+				if (player.rearBody.type == RearBody.SHARK_FIN) {
 					outputText("\n\nYour back tingles, feeling lighter.  Something lands behind you with a 'thump', and when you turn to look, you"
 					          +" see your fin has fallen off.  This might be the best (and worst) booze you've ever had!"
 					          +"  <b>You no longer have a fin!</b>");
@@ -130,20 +131,20 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Removes antennae!
-			if (player.antennae != ANTENNAE_NONE && changes < changeLimit && rand(3) === 0) {
+			if (player.antennae != Antennae.NONE && changes < changeLimit && rand(3) === 0) {
 				mutations.removeAntennae();
 			}
 			//Remove odd eyes
-			if (changes < changeLimit && rand(5) === 0 && player.eyeType > EYES_HUMAN) {
-				if (player.eyeType === EYES_BLACK_EYES_SAND_TRAP) {
+			if (changes < changeLimit && rand(5) === 0 && player.eyeType > Eyes.HUMAN) {
+				if (player.eyeType === Eyes.BLACK_EYES_SAND_TRAP) {
 					outputText("\n\nYou feel a twinge in your eyes and you blink.  It feels like black cataracts have just fallen away from you, and you know without needing to see your reflection that your eyes have gone back to looking human.");
 				}
 				else {
 					outputText("\n\nYou blink and stumble, a wave of vertigo threatening to pull your " + player.feet() + " from under you.  As you steady and open your eyes, you realize something seems different.  Your vision is changed somehow.");
-					if (player.eyeType === EYES_FOUR_SPIDER_EYES || player.eyeType === EYES_SPIDER) outputText("  Yourarachnid eyes are gone!</b>");
+					if (player.eyeType === Eyes.FOUR_SPIDER_EYES || player.eyeType === Eyes.SPIDER) outputText("  Yourarachnid eyes are gone!</b>");
 					outputText("  <b>You have normal, humanoid eyes again.</b>");
 				}
-				player.eyeType = EYES_HUMAN;
+				player.eyeType = Eyes.HUMAN;
 				player.eyeCount = 2;
 				changes++;
 			}
@@ -152,13 +153,13 @@ package classes.Items.Consumables
 				mutations.removeExtraBreastRow(tfSource);
 			}
 			//Skin/fur
-			if (!player.hasPlainSkin() && changes < changeLimit && rand(4) === 0 && player.faceType === FACE_HUMAN) {
+			if (!player.hasPlainSkin() && changes < changeLimit && rand(4) === 0 && player.faceType === Face.HUMAN) {
 				if (player.hasFur()) outputText("\n\nYour fur itches incessantly, so you start scratching it.  It starts coming off in big clumps before the whole mess begins sloughing off your body.  In seconds, your skin is nude.  <b>You've lost your fur!</b>");
 				if (player.hasScales()) outputText("\n\nYour scales itch incessantly, so you scratch at them.  They start falling off wholesale, leaving you standing in a pile of scales after only a few moments.  <b>You've lost your scales!</b>");
 				if (player.hasGooSkin()) outputText("\n\nYour " + player.skinDesc + " itches incessantly, and as you scratch it shifts and changes, becoming normal human-like skin.  <b>Your skin is once again normal!</b>");
 				player.skinAdj = "";
 				player.skinDesc = "skin";
-				player.skinType = SKIN_TYPE_PLAIN;
+				player.skinType = Skin.PLAIN;
 				player.underBody.restore();
 				changes++;
 			}
@@ -178,16 +179,16 @@ package classes.Items.Consumables
 				kGAMECLASS.rathazul.addMixologyXP(20);
 			}
 			//Face!
-			if (player.faceType !== FACE_HUMAN && changes < changeLimit && rand(4) === 0 && player.earType === EARS_ELFIN) {
+			if (player.faceType !== Face.HUMAN && changes < changeLimit && rand(4) === 0 && player.earType === Ears.ELFIN) {
 				changes++;
-				player.faceType = FACE_HUMAN;
+				player.faceType = Face.HUMAN;
 				outputText("\n\nAnother violent sneeze escapes you.  It hurt!  You feel your nose and discover your face has changed back into a more normal look.  <b>You have a human looking face again!</b>");
 			}
 			//Ears!
-			if (player.earType !== EARS_ELFIN && changes < changeLimit && rand(3) === 0) {
+			if (player.earType !== Ears.ELFIN && changes < changeLimit && rand(3) === 0) {
 				outputText("\n\nA weird tingling runs through your scalp as your " + player.hairDescript() + " shifts slightly.  You reach up to touch and bump <b>your new pointed elfin ears</b>.  You bet they look cute!");
 				changes++;
-				player.earType = EARS_ELFIN;
+				player.earType = Ears.ELFIN;
 			}
 			// Remove gills
 			if (rand(4) === 0 && player.hasGills() && changes < changeLimit) {

@@ -1,6 +1,8 @@
 package classes.Scenes.Dungeons.D3 
 {
 	import classes.*;
+	import classes.BodyParts.*;
+	import classes.BodyParts.Butt;
 	import classes.internals.*;
 	import classes.Items.*
 	
@@ -95,16 +97,16 @@ package classes.Scenes.Dungeons.D3
 			ass.analLooseness = 0;
 			ass.analWetness = 0;
 			
-			hipRating = HIP_RATING_AVERAGE;
-			buttRating = BUTT_RATING_AVERAGE;
-			lowerBody = LOWER_BODY_TYPE_LIZARD;
-			tailType = TAIL_TYPE_LIZARD;
+			hipRating = Hips.RATING_AVERAGE;
+			buttRating = Butt.RATING_AVERAGE;
+			lowerBody = LowerBody.LIZARD;
+			tailType = Tail.LIZARD;
 			skinDesc = "green-purple mottled hide";
 			initStrTouSpeInte(80, 100, 80, 60);
 			initLibSensCor(40, 40, 80);
-			faceType = FACE_LIZARD;
-			earType = EARS_LIZARD;
-			eyeType = EYES_BASILISK;
+			faceType = Face.LIZARD;
+			earType = Ears.LIZARD;
+			eyeType = Eyes.BASILISK;
 
 			weaponName = "cutlass";
 			weaponVerb = "slash";

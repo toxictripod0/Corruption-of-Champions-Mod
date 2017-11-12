@@ -1,6 +1,7 @@
 package classes.Scenes.Areas.Bog
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
 
@@ -129,15 +130,15 @@ package classes.Scenes.Areas.Bog
 			this.imageName = "chameleongirl";
 			this.long = "You're faced with a tall lizard-like girl with smooth " + skinToneAdj[0] + " skin and long, " + skinToneAdj[1] + " stripes that run along her body from ankle to shoulder.  An abnormally large tail swishes behind her, and her hands are massive for her frame, built for easily climbing the trees.  A pair of small, cute horns grow from her temples, and a pair of perky B-cups push out through her skimpy drapings.  Large, sharp claws cap her fingers, gesturing menacingly at you.";
 			// this.plural = false;
-			this.createVagina(false, VAGINA_WETNESS_SLAVERING, VAGINA_LOOSENESS_LOOSE);
+			this.createVagina(false, VaginaClass.WETNESS_SLAVERING, VaginaClass.LOOSENESS_LOOSE);
 			createBreastRow(Appearance.breastCupInverse("B"));
-			this.ass.analLooseness = ANAL_LOOSENESS_NORMAL;
-			this.ass.analWetness = ANAL_WETNESS_DRY;
+			this.ass.analLooseness = AssClass.LOOSENESS_NORMAL;
+			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.tallness = rand(2) + 68;
-			this.hipRating = HIP_RATING_AMPLE + 2;
-			this.buttRating = BUTT_RATING_LARGE;
+			this.hipRating = Hips.RATING_AMPLE + 2;
+			this.buttRating = Butt.RATING_LARGE;
 			this.skinTone = skinToneAdj[0];
-			this.skinType = SKIN_TYPE_PLAIN;
+			this.skinType = Skin.PLAIN;
 			this.skinDesc = "skin";
 			this.skinAdj = skinToneAdj[1];
 			this.hairColor = "black";

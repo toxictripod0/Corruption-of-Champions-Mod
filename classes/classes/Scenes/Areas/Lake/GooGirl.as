@@ -1,6 +1,8 @@
 package classes.Scenes.Areas.Lake
 {
 	import classes.*;
+	import classes.BodyParts.*;
+	import classes.BodyParts.Hips;
 	import classes.internals.*;
 
 	public class GooGirl extends Monster
@@ -152,20 +154,20 @@ package classes.Scenes.Areas.Lake
 			this.imageName = "googirl";
 			this.long = "The goo-girl has a curious expression on her youthful, shimmering face. Her body is slender and globs of slime regularly drip from her limbs, splattering into the goo puddle pooling beneath her hips. A small, heart-shaped nucleus pulses in her chest with a red glow." + (playerHasBigBoobs ? ("  She has apparently made herself a bit more like you, as her chest appears to be a perfect copy of your " + player.chestDesc() + ".") : "");
 			// this.long = false;
-			this.createVagina(false, VAGINA_WETNESS_SLAVERING, VAGINA_LOOSENESS_NORMAL);
+			this.createVagina(false, VaginaClass.WETNESS_SLAVERING, VaginaClass.LOOSENESS_NORMAL);
 			this.createStatusEffect(StatusEffects.BonusVCapacity, 9001, 0, 0, 0);
 			this.createBreastRow(playerHasBigBoobs ? player.biggestTitSize() : 3);
-			this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-			this.ass.analWetness = ANAL_WETNESS_SLIME_DROOLING;
+			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
+			this.ass.analWetness = AssClass.WETNESS_SLIME_DROOLING;
 			this.createStatusEffect(StatusEffects.BonusACapacity,9001,0,0,0);
 			this.tallness = rand(8) + 70;
-			this.hipRating = HIP_RATING_AMPLE;
-			this.buttRating = BUTT_RATING_LARGE;
-			this.lowerBody = LOWER_BODY_TYPE_GOO;
+			this.hipRating = Hips.RATING_AMPLE;
+			this.buttRating = Butt.RATING_LARGE;
+			this.lowerBody = LowerBody.GOO;
 			var tone:String = randomChoice("blue", "purple", "crystal");
 			this.skinTone = tone;
-			this.skinType = SKIN_TYPE_GOO;
-			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[SKIN_TYPE_GOO];
+			this.skinType = Skin.GOO;
+			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.GOO];
 			this.skinAdj = "goopey";
 			this.hairColor = tone;
 			this.hairLength = 12 + rand(10);

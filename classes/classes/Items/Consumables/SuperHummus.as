@@ -1,5 +1,6 @@
 package classes.Items.Consumables 
 {
+	import classes.BodyParts.*;
 	import classes.Items.Consumable;
 	import classes.Items.ConsumableLib;
 	import classes.StatusEffects;
@@ -35,35 +36,35 @@ package classes.Items.Consumables
 			player.lib = 25;
 			player.cor = 5;
 			player.lust = 10;
-			player.hairType = HAIR_NORMAL;
+			player.hairType = Hair.NORMAL;
 			if (player.humanScore() > 4) {
 				outputText("\n\nYou blink and the world twists around you.  You feel more like yourself than you have in a while, but exactly how isn't immediately apparent.  Maybe you should take a look at yourself?");
 			}
 			else {
 				outputText("\n\nYou cry out as the world spins around you.  You're aware of your entire body sliding and slipping, changing and morphing, but in the sea of sensation you have no idea exactly what's changing.  You nearly black out, and then it's over.  Maybe you had best have a look at yourself and see what changed?");
 			}
-			player.armType = ARM_TYPE_HUMAN;
+			player.armType = Arms.HUMAN;
 			mutations.updateClaws();
-			player.eyeType = EYES_HUMAN;
-			player.antennae = ANTENNAE_NONE;
-			player.faceType = FACE_HUMAN;
-			player.lowerBody = LOWER_BODY_TYPE_HUMAN;
+			player.eyeType = Eyes.HUMAN;
+			player.antennae = Antennae.NONE;
+			player.faceType = Face.HUMAN;
+			player.lowerBody = LowerBody.HUMAN;
 			player.legCount = 2;
-			player.wingType = WING_TYPE_NONE;
-			player.tailType = TAIL_TYPE_NONE;
-			player.tongueType = TONGUE_HUMAN;
+			player.wingType = Wings.NONE;
+			player.tailType = Tail.NONE;
+			player.tongueType = Tongue.HUMAN;
 			player.tailRecharge = 0;
 			player.horns = 0;
-			player.hornType = HORNS_NONE;
-			player.earType = EARS_HUMAN;
-			player.skinType = SKIN_TYPE_PLAIN;
+			player.hornType = Horns.NONE;
+			player.earType = Ears.HUMAN;
+			player.skinType = Skin.PLAIN;
 			player.skinDesc = "skin";
 			player.skinAdj = "";
 			player.underBody.restore();
 			player.neck.restore();
 			player.rearBody.restore();
-			player.tongueType = TONGUE_HUMAN;
-			player.eyeType = EYES_HUMAN;
+			player.tongueType = Tongue.HUMAN;
+			player.eyeType = Eyes.HUMAN;
 			if (player.fertility > 15) player.fertility = 15;
 			if (player.cumMultiplier > 50) player.cumMultiplier = 50;
 			var virgin:Boolean = false;
@@ -112,7 +113,7 @@ package classes.Items.Consumables
 				player.breastRows[0].breastRating = 2;
 			}
 			else player.breastRows[0].breastRating = 0;
-			player.gillType = GILLS_NONE;
+			player.gillType = Gills.NONE;
 			player.removeStatusEffect(StatusEffects.Uniball);
 			player.removeStatusEffect(StatusEffects.BlackNipples);
 			player.vaginaType(0);

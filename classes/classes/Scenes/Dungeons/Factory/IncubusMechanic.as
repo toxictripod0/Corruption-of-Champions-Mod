@@ -1,6 +1,7 @@
 package classes.Scenes.Dungeons.Factory
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Items.Armors.LustyMaidensArmor;
 	import classes.Scenes.Dungeons.Factory;
@@ -169,12 +170,12 @@ package classes.Scenes.Dungeons.Factory
 			this.cumMultiplier = 3;
 			// this.hoursSinceCum = 0;
 			createBreastRow(0);
-			this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
-			this.ass.analWetness = ANAL_WETNESS_SLIME_DROOLING;
+			this.ass.analLooseness = AssClass.LOOSENESS_STRETCHED;
+			this.ass.analWetness = AssClass.WETNESS_SLIME_DROOLING;
 			this.tallness = rand(9) + 70;
-			this.hipRating = HIP_RATING_AMPLE;
-			this.buttRating = BUTT_RATING_TIGHT;
-			this.lowerBody = LOWER_BODY_TYPE_DEMONIC_CLAWS;
+			this.hipRating = Hips.RATING_AMPLE;
+			this.buttRating = Butt.RATING_TIGHT;
+			this.lowerBody = LowerBody.DEMONIC_CLAWS;
 			this.skinTone = "light purple";
 			this.hairColor = "black";
 			this.hairLength = 12;
@@ -209,8 +210,8 @@ package classes.Scenes.Dungeons.Factory
 			}
 			this.special1 = cockTripAttack;
 			this.special2 = spoogeAttack;
-			this.tailType = TAIL_TYPE_DEMONIC;
-			this.wingType = WING_TYPE_BAT_LIKE_TINY;
+			this.tailType = Tail.DEMONIC;
+			this.wingType = Wings.BAT_LIKE_TINY;
 			this.wingDesc = "tiny hidden";
 			checkMonster();
 		}

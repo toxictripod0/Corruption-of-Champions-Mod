@@ -1,5 +1,6 @@
 package classes 
 {
+	import classes.BodyParts.*;
 import classes.Scenes.Places.TelAdre.UmasShop;
 import classes.Items.JewelryLib;
 import classes.GlobalFlags.kFLAGS;
@@ -55,14 +56,14 @@ import classes.GlobalFlags.kFLAGS;
 				if (!hasBeard())
 					faceo += " and chiseled jawline";
 				else
-					faceo += ", chiseled jawline, and " + beard();
+					faceo += ", chiseled jawline, and " + beardDesc();
 			}
 			//10+ -20
 			else if (femininity < 20)
 			{
-				faceo = "a rugged looking " + face() + " ";
+				faceo = "a rugged looking " + faceDescript() + " ";
 				if (hasBeard())
-					faceo += "and " + beard();
+					faceo += "and " + beardDesc();
 				faceo += "that's surely handsome";
 			}
 			//21-28
@@ -142,9 +143,9 @@ import classes.GlobalFlags.kFLAGS;
 			else
 			{
 				if (goal > oldN)
-					output = "\n\nThere's a tingling in your " + face() + " as it changes imperceptibly towards being more feminine. (+" + strength + ")";
+					output = "\n\nThere's a tingling in your " + faceDescript() + " as it changes imperceptibly towards being more feminine. (+" + strength + ")";
 				else if (goal < oldN)
-					output = "\n\nThere's a tingling in your " + face() + " as it changes imperceptibly towards being more masculine. (+" + strength + ")";
+					output = "\n\nThere's a tingling in your " + faceDescript() + " as it changes imperceptibly towards being more masculine. (+" + strength + ")";
 			}
 			return output;
 		}
@@ -284,7 +285,7 @@ import classes.GlobalFlags.kFLAGS;
 			return beardLength > 0;
 		}
 		
-		public function beard():String
+		public function beardDesc():String
 		{
 			if (hasBeard())
 				return "beard";
@@ -297,12 +298,12 @@ import classes.GlobalFlags.kFLAGS;
 
 		public function hasMuzzle():Boolean
 		{
-			if (faceType == FACE_HORSE || faceType == FACE_DOG || faceType == FACE_CAT || faceType == FACE_LIZARD || faceType == FACE_KANGAROO || faceType == FACE_FOX || faceType == FACE_DRAGON || faceType == FACE_RHINO || faceType == FACE_ECHIDNA || faceType == FACE_DEER || faceType == FACE_WOLF)
+			if (faceType == Face.HORSE || faceType == Face.DOG || faceType == Face.CAT || faceType == Face.LIZARD || faceType == Face.KANGAROO || faceType == Face.FOX || faceType == Face.DRAGON || faceType == Face.RHINO || faceType == Face.ECHIDNA || faceType == Face.DEER || faceType == Face.WOLF)
 				return true;
 			return false;
 		}
 		
-		public function face():String
+		public function faceDescript():String
 		{
 			var stringo:String = "";
 			//0 - human
@@ -318,15 +319,15 @@ import classes.GlobalFlags.kFLAGS;
 			//9 - kangaface
 			if (hasMuzzle())
 			{
-				if (int(Math.random() * 3) == 0 && faceType == FACE_HORSE)
+				if (int(Math.random() * 3) == 0 && faceType == Face.HORSE)
 					stringo = "long ";
-				if (int(Math.random() * 3) == 0 && faceType == FACE_CAT)
+				if (int(Math.random() * 3) == 0 && faceType == Face.CAT)
 					stringo = "feline ";
-				if (int(Math.random() * 3) == 0 && faceType == FACE_RHINO)
+				if (int(Math.random() * 3) == 0 && faceType == Face.RHINO)
 					stringo = "rhino ";
-				if (int(Math.random() * 3) == 0 && (faceType == FACE_LIZARD || faceType == FACE_DRAGON))
+				if (int(Math.random() * 3) == 0 && (faceType == Face.LIZARD || faceType == Face.DRAGON))
 					stringo = "reptilian ";
-				if (int(Math.random() * 3) == 0 && faceType == FACE_WOLF)
+				if (int(Math.random() * 3) == 0 && faceType == Face.WOLF)
 					stringo = "canine ";
 				switch(rand(3)) {
 					case 0:
@@ -340,7 +341,7 @@ import classes.GlobalFlags.kFLAGS;
 				}
 			}
 			//3 - cowface
-			if (faceType == FACE_COW_MINOTAUR)
+			if (faceType == Face.COW_MINOTAUR)
 			{
 				if (Math.floor(Math.random() * 4) == 0)
 					stringo = "bovine ";
@@ -349,16 +350,16 @@ import classes.GlobalFlags.kFLAGS;
 				return stringo + "face";
 			}
 			//4 - sharkface-teeth
-			if (faceType == FACE_SHARK_TEETH)
+			if (faceType == Face.SHARK_TEETH)
 			{
 				if (Math.floor(Math.random() * 4) == 0)
 					stringo = "angular ";
 				return stringo + "face";
 			}
-			if (faceType == FACE_PIG || faceType == FACE_BOAR)
+			if (faceType == Face.PIG || faceType == Face.BOAR)
 			{
 				if (Math.floor(Math.random() * 4) == 0)
-					stringo = (faceType == FACE_PIG ? "pig" : "boar") + "-like ";
+					stringo = (faceType == Face.PIG ? "pig" : "boar") + "-like ";
 				if (Math.floor(Math.random() * 4) == 0)
 					return stringo + "snout";
 				return stringo + "face";
@@ -781,9 +782,9 @@ import classes.GlobalFlags.kFLAGS;
 		public function growHair(amount:Number = .1):Boolean {
 			//Grow hair!
 			var tempHair:Number = hairLength;
-			if (hairType == HAIR_BASILISK_SPINES) return false;
+			if (hairType == Hair.BASILISK_SPINES) return false;
 			hairLength += amount;
-			if (hairType == HAIR_BASILISK_PLUME && hairLength > 8) hairLength = 8;
+			if (hairType == Hair.BASILISK_PLUME && hairLength > 8) hairLength = 8;
 			if (hairLength > 0 && tempHair == 0) {
 				game.outputText("\n<b>You are no longer bald.  You now have " + hairDescript() + " coating your head.\n</b>");
 				return true;

@@ -1,6 +1,7 @@
 package classes.Scenes.Dungeons.DeepCave
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.internals.*;
 
 	/**
@@ -210,10 +211,10 @@ package classes.Scenes.Dungeons.DeepCave
 			initGenderless();
 			createBreastRow(0,0);
 			this.tallness = 120;
-			this.hipRating = HIP_RATING_SLENDER;
-			this.buttRating = BUTT_RATING_BUTTLESS;
+			this.hipRating = Hips.RATING_SLENDER;
+			this.buttRating = Butt.RATING_BUTTLESS;
 			this.skinTone = "purple";
-			this.skinType = SKIN_TYPE_PLAIN;
+			this.skinType = Skin.PLAIN;
 			this.skinDesc = "covering";
 			this.hairColor = "black";
 			this.hairLength = 0;

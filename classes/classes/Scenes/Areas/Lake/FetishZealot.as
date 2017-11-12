@@ -1,6 +1,8 @@
 package classes.Scenes.Areas.Lake
 {
 	import classes.*;
+	import classes.BodyParts.Butt;
+	import classes.BodyParts.Hips;
 	import classes.internals.*;
 
 	public class FetishZealot extends Monster
@@ -151,12 +153,12 @@ package classes.Scenes.Areas.Lake
 			// this.plural = false;
 			this.createCock(7,1.5);
 			createBreastRow(0);
-			this.ass.analLooseness = ANAL_LOOSENESS_LOOSE;
-			this.ass.analWetness = ANAL_WETNESS_DRY;
+			this.ass.analLooseness = AssClass.LOOSENESS_LOOSE;
+			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,40,0,0,0);
 			this.tallness = 6*12;
-			this.hipRating = HIP_RATING_BOYISH+1;
-			this.buttRating = BUTT_RATING_TIGHT;
+			this.hipRating = Hips.RATING_BOYISH+1;
+			this.buttRating = Butt.RATING_TIGHT;
 			this.skinTone = "tan";
 			this.hairColor = "black";
 			this.hairLength = 4;

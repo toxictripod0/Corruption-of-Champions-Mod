@@ -1,6 +1,7 @@
 package classes.Scenes.Combat 
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.*;
 	import classes.Items.*;
 	import classes.Scenes.Areas.Forest.TentacleBeast;
@@ -377,18 +378,18 @@ public class CombatAbilities extends BaseContent
 			}
 			if (monster.vaginas.length > 0) {
 				if (monster.plural) {
-					if (monster.lust100 >= 60 && monster.vaginas[0].vaginalWetness == VAGINA_WETNESS_NORMAL) outputText(monster.capitalA + monster.short + "'s " + monster.vaginaDescript() + "s dampen perceptibly.  ");
-					if (monster.lust100 >= 60 && monster.vaginas[0].vaginalWetness == VAGINA_WETNESS_WET) outputText(monster.capitalA + monster.short + "'s crotches become sticky with girl-lust.  ");
-					if (monster.lust100 >= 60 && monster.vaginas[0].vaginalWetness == VAGINA_WETNESS_SLICK) outputText(monster.capitalA + monster.short + "'s " + monster.vaginaDescript() + "s become sloppy and wet.  ");
-					if (monster.lust100 >= 60 && monster.vaginas[0].vaginalWetness == VAGINA_WETNESS_DROOLING) outputText("Thick runners of girl-lube stream down the insides of " + monster.a + monster.short + "'s thighs.  ");
-					if (monster.lust100 >= 60 && monster.vaginas[0].vaginalWetness == VAGINA_WETNESS_SLAVERING) outputText(monster.capitalA + monster.short + "'s " + monster.vaginaDescript() + "s instantly soak " + monster.pronoun2 + " groin.  ");
+					if (monster.lust100 >= 60 && monster.vaginas[0].vaginalWetness == VaginaClass.WETNESS_NORMAL) outputText(monster.capitalA + monster.short + "'s " + monster.vaginaDescript() + "s dampen perceptibly.  ");
+					if (monster.lust100 >= 60 && monster.vaginas[0].vaginalWetness == VaginaClass.WETNESS_WET) outputText(monster.capitalA + monster.short + "'s crotches become sticky with girl-lust.  ");
+					if (monster.lust100 >= 60 && monster.vaginas[0].vaginalWetness == VaginaClass.WETNESS_SLICK) outputText(monster.capitalA + monster.short + "'s " + monster.vaginaDescript() + "s become sloppy and wet.  ");
+					if (monster.lust100 >= 60 && monster.vaginas[0].vaginalWetness == VaginaClass.WETNESS_DROOLING) outputText("Thick runners of girl-lube stream down the insides of " + monster.a + monster.short + "'s thighs.  ");
+					if (monster.lust100 >= 60 && monster.vaginas[0].vaginalWetness == VaginaClass.WETNESS_SLAVERING) outputText(monster.capitalA + monster.short + "'s " + monster.vaginaDescript() + "s instantly soak " + monster.pronoun2 + " groin.  ");
 				}
 				else {
-					if (monster.lust100 >= 60 && monster.vaginas[0].vaginalWetness == VAGINA_WETNESS_NORMAL) outputText(monster.capitalA + monster.short + "'s " + monster.vaginaDescript() + " dampens perceptibly.  ");
-					if (monster.lust100 >= 60 && monster.vaginas[0].vaginalWetness == VAGINA_WETNESS_WET) outputText(monster.capitalA + monster.short + "'s crotch becomes sticky with girl-lust.  ");
-					if (monster.lust100 >= 60 && monster.vaginas[0].vaginalWetness == VAGINA_WETNESS_SLICK) outputText(monster.capitalA + monster.short + "'s " + monster.vaginaDescript() + " becomes sloppy and wet.  ");
-					if (monster.lust100 >= 60 && monster.vaginas[0].vaginalWetness == VAGINA_WETNESS_DROOLING) outputText("Thick runners of girl-lube stream down the insides of " + monster.a + monster.short + "'s thighs.  ");
-					if (monster.lust100 >= 60 && monster.vaginas[0].vaginalWetness == VAGINA_WETNESS_SLAVERING) outputText(monster.capitalA + monster.short + "'s " + monster.vaginaDescript() + " instantly soaks her groin.  ");
+					if (monster.lust100 >= 60 && monster.vaginas[0].vaginalWetness == VaginaClass.WETNESS_NORMAL) outputText(monster.capitalA + monster.short + "'s " + monster.vaginaDescript() + " dampens perceptibly.  ");
+					if (monster.lust100 >= 60 && monster.vaginas[0].vaginalWetness == VaginaClass.WETNESS_WET) outputText(monster.capitalA + monster.short + "'s crotch becomes sticky with girl-lust.  ");
+					if (monster.lust100 >= 60 && monster.vaginas[0].vaginalWetness == VaginaClass.WETNESS_SLICK) outputText(monster.capitalA + monster.short + "'s " + monster.vaginaDescript() + " becomes sloppy and wet.  ");
+					if (monster.lust100 >= 60 && monster.vaginas[0].vaginalWetness == VaginaClass.WETNESS_DROOLING) outputText("Thick runners of girl-lube stream down the insides of " + monster.a + monster.short + "'s thighs.  ");
+					if (monster.lust100 >= 60 && monster.vaginas[0].vaginalWetness == VaginaClass.WETNESS_SLAVERING) outputText(monster.capitalA + monster.short + "'s " + monster.vaginaDescript() + " instantly soaks her groin.  ");
 				}
 			}
 			monster.teased(lustDmg);
@@ -1490,13 +1491,13 @@ public class CombatAbilities extends BaseContent
 				addButton(button++, "AnemoneSting", anemoneSting).hint("Attempt to strike an opponent with the stinging tentacles growing from your scalp. Reduces enemy speed and increases enemy lust. \n\nNo Fatigue Cost", "Anemone Sting");
 			}
 			//Bitez
-			if (player.faceType == FACE_SHARK_TEETH) {
+			if (player.faceType == Face.SHARK_TEETH) {
 				addButton(button++, "Bite", bite).hint("Attempt to bite your opponent with your shark-teeth. \n\nFatigue Cost: " + player.physicalCost(25));
 			}
-			else if (player.faceType == FACE_SNAKE_FANGS) {
+			else if (player.faceType == Face.SNAKE_FANGS) {
 				addButton(button++, "Bite", nagaBiteAttack).hint("Attempt to bite your opponent and inject venom. \n\nFatigue Cost: " + player.physicalCost(10));
 			}
-			else if (player.faceType == FACE_SPIDER_FANGS) {
+			else if (player.faceType == Face.SPIDER_FANGS) {
 				addButton(button++, "Bite", spiderBiteAttack).hint("Attempt to bite your opponent and inject venom. \n\nFatigue Cost: " + player.physicalCost(10));
 			}
 			//Bow attack
@@ -1504,23 +1505,23 @@ public class CombatAbilities extends BaseContent
 				addButton(button++, "Bow", fireBow).hint("Use a bow to fire an arrow at your opponent. \n\nFatigue Cost: " + player.physicalCost(25));
 			}
 			//Constrict
-			if (player.lowerBody == LOWER_BODY_TYPE_NAGA) {
+			if (player.lowerBody == LowerBody.NAGA) {
 				addButton(button++, "Constrict", getGame().desert.nagaScene.nagaPlayerConstrict).hint("Attempt to bind an enemy in your long snake-tail. \n\nFatigue Cost: " + player.physicalCost(10));
 			}
 			//Kick attackuuuu
-			else if (player.isTaur() || player.lowerBody == LOWER_BODY_TYPE_HOOFED || player.lowerBody == LOWER_BODY_TYPE_BUNNY || player.lowerBody == LOWER_BODY_TYPE_KANGAROO) {
+			else if (player.isTaur() || player.lowerBody == LowerBody.HOOFED || player.lowerBody == LowerBody.BUNNY || player.lowerBody == LowerBody.KANGAROO) {
 				addButton(button++, "Kick", kick).hint("Attempt to kick an enemy using your powerful lower body. \n\nFatigue Cost: " + player.physicalCost(15));
 			}
 			//Gore if mino horns
-			if (player.hornType == HORNS_COW_MINOTAUR && player.horns >= 6) {
+			if (player.hornType == Horns.COW_MINOTAUR && player.horns >= 6) {
 				addButton(button++, "Gore", goreAttack).hint("Lower your head and charge your opponent, attempting to gore them on your horns. This attack is stronger and easier to land with large horns. \n\nFatigue Cost: " + player.physicalCost(15));
 			}
 			//Rams Attack - requires rams horns
-			if (player.hornType == HORNS_RAM && player.horns >= 2) {
+			if (player.hornType == Horns.RAM && player.horns >= 2) {
 				addButton(button++, "Horn Stun", ramsStun).hint("Use a ramming headbutt to try and stun your foe. \n\nFatigue Cost: " + player.physicalCost(10));
 			}
 			//Upheaval - requires rhino horn
-			if (player.hornType == HORNS_RHINO && player.horns >= 2 && player.faceType == FACE_RHINO) {
+			if (player.hornType == Horns.RHINO && player.horns >= 2 && player.faceType == Face.RHINO) {
 				addButton(button++, "Upheaval", upheavalAttack).hint("Send your foe flying with your dual nose mounted horns. \n\nFatigue Cost: " + player.physicalCost(15));
 			}
 			//Infest if infested
@@ -1532,20 +1533,20 @@ public class CombatAbilities extends BaseContent
 				addButton(button++, "Kiss", kissAttack).hint("Attempt to kiss your foe on the lips with drugged lipstick. It has no effect on those without a penis. \n\nNo Fatigue Cost");
 			}
 			switch (player.tailType) {
-				case TAIL_TYPE_BEE_ABDOMEN:
+				case Tail.BEE_ABDOMEN:
 					addButton(button++, "Sting", playerStinger).hint("Attempt to use your venomous bee stinger on an enemy.  Be aware it takes quite a while for your venom to build up, so depending on your abdomen's refractory period, you may have to wait quite a while between stings.  \n\nVenom: " + Math.floor(player.tailVenom) + "/100");
 					break;
-				case TAIL_TYPE_SPIDER_ADBOMEN:
+				case Tail.SPIDER_ABDOMEN:
 					addButton(button++, "Web", PCWebAttack).hint("Attempt to use your abdomen to spray sticky webs at an enemy and greatly slow them down.  Be aware it takes a while for your webbing to build up.  \n\nWeb Amount: " + Math.floor(player.tailVenom) + "/100");
 					break;
-				case TAIL_TYPE_SALAMANDER:
+				case Tail.SALAMANDER:
 					addButton(button++, "Tail Slap", tailSlapAttack).hint("Set your tail ablaze in red-hot flames to whip your foe with it to hurt and burn them! \n\nFatigue Cost: " + player.physicalCost(30));
 					//break;
-				case TAIL_TYPE_SHARK:
-				case TAIL_TYPE_LIZARD:
-				case TAIL_TYPE_KANGAROO:
-				case TAIL_TYPE_DRACONIC:
-				case TAIL_TYPE_RACCOON:
+				case Tail.SHARK:
+				case Tail.LIZARD:
+				case Tail.KANGAROO:
+				case Tail.DRACONIC:
+				case Tail.RACCOON:
 					addButton(button++, "Tail Whip", tailWhipAttack).hint("Whip your foe with your tail to enrage them and lower their defense! \n\nFatigue Cost: " + player.physicalCost(15));
 				default:
 			}
@@ -1927,16 +1928,16 @@ public class CombatAbilities extends BaseContent
 			}
 			player.changeFatigue(15,2);
 			//Variant start messages!
-			if (player.lowerBody == LOWER_BODY_TYPE_KANGAROO) {
+			if (player.lowerBody == LowerBody.KANGAROO) {
 				//(tail)
-				if (player.tailType == TAIL_TYPE_KANGAROO) outputText("You balance on your flexible kangaroo-tail, pulling both legs up before slamming them forward simultaneously in a brutal kick.  ");
+				if (player.tailType == Tail.KANGAROO) outputText("You balance on your flexible kangaroo-tail, pulling both legs up before slamming them forward simultaneously in a brutal kick.  ");
 				//(no tail) 
 				else outputText("You balance on one leg and cock your powerful, kangaroo-like leg before you slam it forward in a kick.  ");
 			}
 			//(bunbun kick) 
-			else if (player.lowerBody == LOWER_BODY_TYPE_BUNNY) outputText("You leap straight into the air and lash out with both your furred feet simultaneously, slamming forward in a strong kick.  ");
+			else if (player.lowerBody == LowerBody.BUNNY) outputText("You leap straight into the air and lash out with both your furred feet simultaneously, slamming forward in a strong kick.  ");
 			//(centaur kick)
-			else if (player.lowerBody == LOWER_BODY_TYPE_HOOFED || player.lowerBody == LOWER_BODY_TYPE_PONY || player.lowerBody == LOWER_BODY_TYPE_CLOVEN_HOOFED)
+			else if (player.lowerBody == LowerBody.HOOFED || player.lowerBody == LowerBody.PONY || player.lowerBody == LowerBody.CLOVEN_HOOFED)
 				if (player.isTaur()) outputText("You lurch up onto your backlegs, lifting your forelegs from the ground a split-second before you lash them out in a vicious kick.  ");
 				//(bipedal hoof-kick) 
 				else outputText("You twist and lurch as you raise a leg and slam your hoof forward in a kick.  ");
@@ -1995,10 +1996,10 @@ public class CombatAbilities extends BaseContent
 			damage = player.str;
 			//Leg bonus
 			//Bunny - 20, Kangaroo - 35, 1 hoof = 30, 2 hooves = 40
-			if (player.lowerBody == LOWER_BODY_TYPE_HOOFED || player.lowerBody == LOWER_BODY_TYPE_PONY || player.lowerBody == LOWER_BODY_TYPE_CLOVEN_HOOFED)
+			if (player.lowerBody == LowerBody.HOOFED || player.lowerBody == LowerBody.PONY || player.lowerBody == LowerBody.CLOVEN_HOOFED)
 				damage += 30;
-			else if (player.lowerBody == LOWER_BODY_TYPE_BUNNY) damage += 20;
-			else if (player.lowerBody == LOWER_BODY_TYPE_KANGAROO) damage += 35;
+			else if (player.lowerBody == LowerBody.BUNNY) damage += 20;
+			else if (player.lowerBody == LowerBody.KANGAROO) damage += 35;
 			if (player.isTaur()) damage += 10;
 			//Damage post processing!
 			if (player.findPerk(PerkLib.HistoryFighter) >= 0) damage *= 1.1;
@@ -2544,7 +2545,7 @@ public class CombatAbilities extends BaseContent
 					temp--;
 				}
 				monster.addStatusValue(StatusEffects.CoonWhip,2,2);
-				if (player.tailType == TAIL_TYPE_RACCOON) monster.addStatusValue(StatusEffects.CoonWhip,2,2);
+				if (player.tailType == Tail.RACCOON) monster.addStatusValue(StatusEffects.CoonWhip,2,2);
 			}
 			player.changeFatigue(15,2);
 			outputText("\n\n");

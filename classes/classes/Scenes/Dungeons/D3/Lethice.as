@@ -1,9 +1,12 @@
 package classes.Scenes.Dungeons.D3
 {
+	import classes.BodyParts.*;
 	import classes.Monster;
 	import classes.StatusEffects;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.PerkLib;
+	import classes.BodyParts.Butt;
+	import classes.BodyParts.Hips;
 	
 	public class Lethice extends Monster
 	{
@@ -34,8 +37,8 @@ package classes.Scenes.Dungeons.D3
 			this.createBreastRow(8);
 			this.balls = 2;
 			this.ballSize = 4;
-			this.hipRating = HIP_RATING_SLENDER;
-			this.buttRating = BUTT_RATING_TIGHT;
+			this.hipRating = Hips.RATING_SLENDER;
+			this.buttRating = Butt.RATING_TIGHT;
 			initStrTouSpeInte(110, 110, 110, 110);
 			initLibSensCor(100, 40, 100);
 			this.weaponName = "whip";
@@ -57,7 +60,7 @@ package classes.Scenes.Dungeons.D3
 			this.createPerk(PerkLib.Tank, 0, 0, 0, 0);
 			this.createPerk(PerkLib.Tank2, 0, 0, 0, 0);
 			this.createPerk(PerkLib.ImprovedSelfControl, 0, 0, 0, 0);
-			this.wingType = WING_TYPE_DRACONIC_LARGE;
+			this.wingType = Wings.DRACONIC_LARGE;
 			this.checkMonster();
 		}
 		

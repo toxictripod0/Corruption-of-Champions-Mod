@@ -14,6 +14,7 @@ import classes.Scenes.Monsters.Goblin;
 import classes.Scenes.Monsters.Imp;
 import classes.display.SpriteDb;
 import classes.internals.*;
+import classes.VaginaClass;
 
 public class CommonEncounters extends BaseContent implements Encounter {
 
@@ -247,7 +248,7 @@ public class CommonEncounters extends BaseContent implements Encounter {
 			if (player.vaginas.length >= 1) {
 				outputText("  Your " + player.vaginaDescript() + " and " + player.clitDescript() + " are thoroughly squashed between the bulky flesh where your male genitals protrude from between your hips and the " + player.buttDescript() + " above.");
 				//IF CHARACTER HAS A DROOLING PUSSY ADD SENTENCE
-				if (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_DROOLING) {
+				if (player.vaginas[0].vaginalWetness >= VaginaClass.WETNESS_DROOLING) {
 					outputText("  Juices stream from your womanhood and begin pooling on the dirt and twigs beneath you.  ");
 					if (lake) outputText("The drooling fem-spunk only makes the ground more muddy.");
 					else outputText("The sticky fem-spunk immediately soaks down into the rich soil.");
@@ -272,7 +273,7 @@ public class CommonEncounters extends BaseContent implements Encounter {
 			if (player.vaginas.length >= 1) {
 				outputText("  Your " + player.vaginaDescript() + " and " + player.clitDescript() + " are thoroughly squashed between the bulky flesh where your male genitals protrude from between your hips and the " + player.buttDescript() + " above.");
 				//IF CHARACTER HAS A DROOLING PUSSY ADD SENTENCE
-				if (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_DROOLING) {
+				if (player.vaginas[0].vaginalWetness >= VaginaClass.WETNESS_DROOLING) {
 					if (lake) outputText("  A leaf falls from a tree and lands on the wet lips of your cunt, its light touch teasing your sensitive skin.  Like a mare or cow in heat, your juices stream from your womanhood and pool in the mud beneath you.  The sloppy fem-spunk only makes the ground more muddy.");
 					else outputText("  A leaf falls from a tree and lands on the wet lips of your cunt, its light touch teasing your sensitive skin.  Like a mare or cow in heat, your juices stream from your womanhood and pool in the dirt and twigs beneath you.");
 				}
@@ -336,7 +337,7 @@ public class CommonEncounters extends BaseContent implements Encounter {
 			if (player.vaginas.length >= 1) {
 				outputText("  Your " + player.vaginaDescript() + " and " + player.clitDescript() + " are thoroughly squashed between the bulky flesh where your male genitals protrude from between your hips and the " + player.buttDescript() + " above.");
 				//IF CHARACTER HAS A DROOLING PUSSY ADD SENTENCE
-				if (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_DROOLING) outputText("  Juices stream from your womanhood and begin pooling on the hot sand beneath you.  Wisps of steam rise up into the air only to tease your genitals further.  ");
+				if (player.vaginas[0].vaginalWetness >= VaginaClass.WETNESS_DROOLING) outputText("  Juices stream from your womanhood and begin pooling on the hot sand beneath you.  Wisps of steam rise up into the air only to tease your genitals further.  ");
 			}
 		}
 		//FOR CENTAURS
@@ -350,7 +351,7 @@ public class CommonEncounters extends BaseContent implements Encounter {
 			if (player.vaginas.length >= 1) {
 				outputText("  Your " + player.vaginaDescript() + " and " + player.clitDescript() + " are thoroughly squashed between the bulky flesh where your male genitals protrude from between your hips and the " + player.buttDescript() + " above.");
 				//IF CHARACTER HAS A DROOLING PUSSY ADD SENTENCE
-				if (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_DROOLING) outputText("  The desert sun beats down on your body, its fiery heat inflaming the senses of your vaginal lips.  Juices stream from your womanhood and begin pooling on the hot sand beneath you.");
+				if (player.vaginas[0].vaginalWetness >= VaginaClass.WETNESS_DROOLING) outputText("  The desert sun beats down on your body, its fiery heat inflaming the senses of your vaginal lips.  Juices stream from your womanhood and begin pooling on the hot sand beneath you.");
 			}
 		}
 		outputText("\n\n");

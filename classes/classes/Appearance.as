@@ -1,5 +1,7 @@
 package classes
 {
+	import classes.BodyParts.*;
+	import classes.BodyParts.Hips;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Player;
@@ -10,11 +12,6 @@ package classes
 
 	public class Appearance extends Utils
 	{
-		// Eventually, this should contain the entire char appearance.
-		// At the moment, it's pretty piecemeal.
-		// TODO remove when we have proper enums for this
-		include "../../includes/appearanceDefs.as";
-
 		public static function inverseMap(x:Object):Object
 		{
 			var result:Object = {};
@@ -68,7 +65,7 @@ package classes
 			// HAIR WORDS
 			//
 			switch (i_creature.hairType) {
-				case HAIR_BASILISK_SPINES:
+				case Hair.BASILISK_SPINES:
 					options = [
 						"rubbery spines",
 						"spiny crown",
@@ -76,7 +73,7 @@ package classes
 						"reptilian spines",
 					];
 					return description + randomChoice(options);
-				case HAIR_BASILISK_PLUME:
+				case Hair.BASILISK_PLUME:
 					options = [
 						"feathered hair",
 						"fluffy plume",
@@ -84,7 +81,7 @@ package classes
 						"shock of feathers",
 					];
 					return description + randomChoice(options);
-				case HAIR_WOOL:
+				case Hair.WOOL:
 					options = [
 						"woolen hair",
 						"poofy hair",
@@ -94,16 +91,16 @@ package classes
 					return description + randomChoice(options);
 			}
 			// TODO: Fix the spaghetti-code below to use a switch-case-return and it'll be
-			// case HAIR_GOO: return description + "goo-mane";
+			// case Hair.GOO: return description + "goo-mane";
 			// and so on. (Stadler76)
 			//If furry and longish hair sometimes call it a mane (50%)
 			if (i_creature.hasFur() && i_creature.hairLength > 3 && rand(2) == 0) {
-				if (i_creature.hairType == HAIR_FEATHER) description += "feather-";
-				else if (i_creature.hairType == HAIR_GHOST) description += "transparent ";
-				else if (i_creature.hairType == HAIR_GOO) description += "goo-";
-				else if (i_creature.hairType == HAIR_ANEMONE) description += "tentacle-";
-				else if (i_creature.hairType == HAIR_QUILL) description += "quill-";
-				else if (i_creature.hairType == HAIR_WOOL) description += "wool-";
+				if (i_creature.hairType == Hair.FEATHER) description += "feather-";
+				else if (i_creature.hairType == Hair.GHOST) description += "transparent ";
+				else if (i_creature.hairType == Hair.GOO) description += "goo-";
+				else if (i_creature.hairType == Hair.ANEMONE) description += "tentacle-";
+				else if (i_creature.hairType == Hair.QUILL) description += "quill-";
+				else if (i_creature.hairType == Hair.WOOL) description += "wool-";
 				description += "mane";
 				return description;
 			}
@@ -114,12 +111,12 @@ package classes
 			 return descript;
 			 }*/
 			//If nothing else used, use hair!
-			if (i_creature.hairType == HAIR_FEATHER) description += "feather-";
-			else if (i_creature.hairType == HAIR_GHOST) description += "transparent ";
-			else if (i_creature.hairType == HAIR_GOO) description += "goo-";
-			else if (i_creature.hairType == HAIR_ANEMONE) description += "tentacle-";
-			else if (i_creature.hairType == HAIR_QUILL) description += "quill-";
-			else if (i_creature.hairType == HAIR_WOOL) description += "woolen ";
+			if (i_creature.hairType == Hair.FEATHER) description += "feather-";
+			else if (i_creature.hairType == Hair.GHOST) description += "transparent ";
+			else if (i_creature.hairType == Hair.GOO) description += "goo-";
+			else if (i_creature.hairType == Hair.ANEMONE) description += "tentacle-";
+			else if (i_creature.hairType == Hair.QUILL) description += "quill-";
+			else if (i_creature.hairType == Hair.WOOL) description += "woolen ";
 			description += "hair";
 
 			return description;
@@ -186,7 +183,7 @@ package classes
 		public static function tongueDescription(i_character:Character):String
 		{
 			// fallback for tongueTypes not fully implemented yet
-			if (i_character.tongueType == TONGUE_HUMAN || !DEFAULT_TONGUE_NAMES.hasOwnProperty(''+i_character.tongueType))
+			if (i_character.tongueType == Tongue.HUMAN || !DEFAULT_TONGUE_NAMES.hasOwnProperty(''+i_character.tongueType))
 				return "tongue";
 
 			return DEFAULT_TONGUE_NAMES[i_character.tongueType] + " tongue";
@@ -491,7 +488,7 @@ package classes
 			}
 			var isPierced:Boolean = (creature.cocks.length == 1) && (creature.cocks[cockIndex].isPierced); //Only describe as pierced or sock covered if the creature has just one cock
 			var hasSock:Boolean = (creature.cocks.length == 1) && (creature.cocks[cockIndex].sock != "");
-			var isGooey:Boolean = (creature.skinType == CoC.SKIN_TYPE_GOO);
+			var isGooey:Boolean = (creature.skinType == Skin.GOO);
 			return cockDescription(cockType, creature.cocks[cockIndex].cockLength, creature.cocks[cockIndex].cockThickness, creature.lust, creature.cumQ(), isPierced, hasSock, isGooey);
 		}
 
@@ -2003,12 +2000,12 @@ package classes
 			
 			// 66% Wetness Descript
 			var ANAL_WETNESS_DESCRIPTORS:Object = new Object(); 
-			ANAL_WETNESS_DESCRIPTORS[ANAL_WETNESS_DRY] = "";
-			ANAL_WETNESS_DESCRIPTORS[ANAL_WETNESS_NORMAL] = "";
-			ANAL_WETNESS_DESCRIPTORS[ANAL_WETNESS_MOIST] = "moist ";
-			ANAL_WETNESS_DESCRIPTORS[ANAL_WETNESS_SLIMY] = "slimy ";
-			ANAL_WETNESS_DESCRIPTORS[ANAL_WETNESS_DROOLING] = "drooling ";
-			ANAL_WETNESS_DESCRIPTORS[ANAL_WETNESS_SLIME_DROOLING] = "slime-drooling ";
+			ANAL_WETNESS_DESCRIPTORS[AssClass.WETNESS_DRY] = "";
+			ANAL_WETNESS_DESCRIPTORS[AssClass.WETNESS_NORMAL] = "";
+			ANAL_WETNESS_DESCRIPTORS[AssClass.WETNESS_MOIST] = "moist ";
+			ANAL_WETNESS_DESCRIPTORS[AssClass.WETNESS_SLIMY] = "slimy ";
+			ANAL_WETNESS_DESCRIPTORS[AssClass.WETNESS_DROOLING] = "drooling ";
+			ANAL_WETNESS_DESCRIPTORS[AssClass.WETNESS_SLIME_DROOLING] = "slime-drooling ";
 			
 			if (forceDesc || rand(3) <= 1)
 			{
@@ -2016,12 +2013,12 @@ package classes
 			}
 			
 			var ANAL_TIGHTNESS_DESCRIPTORS:Object = new Object();
-			ANAL_TIGHTNESS_DESCRIPTORS[ANAL_LOOSENESS_VIRGIN] = "virgin ";
-			ANAL_TIGHTNESS_DESCRIPTORS[ANAL_LOOSENESS_TIGHT] = "tight ";
-			ANAL_TIGHTNESS_DESCRIPTORS[ANAL_LOOSENESS_NORMAL] = "loose ";
-			ANAL_TIGHTNESS_DESCRIPTORS[ANAL_LOOSENESS_LOOSE] = "roomy ";
-			ANAL_TIGHTNESS_DESCRIPTORS[ANAL_LOOSENESS_STRETCHED] = "stretched ";
-			ANAL_TIGHTNESS_DESCRIPTORS[ANAL_LOOSENESS_GAPING] = "gaping ";
+			ANAL_TIGHTNESS_DESCRIPTORS[AssClass.LOOSENESS_VIRGIN] = "virgin ";
+			ANAL_TIGHTNESS_DESCRIPTORS[AssClass.LOOSENESS_TIGHT] = "tight ";
+			ANAL_TIGHTNESS_DESCRIPTORS[AssClass.LOOSENESS_NORMAL] = "loose ";
+			ANAL_TIGHTNESS_DESCRIPTORS[AssClass.LOOSENESS_LOOSE] = "roomy ";
+			ANAL_TIGHTNESS_DESCRIPTORS[AssClass.LOOSENESS_STRETCHED] = "stretched ";
+			ANAL_TIGHTNESS_DESCRIPTORS[AssClass.LOOSENESS_GAPING] = "gaping ";
 			
 			//25% tightness description
 			if (forceDesc || rand(4) == 0 || (i_creature.ass.analLooseness <= 1 && rand(4) <= 2) || i_creature.ass.analLooseness === 0) 
@@ -2163,348 +2160,348 @@ package classes
 		);
 		public static const DEFAULT_GENDER_NAMES:Object = createMapFromPairs(
 				[
-					[GENDER_NONE, "genderless"],
-					[GENDER_MALE, "male"],
-					[GENDER_FEMALE, "female"],
-					[GENDER_HERM, "hermaphrodite"],
+					[Gender.NONE, "genderless"],
+					[Gender.MALE, "male"],
+					[Gender.FEMALE, "female"],
+					[Gender.HERM, "hermaphrodite"],
 				]
 		);
 		public static const DEFAULT_SKIN_NAMES:Object = createMapFromPairs(
 				[
-					[SKIN_TYPE_PLAIN, "skin"],
-					[SKIN_TYPE_FUR, "fur"],
-					[SKIN_TYPE_LIZARD_SCALES, "scales"],
-					[SKIN_TYPE_GOO, "goo"],
-					[SKIN_TYPE_UNDEFINED, "undefined flesh"],
-					[SKIN_TYPE_DRAGON_SCALES, "scales"],
-					[SKIN_TYPE_FISH_SCALES, "scales"],
-					[SKIN_TYPE_WOOL, "wool"],
-					[SKIN_TYPE_FEATHERED, "feathers"],
+					[Skin.PLAIN, "skin"],
+					[Skin.FUR, "fur"],
+					[Skin.LIZARD_SCALES, "scales"],
+					[Skin.GOO, "goo"],
+					[Skin.UNDEFINED, "undefined flesh"],
+					[Skin.DRAGON_SCALES, "scales"],
+					[Skin.FISH_SCALES, "scales"],
+					[Skin.WOOL, "wool"],
+					[Skin.FEATHERED, "feathers"],
 				]
 		);
 		public static const DEFAULT_SKIN_DESCS:Object = createMapFromPairs(
 				[
-					[SKIN_TYPE_PLAIN, "skin"],
-					[SKIN_TYPE_FUR, "fur"],
-					[SKIN_TYPE_LIZARD_SCALES, "scales"],
-					[SKIN_TYPE_GOO, "skin"],
-					[SKIN_TYPE_UNDEFINED, "skin"],
-					[SKIN_TYPE_DRAGON_SCALES, "scales"],
-					[SKIN_TYPE_FISH_SCALES, "scales"],
-					[SKIN_TYPE_WOOL, "wool-covered skin"],
+					[Skin.PLAIN, "skin"],
+					[Skin.FUR, "fur"],
+					[Skin.LIZARD_SCALES, "scales"],
+					[Skin.GOO, "skin"],
+					[Skin.UNDEFINED, "skin"],
+					[Skin.DRAGON_SCALES, "scales"],
+					[Skin.FISH_SCALES, "scales"],
+					[Skin.WOOL, "wool-covered skin"],
 				]
 		);
 		public static const DEFAULT_HAIR_NAMES:Object = createMapFromPairs(
 				[
-					[HAIR_NORMAL, "normal"],
-					[HAIR_FEATHER, "feather"],
-					[HAIR_GHOST, "transparent"],
-					[HAIR_GOO, "goopy"],
-					[HAIR_ANEMONE, "tentacle"],
-					[HAIR_QUILL, "quill"],
-					[HAIR_BASILISK_SPINES, "spiny basilisk"],
-					[HAIR_BASILISK_PLUME, "feathery plume"],
-					[HAIR_WOOL, "woolen"],
+					[Hair.NORMAL, "normal"],
+					[Hair.FEATHER, "feather"],
+					[Hair.GHOST, "transparent"],
+					[Hair.GOO, "goopy"],
+					[Hair.ANEMONE, "tentacle"],
+					[Hair.QUILL, "quill"],
+					[Hair.BASILISK_SPINES, "spiny basilisk"],
+					[Hair.BASILISK_PLUME, "feathery plume"],
+					[Hair.WOOL, "woolen"],
 				]
 		);
 		public static const DEFAULT_BEARD_NAMES:Object = createMapFromPairs(
 				[
-					[BEARD_NORMAL, "normal"],
-					[BEARD_GOATEE, "goatee"],
-					[BEARD_CLEANCUT, "clean-cut"],
-					[BEARD_MOUNTAINMAN, "mountain-man"],
+					[Beard.NORMAL, "normal"],
+					[Beard.GOATEE, "goatee"],
+					[Beard.CLEANCUT, "clean-cut"],
+					[Beard.MOUNTAINMAN, "mountain-man"],
 				]
 		);
 		public static const DEFAULT_FACE_NAMES:Object = createMapFromPairs(
 				[
-					[FACE_HUMAN, "human"],
-					[FACE_HORSE, "horse"],
-					[FACE_DOG, "dog"],
-					[FACE_COW_MINOTAUR, "cow"],
-					[FACE_SHARK_TEETH, "shark"],
-					[FACE_SNAKE_FANGS, "snake"],
-					[FACE_CAT, "cat"],
-					[FACE_LIZARD, "lizard"],
-					[FACE_BUNNY, "bunny"],
-					[FACE_KANGAROO, "kangaroo"],
-					[FACE_SPIDER_FANGS, "spider"],
-					[FACE_FOX, "fox"],
-					[FACE_DRAGON, "dragon"],
-					[FACE_RACCOON_MASK, "raccoon mask"],
-					[FACE_RACCOON, "racoon"],
-					[FACE_BUCKTEETH, "buckteeth"],
-					[FACE_MOUSE, "mouse"],
-					[FACE_FERRET_MASK, "ferret mask"],
-					[FACE_FERRET, "ferret"],
-					[FACE_PIG, "pig"],
-					[FACE_BOAR, "boar"],
-					[FACE_RHINO, "rhino"],
-					[FACE_WOLF, "wolf"],
-					[FACE_ECHIDNA, "echidna"],
-					[FACE_DEER, "deer"],
-					[FACE_COCKATRICE, "cockatrice"],
+					[Face.HUMAN, "human"],
+					[Face.HORSE, "horse"],
+					[Face.DOG, "dog"],
+					[Face.COW_MINOTAUR, "cow"],
+					[Face.SHARK_TEETH, "shark"],
+					[Face.SNAKE_FANGS, "snake"],
+					[Face.CAT, "cat"],
+					[Face.LIZARD, "lizard"],
+					[Face.BUNNY, "bunny"],
+					[Face.KANGAROO, "kangaroo"],
+					[Face.SPIDER_FANGS, "spider"],
+					[Face.FOX, "fox"],
+					[Face.DRAGON, "dragon"],
+					[Face.RACCOON_MASK, "raccoon mask"],
+					[Face.RACCOON, "racoon"],
+					[Face.BUCKTEETH, "buckteeth"],
+					[Face.MOUSE, "mouse"],
+					[Face.FERRET_MASK, "ferret mask"],
+					[Face.FERRET, "ferret"],
+					[Face.PIG, "pig"],
+					[Face.BOAR, "boar"],
+					[Face.RHINO, "rhino"],
+					[Face.WOLF, "wolf"],
+					[Face.ECHIDNA, "echidna"],
+					[Face.DEER, "deer"],
+					[Face.COCKATRICE, "cockatrice"],
 				]
 		);
 		public static const DEFAULT_TONGUE_NAMES:Object = createMapFromPairs(
 				[
-					[TONGUE_HUMAN, "human"],
-					[TONGUE_SNAKE, "serpentine"],
-					[TONGUE_DEMONIC, "demonic"],
-					[TONGUE_DRACONIC, "draconic"],
-					[TONGUE_ECHIDNA, "echidna"],
-					[TONGUE_LIZARD, "lizard"],
+					[Tongue.HUMAN, "human"],
+					[Tongue.SNAKE, "serpentine"],
+					[Tongue.DEMONIC, "demonic"],
+					[Tongue.DRACONIC, "draconic"],
+					[Tongue.ECHIDNA, "echidna"],
+					[Tongue.LIZARD, "lizard"],
 				]
 		);
 		public static const DEFAULT_EYES_NAMES:Object = createMapFromPairs(
 				[
-					[EYES_HUMAN, "human"],
-					[EYES_FOUR_SPIDER_EYES, "4 spider"],
-					[EYES_BLACK_EYES_SAND_TRAP, "sandtrap black"],
-					[EYES_LIZARD, "lizard"],
-					[EYES_WOLF, "wolf"],
-					[EYES_DRAGON, "dragon"],
-					[EYES_BASILISK, "basilisk"],
-					[EYES_SPIDER, "spider"],
-					[EYES_COCKATRICE, "cockatrice"],
+					[Eyes.HUMAN, "human"],
+					[Eyes.FOUR_SPIDER_EYES, "4 spider"],
+					[Eyes.BLACK_EYES_SAND_TRAP, "sandtrap black"],
+					[Eyes.LIZARD, "lizard"],
+					[Eyes.WOLF, "wolf"],
+					[Eyes.DRAGON, "dragon"],
+					[Eyes.BASILISK, "basilisk"],
+					[Eyes.SPIDER, "spider"],
+					[Eyes.COCKATRICE, "cockatrice"],
 				]
 		);
 		public static const DEFAULT_EARS_NAMES:Object = createMapFromPairs(
 				[
-					[EARS_HUMAN, "human"],
-					[EARS_HORSE, "horse"],
-					[EARS_DOG, "dog"],
-					[EARS_COW, "cow"],
-					[EARS_ELFIN, "elfin"],
-					[EARS_CAT, "cat"],
-					[EARS_LIZARD, "lizard"],
-					[EARS_BUNNY, "bunny"],
-					[EARS_KANGAROO, "kangaroo"],
-					[EARS_FOX, "fox"],
-					[EARS_DRAGON, "dragon"],
-					[EARS_RACCOON, "raccoon"],
-					[EARS_MOUSE, "mouse"],
-					[EARS_FERRET, "ferret"],
-					[EARS_PIG, "pig"],
-					[EARS_RHINO, "rhino"],
-					[EARS_WOLF, "wolf"],
-					[EARS_ECHIDNA, "echidna"],
-					[EARS_DEER, "deer"],
-					[EARS_SHEEP, "sheep"],
-					[EARS_IMP, "imp"],
-					[EARS_COCKATRICE, "cockatrice"],
+					[Ears.HUMAN, "human"],
+					[Ears.HORSE, "horse"],
+					[Ears.DOG, "dog"],
+					[Ears.COW, "cow"],
+					[Ears.ELFIN, "elfin"],
+					[Ears.CAT, "cat"],
+					[Ears.LIZARD, "lizard"],
+					[Ears.BUNNY, "bunny"],
+					[Ears.KANGAROO, "kangaroo"],
+					[Ears.FOX, "fox"],
+					[Ears.DRAGON, "dragon"],
+					[Ears.RACCOON, "raccoon"],
+					[Ears.MOUSE, "mouse"],
+					[Ears.FERRET, "ferret"],
+					[Ears.PIG, "pig"],
+					[Ears.RHINO, "rhino"],
+					[Ears.WOLF, "wolf"],
+					[Ears.ECHIDNA, "echidna"],
+					[Ears.DEER, "deer"],
+					[Ears.SHEEP, "sheep"],
+					[Ears.IMP, "imp"],
+					[Ears.COCKATRICE, "cockatrice"],
 				]
 		);
 		public static const DEFAULT_HORNS_NAMES:Object = createMapFromPairs(
 				[
-					[HORNS_NONE, "non-existent"],
-					[HORNS_DEMON, "demon"],
-					[HORNS_COW_MINOTAUR, "cow"],
-					[HORNS_DRACONIC_X2, "2 draconic"],
-					[HORNS_DRACONIC_X4_12_INCH_LONG, "four 12\" long draconic"],
-					[HORNS_ANTLERS, "deer"],
-					[HORNS_GOAT, "goat"],
-					[HORNS_RHINO, "rhino"],
-					[HORNS_SHEEP, "sheep"],
-					[HORNS_RAM, "ram"],
-					[HORNS_IMP, "imp"],
+					[Horns.NONE, "non-existent"],
+					[Horns.DEMON, "demon"],
+					[Horns.COW_MINOTAUR, "cow"],
+					[Horns.DRACONIC_X2, "2 draconic"],
+					[Horns.DRACONIC_X4_12_INCH_LONG, "four 12\" long draconic"],
+					[Horns.ANTLERS, "deer"],
+					[Horns.GOAT, "goat"],
+					[Horns.RHINO, "rhino"],
+					[Horns.SHEEP, "sheep"],
+					[Horns.RAM, "ram"],
+					[Horns.IMP, "imp"],
 				]
 		);
 		public static const DEFAULT_ANTENNAE_NAMES:Object = createMapFromPairs(
 				[
-					[ANTENNAE_NONE, "non-existent"],
-					[ANTENNAE_BEE, "bee"],
-					[ANTENNAE_COCKATRICE, "cockatrice"],
+					[Antennae.NONE, "non-existent"],
+					[Antennae.BEE, "bee"],
+					[Antennae.COCKATRICE, "cockatrice"],
 				]
 		);
 		public static const DEFAULT_ARM_NAMES:Object = createMapFromPairs(
 				[
-					[ARM_TYPE_HUMAN, "human"],
-					[ARM_TYPE_HARPY, "harpy"],
-					[ARM_TYPE_SPIDER, "spider"],
-					[ARM_TYPE_WOLF, "wolf"],
-					[ARM_TYPE_PREDATOR, "predator"],
-					[ARM_TYPE_SALAMANDER, "salamander"],
-					[ARM_TYPE_COCKATRICE, "cockatrice"],
+					[Arms.HUMAN, "human"],
+					[Arms.HARPY, "harpy"],
+					[Arms.SPIDER, "spider"],
+					[Arms.WOLF, "wolf"],
+					[Arms.PREDATOR, "predator"],
+					[Arms.SALAMANDER, "salamander"],
+					[Arms.COCKATRICE, "cockatrice"],
 				]
 		);
 		public static const DEFAULT_TAIL_NAMES:Object = createMapFromPairs(
 				[
-					[TAIL_TYPE_NONE, "non-existent"],
-					[TAIL_TYPE_HORSE, "horse"],
-					[TAIL_TYPE_DOG, "dog"],
-					[TAIL_TYPE_DEMONIC, "demonic"],
-					[TAIL_TYPE_COW, "cow"],
-					[TAIL_TYPE_SPIDER_ADBOMEN, "spider abdomen"],
-					[TAIL_TYPE_BEE_ABDOMEN, "bee abdomen"],
-					[TAIL_TYPE_SHARK, "shark"],
-					[TAIL_TYPE_CAT, "cat"],
-					[TAIL_TYPE_LIZARD, "lizard"],
-					[TAIL_TYPE_RABBIT, "rabbit"],
-					[TAIL_TYPE_HARPY, "harpy"],
-					[TAIL_TYPE_KANGAROO, "kangaroo"],
-					[TAIL_TYPE_FOX, "fox"],
-					[TAIL_TYPE_DRACONIC, "draconic"],
-					[TAIL_TYPE_RACCOON, "raccoon"],
-					[TAIL_TYPE_MOUSE, "mouse"],
-					[TAIL_TYPE_BEHEMOTH, "behemoth"],
-					[TAIL_TYPE_PIG, "pig"],
-					[TAIL_TYPE_SCORPION, "scorpion"],
-					[TAIL_TYPE_GOAT, "goat"],
-					[TAIL_TYPE_RHINO, "rhino"],
-					[TAIL_TYPE_WOLF, "wolf"],
-					[TAIL_TYPE_ECHIDNA, "echidna"],
-					[TAIL_TYPE_DEER, "deer"],
-					[TAIL_TYPE_SALAMANDER, "salamander"],
-					[TAIL_TYPE_SHEEP, "sheep"],
-					[TAIL_TYPE_IMP, "imp"],
-					[TAIL_TYPE_COCKATRICE, "cockatrice"],
+					[Tail.NONE, "non-existent"],
+					[Tail.HORSE, "horse"],
+					[Tail.DOG, "dog"],
+					[Tail.DEMONIC, "demonic"],
+					[Tail.COW, "cow"],
+					[Tail.SPIDER_ABDOMEN, "spider abdomen"],
+					[Tail.BEE_ABDOMEN, "bee abdomen"],
+					[Tail.SHARK, "shark"],
+					[Tail.CAT, "cat"],
+					[Tail.LIZARD, "lizard"],
+					[Tail.RABBIT, "rabbit"],
+					[Tail.HARPY, "harpy"],
+					[Tail.KANGAROO, "kangaroo"],
+					[Tail.FOX, "fox"],
+					[Tail.DRACONIC, "draconic"],
+					[Tail.RACCOON, "raccoon"],
+					[Tail.MOUSE, "mouse"],
+					[Tail.BEHEMOTH, "behemoth"],
+					[Tail.PIG, "pig"],
+					[Tail.SCORPION, "scorpion"],
+					[Tail.GOAT, "goat"],
+					[Tail.RHINO, "rhino"],
+					[Tail.WOLF, "wolf"],
+					[Tail.ECHIDNA, "echidna"],
+					[Tail.DEER, "deer"],
+					[Tail.SALAMANDER, "salamander"],
+					[Tail.SHEEP, "sheep"],
+					[Tail.IMP, "imp"],
+					[Tail.COCKATRICE, "cockatrice"],
 				]
 		);
 		public static const DEFAULT_REAR_BODY_NAMES:Object = createMapFromPairs(
 				[
-					[REAR_BODY_NONE, "none"],
-					[REAR_BODY_DRACONIC_MANE, "draconic hairy mane"],
-					[REAR_BODY_DRACONIC_SPIKES, "draconic spiky mane"],
-					[REAR_BODY_SHARK_FIN, "shark fin"],
+					[RearBody.NONE, "none"],
+					[RearBody.DRACONIC_MANE, "draconic hairy mane"],
+					[RearBody.DRACONIC_SPIKES, "draconic spiky mane"],
+					[RearBody.SHARK_FIN, "shark fin"],
 				]
 		);
 		public static const DEFAULT_NECK_NAMES:Object = createMapFromPairs(
 				[
-					[NECK_TYPE_NORMAL, "normal"],
-					[NECK_TYPE_DRACONIC, "long draconic"],
-					[NECK_TYPE_COCKATRICE, "feathery cockatrice"],
+					[Neck.NORMAL, "normal"],
+					[Neck.DRACONIC, "long draconic"],
+					[Neck.COCKATRICE, "feathery cockatrice"],
 				]
 		);
 		public static const DEFAULT_WING_NAMES:Object = createMapFromPairs(
 				[
-					[WING_TYPE_NONE, "non-existent"],
-					[WING_TYPE_BEE_LIKE_SMALL, "small bee-like"],
-					[WING_TYPE_BEE_LIKE_LARGE, "large bee-like"],
-					[WING_TYPE_HARPY, "harpy"],
-					[WING_TYPE_IMP, "imp"],
-					[WING_TYPE_IMP_LARGE, "large imp"],
-					[WING_TYPE_BAT_LIKE_TINY, "tiny bat-like"],
-					[WING_TYPE_BAT_LIKE_LARGE, "large bat-like"],
-					[WING_TYPE_FEATHERED_LARGE, "large feathered"],
-					[WING_TYPE_DRACONIC_SMALL, "small draconic"],
-					[WING_TYPE_DRACONIC_LARGE, "large draconic"],
-					[WING_TYPE_GIANT_DRAGONFLY, "giant dragonfly"],
+					[Wings.NONE, "non-existent"],
+					[Wings.BEE_LIKE_SMALL, "small bee-like"],
+					[Wings.BEE_LIKE_LARGE, "large bee-like"],
+					[Wings.HARPY, "harpy"],
+					[Wings.IMP, "imp"],
+					[Wings.IMP_LARGE, "large imp"],
+					[Wings.BAT_LIKE_TINY, "tiny bat-like"],
+					[Wings.BAT_LIKE_LARGE, "large bat-like"],
+					[Wings.FEATHERED_LARGE, "large feathered"],
+					[Wings.DRACONIC_SMALL, "small draconic"],
+					[Wings.DRACONIC_LARGE, "large draconic"],
+					[Wings.GIANT_DRAGONFLY, "giant dragonfly"],
 				]
 		);
 		public static const DEFAULT_WING_DESCS:Object = createMapFromPairs(
 				[
-					[WING_TYPE_NONE, "non-existent"],
-					[WING_TYPE_BEE_LIKE_SMALL, "small bee-like"],
-					[WING_TYPE_BEE_LIKE_LARGE, "large bee-like"],
-					[WING_TYPE_HARPY, "large feathery"],
-					[WING_TYPE_IMP, "small"],
-					[WING_TYPE_IMP_LARGE, "large"],
-					[WING_TYPE_BAT_LIKE_TINY, "tiny, bat-like"],
-					[WING_TYPE_BAT_LIKE_LARGE, "large, bat-like"],
-					[WING_TYPE_FEATHERED_LARGE, "large, feathered"],
-					[WING_TYPE_DRACONIC_SMALL, "small, draconic"],
-					[WING_TYPE_DRACONIC_LARGE, "large, draconic"],
-					[WING_TYPE_GIANT_DRAGONFLY, "giant dragonfly"],
+					[Wings.NONE, "non-existent"],
+					[Wings.BEE_LIKE_SMALL, "small bee-like"],
+					[Wings.BEE_LIKE_LARGE, "large bee-like"],
+					[Wings.HARPY, "large feathery"],
+					[Wings.IMP, "small"],
+					[Wings.IMP_LARGE, "large"],
+					[Wings.BAT_LIKE_TINY, "tiny, bat-like"],
+					[Wings.BAT_LIKE_LARGE, "large, bat-like"],
+					[Wings.FEATHERED_LARGE, "large, feathered"],
+					[Wings.DRACONIC_SMALL, "small, draconic"],
+					[Wings.DRACONIC_LARGE, "large, draconic"],
+					[Wings.GIANT_DRAGONFLY, "giant dragonfly"],
 				]
 		);
 		public static const DEFAULT_LOWER_BODY_NAMES:Object = createMapFromPairs(
 				[
-					[LOWER_BODY_TYPE_HUMAN, "human"],
-					[LOWER_BODY_TYPE_HOOFED, "hoofed"],
-					[LOWER_BODY_TYPE_DOG, "dog"],
-					[LOWER_BODY_TYPE_NAGA, "naga"],
-					[LOWER_BODY_TYPE_WOLF, "wolf"],
-					[LOWER_BODY_TYPE_DEMONIC_HIGH_HEELS, "demonic high-heels"],
-					[LOWER_BODY_TYPE_DEMONIC_CLAWS, "demonic claws"],
-					[LOWER_BODY_TYPE_BEE, "bee"],
-					[LOWER_BODY_TYPE_GOO, "goo"],
-					[LOWER_BODY_TYPE_CAT, "cat"],
-					[LOWER_BODY_TYPE_LIZARD, "lizard"],
-					[LOWER_BODY_TYPE_PONY, "pony"],
-					[LOWER_BODY_TYPE_BUNNY, "bunny"],
-					[LOWER_BODY_TYPE_HARPY, "harpy"],
-					[LOWER_BODY_TYPE_KANGAROO, "kangaroo"],
-					[LOWER_BODY_TYPE_CHITINOUS_SPIDER_LEGS, "chitinous spider legs"],
-					[LOWER_BODY_TYPE_DRIDER_LOWER_BODY, "drider"],
-					[LOWER_BODY_TYPE_FOX, "fox"],
-					[LOWER_BODY_TYPE_DRAGON, "dragon"],
-					[LOWER_BODY_TYPE_RACCOON, "raccoon"],
-					[LOWER_BODY_TYPE_FERRET, "ferret"],
-					[LOWER_BODY_TYPE_CLOVEN_HOOFED, "cloven-hoofed"],
-					[LOWER_BODY_TYPE_ECHIDNA, "echidna"],
-					[LOWER_BODY_TYPE_SALAMANDER, "salamander"],
-					[LOWER_BODY_TYPE_IMP, "imp"],
-					[LOWER_BODY_TYPE_COCKATRICE, "cockatrice"],
+					[LowerBody.HUMAN, "human"],
+					[LowerBody.HOOFED, "hoofed"],
+					[LowerBody.DOG, "dog"],
+					[LowerBody.NAGA, "naga"],
+					[LowerBody.WOLF, "wolf"],
+					[LowerBody.DEMONIC_HIGH_HEELS, "demonic high-heels"],
+					[LowerBody.DEMONIC_CLAWS, "demonic claws"],
+					[LowerBody.BEE, "bee"],
+					[LowerBody.GOO, "goo"],
+					[LowerBody.CAT, "cat"],
+					[LowerBody.LIZARD, "lizard"],
+					[LowerBody.PONY, "pony"],
+					[LowerBody.BUNNY, "bunny"],
+					[LowerBody.HARPY, "harpy"],
+					[LowerBody.KANGAROO, "kangaroo"],
+					[LowerBody.CHITINOUS_SPIDER_LEGS, "chitinous spider legs"],
+					[LowerBody.DRIDER_LOWER_BODY, "drider"],
+					[LowerBody.FOX, "fox"],
+					[LowerBody.DRAGON, "dragon"],
+					[LowerBody.RACCOON, "raccoon"],
+					[LowerBody.FERRET, "ferret"],
+					[LowerBody.CLOVEN_HOOFED, "cloven-hoofed"],
+					[LowerBody.ECHIDNA, "echidna"],
+					[LowerBody.SALAMANDER, "salamander"],
+					[LowerBody.IMP, "imp"],
+					[LowerBody.COCKATRICE, "cockatrice"],
 				]
 		);
 		public static const DEFAULT_PIERCING_NAMES:Object = createMapFromPairs(
 				[
-					[PIERCING_TYPE_NONE, "none"],
-					[PIERCING_TYPE_STUD, "stud"],
-					[PIERCING_TYPE_RING, "ring"],
-					[PIERCING_TYPE_LADDER, "ladder"],
-					[PIERCING_TYPE_HOOP, "hoop"],
-					[PIERCING_TYPE_CHAIN, "chain"],
+					[Piercing.NONE, "none"],
+					[Piercing.STUD, "stud"],
+					[Piercing.RING, "ring"],
+					[Piercing.LADDER, "ladder"],
+					[Piercing.HOOP, "hoop"],
+					[Piercing.CHAIN, "chain"],
 				]
 		);
 		public static const DEFAULT_VAGINA_TYPE_NAMES:Object = createMapFromPairs(
 				[
-					[VAGINA_TYPE_HUMAN, "human"],
-					[VAGINA_TYPE_EQUINE, "equine"],
-					[VAGINA_TYPE_BLACK_SAND_TRAP, "black sandtrap"],
+					[VaginaClass.HUMAN, "human"],
+					[VaginaClass.EQUINE, "equine"],
+					[VaginaClass.BLACK_SAND_TRAP, "black sandtrap"],
 				]
 		);
 		public static const DEFAULT_VAGINA_WETNESS_SCALES:Array = [
-			[VAGINA_WETNESS_DRY, "dry"],
-			[VAGINA_WETNESS_NORMAL, "normal"],
-			[VAGINA_WETNESS_WET, "wet"],
-			[VAGINA_WETNESS_SLICK, "slick"],
-			[VAGINA_WETNESS_DROOLING, "drooling"],
-			[VAGINA_WETNESS_SLAVERING, "slavering"],
+			[VaginaClass.WETNESS_DRY, "dry"],
+			[VaginaClass.WETNESS_NORMAL, "normal"],
+			[VaginaClass.WETNESS_WET, "wet"],
+			[VaginaClass.WETNESS_SLICK, "slick"],
+			[VaginaClass.WETNESS_DROOLING, "drooling"],
+			[VaginaClass.WETNESS_SLAVERING, "slavering"],
 		];
 		public static const DEFAULT_VAGINA_LOOSENESS_SCALES:Array = [
-			[VAGINA_LOOSENESS_TIGHT, "tight"],
-			[VAGINA_LOOSENESS_NORMAL, "normal"],
-			[VAGINA_LOOSENESS_LOOSE, "loose"],
-			[VAGINA_LOOSENESS_GAPING, "gaping"],
-			[VAGINA_LOOSENESS_GAPING_WIDE, "gaping wide"],
-			[VAGINA_LOOSENESS_LEVEL_CLOWN_CAR, "clown-car level"],
+			[VaginaClass.LOOSENESS_TIGHT, "tight"],
+			[VaginaClass.LOOSENESS_NORMAL, "normal"],
+			[VaginaClass.LOOSENESS_LOOSE, "loose"],
+			[VaginaClass.LOOSENESS_GAPING, "gaping"],
+			[VaginaClass.LOOSENESS_GAPING_WIDE, "gaping wide"],
+			[VaginaClass.LOOSENESS_LEVEL_CLOWN_CAR, "clown-car level"],
 		];
 		public static const DEFAULT_ANAL_WETNESS_SCALES:Array = [
-			[ANAL_WETNESS_DRY, "dry"],
-			[ANAL_WETNESS_NORMAL, "normal"],
-			[ANAL_WETNESS_MOIST, "moist"],
-			[ANAL_WETNESS_SLIMY, "slimy"],
-			[ANAL_WETNESS_DROOLING, "drooling"],
-			[ANAL_WETNESS_SLIME_DROOLING, "slime-drooling"],
+			[AssClass.WETNESS_DRY, "dry"],
+			[AssClass.WETNESS_NORMAL, "normal"],
+			[AssClass.WETNESS_MOIST, "moist"],
+			[AssClass.WETNESS_SLIMY, "slimy"],
+			[AssClass.WETNESS_DROOLING, "drooling"],
+			[AssClass.WETNESS_SLIME_DROOLING, "slime-drooling"],
 		];
 		public static const DEFAULT_ANAL_LOOSENESS_SCALES:Array = [
-			[ANAL_LOOSENESS_VIRGIN, "virgin"],
-			[ANAL_LOOSENESS_TIGHT, "tight"],
-			[ANAL_LOOSENESS_NORMAL, "normal"],
-			[ANAL_LOOSENESS_LOOSE, "loose"],
-			[ANAL_LOOSENESS_STRETCHED, "stretched"],
-			[ANAL_LOOSENESS_GAPING, "gaping"],
+			[AssClass.LOOSENESS_VIRGIN, "virgin"],
+			[AssClass.LOOSENESS_TIGHT, "tight"],
+			[AssClass.LOOSENESS_NORMAL, "normal"],
+			[AssClass.LOOSENESS_LOOSE, "loose"],
+			[AssClass.LOOSENESS_STRETCHED, "stretched"],
+			[AssClass.LOOSENESS_GAPING, "gaping"],
 		];
 		public static const DEFAULT_HIP_RATING_SCALES:Array = [
-			[HIP_RATING_BOYISH, "boyish"],
-			[HIP_RATING_SLENDER, "slender"],
-			[HIP_RATING_AVERAGE, "average"],
-			[HIP_RATING_AMPLE, "ample"],
-			[HIP_RATING_CURVY, "curvy"],
-			[HIP_RATING_FERTILE, "fertile"],
-			[HIP_RATING_INHUMANLY_WIDE, "inhumanly wide"],
+			[Hips.RATING_BOYISH, "boyish"],
+			[Hips.RATING_SLENDER, "slender"],
+			[Hips.RATING_AVERAGE, "average"],
+			[Hips.RATING_AMPLE, "ample"],
+			[Hips.RATING_CURVY, "curvy"],
+			[Hips.RATING_FERTILE, "fertile"],
+			[Hips.RATING_INHUMANLY_WIDE, "inhumanly wide"],
 		];
 		public static const DEFAULT_BUTT_RATING_SCALES:Array = [
-			[BUTT_RATING_BUTTLESS, "buttless"],
-			[BUTT_RATING_TIGHT, "tight"],
-			[BUTT_RATING_AVERAGE, "average"],
-			[BUTT_RATING_NOTICEABLE, "noticeable"],
-			[BUTT_RATING_LARGE, "large"],
-			[BUTT_RATING_JIGGLY, "jiggly"],
-			[BUTT_RATING_EXPANSIVE, "expansive"],
-			[BUTT_RATING_HUGE, "huge"],
-			[BUTT_RATING_INCONCEIVABLY_BIG, "inconceivably big"],
+			[Butt.RATING_BUTTLESS, "buttless"],
+			[Butt.RATING_TIGHT, "tight"],
+			[Butt.RATING_AVERAGE, "average"],
+			[Butt.RATING_NOTICEABLE, "noticeable"],
+			[Butt.RATING_LARGE, "large"],
+			[Butt.RATING_JIGGLY, "jiggly"],
+			[Butt.RATING_EXPANSIVE, "expansive"],
+			[Butt.RATING_HUGE, "huge"],
+			[Butt.RATING_INCONCEIVABLY_BIG, "inconceivably big"],
 		];
 
 		/**
@@ -2593,7 +2590,7 @@ package classes
 		
 		public static function tailDescript(i_creature:Creature):String
 		{
-			if (i_creature.tailType == TAIL_TYPE_NONE)
+			if (i_creature.tailType == Tail.NONE)
 			{
 				trace("WARNING: Creature has no tails to describe.");
 				return "<b>!Creature has no tails to describe!</b>";
@@ -2601,7 +2598,7 @@ package classes
 			
 			var descript:String = "";
 			
-			if (i_creature.tailType == TAIL_TYPE_FOX && i_creature.tailVenom >= 1)
+			if (i_creature.tailType == Tail.FOX && i_creature.tailVenom >= 1)
 			{
 				// Kitsune tails, we're using tailVenom to track tail count
 				if (i_creature.tailVenom > 1)
@@ -2627,7 +2624,7 @@ package classes
 		
 		public static function oneTailDescript(i_creature:Creature):String
 		{
-			if (i_creature.tailType == TAIL_TYPE_NONE)
+			if (i_creature.tailType == Tail.NONE)
 			{
 				trace("WARNING: Creature has no tails to describe.");
 				return "<b>!Creature has no tails to describe!</b>";
@@ -2635,7 +2632,7 @@ package classes
 			
 			var descript:String = "";
 			
-			if (i_creature.tailType == TAIL_TYPE_FOX && i_creature.tailVenom >= 1)
+			if (i_creature.tailType == Tail.FOX && i_creature.tailVenom >= 1)
 			{
 				if (i_creature.tailVenom == 1)
 				{

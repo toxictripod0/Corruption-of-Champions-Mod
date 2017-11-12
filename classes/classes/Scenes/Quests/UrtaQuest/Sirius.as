@@ -1,6 +1,7 @@
 package classes.Scenes.Quests.UrtaQuest
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Scenes.Areas.Desert.Naga;
 	import classes.internals.*;
@@ -108,13 +109,13 @@ package classes.Scenes.Quests.UrtaQuest
 			this.plural = false;
 			this.createCock(14,2);
 			createBreastRow(0);
-			this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-			this.ass.analWetness = ANAL_WETNESS_DRY;
+			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
+			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,10,0,0,0);
 			this.tallness = 5*12+10;
-			this.hipRating = HIP_RATING_AMPLE+2;
-			this.buttRating = BUTT_RATING_LARGE;
-			this.lowerBody = LOWER_BODY_TYPE_NAGA;
+			this.hipRating = Hips.RATING_AMPLE+2;
+			this.buttRating = Butt.RATING_LARGE;
+			this.lowerBody = LowerBody.NAGA;
 			this.skinTone = "mediterranean-toned";
 			this.hairColor = "orange";
 			this.hairLength = 16;

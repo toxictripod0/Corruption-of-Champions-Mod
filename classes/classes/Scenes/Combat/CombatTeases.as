@@ -1,6 +1,7 @@
 package classes.Scenes.Combat 
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.*;
 	import classes.Items.*;
 	import classes.Scenes.Areas.GlacialRift.FrostGiant;
@@ -345,7 +346,7 @@ package classes.Scenes.Combat
 				if (player.ass.analLooseness >= 5) choices[choices.length] = 16;
 			}		
 			//17 Bee abdomen tease
-			if (player.tailType == TAIL_TYPE_BEE_ABDOMEN) {
+			if (player.tailType == Tail.BEE_ABDOMEN) {
 				choices[choices.length] = 17;
 				choices[choices.length] = 17;
 			}
@@ -373,7 +374,7 @@ package classes.Scenes.Combat
 				choices[choices.length] = 21;
 			}
 			//22 SPOIDAH SILK
-			if (player.tailType == TAIL_TYPE_SPIDER_ADBOMEN) {
+			if (player.tailType == Tail.SPIDER_ABDOMEN) {
 				choices[choices.length] = 22;
 				choices[choices.length] = 22;
 				choices[choices.length] = 22;
@@ -492,7 +493,7 @@ package classes.Scenes.Combat
 			//38 Kitsune Tease
 			//39 Kitsune Tease
 			//40 Kitsune Tease
-			if (player.kitsuneScore() >= 2 && player.tailType == TAIL_TYPE_FOX) {
+			if (player.kitsuneScore() >= 2 && player.tailType == Tail.FOX) {
 				choices[choices.length] = 37;
 				choices[choices.length] = 37;
 				choices[choices.length] = 37;
@@ -511,7 +512,7 @@ package classes.Scenes.Combat
 				choices[choices.length] = 40;
 			}
 			//41 Kitsune Gendered Tease
-			if (player.kitsuneScore() >= 2 && player.tailType == TAIL_TYPE_FOX) {
+			if (player.kitsuneScore() >= 2 && player.tailType == Tail.FOX) {
 				choices[choices.length] = 41;
 				choices[choices.length] = 41;
 				choices[choices.length] = 41;
@@ -530,7 +531,7 @@ package classes.Scenes.Combat
 				choices[choices.length] = 42;
 			}
 			//43 - special mino + cowgirls
-			if (player.hasVagina() && player.lactationQ() >= 500 && player.biggestTitSize() >= 6 && player.cowScore() >= 3 && player.tailType == TAIL_TYPE_COW) {
+			if (player.hasVagina() && player.lactationQ() >= 500 && player.biggestTitSize() >= 6 && player.cowScore() >= 3 && player.tailType == Tail.COW) {
 				choices[choices.length] = 43;
 				choices[choices.length] = 43;
 				choices[choices.length] = 43;
@@ -574,7 +575,7 @@ package classes.Scenes.Combat
 			select = choices[rand(choices.length)];
 			if (monster.short.indexOf("minotaur") != -1) 
 			{
-				if (player.hasVagina() && player.lactationQ() >= 500 && player.biggestTitSize() >= 6 && player.cowScore() >= 3 && player.tailType == TAIL_TYPE_COW)
+				if (player.hasVagina() && player.lactationQ() >= 500 && player.biggestTitSize() >= 6 && player.cowScore() >= 3 && player.tailType == Tail.COW)
 					select = 43;
 			}
 			//Lets do zis!

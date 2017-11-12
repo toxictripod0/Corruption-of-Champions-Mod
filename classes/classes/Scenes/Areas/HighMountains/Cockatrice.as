@@ -1,6 +1,8 @@
 package classes.Scenes.Areas.HighMountains
 {
 	import classes.*;
+	import classes.BodyParts.*;
+	import classes.BodyParts.Hips;
 	import classes.internals.WeightedAction;
 	import classes.internals.WeightedDrop;
 	import classes.GlobalFlags.*
@@ -17,7 +19,7 @@ package classes.Scenes.Areas.HighMountains
 
 		public function wingify():void
 		{
-			wingType = WING_TYPE_FEATHERED_LARGE;
+			wingType = Wings.FEATHERED_LARGE;
 			wingDesc = "large, feathered";
 			spe += 10;
 			imageName += "withwings";
@@ -177,21 +179,21 @@ package classes.Scenes.Areas.HighMountains
 			this.ballSize = 2;
 			this.cumMultiplier = 4;
 			createBreastRow(0);
-			this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-			this.ass.analWetness = ANAL_WETNESS_DRY;
+			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
+			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,30,0,0,0);
 			this.tallness = 6*12+2;
-			this.hipRating = HIP_RATING_AMPLE;
-			this.buttRating = BUTT_RATING_TIGHT;
-			this.lowerBody = LOWER_BODY_TYPE_COCKATRICE;
-			this.faceType = FACE_COCKATRICE;
-			this.tongueType = TONGUE_LIZARD;
-			this.earType = EARS_COCKATRICE;
-			this.eyeType = EYES_COCKATRICE;
-			this.hairType = HAIR_FEATHER;
+			this.hipRating = Hips.RATING_AMPLE;
+			this.buttRating = Butt.RATING_TIGHT;
+			this.lowerBody = LowerBody.COCKATRICE;
+			this.faceType = Face.COCKATRICE;
+			this.tongueType = Tongue.LIZARD;
+			this.earType = Ears.COCKATRICE;
+			this.eyeType = Eyes.COCKATRICE;
+			this.hairType = Hair.FEATHER;
 			this.skinTone = "midnight blue";
-			this.skinType = SKIN_TYPE_LIZARD_SCALES;
-			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[SKIN_TYPE_LIZARD_SCALES];
+			this.skinType = Skin.LIZARD_SCALES;
+			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.LIZARD_SCALES];
 			this.hairColor = "blue";
 			this.hairLength = 2;
 			/*
@@ -222,7 +224,7 @@ package classes.Scenes.Areas.HighMountains
 				.add(consumables.GLDSEED, 35)
 				.add(consumables.TOTRICE, 20)
 				.add(null,                10);
-			this.tailType = TAIL_TYPE_COCKATRICE;
+			this.tailType = Tail.COCKATRICE;
 			this.tailRecharge = 0;
 			this.createPerk(PerkLib.BasiliskResistance, 0, 0, 0, 0);
 			checkMonster();

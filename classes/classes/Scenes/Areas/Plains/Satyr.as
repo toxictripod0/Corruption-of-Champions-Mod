@@ -1,6 +1,7 @@
 package classes.Scenes.Areas.Plains
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.internals.*;
 
 	public class Satyr extends Monster
@@ -145,17 +146,17 @@ package classes.Scenes.Areas.Plains
 			this.cumMultiplier = 1.5;
 			this.hoursSinceCum = this.ballSize * 10;
 			createBreastRow(0);
-			this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
-			this.ass.analWetness = ANAL_WETNESS_NORMAL;
+			this.ass.analLooseness = AssClass.LOOSENESS_STRETCHED;
+			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.createStatusEffect(StatusEffects.BonusACapacity,20,0,0,0);
 			this.tallness = rand(37) + 64;
-			this.hipRating = HIP_RATING_AVERAGE;
-			this.buttRating = BUTT_RATING_AVERAGE+1;
-			this.lowerBody = LOWER_BODY_TYPE_HOOFED;
+			this.hipRating = Hips.RATING_AVERAGE;
+			this.buttRating = Butt.RATING_AVERAGE+1;
+			this.lowerBody = LowerBody.HOOFED;
 			this.skinTone = "tan";
 			this.hairColor = randomChoice("black","brown");
 			this.hairLength = 3+rand(20);
-			this.faceType = FACE_COW_MINOTAUR;
+			this.faceType = Face.COW_MINOTAUR;
 			initStrTouSpeInte(75, 70, 110, 70);
 			initLibSensCor(60, 35, 45);
 			this.weaponName = "fist";
@@ -168,7 +169,7 @@ package classes.Scenes.Areas.Plains
 			this.level = 14;
 			this.gems = rand(25) + 25;
 			this.drop = new ChainedDrop().add(consumables.INCUBID,1/2);
-			this.tailType = TAIL_TYPE_COW;
+			this.tailType = Tail.COW;
 			checkMonster();
 		}
 		

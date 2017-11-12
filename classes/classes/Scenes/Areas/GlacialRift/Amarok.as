@@ -7,6 +7,8 @@
 package classes.Scenes.Areas.GlacialRift 
 {
 	import classes.*;
+	import classes.BodyParts.*;
+	import classes.BodyParts.Hips;
 	import classes.internals.WeightedDrop;
 	
 	public class Amarok extends Monster
@@ -102,20 +104,20 @@ package classes.Scenes.Areas.GlacialRift
 			createBreastRow(2,1);
 			createBreastRow(2,1);
 			createBreastRow(2,1);
-			this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-			this.ass.analWetness = ANAL_WETNESS_DRY;
+			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
+			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.tallness = 8*12;
-			this.hipRating = HIP_RATING_AVERAGE;
-			this.buttRating = BUTT_RATING_AVERAGE;
-			this.lowerBody = LOWER_BODY_TYPE_WOLF;
-			this.armType = ARM_TYPE_WOLF;
+			this.hipRating = Hips.RATING_AVERAGE;
+			this.buttRating = Butt.RATING_AVERAGE;
+			this.lowerBody = LowerBody.WOLF;
+			this.armType = Arms.WOLF;
 			this.skinTone = "black";
-			this.skinType = SKIN_TYPE_FUR;
+			this.skinType = Skin.FUR;
 			this.hairColor = "black";
 			this.hairLength = 3;
-			this.faceType = FACE_WOLF;
-			this.earType = EARS_WOLF;
-			this.eyeType = EYES_WOLF;
+			this.faceType = Face.WOLF;
+			this.earType = Ears.WOLF;
+			this.eyeType = Eyes.WOLF;
 			initStrTouSpeInte(90,110,75,85);
 			initLibSensCor(0,10,10);
 			this.weaponName = "teeth";
@@ -132,7 +134,7 @@ package classes.Scenes.Areas.GlacialRift
 			this.drop = new WeightedDrop(consumables.WOLF_PP, 1);
 			this.special1 = amarokClaw;
 			this.special2 = amarokTail;
-			this.tailType = TAIL_TYPE_WOLF;
+			this.tailType = Tail.WOLF;
 			if (!player.canFly()) {
 				this.createStatusEffect(StatusEffects.GenericRunDisabled, 0, 0, 0, 0);
 				//"Watching your movements" alluded to this. Its lore is stalking and hunting people, so I imagine you can't get away.

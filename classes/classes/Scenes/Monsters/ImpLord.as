@@ -1,6 +1,7 @@
 ﻿package classes.Scenes.Monsters
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.internals.*;
 	import classes.GlobalFlags.kFLAGS;
 
@@ -92,12 +93,12 @@
 			this.pronoun1 = "he";
 			this.pronoun2 = "him";
 			this.pronoun3 = "his";
-			this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
-			this.ass.analWetness = ANAL_WETNESS_NORMAL;
+			this.ass.analLooseness = AssClass.LOOSENESS_STRETCHED;
+			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.tallness = rand(14) + 40;
-			this.hipRating = HIP_RATING_BOYISH;
-			this.buttRating = BUTT_RATING_TIGHT;
-			this.lowerBody = LOWER_BODY_TYPE_HOOFED;
+			this.hipRating = Hips.RATING_BOYISH;
+			this.buttRating = Butt.RATING_TIGHT;
+			this.lowerBody = LowerBody.HOOFED;
 			this.skinTone = "red";
 			initStrTouSpeInte(55, 40, 75, 42);
 			initLibSensCor(55, 35, 100);
@@ -117,7 +118,7 @@
 					add(consumables.LABOVA_,1).
 					add(consumables.INCUBID,6).
 					add(consumables.SUCMILK,6);
-			this.wingType = WING_TYPE_IMP_LARGE;
+			this.wingType = Wings.IMP_LARGE;
 			this.special1 = lustMagicAttack;
 			checkMonster();
 		}

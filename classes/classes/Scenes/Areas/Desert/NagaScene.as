@@ -1,5 +1,6 @@
 package classes.Scenes.Areas.Desert {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Items.ArmorLib;
@@ -18,7 +19,7 @@ public function nagaEncounter():void {
 	//Create status if needed
 	if (!player.hasStatusEffect(StatusEffects.Naga)) player.createStatusEffect(StatusEffects.Naga,0,0,0,0);
 	clearOutput();
-	if (player.lowerBody == LOWER_BODY_TYPE_NAGA) {
+	if (player.lowerBody == LowerBody.NAGA) {
 		//Set 'last fuck as naga'
 		player.changeStatusValue(StatusEffects.Naga,1,1);
 		//Not met as naga before
@@ -43,7 +44,7 @@ public function nagaEncounter():void {
 		}
 		outputText("She lets out a soft moan and leans her head forward, pressing her lips against yours. You squeeze her body even more firmly against yours in response, the tips of your tails wrapping around one another. You open your mouth slightly and press your tongue against her lips. She offers no resistance and you begin caressing the inside of her mouth with your tongue, circling her fangs as she uses her own tongue to gently stroke ");
 		//[If player has fangs]
-		if (player.faceType == FACE_SNAKE_FANGS) outputText("your own.");
+		if (player.faceType == Face.SNAKE_FANGS) outputText("your own.");
 		//[player has no fangs]
 		else outputText("the inside of your mouth.");
 		outputText("\n\n");
@@ -98,7 +99,7 @@ public function nagaEncounter():void {
 		else if (player.hasVagina()) {
 			outputText("The kiss continues and you can feel your " + player.breastDescript(0) + " pressing against her own. You kiss her harder, pressing your body as close to her as you can, enjoying the feeling of your two bodies entwined together. You wrap your tail around hers, trying to make every part of your body touch every part of hers.  The feeling of her scaled tail rubbing against your body sends shivers of ecstasy down your spine. You pull away from her mouth and move your head to kiss at her neck, ");
 			//(if player has fangs)
-			if (player.faceType == FACE_SNAKE_FANGS) outputText("carefully nibbling at it so as to not break the skin.  ");
+			if (player.faceType == Face.SNAKE_FANGS) outputText("carefully nibbling at it so as to not break the skin.  ");
 			else outputText("nibbling gently at it.  ");
 			outputText("Traveling down, you pause at her collarbone, letting go of her hips to bring your hands up to her perfectly rounded breasts. A moan escapes the naga's lips as you massage her erect nipples. Your mouth continues its trek down the naga's supple body and you make sure to pause on each breast, circling inward and stopping on each nipple to suck gently on them.\n\n");
  			outputText("Once more your hands move down the naga's body, making their way across her sides as your mouth simultaneously kisses at the smooth flesh of her exposed belly. Goose pimples slowly begin to appear, denoting how much she enjoys it. You pause at her hips, hovering over the slit at her crotch. One of your hands slide down to the slit and you start to stroke at it gently as you kiss at the area around it. Your partner shudders a bit, overcome by the sensations. Slowly you slide a finger into her, hearing a gasp of pleasure as you move it around inside her.  ");
@@ -230,13 +231,13 @@ private function gooNagaRape():void {
 	else if (player.gender == 2) {
 		outputText("You shriek in delight as wave after wave of orgasms rush over you");
 		//(if squirter)
-		if (player.vaginas[0].vaginalWetness == VAGINA_WETNESS_SLAVERING) outputText(", your girlcum gushing out and pooling on the stomach of the naga");
+		if (player.vaginas[0].vaginalWetness == VaginaClass.WETNESS_SLAVERING) outputText(", your girlcum gushing out and pooling on the stomach of the naga");
 		outputText(".");
 	}
 	//(if herm)
 	if (player.gender == 3) {
 		outputText("You scream in ecstasy as you hit your peak, your girlcum ");
-		if (player.vaginas[0].vaginalWetness < VAGINA_WETNESS_SLAVERING) outputText("leaking out");
+		if (player.vaginas[0].vaginalWetness < VaginaClass.WETNESS_SLAVERING) outputText("leaking out");
 		else outputText("gushing out to form a pool on the naga's stomach");
 		outputText(" and your " + player.multiCockDescriptLight());
 		//(normal)
@@ -427,7 +428,7 @@ private function nagaVictoryGenderless():void {
   		outputText("But you can't give up now. You've gotten this far, now you need to finish the deed. At the end of this, there WILL be sex.\n\n");
         outputText("You thrust yourself on top of her and roughly open the scaly covering at her crotch, revealing her awaiting pussy. You bring your mouth over her opening and thrust your tongue deep inside. A mix between a whimper and a moan escapes the naga's lips as you twist your tongue deeper inside her, as though trying to taste every part of her.\n\n");
         //(If player has no fangs)
-		if (player.faceType != FACE_SNAKE_FANGS) {
+		if (player.faceType != Face.SNAKE_FANGS) {
 			outputText("You feel her start to thrust her hips into your face to try to gain more pleasure, but you won't be having ANY of that. You quickly take your tongue out of her and move your way up to her breasts, groping at them and biting at her nipples. The naga cries out in pain and tries to push your head away. You give her one last bite, hard enough to draw blood from her before getting up.\n\n");
 	        outputText("The naga quickly slithers out from under you with an angry hiss, a hand pressed to her now bleeding breast. You chuckle at this and the naga turns to glare at you. There is a sudden pain on the back of your legs and your view shifts to looking at the sky above you. It takes a moment for you to realize that the scaly bitch has just tripped you with her tail before slithering away.\n\n");
 		}
@@ -726,7 +727,7 @@ internal function nagaRapeChoice():void {
 			addButton(1, "Female Rape", nagaVictoryFemale);
 		if (player.isGenderless())
 			addButton(2, "Genderless", nagaVictoryGenderless);
-		if (player.lowerBody == LOWER_BODY_TYPE_GOO)
+		if (player.lowerBody == LowerBody.GOO)
 			addButton(3, "Gooey Rape", gooNagaRape);
 	}
 	

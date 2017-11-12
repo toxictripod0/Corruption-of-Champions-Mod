@@ -1,6 +1,8 @@
 ﻿package classes.Scenes.Areas.Lake
 {
 	import classes.*;
+	import classes.BodyParts.*;
+	import classes.BodyParts.Hips;
 	import classes.internals.*;
 	import classes.GlobalFlags.kFLAGS;
 
@@ -47,12 +49,12 @@
 			this.pronoun2 = "it";
 			this.pronoun3 = "its";
 			createBreastRow(0);
-			this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
-			this.ass.analWetness = ANAL_WETNESS_SLIME_DROOLING;
+			this.ass.analLooseness = AssClass.LOOSENESS_STRETCHED;
+			this.ass.analWetness = AssClass.WETNESS_SLIME_DROOLING;
 			this.tallness = rand(8) + 80;
-			this.hipRating = HIP_RATING_AMPLE;
-			this.buttRating = BUTT_RATING_LARGE;
-			this.lowerBody = LOWER_BODY_TYPE_GOO;
+			this.hipRating = Hips.RATING_AMPLE;
+			this.buttRating = Butt.RATING_LARGE;
+			this.lowerBody = LowerBody.GOO;
 			this.skinTone = "green";
 			initStrTouSpeInte(25, 20, 10, 5);
 			initLibSensCor(50, 60, 20);

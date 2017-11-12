@@ -1,6 +1,7 @@
 package classes.Scenes.Areas.Forest
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.internals.*;
 	import classes.GlobalFlags.kACHIEVEMENTS;
 	import classes.GlobalFlags.kFLAGS;
@@ -119,13 +120,13 @@ package classes.Scenes.Areas.Forest
 			this.pronoun2 = "it";
 			this.pronoun3 = "its";
 			this.createBreastRow(0,0);
-			this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-			this.ass.analWetness = ANAL_WETNESS_SLIME_DROOLING;
+			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
+			this.ass.analWetness = AssClass.WETNESS_SLIME_DROOLING;
 			this.tallness = rand(9) + 70;
-			this.hipRating = HIP_RATING_BOYISH;
-			this.buttRating = BUTT_RATING_BUTTLESS;
+			this.hipRating = Hips.RATING_BOYISH;
+			this.buttRating = Butt.RATING_BUTTLESS;
 			this.skinTone = "green";
-			this.skinType = SKIN_TYPE_PLAIN;
+			this.skinType = Skin.PLAIN;
 			this.skinDesc = "bark";
 			this.hairColor = "green";
 			this.hairLength = 1;
@@ -146,7 +147,7 @@ package classes.Scenes.Areas.Forest
 			this.special1 = tentaclePhysicalAttack;
 			this.special2 = tentacleEntwine;
 			this.special3 = tentaclePhysicalAttack;
-			this.tailType = TAIL_TYPE_DEMONIC;
+			this.tailType = Tail.DEMONIC;
 			checkMonster();
 		}
 

@@ -1,9 +1,13 @@
 package classes.Scenes.Monsters 
 {
+	import classes.AssClass;
+	import classes.BodyParts.BreastCup;
 	import classes.Monster;
 	import classes.StatusEffects;
 	import classes.internals.WeightedDrop;
 	import classes.CockTypesEnum;
+	import classes.BodyParts.Butt;
+	import classes.BodyParts.Hips;
 	/**
 	 * ...
 	 * @author ...
@@ -82,14 +86,14 @@ package classes.Scenes.Monsters
 			this.balls = 0;
 			this.ballSize = 0;
 			if (type == 1)
-				createBreastRow(BREAST_CUP_JACQUES00);
+				createBreastRow(BreastCup.JACQUES00);
 			else
 				createBreastRow(0);
-			this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-			this.ass.analWetness = ANAL_WETNESS_DRY;
+			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
+			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.tallness = rand(24) + 25;
-			this.hipRating = HIP_RATING_BOYISH;
-			this.buttRating = BUTT_RATING_TIGHT;
+			this.hipRating = Hips.RATING_BOYISH;
+			this.buttRating = Butt.RATING_TIGHT;
 			if (type == 3)
 				this.skinTone = "brown";
 			if (type == 1 || type == 2)

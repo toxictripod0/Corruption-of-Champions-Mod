@@ -1,6 +1,8 @@
 package classes.Scenes.Areas.Forest
 {
 	import classes.*;
+	import classes.BodyParts.*;
+	import classes.BodyParts.Butt;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.internals.*;
 
@@ -209,15 +211,15 @@ package classes.Scenes.Areas.Forest
 				this.cumMultiplier = 1.5;
 				this.hoursSinceCum = ballSize * 10;
 			}
-			this.createVagina(false, VAGINA_WETNESS_SLICK, VAGINA_LOOSENESS_NORMAL);
+			this.createVagina(false, VaginaClass.WETNESS_SLICK, VaginaClass.LOOSENESS_NORMAL);
 			this.createStatusEffect(StatusEffects.BonusVCapacity, 20, 0, 0, 0);
 			createBreastRow(Appearance.breastCupInverse("D"));
-			this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-			this.ass.analWetness = ANAL_WETNESS_NORMAL;
+			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
+			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.createStatusEffect(StatusEffects.BonusACapacity,20,0,0,0);
 			this.tallness = rand(24) + 60;
-			this.hipRating = HIP_RATING_AMPLE;
-			this.buttRating = BUTT_RATING_AVERAGE+1;
+			this.hipRating = Hips.RATING_AMPLE;
+			this.buttRating = Butt.RATING_AVERAGE+1;
 			this.skinTone = "pale";
 			this.hairColor = hairColor;
 			this.hairLength = 13 + rand(20);
@@ -233,7 +235,7 @@ package classes.Scenes.Areas.Forest
 			this.level = 6;
 			this.gems = rand(10) + 10;
 			this.drop = new WeightedDrop(consumables.FOXJEWL, 1);
-			this.tailType = TAIL_TYPE_FOX;
+			this.tailType = Tail.FOX;
 			checkMonster();
 		}
 

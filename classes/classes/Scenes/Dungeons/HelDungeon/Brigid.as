@@ -1,6 +1,7 @@
 package classes.Scenes.Dungeons.HelDungeon
 {
 	import classes.*;
+	import classes.BodyParts.*;
 
 	public class Brigid extends Monster
 	{
@@ -63,16 +64,16 @@ package classes.Scenes.Dungeons.HelDungeon
 			this.imageName = "brigid";
 			this.long = "Brigid is a monster of a harpy, standing a foot taller than any other you've seen. She's covered in piercings, and her pink-dyed hair is shaved down to a long mohawk. She's nude, save for the hot poker in her right hand and the shield in her left, which jingles with every step she takes thanks to the cell keys beneath it.";
 			// this.plural = false;
-			this.createVagina(false, VAGINA_WETNESS_SLAVERING, VAGINA_LOOSENESS_LOOSE);
-			if (LOWER_BODY_TYPE_HARPY > 0) {
-				this.createStatusEffect(StatusEffects.BonusVCapacity, LOWER_BODY_TYPE_HARPY, 0, 0, 0);
+			this.createVagina(false, VaginaClass.WETNESS_SLAVERING, VaginaClass.LOOSENESS_LOOSE);
+			if (LowerBody.HARPY > 0) {
+				this.createStatusEffect(StatusEffects.BonusVCapacity, LowerBody.HARPY, 0, 0, 0);
 			}
 			createBreastRow(Appearance.breastCupInverse("D"));
-			this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
-			this.ass.analWetness = ANAL_WETNESS_DRY;
+			this.ass.analLooseness = AssClass.LOOSENESS_STRETCHED;
+			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.tallness = rand(8) + 70;
-			this.hipRating = HIP_RATING_AMPLE+2;
-			this.buttRating = BUTT_RATING_LARGE;
+			this.hipRating = Hips.RATING_AMPLE+2;
+			this.buttRating = Butt.RATING_LARGE;
 			this.skinTone = "red";
 			this.hairColor = "black";
 			this.hairLength = 15;
@@ -90,9 +91,9 @@ package classes.Scenes.Dungeons.HelDungeon
 			this.level = 19;
 			this.gems = rand(25) +140;
 			this.additionalXP = 50;
-			this.wingType = WING_TYPE_FEATHERED_LARGE;
-			this.tailType = TAIL_TYPE_DEMONIC;
-			this.hornType = HORNS_DEMON;
+			this.wingType = Wings.FEATHERED_LARGE;
+			this.tailType = Tail.DEMONIC;
+			this.hornType = Horns.DEMON;
 			this.horns = 2;
 			this.drop = NO_DROP;
 			checkMonster();

@@ -1,5 +1,6 @@
 package classes.Items.Consumables 
 {
+	import classes.BodyParts.*;
 	import classes.CockTypesEnum;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Items.Consumable;
@@ -61,7 +62,7 @@ package classes.Items.Consumables
 				}
 			}
 			//Neck restore
-			if (player.neck.type != NECK_TYPE_NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type != Neck.NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
 			//Rear body restore
 			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
 			//Ovi perk loss
@@ -82,14 +83,14 @@ package classes.Items.Consumables
 					player.skinTone = "white";
 					player.skinAdj = "milky";
 					player.skinDesc = "skin";
-					player.skinType = SKIN_TYPE_PLAIN;
+					player.skinType = Skin.PLAIN;
 				}
 				else {
 					outputText("\n\nA warmth begins in your belly, slowly spreading through your torso and appendages. The heat builds, becoming uncomfortable, then painful, then nearly unbearable. Your eyes unfocus from the pain, and by the time the burning sensation fades, you can already tell something's changed. You raise a hand, staring at the sable flesh. Your eyes are drawn to the veins in the back of your hand, brightening to an ashen tone as you watch.  <b>You have black skin, with white veins!</b>");
 					player.skinTone = "sable";
 					player.skinAdj = "ashen";
 					player.skinDesc = "skin";
-					player.skinType = SKIN_TYPE_PLAIN;
+					player.skinType = Skin.PLAIN;
 				}
 				player.underBody.restore();
 				mutations.updateClaws(player.clawType);

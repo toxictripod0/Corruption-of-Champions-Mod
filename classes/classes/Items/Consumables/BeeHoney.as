@@ -3,6 +3,7 @@
  */
 package classes.Items.Consumables
 {
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.*;
 	import classes.Items.Mutations;
 	import classes.internals.Utils;
@@ -140,22 +141,22 @@ package classes.Items.Consumables
 				mutations.removeExtraBreastRow(tfSource);
 			}
 			//Antennae
-			if (changes < changeLimit && player.antennae == CoC.ANTENNAE_NONE && player.horns == 0 && Utils.rand(3) == 0) {
+			if (changes < changeLimit && player.antennae == Antennae.NONE && player.horns == 0 && Utils.rand(3) == 0) {
 				outputText("\n\nYour head itches momentarily as two floppy antennae sprout from your " + getGame().player.hairDescript() + ".");
-				player.antennae = CoC.ANTENNAE_BEE;
+				player.antennae = Antennae.BEE;
 				changes++;
 			}
 			//Horns
 			if (changes < changeLimit && player.horns > 0 && Utils.rand(3) == 0) {
 				player.horns = 0;
-				player.hornType = CoC.HORNS_NONE;
+				player.hornType = Horns.NONE;
 				outputText("\n\nYour horns crumble, falling apart in large chunks until they flake away to nothing.");
 				changes++;
 			}
 			//Bee Legs
-			if (changes < changeLimit && player.lowerBody != CoC.LOWER_BODY_TYPE_BEE && Utils.rand(4) == 0) {
+			if (changes < changeLimit && player.lowerBody != LowerBody.BEE && Utils.rand(4) == 0) {
 				outputText("\n\nYour legs tremble with sudden unbearable pain, as if they're being ripped apart from the inside out and being stitched together again all at once.  You scream in agony as you hear bones snapping and cracking.  A moment later the pain fades and you are able to turn your gaze down to your beautiful new legs, covered in shining black chitin from the thigh down, and downy yellow fuzz along your upper thighs.");
-				player.lowerBody = CoC.LOWER_BODY_TYPE_BEE;
+				player.lowerBody = LowerBody.BEE;
 				player.legCount = 2;
 				changes++;
 			}
@@ -171,29 +172,29 @@ package classes.Items.Consumables
 				}
 			}
 			//Neck restore
-			if (player.neck.type != NECK_TYPE_NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type != Neck.NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
 			//Rear body restore
 			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
 			//Lose reptile oviposition!
 			if (rand(4) == 0) mutations.updateOvipositionPerk(tfSource);
 			//Gain bee oviposition!
-			if (changes < changeLimit && player.findPerk(PerkLib.BeeOvipositor) < 0 && player.tailType == CoC.TAIL_TYPE_BEE_ABDOMEN && Utils.rand(2) == 0) {
+			if (changes < changeLimit && player.findPerk(PerkLib.BeeOvipositor) < 0 && player.tailType == Tail.BEE_ABDOMEN && Utils.rand(2) == 0) {
 				outputText("\n\nAn odd swelling starts in your insectile abdomen, somewhere along the underside.  Curling around, you reach back to your extended, bulbous bee part and run your fingers along the underside.  You gasp when you feel a tender, yielding slit near the stinger.  As you probe this new orifice, a shock of pleasure runs through you, and a tubular, black, semi-hard appendage drops out, pulsating as heavily as any sexual organ.  <b>The new organ is clearly an ovipositor!</b>  A few gentle prods confirm that it's just as sensitive; you can already feel your internals changing, adjusting to begin the production of unfertilized eggs.  You idly wonder what laying them with your new bee ovipositor will feel like...");
 				outputText("\n\n(<b>Perk Gained:  Bee Ovipositor - Allows you to lay eggs in your foes!</b>)");
 				player.createPerk(PerkLib.BeeOvipositor, 0, 0, 0, 0);
 				changes++;
 			}
 			//Bee butt - 66% lower chance if already has a tail
-			if (changes < changeLimit && player.tailType != CoC.TAIL_TYPE_BEE_ABDOMEN && (player.tailType == CoC.TAIL_TYPE_NONE || Utils.rand(1.5) == 0) && Utils.rand(4) == 0) {
-				if (player.tailType > CoC.TAIL_TYPE_NONE) outputText("\n\nPainful swelling just above your " + getGame().player.buttDescript() + " doubles you over, and you hear the sound of your tail dropping off onto the ground!  Before you can consider the implications, the pain gets worse, and you feel your backside bulge outward sickeningly, cracking and popping as a rounded bee-like abdomen grows in place of your old tail.  It grows large enough to be impossible to hide, and with a note of finality, your stinger slides free with an audible 'snick'.");
+			if (changes < changeLimit && player.tailType != Tail.BEE_ABDOMEN && (player.tailType == Tail.NONE || Utils.rand(1.5) == 0) && Utils.rand(4) == 0) {
+				if (player.tailType > Tail.NONE) outputText("\n\nPainful swelling just above your " + getGame().player.buttDescript() + " doubles you over, and you hear the sound of your tail dropping off onto the ground!  Before you can consider the implications, the pain gets worse, and you feel your backside bulge outward sickeningly, cracking and popping as a rounded bee-like abdomen grows in place of your old tail.  It grows large enough to be impossible to hide, and with a note of finality, your stinger slides free with an audible 'snick'.");
 				else outputText("\n\nPainful swelling just above your " + getGame().player.buttDescript() + " doubles you over.  It gets worse and worse as the swollen lump begins to protrude from your backside, swelling and rounding with a series of pops until you have a bulbous abdomen hanging just above your butt.  The whole thing is covered in a hard chitinous material, and large enough to be impossible to hide.  You sigh as your stinger slides into place with a 'snick', finishing the transformation.  <b>You have a bee's abdomen.</b>");
-				player.tailType = CoC.TAIL_TYPE_BEE_ABDOMEN;
+				player.tailType = Tail.BEE_ABDOMEN;
 				player.tailVenom = 10;
 				player.tailRecharge = 2;
 				changes++;
 			}
 			//Venom Increase
-			if (changes < changeLimit && player.tailType == CoC.TAIL_TYPE_BEE_ABDOMEN && player.tailRecharge < 15 && Utils.rand(2)) {
+			if (changes < changeLimit && player.tailType == Tail.BEE_ABDOMEN && player.tailRecharge < 15 && Utils.rand(2)) {
 				if (player.tailRecharge < 5) player.tailRecharge += 1;
 				if (player.tailRecharge < 10) player.tailRecharge += 1;
 				if (player.tailRecharge < 15) player.tailRecharge += 1;
@@ -204,15 +205,15 @@ package classes.Items.Consumables
 			}
 			//Wings
 			//Grow bigger bee wings!
-			if (changes < changeLimit && player.wingType == CoC.WING_TYPE_BEE_LIKE_SMALL && Utils.rand(4)) {
+			if (changes < changeLimit && player.wingType == Wings.BEE_LIKE_SMALL && Utils.rand(4)) {
 				changes++;
-				player.wingType = CoC.WING_TYPE_BEE_LIKE_LARGE;
+				player.wingType = Wings.BEE_LIKE_LARGE;
 				outputText("\n\nYour wings tingle as they grow, filling out until they are large enough to lift you from the ground and allow you to fly!  <b>You now have large bee wings!</b>  You give a few experimental flaps and begin hovering in place, a giddy smile plastered on your face by the thrill of flight.");
 			}
 
 			//Grow new bee wings if player has none.
-			if (changes < changeLimit && (player.wingType == WING_TYPE_NONE || player.rearBody.type == REAR_BODY_SHARK_FIN) && Utils.rand(4)) {
-				if (player.rearBody.type == REAR_BODY_SHARK_FIN) {
+			if (changes < changeLimit && (player.wingType == Wings.NONE || player.rearBody.type == RearBody.SHARK_FIN) && Utils.rand(4)) {
+				if (player.rearBody.type == RearBody.SHARK_FIN) {
 					outputText("\n\nYou feel an itching on your large back-fin as something begins growing there.  You twist and contort yourself,"
 					          +" trying to scratch and bring yourself relief, and failing miserably.  A sense of relief erupts from you as you feel"
 					          +" something new grow out from your fin.  You hastily remove the top portion of your " + player.armorName
@@ -231,13 +232,13 @@ package classes.Items.Consumables
 					          + player.armorName + " later and you are ready to continue your journey with <b>your new bee wings</b>.");
 				}
 				changes++;
-				player.wingType = CoC.WING_TYPE_BEE_LIKE_SMALL;
+				player.wingType = Wings.BEE_LIKE_SMALL;
 			}
 			//Melt demon wings!
-			if (changes < changeLimit && (player.wingType == CoC.WING_TYPE_BAT_LIKE_TINY || player.wingType == CoC.WING_TYPE_BAT_LIKE_LARGE)) {
+			if (changes < changeLimit && (player.wingType == Wings.BAT_LIKE_TINY || player.wingType == Wings.BAT_LIKE_LARGE)) {
 				changes++;
 				outputText("\n\nYour demonic wings ripple, jelly-like.  Worried, you crane back to look, and to your horror, they're melting away!  Runnels of amber honey trail down the wings' edges, building into a steady flow.  <b>In a moment, the only remnant of your wings is a puddle of honey in the dirt</b>.  Even that is gone in seconds, wicked into the dry soil.");
-				player.wingType = CoC.WING_TYPE_NONE;
+				player.wingType = Wings.NONE;
 			}
 			//Remove gills!
 			if (Utils.rand(4) == 0 && player.hasGills() && changes < changeLimit) mutations.updateGills();

@@ -12,18 +12,17 @@ package classes{
 	import classes.helper.StageLocator;
 	
 	import classes.GlobalFlags.kGAMECLASS;
+	import classes.BodyParts.LowerBody;
 	import classes.Creature;
 	import classes.CoC;
 	import classes.PerkLib;
      
     public class CreatureTest {
-		include "../../includes/appearanceDefs.as";
-		
 		private const MAX_SUPPORTED_VAGINAS:Number = 2;
 		private const DEFAULT_CLIT_LENGTH:Number = 0.5;
 		private const TEST_CLIT_LENGTH:Number = 3;
 		private const CUNT_CHANGE_VALUE:Number = 5;
-		private const VAGINAL_LOOSENESS_VALUE:Number = VAGINA_LOOSENESS_LOOSE;
+		private const VAGINAL_LOOSENESS_VALUE:Number = VaginaClass.LOOSENESS_LOOSE;
 		private const VAGINAL_CAPCITY_OFFSET:Number = 2;
 		private const VAGINAL_CAPCITY_TEST_DELTA:Number = 2;
 		private const RECOVERY_COUNT:Number = 5;
@@ -115,24 +114,24 @@ package classes{
 		
 		[Test] 
         public function testVaginaTypeWithVagina():void {
-			assertThat(oneVagina.vaginaType(), equalTo(VAGINA_TYPE_HUMAN));
+			assertThat(oneVagina.vaginaType(), equalTo(VaginaClass.HUMAN));
         }
 		
 		[Test] 
         public function testSetVaginaTypeWithNoVagina():void {
-			assertThat(noVagina.vaginaType(VAGINA_TYPE_EQUINE), equalTo(-1));
+			assertThat(noVagina.vaginaType(VaginaClass.EQUINE), equalTo(-1));
         }
 		
 		[Test] 
         public function testSetVaginaTypeWithVagina():void {
-			assertThat(oneVagina.vaginaType(VAGINA_TYPE_EQUINE), equalTo(VAGINA_TYPE_EQUINE));
+			assertThat(oneVagina.vaginaType(VaginaClass.EQUINE), equalTo(VaginaClass.EQUINE));
         }
 		
 		[Test] 
         public function testReadVaginaTypeAfterSet():void {
-			oneVagina.vaginaType(VAGINA_TYPE_EQUINE);
+			oneVagina.vaginaType(VaginaClass.EQUINE);
 			
-			assertThat(oneVagina.vaginaType(), equalTo(VAGINA_TYPE_EQUINE));
+			assertThat(oneVagina.vaginaType(), equalTo(VaginaClass.EQUINE));
         }
 		
 		[Test] 
@@ -170,7 +169,7 @@ package classes{
 		
 		[Test]
 		public function testVaginalCapacityNagaBodyBonus():void {
-			oneVagina.lowerBody = LOWER_BODY_TYPE_NAGA;
+			oneVagina.lowerBody = LowerBody.NAGA;
 			assertThat(oneVagina.isNaga(), equalTo(true)); //guard assert
 			
 			assertThat(oneVagina.vaginalCapacity(), equalTo(22));
@@ -548,19 +547,19 @@ package classes{
 		
 		[Test]
 		public function noGender():void {
-			assertThat(noVagina.gender, equalTo(GENDER_NONE));
+			assertThat(noVagina.gender, equalTo(Gender.NONE));
 		}
 		
 		[Test]
 		public function genderIsFemale():void {
-			assertThat(oneVagina.gender, equalTo(GENDER_FEMALE));
+			assertThat(oneVagina.gender, equalTo(Gender.FEMALE));
 		}
 		
 		[Test]
 		public function genderIsMale():void {
 			noVagina.createCock(5, 1, CockTypesEnum.HUMAN);
 			
-			assertThat(noVagina.gender, equalTo(GENDER_MALE));
+			assertThat(noVagina.gender, equalTo(Gender.MALE));
 		}
 		
 		[Test]
@@ -568,7 +567,7 @@ package classes{
 			noVagina.createCock(5, 1, CockTypesEnum.HUMAN);
 			noVagina.createVagina();
 			
-			assertThat(noVagina.gender, equalTo(GENDER_HERM));
+			assertThat(noVagina.gender, equalTo(Gender.HERM));
 		}
 		
 		[Test]

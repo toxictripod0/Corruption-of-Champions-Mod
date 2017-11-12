@@ -4,6 +4,7 @@
 package classes.Scenes.NPCs
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Items.Armors.LustyMaidensArmor;
 	import classes.display.SpriteDb;
@@ -436,7 +437,7 @@ package classes.Scenes.NPCs
 			outputText("What the hell?  Did you just call yourself pet?  You struggle internally, thinking, \"<i>When did pet start thinking of " + player.mf("him", "her") + "self as pet?</i>\"  A tingle of new arousal shivers through you – Mistress Ceraph has made it impossible for you to think or call yourself anything other than pet!  What else is she going to do to you?\n\n");
 
 			outputText("\"<i>Oh it's so cute watching my pets and toys truly learn their new names.  Now come here pet, a good pet wears a collar so everyone knows who " + player.mf("he", "she") + " belongs to,</i>\" says Mistress as she pulls a thick black collar off a hook on the wall.  Compliant, you allow her to fasten it around your neck, waggling your ");
-			if (player.tailType == TAIL_TYPE_NONE) outputText("backside");
+			if (player.tailType == Tail.NONE) outputText("backside");
 			else outputText("tail");
 			outputText(" back and forth to show Mistress how happy you are.  Obedience slowly crowds your mind, rolling over your other thoughts and concerns inexorably.  Your worries, cares, and troubles slide away, replaced with an all-consuming need to please.");
 			doNext(agreeToBeABitchPt2);
@@ -721,7 +722,7 @@ package classes.Scenes.NPCs
 
 			outputText("For a brief, confused moment you wonder what she means, but then your hands and " + player.legs() + " are swiftly hog-tied together with her whip.  Ceraph is so quick at her task that she finishes before your dumbstruck mind gets a handle on the situation.  You're utterly helpless to resist this demon's whims, and the best you can do to resist her would be to roll on your side.  It would be a hopelessly futile gesture, and you resolve to deal with whatever is to come without showing any fear or remorse.\n\n");
 
-			outputText("The sky is blocked out by Ceraph's curvy shadow as she steps over your head, dripping sweet-smelling demonic fluids onto your face.  An inch at a time, she lowers herself down, her sex dripping anxiously and her thick demon-shaft pulsating hotly.  The fluid-slicked lips get closer and closer to your own, dripping more and more moisture from the excited demonette's passage onto your neck.  Plunging down with violent force, she slams her hungry twat against your " + player.face() + ", smearing you from chin to nose with demon-juice.\n\n");
+			outputText("The sky is blocked out by Ceraph's curvy shadow as she steps over your head, dripping sweet-smelling demonic fluids onto your face.  An inch at a time, she lowers herself down, her sex dripping anxiously and her thick demon-shaft pulsating hotly.  The fluid-slicked lips get closer and closer to your own, dripping more and more moisture from the excited demonette's passage onto your neck.  Plunging down with violent force, she slams her hungry twat against your " + player.faceDescript() + ", smearing you from chin to nose with demon-juice.\n\n");
 
 			outputText("Her nodule-covered demon-cock flops across your nose and forehead, already dripping with thick pre-cum that slowly rolls up towards your " + player.hairDescript() + ".  Ceraph's well manicured hand wraps around, stroking it and totally blocking your view while her pussy continues to block your airflow.  Knowing that you've no choice but to get her off, you struggle with arousal of your own from the crude restraint. You open wide and plunge your tongue inside her, tasting her sweet yet tangy fluids and feeling the oddly-textured interior of her passage.\n\n");
 
@@ -872,7 +873,7 @@ package classes.Scenes.NPCs
 			else if (player.cor > 33) outputText("and you squirm and writhe within your " + player.armorName + ", the material itching on your skin.  Ultimately, you manage to resist.");
 			else outputText("and you stifle a laugh at the ridiculous thought, ignoring your fingers while they scratch at the itch under your gear.");
 			outputText("  Your ");
-			if ([SKIN_TYPE_PLAIN, SKIN_TYPE_FUR].indexOf(player.skinType) >= 0) outputText("skin burns");
+			if ([Skin.PLAIN, Skin.FUR].indexOf(player.skinType) >= 0) outputText("skin burns");
 			else if (player.hasScales()) outputText("scales burn");
 			else outputText(player.skinDesc + " burns");
 			outputText(" hot, raging from fetish-enhanced lust and daydreams, but you shake your head in time to see a pair of inky black orbs rising from behind a nearby boulder.\n\n");

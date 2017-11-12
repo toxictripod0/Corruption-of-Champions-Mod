@@ -1,6 +1,8 @@
 package classes.Scenes.NPCs
 {
 	import classes.*;
+	import classes.BodyParts.*;
+	import classes.BodyParts.Hips;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.internals.*;
@@ -291,16 +293,16 @@ package classes.Scenes.NPCs
 			}
 			
 			// this.plural = false;
-			this.createVagina(game.flags[kFLAGS.SHEILA_XP] <= 3 && !sheilaDemon, VAGINA_WETNESS_SLICK, VAGINA_LOOSENESS_NORMAL);
+			this.createVagina(game.flags[kFLAGS.SHEILA_XP] <= 3 && !sheilaDemon, VaginaClass.WETNESS_SLICK, VaginaClass.LOOSENESS_NORMAL);
 			this.createStatusEffect(StatusEffects.BonusVCapacity, 30, 0, 0, 0);
 			this.createBreastRow(game.flags[kFLAGS.SHEILA_CORRUPTION]/10);
-			this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-			this.ass.analWetness = ANAL_WETNESS_DRY;
+			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
+			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,20,0,0,0);
 			this.tallness = 6*12;
-			this.hipRating = HIP_RATING_AVERAGE;
-			this.buttRating = BUTT_RATING_AVERAGE+1;
-			this.lowerBody = LOWER_BODY_TYPE_KANGAROO;
+			this.hipRating = Hips.RATING_AVERAGE;
+			this.buttRating = Butt.RATING_AVERAGE+1;
+			this.lowerBody = LowerBody.KANGAROO;
 			this.skinTone = "tan";
 			this.hairColor = "auburn";
 			this.hairLength = 11;
@@ -342,7 +344,7 @@ package classes.Scenes.NPCs
 						add(consumables.SUCMILK,1/3).
 						add(consumables.INCUBID,1/2);
 			}
-			this.tailType = TAIL_TYPE_KANGAROO;
+			this.tailType = Tail.KANGAROO;
 			checkMonster();
 		}
 

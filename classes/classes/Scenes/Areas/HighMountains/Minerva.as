@@ -1,6 +1,9 @@
 package classes.Scenes.Areas.HighMountains
 {
 	import classes.*;
+	import classes.BodyParts.*;
+	import classes.BodyParts.Butt;
+	import classes.BodyParts.Hips;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.internals.*;
 
@@ -208,16 +211,16 @@ package classes.Scenes.Areas.HighMountains
 			if (flags[kFLAGS.MINERVA_PURIFICATION_PROGRESS] >= 10 || flags[kFLAGS.MINERVA_CORRUPTION_PROGRESS] >= 10) ballSize += 2;
 			this.cumMultiplier = 3;
 			// this.hoursSinceCum = 0;
-			this.createVagina(false, VAGINA_WETNESS_SLICK, VAGINA_LOOSENESS_NORMAL);
+			this.createVagina(false, VaginaClass.WETNESS_SLICK, VaginaClass.LOOSENESS_NORMAL);
 			//Set breast size based on pure/corrupt
 			if (flags[kFLAGS.MINERVA_PURIFICATION_PROGRESS] >= 10) createBreastRow(Appearance.breastCupInverse("G"));
 			else if (flags[kFLAGS.MINERVA_CORRUPTION_PROGRESS] >= 10) createBreastRow(Appearance.breastCupInverse("E"));
 			else createBreastRow(Appearance.breastCupInverse("DD"));
-			this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-			this.ass.analWetness = ANAL_WETNESS_DRY;
+			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
+			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.tallness = 8*12+4;
-			this.hipRating = HIP_RATING_CURVY;
-			this.buttRating = BUTT_RATING_LARGE+1;
+			this.hipRating = Hips.RATING_CURVY;
+			this.buttRating = Butt.RATING_LARGE+1;
 			this.skinTone = "blue";
 			this.hairColor = "red";
 			this.hairLength = 25;
@@ -242,7 +245,7 @@ package classes.Scenes.Areas.HighMountains
 			this.gems = rand(25) +10;
 			this.additionalXP = 50;
 			this.drop = new WeightedDrop(consumables.PURPEAC, 1);
-			this.wingType = WING_TYPE_HARPY;
+			this.wingType = Wings.HARPY;
 			this.wingDesc = "fluffy feathery";
 			checkMonster();
 		}

@@ -1,6 +1,8 @@
 package classes.Scenes.Areas.Forest
 {
 	import classes.*;
+	import classes.BodyParts.Butt;
+	import classes.BodyParts.Hips;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Scenes.Monsters.Goblin;
 	import classes.internals.WeightedDrop;
@@ -105,15 +107,15 @@ package classes.Scenes.Areas.Forest
 			this.pronoun1 = "they";
 			this.pronoun2 = "them";
 			this.pronoun3 = "their";
-			this.createVagina(false, VAGINA_WETNESS_DROOLING, VAGINA_LOOSENESS_TIGHT);
+			this.createVagina(false, VaginaClass.WETNESS_DROOLING, VaginaClass.LOOSENESS_TIGHT);
 			this.createStatusEffect(StatusEffects.BonusVCapacity, 40, 0, 0, 0);
 			createBreastRow(Appearance.breastCupInverse("D"));
-			this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-			this.ass.analWetness = ANAL_WETNESS_DRY;
+			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
+			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,25,0,0,0);
 			this.tallness = 40;
-			this.hipRating = HIP_RATING_AMPLE+1;
-			this.buttRating = BUTT_RATING_NOTICEABLE+1;
+			this.hipRating = Hips.RATING_AMPLE+1;
+			this.buttRating = Butt.RATING_NOTICEABLE+1;
 			this.skinTone = "greenish gray";
 			this.hairColor = "pink";
 			this.hairLength = 16;

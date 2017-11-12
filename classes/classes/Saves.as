@@ -1,8 +1,6 @@
 ﻿package classes
 {
-
-	import classes.BodyParts.Neck;
-	import classes.BodyParts.UnderBody;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.GlobalFlags.kACHIEVEMENTS;
 	import classes.Scenes.Inventory;
@@ -1637,7 +1635,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			player.femininity = saveFile.data.femininity;
 		//EYES
 		if (saveFile.data.eyeType == undefined)
-			player.eyeType = EYES_HUMAN;
+			player.eyeType = Eyes.HUMAN;
 		else
 			player.eyeType = saveFile.data.eyeType;
 		//BEARS
@@ -1672,11 +1670,11 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		if (saveFile.data.gillType != undefined)
 			player.gillType = saveFile.data.gillType;
 		else if (saveFile.data.gills == undefined)
-			player.gillType = GILLS_NONE;
+			player.gillType = Gills.NONE;
 		else
-			player.gillType = saveFile.data.gills ? GILLS_ANEMONE : GILLS_NONE;
+			player.gillType = saveFile.data.gills ? Gills.ANEMONE : Gills.NONE;
 		if (saveFile.data.armType == undefined)
-			player.armType = ARM_TYPE_HUMAN;
+			player.armType = Arms.HUMAN;
 		else
 			player.armType = saveFile.data.armType;
 		player.hairLength = saveFile.data.hairLength;
@@ -1687,12 +1685,12 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			player.skinAdj = saveFile.data.skinAdj;
 		player.skinTone = saveFile.data.skinTone;
 		player.skinDesc = saveFile.data.skinDesc;
-		//Silently discard SKIN_TYPE_UNDEFINED
-		if (player.skinType == SKIN_TYPE_UNDEFINED)
+		//Silently discard Skin.UNDEFINED
+		if (player.skinType == Skin.UNDEFINED)
 		{
 			player.skinAdj = "";
 			player.skinDesc = "skin";
-			player.skinType = SKIN_TYPE_PLAIN;
+			player.skinType = Skin.PLAIN;
 		}
 		//Convert from old skinDesc to new skinAdj + skinDesc!
 		if (player.skinDesc.indexOf("smooth") != -1)
@@ -1757,11 +1755,11 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		}
 		player.faceType = saveFile.data.faceType;
 		if (saveFile.data.tongueType == undefined)
-			player.tongueType = TONGUE_HUMAN;
+			player.tongueType = Tongue.HUMAN;
 		else
 			player.tongueType = saveFile.data.tongueType;
 		if (saveFile.data.earType == undefined)
-			player.earType = EARS_HUMAN;
+			player.earType = Ears.HUMAN;
 		else
 			player.earType = saveFile.data.earType;
 		if (saveFile.data.earValue == undefined)
@@ -1769,12 +1767,12 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		else
 			player.earValue = saveFile.data.earValue;
 		if (saveFile.data.antennae == undefined)
-			player.antennae = ANTENNAE_NONE;
+			player.antennae = Antennae.NONE;
 		else
 			player.antennae = saveFile.data.antennae;
 		player.horns = saveFile.data.horns;
 		if (saveFile.data.hornType == undefined)
-			player.hornType = HORNS_NONE;
+			player.hornType = Horns.NONE;
 		else
 			player.hornType = saveFile.data.hornType;
 
@@ -1786,7 +1784,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			player.rearBody.setAllProps(saveFile.data.rearBody);
 		// <mod name="Predator arms" author="Stadler76">
 		player.clawTone = (saveFile.data.clawTone == undefined) ? ""               : saveFile.data.clawTone;
-		player.clawType = (saveFile.data.clawType == undefined) ? CLAW_TYPE_NORMAL : saveFile.data.clawType;
+		player.clawType = (saveFile.data.clawType == undefined) ? Claws.NORMAL : saveFile.data.clawType;
 		// </mod>
 
 		player.wingType = saveFile.data.wingType;
@@ -1801,38 +1799,38 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 
 		if (player.wingType == 8) {
 			player.wings.restore();
-			player.rearBody.setAllProps({type: REAR_BODY_SHARK_FIN});
+			player.rearBody.setAllProps({type: RearBody.SHARK_FIN});
 		}
 
 		if (player.lowerBody === 4) {
-			player.lowerBody = LOWER_BODY_TYPE_HOOFED;
+			player.lowerBody = LowerBody.HOOFED;
 			player.legCount = 4;
 		}
 		
 		if (player.lowerBody === 24) {
-			player.lowerBody = LOWER_BODY_TYPE_CLOVEN_HOOFED;
+			player.lowerBody = LowerBody.CLOVEN_HOOFED;
 			player.legCount = 4;
 		}
 		
 		if (saveFile.data.legCount == undefined) {
-			if (player.lowerBody == LOWER_BODY_TYPE_DRIDER_LOWER_BODY) {
+			if (player.lowerBody == LowerBody.DRIDER_LOWER_BODY) {
 				player.legCount = 8;
 			}
 			else if (player.lowerBody == 4) {
 				player.legCount = 4;
-				player.lowerBody = LOWER_BODY_TYPE_HOOFED;
+				player.lowerBody = LowerBody.HOOFED;
 			}
-			else if (player.lowerBody == LOWER_BODY_TYPE_PONY) {
+			else if (player.lowerBody == LowerBody.PONY) {
 				player.legCount = 4;
 			}
 			else if (player.lowerBody == 24) {
 				player.legCount = 4;
-				player.lowerBody = LOWER_BODY_TYPE_CLOVEN_HOOFED;
+				player.lowerBody = LowerBody.CLOVEN_HOOFED;
 			}
-			else if (player.lowerBody == LOWER_BODY_TYPE_NAGA) {
+			else if (player.lowerBody == LowerBody.NAGA) {
 				player.legCount = 1;
 			}
-			else if (player.lowerBody == LOWER_BODY_TYPE_GOO) {
+			else if (player.lowerBody == LowerBody.GOO) {
 				player.legCount = 1;
 			}
 			else player.legCount = 2;
@@ -1841,11 +1839,11 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			player.legCount = saveFile.data.legCount;
 			
 		if (saveFile.data.eyeCount == undefined) {
-			if (player.eyeType == EYES_SPIDER) {
+			if (player.eyeType == Eyes.SPIDER) {
 				player.eyeCount = 4;
 			}
-			else if (player.eyeType == EYES_FOUR_SPIDER_EYES) {
-				player.eyeType = EYES_SPIDER;
+			else if (player.eyeType == Eyes.FOUR_SPIDER_EYES) {
+				player.eyeType = Eyes.SPIDER;
 				player.eyeCount = 4;
 			}
 			else player.eyeCount = 2;
@@ -1856,8 +1854,8 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 
 		// Fix deprecated and merged underBody-types
 		switch (player.underBody.type) {
-			case UNDER_BODY_TYPE_DRAGON: player.underBody.type = UNDER_BODY_TYPE_REPTILE; break;
-			case UNDER_BODY_TYPE_WOOL:   player.underBody.type = UNDER_BODY_TYPE_FURRY;   break;
+			case UnderBody.DRAGON: player.underBody.type = UnderBody.REPTILE; break;
+			case UnderBody.WOOL:   player.underBody.type = UnderBody.FURRY;   break;
 		}
 
 		//Sexual Stuff
@@ -2311,7 +2309,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 public function unFuckSave():void
 {
 	//Fixing shit!
-	if (player.wings.type == WING_TYPE_FEATHERED_LARGE && player.wings.color == "no") {
+	if (player.wings.type == Wings.FEATHERED_LARGE && player.wings.color == "no") {
 		// Player has harpy wings from an old save, let's fix its color
 		player.wings.color = player.hasFur() ? player.furColor : player.hairColor;
 	}
@@ -2498,7 +2496,7 @@ public function unFuckSave():void
 		//If dick length zero then player has never met Kath, no need to set flags. If her breast size is zero then set values for flags introduced with the employment expansion
 		if (flags[kFLAGS.KATHERINE_BREAST_SIZE] != 0) return; //Must be a new format save
 		if (flags[kFLAGS.KATHERINE_DICK_LENGTH] != 0) { 
-			flags[kFLAGS.KATHERINE_BREAST_SIZE]		= BREAST_CUP_B;
+			flags[kFLAGS.KATHERINE_BREAST_SIZE]		= BreastCup.B;
 			flags[kFLAGS.KATHERINE_BALL_SIZE]		= 1;
 			flags[kFLAGS.KATHERINE_HAIR_COLOR]		= "neon pink";
 			flags[kFLAGS.KATHERINE_HOURS_SINCE_CUM] = 200; //Give her maxed out cum for that first time

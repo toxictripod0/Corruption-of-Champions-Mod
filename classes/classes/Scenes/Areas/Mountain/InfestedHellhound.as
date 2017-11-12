@@ -1,6 +1,7 @@
 package classes.Scenes.Areas.Mountain
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.internals.*;
 
 	/**
@@ -113,14 +114,14 @@ package classes.Scenes.Areas.Mountain
 			this.createBreastRow();
 			this.createBreastRow();
 			this.createBreastRow();
-			this.ass.analLooseness = ANAL_LOOSENESS_NORMAL;
-			this.ass.analWetness = ANAL_WETNESS_NORMAL;
+			this.ass.analLooseness = AssClass.LOOSENESS_NORMAL;
+			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.tallness = 47;
-			this.hipRating = HIP_RATING_AVERAGE;
-			this.buttRating = BUTT_RATING_AVERAGE + 1;
+			this.hipRating = Hips.RATING_AVERAGE;
+			this.buttRating = Butt.RATING_AVERAGE + 1;
 			this.skinTone = "black";
-			this.skinType = SKIN_TYPE_FUR;
-			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[SKIN_TYPE_FUR];
+			this.skinType = Skin.FUR;
+			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.FUR];
 			this.hairColor = "red";
 			this.hairLength = 3;
 			initStrTouSpeInte(65, 60, 50, 1);
@@ -146,7 +147,7 @@ package classes.Scenes.Areas.Mountain
 			this.special1 = hellhoundFire;
 			this.special2 = hellhoundScent;
 			this.special3 = hellHoundWormCannon;
-			this.tailType = TAIL_TYPE_DOG;
+			this.tailType = Tail.DOG;
 			checkMonster();
 		}
 

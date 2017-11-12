@@ -2,6 +2,7 @@
 package classes.Scenes.Places 
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.*;
 	import classes.Items.*;
 	import classes.Scenes.Places.Ingnam.*;
@@ -409,9 +410,9 @@ package classes.Scenes.Places
 				outputText("The innkeeper looks at you and says, \"<i>I can see that you have changed quite a lot! Back then, before you left, you were a human. Now look at yourself!</i>\"");
 			}
 			if (player.horns > 0 && player.hornType > 0) {
-				outputText("\n\n\"<i>Are these " + (player.hornType == HORNS_ANTLERS ? "antlers" : "horns") + "? I can imagine they must be real,</i>\" The innkeeper says before touching your [horns]. You can already feel his fingers rubbing against your [horns]. \"<i>Yes, they're real and I think you look better,</i>\" he says. You thank him for complimenting on your horns.");
+				outputText("\n\n\"<i>Are these " + (player.hornType == Horns.ANTLERS ? "antlers" : "horns") + "? I can imagine they must be real,</i>\" The innkeeper says before touching your [horns]. You can already feel his fingers rubbing against your [horns]. \"<i>Yes, they're real and I think you look better,</i>\" he says. You thank him for complimenting on your horns.");
 			}
-			if (player.wingType != WING_TYPE_NONE) {
+			if (player.wingType != Wings.NONE) {
 				outputText("\n\nNext, he looks at your wings that sprout from your back and says, \"<i>Wings? I've never seen a person with wings before!</i>\" ");
 				if (player.canFly()) outputText("You tell him that you can fly. To demonstrate, you guide the innkeeper outside and you grit your teeth with effort as you flap your wings and you finally launch off from the ground and fly around the town! The people of Ingnam, including your family and friends, look at you in shock and some even say, \"<i>" + player.mf("He", "She") + " can fly!</i>\"");
 			}
@@ -424,13 +425,13 @@ package classes.Scenes.Places
 			clearOutput();
 			outputText("The innkeeper stands up to see that there's something unusual with your appearance.");
 			if (player.earType > 0) {
-				if (player.earType == EARS_HORSE) {
+				if (player.earType == Ears.HORSE) {
 					outputText("\n\nHe says, \"<i>Your ears... They look different! They look like horse's! I have no idea how your ears changed.</i>\"");
 				}
-				if (player.earType == EARS_DOG) {
+				if (player.earType == Ears.DOG) {
 					outputText("\n\nHe says, \"<i>Your ears... They look like dog's! I have no idea how your ears changed.</i>\"");
 				}
-				if (player.earType == EARS_CAT) {
+				if (player.earType == Ears.CAT) {
 					outputText("\n\nHe says, \"<i>Your ears... They look like cat's! I have no idea how your ears changed but other than that, you look much cuter with cat ears!</i>\" He walks over to you and scratch your cat-ears. \"<i>They look and feel so real,</i>\" he says.");
 				}
 				flags[kFLAGS.INGNAM_EARS_LAST_TYPE] = player.earType;

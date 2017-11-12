@@ -1,5 +1,6 @@
 package classes.Items.Consumables 
 {
+	import classes.BodyParts.*;
 	import classes.CockTypesEnum;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
@@ -58,7 +59,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Restore neck
-			if (player.neck.type != NECK_TYPE_NORMAL && changes < changeLimit && rand(5) == 0)
+			if (player.neck.type != Neck.NORMAL && changes < changeLimit && rand(5) == 0)
 				mutations.restoreNeck(tfSource);
 			//Rear body restore
 			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
@@ -82,7 +83,7 @@ package classes.Items.Consumables
 				mutations.updateClaws(player.clawType);
 			}
 			//Change skin to normal
-			if (!player.hasPlainSkin() && (player.earType === EARS_HUMAN || player.earType === EARS_ELFIN) && rand(4) === 0 && changes < changeLimit) {
+			if (!player.hasPlainSkin() && (player.earType === Ears.HUMAN || player.earType === Ears.ELFIN) && rand(4) === 0 && changes < changeLimit) {
 				outputText("\n\nA slowly-building itch spreads over your whole body, and as you idly scratch yourself, you find that your " + player.skinFurScales() + " ");
 				if (player.hasScales()) outputText("are");
 				else outputText("is");
@@ -100,35 +101,35 @@ package classes.Items.Consumables
 			// MINOR TRANSFORMATIONS
 			//-----------------------
 			//-Human face
-			if (player.faceType !== FACE_HUMAN && changes < changeLimit && rand(4) === 0) {
-				outputText("\n\nSudden agony sweeps over your " + player.face() + ", your visage turning hideous as bones twist and your jawline shifts. The pain slowly vanishes, leaving you weeping into your fingers. When you pull your hands away you realize you've been left with a completely normal, human face.");
-				player.faceType = FACE_HUMAN;
+			if (player.faceType !== Face.HUMAN && changes < changeLimit && rand(4) === 0) {
+				outputText("\n\nSudden agony sweeps over your " + player.faceDescript() + ", your visage turning hideous as bones twist and your jawline shifts. The pain slowly vanishes, leaving you weeping into your fingers. When you pull your hands away you realize you've been left with a completely normal, human face.");
+				player.faceType = Face.HUMAN;
 				changes++;
 			}
 			//-Human tongue
-			if (player.tongueType !== TONGUE_HUMAN && changes < changeLimit && rand(4) === 0) {
+			if (player.tongueType !== Tongue.HUMAN && changes < changeLimit && rand(4) === 0) {
 				outputText("\n\nYou feel something strange inside your face as your tongue shrinks and recedes until it feels smooth and rounded.  <b>You realize your tongue has changed back into human tongue!</b>");
-				player.tongueType = TONGUE_HUMAN;
+				player.tongueType = Tongue.HUMAN;
 				changes++;
 			}
 			//Remove odd eyes
-			if (changes < changeLimit && rand(5) === 0 && player.eyeType !== EYES_HUMAN) {
-				if (player.eyeType === EYES_BLACK_EYES_SAND_TRAP) {
+			if (changes < changeLimit && rand(5) === 0 && player.eyeType !== Eyes.HUMAN) {
+				if (player.eyeType === Eyes.BLACK_EYES_SAND_TRAP) {
 					outputText("\n\nYou feel a twinge in your eyes and you blink. It feels like black cataracts have just fallen away from you, and you know without needing to see your reflection that your eyes have gone back to looking human.");
 				}
 				else {
 					outputText("\n\nYou blink and stumble, a wave of vertigo threatening to pull your " + player.feet() + " from under you. As you steady and open your eyes, you realize something seems different. Your vision is changed somehow.");
-					if (player.eyeType === EYES_FOUR_SPIDER_EYES || player.eyeType === EYES_SPIDER) outputText(" <b>Your arachnid eyes are gone!</b>");
+					if (player.eyeType === Eyes.FOUR_SPIDER_EYES || player.eyeType === Eyes.SPIDER) outputText(" <b>Your arachnid eyes are gone!</b>");
 					outputText(" <b>You have normal, humanoid eyes again.</b>");
 				}
-				player.eyeType = EYES_HUMAN;
+				player.eyeType = Eyes.HUMAN;
 				player.eyeCount = 2;
 				changes++;
 			}
 			//-Gain human ears (If you have human face)
-			if ((player.earType !== EARS_HUMAN && player.faceType === FACE_HUMAN) && changes < changeLimit && rand(4) === 0) {
+			if ((player.earType !== Ears.HUMAN && player.faceType === Face.HUMAN) && changes < changeLimit && rand(4) === 0) {
 				outputText("\n\nOuch, your head aches! It feels like your ears are being yanked out of your head, and when you reach up to hold your aching noggin, you find they've vanished! Swooning and wobbling with little sense of balance, you nearly fall a half-dozen times before <b>a pair of normal, human ears sprout from the sides of your head.</b> You had almost forgotten what human ears felt like!");
-				player.earType = EARS_HUMAN;
+				player.earType = Ears.HUMAN;
 				changes++;
 			}
 			//Removes gills
@@ -142,9 +143,9 @@ package classes.Items.Consumables
 				player.removeStatusEffect(StatusEffects.BlackNipples);
 			}
 			//Hair turns normal
-			if (changes < changeLimit && player.hairType !== HAIR_NORMAL && rand(3) === 0) {
+			if (changes < changeLimit && player.hairType !== Hair.NORMAL && rand(3) === 0) {
 				outputText("\n\nYou run a hand along the top of your head as you feel your scalp tingle, and feel something weird. You pull your hand away and look at the nearest reflective surface. <b>Your hair is normal again!</b>");
-				player.hairType = HAIR_NORMAL;
+				player.hairType = Hair.NORMAL;
 				if (flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] !== 0) flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] = 0;
 				changes++;
 			}
@@ -153,29 +154,29 @@ package classes.Items.Consumables
 				outputText("\n\nYou feel an itching sensation in your scalp as you realize the change. <b>Your hair is growing normally again!</b>");
 				//Turn hair growth on.
 				flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] = 0;
-				player.hairType = HAIR_NORMAL;
+				player.hairType = Hair.NORMAL;
 				changes++;
 			}
 			//-----------------------
 			// EXTRA PARTS REMOVAL
 			//-----------------------
 			//Removes antennae
-			if (player.antennae !== ANTENNAE_NONE && rand(3) === 0 && changes < changeLimit) {
+			if (player.antennae !== Antennae.NONE && rand(3) === 0 && changes < changeLimit) {
 				mutations.removeAntennae();
 			}
 			//Removes horns
-			if (changes < changeLimit && (player.hornType !== HORNS_NONE || player.horns !== 0) && rand(5) === 0) {
+			if (changes < changeLimit && (player.hornType !== Horns.NONE || player.horns !== 0) && rand(5) === 0) {
 				outputText("\n\nYour ");
-				if (player.hornType === HORNS_UNICORN || player.hornType === HORNS_RHINO) outputText("horn");
+				if (player.hornType === Horns.UNICORN || player.hornType === Horns.RHINO) outputText("horn");
 				else outputText("horns");
 				outputText(" crumble, falling apart in large chunks until they flake away to nothing.");
 				player.horns = 0;
-				player.hornType = HORNS_NONE;
+				player.hornType = Horns.NONE;
 				changes++;
 			}
 			//Removes wings
-			if ((player.wingType !== WING_TYPE_NONE || player.rearBody.type == REAR_BODY_SHARK_FIN) && rand(5) === 0 && changes < changeLimit) {
-				if (player.rearBody.type == REAR_BODY_SHARK_FIN) {
+			if ((player.wingType !== Wings.NONE || player.rearBody.type == RearBody.SHARK_FIN) && rand(5) === 0 && changes < changeLimit) {
+				if (player.rearBody.type == RearBody.SHARK_FIN) {
 					outputText("\n\nA wave of tightness spreads through your back, and it feels as if someone is stabbing a dagger into your spine."
 					          +" After a moment the pain passes, though your fin is gone!");
 					player.rearBody.restore();
@@ -183,13 +184,13 @@ package classes.Items.Consumables
 					outputText("\n\nA wave of tightness spreads through your back, and it feels as if someone is stabbing a dagger into each of your"
 					          +" shoulder-blades.  After a moment the pain passes, though your wings are gone!");
 				}
-				player.wingType = WING_TYPE_NONE;
+				player.wingType = Wings.NONE;
 				changes++;
 			}
 			//Removes tail
-			if (player.tailType !== TAIL_TYPE_NONE && rand(5) === 0 && changes < changeLimit) {
+			if (player.tailType !== Tail.NONE && rand(5) === 0 && changes < changeLimit) {
 				outputText("\n\nYou feel something shifting in your backside. Then something detaches from your backside and it falls onto the ground.  <b>You no longer have a tail!</b>");
-				player.tailType = TAIL_TYPE_NONE;
+				player.tailType = Tail.NONE;
 				player.tailVenom = 0;
 				player.tailRecharge = 5;
 				changes++;

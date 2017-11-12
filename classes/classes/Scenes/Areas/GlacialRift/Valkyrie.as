@@ -1,6 +1,8 @@
 package classes.Scenes.Areas.GlacialRift 
 {
 	import classes.*;
+	import classes.BodyParts.*;
+	import classes.BodyParts.Hips;
 	import classes.internals.WeightedDrop;
 	
 	public class Valkyrie extends Monster
@@ -148,14 +150,14 @@ package classes.Scenes.Areas.GlacialRift
 			// this.plural = false;
 			this.createVagina(false, 1, 1);
 			createBreastRow(Appearance.breastCupInverse("C"));
-			this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-			this.ass.analWetness = ANAL_WETNESS_NORMAL;
+			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
+			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.tallness = 7*12;
-			this.hipRating = HIP_RATING_SLENDER;
-			this.buttRating = BUTT_RATING_TIGHT;
+			this.hipRating = Hips.RATING_SLENDER;
+			this.buttRating = Butt.RATING_TIGHT;
 			this.skinTone = "light";
-			this.skinType = SKIN_TYPE_PLAIN;
-			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[SKIN_TYPE_FUR];
+			this.skinType = Skin.PLAIN;
+			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.FUR];
 			this.hairColor = "white";
 			this.hairLength = 12;
 			initStrTouSpeInte(85, 70, 80, 60);
@@ -176,7 +178,7 @@ package classes.Scenes.Areas.GlacialRift
 					.add(shields.GREATSH, 2)
 					.add(consumables.W__BOOK, 4)					
 					.add(null, 18);
-			this.wingType = WING_TYPE_HARPY
+			this.wingType = Wings.HARPY
 			this.wingDesc = "fluffy feathery"
 			this.special1 = spearAttack;
 			this.special2 = shieldBash;

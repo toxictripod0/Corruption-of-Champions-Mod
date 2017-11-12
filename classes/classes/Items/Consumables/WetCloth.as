@@ -1,9 +1,11 @@
 package classes.Items.Consumables 
 {
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Items.Consumable;
 	import classes.Items.ConsumableLib;
 	import classes.StatusEffects;
+	import classes.VaginaClass;
 	
 	/**
 	 * Goo transformative item.
@@ -38,7 +40,7 @@ package classes.Items.Consumables
 
 			//Cosmetic changes based on 'goopyness'
 			//Neck restore
-			if (player.neck.type != NECK_TYPE_NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type != Neck.NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
 			//Rear body restore
 			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
 			//Ovi perk loss
@@ -46,8 +48,8 @@ package classes.Items.Consumables
 				mutations.updateOvipositionPerk(tfSource);
 			}
 			//Remove wings and shark fin
-			if (player.wingType != WING_TYPE_NONE || player.rearBody.type == REAR_BODY_SHARK_FIN) {
-				if (player.rearBody.type == REAR_BODY_SHARK_FIN) {
+			if (player.wingType != Wings.NONE || player.rearBody.type == RearBody.SHARK_FIN) {
+				if (player.rearBody.type == RearBody.SHARK_FIN) {
 					outputText("\n\nYou sigh, feeling a hot wet tingling down your back.  It tickles slightly as you feel your fin slowly turn to"
 					          +" sludge, dripping to the ground as your body becomes more goo-like.");
 					player.rearBody.restore();
@@ -94,7 +96,7 @@ package classes.Items.Consumables
 				if (player.hasPlainSkin()) outputText("\n\nYou sigh, feeling your " + player.armorName + " sink into you as your skin becomes less solid, gooey even.  You realize your entire body has become semi-solid and partly liquid!");
 				else if (player.hasFur()) outputText("\n\nYou sigh, suddenly feeling your fur become hot and wet.  You look down as your " + player.armorName + " sinks partway into you.  With a start you realize your fur has melted away, melding into the slime-like coating that now serves as your skin.  You've become partly liquid and incredibly gooey!");
 				else if (player.hasScales()) outputText("\n\nYou sigh, feeling slippery wetness over your scales.  You reach to scratch it and come away with a slippery wet coating.  Your scales have transformed into a slimy goop!  Looking closer, you realize your entire body has become far more liquid in nature, and is semi-solid.  Your " + player.armorName + " has even sunk partway into you.");
-				player.skinType = SKIN_TYPE_GOO;
+				player.skinType = Skin.GOO;
 				player.skinDesc = "skin";
 				player.skinAdj = "slimy";
 				player.underBody.restore();
@@ -107,7 +109,7 @@ package classes.Items.Consumables
 					else if (blaht <= 8) player.skinTone = "cerulean";
 					else player.skinTone = "emerald";
 					outputText(player.skinTone + "!");
-					if (player.armType !== ARM_TYPE_HUMAN || player.clawType !== CLAW_TYPE_NORMAL) {
+					if (player.armType !== Arms.HUMAN || player.clawType !== Claws.NORMAL) {
 						mutations.restoreArms(tfSource);
 					}
 				}
@@ -116,14 +118,14 @@ package classes.Items.Consumables
 			////1a.Make alterations to dick/vaginal/nippular descriptors to match
 			//DONE EXCEPT FOR TITS & MULTIDICKS (UNFINISHED KINDA)
 			//2.Goo legs
-			if (player.skinAdj === "slimy" && player.skinDesc === "skin" && player.lowerBody !== LOWER_BODY_TYPE_GOO) {
+			if (player.skinAdj === "slimy" && player.skinDesc === "skin" && player.lowerBody !== LowerBody.GOO) {
 				outputText("\n\nYour viewpoint rapidly drops as everything below your " + player.buttDescript() + " and groin melts together into an amorphous blob.  Thankfully, you discover you can still roll about on your new slimey undercarriage, but it's still a whole new level of strange.");
 				player.tallness -= 3 + rand(2);
 				if (player.tallness < 36) {
 					player.tallness = 36;
 					outputText("  The goo firms up and you return to your previous height.  It would truly be hard to get any shorter than you already are!");
 				}
-				player.lowerBody = LOWER_BODY_TYPE_GOO;
+				player.lowerBody = LowerBody.GOO;
 				player.legCount = 1;
 				return false;
 			}
@@ -131,8 +133,8 @@ package classes.Items.Consumables
 			if (!player.hasVagina()) {
 				outputText("\n\nA wet warmth spreads through your slimey groin as a narrow gash appears on the surface of your groin.  <b>You have grown a vagina.</b>");
 				player.createVagina();
-				player.vaginas[0].vaginalWetness = VAGINA_WETNESS_DROOLING;
-				player.vaginas[0].vaginalLooseness = VAGINA_LOOSENESS_GAPING;
+				player.vaginas[0].vaginalWetness = VaginaClass.WETNESS_DROOLING;
+				player.vaginas[0].vaginalLooseness = VaginaClass.LOOSENESS_GAPING;
 				player.setClitLength(.4);
 				return false;
 			}

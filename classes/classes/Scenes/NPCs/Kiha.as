@@ -1,6 +1,8 @@
 package classes.Scenes.NPCs
 {
 	import classes.*;
+	import classes.BodyParts.*;
+	import classes.BodyParts.Hips;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.internals.ChainedDrop;
 	import classes.display.SpriteDb;
@@ -178,18 +180,18 @@ package classes.Scenes.NPCs
 			else 
 				this.long += "Her vagina constantly glistens with moisture, regardless of her state of arousal.  Despite her nudity, Kiha stands with the confidence and poise of a trained fighter.";
 			// this.plural = false;
-			this.createVagina(false, VAGINA_WETNESS_DROOLING, VAGINA_LOOSENESS_NORMAL);
+			this.createVagina(false, VaginaClass.WETNESS_DROOLING, VaginaClass.LOOSENESS_NORMAL);
 			this.createStatusEffect(StatusEffects.BonusVCapacity, 40, 0, 0, 0);
 			createBreastRow(Appearance.breastCupInverse("D"));
-			this.ass.analLooseness = ANAL_LOOSENESS_LOOSE;
-			this.ass.analWetness = ANAL_WETNESS_DRY;
+			this.ass.analLooseness = AssClass.LOOSENESS_LOOSE;
+			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,40,0,0,0);
 			this.tallness = 6*12+1;
-			this.hipRating = HIP_RATING_AMPLE;
-			this.buttRating = BUTT_RATING_AVERAGE+1;
-			this.lowerBody = LOWER_BODY_TYPE_HOOFED;
+			this.hipRating = Hips.RATING_AMPLE;
+			this.buttRating = Butt.RATING_AVERAGE+1;
+			this.lowerBody = LowerBody.HOOFED;
 			this.skinTone = "dark";
-			this.skinType = SKIN_TYPE_DRAGON_SCALES;
+			this.skinType = Skin.DRAGON_SCALES;
 			this.skinDesc = "skin and scales";
 			this.hairColor = "red";
 			this.hairLength = 3;
@@ -209,9 +211,9 @@ package classes.Scenes.NPCs
 			this.level = 16;
 			this.gems = rand(15) + 95;
 			this.drop = new ChainedDrop().add(useables.D_SCALE, 0.2);
-			this.wingType = WING_TYPE_DRACONIC_LARGE;
+			this.wingType = Wings.DRACONIC_LARGE;
 			this.wingDesc = "huge";
-			this.tailType = TAIL_TYPE_LIZARD;
+			this.tailType = Tail.LIZARD;
 			checkMonster();
 		}
 

@@ -422,7 +422,7 @@ package classes.Scenes.Monsters
 			outputText(images.showImage("player-centaur-herm"));
 			outputText("As the imp lays beaten its hands stroke its " + monster.cockDescriptShort(0) + " as its eyes look over you in the hope that you might abuse it in some manner.  You lick your lips as you stare at the large member and you turn around to display your " + player.vaginaDescript(0) + ".  ");
 			//Not gaping?
-			if (player.vaginas[0].vaginalLooseness <= VAGINA_LOOSENESS_GAPING) {
+			if (player.vaginas[0].vaginalLooseness <= VaginaClass.LOOSENESS_GAPING) {
 				//Penetration for non-gape cases
 				outputText("With a lascivious grin the imp hops forward, gripping your flanks as it drives its member forward into your " + player.vaginaDescript(0) + ".  ");
 				//<<If Pussy Virgin>> 

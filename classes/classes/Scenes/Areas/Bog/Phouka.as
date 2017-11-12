@@ -4,6 +4,8 @@
 package classes.Scenes.Areas.Bog
 {
 	import classes.*;
+	import classes.BodyParts.*;
+	import classes.BodyParts.Hips;
 	import classes.internals.WeightedDrop;
 
 	public class Phouka extends Monster
@@ -276,20 +278,20 @@ package classes.Scenes.Areas.Bog
 			this.hoursSinceCum = 20;
 
 			createBreastRow(0);
-			this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-			this.ass.analWetness = ANAL_WETNESS_NORMAL;
+			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
+			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 
 			this.tallness = 5;
-			this.hipRating = HIP_RATING_SLENDER;
-			this.buttRating = BUTT_RATING_TIGHT;
-			this.lowerBody = LOWER_BODY_TYPE_HUMAN
-			this.armType = ARM_TYPE_HUMAN;
+			this.hipRating = Hips.RATING_SLENDER;
+			this.buttRating = Butt.RATING_TIGHT;
+			this.lowerBody = LowerBody.HUMAN
+			this.armType = Arms.HUMAN;
 
 			this.skinTone = "black";
 			this.hairColor = "black";
 			this.hairLength = 1;
 
-			this.earType = EARS_ELFIN;
+			this.earType = Ears.ELFIN;
 
 			initStrTouSpeInte(55, 25, 80, 40);
 			initLibSensCor(75, 35, 100);
@@ -313,7 +315,7 @@ package classes.Scenes.Areas.Bog
 				.add(consumables.P_WHSKY, 35)
 				.add(null, 20);
 
-			this.wingType = WING_TYPE_GIANT_DRAGONFLY; //Maybe later, if the PC can get them, make a Faerie wing type.
+			this.wingType = Wings.GIANT_DRAGONFLY; //Maybe later, if the PC can get them, make a Faerie wing type.
 			this.wingDesc = "small black faerie wings";
 			checkMonster();
 		}

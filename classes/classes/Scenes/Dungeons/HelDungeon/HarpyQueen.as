@@ -1,6 +1,7 @@
 package classes.Scenes.Dungeons.HelDungeon
 {
 	import classes.*;
+	import classes.BodyParts.*;
 
 	public class HarpyQueen extends Monster
 	{
@@ -74,16 +75,16 @@ package classes.Scenes.Dungeons.HelDungeon
 			this.imageName = "harpyqueen";
 			this.long = "You face the Harpy Queen, a broodmother of epic proportions - literally.  Her hips are amazingly wide, thrice her own width at the least, and the rest of her body is lushly voluptuous, with plush, soft thighs and a tremendous butt.  Her wide wings beat occasionally, sending ripples through her jiggly body.  She wields a towering whitewood staff in one hand, using the other to cast eldritch spells.";
 			// this.plural = false;
-			this.createVagina(false, VAGINA_WETNESS_SLAVERING, VAGINA_LOOSENESS_LOOSE);
+			this.createVagina(false, VaginaClass.WETNESS_SLAVERING, VaginaClass.LOOSENESS_LOOSE);
 			createBreastRow(Appearance.breastCupInverse("D"));
-			this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
-			this.ass.analWetness = ANAL_WETNESS_DRY;
+			this.ass.analLooseness = AssClass.LOOSENESS_STRETCHED;
+			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.tallness = rand(8) + 70;
-			this.hipRating = HIP_RATING_AMPLE+2;
-			this.buttRating = BUTT_RATING_LARGE;
-			this.lowerBody = LOWER_BODY_TYPE_HARPY;
+			this.hipRating = Hips.RATING_AMPLE+2;
+			this.buttRating = Butt.RATING_LARGE;
+			this.lowerBody = LowerBody.HARPY;
 			this.skinTone = "red";
-			this.skinType = SKIN_TYPE_PLAIN;
+			this.skinType = Skin.PLAIN;
 			this.skinDesc = "feathers";
 			this.hairColor = "black";
 			this.hairLength = 15;
@@ -101,8 +102,8 @@ package classes.Scenes.Dungeons.HelDungeon
 			this.level = 20;
 			this.gems = rand(25) +160;
 			this.additionalXP = 50;
-			this.tailType = TAIL_TYPE_HARPY;
-			this.wingType = WING_TYPE_FEATHERED_LARGE;
+			this.tailType = Tail.HARPY;
+			this.wingType = Wings.FEATHERED_LARGE;
 			this.drop = NO_DROP;
 			this.createPerk(PerkLib.ImprovedSelfControl, 0, 0, 0, 0);
 			checkMonster();

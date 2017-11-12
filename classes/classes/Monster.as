@@ -1,5 +1,6 @@
 ﻿package classes
 {
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Items.ArmorLib;
@@ -281,7 +282,7 @@
 			///*OPTIONAL*/ //this.cumMultiplier = ; // default 1
 			///*OPTIONAL*/ //this.hoursSinceCum = ; // default 0
 			//// 2.2. Female
-			///*REQUIRED*/ this.createVagina(virgin=true|false,VAGINA_WETNESS_,VAGINA_LOOSENESS_); // default true,normal,tight
+			///*REQUIRED*/ this.createVagina(virgin=true|false,VaginaClass.WETNESS_,VaginaClass.LOOSENESS_); // default true,normal,tight
 			///*OPTIONAL*/ //this.createStatusEffect(StatusEffects.BonusVCapacity, bonus, 0, 0, 0);
 			//// 2.3. Hermaphrodite
 			//// Just create cocks and vaginas. Last call determines pronouns.
@@ -308,32 +309,32 @@
 			//// Note useful method: this.createBreastRow(Appearance.breastCupInverse("C")); // "C" -> 3
 
 			//// 4. Ass
-			///*OPTIONAL*/ //this.ass.analLooseness = ANAL_LOOSENESS_; // default TIGHT
-			///*OPTIONAL*/ //this.ass.analWetness = ANAL_WETNESS_; // default DRY
+			///*OPTIONAL*/ //this.ass.analLooseness = AssClass.LOOSENESS_; // default TIGHT
+			///*OPTIONAL*/ //this.ass.analWetness = AssClass.WETNESS_; // default DRY
 			///*OPTIONAL*/ //this.createStatusEffect(StatusEffects.BonusACapacity, bonus, 0, 0, 0);
 			//// 5. Body
 			///*REQUIRED*/ this.tallness = ;
-			///*OPTIONAL*/ //this.hipRating = HIP_RATING_; // default boyish
-			///*OPTIONAL*/ //this.buttRating = BUTT_RATING_; // default buttless
+			///*OPTIONAL*/ //this.hipRating = Hips.RATING_; // default boyish
+			///*OPTIONAL*/ //this.buttRating = Butt.RATING_; // default buttless
 			///*OPTIONAL*/ //this.lowerBody = LOWER_BODY_; //default human
-			///*OPTIONAL*/ //this.armType = ARM_TYPE_; // default human
+			///*OPTIONAL*/ //this.armType = Arms.; // default human
 
 			//// 6. Skin
 			///*OPTIONAL*/ //this.skinTone = "skinTone"; // default "albino"
-			///*OPTIONAL*/ //this.skinType = SKIN_TYPE_; // default PLAIN
+			///*OPTIONAL*/ //this.skinType = Skin.; // default PLAIN
 			///*OPTIONAL*/ //this.skinDesc = "skinDesc"; // default "skin" if this.skinType is not set, else Appearance.DEFAULT_SKIN_DESCS[skinType]
 			///*OPTIONAL*/ //this.skinAdj = "skinAdj"; // default ""
 
 			//// 7. Hair
 			///*OPTIONAL*/ //this.hairColor = ; // default "no"
 			///*OPTIONAL*/ //this.hairLength = ; // default 0
-			///*OPTIONAL*/ //this.hairType = HAIR_; // default NORMAL
+			///*OPTIONAL*/ //this.hairType = Hair.; // default NORMAL
 
 			//// 8. Face
-			///*OPTIONAL*/ //this.faceType = FACE_; // default HUMAN
-			///*OPTIONAL*/ //this.earType = EARS_; // default HUMAN
-			///*OPTIONAL*/ //this.tongueType = TONGUE_; // default HUMAN
-			///*OPTIONAL*/ //this.eyeType = EYES_; // default HUMAN
+			///*OPTIONAL*/ //this.faceType = Face.; // default HUMAN
+			///*OPTIONAL*/ //this.earType = Ears.; // default HUMAN
+			///*OPTIONAL*/ //this.tongueType = Tongue.; // default HUMAN
+			///*OPTIONAL*/ //this.eyeType = Eyes.; // default HUMAN
 
 			//// 9. Primary stats.
 			///*REQUIRED*/ initStrTouSpeInte(,,,);
@@ -409,20 +410,20 @@
 			///*OPTIONAL*/ //this.special3 = ; //default 0
 
 			//// 16. Tail
-			///*OPTIONAL*/ //this.tailType = TAIL_TYPE_; // default NONE
+			///*OPTIONAL*/ //this.tailType = Tail.; // default NONE
 			///*OPTIONAL*/ //this.tailVenom = ; // default 0
 			///*OPTIONAL*/ //this.tailRecharge = ; // default 5
 
 			//// 17. Horns
-			///*OPTIONAL*/ //this.hornType = HORNS_; // default NONE
+			///*OPTIONAL*/ //this.hornType = Horns.; // default NONE
 			///*OPTIONAL*/ //this.horns = numberOfHorns; // default 0
 
 			//// 18. Wings
-			///*OPTIONAL*/ //this.wingType = WING_TYPE_; // default NONE
+			///*OPTIONAL*/ //this.wingType = Wings.; // default NONE
 			///*OPTIONAL*/ //this.wingDesc = ; // default Appearance.DEFAULT_WING_DESCS[wingType]
 
 			//// 19. Antennae
-			///*OPTIONAL*/ //this.antennae = ANTENNAE_; // default NONE
+			///*OPTIONAL*/ //this.antennae = Antennae.; // default NONE
 
 			//// REQUIRED !!!
 			//// In debug mode will throw an error for uninitialized monster
@@ -1043,13 +1044,13 @@
 					+(Appearance.DEFAULT_TONGUE_NAMES[tongueType]||("tongueType#"+tongueType))+" tongue and "
 					+(Appearance.DEFAULT_EYES_NAMES[eyeType]||("eyeType#"+eyeType))+" eyes.\n";
 			result += Hehas;
-			if (tailType == TAIL_TYPE_NONE) result += "no tail, ";
+			if (tailType == Tail.NONE) result += "no tail, ";
 			else result+=(Appearance.DEFAULT_TAIL_NAMES[tailType]||("tailType#"+tailType))+" tail with venom="+tailVenom+" and recharge="+tailRecharge+", ";
-			if (hornType == HORNS_NONE) result += "no horns, ";
+			if (hornType == Horns.NONE) result += "no horns, ";
 			else result += horns+" "+(Appearance.DEFAULT_HORNS_NAMES[hornType]||("hornType#"+hornType))+" horns, ";
-			if (wingType == WING_TYPE_NONE) result += "no wings, ";
+			if (wingType == Wings.NONE) result += "no wings, ";
 			else result += wingDesc+" wings (type "+(Appearance.DEFAULT_WING_NAMES[wingType]||("wingType#"+wingType))+"), ";
-			if (antennae == ANTENNAE_NONE) result += "no antennae.\n\n";
+			if (antennae == Antennae.NONE) result += "no antennae.\n\n";
 			else result += (Appearance.DEFAULT_ANTENNAE_NAMES[antennae]||("antennaeType#"+antennae))+" antennae.\n\n";
 
 			// GENITALS AND BREASTS

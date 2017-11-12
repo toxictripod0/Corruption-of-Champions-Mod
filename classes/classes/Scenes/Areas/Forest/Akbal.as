@@ -1,6 +1,7 @@
 package classes.Scenes.Areas.Forest
 {
 	import classes.*;
+	import classes.BodyParts.*;
 import classes.StatusEffects.Combat.AkbalSpeedDebuff;
 import classes.internals.WeightedDrop;
 
@@ -178,14 +179,14 @@ import classes.internals.WeightedDrop;
 			createBreastRow();
 			createBreastRow();
 			createBreastRow();
-			this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-			this.ass.analWetness = ANAL_WETNESS_NORMAL;
+			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
+			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.tallness = 4*12;
-			this.hipRating = HIP_RATING_SLENDER;
-			this.buttRating = BUTT_RATING_TIGHT;
+			this.hipRating = Hips.RATING_SLENDER;
+			this.buttRating = Butt.RATING_TIGHT;
 			this.skinTone = "spotted";
-			this.skinType = SKIN_TYPE_FUR;
-			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[SKIN_TYPE_FUR];
+			this.skinType = Skin.FUR;
+			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.FUR];
 			this.hairColor = "black";
 			this.hairLength = 5;
 			initStrTouSpeInte(55, 53, 50, 75);
@@ -209,7 +210,7 @@ import classes.internals.WeightedDrop;
 			this.special1 = akbalLustAttack;
 			this.special2 = akbalSpecial;
 			this.special3 = akbalHeal;
-			this.tailType = TAIL_TYPE_DOG;
+			this.tailType = Tail.DOG;
 			checkMonster();
 		}
 

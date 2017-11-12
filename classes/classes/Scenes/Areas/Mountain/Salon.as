@@ -1,5 +1,6 @@
 ﻿package classes.Scenes.Areas.Mountain{
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
@@ -127,15 +128,15 @@ public function salonPurchaseMenu():void {
 	else if (player.femininity > 0 && player.findPerk(PerkLib.Androgyny) >= 0) sandFacialEnabled = true;
 	
 	menu();
-	if (player.hairType != HAIR_BASILISK_SPINES && player.hairLength > 2) addButton(0, "Cut Short", cutShort);
+	if (player.hairType != Hair.BASILISK_SPINES && player.hairLength > 2) addButton(0, "Cut Short", cutShort);
 	else addDisabledButton(0, "Cut Short");
 	if (player.hairLength > 13) addButton(1, "Cut Medium", cutMedium);
 	else addDisabledButton(1, "Cut Medium");
 	if (player.hairLength >= 26) addButton(2, "Cut Long", cutLong);
 	else addDisabledButton(2, "Cut Long");
-	if (player.hairType != HAIR_BASILISK_SPINES && player.hairLength < player.tallness) addButton(3, "Lengthen", hairGrow);
+	if (player.hairType != Hair.BASILISK_SPINES && player.hairLength < player.tallness) addButton(3, "Lengthen", hairGrow);
 	else addDisabledButton(3, "Lengthen");
-	if (player.hairType != HAIR_BASILISK_SPINES && player.hairLength > 0) addButton(4, "Remove Hair", removeHair);
+	if (player.hairType != Hair.BASILISK_SPINES && player.hairLength > 0) addButton(4, "Remove Hair", removeHair);
 	else addDisabledButton(4, "Remove Hair");
 	addButton(5, "Buy Products", dyeMenu);
 	if (flags[kFLAGS.SALON_MINOCUM_UNLOCKED] > 0) addButton(6, "Buy MinoCum", buyMinoCum).hint("Buy a bottle of minotaur cum for 60 gems?");
@@ -336,7 +337,7 @@ private function gloryholeMinotaur(): void {
 	if (player.biggestTitSize() > 1) outputText("hold up ");
 	else outputText("arch your back to expose ");
 	outputText("your [chest] as cum rains down upon you. By the time his orgasm stops and his dick goes limp, your face and [chest] are covered in a thick layer of spooge.\n\n");
-	outputText("Your head spins from the minotaur's musk, and you idly mop up and swallow the cum on your " + player.face() + ". A goblin aide comes in with a bowl, and gently scrapes the cum off your tits with a smooth, flat rock. Once you're cleaned up and you're dressed, the aide leads you back to Lynnette.\n\n");
+	outputText("Your head spins from the minotaur's musk, and you idly mop up and swallow the cum on your " + player.faceDescript() + ". A goblin aide comes in with a bowl, and gently scrapes the cum off your tits with a smooth, flat rock. Once you're cleaned up and you're dressed, the aide leads you back to Lynnette.\n\n");
 	dynStats("lus", 33, "cor", 1);
 	player.orgasm('Lips',false);
 	player.refillHunger(30);
@@ -686,7 +687,7 @@ private function minotaurSalonFollowUp():void {
 private function mudFacial():void {
 	spriteSelect(SpriteDb.s_lynette);
 	clearOutput();
-	outputText("You sit back in a comfortable chair and pull on a lever to recline it.  The goblins buzz around you, gathering up 'special mud'.  You close your eyes, letting them plaster your " + player.face() + " with the stuff in hopes that it will improve your complexion as much as you've been promised.  A pair of cucumber slices are laid out on your eyes, obscuring your view.\n\n");
+	outputText("You sit back in a comfortable chair and pull on a lever to recline it.  The goblins buzz around you, gathering up 'special mud'.  You close your eyes, letting them plaster your " + player.faceDescript() + " with the stuff in hopes that it will improve your complexion as much as you've been promised.  A pair of cucumber slices are laid out on your eyes, obscuring your view.\n\n");
 
 	outputText("With that finished, the crowd of busty, green-skinned women disperses to leave you in peace.  Time drags on, but eventually the mud hardens and cracks.  As if on cue, tiny hands emerge with wet rags to scrub your face clean.  Once they've finished, you feel like a whole new you! (+10 femininity)");
 	player.modFem(100,10);
@@ -696,7 +697,7 @@ private function mudFacial():void {
 private function sandFacial():void {
 	spriteSelect(SpriteDb.s_lynette);
 	clearOutput();
-	outputText("You sit back in a comfortable chair and pull on a lever to recline it.  The goblins buzz around you, gathering up 'special sand'.  You close your eyes, letting them splatter your " + player.face() + " with the rough, textured goop.  It doesn't feel very good, but that won't matter if it makes you as handsome as it's supposed to.\n\n");
+	outputText("You sit back in a comfortable chair and pull on a lever to recline it.  The goblins buzz around you, gathering up 'special sand'.  You close your eyes, letting them splatter your " + player.faceDescript() + " with the rough, textured goop.  It doesn't feel very good, but that won't matter if it makes you as handsome as it's supposed to.\n\n");
 
 	outputText("After a while the goblin girls come back and clean the stuff from your face. (+10 masculinity)");
 	player.modFem(0,10);

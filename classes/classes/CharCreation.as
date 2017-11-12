@@ -1,5 +1,8 @@
 ﻿package classes 
 {
+	import classes.BodyParts.*;
+	import classes.BodyParts.Butt;
+	import classes.BodyParts.Hips;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.GlobalFlags.kACHIEVEMENTS;
@@ -193,16 +196,16 @@ import fl.controls.ComboBox;
 			}
 			player.HP = player.maxHP();
 			player.hairLength = 5;
-			player.skinType = SKIN_TYPE_PLAIN;
+			player.skinType = Skin.PLAIN;
 			player.underBody.restore();
 			player.neck.restore();
 			player.rearBody.restore();
-			player.lowerBody = LOWER_BODY_TYPE_HUMAN;
+			player.lowerBody = LowerBody.HUMAN;
 			player.legCount = 2;
-			player.faceType = FACE_HUMAN;
+			player.faceType = Face.HUMAN;
 			player.eyeCount = 2;
-			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) player.tailType = TAIL_TYPE_NONE;
-			player.tongueType = TONGUE_HUMAN;
+			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) player.tailType = Tail.NONE;
+			player.tongueType = Tongue.HUMAN;
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) player.femininity = 50;
 			player.beardLength = 0;
 			player.beardStyle = 0;
@@ -229,18 +232,18 @@ import fl.controls.ComboBox;
 
 			}
 			else {
-				if (!(player.tailType == TAIL_TYPE_FOX || player.tailType == TAIL_TYPE_SPIDER_ADBOMEN || player.tailType == TAIL_TYPE_BEE_ABDOMEN || player.tailType == TAIL_TYPE_SCORPION)) {
+				if (!(player.tailType == Tail.FOX || player.tailType == Tail.SPIDER_ABDOMEN || player.tailType == Tail.BEE_ABDOMEN || player.tailType == Tail.SCORPION)) {
 					player.tailVenom = 0;
 					player.tailRecharge = 0;
 				}
 			}
-			player.wingType = WING_TYPE_NONE;
-			if (player.eyeType == EYES_BASILISK) player.eyeType = EYES_LIZARD; // Silently change them to be lizard eyes again. Simple and stupid ;)
+			player.wingType = Wings.NONE;
+			if (player.eyeType == Eyes.BASILISK) player.eyeType = Eyes.LIZARD; // Silently change them to be lizard eyes again. Simple and stupid ;)
 			//Default
 			player.skinTone = "light";
 			player.clawTone = "";
 			player.hairColor = "brown";
-			player.hairType = HAIR_NORMAL;
+			player.hairType = Hair.NORMAL;
 			player.beardLength = 0;
 			player.beardStyle = 0;
 			//Exploration
@@ -669,9 +672,9 @@ import fl.controls.ComboBox;
 			player.thickness = 30;
 			player.tone += 5;
 			
-			player.breastRows[0].breastRating = BREAST_CUP_FLAT;
-			player.buttRating = BUTT_RATING_TIGHT;
-			player.hipRating = HIP_RATING_SLENDER;
+			player.breastRows[0].breastRating = BreastCup.FLAT;
+			player.buttRating = Butt.RATING_TIGHT;
+			player.hipRating = Hips.RATING_SLENDER;
 			chooseComplexion();
 		}
 
@@ -683,9 +686,9 @@ import fl.controls.ComboBox;
 			player.thickness = 30;
 			player.tone += 5;
 			
-			player.breastRows[0].breastRating = BREAST_CUP_B;
-			player.buttRating = BUTT_RATING_TIGHT;
-			player.hipRating = HIP_RATING_AMPLE;
+			player.breastRows[0].breastRating = BreastCup.B;
+			player.buttRating = Butt.RATING_TIGHT;
+			player.hipRating = Hips.RATING_AMPLE;
 			chooseComplexion();
 		}
 
@@ -693,9 +696,9 @@ import fl.controls.ComboBox;
 			player.femininity = 30;
 			player.thickness = 50;
 			
-			player.breastRows[0].breastRating = BREAST_CUP_FLAT;
-			player.buttRating = BUTT_RATING_AVERAGE;
-			player.hipRating = HIP_RATING_AVERAGE;
+			player.breastRows[0].breastRating = BreastCup.FLAT;
+			player.buttRating = Butt.RATING_AVERAGE;
+			player.hipRating = Hips.RATING_AVERAGE;
 			chooseComplexion();
 		}
 
@@ -703,9 +706,9 @@ import fl.controls.ComboBox;
 			player.femininity = 70;
 			player.thickness = 50;
 			
-			player.breastRows[0].breastRating = BREAST_CUP_C;
-			player.buttRating = BUTT_RATING_NOTICEABLE;
-			player.hipRating = HIP_RATING_AMPLE;
+			player.breastRows[0].breastRating = BreastCup.C;
+			player.buttRating = Butt.RATING_NOTICEABLE;
+			player.hipRating = Hips.RATING_AMPLE;
 			chooseComplexion();
 		}
 
@@ -718,9 +721,9 @@ import fl.controls.ComboBox;
 			player.thickness = 70;
 			player.tone -= 5;
 			
-			player.breastRows[0].breastRating = BREAST_CUP_FLAT;
-			player.buttRating = BUTT_RATING_NOTICEABLE;
-			player.hipRating = HIP_RATING_AVERAGE;
+			player.breastRows[0].breastRating = BreastCup.FLAT;
+			player.buttRating = Butt.RATING_NOTICEABLE;
+			player.hipRating = Hips.RATING_AVERAGE;
 			chooseComplexion();
 		}
 
@@ -732,9 +735,9 @@ import fl.controls.ComboBox;
 			player.femininity = 71;
 			player.thickness = 70;
 			
-			player.breastRows[0].breastRating = BREAST_CUP_D;
-			player.buttRating = BUTT_RATING_LARGE;
-			player.hipRating = HIP_RATING_CURVY;
+			player.breastRows[0].breastRating = BreastCup.D;
+			player.buttRating = Butt.RATING_LARGE;
+			player.hipRating = Hips.RATING_CURVY;
 			chooseComplexion();
 		}
 
@@ -746,9 +749,9 @@ import fl.controls.ComboBox;
 			player.thickness = 50;
 			player.tone = 26;
 			
-			player.breastRows[0].breastRating = BREAST_CUP_A;
-			player.buttRating = BUTT_RATING_NOTICEABLE;
-			player.hipRating = HIP_RATING_SLENDER;
+			player.breastRows[0].breastRating = BreastCup.A;
+			player.buttRating = Butt.RATING_NOTICEABLE;
+			player.hipRating = Hips.RATING_SLENDER;
 			chooseComplexion();
 		}
 
@@ -760,9 +763,9 @@ import fl.controls.ComboBox;
 			player.thickness = 50;
 			player.tone = 50;
 			
-			player.breastRows[0].breastRating = BREAST_CUP_A;
-			player.buttRating = BUTT_RATING_TIGHT;
-			player.hipRating = HIP_RATING_SLENDER;
+			player.breastRows[0].breastRating = BreastCup.A;
+			player.buttRating = Butt.RATING_TIGHT;
+			player.hipRating = Hips.RATING_SLENDER;
 			chooseComplexion();
 		}
 
@@ -1184,7 +1187,7 @@ import fl.controls.ComboBox;
 					break;
 				case PerkLib.WetPussy:
 					player.femininity += 7;
-					player.vaginas[0].vaginalWetness = VAGINA_WETNESS_WET;
+					player.vaginas[0].vaginalWetness = VaginaClass.WETNESS_WET;
 					player.createPerk(PerkLib.WetPussy, 2, 0, 0, 0);
 					break;
 			}
@@ -1261,7 +1264,7 @@ import fl.controls.ComboBox;
 			if (choice == PerkLib.HistorySlut || choice == PerkLib.HistoryWhore) {
 				if (player.hasVagina()) {
 					player.vaginas[0].virgin = false;
-					player.vaginas[0].vaginalLooseness = VAGINA_LOOSENESS_LOOSE;
+					player.vaginas[0].vaginalLooseness = VaginaClass.LOOSENESS_LOOSE;
 				}
 				player.ass.analLooseness = 1;
 			}
@@ -1311,7 +1314,7 @@ import fl.controls.ComboBox;
 			outputText("The walk to the tainted cave is long and silent.  Elder Nomur does not speak.  There is nothing left to say.  The two of you journey in companionable silence.  Slowly the black rock of Mount Ilgast looms closer and closer, and the temperature of the air drops.  You shiver and glance at the Elder, noticing he doesn't betray any sign of the cold.  Despite his age of nearly 80, he maintains the vigor of a man half his age.  You're glad for his strength, as assisting him across this distance would be draining, and you must save your energy for the trials ahead.\n\n");
 			outputText("The entrance of the cave gapes open, sharp stalactites hanging over the entrance, giving it the appearance of a monstrous mouth.  Elder Nomur stops and nods to you, gesturing for you to proceed alone.\n\n");
 			outputText("The cave is unusually warm and damp, ");
-			if (player.gender == GENDER_FEMALE)
+			if (player.gender == Gender.FEMALE)
 				outputText("and your body seems to feel the same way, flushing as you feel a warmth and dampness between your thighs. ");
 			else outputText("and your body reacts with a sense of growing warmth focusing in your groin, your manhood hardening for no apparent reason. ");
 			outputText("You were warned of this and press forward, ignoring your body's growing needs.  A glowing purple-pink portal swirls and flares with demonic light along the back wall.  Cringing, you press forward, keenly aware that your body seems to be anticipating coming in contact with the tainted magical construct.  Closing your eyes, you gather your resolve and leap forwards.  Vertigo overwhelms you and you black out...");
@@ -1326,7 +1329,7 @@ import fl.controls.ComboBox;
 			dynStats("lus", 40, "cor", 2);
 			model.time.hours = 18;
 			outputText("You wake with a splitting headache and a body full of burning desire.  A shadow darkens your view momentarily and your training kicks in.  You roll to the side across the bare ground and leap to your feet.  A surprised looking imp stands a few feet away, holding an empty vial.  He's completely naked, an improbably sized pulsing red cock hanging between his spindly legs.  You flush with desire as a wave of lust washes over you, your mind reeling as you fight ");
-			if (player.gender == GENDER_FEMALE)
+			if (player.gender == Gender.FEMALE)
 				outputText("the urge to chase down his rod and impale yourself on it.\n\n");
 			else
 				outputText("the urge to ram your cock down his throat.  The strangeness of the thought surprises you.\n\n");

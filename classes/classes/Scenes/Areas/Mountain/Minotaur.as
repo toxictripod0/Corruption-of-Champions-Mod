@@ -2,6 +2,7 @@ package classes.Scenes.Areas.Mountain
 {
 
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.internals.*;
 
 	/**
@@ -65,21 +66,21 @@ package classes.Scenes.Areas.Mountain
 			this.cumMultiplier = 1.5;
 			this.hoursSinceCum = this.ballSize * 10;
 			createBreastRow(0);
-			this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
-			this.ass.analWetness = ANAL_WETNESS_NORMAL;
+			this.ass.analLooseness = AssClass.LOOSENESS_STRETCHED;
+			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.createStatusEffect(StatusEffects.BonusACapacity,30,0,0,0);
 			this.tallness = rand(37) + 84;
-			this.hipRating = HIP_RATING_AVERAGE;
-			this.buttRating = BUTT_RATING_AVERAGE;
-			this.lowerBody = LOWER_BODY_TYPE_HOOFED;
+			this.hipRating = Hips.RATING_AVERAGE;
+			this.buttRating = Butt.RATING_AVERAGE;
+			this.lowerBody = LowerBody.HOOFED;
 			this.skinTone = furColor;
-			this.skinType = SKIN_TYPE_FUR;
+			this.skinType = Skin.FUR;
 			this.skinDesc = "shaggy fur";
 			this.hairColor = furColor;
 			this.hairLength = 3;
 			initStrTouSpeInte(hasAxe ? 75 : 50, 60, 30, 20);
 			initLibSensCor(40 + this.ballSize * 2, 15 + this.ballSize * 2, 35);
-			this.faceType = FACE_COW_MINOTAUR;
+			this.faceType = Face.COW_MINOTAUR;
 			this.weaponName = hasAxe?"axe":"fist";
 			this.weaponVerb = hasAxe?"cleave":"punch";
 			this.armorName = "thick fur";
@@ -97,7 +98,7 @@ package classes.Scenes.Areas.Mountain
 						.elseDrop(null);
 			}
 			this.special1 = game.mountain.minotaurScene.minoPheromones;
-			this.tailType = TAIL_TYPE_COW;
+			this.tailType = Tail.COW;
 			checkMonster();
 		}
 

@@ -1,5 +1,6 @@
 package classes.Items.Consumables 
 {
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Items.Consumable;
@@ -53,7 +54,7 @@ package classes.Items.Consumables
 			//"The tingling of the tentacle
 
 			//Neck restore
-			if (player.neck.type != NECK_TYPE_NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type != Neck.NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
 			//Rear body restore
 			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
 			//Ovi perk loss
@@ -63,19 +64,19 @@ package classes.Items.Consumables
 			
 			//physical changes:
 			//- may randomly remove bee abdomen, if present; always checks and does so when any changes to hair might happen
-			if (rand(4) === 0 && changes < changeLimit && player.tailType === TAIL_TYPE_BEE_ABDOMEN) {
+			if (rand(4) === 0 && changes < changeLimit && player.tailType === Tail.BEE_ABDOMEN) {
 				outputText("\n\nAs the gentle tingling of the tentacle's remaining venom spreads through your body, it begins to collect and intensify above the crack of your butt.  Looking back, you notice your abdomen shivering and contracting; with a snap, the chitinous appendage parts smoothly from your backside and falls to the ground.  <b>You no longer have a bee abdomen!</b>\n\n");
-				player.tailType = TAIL_TYPE_NONE;
+				player.tailType = Tail.NONE;
 				changes++;
 			}
 			//-may randomly remove bee wings:
-			if (rand(4) === 0 && (player.wingType === WING_TYPE_BEE_LIKE_SMALL || player.wingType === WING_TYPE_BEE_LIKE_LARGE) && changes < changeLimit) {
+			if (rand(4) === 0 && (player.wingType === Wings.BEE_LIKE_SMALL || player.wingType === Wings.BEE_LIKE_LARGE) && changes < changeLimit) {
 				outputText("\n\nYour wings twitch and flap involuntarily.  You crane your neck to look at them as best you are able; from what you can see, they seem to be shriveling and curling up.  They're starting to look a lot like they did when they first popped out, wet and new.  <b>As you watch, they shrivel all the way, then recede back into your body.</b>");
-				player.wingType = WING_TYPE_NONE;
+				player.wingType = Wings.NONE;
 				changes++;
 			}
 			//-hair morphs to anemone tentacles, retains color, hair shrinks back to med-short('shaggy') and stops growing, lengthening treatments don't work and goblins won't cut it, but more anemone items can lengthen it one level at a time
-			if (player.gillType === GILLS_ANEMONE && player.hairType !== 4 && changes < changeLimit && rand(5) === 0) {
+			if (player.gillType === Gills.ANEMONE && player.hairType !== 4 && changes < changeLimit && rand(5) === 0) {
 				outputText("\n\nYour balance slides way off, and you plop down on the ground as mass concentrates on your head.  Reaching up, you give a little shriek as you feel a disturbingly thick, squirming thing where your hair should be.  Pulling it down in front of your eyes, you notice it's still attached to your head; what's more, it's the same color as your hair used to be.  <b>You now have squirming tentacles in place of hair!</b>  As you gaze at it, a gentle heat starts to suffuse your hand.  The tentacles must be developing their characteristic stingers!  You quickly let go; you'll have to take care to keep them from rubbing on your skin at all hours.  On the other hand, they're quite short and you find you can now flex and extend them as you would any other muscle, so that shouldn't be too hard.  You settle on a daring, windswept look for now.");
 				player.hairType = 4;
 				player.hairLength = 5;
@@ -91,8 +92,8 @@ package classes.Items.Consumables
 			}
 			
 			//-feathery gills sprout from chest and drape sensually over nipples (cumulative swimming power boost with fin, if swimming is implemented)
-			if (rand(5) === 0 && player.gillType !== GILLS_ANEMONE && player.skinTone === "aphotic blue-black" && changes < changeLimit) {
-				mutations.updateGills(GILLS_ANEMONE);
+			if (rand(5) === 0 && player.gillType !== Gills.ANEMONE && player.skinTone === "aphotic blue-black" && changes < changeLimit) {
+				mutations.updateGills(Gills.ANEMONE);
 			}
 			
 			//-[aphotic] skin tone (blue-black)

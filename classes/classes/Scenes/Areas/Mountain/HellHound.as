@@ -1,6 +1,7 @@
 package classes.Scenes.Areas.Mountain
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.internals.*;
 
 	public class HellHound extends Monster
@@ -119,15 +120,15 @@ package classes.Scenes.Areas.Mountain
 			this.createBreastRow();
 			this.createBreastRow();
 			this.createBreastRow();
-			this.ass.analLooseness = ANAL_LOOSENESS_NORMAL;
-			this.ass.analWetness = ANAL_WETNESS_NORMAL;
+			this.ass.analLooseness = AssClass.LOOSENESS_NORMAL;
+			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.tallness = 47;
-			this.hipRating = HIP_RATING_AVERAGE;
-			this.buttRating = BUTT_RATING_AVERAGE+1;
-			this.lowerBody = LOWER_BODY_TYPE_DOG;
+			this.hipRating = Hips.RATING_AVERAGE;
+			this.buttRating = Butt.RATING_AVERAGE+1;
+			this.lowerBody = LowerBody.DOG;
 			this.skinTone = "black";
-			this.skinType = SKIN_TYPE_FUR;
-			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[SKIN_TYPE_FUR];
+			this.skinType = Skin.FUR;
+			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.FUR];
 			this.hairColor = "red";
 			this.hairLength = 3;
 			initStrTouSpeInte(55, 60, 40, 1);
@@ -149,7 +150,7 @@ package classes.Scenes.Areas.Mountain
 						consumables.BLACKPP,
 						consumables.DBLPEPP,
 						consumables.LARGEPP);
-			this.tailType = TAIL_TYPE_DOG;
+			this.tailType = Tail.DOG;
 			this.special1 = hellhoundFire;
 			this.special2 = hellhoundScent;
 			checkMonster();
