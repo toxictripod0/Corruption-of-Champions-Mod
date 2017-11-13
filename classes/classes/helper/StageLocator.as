@@ -8,8 +8,8 @@ package classes.helper {
  * https://forums.adobe.com/message/4235833#4235833
  */
 	public class StageLocator {
-		public static const instance:StageLocator;
-		public static const stage:Stage;
+		public static var instance:StageLocator;
+		public static var stage:Stage;
 
 		public function StageLocator ($stage:Stage) {
 			instance = this;
