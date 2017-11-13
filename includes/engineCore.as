@@ -280,7 +280,7 @@ private function logFunctionInfo(func:Function, arg:* = null, arg2:* = null, arg
 	{
 		logStr += "Calling = " + getFunctionName(func) + " Param = " +  arg;
 	}
-	CoC_Settings.appendButtonEvent(logStr);
+	//CoC_Settings.appendButtonEvent(logStr);
 	//trace(logStr); 9999
 }
 
