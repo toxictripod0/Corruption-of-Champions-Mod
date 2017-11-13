@@ -25,38 +25,38 @@ import flash.text.TextField;
 
 public class MainView extends Block {
 	[Embed(source="../../../res/ui/background1.png")]
-	public static var Background1:Class;
+	public static const Background1:Class;
 	[Embed(source="../../../res/ui/background2.png")]
-	public static var Background2:Class;
+	public static const Background2:Class;
 	[Embed(source="../../../res/ui/background3.png")]
-	public static var Background3:Class;
+	public static const Background3:Class;
 	[Embed(source="../../../res/ui/background4.png")]
-	public static var Background4:Class;
+	public static const Background4:Class;
 	[Embed(source="../../../res/ui/backgroundKaizo.png")]
-	public static var BackgroundKaizo:Class;
-	public static var Backgrounds:Array = [Background1, Background2, Background3, Background4,null, BackgroundKaizo];
+	public static const BackgroundKaizo:Class;
+	public static const Backgrounds:Array = [Background1, Background2, Background3, Background4, null, BackgroundKaizo];
 
 	[Embed(source="../../../res/ui/button0.jpg")]
-	public static var ButtonBackground0:Class;
+	public static const ButtonBackground0:Class;
 	[Embed(source="../../../res/ui/button1.jpg")]
-	public static var ButtonBackground1:Class;
+	public static const ButtonBackground1:Class;
 	[Embed(source="../../../res/ui/button2.jpg")]
-	public static var ButtonBackground2:Class;
+	public static const ButtonBackground2:Class;
 	[Embed(source="../../../res/ui/button3.jpg")]
-	public static var ButtonBackground3:Class;
+	public static const ButtonBackground3:Class;
 	[Embed(source="../../../res/ui/button4.jpg")]
-	public static var ButtonBackground4:Class;
+	public static const ButtonBackground4:Class;
 	[Embed(source="../../../res/ui/button5.jpg")]
-	public static var ButtonBackground5:Class;
+	public static const ButtonBackground5:Class;
 	[Embed(source="../../../res/ui/button6.jpg")]
-	public static var ButtonBackground6:Class;
+	public static const ButtonBackground6:Class;
 	[Embed(source="../../../res/ui/button7.jpg")]
-	public static var ButtonBackground7:Class;
+	public static const ButtonBackground7:Class;
 	[Embed(source="../../../res/ui/button8.jpg")]
-	public static var ButtonBackground8:Class;
+	public static const ButtonBackground8:Class;
 	[Embed(source="../../../res/ui/button9.jpg")]
-	public static var ButtonBackground9:Class;
-	public static var ButtonBackgrounds:Array = [
+	public static const ButtonBackground9:Class;
+	public static const ButtonBackgrounds:Array = [
 		ButtonBackground0,
 		ButtonBackground1,
 		ButtonBackground2,

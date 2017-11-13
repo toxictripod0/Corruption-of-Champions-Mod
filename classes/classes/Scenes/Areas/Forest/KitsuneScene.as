@@ -2359,9 +2359,9 @@ package classes.Scenes.Areas.Forest
 			}
 		}
 
-		public static var basicKitsuneHair:Array = ["white", "black", "black", "black", "red", "red", "red"];
-		public static var basicKitsuneFur:Array = [["orange", "white"], "black", ["black", "white"], "red", ["red", "white"], "white"];
-		public static var elderKitsuneColors:Array = ["metallic golden", "golden blonde", "metallic silver", "silver blonde", "snow white", "iridescent gray"];
+		public static const basicKitsuneHair:Array = ["white", "black", "black", "black", "red", "red", "red"];
+		public static const basicKitsuneFur:Array = [["orange", "white"], "black", ["black", "white"], "red", ["red", "white"], "white"];
+		public static const elderKitsuneColors:Array = ["metallic golden", "golden blonde", "metallic silver", "silver blonde", "snow white", "iridescent gray"];
 		
 		//[Meditate]
 		private function meditateLikeAKitsuneEhQuestionMark():void

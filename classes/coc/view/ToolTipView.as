@@ -8,7 +8,7 @@ package coc.view {
 
 	public class ToolTipView extends Block {
 		[Embed(source='../../../res/ui/tooltip.png')]
-		public static var tooltipBg:Class;
+		public static const tooltipBg:Class;
 		public var
 			bg:Sprite,
 			ln:Sprite,
