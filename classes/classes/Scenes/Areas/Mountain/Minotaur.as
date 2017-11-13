@@ -52,9 +52,7 @@ package classes.Scenes.Areas.Mountain
 			//Most times they dont have an axe
 			hasAxe = axe || rand(3)==0;
 			this.furColor = randomChoice("black","brown");
-
-			trace("Minotaur Constructor!");
-			trace(game.flags);
+			//trace("Minotaur Constructor!");
 			this.a = "the ";
 			this.short = "minotaur";
 			this.imageName = "minotaur";

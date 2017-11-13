@@ -130,9 +130,9 @@ package classes.Scenes.NPCs
 		}
 		override protected function performCombatAction():void
 		{
-			trace("Hel Perform Combat Action Called");
+			//trace("Hel Perform Combat Action Called");
 			var select:Number = rand(3);
-			trace("Selected: " + select);
+			//trace("Selected: " + select);
 			switch(select) {
 				case 0:
 					helAttack();

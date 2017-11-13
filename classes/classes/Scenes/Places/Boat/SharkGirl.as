@@ -42,7 +42,7 @@ package classes.Scenes.Places.Boat
 
 		public function SharkGirl()
 		{
-			trace("SharkGirl Constructor!");
+			//trace("SharkGirl Constructor!");
 			this.a = "the ";
 			this.short = "shark-girl";
 			this.imageName = "sharkgirl";

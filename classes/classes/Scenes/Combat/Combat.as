@@ -1081,7 +1081,7 @@ public class Combat extends BaseContent
 		}
 		public function combatParry():Boolean {
 			return player.findPerk(PerkLib.Parry) >= 0 && player.spe >= 50 && player.str >= 50 && rand(100) < ((player.spe - 50) / 5) && player.weapon != WeaponLib.FISTS;
-			trace("Parried!");
+			//trace("Parried!");
 		}
 		
 		public function combatCritical():Boolean {

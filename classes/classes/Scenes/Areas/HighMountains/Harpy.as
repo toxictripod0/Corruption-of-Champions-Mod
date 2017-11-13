@@ -95,7 +95,7 @@ package classes.Scenes.Areas.HighMountains
 		public function Harpy(noInit:Boolean=false)
 		{
 			if (noInit) return;
-			trace("Harpy Constructor!");
+			//trace("Harpy Constructor!");
 			this.a = "the ";
 			this.short = "harpy";
 			this.imageName = "harpy";

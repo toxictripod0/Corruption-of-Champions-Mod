@@ -84,7 +84,7 @@ package classes.Scenes.Areas.Mountain
 
 		public function WormMass()
 		{
-			trace("WormMass Constructor!");
+			//trace("WormMass Constructor!");
 			this.a = "the ";
 			this.short = "worms";
 			this.imageName = "worms";

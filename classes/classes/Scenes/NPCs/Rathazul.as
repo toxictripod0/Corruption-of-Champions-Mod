@@ -565,7 +565,6 @@ public function chooseArmorOrRobes(robeType:int):void {
 	outputText(", wondering if the old rodent will actually deliver the wondrous item that he's promised you.");
 	flags[kFLAGS.RATHAZUL_SILK_ARMOR_TYPE] = robeType;
 	flags[kFLAGS.RATHAZUL_SILK_ARMOR_COUNTDOWN] = 24;
-	trace("274: " + flags[kFLAGS.RATHAZUL_SILK_ARMOR_COUNTDOWN]);
 	doNext(camp.returnToCampUseOneHour);
 }
 private function collectSilkArmor():void {

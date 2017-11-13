@@ -65,7 +65,7 @@ package classes.Scenes.Areas.Desert
 		public function timeChange():Boolean
 		{
 			pregnancy.pregnancyAdvance();
-			trace("\nPhylla time change: Time is " + model.time.hours + ", incubation: " + pregnancy.incubation + ", event: " + pregnancy.event);
+			//trace("\nPhylla time change: Time is " + model.time.hours + ", incubation: " + pregnancy.incubation + ", event: " + pregnancy.event);
 			if (flags[kFLAGS.PHYLLA_EGG_LAYING] > 0 && rand(5) == 0 && flags[kFLAGS.ANT_KIDS] < 5000) flags[kFLAGS.ANT_KIDS]++;
 			if (model.time.hours > 23) {
 				//The pregnancyStore doesn't handle Phylla's ant eggs because they are continuous. The regular egg production is all handled here.
@@ -90,7 +90,7 @@ package classes.Scenes.Areas.Desert
 		public function antColonyEncounter():void
 		{
 			//WAIFU GET!
-			trace("ANT WINS: " + flags[kFLAGS.ANT_ARENA_WINS] + " ANT LOSSES: " + flags[kFLAGS.ANT_ARENA_LOSSES]);
+			//trace("ANT WINS: " + flags[kFLAGS.ANT_ARENA_WINS] + " ANT LOSSES: " + flags[kFLAGS.ANT_ARENA_LOSSES]);
 			if (flags[kFLAGS.ANT_ARENA_WINS] - flags[kFLAGS.ANT_ARENA_LOSSES] >= 2 && flags[kFLAGS.ANT_ARENA_WINS] >= 4 && player.gender > 0 && flags[kFLAGS.PHYLLA_GEMS_HUNTED_TODAY] === 0) {
 				if (flags[kFLAGS.PHYLLA_STAY_HOME] > 0) {
 					bumpIntoTheAntColonyAfterStayHomePhylla();

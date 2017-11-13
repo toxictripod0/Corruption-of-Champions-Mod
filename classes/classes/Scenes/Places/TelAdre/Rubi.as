@@ -1611,8 +1611,6 @@ private function playDressUp():void {
 	}
 	var button:int = 0;
 	while(button < 14 && button < buttonNames.length) {
-		trace("BUTTONNAMES: " + buttonNames[button]);
-		trace("CLOSET: " + closet[button]);
 		if (button < 13 || closet.length < 14) addButton(button,buttonNames[button],dressUpRouter,closet[button]);
 		else addButton(13,"More",playDressUp2);
 		button++;

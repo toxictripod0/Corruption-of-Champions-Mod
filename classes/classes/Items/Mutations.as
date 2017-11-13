@@ -207,10 +207,10 @@ package classes.Items
 			temp = 0;
 			while (growCocks > 0) {
 				player.createCock();
-				trace("COCK LENGTH: " + player.cocks[length - 1].cockLength);
+				//trace("COCK LENGTH: " + player.cocks[length - 1].cockLength);
 				player.cocks[player.cocks.length - 1].cockLength = rand(3) + 4;
 				player.cocks[player.cocks.length - 1].cockThickness = .75;
-				trace("COCK LENGTH: " + player.cocks[length - 1].cockLength);
+				//trace("COCK LENGTH: " + player.cocks[length - 1].cockLength);
 				growCocks--;
 				temp++;
 			}

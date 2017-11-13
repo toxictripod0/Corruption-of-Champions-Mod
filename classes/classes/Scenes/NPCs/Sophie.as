@@ -264,7 +264,7 @@ package classes.Scenes.NPCs
 		public function Sophie()
 		{
 			super(true);
-			trace("Sophie Constructor!");
+			//trace("Sophie Constructor!");
 		
 			this.a = "";
 			this.short = "Sophie";

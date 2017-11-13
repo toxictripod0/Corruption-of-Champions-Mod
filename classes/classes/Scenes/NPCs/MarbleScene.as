@@ -58,7 +58,7 @@ Special abilities: A lightly corrupted creature with most of the corruption cent
 			var needNext:Boolean = false;
 			checkedMarbleMilk = 0;
 			pregnancy.pregnancyAdvance();
-			trace("\nMarble time change: Time is " + model.time.hours + ", incubation: " + pregnancy.incubation + ", event: " + pregnancy.event);
+			//trace("\nMarble time change: Time is " + model.time.hours + ", incubation: " + pregnancy.incubation + ", event: " + pregnancy.event);
 			if (player.hasStatusEffect(StatusEffects.CampMarble)) {
 				//Marble stuff pt I
 				if (flags[kFLAGS.MARBLE_RATHAZUL_COUNTER_1] > 0) {
@@ -1958,8 +1958,8 @@ public function marbleStatusChange(affection:Number, addiction:Number, isAddicte
 	}
 	if (isAddicted != -1) player.changeStatusValue(StatusEffects.Marble, 3, isAddicted);
 	
-	trace("Marble Affection: " + player.statusEffectv1(StatusEffects.Marble));
-	trace("Marble Addiction: " + player.statusEffectv2(StatusEffects.Marble));
+	//trace("Marble Affection: " + player.statusEffectv1(StatusEffects.Marble));
+	//trace("Marble Addiction: " + player.statusEffectv2(StatusEffects.Marble));
 }
 
 private function applyMarblesMilk():void {
@@ -3604,19 +3604,15 @@ private function marblePreggoChance(preggerMult:Number):void {
 	if (player.findPerk(PerkLib.MaraesGiftStud) >= 0) preggerOdds += 25;
 	preggerOdds *= preggerMult;
 	//GET HER PREGNANT
-	trace("MARBLE PREGGO ODDS: " + preggerOdds);
+	//trace("MARBLE PREGGO ODDS: " + preggerOdds);
 	
 	if (rand(100) < preggerOdds && (player.findPerk(PerkLib.MarblesMilk) >= 0 || flags[kFLAGS.MARBLE_PURIFICATION_STAGE] >= 5)) {
 		//SHUT UP SHES ALREADY PREGNANT
 		if (!pregnancy.isPregnant) {
-			trace("Marble got PREGNANT!");
+			//trace("Marble got PREGNANT!");
 			//SHE IS NAU!
 			pregnancy.knockUpForce(PregnancyStore.PREGNANCY_PLAYER, 720);
 		}
-	}
-	else
-	{
-		trace("Knockup failed");
 	}
 	
 }

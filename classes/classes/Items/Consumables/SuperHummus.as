@@ -71,7 +71,6 @@ package classes.Items.Consumables
 			//Clear cocks
 			while (player.cocks.length > 0) {
 				player.removeCock(0, 1);
-				trace("1 cock purged.");
 			}
 			//Reset dongs!
 			if (player.gender === 1 || player.gender === 3) {
@@ -90,7 +89,6 @@ package classes.Items.Consumables
 			while (player.vaginas.length > 0) {
 				virgin = player.vaginas[0].virgin;
 				player.removeVagina(0, 1);
-				trace("1 vagina purged.");
 			}
 			//Reset vaginal virginity to correct state
 			if (player.gender >= 2) {

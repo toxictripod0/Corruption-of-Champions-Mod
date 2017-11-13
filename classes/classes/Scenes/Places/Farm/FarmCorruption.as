@@ -57,23 +57,19 @@ package classes.Scenes.Places.Farm
 			// Cap the values into the appropriate range
 			if (flags[kFLAGS.FARM_CORRUPTION_APPROACHED_WHITNEY] == 0 && flags[kFLAGS.WHITNEY_CORRUPTION] > 30 )
 			{
-				flags[kFLAGS.WHITNEY_CORRUPTION] = 30;
-				trace("Whitney at 30 corruption clamp.");
+				flags[kFLAGS.WHITNEY_CORRUPTION] = 30; // Whitney at 30 corruption clamp.
 			}
 			else if (flags[kFLAGS.WHITNEY_LEAVE_0_60] == 0 && flags[kFLAGS.WHITNEY_CORRUPTION] > 60)
 			{
-				flags[kFLAGS.WHITNEY_CORRUPTION] = 60;
-				trace("Whitney at 60 corruption clamp.");
+				flags[kFLAGS.WHITNEY_CORRUPTION] = 60; // Whitney at 60 corruption clamp.
 			}
 			else if (flags[kFLAGS.WHITNEY_LEAVE_61_90] == 0 && flags[kFLAGS.WHITNEY_CORRUPTION] > 90)
 			{
-				flags[kFLAGS.WHITNEY_CORRUPTION] = 90;
-				trace("Whitney at 90 corruption clamp.");
+				flags[kFLAGS.WHITNEY_CORRUPTION] = 90; // Whitney at 90 corruption clamp.
 			}
 			else if (flags[kFLAGS.WHITNEY_MENU_91_119] == 0 && flags[kFLAGS.WHITNEY_CORRUPTION] > 119)
 			{
-				flags[kFLAGS.WHITNEY_CORRUPTION] = 119;
-				trace("Whitney at 119 corruption clamp");
+				flags[kFLAGS.WHITNEY_CORRUPTION] = 119; // Whitney at 119 corruption clamp.
 			}
 
 			// Clamp values to valid min/max
@@ -83,8 +79,8 @@ package classes.Scenes.Places.Farm
 				flags[kFLAGS.WHITNEY_CORRUPTION] = 120;
 			}
 
-			trace("Whitney corruption changed by " + String(mod));
-			trace("Whitney corruption now at " + String(flags[kFLAGS.WHITNEY_CORRUPTION]));
+			//trace("Whitney corruption changed by " + String(mod));
+			//trace("Whitney corruption now at " + String(flags[kFLAGS.WHITNEY_CORRUPTION]));
 				
 			return flags[kFLAGS.WHITNEY_CORRUPTION];
 		}
@@ -118,7 +114,7 @@ package classes.Scenes.Places.Farm
 
 		public function whitneyCockArea():Number
 		{
-			trace("Update cock area with values from Vapulas dildo.");
+			//trace("Update cock area with values from Vapulas dildo.");
 			return 10 * 2;
 		}
 
@@ -401,7 +397,7 @@ package classes.Scenes.Places.Farm
 			if (flag == kFLAGS.FARM_EGG_STORED) return kGAMECLASS.sophieBimbo.eggTypes[kGAMECLASS.sophieBimbo.eggColors.indexOf(flags[kFLAGS.FOLLOWER_PRODUCTION_SOPHIE_COLORCHOICE])];
 			if (flag == kFLAGS.FARM_CONTRACEPTIVE_STORED) return consumables.HRBCNT;
 			
-			trace("No valid argument given.");
+			//trace("No valid argument given.");
 			return null;
 		}
 		
@@ -3043,7 +3039,7 @@ package classes.Scenes.Places.Farm
 			}
 			else
 			{
-				trace("Missing player body-type, welp.")
+				//trace("Missing player body-type, welp.")
 			}
 
 			outputText("\n\nYou have a moment to see the overriding urge in her eyes before her knees slide past your ears, her slim thighs lock around your neck and your view is taken up entirely by her pussy, her smooth, neat labia puffy and wet with lust. There is no warning, no teasing; she simply shoves her sopping sex against your mouth, your jaw and ears devoured by the hot, tight muscle of her hips, the soft flat of her abdomen pushing into your forehead. You can’t move or see, and can barely breathe; there is only her cunt, demandingly pushing against your face as her lower body thrusts against your head, and there is only one thing you can do. You press your lips onto hers and push your tongue through her wet opening.");
@@ -3153,7 +3149,7 @@ package classes.Scenes.Places.Farm
 			if (player.isBiped() || player.isTaur()) outputText(" Next, she pushes your ankles apart, threads a leather strap around each and then pulls them tight with a sharp yank; you carefully test them and find with a cold thrill that there is a metal bar attached between them, forcing you to stay in this position.");
 			else if (player.isDrider()) outputText(" You don’t struggle as she then forces your spindly legs beneath the bed, looping a leather strap attached to the frame around them all, trapping them there.");
 			else if (player.isNaga()) outputText(" She then ties your reptilian coils around the bedposts, securing them with leather straps fitted for the purpose.");
-			else trace("Couldn't determine body type, welp.");
+			else outputText("<b>SOMETHING DERPED UP!</b>");// trace("Couldn't determine body type, welp.");
 
 			outputText("\n\nIn a position of complete supplication, your face and [chest] forced down into the bed, you look up in trepidation as your monstrously skilled slave mistress shifts around to your front end. She’s smiling her fanged smile down at you as she dangles the last two items she retrieved from her dressing table.");
 

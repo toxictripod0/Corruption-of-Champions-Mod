@@ -1302,7 +1302,6 @@ public function shouldersWarnings():Boolean {
 	//7 days (168 hours) since last Shouldra scene
 	else if (flags[kFLAGS.SHOULDRA_SLEEP_TIMER] == -168) {
 		spriteSelect(SpriteDb.s_ghostGirl2);
-		trace("LEVEL 2 LUST INCREASE HAPPEN");
 		//increased minimum lust +20 until Shouldra is satisfied
 		if (rand(3) == 0) {
 			outputText("\nYour [if (hasCock = true) dick is beginning to get hard][if (isHerm = true)  while your ][if (hasVagina = true) cunt is getting moist with need]");

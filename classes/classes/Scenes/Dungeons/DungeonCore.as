@@ -298,7 +298,7 @@ package classes.Scenes.Dungeons
 		
 		public function move(roomName:String, timeToPass:Number = 0):void
 		{
-			trace("Entering room", roomName);
+			//trace("Entering room", roomName);
 			cheatTime(timeToPass);
 			clearOutput();
 			

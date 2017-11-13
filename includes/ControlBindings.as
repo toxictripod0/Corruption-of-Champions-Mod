@@ -343,9 +343,9 @@ inputManager.AddBindableControl(
 		"History",
 		"Show text history",
 		function():void {
-			if (flags[kFLAGS.SHIFT_KEY_DOWN]) {
+			/*if (flags[kFLAGS.SHIFT_KEY_DOWN]) {
 				trace(kGAMECLASS.mainViewManager.traceSelf());
-			}
+			}*/
 			kGAMECLASS.output.showHistory();
 		});
 

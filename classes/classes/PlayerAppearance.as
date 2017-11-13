@@ -1278,7 +1278,7 @@ package classes
 					if (player.cocks[cock_index].sock != "" && player.cocks[cock_index].sock != null){
 						// I dunno what was happening, but it looks like .sock is null, as it doesn't exist. I guess this is probably more left over from some of the restucturing.
 						// Anyways, check against null values, and stuff works again.
-						trace("Found a sock description (WTF even is a sock?)", player.cocks[cock_index].sock);
+						//trace("Found a sock description (WTF even is a sock?)", player.cocks[cock_index].sock);
 						sockDescript(cock_index);
 					}
 					outputText("\n");

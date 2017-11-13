@@ -542,38 +542,21 @@ package classes
 		//------------
 		public function fontSettingsMenu():void {
 			menu();
-			addButton(0, "Smaller Font", decFontSize);
-			addButton(1, "Larger Font", incFontSize);
+			addButton(0, "Smaller Font", adjustFontSize, -1);
+			addButton(1, "Larger Font", adjustFontSize, 1);
 			addButton(2, "Reset Size", resetFontSize);
 			addButton(4, "Back", settingsScreenMain);
 		}
 
-		public function incFontSize():void
-		{
+		public function adjustFontSize(change:int):void {
 			var fmt:TextFormat = mainView.mainText.getTextFormat();
 
 			if (fmt.size == null) fmt.size = 20;
 
-			fmt.size = (fmt.size as Number) + 1;
-
-			if ((fmt.size as Number) > 32) fmt.size = 32;
-
-			trace("Font size set to: " + (fmt.size as Number));
-			mainView.mainText.setTextFormat(fmt);
-			flags[kFLAGS.CUSTOM_FONT_SIZE] = fmt.size;
-		}
-
-		public function decFontSize():void
-		{
-			var fmt:TextFormat = mainView.mainText.getTextFormat();
-
-			if (fmt.size == null) fmt.size = 20;
-
-			fmt.size = (fmt.size as Number) - 1;
+			fmt.size = (fmt.size as Number) + change;
 
 			if ((fmt.size as Number) < 14) fmt.size = 14;
-
-			trace("Font size set to: " + (fmt.size as Number));
+			if ((fmt.size as Number) > 32) fmt.size = 32;
 			mainView.mainText.setTextFormat(fmt);
 			flags[kFLAGS.CUSTOM_FONT_SIZE] = fmt.size;
 		}

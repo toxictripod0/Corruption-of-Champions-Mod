@@ -67,7 +67,6 @@ package classes.Scenes.NPCs{
 			var needNext:Boolean = false;
 			checkedExgartuan = 0; //Make sure we test just once in timeChangeLarge
 			if (player.hasStatusEffect(StatusEffects.Exgartuan)) { //Update Exgartuan stuff
-				trace("EXGARTUAN V1: " + player.statusEffectv1(StatusEffects.Exgartuan) + " V2: " + player.statusEffectv2(StatusEffects.Exgartuan));
 				if (player.statusEffectv1(StatusEffects.Exgartuan) == 1 && (!player.hasCock() || player.cockArea(0) < 100)) { //If too small dick, remove him
 					outputText("\n<b>You suddenly feel the urge to urinate, and stop over by some bushes.  It takes wayyyy longer than normal, and once you've finished, you realize you're alone with yourself for the first time in a long time.  Perhaps you got too small for Exgartuan to handle?</b>\n");
 					awardAchievement("Urine Trouble", kACHIEVEMENTS.GENERAL_URINE_TROUBLE, true, false, true);

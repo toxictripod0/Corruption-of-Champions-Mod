@@ -191,7 +191,7 @@ package classes.Scenes.Dungeons.DeepCave
 
 		public function ImpHorde()
 		{
-			trace("ImpHorde Constructor!");
+			//trace("ImpHorde Constructor!");
 			this.a = "the ";
 			this.short = "imp horde";
 			this.imageName = "impmob";

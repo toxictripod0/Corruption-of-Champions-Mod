@@ -69,7 +69,7 @@
 			var needNext:Boolean = false;
 			drainedByKath = false; //This var will only be set true after Kath licks Urta out - it stops you from going back immediately for more Urta sex
 			pregnancy.pregnancyAdvance();
-			trace("\nUrta time change: Time is " + model.time.hours + ", incubation: " + pregnancy.incubation + ", event: " + pregnancy.event);
+			//trace("\nUrta time change: Time is " + model.time.hours + ", incubation: " + pregnancy.incubation + ", event: " + pregnancy.event);
 			if (flags[kFLAGS.NEED_URTA_LETTER] == 1 && model.time.hours == 6) urtaPregs.getUrtaLetter(); //Urta Letters
 			if (pregnancy.incubation == 0 && (pregnancy.type == PregnancyStore.PREGNANCY_BEE_EGGS || PregnancyStore.PREGNANCY_DRIDER_EGGS)) {
 				pregnancy.knockUpForce(); //Silently clear Urta's egg pregnancy
@@ -266,8 +266,7 @@ public function urtaBarDescript():Boolean {
 		else outputText("Her half-hard horse-cock is plainly visible to anyone who spares her a glance, barely contained by a pair of tightly woven fishnet stockings.  She's looking at you and wiggling a finger your way...");
 		return true;
 	}
-	CoC_Settings.error("");
-	trace("URTA Error: Bar descript encountered unexpected scenario.");
+	CoC_Settings.error("URTA Error: Bar descript encountered unexpected scenario.");
 	return false;
 }
 

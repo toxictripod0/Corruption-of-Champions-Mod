@@ -580,7 +580,7 @@ public function barTelAdre():void {
 		//Scylla & The Furries Foursome
 		if (scylla.action == Scylla.SCYLLA_ACTION_FURRY_FOURSOME)
 		{
-			trace("SCYLLA ACTION: " + scylla.action);
+			//trace("SCYLLA ACTION: " + scylla.action);
 			outputText("\n\nScylla’s spot in the bar is noticeably empty. She’s usually around at this time of day, isn’t she? Urta grabs your attention with a whistle and points to a back room with an accompanying wink. Oh... that makes sense. Surely the nun won’t mind a little help with her feeding...");
 			button = anotherButton(button,"Back Room",scylla.openTheDoorToFoursomeWivScyllaAndFurries);
 		}

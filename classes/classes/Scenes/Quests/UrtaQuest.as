@@ -201,7 +201,7 @@ private function resetToPC():void {
 public function startUrtaQuest():void {
 	showStats();
 	clearOutput();
-	trace("Cloning PC's items")
+	//trace("Cloning PC's items")
 	// *SERIALIZE* out the players current Player object + items
 	urtaQItems1 = player.itemSlot1;
 	urtaQItems2 = player.itemSlot2;
@@ -1168,9 +1168,7 @@ private function urtaComboAttack():void {
 		player.createStatusEffect(StatusEffects.Attacks,3,0,0,0);
 	else {
 		player.addStatusValue(StatusEffects.Attacks,1,-1);
-		trace("DECREMENDED ATTACKS");
 		if (player.statusEffectv1(StatusEffects.Attacks) <= 1) {
-			trace("REMOVED ATTACKS");
 			player.removeStatusEffect(StatusEffects.Attacks);
 		}
 	}
@@ -1259,11 +1257,9 @@ private function urtaComboAttack():void {
 	//Kick back to main if no damage occured!
 	if (monster.HP >= 1 && monster.lust <= 99) {
 		if (player.hasStatusEffect(StatusEffects.Attacks)) {
-			trace("MORE ATTACK");
 			urtaComboAttack();
 			return;
 		}
-		trace("DONE ATTACK");
 		outputText("\n");
 		monster.doAI();
 	}

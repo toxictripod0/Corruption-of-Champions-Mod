@@ -153,10 +153,6 @@
 				virgin = false;
 			}
 			
-			if (stretched) {
-				trace("CUNT STRETCHED TO " + (vaginalLooseness) + ".");
-			}
-			
 			return stretched;
 		}
 		

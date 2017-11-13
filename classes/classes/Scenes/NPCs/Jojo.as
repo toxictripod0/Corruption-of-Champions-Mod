@@ -60,7 +60,7 @@ if (lust >= maxLust()) {
 		
 		public function Jojo()
 		{
-			trace("Jojo Constructor!");
+			//trace("Jojo Constructor!");
 			this.a = "";
 			this.short = "Jojo";
 			this.imageName = "jojo";

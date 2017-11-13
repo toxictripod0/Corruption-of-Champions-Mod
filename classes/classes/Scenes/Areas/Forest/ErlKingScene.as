@@ -47,10 +47,10 @@ public class ErlKingScene extends BaseContent implements Encounter
 
 		public function playerHuntScore():int
 		{
-			trace("Calculating Wild Hunt score.");
-			trace("Int + Spd = " + String(player.inte + player.spe));
+			//trace("Calculating Wild Hunt score.");
+			//trace("Int + Spd = " + String(player.inte + player.spe));
 			var baseVal:int = (player.inte + player.spe) - (player.fatigue - player.maxFatigue() + 100) * 2;
-			trace("Base = " + baseVal);
+			//trace("Base = " + baseVal);
 
 			/*
 			Conditional modifiers: +20 for Evade
@@ -71,92 +71,92 @@ public class ErlKingScene extends BaseContent implements Encounter
 			if (player.findPerk(PerkLib.Evade) >= 0)
 			{
 				baseVal += 20;
-				trace("+20 for Evade");
+				//trace("+20 for Evade");
 			}
 			if (player.findPerk(PerkLib.Runner) >= 0)
 			{
 				baseVal += 20;
-				trace("+20 for Runner");
+				//trace("+20 for Runner");
 			}
 			if (player.hasPerk(PerkLib.Unhindered) && (player.armor == classes.Items.ArmorLib.NOTHING || player.armor.perk == "Adornment"))
 			{
 				baseVal += 20;
-				trace("+20 for Unhindered");
+				//trace("+20 for Unhindered");
 			}
 			if (player.isDrider())
 			{
 				baseVal += 20;
-				trace("+20 for Drider");
+				//trace("+20 for Drider");
 			}
 			if (player.findPerk(PerkLib.CorruptedNinetails) >= 0)
 			{
 				baseVal += 30;
-				trace("+30 For Ninetails");
+				//trace("+30 For Ninetails");
 			}
 			if (player.findPerk(PerkLib.EnlightenedNinetails) >= 0)
 			{
 				baseVal += 30;
-				trace("+30 for Ninetails");
+				//trace("+30 for Ninetails");
 			}
 
 			// Akbal Blessings
 			if (player.findPerk(PerkLib.FireLord) >= 0)
 			{
 				baseVal += 10;
-				trace("+10 for Firelord");
+				//trace("+10 for Firelord");
 			}
 			if (player.findPerk(PerkLib.Whispered) >= 0)
 			{
 				baseVal += 10;
-				trace("+10 for Whispered");
+				//trace("+10 for Whispered");
 			}
 
 			if (player.findPerk(PerkLib.Fast) >= 0)
 			{
 				baseVal += 10;
-				trace("+10 for Fast");
+				//trace("+10 for Fast");
 			}
 			if (player.findPerk(PerkLib.Incorporeality) >= 0)
 			{
 				baseVal += 10;
-				trace("+10 for Incorporeal");
+				//trace("+10 for Incorporeal");
 			}
 			if (player.canFly())
 			{
 				baseVal += 10;
-				trace("+10 for Flight");
+				//trace("+10 for Flight");
 			}
 
 			// Heavy penalty for prey features. The penalty is applied PER FEATURE.
 			if (player.kitsuneScore() > 0)
 			{
 				baseVal -= (player.kitsuneScore() * 20);
-				trace("-20 for each Kitsune part (-" + String(player.kitsuneScore() * 20) + ")");
+				//trace("-20 for each Kitsune part (-" + String(player.kitsuneScore() * 20) + ")");
 			}
 			if (player.bunnyScore() > 0) 							
 			{
 				baseVal -= (player.bunnyScore() * 20);
-				trace("-20 for each Bunny part (-" + String(player.bunnyScore() * 20) + ")");
+				//trace("-20 for each Bunny part (-" + String(player.bunnyScore() * 20) + ")");
 			}
 			if (player.harpyScore() > 0)
 			{
 				baseVal -= (player.harpyScore() * 20);
-				trace("-20 for each Harpy part (-" + String(player.harpyScore() * 20) + ")");
+				//trace("-20 for each Harpy part (-" + String(player.harpyScore() * 20) + ")");
 			}
 			if (player.gooScore() > 0)
 			{
 				baseVal -= (player.gooScore() * 10);
-				trace("-10 for each Goo part (-" + String(player.gooScore() * 10) + ")");
+				//trace("-10 for each Goo part (-" + String(player.gooScore() * 10) + ")");
 			}
 
 			if (player.isTaur())
 			{
 				baseVal -= 10
-				trace("-10 for Taur");
+				//trace("-10 for Taur");
 			}
 
 			if (baseVal < 0) baseVal = 0;
-			trace("Wild Hunt Points = " + baseVal);
+			//if (debug) outputText("DEBUG: Wild Hunt Points = " + baseVal);
 			
 			return baseVal;
 		}

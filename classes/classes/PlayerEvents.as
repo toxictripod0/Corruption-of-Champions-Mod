@@ -341,7 +341,7 @@ package classes {
 			}
 			if (flags[kFLAGS.DICK_EGG_INCUBATION] > 0) {
 				flags[kFLAGS.DICK_EGG_INCUBATION]--;
-				trace("DICK BIRTH TIMER: " + flags[kFLAGS.DICK_EGG_INCUBATION]);
+				//trace("DICK BIRTH TIMER: " + flags[kFLAGS.DICK_EGG_INCUBATION]);
 				if (flags[kFLAGS.DICK_EGG_INCUBATION] == 1) {
 					getGame().masturbation.birthBeeEggsOutYourWang();
 					needNext = true;
@@ -442,7 +442,7 @@ package classes {
 			}
 			
 			if (player.inRut) { //Rut v1 is bonus cum, v2 is bonus libido, v3 is hours till it's gone
-				trace("RUT:" + player.statusEffectv3(StatusEffects.Rut));
+				//trace("RUT:" + player.statusEffectv3(StatusEffects.Rut));
 				if (player.statusEffectv3(StatusEffects.Rut) <= 1 || player.totalCocks() == 0) { //Remove bonus libido from rut
 					getGame().dynStats("lib", -player.statusEffectv2(StatusEffects.Rut), "scale", false);
 					player.removeStatusEffect(StatusEffects.Rut); //remove heat

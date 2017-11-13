@@ -317,13 +317,13 @@
 				while(player.cocks.length > 0)
 				{
 					player.removeCock(0,1);
-					trace("1 cock purged.");
+					//trace("1 cock purged.");
 				}
 				//Clear vaginas
 				while(player.vaginas.length > 0)
 				{
 					player.removeVagina(0,1);
-					trace("1 vagina purged.");
+					//trace("1 vagina purged.");
 				}
 				//Clear breasts
 				player.breastRows = new Vector.<BreastRowClass>();
@@ -342,13 +342,13 @@
 				while(player.cocks.length > 0)
 				{
 					player.removeCock(0,1);
-					trace("1 cock purged.");
+					//trace("1 cock purged.");
 				}
 				//Clear vaginas
 				while(player.vaginas.length > 0)
 				{
 					player.removeVagina(0,1);
-					trace("1 vagina purged.");
+					//trace("1 vagina purged.");
 				}
 				//Keep gender and normalize genitals.
 				if (hadOldCock) player.createCock(5.5, 1, CockTypesEnum.HUMAN);

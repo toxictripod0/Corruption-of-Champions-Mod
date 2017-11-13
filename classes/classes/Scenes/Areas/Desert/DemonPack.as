@@ -92,7 +92,7 @@ package classes.Scenes.Areas.Desert
 
 		public function DemonPack()
 		{
-			trace("DemonPack Constructor!");
+			//trace("DemonPack Constructor!");
 			this.a = "the ";
 			this.short = "demons";
 			this.imageName = "demonmob";

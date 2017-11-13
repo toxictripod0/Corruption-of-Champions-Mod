@@ -3913,16 +3913,9 @@ package classes.Scenes.Places.Prison
 			}
 			switch(player.statusEffectv1(StatusEffects.PrisonCaptorEllyQuest))
 			{
-				case 1:
-					trace("CHECKING FUCK QUEST " + player.statusEffectv3(StatusEffects.PrisonCaptorEllyQuest) + "");
-					if (player.statusEffectv3(StatusEffects.PrisonCaptorEllyQuest) >= 5)
-					{
-						trace("\nQUEST COMPLETE\n");
-						return true;
-					}
-					trace("\nQUEST INCOMPLETE\n");
-					return false;
-				default:
+				case 1: //The quest to get raped.
+					return (player.statusEffectv3(StatusEffects.PrisonCaptorEllyQuest) >= 5)
+				default: //No quest.
 					return false;
 			}
 		}

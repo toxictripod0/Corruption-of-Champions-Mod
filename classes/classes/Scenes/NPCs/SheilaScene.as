@@ -91,7 +91,7 @@
 			if (model.time.hours > 23) {
 				if (flags[kFLAGS.SHEILA_CLOCK] < 0) flags[kFLAGS.SHEILA_CLOCK]++;
 			}
-			trace("\nShiela time change: Time is " + model.time.hours + ", incubation: " + pregnancy.incubation);
+			//trace("\nShiela time change: Time is " + model.time.hours + ", incubation: " + pregnancy.incubation);
 			return false;
 		}
 	
@@ -178,8 +178,8 @@ internal function sheilaCup():String {
 }
 
 public function sheilaEncounterRouter():void {
-	trace("Sheila Encounter:");
-	trace("Sheila Corruption: " + Math.round(sheilaCorruption() * 10)/10 + " Sheila Preg: " + flags[kFLAGS.SHEILA_PREGNANCY_INCUBATION] + " Sheila XP: " + flags[kFLAGS.SHEILA_XP]);
+	//trace("Sheila Encounter:");
+	//trace("Sheila Corruption: " + Math.round(sheilaCorruption() * 10)/10 + " Sheila Preg: " + flags[kFLAGS.SHEILA_PREGNANCY_INCUBATION] + " Sheila XP: " + flags[kFLAGS.SHEILA_XP]);
 	//UNFUCK FLAGS
 	if (flags[kFLAGS.SHEILA_CLOCK] > 0)
 		flags[kFLAGS.SHEILA_CLOCK] = 0

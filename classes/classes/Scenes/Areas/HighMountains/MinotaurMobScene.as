@@ -38,7 +38,6 @@ package classes.Scenes.Areas.HighMountains{
 			}
 			//NEXT KID!
 			if (flags[kFLAGS.MINOTAUR_SONS_PENDING] > 0 && flags[kFLAGS.MINOTAUR_SONS_GROWUP_COUNTER] == 0) {
-				trace("MINO KID GROWN");
 				flags[kFLAGS.MINOTAUR_SONS_GROWUP_COUNTER] = 30;
 			}
 			return false;

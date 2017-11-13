@@ -82,7 +82,7 @@ package classes.Scenes.NPCs
 
 		public function Marble()
 		{
-			trace("Marble Constructor!");
+			//trace("Marble Constructor!");
 			this.a = "";
 			this.short = "Marble";
 			this.imageName = "marble";

@@ -250,7 +250,7 @@ package classes.Items.Consumables
 
 					default:
 						// this should hopefully never happen
-						trace("Invalid Ember rearBody: " + emberRear);
+						// trace("Invalid Ember rearBody: " + emberRear);
 				}
 			}
 			// </mod>

@@ -871,7 +871,6 @@ package classes.Scenes.NPCs
 			//Preggers chance!
 			if (player.hasVagina() && player.totalFertility() >= rand(45) && player.pregnancyIncubation == 0) {
 				player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP - 32, 61); //Ceraph causes faster pregnancies
-				trace("PC KNOCKED UP WITH CERAPH IMPS");
 			}
 			doNext(camp.returnToCampUseOneHour);
 		}

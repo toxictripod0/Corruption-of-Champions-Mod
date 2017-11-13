@@ -315,8 +315,7 @@ private function maleRapesOoze():void {
 				break;
 		   default: //error text
 				outputText("tip");
-				CoC_Settings.error("");
-				trace("ERROR: Penis type not supported, defaulting to tip.");
+				CoC_Settings.error("ERROR: Penis type not supported, defaulting to tip.");
 				break;
 		}
 		outputText(" on the inside of its mouth and pushing.  You feel the material give and push harder, the membrane material that covers the slime's exterior stubbornly refusing to give.  Finally, after some frustration, you grab the creature by what would be its neck and try to pull it back to your pelvis, thrusting forward at the same time.  It finally gives, and you see your " + player.cockDescript(0) + " surge into its mouth");

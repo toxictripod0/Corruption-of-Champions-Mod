@@ -181,7 +181,6 @@ package classes.Scenes.Dungeons.DeepCave
 			player.changeFatigue(5,0);
 			if (player.cockTotal() > 0) {
 				var x:Number = player.cockThatFits(60);
-				trace("X IS MOTHERFUCKER: " + x);
 				//(small-to-medium girth dicks) 
 				if (x >= 0) {
 					outputText("Vala's pussy surrounds you like a quivering mouth, but she's simply too used for you to get much friction. The fairy barely even notices, grinding her front against you, tits rubbing your chest like a liquid massage, cream leaking down your torso. She hooks her legs around your " + player.buttDescript() + " and, using her wings, lifts up before dropping down again. Although she's too loose for your preference, the girl seems to be getting off just fine by using your " + player.cockDescript(x) + " as a fucking post. You spot the wooden rack to one side of the room and the variety of carved dildos worked into the pegging ladder. A wicked thought crosses your mind, but lacking any other options, you guess you could at least give it a try. Pulling the fairy over to the lacquered bench, you choose one that seems like a likely fit and position your " + player.assholeOrPussy() + " over the carved cock. When the fairy drops herself onto you next, she forces you down with her, penetrating you on the peg. It proves to be a bit thicker than you realized, however, and you gasp at the weight that settles into your gut. You try to get up and select a smaller peg, but the fairy's jack-hammering flight keeps you rooted on the post. Your " + player.cockDescript(x) + " swells from the stimulation your ");

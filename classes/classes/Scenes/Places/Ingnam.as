@@ -25,8 +25,6 @@ package classes.Scenes.Places
 			//Force autosave
 			if (player.slotName != "VOID" && mainView.getButtonText(0) != "Game Over" && flags[kFLAGS.HARDCORE_MODE] > 0) 
 			{
-				trace("Autosaving to slot: " + player.slotName);
-				
 				getGame().saves.saveGame(player.slotName);
 			}
 			//Banished to Mareth.

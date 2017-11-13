@@ -73,7 +73,7 @@ package classes.Scenes.NPCs
 		{
 			var needNext:Boolean = false;
 			pregnancy.pregnancyAdvance();
-			trace("\nEmber time change: Time is " + model.time.hours + ", incubation: " + pregnancy.incubation + ", event: " + pregnancy.event);
+			//trace("\nEmber time change: Time is " + model.time.hours + ", incubation: " + pregnancy.incubation + ", event: " + pregnancy.event);
 			if (pregnancy.isPregnant) {
 				if (emberPregUpdate()) needNext = true;
 				if (pregnancy.incubation == 0) {

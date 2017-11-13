@@ -481,7 +481,6 @@ public function workFarm():void {
 		//-Bulbous Pepper (+ball size or fresh balls)
 		if (temp == 4) itype = consumables.BULBYPP;
 	}
-	trace("FARM SHIT: " + itype.shortName);
 	inventory.takeItem(itype, camp.returnToCampUseTwoHours);
 }
 

@@ -1073,7 +1073,7 @@ import mx.logging.ILogger;
 		{
 			var counter:int = findPerk(ptype);
 			if (counter < 0) {
-				trace("ERROR? Looking for perk '" + ptype + "' to change value " + valueIdx + ", and player does not have the perk.");
+				CoC_Settings.error("ERROR? Looking for perk '" + ptype + "' to change value " + valueIdx + ", and player does not have the perk.");
 				return;
 			}
 			if (valueIdx < 1 || valueIdx > 4) {
@@ -1095,7 +1095,7 @@ import mx.logging.ILogger;
 			var counter:Number = findPerk(ptype);
 			//Various Errors preventing action
 			if (counter < 0) {
-				trace("ERROR? Looking for perk '" + ptype + "' to change value " + valueIdx + ", and player does not have the perk.");
+				CoC_Settings.error("ERROR? Looking for perk '" + ptype + "' to change value " + valueIdx + ", and player does not have the perk.");
 				return;
 			}
 			if (valueIdx < 1 || valueIdx > 4)
@@ -1140,7 +1140,7 @@ import mx.logging.ILogger;
 		var counter:Number = findPerk(ptype);
 		if (counter < 0)
 		{
-			trace("ERROR? Looking for perk '" + ptype + "', but player does not have it.");
+			CoC_Settings.error("ERROR? Looking for perk '" + ptype + "', but player does not have it.");
 			return 0;
 		}
 		return perk(counter).value3;
@@ -1320,7 +1320,7 @@ import mx.logging.ILogger;
 					return (createOrFindStatusEffect(StatusEffects.GenericCombatInteBuff)
 							as CombatInteBuff).applyEffect(buff);
 			}
-			trace("/!\\ ERROR: addCombatBuff('"+stat+"', "+buff+")");
+			CoC_Settings.error("/!\\ ERROR: addCombatBuff('"+stat+"', "+buff+")");
 			return 0;
 		}
 		/*
@@ -1675,7 +1675,7 @@ import mx.logging.ILogger;
 							}
 						}
 						if (index >= 0 && index == index2)
-							trace("FUCK ERROR COCKTHATFITS2 SHIT IS BROKED!");
+							CoC_Settings.error("FUCK ERROR COCKTHATFITS2 SHIT IS BROKED!");
 					}
 					//Store the index of fitting dick
 					else
@@ -2744,7 +2744,7 @@ import mx.logging.ILogger;
 					}
 					catch (e:Error)
 					{
-						trace("Argument error in Creature[" + this._short + "]: " + e.message);
+						CoC_Settings.error("Argument error in Creature[" + this._short + "]: " + e.message);
 					}
 					//trace("Attempted to remove " + totalRemoved + " cocks.");
 				}

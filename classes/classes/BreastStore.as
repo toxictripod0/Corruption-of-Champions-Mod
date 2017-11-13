@@ -34,7 +34,7 @@ package classes
 
 		public function BreastStore(breastFlag:int) {
 			_breastFlag = breastFlag;
-			if (_breastFlag < 1 || _breastFlag > MAX_FLAG_VALUE) trace("Error: BreastStore created with invalid flag value. BreastStore(" + breastFlag + ")");
+			if (_breastFlag < 1 || _breastFlag > MAX_FLAG_VALUE) CoC_Settings.error("Error: BreastStore created with invalid flag value. BreastStore(" + breastFlag + ")");
 		}
 
 		//Implementation of SaveAwareInterface

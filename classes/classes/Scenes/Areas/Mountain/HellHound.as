@@ -105,7 +105,7 @@ package classes.Scenes.Areas.Mountain
 		public function HellHound(noInit:Boolean=false)
 		{
 			if (noInit) return;
-			trace("HellHound Constructor!");
+			//trace("HellHound Constructor!");
 			this.a = "the ";
 			this.short = "hellhound";
 			this.imageName = "hellhound";

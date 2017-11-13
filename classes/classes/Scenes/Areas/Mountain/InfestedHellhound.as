@@ -100,7 +100,7 @@ package classes.Scenes.Areas.Mountain
 		public function InfestedHellhound()
 		{
 			super(true);
-			trace("InfestedHellhound Constructor!");
+			//trace("InfestedHellhound Constructor!");
 			this.a = "the ";
 			this.short = "infested hellhound";
 			this.imageName = "infestedhellhound";

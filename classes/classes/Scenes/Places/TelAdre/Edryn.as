@@ -26,7 +26,7 @@ package classes.Scenes.Places.TelAdre {
 		public function timeChange():Boolean
 		{
 			pregnancy.pregnancyAdvance();
-			trace("\nEdryn time change: Time is " + model.time.hours + ", incubation: " + pregnancy.incubation + ", event: " + pregnancy.event);
+			//trace("\nEdryn time change: Time is " + model.time.hours + ", incubation: " + pregnancy.incubation + ", event: " + pregnancy.event);
 			if (pregnancy.isPregnant && flags[kFLAGS.EDRYN_PREGNANT_AND_NOT_TOLD_PC_YET] == 0 && pregnancy.type != PregnancyStore.PREGNANCY_TAOTH) {
 				flags[kFLAGS.EDRYN_PREGNANCY_INCUBATION]++; //Pregnancy on hold until the PC discovers it
 			}
@@ -1028,13 +1028,9 @@ private function edrynPregChance():void {
 	temp = player.cumQ()/500;
 	if (temp > 5) temp = 5;
 	temp += player.virilityQ() * 200;
-
-	trace("Edryn Preg Check Virility Score: " + temp);
 	if (player.cumQ() > 250 && temp >= rand(100)) {
 		preg = true;
-		trace("Edryn knocked up!");
 	}
-	else trace("Edryn not knocked up!");
 	if (preg) {
 		pregnancy.knockUpForce(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.INCUBATION_CENTAUR + 80);
 		flags[kFLAGS.EDRYN_PREGNANT_AND_NOT_TOLD_PC_YET] = 0;

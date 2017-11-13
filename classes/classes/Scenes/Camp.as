@@ -71,8 +71,6 @@ private function doCamp():void { //Only called by playerMenu
 	//Force autosave on HARDCORE MODE! And level-up.
 	if (player.slotName != "VOID" && mainView.getButtonText(0) != "Game Over" && flags[kFLAGS.HARDCORE_MODE] > 0) 
 	{
-		trace("Autosaving to slot: " + player.slotName);
-		
 		getGame().saves.saveGame(player.slotName);
 	}
 	//make sure gameState is cleared if coming from combat or giacomo
@@ -1788,8 +1786,6 @@ public function doSleep(clrScreen:Boolean = true):void {
 		//Autosave stuff		
 		if (player.slotName != "VOID" && player.autoSave && mainView.getButtonText( 0 ) != "Game Over") 
 		{
-			trace("Autosaving to slot: " + player.slotName);
-			
 			getGame().saves.saveGame(player.slotName);
 		}
 		//Clear screen
@@ -2228,7 +2224,6 @@ private function exgartuanCampUpdate():void {
 	//Update Exgartuan stuff
 	if (player.hasStatusEffect(StatusEffects.Exgartuan))
 	{
-		trace("EXGARTUAN V1: " + player.statusEffectv1(StatusEffects.Exgartuan) + " V2: " + player.statusEffectv2(StatusEffects.Exgartuan));
 		//if too small dick, remove him
 		if (player.statusEffectv1(StatusEffects.Exgartuan) == 1 && (player.cockArea(0) < 100 || player.cocks.length == 0))
 		{
@@ -2256,7 +2251,6 @@ private function exgartuanCampUpdate():void {
 public function wakeFromBadEnd():void {
 	clearOutput();
 	outputText(images.showImage("camp-nightmare"));
-	trace("Escaping bad end!");
 	outputText("No, it can't be.  It's all just a dream!  You've got to wake up!");
 	outputText("\n\nYou wake up and scream.  You pull out a mirror and take a look at yourself.  Yep, you look normal again.  That was the craziest dream you ever had.");
 	if (flags[kFLAGS.TIMES_BAD_ENDED] >= 2) { //FOURTH WALL BREAKER
@@ -2880,7 +2874,6 @@ private function updateSaveFlags():void {
 			trace(flags[startNewIds + current])
 			flags[startOldIds + current] = 0;
 		}
-		else trace("Skipped")
 		current++;
 	}
 	if (player.ass.analLooseness > 0 && flags[kFLAGS.TIMES_ORGASMED] <= 0) flags[kFLAGS.TIMES_ORGASMED] = 1;

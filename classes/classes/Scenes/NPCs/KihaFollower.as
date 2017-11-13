@@ -23,7 +23,7 @@
 		{
 			var needNext:Boolean = false;
 			pregnancy.pregnancyAdvance();
-			trace("\Kiha time change: Time is " + model.time.hours + ", incubation: " + pregnancy.incubation + ", event: " + pregnancy.event);
+			//trace("\Kiha time change: Time is " + model.time.hours + ", incubation: " + pregnancy.incubation + ", event: " + pregnancy.event);
 			if (pregnancy.isPregnant) {
 				if (kihaPregUpdate()) needNext = true;
 				if (pregnancy.incubation == 0) {
@@ -131,7 +131,6 @@ public function kihaKnockUpAttempt():void {
 	//Roll
 	if (rand(100) <= chance) {
 		if (debug) outputText("\n\n<b>DEBUG: Kiha is impregnated.</b>");
-		trace("Kiha got PREGNANT!");
 		pregnancy.knockUpForce(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.INCUBATION_KIHA);
 	}
 }

@@ -102,7 +102,7 @@ package classes.Scenes.Areas.Forest
 
 		public function TentacleBeast()
 		{
-			trace("TentacleBeast Constructor!");
+			//trace("TentacleBeast Constructor!");
 			this.a = "the ";
 			this.short = "tentacle beast";
 			this.imageName = "tentaclebeast";

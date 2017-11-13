@@ -56,7 +56,7 @@ This license supercedes all previous licenses and remains in force.
 */
 
 public function encounter():void {
-	trace("Tentacle event here");
+	//trace("Tentacle event here");
 	clearOutput();
 	spriteSelect(SpriteDb.s_tentacleMonster);
 	//Tentacle Encounter - beware legalese!

@@ -68,7 +68,7 @@ package classes.Scenes.Areas.HighMountains {
 		{
 			var needNext:Boolean = false;
 			pregnancy.pregnancyAdvance();
-			trace("\nMinerva time change: Time is " + model.time.hours + ", incubation: " + pregnancy.incubation + ", event: " + pregnancy.event);
+			//trace("\nMinerva time change: Time is " + model.time.hours + ", incubation: " + pregnancy.incubation + ", event: " + pregnancy.event);
 			if (pregnancy.incubation == 0 && pregnancy.type == PregnancyStore.PREGNANCY_PLAYER) {
 				minervaPurification.minervaGivesBirth();
 				needNext = true;
@@ -92,7 +92,6 @@ package classes.Scenes.Areas.HighMountains {
 			if (chance < 10) chance = 10;
 			if (chance > 80) chance = 80;
 			if (rand(100) < chance && !pregnancy.isPregnant) {
-				trace("Minerva got PREGNANT!");
 				pregnancy.knockUpForce(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.INCUBATION_MINERVA);
 			}
 		}
@@ -456,7 +455,7 @@ private function minervaTalkSelect(bath:Boolean = true):void {
 		choices[choices.length] = talkingToMinervaAboutBackstory;
 	}
 	//Force start if the flag is right.
-	trace(flags[kFLAGS.MINERVA_PURIFICATION_PROGRESS]);
+	//trace(flags[kFLAGS.MINERVA_PURIFICATION_PROGRESS]);
 	if (flags[kFLAGS.MINERVA_PURIFICATION_PROGRESS] == 1) {
 		minervaPurification.startPurification();
 		return;

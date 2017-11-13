@@ -2860,7 +2860,6 @@ package classes.Scenes {
 			dynStats("sen", -2);
 			doNext(camp.returnToCampUseOneHour);
 			player.addKeyValue("Centaur Pole", 1, 1);
-			trace("Times Ridden Pole" + player.keyItemv1("Centaur Pole"));
 		}
 		
 		//Self/Exgartuan

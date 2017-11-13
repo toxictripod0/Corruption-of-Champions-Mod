@@ -80,7 +80,7 @@ import classes.internals.*;
 		public function Naga(noInit:Boolean = false)
 		{
 			if (noInit) return;
-			trace("Naga Constructor!");
+			//trace("Naga Constructor!");
 			this.a = "the ";
 			this.short = "naga";
 			this.imageName = "naga";

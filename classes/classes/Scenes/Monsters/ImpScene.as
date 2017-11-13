@@ -2126,8 +2126,6 @@ package classes.Scenes.Monsters
 			if (player.str < 90) timeToReturn++;
 			if (player.str < 70) timeToReturn++;
 			if (player.str < 40) timeToReturn++;
-			trace("player.str:", player.str);
-			trace("timeToReturn:", timeToReturn);
 
 			var timeText:String = "";
 			timeText = timeToReturn > 1 ? num2Text(timeToReturn) + " hours" : "hour";

@@ -74,7 +74,7 @@ package classes.Scenes.Monsters
 		public function Imp(noInit:Boolean=false)
 		{
 			if (noInit) return;
-			trace("Imp Constructor!");
+			//trace("Imp Constructor!");
 			this.a = "the ";
 			this.short = "imp";
 			this.imageName = "imp";

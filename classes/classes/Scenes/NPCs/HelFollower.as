@@ -59,7 +59,7 @@ public function helAffection(diff:Number = 0):Number {
 		else if (diff < 0) if (flags[kFLAGS.HEL_BONUS_POINTS] < 0) flags[kFLAGS.HEL_BONUS_POINTS] = 0;		
 	}
 	return flags[kFLAGS.HEL_AFFECTION_FOLLOWER];
-	trace("HEL AFFECTION" + flags[kFLAGS.HEL_AFFECTION_FOLLOWER]);
+	//trace("HEL AFFECTION" + flags[kFLAGS.HEL_AFFECTION_FOLLOWER]);
 }
 public function isHeliaBirthday():Boolean {
 	return date.month == 7;

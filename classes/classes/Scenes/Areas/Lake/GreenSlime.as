@@ -36,7 +36,7 @@
 		
 		public function GreenSlime()
 		{
-			trace("GreenSlime Constructor!");
+			//trace("GreenSlime Constructor!");
 			this.a = "a ";
 			this.short = "green slime";
 			this.imageName = "greenslime";

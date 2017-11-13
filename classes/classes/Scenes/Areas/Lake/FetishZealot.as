@@ -144,8 +144,7 @@ package classes.Scenes.Areas.Lake
 
 		public function FetishZealot()
 		{
-			trace("FetishZealot Constructor!");
-		
+			//trace("FetishZealot Constructor!");
 			this.a = "the ";
 			this.short = "fetish zealot";
 			this.imageName = "fetishzealot";

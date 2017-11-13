@@ -164,7 +164,7 @@ import classes.internals.WeightedDrop;
 
 		public function Akbal()
 		{
-			trace("Akbal Constructor!");
+			//trace("Akbal Constructor!");
 			this.a = "";
 			this.short = "Akbal";
 			this.imageName = "akbal";

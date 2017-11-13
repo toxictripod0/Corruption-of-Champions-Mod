@@ -292,7 +292,7 @@ package classes.Scenes.NPCs
 
 		public function Ceraph()
 		{
-			trace("Ceraph Constructor!");
+			//trace("Ceraph Constructor!");
 			this.a = "";
 			this.short = "Ceraph";
 			this.imageName = "ceraph";

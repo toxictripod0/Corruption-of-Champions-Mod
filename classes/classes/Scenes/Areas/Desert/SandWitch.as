@@ -54,7 +54,7 @@
 		
 		public function SandWitch()
 		{
-			trace("SandWitch Constructor!");
+			//trace("SandWitch Constructor!");
 			this.a = "the ";
 			if (game.silly()){
 				this.short = "sand witch";

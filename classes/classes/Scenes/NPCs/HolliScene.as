@@ -244,7 +244,6 @@ private function fertilizeHolli(cock:Boolean = true):void {
 	}
 	if (odds >= rand(101)) {
 		flags[kFLAGS.HOLLI_FRUIT] += 1 + rand(Math.floor(odds/10));
-		trace("Holli pregged!");
 	}
 }
 

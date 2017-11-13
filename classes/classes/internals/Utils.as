@@ -201,7 +201,7 @@ package classes.internals
 				} else continue;
 				try {
 					dest[dkey] = v;
-				} catch (e:*) {
+				} catch (e:Error) {
 					if (!ignoreErrors) throw e;
 					trace(e);
 				}

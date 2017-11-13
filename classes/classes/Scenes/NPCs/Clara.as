@@ -107,7 +107,7 @@ package classes.Scenes.NPCs
 			{
 				var actions:Array = [eAttack,claraDrugAttack,claraTeaseAttack,claraCastsBlind];
 				var action:int = rand(actions.length);
-				trace("ACTION SELECTED: " + action);
+				//trace("ACTION SELECTED: " + action);
 				actions[action]();
 			}
 			if (!player.hasStatusEffect(StatusEffects.ClaraCombatRounds)) player.createStatusEffect(StatusEffects.ClaraCombatRounds,1,0,0,0);
@@ -136,7 +136,7 @@ package classes.Scenes.NPCs
 
 		public function Clara()
 		{
-			trace("Clara Constructor!");
+			//trace("Clara Constructor!");
 			this.a = "";
 			this.short = "Clara";
 			this.imageName = "marble";
