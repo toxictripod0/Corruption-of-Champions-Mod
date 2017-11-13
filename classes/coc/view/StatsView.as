@@ -122,8 +122,8 @@ public class StatsView extends Block {
 		},{before:1});
 		addElement(hpBar = new StatBar({
 			statName: "HP:",
-			barColor: '#00ff00',
-			bgColor : '#ff0000',
+			barColor: '#00c000',
+			bgColor : '#c00000',
 			showMax : true
 		}));
 		addElement(lustBar = new StatBar({
