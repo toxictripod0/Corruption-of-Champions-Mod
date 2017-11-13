@@ -2438,7 +2438,7 @@ use namespace kGAMECLASS;
 					}
 					//Temp 3 tracks total amount grown
 					temp3 += amount;
-					trace("Breastrow chosen for growth: " + String(temp2) + ".");
+					//trace("Breastrow chosen for growth: " + String(temp2) + ".");
 					//Reuse temp to store growth amount for diminishing returns.
 					temp = amount;
 					if (!flags[kFLAGS.HYPER_HAPPY])
@@ -2477,7 +2477,7 @@ use namespace kGAMECLASS;
 					}
 
 					//Grow!
-					trace("Growing breasts by ", temp);
+					//trace("Growing breasts by ", temp);
 					breastRows[temp2].breastRating += temp;
 					rowsGrown--;
 				}
@@ -2509,7 +2509,7 @@ use namespace kGAMECLASS;
 				while(rowsGrown > 0) {
 					if (temp+1 > breastRows.length) temp = 0;
 					breastRows[temp].breastRating += amount;
-					trace("Breasts increased by " + amount + " on row " + temp);
+					//trace("Breasts increased by " + amount + " on row " + temp);
 					temp++;
 					temp3 += amount;
 					rowsGrown--;
@@ -2523,7 +2523,7 @@ use namespace kGAMECLASS;
 				}
 			}
 			//Breast Growth Finished...talk about changes.
-			trace("Growth amount = ", amount);
+			//trace("Growth amount = ", amount);
 			if (display) {
 				if (growthType < 3) {
 					if (amount <= 2)
@@ -3176,28 +3176,28 @@ use namespace kGAMECLASS;
 		}
 		public function modCumMultiplier(delta:Number):Number
 		{
-			trace("modCumMultiplier called with: " + delta);
+			//trace("modCumMultiplier called with: " + delta);
 		
 			if (delta == 0) {
-				trace( "Whoops! modCumMuliplier called with 0... aborting..." );
+				//trace( "Whoops! modCumMuliplier called with 0... aborting..." );
 				return delta;
 			}
 			else if (delta > 0) {
-				trace("and increasing");
+				//trace("and increasing");
 				if (hasPerk(PerkLib.MessyOrgasms)) {
-					trace("and MessyOrgasms found");
+					//trace("and MessyOrgasms found");
 					delta *= 1.5
 				}
 			}
 			else if (delta < 0) {
-				trace("and decreasing");
+				//trace("and decreasing");
 				if (hasPerk(PerkLib.MessyOrgasms)) {
-					trace("and MessyOrgasms found");
+					//trace("and MessyOrgasms found");
 					delta *= 0.5
 				}
 			}
 
-			trace("and modifying by " + delta);
+			//trace("and modifying by " + delta);
 			cumMultiplier += delta;
 			return delta;
 		}
@@ -3217,7 +3217,7 @@ use namespace kGAMECLASS;
 			var totalGrowth:Number = 0;
 			
 			for (var i:Number = 0; i < cocks.length; i++) {
-				trace( "increaseEachCock at: " + i);
+				//trace( "increaseEachCock at: " + i);
 				totalGrowth += increaseCock(i as Number, lengthDelta);
 			}
 			

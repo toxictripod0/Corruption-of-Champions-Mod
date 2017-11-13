@@ -171,7 +171,7 @@ package classes.internals
 							dkey = pd[1];
 							skey = pd[0];
 						}
-					} else trace("WARNING: incorrect copyObject property descriptor "+pd);
+					} 
 				} else if (pd is Object) {
 					if ("key" in pd) {
 						skey = dkey = pd.key;
@@ -179,7 +179,7 @@ package classes.internals
 						skey = pd.skey;
 						dkey = pd.dkey;
 					} else {
-						trace("WARNING: missing 'key' or 'skey'+'dkey' in property descriptor "+pd);
+						//trace("WARNING: missing 'key' or 'skey'+'dkey' in property descriptor "+pd);
 						continue;
 					}
 					if (!forward) {
@@ -203,7 +203,6 @@ package classes.internals
 					dest[dkey] = v;
 				} catch (e:Error) {
 					if (!ignoreErrors) throw e;
-					trace(e);
 				}
 			}
 			return dest;

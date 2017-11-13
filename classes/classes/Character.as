@@ -170,7 +170,7 @@ import classes.GlobalFlags.kFLAGS;
 				if (thickness > goal)
 					thickness = goal;
 			}
-			trace("MOD THICKNESS FIRE");
+			//trace("MOD THICKNESS FIRE");
 			//DIsplay 'U GOT FAT'
 			if (goal >= thickness && goal >= 50)
 				return "\n\nYour center of balance changes a little bit as your body noticeably widens. (+" + strength + " body thickness)";
@@ -416,7 +416,7 @@ import classes.GlobalFlags.kFLAGS;
 			if (pregnancyIncubation == 0 && totalFertility() + bonus > Math.floor(Math.random() * maxRoll) && hasVagina())
 			{
 				knockUpForce(type, incubationDuration);
-				trace("PC Knocked up with pregnancy type: " + type + " for " + incubationDuration + " incubation.");
+				//trace("PC Knocked up with pregnancy type: " + type + " for " + incubationDuration + " incubation.");
 			}
 			
 			//Chance for eggs fertilization - ovi elixir and imps excluded!
@@ -466,7 +466,7 @@ import classes.GlobalFlags.kFLAGS;
 			if (buttPregnancyIncubation == 0 && totalFertility() + bonus > Math.floor(Math.random() * beat))
 			{
 				buttKnockUpForce(type, incubation);
-				trace("PC Butt Knocked up with pregnancy type: " + type + " for " + incubation + " incubation.");
+				//trace("PC Butt Knocked up with pregnancy type: " + type + " for " + incubation + " incubation.");
 			}
 		}
 
@@ -588,7 +588,7 @@ import classes.GlobalFlags.kFLAGS;
 				if (keyItems[counter].keyName == itemName)
 				{
 					keyItems.splice(counter, 1);
-					trace("Attempted to remove \"" + itemName + "\" keyItem.");
+					//trace("Attempted to remove \"" + itemName + "\" keyItem.");
 					counter = 0;
 				}
 			}

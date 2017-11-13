@@ -1,13 +1,20 @@
 ﻿package classes
 {
 	import classes.BodyParts.*;
-	import classes.GlobalFlags.kGAMECLASS;
 	import classes.GlobalFlags.kACHIEVEMENTS;
-	import classes.Scenes.Inventory;
-	import classes.Scenes.Places.TelAdre.Katherine;
+	import classes.GlobalFlags.kFLAGS;
+	import classes.GlobalFlags.kGAMECLASS;
+	import classes.Items.*;
 	import classes.internals.LoggerFactory;
-	import classes.internals.ISerializable;
 	import classes.internals.SerializationUtils;
+	import flash.events.Event;
+	import flash.events.IOErrorEvent;
+	import flash.net.FileReference;
+	import flash.net.SharedObject;
+	import flash.net.URLLoader;
+	import flash.net.URLLoaderDataFormat;
+	import flash.net.URLRequest;
+	import flash.utils.ByteArray;
 	import mx.logging.ILogger;
 
 	CONFIG::AIR 
@@ -17,17 +24,6 @@
 		import flash.filesystem.FileStream;
 	}
 	
-	import flash.net.FileFilter;
-	import flash.net.FileReference;
-	import flash.events.Event;
-	import flash.net.URLRequest;
-	import flash.utils.ByteArray;
-	import flash.net.URLLoader;
-	import flash.net.SharedObject;
-	import flash.events.IOErrorEvent;
-	import classes.Items.*;
-	import classes.GlobalFlags.kFLAGS;
-	import flash.net.URLLoaderDataFormat;
 
 
 public class Saves extends BaseContent {
@@ -195,7 +191,7 @@ public function loadScreenAIR():void
 			{
 				slots[i] = function() : void 		// Anonymous functions FTW
 				{
-					trace("Loading save with name ", fileList[fileCount].url, " at index ", i);
+					//trace("Loading save with name ", fileList[fileCount].url, " at index ", i);
 					clearOutput();
 					loadGameObject(gameObjects[i]);
 					outputText("Slot " + String(i+1) + " Loaded!");
@@ -259,7 +255,7 @@ public function loadScreen():void
 			{
 				slots[i] = function() : void 		// Anonymous functions FTW
 				{
-					trace("Loading save with name", saveFileNames[i], "at index", i);
+					//trace("Loading save with name", saveFileNames[i], "at index", i);
 					if (loadGame(saveFileNames[i])) 
 					{
 						doNext(playerMenu);
@@ -316,13 +312,13 @@ public function saveScreen():void
 	{
 		var test:Object = SharedObject.getLocal(saveFileNames[i], "/");
 		outputText(loadSaveDisplay(test, String(i + 1)));
-		trace("Creating function with indice = ", i);
+		//trace("Creating function with indice = ", i);
 		(function(i:int) : void		// messy hack to work around closures. See: http://en.wikipedia.org/wiki/Immediately-invoked_function_expression
 		{
 			saveFuncs[i] = function() : void 		// Anonymous functions FTW
 			{
 				clearOutput();
-				trace("Saving game with name", saveFileNames[i], "at index", i);
+				//trace("Saving game with name", saveFileNames[i], "at index", i);
 				saveGame(saveFileNames[i]);
 			}
 		})(i);
@@ -444,7 +440,7 @@ public function deleteScreen():void
 		{
 			//slots[i] = loadFuncs[i];
 
-			trace("Creating function with indice = ", i);
+			//trace("Creating function with indice = ", i);
 			(function(i:int):void		// messy hack to work around closures. See: http://en.wikipedia.org/wiki/Immediately-invoked_function_expression
 			{
 				delFuncs[i] = function() : void 		// Anonymous functions FTW
@@ -480,10 +476,10 @@ public function confirmDelete():void
 public function purgeTheMutant():void
 {
 	var test:* = SharedObject.getLocal(flags[kFLAGS.TEMP_STORAGE_SAVE_DELETION], "/");
-	trace("DELETING SLOT: " + flags[kFLAGS.TEMP_STORAGE_SAVE_DELETION]);
+	//trace("DELETING SLOT: " + flags[kFLAGS.TEMP_STORAGE_SAVE_DELETION]);
 	var blah:Array = ["been virus bombed", "been purged", "been vaped", "been nuked from orbit", "taken an arrow to the knee", "fallen on its sword", "lost its reality matrix cohesion", "been cleansed", "suffered the following error: (404) Porn Not Found", "been deleted"];
 	
-	trace(blah.length + " array slots");
+	//trace(blah.length + " array slots");
 	var select:Number = rand(blah.length);
 	clearOutput();
 	outputText(flags[kFLAGS.TEMP_STORAGE_SAVE_DELETION] + " has " + blah[select] + ".");
@@ -539,11 +535,11 @@ public function loadGame(slot:String):void
 		sfVer = sfVer as Number;
 	}
 	
-	trace("File version "+(saveFile.data.version || "legacy")+"expects propNum " + sfVer);
+	//trace("File version "+(saveFile.data.version || "legacy")+"expects propNum " + sfVer);
 	
 	if (numProps < sfVer)
 	{
-		trace("Got " + numProps + " file properties -- failed!");
+		//trace("Got " + numProps + " file properties -- failed!");
 		clearOutput();
 		outputText("<b>Aborting load.  The current save file is missing a number of expected properties.</b>\n\n");
 		
@@ -564,7 +560,7 @@ public function loadGame(slot:String):void
 	}
 	else
 	{
-		trace("Got " + numProps + " file properties -- success!");
+		//trace("Got " + numProps + " file properties -- success!");
 		// I want to be able to write some debug stuff to the GUI during the loading process
 		// Therefore, we clear the display *before* calling loadGameObject
 		clearOutput();
@@ -576,7 +572,7 @@ public function loadGame(slot:String):void
 		
 		if (player.slotName == "VOID")
 		{
-			trace("Setting in-use save slot to: " + slot);
+			//trace("Setting in-use save slot to: " + slot);
 			player.slotName = slot;
 		}
 		statScreenRefresh();
@@ -654,9 +650,9 @@ public function savePermObject(isFile:Boolean):void {
 	{
 		processingError = true;
 		dataError = error;
-		trace(error.message);
+		//trace(error.message);
 	}
-	trace("done saving achievements");
+	//trace("done saving achievements");
 }
 
 public function loadPermObject():void {
@@ -761,7 +757,7 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 	//CLEAR OLD ARRAYS
 	
 	//Save sum dataz
-	trace("SAVE DATAZ");
+	//trace("SAVE DATAZ");
 	saveFile.data.short = player.short;
 	saveFile.data.a = player.a;
 	
@@ -1131,11 +1127,11 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 	{
 		processingError = true;
 		dataError = error;
-		trace(error.message);
+		//trace(error.message);
 	}
 
 
-	trace("done saving");
+	//trace("done saving");
 	// Because actionscript is stupid, there is no easy way to block until file operations are done.
 	// Therefore, I'm hacking around it for the chaos monkey.
 	// Really, something needs to listen for the FileReference.complete event, and re-enable saving/loading then.
@@ -1201,7 +1197,7 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 			outputText("<b>Aborting save.  Your current save file is broken, and needs to be bug-reported.</b>\n\nWithin the save folder for CoC, there should be a pair of files named \"" + slot + ".sol\" and \"" + slot + "_backup.sol\"\n\n<b>We need BOTH of those files, and a quick report of what you've done in the game between when you last saved, and this message.</b>\n\n");
 			outputText("When you've sent us the files, you can copy the _backup file over your old save to continue from your last save.\n\n");
 			outputText("Alternatively, you can just hit the restore button to overwrite the broken save with the backup... but we'd really like the saves first!");
-			trace("Backup Save Aborted! Broken save detected!");
+			//trace("Backup Save Aborted! Broken save detected!");
 			backupAborted = true;
 		}
 		else
@@ -1293,7 +1289,7 @@ public function onFileSelected(evt:Event):void
 public function onFileLoaded(evt:Event):void
 {
 	var tempFileRef:FileReference = FileReference(evt.target);
-	trace("File target = ", evt.target);
+	//trace("File target = ", evt.target);
 	loader = new URLLoader();
 	loader.dataFormat = URLLoaderDataFormat.BINARY;
 	loader.addEventListener(Event.COMPLETE, onDataLoaded);
@@ -1326,9 +1322,9 @@ public function onDataLoaded(evt:Event):void
 		// Therefore, we clear the display *before* calling loadGameObject
 		clearOutput();
 		outputText("Loading save...");
-		trace("OnDataLoaded! - Reading data", loader, loader.data.readObject);
+		//trace("OnDataLoaded! - Reading data", loader, loader.data.readObject);
 		var tmpObj:Object = loader.data.readObject();
-		trace("Read in object = ", tmpObj);
+		//trace("Read in object = ", tmpObj);
 		
 		CONFIG::debug 
 		{
@@ -1373,7 +1369,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 	player.slotName = slot;
 
 	var counter:Number = player.cocks.length;
-	trace("Loading save!")
+	//trace("Loading save!")
 	//Initialize the save file
 	//var saveFile:Object = loader.data.readObject();
 	var saveFile:* = saveData;
@@ -1402,7 +1398,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 
 		if (saveFile.data.versionID != undefined) {
 			game.versionID = saveFile.data.versionID;
-			trace("Found internal versionID:", game.versionID);
+			//trace("Found internal versionID:", game.versionID);
 		}
 
 		//PIERCINGS
@@ -1568,11 +1564,11 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		//Prison storage
 		//Items
 		if (saveFile.data.prisonItems == undefined) {
-			trace("Not found");
+			//trace("Not found");
 			player.prisonItemSlots = [];
 		}
 		else {
-			trace("Items FOUND!");
+			//trace("Items FOUND!");
 			//for (var k:int = 0; k < 10; i++) {
 				player.prisonItemSlots = saveFile.data.prisonItems;
 			//}
@@ -1983,14 +1979,14 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			
 			if (ptype == null) 
 			{
-				trace("ERROR: Unknown perk id="+id);
+				//trace("ERROR: Unknown perk id="+id);
 				
 				//(saveFile.data.perks as Array).splice(i,1);
 				// NEVER EVER EVER MODIFY DATA IN THE SAVE FILE LIKE THIS. EVER. FOR ANY REASON.
 			}
 			else
 			{
-				trace("Creating perk : " + ptype);
+				//trace("Creating perk : " + ptype);
 				player.createPerk(ptype,value1,value2,value3,value4);
 			
 				if (isNaN(player.perk(player.numPerks - 1).value1)) 
@@ -2004,14 +2000,14 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 						player.perk(player.numPerks).value1 = 0;
 					}
 					
-					trace("NaN byaaaatch: " + player.perk(player.numPerks - 1).value1);
+					//trace("NaN byaaaatch: " + player.perk(player.numPerks - 1).value1);
 				}
 			
 				if (player.perk(player.numPerks - 1).perkName == "Wizard's Focus") 
 				{
 					if (player.perk(player.numPerks - 1).value1 == 0 || player.perk(player.numPerks - 1).value1 < 0.1) 
 					{
-						trace("Wizard's Focus boosted up to par (.5)");
+						//trace("Wizard's Focus boosted up to par (.5)");
 						player.perk(player.numPerks - 1).value1 = .5;
 					}
 				}
@@ -2072,7 +2068,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		if (flags[kFLAGS.FOLLOWER_AT_FARM_MARBLE] == 1)
 		{
 			flags[kFLAGS.FOLLOWER_AT_FARM_MARBLE] = 0;
-			trace("Force-reverting Marble At Farm flag to 0.");
+			//trace("Force-reverting Marble At Farm flag to 0.");
 		}
 		
 		//Set Status Array
@@ -2353,7 +2349,7 @@ public function unFuckSave():void
 	if (!(flags[kFLAGS.RUBI_COCK_TYPE] is CockTypesEnum || flags[kFLAGS.RUBI_COCK_TYPE] is Number))	
 	{ // Valid contents of flags[kFLAGS.RUBI_COCK_TYPE] are either a CockTypesEnum or a number
 
-		trace("Fixing save (goo girl)");
+		//trace("Fixing save (goo girl)");
 		outputText("\n<b>Rubi's cockType is invalid. Defaulting him to human.</b>\n");
 		flags[kFLAGS.RUBI_COCK_TYPE] = 0;
 	}
@@ -2362,7 +2358,7 @@ public function unFuckSave():void
 	if (!(flags[kFLAGS.GOO_DICK_TYPE] is CockTypesEnum || flags[kFLAGS.GOO_DICK_TYPE] is Number))	
 	{ // Valid contents of flags[kFLAGS.GOO_DICK_TYPE] are either a CockTypesEnum or a number
 
-		trace("Fixing save (goo girl)");
+		//trace("Fixing save (goo girl)");
 		outputText("\n<b>Latex Goo-Girls's cockType is invalid. Defaulting him to human.</b>\n");
 		flags[kFLAGS.GOO_DICK_TYPE] = 0;
 	}

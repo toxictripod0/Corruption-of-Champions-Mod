@@ -2868,10 +2868,10 @@ private function updateSaveFlags():void {
 	var current:int = 0;
 	var target:int = 65;
 	while (current < target) {
-		trace(flags[startOldIds + current])
+		//trace(flags[startOldIds + current])
 		if (flags[startOldIds + current] != 0) {
 			flags[startNewIds + current] = flags[startOldIds + current];
-			trace(flags[startNewIds + current])
+			//trace(flags[startNewIds + current])
 			flags[startOldIds + current] = 0;
 		}
 		current++;

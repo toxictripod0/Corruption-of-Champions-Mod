@@ -1439,7 +1439,6 @@
 		private function startTheGame():void {
 			player.startingRace = player.race();
 			if (flags[kFLAGS.HARDCORE_MODE] > 0) {
-				trace("Hardcore save file " + flags[kFLAGS.HARDCORE_SLOT] + " created.");
 				getGame().saves.saveGame(flags[kFLAGS.HARDCORE_SLOT])
 			}
 			if (flags[kFLAGS.GRIMDARK_MODE] > 0) {

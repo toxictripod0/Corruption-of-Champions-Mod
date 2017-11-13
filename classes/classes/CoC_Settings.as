@@ -1,12 +1,14 @@
 ﻿package classes 
 {
+	import classes.internals.LoggerFactory;
+	import mx.logging.ILogger;
 	/**
 	 * ...
 	 * @author Fake-Name
 	 */
 	public class CoC_Settings
 	{
-
+		private static const LOGGER:ILogger = LoggerFactory.getLogger(CoC_Settings);
 
 		public static var debugBuild:Boolean = true;
 		public static var charviewEnabled:Boolean = CONFIG::debug;
@@ -21,7 +23,7 @@
 		 * If haltOnErrors=true, throws Error
 		 */
 		public static function error(description:String=""):void {
-			trace("ERROR "+description);
+			LOGGER.error("ERROR "+description);
 			if (haltOnErrors) throw Error(description);
 		}
 
@@ -49,7 +51,7 @@
 			for (var x:String in CoC_Settings.buttonEvents)
 			{
 				retStr += CoC_Settings.buttonEvents[x] + "\n";
-				trace("x = ", x, "Array Val = ", CoC_Settings.buttonEvents[x]);
+				if (debugBuild) LOGGER.debug("x = ", x, "Array Val = ", CoC_Settings.buttonEvents[x]);
 			}
 			return retStr;
 		}

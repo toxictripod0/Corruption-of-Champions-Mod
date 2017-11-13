@@ -220,7 +220,7 @@ private var funcLookups:Dictionary = null;
 private function buildFuncLookupDict(object:*=null,prefix:String=""):void
 {
 	import flash.utils.*;
-	trace("Building function <-> function name mapping table for "+((object==null)?"CoC.":prefix));
+	//trace("Building function <-> function name mapping table for "+((object==null)?"CoC.":prefix));
 	// get all methods contained
 	if (object == null) object = this;
 	var typeDesc:XML = describeType(object);
@@ -254,7 +254,7 @@ public function getFunctionName(f:Function):String
 	//var t:Object = flash.sampler.getSavedThis(f); 
 	if (this.funcLookups == null)
 	{
-		trace("Rebuilding lookup object");
+		//trace("Rebuilding lookup object");
 		this.funcLookups = new Dictionary();
 		this.buildFuncLookupDict();
 	}
@@ -281,7 +281,7 @@ private function logFunctionInfo(func:Function, arg:* = null, arg2:* = null, arg
 		logStr += "Calling = " + getFunctionName(func) + " Param = " +  arg;
 	}
 	CoC_Settings.appendButtonEvent(logStr);
-	trace(logStr)
+	//trace(logStr); 9999
 }
 
 

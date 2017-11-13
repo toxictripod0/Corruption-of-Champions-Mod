@@ -4233,7 +4233,7 @@ import mx.logging.ILogger;
 				case "/":
 					return old / val;
 				default:
-					trace("applyOperator(" + old + ",'" + op + "'," + val + ") unknown op");
+					//trace("applyOperator(" + old + ",'" + op + "'," + val + ") unknown op");
 					return old;
 			}
 		}
@@ -4247,7 +4247,7 @@ import mx.logging.ILogger;
 			// Check num of args, we should have a multiple of 2
 			if ((args.length % 2) != 0)
 			{
-				trace("dynStats aborted. Keys->Arguments could not be matched");
+				//trace("dynStats aborted. Keys->Arguments could not be matched");
 				return {str:0,tou:0,spe:0,inte:0,wis:0,lib:0,sens:0,lust:0,cor:0,scale:true,max:true};
 			}
 			var argDefs:Object = { //[value, operator]
@@ -4285,7 +4285,7 @@ import mx.logging.ILogger;
 					// Make sure the next arg has the POSSIBILITY of being correct
 					if ((typeof(args[i + 1]) != "number") && (typeof(args[i + 1]) != "boolean"))
 					{
-						trace("dynStats aborted. Next argument after argName is invalid! arg is type " + typeof(args[i + 1]));
+						//trace("dynStats aborted. Next argument after argName is invalid! arg is type " + typeof(args[i + 1]));
 						continue;
 					}
 					var argOp:String = "";
@@ -4300,13 +4300,7 @@ import mx.logging.ILogger;
 					if (argsi in argDefs) {
 						argDefs[argsi][0] = args[i + 1];
 						if (argOp) argDefs[argsi][1] = argOp;
-					} else {
-						trace("Couldn't find the arg name " + argsi + " in the index arrays. Welp!");
-					}
-				}
-				else
-				{
-					trace("dynStats aborted. Expected a key and got SHIT");
+					} 
 				}
 			}
 			// Got this far, we have values to statsify
