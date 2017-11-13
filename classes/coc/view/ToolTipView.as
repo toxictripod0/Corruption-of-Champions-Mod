@@ -1,13 +1,10 @@
 package coc.view {
-import flash.display.Bitmap;
-import flash.display.MovieClip;
+	import flash.display.Bitmap;
+	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.display.DisplayObject;
-import flash.events.MouseEvent;
-import flash.text.TextField;
+	import flash.text.TextField;
 	import flash.text.TextFieldType;
-
-	//import coc.model.GameModel;
 
 	public class ToolTipView extends Block {
 		[Embed(source='../../../res/ui/tooltip.png')]

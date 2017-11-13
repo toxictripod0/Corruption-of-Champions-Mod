@@ -9,16 +9,14 @@
 	import classes.Items.Armors.GooArmor;
 	import classes.Items.*;
 	import classes.Saves;
-import classes.internals.Utils;
-import classes.Scenes.Inventory;
+	import classes.internals.Utils;
+	import classes.Scenes.Inventory;
 
-import fl.controls.ComboBox;
+	import fl.controls.ComboBox;
 	import fl.data.DataProvider;
 	import flash.events.Event;
 	
 	import coc.view.MainView;
-
-	//import flash.events.MouseEvent;
 
 	public class CharCreation extends BaseContent {
 		

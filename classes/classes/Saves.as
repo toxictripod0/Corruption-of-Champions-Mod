@@ -24,7 +24,6 @@
 	import flash.utils.ByteArray;
 	import flash.net.URLLoader;
 	import flash.net.SharedObject;
-	import flash.events.MouseEvent;
 	import flash.events.IOErrorEvent;
 	import classes.Items.*;
 	import classes.GlobalFlags.kFLAGS;
@@ -218,7 +217,7 @@ public function loadScreenAIR():void
 		if (slots[s] != null) addButton(s, "Slot " + (s + 1), selectLoadButton, gameObjects[s], "CoC_" + String(s+1));
 		s++;
 	}
-	addButton(14, "Back", returnToSaveMenu);
+	addButton(14, "Back", saveLoad);
 }
 
 public function getGameObjectFromFile(aFile:File):Object
@@ -283,7 +282,7 @@ public function loadScreen():void
 		if (slots[s] != 0) addButton(s, "Slot " + (s+1), slots[s]);
 		s++;
 	}
-	addButton(14, "Back", returnToSaveMenu);
+	addButton(14, "Back", saveLoad);
 }
 
 public function saveScreen():void
@@ -341,10 +340,10 @@ public function saveScreen():void
 		addButton(s, "Slot " + (s+1), saveFuncs[s]);
 		s++;
 	}
-	addButton(14, "Back", returnToSaveMenu);
+	addButton(14, "Back", saveLoad);
 }
 
-public function saveLoad(e:MouseEvent = null):void
+public function saveLoad():void
 {
 	mainView.eventTestInput.x = -10207.5;
 	mainView.eventTestInput.y = -1055.1;
@@ -466,7 +465,7 @@ public function deleteScreen():void
 		if (delFuncs[s] != null) addButton(s, "Slot " + (s+1), delFuncs[s]);
 		s++;
 	}
-	addButton(14, "Back", returnToSaveMenu);
+	addButton(14, "Back", saveLoad);
 }
 
 public function confirmDelete():void
@@ -1315,12 +1314,7 @@ public function ioErrorHandler(e:IOErrorEvent):void
 {
 	clearOutput();
 	outputText("<b>!</b> Save file not found, check that it is in the same directory as the CoC_" + ver + ".swf file.\r\rLoad from file is not available when playing directly from a website like furaffinity or fenoxo.com.");
-	doNext(returnToSaveMenu);
-}
-
-private function returnToSaveMenu():void {
-	var f:MouseEvent;
-	saveLoad(f);
+	doNext(saveLoad);
 }
 
 public function onDataLoaded(evt:Event):void
@@ -1350,7 +1344,7 @@ public function onDataLoaded(evt:Event):void
 	{
 		clearOutput();
 		outputText("<b>!</b> File is either corrupted or not a valid save");
-		doNext(returnToSaveMenu);
+		doNext(saveLoad);
 	}
 	catch (error:Error)
 	{
@@ -1359,7 +1353,7 @@ public function onDataLoaded(evt:Event):void
 		outputText("<b>!</b> Unhandled Exception");
 		outputText("[pg]Failed to load save. The file may be corrupt!");
 
-		doNext(returnToSaveMenu);
+		doNext(saveLoad);
 	}
 	loadPermObject();
 	statScreenRefresh();

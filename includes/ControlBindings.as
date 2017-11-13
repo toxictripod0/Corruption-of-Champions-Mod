@@ -56,7 +56,7 @@ inputManager.AddBindableControl(
 	function():void {
 		if (mainView.menuButtonIsVisible(MainView.MENU_DATA))
 		{
-			saves.saveLoad(undefined);
+			saves.saveLoad();
 		}
 	});
 	

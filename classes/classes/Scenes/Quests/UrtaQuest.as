@@ -21,10 +21,6 @@
  * @Author:
  */
 
-// 	import classes.*
-// import flash.events.MouseEvent;
-// 	import classes.*
-
 //const URTA_MET_HEL:int = 710;
 //const URTA_QUEST_STATUS:int = 711;
 //const URTA_FUCKED_HEL:int = 712;
