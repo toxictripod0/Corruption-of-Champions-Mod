@@ -408,8 +408,8 @@ package classes
 
 			outputText("\n\n");
 
-			if (flags[kFLAGS.DISABLE_QUICKSAVE_CONFIRM] == 0) outputText("Confirm Quicksave: <font color=\"#008000\"><b>ON</b></font> (Quicksave confirmation dialog is enabled).");
-			else outputText("Confirm Quicksave: <font color=\"#800000\"><b>OFF</b></font> (Quicksave confirmation dialog is disabled).");
+			if (flags[kFLAGS.DISABLE_QUICKSAVE_CONFIRM] == 0) outputText("Confirm Quicksave: <font color=\"#008000\"><b>ON</b></font>\n Quicksave confirmation dialog is enabled.");
+			else outputText("Confirm Quicksave: <font color=\"#800000\"><b>OFF</b></font>\n Quicksave confirmation dialog is disabled.");
 
 			menu();
 			addButton(0, "Side Bar Font", toggleFont).hint("Toggle between old and new font for side bar.");

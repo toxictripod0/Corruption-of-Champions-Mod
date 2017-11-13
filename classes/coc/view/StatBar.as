@@ -117,8 +117,9 @@ public class StatBar extends Block {
 			width: barWidth,
 			height           : myHeight - 4,
 			defaultTextFormat: {
-				font: 'Georgia',
-				size: 15
+				font: 'Palatino Linotype',
+				size: 15,
+				bold: true
 			}
 		});
 		_valueLabel = addTextField({
@@ -126,9 +127,10 @@ public class StatBar extends Block {
 			width: barWidth,
 			height           : 30,
 			defaultTextFormat: {
-				font : 'Georgia',
+				font : 'Palatino Linotype',
 				size : 22,
-				align: 'right'
+				align: 'right',
+				bold : true
 			}
 		});
 		_arrowUp = addBitmapDataSprite({
