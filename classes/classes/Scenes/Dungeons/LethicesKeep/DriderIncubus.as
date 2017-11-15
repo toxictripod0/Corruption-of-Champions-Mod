@@ -1,4 +1,4 @@
-package classes.Scenes.Dungeons.D3
+package classes.Scenes.Dungeons.LethicesKeep
 {
 	import classes.Scenes.Areas.Swamp.AbstractSpiderMorph;
 	import classes.StatusEffects;
@@ -55,12 +55,12 @@ package classes.Scenes.Dungeons.D3
 		
 		override public function defeated(hpVictory:Boolean):void
 		{
-			game.d3.driderIncubus.beatTheSpooderbutt(hpVictory);
+			game.lethicesKeep.driderIncubus.beatTheSpooderbutt(hpVictory);
 		}
 		
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
 		{
-			game.d3.driderIncubus.spooderbuttGetsANewCockSleeve(hpVictory,pcCameWorms);
+			game.lethicesKeep.driderIncubus.spooderbuttGetsANewCockSleeve(hpVictory,pcCameWorms);
 		}
 		
 		public function get goblinFree():Boolean

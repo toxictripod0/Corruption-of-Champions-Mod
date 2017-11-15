@@ -1,4 +1,4 @@
-package classes.Scenes.Dungeons.D3 
+package classes.Scenes.Dungeons.LethicesKeep 
 {
 	import classes.Appearance;
 	import classes.AssClass;
@@ -66,13 +66,13 @@ package classes.Scenes.Dungeons.D3
 		override public function defeated(hpVictory:Boolean):void
 		{
 			cleanupEffects();
-			game.d3.succubusGardener.fuckUpTheGardener(hpVictory);
+			game.lethicesKeep.succubusGardener.fuckUpTheGardener(hpVictory);
 		}
 		
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
 		{
 			cleanupEffects();
-			game.d3.succubusGardener.surrenderToTheGardener(hpVictory);
+			game.lethicesKeep.succubusGardener.surrenderToTheGardener(hpVictory);
 		}
 		
 		override protected function performCombatAction():void

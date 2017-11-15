@@ -1,4 +1,4 @@
-package classes.Scenes.Dungeons.D3 
+package classes.Scenes.Dungeons.LethicesKeep 
 {
 	import classes.BodyParts.*;
 	import classes.BreastRowClass;
@@ -143,12 +143,12 @@ package classes.Scenes.Dungeons.D3
 		
 		override public function defeated(hpVictory:Boolean):void
 		{
-			game.d3.doppleganger.punchYourselfInTheBalls();
+			game.lethicesKeep.doppleganger.punchYourselfInTheBalls();
 		}
 		
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
 		{
-			game.d3.doppleganger.inSovietCoCSelfFucksYou();
+			game.lethicesKeep.doppleganger.inSovietCoCSelfFucksYou();
 		}
 		
 		public function handleSpellResistance(spell:String):void

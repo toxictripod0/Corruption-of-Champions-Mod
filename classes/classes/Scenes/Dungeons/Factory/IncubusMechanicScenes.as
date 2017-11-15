@@ -416,7 +416,7 @@ package classes.Scenes.Dungeons.Factory
 
 			outputText("\n\nThe platform touches down roughly thirty minutes after your departure, and you head back to camp with all due haste.");
 
-			doNext(getGame().d3.exitD3);
+			doNext(getGame().lethicesKeep.exitD3);
 		}
 		
 		private function useLiftPostDefeat():void
@@ -427,7 +427,7 @@ package classes.Scenes.Dungeons.Factory
 			
 			outputText("\n\nThe platform touches down roughly thirty minutes after your departure, and you head back to camp with all due haste.");
 			
-			doNext(getGame().d3.exitD3);
+			doNext(getGame().lethicesKeep.exitD3);
 		}
 		
 		public function suckIncubusDick():void
@@ -482,7 +482,7 @@ package classes.Scenes.Dungeons.Factory
 
 			dynStats("lib+", 5, "cor+", 5, "lus+", 100);
 
-			doNext(getGame().d3.exitD3);
+			doNext(getGame().lethicesKeep.exitD3);
 		}
 		
 		public function beatDaMechanic(hpVictory:Boolean):void

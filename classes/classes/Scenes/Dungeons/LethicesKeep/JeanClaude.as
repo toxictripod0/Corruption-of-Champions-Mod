@@ -1,4 +1,4 @@
-package classes.Scenes.Dungeons.D3 
+package classes.Scenes.Dungeons.LethicesKeep 
 {
 	import classes.*;
 	import classes.BodyParts.*;
@@ -27,12 +27,12 @@ package classes.Scenes.Dungeons.D3
 		
 		override public function defeated(hpVictory:Boolean):void
 		{
-			game.d3.jeanClaude.beatDaFuckhugeBasilisk(hpVictory);
+			game.lethicesKeep.jeanClaude.beatDaFuckhugeBasilisk(hpVictory);
 		}
 		
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
 		{
-			game.d3.jeanClaude.fuckhugeBasiliskFuckedYouUp(hpVictory);
+			game.lethicesKeep.jeanClaude.fuckhugeBasiliskFuckedYouUp(hpVictory);
 		}
 		
 		public function handleTease(lustDelta:Number, successful:Boolean):void

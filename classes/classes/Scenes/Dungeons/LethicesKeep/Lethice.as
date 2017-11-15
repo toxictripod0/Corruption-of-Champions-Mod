@@ -1,4 +1,4 @@
-package classes.Scenes.Dungeons.D3
+package classes.Scenes.Dungeons.LethicesKeep
 {
 	import classes.BodyParts.*;
 	import classes.Monster;
@@ -155,12 +155,12 @@ package classes.Scenes.Dungeons.D3
 				phase2Ends(hpVictory);
 				return;
 			}
-			game.d3.lethice.defeated(hpVictory);
+			game.lethicesKeep.lethice.defeated(hpVictory);
 		}
 		
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
 		{
-			game.d3.lethice.won(hpVictory,pcCameWorms);
+			game.lethicesKeep.lethice.won(hpVictory,pcCameWorms);
 		}
 		
 		public function get fightPhase():int

@@ -31,7 +31,8 @@ package classes
 	import classes.Scenes.Areas.Mountain.*;
 	import classes.Scenes.Areas.Swamp.*;
 	import classes.Scenes.Combat.Combat;
-	import classes.Scenes.Dungeons.D3.D3;
+	import classes.Scenes.Dungeons.DungeonMap;
+	import classes.Scenes.Dungeons.LethicesKeep.LethicesKeep;
 	import classes.Scenes.Dungeons.DeepCave.*;
 	import classes.Scenes.Dungeons.DesertCave.*;
 	import classes.Scenes.Dungeons.DungeonCore;
@@ -219,7 +220,7 @@ package classes
 		public var combat:Combat = new Combat();
 		// Scenes/Dungeons
 		public var brigidScene:BrigidScene = new BrigidScene();
-		public var d3:D3 = new D3();
+		public var lethicesKeep:LethicesKeep = new LethicesKeep();
 		// Scenes/Explore/
 		public var gargoyle:Gargoyle = new Gargoyle();
 		public var lumi:Lumi = new Lumi();
@@ -386,6 +387,7 @@ package classes
 		// To save shitting up a lot of code...
 		public var inRoomedDungeon:Boolean = false;
 		public var inRoomedDungeonResume:Function = null;
+		public var inRoomedDungeonName:String = "";
 		
 		public var timeQ:Number = 0;
 		public var campQ:Boolean = false;
@@ -564,7 +566,8 @@ package classes
 			// *************************************************************************************
 			//Workaround.
 			exploration.configureRooms();
-			d3.configureRooms();
+			lethicesKeep.configureRooms();
+			dungeons.map = new DungeonMap();
 			
 			temp = 0; //Fenoxo loves his temps
 			

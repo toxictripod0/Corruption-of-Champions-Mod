@@ -33,12 +33,12 @@ package classes.Scenes.Dungeons.Factory
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] >= 2 && flags[kFLAGS.FACTORY_INCUBUS_BRIBED] == 0) outputText("\n\n<b>You swear you can hear a clicking sound coming from the west.</b>");
 			
 			if (!player.isGenderless()) {
-				game.addButton(0, "Rape", game.d3.incubusMechanic.doRapeIncubus).hint(player.hasCock() ? "Fuck his butt." : "Ride him vaginally.");
+				game.addButton(0, "Rape", game.lethicesKeep.incubusMechanic.doRapeIncubus).hint(player.hasCock() ? "Fuck his butt." : "Ride him vaginally.");
 			} else {
 				game.addButtonDisabled(0, "Rape", "This scene requires you to have genitals.");
 			}
-			game.addButton(1, "Service Him", game.d3.incubusMechanic.doOralIncubus).hint("Service the incubus orally.");
-			game.addButton(2, "AnalRide", game.d3.incubusMechanic.doRideIncubusAnally).hint("Ride him anally.");
+			game.addButton(1, "Service Him", game.lethicesKeep.incubusMechanic.doOralIncubus).hint("Service the incubus orally.");
+			game.addButton(2, "AnalRide", game.lethicesKeep.incubusMechanic.doRideIncubusAnally).hint("Ride him anally.");
 			if (player.hasVagina() && player.biggestTitSize() >= 4 && player.armor == armors.LMARMOR) game.addButton(3, "B.Titfuck", (player.armor as LustyMaidensArmor).lustyMaidenPaizuri, player, this);
 			// no disabled button for this option
 			game.addButton(14, "Leave", game.combat.cleanupAfterCombat);
@@ -46,7 +46,7 @@ package classes.Scenes.Dungeons.Factory
 		
 		private function defeatedInDungeon3(hpVictory:Boolean):void
 		{
-			game.d3.incubusMechanic.beatDaMechanic(hpVictory);
+			game.lethicesKeep.incubusMechanic.beatDaMechanic(hpVictory);
 		}
 
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
@@ -67,14 +67,14 @@ package classes.Scenes.Dungeons.Factory
 				outputText("\n\nYour foe doesn't seem to care...");
 				doNext(game.combat.endLustLoss);
 			} else {
-				game.d3.incubusMechanic.doLossIncubus();
+				game.lethicesKeep.incubusMechanic.doLossIncubus();
 			}
 		}
 		
 		private function wonInDungeon3(hpVictory:Boolean, pcCameWorms:Boolean):void
 		{
-			if (flags[kFLAGS.LETHICE_DEFEATED] > 0) game.d3.incubusMechanic.doLossIncubus();
-			else game.d3.incubusMechanic.mechanicFuckedYouUp(hpVictory, pcCameWorms);
+			if (flags[kFLAGS.LETHICE_DEFEATED] > 0) game.lethicesKeep.incubusMechanic.doLossIncubus();
+			else game.lethicesKeep.incubusMechanic.mechanicFuckedYouUp(hpVictory, pcCameWorms);
 		}
 		
 		private function cockTripAttack():void {

@@ -382,7 +382,7 @@ package classes.Scenes.Dungeons
 			
 			//Incubus is ALLLLIVE
 			if (flags[kFLAGS.FACTORY_INCUBUS_DEFEATED] <= 0) {
-				getGame().d3.incubusMechanic.encounterIncubusFactory();
+				getGame().lethicesKeep.incubusMechanic.encounterIncubusFactory();
 			}
 		}
 		

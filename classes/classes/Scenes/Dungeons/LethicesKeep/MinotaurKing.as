@@ -1,4 +1,4 @@
-package classes.Scenes.Dungeons.D3
+package classes.Scenes.Dungeons.LethicesKeep
 {
 	import classes.Monster;
 	import classes.StatusEffects;
@@ -108,12 +108,12 @@ package classes.Scenes.Dungeons.D3
 				combatRoundOver();
 				return;
 			}
-			game.d3.minotaurKing.theKingIsDeadLongLiveTheKing(hpVictory);
+			game.lethicesKeep.minotaurKing.theKingIsDeadLongLiveTheKing(hpVictory);
 		}
 		
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
 		{
-			game.d3.minotaurKing.hailToTheKingBaby(hpVictory,pcCameWorms);
+			game.lethicesKeep.minotaurKing.hailToTheKingBaby(hpVictory,pcCameWorms);
 		}
 		
 		public function get orgasms():int

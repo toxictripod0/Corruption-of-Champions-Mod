@@ -5,8 +5,8 @@ package classes.Scenes.Combat
 	import classes.GlobalFlags.*;
 	import classes.Items.*;
 	import classes.Scenes.Areas.GlacialRift.FrostGiant;
-	import classes.Scenes.Dungeons.D3.*;
 	import classes.Scenes.Dungeons.HelDungeon.*;
+	import classes.Scenes.Dungeons.LethicesKeep.*;
 	import classes.Scenes.NPCs.*;
 	import classes.Scenes.Places.TelAdre.UmasShop;
 	

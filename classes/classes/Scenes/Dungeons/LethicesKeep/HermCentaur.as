@@ -1,4 +1,4 @@
-package classes.Scenes.Dungeons.D3 
+package classes.Scenes.Dungeons.LethicesKeep 
 {
 	import classes.Monster;
 	import classes.Appearance;
@@ -59,12 +59,12 @@ package classes.Scenes.Dungeons.D3
 		
 		override public function defeated(hpVictory:Boolean):void
 		{
-			game.d3.hermCentaur.beatThePony(hpVictory);
+			game.lethicesKeep.hermCentaur.beatThePony(hpVictory);
 		}
 		
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
 		{
-			game.d3.hermCentaur.inSovietCoCPonyRidesYou(hpVictory, pcCameWorms);
+			game.lethicesKeep.hermCentaur.inSovietCoCPonyRidesYou(hpVictory, pcCameWorms);
 		}
 		
 		// Gonna handle this a little differently than usual.

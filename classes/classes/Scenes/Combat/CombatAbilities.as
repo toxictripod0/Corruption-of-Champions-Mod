@@ -6,9 +6,9 @@ package classes.Scenes.Combat
 	import classes.Items.*;
 	import classes.Scenes.Areas.Forest.TentacleBeast;
 	import classes.Scenes.Areas.GlacialRift.FrostGiant;
-	import classes.Scenes.Dungeons.D3.*;
 	import classes.Scenes.Dungeons.DeepCave.*;
 	import classes.Scenes.Dungeons.HelDungeon.*;
+	import classes.Scenes.Dungeons.LethicesKeep.*;
 	import classes.Scenes.Monsters.Mimic;
 	import classes.Scenes.NPCs.*;
 	import classes.Scenes.Places.TelAdre.UmasShop;
