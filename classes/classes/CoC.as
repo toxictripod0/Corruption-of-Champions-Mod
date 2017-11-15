@@ -493,7 +493,7 @@ package classes
 			 */
 			debug = false; //DEBUG, used all over the place
 			ver = "1.0.2_mod_1.4.11"; //Version NUMBER
-			version = ver + " (<b>Bug Fixfest II</b>)"; //Version TEXT
+			version = ver + " (<b>Refactorfest</b>)"; //Version TEXT
 			
 			//Indicates if building for mobile?
 			mobile = false;
