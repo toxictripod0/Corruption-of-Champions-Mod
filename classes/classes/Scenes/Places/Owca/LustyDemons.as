@@ -86,8 +86,8 @@ package classes.Scenes.Places.Owca
 			this.special1 = game.combat.packAttack;
 			this.special2 = game.combat.lustAttack;
 			this.tailType = Tail.DEMONIC;
-			this.hornType = Horns.DEMON;
-			this.horns = 2;
+			this.horns.type = Horns.DEMON;
+			this.horns.value = 2;
 			this.drop = NO_DROP;
 			createStatusEffect(StatusEffects.Vapula,0,0,0,0);
 			checkMonster();

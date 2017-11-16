@@ -442,7 +442,7 @@ public class MaraeScene extends AbstractBoatContent implements TimeAwareInterfac
 			outputText("  Both are dripping and giving tiny squirts of sweet pleasure that simultaneously dull the mind and reinforce your worship of this sexually-charged deity.\n\n");
 
 			outputText("Marae grunts and pulls on ");
-			if (player.horns > 0) outputText("your horns");
+			if (player.horns.value > 0) outputText("your horns");
 			else outputText("your " + player.hairDescript());
 			outputText(", shoving her thick clit-cock deep inside your throat.  You reflexively swallow down the bulging fuck-meat and ");
 			if (player.cor < 33) outputText("struggle to ");

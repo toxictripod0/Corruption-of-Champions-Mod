@@ -1041,29 +1041,29 @@ public class ErlKingScene extends BaseContent implements Encounter
 				changes++;
 			}
 			//Gain deer horns AKA antlers
-			if (rand(3) == 0 && changes < changeLimit && player.hornType == Horns.NONE) {
+			if (rand(3) == 0 && changes < changeLimit && player.horns.type == Horns.NONE) {
 				outputText("\n\nYou feel an immense pressure from your forehead, and you reach up, feeling the nubs of two new horns.");
-				player.hornType = Horns.ANTLERS;
-				player.horns = 1;
+				player.horns.type = Horns.ANTLERS;
+				player.horns.value = 1;
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.horns > 0 && player.hornType != Horns.ANTLERS) {
+			if (rand(3) == 0 && changes < changeLimit && player.horns.value > 0 && player.horns.type != Horns.ANTLERS) {
 				outputText("\n\nYou feel a strange twisting sensation from your horns as they extend outwards.  You reach up to feel them and realize that you’ve now got <b>pronged, stag-like horns.</b>");
-				player.hornType = Horns.ANTLERS;
-				player.horns = 4;
+				player.horns.type = Horns.ANTLERS;
+				player.horns.value = 4;
 				changes++;
 			}
 			//Increase points on deer antlers
-			if (rand(3) == 0 && changes < changeLimit && player.hornType == Horns.ANTLERS && player.horns < 30) {
+			if (rand(3) == 0 && changes < changeLimit && player.horns.type == Horns.ANTLERS && player.horns.value < 30) {
 				outputText("\n\nYou feel a strange twisting sensation from your antlers as they extend and split outwards.  You reach up to feel them and realize that your antlers are now even more branched out.");
-				if (player.horns < 20 && rand(2) == 0) player.horns += (1 + rand(4));
-				player.horns++;
-				outputText("  After counting the number of points you have on your antlers, <b>you have " + player.horns + " points.</b>");
-				if (player.horns >= 30) outputText("<b>  It seems that your antlers can't get any more pointier.</b>");
+				if (player.horns.value < 20 && rand(2) == 0) player.horns.value += (1 + rand(4));
+				player.horns.value++;
+				outputText("  After counting the number of points you have on your antlers, <b>you have " + player.horns.value + " points.</b>");
+				if (player.horns.value >= 30) outputText("<b>  It seems that your antlers can't get any more pointier.</b>");
 				changes++;
 			}
 			//Gain fur
-			if (rand(4) == 0 && changes < changeLimit && player.horns > 0 && !player.hasFur()) {
+			if (rand(4) == 0 && changes < changeLimit && player.horns.value > 0 && !player.hasFur()) {
 				outputText("\n\nFor a moment, it looks like a ray of sunlight has shimmered through the canopy. You blink and realize that your fur has become dappled, with lighter, sun-speckled spots highlighting it.");
 				player.skinType = Skin.FUR;
 				player.skinAdj = "";

@@ -97,8 +97,8 @@ package classes
 			player.hair.color = "orange";
 			//Face: Elf ears, 4x demonic horns
 			player.ears.type = Ears.ELFIN;
-			player.horns = 4;
-			player.hornType = Horns.DEMON;
+			player.horns.value = 4;
+			player.horns.type = Horns.DEMON;
 			//Body: Plump, no muscle tone, wide thighs, badonkulous ass, demon tail, demonic high heels
 			player.thickness = 75;
 			player.tone = 0;
@@ -585,7 +585,7 @@ package classes
 			player.ass.fullness = 0;
 			player.fertility = 5;
 			player.fatigue = 0;
-			player.horns = 0;
+			player.horns.value = 0;
 			player.tallness = 67;
 			player.tailVenom = 0;
 			player.tailRecharge = 0;
@@ -660,7 +660,7 @@ package classes
 			player.ass.fullness = 0;
 			player.fertility = 5;
 			player.fatigue = 0;
-			player.horns = 0;
+			player.horns.value = 0;
 			player.tailVenom = 0;
 			player.tailRecharge = 0;
 			player.wingType = Wings.NONE;
@@ -800,8 +800,8 @@ package classes
 			//Ears = Horse
 			player.ears.type = Ears.HORSE;
 			//Horns = Dragon
-			player.hornType = Horns.DRACONIC_X4_12_INCH_LONG;
-			player.horns = 12;
+			player.horns.type = Horns.DRACONIC_X4_12_INCH_LONG;
+			player.horns.value = 12;
 			//Face = Horse
 			player.face.type = Face.HORSE;
 			//Skin type = Black Fur
@@ -1059,7 +1059,7 @@ package classes
 			player.ass.fullness = 0;
 			player.fertility = 5;
 			player.fatigue = 0;
-			player.horns = 0;
+			player.horns.value = 0;
 			player.tallness = 82;
 			player.tailVenom = 0;
 			player.tailRecharge = 0;
@@ -1289,8 +1289,8 @@ package classes
 			player.ass.fullness = 0;
 			player.fertility = 50;
 			player.fatigue = 0;
-			player.horns = 0;
-			player.hornType = Horns.NONE;
+			player.horns.value = 0;
+			player.horns.type = Horns.NONE;
 			player.tallness = 109;
 			player.tailVenom = 0;
 			player.tailRecharge = 0;
@@ -1499,7 +1499,7 @@ package classes
 			player.ass.fullness = 0;
 			player.fertility = 5;
 			player.fatigue = 0;
-			player.horns = 0;
+			player.horns.value = 0;
 			player.tallness = 67;
 			player.tailVenom = 0;
 			player.tailRecharge = 0;
@@ -1510,8 +1510,8 @@ package classes
 			player.createPerk(PerkLib.Incorporeality,0,0,0,0);
 			player.wingType = Wings.FEATHERED_LARGE;
 			player.arms.type = Arms.HARPY;
-			player.hornType = Horns.DRACONIC_X2;
-			player.horns = 4;
+			player.horns.type = Horns.DRACONIC_X2;
+			player.horns.value = 4;
 			player.face.type = Face.SPIDER_FANGS;
 			player.hair.length = 69.2;
 			player.hair.color = "dark blue";
@@ -1634,8 +1634,8 @@ package classes
 			player.tailType = Tail.FOX; // soft fur feels so lovely...
 			player.tailVenom = 9;			
 			player.tongueType = Tongue.DRACONIC; // tongue as long as your whole body height! almost tentackle! and so much fun to use!
-			player.hornType = Horns.DRACONIC_X2; // draconic horns adds to your exotic look, counts towards dragon score and keeps your tentacle hair out of your face! and your partners can use them as handles on occasions, letting your delicate ears uncrumpled!
-			player.horns = 8;
+			player.horns.type = Horns.DRACONIC_X2; // draconic horns adds to your exotic look, counts towards dragon score and keeps your tentacle hair out of your face! and your partners can use them as handles on occasions, letting your delicate ears uncrumpled!
+			player.horns.value = 8;
 			player.wingType = Wings.DRACONIC_LARGE; // wings! to fly!
 			
 			player.str += -10; // strength? not a kitsune way, besides, you are small and really neglected physical training
@@ -1882,17 +1882,17 @@ package classes
 			
 			var horns:Number = rand(100); // 70% no horns, 30% to random
 			if (horns<70)
-				player.hornType = Horns.NONE;
+				player.horns.type = Horns.NONE;
 			else if (horns<80){
-				player.hornType = Horns.DEMON;
-				player.horns = (rand(4)+1)*2; // 1-4 pairs
+				player.horns.type = Horns.DEMON;
+				player.horns.value = (rand(4)+1)*2; // 1-4 pairs
 				}
 			else if (horns<90){
-				player.hornType = Horns.COW_MINOTAUR;
-				player.horns = 2;}
+				player.horns.type = Horns.COW_MINOTAUR;
+				player.horns.value = 2;}
 			else{
-				player.hornType = Horns.DRACONIC_X2;
-				player.horns = 2;}
+				player.horns.type = Horns.DRACONIC_X2;
+				player.horns.value = 2;}
 			
 			var wings:Number = rand(4); // always have wings to fly... small boon to make up for lack of fighting power
 			if (wings == 0)

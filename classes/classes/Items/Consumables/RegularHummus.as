@@ -165,13 +165,13 @@ package classes.Items.Consumables
 				mutations.removeAntennae();
 			}
 			//Removes horns
-			if (changes < changeLimit && (player.hornType !== Horns.NONE || player.horns !== 0) && rand(5) === 0) {
+			if (changes < changeLimit && (player.horns.type !== Horns.NONE || player.horns.value !== 0) && rand(5) === 0) {
 				outputText("\n\nYour ");
-				if (player.hornType === Horns.UNICORN || player.hornType === Horns.RHINO) outputText("horn");
+				if (player.horns.type === Horns.UNICORN || player.horns.type === Horns.RHINO) outputText("horn");
 				else outputText("horns");
 				outputText(" crumble, falling apart in large chunks until they flake away to nothing.");
-				player.horns = 0;
-				player.hornType = Horns.NONE;
+				player.horns.value = 0;
+				player.horns.type = Horns.NONE;
 				changes++;
 			}
 			//Removes wings

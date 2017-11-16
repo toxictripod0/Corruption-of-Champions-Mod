@@ -141,15 +141,15 @@ package classes.Items.Consumables
 				mutations.removeExtraBreastRow(tfSource);
 			}
 			//Antennae
-			if (changes < changeLimit && player.antennae.type == Antennae.NONE && player.horns == 0 && Utils.rand(3) == 0) {
+			if (changes < changeLimit && player.antennae.type == Antennae.NONE && player.horns.value == 0 && Utils.rand(3) == 0) {
 				outputText("\n\nYour head itches momentarily as two floppy antennae sprout from your " + getGame().player.hairDescript() + ".");
 				player.antennae.type = Antennae.BEE;
 				changes++;
 			}
 			//Horns
-			if (changes < changeLimit && player.horns > 0 && Utils.rand(3) == 0) {
-				player.horns = 0;
-				player.hornType = Horns.NONE;
+			if (changes < changeLimit && player.horns.value > 0 && Utils.rand(3) == 0) {
+				player.horns.value = 0;
+				player.horns.type = Horns.NONE;
 				outputText("\n\nYour horns crumble, falling apart in large chunks until they flake away to nothing.");
 				changes++;
 			}

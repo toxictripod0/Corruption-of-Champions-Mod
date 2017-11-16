@@ -143,7 +143,7 @@ package classes.Items.Consumables
 		}
 			
 			//Imp ears, needs red/orange skin and horns
-			if (player.hornType === Horns.IMP && ["red", "orange"].indexOf(player.skinTone) !== -1 && player.ears.type !== Ears.IMP && rand(3) === 0 && changes < changeLimit) {
+			if (player.horns.type === Horns.IMP && ["red", "orange"].indexOf(player.skinTone) !== -1 && player.ears.type !== Ears.IMP && rand(3) === 0 && changes < changeLimit) {
 				outputText("\n\nYour head suddenly pulses in pain, causing you to double over and grip at it. You feel your ears elongate and curl in slightly, ending at points not much unlike elves. These, however, jut out of the side of your head and are coned, focusing on every sound around you. A realization strikes you. <b>Your ears are now that of an imp!</b>");
 				player.ears.type = Ears.IMP;
 				dynStats("cor", 2);
@@ -151,16 +151,16 @@ package classes.Items.Consumables
 		}
 			
 			//Horns, because why not?
-			if ((player.horns === 0 || player.hornType !== Horns.IMP) && changes < changeLimit && rand(2) === 0) {
-				if (player.horns === 0) {
+			if ((player.horns.value === 0 || player.horns.type !== Horns.IMP) && changes < changeLimit && rand(2) === 0) {
+				if (player.horns.value === 0) {
 					outputText("\n\nA small pair of pointed imp horns erupt from your forehead. They look kind of cute. <b>You have horns!</b>");
 				}
 				else {
 					outputText("\n\n");
 					outputText("Your horns shift, turning into two pointed imp horns.");
 				}
-				player.horns = 2;
-				player.hornType = Horns.IMP;
+				player.horns.value = 2;
+				player.horns.type = Horns.IMP;
 				dynStats("cor", 2);
 				changes++;
 			}

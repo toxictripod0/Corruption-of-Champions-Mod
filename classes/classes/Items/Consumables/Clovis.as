@@ -93,16 +93,16 @@ package classes.Items.Consumables
 				outputText(" <b>You now have sheep hooves!</b>");
 				changes++;
 			}
-			if (player.hornType !== Horns.SHEEP && player.hornType !== Horns.RAM && player.ears.type === Ears.SHEEP && rand(3) === 0 && changes < changeLimit) {
-					if (player.hornType !== Horns.NONE) {
+			if (player.horns.type !== Horns.SHEEP && player.horns.type !== Horns.RAM && player.ears.type === Ears.SHEEP && rand(3) === 0 && changes < changeLimit) {
+					if (player.horns.type !== Horns.NONE) {
 						outputText("\n\nYou feel your horns suddenly crumble, falling apart in large chunks until they flake away into nothing.");
 					} 
 					outputText("\n\nYou grip your head as a surge of pain hits you. A pair of horns slowly emerge from your skull, curling out and forward in a half circle. The ribbed curls remind you of the horns of the sheep back in Ingnam. <b>You now have sheep horns!</b>");
-				player.hornType = Horns.SHEEP;
-				player.horns = 1;
+				player.horns.type = Horns.SHEEP;
+				player.horns.value = 1;
 				changes++;
 			}
-			if (rand(3) === 0 && changes < changeLimit && player.legCount === 2 && player.lowerBody === LowerBody.CLOVEN_HOOFED && player.hornType === Horns.SHEEP && player.tailType === Tail.SHEEP && player.ears.type === Ears.SHEEP && !player.hasWool()) {
+			if (rand(3) === 0 && changes < changeLimit && player.legCount === 2 && player.lowerBody === LowerBody.CLOVEN_HOOFED && player.horns.type === Horns.SHEEP && player.tailType === Tail.SHEEP && player.ears.type === Ears.SHEEP && !player.hasWool()) {
 			    var sheepWoolColors: Array = [
 				"white",
 				"black",
@@ -123,16 +123,16 @@ package classes.Items.Consumables
 				}, true);
 				changes++;
 			}
-			if (player.hornType === Horns.SHEEP && player.hasWool() && player.femininity <= 45 && rand(3) === 0 && changes < changeLimit) {
+			if (player.horns.type === Horns.SHEEP && player.hasWool() && player.femininity <= 45 && rand(3) === 0 && changes < changeLimit) {
 					outputText("\n\nYou feel a familiar pain in your head. Your horns are growing! More ribbed horn emerges from your scalp, your horns slowly curling around fully as they thicken. Once a full ring of horn is complete they lengthen until the pointed ends face forward, tucked under your ears. You run your fingers over your curled horns in awe. These could seriously do some damage! Or at least stun your foes. <b>You now have the horns of a ram!</b>");
-				player.hornType = Horns.RAM;
-				player.horns = 2;
+				player.horns.type = Horns.RAM;
+				player.horns.value = 2;
 				changes++;
 			}
-			if (player.hornType === Horns.RAM && rand(3) === 0 && changes < changeLimit) {
+			if (player.horns.type === Horns.RAM && rand(3) === 0 && changes < changeLimit) {
 				outputText("\n\nYou groan and clutch your head as your horns stretch out, becoming even longer.");
-				player.hornType = Horns.RAM;
-				player.horns += (1 + rand(3));
+				player.horns.type = Horns.RAM;
+				player.horns.value += (1 + rand(3));
 				changes++;
 			}
 			if (player.hasWool() && player.hair.type !== Hair.WOOL && player.femininity >= 65 && rand(3) === 0 && changes < changeLimit) {

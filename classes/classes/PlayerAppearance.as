@@ -445,72 +445,72 @@ package classes
 				outputText("  Your mouth contains a thick, fleshy lizard tongue, bringing to mind the tongue of large predatory reptiles."
 				          +" It can reach up to one foot, its forked tips tasting the air as they flick at the end of each movement.");
 			//Horns
-			if (player.hornType == Horns.IMP) {
+			if (player.horns.type == Horns.IMP) {
 				outputText(" A set of pointed imp horns rest atop your head.");
 			}
 			//Demonic horns
-			if (player.hornType == Horns.DEMON) 
+			if (player.horns.type == Horns.DEMON) 
 			{
-				if (player.horns == 2) 
+				if (player.horns.value == 2) 
 					outputText("  A small pair of pointed horns has broken through the [skinDesc] on your forehead, proclaiming some demonic taint to any who see them.");
-				if (player.horns == 4) 
+				if (player.horns.value == 4) 
 					outputText("  A quartet of prominent horns has broken through your [skinDesc].  The back pair are longer, and curve back along your head.  The front pair protrude forward demonically.");
-				if (player.horns == 6) 
+				if (player.horns.value == 6) 
 					outputText("  Six horns have sprouted through your [skinDesc], the back two pairs curve backwards over your head and down towards your neck, while the front two horns stand almost "+numInchesOrCentimetres(8)+" long upwards and a little forward.");
-				if (player.horns >= 8) 
-					outputText("  A large number of thick demonic horns sprout through your [skinDesc], each pair sprouting behind the ones before.  The front jut forwards nearly "+numInchesOrCentimetres(10)+" while the rest curve back over your head, some of the points ending just below your ears.  You estimate you have a total of " + num2Text(player.horns) + " horns.");	
+				if (player.horns.value >= 8) 
+					outputText("  A large number of thick demonic horns sprout through your [skinDesc], each pair sprouting behind the ones before.  The front jut forwards nearly "+numInchesOrCentimetres(10)+" while the rest curve back over your head, some of the points ending just below your ears.  You estimate you have a total of " + num2Text(player.horns.value) + " horns.");	
 			}
 			//Minotaur horns
-			if (player.hornType == Horns.COW_MINOTAUR) 
+			if (player.horns.type == Horns.COW_MINOTAUR) 
 			{
-				if (player.horns < 3) 
+				if (player.horns.value < 3) 
 					outputText("  Two tiny horn-like nubs protrude from your forehead, resembling the horns of the young livestock kept by your village.");
-				if (player.horns >= 3 && player.horns < 6) 
+				if (player.horns.value >= 3 && player.horns.value < 6) 
 					outputText("  Two moderately sized horns grow from your forehead, similar in size to those on a young bovine.");
-				if (player.horns >= 6 && player.horns < 12) 
+				if (player.horns.value >= 6 && player.horns.value < 12) 
 					outputText("  Two large horns sprout from your forehead, curving forwards like those of a bull.");
-				if (player.horns >= 12 && player.horns < 20) 
+				if (player.horns.value >= 12 && player.horns.value < 20) 
 					outputText("  Two very large and dangerous looking horns sprout from your head, curving forward and over a foot long.  They have dangerous looking points.");
-				if (player.horns >= 20) 
+				if (player.horns.value >= 20) 
 					outputText("  Two huge horns erupt from your forehead, curving outward at first, then forwards.  The weight of them is heavy, and they end in dangerous looking points.");
 			}
 			//Lizard horns
-			if (player.horns > 0 && player.hornType == Horns.DRACONIC_X2) 
+			if (player.horns.value > 0 && player.horns.type == Horns.DRACONIC_X2) 
 			{
-				outputText("  A pair of " + numInchesOrCentimetres(player.horns) + " horns grow from the sides of your head, sweeping backwards and adding to your imposing visage.");
+				outputText("  A pair of " + numInchesOrCentimetres(player.horns.value) + " horns grow from the sides of your head, sweeping backwards and adding to your imposing visage.");
 			}
 			//Super lizard horns
-			if (player.hornType == Horns.DRACONIC_X4_12_INCH_LONG) 
+			if (player.horns.type == Horns.DRACONIC_X4_12_INCH_LONG) 
 				outputText("  Two pairs of horns, roughly a foot long, sprout from the sides of your head.  They sweep back and give you a fearsome look, almost like the dragons from your village's legends.");
 			//Antlers!
-			if (player.hornType == Horns.ANTLERS) 
+			if (player.horns.type == Horns.ANTLERS) 
 			{
-				if (player.horns > 0) 
-					outputText("  Two antlers, forking into " + num2Text(player.horns) + " points, have sprouted from the top of your head, forming a spiky, regal crown of bone.");
+				if (player.horns.value > 0) 
+					outputText("  Two antlers, forking into " + num2Text(player.horns.value) + " points, have sprouted from the top of your head, forming a spiky, regal crown of bone.");
 			}
-			if (player.hornType == Horns.SHEEP) {
-				if (player.horns == 1) 
+			if (player.horns.type == Horns.SHEEP) {
+				if (player.horns.value == 1) 
 					outputText("  A pair of small sheep horns sit atop your head. They curl out and upwards in a slight crescent shape.");
 				else
 					outputText("  A pair of large sheep horns sit atop your head. They curl out and upwards in a crescent shape.");
 			}
-			if (player.hornType == Horns.RAM) {
-				if (player.horns == 1) 
-					outputText("  A set of " + player.horns + " inch ram horns sit atop your head, curling around in a tight spiral at the side of your head before coming to an upwards hook around your ears.");
+			if (player.horns.type == Horns.RAM) {
+				if (player.horns.value == 1) 
+					outputText("  A set of " + player.horns.value + " inch ram horns sit atop your head, curling around in a tight spiral at the side of your head before coming to an upwards hook around your ears.");
 				else
-					outputText("  A set of large " + player.horns + " inch ram horns sit atop your head, curling around in a tight spiral at the side of your head before coming to an upwards hook around your ears.");
+					outputText("  A set of large " + player.horns.value + " inch ram horns sit atop your head, curling around in a tight spiral at the side of your head before coming to an upwards hook around your ears.");
 			}			
 
-			if (player.hornType == Horns.GOAT)
+			if (player.horns.type == Horns.GOAT)
 			{
-				if (player.horns == 1) 
+				if (player.horns.value == 1) 
 					outputText("  A pair of stubby goat horns sprout from the sides of your head.");
 				else
 					outputText("  A pair of tall-standing goat horns sprout from the sides of your head.  They are curved and patterned with ridges.");
 			}
-			if (player.hornType == Horns.RHINO)
+			if (player.horns.type == Horns.RHINO)
 			{
-				if (player.horns >= 2) {
+				if (player.horns.value >= 2) {
 					if (player.face.type == Face.RHINO)
 						outputText("  A second horn sprouts from your forehead just above the horn on your nose.");
 					else
@@ -521,10 +521,10 @@ package classes
 					outputText("  A single horn sprouts from your forehead.  It is conical and resembles a rhino's horn.  You estimate it to be about "+numInchesOrCentimetres(6)+" long.");
 				}
 			}
-			if (player.hornType == Horns.UNICORN)
+			if (player.horns.type == Horns.UNICORN)
 			{
 				outputText("  A single sharp nub of a horn sprouts from the center of your forehead.");
-				if (player.horns < 12)
+				if (player.horns.value < 12)
 					outputText("  You estimate it to be about "+numInchesOrCentimetres(6)+" long.");
 				else
 					outputText("  It has developed its own cute little spiral. You estimate it to be about "+numInchesOrCentimetres(12)+" long, "+numInchesOrCentimetres(2)+" thick and very sturdy. A very useful natural weapon.");

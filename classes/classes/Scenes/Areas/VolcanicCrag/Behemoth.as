@@ -69,8 +69,8 @@ package classes.Scenes.Areas.VolcanicCrag
 			this.hair.length = 8;
 			this.ears.type = Ears.ELFIN;
 			this.face.type = Face.CAT;
-			this.horns = 7;
-			this.hornType = Horns.DRACONIC_X2
+			this.horns.value = 7;
+			this.horns.type = Horns.DRACONIC_X2
 			this.lowerBody = LowerBody.CAT
 			this.tailType = Tail.BEHEMOTH
 			initStrTouSpeInte(125, 100, 80, 105);

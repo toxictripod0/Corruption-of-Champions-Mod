@@ -1040,13 +1040,13 @@ import classes.Items.*
 			showChangeOptions(bodyPartEditorHead, page, EAR_TYPE_CONSTANTS, changeEarType);
 		}
 		private function changeHornType(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.hornType = setIdx;
+			if (setIdx>=0) player.horns.type = setIdx;
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorHead, page, HORN_TYPE_CONSTANTS, changeHornType);
 		}
 		private function changeHornCount(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.horns = HORN_COUNT_CONSTANTS[setIdx];
+			if (setIdx>=0) player.horns.value = HORN_COUNT_CONSTANTS[setIdx];
 			menu();
 			dumpPlayerData();
 			tagDemosSkin();
@@ -1357,8 +1357,8 @@ import classes.Items.*
 			player.skinDesc = "fur";
 			player.underBody.restore(); // Restore the underbody for now
 			//Draconic TF
-			player.hornType = Horns.DRACONIC_X2;
-			player.horns = 4;
+			player.horns.type = Horns.DRACONIC_X2;
+			player.horns.value = 4;
 			player.wingType = Wings.BAT_LIKE_LARGE;
 			//Scorpion TF
 			player.tailType = Tail.SCORPION;
@@ -1386,8 +1386,8 @@ import classes.Items.*
 				desc: "ventral dragon scales"  // ... and only override the desc
 			});
 			player.tongueType = Tongue.DRACONIC;
-			player.hornType = Horns.DRACONIC_X2;
-			player.horns = 4;
+			player.horns.type = Horns.DRACONIC_X2;
+			player.horns.value = 4;
 			player.wingType = Wings.DRACONIC_LARGE;
 			doNext(styleHackMenu);
 		}

@@ -1484,7 +1484,7 @@ package classes.Scenes.Places.Bazaar
 				player.legCount = 2;
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.lowerBody == LowerBody.CLOVEN_HOOFED && player.hornType == Horns.GOAT && player.face.type != Face.HUMAN) {
+			if (rand(3) == 0 && changes < changeLimit && player.lowerBody == LowerBody.CLOVEN_HOOFED && player.horns.type == Horns.GOAT && player.face.type != Face.HUMAN) {
 				outputText("\n\nYour face grows warm as suddenly your vision is engulfed in smoke, coughing and beating the smoke back you noticed a marked change in your features. Touching yourself you confirm you have a <b>normal human shaped face once again</b>.");
 				player.face.type = Face.HUMAN;
 				changes++;
@@ -1495,20 +1495,20 @@ package classes.Scenes.Places.Bazaar
 				player.ears.type = Ears.ELFIN;
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.hornType == Horns.NONE) {
+			if (rand(3) == 0 && changes < changeLimit && player.horns.type == Horns.NONE) {
 				outputText("\n\nYou begin to feel a prickling sensation at the top of your head. Reaching up to inspect it, you find a pair of hard stubs. <b>You now have a pair of goat horns.</b>");
-				player.hornType = Horns.GOAT;
+				player.horns.type = Horns.GOAT;
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.hornType != Horns.GOAT) {
+			if (rand(3) == 0 && changes < changeLimit && player.horns.type != Horns.GOAT) {
 				outputText("\n\nYou begin to feel an odd itching sensation as you feel your horns repositioning. Once it's over, you reach up and find a pair of hard stubs. <b>You now have a pair of goat horns.</b>");
-				player.horns = 1;
-				player.hornType = Horns.GOAT;
+				player.horns.value = 1;
+				player.horns.type = Horns.GOAT;
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.hornType == Horns.GOAT && player.horns == 1) {
+			if (rand(3) == 0 && changes < changeLimit && player.horns.type == Horns.GOAT && player.horns.value == 1) {
 				outputText("\n\nYou feel heat blooming in your forehead. Confused you reach up to find your goat horns growing and thickening into a pair of horns with ridges and a slight curve. <b>You now have a pair of tall-standing goat horns.</b>");
-				player.horns = 2;
+				player.horns.value = 2;
 				changes++;
 			}
 			if (rand(4) == 0 && changes < changeLimit && player.antennae.type != Antennae.NONE) {
@@ -1578,7 +1578,7 @@ package classes.Scenes.Places.Bazaar
 				outputText("\n\nYour skin feels clammy and a little rubbery. You touch yourself experimentally and notice that you can barely feel the pressure from your fingertips. Consumed with curiosity, you punch yourself lightly in the arm; the most you feel is a dull throb!");
 				dynStats("sen", -1);
 			}
-			if (rand(3) == 0 && player.inte > 15 && player.face.type == Face.RHINO && player.horns == 2) {
+			if (rand(3) == 0 && player.inte > 15 && player.face.type == Face.RHINO && player.horns.value == 2) {
 				outputText("\n\nYou shake your head and struggle to gather your thoughts, feeling a bit slow.");
 				dynStats("int", -1);
 			}
@@ -1593,15 +1593,15 @@ package classes.Scenes.Places.Bazaar
 			if (rand(5) == 0) mutations.updateOvipositionPerk(tfSource);
 			// Special TFs
 			//------------
-			if (rand(4) == 0 && changes < changeLimit && player.hornType != Horns.UNICORN && player.ears.type == Ears.HORSE && (player.lowerBody == LowerBody.HOOFED || player.lowerBody == LowerBody.CLOVEN_HOOFED || player.horseScore() >= 3)) {
+			if (rand(4) == 0 && changes < changeLimit && player.horns.type != Horns.UNICORN && player.ears.type == Ears.HORSE && (player.lowerBody == LowerBody.HOOFED || player.lowerBody == LowerBody.CLOVEN_HOOFED || player.horseScore() >= 3)) {
 				outputText("\n\nYou begin to feel an annoying tingling sensation at the top of your head. Reaching up to inspect it you find the <b>sharp nub of a horn protruding from the center of your forehead</b> and growing. Once it's complete you estimate it to be about six inches long.");
-				player.hornType = Horns.UNICORN;
-				player.horns = 6;
+				player.horns.type = Horns.UNICORN;
+				player.horns.value = 6;
 				changes++;
 			}
-			if (rand(4) == 0 && changes < changeLimit && player.hornType == Horns.UNICORN && player.horns > 0 && player.horns < 12) {
+			if (rand(4) == 0 && changes < changeLimit && player.horns.type == Horns.UNICORN && player.horns.value > 0 && player.horns.value < 12) {
 				outputText("\n\nYou begin to feel an intense pinching sensation in your central horn as it pushes out, growing longer and larger. You reach up and find <b>it has developed its own cute little spiral,</b> you estimate it to be about a foot long, two inches thick and very sturdy, a very useful natural weapon.");
-				player.horns = 12;
+				player.horns.value = 12;
 				changes++;
 			}
 			// Normal TFs
@@ -1739,18 +1739,18 @@ package classes.Scenes.Places.Bazaar
 			}
 			//Gain rhino horns
 			//Tier 1
-			if (rand(4) == 0 && changes < changeLimit && player.face.type == Face.RHINO && player.hornType != Horns.RHINO) {
+			if (rand(4) == 0 && changes < changeLimit && player.face.type == Face.RHINO && player.horns.type != Horns.RHINO) {
 				outputText("\n\nYou begin to feel an annoying tingling sensation at the top of your head. Reaching up to inspect it you find the sharp nub of a horn protruding from the center of your forehead and growing. Once it's complete you estimate it to be about six inches long. If it were sharper and a little longer it would make a useful natural weapon.");
-				player.horns = 1;
-				player.hornType = Horns.RHINO;
+				player.horns.value = 1;
+				player.horns.type = Horns.RHINO;
 				changes++;
 			}
 			//Tier 2
-			if (rand(4) == 0 && changes < changeLimit && player.face.type == Face.RHINO && player.hornType == Horns.RHINO && player.horns == 1) {
+			if (rand(4) == 0 && changes < changeLimit && player.face.type == Face.RHINO && player.horns.type == Horns.RHINO && player.horns.value == 1) {
 				outputText("\n\nYou begin to feel an annoying tingling sensation at the edge of your nose, above your field of vision. Reaching up you feel the sharp edge of a curved horn growing out the edge of your face. The itchy tingle continues as you feel both of your horns become sharp and tall. You estimate your older horn to be a mere seven inches and your new horn to be around a foot long. They’ll be useful natural weapons.");
 				outputText("\n<b>(Gained physical special: Upheaval! Any time you lose your rhino face or horns, you will lose this ability.)</b>");
-				player.horns = 2;
-				player.hornType = Horns.RHINO;
+				player.horns.value = 2;
+				player.horns.type = Horns.RHINO;
 				changes++;
 			}
 			// Other Changes

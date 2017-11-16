@@ -331,12 +331,12 @@ package classes.Items.Consumables
 			if (changes < changeLimit && rand(3) === 0 && player.ears.type === Ears.COW && player.tailType === Tail.COW) {
 				temp = 1;
 				//New horns or expanding mino horns
-				if (player.hornType === Horns.COW_MINOTAUR || player.hornType === Horns.NONE) {
+				if (player.horns.type === Horns.COW_MINOTAUR || player.horns.type === Horns.NONE) {
 					//Get bigger if player has horns
-					if (player.hornType === Horns.COW_MINOTAUR) {
+					if (player.horns.type === Horns.COW_MINOTAUR) {
 						//Fems horns don't get bigger.
 						if (player.vaginas.length > 0) {
-							if (player.horns > 4) {
+							if (player.horns.value > 4) {
 								outputText("\n\nYou feel a pressure in your head around your horns, but they don't grow any larger.  ");
 								outputText("Your headache clears as lust washes through you unnaturally.  You feel as if you haven't cum in months.");
 								player.hoursSinceCum += 200;
@@ -344,23 +344,23 @@ package classes.Items.Consumables
 							}
 							else {
 								outputText("\n\nYour small horns get a bit bigger, stopping as medium sized nubs.");
-								player.horns += 3;
+								player.horns.value += 3;
 							}
 							changes++;
 						}
 						//Males horns get 'uge.
 						else {
 							temp = 1 + rand(3);
-							player.horns += temp;
+							player.horns.value += temp;
 							if (temp === 0) changes--;
 							if (temp === 1) outputText("\n\nAn aching pressure builds in your temples as you feel your horns push another inch of length from your skull.  ");
 							if (temp === 2) outputText("\n\nA powerful headache momentarily doubles you over.  With painful slowness, you feel your horns push another two inches of length out from your brow, gradually thickening as they grow.  ");
 							if (temp === 3) outputText("\n\nAgony overwhelms you as a headache of terrifying intensity sweeps through your skull.  You squeeze your eyes shut from the pain, but it does little to help.  The torture intensifies before finally diminishing as you feel an inch or two of new horn force its way out of your forehead.  The headache remains despite this, and desperate for relief, you grab hold of your horns and tug, pulling another inch of new horn free.  At last the pain fades, leaving you with significantly enhanced head-spikes.  ");
-							if (player.horns < 3) outputText("They are the size of tiny nubs.");
-							if (player.horns >= 3 && player.horns < 6) outputText("They are similar to what you would see on a young bull.");
-							if (player.horns >= 6 && player.horns < 12) outputText("They look like the horns on a grown bull, big enough and dangerous enough to do some damage.");
-							if (player.horns >= 12 && player.horns < 20) outputText("They are large and wicked looking.");
-							if (player.horns >= 20) outputText("They are huge, heavy, and tipped with dangerous points.");
+							if (player.horns.value < 3) outputText("They are the size of tiny nubs.");
+							if (player.horns.value >= 3 && player.horns.value < 6) outputText("They are similar to what you would see on a young bull.");
+							if (player.horns.value >= 6 && player.horns.value < 12) outputText("They look like the horns on a grown bull, big enough and dangerous enough to do some damage.");
+							if (player.horns.value >= 12 && player.horns.value < 20) outputText("They are large and wicked looking.");
+							if (player.horns.value >= 20) outputText("They are huge, heavy, and tipped with dangerous points.");
 							//boys get a cum refill sometimes
 							if (rand(2) === 0 && changes < changeLimit) {
 								outputText("  Your headache clears as lust washes through you unnaturally.  You feel as if you haven't cum in months.");
@@ -373,15 +373,15 @@ package classes.Items.Consumables
 					//If no horns yet..
 					else {
 						outputText("\n\nWith painful pressure, the skin on your forehead splits around two tiny nub-like horns, similar to those you would see on the cattle back in your homeland.");
-						player.hornType = Horns.COW_MINOTAUR;
-						player.horns = 2;
+						player.horns.type = Horns.COW_MINOTAUR;
+						player.horns.value = 2;
 						changes++;
 					}
 				}
 				//Not mino horns, change to cow-horns
-				if (player.hornType === Horns.DEMON || player.hornType > Horns.COW_MINOTAUR) {
+				if (player.horns.type === Horns.DEMON || player.horns.type > Horns.COW_MINOTAUR) {
 					outputText("\n\nYour horns vibrate and shift as if made of clay, reforming into two horns with a bovine-like shape.");
-					player.hornType = Horns.COW_MINOTAUR;
+					player.horns.type = Horns.COW_MINOTAUR;
 					changes++;
 				}
 			}

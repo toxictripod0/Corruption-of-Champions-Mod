@@ -843,7 +843,7 @@ use namespace kGAMECLASS;
 				else if (gender == 0 || gender == 3) {
 					race = "sheep-morph";
 				}
-				else if (gender == 1 && hornType == 10) {
+				else if (gender == 1 && horns.type == 10) {
 					race = "ram-morph";
 				}
 				else {
@@ -893,7 +893,7 @@ use namespace kGAMECLASS;
 				if (isTaur())
 					race = "centaur-morph";
 				else
-					if (hornType == Horns.UNICORN) {
+					if (horns.type == Horns.UNICORN) {
 						if (wingType == Wings.FEATHERED_LARGE)
 							race = "alicorn";
 						else
@@ -1014,12 +1014,12 @@ use namespace kGAMECLASS;
 
 			if (lowerBody == LowerBody.HOOFED && isTaur()) {
 				if (wingType == Wings.FEATHERED_LARGE) {
-					if (hornType == Horns.UNICORN)
+					if (horns.type == Horns.UNICORN)
 						race = "alicorn-taur";
 					else
 						race = "pegataur";
 				} else {
-					if (hornType == Horns.UNICORN)
+					if (horns.type == Horns.UNICORN)
 						race = "unicorn-taur";
 					else {
 						if (horseScore() >= 5)
@@ -1099,7 +1099,7 @@ use namespace kGAMECLASS;
 				impCounter++;
 			if (hasPlainSkin() && ["red", "orange"].indexOf(skinTone) != -1)
 				impCounter++;
-			if (hornType == Horns.IMP)
+			if (horns.type == Horns.IMP)
 				impCounter++;
 			if (arms.type == Arms.PREDATOR && claws.type == Claws.IMP)
 				impCounter++;
@@ -1122,9 +1122,9 @@ use namespace kGAMECLASS;
 		public function demonScore():Number
 		{
 			var demonCounter:Number = 0;
-			if (hornType == Horns.DEMON && horns > 0)
+			if (horns.type == Horns.DEMON && horns.value > 0)
 				demonCounter++;
-			if (hornType == Horns.DEMON && horns > 4)
+			if (horns.type == Horns.DEMON && horns.value > 4)
 				demonCounter++;
 			if (tailType == Tail.DEMONIC)
 				demonCounter++;
@@ -1149,7 +1149,7 @@ use namespace kGAMECLASS;
 				humanCounter++;
 			if (skinType == Skin.PLAIN)
 				humanCounter++;
-			if (horns == Horns.NONE)
+			if (horns.type == Horns.NONE)
 				humanCounter++;
 			if (tailType == Tail.NONE)
 				humanCounter++;
@@ -1174,7 +1174,7 @@ use namespace kGAMECLASS;
 				minoCounter++;
 			if (tailType == Tail.COW)
 				minoCounter++;
-			if (hornType == Horns.COW_MINOTAUR)
+			if (horns.type == Horns.COW_MINOTAUR)
 				minoCounter++;
 			if (lowerBody == LowerBody.HOOFED && minoCounter > 0)
 				minoCounter++;
@@ -1203,7 +1203,7 @@ use namespace kGAMECLASS;
 				minoCounter++;
 			if (tailType == Tail.COW)
 				minoCounter++;
-			if (hornType == Horns.COW_MINOTAUR)
+			if (horns.type == Horns.COW_MINOTAUR)
 				minoCounter++;
 			if (face.type == Face.HUMAN && minoCounter > 0)
 				minoCounter++;
@@ -1580,7 +1580,7 @@ use namespace kGAMECLASS;
 				dragonCounter++;
 			if (hasDragonHorns())
 				dragonCounter++;
-			if (hornType == Horns.DRACONIC_X4_12_INCH_LONG)
+			if (horns.type == Horns.DRACONIC_X4_12_INCH_LONG)
 				dragonCounter++;
 			if (hasDragonfire())
 				dragonCounter++;
@@ -1721,9 +1721,9 @@ use namespace kGAMECLASS;
 			var sheepCounter:Number = 0;
 			if (ears.type == Ears.SHEEP)
 				sheepCounter++;
-			if (hornType == Horns.SHEEP)
+			if (horns.type == Horns.SHEEP)
 				sheepCounter++;
-			if (hornType == Horns.RAM)
+			if (horns.type == Horns.RAM)
 				sheepCounter++;
 			if (tailType == Tail.SHEEP)
 				sheepCounter++;
@@ -1872,7 +1872,7 @@ use namespace kGAMECLASS;
 				rhinoCounter++;
 			if (face.type == Face.RHINO)
 				rhinoCounter++;
-			if (hornType == Horns.RHINO)
+			if (horns.type == Horns.RHINO)
 				rhinoCounter++;
 			if (rhinoCounter >= 2 && skinTone == "gray")
 				rhinoCounter++;
@@ -1912,7 +1912,7 @@ use namespace kGAMECLASS;
 				deerCounter++;
 			if (lowerBody == LowerBody.CLOVEN_HOOFED)
 				deerCounter++;
-			if (hornType == Horns.ANTLERS && horns >= 4)
+			if (horns.type == Horns.ANTLERS && horns.value >= 4)
 				deerCounter++;
 			if (deerCounter >= 2 && hasFur())
 				deerCounter++;
@@ -1955,7 +1955,7 @@ use namespace kGAMECLASS;
 			if (lowerBody == LowerBody.CAT)
 				catCounter++;
 			if (catCounter >= 4) {
-				if (hornType == Horns.DEMON || hasDragonHorns())
+				if (horns.type == Horns.DEMON || hasDragonHorns())
 					catCounter++;
 				if (hasLeatheryWings())
 					catCounter++;

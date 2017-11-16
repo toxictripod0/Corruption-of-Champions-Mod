@@ -1513,15 +1513,15 @@ public class CombatAbilities extends BaseContent
 				addButton(button++, "Kick", kick).hint("Attempt to kick an enemy using your powerful lower body. \n\nFatigue Cost: " + player.physicalCost(15));
 			}
 			//Gore if mino horns
-			if (player.hornType == Horns.COW_MINOTAUR && player.horns >= 6) {
+			if (player.horns.type == Horns.COW_MINOTAUR && player.horns.value >= 6) {
 				addButton(button++, "Gore", goreAttack).hint("Lower your head and charge your opponent, attempting to gore them on your horns. This attack is stronger and easier to land with large horns. \n\nFatigue Cost: " + player.physicalCost(15));
 			}
 			//Rams Attack - requires rams horns
-			if (player.hornType == Horns.RAM && player.horns >= 2) {
+			if (player.horns.type == Horns.RAM && player.horns.value >= 2) {
 				addButton(button++, "Horn Stun", ramsStun).hint("Use a ramming headbutt to try and stun your foe. \n\nFatigue Cost: " + player.physicalCost(10));
 			}
 			//Upheaval - requires rhino horn
-			if (player.hornType == Horns.RHINO && player.horns >= 2 && player.face.type == Face.RHINO) {
+			if (player.horns.type == Horns.RHINO && player.horns.value >= 2 && player.face.type == Face.RHINO) {
 				addButton(button++, "Upheaval", upheavalAttack).hint("Send your foe flying with your dual nose mounted horns. \n\nFatigue Cost: " + player.physicalCost(15));
 			}
 			//Infest if infested
@@ -2063,15 +2063,15 @@ public class CombatAbilities extends BaseContent
 			}
 			//Bigger horns = better success chance.
 			//Small horns - 60% hit
-			if (player.horns >= 6 && player.horns < 12) {
+			if (player.horns.value >= 6 && player.horns.value < 12) {
 				temp = 60;
 			}
 			//bigger horns - 75% hit
-			if (player.horns >= 12 && player.horns < 20) {
+			if (player.horns.value >= 12 && player.horns.value < 20) {
 				temp = 75;
 			}
 			//huge horns - 90% hit
-			if (player.horns >= 20) {
+			if (player.horns.value >= 20) {
 				temp = 80;
 			}
 			//Vala dodgy bitch!
@@ -2084,8 +2084,8 @@ public class CombatAbilities extends BaseContent
 			temp += player.spe/2;
 			//Hit & calculation
 			if (temp >= rand(100)) {
-				var horns:Number = player.horns;
-				if (player.horns > 40) player.horns = 40;
+				var horns:Number = player.horns.value;
+				if (player.horns.value > 40) player.horns.value = 40;
 				damage = int(player.str + horns * 2 * (monster.damagePercent() / 100)); //As normal attack + horn length bonus
 				//normal
 				if (rand(4) > 0) {
@@ -2164,19 +2164,19 @@ public class CombatAbilities extends BaseContent
 			}
 			//Bigger horns = better chance of not missing
 			//Tiny horns - 30% hit
-			if (player.horns < 6) {
+			if (player.horns.value < 6) {
 				temp = 30;
 			}
 			//Small horns - 60% hit
-			if (player.horns >= 6 && player.horns < 12) {
+			if (player.horns.value >= 6 && player.horns.value < 12) {
 				temp = 60;
 			}
 			//bigger horns - 75% hit
-			if (player.horns >= 12 && player.horns < 20) {
+			if (player.horns.value >= 12 && player.horns.value < 20) {
 				temp = 75;
 			}
 			//huge horns - 90% hit
-			if (player.horns >= 20) {
+			if (player.horns.value >= 20) {
 				temp = 80;
 			}
 			//Vala, who is a Fuckening

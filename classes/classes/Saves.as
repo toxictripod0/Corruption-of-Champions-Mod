@@ -886,8 +886,8 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile.data.earType = player.ears.type;
 		saveFile.data.earValue = player.ears.value;
 		saveFile.data.antennae = player.antennae.type;
-		saveFile.data.horns = player.horns;
-		saveFile.data.hornType = player.hornType;
+		saveFile.data.horns = player.horns.value;
+		saveFile.data.hornType = player.horns.type;
 		saveFile.data.underBody = player.underBody.toObject();
 		saveFile.data.neck = player.neck.toObject();
 		saveFile.data.rearBody = player.rearBody.toObject();
@@ -1760,11 +1760,11 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			player.antennae.type = Antennae.NONE;
 		else
 			player.antennae.type = saveFile.data.antennae;
-		player.horns = saveFile.data.horns;
+		player.horns.value = saveFile.data.horns;
 		if (saveFile.data.hornType == undefined)
-			player.hornType = Horns.NONE;
+			player.horns.type = Horns.NONE;
 		else
-			player.hornType = saveFile.data.hornType;
+			player.horns.type = saveFile.data.hornType;
 
 		if (isObject(saveFile.data.underBody))
 			player.underBody.setAllProps(saveFile.data.underBody);

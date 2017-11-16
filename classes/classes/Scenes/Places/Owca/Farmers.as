@@ -59,8 +59,8 @@ package classes.Scenes.Places.Owca
 			this.temperment = TEMPERMENT_LOVE_GRAPPLES;
 			this.level = 10;
 			this.gems = rand(25) +40;
-			this.hornType = Horns.DEMON;
-			this.horns = 2;
+			this.horns.type = Horns.DEMON;
+			this.horns.value = 2;
 			this.tailType = Tail.DEMONIC;
 			this.drop = NO_DROP;
 			checkMonster();

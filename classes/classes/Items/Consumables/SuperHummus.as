@@ -54,8 +54,8 @@ package classes.Items.Consumables
 			player.tailType = Tail.NONE;
 			player.tongueType = Tongue.HUMAN;
 			player.tailRecharge = 0;
-			player.horns = 0;
-			player.hornType = Horns.NONE;
+			player.horns.value = 0;
+			player.horns.type = Horns.NONE;
 			player.ears.type = Ears.HUMAN;
 			player.skinType = Skin.PLAIN;
 			player.skinDesc = "skin";

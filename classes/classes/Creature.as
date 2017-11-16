@@ -401,19 +401,7 @@ import mx.logging.ILogger;
 		public var neck:Neck = new Neck();
 		public var underBody:UnderBody = new UnderBody();
 		public var ears:Ears = new Ears();
-		
-		/*Horntype
-		1 - demonic
-		2 - minotaur (cowlike)
-		3 - Draconic/Lizard
-		4 - Double draconic
-		5 - Antlers
-		6 - Goat*/
-		public var hornsPart:Horns = new Horns();
-		public function get hornType():Number { return hornsPart.type; }
-		public function set hornType(value:Number):void { hornsPart.type = value; }
-		public function get horns():Number { return hornsPart.value; }
-		public function set horns(value:Number):void { hornsPart.value = value; }
+		public var horns:Horns = new Horns();
 
 		/*Wingtype
 		0 - none
@@ -645,7 +633,7 @@ import mx.logging.ILogger;
 				"weaponValue", "armorValue",
 				"lust", "fatigue",
 				"level", "gems",
-				"tailVenom", "tailRecharge", "horns",
+				"tailVenom", "tailRecharge", "horns.value",
 				"HP", "XP"
 			]);
 			// 2.2. non-empty String fields
@@ -682,10 +670,10 @@ import mx.logging.ILogger;
 				if (tailVenom != 0) error += "No tail but tailVenom = "+tailVenom+". ";
 			}
 			// 4.4. horns
-			if (hornType == Horns.NONE){
-				if (horns>0) error += "horns > 0 but hornType = Horns.NONE. ";
+			if (horns.type == Horns.NONE){
+				if (horns.value>0) error += "horns.value > 0 but horns.type = Horns.NONE. ";
 			} else {
-				if (horns==0) error += "Has horns but their number 'horns' = 0. ";
+				if (horns.value==0) error += "Has horns but their number 'horns' = 0. ";
 			}
 			return error;
 		}

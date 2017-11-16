@@ -863,7 +863,7 @@ import classes.GlobalFlags.kFLAGS;
 		
 		public function hornDescript():String
 		{
-			return Appearance.DEFAULT_HORNS_NAMES[hornType] + " horns";
+			return Appearance.DEFAULT_HORNS_NAMES[horns.type] + " horns";
 		}
 
 		public function tailDescript():String

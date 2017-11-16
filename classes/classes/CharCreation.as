@@ -223,7 +223,7 @@
 			player.fertility = 5;
 			player.fatigue = 0;
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) {
-				player.horns = 0;
+				player.horns.value = 0;
 				player.tallness = 60;
 				player.tailVenom = 0;
 				player.tailRecharge = 0;

@@ -275,7 +275,7 @@ public function loseOrSubmitToVapula():void {
 	//[if antennae]
 	if (player.antennae.type > Antennae.NONE) outputText("  Your antennae are being harshly pulled and twisted; some imps, in a crazy show of libertinism, start inserting your sensitive peduncles down their bloated urethrae. The intimate friction and the sudden jolts when the internal walls slather your appendages in slick, hot pre-cum are driving you mad with irregular shots of unbearable pleasure.");
 	//[if horns]
-	if (player.horns > 0) outputText("  You feel your horns being used as leverage to slap your head with even more rock-hard dick.  The impacts stun you until your whole forehead feels numb and coated with a mixture of ballsweat and pre-cum.");
+	if (player.horns.value > 0) outputText("  You feel your horns being used as leverage to slap your head with even more rock-hard dick.  The impacts stun you until your whole forehead feels numb and coated with a mixture of ballsweat and pre-cum.");
 	//[if vagina
 	if (player.hasVagina()) {
 		outputText("\n\nYou suddenly feel a sharp sensation: your womanhood is finally being penetrated.");

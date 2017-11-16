@@ -182,8 +182,8 @@ package classes.Scenes.NPCs
 			this.skinTone = "red";
 			this.hair.color = "black";
 			this.hair.length = 15;
-			this.hornType = Horns.DRACONIC_X4_12_INCH_LONG;
-			this.horns = 4;
+			this.horns.type = Horns.DRACONIC_X4_12_INCH_LONG;
+			this.horns.value = 4;
 			this.wingType = Wings.DRACONIC_LARGE;
 			this.tailType = Tail.DRACONIC;
 			initStrTouSpeInte(75 + Math.floor(game.emberScene.emberSparIntensity() / 3), 75 + Math.floor(game.emberScene.emberSparIntensity() / 3), 75 + Math.floor(game.emberScene.emberSparIntensity() / 3), 75 + Math.floor(game.emberScene.emberSparIntensity() / 3));

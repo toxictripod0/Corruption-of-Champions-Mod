@@ -440,7 +440,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			else outputText(" asks, \"<i>I hope you don't mind slurping down a little cock, because you're going to anyway.</i>\"");
 			
 			outputText("\n\nThe second herm grabs you by the");
-			if (player.hornType != 0) outputText(" horns");
+			if (player.horns.type != 0) outputText(" horns");
 			else outputText(" head");
 			outputText(" and sidles forward, ramming her glans into your mouth and down the back of your throat.  You can feel her glans pulsing deep inside you, and as soon as the herm starts moaning, the centaur starts trotting forward again.  Amazingly, having her holding you up makes it easy to maintain your position and keep your dick bouncing in that hot twat. Fuck it! You're too horny to care anymore.");
 

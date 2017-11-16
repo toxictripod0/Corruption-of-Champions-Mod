@@ -809,7 +809,7 @@ package classes.Scenes.Dungeons
 			outputText("Zetaz is just getting started.  Before you have time to react to your predicament, the next bottle is empty and thicker cream is flooding your mouth.  You don't swallow for a moment, so the imp pours another bottle in, backing up more of the fluid.  Faced with a choice between corruption and drowning, you try to gulp down enough liquid to breathe.  " + player.SMultiCockDesc() + " puffs and swells, spurting thick ropes of cum as it adds a half-dozen inches to its length.  Your eyes cross from the sudden change, but you get a fresh breath before the imps begin to pour several bottles in at once.\n\n");
 			
 			outputText("You swallow in loud, greedy gulps as your body is slowly warped by the fluids you're consuming.  Though your " + player.allBreastsDescript() + " and " + player.multiCockDescriptLight() + " sometimes shrink, they grow far more often, and after a few minutes of force-feeding, you're pleading for more each time they stop to let you breath.  You're a mess of sexual fluids, your tits are squirting milk, and your pussy squirts from every touch.  Demon horns are swelling from your brow, curling back over your ears");
-			if (player.horns > 0) outputText(" and adding to your existing pair");
+			if (player.horns.value > 0) outputText(" and adding to your existing pair");
 			else outputText(" and giving you an exotic, tainted appearance");
 			outputText(".  ");
 			if (player.lowerBody != LowerBody.DEMONIC_HIGH_HEELS) outputText("Your " + player.feet() + " have been changing throughout the ordeal, but you didn't notice your " + player.legs() + " becoming such lissom, lengthy legs, or your heels growing long, high-heel-like spikes.  ");
