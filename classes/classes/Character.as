@@ -298,36 +298,25 @@ import classes.GlobalFlags.kFLAGS;
 
 		public function hasMuzzle():Boolean
 		{
-			if (faceType == Face.HORSE || faceType == Face.DOG || faceType == Face.CAT || faceType == Face.LIZARD || faceType == Face.KANGAROO || faceType == Face.FOX || faceType == Face.DRAGON || faceType == Face.RHINO || faceType == Face.ECHIDNA || faceType == Face.DEER || faceType == Face.WOLF)
-				return true;
-			return false;
+			return [Face.HORSE, Face.DOG, Face.CAT, Face.LIZARD, Face.KANGAROO, Face.FOX, Face.DRAGON, Face.RHINO, Face.ECHIDNA, Face.DEER, Face.WOLF].indexOf(face.type) !== -1;
 		}
 		
 		public function faceDescript():String
 		{
 			var stringo:String = "";
-			//0 - human
-			//5 - Human w/Naga fangz
-			//8 - bunnah faceahhh bunbun
-			//10 - spidah-face (humanish)
-			if (faceType == 0)
+			if (face.type == Face.HUMAN)
 				return "face";
-			//1 - horse
-			//2 - dogface
-			//6 - kittah face
-			//7 - lizard face (durned argonians!)
-			//9 - kangaface
 			if (hasMuzzle())
 			{
-				if (int(Math.random() * 3) == 0 && faceType == Face.HORSE)
+				if (int(Math.random() * 3) == 0 && face.type == Face.HORSE)
 					stringo = "long ";
-				if (int(Math.random() * 3) == 0 && faceType == Face.CAT)
+				if (int(Math.random() * 3) == 0 && face.type == Face.CAT)
 					stringo = "feline ";
-				if (int(Math.random() * 3) == 0 && faceType == Face.RHINO)
+				if (int(Math.random() * 3) == 0 && face.type == Face.RHINO)
 					stringo = "rhino ";
-				if (int(Math.random() * 3) == 0 && (faceType == Face.LIZARD || faceType == Face.DRAGON))
+				if (int(Math.random() * 3) == 0 && (face.type == Face.LIZARD || face.type == Face.DRAGON))
 					stringo = "reptilian ";
-				if (int(Math.random() * 3) == 0 && faceType == Face.WOLF)
+				if (int(Math.random() * 3) == 0 && face.type == Face.WOLF)
 					stringo = "canine ";
 				switch(rand(3)) {
 					case 0:
@@ -341,7 +330,7 @@ import classes.GlobalFlags.kFLAGS;
 				}
 			}
 			//3 - cowface
-			if (faceType == Face.COW_MINOTAUR)
+			if (face.type == Face.COW_MINOTAUR)
 			{
 				if (Math.floor(Math.random() * 4) == 0)
 					stringo = "bovine ";
@@ -350,16 +339,16 @@ import classes.GlobalFlags.kFLAGS;
 				return stringo + "face";
 			}
 			//4 - sharkface-teeth
-			if (faceType == Face.SHARK_TEETH)
+			if (face.type == Face.SHARK_TEETH)
 			{
 				if (Math.floor(Math.random() * 4) == 0)
 					stringo = "angular ";
 				return stringo + "face";
 			}
-			if (faceType == Face.PIG || faceType == Face.BOAR)
+			if (face.type == Face.PIG || face.type == Face.BOAR)
 			{
 				if (Math.floor(Math.random() * 4) == 0)
-					stringo = (faceType == Face.PIG ? "pig" : "boar") + "-like ";
+					stringo = (face.type == Face.PIG ? "pig" : "boar") + "-like ";
 				if (Math.floor(Math.random() * 4) == 0)
 					return stringo + "snout";
 				return stringo + "face";

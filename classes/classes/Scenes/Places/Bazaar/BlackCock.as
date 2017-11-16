@@ -1484,9 +1484,9 @@ package classes.Scenes.Places.Bazaar
 				player.legCount = 2;
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.lowerBody == LowerBody.CLOVEN_HOOFED && player.hornType == Horns.GOAT && player.faceType != Face.HUMAN) {
+			if (rand(3) == 0 && changes < changeLimit && player.lowerBody == LowerBody.CLOVEN_HOOFED && player.hornType == Horns.GOAT && player.face.type != Face.HUMAN) {
 				outputText("\n\nYour face grows warm as suddenly your vision is engulfed in smoke, coughing and beating the smoke back you noticed a marked change in your features. Touching yourself you confirm you have a <b>normal human shaped face once again</b>.");
-				player.faceType = Face.HUMAN;
+				player.face.type = Face.HUMAN;
 				changes++;
 			}
 			if (rand(4) == 0 && changes < changeLimit && !player.hasScales() && player.ears.type != Ears.ELFIN) {
@@ -1578,7 +1578,7 @@ package classes.Scenes.Places.Bazaar
 				outputText("\n\nYour skin feels clammy and a little rubbery. You touch yourself experimentally and notice that you can barely feel the pressure from your fingertips. Consumed with curiosity, you punch yourself lightly in the arm; the most you feel is a dull throb!");
 				dynStats("sen", -1);
 			}
-			if (rand(3) == 0 && player.inte > 15 && player.faceType == Face.RHINO && player.horns == 2) {
+			if (rand(3) == 0 && player.inte > 15 && player.face.type == Face.RHINO && player.horns == 2) {
 				outputText("\n\nYou shake your head and struggle to gather your thoughts, feeling a bit slow.");
 				dynStats("int", -1);
 			}
@@ -1725,9 +1725,9 @@ package classes.Scenes.Places.Bazaar
 				changes++;
 			}
 			//Change face to rhino
-			if (rand(4) == 0 && changes < changeLimit && player.ears.type == Ears.RHINO && player.skinTone == "gray" && player.faceType != Face.RHINO) {
+			if (rand(4) == 0 && changes < changeLimit && player.ears.type == Ears.RHINO && player.skinTone == "gray" && player.face.type != Face.RHINO) {
 				outputText("\n\nYour face suddenly goes numb. You begin to hear bone cracking as you vision suddenly shifts as you face stretches out and thickens. When your face is done growing you can see the edges of your elongated mouth and noise in the center of your field of vision. They barely impede your vision though. <b>You now have a rhino face.</b>");
-				player.faceType = Face.RHINO;
+				player.face.type = Face.RHINO;
 				changes++;
 			}
 			//Change tail to rhino
@@ -1739,14 +1739,14 @@ package classes.Scenes.Places.Bazaar
 			}
 			//Gain rhino horns
 			//Tier 1
-			if (rand(4) == 0 && changes < changeLimit && player.faceType == Face.RHINO && player.hornType != Horns.RHINO) {
+			if (rand(4) == 0 && changes < changeLimit && player.face.type == Face.RHINO && player.hornType != Horns.RHINO) {
 				outputText("\n\nYou begin to feel an annoying tingling sensation at the top of your head. Reaching up to inspect it you find the sharp nub of a horn protruding from the center of your forehead and growing. Once it's complete you estimate it to be about six inches long. If it were sharper and a little longer it would make a useful natural weapon.");
 				player.horns = 1;
 				player.hornType = Horns.RHINO;
 				changes++;
 			}
 			//Tier 2
-			if (rand(4) == 0 && changes < changeLimit && player.faceType == Face.RHINO && player.hornType == Horns.RHINO && player.horns == 1) {
+			if (rand(4) == 0 && changes < changeLimit && player.face.type == Face.RHINO && player.hornType == Horns.RHINO && player.horns == 1) {
 				outputText("\n\nYou begin to feel an annoying tingling sensation at the edge of your nose, above your field of vision. Reaching up you feel the sharp edge of a curved horn growing out the edge of your face. The itchy tingle continues as you feel both of your horns become sharp and tall. You estimate your older horn to be a mere seven inches and your new horn to be around a foot long. They’ll be useful natural weapons.");
 				outputText("\n<b>(Gained physical special: Upheaval! Any time you lose your rhino face or horns, you will lose this ability.)</b>");
 				player.horns = 2;
@@ -2046,7 +2046,7 @@ package classes.Scenes.Places.Bazaar
 			//Gain Echidna face if you have the right conditions.
 			if (rand(4) == 0 && changes < changeLimit && player.hasFur() && player.ears.type == Ears.ECHIDNA && player.tailType == Tail.ECHIDNA && player.tongueType == Tongue.ECHIDNA) {
 				outputText("You groan loudly as the bones in your face begin to reshape and rearrange. Most notable, you feel your mouth lengthening into a long, thin snout. <b>You now have an echidna face!</b>");
-				player.faceType = Face.ECHIDNA;
+				player.face.type = Face.ECHIDNA;
 				changes++;
 			}
 			// Other Changes

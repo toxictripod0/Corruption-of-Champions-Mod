@@ -179,7 +179,7 @@ package classes.Scenes.Areas.HighMountains
 			this.skinDesc = "shaggy fur";
 			this.hairColor = randomChoice("black","brown");
 			this.hairLength = 3;
-			this.faceType = Face.COW_MINOTAUR;
+			this.face.type = Face.COW_MINOTAUR;
 			initStrTouSpeInte(65, 60, 30, 20);
 			initLibSensCor(40, 15, 35);
 			this.weaponName = "fists";

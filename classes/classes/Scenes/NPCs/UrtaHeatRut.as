@@ -135,7 +135,7 @@ private function notInterestedInUburDrunkUrtaRuts():void {
 	clearOutput();
 	urta.urtaSprite();
 	outputText("You say it's her who seems to be different today, and gently push her away, before apologizing and making your leave.  ");
-	if (player.faceType == 2) outputText("Your nose does seem to pick up that Urta was and still is getting unusually aroused behind you.  ");
+	if (player.face.type == 2) outputText("Your nose does seem to pick up that Urta was and still is getting unusually aroused behind you.  ");
 	if (player.inRut && player.hasCock()) outputText("[EachCock] twitches in protest at you leaving a willing lay behind.  ");
 	//[Medium lust increase] 
 

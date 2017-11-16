@@ -881,7 +881,7 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile.data.skinTone = player.skinTone;
 		saveFile.data.skinDesc = player.skinDesc;
 		saveFile.data.skinAdj = player.skinAdj;
-		saveFile.data.faceType = player.faceType;
+		saveFile.data.faceType = player.face.type;
 		saveFile.data.tongueType = player.tongueType;
 		saveFile.data.earType = player.ears.type;
 		saveFile.data.earValue = player.ears.value;
@@ -1743,7 +1743,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			if (player.hasGooSkin())
 				player.skinDesc = "goo";
 		}
-		player.faceType = saveFile.data.faceType;
+		player.face.type = saveFile.data.faceType;
 		if (saveFile.data.tongueType == undefined)
 			player.tongueType = Tongue.HUMAN;
 		else

@@ -55,7 +55,7 @@ package classes.Scenes.Areas.HighMountains
 				}
 			}
 			
-			if (player.canOvipositSpider() && (player.faceType == Face.SNAKE_FANGS || player.faceType == Face.SPIDER_FANGS)) {
+			if (player.canOvipositSpider() && (player.face.type == Face.SNAKE_FANGS || player.face.type == Face.SPIDER_FANGS)) {
 				addButton(5, "Lay Eggs", spoidahsLegEggsInHarpeis).hint("Use your ovipositor to lay the eggs into harpy.");
 			}
 			

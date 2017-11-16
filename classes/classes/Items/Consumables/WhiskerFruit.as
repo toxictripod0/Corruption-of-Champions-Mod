@@ -322,13 +322,13 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//CAT-FACE!  FULL ON FURRY!  RAGE AWAY NEKOZ
-			if (player.tailType === Tail.CAT && player.ears.type === Ears.CAT && rand(5) === 0 && changes < changeLimit && player.lowerBody === LowerBody.CAT && (player.hasFur() || (player.hasReptileScales() && player.dragonneScore() >= 4)) && player.faceType !== Face.CAT) {
+			if (player.tailType === Tail.CAT && player.ears.type === Ears.CAT && rand(5) === 0 && changes < changeLimit && player.lowerBody === LowerBody.CAT && (player.hasFur() || (player.hasReptileScales() && player.dragonneScore() >= 4)) && player.face.type !== Face.CAT) {
 				//Gain cat face, replace old face
 				temp = rand(3);
 				if (temp === 0) outputText("\n\nYour face is wracked with pain. You throw back your head and scream in agony as you feel your cheekbones breaking and shifting, reforming into something... different. You find a puddle to view your reflection and discover <b>your face is now a cross between human and feline features.</b>");
 				else if (temp === 1) outputText("\n\nMind-numbing pain courses through you as you feel your facial bones rearranging.  You clutch at your face in agony as your skin crawls and shifts, your visage reshaping to replace your facial characteristics with those of a feline. <b>You now have an anthropomorphic cat-face.</b>");
 				else outputText("\n\nYour face is wracked with pain. You throw back your head and scream in agony as you feel your cheekbones breaking and shifting, reforming into something else. <b>Your facial features rearrange to take on many feline aspects.</b>");
-				player.faceType = Face.CAT;
+				player.face.type = Face.CAT;
 				changes++;
 			}
 			// Remove gills

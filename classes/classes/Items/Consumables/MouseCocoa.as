@@ -161,17 +161,17 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//get teeth - from human, bunny, coonmask, or other humanoid teeth faces
-			if (player.ears.type === Ears.MOUSE && (player.faceType === Face.HUMAN || player.faceType === Face.SHARK_TEETH || player.faceType === Face.BUNNY || player.faceType === Face.SPIDER_FANGS || player.faceType === Face.RACCOON_MASK) && rand(4) === 0 && changes < changeLimit) {
+			if (player.ears.type === Ears.MOUSE && (player.face.type === Face.HUMAN || player.face.type === Face.SHARK_TEETH || player.face.type === Face.BUNNY || player.face.type === Face.SPIDER_FANGS || player.face.type === Face.RACCOON_MASK) && rand(4) === 0 && changes < changeLimit) {
 				outputText("\n\nYour teeth grind on their own, and you feel a strange, insistent pressure just under your nose.  As you open your mouth and run your tongue along them, you can feel ");
-				if (player.faceType !== Face.HUMAN) outputText("the sharp teeth receding and ");
+				if (player.face.type !== Face.HUMAN) outputText("the sharp teeth receding and ");
 				outputText("your incisors lengthening.  It's not long before they're twice as long as their neighbors and the obvious growth stops, but the pressure doesn't go away completely.  <b>Well, you now have mouse incisors and your face aches a tiny bit - wonder if they're going to keep growing?</b>");
-				player.faceType = Face.BUCKTEETH;
+				player.face.type = Face.BUCKTEETH;
 				changes++;
 			}
 			//get mouse muzzle from mouse teeth or other muzzle
-			if (player.hasFur() && player.faceType !== Face.MOUSE && (player.faceType !== Face.HUMAN || player.faceType !== Face.SHARK_TEETH || player.faceType !== Face.BUNNY || player.faceType !== Face.SPIDER_FANGS || player.faceType !== Face.RACCOON_MASK) && rand(4) === 0 && changes < changeLimit) {
+			if (player.hasFur() && player.face.type !== Face.MOUSE && (player.face.type !== Face.HUMAN || player.face.type !== Face.SHARK_TEETH || player.face.type !== Face.BUNNY || player.face.type !== Face.SPIDER_FANGS || player.face.type !== Face.RACCOON_MASK) && rand(4) === 0 && changes < changeLimit) {
 				outputText("\n\nA wave of light-headedness hits you, and you black out.  In your unconsciousness, you dream of chewing - food, wood, cloth, paper, leather, even metal... whatever you can fit in your mouth, even if it doesn't taste like anything much.  For several minutes you just chew and chew your way through a parade of ordinary objects, savoring the texture of each one against your teeth, until finally you awaken.  Your teeth work, feeling longer and more prominent than before, and you hunt up your reflection.  <b>Your face has shifted to resemble a mouse's, down to the whiskers!</b>");
-				player.faceType = Face.MOUSE;
+				player.face.type = Face.MOUSE;
 				changes++;
 			}
 			//get fur

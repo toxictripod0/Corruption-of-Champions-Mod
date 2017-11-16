@@ -241,7 +241,7 @@ public function startUrtaQuest():void {
 	player.lowerBody = LowerBody.FOX;
 	player.legCount = 2;
 	player.ears.type = Ears.FOX;
-	player.faceType = Face.FOX;
+	player.face.type = Face.FOX;
 	player.tailType = Tail.FOX;
 	player.tailVenom = 1;
 	player.createCock();

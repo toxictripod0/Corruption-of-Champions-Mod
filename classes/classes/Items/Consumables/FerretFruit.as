@@ -193,24 +193,24 @@ package classes.Items.Consumables
 				mutations.updateOvipositionPerk(tfSource);
 			}
 			//Turn ferret mask to full furface.
-			if (player.faceType === Face.FERRET_MASK && player.hasFur() && player.ears.type === Ears.FERRET && player.tailType === Tail.FERRET && player.lowerBody === LowerBody.FERRET && rand(4) === 0 && changes < changeLimit)
+			if (player.face.type === Face.FERRET_MASK && player.hasFur() && player.ears.type === Ears.FERRET && player.tailType === Tail.FERRET && player.lowerBody === LowerBody.FERRET && rand(4) === 0 && changes < changeLimit)
 			{
 				outputText("\n\nYou cry out in pain as the bones in your face begin to break and rearrange.  You rub your face furiously in an attempt to ease the pain, but to no avail.  As the sensations pass, you examine your face in a nearby puddle.  <b>You nearly gasp in shock at the sight of your new ferret face!</b>");
-				player.faceType = Face.FERRET;
+				player.face.type = Face.FERRET;
 				changes++;
 			}
 			//If face is human:
-			if (player.faceType === 0 && rand(3) === 0 && changes < changeLimit)
+			if (player.face.type === 0 && rand(3) === 0 && changes < changeLimit)
 			{
 				outputText("\n\nA horrible itching begins to encompass the area around your eyes.  You grunt annoyedly, rubbing furiously at the afflicted area.  Once the feeling passes, you make your way to the nearest reflective surface to see if anything has changed.  Your suspicions are confirmed.  The [skinFurScales] around your eyes has darkened.  <b>You now have a ferret mask!</b>");
-				player.faceType = Face.FERRET_MASK;
+				player.face.type = Face.FERRET_MASK;
 				changes++;
 			}
 			//If face is not ferret, has ferret ears, tail, and legs:
-			if (player.faceType !== Face.HUMAN && player.faceType !== Face.FERRET_MASK && player.faceType !== Face.FERRET && rand(3) === 0 && changes < changeLimit)
+			if (player.face.type !== Face.HUMAN && player.face.type !== Face.FERRET_MASK && player.face.type !== Face.FERRET && rand(3) === 0 && changes < changeLimit)
 			{
 				outputText("\n\nYou groan uncomfortably as the bones in your [face] begin to rearrange.  You grab your head with both hands, rubbing at your temples in an attempt to ease the pain.  As the shifting stops, you frantically feel at your face.  The familiar feeling is unmistakable.  <b>Your face is human again!</b>");
-				player.faceType = 0;
+				player.face.type = 0;
 				changes++;
 			}
 			//No fur, has ferret ears, tail, and legs:

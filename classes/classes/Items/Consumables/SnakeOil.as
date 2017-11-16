@@ -95,17 +95,17 @@ package classes.Items.Consumables
 				mutations.gainSnakeTongue();
 			}
 			//9c) III The fangs
-			if (changes === 0 && player.tongueType === Tongue.SNAKE && player.faceType !== Face.SNAKE_FANGS && rand(3) === 0 && changes < changeLimit) {
+			if (changes === 0 && player.tongueType === Tongue.SNAKE && player.face.type !== Face.SNAKE_FANGS && rand(3) === 0 && changes < changeLimit) {
 				outputText("\n\nWithout warning, you feel your canine teeth jump almost an inch in size, clashing on your gums, cutting yourself quite badly. As you attempt to find a new way to close your mouth without dislocating your jaw, you notice that they are dripping with a bitter, khaki liquid.  Watch out, and <b>try not to bite your tongue with your poisonous fangs!</b>");
-				if (player.faceType !== Face.HUMAN && player.faceType !== Face.SHARK_TEETH && player.faceType !== Face.BUNNY && player.faceType !== Face.SPIDER_FANGS) {
+				if (player.face.type !== Face.HUMAN && player.face.type !== Face.SHARK_TEETH && player.face.type !== Face.BUNNY && player.face.type !== Face.SPIDER_FANGS) {
 					outputText("  As the change progresses, your " + player.faceDescript() + " reshapes.  The sensation is far more pleasant than teeth cutting into gums, and as the tingling transformation completes, <b>you've gained with a normal-looking, human visage.</b>");
 				}
-				player.faceType = Face.SNAKE_FANGS;
+				player.face.type = Face.SNAKE_FANGS;
 				changes++;
 			}
 			//9c) I The tail ( http://tvtropes.org/pmwiki/pmwiki.php/Main/TransformationIsAFreeAction ) (Shouldn't we try to avert this? -Ace)
 			//Should the enemy "kill" you during the transformation, it skips the scene and immediately goes to tthe rape scene. (Now that I'm thinking about it, we should add some sort of appendix where the player realizes how much he's/she's changed. -Ace)
-			if (changes === 0 && player.faceType === Face.SNAKE_FANGS && player.lowerBody !== LowerBody.NAGA && rand(4) === 0 && changes < changeLimit) {
+			if (changes === 0 && player.face.type === Face.SNAKE_FANGS && player.lowerBody !== LowerBody.NAGA && rand(4) === 0 && changes < changeLimit) {
 				outputText("\n\nYou find it increasingly harder to keep standing as your legs start feeling weak.  You swiftly collapse, unable to maintain your own weight.");
 				//(If used in combat, you lose a turn here. Half-corrupted Jojo and the Naga won't attack you during that period, but other monsters will)
 				//FUCK NO

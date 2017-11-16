@@ -181,7 +181,7 @@ internal function pcBeatsATrap():void {
 	if (player.lust >= 33) {
 		outputText("\n\nBefore you go, you take in the helpless body of your would-be ambusher.  What do you do?");
 		//Requirements: Player is naga with tail and fangs, has met desert naga as naga at least once
-		if (player.isNaga() && player.hasStatusEffect(StatusEffects.Naga) && !player.isGenderless() && player.faceType == Face.SNAKE_FANGS) {
+		if (player.isNaga() && player.hasStatusEffect(StatusEffects.Naga) && !player.isGenderless() && player.face.type == Face.SNAKE_FANGS) {
 			addButton(0, "Naga3Some", nagaThreesomeWithSandTrap, undefined, undefined, undefined, "Call your friend for a treesome.", "Naga Treesome");
 		}
 		//Requires: Penis and str requirement

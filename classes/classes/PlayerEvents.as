@@ -217,12 +217,12 @@ package classes {
 			}
 			//Reset bad end warning
 			if (flags[kFLAGS.FOX_BAD_END_WARNING] == 1) {
-				if (player.faceType != Face.FOX || player.tailType != Tail.FOX || player.ears.type != Ears.FOX || player.lowerBody != LowerBody.FOX || !player.hasFur()) {
+				if (player.face.type != Face.FOX || player.tailType != Tail.FOX || player.ears.type != Ears.FOX || player.lowerBody != LowerBody.FOX || !player.hasFur()) {
 					flags[kFLAGS.FOX_BAD_END_WARNING] = 0;
 				}
 			}
 			/*if (flags[kFLAGS.PIG_BAD_END_WARNING] == 1) {
-				if (player.faceType != Face.PIG || player.tailType != Tail.PIG || player.ears.type != Ears.PIG || player.lowerBody != LowerBody.CLOVEN_HOOFED) {
+				if (player.face.type != Face.PIG || player.tailType != Tail.PIG || player.ears.type != Ears.PIG || player.lowerBody != LowerBody.CLOVEN_HOOFED) {
 					flags[kFLAGS.PIG_BAD_END_WARNING] = 0;
 				}
 			}*/

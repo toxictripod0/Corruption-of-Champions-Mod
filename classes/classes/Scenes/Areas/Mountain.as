@@ -134,7 +134,7 @@ package classes.Scenes.Areas
 								chance:2,
 								when:function():Boolean {
 									//Requires canine face, [either two dog dicks, or a vag and pregnant with a hellhound], at least two other hellhound features (black fur, dog legs, dog tail), and corruption >=60.
-									var check1:Boolean = player.faceType == Face.DOG && player.cor >= 60;
+									var check1:Boolean = player.face.type == Face.DOG && player.cor >= 60;
 									var check2:Boolean = player.dogCocks() >= 2
 													|| (player.hasVagina() && player.pregnancyType == PregnancyStore.PREGNANCY_HELL_HOUND);
 									var check3:int = (player.tailType == Tail.DOG ? 1 : 0) +

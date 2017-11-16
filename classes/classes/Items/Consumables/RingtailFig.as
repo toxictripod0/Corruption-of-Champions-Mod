@@ -64,7 +64,7 @@ package classes.Items.Consumables
 				}
 			}
 			//gain balls up to 2 (only if full-coon face and fur; no dick required)
-			if (player.balls === 0 && player.hasFur() && player.faceType === Face.RACCOON && rand(3) === 0 && changes < changeLimit) {
+			if (player.balls === 0 && player.hasFur() && player.face.type === Face.RACCOON && rand(3) === 0 && changes < changeLimit) {
 				outputText("\n\nAs you eat, you contemplate your masked appearance; it strikes you that you're dangerously close to the classic caricature of a thief.  Really, all it would take is a big, nondescript sack and a hurried gait and everyone would immediately think the worst of you.  In a brief fit of pique, you wish you had such a bag to store your things in, eager to challenge a few assumptions.  A few minutes into that line of thought, a twisting ache in your lower gut bends you double, and you expose yourself hurriedly to examine the region.  As you watch, a balloon of flesh forms on your crotch, and two lumps migrate from below your navel down into it.  <b>Looks like you have a sack, after all.</b>");
 				player.balls = 2;
 				player.ballSize = 1;
@@ -149,12 +149,12 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//gain half-coon face (prevented if already full-coon)
-			if (player.faceType !== Face.RACCOON_MASK && player.faceType !== Face.RACCOON && rand(4) === 0 && changes < changeLimit) {
+			if (player.face.type !== Face.RACCOON_MASK && player.face.type !== Face.RACCOON && rand(4) === 0 && changes < changeLimit) {
 				//from human/naga/shark/bun face
-				if (player.faceType === Face.HUMAN || player.faceType === Face.SHARK_TEETH || player.faceType === Face.SNAKE_FANGS || player.faceType === Face.BUNNY) {
+				if (player.face.type === Face.HUMAN || player.face.type === Face.SHARK_TEETH || player.face.type === Face.SNAKE_FANGS || player.face.type === Face.BUNNY) {
 					outputText("\n\nA sudden wave of exhaustion passes over you, and your face goes partially numb around your eyes.  ");
 					//(nagasharkbunnies)
-					if (player.faceType === Face.SHARK_TEETH || player.faceType === Face.SNAKE_FANGS || player.faceType === Face.BUNNY) {
+					if (player.face.type === Face.SHARK_TEETH || player.face.type === Face.SNAKE_FANGS || player.face.type === Face.BUNNY) {
 						outputText("Your prominent teeth chatter noisily at first, then with diminishing violence, until you can no longer feel them jutting past the rest!  ");
 					}
 					outputText("Shaking your head a bit, you wait for your energy to return, then examine your appearance.  ");
@@ -172,20 +172,20 @@ package classes.Items.Consumables
 					else if ((player.skinTone === "ebony" || player.skinTone === "black") && (player.hasPlainSkin() || player.hasGooSkin())) outputText("your face apparently returned to normal shape.  You look closer and discover a darker, mask-line outline on your already inky visage.  <b>You now have a barely-visible raccoon mask on your normal human face.</b>");
 					else outputText("your face returned to human dimensions, but shaded by a black mask around the eyes and over the nose!  <b>You now have a humanoid face with a raccoon mask!</b>");
 				}
-				player.faceType = Face.RACCOON_MASK;
+				player.face.type = Face.RACCOON_MASK;
 				changes++;
 			}
 			//gain full-coon face (requires half-coon and fur)
 			//from humanoid - should be the only one possible
-			else if (player.faceType === Face.RACCOON_MASK && player.lowerBody === LowerBody.RACCOON && player.hasFur() && rand(4) === 0 && changes < changeLimit) {
+			else if (player.face.type === Face.RACCOON_MASK && player.lowerBody === LowerBody.RACCOON && player.hasFur() && rand(4) === 0 && changes < changeLimit) {
 				outputText("\n\nYour face pinches with tension, and you rub the bridge of your nose to release it.  The action starts a miniature slide in your bone structure, and your nose extends out in front of you!  You shut your eyes, waiting for the sinus pressure to subside, and when you open them, a triangular, pointed snout dotted with whiskers and capped by a black nose greets you!  <b>You now have a raccoon's face!</b>");
 				//from muzzleoid - should not be possible, but included if things change
 				//Your face goes numb, and you can see your snout shifting into a medium-long, tapered shape.  Closing your eyes, you rub at your forehead to try and get sensation back into it; it takes several minutes before full feeling returns.  <b>When it does, you look again at yourself and see a raccoon's pointy face, appointed with numerous whiskers and a black nose!</b>
 				changes++;
-				player.faceType = Face.RACCOON;
+				player.face.type = Face.RACCOON;
 			}
 			//fatigue damage (only if face change was not triggered)
-			else if (rand(2) === 0 && changes < changeLimit && (player.faceType !== Face.RACCOON_MASK && player.faceType !== Face.RACCOON)) {
+			else if (rand(2) === 0 && changes < changeLimit && (player.face.type !== Face.RACCOON_MASK && player.face.type !== Face.RACCOON)) {
 				outputText("\n\nYou suddenly feel tired and your eyelids are quite heavy.  Checking your reflection, you can see small dark rings have begun to form under your eyes.");
 				player.changeFatigue(10);
 				changes++;

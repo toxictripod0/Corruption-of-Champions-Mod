@@ -1000,7 +1000,7 @@ import classes.Items.*
 			/* [INTERMOD: xianxia]
 			if (setIdx>=0) player.facePart.type = setIdx;
 			*/
-			if (setIdx>=0) player.faceType = setIdx;
+			if (setIdx>=0) player.face.type = setIdx;
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorHead, page, FACE_TYPE_CONSTANTS, changeFaceType);
@@ -1349,7 +1349,7 @@ import classes.Items.*
 			clearOutput();
 			outputText("<b>You are now a Manticore!</b>");
 			//Cat TF
-			player.faceType = Face.CAT;
+			player.face.type = Face.CAT;
 			player.ears.type = Ears.CAT;
 			player.lowerBody = LowerBody.CAT;
 			player.legCount = 2;
@@ -1371,7 +1371,7 @@ import classes.Items.*
 			clearOutput();
 			outputText("<b>You are now a Dragonne!</b>");
 			//Cat TF
-			player.faceType = Face.CAT;
+			player.face.type = Face.CAT;
 			player.ears.type = Ears.CAT;
 			player.tailType = Tail.CAT;
 			player.lowerBody = LowerBody.CAT;

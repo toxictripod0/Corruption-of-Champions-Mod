@@ -180,7 +180,7 @@ package classes.Scenes.Quests.UrtaQuest
 			this.skinDesc = "shaggy fur";
 			this.hairColor = randomChoice("black","brown");
 			this.hairLength = 3;
-			this.faceType = Face.COW_MINOTAUR;
+			this.face.type = Face.COW_MINOTAUR;
 			initStrTouSpeInte(125, 90, 30, 30);
 			initLibSensCor(70, 25, 85);
 			this.weaponName = "chain";

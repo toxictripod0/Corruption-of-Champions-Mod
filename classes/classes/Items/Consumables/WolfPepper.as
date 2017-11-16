@@ -360,9 +360,9 @@ package classes.Items.Consumables
 			}
 			//MUTATIONZ LEVEL 2: fur->arms fur+tail+ears->face stophair->nohair fur+tail->legs
 			//gain wolf face
-			if (player.faceType !== Face.WOLF && player.ears.type === Ears.WOLF && player.tailType === Tail.WOLF && player.hasFur() && rand(5) === 0 && changes < changeLimit) {
+			if (player.face.type !== Face.WOLF && player.ears.type === Ears.WOLF && player.tailType === Tail.WOLF && player.hasFur() && rand(5) === 0 && changes < changeLimit) {
 				outputText("\n\nYou screech in pain as the bones of your face begin to rearrange themselves. Your [skinFurScales] practically melts off you, dropping onto the ground with heavy streams of blood. You put your hands to your face, writhing, blackness covering your vision as pain overwhelms you. But as quickly as it came, it stops, and you pull your shaking hands from your face. You scramble to the nearest reflective surface. <b>You have a wolf's face!</b>");
-				player.faceType = Face.WOLF;
+				player.face.type = Face.WOLF;
 				changes++;
 			}
 			//legz
@@ -376,7 +376,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//MUTATIONZ LEVEL 3: face->eyes
-			if (player.eyes.type !== Eyes.WOLF && player.faceType === Face.WOLF && rand(4) === 0 && changes < changeLimit) {
+			if (player.eyes.type !== Eyes.WOLF && player.face.type === Face.WOLF && rand(4) === 0 && changes < changeLimit) {
 				outputText("\n\nYou feel a sudden surge of pain in your face as your eyes begin to change. You close them and feel something wet slide under your eyelids. You jump in surprise. The feeling's gone, but now the distance is a blurred view, and greens seem to be mixed with yellows.");
 				outputText("\n\nYou turn to a nearby reflective surface to investigate. Your eyes have massive amber irises and are dipped into your face, hiding any sign of your sclera. Blackness surrounds them and emphasise the wolfish shape of your face. You blink a few times as you stare at your reflection. <b>You now have wolf eyes!</b> Your peripherals and night vision has probably improved, too.");
 				player.eyes.type = Eyes.WOLF;

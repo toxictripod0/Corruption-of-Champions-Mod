@@ -223,7 +223,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			initStrTouSpeInte(player.str, player.tou, player.spe, player.inte);
 			initLibSensCor(player.lib, player.sens, player.cor);
 			if (cor < 50) cor = 50;
-			faceType = player.faceType;
+			face.type = player.face.type;
 			skinType = player.skinType;
 			
 			this.bonusHP = 250;

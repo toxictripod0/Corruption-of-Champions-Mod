@@ -321,7 +321,7 @@ package classes.Scenes.Monsters
 				outputText(images.showImage("goblinelder-win-female-naga-rapedfem"));
 				outputText("You slither over to the helpless goblin, who watches you half in fear, half in curiosity.  ");
 				//[Has fangs:
-				if (player.faceType == Face.SNAKE_FANGS) outputText("You bare your fangs at her and the curiosity disappears.  She turns to run, but your tail is faster than she is.");
+				if (player.face.type == Face.SNAKE_FANGS) outputText("You bare your fangs at her and the curiosity disappears.  She turns to run, but your tail is faster than she is.");
 				//[No fangs: 
 				else outputText("You smile at her and the fear disappears.  She's still wary though, and you make sure to grab her with your tail before she changes her mind about you.");
 				outputText("\n\n");

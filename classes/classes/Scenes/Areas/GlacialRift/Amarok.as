@@ -115,7 +115,7 @@ package classes.Scenes.Areas.GlacialRift
 			this.skinType = Skin.FUR;
 			this.hairColor = "black";
 			this.hairLength = 3;
-			this.faceType = Face.WOLF;
+			this.face.type = Face.WOLF;
 			this.ears.type = Ears.WOLF;
 			this.eyes.type = Eyes.WOLF;
 			initStrTouSpeInte(90,110,75,85);

@@ -331,7 +331,7 @@
 			///*OPTIONAL*/ //this.hairType = Hair.; // default NORMAL
 
 			//// 8. Face
-			///*OPTIONAL*/ //this.faceType = Face.; // default HUMAN
+			///*OPTIONAL*/ //this.face.type = Face.; // default HUMAN
 			///*OPTIONAL*/ //this.ears.type = Ears.; // default HUMAN
 			///*OPTIONAL*/ //this.tongueType = Tongue.; // default HUMAN
 			///*OPTIONAL*/ //this.eyes.type = Eyes.; // default HUMAN
@@ -1039,7 +1039,7 @@
 				result += "no beard.\n";
 			}
 			result += Hehas
-					+(Appearance.DEFAULT_FACE_NAMES[faceType]||("faceType#"+faceType))+" face, "
+					+(Appearance.DEFAULT_FACE_NAMES[face.type]||("face.type#"+face.type))+" face, "
 					+(Appearance.DEFAULT_EARS_NAMES[ears.type]||("ears.type#"+ears.type))+" ears, "
 					+(Appearance.DEFAULT_TONGUE_NAMES[tongueType]||("tongueType#"+tongueType))+" tongue and "
 					+(Appearance.DEFAULT_EYES_NAMES[eyes.type]||("eyes.type#"+eyes.type))+" eyes.\n";

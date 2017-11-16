@@ -409,28 +409,7 @@ import mx.logging.ILogger;
 		public function get skinAdj():String { return skin.adj; }
 		public function set skinAdj(value:String):void { skin.adj = value; }
 		
-/*		Facetype:
-		0 - human
-		1 - horse
-		2 - dogface
-		3 - cowface
-		4 - sharkface-teeth
-		5 - Human w/Naga fangz
-		6 - kittah face
-		7 - lizard face (durned argonians!)
-		8 - bunnah faceahhh bunbun
-		9 - kangaface
-		10 - spidah-face (humanish)
-		11 - foxface!
-		12 - dragon face
-		13 - Halfcoon
-		14 - fullcoon
-		15 - halfmouse
-		16 - fullmouse*/
 		public var face:Face = new Face();
-		public function get faceType():Number { return face.type; }
-		public function set faceType(value:Number):void { face.type = value; }
-
 		public var claws:Claws = new Claws();
 		public var rearBody:RearBody = new RearBody();
 		public var neck:Neck = new Neck();
@@ -690,7 +669,7 @@ import mx.logging.ILogger;
 				"balls", "ballSize", "cumMultiplier", "hoursSinceCum",
 				"tallness", "hipRating", "butt.rating", "lowerBody", "arms.type",
 				"skinType", "hairLength", "hairType",
-				"faceType", "ears.type", "tongueType", "eyes.type",
+				"face.type", "ears.type", "tongueType", "eyes.type",
 				"str", "tou", "spe", "inte", "lib", "sens", "cor",
 				// Allow weaponAttack to be negative as a penalty to strength-calculated damage
 				// Same with armorDef, bonusHP, additionalXP
@@ -2865,7 +2844,7 @@ import mx.logging.ILogger;
 
 		public function hasBeak():Boolean
 		{
-			return [Face.BEAK, Face.COCKATRICE].indexOf(faceType) != -1;
+			return [Face.BEAK, Face.COCKATRICE].indexOf(face.type) != -1;
 		}
 
 		public function hasFeathers():Boolean
