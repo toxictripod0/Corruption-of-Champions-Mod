@@ -98,7 +98,7 @@
 			this.tallness = rand(14) + 40;
 			this.hips.rating = Hips.RATING_BOYISH;
 			this.butt.rating = Butt.RATING_TIGHT;
-			this.lowerBody = LowerBody.HOOFED;
+			this.lowerBody.type = LowerBody.HOOFED;
 			this.skinTone = "red";
 			initStrTouSpeInte(55, 40, 75, 42);
 			initLibSensCor(55, 35, 100);

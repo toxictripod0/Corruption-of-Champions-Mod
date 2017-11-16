@@ -102,7 +102,7 @@ package classes.Scenes.Quests.UrtaQuest
 			this.tallness = 84;
 			this.hips.rating = Hips.RATING_CURVY;
 			this.butt.rating = Butt.RATING_LARGE+1;
-			this.lowerBody = LowerBody.DEMONIC_HIGH_HEELS;
+			this.lowerBody.type = LowerBody.DEMONIC_HIGH_HEELS;
 			this.skinTone = "blue";
 			this.hair.color = "black";
 			this.hair.length = 13;

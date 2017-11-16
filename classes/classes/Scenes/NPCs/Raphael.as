@@ -396,7 +396,7 @@ private function RaphaelEncounterIIDressFollowup():void {
 		outputText("\"<i>What terrible tragedy! The land has taken its toll on the once so beautiful.</i>\" He looks down on you.\n\n");
 
 		//({If player has no legs, or a centaur body.}
-		if (player.isNaga() || player.lowerBody == LowerBody.GOO || player.isTaur() || player.isDrider()) 
+		if (player.isNaga() || player.lowerBody.type == LowerBody.GOO || player.isTaur() || player.isDrider()) 
 			outputText("\"<i>You're missing half your body!</i>\" He refers to your morphed legs.\n\n");
 		//({If player has above E cup breasts} 
 		if (player.biggestTitSize() >= 7) outputText("\"<i>Your female curves... replaced with such... udders!</i>\" He looks at your bosom. \"<i>No woman could be elegant with such monstrosities up front!</i>\"\n\n");

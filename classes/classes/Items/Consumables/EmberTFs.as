@@ -142,9 +142,9 @@ package classes.Items.Consumables
 			}
 			//</mod>
 			//Gain Dragon Legs
-			if (player.lowerBody != LowerBody.DRAGON && changes < changeLimit && rand(3) == 0) {
+			if (player.lowerBody.type != LowerBody.DRAGON && changes < changeLimit && rand(3) == 0) {
 				//(if drider)
-				if (player.lowerBody == LowerBody.DRIDER_LOWER_BODY)
+				if (player.lowerBody.type == LowerBody.DRIDER_LOWER_BODY)
 					output.text("\n\nA disquieting feeling ripples through your arachnid abdomen, and you find yourself losing control of your body from the waist down.  Your spidery legs flail madly as your abdomen visibly swells, chitin cracking ominously as the pressure builds up inside of you... and then explodes!  You wipe the gore from your face in disgust, wondering why you feel no pain.  Rolling over, you see that, caked with spider-slime, you now have a new pair of legs, human-like save for the scales and the bestial paws that serve as feet.  <b>You now have dragon feet.</b>");
 				//(If naga)
 				else if (player.isNaga()) {
@@ -155,7 +155,7 @@ package classes.Items.Consumables
 					output.text("\n\nA strange tingling sensation fills you, and you watch as your gooey blob of a body begins to ripple and shudder; you try to make it stop, but you can't control it.  Before your eyes, it shapes itself into the appearance of legs, the colored slime growing denser and thicker, the surface membrane texturing itself to look like scales.  Before you've quite realized what's happened, the slime has set like water freezing, leaving you with humanoid legs once again, though tipped with claws and very reptilian in appearance.  <b>You now have dragon feet.</b>");
 				}
 				//(If hoofed legs)
-				else if (player.lowerBody == LowerBody.HOOFED) {
+				else if (player.lowerBody.type == LowerBody.HOOFED) {
 					output.text("\n\nYou bellow in pain as your legs break and reform and your hooves seem to suddenly explode, the bones within twisting themselves into monstrous three-toed appendages, more like those of some terrible lizard-thing than anything else. <b>You now have dragon feet.</b>");
 				}
 				//(if centaur)
@@ -166,8 +166,8 @@ package classes.Items.Consumables
 				else {
 					output.text("\n\nYou scream in agony as you feel the bones in your feet suddenly break and restructure themselves, toes fusing together, bone swelling out of the merged masses of flesh.  When the pain is over, you realize that you still stand atop human-looking legs, but your feet have become like those of some bipedal reptilian killer, with powerful claws meant for gripping the ground. <b>You now have dragon feet.</b>");
 				}
-				player.lowerBody = LowerBody.DRAGON;
-				player.legCount = 2;
+				player.lowerBody.type = LowerBody.DRAGON;
+				player.lowerBody.legCount = 2;
 				changes++;
 			}
 			//Gain Dragon Tail
@@ -280,7 +280,7 @@ package classes.Items.Consumables
 			}
 			// <mod name="Predator arms" author="Stadler76">
 			//Gain Dragon Arms (Derived from Arms.SALAMANDER)
-			if (player.arms.type != Arms.PREDATOR && player.hasDragonScales() && player.lowerBody == LowerBody.DRAGON && changes < changeLimit && rand(3) == 0) {
+			if (player.arms.type != Arms.PREDATOR && player.hasDragonScales() && player.lowerBody.type == LowerBody.DRAGON && changes < changeLimit && rand(3) == 0) {
 				output.text("\n\nYou scratch your biceps absentmindedly, but no matter how much you scratch, you can't get rid of the itch.  After a longer moment of ignoring it you finally glance down in irritation, only to discover that your arms former appearance has changed into those of some reptilian killer with shield-shaped " + player.skinTone + " scales and powerful, thick, curved steel-gray claws replacing your fingernails.");
 				output.text("\n<b>You now have dragon arms.</b>");
 				player.arms.type = Arms.PREDATOR;

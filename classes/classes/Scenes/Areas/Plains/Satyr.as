@@ -152,7 +152,7 @@ package classes.Scenes.Areas.Plains
 			this.tallness = rand(37) + 64;
 			this.hips.rating = Hips.RATING_AVERAGE;
 			this.butt.rating = Butt.RATING_AVERAGE+1;
-			this.lowerBody = LowerBody.HOOFED;
+			this.lowerBody.type = LowerBody.HOOFED;
 			this.skinTone = "tan";
 			this.hair.color = randomChoice("black","brown");
 			this.hair.length = 3+rand(20);

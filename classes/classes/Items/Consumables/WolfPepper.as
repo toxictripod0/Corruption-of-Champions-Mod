@@ -110,7 +110,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//normal legs
-			if (player.lowerBody !== LowerBody.WOLF && rand(4) === 0) {
+			if (player.lowerBody.type !== LowerBody.WOLF && rand(4) === 0) {
 				mutations.restoreLegs(tfSource);
 			}
 			//normal arms
@@ -366,13 +366,13 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//legz
-			if (player.legCount === 2 && player.lowerBody !== LowerBody.WOLF && player.tailType === Tail.WOLF && player.skinType === Skin.FUR && rand(4) === 0 && changes < changeLimit) {
+			if (player.lowerBody.legCount === 2 && player.lowerBody.type !== LowerBody.WOLF && player.tailType === Tail.WOLF && player.skinType === Skin.FUR && rand(4) === 0 && changes < changeLimit) {
 				//Hooman feets
-				if (player.lowerBody === LowerBody.HUMAN) outputText("\n\nYou stumble and fall, howling in pain as your legs and feet break apart and reform into wolf-like legs and paws. The worst of the pain eventually passes, but you're still left whimpering for a while. <b>You now have paws!</b>");
+				if (player.lowerBody.type === LowerBody.HUMAN) outputText("\n\nYou stumble and fall, howling in pain as your legs and feet break apart and reform into wolf-like legs and paws. The worst of the pain eventually passes, but you're still left whimpering for a while. <b>You now have paws!</b>");
 				//Hooves -> Paws
-				else if (player.lowerBody === LowerBody.HOOFED) outputText("\n\nYou feel your hooves suddenly splinter, growing into five unique digits. Their flesh softens as your hooves reshape into furred paws. <b>You now have paws!</b>");
+				else if (player.lowerBody.type === LowerBody.HOOFED) outputText("\n\nYou feel your hooves suddenly splinter, growing into five unique digits. Their flesh softens as your hooves reshape into furred paws. <b>You now have paws!</b>");
 				else outputText("\n\nYour lower body is suddenly wracked by pain, causing you to collapse onto the ground in agony. Once it passes, you discover that you're standing on fur-covered paws. <b>You now have paws!</b>");
-				player.lowerBody = LowerBody.WOLF;
+				player.lowerBody.type = LowerBody.WOLF;
 				changes++;
 			}
 			//MUTATIONZ LEVEL 3: face->eyes

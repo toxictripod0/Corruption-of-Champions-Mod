@@ -308,7 +308,7 @@ package classes.Scenes.NPCs
 			this.tallness = 5*12+6;
 			this.hips.rating = Hips.RATING_CURVY;
 			this.butt.rating = Butt.RATING_NOTICEABLE;
-			this.lowerBody = LowerBody.DEMONIC_HIGH_HEELS;
+			this.lowerBody.type = LowerBody.DEMONIC_HIGH_HEELS;
 			this.skinTone = "purple";
 			this.hair.color = "black";
 			this.hair.length = 20;

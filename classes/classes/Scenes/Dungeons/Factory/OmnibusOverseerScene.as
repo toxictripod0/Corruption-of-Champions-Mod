@@ -336,10 +336,10 @@ package classes.Scenes.Dungeons.Factory
 		private function normalLegs():void {
 			spriteSelect(SpriteDb.s_factory_omnibus);
 			clearOutput();
-			if (player.lowerBody == LowerBody.HUMAN) outputText("You feel as if you should slap yourself for stupidy.  Your legs are already normal!  You flush hotly as the corrupt magics wash over you, changing nothing.");
+			if (player.lowerBody.type == LowerBody.HUMAN) outputText("You feel as if you should slap yourself for stupidy.  Your legs are already normal!  You flush hotly as the corrupt magics wash over you, changing nothing.");
 			else outputText("You collapse as your " + player.legs() + " are unable to support you.  The sounds of bones breaking and reshaping fills the room, but oddly you feel no pain, only mild arousal.  You blink your eyes and sigh, and when you look down again <b>you have normal human legs</b>!");
-			player.lowerBody = LowerBody.HUMAN;
-			player.legCount = 2;
+			player.lowerBody.type = LowerBody.HUMAN;
+			player.lowerBody.legCount = 2;
 			if (player.tailType > Tail.NONE) {
 				outputText("  A moment later, your feel something detach from above your backside.  <b>You no longer have a tail!</b>");
 				player.tailType = Tail.NONE;

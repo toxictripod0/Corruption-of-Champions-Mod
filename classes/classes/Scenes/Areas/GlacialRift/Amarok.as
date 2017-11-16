@@ -109,7 +109,7 @@ package classes.Scenes.Areas.GlacialRift
 			this.tallness = 8*12;
 			this.hips.rating = Hips.RATING_AVERAGE;
 			this.butt.rating = Butt.RATING_AVERAGE;
-			this.lowerBody = LowerBody.WOLF;
+			this.lowerBody.type = LowerBody.WOLF;
 			this.arms.type = Arms.WOLF;
 			this.skinTone = "black";
 			this.skinType = Skin.FUR;

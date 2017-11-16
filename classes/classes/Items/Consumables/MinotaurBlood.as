@@ -131,18 +131,18 @@ package classes.Items.Consumables
 				mutations.restoreArms(tfSource);
 			}
 			//+hooves
-			if (player.lowerBody !== LowerBody.HOOFED) {
+			if (player.lowerBody.type !== LowerBody.HOOFED) {
 				if (changes < changeLimit && rand(3) === 0) {
 					//[removed:1.4.10]//changes++;
-					if (player.lowerBody === LowerBody.HUMAN) outputText("\n\nYou stagger as your feet change, curling up into painful angry lumps of flesh.  They get tighter and tighter, harder and harder, until at last they solidify into hooves!");
-					else if (player.lowerBody === LowerBody.DOG) outputText("\n\nYou stagger as your paws change, curling up into painful angry lumps of flesh.  They get tighter and tighter, harder and harder, until at last they solidify into hooves!");
-					else if (player.lowerBody === LowerBody.NAGA) outputText("\n\nYou collapse as your sinuous snake-tail tears in half, shifting into legs.  The pain is immense, particularly in your new feet as they curl inward and transform into hooves!");
+					if (player.lowerBody.type === LowerBody.HUMAN) outputText("\n\nYou stagger as your feet change, curling up into painful angry lumps of flesh.  They get tighter and tighter, harder and harder, until at last they solidify into hooves!");
+					else if (player.lowerBody.type === LowerBody.DOG) outputText("\n\nYou stagger as your paws change, curling up into painful angry lumps of flesh.  They get tighter and tighter, harder and harder, until at last they solidify into hooves!");
+					else if (player.lowerBody.type === LowerBody.NAGA) outputText("\n\nYou collapse as your sinuous snake-tail tears in half, shifting into legs.  The pain is immense, particularly in your new feet as they curl inward and transform into hooves!");
 					//Catch-all
-					else if (player.lowerBody > LowerBody.NAGA) outputText("\n\nYou stagger as your " + player.feet() + " change, curling up into painful angry lumps of flesh.  They get tighter and tighter, harder and harder, until at last they solidify into hooves!");
+					else if (player.lowerBody.type > LowerBody.NAGA) outputText("\n\nYou stagger as your " + player.feet() + " change, curling up into painful angry lumps of flesh.  They get tighter and tighter, harder and harder, until at last they solidify into hooves!");
 					else if (!player.hasFur()) outputText("  A fine coat of fur grows out below your waist, itching briefly as it fills in.");
 					outputText("<b>  You now have hooves in place of your feet!</b>");
-					player.lowerBody = LowerBody.HOOFED;
-					player.legCount = 2;
+					player.lowerBody.type = LowerBody.HOOFED;
+					player.lowerBody.legCount = 2;
 					dynStats("spe", 1);
 					changes++;
 				}
@@ -319,7 +319,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Face change, requires Ears + Height + Hooves
-			if (player.ears.type === Ears.COW && player.lowerBody === LowerBody.HOOFED && player.tallness >= 90
+			if (player.ears.type === Ears.COW && player.lowerBody.type === LowerBody.HOOFED && player.tallness >= 90
 					&& changes < changeLimit && rand(3) === 0) {
 				if (player.face.type !== Face.COW_MINOTAUR) {
 					outputText("\n\nBones shift and twist painfully as your visage twists and morphs to resemble that of the beast whose blood you now drink.  <b>You now have a minotaur-like face.</b>");

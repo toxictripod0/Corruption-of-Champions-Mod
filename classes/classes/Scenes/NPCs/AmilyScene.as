@@ -3495,7 +3495,7 @@ package classes.Scenes.NPCs
 			var maxSizeHypr:Number = 23;
 
 			//(If PC has 2 feet that are not hooves)
-			if (player.isBiped() && player.lowerBody != LowerBody.HOOFED) {
+			if (player.isBiped() && player.lowerBody.type != LowerBody.HOOFED) {
 				outputText("You're not satisfied; it needs to be bigger. You put your " + player.foot() + " on her cock and begin stroking it, drawing more pleasured moans from the slutty corrupt futa-mouse. You stroke her into an orgasm, milky white fluid flows out of her dick to hit her in the chest and in the face, but you don't stop. Her cock throbs and spills pre-cum, making your movements easier. You keep stroking her cock with your " + player.foot() + " vigorously, willing it to grow more and more; each time her cock throbs and orgasms it grows a bit more.\n\n");
 
 				outputText("Amily is already covered in her own cum, her juices pooling under her, but you never stop. You keep stroking until she comes again, her cock growing more and more. Finally, when one last orgasm brings it to just about 15 inches long and three thick, you press on her cockhead with your " + player.foot() + " and she comes one last time, coating your " + player.foot() + " with spooge. \"<i>Clean this up,</i>\" you order her, presenting her with your messy " + player.foot() + ". She obediently begins licking at the mess, tasting herself in the process. After it's clean you tell her you will call her when she you need her services again, and that she is to practice with her new tool until you do so. \"<i>Yes... " + player.mf("Master","Mistress") + ",</i>\" she answers tiredly, panting.\n\n");
@@ -6673,7 +6673,7 @@ package classes.Scenes.NPCs
 
 			outputText("Her words please you, and you ");
 			if (player.isNaga()) outputText("coil your serpentine tail around her head.");
-			else if (player.lowerBody == LowerBody.GOO) outputText("engulf her maw in slime.");
+			else if (player.lowerBody.type == LowerBody.GOO) outputText("engulf her maw in slime.");
 			else outputText("put a " + player.foot() + " on her head.");
 			outputText(" She falls silent and you say. \"<i>Very well. From now on I am your one and only " + player.mf("master","mistress") + ".  You will address me as such, always. My word is law, and you shall do whatever I tell you to, whenever I tell you to. Rise, it's time to break you into your new role as my cum-dumpster.</i>\"\n\n");
 
@@ -6752,7 +6752,7 @@ package classes.Scenes.NPCs
 
 			outputText("Her words please you, and you ");
 			if (player.isNaga()) outputText("coil your serpentine tail around her head.");
-			else if (player.lowerBody == LowerBody.GOO) outputText("engulf her maw in slime.");
+			else if (player.lowerBody.type == LowerBody.GOO) outputText("engulf her maw in slime.");
 			else outputText("put a " + player.foot() + " on her head.");
 			outputText("  She falls silent and you say, \"<i>Very well. From now on I am your one and only mistress. You will address me as such, always. My word is law, and you shall do whatever I tell you to, whenever I tell you to. Rise, it's time to break you into your new role as my cum-dumpster.</i>\"\n\n");
 

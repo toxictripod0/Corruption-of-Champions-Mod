@@ -427,7 +427,7 @@ package classes.Items.Consumables
 			}
 
 			//Face TF
-			if (player.face.type != Face.COCKATRICE && player.arms.type == Arms.COCKATRICE && player.lowerBody == LowerBody.COCKATRICE && changes < changeLimit && rand(3) == 0) {
+			if (player.face.type != Face.COCKATRICE && player.arms.type == Arms.COCKATRICE && player.lowerBody.type == LowerBody.COCKATRICE && changes < changeLimit && rand(3) == 0) {
 				outputText("\n\nYour head is suddenly wracked with pain. You throw back your head and scream in agony as you feel your skull’s"
 				          +" structure shifting, reforming into something... different. Your lower face elongates, your nose and lips fusing into the"
 				          +" new upper half of your mouth while your jaw soon catches it up as they both harden. Your larger upper lip curves over"
@@ -544,14 +544,14 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Leg TF
-			if (player.lowerBody != LowerBody.COCKATRICE && changes < changeLimit && rand(4) == 0) {
+			if (player.lowerBody.type != LowerBody.COCKATRICE && changes < changeLimit && rand(4) == 0) {
 				outputText("\n\nYou scream in agony as you feel the bones in your feet suddenly break and restructure themselves,"
 				          +" becoming digitigrade. These strange new legs have three-toed, clawed feet, complete with a small vestigial claw-toe on"
 				          +" the back for added grip, yet from hip to knee are covered with a layer of "
 				          + (player.hasCockatriceSkin() ? player.furColor : player.hair.color) + " feathers that end in a cuff.");
 				outputText("\n<b>You have cockatrice legs!</b>");
-				player.lowerBody = LowerBody.COCKATRICE;
-				player.legCount = 2;
+				player.lowerBody.type = LowerBody.COCKATRICE;
+				player.lowerBody.legCount = 2;
 				changes++;
 			}
 			//Tail TF

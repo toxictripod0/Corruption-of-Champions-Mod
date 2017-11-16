@@ -1505,11 +1505,11 @@ public class CombatAbilities extends BaseContent
 				addButton(button++, "Bow", fireBow).hint("Use a bow to fire an arrow at your opponent. \n\nFatigue Cost: " + player.physicalCost(25));
 			}
 			//Constrict
-			if (player.lowerBody == LowerBody.NAGA) {
+			if (player.lowerBody.type == LowerBody.NAGA) {
 				addButton(button++, "Constrict", getGame().desert.nagaScene.nagaPlayerConstrict).hint("Attempt to bind an enemy in your long snake-tail. \n\nFatigue Cost: " + player.physicalCost(10));
 			}
 			//Kick attackuuuu
-			else if (player.isTaur() || player.lowerBody == LowerBody.HOOFED || player.lowerBody == LowerBody.BUNNY || player.lowerBody == LowerBody.KANGAROO) {
+			else if (player.isTaur() || player.lowerBody.type == LowerBody.HOOFED || player.lowerBody.type == LowerBody.BUNNY || player.lowerBody.type == LowerBody.KANGAROO) {
 				addButton(button++, "Kick", kick).hint("Attempt to kick an enemy using your powerful lower body. \n\nFatigue Cost: " + player.physicalCost(15));
 			}
 			//Gore if mino horns
@@ -1928,16 +1928,16 @@ public class CombatAbilities extends BaseContent
 			}
 			player.changeFatigue(15,2);
 			//Variant start messages!
-			if (player.lowerBody == LowerBody.KANGAROO) {
+			if (player.lowerBody.type == LowerBody.KANGAROO) {
 				//(tail)
 				if (player.tailType == Tail.KANGAROO) outputText("You balance on your flexible kangaroo-tail, pulling both legs up before slamming them forward simultaneously in a brutal kick.  ");
 				//(no tail) 
 				else outputText("You balance on one leg and cock your powerful, kangaroo-like leg before you slam it forward in a kick.  ");
 			}
 			//(bunbun kick) 
-			else if (player.lowerBody == LowerBody.BUNNY) outputText("You leap straight into the air and lash out with both your furred feet simultaneously, slamming forward in a strong kick.  ");
+			else if (player.lowerBody.type == LowerBody.BUNNY) outputText("You leap straight into the air and lash out with both your furred feet simultaneously, slamming forward in a strong kick.  ");
 			//(centaur kick)
-			else if (player.lowerBody == LowerBody.HOOFED || player.lowerBody == LowerBody.PONY || player.lowerBody == LowerBody.CLOVEN_HOOFED)
+			else if (player.lowerBody.type == LowerBody.HOOFED || player.lowerBody.type == LowerBody.PONY || player.lowerBody.type == LowerBody.CLOVEN_HOOFED)
 				if (player.isTaur()) outputText("You lurch up onto your backlegs, lifting your forelegs from the ground a split-second before you lash them out in a vicious kick.  ");
 				//(bipedal hoof-kick) 
 				else outputText("You twist and lurch as you raise a leg and slam your hoof forward in a kick.  ");
@@ -1996,10 +1996,10 @@ public class CombatAbilities extends BaseContent
 			damage = player.str;
 			//Leg bonus
 			//Bunny - 20, Kangaroo - 35, 1 hoof = 30, 2 hooves = 40
-			if (player.lowerBody == LowerBody.HOOFED || player.lowerBody == LowerBody.PONY || player.lowerBody == LowerBody.CLOVEN_HOOFED)
+			if (player.lowerBody.type == LowerBody.HOOFED || player.lowerBody.type == LowerBody.PONY || player.lowerBody.type == LowerBody.CLOVEN_HOOFED)
 				damage += 30;
-			else if (player.lowerBody == LowerBody.BUNNY) damage += 20;
-			else if (player.lowerBody == LowerBody.KANGAROO) damage += 35;
+			else if (player.lowerBody.type == LowerBody.BUNNY) damage += 20;
+			else if (player.lowerBody.type == LowerBody.KANGAROO) damage += 35;
 			if (player.isTaur()) damage += 10;
 			//Damage post processing!
 			if (player.findPerk(PerkLib.HistoryFighter) >= 0) damage *= 1.1;

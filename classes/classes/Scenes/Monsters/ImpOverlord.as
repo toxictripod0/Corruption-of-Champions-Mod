@@ -223,7 +223,7 @@ package classes.Scenes.Monsters
 			this.tallness = rand(14) + 40;
 			this.hips.rating = Hips.RATING_BOYISH;
 			this.butt.rating = Butt.RATING_TIGHT;
-			this.lowerBody = LowerBody.HOOFED;
+			this.lowerBody.type = LowerBody.HOOFED;
 			this.skinTone = "red";
 			initStrTouSpeInte(100, 95, 85, 66);
 			initLibSensCor(55, 35, 100);

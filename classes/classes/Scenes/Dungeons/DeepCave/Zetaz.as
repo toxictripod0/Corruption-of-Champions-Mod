@@ -176,7 +176,7 @@ package classes.Scenes.Dungeons.DeepCave
 			this.tallness = 4*12+1;
 			this.hips.rating = Hips.RATING_BOYISH;
 			this.butt.rating = Butt.RATING_TIGHT;
-			this.lowerBody = LowerBody.KANGAROO;
+			this.lowerBody.type = LowerBody.KANGAROO;
 			this.skinTone = "red";
 			this.hair.color = "black";
 			this.hair.length = 5;

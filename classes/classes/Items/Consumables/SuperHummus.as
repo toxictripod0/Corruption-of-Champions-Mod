@@ -48,8 +48,8 @@ package classes.Items.Consumables
 			player.eyes.type = Eyes.HUMAN;
 			player.antennae.type = Antennae.NONE;
 			player.face.type = Face.HUMAN;
-			player.lowerBody = LowerBody.HUMAN;
-			player.legCount = 2;
+			player.lowerBody.type = LowerBody.HUMAN;
+			player.lowerBody.legCount = 2;
 			player.wingType = Wings.NONE;
 			player.tailType = Tail.NONE;
 			player.tongueType = Tongue.HUMAN;

@@ -369,7 +369,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 		{
 			clearOutput();
 			outputText("You laugh at Lethice and the goblin. <i>“This is all the reward I need.”</i> You press your");
-			if (player.lowerBody == 5)
+			if (player.lowerBody.type == 5)
 			{
 				outputText(" heel");
 			}
@@ -803,7 +803,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			{
 				outputText(" slither");
 			}
-			else if (player.lowerBody == LowerBody.HOOFED)
+			else if (player.lowerBody.type == LowerBody.HOOFED)
 			{
 				outputText(" clop");
 			}

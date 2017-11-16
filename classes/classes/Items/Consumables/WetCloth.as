@@ -118,15 +118,15 @@ package classes.Items.Consumables
 			////1a.Make alterations to dick/vaginal/nippular descriptors to match
 			//DONE EXCEPT FOR TITS & MULTIDICKS (UNFINISHED KINDA)
 			//2.Goo legs
-			if (player.skinAdj === "slimy" && player.skinDesc === "skin" && player.lowerBody !== LowerBody.GOO) {
+			if (player.skinAdj === "slimy" && player.skinDesc === "skin" && player.lowerBody.type !== LowerBody.GOO) {
 				outputText("\n\nYour viewpoint rapidly drops as everything below your " + player.buttDescript() + " and groin melts together into an amorphous blob.  Thankfully, you discover you can still roll about on your new slimey undercarriage, but it's still a whole new level of strange.");
 				player.tallness -= 3 + rand(2);
 				if (player.tallness < 36) {
 					player.tallness = 36;
 					outputText("  The goo firms up and you return to your previous height.  It would truly be hard to get any shorter than you already are!");
 				}
-				player.lowerBody = LowerBody.GOO;
-				player.legCount = 1;
+				player.lowerBody.type = LowerBody.GOO;
+				player.lowerBody.legCount = 1;
 				return false;
 			}
 			//3a. Grow vagina if none

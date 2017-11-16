@@ -6333,7 +6333,7 @@ package classes.Scenes.Places.Farm
 			if (player.isBiped())
 			{
 				outputText("\n\nShe spends a short time with your calves before encapsulating a [foot] in her oily hands.");
-				if (!(player.lowerBody == LowerBody.HOOFED || player.lowerBody == LowerBody.NAGA || player.lowerBody == LowerBody.GOO || player.lowerBody == LowerBody.PONY))
+				if (!(player.lowerBody.type == LowerBody.HOOFED || player.lowerBody.type == LowerBody.NAGA || player.lowerBody.type == LowerBody.GOO || player.lowerBody.type == LowerBody.PONY))
 				{
 					outputText(" Your mouth opens as a twinge of pure pleasure veins up your [leg] as she massages the soft arch of the sole, making your");
 					if (player.hasCock()) outputText(" cock thicken");
@@ -6342,7 +6342,7 @@ package classes.Scenes.Places.Farm
 					outputText(".");
 
 					outputText(" There must be a direct nerve link leading right from the bottom of your body up to your groin because my word, that really shouldn’t feel as good as it does. She swirls her thumbs across the rougher pads of your feet, dipping her warm fingers in and around the valleys of your");
-					if (player.lowerBody == LowerBody.DEMONIC_CLAWS || player.lowerBody == LowerBody.LIZARD || player.lowerBody == LowerBody.HARPY || player.lowerBody == LowerBody.DRAGON) outputText(" claws");
+					if (player.lowerBody.type == LowerBody.DEMONIC_CLAWS || player.lowerBody.type == LowerBody.LIZARD || player.lowerBody.type == LowerBody.HARPY || player.lowerBody.type == LowerBody.DRAGON) outputText(" claws");
 					else outputText(" toes")
 					outputText(", before returning deliberately to stroke at your arch, indulging that nervous link until you are deep in the unexpected bliss of it... before slowly releasing, leaving you to wallow delightfully in the knowledge that that same slow, delicious attention is about to be lavished on your other [foot].")
 				}

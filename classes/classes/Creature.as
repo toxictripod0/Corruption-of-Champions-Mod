@@ -424,32 +424,7 @@ import mx.logging.ILogger;
 		public function set wingColor(value:String):void { wings.color = value; }
 		public var wingDesc:String = "non-existant";
 
-		/* lowerBody:
-		0 - normal
-		1 - hooves
-		2 - paws
-		3 - snakelike body
-		4 - centaur!
-		5 - demonic heels
-		6 - demon foot-claws
-		7 - bee legs
-		8 - goo mound
-		9 - catfeet
-		10 - lizardfeet
-		11 - MLP.
-		12 - DAH BUNNY!
-		13 - Harpah Legz
-		14 - Roo feet!
-		15 - Spider Legz
-		16 - Drider Legs
-		17 - foxpaws
-		18 - dragonfeet
-		19 - raccoonfeet*/
-		public var lowerBodyPart:LowerBody = new LowerBody();
-		public function get lowerBody():Number { return lowerBodyPart.type; }
-		public function set lowerBody(value:Number):void { lowerBodyPart.type = value; }
-		public function get legCount():Number { return lowerBodyPart.legCount; }
-		public function set legCount(value:Number):void { lowerBodyPart.legCount = value; }
+		public var lowerBody:LowerBody = new LowerBody();
 
 		/*tailType:
 		0 - none
@@ -624,7 +599,7 @@ import mx.logging.ILogger;
 			// 2.1. non-negative Number fields
 			error += Utils.validateNonNegativeNumberFields(this,"Monster.validate",[
 				"balls", "ballSize", "cumMultiplier", "hoursSinceCum",
-				"tallness", "hips.rating", "butt.rating", "lowerBody", "arms.type",
+				"tallness", "hips.rating", "butt.rating", "lowerBody.type", "arms.type",
 				"skinType", "hair.length", "hair.type",
 				"face.type", "ears.type", "tongueType", "eyes.type",
 				"str", "tou", "spe", "inte", "lib", "sens", "cor",
@@ -1792,7 +1767,7 @@ import mx.logging.ILogger;
 
 			if (isTaur()){
 				bonus += 50;
-			}else if (lowerBody == LowerBody.NAGA){
+			}else if (lowerBody.type == LowerBody.NAGA){
 				bonus += 20;
 			}
 
@@ -2376,7 +2351,7 @@ import mx.logging.ILogger;
 			return [
 				LowerBody.HOOFED,
 				LowerBody.CLOVEN_HOOFED,
-			].indexOf(lowerBody) != -1;
+			].indexOf(lowerBody.type) != -1;
 		}
 
 		public function isCentaur():Boolean
@@ -2892,22 +2867,22 @@ import mx.logging.ILogger;
 
 		public function isBiped():Boolean
 		{
-			return legCount == 2;
+			return lowerBody.legCount == 2;
 		}
 
 		public function isNaga():Boolean
 		{
-			return lowerBody == LowerBody.NAGA;
+			return lowerBody.type == LowerBody.NAGA;
 		}
 
 		public function isTaur():Boolean
 		{
-			return legCount > 2 && !isDrider(); // driders have genitals on their human part, inlike usual taurs... this is actually bad way to check, but too many places to fix just now
+			return lowerBody.legCount > 2 && !isDrider(); // driders have genitals on their human part, inlike usual taurs... this is actually bad way to check, but too many places to fix just now
 		}
 
 		public function isDrider():Boolean
 		{
-			return lowerBody == LowerBody.DRIDER_LOWER_BODY;
+			return lowerBody.type == LowerBody.DRIDER_LOWER_BODY;
 		}
 
 		public function hasSpiderEyes():Boolean
@@ -2917,38 +2892,38 @@ import mx.logging.ILogger;
 
 		public function isGoo():Boolean
 		{
-			return lowerBody == LowerBody.GOO;
+			return lowerBody.type == LowerBody.GOO;
 		}
 
 		public function legs():String
 		{
 			var select:Number = 0;
-			//lowerBody:
+			//lowerBodyPart.type:
 			//4 legs - centaur!
 			if (isDrider())
-				return num2Text(legCount)+" spider legs";
+				return num2Text(lowerBody.legCount)+" spider legs";
 			if (isTaur())
-				return num2Text(legCount)+" legs";
+				return num2Text(lowerBody.legCount)+" legs";
 			//0 - normal
-			if (lowerBody == 0)
+			if (lowerBody.type == 0)
 				return "legs";
 			//1 - hooves
-			if (lowerBody == 1)
+			if (lowerBody.type == 1)
 				return "legs";
 			//2 - paws
-			if (lowerBody == 2)
+			if (lowerBody.type == 2)
 				return "legs";
 			//3 - snakelike body
-			if (lowerBody == 3)
+			if (lowerBody.type == 3)
 				return "snake-like coils";
 			//8 - goo shit
-			if (lowerBody == 8)
+			if (lowerBody.type == 8)
 				return "mounds of goo";
 			//PONY
-			if (lowerBody == 11)
+			if (lowerBody.type == 11)
 				return "cute pony-legs";
 			//Bunnah!
-			if (lowerBody == 12) {
+			if (lowerBody.type == 12) {
 				select = Math.floor(Math.random() * (5));
 				if (select == 0)
 					return "fuzzy, bunny legs";
@@ -2959,7 +2934,7 @@ import mx.logging.ILogger;
 				else
 					return "legs";
 			}
-			if (lowerBody == 13) {
+			if (lowerBody.type == 13) {
 				select = Math.floor(Math.random() * (5));
 				if (select == 0)
 					return "bird-like legs";
@@ -2968,7 +2943,7 @@ import mx.logging.ILogger;
 				else
 					return "legs";
 			}
-			if (lowerBody == 17) {
+			if (lowerBody.type == 17) {
 				select = Math.floor(Math.random() * (4));
 				if (select == 0)
 					return "fox-like legs";
@@ -2979,14 +2954,14 @@ import mx.logging.ILogger;
 				else
 					return "vulpine legs";
 			}
-			if (lowerBody == 19) {
+			if (lowerBody.type == 19) {
 				select = Math.floor(Math.random() * (4));
 				if (select == 0)
 					return "raccoon-like legs";
 				else
 					return "legs";
 			}
-			if (lowerBody == 21) {
+			if (lowerBody.type == 21) {
 				select = Math.floor(Math.random() * (4));
 				if (select == 0)
 					return "pig-like legs";
@@ -3023,30 +2998,30 @@ import mx.logging.ILogger;
 		public function leg():String
 		{
 			var select:Number = 0;
-			//lowerBody:
+			//lowerBodyPart.type:
 			//0 - normal
-			if (lowerBody == 0)
+			if (lowerBody.type == 0)
 				return "leg";
 			//1 - hooves
-			if (lowerBody == 1)
+			if (lowerBody.type == 1)
 				return "leg";
 			//2 - paws
-			if (lowerBody == 2)
+			if (lowerBody.type == 2)
 				return "leg";
 			//3 - snakelike body
-			if (lowerBody == 3)
+			if (lowerBody.type == 3)
 				return "snake-tail";
 			//4 - centaur!
-			if (lowerBody == 4)
+			if (lowerBody.type == 4)
 				return "equine leg";
 			//8 - goo shit
-			if (lowerBody == 8)
+			if (lowerBody.type == 8)
 				return "mound of goo";
 			//PONY
-			if (lowerBody == 11)
+			if (lowerBody.type == 11)
 				return "cartoonish pony-leg";
 			//BUNNAH
-			if (lowerBody == 12) {
+			if (lowerBody.type == 12) {
 				select = Math.random() * (5);
 				if (select == 0)
 					return "fuzzy, bunny leg";
@@ -3057,7 +3032,7 @@ import mx.logging.ILogger;
 				else
 					return "leg";
 			}
-			if (lowerBody == 13) {
+			if (lowerBody.type == 13) {
 				select = Math.floor(Math.random() * (5));
 				if (select == 0)
 					return "bird-like leg";
@@ -3066,7 +3041,7 @@ import mx.logging.ILogger;
 				else
 					return "leg";
 			}
-			if (lowerBody == 17) {
+			if (lowerBody.type == 17) {
 				select = Math.floor(Math.random() * (4));
 				if (select == 0)
 					return "fox-like leg";
@@ -3077,7 +3052,7 @@ import mx.logging.ILogger;
 				else
 					return "vulpine leg";
 			}
-			if (lowerBody == 19) {
+			if (lowerBody.type == 19) {
 				select = Math.floor(Math.random() * (4));
 				if (select == 0)
 					return "raccoon-like leg";
@@ -3090,35 +3065,35 @@ import mx.logging.ILogger;
 		public function feet():String
 		{
 			var select:Number = 0;
-			//lowerBody:
+			//lowerBodyPart.type:
 			//0 - normal
-			if (lowerBody == 0)
+			if (lowerBody.type == 0)
 				return "feet";
 			//1 - hooves
-			if (lowerBody == 1)
+			if (lowerBody.type == 1)
 				return "hooves";
 			//2 - paws
-			if (lowerBody == 2)
+			if (lowerBody.type == 2)
 				return "paws";
 			//3 - snakelike body
-			if (lowerBody == 3)
+			if (lowerBody.type == 3)
 				return "coils";
 			//4 - centaur!
-			if (lowerBody == 4)
+			if (lowerBody.type == 4)
 				return "hooves";
 			//5 - demonic heels
-			if (lowerBody == 5)
+			if (lowerBody.type == 5)
 				return "demonic high-heels";
 			//6 - demonic claws
-			if (lowerBody == 6)
+			if (lowerBody.type == 6)
 				return "demonic foot-claws";
 			//8 - goo shit
-			if (lowerBody == 8)
+			if (lowerBody.type == 8)
 				return "slimey cillia";
-			if (lowerBody == 11)
+			if (lowerBody.type == 11)
 				return "flat pony-feet";
 			//BUNNAH
-			if (lowerBody == 12) {
+			if (lowerBody.type == 12) {
 				select = rand(5);
 				if (select == 0)
 					return "large bunny feet";
@@ -3129,16 +3104,16 @@ import mx.logging.ILogger;
 				else
 					return "feet";
 			}
-			if (lowerBody == 13) {
+			if (lowerBody.type == 13) {
 				select = Math.floor(Math.random() * (5));
 				if (select == 0)
 					return "taloned feet";
 				else
 					return "feet";
 			}
-			if (lowerBody == 14)
+			if (lowerBody.type == 14)
 				return "foot-paws";
-			if (lowerBody == 17) {
+			if (lowerBody.type == 17) {
 				select = rand(4);
 				if (select == 0)
 					return "paws";
@@ -3149,7 +3124,7 @@ import mx.logging.ILogger;
 				else
 					return "paws";
 			}
-			if (lowerBody == 19) {
+			if (lowerBody.type == 19) {
 				select = Math.floor(Math.random() * (3));
 				if (select == 0)
 					return "raccoon-like feet";
@@ -3166,30 +3141,30 @@ import mx.logging.ILogger;
 		public function foot():String
 		{
 			var select:Number = 0;
-			//lowerBody:
+			//lowerBodyPart.type:
 			//0 - normal
-			if (lowerBody == 0)
+			if (lowerBody.type == 0)
 				return "foot";
 			//1 - hooves
-			if (lowerBody == 1)
+			if (lowerBody.type == 1)
 				return "hoof";
 			//2 - paws
-			if (lowerBody == 2)
+			if (lowerBody.type == 2)
 				return "paw";
 			//3 - snakelike body
-			if (lowerBody == 3)
+			if (lowerBody.type == 3)
 				return "coiled tail";
 			//4 - centaur!
-			if (lowerBody == 4)
+			if (lowerBody.type == 4)
 				return "hoof";
 			//8 - goo shit
-			if (lowerBody == 8)
+			if (lowerBody.type == 8)
 				return "slimey undercarriage";
 			//PONY
-			if (lowerBody == 11)
+			if (lowerBody.type == 11)
 				return "flat pony-foot";
 			//BUNNAH
-			if (lowerBody == 12) {
+			if (lowerBody.type == 12) {
 				select = Math.random() * (5);
 				if (select == 0)
 					return "large bunny foot";
@@ -3200,14 +3175,14 @@ import mx.logging.ILogger;
 				else
 					return "foot";
 			}
-			if (lowerBody == 13) {
+			if (lowerBody.type == 13) {
 				select = Math.floor(Math.random() * (5));
 				if (select == 0)
 					return "taloned foot";
 				else
 					return "foot";
 			}
-			if (lowerBody == 17) {
+			if (lowerBody.type == 17) {
 				select = Math.floor(Math.random() * (4));
 				if (select == 0)
 					return "paw";
@@ -3218,9 +3193,9 @@ import mx.logging.ILogger;
 				else
 					return "paw";
 			}
-			if (lowerBody == 14)
+			if (lowerBody.type == 14)
 				return "foot-paw";
-			if (lowerBody == 19) {
+			if (lowerBody.type == 19) {
 				select = Math.floor(Math.random() * (3));
 				if (select == 0)
 					return "raccoon-like foot";

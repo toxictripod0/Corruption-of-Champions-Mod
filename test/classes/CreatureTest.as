@@ -161,7 +161,7 @@ package classes{
 		
 		[Test]
 		public function testVaginalCapacityTaurBodyBonus():void {
-			oneVagina.legCount = 4;
+			oneVagina.lowerBody.legCount = 4;
 			assertThat(oneVagina.isTaur(), equalTo(true)); //guard assert
 			
 			assertThat(oneVagina.vaginalCapacity(), closeTo(55, 0.001));
@@ -169,7 +169,7 @@ package classes{
 		
 		[Test]
 		public function testVaginalCapacityNagaBodyBonus():void {
-			oneVagina.lowerBody = LowerBody.NAGA;
+			oneVagina.lowerBody.type = LowerBody.NAGA;
 			assertThat(oneVagina.isNaga(), equalTo(true)); //guard assert
 			
 			assertThat(oneVagina.vaginalCapacity(), equalTo(22));

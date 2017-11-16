@@ -198,8 +198,8 @@
 			player.underBody.restore();
 			player.neck.restore();
 			player.rearBody.restore();
-			player.lowerBody = LowerBody.HUMAN;
-			player.legCount = 2;
+			player.lowerBody.type = LowerBody.HUMAN;
+			player.lowerBody.legCount = 2;
 			player.face.type = Face.HUMAN;
 			player.eyes.count = 2;
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) player.tailType = Tail.NONE;

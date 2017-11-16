@@ -115,7 +115,7 @@ package classes.Scenes.Quests.UrtaQuest
 			this.tallness = 5*12+10;
 			this.hips.rating = Hips.RATING_AMPLE+2;
 			this.butt.rating = Butt.RATING_LARGE;
-			this.lowerBody = LowerBody.NAGA;
+			this.lowerBody.type = LowerBody.NAGA;
 			this.skinTone = "mediterranean-toned";
 			this.hair.color = "orange";
 			this.hair.length = 16;

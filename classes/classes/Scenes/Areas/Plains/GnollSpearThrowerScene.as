@@ -152,7 +152,7 @@ package classes.Scenes.Areas.Plains
 			else outputText("letting you fall hard into the grass.");
 			outputText("  As you slowly fade into unconsciousness from the orgasm, you see the hyena draw a finger along the tip of her cunt until the spotted fingers glisten with moisture.  Those fingers roughly rub the thick, potent fluid against your face, coating it with her scent and the knowledge of her victory.");
 			//<For Slimes> 
-			if (player.lowerBody == LowerBody.GOO) outputText("  Even as your eyes slide closed, you see the hyena kicking open the circle of dust.");
+			if (player.lowerBody.type == LowerBody.GOO) outputText("  Even as your eyes slide closed, you see the hyena kicking open the circle of dust.");
 			outputText("  The last thing you hear before blackness overtakes you is the barking laugh of the hyena as she leaves her newest conquest to sleep in the fields of grass.");
 			player.orgasm('Anal');
 			dynStats("sen", 2);

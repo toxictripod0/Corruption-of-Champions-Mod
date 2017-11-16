@@ -105,7 +105,7 @@ package classes.Items.Consumables
 			}
 			//9c) I The tail ( http://tvtropes.org/pmwiki/pmwiki.php/Main/TransformationIsAFreeAction ) (Shouldn't we try to avert this? -Ace)
 			//Should the enemy "kill" you during the transformation, it skips the scene and immediately goes to tthe rape scene. (Now that I'm thinking about it, we should add some sort of appendix where the player realizes how much he's/she's changed. -Ace)
-			if (changes === 0 && player.face.type === Face.SNAKE_FANGS && player.lowerBody !== LowerBody.NAGA && rand(4) === 0 && changes < changeLimit) {
+			if (changes === 0 && player.face.type === Face.SNAKE_FANGS && player.lowerBody.type !== LowerBody.NAGA && rand(4) === 0 && changes < changeLimit) {
 				outputText("\n\nYou find it increasingly harder to keep standing as your legs start feeling weak.  You swiftly collapse, unable to maintain your own weight.");
 				//(If used in combat, you lose a turn here. Half-corrupted Jojo and the Naga won't attack you during that period, but other monsters will)
 				//FUCK NO
@@ -114,8 +114,8 @@ package classes.Items.Consumables
 				outputText("\n\nWondering what happened to your sex, you pass your hand down the front of your body until you find a large, horizontal slit around your pelvic area, which contains all of your sexual organs.");
 				if (player.balls > 0 && player.ballSize > 10) outputText("  You're happy not to have to drag those testicles around with you anymore.");
 				outputText("  But then, scales start to form on the surface of your skin, slowly becoming visible, recoloring all of your body from the waist down in a snake-like pattern. The feeling is... not that bad actually, kind of like callous, except on your whole lower body. The transformation complete, you get up, standing on your newly formed snake tail. You can't help feeling proud of this majestic new body of yours.");
-				player.lowerBody = LowerBody.NAGA;
-				player.legCount = 1;
+				player.lowerBody.type = LowerBody.NAGA;
+				player.lowerBody.legCount = 1;
 
 				// Naga lower body plus a tail may look awkward, so silently discard it (Stadler76)
 				player.tailType = Tail.NONE;

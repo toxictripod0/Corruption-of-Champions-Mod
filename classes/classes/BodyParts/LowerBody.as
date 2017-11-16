@@ -51,7 +51,7 @@ package classes.BodyParts
 		public function setProps(p:Object):void
 		{
 			if (p.hasOwnProperty('type'))     type     = p.type;
-			if (p.hasOwnProperty('legCount')) legCount = p.legCount;
+			if (p.hasOwnProperty('legCount')) legCount = p.lowerBodyPart.legCount;
 		}
 
 		public function setAllProps(p:Object):void

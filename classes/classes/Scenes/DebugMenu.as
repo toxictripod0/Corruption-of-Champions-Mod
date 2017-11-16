@@ -1315,15 +1315,15 @@ import classes.Items.*
 		}
 		private function changeLowerBodyType(page:int=0,setIdx:int=-1):void {
 			/* [INTERMOD: xianxia]
-			if (setIdx>=0) player.lowerBodyPart.type = setIdx;
+			if (setIdx>=0) player.lowerBodyPart.typePart.type = setIdx;
 			*/
-			if (setIdx>=0) player.lowerBody = setIdx;
+			if (setIdx>=0) player.lowerBody.type = setIdx;
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorTorso, page, LOWER_TYPE_CONSTANTS, changeLowerBodyType);
 		}
 		private function changeLegCount(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.legCount = LEG_COUNT_CONSTANTS[setIdx];
+			if (setIdx>=0) player.lowerBody.legCount = LEG_COUNT_CONSTANTS[setIdx];
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorTorso, page, LEG_COUNT_CONSTANTS, changeLegCount);
@@ -1351,8 +1351,8 @@ import classes.Items.*
 			//Cat TF
 			player.face.type = Face.CAT;
 			player.ears.type = Ears.CAT;
-			player.lowerBody = LowerBody.CAT;
-			player.legCount = 2;
+			player.lowerBody.type = LowerBody.CAT;
+			player.lowerBody.legCount = 2;
 			player.skinType = Skin.FUR;
 			player.skinDesc = "fur";
 			player.underBody.restore(); // Restore the underbody for now
@@ -1374,8 +1374,8 @@ import classes.Items.*
 			player.face.type = Face.CAT;
 			player.ears.type = Ears.CAT;
 			player.tailType = Tail.CAT;
-			player.lowerBody = LowerBody.CAT;
-			player.legCount = 2;
+			player.lowerBody.type = LowerBody.CAT;
+			player.lowerBody.legCount = 2;
 			//Draconic TF
 			player.skinType = Skin.DRAGON_SCALES;
 			player.skinAdj = "tough";

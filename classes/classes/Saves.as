@@ -897,8 +897,8 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		// </mod>
 		saveFile.data.wingType = player.wingType;
 		saveFile.data.wingColor = player.wingColor;
-		saveFile.data.lowerBody = player.lowerBody;
-		saveFile.data.legCount = player.legCount;
+		saveFile.data.lowerBody = player.lowerBody.type;
+		saveFile.data.legCount = player.lowerBody.legCount;
 		saveFile.data.tailType = player.tailType;
 		saveFile.data.tailVenum = player.tailVenom;
 		saveFile.data.tailRecharge = player.tailRecharge;
@@ -1779,7 +1779,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 
 		player.wingType = saveFile.data.wingType;
 		player.wingColor = saveFile.data.wingColor || "no";
-		player.lowerBody = saveFile.data.lowerBody;
+		player.lowerBody.type = saveFile.data.lowerBody;
 		player.tailType = saveFile.data.tailType;
 		player.tailVenom = saveFile.data.tailVenum;
 		player.tailRecharge = saveFile.data.tailRecharge;
@@ -1792,41 +1792,41 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			player.rearBody.setAllProps({type: RearBody.SHARK_FIN});
 		}
 
-		if (player.lowerBody === 4) {
-			player.lowerBody = LowerBody.HOOFED;
-			player.legCount = 4;
+		if (player.lowerBody.type === 4) {
+			player.lowerBody.type = LowerBody.HOOFED;
+			player.lowerBody.legCount = 4;
 		}
 		
-		if (player.lowerBody === 24) {
-			player.lowerBody = LowerBody.CLOVEN_HOOFED;
-			player.legCount = 4;
+		if (player.lowerBody.type === 24) {
+			player.lowerBody.type = LowerBody.CLOVEN_HOOFED;
+			player.lowerBody.legCount = 4;
 		}
 		
 		if (saveFile.data.legCount == undefined) {
-			if (player.lowerBody == LowerBody.DRIDER_LOWER_BODY) {
-				player.legCount = 8;
+			if (player.lowerBody.type == LowerBody.DRIDER_LOWER_BODY) {
+				player.lowerBody.legCount = 8;
 			}
-			else if (player.lowerBody == 4) {
-				player.legCount = 4;
-				player.lowerBody = LowerBody.HOOFED;
+			else if (player.lowerBody.type == 4) {
+				player.lowerBody.legCount = 4;
+				player.lowerBody.type = LowerBody.HOOFED;
 			}
-			else if (player.lowerBody == LowerBody.PONY) {
-				player.legCount = 4;
+			else if (player.lowerBody.type == LowerBody.PONY) {
+				player.lowerBody.legCount = 4;
 			}
-			else if (player.lowerBody == 24) {
-				player.legCount = 4;
-				player.lowerBody = LowerBody.CLOVEN_HOOFED;
+			else if (player.lowerBody.type == 24) {
+				player.lowerBody.legCount = 4;
+				player.lowerBody.type = LowerBody.CLOVEN_HOOFED;
 			}
-			else if (player.lowerBody == LowerBody.NAGA) {
-				player.legCount = 1;
+			else if (player.lowerBody.type == LowerBody.NAGA) {
+				player.lowerBody.legCount = 1;
 			}
-			else if (player.lowerBody == LowerBody.GOO) {
-				player.legCount = 1;
+			else if (player.lowerBody.type == LowerBody.GOO) {
+				player.lowerBody.legCount = 1;
 			}
-			else player.legCount = 2;
+			else player.lowerBody.legCount = 2;
 		}
 		else
-			player.legCount = saveFile.data.legCount;
+			player.lowerBody.legCount = saveFile.data.legCount;
 			
 		if (saveFile.data.eyeCount == undefined) {
 			if (player.eyes.type == Eyes.SPIDER) {

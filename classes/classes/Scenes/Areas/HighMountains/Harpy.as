@@ -110,7 +110,7 @@ package classes.Scenes.Areas.HighMountains
 			this.tallness = 6*12+6;
 			this.hips.rating = Hips.RATING_INHUMANLY_WIDE;
 			this.butt.rating = Butt.RATING_EXPANSIVE;
-			this.lowerBody = LowerBody.HARPY;
+			this.lowerBody.type = LowerBody.HARPY;
 			this.skinTone = "pink";
 			this.skinType = Skin.PLAIN;
 			this.skinDesc = "feathers";

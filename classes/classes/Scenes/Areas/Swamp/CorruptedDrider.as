@@ -168,7 +168,7 @@ package classes.Scenes.Areas.Swamp
 			this.tallness = 10*12;
 			this.hips.rating = Hips.RATING_CURVY+2;
 			this.butt.rating = Butt.RATING_LARGE+1;
-			this.lowerBody = LowerBody.DRIDER_LOWER_BODY;
+			this.lowerBody.type = LowerBody.DRIDER_LOWER_BODY;
 			this.skinTone = skinTone;
 			this.skinType = Skin.PLAIN;
 			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.PLAIN];

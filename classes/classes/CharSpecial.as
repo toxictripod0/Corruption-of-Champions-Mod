@@ -105,7 +105,7 @@ package classes
 			player.hips.rating = 17;
 			player.butt.rating = 17;
 			player.tailType = Tail.DEMONIC;
-			player.lowerBody = LowerBody.DEMONIC_HIGH_HEELS;
+			player.lowerBody.type = LowerBody.DEMONIC_HIGH_HEELS;
 			//Breasts: J-cups with 5 inch fuckable nipples, leaking milk
 			player.breastRows[0].breastRating = 28;
 			player.nippleLength = 5;
@@ -132,7 +132,7 @@ package classes
 			player.createPerk(PerkLib.EnlightenedNinetails, 0, 0, 0, 0);
 			player.createBreastRow(BreastCup.DD);
 			player.femininity = 100;
-			player.lowerBody = LowerBody.DEMONIC_HIGH_HEELS;
+			player.lowerBody.type = LowerBody.DEMONIC_HIGH_HEELS;
 			player.skinTone = "pink";
 			player.skinType = Skin.FUR;
 			player.skinDesc = "fur";
@@ -743,7 +743,7 @@ package classes
 			player.hair.color = "blonde";
 			player.hair.length = 24;
 			player.hips.rating = 6;
-			player.lowerBody = LowerBody.CAT;
+			player.lowerBody.type = LowerBody.CAT;
 			player.nippleLength = 0.5;
 			//perks:
 			player.createPerk(PerkLib.Agility, 0, 0, 0, 0);
@@ -810,7 +810,7 @@ package classes
 			player.hair.color = "black";
 			player.skinDesc = "fur";
 			//Legs/Feet = Digigrade hooved 
-			player.lowerBody = LowerBody.HOOFED;
+			player.lowerBody.type = LowerBody.HOOFED;
 			//Wing type = Dragon
 			player.wingType = Wings.DRACONIC_LARGE;
 			//Tail type = Dragon
@@ -851,7 +851,7 @@ package classes
 			//Tail- Canine
 			player.tailType = Tail.DOG;
 			//Lower body- Canine
-			player.lowerBody = LowerBody.DOG;
+			player.lowerBody.type = LowerBody.DOG;
 			//White Fur (if possible)
 			player.skinType = Skin.FUR;
 			player.hair.color = "white";
@@ -977,7 +977,7 @@ package classes
 			player.wingType = Wings.DRACONIC_LARGE;
 			player.tailType = Tail.FOX;
 			player.tailVenom = 9;
-			player.lowerBody = LowerBody.DRAGON;
+			player.lowerBody.type = LowerBody.DRAGON;
 			player.tongueType = Tongue.DRACONIC;
 			player.hair.length = 45;
 			player.createPerk(PerkLib.EnlightenedNinetails,0,0,0,0);
@@ -1066,7 +1066,7 @@ package classes
 			player.wingType = Wings.NONE;
 			//6' 10"" german-shepherd morph, face ears hands feet tail, the whole nine yards
 			player.face.type = Face.DOG;
-			player.lowerBody = LowerBody.DOG;
+			player.lowerBody.type = LowerBody.DOG;
 			player.tailType = Tail.DOG;
 			player.ears.type = Ears.DOG;
 			////"	"I'm picturing a tall, feminine German-Shepherd morph, solid white and gorgeous. She has both sets of genitals, with no balls, and a large set of breasts. She wields a large claymore and is dressed in a full chain vest and pants. 
@@ -1296,7 +1296,7 @@ package classes
 			player.tailRecharge = 0;
 			player.wingType = Wings.DRACONIC_LARGE;
 			player.ears.type = Ears.HUMAN;
-			player.lowerBody = LowerBody.HUMAN;
+			player.lowerBody.type = LowerBody.HUMAN;
 			player.arms.type = Arms.HUMAN;
 			player.hair.length = 69.2;
 			player.hair.type = 4;
@@ -1439,7 +1439,7 @@ package classes
 			player.butt.rating = 12;
 			player.hips.rating = 10;
 			player.tailType = Tail.CAT;
-			player.lowerBody = LowerBody.CAT;
+			player.lowerBody.type = LowerBody.CAT;
 			//Breasts: 2 E-cups on top, 2 DD-cups mid, 2 D-cups bottom, 3.5 inch nipples
 			player.createBreastRow();
 			player.createBreastRow();
@@ -1505,7 +1505,7 @@ package classes
 			player.tailRecharge = 0;
 			player.wingType = Wings.NONE;
 			player.ears.type = Ears.CAT;
-			player.lowerBody = LowerBody.CAT;
+			player.lowerBody.type = LowerBody.CAT;
 			player.tailType = Tail.CAT;
 			player.createPerk(PerkLib.Incorporeality,0,0,0,0);
 			player.wingType = Wings.FEATHERED_LARGE;
@@ -1630,7 +1630,7 @@ package classes
 			player.claws.type = Claws.DOG;
 			player.claws.tone = "ivory";
 			player.eyes.type = Eyes.DRAGON;
-			player.lowerBody = LowerBody.FOX;
+			player.lowerBody.type = LowerBody.FOX;
 			player.tailType = Tail.FOX; // soft fur feels so lovely...
 			player.tailVenom = 9;			
 			player.tongueType = Tongue.DRACONIC; // tongue as long as your whole body height! almost tentackle! and so much fun to use!
@@ -1848,20 +1848,20 @@ package classes
 
 
 			if (rand(2) != 0) // 50% to have human lower body
-				player.lowerBody = LowerBody.HUMAN;
+				player.lowerBody.type = LowerBody.HUMAN;
 			else // totally random one
 			{
-				player.lowerBody = rand(21) + 1; // since it is not a enum, it is impossible to make it auto-ajust...
-				if (player.lowerBody == 4) {
-					player.lowerBody = LowerBody.HOOFED;
-					player.legCount = 4;
+				player.lowerBody.type = rand(21) + 1; // since it is not a enum, it is impossible to make it auto-ajust...
+				if (player.lowerBody.type == 4) {
+					player.lowerBody.type = LowerBody.HOOFED;
+					player.lowerBody.legCount = 4;
 				}
-				else if (player.lowerBody == LowerBody.DRIDER_LOWER_BODY)
-					player.legCount = 8;
-				else if (player.lowerBody == LowerBody.NAGA || player.lowerBody == LowerBody.GOO)	
-					player.legCount = 1;
+				else if (player.lowerBody.type == LowerBody.DRIDER_LOWER_BODY)
+					player.lowerBody.legCount = 8;
+				else if (player.lowerBody.type == LowerBody.NAGA || player.lowerBody.type == LowerBody.GOO)	
+					player.lowerBody.legCount = 1;
 				else if (rand(15) == 0)
-					player.legCount = 4;
+					player.lowerBody.legCount = 4;
 			}
 			
 			player.tailType = rand(21); // always have totally random tail

@@ -1478,13 +1478,13 @@ package classes.Scenes.Places.Bazaar
 				player.arms.type = Arms.HUMAN;
 				changes++;
 			}
-			if (rand(4) == 0 && changes < changeLimit && player.lowerBody != LowerBody.CLOVEN_HOOFED) {
+			if (rand(4) == 0 && changes < changeLimit && player.lowerBody.type != LowerBody.CLOVEN_HOOFED) {
 				outputText("\n\nYou feel an odd sensation in your lower region. Your [feet] shift and you hear bones cracking as they reform. Fur grows on your legs and soon you're looking at a <b>new pair of goat legs</b>.");
-				player.lowerBody = LowerBody.CLOVEN_HOOFED;
-				player.legCount = 2;
+				player.lowerBody.type = LowerBody.CLOVEN_HOOFED;
+				player.lowerBody.legCount = 2;
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.lowerBody == LowerBody.CLOVEN_HOOFED && player.horns.type == Horns.GOAT && player.face.type != Face.HUMAN) {
+			if (rand(3) == 0 && changes < changeLimit && player.lowerBody.type == LowerBody.CLOVEN_HOOFED && player.horns.type == Horns.GOAT && player.face.type != Face.HUMAN) {
 				outputText("\n\nYour face grows warm as suddenly your vision is engulfed in smoke, coughing and beating the smoke back you noticed a marked change in your features. Touching yourself you confirm you have a <b>normal human shaped face once again</b>.");
 				player.face.type = Face.HUMAN;
 				changes++;
@@ -1593,7 +1593,7 @@ package classes.Scenes.Places.Bazaar
 			if (rand(5) == 0) mutations.updateOvipositionPerk(tfSource);
 			// Special TFs
 			//------------
-			if (rand(4) == 0 && changes < changeLimit && player.horns.type != Horns.UNICORN && player.ears.type == Ears.HORSE && (player.lowerBody == LowerBody.HOOFED || player.lowerBody == LowerBody.CLOVEN_HOOFED || player.horseScore() >= 3)) {
+			if (rand(4) == 0 && changes < changeLimit && player.horns.type != Horns.UNICORN && player.ears.type == Ears.HORSE && (player.lowerBody.type == LowerBody.HOOFED || player.lowerBody.type == LowerBody.CLOVEN_HOOFED || player.horseScore() >= 3)) {
 				outputText("\n\nYou begin to feel an annoying tingling sensation at the top of your head. Reaching up to inspect it you find the <b>sharp nub of a horn protruding from the center of your forehead</b> and growing. Once it's complete you estimate it to be about six inches long.");
 				player.horns.type = Horns.UNICORN;
 				player.horns.value = 6;
@@ -1664,10 +1664,10 @@ package classes.Scenes.Places.Bazaar
 				changes++;
 			}
 			//Change legs to normal
-			if (rand(4) == 0 && changes < changeLimit && player.lowerBody != LowerBody.HUMAN) {
+			if (rand(4) == 0 && changes < changeLimit && player.lowerBody.type != LowerBody.HUMAN) {
 				if (player.isBiped()) outputText("You feel an odd sensation in your [feet]. Your [feet] shift and you hear bones cracking as they reform into normal human feet.");
-				player.lowerBody = LowerBody.HUMAN;
-				player.legCount = 2;
+				player.lowerBody.type = LowerBody.HUMAN;
+				player.lowerBody.legCount = 2;
 				changes++;
 			}
 			//Removes antennaes!
@@ -1975,9 +1975,9 @@ package classes.Scenes.Places.Bazaar
 				changes++;
 			}
 			//Gain Echidna legs
-			if (rand(3) == 0 && changes < changeLimit && player.ears.type == Ears.ECHIDNA && player.tailType && Tail.ECHIDNA && player.lowerBody != LowerBody.ECHIDNA) {
+			if (rand(3) == 0 && changes < changeLimit && player.ears.type == Ears.ECHIDNA && player.tailType && Tail.ECHIDNA && player.lowerBody.type != LowerBody.ECHIDNA) {
 				outputText("\n\n");
-				switch(player.lowerBody) {
+				switch(player.lowerBody.type) {
 					//Irregular lower body type
 					case LowerBody.NAGA:
 						outputText("You collapse to the ground, a sharp pain encompassing your serpentine tail. The pain quickly becomes so severe that you black out on the spot. Eventually you awake to find that you no longer have the lower body of a snake. You have two legs again, and your feet look a lot like your old human feet. The only difference is that your toes are clawed, and the bottoms of your feet padded.");
@@ -2013,8 +2013,8 @@ package classes.Scenes.Places.Bazaar
 						outputText("Your feet feel strange, almost as if they’ve fallen asleep. What’s wrong with them? You take a look, and you’re shocked to see that your feet have changed. In fact, they look a lot like your old human feet. The only difference is that your toes are clawed, and the bottoms of your feet padded.");
 				}
 				outputText(" <b>They actually look like the feet of an echidna!</b>");
-				player.lowerBody = LowerBody.ECHIDNA;
-				player.legCount = 2;
+				player.lowerBody.type = LowerBody.ECHIDNA;
+				player.lowerBody.legCount = 2;
 				changes++;
 			}
 			//Gain Echidna cock
