@@ -62,8 +62,8 @@ package classes.Scenes.Areas.Swamp
 			this.drop = new WeightedDrop().add(consumables.S_GOSSR,5)
 					.add(useables.T_SSILK,1)
 					.add(null,4);
-			this.tailType = Tail.SPIDER_ABDOMEN;
-			this.tailRecharge = 0;
+			this.tail.type = Tail.SPIDER_ABDOMEN;
+			this.tail.recharge = 0;
 			checkMonster();
 		}
 		

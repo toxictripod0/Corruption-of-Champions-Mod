@@ -231,7 +231,7 @@ package classes.Scenes.Areas.Bog
 			}
 			if (player.averageVaginalLooseness() <= 3) { //Not gaping
 				outputText("\n\nHe looks up at you in desperation as you stare down at him. Suddenly his entire body slams upward as he grabs you by the waist and explodes deep within your [vagina].");
-				if (player.tailType > 0) outputText("His other lizan cock explodes as well, painting your raised [tail] and [ass] with a generous coating of funky lizan spunk.");
+				if (player.tail.type > 0) outputText("His other lizan cock explodes as well, painting your raised [tail] and [ass] with a generous coating of funky lizan spunk.");
 				else outputText("His other lizan dick explodes as well, painting your [ass] and lower back with a generous coating of lizan baby batter.");
 			}
 			else { //Gaping
@@ -258,7 +258,7 @@ package classes.Scenes.Areas.Bog
 			clearOutput();
 			outputText("The lizan watches you with obvious interest and asks \"<i>How do you want to do this?</i>\" You tell him you want him to take your back door, which causes a surprised grin to stretch across his face. He confidently peels off his loincloth, exposing two bumpy purple lizan dicks not lacking in length or girth.");
 			if (player.isBiped()) {
-				outputText("\n\nTurning away from the lizan you peel off your [armor]. You bend at the waist " + (player.tailType > 0 ? "and lift your tail": "") + " to show the lizan your [ass]. He wolf whistles, obviously quite pleased. He takes the liberty of pushing you on to your hands and knees. While looking down at the grass you feel his cool scaly hands sliding up your [ass], getting a good long feel before his tongue is pushed into your [asshole].");
+				outputText("\n\nTurning away from the lizan you peel off your [armor]. You bend at the waist " + (player.tail.type > 0 ? "and lift your tail": "") + " to show the lizan your [ass]. He wolf whistles, obviously quite pleased. He takes the liberty of pushing you on to your hands and knees. While looking down at the grass you feel his cool scaly hands sliding up your [ass], getting a good long feel before his tongue is pushed into your [asshole].");
 				outputText("\n\nYou spread your legs to give the talented lizan full access as his firm, wet tongue tunnels into you, making you squirm as waves of euphoric delight fills your body. Whenever you think his tongue will end it surprises you by tunneling deeper. Like a wet slimy endless snake it winds its way through your anal sleeve, filling your body with agonizing pleasure.");
 			}
 			if (player.isNaga()) {
@@ -312,7 +312,7 @@ package classes.Scenes.Areas.Bog
 			else outputText("\n\nWhen he reaches your [fullChest he takes one look at your [nipples] and dives right in. He makes a show of pulling one into his mouth. All you can see his his " + monster.skin.tone + " lips but inside you can feel his tongue swirling around your sensitive nipples. He sucks off with a pop that sends a tingle down to your groin before he latches on to the next one and repeats this torturous practice.");
 			outputText("\n\nOnce he's finished with your [nipples] his lips find yours again and you can taste yourself on his tongue as it dives right into your mouth.");
 			if (player.wingType > 0) outputText("\n\nAs he kisses you his hands graze your [wings]. He lightly massages the base, causing an odd rolling sensation that is actually kind of pleasant. Despite this you get the feeling he's just curious to touch them. He's very tender with your [wings] as if he doesn't want to hurt you. Once his curiosity has been sated though he releases the base of your [wings] and pulls you into him, your lips still locked together.");
-			outputText("\n\nHis hands slide down to your [ass]. He gets a good grope in, massaging your rear and using it as a lever to pull you against him. " + (player.tailType > 0 ? "He even wraps his scaled hand around the base of your [tail], softly massaging the point where it meets your [ass].": "") + "");
+			outputText("\n\nHis hands slide down to your [ass]. He gets a good grope in, massaging your rear and using it as a lever to pull you against him. " + (player.tail.type > 0 ? "He even wraps his scaled hand around the base of your [tail], softly massaging the point where it meets your [ass].": "") + "");
 			if (player.hasCock()) outputText("\n\nYou gasps against his lips as he wraps a hand around your [cock]. He rubs its rigid surface, firmly tugging your [cock] as smacks your [ass]. As his hands massage and grips [eachCock] you can't help sliding your hands across his body, pulling him into you as your mouths remain locked together.");
 			outputText("\n\nOnce the touchy feely face sucky grope fest is over he takes you by the hips, whirling you around. Something about you is driving the lizan mad. His dual peckers split across your body, one sliding against your [vagina] while the other slides up into the crevice of your [ass]. He says something about fucking both your holes and with a grin you tell him to go for it.");
 			

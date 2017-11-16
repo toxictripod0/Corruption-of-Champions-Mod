@@ -186,8 +186,8 @@ package classes.Scenes.NPCs
 			this.skin.tone = "dusky";
 			this.hair.color = "red";
 			this.hair.length = 13;
-			this.tailType = Tail.SALAMANDER;
-			this.tailRecharge = 0;
+			this.tail.type = Tail.SALAMANDER;
+			this.tail.recharge = 0;
 			initStrTouSpeInte(80, 70, 75, 60);
 			initLibSensCor(65, 25, 30);
 			this.weaponName = "sword";

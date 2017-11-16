@@ -343,13 +343,13 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Wolf tail
-			if (rand(3) === 0 && changes < changeLimit && player.tailType !== Tail.WOLF) {
-				if (player.tailType === Tail.NONE) outputText("\n\nA pressure builds on your backside. You feel under your clothes and discover an odd, thick bump that seems to be growing larger by the moment. In seconds it passes between your fingers, bursts out the back of your clothes, and grows most of the way to the ground. A nushy coat of fur springs up to cover your new tail.  ");
-				if (player.tailType === Tail.HORSE) outputText("\n\nYou feel a tightness in your rump, matched by the tightness with which the strands of your tail clump together. In seconds they fuse into a single, thick tail, rapidly sprouting bushy fur. ");
-				if (player.tailType === Tail.DEMONIC) outputText("\n\nThe tip of your tail feels strange. As you pull it around to check on it, the spaded tip disappears, quickly replaced by a bushy coat of fur over the entire surface of your tail. Your tail thickens with it. ");
-				if (player.tailType >= Tail.COW) outputText("\n\nYou feel your backside shift and change, flesh molding and displacing into a thick, bushy tail. ");
+			if (rand(3) === 0 && changes < changeLimit && player.tail.type !== Tail.WOLF) {
+				if (player.tail.type === Tail.NONE) outputText("\n\nA pressure builds on your backside. You feel under your clothes and discover an odd, thick bump that seems to be growing larger by the moment. In seconds it passes between your fingers, bursts out the back of your clothes, and grows most of the way to the ground. A nushy coat of fur springs up to cover your new tail.  ");
+				if (player.tail.type === Tail.HORSE) outputText("\n\nYou feel a tightness in your rump, matched by the tightness with which the strands of your tail clump together. In seconds they fuse into a single, thick tail, rapidly sprouting bushy fur. ");
+				if (player.tail.type === Tail.DEMONIC) outputText("\n\nThe tip of your tail feels strange. As you pull it around to check on it, the spaded tip disappears, quickly replaced by a bushy coat of fur over the entire surface of your tail. Your tail thickens with it. ");
+				if (player.tail.type >= Tail.COW) outputText("\n\nYou feel your backside shift and change, flesh molding and displacing into a thick, bushy tail. ");
 				changes++;
-				player.tailType = Tail.WOLF;
+				player.tail.type = Tail.WOLF;
 				outputText("<b>You now have a wolf tail!</b>");
 			}
 			//Sets hair normal
@@ -360,13 +360,13 @@ package classes.Items.Consumables
 			}
 			//MUTATIONZ LEVEL 2: fur->arms fur+tail+ears->face stophair->nohair fur+tail->legs
 			//gain wolf face
-			if (player.face.type !== Face.WOLF && player.ears.type === Ears.WOLF && player.tailType === Tail.WOLF && player.hasFur() && rand(5) === 0 && changes < changeLimit) {
+			if (player.face.type !== Face.WOLF && player.ears.type === Ears.WOLF && player.tail.type === Tail.WOLF && player.hasFur() && rand(5) === 0 && changes < changeLimit) {
 				outputText("\n\nYou screech in pain as the bones of your face begin to rearrange themselves. Your [skinFurScales] practically melts off you, dropping onto the ground with heavy streams of blood. You put your hands to your face, writhing, blackness covering your vision as pain overwhelms you. But as quickly as it came, it stops, and you pull your shaking hands from your face. You scramble to the nearest reflective surface. <b>You have a wolf's face!</b>");
 				player.face.type = Face.WOLF;
 				changes++;
 			}
 			//legz
-			if (player.lowerBody.legCount === 2 && player.lowerBody.type !== LowerBody.WOLF && player.tailType === Tail.WOLF && player.skin.type === Skin.FUR && rand(4) === 0 && changes < changeLimit) {
+			if (player.lowerBody.legCount === 2 && player.lowerBody.type !== LowerBody.WOLF && player.tail.type === Tail.WOLF && player.skin.type === Skin.FUR && rand(4) === 0 && changes < changeLimit) {
 				//Hooman feets
 				if (player.lowerBody.type === LowerBody.HUMAN) outputText("\n\nYou stumble and fall, howling in pain as your legs and feet break apart and reform into wolf-like legs and paws. The worst of the pain eventually passes, but you're still left whimpering for a while. <b>You now have paws!</b>");
 				//Hooves -> Paws

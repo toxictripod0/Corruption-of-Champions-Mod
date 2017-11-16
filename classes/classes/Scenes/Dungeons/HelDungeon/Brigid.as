@@ -92,7 +92,7 @@ package classes.Scenes.Dungeons.HelDungeon
 			this.gems = rand(25) +140;
 			this.additionalXP = 50;
 			this.wingType = Wings.FEATHERED_LARGE;
-			this.tailType = Tail.DEMONIC;
+			this.tail.type = Tail.DEMONIC;
 			this.horns.type = Horns.DEMON;
 			this.horns.value = 2;
 			this.drop = NO_DROP;

@@ -102,7 +102,7 @@ package classes.Scenes.Dungeons.HelDungeon
 			this.additionalXP = 50;
 			this.horns.type = Horns.DRACONIC_X2;
 			this.horns.value = 2;
-			this.tailType = Tail.HARPY;
+			this.tail.type = Tail.HARPY;
 			this.wingType = Wings.FEATHERED_LARGE;
 			this.drop = NO_DROP;
 			checkMonster();

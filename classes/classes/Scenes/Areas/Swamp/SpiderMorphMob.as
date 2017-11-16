@@ -133,7 +133,7 @@ package classes.Scenes.Areas.Swamp
 			this.gems = rand(25) +40;
 			this.special1 = game.combat.packAttack;
 			this.special2 = game.combat.lustAttack;
-			this.tailType = Tail.SPIDER_ABDOMEN;
+			this.tail.type = Tail.SPIDER_ABDOMEN;
 			this.drop = NO_DROP;
 			checkMonster();
 		}

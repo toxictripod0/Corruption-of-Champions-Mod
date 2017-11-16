@@ -344,7 +344,7 @@ package classes.Scenes.NPCs
 						add(consumables.SUCMILK,1/3).
 						add(consumables.INCUBID,1/2);
 			}
-			this.tailType = Tail.KANGAROO;
+			this.tail.type = Tail.KANGAROO;
 			checkMonster();
 		}
 

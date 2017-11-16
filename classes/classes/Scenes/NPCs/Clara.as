@@ -165,7 +165,7 @@ package classes.Scenes.NPCs
 			this.bonusHP = 30;
 			this.gems = rand(5) + 25;
 			this.drop = NO_DROP;
-			this.tailType = Tail.COW;
+			this.tail.type = Tail.COW;
 			//this.special1 = marbleSpecialAttackOne;
 			//this.special2 = marbleSpecialAttackTwo;
 			checkMonster();

@@ -634,7 +634,7 @@ package classes.Scenes.Dungeons.Factory
 			outputText("Well, he does have quite the thick, throbbing piece of male genitalia on display for you.... There's no sense in letting a good cock go to waste, right? You stalk over to him, looming over the defeated demon with a predatory grin. Your tongue flicks out to lick your lips. Meanwhile, your lower ones go suddenly and irrevocably slick, excited and instantly ready for a helping of thick demon-cock. Your [vagina] is getting warmer and warmer as you tease the poor demon, leaving him to wonder if you're going to kill him or fuck him. The worry is as obvious on his face as the upraised tumescence that jabs spear-like out from his crotch, aimed straight at you.");
 
 			outputText("\n\nAbruptly, you drop your [butt] down on top of him, sitting square on top of his chest");
-			if (player.tailType != 0) outputText(", tail draped across his face");
+			if (player.tail.type != 0) outputText(", tail draped across his face");
 			outputText(", and casually begin to undress. Looking over your shoulders, you see hope in his soulless eyes. You tease, \"<i>I wouldn't want to stain my clothes when I finish you off, would I?</i>\" His dick wilts a little at that, and he looks about to faint. Giggling, you toss aside your [armor] and grab hold of his mostly-hard cock, feeling the corrupted, textured nodules that encircle his shaft flaring up at your gentle squeeze. He firms up nicely in your grip, filling back to a pulsating, rigid hardness in seconds.");
 
 			outputText("\n\n\"<i>Hey, you can transform your dick, right?</i>\" you call over your shoulder.");

@@ -1286,7 +1286,7 @@ import classes.Items.*
 			showChangeOptions(bodyPartEditorTorso, page, SKIN_TONE_CONSTANTS, changeClawTone);
 		}
 		private function changeTailType(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.tailType = setIdx;
+			if (setIdx>=0) player.tail.type = setIdx;
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorTorso, page, TAIL_TYPE_CONSTANTS, changeTailType);
@@ -1295,7 +1295,7 @@ import classes.Items.*
 			/* [INTERMOD: xianxia]
 			if (setIdx>=0) player.tailCount = TAIL_COUNT_CONSTANTS[setIdx];
 			*/
-			if (setIdx>=0) player.tailVenom = TAIL_COUNT_CONSTANTS[setIdx];
+			if (setIdx>=0) player.tail.venom = TAIL_COUNT_CONSTANTS[setIdx];
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorTorso, page, TAIL_COUNT_CONSTANTS, changeTailCount);
@@ -1339,9 +1339,9 @@ import classes.Items.*
 		private function changeScorpionTail():void {
 			clearOutput();
 			outputText("<b>Your tail is now that of a scorpion's. Currently, scorpion tail has no use but it will eventually be useful for stinging.</b>");
-			player.tailType = Tail.SCORPION;
-			player.tailVenom = 100;
-			player.tailRecharge = 5;
+			player.tail.type = Tail.SCORPION;
+			player.tail.venom = 100;
+			player.tail.recharge = 5;
 			doNext(styleHackMenu);
 		}
 		
@@ -1361,9 +1361,9 @@ import classes.Items.*
 			player.horns.value = 4;
 			player.wingType = Wings.BAT_LIKE_LARGE;
 			//Scorpion TF
-			player.tailType = Tail.SCORPION;
-			player.tailVenom = 100;
-			player.tailRecharge = 5;
+			player.tail.type = Tail.SCORPION;
+			player.tail.venom = 100;
+			player.tail.recharge = 5;
 			doNext(styleHackMenu);
 		}
 		
@@ -1373,7 +1373,7 @@ import classes.Items.*
 			//Cat TF
 			player.face.type = Face.CAT;
 			player.ears.type = Ears.CAT;
-			player.tailType = Tail.CAT;
+			player.tail.type = Tail.CAT;
 			player.lowerBody.type = LowerBody.CAT;
 			player.lowerBody.legCount = 2;
 			//Draconic TF

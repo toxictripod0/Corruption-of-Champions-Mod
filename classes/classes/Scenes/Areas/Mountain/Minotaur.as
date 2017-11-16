@@ -96,7 +96,7 @@ package classes.Scenes.Areas.Mountain
 						.elseDrop(null);
 			}
 			this.special1 = game.mountain.minotaurScene.minoPheromones;
-			this.tailType = Tail.COW;
+			this.tail.type = Tail.COW;
 			checkMonster();
 		}
 

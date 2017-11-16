@@ -51,9 +51,9 @@ package classes.Items.Consumables
 			player.lowerBody.type = LowerBody.HUMAN;
 			player.lowerBody.legCount = 2;
 			player.wingType = Wings.NONE;
-			player.tailType = Tail.NONE;
+			player.tail.type = Tail.NONE;
 			player.tongueType = Tongue.HUMAN;
-			player.tailRecharge = 0;
+			player.tail.recharge = 0;
 			player.horns.value = 0;
 			player.horns.type = Horns.NONE;
 			player.ears.type = Ears.HUMAN;

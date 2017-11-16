@@ -148,7 +148,7 @@
 			this.level = 4;
 			this.gems = 2 + rand(5);
 			this.drop = new ChainedDrop(consumables.TRAPOIL).add(consumables.OVIELIX,1/3);
-			this.tailType = Tail.DEMONIC;
+			this.tail.type = Tail.DEMONIC;
 			createStatusEffect(StatusEffects.Level,4,0,0,0);
 			checkMonster();
 		}

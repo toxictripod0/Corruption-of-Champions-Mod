@@ -118,9 +118,9 @@ package classes.Items.Consumables
 				player.lowerBody.legCount = 1;
 
 				// Naga lower body plus a tail may look awkward, so silently discard it (Stadler76)
-				player.tailType = Tail.NONE;
-				player.tailVenom = 0;
-				player.tailRecharge = 0;
+				player.tail.type = Tail.NONE;
+				player.tail.venom = 0;
+				player.tail.recharge = 0;
 
 				if (player.hasReptileUnderBody()) {
 					player.skin.tone = "green";

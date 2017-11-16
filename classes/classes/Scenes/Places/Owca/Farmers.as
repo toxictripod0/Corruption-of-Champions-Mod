@@ -61,7 +61,7 @@ package classes.Scenes.Places.Owca
 			this.gems = rand(25) +40;
 			this.horns.type = Horns.DEMON;
 			this.horns.value = 2;
-			this.tailType = Tail.DEMONIC;
+			this.tail.type = Tail.DEMONIC;
 			this.drop = NO_DROP;
 			checkMonster();
 		}

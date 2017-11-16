@@ -235,7 +235,7 @@ package classes.Scenes.Areas.Forest
 			this.level = 6;
 			this.gems = rand(10) + 10;
 			this.drop = new WeightedDrop(consumables.FOXJEWL, 1);
-			this.tailType = Tail.FOX;
+			this.tail.type = Tail.FOX;
 			checkMonster();
 		}
 

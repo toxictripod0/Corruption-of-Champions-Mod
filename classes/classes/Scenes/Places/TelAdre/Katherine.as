@@ -4296,7 +4296,7 @@ public function letKatKnotYourCuntPussyFuck():void {
 	outputText("\n\n");
 
 	outputText("You moan and gasp, thrusting your ass back into your feline lover's midriff to facilitate your fucking");
-	if (player.isNaga() || player.tailType == Tail.LIZARD || player.tailType == Tail.DEMONIC) outputText(", snaking your tail up between her breasts and playfully stroking her cheek,");
+	if (player.isNaga() || player.tail.type == Tail.LIZARD || player.tail.type == Tail.DEMONIC) outputText(", snaking your tail up between her breasts and playfully stroking her cheek,");
 	outputText(" and crying out her name.  You can feel her knot starting to swell inside you even as she picks up the pace with which she hammers into you.\n\n");
 
 	outputText("“<i>Ohhh!  Gonna plug you up; fill you fulla kitty-cat spunk!</i>” Katherine moans, her knot growing to its maximum size inside of you, anchoring you together so that she can no longer pull out.");
@@ -4384,7 +4384,7 @@ public function getPenetrated():void {
 	else outputText("</i>”\n\n");
 
 	outputText("You moan and gasp, thrusting your ass back into your feline lover's midriff to facilitate your fucking");
-	if (player.isNaga() || player.tailType == Tail.LIZARD || player.tailType == Tail.DEMONIC) {
+	if (player.isNaga() || player.tail.type == Tail.LIZARD || player.tail.type == Tail.DEMONIC) {
 		outputText(",  snaking your tail up between her breasts and playfully stroking her cheek,");
 	}
 	outputText(" and crying out her name.  You can feel her knot starting to swell inside you even as she picks up the pace with which she hammers into you.\n\n");
@@ -4791,7 +4791,7 @@ public function giveKatOralPenisWingWang():void {
 		if (!player.hasLongTongue()) {
 			outputText("You wrap both your hands around her members just above the knot and start stroking her off, aiming them both at your mouth as you lick the tips.  Her knots swell to full size as she starts panting.");
 			//([If the character has a naga lower body or a demon tail]
-			if (player.isNaga() || player.tailType == Tail.DEMONIC) outputText("  Wanting to grant her maximum stimulation and complete release, you slip the tip of your tail inside the cat-girl, feeling her pussy gratefully squeeze it.");
+			if (player.isNaga() || player.tail.type == Tail.DEMONIC) outputText("  Wanting to grant her maximum stimulation and complete release, you slip the tip of your tail inside the cat-girl, feeling her pussy gratefully squeeze it.");
 			outputText("\n\n");
 
 			outputText("Moments later, Katherine finally ejaculates, over your face and inside your mouth.");
@@ -5066,7 +5066,7 @@ private function katDoubleHelixCraziness():void {
 	outputText("Katherine rolls you on your back and begins licking your belly, cleaning you of the sweat produced by your vigorous fucking earlier.  She moves through your " + player.chestDesc() + ", stopping shortly to give each of your " + player.nippleDescript(0) + "s a little peck.  Then she continues to your neck and face.\n\n");
 
 	outputText("You simply lie back and enjoy her attentions; while pleasurable, they aren't as sexual as her previous efforts, and you find the experience more soothing than arousing. It takes a while, but finally with one last lick on ");
-	if (player.isNaga() || player.tailType == Tail.DEMONIC) outputText("the tip of your tail");
+	if (player.isNaga() || player.tail.type == Tail.DEMONIC) outputText("the tip of your tail");
 	else outputText("your " + player.buttDescript());
 	outputText(", she finishes.  Katherine grins and happily declares, “<i>There you go, you're clean now!" + (hasAlready(KBIT_TRIED_DOUBLE_HELIX) ? "" : " Sorry for breaking my promise and knotting you.") + "</i>”\n\n");
 

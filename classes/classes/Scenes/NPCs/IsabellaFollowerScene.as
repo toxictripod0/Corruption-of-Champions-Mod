@@ -1194,8 +1194,8 @@ private function getIzzyBurped():void {
 			changed = true;
 		}
 		//[if no cow tail]
-		if (player.tailType != Tail.COW) {
-			if (player.tailType > Tail.NONE) outputText("  The tip of your tail reshapes into a burst of fur, the entire length changing to match.");
+		if (player.tail.type != Tail.COW) {
+			if (player.tail.type > Tail.NONE) outputText("  The tip of your tail reshapes into a burst of fur, the entire length changing to match.");
 			else outputText("  A tail creeps out of your " + player.armorName + ", perking up and growing rapidly.  A flare of fur bursts from the tip, the rest of the length changing to match.");
 			changed = true;
 		}
@@ -1269,7 +1269,7 @@ private function getIzzyBurped():void {
 		outputText("She rewards you by freeing one of her arms and wrapping it around your head, pulling you in between her gleaming ebony melons.  Shaking about and wrapping your head in a marshmallowy shroud of comfort, Isabella continues to force burps out, not content until all of the gas is gone.  She pulls you out of your fleshy prison after the oral venting subsides, dragging you down to the ground with her as her gassy magic begins to take hold.\n\n");
 		
 		//if meets any requirements for cow-y TF
-		if (player.lowerBody.type != LowerBody.HOOFED || player.horns.value <= 0 || player.horns.type != Horns.COW_MINOTAUR || player.ears.type != Ears.COW || player.tailType != Tail.COW || (player.hasCock() && player.longestCockLength() < 18)) {
+		if (player.lowerBody.type != LowerBody.HOOFED || player.horns.value <= 0 || player.horns.type != Horns.COW_MINOTAUR || player.ears.type != Ears.COW || player.tail.type != Tail.COW || (player.hasCock() && player.longestCockLength() < 18)) {
 			outputText("You're not surprised when you take the now-familiar cow-" + player.mf("boy","girl") + " form, ");
 			if ((!player.hasCock() || rand(2) == 0) && player.hasVagina()) outputText("Isabella beaming with eagerness at your sloshing and swelling bosom.\n\n");
 			else if (player.hasCock()) outputText("Isabella not able to keep a little frustration from her face as your dick grows to enviable size.\n\n");

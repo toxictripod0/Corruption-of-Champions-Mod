@@ -123,7 +123,7 @@ package classes.Scenes.Areas.HighMountains
 			this.ass.analWetness = AssClass.WETNESS_MOIST;
 			this.createStatusEffect(StatusEffects.BonusACapacity,20,0,0,0);
 			this.tallness = 6 * 12 + 6;
-			this.tailType = Tail.LIZARD;
+			this.tail.type = Tail.LIZARD;
 			this.hips.rating = Hips.RATING_CURVY;
 			this.butt.rating = Butt.RATING_JIGGLY;
 			this.lowerBody.type = LowerBody.HARPY;

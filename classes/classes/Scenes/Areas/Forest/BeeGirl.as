@@ -118,8 +118,8 @@ import classes.internals.ChainedDrop;
 					.elseDrop(useables.B_CHITN);
 			this.antennae.type = Antennae.BEE;
 			this.wingType = Wings.BEE_LIKE_SMALL;
-			this.tailType = Tail.BEE_ABDOMEN;
-			this.tailVenom = 100;
+			this.tail.type = Tail.BEE_ABDOMEN;
+			this.tail.venom = 100;
 			this.special1 = beeStingAttack;
 			checkMonster();
 		}

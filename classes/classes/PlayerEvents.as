@@ -171,13 +171,13 @@ package classes {
 				if (flags[kFLAGS.VALERIA_FLUIDS] > 100) flags[kFLAGS.VALERIA_FLUIDS] = 100;
 			}
 			//Recharge tail
-			if (player.tailType == Tail.BEE_ABDOMEN || player.tailType == Tail.SPIDER_ABDOMEN || player.tailType == Tail.SCORPION) { //Spider and Bee Sting Recharge
-				if (player.tailRecharge < 5) player.tailRecharge = 5;
-				player.tailVenom += player.tailRecharge;
-				if (player.tailVenom > 100) player.tailVenom = 100;
+			if (player.tail.type == Tail.BEE_ABDOMEN || player.tail.type == Tail.SPIDER_ABDOMEN || player.tail.type == Tail.SCORPION) { //Spider and Bee Sting Recharge
+				if (player.tail.recharge < 5) player.tail.recharge = 5;
+				player.tail.venom += player.tail.recharge;
+				if (player.tail.venom > 100) player.tail.venom = 100;
 			}
 			//Flexibility perk
-			if (player.tailType == Tail.CAT && player.lowerBody.type == LowerBody.CAT && player.ears.type == Ears.CAT) { //Check for gain of cat agility - requires legs, tail, and ears
+			if (player.tail.type == Tail.CAT && player.lowerBody.type == LowerBody.CAT && player.ears.type == Ears.CAT) { //Check for gain of cat agility - requires legs, tail, and ears
 				if (player.findPerk(PerkLib.Flexibility) < 0) {
 					outputText("\nWhile stretching, you notice that you're much more flexible than you were before.  Perhaps this will make it a bit easier to dodge attacks in battle?\n\n(<b>Gained Perk: Flexibility</b>)\n");
 					player.createPerk(PerkLib.Flexibility, 0, 0, 0, 0);
@@ -190,7 +190,7 @@ package classes {
 				needNext = true;
 			}
 			//Lustzerker perk
-			if (player.tailType == Tail.SALAMANDER && player.lowerBody.type == LowerBody.SALAMANDER && player.arms.type == Arms.SALAMANDER) { //Check for gain of lustzerker - requires legs, arms and tail
+			if (player.tail.type == Tail.SALAMANDER && player.lowerBody.type == LowerBody.SALAMANDER && player.arms.type == Arms.SALAMANDER) { //Check for gain of lustzerker - requires legs, arms and tail
 				if (player.findPerk(PerkLib.Lustzerker) < 0) {
 					outputText("\nAfter finishing another hip flask of firewater, you start to feel a weird, slightly unpleasant feeling inside your body-- like many tiny flames are coursing through your veins. You ponder just what's happening to you when you remember that salamanders have natural talent for entering a berserk-like state. You guess that this feeling is what it is.\n\n(<b>Gained Perk: Lustzerker</b>)");
 					player.createPerk(PerkLib.Lustzerker, 0, 0, 0, 0);
@@ -217,12 +217,12 @@ package classes {
 			}
 			//Reset bad end warning
 			if (flags[kFLAGS.FOX_BAD_END_WARNING] == 1) {
-				if (player.face.type != Face.FOX || player.tailType != Tail.FOX || player.ears.type != Ears.FOX || player.lowerBody.type != LowerBody.FOX || !player.hasFur()) {
+				if (player.face.type != Face.FOX || player.tail.type != Tail.FOX || player.ears.type != Ears.FOX || player.lowerBody.type != LowerBody.FOX || !player.hasFur()) {
 					flags[kFLAGS.FOX_BAD_END_WARNING] = 0;
 				}
 			}
 			/*if (flags[kFLAGS.PIG_BAD_END_WARNING] == 1) {
-				if (player.face.type != Face.PIG || player.tailType != Tail.PIG || player.ears.type != Ears.PIG || player.lowerBodyPart.type != LowerBody.CLOVEN_HOOFED) {
+				if (player.face.type != Face.PIG || player.tail.type != Tail.PIG || player.ears.type != Ears.PIG || player.lowerBodyPart.type != LowerBody.CLOVEN_HOOFED) {
 					flags[kFLAGS.PIG_BAD_END_WARNING] = 0;
 				}
 			}*/
@@ -237,14 +237,14 @@ package classes {
 				needNext = true;
 			}
 			if ((player.findPerk(PerkLib.EnlightenedNinetails) >= 0 && player.perkv4(PerkLib.EnlightenedNinetails) == 0) || (player.findPerk(PerkLib.CorruptedNinetails) >= 0 && player.perkv4(PerkLib.CorruptedNinetails) == 0)) { //Check ninetails perks!
-				if (player.tailType != Tail.FOX || player.tailVenom < 9) {
+				if (player.tail.type != Tail.FOX || player.tail.venom < 9) {
 					outputText("\n<b>Without your tails, the magic power they once granted withers and dies, vanishing completely.</b>\n");
 					if (player.perkv4(PerkLib.EnlightenedNinetails) == 0) player.removePerk(PerkLib.EnlightenedNinetails);
 					if (player.perkv4(PerkLib.CorruptedNinetails) == 0) player.removePerk(PerkLib.CorruptedNinetails);
 					needNext = true;
 				}
 			}
-			if (player.lowerBody.type == LowerBody.HARPY && player.tailType == Tail.HARPY && player.findPerk(PerkLib.HarpyWomb) >= 0) { //Make eggs big if harpied!
+			if (player.lowerBody.type == LowerBody.HARPY && player.tail.type == Tail.HARPY && player.findPerk(PerkLib.HarpyWomb) >= 0) { //Make eggs big if harpied!
 				if (player.hasStatusEffect(StatusEffects.Eggs) && player.statusEffectv2(StatusEffects.Eggs) == 0) {
 					player.changeStatusValue(StatusEffects.Eggs, 2, 1);
 					outputText("\n<b>A familiar, motherly rumble lets you know that your harpy-like womb is growing your eggs nice and large.</b>\n");
@@ -275,9 +275,9 @@ package classes {
 				needNext = true;
 			}
 			if (player.lowerBody.type == LowerBody.NAGA) {
-				if (player.tailType > Tail.NONE) {
+				if (player.tail.type > Tail.NONE) {
 					outputText("\nYour tail squirms, wriggling against your larger naga tail as the scales part around it, absorbing it.  <b>Your form is completely scaly and smooth from the waist down.</b>\n");
-					player.tailType = Tail.NONE;
+					player.tail.type = Tail.NONE;
 					needNext = true;
 				}
 			}
@@ -358,12 +358,12 @@ package classes {
 				}
 			}
 			if (player.findPerk(PerkLib.SpiderOvipositor) >= 0 || player.findPerk(PerkLib.BeeOvipositor) >= 0) { //Spider and Bee ovipositor updates
-				if (player.findPerk(PerkLib.SpiderOvipositor) >= 0 && (!player.isDrider() || player.tailType != Tail.SPIDER_ABDOMEN)) { //Remove dat shit!
+				if (player.findPerk(PerkLib.SpiderOvipositor) >= 0 && (!player.isDrider() || player.tail.type != Tail.SPIDER_ABDOMEN)) { //Remove dat shit!
 					outputText("\n<b>Your ovipositor (and eggs) vanish since your body has become less spider-like.</b>\n");
 					player.removePerk(PerkLib.SpiderOvipositor);
 					needNext = true;
 				}
-				else if (player.findPerk(PerkLib.BeeOvipositor) >= 0 && player.tailType != Tail.BEE_ABDOMEN) { //Remove dat shit!
+				else if (player.findPerk(PerkLib.BeeOvipositor) >= 0 && player.tail.type != Tail.BEE_ABDOMEN) { //Remove dat shit!
 					outputText("\n<b>Your ovipositor (and eggs) vanish since your body has become less bee-like.</b>\n");
 					player.removePerk(PerkLib.BeeOvipositor);
 					needNext = true;

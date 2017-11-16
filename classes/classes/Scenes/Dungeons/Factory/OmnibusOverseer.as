@@ -110,7 +110,7 @@ package classes.Scenes.Dungeons.Factory
 			this.special2 = milkAttack;
 			this.wingType = Wings.BAT_LIKE_TINY;
 			this.wingDesc = "tiny hidden";
-			this.tailType = Tail.DEMONIC;
+			this.tail.type = Tail.DEMONIC;
 			this.createPerk(PerkLib.ImprovedSelfControl, 0, 0, 0, 0);
 			checkMonster();
 		}

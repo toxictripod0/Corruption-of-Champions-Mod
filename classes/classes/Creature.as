@@ -408,36 +408,7 @@ import mx.logging.ILogger;
 		public var wingDesc:String = "non-existant";
 
 		public var lowerBody:LowerBody = new LowerBody();
-
-		/*tailType:
-		0 - none
-		1 - horse
-		2 - dog
-		3 - demon
-		4 - cow!
-		5 - spider!
-		6 - bee!
-		7 - shark tail!
-		8 - catTAIIIIIL
-		9 - lizard tail
-		10 - bunbuntail
-		11 - harpybutt
-		12 - rootail
-		13 - foxtail
-		14 - dagron tail
-		15 - raccoon tail
-		16 - mousetail*/
 		public var tail:Tail = new Tail();
-		public function get tailType():Number { return tail.type; }
-		public function set tailType(value:Number):void { tail.type = value; }
-		
-		//Tail venom is a 0-100 slider used for tail attacks. Recharges per hour.
-		public function get tailVenom():Number { return tail.venom; }
-		public function set tailVenom(value:Number):void { tail.venom = value; }
-		//Tail recharge determines how fast venom/webs comes back per hour.
-		public function get tailRecharge():Number { return tail.recharge; }
-		public function set tailRecharge(value:Number):void { tail.recharge = value; }
-
 		public var hips:Hips = new Hips();
 		public var butt:Butt = new Butt();
 		public var antennae:Antennae = new Antennae();
@@ -591,7 +562,7 @@ import mx.logging.ILogger;
 				"weaponValue", "armorValue",
 				"lust", "fatigue",
 				"level", "gems",
-				"tailVenom", "tailRecharge", "horns.value",
+				"tail.venom", "tail.recharge", "horns.value",
 				"HP", "XP"
 			]);
 			// 2.2. non-empty String fields
@@ -624,8 +595,8 @@ import mx.logging.ILogger;
 				if (hair.type != Hair.NORMAL) error += "No hair but hairType = " + hair.type + ". ";
 			}
 			// 4.3. tail
-			if (tailType == Tail.NONE) {
-				if (tailVenom != 0) error += "No tail but tailVenom = "+tailVenom+". ";
+			if (tail.type == Tail.NONE) {
+				if (tail.venom != 0) error += "No tail but tailVenom = "+tail.venom+". ";
 			}
 			// 4.4. horns
 			if (horns.type == Horns.NONE){
@@ -3194,14 +3165,14 @@ import mx.logging.ILogger;
 
 		public function canOvipositSpider():Boolean
 		{
-			if (eggs() >= 10 && hasPerk(PerkLib.SpiderOvipositor) && isDrider() && tailType == Tail.SPIDER_ABDOMEN)
+			if (eggs() >= 10 && hasPerk(PerkLib.SpiderOvipositor) && isDrider() && tail.type == Tail.SPIDER_ABDOMEN)
 				return true;
 			return false;
 		}
 
 		public function canOvipositBee():Boolean
 		{
-			if (eggs() >= 10 && hasPerk(PerkLib.BeeOvipositor) && tailType == Tail.BEE_ABDOMEN)
+			if (eggs() >= 10 && hasPerk(PerkLib.BeeOvipositor) && tail.type == Tail.BEE_ABDOMEN)
 				return true;
 			return false;
 		}

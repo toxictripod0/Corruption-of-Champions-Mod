@@ -288,12 +288,12 @@ package classes.Items.Consumables
 			}
 			// </mod>
 			//-Tail – sinuous lizard tail
-			if (player.tailType !== Tail.LIZARD && player.lowerBody.type === LowerBody.LIZARD && changes < changeLimit && rand(5) === 0) {
+			if (player.tail.type !== Tail.LIZARD && player.lowerBody.type === LowerBody.LIZARD && changes < changeLimit && rand(5) === 0) {
 				//No tail
-				if (player.tailType === Tail.NONE) outputText("\n\nYou drop onto the ground as your spine twists and grows, forcing the flesh above your " + player.assDescript() + " to bulge out.  New bones form, one after another, building a tapered, prehensile tail onto the back of your body.  <b>You now have a reptilian tail!</b>");
+				if (player.tail.type === Tail.NONE) outputText("\n\nYou drop onto the ground as your spine twists and grows, forcing the flesh above your " + player.assDescript() + " to bulge out.  New bones form, one after another, building a tapered, prehensile tail onto the back of your body.  <b>You now have a reptilian tail!</b>");
 				//Yes tail
 				else outputText("\n\nYou drop to the ground as your tail twists and grows, changing its shape in order to gradually taper to a point.  It flicks back and forth, prehensile and totally under your control.  <b>You now have a reptilian tail.</b>");
-				player.tailType = Tail.LIZARD;
+				player.tail.type = Tail.LIZARD;
 				changes++;
 			}
 			//Remove odd eyes
@@ -311,13 +311,13 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//-Ears become smaller nub-like openings?
-			if (player.ears.type !== Ears.LIZARD && player.tailType === Tail.LIZARD && player.lowerBody.type === LowerBody.LIZARD && changes < changeLimit && rand(5) === 0) {
+			if (player.ears.type !== Ears.LIZARD && player.tail.type === Tail.LIZARD && player.lowerBody.type === LowerBody.LIZARD && changes < changeLimit && rand(5) === 0) {
 				outputText("\n\nTightness centers on your scalp, pulling your ears down from their normal, fleshy shape into small, scaley bumps with holes in their centers.  <b>You have reptilian ears!</b>");
 				player.ears.type = Ears.LIZARD;
 				changes++;
 			}
 			//-Scales – color changes to red, green, white, blue, or black.  Rarely: purple or silver.
-			if (!player.hasLizardScales() && player.ears.type === Ears.LIZARD && player.tailType === Tail.LIZARD && player.lowerBody.type === LowerBody.LIZARD && changes < changeLimit && rand(5) === 0) {
+			if (!player.hasLizardScales() && player.ears.type === Ears.LIZARD && player.tail.type === Tail.LIZARD && player.lowerBody.type === LowerBody.LIZARD && changes < changeLimit && rand(5) === 0) {
 				//(fur)
 				var newSkinTones:Array = mutations.newLizardSkinTone();
 				if (player.hasFur()) {
@@ -363,7 +363,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//-Lizard-like face.
-			if (player.face.type !== Face.LIZARD && player.hasReptileScales() && player.ears.type === Ears.LIZARD && player.tailType === Tail.LIZARD && player.lowerBody.type === LowerBody.LIZARD && changes < changeLimit && rand(5) === 0) {
+			if (player.face.type !== Face.LIZARD && player.hasReptileScales() && player.ears.type === Ears.LIZARD && player.tail.type === Tail.LIZARD && player.lowerBody.type === LowerBody.LIZARD && changes < changeLimit && rand(5) === 0) {
 				outputText("\n\nTerrible agony wracks your " + player.faceDescript() + " as bones crack and shift.  Your jawbone rearranges while your cranium shortens.  The changes seem to last forever; once they've finished, no time seems to have passed.  Your fingers brush against your toothy snout as you get used to your new face.  It seems <b>you have a toothy, reptilian visage now.</b>");
 				player.face.type = Face.LIZARD;
 			}

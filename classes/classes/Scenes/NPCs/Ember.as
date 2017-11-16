@@ -185,7 +185,7 @@ package classes.Scenes.NPCs
 			this.horns.type = Horns.DRACONIC_X4_12_INCH_LONG;
 			this.horns.value = 4;
 			this.wingType = Wings.DRACONIC_LARGE;
-			this.tailType = Tail.DRACONIC;
+			this.tail.type = Tail.DRACONIC;
 			initStrTouSpeInte(75 + Math.floor(game.emberScene.emberSparIntensity() / 3), 75 + Math.floor(game.emberScene.emberSparIntensity() / 3), 75 + Math.floor(game.emberScene.emberSparIntensity() / 3), 75 + Math.floor(game.emberScene.emberSparIntensity() / 3));
 			initLibSensCor(50, 35, game.flags[kFLAGS.EMBER_COR]);
 			this.weaponName = "claws";

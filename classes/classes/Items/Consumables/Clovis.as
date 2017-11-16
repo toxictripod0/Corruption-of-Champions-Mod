@@ -80,13 +80,13 @@ package classes.Items.Consumables
 				outputText(" <b>You now have sheep ears!</b>");
 				changes++;
 			}
-			if (player.tailType !== Tail.SHEEP && rand(3) === 0 && changes < changeLimit) {
+			if (player.tail.type !== Tail.SHEEP && rand(3) === 0 && changes < changeLimit) {
 				outputText("\n\nYou feel the flesh above your [butt] knotting and changing. It twists and writhes around itself, lengthening before flopping straight down. With a slight poof, a coat of soft and fluffy wool coats it, your new tail taking on the wooly appearance of a sheep's.");
-				player.tailType = Tail.SHEEP;
+				player.tail.type = Tail.SHEEP;
 				outputText(" <b>You now have a sheep's tail!</b>");
 				changes++;
 			}
-			if (player.lowerBody.type !== LowerBody.CLOVEN_HOOFED && player.tailType === Tail.SHEEP && rand(3) === 0 && changes < changeLimit) {
+			if (player.lowerBody.type !== LowerBody.CLOVEN_HOOFED && player.tail.type === Tail.SHEEP && rand(3) === 0 && changes < changeLimit) {
 				outputText("\n\nYou feel a strange tightness from your feet and nearly topple over as your balance shifts. You're balancing on your toes for some reason. You look down in amazement as your legs slim and shorten, your feet elongating and darkening at the ends, all morphing until you're balancing on two sheep legs, complete with cute little hooves.");
 				player.lowerBody.type = LowerBody.CLOVEN_HOOFED;
 				player.lowerBody.legCount = 2;
@@ -102,7 +102,7 @@ package classes.Items.Consumables
 				player.horns.value = 1;
 				changes++;
 			}
-			if (rand(3) === 0 && changes < changeLimit && player.lowerBody.legCount === 2 && player.lowerBody.type === LowerBody.CLOVEN_HOOFED && player.horns.type === Horns.SHEEP && player.tailType === Tail.SHEEP && player.ears.type === Ears.SHEEP && !player.hasWool()) {
+			if (rand(3) === 0 && changes < changeLimit && player.lowerBody.legCount === 2 && player.lowerBody.type === LowerBody.CLOVEN_HOOFED && player.horns.type === Horns.SHEEP && player.tail.type === Tail.SHEEP && player.ears.type === Ears.SHEEP && !player.hasWool()) {
 			    var sheepWoolColors: Array = [
 				"white",
 				"black",

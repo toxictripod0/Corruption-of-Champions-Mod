@@ -202,7 +202,7 @@
 			player.lowerBody.legCount = 2;
 			player.face.type = Face.HUMAN;
 			player.eyes.count = 2;
-			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) player.tailType = Tail.NONE;
+			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) player.tail.type = Tail.NONE;
 			player.tongueType = Tongue.HUMAN;
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) player.femininity = 50;
 			player.beard.length = 0;
@@ -225,14 +225,14 @@
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) {
 				player.horns.value = 0;
 				player.tallness = 60;
-				player.tailVenom = 0;
-				player.tailRecharge = 0;
+				player.tail.venom = 0;
+				player.tail.recharge = 0;
 
 			}
 			else {
-				if (!(player.tailType == Tail.FOX || player.tailType == Tail.SPIDER_ABDOMEN || player.tailType == Tail.BEE_ABDOMEN || player.tailType == Tail.SCORPION)) {
-					player.tailVenom = 0;
-					player.tailRecharge = 0;
+				if (!(player.tail.type == Tail.FOX || player.tail.type == Tail.SPIDER_ABDOMEN || player.tail.type == Tail.BEE_ABDOMEN || player.tail.type == Tail.SCORPION)) {
+					player.tail.venom = 0;
+					player.tail.recharge = 0;
 				}
 			}
 			player.wingType = Wings.NONE;

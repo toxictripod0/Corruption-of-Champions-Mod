@@ -340,11 +340,11 @@ package classes.Scenes.Dungeons.Factory
 			else outputText("You collapse as your " + player.legs() + " are unable to support you.  The sounds of bones breaking and reshaping fills the room, but oddly you feel no pain, only mild arousal.  You blink your eyes and sigh, and when you look down again <b>you have normal human legs</b>!");
 			player.lowerBody.type = LowerBody.HUMAN;
 			player.lowerBody.legCount = 2;
-			if (player.tailType > Tail.NONE) {
+			if (player.tail.type > Tail.NONE) {
 				outputText("  A moment later, your feel something detach from above your backside.  <b>You no longer have a tail!</b>");
-				player.tailType = Tail.NONE;
-				player.tailVenom = 0;
-				player.tailRecharge = 5;
+				player.tail.type = Tail.NONE;
+				player.tail.venom = 0;
+				player.tail.recharge = 5;
 			}
 			postOmnibusBoon();
 		}

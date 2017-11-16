@@ -180,8 +180,8 @@ private function calledShot():void {
 			this.temperment = TEMPERMENT_RANDOM_GRAPPLES;
 			this.level = 12;
 			this.gems = 10 + rand(5);
-			this.tailType = Tail.SALAMANDER;
-			this.tailRecharge = 0;
+			this.tail.type = Tail.SALAMANDER;
+			this.tail.recharge = 0;
 			this.createStatusEffect(StatusEffects.Keen, 0, 0, 0, 0);
 			this.drop = NO_DROP;
 			checkMonster();

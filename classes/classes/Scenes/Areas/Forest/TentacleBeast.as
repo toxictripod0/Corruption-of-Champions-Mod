@@ -147,7 +147,7 @@ package classes.Scenes.Areas.Forest
 			this.special1 = tentaclePhysicalAttack;
 			this.special2 = tentacleEntwine;
 			this.special3 = tentaclePhysicalAttack;
-			this.tailType = Tail.DEMONIC;
+			this.tail.type = Tail.DEMONIC;
 			checkMonster();
 		}
 

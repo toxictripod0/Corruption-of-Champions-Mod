@@ -127,7 +127,7 @@ package classes.Scenes.Quests.UrtaQuest
 			this.horns.value = 2;
 			this.wingType = Wings.BAT_LIKE_TINY;
 			this.wingDesc = "tiny hidden";
-			this.tailType = Tail.DEMONIC;
+			this.tail.type = Tail.DEMONIC;
 			this.special1 = kissAttack;
 			this.special2 = seduceAttack;
 			this.special3 = whipAttack;

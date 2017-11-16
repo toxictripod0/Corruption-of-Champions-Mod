@@ -178,28 +178,28 @@ package classes.Items.Consumables
 			//Lose reptile oviposition!
 			if (rand(4) == 0) mutations.updateOvipositionPerk(tfSource);
 			//Gain bee oviposition!
-			if (changes < changeLimit && player.findPerk(PerkLib.BeeOvipositor) < 0 && player.tailType == Tail.BEE_ABDOMEN && Utils.rand(2) == 0) {
+			if (changes < changeLimit && player.findPerk(PerkLib.BeeOvipositor) < 0 && player.tail.type == Tail.BEE_ABDOMEN && Utils.rand(2) == 0) {
 				outputText("\n\nAn odd swelling starts in your insectile abdomen, somewhere along the underside.  Curling around, you reach back to your extended, bulbous bee part and run your fingers along the underside.  You gasp when you feel a tender, yielding slit near the stinger.  As you probe this new orifice, a shock of pleasure runs through you, and a tubular, black, semi-hard appendage drops out, pulsating as heavily as any sexual organ.  <b>The new organ is clearly an ovipositor!</b>  A few gentle prods confirm that it's just as sensitive; you can already feel your internals changing, adjusting to begin the production of unfertilized eggs.  You idly wonder what laying them with your new bee ovipositor will feel like...");
 				outputText("\n\n(<b>Perk Gained:  Bee Ovipositor - Allows you to lay eggs in your foes!</b>)");
 				player.createPerk(PerkLib.BeeOvipositor, 0, 0, 0, 0);
 				changes++;
 			}
 			//Bee butt - 66% lower chance if already has a tail
-			if (changes < changeLimit && player.tailType != Tail.BEE_ABDOMEN && (player.tailType == Tail.NONE || Utils.rand(1.5) == 0) && Utils.rand(4) == 0) {
-				if (player.tailType > Tail.NONE) outputText("\n\nPainful swelling just above your " + getGame().player.buttDescript() + " doubles you over, and you hear the sound of your tail dropping off onto the ground!  Before you can consider the implications, the pain gets worse, and you feel your backside bulge outward sickeningly, cracking and popping as a rounded bee-like abdomen grows in place of your old tail.  It grows large enough to be impossible to hide, and with a note of finality, your stinger slides free with an audible 'snick'.");
+			if (changes < changeLimit && player.tail.type != Tail.BEE_ABDOMEN && (player.tail.type == Tail.NONE || Utils.rand(1.5) == 0) && Utils.rand(4) == 0) {
+				if (player.tail.type > Tail.NONE) outputText("\n\nPainful swelling just above your " + getGame().player.buttDescript() + " doubles you over, and you hear the sound of your tail dropping off onto the ground!  Before you can consider the implications, the pain gets worse, and you feel your backside bulge outward sickeningly, cracking and popping as a rounded bee-like abdomen grows in place of your old tail.  It grows large enough to be impossible to hide, and with a note of finality, your stinger slides free with an audible 'snick'.");
 				else outputText("\n\nPainful swelling just above your " + getGame().player.buttDescript() + " doubles you over.  It gets worse and worse as the swollen lump begins to protrude from your backside, swelling and rounding with a series of pops until you have a bulbous abdomen hanging just above your butt.  The whole thing is covered in a hard chitinous material, and large enough to be impossible to hide.  You sigh as your stinger slides into place with a 'snick', finishing the transformation.  <b>You have a bee's abdomen.</b>");
-				player.tailType = Tail.BEE_ABDOMEN;
-				player.tailVenom = 10;
-				player.tailRecharge = 2;
+				player.tail.type = Tail.BEE_ABDOMEN;
+				player.tail.venom = 10;
+				player.tail.recharge = 2;
 				changes++;
 			}
 			//Venom Increase
-			if (changes < changeLimit && player.tailType == Tail.BEE_ABDOMEN && player.tailRecharge < 15 && Utils.rand(2)) {
-				if (player.tailRecharge < 5) player.tailRecharge += 1;
-				if (player.tailRecharge < 10) player.tailRecharge += 1;
-				if (player.tailRecharge < 15) player.tailRecharge += 1;
-				player.tailVenom += 50;
-				if (player.tailVenom > 100) player.tailVenom = 100;
+			if (changes < changeLimit && player.tail.type == Tail.BEE_ABDOMEN && player.tail.recharge < 15 && Utils.rand(2)) {
+				if (player.tail.recharge < 5) player.tail.recharge += 1;
+				if (player.tail.recharge < 10) player.tail.recharge += 1;
+				if (player.tail.recharge < 15) player.tail.recharge += 1;
+				player.tail.venom += 50;
+				if (player.tail.venom > 100) player.tail.venom = 100;
 				outputText("\n\nYour abdomen swells with vitality and a drop of venom escapes your stinger as it begins producing it in slightly larger quantities.");
 				changes++;
 			}

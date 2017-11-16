@@ -112,7 +112,7 @@ package classes.Scenes.Dungeons.HelDungeon
 			this.level = 18;
 			this.gems = rand(25) +140;
 			this.additionalXP = 50;
-			this.tailType = Tail.HARPY;
+			this.tail.type = Tail.HARPY;
 			this.drop = NO_DROP;
 			checkMonster();
 		}

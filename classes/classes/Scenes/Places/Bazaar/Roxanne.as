@@ -532,7 +532,7 @@ private function roxanneReamsYouNormal():void {
 	outputText(".\n\n");
 	
 	outputText("There's nothing to do but lie there and accept it.  You're too drunk to run even if you did get the aggressive shemale out of your rectum.  Worse still, her 'crew' of male lizans are standing guard in a ring around the pair of you.  Even though they seem focused on protecting against external threats, you know you'd never get past them without tripping over a tail or being snatched by a strong, sober arm. You belch and relax, your face sliding over the booze-slicked table while Roxanne starts to pound away at your stretched ");
-	if (player.tailType > Tail.NONE) outputText("tail-hole");
+	if (player.tail.type > Tail.NONE) outputText("tail-hole");
 	else outputText("anus");
 	outputText(".  It begins to feel good");
 	if (player.hasCock()) outputText(", very good,");
@@ -610,7 +610,7 @@ private function roxanneFucksYourAssOHGODITSHUGE():void {
 	outputText("The nude newhalf pounces, her thigh-sized monster-cock gushing pre-cum over your belly and twitching in anticipation of the violation to come.  Her need is so cute... endearing even, but it isn't until your gear is being removed that you remember Roxanne intends to hilt that thing inside you.  Your eyes go wide, your mouth stammering and blubbering about how it will never fit.  She places a scaled finger on your boozy lips and whispers, \"<i>Shhhh, don't struggle.  You knew what you were getting into, " + player.mf("my dear","sexy girl") + ".  You wouldn't welch out on a wager, would you?  Besides, it's much too late for you to do anything... my nude, drunken cock-holster.</i>\"\n\n");
 	
 	outputText("Oh gods, Roxanne's right.  She finished getting you naked while she was talking, and you're completely exposed.  Her hands grab your arm and pull, rolling you onto your front and letting your " + player.legs() + " hang off the side of her bed toward the floor.  It's such a silly pose that you nearly forget how perfect a target it makes your " + player.buttDescript() + "!  The now-confident lizan gives your butt-cheek a slap, giggling when you start in surprise.  ");
-	if (player.tailType > Tail.NONE) outputText("She lifts your tail ");
+	if (player.tail.type > Tail.NONE) outputText("She lifts your tail ");
 	else outputText("She spreads your cheeks ");
 	outputText("to examine your " + player.assholeDescript() + ", licking the ring before she prods it with a gentle finger-tip.  The excited pirate exclaims, \"<i>");
 	if (player.analCapacity() < 150) outputText("Oh, poor " + player.mf("boy","girl") + "!  I don't think you can handle me like this.  Let me get the ointment... after all, I want you to come back for more.");

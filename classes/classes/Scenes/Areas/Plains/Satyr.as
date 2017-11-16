@@ -169,7 +169,7 @@ package classes.Scenes.Areas.Plains
 			this.level = 14;
 			this.gems = rand(25) + 25;
 			this.drop = new ChainedDrop().add(consumables.INCUBID,1/2);
-			this.tailType = Tail.COW;
+			this.tail.type = Tail.COW;
 			checkMonster();
 		}
 		

@@ -147,7 +147,7 @@ package classes.Scenes.Areas.Mountain
 			this.special1 = hellhoundFire;
 			this.special2 = hellhoundScent;
 			this.special3 = hellHoundWormCannon;
-			this.tailType = Tail.DOG;
+			this.tail.type = Tail.DOG;
 			checkMonster();
 		}
 

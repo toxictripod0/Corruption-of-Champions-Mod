@@ -171,12 +171,12 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Gain Dragon Tail
-			if (player.tailType != Tail.DRACONIC && changes < changeLimit && rand(3) == 0) {
+			if (player.tail.type != Tail.DRACONIC && changes < changeLimit && rand(3) == 0) {
 				//(If no tail)
-				if (player.tailType == Tail.NONE) output.text("\n\nA sudden dull, throbbing pain in your " + player.buttDescript() + " forces your hands to it; you can feel an ominous lump over your tail bone, swelling bigger and bigger with every heartbeat.  All of a sudden, it seems to explode, jutting out and around until it hovers near your ankles, the skin under your flesh hard and scaly.  <b>You now have a dragon tail flicking at your back, flexible as a whip.</b>");
+				if (player.tail.type == Tail.NONE) output.text("\n\nA sudden dull, throbbing pain in your " + player.buttDescript() + " forces your hands to it; you can feel an ominous lump over your tail bone, swelling bigger and bigger with every heartbeat.  All of a sudden, it seems to explode, jutting out and around until it hovers near your ankles, the skin under your flesh hard and scaly.  <b>You now have a dragon tail flicking at your back, flexible as a whip.</b>");
 				//(If tail)
 				else output.text("\n\nAn icy sensation fills your behind as your tail suddenly goes curiously numb.  Twisting your head around, you watch as it melts and transforms into a reptilian appendage, long and flexible, its tip adorned with wicked spikes.  <b>You now have a dragon tail.</b>");
-				player.tailType = Tail.DRACONIC;
+				player.tail.type = Tail.DRACONIC;
 				changes++
 			}
 			/*

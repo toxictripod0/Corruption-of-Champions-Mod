@@ -140,7 +140,7 @@ package classes
 
 		public function hasReptileTail():Boolean
 		{
-			return [Tail.LIZARD, Tail.DRACONIC, Tail.SALAMANDER].indexOf(tailType) != -1;
+			return [Tail.LIZARD, Tail.DRACONIC, Tail.SALAMANDER].indexOf(tail.type) != -1;
 		}
 
 		// For reptiles with predator arms I recommend to require hasReptileScales() before doing the armType TF to Arms.PREDATOR

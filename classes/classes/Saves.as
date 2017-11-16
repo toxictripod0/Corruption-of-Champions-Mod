@@ -899,9 +899,9 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile.data.wingColor = player.wingColor;
 		saveFile.data.lowerBody = player.lowerBody.type;
 		saveFile.data.legCount = player.lowerBody.legCount;
-		saveFile.data.tailType = player.tailType;
-		saveFile.data.tailVenum = player.tailVenom;
-		saveFile.data.tailRecharge = player.tailRecharge;
+		saveFile.data.tailType = player.tail.type;
+		saveFile.data.tailVenum = player.tail.venom;
+		saveFile.data.tailRecharge = player.tail.recharge;
 		saveFile.data.hipRating = player.hips.rating;
 		saveFile.data.buttRating = player.butt.rating;
 		
@@ -1780,9 +1780,9 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		player.wingType = saveFile.data.wingType;
 		player.wingColor = saveFile.data.wingColor || "no";
 		player.lowerBody.type = saveFile.data.lowerBody;
-		player.tailType = saveFile.data.tailType;
-		player.tailVenom = saveFile.data.tailVenum;
-		player.tailRecharge = saveFile.data.tailRecharge;
+		player.tail.type = saveFile.data.tailType;
+		player.tail.venom = saveFile.data.tailVenum;
+		player.tail.recharge = saveFile.data.tailRecharge;
 		player.hips.rating = saveFile.data.hipRating;
 		player.butt.rating = saveFile.data.buttRating;
 		

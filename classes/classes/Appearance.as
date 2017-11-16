@@ -2590,7 +2590,7 @@ package classes
 		
 		public static function tailDescript(i_creature:Creature):String
 		{
-			if (i_creature.tailType == Tail.NONE)
+			if (i_creature.tail.type == Tail.NONE)
 			{
 				//trace("WARNING: Creature has no tails to describe.");
 				return "<b>!Creature has no tails to describe!</b>";
@@ -2598,16 +2598,16 @@ package classes
 			
 			var descript:String = "";
 			
-			if (i_creature.tailType == Tail.FOX && i_creature.tailVenom >= 1)
+			if (i_creature.tail.type == Tail.FOX && i_creature.tail.venom >= 1)
 			{
 				// Kitsune tails, we're using tailVenom to track tail count
-				if (i_creature.tailVenom > 1)
+				if (i_creature.tail.venom > 1)
 				{
-					if (i_creature.tailVenom == 2) descript += "pair ";
-					else if (i_creature.tailVenom == 3) descript += "trio ";
-					else if (i_creature.tailVenom == 4) descript += "quartet ";
-					else if (i_creature.tailVenom == 5) descript += "quintet ";
-					else if (i_creature.tailVenom > 5) descript += "bundle ";
+					if (i_creature.tail.venom == 2) descript += "pair ";
+					else if (i_creature.tail.venom == 3) descript += "trio ";
+					else if (i_creature.tail.venom == 4) descript += "quartet ";
+					else if (i_creature.tail.venom == 5) descript += "quintet ";
+					else if (i_creature.tail.venom > 5) descript += "bundle ";
 					
 					descript += "of kitsune tails";
 				}
@@ -2615,7 +2615,7 @@ package classes
 			}
 			else
 			{
-				descript += DEFAULT_TAIL_NAMES[i_creature.tailType];
+				descript += DEFAULT_TAIL_NAMES[i_creature.tail.type];
 				descript += " tail";
 			}
 			
@@ -2624,7 +2624,7 @@ package classes
 		
 		public static function oneTailDescript(i_creature:Creature):String
 		{
-			if (i_creature.tailType == Tail.NONE)
+			if (i_creature.tail.type == Tail.NONE)
 			{
 				//trace("WARNING: Creature has no tails to describe.");
 				return "<b>!Creature has no tails to describe!</b>";
@@ -2632,9 +2632,9 @@ package classes
 			
 			var descript:String = "";
 			
-			if (i_creature.tailType == Tail.FOX && i_creature.tailVenom >= 1)
+			if (i_creature.tail.type == Tail.FOX && i_creature.tail.venom >= 1)
 			{
-				if (i_creature.tailVenom == 1)
+				if (i_creature.tail.venom == 1)
 				{
 					descript += "your kitsune tail";
 				}
@@ -2645,7 +2645,7 @@ package classes
 			}
 			else
 			{
-				descript += "your " + DEFAULT_TAIL_NAMES[i_creature.tailType] + " tail";
+				descript += "your " + DEFAULT_TAIL_NAMES[i_creature.tail.type] + " tail";
 			}
 			
 			return descript;

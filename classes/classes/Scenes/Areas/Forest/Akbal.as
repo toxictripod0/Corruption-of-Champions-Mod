@@ -210,7 +210,7 @@ import classes.internals.WeightedDrop;
 			this.special1 = akbalLustAttack;
 			this.special2 = akbalSpecial;
 			this.special3 = akbalHeal;
-			this.tailType = Tail.DOG;
+			this.tail.type = Tail.DOG;
 			checkMonster();
 		}
 

@@ -555,15 +555,15 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Tail TF
-			if (player.tailType != Tail.COCKATRICE && changes < changeLimit && rand(4) == 0) {
+			if (player.tail.type != Tail.COCKATRICE && changes < changeLimit && rand(4) == 0) {
 				outputText("\n\nA sudden dull, throbbing pain in your [butt] forces your hands to it; you can feel an ominous lump over your tail"
 				          +" bone, swelling bigger and bigger with every heartbeat.  All of a sudden, it seems to explode, jutting out and around"
 				          +" until it hovers near your ankles. The skin beneath your fingers is covered in feathers but terminates about an inch"
 				          +" later in a 'v'shape, giving way to " + player.skin.tone + " scales.");
 				outputText("\n<b>You now have a cockatrice tail!</b>");
-				player.tailType = Tail.COCKATRICE;
-				player.tailRecharge = 5;
-				player.tailVenom = 0;
+				player.tail.type = Tail.COCKATRICE;
+				player.tail.recharge = 5;
+				player.tail.venom = 0;
 				changes++;
 			}
 			//Wings TF

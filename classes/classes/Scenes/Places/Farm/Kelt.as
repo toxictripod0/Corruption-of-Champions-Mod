@@ -166,7 +166,7 @@ package classes.Scenes.Places.Farm
 			this.temperment = TEMPERMENT_LUSTY_GRAPPLES;
 			this.level = 6;
 			this.gems = rand(5) + 5;
-			this.tailType = Tail.HORSE;
+			this.tail.type = Tail.HORSE;
 			this.drop = NO_DROP;
 			checkMonster();
 		}

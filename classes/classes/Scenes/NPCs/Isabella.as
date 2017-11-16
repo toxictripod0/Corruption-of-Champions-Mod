@@ -209,8 +209,8 @@ package classes.Scenes.NPCs
 			this.temperment = TEMPERMENT_RANDOM_GRAPPLES;
 			this.level = 15;
 			this.gems = rand(5) + 20;
-			this.tailType = Tail.COW;
-			this.tailRecharge = 0;
+			this.tail.type = Tail.COW;
+			this.tail.recharge = 0;
 			this.drop = NO_DROP;
 			checkMonster();
 		}

@@ -150,7 +150,7 @@ package classes.Scenes.Areas.Mountain
 						consumables.BLACKPP,
 						consumables.DBLPEPP,
 						consumables.LARGEPP);
-			this.tailType = Tail.DOG;
+			this.tail.type = Tail.DOG;
 			this.special1 = hellhoundFire;
 			this.special2 = hellhoundScent;
 			checkMonster();

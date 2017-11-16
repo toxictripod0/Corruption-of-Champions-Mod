@@ -813,7 +813,7 @@ package classes.Scenes.Dungeons
 			else outputText(" and giving you an exotic, tainted appearance");
 			outputText(".  ");
 			if (player.lowerBody.type != LowerBody.DEMONIC_HIGH_HEELS) outputText("Your " + player.feet() + " have been changing throughout the ordeal, but you didn't notice your " + player.legs() + " becoming such lissom, lengthy legs, or your heels growing long, high-heel-like spikes.  ");
-			if (player.tailType != Tail.DEMONIC) outputText("A tail snakes around your leg and begins to caress your " + player.vaginaDescript(0) + ", then plunges in to fuck the squirting orifice while you drink.  ");
+			if (player.tail.type != Tail.DEMONIC) outputText("A tail snakes around your leg and begins to caress your " + player.vaginaDescript(0) + ", then plunges in to fuck the squirting orifice while you drink.  ");
 			else outputText("Your tail snakes around your leg and begins to caress your " + player.vaginaDescript(0) + ", then plunges in to fuck the squirting orifice while you drink.  ");
 			outputText("The imps start hooting and cat-calling, laughing and prodding your body with their twisted demonic members as your mind starts to come apart in the seething oven of unnatural lust.\n\n");
 			//NEXT

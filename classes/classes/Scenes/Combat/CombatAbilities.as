@@ -1532,12 +1532,12 @@ public class CombatAbilities extends BaseContent
 			if (player.hasStatusEffect(StatusEffects.LustStickApplied)) {
 				addButton(button++, "Kiss", kissAttack).hint("Attempt to kiss your foe on the lips with drugged lipstick. It has no effect on those without a penis. \n\nNo Fatigue Cost");
 			}
-			switch (player.tailType) {
+			switch (player.tail.type) {
 				case Tail.BEE_ABDOMEN:
-					addButton(button++, "Sting", playerStinger).hint("Attempt to use your venomous bee stinger on an enemy.  Be aware it takes quite a while for your venom to build up, so depending on your abdomen's refractory period, you may have to wait quite a while between stings.  \n\nVenom: " + Math.floor(player.tailVenom) + "/100");
+					addButton(button++, "Sting", playerStinger).hint("Attempt to use your venomous bee stinger on an enemy.  Be aware it takes quite a while for your venom to build up, so depending on your abdomen's refractory period, you may have to wait quite a while between stings.  \n\nVenom: " + Math.floor(player.tail.venom) + "/100");
 					break;
 				case Tail.SPIDER_ABDOMEN:
-					addButton(button++, "Web", PCWebAttack).hint("Attempt to use your abdomen to spray sticky webs at an enemy and greatly slow them down.  Be aware it takes a while for your webbing to build up.  \n\nWeb Amount: " + Math.floor(player.tailVenom) + "/100");
+					addButton(button++, "Web", PCWebAttack).hint("Attempt to use your abdomen to spray sticky webs at an enemy and greatly slow them down.  Be aware it takes a while for your webbing to build up.  \n\nWeb Amount: " + Math.floor(player.tail.venom) + "/100");
 					break;
 				case Tail.SALAMANDER:
 					addButton(button++, "Tail Slap", tailSlapAttack).hint("Set your tail ablaze in red-hot flames to whip your foe with it to hurt and burn them! \n\nFatigue Cost: " + player.physicalCost(30));
@@ -1930,7 +1930,7 @@ public class CombatAbilities extends BaseContent
 			//Variant start messages!
 			if (player.lowerBody.type == LowerBody.KANGAROO) {
 				//(tail)
-				if (player.tailType == Tail.KANGAROO) outputText("You balance on your flexible kangaroo-tail, pulling both legs up before slamming them forward simultaneously in a brutal kick.  ");
+				if (player.tail.type == Tail.KANGAROO) outputText("You balance on your flexible kangaroo-tail, pulling both legs up before slamming them forward simultaneously in a brutal kick.  ");
 				//(no tail) 
 				else outputText("You balance on one leg and cock your powerful, kangaroo-like leg before you slam it forward in a kick.  ");
 			}
@@ -2315,7 +2315,7 @@ public class CombatAbilities extends BaseContent
 		//Player sting attack
 		public function playerStinger():void {
 			clearOutput();
-			if (player.tailVenom < 33) {
+			if (player.tail.venom < 33) {
 				outputText("You do not have enough venom to sting right now!");
 				doNext(physicalSpecials);
 				return;
@@ -2362,7 +2362,7 @@ public class CombatAbilities extends BaseContent
 			//New line before monster attack
 			outputText("\n\n");
 			//Use tail mp
-			player.tailVenom -= 25;
+			player.tail.venom -= 25;
 			//Kick back to main if no damage occured!
 			if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI();
 			else doNext(combat.endLustVictory);
@@ -2371,12 +2371,12 @@ public class CombatAbilities extends BaseContent
 		public function PCWebAttack():void {
 			clearOutput();
 			//Keep logic sane if this attack brings victory
-			if (player.tailVenom < 33) {
+			if (player.tail.venom < 33) {
 				outputText("You do not have enough webbing to shoot right now!");
 				doNext(physicalSpecials);
 				return;
 			}
-			player.tailVenom-= 33;
+			player.tail.venom-= 33;
 			//Amily!
 			if (monster.hasStatusEffect(StatusEffects.Concentration)) {
 				outputText("Amily easily glides around your attack thanks to her complete concentration on your movements.\n\n");
@@ -2545,7 +2545,7 @@ public class CombatAbilities extends BaseContent
 					temp--;
 				}
 				monster.addStatusValue(StatusEffects.CoonWhip,2,2);
-				if (player.tailType == Tail.RACCOON) monster.addStatusValue(StatusEffects.CoonWhip,2,2);
+				if (player.tail.type == Tail.RACCOON) monster.addStatusValue(StatusEffects.CoonWhip,2,2);
 			}
 			player.changeFatigue(15,2);
 			outputText("\n\n");

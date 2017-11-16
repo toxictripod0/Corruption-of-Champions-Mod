@@ -213,7 +213,7 @@ package classes.Scenes.NPCs
 			this.drop = new ChainedDrop().add(useables.D_SCALE, 0.2);
 			this.wingType = Wings.DRACONIC_LARGE;
 			this.wingDesc = "huge";
-			this.tailType = Tail.LIZARD;
+			this.tail.type = Tail.LIZARD;
 			checkMonster();
 		}
 

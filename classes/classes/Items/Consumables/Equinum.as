@@ -47,7 +47,7 @@ package classes.Items.Consumables
 			clearOutput();
 			outputText("You down the potion, grimacing at the strong taste.");
 			//CHANCE OF BAD END - 20% if face/tail/skin/cock are appropriate.
-			if (player.hasFur() && player.face.type === Face.HORSE && player.tailType === Tail.HORSE && player.lowerBody.type === LowerBody.HOOFED) {
+			if (player.hasFur() && player.face.type === Face.HORSE && player.tail.type === Tail.HORSE && player.lowerBody.type === LowerBody.HOOFED) {
 				//WARNINGS
 				//Repeat warnings
 				if (player.hasStatusEffect(StatusEffects.HorseWarning) && rand(3) === 0) {
@@ -448,7 +448,7 @@ package classes.Items.Consumables
 				player.face.type = Face.HORSE;
 			}
 			//Fur - if has horse tail && ears and not at changelimit
-			if (!player.hasFur() && changes < changeLimit && rand(4) === 0 && player.tailType === Tail.HORSE) {
+			if (!player.hasFur() && changes < changeLimit && rand(4) === 0 && player.tail.type === Tail.HORSE) {
 				player.setFurColor(horseFurColors);
 				if (player.hasPlainSkin()) outputText("\n\nAn itchy feeling springs up over every inch of your skin.  As you scratch yourself madly, you feel fur grow out of your skin until <b>you have a fine coat of " + player.skin.furColor + "-colored fur.</b>");
 				if (player.hasScales()) {
@@ -461,7 +461,7 @@ package classes.Items.Consumables
 				player.underBody.restore(); // Restore the underbody for now
 			}
 			// Hooves - Tail
-			if (player.lowerBody.type !== LowerBody.HOOFED && player.tailType === Tail.HORSE && changes < changeLimit && rand(5) === 0) {
+			if (player.lowerBody.type !== LowerBody.HOOFED && player.tail.type === Tail.HORSE && changes < changeLimit && rand(5) === 0) {
 				changes++;
 				if (player.lowerBody.type === LowerBody.HUMAN) outputText("\n\nYou stagger as your feet change, curling up into painful angry lumps of flesh.  They get tighter and tighter, harder and harder, until at last they solidify into hooves!");
 				else if (player.lowerBody.type === LowerBody.DOG) outputText("\n\nYou stagger as your paws change, curling up into painful angry lumps of flesh.  They get tighter and tighter, harder and harder, until at last they solidify into hooves!");
@@ -476,7 +476,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Ears - requires tail
-			if (player.ears.type !== Ears.HORSE && player.tailType === Tail.HORSE && changes < changeLimit && rand(3) === 0) {
+			if (player.ears.type !== Ears.HORSE && player.tail.type === Tail.HORSE && changes < changeLimit && rand(3) === 0) {
 				if (player.ears.type === -1) outputText("\n\nTwo painful lumps sprout on the top of your head, forming into tear-drop shaped ears, covered with short fur.  ");
 				if (player.ears.type === Ears.HUMAN) outputText("\n\nYour ears tug painfully on your face as they begin shifting, moving upwards to the top of your head and transforming into an upright animalistic ears.  ");
 				if (player.ears.type === Ears.DOG) outputText("\n\nYour ears change shape, morphing into from their doglike shape into equine-like ears!  ");
@@ -487,26 +487,26 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Tail - no-prereq
-			if (player.tailType !== Tail.HORSE && rand(2) === 0 && changes < changeLimit) {
+			if (player.tail.type !== Tail.HORSE && rand(2) === 0 && changes < changeLimit) {
 				//no tail
-				if (player.tailType === 0) {
+				if (player.tail.type === 0) {
 					outputText("\n\nThere is a sudden tickling on your ass, and you notice you have sprouted a long shiny horsetail of the same " + player.hair.color + " color as your hair.");
 				}
 				//if other animal tail
-				if (player.tailType > Tail.HORSE && player.tailType <= Tail.COW) {
+				if (player.tail.type > Tail.HORSE && player.tail.type <= Tail.COW) {
 					outputText("\n\nPain lances up your " + player.assholeDescript() + " as your tail shifts and morphs disgustingly.  With one last wave of pain, it splits into hundreds of tiny filaments, transforming into a horsetail.");
 				}
 				//if bee/spider-butt.
-				if ((player.tailType > Tail.COW && player.tailType < Tail.SHARK)) {
+				if ((player.tail.type > Tail.COW && player.tail.type < Tail.SHARK)) {
 					outputText("\n\nYour insect-like abdomen bunches up as it begins shrinking, exoskeleton flaking off like a snake sheds its skin.  It bunches up until it is as small as a tennis ball, then explodes outwards, growing into an animalistic tail shape.  Moments later, it explodes into filaments of pain, dividing into hundreds of strands and turning into a shiny horsetail.");
 				}
-				if (player.tailType >= Tail.SHARK) {
+				if (player.tail.type >= Tail.SHARK) {
 					outputText("\n\nPain lances up your " + player.assholeDescript() + " as your tail shifts and morphs disgustingly.  With one last wave of pain, it splits into hundreds of tiny filaments, transforming into a horsetail.");
 				}
 				outputText("  <b>You now have a horse-tail.</b>");
-				player.tailType = Tail.HORSE;
-				player.tailVenom = 0;
-				player.tailRecharge = 0;
+				player.tail.type = Tail.HORSE;
+				player.tail.venom = 0;
+				player.tail.recharge = 0;
 				changes++;
 			}
 			// Remove gills

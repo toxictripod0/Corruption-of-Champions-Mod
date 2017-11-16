@@ -2367,14 +2367,14 @@ package classes.Scenes.Areas.Forest
 		private function meditateLikeAKitsuneEhQuestionMark():void
 		{
 			clearOutput();
-			if (player.hasItem(consumables.FOXJEWL) && player.tailType == Tail.FOX && player.tailVenom < 9 && player.tailVenom + 1 <= player.level && player.tailVenom + 1 <= player.inte / 10 && player.ears.type == Ears.FOX && (player.findPerk(PerkLib.CorruptedNinetails) < 0 || player.perkv4(PerkLib.CorruptedNinetails) > 0) && player.findPerk(PerkLib.EnlightenedNinetails) < 0) {
+			if (player.hasItem(consumables.FOXJEWL) && player.tail.type == Tail.FOX && player.tail.venom < 9 && player.tail.venom + 1 <= player.level && player.tail.venom + 1 <= player.inte / 10 && player.ears.type == Ears.FOX && (player.findPerk(PerkLib.CorruptedNinetails) < 0 || player.perkv4(PerkLib.CorruptedNinetails) > 0) && player.findPerk(PerkLib.EnlightenedNinetails) < 0) {
 				//20% chance if PC has fox ears, 1 or more fox tails, carries a Fox Jewel, and meets level & INT requirements for the next tail:
 				outputText("You sit down carefully on a small mat in front of the shrine and clear your mind.  Closing your eyes, you meditate on the things you've learned in your journey thus far, and resolve to continue fighting against the forces of corruption that permeate the land.\n\n");
 
 				outputText("Nearing the end of your meditation, you are inexplicably compelled to reach into your bag and pull out the small teardrop-shaped jewel you were carrying.  As you stare past the translucent surface of the bead and into the dancing fire within, the jewel begins to dissolve in your hand, the pale flames within spilling out and spreading over your body.\n\n");
-				if (player.tailVenom < 8) {
-					outputText("Sitting in a silent reverie, you allow the flames to wash over you, and begin to feel a bit more...  enlightened.  Your bushy tail" + ((player.tailVenom > 1) ? "s" : "" ) + " begin" + ((player.tailVenom > 1) ? "s" : "" ) + " to glow with an eerie, ghostly light, and with a crackle of electrical energy, split" + ((player.tailVenom > 1) ? "s" : "" ) + " into " + (player.tailVenom + 1) + "!");
-					player.tailVenom++;
+				if (player.tail.venom < 8) {
+					outputText("Sitting in a silent reverie, you allow the flames to wash over you, and begin to feel a bit more...  enlightened.  Your bushy tail" + ((player.tail.venom > 1) ? "s" : "" ) + " begin" + ((player.tail.venom > 1) ? "s" : "" ) + " to glow with an eerie, ghostly light, and with a crackle of electrical energy, split" + ((player.tail.venom > 1) ? "s" : "" ) + " into " + (player.tail.venom + 1) + "!");
+					player.tail.venom++;
 				}
 				else {
 					outputText("As the mystical flames wash over you, your mind is assaulted by a maelstrom of otherworldly knowledge and power.  For a moment it feels as though your mind will be torn asunder, but you are ready.  Your travels and meditations have prepared you well, and you open your mind to accept enlightenment.\n\n");
@@ -2382,7 +2382,7 @@ package classes.Scenes.Areas.Forest
 
 					//Increment tail by 1, consume Fox Jewel, -2 COR, -20 LUST, +2 INT, Advance 1 hr and return to camp.
 					//Apply Nine-Tails perk if applicable.
-					player.tailVenom = 9;
+					player.tail.venom = 9;
 					player.createPerk(PerkLib.EnlightenedNinetails, 0, 0, 0, 0);
 					
 					// Nine tail kitsunes have their fur/hair color golden, silver or pure white

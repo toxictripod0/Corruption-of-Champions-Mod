@@ -200,7 +200,7 @@ package classes.Scenes.Quests.UrtaQuest
 						.elseDrop(null);
 			}
 			else this.drop = NO_DROP;
-			this.tailType = Tail.COW;
+			this.tail.type = Tail.COW;
 			this.special1 = game.mountain.minotaurScene.minoPheromones;
 			checkMonster();
 		}

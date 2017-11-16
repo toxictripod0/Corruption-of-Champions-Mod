@@ -905,7 +905,7 @@ public class AkbalScene extends BaseContent implements Encounter
 				outputText("You watch with fascination as Akbal rises onto his hind legs, his body melting into a more humanoid form.  His long, demonic cat-dick is already rock-hard and jutting out of his sheath.  He walks past your top half, moving around your body while sliding his hand across your haunch.  His hands are oddly warm.");
 
 				//(if centaur player has a tail)
-				if (player.tailType > Tail.NONE)
+				if (player.tail.type > Tail.NONE)
 					outputText("  As he makes his way to your hind quarters he grabs you by the tail, pulling it up and out the way with a feral, jaguar grin.  His free hand slides a finger across your " + player.assholeDescript() + " making you paw the ground with your hooves.");
 
 				//(No tail)

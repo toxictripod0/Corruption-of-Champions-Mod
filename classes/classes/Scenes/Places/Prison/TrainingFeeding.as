@@ -2192,7 +2192,7 @@ package classes.Scenes.Places.Prison
 				}
 				outputText(" You bow your head deferentially as you crawl, but fix her with doe eyes so you can furtively watch her face as you go. Her approval is plainly growing by the time you are halfway to her feet, so you redouble your efforts as you continue. She beams you a knowing smile, then leans forward cheerfully and claps her hands against her thighs.\n\n");
 				outputText("\"<i>Oh, what a good [boy] you are!</i>\" she calls out, as though she was congratulating a well behaved puppy. \"<i>That's it, just little further and you can enjoy your treat.</i>\" You blush [if (esteem < 60) wildly ][if (esteem >= 60) angrily ] at the appalling implication, but only after a[if (esteem < 60) n unexpected] shiver of pride rushes down your spine in response to her demeaning praise. ");
-				if (player.tailType > 0 && player.esteem < 60)
+				if (player.tail.type > 0 && player.esteem < 60)
 				{
 					outputText("Worse still, you find that your tail has begun to wag energetically of its own accord. ");
 				}
@@ -2243,7 +2243,7 @@ package classes.Scenes.Places.Prison
 					if (player.cor < 25)
 					{
 						outputText("You then let your tongue hang from your mouth");
-						if (player.tailType > 0)
+						if (player.tail.type > 0)
 						{
 							outputText(", begin to wag your tail energetically, ");
 						}
@@ -2252,7 +2252,7 @@ package classes.Scenes.Places.Prison
 					else
 					{
 						outputText("You then make a show of widening your stance and curling your [ass] into the air as though presenting yourself for breeding, ");
-						if (player.tailType > 0)
+						if (player.tail.type > 0)
 						{
 							outputText("begin to wag your tail energetically, ");
 						}
@@ -3132,7 +3132,7 @@ package classes.Scenes.Places.Prison
 				}
 				outputText("\"<i>You're a good slave for asking, but you know that you would be a better slave if you were already acting.</i>\" She crosses her arms, shifts her weight to her other foot, and you hear a note of impatience lace her voice. \"<i>If you want to eat, you need to learn to please me even before I give you instructions. So:</i>\"\n\n");
 				outputText("\"<i>First, crawl across the room. Be sure to arch your back so that you present your [ass] like a bitch in heat");
-				if (player.tailType > 0)
+				if (player.tail.type > 0)
 				{
 					outputText(" -- and wag that cute little tail while you're at it.</i>\"");
 				}

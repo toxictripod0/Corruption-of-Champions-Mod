@@ -72,7 +72,7 @@ package classes.Scenes.Areas.VolcanicCrag
 			this.horns.value = 7;
 			this.horns.type = Horns.DRACONIC_X2
 			this.lowerBody.type = LowerBody.CAT
-			this.tailType = Tail.BEHEMOTH
+			this.tail.type = Tail.BEHEMOTH
 			initStrTouSpeInte(125, 100, 80, 105);
 			initLibSensCor(35, 15, 15);
 			this.weaponName = "claws";

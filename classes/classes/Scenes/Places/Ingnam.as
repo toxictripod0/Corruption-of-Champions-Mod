@@ -384,7 +384,7 @@ package classes.Scenes.Places
 			if (flags[kFLAGS.INGNAM_PROLOGUE_COMPLETE] > 0 && flags[kFLAGS.INGNAM_GREETED_AFTER_LONGTIME] <= 0) {
 				welcomeBack();
 			}
-			if ((player.ears.type > 0 && player.ears.type != flags[kFLAGS.INGNAM_EARS_LAST_TYPE] && flags[kFLAGS.INGNAM_EARS_FREAKOUT] <= 0) || (player.tailType > 0 && player.tailType != flags[kFLAGS.INGNAM_TAIL_LAST_TYPE] && flags[kFLAGS.INGNAM_TAIL_FREAKOUT] <= 0) && flags[kFLAGS.INGNAM_PROLOGUE_COMPLETE] <= 0) {
+			if ((player.ears.type > 0 && player.ears.type != flags[kFLAGS.INGNAM_EARS_LAST_TYPE] && flags[kFLAGS.INGNAM_EARS_FREAKOUT] <= 0) || (player.tail.type > 0 && player.tail.type != flags[kFLAGS.INGNAM_TAIL_LAST_TYPE] && flags[kFLAGS.INGNAM_TAIL_FREAKOUT] <= 0) && flags[kFLAGS.INGNAM_PROLOGUE_COMPLETE] <= 0) {
 				appearanceFreakout();
 				return;
 			}
@@ -435,13 +435,13 @@ package classes.Scenes.Places
 				flags[kFLAGS.INGNAM_EARS_LAST_TYPE] = player.ears.type;
 				flags[kFLAGS.INGNAM_EARS_FREAKOUT] = 1;
 			}
-			if (player.ears.type > 0 && player.tailType > 0 && player.hasLongTail()) outputText("Next, he walks behind you, taking a glance at your tail.");
-			if (player.tailType > 0) {
+			if (player.ears.type > 0 && player.tail.type > 0 && player.hasLongTail()) outputText("Next, he walks behind you, taking a glance at your tail.");
+			if (player.tail.type > 0) {
 				if (player.hasLongTail()) {
 					outputText("\n\nHe says with a surprised look, \"<i>You have a tail now? Are you sure this is fake?</i>\" You tell him that your tail is not fake; it's real. \"<i>Prove it,</i>\" he says as he tugs your tail. Ouch! That hurts! \"<i>Sorry about that,</i>\" he says, \"<i>but that tail definitely looks and feels real! I think your tail does look nice.</i>\"");
 					outputText("\n\nYou wag your tail and thank him for the compliment and he walks behind the counter.");
 				}
-				flags[kFLAGS.INGNAM_TAIL_LAST_TYPE] = player.tailType;
+				flags[kFLAGS.INGNAM_TAIL_LAST_TYPE] = player.tail.type;
 				flags[kFLAGS.INGNAM_TAIL_FREAKOUT] = 1;
 			}
 			doNext(menuTavern);

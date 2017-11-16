@@ -543,7 +543,7 @@ package classes.Scenes.Areas.Desert {
 
 			this.drop = new WeightedDrop(consumables.ECTOPLS, 1);
 
-			this.tailType = rand(26);
+			this.tail.type = rand(26);
 			this.horns.value = rand(4);
 			if (this.horns.value > 0) {
 				this.horns.type = rand(7) + 1;

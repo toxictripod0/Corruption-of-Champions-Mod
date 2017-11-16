@@ -358,19 +358,28 @@ import classes.GlobalFlags.kFLAGS;
 		
 		public function hasLongTail():Boolean
 		{
-			//7 - shark tail!
-			//8 - catTAIIIIIL
-			//9 - lizard tail
-			//10 - bunbuntail
-			//11 - harpybutt
-			//12 - rootail
-			//13 - foxtail
-			//14 - dagron tail
-			if (isNaga())
-				return true;
-			if (tailType == 2 || tailType == 3 || tailType == 4 || tailType == 7 || tailType == 8 || tailType == 9 || tailType == 12 || tailType == 13 || tailType == 14 || tailType == 15 || tailType == 16 || tailType == 17 || tailType == 18 || tailType == 20)
-				return true;
-			return false;
+			if (isNaga()) return true;
+
+			return [
+				Tail.DOG,
+				Tail.DEMONIC,
+				Tail.COW,
+				Tail.SHARK,
+				Tail.CAT,
+				Tail.LIZARD,
+				Tail.KANGAROO,
+				Tail.FOX,
+				Tail.DRACONIC,
+				Tail.RACCOON,
+				Tail.MOUSE,
+				Tail.FERRET,
+				Tail.BEHEMOTH,
+				Tail.SCORPION,
+				Tail.SALAMANDER,
+				Tail.WOLF,
+				Tail.IMP,
+				Tail.COCKATRICE,
+			].indexOf(tail.type) != -1;
 		}
 
 		public function isPregnant():Boolean { return _pregnancyType != 0; }

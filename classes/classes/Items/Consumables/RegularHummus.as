@@ -188,11 +188,11 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Removes tail
-			if (player.tailType !== Tail.NONE && rand(5) === 0 && changes < changeLimit) {
+			if (player.tail.type !== Tail.NONE && rand(5) === 0 && changes < changeLimit) {
 				outputText("\n\nYou feel something shifting in your backside. Then something detaches from your backside and it falls onto the ground.  <b>You no longer have a tail!</b>");
-				player.tailType = Tail.NONE;
-				player.tailVenom = 0;
-				player.tailRecharge = 5;
+				player.tail.type = Tail.NONE;
+				player.tail.venom = 0;
+				player.tail.recharge = 5;
 				changes++;
 			}
 			//Increase height up to 4ft 10in.

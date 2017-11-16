@@ -410,9 +410,9 @@
 			///*OPTIONAL*/ //this.special3 = ; //default 0
 
 			//// 16. Tail
-			///*OPTIONAL*/ //this.tailType = Tail.; // default NONE
-			///*OPTIONAL*/ //this.tailVenom = ; // default 0
-			///*OPTIONAL*/ //this.tailRecharge = ; // default 5
+			///*OPTIONAL*/ //this.tail.type = Tail.; // default NONE
+			///*OPTIONAL*/ //this.tail.venom = ; // default 0
+			///*OPTIONAL*/ //this.tail.recharge = ; // default 5
 
 			//// 17. Horns
 			///*OPTIONAL*/ //this.hornsPart.type = Horns.; // default NONE
@@ -1044,8 +1044,8 @@
 					+(Appearance.DEFAULT_TONGUE_NAMES[tongueType]||("tongueType#"+tongueType))+" tongue and "
 					+(Appearance.DEFAULT_EYES_NAMES[eyes.type]||("eyes.type#"+eyes.type))+" eyes.\n";
 			result += Hehas;
-			if (tailType == Tail.NONE) result += "no tail, ";
-			else result+=(Appearance.DEFAULT_TAIL_NAMES[tailType]||("tailType#"+tailType))+" tail with venom="+tailVenom+" and recharge="+tailRecharge+", ";
+			if (tail.type == Tail.NONE) result += "no tail, ";
+			else result+=(Appearance.DEFAULT_TAIL_NAMES[tail.type]||("tailType#"+tail.type))+" tail with venom="+tail.venom+" and recharge="+tail.recharge+", ";
 			if (horns.type == Horns.NONE) result += "no horns, ";
 			else result += horns.value+" "+(Appearance.DEFAULT_HORNS_NAMES[horns.type]||("hornsPart.type#"+horns.type))+" horns, ";
 			if (wingType == Wings.NONE) result += "no wings, ";

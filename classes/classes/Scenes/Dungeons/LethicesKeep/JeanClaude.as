@@ -100,7 +100,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			hips.rating = Hips.RATING_AVERAGE;
 			butt.rating = Butt.RATING_AVERAGE;
 			lowerBody.type = LowerBody.LIZARD;
-			tailType = Tail.LIZARD;
+			tail.type = Tail.LIZARD;
 			skin.desc = "green-purple mottled hide";
 			initStrTouSpeInte(80, 100, 80, 60);
 			initLibSensCor(40, 40, 80);

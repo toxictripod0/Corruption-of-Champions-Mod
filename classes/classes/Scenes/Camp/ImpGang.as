@@ -42,7 +42,7 @@ package classes.Scenes.Camp
 			this.balls = 2;
 			this.ballSize = 3;
 			this.tallness = 36;
-			this.tailType = Tail.DEMONIC;
+			this.tail.type = Tail.DEMONIC;
 			this.wingType = Wings.IMP;
 			this.skin.tone = "green";
 			this.createStatusEffect(StatusEffects.GenericRunDisabled, 0, 0, 0, 0);

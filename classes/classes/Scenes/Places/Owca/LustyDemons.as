@@ -85,7 +85,7 @@ package classes.Scenes.Places.Owca
 			this.gems = 150 + rand(100);
 			this.special1 = game.combat.packAttack;
 			this.special2 = game.combat.lustAttack;
-			this.tailType = Tail.DEMONIC;
+			this.tail.type = Tail.DEMONIC;
 			this.horns.type = Horns.DEMON;
 			this.horns.value = 2;
 			this.drop = NO_DROP;

@@ -224,8 +224,8 @@ package classes.Scenes.Areas.HighMountains
 				.add(consumables.GLDSEED, 35)
 				.add(consumables.TOTRICE, 20)
 				.add(null,                10);
-			this.tailType = Tail.COCKATRICE;
-			this.tailRecharge = 0;
+			this.tail.type = Tail.COCKATRICE;
+			this.tail.recharge = 0;
 			this.createPerk(PerkLib.BasiliskResistance, 0, 0, 0, 0);
 			checkMonster();
 		}

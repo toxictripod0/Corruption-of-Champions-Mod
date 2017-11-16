@@ -1884,7 +1884,7 @@ package classes.Scenes.NPCs
 			if (dog) outputText("Arf!</i>\" you bark");
 			else outputText("Meowwwww!</i>\" you mew");
 			outputText(", loud and almost proudly");
-			if (player.tailType > Tail.NONE) outputText(", wagging your tail excitedly");
+			if (player.tail.type > Tail.NONE) outputText(", wagging your tail excitedly");
 			outputText(".");
 			outputText("\n\nCeraph casually pulls her panties a bit lower to ");
 			if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText("ease the pressure on her tightly-contained phallus");
@@ -2019,7 +2019,7 @@ package classes.Scenes.NPCs
 			if (dog) outputText("Arf! Arf!</i>\" you bark");
 			else outputText("Meow!  Meowwwww!</i>\" you mew");
 			outputText(", wiggling your ");
-			if (player.tailType > Tail.NONE) outputText("tail");
+			if (player.tail.type > Tail.NONE) outputText("tail");
 			else outputText("[butt]");
 			outputText(" happily.  For some reason, the idea of denying yourself release in exchange for more humiliation is appealing to you.");
 

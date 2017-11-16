@@ -751,7 +751,7 @@ public function urtaFuckHer(afterBefriending:Boolean = false):void {
 		outputText("Gently wiping a tear from her muzzle, you answer, \"<i>Not at all, but I think you'd have more luck with a nice warm hole to slide that monster into.</i>\"\n\n");
 
 		outputText("Urta nods, numbed by the unexpected and forward nature of your offer.  She looks up hopefully and pries her hands away from the twitching behemoth in her loins, waiting to see how you intend to deal with it.  You approach her and turn, straddling your " + player.legs() + " over her, watching her expression as you lower yourself down, ");
-		if (player.tailType == Tail.HORSE || player.tailType == Tail.DOG) outputText("swishing your tail across her taut nipples");
+		if (player.tail.type == Tail.HORSE || player.tail.type == Tail.DOG) outputText("swishing your tail across her taut nipples");
 		else outputText("making her wait");
 		outputText(".  Eventually the blunted tip of Urta's horse-cock presses against your " + player.assholeOrPussy() + ".  Agonizingly, you force yourself to relax and lower yourself down on the mottled pink and black shaft.\n\n");
 
@@ -4558,7 +4558,7 @@ private function raphaelAndUrtaPartTwo():void {
 	player.cuntChange(12,true,true,false);
 
 	outputText("\n\nUrta, perhaps feeling a bit ignored, suddenly forces a finger into Raphael's tight pucker as she crouches, using her free hand to line her blunt horse-cock up with your [asshole].  You ");
-	if (player.tailType > Tail.NONE) outputText("lift your tails and ");
+	if (player.tail.type > Tail.NONE) outputText("lift your tails and ");
 	outputText("try to relax with her thick slab of penis so close to your backdoor, hoping she'll be gentle.  A drunken twinge of arousal knifes through your [vagina] as you imagine her forcefully raping your hind-end, and Raphael can certainly feel the convulsive fluttering of your love tunnel as you sink into your imaginings.  The gray vixen nips at your ear as she presses against your [asshole]");
 	if (player.analCapacity() < 30) outputText(", slowly stretching your tight sphincter with constant pressure.  You're not really loose enough back there for this to be entirely comfortable, but the incredible fullness her length provides has a way of muting the pain of stretching.");
 	else if (player.analCapacity() < 60) outputText(", slowly sliding into your sphincter.  You groan into your other lover's mouth as your anus is claimed by the thick horse-pole, and you do your best to relax around the butthole-stretching shaft.");
@@ -4859,21 +4859,21 @@ private function wearZeCollar():void {
 		outputText("\n\nThe little, shiny golden tag says '<i>Property of Urta</i>' in soft, flowing script.  Urta fidgets nervously as you run a finger over the engraved words, as though confirming they're real.  \"<i>It's not too much, is it?</i>\" she asks, pulling at the hem of her stockings fitfully.  \"<i>I just thought, since we were playing like this... we could make it official.  Just while we're 'playing' like this, of course.</i>\"");
 
 		outputText("\n\nYou answer her question by snapping the collar on, stripping down to your birthday suit and kneeling in front of your Owner");
-		if (player.tailType > Tail.NONE) outputText(", tail wagging");
+		if (player.tail.type > Tail.NONE) outputText(", tail wagging");
 		outputText(".  Urta beams at you and pats your head lovingly.");
 	}
 	//(Jump down to Scene Proper)
 	//Repeats
 	else {
 		outputText("You spy the collar sitting on a nearby dresser and pick it up.  You run your fingers over the engraved words on the collar's tag that reads '<i>Property of Urta</i>'.  Slipping it on, you also strip down until you're as nude as the day you were born, and kneel in front of your Owner");
-		if (player.tailType > Tail.NONE) outputText(", tail wagging");
+		if (player.tail.type > Tail.NONE) outputText(", tail wagging");
 		outputText(".");
 	}
 	//Scenes Join Up Here
 	//(If PC has no tail)
-	if (player.tailType == Tail.NONE) {
+	if (player.tail.type == Tail.NONE) {
 		outputText("\n\n\"<i>Good, good. One last touch, though,</i>\" she says before turning to a dresser and retrieving some kind of fluffy tail attached to... a butt-plug!  \"<i>Since you don't have one yourself, we'll have to improvise.  Turn around and be a good little puppy now, all right?</i>\"  You whimper at the thought of that thing going into your ass, but you dare not disappoint your new Owner.  Flipping yourself around, you lower your upper body all the way to the floor, raising your butt high into the air.");
-		if (player.tailType == Tail.NONE && player.ass.analWetness > 0) outputText("  Despite your embarrassment, or perhaps because of it, you find your asshole getting wet with desire, practically salivating in anticipation of that thick plug.");
+		if (player.tail.type == Tail.NONE && player.ass.analWetness > 0) outputText("  Despite your embarrassment, or perhaps because of it, you find your asshole getting wet with desire, practically salivating in anticipation of that thick plug.");
 
 		//(Cont. if PC has no tail)
 		outputText("\n\nYour Owner slowly pushes the plug inside while you shiver, the cool plug feeling like ice against your flushed skin.  Your sphincter stretches a little uncomfortably as the invader goes deeper.  You actually groan audibly as you get to the widest part, there's just something about feeling so <b>full</b> inside that makes you feel so goddamn good. With one last little push, the plug slips into place, your asshole clutching it tightly.  Urta stands back and admires your new, temporary tail.  You trot around on all fours for a moment, getting used to the swishing of the tail against the back of your thighs.  It, like the collar, is a constant reminder of the situation you find yourself in.");
@@ -4896,10 +4896,10 @@ private function doggyStyle():void {
 	outputText("\"<i>Hmm,</i>\" Urta wonders aloud, bringing a finger up to her mouth in mock-thoughtfulness.  \"<i>What should I do with my little pet now that " + player.mf("he","she") + "'s all collared up?</i>\"  Your Owner walks around you slowly, assessing your body.");
 
 	outputText("\n\n\"<i><b>Sit</b>,</i>\" she says, a commanding voice coming easily.  Before you can even think about it, you immediately find your butt touching the smooth, cool floor.  Urta smirks and pats you on the head.  \"<i>Good pet.  <b>Down.</b></i>\"  Again, you follow her instruction immediately, lowering your front to the ground while simultaneously lifting your ass into the air.  She circles around and kneels alongside of you.  \"<i><b>Stay</b>,</i>\" she commands.  You don't dare move as she leans in, running a furry hand along the " + player.skinFurScales() + " of your back, which you can't help but arch, and over your [butt].  Your ");
-	if (player.tailType > Tail.NONE) outputText("tail");
+	if (player.tail.type > Tail.NONE) outputText("tail");
 	else outputText("tailplug");
 	outputText(" wags of its own accord, happily swishing back and forth.  Urta's hand dips between your buttocks, over your ");
-	if (player.tailType > Tail.NONE) outputText("asshole");
+	if (player.tail.type > Tail.NONE) outputText("asshole");
 	else outputText("plugged asshole");
 	outputText(", and between your thighs, ");
 	if (player.hasCock()) outputText("grasping your [cock biggest]");
@@ -4944,7 +4944,7 @@ private function doggyStyle():void {
 	outputText("\n\nYou find yourself on the precipice of orgasm once more... and once again there's a sudden void as Urta's hands leave your body.  What started off as a moan of ecstasy soon turns into a frustrated whine as your second orgasm dissipates into the ether.  You look into Urta's eyes and realize she's enjoying this control over you, this new power over whether you can cum or not.  In a strange way, you are too, the knowledge that when you finally do cum, it's at Urta's wish sends a twitter of excitement up your spine.  She has such control right now, and you wouldn't have it any other way.");
 
 	outputText("\n\n\"<i><b>Roll over</b>,</i>\" comes another command.  You do so, returning to your four-legged stance.  Urta, meanwhile, kneels behind you, grasping her thick horsecock which is already practically doused in precum.  You hadn't noticed just how aroused she was getting through all of this.  This whole situation must really turn her on.  Your Owner rubs the tip of her shaft against one asscheek, then the other");
-	if (player.tailType == Tail.NONE) outputText(", while she grasps the plug in your ass firmly and pulls. It comes out easily with a wet <b>pop</b>, making your ass feel suddenly empty.  You guess it won't be empty for long, however");
+	if (player.tail.type == Tail.NONE) outputText(", while she grasps the plug in your ass firmly and pulls. It comes out easily with a wet <b>pop</b>, making your ass feel suddenly empty.  You guess it won't be empty for long, however");
 	outputText(".  Finally she rubs it against your [asshole], teasing you with every brush of skin against skin.");
 
 	outputText("\n\n\"<i><b>Beg</b>,</i>\" she instructs softly.  \"<i>Beg me to fuck you, pet.  It's all right, you can talk.</i>\"");
@@ -5011,7 +5011,7 @@ private function getAPetReward():void {
 	clearOutput();
 	outputText(images.showImage("urta-home-petplay-reward"));
 	outputText("\"<i>Well, you've been a good little pet so far,</i>\" Urta says, patting you on the head. \"<i>I think a little... reward is in order.</i>\"  You quirk an eyebrow, wondering about that pause, but wag your ");
-	if (player.tailType > Tail.NONE) outputText("tail");
+	if (player.tail.type > Tail.NONE) outputText("tail");
 	else outputText("tailplug");
 	outputText(" enthusiastically.");
 
@@ -5131,7 +5131,7 @@ private function urtaTakesPCOnWalkies():void {
 	outputText("\n\nUrta gives your ass a playful little smack with a rolled-up newspaper, \"<i>Well now, someone likes this idea.</i>\"  Your Owner leans down and clips the leash onto your collar, whispering, \"<i>Excited for everyone to see what a good, well-behaved little <b>puppy</b> you are?</i>\"  You gulp.  Part of you wants to say no, to end this before it even starts, but the rest of you wants it, needs it even.  You at least know that with Urta there, nothing bad will happen.  You trust her to stop this game before anything goes too far.");
 
 	outputText("\n\nYou swallow hard and nod your head, giving your ");
-	if (player.tailType  > 0) outputText("tail");
+	if (player.tail.type  > 0) outputText("tail");
 	else outputText("tailplug");
 	outputText(" a nervous little shake.  Urta smiles and opens the door wide, making you squint in the bright daylight.  You feel a tugging at your neck, and realize Urta's already set off.  You scamper off after her on all fours, not wanting to disappoint your Owner.  The two of you travel through some back alleys, thankfully free of strangers, until you come out into the main thoroughfare of the city.");
 

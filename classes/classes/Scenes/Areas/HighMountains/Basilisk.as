@@ -139,8 +139,8 @@ import classes.internals.ChainedAction;
 			this.gems = rand(10) + 10;
 			this.drop = new ChainedDrop().add(consumables.REPTLUM, 0.9)
 					.elseDrop(useables.EBNFLWR);
-			this.tailType = Tail.LIZARD;
-			this.tailRecharge = 0;
+			this.tail.type = Tail.LIZARD;
+			this.tail.recharge = 0;
 			this.createPerk(PerkLib.BasiliskResistance, 0, 0, 0, 0);
 			checkMonster();
 		}

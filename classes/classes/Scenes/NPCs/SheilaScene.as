@@ -3072,7 +3072,7 @@ private function sheilaCowgirlRapesYou():void {
 			//[(small cum)]
 			if (player.cumQ() <= 250) {
 				outputText("  Sheila continues moving her hips even as she comes, lost in bliss; on one particularly lofty ascent, your cock flops out, squirting a line of jizz along ");
-				if (player.tailType > Tail.NONE) outputText("your tail");
+				if (player.tail.type > Tail.NONE) outputText("your tail");
 				else outputText("the grass");
 				outputText(", and her eyes go wide.");
 			}
@@ -3531,7 +3531,7 @@ private function normalSheilaPregNotifREPEATEDEDHelpABitchOutANDSTAYDERE():void 
 		if (player.sens >= 40) dynStats("lus", player.sens/4, "scale", false);
 	}
 	//(harpy - minimum score for birdlegs at least)
-	else if (player.lowerBody.type == LowerBody.HARPY && player.tailType == Tail.HARPY) {
+	else if (player.lowerBody.type == LowerBody.HARPY && player.tail.type == Tail.HARPY) {
 		outputText("\n\nShe shifts in your embrace, pushing up and down and giving you fits.  \"<i>Good lord, woman, what is the matter?</i>\" you ask.");
 		
 		outputText("\n\n\"<i>Sorry, mate... your feathers are tickling me,</i>\" Sheila protests.");
@@ -3560,8 +3560,8 @@ private function normalSheilaPregNotifREPEATEDEDHelpABitchOutANDSTAYDERE():void 
 		
 		outputText("\n\n\"<i>I'm keeping this,</i>\" Sheila whispers.  And so softly you can barely hear it, adds, \"<i>It's the nicest thing someone's given me lately.</i>\"");
 		//(reduce spinneret charge by 1-2 levels)
-		player.tailVenom -= 10;
-		if (player.tailVenom < 0) player.tailVenom = 1;
+		player.tail.venom -= 10;
+		if (player.tail.venom < 0) player.tail.venom = 1;
 	}
 	//(else)
 	else outputText("\n\n\"<i>Sorry it's not as comfortable as it could be, mate,</i>\" she apologizes.  \"<i>And... thanks.</i>\"");
@@ -5025,7 +5025,7 @@ private function winAgainstDemoNSheilaForVaginas():void {
 	if (!player.isTaur()) {
 		outputText("crawl away on your hands");
 		//[(tail or naga)
-		if (player.tailType > Tail.NONE && player.isNaga()) outputText(" and raise your tail");
+		if (player.tail.type > Tail.NONE && player.isNaga()) outputText(" and raise your tail");
 	}
 	else outputText("clamber to your hooves and bend your forelegs");
 	outputText(" to present your eager [vagina].  Sheila sits up and places her hands on your [hips], then slides her pelvis up, teasing your lower lips with something bulbous and warm.  They sting slightly as it smears its slime along them, a not-entirely-pleasant sensation.");

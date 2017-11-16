@@ -84,17 +84,17 @@ package classes.Items.Consumables
 				mutations.updateOvipositionPerk(tfSource);
 			}
 			//bodypart changes:
-			if (player.tailType !== Tail.RACCOON && rand(4) === 0 && changes < changeLimit) {
+			if (player.tail.type !== Tail.RACCOON && rand(4) === 0 && changes < changeLimit) {
 				//grow da tail
 				//from no tail:
-				if (player.tailType === Tail.NONE) {
+				if (player.tail.type === Tail.NONE) {
 					outputText("\n\nPain shivers through your spine and forces you onto the ground; your body locks up despite your attempt to rise again.  You can feel a tug on your spine from your backside, as if someone is trying to pull it out!  Several nodules form along your back, growing into new vertebrae and pushing the old ones downward and into your [armor].  An uncomfortable pressure grows there, as whatever development is taking place fights to free itself from the constriction.  Finally the shifting stops, and you're able to move again; the first thing you do is loosen your bottoms, allowing a matted tail to slide out.  <b>It twitches involuntarily, fluffing out into a ringed raccoon tail!</b>");
 				}
 				//from other tail:
 				else {
 					outputText("\n\nYour tail goes rigid with pain, and soon your body follows.  It feels as though your spine is trying to push the growth off of your body... barely, you manage to turn your head to see almost exactly that!  A new ringed, fluffy tail is growing in behind its predecessor, dark bands after light.  Soon it reaches full length and a tear comes to your eye as your old tail parts from its end and drops to the ground like overripe fruit, dissolving.  <b>You now have a raccoon tail!</b>");
 				}
-				player.tailType = Tail.RACCOON;
+				player.tail.type = Tail.RACCOON;
 				changes++;
 			}
 			//gain fur
@@ -109,7 +109,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//gain coon ears
-			if (player.tailType === Tail.RACCOON && player.ears.type !== Ears.RACCOON && rand(4) === 0 && changes < changeLimit) {
+			if (player.tail.type === Tail.RACCOON && player.ears.type !== Ears.RACCOON && rand(4) === 0 && changes < changeLimit) {
 				//from dog, kangaroo, bunny, other long ears
 				if (player.ears.type === Ears.DOG || player.ears.type === Ears.BUNNY || player.ears.type === Ears.KANGAROO) outputText("\n\nYour ears compress, constricting your ear canal momentarily.  You shake your head to get sound back, and reach up to touch the auricles, to find a pair of stubby egg-shaped ears in their place.  <b>You now have raccoon ears!</b>");
 				//from cat, horse, cow ears

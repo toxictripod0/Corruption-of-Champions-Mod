@@ -1529,14 +1529,14 @@ package classes.Scenes.Places.Bazaar
 				}
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.tailType == 0) {
+			if (rand(3) == 0 && changes < changeLimit && player.tail.type == 0) {
 				outputText("\n\nYou feel an odd itchy sensation just above your [ass]. Twisting around to inspect it you find a short stubby tail that wags when you're happy. <b>You now have a goat tail.</b>");
-				player.tailType = Tail.GOAT;
+				player.tail.type = Tail.GOAT;
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.tailType > 0 && player.tailType != Tail.GOAT) {
+			if (rand(3) == 0 && changes < changeLimit && player.tail.type > 0 && player.tail.type != Tail.GOAT) {
 				outputText("\n\nYou [tail] suddenly goes numb. Looking back you see it changing, twisting and reforming into a <b>short stubby goat-like tail</b>.");
-				player.tailType = Tail.GOAT;
+				player.tail.type = Tail.GOAT;
 				changes++;
 			}
 			//No changes?
@@ -1731,10 +1731,10 @@ package classes.Scenes.Places.Bazaar
 				changes++;
 			}
 			//Change tail to rhino
-			if (rand(3) == 0 && changes < changeLimit && player.isBiped() && player.tailType != Tail.RHINO) {
-				if (player.tailType > 0) outputText("\n\nYou [tail] suddenly goes numb. Looking back you see it changing, twisting and reforming into a long ropy tail with a little " + player.skin.furColor + " tuft at the end. <b>You now have a rhino tail.</b>");
+			if (rand(3) == 0 && changes < changeLimit && player.isBiped() && player.tail.type != Tail.RHINO) {
+				if (player.tail.type > 0) outputText("\n\nYou [tail] suddenly goes numb. Looking back you see it changing, twisting and reforming into a long ropy tail with a little " + player.skin.furColor + " tuft at the end. <b>You now have a rhino tail.</b>");
 				else outputText("\n\nYou feel an odd itchy sensation just above your [ass]. Twisting around to inspect it you find a long ropy tail with a little " + player.skin.furColor + " tuft on the end. <b>You now have a rhino tail.</b>");
-				player.tailType = Tail.RHINO;
+				player.tail.type = Tail.RHINO;
 				changes++;
 			}
 			//Gain rhino horns
@@ -1920,9 +1920,9 @@ package classes.Scenes.Places.Bazaar
 				changes++;
 			}
 			//Gain Echidna tail
-			if (rand(3) == 0 && changes < changeLimit && player.ears.type == Ears.ECHIDNA && player.tailType != Tail.ECHIDNA) {
+			if (rand(3) == 0 && changes < changeLimit && player.ears.type == Ears.ECHIDNA && player.tail.type != Tail.ECHIDNA) {
 				outputText("\n\n");
-				switch(player.tailType) {
+				switch(player.tail.type) {
 					case Tail.NONE:
 						outputText("You feel a brief pinch at the base of your spine. Reaching behind yourself, you find that a small stump has formed above your [ass], just barely enough to qualify as a tail.");
 						break;
@@ -1971,11 +1971,11 @@ package classes.Scenes.Places.Bazaar
 						outputText("You groan as you feel your tail shifting and reforming. By the time the sensation is over, you find that you have a little stump for a tail.");
 				}
 				outputText(" <b>You now have an echidna tail!</b>");
-				player.tailType = Tail.ECHIDNA;
+				player.tail.type = Tail.ECHIDNA;
 				changes++;
 			}
 			//Gain Echidna legs
-			if (rand(3) == 0 && changes < changeLimit && player.ears.type == Ears.ECHIDNA && player.tailType && Tail.ECHIDNA && player.lowerBody.type != LowerBody.ECHIDNA) {
+			if (rand(3) == 0 && changes < changeLimit && player.ears.type == Ears.ECHIDNA && player.tail.type && Tail.ECHIDNA && player.lowerBody.type != LowerBody.ECHIDNA) {
 				outputText("\n\n");
 				switch(player.lowerBody.type) {
 					//Irregular lower body type
@@ -2044,7 +2044,7 @@ package classes.Scenes.Places.Bazaar
 				changes++;
 			}
 			//Gain Echidna face if you have the right conditions.
-			if (rand(4) == 0 && changes < changeLimit && player.hasFur() && player.ears.type == Ears.ECHIDNA && player.tailType == Tail.ECHIDNA && player.tongueType == Tongue.ECHIDNA) {
+			if (rand(4) == 0 && changes < changeLimit && player.hasFur() && player.ears.type == Ears.ECHIDNA && player.tail.type == Tail.ECHIDNA && player.tongueType == Tongue.ECHIDNA) {
 				outputText("You groan loudly as the bones in your face begin to reshape and rearrange. Most notable, you feel your mouth lengthening into a long, thin snout. <b>You now have an echidna face!</b>");
 				player.face.type = Face.ECHIDNA;
 				changes++;

@@ -118,10 +118,10 @@ package classes.Items.Consumables
 			}
 			
 			//Imp tail, because that's a unique thing from what I see?
-			if (player.tailType !== Tail.IMP && changes < changeLimit && rand(3) === 0) {
-				if (player.tailType !== Tail.NONE) {
+			if (player.tail.type !== Tail.IMP && changes < changeLimit && rand(3) === 0) {
+				if (player.tail.type !== Tail.NONE) {
 					outputText("\n\n");
-					if (player.tailType === Tail.SPIDER_ABDOMEN || player.tailType === Tail.BEE_ABDOMEN) outputText("You feel a tingling in your insectile abdomen as it stretches, narrowing, the exoskeleton flaking off as it transforms into an imp's tail, complete with a round fluffed end. ");
+					if (player.tail.type === Tail.SPIDER_ABDOMEN || player.tail.type === Tail.BEE_ABDOMEN) outputText("You feel a tingling in your insectile abdomen as it stretches, narrowing, the exoskeleton flaking off as it transforms into an imp's tail, complete with a round fluffed end. ");
 					else outputText("You feel a tingling in your tail. You are amazed to discover it has shifted into an imp tail, complete with a fluffy end. ");
 					outputText("<b>Your tail is an imp tail!</b>");
 				}
@@ -129,12 +129,12 @@ package classes.Items.Consumables
 					outputText("\n\nA pain builds in your backside, growing more and more pronounced. The pressure suddenly disappears with a loud ripping and tearing noise. <b>You realize you now have an imp tail</b>... complete with fluffed end.");
 				}
 				dynStats("cor", 2);
-				player.tailType = Tail.IMP;
+				player.tail.type = Tail.IMP;
 				changes++;
 			}
 			
 			//Feets, needs red/orange skin and tail
-			if (["red", "orange"].indexOf(player.skin.tone) !== -1 && player.tailType === Tail.IMP && player.lowerBody.type !== LowerBody.IMP && rand(3) === 0 && changes < changeLimit) {
+			if (["red", "orange"].indexOf(player.skin.tone) !== -1 && player.tail.type === Tail.IMP && player.lowerBody.type !== LowerBody.IMP && rand(3) === 0 && changes < changeLimit) {
 				outputText("\n\nEvery muscle and sinew below your hip tingles and you begin to stagger. Seconds after you sit down, pain explodes in your " + player.feet() + ". Something hard breaks through your sole from the inside out as your " + player.feet() + " splinter and curve cruelly. The pain slowly diminishes and your eyes look along a skinny, human leg that splinters at the foot into three long claw with a smaller back one for balance. When you relax, your feet grip the ground easily. <b>Your lower body is now that of an imp.</b>");
 				player.lowerBody.type = LowerBody.IMP;
 				player.lowerBody.legCount = 2;

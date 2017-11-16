@@ -197,7 +197,7 @@ package classes.Scenes.Areas.HighMountains
 			if (level > 14) level = 14;
 			this.level = level;
 			this.gems = rand(15) + 45;
-			this.tailType = Tail.COW;
+			this.tail.type = Tail.COW;
 			this.special1 = game.mountain.minotaurScene.minoPheromones;
 			this.drop = NO_DROP;
 			checkMonster();
