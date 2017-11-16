@@ -596,10 +596,10 @@ package classes.Items
 		{
 			LOGGER.debug("Called updateGills(\"{0}\")", newGillType);
 
-			var oldgillType:int = player.gillType;
-			if (player.gillType == newGillType) return 0; // no change
+			var oldgillType:int = player.gills.type;
+			if (player.gills.type == newGillType) return 0; // no change
 
-			player.gillType = newGillType;
+			player.gills.type = newGillType;
 			changes++;
 
 			// for now, we only have anemone gills on the chest
@@ -649,7 +649,7 @@ package classes.Items
 					return 1; // Gained gills or gillType changed
 
 				default:
-					player.gillType = oldgillType;
+					player.gills.type = oldgillType;
 					changes--;
 					LOGGER.error("Unimplemented new gillType (\"{0}\") used", newGillType);
 					return 0; // failsafe, should hopefully never happen

@@ -395,7 +395,7 @@ package classes
 				else if (player.ears.type == Ears.WOLF) 
 					outputText("  A pair of wolf ears stick out from your head, parting your [hair] and remaining alert to your surroundings.");
 				//</mod>
-				if (player.gillType == Gills.FISH) 
+				if (player.gills.type == Gills.FISH) 
 				{
 					output.text("  A set of fish like gills reside on your neck, several small slits that can close flat against your skin."
 					           +" They allow you to stay in the water for quite a long time.");
@@ -1141,7 +1141,7 @@ package classes
 				outputText("\n");
 			}
 			outputText("\n");
-			if (player.gillType == Gills.ANEMONE) 
+			if (player.gills.type == Gills.ANEMONE) 
 				outputText("A pair of feathery gills are growing out just below your neck, spreading out horizontally and draping down your chest.  They allow you to stay in the water for quite a long time.  ");
 			//Chesticles..I mean bewbz.
 			if (player.breastRows.length == 1) 

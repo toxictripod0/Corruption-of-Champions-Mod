@@ -1742,6 +1742,8 @@ use namespace kGAMECLASS;
 			var sharkCounter:Number = 0;
 			if (face.type == Face.SHARK_TEETH)
 				sharkCounter++;
+			if (gills.type == Gills.FISH)
+				sharkCounter++;
 			if (rearBody.type == RearBody.SHARK_FIN)
 				sharkCounter++;
 			if (tailType == Tail.SHARK)

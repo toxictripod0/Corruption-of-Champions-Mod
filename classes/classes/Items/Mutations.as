@@ -2280,7 +2280,7 @@ package classes.Items
 				player.tailType = Tail.SHARK;
 			}
 			//Gills TF
-			if (player.gillType != Gills.FISH && player.tailType == Tail.SHARK && player.face.type == Face.SHARK_TEETH && changes < changeLimit && rand(3) == 0)
+			if (player.gills.type != Gills.FISH && player.tailType == Tail.SHARK && player.face.type == Face.SHARK_TEETH && changes < changeLimit && rand(3) == 0)
 				updateGills(Gills.FISH);
 			//Hair
 			if (player.hairColor != "silver" && rand(4) == 0 && changes < changeLimit) {

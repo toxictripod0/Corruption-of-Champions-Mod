@@ -519,7 +519,17 @@ import mx.logging.ILogger;
 		public function set hipRating(value:Number):void { hips.rating = value; }
 		
 		public var butt:Butt = new Butt();
-		
+		public var antennae:Antennae = new Antennae();
+		public var eyes:Eyes = new Eyes();
+
+		//TongueType
+		public var tongue:Tongue = new Tongue();
+		public function get tongueType():Number { return tongue.type; }
+		public function set tongueType(value:Number):void { tongue.type = value; }
+
+		public var arms:Arms = new Arms();
+		public var gills:Gills = new Gills();
+
 		//Piercings
 		//TODO: Pull this out into it's own class and enum.
 		public var nipplesPierced:Number = 0;
@@ -540,22 +550,6 @@ import mx.logging.ILogger;
 		public var nosePierced:Number = 0;
 		public var nosePShort:String = "";
 		public var nosePLong:String = "";
-
-		public var antennae:Antennae = new Antennae();
-		public var eyes:Eyes = new Eyes();
-
-		//TongueType
-		public var tongue:Tongue = new Tongue();
-		public function get tongueType():Number { return tongue.type; }
-		public function set tongueType(value:Number):void { tongue.type = value; }
-
-		public var arms:Arms = new Arms();
-
-		//GillType
-		public var gills:Gills = new Gills();
-		public function get gillType():Number { return gills.type; }
-		public function set gillType(value:Number):void { gills.type = value; }
-		public function hasGills():Boolean { return gills.type != Gills.NONE; }
 
 		//Sexual Stuff		
 		//MALE STUFF
@@ -2845,6 +2839,11 @@ import mx.logging.ILogger;
 		public function hasBeak():Boolean
 		{
 			return [Face.BEAK, Face.COCKATRICE].indexOf(face.type) != -1;
+		}
+
+		public function hasGills():Boolean
+		{
+			return gills.type != Gills.NONE;
 		}
 
 		public function hasFeathers():Boolean

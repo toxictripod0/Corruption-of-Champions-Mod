@@ -1059,7 +1059,7 @@ import classes.Items.*
 			showChangeOptions(bodyPartEditorHead, page, ANTENNA_TYPE_CONSTANTS, changeAntennaeType);
 		}
 		private function changeGillType(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.gillType = setIdx;
+			if (setIdx>=0) player.gills.type = setIdx;
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorHead, page, GILLS_TYPE_CONSTANTS, changeGillType);
