@@ -64,7 +64,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			}
 			outputText("\n\n<b>It’s a fight!</b>");
 			var m:Lethice = new Lethice();
-			if(player.wingType != 0)
+			if(player.wings.type != 0)
 			{
 				m.createStatusEffect(StatusEffects.PhysicalDisabled,0,0,0,0);
 				m.createStatusEffect(StatusEffects.AttackDisabled,0,0,0,0);

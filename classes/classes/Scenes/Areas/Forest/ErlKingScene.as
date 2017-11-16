@@ -262,7 +262,7 @@ public class ErlKingScene extends BaseContent implements Encounter
 			outputText(images.showImage("wildhunt-encounter"));
 			outputText("The Erlking is coming for you!\n\n");
 
-			if (player.wingType != Wings.NONE) outputText("You quickly glance from side to side, realizing that the trees here grow too close together for your to spread your [wings].\n\n");
+			if (player.wings.type != Wings.NONE) outputText("You quickly glance from side to side, realizing that the trees here grow too close together for your to spread your [wings].\n\n");
 
 			outputText("Do you make a run for it or stand your ground?\n\n");
 
@@ -584,7 +584,7 @@ public class ErlKingScene extends BaseContent implements Encounter
 			outputText("The black fur covers your");
 			if (player.balls == 0) outputText(" new");
 			outputText(" balls and runs halfway up your shiny red pecker, forming a sheath.");
-			if (player.wingType != 0) outputText("  You whine, rolling on your back and with a start, realize that your wings must have fallen off while you were distracted with your cock.");
+			if (player.wings.type != 0) outputText("  You whine, rolling on your back and with a start, realize that your wings must have fallen off while you were distracted with your cock.");
 			outputText("  You smile an open-mouthed doggie smile, feeling the warm churning of cum building in your throbbing balls.  You ache for release, wanting nothing more than to stroke yourself.  You raise your black-nailed hands to your cock, but stop short, knowing instinctively that masturbating is forbidden.\n\n");
 
 			outputText("Instead, you curl your stomach, trying to reach your cock with your mouth.");

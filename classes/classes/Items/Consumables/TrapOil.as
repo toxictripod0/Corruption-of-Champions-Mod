@@ -285,11 +285,11 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Dragonfly Wings:
-			if (player.wingType !== Wings.GIANT_DRAGONFLY && rand(4) === 0 && changes < changeLimit) {
+			if (player.wings.type !== Wings.GIANT_DRAGONFLY && rand(4) === 0 && changes < changeLimit) {
 				outputText("\n\nYou scream and fall to your knees as incredible pain snags at your shoulders, as if needle like hooks were being sunk into your flesh just below your shoulder blades.  After about five seconds of white hot, keening agony it is with almost sexual relief that something splits out of your upper back.  You clench the dirt as you slide what feel like giant leaves of paper into the open air.  Eventually the sensation passes and you groggily get to your feet.  You can barely believe what you can see by craning your neck behind you - <b>you've grown a set of four giant dragonfly wings</b>, thinner, longer and more pointed than the ones you've seen upon the forest bee girls, but no less diaphanous and beautiful.  You cautiously flex the new muscle groups in your shoulder blades and gasp as your new wings whirr and lift you several inches off the ground.  What fun this is going to be!");
 				//Wings Fall Out: You feel a sharp pinching sensation in your shoulders and you cringe slightly.  Your former dragonfly wings make soft, papery sounds as they fall into the dirt behind you.
 				changes++;
-				player.wingType = Wings.GIANT_DRAGONFLY;
+				player.wings.type = Wings.GIANT_DRAGONFLY;
 			}
 			if (changes === 0) {
 				outputText("\n\nWell... that didn't amount to much.");

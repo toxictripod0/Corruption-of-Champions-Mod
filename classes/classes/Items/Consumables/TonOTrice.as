@@ -567,9 +567,9 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Wings TF
-			if (player.wingType != Wings.FEATHERED_LARGE && player.arms.type == Arms.COCKATRICE && changes < changeLimit && rand(4) == 0) {
+			if (player.wings.type != Wings.FEATHERED_LARGE && player.arms.type == Arms.COCKATRICE && changes < changeLimit && rand(4) == 0) {
 				outputText("\n");
-				if (player.wingType != Wings.NONE) {
+				if (player.wings.type != Wings.NONE) {
 					outputText("\nSensation fades from your [wings] slowly but surely, leaving them dried out husks that break off to fall on the"
 					          +" ground. Your back closes up to conceal the loss, as smooth and unbroken as the day you entered the portal.");
 				}

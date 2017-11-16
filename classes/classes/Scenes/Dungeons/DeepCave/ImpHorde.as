@@ -226,7 +226,7 @@ package classes.Scenes.Dungeons.DeepCave
 			this.gems = 20 + rand(25);
 			this.additionalXP = 50;
 			this.drop = new WeightedDrop(armors.NURSECL, 1);
-			this.wingType = Wings.IMP;
+			this.theWingType = Wings.IMP;
 			this.wingDesc = "imp wings";
 			checkMonster();
 		}

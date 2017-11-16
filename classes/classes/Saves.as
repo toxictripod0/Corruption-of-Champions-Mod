@@ -895,8 +895,8 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile.data.clawTone = player.claws.tone;
 		saveFile.data.clawType = player.claws.type;
 		// </mod>
-		saveFile.data.wingType = player.wingType;
-		saveFile.data.wingColor = player.wingColor;
+		saveFile.data.wingType = player.wings.type;
+		saveFile.data.wingColor = player.wings.color;
 		saveFile.data.lowerBody = player.lowerBody.type;
 		saveFile.data.legCount = player.lowerBody.legCount;
 		saveFile.data.tailType = player.tail.type;
@@ -1777,8 +1777,8 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		player.claws.type = (saveFile.data.clawType == undefined) ? Claws.NORMAL : saveFile.data.clawType;
 		// </mod>
 
-		player.wingType = saveFile.data.wingType;
-		player.wingColor = saveFile.data.wingColor || "no";
+		player.wings.type = saveFile.data.wingType;
+		player.wings.color = saveFile.data.wingColor || "no";
 		player.lowerBody.type = saveFile.data.lowerBody;
 		player.tail.type = saveFile.data.tailType;
 		player.tail.venom = saveFile.data.tailVenum;
@@ -1787,7 +1787,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		player.butt.rating = saveFile.data.buttRating;
 		
 
-		if (player.wingType == 8) {
+		if (player.wings.type == 8) {
 			player.wings.restore();
 			player.rearBody.setAllProps({type: RearBody.SHARK_FIN});
 		}

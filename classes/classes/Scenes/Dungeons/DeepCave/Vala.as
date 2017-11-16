@@ -142,7 +142,7 @@ package classes.Scenes.Dungeons.DeepCave
 			var wingDesc:String = "shimmering wings";
 			if (flags[kFLAGS.TIMES_PC_DEFEATED_VALA] == 0) this.drop = new WeightedDrop(consumables.NUMBROX);
 			else this.drop = NO_DROP;
-			this.wingType = Wings.BEE_LIKE_LARGE;
+			this.theWingType = Wings.BEE_LIKE_LARGE;
 			this.wingDesc = wingDesc;
 			checkMonster();
 		}

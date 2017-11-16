@@ -300,7 +300,7 @@ package classes.Scenes.NPCs
 			this.gems = 20 + rand(25);
 			this.drop = new ChainedDrop().add(armors.W_ROBES,1/10)
 					.elseDrop(consumables.GLDSEED);
-			this.wingType = Wings.HARPY;
+			this.theWingType = Wings.HARPY;
 			this.wingDesc = "large feathery";
 			this.special1 = harpyUberCharge;
 			this.special2 = harpyTease;

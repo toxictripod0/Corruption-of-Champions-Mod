@@ -550,7 +550,7 @@ package classes.Scenes.Areas.Desert {
 			} else {
 				this.horns.type = Horns.NONE;
 			}
-			this.wingType = rand(13);
+			this.theWingType = rand(13);
 			this.antennae.type = rand(2);
 			if (this.antennae.type == 2) {
 				this.antennae.type = Antennae.BEE;

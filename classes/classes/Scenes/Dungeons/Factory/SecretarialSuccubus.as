@@ -76,7 +76,7 @@ package classes.Scenes.Dungeons.Factory
 			this.gems = rand(25) + 10;
 			this.additionalXP = 50;
 			this.drop = new WeightedDrop(consumables.LACTAID, 1);
-			this.wingType = Wings.BAT_LIKE_TINY;
+			this.theWingType = Wings.BAT_LIKE_TINY;
 			this.wingDesc = "tiny hidden";
 			this.tail.type = Tail.DEMONIC;
 			this.special1 = kissAttack;

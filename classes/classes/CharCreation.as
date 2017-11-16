@@ -235,7 +235,7 @@
 					player.tail.recharge = 0;
 				}
 			}
-			player.wingType = Wings.NONE;
+			player.wings.type = Wings.NONE;
 			if (player.eyes.type == Eyes.BASILISK) player.eyes.type = Eyes.LIZARD; // Silently change them to be lizard eyes again. Simple and stupid ;)
 			//Default
 			player.skin.tone = "light";

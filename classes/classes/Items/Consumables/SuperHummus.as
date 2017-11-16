@@ -50,7 +50,7 @@ package classes.Items.Consumables
 			player.face.type = Face.HUMAN;
 			player.lowerBody.type = LowerBody.HUMAN;
 			player.lowerBody.legCount = 2;
-			player.wingType = Wings.NONE;
+			player.wings.type = Wings.NONE;
 			player.tail.type = Tail.NONE;
 			player.tongue.type = Tongue.HUMAN;
 			player.tail.recharge = 0;

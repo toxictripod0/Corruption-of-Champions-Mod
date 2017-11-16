@@ -2054,7 +2054,7 @@ package classes
 		
 		public static function wingsDescript(i_creature:Creature):String
 		{
-			return DEFAULT_WING_NAMES[i_creature.wingType] + " wings";
+			return DEFAULT_WING_NAMES[i_creature.wings.type] + " wings";
 		}
 
 		public static function eyesDescript(i_creature:Creature):String

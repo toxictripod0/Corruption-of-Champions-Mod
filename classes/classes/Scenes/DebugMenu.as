@@ -1301,7 +1301,7 @@ import classes.Items.*
 			showChangeOptions(bodyPartEditorTorso, page, TAIL_COUNT_CONSTANTS, changeTailCount);
 		}
 		private function changeWingType(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.wingType = setIdx;
+			if (setIdx>=0) player.wings.type = setIdx;
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorTorso, page, WING_TYPE_CONSTANTS, changeWingType);
@@ -1359,7 +1359,7 @@ import classes.Items.*
 			//Draconic TF
 			player.horns.type = Horns.DRACONIC_X2;
 			player.horns.value = 4;
-			player.wingType = Wings.BAT_LIKE_LARGE;
+			player.wings.type = Wings.BAT_LIKE_LARGE;
 			//Scorpion TF
 			player.tail.type = Tail.SCORPION;
 			player.tail.venom = 100;
@@ -1388,7 +1388,7 @@ import classes.Items.*
 			player.tongue.type = Tongue.DRACONIC;
 			player.horns.type = Horns.DRACONIC_X2;
 			player.horns.value = 4;
-			player.wingType = Wings.DRACONIC_LARGE;
+			player.wings.type = Wings.DRACONIC_LARGE;
 			doNext(styleHackMenu);
 		}
 		

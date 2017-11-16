@@ -419,7 +419,7 @@
 			///*OPTIONAL*/ //this.hornsPart.value = numberOfHorns; // default 0
 
 			//// 18. Wings
-			///*OPTIONAL*/ //this.wingType = Wings.; // default NONE
+			///*OPTIONAL*/ //this.wings.type = Wings.; // default NONE
 			///*OPTIONAL*/ //this.wingDesc = ; // default Appearance.DEFAULT_WING_DESCS[wingType]
 
 			//// 19. Antennae
@@ -577,10 +577,10 @@
 		}
 
 
-		override public function set wingType(value:Number):void
+		public function set theWingType(value:Number):void
 		{
 			if (!_checkCalled) this.wingDesc = Appearance.DEFAULT_WING_DESCS[value];
-			super.wingType = value;
+			super.wings.type = value;
 		}
 
 		override public function validate():String
@@ -1048,8 +1048,8 @@
 			else result+=(Appearance.DEFAULT_TAIL_NAMES[tail.type]||("tailType#"+tail.type))+" tail with venom="+tail.venom+" and recharge="+tail.recharge+", ";
 			if (horns.type == Horns.NONE) result += "no horns, ";
 			else result += horns.value+" "+(Appearance.DEFAULT_HORNS_NAMES[horns.type]||("hornsPart.type#"+horns.type))+" horns, ";
-			if (wingType == Wings.NONE) result += "no wings, ";
-			else result += wingDesc+" wings (type "+(Appearance.DEFAULT_WING_NAMES[wingType]||("wingType#"+wingType))+"), ";
+			if (wings.type == Wings.NONE) result += "no wings, ";
+			else result += wingDesc+" wings (type "+(Appearance.DEFAULT_WING_NAMES[wings.type]||("wingType#"+wings.type))+"), ";
 			if (antennae.type == Antennae.NONE) result += "no antennae.\n\n";
 			else result += (Appearance.DEFAULT_ANTENNAE_NAMES[antennae.type]||("antennaeType#"+antennae.type))+" antennae.\n\n";
 

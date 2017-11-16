@@ -375,47 +375,28 @@ import mx.logging.ILogger;
 		public function get tallness():Number { return _tallness; }
 		public function set tallness(value:Number):void { _tallness = value; }
 
-		public var hair:Hair = new Hair();
-		public var beard:Beard = new Beard();
-		public var skin:Skin = new Skin();
-		public var face:Face = new Face();
-		public var claws:Claws = new Claws();
-		public var rearBody:RearBody = new RearBody();
-		public var neck:Neck = new Neck();
-		public var underBody:UnderBody = new UnderBody();
-		public var ears:Ears = new Ears();
-		public var horns:Horns = new Horns();
-
-		/*Wingtype
-		0 - none
-		1 - bee
-		2 - large bee
-		3 - faerie?
-		4 - avian
-		5 - dragoooon?
-		6 - demon/bat
-		7 - large demon/bat
-		8 - shark wing lolololol
-		9 - harpy
-		10 - small dagron
-		11 - trogdor wings
-		12 - sandtrap wings*/
-		public var wings:Wings = new Wings();
-		public function get wingType():Number { return wings.type; }
-		public function set wingType(value:Number):void { wings.type = value; }
-		public function get wingColor():String { return wings.color; }
-		public function set wingColor(value:String):void { wings.color = value; }
-		public var wingDesc:String = "non-existant";
-
-		public var lowerBody:LowerBody = new LowerBody();
-		public var tail:Tail = new Tail();
-		public var hips:Hips = new Hips();
-		public var butt:Butt = new Butt();
 		public var antennae:Antennae = new Antennae();
-		public var eyes:Eyes = new Eyes();
-		public var tongue:Tongue = new Tongue();
 		public var arms:Arms = new Arms();
+		public var beard:Beard = new Beard();
+		public var butt:Butt = new Butt();
+		public var claws:Claws = new Claws();
+		public var ears:Ears = new Ears();
+		public var eyes:Eyes = new Eyes();
+		public var face:Face = new Face();
 		public var gills:Gills = new Gills();
+		public var hair:Hair = new Hair();
+		public var hips:Hips = new Hips();
+		public var horns:Horns = new Horns();
+		public var lowerBody:LowerBody = new LowerBody();
+		public var neck:Neck = new Neck();
+		public var rearBody:RearBody = new RearBody();
+		public var skin:Skin = new Skin();
+		public var tail:Tail = new Tail();
+		public var tongue:Tongue = new Tongue();
+		public var underBody:UnderBody = new UnderBody();
+		public var wings:Wings = new Wings();
+
+		public var wingDesc:String = "non-existant";
 
 		//Piercings
 		//TODO: Pull this out into it's own class and enum.
@@ -2286,7 +2267,7 @@ import mx.logging.ILogger;
 			//web also makes false!
 			if (hasStatusEffect(StatusEffects.Web))
 				return false;
-			return canFlyWings.indexOf(wingType) != -1;
+			return canFlyWings.indexOf(wings.type) != -1;
 
 		}
 

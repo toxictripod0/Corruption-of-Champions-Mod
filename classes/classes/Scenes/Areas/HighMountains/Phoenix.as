@@ -148,7 +148,7 @@ package classes.Scenes.Areas.HighMountains
 			this.drop = new ChainedDrop().add(weapons.SCIMITR,1/20)
 					.add(useables.EBNFLWR, 1/10)
 					.elseDrop(NO_DROP);
-			this.wingType = Wings.HARPY;
+			this.theWingType = Wings.HARPY;
 			this.special1 = doubleSlash;
 			this.special2 = phoenixFireBreath;
 			this.special3 = lustBang;
