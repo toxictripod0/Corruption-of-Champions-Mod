@@ -1189,7 +1189,7 @@ private function getIzzyBurped():void {
 			changed = true;
 		}
 		//[if no cow ears]
-		if (player.earType != Ears.COW) {
+		if (player.ears.type != Ears.COW) {
 			outputText("  Your ears wiggle a bit, then simply migrate higher up your head, lengthening and widening as they go.  Before you know it, you have cow ears.");
 			changed = true;
 		}
@@ -1269,7 +1269,7 @@ private function getIzzyBurped():void {
 		outputText("She rewards you by freeing one of her arms and wrapping it around your head, pulling you in between her gleaming ebony melons.  Shaking about and wrapping your head in a marshmallowy shroud of comfort, Isabella continues to force burps out, not content until all of the gas is gone.  She pulls you out of your fleshy prison after the oral venting subsides, dragging you down to the ground with her as her gassy magic begins to take hold.\n\n");
 		
 		//if meets any requirements for cow-y TF
-		if (player.lowerBody != LowerBody.HOOFED || player.horns <= 0 || player.hornType != Horns.COW_MINOTAUR || player.earType != Ears.COW || player.tailType != Tail.COW || (player.hasCock() && player.longestCockLength() < 18)) {
+		if (player.lowerBody != LowerBody.HOOFED || player.horns <= 0 || player.hornType != Horns.COW_MINOTAUR || player.ears.type != Ears.COW || player.tailType != Tail.COW || (player.hasCock() && player.longestCockLength() < 18)) {
 			outputText("You're not surprised when you take the now-familiar cow-" + player.mf("boy","girl") + " form, ");
 			if ((!player.hasCock() || rand(2) == 0) && player.hasVagina()) outputText("Isabella beaming with eagerness at your sloshing and swelling bosom.\n\n");
 			else if (player.hasCock()) outputText("Isabella not able to keep a little frustration from her face as your dick grows to enviable size.\n\n");

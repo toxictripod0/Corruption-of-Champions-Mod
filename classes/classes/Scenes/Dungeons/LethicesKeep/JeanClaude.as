@@ -105,7 +105,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			initStrTouSpeInte(80, 100, 80, 60);
 			initLibSensCor(40, 40, 80);
 			faceType = Face.LIZARD;
-			earType = Ears.LIZARD;
+			ears.type = Ears.LIZARD;
 			eyeType = Eyes.BASILISK;
 
 			weaponName = "cutlass";

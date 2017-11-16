@@ -190,9 +190,9 @@ package classes.Scenes.Dungeons.Factory
 				mutations.removeAntennae(true);
 			}
 			//EARS
-			if (player.earType != Ears.HUMAN) {
+			if (player.ears.type != Ears.HUMAN) {
 				outputText("Pain erupts from both sides of your head as your ears reform and move, returning to look like your old human ears!  ");
-				player.earType = Ears.HUMAN;
+				player.ears.type = Ears.HUMAN;
 			}
 			//Face
 			if (player.faceType != Face.HUMAN) {

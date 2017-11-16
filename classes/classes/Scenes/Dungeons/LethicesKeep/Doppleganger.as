@@ -298,7 +298,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			
 			str += " "  + player.mf("His", "Her") + " " + player.hairDescript() + " is parted by";
 			
-			switch(player.earType)
+			switch(player.ears.type)
 			{
 				case Ears.HORSE:
 					str += " a pair of horse-like ears";

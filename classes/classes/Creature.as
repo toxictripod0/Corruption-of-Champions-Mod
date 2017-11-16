@@ -435,27 +435,7 @@ import mx.logging.ILogger;
 		public var rearBody:RearBody = new RearBody();
 		public var neck:Neck = new Neck();
 		public var underBody:UnderBody = new UnderBody();
-
-		/*EarType
-		-1 - none!
-		0 - human
-		1 - horse
-		2 - dog
-		3 - cow
-		4 - elf
-		5 - catzilla
-		6 - Snakezilla
-		7 - Bunbunz
-		8 - Roo Ears
-		9 - fox ears
-		10 - dragon
-		11 - coon
-		12 - mouse*/
 		public var ears:Ears = new Ears();
-		public function get earType():Number { return ears.type; }
-		public function set earType(value:Number):void { ears.type = value; }
-		public function get earValue():Number { return ears.value ; }
-		public function set earValue(value:Number):void { ears.value = value; }
 		
 		/*Horntype
 		1 - demonic
@@ -716,7 +696,7 @@ import mx.logging.ILogger;
 				"balls", "ballSize", "cumMultiplier", "hoursSinceCum",
 				"tallness", "hipRating", "butt.rating", "lowerBody", "arms.type",
 				"skinType", "hairLength", "hairType",
-				"faceType", "earType", "tongueType", "eyeType",
+				"faceType", "ears.type", "tongueType", "eyeType",
 				"str", "tou", "spe", "inte", "lib", "sens", "cor",
 				// Allow weaponAttack to be negative as a penalty to strength-calculated damage
 				// Same with armorDef, bonusHP, additionalXP

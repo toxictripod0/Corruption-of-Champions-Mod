@@ -115,7 +115,7 @@ import classes.internals.ChainedAction;
 			this.butt.rating = Butt.RATING_AVERAGE;
 			this.lowerBody = LowerBody.LIZARD;
 			this.faceType = Face.LIZARD;
-			this.earType = Ears.LIZARD;
+			this.ears.type = Ears.LIZARD;
 			this.eyeType = Eyes.BASILISK;
 			this.hairType = Hair.BASILISK_SPINES;
 			this.skinTone = "grey-green";

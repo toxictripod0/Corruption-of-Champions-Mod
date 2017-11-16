@@ -332,7 +332,7 @@
 
 			//// 8. Face
 			///*OPTIONAL*/ //this.faceType = Face.; // default HUMAN
-			///*OPTIONAL*/ //this.earType = Ears.; // default HUMAN
+			///*OPTIONAL*/ //this.ears.type = Ears.; // default HUMAN
 			///*OPTIONAL*/ //this.tongueType = Tongue.; // default HUMAN
 			///*OPTIONAL*/ //this.eyeType = Eyes.; // default HUMAN
 
@@ -1040,7 +1040,7 @@
 			}
 			result += Hehas
 					+(Appearance.DEFAULT_FACE_NAMES[faceType]||("faceType#"+faceType))+" face, "
-					+(Appearance.DEFAULT_EARS_NAMES[earType]||("earType#"+earType))+" ears, "
+					+(Appearance.DEFAULT_EARS_NAMES[ears.type]||("ears.type#"+ears.type))+" ears, "
 					+(Appearance.DEFAULT_TONGUE_NAMES[tongueType]||("tongueType#"+tongueType))+" tongue and "
 					+(Appearance.DEFAULT_EYES_NAMES[eyeType]||("eyeType#"+eyeType))+" eyes.\n";
 			result += Hehas;

@@ -240,7 +240,7 @@ public function startUrtaQuest():void {
 	player.skinTone = "black";
 	player.lowerBody = LowerBody.FOX;
 	player.legCount = 2;
-	player.earType = Ears.FOX;
+	player.ears.type = Ears.FOX;
 	player.faceType = Face.FOX;
 	player.tailType = Tail.FOX;
 	player.tailVenom = 1;

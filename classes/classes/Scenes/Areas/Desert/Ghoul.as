@@ -518,7 +518,7 @@ package classes.Scenes.Areas.Desert {
 				this.hairType = Hair.NORMAL;
 			}
 			this.faceType = rand(23) + 1;
-			this.earType = rand(19) + 1;
+			this.ears.type = rand(19) + 1;
 			this.tongueType = rand(4) + 1;
 			this.eyeType = rand(5) + 1;
 

@@ -143,9 +143,9 @@ package classes.Items.Consumables
 		}
 			
 			//Imp ears, needs red/orange skin and horns
-			if (player.hornType === Horns.IMP && ["red", "orange"].indexOf(player.skinTone) !== -1 && player.earType !== Ears.IMP && rand(3) === 0 && changes < changeLimit) {
+			if (player.hornType === Horns.IMP && ["red", "orange"].indexOf(player.skinTone) !== -1 && player.ears.type !== Ears.IMP && rand(3) === 0 && changes < changeLimit) {
 				outputText("\n\nYour head suddenly pulses in pain, causing you to double over and grip at it. You feel your ears elongate and curl in slightly, ending at points not much unlike elves. These, however, jut out of the side of your head and are coned, focusing on every sound around you. A realization strikes you. <b>Your ears are now that of an imp!</b>");
-				player.earType = Ears.IMP;
+				player.ears.type = Ears.IMP;
 				dynStats("cor", 2);
 				changes++;
 		}

@@ -319,7 +319,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Face change, requires Ears + Height + Hooves
-			if (player.earType === Ears.COW && player.lowerBody === LowerBody.HOOFED && player.tallness >= 90
+			if (player.ears.type === Ears.COW && player.lowerBody === LowerBody.HOOFED && player.tallness >= 90
 					&& changes < changeLimit && rand(3) === 0) {
 				if (player.faceType !== Face.COW_MINOTAUR) {
 					outputText("\n\nBones shift and twist painfully as your visage twists and morphs to resemble that of the beast whose blood you now drink.  <b>You now have a minotaur-like face.</b>");
@@ -328,7 +328,7 @@ package classes.Items.Consumables
 				}
 			}
 			//+mino horns require ears/tail
-			if (changes < changeLimit && rand(3) === 0 && player.earType === Ears.COW && player.tailType === Tail.COW) {
+			if (changes < changeLimit && rand(3) === 0 && player.ears.type === Ears.COW && player.tailType === Tail.COW) {
 				temp = 1;
 				//New horns or expanding mino horns
 				if (player.hornType === Horns.COW_MINOTAUR || player.hornType === Horns.NONE) {
@@ -386,9 +386,9 @@ package classes.Items.Consumables
 				}
 			}
 			//+cow ears	- requires tail
-			if (player.earType !== Ears.COW && changes < changeLimit && player.tailType === Tail.COW && rand(2) === 0) {
+			if (player.ears.type !== Ears.COW && changes < changeLimit && player.tailType === Tail.COW && rand(2) === 0) {
 				outputText("\n\nYou feel your ears tug on your scalp as they twist shape, becoming oblong and cow-like.  <b>You now have cow ears.</b>");
-				player.earType = Ears.COW;
+				player.ears.type = Ears.COW;
 				changes++;
 			}
 			//+cow tail

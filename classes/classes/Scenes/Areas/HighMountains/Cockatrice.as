@@ -188,7 +188,7 @@ package classes.Scenes.Areas.HighMountains
 			this.lowerBody = LowerBody.COCKATRICE;
 			this.faceType = Face.COCKATRICE;
 			this.tongueType = Tongue.LIZARD;
-			this.earType = Ears.COCKATRICE;
+			this.ears.type = Ears.COCKATRICE;
 			this.eyeType = Eyes.COCKATRICE;
 			this.hairType = Hair.FEATHER;
 			this.skinTone = "midnight blue";

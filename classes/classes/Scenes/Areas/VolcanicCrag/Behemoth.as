@@ -67,7 +67,7 @@ package classes.Scenes.Areas.VolcanicCrag
 			this.skinType = Skin.FUR;
 			this.hairColor = "black";
 			this.hairLength = 8;
-			this.earType = Ears.ELFIN;
+			this.ears.type = Ears.ELFIN;
 			this.faceType = Face.CAT;
 			this.horns = 7;
 			this.hornType = Horns.DRACONIC_X2

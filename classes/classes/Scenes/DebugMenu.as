@@ -1034,7 +1034,7 @@ import classes.Items.*
 			showChangeOptions(bodyPartEditorHead, page, EYE_TYPE_CONSTANTS, changeEyeType);
 		}
 		private function changeEarType(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.earType = setIdx;
+			if (setIdx>=0) player.ears.type = setIdx;
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorHead, page, EAR_TYPE_CONSTANTS, changeEarType);
@@ -1350,7 +1350,7 @@ import classes.Items.*
 			outputText("<b>You are now a Manticore!</b>");
 			//Cat TF
 			player.faceType = Face.CAT;
-			player.earType = Ears.CAT;
+			player.ears.type = Ears.CAT;
 			player.lowerBody = LowerBody.CAT;
 			player.legCount = 2;
 			player.skinType = Skin.FUR;
@@ -1372,7 +1372,7 @@ import classes.Items.*
 			outputText("<b>You are now a Dragonne!</b>");
 			//Cat TF
 			player.faceType = Face.CAT;
-			player.earType = Ears.CAT;
+			player.ears.type = Ears.CAT;
 			player.tailType = Tail.CAT;
 			player.lowerBody = LowerBody.CAT;
 			player.legCount = 2;

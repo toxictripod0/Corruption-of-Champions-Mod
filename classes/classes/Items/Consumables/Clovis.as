@@ -73,10 +73,10 @@ package classes.Items.Consumables
 				mutations.restoreNeck(tfSource);
 			//Rear body restore
 			if (player.rearBody.type != RearBody.NONE && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
-			if (player.earType !== Ears.SHEEP && rand(3) === 0 && changes < changeLimit) {
-				if (player.earType === -1) { outputText("\n\nTwo painful nubs begin sprouting from your head, growing out in a tear-drop shape and flopping over. To top it off, wool coats them."); } else { outputText("\n\nYou feel your ears shift and elongate, becoming much floppier. They take on a more tear drop shape, flopping at the side of your head cutely as a light coat of downy wool forms on them.");	}		
-				player.earType = Ears.SHEEP;
-				player.earValue = 2;
+			if (player.ears.type !== Ears.SHEEP && rand(3) === 0 && changes < changeLimit) {
+				if (player.ears.type === -1) { outputText("\n\nTwo painful nubs begin sprouting from your head, growing out in a tear-drop shape and flopping over. To top it off, wool coats them."); } else { outputText("\n\nYou feel your ears shift and elongate, becoming much floppier. They take on a more tear drop shape, flopping at the side of your head cutely as a light coat of downy wool forms on them.");	}		
+				player.ears.type = Ears.SHEEP;
+				player.ears.value = 2;
 				outputText(" <b>You now have sheep ears!</b>");
 				changes++;
 			}
@@ -93,7 +93,7 @@ package classes.Items.Consumables
 				outputText(" <b>You now have sheep hooves!</b>");
 				changes++;
 			}
-			if (player.hornType !== Horns.SHEEP && player.hornType !== Horns.RAM && player.earType === Ears.SHEEP && rand(3) === 0 && changes < changeLimit) {
+			if (player.hornType !== Horns.SHEEP && player.hornType !== Horns.RAM && player.ears.type === Ears.SHEEP && rand(3) === 0 && changes < changeLimit) {
 					if (player.hornType !== Horns.NONE) {
 						outputText("\n\nYou feel your horns suddenly crumble, falling apart in large chunks until they flake away into nothing.");
 					} 
@@ -102,7 +102,7 @@ package classes.Items.Consumables
 				player.horns = 1;
 				changes++;
 			}
-			if (rand(3) === 0 && changes < changeLimit && player.legCount === 2 && player.lowerBody === LowerBody.CLOVEN_HOOFED && player.hornType === Horns.SHEEP && player.tailType === Tail.SHEEP && player.earType === Ears.SHEEP && !player.hasWool()) {
+			if (rand(3) === 0 && changes < changeLimit && player.legCount === 2 && player.lowerBody === LowerBody.CLOVEN_HOOFED && player.hornType === Horns.SHEEP && player.tailType === Tail.SHEEP && player.ears.type === Ears.SHEEP && !player.hasWool()) {
 			    var sheepWoolColors: Array = [
 				"white",
 				"black",

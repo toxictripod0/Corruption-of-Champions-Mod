@@ -1757,7 +1757,7 @@ package classes.Scenes.Places.Prison
 				else
 				{
 					outputText(" and gets a firm grip on your ");
-					switch(player.earType)
+					switch(player.ears.type)
 					{
 						case 1:
 							outputText("horse-like ears");

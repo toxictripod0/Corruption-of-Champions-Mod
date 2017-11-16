@@ -98,7 +98,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//gain fur
-			if ((player.lowerBody === LowerBody.RACCOON && player.earType === Ears.RACCOON) && !player.hasFur() && changes < changeLimit && rand(4) === 0) {
+			if ((player.lowerBody === LowerBody.RACCOON && player.ears.type === Ears.RACCOON) && !player.hasFur() && changes < changeLimit && rand(4) === 0) {
 				outputText("\n\nYou shiver, feeling a bit cold.  Just as you begin to wish for something to cover up with, it seems your request is granted; thick, bushy fur begins to grow all over your body!  You tug at the tufts in alarm, but they're firmly rooted and... actually pretty soft.  Huh.  ");
 				player.skinType = Skin.FUR;
 				player.skinAdj = "";
@@ -109,18 +109,18 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//gain coon ears
-			if (player.tailType === Tail.RACCOON && player.earType !== Ears.RACCOON && rand(4) === 0 && changes < changeLimit) {
+			if (player.tailType === Tail.RACCOON && player.ears.type !== Ears.RACCOON && rand(4) === 0 && changes < changeLimit) {
 				//from dog, kangaroo, bunny, other long ears
-				if (player.earType === Ears.DOG || player.earType === Ears.BUNNY || player.earType === Ears.KANGAROO) outputText("\n\nYour ears compress, constricting your ear canal momentarily.  You shake your head to get sound back, and reach up to touch the auricles, to find a pair of stubby egg-shaped ears in their place.  <b>You now have raccoon ears!</b>");
+				if (player.ears.type === Ears.DOG || player.ears.type === Ears.BUNNY || player.ears.type === Ears.KANGAROO) outputText("\n\nYour ears compress, constricting your ear canal momentarily.  You shake your head to get sound back, and reach up to touch the auricles, to find a pair of stubby egg-shaped ears in their place.  <b>You now have raccoon ears!</b>");
 				//from cat, horse, cow ears
-				else if (player.earType === Ears.HORSE || player.earType === Ears.COW || player.earType === Ears.CAT) outputText("\n\nYour ears tingle.  Huh.  Do they feel a bit rounder at the tip now?  <b>Looks like you have raccoon ears.</b>");
+				else if (player.ears.type === Ears.HORSE || player.ears.type === Ears.COW || player.ears.type === Ears.CAT) outputText("\n\nYour ears tingle.  Huh.  Do they feel a bit rounder at the tip now?  <b>Looks like you have raccoon ears.</b>");
 				//from human, goblin, lizard or other short ears
 				else outputText("\n\nYour ears prick and stretch uncomfortably, poking up through your " + player.hairDescript() + ".  Covering them with your hands, you feel them shaping into little eggdrop ornaments resting atop your head.  <b>You have raccoon ears!</b>");
-				player.earType = Ears.RACCOON;
+				player.ears.type = Ears.RACCOON;
 				changes++;
 			}
 			//gain feet-coon
-			if (player.earType === Ears.RACCOON && player.lowerBody !== LowerBody.RACCOON && changes < changeLimit && rand(4) === 0) {
+			if (player.ears.type === Ears.RACCOON && player.lowerBody !== LowerBody.RACCOON && changes < changeLimit && rand(4) === 0) {
 				//from naga non-feet (gain fatigue and lose lust)
 				if (player.isNaga()) {
 					outputText("\n\nYour body straightens and telescopes suddenly and without the length of your snake half to anchor you, you're left with your face in the dirt.  A shuffling and scraping of falling scales sounds and a terrible cramp takes you as your back half continues migrating, subducting under your [butt] and making you feel extremely bloated.  As your once prominent tail dwindles to roughly the length of your torso, a sickly ripping noise fills your head and it bursts apart, revealing two new legs!  The tattered snake-skin continues melding into your groin as you examine the fuzzy legs and long-toed, sensitive feet.  <b>Looks like you now have raccoon hind-paws...</b> and an upset stomach.");

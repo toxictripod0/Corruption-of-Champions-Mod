@@ -384,7 +384,7 @@ package classes.Scenes.Places
 			if (flags[kFLAGS.INGNAM_PROLOGUE_COMPLETE] > 0 && flags[kFLAGS.INGNAM_GREETED_AFTER_LONGTIME] <= 0) {
 				welcomeBack();
 			}
-			if ((player.earType > 0 && player.earType != flags[kFLAGS.INGNAM_EARS_LAST_TYPE] && flags[kFLAGS.INGNAM_EARS_FREAKOUT] <= 0) || (player.tailType > 0 && player.tailType != flags[kFLAGS.INGNAM_TAIL_LAST_TYPE] && flags[kFLAGS.INGNAM_TAIL_FREAKOUT] <= 0) && flags[kFLAGS.INGNAM_PROLOGUE_COMPLETE] <= 0) {
+			if ((player.ears.type > 0 && player.ears.type != flags[kFLAGS.INGNAM_EARS_LAST_TYPE] && flags[kFLAGS.INGNAM_EARS_FREAKOUT] <= 0) || (player.tailType > 0 && player.tailType != flags[kFLAGS.INGNAM_TAIL_LAST_TYPE] && flags[kFLAGS.INGNAM_TAIL_FREAKOUT] <= 0) && flags[kFLAGS.INGNAM_PROLOGUE_COMPLETE] <= 0) {
 				appearanceFreakout();
 				return;
 			}
@@ -422,20 +422,20 @@ package classes.Scenes.Places
 		public function appearanceFreakout():void {
 			clearOutput();
 			outputText("The innkeeper stands up to see that there's something unusual with your appearance.");
-			if (player.earType > 0) {
-				if (player.earType == Ears.HORSE) {
+			if (player.ears.type > 0) {
+				if (player.ears.type == Ears.HORSE) {
 					outputText("\n\nHe says, \"<i>Your ears... They look different! They look like horse's! I have no idea how your ears changed.</i>\"");
 				}
-				if (player.earType == Ears.DOG) {
+				if (player.ears.type == Ears.DOG) {
 					outputText("\n\nHe says, \"<i>Your ears... They look like dog's! I have no idea how your ears changed.</i>\"");
 				}
-				if (player.earType == Ears.CAT) {
+				if (player.ears.type == Ears.CAT) {
 					outputText("\n\nHe says, \"<i>Your ears... They look like cat's! I have no idea how your ears changed but other than that, you look much cuter with cat ears!</i>\" He walks over to you and scratch your cat-ears. \"<i>They look and feel so real,</i>\" he says.");
 				}
-				flags[kFLAGS.INGNAM_EARS_LAST_TYPE] = player.earType;
+				flags[kFLAGS.INGNAM_EARS_LAST_TYPE] = player.ears.type;
 				flags[kFLAGS.INGNAM_EARS_FREAKOUT] = 1;
 			}
-			if (player.earType > 0 && player.tailType > 0 && player.hasLongTail()) outputText("Next, he walks behind you, taking a glance at your tail.");
+			if (player.ears.type > 0 && player.tailType > 0 && player.hasLongTail()) outputText("Next, he walks behind you, taking a glance at your tail.");
 			if (player.tailType > 0) {
 				if (player.hasLongTail()) {
 					outputText("\n\nHe says with a surprised look, \"<i>You have a tail now? Are you sure this is fake?</i>\" You tell him that your tail is not fake; it's real. \"<i>Prove it,</i>\" he says as he tugs your tail. Ouch! That hurts! \"<i>Sorry about that,</i>\" he says, \"<i>but that tail definitely looks and feels real! I think your tail does look nice.</i>\"");

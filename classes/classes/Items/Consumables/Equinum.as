@@ -441,7 +441,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//HorseFace - Req's Fur && Ears
-			if (player.faceType !== Face.HORSE && player.hasFur() && changes < changeLimit && rand(5) === 0 && player.earType === Ears.HORSE) {
+			if (player.faceType !== Face.HORSE && player.hasFur() && changes < changeLimit && rand(5) === 0 && player.ears.type === Ears.HORSE) {
 				if (player.faceType === Face.DOG) outputText("\n\nMind-numbing pain shatters through you as you feel your facial bones rearranging.  You clutch at your face in agony as your skin crawls and shifts, your visage reshaping to replace your dog-like characteristics with those of a horse.  <b>You now have a horse's face.</b>");
 				else outputText("\n\nMind-numbing pain shatters through you as you feel your facial bones breaking and shifting.  You clutch at yourself in agony as you feel your skin crawl and elongate under your fingers.  Eventually the pain subsides, leaving you with a face that seamlessly blends human and equine features.  <b>You have a very equine-looking face.</b>");
 				changes++;
@@ -476,13 +476,13 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Ears - requires tail
-			if (player.earType !== Ears.HORSE && player.tailType === Tail.HORSE && changes < changeLimit && rand(3) === 0) {
-				if (player.earType === -1) outputText("\n\nTwo painful lumps sprout on the top of your head, forming into tear-drop shaped ears, covered with short fur.  ");
-				if (player.earType === Ears.HUMAN) outputText("\n\nYour ears tug painfully on your face as they begin shifting, moving upwards to the top of your head and transforming into an upright animalistic ears.  ");
-				if (player.earType === Ears.DOG) outputText("\n\nYour ears change shape, morphing into from their doglike shape into equine-like ears!  ");
-				if (player.earType > Ears.DOG) outputText("\n\nYour ears change shape, morphing into teardrop-shaped horse ears!  ");
-				player.earType = Ears.HORSE;
-				player.earValue = 0;
+			if (player.ears.type !== Ears.HORSE && player.tailType === Tail.HORSE && changes < changeLimit && rand(3) === 0) {
+				if (player.ears.type === -1) outputText("\n\nTwo painful lumps sprout on the top of your head, forming into tear-drop shaped ears, covered with short fur.  ");
+				if (player.ears.type === Ears.HUMAN) outputText("\n\nYour ears tug painfully on your face as they begin shifting, moving upwards to the top of your head and transforming into an upright animalistic ears.  ");
+				if (player.ears.type === Ears.DOG) outputText("\n\nYour ears change shape, morphing into from their doglike shape into equine-like ears!  ");
+				if (player.ears.type > Ears.DOG) outputText("\n\nYour ears change shape, morphing into teardrop-shaped horse ears!  ");
+				player.ears.type = Ears.HORSE;
+				player.ears.value = 0;
 				outputText("<b>You now have horse ears.</b>");
 				changes++;
 			}

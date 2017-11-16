@@ -83,7 +83,7 @@ package classes.Items.Consumables
 				mutations.updateClaws(player.claws.type);
 			}
 			//Change skin to normal
-			if (!player.hasPlainSkin() && (player.earType === Ears.HUMAN || player.earType === Ears.ELFIN) && rand(4) === 0 && changes < changeLimit) {
+			if (!player.hasPlainSkin() && (player.ears.type === Ears.HUMAN || player.ears.type === Ears.ELFIN) && rand(4) === 0 && changes < changeLimit) {
 				outputText("\n\nA slowly-building itch spreads over your whole body, and as you idly scratch yourself, you find that your " + player.skinFurScales() + " ");
 				if (player.hasScales()) outputText("are");
 				else outputText("is");
@@ -127,9 +127,9 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//-Gain human ears (If you have human face)
-			if ((player.earType !== Ears.HUMAN && player.faceType === Face.HUMAN) && changes < changeLimit && rand(4) === 0) {
+			if ((player.ears.type !== Ears.HUMAN && player.faceType === Face.HUMAN) && changes < changeLimit && rand(4) === 0) {
 				outputText("\n\nOuch, your head aches! It feels like your ears are being yanked out of your head, and when you reach up to hold your aching noggin, you find they've vanished! Swooning and wobbling with little sense of balance, you nearly fall a half-dozen times before <b>a pair of normal, human ears sprout from the sides of your head.</b> You had almost forgotten what human ears felt like!");
-				player.earType = Ears.HUMAN;
+				player.ears.type = Ears.HUMAN;
 				changes++;
 			}
 			//Removes gills

@@ -255,9 +255,9 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Human ears
-			if (player.faceType === Face.HUMAN && player.earType !== Ears.HUMAN && changes < changeLimit && rand(4) === 0) {
+			if (player.faceType === Face.HUMAN && player.ears.type !== Ears.HUMAN && changes < changeLimit && rand(4) === 0) {
 				outputText("\n\nOuch, your head aches! It feels like your ears are being yanked out of your head, and when you reach up to hold your aching noggin, you find they've vanished! Swooning and wobbling with little sense of balance, you nearly fall a half-dozen times before <b>a pair of normal, human ears sprout from the sides of your head.</b> You had almost forgotten what human ears felt like!");
-				player.earType = Ears.HUMAN;
+				player.ears.type = Ears.HUMAN;
 				changes++;
 			}
 			//-Skin color change
@@ -272,7 +272,7 @@ package classes.Items.Consumables
 				outputText("changed to become " + player.skinTone + " colored.</b>");
 			}
 			//Change skin to normal
-			if (!player.hasPlainSkin() && player.earType === Ears.HUMAN && rand(3) === 0 && changes < changeLimit) {
+			if (!player.hasPlainSkin() && player.ears.type === Ears.HUMAN && rand(3) === 0 && changes < changeLimit) {
 				outputText("\n\nA slowly-building itch spreads over your whole body, and as you idly scratch yourself, you find that your " + player.skinFurScales());
 				outputText(" " + (player.hasScales() ? "are" : "is") + " falling to the ground, revealing flawless skin below.  <b>You now have normal skin.</b>");
 				player.skinType = Skin.PLAIN;
