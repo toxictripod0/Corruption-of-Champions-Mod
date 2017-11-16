@@ -340,7 +340,7 @@ import classes.internals.*;
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,25,0,0,0);
 			this.tallness = 72;
-			this.hipRating = Hips.RATING_AMPLE;
+			this.hips.rating = Hips.RATING_AMPLE;
 			this.butt.rating = Butt.RATING_TIGHT;
 			this.skinTone = "tawny";
 			this.skinType = Skin.FUR;

@@ -68,16 +68,16 @@ package classes.Items.Consumables
 			}
 
 			//Thigh Loss: (towards “girly”)
-			if (player.hipRating >= 10 && rand(4) === 0 && changes < changeLimit) {
+			if (player.hips.rating >= 10 && rand(4) === 0 && changes < changeLimit) {
 				outputText("\n\nYou touch your thighs speculatively.  It's not just your imagination; you've lost a bit of weight around your waist.");
-				player.hipRating--;
-				if (player.hipRating > 15) player.hipRating -= 2 + rand(3);
+				player.hips.rating--;
+				if (player.hips.rating > 15) player.hips.rating -= 2 + rand(3);
 				changes++;
 			}
 			//Thigh Gain: (towards “girly”)
-			if (player.hipRating < 6 && rand(4) === 0 && changes < changeLimit) {
+			if (player.hips.rating < 6 && rand(4) === 0 && changes < changeLimit) {
 				outputText("\n\nYou touch your thighs speculatively.  You think you may have gained a little weight around your waist.");
-				player.hipRating++;
+				player.hips.rating++;
 				changes++;
 			}
 			//Breast Loss: (towards A cup)

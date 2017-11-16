@@ -105,7 +105,7 @@ override public function RaphaelLikes():Boolean {
 	//({If player has below C cup breasts} 
 	if (player.biggestTitSize() < 3) return false;
 	//({If player has grown less than girly hips}
-	if (player.hipRating < 6) return false;
+	if (player.hips.rating < 6) return false;
 	//({If player has gotten a massive butt} 
 	if (player.butt.rating >= 16) return false;
 	//({If female player has gotten bigger than 6 feet}
@@ -403,7 +403,7 @@ private function RaphaelEncounterIIDressFollowup():void {
 		//({If player has below C cup breasts} 
 		if (player.biggestTitSize() < 3) outputText("\"<i>Your female curves... gone!</i>\" He looks at your bosom. \"<i>It's hard to tell you apart from a little girl!</i>\"\n\n"); 
 		//({If player has grown less than girly hips}
-		if (player.hipRating < 6) outputText("\"<i>What happened to that fine hourglass shaped figure? Those comely hips?</i>\"\n\n");
+		if (player.hips.rating < 6) outputText("\"<i>What happened to that fine hourglass shaped figure? Those comely hips?</i>\"\n\n");
 		//({If player has gotten a massive butt} 
 		if (player.butt.rating >= 13) outputText("\"<i>Oh... my... Marae! " + player.short + ", look at your butt. It is so big! You look one of those cat guy's girlfriends. Who understands those cat guys? You look like a total prostitute. I mean, your butt. It's just so big. I can't believe it's just so round and so out there! Gross!</i>\"  The fox shakes his head and breaks it down. \"<i>I hate big butts! So vulgar.</i>\"\n\n"); 
 		//({If female player has gotten bigger than 6 feet}

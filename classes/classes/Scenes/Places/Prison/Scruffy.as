@@ -31,7 +31,7 @@ package classes.Scenes.Places.Prison
 			this.ass.analLooseness = AssClass.LOOSENESS_STRETCHED;
 			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.tallness = 40;
-			this.hipRating = Hips.RATING_BOYISH;
+			this.hips.rating = Hips.RATING_BOYISH;
 			this.butt.rating = Butt.RATING_TIGHT;
 			this.skinTone = "red";
 			this.hair.color = "black";

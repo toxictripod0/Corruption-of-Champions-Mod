@@ -72,14 +72,14 @@ package classes.Items.Consumables
 				//[removed:1.4.10]//changes++;
 			}
 			//- If male with a hip rating >4 or a female/herm with a hip rating >6:
-			if (((!player.hasCock() && player.hipRating > 6) || (player.hasCock() && player.hipRating > 4)) && rand(3) === 0 && changes< changeLimit)
+			if (((!player.hasCock() && player.hips.rating > 6) || (player.hasCock() && player.hips.rating > 4)) && rand(3) === 0 && changes< changeLimit)
 			{
 				outputText("\n\nA warm, tingling sensation arises in your [hips].  Immediately, you reach down to them, concerned.  You can feel a small portion of your [hips] dwindling away under your hands.");
-				player.hipRating--;
-				if (player.hipRating > 10) player.hipRating--;
-				if (player.hipRating > 15) player.hipRating--;
-				if (player.hipRating > 20) player.hipRating--;
-				if (player.hipRating > 23) player.hipRating--;
+				player.hips.rating--;
+				if (player.hips.rating > 10) player.hips.rating--;
+				if (player.hips.rating > 15) player.hips.rating--;
+				if (player.hips.rating > 20) player.hips.rating--;
+				if (player.hips.rating > 23) player.hips.rating--;
 				changes++;
 			}
 			//- If butt rating is greater than “petite”:

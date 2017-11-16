@@ -211,7 +211,7 @@ package classes.Scenes.Dungeons.DeepCave
 			initGenderless();
 			createBreastRow(0,0);
 			this.tallness = 120;
-			this.hipRating = Hips.RATING_SLENDER;
+			this.hips.rating = Hips.RATING_SLENDER;
 			this.butt.rating = Butt.RATING_BUTTLESS;
 			this.skinTone = "purple";
 			this.skinType = Skin.PLAIN;

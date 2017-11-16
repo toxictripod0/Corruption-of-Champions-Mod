@@ -201,7 +201,7 @@ package classes.Scenes.Combat
 					if (player.vaginalCapacity() >= 75) choices[choices.length] = 6;
 				}
 				//Adj special!
-				if (player.hasVagina() && player.butt.rating >= 8 && player.hipRating >= 6 && player.biggestTitSize() >= 4) {
+				if (player.hasVagina() && player.butt.rating >= 8 && player.hips.rating >= 6 && player.biggestTitSize() >= 4) {
 					choices[choices.length] = 7;
 					choices[choices.length] = 7;
 					choices[choices.length] = 7;
@@ -1338,23 +1338,23 @@ package classes.Scenes.Combat
 						bonusChance += .5;
 						bonusDamage += 1;
 					}
-					if (player.hipRating >= 6) {
+					if (player.hips.rating >= 6) {
 						bonusChance += .5;
 						bonusDamage += 1;
 					}
-					if (player.hipRating >= 10) {
+					if (player.hips.rating >= 10) {
 						bonusChance += .5;
 						bonusDamage += 1;
 					}
-					if (player.hipRating >= 13) {
+					if (player.hips.rating >= 13) {
 						bonusChance += .5;
 						bonusDamage += 1;
 					}
-					if (player.hipRating >= 16) {
+					if (player.hips.rating >= 16) {
 						bonusChance += .5;
 						bonusDamage += 1;
 					}
-					if (player.hipRating >= 20) {
+					if (player.hips.rating >= 20) {
 						bonusChance += .5;
 						bonusDamage += 1;
 					}

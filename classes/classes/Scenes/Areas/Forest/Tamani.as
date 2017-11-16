@@ -132,7 +132,7 @@ package classes.Scenes.Areas.Forest
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,40,0,0,0);
 			this.tallness = 40;
-			this.hipRating = Hips.RATING_AMPLE+2;
+			this.hips.rating = Hips.RATING_AMPLE+2;
 			this.butt.rating = Butt.RATING_LARGE;
 			this.skinTone = "greenish gray";
 			this.hair.color = "pink and black";

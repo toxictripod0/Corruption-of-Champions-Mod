@@ -108,7 +108,7 @@ package classes.Scenes.Areas.HighMountains
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,20,0,0,0);
 			this.tallness = 6*12+6;
-			this.hipRating = Hips.RATING_INHUMANLY_WIDE;
+			this.hips.rating = Hips.RATING_INHUMANLY_WIDE;
 			this.butt.rating = Butt.RATING_EXPANSIVE;
 			this.lowerBody = LowerBody.HARPY;
 			this.skinTone = "pink";

@@ -218,7 +218,7 @@ package classes.Scenes.Areas.Forest
 			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.createStatusEffect(StatusEffects.BonusACapacity,20,0,0,0);
 			this.tallness = rand(24) + 60;
-			this.hipRating = Hips.RATING_AMPLE;
+			this.hips.rating = Hips.RATING_AMPLE;
 			this.butt.rating = Butt.RATING_AVERAGE+1;
 			this.skinTone = "pale";
 			this.hair.color = hair.color;

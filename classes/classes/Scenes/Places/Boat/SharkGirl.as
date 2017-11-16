@@ -55,7 +55,7 @@ package classes.Scenes.Places.Boat
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,40,0,0,0);
 			this.tallness = 5*12+5;
-			this.hipRating = Hips.RATING_AMPLE+2;
+			this.hips.rating = Hips.RATING_AMPLE+2;
 			this.butt.rating = Butt.RATING_LARGE;
 			this.skinTone = "gray";
 			this.hair.color = "silver";

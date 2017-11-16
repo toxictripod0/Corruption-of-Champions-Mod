@@ -66,7 +66,7 @@ import classes.internals.WeightedDrop;
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,10,0,0,0);
 			this.tallness = 5*12+5;
-			this.hipRating = Hips.RATING_CURVY;
+			this.hips.rating = Hips.RATING_CURVY;
 			this.butt.rating = Butt.RATING_NOTICEABLE;
 			this.skinTone = "purple";
 			this.hair.color = "purplish-black";

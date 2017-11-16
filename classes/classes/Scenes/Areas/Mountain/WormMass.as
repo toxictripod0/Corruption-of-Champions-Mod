@@ -98,7 +98,7 @@ package classes.Scenes.Areas.Mountain
 			this.ass.analLooseness = AssClass.LOOSENESS_VIRGIN;
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.tallness = 1;
-			this.hipRating = Hips.RATING_SLENDER;
+			this.hips.rating = Hips.RATING_SLENDER;
 			this.butt.rating = Butt.RATING_BUTTLESS;
 			this.skinTone = "white";
 			initStrTouSpeInte(35, 5, 10, 1);

@@ -140,11 +140,11 @@ package classes.Items.Consumables
 				player.hair.type = Hair.WOOL;
 				changes++;
 			}
-			if (player.hipRating < 10 && player.femininity >= 65 && rand(3) === 0 && changes < changeLimit) {
+			if (player.hips.rating < 10 && player.femininity >= 65 && rand(3) === 0 && changes < changeLimit) {
 				outputText("\n\nYou grip your hips as they shift, getting wider and altering your stance. Your hips seem much more fitting for a sheep now, all big and cuddly.");
-				player.hipRating += (rand(1) + 1);
-				if (player.hipRating > 10) {
-					player.hipRating = 10;
+				player.hips.rating += (rand(1) + 1);
+				if (player.hips.rating > 10) {
+					player.hips.rating = 10;
 				}
 				changes++;
 			}

@@ -209,7 +209,7 @@ package classes.Scenes.Places.Bazaar
 				case "Spicy Chilli":
 					player.refillHunger(60);
 					if (flags[kFLAGS.HUNGER_ENABLED] == 0) player.modThickness(100, 1);
-					if (flags[kFLAGS.HUNGER_ENABLED] == 0 || (rand(2) == 0 && player.hunger100 >= 80)) player.hipRating++;
+					if (flags[kFLAGS.HUNGER_ENABLED] == 0 || (rand(2) == 0 && player.hunger100 >= 80)) player.hips.rating++;
 					break;
 				case "Prot. Shake":
 					player.refillHunger(30);
@@ -2092,9 +2092,9 @@ package classes.Scenes.Places.Bazaar
 			if (rand(2) == 0 && player.thickness < 90) {
 				player.modThickness(90, 2);
 			}
-			if (rand(2.4) == 0 && changes < changeLimit && player.hasVagina() && player.mf("m", "f") == "f" && player.hipRating < 14) {
+			if (rand(2.4) == 0 && changes < changeLimit && player.hasVagina() && player.mf("m", "f") == "f" && player.hips.rating < 14) {
 				outputText("\n\nAfter finishing, you find that your gait has changed. Did your [hips] widen?");
-				player.hipRating++;
+				player.hips.rating++;
 				changes++;
 			}
 			flags[kFLAGS.TIMES_TRANSFORMED] += changes;

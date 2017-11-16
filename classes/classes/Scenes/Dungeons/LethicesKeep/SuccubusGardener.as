@@ -31,7 +31,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			
 			this.tallness = 8 * 12;
-			this.hipRating = Hips.RATING_AVERAGE;
+			this.hips.rating = Hips.RATING_AVERAGE;
 			this.butt.rating = Butt.RATING_TIGHT;
 			
 			this.weaponName = "tentacles";

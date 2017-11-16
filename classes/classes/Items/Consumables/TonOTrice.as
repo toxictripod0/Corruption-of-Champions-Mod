@@ -179,16 +179,16 @@ package classes.Items.Consumables
 				}
 
 				//Hips > 12 - decrease hip size by 1-3 sizes
-				if (player.hipRating > 12 && changes < changeLimit && rand(3) == 0) {
+				if (player.hips.rating > 12 && changes < changeLimit && rand(3) == 0) {
 					outputText("\n\nYou stumble a bit as the bones in your pelvis rearrange themselves painfully. Your hips have narrowed.");
-					player.hipRating -= 1 + rand(3);
+					player.hips.rating -= 1 + rand(3);
 					changes++;
 				}
 
 				//Hips < 6 - increase hip size by 1-3 sizes
-				if (player.hipRating < 6 && changes < changeLimit && rand(3) == 0) {
+				if (player.hips.rating < 6 && changes < changeLimit && rand(3) == 0) {
 					outputText("\n\nYou stumble as you feel the bones in your hips grinding, expanding your hips noticeably.");
-					player.hipRating += 1 + rand(3);
+					player.hips.rating += 1 + rand(3);
 					changes++;
 				}
 
@@ -242,16 +242,16 @@ package classes.Items.Consumables
 				}
 
 				//Hips > 10 - decrease hip size by 1-3 sizes
-				if (player.hipRating > 10 && changes < changeLimit && rand(3) == 0) {
+				if (player.hips.rating > 10 && changes < changeLimit && rand(3) == 0) {
 					outputText("\n\nYou stumble a bit as the bones in your pelvis rearrange themselves painfully. Your hips have narrowed.");
-					player.hipRating -= 1 + rand(3);
+					player.hips.rating -= 1 + rand(3);
 					changes++;
 				}
 
 				//Hips < 2 - increase hip size by 1-3 sizes
-				if (player.hipRating < 2 && changes < changeLimit && rand(3) == 0) {
+				if (player.hips.rating < 2 && changes < changeLimit && rand(3) == 0) {
 					outputText("\n\nYou stumble as you feel the bones in your hips grinding, expanding your hips noticeably.");
-					player.hipRating += 1 + rand(3);
+					player.hips.rating += 1 + rand(3);
 					changes++;
 				}
 

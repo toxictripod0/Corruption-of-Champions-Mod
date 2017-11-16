@@ -672,7 +672,7 @@
 			
 			player.breastRows[0].breastRating = BreastCup.FLAT;
 			player.butt.rating = Butt.RATING_TIGHT;
-			player.hipRating = Hips.RATING_SLENDER;
+			player.hips.rating = Hips.RATING_SLENDER;
 			chooseComplexion();
 		}
 
@@ -686,7 +686,7 @@
 			
 			player.breastRows[0].breastRating = BreastCup.B;
 			player.butt.rating = Butt.RATING_TIGHT;
-			player.hipRating = Hips.RATING_AMPLE;
+			player.hips.rating = Hips.RATING_AMPLE;
 			chooseComplexion();
 		}
 
@@ -696,7 +696,7 @@
 			
 			player.breastRows[0].breastRating = BreastCup.FLAT;
 			player.butt.rating = Butt.RATING_AVERAGE;
-			player.hipRating = Hips.RATING_AVERAGE;
+			player.hips.rating = Hips.RATING_AVERAGE;
 			chooseComplexion();
 		}
 
@@ -706,7 +706,7 @@
 			
 			player.breastRows[0].breastRating = BreastCup.C;
 			player.butt.rating = Butt.RATING_NOTICEABLE;
-			player.hipRating = Hips.RATING_AMPLE;
+			player.hips.rating = Hips.RATING_AMPLE;
 			chooseComplexion();
 		}
 
@@ -721,7 +721,7 @@
 			
 			player.breastRows[0].breastRating = BreastCup.FLAT;
 			player.butt.rating = Butt.RATING_NOTICEABLE;
-			player.hipRating = Hips.RATING_AVERAGE;
+			player.hips.rating = Hips.RATING_AVERAGE;
 			chooseComplexion();
 		}
 
@@ -735,7 +735,7 @@
 			
 			player.breastRows[0].breastRating = BreastCup.D;
 			player.butt.rating = Butt.RATING_LARGE;
-			player.hipRating = Hips.RATING_CURVY;
+			player.hips.rating = Hips.RATING_CURVY;
 			chooseComplexion();
 		}
 
@@ -749,7 +749,7 @@
 			
 			player.breastRows[0].breastRating = BreastCup.A;
 			player.butt.rating = Butt.RATING_NOTICEABLE;
-			player.hipRating = Hips.RATING_SLENDER;
+			player.hips.rating = Hips.RATING_SLENDER;
 			chooseComplexion();
 		}
 
@@ -763,7 +763,7 @@
 			
 			player.breastRows[0].breastRating = BreastCup.A;
 			player.butt.rating = Butt.RATING_TIGHT;
-			player.hipRating = Hips.RATING_SLENDER;
+			player.hips.rating = Hips.RATING_SLENDER;
 			chooseComplexion();
 		}
 
@@ -1180,7 +1180,7 @@
 				case PerkLib.Fertile:
 					player.femininity += 5;
 					player.fertility += 25;
-					player.hipRating += 2;
+					player.hips.rating += 2;
 					player.createPerk(PerkLib.Fertile, 1.5, 0, 0, 0);
 					break;
 				case PerkLib.WetPussy:

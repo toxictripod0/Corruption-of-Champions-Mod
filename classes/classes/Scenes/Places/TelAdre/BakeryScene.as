@@ -367,26 +367,26 @@ public function nomnomnom(name:String,price:Number):void {
 				outputText("\n\nWhen you stand back up your " + player.buttDescript() + " jiggles a little bit more than you'd expect.");
 				player.butt.rating++;
 			}
-			if (rand(3) == 0 && player.hipRating < 15 && (player.hunger > 25 || flags[kFLAGS.HUNGER_ENABLED] <= 0)) {
+			if (rand(3) == 0 && player.hips.rating < 15 && (player.hunger > 25 || flags[kFLAGS.HUNGER_ENABLED] <= 0)) {
 				outputText("\n\nAfter finishing, you find your gait has changed.  Did your hips widen?");
-				player.hipRating++;
+				player.hips.rating++;
 			}
 			player.refillHunger(25);
 		}
 		else if (flags[kFLAGS.TEMP_STORAGE_PASTRY_NAME] == "cookies") {
 			outputText(player.modTone(0,1));
 			outputText(player.modThickness(100,2));
-			if (rand(3) == 0 && player.hipRating < 20 && (player.hunger > 25 || flags[kFLAGS.HUNGER_ENABLED] <= 0)) {
+			if (rand(3) == 0 && player.hips.rating < 20 && (player.hunger > 25 || flags[kFLAGS.HUNGER_ENABLED] <= 0)) {
 				outputText("\n\nAfter finishing, you find your gait has changed.  Did your hips widen?");
-				player.hipRating++;
+				player.hips.rating++;
 			}
 			player.refillHunger(20);
 		}
 		else if (flags[kFLAGS.TEMP_STORAGE_PASTRY_NAME] == "brownies") {
 			outputText(player.modThickness(100,4));
-			if (rand(2) == 0 && player.hipRating < 30 && (player.hunger > 25 || flags[kFLAGS.HUNGER_ENABLED] <= 0)) {
+			if (rand(2) == 0 && player.hips.rating < 30 && (player.hunger > 25 || flags[kFLAGS.HUNGER_ENABLED] <= 0)) {
 				outputText("\n\nAfter finishing, you find your gait has changed.  Your " + player.hipDescript() + " definitely got wider.");
-				player.hipRating += 2;
+				player.hips.rating += 2;
 			}
 			player.refillHunger(20);
 		}
@@ -405,9 +405,9 @@ public function nomnomnom(name:String,price:Number):void {
 				outputText("\n\nWhen you stand back up your " + player.buttDescript() + " jiggles a little bit more than you'd expect.");
 				player.butt.rating++;
 			}
-			if (rand(3) == 0 && player.hipRating < 25 && (player.hunger > 25 || flags[kFLAGS.HUNGER_ENABLED] <= 0)) {
+			if (rand(3) == 0 && player.hips.rating < 25 && (player.hunger > 25 || flags[kFLAGS.HUNGER_ENABLED] <= 0)) {
 				outputText("\n\nAfter finishing, you find your gait has changed.  Did your " + player.hipDescript() + " widen?");
-				player.hipRating++;
+				player.hips.rating++;
 			}
 			player.refillHunger(50);
 		}

@@ -50,7 +50,7 @@ package classes.Scenes
 			outputText("<b>Tits</b>: " + player.breastDescript(0) + ", size: " + player.breastRows[0].breastRating + " (" + player.breastCup(0) + ") with " + player.nippleDescript(0) + " of size " + player.nippleLength + "\n");
 			if (player.isLactating()) outputText("<b>Lactation</b>: " + player.lactationQ() + ", biggest: " + player.biggestLactation() + "\n");
 			outputText("<b>Ass</b>: " + player.assDescript() + ", size: " + player.butt.rating +  ", looseness: " + Math.round(player.ass.analLooseness) + ", capacity: " + Math.round(player.analCapacity()) + "\n");
-			outputText("<b>Hips</b>: " + player.hipDescript() + ", size: " + player.hipRating + "\n");
+			outputText("<b>Hips</b>: " + player.hipDescript() + ", size: " + player.hips.rating + "\n");
 			if (player.hasCock()) outputText("<b>Cock</b>: " + player.cockDescript() + ", length " + player.cocks[0].cockLength +"\n");
 			if (player.hasVagina()) {
 				outputText("<b>Vagina</b>: " + player.vaginaDescript() + ", looseness: " +  Math.round(player.looseness()) + ", capacity: "+ Math.round(player.vaginalCapacity()) + ", wetness: " + player.wetness() + "\n");
@@ -317,9 +317,9 @@ package classes.Scenes
 				// Work up
 				if (useDildo > 0) {
 					
-					if (rand(2) == 0 && player.hipRating < 12) {
+					if (rand(2) == 0 && player.hips.rating < 12) {
 						outputText("Using one hand to piston the imitation cock in your [vagina] and the other to massage around your [clit], the stimulation becomes almost unbearable. You can't help but grind your [hips] and slide slowly onto your back. Your moans becoming louder and more intense while vaginal juices drip down your buttcheeks. You push dildo faster and deeper, crying from immense pleasure it brings you, and feeling how your hips are feeling wider than before.");
-						player.hipRating++;
+						player.hips.rating++;
 						player.cuntChange(8 + 0.75 * player.vaginalCapacity(), true, false, false);
 						getGame().dynStats("cor", 0.5);
 						outputText("\n\n");
@@ -335,10 +335,10 @@ package classes.Scenes
 				}
 				else {
 					
-					if (rand(3) == 0 && player.hipRating < 12) {
+					if (rand(3) == 0 && player.hips.rating < 12) {
 						outputText("You stroke your clit vigorously, spreading your [legs] widely. You put one sticky finger inside, then second finger and start rubbing the walls of your [pussy], moaning from building extasy. You try to give your hand even better access to your pussy hole, and feel how your [hips] become even wider than before. ");
 						getGame().dynStats("cor", 0.5);
-						player.hipRating++;						
+						player.hips.rating++;						
 					}
 					if (rand(3) == 0 && player.butt.rating < 12) {
 						outputText("You focus your attention on your clit, while the other hand start caressing your [ass]. Your [asshole] is wet from your pussy juices, and as your finger easily slips inside, you let a shriek. Your [ass] feels so warm and sexy, you almost feel how it becomes even softer than it was before. ");
@@ -413,9 +413,9 @@ package classes.Scenes
 				
 				outputText("\n\nYou start gently caressing your " + player.cockDescript(0) + " your mind fixated on images of pussies you've encountered in your journey. You imagine opening slicky pussy lips, wet with sweet girl-cum. As you stroke your [cock], you imagine licking soft pink clit, so small compared to your large member, but somehow so much prettier and enjoyable. You think of what pleasures you would have if you had that soft womanhood, and the idea drives you into frenzy.");
 				
-				if (rand(4) == 0 && player.hipRating < 12) {
+				if (rand(4) == 0 && player.hips.rating < 12) {
 					outputText("\n\nYou close your eyes and pant hard, feeling sensation of warmth spread over your hips. With your other hand you start caressing your [hips]. You need big hips, or cocks would not fit inside. Your mind stumbles processing this idea, but your hand don't stop. The sensation of expanding flesh makes you gulp with a thrill, as you rhythmically rock your [hips] back and forth, entranced by obsession with pussies.");
-					player.hipRating += 0.5;
+					player.hips.rating += 0.5;
 					getGame().dynStats("cor", 0.5);
 				}							
 				if (rand(4) == 0 && player.butt.rating < 12) {
@@ -827,7 +827,7 @@ package classes.Scenes
 			}
 			
 			// Build-up
-			if (rand(2) == 0 && player.hipRating < 12) {
+			if (rand(2) == 0 && player.hips.rating < 12) {
 				if (craving < 2) {
 					outputText("You moan as your pleasure builds. Your [hips] involuntarily twist back and forth as you drive your finger with increasing fervor into your bum, trying to inch it just a little bit deeper.");
 					player.buttChange(8, true, true, true);
@@ -836,7 +836,7 @@ package classes.Scenes
 					outputText("You moan as your pleasure builds. Your [hips] involuntarily twist back and forth as you drive the dildo with increasing fervor into your bum, trying to inch it just a little bit deeper. "); 
 					player.buttChange(32, true, false, true);
 				}
-				player.hipRating++; 
+				player.hips.rating++; 
 				getGame().dynStats("cor", 0.5);
 				outputText("You feel how the fabric of the skirt is stretched by your [hips] as they become wider, more appropriate for a whore in a heat. ");
 			}
@@ -1172,7 +1172,7 @@ package classes.Scenes
 				if (rand(2) == 0 ) player.orgasm('Anal',false);
 				else player.orgasm('Tits',false);
 			}
-			else if (!(player.hipRating >= 12)) {
+			else if (!(player.hips.rating >= 12)) {
 				outputText("\nYou are losing your mind in a sea pure enjoyment that awashes your broken body. You lay down, spreading your [legs] to let everyone see your [vagorass]. Somehow you want to just stop bothering with your silly quest, and give in to the pleasure of being a whore, being pumped with a cum up to the very brims ...\n\n");
 				if (rand(2) == 0 ) player.orgasm('Anal',false);
 				else player.orgasm('Tits',false);
@@ -1201,7 +1201,7 @@ package classes.Scenes
 				player.createPerk(PerkLib.BimboBrains, 0, 0, 0, 0);
 				getGame().dynStats("cor", 1);
 			}
-			if (player.tone == 0 && player.hipRating >= 12 && player.butt.rating >= 12 && player.biggestTitSize() >= 12 && player.hasVagina() && !player.hasCock() && !( player.findPerk(PerkLib.BimboBody) >= 0 )) {
+			if (player.tone == 0 && player.hips.rating >= 12 && player.butt.rating >= 12 && player.biggestTitSize() >= 12 && player.hasVagina() && !player.hasCock() && !( player.findPerk(PerkLib.BimboBody) >= 0 )) {
 				
 				if (player.hair.color != "platinum blonde") {
 					outputText("You notice a change in your " + player.hairDescript() + ".  It starts with a tingling in your scalp and intensifies ");

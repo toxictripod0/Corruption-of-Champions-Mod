@@ -102,7 +102,7 @@ package classes
 			//Body: Plump, no muscle tone, wide thighs, badonkulous ass, demon tail, demonic high heels
 			player.thickness = 75;
 			player.tone = 0;
-			player.hipRating = 17;
+			player.hips.rating = 17;
 			player.butt.rating = 17;
 			player.tailType = Tail.DEMONIC;
 			player.lowerBody = LowerBody.DEMONIC_HIGH_HEELS;
@@ -139,7 +139,7 @@ package classes
 			player.furColor = "pink";
 			player.hair.color = "pink";
 			player.hair.length = 50;
-			player.hipRating = 5;
+			player.hips.rating = 5;
 			player.butt.rating = 5;
 			player.thickness = 10;
 			flags[kFLAGS.PC_FETISH] = 2;
@@ -212,7 +212,7 @@ package classes
 			player.lipPShort = "silver lip-ring";
 			player.lipPLong = "Silver lip-ring";
 			player.butt.rating = 8;
-			player.hipRating = 8;
+			player.hips.rating = 8;
 			player.createBreastRow();
 			player.nipplesPierced = 1;
 			player.nipplesPShort = "silver studs";
@@ -274,7 +274,7 @@ package classes
 			player.tallness = 65;
 			player.tone = 100;
 			player.thickness = 0;
-			player.hipRating = 6;
+			player.hips.rating = 6;
 			player.butt.rating = 3;
 			player.femininity = 50;
 			player.createBreastRow(BreastCup.D);
@@ -309,7 +309,7 @@ package classes
 			player.tone = 50;
 			player.thickness = 50;
 			player.femininity = 50;
-			player.hipRating = 5;
+			player.hips.rating = 5;
 			player.butt.rating = 5;
 			player.teaseLevel = 1;
 			//Large feathered wings (Any chance in heck I could get 'angel' as the race descriptor? Just asking. I'm fine if the answer is 'no')
@@ -551,7 +551,7 @@ package classes
 			player.breastRows[0].breastRating = 4;
 			player.setClitLength(.5);
 			player.fertility = 10;
-			player.hipRating = 8;
+			player.hips.rating = 8;
 			player.butt.rating = 8;
 			player.str = 15;
 			player.tou = 15;
@@ -626,7 +626,7 @@ package classes
 			player.createBreastRow();
 			player.breastRows[0].breastRating = 0;
 			player.tallness = 71;
-			player.hipRating = 4;
+			player.hips.rating = 4;
 			player.butt.rating = 4;
 			player.femininity = 30;
 			player.createCock();
@@ -696,7 +696,7 @@ package classes
 			player.vaginas[0].vaginalWetness = VaginaClass.WETNESS_SLICK;
 			player.vaginas[0].virgin = false;
 			player.tone = 20;
-			player.hipRating = 12;
+			player.hips.rating = 12;
 			player.butt.rating = 12;
 			player.femininity = 100;
 			player.thickness = 33;
@@ -742,7 +742,7 @@ package classes
 			player.fertility = 85;
 			player.hair.color = "blonde";
 			player.hair.length = 24;
-			player.hipRating = 6;
+			player.hips.rating = 6;
 			player.lowerBody = LowerBody.CAT;
 			player.nippleLength = 0.5;
 			//perks:
@@ -789,7 +789,7 @@ package classes
 			player.vaginas[0].vaginalLooseness = VaginaClass.LOOSENESS_LOOSE;
 			player.vaginas[0].virgin = false;
 			player.tone = 20;
-			player.hipRating = 8;
+			player.hips.rating = 8;
 			player.butt.rating = 8;
 			player.femininity = 75;
 			player.thickness = 33;
@@ -884,7 +884,7 @@ package classes
 			player.tallness = 64;
 			player.femininity = 75;
 			player.butt.rating = 7;
-			player.hipRating = 7;
+			player.hips.rating = 7;
 			player.inte = 40;
 			player.str = 20;
 			player.spe = 25;
@@ -962,7 +962,7 @@ package classes
 			//hair length: 15 in
 			player.hair.length = 15;
 			//hip size: 15/20
-			player.hipRating = 15;
+			player.hips.rating = 15;
 			//butt size: 15/20
 			player.butt.rating = 15;
 			//body thickness: 50/100
@@ -1018,7 +1018,7 @@ package classes
 			player.nippleLength = 0.5;
 			player.setClitLength(.5);
 			player.fertility = 30;
-			player.hipRating = 6;
+			player.hips.rating = 6;
 			player.butt.rating = 6;
 			player.str = 15;
 			player.tou = 15;
@@ -1094,7 +1094,7 @@ package classes
 			player.createBreastRow();
 			player.breastRows[0].breastRating = 7;
 			player.tallness = 60;
-			player.hipRating = 8;
+			player.hips.rating = 8;
 			player.butt.rating = 8;
 			player.thickness = 25;
 			player.tone = 40;
@@ -1166,7 +1166,7 @@ package classes
 			player.tone = 50;
 			player.thickness = 50;
 			player.femininity = 50;
-			player.hipRating = 5;
+			player.hips.rating = 5;
 			player.butt.rating = 5;
 			player.teaseLevel = 1;
 			//Build: average
@@ -1204,7 +1204,7 @@ package classes
 			//human skin
 			//heart-shaped ass
 			player.butt.rating = 9;
-			player.hipRating = 6;
+			player.hips.rating = 6;
 			//Ass-length white and black hair
 			player.hair.length = 30;
 			player.hair.color = "white and black";
@@ -1255,7 +1255,7 @@ package classes
 		
 			player.setClitLength(0.5);
 			player.fertility = 50;
-			player.hipRating = 6;
+			player.hips.rating = 6;
 			player.butt.rating = 6;
 			player.str = 100;
 			player.tou = 100;
@@ -1437,7 +1437,7 @@ package classes
 			player.tone = 80;
 			player.thickness = 50;
 			player.butt.rating = 12;
-			player.hipRating = 10;
+			player.hips.rating = 10;
 			player.tailType = Tail.CAT;
 			player.lowerBody = LowerBody.CAT;
 			//Breasts: 2 E-cups on top, 2 DD-cups mid, 2 D-cups bottom, 3.5 inch nipples
@@ -1465,7 +1465,7 @@ package classes
 			player.breastRows[0].breastRating = 3;
 			player.setClitLength(.5);
 			player.fertility = 10;
-			player.hipRating = 6;
+			player.hips.rating = 6;
 			player.butt.rating = 6;
 			player.str = 15;
 			player.tou = 15;
@@ -1519,7 +1519,7 @@ package classes
 			player.skinAdj = "smooth";
 			player.skinTone = "sanguine";
 			player.tallness = 68;
-			player.hipRating = 7;
+			player.hips.rating = 7;
 			player.butt.rating = 6;
 			player.thickness = 4;
 			player.tone = 98;
@@ -1609,7 +1609,7 @@ package classes
 			player.cocks[2].knotMultiplier = 2 / 1.3;
 			
 			player.tallness = 48; // 120 cm
-			player.hipRating = Hips.RATING_BOYISH;
+			player.hips.rating = Hips.RATING_BOYISH;
 			player.butt.rating = Butt.RATING_TIGHT;
 			player.thickness = 20; // thin
 			player.tone = 20; // soft
@@ -1793,7 +1793,7 @@ package classes
 			
 			// lean build
 			player.tallness = 47+rand(43); // 118-230 cm
-			player.hipRating = Hips.RATING_BOYISH;
+			player.hips.rating = Hips.RATING_BOYISH;
 			player.butt.rating = Butt.RATING_TIGHT;
 			player.thickness = rand(10)+10; // lithe
 			player.tone = rand(10)+10; // not in a good shape...

@@ -135,7 +135,7 @@ package classes.Scenes.Areas.Bog
 			this.ass.analLooseness = AssClass.LOOSENESS_NORMAL;
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.tallness = rand(2) + 68;
-			this.hipRating = Hips.RATING_AMPLE + 2;
+			this.hips.rating = Hips.RATING_AMPLE + 2;
 			this.butt.rating = Butt.RATING_LARGE;
 			this.skinTone = skinToneAdj[0];
 			this.skinType = Skin.PLAIN;

@@ -730,13 +730,13 @@ package classes.Scenes.Seasonal {
 				if (player.butt.rating <= 35) player.butt.rating += 1;
 				changed = true;
 			}
-			if (player.hipRating < 35) {
+			if (player.hips.rating < 35) {
 				outputText(" Your hips grow too, widening and giving you more sexy curves.");
-				if (player.hipRating < 4) player.hipRating += 3;
-				if (player.hipRating < 10) player.hipRating += 2;
-				if (player.hipRating < 15) player.hipRating += 1;
-				if (player.hipRating < 20) player.hipRating += 1;
-				if (player.hipRating < 35) player.hipRating += 1;
+				if (player.hips.rating < 4) player.hips.rating += 3;
+				if (player.hips.rating < 10) player.hips.rating += 2;
+				if (player.hips.rating < 15) player.hips.rating += 1;
+				if (player.hips.rating < 20) player.hips.rating += 1;
+				if (player.hips.rating < 35) player.hips.rating += 1;
 				changed = true;
 			}
 			if (player.biggestTitSize() < 20) {

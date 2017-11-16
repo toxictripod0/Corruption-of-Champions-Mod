@@ -214,8 +214,8 @@ package classes.Scenes.Dungeons.LethicesKeep
 			
 			this.hoursSinceCum = player.hoursSinceCum;
 			
-			hipRating = player.hipRating;
-			if (hipRating < 1) hipRating = 1;
+			hips.rating = player.hips.rating;
+			if (hips.rating < 1) hips.rating = 1;
 			butt.rating = player.butt.rating;
 			if (butt.rating < 1) butt.rating = 1;
 			lowerBody = player.lowerBody;

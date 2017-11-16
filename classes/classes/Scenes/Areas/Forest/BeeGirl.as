@@ -95,7 +95,7 @@ import classes.internals.ChainedDrop;
 			this.ass.analLooseness = AssClass.LOOSENESS_STRETCHED;
 			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.tallness = rand(14) + 59;
-			this.hipRating = Hips.RATING_CURVY+3;
+			this.hips.rating = Hips.RATING_CURVY+3;
 			this.butt.rating = Butt.RATING_EXPANSIVE;
 			this.lowerBody = LowerBody.BEE;
 			this.skinTone = "yellow";

@@ -37,7 +37,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			this.createBreastRow(8);
 			this.balls = 2;
 			this.ballSize = 4;
-			this.hipRating = Hips.RATING_SLENDER;
+			this.hips.rating = Hips.RATING_SLENDER;
 			this.butt.rating = Butt.RATING_TIGHT;
 			initStrTouSpeInte(110, 110, 110, 110);
 			initLibSensCor(100, 40, 100);

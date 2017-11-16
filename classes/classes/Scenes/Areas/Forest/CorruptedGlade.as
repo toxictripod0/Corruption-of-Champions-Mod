@@ -217,9 +217,9 @@ public class CorruptedGlade extends BaseContent implements TimeAwareInterface,En
 					outputText("You don't get far before you realize all the hair on your body has shifted to a verdant green color.  <b>You now have green hair.</b>  ");
 					player.hair.color = "green";
 				}
-				if (rand(4) == 0 && player.hipRating <= 10) { //+hip up to 10
+				if (rand(4) == 0 && player.hips.rating <= 10) { //+hip up to 10
 					outputText("A strange shifting occurs below your waist, making your " + player.armorName + " feel tight.  <b>Your hips have grown larger</b>, becoming " + player.hipDescript() + ".  ");
-					player.hipRating += rand(3) + 1;
+					player.hips.rating += rand(3) + 1;
 					player.fertility++;
 				}
 			}

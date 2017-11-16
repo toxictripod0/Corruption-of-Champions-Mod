@@ -136,7 +136,7 @@ package classes.Scenes.Places.Boat
 			this.ass.analLooseness = 1;
 			this.ass.analWetness = 1;
 			this.tallness = 10*12;
-			this.hipRating = 10;
+			this.hips.rating = 10;
 			this.butt.rating = 8;
 			this.skinTone = "white";
 			this.skinType = 0;

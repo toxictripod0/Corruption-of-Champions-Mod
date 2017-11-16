@@ -70,7 +70,7 @@ package classes.Items.Armors
 				}
 				else {
 					outputText("You can feel how the fine fabric of your sluttish skirt doesn't quite cover your [ass]");
-					if (game.player.hipRating > 8) {
+					if (game.player.hips.rating > 8) {
 						outputText(", and how the smooth skirt is stretched by your [hips]. ");
 					}
 					else outputText(". ");

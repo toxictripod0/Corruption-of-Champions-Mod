@@ -1323,14 +1323,14 @@ package classes.Items
 		{
 			clearOutput();
 			outputText("You devour the egg, momentarily sating your hunger.\n\n");
-			if (!large || player.hipRating > 20) {
+			if (!large || player.hips.rating > 20) {
 				outputText("You stumble as you feel your " + player.hipDescript() + " widen, altering your gait slightly.");
-				player.hipRating++;
+				player.hips.rating++;
 				player.refillHunger(20);
 			}
 			else {
 				outputText("You stagger wildly as your hips spread apart, widening by inches.  When the transformation finishes you feel as if you have to learn to walk all over again.");
-				player.hipRating += 2 + rand(2);
+				player.hips.rating += 2 + rand(2);
 				player.refillHunger(60);
 			}
 			if (rand(3) == 0) {
@@ -1463,30 +1463,30 @@ package classes.Items
 			//LARGE
 			else {
 				//New lines if changes
-				if (player.bRows() > 1 || player.butt.rating > 5 || player.hipRating > 5 || player.hasVagina()) outputText("\n\n");
+				if (player.bRows() > 1 || player.butt.rating > 5 || player.hips.rating > 5 || player.hasVagina()) outputText("\n\n");
 				//Kill pussies!
 				if (player.vaginas.length > 0) {
 					outputText("Your vagina clenches in pain, doubling you over.  You slip a hand down to check on it, only to feel the slit growing smaller and smaller until it disappears, taking your clit with it!\n\n");
-					if (player.bRows() > 1 || player.butt.rating > 5 || player.hipRating > 5) outputText("  ");
+					if (player.bRows() > 1 || player.butt.rating > 5 || player.hips.rating > 5) outputText("  ");
 					player.setClitLength(.5);
 					player.removeVagina(0, 1);
 				}
 				//Kill extra boobages
 				if (player.bRows() > 1) {
 					outputText("Your back relaxes as extra weight vanishes from your chest.  <b>Your lowest " + player.breastDescript(player.bRows() - 1) + " have vanished.</b>");
-					if (player.butt.rating > 5 || player.hipRating > 5) outputText("  ");
+					if (player.butt.rating > 5 || player.hips.rating > 5) outputText("  ");
 					//Remove lowest row.
 					player.removeBreastRow((player.bRows() - 1), 1);
 				}
 				//Ass/hips shrinkage!
 				if (player.butt.rating > 5) {
 					outputText("Muscles firm and tone as you feel your " + player.buttDescript() + " become smaller and tighter.");
-					if (player.hipRating > 5) outputText("  ");
+					if (player.hips.rating > 5) outputText("  ");
 					player.butt.rating -= 2;
 				}
-				if (player.hipRating > 5) {
+				if (player.hips.rating > 5) {
 					outputText("Feeling the sudden burning of lactic acid in your " + player.hipDescript() + ", you realize they have slimmed down and firmed up some.");
-					player.hipRating -= 2;
+					player.hips.rating -= 2;
 				}
 				//Shrink tits!
 				if (player.biggestTitSize() > 0)
@@ -2074,10 +2074,10 @@ package classes.Items
 				}
 			}
 			//Increase the size of the player's hips, if they are not already childbearing or larger
-			if (rand(2) == 0 && player.hipRating < 15 && changes < changeLimit) {
-				if (!tainted && player.hipRating < 8 || tainted) {
+			if (rand(2) == 0 && player.hips.rating < 15 && changes < changeLimit) {
+				if (!tainted && player.hips.rating < 8 || tainted) {
 					outputText("\n\nYou stumble as you feel the bones in your hips grinding, expanding your hips noticeably.");
-					player.hipRating += 1 + rand(4);
+					player.hips.rating += 1 + rand(4);
 					changes++;
 				}
 			}
@@ -2870,15 +2870,15 @@ package classes.Items
 				updateClaws(player.claws.type);
 			}
 			//-Grow hips out if narrow.
-			if (player.hipRating < 10 && changes < changeLimit && rand(3) == 0) {
+			if (player.hips.rating < 10 && changes < changeLimit && rand(3) == 0) {
 				outputText("\n\nYour gait shifts slightly to accommodate your widening " + player.hipDescript() + ". The change is subtle, but they're definitely broader.");
-				player.hipRating++;
+				player.hips.rating++;
 				changes++;
 			}
 			//-Narrow hips if crazy wide
-			if (player.hipRating >= 15 && changes < changeLimit && rand(3) == 0) {
+			if (player.hips.rating >= 15 && changes < changeLimit && rand(3) == 0) {
 				outputText("\n\nYour gait shifts inward, your " + player.hipDescript() + " narrowing significantly. They remain quite thick, but they're not as absurdly wide as before.");
-				player.hipRating--;
+				player.hips.rating--;
 				changes++;
 			}
 			//-Big booty
@@ -3090,9 +3090,9 @@ package classes.Items
 			//Appearance Effects:
 			//****************
 			//-Hip widening funtimes
-			if (changes < changeLimit && rand(4) == 0 && player.hipRating < 40) {
+			if (changes < changeLimit && rand(4) == 0 && player.hips.rating < 40) {
 				outputText("\n\nYou weeble and wobble as your hipbones broaden noticeably, but somehow you don't fall down.  Actually, you feel a bit MORE stable on your new widened stance, if anything.");
-				player.hipRating++;
+				player.hips.rating++;
 				changes++;
 			}
 			//-Restore arms to become human arms again
@@ -3604,18 +3604,18 @@ package classes.Items
 				outputText("\n\nYour scalp begins to tingle, and you gently grasp a strand of hair, pulling it out to check it.  Your hair has become " + player.hair.color + "!");
 			}
 			//[Adjust hips toward 10 – wide/curvy/flared]
-			if (changes < changeLimit && rand(3) == 0 && player.hipRating != 10) {
+			if (changes < changeLimit && rand(3) == 0 && player.hips.rating != 10) {
 				//from narrow to wide
-				if (player.hipRating < 10) {
+				if (player.hips.rating < 10) {
 					outputText("\n\nYou stumble a bit as the bones in your pelvis rearrange themselves painfully.  Your waistline has widened into [hips]!");
-					player.hipRating++;
-					if (player.hipRating < 7) player.hipRating++;
+					player.hips.rating++;
+					if (player.hips.rating < 7) player.hips.rating++;
 				}
 				//from wide to narrower
 				else {
 					outputText("\n\nYou stumble a bit as the bones in your pelvis rearrange themselves painfully.  Your waistline has narrowed, becoming [hips].");
-					player.hipRating--;
-					if (player.hipRating > 15) player.hipRating--;
+					player.hips.rating--;
+					if (player.hips.rating > 15) player.hips.rating--;
 				}
 				changes++;
 			}
@@ -3954,19 +3954,19 @@ package classes.Items
 
 			//[Adjust hips toward 10 – wide/curvy/flared]
 			//from narrow to wide
-			if (player.hipRating < 10 && ((mystic && rand(2) == 0) || (!mystic && rand(3) == 0)) && changes < changeLimit) {
-				player.hipRating++;
-				if (player.hipRating < 7) player.hipRating++;
-				if (player.hipRating < 4) player.hipRating++;
+			if (player.hips.rating < 10 && ((mystic && rand(2) == 0) || (!mystic && rand(3) == 0)) && changes < changeLimit) {
+				player.hips.rating++;
+				if (player.hips.rating < 7) player.hips.rating++;
+				if (player.hips.rating < 4) player.hips.rating++;
 				outputText("\n\nYou stumble a bit as the bones in your pelvis rearrange themselves painfully.  Your hips have widened nicely!");
 				changes++;
 			}
 			//from wide to narrower
-			if (player.hipRating > 10 && ((mystic && rand(2) == 0) || (!mystic && rand(3) == 0)) && changes < changeLimit) {
-				player.hipRating--;
-				if (player.hipRating > 14) player.hipRating--;
-				if (player.hipRating > 19) player.hipRating--;
-				if (player.hipRating > 24) player.hipRating--;
+			if (player.hips.rating > 10 && ((mystic && rand(2) == 0) || (!mystic && rand(3) == 0)) && changes < changeLimit) {
+				player.hips.rating--;
+				if (player.hips.rating > 14) player.hips.rating--;
+				if (player.hips.rating > 19) player.hips.rating--;
+				if (player.hips.rating > 24) player.hips.rating--;
 				outputText("\n\nYou stumble a bit as the bones in your pelvis rearrange themselves painfully.  Your hips have narrowed.");
 				changes++;
 			}
@@ -4310,9 +4310,9 @@ package classes.Items
 				changes++;
 			}
 			//Increase hip rating
-			if (rand(3) == 0 && changes < changeLimit && player.gender >= 2 && player.hipRating < 15) {
+			if (rand(3) == 0 && changes < changeLimit && player.gender >= 2 && player.hips.rating < 15) {
 				outputText("\n\nYour gait shifts slightly to accommodate your widening " + player.hipDescript() + ". The change is subtle, but they're definitely broader.");
-				player.hipRating++;
+				player.hips.rating++;
 				changes++;
 			}
 			//Increase ass rating

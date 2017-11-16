@@ -254,7 +254,7 @@ public function startUrtaQuest():void {
 	player.thickness = 30;
 	player.tone = 50;
 	player.femininity = 90;
-	player.hipRating = 12;
+	player.hips.rating = 12;
 	player.butt.rating = 12;
 	player.ass.analLooseness = 2;
 	player.createStatusEffect(StatusEffects.BonusVCapacity,58,0,0,0);

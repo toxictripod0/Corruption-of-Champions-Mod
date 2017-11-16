@@ -150,7 +150,7 @@ package classes.Scenes.Areas.Plains
 			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.createStatusEffect(StatusEffects.BonusACapacity,20,0,0,0);
 			this.tallness = rand(37) + 64;
-			this.hipRating = Hips.RATING_AVERAGE;
+			this.hips.rating = Hips.RATING_AVERAGE;
 			this.butt.rating = Butt.RATING_AVERAGE+1;
 			this.lowerBody = LowerBody.HOOFED;
 			this.skinTone = "tan";

@@ -176,7 +176,7 @@ package classes.Scenes.Areas.Lake
 			this.ass.analLooseness = AssClass.LOOSENESS_NORMAL;
 			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.tallness = 5*12+7;
-			this.hipRating = Hips.RATING_AMPLE;
+			this.hips.rating = Hips.RATING_AMPLE;
 			this.butt.rating = Butt.RATING_LARGE;
 			this.skinTone = "pale";
 			this.hair.color = "black";

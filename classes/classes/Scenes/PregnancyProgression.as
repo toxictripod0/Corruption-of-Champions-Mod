@@ -1707,8 +1707,8 @@ package classes.Scenes
 					player.butt.rating++;
 					outputText("\n\nYou notice your " + player.buttDescript() + " feeling larger and plumper after the ordeal.");
 				}
-				else if (player.hipRating < 10) {
-					player.hipRating++;
+				else if (player.hips.rating < 10) {
+					player.hips.rating++;
 					outputText("\n\nAfter the birth your " + player.armorName + " fits a bit more snugly about your " + player.hipDescript() + ".");
 				}
 				outputText("\n");
@@ -1750,8 +1750,8 @@ package classes.Scenes
 					
 						outputText("The little boy is already starting to look like he is a few years old; he’s trotting around on his little hoofs.");
 						//Increase the size of the PC’s hips, as per normal for pregnancies, increase birth counter
-						if (player.hipRating < 10) {
-							player.hipRating++;
+						if (player.hips.rating < 10) {
+							player.hips.rating++;
 							outputText("After the birth your " + player.armorName + " fits a bit more snugly about your " + player.hipDescript() + ".");
 						}
 						if (flags[kFLAGS.MARBLE_BOYS] == 0)
@@ -1781,8 +1781,8 @@ package classes.Scenes
 						flags[kFLAGS.MARBLE_KIDS]++;
 					}
 					//Increase the size of the PC's hips, as per normal for pregnancies, increase birth counter
-					if (player.hipRating < 10) {
-						player.hipRating++;
+					if (player.hips.rating < 10) {
+						player.hips.rating++;
 						outputText("\n\nAfter the birth your " + player.armorName + " fits a bit more snugly about your " + player.hipDescript() + ".");
 					}
 				}
@@ -1815,8 +1815,8 @@ package classes.Scenes
 					player.butt.rating++;
 					outputText("\n\nYou notice your " + player.buttDescript() + " feeling larger and plumper after the ordeal.");
 				}
-				else if (player.hipRating < 15) {
-					player.hipRating++;
+				else if (player.hips.rating < 15) {
+					player.hips.rating++;
 					outputText("\n\nAfter the birth your " + player.armorName + " fits a bit more snugly about your " + player.hipDescript() + ".");
 				}
 				player.knockUpForce(); //Clear Pregnancy
@@ -1989,8 +1989,8 @@ package classes.Scenes
 					player.createVagina();
 				}
 				kGAMECLASS.highMountains.minervaScene.minervaPurification.playerGivesBirth();
-				if (player.hipRating < 10) {
-					player.hipRating++;
+				if (player.hips.rating < 10) {
+					player.hips.rating++;
 					outputText("\n\nAfter the birth your " + player.armorName + " fits a bit more snugly about your " + player.hipDescript() + ".");
 				}
 				player.knockUpForce(); //Clear Pregnancy
@@ -2004,8 +2004,8 @@ package classes.Scenes
 					player.createVagina();
 				}
 				kGAMECLASS.volcanicCrag.behemothScene.giveBirthToBehemoth();
-				if (player.hipRating < 10) {
-					player.hipRating++;
+				if (player.hips.rating < 10) {
+					player.hips.rating++;
 					outputText("\n\nAfter the birth your " + player.armorName + " fits a bit more snugly about your " + player.hipDescript() + ".");
 				}
 				player.knockUpForce(); //Clear Pregnancy

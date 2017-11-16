@@ -219,7 +219,7 @@ package classes.Scenes.Areas.HighMountains
 			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.tallness = 8*12+4;
-			this.hipRating = Hips.RATING_CURVY;
+			this.hips.rating = Hips.RATING_CURVY;
 			this.butt.rating = Butt.RATING_LARGE+1;
 			this.skinTone = "blue";
 			this.hair.color = "red";

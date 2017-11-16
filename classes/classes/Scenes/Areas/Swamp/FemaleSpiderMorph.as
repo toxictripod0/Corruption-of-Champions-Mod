@@ -41,7 +41,7 @@ package classes.Scenes.Areas.Swamp
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,30,0,0,0);
 			this.tallness = 7*12+6;
-			this.hipRating = Hips.RATING_CURVY+2;
+			this.hips.rating = Hips.RATING_CURVY+2;
 			this.butt.rating = Butt.RATING_LARGE+1;
 			this.lowerBody = LowerBody.CHITINOUS_SPIDER_LEGS;
 			this.skinTone = "dusky";

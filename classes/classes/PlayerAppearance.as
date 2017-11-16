@@ -645,61 +645,61 @@ package classes
 				if (player.thickness > 70) 
 				{
 					outputText("  You have [hips]");
-					if (player.hipRating < 6) 
+					if (player.hips.rating < 6) 
 					{
 						if (player.tone < 65) 
 							outputText(" buried under a noticeable muffin-top, and");
 						else outputText(" that blend into your pillar-like waist, and");
 					}
-					if (player.hipRating >= 6 && player.hipRating < 10) 
+					if (player.hips.rating >= 6 && player.hips.rating < 10) 
 						outputText(" that blend into the rest of your thick form, and");
-					if (player.hipRating >= 10 && player.hipRating < 15) 
+					if (player.hips.rating >= 10 && player.hips.rating < 15) 
 						outputText(" that would be much more noticeable if you weren't so wide-bodied, and");
-					if (player.hipRating >= 15 && player.hipRating < 20) 
+					if (player.hips.rating >= 15 && player.hips.rating < 20) 
 						outputText(" that sway and emphasize your thick, curvy shape, and");
-					if (player.hipRating >= 20) 
+					if (player.hips.rating >= 20) 
 						outputText(" that sway hypnotically on your extra-curvy frame, and");
 				}
 				else if (player.thickness < 30) 
 				{
 					outputText("  You have [hips]");
-					if (player.hipRating < 6) 
+					if (player.hips.rating < 6) 
 						outputText(" that match your trim, lithe body, and");
-					if (player.hipRating >= 6 && player.hipRating < 10) 
+					if (player.hips.rating >= 6 && player.hips.rating < 10) 
 						outputText(" that sway to and fro, emphasized by your trim body, and");
-					if (player.hipRating >= 10 && player.hipRating < 15) 
+					if (player.hips.rating >= 10 && player.hips.rating < 15) 
 						outputText(" that swell out under your trim waistline, and");
-					if (player.hipRating >= 15 && player.hipRating < 20) 
+					if (player.hips.rating >= 15 && player.hips.rating < 20) 
 						outputText(", emphasized by your narrow waist, and");
-					if (player.hipRating >= 20) 
+					if (player.hips.rating >= 20) 
 						outputText(" that swell disproportionately wide on your lithe frame, and");
 				}
 				//STANDARD
 				else 
 				{
 					outputText("  You have [hips]");
-					if (player.hipRating < 6) 
+					if (player.hips.rating < 6) 
 						outputText(", and");
 					if (player.femininity > 50) 
 					{
-						if (player.hipRating >= 6 && player.hipRating < 10) 
+						if (player.hips.rating >= 6 && player.hips.rating < 10) 
 							outputText(" that draw the attention of those around you, and");
-						if (player.hipRating >= 10 && player.hipRating < 15) 
+						if (player.hips.rating >= 10 && player.hips.rating < 15) 
 							outputText(" that make you walk with a sexy, swinging gait, and");
-						if (player.hipRating >= 15 && player.hipRating < 20) 
+						if (player.hips.rating >= 15 && player.hips.rating < 20) 
 							outputText(" that make it look like you've birthed many children, and");
-						if (player.hipRating >= 20) 
+						if (player.hips.rating >= 20) 
 							outputText(" that make you look more like an animal waiting to be bred than any kind of human, and");
 					}
 					else 
 					{
-						if (player.hipRating >= 6 && player.hipRating < 10) 
+						if (player.hips.rating >= 6 && player.hips.rating < 10) 
 							outputText(" that give you a graceful stride, and");
-						if (player.hipRating >= 10 && player.hipRating < 15) 
+						if (player.hips.rating >= 10 && player.hips.rating < 15) 
 							outputText(" that add a little feminine swing to your gait, and");
-						if (player.hipRating >= 15 && player.hipRating < 20) 
+						if (player.hips.rating >= 15 && player.hips.rating < 20) 
 							outputText(" that force you to sway and wiggle as you move, and");
-						if (player.hipRating >= 20) 
+						if (player.hips.rating >= 20) 
 						{
 							outputText(" that give your ");
 							if (player.balls > 0) 

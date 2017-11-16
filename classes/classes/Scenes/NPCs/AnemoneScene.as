@@ -356,7 +356,7 @@ package classes.Scenes.NPCs
 			//[(breastrow0>C-cup)
 			if (player.biggestTitSize() > 2) outputText("  You give special attention to the presentation of your " + player.breastDescript(0) + ", removing your top with tantalizing slowness, letting each breast slip out and hang between you like fruit ripe to be taken, then making sure to rub them seductively to arouse the both of you further.");
 			//(hipsize=girly or better)
-			if (player.hipRating > 6) outputText("  You make good use of your " + player.hipDescript() + ", too, giving a little shimmy to show off your pronounced curves.");
+			if (player.hips.rating > 6) outputText("  You make good use of your " + player.hipDescript() + ", too, giving a little shimmy to show off your pronounced curves.");
 			outputText("  By the time you're finished, the anemone's crotch glistens with fluid from both her sexes; it's probably as wet as it was when she was underwater.  You lean into the anemone and give her a deep kiss, ");
 			//[(breast0>C)
 			if (player.biggestTitSize() > 2) outputText("making sure to let your " + player.allBreastsDescript() + " rub up against hers, ");

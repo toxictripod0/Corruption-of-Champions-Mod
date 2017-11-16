@@ -146,7 +146,7 @@ package classes.Scenes.Places.Farm
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,50,0,0,0);
 			this.tallness = 84;
-			this.hipRating = Hips.RATING_AVERAGE;
+			this.hips.rating = Hips.RATING_AVERAGE;
 			this.butt.rating = Butt.RATING_AVERAGE+1;
 			this.lowerBody = LowerBody.HOOFED;
 			this.legCount = 4;

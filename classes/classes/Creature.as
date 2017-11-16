@@ -491,19 +491,8 @@ import mx.logging.ILogger;
 		//Tail recharge determines how fast venom/webs comes back per hour.
 		public function get tailRecharge():Number { return tail.recharge; }
 		public function set tailRecharge(value:Number):void { tail.recharge = value; }
-		
-		/*hipRating
-		0 - boyish
-		2 - slender
-		4 - average
-		6 - noticable/ample
-		10 - curvy//flaring
-		15 - child-bearing/fertile
-		20 - inhumanly wide*/
+
 		public var hips:Hips = new Hips();
-		public function get hipRating():Number { return hips.rating; }
-		public function set hipRating(value:Number):void { hips.rating = value; }
-		
 		public var butt:Butt = new Butt();
 		public var antennae:Antennae = new Antennae();
 		public var eyes:Eyes = new Eyes();
@@ -647,7 +636,7 @@ import mx.logging.ILogger;
 			// 2.1. non-negative Number fields
 			error += Utils.validateNonNegativeNumberFields(this,"Monster.validate",[
 				"balls", "ballSize", "cumMultiplier", "hoursSinceCum",
-				"tallness", "hipRating", "butt.rating", "lowerBody", "arms.type",
+				"tallness", "hips.rating", "butt.rating", "lowerBody", "arms.type",
 				"skinType", "hair.length", "hair.type",
 				"face.type", "ears.type", "tongueType", "eyes.type",
 				"str", "tou", "spe", "inte", "lib", "sens", "cor",

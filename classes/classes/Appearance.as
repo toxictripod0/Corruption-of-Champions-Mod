@@ -399,13 +399,13 @@ package classes
 		{
 			var description:String = "";
 			var options:Array;
-			if (i_character.hipRating <= 1) {
+			if (i_character.hips.rating <= 1) {
 				options = ["tiny ",
 					"narrow ",
 					"boyish "];
 				description = randomChoice(options);
 			}
-			else if (i_character.hipRating > 1 && i_character.hipRating < 4) {
+			else if (i_character.hips.rating > 1 && i_character.hips.rating < 4) {
 				options = ["slender ",
 					"narrow ",
 					"thin "];
@@ -415,7 +415,7 @@ package classes
 					else description = "curved ";
 				}
 			}
-			else if (i_character.hipRating >= 4 && i_character.hipRating < 6) {
+			else if (i_character.hips.rating >= 4 && i_character.hips.rating < 6) {
 				options = ["well-formed ",
 					"pleasant "];
 				description = randomChoice(options);
@@ -424,7 +424,7 @@ package classes
 					else description = "curvy ";
 				}
 			}
-			else if (i_character.hipRating >= 6 && i_character.hipRating < 10) {
+			else if (i_character.hips.rating >= 6 && i_character.hips.rating < 10) {
 				options = ["ample ",
 					"noticeable ",
 					"girly "];
@@ -434,7 +434,7 @@ package classes
 					else description = "waspish ";
 				}
 			}
-			else if (i_character.hipRating >= 10 && i_character.hipRating < 15) {
+			else if (i_character.hips.rating >= 10 && i_character.hips.rating < 15) {
 				options = ["flared ",
 					"curvy ",
 					"wide "];
@@ -444,7 +444,7 @@ package classes
 					else description = "waspish ";
 				}
 			}
-			else if (i_character.hipRating >= 15 && i_character.hipRating < 20) {
+			else if (i_character.hips.rating >= 15 && i_character.hips.rating < 20) {
 				if (i_character.thickness < 40) {
 					if (rand(2) == 0) description = "flared, ";
 					else description = "waspish, ";
@@ -454,7 +454,7 @@ package classes
 					"voluptuous "];
 				description += randomChoice(options);
 			}
-			else if (i_character.hipRating >= 20) {
+			else if (i_character.hips.rating >= 20) {
 				if (i_character.thickness < 40) {
 					if (rand(2) == 0) description = "flaring, ";
 					else description = "incredibly waspish, ";

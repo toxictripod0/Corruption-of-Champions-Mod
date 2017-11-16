@@ -98,7 +98,7 @@ package classes.Items.Consumables
 			player.setClitLength(.25);
 			//Tighten butt!
 			player.butt.rating = 2;
-			player.hipRating = 2;
+			player.hips.rating = 2;
 			if (player.ass.analLooseness > 1) player.ass.analLooseness = 1;
 			if (player.ass.analWetness > 1) player.ass.analWetness = 1;
 			//Clear breasts

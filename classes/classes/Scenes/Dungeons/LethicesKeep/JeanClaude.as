@@ -97,7 +97,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			ass.analLooseness = 0;
 			ass.analWetness = 0;
 			
-			hipRating = Hips.RATING_AVERAGE;
+			hips.rating = Hips.RATING_AVERAGE;
 			butt.rating = Butt.RATING_AVERAGE;
 			lowerBody = LowerBody.LIZARD;
 			tailType = Tail.LIZARD;

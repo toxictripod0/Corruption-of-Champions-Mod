@@ -112,7 +112,7 @@ package classes.Scenes.Dungeons.DeepCave
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,10,0,0,0);
 			this.tallness = 4*12;
-			this.hipRating = Hips.RATING_CURVY;
+			this.hips.rating = Hips.RATING_CURVY;
 			this.butt.rating = Butt.RATING_LARGE;
 			this.skinTone = "fair";
 			this.hair.color = "purple";

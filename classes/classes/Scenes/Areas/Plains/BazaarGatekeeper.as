@@ -128,7 +128,7 @@ package classes.Scenes.Areas.Plains
 			this.ass.analLooseness = 1;
 			this.ass.analWetness = 0;
 			this.tallness = 10*12;
-			this.hipRating = 2;
+			this.hips.rating = 2;
 			this.butt.rating = 0;
 			this.skinTone = "crimson";
 			this.skinType = 0;

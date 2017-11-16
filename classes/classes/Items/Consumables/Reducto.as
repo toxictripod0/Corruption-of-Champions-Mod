@@ -28,7 +28,7 @@ package classes.Items.Consumables
 			var rdtButt:Function	= (game.player.butt.rating > 1 ? reductoButt : null);
 			var rdtClit:Function	= (game.player.vaginas.length > 0 && game.player.getClitLength() > 0.25 ? reductoClit : null);
 			var rdtCock:Function	= (game.player.cockTotal() > 0 && game.player.biggestCockArea() > 6 ? reductoCock : null);
-			var rdtHips:Function	= (game.player.hipRating > 2 ? reductoHips : null);
+			var rdtHips:Function	= (game.player.hips.rating > 2 ? reductoHips : null);
 			var rdtNipples:Function	= (game.player.nippleLength > 0.25 ? reductoNipples : null);
 			var rdtHorns:Function	= (game.player.horns > 2 ? shrinkHorns : null);
 			clearOutput();
@@ -128,17 +128,17 @@ package classes.Items.Consumables
 		private function reductoHips():void {
 			clearOutput();
 			outputText("You smear the foul-smelling paste onto your [hips].  It feels cool at first but rapidly warms to an uncomfortable level of heat.\n\n");
-			if (game.player.hipRating >= 15) {
-				game.player.hipRating -= (3 + int(game.player.hipRating / 3));
+			if (game.player.hips.rating >= 15) {
+				game.player.hips.rating -= (3 + int(game.player.hips.rating / 3));
 				outputText("Within seconds you feel noticeably lighter, and a quick glance at your hips shows they've gotten significantly narrower.");
 			}
-			else if (game.player.hipRating >= 10) {
-				game.player.hipRating -= 3;
+			else if (game.player.hips.rating >= 10) {
+				game.player.hips.rating -= 3;
 				outputText("You feel much lighter as your [hips] shift slightly, adjusting to their smaller size.");
 			}
 			else {
-				game.player.hipRating -= Utils.rand(3) + 1;
-				if (game.player.hipRating < 1) game.player.hipRating = 1;
+				game.player.hips.rating -= Utils.rand(3) + 1;
+				if (game.player.hips.rating < 1) game.player.hips.rating = 1;
 				outputText("After a few seconds your [hips] have shrunk to a much smaller size!");
 			}
 			game.dynStats("lib", -2, "lus", -10);

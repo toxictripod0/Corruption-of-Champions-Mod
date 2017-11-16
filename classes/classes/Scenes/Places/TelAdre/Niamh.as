@@ -505,7 +505,7 @@ public function bimboChampagne(player:Player,clearScreen:Boolean,intro:Boolean):
 			outputText("\n\nYour butt jiggles deliciously - it feels like the bubbles from the drink are pushing out your plump rump, filling it like bagged sparkling wine!  Your bubbly booty swells and inflates until it feels as airy as your head.  Like, this is soooo plush!");
 			player.changeStatusValue(StatusEffects.BimboChampagne,4,12-player.butt.rating);
 			player.butt.rating = 12;
-			if (player.hipRating < 10) player.hipRating = 10;
+			if (player.hips.rating < 10) player.hips.rating = 10;
 		}
 		dynStats("spe", -10, "lib", 1, "lus", 25);
 	}

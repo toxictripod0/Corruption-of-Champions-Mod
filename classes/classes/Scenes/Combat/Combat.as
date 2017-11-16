@@ -2174,7 +2174,7 @@ public class Combat extends BaseContent
 			else {
 				if (player.biggestTitSize() >= 35) escapeMod += 5;
 				if (player.biggestTitSize() >= 66) escapeMod += 10;
-				if (player.hipRating >= 20) escapeMod += 5;
+				if (player.hips.rating >= 20) escapeMod += 5;
 				if (player.butt.rating >= 20) escapeMod += 5;
 				if (player.ballSize >= 24 && player.balls > 0) escapeMod += 5;
 				if (player.ballSize >= 48 && player.balls > 0) escapeMod += 10;
@@ -2309,12 +2309,12 @@ public class Combat extends BaseContent
 						else outputText("With your " + player.ballsDescriptLight() + " dragging along the ground, getting away is far harder than it should be.  ");
 					}
 					//FATASS BODY MESSAGES
-					if (player.biggestTitSize() >= 35 || player.butt.rating >= 20 || player.hipRating >= 20)
+					if (player.biggestTitSize() >= 35 || player.butt.rating >= 20 || player.hips.rating >= 20)
 					{
 						//FOR PLAYERS WITH GIANT BREASTS
 						if (player.biggestTitSize() >= 35 && player.biggestTitSize() < 66)
 						{
-							if (player.hipRating >= 20)
+							if (player.hips.rating >= 20)
 							{
 								outputText("Your " + player.hipDescript() + " forces your gait to lurch slightly side to side, which causes the fat of your " + player.skinTone + " ");
 								if (player.butt.rating >= 20) outputText(player.buttDescript() + " and ");
@@ -2325,7 +2325,7 @@ public class Combat extends BaseContent
 						}
 						//FOR PLAYERS WITH MASSIVE BREASTS
 						else if (player.biggestTitSize() >= 66) {
-							if (player.hipRating >= 20) {
+							if (player.hips.rating >= 20) {
 								outputText("Your " + player.chestDesc() + " nearly drag along the ground while your " + player.hipDescript() + " swing side to side ");
 								if (player.butt.rating >= 20) outputText("causing the fat of your " + player.skinTone + player.buttDescript() + " to wobble heavily, ");
 								outputText("forcing your body off balance and preventing you from moving quick enough to get escape.");
@@ -2334,7 +2334,7 @@ public class Combat extends BaseContent
 							else outputText("Your " + player.chestDesc() + " nearly drag along the ground, preventing you from moving quick enough to get escape.");
 						}
 						//FOR PLAYERS WITH EITHER GIANT HIPS OR BUTT BUT NOT THE BREASTS
-						else if (player.hipRating >= 20) {
+						else if (player.hips.rating >= 20) {
 							outputText("Your " + player.hipDescript() + " swing heavily from side to side ");
 							if (player.butt.rating >= 20) outputText("causing your " + player.skinTone + player.buttDescript() + " to wobble obscenely ");
 							outputText("and forcing your body into an awkward gait that slows you down, preventing you from escaping.");

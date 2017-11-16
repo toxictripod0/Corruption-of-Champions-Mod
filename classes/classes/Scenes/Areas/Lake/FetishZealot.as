@@ -156,7 +156,7 @@ package classes.Scenes.Areas.Lake
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,40,0,0,0);
 			this.tallness = 6*12;
-			this.hipRating = Hips.RATING_BOYISH+1;
+			this.hips.rating = Hips.RATING_BOYISH+1;
 			this.butt.rating = Butt.RATING_TIGHT;
 			this.skinTone = "tan";
 			this.hair.color = "black";

@@ -165,7 +165,7 @@ package classes.Scenes.Dungeons.DesertCave
 			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
 			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.tallness = rand(12) + 55;
-			this.hipRating = Hips.RATING_CURVY;
+			this.hips.rating = Hips.RATING_CURVY;
 			this.butt.rating = Butt.RATING_LARGE;
 			this.skinTone = "bronzed";
 			this.hair.color = "sandy-blonde";
