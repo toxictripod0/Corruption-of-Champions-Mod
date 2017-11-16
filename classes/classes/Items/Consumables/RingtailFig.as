@@ -100,12 +100,12 @@ package classes.Items.Consumables
 			//gain fur
 			if ((player.lowerBody.type === LowerBody.RACCOON && player.ears.type === Ears.RACCOON) && !player.hasFur() && changes < changeLimit && rand(4) === 0) {
 				outputText("\n\nYou shiver, feeling a bit cold.  Just as you begin to wish for something to cover up with, it seems your request is granted; thick, bushy fur begins to grow all over your body!  You tug at the tufts in alarm, but they're firmly rooted and... actually pretty soft.  Huh.  ");
-				player.skinType = Skin.FUR;
-				player.skinAdj = "";
-				player.skinDesc = "fur";
-				player.furColor = "gray";
+				player.skin.type = Skin.FUR;
+				player.skin.adj = "";
+				player.skin.desc = "fur";
+				player.skin.furColor = "gray";
 				player.underBody.restore(); // Restore the underbody for now
-				outputText("<b>You now have a warm coat of " + player.furColor + " raccoon fur!</b>");
+				outputText("<b>You now have a warm coat of " + player.skin.furColor + " raccoon fur!</b>");
 				changes++;
 			}
 			//gain coon ears
@@ -159,7 +159,7 @@ package classes.Items.Consumables
 					}
 					outputText("Shaking your head a bit, you wait for your energy to return, then examine your appearance.  ");
 					//(if player skinTone = ebony/black/ebony with tats and no fur/scales or if black/midnight fur or if black scales
-					if (((player.skinTone === "ebony" || player.skinTone === "black") && (player.hasPlainSkin() || player.hasGooSkin())) || ((player.hair.color === "black" || player.hair.color === "midnight") && player.isFurryOrScaley())) {
+					if (((player.skin.tone === "ebony" || player.skin.tone === "black") && (player.hasPlainSkin() || player.hasGooSkin())) || ((player.hair.color === "black" || player.hair.color === "midnight") && player.isFurryOrScaley())) {
 						outputText("Nothing seems different at first.  Strange... you look closer and discover a darker, mask-line outline on your already inky visage.  <b>You now have a barely-visible raccoon mask.</b>");
 					}
 					else outputText("A dark, almost black mask shades the " + player.skinFurScales() + " around your eyes and over the topmost portion of your nose, lending you a criminal air!  <b>You now have a raccoon mask!</b>");
@@ -169,7 +169,7 @@ package classes.Items.Consumables
 					outputText("\n\nA sudden migraine sweeps over you and you clutch your head in agony as your nose collapses back to human dimensions.  A worrying numb spot grows around your eyes, and you entertain several horrible premonitions until it passes as suddenly as it came.  Checking your reflection in your water barrel, you find ");
 					//[(if black/midnight fur or if black scales)
 					if (((player.hair.color === "black" || player.hair.color === "midnight") && player.isFurryOrScaley())) outputText("your face apparently returned to normal shape, albeit still covered in " + player.skinFurScales() + ".  You look closer and discover a darker, mask-line outline on your already inky visage.  <b>You now have a barely-visible raccoon mask on your otherwise normal human face.</b>");
-					else if ((player.skinTone === "ebony" || player.skinTone === "black") && (player.hasPlainSkin() || player.hasGooSkin())) outputText("your face apparently returned to normal shape.  You look closer and discover a darker, mask-line outline on your already inky visage.  <b>You now have a barely-visible raccoon mask on your normal human face.</b>");
+					else if ((player.skin.tone === "ebony" || player.skin.tone === "black") && (player.hasPlainSkin() || player.hasGooSkin())) outputText("your face apparently returned to normal shape.  You look closer and discover a darker, mask-line outline on your already inky visage.  <b>You now have a barely-visible raccoon mask on your normal human face.</b>");
 					else outputText("your face returned to human dimensions, but shaded by a black mask around the eyes and over the nose!  <b>You now have a humanoid face with a raccoon mask!</b>");
 				}
 				player.face.type = Face.RACCOON_MASK;

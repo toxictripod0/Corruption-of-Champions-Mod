@@ -287,7 +287,7 @@ package classes.Scenes.Areas.Bog
 			this.lowerBody.type = LowerBody.HUMAN
 			this.arms.type = Arms.HUMAN;
 
-			this.skinTone = "black";
+			this.skin.tone = "black";
 			this.hair.color = "black";
 			this.hair.length = 1;
 

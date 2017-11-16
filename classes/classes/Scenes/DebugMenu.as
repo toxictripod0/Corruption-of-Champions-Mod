@@ -1353,8 +1353,8 @@ import classes.Items.*
 			player.ears.type = Ears.CAT;
 			player.lowerBody.type = LowerBody.CAT;
 			player.lowerBody.legCount = 2;
-			player.skinType = Skin.FUR;
-			player.skinDesc = "fur";
+			player.skin.type = Skin.FUR;
+			player.skin.desc = "fur";
 			player.underBody.restore(); // Restore the underbody for now
 			//Draconic TF
 			player.horns.type = Horns.DRACONIC_X2;
@@ -1377,10 +1377,10 @@ import classes.Items.*
 			player.lowerBody.type = LowerBody.CAT;
 			player.lowerBody.legCount = 2;
 			//Draconic TF
-			player.skinType = Skin.DRAGON_SCALES;
-			player.skinAdj = "tough";
-			player.skinDesc = "shield-shaped dragon scales";
-			player.furColor = player.hair.color;
+			player.skin.type = Skin.DRAGON_SCALES;
+			player.skin.adj = "tough";
+			player.skin.desc = "shield-shaped dragon scales";
+			player.skin.furColor = player.hair.color;
 			player.underBody.type = UnderBody.REPTILE;
 			player.copySkinToUnderBody({       // copy the main skin props to the underBody skin ...
 				desc: "ventral dragon scales"  // ... and only override the desc

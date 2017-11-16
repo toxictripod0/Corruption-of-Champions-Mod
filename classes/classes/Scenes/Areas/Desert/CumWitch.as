@@ -189,7 +189,7 @@ package classes.Scenes.Areas.Desert
 			this.tallness = rand(12) + 55;
 			this.hips.rating = Hips.RATING_CURVY;
 			this.butt.rating = Butt.RATING_LARGE;
-			this.skinTone = "black";
+			this.skin.tone = "black";
 			this.hair.color = "sandy-blonde";
 			this.hair.length = 15;
 			initStrTouSpeInte(35, 35, 35, 85);

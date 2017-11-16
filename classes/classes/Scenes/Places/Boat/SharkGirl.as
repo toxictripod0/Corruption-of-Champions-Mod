@@ -57,7 +57,7 @@ package classes.Scenes.Places.Boat
 			this.tallness = 5*12+5;
 			this.hips.rating = Hips.RATING_AMPLE+2;
 			this.butt.rating = Butt.RATING_LARGE;
-			this.skinTone = "gray";
+			this.skin.tone = "gray";
 			this.hair.color = "silver";
 			this.hair.length = 16;
 			initStrTouSpeInte(40, 40, 55, 42);

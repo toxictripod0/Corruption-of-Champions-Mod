@@ -100,7 +100,7 @@ package classes.Scenes.Areas.Mountain
 			this.tallness = 1;
 			this.hips.rating = Hips.RATING_SLENDER;
 			this.butt.rating = Butt.RATING_BUTTLESS;
-			this.skinTone = "white";
+			this.skin.tone = "white";
 			initStrTouSpeInte(35, 5, 10, 1);
 			initLibSensCor(90, 60, 90);
 			this.weaponName = "worm";

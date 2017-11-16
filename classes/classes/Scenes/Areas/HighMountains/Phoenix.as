@@ -127,9 +127,9 @@ package classes.Scenes.Areas.HighMountains
 			this.hips.rating = Hips.RATING_CURVY;
 			this.butt.rating = Butt.RATING_JIGGLY;
 			this.lowerBody.type = LowerBody.HARPY;
-			this.skinTone = "light";
-			this.skinType = Skin.LIZARD_SCALES;
-			this.skinDesc = "crimson";
+			this.skin.tone = "light";
+			this.theSkinType = Skin.LIZARD_SCALES;
+			this.skin.desc = "crimson";
 			this.hair.color = "red";
 			this.hair.length = 16;
 			initStrTouSpeInte(100, 70, 100, 65);

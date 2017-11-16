@@ -213,9 +213,9 @@ package classes.Scenes.Dungeons.DeepCave
 			this.tallness = 120;
 			this.hips.rating = Hips.RATING_SLENDER;
 			this.butt.rating = Butt.RATING_BUTTLESS;
-			this.skinTone = "purple";
-			this.skinType = Skin.PLAIN;
-			this.skinDesc = "covering";
+			this.skin.tone = "purple";
+			this.theSkinType = Skin.PLAIN;
+			this.skin.desc = "covering";
 			this.hair.color = "black";
 			this.hair.length = 0;
 			initStrTouSpeInte(90, 1, 1, 1);

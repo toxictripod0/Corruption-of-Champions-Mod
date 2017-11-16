@@ -134,7 +134,7 @@ package classes.Scenes.Areas.Forest
 			this.tallness = 40;
 			this.hips.rating = Hips.RATING_AMPLE+2;
 			this.butt.rating = Butt.RATING_LARGE;
-			this.skinTone = "greenish gray";
+			this.skin.tone = "greenish gray";
 			this.hair.color = "pink and black";
 			this.hair.length = 16;
 			initStrTouSpeInte(32, 43, 55, 62);

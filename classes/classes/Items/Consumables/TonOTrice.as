@@ -432,7 +432,7 @@ package classes.Items.Consumables
 				          +" structure shifting, reforming into something... different. Your lower face elongates, your nose and lips fusing into the"
 				          +" new upper half of your mouth while your jaw soon catches it up as they both harden. Your larger upper lip curves over"
 				          +" your lower, ending in a pointed tip as it changes colour to a shade of yellow. Small feathers rapidly sprout from your"
-				          +" skin, covering it in " + (player.hasCockatriceSkin() ? player.furColor : player.hair.color) + " feathers. Once your face"
+				          +" skin, covering it in " + (player.hasCockatriceSkin() ? player.skin.furColor : player.hair.color) + " feathers. Once your face"
 				          +" stops it’s rapid transformation you run your hands over your face. You have a beak like muzzle,"
 				          +" though instead of sharp edges, the lips are firm and rubbery, allowing you the same amount of facial expression as"
 				          +" before while being solid enough to crack open seeds and nuts like that of a bird.");
@@ -482,7 +482,7 @@ package classes.Items.Consumables
 			if (player.arms.type != Arms.COCKATRICE && changes < changeLimit && rand(4) == 0) {
 				outputText("\n\nPrickling discomfort suddenly erupts all over your body, like every last inch of your skin has suddenly developed"
 				          +" pins and needles. You scratch yourself, hoping for relief; but soon notice lumps forming under the skin as your lower"
-				          +" arm begins to shed. A coat of " + (player.hasCockatriceSkin() ? player.furColor : player.hair.color) + " feathers sprouts"
+				          +" arm begins to shed. A coat of " + (player.hasCockatriceSkin() ? player.skin.furColor : player.hair.color) + " feathers sprouts"
 				          +" from your skin, covering your upper arm and shoulder entirely, ending at your elbow in a fluffy cuff."
 				          +" A few long feathers decorate your elbows like vestigial wings. Your lower arm however as grown a layer thick leathery"
 				          +" scales and dangerous looking talons tip your fingers. As suddenly as the itching came it fades, leaving you to marvel"
@@ -548,7 +548,7 @@ package classes.Items.Consumables
 				outputText("\n\nYou scream in agony as you feel the bones in your feet suddenly break and restructure themselves,"
 				          +" becoming digitigrade. These strange new legs have three-toed, clawed feet, complete with a small vestigial claw-toe on"
 				          +" the back for added grip, yet from hip to knee are covered with a layer of "
-				          + (player.hasCockatriceSkin() ? player.furColor : player.hair.color) + " feathers that end in a cuff.");
+				          + (player.hasCockatriceSkin() ? player.skin.furColor : player.hair.color) + " feathers that end in a cuff.");
 				outputText("\n<b>You have cockatrice legs!</b>");
 				player.lowerBody.type = LowerBody.COCKATRICE;
 				player.lowerBody.legCount = 2;
@@ -559,7 +559,7 @@ package classes.Items.Consumables
 				outputText("\n\nA sudden dull, throbbing pain in your [butt] forces your hands to it; you can feel an ominous lump over your tail"
 				          +" bone, swelling bigger and bigger with every heartbeat.  All of a sudden, it seems to explode, jutting out and around"
 				          +" until it hovers near your ankles. The skin beneath your fingers is covered in feathers but terminates about an inch"
-				          +" later in a 'v'shape, giving way to " + player.skinTone + " scales.");
+				          +" later in a 'v'shape, giving way to " + player.skin.tone + " scales.");
 				outputText("\n<b>You now have a cockatrice tail!</b>");
 				player.tailType = Tail.COCKATRICE;
 				player.tailRecharge = 5;
@@ -575,7 +575,7 @@ package classes.Items.Consumables
 				}
 				player.wings.setProps({
 					type:  Wings.FEATHERED_LARGE,
-					color: player.isFluffy() || player.hasCockatriceSkin() ? player.furColor : player.hair.color
+					color: player.isFluffy() || player.hasCockatriceSkin() ? player.skin.furColor : player.hair.color
 				});
 				outputText("\nPain lances through your back, the muscles knotting oddly and pressing up to bulge your skin. It hurts, oh gods does"
 				          +" it hurt, but you can’t get a good angle to feel at the source of your agony. A loud crack splits the air, and then your"

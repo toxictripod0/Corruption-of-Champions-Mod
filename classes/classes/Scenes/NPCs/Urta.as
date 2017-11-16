@@ -1044,7 +1044,7 @@ internal function takeUrtaInTheButtPublically():void {
 	}
 	outputText("  You can't hold back, and start moaning quietly, trying your best to be silent and failing horribly.  For her part, your foxy lover seems equally incapable of suppressing her orgasm, and you feel her thick organ flexing inside you as it prepares to cum.\n\n");
 
-	outputText("Her paws pull you down hard, crushing your " + player.buttDescript() + " against her as her sheath presses into your " + player.assholeDescript() + ".  The invading flesh ripples from the base towards the tip, culminating in a flood of warmth that makes your belly gurgle, and at that moment you cum.  Your sphincter clamps down tightly around Urta's marvelous member, unintentionally providing the fox with an even better orgasm.  The next pulse of cum feels even larger, and you look down in shock when you realize you can see the outline of her shaft on the " + player.skinDesc + " of your belly.  As she cums you can see it getting less distinct as your body becomes more and more rounded.  A few blasts later you look positively pudgy, but you can feel her softening inside you.\n\n");
+	outputText("Her paws pull you down hard, crushing your " + player.buttDescript() + " against her as her sheath presses into your " + player.assholeDescript() + ".  The invading flesh ripples from the base towards the tip, culminating in a flood of warmth that makes your belly gurgle, and at that moment you cum.  Your sphincter clamps down tightly around Urta's marvelous member, unintentionally providing the fox with an even better orgasm.  The next pulse of cum feels even larger, and you look down in shock when you realize you can see the outline of her shaft on the " + player.skin.desc + " of your belly.  As she cums you can see it getting less distinct as your body becomes more and more rounded.  A few blasts later you look positively pudgy, but you can feel her softening inside you.\n\n");
 
 	outputText("Urta sighs and takes a sip of her drink, giving you a quick peck on the side of your neck.  You start to rise, but the drunken hermaphrodite grabs you and holds you down, \"<i>Let's just stay like this a little longer...</i>\"\n\n");
 
@@ -2047,7 +2047,7 @@ private function oralFiestyUberExplosionUrta():void {
 	outputText("  Her tongue curves and slurps at your shaft, swelteringly warm, wet, and tantalizingly slippery.  She tastes you from ");
 	if (player.hasSheath()) outputText("sheath");
 	else outputText("base");
-	outputText(" to " + player.cockHead(x) + ", stopping to suckle the sensitive end briefly before breaking away for another long lick along the underside.  Her hands stroke along the sensitive " + player.skinDesc + " of your inner thighs, making your hips shiver and nearly pulling your " + player.cockDescript(x) + " away from your lover's hungry mouth.\n\n");
+	outputText(" to " + player.cockHead(x) + ", stopping to suckle the sensitive end briefly before breaking away for another long lick along the underside.  Her hands stroke along the sensitive " + player.skin.desc + " of your inner thighs, making your hips shiver and nearly pulling your " + player.cockDescript(x) + " away from your lover's hungry mouth.\n\n");
 
 	outputText("Whilst the fox is busy with your genitals, you begin to perform your duty, reciprocating the pleasure in turn.  You stretch your mouth wide, opening as far as you can to accommodate the mammoth beast before you.  It's difficult, but you manage to stretch wide enough to take her flare in your mouth.  It tastes vaguely salty like sweat, and in Urta's excited state it's easy to feel her flare widen and retract with each beat of her heart.  A dollop of pre-cum deposits itself on your tongue as the horny fox's nymphomaniac body reacts to you.  It tastes sweet, and you swallow as you work her deeper into your oral cavity.\n\n");
 
@@ -4771,9 +4771,9 @@ private function urtasRuinedOrgasmsFromGooPartII():void {
 		flags[kFLAGS.MET_OLIVIA]++;
 	}
 	//(Goo skin not white?)
-	if (player.skinTone != "milky white") {
+	if (player.skin.tone != "milky white") {
 		outputText("\n\nThen you catch sight of your body...  You hold up a hand in surprise.  Your skin has changed color!  Your time inside Urta's balls has taken its toll, it seems.  <b>You now have milky white skin!</b>");
-		player.skinTone = "milky white";
+		player.skin.tone = "milky white";
 		mutations.updateClaws(player.claws.type);
 		player.cumMultiplier += 10;
 	}

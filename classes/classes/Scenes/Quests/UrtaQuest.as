@@ -231,13 +231,13 @@ public function startUrtaQuest():void {
 	player.tallness = 71;
 	player.hair.color = "gray";
 	player.hair.length = 12;
-	player.skinType = Skin.FUR;
-	player.skinAdj = "silky";
-	player.skinDesc = "fur";
+	player.skin.type = Skin.FUR;
+	player.skin.adj = "silky";
+	player.skin.desc = "fur";
 	player.createBreastRow();
 	player.breastRows[0].breastRating = 7;
 	player.nippleLength = .75;
-	player.skinTone = "black";
+	player.skin.tone = "black";
 	player.lowerBody.type = LowerBody.FOX;
 	player.lowerBody.legCount = 2;
 	player.ears.type = Ears.FOX;

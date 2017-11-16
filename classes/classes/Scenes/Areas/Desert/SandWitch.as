@@ -72,7 +72,7 @@
 			this.tallness = rand(12) + 55;
 			this.hips.rating = Hips.RATING_CURVY;
 			this.butt.rating = Butt.RATING_LARGE;
-			this.skinTone = "bronzed";
+			this.skin.tone = "bronzed";
 			this.hair.color = "sandy-blonde";
 			this.hair.length = 15;
 			initStrTouSpeInte(25, 25, 35, 45);

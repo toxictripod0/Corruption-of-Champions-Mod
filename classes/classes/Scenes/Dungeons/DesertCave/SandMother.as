@@ -129,7 +129,7 @@ package classes.Scenes.Dungeons.DesertCave
 			this.tallness = 8*12+6;
 			this.hips.rating = Hips.RATING_CURVY;
 			this.butt.rating = Butt.RATING_LARGE;
-			this.skinTone = "bronzed";
+			this.skin.tone = "bronzed";
 			this.hair.color = "platinum-blonde";
 			this.hair.length = 15;
 			initStrTouSpeInte(55, 55, 35, 45);

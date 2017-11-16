@@ -194,7 +194,7 @@
 			}
 			player.HP = player.maxHP();
 			player.hair.length = 5;
-			player.skinType = Skin.PLAIN;
+			player.skin.type = Skin.PLAIN;
 			player.underBody.restore();
 			player.neck.restore();
 			player.rearBody.restore();
@@ -209,8 +209,8 @@
 			player.beard.style = 0;
 			player.tone = 50;
 			player.thickness = 50;
-			player.skinDesc = "skin";
-			player.skinAdj = "";
+			player.skin.desc = "skin";
+			player.skin.adj = "";
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) {
 				player.balls = 0;
 				player.ballSize = 0;
@@ -238,7 +238,7 @@
 			player.wingType = Wings.NONE;
 			if (player.eyes.type == Eyes.BASILISK) player.eyes.type = Eyes.LIZARD; // Silently change them to be lizard eyes again. Simple and stupid ;)
 			//Default
-			player.skinTone = "light";
+			player.skin.tone = "light";
 			player.claws.tone = "";
 			player.hair.color = "brown";
 			player.hair.type = Hair.NORMAL;
@@ -781,7 +781,7 @@
 		}
 
 		private function setComplexion(choice:String):void { //And choose hair
-			player.skinTone = choice;
+			player.skin.tone = choice;
 			player.claws.tone = "";
 			clearOutput();
 			outputText("You selected a " + choice + " complexion.\n\nWhat color is your hair?");
@@ -814,7 +814,7 @@
 			
 			outputText("You can finalize your appearance customization before you proceed to perk selection. You will be able to alter your appearance through the usage of certain items.\n\n");
 			outputText("Height: " + Math.floor(player.tallness / 12) + "'" + player.tallness % 12 + "\"\n");
-			outputText("Skin tone: " + player.skinTone + "\n");
+			outputText("Skin tone: " + player.skin.tone + "\n");
 			outputText("Hair color: " + player.hair.color + "\n");
 			if (player.hasCock()) {
 				outputText("Cock size: " + player.cocks[0].cockLength + "\" long, " + player.cocks[0].cockThickness + "\" thick\n");
@@ -852,7 +852,7 @@
 			addButton(14, "Back", genericStyleCustomizeMenu);
 		}	
 		private function confirmComplexion(complexion:String):void {
-			player.skinTone = complexion;
+			player.skin.tone = complexion;
 			genericStyleCustomizeMenu();
 		}
 

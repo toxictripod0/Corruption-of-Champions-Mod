@@ -33,7 +33,7 @@ package classes.Scenes.Places.Prison
 			this.tallness = 40;
 			this.hips.rating = Hips.RATING_BOYISH;
 			this.butt.rating = Butt.RATING_TIGHT;
-			this.skinTone = "red";
+			this.skin.tone = "red";
 			this.hair.color = "black";
 			this.hair.length = 5;
 			initStrTouSpeInte(40, 35, 25, 28);

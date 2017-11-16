@@ -24,7 +24,7 @@ package classes.Scenes.Areas.HighMountains
 			this.tallness = 9*12+0;
 			this.hips.rating = Hips.RATING_AVERAGE;
 			this.butt.rating = Butt.RATING_TIGHT;
-			this.skinTone = "creamy-white";
+			this.skin.tone = "creamy-white";
 			this.hair.color = "golden";
 			this.hair.length = 25;
 			initStrTouSpeInte(110, 90, 90, 80);

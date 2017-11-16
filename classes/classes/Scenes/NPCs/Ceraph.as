@@ -66,7 +66,7 @@ package classes.Scenes.NPCs
 			//[SPECIAL WHILE PC RESTRAINED]
 			else {
 				if (rand(2) == 0) {
-					outputText("Ceraph cuddles up against you, embracing you tenderly.  Her more-than-ample bosom crushes against your flank, and her demonic prick grinds and rubs against your " + player.skinDesc + ", smearing it with her juices.  Her hands slide over your bound form, sneaking underneath your " + player.armorName + " to caress you more intimately while you're at her mercy.");
+					outputText("Ceraph cuddles up against you, embracing you tenderly.  Her more-than-ample bosom crushes against your flank, and her demonic prick grinds and rubs against your " + player.skin.desc + ", smearing it with her juices.  Her hands slide over your bound form, sneaking underneath your " + player.armorName + " to caress you more intimately while you're at her mercy.");
 					player.takeLustDamage(9 + player.sens / 10, true);
 				}
 				//[SPECIAL 2 WHILE PC RESTRAINED]
@@ -117,7 +117,7 @@ package classes.Scenes.NPCs
 		public function ceraphBoundWait():void
 		{
 			clearOutput();
-			outputText("Why bother resisting?  The feeling of the leather wrapped tightly around you, digging into your " + player.skinDesc + ", is intoxicating.");
+			outputText("Why bother resisting?  The feeling of the leather wrapped tightly around you, digging into your " + player.skin.desc + ", is intoxicating.");
 			if (flags[kFLAGS.PC_FETISH] >= 2) {
 				outputText("  You squirm inside the bindings as you get more and more turned on, hoping that Ceraph will strip away your armor and force you to parade around as her bound, naked pet.");
 				player.takeLustDamage(5, true);
@@ -309,7 +309,7 @@ package classes.Scenes.NPCs
 			this.hips.rating = Hips.RATING_CURVY;
 			this.butt.rating = Butt.RATING_NOTICEABLE;
 			this.lowerBody.type = LowerBody.DEMONIC_HIGH_HEELS;
-			this.skinTone = "purple";
+			this.skin.tone = "purple";
 			this.hair.color = "black";
 			this.hair.length = 20;
 			initStrTouSpeInte(65, 40, 80, 80);

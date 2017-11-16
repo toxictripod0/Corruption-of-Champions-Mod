@@ -867,7 +867,7 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile.data.thickness = player.thickness;
 		saveFile.data.tone = player.tone;
 		saveFile.data.tallness = player.tallness;
-		saveFile.data.furColor = player.furColor;
+		saveFile.data.furColor = player.skin.furColor;
 		saveFile.data.hairColor = player.hair.color;
 		saveFile.data.hairType = player.hair.type;
 		saveFile.data.gillType = player.gills.type;
@@ -877,10 +877,10 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile.data.eyeType = player.eyes.type;
 		saveFile.data.eyeCount = player.eyes.count;
 		saveFile.data.beardStyle = player.beard.style;
-		saveFile.data.skinType = player.skinType;
-		saveFile.data.skinTone = player.skinTone;
-		saveFile.data.skinDesc = player.skinDesc;
-		saveFile.data.skinAdj = player.skinAdj;
+		saveFile.data.skinType = player.skin.type;
+		saveFile.data.skinTone = player.skin.tone;
+		saveFile.data.skinDesc = player.skin.desc;
+		saveFile.data.skinAdj = player.skin.adj;
 		saveFile.data.faceType = player.face.type;
 		saveFile.data.tongueType = player.tongueType;
 		saveFile.data.earType = player.ears.type;
@@ -1649,9 +1649,9 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		
 		player.tallness = saveFile.data.tallness;
 		if (saveFile.data.furColor == undefined || saveFile.data.furColor == "no")
-			player.furColor = saveFile.data.hairColor;
+			player.skin.furColor = saveFile.data.hairColor;
 		else
-			player.furColor = saveFile.data.furColor;
+			player.skin.furColor = saveFile.data.furColor;
 		player.hair.color = saveFile.data.hairColor;
 		if (saveFile.data.hairType == undefined)
 			player.hair.type = 0;
@@ -1668,80 +1668,80 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		else
 			player.arms.type = saveFile.data.armType;
 		player.hair.length = saveFile.data.hairLength;
-		player.skinType = saveFile.data.skinType;
+		player.skin.type = saveFile.data.skinType;
 		if (saveFile.data.skinAdj == undefined)
-			player.skinAdj = "";
+			player.skin.adj = "";
 		else
-			player.skinAdj = saveFile.data.skinAdj;
-		player.skinTone = saveFile.data.skinTone;
-		player.skinDesc = saveFile.data.skinDesc;
+			player.skin.adj = saveFile.data.skinAdj;
+		player.skin.tone = saveFile.data.skinTone;
+		player.skin.desc = saveFile.data.skinDesc;
 		//Silently discard Skin.UNDEFINED
-		if (player.skinType == Skin.UNDEFINED)
+		if (player.skin.type == Skin.UNDEFINED)
 		{
-			player.skinAdj = "";
-			player.skinDesc = "skin";
-			player.skinType = Skin.PLAIN;
+			player.skin.adj = "";
+			player.skin.desc = "skin";
+			player.skin.type = Skin.PLAIN;
 		}
 		//Convert from old skinDesc to new skinAdj + skinDesc!
-		if (player.skinDesc.indexOf("smooth") != -1)
+		if (player.skin.desc.indexOf("smooth") != -1)
 		{
-			player.skinAdj = "smooth";
+			player.skin.adj = "smooth";
 			if (player.hasPlainSkin())
-				player.skinDesc = "skin";
+				player.skin.desc = "skin";
 			if (player.hasFur())
-				player.skinDesc = "fur";
+				player.skin.desc = "fur";
 			if (player.hasScales())
-				player.skinDesc = "scales";
+				player.skin.desc = "scales";
 			if (player.hasGooSkin())
-				player.skinDesc = "goo";
+				player.skin.desc = "goo";
 		}
-		if (player.skinDesc.indexOf("thick") != -1)
+		if (player.skin.desc.indexOf("thick") != -1)
 		{
-			player.skinAdj = "thick";
+			player.skin.adj = "thick";
 			if (player.hasPlainSkin())
-				player.skinDesc = "skin";
+				player.skin.desc = "skin";
 			if (player.hasFur())
-				player.skinDesc = "fur";
+				player.skin.desc = "fur";
 			if (player.hasScales())
-				player.skinDesc = "scales";
+				player.skin.desc = "scales";
 			if (player.hasGooSkin())
-				player.skinDesc = "goo";
+				player.skin.desc = "goo";
 		}
-		if (player.skinDesc.indexOf("rubber") != -1)
+		if (player.skin.desc.indexOf("rubber") != -1)
 		{
-			player.skinAdj = "rubber";
+			player.skin.adj = "rubber";
 			if (player.hasPlainSkin())
-				player.skinDesc = "skin";
+				player.skin.desc = "skin";
 			if (player.hasFur())
-				player.skinDesc = "fur";
+				player.skin.desc = "fur";
 			if (player.hasScales())
-				player.skinDesc = "scales";
+				player.skin.desc = "scales";
 			if (player.hasGooSkin())
-				player.skinDesc = "goo";
+				player.skin.desc = "goo";
 		}
-		if (player.skinDesc.indexOf("latex") != -1)
+		if (player.skin.desc.indexOf("latex") != -1)
 		{
-			player.skinAdj = "latex";
+			player.skin.adj = "latex";
 			if (player.hasPlainSkin())
-				player.skinDesc = "skin";
+				player.skin.desc = "skin";
 			if (player.hasFur())
-				player.skinDesc = "fur";
+				player.skin.desc = "fur";
 			if (player.hasScales())
-				player.skinDesc = "scales";
+				player.skin.desc = "scales";
 			if (player.hasGooSkin())
-				player.skinDesc = "goo";
+				player.skin.desc = "goo";
 		}
-		if (player.skinDesc.indexOf("slimey") != -1)
+		if (player.skin.desc.indexOf("slimey") != -1)
 		{
-			player.skinAdj = "slimey";
+			player.skin.adj = "slimey";
 			if (player.hasPlainSkin())
-				player.skinDesc = "skin";
+				player.skin.desc = "skin";
 			if (player.hasFur())
-				player.skinDesc = "fur";
+				player.skin.desc = "fur";
 			if (player.hasScales())
-				player.skinDesc = "scales";
+				player.skin.desc = "scales";
 			if (player.hasGooSkin())
-				player.skinDesc = "goo";
+				player.skin.desc = "goo";
 		}
 		player.face.type = saveFile.data.faceType;
 		if (saveFile.data.tongueType == undefined)
@@ -2301,7 +2301,7 @@ public function unFuckSave():void
 	//Fixing shit!
 	if (player.wings.type == Wings.FEATHERED_LARGE && player.wings.color == "no") {
 		// Player has harpy wings from an old save, let's fix its color
-		player.wings.color = player.hasFur() ? player.furColor : player.hair.color;
+		player.wings.color = player.hasFur() ? player.skin.furColor : player.hair.color;
 	}
 
 	// Fix duplicate elven bounty perks

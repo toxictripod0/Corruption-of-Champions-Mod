@@ -77,9 +77,9 @@ if (lust >= maxLust()) {
 			this.tallness = 4*12;
 			this.hips.rating = Hips.RATING_SLENDER;
 			this.butt.rating = Butt.RATING_TIGHT;
-			this.skinTone = "white";
-			this.skinType = Skin.FUR;
-			this.skinDesc = "fur";
+			this.skin.tone = "white";
+			this.theSkinType = Skin.FUR;
+			this.skin.desc = "fur";
 			this.hair.color = "white";
 			this.hair.length = 2;
 			initStrTouSpeInte(35, 40, 65, 55);

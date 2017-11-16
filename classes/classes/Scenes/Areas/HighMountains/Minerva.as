@@ -221,7 +221,7 @@ package classes.Scenes.Areas.HighMountains
 			this.tallness = 8*12+4;
 			this.hips.rating = Hips.RATING_CURVY;
 			this.butt.rating = Butt.RATING_LARGE+1;
-			this.skinTone = "blue";
+			this.skin.tone = "blue";
 			this.hair.color = "red";
 			this.hair.length = 25;
 			initStrTouSpeInte(50, 65, 95, 75);

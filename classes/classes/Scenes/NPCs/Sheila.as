@@ -303,7 +303,7 @@ package classes.Scenes.NPCs
 			this.hips.rating = Hips.RATING_AVERAGE;
 			this.butt.rating = Butt.RATING_AVERAGE+1;
 			this.lowerBody.type = LowerBody.KANGAROO;
-			this.skinTone = "tan";
+			this.skin.tone = "tan";
 			this.hair.color = "auburn";
 			this.hair.length = 11;
 			initStrTouSpeInte(80, 45, 95, 50);

@@ -250,7 +250,7 @@ package classes.Scenes.NPCs
 			this.tallness = rand(12) + 55;
 			this.hips.rating = Hips.RATING_CURVY;
 			this.butt.rating = Butt.RATING_LARGE;
-			this.skinTone = "black";
+			this.skin.tone = "black";
 			this.hair.color = "sandy-blonde";
 			this.hair.length = 15;
 			initStrTouSpeInte(150, 80, 80, 85);

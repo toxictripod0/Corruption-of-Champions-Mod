@@ -79,12 +79,12 @@ import classes.internals.*;
 		public function LizanRogue() 
 		{
 			var skinToneAdj:String = randomChoice(SKIN_VARIATIONS);
-			this.skinTone = skinToneAdj;
-			this.skinType = Skin.LIZARD_SCALES;
+			this.skin.tone = skinToneAdj;
+			this.theSkinType = Skin.LIZARD_SCALES;
 			this.a = "the ";
 			this.short = "lizan rogue";
 			this.imageName = "lizanrogue";
-			this.long = "A rogue lizan male stands before you, watching your every move with quick yellow eyes. His slim body is covered in glistening " + skinTone + " scales. His strong tail swings back and forth as he shifts his weight, a fluid movement that hints at his speed.  He wears a simple loincloth to protect his modesty to which a small pack is belted.";
+			this.long = "A rogue lizan male stands before you, watching your every move with quick yellow eyes. His slim body is covered in glistening " + skin.tone + " scales. His strong tail swings back and forth as he shifts his weight, a fluid movement that hints at his speed.  He wears a simple loincloth to protect his modesty to which a small pack is belted.";
 			// this.plural = false;
 			createBreastRow(Appearance.breastCupInverse("flat"));
 			this.createCock(8, 3, CockTypesEnum.LIZARD);
@@ -94,7 +94,7 @@ import classes.internals.*;
 			this.tallness = 60 + rand(10);
 			this.hips.rating = Hips.RATING_BOYISH;
 			this.butt.rating = Butt.RATING_TIGHT;
-			this.skinDesc = "skin";
+			this.skin.desc = "skin";
 			this.hair.color = "black";
 			this.hair.length = 15;
 			initStrTouSpeInte(60, 70, 80, 55);

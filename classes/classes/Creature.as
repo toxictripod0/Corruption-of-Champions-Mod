@@ -377,24 +377,7 @@ import mx.logging.ILogger;
 
 		public var hair:Hair = new Hair();
 		public var beard:Beard = new Beard();
-				
-		/*Skintype
-		0 - skin
-		1 - furry
-		2 - scaley
-		3 - goopey*/
 		public var skin:Skin = new Skin();
-		public function get skinType():Number { return skin.type; }
-		public function set skinType(value:Number):void { skin.type = value; }
-		public function get skinTone():String { return skin.tone; }
-		public function set skinTone(value:String):void { skin.tone = value; }
-		public function get skinDesc():String { return skin.desc; }
-		public function set skinDesc(value:String):void { skin.desc = value; }
-		public function get skinAdj():String { return skin.adj; }
-		public function set skinAdj(value:String):void { skin.adj = value; }
-		public function get furColor():String { return skin.furColor; }
-		public function set furColor(value:String):void { skin.furColor = value; }
-		
 		public var face:Face = new Face();
 		public var claws:Claws = new Claws();
 		public var rearBody:RearBody = new RearBody();
@@ -600,7 +583,7 @@ import mx.logging.ILogger;
 			error += Utils.validateNonNegativeNumberFields(this,"Monster.validate",[
 				"balls", "ballSize", "cumMultiplier", "hoursSinceCum",
 				"tallness", "hips.rating", "butt.rating", "lowerBody.type", "arms.type",
-				"skinType", "hair.length", "hair.type",
+				"skin.type", "hair.length", "hair.type",
 				"face.type", "ears.type", "tongueType", "eyes.type",
 				"str", "tou", "spe", "inte", "lib", "sens", "cor",
 				// Allow weaponAttack to be negative as a penalty to strength-calculated damage
@@ -614,7 +597,7 @@ import mx.logging.ILogger;
 			// 2.2. non-empty String fields
 			error += Utils.validateNonEmptyStringFields(this,"Monster.validate",[
 				"short",
-				"skinDesc",
+				"skin.desc",
 				"weaponName", "weaponVerb", "armorName"
 			]);
 			// 3. validate members
@@ -1715,7 +1698,7 @@ import mx.logging.ILogger;
 			if (index < 0) index = biggestCockIndex();
 			var isPierced:Boolean = (cocks.length == 1) && (cocks[index].isPierced); //Only describe as pierced or sock covered if the creature has just one cock
 			var hasSock:Boolean = (cocks.length == 1) && (cocks[index].sock != "");
-			var isGooey:Boolean = (skinType == Skin.GOO);
+			var isGooey:Boolean = (skin.type == Skin.GOO);
 			return Appearance.cockAdjective(cocks[index].cockType, cocks[index].cockLength, cocks[index].cockThickness, lust, cumQ(), isPierced, hasSock, isGooey);
 		}
 		
@@ -2791,22 +2774,22 @@ import mx.logging.ILogger;
 
 		public function hasScales():Boolean
 		{
-			return [Skin.LIZARD_SCALES, Skin.DRAGON_SCALES, Skin.FISH_SCALES].indexOf(skinType) != -1;
+			return [Skin.LIZARD_SCALES, Skin.DRAGON_SCALES, Skin.FISH_SCALES].indexOf(skin.type) != -1;
 		}
 
 		public function hasReptileScales():Boolean
 		{
-			return [Skin.LIZARD_SCALES, Skin.DRAGON_SCALES].indexOf(skinType) != -1;
+			return [Skin.LIZARD_SCALES, Skin.DRAGON_SCALES].indexOf(skin.type) != -1;
 		}
 
 		public function hasDragonScales():Boolean
 		{
-			return skinType == Skin.DRAGON_SCALES;
+			return skin.type == Skin.DRAGON_SCALES;
 		}
 
 		public function hasLizardScales():Boolean
 		{
-			return skinType == Skin.LIZARD_SCALES;
+			return skin.type == Skin.LIZARD_SCALES;
 		}
 
 		public function hasNonLizardScales():Boolean
@@ -2841,12 +2824,12 @@ import mx.logging.ILogger;
 
 		public function hasGooSkin():Boolean
 		{
-			return skinType == Skin.GOO;
+			return skin.type == Skin.GOO;
 		}
 
 		public function hasPlainSkin():Boolean
 		{
-			return skinType == Skin.PLAIN;
+			return skin.type == Skin.PLAIN;
 		}
 
 		public function get hairOrFurColors():String
@@ -2854,13 +2837,13 @@ import mx.logging.ILogger;
 			if (!isFluffy())
 				return hair.color;
 
-			if (!underBody.skin.isFluffy() || ["no", furColor].indexOf(underBody.skin.furColor) != -1)
-				return furColor;
+			if (!underBody.skin.isFluffy() || ["no", skin.furColor].indexOf(underBody.skin.furColor) != -1)
+				return skin.furColor;
 
 			// Uses formatStringArray in case we add more skin layers
 			// If more layers are added, we'd probably need some remove duplicates function
 			return formatStringArray([
-				furColor,
+				skin.furColor,
 				underBody.skin.furColor,
 			]);
 		}

@@ -95,11 +95,11 @@ package classes.Scenes.Monsters
 			this.hips.rating = Hips.RATING_BOYISH;
 			this.butt.rating = Butt.RATING_TIGHT;
 			if (type == 3)
-				this.skinTone = "brown";
+				this.skin.tone = "brown";
 			if (type == 1 || type == 2)
-				this.skinTone = "light";
+				this.skin.tone = "light";
 			else
-				this.skinTone = "gray";
+				this.skin.tone = "gray";
 			this.hair.color = "none";
 			this.hair.length = 0;
 			this.pronoun1 = "it";

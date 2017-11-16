@@ -58,7 +58,7 @@ package classes.Items.Consumables
 		
 		private function reductoBreasts():void {
 			clearOutput();
-			outputText("You smear the foul-smelling ointment all over your " + game.player.allBreastsDescript() + ", covering them entirely as the paste begins to get absorbed into your " + game.player.skinDesc + ".\n");
+			outputText("You smear the foul-smelling ointment all over your " + game.player.allBreastsDescript() + ", covering them entirely as the paste begins to get absorbed into your " + game.player.skin.desc + ".\n");
 			game.player.shrinkTits(true);
 			if (Utils.rand(2) == 0 && game.player.biggestTitSize() >= 1) {
 				outputText("\nThe effects of the paste continue to manifest themselves, and your body begins to change again...");

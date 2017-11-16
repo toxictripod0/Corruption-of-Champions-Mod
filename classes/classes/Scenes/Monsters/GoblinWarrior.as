@@ -79,7 +79,7 @@ package classes.Scenes.Monsters
 			this.tallness = 44 + rand(7);
 			this.hips.rating = Hips.RATING_AMPLE+2;
 			this.butt.rating = Butt.RATING_LARGE;
-			this.skinTone = "dark green";
+			this.skin.tone = "dark green";
 			this.hair.color = "red";
 			this.hair.length = 4;
 			initStrTouSpeInte(75, 50, 70, 72);

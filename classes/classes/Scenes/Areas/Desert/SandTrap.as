@@ -131,7 +131,7 @@
 			this.tallness = rand(8) + 150;
 			this.hips.rating = Hips.RATING_AMPLE+2;
 			this.butt.rating = Butt.RATING_LARGE;
-			this.skinTone = "fair";
+			this.skin.tone = "fair";
 			this.hair.color = "black";
 			this.hair.length = 15;
 			initStrTouSpeInte(55, 10, 45, 55);

@@ -111,7 +111,7 @@ package classes.Scenes.NPCs
 			this.tallness = 65;
 			this.hips.rating = Hips.RATING_AMPLE;
 			this.butt.rating = Butt.RATING_AVERAGE+1;
-			this.skinTone = "white";
+			this.skin.tone = "white";
 			this.hair.color = "white";
 			this.hair.length = 3;
 			initStrTouSpeInte(45, 30, 5, 110);

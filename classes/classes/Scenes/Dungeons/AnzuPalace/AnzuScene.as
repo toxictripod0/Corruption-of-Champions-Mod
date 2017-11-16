@@ -1165,7 +1165,7 @@ package classes.Scenes.Dungeons.AnzuPalace
 			outputText("You take the initiative, rubbing your backside against Anzu’s maleness, who stands proudly erect, now smearing your back with avian pre, that is quickly washed away by the water.");
 			outputText("\n\n\"<i>Heh, seems like a got a bit...., you know...[name]</i>\" Anzu says with a soft laugh, yet a bit embarrassed, after seeing his raging erection over your back. \"<i>And, having you so close, it’s no wonder that I eventually got a bit excited.</i>\"  he admits.");
 			outputText("\n\nHmm, seems like it can’t be helped, at least with someone that gets aroused so quickly like him, you remark.");
-			outputText("\n\nReclining your body against his, and rubbing your backside against his penis, you enjoy for a second the slimy sensation of his pre on your " + player.skinDesc + " while your upper body rests over his belly, the feeling of his wet and soapy feathers being and odd but quite pleasant sensation.");
+			outputText("\n\nReclining your body against his, and rubbing your backside against his penis, you enjoy for a second the slimy sensation of his pre on your " + player.skin.desc + " while your upper body rests over his belly, the feeling of his wet and soapy feathers being and odd but quite pleasant sensation.");
 			outputText("\n\nAfter some more rubbing, you start grinding your [ass] against his iron hard erection, one of your hands going down to knead softly his hefty sack. A look back reveals to you that your teasing had the desired effect, as Anzu face is blushing red, his breaths turning to half-measured pants, as the horny avian does useless efforts to hide his overexcited state.");
 			outputText("\n\nSoon, he gives up, and realizing that you aren’t being exactly a nice visitor, leaving him on that state, you finally ask him:");
 			outputText("\n\n\"<i>So, do you want to...relieve some pressure while we bath?</i>\"");
@@ -1191,7 +1191,7 @@ package classes.Scenes.Dungeons.AnzuPalace
 		}
 		private function anzuBathTimeDecline():void {
 			clearOutput();
-			outputText("Not in the mood of getting your " + player.skinDesc + " wet (and sticky) at this time of day, you thanks him for his offer but explain that you’re not exactly in the mood to get wet. Bidding him farewell, you leave him to his own matters and return to your camp.");
+			outputText("Not in the mood of getting your " + player.skin.desc + " wet (and sticky) at this time of day, you thanks him for his offer but explain that you’re not exactly in the mood to get wet. Bidding him farewell, you leave him to his own matters and return to your camp.");
 			kGAMECLASS.inDungeon = false;
 			kGAMECLASS.dungeonLoc = -1;
 			doNext(camp.returnToCampUseOneHour);

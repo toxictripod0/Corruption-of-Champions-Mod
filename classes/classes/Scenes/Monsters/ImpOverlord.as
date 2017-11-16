@@ -224,7 +224,7 @@ package classes.Scenes.Monsters
 			this.hips.rating = Hips.RATING_BOYISH;
 			this.butt.rating = Butt.RATING_TIGHT;
 			this.lowerBody.type = LowerBody.HOOFED;
-			this.skinTone = "red";
+			this.skin.tone = "red";
 			initStrTouSpeInte(100, 95, 85, 66);
 			initLibSensCor(55, 35, 100);
 			this.weaponName = "scimitar";

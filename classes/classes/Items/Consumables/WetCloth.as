@@ -21,7 +21,7 @@ package classes.Items.Consumables
 		{
 			clearOutput();
 			var tfSource:String = "gooGasmic";
-			outputText("You take the wet cloth in hand and rub it over your body, smearing the strange slime over your " + player.skinDesc + " slowly.");
+			outputText("You take the wet cloth in hand and rub it over your body, smearing the strange slime over your " + player.skin.desc + " slowly.");
 			//Stat changes
 			//libido up to 80
 			if (player.lib100 < 80) {
@@ -30,11 +30,11 @@ package classes.Items.Consumables
 			}
 			//sensitivity moves towards 50
 			if (player.sens100 < 50) {
-				outputText("\n\nThe slippery slime soaks into your " + player.skinDesc + ", making it tingle with warmth, sensitive to every touch.");
+				outputText("\n\nThe slippery slime soaks into your " + player.skin.desc + ", making it tingle with warmth, sensitive to every touch.");
 				dynStats("sen", 1);
 			}
 			else if (player.sens100 > 50) {
-				outputText("\n\nThe slippery slime numbs your " + player.skinDesc + " slightly, leaving behind only gentle warmth.");
+				outputText("\n\nThe slippery slime numbs your " + player.skin.desc + " slightly, leaving behind only gentle warmth.");
 				dynStats("sen", -1);
 			}
 
@@ -92,23 +92,23 @@ package classes.Items.Consumables
 				return false;
 			}
 			//1.Goopy skin
-			if (player.hair.type === 3 && (player.skinDesc !== "skin" || player.skinAdj !== "slimy")) {
+			if (player.hair.type === 3 && (player.skin.desc !== "skin" || player.skin.adj !== "slimy")) {
 				if (player.hasPlainSkin()) outputText("\n\nYou sigh, feeling your " + player.armorName + " sink into you as your skin becomes less solid, gooey even.  You realize your entire body has become semi-solid and partly liquid!");
 				else if (player.hasFur()) outputText("\n\nYou sigh, suddenly feeling your fur become hot and wet.  You look down as your " + player.armorName + " sinks partway into you.  With a start you realize your fur has melted away, melding into the slime-like coating that now serves as your skin.  You've become partly liquid and incredibly gooey!");
 				else if (player.hasScales()) outputText("\n\nYou sigh, feeling slippery wetness over your scales.  You reach to scratch it and come away with a slippery wet coating.  Your scales have transformed into a slimy goop!  Looking closer, you realize your entire body has become far more liquid in nature, and is semi-solid.  Your " + player.armorName + " has even sunk partway into you.");
-				player.skinType = Skin.GOO;
-				player.skinDesc = "skin";
-				player.skinAdj = "slimy";
+				player.skin.type = Skin.GOO;
+				player.skin.desc = "skin";
+				player.skin.adj = "slimy";
 				player.underBody.restore();
-				if (player.skinTone !== "green" && player.skinTone !== "purple" && player.skinTone !== "blue" && player.skinTone !== "cerulean" && player.skinTone !== "emerald") {
+				if (player.skin.tone !== "green" && player.skin.tone !== "purple" && player.skin.tone !== "blue" && player.skin.tone !== "cerulean" && player.skin.tone !== "emerald") {
 					outputText("  Stranger still, your skintone changes to ");
 					var blaht:int = rand(10);
-					if (blaht <= 2) player.skinTone = "green";
-					else if (blaht <= 4) player.skinTone = "purple";
-					else if (blaht <= 6) player.skinTone = "blue";
-					else if (blaht <= 8) player.skinTone = "cerulean";
-					else player.skinTone = "emerald";
-					outputText(player.skinTone + "!");
+					if (blaht <= 2) player.skin.tone = "green";
+					else if (blaht <= 4) player.skin.tone = "purple";
+					else if (blaht <= 6) player.skin.tone = "blue";
+					else if (blaht <= 8) player.skin.tone = "cerulean";
+					else player.skin.tone = "emerald";
+					outputText(player.skin.tone + "!");
 					if (player.arms.type !== Arms.HUMAN || player.claws.type !== Claws.NORMAL) {
 						mutations.restoreArms(tfSource);
 					}
@@ -118,7 +118,7 @@ package classes.Items.Consumables
 			////1a.Make alterations to dick/vaginal/nippular descriptors to match
 			//DONE EXCEPT FOR TITS & MULTIDICKS (UNFINISHED KINDA)
 			//2.Goo legs
-			if (player.skinAdj === "slimy" && player.skinDesc === "skin" && player.lowerBody.type !== LowerBody.GOO) {
+			if (player.skin.adj === "slimy" && player.skin.desc === "skin" && player.lowerBody.type !== LowerBody.GOO) {
 				outputText("\n\nYour viewpoint rapidly drops as everything below your " + player.buttDescript() + " and groin melts together into an amorphous blob.  Thankfully, you discover you can still roll about on your new slimey undercarriage, but it's still a whole new level of strange.");
 				player.tallness -= 3 + rand(2);
 				if (player.tallness < 36) {

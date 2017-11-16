@@ -41,16 +41,16 @@ package classes.Items.Consumables
 		}
 
 		public function oilSkin():void {
-			if (game.player.skinTone == _color) {
+			if (game.player.skin.tone == _color) {
 				outputText("You " + game.player.clothedOrNaked("take a second to disrobe before uncorking the bottle of oil and rubbing", "uncork the bottle of oil and rub") + " the smooth liquid across your body. Once you’ve finished you feel rejuvenated.");
 				game.player.changeFatigue(-10);
 			}
 			else {
 				if (!game.player.hasGooSkin()) {
-					game.player.skinTone = _color;
+					game.player.skin.tone = _color;
 					mutations.updateClaws(game.player.claws.type);
 				}
-				switch (game.player.skinType) {
+				switch (game.player.skin.type) {
 					case Skin.PLAIN: //Plain
 						outputText("You " + game.player.clothedOrNaked("take a second to disrobe before uncorking the bottle of oil and rubbing", "uncork the bottle of oil and rub") + " the smooth liquid across your body. Even before you’ve covered your arms and [chest] your skin begins to tingle pleasantly all over. After your skin darkens a little, it begins to change until you have " + _color + " skin.");
 						break;

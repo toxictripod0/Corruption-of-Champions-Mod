@@ -156,26 +156,26 @@ package classes.Items.Consumables
 			if (!player.hasPlainSkin() && changes < changeLimit && rand(4) === 0 && player.face.type === Face.HUMAN) {
 				if (player.hasFur()) outputText("\n\nYour fur itches incessantly, so you start scratching it.  It starts coming off in big clumps before the whole mess begins sloughing off your body.  In seconds, your skin is nude.  <b>You've lost your fur!</b>");
 				if (player.hasScales()) outputText("\n\nYour scales itch incessantly, so you scratch at them.  They start falling off wholesale, leaving you standing in a pile of scales after only a few moments.  <b>You've lost your scales!</b>");
-				if (player.hasGooSkin()) outputText("\n\nYour " + player.skinDesc + " itches incessantly, and as you scratch it shifts and changes, becoming normal human-like skin.  <b>Your skin is once again normal!</b>");
-				player.skinAdj = "";
-				player.skinDesc = "skin";
-				player.skinType = Skin.PLAIN;
+				if (player.hasGooSkin()) outputText("\n\nYour " + player.skin.desc + " itches incessantly, and as you scratch it shifts and changes, becoming normal human-like skin.  <b>Your skin is once again normal!</b>");
+				player.skin.adj = "";
+				player.skin.desc = "skin";
+				player.skin.type = Skin.PLAIN;
 				player.underBody.restore();
 				changes++;
 			}
 			//skinTone
-			if (player.skinTone !== "green" && player.skinTone !== "grayish-blue" && player.skinTone !== "dark green" && player.skinTone !== "pale yellow" && changes < changeLimit && rand(2) === 0) {
-				if (rand(10) !== 0) player.skinTone = "dark green";
+			if (player.skin.tone !== "green" && player.skin.tone !== "grayish-blue" && player.skin.tone !== "dark green" && player.skin.tone !== "pale yellow" && changes < changeLimit && rand(2) === 0) {
+				if (rand(10) !== 0) player.skin.tone = "dark green";
 				else {
-					if (rand(2) === 0) player.skinTone = "pale yellow";
-					else player.skinTone = "grayish-blue";
+					if (rand(2) === 0) player.skin.tone = "pale yellow";
+					else player.skin.tone = "grayish-blue";
 				}
 				mutations.updateClaws(player.claws.type);
 				changes++;
 				outputText("\n\nWhoah, that was weird.  You just hallucinated that your ");
 				if (player.hasFur()) outputText("skin");
-				else outputText(player.skinDesc);
-				outputText(" turned " + player.skinTone + ".  No way!  It's staying, it really changed color!");
+				else outputText(player.skin.desc);
+				outputText(" turned " + player.skin.tone + ".  No way!  It's staying, it really changed color!");
 				kGAMECLASS.rathazul.addMixologyXP(20);
 			}
 			//Face!

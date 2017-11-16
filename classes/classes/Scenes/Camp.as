@@ -2856,7 +2856,7 @@ private function furColorSelection2():void {
 private function chooseFurColorSaveUpdate(color:String):void {
 	clearOutput();
 	outputText("You now have " + color + " fur. You will be returned to your camp now and you can continue your usual gameplay.");
-	player.furColor = color;
+	player.skin.furColor = color;
 	doNext(doCamp);
 }
 

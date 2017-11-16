@@ -219,12 +219,12 @@ package classes.Scenes.Dungeons.LethicesKeep
 			butt.rating = player.butt.rating;
 			if (butt.rating < 1) butt.rating = 1;
 			lowerBody.type = player.lowerBody.type;
-			skinDesc = player.skinDesc;
+			skin.desc = player.skin.desc;
 			initStrTouSpeInte(player.str, player.tou, player.spe, player.inte);
 			initLibSensCor(player.lib, player.sens, player.cor);
 			if (cor < 50) cor = 50;
 			face.type = player.face.type;
-			skinType = player.skinType;
+			theSkinType = player.skin.type;
 			
 			this.bonusHP = 250;
 			

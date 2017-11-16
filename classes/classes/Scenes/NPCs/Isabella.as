@@ -191,7 +191,7 @@ package classes.Scenes.NPCs
 			this.tallness = 7*12+6;
 			this.hips.rating = Hips.RATING_CURVY+2;
 			this.butt.rating = Butt.RATING_LARGE+1;
-			this.skinTone = "dusky";
+			this.skin.tone = "dusky";
 			this.hair.color = "red";
 			this.hair.length = 13;
 			initStrTouSpeInte(70, 98, 75, 65);

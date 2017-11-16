@@ -176,7 +176,7 @@ package classes.Scenes.Dungeons.Factory
 			this.hips.rating = Hips.RATING_AMPLE;
 			this.butt.rating = Butt.RATING_TIGHT;
 			this.lowerBody.type = LowerBody.DEMONIC_CLAWS;
-			this.skinTone = "light purple";
+			this.skin.tone = "light purple";
 			this.hair.color = "black";
 			this.hair.length = 12;
 			initStrTouSpeInte(65, 40, 45, 85);

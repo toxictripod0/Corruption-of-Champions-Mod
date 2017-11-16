@@ -55,7 +55,7 @@
 			this.hips.rating = Hips.RATING_AMPLE;
 			this.butt.rating = Butt.RATING_LARGE;
 			this.lowerBody.type = LowerBody.GOO;
-			this.skinTone = "green";
+			this.skin.tone = "green";
 			initStrTouSpeInte(25, 20, 10, 5);
 			initLibSensCor(50, 60, 20);
 			this.weaponName = "hands";

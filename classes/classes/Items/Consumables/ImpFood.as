@@ -43,12 +43,12 @@ package classes.Items.Consumables
 				game.HPChange(30 + player.tou / 3, true);
 				dynStats("lus", 3, "cor", 1);
 				//Red or orange skin!
-				if (rand(30) === 0 && ["red", "orange"].indexOf(player.skinTone) === -1) {
+				if (rand(30) === 0 && ["red", "orange"].indexOf(player.skin.tone) === -1) {
 					if (player.hasFur()) outputText("\n\nUnderneath your fur, your skin ");
-					else outputText("\n\nYour " + player.skinDesc + " ");
-					if (rand(2) === 0) player.skinTone = "red";
-					else player.skinTone = "orange";
-					outputText("begins to lose its color, fading until you're as white as an albino.  Then, starting at the crown of your head, a reddish hue rolls down your body in a wave, turning you completely " + player.skinTone + ".");
+					else outputText("\n\nYour " + player.skin.desc + " ");
+					if (rand(2) === 0) player.skin.tone = "red";
+					else player.skin.tone = "orange";
+					outputText("begins to lose its color, fading until you're as white as an albino.  Then, starting at the crown of your head, a reddish hue rolls down your body in a wave, turning you completely " + player.skin.tone + ".");
 					mutations.updateClaws(player.claws.type);
 					kGAMECLASS.rathazul.addMixologyXP(20);
 				}
@@ -60,14 +60,14 @@ package classes.Items.Consumables
 				dynStats("lus", 3, "cor", 1);
 			}
 			//Red or orange skin!
-			if (rand(5) === 0 && ["red", "orange"].indexOf(player.skinTone) === -1 && changes < changeLimit) {
+			if (rand(5) === 0 && ["red", "orange"].indexOf(player.skin.tone) === -1 && changes < changeLimit) {
 				if (player.hasFur()) outputText("\n\nUnderneath your fur, your skin ");
-				else outputText("\n\nYour " + player.skinDesc + " ");
-				if (rand(2) === 0) player.skinTone = "red";
-				else player.skinTone = "orange";
-				outputText("begins to lose its color, fading until you're as white as an albino.  Then, starting at the crown of your head, a reddish hue rolls down your body in a wave, turning you completely " + player.skinTone + ".");
+				else outputText("\n\nYour " + player.skin.desc + " ");
+				if (rand(2) === 0) player.skin.tone = "red";
+				else player.skin.tone = "orange";
+				outputText("begins to lose its color, fading until you're as white as an albino.  Then, starting at the crown of your head, a reddish hue rolls down your body in a wave, turning you completely " + player.skin.tone + ".");
 				dynStats("cor", 2);
-				player.skinType = Skin.PLAIN;
+				player.skin.type = Skin.PLAIN;
 				kGAMECLASS.rathazul.addMixologyXP(20);
 				changes++;
 			}
@@ -134,7 +134,7 @@ package classes.Items.Consumables
 			}
 			
 			//Feets, needs red/orange skin and tail
-			if (["red", "orange"].indexOf(player.skinTone) !== -1 && player.tailType === Tail.IMP && player.lowerBody.type !== LowerBody.IMP && rand(3) === 0 && changes < changeLimit) {
+			if (["red", "orange"].indexOf(player.skin.tone) !== -1 && player.tailType === Tail.IMP && player.lowerBody.type !== LowerBody.IMP && rand(3) === 0 && changes < changeLimit) {
 				outputText("\n\nEvery muscle and sinew below your hip tingles and you begin to stagger. Seconds after you sit down, pain explodes in your " + player.feet() + ". Something hard breaks through your sole from the inside out as your " + player.feet() + " splinter and curve cruelly. The pain slowly diminishes and your eyes look along a skinny, human leg that splinters at the foot into three long claw with a smaller back one for balance. When you relax, your feet grip the ground easily. <b>Your lower body is now that of an imp.</b>");
 				player.lowerBody.type = LowerBody.IMP;
 				player.lowerBody.legCount = 2;
@@ -143,7 +143,7 @@ package classes.Items.Consumables
 		}
 			
 			//Imp ears, needs red/orange skin and horns
-			if (player.horns.type === Horns.IMP && ["red", "orange"].indexOf(player.skinTone) !== -1 && player.ears.type !== Ears.IMP && rand(3) === 0 && changes < changeLimit) {
+			if (player.horns.type === Horns.IMP && ["red", "orange"].indexOf(player.skin.tone) !== -1 && player.ears.type !== Ears.IMP && rand(3) === 0 && changes < changeLimit) {
 				outputText("\n\nYour head suddenly pulses in pain, causing you to double over and grip at it. You feel your ears elongate and curl in slightly, ending at points not much unlike elves. These, however, jut out of the side of your head and are coned, focusing on every sound around you. A realization strikes you. <b>Your ears are now that of an imp!</b>");
 				player.ears.type = Ears.IMP;
 				dynStats("cor", 2);
@@ -166,7 +166,7 @@ package classes.Items.Consumables
 			}
 			
 			//Imp claws, needs orange/red skin. Also your hands turn human.
-			if (["red", "orange"].indexOf(player.skinTone) !== -1 && player.claws.type !== Claws.IMP && rand(3) === 0 && changes < changeLimit) {
+			if (["red", "orange"].indexOf(player.skin.tone) !== -1 && player.claws.type !== Claws.IMP && rand(3) === 0 && changes < changeLimit) {
 				if (player.arms.type !== Arms.HUMAN) {
 					outputText("\n\nYour arms twist and mangle, warping back into human-like arms. But that, you realize, is just the beginning.");
 				}
@@ -177,7 +177,7 @@ package classes.Items.Consumables
 				}
 				player.arms.type = Arms.PREDATOR;
 				player.claws.type = Claws.IMP;
-				player.claws.tone = player.skinTone;
+				player.claws.tone = player.skin.tone;
 				dynStats("cor", 2);
 				changes++;
 			}

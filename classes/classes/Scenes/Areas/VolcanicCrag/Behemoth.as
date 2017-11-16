@@ -63,8 +63,8 @@ package classes.Scenes.Areas.VolcanicCrag
 			this.tallness = 9*12;
 			this.hips.rating = Hips.RATING_BOYISH;
 			this.butt.rating = Butt.RATING_TIGHT;
-			this.skinTone = "purple";
-			this.skinType = Skin.FUR;
+			this.skin.tone = "purple";
+			this.theSkinType = Skin.FUR;
 			this.hair.color = "black";
 			this.hair.length = 8;
 			this.ears.type = Ears.ELFIN;

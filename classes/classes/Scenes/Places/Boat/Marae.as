@@ -138,9 +138,9 @@ package classes.Scenes.Places.Boat
 			this.tallness = 10*12;
 			this.hips.rating = 10;
 			this.butt.rating = 8;
-			this.skinTone = "white";
-			this.skinType = 0;
-			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.FUR];
+			this.skin.tone = "white";
+			this.theSkinType = 0;
+			//this.skin.desc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.FUR];
 			this.hair.color = "green";
 			this.hair.length = 36;
 			if (game.flags[kFLAGS.FACTORY_SHUTDOWN] == 2) {

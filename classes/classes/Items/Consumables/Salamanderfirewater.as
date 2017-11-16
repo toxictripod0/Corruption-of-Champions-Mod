@@ -70,7 +70,7 @@ package classes.Items.Consumables
 			if (player.tou100 < 90 && changes < changeLimit && rand(3) === 0) {
 				//(+3)
 				if (player.tou100 < 50) {
-					outputText("\n\nYour body and skin both thicken noticeably.  You pinch your " + player.skinDesc + " experimentally and marvel at how much tougher it is now.");
+					outputText("\n\nYour body and skin both thicken noticeably.  You pinch your " + player.skin.desc + " experimentally and marvel at how much tougher it is now.");
 					dynStats("tou", 3);
 				}
 				//(+2)
@@ -80,7 +80,7 @@ package classes.Items.Consumables
 				}
 				//(+1)
 				else {
-					outputText("\n\nYou snarl happily as you feel yourself getting even tougher.  It's a barely discernible difference, but you can feel your " + player.skinDesc + " getting tough enough to make you feel invincible.");
+					outputText("\n\nYou snarl happily as you feel yourself getting even tougher.  It's a barely discernible difference, but you can feel your " + player.skin.desc + " getting tough enough to make you feel invincible.");
 					dynStats("tou", 1);
 				}
 				//[removed:1.4.10]//changes++;
@@ -262,22 +262,22 @@ package classes.Items.Consumables
 			}
 			//-Skin color change
 			var humanSkinColors:Array = ["light", "fair", "tan", "dark"];
-			if (humanSkinColors.indexOf(player.skinTone) < 0 && changes < changeLimit && rand(4) === 0) {
+			if (humanSkinColors.indexOf(player.skin.tone) < 0 && changes < changeLimit && rand(4) === 0) {
 				changes++;
 				outputText("\n\nIt takes a while for you to notice, but <b>");
-				if (player.hasFur()) outputText("the skin under your " + player.furColor + " " + player.skinDesc + " has ");
-				else outputText("your " + player.skinDesc + (player.skinDesc.indexOf("scales") !== -1 ? " have " : " has "));
-				player.skinTone = randomChoice(humanSkinColors);
+				if (player.hasFur()) outputText("the skin under your " + player.skin.furColor + " " + player.skin.desc + " has ");
+				else outputText("your " + player.skin.desc + (player.skin.desc.indexOf("scales") !== -1 ? " have " : " has "));
+				player.skin.tone = randomChoice(humanSkinColors);
 				mutations.updateClaws(player.claws.type);
-				outputText("changed to become " + player.skinTone + " colored.</b>");
+				outputText("changed to become " + player.skin.tone + " colored.</b>");
 			}
 			//Change skin to normal
 			if (!player.hasPlainSkin() && player.ears.type === Ears.HUMAN && rand(3) === 0 && changes < changeLimit) {
 				outputText("\n\nA slowly-building itch spreads over your whole body, and as you idly scratch yourself, you find that your " + player.skinFurScales());
 				outputText(" " + (player.hasScales() ? "are" : "is") + " falling to the ground, revealing flawless skin below.  <b>You now have normal skin.</b>");
-				player.skinType = Skin.PLAIN;
-				player.skinDesc = "skin";
-				player.skinAdj  = "";
+				player.skin.type = Skin.PLAIN;
+				player.skin.desc = "skin";
+				player.skin.adj  = "";
 				player.underBody.restore();
 				changes++;
 			}

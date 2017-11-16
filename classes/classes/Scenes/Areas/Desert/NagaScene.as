@@ -638,7 +638,7 @@ internal function nagaFUCKSJOOOOOO():void {
 		}
 		//(If lactating)
 		if (player.biggestLactation() > 1) { 
-			outputText("  Your warm milk is leaking from your " + player.nippleDescript(0) + " the entire time, coating your " + player.skinDesc + " and soaking her hands. At one point, she withdraws a hand and licks the milk from it. You can only assume that she liked it, as she begins to focus even more on your breasts.");
+			outputText("  Your warm milk is leaking from your " + player.nippleDescript(0) + " the entire time, coating your " + player.skin.desc + " and soaking her hands. At one point, she withdraws a hand and licks the milk from it. You can only assume that she liked it, as she begins to focus even more on your breasts.");
 		}
 		outputText("\n\n");
 		

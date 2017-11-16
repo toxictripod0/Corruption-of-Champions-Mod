@@ -72,7 +72,7 @@ package classes
 				if (!player.isFurryOrScaley()) 
 				{
 					outputText("  Your face is human in shape and structure, with [skin]");
-					if ((player.skinTone == "ebony" || player.skinTone == "black") && (player.hasPlainSkin() || player.hasGooSkin())) 
+					if ((player.skin.tone == "ebony" || player.skin.tone == "black") && (player.hasPlainSkin() || player.hasGooSkin())) 
 						outputText(", though with your dusky hue, the black raccoon mask you sport isn't properly visible.");
 					else outputText(", though it is decorated with a sly-looking raccoon mask over your eyes.");
 				}
@@ -80,7 +80,7 @@ package classes
 				else 
 				{
 					//(black/midnight furscales)
-					if (((player.furColor == "black" || player.furColor == "midnight") && player.isFurryOrScaley())) 
+					if (((player.skin.furColor == "black" || player.skin.furColor == "midnight") && player.isFurryOrScaley())) 
 						outputText("  Under your [skinFurScales] hides a black raccoon mask, barely visible due to your inky hue, and");
 					else outputText("  Your [skinFurScales] are decorated with a sly-looking raccoon mask, and under them");
 					outputText(" you have a human-shaped head with [skin.noadj].");
@@ -613,7 +613,7 @@ package classes
 			else if (player.arms.type == Arms.PREDATOR)
 				outputText("  Your arms are covered by [skinFurScales] and your fingernails are now [claws].");
 			else if (player.arms.type == Arms.COCKATRICE) {
-				outputText("  Your arms are covered in " + (player.hasCockatriceSkin() ? player.furColor : player.hair.color) + " feathers from the"
+				outputText("  Your arms are covered in " + (player.hasCockatriceSkin() ? player.skin.furColor : player.hair.color) + " feathers from the"
 				          +" shoulder down to the elbow where they stop in a fluffy cuff. A handful of long feathers grow from your elbow in the form"
 				          +" of vestigial wings, and while they may not let you fly, they certainly help you jump. Your lower arm is coated in"
 				          +" leathery [skinTone] scales and your fingertips terminate in deadly looking avian talons.");
@@ -992,7 +992,7 @@ package classes
 			else if (player.lowerBody.type == LowerBody.COCKATRICE) {
 				outputText(" [legCountTextUC] digitigrade legs grow down from your [hips], ending in clawed feet."
 				          +" There are three long toes on the front, and a small hind-claw on the back."
-				          +" A layer of " + (player.hasCockatriceSkin() ? player.furColor : player.hair.color) + " feathers covers your legs from the"
+				          +" A layer of " + (player.hasCockatriceSkin() ? player.skin.furColor : player.hair.color) + " feathers covers your legs from the"
 				          +" hip to the knee, ending in a puffy cuff.");
 			}
 			if (player.findPerk(PerkLib.Incorporeality) >= 0)

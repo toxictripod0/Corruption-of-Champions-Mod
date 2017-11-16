@@ -125,9 +125,9 @@ package classes.Scenes.Areas.Forest
 			this.tallness = rand(9) + 70;
 			this.hips.rating = Hips.RATING_BOYISH;
 			this.butt.rating = Butt.RATING_BUTTLESS;
-			this.skinTone = "green";
-			this.skinType = Skin.PLAIN;
-			this.skinDesc = "bark";
+			this.skin.tone = "green";
+			this.theSkinType = Skin.PLAIN;
+			this.skin.desc = "bark";
 			this.hair.color = "green";
 			this.hair.length = 1;
 			initStrTouSpeInte(58, 25, 35, 45);

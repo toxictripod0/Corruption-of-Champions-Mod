@@ -96,7 +96,7 @@ import classes.internals.*;
 			this.hips.rating = Hips.RATING_AMPLE+2;
 			this.butt.rating = Butt.RATING_LARGE;
 			this.lowerBody.type = LowerBody.NAGA;
-			this.skinTone = "mediterranean-toned";
+			this.skin.tone = "mediterranean-toned";
 			this.hair.color = "brown";
 			this.hair.length = 16;
 			initStrTouSpeInte(28, 20, 35, 42);

@@ -174,9 +174,9 @@ package classes.Scenes.Areas.HighMountains
 			this.hips.rating = Hips.RATING_AVERAGE;
 			this.butt.rating = Butt.RATING_AVERAGE+1;
 			this.lowerBody.type = LowerBody.HOOFED;
-			this.skinTone = "red";
-			this.skinType = Skin.FUR;
-			this.skinDesc = "shaggy fur";
+			this.skin.tone = "red";
+			this.theSkinType = Skin.FUR;
+			this.skin.desc = "shaggy fur";
 			this.hair.color = randomChoice("black","brown");
 			this.hair.length = 3;
 			this.face.type = Face.COW_MINOTAUR;

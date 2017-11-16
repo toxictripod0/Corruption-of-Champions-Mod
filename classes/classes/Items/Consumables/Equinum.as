@@ -72,7 +72,7 @@ package classes.Items.Consumables
 								if (player.gender === 0 || player.gender === 3) outputText("horse ");
 								if (player.gender === 1) outputText("stallion ");
 								if (player.gender === 2) outputText("mare ");
-								outputText(" with beautiful " + player.hair.color + " " + player.skinDesc + " covering its body gazes back up at you.  That's you, and yet the doubt in your mind remains. Strange images fill your mind, and you feel as if you have not always been a horse, but some kind of funny fur-less creature standing on two legs. Your equine mind rapidly dismisses that doubt as a daydream however, and you trot away, oblivious to who you once were.\n\n");
+								outputText(" with beautiful " + player.hair.color + " " + player.skin.desc + " covering its body gazes back up at you.  That's you, and yet the doubt in your mind remains. Strange images fill your mind, and you feel as if you have not always been a horse, but some kind of funny fur-less creature standing on two legs. Your equine mind rapidly dismisses that doubt as a daydream however, and you trot away, oblivious to who you once were.\n\n");
 								outputText("<b>One year later...</b>\n\nAs you graze upon the small plants that coat the open plains of your home, you hear a noise on your right side. As you raise your head to check where the noise comes from, preparing to run from a potential predator, you see a strange creature. It stands on its two feet, its furless pink skin appearing beneath its clothes.  With a start, you realize you can identify the strange creatures gender.  ");
 								if (player.gender === 0 || player.gender === 1) outputText("He is clearly a male, but you are somewhat confused as you can see not one but three bulges where his manhood would be.\n\n");
 								if (player.gender === 2) outputText("She is clearly a female, as you can see her six breasts jiggle as she walks towards you, small stains appearing on her shirt where her nipples are.\n\n");
@@ -88,7 +88,7 @@ package classes.Items.Consumables
 							if (player.gender === 0 || player.gender === 3) outputText("horse ");
 							if (player.gender === 1) outputText("stallion ");
 							if (player.gender === 2) outputText("mare ");
-							outputText("with beautiful " + player.hair.color + " " + player.skinDesc + " covering its body looks back at you.  That's you, and yet the doubt in your mind remains. Strange mental images fill your mind.  You feel as if you have not always been a horse, but some kind of funny fur-less creature standing on two legs. But your equine mind rapidly dismisses that doubt as a daydream, and you trot away, oblivious to who you once were.\n\n");
+							outputText("with beautiful " + player.hair.color + " " + player.skin.desc + " covering its body looks back at you.  That's you, and yet the doubt in your mind remains. Strange mental images fill your mind.  You feel as if you have not always been a horse, but some kind of funny fur-less creature standing on two legs. But your equine mind rapidly dismisses that doubt as a daydream, and you trot away, oblivious to who you once were.\n\n");
 							outputText("<b>One year after...</b>\n\nAs you graze small plants in the open plains that became your home, you hear a noise on your right side. As you raise your head to check where the noise comes from, preparing to run from a potential predator, you see a strange creature. It stands on two feet, its furless pink skin appearing beneath its clothes.  ");
 							if (player.gender === 0 || player.gender === 1) outputText("He is clearly a male, but you are somewhat confused as you can see not one but three bulges where his manhood would be.\n\n");
 							if (player.gender === 2) outputText("She is clearly a female, as you can see her six breasts jiggle as she walks towards you, small stains appearing on her shirt where her nipples are.\n\n");
@@ -450,14 +450,14 @@ package classes.Items.Consumables
 			//Fur - if has horse tail && ears and not at changelimit
 			if (!player.hasFur() && changes < changeLimit && rand(4) === 0 && player.tailType === Tail.HORSE) {
 				player.setFurColor(horseFurColors);
-				if (player.hasPlainSkin()) outputText("\n\nAn itchy feeling springs up over every inch of your skin.  As you scratch yourself madly, you feel fur grow out of your skin until <b>you have a fine coat of " + player.furColor + "-colored fur.</b>");
+				if (player.hasPlainSkin()) outputText("\n\nAn itchy feeling springs up over every inch of your skin.  As you scratch yourself madly, you feel fur grow out of your skin until <b>you have a fine coat of " + player.skin.furColor + "-colored fur.</b>");
 				if (player.hasScales()) {
-					player.skinDesc = "fur";
-					outputText("\n\nYour " + player.skinTone + " scales begin to itch insufferably.  You reflexively scratch yourself, setting off an avalanche of discarded scales.  The itching intensifies as you madly scratch and tear at yourself, revealing a coat of " + player.furColor + " " + player.skinDesc + ".  At last the itching stops as <b>you brush a few more loose scales from your new coat of " + player.furColor + "-colored fur.</b>");
+					player.skin.desc = "fur";
+					outputText("\n\nYour " + player.skin.tone + " scales begin to itch insufferably.  You reflexively scratch yourself, setting off an avalanche of discarded scales.  The itching intensifies as you madly scratch and tear at yourself, revealing a coat of " + player.skin.furColor + " " + player.skin.desc + ".  At last the itching stops as <b>you brush a few more loose scales from your new coat of " + player.skin.furColor + "-colored fur.</b>");
 				}
 				changes++;
-				player.skinType = Skin.FUR;
-				player.skinDesc = "fur";
+				player.skin.type = Skin.FUR;
+				player.skin.desc = "fur";
 				player.underBody.restore(); // Restore the underbody for now
 			}
 			// Hooves - Tail

@@ -210,7 +210,7 @@ package classes.Scenes.Dungeons.DeepCave
 			this.tallness = 36;
 			this.hips.rating = Hips.RATING_SLENDER;
 			this.butt.rating = Butt.RATING_TIGHT;
-			this.skinTone = "red";
+			this.skin.tone = "red";
 			this.hair.color = "black";
 			this.hair.length = 1;
 			initStrTouSpeInte(20, 10, 25, 12);

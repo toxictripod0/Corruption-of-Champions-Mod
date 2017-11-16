@@ -836,7 +836,7 @@ package classes.Scenes.Places.Bazaar
 			outputText("\n\nAndy actually blushes, \"<i>Don't say it like that. I feel like you're teasing me.</i>\" he chuckles, \"<i>...but yeah. I love it, nothing like it. I can lick and stick and play in an ass all day long.</i>\" Then with a mischievous grin you tell him to prove it.");
 			outputText("\n\nAndy bites his lip as you begin to shed your [armor], revealing your body with exaggerated slowness as you watch his dog cock twitch in anticipation.");
 			outputText("\n\n\"<i>Oh hell yes.</i>\" He gasps, licking his lips as his eyes travel southward. Turning away you present your [ass] for his viewing pleasure.");
-			outputText("\n\nYou feel hands glide onto your waist. Soft fingers slide against your " + player.skinFurScales() + " and lift your [ass] spreading your " + player.skinTone + " cheeks apart to reveal your [asshole]. You feel a cool dollop of spit silently land on your [ass] and slide down your crack, a teasing tingle of wetness that makes your ass flex. Before the spit slides much lower than your pucker you feel a tongue press into your taint and lick upwards, wiping a wet swath up your [ass].");
+			outputText("\n\nYou feel hands glide onto your waist. Soft fingers slide against your " + player.skinFurScales() + " and lift your [ass] spreading your " + player.skin.tone + " cheeks apart to reveal your [asshole]. You feel a cool dollop of spit silently land on your [ass] and slide down your crack, a teasing tingle of wetness that makes your ass flex. Before the spit slides much lower than your pucker you feel a tongue press into your taint and lick upwards, wiping a wet swath up your [ass].");
 			outputText("\n\nYou bite your lip as he begins to lick up and down, his tongue playing in your [ass] like a kid at a playground. He kisses your exposed cheeks, he nibbles at your taint with soft wet lips. You tremble, you gasp and you can't help pushing backward as he teases you into frenzy. A hand lands on your [ass] with a hard smack, and then another. He grabs as much extra skin between his hands as he can and stiffens his tongue.");
 			outputText("\n\nAs he begins tongue fucking your [asshole] you can't help pushing back against his tongue, against that wet elation inducing muscle so talented you're singing. Those wet lips begin to nibble and suck, coming off your [asshole] with hard pop before repeating the process. It is bliss unending as he continues to loudly pop, pop, pop against your quivering [asshole].");
 			outputText("\n\nYou're cringing and convulsing, you're out of control and every sensation is a reminder of who really runs this show. Not Andy or you or your ass… it's that tongue, it's those lips, it's the mind blowing waves of pleasure breaking through your body like a tidal wave. The sloppy slurp, slurp, slurps and tingling shudders have you almost crazed with need.");
@@ -1469,7 +1469,7 @@ package classes.Scenes.Places.Bazaar
 
 			if (rand(3) == 0 && changes < changeLimit && player.hasScales()) {
 				outputText("\n\nYou feel an odd rolling sensation as your scales begin to shift, spreading and reforming as they grow and disappear, <b>becoming normal human skin</b>.");
-				player.skinType = Skin.PLAIN;
+				player.skin.type = Skin.PLAIN;
 				player.underBody.restore();
 				changes++;
 			}
@@ -1620,9 +1620,9 @@ package classes.Scenes.Places.Bazaar
 				changes++;
 			}
 			//Fur/scales fall out
-			if (rand(4) == 0 && changes < changeLimit && (!player.hasPlainSkin() || player.skinTone != "gray" || player.skinAdj != "tough")) {
+			if (rand(4) == 0 && changes < changeLimit && (!player.hasPlainSkin() || player.skin.tone != "gray" || player.skin.adj != "tough")) {
 				outputText("\n\n");
-				switch(player.skinType) {
+				switch(player.skin.type) {
 					case Skin.PLAIN:
 						outputText("You feel an itchy sensation as your skin thickens, <b>becoming tough gray skin</b>.");
 						break;
@@ -1640,10 +1640,10 @@ package classes.Scenes.Places.Bazaar
 					default:
 						outputText("You feel an itchy sensation as your skin thickens, <b>becoming tough gray skin</b>.");
 				}
-				player.skinTone = "gray";
-				player.skinAdj = "tough";
-				player.skinType = Skin.PLAIN;
-				player.skinDesc = "skin";
+				player.skin.tone = "gray";
+				player.skin.adj = "tough";
+				player.skin.type = Skin.PLAIN;
+				player.skin.desc = "skin";
 				player.underBody.restore();
 				mutations.updateClaws(player.claws.type);
 				changes++;
@@ -1652,10 +1652,10 @@ package classes.Scenes.Places.Bazaar
 			if (rand(3) == 0 && changes < changeLimit && player.arms.type != Arms.HUMAN) {
 				switch(player.arms.type) {
 					case Arms.HARPY:
-						outputText("\n\nYou scratch at your biceps absentmindedly, but no matter how much you scratch, it isn't getting rid of the itch. Glancing down in irritation, you discover that your feathery arms are shedding their feathery coating. The wing-like shape your arms once had is gone in a matter of moments, leaving " + player.skinDesc + " behind.");
+						outputText("\n\nYou scratch at your biceps absentmindedly, but no matter how much you scratch, it isn't getting rid of the itch. Glancing down in irritation, you discover that your feathery arms are shedding their feathery coating. The wing-like shape your arms once had is gone in a matter of moments, leaving " + player.skin.desc + " behind.");
 						break;
 					case Arms.SPIDER:
-						outputText("\n\nYou scratch at your biceps absentmindedly, but no matter how much you scratch, it isn't getting rid of the itch. Glancing down in irritation, you discover that your arms' chitinous covering is flaking away. The glossy black coating is soon gone, leaving " + player.skinDesc + " behind.");
+						outputText("\n\nYou scratch at your biceps absentmindedly, but no matter how much you scratch, it isn't getting rid of the itch. Glancing down in irritation, you discover that your arms' chitinous covering is flaking away. The glossy black coating is soon gone, leaving " + player.skin.desc + " behind.");
 						break;
 					default:
 				}
@@ -1725,15 +1725,15 @@ package classes.Scenes.Places.Bazaar
 				changes++;
 			}
 			//Change face to rhino
-			if (rand(4) == 0 && changes < changeLimit && player.ears.type == Ears.RHINO && player.skinTone == "gray" && player.face.type != Face.RHINO) {
+			if (rand(4) == 0 && changes < changeLimit && player.ears.type == Ears.RHINO && player.skin.tone == "gray" && player.face.type != Face.RHINO) {
 				outputText("\n\nYour face suddenly goes numb. You begin to hear bone cracking as you vision suddenly shifts as you face stretches out and thickens. When your face is done growing you can see the edges of your elongated mouth and noise in the center of your field of vision. They barely impede your vision though. <b>You now have a rhino face.</b>");
 				player.face.type = Face.RHINO;
 				changes++;
 			}
 			//Change tail to rhino
 			if (rand(3) == 0 && changes < changeLimit && player.isBiped() && player.tailType != Tail.RHINO) {
-				if (player.tailType > 0) outputText("\n\nYou [tail] suddenly goes numb. Looking back you see it changing, twisting and reforming into a long ropy tail with a little " + player.furColor + " tuft at the end. <b>You now have a rhino tail.</b>");
-				else outputText("\n\nYou feel an odd itchy sensation just above your [ass]. Twisting around to inspect it you find a long ropy tail with a little " + player.furColor + " tuft on the end. <b>You now have a rhino tail.</b>");
+				if (player.tailType > 0) outputText("\n\nYou [tail] suddenly goes numb. Looking back you see it changing, twisting and reforming into a long ropy tail with a little " + player.skin.furColor + " tuft at the end. <b>You now have a rhino tail.</b>");
+				else outputText("\n\nYou feel an odd itchy sensation just above your [ass]. Twisting around to inspect it you find a long ropy tail with a little " + player.skin.furColor + " tuft on the end. <b>You now have a rhino tail.</b>");
 				player.tailType = Tail.RHINO;
 				changes++;
 			}
@@ -1898,10 +1898,10 @@ package classes.Scenes.Places.Bazaar
 			//Change to fur
 			if (rand(3) == 0 && changes < changeLimit && !player.hasFur()) {
 				outputText("\n\nYou shiver, feeling a bit cold. Just as you begin to wish for something to cover up with, it seems your request is granted; <b>fur begins to grow all over your body!</b> You tug at the tufts in alarm, but they're firmly rooted and... actually pretty soft. Huh. ");
-				player.skinAdj = "";
-				player.skinDesc = "fur";
-				player.skinType = Skin.FUR;
-				player.furColor = "brown";
+				player.skin.adj = "";
+				player.skin.desc = "fur";
+				player.skin.type = Skin.FUR;
+				player.skin.furColor = "brown";
 				player.underBody.restore(); // Restore the underbody for now
 				changes++;
 			}

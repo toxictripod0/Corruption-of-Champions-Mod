@@ -83,7 +83,7 @@ package classes.Items.Consumables
 			if (player.tou < player.ngPlus(70) && changes < changeLimit && rand(3) === 0) {
 				//(+3)
 				if (player.tou < player.ngPlus(40)) {
-					outputText("\n\nYour body and skin both thicken noticeably.  You pinch your " + player.skinDesc + " experimentally and marvel at how much tougher your hide has gotten.");
+					outputText("\n\nYour body and skin both thicken noticeably.  You pinch your " + player.skin.desc + " experimentally and marvel at how much tougher your hide has gotten.");
 					dynStats("tou", 3);
 				}
 				//(+2)
@@ -93,7 +93,7 @@ package classes.Items.Consumables
 				}
 				//(+1)
 				else {
-					outputText("\n\nYou snarl happily as you feel yourself getting even tougher.  It's a barely discernible difference, but you can feel your " + player.skinDesc + " getting tough enough to make you feel invincible.");
+					outputText("\n\nYou snarl happily as you feel yourself getting even tougher.  It's a barely discernible difference, but you can feel your " + player.skin.desc + " getting tough enough to make you feel invincible.");
 					dynStats("tou", 1);
 				}
 				//[removed:1.4.10]//changes++;
@@ -154,9 +154,9 @@ package classes.Items.Consumables
 			}
 			//-Grows second lizard dick if only 1 dick
 			if (player.countCocksOfType(CockTypesEnum.LIZARD) === 1 && player.cocks.length === 1 && rand(4) === 0 && changes < changeLimit) {
-				outputText("\n\nA knot of pressure forms in your groin, forcing you off your " + player.feet() + " as you try to endure it.  You examine the affected area and see a lump starting to bulge under your " + player.skinDesc + ", adjacent to your " + player.cockDescript(0) + ".  The flesh darkens, turning purple");
+				outputText("\n\nA knot of pressure forms in your groin, forcing you off your " + player.feet() + " as you try to endure it.  You examine the affected area and see a lump starting to bulge under your " + player.skin.desc + ", adjacent to your " + player.cockDescript(0) + ".  The flesh darkens, turning purple");
 				if (player.isFurryOrScaley())
-					outputText(" and shedding " + player.skinDesc);
+					outputText(" and shedding " + player.skin.desc);
 				outputText(" as the bulge lengthens, pushing out from your body.  Too surprised to react, you can only pant in pain and watch as the fleshy lump starts to take on a penis-like appearance.  <b>You're growing a second lizard-cock!</b>  It doesn't stop growing until it's just as long as its brother and the same shade of shiny purple.  A dribble of cum oozes from its tip, and you feel relief at last.");
 
 				player.createCock();
@@ -323,10 +323,10 @@ package classes.Items.Consumables
 				if (player.hasFur()) {
 					player.skin.tone = newSkinTones[0];
 					mutations.updateClaws(player.claws.type);
-					outputText("\n\nYou scratch yourself, and come away with a large clump of " + player.furColor + " fur.  Panicked, you look down"
+					outputText("\n\nYou scratch yourself, and come away with a large clump of " + player.skin.furColor + " fur.  Panicked, you look down"
 					          +" and realize that your fur is falling out in huge clumps.  It itches like mad, and you scratch your body"
 					          +" relentlessly, shedding the remaining fur with alarming speed.  Underneath the fur your skin feels incredibly"
-					          +" smooth, and as more and more of the stuff comes off, you discover a seamless layer of " + player.skinTone
+					          +" smooth, and as more and more of the stuff comes off, you discover a seamless layer of " + player.skin.tone
 					          +" scales covering most of your body.  The rest of the fur is easy to remove.");
 				}
 				else if (player.hasNonLizardScales()) {
@@ -341,7 +341,7 @@ package classes.Items.Consumables
 				//(no fur)
 				else {
 					outputText("\n\nYou idly reach back to scratch yourself and nearly jump out of your " + player.armorName + " when you hit"
-					          +" something hard.  A quick glance down reveals that scales are growing out of your " + player.skinTone + " skin with"
+					          +" something hard.  A quick glance down reveals that scales are growing out of your " + player.skin.tone + " skin with"
 					          +" alarming speed.  As you watch, the surface of your skin is covered in smooth scales.  They interlink together so"
 					          +" well that they may as well be seamless.  You peel back your " + player.armorName + " and the transformation has"
 					          +" already finished on the rest of your body.");
@@ -358,7 +358,7 @@ package classes.Items.Consumables
 					desc: "ventral scales",  // ... and only override the desc
 					tone: newSkinTones[1]    // ... and the color (tone)
 				});
-				outputText("\n\n<b>You're covered from head to toe in shiny " + player.skinTone + " scales with [underBody.skinFurScales] on your underside.</b>");
+				outputText("\n\n<b>You're covered from head to toe in shiny " + player.skin.tone + " scales with [underBody.skinFurScales] on your underside.</b>");
 				kGAMECLASS.rathazul.addMixologyXP(20);
 				changes++;
 			}

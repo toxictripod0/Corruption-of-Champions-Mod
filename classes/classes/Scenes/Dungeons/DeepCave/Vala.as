@@ -35,7 +35,7 @@ package classes.Scenes.Dungeons.DeepCave
 
 			if (hasStatusEffect(StatusEffects.Milk)) {
 				addStatusValue(StatusEffects.Milk,1,5);
-				outputText("Your " + player.skinDesc + " tingles pleasantly, making you feel sexy and exposed.  Oh no!  It seems each coating of milk and glitter is stronger than the last!");
+				outputText("Your " + player.skin.desc + " tingles pleasantly, making you feel sexy and exposed.  Oh no!  It seems each coating of milk and glitter is stronger than the last!");
 			}
 			else {
 				createStatusEffect(StatusEffects.Milk,5,0,0,0);
@@ -114,7 +114,7 @@ package classes.Scenes.Dungeons.DeepCave
 			this.tallness = 4*12;
 			this.hips.rating = Hips.RATING_CURVY;
 			this.butt.rating = Butt.RATING_LARGE;
-			this.skinTone = "fair";
+			this.skin.tone = "fair";
 			this.hair.color = "purple";
 			this.hair.length = 22;
 			initStrTouSpeInte(40, 50, 50, 60);

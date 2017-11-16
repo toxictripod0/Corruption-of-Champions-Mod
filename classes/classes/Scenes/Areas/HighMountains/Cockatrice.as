@@ -191,9 +191,9 @@ package classes.Scenes.Areas.HighMountains
 			this.ears.type = Ears.COCKATRICE;
 			this.eyes.type = Eyes.COCKATRICE;
 			this.hair.type = Hair.FEATHER;
-			this.skinTone = "midnight blue";
-			this.skinType = Skin.LIZARD_SCALES;
-			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.LIZARD_SCALES];
+			this.skin.tone = "midnight blue";
+			this.theSkinType = Skin.LIZARD_SCALES;
+			//this.skin.desc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.LIZARD_SCALES];
 			this.hair.color = "blue";
 			this.hair.length = 2;
 			/*

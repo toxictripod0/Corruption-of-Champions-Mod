@@ -57,9 +57,9 @@ package classes.Items.Consumables
 			player.horns.value = 0;
 			player.horns.type = Horns.NONE;
 			player.ears.type = Ears.HUMAN;
-			player.skinType = Skin.PLAIN;
-			player.skinDesc = "skin";
-			player.skinAdj = "";
+			player.skin.type = Skin.PLAIN;
+			player.skin.desc = "skin";
+			player.skin.adj = "";
 			player.underBody.restore();
 			player.neck.restore();
 			player.rearBody.restore();

@@ -159,7 +159,7 @@ private function calledShot():void {
 			this.tallness = 90;
 			this.hips.rating = Hips.RATING_CURVY+2;
 			this.butt.rating = Butt.RATING_LARGE+1;
-			this.skinTone = "dusky";
+			this.skin.tone = "dusky";
 			this.hair.color = "red";
 			this.hair.length = 13;
 			initStrTouSpeInte(50, 50, 65, 40);

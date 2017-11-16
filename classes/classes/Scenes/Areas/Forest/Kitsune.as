@@ -220,7 +220,7 @@ package classes.Scenes.Areas.Forest
 			this.tallness = rand(24) + 60;
 			this.hips.rating = Hips.RATING_AMPLE;
 			this.butt.rating = Butt.RATING_AVERAGE+1;
-			this.skinTone = "pale";
+			this.skin.tone = "pale";
 			this.hair.color = hair.color;
 			this.hair.length = 13 + rand(20);
 			initStrTouSpeInte(35, 45, 90, 95);

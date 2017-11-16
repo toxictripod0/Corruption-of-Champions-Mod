@@ -78,7 +78,7 @@ package classes.Scenes {
 				choices[choices.length] = 9;
 			}
 			//Latexy Skinz
-			if (player.skinAdj == "latex" || player.skinAdj == "rubber") {
+			if (player.skin.adj == "latex" || player.skin.adj == "rubber") {
 				choices[choices.length] = 10;
 				choices[choices.length] = 10;
 				choices[choices.length] = 11;

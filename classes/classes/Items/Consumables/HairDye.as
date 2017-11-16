@@ -38,12 +38,12 @@ package classes.Items.Consumables
 			}
 			
 			if (game.player.hasFur()) {
-				outputText("\n\nYou have " + game.player.furColor + " fur.");
-				if (game.player.furColor != _color) game.addButton(1, "Fur", dyeFur);
+				outputText("\n\nYou have " + game.player.skin.furColor + " fur.");
+				if (game.player.skin.furColor != _color) game.addButton(1, "Fur", dyeFur);
 				else game.addButtonDisabled(1, "Fur", "Your already have " + _color + " fur!");
 			} else if (game.player.hasFeathers() || game.player.hasCockatriceSkin()) {
-				outputText("\n\nYou have " + game.player.furColor + " feathers.");
-				if (game.player.furColor != _color) game.addButton(1, "Feathers", dyeFeathers);
+				outputText("\n\nYou have " + game.player.skin.furColor + " feathers.");
+				if (game.player.skin.furColor != _color) game.addButton(1, "Feathers", dyeFeathers);
 				else game.addButtonDisabled(1, "Feathers", "Your already have " + _color + " feathers!");
 			} else {
 				outputText("\n\nYou have no fur.");
@@ -52,11 +52,11 @@ package classes.Items.Consumables
 
 			if (game.player.hasFurryUnderBody()) {
 				outputText("\n\nYou have " + game.player.underBody.skin.furColor + " fur on your underbody.");
-				if (game.player.furColor != _color) game.addButton(2, "Under Fur", dyeUnderBodyFur);
+				if (game.player.skin.furColor != _color) game.addButton(2, "Under Fur", dyeUnderBodyFur);
 				else game.addButtonDisabled(2, "Under Fur", "Your already have " + _color + " fur on your underbody!");
 			} else if (game.player.hasFeatheredUnderBody()) {
 				outputText("\n\nYou have " + game.player.underBody.skin.furColor + " feathers on your underbody.");
-				if (game.player.furColor != _color) game.addButton(2, "Under Feathers", dyeUnderBodyFeathers);
+				if (game.player.skin.furColor != _color) game.addButton(2, "Under Feathers", dyeUnderBodyFeathers);
 				else game.addButtonDisabled(2, "Under Feathers", "Your already have " + _color + " feathers on your underbody!");
 			} else {
 				outputText("\n\nYou have no special or furry underbody.");
@@ -117,8 +117,8 @@ package classes.Items.Consumables
 		private function dyeFur():void {
 			clearOutput();
 			outputText("You rub the dye into your fur, then use a bucket of cool lakewater to rinse clean a few minutes later.  ");
-			game.player.furColor = _color;
-			outputText("You now have " + game.player.furColor + " fur.");
+			game.player.skin.furColor = _color;
+			outputText("You now have " + game.player.skin.furColor + " fur.");
 			finalize();
 		}
 		
@@ -135,8 +135,8 @@ package classes.Items.Consumables
 		{
 			clearOutput();
 			outputText("You rub the dye into your feathers, then use a bucket of cool lakewater to rinse clean a few minutes later.  ");
-			game.player.furColor = _color;
-			outputText("You now have " + game.player.furColor + " feathers.");
+			game.player.skin.furColor = _color;
+			outputText("You now have " + game.player.skin.furColor + " feathers.");
 			finalize();
 		}
 

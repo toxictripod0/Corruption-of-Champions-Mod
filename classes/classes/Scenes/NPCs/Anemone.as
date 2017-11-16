@@ -68,7 +68,7 @@ import classes.internals.WeightedDrop;
 			this.tallness = 5*12+5;
 			this.hips.rating = Hips.RATING_CURVY;
 			this.butt.rating = Butt.RATING_NOTICEABLE;
-			this.skinTone = "purple";
+			this.skin.tone = "purple";
 			this.hair.color = "purplish-black";
 			this.hair.length = 20;
 			this.hair.type = Hair.ANEMONE;

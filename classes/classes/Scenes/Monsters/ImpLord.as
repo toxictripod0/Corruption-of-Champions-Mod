@@ -99,7 +99,7 @@
 			this.hips.rating = Hips.RATING_BOYISH;
 			this.butt.rating = Butt.RATING_TIGHT;
 			this.lowerBody.type = LowerBody.HOOFED;
-			this.skinTone = "red";
+			this.skin.tone = "red";
 			initStrTouSpeInte(55, 40, 75, 42);
 			initLibSensCor(55, 35, 100);
 			this.weaponName = "fist";

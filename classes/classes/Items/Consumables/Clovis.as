@@ -112,12 +112,12 @@ package classes.Items.Consumables
 				"moorit"
 			    ];
 				if (!player.hasFur()) {
-					outputText("\n\nWith an almost audible \*POMF\*, a soft fleece erupts from your body. The fleece covers all of your midsection and thighs, thick and fluffy. It doesn't fully hide your sexual features, instead obscuring them in an enticing manner. You can't help but run your hands over your soft, " + player.furColor + " wool, reveling in plushness. <b>You now have sheep wool!</b>");
+					outputText("\n\nWith an almost audible \*POMF\*, a soft fleece erupts from your body. The fleece covers all of your midsection and thighs, thick and fluffy. It doesn't fully hide your sexual features, instead obscuring them in an enticing manner. You can't help but run your hands over your soft, " + player.skin.furColor + " wool, reveling in plushness. <b>You now have sheep wool!</b>");
 				} else {
-					outputText("\n\nYou feel your fur suddenly stand on end, every follicle suddenly detaching and leaving your skin bare. As you stand with a pile of shed fur around your feet, you feel your skin tingle, and you're sure it isn't from the cold. With an almost audible \*POMF\*, a soft fleece erupts from your body. The fleece covers all of your midsection and thighs, thick and fluffy. It doesn't fully hide your sexual features, instead obscuring them in an enticing manner. You can't help but run your hands over your soft, " + player.furColor + " wool, reveling in plushness. <b>You now have sheep wool!</b>");
+					outputText("\n\nYou feel your fur suddenly stand on end, every follicle suddenly detaching and leaving your skin bare. As you stand with a pile of shed fur around your feet, you feel your skin tingle, and you're sure it isn't from the cold. With an almost audible \*POMF\*, a soft fleece erupts from your body. The fleece covers all of your midsection and thighs, thick and fluffy. It doesn't fully hide your sexual features, instead obscuring them in an enticing manner. You can't help but run your hands over your soft, " + player.skin.furColor + " wool, reveling in plushness. <b>You now have sheep wool!</b>");
 				}
-				player.skinType = Skin.WOOL;
-				player.skinDesc = "wool";
+				player.skin.type = Skin.WOOL;
+				player.skin.desc = "wool";
 				player.setFurColor(sheepWoolColors, {
 					type: UnderBody.FURRY
 				}, true);

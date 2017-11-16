@@ -64,21 +64,21 @@ package classes.Items.Consumables
 			//Rear body restore
 			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
 			//-Skin color change – light, fair, olive, dark, ebony, mahogany, russet
-			if ((player.skinTone !== "light" && player.skinTone !== "fair" && player.skinTone !== "olive" && player.skinTone !== "dark" && player.skinTone !== "ebony" && player.skinTone !== "mahogany" && player.skinTone !== "russet") && changes < changeLimit && rand(5) === 0) {
+			if ((player.skin.tone !== "light" && player.skin.tone !== "fair" && player.skin.tone !== "olive" && player.skin.tone !== "dark" && player.skin.tone !== "ebony" && player.skin.tone !== "mahogany" && player.skin.tone !== "russet") && changes < changeLimit && rand(5) === 0) {
 				changes++;
 				outputText("\n\nIt takes a while for you to notice, but <b>");
-				if (player.hasFur()) outputText("the skin under your " + player.furColor + " " + player.skinDesc);
-				else outputText("your " + player.skinDesc);
+				if (player.hasFur()) outputText("the skin under your " + player.skin.furColor + " " + player.skin.desc);
+				else outputText("your " + player.skin.desc);
 				outputText(" has changed to become ");
 				temp = rand(7);
-				if (temp === 0) player.skinTone = "light";
-				else if (temp === 1) player.skinTone = "fair";
-				else if (temp === 2) player.skinTone = "olive";
-				else if (temp === 3) player.skinTone = "dark";
-				else if (temp === 4) player.skinTone = "ebony";
-				else if (temp === 5) player.skinTone = "mahogany";
-				else player.skinTone = "russet";
-				outputText(player.skinTone + " colored.</b>");
+				if (temp === 0) player.skin.tone = "light";
+				else if (temp === 1) player.skin.tone = "fair";
+				else if (temp === 2) player.skin.tone = "olive";
+				else if (temp === 3) player.skin.tone = "dark";
+				else if (temp === 4) player.skin.tone = "ebony";
+				else if (temp === 5) player.skin.tone = "mahogany";
+				else player.skin.tone = "russet";
+				outputText(player.skin.tone + " colored.</b>");
 				player.underBody.skin.tone = player.skin.tone;
 				mutations.updateClaws(player.claws.type);
 			}

@@ -165,7 +165,7 @@ package classes.Scenes.NPCs
 				outputText("'s attack.\n");
 				return;
 			}
-			outputText("Her leg lashes forwards, lightning-quick, and tears bloody gashes into your " + player.skinDesc + " with her razor-sharp talons! ");
+			outputText("Her leg lashes forwards, lightning-quick, and tears bloody gashes into your " + player.skin.desc + " with her razor-sharp talons! ");
 			//Determine damage - str modified by enemy toughness!
 			damage = int((str + weaponAttack) - Math.random()*(player.tou) - player.armorDef);
 			if (damage < 0) damage = 0;
@@ -280,9 +280,9 @@ package classes.Scenes.NPCs
 			this.tallness = 5*12+5;
 			this.hips.rating = Hips.RATING_INHUMANLY_WIDE;
 			this.butt.rating = Butt.RATING_EXPANSIVE;
-			this.skinTone = "pink";
-			this.skinType = Skin.PLAIN;
-			this.skinDesc = "feathers";
+			this.skin.tone = "pink";
+			this.theSkinType = Skin.PLAIN;
+			this.skin.desc = "feathers";
 			this.hair.color = "pink";
 			this.hair.length = 16;
 			initStrTouSpeInte(55, 40, 110, 60);

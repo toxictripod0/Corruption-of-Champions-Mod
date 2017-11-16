@@ -275,7 +275,7 @@ use namespace kGAMECLASS;
 			if (hasReptileScales()) armorDef += 3;
 			if (hasDragonScales()) armorDef += 3;
 			//'Thick' dermis descriptor adds 1!
-			if (skinAdj == "smooth") armorDef += 1;
+			if (skin.adj == "smooth") armorDef += 1;
 			//Bonus defense
 			if (arms.type == Arms.SPIDER) armorDef += 2;
 			if (lowerBody.type == LowerBody.CHITINOUS_SPIDER_LEGS || lowerBody.type == LowerBody.BEE) armorDef += 2;
@@ -1073,7 +1073,7 @@ use namespace kGAMECLASS;
 					cockatriceCounter++;
 				if (wingType == Wings.FEATHERED_LARGE)
 					cockatriceCounter++;
-				if (skinType == Skin.LIZARD_SCALES)
+				if (skin.type == Skin.LIZARD_SCALES)
 					cockatriceCounter++;
 				if (underBody.type == UnderBody.COCKATRICE)
 					cockatriceCounter++;
@@ -1097,7 +1097,7 @@ use namespace kGAMECLASS;
 				impCounter += 2;
 			if (lowerBody.type == LowerBody.IMP)
 				impCounter++;
-			if (hasPlainSkin() && ["red", "orange"].indexOf(skinTone) != -1)
+			if (hasPlainSkin() && ["red", "orange"].indexOf(skin.tone) != -1)
 				impCounter++;
 			if (horns.type == Horns.IMP)
 				impCounter++;
@@ -1147,7 +1147,7 @@ use namespace kGAMECLASS;
 			var humanCounter:Number = 0;
 			if (face.type == Face.HUMAN)
 				humanCounter++;
-			if (skinType == Skin.PLAIN)
+			if (skin.type == Skin.PLAIN)
 				humanCounter++;
 			if (horns.type == Horns.NONE)
 				humanCounter++;
@@ -1159,7 +1159,7 @@ use namespace kGAMECLASS;
 				humanCounter++;
 			if (countCocksOfType(CockTypesEnum.HUMAN) == 1 && cocks.length == 1)
 				humanCounter++;
-			if (breastRows.length == 1 && skinType == Skin.PLAIN)
+			if (breastRows.length == 1 && skin.type == Skin.PLAIN)
 				humanCounter++;
 			return humanCounter;
 		}
@@ -1601,7 +1601,7 @@ use namespace kGAMECLASS;
 			var horseCounter:Number = 0;
 			if (ears.type == Ears.ELFIN)
 				horseCounter++;
-			if (skinTone == "pale yellow" || skinTone == "grayish-blue" || skinTone == "green" || skinTone == "dark green")
+			if (skin.tone == "pale yellow" || skin.tone == "grayish-blue" || skin.tone == "green" || skin.tone == "dark green")
 				horseCounter++;
 			if (horseCounter > 0)
 			{
@@ -1623,7 +1623,7 @@ use namespace kGAMECLASS;
 			var gooCounter:Number = 0;
 			if (hair.type == Hair.GOO)
 				gooCounter++;
-			if (skinAdj == "slimy")
+			if (skin.adj == "slimy")
 				gooCounter++;
 			if (lowerBody.type == LowerBody.GOO)
 				gooCounter++;
@@ -1874,7 +1874,7 @@ use namespace kGAMECLASS;
 				rhinoCounter++;
 			if (horns.type == Horns.RHINO)
 				rhinoCounter++;
-			if (rhinoCounter >= 2 && skinTone == "gray")
+			if (rhinoCounter >= 2 && skin.tone == "gray")
 				rhinoCounter++;
 			if (rhinoCounter >= 2 && hasCock() && countCocksOfType(CockTypesEnum.RHINO) > 0)
 				rhinoCounter++;
@@ -3300,9 +3300,9 @@ use namespace kGAMECLASS;
 				underBody.restore();
 
 			if (what == "fur")
-				furColor = (choice is Array) ? choice[0] : choice;
+				skin.furColor = (choice is Array) ? choice[0] : choice;
 			else
-				skinTone = (choice is Array) ? choice[0] : choice;
+				skin.tone = (choice is Array) ? choice[0] : choice;
 
 			if (doCopySkin)
 				copySkinToUnderBody();

@@ -356,14 +356,14 @@ package classes.Scenes.Dungeons.Factory
 				else outputText("tit.\n\n");
 			}
 			if (player.biggestLactation() >= 3 && player.biggestLactation() < 4) {
-				outputText("Her flexible tongue wraps around a milk-swollen nipple, immediately squeezing out a jet of thick breast-milk.  The tongue squeezes and tugs while the succubus ramps up the suction between her thick bee-stung lips.  Your body rewards her with fountains of milk, forcing her to visibly gulp and struggle to keep up with the heavy flow.  Milk runs freely down the " + player.skinDesc + " on your chest, pooling around the succubus' groin and your own as the unattended nipple");
+				outputText("Her flexible tongue wraps around a milk-swollen nipple, immediately squeezing out a jet of thick breast-milk.  The tongue squeezes and tugs while the succubus ramps up the suction between her thick bee-stung lips.  Your body rewards her with fountains of milk, forcing her to visibly gulp and struggle to keep up with the heavy flow.  Milk runs freely down the " + player.skin.desc + " on your chest, pooling around the succubus' groin and your own as the unattended nipple");
 				if (player.totalBreasts() > 2) outputText("s");
 				outputText(" can't help but dribble in sympathy.\n\n");
 			}
 			if (player.biggestLactation() >= 4) {
 				outputText("Her flexible tongue wraps around a milk-bloated nipple, immediately releasing a massive spray of cream that pours into her gullet, nearly choking her.  You stifle a giggle and pull her closer.  Thankfully, her determined tongue manages to stay in place and start tugging your nipple about, releasing even more of your over-large milk production.  She struggles, her throat and cheeks bulging from your explosive output of milk, until it overwhelms her and begin to pour out of her nose.  More milk pours from your unoccupied nipple");
 				if (player.totalBreasts() > 2) outputText("s");
-				outputText(" in sympathy, drenching your " + player.skinDesc + " with creamy goodness until it puddles on your captive demon.\n\n");
+				outputText(" in sympathy, drenching your " + player.skin.desc + " with creamy goodness until it puddles on your captive demon.\n\n");
 			}
 			if (player.totalNipples() == 2) outputText("As your first nipple drains, you move her to your other breast, being sure to motivate her cunt by grinding it with your " + player.foot() + ".  She squeals and sucks harder, emptying the last of your milk with a cute burp.  ");
 			if (player.totalNipples() > 2 && player.totalNipples() < 6) outputText("As your first " + player.nippleDescript(0) + " drains, you forcibly move her to the next, unleashing a fresh batch of milk for her to feast upon.  Eventually, it too dries up, so you migrate her onwards to your next " + player.nippleDescript(0) + ".  After she drains each of your " + num2Text(player.totalNipples()) + ", you smile happily at your now emptied breasts.  ");

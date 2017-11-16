@@ -158,7 +158,7 @@ package classes.Scenes.Areas.Lake
 			this.tallness = 6*12;
 			this.hips.rating = Hips.RATING_BOYISH+1;
 			this.butt.rating = Butt.RATING_TIGHT;
-			this.skinTone = "tan";
+			this.skin.tone = "tan";
 			this.hair.color = "black";
 			this.hair.length = 4;
 			initStrTouSpeInte(35, 35, 30, 1);

@@ -96,7 +96,7 @@ package classes.Scenes.NPCs
 			this.hips.rating = Hips.RATING_CURVY;
 			this.butt.rating = Butt.RATING_LARGE;
 			this.lowerBody.type = LowerBody.HOOFED;
-			this.skinTone = "pale";
+			this.skin.tone = "pale";
 			this.hair.color = "brown";
 			this.hair.length = 13;
 			initStrTouSpeInte(75, 70, 35, 40);

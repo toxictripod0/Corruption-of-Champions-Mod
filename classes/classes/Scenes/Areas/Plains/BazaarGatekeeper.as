@@ -130,9 +130,9 @@ package classes.Scenes.Areas.Plains
 			this.tallness = 10*12;
 			this.hips.rating = 2;
 			this.butt.rating = 0;
-			this.skinTone = "crimson";
-			this.skinType = 0;
-			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.FUR];
+			this.skin.tone = "crimson";
+			this.theSkinType = 0;
+			//this.skin.desc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.FUR];
 			this.hair.color = "black";
 			this.hair.length = 8;
 			initStrTouSpeInte(100, 100, 80, 70);

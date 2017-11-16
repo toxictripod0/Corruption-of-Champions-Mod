@@ -320,10 +320,10 @@
 			///*OPTIONAL*/ //this.arms.type = Arms.; // default human
 
 			//// 6. Skin
-			///*OPTIONAL*/ //this.skinTone = "skinTone"; // default "albino"
-			///*OPTIONAL*/ //this.skinType = Skin.; // default PLAIN
-			///*OPTIONAL*/ //this.skinDesc = "skinDesc"; // default "skin" if this.skinType is not set, else Appearance.DEFAULT_SKIN_DESCS[skinType]
-			///*OPTIONAL*/ //this.skinAdj = "skinAdj"; // default ""
+			///*OPTIONAL*/ //this.skin.tone = "skinTone"; // default "albino"
+			///*OPTIONAL*/ //this.skin.type = Skin.; // default PLAIN
+			///*OPTIONAL*/ //this.skin.desc = "skinDesc"; // default "skin" if this.skin.type is not set, else Appearance.DEFAULT_SKIN_DESCS[skinType]
+			///*OPTIONAL*/ //this.skin.adj = "skinAdj"; // default ""
 
 			//// 7. Hair
 			///*OPTIONAL*/ //this.hair.color = ; // default "no"
@@ -553,10 +553,10 @@
 			super.tallness = value;
 		}
 
-		override public function set skinType(value:Number):void
+		public function set theSkinType(value:Number):void
 		{
-			if (!_checkCalled) { this.skinDesc = Appearance.DEFAULT_SKIN_DESCS[value];}
-			super.skinType = value;
+			if (!_checkCalled) { this.skin.desc = Appearance.DEFAULT_SKIN_DESCS[value];}
+			super.skin.type = value;
 		}
 
 		protected function initStrTouSpeInte(str:Number, tou:Number, spe:Number, inte:Number):void
@@ -1025,7 +1025,7 @@
 					Appearance.describeByScale(butt.rating,Appearance.DEFAULT_BUTT_RATING_SCALES,"thinner than","wider than")+" butt.\n";
 			result +=Pronoun3+" lower body is "+(Appearance.DEFAULT_LOWER_BODY_NAMES[lowerBody.type]||("lowerBody#"+lowerBody.type));
 			result += ", "+pronoun3+" arms are "+(Appearance.DEFAULT_ARM_NAMES[arms.type]||("armType#"+arms.type));
-			result += ", "+pronoun1+" "+have+" "+skinTone+" "+skinAdj+" "+skinDesc+" (type "+(Appearance.DEFAULT_SKIN_NAMES[skinType]||("skinType#"+skinType))+").\n";
+			result += ", "+pronoun1+" "+have+" "+skin.tone+" "+skin.adj+" "+skin.desc+" (type "+(Appearance.DEFAULT_SKIN_NAMES[skin.type]||("skinType#"+skin.type))+").\n";
 			result += Hehas;
 			if (hair.length>0){
 				result += hair.color+" "+Appearance.inchesAndFeetsAndInches(hair.length)+" long "+(Appearance.DEFAULT_HAIR_NAMES[hair.type]||("hair.type#"+hair.type))+" hair.\n";

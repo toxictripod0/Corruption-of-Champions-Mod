@@ -41,7 +41,7 @@ package classes.Scenes.Areas.Swamp
 			this.hips.rating = Hips.RATING_CURVY+2;
 			this.butt.rating = Butt.RATING_LARGE+1;
 			this.lowerBody.type = LowerBody.CHITINOUS_SPIDER_LEGS;
-			this.skinTone = "dusky";
+			this.skin.tone = "dusky";
 			this.hair.color = "red";
 			this.hair.length = 13;
 			initStrTouSpeInte(60, 50, 99, 99);

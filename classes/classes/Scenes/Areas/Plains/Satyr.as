@@ -153,7 +153,7 @@ package classes.Scenes.Areas.Plains
 			this.hips.rating = Hips.RATING_AVERAGE;
 			this.butt.rating = Butt.RATING_AVERAGE+1;
 			this.lowerBody.type = LowerBody.HOOFED;
-			this.skinTone = "tan";
+			this.skin.tone = "tan";
 			this.hair.color = randomChoice("black","brown");
 			this.hair.length = 3+rand(20);
 			this.face.type = Face.COW_MINOTAUR;

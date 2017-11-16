@@ -83,7 +83,7 @@ package classes
 
 		public function hasCockatriceSkin():Boolean
 		{
-			return skinType == Skin.LIZARD_SCALES && underBody.type == UnderBody.COCKATRICE;
+			return skin.type == Skin.LIZARD_SCALES && underBody.type == UnderBody.COCKATRICE;
 		}
 
 		public function hasNonCockatriceAntennae():Boolean

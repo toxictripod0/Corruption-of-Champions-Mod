@@ -51,7 +51,7 @@ package classes.Scenes.Areas.Mountain
 		{
 			//Most times they dont have an axe
 			hasAxe = axe || rand(3)==0;
-			this.furColor = randomChoice("black","brown");
+			this.skin.furColor = randomChoice("black","brown");
 			//trace("Minotaur Constructor!");
 			this.a = "the ";
 			this.short = "minotaur";
@@ -71,10 +71,10 @@ package classes.Scenes.Areas.Mountain
 			this.hips.rating = Hips.RATING_AVERAGE;
 			this.butt.rating = Butt.RATING_AVERAGE;
 			this.lowerBody.type = LowerBody.HOOFED;
-			this.skinTone = furColor;
-			this.skinType = Skin.FUR;
-			this.skinDesc = "shaggy fur";
-			this.hair.color = furColor;
+			this.skin.tone = skin.furColor;
+			this.theSkinType = Skin.FUR;
+			this.skin.desc = "shaggy fur";
+			this.hair.color = skin.furColor;
 			this.hair.length = 3;
 			initStrTouSpeInte(hasAxe ? 75 : 50, 60, 30, 20);
 			initLibSensCor(40 + this.ballSize * 2, 15 + this.ballSize * 2, 35);

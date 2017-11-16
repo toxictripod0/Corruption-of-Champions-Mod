@@ -173,9 +173,9 @@ package classes.Scenes.Monsters
 			outputText("\n\n");
 			outputText("He grips your cock tightly as he fucks you, treating you like a ");
 			//Differing cocksleeve texts
-			if (player.skinDesc == "fur") outputText("furry cock-sleeve");
+			if (player.skin.desc == "fur") outputText("furry cock-sleeve");
 			else {
-				if (player.skinTone == "purple" || player.skinTone == "blue" || player.skinTone == "shiny black") outputText("demonic cock-sleeve");
+				if (player.skin.tone == "purple" || player.skin.tone == "blue" || player.skin.tone == "shiny black") outputText("demonic cock-sleeve");
 				else outputText("human cock-sleeve");
 			}
 			//Bonus boob shake or period if no boobs.
@@ -630,7 +630,7 @@ package classes.Scenes.Monsters
 						outputText("The imps leap forward just as you start to ready your " + player.weaponName + ", one sweaty imp clinging to your arm");
 						//(If the player has a weapon)
 						if (player.weaponName != "fists") outputText(" while another kicks your weapon out of reach");
-						outputText(".  The " + monster.short + " surges forward and grapples you. Imps grope your body and hump their " + monster.cockDescriptShort(0) + " against your horse legs, smearing their sweat and pre-cum into your " + player.skinDesc + ". The rest of the " + monster.short + ", a dozen or more imps, all leer at you and laugh as they slap and pinch your body. The imps have sharp claws, tiny sharp teeth, and short horns on their heads. They scratch, claw, and bite at you with all of these weapons as they try to pull you down to the ground. One bold imp leaps forward and grabs your ");
+						outputText(".  The " + monster.short + " surges forward and grapples you. Imps grope your body and hump their " + monster.cockDescriptShort(0) + " against your horse legs, smearing their sweat and pre-cum into your " + player.skin.desc + ". The rest of the " + monster.short + ", a dozen or more imps, all leer at you and laugh as they slap and pinch your body. The imps have sharp claws, tiny sharp teeth, and short horns on their heads. They scratch, claw, and bite at you with all of these weapons as they try to pull you down to the ground. One bold imp leaps forward and grabs your ");
 						//(If the player has a cock)"
 						if (player.cockTotal() > 0) outputText(player.cockDescript(0));
 						//(If the player has breasts)
@@ -640,11 +640,11 @@ package classes.Scenes.Monsters
 					outputText("The horde drags you to your knees, grappling your legs and crawling over your horse-body to pin you down. You try to buck them off but there are too many to fight. The imps drag your arms behind your back, wrapping them around your rider. Another imp whips off his loincloth to reveal his pre-cum drooling " + monster.cockDescriptShort(0) + " and tosses the cloth to the imps holding your arms. They quickly tie your arms back with the sweat-damp loincloth.  ");
 					//(If the player has breasts)
 					if (player.biggestTitSize() > 1) outputText("Having your arms tied behind your back forces your chest out, making your " + player.allBreastsDescript() + " stand out. They bounce as you struggle.  ");
-					outputText("The " + monster.short + " stroke themselves and rub their hands over your outstretched chest, smearing their pre-cum into your skin. The imp riding you bounces up and down, rubbing his sweaty " +  monster.ballsDescriptLight() + " against your " + player.skinDesc + " while he yanks your hair.  ");
+					outputText("The " + monster.short + " stroke themselves and rub their hands over your outstretched chest, smearing their pre-cum into your skin. The imp riding you bounces up and down, rubbing his sweaty " +  monster.ballsDescriptLight() + " against your " + player.skin.desc + " while he yanks your hair.  ");
 					//(Low Corruption)
 					if (player.cor < 50) outputText("Your face flushes with humiliation. Your imp rider twists your " + player.hairDescript() + " hard and you whimper in pain. Imps rub their cocks along your " + player.hipDescript() + " while others stroke themselves and jeer at your helplessness.  ");
 					//(High Corruption)
-					else outputText(monster.capitalA  + " swarms over your body, some stroking themselves as they watch you squirm while others rub their cocks over your flanks. Your imp rider twists your hair, pulling your head back, and you moan in pleasure at the rough handling. Your " + player.skinDesc + " tingles as you start to flush with desire.  ");
+					else outputText(monster.capitalA  + " swarms over your body, some stroking themselves as they watch you squirm while others rub their cocks over your flanks. Your imp rider twists your hair, pulling your head back, and you moan in pleasure at the rough handling. Your " + player.skin.desc + " tingles as you start to flush with desire.  ");
 					outputText("You yelp in shock as you feel a sharp slap on your ass. You look back to see an imp pulling your tail up. He grins at you and slaps your " + player.hipDescript() + " again. He yanks your tail and slaps your ass one last time, then dives down to plant his face in your " + player.vaginaDescript(0) + ". His inhumanly nimble tongue teases the folds of your pussy and flicks at your " + player.clitDescript() + ".  ");
 					//(If the player has balls)
 					if (player.balls > 0) outputText("The tongue slides over your " + player.sackDescript() + ", coating it with warm drool.  ");
@@ -982,7 +982,7 @@ package classes.Scenes.Monsters
 					}
 					outputText("The imps leap forward just as you start to ready your " + player.weaponName + ", one sweaty imp clinging to your arm");
 					if (player.weaponName != "fists") outputText(" while another kicks your weapon out of reach");
-					outputText(". The " + monster.short + " surges forward and grapples you. Imps grope your body and hump their " + monster.cockDescriptShort(0) + " against your legs, smearing their sweat and pre-cum into your " + player.skinDesc + ". The rest of the " + monster.short + ", a dozen or more imps, all leer at you and laugh as they slap and pinch your body. The imps have sharp claws, tiny sharp teeth, and short horns on their heads. They scratch, claw, and bite at you with all of these weapons as they try to pull you down to the ground. One bold imp leaps forward and grabs your ");
+					outputText(". The " + monster.short + " surges forward and grapples you. Imps grope your body and hump their " + monster.cockDescriptShort(0) + " against your legs, smearing their sweat and pre-cum into your " + player.skin.desc + ". The rest of the " + monster.short + ", a dozen or more imps, all leer at you and laugh as they slap and pinch your body. The imps have sharp claws, tiny sharp teeth, and short horns on their heads. They scratch, claw, and bite at you with all of these weapons as they try to pull you down to the ground. One bold imp leaps forward and grabs your ");
 					//(If the player has a cock)
 					if (player.cockTotal() > 0) outputText(player.cockDescript(0));
 					else outputText(player.nippleDescript(0));

@@ -150,7 +150,7 @@ package classes.Scenes.Places.Farm
 			this.butt.rating = Butt.RATING_AVERAGE+1;
 			this.lowerBody.type = LowerBody.HOOFED;
 			this.lowerBody.legCount = 4;
-			this.skinTone = "tan";
+			this.skin.tone = "tan";
 			this.hair.color = randomChoice("black","brown");
 			this.hair.length = 3;
 			initStrTouSpeInte(60, 70, 40, 20);

@@ -43,7 +43,7 @@ package classes.Scenes.Quests.UrtaQuest
 			this.tallness = 35 + rand(4);
 			this.hips.rating = Hips.RATING_AMPLE+2;
 			this.butt.rating = Butt.RATING_LARGE;
-			this.skinTone = "dark green";
+			this.skin.tone = "dark green";
 			this.hair.color = "purple";
 			this.hair.length = 4;
 			initStrTouSpeInte(50, 30, 35, 100);

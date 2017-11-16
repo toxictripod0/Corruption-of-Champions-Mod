@@ -68,7 +68,7 @@ package classes.Items
 						break;
 
 					case Arms.PREDATOR:
-						switch (player.skinType) {
+						switch (player.skin.type) {
 							case Skin.GOO:
 								if (player.claws.type != Claws.NORMAL)
 									message += "\n\nYour gooey claws melt into your fingers."
@@ -367,7 +367,7 @@ package classes.Items
 				case Claws.LIZARD:
 					// See http://www.bergenbattingcenter.com/lizard-skins-bat-grip/ for all those NYI! lizard skin colors
 					// I'm still not that happy with these claw tones. Any suggestion would be nice.
-					switch (player.skinTone) {
+					switch (player.skin.tone) {
 						case "red":          clawTone = "reddish";      break;
 						case "green":        clawTone = "greenish";     break;
 						case "white":        clawTone = "light-gray";   break;
@@ -498,7 +498,7 @@ package classes.Items
 						}
 
 						// Finalize Corrupted Basilisk TFs
-						player.hair.color = player.skinTone;                   // hairColor always set to player.skinTone
+						player.hair.color = player.skin.tone;                   // hairColor always set to player.skin.tone
 						player.hair.type = Hair.BASILISK_SPINES;               // hairType set to basilisk spines
 						player.hair.length = 2;                                // hairLength set to 2 (inches, displayed as ‘short’)
 						flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] = 1; // Hair growth stops

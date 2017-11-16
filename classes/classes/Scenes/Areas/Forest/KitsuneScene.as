@@ -2387,25 +2387,25 @@ package classes.Scenes.Areas.Forest
 					
 					// Nine tail kitsunes have their fur/hair color golden, silver or pure white
 					if (!InCollection(player.hair.color, elderKitsuneColors)) // wrong hair color
-						if (player.hasFur() && InCollection(player.furColor, elderKitsuneColors)) { // right fur color
-							player.hair.color = player.furColor;
+						if (player.hasFur() && InCollection(player.skin.furColor, elderKitsuneColors)) { // right fur color
+							player.hair.color = player.skin.furColor;
 							if (player.hair.length > 0) outputText("\n\nNow you have " + player.hair.color + " hair matching your fur, like true kitsune elder. You look really regal!");
 						}
 						else if (player.hasFur()) { // wrong fur color
 							player.hair.color = randomChoice(elderKitsuneColors);
-							player.furColor = player.hair.color;
+							player.skin.furColor = player.hair.color;
 							if (player.hair.length > 0) outputText("\n\Now you have " + player.hair.color + " fur and hair, like true kitsune elder. You look really regal!");
-							else outputText("\n\Now you have " + player.furColor + " fur, like true kitsune elder. You look really regal!");
+							else outputText("\n\Now you have " + player.skin.furColor + " fur, like true kitsune elder. You look really regal!");
 						}
 						else { // no fur
 							player.hair.color = randomChoice(elderKitsuneColors);
-							player.furColor = player.hair.color;
+							player.skin.furColor = player.hair.color;
 							if (player.hair.length > 0) outputText("\n\Now you have " + player.hair.color + " hair, like true kitsune elder.");
 						}
 					else // right hair color
-						if (player.hasFur() && !InCollection(player.furColor, elderKitsuneColors)) { // wrong fur color
-							player.furColor = player.hair.color;
-							outputText("\n\Now you have " + player.furColor + " fur matching your hair, like true kitsune elder. You look really regal!");
+						if (player.hasFur() && !InCollection(player.skin.furColor, elderKitsuneColors)) { // wrong fur color
+							player.skin.furColor = player.hair.color;
+							outputText("\n\Now you have " + player.skin.furColor + " fur matching your hair, like true kitsune elder. You look really regal!");
 						}
 					
 					outputText("\n\nYou pause for a moment to reflect on your newfound wisdom, and with a renewed vigor for your quest, you stand and set off for camp.");

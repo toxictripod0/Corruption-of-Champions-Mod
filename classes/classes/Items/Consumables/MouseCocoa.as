@@ -175,7 +175,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//get fur
-			if ((!player.hasFur() || (player.hasFur() && (player.furColor !== "brown" && player.furColor !== "white"))) && changes < changeLimit && rand(4) === 0) {
+			if ((!player.hasFur() || (player.hasFur() && (player.skin.furColor !== "brown" && player.skin.furColor !== "white"))) && changes < changeLimit && rand(4) === 0) {
 				//from skinscales
 				if (!player.hasFur()) {
 					outputText("\n\nYour " + player.skinFurScales() + " itch");
@@ -186,11 +186,11 @@ package classes.Items.Consumables
 					temp = rand(10);
 					if (temp < 8) {
 						outputText("brown");
-						player.furColor = "brown";
+						player.skin.furColor = "brown";
 					}
 					else {
 						outputText("white");
-						player.furColor = "white";
+						player.skin.furColor = "white";
 					}
 					outputText(" fur begin to force through your skin");
 					if (player.hasScales()) outputText(", pushing your scales out with little pinches");
@@ -202,17 +202,17 @@ package classes.Items.Consumables
 					temp = rand(10);
 					if (temp < 8) {
 						outputText("brown");
-						player.furColor = "brown";
+						player.skin.furColor = "brown";
 					}
 					else {
 						outputText("white");
-						player.furColor = "white";
+						player.skin.furColor = "white";
 					}
 					outputText(" fuzz coming in behind it that soon grows to full-fledged fur.");
 				}
-				player.skinAdj = "";
-				player.skinDesc = "fur";
-				player.skinType = Skin.FUR;
+				player.skin.adj = "";
+				player.skin.desc = "fur";
+				player.skin.type = Skin.FUR;
 				player.underBody.restore(); // Restore the underbody for now
 				changes++;
 			}

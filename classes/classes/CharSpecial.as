@@ -91,7 +91,7 @@ package classes
 			player.cocks[0].knotMultiplier = 2.2;
 			//Butt: Loose"	"Skin: Purple
 			player.ass.analLooseness = 3;
-			player.skinTone = "purple";
+			player.skin.tone = "purple";
 			//Hair: Back length orange
 			player.hair.length = 30;
 			player.hair.color = "orange";
@@ -133,10 +133,10 @@ package classes
 			player.createBreastRow(BreastCup.DD);
 			player.femininity = 100;
 			player.lowerBody.type = LowerBody.DEMONIC_HIGH_HEELS;
-			player.skinTone = "pink";
-			player.skinType = Skin.FUR;
-			player.skinDesc = "fur";
-			player.furColor = "pink";
+			player.skin.tone = "pink";
+			player.skin.type = Skin.FUR;
+			player.skin.desc = "fur";
+			player.skin.furColor = "pink";
 			player.hair.color = "pink";
 			player.hair.length = 50;
 			player.hips.rating = 5;
@@ -218,7 +218,7 @@ package classes
 			player.nipplesPShort = "silver studs";
 			player.nipplesPLong = "Silver studs";
 				
-			player.skinTone = "ghostly pale";
+			player.skin.tone = "ghostly pale";
 			player.createPerk(PerkLib.Incorporeality, 0, 0, 0, 0);
 			player.setArmor(armors.I_CORST);
 			player.level = 5;
@@ -267,10 +267,10 @@ package classes
 			player.createPerk(PerkLib.EnlightenedNinetails,0,0,0,0);
 			//if possible with fur, Hair color: "midnight black", Skin/Fur color: "ashen grayish-blue",  Height: 65", Tone: 100, Thickness: 0, Hip rating: 6, Butt rating: 3,Feminimity: 50,  ( 4 rows of breasts (Descending from the top ones: D,C,B,A), nipple length: 0.1", Fuckable, 1 nipple per breast, Tongue type: demon
 			player.hair.color = "midnight black";
-			player.furColor = "ashen grayish-blue";
-			player.skinType = Skin.FUR;
-			player.skinDesc = "fur";
-			player.skinTone = "ashen grayish-blue";
+			player.skin.furColor = "ashen grayish-blue";
+			player.skin.type = Skin.FUR;
+			player.skin.desc = "fur";
+			player.skin.tone = "ashen grayish-blue";
 			player.tallness = 65;
 			player.tone = 100;
 			player.thickness = 0;
@@ -299,7 +299,7 @@ package classes
 			player.fertility = 5;
 			player.hair.length= 26;
 			player.hair.color = "blond";
-			player.skinTone = "light";
+			player.skin.tone = "light";
 			player.nippleLength = 0.2;
 			player.createBreastRow();
 			player.breastRows[0].breastRating = 0;
@@ -341,7 +341,7 @@ package classes
 			player.createStatusEffect(StatusEffects.Kelt,100,0,0,0);
 			//Is it possible to get extra starting perks added? If so, I'd like History: Religious added to whatever is selected on creation. If not, please ignore this line.
 			//Freckled skinAdj
-			player.skinAdj = "freckled";
+			player.skin.adj = "freckled";
 			//10 Perk Points (if possible, feel free to make it less if you feel it necessary)
 			player.perkPoints = 10;
 			//Male
@@ -375,10 +375,10 @@ package classes
 			//well to start off the name would be Cody
 			//-Cat with (black and orange tiger fur if possible) if not just Orange fur
 			player.hair.color = "black";
-			player.furColor = "black and orange striped";
-			player.skinType = Skin.FUR;
-			player.skinDesc = "fur";
-			player.skinTone = "light";
+			player.skin.furColor = "black and orange striped";
+			player.skin.type = Skin.FUR;
+			player.skin.desc = "fur";
+			player.skin.tone = "light";
 			//-Chainmail armor
 			player.setArmor(armors.FULLCHN);
 			//-Large Claymore (i understand 40 Strength is need so if he could start with that would be great if not hit the gyms)"
@@ -497,7 +497,7 @@ package classes
 			//- fox ears 
 			player.ears.type = Ears.FOX;
 			//- olive complexion
-			player.skinTone = "olive";
+			player.skin.tone = "olive";
 			//- demon tongue (oral fetish ;d)
 			player.tongueType = Tongue.DEMONIC;
 			//- 5 foot 9 inch tall
@@ -563,7 +563,7 @@ package classes
 			getGame().saves.notes = "No Notes Available.";
 			player.HP = kGAMECLASS.maxHP();
 			player.hair.length=13;
-			player.skinType = Skin.PLAIN;
+			player.skin.type = Skin.PLAIN;
 			player.face.type = Face.HUMAN;
 			player.tailType = Tail.NONE;
 			player.tongueType = Tongue.HUMAN;
@@ -572,8 +572,8 @@ package classes
 			player.beard.style = 0;
 			player.tone = 30;
 			player.thickness = 50;
-			player.skinDesc = "skin";
-			player.skinTone = "olive";
+			player.skin.desc = "skin";
+			player.skin.tone = "olive";
 			player.hair.color = "black";
 			player.balls = 0;
 			player.cumMultiplier = 1;
@@ -609,7 +609,7 @@ package classes
 			player.hair.length = 30;
 			player.hair.color = "light blonde";
 			player.createBreastRow(BreastCup.D);
-			player.skinTone = "light";
+			player.skin.tone = "light";
 			//Bow skill 100 (Sorry Kelt, I can't hear your insults over my mad Robin Hood skillz)
 			player.createStatusEffect(StatusEffects.Kelt,100,0,0,0);
 			player.createKeyItem("Bow",0,0,0,0);
@@ -643,8 +643,8 @@ package classes
 			getGame().saves.notes = "No Notes Available.";
 			player.HP = kGAMECLASS.maxHP();
 			player.hair.length = 1;
-			player.skinType = Skin.PLAIN;
-			player.skinTone = "light";
+			player.skin.type = Skin.PLAIN;
+			player.skin.tone = "light";
 			player.hair.color = "brown";
 			player.face.type = Face.HUMAN;
 			player.tailType = Tail.NONE;
@@ -653,7 +653,7 @@ package classes
 			player.beard.length = 0;
 			player.beard.style = 0;
 			player.thickness = 50;
-			player.skinDesc = "skin";
+			player.skin.desc = "skin";
 			player.hoursSinceCum = 0;
 			player.ass.analLooseness = 0;
 			player.ass.analWetness = 0;
@@ -668,10 +668,10 @@ package classes
 			player.face.type = Face.DOG;
 			player.ears.type = Ears.DOG;
 			player.tailType = Tail.DRACONIC;
-			player.skinType = Skin.FUR;
+			player.skin.type = Skin.FUR;
 			player.hair.color = "blue";
-			player.furColor = "blue";
-			player.skinDesc = "fur";
+			player.skin.furColor = "blue";
+			player.skin.desc = "fur";
 			player.tone = 88;
 			player.tongueType = Tongue.DRACONIC;
 			//gel plate armor, warhammer, 88 body tone, 1 breast row, flat manly breasts, 0.2 inch nipples, 1 on each breast, draconic tongue, short hair-blue, light skin."	Lukaz
@@ -706,7 +706,7 @@ package classes
 			player.createPerk(PerkLib.BigTits, 1.5, 0, 0, 0);
 			player.ears.type = Ears.BUNNY;
 			player.tailType = Tail.RABBIT;
-			player.skinTone = "tan";
+			player.skin.tone = "tan";
 			player.hair.color = "platinum blonde";
 			player.teaseLevel = 3;
 		}
@@ -754,9 +754,9 @@ package classes
 			player.createPerk(PerkLib.Flexibility, 0, 0, 0, 0);
 			player.createPerk(PerkLib.HistoryScholar, 0, 0, 0, 0);
 	
-			player.skinDesc = "fur";
-			player.skinTone = "ashen";
-			player.skinType = Skin.FUR;
+			player.skin.desc = "fur";
+			player.skin.tone = "ashen";
+			player.skin.type = Skin.FUR;
 			player.tailType = Tail.CAT;
 			player.tallness = 55;
 			player.teaseLevel = 4;
@@ -805,10 +805,10 @@ package classes
 			//Face = Horse
 			player.face.type = Face.HORSE;
 			//Skin type = Black Fur
-			player.skinTone = "brown";
-			player.skinType = Skin.FUR;
+			player.skin.tone = "brown";
+			player.skin.type = Skin.FUR;
 			player.hair.color = "black";
-			player.skinDesc = "fur";
+			player.skin.desc = "fur";
 			//Legs/Feet = Digigrade hooved 
 			player.lowerBody.type = LowerBody.HOOFED;
 			//Wing type = Dragon
@@ -853,10 +853,10 @@ package classes
 			//Lower body- Canine
 			player.lowerBody.type = LowerBody.DOG;
 			//White Fur (if possible)
-			player.skinType = Skin.FUR;
+			player.skin.type = Skin.FUR;
 			player.hair.color = "white";
-			player.furColor = "white";
-			player.skinDesc = "fur";
+			player.skin.furColor = "white";
+			player.skin.desc = "fur";
 			//Body Thickness/breastsize/- As if I had selected the ""Average"" body type from the start.
 			player.createBreastRow();
 			player.breastRows[0].breastRating = 3;
@@ -868,7 +868,7 @@ package classes
 			player.hair.length = 16;
 			//Hair Color- Black
 			//Skin Color- Light
-			player.skinTone = "light";
+			player.skin.tone = "light";
 			//Starting Equipment: Wizard's Robe, Wizards Staff, and one White and one Black book in inventory.
 			//equipArmor("inquisitor's corset",false);
 			player.setArmor(armors.W_ROBES);
@@ -914,11 +914,11 @@ package classes
 			player.fertility = 20;
 			//Appearence: 7ft 9in tall covered in thick shining silver fur, has a vulpine head and ears, eight breast all the same size at DD, dragon like wings, tail, and legs. With a large mare like pussy, 6 dicks, two equine, two dragon, two vulpine, all 15in long and 3 in wide, and four nuts 5 in across
 			player.tallness = 93;
-			player.skinTone = "black";
-			player.skinType = Skin.FUR;
-			player.skinDesc = "fur";
+			player.skin.tone = "black";
+			player.skin.type = Skin.FUR;
+			player.skin.desc = "fur";
 			player.hair.color = "silver";
-			player.furColor = "silver";
+			player.skin.furColor = "silver";
 			player.face.type = Face.FOX;
 			player.ears.type = Ears.FOX;
 			
@@ -1030,7 +1030,7 @@ package classes
 			getGame().saves.notes = "No Notes Available.";
 			player.HP = kGAMECLASS.maxHP();
 			
-			player.skinType = Skin.PLAIN;
+			player.skin.type = Skin.PLAIN;
 			player.face.type = Face.HUMAN;
 			player.tailType = Tail.NONE;
 			player.tongueType = Tongue.HUMAN;
@@ -1041,10 +1041,10 @@ package classes
 			player.tone = 75;
 			//25 thickness
 			player.thickness = 25;
-			player.skinDesc = "fur";
-			player.skinType = Skin.FUR;
-			player.skinTone = "light";
-			player.furColor = "silver";
+			player.skin.desc = "fur";
+			player.skin.type = Skin.FUR;
+			player.skin.tone = "light";
+			player.skin.furColor = "silver";
 			player.hair.color = "silver";
 			player.hair.length=10;
 			//shoulder length silver hair
@@ -1098,7 +1098,7 @@ package classes
 			player.butt.rating = 8;
 			player.thickness = 25;
 			player.tone = 40;
-			player.skinTone = "olive";
+			player.skin.tone = "olive";
 			player.hair.length = 30;
 			player.hair.color = "deep red";
 			player.femininity = 90;
@@ -1118,9 +1118,9 @@ package classes
 			player.nippleLength = 0.5;
 			player.hair.length = 22;
 			player.hair.color = "red";
-			player.skinTone = "light";
-			player.skinDesc = "skin";
-			player.skinType = Skin.PLAIN;
+			player.skin.tone = "light";
+			player.skin.desc = "skin";
+			player.skin.type = Skin.PLAIN;
 			player.femininity = 100;
 			player.thickness = 25;
 			player.tone = 65;
@@ -1143,7 +1143,7 @@ package classes
 			player.fertility = 5;
 			player.hair.length= 26;
 			player.hair.color = "white";
-			player.skinTone = "light";
+			player.skin.tone = "light";
 			player.nippleLength = 0.2;
 			player.createBreastRow();
 			player.createBreastRow();
@@ -1215,7 +1215,7 @@ package classes
 			player.thickness = 0;
 			//Fallen Angel gear (complete with flaming sword and light arrows)
 			//dark skin tone
-			player.skinTone = "dark";
+			player.skin.tone = "dark";
 			player.setWeapon(weapons.S_BLADE);
 	
 			//Elfin ears
@@ -1267,7 +1267,7 @@ package classes
 			getGame().saves.notes = "Cheater!";
 			player.HP = kGAMECLASS.maxHP();
 			player.hair.length = 10;
-			player.skinType = Skin.PLAIN;
+			player.skin.type = Skin.PLAIN;
 			player.face.type = Face.HUMAN;
 			player.tailType = Tail.FOX;
 			player.tailVenom = 4;
@@ -1277,8 +1277,8 @@ package classes
 			player.beard.style = 0;
 			player.tone = 0;
 			player.thickness = 100;
-			player.skinDesc = "skin";
-			player.skinTone = "pale";
+			player.skin.desc = "skin";
+			player.skin.tone = "pale";
 			player.hair.color = "black";
 			player.balls = 2;
 			player.cumMultiplier = 1;
@@ -1425,7 +1425,7 @@ package classes
 			//Butt: Just as loose
 			player.ass.analLooseness = 5;
 			//"Skin: Tanned
-			player.skinTone = "tan";
+			player.skin.tone = "tan";
 			//Hair: Ridiculously long red
 			player.hair.length = 80;
 			player.hair.color = "red";
@@ -1477,7 +1477,7 @@ package classes
 			getGame().saves.notes = "No Notes Available.";
 			player.HP = kGAMECLASS.maxHP();
 			player.hair.length = 10;
-			player.skinType = Skin.PLAIN;
+			player.skin.type = Skin.PLAIN;
 			player.face.type = Face.HUMAN;
 			player.tailType = Tail.NONE;
 			player.tongueType = Tongue.HUMAN;
@@ -1486,8 +1486,8 @@ package classes
 			player.beard.style = 0;
 			player.tone = 30;
 			player.thickness = 50;
-			player.skinDesc = "skin";
-			player.skinTone = "light";
+			player.skin.desc = "skin";
+			player.skin.tone = "light";
 			player.hair.color = "brown";
 			player.balls = 0;
 			player.cumMultiplier = 1;
@@ -1516,8 +1516,8 @@ package classes
 			player.hair.length = 69.2;
 			player.hair.color = "dark blue";
 			player.hair.type = 2;
-			player.skinAdj = "smooth";
-			player.skinTone = "sanguine";
+			player.skin.adj = "smooth";
+			player.skin.tone = "sanguine";
 			player.tallness = 68;
 			player.hips.rating = 7;
 			player.butt.rating = 6;
@@ -1613,11 +1613,11 @@ package classes
 			player.butt.rating = Butt.RATING_TIGHT;
 			player.thickness = 20; // thin
 			player.tone = 20; // soft
-			player.skinType = Skin.FUR;
-			player.furColor = "snow white";
-			player.skinDesc = "fur";
-			player.skinAdj = "fluffy";
-			player.skinTone = "light";
+			player.skin.type = Skin.FUR;
+			player.skin.furColor = "snow white";
+			player.skin.desc = "fur";
+			player.skin.adj = "fluffy";
+			player.skin.tone = "light";
 			player.hair.color = "snow white";
 			player.hair.type = Hair.ANEMONE; flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] = 1; // tentacle hair... never can have enough tentacles!
 			player.hair.length = 42; // obscenely long, you still can use ext serum to get more, but they would drag the floor, and this wouldn't be pleasant
@@ -1797,7 +1797,7 @@ package classes
 			player.butt.rating = Butt.RATING_TIGHT;
 			player.thickness = rand(10)+10; // lithe
 			player.tone = rand(10)+10; // not in a good shape...
-			player.skinTone = "light";
+			player.skin.tone = "light";
 			player.hair.color = "black";
 			player.hair.length = rand(50)+5;
 			player.femininity = rand(30)+35;
@@ -1815,18 +1815,18 @@ package classes
 
 			var skin:Number = rand(100);			
 			if (skin < 50){
-				player.skinType = Skin.PLAIN; // skin, 50%
-				player.skinDesc = "skin";}
+				player.skin.type = Skin.PLAIN; // skin, 50%
+				player.skin.desc = "skin";}
 			else if (skin < 80){
-				player.skinType = Skin.FUR; // fur, 30%
-				player.skinDesc = "fur";}
+				player.skin.type = Skin.FUR; // fur, 30%
+				player.skin.desc = "fur";}
 			else if (skin < 95){
-				player.skinType = Skin.LIZARD_SCALES; // scales, 15%
-				player.skinDesc = "scales";}
+				player.skin.type = Skin.LIZARD_SCALES; // scales, 15%
+				player.skin.desc = "scales";}
 			else{
-				player.skinType = Skin.GOO; // goo, 5%
-				player.skinDesc = "skin";
-				player.skinAdj = "slimy";}
+				player.skin.type = Skin.GOO; // goo, 5%
+				player.skin.desc = "skin";
+				player.skin.adj = "slimy";}
 					
 			if (rand(3) != 0) // 2/3 to have human face
 				player.face.type = Face.HUMAN;

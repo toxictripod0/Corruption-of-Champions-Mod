@@ -321,13 +321,13 @@ package classes.Items.Consumables
 					["white", "silver"],
 					["white", "golden"],
 				];
-				outputText("\n\nYour " + player.skinDesc + " begins to tingle, then itch. ");
-				player.skinType = Skin.FUR;
-				player.skinDesc = "fur";
+				outputText("\n\nYour " + player.skin.desc + " begins to tingle, then itch. ");
+				player.skin.type = Skin.FUR;
+				player.skin.desc = "fur";
 				player.setFurColor(wolfFurColors, {
 					type: UnderBody.FURRY
 				}, true);
-				outputText("You reach down to scratch your arm absent-mindedly and pull your fingers away to find strands of " + player.furColor + " fur. You stare at it. Fur. Wait, you just grew fur?! What happened?! Your mind reeling, you do know one thing for sure: <b>you now have fur!</b>");
+				outputText("You reach down to scratch your arm absent-mindedly and pull your fingers away to find strands of " + player.skin.furColor + " fur. You stare at it. Fur. Wait, you just grew fur?! What happened?! Your mind reeling, you do know one thing for sure: <b>you now have fur!</b>");
 				changes++;
 			}
 			//Ears time
@@ -366,7 +366,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//legz
-			if (player.lowerBody.legCount === 2 && player.lowerBody.type !== LowerBody.WOLF && player.tailType === Tail.WOLF && player.skinType === Skin.FUR && rand(4) === 0 && changes < changeLimit) {
+			if (player.lowerBody.legCount === 2 && player.lowerBody.type !== LowerBody.WOLF && player.tailType === Tail.WOLF && player.skin.type === Skin.FUR && rand(4) === 0 && changes < changeLimit) {
 				//Hooman feets
 				if (player.lowerBody.type === LowerBody.HUMAN) outputText("\n\nYou stumble and fall, howling in pain as your legs and feet break apart and reform into wolf-like legs and paws. The worst of the pain eventually passes, but you're still left whimpering for a while. <b>You now have paws!</b>");
 				//Hooves -> Paws
