@@ -1268,7 +1268,7 @@ import classes.Items.*
 		];
 		*/
 		private function changeArmType(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.armType = setIdx;
+			if (setIdx>=0) player.arms.type = setIdx;
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorTorso, page, ARM_TYPE_CONSTANTS, changeArmType);

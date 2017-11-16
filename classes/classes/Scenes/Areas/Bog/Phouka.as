@@ -285,7 +285,7 @@ package classes.Scenes.Areas.Bog
 			this.hipRating = Hips.RATING_SLENDER;
 			this.buttRating = Butt.RATING_TIGHT;
 			this.lowerBody = LowerBody.HUMAN
-			this.armType = Arms.HUMAN;
+			this.arms.type = Arms.HUMAN;
 
 			this.skinTone = "black";
 			this.hairColor = "black";

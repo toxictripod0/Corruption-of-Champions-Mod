@@ -871,7 +871,7 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile.data.hairColor = player.hairColor;
 		saveFile.data.hairType = player.hairType;
 		saveFile.data.gillType = player.gillType;
-		saveFile.data.armType = player.armType;
+		saveFile.data.armType = player.arms.type;
 		saveFile.data.hairLength = player.hairLength;
 		saveFile.data.beardLength = player.beardLength;
 		saveFile.data.eyeType = player.eyeType;
@@ -1664,9 +1664,9 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		else
 			player.gillType = saveFile.data.gills ? Gills.ANEMONE : Gills.NONE;
 		if (saveFile.data.armType == undefined)
-			player.armType = Arms.HUMAN;
+			player.arms.type = Arms.HUMAN;
 		else
-			player.armType = saveFile.data.armType;
+			player.arms.type = saveFile.data.armType;
 		player.hairLength = saveFile.data.hairLength;
 		player.skinType = saveFile.data.skinType;
 		if (saveFile.data.skinAdj == undefined)

@@ -1473,9 +1473,9 @@ package classes.Scenes.Places.Bazaar
 				player.underBody.restore();
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.armType != Arms.HUMAN) {
+			if (rand(3) == 0 && changes < changeLimit && player.arms.type != Arms.HUMAN) {
 				outputText("\n\nYou feel a pleasant heat in your arms as smoke rises from them, <b>leaving normal human arms</b>.");
-				player.armType = Arms.HUMAN;
+				player.arms.type = Arms.HUMAN;
 				changes++;
 			}
 			if (rand(4) == 0 && changes < changeLimit && player.lowerBody != LowerBody.CLOVEN_HOOFED) {
@@ -1649,8 +1649,8 @@ package classes.Scenes.Places.Bazaar
 				changes++;
 			}
 			//Arms change to regular
-			if (rand(3) == 0 && changes < changeLimit && player.armType != Arms.HUMAN) {
-				switch(player.armType) {
+			if (rand(3) == 0 && changes < changeLimit && player.arms.type != Arms.HUMAN) {
+				switch(player.arms.type) {
 					case Arms.HARPY:
 						outputText("\n\nYou scratch at your biceps absentmindedly, but no matter how much you scratch, it isn't getting rid of the itch. Glancing down in irritation, you discover that your feathery arms are shedding their feathery coating. The wing-like shape your arms once had is gone in a matter of moments, leaving " + player.skinDesc + " behind.");
 						break;
@@ -1659,7 +1659,7 @@ package classes.Scenes.Places.Bazaar
 						break;
 					default:
 				}
-				player.armType = Arms.HUMAN;
+				player.arms.type = Arms.HUMAN;
 				mutations.updateClaws();
 				changes++;
 			}
@@ -1872,9 +1872,9 @@ package classes.Scenes.Places.Bazaar
 				player.hairType = Hair.NORMAL;
 				changes++;
 			}
-			if (rand(4) == 0 && changes < changeLimit && player.armType == Arms.HARPY) {
+			if (rand(4) == 0 && changes < changeLimit && player.arms.type == Arms.HARPY) {
 				outputText("\n\nYour arm feathers fall out completely, <b>leaving only the " + player.skinFurScales() + " underneath.</b>");
-				player.armType = Arms.HUMAN;
+				player.arms.type = Arms.HUMAN;
 				changes++;
 			}
 			//Remove gills

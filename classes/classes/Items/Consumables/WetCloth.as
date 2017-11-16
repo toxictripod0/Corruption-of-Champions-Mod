@@ -109,7 +109,7 @@ package classes.Items.Consumables
 					else if (blaht <= 8) player.skinTone = "cerulean";
 					else player.skinTone = "emerald";
 					outputText(player.skinTone + "!");
-					if (player.armType !== Arms.HUMAN || player.clawType !== Claws.NORMAL) {
+					if (player.arms.type !== Arms.HUMAN || player.clawType !== Claws.NORMAL) {
 						mutations.restoreArms(tfSource);
 					}
 				}

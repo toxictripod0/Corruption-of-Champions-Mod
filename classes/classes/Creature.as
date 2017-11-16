@@ -622,10 +622,7 @@ import mx.logging.ILogger;
 		public function get tongueType():Number { return tongue.type; }
 		public function set tongueType(value:Number):void { tongue.type = value; }
 
-		//ArmType
 		public var arms:Arms = new Arms();
-		public function get armType():Number { return arms.type; }
-		public function set armType(value:Number):void { arms.type = value; }
 
 		//GillType
 		public var gills:Gills = new Gills();
@@ -743,7 +740,7 @@ import mx.logging.ILogger;
 			// 2.1. non-negative Number fields
 			error += Utils.validateNonNegativeNumberFields(this,"Monster.validate",[
 				"balls", "ballSize", "cumMultiplier", "hoursSinceCum",
-				"tallness", "hipRating", "buttRating", "lowerBody", "armType",
+				"tallness", "hipRating", "buttRating", "lowerBody", "arms.type",
 				"skinType", "hairLength", "hairType",
 				"faceType", "earType", "tongueType", "eyeType",
 				"str", "tou", "spe", "inte", "lib", "sens", "cor",

@@ -146,7 +146,7 @@ package classes
 		// For reptiles with predator arms I recommend to require hasReptileScales() before doing the armType TF to Arms.PREDATOR
 		public function hasReptileArms():Boolean
 		{
-			return armType == Arms.SALAMANDER || (armType == Arms.PREDATOR && hasReptileScales());
+			return arms.type == Arms.SALAMANDER || (arms.type == Arms.PREDATOR && hasReptileScales());
 		}
 
 		public function hasReptileLegs():Boolean

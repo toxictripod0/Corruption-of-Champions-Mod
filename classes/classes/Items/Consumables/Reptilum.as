@@ -272,15 +272,15 @@ package classes.Items.Consumables
 			}
 			// <mod name="Predator arms" author="Stadler76">
 			//Gain predator arms
-			if (player.armType !== Arms.PREDATOR && player.hasReptileScales() && player.lowerBody === LowerBody.LIZARD && changes < changeLimit && rand(3) === 0) {
-				player.armType = Arms.PREDATOR;
+			if (player.arms.type !== Arms.PREDATOR && player.hasReptileScales() && player.lowerBody === LowerBody.LIZARD && changes < changeLimit && rand(3) === 0) {
+				player.arms.type = Arms.PREDATOR;
 				mutations.updateClaws(Claws.LIZARD);
 				outputText("\n\nYou scratch your biceps absentmindedly, but no matter how much you scratch, you can't get rid of the itch.  After a longer moment of ignoring it you finally glance down in irritation, only to discover that your arms former appearance has changed into those of some reptilian killer with " + player.skinFurScales() + " and short " + player.clawTone + " claws replacing your fingernails.");
 				outputText("\n<b>You now have reptilian arms.</b>");
 				changes++
 			}
 			//Claw transition
-			if (player.armType === Arms.PREDATOR && player.hasLizardScales() && player.clawType !== Claws.LIZARD && changes < changeLimit && rand(3) === 0) {
+			if (player.arms.type === Arms.PREDATOR && player.hasLizardScales() && player.clawType !== Claws.LIZARD && changes < changeLimit && rand(3) === 0) {
 				outputText("\n\nYour [claws] change a little to become reptilian.");
 				mutations.updateClaws(Claws.LIZARD);
 				outputText(" <b>You now have [claws].</b>");

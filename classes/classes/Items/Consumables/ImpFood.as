@@ -167,7 +167,7 @@ package classes.Items.Consumables
 			
 			//Imp claws, needs orange/red skin. Also your hands turn human.
 			if (["red", "orange"].indexOf(player.skinTone) !== -1 && player.clawType !== Claws.IMP && rand(3) === 0 && changes < changeLimit) {
-				if (player.armType !== Arms.HUMAN) {
+				if (player.arms.type !== Arms.HUMAN) {
 					outputText("\n\nYour arms twist and mangle, warping back into human-like arms. But that, you realize, is just the beginning.");
 				}
 				if (player.clawType === Claws.NORMAL) {
@@ -175,7 +175,7 @@ package classes.Items.Consumables
 				} else { //has claws
 					outputText("\n\nYour claws suddenly begin to shift and change, starting to turn back into normal hands. But just before they do, they stretch out into three long claws, with a smaller one coming to form a pointed thumb. <b>You have imp claws!</b>");
 				}
-				player.armType = Arms.PREDATOR;
+				player.arms.type = Arms.PREDATOR;
 				player.clawType = Claws.IMP;
 				player.clawTone = player.skinTone;
 				dynStats("cor", 2);

@@ -110,7 +110,7 @@ package classes.Scenes.Areas.GlacialRift
 			this.hipRating = Hips.RATING_AVERAGE;
 			this.buttRating = Butt.RATING_AVERAGE;
 			this.lowerBody = LowerBody.WOLF;
-			this.armType = Arms.WOLF;
+			this.arms.type = Arms.WOLF;
 			this.skinTone = "black";
 			this.skinType = Skin.FUR;
 			this.hairColor = "black";

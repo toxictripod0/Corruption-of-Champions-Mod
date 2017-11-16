@@ -31,7 +31,7 @@ package classes.Items
 				var hasClaws:Boolean = player.clawType != Claws.NORMAL;
 
 				message = "\n\n";
-				if (player.armType == Arms.HARPY) {
+				if (player.arms.type == Arms.HARPY) {
 					message += "The feathers on your arms melt back into your now gooey skin.";
 					if (hasClaws) message += " Additionally your now gooey claws melt back into your fingers.";
 				} else if (hasClaws) {
@@ -39,19 +39,19 @@ package classes.Items
 				}
 
 				if (hasClaws) message += " Well, who cares, gooey claws aren't very useful in combat to begin with.";
-				if (hasClaws || player.armType == Arms.HARPY) output.text(message + "  <b>You have normal human arms again.</b>");
+				if (hasClaws || player.arms.type == Arms.HARPY) output.text(message + "  <b>You have normal human arms again.</b>");
 
 				updateClaws();
-				player.armType = Arms.HUMAN;
+				player.arms.type = Arms.HUMAN;
 				return 1;
 			}
 
 
-			if (changes < changeLimit && player.armType != Arms.HUMAN) {
-				if ([Arms.HARPY, Arms.SPIDER, Arms.SALAMANDER].indexOf(player.armType) >= 0)
+			if (changes < changeLimit && player.arms.type != Arms.HUMAN) {
+				if ([Arms.HARPY, Arms.SPIDER, Arms.SALAMANDER].indexOf(player.arms.type) >= 0)
 					message += "\n\nYou scratch at your biceps absentmindedly, but no matter how much you scratch, it isn't getting rid of the itch.";
 
-				switch (player.armType) {
+				switch (player.arms.type) {
 					case Arms.HARPY:
 						message += "  Glancing down in irritation, you discover that your feathery arms are shedding their feathery coating."
 						          +"  The wing-like shape your arms once had is gone in a matter of moments, leaving [skinfurscales] behind.";
@@ -89,7 +89,7 @@ package classes.Items
 				}
 				output.text(message + "  <b>You have normal human arms again.</b>");
 				updateClaws();
-				player.armType = Arms.HUMAN;
+				player.arms.type = Arms.HUMAN;
 				changes++;
 				return 1;
 			}

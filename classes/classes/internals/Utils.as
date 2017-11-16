@@ -365,10 +365,20 @@ package classes.internals
 		public static function validateNonNegativeNumberFields(o:Object, func:String, nnf:Array):String
 		{
 			var error:String = "";
+			var propExists:Boolean;
+			var fieldRef:*;
 			for each (var field:String in nnf) {
-				if (!o.hasOwnProperty(field) || !(o[field] is Number) && o[field] != null) error += "Misspelling in "+func+".nnf: '"+field+"'. ";
-				else if (o[field] == null) error += "Null '"+field+"'. ";
-				else if (o[field] < 0) error += "Negative '"+field+"'. ";
+				if (field.indexOf('.') >= 0) {
+					var fields:Array = field.split('.');
+					propExists = o[fields[0]].hasOwnProperty(fields[1]);
+					fieldRef = o[fields[0]][fields[1]];
+				} else {
+					propExists = o.hasOwnProperty(field);
+					fieldRef = o[field];
+				}
+				if (!propExists || !(fieldRef is Number) && fieldRef != null) error += "Misspelling in "+func+".nnf: '"+field+"'. ";
+				else if (fieldRef == null) error += "Null '"+field+"'. ";
+				else if (fieldRef < 0) error += "Negative '"+field+"'. ";
 			}
 			return error;
 		}
@@ -376,10 +386,20 @@ package classes.internals
 		public static function validateNonEmptyStringFields(o:Object, func:String, nef:Array):String
 		{
 			var error:String = "";
+			var propExists:Boolean;
+			var fieldRef:*;
 			for each (var field:String in nef) {
-				if (!o.hasOwnProperty(field) || !(o[field] is String) && o[field] != null) error += "Misspelling in "+func+".nef: '"+field+"'. ";
-				else if (o[field] == null) error += "Null '"+field+"'. ";
-				else if (o[field] == "") error += "Empty '"+field+"'. ";
+				if (field.indexOf('.') >= 0) {
+					var fields:Array = field.split('.');
+					propExists = o[fields[0]].hasOwnProperty(fields[1]);
+					fieldRef = o[fields[0]][fields[1]];
+				} else {
+					propExists = o.hasOwnProperty(field);
+					fieldRef = o[field];
+				}
+				if (!propExists || !(fieldRef is String) && fieldRef != null) error += "Misspelling in "+func+".nef: '"+field+"'. ";
+				else if (fieldRef == null) error += "Null '"+field+"'. ";
+				else if (fieldRef == "") error += "Empty '"+field+"'. ";
 			}
 			return error;
 		}

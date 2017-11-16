@@ -506,7 +506,7 @@ package classes.Scenes.Areas.Desert {
 			this.hipRating = rand(19) + 1;
 			this.buttRating = rand(19) + 1;
 			this.lowerBody = rand(25) + 1;
-			this.armType = rand(5) + 1;
+			this.arms.type = rand(5) + 1;
 
 			this.skinTone = skinColour[0];
 			this.skinType = rand(5);

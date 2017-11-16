@@ -277,7 +277,7 @@ use namespace kGAMECLASS;
 			//'Thick' dermis descriptor adds 1!
 			if (skinAdj == "smooth") armorDef += 1;
 			//Bonus defense
-			if (armType == Arms.SPIDER) armorDef += 2;
+			if (arms.type == Arms.SPIDER) armorDef += 2;
 			if (lowerBody == LowerBody.CHITINOUS_SPIDER_LEGS || lowerBody == LowerBody.BEE) armorDef += 2;
 			//Bonus when being a samurai
 			if (armor == game.armors.SAMUARM && weapon == game.weapons.KATANA) {
@@ -1062,7 +1062,7 @@ use namespace kGAMECLASS;
 				cockatriceCounter++;
 			if (eyeType == Eyes.COCKATRICE)
 				cockatriceCounter++;
-			if (armType == Arms.COCKATRICE)
+			if (arms.type == Arms.COCKATRICE)
 				cockatriceCounter++;
 			if (antennae.type == Antennae.COCKATRICE)
 				cockatriceCounter++;
@@ -1101,7 +1101,7 @@ use namespace kGAMECLASS;
 				impCounter++;
 			if (hornType == Horns.IMP)
 				impCounter++;
-			if (armType == Arms.PREDATOR && clawType == Claws.IMP)
+			if (arms.type == Arms.PREDATOR && clawType == Claws.IMP)
 				impCounter++;
 			if (tallness <= 42)
 				impCounter++;
@@ -1448,7 +1448,7 @@ use namespace kGAMECLASS;
 				lizardCounter++;
 			if (hasDragonHorns(true))
 				lizardCounter++;
-			if (armType == Arms.PREDATOR && clawType == Claws.LIZARD)
+			if (arms.type == Arms.PREDATOR && clawType == Claws.LIZARD)
 				lizardCounter++;
 			if (lizardCounter > 2) {
 				if ([Tongue.LIZARD, Tongue.SNAKE].indexOf(tongueType) != -1)
@@ -1472,7 +1472,7 @@ use namespace kGAMECLASS;
 				score++;
 			if (faceType == Face.SPIDER_FANGS)
 				score++;
-			if (armType == Arms.SPIDER)
+			if (arms.type == Arms.SPIDER)
 				score++;
 			if ([LowerBody.CHITINOUS_SPIDER_LEGS, LowerBody.DRIDER_LOWER_BODY].indexOf(lowerBody) != -1)
 				score += 2;
@@ -1584,7 +1584,7 @@ use namespace kGAMECLASS;
 				dragonCounter++;
 			if (hasDragonfire())
 				dragonCounter++;
-			if (armType == Arms.PREDATOR && clawType == Claws.DRAGON)
+			if (arms.type == Arms.PREDATOR && clawType == Claws.DRAGON)
 				dragonCounter++;
 			if (eyeType == Eyes.DRAGON)
 				dragonCounter++;
@@ -1679,7 +1679,7 @@ use namespace kGAMECLASS;
 		public function harpyScore():Number
 		{
 			var harpy:Number = 0;
-			if (armType == Arms.HARPY)
+			if (arms.type == Arms.HARPY)
 				harpy++;
 			if (hairType == Hair.FEATHER)
 				harpy++;
@@ -1791,7 +1791,7 @@ use namespace kGAMECLASS;
 		public function salamanderScore():Number
 		{
 			var salamanderCounter:Number = 0;
-			if (armType == Arms.SALAMANDER)
+			if (arms.type == Arms.SALAMANDER)
 				salamanderCounter++;
 			if (lowerBody == LowerBody.SALAMANDER)
 				salamanderCounter++;
@@ -1816,7 +1816,7 @@ use namespace kGAMECLASS;
 		public function sirenScore():Number 
 		{
 			var sirenCounter:Number = 0;
-			if (faceType == Face.SHARK_TEETH && tailType == Tail.SHARK && wingType == Wings.FEATHERED_LARGE && armType == Arms.HARPY)
+			if (faceType == Face.SHARK_TEETH && tailType == Tail.SHARK && wingType == Wings.FEATHERED_LARGE && arms.type == Arms.HARPY)
 				sirenCounter+= 4;
 			if (sirenCounter > 0 && hasVagina())
 				sirenCounter++;
