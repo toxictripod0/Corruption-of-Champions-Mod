@@ -413,12 +413,7 @@ import mx.logging.ILogger;
 		public var butt:Butt = new Butt();
 		public var antennae:Antennae = new Antennae();
 		public var eyes:Eyes = new Eyes();
-
-		//TongueType
 		public var tongue:Tongue = new Tongue();
-		public function get tongueType():Number { return tongue.type; }
-		public function set tongueType(value:Number):void { tongue.type = value; }
-
 		public var arms:Arms = new Arms();
 		public var gills:Gills = new Gills();
 
@@ -555,7 +550,7 @@ import mx.logging.ILogger;
 				"balls", "ballSize", "cumMultiplier", "hoursSinceCum",
 				"tallness", "hips.rating", "butt.rating", "lowerBody.type", "arms.type",
 				"skin.type", "hair.length", "hair.type",
-				"face.type", "ears.type", "tongueType", "eyes.type",
+				"face.type", "ears.type", "tongue.type", "eyes.type",
 				"str", "tou", "spe", "inte", "lib", "sens", "cor",
 				// Allow weaponAttack to be negative as a penalty to strength-calculated damage
 				// Same with armorDef, bonusHP, additionalXP
@@ -3757,7 +3752,7 @@ import mx.logging.ILogger;
 		 * Echidna 1 ft long (i'd consider it barely qualifying), demonic 2 ft long, draconic 4 ft long
 		 */
 		public function hasLongTongue():Boolean {
-			return tongueType == Tongue.DEMONIC || tongueType == Tongue.DRACONIC || tongueType == Tongue.ECHIDNA;
+			return [Tongue.DEMONIC, Tongue.DRACONIC, Tongue.ECHIDNA].indexOf(tongue.type) != -1;
 		}
 		
 		public function damageToughnessModifier(displayMode:Boolean = false):Number {

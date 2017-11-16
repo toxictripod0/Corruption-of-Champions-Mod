@@ -1021,7 +1021,7 @@ import classes.Items.*
 		}
 		*/
 		private function changeTongueType(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.tongueType = setIdx;
+			if (setIdx>=0) player.tongue.type = setIdx;
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorHead, page, TONGUE_TYPE_CONSTANTS, changeTongueType);
@@ -1385,7 +1385,7 @@ import classes.Items.*
 			player.copySkinToUnderBody({       // copy the main skin props to the underBody skin ...
 				desc: "ventral dragon scales"  // ... and only override the desc
 			});
-			player.tongueType = Tongue.DRACONIC;
+			player.tongue.type = Tongue.DRACONIC;
 			player.horns.type = Horns.DRACONIC_X2;
 			player.horns.value = 4;
 			player.wingType = Wings.DRACONIC_LARGE;

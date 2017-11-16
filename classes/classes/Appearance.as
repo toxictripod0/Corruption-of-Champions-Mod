@@ -183,10 +183,10 @@ package classes
 		public static function tongueDescription(i_character:Character):String
 		{
 			// fallback for tongueTypes not fully implemented yet
-			if (i_character.tongueType == Tongue.HUMAN || !DEFAULT_TONGUE_NAMES.hasOwnProperty(''+i_character.tongueType))
+			if (i_character.tongue.type == Tongue.HUMAN || !DEFAULT_TONGUE_NAMES.hasOwnProperty(''+i_character.tongue.type))
 				return "tongue";
 
-			return DEFAULT_TONGUE_NAMES[i_character.tongueType] + " tongue";
+			return DEFAULT_TONGUE_NAMES[i_character.tongue.type] + " tongue";
 		}
 
 		public static function nippleDescription(i_creature:Creature, i_rowNum:Number):String

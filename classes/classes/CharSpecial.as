@@ -285,7 +285,7 @@ package classes
 			player.breastRows[1].fuckable = true;
 			player.breastRows[2].fuckable = true;
 			player.breastRows[3].fuckable = true;
-			player.tongueType = Tongue.DEMONIC;
+			player.tongue.type = Tongue.DEMONIC;
 			player.nippleLength = 0.1;
 			//Starting with an Inscribed Spellblade and Bondage Straps.	Charaun
 			player.setArmor(armors.BONSTRP);
@@ -499,7 +499,7 @@ package classes
 			//- olive complexion
 			player.skin.tone = "olive";
 			//- demon tongue (oral fetish ;d)
-			player.tongueType = Tongue.DEMONIC;
+			player.tongue.type = Tongue.DEMONIC;
 			//- 5 foot 9 inch tall
 			player.tallness = 69;
 			//- average build
@@ -566,7 +566,7 @@ package classes
 			player.skin.type = Skin.PLAIN;
 			player.face.type = Face.HUMAN;
 			player.tail.type = Tail.NONE;
-			player.tongueType = Tongue.HUMAN;
+			player.tongue.type = Tongue.HUMAN;
 			player.femininity = 85;
 			player.beard.length = 0;
 			player.beard.style = 0;
@@ -648,7 +648,7 @@ package classes
 			player.hair.color = "brown";
 			player.face.type = Face.HUMAN;
 			player.tail.type = Tail.NONE;
-			player.tongueType = Tongue.HUMAN;
+			player.tongue.type = Tongue.HUMAN;
 			player.femininity = 50;
 			player.beard.length = 0;
 			player.beard.style = 0;
@@ -673,7 +673,7 @@ package classes
 			player.skin.furColor = "blue";
 			player.skin.desc = "fur";
 			player.tone = 88;
-			player.tongueType = Tongue.DRACONIC;
+			player.tongue.type = Tongue.DRACONIC;
 			//gel plate armor, warhammer, 88 body tone, 1 breast row, flat manly breasts, 0.2 inch nipples, 1 on each breast, draconic tongue, short hair-blue, light skin."	Lukaz
 			player.createPerk(PerkLib.HistoryFighter,0,0,0,0);
 			player.createPerk(PerkLib.MessyOrgasms, 1.25, 0, 0, 0);
@@ -762,7 +762,7 @@ package classes
 			player.teaseLevel = 4;
 			player.thickness = 10;
 			player.tone = 75;
-			player.tongueType = Tongue.HUMAN;
+			player.tongue.type = Tongue.HUMAN;
 			
 			//Posted everything above sorry if it wasn't supposed to go there.
 			//starting equipment: black leather armor surrounded by voluminous robes
@@ -978,7 +978,7 @@ package classes
 			player.tail.type = Tail.FOX;
 			player.tail.venom = 9;
 			player.lowerBody.type = LowerBody.DRAGON;
-			player.tongueType = Tongue.DRACONIC;
+			player.tongue.type = Tongue.DRACONIC;
 			player.hair.length = 45;
 			player.createPerk(PerkLib.EnlightenedNinetails,0,0,0,0);
 		}
@@ -1033,7 +1033,7 @@ package classes
 			player.skin.type = Skin.PLAIN;
 			player.face.type = Face.HUMAN;
 			player.tail.type = Tail.NONE;
-			player.tongueType = Tongue.HUMAN;
+			player.tongue.type = Tongue.HUMAN;
 			player.femininity = 85;
 			player.beard.length = 0;
 			player.beard.style = 0;
@@ -1235,7 +1235,7 @@ package classes
 		private function customSora():void {
 			//Character Creation	Female,virgin	A kitsune with a snake-like tongue	Sora
 			if (player.hasVagina()) player.vaginas[0].virgin = true;
-			player.tongueType = Tongue.SNAKE;
+			player.tongue.type = Tongue.SNAKE;
 			player.ears.type = Ears.FOX;
 			player.tail.type = Tail.FOX;
 			player.tail.venom = 2;
@@ -1271,7 +1271,7 @@ package classes
 			player.face.type = Face.HUMAN;
 			player.tail.type = Tail.FOX;
 			player.tail.venom = 4;
-			player.tongueType = Tongue.HUMAN;
+			player.tongue.type = Tongue.HUMAN;
 			player.femininity = 90;
 			player.beard.length = 0;
 			player.beard.style = 0;
@@ -1431,7 +1431,7 @@ package classes
 			player.hair.color = "red";
 			//Face: Gorgeous Feminine, long demonic tongue, cat ears
 			player.femininity = 100;
-			player.tongueType = Tongue.DEMONIC;
+			player.tongue.type = Tongue.DEMONIC;
 			player.ears.type = Ears.CAT;
 			//Body: Very muscular, average weight, plump ass, above average thighs, cat tail and cat paws
 			player.tone = 80;
@@ -1480,7 +1480,7 @@ package classes
 			player.skin.type = Skin.PLAIN;
 			player.face.type = Face.HUMAN;
 			player.tail.type = Tail.NONE;
-			player.tongueType = Tongue.HUMAN;
+			player.tongue.type = Tongue.HUMAN;
 			player.femininity = 70;
 			player.beard.length = 0;
 			player.beard.style = 0;
@@ -1633,7 +1633,7 @@ package classes
 			player.lowerBody.type = LowerBody.FOX;
 			player.tail.type = Tail.FOX; // soft fur feels so lovely...
 			player.tail.venom = 9;			
-			player.tongueType = Tongue.DRACONIC; // tongue as long as your whole body height! almost tentackle! and so much fun to use!
+			player.tongue.type = Tongue.DRACONIC; // tongue as long as your whole body height! almost tentackle! and so much fun to use!
 			player.horns.type = Horns.DRACONIC_X2; // draconic horns adds to your exotic look, counts towards dragon score and keeps your tentacle hair out of your face! and your partners can use them as handles on occasions, letting your delicate ears uncrumpled!
 			player.horns.value = 8;
 			player.wingType = Wings.DRACONIC_LARGE; // wings! to fly!
@@ -1875,9 +1875,9 @@ package classes
 			
 			// 70% normal tongue, 30% to non-human with even chances of every one
 			if (rand(100)<70)
-				player.tongueType = Tongue.HUMAN;
+				player.tongue.type = Tongue.HUMAN;
 			else
-				player.tongueType = randomChoice(Tongue.DEMONIC, Tongue.DRACONIC, Tongue.SNAKE);
+				player.tongue.type = randomChoice(Tongue.DEMONIC, Tongue.DRACONIC, Tongue.SNAKE);
 			
 			
 			var horns:Number = rand(100); // 70% no horns, 30% to random

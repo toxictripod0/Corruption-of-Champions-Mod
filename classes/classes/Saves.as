@@ -882,7 +882,7 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile.data.skinDesc = player.skin.desc;
 		saveFile.data.skinAdj = player.skin.adj;
 		saveFile.data.faceType = player.face.type;
-		saveFile.data.tongueType = player.tongueType;
+		saveFile.data.tongueType = player.tongue.type;
 		saveFile.data.earType = player.ears.type;
 		saveFile.data.earValue = player.ears.value;
 		saveFile.data.antennae = player.antennae.type;
@@ -1745,9 +1745,9 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		}
 		player.face.type = saveFile.data.faceType;
 		if (saveFile.data.tongueType == undefined)
-			player.tongueType = Tongue.HUMAN;
+			player.tongue.type = Tongue.HUMAN;
 		else
-			player.tongueType = saveFile.data.tongueType;
+			player.tongue.type = saveFile.data.tongueType;
 		if (saveFile.data.earType == undefined)
 			player.ears.type = Ears.HUMAN;
 		else

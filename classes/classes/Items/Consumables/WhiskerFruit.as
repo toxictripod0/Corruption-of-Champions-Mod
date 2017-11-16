@@ -23,7 +23,7 @@ package classes.Items.Consumables
 			var temp:int = 0;
 			var tfSource:String = "catTransformation";
 			
-			if (player.hasReptileScales() && player.hasDragonWings() && player.tongueType === Tongue.DRACONIC)
+			if (player.hasReptileScales() && player.hasDragonWings() && player.tongue.type === Tongue.DRACONIC)
 				tfSource = "catTransformation-dragonne";
 			changes = 0;
 			changeLimit = 1;

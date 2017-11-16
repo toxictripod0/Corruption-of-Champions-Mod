@@ -52,7 +52,7 @@ package classes.Items.Consumables
 			player.lowerBody.legCount = 2;
 			player.wingType = Wings.NONE;
 			player.tail.type = Tail.NONE;
-			player.tongueType = Tongue.HUMAN;
+			player.tongue.type = Tongue.HUMAN;
 			player.tail.recharge = 0;
 			player.horns.value = 0;
 			player.horns.type = Horns.NONE;
@@ -63,7 +63,7 @@ package classes.Items.Consumables
 			player.underBody.restore();
 			player.neck.restore();
 			player.rearBody.restore();
-			player.tongueType = Tongue.HUMAN;
+			player.tongue.type = Tongue.HUMAN;
 			player.eyes.type = Eyes.HUMAN;
 			if (player.fertility > 15) player.fertility = 15;
 			if (player.cumMultiplier > 50) player.cumMultiplier = 50;

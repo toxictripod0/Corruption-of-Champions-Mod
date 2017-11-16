@@ -333,7 +333,7 @@
 			//// 8. Face
 			///*OPTIONAL*/ //this.face.type = Face.; // default HUMAN
 			///*OPTIONAL*/ //this.ears.type = Ears.; // default HUMAN
-			///*OPTIONAL*/ //this.tongueType = Tongue.; // default HUMAN
+			///*OPTIONAL*/ //this.tongue.type = Tongue.; // default HUMAN
 			///*OPTIONAL*/ //this.eyes.type = Eyes.; // default HUMAN
 
 			//// 9. Primary stats.
@@ -1041,7 +1041,7 @@
 			result += Hehas
 					+(Appearance.DEFAULT_FACE_NAMES[face.type]||("face.type#"+face.type))+" face, "
 					+(Appearance.DEFAULT_EARS_NAMES[ears.type]||("ears.type#"+ears.type))+" ears, "
-					+(Appearance.DEFAULT_TONGUE_NAMES[tongueType]||("tongueType#"+tongueType))+" tongue and "
+					+(Appearance.DEFAULT_TONGUE_NAMES[tongue.type]||("tongueType#"+tongue.type))+" tongue and "
 					+(Appearance.DEFAULT_EYES_NAMES[eyes.type]||("eyes.type#"+eyes.type))+" eyes.\n";
 			result += Hehas;
 			if (tail.type == Tail.NONE) result += "no tail, ";

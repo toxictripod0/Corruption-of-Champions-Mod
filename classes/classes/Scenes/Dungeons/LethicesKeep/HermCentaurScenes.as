@@ -415,7 +415,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			if (player.balls > 0) outputText(" [balls] feel fit to burst!");
 			else outputText(" manhood feels swollen to bursting!");
 			outputText("  Realizing the only way out will be with your tongue, you open wide");
-			if (player.tongueType != 0) outputText(" and uncoil your inhuman length to spear");
+			if (player.tongue.type != 0) outputText(" and uncoil your inhuman length to spear");
 			else outputText(" and begin to lap");
 			outputText(" at her inhuman entrance.  She whinnies in delight, grinding her clydesdale-sized bulk back and forth on your face as you start to get into her eating her out.");
 

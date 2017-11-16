@@ -462,7 +462,7 @@ package classes.Items.Consumables
 				player.eyes.count = 2;
 			}
 			//Lizard tongue TF
-			if (player.tongueType != Tongue.LIZARD && player.face.type == Face.COCKATRICE && changes < changeLimit && rand(3) == 0) {
+			if (player.tongue.type != Tongue.LIZARD && player.face.type == Face.COCKATRICE && changes < changeLimit && rand(3) == 0) {
 				mutations.gainLizardTongue();
 			}
 			//Ears TF

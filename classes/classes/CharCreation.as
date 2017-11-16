@@ -203,7 +203,7 @@
 			player.face.type = Face.HUMAN;
 			player.eyes.count = 2;
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) player.tail.type = Tail.NONE;
-			player.tongueType = Tongue.HUMAN;
+			player.tongue.type = Tongue.HUMAN;
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) player.femininity = 50;
 			player.beard.length = 0;
 			player.beard.style = 0;

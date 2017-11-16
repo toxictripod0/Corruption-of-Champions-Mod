@@ -658,8 +658,8 @@ package classes.Items
 
 		public function gainSnakeTongue():Boolean
 		{
-			if (player.tongueType != Tongue.SNAKE && changes < changeLimit) {
-				if (player.tongueType == Tongue.HUMAN) {
+			if (player.tongue.type != Tongue.SNAKE && changes < changeLimit) {
+				if (player.tongue.type == Tongue.HUMAN) {
 					outputText("\n\nYour taste-buds start aching as they swell to an uncomfortably large size. "
 					          +"Trying to understand what in the world could have provoked such a reaction, you bring your hands up to your mouth, "
 					          +"your tongue feeling like it's trying to push its way past your lips.");
@@ -672,7 +672,7 @@ package classes.Items
 					outputText("  After a moment the bunched-up tongue-flesh begins to flatten out, then extend forwards.");
 					outputText("  By the time the transformation has finished, <b>your tongue has changed into a long, forked snake-tongue.</b>");
 				}
-				player.tongueType = Tongue.SNAKE;
+				player.tongue.type = Tongue.SNAKE;
 				dynStats("sen", 5);
 				changes++;
 				return true;
@@ -683,9 +683,9 @@ package classes.Items
 
 		public function gainLizardTongue():Boolean
 		{
-			if (player.tongueType != Tongue.LIZARD) {
+			if (player.tongue.type != Tongue.LIZARD) {
 				outputText("\n\nYour tongue goes numb, making your surprised noise little more than a gurgle as your tongue flops comically. ");
-				switch (player.tongueType) {
+				switch (player.tongue.type) {
 					case Tongue.SNAKE:
 						outputText("\nSlowly your tongue swells, thickening up until it's about as thick as your thumb, while staying quite "
 					              +" flexible. You drool, your tongue lolling out of your mouth as you slowly begin to regain control of your forked"
@@ -723,7 +723,7 @@ package classes.Items
 					              +" regain control, retracting it into your mouth, the forked tips picking up on things you couldn't taste before.");
 				}
 				outputText("\n\n<b>You now have a lizard tongue!</b>");
-				player.tongueType = Tongue.LIZARD;
+				player.tongue.type = Tongue.LIZARD;
 				dynStats("sen", 5); // Sensitivy gain since its forked
 				changes++;
 			}

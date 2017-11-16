@@ -187,7 +187,7 @@ package classes.Scenes.Areas.HighMountains
 			this.butt.rating = Butt.RATING_TIGHT;
 			this.lowerBody.type = LowerBody.COCKATRICE;
 			this.face.type = Face.COCKATRICE;
-			this.tongueType = Tongue.LIZARD;
+			this.tongue.type = Tongue.LIZARD;
 			this.ears.type = Ears.COCKATRICE;
 			this.eyes.type = Eyes.COCKATRICE;
 			this.hair.type = Hair.FEATHER;

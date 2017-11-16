@@ -519,7 +519,7 @@ package classes.Scenes.Areas.Desert {
 			}
 			this.face.type = rand(23) + 1;
 			this.ears.type = rand(19) + 1;
-			this.tongueType = rand(4) + 1;
+			this.tongue.type = rand(4) + 1;
 			this.eyes.type = rand(5) + 1;
 
 			initStrTouSpeInte(45,30,55,25);
