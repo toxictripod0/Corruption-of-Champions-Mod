@@ -239,7 +239,7 @@
 			if (player.eyeType == Eyes.BASILISK) player.eyeType = Eyes.LIZARD; // Silently change them to be lizard eyes again. Simple and stupid ;)
 			//Default
 			player.skinTone = "light";
-			player.clawTone = "";
+			player.claws.tone = "";
 			player.hairColor = "brown";
 			player.hairType = Hair.NORMAL;
 			player.beard.length = 0;
@@ -782,7 +782,7 @@
 
 		private function setComplexion(choice:String):void { //And choose hair
 			player.skinTone = choice;
-			player.clawTone = "";
+			player.claws.tone = "";
 			clearOutput();
 			outputText("You selected a " + choice + " complexion.\n\nWhat color is your hair?");
 			menu();

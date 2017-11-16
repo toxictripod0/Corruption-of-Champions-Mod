@@ -170,7 +170,7 @@ package classes.Items.Consumables
 					if (rand(2) === 0) player.skinTone = "pale yellow";
 					else player.skinTone = "grayish-blue";
 				}
-				mutations.updateClaws(player.clawType);
+				mutations.updateClaws(player.claws.type);
 				changes++;
 				outputText("\n\nWhoah, that was weird.  You just hallucinated that your ");
 				if (player.hasFur()) outputText("skin");

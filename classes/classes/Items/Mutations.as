@@ -486,7 +486,7 @@ package classes.Items
 					if (temp == 3 || temp == 4 || temp == 5) player.skinTone = "purple";
 					if (temp > 5) player.skinTone = "blue";
 					outputText("\n\nA tingling sensation runs across your skin in waves, growing stronger as <b>your skin's tone slowly shifts, darkening to become " + player.skinTone + " in color.</b>");
-					updateClaws(player.clawType);
+					updateClaws(player.claws.type);
 					if (tainted) dynStats("cor", 1);
 					else dynStats("cor", 0);
 					kGAMECLASS.rathazul.addMixologyXP(20);
@@ -1607,7 +1607,7 @@ package classes.Items
 					if (player.skinTone == "rough gray") player.skinTone = "gray";
 					player.skinType = Skin.PLAIN;
 					player.underBody.restore();
-					updateClaws(player.clawType);
+					updateClaws(player.claws.type);
 				}
 				//chance of hair change
 				else {
@@ -1662,7 +1662,7 @@ package classes.Items
 					if (player.skinTone == "rough gray") player.skinTone = "gray";
 					player.skinType = Skin.PLAIN;
 					player.underBody.restore();
-					updateClaws(player.clawType);
+					updateClaws(player.claws.type);
 				}
 				//chance of hair change
 				else {
@@ -2300,7 +2300,7 @@ package classes.Items
 					player.skinDesc = "skin";
 					player.skinTone = "rough gray";
 					player.underBody.restore();
-					updateClaws(player.clawType);
+					updateClaws(player.claws.type);
 					kGAMECLASS.rathazul.addMixologyXP(20);
 					changes++;
 				}
@@ -2310,7 +2310,7 @@ package classes.Items
 					player.skinDesc = "skin";
 					player.skinTone = "orange and black striped";
 					player.underBody.restore();
-					updateClaws(player.clawType);
+					updateClaws(player.claws.type);
 					kGAMECLASS.rathazul.addMixologyXP(20);
 					changes++;
 				}
@@ -2867,7 +2867,7 @@ package classes.Items
 				else if (temp == 2) player.skinTone = "dark";
 				else if (temp == 3) player.skinTone = "light";
 				outputText(player.skinTone + " colored.</b>");
-				updateClaws(player.clawType);
+				updateClaws(player.claws.type);
 			}
 			//-Grow hips out if narrow.
 			if (player.hipRating < 10 && changes < changeLimit && rand(3) == 0) {
@@ -3411,7 +3411,7 @@ package classes.Items
 				player.skinType = Skin.PLAIN;
 				player.skinDesc = "skin";
 				player.underBody.restore();
-				updateClaws(player.clawType);
+				updateClaws(player.claws.type);
 				changes++;
 			}
 			//(Gain human face)
@@ -4105,7 +4105,7 @@ package classes.Items
 				if (!InCollection(player.skinTone, tone)) player.skinTone = randomChoice(tone);
 				outputText(player.skinTone + " complexion.");
 				outputText("  <b>You now have [skin]!</b>");
-				updateClaws(player.clawType);
+				updateClaws(player.claws.type);
 				changes++;
 			}
 			//Change skin tone if not changed you!
@@ -4113,7 +4113,7 @@ package classes.Items
 				outputText("\n\nYou feel a crawling sensation on the surface of your skin, starting at the small of your back and spreading to your extremities, ultimately reaching your face.  Holding an arm up to your face, you discover that <b>you now have ");
 				player.skinTone = randomChoice(tone);
 				outputText("[skin]!</b>");
-				updateClaws(player.clawType);
+				updateClaws(player.claws.type);
 				changes++;
 			}
 			//[Change Skin Color: add "Tattoos"]
@@ -4413,7 +4413,7 @@ package classes.Items
 				}
 				outputText("\n\nYour skin tingles ever so slightly as you skin’s color changes before your eyes. As the tingling diminishes, you find that your skin has turned " + skinToBeChosen + ".");
 				player.skinTone = skinToBeChosen;
-				updateClaws(player.clawType);
+				updateClaws(player.claws.type);
 				kGAMECLASS.rathazul.addMixologyXP(20);
 				changes++;
 			}

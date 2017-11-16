@@ -431,13 +431,7 @@ import mx.logging.ILogger;
 		public function get faceType():Number { return face.type; }
 		public function set faceType(value:Number):void { face.type = value; }
 
-		// <mod name="Predator arms" author="Stadler76">
 		public var claws:Claws = new Claws();
-		public function get clawType():Number { return claws.type; }
-		public function set clawType(value:Number):void { claws.type = value; }
-		public function get clawTone():String { return claws.tone; }
-		public function set clawTone(value:String):void { claws.tone = value; }
-		// </mod>
 		public var rearBody:RearBody = new RearBody();
 		public var neck:Neck = new Neck();
 		public var underBody:UnderBody = new UnderBody();
@@ -3106,9 +3100,9 @@ import mx.logging.ILogger;
 		// <mod name="Predator arms" author="Stadler76">
 		public function clawsDescript():String
 		{
-			var toneText:String = clawTone == "" ? " " : (", " + clawTone + " ");
+			var toneText:String = claws.tone == "" ? " " : (", " + claws.tone + " ");
 
-			switch (clawType) {
+			switch (claws.type) {
 				case Claws.NORMAL: return "fingernails";
 				case Claws.LIZARD: return "short curved" + toneText + "claws";
 				case Claws.DRAGON: return "powerful, thick curved" + toneText + "claws";

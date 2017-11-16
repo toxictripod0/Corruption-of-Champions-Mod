@@ -28,7 +28,7 @@ package classes.Items
 
 			if (tfSource == "gooGasmic") {
 				// skin just turned gooey. Now lets fix unusual arms.
-				var hasClaws:Boolean = player.clawType != Claws.NORMAL;
+				var hasClaws:Boolean = player.claws.type != Claws.NORMAL;
 
 				message = "\n\n";
 				if (player.arms.type == Arms.HARPY) {
@@ -70,7 +70,7 @@ package classes.Items
 					case Arms.PREDATOR:
 						switch (player.skinType) {
 							case Skin.GOO:
-								if (player.clawType != Claws.NORMAL)
+								if (player.claws.type != Claws.NORMAL)
 									message += "\n\nYour gooey claws melt into your fingers."
 									          +" Well, who cares, gooey claws aren't very useful in combat to begin with.";
 								break;
@@ -359,7 +359,7 @@ package classes.Items
 		public function updateClaws(clawType:int = Claws.NORMAL):String
 		{
 			var clawTone:String = "";
-			var oldClawTone:String = player.clawTone;
+			var oldClawTone:String = player.claws.tone;
 
 			switch (clawType) {
 				case Claws.DRAGON:       clawTone = "steel-gray";   break;
@@ -387,8 +387,8 @@ package classes.Items
 					clawTone = "";
 			}
 
-			player.clawType = clawType;
-			player.clawTone = clawTone;
+			player.claws.type = clawType;
+			player.claws.tone = clawTone;
 
 			return oldClawTone;
 		}

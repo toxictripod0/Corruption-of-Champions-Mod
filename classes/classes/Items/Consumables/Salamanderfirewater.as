@@ -268,7 +268,7 @@ package classes.Items.Consumables
 				if (player.hasFur()) outputText("the skin under your " + player.furColor + " " + player.skinDesc + " has ");
 				else outputText("your " + player.skinDesc + (player.skinDesc.indexOf("scales") !== -1 ? " have " : " has "));
 				player.skinTone = randomChoice(humanSkinColors);
-				mutations.updateClaws(player.clawType);
+				mutations.updateClaws(player.claws.type);
 				outputText("changed to become " + player.skinTone + " colored.</b>");
 			}
 			//Change skin to normal

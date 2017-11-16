@@ -93,7 +93,7 @@ package classes.Items.Consumables
 					player.skinType = Skin.PLAIN;
 				}
 				player.underBody.restore();
-				mutations.updateClaws(player.clawType);
+				mutations.updateClaws(player.claws.type);
 				changes++;
 			}
 			//Legs

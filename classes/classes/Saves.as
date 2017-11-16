@@ -892,8 +892,8 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile.data.neck = player.neck.toObject();
 		saveFile.data.rearBody = player.rearBody.toObject();
 		// <mod name="Predator arms" author="Stadler76">
-		saveFile.data.clawTone = player.clawTone;
-		saveFile.data.clawType = player.clawType;
+		saveFile.data.clawTone = player.claws.tone;
+		saveFile.data.clawType = player.claws.type;
 		// </mod>
 		saveFile.data.wingType = player.wingType;
 		saveFile.data.wingColor = player.wingColor;
@@ -1773,8 +1773,8 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		if (isObject(saveFile.data.rearBody))
 			player.rearBody.setAllProps(saveFile.data.rearBody);
 		// <mod name="Predator arms" author="Stadler76">
-		player.clawTone = (saveFile.data.clawTone == undefined) ? ""               : saveFile.data.clawTone;
-		player.clawType = (saveFile.data.clawType == undefined) ? Claws.NORMAL : saveFile.data.clawType;
+		player.claws.tone = (saveFile.data.clawTone == undefined) ? ""               : saveFile.data.clawTone;
+		player.claws.type = (saveFile.data.clawType == undefined) ? Claws.NORMAL : saveFile.data.clawType;
 		// </mod>
 
 		player.wingType = saveFile.data.wingType;

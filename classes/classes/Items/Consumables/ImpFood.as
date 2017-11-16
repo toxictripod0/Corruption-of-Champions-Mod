@@ -49,7 +49,7 @@ package classes.Items.Consumables
 					if (rand(2) === 0) player.skinTone = "red";
 					else player.skinTone = "orange";
 					outputText("begins to lose its color, fading until you're as white as an albino.  Then, starting at the crown of your head, a reddish hue rolls down your body in a wave, turning you completely " + player.skinTone + ".");
-					mutations.updateClaws(player.clawType);
+					mutations.updateClaws(player.claws.type);
 					kGAMECLASS.rathazul.addMixologyXP(20);
 				}
 			}
@@ -166,18 +166,18 @@ package classes.Items.Consumables
 			}
 			
 			//Imp claws, needs orange/red skin. Also your hands turn human.
-			if (["red", "orange"].indexOf(player.skinTone) !== -1 && player.clawType !== Claws.IMP && rand(3) === 0 && changes < changeLimit) {
+			if (["red", "orange"].indexOf(player.skinTone) !== -1 && player.claws.type !== Claws.IMP && rand(3) === 0 && changes < changeLimit) {
 				if (player.arms.type !== Arms.HUMAN) {
 					outputText("\n\nYour arms twist and mangle, warping back into human-like arms. But that, you realize, is just the beginning.");
 				}
-				if (player.clawType === Claws.NORMAL) {
+				if (player.claws.type === Claws.NORMAL) {
 					outputText("\n\nYour hands suddenly ache in pain, and all you can do is curl them up to you. Against your body, you feel them form into three long claws, with a smaller one replacing your thumb but just as versatile. <b>You have imp claws!</b>");
 				} else { //has claws
 					outputText("\n\nYour claws suddenly begin to shift and change, starting to turn back into normal hands. But just before they do, they stretch out into three long claws, with a smaller one coming to form a pointed thumb. <b>You have imp claws!</b>");
 				}
 				player.arms.type = Arms.PREDATOR;
-				player.clawType = Claws.IMP;
-				player.clawTone = player.skinTone;
+				player.claws.type = Claws.IMP;
+				player.claws.tone = player.skinTone;
 				dynStats("cor", 2);
 				changes++;
 			}

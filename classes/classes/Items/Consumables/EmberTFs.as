@@ -288,7 +288,7 @@ package classes.Items.Consumables
 				changes++
 			}
 			//Claw transition
-			if (player.arms.type == Arms.PREDATOR && player.hasDragonScales() && player.clawType != Claws.DRAGON && changes < changeLimit && rand(3) == 0) {
+			if (player.arms.type == Arms.PREDATOR && player.hasDragonScales() && player.claws.type != Claws.DRAGON && changes < changeLimit && rand(3) == 0) {
 				output.text("\n\nYour [claws] change  a little to become more dragon-like.");
 				mutations.updateClaws(Claws.DRAGON);
 				output.text(" <b>You now have [claws].</b>");

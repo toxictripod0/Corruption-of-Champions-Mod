@@ -80,7 +80,7 @@ package classes.Items.Consumables
 				else player.skinTone = "russet";
 				outputText(player.skinTone + " colored.</b>");
 				player.underBody.skin.tone = player.skin.tone;
-				mutations.updateClaws(player.clawType);
+				mutations.updateClaws(player.claws.type);
 			}
 			//Change skin to normal
 			if (!player.hasPlainSkin() && (player.earType === Ears.HUMAN || player.earType === Ears.ELFIN) && rand(4) === 0 && changes < changeLimit) {

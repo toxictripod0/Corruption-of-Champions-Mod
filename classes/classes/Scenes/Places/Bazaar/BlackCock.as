@@ -1645,7 +1645,7 @@ package classes.Scenes.Places.Bazaar
 				player.skinType = Skin.PLAIN;
 				player.skinDesc = "skin";
 				player.underBody.restore();
-				mutations.updateClaws(player.clawType);
+				mutations.updateClaws(player.claws.type);
 				changes++;
 			}
 			//Arms change to regular

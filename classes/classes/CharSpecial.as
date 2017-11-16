@@ -1627,8 +1627,8 @@ package classes
 			
 			player.faceType = Face.FOX;
 			player.earType = Ears.FOX;
-			player.clawType = Claws.DOG;
-			player.clawTone = "ivory";
+			player.claws.type = Claws.DOG;
+			player.claws.tone = "ivory";
 			player.eyeType = Eyes.DRAGON;
 			player.lowerBody = LowerBody.FOX;
 			player.tailType = Tail.FOX; // soft fur feels so lovely...
