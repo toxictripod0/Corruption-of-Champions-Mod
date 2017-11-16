@@ -1750,7 +1750,7 @@ package classes.Scenes.Places.Prison
 				{
 					outputText(" and grabs you firmly by your horns");
 				}
-				else if (player.hairLength >= 10)
+				else if (player.hair.length >= 10)
 				{
 					outputText(", gathers your [hair] up into pigtails, and grips them firmly");
 				}

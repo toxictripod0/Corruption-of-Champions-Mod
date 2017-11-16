@@ -3135,7 +3135,7 @@ private function sheilaForcedOralGeneric():void {
 	//Picture is here
 	outputText(images.showImage("sheila-lickhergina"));
 	outputText("\n\n\"<i>Lick...</i>\" she whispers, almost apologetically, \"<i>... please.  Or... or I'll have to hit you again.</i>\"  She sets her face and takes a handful of your hair, twisting it");
-	if (player.hairType == 4) outputText(" and flushing as your stingers release their payloads into her palm");
+	if (player.hair.type == 4) outputText(" and flushing as your stingers release their payloads into her palm");
 	outputText(".  You obediently stick out your tongue");
 	if (player.cor > 60) outputText(", motivated more by whimsy than the meager, almost playful pain,");
 	outputText(" and shallowly penetrate Sheila's vagina with it.");

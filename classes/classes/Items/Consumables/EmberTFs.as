@@ -219,7 +219,7 @@ package classes.Items.Consumables
 				var emberRear:Number = player.fetchEmberRearBody();
 				switch (emberRear) {
 					case RearBody.DRACONIC_MANE:
-						// if (player.hairLength == 0) // Let's simply ignore baldness here for now. It wouldn't affect the PCs mane anyway.
+						// if (player.hair.length == 0) // Let's simply ignore baldness here for now. It wouldn't affect the PCs mane anyway.
 						outputText("\n\nYou feel a sudden tingle just above your spine. Eager to see, what is the cause of it you bend your"
 						          +" [if (hasDragonNeck)draconic neck|tail] to take a closer look at it. Looking at your"
 						          +" [if (hasDragonNeck)back|tail] you see tiny splotches of hair beginning to grow out of your scaly skin. The hair"
@@ -230,7 +230,7 @@ package classes.Items.Consumables
 						          +" of a horse's mane. <b>You now have a hairy mane on your rear.</b>");
 						player.rearBody.setAllProps({
 							type:  RearBody.DRACONIC_MANE,
-							color: player.hairColor
+							color: player.hair.color
 						});
 						break;
 

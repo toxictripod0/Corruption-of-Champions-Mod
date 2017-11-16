@@ -100,8 +100,8 @@ package classes.Scenes.Monsters
 				this.skinTone = "light";
 			else
 				this.skinTone = "gray";
-			this.hairColor = "none";
-			this.hairLength = 0;
+			this.hair.color = "none";
+			this.hair.length = 0;
 			this.pronoun1 = "it";
 			this.pronoun2 = "it";
 			this.pronoun3 = "its";

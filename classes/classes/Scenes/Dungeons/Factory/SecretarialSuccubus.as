@@ -58,8 +58,8 @@ package classes.Scenes.Dungeons.Factory
 			this.butt.rating = Butt.RATING_LARGE+1;
 			this.lowerBody = LowerBody.DEMONIC_HIGH_HEELS;
 			this.skinTone = "blue";
-			this.hairColor = "blond";
-			this.hairLength = 13;
+			this.hair.color = "blond";
+			this.hair.length = 13;
 			initStrTouSpeInte(50, 40, 75, 35);
 			initLibSensCor(80, 70, 80);
 			this.weaponName = "claws";

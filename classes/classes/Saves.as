@@ -868,11 +868,11 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile.data.tone = player.tone;
 		saveFile.data.tallness = player.tallness;
 		saveFile.data.furColor = player.furColor;
-		saveFile.data.hairColor = player.hairColor;
-		saveFile.data.hairType = player.hairType;
+		saveFile.data.hairColor = player.hair.color;
+		saveFile.data.hairType = player.hair.type;
 		saveFile.data.gillType = player.gills.type;
 		saveFile.data.armType = player.arms.type;
-		saveFile.data.hairLength = player.hairLength;
+		saveFile.data.hairLength = player.hair.length;
 		saveFile.data.beardLength = player.beard.length;
 		saveFile.data.eyeType = player.eyes.type;
 		saveFile.data.eyeCount = player.eyes.count;
@@ -1652,11 +1652,11 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			player.furColor = saveFile.data.hairColor;
 		else
 			player.furColor = saveFile.data.furColor;
-		player.hairColor = saveFile.data.hairColor;
+		player.hair.color = saveFile.data.hairColor;
 		if (saveFile.data.hairType == undefined)
-			player.hairType = 0;
+			player.hair.type = 0;
 		else
-			player.hairType = saveFile.data.hairType;
+			player.hair.type = saveFile.data.hairType;
 		if (saveFile.data.gillType != undefined)
 			player.gills.type = saveFile.data.gillType;
 		else if (saveFile.data.gills == undefined)
@@ -1667,7 +1667,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			player.arms.type = Arms.HUMAN;
 		else
 			player.arms.type = saveFile.data.armType;
-		player.hairLength = saveFile.data.hairLength;
+		player.hair.length = saveFile.data.hairLength;
 		player.skinType = saveFile.data.skinType;
 		if (saveFile.data.skinAdj == undefined)
 			player.skinAdj = "";
@@ -2301,7 +2301,7 @@ public function unFuckSave():void
 	//Fixing shit!
 	if (player.wings.type == Wings.FEATHERED_LARGE && player.wings.color == "no") {
 		// Player has harpy wings from an old save, let's fix its color
-		player.wings.color = player.hasFur() ? player.furColor : player.hairColor;
+		player.wings.color = player.hasFur() ? player.furColor : player.hair.color;
 	}
 
 	// Fix duplicate elven bounty perks

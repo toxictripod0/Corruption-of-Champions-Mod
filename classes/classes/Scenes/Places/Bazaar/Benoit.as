@@ -637,7 +637,7 @@ private function talkToBenoit():void {
 		benoitAffection(5);
 	}
 	if (flags[kFLAGS.BENOIT_BASIL_EYES_GRANTED] > 0 && player.hasKeyItem("Feathery hair-pin") < 0) {
-		var hasSolidHair:Boolean = (player.hairType != Hair.GOO && player.hairLength > 0);
+		var hasSolidHair:Boolean = (player.hair.type != Hair.GOO && player.hair.length > 0);
 		// Talk scene written by MissBlackthorne
 		outputText("\"<i>Ah [name]! I 'ad been 'oping to speak wiz you.</i>\" your basilisk lover says with a toothy smile. \"<i>I 'ave a gift for "
 		          +"you... For all you 'ave done.</i>\" You notice the scales on " + benoitMF("Benoit", "Benoite") + "'s face turn a deeper green,"
@@ -942,7 +942,7 @@ private function benoitHairPinTalk():void
 
 private function benoitHairPinTFCheck():void
 {
-	if (player.cor < 30 && player.isFemaleOrHerm() && player.featheryHairPinEquipped() && [Hair.BASILISK_PLUME, Hair.GOO].indexOf(player.hairType) == -1)
+	if (player.cor < 30 && player.isFemaleOrHerm() && player.featheryHairPinEquipped() && [Hair.BASILISK_PLUME, Hair.GOO].indexOf(player.hair.type) == -1)
 	{
 		outputText("\n\nYou feel the hair pin " + benoitMF("Benoit", "Benoite") + " gave you heat up, a gentle warmth suffusing through your body."
 		          +" Something tells you that if you let it, this feminine hair piece will evoke some sort of change.");
@@ -977,9 +977,9 @@ private function benoitHairPinTFYes():void
 		outputText("\n\n<b>Your hair is now a plume of short red feathers.</b>");
 
 	flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] = 0;
-	player.hairLength = 2;
-	player.hairColor = "red";
-	player.hairType = Hair.BASILISK_PLUME;
+	player.hair.length = 2;
+	player.hair.color = "red";
+	player.hair.type = Hair.BASILISK_PLUME;
 	benoitHairPinTalkFinal();
 }
 
@@ -1330,7 +1330,7 @@ public function equipUnequipHairPin():void
 	clearOutput();
 	if (player.keyItemv1("Feathery hair-pin") > 0) {
 		// unequip it
-		if (player.hairLength > 0)
+		if (player.hair.length > 0)
 			outputText("You take the feathery hair-pin " + benoitMF("Benoit", "Benoite") + " gave to you out of your " + player.hairDescript() 
 			          +" and put it back into your inventory.");
 		else
@@ -1340,7 +1340,7 @@ public function equipUnequipHairPin():void
 		player.keyItems[keyItemNum].value2 = 0; // if its not equipped it won't trigger any TF, right? ^^
 	} else {
 		// equip it
-		if (player.hairType == Hair.GOO)
+		if (player.hair.type == Hair.GOO)
 			outputText("You try to slide the hair pin into your " + player.hairDescript() + ", but their semi-liquid state isn't enough to hold it in"
 			          +" place. The pin falls to the ground with a wet splat the moment you let it go. With a sigh you clean it up and then you put"
 			          +" it back.");
@@ -1349,7 +1349,7 @@ public function equipUnequipHairPin():void
 			              +" causing you to drop it in shock. Seems it doesn't want you dirty its purity... you pick it up and put it back into your"
 			              +" inventory for now.");
 		else {
-			if (player.hairLength > 0)
+			if (player.hair.length > 0)
 				outputText("You slide the hair-pin " + benoitMF("Benoit", "Benoite") + " gave you into your " + player.hairDescript()
 				          +", briefly admiring yourself in a nearby puddle before returning to your adventures.");
 			else

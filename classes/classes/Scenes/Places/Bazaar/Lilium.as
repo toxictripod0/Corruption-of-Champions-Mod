@@ -178,7 +178,7 @@ private function liliumDickRidah():void {
 
 	outputText("Slowly you begin moving down Lilium's body.  You leave a trail of kisses down her neck before running your tongue along her collar bone.  Further down you go, letting your lips gently slide down the center of the demon herm's chest until you reach her navel.  ");
 	//(if player has long hair)
-	if (player.hairLength >= 15) outputText("You can feel Lilium shudder slightly beneath you as your hair tickles her nipples.  ");
+	if (player.hair.length >= 15) outputText("You can feel Lilium shudder slightly beneath you as your hair tickles her nipples.  ");
 	outputText("First you begin to circle her navel with the tip of your tongue, following up with long licks beginning at the base of her belly and trailing up and into her belly button. Lilium's breathing begins to quicken and her hips start to dart back and forth beneath you as you continue to tongue her navel. As you become more conscious of the hardened cock poking into your own chest you draw your head back, leaving a long shiny strand of saliva that joins your mouth to her smooth tummy.\n\n");
 
 	outputText("You draw yourself up and position yourself above Lilium's twitching cock.  Your fingers part the lips of your " + player.vaginaDescript(0) + " which are slick with your own arousal.  ");

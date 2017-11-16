@@ -172,8 +172,8 @@ package classes.Scenes.Areas.Swamp
 			this.skinTone = skinTone;
 			this.skinType = Skin.PLAIN;
 			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.PLAIN];
-			this.hairColor = hairColor;
-			this.hairLength = 24;
+			this.hair.color = hairColor;
+			this.hair.length = 24;
 			initStrTouSpeInte(100, 50, 70, 100);
 			initLibSensCor(80, 50, 90);
 			this.weaponName = "claws";

@@ -180,8 +180,8 @@ package classes.Scenes.NPCs
 			this.hipRating = Hips.RATING_AMPLE+2;
 			this.butt.rating = Butt.RATING_LARGE;
 			this.skinTone = "red";
-			this.hairColor = "black";
-			this.hairLength = 15;
+			this.hair.color = "black";
+			this.hair.length = 15;
 			this.hornType = Horns.DRACONIC_X4_12_INCH_LONG;
 			this.horns = 4;
 			this.wingType = Wings.DRACONIC_LARGE;

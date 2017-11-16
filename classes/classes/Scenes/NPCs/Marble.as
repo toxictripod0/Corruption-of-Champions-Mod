@@ -97,8 +97,8 @@ package classes.Scenes.NPCs
 			this.butt.rating = Butt.RATING_LARGE;
 			this.lowerBody = LowerBody.HOOFED;
 			this.skinTone = "pale";
-			this.hairColor = "brown";
-			this.hairLength = 13;
+			this.hair.color = "brown";
+			this.hair.length = 13;
 			initStrTouSpeInte(75, 70, 35, 40);
 			initLibSensCor(25, 45, 40);
 			this.weaponName = "large hammer";

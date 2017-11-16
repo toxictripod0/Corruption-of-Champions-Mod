@@ -235,12 +235,12 @@ package classes.Items
 
 		public function removeFeatheryHair():Boolean
 		{
-			if (changes < changeLimit && player.hairType == Hair.FEATHER && rand(4) == 0) {
+			if (changes < changeLimit && player.hair.type == Hair.FEATHER && rand(4) == 0) {
 				//(long):
-				if (player.hairLength >= 6) outputText("\n\nA lock of your downy-soft feather-hair droops over your eye.  Before you can blow the offending down away, you realize the feather is collapsing in on itself.  It continues to curl inward until all that remains is a normal strand of hair.  <b>Your hair is no longer feathery!</b>");
+				if (player.hair.length >= 6) outputText("\n\nA lock of your downy-soft feather-hair droops over your eye.  Before you can blow the offending down away, you realize the feather is collapsing in on itself.  It continues to curl inward until all that remains is a normal strand of hair.  <b>Your hair is no longer feathery!</b>");
 				//(short)
 				else outputText("\n\nYou run your fingers through your downy-soft feather-hair while you await the effects of the item you just ingested.  While your hand is up there, it detects a change in the texture of your feathers.  They're completely disappearing, merging down into strands of regular hair.  <b>Your hair is no longer feathery!</b>");
-				player.hairType = Hair.NORMAL;
+				player.hair.type = Hair.NORMAL;
 				changes++;
 				return true;
 			}
@@ -293,12 +293,12 @@ package classes.Items
 		public function removeBassyHair():Boolean
 		{
 			// Failsafe, duh
-			if ([Hair.BASILISK_PLUME, Hair.BASILISK_SPINES].indexOf(player.hairType) == -1) return false;
+			if ([Hair.BASILISK_PLUME, Hair.BASILISK_SPINES].indexOf(player.hair.type) == -1) return false;
 
-			if (player.hairType == Hair.BASILISK_PLUME) {
+			if (player.hair.type == Hair.BASILISK_PLUME) {
 				// TF blurb derived from losing feathery hair
 				//(long):
-				if (player.hairLength >= 5)
+				if (player.hair.length >= 5)
 					outputText("\n\nA lock of your feathery plume droops over your eye.  Before you can blow the offending down away,"
 					          +" you realize the feather is collapsing in on itself."
 					          +" It continues to curl inward until all that remains is a normal strand of hair.");
@@ -316,9 +316,9 @@ package classes.Items
 
 				outputText("\n\n<b>You realize, that you'll grow normal human hair again!</b>");
 				flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] = 0;
-				player.hairLength = 0;
+				player.hair.length = 0;
 			}
-			player.hairType = Hair.NORMAL;
+			player.hair.type = Hair.NORMAL;
 			changes++;
 			return true;
 		}
@@ -414,7 +414,7 @@ package classes.Items
 				case "PlayerEvents-benoitHairPin":
 				case "reptilum-basilisk":
 				case "reptilum-dracolisk":
-					if (player.hairType == Hair.BASILISK_PLUME && player.cor < 65) return 0;
+					if (player.hair.type == Hair.BASILISK_PLUME && player.cor < 65) return 0;
 
 					if (player.isFemaleOrHerm() && player.cor < 15 && player.featheryHairPinEquipped() && player.isBasilisk()) {
 						var benoitMFText:String = getGame().bazaar.benoit.benoitMF(
@@ -422,7 +422,7 @@ package classes.Items
 							" you have a plume, like a female basilisk!"
 						);
 
-						if (player.hairType == Hair.GOO)
+						if (player.hair.type == Hair.GOO)
 							output.text("\n\nYour gooey hair begins to fall out in globs, eventually leaving you with a bald head.");
 
 						output.text("\n\nYour head begins to tickle and you reach up to scratch at it, only to be surprised by the softness you feel."
@@ -437,17 +437,17 @@ package classes.Items
 							output.text("\n\n<b>Your hair is now a plume of short red feathers.</b>");
 
 						flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] = 0;
-						player.hairLength = 2;
-						player.hairColor = "red";
-						player.hairType = Hair.BASILISK_PLUME;
+						player.hair.length = 2;
+						player.hair.color = "red";
+						player.hair.type = Hair.BASILISK_PLUME;
 						player.keyItems[hairPinID].value2 = 0;
 						changes++;
 						return 1; // --> gained basilisk hair (plume)
 					}
 
-					if (player.cor >= 65 && player.hairType != Hair.BASILISK_SPINES && player.hasLizardScales() && player.hasReptileFace()) {
+					if (player.cor >= 65 && player.hair.type != Hair.BASILISK_SPINES && player.hasLizardScales() && player.hasReptileFace()) {
 						// Corrupted Basilisk
-						if (player.hairLength > 0 && [Hair.GOO, Hair.BASILISK_PLUME].indexOf(player.hairType) == -1) {
+						if (player.hair.length > 0 && [Hair.GOO, Hair.BASILISK_PLUME].indexOf(player.hair.type) == -1) {
 							output.text("\n\nYour scalp feels tight and hot, causing you to run a hand through your [hair] to rub at it gingerly.");
 
 							if (player.featheryHairPinEquipped())
@@ -465,7 +465,7 @@ package classes.Items
 						}
 
 						// Female Basilisk to Corrupted Basilisk
-						if (player.hairLength > 0 && player.hairType == Hair.BASILISK_PLUME) {
+						if (player.hair.length > 0 && player.hair.type == Hair.BASILISK_PLUME) {
 							output.text("\n\nA sudden sharp pain drills through your skull, a pressure forming across your scalp."
 							           +" If you didn't know any better you'd think you were being plucked!");
 
@@ -483,8 +483,8 @@ package classes.Items
 						}
 
 						// Corrupted basilisk with gooey or no hair (bald)
-						if (player.hairType == Hair.GOO || player.hairLength <= 0) {
-							if (player.hairType == Hair.GOO)
+						if (player.hair.type == Hair.GOO || player.hair.length <= 0) {
+							if (player.hair.type == Hair.GOO)
 								output.text("\n\nYour gooey hair begins to fall out in globs, eventually leaving you with a bald head.");
 
 							if (player.featheryHairPinEquipped())
@@ -498,9 +498,9 @@ package classes.Items
 						}
 
 						// Finalize Corrupted Basilisk TFs
-						player.hairColor = player.skinTone;                   // hairColor always set to player.skinTone
-						player.hairType = Hair.BASILISK_SPINES;               // hairType set to basilisk spines
-						player.hairLength = 2;                                // hairLength set to 2 (inches, displayed as ‘short’)
+						player.hair.color = player.skinTone;                   // hairColor always set to player.skinTone
+						player.hair.type = Hair.BASILISK_SPINES;               // hairType set to basilisk spines
+						player.hair.length = 2;                                // hairLength set to 2 (inches, displayed as ‘short’)
 						flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] = 1; // Hair growth stops
 						changes++;
 						output.text("\n\n<b>Where your hair would be, you now have a crown of dull reptilian spines!</b>");

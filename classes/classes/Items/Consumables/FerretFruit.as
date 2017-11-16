@@ -153,21 +153,21 @@ package classes.Items.Consumables
 			}
 			//	outputText("\n\nYou grit your teeth as a stinging sensation arises in your gills.  Within moments, the sensation passes, and <b>your gills are gone!</b>");
 			//If the PC has tentacle hair:
-			if (player.hairType === Hair.ANEMONE && rand(4) === 0 && changes < changeLimit)
+			if (player.hair.type === Hair.ANEMONE && rand(4) === 0 && changes < changeLimit)
 			{
 				outputText("\n\nYour head feels strange as the tentacles you have for hair begin to recede back into your scalp, eventually leaving you with a bald head.  Your head is not left bald for long, though.  Within moments, a full head of hair sprouts from the skin of your scalp.  <b>Your hair is normal again!</b>");
 				//Turn hair growth on.
 				flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] = 0;
-				player.hairType = Hair.NORMAL;
+				player.hair.type = Hair.NORMAL;
 				changes++;
 			}
 			//If the PC has goo hair:
-			if (player.hairType === Hair.GOO && rand(3) === 0 && changes < changeLimit)
+			if (player.hair.type === Hair.GOO && rand(3) === 0 && changes < changeLimit)
 			{
 				outputText("\n\nYour gooey hair begins to fall out in globs, eventually leaving you with a bald head.  Your head is not left bald for long, though.  Within moments, a full head of hair sprouts from the skin of your scalp.  <b>Your hair is normal again!</b>");
 				//Turn hair growth on.
 				flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] = 0;
-				player.hairType = Hair.NORMAL;
+				player.hair.type = Hair.NORMAL;
 				changes++;
 			}
 			//If the PC has four eyes:
@@ -218,17 +218,17 @@ package classes.Items.Consumables
 			{
 				outputText("\n\nYour skin starts to itch like crazy as a thick coat of fur sprouts out of your skin.");
 				//If hair was not sandy brown, silver, white, or brown
-				if (player.hairColor !== "sandy brown" && player.hairColor !== "silver" && player.hairColor !== "white" && player.hairColor !== "brown")
+				if (player.hair.color !== "sandy brown" && player.hair.color !== "silver" && player.hair.color !== "white" && player.hair.color !== "brown")
 				{
 					outputText("\n\nOdder still, all of your hair changes to ");
-					if (rand(4) === 0) player.hairColor = "sandy brown";
-					else if (rand(3) === 0) player.hairColor = "silver";
-					else if (rand(2) === 0) player.hairColor = "white";
-					else player.hairColor = "brown";
+					if (rand(4) === 0) player.hair.color = "sandy brown";
+					else if (rand(3) === 0) player.hair.color = "silver";
+					else if (rand(2) === 0) player.hair.color = "white";
+					else player.hair.color = "brown";
 					outputText(".");
 				}
 				player.skinType = Skin.FUR;
-				player.furColor = player.hairColor;
+				player.furColor = player.hair.color;
 				player.underBody.restore(); // Restore the underbody for now
 				outputText("  <b>You now have " + player.furColor + " fur!</b>");
 				changes++;

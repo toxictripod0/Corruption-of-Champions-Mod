@@ -114,8 +114,8 @@ package classes.Scenes.Areas.HighMountains
 			this.skinTone = "pink";
 			this.skinType = Skin.PLAIN;
 			this.skinDesc = "feathers";
-			this.hairColor = "blue";
-			this.hairLength = 16;
+			this.hair.color = "blue";
+			this.hair.length = 16;
 			initStrTouSpeInte(60, 40, 90, 40);
 			initLibSensCor(70, 30, 80);
 			this.weaponName = "talons";

@@ -169,8 +169,8 @@ package classes.Scenes.Areas.Lake
 			this.skinType = Skin.GOO;
 			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.GOO];
 			this.skinAdj = "goopey";
-			this.hairColor = tone;
-			this.hairLength = 12 + rand(10);
+			this.hair.color = tone;
+			this.hair.length = 12 + rand(10);
 			initStrTouSpeInte(25, 25, 20, 30);
 			initLibSensCor(50, 40, 10);
 			this.weaponName = "hands";

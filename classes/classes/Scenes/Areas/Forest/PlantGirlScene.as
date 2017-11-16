@@ -350,7 +350,7 @@ package classes.Scenes.Areas.Forest
 			else outputText("[balls]");
 			outputText(", massaging and caressing them gently as she moves to kissing at your neck.  Her thrusts become shorter in length as her breathing becomes frantic, signaling that her orgasmic peak is near. The plant woman ");
 			//PC has hair: (grabs you by the hair)
-			if (player.hairLength > 0) outputText("grabs you by the hair");
+			if (player.hair.length > 0) outputText("grabs you by the hair");
 			//PC doesn't have hair: embraces you)
 			else outputText("embraces you");
 			outputText(" as she cries out in a fierce moan, her cock convulsing as she thrusts wildly against you and planting her hot seed deep into you.  The sensual act finally over, your head droops down as you pant heavily; the plant girl slumps her head down onto your shoulder and uses you to hold herself up.  She's breathing heavily in your ear while regaining some of her energy and composure.");

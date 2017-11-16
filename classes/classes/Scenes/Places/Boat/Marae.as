@@ -141,8 +141,8 @@ package classes.Scenes.Places.Boat
 			this.skinTone = "white";
 			this.skinType = 0;
 			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.FUR];
-			this.hairColor = "green";
-			this.hairLength = 36;
+			this.hair.color = "green";
+			this.hair.length = 36;
 			if (game.flags[kFLAGS.FACTORY_SHUTDOWN] == 2) {
 				initStrTouSpeInte(150, 150, 70, 110);
 				initLibSensCor(60, 25, 100);

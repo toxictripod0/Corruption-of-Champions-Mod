@@ -178,8 +178,8 @@ package classes.Scenes.Quests.UrtaQuest
 			this.skinTone = "red";
 			this.skinType = Skin.FUR;
 			this.skinDesc = "shaggy fur";
-			this.hairColor = randomChoice("black","brown");
-			this.hairLength = 3;
+			this.hair.color = randomChoice("black","brown");
+			this.hair.length = 3;
 			this.face.type = Face.COW_MINOTAUR;
 			initStrTouSpeInte(125, 90, 30, 30);
 			initLibSensCor(70, 25, 85);

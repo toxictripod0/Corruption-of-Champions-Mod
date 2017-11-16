@@ -46,7 +46,7 @@ package classes.Scenes
 			
 			outputText("<b>Face</b>: " + player.faceDesc() + ", femininity " + player.femininity + "\n");
 			outputText("<b>Tone</b>: " + player.tone + "\n");
-			outputText("<b>Hair</b>: length " + Math.round(player.hairLength) + ", " + player.hairDescript() + "\n");
+			outputText("<b>Hair</b>: length " + Math.round(player.hair.length) + ", " + player.hairDescript() + "\n");
 			outputText("<b>Tits</b>: " + player.breastDescript(0) + ", size: " + player.breastRows[0].breastRating + " (" + player.breastCup(0) + ") with " + player.nippleDescript(0) + " of size " + player.nippleLength + "\n");
 			if (player.isLactating()) outputText("<b>Lactation</b>: " + player.lactationQ() + ", biggest: " + player.biggestLactation() + "\n");
 			outputText("<b>Ass</b>: " + player.assDescript() + ", size: " + player.butt.rating +  ", looseness: " + Math.round(player.ass.analLooseness) + ", capacity: " + Math.round(player.analCapacity()) + "\n");
@@ -1042,11 +1042,11 @@ package classes.Scenes
 				
 				outputText("Your cum-hunger is so powerful that you cannot think of anything else. You put a thumb in your mouth and your knees lock. You fall back in pleasure, twisting and moaning like a whore. Images of monstrous cocks flash before your eyes as desire to suck dick overwhelms you.\n\n");
 				outputText("You are sucking your thumb, moving it in and out of your indecent mouth, moaning loudly. Quickly, you undress the top of your outfit and grope your " + player.breastDescript(0) + " lubricating your [nipples] liberally with your saliva. ");
-					if (player.hairLength > 10) {
+					if (player.hair.length > 10) {
 						outputText("A lock of your " + player.hairDescript() + " falls on your " + player.breastDescript(0) + " and you mindlessly shrug it away");
-						if (player.hairLength > 30 && player.hairColor != "platinum blonde") {
+						if (player.hair.length > 30 && player.hair.color != "platinum blonde") {
 							outputText(", noticing on the back of the mind how they became perfectly bimbo-blonde.");
-							player.hairColor = "platinum blonde";
+							player.hair.color = "platinum blonde";
 							getGame().dynStats("cor", 0.3);
 						}
 						else {
@@ -1136,7 +1136,7 @@ package classes.Scenes
 				}
 				
 				outputText(player.modFem(player.hasCock() ? 80 : 100, 1));
-				if (player.hairLength < 36) {
+				if (player.hair.length < 36) {
 					player.growHair(0.5);
 					getGame().dynStats("cor", 0.2);
 				}
@@ -1203,15 +1203,15 @@ package classes.Scenes
 			}
 			if (player.tone == 0 && player.hipRating >= 12 && player.butt.rating >= 12 && player.biggestTitSize() >= 12 && player.hasVagina() && !player.hasCock() && !( player.findPerk(PerkLib.BimboBody) >= 0 )) {
 				
-				if (player.hairColor != "platinum blonde") {
+				if (player.hair.color != "platinum blonde") {
 					outputText("You notice a change in your " + player.hairDescript() + ".  It starts with a tingling in your scalp and intensifies ");
-					if (player.hairLength < 36) {
+					if (player.hair.length < 36) {
 						outputText("as you feel the weight of your hair growing heavier and longer. ");
-						player.hairLength = 36;
+						player.hair.length = 36;
 					}
 					else outputText("as your hair grows thicker and heavier. ");
-					outputText(" You grab a lock of the silken strands and watch open-mouthed while streaks so blonde they're almost white flow down the " + player.hairColor + " hair.  It goes faster and faster until your hair has changed into perfectly bimbo-blonde, flowing locks.\n\n");
-					player.hairColor = "platinum blonde";
+					outputText(" You grab a lock of the silken strands and watch open-mouthed while streaks so blonde they're almost white flow down the " + player.hair.color + " hair.  It goes faster and faster until your hair has changed into perfectly bimbo-blonde, flowing locks.\n\n");
+					player.hair.color = "platinum blonde";
 				}		
 				
 			else {

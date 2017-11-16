@@ -814,19 +814,19 @@ import classes.Items.*
 		}
 		*/
 		private function changeHairType(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.hairType = setIdx;
+			if (setIdx>=0) player.hair.type = setIdx;
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorSkin, page, HAIR_TYPE_CONSTANTS, changeHairType);
 		}
 		private function changeHairColor(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.hairColor = HAIR_COLOR_CONSTANTS[setIdx];
+			if (setIdx>=0) player.hair.color = HAIR_COLOR_CONSTANTS[setIdx];
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorSkin, page, HAIR_COLOR_CONSTANTS, changeHairColor);
 		}
 		private function changeHairLength(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.hairLength = HAIR_LENGTH_CONSTANTS[setIdx];
+			if (setIdx>=0) player.hair.length = HAIR_LENGTH_CONSTANTS[setIdx];
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorSkin, page, HAIR_LENGTH_CONSTANTS, changeHairLength);
@@ -1380,7 +1380,7 @@ import classes.Items.*
 			player.skinType = Skin.DRAGON_SCALES;
 			player.skinAdj = "tough";
 			player.skinDesc = "shield-shaped dragon scales";
-			player.furColor = player.hairColor;
+			player.furColor = player.hair.color;
 			player.underBody.type = UnderBody.REPTILE;
 			player.copySkinToUnderBody({       // copy the main skin props to the underBody skin ...
 				desc: "ventral dragon scales"  // ... and only override the desc

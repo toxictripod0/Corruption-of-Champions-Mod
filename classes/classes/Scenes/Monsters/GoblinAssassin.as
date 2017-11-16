@@ -136,8 +136,8 @@ package classes.Scenes.Monsters
 			this.hipRating = Hips.RATING_AMPLE+2;
 			this.butt.rating = Butt.RATING_LARGE;
 			this.skinTone = "dark green";
-			this.hairColor = "blue";
-			this.hairLength = 7;
+			this.hair.color = "blue";
+			this.hair.length = 7;
 			initStrTouSpeInte(45, 55, 110, 95);
 			initLibSensCor(65, 35, 60);
 			this.weaponName = "needles";

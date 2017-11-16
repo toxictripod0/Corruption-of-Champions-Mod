@@ -34,8 +34,8 @@ package classes.Scenes.Places.Prison
 			this.hipRating = Hips.RATING_BOYISH;
 			this.butt.rating = Butt.RATING_TIGHT;
 			this.skinTone = "red";
-			this.hairColor = "black";
-			this.hairLength = 5;
+			this.hair.color = "black";
+			this.hair.length = 5;
 			initStrTouSpeInte(40, 35, 25, 28);
 			initLibSensCor(45, 45, 90);
 			this.weaponName = "mop";

@@ -76,10 +76,10 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//-hair morphs to anemone tentacles, retains color, hair shrinks back to med-short('shaggy') and stops growing, lengthening treatments don't work and goblins won't cut it, but more anemone items can lengthen it one level at a time
-			if (player.gills.type === Gills.ANEMONE && player.hairType !== 4 && changes < changeLimit && rand(5) === 0) {
+			if (player.gills.type === Gills.ANEMONE && player.hair.type !== 4 && changes < changeLimit && rand(5) === 0) {
 				outputText("\n\nYour balance slides way off, and you plop down on the ground as mass concentrates on your head.  Reaching up, you give a little shriek as you feel a disturbingly thick, squirming thing where your hair should be.  Pulling it down in front of your eyes, you notice it's still attached to your head; what's more, it's the same color as your hair used to be.  <b>You now have squirming tentacles in place of hair!</b>  As you gaze at it, a gentle heat starts to suffuse your hand.  The tentacles must be developing their characteristic stingers!  You quickly let go; you'll have to take care to keep them from rubbing on your skin at all hours.  On the other hand, they're quite short and you find you can now flex and extend them as you would any other muscle, so that shouldn't be too hard.  You settle on a daring, windswept look for now.");
-				player.hairType = 4;
-				player.hairLength = 5;
+				player.hair.type = 4;
+				player.hair.length = 5;
 				if (flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] === 0) {
 					outputText("  <b>(Your hair has stopped growing.)</b>");
 					flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] = 1;
@@ -105,10 +105,10 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//-eat more, grow more 'hair':
-			if (player.hairType === Hair.ANEMONE && player.hairLength < 36 &&
+			if (player.hair.type === Hair.ANEMONE && player.hair.length < 36 &&
 					rand(2) === 0 && changes < changeLimit) {
 				temp = 5 + rand(3);
-				player.hairLength += temp;
+				player.hair.length += temp;
 				outputText("\n\nAs you laboriously chew the rubbery dried anemone, your head begins to feel heavier.  Using your newfound control, you snake one of your own tentacles forward; holding it out where you can see it, the first thing you notice is that it appears quite a bit longer.  <b>Your head-tentacles are now " + num2Text(temp) + " inches longer!</b>");
 				//(add one level of hairlength)
 				changes++;

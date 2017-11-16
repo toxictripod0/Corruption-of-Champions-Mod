@@ -656,7 +656,7 @@ public function useTentacleJojo():void {
 	if (titFucking) {
 		outputText("The titfucking tentacles squeeze tighter against your " + player.allBreastsDescript() + " before they cum again, much harder than before.  Each time it pops free of your flesh, a wave of spunk flows out with it, rolling off your chest to drip into your already soaked face and mouth.  ");
 		if (player.cor >= 80 && player.lib >= 70) outputText("You lick your lips and swallow as much of it as possible, wallowing in the mouse-cream.  ");
-		if (player.hairLength > 0) outputText("He keeps unloading it until you feel it in your " + player.hairDescript());
+		if (player.hair.length > 0) outputText("He keeps unloading it until you feel it in your " + player.hairDescript());
 		else outputText("He keeps unloading it until you feel it on your head");
 		outputText(", then both tentacles abruptly release, going flaccid.\n\n");
 	}

@@ -304,8 +304,8 @@ package classes.Scenes.NPCs
 			this.butt.rating = Butt.RATING_AVERAGE+1;
 			this.lowerBody = LowerBody.KANGAROO;
 			this.skinTone = "tan";
-			this.hairColor = "auburn";
-			this.hairLength = 11;
+			this.hair.color = "auburn";
+			this.hair.length = 11;
 			initStrTouSpeInte(80, 45, 95, 50);
 			initLibSensCor(30, 45, 25);
 			var lust:Number = 30;

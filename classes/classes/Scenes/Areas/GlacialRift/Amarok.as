@@ -113,8 +113,8 @@ package classes.Scenes.Areas.GlacialRift
 			this.arms.type = Arms.WOLF;
 			this.skinTone = "black";
 			this.skinType = Skin.FUR;
-			this.hairColor = "black";
-			this.hairLength = 3;
+			this.hair.color = "black";
+			this.hair.length = 3;
 			this.face.type = Face.WOLF;
 			this.ears.type = Ears.WOLF;
 			this.eyes.type = Eyes.WOLF;

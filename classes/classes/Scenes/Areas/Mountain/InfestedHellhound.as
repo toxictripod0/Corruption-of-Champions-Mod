@@ -122,8 +122,8 @@ package classes.Scenes.Areas.Mountain
 			this.skinTone = "black";
 			this.skinType = Skin.FUR;
 			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.FUR];
-			this.hairColor = "red";
-			this.hairLength = 3;
+			this.hair.color = "red";
+			this.hair.length = 3;
 			initStrTouSpeInte(65, 60, 50, 1);
 			initLibSensCor(95, 20, 100);
 			this.weaponName = "claws";

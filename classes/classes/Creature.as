@@ -375,23 +375,7 @@ import mx.logging.ILogger;
 		public function get tallness():Number { return _tallness; }
 		public function set tallness(value:Number):void { _tallness = value; }
 
-		/*Hairtype
-		0- normal
-		1- feather
-		2- ghost
-		3- goo!
-		4- anemononeoenoeneo!*/
 		public var hair:Hair = new Hair();
-		public function get hairType():Number { return hair.type; }
-		public function set hairType(value:Number):void { hair.type = value; }
-		public function get hairColor():String { return hair.color; }
-		public function set hairColor(value:String):void { hair.color = value; }
-		public function get hairLength():Number { return hair.length; }
-		public function set hairLength(value:Number):void { hair.length = value; }
-		
-		public function get furColor():String { return skin.furColor; }
-		public function set furColor(value:String):void { skin.furColor = value; }
-
 		public var beard:Beard = new Beard();
 				
 		/*Skintype
@@ -408,6 +392,8 @@ import mx.logging.ILogger;
 		public function set skinDesc(value:String):void { skin.desc = value; }
 		public function get skinAdj():String { return skin.adj; }
 		public function set skinAdj(value:String):void { skin.adj = value; }
+		public function get furColor():String { return skin.furColor; }
+		public function set furColor(value:String):void { skin.furColor = value; }
 		
 		public var face:Face = new Face();
 		public var claws:Claws = new Claws();
@@ -662,7 +648,7 @@ import mx.logging.ILogger;
 			error += Utils.validateNonNegativeNumberFields(this,"Monster.validate",[
 				"balls", "ballSize", "cumMultiplier", "hoursSinceCum",
 				"tallness", "hipRating", "butt.rating", "lowerBody", "arms.type",
-				"skinType", "hairLength", "hairType",
+				"skinType", "hair.length", "hair.type",
 				"face.type", "ears.type", "tongueType", "eyes.type",
 				"str", "tou", "spe", "inte", "lib", "sens", "cor",
 				// Allow weaponAttack to be negative as a penalty to strength-calculated damage
@@ -699,8 +685,8 @@ import mx.logging.ILogger;
 				error += "No balls but ballSize = "+ballSize+". ";
 			}
 			// 4.2. hair
-			if (hairLength <= 0) {
-				if (hairType != Hair.NORMAL) error += "No hair but hairType = " + hairType + ". ";
+			if (hair.length <= 0) {
+				if (hair.type != Hair.NORMAL) error += "No hair but hairType = " + hair.type + ". ";
 			}
 			// 4.3. tail
 			if (tailType == Tail.NONE) {
@@ -2914,7 +2900,7 @@ import mx.logging.ILogger;
 		public function get hairOrFurColors():String
 		{
 			if (!isFluffy())
-				return hairColor;
+				return hair.color;
 
 			if (!underBody.skin.isFluffy() || ["no", furColor].indexOf(underBody.skin.furColor) != -1)
 				return furColor;

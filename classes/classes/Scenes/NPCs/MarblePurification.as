@@ -659,7 +659,7 @@ package classes.Scenes.NPCs {
 	 	outputText("Her gaze is not a pleasant one, to say the least.  \"<i>Aw, don’t be afraid,</i>\"  She coos in response to your expression.  \"<i>You’ve earned the right to drink my milk.  You should be happy!</i>\"  Still smiling, she reaches up and opens up her shirt.  The sight of her bountiful mammaries brings your need back to the top of your priorities, pushing fear out of the way.  You can’t help but lick your lips.  \"<i>Ooh, I like that face.  You’ll have to show it to me more often.  Now, come and drink your fill.</i>\"");
 	 	outputText("\n\nAs if the floodgates have been opened, you rush forward and latch onto one of her nipples, surprising both you and Clara.  It doesn’t take long for her to recover, and she pulls you into an embrace against her chest.  However, you hardly even care.  All that matters to you right now is the sweet honey that is flowing through your lips and down your throat.  There is nothing more wonderful in the world than the drug you’re gorging yourself on right now.  Not even Marble’s milk compares.");
 	 	outputText("\n\n\"<i>Such enthusiasm!</i>\" a distant voice calls out above you, \"<i>Not even Oophelia talking about the latest adventures of Mighty Moo and Bovine Lass can compare to this!</i>\"  You feel fingers run ");
-		if (player.hairLength > 0) outputText("through your " + player.hairDescript());
+		if (player.hair.length > 0) outputText("through your " + player.hairDescript());
 		else outputText("across your scalp");
 	 	outputText(", then they suddenly grip down tight.  \"<i>Let’s see if you can pick up the pace.  Drink faster, my love slave!</i>\"  You do as the voice asks, and loud moans of pleasure follow.");
 

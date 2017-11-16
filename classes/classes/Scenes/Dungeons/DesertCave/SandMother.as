@@ -130,8 +130,8 @@ package classes.Scenes.Dungeons.DesertCave
 			this.hipRating = Hips.RATING_CURVY;
 			this.butt.rating = Butt.RATING_LARGE;
 			this.skinTone = "bronzed";
-			this.hairColor = "platinum-blonde";
-			this.hairLength = 15;
+			this.hair.color = "platinum-blonde";
+			this.hair.length = 15;
 			initStrTouSpeInte(55, 55, 35, 45);
 			initLibSensCor(55, 40, 30);
 			this.weaponName = "fists";

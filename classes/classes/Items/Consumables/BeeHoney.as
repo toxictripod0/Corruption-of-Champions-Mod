@@ -105,10 +105,10 @@ package classes.Items.Consumables
 				else if (player.cor > 0) outputText(".");
 			}
 			//bee item corollary:
-			if (changes < changeLimit && player.hairType == 4 && Utils.rand(2) == 0) {
+			if (changes < changeLimit && player.hair.type == 4 && Utils.rand(2) == 0) {
 				//-insert anemone hair removal into them under whatever criteria you like, though hair removal should precede abdomen growth; here's some sample text:
 				outputText("\n\nAs you down the sticky-sweet honey, your head begins to feel heavier.  Reaching up, you notice your tentacles becoming soft and somewhat fibrous.  Pulling one down reveals that it feels and smells like the honey you just ate; you watch as it dissolves into many thin strands coated in the sugary syrup.  <b>Your hair is back to normal (well, once you wash the honey out)!</b>");
-				player.hairType = 0;
+				player.hair.type = 0;
 				changes++;
 			}
 			//(removes tentacle hair status, restarts hair growth if not prevented by reptile status)
@@ -122,17 +122,17 @@ package classes.Items.Consumables
 			//No idears
 			//Appearance Stuff
 			//Hair Color
-			if (changes < changeLimit && (player.hairColor != "shiny black" && player.hairColor != "black and yellow") && player.hairLength > 10 && Utils.rand(5) == 0) {
+			if (changes < changeLimit && (player.hair.color != "shiny black" && player.hair.color != "black and yellow") && player.hair.length > 10 && Utils.rand(5) == 0) {
 				outputText("\n\nYou feel your scalp tingling, and you grab your hair in a panic, pulling a strand forward.  ");
-				if (Utils.rand(9) == 0) player.hairColor = "black and yellow";
-				else player.hairColor = "shiny black";
-				outputText("Your hair is now " + player.hairColor + ", just like a bee-girl's!");
+				if (Utils.rand(9) == 0) player.hair.color = "black and yellow";
+				else player.hair.color = "shiny black";
+				outputText("Your hair is now " + player.hair.color + ", just like a bee-girl's!");
 				changes++;
 			}
 			//Hair Length
-			if (changes < changeLimit && player.hairLength < 25 && Utils.rand(3) == 0) {
+			if (changes < changeLimit && player.hair.length < 25 && Utils.rand(3) == 0) {
 				outputText("\n\nFeeling a bit off-balance, you discover your hair has lengthened, ");
-				player.hairLength += Utils.rand(4) + 1;
+				player.hair.length += Utils.rand(4) + 1;
 				outputText("becoming " + getGame().player.hairDescript() + ".");
 				changes++;
 			}

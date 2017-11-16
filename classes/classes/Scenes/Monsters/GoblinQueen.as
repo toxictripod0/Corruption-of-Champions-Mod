@@ -25,8 +25,8 @@ package classes.Scenes.Monsters
 			this.hipRating = Hips.RATING_AMPLE+2;
 			this.butt.rating = Butt.RATING_LARGE;
 			this.skinTone = "dark green";
-			this.hairColor = "dark green";
-			this.hairLength = 4;
+			this.hair.color = "dark green";
+			this.hair.length = 4;
 			initStrTouSpeInte(85, 65, 70, 100);
 			initLibSensCor(55, 35, 65);
 			this.weaponName = "sword";

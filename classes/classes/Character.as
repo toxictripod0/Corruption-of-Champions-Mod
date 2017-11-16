@@ -770,23 +770,23 @@ import classes.GlobalFlags.kFLAGS;
 		
 		public function growHair(amount:Number = .1):Boolean {
 			//Grow hair!
-			var tempHair:Number = hairLength;
-			if (hairType == Hair.BASILISK_SPINES) return false;
-			hairLength += amount;
-			if (hairType == Hair.BASILISK_PLUME && hairLength > 8) hairLength = 8;
-			if (hairLength > 0 && tempHair == 0) {
+			var tempHair:Number = hair.length;
+			if (hair.type == Hair.BASILISK_SPINES) return false;
+			hair.length += amount;
+			if (hair.type == Hair.BASILISK_PLUME && hair.length > 8) hair.length = 8;
+			if (hair.length > 0 && tempHair == 0) {
 				game.outputText("\n<b>You are no longer bald.  You now have " + hairDescript() + " coating your head.\n</b>");
 				return true;
 			}
 			else if (
-				(hairLength >= 1 && tempHair < 1) ||
-				(hairLength >= 3 && tempHair < 3) ||
-				(hairLength >= 6 && tempHair < 6) ||
-				(hairLength >= 10 && tempHair < 10) ||
-				(hairLength >= 16 && tempHair < 16) ||
-				(hairLength >= 26 && tempHair < 26) ||
-				(hairLength >= 40 && tempHair < 40) ||
-				(hairLength >= 40 && hairLength >= tallness && tempHair < tallness)
+				(hair.length >= 1 && tempHair < 1) ||
+				(hair.length >= 3 && tempHair < 3) ||
+				(hair.length >= 6 && tempHair < 6) ||
+				(hair.length >= 10 && tempHair < 10) ||
+				(hair.length >= 16 && tempHair < 16) ||
+				(hair.length >= 26 && tempHair < 26) ||
+				(hair.length >= 40 && tempHair < 40) ||
+				(hair.length >= 40 && hair.length >= tallness && tempHair < tallness)
 			) {
 				game.outputText("\n<b>Your hair's growth has reached a new threshold, giving you " + hairDescript() + ".\n</b>");
 				return true;

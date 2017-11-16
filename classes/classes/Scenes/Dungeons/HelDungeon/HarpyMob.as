@@ -96,8 +96,8 @@ package classes.Scenes.Dungeons.HelDungeon
 			this.skinTone = "red";
 			this.skinType = Skin.PLAIN;
 			this.skinDesc = "feathers";
-			this.hairColor = "black";
-			this.hairLength = 15;
+			this.hair.color = "black";
+			this.hair.length = 15;
 			initStrTouSpeInte(50, 50, 120, 40);
 			initLibSensCor(60, 45, 50);
 			this.weaponName = "claw";

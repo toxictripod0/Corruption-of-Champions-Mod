@@ -75,8 +75,8 @@ package classes.Scenes.Dungeons.HelDungeon
 			this.hipRating = Hips.RATING_AMPLE+2;
 			this.butt.rating = Butt.RATING_LARGE;
 			this.skinTone = "red";
-			this.hairColor = "black";
-			this.hairLength = 15;
+			this.hair.color = "black";
+			this.hair.length = 15;
 			initStrTouSpeInte(90, 60, 120, 40);
 			initLibSensCor(40, 45, 50);
 			this.weaponName = "poker";

@@ -42,7 +42,7 @@ package classes.Scenes.Areas.Mountain
 
 		override public function get long():String
 		{
-			return "An angry-looking minotaur looms over you.  Covered in shaggy " + hairColor + " fur, the beast is an imposing sight.  Wearing little but an obviously distended loincloth, he is clearly already plotting his method of punishment.  Like most minotaurs he has hooves, a cow-like tail and face, prominent horns, and impressive musculature. "+
+			return "An angry-looking minotaur looms over you.  Covered in shaggy " + hair.color + " fur, the beast is an imposing sight.  Wearing little but an obviously distended loincloth, he is clearly already plotting his method of punishment.  Like most minotaurs he has hooves, a cow-like tail and face, prominent horns, and impressive musculature. "+
 					(ballSize > 4?("  Barely visible below the tattered shreds of loincloth are " + Appearance.ballsDescription(true, true, this) + ", swollen with the minotaur's long pent-up need."):"") +
 					(hasAxe?"<b>This minotaur seems to have found a deadly looking axe somewhere!</b>":"");
 		}
@@ -74,8 +74,8 @@ package classes.Scenes.Areas.Mountain
 			this.skinTone = furColor;
 			this.skinType = Skin.FUR;
 			this.skinDesc = "shaggy fur";
-			this.hairColor = furColor;
-			this.hairLength = 3;
+			this.hair.color = furColor;
+			this.hair.length = 3;
 			initStrTouSpeInte(hasAxe ? 75 : 50, 60, 30, 20);
 			initLibSensCor(40 + this.ballSize * 2, 15 + this.ballSize * 2, 35);
 			this.face.type = Face.COW_MINOTAUR;

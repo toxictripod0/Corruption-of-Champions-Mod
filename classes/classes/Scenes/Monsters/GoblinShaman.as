@@ -138,8 +138,8 @@ package classes.Scenes.Monsters
 			this.hipRating = Hips.RATING_AMPLE+2;
 			this.butt.rating = Butt.RATING_LARGE;
 			this.skinTone = "dark green";
-			this.hairColor = "indigo";
-			this.hairLength = 4;
+			this.hair.color = "indigo";
+			this.hair.length = 4;
 			initStrTouSpeInte(75, 50, 70, 87);
 			initLibSensCor(45, 45, 60);
 			this.weaponName = "wizard staff";

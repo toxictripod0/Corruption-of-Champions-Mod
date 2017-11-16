@@ -153,7 +153,7 @@ package classes.Scenes.Areas.Forest
 		private function kitSuneTeases():void
 		{
 			var select:int = rand(3);
-			if (hairColor == "red" && rand(2) == 0) select = 3;
+			if (hair.color == "red" && rand(2) == 0) select = 3;
 			if (select == 0) outputText("You rub your eyes, suddenly seeing triple as you find yourself in the midst of a crowd of kitsune doppelgangers.  They run their hands all over you, teasing and doting on you as their tails caress every inch of your body.  Taken by surprise, you forget to fight back until they have already dispersed, blending back into a single fox-woman.");
 			else if (select == 1) outputText("Bending forward, the kitsune runs her hands down over her breasts, jiggling them enticingly and squeezing them together.  Hooking a finger in her robes, she slides it down, tugging them aside until her nipples are just barely covered, and with a teasing smirk, pulls them back up, leaving you wanting.");
 			else if (select == 2) outputText("Turning her back to you, the kitsune fans out her tails, peering back as she lifts the hem of her robe to expose her plump hindquarters.  Her tails continually shift and twist, blocking your view, but it only serves to make you want it even <i>more</i>, licking your lips in anticipation.");
@@ -201,10 +201,10 @@ package classes.Scenes.Areas.Forest
 						"blonde": "long flaxen",
 						"black": "lustrous, ass-length black",
 						"red": "unkempt, shoulder-length reddish"
-					}[hairColor]) +
+					}[hair.color]) +
 							" hair.  She appears mostly human, except for a pair of large, furry ears poking through her hair and six luxurious silky tails swaying in the air behind her.  Her robes are revealing but comfortable-looking, hugging her voluptuous curves and exposing large swaths of tattooed skin.  A layer of ornate tattoos covers patches of her exposed flesh, accentuating her feminine curves nicely, and each movement brings a pleasant jiggle from her plump backside and large breasts.";
 			// this.plural = false;
-			if (hairColor=="red" && game.flags[kFLAGS.redheadIsFuta] == 1) {
+			if (hair.color=="red" && game.flags[kFLAGS.redheadIsFuta] == 1) {
 				this.createCock(rand(13) + 14,1.5 + rand(20)/2,CockTypesEnum.HUMAN);
 				this.balls = 2;
 				this.ballSize = 2 + rand(13);
@@ -221,8 +221,8 @@ package classes.Scenes.Areas.Forest
 			this.hipRating = Hips.RATING_AMPLE;
 			this.butt.rating = Butt.RATING_AVERAGE+1;
 			this.skinTone = "pale";
-			this.hairColor = hairColor;
-			this.hairLength = 13 + rand(20);
+			this.hair.color = hair.color;
+			this.hair.length = 13 + rand(20);
 			initStrTouSpeInte(35, 45, 90, 95);
 			initLibSensCor(60, 65, 45);
 			this.weaponName = "claws";

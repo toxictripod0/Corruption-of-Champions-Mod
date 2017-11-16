@@ -283,8 +283,8 @@ package classes.Scenes.NPCs
 			this.skinTone = "pink";
 			this.skinType = Skin.PLAIN;
 			this.skinDesc = "feathers";
-			this.hairColor = "pink";
-			this.hairLength = 16;
+			this.hair.color = "pink";
+			this.hair.length = 16;
 			initStrTouSpeInte(55, 40, 110, 60);
 			initLibSensCor(60, 50, 60);
 			this.weaponName = "talons";

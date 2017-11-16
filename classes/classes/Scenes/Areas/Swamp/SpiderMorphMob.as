@@ -119,8 +119,8 @@ package classes.Scenes.Areas.Swamp
 			this.hipRating = Hips.RATING_AMPLE+2;
 			this.butt.rating = Butt.RATING_LARGE;
 			this.skinTone = "red";
-			this.hairColor = "black";
-			this.hairLength = 15;
+			this.hair.color = "black";
+			this.hair.length = 15;
 			initStrTouSpeInte(60, 50, 99, 99);
 			initLibSensCor(35, 35, 20);
 			this.weaponName = "claws";

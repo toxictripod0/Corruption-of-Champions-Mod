@@ -61,16 +61,16 @@ package classes.Items.Consumables
 				return false;
 			}
 			//Goopy hair
-			if (player.hairType !== 3) {
-				player.hairType = 3;
+			if (player.hair.type !== 3) {
+				player.hair.type = 3;
 				//if bald
-				if (player.hairLength <= 0) {
+				if (player.hair.length <= 0) {
 					outputText("\n\nYour head buzzes pleasantly, feeling suddenly hot and wet.  You instinctively reach up to feel the source of your wetness, and discover you've grown some kind of gooey hair.  From time to time it drips, running down your back to the crack of your " + player.buttDescript() + ".");
-					player.hairLength = 5;
+					player.hair.length = 5;
 				}
 				else {
 					//if hair isnt rubbery or latexy
-					if (player.hairColor.indexOf("rubbery") === -1 && player.hairColor.indexOf("latex-textured") === -1) {
+					if (player.hair.color.indexOf("rubbery") === -1 && player.hair.color.indexOf("latex-textured") === -1) {
 						outputText("\n\nYour head buzzes pleasantly, feeling suddenly hot and wet.  You instinctively reach up to feel the source of your wetness, and discover your hair has become a slippery, gooey mess.  From time to time it drips, running down your back to the crack of your " + player.buttDescript() + ".");
 					}
 					//Latexy stuff
@@ -78,21 +78,21 @@ package classes.Items.Consumables
 						outputText("\n\nYour oddly inorganic hair shifts, becoming partly molten as rivulets of liquid material roll down your back.  How strange.");
 					}
 				}
-				if (player.hairColor !== "green" && player.hairColor !== "purple" && player.hairColor !== "blue" && player.hairColor !== "cerulean" && player.hairColor !== "emerald") {
+				if (player.hair.color !== "green" && player.hair.color !== "purple" && player.hair.color !== "blue" && player.hair.color !== "cerulean" && player.hair.color !== "emerald") {
 					outputText("  Stranger still, the hue of your semi-liquid hair changes to ");
 					var blah:int = rand(10);
-					if (blah <= 2) player.hairColor = "green";
-					else if (blah <= 4) player.hairColor = "purple";
-					else if (blah <= 6) player.hairColor = "blue";
-					else if (blah <= 8) player.hairColor = "cerulean";
-					else player.hairColor = "emerald";
-					outputText(player.hairColor + ".");
+					if (blah <= 2) player.hair.color = "green";
+					else if (blah <= 4) player.hair.color = "purple";
+					else if (blah <= 6) player.hair.color = "blue";
+					else if (blah <= 8) player.hair.color = "cerulean";
+					else player.hair.color = "emerald";
+					outputText(player.hair.color + ".");
 				}
 				dynStats("lus", 10);
 				return false;
 			}
 			//1.Goopy skin
-			if (player.hairType === 3 && (player.skinDesc !== "skin" || player.skinAdj !== "slimy")) {
+			if (player.hair.type === 3 && (player.skinDesc !== "skin" || player.skinAdj !== "slimy")) {
 				if (player.hasPlainSkin()) outputText("\n\nYou sigh, feeling your " + player.armorName + " sink into you as your skin becomes less solid, gooey even.  You realize your entire body has become semi-solid and partly liquid!");
 				else if (player.hasFur()) outputText("\n\nYou sigh, suddenly feeling your fur become hot and wet.  You look down as your " + player.armorName + " sinks partway into you.  With a start you realize your fur has melted away, melding into the slime-like coating that now serves as your skin.  You've become partly liquid and incredibly gooey!");
 				else if (player.hasScales()) outputText("\n\nYou sigh, feeling slippery wetness over your scales.  You reach to scratch it and come away with a slippery wet coating.  Your scales have transformed into a slimy goop!  Looking closer, you realize your entire body has become far more liquid in nature, and is semi-solid.  Your " + player.armorName + " has even sunk partway into you.");

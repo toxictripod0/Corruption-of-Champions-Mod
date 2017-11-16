@@ -154,8 +154,8 @@ package classes.Scenes.Areas.Plains
 			this.butt.rating = Butt.RATING_AVERAGE+1;
 			this.lowerBody = LowerBody.HOOFED;
 			this.skinTone = "tan";
-			this.hairColor = randomChoice("black","brown");
-			this.hairLength = 3+rand(20);
+			this.hair.color = randomChoice("black","brown");
+			this.hair.length = 3+rand(20);
 			this.face.type = Face.COW_MINOTAUR;
 			initStrTouSpeInte(75, 70, 110, 70);
 			initLibSensCor(60, 35, 45);

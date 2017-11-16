@@ -177,8 +177,8 @@ package classes.Scenes.Areas.HighMountains
 			this.skinTone = "red";
 			this.skinType = Skin.FUR;
 			this.skinDesc = "shaggy fur";
-			this.hairColor = randomChoice("black","brown");
-			this.hairLength = 3;
+			this.hair.color = randomChoice("black","brown");
+			this.hair.length = 3;
 			this.face.type = Face.COW_MINOTAUR;
 			initStrTouSpeInte(65, 60, 30, 20);
 			initLibSensCor(40, 15, 35);

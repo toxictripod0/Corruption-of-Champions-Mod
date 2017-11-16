@@ -1244,9 +1244,9 @@ use namespace kGAMECLASS;
 		public function beeScore():Number
 		{
 			var beeCounter:Number = 0;
-			if (hairColor == "shiny black")
+			if (hair.color == "shiny black")
 				beeCounter++;
-			if (hairColor == "black and yellow")
+			if (hair.color == "black and yellow")
 				beeCounter += 2;
 			if (antennae.type == Antennae.BEE)
 			{
@@ -1621,7 +1621,7 @@ use namespace kGAMECLASS;
 		public function gooScore():Number
 		{
 			var gooCounter:Number = 0;
-			if (hairType == Hair.GOO)
+			if (hair.type == Hair.GOO)
 				gooCounter++;
 			if (skinAdj == "slimy")
 				gooCounter++;
@@ -1681,7 +1681,7 @@ use namespace kGAMECLASS;
 			var harpy:Number = 0;
 			if (arms.type == Arms.HARPY)
 				harpy++;
-			if (hairType == Hair.FEATHER)
+			if (hair.type == Hair.FEATHER)
 				harpy++;
 			if (wingType == Wings.FEATHERED_LARGE)
 				harpy++;
@@ -1729,7 +1729,7 @@ use namespace kGAMECLASS;
 				sheepCounter++;
 			if (lowerBody == LowerBody.CLOVEN_HOOFED && legCount == 2)
 				sheepCounter++;
-			if (hairType == Hair.WOOL)
+			if (hair.type == Hair.WOOL)
 				sheepCounter++;
 			if (hasWool())
 				sheepCounter++;
@@ -2017,33 +2017,15 @@ use namespace kGAMECLASS;
 			else 
 				bimboCounter += (femininity - 50.0) / 30.0;
 			
-			if (hairColor == "platinum blonde") 
+			if (hair.color == "platinum blonde") 
 				bimboCounter++;
-			if (hairLength > 10) 
+			if (hair.length > 10) 
 				bimboCounter++;
 			if (inte < 20) 
 				bimboCounter++;
 			if (bimboCounter < 0)  bimboCounter = 0;
 			if (bimboCounter > 20) bimboCounter = 20;
 
-			//if (biggestTitSize() > 5) 
-				//bimboCounter++;
-			//if (biggestTitSize() > 10) 
-				//bimboCounter++;
-			//if (hipRating > 8) 
-				//bimboCounter++;
-			//if (butt.rating > 8)
-				//bimboCounter++;
-			//if (tone < 15) 
-				//bimboCounter++;
-			//if (hairColor == "platinum blonde") 
-				//bimboCounter++;
-			//if (hairLength > 10) 
-				//bimboCounter++;
-			//if (inte < 20) 
-				//bimboCounter++;
-			//if (bimboCounter < 0) bimboCounter = 0;
-			//
 			return bimboCounter;
 		}
 		

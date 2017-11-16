@@ -90,8 +90,8 @@ package classes.Scenes.Monsters
 			this.hipRating = Hips.RATING_BOYISH;
 			this.butt.rating = Butt.RATING_TIGHT;
 			this.skinTone = "red";
-			this.hairColor = "black";
-			this.hairLength = 5;
+			this.hair.color = "black";
+			this.hair.length = 5;
 			initStrTouSpeInte(20, 10, 25, 12);
 			initLibSensCor(45, 45, 100);
 			this.weaponName = "claws";

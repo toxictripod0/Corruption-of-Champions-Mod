@@ -229,8 +229,8 @@ public function startUrtaQuest():void {
 	model.player = player;
 	player.short = "Urta";
 	player.tallness = 71;
-	player.hairColor = "gray";
-	player.hairLength = 12;
+	player.hair.color = "gray";
+	player.hair.length = 12;
 	player.skinType = Skin.FUR;
 	player.skinAdj = "silky";
 	player.skinDesc = "fur";

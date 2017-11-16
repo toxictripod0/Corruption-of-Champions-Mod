@@ -133,8 +133,8 @@ package classes.Scenes.Areas.Plains
 			this.skinTone = "crimson";
 			this.skinType = 0;
 			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.FUR];
-			this.hairColor = "black";
-			this.hairLength = 8;
+			this.hair.color = "black";
+			this.hair.length = 8;
 			initStrTouSpeInte(100, 100, 80, 70);
 			initLibSensCor(15, 10, 55);
 			this.weaponName = "dual scimitars";

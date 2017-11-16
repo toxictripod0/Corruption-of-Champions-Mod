@@ -158,8 +158,8 @@ package classes.Scenes.Areas.GlacialRift
 			this.skinTone = "light";
 			this.skinType = Skin.PLAIN;
 			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.FUR];
-			this.hairColor = "white";
-			this.hairLength = 12;
+			this.hair.color = "white";
+			this.hair.length = 12;
 			initStrTouSpeInte(85, 70, 80, 60);
 			initLibSensCor(40, 50, 15);
 			this.weaponName = "spear and shield";

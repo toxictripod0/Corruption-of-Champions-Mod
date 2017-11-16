@@ -118,9 +118,9 @@ package classes.Scenes.NPCs
 			this.skinType = Skin.GOO;
 			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.GOO];
 			this.skinAdj = "goopey";
-			this.hairColor = "black";
-			this.hairLength = 15;
-			this.hairType = Hair.GOO;
+			this.hair.color = "black";
+			this.hair.length = 15;
+			this.hair.type = Hair.GOO;
 			initStrTouSpeInte(60, 50, 50, 40);
 			initLibSensCor(60, 35, 50);
 			this.weaponName = "goo sword";

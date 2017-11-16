@@ -510,12 +510,12 @@ package classes.Scenes.Areas.Desert {
 
 			this.skinTone = skinColour[0];
 			this.skinType = rand(5);
-			this.hairLength = rand(25);
-			if (this.hairLength > 0) {
-				this.hairColor = hairColours[0];
-				this.hairType = rand(7) + 1;
+			this.hair.length = rand(25);
+			if (this.hair.length > 0) {
+				this.hair.color = hairColours[0];
+				this.hair.type = rand(7) + 1;
 			} else {
-				this.hairType = Hair.NORMAL;
+				this.hair.type = Hair.NORMAL;
 			}
 			this.face.type = rand(23) + 1;
 			this.ears.type = rand(19) + 1;

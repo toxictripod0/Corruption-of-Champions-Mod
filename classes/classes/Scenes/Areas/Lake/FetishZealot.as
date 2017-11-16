@@ -159,8 +159,8 @@ package classes.Scenes.Areas.Lake
 			this.hipRating = Hips.RATING_BOYISH+1;
 			this.butt.rating = Butt.RATING_TIGHT;
 			this.skinTone = "tan";
-			this.hairColor = "black";
-			this.hairLength = 4;
+			this.hair.color = "black";
+			this.hair.length = 4;
 			initStrTouSpeInte(35, 35, 30, 1);
 			initLibSensCor(75, 80, 90);
 			this.weaponName = "wavy dagger";

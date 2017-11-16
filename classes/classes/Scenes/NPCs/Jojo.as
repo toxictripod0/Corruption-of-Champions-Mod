@@ -80,8 +80,8 @@ if (lust >= maxLust()) {
 			this.skinTone = "white";
 			this.skinType = Skin.FUR;
 			this.skinDesc = "fur";
-			this.hairColor = "white";
-			this.hairLength = 2;
+			this.hair.color = "white";
+			this.hair.length = 2;
 			initStrTouSpeInte(35, 40, 65, 55);
 			initLibSensCor(15, 40, flags[kFLAGS.JOJO_STATUS] * 15);
 			this.weaponName = "paw";

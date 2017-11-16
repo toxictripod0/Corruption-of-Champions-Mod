@@ -1487,7 +1487,7 @@ public class CombatAbilities extends BaseContent
 			menu();
 			var button:int = 0;
 			//Anemone STINGZ!
-			if (player.hairType == 4) {
+			if (player.hair.type == 4) {
 				addButton(button++, "AnemoneSting", anemoneSting).hint("Attempt to strike an opponent with the stinging tentacles growing from your scalp. Reduces enemy speed and increases enemy lust. \n\nNo Fatigue Cost", "Anemone Sting");
 			}
 			//Bitez
@@ -1565,7 +1565,7 @@ public class CombatAbilities extends BaseContent
 			//Decreased by 1% for every inch of hair the PC has
 			var prob:Number = 70;
 			if (monster.spe > player.spe) prob -= monster.spe - player.spe;
-			prob += player.hairLength;
+			prob += player.hair.length;
 			if (prob < rand(100)) {
 				//-miss a sting
 				if (monster.plural) outputText("You rush " + monster.a + monster.short + ", whipping your hair around to catch them with your tentacles, but " + monster.pronoun1 + " easily dodge.  Oy, you hope you didn't just give yourself whiplash.");
@@ -1582,9 +1582,9 @@ public class CombatAbilities extends BaseContent
 				//Each sting does 5-10 lust damage and 2.5-5 speed damage
 				var damage:Number = 0;
 				temp = 1 + rand(2);
-				if (player.hairLength >= 12) temp += 1 + rand(2);
-				if (player.hairLength >= 24) temp += 1 + rand(2);
-				if (player.hairLength >= 36) temp += 1;
+				if (player.hair.length >= 12) temp += 1 + rand(2);
+				if (player.hair.length >= 24) temp += 1 + rand(2);
+				if (player.hair.length >= 36) temp += 1;
 				while(temp > 0) {
 					temp--;
 					damage += 5 + rand(6);

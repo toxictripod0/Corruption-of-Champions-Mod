@@ -48,10 +48,10 @@ package classes.Items.Consumables
 				if (player.tou100 > 90) dynStats("tou", -2);
 			}
 			//antianemone corollary:
-			if (changes < changeLimit && player.hairType === 4 && rand(2) === 0) {
+			if (changes < changeLimit && player.hair.type === 4 && rand(2) === 0) {
 				//-insert anemone hair removal into them under whatever criteria you like, though hair removal should precede abdomen growth; here's some sample text:
 				outputText("\n\nAs you down the potent ale, your head begins to feel heavier - and not just from the alcohol!  Reaching up, you notice your tentacles becoming soft and somewhat fibrous.  Pulling one down reveals that it feels smooth, silky, and fibrous; you watch as it dissolves into many thin, hair-like strands.  <b>Your hair is now back to normal!</b>");
-				player.hairType = Hair.NORMAL;
+				player.hair.type = Hair.NORMAL;
 				changes++;
 			}
 			//Shrink

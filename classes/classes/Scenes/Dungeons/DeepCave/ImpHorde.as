@@ -211,8 +211,8 @@ package classes.Scenes.Dungeons.DeepCave
 			this.hipRating = Hips.RATING_SLENDER;
 			this.butt.rating = Butt.RATING_TIGHT;
 			this.skinTone = "red";
-			this.hairColor = "black";
-			this.hairLength = 1;
+			this.hair.color = "black";
+			this.hair.length = 1;
 			initStrTouSpeInte(20, 10, 25, 12);
 			initLibSensCor(45, 45, 100);
 			this.weaponName = "fists";

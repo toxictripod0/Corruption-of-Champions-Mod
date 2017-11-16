@@ -35,7 +35,7 @@ package classes
 				// Note, that earrings count as piercings, meaning, that head accessories and earrings are to be handled seperately
 				var hairPinText:String = "";
 				hairPinText += "  <b>You have a hair-pin with a single red feather plume";
-				if (player.hairLength > 0)
+				if (player.hair.length > 0)
 					hairPinText += " in your [hair].</b>";
 				else
 					hairPinText += " on your head.</b>";
@@ -298,7 +298,7 @@ package classes
 			//Hair
 			//Hair
 			//if bald
-			if (player.hairLength == 0) 
+			if (player.hair.length == 0) 
 			{
 				if (player.hasFur()) 
 					outputText("  You have no hair, only a thin layer of fur atop of your head.  ");
@@ -613,7 +613,7 @@ package classes
 			else if (player.arms.type == Arms.PREDATOR)
 				outputText("  Your arms are covered by [skinFurScales] and your fingernails are now [claws].");
 			else if (player.arms.type == Arms.COCKATRICE) {
-				outputText("  Your arms are covered in " + (player.hasCockatriceSkin() ? player.furColor : player.hairColor) + " feathers from the"
+				outputText("  Your arms are covered in " + (player.hasCockatriceSkin() ? player.furColor : player.hair.color) + " feathers from the"
 				          +" shoulder down to the elbow where they stop in a fluffy cuff. A handful of long feathers grow from your elbow in the form"
 				          +" of vestigial wings, and while they may not let you fly, they certainly help you jump. Your lower arm is coated in"
 				          +" leathery [skinTone] scales and your fingertips terminate in deadly looking avian talons.");
@@ -992,7 +992,7 @@ package classes
 			else if (player.lowerBody == LowerBody.COCKATRICE) {
 				outputText(" [legCountTextUC] digitigrade legs grow down from your [hips], ending in clawed feet."
 				          +" There are three long toes on the front, and a small hind-claw on the back."
-				          +" A layer of " + (player.hasCockatriceSkin() ? player.furColor : player.hairColor) + " feathers covers your legs from the"
+				          +" A layer of " + (player.hasCockatriceSkin() ? player.furColor : player.hair.color) + " feathers covers your legs from the"
 				          +" hip to the knee, ending in a puffy cuff.");
 			}
 			if (player.findPerk(PerkLib.Incorporeality) >= 0)

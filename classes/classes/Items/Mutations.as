@@ -580,7 +580,7 @@ package classes.Items
 					if (player.findPerk(PerkLib.MarblesMilk) >= 0) outputText("All you know is that there is a scent on the wind, it is time to hunt, and at the end of the day you need to come home for your milk.");
 					else outputText("All you know is that there is a scent on the wind, and it is time to hunt.");
 				}
-				if (temp == 1) outputText("\n\nYou devour the sweet pepper, carefully licking your fingers for all the succulent juices of the fruit, and are about to go on your way when suddenly a tightness begins to build in your chest and stomach, horrid cramps working their way first through your chest, then slowly flowing out to your extremities, the feeling soon joined by horrible, blood-curdling cracks as your bones begin to reform, twisting and shifting, your mind exploding with pain. You fall to the ground, reaching one hand forward. No... A paw, you realize in horror, as you try to push yourself back up. You watch in horror, looking down your foreleg as thicker fur erupts from your skin, a " + player.hairColor + " coat slowly creeping from your bare flesh to cover your body. Suddenly, you feel yourself slipping away, as if into a dream, your mind warping and twisting, your body finally settling into its new form. With one last crack of bone you let out a yelp, kicking free of the cloth that binds you, wresting yourself from its grasp and fleeing into the now setting sun, eager to find prey to dine on tonight.");
+				if (temp == 1) outputText("\n\nYou devour the sweet pepper, carefully licking your fingers for all the succulent juices of the fruit, and are about to go on your way when suddenly a tightness begins to build in your chest and stomach, horrid cramps working their way first through your chest, then slowly flowing out to your extremities, the feeling soon joined by horrible, blood-curdling cracks as your bones begin to reform, twisting and shifting, your mind exploding with pain. You fall to the ground, reaching one hand forward. No... A paw, you realize in horror, as you try to push yourself back up. You watch in horror, looking down your foreleg as thicker fur erupts from your skin, a " + player.hair.color + " coat slowly creeping from your bare flesh to cover your body. Suddenly, you feel yourself slipping away, as if into a dream, your mind warping and twisting, your body finally settling into its new form. With one last crack of bone you let out a yelp, kicking free of the cloth that binds you, wresting yourself from its grasp and fleeing into the now setting sun, eager to find prey to dine on tonight.");
 				getGame().gameOver();
 				return;
 			}
@@ -1130,12 +1130,12 @@ package classes.Items
 			// break things, so it'll be fixed below ;-)
 			if (type == 3 && !player.hasFur() && player.furColor == "midnight black") player.furColor = "no";
 
-			if (type == 3 && (player.hairColor != "midnight black" || player.furColor != "midnight black")) {
+			if (type == 3 && (player.hair.color != "midnight black" || player.furColor != "midnight black")) {
 				var furHairText:String;
 				if (!player.hasFur())
 					outputText("<b>\n\nYour " + player.skinDesc + " itches like crazy as fur grows out from it, coating your body.  It's incredibly dense and black as the middle of a moonless night.</b>");
 				else {
-					if (player.hairColor != "midnight black" && player.furColor != "midnight black")
+					if (player.hair.color != "midnight black" && player.furColor != "midnight black")
 						furHairText = "fur and hair";
 					else 
 						furHairText = (player.furColor != "midnight black") ? "fur" : "hair";
@@ -1144,8 +1144,8 @@ package classes.Items
 				player.skinType = Skin.FUR;
 				player.skinAdj = "thick";
 				player.skinDesc = "fur";
-				player.hairColor = "midnight black";
-				player.furColor = player.hairColor;
+				player.hair.color = "midnight black";
+				player.furColor = player.hair.color;
 				player.underBody.restore(); // Restore the underbody for now
 			}
 			//Become furred - requires paws and tail
@@ -1612,18 +1612,18 @@ package classes.Items
 				//chance of hair change
 				else {
 					//If hair isn't rubbery/latex yet
-					if (player.hairColor.indexOf("rubbery") == -1 && player.hairColor.indexOf("latex-textured") && player.hairLength != 0) {
+					if (player.hair.color.indexOf("rubbery") == -1 && player.hair.color.indexOf("latex-textured") && player.hair.length != 0) {
 						//if skin is already one...
 						if (player.skinDesc == "skin" && player.skinAdj == "rubber") {
 							outputText("\n\nYour scalp tingles and your " + player.hairDescript() + " thickens, the strands merging into ");
 							outputText(" thick rubbery hair.");
-							player.hairColor = "rubbery " + player.hairColor;
+							player.hair.color = "rubbery " + player.hair.color;
 							dynStats("cor", 2);
 						}
 						if (player.skinDesc == "skin" && player.skinAdj == "latex") {
 							outputText("\n\nYour scalp tingles and your " + player.hairDescript() + " thickens, the strands merging into ");
 							outputText(" shiny latex hair.");
-							player.hairColor = "latex-textured " + player.hairColor;
+							player.hair.color = "latex-textured " + player.hair.color;
 							dynStats("cor", 2);
 						}
 					}
@@ -1667,18 +1667,18 @@ package classes.Items
 				//chance of hair change
 				else {
 					//If hair isn't rubbery/latex yet
-					if (player.hairColor.indexOf("rubbery") == -1 && player.hairColor.indexOf("latex-textured") && player.hairLength != 0) {
+					if (player.hair.color.indexOf("rubbery") == -1 && player.hair.color.indexOf("latex-textured") && player.hair.length != 0) {
 						//if skin is already one...
 						if (player.skinAdj == "rubber" && player.skinDesc == "skin") {
 							outputText("\n\nYour scalp tingles and your " + player.hairDescript() + " thickens, the strands merging into ");
 							outputText(" thick rubbery hair.");
-							player.hairColor = "rubbery " + player.hairColor;
+							player.hair.color = "rubbery " + player.hair.color;
 							dynStats("cor", 2);
 						}
 						if (player.skinAdj == "latex" && player.skinDesc == "skin") {
 							outputText("\n\nYour scalp tingles and your " + player.hairDescript() + " thickens, the strands merging into ");
 							outputText(" shiny latex hair.");
-							player.hairColor = "latex-textured " + player.hairColor;
+							player.hair.color = "latex-textured " + player.hair.color;
 							dynStats("cor", 2);
 						}
 					}
@@ -2028,8 +2028,8 @@ package classes.Items
 				player.skinDesc = "fur";
 				player.skinAdj = "";
 				player.skinType = Skin.FUR;
-				player.hairColor = "black and white spotted";
-				player.furColor = player.hairColor;
+				player.hair.color = "black and white spotted";
+				player.furColor = player.hair.color;
 				player.underBody.restore(); // Restore the underbody for now
 			}
 			//if enhanced to probova give a shitty cow face
@@ -2283,10 +2283,10 @@ package classes.Items
 			if (player.gills.type != Gills.FISH && player.tailType == Tail.SHARK && player.face.type == Face.SHARK_TEETH && changes < changeLimit && rand(3) == 0)
 				updateGills(Gills.FISH);
 			//Hair
-			if (player.hairColor != "silver" && rand(4) == 0 && changes < changeLimit) {
+			if (player.hair.color != "silver" && rand(4) == 0 && changes < changeLimit) {
 				changes++;
 				outputText("\n\nYou feel a tingling in your scalp and reach up to your head to investigate. To your surprise, your hair color has changed into a silvery color, just like that of a shark girl!");
-				player.hairColor = "silver";
+				player.hair.color = "silver";
 			}
 			//Skin
 			if (((player.skinTone != "rough gray" && player.skinTone != "orange and black striped") || !player.hasPlainSkin()) && rand(7) == 0 && changes < changeLimit) {
@@ -2713,10 +2713,10 @@ package classes.Items
 				dynStats("tou", -1);
 			}
 			//antianemone corollary:
-			if (changes < changeLimit && player.hairType == 4 && rand(2) == 0) {
+			if (changes < changeLimit && player.hair.type == 4 && rand(2) == 0) {
 				//-insert anemone hair removal into them under whatever criteria you like, though hair removal should precede abdomen growth; here's some sample text:
 				outputText("\n\nAs you down the seed, your head begins to feel heavier.  Reaching up, you notice your tentacles becoming soft and somewhat fibrous.  Pulling one down reveals that it feels soft and fluffy, almost feathery; you watch as it dissolves into many thin, feathery strands.  <b>Your hair is now like that of a harpy!</b>");
-				player.hairType = Hair.FEATHER;
+				player.hair.type = Hair.FEATHER;
 				changes++;
 			}
 			//-Strength increase to 70
@@ -2858,7 +2858,7 @@ package classes.Items
 			if ((player.skinTone != "tan" && player.skinTone != "olive" && player.skinTone != "dark" && player.skinTone != "light") && changes < changeLimit && rand(5) == 0) {
 				changes++;
 				outputText("\n\nIt takes a while for you to notice, but <b>");
-				if (player.hasFur()) outputText("the skin under your " + player.hairColor + " " + player.skinDesc);
+				if (player.hasFur()) outputText("the skin under your " + player.hair.color + " " + player.skinDesc);
 				else outputText("your " + player.skinDesc);
 				outputText(" has changed to become ");
 				temp = rand(4);
@@ -2925,7 +2925,7 @@ package classes.Items
 				player.legCount = 2;
 				changes++;
 				//(cont)
-				outputText("While humanoid in shape, they have two large, taloned toes on the front and a single claw protruding from the heel. The entire ensemble is coated in " + player.hairColor + " feathers from ankle to hip, reminding you of the bird-women of the mountains. <b>You now have harpy legs!</b>");
+				outputText("While humanoid in shape, they have two large, taloned toes on the front and a single claw protruding from the heel. The entire ensemble is coated in " + player.hair.color + " feathers from ankle to hip, reminding you of the bird-women of the mountains. <b>You now have harpy legs!</b>");
 			}
 			//-Feathery Tail
 			if (player.tailType != Tail.HARPY && changes < changeLimit && (type == 1 || player.wingType == Wings.FEATHERED_LARGE) && rand(4) == 0) {
@@ -2941,7 +2941,7 @@ package classes.Items
 				outputText("\n\nPain lances through your back, the muscles knotting oddly and pressing up to bulge your " + player.skinDesc + ". It hurts, oh gods does it hurt, but you can't get a good angle to feel at the source of your agony. A loud crack splits the air, and then your body is forcing a pair of narrow limbs through a gap in your " + player.armorName + ". Blood pumps through the new appendages, easing the pain as they fill out and grow. Tentatively, you find yourself flexing muscles you didn't know you had, and");
 				player.wings.setProps({
 					type: Wings.FEATHERED_LARGE,
-					color: player.hasFur() ? player.furColor : player.hairColor
+					color: player.hasFur() ? player.furColor : player.hair.color
 				});
 				outputText(" <b>you're able to curve the new growths far enough around to behold your brand new, " + player.wings.color + " wings.</b>");
 				changes++;
@@ -2960,16 +2960,16 @@ package classes.Items
 				changes++;
 			}
 			//-Feathery Arms
-			if (player.arms.type != Arms.HARPY && changes < changeLimit && (type == 1 || player.hairType == 1) && rand(4) == 0) {
+			if (player.arms.type != Arms.HARPY && changes < changeLimit && (type == 1 || player.hair.type == 1) && rand(4) == 0) {
 				outputText("\n\nYou smile impishly as you lick the last bits of the nut from your teeth, but when you go to wipe your mouth, instead of the usual texture of your " + player.skinDesc + " on your lips, you feel feathers! You look on in horror while more of the avian plumage sprouts from your " + player.skinDesc + ", covering your forearms until <b>your arms look vaguely like wings</b>. Your hands remain unchanged thankfully. It'd be impossible to be a champion without hands! The feathery limbs might help you maneuver if you were to fly, but there's no way they'd support you alone.");
 				changes++;
 				player.arms.type = Arms.HARPY;
 				updateClaws();
 			}
 			//-Feathery Hair
-			if (player.hairType != Hair.FEATHER && changes < changeLimit && (type == 1 || player.face.type == Face.HUMAN) && rand(4) == 0) {
+			if (player.hair.type != Hair.FEATHER && changes < changeLimit && (type == 1 || player.face.type == Face.HUMAN) && rand(4) == 0) {
 				outputText("\n\nA tingling starts in your scalp, getting worse and worse until you're itching like mad, the feathery strands of your hair tickling your fingertips while you scratch like a dog itching a flea. When you pull back your hand, you're treated to the sight of downy fluff trailing from your fingernails. A realization dawns on you - you have feathers for hair, just like a harpy!");
-				player.hairType = Hair.FEATHER;
+				player.hair.type = Hair.FEATHER;
 				changes++;
 			}
 			//-Human face
@@ -3596,12 +3596,12 @@ package classes.Items
 
 			//[Change Hair Color: Golden-blonde or Reddish-orange]
 			var fox_hair:Array = ["golden blonde", "reddish-orange", "silver", "white", "red", "black"];
-			if (!InCollection(player.hairColor, fox_hair) && !InCollection(player.hairColor, KitsuneScene.basicKitsuneHair) && !InCollection(player.hairColor, KitsuneScene.elderKitsuneColors) && changes < changeLimit && rand(4) == 0) {
+			if (!InCollection(player.hair.color, fox_hair) && !InCollection(player.hair.color, KitsuneScene.basicKitsuneHair) && !InCollection(player.hair.color, KitsuneScene.elderKitsuneColors) && changes < changeLimit && rand(4) == 0) {
 				if (player.tailType == Tail.FOX && player.tailVenom > 1)
-					if (player.tailVenom < 9) player.hairColor = randomChoice(KitsuneScene.basicKitsuneHair);
-					else player.hairColor = randomChoice(KitsuneScene.elderKitsuneColors);
-				else player.hairColor = randomChoice(fox_hair);
-				outputText("\n\nYour scalp begins to tingle, and you gently grasp a strand of hair, pulling it out to check it.  Your hair has become " + player.hairColor + "!");
+					if (player.tailVenom < 9) player.hair.color = randomChoice(KitsuneScene.basicKitsuneHair);
+					else player.hair.color = randomChoice(KitsuneScene.elderKitsuneColors);
+				else player.hair.color = randomChoice(fox_hair);
+				outputText("\n\nYour scalp begins to tingle, and you gently grasp a strand of hair, pulling it out to check it.  Your hair has become " + player.hair.color + "!");
 			}
 			//[Adjust hips toward 10 – wide/curvy/flared]
 			if (changes < changeLimit && rand(3) == 0 && player.hipRating != 10) {
@@ -3621,21 +3621,21 @@ package classes.Items
 			}
 			//[Remove tentacle hair]
 			//required if the hair length change below is triggered
-			if (changes < changeLimit && player.hairType == 4 && rand(3) == 0) {
+			if (changes < changeLimit && player.hair.type == 4 && rand(3) == 0) {
 				//-insert anemone hair removal into them under whatever criteria you like, though hair removal should precede abdomen growth; here's some sample text:
 				outputText("\n\nEerie flames of the jewel migrate up your body to your head, where they cover your [hair].  Though they burned nowhere else in their lazy orbit, your head begins to heat up as they congregate.  Fearful, you raise your hands to it just as the temperature peaks, but as you touch your hair, the searing heat is suddenly gone - along with your tentacles!  <b>Your hair is normal again!</b>");
-				player.hairType = Hair.NORMAL;
+				player.hair.type = Hair.NORMAL;
 				changes++;
 			}
 			//[Adjust hair length toward range of 16-26 – very long to ass-length]
-			if (player.hairType != 4 && (player.hairLength > 26 || player.hairLength < 16) && changes < changeLimit && rand(4) == 0) {
-				if (player.hairLength < 16) {
-					player.hairLength += 1 + rand(4);
-					outputText("\n\nYou experience a tingling sensation in your scalp.  Feeling a bit off-balance, you discover your hair has lengthened, becoming " + num2Text(Math.round(player.hairLength)) + " inches long.");
+			if (player.hair.type != 4 && (player.hair.length > 26 || player.hair.length < 16) && changes < changeLimit && rand(4) == 0) {
+				if (player.hair.length < 16) {
+					player.hair.length += 1 + rand(4);
+					outputText("\n\nYou experience a tingling sensation in your scalp.  Feeling a bit off-balance, you discover your hair has lengthened, becoming " + num2Text(Math.round(player.hair.length)) + " inches long.");
 				}
 				else {
-					player.hairLength -= 1 + rand(4);
-					outputText("\n\nYou experience a tingling sensation in your scalp.  Feeling a bit off-balance, you discover your hair has shed a bit of its length, becoming " + num2Text(Math.round(player.hairLength)) + " inches long.");
+					player.hair.length -= 1 + rand(4);
+					outputText("\n\nYou experience a tingling sensation in your scalp.  Feeling a bit off-balance, you discover your hair has shed a bit of its length, becoming " + num2Text(Math.round(player.hair.length)) + " inches long.");
 				}
 				changes++;
 			}
@@ -3798,8 +3798,8 @@ package classes.Items
 				player.skinAdj = "";
 				player.skinDesc = "fur";
 				if (player.kitsuneScore() >= 4)
-					if (InCollection(player.hairColor, convertMixedToStringArray(KitsuneScene.basicKitsuneFur)) || InCollection(player.hairColor, KitsuneScene.elderKitsuneColors))
-						colorChoices = [player.hairColor];
+					if (InCollection(player.hair.color, convertMixedToStringArray(KitsuneScene.basicKitsuneFur)) || InCollection(player.hair.color, KitsuneScene.elderKitsuneColors))
+						colorChoices = [player.hair.color];
 					else
 						if (player.tailType == Tail.FOX && player.tailVenom == 9)
 							colorChoices = KitsuneScene.elderKitsuneColors;
@@ -3972,15 +3972,15 @@ package classes.Items
 			}
 
 			//[Adjust hair length toward range of 16-26 – very long to ass-length]
-			if ((player.hairLength < 16 || player.hairLength > 26) && ((mystic && rand(2) == 0) || (!mystic && rand(3) == 0)) && changes < changeLimit) {
+			if ((player.hair.length < 16 || player.hair.length > 26) && ((mystic && rand(2) == 0) || (!mystic && rand(3) == 0)) && changes < changeLimit) {
 				//from short to long
-				if (player.hairLength < 16) {
-					player.hairLength += 3 + rand(3);
+				if (player.hair.length < 16) {
+					player.hair.length += 3 + rand(3);
 					outputText("\n\nYou experience a tingling sensation in your scalp.  Feeling a bit off-balance, you discover your hair has lengthened, becoming " + player.hairDescript() + ".");
 				}
 				//from long to short
 				else {
-					player.hairLength -= 3 + rand(3);
+					player.hair.length -= 3 + rand(3);
 					outputText("\n\nYou experience a tingling sensation in your scalp.  Feeling a bit off-balance, you discover your hair has shed a bit of its length, becoming " + player.hairDescript() + ".");
 				}
 				changes++;
@@ -4075,10 +4075,10 @@ package classes.Items
 				changes++;
 			}
 			//[Change Hair Color: Golden-blonde, SIlver Blonde, White, Black, Red]
-			if (((mystic && rand(2) == 0) || (!mystic && rand(4) == 0)) && changes < changeLimit && !InCollection(player.hairColor, KitsuneScene.basicKitsuneHair) && !InCollection(player.hairColor, KitsuneScene.elderKitsuneColors)) {
-				if (player.tailType == Tail.FOX && player.tailVenom == 9) player.hairColor = randomChoice(KitsuneScene.elderKitsuneColors);
-				else player.hairColor = randomChoice(KitsuneScene.basicKitsuneHair);
-				outputText("\n\nYour scalp begins to tingle, and you gently grasp a strand, pulling it forward to check it.  Your hair has become the same " + player.hairColor + " as a kitsune's!");
+			if (((mystic && rand(2) == 0) || (!mystic && rand(4) == 0)) && changes < changeLimit && !InCollection(player.hair.color, KitsuneScene.basicKitsuneHair) && !InCollection(player.hair.color, KitsuneScene.elderKitsuneColors)) {
+				if (player.tailType == Tail.FOX && player.tailVenom == 9) player.hair.color = randomChoice(KitsuneScene.elderKitsuneColors);
+				else player.hair.color = randomChoice(KitsuneScene.basicKitsuneHair);
+				outputText("\n\nYour scalp begins to tingle, and you gently grasp a strand, pulling it forward to check it.  Your hair has become the same " + player.hair.color + " as a kitsune's!");
 				changes++;
 			}
 			var tone:Array = mystic ? ["dark", "ebony", "ashen", "sable", "milky white"] : ["tan", "olive", "light"];

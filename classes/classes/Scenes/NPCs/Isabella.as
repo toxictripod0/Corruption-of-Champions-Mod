@@ -192,8 +192,8 @@ package classes.Scenes.NPCs
 			this.hipRating = Hips.RATING_CURVY+2;
 			this.butt.rating = Butt.RATING_LARGE+1;
 			this.skinTone = "dusky";
-			this.hairColor = "red";
-			this.hairLength = 13;
+			this.hair.color = "red";
+			this.hair.length = 13;
 			initStrTouSpeInte(70, 98, 75, 65);
 			initLibSensCor(65, 25, 40);
 			this.weaponName = "giant shield";

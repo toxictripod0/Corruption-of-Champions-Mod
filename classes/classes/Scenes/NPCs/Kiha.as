@@ -193,8 +193,8 @@ package classes.Scenes.NPCs
 			this.skinTone = "dark";
 			this.skinType = Skin.DRAGON_SCALES;
 			this.skinDesc = "skin and scales";
-			this.hairColor = "red";
-			this.hairLength = 3;
+			this.hair.color = "red";
+			this.hair.length = 3;
 			initStrTouSpeInte(65, 60, 85, 60);
 			initLibSensCor(50, 45, 66);
 			this.weaponName = "double-bladed axe";

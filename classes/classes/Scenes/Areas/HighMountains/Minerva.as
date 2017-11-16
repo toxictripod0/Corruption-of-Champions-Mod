@@ -222,8 +222,8 @@ package classes.Scenes.Areas.HighMountains
 			this.hipRating = Hips.RATING_CURVY;
 			this.butt.rating = Butt.RATING_LARGE+1;
 			this.skinTone = "blue";
-			this.hairColor = "red";
-			this.hairLength = 25;
+			this.hair.color = "red";
+			this.hair.length = 25;
 			initStrTouSpeInte(50, 65, 95, 75);
 			initLibSensCor(30, 25, 45);
 			if (flags[kFLAGS.MINERVA_PURIFICATION_PROGRESS] >= 10) cor = 0; //Set to 0 corruption if purified.

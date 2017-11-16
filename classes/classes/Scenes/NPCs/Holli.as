@@ -251,8 +251,8 @@ package classes.Scenes.NPCs
 			this.hipRating = Hips.RATING_CURVY;
 			this.butt.rating = Butt.RATING_LARGE;
 			this.skinTone = "black";
-			this.hairColor = "sandy-blonde";
-			this.hairLength = 15;
+			this.hair.color = "sandy-blonde";
+			this.hair.length = 15;
 			initStrTouSpeInte(150, 80, 80, 85);
 			initLibSensCor(75, 40, 80);
 			this.weaponName = "branches";

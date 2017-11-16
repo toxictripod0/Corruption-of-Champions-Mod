@@ -59,7 +59,7 @@ package classes.Scenes.Areas.Desert {
 		private function allowSandWitchMagic():void {
 			spriteSelect(SpriteDb.s_sandwich);
 			clearOutput();
-			if (player.hairColor == "sandy blonde") {
+			if (player.hair.color == "sandy blonde") {
 				outputText("She smiles wickedly and intones, \"<i>Tresed eht retaw llahs klim ruoy.</i>\"\n\n");
 				if (player.breastRows.length == 0 || player.biggestTitSize() == 0) {
 					outputText("You grow a perfectly rounded pair of C-cup breasts!  ");
@@ -145,7 +145,7 @@ package classes.Scenes.Areas.Desert {
 			else
 			{
 				outputText("She smiles wickedly and intones, \"<i>nuf erutuf rof riah ydnas, nus tresed eht sa ydnas.</i>\"\n\nYou feel a tingling in your scalp, and realize your hair has become a sandy blonde!");
-				player.hairColor = "sandy blonde";
+				player.hair.color = "sandy blonde";
 			}
 			
 			doNext(camp.returnToCampUseOneHour);
@@ -174,7 +174,7 @@ internal function sandwitchRape():void {
 		}
 		clearOutput();
 		outputText("Your wobbly legs give out underneath you as your body's will to fight evaporates.\n\n");
-		if (player.hairColor.indexOf("sandy blonde") != -1) {
+		if (player.hair.color.indexOf("sandy blonde") != -1) {
 			outputText("The Sand Witch smiles wickedly and intones, \"<i>Tresed eht retaw llahs klim ruoy.</i>\"\n\n"); 
 			if (player.breastRows.length == 0 || player.biggestTitSize() == 0) {
 				outputText("You grow a perfectly rounded pair of C-cup breasts!  ");
@@ -223,7 +223,7 @@ internal function sandwitchRape():void {
 		}
 		else {
 			outputText("The Sand Witch smiles wickedly and intones, \"<i>nuf erutuf rof riah ydnas, nus tresed eht sa ydnas.</i>\"\n\nYou feel a tingling in your scalp, and realize your hair has become a sandy blonde!");
-			player.hairColor = "sandy blonde";
+			player.hair.color = "sandy blonde";
 			outputText("\n\nThe witch whispers into your ear, \"<i>I ALWAYS get what I want, dear...</i>\"");
 		}
 		//RAEP

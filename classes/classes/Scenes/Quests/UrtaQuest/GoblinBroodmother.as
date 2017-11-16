@@ -44,8 +44,8 @@ package classes.Scenes.Quests.UrtaQuest
 			this.hipRating = Hips.RATING_AMPLE+2;
 			this.butt.rating = Butt.RATING_LARGE;
 			this.skinTone = "dark green";
-			this.hairColor = "purple";
-			this.hairLength = 4;
+			this.hair.color = "purple";
+			this.hair.length = 4;
 			initStrTouSpeInte(50, 30, 35, 100);
 			initLibSensCor(70, 20, 70);
 			this.weaponName = "fists";

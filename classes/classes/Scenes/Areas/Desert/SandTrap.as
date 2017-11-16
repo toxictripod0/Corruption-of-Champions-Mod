@@ -132,8 +132,8 @@
 			this.hipRating = Hips.RATING_AMPLE+2;
 			this.butt.rating = Butt.RATING_LARGE;
 			this.skinTone = "fair";
-			this.hairColor = "black";
-			this.hairLength = 15;
+			this.hair.color = "black";
+			this.hair.length = 15;
 			initStrTouSpeInte(55, 10, 45, 55);
 			initLibSensCor(60, 45, 50);
 			this.weaponName = "claws";

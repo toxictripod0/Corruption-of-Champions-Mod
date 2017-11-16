@@ -42,8 +42,8 @@ package classes.Scenes.Areas.Swamp
 			this.butt.rating = Butt.RATING_LARGE+1;
 			this.lowerBody = LowerBody.CHITINOUS_SPIDER_LEGS;
 			this.skinTone = "dusky";
-			this.hairColor = "red";
-			this.hairLength = 13;
+			this.hair.color = "red";
+			this.hair.length = 13;
 			initStrTouSpeInte(60, 50, 99, 99);
 			initLibSensCor(35, 35, 20);
 			this.weaponName = "dagger";

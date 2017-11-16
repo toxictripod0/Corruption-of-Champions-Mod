@@ -78,7 +78,7 @@ package classes.Scenes.Areas.Swamp
 				return;
 			}
 			
-			outputText("All eight of the drider's black and " + monster.hairColor + " striped legs collapse under her weight while she struggles ");
+			outputText("All eight of the drider's black and " + monster.hair.color + " striped legs collapse under her weight while she struggles ");
 			if (monster.HP < 1) outputText("to try to continue the fight, her movements slowed by pain and weakness.");
 			else outputText("to masturbate her swollen pussy-lips and the thick, juicy demon-cock that's sprouted in place of her clit.  She's so focused on getting off that she utterly gives up on the idea of fighting back, let alone dominating you as she seemed to plan originally.");
 			outputText("  The spider-herm lies in a miserable, defeated heap.");
@@ -269,9 +269,9 @@ package classes.Scenes.Areas.Swamp
 			}
 			outputText("\n\n");
 
-			outputText("While it seems to go on and on, your orgasm eventually ends, leaving you to hang limp while your still-hard dick is massaged by a much wetter spider-cunt.  The " + monster.hairColor + "-haired beauty dreamily says, \"<i>Mmmm... good job, pet.  Now, let that nice hard dick do the thinking for you and keep fucking my hot cunt until it goes dry.  Maybe a few hours after you finish, you'll be able to remember that you used to be a " + player.mf("man", "woman") + " before you became my livestock.</i>\"\n\n");
+			outputText("While it seems to go on and on, your orgasm eventually ends, leaving you to hang limp while your still-hard dick is massaged by a much wetter spider-cunt.  The " + monster.hair.color + "-haired beauty dreamily says, \"<i>Mmmm... good job, pet.  Now, let that nice hard dick do the thinking for you and keep fucking my hot cunt until it goes dry.  Maybe a few hours after you finish, you'll be able to remember that you used to be a " + player.mf("man", "woman") + " before you became my livestock.</i>\"\n\n");
 
-			outputText("The blissful arachnid rolls onto her side with you still locked inside her and falls asleep, her " + monster.hairColor + " tresses ");
+			outputText("The blissful arachnid rolls onto her side with you still locked inside her and falls asleep, her " + monster.hair.color + " tresses ");
 			if (player.cumQ() <= 1000) outputText("splayed across the ground");
 			else outputText("soaking in the white puddle of spooge");
 			outputText(".  Even unconscious, her vagina continues its rhythmic contractions around your cock, working you towards another burst of orgasmic pleasure while you wait for your strength to come back...\n\n");
@@ -356,7 +356,7 @@ package classes.Scenes.Areas.Swamp
 			else outputText("lust");
 			outputText(" pouring from all four of her eyes.  Now nude, you saunter over with a gleam in your eyes and a telltale tingling in your loins.  You move around some of the eight, sprawled-out legs and close in on her side.  With a mighty heave, you help to lift her up onto her shaking legs, then keep pushing, tipping her dangerously to the side.  She cries out in surprise as she flips over, rolling onto her back while her spindly, chitinous legs flail uselessly at the muggy air.\n\n");
 
-			outputText("Like this, you're treated to a perfect view of ALL of the web-woman's endowments.  Her four D-cup tits flatten slightly against her torso now that she's on her back, hanging slightly to the side.  At her crotch, you can see her glistening, black-lipped sex puffing up, the tip of her large button already peeking out of her tempting box.  Just below that, the black and " + monster.hairColor + "-striped exoskeleton of her spider-half starts, merging down into a bulbous, arachnid shape.  At the very bottom of it all is the huge bulk of her abdomen, covered with numerous spinnerets and with a wide, mostly-retracted organ near the back.\n\n");
+			outputText("Like this, you're treated to a perfect view of ALL of the web-woman's endowments.  Her four D-cup tits flatten slightly against her torso now that she's on her back, hanging slightly to the side.  At her crotch, you can see her glistening, black-lipped sex puffing up, the tip of her large button already peeking out of her tempting box.  Just below that, the black and " + monster.hair.color + "-striped exoskeleton of her spider-half starts, merging down into a bulbous, arachnid shape.  At the very bottom of it all is the huge bulk of her abdomen, covered with numerous spinnerets and with a wide, mostly-retracted organ near the back.\n\n");
 
 			outputText("The spider's look of ");
 			if (monster.HP < 1) {
@@ -427,7 +427,7 @@ package classes.Scenes.Areas.Swamp
 			else outputText("lust");
 			outputText(" pouring from all four of her eyes.  Now nude, you saunter over with a gleam in your eyes and a telltale tingling in your loins.  You move around some of the eight, sprawled-out legs and close in on her side.  With a mighty heave, you help to lift her up onto her shaking legs, then keep pushing, tipping her dangerously to the side.  She cries out in surprise as she flips over, rolling onto her back while her spindly, chitinous legs flail uselessly at the muggy air.\n\n");
 
-			outputText("Like this, you're treated to a perfect view of ALL of the web-woman's endowments.  Her four D-cup tits flatten slightly against her torso now that she's on her back, hanging slightly to the side.  At her crotch, you can see her glistening, black-lipped sex puffing up, the tip of her large button already peeking out of her tempting box.  Just below that, the black and " + monster.hairColor + "-striped exoskeleton of her spider-half starts, merging down into a bulbous, arachnid shape.  At the very bottom of it all is the huge bulk of her abdomen, covered with numerous spinnerets and with a wide, mostly-retracted organ near the back.\n\n");
+			outputText("Like this, you're treated to a perfect view of ALL of the web-woman's endowments.  Her four D-cup tits flatten slightly against her torso now that she's on her back, hanging slightly to the side.  At her crotch, you can see her glistening, black-lipped sex puffing up, the tip of her large button already peeking out of her tempting box.  Just below that, the black and " + monster.hair.color + "-striped exoskeleton of her spider-half starts, merging down into a bulbous, arachnid shape.  At the very bottom of it all is the huge bulk of her abdomen, covered with numerous spinnerets and with a wide, mostly-retracted organ near the back.\n\n");
 
 			outputText("The spider's look of ");
 			if (monster.HP < 1) {
@@ -482,8 +482,8 @@ package classes.Scenes.Areas.Swamp
 			if (!player.hasCock() && player.hasVagina()) outputText("You gasp and dribble a few strands of girl-goo, the contractions of your achingly empty pussy intensifying.  ");
 			if (player.hasCock()) outputText("You gasp and squirt a few weak ropes of cum, having a miniature orgasm on the spot.  ");
 			outputText("Writhing happily, you sigh ");
-			if (player.hasCock()) outputText("while your " + player.multiCockDescriptLight() + " dribbles white, wasted goo onto the black and " + monster.hairColor + " striped carapace below");
-			else if (player.hasVagina()) outputText("while your " + player.vaginaDescript(0) + " dribbles fem-slime onto the black and " + monster.hairColor + " striped carapace below");
+			if (player.hasCock()) outputText("while your " + player.multiCockDescriptLight() + " dribbles white, wasted goo onto the black and " + monster.hair.color + " striped carapace below");
+			else if (player.hasVagina()) outputText("while your " + player.vaginaDescript(0) + " dribbles fem-slime onto the black and " + monster.hair.color + " striped carapace below");
 			else outputText("while your fingers tweak your " + player.nippleDescript(0) + "s and your starved sphincter sucks at its slimy, squirming stuffing");
 			outputText(".  Without warning, the ovipositor dilates, pulling your " + player.assholeDescript() + " even wider.  An explosion of warmth goes off in your guts, and you realize that your term as an incubator has begun with a sense of perverse delight.\n\n");
 
@@ -739,7 +739,7 @@ package classes.Scenes.Areas.Swamp
 			outputText(".  The warmth of her nodule-covered cock pulsates on your belly, smearing you with a trail of pre-cum while she arranges your entwined bodies.\n\n");
 
 			outputText("Lines of webbing burst from the arachnid abdomen, snapping into tree limbs before pulling taut.  The drider's eight legs clitter and clack, four of them folding around your back while your world rotates 90 degrees.  The two of you are pulled into the trees by the sticky strands, hanging sideways, almost upside-down, in the leaves.  The four-eyed monster-girl blinks asynchronously and smiles, shifting you slightly to bring " + player.oMultiCockDesc() + " against her moist lips.  You exhale, an intense, animalistic thrill shivering through you from the feeling of having your " + player.cockDescript(x) + " lodged in a woman's entrance.  She leans down and bites into your neck, releasing a surge of toxin into your bloodstream.  It boils like fire, making you twitch and squirm in her many-limbed clutches.  The pain fades quickly, but in its place it leaves behind a molten, liquid lust, filling " + player.sMultiCockDesc() + " to its absolute maximum size, as hard as it can possibly be.\n\n");
-			outputText("The " + monster.hairColor + "-haired dominatrix pulls back, a single drop of blood clinging to one of her fangs while she hisses, \"<i>Mmm, fresh meat is always so tasty... not to mention... firm...</i>\"\n\n");
+			outputText("The " + monster.hair.color + "-haired dominatrix pulls back, a single drop of blood clinging to one of her fangs while she hisses, \"<i>Mmm, fresh meat is always so tasty... not to mention... firm...</i>\"\n\n");
 
 			outputText(images.showImage("cDrider-sex-male"));
 			outputText("You look at her with fear, but your " + player.hipDescript() + " start to twitch against her, rubbing your " + player.cockHead(x) + " up and down the slippery slit.  A slow exhale of pleasure escapes the spider's purple lips while her legs squeeze tighter against you, trying to push your " + player.cockDescript(x) + " home.  The drider gasps when at last, you slip between her juicy outer labia, slurping deep into her cunny with a lurid squelch.  Finally held within her depths, your muscles all slacken, save for those you need to pump your hips against her, futilely trying to fuck her hot quim even though you have zero leverage.\n\n");

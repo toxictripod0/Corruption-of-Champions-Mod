@@ -69,15 +69,15 @@ package classes.Items.Consumables
 			}
 			else {
 				outputText("You pop the cork from the flask and are immediately assaulted by a cloying, spiced scent that paints visions of a slutty slave-girl's slightly-spread folds.  Wow, this is some potent stuff!  Well, you knew what you were getting into when you found this bottle!  You open wide and guzzle it down, feeling the fire of alcohol burning a path to your belly.  The burning quickly fades to a pleasant warmth that makes you light-headed and giggly.\n\n");
-				if (game.player.hairColor != "platinum blonde") {
+				if (game.player.hair.color != "platinum blonde") {
 					outputText("The first change that you notice is to your " + game.player.hairDescript() + ".  It starts with a tingling in your scalp and intensifies ");
-					if (game.player.hairLength < 36) {
+					if (game.player.hair.length < 36) {
 						outputText("as you feel the weight of your hair growing heavier and longer.");
-						game.player.hairLength = 36;
+						game.player.hair.length = 36;
 					}
 					else outputText("as your hair grows thicker and heavier.");
-					outputText("  You grab a lock of the silken strands and watch open-mouthed while streaks so blonde they're almost white flow down the " + game.player.hairColor + " hair.  It goes faster and faster until your hair has changed into perfectly bimbo-blonde, flowing locks.\n\n");
-					game.player.hairColor = "platinum blonde";
+					outputText("  You grab a lock of the silken strands and watch open-mouthed while streaks so blonde they're almost white flow down the " + game.player.hair.color + " hair.  It goes faster and faster until your hair has changed into perfectly bimbo-blonde, flowing locks.\n\n");
+					game.player.hair.color = "platinum blonde";
 				}
 
 				outputText("Moaning lewdly, you begin to sway your hips from side to side, putting on a show for anyone who might manage to see you.   You just feel so... sexy.  Too sexy to hide it.  Your body aches to show itself and feel the gaze of someone, anyone upon it.  Mmmm, it makes you so wet!  ");

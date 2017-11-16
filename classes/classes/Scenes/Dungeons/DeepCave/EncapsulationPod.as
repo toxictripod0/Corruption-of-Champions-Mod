@@ -216,8 +216,8 @@ package classes.Scenes.Dungeons.DeepCave
 			this.skinTone = "purple";
 			this.skinType = Skin.PLAIN;
 			this.skinDesc = "covering";
-			this.hairColor = "black";
-			this.hairLength = 0;
+			this.hair.color = "black";
+			this.hair.length = 0;
 			initStrTouSpeInte(90, 1, 1, 1);
 			initLibSensCor(1, 1, 100);
 			this.weaponName = "pod";

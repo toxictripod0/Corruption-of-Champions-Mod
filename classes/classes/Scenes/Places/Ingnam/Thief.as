@@ -30,8 +30,8 @@ package classes.Scenes.Places.Ingnam
 			this.hipRating = Hips.RATING_BOYISH;
 			this.butt.rating = Butt.RATING_TIGHT;
 			this.skinTone = "light";
-			this.hairColor = "brown";
-			this.hairLength = 4;
+			this.hair.color = "brown";
+			this.hair.length = 4;
 			initStrTouSpeInte(17, 16, 16, 17);
 			initLibSensCor(20, 15, 20);
 			this.weaponName = "knife";

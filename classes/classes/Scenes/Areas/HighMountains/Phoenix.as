@@ -130,8 +130,8 @@ package classes.Scenes.Areas.HighMountains
 			this.skinTone = "light";
 			this.skinType = Skin.LIZARD_SCALES;
 			this.skinDesc = "crimson";
-			this.hairColor = "red";
-			this.hairLength = 16;
+			this.hair.color = "red";
+			this.hair.length = 16;
 			initStrTouSpeInte(100, 70, 100, 65);
 			initLibSensCor(50, 30, 45);
 			this.weaponName = "scimitar and shield";

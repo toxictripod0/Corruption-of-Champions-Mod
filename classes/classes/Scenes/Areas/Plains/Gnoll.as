@@ -387,8 +387,8 @@ package classes.Scenes.Areas.Plains
 			this.skinTone = "tawny";
 			this.skinType = Skin.FUR;
 			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.FUR];
-			this.hairColor = "black";
-			this.hairLength = 22;
+			this.hair.color = "black";
+			this.hair.length = 22;
 			initStrTouSpeInte(80, 70, 75, 60);
 			initLibSensCor(65, 25, 60);
 			this.weaponName = "twisted club";

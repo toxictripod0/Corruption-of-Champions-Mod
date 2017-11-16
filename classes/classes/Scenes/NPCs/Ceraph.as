@@ -310,8 +310,8 @@ package classes.Scenes.NPCs
 			this.butt.rating = Butt.RATING_NOTICEABLE;
 			this.lowerBody = LowerBody.DEMONIC_HIGH_HEELS;
 			this.skinTone = "purple";
-			this.hairColor = "black";
-			this.hairLength = 20;
+			this.hair.color = "black";
+			this.hair.length = 20;
 			initStrTouSpeInte(65, 40, 80, 80);
 			initLibSensCor(75, 15, 100);
 			this.weaponName = "flaming whip";

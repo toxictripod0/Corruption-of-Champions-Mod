@@ -193,7 +193,7 @@
 				player.gems = flags[kFLAGS.NEW_GAME_PLUS_BONUS_STORED_ITEMS];
 			}
 			player.HP = player.maxHP();
-			player.hairLength = 5;
+			player.hair.length = 5;
 			player.skinType = Skin.PLAIN;
 			player.underBody.restore();
 			player.neck.restore();
@@ -240,8 +240,8 @@
 			//Default
 			player.skinTone = "light";
 			player.claws.tone = "";
-			player.hairColor = "brown";
-			player.hairType = Hair.NORMAL;
+			player.hair.color = "brown";
+			player.hair.type = Hair.NORMAL;
 			player.beard.length = 0;
 			player.beard.style = 0;
 			//Exploration
@@ -563,7 +563,7 @@
 			}
 			//Body attributes
 			player.fertility = 5;
-			player.hairLength = 1;
+			player.hair.length = 1;
 			player.tallness = 71;
 			player.tone = 60;
 			
@@ -597,7 +597,7 @@
 			}
 			//Body attributes
 			player.fertility = 10;
-			player.hairLength = 10;
+			player.hair.length = 10;
 			player.tallness = 67;
 			player.tone = 30;
 			
@@ -629,7 +629,7 @@
 			}
 			//Body attributes
 			player.fertility = 10;
-			player.hairLength = 10;
+			player.hair.length = 10;
 			player.tallness = 69;
 			player.tone = 45;
 			
@@ -796,7 +796,7 @@
 		}
 
 		private function setHair(choice:String):void {
-			player.hairColor = choice;
+			player.hair.color = choice;
 			clearOutput();
 			outputText("You have " + player.hairDescript() + ".\n\nYou will proceed to customization.");
 			//chooseEndowment(false);
@@ -815,7 +815,7 @@
 			outputText("You can finalize your appearance customization before you proceed to perk selection. You will be able to alter your appearance through the usage of certain items.\n\n");
 			outputText("Height: " + Math.floor(player.tallness / 12) + "'" + player.tallness % 12 + "\"\n");
 			outputText("Skin tone: " + player.skinTone + "\n");
-			outputText("Hair color: " + player.hairColor + "\n");
+			outputText("Hair color: " + player.hair.color + "\n");
 			if (player.hasCock()) {
 				outputText("Cock size: " + player.cocks[0].cockLength + "\" long, " + player.cocks[0].cockThickness + "\" thick\n");
 			}
@@ -874,7 +874,7 @@
 		}
 
 		private function chooseHairColor(color:String = ""):void {
-			player.hairColor = color;
+			player.hair.color = color;
 			genericStyleCustomizeMenu();
 		}
 

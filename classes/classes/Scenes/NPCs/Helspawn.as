@@ -160,8 +160,8 @@ private function calledShot():void {
 			this.hipRating = Hips.RATING_CURVY+2;
 			this.butt.rating = Butt.RATING_LARGE+1;
 			this.skinTone = "dusky";
-			this.hairColor = "red";
-			this.hairLength = 13;
+			this.hair.color = "red";
+			this.hair.length = 13;
 			initStrTouSpeInte(50, 50, 65, 40);
 			initLibSensCor(35, 55, 20);
 			this.weaponName = weapon;

@@ -115,8 +115,8 @@ package classes.Scenes.Areas.Desert
 			this.hipRating = Hips.RATING_AMPLE+2;
 			this.butt.rating = Butt.RATING_LARGE;
 			this.skinTone = "red";
-			this.hairColor = "black";
-			this.hairLength = 15;
+			this.hair.color = "black";
+			this.hair.length = 15;
 			initStrTouSpeInte(80, 10, 10, 5);
 			initLibSensCor(50, 60, 80);
 			this.weaponName = "claws";

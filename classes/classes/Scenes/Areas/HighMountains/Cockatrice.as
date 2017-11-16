@@ -190,12 +190,12 @@ package classes.Scenes.Areas.HighMountains
 			this.tongueType = Tongue.LIZARD;
 			this.ears.type = Ears.COCKATRICE;
 			this.eyes.type = Eyes.COCKATRICE;
-			this.hairType = Hair.FEATHER;
+			this.hair.type = Hair.FEATHER;
 			this.skinTone = "midnight blue";
 			this.skinType = Skin.LIZARD_SCALES;
 			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.LIZARD_SCALES];
-			this.hairColor = "blue";
-			this.hairLength = 2;
+			this.hair.color = "blue";
+			this.hair.length = 2;
 			/*
 			// Bassy:
 			initStrTouSpeInte(85, 70, 35, 70);

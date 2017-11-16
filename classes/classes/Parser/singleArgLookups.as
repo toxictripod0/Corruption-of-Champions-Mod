@@ -51,7 +51,7 @@
 				"fullchest"					: function(thisPtr:*):* { return kGAMECLASS.player.allChestDesc(); },
 				"furcolor"					: function(thisPtr:*):* { return kGAMECLASS.player.furColor; },
 				"hair"						: function(thisPtr:*):* { return kGAMECLASS.player.hairDescript(); },
-				"haircolor"					: function(thisPtr:*):* { return kGAMECLASS.player.hairColor; },
+				"haircolor"					: function(thisPtr:*):* { return kGAMECLASS.player.hair.color; },
 				"hairorfur"					: function(thisPtr:*):* { return kGAMECLASS.player.hairOrFur(); },
 				"hairorfurcolors"			: function(thisPtr:*):* { return kGAMECLASS.player.hairOrFurColors; },
 				"he"						: function(thisPtr:*):* { return kGAMECLASS.player.mf("he", "she"); },

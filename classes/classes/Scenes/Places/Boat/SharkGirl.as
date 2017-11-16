@@ -58,8 +58,8 @@ package classes.Scenes.Places.Boat
 			this.hipRating = Hips.RATING_AMPLE+2;
 			this.butt.rating = Butt.RATING_LARGE;
 			this.skinTone = "gray";
-			this.hairColor = "silver";
-			this.hairLength = 16;
+			this.hair.color = "silver";
+			this.hair.length = 16;
 			initStrTouSpeInte(40, 40, 55, 42);
 			initLibSensCor(75, 35, 40);
 			this.weaponName = "shark teeth";

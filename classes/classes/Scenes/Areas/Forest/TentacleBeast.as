@@ -128,8 +128,8 @@ package classes.Scenes.Areas.Forest
 			this.skinTone = "green";
 			this.skinType = Skin.PLAIN;
 			this.skinDesc = "bark";
-			this.hairColor = "green";
-			this.hairLength = 1;
+			this.hair.color = "green";
+			this.hair.length = 1;
 			initStrTouSpeInte(58, 25, 35, 45);
 			initLibSensCor(90, 20, 100);
 			this.weaponName = "whip-tendril";

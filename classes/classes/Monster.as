@@ -326,9 +326,9 @@
 			///*OPTIONAL*/ //this.skinAdj = "skinAdj"; // default ""
 
 			//// 7. Hair
-			///*OPTIONAL*/ //this.hairColor = ; // default "no"
-			///*OPTIONAL*/ //this.hairLength = ; // default 0
-			///*OPTIONAL*/ //this.hairType = Hair.; // default NORMAL
+			///*OPTIONAL*/ //this.hair.color = ; // default "no"
+			///*OPTIONAL*/ //this.hair.length = ; // default 0
+			///*OPTIONAL*/ //this.hair.type = Hair.; // default NORMAL
 
 			//// 8. Face
 			///*OPTIONAL*/ //this.face.type = Face.; // default HUMAN
@@ -1027,14 +1027,14 @@
 			result += ", "+pronoun3+" arms are "+(Appearance.DEFAULT_ARM_NAMES[arms.type]||("armType#"+arms.type));
 			result += ", "+pronoun1+" "+have+" "+skinTone+" "+skinAdj+" "+skinDesc+" (type "+(Appearance.DEFAULT_SKIN_NAMES[skinType]||("skinType#"+skinType))+").\n";
 			result += Hehas;
-			if (hairLength>0){
-				result += hairColor+" "+Appearance.inchesAndFeetsAndInches(hairLength)+" long "+(Appearance.DEFAULT_HAIR_NAMES[hairType]||("hairType#"+hairType))+" hair.\n";
+			if (hair.length>0){
+				result += hair.color+" "+Appearance.inchesAndFeetsAndInches(hair.length)+" long "+(Appearance.DEFAULT_HAIR_NAMES[hair.type]||("hair.type#"+hair.type))+" hair.\n";
 			} else {
 				result += "no hair.\n";
 			}
 			result += Hehas;
 			if (beard.length>0){
-				result += hairColor+" "+Appearance.inchesAndFeetsAndInches(beard.length)+" long "+(Appearance.DEFAULT_BEARD_NAMES[beard.style]||("beardType#"+beard.style))+".\n";
+				result += hair.color+" "+Appearance.inchesAndFeetsAndInches(beard.length)+" long "+(Appearance.DEFAULT_BEARD_NAMES[beard.style]||("beardType#"+beard.style))+".\n";
 			} else {
 				result += "no beard.\n";
 			}
@@ -1319,7 +1319,7 @@
 			if (!inDungeon) {
 				if (game.prison.trainingFeed.prisonCaptorFeedingQuestTrainingExists()) {
 					if (short == "goblin" || short == "goblin assassin" || short == "goblin warrior" || short == "goblin shaman" || short == "imp" || short == "imp lord" || short == "imp warlord" || short == "imp overlord" || //Generic encounter
-						short == "tentacle beast" || (short == "kitsune" && hairColor == "red") || short == "Akbal" || short == "Tamani" || //Forest, deepwoods
+						short == "tentacle beast" || (short == "kitsune" && hair.color == "red") || short == "Akbal" || short == "Tamani" || //Forest, deepwoods
 						short == "goo-girl" || short == "green slime" || short == "fetish cultist" || short == "fetish zealot" || //Lake
 						short == "sandtrap" || short == "sand tarp" || short == "naga" || short == "demons" || short == "Cum Witch" || //Desert
 						short == "hellhound" || short == "infested hellhound" || short == "minotaur" || short == "minotaur lord" || short == "minotaur gang" || short == "minotaur tribe" || short == "basilisk" || short == "phoenix" || //Mountain, high mountains

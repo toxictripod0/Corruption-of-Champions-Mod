@@ -124,7 +124,7 @@ package classes.Scenes.Areas.HighMountains
 
 			outputText("It's not just her claws moving across your body! From behind and from the side, three more ornately plumed ladies have descended and are running their talons curiously across the last trappings holding your gear to your body. When these are undone, your " + player.armorName + " falls to the ground. You cover your " + player.allBreastsDescript() + " and crotch as the foursome leer at you unnervingly with their pitch black eyes and yellow pupils. The sensation is not so bad however, being surrounded by these fair and elegant creatures. When the four spread their wings, they screen your body from the outside world in a palette of colorful plumage. The one that took you down lets a single lock of your " + player.hairDescript() + " fall across her talons admiringly");
 			//if long hair
-			if (player.hairLength > 12) outputText(" and moves it out of your face");
+			if (player.hair.length > 12) outputText(" and moves it out of your face");
 			outputText(".  When she smirks, you know you're in for quite a ride.\n\n");
 
 			//{If Player has only a pussy} Fan of feathers: 

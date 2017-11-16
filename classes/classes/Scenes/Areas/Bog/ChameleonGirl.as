@@ -141,8 +141,8 @@ package classes.Scenes.Areas.Bog
 			this.skinType = Skin.PLAIN;
 			this.skinDesc = "skin";
 			this.skinAdj = skinToneAdj[1];
-			this.hairColor = "black";
-			this.hairLength = 15;
+			this.hair.color = "black";
+			this.hair.length = 15;
 			initStrTouSpeInte(65, 65, 95, 85);
 			initLibSensCor(50, 45, 50);
 			this.weaponName = "claws";

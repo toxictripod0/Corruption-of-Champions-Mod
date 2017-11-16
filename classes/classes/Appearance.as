@@ -36,35 +36,35 @@ package classes
 			//
 			// LENGTH ADJECTIVE!
 			//
-			if (i_creature.hairLength == 0)
+			if (i_creature.hair.length == 0)
 				return randomChoice(["shaved", "bald", "smooth", "hairless", "glabrous"]) + " head";
 
-			if (i_creature.hairLength < 1)
+			if (i_creature.hair.length < 1)
 				description += randomChoice(["close-cropped, ", "trim, ", "very short, "]);
-			else if (i_creature.hairLength < 3)
+			else if (i_creature.hair.length < 3)
 				description += "short, ";
-			else if (i_creature.hairLength < 6)
+			else if (i_creature.hair.length < 6)
 				description += "shaggy, ";
-			else if (i_creature.hairLength < 10)
+			else if (i_creature.hair.length < 10)
 				description += "moderately long, ";
-			else if (i_creature.hairLength < 16)
+			else if (i_creature.hair.length < 16)
 				description += randomChoice(["long, ", "shoulder-length, "]);
-			else if (i_creature.hairLength < 26)
+			else if (i_creature.hair.length < 26)
 				description += randomChoice(["very long, ", "flowing locks of "]);
-			else if (i_creature.hairLength < 40)
+			else if (i_creature.hair.length < 40)
 				description += "ass-length, ";
-			else if (i_creature.hairLength < i_creature.tallness)
+			else if (i_creature.hair.length < i_creature.tallness)
 				description += "obscenely long, ";
-			else // if (i_creature.hairLength >= i_creature.tallness)
+			else // if (i_creature.hair.length >= i_creature.tallness)
 				description += randomChoice(["floor-length, ", "floor-dragging, "]);
 			//
 			// COLORS
 			//
-			description += i_creature.hairColor + " ";
+			description += i_creature.hair.color + " ";
 			//
 			// HAIR WORDS
 			//
-			switch (i_creature.hairType) {
+			switch (i_creature.hair.type) {
 				case Hair.BASILISK_SPINES:
 					options = [
 						"rubbery spines",
@@ -94,29 +94,29 @@ package classes
 			// case Hair.GOO: return description + "goo-mane";
 			// and so on. (Stadler76)
 			//If furry and longish hair sometimes call it a mane (50%)
-			if (i_creature.hasFur() && i_creature.hairLength > 3 && rand(2) == 0) {
-				if (i_creature.hairType == Hair.FEATHER) description += "feather-";
-				else if (i_creature.hairType == Hair.GHOST) description += "transparent ";
-				else if (i_creature.hairType == Hair.GOO) description += "goo-";
-				else if (i_creature.hairType == Hair.ANEMONE) description += "tentacle-";
-				else if (i_creature.hairType == Hair.QUILL) description += "quill-";
-				else if (i_creature.hairType == Hair.WOOL) description += "wool-";
+			if (i_creature.hasFur() && i_creature.hair.length > 3 && rand(2) == 0) {
+				if (i_creature.hair.type == Hair.FEATHER) description += "feather-";
+				else if (i_creature.hair.type == Hair.GHOST) description += "transparent ";
+				else if (i_creature.hair.type == Hair.GOO) description += "goo-";
+				else if (i_creature.hair.type == Hair.ANEMONE) description += "tentacle-";
+				else if (i_creature.hair.type == Hair.QUILL) description += "quill-";
+				else if (i_creature.hair.type == Hair.WOOL) description += "wool-";
 				description += "mane";
 				return description;
 			}
 			//if medium length refer to as locks sometimes
 			//CUT - locks is plural and screws up tense.
-			/*if (creature.hairLength >= 3 && creature.hairLength < 16 && rand(2) == 0) {
+			/*if (creature.hair.length >= 3 && creature.hair.length < 16 && rand(2) == 0) {
 			 descript += "locks of hair";
 			 return descript;
 			 }*/
 			//If nothing else used, use hair!
-			if (i_creature.hairType == Hair.FEATHER) description += "feather-";
-			else if (i_creature.hairType == Hair.GHOST) description += "transparent ";
-			else if (i_creature.hairType == Hair.GOO) description += "goo-";
-			else if (i_creature.hairType == Hair.ANEMONE) description += "tentacle-";
-			else if (i_creature.hairType == Hair.QUILL) description += "quill-";
-			else if (i_creature.hairType == Hair.WOOL) description += "woolen ";
+			if (i_creature.hair.type == Hair.FEATHER) description += "feather-";
+			else if (i_creature.hair.type == Hair.GHOST) description += "transparent ";
+			else if (i_creature.hair.type == Hair.GOO) description += "goo-";
+			else if (i_creature.hair.type == Hair.ANEMONE) description += "tentacle-";
+			else if (i_creature.hair.type == Hair.QUILL) description += "quill-";
+			else if (i_creature.hair.type == Hair.WOOL) description += "woolen ";
 			description += "hair";
 
 			return description;
@@ -158,14 +158,14 @@ package classes
 			//
 			// COLORS
 			//
-			description += i_creature.hairColor + " ";
+			description += i_creature.hair.color + " ";
 			//
 			// BEARD WORDS
 			// Follows hair type.
-			if (i_creature.hairType == 1) description += "";
-			else if (i_creature.hairType == 2) description += "transparent ";
-			else if (i_creature.hairType == 3) description += "gooey ";
-			else if (i_creature.hairType == 4) description += "tentacley ";
+			if (i_creature.hair.type == 1) description += "";
+			else if (i_creature.hair.type == 2) description += "transparent ";
+			else if (i_creature.hair.type == 3) description += "gooey ";
+			else if (i_creature.hair.type == 4) description += "tentacley ";
 			
 			if (i_creature.beard.style == 0) description += "beard"
 			else if (i_creature.beard.style == 1) description += "goatee"

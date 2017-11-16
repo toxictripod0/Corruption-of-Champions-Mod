@@ -128,15 +128,15 @@ public function salonPurchaseMenu():void {
 	else if (player.femininity > 0 && player.findPerk(PerkLib.Androgyny) >= 0) sandFacialEnabled = true;
 	
 	menu();
-	if (player.hairType != Hair.BASILISK_SPINES && player.hairLength > 2) addButton(0, "Cut Short", cutShort);
+	if (player.hair.type != Hair.BASILISK_SPINES && player.hair.length > 2) addButton(0, "Cut Short", cutShort);
 	else addDisabledButton(0, "Cut Short");
-	if (player.hairLength > 13) addButton(1, "Cut Medium", cutMedium);
+	if (player.hair.length > 13) addButton(1, "Cut Medium", cutMedium);
 	else addDisabledButton(1, "Cut Medium");
-	if (player.hairLength >= 26) addButton(2, "Cut Long", cutLong);
+	if (player.hair.length >= 26) addButton(2, "Cut Long", cutLong);
 	else addDisabledButton(2, "Cut Long");
-	if (player.hairType != Hair.BASILISK_SPINES && player.hairLength < player.tallness) addButton(3, "Lengthen", hairGrow);
+	if (player.hair.type != Hair.BASILISK_SPINES && player.hair.length < player.tallness) addButton(3, "Lengthen", hairGrow);
 	else addDisabledButton(3, "Lengthen");
-	if (player.hairType != Hair.BASILISK_SPINES && player.hairLength > 0) addButton(4, "Remove Hair", removeHair);
+	if (player.hair.type != Hair.BASILISK_SPINES && player.hair.length > 0) addButton(4, "Remove Hair", removeHair);
 	else addDisabledButton(4, "Remove Hair");
 	addButton(5, "Buy Products", dyeMenu);
 	if (flags[kFLAGS.SALON_MINOCUM_UNLOCKED] > 0) addButton(6, "Buy MinoCum", buyMinoCum).hint("Buy a bottle of minotaur cum for 60 gems?");
@@ -403,13 +403,13 @@ private function cutShort():void {
 	clearOutput();
 	spriteSelect(SpriteDb.s_lynette);
 	//-trying to get a goblin to cut tentacle hair:
-	if (player.hairType == 4) {
+	if (player.hair.type == 4) {
 		outputText("Lynnette stares at you when you ask for a cut.  \"<i>Nothing doing, hon; that stuff looks alive and I don't want blood all over my nice floor.  Thanks for contributing to the white file, though; maybe we can do something else?</i>\"\n\n");
 		salonPurchaseMenu();
 		return;
 	}
 	outputText("Lynnette and her daughters crowd around you with razor-sharp scissors, effortlessly paring down your " + player.hairDescript() + ".  When they've finished, you're left with ");
-	player.hairLength = 1;
+	player.hair.length = 1;
 	outputText(player.hairDescript() + ".");
 	doNext(camp.returnToCampUseOneHour);
 }
@@ -417,13 +417,13 @@ private function cutMedium():void {
 	spriteSelect(SpriteDb.s_lynette);
 	clearOutput();
 	//-trying to get a goblin to cut tentacle hair:
-	if (player.hairType == 4) {
+	if (player.hair.type == 4) {
 		outputText("Lynnette stares at you when you ask for a cut.  \"<i>Nothing doing, hon; that stuff looks alive and I don't want blood all over my nice floor.  Thanks for contributing to the white file, though; maybe we can do something else?</i>\"\n\n");
 		salonPurchaseMenu();
 		return;
 	}
 	outputText("Lynnette and her daughters crowd around you with razor-sharp scissors, effortlessly paring down your " + player.hairDescript() + ".  When they've finished, you're left with ");
-	player.hairLength = 10;
+	player.hair.length = 10;
 	outputText(player.hairDescript() + ".");
 	doNext(camp.returnToCampUseOneHour);
 }
@@ -431,13 +431,13 @@ private function cutLong():void {
 	spriteSelect(SpriteDb.s_lynette);
 	clearOutput();
 	//-trying to get a goblin to cut tentacle hair:
-	if (player.hairType == 4) {
+	if (player.hair.type == 4) {
 		outputText("Lynnette stares at you when you ask for a cut.  \"<i>Nothing doing, hon; that stuff looks alive and I don't want blood all over my nice floor.  Thanks for the contributing to the white file, though; maybe we can do something else?</i>\"\n\n");
 		salonPurchaseMenu();
 		return;
 	}
 	outputText("Lynnette and her daughters crowd around you with razor-sharp scissors, effortlessly paring down your " + player.hairDescript() + ".  When they've finished, you're left with ");
-	player.hairLength = 25;
+	player.hair.length = 25;
 	outputText(player.hairDescript() + ".");
 	doNext(camp.returnToCampUseOneHour);
 }
@@ -445,7 +445,7 @@ private function hairGrow():void {
 	spriteSelect(SpriteDb.s_lynette);
 	clearOutput();
 	//-asking for a lengthening treatment with tentacle hair:
-	if (player.hairType == 4) {
+	if (player.hair.type == 4) {
 		outputText("Lynnette looks dubiously at you when you ask for a lengthening treatment.  \"<i>No offense hon, but that stuff is basically like an arm or an organ, not hair.  I'm not a goblin chirurgeon, and I wouldn't try to lengthen it even if one of my disobedient daughters were here to donate some parts.  Sorry to make you shoot and scoot, but I can't help you.  Maybe we could do something else?</i>\"\n\n");
 		salonPurchaseMenu();
 		return;
@@ -453,8 +453,8 @@ private function hairGrow():void {
 	outputText("Lynnette grabs a bottle and squirts a white fluid into your hair.  You really hope it isn't your payment.  But it must not be, as within short order you feel the added weight of ");
 	temp = rand(3) + 3;
 	flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] = 0;
-	player.hairLength += temp;
-	outputText(num2Text(temp) + " more inches of " + player.hairColor + " hair.");
+	player.hair.length += temp;
+	outputText(num2Text(temp) + " more inches of " + player.hair.color + " hair.");
 	doNext(camp.returnToCampUseOneHour);
 }
 
@@ -463,7 +463,7 @@ private function removeHair():void {
 	outputText("You tell Lynnette that you'd like to have your hair removed.\n\n");
 	outputText("Lynnette instructs you to take a seat and instructs her daughters to pare down your hair down to short length. They effortlessly cut your hair to short length. Next, Lynnette applies a special cream all over your " + player.hairDescript() +".  Your hair starts to stiffen and falls out.  She gives your head a good cleaning afterwards.\n\n");
 	outputText("<b>You no longer have a hair!</b>");
-	player.hairLength = 0;
+	player.hair.length = 0;
 	doNext(camp.returnToCampUseOneHour);
 }
 
@@ -504,7 +504,7 @@ private function beardMenu():void {
 
 private function cutBeard():void {
 	clearOutput();
-	if (player.hairType == 4) {
+	if (player.hair.type == 4) {
 		outputText("Lynnette stares at you when you ask for a cut.  \"<i>Nothing doing, hon; that stuff looks alive and I don't want blood all over my nice floor.  Thanks for contributing to the white file, though; maybe we can do something else?</i>\"\n\n");
 		beardMenu();
 		return;
@@ -528,7 +528,7 @@ private function growBeard(mode:int = 0):void {
 			outputText("Lynnette grabs a bottle and squirts a white fluid onto your chin and cheeks.  You really hope it isn't your payment.  But it must not be, as within short order your new beard sprouts! ");
 			player.beard.length = 0.2;
 			if (temp >= 2) outputText("es");
-			outputText(" of " + player.hairColor + " beard.\n\n");
+			outputText(" of " + player.hair.color + " beard.\n\n");
 			outputText("\"<i>I'll let you choose your style before you leave,</i>\" she says.\n\n");
 			changeBeardStyle();
 			return;
@@ -536,7 +536,7 @@ private function growBeard(mode:int = 0):void {
 	}
 	//Grow existing beard.
 	else {
-			if (player.hairType == 4) {
+			if (player.hair.type == 4) {
 				outputText("Lynnette looks dubiously at you when you ask for a lengthening treatment.  \"<i>No offense hon, but that stuff is basically like an arm or an organ, not beard.  I'm not a goblin chirurgeon, and I wouldn't try to lengthen it even if one of my disobedient daughters were here to donate some parts.  Sorry to make you shoot and scoot, but I can't help you.  Maybe we could do something else?</i>\"\n\n");
 				beardMenu();
 				return;
@@ -547,7 +547,7 @@ private function growBeard(mode:int = 0):void {
 			player.beard.length += temp;
 			outputText(num2Text(temp) + " more inch");
 			if (temp >= 2) outputText("es");
-			outputText(" of " + player.hairColor + " beard.");	
+			outputText(" of " + player.hair.color + " beard.");	
 	}
 	doNext(camp.returnToCampUseOneHour);
 }

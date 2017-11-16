@@ -353,9 +353,9 @@ package classes.Items.Consumables
 				outputText("<b>You now have a wolf tail!</b>");
 			}
 			//Sets hair normal
-			if (player.hairType !== Hair.NORMAL && changes < changeLimit && rand(3) === 0) {
+			if (player.hair.type !== Hair.NORMAL && changes < changeLimit && rand(3) === 0) {
 				outputText("\n\nYou reach up and feel the top of your head as it begins to tingle. You put a hand on the top of your head and slowly pull it down. Chunks of your " + player.hairDescript() + " come with, replaced by a set of normal, human hair.");
-				player.hairType = Hair.NORMAL;
+				player.hair.type = Hair.NORMAL;
 				changes++;
 			}
 			//MUTATIONZ LEVEL 2: fur->arms fur+tail+ears->face stophair->nohair fur+tail->legs

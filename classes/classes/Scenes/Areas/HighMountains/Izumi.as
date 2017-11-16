@@ -25,8 +25,8 @@ package classes.Scenes.Areas.HighMountains
 			this.hipRating = Hips.RATING_AVERAGE;
 			this.butt.rating = Butt.RATING_TIGHT;
 			this.skinTone = "creamy-white";
-			this.hairColor = "golden";
-			this.hairLength = 25;
+			this.hair.color = "golden";
+			this.hair.length = 25;
 			initStrTouSpeInte(110, 90, 90, 80);
 			initLibSensCor(30, 25, 15);
 			this.weaponName = "fist";

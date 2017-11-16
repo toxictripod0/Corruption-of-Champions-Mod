@@ -84,8 +84,8 @@ package classes.Scenes.Dungeons.HelDungeon
 			this.butt.rating = Butt.RATING_LARGE;
 			this.lowerBody = LowerBody.LIZARD;
 			this.skinTone = "red";
-			this.hairColor = "black";
-			this.hairLength = 15;
+			this.hair.color = "black";
+			this.hair.length = 15;
 			initStrTouSpeInte(70, 60, 120, 40);
 			initLibSensCor(40, 45, 50);
 			this.weaponName = "spears";

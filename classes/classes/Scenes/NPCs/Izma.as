@@ -160,8 +160,8 @@ package classes.Scenes.NPCs
 			this.hipRating = Hips.RATING_CURVY;
 			this.butt.rating = Butt.RATING_NOTICEABLE;
 			this.skinTone = "striped orange";
-			this.hairColor = "silver";
-			this.hairLength = 20;
+			this.hair.color = "silver";
+			this.hair.length = 20;
 			initStrTouSpeInte(80, 90, 85, 65);
 			initLibSensCor(75, 25, 40);
 			this.weaponName = "clawed gauntlets";

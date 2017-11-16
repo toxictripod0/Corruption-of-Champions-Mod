@@ -143,9 +143,9 @@ package classes.Items.Consumables
 				player.removeStatusEffect(StatusEffects.BlackNipples);
 			}
 			//Hair turns normal
-			if (changes < changeLimit && player.hairType !== Hair.NORMAL && rand(3) === 0) {
+			if (changes < changeLimit && player.hair.type !== Hair.NORMAL && rand(3) === 0) {
 				outputText("\n\nYou run a hand along the top of your head as you feel your scalp tingle, and feel something weird. You pull your hand away and look at the nearest reflective surface. <b>Your hair is normal again!</b>");
-				player.hairType = Hair.NORMAL;
+				player.hair.type = Hair.NORMAL;
 				if (flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] !== 0) flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] = 0;
 				changes++;
 			}
@@ -154,7 +154,7 @@ package classes.Items.Consumables
 				outputText("\n\nYou feel an itching sensation in your scalp as you realize the change. <b>Your hair is growing normally again!</b>");
 				//Turn hair growth on.
 				flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] = 0;
-				player.hairType = Hair.NORMAL;
+				player.hair.type = Hair.NORMAL;
 				changes++;
 			}
 			//-----------------------

@@ -73,8 +73,8 @@
 			this.hipRating = Hips.RATING_CURVY;
 			this.butt.rating = Butt.RATING_LARGE;
 			this.skinTone = "bronzed";
-			this.hairColor = "sandy-blonde";
-			this.hairLength = 15;
+			this.hair.color = "sandy-blonde";
+			this.hair.length = 15;
 			initStrTouSpeInte(25, 25, 35, 45);
 			initLibSensCor(55, 40, 30);
 			this.weaponName = "kick";

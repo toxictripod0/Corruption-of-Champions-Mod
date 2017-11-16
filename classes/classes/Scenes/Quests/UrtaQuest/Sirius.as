@@ -117,8 +117,8 @@ package classes.Scenes.Quests.UrtaQuest
 			this.butt.rating = Butt.RATING_LARGE;
 			this.lowerBody = LowerBody.NAGA;
 			this.skinTone = "mediterranean-toned";
-			this.hairColor = "orange";
-			this.hairLength = 16;
+			this.hair.color = "orange";
+			this.hair.length = 16;
 			initStrTouSpeInte(75, 70, 75, 92);
 			initLibSensCor(45, 35, 40);
 			this.weaponName = "fangs";

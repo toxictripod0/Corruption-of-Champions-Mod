@@ -151,8 +151,8 @@ package classes.Scenes.Places.Farm
 			this.lowerBody = LowerBody.HOOFED;
 			this.legCount = 4;
 			this.skinTone = "tan";
-			this.hairColor = randomChoice("black","brown");
-			this.hairLength = 3;
+			this.hair.color = randomChoice("black","brown");
+			this.hair.length = 3;
 			initStrTouSpeInte(60, 70, 40, 20);
 			initLibSensCor(40, 25, 55);
 			this.weaponName = "fist";

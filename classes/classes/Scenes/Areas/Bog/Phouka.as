@@ -288,8 +288,8 @@ package classes.Scenes.Areas.Bog
 			this.arms.type = Arms.HUMAN;
 
 			this.skinTone = "black";
-			this.hairColor = "black";
-			this.hairLength = 1;
+			this.hair.color = "black";
+			this.hair.length = 1;
 
 			this.ears.type = Ears.ELFIN;
 

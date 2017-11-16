@@ -135,8 +135,8 @@ package classes.Scenes.Areas.Forest
 			this.hipRating = Hips.RATING_AMPLE+2;
 			this.butt.rating = Butt.RATING_LARGE;
 			this.skinTone = "greenish gray";
-			this.hairColor = "pink and black";
-			this.hairLength = 16;
+			this.hair.color = "pink and black";
+			this.hair.length = 16;
 			initStrTouSpeInte(32, 43, 55, 62);
 			initLibSensCor(65, 65, 50);
 			this.weaponName = "fists";

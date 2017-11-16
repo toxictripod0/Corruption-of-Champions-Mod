@@ -178,8 +178,8 @@ package classes.Scenes.Dungeons.DeepCave
 			this.butt.rating = Butt.RATING_TIGHT;
 			this.lowerBody = LowerBody.KANGAROO;
 			this.skinTone = "red";
-			this.hairColor = "black";
-			this.hairLength = 5;
+			this.hair.color = "black";
+			this.hair.length = 5;
 			initStrTouSpeInte(65, 60, 45, 52);
 			initLibSensCor(55, 35, 100);
 			this.weaponName = "claws";

@@ -183,20 +183,20 @@ package classes.Items.Consumables
 			}
 			
 			//Changes hair to red/dark red, shortens it, sets it normal
-			if (["red", "dark red"].indexOf(player.hairColor) === -1 && rand(3) === 0 && changes < changeLimit) {
+			if (["red", "dark red"].indexOf(player.hair.color) === -1 && rand(3) === 0 && changes < changeLimit) {
 				outputText("\n\nYour hair suddenly begins to shed, rapidly falling down around you before it's all completely gone. Just when you think things are over, more hair sprouts from your head, slightly curled and color different.");
 				if (rand(2) !== 0) {
-					player.hairColor = "red";
+					player.hair.color = "red";
 				} else {
-					player.hairColor = "dark red";
+					player.hair.color = "dark red";
 				}
-				outputText(" <b>You now have " + player.hairColor + "</b>");
-				if (player.hairType !== Hair.NORMAL) {
+				outputText(" <b>You now have " + player.hair.color + "</b>");
+				if (player.hair.type !== Hair.NORMAL) {
 					outputText("<b> human</b>");
 				}
 				outputText("<b> hair!</b>");
-				player.hairType = Hair.NORMAL;
-				player.hairLength = 1;
+				player.hair.type = Hair.NORMAL;
+				player.hair.length = 1;
 				changes++;
 			}
 			

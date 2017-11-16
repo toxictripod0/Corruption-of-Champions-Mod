@@ -27,7 +27,7 @@
 				"hasarmor"			: function(thisPtr:*):* {return  kGAMECLASS.player.armor != ArmorLib.NOTHING;},
 				"haslowergarment"	: function(thisPtr:*):* {return  kGAMECLASS.player.lowerGarment != UndergarmentLib.NOTHING;},
 				"tallness"			: function(thisPtr:*):* {return  kGAMECLASS.player.tallness;},
-				"hairlength"		: function(thisPtr:*):* {return  kGAMECLASS.player.hairLength;},
+				"hairlength"		: function(thisPtr:*):* {return  kGAMECLASS.player.hair.length;},
 				"femininity"		: function(thisPtr:*):* {return  kGAMECLASS.player.femininity;},
 				"masculinity"		: function(thisPtr:*):* {return  100 - kGAMECLASS.player.femininity;},
 				"cocks"				: function(thisPtr:*):* {return  kGAMECLASS.player.cockTotal();},
