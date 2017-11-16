@@ -171,11 +171,11 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//If the PC has four eyes:
-			if ((player.eyeType === Eyes.FOUR_SPIDER_EYES || player.eyeCount > 2) && rand(3) === 0 && changes < changeLimit)
+			if ((player.eyes.type === Eyes.FOUR_SPIDER_EYES || player.eyes.count > 2) && rand(3) === 0 && changes < changeLimit)
 			{
 				outputText("\n\nYour eyes start throbbing painfully, your sight in them eventually going dark.  You touch your head to inspect your eyes, only to find out that they have changed.  <b>You have human eyes now!</b>");
-				player.eyeType = 0;
-				player.eyeCount = 2;
+				player.eyes.type = 0;
+				player.eyes.count = 2;
 				changes++;
 			}
 			//Go into heat

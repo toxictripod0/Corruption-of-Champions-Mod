@@ -874,8 +874,8 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile.data.armType = player.arms.type;
 		saveFile.data.hairLength = player.hairLength;
 		saveFile.data.beardLength = player.beard.length;
-		saveFile.data.eyeType = player.eyeType;
-		saveFile.data.eyeCount = player.eyeCount;
+		saveFile.data.eyeType = player.eyes.type;
+		saveFile.data.eyeCount = player.eyes.count;
 		saveFile.data.beardStyle = player.beard.style;
 		saveFile.data.skinType = player.skinType;
 		saveFile.data.skinTone = player.skinTone;
@@ -1625,9 +1625,9 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			player.femininity = saveFile.data.femininity;
 		//EYES
 		if (saveFile.data.eyeType == undefined)
-			player.eyeType = Eyes.HUMAN;
+			player.eyes.type = Eyes.HUMAN;
 		else
-			player.eyeType = saveFile.data.eyeType;
+			player.eyes.type = saveFile.data.eyeType;
 		//BEARS
 		if (saveFile.data.beardLength == undefined)
 			player.beard.length = 0;
@@ -1829,17 +1829,17 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			player.legCount = saveFile.data.legCount;
 			
 		if (saveFile.data.eyeCount == undefined) {
-			if (player.eyeType == Eyes.SPIDER) {
-				player.eyeCount = 4;
+			if (player.eyes.type == Eyes.SPIDER) {
+				player.eyes.count = 4;
 			}
-			else if (player.eyeType == Eyes.FOUR_SPIDER_EYES) {
-				player.eyeType = Eyes.SPIDER;
-				player.eyeCount = 4;
+			else if (player.eyes.type == Eyes.FOUR_SPIDER_EYES) {
+				player.eyes.type = Eyes.SPIDER;
+				player.eyes.count = 4;
 			}
-			else player.eyeCount = 2;
+			else player.eyes.count = 2;
 		}
 		else
-			player.eyeCount = saveFile.data.eyeCount;
+			player.eyes.count = saveFile.data.eyeCount;
 			
 
 		// Fix deprecated and merged underBody-types

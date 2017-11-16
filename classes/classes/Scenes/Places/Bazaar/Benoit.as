@@ -338,7 +338,7 @@ public function benoitIntro():void {
 		addButton(5, "Suggest", eggySuggest);
 	if (player.hasCock() && flags[kFLAGS.BENOIT_STATUS] > 0 && player.lust >= 33)
 		addButton(6, "Sex", (flags[kFLAGS.TIMES_FUCKED_FEMOIT] == 0 ? femoitFirstTimeYes : femoitSexIntro));
-	if (flags[kFLAGS.BENOIT_EYES_TALK_UNLOCKED] == 1 && player.eyeType != Eyes.BASILISK)
+	if (flags[kFLAGS.BENOIT_EYES_TALK_UNLOCKED] == 1 && player.eyes.type != Eyes.BASILISK)
 		addButton(7, "Basil. Eyes", convertToBassyEyes);
 }
 //Buy or Sell First Time, only if prelover/prefem: You ask him what the deal is with his shop.
@@ -1436,7 +1436,7 @@ private function convertToBassyEyesPageTwo():void
 
 private function convertToBassyEyesFinal():void
 {
-	player.eyeType = Eyes.BASILISK;
+	player.eyes.type = Eyes.BASILISK;
 	outputText("\n\n(<b>Your eyes are now basilisk eyes!</b>)");
 	flags[kFLAGS.BENOIT_BASIL_EYES_GRANTED]++
 	doNext(camp.returnToCampUseOneHour);

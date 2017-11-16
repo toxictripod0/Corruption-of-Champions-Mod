@@ -1027,8 +1027,8 @@ import classes.Items.*
 			showChangeOptions(bodyPartEditorHead, page, TONGUE_TYPE_CONSTANTS, changeTongueType);
 		}
 		private function changeEyeType(page:int=0,setIdx:int=-1):void {
-			if (setIdx >= 0) player.eyeType = setIdx;
-			if (player.eyeType == Eyes.SPIDER) player.eyeCount = 4;
+			if (setIdx >= 0) player.eyes.type = setIdx;
+			if (player.eyes.type == Eyes.SPIDER) player.eyes.count = 4;
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorHead, page, EYE_TYPE_CONSTANTS, changeEyeType);

@@ -258,15 +258,15 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Remove odd eyes
-			if ((player.eyeType === Eyes.FOUR_SPIDER_EYES || player.eyeType == Eyes.SPIDER) && rand(2) === 0 && changes < changeLimit) {
+			if ((player.eyes.type === Eyes.FOUR_SPIDER_EYES || player.eyes.type == Eyes.SPIDER) && rand(2) === 0 && changes < changeLimit) {
 				outputText("\n\nYou blink and stumble, a wave of vertigo threatening to pull your " + player.feet() + " from under you.  As you steady and open your eyes, you realize something seems different.  Your vision is changed somehow. <b>Your arachnid eyes are gone! You have normal, humanoid eyes again.</b>");
-				player.eyeType = Eyes.HUMAN;
-				player.eyeCount = 2;
+				player.eyes.type = Eyes.HUMAN;
+				player.eyes.count = 2;
 				changes++;
 			}
 			//PC Trap Effects
-			if (player.eyeType !== Eyes.BLACK_EYES_SAND_TRAP && rand(4) === 0 && changes < changeLimit) {
-				player.eyeType = Eyes.BLACK_EYES_SAND_TRAP;
+			if (player.eyes.type !== Eyes.BLACK_EYES_SAND_TRAP && rand(4) === 0 && changes < changeLimit) {
+				player.eyes.type = Eyes.BLACK_EYES_SAND_TRAP;
 				//Eyes Turn Black:
 				outputText("\n\nYou blink, and then blink again.  It feels like something is irritating your eyes.  Panic sets in as black suddenly blooms in the corner of your left eye and then your right, as if drops of ink were falling into them.  You calm yourself down with the thought that rubbing at your eyes will certainly make whatever is happening to them worse; through force of will you hold your hands behind your back and wait for the strange affliction to run its course.  The strange inky substance pools over your entire vision before slowly fading, thankfully taking the irritation with it.  As soon as it goes you stride quickly over to the stream and stare at your reflection.  <b>Your pupils, your irises, your entire eye has turned a liquid black</b>, leaving you looking vaguely like the many half insect creatures which inhabit these lands.  You find you are merely grateful the change apparently hasn't affected your vision.");
 				changes++;

@@ -117,7 +117,7 @@ package classes.Scenes.Areas.GlacialRift
 			this.hairLength = 3;
 			this.faceType = Face.WOLF;
 			this.ears.type = Ears.WOLF;
-			this.eyeType = Eyes.WOLF;
+			this.eyes.type = Eyes.WOLF;
 			initStrTouSpeInte(90,110,75,85);
 			initLibSensCor(0,10,10);
 			this.weaponName = "teeth";

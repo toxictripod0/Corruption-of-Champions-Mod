@@ -1629,7 +1629,7 @@ package classes
 			player.ears.type = Ears.FOX;
 			player.claws.type = Claws.DOG;
 			player.claws.tone = "ivory";
-			player.eyeType = Eyes.DRAGON;
+			player.eyes.type = Eyes.DRAGON;
 			player.lowerBody = LowerBody.FOX;
 			player.tailType = Tail.FOX; // soft fur feels so lovely...
 			player.tailVenom = 9;			
@@ -1834,12 +1834,12 @@ package classes
 				player.faceType = rand(20)+1; // since it is not a enum, it is impossible to make it auto-ajust...
 				
 			if (player.faceType == Face.SPIDER_FANGS && rand(2) == 0)
-					player.eyeType = Eyes.FOUR_SPIDER_EYES; // 50% to have spider eyes with spider fangs
+					player.eyes.type = Eyes.FOUR_SPIDER_EYES; // 50% to have spider eyes with spider fangs
 			else if (rand(20) == 0) // 5% for inhuman eyes otherwise
 				if (rand(2) == 0)
-					player.eyeType = Eyes.FOUR_SPIDER_EYES;
+					player.eyes.type = Eyes.FOUR_SPIDER_EYES;
 				else
-					player.eyeType = Eyes.BLACK_EYES_SAND_TRAP;
+					player.eyes.type = Eyes.BLACK_EYES_SAND_TRAP;
 
 			if (player.faceType == Face.HUMAN && rand(2)!=0) // if human face, 50% to have human ears
 				player.ears.type = Ears.HUMAN;

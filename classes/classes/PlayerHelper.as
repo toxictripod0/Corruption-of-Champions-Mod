@@ -55,12 +55,12 @@ package classes
 
 		public function hasReptileEyes():Boolean
 		{
-			return [Eyes.LIZARD, Eyes.DRAGON, Eyes.BASILISK].indexOf(eyeType) != -1;
+			return [Eyes.LIZARD, Eyes.DRAGON, Eyes.BASILISK].indexOf(eyes.type) != -1;
 		}
 
 		public function hasLizardEyes():Boolean
 		{
-			return [Eyes.LIZARD, Eyes.BASILISK].indexOf(eyeType) != -1;
+			return [Eyes.LIZARD, Eyes.BASILISK].indexOf(eyes.type) != -1;
 		}
 
 		public function hasReptileFace():Boolean
@@ -135,7 +135,7 @@ package classes
 
 		public function isBasilisk():Boolean
 		{
-			return game.bazaar.benoit.benoitBigFamily() && eyeType == Eyes.BASILISK;
+			return game.bazaar.benoit.benoitBigFamily() && eyes.type == Eyes.BASILISK;
 		}
 
 		public function hasReptileTail():Boolean

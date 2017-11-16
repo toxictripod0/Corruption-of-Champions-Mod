@@ -127,7 +127,7 @@ package classes.Items.Consumables
 			}
 			//<mod name="Reptile eyes" author="Stadler76">
 			//Gain Dragon Eyes
-			if (player.eyeType != Eyes.DRAGON && player.hasDragonScales() && player.ears.type == Ears.DRAGON && player.hasDragonHorns() && changes < changeLimit && rand(4) == 0) {
+			if (player.eyes.type != Eyes.DRAGON && player.hasDragonScales() && player.ears.type == Ears.DRAGON && player.hasDragonHorns() && changes < changeLimit && rand(4) == 0) {
 				if (player.hasReptileEyes())
 					output.text("\n\nYour eyes change slightly in their appearance.");
 				else
@@ -137,7 +137,7 @@ package classes.Items.Consumables
 					output.text("  They glitter even in the darkness. With a few tears remaining, the look is a bit blurry. Wanting to get a clearer look at them, you blink your remaining tears away and suddenly you realize, that you just did that with your second set of eyelids.");
 				}
 				output.text("  <b>You now have fierce dragon eyes.</b>");
-				player.eyeType = Eyes.DRAGON;
+				player.eyes.type = Eyes.DRAGON;
 				changes++;
 			}
 			//</mod>

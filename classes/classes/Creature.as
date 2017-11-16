@@ -563,13 +563,7 @@ import mx.logging.ILogger;
 		public var nosePLong:String = "";
 
 		public var antennae:Antennae = new Antennae();
-
-		//Eyetype
 		public var eyes:Eyes = new Eyes();
-		public function get eyeType():Number { return eyes.type; }
-		public function set eyeType(value:Number):void { eyes.type = value; }
-		public function get eyeCount():Number { return eyes.count; }
-		public function set eyeCount(value:Number):void { eyes.count = value; }
 
 		//TongueType
 		public var tongue:Tongue = new Tongue();
@@ -696,7 +690,7 @@ import mx.logging.ILogger;
 				"balls", "ballSize", "cumMultiplier", "hoursSinceCum",
 				"tallness", "hipRating", "butt.rating", "lowerBody", "arms.type",
 				"skinType", "hairLength", "hairType",
-				"faceType", "ears.type", "tongueType", "eyeType",
+				"faceType", "ears.type", "tongueType", "eyes.type",
 				"str", "tou", "spe", "inte", "lib", "sens", "cor",
 				// Allow weaponAttack to be negative as a penalty to strength-calculated damage
 				// Same with armorDef, bonusHP, additionalXP
@@ -2438,7 +2432,7 @@ import mx.logging.ILogger;
 
 		public function canUseStare():Boolean
 		{
-			return [Eyes.BASILISK, Eyes.COCKATRICE].indexOf(eyeType) != -1;
+			return [Eyes.BASILISK, Eyes.COCKATRICE].indexOf(eyes.type) != -1;
 		}
 
 		public function isHoofed():Boolean
@@ -2962,35 +2956,27 @@ import mx.logging.ILogger;
 
 		public function isNaga():Boolean
 		{
-			if (lowerBody == LowerBody.NAGA)
-				return true;
-			return false;
+			return lowerBody == LowerBody.NAGA;
 		}
 
 		public function isTaur():Boolean
 		{
-			if (legCount > 2 && !isDrider()) // driders have genitals on their human part, inlike usual taurs... this is actually bad way to check, but too many places to fix just now
-				return true;
-			return false;
+			return legCount > 2 && !isDrider(); // driders have genitals on their human part, inlike usual taurs... this is actually bad way to check, but too many places to fix just now
 		}
 
 		public function isDrider():Boolean
 		{
-			return (lowerBody == LowerBody.DRIDER_LOWER_BODY);
+			return lowerBody == LowerBody.DRIDER_LOWER_BODY;
 		}
 
 		public function hasSpiderEyes():Boolean
 		{
-			if (eyeType == Eyes.SPIDER && eyeCount == 4)
-				return true;
-			return false;
+			return eyes.type == Eyes.SPIDER && eyes.count == 4;
 		}
 
 		public function isGoo():Boolean
 		{
-			if (lowerBody == LowerBody.GOO)
-				return true;
-			return false;
+			return lowerBody == LowerBody.GOO;
 		}
 
 		public function legs():String

@@ -334,7 +334,7 @@
 			///*OPTIONAL*/ //this.faceType = Face.; // default HUMAN
 			///*OPTIONAL*/ //this.ears.type = Ears.; // default HUMAN
 			///*OPTIONAL*/ //this.tongueType = Tongue.; // default HUMAN
-			///*OPTIONAL*/ //this.eyeType = Eyes.; // default HUMAN
+			///*OPTIONAL*/ //this.eyes.type = Eyes.; // default HUMAN
 
 			//// 9. Primary stats.
 			///*REQUIRED*/ initStrTouSpeInte(,,,);
@@ -1042,7 +1042,7 @@
 					+(Appearance.DEFAULT_FACE_NAMES[faceType]||("faceType#"+faceType))+" face, "
 					+(Appearance.DEFAULT_EARS_NAMES[ears.type]||("ears.type#"+ears.type))+" ears, "
 					+(Appearance.DEFAULT_TONGUE_NAMES[tongueType]||("tongueType#"+tongueType))+" tongue and "
-					+(Appearance.DEFAULT_EYES_NAMES[eyeType]||("eyeType#"+eyeType))+" eyes.\n";
+					+(Appearance.DEFAULT_EYES_NAMES[eyes.type]||("eyes.type#"+eyes.type))+" eyes.\n";
 			result += Hehas;
 			if (tailType == Tail.NONE) result += "no tail, ";
 			else result+=(Appearance.DEFAULT_TAIL_NAMES[tailType]||("tailType#"+tailType))+" tail with venom="+tailVenom+" and recharge="+tailRecharge+", ";

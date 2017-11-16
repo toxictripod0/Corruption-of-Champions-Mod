@@ -171,7 +171,7 @@ package classes
 						outputText("  You have a cat-like face, complete with moist nose and whiskers.  Your [skinDesc] is [furColor], hiding your [skin.noadj] underneath.");
 				if (player.hasScales()) 
 					outputText("  Your facial structure blends humanoid features with those of a cat.  A moist nose and whiskers are included, but overlaid with glittering [skinFurScales].");
-				if (player.eyeType != Eyes.BLACK_EYES_SAND_TRAP)
+				if (player.eyes.type != Eyes.BLACK_EYES_SAND_TRAP)
 				{
 					outputText("  Of course, no feline face would be complete without vertically slit eyes");
 					outputText(!player.hasReptileEyes() ? "." : ", although they come with a second set of eyelids, which is somewhat unusual for a cats face.");
@@ -270,29 +270,29 @@ package classes
 			//M/F stuff!
 			outputText("  It has " + player.faceDesc() + ".");
 			//Eyes
-			if (player.eyeType == Eyes.SPIDER) 
+			if (player.eyes.type == Eyes.SPIDER) 
 				outputText(" Your eyes are normal, save for their black irises, making them ominous and hypnotizing.");
-			else if (player.eyeType == Eyes.BLACK_EYES_SAND_TRAP) 
+			else if (player.eyes.type == Eyes.BLACK_EYES_SAND_TRAP) 
 				outputText("  Your eyes are solid spheres of inky, alien darkness.");
-			else if (player.eyeType == Eyes.WOLF) 
+			else if (player.eyes.type == Eyes.WOLF) 
 				outputText("  Your amber eyes are circled by darkness to help keep the sun from obscuring your view and have a second eyelid to keep them wet. You're rather near-sighted, but your peripherals are great!");
-			else if (player.eyeType == Eyes.COCKATRICE)
+			else if (player.eyes.type == Eyes.COCKATRICE)
 				outputText("  You have electric blue eyes spiderwebbed with lightning like streaks that signal their power and slit reptilian pupils."
 				          +" When excited your pupils dilate into wide circles.");
 			else if (player.faceType != Face.CAT && player.hasReptileEyes())
 			{
 				outputText("  Your eyes are");
-				switch (player.eyeType)
+				switch (player.eyes.type)
 				{
 					case Eyes.DRAGON: outputText(" prideful, fierce dragon eyes with vertically slitted pupils and burning orange irises. They glitter even in the darkness and they"); break;
 					case Eyes.LIZARD: outputText(" those of a lizard with vertically slitted pupils and green-yellowish irises. They"); break;
 					case Eyes.BASILISK: outputText(" basilisk eyes, grey reptilian pools with vertically slitted pupils. They");
 				}
 				outputText(" come with the typical second set of eyelids, allowing you to blink twice as much as others.");
-				if (player.eyeType == Eyes.BASILISK)
+				if (player.eyes.type == Eyes.BASILISK)
 					outputText(" Others seem compelled to look into them.");
 			}
-			if (player.eyeCount > 2)
+			if (player.eyes.count > 2)
 				outputText(" In addition to your primary two eyes, you have [extraEyesShort] positioned on your forehead.");
 
 			//Hair

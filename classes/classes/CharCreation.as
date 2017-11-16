@@ -201,7 +201,7 @@
 			player.lowerBody = LowerBody.HUMAN;
 			player.legCount = 2;
 			player.faceType = Face.HUMAN;
-			player.eyeCount = 2;
+			player.eyes.count = 2;
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) player.tailType = Tail.NONE;
 			player.tongueType = Tongue.HUMAN;
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) player.femininity = 50;
@@ -236,7 +236,7 @@
 				}
 			}
 			player.wingType = Wings.NONE;
-			if (player.eyeType == Eyes.BASILISK) player.eyeType = Eyes.LIZARD; // Silently change them to be lizard eyes again. Simple and stupid ;)
+			if (player.eyes.type == Eyes.BASILISK) player.eyes.type = Eyes.LIZARD; // Silently change them to be lizard eyes again. Simple and stupid ;)
 			//Default
 			player.skinTone = "light";
 			player.claws.tone = "";

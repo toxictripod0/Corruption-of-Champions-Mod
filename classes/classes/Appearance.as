@@ -2059,17 +2059,17 @@ package classes
 
 		public static function eyesDescript(i_creature:Creature):String
 		{
-			return DEFAULT_EYES_NAMES[i_creature.eyeType] + " eyes";
+			return DEFAULT_EYES_NAMES[i_creature.eyes.type] + " eyes";
 		}
 
 		public static function extraEyesDescript(i_creature:Creature):String
 		{
-			return num2Text(i_creature.eyeCount - 2) + " " + DEFAULT_EYES_NAMES[i_creature.eyeType] + (i_creature.eyeCount == 3 ? " eye" : " eyes");
+			return num2Text(i_creature.eyes.count - 2) + " " + DEFAULT_EYES_NAMES[i_creature.eyes.type] + (i_creature.eyes.count == 3 ? " eye" : " eyes");
 		}
 
 		public static function extraEyesDescriptShort(i_creature:Creature):String
 		{
-			return num2Text(i_creature.eyeCount - 2) + (i_creature.eyeCount == 3 ? " eye" : " eyes");
+			return num2Text(i_creature.eyes.count - 2) + (i_creature.eyes.count == 3 ? " eye" : " eyes");
 		}
 
 		public static function nagaLowerBodyColor2(i_creature:Creature):String

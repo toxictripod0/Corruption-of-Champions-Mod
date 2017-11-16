@@ -1060,7 +1060,7 @@ use namespace kGAMECLASS;
 				cockatriceCounter++;
 			if (faceType == Face.COCKATRICE)
 				cockatriceCounter++;
-			if (eyeType == Eyes.COCKATRICE)
+			if (eyes.type == Eyes.COCKATRICE)
 				cockatriceCounter++;
 			if (arms.type == Arms.COCKATRICE)
 				cockatriceCounter++;
@@ -1231,7 +1231,7 @@ use namespace kGAMECLASS;
 				counter++;
 			if (hasVagina() && vaginaType() == 5)
 				counter++;
-			if (eyeType == Eyes.BLACK_EYES_SAND_TRAP)
+			if (eyes.type == Eyes.BLACK_EYES_SAND_TRAP)
 				counter++;
 			if (wingType == Wings.GIANT_DRAGONFLY)
 				counter++;
@@ -1294,7 +1294,7 @@ use namespace kGAMECLASS;
 				wolfCounter++;
 			if (lowerBody == LowerBody.WOLF)
 				wolfCounter++;
-			if (eyeType == Eyes.WOLF)
+			if (eyes.type == Eyes.WOLF)
 				wolfCounter+=2;
 			if (hasFur() && wolfCounter > 0) //Only counts if we got wolf features
 				wolfCounter++;
@@ -1455,7 +1455,7 @@ use namespace kGAMECLASS;
 					lizardCounter++;
 				if (lizardCocks() > 0)
 					lizardCounter++;
-				if ([Eyes.LIZARD, Eyes.BASILISK].indexOf(eyeType) != -1)
+				if ([Eyes.LIZARD, Eyes.BASILISK].indexOf(eyes.type) != -1)
 					lizardCounter++;
 				if (hasReptileScales())
 					lizardCounter++;
@@ -1466,9 +1466,9 @@ use namespace kGAMECLASS;
 		public function spiderScore():Number
 		{
 			var score:Number = 0;
-			if (eyeType == Eyes.SPIDER && eyeCount == 4)
+			if (eyes.type == Eyes.SPIDER && eyes.count == 4)
 				score += 2;
-			else if (eyeType == Eyes.SPIDER)
+			else if (eyes.type == Eyes.SPIDER)
 				score++;
 			if (faceType == Face.SPIDER_FANGS)
 				score++;
@@ -1586,7 +1586,7 @@ use namespace kGAMECLASS;
 				dragonCounter++;
 			if (arms.type == Arms.PREDATOR && claws.type == Claws.DRAGON)
 				dragonCounter++;
-			if (eyeType == Eyes.DRAGON)
+			if (eyes.type == Eyes.DRAGON)
 				dragonCounter++;
 			if (hasDragonNeck())
 				dragonCounter++;
