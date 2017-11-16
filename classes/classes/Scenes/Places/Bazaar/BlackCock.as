@@ -1511,7 +1511,7 @@ package classes.Scenes.Places.Bazaar
 				player.horns = 2;
 				changes++;
 			}
-			if (rand(4) == 0 && changes < changeLimit && player.antennae != Antennae.NONE) {
+			if (rand(4) == 0 && changes < changeLimit && player.antennae.type != Antennae.NONE) {
 				mutations.removeAntennae();
 			}
 			if (rand(3) == 0 && changes < changeLimit && player.cockTotal() == 1 && player.countCocksOfType(CockTypesEnum.HUMAN) == 0) {
@@ -1671,7 +1671,7 @@ package classes.Scenes.Places.Bazaar
 				changes++;
 			}
 			//Removes antennaes!
-			if (rand(3) == 0 && changes < changeLimit && player.antennae > Antennae.NONE) {
+			if (rand(3) == 0 && changes < changeLimit && player.antennae.type > Antennae.NONE) {
 				mutations.removeAntennae();
 			}
 			//Hair turns back to normal

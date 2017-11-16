@@ -608,10 +608,7 @@ import mx.logging.ILogger;
 		public var nosePShort:String = "";
 		public var nosePLong:String = "";
 
-		//Head ornaments. Definitely need to convert away from hard coded types.
-		public var antennaePart:Antennae = new Antennae();
-		public function get antennae():Number { return antennaePart.type; }
-		public function set antennae(value:Number):void { antennaePart.type = value; }
+		public var antennae:Antennae = new Antennae();
 
 		//Eyetype
 		public var eyes:Eyes = new Eyes();

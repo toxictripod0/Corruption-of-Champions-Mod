@@ -116,7 +116,7 @@ import classes.internals.ChainedDrop;
 					.add(consumables.W__BOOK, 1 / 10)
 					.add(consumables.BEEHONY, 1 / 2)
 					.elseDrop(useables.B_CHITN);
-			this.antennae = Antennae.BEE;
+			this.antennae.type = Antennae.BEE;
 			this.wingType = Wings.BEE_LIKE_SMALL;
 			this.tailType = Tail.BEE_ABDOMEN;
 			this.tailVenom = 100;

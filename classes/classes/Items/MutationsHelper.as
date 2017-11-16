@@ -256,18 +256,18 @@ package classes.Items
 		 */
 		public function removeAntennae(inline:Boolean = false):Boolean
 		{
-			if (player.antennae == Antennae.NONE)
+			if (player.antennae.type == Antennae.NONE)
 				return false;
 
 			if (inline) {
-				switch (player.antennae) {
+				switch (player.antennae.type) {
 					case Antennae.COCKATRICE:
 					case Antennae.BEE:
 					default:
 						outputText(" Antennae pop free, and float lightly down towards the floor. ");
 				}
 			} else {
-				switch (player.antennae) {
+				switch (player.antennae.type) {
 					case Antennae.COCKATRICE:
 						outputText("\n\nYou feel your antennae like feathers shrivel at the root, the pair of soft quills falling softly to the"
 						          +" ground as your pores close.");
@@ -285,7 +285,7 @@ package classes.Items
 				}
 			}
 
-			player.antennae = Antennae.NONE;
+			player.antennae.type = Antennae.NONE;
 			changes++;
 			return true;
 		}

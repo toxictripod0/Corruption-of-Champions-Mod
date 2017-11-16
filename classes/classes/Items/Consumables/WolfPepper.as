@@ -67,7 +67,7 @@ package classes.Items.Consumables
 				mutations.updateClaws();
 			}
 			//remove antennae
-			if (player.antennae !== Antennae.NONE && rand(3) === 0 && changes < changeLimit) {
+			if (player.antennae.type !== Antennae.NONE && rand(3) === 0 && changes < changeLimit) {
 				mutations.removeAntennae();
 			}
 			//remove horns

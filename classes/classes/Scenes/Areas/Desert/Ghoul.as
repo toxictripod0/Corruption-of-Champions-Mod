@@ -551,11 +551,11 @@ package classes.Scenes.Areas.Desert {
 				this.hornType = Horns.NONE;
 			}
 			this.wingType = rand(13);
-			this.antennae = rand(2);
-			if (this.antennae == 2) {
-				this.antennae = Antennae.BEE;
+			this.antennae.type = rand(2);
+			if (this.antennae.type == 2) {
+				this.antennae.type = Antennae.BEE;
 			} else {
-				this.antennae = Antennae.NONE;
+				this.antennae.type = Antennae.NONE;
 			}
 			
 			checkMonster();

@@ -1053,7 +1053,7 @@ import classes.Items.*
 			showChangeOptions(bodyPartEditorHead, page, HORN_COUNT_CONSTANTS, changeHornCount);
 		}
 		private function changeAntennaeType(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.antennae = setIdx;
+			if (setIdx>=0) player.antennae.type = setIdx;
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorHead, page, ANTENNA_TYPE_CONSTANTS, changeAntennaeType);

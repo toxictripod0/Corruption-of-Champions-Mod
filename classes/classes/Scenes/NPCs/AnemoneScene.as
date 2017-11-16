@@ -936,7 +936,7 @@ package classes.Scenes.NPCs
 			if (monster.HP < 1) outputText("reclining");
 			else outputText("vigorously masturbating");
 			outputText(" girl's pussy call to you.  Your insectile abdomen pulses as eggs shift, lining up for deposition, and your long, black ovipositor slides out, pulsing in time with your heartbeat.  The idea of having those feelers stroke your strange organ while you unload your pent-up eggs sounds so good that a drop of honey oozes out, filling the air with a sweet scent that makes your");
-			if (player.antennae > Antennae.NONE) outputText(" antennae");
+			if (player.antennae.type > Antennae.NONE) outputText(" antennae");
 			else outputText("nose");
 			outputText(" tingle.  The anemone's eyes light up as your black shaft drools, and she leans forward, catching the nectar on a finger and raising it to her lips.");
 

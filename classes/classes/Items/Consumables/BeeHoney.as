@@ -141,9 +141,9 @@ package classes.Items.Consumables
 				mutations.removeExtraBreastRow(tfSource);
 			}
 			//Antennae
-			if (changes < changeLimit && player.antennae == Antennae.NONE && player.horns == 0 && Utils.rand(3) == 0) {
+			if (changes < changeLimit && player.antennae.type == Antennae.NONE && player.horns == 0 && Utils.rand(3) == 0) {
 				outputText("\n\nYour head itches momentarily as two floppy antennae sprout from your " + getGame().player.hairDescript() + ".");
-				player.antennae = Antennae.BEE;
+				player.antennae.type = Antennae.BEE;
 				changes++;
 			}
 			//Horns

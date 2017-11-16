@@ -345,9 +345,9 @@ package classes
 				else if (player.earType == Ears.WOLF) 
 					outputText("  A pair of wolf ears stick out from your head, attuned to every sound around you.");
 				//</mod>
-				if (player.antennae == Antennae.BEE) 
+				if (player.antennae.type == Antennae.BEE) 
 					outputText("  Floppy antennae also appear on your skull, bouncing and swaying in the breeze.");
-				else if (player.antennae == Antennae.COCKATRICE)
+				else if (player.antennae.type == Antennae.COCKATRICE)
 					outputText("  Two long antennae like feathers sit on your hairline, curling over the shape of your head.");
 			}
 			//not bald
@@ -401,13 +401,13 @@ package classes
 					           +" They allow you to stay in the water for quite a long time.");
 				}
 				// Gills.ANEMONE are handled below
-				if (player.antennae == Antennae.BEE) 
+				if (player.antennae.type == Antennae.BEE) 
 				{
 					if (player.earType == Ears.BUNNY) 
 						outputText("  Limp antennae also grow from just behind your hairline, waving and swaying in the breeze with your ears.");
 					else outputText("  Floppy antennae also grow from just behind your hairline, bouncing and swaying in the breeze.");
 				}
-				else if (player.antennae == Antennae.COCKATRICE)
+				else if (player.antennae.type == Antennae.COCKATRICE)
 				{
 					outputText("  Two long antennae like feathers sit on your hairline, curling over the shape of your head.");
 				}

@@ -1064,7 +1064,7 @@ use namespace kGAMECLASS;
 				cockatriceCounter++;
 			if (armType == Arms.COCKATRICE)
 				cockatriceCounter++;
-			if (antennae == Antennae.COCKATRICE)
+			if (antennae.type == Antennae.COCKATRICE)
 				cockatriceCounter++;
 			if (neck.type == Neck.COCKATRICE)
 				cockatriceCounter++;
@@ -1248,7 +1248,7 @@ use namespace kGAMECLASS;
 				beeCounter++;
 			if (hairColor == "black and yellow")
 				beeCounter += 2;
-			if (antennae == Antennae.BEE)
+			if (antennae.type == Antennae.BEE)
 			{
 				beeCounter++;
 				if (faceType == Face.HUMAN)
@@ -1642,7 +1642,7 @@ use namespace kGAMECLASS;
 				nagaCounter++;
 			if (tongueType == Tongue.SNAKE)
 				nagaCounter++;
-			if (nagaCounter > 0 && antennae == Antennae.NONE)
+			if (nagaCounter > 0 && antennae.type == Antennae.NONE)
 				nagaCounter++;
 			if (nagaCounter > 0 && wingType == Wings.NONE)
 				nagaCounter++;
@@ -1668,7 +1668,7 @@ use namespace kGAMECLASS;
 			if (hasPlainSkin() && bunnyCounter > 1)
 				bunnyCounter++;
 			//No wings and antennae a plus
-			if (bunnyCounter > 0 && antennae == Antennae.NONE)
+			if (bunnyCounter > 0 && antennae.type == Antennae.NONE)
 				bunnyCounter++;
 			if (bunnyCounter > 0 && wingType == Wings.NONE)
 				bunnyCounter++;

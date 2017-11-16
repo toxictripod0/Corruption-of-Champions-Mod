@@ -423,7 +423,7 @@
 			///*OPTIONAL*/ //this.wingDesc = ; // default Appearance.DEFAULT_WING_DESCS[wingType]
 
 			//// 19. Antennae
-			///*OPTIONAL*/ //this.antennae = Antennae.; // default NONE
+			///*OPTIONAL*/ //this.antennaePart.type = Antennae.; // default NONE
 
 			//// REQUIRED !!!
 			//// In debug mode will throw an error for uninitialized monster
@@ -1050,8 +1050,8 @@
 			else result += horns+" "+(Appearance.DEFAULT_HORNS_NAMES[hornType]||("hornType#"+hornType))+" horns, ";
 			if (wingType == Wings.NONE) result += "no wings, ";
 			else result += wingDesc+" wings (type "+(Appearance.DEFAULT_WING_NAMES[wingType]||("wingType#"+wingType))+"), ";
-			if (antennae == Antennae.NONE) result += "no antennae.\n\n";
-			else result += (Appearance.DEFAULT_ANTENNAE_NAMES[antennae]||("antennaeType#"+antennae))+" antennae.\n\n";
+			if (antennae.type == Antennae.NONE) result += "no antennae.\n\n";
+			else result += (Appearance.DEFAULT_ANTENNAE_NAMES[antennae.type]||("antennaeType#"+antennae.type))+" antennae.\n\n";
 
 			// GENITALS AND BREASTS
 			for (var i:int = 0; i<cocks.length; i++){
