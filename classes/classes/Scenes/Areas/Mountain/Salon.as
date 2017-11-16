@@ -490,10 +490,10 @@ private function beardMenu():void {
 	clearOutput();
 	outputText("\<i>I can help you with your beard-related needs,</i>\" Lynnette says.")
 	menu();
-	if (player.hasBeard() && player.beardLength > 0.5) addButton(0, "Cut Beard", cutBeard);
+	if (player.hasBeard() && player.beard.length > 0.5) addButton(0, "Cut Beard", cutBeard);
 	else addDisabledButton(0, "Beard Style", "You have no beard to cut.");
 	if (!player.hasBeard()) addButton(1, "Grow Beard", growBeard, 1);
-	else if (player.hasBeard() && player.beardLength < 6) addButton(1, "Lengthen Beard", growBeard, 0);
+	else if (player.hasBeard() && player.beard.length < 6) addButton(1, "Lengthen Beard", growBeard, 0);
 	else addDisabledButton(1, "Lengthen Beard", "Your beard is already long enough.");
 	if (player.hasBeard()) addButton(2, "Beard Style", changeBeardStyle);
 	else addDisabledButton(2, "Beard Style", "You have no beard to style.");
@@ -510,7 +510,7 @@ private function cutBeard():void {
 		return;
 	}
 	outputText("Lynnette and her daughters crowd around you with razor-sharp scissors, effortlessly paring down your " + player.beardDescript() + ".  When they've finished, you're left with ");
-	player.beardLength = 0.01;
+	player.beard.length = 0.01;
 	outputText(player.beardDescript() + ".");
 	doNext(camp.returnToCampUseOneHour);
 }
@@ -526,7 +526,7 @@ private function growBeard(mode:int = 0):void {
 		}
 		else {
 			outputText("Lynnette grabs a bottle and squirts a white fluid onto your chin and cheeks.  You really hope it isn't your payment.  But it must not be, as within short order your new beard sprouts! ");
-			player.beardLength = 0.2;
+			player.beard.length = 0.2;
 			if (temp >= 2) outputText("es");
 			outputText(" of " + player.hairColor + " beard.\n\n");
 			outputText("\"<i>I'll let you choose your style before you leave,</i>\" she says.\n\n");
@@ -544,7 +544,7 @@ private function growBeard(mode:int = 0):void {
 			outputText("Lynnette grabs a bottle and squirts a white fluid onto your chin and cheeks.  You really hope it isn't your payment.  But it must not be, as within short order you feel the added weight of ");		
 			temp = 5 + rand(5);
 			temp /= 5
-			player.beardLength += temp;
+			player.beard.length += temp;
 			outputText(num2Text(temp) + " more inch");
 			if (temp >= 2) outputText("es");
 			outputText(" of " + player.hairColor + " beard.");	
@@ -567,7 +567,7 @@ private function chooseBeardStyleFinalize(choiceStyle:int = 0):void {
 	clearOutput();
 	outputText("You tell Lynnette that you'd like to have your beard style changed to what you've indicated.\n\n")
 	outputText("Lynnette and her daughters begin to mess with your beard with razor-sharp scissors and white fluid while they work to change your beard into what you've wanted.\n\n");
-	player.beardStyle = choiceStyle;
+	player.beard.style = choiceStyle;
 	outputText("After a while, you now have " + player.beardDescript() + "!");
 	doNext(camp.returnToCampUseOneHour);
 }
@@ -577,8 +577,8 @@ private function removeBeard():void {
 	outputText("You tell Lynnette that you'd like to have your beard removed.\n\n");
 	outputText("Lynnette instructs you to take a seat and she applies a special cream all over your " + player.beardDescript() +".  Your beard starts to stiffen and falls out.  She gives your chin a good cleaning afterwards.\n\n");
 	outputText("<b>You no longer have a beard!</b>");
-	player.beardStyle = 0;
-	player.beardLength = 0;
+	player.beard.style = 0;
+	player.beard.length = 0;
 	doNext(camp.returnToCampUseOneHour);
 }
 

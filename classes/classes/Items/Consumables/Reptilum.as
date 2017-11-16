@@ -251,8 +251,8 @@ package classes.Items.Consumables
 			if (player.hasBeard() && changes < changeLimit && rand(3) === 0) {
 				outputText("\n\nYour " + player.beardDescript() + " feels looser and looser until finally, your beard falls out.  ");
 				outputText("(<b>You no longer have a beard!</b>)");
-				player.beardLength = 0;
-				player.beardStyle = 0;
+				player.beard.length = 0;
+				player.beard.style = 0;
 			}
 			//Big physical changes:
 			//-Legs – Draconic, clawed feet

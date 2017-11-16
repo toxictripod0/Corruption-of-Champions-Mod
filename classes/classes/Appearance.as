@@ -129,7 +129,7 @@ package classes
 			//
 			// LENGTH ADJECTIVE!
 			//
-			if (i_creature.beardLength == 0) {
+			if (i_creature.beard.length == 0) {
 				options = ["shaved",
 					"bald",
 					"smooth",
@@ -138,20 +138,20 @@ package classes
 				description = randomChoice(options) + " chin and cheeks";
 				return description;
 			}
-			if (i_creature.beardLength < 0.2) {
+			if (i_creature.beard.length < 0.2) {
 				options = ["close-cropped, ",
 					"trim, ",
 					"very short, "];
 				description += randomChoice(options);
 			}
-			if (i_creature.beardLength >= 0.2 && i_creature.beardLength < 0.5) description += "short, ";
-			if (i_creature.beardLength >= 0.5 && i_creature.beardLength < 1.5) description += "medium, ";
-			if (i_creature.beardLength >= 1.5 && i_creature.beardLength < 3) description += "moderately long, ";
-			if (i_creature.beardLength >= 3 && i_creature.beardLength < 6) {
+			if (i_creature.beard.length >= 0.2 && i_creature.beard.length < 0.5) description += "short, ";
+			if (i_creature.beard.length >= 0.5 && i_creature.beard.length < 1.5) description += "medium, ";
+			if (i_creature.beard.length >= 1.5 && i_creature.beard.length < 3) description += "moderately long, ";
+			if (i_creature.beard.length >= 3 && i_creature.beard.length < 6) {
 				if (rand(2) == 0) description += "long, ";
 				else description += "neck-length, ";
 			}
-			if (i_creature.beardLength >= 6) {
+			if (i_creature.beard.length >= 6) {
 				if (rand(2) == 0) description += "very long, ";
 				description += "chest-length, ";
 			}
@@ -167,10 +167,10 @@ package classes
 			else if (i_creature.hairType == 3) description += "gooey ";
 			else if (i_creature.hairType == 4) description += "tentacley ";
 			
-			if (i_creature.beardStyle == 0) description += "beard"
-			else if (i_creature.beardStyle == 1) description += "goatee"
-			else if (i_creature.beardStyle == 2) description += "clean-cut beard"
-			else if (i_creature.beardStyle == 3) description += "mountain-man beard"
+			if (i_creature.beard.style == 0) description += "beard"
+			else if (i_creature.beard.style == 1) description += "goatee"
+			else if (i_creature.beard.style == 2) description += "clean-cut beard"
+			else if (i_creature.beard.style == 3) description += "mountain-man beard"
 
 			return description;
 		}

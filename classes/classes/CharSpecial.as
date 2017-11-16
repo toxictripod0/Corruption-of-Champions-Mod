@@ -568,8 +568,8 @@ package classes
 			player.tailType = Tail.NONE;
 			player.tongueType = Tongue.HUMAN;
 			player.femininity = 85;
-			player.beardLength = 0;
-			player.beardStyle = 0;
+			player.beard.length = 0;
+			player.beard.style = 0;
 			player.tone = 30;
 			player.thickness = 50;
 			player.skinDesc = "skin";
@@ -650,8 +650,8 @@ package classes
 			player.tailType = Tail.NONE;
 			player.tongueType = Tongue.HUMAN;
 			player.femininity = 50;
-			player.beardLength = 0;
-			player.beardStyle = 0;
+			player.beard.length = 0;
+			player.beard.style = 0;
 			player.thickness = 50;
 			player.skinDesc = "skin";
 			player.hoursSinceCum = 0;
@@ -1035,8 +1035,8 @@ package classes
 			player.tailType = Tail.NONE;
 			player.tongueType = Tongue.HUMAN;
 			player.femininity = 85;
-			player.beardLength = 0;
-			player.beardStyle = 0;
+			player.beard.length = 0;
+			player.beard.style = 0;
 			//75 muscle tone
 			player.tone = 75;
 			//25 thickness
@@ -1273,8 +1273,8 @@ package classes
 			player.tailVenom = 4;
 			player.tongueType = Tongue.HUMAN;
 			player.femininity = 90;
-			player.beardLength = 0;
-			player.beardStyle = 0;
+			player.beard.length = 0;
+			player.beard.style = 0;
 			player.tone = 0;
 			player.thickness = 100;
 			player.skinDesc = "skin";
@@ -1482,8 +1482,8 @@ package classes
 			player.tailType = Tail.NONE;
 			player.tongueType = Tongue.HUMAN;
 			player.femininity = 70;
-			player.beardLength = 0;
-			player.beardStyle = 0;
+			player.beard.length = 0;
+			player.beard.style = 0;
 			player.tone = 30;
 			player.thickness = 50;
 			player.skinDesc = "skin";
@@ -1622,8 +1622,8 @@ package classes
 			player.hairType = Hair.ANEMONE; flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] = 1; // tentacle hair... never can have enough tentacles!
 			player.hairLength = 42; // obscenely long, you still can use ext serum to get more, but they would drag the floor, and this wouldn't be pleasant
 			player.femininity = 55; // androgynous
-			player.beardLength = 0;
-			player.beardStyle = 0;
+			player.beard.length = 0;
+			player.beard.style = 0;
 			
 			player.faceType = Face.FOX;
 			player.earType = Ears.FOX;
@@ -1801,8 +1801,8 @@ package classes
 			player.hairColor = "black";
 			player.hairLength = rand(50)+5;
 			player.femininity = rand(30)+35;
-			player.beardLength = 0;
-			player.beardStyle = 0;
+			player.beard.length = 0;
+			player.beard.style = 0;
 			
 			// wrecked body and obsessed mind...
 			player.str -= 15;

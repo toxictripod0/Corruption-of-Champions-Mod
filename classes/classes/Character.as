@@ -228,7 +228,7 @@ import classes.GlobalFlags.kFLAGS;
 					/*if (hasBeard())
 					{
 						output += "  As if that wasn't bad enough, your " + beard() + " falls out too!";
-						beardLength = 0;
+						beard.length = 0;
 						beardStyle = 0;
 					}*/
 					output += "</b>\n";
@@ -249,7 +249,7 @@ import classes.GlobalFlags.kFLAGS;
 					/*if (hasBeard())
 					{
 						output += "  As if that wasn't bad enough, your " + beard() + " falls out too!";
-						beardLength = 0;
+						beard.length = 0;
 						beardStyle = 0;
 					}*/
 					output += "</b>\n";
@@ -267,14 +267,14 @@ import classes.GlobalFlags.kFLAGS;
 				/*if (femininity > 40 && hasBeard())
 				{
 					output += "\n<b>Your beard falls out, leaving you with " + faceDesc() + ".</b>\n";
-					beardLength = 0;
+					beard.length = 0;
 					beardStyle = 0;
 				}*/
 			}
 			/*if (gender != 1 && hasBeard())
 			{
 				output += "\n<b>Your beard falls out, leaving you with " + faceDesc() + ".</b>\n";
-				beardLength = 0;
+				beard.length = 0;
 				beardStyle = 0;
 			}*/
 			return output;
@@ -282,7 +282,7 @@ import classes.GlobalFlags.kFLAGS;
 		
 		public function hasBeard():Boolean
 		{
-			return beardLength > 0;
+			return beard.length > 0;
 		}
 		
 		public function beardDesc():String
@@ -807,29 +807,29 @@ import classes.GlobalFlags.kFLAGS;
 
 		public function growBeard(amount:Number = .1):Boolean {
 			//Grow beard!
-			var tempBeard:Number = beardLength;
-			beardLength += amount;
-			if (beardLength > 0 && tempBeard == 0) {
+			var tempBeard:Number = beard.length;
+			beard.length += amount;
+			if (beard.length > 0 && tempBeard == 0) {
 				game.outputText("\n<b>You feel a tingling in your cheeks and chin.  You now have " + beardDescript() + " coating your cheeks and chin.\n</b>");
 				return true;
 			}
-			else if (beardLength >= 0.2 && tempBeard < 0.2) {
+			else if (beard.length >= 0.2 && tempBeard < 0.2) {
 				game.outputText("\n<b>Your beard's growth has reached a new threshold, giving you " + beardDescript() + ".\n</b>");
 				return true;
 			}
-			else if (beardLength >= 0.5 && tempBeard < 0.5) {
+			else if (beard.length >= 0.5 && tempBeard < 0.5) {
 				game.outputText("\n<b>Your beard's growth has reached a new threshold, giving you " + beardDescript() + ".\n</b>");
 				return true;
 			}
-			else if (beardLength >= 1.5 && tempBeard < 1.5) {
+			else if (beard.length >= 1.5 && tempBeard < 1.5) {
 				game.outputText("\n<b>Your beard's growth has reached a new threshold, giving you " + beardDescript() + ".\n</b>");
 				return true;
 			}
-			else if (beardLength >= 3 && tempBeard < 3) {
+			else if (beard.length >= 3 && tempBeard < 3) {
 				game.outputText("\n<b>Your beard's growth has reached a new threshold, giving you " + beardDescript() + ".\n</b>");
 				return true;
 			}
-			else if (beardLength >= 6 && tempBeard < 6) {
+			else if (beard.length >= 6 && tempBeard < 6) {
 				game.outputText("\n<b>Your beard's growth has reached a new threshold, giving you " + beardDescript() + ".\n</b>");
 				return true;
 			}

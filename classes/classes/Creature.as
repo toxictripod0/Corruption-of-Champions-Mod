@@ -391,16 +391,8 @@ import mx.logging.ILogger;
 		
 		public function get furColor():String { return skin.furColor; }
 		public function set furColor(value:String):void { skin.furColor = value; }
-		/*Beardstyle
-		0- normal
-		1- goatee
-		2- clean-cut
-		3- mountain-man*/
+
 		public var beard:Beard = new Beard();
-		public function get beardStyle():Number { return beard.style; }
-		public function set beardStyle(value:Number):void { beard.style = value; }
-		public function get beardLength():Number { return beard.length; }
-		public function set beardLength(value:Number):void { beard.length = value; }
 				
 		/*Skintype
 		0 - skin

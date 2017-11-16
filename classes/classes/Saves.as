@@ -873,10 +873,10 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile.data.gillType = player.gillType;
 		saveFile.data.armType = player.arms.type;
 		saveFile.data.hairLength = player.hairLength;
-		saveFile.data.beardLength = player.beardLength;
+		saveFile.data.beardLength = player.beard.length;
 		saveFile.data.eyeType = player.eyeType;
 		saveFile.data.eyeCount = player.eyeCount;
-		saveFile.data.beardStyle = player.beardStyle;
+		saveFile.data.beardStyle = player.beard.style;
 		saveFile.data.skinType = player.skinType;
 		saveFile.data.skinTone = player.skinTone;
 		saveFile.data.skinDesc = player.skinDesc;
@@ -1630,13 +1630,13 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			player.eyeType = saveFile.data.eyeType;
 		//BEARS
 		if (saveFile.data.beardLength == undefined)
-			player.beardLength = 0;
+			player.beard.length = 0;
 		else
-			player.beardLength = saveFile.data.beardLength;
+			player.beard.length = saveFile.data.beardLength;
 		if (saveFile.data.beardStyle == undefined)
-			player.beardStyle = 0;
+			player.beard.style = 0;
 		else
-			player.beardStyle = saveFile.data.beardStyle;
+			player.beard.style = saveFile.data.beardStyle;
 		//BODY STYLE
 		if (saveFile.data.tone == undefined)
 			player.tone = 50;

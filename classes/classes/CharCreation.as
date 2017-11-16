@@ -205,8 +205,8 @@
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) player.tailType = Tail.NONE;
 			player.tongueType = Tongue.HUMAN;
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) player.femininity = 50;
-			player.beardLength = 0;
-			player.beardStyle = 0;
+			player.beard.length = 0;
+			player.beard.style = 0;
 			player.tone = 50;
 			player.thickness = 50;
 			player.skinDesc = "skin";
@@ -242,8 +242,8 @@
 			player.clawTone = "";
 			player.hairColor = "brown";
 			player.hairType = Hair.NORMAL;
-			player.beardLength = 0;
-			player.beardStyle = 0;
+			player.beard.length = 0;
+			player.beard.style = 0;
 			//Exploration
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) {
 				//Inventory clear
@@ -901,7 +901,7 @@
 			addButton(14, "Back", menuBeardSettings);
 		}
 		private function chooseBeardStyle(choiceStyle:int = 0):void {
-			player.beardStyle = choiceStyle;
+			player.beard.style = choiceStyle;
 			menuBeardSettings();
 		}
 		private function menuBeardLength():void {
@@ -918,7 +918,7 @@
 			addButton(14, "Back", chooseBeardLength);
 		}
 		private function chooseBeardLength(choiceLength:Number = 0):void {
-			player.beardLength = choiceLength;
+			player.beard.length = choiceLength;
 			menuBeardSettings();
 		}
 		

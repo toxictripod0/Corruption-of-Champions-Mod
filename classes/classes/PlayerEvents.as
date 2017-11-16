@@ -949,7 +949,7 @@ package classes {
 				if (flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] == 0) {
 					if (!needNext) needNext = player.growHair(0.1);
 					else player.growHair(0.1);
-					if (player.beardLength > 0 && player.beardLength < 12) player.growBeard(0.02);
+					if (player.beard.length > 0 && player.beard.length < 12) player.growBeard(0.02);
 				}
 				//Clear dragon breath cooldown!
 				if (player.hasStatusEffect(StatusEffects.DragonBreathCooldown)) player.removeStatusEffect(StatusEffects.DragonBreathCooldown);

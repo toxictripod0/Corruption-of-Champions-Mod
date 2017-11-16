@@ -1065,13 +1065,13 @@ import classes.Items.*
 			showChangeOptions(bodyPartEditorHead, page, GILLS_TYPE_CONSTANTS, changeGillType);
 		}
 		private function changeBeardStyle(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.beardStyle = setIdx;
+			if (setIdx>=0) player.beard.style = setIdx;
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorHead, page, BEARD_STYLE_CONSTANTS, changeBeardStyle);
 		}
 		private function changeBeardLength(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.beardLength = BEARD_LENGTH_CONSTANTS[setIdx];
+			if (setIdx>=0) player.beard.length = BEARD_LENGTH_CONSTANTS[setIdx];
 			menu();
 			dumpPlayerData();
 			tagDemosSkin();
