@@ -144,9 +144,9 @@ package classes.Items.Consumables
 			}
 
 			//-Butt > 5 - decrease butt size
-			if (player.buttRating > 5 && changes < changeLimit && rand(4) == 0) {
+			if (player.butt.rating > 5 && changes < changeLimit && rand(4) == 0) {
 				changes++;
-				player.buttRating--;
+				player.butt.rating--;
 				outputText("\n\nA feeling of tightness starts in your [butt], increasing gradually. The sensation grows and grows, but as it does"
 				          +" your center of balance shifts. You reach back to feel yourself, and sure enough your [butt] is shrinking into a"
 				          +" more manageable size.");

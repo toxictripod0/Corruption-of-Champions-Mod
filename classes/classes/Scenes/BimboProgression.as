@@ -49,7 +49,7 @@ package classes.Scenes
 			outputText("<b>Hair</b>: length " + Math.round(player.hairLength) + ", " + player.hairDescript() + "\n");
 			outputText("<b>Tits</b>: " + player.breastDescript(0) + ", size: " + player.breastRows[0].breastRating + " (" + player.breastCup(0) + ") with " + player.nippleDescript(0) + " of size " + player.nippleLength + "\n");
 			if (player.isLactating()) outputText("<b>Lactation</b>: " + player.lactationQ() + ", biggest: " + player.biggestLactation() + "\n");
-			outputText("<b>Ass</b>: " + player.assDescript() + ", size: " + player.buttRating +  ", looseness: " + Math.round(player.ass.analLooseness) + ", capacity: " + Math.round(player.analCapacity()) + "\n");
+			outputText("<b>Ass</b>: " + player.assDescript() + ", size: " + player.butt.rating +  ", looseness: " + Math.round(player.ass.analLooseness) + ", capacity: " + Math.round(player.analCapacity()) + "\n");
 			outputText("<b>Hips</b>: " + player.hipDescript() + ", size: " + player.hipRating + "\n");
 			if (player.hasCock()) outputText("<b>Cock</b>: " + player.cockDescript() + ", length " + player.cocks[0].cockLength +"\n");
 			if (player.hasVagina()) {
@@ -324,9 +324,9 @@ package classes.Scenes
 						getGame().dynStats("cor", 0.5);
 						outputText("\n\n");
 					}
-					if (rand(2) == 0 && player.buttRating < 12) {
+					if (rand(2) == 0 && player.butt.rating < 12) {
 						outputText("You thrust your toy inside, deeper and deeper, faster and faster, feeling how your [ass] is bouncing in rhythm with your motions. You feel how it blossoms, becomes more sensitive and seductive, as you pump your insatiable [pussy]. ");
-						player.buttRating++;
+						player.butt.rating++;
 						outputText("You get on your knees, slower your pace, but start to thrust the dildo in your pussy much more vigorously, making loud moans every time the phallos enters you pussy, forcing it even deeper and harder inside, and feeling your [ass] shakes with every thrust.");
 						player.cuntChange(8 + 0.75 * player.vaginalCapacity(), true, false, false);
 						getGame().dynStats("cor", 0.5);
@@ -340,10 +340,10 @@ package classes.Scenes
 						getGame().dynStats("cor", 0.5);
 						player.hipRating++;						
 					}
-					if (rand(3) == 0 && player.buttRating < 12) {
+					if (rand(3) == 0 && player.butt.rating < 12) {
 						outputText("You focus your attention on your clit, while the other hand start caressing your [ass]. Your [asshole] is wet from your pussy juices, and as your finger easily slips inside, you let a shriek. Your [ass] feels so warm and sexy, you almost feel how it becomes even softer than it was before. ");
 						getGame().dynStats("cor", 0.5);
-						player.buttRating++;
+						player.butt.rating++;
 					}
 					
 				}
@@ -418,9 +418,9 @@ package classes.Scenes
 					player.hipRating += 0.5;
 					getGame().dynStats("cor", 0.5);
 				}							
-				if (rand(4) == 0 && player.buttRating < 12) {
+				if (rand(4) == 0 && player.butt.rating < 12) {
 					outputText("\n\nYou fill folds of your sluttish skirt on your [ass], and your mind starts to fantasize about filling pussy from behind. You imagine bloated and soft ass, bouncing with every movement, and you almost feel the jiggling flesh as you rhythmically shake your [hips]. You imagine being taken from behind, and close your eyes in immense pleasure.");
-					player.buttRating += 0.5;
+					player.butt.rating += 0.5;
 					getGame().dynStats("cor", 0.5);
 				}							
 				if (removeCock) {
@@ -731,7 +731,7 @@ package classes.Scenes
 			}
 			else {
 				outputText("You mind wanders recalling your recent hussles. Your gently stroke your [butt], thinking about the pleasures of being filled with large and tasty cocks.");
-				if (player.buttRating > 6) outputText(" Your whorish [ass] looks quite seductive in your nice dress, you caress it, feeling how your [asshole] clenches is anticipation of a pleasure.");
+				if (player.butt.rating > 6) outputText(" Your whorish [ass] looks quite seductive in your nice dress, you caress it, feeling how your [asshole] clenches is anticipation of a pleasure.");
 				outputText(" You daydream about getting fucked by all kinds of monstrous cocks, from minotaurs' thick, smelly dongs to demons' towering, bumpy pleasure-rods.");
 			}
 			if (flags[kFLAGS.TIMES_ORGASM_ANAL] > 10) {
@@ -840,10 +840,10 @@ package classes.Scenes
 				getGame().dynStats("cor", 0.5);
 				outputText("You feel how the fabric of the skirt is stretched by your [hips] as they become wider, more appropriate for a whore in a heat. ");
 			}
-			if (rand(2) == 0 && ( player.tone > 0 || player.buttRating < 12)) {
+			if (rand(2) == 0 && ( player.tone > 0 || player.butt.rating < 12)) {
 				outputText("Your cheeks are burning hot with arousal now. Every inch of your [ass] seems alight with sensation. ");
 				player.modTone(0, 4);
-				if (player.buttRating < 12) player.buttRating ++;
+				if (player.butt.rating < 12) player.butt.rating ++;
 				getGame().dynStats("cor", 0.5);
 				outputText("You imagine being some kind of butt slut, as you feverishly pump your fuckable [butt]. You moan softly in enjoyment. ");
 			}
@@ -1177,7 +1177,7 @@ package classes.Scenes
 				if (rand(2) == 0 ) player.orgasm('Anal',false);
 				else player.orgasm('Tits',false);
 			}
-			else if (!(player.buttRating >= 12)) {
+			else if (!(player.butt.rating >= 12)) {
 				outputText("\nYou are losing your mind in a sea pure enjoyment that awashes your broken body. Somehow you want to just stop bothering with your silly quest, and give in to the pleasure of being a whore, having your large and fuckable [ass] violated by monstrous cocks...\n\n");
 				if (rand(2) == 0 ) player.orgasm('Anal',false);
 				else player.orgasm('Vaginal',false);
@@ -1201,7 +1201,7 @@ package classes.Scenes
 				player.createPerk(PerkLib.BimboBrains, 0, 0, 0, 0);
 				getGame().dynStats("cor", 1);
 			}
-			if (player.tone == 0 && player.hipRating >= 12 && player.buttRating >= 12 && player.biggestTitSize() >= 12 && player.hasVagina() && !player.hasCock() && !( player.findPerk(PerkLib.BimboBody) >= 0 )) {
+			if (player.tone == 0 && player.hipRating >= 12 && player.butt.rating >= 12 && player.biggestTitSize() >= 12 && player.hasVagina() && !player.hasCock() && !( player.findPerk(PerkLib.BimboBody) >= 0 )) {
 				
 				if (player.hairColor != "platinum blonde") {
 					outputText("You notice a change in your " + player.hairDescript() + ".  It starts with a tingling in your scalp and intensifies ");
@@ -1379,16 +1379,16 @@ package classes.Scenes
 			var craving:int = 0;
 			
 			if (player.ass.analLooseness > 4 || player.ass.analWetness > 1 && rand(4) < 3) craving = 3; // 75% chance for big un
-			else if (player.ass.analLooseness > 3 && player.buttRating > 8 && rand(4) < 3) craving = 3;
-			else if (player.ass.analLooseness > 2 && player.buttRating >= 12 && rand(4) < 3) craving = 3;
+			else if (player.ass.analLooseness > 3 && player.butt.rating > 8 && rand(4) < 3) craving = 3;
+			else if (player.ass.analLooseness > 2 && player.butt.rating >= 12 && rand(4) < 3) craving = 3;
 			
 			// 2 - regular-sized
 			else if (player.ass.analLooseness > 2 && rand(4) < 3 ) craving = 2;
-			else if (player.buttRating > 8 || player.ass.analWetness >= 1) craving = 2;
+			else if (player.butt.rating > 8 || player.ass.analWetness >= 1) craving = 2;
 			
 			// 1 - finger
 			else if (player.ass.analLooseness >= 2 && rand(2) == 0) craving = 1; 
-			else if (player.hasCock() && player.buttRating > 4 && rand(2) == 0) craving = 1;
+			else if (player.hasCock() && player.butt.rating > 4 && rand(2) == 0) craving = 1;
 			else if (player.hasCock() && rand(4) == 0) craving = 1;
 			
 			

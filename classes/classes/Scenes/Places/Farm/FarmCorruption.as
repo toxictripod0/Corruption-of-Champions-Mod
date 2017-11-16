@@ -2921,8 +2921,8 @@ package classes.Scenes.Places.Farm
 			outputText(" shining, she sinks down to the next stage.");
 
 			outputText("\n\nYou don’t have to turn as you rise; she slides around herself, her fingers trail longingly down your waist and over your [hips] as she kneels behind you and pushes her hot tongue into the cleavage of your [butt], sliding downwards to tongue at your [asshole].  She first licks your valley quite clean of salt and musk, bathing your rose in lapping attention until it feels sensuously moist and soft, before smoothing her lips and tongue carefully across your ");
-			if (player.buttRating < 4) outputText("firm butt");
-			if (player.buttRating < 8) outputText("supple rump");
+			if (player.butt.rating < 4) outputText("firm butt");
+			if (player.butt.rating < 8) outputText("supple rump");
 			else outputText("soft ass");
 			outputText(", oiling it to a sheen. She makes little gasping, stifled breaths as she goes about it, and a grin comes to your lips.");
 
@@ -3143,7 +3143,7 @@ package classes.Scenes.Places.Farm
 
 			outputText("\n\n“<i>Glad you’re enjoying the view,</i>” she says, a grin twitching the corners of her mouth. “<i>Now you’re going to return the favor. Turn around. On your knees.</i>” Slowly you do " + ((!player.isBiped()) ? "as close as you can to what" : "") + " she asks, shifting yourself around on your lower body until you are facing the other way. A hand firmly presses into the back of your head, forcing your nose down into the clean-smelling sheets and your ass up. Heat spreads across your face as Whitney’s other hand lands on your [butt] and moves across it with a testing, admiring possessiveness.");
 
-			outputText("\n\n“<i>D’you know how hard it is to control myself when you’re striding around outside, swinging this bit of business around behind you?</i>” she says huskily. The hand on your head has disappeared; there’s a repetitive, slippery sound coming from behind you and you don’t have to guess to know where it’s gone. “<i>D’you bend over so much just to tease me? I swear you do. I swear you do, you secret little slut.</i>” She grasps your rump hard suddenly, making you gasp. “<i>All the other slaves ‘kin look, but only I get to touch it like this. And I ain’t gonna waste that. I’m gonna make you pay for flauntin’ such a nice, " + ((player.buttRating <= 4) ? "tight ass" : "big bottom") + ", I swear... sit still.</i>”");
+			outputText("\n\n“<i>D’you know how hard it is to control myself when you’re striding around outside, swinging this bit of business around behind you?</i>” she says huskily. The hand on your head has disappeared; there’s a repetitive, slippery sound coming from behind you and you don’t have to guess to know where it’s gone. “<i>D’you bend over so much just to tease me? I swear you do. I swear you do, you secret little slut.</i>” She grasps your rump hard suddenly, making you gasp. “<i>All the other slaves ‘kin look, but only I get to touch it like this. And I ain’t gonna waste that. I’m gonna make you pay for flauntin’ such a nice, " + ((player.butt.rating <= 4) ? "tight ass" : "big bottom") + ", I swear... sit still.</i>”");
 
 			outputText("\n\nHer hand withdraws and you listen to her move around the room behind you before returning to the bed, landing a number of objects on it as she returns to your rear with a business-like zeal. Your hands are grabbed and tied firmly behind your back with what feels like silk rope.");
 			if (player.isBiped() || player.isTaur()) outputText(" Next, she pushes your ankles apart, threads a leather strap around each and then pulls them tight with a sharp yank; you carefully test them and find with a cold thrill that there is a metal bar attached between them, forcing you to stay in this position.");
@@ -6320,7 +6320,7 @@ package classes.Scenes.Places.Farm
 			outputText("\n\nYou are all but lost to the gliding balm of her hands, but it begins to woozily occur to you, as you respire in time with her, that her breathing isn’t quite level; it occasionally catches, or goes slightly faster. After another few moments of enjoying her touch you begin to notice when this happens: every time her fingers move over one of the many mild scars and lumps you carry from your time adventuring. You grin; it’s pleasing to imagine soothing over the proof of your many hard victories turns her on a bit. ");
 
 			outputText("\n\nThe erotic tension builds as she finishes with your arms and slides her palms down to your [butt]. You don’t think this part of your anatomy needs much work but she goes about it anyway, sighing deeply as she moves her oiled hands in slow, wide circuits across the convex of your ");
-			if (player.buttRating >= 6) outputText("soft");
+			if (player.butt.rating >= 6) outputText("soft");
 			else outputText("brawny");
 			outputText(" rear. After she’s finished making your butt feel red and smooth she dips a heated, greasy hand between your [hips] and");
 			if (player.hasCock()) outputText(" grips your [cock]");

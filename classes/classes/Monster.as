@@ -315,7 +315,7 @@
 			//// 5. Body
 			///*REQUIRED*/ this.tallness = ;
 			///*OPTIONAL*/ //this.hipRating = Hips.RATING_; // default boyish
-			///*OPTIONAL*/ //this.buttRating = Butt.RATING_; // default buttless
+			///*OPTIONAL*/ //this.butt.rating = Butt.RATING_; // default buttless
 			///*OPTIONAL*/ //this.lowerBody = LOWER_BODY_; //default human
 			///*OPTIONAL*/ //this.arms.type = Arms.; // default human
 
@@ -1022,7 +1022,7 @@
 			// APPEARANCE
 			result +=Heis+Appearance.inchesAndFeetsAndInches(tallness)+" tall with "+
 					Appearance.describeByScale(hipRating,Appearance.DEFAULT_HIP_RATING_SCALES,"thinner than","wider than")+" hips and "+
-					Appearance.describeByScale(buttRating,Appearance.DEFAULT_BUTT_RATING_SCALES,"thinner than","wider than")+" butt.\n";
+					Appearance.describeByScale(butt.rating,Appearance.DEFAULT_BUTT_RATING_SCALES,"thinner than","wider than")+" butt.\n";
 			result +=Pronoun3+" lower body is "+(Appearance.DEFAULT_LOWER_BODY_NAMES[lowerBody]||("lowerBody#"+lowerBody));
 			result += ", "+pronoun3+" arms are "+(Appearance.DEFAULT_ARM_NAMES[arms.type]||("armType#"+arms.type));
 			result += ", "+pronoun1+" "+have+" "+skinTone+" "+skinAdj+" "+skinDesc+" (type "+(Appearance.DEFAULT_SKIN_NAMES[skinType]||("skinType#"+skinType))+").\n";

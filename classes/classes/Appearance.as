@@ -1620,7 +1620,7 @@ package classes
 		{
 			var description:String = "";
 			var options:Array;
-			if (i_character.buttRating <= 1) {
+			if (i_character.butt.rating <= 1) {
 				if (i_character.tone >= 60)
 					description += "incredibly tight, perky ";
 				else {
@@ -1633,7 +1633,7 @@ package classes
 					description += " ";
 				}
 			}
-			if (i_character.buttRating > 1 && i_character.buttRating < 4) {
+			if (i_character.butt.rating > 1 && i_character.butt.rating < 4) {
 				if (i_character.tone >= 65) {
 					options = ["perky, muscular ",
 						"tight, toned ",
@@ -1662,7 +1662,7 @@ package classes
 					description = randomChoice(options);
 				}
 			}
-			if (i_character.buttRating >= 4 && i_character.buttRating < 6) {
+			if (i_character.butt.rating >= 4 && i_character.butt.rating < 6) {
 				//TOIGHT LIKE A TIGER
 				if (i_character.tone >= 65) {
 					options = ["nicely muscled ",
@@ -1689,7 +1689,7 @@ package classes
 					description = randomChoice(options);
 				}
 			}
-			if (i_character.buttRating >= 6 && i_character.buttRating < 8) {
+			if (i_character.butt.rating >= 6 && i_character.butt.rating < 8) {
 				//TOIGHT LIKE A TIGER
 				if (i_character.tone >= 65) {
 					options = ["full, toned ",
@@ -1722,7 +1722,7 @@ package classes
 					description = randomChoice(options);
 				}
 			}
-			if (i_character.buttRating >= 8 && i_character.buttRating < 10) {
+			if (i_character.butt.rating >= 8 && i_character.butt.rating < 10) {
 				//TOIGHT LIKE A TIGER
 				if (i_character.tone >= 65) {
 					options = ["large, muscular ",
@@ -1756,7 +1756,7 @@ package classes
 					description = randomChoice(options);
 				}
 			}
-			if (i_character.buttRating >= 10 && i_character.buttRating < 13) {
+			if (i_character.butt.rating >= 10 && i_character.butt.rating < 13) {
 				//TOIGHT LIKE A TIGER
 				if (i_character.tone >= 65) {
 					options = ["thick, muscular ",
@@ -1791,7 +1791,7 @@ package classes
 					description = randomChoice(options);
 				}
 			}
-			if (i_character.buttRating >= 13 && i_character.buttRating < 16) {
+			if (i_character.butt.rating >= 13 && i_character.butt.rating < 16) {
 				//TOIGHT LIKE A TIGER
 				if (i_character.tone >= 65) {
 					options = ["expansive, muscled ",
@@ -1828,7 +1828,7 @@ package classes
 					description = randomChoice(options);
 				}
 			}
-			if (i_character.buttRating >= 16 && i_character.buttRating < 20) {
+			if (i_character.butt.rating >= 16 && i_character.butt.rating < 20) {
 				if (i_character.tone >= 65) {
 					options = ["huge, toned ",
 						"vast, muscular ",
@@ -1863,7 +1863,7 @@ package classes
 					description = randomChoice(options);
 				}
 			}
-			if (i_character.buttRating >= 20) {
+			if (i_character.butt.rating >= 20) {
 				if (i_character.tone >= 65) {
 					if (rand(7) == 0) return "colossal, muscly ass";
 					options = ["ginormous, muscle-bound ",
@@ -1930,53 +1930,53 @@ package classes
 		{
 			var description:String = "";
 			var options:Array;
-			if (i_creature.buttRating <= 1) {
+			if (i_creature.butt.rating <= 1) {
 				options = ["insignificant ",
 					"very small "];
 				description = randomChoice(options);
 			}
-			if (i_creature.buttRating > 1 && i_creature.buttRating < 4) {
+			if (i_creature.butt.rating > 1 && i_creature.butt.rating < 4) {
 				options = ["tight ",
 					"firm ",
 					"compact "];
 				description = randomChoice(options);
 			}
-			if (i_creature.buttRating >= 4 && i_creature.buttRating < 6) {
+			if (i_creature.butt.rating >= 4 && i_creature.butt.rating < 6) {
 				options = ["regular ",
 					"unremarkable "];
 				description = randomChoice(options);
 			}
-			if (i_creature.buttRating >= 6 && i_creature.buttRating < 8) {
+			if (i_creature.butt.rating >= 6 && i_creature.butt.rating < 8) {
 				if (rand(3) == 0) return "handful of ass";
 				options = ["full ",
 					"shapely "];
 				description = randomChoice(options);
 			}
-			if (i_creature.buttRating >= 8 && i_creature.buttRating < 10) {
+			if (i_creature.butt.rating >= 8 && i_creature.butt.rating < 10) {
 				options = ["squeezable ",
 					"large ",
 					"substantial "];
 				description = randomChoice(options);
 			}
-			if (i_creature.buttRating >= 10 && i_creature.buttRating < 13) {
+			if (i_creature.butt.rating >= 10 && i_creature.butt.rating < 13) {
 				options = ["jiggling ",
 					"spacious ",
 					"heavy "];
 				description = randomChoice(options);
 			}
-			if (i_creature.buttRating >= 13 && i_creature.buttRating < 16) {
+			if (i_creature.butt.rating >= 13 && i_creature.butt.rating < 16) {
 				if (rand(3) == 0) return "generous amount of ass";
 				options = ["expansive ",
 					"voluminous "];
 				description = randomChoice(options);
 			}
-			if (i_creature.buttRating >= 16 && i_creature.buttRating < 20) {
+			if (i_creature.butt.rating >= 16 && i_creature.butt.rating < 20) {
 				if (rand(3) == 2) return "jiggling expanse of ass";
 				options = ["huge ",
 					"vast "];
 				description = randomChoice(options);
 			}
-			if (i_creature.buttRating >= 20) {
+			if (i_creature.butt.rating >= 20) {
 				options = ["ginormous ",
 					"colossal ",
 					"tremendous "];

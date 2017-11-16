@@ -65,7 +65,7 @@ package classes.Items.Armors
 			}
 			
 			if (!wornLower) {
-				if (game.player.buttRating < 8) {
+				if (game.player.butt.rating < 8) {
 					outputText("The sensation of tender fabric clinging to your [butt] arouses you immensely, as you smooth your skirt. ");
 				}
 				else {

@@ -61,10 +61,10 @@ package classes.Items.Consumables
 				outputText("\n\nYou blink as you feel your center of gravity shift lower. You look down and realize the ground is closer now. You appear to have gotten shorter!");
 				changes++;
 			}
-			if (player.buttRating < 6 && rand(3) === 0 && changes < changeLimit) {
-				player.buttRating += (1 + rand(1));
-				if (player.buttRating > 6) {
-					player.buttRating = 6;
+			if (player.butt.rating < 6 && rand(3) === 0 && changes < changeLimit) {
+				player.butt.rating += (1 + rand(1));
+				if (player.butt.rating > 6) {
+					player.butt.rating = 6;
 				}
 				outputText("\n\nYou feel your clothes tighten around your [butt], your behind expanding. Thankfully, it stops before your clothes can't handle it. As you run your hand over the tight fabric, you can't help but grope the now plumper flesh.");
 			}

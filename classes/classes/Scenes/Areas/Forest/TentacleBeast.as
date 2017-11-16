@@ -124,7 +124,7 @@ package classes.Scenes.Areas.Forest
 			this.ass.analWetness = AssClass.WETNESS_SLIME_DROOLING;
 			this.tallness = rand(9) + 70;
 			this.hipRating = Hips.RATING_BOYISH;
-			this.buttRating = Butt.RATING_BUTTLESS;
+			this.butt.rating = Butt.RATING_BUTTLESS;
 			this.skinTone = "green";
 			this.skinType = Skin.PLAIN;
 			this.skinDesc = "bark";

@@ -128,7 +128,7 @@ package classes.Scenes.Dungeons.DesertCave
 			this.createStatusEffect(StatusEffects.BonusACapacity,50,0,0,0);
 			this.tallness = 8*12+6;
 			this.hipRating = Hips.RATING_CURVY;
-			this.buttRating = Butt.RATING_LARGE;
+			this.butt.rating = Butt.RATING_LARGE;
 			this.skinTone = "bronzed";
 			this.hairColor = "platinum-blonde";
 			this.hairLength = 15;

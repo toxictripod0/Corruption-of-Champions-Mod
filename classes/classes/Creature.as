@@ -565,19 +565,7 @@ import mx.logging.ILogger;
 		public function get hipRating():Number { return hips.rating; }
 		public function set hipRating(value:Number):void { hips.rating = value; }
 		
-		/*buttRating
-		0 - buttless
-		2 - tight
-		4 - average
-		6 - noticable
-		8 - large
-		10 - jiggly
-		13 - expansive
-		16 - huge
-		20 - inconceivably large/big/huge etc*/
 		public var butt:Butt = new Butt();
-		public function get buttRating():Number { return butt.rating; }
-		public function set buttRating(value:Number):void { butt.rating = value; }
 		
 		//Piercings
 		//TODO: Pull this out into it's own class and enum.
@@ -732,7 +720,7 @@ import mx.logging.ILogger;
 			// 2.1. non-negative Number fields
 			error += Utils.validateNonNegativeNumberFields(this,"Monster.validate",[
 				"balls", "ballSize", "cumMultiplier", "hoursSinceCum",
-				"tallness", "hipRating", "buttRating", "lowerBody", "arms.type",
+				"tallness", "hipRating", "butt.rating", "lowerBody", "arms.type",
 				"skinType", "hairLength", "hairType",
 				"faceType", "earType", "tongueType", "eyeType",
 				"str", "tou", "spe", "inte", "lib", "sens", "cor",

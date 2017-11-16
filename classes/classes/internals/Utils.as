@@ -4,6 +4,7 @@
 package classes.internals
 {
 	import classes.*;
+	import coc.script.Eval;
 	public class Utils extends Object
 	{
 		private static const NUMBER_WORDS_NORMAL:Array		= ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
@@ -368,17 +369,14 @@ package classes.internals
 			var propExists:Boolean;
 			var fieldRef:*;
 			for each (var field:String in nnf) {
-				if (field.indexOf('.') >= 0) {
-					var fields:Array = field.split('.');
-					propExists = o[fields[0]].hasOwnProperty(fields[1]);
-					fieldRef = o[fields[0]][fields[1]];
-				} else {
-					propExists = o.hasOwnProperty(field);
-					fieldRef = o[field];
+				try {
+					var value:* = Eval.eval(o, field);
+					if (value === undefined || !(value is Number)) error += "Misspelling in "+func+".nnf: '"+field+"'. ";
+					else if (value === null) error += "Null '"+field+"'. ";
+					else if (value < 0) error += "Negative '"+field+"'. ";
+				} catch (e:Error) {
+					error += "Error calling eval on '"+func+"': "+e.message+". ";
 				}
-				if (!propExists || !(fieldRef is Number) && fieldRef != null) error += "Misspelling in "+func+".nnf: '"+field+"'. ";
-				else if (fieldRef == null) error += "Null '"+field+"'. ";
-				else if (fieldRef < 0) error += "Negative '"+field+"'. ";
 			}
 			return error;
 		}
@@ -389,17 +387,14 @@ package classes.internals
 			var propExists:Boolean;
 			var fieldRef:*;
 			for each (var field:String in nef) {
-				if (field.indexOf('.') >= 0) {
-					var fields:Array = field.split('.');
-					propExists = o[fields[0]].hasOwnProperty(fields[1]);
-					fieldRef = o[fields[0]][fields[1]];
-				} else {
-					propExists = o.hasOwnProperty(field);
-					fieldRef = o[field];
+				try {
+					var value:* = Eval.eval(o, field);
+					if (value === undefined || !(value is String)) error += "Misspelling in " + func + ".nef: '" + field + "'. ";
+					else if (value == null) error += "Null '" + field + "'. ";
+					else if (value == "") error += "Empty '" + field + "'. ";
+				} catch (e:Error) {
+					error += "Error calling eval on '"+func+"': "+e.message+". ";
 				}
-				if (!propExists || !(fieldRef is String) && fieldRef != null) error += "Misspelling in "+func+".nef: '"+field+"'. ";
-				else if (fieldRef == null) error += "Null '"+field+"'. ";
-				else if (fieldRef == "") error += "Empty '"+field+"'. ";
 			}
 			return error;
 		}

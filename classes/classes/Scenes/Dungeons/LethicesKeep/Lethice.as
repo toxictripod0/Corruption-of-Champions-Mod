@@ -38,7 +38,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			this.balls = 2;
 			this.ballSize = 4;
 			this.hipRating = Hips.RATING_SLENDER;
-			this.buttRating = Butt.RATING_TIGHT;
+			this.butt.rating = Butt.RATING_TIGHT;
 			initStrTouSpeInte(110, 110, 110, 110);
 			initLibSensCor(100, 40, 100);
 			this.weaponName = "whip";

@@ -183,7 +183,7 @@ import classes.internals.WeightedDrop;
 			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.tallness = 4*12;
 			this.hipRating = Hips.RATING_SLENDER;
-			this.buttRating = Butt.RATING_TIGHT;
+			this.butt.rating = Butt.RATING_TIGHT;
 			this.skinTone = "spotted";
 			this.skinType = Skin.FUR;
 			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.FUR];

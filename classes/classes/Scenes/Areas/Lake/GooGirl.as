@@ -162,7 +162,7 @@ package classes.Scenes.Areas.Lake
 			this.createStatusEffect(StatusEffects.BonusACapacity,9001,0,0,0);
 			this.tallness = rand(8) + 70;
 			this.hipRating = Hips.RATING_AMPLE;
-			this.buttRating = Butt.RATING_LARGE;
+			this.butt.rating = Butt.RATING_LARGE;
 			this.lowerBody = LowerBody.GOO;
 			var tone:String = randomChoice("blue", "purple", "crystal");
 			this.skinTone = tone;

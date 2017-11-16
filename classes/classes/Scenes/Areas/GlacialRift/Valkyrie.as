@@ -154,7 +154,7 @@ package classes.Scenes.Areas.GlacialRift
 			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.tallness = 7*12;
 			this.hipRating = Hips.RATING_SLENDER;
-			this.buttRating = Butt.RATING_TIGHT;
+			this.butt.rating = Butt.RATING_TIGHT;
 			this.skinTone = "light";
 			this.skinType = Skin.PLAIN;
 			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.FUR];

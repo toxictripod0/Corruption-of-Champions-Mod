@@ -83,14 +83,14 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//- If butt rating is greater than “petite”:
-			if (player.buttRating >= 8 && rand(3) === 0 && changes < changeLimit)
+			if (player.butt.rating >= 8 && rand(3) === 0 && changes < changeLimit)
 			{
 				outputText("\n\nYou cringe as your [butt] begins to feel uncomfortably tight.  Once the sensation passes, you look over your shoulder, inspecting yourself.  It would appear that your ass has become smaller!");
-				player.buttRating--;
-				if (player.buttRating > 10) player.buttRating--;
-				if (player.buttRating > 15) player.buttRating--;
-				if (player.buttRating > 20) player.buttRating--;
-				if (player.buttRating > 23) player.buttRating--;
+				player.butt.rating--;
+				if (player.butt.rating > 10) player.butt.rating--;
+				if (player.butt.rating > 15) player.butt.rating--;
+				if (player.butt.rating > 20) player.butt.rating--;
+				if (player.butt.rating > 23) player.butt.rating--;
 				changes++;
 			}
 

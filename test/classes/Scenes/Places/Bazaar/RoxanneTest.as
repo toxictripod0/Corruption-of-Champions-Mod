@@ -115,7 +115,7 @@ package classes.Scenes.Places.Bazaar{
 		[Test] 
         public function roxanneRepeatedStretchingWithBigBooty():void {
 			setRoxanneLargeSize();
-			player.buttRating = Butt.RATING_EXPANSIVE;
+			player.butt.rating = Butt.RATING_EXPANSIVE;
 
 			var testFunction:Function = function():void {
 				cut.roxanneDrinkingContestTest();
@@ -133,7 +133,7 @@ package classes.Scenes.Places.Bazaar{
 		[Test] 
         public function roxanneCounterResetWithBigBooty():void {
 			setRoxanneLargeSize();
-			player.buttRating = Butt.RATING_EXPANSIVE;
+			player.butt.rating = Butt.RATING_EXPANSIVE;
 
 			var testFunction:Function = function():void {
 				cut.roxanneDrinkingContestTest();

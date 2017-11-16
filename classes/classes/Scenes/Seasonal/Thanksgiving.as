@@ -721,13 +721,13 @@ package classes.Scenes.Seasonal {
 				if (player.thickness < 50) player.thickness += 5;
 				changed = true;
 			}
-			if (player.buttRating < 35) {
+			if (player.butt.rating < 35) {
 				outputText("  You notice your ass filling out, gaining more mass as it visibly grows before your eyes."); 
-				if (player.buttRating < 4) player.buttRating += 3;
-				if (player.buttRating <= 10) player.buttRating += 2;
-				if (player.buttRating <= 15) player.buttRating += 1;
-				if (player.buttRating <= 20) player.buttRating += 1;
-				if (player.buttRating <= 35) player.buttRating += 1;
+				if (player.butt.rating < 4) player.butt.rating += 3;
+				if (player.butt.rating <= 10) player.butt.rating += 2;
+				if (player.butt.rating <= 15) player.butt.rating += 1;
+				if (player.butt.rating <= 20) player.butt.rating += 1;
+				if (player.butt.rating <= 35) player.butt.rating += 1;
 				changed = true;
 			}
 			if (player.hipRating < 35) {

@@ -71,7 +71,7 @@
 			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.tallness = rand(12) + 55;
 			this.hipRating = Hips.RATING_CURVY;
-			this.buttRating = Butt.RATING_LARGE;
+			this.butt.rating = Butt.RATING_LARGE;
 			this.skinTone = "bronzed";
 			this.hairColor = "sandy-blonde";
 			this.hairLength = 15;

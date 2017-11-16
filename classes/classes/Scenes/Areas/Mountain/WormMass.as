@@ -99,7 +99,7 @@ package classes.Scenes.Areas.Mountain
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.tallness = 1;
 			this.hipRating = Hips.RATING_SLENDER;
-			this.buttRating = Butt.RATING_BUTTLESS;
+			this.butt.rating = Butt.RATING_BUTTLESS;
 			this.skinTone = "white";
 			initStrTouSpeInte(35, 5, 10, 1);
 			initLibSensCor(90, 60, 90);

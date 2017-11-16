@@ -204,7 +204,7 @@ package classes.Scenes.Places.Bazaar
 				case "P. Potatoes":
 					player.refillHunger(70);
 					if (flags[kFLAGS.HUNGER_ENABLED] == 0) player.modThickness(100, 2);
-					if (flags[kFLAGS.HUNGER_ENABLED] == 0 || (rand(2) == 0 && player.hunger100 >= 80)) player.buttRating++;
+					if (flags[kFLAGS.HUNGER_ENABLED] == 0 || (rand(2) == 0 && player.hunger100 >= 80)) player.butt.rating++;
 					break;
 				case "Spicy Chilli":
 					player.refillHunger(60);

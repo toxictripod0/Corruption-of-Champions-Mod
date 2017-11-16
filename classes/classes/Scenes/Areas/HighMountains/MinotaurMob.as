@@ -172,7 +172,7 @@ package classes.Scenes.Areas.HighMountains
 			this.createStatusEffect(StatusEffects.BonusACapacity,30,0,0,0);
 			this.tallness = rand(37) + 84;
 			this.hipRating = Hips.RATING_AVERAGE;
-			this.buttRating = Butt.RATING_AVERAGE+1;
+			this.butt.rating = Butt.RATING_AVERAGE+1;
 			this.lowerBody = LowerBody.HOOFED;
 			this.skinTone = "red";
 			this.skinType = Skin.FUR;

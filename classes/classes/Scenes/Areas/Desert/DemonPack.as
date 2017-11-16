@@ -113,7 +113,7 @@ package classes.Scenes.Areas.Desert
 			this.ass.analWetness = AssClass.WETNESS_SLIME_DROOLING;
 			this.tallness = rand(8) + 70;
 			this.hipRating = Hips.RATING_AMPLE+2;
-			this.buttRating = Butt.RATING_LARGE;
+			this.butt.rating = Butt.RATING_LARGE;
 			this.skinTone = "red";
 			this.hairColor = "black";
 			this.hairLength = 15;

@@ -251,9 +251,9 @@ public class CorruptedGlade extends BaseContent implements TimeAwareInterface,En
 					player.hairColor = "green";
 				}
 				//+butt up to 10
-				if (rand(4) == 0 && player.buttRating <= 10) {
+				if (rand(4) == 0 && player.butt.rating <= 10) {
 					outputText("A strange shifting occurs on your backside, making your " + player.armorName + " feel tight.  <b>Your butt has grown larger</b>, becoming a " + player.buttDescript() + ".  ");
-					player.buttRating += rand(3) + 1;
+					player.butt.rating += rand(3) + 1;
 				}
 				//Rarely change one prick to a vine-like tentacle cock. 
 				if (rand(3) == 0 && player.cocks.length > 0 && player.hairColor == "green") {

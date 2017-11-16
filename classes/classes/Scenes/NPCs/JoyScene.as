@@ -2252,14 +2252,14 @@ package classes.Scenes.NPCs
 			outputText("\n\nUpon seeing that, you give her a hug, ruffling her hair and tell her you'll think about it.");
 			outputText("\n\nJoy smiles, leans into the hug, then wanders off, presumably to check on your kids.");
 			//Butt increase
-			if (player.buttRating < 14 && rand(2) == 0) {
-				if (player.buttRating < 10) {
-					player.buttRating++;
+			if (player.butt.rating < 14 && rand(2) == 0) {
+				if (player.butt.rating < 10) {
+					player.butt.rating++;
 					outputText("\n\nYou notice your " + player.buttDescript() + " feeling larger and plumper after the ordeal.");				
 				}
 				//Big butts grow slower!
-				else if (player.buttRating < 14 && rand(2) == 0) {
-					player.buttRating++;
+				else if (player.butt.rating < 14 && rand(2) == 0) {
+					player.butt.rating++;
 					outputText("\n\nYou notice your " + player.buttDescript() + " feeling larger and plumper after the ordeal.");
 				}
 			}

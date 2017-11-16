@@ -88,7 +88,7 @@ package classes.Scenes.Monsters
 			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.tallness = rand(24) + 25;
 			this.hipRating = Hips.RATING_BOYISH;
-			this.buttRating = Butt.RATING_TIGHT;
+			this.butt.rating = Butt.RATING_TIGHT;
 			this.skinTone = "red";
 			this.hairColor = "black";
 			this.hairLength = 5;

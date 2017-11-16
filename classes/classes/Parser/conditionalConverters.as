@@ -71,7 +71,7 @@
 				"issquirter"		: function(thisPtr:*):* {return  (kGAMECLASS.player.wetness() >= 4);},
 				"vaginalwetness"	: function(thisPtr:*):* {return  kGAMECLASS.player.wetness();},
 				"anallooseness"		: function(thisPtr:*):* {return  kGAMECLASS.player.ass.analLooseness;},
-				"buttrating"		: function(thisPtr:*):* {return  kGAMECLASS.player.buttRating;},
+				"buttrating"		: function(thisPtr:*):* {return  kGAMECLASS.player.butt.rating;},
 				"ispregnant"		: function(thisPtr:*):* {return  (kGAMECLASS.player.pregnancyIncubation > 0);},
 				"isbuttpregnant"	: function(thisPtr:*):* {return  (kGAMECLASS.player.buttPregnancyIncubation > 0);},
 				"hasnipplecunts"	: function(thisPtr:*):* {return  kGAMECLASS.player.hasFuckableNipples();},

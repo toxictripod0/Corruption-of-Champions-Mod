@@ -747,7 +747,7 @@ use namespace kGAMECLASS;
 				else
 				{
 					desc += "a wide, cushiony body";
-					if (gender >= 2 || biggestTitSize() > 3 || hipRating > 7 || buttRating > 7)
+					if (gender >= 2 || biggestTitSize() > 3 || hipRating > 7 || butt.rating > 7)
 						desc += " and plenty of jiggle on your curves";
 				}
 			}
@@ -763,17 +763,17 @@ use namespace kGAMECLASS;
 				else if (tone > 25)
 				{
 					desc += "a very wide body";
-					if (gender >= 2 || biggestTitSize() > 4 || hipRating > 10 || buttRating > 10)
+					if (gender >= 2 || biggestTitSize() > 4 || hipRating > 10 || butt.rating > 10)
 						desc += ", lots of curvy jiggles,";
 					desc += " and hints of muscle underneath";
 				}
 				else
 				{
 					desc += "a thick";
-					if (gender >= 2 || biggestTitSize() > 4 || hipRating > 10 || buttRating > 10)
+					if (gender >= 2 || biggestTitSize() > 4 || hipRating > 10 || butt.rating > 10)
 						desc += ", voluptuous";
 					desc += " body and plush, ";
-					if (gender >= 2 || biggestTitSize() > 4 || hipRating > 10 || buttRating > 10)
+					if (gender >= 2 || biggestTitSize() > 4 || hipRating > 10 || butt.rating > 10)
 						desc += " jiggly curves";
 					else
 						desc += " soft flesh";
@@ -2001,10 +2001,10 @@ use namespace kGAMECLASS;
 			else 
 				bimboCounter += hipRating / 8.0;
 			
-			if (buttRating > 8)
+			if (butt.rating > 8)
 				bimboCounter++;
 			else 
-				bimboCounter += buttRating / 8.0;
+				bimboCounter += butt.rating / 8.0;
 			
 			if (tone < 15) 
 				bimboCounter++;
@@ -2030,7 +2030,7 @@ use namespace kGAMECLASS;
 				//bimboCounter++;
 			//if (hipRating > 8) 
 				//bimboCounter++;
-			//if (buttRating > 8)
+			//if (butt.rating > 8)
 				//bimboCounter++;
 			//if (tone < 15) 
 				//bimboCounter++;

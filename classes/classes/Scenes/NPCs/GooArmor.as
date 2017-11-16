@@ -113,7 +113,7 @@ package classes.Scenes.NPCs
 			this.ass.analWetness = AssClass.WETNESS_SLIME_DROOLING;
 			this.tallness = rand(8) + 70;
 			this.hipRating = Hips.RATING_AMPLE+2;
-			this.buttRating = Butt.RATING_LARGE;
+			this.butt.rating = Butt.RATING_LARGE;
 			this.skinTone = "blue";
 			this.skinType = Skin.GOO;
 			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.GOO];

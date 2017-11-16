@@ -137,7 +137,7 @@ package classes.Scenes.Places.Boat
 			this.ass.analWetness = 1;
 			this.tallness = 10*12;
 			this.hipRating = 10;
-			this.buttRating = 8;
+			this.butt.rating = 8;
 			this.skinTone = "white";
 			this.skinType = 0;
 			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.FUR];

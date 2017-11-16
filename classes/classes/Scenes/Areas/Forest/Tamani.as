@@ -133,7 +133,7 @@ package classes.Scenes.Areas.Forest
 			this.createStatusEffect(StatusEffects.BonusACapacity,40,0,0,0);
 			this.tallness = 40;
 			this.hipRating = Hips.RATING_AMPLE+2;
-			this.buttRating = Butt.RATING_LARGE;
+			this.butt.rating = Butt.RATING_LARGE;
 			this.skinTone = "greenish gray";
 			this.hairColor = "pink and black";
 			this.hairLength = 16;

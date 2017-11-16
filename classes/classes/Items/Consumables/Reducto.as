@@ -25,7 +25,7 @@ package classes.Items.Consumables
 		override public function useItem():Boolean {
 			var rdtBalls:Function	= (game.player.balls > 0 && game.player.ballSize > 1 ? reductoBalls : null);
 			var rdtBreasts:Function	= (game.player.breastRows.length > 0 && game.player.biggestTitSize() > 0 ? reductoBreasts : null);
-			var rdtButt:Function	= (game.player.buttRating > 1 ? reductoButt : null);
+			var rdtButt:Function	= (game.player.butt.rating > 1 ? reductoButt : null);
 			var rdtClit:Function	= (game.player.vaginas.length > 0 && game.player.getClitLength() > 0.25 ? reductoClit : null);
 			var rdtCock:Function	= (game.player.cockTotal() > 0 && game.player.biggestCockArea() > 6 ? reductoCock : null);
 			var rdtHips:Function	= (game.player.hipRating > 2 ? reductoHips : null);
@@ -72,17 +72,17 @@ package classes.Items.Consumables
 		private function reductoButt():void {
 			clearOutput();
 			outputText("You smear the foul-smelling paste onto your " + game.player.buttDescript() + ".  It feels cool at first but rapidly warms to an uncomfortable level of heat.\n\n");
-			if (game.player.buttRating >= 15) {
-				game.player.buttRating -= (3 + int(game.player.buttRating / 3));
+			if (game.player.butt.rating >= 15) {
+				game.player.butt.rating -= (3 + int(game.player.butt.rating / 3));
 				outputText("Within seconds you feel noticeably lighter, and a quick glance shows your ass is significantly smaller.");
 			}
-			else if (game.player.buttRating >= 10) {
-				game.player.buttRating -= 3;
+			else if (game.player.butt.rating >= 10) {
+				game.player.butt.rating -= 3;
 				outputText("You feel much lighter as your " + game.player.buttDescript() + " jiggles slightly, adjusting to its smaller size.");
 			}
 			else {
-				game.player.buttRating -= Utils.rand(3) + 1;
-				if (game.player.buttRating < 1) game.player.buttRating = 1;
+				game.player.butt.rating -= Utils.rand(3) + 1;
+				if (game.player.butt.rating < 1) game.player.butt.rating = 1;
 				outputText("After a few seconds your " + game.player.buttDescript() + " has shrunk to a much smaller size!");
 			}
 			game.dynStats("lib", -2, "lus", -10);

@@ -326,7 +326,7 @@ protected function roxanneDrinkingContest():void {
 		outputText("  A scaled hand slaps your " + player.buttDescript() + " spinning you around to fall drunkenly into the pirate's soft, cushy chest.  \"<i>Don't worry, I'll be gentle,</i>\" she whispers, hooking an arm around your sagging frame.");
 		//CHOOSE SEX SCENE
 		//Chance of big booty butt loss!
-		if (player.buttRating > 12 && player.tone <= 50 && flags[kFLAGS.ROXANNE_DRINING_CONTEST_LOST] > 1 && randomNumber.random(2) === 0){
+		if (player.butt.rating > 12 && player.tone <= 50 && flags[kFLAGS.ROXANNE_DRINING_CONTEST_LOST] > 1 && randomNumber.random(2) === 0){
 			LOGGER.debug("Starting loss scene: Big booty");
 			doNext(bigBootyRoxanneContestLoss);
 		} else if (flags[kFLAGS.ROXANNE_TIME_WITHOUT_SEX] >= 200) {

@@ -103,7 +103,7 @@ package classes
 			player.thickness = 75;
 			player.tone = 0;
 			player.hipRating = 17;
-			player.buttRating = 17;
+			player.butt.rating = 17;
 			player.tailType = Tail.DEMONIC;
 			player.lowerBody = LowerBody.DEMONIC_HIGH_HEELS;
 			//Breasts: J-cups with 5 inch fuckable nipples, leaking milk
@@ -140,7 +140,7 @@ package classes
 			player.hairColor = "pink";
 			player.hairLength = 50;
 			player.hipRating = 5;
-			player.buttRating = 5;
+			player.butt.rating = 5;
 			player.thickness = 10;
 			flags[kFLAGS.PC_FETISH] = 2;
 			player.earsPierced = 1;
@@ -211,7 +211,7 @@ package classes
 			player.lipPierced = 2;
 			player.lipPShort = "silver lip-ring";
 			player.lipPLong = "Silver lip-ring";
-			player.buttRating = 8;
+			player.butt.rating = 8;
 			player.hipRating = 8;
 			player.createBreastRow();
 			player.nipplesPierced = 1;
@@ -275,7 +275,7 @@ package classes
 			player.tone = 100;
 			player.thickness = 0;
 			player.hipRating = 6;
-			player.buttRating = 3;
+			player.butt.rating = 3;
 			player.femininity = 50;
 			player.createBreastRow(BreastCup.D);
 			player.createBreastRow(BreastCup.C);
@@ -310,7 +310,7 @@ package classes
 			player.thickness = 50;
 			player.femininity = 50;
 			player.hipRating = 5;
-			player.buttRating = 5;
+			player.butt.rating = 5;
 			player.teaseLevel = 1;
 			//Large feathered wings (Any chance in heck I could get 'angel' as the race descriptor? Just asking. I'm fine if the answer is 'no')
 			player.wingType = Wings.FEATHERED_LARGE;
@@ -552,7 +552,7 @@ package classes
 			player.setClitLength(.5);
 			player.fertility = 10;
 			player.hipRating = 8;
-			player.buttRating = 8;
+			player.butt.rating = 8;
 			player.str = 15;
 			player.tou = 15;
 			player.spe = 18;
@@ -627,7 +627,7 @@ package classes
 			player.breastRows[0].breastRating = 0;
 			player.tallness = 71;
 			player.hipRating = 4;
-			player.buttRating = 4;
+			player.butt.rating = 4;
 			player.femininity = 30;
 			player.createCock();
 			player.balls = 4;
@@ -697,7 +697,7 @@ package classes
 			player.vaginas[0].virgin = false;
 			player.tone = 20;
 			player.hipRating = 12;
-			player.buttRating = 12;
+			player.butt.rating = 12;
 			player.femininity = 100;
 			player.thickness = 33;
 			player.createPerk(PerkLib.HistorySlut, 0, 0, 0, 0);
@@ -730,7 +730,7 @@ package classes
 			//-breasts: 2
 			//-nipplesPerBreast: 1
 			player.breastRows[0].breastRating = 5;
-			player.buttRating = 2;
+			player.butt.rating = 2;
 			player.createVagina();
 			player.vaginas[0].vaginalLooseness = VaginaClass.LOOSENESS_TIGHT;
 			player.vaginas[0].vaginalWetness = VaginaClass.WETNESS_SLAVERING;
@@ -790,7 +790,7 @@ package classes
 			player.vaginas[0].virgin = false;
 			player.tone = 20;
 			player.hipRating = 8;
-			player.buttRating = 8;
+			player.butt.rating = 8;
 			player.femininity = 75;
 			player.thickness = 33;
 			player.hairColor = "platinum blonde";
@@ -883,7 +883,7 @@ package classes
 				
 			player.tallness = 64;
 			player.femininity = 75;
-			player.buttRating = 7;
+			player.butt.rating = 7;
 			player.hipRating = 7;
 			player.inte = 40;
 			player.str = 20;
@@ -964,7 +964,7 @@ package classes
 			//hip size: 15/20
 			player.hipRating = 15;
 			//butt size: 15/20
-			player.buttRating = 15;
+			player.butt.rating = 15;
 			//body thickness: 50/100
 			player.thickness = 50;
 			//Muscle: 75/100"
@@ -1019,7 +1019,7 @@ package classes
 			player.setClitLength(.5);
 			player.fertility = 30;
 			player.hipRating = 6;
-			player.buttRating = 6;
+			player.butt.rating = 6;
 			player.str = 15;
 			player.tou = 15;
 			player.spe = 18;
@@ -1095,7 +1095,7 @@ package classes
 			player.breastRows[0].breastRating = 7;
 			player.tallness = 60;
 			player.hipRating = 8;
-			player.buttRating = 8;
+			player.butt.rating = 8;
 			player.thickness = 25;
 			player.tone = 40;
 			player.skinTone = "olive";
@@ -1167,7 +1167,7 @@ package classes
 			player.thickness = 50;
 			player.femininity = 50;
 			player.hipRating = 5;
-			player.buttRating = 5;
+			player.butt.rating = 5;
 			player.teaseLevel = 1;
 			//Build: average
 			//Complexion: light
@@ -1203,7 +1203,7 @@ package classes
 			player.breastRows[0].breastRating = 4;
 			//human skin
 			//heart-shaped ass
-			player.buttRating = 9;
+			player.butt.rating = 9;
 			player.hipRating = 6;
 			//Ass-length white and black hair
 			player.hairLength = 30;
@@ -1256,7 +1256,7 @@ package classes
 			player.setClitLength(0.5);
 			player.fertility = 50;
 			player.hipRating = 6;
-			player.buttRating = 6;
+			player.butt.rating = 6;
 			player.str = 100;
 			player.tou = 100;
 			player.spe = 100;
@@ -1436,7 +1436,7 @@ package classes
 			//Body: Very muscular, average weight, plump ass, above average thighs, cat tail and cat paws
 			player.tone = 80;
 			player.thickness = 50;
-			player.buttRating = 12;
+			player.butt.rating = 12;
 			player.hipRating = 10;
 			player.tailType = Tail.CAT;
 			player.lowerBody = LowerBody.CAT;
@@ -1466,7 +1466,7 @@ package classes
 			player.setClitLength(.5);
 			player.fertility = 10;
 			player.hipRating = 6;
-			player.buttRating = 6;
+			player.butt.rating = 6;
 			player.str = 15;
 			player.tou = 15;
 			player.spe = 18;
@@ -1520,7 +1520,7 @@ package classes
 			player.skinTone = "sanguine";
 			player.tallness = 68;
 			player.hipRating = 7;
-			player.buttRating = 6;
+			player.butt.rating = 6;
 			player.thickness = 4;
 			player.tone = 98;
 			player.breastRows[0].breastRating = 3;
@@ -1610,7 +1610,7 @@ package classes
 			
 			player.tallness = 48; // 120 cm
 			player.hipRating = Hips.RATING_BOYISH;
-			player.buttRating = Butt.RATING_TIGHT;
+			player.butt.rating = Butt.RATING_TIGHT;
 			player.thickness = 20; // thin
 			player.tone = 20; // soft
 			player.skinType = Skin.FUR;
@@ -1794,7 +1794,7 @@ package classes
 			// lean build
 			player.tallness = 47+rand(43); // 118-230 cm
 			player.hipRating = Hips.RATING_BOYISH;
-			player.buttRating = Butt.RATING_TIGHT;
+			player.butt.rating = Butt.RATING_TIGHT;
 			player.thickness = rand(10)+10; // lithe
 			player.tone = rand(10)+10; // not in a good shape...
 			player.skinTone = "light";

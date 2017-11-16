@@ -538,7 +538,7 @@ public function getRapedByMinotaur(autoRape:Boolean = false):void {
 			combat.cleanupAfterCombat();
 			return;
 		}
-		if (rand(2) == 0 && player.buttRating >= 15 && player.vaginalCapacity() < monster.biggestCockArea() && player.tone < 60) {
+		if (rand(2) == 0 && player.butt.rating >= 15 && player.vaginalCapacity() < monster.biggestCockArea() && player.tone < 60) {
 			getMinoHawtDawged();
 			return;
 		}
@@ -949,11 +949,11 @@ private function minoAddictionBadEnd2():void {
 	outputText("Your master pulls out and fastens a leather collar around your neck before dragging you through the mud back to his campfire.  Between the tugging of your collar and rough throat-fucking, you're breathless and gasping, but you couldn't be any happier.  Your new owner lifts you up by your " + player.assDescript() + " and forces himself inside your " + player.assholeDescript() + ", stuffing you full of thick minotaur cock.  Still heavily drugged by the load in your gut, you giggle happily as you're bounced up and down, totally relaxed in your master's presence.\n\n");
 	
 	outputText("He grunts and cums inside you for the second time, somehow still able to flood your bowels with what feels like a gallon of cum.  Drooling brainlessly, happy gurgles trickle from your throat as you're pulled off and tossed to the side.  You don't feel the impact of your body landing in the mud, or even notice when you're passed around the camp-fire, broken in as each of your new monstrous masters has his turn.");
-	doNext(minoCumAddictBadEnlethicesKeep);
+	doNext(minoCumAddictBadEnd3);
 	dynStats("int", -20, "lib", 5, "sen", 15, "lus", 50, "cor", 10);
 }
 //[PAGE 2]
-private function minoCumAddictBadEnlethicesKeep():void {
+private function minoCumAddictBadEnd3():void {
 	spriteSelect(SpriteDb.s_minotaur);
 	hideUpDown();
 	clearOutput();

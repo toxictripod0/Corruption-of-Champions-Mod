@@ -2175,7 +2175,7 @@ public class Combat extends BaseContent
 				if (player.biggestTitSize() >= 35) escapeMod += 5;
 				if (player.biggestTitSize() >= 66) escapeMod += 10;
 				if (player.hipRating >= 20) escapeMod += 5;
-				if (player.buttRating >= 20) escapeMod += 5;
+				if (player.butt.rating >= 20) escapeMod += 5;
 				if (player.ballSize >= 24 && player.balls > 0) escapeMod += 5;
 				if (player.ballSize >= 48 && player.balls > 0) escapeMod += 10;
 				if (player.ballSize >= 120 && player.balls > 0) escapeMod += 10;
@@ -2309,7 +2309,7 @@ public class Combat extends BaseContent
 						else outputText("With your " + player.ballsDescriptLight() + " dragging along the ground, getting away is far harder than it should be.  ");
 					}
 					//FATASS BODY MESSAGES
-					if (player.biggestTitSize() >= 35 || player.buttRating >= 20 || player.hipRating >= 20)
+					if (player.biggestTitSize() >= 35 || player.butt.rating >= 20 || player.hipRating >= 20)
 					{
 						//FOR PLAYERS WITH GIANT BREASTS
 						if (player.biggestTitSize() >= 35 && player.biggestTitSize() < 66)
@@ -2317,30 +2317,30 @@ public class Combat extends BaseContent
 							if (player.hipRating >= 20)
 							{
 								outputText("Your " + player.hipDescript() + " forces your gait to lurch slightly side to side, which causes the fat of your " + player.skinTone + " ");
-								if (player.buttRating >= 20) outputText(player.buttDescript() + " and ");
+								if (player.butt.rating >= 20) outputText(player.buttDescript() + " and ");
 								outputText(player.chestDesc() + " to wobble immensely, throwing you off balance and preventing you from moving quick enough to escape.");
 							}
-							else if (player.buttRating >= 20) outputText("Your " + player.skinTone + player.buttDescript() + " and " + player.chestDesc() + " wobble and bounce heavily, throwing you off balance and preventing you from moving quick enough to escape.");
+							else if (player.butt.rating >= 20) outputText("Your " + player.skinTone + player.buttDescript() + " and " + player.chestDesc() + " wobble and bounce heavily, throwing you off balance and preventing you from moving quick enough to escape.");
 							else outputText("Your " + player.chestDesc() + " jiggle and wobble side to side like the " + player.skinTone + " sacks of milky fat they are, with such force as to constantly throw you off balance, preventing you from moving quick enough to escape.");
 						}
 						//FOR PLAYERS WITH MASSIVE BREASTS
 						else if (player.biggestTitSize() >= 66) {
 							if (player.hipRating >= 20) {
 								outputText("Your " + player.chestDesc() + " nearly drag along the ground while your " + player.hipDescript() + " swing side to side ");
-								if (player.buttRating >= 20) outputText("causing the fat of your " + player.skinTone + player.buttDescript() + " to wobble heavily, ");
+								if (player.butt.rating >= 20) outputText("causing the fat of your " + player.skinTone + player.buttDescript() + " to wobble heavily, ");
 								outputText("forcing your body off balance and preventing you from moving quick enough to get escape.");
 							}
-							else if (player.buttRating >= 20) outputText("Your " + player.chestDesc() + " nearly drag along the ground while the fat of your " + player.skinTone + player.buttDescript() + " wobbles heavily from side to side, forcing your body off balance and preventing you from moving quick enough to escape.");
+							else if (player.butt.rating >= 20) outputText("Your " + player.chestDesc() + " nearly drag along the ground while the fat of your " + player.skinTone + player.buttDescript() + " wobbles heavily from side to side, forcing your body off balance and preventing you from moving quick enough to escape.");
 							else outputText("Your " + player.chestDesc() + " nearly drag along the ground, preventing you from moving quick enough to get escape.");
 						}
 						//FOR PLAYERS WITH EITHER GIANT HIPS OR BUTT BUT NOT THE BREASTS
 						else if (player.hipRating >= 20) {
 							outputText("Your " + player.hipDescript() + " swing heavily from side to side ");
-							if (player.buttRating >= 20) outputText("causing your " + player.skinTone + player.buttDescript() + " to wobble obscenely ");
+							if (player.butt.rating >= 20) outputText("causing your " + player.skinTone + player.buttDescript() + " to wobble obscenely ");
 							outputText("and forcing your body into an awkward gait that slows you down, preventing you from escaping.");
 						}
 						//JUST DA BOOTAH
-						else if (player.buttRating >= 20) outputText("Your " + player.skinTone + player.buttDescript() + " wobbles so heavily that you're unable to move quick enough to escape.");
+						else if (player.butt.rating >= 20) outputText("Your " + player.skinTone + player.buttDescript() + " wobbles so heavily that you're unable to move quick enough to escape.");
 					}
 					//NORMAL RUN FAIL MESSAGES
 					else if (monster.plural) outputText(monster.capitalA + monster.short + " stay hot on your heels, denying you a chance at escape!");

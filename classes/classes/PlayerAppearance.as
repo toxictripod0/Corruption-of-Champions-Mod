@@ -722,34 +722,34 @@ package classes
 				if (player.tone < 65) 
 				{
 					outputText("  Your [butt]");
-					if (player.buttRating < 4) 
+					if (player.butt.rating < 4) 
 						outputText(" is lean, from what you can see of it.");
-					if (player.buttRating >= 4 && player.buttRating < 6) 
+					if (player.butt.rating >= 4 && player.butt.rating < 6) 
 						outputText(" looks fairly average.");
-					if (player.buttRating >= 6 && player.buttRating <10) 
+					if (player.butt.rating >= 6 && player.butt.rating <10) 
 						outputText(" is fairly plump and healthy.");
-					if (player.buttRating >= 10 && player.buttRating < 15) 
+					if (player.butt.rating >= 10 && player.butt.rating < 15) 
 						outputText(" jiggles a bit as you trot around.");
-					if (player.buttRating >= 15 && player.buttRating < 20) 
+					if (player.butt.rating >= 15 && player.butt.rating < 20) 
 						outputText(" jiggles and wobbles as you trot about.");
-					if (player.buttRating >= 20) 
+					if (player.butt.rating >= 20) 
 						outputText(" is obscenely large, bordering freakish, even for a horse.");
 				}
 				//GIRL LOOK AT DAT BOOTY
 				else 
 				{
 					outputText("  Your [butt]");
-					if (player.buttRating < 4) 
+					if (player.butt.rating < 4) 
 						outputText(" is barely noticeable, showing off the muscles of your haunches.");
-					if (player.buttRating >= 4 && player.buttRating < 6) 
+					if (player.butt.rating >= 4 && player.butt.rating < 6) 
 						outputText(" matches your toned equine frame quite well.");
-					if (player.buttRating >= 6 && player.buttRating <10) 
+					if (player.butt.rating >= 6 && player.butt.rating <10) 
 						outputText(" gives hints of just how much muscle you could put into a kick.");
-					if (player.buttRating >= 10 && player.buttRating < 15) 
+					if (player.butt.rating >= 10 && player.butt.rating < 15) 
 						outputText(" surges with muscle whenever you trot about.");
-					if (player.buttRating >= 15 && player.buttRating < 20) 
+					if (player.butt.rating >= 15 && player.butt.rating < 20) 
 						outputText(" flexes its considerable mass as you move.");
-					if (player.buttRating >= 20) 
+					if (player.butt.rating >= 20) 
 						outputText(" is stacked with layers of muscle, huge even for a horse.");
 				}
 			}
@@ -760,34 +760,34 @@ package classes
 				if (player.tone < 60) 
 				{
 					outputText(" your [butt]");
-					if (player.buttRating < 4) 
+					if (player.butt.rating < 4) 
 						outputText(" looks great under your gear.");
-					if (player.buttRating >= 4 && player.buttRating < 6) 
+					if (player.butt.rating >= 4 && player.butt.rating < 6) 
 						outputText(" has the barest amount of sexy jiggle.");
-					if (player.buttRating >= 6 && player.buttRating <10) 
+					if (player.butt.rating >= 6 && player.butt.rating <10) 
 						outputText(" fills out your clothing nicely.");
-					if (player.buttRating >= 10 && player.buttRating < 15) 
+					if (player.butt.rating >= 10 && player.butt.rating < 15) 
 						outputText(" wobbles enticingly with every step.");
-					if (player.buttRating >= 15 && player.buttRating < 20) 
+					if (player.butt.rating >= 15 && player.butt.rating < 20) 
 						outputText(" wobbles like a bowl full of jello as you walk.");
-					if (player.buttRating >= 20) 
+					if (player.butt.rating >= 20) 
 						outputText(" is obscenely large, bordering freakish, and makes it difficult to run.");
 				}
 				//FITBUTT
 				else 
 				{
 					outputText(" your [butt]");
-					if (player.buttRating < 4) 
+					if (player.butt.rating < 4) 
 						outputText(" molds closely against your form.");
-					if (player.buttRating >= 4 && player.buttRating < 6) 
+					if (player.butt.rating >= 4 && player.butt.rating < 6) 
 						outputText(" contracts with every motion, displaying the detailed curves of its lean musculature.");
-					if (player.buttRating >= 6 && player.buttRating <10) 
+					if (player.butt.rating >= 6 && player.butt.rating <10) 
 						outputText(" fills out your clothing nicely.");
-					if (player.buttRating >= 10 && player.buttRating < 15) 
+					if (player.butt.rating >= 10 && player.butt.rating < 15) 
 						outputText(" stretches your gear, flexing it with each step.");
-					if (player.buttRating >= 15 && player.buttRating < 20) 
+					if (player.butt.rating >= 15 && player.butt.rating < 20) 
 						outputText(" threatens to bust out from under your kit each time you clench it.");
-					if (player.buttRating >= 20) 
+					if (player.butt.rating >= 20) 
 						outputText(" is marvelously large, but completely stacked with muscle.");
 				}
 			}

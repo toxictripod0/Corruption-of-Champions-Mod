@@ -32,7 +32,7 @@ package classes.Scenes.Places.Prison
 			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.tallness = 40;
 			this.hipRating = Hips.RATING_BOYISH;
-			this.buttRating = Butt.RATING_TIGHT;
+			this.butt.rating = Butt.RATING_TIGHT;
 			this.skinTone = "red";
 			this.hairColor = "black";
 			this.hairLength = 5;

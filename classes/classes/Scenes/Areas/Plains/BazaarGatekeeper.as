@@ -129,7 +129,7 @@ package classes.Scenes.Areas.Plains
 			this.ass.analWetness = 0;
 			this.tallness = 10*12;
 			this.hipRating = 2;
-			this.buttRating = 0;
+			this.butt.rating = 0;
 			this.skinTone = "crimson";
 			this.skinType = 0;
 			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.FUR];

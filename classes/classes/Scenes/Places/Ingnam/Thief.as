@@ -28,7 +28,7 @@ package classes.Scenes.Places.Ingnam
 			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.tallness = 5*12 + 5 + rand(4);
 			this.hipRating = Hips.RATING_BOYISH;
-			this.buttRating = Butt.RATING_TIGHT;
+			this.butt.rating = Butt.RATING_TIGHT;
 			this.skinTone = "light";
 			this.hairColor = "brown";
 			this.hairLength = 4;

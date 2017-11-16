@@ -4156,7 +4156,7 @@ private function milkMarbleTakeHerDick():void
 	outputText( "[pg]\"<i>Oh sweetie, you feel so wonderful.  I actually feel a bit strange right now, like I want to....</i>\"  She starts thrusting into your entrance with great gusto, eliciting a surprised gasp from you; Marble isn't normally this energetic when it comes to sex!  Being milked is probably making her more aggressive than usual, though given how good she is making you feel, you can't really complain." );
 	
 	outputText( "[pg]She starts playing with your backside with her hand, massaging your " );
-	if ( player.buttRating <= 4 && !player.isGoo() ) outputText( "taut" );
+	if ( player.butt.rating <= 4 && !player.isGoo() ) outputText( "taut" );
 	else outputText( "jiggling" );
 	outputText( " flesh while her " + num2Text(Math.round(flags[kFLAGS.MARBLE_DICK_LENGTH])) + " inch length continues to push and pull into your womanhood.  Egged on by her enthusiasm, you start putting in some effort into the sex yourself by pushing your backside tight against her with each push forward and shaking it back and forth with each pull out of your interior." );
 	

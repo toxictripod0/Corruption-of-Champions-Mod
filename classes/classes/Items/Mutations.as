@@ -1303,12 +1303,12 @@ package classes.Items
 			outputText("You devour the egg, momentarily sating your hunger.\n\n");
 			if (!large) {
 				outputText("You feel a bit of additional weight on your backside as your " + player.buttDescript() + " gains a bit more padding.");
-				player.buttRating++;
+				player.butt.rating++;
 				player.refillHunger(20);
 			}
 			else {
 				outputText("Your " + player.buttDescript() + " wobbles, nearly throwing you off balance as it grows much bigger!");
-				player.buttRating += 2 + rand(3);
+				player.butt.rating += 2 + rand(3);
 				player.refillHunger(60);
 			}
 			if (rand(3) == 0) {
@@ -1463,26 +1463,26 @@ package classes.Items
 			//LARGE
 			else {
 				//New lines if changes
-				if (player.bRows() > 1 || player.buttRating > 5 || player.hipRating > 5 || player.hasVagina()) outputText("\n\n");
+				if (player.bRows() > 1 || player.butt.rating > 5 || player.hipRating > 5 || player.hasVagina()) outputText("\n\n");
 				//Kill pussies!
 				if (player.vaginas.length > 0) {
 					outputText("Your vagina clenches in pain, doubling you over.  You slip a hand down to check on it, only to feel the slit growing smaller and smaller until it disappears, taking your clit with it!\n\n");
-					if (player.bRows() > 1 || player.buttRating > 5 || player.hipRating > 5) outputText("  ");
+					if (player.bRows() > 1 || player.butt.rating > 5 || player.hipRating > 5) outputText("  ");
 					player.setClitLength(.5);
 					player.removeVagina(0, 1);
 				}
 				//Kill extra boobages
 				if (player.bRows() > 1) {
 					outputText("Your back relaxes as extra weight vanishes from your chest.  <b>Your lowest " + player.breastDescript(player.bRows() - 1) + " have vanished.</b>");
-					if (player.buttRating > 5 || player.hipRating > 5) outputText("  ");
+					if (player.butt.rating > 5 || player.hipRating > 5) outputText("  ");
 					//Remove lowest row.
 					player.removeBreastRow((player.bRows() - 1), 1);
 				}
 				//Ass/hips shrinkage!
-				if (player.buttRating > 5) {
+				if (player.butt.rating > 5) {
 					outputText("Muscles firm and tone as you feel your " + player.buttDescript() + " become smaller and tighter.");
 					if (player.hipRating > 5) outputText("  ");
-					player.buttRating -= 2;
+					player.butt.rating -= 2;
 				}
 				if (player.hipRating > 5) {
 					outputText("Feeling the sudden burning of lactic acid in your " + player.hipDescript() + ", you realize they have slimmed down and firmed up some.");
@@ -2085,10 +2085,10 @@ package classes.Items
 			if (rand(4) == 0 && player.hasGills() && changes < changeLimit) updateGills();
 
 			//Increase the size of the player's ass (less likely then hips), if it is not already somewhat big
-			if (rand(2) == 0 && player.buttRating < 13 && changes < changeLimit) {
-				if (!tainted && player.buttRating < 8 || tainted) {
+			if (rand(2) == 0 && player.butt.rating < 13 && changes < changeLimit) {
+				if (!tainted && player.butt.rating < 8 || tainted) {
 					outputText("\n\nA sensation of being unbalanced makes it difficult to walk.  You pause, paying careful attention to your new center of gravity before understanding dawns on you - your ass has grown!");
-					player.buttRating += 1 + rand(2);
+					player.butt.rating += 1 + rand(2);
 					changes++;
 				}
 			}
@@ -2882,15 +2882,15 @@ package classes.Items
 				changes++;
 			}
 			//-Big booty
-			if (player.buttRating < 8 && changes < changeLimit && rand(3) == 0) {
-				player.buttRating++;
+			if (player.butt.rating < 8 && changes < changeLimit && rand(3) == 0) {
+				player.butt.rating++;
 				changes++;
 				outputText("\n\nA slight jiggle works through your rear, but instead of stopping it starts again. You can actually feel your " + player.armorName + " being filled out by the growing cheeks. When it stops, you find yourself the proud owner of a " + player.buttDescript() + ".");
 			}
 			//-Narrow booty if crazy huge.
-			if (player.buttRating >= 14 && changes < changeLimit && rand(4) == 0) {
+			if (player.butt.rating >= 14 && changes < changeLimit && rand(4) == 0) {
 				changes++;
-				player.buttRating--;
+				player.butt.rating--;
 				outputText("\n\nA feeling of tightness starts in your " + player.buttDescript() + ", increasing gradually. The sensation grows and grows, but as it does your center of balance shifts. You reach back to feel yourself, and sure enough your massive booty is shrinking into a more manageable size.");
 			}
 			//-Body thickness to 25ish
@@ -3373,9 +3373,9 @@ package classes.Items
 				changes++;
 			}
 			//[Increase to Ass Size] - to 11
-			if (player.buttRating < 11 && changes < changeLimit && rand(4) === 0) {
+			if (player.butt.rating < 11 && changes < changeLimit && rand(4) === 0) {
 				outputText("\n\nYou look over your shoulder at your " + player.buttDescript() + " only to see it expand just slightly. You gape in confusion before looking back at the remaining silk in your hands. You finish it anyway. Dammit!");
-				player.buttRating++;
+				player.butt.rating++;
 				changes++;
 			}
 			//Neck restore
@@ -4316,9 +4316,9 @@ package classes.Items
 				changes++;
 			}
 			//Increase ass rating
-			if (rand(3) == 0 && changes < changeLimit && player.buttRating < 12) {
+			if (rand(3) == 0 && changes < changeLimit && player.butt.rating < 12) {
 				outputText("\n\nWhen you stand back, up your [ass] jiggles with a good bit of extra weight.");
-				player.buttRating++;
+				player.butt.rating++;
 				changes++;
 			}
 			//Increase ball size if you have balls.

@@ -216,8 +216,8 @@ package classes.Scenes.Dungeons.LethicesKeep
 			
 			hipRating = player.hipRating;
 			if (hipRating < 1) hipRating = 1;
-			buttRating = player.buttRating;
-			if (buttRating < 1) buttRating = 1;
+			butt.rating = player.butt.rating;
+			if (butt.rating < 1) butt.rating = 1;
 			lowerBody = player.lowerBody;
 			skinDesc = player.skinDesc;
 			initStrTouSpeInte(player.str, player.tou, player.spe, player.inte);

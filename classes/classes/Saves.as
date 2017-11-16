@@ -903,7 +903,7 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile.data.tailVenum = player.tailVenom;
 		saveFile.data.tailRecharge = player.tailRecharge;
 		saveFile.data.hipRating = player.hipRating;
-		saveFile.data.buttRating = player.buttRating;
+		saveFile.data.buttRating = player.butt.rating;
 		
 		//Sexual Stuff
 		saveFile.data.balls = player.balls;
@@ -1784,7 +1784,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		player.tailVenom = saveFile.data.tailVenum;
 		player.tailRecharge = saveFile.data.tailRecharge;
 		player.hipRating = saveFile.data.hipRating;
-		player.buttRating = saveFile.data.buttRating;
+		player.butt.rating = saveFile.data.buttRating;
 		
 
 		if (player.wingType == 8) {

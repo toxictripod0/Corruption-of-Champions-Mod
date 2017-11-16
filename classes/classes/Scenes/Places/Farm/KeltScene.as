@@ -255,9 +255,9 @@ private function keltEagerlyGetNaked():void {
 	}
 	outputText("Despite his harsh comments, you can see the lust in Kelt's eyes, and are more than a little turned on by his derisive laughter.  His critique only becomes more lewd when you continue.  " + player.clothedOrNaked("As you remove the lower half of your clothes, stripping completely naked", "As you perform a pelvic thrust and slowly spin around") +", he eyes your ass and lets out a crude hoot of scornful delight, ");
 	//(Too small, Firm to Shapely:
-	if (player.buttRating < 6) outputText("\"<i>Well, someone works out!  Got a nice, tight little ass there! Probably a little too tight, huh?  Don't worry, you can tell me... do the mean old monsters hurt when they fuck that poor little ass of yours? HA!</i>\"\r\r");
+	if (player.butt.rating < 6) outputText("\"<i>Well, someone works out!  Got a nice, tight little ass there! Probably a little too tight, huh?  Don't worry, you can tell me... do the mean old monsters hurt when they fuck that poor little ass of yours? HA!</i>\"\r\r");
 	//(Medium, Large to Heavy:
-	else if (player.buttRating < 13) outputText("\"<i>Hey, nice little cushion you got back here!  Do you get that from sitting around all day?  Nah, can't be that.  I'm sure you get more than a workout on this baby... of course, cock is no substitute for a little exercise, you know!</i>\"\r\r");
+	else if (player.butt.rating < 13) outputText("\"<i>Hey, nice little cushion you got back here!  Do you get that from sitting around all day?  Nah, can't be that.  I'm sure you get more than a workout on this baby... of course, cock is no substitute for a little exercise, you know!</i>\"\r\r");
 	//(Big, Voluminous and beyond:
 	else outputText("\"<i>Now there's a rear end I could get behind!  For someone who claims to be a hero, you sure are built like a fucktoy!  With an ass like that, you remind me of my last lay... of course, she was a horse!</i>\"\r\r");
 	outputText("He slaps your ass with his open palm, getting in a good grope while he's at it.  His animalistic musk is in your nostrils, making you feel dizzy and more than a little aroused.  He grins widely, then walks around to your front, ");
@@ -310,9 +310,9 @@ private function keltReluctantlyGetNaked():void {
 	}
 	outputText("Even with his harsh comments, you can see the lust in Kelt's eyes.  He is obviously enjoying seeing your naked flesh.  Despite the embarrassment, you are determined to not let his remarks get to you.  His critique only becomes more lewd as you continue, though.  " + player.clothedOrNaked("As you remove the lower half of your clothes, stripping completely naked", "As you perform a pelvic thrust and slowly spin around") +", he eyes your ass and lets out a crude hoot of scornful delight, ");
 	//(Too small, Firm to Shapely:
-	if (player.buttRating < 6) outputText("\"<i>Well, someone works out!  Got a nice, tight little ass there! Probably a little too tight, huh?  Don't worry, you can tell me... do the mean old monsters hurt when they fuck that poor little ass of yours? HA!</i>\"\r\r");
+	if (player.butt.rating < 6) outputText("\"<i>Well, someone works out!  Got a nice, tight little ass there! Probably a little too tight, huh?  Don't worry, you can tell me... do the mean old monsters hurt when they fuck that poor little ass of yours? HA!</i>\"\r\r");
 	//(Medium, Large to Heavy:
-	else if (player.buttRating < 13) outputText("\"<i>Hey, nice little cushion you got back here!  Do you get that from sitting around all day?  Nah, can't be that.  I'm sure you get more than a workout on this baby... of course, cock is no substitute for a little exercise, you know!</i>\"\r\r");
+	else if (player.butt.rating < 13) outputText("\"<i>Hey, nice little cushion you got back here!  Do you get that from sitting around all day?  Nah, can't be that.  I'm sure you get more than a workout on this baby... of course, cock is no substitute for a little exercise, you know!</i>\"\r\r");
 	//(Big, Voluminous and beyond:
 	else outputText("\"<i>Now there's a rear end I could get behind!  For someone who claims to be a hero, you sure are built like a fucktoy!  With an ass like that, you remind me of my last lay... of course, she was a horse!</i>\"\r\r");
 	outputText("He slaps your " + player.buttDescript() + " with his open palm, getting in a good grope while he's at it.  His animalistic musk is in your nostrils, making you feel dizzy and somehow even a little aroused.  The centaur's obvious enjoyment of your body is a little flattering, even if his words are cruel.  He paces around to your front, a shameless grin on his face while he taunts you, ");

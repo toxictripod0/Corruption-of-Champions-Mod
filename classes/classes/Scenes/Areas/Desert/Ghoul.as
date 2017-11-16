@@ -504,7 +504,7 @@ package classes.Scenes.Areas.Desert {
 			
 			this.tallness = rand(18) + 59;
 			this.hipRating = rand(19) + 1;
-			this.buttRating = rand(19) + 1;
+			this.butt.rating = rand(19) + 1;
 			this.lowerBody = rand(25) + 1;
 			this.arms.type = rand(5) + 1;
 

@@ -828,7 +828,7 @@ public class AkbalScene extends BaseContent implements Encounter
 			flags[kFLAGS.AKBAL_SUBMISSION_STATE] = 2;
 			flags[kFLAGS.AKBAL_BITCH_Q] = -1;
 			//Big booty special
-			if (flags[kFLAGS.AKBAL_SUBMISSION_COUNTER] > 5 && flags[kFLAGS.PLAYER_RESISTED_AKBAL] < 2 && player.buttRating >= 13 && player.tone < 80)
+			if (flags[kFLAGS.AKBAL_SUBMISSION_COUNTER] > 5 && flags[kFLAGS.PLAYER_RESISTED_AKBAL] < 2 && player.butt.rating >= 13 && player.tone < 80)
 			{
 				akbalBigButtSubmit();
 				return;
@@ -887,10 +887,10 @@ public class AkbalScene extends BaseContent implements Encounter
 				dynStats("spe", 1 + rand(2));
 				player.orgasm('Anal');
 				//[Chance of butt growth]
-				if (player.buttRating < 8)
+				if (player.butt.rating < 8)
 				{
 					outputText("\n\nIn your sleep, your ass plumps up slightly, growing to accommodate the demon's wishes...");
-					player.buttRating++;
+					player.butt.rating++;
 				}
 				player.createStatusEffect(StatusEffects.PostAkbalSubmission, 0, 0, 0, 0);
 				doNext(camp.returnToCampUseEightHours);
@@ -965,10 +965,10 @@ public class AkbalScene extends BaseContent implements Encounter
 				dynStats("spe", 1 + rand(2));
 				player.orgasm('Anal');
 				//[Chance of butt growth]
-				if (player.buttRating < 8)
+				if (player.butt.rating < 8)
 				{
 					outputText("\n\nIn your sleep, your ass plumps up slightly, growing to accommodate the demon's wishes...");
-					player.buttRating++;
+					player.butt.rating++;
 				}
 				player.createStatusEffect(StatusEffects.PostAkbalSubmission, 0, 0, 0, 0);
 				doNext(camp.returnToCampUseEightHours);
@@ -1045,10 +1045,10 @@ public class AkbalScene extends BaseContent implements Encounter
 			dynStats("spe", 1 + rand(2));
 			player.orgasm('Anal');
 			//[Chance of butt growth]
-			if (player.buttRating < 8)
+			if (player.butt.rating < 8)
 			{
 				outputText("\n\nIn your sleep, your ass plumps up slightly, growing to accommodate the demon's wishes...");
-				player.buttRating++;
+				player.butt.rating++;
 			}
 			player.createStatusEffect(StatusEffects.PostAkbalSubmission, 0, 0, 0, 0);
 			doNext(camp.returnToCampUseEightHours);
@@ -1173,10 +1173,10 @@ public class AkbalScene extends BaseContent implements Encounter
 			if (player.hasCock() && player.cumQ() >= 1000)
 				outputText("dry, ");
 			outputText("comfortable place.  Akbal wraps his arms around you, though one steals a quick squeeze of your [butt].  Invigorated by this, he docks his cat-cock back inside your spunk-oozing asshole to plug it and snuggles up to you.  You fall asleep like that, dreaming of him taking you again and again.");
-			if (player.buttRating < 20)
+			if (player.butt.rating < 20)
 			{
 				outputText("  Tingling in your sleep, your [butt] bulges slightly as it grows bigger, changed by Akbal's saliva to serve him even more capably.");
-				player.buttRating++;
+				player.butt.rating++;
 			}
 			else if (player.tone > 30)
 			{

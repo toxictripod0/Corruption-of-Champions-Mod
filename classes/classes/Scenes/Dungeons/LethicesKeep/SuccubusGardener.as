@@ -32,7 +32,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			
 			this.tallness = 8 * 12;
 			this.hipRating = Hips.RATING_AVERAGE;
-			this.buttRating = Butt.RATING_TIGHT;
+			this.butt.rating = Butt.RATING_TIGHT;
 			
 			this.weaponName = "tentacles";
 			this.weaponVerb = "lash";

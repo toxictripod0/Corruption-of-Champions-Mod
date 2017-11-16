@@ -1417,15 +1417,15 @@ package classes.Scenes
 			if (player.buttPregnancyIncubation == 1 && player.buttPregnancyType == PregnancyStore.PREGNANCY_SANDTRAP_FERTILE) {
 				getGame().desert.sandTrapScene.birfSandTarps();
 				player.buttKnockUpForce(); //Clear Butt Pregnancy
-				if (player.buttRating < 17) {
+				if (player.butt.rating < 17) {
 					//Guaranteed increase up to level 10
-					if (player.buttRating < 13) {
-						player.buttRating++;
+					if (player.butt.rating < 13) {
+						player.butt.rating++;
 						outputText("\nYou notice your " + player.buttDescript() + " feeling larger and plumper after the ordeal.\n");
 					}
 					//Big butts only increase 50% of the time.
 					else if (rand(2) == 0){
-						player.buttRating++;
+						player.butt.rating++;
 						outputText("\nYou notice your " + player.buttDescript() + " feeling larger and plumper after the ordeal.\n");				
 					}
 				}
@@ -1451,15 +1451,15 @@ package classes.Scenes
 				player.orgasm('Anal');
 				dynStats("int", 1, "lib", 4, "sen", 3);
 				if (player.buttChange(20, true)) outputText("\n");
-				if (player.buttRating < 17) {
+				if (player.butt.rating < 17) {
 					//Guaranteed increase up to level 10
-					if (player.buttRating < 13) {
-						player.buttRating++;
+					if (player.butt.rating < 13) {
+						player.butt.rating++;
 						outputText("\nYou notice your " + player.buttDescript() + " feeling larger and plumper after the ordeal.");
 					}
 					//Big butts only increase 50% of the time.
 					else if (rand(2) == 0){
-						player.buttRating++;
+						player.butt.rating++;
 						outputText("\nYou notice your " + player.buttDescript() + " feeling larger and plumper after the ordeal.");				
 					}
 				}
@@ -1703,8 +1703,8 @@ package classes.Scenes
 				if (player.vaginas[0].vaginalWetness == VaginaClass.WETNESS_DRY) player.vaginas[0].vaginalWetness++;
 				player.orgasm('Vaginal');
 				dynStats("tou", -2, "spe", 2, "lib", 1, "sen", .5, "cor", 7);
-				if (player.buttRating < 10 && rand(2) == 0) {
-					player.buttRating++;
+				if (player.butt.rating < 10 && rand(2) == 0) {
+					player.butt.rating++;
 					outputText("\n\nYou notice your " + player.buttDescript() + " feeling larger and plumper after the ordeal.");
 				}
 				else if (player.hipRating < 10) {
@@ -1811,8 +1811,8 @@ package classes.Scenes
 				dynStats("str", -1,"tou", -2, "spe", 3, "lib", 1, "sen", .5);
 				displayedUpdate = true;
 				//Hip and butt increase
-				if (player.buttRating < 12 && rand(2) == 0) {
-					player.buttRating++;
+				if (player.butt.rating < 12 && rand(2) == 0) {
+					player.butt.rating++;
 					outputText("\n\nYou notice your " + player.buttDescript() + " feeling larger and plumper after the ordeal.");
 				}
 				else if (player.hipRating < 15) {
@@ -1892,14 +1892,14 @@ package classes.Scenes
 				dynStats("str", -1,"tou", -2, "spe", 3, "lib", 1, "sen", .5);
 				displayedUpdate = true;
 				//Butt increase
-				if (player.buttRating < 14 && rand(2) == 0) {
-					if (player.buttRating < 10) {
-						player.buttRating++;
+				if (player.butt.rating < 14 && rand(2) == 0) {
+					if (player.butt.rating < 10) {
+						player.butt.rating++;
 						outputText("\n\nYou notice your " + player.buttDescript() + " feeling larger and plumper after the ordeal.");				
 					}
 					//Big butts grow slower!
-					else if (player.buttRating < 14 && rand(2) == 0) {
-						player.buttRating++;
+					else if (player.butt.rating < 14 && rand(2) == 0) {
+						player.butt.rating++;
 						outputText("\n\nYou notice your " + player.buttDescript() + " feeling larger and plumper after the ordeal.");
 					}
 				}
@@ -1931,14 +1931,14 @@ package classes.Scenes
 				dynStats("str", -1,"tou", -4, "spe", 2, "lib", 1, "sen", .5);
 				displayedUpdate = true;
 				//Butt increase
-				if (player.buttRating < 14 && rand(2) == 0) {
-					if (player.buttRating < 10) {
-						player.buttRating++;
+				if (player.butt.rating < 14 && rand(2) == 0) {
+					if (player.butt.rating < 10) {
+						player.butt.rating++;
 						outputText("\n\nYou notice your " + player.buttDescript() + " feeling larger and plumper after the ordeal.");				
 					}
 					//Big butts grow slower!
-					else if (player.buttRating < 14 && rand(2) == 0) {
-						player.buttRating++;
+					else if (player.butt.rating < 14 && rand(2) == 0) {
+						player.butt.rating++;
 						outputText("\n\nYou notice your " + player.buttDescript() + " feeling larger and plumper after the ordeal.");
 					}
 				}
@@ -1968,14 +1968,14 @@ package classes.Scenes
 				dynStats("str", -1,"tou", -1, "spe", 2, "lib", 1, "sen", .5);
 				displayedUpdate = true;
 				//Butt increase
-				if (player.buttRating < 14 && rand(2) == 0) {
-					if (player.buttRating < 10) {
-						player.buttRating++;
+				if (player.butt.rating < 14 && rand(2) == 0) {
+					if (player.butt.rating < 10) {
+						player.butt.rating++;
 						outputText("\n\nYou notice your " + player.buttDescript() + " feeling larger and plumper after the ordeal.");				
 					}
 					//Big butts grow slower!
-					else if (player.buttRating < 14 && rand(2) == 0) {
-						player.buttRating++;
+					else if (player.butt.rating < 14 && rand(2) == 0) {
+						player.butt.rating++;
 						outputText("\n\nYou notice your " + player.buttDescript() + " feeling larger and plumper after the ordeal.");
 					}
 				}

@@ -671,7 +671,7 @@
 			player.tone += 5;
 			
 			player.breastRows[0].breastRating = BreastCup.FLAT;
-			player.buttRating = Butt.RATING_TIGHT;
+			player.butt.rating = Butt.RATING_TIGHT;
 			player.hipRating = Hips.RATING_SLENDER;
 			chooseComplexion();
 		}
@@ -685,7 +685,7 @@
 			player.tone += 5;
 			
 			player.breastRows[0].breastRating = BreastCup.B;
-			player.buttRating = Butt.RATING_TIGHT;
+			player.butt.rating = Butt.RATING_TIGHT;
 			player.hipRating = Hips.RATING_AMPLE;
 			chooseComplexion();
 		}
@@ -695,7 +695,7 @@
 			player.thickness = 50;
 			
 			player.breastRows[0].breastRating = BreastCup.FLAT;
-			player.buttRating = Butt.RATING_AVERAGE;
+			player.butt.rating = Butt.RATING_AVERAGE;
 			player.hipRating = Hips.RATING_AVERAGE;
 			chooseComplexion();
 		}
@@ -705,7 +705,7 @@
 			player.thickness = 50;
 			
 			player.breastRows[0].breastRating = BreastCup.C;
-			player.buttRating = Butt.RATING_NOTICEABLE;
+			player.butt.rating = Butt.RATING_NOTICEABLE;
 			player.hipRating = Hips.RATING_AMPLE;
 			chooseComplexion();
 		}
@@ -720,7 +720,7 @@
 			player.tone -= 5;
 			
 			player.breastRows[0].breastRating = BreastCup.FLAT;
-			player.buttRating = Butt.RATING_NOTICEABLE;
+			player.butt.rating = Butt.RATING_NOTICEABLE;
 			player.hipRating = Hips.RATING_AVERAGE;
 			chooseComplexion();
 		}
@@ -734,7 +734,7 @@
 			player.thickness = 70;
 			
 			player.breastRows[0].breastRating = BreastCup.D;
-			player.buttRating = Butt.RATING_LARGE;
+			player.butt.rating = Butt.RATING_LARGE;
 			player.hipRating = Hips.RATING_CURVY;
 			chooseComplexion();
 		}
@@ -748,7 +748,7 @@
 			player.tone = 26;
 			
 			player.breastRows[0].breastRating = BreastCup.A;
-			player.buttRating = Butt.RATING_NOTICEABLE;
+			player.butt.rating = Butt.RATING_NOTICEABLE;
 			player.hipRating = Hips.RATING_SLENDER;
 			chooseComplexion();
 		}
@@ -762,7 +762,7 @@
 			player.tone = 50;
 			
 			player.breastRows[0].breastRating = BreastCup.A;
-			player.buttRating = Butt.RATING_TIGHT;
+			player.butt.rating = Butt.RATING_TIGHT;
 			player.hipRating = Hips.RATING_SLENDER;
 			chooseComplexion();
 		}
