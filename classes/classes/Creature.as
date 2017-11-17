@@ -39,6 +39,7 @@ import classes.VaginaClass;
 import classes.Scenes.Places.TelAdre.UmasShop;
 import classes.internals.profiling.Begin;
 import classes.internals.profiling.End;
+import classes.lists.BodyPartLists;
 
 import flash.errors.IllegalOperationError;
 import classes.internals.LoggerFactory;
@@ -2251,23 +2252,13 @@ import mx.logging.ILogger;
 			if (p != null) underBody.skin.setProps(p);
 		}
 
-		public static const canFlyWings:Array = [
-			Wings.BEE_LIKE_LARGE,
-			Wings.BAT_LIKE_LARGE,
-			Wings.FEATHERED_LARGE,
-			Wings.DRACONIC_LARGE,
-			Wings.GIANT_DRAGONFLY,
-			Wings.IMP_LARGE,
-			Wings.HARPY,
-		];
-
 		//PC can fly?
 		public function canFly():Boolean
 		{
 			//web also makes false!
 			if (hasStatusEffect(StatusEffects.Web))
 				return false;
-			return canFlyWings.indexOf(wings.type) !== -1;
+			return BodyPartLists.canFlyWings.indexOf(wings.type) !== -1;
 		}
 
 		public function canUseStare():Boolean
@@ -3684,18 +3675,9 @@ import mx.logging.ILogger;
 			return BreastStore.breastDescript(breastRows[rowNum].breastRating, breastRows[rowNum].lactationMultiplier);
 		}
 
-		/**
-		 * Echidna 1 ft long (i'd consider it barely qualifying), demonic 2 ft long, draconic 4 ft long
-		 */
-		public static const longTongues:Array = [
-			Tongue.DEMONIC,
-			Tongue.DRACONIC,
-			Tongue.ECHIDNA,
-		];
-
 		public function hasLongTongue():Boolean
 		{
-			return longTongues.indexOf(tongue.type) !== -1;
+			return BodyPartLists.longTongues.indexOf(tongue.type) !== -1;
 		}
 
 		private function breastSize(val:Number):String
