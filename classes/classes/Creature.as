@@ -2267,8 +2267,7 @@ import mx.logging.ILogger;
 			//web also makes false!
 			if (hasStatusEffect(StatusEffects.Web))
 				return false;
-			return canFlyWings.indexOf(wings.type) != -1;
-
+			return canFlyWings.indexOf(wings.type) !== -1;
 		}
 
 		public function canUseStare():Boolean
@@ -3685,18 +3684,25 @@ import mx.logging.ILogger;
 			return BreastStore.breastDescript(breastRows[rowNum].breastRating, breastRows[rowNum].lactationMultiplier);
 		}
 
+		/**
+		 * Echidna 1 ft long (i'd consider it barely qualifying), demonic 2 ft long, draconic 4 ft long
+		 */
+		public static const longTongues:Array = [
+			Tongue.DEMONIC,
+			Tongue.DRACONIC,
+			Tongue.ECHIDNA,
+		];
+
+		public function hasLongTongue():Boolean
+		{
+			return longTongues.indexOf(tongue.type) !== -1;
+		}
+
 		private function breastSize(val:Number):String
 		{
 			return Appearance.breastSize(val);
 		}
-		
-		/**
-		 * Echidna 1 ft long (i'd consider it barely qualifying), demonic 2 ft long, draconic 4 ft long
-		 */
-		public function hasLongTongue():Boolean {
-			return [Tongue.DEMONIC, Tongue.DRACONIC, Tongue.ECHIDNA].indexOf(tongue.type) != -1;
-		}
-		
+
 		public function damageToughnessModifier(displayMode:Boolean = false):Number {
 			//Return 0 if Grimdark
 			if (flags[kFLAGS.GRIMDARK_MODE] > 0) return 0;

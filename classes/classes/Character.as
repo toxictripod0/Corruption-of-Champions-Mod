@@ -296,9 +296,23 @@ import classes.GlobalFlags.kFLAGS;
 			}
 		}
 
+		public static const muzzles:Array = [
+			Face.HORSE,
+			Face.DOG,
+			Face.CAT,
+			Face.LIZARD,
+			Face.KANGAROO,
+			Face.FOX,
+			Face.DRAGON,
+			Face.RHINO,
+			Face.ECHIDNA,
+			Face.DEER,
+			Face.WOLF,
+		];
+
 		public function hasMuzzle():Boolean
 		{
-			return [Face.HORSE, Face.DOG, Face.CAT, Face.LIZARD, Face.KANGAROO, Face.FOX, Face.DRAGON, Face.RHINO, Face.ECHIDNA, Face.DEER, Face.WOLF].indexOf(face.type) !== -1;
+			return muzzles.indexOf(face.type) !== -1;
 		}
 		
 		public function faceDescript():String
@@ -355,31 +369,33 @@ import classes.GlobalFlags.kFLAGS;
 			}
 			return "face";
 		}
-		
+
+		public static const longTails:Array = [
+			Tail.DOG,
+			Tail.DEMONIC,
+			Tail.COW,
+			Tail.SHARK,
+			Tail.CAT,
+			Tail.LIZARD,
+			Tail.KANGAROO,
+			Tail.FOX,
+			Tail.DRACONIC,
+			Tail.RACCOON,
+			Tail.MOUSE,
+			Tail.FERRET,
+			Tail.BEHEMOTH,
+			Tail.SCORPION,
+			Tail.SALAMANDER,
+			Tail.WOLF,
+			Tail.IMP,
+			Tail.COCKATRICE,
+		]
+
 		public function hasLongTail():Boolean
 		{
 			if (isNaga()) return true;
 
-			return [
-				Tail.DOG,
-				Tail.DEMONIC,
-				Tail.COW,
-				Tail.SHARK,
-				Tail.CAT,
-				Tail.LIZARD,
-				Tail.KANGAROO,
-				Tail.FOX,
-				Tail.DRACONIC,
-				Tail.RACCOON,
-				Tail.MOUSE,
-				Tail.FERRET,
-				Tail.BEHEMOTH,
-				Tail.SCORPION,
-				Tail.SALAMANDER,
-				Tail.WOLF,
-				Tail.IMP,
-				Tail.COCKATRICE,
-			].indexOf(tail.type) != -1;
+			return longTails.indexOf(tail.type) !== -1;
 		}
 
 		public function isPregnant():Boolean { return _pregnancyType != 0; }
