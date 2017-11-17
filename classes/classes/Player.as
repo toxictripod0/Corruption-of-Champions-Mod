@@ -1691,7 +1691,7 @@ use namespace kGAMECLASS;
 				harpy++;
 			if (harpy >= 2 && face.type == Face.HUMAN)
 				harpy++;
-			if (harpy >= 2 && [Ears.HUMAN, Ears.ELFIN].indefOf(ears.type) != -1)
+			if (harpy >= 2 && [Ears.HUMAN, Ears.ELFIN].indexOf(ears.type) != -1)
 				harpy++;
 			return harpy;
 		}
