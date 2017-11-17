@@ -2812,7 +2812,7 @@ import mx.logging.ILogger;
 
 		public function isDrider():Boolean
 		{
-			return lowerBody.type == LowerBody.DRIDER_LOWER_BODY;
+			return lowerBody.type == LowerBody.DRIDER;
 		}
 
 		public function hasSpiderEyes():Boolean

@@ -1856,7 +1856,7 @@ package classes
 					player.lowerBody.type = LowerBody.HOOFED;
 					player.lowerBody.legCount = 4;
 				}
-				else if (player.lowerBody.type == LowerBody.DRIDER_LOWER_BODY)
+				else if (player.lowerBody.type == LowerBody.DRIDER)
 					player.lowerBody.legCount = 8;
 				else if (player.lowerBody.type == LowerBody.NAGA || player.lowerBody.type == LowerBody.GOO)	
 					player.lowerBody.legCount = 1;

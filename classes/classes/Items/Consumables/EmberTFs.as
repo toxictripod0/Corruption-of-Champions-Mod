@@ -144,7 +144,7 @@ package classes.Items.Consumables
 			//Gain Dragon Legs
 			if (player.lowerBody.type != LowerBody.DRAGON && changes < changeLimit && rand(3) == 0) {
 				//(if drider)
-				if (player.lowerBody.type == LowerBody.DRIDER_LOWER_BODY)
+				if (player.lowerBody.type == LowerBody.DRIDER)
 					output.text("\n\nA disquieting feeling ripples through your arachnid abdomen, and you find yourself losing control of your body from the waist down.  Your spidery legs flail madly as your abdomen visibly swells, chitin cracking ominously as the pressure builds up inside of you... and then explodes!  You wipe the gore from your face in disgust, wondering why you feel no pain.  Rolling over, you see that, caked with spider-slime, you now have a new pair of legs, human-like save for the scales and the bestial paws that serve as feet.  <b>You now have dragon feet.</b>");
 				//(If naga)
 				else if (player.isNaga()) {

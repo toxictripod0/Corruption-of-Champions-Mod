@@ -1474,7 +1474,7 @@ use namespace kGAMECLASS;
 				score++;
 			if (arms.type == Arms.SPIDER)
 				score++;
-			if ([LowerBody.CHITINOUS_SPIDER_LEGS, LowerBody.DRIDER_LOWER_BODY].indexOf(lowerBody.type) != -1)
+			if ([LowerBody.CHITINOUS_SPIDER_LEGS, LowerBody.DRIDER].indexOf(lowerBody.type) != -1)
 				score += 2;
 			else if (score > 0)
 				score--;

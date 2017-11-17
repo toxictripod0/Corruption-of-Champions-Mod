@@ -2422,7 +2422,7 @@ package classes
 					[LowerBody.HARPY, "harpy"],
 					[LowerBody.KANGAROO, "kangaroo"],
 					[LowerBody.CHITINOUS_SPIDER_LEGS, "chitinous spider legs"],
-					[LowerBody.DRIDER_LOWER_BODY, "drider"],
+					[LowerBody.DRIDER, "drider"],
 					[LowerBody.FOX, "fox"],
 					[LowerBody.DRAGON, "dragon"],
 					[LowerBody.RACCOON, "raccoon"],

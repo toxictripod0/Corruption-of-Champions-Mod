@@ -1803,7 +1803,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		}
 		
 		if (saveFile.data.legCount == undefined) {
-			if (player.lowerBody.type == LowerBody.DRIDER_LOWER_BODY) {
+			if (player.lowerBody.type == LowerBody.DRIDER) {
 				player.lowerBody.legCount = 8;
 			}
 			else if (player.lowerBody.type == 4) {

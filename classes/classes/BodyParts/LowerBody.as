@@ -23,7 +23,7 @@ package classes.BodyParts
 		public static const HARPY:int                 =  13;
 		public static const KANGAROO:int              =  14;
 		public static const CHITINOUS_SPIDER_LEGS:int =  15;
-		public static const DRIDER_LOWER_BODY:int     =  16;
+		public static const DRIDER:int                =  16;
 		public static const FOX:int                   =  17;
 		public static const DRAGON:int                =  18;
 		public static const RACCOON:int               =  19;

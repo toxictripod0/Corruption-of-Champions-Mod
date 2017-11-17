@@ -1227,7 +1227,7 @@ import classes.Items.*
 			[LowerBody.HARPY, "(13) HARPY"],
 			[LowerBody.KANGAROO, "(14) KANGAROO"],
 			[LowerBody.CHITINOUS_SPIDER_LEGS, "(15) CHITINOUS_SPIDER_LEGS"],
-			[LowerBody.DRIDER_LOWER_BODY, "(16) DRIDER_LOWER_BODY"],
+			[LowerBody.DRIDER, "(16) DRIDER"],
 			[LowerBody.FOX, "(17) FOX"],
 			[LowerBody.DRAGON, "(18) DRAGON"],
 			[LowerBody.RACCOON, "(19) RACCOON"],
