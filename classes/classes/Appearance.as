@@ -1,5 +1,4 @@
-package classes
-{
+package classes {
 	import classes.BodyParts.*;
 	import classes.BodyParts.Hips;
 	import classes.GlobalFlags.kFLAGS;
@@ -9,61 +8,40 @@ package classes
 	import classes.CoC_Settings;
 	import classes.internals.Utils;
 
+	public class Appearance extends Utils {
 
-	public class Appearance extends Utils
-	{
-		public static function inverseMap(x:Object):Object
-		{
+		public static function inverseMap(x:Object):Object {
 			var result:Object = {};
-			for (var i:String in x) {
-				result[String(x[i])] = i;
-			}
+			for (var i:String in x) result[String(x[i])] = i;
 			return result;
 		}
 
-		public static function hairOrFur(i_creature:Creature):String
-		{
-			if (i_creature.hasFur())
-				return "fur";
-			else
-				return "hair";
+		public static function hairOrFur(i_creature:Creature):String {
+			if (i_creature.hasFur()) return "fur";
+			else return "hair";
 		}
 
-		public static function hairDescription(i_creature:Creature):String
-		{
+		public static function hairDescription(i_creature:Creature):String {
 			var description:String = "";
 			var options:Array;
-			//
-			// LENGTH ADJECTIVE!
-			//
-			if (i_creature.hairLength == 0)
-				return randomChoice(["shaved", "bald", "smooth", "hairless", "glabrous"]) + " head";
 
-			if (i_creature.hairLength < 1)
-				description += randomChoice(["close-cropped, ", "trim, ", "very short, "]);
-			else if (i_creature.hairLength < 3)
-				description += "short, ";
-			else if (i_creature.hairLength < 6)
-				description += "shaggy, ";
-			else if (i_creature.hairLength < 10)
-				description += "moderately long, ";
-			else if (i_creature.hairLength < 16)
-				description += randomChoice(["long, ", "shoulder-length, "]);
-			else if (i_creature.hairLength < 26)
-				description += randomChoice(["very long, ", "flowing locks of "]);
-			else if (i_creature.hairLength < 40)
-				description += "ass-length, ";
-			else if (i_creature.hairLength < i_creature.tallness)
-				description += "obscenely long, ";
+			// LENGTH ADJECTIVE!
+			if (i_creature.hairLength == 0) return randomChoice(["shaved", "bald", "smooth", "hairless", "glabrous"]) + " head";
+			if (i_creature.hairLength < 1) description += randomChoice(["close-cropped, ", "trim, ", "very short, "]);
+			else if (i_creature.hairLength < 3) description += "short, ";
+			else if (i_creature.hairLength < 6) description += "shaggy, ";
+			else if (i_creature.hairLength < 10) description += "moderately long, ";
+			else if (i_creature.hairLength < 16) description += randomChoice(["long, ", "shoulder-length, "]);
+			else if (i_creature.hairLength < 26) description += randomChoice(["very long, ", "flowing locks of "]);
+			else if (i_creature.hairLength < 40) description += "ass-length, ";
+			else if (i_creature.hairLength < i_creature.tallness) description += "obscenely long, ";
 			else // if (i_creature.hairLength >= i_creature.tallness)
 				description += randomChoice(["floor-length, ", "floor-dragging, "]);
-			//
+
 			// COLORS
-			//
 			description += i_creature.hairColor + " ";
-			//
+
 			// HAIR WORDS
-			//
 			switch (i_creature.hairType) {
 				case Hair.BASILISK_SPINES:
 					options = [
@@ -118,17 +96,13 @@ package classes
 			else if (i_creature.hairType == Hair.QUILL) description += "quill-";
 			else if (i_creature.hairType == Hair.WOOL) description += "woolen ";
 			description += "hair";
-
 			return description;
 		}
-		
-		public static function beardDescription(i_creature:Creature):String
-		{
+
+		public static function beardDescription(i_creature:Creature):String {
 			var description:String = "";
 			var options:Array;
-			//
 			// LENGTH ADJECTIVE!
-			//
 			if (i_creature.beardLength == 0) {
 				options = ["shaved",
 					"bald",
@@ -155,23 +129,21 @@ package classes
 				if (rand(2) == 0) description += "very long, ";
 				description += "chest-length, ";
 			}
-			//
+
 			// COLORS
-			//
 			description += i_creature.hairColor + " ";
-			//
+
 			// BEARD WORDS
 			// Follows hair type.
 			if (i_creature.hairType == 1) description += "";
 			else if (i_creature.hairType == 2) description += "transparent ";
 			else if (i_creature.hairType == 3) description += "gooey ";
 			else if (i_creature.hairType == 4) description += "tentacley ";
-			
+
 			if (i_creature.beardStyle == 0) description += "beard"
 			else if (i_creature.beardStyle == 1) description += "goatee"
 			else if (i_creature.beardStyle == 2) description += "clean-cut beard"
 			else if (i_creature.beardStyle == 3) description += "mountain-man beard"
-
 			return description;
 		}
 
@@ -180,8 +152,7 @@ package classes
 		 * @param    i_character Either Player or NonPlayer
 		 * @return    A beautiful description of a tongue.
 		 */
-		public static function tongueDescription(i_character:Character):String
-		{
+		public static function tongueDescription(i_character:Character):String {
 			// fallback for tongueTypes not fully implemented yet
 			if (i_character.tongueType == Tongue.HUMAN || !DEFAULT_TONGUE_NAMES.hasOwnProperty(''+i_character.tongueType))
 				return "tongue";
@@ -189,8 +160,7 @@ package classes
 			return DEFAULT_TONGUE_NAMES[i_character.tongueType] + " tongue";
 		}
 
-		public static function nippleDescription(i_creature:Creature, i_rowNum:Number):String
-		{
+		public static function nippleDescription(i_creature:Creature, i_rowNum:Number):String {
 			//DEBUG SHIT!
 			if (i_rowNum > (i_creature.breastRows.length - 1)) {
 				CoC_Settings.error("<B>Error: Invalid breastRows (" + i_rowNum + ") passed to nippleDescription()</b>");
@@ -395,8 +365,7 @@ package classes
 			 */
 		}
 
-		public static function hipDescription(i_character:Character):String
-		{
+		public static function hipDescription(i_character:Character):String {
 			var description:String = "";
 			var options:Array;
 			if (i_character.hipRating <= 1) {
@@ -474,12 +443,10 @@ package classes
 					"thighs"];
 				description += randomChoice(options);
 			}
-
 			return description;
 		}
 
-		public static function cockDescript(creature:Creature, cockIndex:Number = 0):String
-		{
+		public static function cockDescript(creature:Creature, cockIndex:Number = 0):String {
 			if (creature.cocks.length == 0) return "<b>ERROR: cockDescript Called But No Cock Present</b>";
 			var cockType:CockTypesEnum = CockTypesEnum.HUMAN;
 			if (cockIndex != 99) { //CockIndex 99 forces a human cock description
@@ -502,8 +469,7 @@ package classes
 			return cockNoun(cockType);
 		}
 
-		public static function cockNoun(cockType:CockTypesEnum):String
-		{
+		public static function cockNoun(cockType:CockTypesEnum):String {
 			/*
 			if (cockType is int) {
 				trace("Someone is still calling cockNoun with an integer cock type");
