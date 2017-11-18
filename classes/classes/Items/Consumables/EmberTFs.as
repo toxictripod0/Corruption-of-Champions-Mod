@@ -122,7 +122,7 @@ package classes.Items.Consumables
 				player.copySkinToUnderBody({       // copy the main skin props to the underBody skin ...
 					desc: "ventral dragon scales"  // ... and only override the desc
 				});
-				output.text("  <b>Your body is now covered in [skinTone], shield-shaped dragon scales with [underBody.skin.tone] ventral scales"
+				output.text("  <b>Your body is now covered in [skinTone], shield-shaped dragon scales with [underBody.skinTone] ventral scales"
 				           +" covering your underside.</b>");
 			}
 			//<mod name="Reptile eyes" author="Stadler76">
