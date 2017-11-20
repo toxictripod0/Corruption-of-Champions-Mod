@@ -1,10 +1,10 @@
 package classes
 {
-	import classes.BodyParts.BreastCup;
-	import classes.internals.Utils;
 	import classes.Appearance;
 	import classes.CoC;
 	import classes.SaveAwareInterface;
+	import classes.internals.Utils;
+	import classes.lists.BreastCup;
 	
 	public class BreastStore extends Utils implements SaveAwareInterface
 	{

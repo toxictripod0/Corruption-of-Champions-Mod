@@ -7,6 +7,7 @@
 	import classes.Items.*;
 	import classes.internals.LoggerFactory;
 	import classes.internals.SerializationUtils;
+	import classes.lists.BreastCup;
 	import flash.events.Event;
 	import flash.events.IOErrorEvent;
 	import flash.net.FileReference;

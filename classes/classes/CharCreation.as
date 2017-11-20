@@ -3,20 +3,21 @@
 	import classes.BodyParts.*;
 	import classes.BodyParts.Butt;
 	import classes.BodyParts.Hips;
+	import classes.GlobalFlags.kACHIEVEMENTS;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
-	import classes.GlobalFlags.kACHIEVEMENTS;
-	import classes.Items.Armors.GooArmor;
 	import classes.Items.*;
-	import classes.Saves;
-	import classes.internals.Utils;
+	import classes.Items.Armors.GooArmor;
 	import classes.Scenes.Inventory;
-
+	import classes.internals.Utils;
+	import classes.lists.BreastCup;
+	import classes.lists.Gender;
+	import coc.view.MainView;
 	import fl.controls.ComboBox;
 	import fl.data.DataProvider;
 	import flash.events.Event;
+
 	
-	import coc.view.MainView;
 
 	public class CharCreation extends BaseContent {
 		

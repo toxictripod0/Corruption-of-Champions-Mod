@@ -2,15 +2,14 @@ package classes.Items.Consumables
 {
 	import classes.Appearance;
 	import classes.BodyParts.*;
-	import classes.BodyParts.BreastCup;
 	import classes.CockTypesEnum;
-	import classes.Gender;
 	import classes.GlobalFlags.kFLAGS;
-	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Items.Consumable;
 	import classes.Items.ConsumableLib;
 	import classes.PerkLib;
 	import classes.StatusEffects;
+	import classes.lists.BreastCup;
+	import classes.lists.Gender;
 
 	/**
 	 * @since  26.05.2017

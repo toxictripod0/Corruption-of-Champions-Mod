@@ -9,6 +9,7 @@ package classes.Scenes.NPCs
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
+	import classes.lists.BreastCup;
 
 	public class AmilyScene extends NPCAwareContent implements TimeAwareInterface
 	{

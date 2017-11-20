@@ -3,14 +3,14 @@ package classes.Scenes.Dungeons.Factory
 	import classes.AssClass;
 	import classes.BaseContent;
 	import classes.BodyParts.*;
-	import classes.Gender;
-	import classes.GlobalFlags.kFLAGS;
-	import classes.StatusEffects;
-	import classes.PerkLib;
 	import classes.CockTypesEnum;
+	import classes.GlobalFlags.kFLAGS;
+	import classes.PerkLib;
+	import classes.StatusEffects;
+	import classes.VaginaClass;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
-	import classes.VaginaClass;
+	import classes.lists.Gender;
 	
 	public class OmnibusOverseerScene extends BaseContent
 	{

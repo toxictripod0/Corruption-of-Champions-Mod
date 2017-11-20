@@ -1,4 +1,4 @@
-package classes 
+package classes.lists 
 {
 	/**
 	 * Container class for the gender constants

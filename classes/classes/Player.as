@@ -1,27 +1,24 @@
 ﻿package classes
 {
-import classes.BodyParts.*;
-import classes.BodyParts.BreastCup;
-import classes.GlobalFlags.kFLAGS;
-import classes.GlobalFlags.kGAMECLASS;
-import classes.GlobalFlags.kGAMECLASS;
-import classes.GlobalFlags.kGAMECLASS;
-import classes.GlobalFlags.kACHIEVEMENTS;
-import classes.Items.Armor;
-import classes.Items.ArmorLib;
-import classes.Items.Weapon;
-import classes.Items.WeaponLib;
-import classes.Items.Jewelry;
-import classes.Items.JewelryLib;
-import classes.Items.Shield;
-import classes.Items.ShieldLib;
-import classes.Items.Undergarment;
-import classes.Items.UndergarmentLib
-import classes.Scenes.Areas.Forest;
-import classes.Scenes.Areas.Forest.KitsuneScene;
-import classes.Scenes.Places.TelAdre.UmasShop;
+	import classes.BodyParts.*;
+	import classes.GlobalFlags.kACHIEVEMENTS;
+	import classes.GlobalFlags.kFLAGS;
+	import classes.GlobalFlags.kGAMECLASS;
+	import classes.Items.Armor;
+	import classes.Items.ArmorLib;
+	import classes.Items.Jewelry;
+	import classes.Items.JewelryLib;
+	import classes.Items.Shield;
+	import classes.Items.ShieldLib;
+	import classes.Items.Undergarment;
+	import classes.Items.UndergarmentLib;
+	import classes.Items.Weapon;
+	import classes.Items.WeaponLib;
+	import classes.Scenes.Areas.Forest.KitsuneScene;
+	import classes.Scenes.Places.TelAdre.UmasShop;
+	import classes.lists.BreastCup;
 
-use namespace kGAMECLASS;
+	use namespace kGAMECLASS;
 
 	/**
 	 * ...

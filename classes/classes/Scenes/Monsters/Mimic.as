@@ -1,13 +1,13 @@
 package classes.Scenes.Monsters 
 {
 	import classes.AssClass;
-	import classes.BodyParts.BreastCup;
+	import classes.BodyParts.Butt;
+	import classes.BodyParts.Hips;
+	import classes.CockTypesEnum;
 	import classes.Monster;
 	import classes.StatusEffects;
 	import classes.internals.WeightedDrop;
-	import classes.CockTypesEnum;
-	import classes.BodyParts.Butt;
-	import classes.BodyParts.Hips;
+	import classes.lists.BreastCup;
 	/**
 	 * ...
 	 * @author ...

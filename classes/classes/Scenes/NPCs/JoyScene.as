@@ -1,11 +1,11 @@
 package classes.Scenes.NPCs 
 {
-	import classes.BodyParts.BreastCup;
+	import classes.*;
 	import classes.GlobalFlags.*;
 	import classes.Items.*;
-	import classes.*;
-	import classes.display.SpriteDb;
 	import classes.internals.*;
+	import classes.lists.BreastCup;
+	import classes.lists.Gender;
 	
 	/**
 	 * Bimbo Jojo by LukaDoc

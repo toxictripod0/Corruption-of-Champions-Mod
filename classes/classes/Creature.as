@@ -4,7 +4,6 @@ package classes
 	import classes.BodyParts.Antennae;
 	import classes.BodyParts.Arms;
 	import classes.BodyParts.Beard;
-	import classes.BodyParts.BreastCup;
 	import classes.BodyParts.Butt;
 	import classes.BodyParts.Claws;
 	import classes.BodyParts.Ears;
@@ -22,30 +21,26 @@ package classes
 	import classes.BodyParts.Tongue;
 	import classes.BodyParts.UnderBody;
 	import classes.BodyParts.Wings;
-import classes.GlobalFlags.kGAMECLASS;
-import classes.GlobalFlags.kGAMECLASS;
 	import classes.GlobalFlags.kFLAGS;
+	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Items.JewelryLib;
-import classes.StatusEffects.Combat.CombatInteBuff;
-import classes.StatusEffects.Combat.CombatSpeBuff;
-import classes.StatusEffects.Combat.CombatStrBuff;
-import classes.StatusEffects.Combat.CombatTouBuff;
-import classes.internals.Profiling;
-import classes.internals.Utils;
-import classes.internals.IRandomNumber;
-import classes.internals.RandomNumber;
-import classes.internals.Utils;
-import classes.VaginaClass;
-import classes.Scenes.Places.TelAdre.UmasShop;
-import classes.internals.profiling.Begin;
-import classes.internals.profiling.End;
-import classes.lists.BodyPartLists;
+	import classes.Scenes.Places.TelAdre.UmasShop;
+	import classes.StatusEffects.Combat.CombatInteBuff;
+	import classes.StatusEffects.Combat.CombatSpeBuff;
+	import classes.StatusEffects.Combat.CombatStrBuff;
+	import classes.StatusEffects.Combat.CombatTouBuff;
+	import classes.VaginaClass;
+	import classes.internals.IRandomNumber;
+	import classes.internals.LoggerFactory;
+	import classes.internals.Utils;
+	import classes.internals.profiling.Begin;
+	import classes.internals.profiling.End;
+	import classes.lists.BodyPartLists;
+	import classes.lists.BreastCup;
+	import classes.lists.Gender;
+	import flash.errors.IllegalOperationError;
+	import mx.logging.ILogger;
 
-import flash.errors.IllegalOperationError;
-import classes.internals.LoggerFactory;
-import flash.display.InteractiveObject;
-import flash.errors.IllegalOperationError;
-import mx.logging.ILogger;
 
 	public class Creature extends Utils
 	{

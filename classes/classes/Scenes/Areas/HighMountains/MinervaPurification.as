@@ -3,9 +3,10 @@ package classes.Scenes.Areas.HighMountains
 {
 	import classes.*;
 	import classes.BodyParts.*;
+	import classes.GlobalFlags.kACHIEVEMENTS;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
-	import classes.GlobalFlags.kACHIEVEMENTS;
+	import classes.lists.Gender;
 	
 	public class MinervaPurification extends BaseContent
 	{

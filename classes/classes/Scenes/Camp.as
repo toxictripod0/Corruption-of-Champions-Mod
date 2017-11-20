@@ -1,16 +1,17 @@
 ﻿package classes.Scenes{
 	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kACHIEVEMENTS;
+	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Items.*;
 	import classes.Scenes.Camp.*;
-	import classes.Scenes.NPCs.*;
 	import classes.Scenes.Dungeons.*;
+	import classes.Scenes.NPCs.*;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
-
+	import classes.lists.Gender;
 	import coc.view.MainView;
+
 
 	public class Camp extends NPCAwareContent{
 

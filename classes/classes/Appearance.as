@@ -2,12 +2,11 @@ package classes
 {
 	import classes.BodyParts.*;
 	import classes.BodyParts.Hips;
+	import classes.CoC_Settings;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
-	import classes.Player;
-	import classes.Monster;
-	import classes.CoC_Settings;
 	import classes.internals.Utils;
+	import classes.lists.Gender;
 
 
 	public class Appearance extends Utils

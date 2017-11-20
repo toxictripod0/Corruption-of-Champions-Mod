@@ -1,11 +1,10 @@
 package classes.Scenes.Places.Bazaar 
 {
+	import classes.*;
 	import classes.BodyParts.*;
 	import classes.GlobalFlags.*;
-	import classes.Items.Mutations;
-	import classes.*;
-	import classes.display.SpriteDb;
 	import classes.internals.*;
+	import classes.lists.Gender;
 	/**
 	 * The Black Cock by Foxxling
 	 * @author Kitteh6660

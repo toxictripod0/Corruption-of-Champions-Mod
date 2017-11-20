@@ -1,12 +1,9 @@
 package classes 
 {
 	import classes.BodyParts.*;
-import classes.Scenes.Places.TelAdre.UmasShop;
-import classes.Items.JewelryLib;
-import classes.GlobalFlags.kFLAGS;
-import classes.lists.BodyPartLists;
+	import classes.lists.BodyPartLists;
 
-/**
+	/**
 	 * Character class for player and NPCs. Has subclasses Player and NonPlayer.
 	 * @author Yoffy
 	 */
