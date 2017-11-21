@@ -292,7 +292,7 @@ private function doCamp():void { //Only called by playerMenu
 		if (!campQ) {
 			clearOutput();
 			outputText("More time passes...\n");
-			goNext(superLoop);
+			doNext(superLoop);
 			return;
 		}
 		else {
@@ -1684,7 +1684,7 @@ public function rest():void {
 		if (timeQ != 1) outputText("You continue to rest for " + num2Text(timeQ) + " more hours.\n");
 		else outputText("You continue to rest for another hour.\n");
 	}
-	goNext(superLoop);
+	doNext(superLoop);
 }
 
 //-----------------
@@ -1727,7 +1727,7 @@ public function doWait():void {
 		if (timeQ != 1) outputText("You continue to wait for " + num2Text(timeQ) + " more hours.\n");
 		else outputText("You continue to wait for another hour.\n");
 	}
-	goNext(superLoop);
+	doNext(superLoop);
 }
 //-----------------
 //-- SLEEP
@@ -1759,7 +1759,7 @@ public function doSleep(clrScreen:Boolean = true):void {
 			if (timeQ > 1) outputText("s");
 			outputText(". ");
 			sleepRecovery(true);
-			goNext(superLoop);
+			doNext(superLoop);
 			return;
 		}
 		/******************************************************************/
@@ -1867,7 +1867,7 @@ public function doSleep(clrScreen:Boolean = true):void {
 		if (timeQ != 1) outputText("You lie down to resume sleeping for the remaining " + num2Text(timeQ) + " hours.\n");
 		else outputText("You lie down to resume sleeping for the remaining hour.\n");
 	}
-	goNext(superLoop);
+	doNext(superLoop);
 }
 //For shit that breaks normal sleep processing.
 public function sleepWrapper():void {
@@ -1891,7 +1891,7 @@ public function sleepWrapper():void {
 	else outputText("You lie down to resume sleeping for the remaining hour.\n");
 	sleepRecovery(true);
 	menu();
-	goNext(superLoop);
+	doNext(superLoop);
 }
 
 public function superLoop():void {
