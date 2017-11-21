@@ -11,13 +11,12 @@ package classes.Scenes.Areas.HighMountains {
 	public class CockatriceScene extends BaseContent {
 		public function CockatriceScene() {}
 
-		//Intros and Fight Texts. 
+		//Intros and Fight Texts.
 		public function greeting():void {
 			var cockatrice:Cockatrice = new Cockatrice();
 			//spriteSelect(75);
 			clearOutput();
-			//First encounter:
-			if (flags[kFLAGS.TIMES_ENCOUNTERED_COCKATRICES] == 0) {
+			if (flags[kFLAGS.TIMES_ENCOUNTERED_COCKATRICES] == 0) { //First encounter:
 				outputText("As you follow the trails in the high mountains, the rocky terrain becomes less stable, the path devolving into a series of loose crags with gravel like sediment surrounding large boulders and rough stepping stone-like structures. "
 				          +"As you cling to the rock face trying to step from one rock to another you see something in the distance. "
 				          +"A figure, perched on one of the outcroppings with surprising ease.\n\n");
@@ -53,8 +52,7 @@ package classes.Scenes.Areas.HighMountains {
 				//(spd loss)
 				Basilisk.speedReduce(player, 5);
 			}
-			//Standard encounter:
-			else {
+			else { //Standard encounter:
 				if (rand(100) < 40) //40% chance of wings
 					cockatrice.wingify();
 				outputText(images.showImage("monster-cockatrice"));
@@ -83,11 +81,12 @@ package classes.Scenes.Areas.HighMountains {
 				combat.cleanupAfterCombat();
 				return;
 			}
-			outputText(images.showImage("cockatrice-fallen"));
+			if (monster.HP < 1) outputText(images.showImage("cockatrice-fallen-hp"));
+			else outputText(images.showImage("cockatrice-fallen-lust"));
 			outputText("The Cockatrice falls to his knees panting as he looks over at you. ");
-			//Player HP victory: 
+			//Player HP victory:
 			if (monster.HP < 1) outputText("He looks thoroughly beaten, feathers ruffled and face dirtied from debris that rose during the battle. The defiant look in his eyes is all that's left of his previous manic energy. ");
-			//Player Lust victory: 
+			//Player Lust victory:
 			else outputText("He lazily strokes his purple length as he looks up at you with a come-hither gaze. His ruffled feathers, dirtied scales and leisurely pumps manage to make him look quite dashing, even in defeat. ");
 			menu();
 			addDisabledButton(0, "Ride Him Vag", "This scene requires you to have a vag, not being a taur or drider and sufficient arousal");
@@ -675,8 +674,8 @@ package classes.Scenes.Areas.HighMountains {
 			else outputText("With a soft smile, you get up and leave, enjoying the sensation of pink slime trickling down your legs. You cannot wait to get pregnant again, for your stomach to bulge with eggs, to release more delightful creatures into this world which can grow up to fuck you and everyone else in turn, so everyone can enjoy life as much as you do.");
 				if (player.hipRating < 25) {
 					player.hipRating++;
-			outputText("There's an extra thickness to your [hips] as well.");
-			}
+					outputText("There's an extra thickness to your [hips] as well.");
+				}
 		}
 
 		//Player lost -> Taur/Drider oral
