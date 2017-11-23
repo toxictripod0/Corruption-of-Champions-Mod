@@ -3,6 +3,7 @@ package classes.Scenes.NPCs
 	import classes.*;
 	import classes.GlobalFlags.*;
 	import classes.Items.*;
+	import classes.display.SpriteDb;
 	import classes.internals.*;
 	import classes.lists.BreastCup;
 	import classes.lists.Gender;
