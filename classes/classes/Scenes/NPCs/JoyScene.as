@@ -439,6 +439,7 @@ package classes.Scenes.NPCs
 		// FOLLOWER
 		//------------
 		private function genericMenu(approach:Boolean = false):void {
+			spriteSelect(SpriteDb.s_joy);
 			if (!approach) {
 				clearOutput();
 				outputText("\"<i>Do you need, like, anything else?</i>\" Joy asks. Her tail waggles excitedly.");
