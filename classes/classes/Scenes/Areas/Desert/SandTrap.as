@@ -129,11 +129,11 @@
 			this.ass.analLooseness = AssClass.LOOSENESS_NORMAL;
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.tallness = rand(8) + 150;
-			this.hipRating = Hips.RATING_AMPLE+2;
-			this.buttRating = Butt.RATING_LARGE;
-			this.skinTone = "fair";
-			this.hairColor = "black";
-			this.hairLength = 15;
+			this.hips.rating = Hips.RATING_AMPLE+2;
+			this.butt.rating = Butt.RATING_LARGE;
+			this.skin.tone = "fair";
+			this.hair.color = "black";
+			this.hair.length = 15;
 			initStrTouSpeInte(55, 10, 45, 55);
 			initLibSensCor(60, 45, 50);
 			this.weaponName = "claws";
@@ -148,7 +148,7 @@
 			this.level = 4;
 			this.gems = 2 + rand(5);
 			this.drop = new ChainedDrop(consumables.TRAPOIL).add(consumables.OVIELIX,1/3);
-			this.tailType = Tail.DEMONIC;
+			this.tail.type = Tail.DEMONIC;
 			createStatusEffect(StatusEffects.Level,4,0,0,0);
 			checkMonster();
 		}

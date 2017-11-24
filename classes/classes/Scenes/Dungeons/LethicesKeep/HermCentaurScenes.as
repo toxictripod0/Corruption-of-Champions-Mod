@@ -415,7 +415,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			if (player.balls > 0) outputText(" [balls] feel fit to burst!");
 			else outputText(" manhood feels swollen to bursting!");
 			outputText("  Realizing the only way out will be with your tongue, you open wide");
-			if (player.tongueType != 0) outputText(" and uncoil your inhuman length to spear");
+			if (player.tongue.type != 0) outputText(" and uncoil your inhuman length to spear");
 			else outputText(" and begin to lap");
 			outputText(" at her inhuman entrance.  She whinnies in delight, grinding her clydesdale-sized bulk back and forth on your face as you start to get into her eating her out.");
 
@@ -440,7 +440,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			else outputText(" asks, \"<i>I hope you don't mind slurping down a little cock, because you're going to anyway.</i>\"");
 			
 			outputText("\n\nThe second herm grabs you by the");
-			if (player.hornType != 0) outputText(" horns");
+			if (player.horns.type != 0) outputText(" horns");
 			else outputText(" head");
 			outputText(" and sidles forward, ramming her glans into your mouth and down the back of your throat.  You can feel her glans pulsing deep inside you, and as soon as the herm starts moaning, the centaur starts trotting forward again.  Amazingly, having her holding you up makes it easy to maintain your position and keep your dick bouncing in that hot twat. Fuck it! You're too horny to care anymore.");
 

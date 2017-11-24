@@ -177,11 +177,11 @@ package classes.Scenes.Monsters
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,30,0,0,0);
 			this.tallness = 48;
-			this.hipRating = Hips.RATING_AMPLE+2;
-			this.buttRating = Butt.RATING_LARGE;
-			this.skinTone = "yellowish-green";
-			this.hairColor = "dark green";
-			this.hairLength = 4;
+			this.hips.rating = Hips.RATING_AMPLE+2;
+			this.butt.rating = Butt.RATING_LARGE;
+			this.skin.tone = "yellowish-green";
+			this.hair.color = "dark green";
+			this.hair.length = 4;
 			initStrTouSpeInte(95, 75, 70, 100);
 			initLibSensCor(55, 35, 45);
 			this.weaponName = "primal sword";

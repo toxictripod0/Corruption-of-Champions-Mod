@@ -3,10 +3,9 @@
  */
 package classes.Scenes.Areas.HighMountains {
 	import classes.*;
-	import classes.BodyParts.BreastCup;
-	import classes.Items.ArmorLib;
 	import classes.GlobalFlags.kFLAGS;
-	import classes.GlobalFlags.kGAMECLASS;
+	import classes.Items.ArmorLib;
+	import classes.lists.BreastCup;
 
 	public class CockatriceScene extends BaseContent {
 		public function CockatriceScene() {}
@@ -672,10 +671,10 @@ package classes.Scenes.Areas.HighMountains {
 			if (player.cor < 33) outputText("You find yourself shaken by the experience, and deeply disquieted by the thought of the clutch of monsters you have unleashed on this world. You pick yourself up, rub yourself down and leave, promising yourself fervently you'll be more careful around cockatrices in the future.");
 			else if (player.cor < 66) outputText("You pick yourself up, rub yourself down and leave. You feel conflicted about what just happened; on the one hand you feel disquieted about the dozen monsters you just unleashed on this world, on the other you cannot help feel oddly proud of them and yourself.");
 			else outputText("With a soft smile, you get up and leave, enjoying the sensation of pink slime trickling down your legs. You cannot wait to get pregnant again, for your stomach to bulge with eggs, to release more delightful creatures into this world which can grow up to fuck you and everyone else in turn, so everyone can enjoy life as much as you do.");
-				if (player.hipRating < 25) {
-					player.hipRating++;
-					outputText("There's an extra thickness to your [hips] as well.");
-				}
+				if (player.hips.rating < 25) {
+					player.hips.rating++;
+			outputText("There's an extra thickness to your [hips] as well.");
+			}
 		}
 
 		//Player lost -> Taur/Drider oral

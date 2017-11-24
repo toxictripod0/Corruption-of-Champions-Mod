@@ -3,20 +3,21 @@
 	import classes.BodyParts.*;
 	import classes.BodyParts.Butt;
 	import classes.BodyParts.Hips;
+	import classes.GlobalFlags.kACHIEVEMENTS;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
-	import classes.GlobalFlags.kACHIEVEMENTS;
-	import classes.Items.Armors.GooArmor;
 	import classes.Items.*;
-	import classes.Saves;
-	import classes.internals.Utils;
+	import classes.Items.Armors.GooArmor;
 	import classes.Scenes.Inventory;
-
+	import classes.internals.Utils;
+	import classes.lists.BreastCup;
+	import classes.lists.Gender;
+	import coc.view.MainView;
 	import fl.controls.ComboBox;
 	import fl.data.DataProvider;
 	import flash.events.Event;
+
 	
-	import coc.view.MainView;
 
 	public class CharCreation extends BaseContent {
 		
@@ -193,24 +194,24 @@
 				player.gems = flags[kFLAGS.NEW_GAME_PLUS_BONUS_STORED_ITEMS];
 			}
 			player.HP = player.maxHP();
-			player.hairLength = 5;
-			player.skinType = Skin.PLAIN;
+			player.hair.length = 5;
+			player.skin.type = Skin.PLAIN;
 			player.underBody.restore();
 			player.neck.restore();
 			player.rearBody.restore();
-			player.lowerBody = LowerBody.HUMAN;
-			player.legCount = 2;
-			player.faceType = Face.HUMAN;
-			player.eyeCount = 2;
-			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) player.tailType = Tail.NONE;
-			player.tongueType = Tongue.HUMAN;
+			player.lowerBody.type = LowerBody.HUMAN;
+			player.lowerBody.legCount = 2;
+			player.face.type = Face.HUMAN;
+			player.eyes.count = 2;
+			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) player.tail.type = Tail.NONE;
+			player.tongue.type = Tongue.HUMAN;
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) player.femininity = 50;
-			player.beardLength = 0;
-			player.beardStyle = 0;
+			player.beard.length = 0;
+			player.beard.style = 0;
 			player.tone = 50;
 			player.thickness = 50;
-			player.skinDesc = "skin";
-			player.skinAdj = "";
+			player.skin.desc = "skin";
+			player.skin.adj = "";
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) {
 				player.balls = 0;
 				player.ballSize = 0;
@@ -223,27 +224,27 @@
 			player.fertility = 5;
 			player.fatigue = 0;
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) {
-				player.horns = 0;
+				player.horns.value = 0;
 				player.tallness = 60;
-				player.tailVenom = 0;
-				player.tailRecharge = 0;
+				player.tail.venom = 0;
+				player.tail.recharge = 0;
 
 			}
 			else {
-				if (!(player.tailType == Tail.FOX || player.tailType == Tail.SPIDER_ABDOMEN || player.tailType == Tail.BEE_ABDOMEN || player.tailType == Tail.SCORPION)) {
-					player.tailVenom = 0;
-					player.tailRecharge = 0;
+				if (!(player.tail.type == Tail.FOX || player.tail.type == Tail.SPIDER_ABDOMEN || player.tail.type == Tail.BEE_ABDOMEN || player.tail.type == Tail.SCORPION)) {
+					player.tail.venom = 0;
+					player.tail.recharge = 0;
 				}
 			}
-			player.wingType = Wings.NONE;
-			if (player.eyeType == Eyes.BASILISK) player.eyeType = Eyes.LIZARD; // Silently change them to be lizard eyes again. Simple and stupid ;)
+			player.wings.type = Wings.NONE;
+			if (player.eyes.type == Eyes.BASILISK) player.eyes.type = Eyes.LIZARD; // Silently change them to be lizard eyes again. Simple and stupid ;)
 			//Default
-			player.skinTone = "light";
-			player.clawTone = "";
-			player.hairColor = "brown";
-			player.hairType = Hair.NORMAL;
-			player.beardLength = 0;
-			player.beardStyle = 0;
+			player.skin.tone = "light";
+			player.claws.tone = "";
+			player.hair.color = "brown";
+			player.hair.type = Hair.NORMAL;
+			player.beard.length = 0;
+			player.beard.style = 0;
 			//Exploration
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) {
 				//Inventory clear
@@ -563,7 +564,7 @@
 			}
 			//Body attributes
 			player.fertility = 5;
-			player.hairLength = 1;
+			player.hair.length = 1;
 			player.tallness = 71;
 			player.tone = 60;
 			
@@ -597,7 +598,7 @@
 			}
 			//Body attributes
 			player.fertility = 10;
-			player.hairLength = 10;
+			player.hair.length = 10;
 			player.tallness = 67;
 			player.tone = 30;
 			
@@ -629,7 +630,7 @@
 			}
 			//Body attributes
 			player.fertility = 10;
-			player.hairLength = 10;
+			player.hair.length = 10;
 			player.tallness = 69;
 			player.tone = 45;
 			
@@ -671,8 +672,8 @@
 			player.tone += 5;
 			
 			player.breastRows[0].breastRating = BreastCup.FLAT;
-			player.buttRating = Butt.RATING_TIGHT;
-			player.hipRating = Hips.RATING_SLENDER;
+			player.butt.rating = Butt.RATING_TIGHT;
+			player.hips.rating = Hips.RATING_SLENDER;
 			chooseComplexion();
 		}
 
@@ -685,8 +686,8 @@
 			player.tone += 5;
 			
 			player.breastRows[0].breastRating = BreastCup.B;
-			player.buttRating = Butt.RATING_TIGHT;
-			player.hipRating = Hips.RATING_AMPLE;
+			player.butt.rating = Butt.RATING_TIGHT;
+			player.hips.rating = Hips.RATING_AMPLE;
 			chooseComplexion();
 		}
 
@@ -695,8 +696,8 @@
 			player.thickness = 50;
 			
 			player.breastRows[0].breastRating = BreastCup.FLAT;
-			player.buttRating = Butt.RATING_AVERAGE;
-			player.hipRating = Hips.RATING_AVERAGE;
+			player.butt.rating = Butt.RATING_AVERAGE;
+			player.hips.rating = Hips.RATING_AVERAGE;
 			chooseComplexion();
 		}
 
@@ -705,8 +706,8 @@
 			player.thickness = 50;
 			
 			player.breastRows[0].breastRating = BreastCup.C;
-			player.buttRating = Butt.RATING_NOTICEABLE;
-			player.hipRating = Hips.RATING_AMPLE;
+			player.butt.rating = Butt.RATING_NOTICEABLE;
+			player.hips.rating = Hips.RATING_AMPLE;
 			chooseComplexion();
 		}
 
@@ -720,8 +721,8 @@
 			player.tone -= 5;
 			
 			player.breastRows[0].breastRating = BreastCup.FLAT;
-			player.buttRating = Butt.RATING_NOTICEABLE;
-			player.hipRating = Hips.RATING_AVERAGE;
+			player.butt.rating = Butt.RATING_NOTICEABLE;
+			player.hips.rating = Hips.RATING_AVERAGE;
 			chooseComplexion();
 		}
 
@@ -734,8 +735,8 @@
 			player.thickness = 70;
 			
 			player.breastRows[0].breastRating = BreastCup.D;
-			player.buttRating = Butt.RATING_LARGE;
-			player.hipRating = Hips.RATING_CURVY;
+			player.butt.rating = Butt.RATING_LARGE;
+			player.hips.rating = Hips.RATING_CURVY;
 			chooseComplexion();
 		}
 
@@ -748,8 +749,8 @@
 			player.tone = 26;
 			
 			player.breastRows[0].breastRating = BreastCup.A;
-			player.buttRating = Butt.RATING_NOTICEABLE;
-			player.hipRating = Hips.RATING_SLENDER;
+			player.butt.rating = Butt.RATING_NOTICEABLE;
+			player.hips.rating = Hips.RATING_SLENDER;
 			chooseComplexion();
 		}
 
@@ -762,8 +763,8 @@
 			player.tone = 50;
 			
 			player.breastRows[0].breastRating = BreastCup.A;
-			player.buttRating = Butt.RATING_TIGHT;
-			player.hipRating = Hips.RATING_SLENDER;
+			player.butt.rating = Butt.RATING_TIGHT;
+			player.hips.rating = Hips.RATING_SLENDER;
 			chooseComplexion();
 		}
 
@@ -781,8 +782,8 @@
 		}
 
 		private function setComplexion(choice:String):void { //And choose hair
-			player.skinTone = choice;
-			player.clawTone = "";
+			player.skin.tone = choice;
+			player.claws.tone = "";
 			clearOutput();
 			outputText("You selected a " + choice + " complexion.\n\nWhat color is your hair?");
 			menu();
@@ -796,7 +797,7 @@
 		}
 
 		private function setHair(choice:String):void {
-			player.hairColor = choice;
+			player.hair.color = choice;
 			clearOutput();
 			outputText("You have " + player.hairDescript() + ".\n\nYou will proceed to customization.");
 			//chooseEndowment(false);
@@ -814,8 +815,8 @@
 			
 			outputText("You can finalize your appearance customization before you proceed to perk selection. You will be able to alter your appearance through the usage of certain items.\n\n");
 			outputText("Height: " + Math.floor(player.tallness / 12) + "'" + player.tallness % 12 + "\"\n");
-			outputText("Skin tone: " + player.skinTone + "\n");
-			outputText("Hair color: " + player.hairColor + "\n");
+			outputText("Skin tone: " + player.skin.tone + "\n");
+			outputText("Hair color: " + player.hair.color + "\n");
 			if (player.hasCock()) {
 				outputText("Cock size: " + player.cocks[0].cockLength + "\" long, " + player.cocks[0].cockThickness + "\" thick\n");
 			}
@@ -852,7 +853,7 @@
 			addButton(14, "Back", genericStyleCustomizeMenu);
 		}	
 		private function confirmComplexion(complexion:String):void {
-			player.skinTone = complexion;
+			player.skin.tone = complexion;
 			genericStyleCustomizeMenu();
 		}
 
@@ -874,7 +875,7 @@
 		}
 
 		private function chooseHairColor(color:String = ""):void {
-			player.hairColor = color;
+			player.hair.color = color;
 			genericStyleCustomizeMenu();
 		}
 
@@ -901,7 +902,7 @@
 			addButton(14, "Back", menuBeardSettings);
 		}
 		private function chooseBeardStyle(choiceStyle:int = 0):void {
-			player.beardStyle = choiceStyle;
+			player.beard.style = choiceStyle;
 			menuBeardSettings();
 		}
 		private function menuBeardLength():void {
@@ -918,7 +919,7 @@
 			addButton(14, "Back", chooseBeardLength);
 		}
 		private function chooseBeardLength(choiceLength:Number = 0):void {
-			player.beardLength = choiceLength;
+			player.beard.length = choiceLength;
 			menuBeardSettings();
 		}
 		
@@ -1180,7 +1181,7 @@
 				case PerkLib.Fertile:
 					player.femininity += 5;
 					player.fertility += 25;
-					player.hipRating += 2;
+					player.hips.rating += 2;
 					player.createPerk(PerkLib.Fertile, 1.5, 0, 0, 0);
 					break;
 				case PerkLib.WetPussy:

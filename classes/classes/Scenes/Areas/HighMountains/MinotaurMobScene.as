@@ -324,20 +324,20 @@ private function nonAddictMinotaurGangBang():void {
 	
 	if (player.isTaur()) {
 		outputText("A sudden, forceful push rolls your equine body onto its flank, and a larger member is pressed against your clutching ");
-		if (player.tailType == Tail.NONE) outputText("asshole");
+		if (player.tail.type == Tail.NONE) outputText("asshole");
 		else outputText("tailhole");
 		outputText(".  ");
 	}
 	else if (player.isNaga()) outputText("A sudden, forceful yank stretches out your tail, and a larger member presses between your " + player.buttDescript() + " to prod at your clutching asshole.  ");
 	else if (player.isGoo()) {
 		outputText("A sudden, forceful push rolls you to your side, and you feel shaggy fur rubbing through your gooey folds while a larger member is pressed against your clutching ");
-		if (player.tailType == Tail.NONE) outputText("asshole");
+		if (player.tail.type == Tail.NONE) outputText("asshole");
 		else outputText("tailhole");
 		outputText(".  ");
 	}
 	else {
 		outputText("A sudden, powerful yank lifts one of your legs high into the air, and you feel a larger member pressing against your clutching ");
-		if (player.tailType == Tail.NONE) outputText("asshole");
+		if (player.tail.type == Tail.NONE) outputText("asshole");
 		else outputText("tailhole");
 		outputText(".  ");
 	}
@@ -359,7 +359,7 @@ private function nonAddictMinotaurGangBang():void {
 	outputText("  Bouncing between them like a child's ball, your body is battered, abused, and used for nothing more than a few minute's pleasure.  Every time the throat-obstructing mass pulls from your mouth you take another deep breath, staying conscious, but becoming more aroused by the omnipresent stench of the horny beasts.\n\n");
 	
 	outputText("The minotaur occupying your mouth grabs hold of your ");
-	if (player.horns > 0) outputText("horns ");
+	if (player.horns.value > 0) outputText("horns ");
 	else outputText("head ");
 	outputText("and roughly buries his cock in your mouth, all the way to the hilt.  His pre-cum stops, and the balls on your chin begin to bounce as the beast's animalistic, three-ribbed member starts to widen inside you.  Your jaw stretches slightly, and you feel a huge wad of cum distend the urethra along the bottom of his shaft.  Working towards your belly, the mass bursts from his tip explosively, making your gut gurgle audibly as it receives its first injection of minotaur spunk.\n\n");
 	
@@ -450,7 +450,7 @@ private function loseToMinoMobVeryPregnant():void {
 	outputText("Pain radiates through your " + player.buttDescript() + " as a strong impact rocks your body.  You'd glance back, but the penis in your mouth holds your head stationary while it begins to slide in and out of your throat.  Another cheek-reddening slap hits your ass, and this time you definitely feel the large, furred shape of a minotaur's hand as the source of your discomfort.  The cock in your mouth draws back, not far enough to empty your mouth, yet far enough for you to breathe in sweet, sweet air through your nose. It plunges back in, just in time for another butt-reddening smack to push you the last few inches back towards those sweaty balls.\n\n");
 	
 	outputText("You look up and oogle the " + num2Text((flags[kFLAGS.ADULT_MINOTAUR_OFFSPRINGS] - 1)) + " dicks hovering just inches away from you.  Even the minitaur is there, his smaller dick dripping the sweet cream of his need at the sight of his slutty, utterly debased mother.  It turns you on so much, even more than the cream in your belly.  You reach out and grab two of the dicks to stroke, lubricating fingers with hot, wet pre-cum.");
-	if (player.isNaga() || player.tailType == Tail.DEMONIC || player.tailType == Tail.COW || player.tailType == Tail.SHARK || player.tailType == Tail.LIZARD || player.tailType == Tail.KANGAROO) outputText("  Even your tail reaches up to curl around a third, stroking the thick meat.");
+	if (player.isNaga() || player.tail.type == Tail.DEMONIC || player.tail.type == Tail.COW || player.tail.type == Tail.SHARK || player.tail.type == Tail.LIZARD || player.tail.type == Tail.KANGAROO) outputText("  Even your tail reaches up to curl around a third, stroking the thick meat.");
 	outputText("\n\n");
 	
 	outputText("\"<i>It looks like Mom is really into it, huh?  Look at her, deep-throating and drooling like an addict.  What do you have to say for yourself, Mom?  Oh?  You'd rather keep sucking cock than talk?  Well, alright then; just keep sucking, I think my bro is about to have a present for you,</i>\" predicts the second-largest minotaur.\n\n");
@@ -469,7 +469,7 @@ private function loseToMinoMobVeryPregnant():void {
 	outputText("  How does that make you feel, whore?</i>\" asks the mouth-filling dick's owner.\n\n");
 	
 	outputText("You hum, \"<i>good,</i>\" though it comes out as more of a, \"<i>mpppphhhhhh.</i>\"  Your drug-addled vision is all bubbles and synaesthetic rainbows at this point.  He chuckles malevolently when another minotaur resumes slapping your ass.  The minotaur in the driver's seat grabs your ");
-	if (player.horns > 0) outputText("horns");
+	if (player.horns.value > 0) outputText("horns");
 	else outputText("hair");
 	outputText(" and pulls you back, your tongue dragging over the underside of his shaft.  Then, with an abrupt shift, he plunges back in.  Once he bottoms out, he once more reverses direction - never stopping, never slowing.  He face-fucks you hard and fast while your ass is repeatedly smacked.");
 	outputText("\n\n");
@@ -716,7 +716,7 @@ private function victoryMinotaurGangTitFuck():void {
 		outputText("getting sooo wasted on it,</i>\" you command.  Bouncing your breasts up and down, you keep the soaked flesh in constant motion around the swollen, slowly flaring shafts.  A sudden gout of wetness splashes your cheek, and as you turn to investigate, a leaking prick is pressed through your confusion-pursed lips.  Salty-sweet pre-cum tingles on your tongue, and you begin to lap at it eagerly, running your tongue over the hot, flaring tongue.  It tastes absolutely divine.  You focus on it completely, trying to block out the voice of its owner.\n\n");
 		
 		outputText("The runt of your litter, the minitaur, is whining, \"<i>I-I'm sorry Mom but I just couldn't hold b-back anymore.  Ung... your mouth is so hot.  I can't control it!</i>\"  He grabs your ");
-		if (player.horns > 0) outputText("horns");
+		if (player.horns.value > 0) outputText("horns");
 		else outputText("hair");
 		outputText(" and pulls you down, ramming the fat flare of his dick into your throat a split second before he cums.  The salty deluge fills your throat to the brim before it rolls down into your stomach, adding the already full load inside you.  You hum in happiness as you're stuffed with spunk.  The added throat vibration keeps your femmy son spurting nice and long for you.\n\n");
 		
@@ -897,7 +897,7 @@ private function forceMinitaurToGiveOral(choice:Number = 0):void {
 		outputText("start licking Momma's pussy.</i>\"  As if to emphasize your point, you ");
 		if (player.isTaur()) {
 			outputText("turn ");
-			if (player.tailType > Tail.NONE) outputText("and lift your tail ");
+			if (player.tail.type > Tail.NONE) outputText("and lift your tail ");
 			outputText("to expose the glistening pinkness of your womanhood.");
 		}
 		//ELSE

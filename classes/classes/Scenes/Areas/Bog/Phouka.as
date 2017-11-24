@@ -282,16 +282,16 @@ package classes.Scenes.Areas.Bog
 			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 
 			this.tallness = 5;
-			this.hipRating = Hips.RATING_SLENDER;
-			this.buttRating = Butt.RATING_TIGHT;
-			this.lowerBody = LowerBody.HUMAN
-			this.armType = Arms.HUMAN;
+			this.hips.rating = Hips.RATING_SLENDER;
+			this.butt.rating = Butt.RATING_TIGHT;
+			this.lowerBody.type = LowerBody.HUMAN
+			this.arms.type = Arms.HUMAN;
 
-			this.skinTone = "black";
-			this.hairColor = "black";
-			this.hairLength = 1;
+			this.skin.tone = "black";
+			this.hair.color = "black";
+			this.hair.length = 1;
 
-			this.earType = Ears.ELFIN;
+			this.ears.type = Ears.ELFIN;
 
 			initStrTouSpeInte(55, 25, 80, 40);
 			initLibSensCor(75, 35, 100);
@@ -315,7 +315,7 @@ package classes.Scenes.Areas.Bog
 				.add(consumables.P_WHSKY, 35)
 				.add(null, 20);
 
-			this.wingType = Wings.GIANT_DRAGONFLY; //Maybe later, if the PC can get them, make a Faerie wing type.
+			this.theWingType = Wings.GIANT_DRAGONFLY; //Maybe later, if the PC can get them, make a Faerie wing type.
 			this.wingDesc = "small black faerie wings";
 			checkMonster();
 		}

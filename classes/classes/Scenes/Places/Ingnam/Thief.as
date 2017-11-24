@@ -27,11 +27,11 @@ package classes.Scenes.Places.Ingnam
 			this.ass.analLooseness = AssClass.LOOSENESS_NORMAL;
 			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.tallness = 5*12 + 5 + rand(4);
-			this.hipRating = Hips.RATING_BOYISH;
-			this.buttRating = Butt.RATING_TIGHT;
-			this.skinTone = "light";
-			this.hairColor = "brown";
-			this.hairLength = 4;
+			this.hips.rating = Hips.RATING_BOYISH;
+			this.butt.rating = Butt.RATING_TIGHT;
+			this.skin.tone = "light";
+			this.hair.color = "brown";
+			this.hair.length = 4;
 			initStrTouSpeInte(17, 16, 16, 17);
 			initLibSensCor(20, 15, 20);
 			this.weaponName = "knife";

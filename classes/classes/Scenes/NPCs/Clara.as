@@ -147,12 +147,12 @@ package classes.Scenes.NPCs
 			this.ass.analLooseness = AssClass.LOOSENESS_VIRGIN;
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.tallness = 6*12+4;
-			this.hipRating = Hips.RATING_CURVY;
-			this.buttRating = Butt.RATING_LARGE;
-			this.lowerBody = LowerBody.HOOFED;
-			this.skinTone = "pale";
-			this.hairColor = "brown";
-			this.hairLength = 13;
+			this.hips.rating = Hips.RATING_CURVY;
+			this.butt.rating = Butt.RATING_LARGE;
+			this.lowerBody.type = LowerBody.HOOFED;
+			this.skin.tone = "pale";
+			this.hair.color = "brown";
+			this.hair.length = 13;
 			initStrTouSpeInte(37, 55, 35, 60);
 			initLibSensCor(25, 45, 40);
 			this.weaponName = "mace";
@@ -165,7 +165,7 @@ package classes.Scenes.NPCs
 			this.bonusHP = 30;
 			this.gems = rand(5) + 25;
 			this.drop = NO_DROP;
-			this.tailType = Tail.COW;
+			this.tail.type = Tail.COW;
 			//this.special1 = marbleSpecialAttackOne;
 			//this.special2 = marbleSpecialAttackTwo;
 			checkMonster();

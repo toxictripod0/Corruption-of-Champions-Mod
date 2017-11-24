@@ -127,11 +127,11 @@ package classes.Scenes.Dungeons.DesertCave
 			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.createStatusEffect(StatusEffects.BonusACapacity,50,0,0,0);
 			this.tallness = 8*12+6;
-			this.hipRating = Hips.RATING_CURVY;
-			this.buttRating = Butt.RATING_LARGE;
-			this.skinTone = "bronzed";
-			this.hairColor = "platinum-blonde";
-			this.hairLength = 15;
+			this.hips.rating = Hips.RATING_CURVY;
+			this.butt.rating = Butt.RATING_LARGE;
+			this.skin.tone = "bronzed";
+			this.hair.color = "platinum-blonde";
+			this.hair.length = 15;
 			initStrTouSpeInte(55, 55, 35, 45);
 			initLibSensCor(55, 40, 30);
 			this.weaponName = "fists";

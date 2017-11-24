@@ -1,17 +1,20 @@
-package classes.Scenes {
+﻿package classes.Scenes {
 	import classes.*;
-	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kACHIEVEMENTS;
+	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Items.*;
 	import classes.Scenes.Camp.*;
-	import classes.Scenes.NPCs.*;
 	import classes.Scenes.Dungeons.*;
+	import classes.Scenes.NPCs.*;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
+	import classes.lists.Gender;
 	import coc.view.MainView;
 
+
 	public class Camp extends NPCAwareContent {
+
 		protected function set timeQ(value:Number):void {
 			kGAMECLASS.timeQ = value;
 		}
@@ -2506,7 +2509,7 @@ private function furColorSelection2():void {
 private function chooseFurColorSaveUpdate(color:String):void {
 	clearOutput();
 	outputText("You now have " + color + " fur. You will be returned to your camp now and you can continue your usual gameplay.");
-	player.furColor = color;
+	player.skin.furColor = color;
 	doNext(doCamp);
 }
 

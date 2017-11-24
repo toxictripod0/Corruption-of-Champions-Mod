@@ -214,17 +214,17 @@ package classes.Scenes.Dungeons.LethicesKeep
 			
 			this.hoursSinceCum = player.hoursSinceCum;
 			
-			hipRating = player.hipRating;
-			if (hipRating < 1) hipRating = 1;
-			buttRating = player.buttRating;
-			if (buttRating < 1) buttRating = 1;
-			lowerBody = player.lowerBody;
-			skinDesc = player.skinDesc;
+			hips.rating = player.hips.rating;
+			if (hips.rating < 1) hips.rating = 1;
+			butt.rating = player.butt.rating;
+			if (butt.rating < 1) butt.rating = 1;
+			lowerBody.type = player.lowerBody.type;
+			skin.desc = player.skin.desc;
 			initStrTouSpeInte(player.str, player.tou, player.spe, player.inte);
 			initLibSensCor(player.lib, player.sens, player.cor);
 			if (cor < 50) cor = 50;
-			faceType = player.faceType;
-			skinType = player.skinType;
+			face.type = player.face.type;
+			theSkinType = player.skin.type;
 			
 			this.bonusHP = 250;
 			
@@ -298,7 +298,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			
 			str += " "  + player.mf("His", "Her") + " " + player.hairDescript() + " is parted by";
 			
-			switch(player.earType)
+			switch(player.ears.type)
 			{
 				case Ears.HORSE:
 					str += " a pair of horse-like ears";
@@ -344,7 +344,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			
 			str += ". " + player.mf("He", "She") + " keeps exploring the area around " + player.mf("his", "her") +" mouth with " + player.mf("his", "her") +" tongue with a horribly acquisitive, sensual interest.";
 			str += " " + player.mf("He", "She") + " moves around on " + player.mf("his", "her") +" " + player.legs() + " with a twitchy jerkiness, " + player.mf("his", "her") + " " + player.hipDescript() + " swinging and tightening.";
-			if (player.tailType != 0) str += " " + player.mf("His", "Her") + " tail flicks this way and that.";
+			if (player.tail.type != 0) str += " " + player.mf("His", "Her") + " tail flicks this way and that.";
 			str += " " + player.mf("He", "She") + " wields the exact same " + player.weaponName + " you do, and is dressed in the mirror image of your " + player.armorName +  ". ";
 			if (player.biggestTitSize() >= 2) str += "It’s difficult not to notice the way the mirror image of your " + player.breastDescript(player.biggestTitRow()) + " ebbs and heaves within it.";
 			

@@ -219,11 +219,11 @@ package classes.Scenes.Areas.HighMountains
 			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.tallness = 8*12+4;
-			this.hipRating = Hips.RATING_CURVY;
-			this.buttRating = Butt.RATING_LARGE+1;
-			this.skinTone = "blue";
-			this.hairColor = "red";
-			this.hairLength = 25;
+			this.hips.rating = Hips.RATING_CURVY;
+			this.butt.rating = Butt.RATING_LARGE+1;
+			this.skin.tone = "blue";
+			this.hair.color = "red";
+			this.hair.length = 25;
 			initStrTouSpeInte(50, 65, 95, 75);
 			initLibSensCor(30, 25, 45);
 			if (flags[kFLAGS.MINERVA_PURIFICATION_PROGRESS] >= 10) cor = 0; //Set to 0 corruption if purified.
@@ -245,7 +245,7 @@ package classes.Scenes.Areas.HighMountains
 			this.gems = rand(25) +10;
 			this.additionalXP = 50;
 			this.drop = new WeightedDrop(consumables.PURPEAC, 1);
-			this.wingType = Wings.HARPY;
+			this.theWingType = Wings.HARPY;
 			this.wingDesc = "fluffy feathery";
 			checkMonster();
 		}

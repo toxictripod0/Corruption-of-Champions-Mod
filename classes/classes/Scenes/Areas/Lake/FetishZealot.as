@@ -156,11 +156,11 @@ package classes.Scenes.Areas.Lake
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,40,0,0,0);
 			this.tallness = 6*12;
-			this.hipRating = Hips.RATING_BOYISH+1;
-			this.buttRating = Butt.RATING_TIGHT;
-			this.skinTone = "tan";
-			this.hairColor = "black";
-			this.hairLength = 4;
+			this.hips.rating = Hips.RATING_BOYISH+1;
+			this.butt.rating = Butt.RATING_TIGHT;
+			this.skin.tone = "tan";
+			this.hair.color = "black";
+			this.hair.length = 4;
 			initStrTouSpeInte(35, 35, 30, 1);
 			initLibSensCor(75, 80, 90);
 			this.weaponName = "wavy dagger";

@@ -31,11 +31,11 @@ package classes.Scenes.Places.Prison
 			this.ass.analLooseness = AssClass.LOOSENESS_STRETCHED;
 			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.tallness = 40;
-			this.hipRating = Hips.RATING_BOYISH;
-			this.buttRating = Butt.RATING_TIGHT;
-			this.skinTone = "red";
-			this.hairColor = "black";
-			this.hairLength = 5;
+			this.hips.rating = Hips.RATING_BOYISH;
+			this.butt.rating = Butt.RATING_TIGHT;
+			this.skin.tone = "red";
+			this.hair.color = "black";
+			this.hair.length = 5;
 			initStrTouSpeInte(40, 35, 25, 28);
 			initLibSensCor(45, 45, 90);
 			this.weaponName = "mop";
@@ -48,7 +48,7 @@ package classes.Scenes.Places.Prison
 			this.gems = rand(5) + 25;
 			this.drop = NO_DROP;
 			this.special1 = lustMagicAttack;
-			this.wingType = Wings.IMP;
+			this.theWingType = Wings.IMP;
 			checkMonster();
 		}
 		

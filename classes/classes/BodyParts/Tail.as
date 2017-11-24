@@ -39,7 +39,9 @@ package classes.BodyParts
 		public static const COCKATRICE:int     =  29;
 
 		public var type:Number     = NONE;
+		/** Tail venom is a 0-100 slider used for tail attacks. Recharges per hour. */
 		public var venom:Number    = 0;
+		/** Tail recharge determines how fast venom/webs comes back per hour. */
 		public var recharge:Number = 5;
 
 		public function Tail() {}

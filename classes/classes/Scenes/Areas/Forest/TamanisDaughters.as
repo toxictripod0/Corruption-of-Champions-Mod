@@ -114,11 +114,11 @@ package classes.Scenes.Areas.Forest
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,25,0,0,0);
 			this.tallness = 40;
-			this.hipRating = Hips.RATING_AMPLE+1;
-			this.buttRating = Butt.RATING_NOTICEABLE+1;
-			this.skinTone = "greenish gray";
-			this.hairColor = "pink";
-			this.hairLength = 16;
+			this.hips.rating = Hips.RATING_AMPLE+1;
+			this.butt.rating = Butt.RATING_NOTICEABLE+1;
+			this.skin.tone = "greenish gray";
+			this.hair.color = "pink";
+			this.hair.length = 16;
 			initStrTouSpeInte(55, 30, 45, 50);
 			initLibSensCor(70, 70, 50);
 			this.weaponName = "fists";

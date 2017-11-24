@@ -72,11 +72,11 @@ package classes.Scenes.Dungeons.HelDungeon
 			this.ass.analLooseness = AssClass.LOOSENESS_STRETCHED;
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.tallness = rand(8) + 70;
-			this.hipRating = Hips.RATING_AMPLE+2;
-			this.buttRating = Butt.RATING_LARGE;
-			this.skinTone = "red";
-			this.hairColor = "black";
-			this.hairLength = 15;
+			this.hips.rating = Hips.RATING_AMPLE+2;
+			this.butt.rating = Butt.RATING_LARGE;
+			this.skin.tone = "red";
+			this.hair.color = "black";
+			this.hair.length = 15;
 			initStrTouSpeInte(90, 60, 120, 40);
 			initLibSensCor(40, 45, 50);
 			this.weaponName = "poker";
@@ -91,10 +91,10 @@ package classes.Scenes.Dungeons.HelDungeon
 			this.level = 19;
 			this.gems = rand(25) +140;
 			this.additionalXP = 50;
-			this.wingType = Wings.FEATHERED_LARGE;
-			this.tailType = Tail.DEMONIC;
-			this.hornType = Horns.DEMON;
-			this.horns = 2;
+			this.theWingType = Wings.FEATHERED_LARGE;
+			this.tail.type = Tail.DEMONIC;
+			this.horns.type = Horns.DEMON;
+			this.horns.value = 2;
 			this.drop = NO_DROP;
 			checkMonster();
 		}

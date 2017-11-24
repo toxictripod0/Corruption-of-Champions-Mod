@@ -150,13 +150,13 @@ package classes.Scenes.Areas.Plains
 			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.createStatusEffect(StatusEffects.BonusACapacity,20,0,0,0);
 			this.tallness = rand(37) + 64;
-			this.hipRating = Hips.RATING_AVERAGE;
-			this.buttRating = Butt.RATING_AVERAGE+1;
-			this.lowerBody = LowerBody.HOOFED;
-			this.skinTone = "tan";
-			this.hairColor = randomChoice("black","brown");
-			this.hairLength = 3+rand(20);
-			this.faceType = Face.COW_MINOTAUR;
+			this.hips.rating = Hips.RATING_AVERAGE;
+			this.butt.rating = Butt.RATING_AVERAGE+1;
+			this.lowerBody.type = LowerBody.HOOFED;
+			this.skin.tone = "tan";
+			this.hair.color = randomChoice("black","brown");
+			this.hair.length = 3+rand(20);
+			this.face.type = Face.COW_MINOTAUR;
 			initStrTouSpeInte(75, 70, 110, 70);
 			initLibSensCor(60, 35, 45);
 			this.weaponName = "fist";
@@ -169,7 +169,7 @@ package classes.Scenes.Areas.Plains
 			this.level = 14;
 			this.gems = rand(25) + 25;
 			this.drop = new ChainedDrop().add(consumables.INCUBID,1/2);
-			this.tailType = Tail.COW;
+			this.tail.type = Tail.COW;
 			checkMonster();
 		}
 		

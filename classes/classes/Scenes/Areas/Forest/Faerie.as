@@ -1,10 +1,10 @@
 package classes.Scenes.Areas.Forest{
 	import classes.*;
-	import classes.BodyParts.BreastCup;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Scenes.API.Encounter;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
+	import classes.lists.BreastCup;
 
 public class Faerie extends BaseContent implements Encounter{
 

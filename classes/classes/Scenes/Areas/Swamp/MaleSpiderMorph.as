@@ -38,12 +38,12 @@ package classes.Scenes.Areas.Swamp
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,40,0,0,0);
 			this.tallness = 7*12+6;
-			this.hipRating = Hips.RATING_CURVY+2;
-			this.buttRating = Butt.RATING_LARGE+1;
-			this.lowerBody = LowerBody.CHITINOUS_SPIDER_LEGS;
-			this.skinTone = "dusky";
-			this.hairColor = "red";
-			this.hairLength = 13;
+			this.hips.rating = Hips.RATING_CURVY+2;
+			this.butt.rating = Butt.RATING_LARGE+1;
+			this.lowerBody.type = LowerBody.CHITINOUS_SPIDER_LEGS;
+			this.skin.tone = "dusky";
+			this.hair.color = "red";
+			this.hair.length = 13;
 			initStrTouSpeInte(60, 50, 99, 99);
 			initLibSensCor(35, 35, 20);
 			this.weaponName = "dagger";
@@ -62,8 +62,8 @@ package classes.Scenes.Areas.Swamp
 			this.drop = new WeightedDrop().add(consumables.S_GOSSR,5)
 					.add(useables.T_SSILK,1)
 					.add(null,4);
-			this.tailType = Tail.SPIDER_ABDOMEN;
-			this.tailRecharge = 0;
+			this.tail.type = Tail.SPIDER_ABDOMEN;
+			this.tail.recharge = 0;
 			checkMonster();
 		}
 		

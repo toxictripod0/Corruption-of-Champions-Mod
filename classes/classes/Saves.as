@@ -7,6 +7,7 @@
 	import classes.Items.*;
 	import classes.internals.LoggerFactory;
 	import classes.internals.SerializationUtils;
+	import classes.lists.BreastCup;
 	import flash.events.Event;
 	import flash.events.IOErrorEvent;
 	import flash.net.FileReference;
@@ -867,43 +868,43 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile.data.thickness = player.thickness;
 		saveFile.data.tone = player.tone;
 		saveFile.data.tallness = player.tallness;
-		saveFile.data.furColor = player.furColor;
-		saveFile.data.hairColor = player.hairColor;
-		saveFile.data.hairType = player.hairType;
-		saveFile.data.gillType = player.gillType;
-		saveFile.data.armType = player.armType;
-		saveFile.data.hairLength = player.hairLength;
-		saveFile.data.beardLength = player.beardLength;
-		saveFile.data.eyeType = player.eyeType;
-		saveFile.data.eyeCount = player.eyeCount;
-		saveFile.data.beardStyle = player.beardStyle;
-		saveFile.data.skinType = player.skinType;
-		saveFile.data.skinTone = player.skinTone;
-		saveFile.data.skinDesc = player.skinDesc;
-		saveFile.data.skinAdj = player.skinAdj;
-		saveFile.data.faceType = player.faceType;
-		saveFile.data.tongueType = player.tongueType;
-		saveFile.data.earType = player.earType;
-		saveFile.data.earValue = player.earValue;
-		saveFile.data.antennae = player.antennae;
-		saveFile.data.horns = player.horns;
-		saveFile.data.hornType = player.hornType;
+		saveFile.data.furColor = player.skin.furColor;
+		saveFile.data.hairColor = player.hair.color;
+		saveFile.data.hairType = player.hair.type;
+		saveFile.data.gillType = player.gills.type;
+		saveFile.data.armType = player.arms.type;
+		saveFile.data.hairLength = player.hair.length;
+		saveFile.data.beardLength = player.beard.length;
+		saveFile.data.eyeType = player.eyes.type;
+		saveFile.data.eyeCount = player.eyes.count;
+		saveFile.data.beardStyle = player.beard.style;
+		saveFile.data.skinType = player.skin.type;
+		saveFile.data.skinTone = player.skin.tone;
+		saveFile.data.skinDesc = player.skin.desc;
+		saveFile.data.skinAdj = player.skin.adj;
+		saveFile.data.faceType = player.face.type;
+		saveFile.data.tongueType = player.tongue.type;
+		saveFile.data.earType = player.ears.type;
+		saveFile.data.earValue = player.ears.value;
+		saveFile.data.antennae = player.antennae.type;
+		saveFile.data.horns = player.horns.value;
+		saveFile.data.hornType = player.horns.type;
 		saveFile.data.underBody = player.underBody.toObject();
 		saveFile.data.neck = player.neck.toObject();
 		saveFile.data.rearBody = player.rearBody.toObject();
 		// <mod name="Predator arms" author="Stadler76">
-		saveFile.data.clawTone = player.clawTone;
-		saveFile.data.clawType = player.clawType;
+		saveFile.data.clawTone = player.claws.tone;
+		saveFile.data.clawType = player.claws.type;
 		// </mod>
-		saveFile.data.wingType = player.wingType;
-		saveFile.data.wingColor = player.wingColor;
-		saveFile.data.lowerBody = player.lowerBody;
-		saveFile.data.legCount = player.legCount;
-		saveFile.data.tailType = player.tailType;
-		saveFile.data.tailVenum = player.tailVenom;
-		saveFile.data.tailRecharge = player.tailRecharge;
-		saveFile.data.hipRating = player.hipRating;
-		saveFile.data.buttRating = player.buttRating;
+		saveFile.data.wingType = player.wings.type;
+		saveFile.data.wingColor = player.wings.color;
+		saveFile.data.lowerBody = player.lowerBody.type;
+		saveFile.data.legCount = player.lowerBody.legCount;
+		saveFile.data.tailType = player.tail.type;
+		saveFile.data.tailVenum = player.tail.venom;
+		saveFile.data.tailRecharge = player.tail.recharge;
+		saveFile.data.hipRating = player.hips.rating;
+		saveFile.data.buttRating = player.butt.rating;
 		
 		//Sexual Stuff
 		saveFile.data.balls = player.balls;
@@ -1625,18 +1626,18 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			player.femininity = saveFile.data.femininity;
 		//EYES
 		if (saveFile.data.eyeType == undefined)
-			player.eyeType = Eyes.HUMAN;
+			player.eyes.type = Eyes.HUMAN;
 		else
-			player.eyeType = saveFile.data.eyeType;
+			player.eyes.type = saveFile.data.eyeType;
 		//BEARS
 		if (saveFile.data.beardLength == undefined)
-			player.beardLength = 0;
+			player.beard.length = 0;
 		else
-			player.beardLength = saveFile.data.beardLength;
+			player.beard.length = saveFile.data.beardLength;
 		if (saveFile.data.beardStyle == undefined)
-			player.beardStyle = 0;
+			player.beard.style = 0;
 		else
-			player.beardStyle = saveFile.data.beardStyle;
+			player.beard.style = saveFile.data.beardStyle;
 		//BODY STYLE
 		if (saveFile.data.tone == undefined)
 			player.tone = 50;
@@ -1649,122 +1650,122 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		
 		player.tallness = saveFile.data.tallness;
 		if (saveFile.data.furColor == undefined || saveFile.data.furColor == "no")
-			player.furColor = saveFile.data.hairColor;
+			player.skin.furColor = saveFile.data.hairColor;
 		else
-			player.furColor = saveFile.data.furColor;
-		player.hairColor = saveFile.data.hairColor;
+			player.skin.furColor = saveFile.data.furColor;
+		player.hair.color = saveFile.data.hairColor;
 		if (saveFile.data.hairType == undefined)
-			player.hairType = 0;
+			player.hair.type = 0;
 		else
-			player.hairType = saveFile.data.hairType;
+			player.hair.type = saveFile.data.hairType;
 		if (saveFile.data.gillType != undefined)
-			player.gillType = saveFile.data.gillType;
+			player.gills.type = saveFile.data.gillType;
 		else if (saveFile.data.gills == undefined)
-			player.gillType = Gills.NONE;
+			player.gills.type = Gills.NONE;
 		else
-			player.gillType = saveFile.data.gills ? Gills.ANEMONE : Gills.NONE;
+			player.gills.type = saveFile.data.gills ? Gills.ANEMONE : Gills.NONE;
 		if (saveFile.data.armType == undefined)
-			player.armType = Arms.HUMAN;
+			player.arms.type = Arms.HUMAN;
 		else
-			player.armType = saveFile.data.armType;
-		player.hairLength = saveFile.data.hairLength;
-		player.skinType = saveFile.data.skinType;
+			player.arms.type = saveFile.data.armType;
+		player.hair.length = saveFile.data.hairLength;
+		player.skin.type = saveFile.data.skinType;
 		if (saveFile.data.skinAdj == undefined)
-			player.skinAdj = "";
+			player.skin.adj = "";
 		else
-			player.skinAdj = saveFile.data.skinAdj;
-		player.skinTone = saveFile.data.skinTone;
-		player.skinDesc = saveFile.data.skinDesc;
+			player.skin.adj = saveFile.data.skinAdj;
+		player.skin.tone = saveFile.data.skinTone;
+		player.skin.desc = saveFile.data.skinDesc;
 		//Silently discard Skin.UNDEFINED
-		if (player.skinType == Skin.UNDEFINED)
+		if (player.skin.type == Skin.UNDEFINED)
 		{
-			player.skinAdj = "";
-			player.skinDesc = "skin";
-			player.skinType = Skin.PLAIN;
+			player.skin.adj = "";
+			player.skin.desc = "skin";
+			player.skin.type = Skin.PLAIN;
 		}
 		//Convert from old skinDesc to new skinAdj + skinDesc!
-		if (player.skinDesc.indexOf("smooth") != -1)
+		if (player.skin.desc.indexOf("smooth") != -1)
 		{
-			player.skinAdj = "smooth";
+			player.skin.adj = "smooth";
 			if (player.hasPlainSkin())
-				player.skinDesc = "skin";
+				player.skin.desc = "skin";
 			if (player.hasFur())
-				player.skinDesc = "fur";
+				player.skin.desc = "fur";
 			if (player.hasScales())
-				player.skinDesc = "scales";
+				player.skin.desc = "scales";
 			if (player.hasGooSkin())
-				player.skinDesc = "goo";
+				player.skin.desc = "goo";
 		}
-		if (player.skinDesc.indexOf("thick") != -1)
+		if (player.skin.desc.indexOf("thick") != -1)
 		{
-			player.skinAdj = "thick";
+			player.skin.adj = "thick";
 			if (player.hasPlainSkin())
-				player.skinDesc = "skin";
+				player.skin.desc = "skin";
 			if (player.hasFur())
-				player.skinDesc = "fur";
+				player.skin.desc = "fur";
 			if (player.hasScales())
-				player.skinDesc = "scales";
+				player.skin.desc = "scales";
 			if (player.hasGooSkin())
-				player.skinDesc = "goo";
+				player.skin.desc = "goo";
 		}
-		if (player.skinDesc.indexOf("rubber") != -1)
+		if (player.skin.desc.indexOf("rubber") != -1)
 		{
-			player.skinAdj = "rubber";
+			player.skin.adj = "rubber";
 			if (player.hasPlainSkin())
-				player.skinDesc = "skin";
+				player.skin.desc = "skin";
 			if (player.hasFur())
-				player.skinDesc = "fur";
+				player.skin.desc = "fur";
 			if (player.hasScales())
-				player.skinDesc = "scales";
+				player.skin.desc = "scales";
 			if (player.hasGooSkin())
-				player.skinDesc = "goo";
+				player.skin.desc = "goo";
 		}
-		if (player.skinDesc.indexOf("latex") != -1)
+		if (player.skin.desc.indexOf("latex") != -1)
 		{
-			player.skinAdj = "latex";
+			player.skin.adj = "latex";
 			if (player.hasPlainSkin())
-				player.skinDesc = "skin";
+				player.skin.desc = "skin";
 			if (player.hasFur())
-				player.skinDesc = "fur";
+				player.skin.desc = "fur";
 			if (player.hasScales())
-				player.skinDesc = "scales";
+				player.skin.desc = "scales";
 			if (player.hasGooSkin())
-				player.skinDesc = "goo";
+				player.skin.desc = "goo";
 		}
-		if (player.skinDesc.indexOf("slimey") != -1)
+		if (player.skin.desc.indexOf("slimey") != -1)
 		{
-			player.skinAdj = "slimey";
+			player.skin.adj = "slimey";
 			if (player.hasPlainSkin())
-				player.skinDesc = "skin";
+				player.skin.desc = "skin";
 			if (player.hasFur())
-				player.skinDesc = "fur";
+				player.skin.desc = "fur";
 			if (player.hasScales())
-				player.skinDesc = "scales";
+				player.skin.desc = "scales";
 			if (player.hasGooSkin())
-				player.skinDesc = "goo";
+				player.skin.desc = "goo";
 		}
-		player.faceType = saveFile.data.faceType;
+		player.face.type = saveFile.data.faceType;
 		if (saveFile.data.tongueType == undefined)
-			player.tongueType = Tongue.HUMAN;
+			player.tongue.type = Tongue.HUMAN;
 		else
-			player.tongueType = saveFile.data.tongueType;
+			player.tongue.type = saveFile.data.tongueType;
 		if (saveFile.data.earType == undefined)
-			player.earType = Ears.HUMAN;
+			player.ears.type = Ears.HUMAN;
 		else
-			player.earType = saveFile.data.earType;
+			player.ears.type = saveFile.data.earType;
 		if (saveFile.data.earValue == undefined)
-			player.earValue = 0;
+			player.ears.value = 0;
 		else
-			player.earValue = saveFile.data.earValue;
+			player.ears.value = saveFile.data.earValue;
 		if (saveFile.data.antennae == undefined)
-			player.antennae = Antennae.NONE;
+			player.antennae.type = Antennae.NONE;
 		else
-			player.antennae = saveFile.data.antennae;
-		player.horns = saveFile.data.horns;
+			player.antennae.type = saveFile.data.antennae;
+		player.horns.value = saveFile.data.horns;
 		if (saveFile.data.hornType == undefined)
-			player.hornType = Horns.NONE;
+			player.horns.type = Horns.NONE;
 		else
-			player.hornType = saveFile.data.hornType;
+			player.horns.type = saveFile.data.hornType;
 
 		if (isObject(saveFile.data.underBody))
 			player.underBody.setAllProps(saveFile.data.underBody);
@@ -1773,73 +1774,73 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		if (isObject(saveFile.data.rearBody))
 			player.rearBody.setAllProps(saveFile.data.rearBody);
 		// <mod name="Predator arms" author="Stadler76">
-		player.clawTone = (saveFile.data.clawTone == undefined) ? ""               : saveFile.data.clawTone;
-		player.clawType = (saveFile.data.clawType == undefined) ? Claws.NORMAL : saveFile.data.clawType;
+		player.claws.tone = (saveFile.data.clawTone == undefined) ? ""               : saveFile.data.clawTone;
+		player.claws.type = (saveFile.data.clawType == undefined) ? Claws.NORMAL : saveFile.data.clawType;
 		// </mod>
 
-		player.wingType = saveFile.data.wingType;
-		player.wingColor = saveFile.data.wingColor || "no";
-		player.lowerBody = saveFile.data.lowerBody;
-		player.tailType = saveFile.data.tailType;
-		player.tailVenom = saveFile.data.tailVenum;
-		player.tailRecharge = saveFile.data.tailRecharge;
-		player.hipRating = saveFile.data.hipRating;
-		player.buttRating = saveFile.data.buttRating;
+		player.wings.type = saveFile.data.wingType;
+		player.wings.color = saveFile.data.wingColor || "no";
+		player.lowerBody.type = saveFile.data.lowerBody;
+		player.tail.type = saveFile.data.tailType;
+		player.tail.venom = saveFile.data.tailVenum;
+		player.tail.recharge = saveFile.data.tailRecharge;
+		player.hips.rating = saveFile.data.hipRating;
+		player.butt.rating = saveFile.data.buttRating;
 		
 
-		if (player.wingType == 8) {
+		if (player.wings.type == 8) {
 			player.wings.restore();
 			player.rearBody.setAllProps({type: RearBody.SHARK_FIN});
 		}
 
-		if (player.lowerBody === 4) {
-			player.lowerBody = LowerBody.HOOFED;
-			player.legCount = 4;
+		if (player.lowerBody.type === 4) {
+			player.lowerBody.type = LowerBody.HOOFED;
+			player.lowerBody.legCount = 4;
 		}
 		
-		if (player.lowerBody === 24) {
-			player.lowerBody = LowerBody.CLOVEN_HOOFED;
-			player.legCount = 4;
+		if (player.lowerBody.type === 24) {
+			player.lowerBody.type = LowerBody.CLOVEN_HOOFED;
+			player.lowerBody.legCount = 4;
 		}
 		
 		if (saveFile.data.legCount == undefined) {
-			if (player.lowerBody == LowerBody.DRIDER_LOWER_BODY) {
-				player.legCount = 8;
+			if (player.lowerBody.type == LowerBody.DRIDER) {
+				player.lowerBody.legCount = 8;
 			}
-			else if (player.lowerBody == 4) {
-				player.legCount = 4;
-				player.lowerBody = LowerBody.HOOFED;
+			else if (player.lowerBody.type == 4) {
+				player.lowerBody.legCount = 4;
+				player.lowerBody.type = LowerBody.HOOFED;
 			}
-			else if (player.lowerBody == LowerBody.PONY) {
-				player.legCount = 4;
+			else if (player.lowerBody.type == LowerBody.PONY) {
+				player.lowerBody.legCount = 4;
 			}
-			else if (player.lowerBody == 24) {
-				player.legCount = 4;
-				player.lowerBody = LowerBody.CLOVEN_HOOFED;
+			else if (player.lowerBody.type == 24) {
+				player.lowerBody.legCount = 4;
+				player.lowerBody.type = LowerBody.CLOVEN_HOOFED;
 			}
-			else if (player.lowerBody == LowerBody.NAGA) {
-				player.legCount = 1;
+			else if (player.lowerBody.type == LowerBody.NAGA) {
+				player.lowerBody.legCount = 1;
 			}
-			else if (player.lowerBody == LowerBody.GOO) {
-				player.legCount = 1;
+			else if (player.lowerBody.type == LowerBody.GOO) {
+				player.lowerBody.legCount = 1;
 			}
-			else player.legCount = 2;
+			else player.lowerBody.legCount = 2;
 		}
 		else
-			player.legCount = saveFile.data.legCount;
+			player.lowerBody.legCount = saveFile.data.legCount;
 			
 		if (saveFile.data.eyeCount == undefined) {
-			if (player.eyeType == Eyes.SPIDER) {
-				player.eyeCount = 4;
+			if (player.eyes.type == Eyes.SPIDER) {
+				player.eyes.count = 4;
 			}
-			else if (player.eyeType == Eyes.FOUR_SPIDER_EYES) {
-				player.eyeType = Eyes.SPIDER;
-				player.eyeCount = 4;
+			else if (player.eyes.type == Eyes.FOUR_SPIDER_EYES) {
+				player.eyes.type = Eyes.SPIDER;
+				player.eyes.count = 4;
 			}
-			else player.eyeCount = 2;
+			else player.eyes.count = 2;
 		}
 		else
-			player.eyeCount = saveFile.data.eyeCount;
+			player.eyes.count = saveFile.data.eyeCount;
 			
 
 		// Fix deprecated and merged underBody-types
@@ -2301,7 +2302,7 @@ public function unFuckSave():void
 	//Fixing shit!
 	if (player.wings.type == Wings.FEATHERED_LARGE && player.wings.color == "no") {
 		// Player has harpy wings from an old save, let's fix its color
-		player.wings.color = player.hasFur() ? player.furColor : player.hairColor;
+		player.wings.color = player.hasFur() ? player.skin.furColor : player.hair.color;
 	}
 
 	// Fix duplicate elven bounty perks

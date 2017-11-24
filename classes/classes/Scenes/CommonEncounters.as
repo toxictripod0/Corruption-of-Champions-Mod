@@ -240,7 +240,7 @@ public class CommonEncounters extends BaseContent implements Encounter {
 			}
 			//IF CHARACTER HAS A BALLS ADD SENTENCE
 			if (player.balls > 0) {
-				outputText("  Your " + player.skinTone + " " + player.sackDescript() + " rests beneath your raised " + player.buttDescript() + ".  Your " + player.ballsDescriptLight() + " pulse with the need to release their sperm through your " + player.multiCockDescriptLight() + " and ");
+				outputText("  Your " + player.skin.tone + " " + player.sackDescript() + " rests beneath your raised " + player.buttDescript() + ".  Your " + player.ballsDescriptLight() + " pulse with the need to release their sperm through your " + player.multiCockDescriptLight() + " and ");
 				if (lake) outputText("into the waters of the nearby lake.");
 				else outputText("onto the fertile soil of the forest.");
 			}
@@ -265,7 +265,7 @@ public class CommonEncounters extends BaseContent implements Encounter {
 			}
 			//IF CHARACTER HAS A BALLS ADD SENTENCE
 			if (player.balls > 0) {
-				outputText("  Your " + player.skinTone + player.sackDescript() + " rests beneath your raised " + player.buttDescript() + ".  Your " + player.ballsDescriptLight() + " pulse with the need to release their sperm through your " + player.multiCockDescriptLight() + " and ");
+				outputText("  Your " + player.skin.tone + player.sackDescript() + " rests beneath your raised " + player.buttDescript() + ".  Your " + player.ballsDescriptLight() + " pulse with the need to release their sperm through your " + player.multiCockDescriptLight() + " and ");
 				if (lake) outputText("into the waters of the nearby lake.");
 				else outputText("onto the fertile soil of the forest floor.");
 			}
@@ -332,7 +332,7 @@ public class CommonEncounters extends BaseContent implements Encounter {
 			//IF CHARACTER HAS GIANT BREASTS ADD SENTENCE
 			if (player.biggestTitSize() >= 35) outputText("  Your " + player.allBreastsDescript() + " hang lewdly off your torso to rest on the desert sands, seeming to bury the dunes on either side of you.  Their immense weight anchors your body, further preventing your torso from lifting itself up.  The burning heat of the desert teases your " + player.nippleDescript(0) + "s mercilessly as they grind in the sand.");
 			//IF CHARACTER HAS A BALLS ADD SENTENCE
-			if (player.balls > 0) outputText("  Your " + player.skinTone + player.sackDescript() + " rests beneath your raised " + player.buttDescript() + ".  The fiery warmth of the desert caresses it, causing your " + player.ballsDescriptLight() + " to pulse with the need to release their sperm through your " + player.multiCockDescriptLight() + ".");
+			if (player.balls > 0) outputText("  Your " + player.skin.tone + player.sackDescript() + " rests beneath your raised " + player.buttDescript() + ".  The fiery warmth of the desert caresses it, causing your " + player.ballsDescriptLight() + " to pulse with the need to release their sperm through your " + player.multiCockDescriptLight() + ".");
 			//IF CHARACTER HAS A VAGINA ADD SENTENCE
 			if (player.vaginas.length >= 1) {
 				outputText("  Your " + player.vaginaDescript() + " and " + player.clitDescript() + " are thoroughly squashed between the bulky flesh where your male genitals protrude from between your hips and the " + player.buttDescript() + " above.");
@@ -346,7 +346,7 @@ public class CommonEncounters extends BaseContent implements Encounter {
 			//IF CHARACTER HAS GIANT BREASTS ADD SENTENCE
 			if (player.biggestTitSize() >= 35) outputText("  Your " + player.allBreastsDescript() + " pull your human torso forward until it also is forced to rest facedown, just like your horse half.  Your tits rest, pinned on the desert sand to either side of you.  Their immense weight anchors you, further preventing any part of your equine body from lifting itself up.  The burning heat of the desert teases your " + player.nippleDescript(0) + "s incessantly.");
 			//IF CHARACTER HAS A BALLS ADD SENTENCE
-			if (player.balls > 0) outputText("  Your " + player.skinTone + player.sackDescript() + " rests beneath your raised " + player.buttDescript() + ".  The airy warmth of the desert teases it, causing your " + player.ballsDescriptLight() + " pulse with the need to release their sperm through your " + player.multiCockDescriptLight() + ".");
+			if (player.balls > 0) outputText("  Your " + player.skin.tone + player.sackDescript() + " rests beneath your raised " + player.buttDescript() + ".  The airy warmth of the desert teases it, causing your " + player.ballsDescriptLight() + " pulse with the need to release their sperm through your " + player.multiCockDescriptLight() + ".");
 			//IF CHARACTER HAS A VAGINA ADD SENTENCE
 			if (player.vaginas.length >= 1) {
 				outputText("  Your " + player.vaginaDescript() + " and " + player.clitDescript() + " are thoroughly squashed between the bulky flesh where your male genitals protrude from between your hips and the " + player.buttDescript() + " above.");

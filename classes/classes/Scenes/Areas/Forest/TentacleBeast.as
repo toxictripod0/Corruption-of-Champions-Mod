@@ -123,13 +123,13 @@ package classes.Scenes.Areas.Forest
 			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
 			this.ass.analWetness = AssClass.WETNESS_SLIME_DROOLING;
 			this.tallness = rand(9) + 70;
-			this.hipRating = Hips.RATING_BOYISH;
-			this.buttRating = Butt.RATING_BUTTLESS;
-			this.skinTone = "green";
-			this.skinType = Skin.PLAIN;
-			this.skinDesc = "bark";
-			this.hairColor = "green";
-			this.hairLength = 1;
+			this.hips.rating = Hips.RATING_BOYISH;
+			this.butt.rating = Butt.RATING_BUTTLESS;
+			this.skin.tone = "green";
+			this.theSkinType = Skin.PLAIN;
+			this.skin.desc = "bark";
+			this.hair.color = "green";
+			this.hair.length = 1;
 			initStrTouSpeInte(58, 25, 35, 45);
 			initLibSensCor(90, 20, 100);
 			this.weaponName = "whip-tendril";
@@ -147,7 +147,7 @@ package classes.Scenes.Areas.Forest
 			this.special1 = tentaclePhysicalAttack;
 			this.special2 = tentacleEntwine;
 			this.special3 = tentaclePhysicalAttack;
-			this.tailType = Tail.DEMONIC;
+			this.tail.type = Tail.DEMONIC;
 			checkMonster();
 		}
 

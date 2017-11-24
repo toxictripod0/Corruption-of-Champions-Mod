@@ -51,11 +51,11 @@ package classes.Scenes.Monsters
 			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.createStatusEffect(StatusEffects.BonusACapacity,30,0,0,0);
 			this.tallness = 35 + rand(4);
-			this.hipRating = Hips.RATING_AMPLE+2;
-			this.buttRating = Butt.RATING_LARGE;
-			this.skinTone = "ivory";
-			this.hairColor = "black";
-			this.hairLength = 4;
+			this.hips.rating = Hips.RATING_AMPLE+2;
+			this.butt.rating = Butt.RATING_LARGE;
+			this.skin.tone = "ivory";
+			this.hair.color = "black";
+			this.hair.length = 4;
 			initStrTouSpeInte(25, 20, 35, 42);
 			initLibSensCor(75, 45, 90);
 			this.weaponName = "fists";

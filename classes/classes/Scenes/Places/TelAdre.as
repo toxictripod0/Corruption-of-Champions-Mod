@@ -1170,40 +1170,40 @@ private function goJogging():void {
 	if (player.tou100 < 90) dynStats("tou", .5);
 
 	//If butt is over 15 guaranteed reduction
-	if (player.buttRating >= 15) {
+	if (player.butt.rating >= 15) {
 		outputText("\n\nAll that running must have done some good, because your " + player.buttDescript() + " feels a little less bouncy.");
-		player.buttRating--;
+		player.butt.rating--;
 	}
 	else {
-		if (player.buttRating >= 10 && rand(3) == 0) {
+		if (player.butt.rating >= 10 && rand(3) == 0) {
 			outputText("\n\nThe jogging really helped trim up your " + player.buttDescript() + ".");
-			player.buttRating--;
+			player.butt.rating--;
 		}
-		else if (player.buttRating >= 5 && rand(3) == 0) {
+		else if (player.butt.rating >= 5 && rand(3) == 0) {
 			outputText("\n\nYour " + player.buttDescript() + " seems to have gotten a little bit more compact from the work out.");
-			player.buttRating--;
+			player.butt.rating--;
 		}
-		else if (player.buttRating > 1 && rand(4) == 0) {
+		else if (player.butt.rating > 1 && rand(4) == 0) {
 			outputText("\n\nYour " + player.buttDescript() + " seems to have gotten a little bit more compact from the work out.");
-			player.buttRating--;
+			player.butt.rating--;
 		}
 	}//If hips is over 15 guaranteed reduction
-	if (player.hipRating >= 15) {
+	if (player.hips.rating >= 15) {
 		outputText("\n\nIt feels like your " + player.hipDescript() + " have shed some pounds and narrowed.");
-		player.hipRating--;
+		player.hips.rating--;
 	}
 	else {
-		if (player.hipRating >= 10 && rand(3) == 0) {
+		if (player.hips.rating >= 10 && rand(3) == 0) {
 			outputText("\n\nIt feels like your " + player.hipDescript() + " have shed some pounds and narrowed.");
-			player.hipRating--;
+			player.hips.rating--;
 		}
-		else if (player.hipRating >= 5 && rand(3) == 0) {
+		else if (player.hips.rating >= 5 && rand(3) == 0) {
 			outputText("\n\nIt feels like your " + player.hipDescript() + " have shed some pounds and narrowed.");
-			player.hipRating--;
+			player.hips.rating--;
 		}
-		else if (player.hipRating > 1 && rand(4) == 0) {
+		else if (player.hips.rating > 1 && rand(4) == 0) {
 			outputText("\n\nIt feels like your " + player.hipDescript() + " have shed some pounds and narrowed.");
-			player.hipRating--;
+			player.hips.rating--;
 		}
 	}
 

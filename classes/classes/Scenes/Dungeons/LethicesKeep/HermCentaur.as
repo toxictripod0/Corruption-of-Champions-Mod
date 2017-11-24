@@ -34,8 +34,8 @@ package classes.Scenes.Dungeons.LethicesKeep
 			this.balls = 2;
 			this.ballSize = 3;
 			
-			this.hipRating = Hips.RATING_FERTILE;
-			this.buttRating = Butt.RATING_EXPANSIVE;
+			this.hips.rating = Hips.RATING_FERTILE;
+			this.butt.rating = Butt.RATING_EXPANSIVE;
 			
 			initStrTouSpeInte(100, 100, 65, 65);
 			initLibSensCor(85, 40, 100);

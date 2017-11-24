@@ -28,10 +28,10 @@ package classes.Items
 
 			if (tfSource == "gooGasmic") {
 				// skin just turned gooey. Now lets fix unusual arms.
-				var hasClaws:Boolean = player.clawType != Claws.NORMAL;
+				var hasClaws:Boolean = player.claws.type != Claws.NORMAL;
 
 				message = "\n\n";
-				if (player.armType == Arms.HARPY) {
+				if (player.arms.type == Arms.HARPY) {
 					message += "The feathers on your arms melt back into your now gooey skin.";
 					if (hasClaws) message += " Additionally your now gooey claws melt back into your fingers.";
 				} else if (hasClaws) {
@@ -39,19 +39,19 @@ package classes.Items
 				}
 
 				if (hasClaws) message += " Well, who cares, gooey claws aren't very useful in combat to begin with.";
-				if (hasClaws || player.armType == Arms.HARPY) output.text(message + "  <b>You have normal human arms again.</b>");
+				if (hasClaws || player.arms.type == Arms.HARPY) output.text(message + "  <b>You have normal human arms again.</b>");
 
 				updateClaws();
-				player.armType = Arms.HUMAN;
+				player.arms.type = Arms.HUMAN;
 				return 1;
 			}
 
 
-			if (changes < changeLimit && player.armType != Arms.HUMAN) {
-				if ([Arms.HARPY, Arms.SPIDER, Arms.SALAMANDER].indexOf(player.armType) >= 0)
+			if (changes < changeLimit && player.arms.type != Arms.HUMAN) {
+				if ([Arms.HARPY, Arms.SPIDER, Arms.SALAMANDER].indexOf(player.arms.type) >= 0)
 					message += "\n\nYou scratch at your biceps absentmindedly, but no matter how much you scratch, it isn't getting rid of the itch.";
 
-				switch (player.armType) {
+				switch (player.arms.type) {
 					case Arms.HARPY:
 						message += "  Glancing down in irritation, you discover that your feathery arms are shedding their feathery coating."
 						          +"  The wing-like shape your arms once had is gone in a matter of moments, leaving [skinfurscales] behind.";
@@ -68,9 +68,9 @@ package classes.Items
 						break;
 
 					case Arms.PREDATOR:
-						switch (player.skinType) {
+						switch (player.skin.type) {
 							case Skin.GOO:
-								if (player.clawType != Claws.NORMAL)
+								if (player.claws.type != Claws.NORMAL)
 									message += "\n\nYour gooey claws melt into your fingers."
 									          +" Well, who cares, gooey claws aren't very useful in combat to begin with.";
 								break;
@@ -89,7 +89,7 @@ package classes.Items
 				}
 				output.text(message + "  <b>You have normal human arms again.</b>");
 				updateClaws();
-				player.armType = Arms.HUMAN;
+				player.arms.type = Arms.HUMAN;
 				changes++;
 				return 1;
 			}
@@ -138,14 +138,14 @@ package classes.Items
 			}
 
 			//(Non-human -> Normal Human Legs)
-			if (tfSource == "regularHummus" && player.isBiped() && player.lowerBody != LowerBody.HUMAN) {
+			if (tfSource == "regularHummus" && player.isBiped() && player.lowerBody.type != LowerBody.HUMAN) {
 				outputText("\n\nYou collapse as your legs shift and twist.  By the time the pain subsides, you notice that you have normal legs and normal feet.  <b>You now have normal feet!</b>");
 				doRestore = true;
 			}
 
 			if (doRestore) {
-				player.lowerBody = LowerBody.HUMAN;
-				player.legCount = 2;
+				player.lowerBody.type = LowerBody.HUMAN;
+				player.lowerBody.legCount = 2;
 				changes++;
 				return true;
 			}
@@ -235,12 +235,12 @@ package classes.Items
 
 		public function removeFeatheryHair():Boolean
 		{
-			if (changes < changeLimit && player.hairType == Hair.FEATHER && rand(4) == 0) {
+			if (changes < changeLimit && player.hair.type == Hair.FEATHER && rand(4) == 0) {
 				//(long):
-				if (player.hairLength >= 6) outputText("\n\nA lock of your downy-soft feather-hair droops over your eye.  Before you can blow the offending down away, you realize the feather is collapsing in on itself.  It continues to curl inward until all that remains is a normal strand of hair.  <b>Your hair is no longer feathery!</b>");
+				if (player.hair.length >= 6) outputText("\n\nA lock of your downy-soft feather-hair droops over your eye.  Before you can blow the offending down away, you realize the feather is collapsing in on itself.  It continues to curl inward until all that remains is a normal strand of hair.  <b>Your hair is no longer feathery!</b>");
 				//(short)
 				else outputText("\n\nYou run your fingers through your downy-soft feather-hair while you await the effects of the item you just ingested.  While your hand is up there, it detects a change in the texture of your feathers.  They're completely disappearing, merging down into strands of regular hair.  <b>Your hair is no longer feathery!</b>");
-				player.hairType = Hair.NORMAL;
+				player.hair.type = Hair.NORMAL;
 				changes++;
 				return true;
 			}
@@ -256,18 +256,18 @@ package classes.Items
 		 */
 		public function removeAntennae(inline:Boolean = false):Boolean
 		{
-			if (player.antennae == Antennae.NONE)
+			if (player.antennae.type == Antennae.NONE)
 				return false;
 
 			if (inline) {
-				switch (player.antennae) {
+				switch (player.antennae.type) {
 					case Antennae.COCKATRICE:
 					case Antennae.BEE:
 					default:
 						outputText(" Antennae pop free, and float lightly down towards the floor. ");
 				}
 			} else {
-				switch (player.antennae) {
+				switch (player.antennae.type) {
 					case Antennae.COCKATRICE:
 						outputText("\n\nYou feel your antennae like feathers shrivel at the root, the pair of soft quills falling softly to the"
 						          +" ground as your pores close.");
@@ -285,7 +285,7 @@ package classes.Items
 				}
 			}
 
-			player.antennae = Antennae.NONE;
+			player.antennae.type = Antennae.NONE;
 			changes++;
 			return true;
 		}
@@ -293,12 +293,12 @@ package classes.Items
 		public function removeBassyHair():Boolean
 		{
 			// Failsafe, duh
-			if ([Hair.BASILISK_PLUME, Hair.BASILISK_SPINES].indexOf(player.hairType) == -1) return false;
+			if ([Hair.BASILISK_PLUME, Hair.BASILISK_SPINES].indexOf(player.hair.type) == -1) return false;
 
-			if (player.hairType == Hair.BASILISK_PLUME) {
+			if (player.hair.type == Hair.BASILISK_PLUME) {
 				// TF blurb derived from losing feathery hair
 				//(long):
-				if (player.hairLength >= 5)
+				if (player.hair.length >= 5)
 					outputText("\n\nA lock of your feathery plume droops over your eye.  Before you can blow the offending down away,"
 					          +" you realize the feather is collapsing in on itself."
 					          +" It continues to curl inward until all that remains is a normal strand of hair.");
@@ -316,9 +316,9 @@ package classes.Items
 
 				outputText("\n\n<b>You realize, that you'll grow normal human hair again!</b>");
 				flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] = 0;
-				player.hairLength = 0;
+				player.hair.length = 0;
 			}
-			player.hairType = Hair.NORMAL;
+			player.hair.type = Hair.NORMAL;
 			changes++;
 			return true;
 		}
@@ -359,7 +359,7 @@ package classes.Items
 		public function updateClaws(clawType:int = Claws.NORMAL):String
 		{
 			var clawTone:String = "";
-			var oldClawTone:String = player.clawTone;
+			var oldClawTone:String = player.claws.tone;
 
 			switch (clawType) {
 				case Claws.DRAGON:       clawTone = "steel-gray";   break;
@@ -367,7 +367,7 @@ package classes.Items
 				case Claws.LIZARD:
 					// See http://www.bergenbattingcenter.com/lizard-skins-bat-grip/ for all those NYI! lizard skin colors
 					// I'm still not that happy with these claw tones. Any suggestion would be nice.
-					switch (player.skinTone) {
+					switch (player.skin.tone) {
 						case "red":          clawTone = "reddish";      break;
 						case "green":        clawTone = "greenish";     break;
 						case "white":        clawTone = "light-gray";   break;
@@ -387,8 +387,8 @@ package classes.Items
 					clawTone = "";
 			}
 
-			player.clawType = clawType;
-			player.clawTone = clawTone;
+			player.claws.type = clawType;
+			player.claws.tone = clawTone;
 
 			return oldClawTone;
 		}
@@ -414,7 +414,7 @@ package classes.Items
 				case "PlayerEvents-benoitHairPin":
 				case "reptilum-basilisk":
 				case "reptilum-dracolisk":
-					if (player.hairType == Hair.BASILISK_PLUME && player.cor < 65) return 0;
+					if (player.hair.type == Hair.BASILISK_PLUME && player.cor < 65) return 0;
 
 					if (player.isFemaleOrHerm() && player.cor < 15 && player.featheryHairPinEquipped() && player.isBasilisk()) {
 						var benoitMFText:String = getGame().bazaar.benoit.benoitMF(
@@ -422,7 +422,7 @@ package classes.Items
 							" you have a plume, like a female basilisk!"
 						);
 
-						if (player.hairType == Hair.GOO)
+						if (player.hair.type == Hair.GOO)
 							output.text("\n\nYour gooey hair begins to fall out in globs, eventually leaving you with a bald head.");
 
 						output.text("\n\nYour head begins to tickle and you reach up to scratch at it, only to be surprised by the softness you feel."
@@ -437,17 +437,17 @@ package classes.Items
 							output.text("\n\n<b>Your hair is now a plume of short red feathers.</b>");
 
 						flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] = 0;
-						player.hairLength = 2;
-						player.hairColor = "red";
-						player.hairType = Hair.BASILISK_PLUME;
+						player.hair.length = 2;
+						player.hair.color = "red";
+						player.hair.type = Hair.BASILISK_PLUME;
 						player.keyItems[hairPinID].value2 = 0;
 						changes++;
 						return 1; // --> gained basilisk hair (plume)
 					}
 
-					if (player.cor >= 65 && player.hairType != Hair.BASILISK_SPINES && player.hasLizardScales() && player.hasReptileFace()) {
+					if (player.cor >= 65 && player.hair.type != Hair.BASILISK_SPINES && player.hasLizardScales() && player.hasReptileFace()) {
 						// Corrupted Basilisk
-						if (player.hairLength > 0 && [Hair.GOO, Hair.BASILISK_PLUME].indexOf(player.hairType) == -1) {
+						if (player.hair.length > 0 && [Hair.GOO, Hair.BASILISK_PLUME].indexOf(player.hair.type) == -1) {
 							output.text("\n\nYour scalp feels tight and hot, causing you to run a hand through your [hair] to rub at it gingerly.");
 
 							if (player.featheryHairPinEquipped())
@@ -465,7 +465,7 @@ package classes.Items
 						}
 
 						// Female Basilisk to Corrupted Basilisk
-						if (player.hairLength > 0 && player.hairType == Hair.BASILISK_PLUME) {
+						if (player.hair.length > 0 && player.hair.type == Hair.BASILISK_PLUME) {
 							output.text("\n\nA sudden sharp pain drills through your skull, a pressure forming across your scalp."
 							           +" If you didn't know any better you'd think you were being plucked!");
 
@@ -483,8 +483,8 @@ package classes.Items
 						}
 
 						// Corrupted basilisk with gooey or no hair (bald)
-						if (player.hairType == Hair.GOO || player.hairLength <= 0) {
-							if (player.hairType == Hair.GOO)
+						if (player.hair.type == Hair.GOO || player.hair.length <= 0) {
+							if (player.hair.type == Hair.GOO)
 								output.text("\n\nYour gooey hair begins to fall out in globs, eventually leaving you with a bald head.");
 
 							if (player.featheryHairPinEquipped())
@@ -498,9 +498,9 @@ package classes.Items
 						}
 
 						// Finalize Corrupted Basilisk TFs
-						player.hairColor = player.skinTone;                   // hairColor always set to player.skinTone
-						player.hairType = Hair.BASILISK_SPINES;               // hairType set to basilisk spines
-						player.hairLength = 2;                                // hairLength set to 2 (inches, displayed as ‘short’)
+						player.hair.color = player.skin.tone;                   // hairColor always set to player.skin.tone
+						player.hair.type = Hair.BASILISK_SPINES;               // hairType set to basilisk spines
+						player.hair.length = 2;                                // hairLength set to 2 (inches, displayed as ‘short’)
 						flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] = 1; // Hair growth stops
 						changes++;
 						output.text("\n\n<b>Where your hair would be, you now have a crown of dull reptilian spines!</b>");
@@ -596,10 +596,10 @@ package classes.Items
 		{
 			LOGGER.debug("Called updateGills(\"{0}\")", newGillType);
 
-			var oldgillType:int = player.gillType;
-			if (player.gillType == newGillType) return 0; // no change
+			var oldgillType:int = player.gills.type;
+			if (player.gills.type == newGillType) return 0; // no change
 
-			player.gillType = newGillType;
+			player.gills.type = newGillType;
 			changes++;
 
 			// for now, we only have anemone gills on the chest
@@ -649,7 +649,7 @@ package classes.Items
 					return 1; // Gained gills or gillType changed
 
 				default:
-					player.gillType = oldgillType;
+					player.gills.type = oldgillType;
 					changes--;
 					LOGGER.error("Unimplemented new gillType (\"{0}\") used", newGillType);
 					return 0; // failsafe, should hopefully never happen
@@ -658,8 +658,8 @@ package classes.Items
 
 		public function gainSnakeTongue():Boolean
 		{
-			if (player.tongueType != Tongue.SNAKE && changes < changeLimit) {
-				if (player.tongueType == Tongue.HUMAN) {
+			if (player.tongue.type != Tongue.SNAKE && changes < changeLimit) {
+				if (player.tongue.type == Tongue.HUMAN) {
 					outputText("\n\nYour taste-buds start aching as they swell to an uncomfortably large size. "
 					          +"Trying to understand what in the world could have provoked such a reaction, you bring your hands up to your mouth, "
 					          +"your tongue feeling like it's trying to push its way past your lips.");
@@ -672,7 +672,7 @@ package classes.Items
 					outputText("  After a moment the bunched-up tongue-flesh begins to flatten out, then extend forwards.");
 					outputText("  By the time the transformation has finished, <b>your tongue has changed into a long, forked snake-tongue.</b>");
 				}
-				player.tongueType = Tongue.SNAKE;
+				player.tongue.type = Tongue.SNAKE;
 				dynStats("sen", 5);
 				changes++;
 				return true;
@@ -683,9 +683,9 @@ package classes.Items
 
 		public function gainLizardTongue():Boolean
 		{
-			if (player.tongueType != Tongue.LIZARD) {
+			if (player.tongue.type != Tongue.LIZARD) {
 				outputText("\n\nYour tongue goes numb, making your surprised noise little more than a gurgle as your tongue flops comically. ");
-				switch (player.tongueType) {
+				switch (player.tongue.type) {
 					case Tongue.SNAKE:
 						outputText("\nSlowly your tongue swells, thickening up until it's about as thick as your thumb, while staying quite "
 					              +" flexible. You drool, your tongue lolling out of your mouth as you slowly begin to regain control of your forked"
@@ -723,7 +723,7 @@ package classes.Items
 					              +" regain control, retracting it into your mouth, the forked tips picking up on things you couldn't taste before.");
 				}
 				outputText("\n\n<b>You now have a lizard tongue!</b>");
-				player.tongueType = Tongue.LIZARD;
+				player.tongue.type = Tongue.LIZARD;
 				dynStats("sen", 5); // Sensitivy gain since its forked
 				changes++;
 			}
@@ -746,21 +746,21 @@ package classes.Items
 				throw new Error("Unimplemented tfSource: '" + tfSource + "' used in gainDraconicHorns!");
 
 			//No dragon horns yet.
-			if (player.hornType != Horns.DRACONIC_X2 && player.hornType != Horns.DRACONIC_X4_12_INCH_LONG) {
+			if (player.horns.type != Horns.DRACONIC_X2 && player.horns.type != Horns.DRACONIC_X4_12_INCH_LONG) {
 				//Already have horns
-				if (player.horns > 0) {
+				if (player.horns.value > 0) {
 					//High quantity demon horns
-					if (player.hornType == Horns.DEMON && player.horns > 4) {
+					if (player.horns.type == Horns.DEMON && player.horns.value > 4) {
 						outputText("\n\nYour horns condense, twisting around each other and merging into larger, pointed protrusions.  By the time they finish you have four draconic-looking horns, each about twelve inches long.");
-						player.horns = 12;
-						player.hornType = Horns.DRACONIC_X4_12_INCH_LONG;
+						player.horns.value = 12;
+						player.horns.type = Horns.DRACONIC_X4_12_INCH_LONG;
 					}
 					else {
 						outputText("\n\nYou feel your horns changing and warping, and reach back to touch them.  They have a slight curve and a gradual taper.  They must look something like the horns the dragons in your village's legends always had.");
-						player.hornType = Horns.DRACONIC_X2;
-						if (player.horns > 13) {
+						player.horns.type = Horns.DRACONIC_X2;
+						if (player.horns.value > 13) {
 							outputText("  The change seems to have shrunken the horns, they're about a foot long now.");
-							player.horns = 12;
+							player.horns.value = 12;
 						}
 
 					}
@@ -770,32 +770,32 @@ package classes.Items
 				else {
 					//-If no horns, grow a pair
 					outputText("\n\nWith painful pressure, the skin on the sides of your forehead splits around two tiny nub-like horns.  They're angled back in such a way as to resemble those you saw on the dragons in your village's legends.  A few inches of horn sprout from your head before stopping.  <b>You have about four inches of dragon-like horn.</b>");
-					player.horns = 4;
-					player.hornType = Horns.DRACONIC_X2;
+					player.horns.value = 4;
+					player.horns.type = Horns.DRACONIC_X2;
 
 					changes++;
 				}
 			}
 			//ALREADY DRAGON
 			else {
-				if (player.hornType == Horns.DRACONIC_X2) {
-					if (player.horns < 12) {
+				if (player.horns.type == Horns.DRACONIC_X2) {
+					if (player.horns.value < 12) {
 						if (rand(3) == 0) {
 							outputText("\n\nYou get a headache as an inch of fresh horn escapes from your pounding skull.");
-							player.horns += 1;
+							player.horns.value += 1;
 						}
 						else {
 							outputText("\n\nYour head aches as your horns grow a few inches longer.  They get even thicker about the base, giving you a menacing appearance.");
-							player.horns += 3 + rand(3);
+							player.horns.value += 3 + rand(3);
 						}
-						if (player.horns >= 12) outputText("  <b>Your horns settle down quickly, as if they're reached their full size.</b>");
+						if (player.horns.value >= 12) outputText("  <b>Your horns settle down quickly, as if they're reached their full size.</b>");
 						changes++;
 					}
 					//maxxed out, new row
 					else {
 						//--Next horn growth adds second row and brings length up to 12\"
 						outputText("\n\nA second row of horns erupts under the first, and though they are narrower, they grow nearly as long as your first row before they stop.  A sense of finality settles over you.  <b>You have as many horns as a " + race + " can grow.</b>");
-						player.hornType = Horns.DRACONIC_X4_12_INCH_LONG;
+						player.horns.type = Horns.DRACONIC_X4_12_INCH_LONG;
 						changes++;
 					}
 				}

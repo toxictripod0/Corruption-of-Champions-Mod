@@ -300,12 +300,12 @@ package classes.Scenes.NPCs
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,20,0,0,0);
 			this.tallness = 6*12;
-			this.hipRating = Hips.RATING_AVERAGE;
-			this.buttRating = Butt.RATING_AVERAGE+1;
-			this.lowerBody = LowerBody.KANGAROO;
-			this.skinTone = "tan";
-			this.hairColor = "auburn";
-			this.hairLength = 11;
+			this.hips.rating = Hips.RATING_AVERAGE;
+			this.butt.rating = Butt.RATING_AVERAGE+1;
+			this.lowerBody.type = LowerBody.KANGAROO;
+			this.skin.tone = "tan";
+			this.hair.color = "auburn";
+			this.hair.length = 11;
 			initStrTouSpeInte(80, 45, 95, 50);
 			initLibSensCor(30, 45, 25);
 			var lust:Number = 30;
@@ -344,7 +344,7 @@ package classes.Scenes.NPCs
 						add(consumables.SUCMILK,1/3).
 						add(consumables.INCUBID,1/2);
 			}
-			this.tailType = Tail.KANGAROO;
+			this.tail.type = Tail.KANGAROO;
 			checkMonster();
 		}
 

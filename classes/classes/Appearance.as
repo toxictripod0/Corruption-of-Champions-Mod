@@ -1,12 +1,11 @@
 package classes {
 	import classes.BodyParts.*;
 	import classes.BodyParts.Hips;
+	import classes.CoC_Settings;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
-	import classes.Player;
-	import classes.Monster;
-	import classes.CoC_Settings;
 	import classes.internals.Utils;
+	import classes.lists.Gender;
 
 	public class Appearance extends Utils {
 
@@ -26,23 +25,25 @@ package classes {
 			var options:Array;
 
 			// LENGTH ADJECTIVE!
-			if (i_creature.hairLength == 0) return randomChoice(["shaved", "bald", "smooth", "hairless", "glabrous"]) + " head";
-			if (i_creature.hairLength < 1) description += randomChoice(["close-cropped, ", "trim, ", "very short, "]);
-			else if (i_creature.hairLength < 3) description += "short, ";
-			else if (i_creature.hairLength < 6) description += "shaggy, ";
-			else if (i_creature.hairLength < 10) description += "moderately long, ";
-			else if (i_creature.hairLength < 16) description += randomChoice(["long, ", "shoulder-length, "]);
-			else if (i_creature.hairLength < 26) description += randomChoice(["very long, ", "flowing locks of "]);
-			else if (i_creature.hairLength < 40) description += "ass-length, ";
-			else if (i_creature.hairLength < i_creature.tallness) description += "obscenely long, ";
-			else // if (i_creature.hairLength >= i_creature.tallness)
+			if (i_creature.hair.length == 0) return randomChoice(["shaved", "bald", "smooth", "hairless", "glabrous"]) + " head";
+			if (i_creature.hair.length < 1) description += randomChoice(["close-cropped, ", "trim, ", "very short, "]);
+			else if (i_creature.hair.length < 3) description += "short, ";
+			else if (i_creature.hair.length < 6) description += "shaggy, ";
+			else if (i_creature.hair.length < 10) description += "moderately long, ";
+			else if (i_creature.hair.length < 16) description += randomChoice(["long, ", "shoulder-length, "]);
+			else if (i_creature.hair.length < 26) description += randomChoice(["very long, ", "flowing locks of "]);
+			else if (i_creature.hair.length < 40) description += "ass-length, ";
+			else if (i_creature.hair.length < i_creature.tallness) description += "obscenely long, ";
+			else // if (i_creature.hair.length >= i_creature.tallness)
 				description += randomChoice(["floor-length, ", "floor-dragging, "]);
 
 			// COLORS
-			description += i_creature.hairColor + " ";
-
+			//
+			description += i_creature.hair.color + " ";
+			//
 			// HAIR WORDS
-			switch (i_creature.hairType) {
+			//
+			switch (i_creature.hair.type) {
 				case Hair.BASILISK_SPINES:
 					options = [
 						"rubbery spines",
@@ -72,29 +73,29 @@ package classes {
 			// case Hair.GOO: return description + "goo-mane";
 			// and so on. (Stadler76)
 			//If furry and longish hair sometimes call it a mane (50%)
-			if (i_creature.hasFur() && i_creature.hairLength > 3 && rand(2) == 0) {
-				if (i_creature.hairType == Hair.FEATHER) description += "feather-";
-				else if (i_creature.hairType == Hair.GHOST) description += "transparent ";
-				else if (i_creature.hairType == Hair.GOO) description += "goo-";
-				else if (i_creature.hairType == Hair.ANEMONE) description += "tentacle-";
-				else if (i_creature.hairType == Hair.QUILL) description += "quill-";
-				else if (i_creature.hairType == Hair.WOOL) description += "wool-";
+			if (i_creature.hasFur() && i_creature.hair.length > 3 && rand(2) == 0) {
+				if (i_creature.hair.type == Hair.FEATHER) description += "feather-";
+				else if (i_creature.hair.type == Hair.GHOST) description += "transparent ";
+				else if (i_creature.hair.type == Hair.GOO) description += "goo-";
+				else if (i_creature.hair.type == Hair.ANEMONE) description += "tentacle-";
+				else if (i_creature.hair.type == Hair.QUILL) description += "quill-";
+				else if (i_creature.hair.type == Hair.WOOL) description += "wool-";
 				description += "mane";
 				return description;
 			}
 			//if medium length refer to as locks sometimes
 			//CUT - locks is plural and screws up tense.
-			/*if (creature.hairLength >= 3 && creature.hairLength < 16 && rand(2) == 0) {
+			/*if (creature.hair.length >= 3 && creature.hair.length < 16 && rand(2) == 0) {
 			 descript += "locks of hair";
 			 return descript;
 			 }*/
 			//If nothing else used, use hair!
-			if (i_creature.hairType == Hair.FEATHER) description += "feather-";
-			else if (i_creature.hairType == Hair.GHOST) description += "transparent ";
-			else if (i_creature.hairType == Hair.GOO) description += "goo-";
-			else if (i_creature.hairType == Hair.ANEMONE) description += "tentacle-";
-			else if (i_creature.hairType == Hair.QUILL) description += "quill-";
-			else if (i_creature.hairType == Hair.WOOL) description += "woolen ";
+			if (i_creature.hair.type == Hair.FEATHER) description += "feather-";
+			else if (i_creature.hair.type == Hair.GHOST) description += "transparent ";
+			else if (i_creature.hair.type == Hair.GOO) description += "goo-";
+			else if (i_creature.hair.type == Hair.ANEMONE) description += "tentacle-";
+			else if (i_creature.hair.type == Hair.QUILL) description += "quill-";
+			else if (i_creature.hair.type == Hair.WOOL) description += "woolen ";
 			description += "hair";
 			return description;
 		}
@@ -103,7 +104,7 @@ package classes {
 			var description:String = "";
 			var options:Array;
 			// LENGTH ADJECTIVE!
-			if (i_creature.beardLength == 0) {
+			if (i_creature.beard.length == 0) {
 				options = ["shaved",
 					"bald",
 					"smooth",
@@ -112,38 +113,40 @@ package classes {
 				description = randomChoice(options) + " chin and cheeks";
 				return description;
 			}
-			if (i_creature.beardLength < 0.2) {
+			if (i_creature.beard.length < 0.2) {
 				options = ["close-cropped, ",
 					"trim, ",
 					"very short, "];
 				description += randomChoice(options);
 			}
-			if (i_creature.beardLength >= 0.2 && i_creature.beardLength < 0.5) description += "short, ";
-			if (i_creature.beardLength >= 0.5 && i_creature.beardLength < 1.5) description += "medium, ";
-			if (i_creature.beardLength >= 1.5 && i_creature.beardLength < 3) description += "moderately long, ";
-			if (i_creature.beardLength >= 3 && i_creature.beardLength < 6) {
+			if (i_creature.beard.length >= 0.2 && i_creature.beard.length < 0.5) description += "short, ";
+			if (i_creature.beard.length >= 0.5 && i_creature.beard.length < 1.5) description += "medium, ";
+			if (i_creature.beard.length >= 1.5 && i_creature.beard.length < 3) description += "moderately long, ";
+			if (i_creature.beard.length >= 3 && i_creature.beard.length < 6) {
 				if (rand(2) == 0) description += "long, ";
 				else description += "neck-length, ";
 			}
-			if (i_creature.beardLength >= 6) {
+			if (i_creature.beard.length >= 6) {
 				if (rand(2) == 0) description += "very long, ";
 				description += "chest-length, ";
 			}
 
 			// COLORS
-			description += i_creature.hairColor + " ";
-
+			//
+			description += i_creature.hair.color + " ";
+			//
 			// BEARD WORDS
 			// Follows hair type.
-			if (i_creature.hairType == 1) description += "";
-			else if (i_creature.hairType == 2) description += "transparent ";
-			else if (i_creature.hairType == 3) description += "gooey ";
-			else if (i_creature.hairType == 4) description += "tentacley ";
+			if (i_creature.hair.type == 1) description += "";
+			else if (i_creature.hair.type == 2) description += "transparent ";
+			else if (i_creature.hair.type == 3) description += "gooey ";
+			else if (i_creature.hair.type == 4) description += "tentacley ";
+			
+			if (i_creature.beard.style == 0) description += "beard"
+			else if (i_creature.beard.style == 1) description += "goatee"
+			else if (i_creature.beard.style == 2) description += "clean-cut beard"
+			else if (i_creature.beard.style == 3) description += "mountain-man beard"
 
-			if (i_creature.beardStyle == 0) description += "beard"
-			else if (i_creature.beardStyle == 1) description += "goatee"
-			else if (i_creature.beardStyle == 2) description += "clean-cut beard"
-			else if (i_creature.beardStyle == 3) description += "mountain-man beard"
 			return description;
 		}
 
@@ -154,10 +157,10 @@ package classes {
 		 */
 		public static function tongueDescription(i_character:Character):String {
 			// fallback for tongueTypes not fully implemented yet
-			if (i_character.tongueType == Tongue.HUMAN || !DEFAULT_TONGUE_NAMES.hasOwnProperty(''+i_character.tongueType))
+			if (i_character.tongue.type == Tongue.HUMAN || !DEFAULT_TONGUE_NAMES.hasOwnProperty(''+i_character.tongue.type))
 				return "tongue";
 
-			return DEFAULT_TONGUE_NAMES[i_character.tongueType] + " tongue";
+			return DEFAULT_TONGUE_NAMES[i_character.tongue.type] + " tongue";
 		}
 
 		public static function nippleDescription(i_creature:Creature, i_rowNum:Number):String {
@@ -368,13 +371,13 @@ package classes {
 		public static function hipDescription(i_character:Character):String {
 			var description:String = "";
 			var options:Array;
-			if (i_character.hipRating <= 1) {
+			if (i_character.hips.rating <= 1) {
 				options = ["tiny ",
 					"narrow ",
 					"boyish "];
 				description = randomChoice(options);
 			}
-			else if (i_character.hipRating > 1 && i_character.hipRating < 4) {
+			else if (i_character.hips.rating > 1 && i_character.hips.rating < 4) {
 				options = ["slender ",
 					"narrow ",
 					"thin "];
@@ -384,7 +387,7 @@ package classes {
 					else description = "curved ";
 				}
 			}
-			else if (i_character.hipRating >= 4 && i_character.hipRating < 6) {
+			else if (i_character.hips.rating >= 4 && i_character.hips.rating < 6) {
 				options = ["well-formed ",
 					"pleasant "];
 				description = randomChoice(options);
@@ -393,7 +396,7 @@ package classes {
 					else description = "curvy ";
 				}
 			}
-			else if (i_character.hipRating >= 6 && i_character.hipRating < 10) {
+			else if (i_character.hips.rating >= 6 && i_character.hips.rating < 10) {
 				options = ["ample ",
 					"noticeable ",
 					"girly "];
@@ -403,7 +406,7 @@ package classes {
 					else description = "waspish ";
 				}
 			}
-			else if (i_character.hipRating >= 10 && i_character.hipRating < 15) {
+			else if (i_character.hips.rating >= 10 && i_character.hips.rating < 15) {
 				options = ["flared ",
 					"curvy ",
 					"wide "];
@@ -413,7 +416,7 @@ package classes {
 					else description = "waspish ";
 				}
 			}
-			else if (i_character.hipRating >= 15 && i_character.hipRating < 20) {
+			else if (i_character.hips.rating >= 15 && i_character.hips.rating < 20) {
 				if (i_character.thickness < 40) {
 					if (rand(2) == 0) description = "flared, ";
 					else description = "waspish, ";
@@ -423,7 +426,7 @@ package classes {
 					"voluptuous "];
 				description += randomChoice(options);
 			}
-			else if (i_character.hipRating >= 20) {
+			else if (i_character.hips.rating >= 20) {
 				if (i_character.thickness < 40) {
 					if (rand(2) == 0) description = "flaring, ";
 					else description = "incredibly waspish, ";
@@ -455,7 +458,7 @@ package classes {
 			}
 			var isPierced:Boolean = (creature.cocks.length == 1) && (creature.cocks[cockIndex].isPierced); //Only describe as pierced or sock covered if the creature has just one cock
 			var hasSock:Boolean = (creature.cocks.length == 1) && (creature.cocks[cockIndex].sock != "");
-			var isGooey:Boolean = (creature.skinType == Skin.GOO);
+			var isGooey:Boolean = (creature.skin.type == Skin.GOO);
 			return cockDescription(cockType, creature.cocks[cockIndex].cockLength, creature.cocks[cockIndex].cockThickness, creature.lust, creature.cumQ(), isPierced, hasSock, isGooey);
 		}
 
@@ -1586,7 +1589,7 @@ package classes {
 		{
 			var description:String = "";
 			var options:Array;
-			if (i_character.buttRating <= 1) {
+			if (i_character.butt.rating <= 1) {
 				if (i_character.tone >= 60)
 					description += "incredibly tight, perky ";
 				else {
@@ -1599,7 +1602,7 @@ package classes {
 					description += " ";
 				}
 			}
-			if (i_character.buttRating > 1 && i_character.buttRating < 4) {
+			if (i_character.butt.rating > 1 && i_character.butt.rating < 4) {
 				if (i_character.tone >= 65) {
 					options = ["perky, muscular ",
 						"tight, toned ",
@@ -1628,7 +1631,7 @@ package classes {
 					description = randomChoice(options);
 				}
 			}
-			if (i_character.buttRating >= 4 && i_character.buttRating < 6) {
+			if (i_character.butt.rating >= 4 && i_character.butt.rating < 6) {
 				//TOIGHT LIKE A TIGER
 				if (i_character.tone >= 65) {
 					options = ["nicely muscled ",
@@ -1655,7 +1658,7 @@ package classes {
 					description = randomChoice(options);
 				}
 			}
-			if (i_character.buttRating >= 6 && i_character.buttRating < 8) {
+			if (i_character.butt.rating >= 6 && i_character.butt.rating < 8) {
 				//TOIGHT LIKE A TIGER
 				if (i_character.tone >= 65) {
 					options = ["full, toned ",
@@ -1688,7 +1691,7 @@ package classes {
 					description = randomChoice(options);
 				}
 			}
-			if (i_character.buttRating >= 8 && i_character.buttRating < 10) {
+			if (i_character.butt.rating >= 8 && i_character.butt.rating < 10) {
 				//TOIGHT LIKE A TIGER
 				if (i_character.tone >= 65) {
 					options = ["large, muscular ",
@@ -1722,7 +1725,7 @@ package classes {
 					description = randomChoice(options);
 				}
 			}
-			if (i_character.buttRating >= 10 && i_character.buttRating < 13) {
+			if (i_character.butt.rating >= 10 && i_character.butt.rating < 13) {
 				//TOIGHT LIKE A TIGER
 				if (i_character.tone >= 65) {
 					options = ["thick, muscular ",
@@ -1757,7 +1760,7 @@ package classes {
 					description = randomChoice(options);
 				}
 			}
-			if (i_character.buttRating >= 13 && i_character.buttRating < 16) {
+			if (i_character.butt.rating >= 13 && i_character.butt.rating < 16) {
 				//TOIGHT LIKE A TIGER
 				if (i_character.tone >= 65) {
 					options = ["expansive, muscled ",
@@ -1794,7 +1797,7 @@ package classes {
 					description = randomChoice(options);
 				}
 			}
-			if (i_character.buttRating >= 16 && i_character.buttRating < 20) {
+			if (i_character.butt.rating >= 16 && i_character.butt.rating < 20) {
 				if (i_character.tone >= 65) {
 					options = ["huge, toned ",
 						"vast, muscular ",
@@ -1829,7 +1832,7 @@ package classes {
 					description = randomChoice(options);
 				}
 			}
-			if (i_character.buttRating >= 20) {
+			if (i_character.butt.rating >= 20) {
 				if (i_character.tone >= 65) {
 					if (rand(7) == 0) return "colossal, muscly ass";
 					options = ["ginormous, muscle-bound ",
@@ -1896,53 +1899,53 @@ package classes {
 		{
 			var description:String = "";
 			var options:Array;
-			if (i_creature.buttRating <= 1) {
+			if (i_creature.butt.rating <= 1) {
 				options = ["insignificant ",
 					"very small "];
 				description = randomChoice(options);
 			}
-			if (i_creature.buttRating > 1 && i_creature.buttRating < 4) {
+			if (i_creature.butt.rating > 1 && i_creature.butt.rating < 4) {
 				options = ["tight ",
 					"firm ",
 					"compact "];
 				description = randomChoice(options);
 			}
-			if (i_creature.buttRating >= 4 && i_creature.buttRating < 6) {
+			if (i_creature.butt.rating >= 4 && i_creature.butt.rating < 6) {
 				options = ["regular ",
 					"unremarkable "];
 				description = randomChoice(options);
 			}
-			if (i_creature.buttRating >= 6 && i_creature.buttRating < 8) {
+			if (i_creature.butt.rating >= 6 && i_creature.butt.rating < 8) {
 				if (rand(3) == 0) return "handful of ass";
 				options = ["full ",
 					"shapely "];
 				description = randomChoice(options);
 			}
-			if (i_creature.buttRating >= 8 && i_creature.buttRating < 10) {
+			if (i_creature.butt.rating >= 8 && i_creature.butt.rating < 10) {
 				options = ["squeezable ",
 					"large ",
 					"substantial "];
 				description = randomChoice(options);
 			}
-			if (i_creature.buttRating >= 10 && i_creature.buttRating < 13) {
+			if (i_creature.butt.rating >= 10 && i_creature.butt.rating < 13) {
 				options = ["jiggling ",
 					"spacious ",
 					"heavy "];
 				description = randomChoice(options);
 			}
-			if (i_creature.buttRating >= 13 && i_creature.buttRating < 16) {
+			if (i_creature.butt.rating >= 13 && i_creature.butt.rating < 16) {
 				if (rand(3) == 0) return "generous amount of ass";
 				options = ["expansive ",
 					"voluminous "];
 				description = randomChoice(options);
 			}
-			if (i_creature.buttRating >= 16 && i_creature.buttRating < 20) {
+			if (i_creature.butt.rating >= 16 && i_creature.butt.rating < 20) {
 				if (rand(3) == 2) return "jiggling expanse of ass";
 				options = ["huge ",
 					"vast "];
 				description = randomChoice(options);
 			}
-			if (i_creature.buttRating >= 20) {
+			if (i_creature.butt.rating >= 20) {
 				options = ["ginormous ",
 					"colossal ",
 					"tremendous "];
@@ -2020,22 +2023,22 @@ package classes {
 		
 		public static function wingsDescript(i_creature:Creature):String
 		{
-			return DEFAULT_WING_NAMES[i_creature.wingType] + " wings";
+			return DEFAULT_WING_NAMES[i_creature.wings.type] + " wings";
 		}
 
 		public static function eyesDescript(i_creature:Creature):String
 		{
-			return DEFAULT_EYES_NAMES[i_creature.eyeType] + " eyes";
+			return DEFAULT_EYES_NAMES[i_creature.eyes.type] + " eyes";
 		}
 
 		public static function extraEyesDescript(i_creature:Creature):String
 		{
-			return num2Text(i_creature.eyeCount - 2) + " " + DEFAULT_EYES_NAMES[i_creature.eyeType] + (i_creature.eyeCount == 3 ? " eye" : " eyes");
+			return num2Text(i_creature.eyes.count - 2) + " " + DEFAULT_EYES_NAMES[i_creature.eyes.type] + (i_creature.eyes.count == 3 ? " eye" : " eyes");
 		}
 
 		public static function extraEyesDescriptShort(i_creature:Creature):String
 		{
-			return num2Text(i_creature.eyeCount - 2) + (i_creature.eyeCount == 3 ? " eye" : " eyes");
+			return num2Text(i_creature.eyes.count - 2) + (i_creature.eyes.count == 3 ? " eye" : " eyes");
 		}
 
 		public static function nagaLowerBodyColor2(i_creature:Creature):String
@@ -2388,7 +2391,7 @@ package classes {
 					[LowerBody.HARPY, "harpy"],
 					[LowerBody.KANGAROO, "kangaroo"],
 					[LowerBody.CHITINOUS_SPIDER_LEGS, "chitinous spider legs"],
-					[LowerBody.DRIDER_LOWER_BODY, "drider"],
+					[LowerBody.DRIDER, "drider"],
 					[LowerBody.FOX, "fox"],
 					[LowerBody.DRAGON, "dragon"],
 					[LowerBody.RACCOON, "raccoon"],
@@ -2556,7 +2559,7 @@ package classes {
 		
 		public static function tailDescript(i_creature:Creature):String
 		{
-			if (i_creature.tailType == Tail.NONE)
+			if (i_creature.tail.type == Tail.NONE)
 			{
 				//trace("WARNING: Creature has no tails to describe.");
 				return "<b>!Creature has no tails to describe!</b>";
@@ -2564,16 +2567,16 @@ package classes {
 			
 			var descript:String = "";
 			
-			if (i_creature.tailType == Tail.FOX && i_creature.tailVenom >= 1)
+			if (i_creature.tail.type == Tail.FOX && i_creature.tail.venom >= 1)
 			{
 				// Kitsune tails, we're using tailVenom to track tail count
-				if (i_creature.tailVenom > 1)
+				if (i_creature.tail.venom > 1)
 				{
-					if (i_creature.tailVenom == 2) descript += "pair ";
-					else if (i_creature.tailVenom == 3) descript += "trio ";
-					else if (i_creature.tailVenom == 4) descript += "quartet ";
-					else if (i_creature.tailVenom == 5) descript += "quintet ";
-					else if (i_creature.tailVenom > 5) descript += "bundle ";
+					if (i_creature.tail.venom == 2) descript += "pair ";
+					else if (i_creature.tail.venom == 3) descript += "trio ";
+					else if (i_creature.tail.venom == 4) descript += "quartet ";
+					else if (i_creature.tail.venom == 5) descript += "quintet ";
+					else if (i_creature.tail.venom > 5) descript += "bundle ";
 					
 					descript += "of kitsune tails";
 				}
@@ -2581,7 +2584,7 @@ package classes {
 			}
 			else
 			{
-				descript += DEFAULT_TAIL_NAMES[i_creature.tailType];
+				descript += DEFAULT_TAIL_NAMES[i_creature.tail.type];
 				descript += " tail";
 			}
 			
@@ -2590,7 +2593,7 @@ package classes {
 		
 		public static function oneTailDescript(i_creature:Creature):String
 		{
-			if (i_creature.tailType == Tail.NONE)
+			if (i_creature.tail.type == Tail.NONE)
 			{
 				//trace("WARNING: Creature has no tails to describe.");
 				return "<b>!Creature has no tails to describe!</b>";
@@ -2598,9 +2601,9 @@ package classes {
 			
 			var descript:String = "";
 			
-			if (i_creature.tailType == Tail.FOX && i_creature.tailVenom >= 1)
+			if (i_creature.tail.type == Tail.FOX && i_creature.tail.venom >= 1)
 			{
-				if (i_creature.tailVenom == 1)
+				if (i_creature.tail.venom == 1)
 				{
 					descript += "your kitsune tail";
 				}
@@ -2611,7 +2614,7 @@ package classes {
 			}
 			else
 			{
-				descript += "your " + DEFAULT_TAIL_NAMES[i_creature.tailType] + " tail";
+				descript += "your " + DEFAULT_TAIL_NAMES[i_creature.tail.type] + " tail";
 			}
 			
 			return descript;

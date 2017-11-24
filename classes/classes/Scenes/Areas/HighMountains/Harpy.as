@@ -108,14 +108,14 @@ package classes.Scenes.Areas.HighMountains
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,20,0,0,0);
 			this.tallness = 6*12+6;
-			this.hipRating = Hips.RATING_INHUMANLY_WIDE;
-			this.buttRating = Butt.RATING_EXPANSIVE;
-			this.lowerBody = LowerBody.HARPY;
-			this.skinTone = "pink";
-			this.skinType = Skin.PLAIN;
-			this.skinDesc = "feathers";
-			this.hairColor = "blue";
-			this.hairLength = 16;
+			this.hips.rating = Hips.RATING_INHUMANLY_WIDE;
+			this.butt.rating = Butt.RATING_EXPANSIVE;
+			this.lowerBody.type = LowerBody.HARPY;
+			this.skin.tone = "pink";
+			this.theSkinType = Skin.PLAIN;
+			this.skin.desc = "feathers";
+			this.hair.color = "blue";
+			this.hair.length = 16;
 			initStrTouSpeInte(60, 40, 90, 40);
 			initLibSensCor(70, 30, 80);
 			this.weaponName = "talons";
@@ -131,7 +131,7 @@ package classes.Scenes.Areas.HighMountains
 			this.gems = 10 + rand(4);
 			this.drop = new ChainedDrop().add(armors.W_ROBES,1/10)
 					.elseDrop(consumables.GLDSEED);
-			this.wingType = Wings.HARPY;
+			this.theWingType = Wings.HARPY;
 			this.special1 = harpyUberCharge;
 			this.special2 = harpyTease;
 			checkMonster();

@@ -146,13 +146,13 @@ package classes.Scenes.Places.Farm
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,50,0,0,0);
 			this.tallness = 84;
-			this.hipRating = Hips.RATING_AVERAGE;
-			this.buttRating = Butt.RATING_AVERAGE+1;
-			this.lowerBody = LowerBody.HOOFED;
-			this.legCount = 4;
-			this.skinTone = "tan";
-			this.hairColor = randomChoice("black","brown");
-			this.hairLength = 3;
+			this.hips.rating = Hips.RATING_AVERAGE;
+			this.butt.rating = Butt.RATING_AVERAGE+1;
+			this.lowerBody.type = LowerBody.HOOFED;
+			this.lowerBody.legCount = 4;
+			this.skin.tone = "tan";
+			this.hair.color = randomChoice("black","brown");
+			this.hair.length = 3;
 			initStrTouSpeInte(60, 70, 40, 20);
 			initLibSensCor(40, 25, 55);
 			this.weaponName = "fist";
@@ -166,7 +166,7 @@ package classes.Scenes.Places.Farm
 			this.temperment = TEMPERMENT_LUSTY_GRAPPLES;
 			this.level = 6;
 			this.gems = rand(5) + 5;
-			this.tailType = Tail.HORSE;
+			this.tail.type = Tail.HORSE;
 			this.drop = NO_DROP;
 			checkMonster();
 		}

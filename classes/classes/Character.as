@@ -1,11 +1,9 @@
 package classes 
 {
 	import classes.BodyParts.*;
-import classes.Scenes.Places.TelAdre.UmasShop;
-import classes.Items.JewelryLib;
-import classes.GlobalFlags.kFLAGS;
+	import classes.lists.BodyPartLists;
 
-/**
+	/**
 	 * Character class for player and NPCs. Has subclasses Player and NonPlayer.
 	 * @author Yoffy
 	 */
@@ -228,7 +226,7 @@ import classes.GlobalFlags.kFLAGS;
 					/*if (hasBeard())
 					{
 						output += "  As if that wasn't bad enough, your " + beard() + " falls out too!";
-						beardLength = 0;
+						beard.length = 0;
 						beardStyle = 0;
 					}*/
 					output += "</b>\n";
@@ -249,7 +247,7 @@ import classes.GlobalFlags.kFLAGS;
 					/*if (hasBeard())
 					{
 						output += "  As if that wasn't bad enough, your " + beard() + " falls out too!";
-						beardLength = 0;
+						beard.length = 0;
 						beardStyle = 0;
 					}*/
 					output += "</b>\n";
@@ -267,14 +265,14 @@ import classes.GlobalFlags.kFLAGS;
 				/*if (femininity > 40 && hasBeard())
 				{
 					output += "\n<b>Your beard falls out, leaving you with " + faceDesc() + ".</b>\n";
-					beardLength = 0;
+					beard.length = 0;
 					beardStyle = 0;
 				}*/
 			}
 			/*if (gender != 1 && hasBeard())
 			{
 				output += "\n<b>Your beard falls out, leaving you with " + faceDesc() + ".</b>\n";
-				beardLength = 0;
+				beard.length = 0;
 				beardStyle = 0;
 			}*/
 			return output;
@@ -282,7 +280,7 @@ import classes.GlobalFlags.kFLAGS;
 		
 		public function hasBeard():Boolean
 		{
-			return beardLength > 0;
+			return beard.length > 0;
 		}
 		
 		public function beardDesc():String
@@ -298,36 +296,25 @@ import classes.GlobalFlags.kFLAGS;
 
 		public function hasMuzzle():Boolean
 		{
-			if (faceType == Face.HORSE || faceType == Face.DOG || faceType == Face.CAT || faceType == Face.LIZARD || faceType == Face.KANGAROO || faceType == Face.FOX || faceType == Face.DRAGON || faceType == Face.RHINO || faceType == Face.ECHIDNA || faceType == Face.DEER || faceType == Face.WOLF)
-				return true;
-			return false;
+			return BodyPartLists.muzzles.indexOf(face.type) !== -1;
 		}
 		
 		public function faceDescript():String
 		{
 			var stringo:String = "";
-			//0 - human
-			//5 - Human w/Naga fangz
-			//8 - bunnah faceahhh bunbun
-			//10 - spidah-face (humanish)
-			if (faceType == 0)
+			if (face.type == Face.HUMAN)
 				return "face";
-			//1 - horse
-			//2 - dogface
-			//6 - kittah face
-			//7 - lizard face (durned argonians!)
-			//9 - kangaface
 			if (hasMuzzle())
 			{
-				if (int(Math.random() * 3) == 0 && faceType == Face.HORSE)
+				if (int(Math.random() * 3) == 0 && face.type == Face.HORSE)
 					stringo = "long ";
-				if (int(Math.random() * 3) == 0 && faceType == Face.CAT)
+				if (int(Math.random() * 3) == 0 && face.type == Face.CAT)
 					stringo = "feline ";
-				if (int(Math.random() * 3) == 0 && faceType == Face.RHINO)
+				if (int(Math.random() * 3) == 0 && face.type == Face.RHINO)
 					stringo = "rhino ";
-				if (int(Math.random() * 3) == 0 && (faceType == Face.LIZARD || faceType == Face.DRAGON))
+				if (int(Math.random() * 3) == 0 && (face.type == Face.LIZARD || face.type == Face.DRAGON))
 					stringo = "reptilian ";
-				if (int(Math.random() * 3) == 0 && faceType == Face.WOLF)
+				if (int(Math.random() * 3) == 0 && face.type == Face.WOLF)
 					stringo = "canine ";
 				switch(rand(3)) {
 					case 0:
@@ -341,7 +328,7 @@ import classes.GlobalFlags.kFLAGS;
 				}
 			}
 			//3 - cowface
-			if (faceType == Face.COW_MINOTAUR)
+			if (face.type == Face.COW_MINOTAUR)
 			{
 				if (Math.floor(Math.random() * 4) == 0)
 					stringo = "bovine ";
@@ -350,38 +337,28 @@ import classes.GlobalFlags.kFLAGS;
 				return stringo + "face";
 			}
 			//4 - sharkface-teeth
-			if (faceType == Face.SHARK_TEETH)
+			if (face.type == Face.SHARK_TEETH)
 			{
 				if (Math.floor(Math.random() * 4) == 0)
 					stringo = "angular ";
 				return stringo + "face";
 			}
-			if (faceType == Face.PIG || faceType == Face.BOAR)
+			if (face.type == Face.PIG || face.type == Face.BOAR)
 			{
 				if (Math.floor(Math.random() * 4) == 0)
-					stringo = (faceType == Face.PIG ? "pig" : "boar") + "-like ";
+					stringo = (face.type == Face.PIG ? "pig" : "boar") + "-like ";
 				if (Math.floor(Math.random() * 4) == 0)
 					return stringo + "snout";
 				return stringo + "face";
 			}
 			return "face";
 		}
-		
+
 		public function hasLongTail():Boolean
 		{
-			//7 - shark tail!
-			//8 - catTAIIIIIL
-			//9 - lizard tail
-			//10 - bunbuntail
-			//11 - harpybutt
-			//12 - rootail
-			//13 - foxtail
-			//14 - dagron tail
-			if (isNaga())
-				return true;
-			if (tailType == 2 || tailType == 3 || tailType == 4 || tailType == 7 || tailType == 8 || tailType == 9 || tailType == 12 || tailType == 13 || tailType == 14 || tailType == 15 || tailType == 16 || tailType == 17 || tailType == 18 || tailType == 20)
-				return true;
-			return false;
+			if (isNaga()) return true;
+
+			return BodyPartLists.longTails.indexOf(tail.type) !== -1;
 		}
 
 		public function isPregnant():Boolean { return _pregnancyType != 0; }
@@ -781,23 +758,23 @@ import classes.GlobalFlags.kFLAGS;
 		
 		public function growHair(amount:Number = .1):Boolean {
 			//Grow hair!
-			var tempHair:Number = hairLength;
-			if (hairType == Hair.BASILISK_SPINES) return false;
-			hairLength += amount;
-			if (hairType == Hair.BASILISK_PLUME && hairLength > 8) hairLength = 8;
-			if (hairLength > 0 && tempHair == 0) {
+			var tempHair:Number = hair.length;
+			if (hair.type == Hair.BASILISK_SPINES) return false;
+			hair.length += amount;
+			if (hair.type == Hair.BASILISK_PLUME && hair.length > 8) hair.length = 8;
+			if (hair.length > 0 && tempHair == 0) {
 				game.outputText("\n<b>You are no longer bald.  You now have " + hairDescript() + " coating your head.\n</b>");
 				return true;
 			}
 			else if (
-				(hairLength >= 1 && tempHair < 1) ||
-				(hairLength >= 3 && tempHair < 3) ||
-				(hairLength >= 6 && tempHair < 6) ||
-				(hairLength >= 10 && tempHair < 10) ||
-				(hairLength >= 16 && tempHair < 16) ||
-				(hairLength >= 26 && tempHair < 26) ||
-				(hairLength >= 40 && tempHair < 40) ||
-				(hairLength >= 40 && hairLength >= tallness && tempHair < tallness)
+				(hair.length >= 1 && tempHair < 1) ||
+				(hair.length >= 3 && tempHair < 3) ||
+				(hair.length >= 6 && tempHair < 6) ||
+				(hair.length >= 10 && tempHair < 10) ||
+				(hair.length >= 16 && tempHair < 16) ||
+				(hair.length >= 26 && tempHair < 26) ||
+				(hair.length >= 40 && tempHair < 40) ||
+				(hair.length >= 40 && hair.length >= tallness && tempHair < tallness)
 			) {
 				game.outputText("\n<b>Your hair's growth has reached a new threshold, giving you " + hairDescript() + ".\n</b>");
 				return true;
@@ -807,29 +784,29 @@ import classes.GlobalFlags.kFLAGS;
 
 		public function growBeard(amount:Number = .1):Boolean {
 			//Grow beard!
-			var tempBeard:Number = beardLength;
-			beardLength += amount;
-			if (beardLength > 0 && tempBeard == 0) {
+			var tempBeard:Number = beard.length;
+			beard.length += amount;
+			if (beard.length > 0 && tempBeard == 0) {
 				game.outputText("\n<b>You feel a tingling in your cheeks and chin.  You now have " + beardDescript() + " coating your cheeks and chin.\n</b>");
 				return true;
 			}
-			else if (beardLength >= 0.2 && tempBeard < 0.2) {
+			else if (beard.length >= 0.2 && tempBeard < 0.2) {
 				game.outputText("\n<b>Your beard's growth has reached a new threshold, giving you " + beardDescript() + ".\n</b>");
 				return true;
 			}
-			else if (beardLength >= 0.5 && tempBeard < 0.5) {
+			else if (beard.length >= 0.5 && tempBeard < 0.5) {
 				game.outputText("\n<b>Your beard's growth has reached a new threshold, giving you " + beardDescript() + ".\n</b>");
 				return true;
 			}
-			else if (beardLength >= 1.5 && tempBeard < 1.5) {
+			else if (beard.length >= 1.5 && tempBeard < 1.5) {
 				game.outputText("\n<b>Your beard's growth has reached a new threshold, giving you " + beardDescript() + ".\n</b>");
 				return true;
 			}
-			else if (beardLength >= 3 && tempBeard < 3) {
+			else if (beard.length >= 3 && tempBeard < 3) {
 				game.outputText("\n<b>Your beard's growth has reached a new threshold, giving you " + beardDescript() + ".\n</b>");
 				return true;
 			}
-			else if (beardLength >= 6 && tempBeard < 6) {
+			else if (beard.length >= 6 && tempBeard < 6) {
 				game.outputText("\n<b>Your beard's growth has reached a new threshold, giving you " + beardDescript() + ".\n</b>");
 				return true;
 			}
@@ -874,7 +851,7 @@ import classes.GlobalFlags.kFLAGS;
 		
 		public function hornDescript():String
 		{
-			return Appearance.DEFAULT_HORNS_NAMES[hornType] + " horns";
+			return Appearance.DEFAULT_HORNS_NAMES[horns.type] + " horns";
 		}
 
 		public function tailDescript():String

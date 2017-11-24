@@ -165,7 +165,7 @@ package classes.Scenes.NPCs
 				outputText("'s attack.\n");
 				return;
 			}
-			outputText("Her leg lashes forwards, lightning-quick, and tears bloody gashes into your " + player.skinDesc + " with her razor-sharp talons! ");
+			outputText("Her leg lashes forwards, lightning-quick, and tears bloody gashes into your " + player.skin.desc + " with her razor-sharp talons! ");
 			//Determine damage - str modified by enemy toughness!
 			damage = int((str + weaponAttack) - Math.random()*(player.tou) - player.armorDef);
 			if (damage < 0) damage = 0;
@@ -278,13 +278,13 @@ package classes.Scenes.NPCs
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,10,0,0,0);
 			this.tallness = 5*12+5;
-			this.hipRating = Hips.RATING_INHUMANLY_WIDE;
-			this.buttRating = Butt.RATING_EXPANSIVE;
-			this.skinTone = "pink";
-			this.skinType = Skin.PLAIN;
-			this.skinDesc = "feathers";
-			this.hairColor = "pink";
-			this.hairLength = 16;
+			this.hips.rating = Hips.RATING_INHUMANLY_WIDE;
+			this.butt.rating = Butt.RATING_EXPANSIVE;
+			this.skin.tone = "pink";
+			this.theSkinType = Skin.PLAIN;
+			this.skin.desc = "feathers";
+			this.hair.color = "pink";
+			this.hair.length = 16;
 			initStrTouSpeInte(55, 40, 110, 60);
 			initLibSensCor(60, 50, 60);
 			this.weaponName = "talons";
@@ -300,7 +300,7 @@ package classes.Scenes.NPCs
 			this.gems = 20 + rand(25);
 			this.drop = new ChainedDrop().add(armors.W_ROBES,1/10)
 					.elseDrop(consumables.GLDSEED);
-			this.wingType = Wings.HARPY;
+			this.theWingType = Wings.HARPY;
 			this.wingDesc = "large feathery";
 			this.special1 = harpyUberCharge;
 			this.special2 = harpyTease;

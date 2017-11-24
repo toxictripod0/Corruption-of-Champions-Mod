@@ -90,14 +90,14 @@ package classes.Scenes.Dungeons.HelDungeon
 			this.ass.analLooseness = AssClass.LOOSENESS_STRETCHED;
 			this.ass.analWetness = AssClass.WETNESS_SLIME_DROOLING;
 			this.tallness = rand(8) + 70;
-			this.hipRating = Hips.RATING_CURVY+2;
-			this.buttRating = Butt.RATING_LARGE;
-			this.lowerBody = LowerBody.HARPY;
-			this.skinTone = "red";
-			this.skinType = Skin.PLAIN;
-			this.skinDesc = "feathers";
-			this.hairColor = "black";
-			this.hairLength = 15;
+			this.hips.rating = Hips.RATING_CURVY+2;
+			this.butt.rating = Butt.RATING_LARGE;
+			this.lowerBody.type = LowerBody.HARPY;
+			this.skin.tone = "red";
+			this.theSkinType = Skin.PLAIN;
+			this.skin.desc = "feathers";
+			this.hair.color = "black";
+			this.hair.length = 15;
 			initStrTouSpeInte(50, 50, 120, 40);
 			initLibSensCor(60, 45, 50);
 			this.weaponName = "claw";
@@ -112,7 +112,7 @@ package classes.Scenes.Dungeons.HelDungeon
 			this.level = 18;
 			this.gems = rand(25) +140;
 			this.additionalXP = 50;
-			this.tailType = Tail.HARPY;
+			this.tail.type = Tail.HARPY;
 			this.drop = NO_DROP;
 			checkMonster();
 		}

@@ -213,13 +213,13 @@ public class CorruptedGlade extends BaseContent implements TimeAwareInterface,En
 				player.orgasm('Vaginal');
 				dynStats("sen", 5, "cor", 2);
 				//Xforms
-				if (rand(3) == 0 && player.hairColor != "green") { //Change hair to green sometimes
+				if (rand(3) == 0 && player.hair.color != "green") { //Change hair to green sometimes
 					outputText("You don't get far before you realize all the hair on your body has shifted to a verdant green color.  <b>You now have green hair.</b>  ");
-					player.hairColor = "green";
+					player.hair.color = "green";
 				}
-				if (rand(4) == 0 && player.hipRating <= 10) { //+hip up to 10
+				if (rand(4) == 0 && player.hips.rating <= 10) { //+hip up to 10
 					outputText("A strange shifting occurs below your waist, making your " + player.armorName + " feel tight.  <b>Your hips have grown larger</b>, becoming " + player.hipDescript() + ".  ");
-					player.hipRating += rand(3) + 1;
+					player.hips.rating += rand(3) + 1;
 					player.fertility++;
 				}
 			}
@@ -246,17 +246,17 @@ public class CorruptedGlade extends BaseContent implements TimeAwareInterface,En
 				//Simple stat changes - + lust.
 				dynStats("lus", 25 + player.lib / 10, "cor", 2);
 				//Change hair to green sometimes
-				if (rand(3) == 0 && player.hairColor != "green") {
+				if (rand(3) == 0 && player.hair.color != "green") {
 					outputText("You don't get far before you realize all the hair on your body has shifted to a verdant green color.  <b>You now have green hair.</b>  ");
-					player.hairColor = "green";
+					player.hair.color = "green";
 				}
 				//+butt up to 10
-				if (rand(4) == 0 && player.buttRating <= 10) {
+				if (rand(4) == 0 && player.butt.rating <= 10) {
 					outputText("A strange shifting occurs on your backside, making your " + player.armorName + " feel tight.  <b>Your butt has grown larger</b>, becoming a " + player.buttDescript() + ".  ");
-					player.buttRating += rand(3) + 1;
+					player.butt.rating += rand(3) + 1;
 				}
 				//Rarely change one prick to a vine-like tentacle cock. 
-				if (rand(3) == 0 && player.cocks.length > 0 && player.hairColor == "green") {
+				if (rand(3) == 0 && player.cocks.length > 0 && player.hair.color == "green") {
 					if (player.countCocksOfType(CockTypesEnum.TENTACLE) < player.cockTotal()) {
 						if (player.cocks.length == 1) { //Single cawks
 							outputText("Your feel your " + player.cockDescript(0) + " bending and flexing of its own volition... looking down, you see it morph into a green vine-like shape.  <b>You now have a tentacle cock!</b>  ");

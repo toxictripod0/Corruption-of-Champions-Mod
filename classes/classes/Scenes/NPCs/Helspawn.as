@@ -157,11 +157,11 @@ private function calledShot():void {
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,85,0,0,0);
 			this.tallness = 90;
-			this.hipRating = Hips.RATING_CURVY+2;
-			this.buttRating = Butt.RATING_LARGE+1;
-			this.skinTone = "dusky";
-			this.hairColor = "red";
-			this.hairLength = 13;
+			this.hips.rating = Hips.RATING_CURVY+2;
+			this.butt.rating = Butt.RATING_LARGE+1;
+			this.skin.tone = "dusky";
+			this.hair.color = "red";
+			this.hair.length = 13;
 			initStrTouSpeInte(50, 50, 65, 40);
 			initLibSensCor(35, 55, 20);
 			this.weaponName = weapon;
@@ -180,8 +180,8 @@ private function calledShot():void {
 			this.temperment = TEMPERMENT_RANDOM_GRAPPLES;
 			this.level = 12;
 			this.gems = 10 + rand(5);
-			this.tailType = Tail.SALAMANDER;
-			this.tailRecharge = 0;
+			this.tail.type = Tail.SALAMANDER;
+			this.tail.recharge = 0;
 			this.createStatusEffect(StatusEffects.Keen, 0, 0, 0, 0);
 			this.drop = NO_DROP;
 			checkMonster();

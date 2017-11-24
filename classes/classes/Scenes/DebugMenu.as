@@ -814,19 +814,19 @@ import classes.Items.*
 		}
 		*/
 		private function changeHairType(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.hairType = setIdx;
+			if (setIdx>=0) player.hair.type = setIdx;
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorSkin, page, HAIR_TYPE_CONSTANTS, changeHairType);
 		}
 		private function changeHairColor(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.hairColor = HAIR_COLOR_CONSTANTS[setIdx];
+			if (setIdx>=0) player.hair.color = HAIR_COLOR_CONSTANTS[setIdx];
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorSkin, page, HAIR_COLOR_CONSTANTS, changeHairColor);
 		}
 		private function changeHairLength(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.hairLength = HAIR_LENGTH_CONSTANTS[setIdx];
+			if (setIdx>=0) player.hair.length = HAIR_LENGTH_CONSTANTS[setIdx];
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorSkin, page, HAIR_LENGTH_CONSTANTS, changeHairLength);
@@ -1000,7 +1000,7 @@ import classes.Items.*
 			/* [INTERMOD: xianxia]
 			if (setIdx>=0) player.facePart.type = setIdx;
 			*/
-			if (setIdx>=0) player.faceType = setIdx;
+			if (setIdx>=0) player.face.type = setIdx;
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorHead, page, FACE_TYPE_CONSTANTS, changeFaceType);
@@ -1021,57 +1021,57 @@ import classes.Items.*
 		}
 		*/
 		private function changeTongueType(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.tongueType = setIdx;
+			if (setIdx>=0) player.tongue.type = setIdx;
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorHead, page, TONGUE_TYPE_CONSTANTS, changeTongueType);
 		}
 		private function changeEyeType(page:int=0,setIdx:int=-1):void {
-			if (setIdx >= 0) player.eyeType = setIdx;
-			if (player.eyeType == Eyes.SPIDER) player.eyeCount = 4;
+			if (setIdx >= 0) player.eyes.type = setIdx;
+			if (player.eyes.type == Eyes.SPIDER) player.eyes.count = 4;
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorHead, page, EYE_TYPE_CONSTANTS, changeEyeType);
 		}
 		private function changeEarType(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.earType = setIdx;
+			if (setIdx>=0) player.ears.type = setIdx;
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorHead, page, EAR_TYPE_CONSTANTS, changeEarType);
 		}
 		private function changeHornType(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.hornType = setIdx;
+			if (setIdx>=0) player.horns.type = setIdx;
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorHead, page, HORN_TYPE_CONSTANTS, changeHornType);
 		}
 		private function changeHornCount(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.horns = HORN_COUNT_CONSTANTS[setIdx];
+			if (setIdx>=0) player.horns.value = HORN_COUNT_CONSTANTS[setIdx];
 			menu();
 			dumpPlayerData();
 			tagDemosSkin();
 			showChangeOptions(bodyPartEditorHead, page, HORN_COUNT_CONSTANTS, changeHornCount);
 		}
 		private function changeAntennaeType(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.antennae = setIdx;
+			if (setIdx>=0) player.antennae.type = setIdx;
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorHead, page, ANTENNA_TYPE_CONSTANTS, changeAntennaeType);
 		}
 		private function changeGillType(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.gillType = setIdx;
+			if (setIdx>=0) player.gills.type = setIdx;
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorHead, page, GILLS_TYPE_CONSTANTS, changeGillType);
 		}
 		private function changeBeardStyle(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.beardStyle = setIdx;
+			if (setIdx>=0) player.beard.style = setIdx;
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorHead, page, BEARD_STYLE_CONSTANTS, changeBeardStyle);
 		}
 		private function changeBeardLength(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.beardLength = BEARD_LENGTH_CONSTANTS[setIdx];
+			if (setIdx>=0) player.beard.length = BEARD_LENGTH_CONSTANTS[setIdx];
 			menu();
 			dumpPlayerData();
 			tagDemosSkin();
@@ -1227,7 +1227,7 @@ import classes.Items.*
 			[LowerBody.HARPY, "(13) HARPY"],
 			[LowerBody.KANGAROO, "(14) KANGAROO"],
 			[LowerBody.CHITINOUS_SPIDER_LEGS, "(15) CHITINOUS_SPIDER_LEGS"],
-			[LowerBody.DRIDER_LOWER_BODY, "(16) DRIDER_LOWER_BODY"],
+			[LowerBody.DRIDER, "(16) DRIDER"],
 			[LowerBody.FOX, "(17) FOX"],
 			[LowerBody.DRAGON, "(18) DRAGON"],
 			[LowerBody.RACCOON, "(19) RACCOON"],
@@ -1268,25 +1268,25 @@ import classes.Items.*
 		];
 		*/
 		private function changeArmType(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.armType = setIdx;
+			if (setIdx>=0) player.arms.type = setIdx;
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorTorso, page, ARM_TYPE_CONSTANTS, changeArmType);
 		}
 		private function changeClawType(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.clawType = setIdx;
+			if (setIdx>=0) player.claws.type = setIdx;
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorTorso, page, CLAW_TYPE_CONSTANTS, changeClawType);
 		}
 		private function changeClawTone(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.clawTone = SKIN_TONE_CONSTANTS[setIdx];
+			if (setIdx>=0) player.claws.tone = SKIN_TONE_CONSTANTS[setIdx];
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorTorso, page, SKIN_TONE_CONSTANTS, changeClawTone);
 		}
 		private function changeTailType(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.tailType = setIdx;
+			if (setIdx>=0) player.tail.type = setIdx;
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorTorso, page, TAIL_TYPE_CONSTANTS, changeTailType);
@@ -1295,13 +1295,13 @@ import classes.Items.*
 			/* [INTERMOD: xianxia]
 			if (setIdx>=0) player.tailCount = TAIL_COUNT_CONSTANTS[setIdx];
 			*/
-			if (setIdx>=0) player.tailVenom = TAIL_COUNT_CONSTANTS[setIdx];
+			if (setIdx>=0) player.tail.venom = TAIL_COUNT_CONSTANTS[setIdx];
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorTorso, page, TAIL_COUNT_CONSTANTS, changeTailCount);
 		}
 		private function changeWingType(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.wingType = setIdx;
+			if (setIdx>=0) player.wings.type = setIdx;
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorTorso, page, WING_TYPE_CONSTANTS, changeWingType);
@@ -1315,15 +1315,15 @@ import classes.Items.*
 		}
 		private function changeLowerBodyType(page:int=0,setIdx:int=-1):void {
 			/* [INTERMOD: xianxia]
-			if (setIdx>=0) player.lowerBodyPart.type = setIdx;
+			if (setIdx>=0) player.lowerBodyPart.typePart.type = setIdx;
 			*/
-			if (setIdx>=0) player.lowerBody = setIdx;
+			if (setIdx>=0) player.lowerBody.type = setIdx;
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorTorso, page, LOWER_TYPE_CONSTANTS, changeLowerBodyType);
 		}
 		private function changeLegCount(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.legCount = LEG_COUNT_CONSTANTS[setIdx];
+			if (setIdx>=0) player.lowerBody.legCount = LEG_COUNT_CONSTANTS[setIdx];
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorTorso, page, LEG_COUNT_CONSTANTS, changeLegCount);
@@ -1339,9 +1339,9 @@ import classes.Items.*
 		private function changeScorpionTail():void {
 			clearOutput();
 			outputText("<b>Your tail is now that of a scorpion's. Currently, scorpion tail has no use but it will eventually be useful for stinging.</b>");
-			player.tailType = Tail.SCORPION;
-			player.tailVenom = 100;
-			player.tailRecharge = 5;
+			player.tail.type = Tail.SCORPION;
+			player.tail.venom = 100;
+			player.tail.recharge = 5;
 			doNext(styleHackMenu);
 		}
 		
@@ -1349,21 +1349,21 @@ import classes.Items.*
 			clearOutput();
 			outputText("<b>You are now a Manticore!</b>");
 			//Cat TF
-			player.faceType = Face.CAT;
-			player.earType = Ears.CAT;
-			player.lowerBody = LowerBody.CAT;
-			player.legCount = 2;
-			player.skinType = Skin.FUR;
-			player.skinDesc = "fur";
+			player.face.type = Face.CAT;
+			player.ears.type = Ears.CAT;
+			player.lowerBody.type = LowerBody.CAT;
+			player.lowerBody.legCount = 2;
+			player.skin.type = Skin.FUR;
+			player.skin.desc = "fur";
 			player.underBody.restore(); // Restore the underbody for now
 			//Draconic TF
-			player.hornType = Horns.DRACONIC_X2;
-			player.horns = 4;
-			player.wingType = Wings.BAT_LIKE_LARGE;
+			player.horns.type = Horns.DRACONIC_X2;
+			player.horns.value = 4;
+			player.wings.type = Wings.BAT_LIKE_LARGE;
 			//Scorpion TF
-			player.tailType = Tail.SCORPION;
-			player.tailVenom = 100;
-			player.tailRecharge = 5;
+			player.tail.type = Tail.SCORPION;
+			player.tail.venom = 100;
+			player.tail.recharge = 5;
 			doNext(styleHackMenu);
 		}
 		
@@ -1371,24 +1371,24 @@ import classes.Items.*
 			clearOutput();
 			outputText("<b>You are now a Dragonne!</b>");
 			//Cat TF
-			player.faceType = Face.CAT;
-			player.earType = Ears.CAT;
-			player.tailType = Tail.CAT;
-			player.lowerBody = LowerBody.CAT;
-			player.legCount = 2;
+			player.face.type = Face.CAT;
+			player.ears.type = Ears.CAT;
+			player.tail.type = Tail.CAT;
+			player.lowerBody.type = LowerBody.CAT;
+			player.lowerBody.legCount = 2;
 			//Draconic TF
-			player.skinType = Skin.DRAGON_SCALES;
-			player.skinAdj = "tough";
-			player.skinDesc = "shield-shaped dragon scales";
-			player.furColor = player.hairColor;
+			player.skin.type = Skin.DRAGON_SCALES;
+			player.skin.adj = "tough";
+			player.skin.desc = "shield-shaped dragon scales";
+			player.skin.furColor = player.hair.color;
 			player.underBody.type = UnderBody.REPTILE;
 			player.copySkinToUnderBody({       // copy the main skin props to the underBody skin ...
 				desc: "ventral dragon scales"  // ... and only override the desc
 			});
-			player.tongueType = Tongue.DRACONIC;
-			player.hornType = Horns.DRACONIC_X2;
-			player.horns = 4;
-			player.wingType = Wings.DRACONIC_LARGE;
+			player.tongue.type = Tongue.DRACONIC;
+			player.horns.type = Horns.DRACONIC_X2;
+			player.horns.value = 4;
+			player.wings.type = Wings.DRACONIC_LARGE;
 			doNext(styleHackMenu);
 		}
 		

@@ -594,7 +594,7 @@ package classes.Scenes.Seasonal {
 			outputText("\n\n\"<i>Oink...</i>\" she moans, lustily as you manhandle her backside. The dirty little slut! She likes it! Well, you're not one to deprive a sexy strumpet of her pleasure.");
 			
 			outputText("\n\nYou begin to rapid-fire spank her ass, alternating your strikes between her two cheeks. ");
-			if (player.tailType > Tail.NONE) outputText("You even bring your tail from behind your back to join in, the unfamiliar texture causing the sausage slut to let out surprised, high-pitched squeaks. ");
+			if (player.tail.type > Tail.NONE) outputText("You even bring your tail from behind your back to join in, the unfamiliar texture causing the sausage slut to let out surprised, high-pitched squeaks. ");
 			outputText("You notice the pigslut moving backwards, her ass being pushed into the air as she attempts to feel the full power of your spanking, her pussy spraying juices onto the soaked sheets.");
 			
 			outputText("\n\nYour hands are a blur as they play some unknown rhythm on her bouncing booty, as if they were acting on their own. The piggy slut has her hands clenching down on a nearby pillow, teeth gritted as you have your way with her colossal ass. Tears streak down onto the pillow, staining the fabric wet. The sight of her weeping sex is all you need to know to continue; the desperately oinking whore turns out to be a bit of a masochist...");
@@ -721,22 +721,22 @@ package classes.Scenes.Seasonal {
 				if (player.thickness < 50) player.thickness += 5;
 				changed = true;
 			}
-			if (player.buttRating < 35) {
+			if (player.butt.rating < 35) {
 				outputText("  You notice your ass filling out, gaining more mass as it visibly grows before your eyes."); 
-				if (player.buttRating < 4) player.buttRating += 3;
-				if (player.buttRating <= 10) player.buttRating += 2;
-				if (player.buttRating <= 15) player.buttRating += 1;
-				if (player.buttRating <= 20) player.buttRating += 1;
-				if (player.buttRating <= 35) player.buttRating += 1;
+				if (player.butt.rating < 4) player.butt.rating += 3;
+				if (player.butt.rating <= 10) player.butt.rating += 2;
+				if (player.butt.rating <= 15) player.butt.rating += 1;
+				if (player.butt.rating <= 20) player.butt.rating += 1;
+				if (player.butt.rating <= 35) player.butt.rating += 1;
 				changed = true;
 			}
-			if (player.hipRating < 35) {
+			if (player.hips.rating < 35) {
 				outputText(" Your hips grow too, widening and giving you more sexy curves.");
-				if (player.hipRating < 4) player.hipRating += 3;
-				if (player.hipRating < 10) player.hipRating += 2;
-				if (player.hipRating < 15) player.hipRating += 1;
-				if (player.hipRating < 20) player.hipRating += 1;
-				if (player.hipRating < 35) player.hipRating += 1;
+				if (player.hips.rating < 4) player.hips.rating += 3;
+				if (player.hips.rating < 10) player.hips.rating += 2;
+				if (player.hips.rating < 15) player.hips.rating += 1;
+				if (player.hips.rating < 20) player.hips.rating += 1;
+				if (player.hips.rating < 35) player.hips.rating += 1;
 				changed = true;
 			}
 			if (player.biggestTitSize() < 20) {

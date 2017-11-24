@@ -173,12 +173,12 @@ package classes.Scenes.Dungeons.Factory
 			this.ass.analLooseness = AssClass.LOOSENESS_STRETCHED;
 			this.ass.analWetness = AssClass.WETNESS_SLIME_DROOLING;
 			this.tallness = rand(9) + 70;
-			this.hipRating = Hips.RATING_AMPLE;
-			this.buttRating = Butt.RATING_TIGHT;
-			this.lowerBody = LowerBody.DEMONIC_CLAWS;
-			this.skinTone = "light purple";
-			this.hairColor = "black";
-			this.hairLength = 12;
+			this.hips.rating = Hips.RATING_AMPLE;
+			this.butt.rating = Butt.RATING_TIGHT;
+			this.lowerBody.type = LowerBody.DEMONIC_CLAWS;
+			this.skin.tone = "light purple";
+			this.hair.color = "black";
+			this.hair.length = 12;
 			initStrTouSpeInte(65, 40, 45, 85);
 			initLibSensCor(80, 70, 80);
 			this.weaponName = "claws";
@@ -210,8 +210,8 @@ package classes.Scenes.Dungeons.Factory
 			}
 			this.special1 = cockTripAttack;
 			this.special2 = spoogeAttack;
-			this.tailType = Tail.DEMONIC;
-			this.wingType = Wings.BAT_LIKE_TINY;
+			this.tail.type = Tail.DEMONIC;
+			this.theWingType = Wings.BAT_LIKE_TINY;
 			this.wingDesc = "tiny hidden";
 			checkMonster();
 		}

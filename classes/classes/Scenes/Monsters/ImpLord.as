@@ -96,10 +96,10 @@
 			this.ass.analLooseness = AssClass.LOOSENESS_STRETCHED;
 			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.tallness = rand(14) + 40;
-			this.hipRating = Hips.RATING_BOYISH;
-			this.buttRating = Butt.RATING_TIGHT;
-			this.lowerBody = LowerBody.HOOFED;
-			this.skinTone = "red";
+			this.hips.rating = Hips.RATING_BOYISH;
+			this.butt.rating = Butt.RATING_TIGHT;
+			this.lowerBody.type = LowerBody.HOOFED;
+			this.skin.tone = "red";
 			initStrTouSpeInte(55, 40, 75, 42);
 			initLibSensCor(55, 35, 100);
 			this.weaponName = "fist";
@@ -118,7 +118,7 @@
 					add(consumables.LABOVA_,1).
 					add(consumables.INCUBID,6).
 					add(consumables.SUCMILK,6);
-			this.wingType = Wings.IMP_LARGE;
+			this.theWingType = Wings.IMP_LARGE;
 			this.special1 = lustMagicAttack;
 			checkMonster();
 		}

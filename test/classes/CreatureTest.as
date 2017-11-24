@@ -1,21 +1,22 @@
 package classes{
+	import classes.BodyParts.LowerBody;
+	import classes.CoC;
+	import classes.Creature;
+	import classes.GlobalFlags.kGAMECLASS;
+	import classes.PerkLib;
+	import classes.helper.StageLocator;
 	import classes.internals.IRandomNumber;
 	import classes.internals.RandomNumber;
-    import org.flexunit.asserts.*;
+	import classes.lists.Gender;
+	import org.flexunit.asserts.*;
 	import org.hamcrest.assertThat;
+	import org.hamcrest.collection.*;
 	import org.hamcrest.core.*;
 	import org.hamcrest.number.*;
 	import org.hamcrest.object.*;
 	import org.hamcrest.text.*;
-	import org.hamcrest.collection.*;
 	
-	import classes.helper.StageLocator;
 	
-	import classes.GlobalFlags.kGAMECLASS;
-	import classes.BodyParts.LowerBody;
-	import classes.Creature;
-	import classes.CoC;
-	import classes.PerkLib;
      
     public class CreatureTest {
 		private const MAX_SUPPORTED_VAGINAS:Number = 2;
@@ -161,7 +162,7 @@ package classes{
 		
 		[Test]
 		public function testVaginalCapacityTaurBodyBonus():void {
-			oneVagina.legCount = 4;
+			oneVagina.lowerBody.legCount = 4;
 			assertThat(oneVagina.isTaur(), equalTo(true)); //guard assert
 			
 			assertThat(oneVagina.vaginalCapacity(), closeTo(55, 0.001));
@@ -169,7 +170,7 @@ package classes{
 		
 		[Test]
 		public function testVaginalCapacityNagaBodyBonus():void {
-			oneVagina.lowerBody = LowerBody.NAGA;
+			oneVagina.lowerBody.type = LowerBody.NAGA;
 			assertThat(oneVagina.isNaga(), equalTo(true)); //guard assert
 			
 			assertThat(oneVagina.vaginalCapacity(), equalTo(22));

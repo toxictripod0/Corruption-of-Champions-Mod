@@ -193,7 +193,7 @@ package classes.Scenes.Areas.HighMountains
 				else outputText(" trying to force");
 				outputText(" your way through little Izumi’s door uninvited.  I’d tell you off, but I’ve got to admit, I don’t get many visitors of your... </i>stature.<i>");
 				
-				if (player.hornType != Horns.COW_MINOTAUR)
+				if (player.horns.type != Horns.COW_MINOTAUR)
 				{
 					outputText("  Or at least, ones without a pair of bulls horns");
 					if (this.actsLikeACow() == true)

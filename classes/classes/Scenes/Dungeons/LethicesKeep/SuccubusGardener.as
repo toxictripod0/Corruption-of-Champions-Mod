@@ -31,8 +31,8 @@ package classes.Scenes.Dungeons.LethicesKeep
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			
 			this.tallness = 8 * 12;
-			this.hipRating = Hips.RATING_AVERAGE;
-			this.buttRating = Butt.RATING_TIGHT;
+			this.hips.rating = Hips.RATING_AVERAGE;
+			this.butt.rating = Butt.RATING_TIGHT;
 			
 			this.weaponName = "tentacles";
 			this.weaponVerb = "lash";
@@ -343,7 +343,7 @@ this.HP = this.maxHP();
 			}
 			else if (player.lust100 < 80)
 			{
-				outputText("You whimper as the insidious plant-sperm works on your vulnerable " + player.skinDesc + ", building pernicious desires in tiny, insistent increments. It's getting harder to focus... harder not to think about how good all those tentacles would feel in you and on you, caressing your most intimate places.\n\n");
+				outputText("You whimper as the insidious plant-sperm works on your vulnerable " + player.skin.desc + ", building pernicious desires in tiny, insistent increments. It's getting harder to focus... harder not to think about how good all those tentacles would feel in you and on you, caressing your most intimate places.\n\n");
 			}
 			else if (player.lust100 < 90)
 			{

@@ -135,11 +135,11 @@ package classes.Scenes.Monsters
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,30,0,0,0);
 			this.tallness = 44 + rand(7);
-			this.hipRating = Hips.RATING_AMPLE+2;
-			this.buttRating = Butt.RATING_LARGE;
-			this.skinTone = "dark green";
-			this.hairColor = "indigo";
-			this.hairLength = 4;
+			this.hips.rating = Hips.RATING_AMPLE+2;
+			this.butt.rating = Butt.RATING_LARGE;
+			this.skin.tone = "dark green";
+			this.hair.color = "indigo";
+			this.hair.length = 4;
 			initStrTouSpeInte(75, 50, 70, 87);
 			initLibSensCor(45, 45, 60);
 			this.weaponName = "wizard staff";

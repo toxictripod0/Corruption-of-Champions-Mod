@@ -61,18 +61,18 @@ package classes.Scenes.Areas.VolcanicCrag
 			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
 			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.tallness = 9*12;
-			this.hipRating = Hips.RATING_BOYISH;
-			this.buttRating = Butt.RATING_TIGHT;
-			this.skinTone = "purple";
-			this.skinType = Skin.FUR;
-			this.hairColor = "black";
-			this.hairLength = 8;
-			this.earType = Ears.ELFIN;
-			this.faceType = Face.CAT;
-			this.horns = 7;
-			this.hornType = Horns.DRACONIC_X2
-			this.lowerBody = LowerBody.CAT
-			this.tailType = Tail.BEHEMOTH
+			this.hips.rating = Hips.RATING_BOYISH;
+			this.butt.rating = Butt.RATING_TIGHT;
+			this.skin.tone = "purple";
+			this.theSkinType = Skin.FUR;
+			this.hair.color = "black";
+			this.hair.length = 8;
+			this.ears.type = Ears.ELFIN;
+			this.face.type = Face.CAT;
+			this.horns.value = 7;
+			this.horns.type = Horns.DRACONIC_X2
+			this.lowerBody.type = LowerBody.CAT
+			this.tail.type = Tail.BEHEMOTH
 			initStrTouSpeInte(125, 100, 80, 105);
 			initLibSensCor(35, 15, 15);
 			this.weaponName = "claws";

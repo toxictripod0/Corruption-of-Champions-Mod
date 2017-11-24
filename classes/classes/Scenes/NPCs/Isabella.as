@@ -189,11 +189,11 @@ package classes.Scenes.NPCs
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,38,0,0,0);
 			this.tallness = 7*12+6;
-			this.hipRating = Hips.RATING_CURVY+2;
-			this.buttRating = Butt.RATING_LARGE+1;
-			this.skinTone = "dusky";
-			this.hairColor = "red";
-			this.hairLength = 13;
+			this.hips.rating = Hips.RATING_CURVY+2;
+			this.butt.rating = Butt.RATING_LARGE+1;
+			this.skin.tone = "dusky";
+			this.hair.color = "red";
+			this.hair.length = 13;
 			initStrTouSpeInte(70, 98, 75, 65);
 			initLibSensCor(65, 25, 40);
 			this.weaponName = "giant shield";
@@ -209,8 +209,8 @@ package classes.Scenes.NPCs
 			this.temperment = TEMPERMENT_RANDOM_GRAPPLES;
 			this.level = 15;
 			this.gems = rand(5) + 20;
-			this.tailType = Tail.COW;
-			this.tailRecharge = 0;
+			this.tail.type = Tail.COW;
+			this.tail.recharge = 0;
 			this.drop = NO_DROP;
 			checkMonster();
 		}

@@ -1,9 +1,10 @@
 ﻿package classes.Scenes.Places.TelAdre 
 {
 	import classes.*;
-	import classes.BodyParts.BreastCup;
 	import classes.GlobalFlags.*;
 	import classes.Scenes.NPCs.Urta;
+	import classes.lists.BreastCup;
+	import classes.lists.Gender;
 
 	public class KatherineThreesome extends TelAdreAbstractContent
 	{

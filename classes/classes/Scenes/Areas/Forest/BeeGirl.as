@@ -95,12 +95,12 @@ import classes.internals.ChainedDrop;
 			this.ass.analLooseness = AssClass.LOOSENESS_STRETCHED;
 			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.tallness = rand(14) + 59;
-			this.hipRating = Hips.RATING_CURVY+3;
-			this.buttRating = Butt.RATING_EXPANSIVE;
-			this.lowerBody = LowerBody.BEE;
-			this.skinTone = "yellow";
-			this.hairColor = randomChoice("black","black and yellow");
-			this.hairLength = 6;
+			this.hips.rating = Hips.RATING_CURVY+3;
+			this.butt.rating = Butt.RATING_EXPANSIVE;
+			this.lowerBody.type = LowerBody.BEE;
+			this.skin.tone = "yellow";
+			this.hair.color = randomChoice("black","black and yellow");
+			this.hair.length = 6;
 			initStrTouSpeInte(30, 30, 30, 20);
 			initLibSensCor(60, 55, 0);
 			this.weaponName = "chitin-plated fist";
@@ -116,10 +116,10 @@ import classes.internals.ChainedDrop;
 					.add(consumables.W__BOOK, 1 / 10)
 					.add(consumables.BEEHONY, 1 / 2)
 					.elseDrop(useables.B_CHITN);
-			this.antennae = Antennae.BEE;
-			this.wingType = Wings.BEE_LIKE_SMALL;
-			this.tailType = Tail.BEE_ABDOMEN;
-			this.tailVenom = 100;
+			this.antennae.type = Antennae.BEE;
+			this.theWingType = Wings.BEE_LIKE_SMALL;
+			this.tail.type = Tail.BEE_ABDOMEN;
+			this.tail.venom = 100;
 			this.special1 = beeStingAttack;
 			checkMonster();
 		}

@@ -3,15 +3,14 @@
  */
 package classes.Items.Armors
 {
-	import classes.BodyParts.BreastCup;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Items.Armor;
-	import classes.CoC;
 	import classes.Monster;
 	import classes.PerkLib;
 	import classes.Player;
 	import classes.Scenes.Areas.HighMountains.MinotaurMob;
 	import classes.Scenes.Areas.Mountain.Minotaur;
+	import classes.lists.BreastCup;
 
 	public final class LustyMaidensArmor extends Armor {
 		

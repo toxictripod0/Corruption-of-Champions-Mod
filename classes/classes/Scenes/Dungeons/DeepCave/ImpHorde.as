@@ -208,11 +208,11 @@ package classes.Scenes.Dungeons.DeepCave
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,10,0,0,0);
 			this.tallness = 36;
-			this.hipRating = Hips.RATING_SLENDER;
-			this.buttRating = Butt.RATING_TIGHT;
-			this.skinTone = "red";
-			this.hairColor = "black";
-			this.hairLength = 1;
+			this.hips.rating = Hips.RATING_SLENDER;
+			this.butt.rating = Butt.RATING_TIGHT;
+			this.skin.tone = "red";
+			this.hair.color = "black";
+			this.hair.length = 1;
 			initStrTouSpeInte(20, 10, 25, 12);
 			initLibSensCor(45, 45, 100);
 			this.weaponName = "fists";
@@ -226,7 +226,7 @@ package classes.Scenes.Dungeons.DeepCave
 			this.gems = 20 + rand(25);
 			this.additionalXP = 50;
 			this.drop = new WeightedDrop(armors.NURSECL, 1);
-			this.wingType = Wings.IMP;
+			this.theWingType = Wings.IMP;
 			this.wingDesc = "imp wings";
 			checkMonster();
 		}

@@ -217,7 +217,7 @@ public function birthFrogEggsAnal():void {
 	outputText("\n\nThe tadgirls splash each other, playing in the water, but take notice as you wake up.  It seems that they were waiting for you - displaying a level of concern that their original mother lacked.  Maybe they got that from you?  They wave and swim away downstream, and you notice that a few of them have a few unusual splashes of color in their hair and skin, looking a bit more like you than their mother.");
 	outputText("\n\nYou nod to yourself, happy to be finished with that ordeal.  As you stand, you notice a bit of heaviness to your hips, and some added slickness to your asshole.\n");
 	//[Anal moistness +2, Hips +1]
-	player.hipRating++;
+	player.hips.rating++;
 	player.ass.analWetness += 1;
 	if (player.ass.analWetness > 5) player.ass.analWetness = 5;
 	player.orgasm('Anal');
@@ -236,7 +236,7 @@ private function superBonusFrogEggsInYerCooch():void {
 	outputText("\n\nYou hear the frog girl coo as she touches her pussy against yours, smearing her slickness against your mound.  Her touch sends shivery, silvery sensations up your spine, and you feel your own wetness oozing out against her.");
 	outputText("\n\nThicker slime adheres her pussy to yours, making every grind and shove a shared sensation. As she squeezes down on her belly, pressure builds against your opening, and her pussy lips spread against yours, parting you open to take the first of her eggs.  As the jelly-like mass over her egg begins to squeeze into you, the world goes purple, then blue, then the water around you seems to rise slowly up into the air.");
 	outputText("\n\nIf you could think clearly at this point, you would attribute this to the mind-bending frog slime, but all you can think about is the sensation of your pussy spreading wider and wider, taking in another goo-covered egg.  The frog girl’s thighs clamp around you, one against your belly, the other");
-	if (player.tailType > Tail.NONE) outputText(" hooked over your tail,");
+	if (player.tail.type > Tail.NONE) outputText(" hooked over your tail,");
 	else outputText(" clasped against your [ass],");
 	outputText(" smearing more and more of her slime against your body.");
 	player.cuntChange(25,true,true,false);
@@ -291,8 +291,8 @@ public function layFrogEggs():void {
 		player.vaginas[0].vaginalWetness++;
 		outputText("  It rapidly becomes clear that it has.  <b>Your pussy is wetter than ever.</b>");
 	}
-	if (player.hipRating < 25) {
-		player.hipRating++;
+	if (player.hips.rating < 25) {
+		player.hips.rating++;
 		outputText("  There's an extra thickness to your [hips] as well.");
 	}
 	player.orgasm('Vaginal');

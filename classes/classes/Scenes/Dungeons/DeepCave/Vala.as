@@ -35,7 +35,7 @@ package classes.Scenes.Dungeons.DeepCave
 
 			if (hasStatusEffect(StatusEffects.Milk)) {
 				addStatusValue(StatusEffects.Milk,1,5);
-				outputText("Your " + player.skinDesc + " tingles pleasantly, making you feel sexy and exposed.  Oh no!  It seems each coating of milk and glitter is stronger than the last!");
+				outputText("Your " + player.skin.desc + " tingles pleasantly, making you feel sexy and exposed.  Oh no!  It seems each coating of milk and glitter is stronger than the last!");
 			}
 			else {
 				createStatusEffect(StatusEffects.Milk,5,0,0,0);
@@ -112,11 +112,11 @@ package classes.Scenes.Dungeons.DeepCave
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,10,0,0,0);
 			this.tallness = 4*12;
-			this.hipRating = Hips.RATING_CURVY;
-			this.buttRating = Butt.RATING_LARGE;
-			this.skinTone = "fair";
-			this.hairColor = "purple";
-			this.hairLength = 22;
+			this.hips.rating = Hips.RATING_CURVY;
+			this.butt.rating = Butt.RATING_LARGE;
+			this.skin.tone = "fair";
+			this.hair.color = "purple";
+			this.hair.length = 22;
 			initStrTouSpeInte(40, 50, 50, 60);
 			initLibSensCor(55, 35, 50);
 			this.weaponName = "fists";
@@ -142,7 +142,7 @@ package classes.Scenes.Dungeons.DeepCave
 			var wingDesc:String = "shimmering wings";
 			if (flags[kFLAGS.TIMES_PC_DEFEATED_VALA] == 0) this.drop = new WeightedDrop(consumables.NUMBROX);
 			else this.drop = NO_DROP;
-			this.wingType = Wings.BEE_LIKE_LARGE;
+			this.theWingType = Wings.BEE_LIKE_LARGE;
 			this.wingDesc = wingDesc;
 			checkMonster();
 		}

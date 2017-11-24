@@ -133,11 +133,11 @@ package classes.Scenes.Monsters
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,50,0,0,0);
 			this.tallness = 35 + rand(4);
-			this.hipRating = Hips.RATING_AMPLE+2;
-			this.buttRating = Butt.RATING_LARGE;
-			this.skinTone = "dark green";
-			this.hairColor = "blue";
-			this.hairLength = 7;
+			this.hips.rating = Hips.RATING_AMPLE+2;
+			this.butt.rating = Butt.RATING_LARGE;
+			this.skin.tone = "dark green";
+			this.hair.color = "blue";
+			this.hair.length = 7;
 			initStrTouSpeInte(45, 55, 110, 95);
 			initLibSensCor(65, 35, 60);
 			this.weaponName = "needles";

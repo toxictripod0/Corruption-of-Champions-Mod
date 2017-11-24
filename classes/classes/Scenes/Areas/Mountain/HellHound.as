@@ -123,14 +123,14 @@ package classes.Scenes.Areas.Mountain
 			this.ass.analLooseness = AssClass.LOOSENESS_NORMAL;
 			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.tallness = 47;
-			this.hipRating = Hips.RATING_AVERAGE;
-			this.buttRating = Butt.RATING_AVERAGE+1;
-			this.lowerBody = LowerBody.DOG;
-			this.skinTone = "black";
-			this.skinType = Skin.FUR;
-			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.FUR];
-			this.hairColor = "red";
-			this.hairLength = 3;
+			this.hips.rating = Hips.RATING_AVERAGE;
+			this.butt.rating = Butt.RATING_AVERAGE+1;
+			this.lowerBody.type = LowerBody.DOG;
+			this.skin.tone = "black";
+			this.theSkinType = Skin.FUR;
+			//this.skin.desc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.FUR];
+			this.hair.color = "red";
+			this.hair.length = 3;
 			initStrTouSpeInte(55, 60, 40, 1);
 			initLibSensCor(95, 20, 100);
 			this.weaponName = "claws";
@@ -150,7 +150,7 @@ package classes.Scenes.Areas.Mountain
 						consumables.BLACKPP,
 						consumables.DBLPEPP,
 						consumables.LARGEPP);
-			this.tailType = Tail.DOG;
+			this.tail.type = Tail.DOG;
 			this.special1 = hellhoundFire;
 			this.special2 = hellhoundScent;
 			checkMonster();

@@ -544,7 +544,7 @@ private function legTamanisDaughtersRAEPYou():void {
 			outputText(", massaging your ");
 			if (player.hasSheath()) outputText("sheath");
 			else outputText("crotch");
-			outputText(", and the sensitive " + player.skinDesc + " around your crotch.   The busty girl on your " + player.cockDescript(0) + " teases, \"<i>Go ahead and let it out " + player.mf("stud","sexy") + ".  I'm tired of getting your cream second-hand, so squirt it right into my hot little cunt.</i>\"\n\n");
+			outputText(", and the sensitive " + player.skin.desc + " around your crotch.   The busty girl on your " + player.cockDescript(0) + " teases, \"<i>Go ahead and let it out " + player.mf("stud","sexy") + ".  I'm tired of getting your cream second-hand, so squirt it right into my hot little cunt.</i>\"\n\n");
 			
 			if (cocks == 2) outputText("Her sister agrees, \"<i>Yeah, I want to feel the hot cum squirting into my cunt.  Fill me full of so many babies that you make Mom jealous!</i>\"\n\n");
 			else if (cocks > 2) outputText("Her sisters agree, \"<i>Yeah, we want to feel the hot cum squirting into our cunts!  Fill us up with so many babies that Mom gets jealous!</i>\"\n\n");
@@ -967,7 +967,7 @@ private function loseToDaughtersWithTamaniThere():void {
 	outputText("Of course she's right – you can feel her wetness on your chest and you want to bury your face in it while she strokes you.  Tamani watches your eyes and turns to give you a better view, presenting her snatch while she leans back to stroke you.  She titters, \"<i>Yes, get a good look at your wife's cunt.  It looks so delicious, so warm, so inviting.  You want nothing more than to bury your cock or face into it, don't you?  That's because it's your wife's cunt, and you're a good husband.</i>\"\n\n");
 	
 	outputText("Her hand starts stroking you faster and her juices start to drip down the sides of your torso");
-	if (player.hasFur()) outputText(", matting your " + player.furColor + " fur");
+	if (player.hasFur()) outputText(", matting your " + player.skin.furColor + " fur");
 	outputText(" as she continues ");
 	if (flags[kFLAGS.TAMANI_TIMES_HYPNOTISED] < 10) outputText("filling your mind with truths");
 	else outputText("reinforcing your image of yourself as an obedient husband");

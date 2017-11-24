@@ -187,14 +187,14 @@ package classes.Scenes.NPCs
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,40,0,0,0);
 			this.tallness = 6*12+1;
-			this.hipRating = Hips.RATING_AMPLE;
-			this.buttRating = Butt.RATING_AVERAGE+1;
-			this.lowerBody = LowerBody.HOOFED;
-			this.skinTone = "dark";
-			this.skinType = Skin.DRAGON_SCALES;
-			this.skinDesc = "skin and scales";
-			this.hairColor = "red";
-			this.hairLength = 3;
+			this.hips.rating = Hips.RATING_AMPLE;
+			this.butt.rating = Butt.RATING_AVERAGE+1;
+			this.lowerBody.type = LowerBody.HOOFED;
+			this.skin.tone = "dark";
+			this.theSkinType = Skin.DRAGON_SCALES;
+			this.skin.desc = "skin and scales";
+			this.hair.color = "red";
+			this.hair.length = 3;
 			initStrTouSpeInte(65, 60, 85, 60);
 			initLibSensCor(50, 45, 66);
 			this.weaponName = "double-bladed axe";
@@ -211,9 +211,9 @@ package classes.Scenes.NPCs
 			this.level = 16;
 			this.gems = rand(15) + 95;
 			this.drop = new ChainedDrop().add(useables.D_SCALE, 0.2);
-			this.wingType = Wings.DRACONIC_LARGE;
+			this.theWingType = Wings.DRACONIC_LARGE;
 			this.wingDesc = "huge";
-			this.tailType = Tail.LIZARD;
+			this.tail.type = Tail.LIZARD;
 			checkMonster();
 		}
 

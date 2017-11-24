@@ -37,8 +37,8 @@ package classes.Scenes.Dungeons.LethicesKeep
 			this.createBreastRow(8);
 			this.balls = 2;
 			this.ballSize = 4;
-			this.hipRating = Hips.RATING_SLENDER;
-			this.buttRating = Butt.RATING_TIGHT;
+			this.hips.rating = Hips.RATING_SLENDER;
+			this.butt.rating = Butt.RATING_TIGHT;
 			initStrTouSpeInte(110, 110, 110, 110);
 			initLibSensCor(100, 40, 100);
 			this.weaponName = "whip";
@@ -60,7 +60,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			this.createPerk(PerkLib.Tank, 0, 0, 0, 0);
 			this.createPerk(PerkLib.Tank2, 0, 0, 0, 0);
 			this.createPerk(PerkLib.ImprovedSelfControl, 0, 0, 0, 0);
-			this.wingType = Wings.DRACONIC_LARGE;
+			this.theWingType = Wings.DRACONIC_LARGE;
 			this.checkMonster();
 		}
 		

@@ -153,13 +153,13 @@ package classes.Scenes.Areas.GlacialRift
 			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
 			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.tallness = 7*12;
-			this.hipRating = Hips.RATING_SLENDER;
-			this.buttRating = Butt.RATING_TIGHT;
-			this.skinTone = "light";
-			this.skinType = Skin.PLAIN;
-			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.FUR];
-			this.hairColor = "white";
-			this.hairLength = 12;
+			this.hips.rating = Hips.RATING_SLENDER;
+			this.butt.rating = Butt.RATING_TIGHT;
+			this.skin.tone = "light";
+			this.theSkinType = Skin.PLAIN;
+			//this.skin.desc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.FUR];
+			this.hair.color = "white";
+			this.hair.length = 12;
 			initStrTouSpeInte(85, 70, 80, 60);
 			initLibSensCor(40, 50, 15);
 			this.weaponName = "spear and shield";
@@ -178,7 +178,7 @@ package classes.Scenes.Areas.GlacialRift
 					.add(shields.GREATSH, 2)
 					.add(consumables.W__BOOK, 4)					
 					.add(null, 18);
-			this.wingType = Wings.HARPY
+			this.theWingType = Wings.HARPY
 			this.wingDesc = "fluffy feathery"
 			this.special1 = spearAttack;
 			this.special2 = shieldBash;

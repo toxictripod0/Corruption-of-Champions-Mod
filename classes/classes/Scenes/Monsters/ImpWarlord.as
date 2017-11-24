@@ -81,10 +81,10 @@ package classes.Scenes.Monsters
 			this.ass.analLooseness = AssClass.LOOSENESS_STRETCHED;
 			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.tallness = rand(14) + 40;
-			this.hipRating = Hips.RATING_BOYISH;
-			this.buttRating = Butt.RATING_TIGHT;
-			this.lowerBody = LowerBody.HOOFED;
-			this.skinTone = "red";
+			this.hips.rating = Hips.RATING_BOYISH;
+			this.butt.rating = Butt.RATING_TIGHT;
+			this.lowerBody.type = LowerBody.HOOFED;
+			this.skin.tone = "red";
 			initStrTouSpeInte(80, 65, 85, 56);
 			initLibSensCor(55, 35, 100);
 			this.weaponName = "sword";
@@ -104,7 +104,7 @@ package classes.Scenes.Monsters
 					add(consumables.INCUBID,12).
 					add(consumables.SUCMILK,12).
 					add(jewelries.POWRRN1,1);
-			this.wingType = Wings.IMP_LARGE;
+			this.theWingType = Wings.IMP_LARGE;
 			this.special1 = lustMagicAttack;
 			this.special2 = clawAttack;
 			checkMonster();

@@ -21,6 +21,7 @@ package classes.BodyParts
 		public static const IMP:int                      =  11;
 
 		public var type:Number  = NONE;
+		/** horns length or number depending on the type */
 		public var value:Number = 0;
 
 		public function Horns() {}

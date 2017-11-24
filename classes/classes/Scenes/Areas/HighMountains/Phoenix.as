@@ -123,15 +123,15 @@ package classes.Scenes.Areas.HighMountains
 			this.ass.analWetness = AssClass.WETNESS_MOIST;
 			this.createStatusEffect(StatusEffects.BonusACapacity,20,0,0,0);
 			this.tallness = 6 * 12 + 6;
-			this.tailType = Tail.LIZARD;
-			this.hipRating = Hips.RATING_CURVY;
-			this.buttRating = Butt.RATING_JIGGLY;
-			this.lowerBody = LowerBody.HARPY;
-			this.skinTone = "light";
-			this.skinType = Skin.LIZARD_SCALES;
-			this.skinDesc = "crimson";
-			this.hairColor = "red";
-			this.hairLength = 16;
+			this.tail.type = Tail.LIZARD;
+			this.hips.rating = Hips.RATING_CURVY;
+			this.butt.rating = Butt.RATING_JIGGLY;
+			this.lowerBody.type = LowerBody.HARPY;
+			this.skin.tone = "light";
+			this.theSkinType = Skin.LIZARD_SCALES;
+			this.skin.desc = "crimson";
+			this.hair.color = "red";
+			this.hair.length = 16;
 			initStrTouSpeInte(100, 70, 100, 65);
 			initLibSensCor(50, 30, 45);
 			this.weaponName = "scimitar and shield";
@@ -148,7 +148,7 @@ package classes.Scenes.Areas.HighMountains
 			this.drop = new ChainedDrop().add(weapons.SCIMITR,1/20)
 					.add(useables.EBNFLWR, 1/10)
 					.elseDrop(NO_DROP);
-			this.wingType = Wings.HARPY;
+			this.theWingType = Wings.HARPY;
 			this.special1 = doubleSlash;
 			this.special2 = phoenixFireBreath;
 			this.special3 = lustBang;

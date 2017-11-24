@@ -109,11 +109,11 @@ package classes.Scenes.NPCs
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,40,0,0,0);
 			this.tallness = 65;
-			this.hipRating = Hips.RATING_AMPLE;
-			this.buttRating = Butt.RATING_AVERAGE+1;
-			this.skinTone = "white";
-			this.hairColor = "white";
-			this.hairLength = 3;
+			this.hips.rating = Hips.RATING_AMPLE;
+			this.butt.rating = Butt.RATING_AVERAGE+1;
+			this.skin.tone = "white";
+			this.hair.color = "white";
+			this.hair.length = 3;
 			initStrTouSpeInte(45, 30, 5, 110);
 			initLibSensCor(100, 0, 33);
 			this.weaponName = "fists";

@@ -19,7 +19,7 @@ package classes.Scenes.Areas.HighMountains
 
 		public function wingify():void
 		{
-			wingType = Wings.FEATHERED_LARGE;
+			theWingType = Wings.FEATHERED_LARGE;
 			wingDesc = "large, feathered";
 			spe += 10;
 			imageName += "withwings";
@@ -183,19 +183,19 @@ package classes.Scenes.Areas.HighMountains
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,30,0,0,0);
 			this.tallness = 6*12+2;
-			this.hipRating = Hips.RATING_AMPLE;
-			this.buttRating = Butt.RATING_TIGHT;
-			this.lowerBody = LowerBody.COCKATRICE;
-			this.faceType = Face.COCKATRICE;
-			this.tongueType = Tongue.LIZARD;
-			this.earType = Ears.COCKATRICE;
-			this.eyeType = Eyes.COCKATRICE;
-			this.hairType = Hair.FEATHER;
-			this.skinTone = "midnight blue";
-			this.skinType = Skin.LIZARD_SCALES;
-			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.LIZARD_SCALES];
-			this.hairColor = "blue";
-			this.hairLength = 2;
+			this.hips.rating = Hips.RATING_AMPLE;
+			this.butt.rating = Butt.RATING_TIGHT;
+			this.lowerBody.type = LowerBody.COCKATRICE;
+			this.face.type = Face.COCKATRICE;
+			this.tongue.type = Tongue.LIZARD;
+			this.ears.type = Ears.COCKATRICE;
+			this.eyes.type = Eyes.COCKATRICE;
+			this.hair.type = Hair.FEATHER;
+			this.skin.tone = "midnight blue";
+			this.theSkinType = Skin.LIZARD_SCALES;
+			//this.skin.desc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.LIZARD_SCALES];
+			this.hair.color = "blue";
+			this.hair.length = 2;
 			/*
 			// Bassy:
 			initStrTouSpeInte(85, 70, 35, 70);
@@ -224,8 +224,8 @@ package classes.Scenes.Areas.HighMountains
 				.add(consumables.GLDSEED, 35)
 				.add(consumables.TOTRICE, 20)
 				.add(null,                10);
-			this.tailType = Tail.COCKATRICE;
-			this.tailRecharge = 0;
+			this.tail.type = Tail.COCKATRICE;
+			this.tail.recharge = 0;
 			this.createPerk(PerkLib.BasiliskResistance, 0, 0, 0, 0);
 			checkMonster();
 		}

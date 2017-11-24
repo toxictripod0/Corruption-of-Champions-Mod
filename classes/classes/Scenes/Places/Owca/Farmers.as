@@ -44,11 +44,11 @@ package classes.Scenes.Places.Owca
 			this.ass.analLooseness = AssClass.LOOSENESS_STRETCHED;
 			this.ass.analWetness = AssClass.WETNESS_SLIME_DROOLING;
 			this.tallness = rand(8) + 70;
-			this.hipRating = Hips.RATING_AMPLE+2;
-			this.buttRating = Butt.RATING_LARGE;
-			this.skinTone = "red";
-			this.hairColor = "black";
-			this.hairLength = 15;
+			this.hips.rating = Hips.RATING_AMPLE+2;
+			this.butt.rating = Butt.RATING_LARGE;
+			this.skin.tone = "red";
+			this.hair.color = "black";
+			this.hair.length = 15;
 			initStrTouSpeInte(40, 50, 99, 99);
 			initLibSensCor(35, 35, 20);
 			this.weaponName = "pitchforks";
@@ -59,9 +59,9 @@ package classes.Scenes.Places.Owca
 			this.temperment = TEMPERMENT_LOVE_GRAPPLES;
 			this.level = 10;
 			this.gems = rand(25) +40;
-			this.hornType = Horns.DEMON;
-			this.horns = 2;
-			this.tailType = Tail.DEMONIC;
+			this.horns.type = Horns.DEMON;
+			this.horns.value = 2;
+			this.tail.type = Tail.DEMONIC;
 			this.drop = NO_DROP;
 			checkMonster();
 		}

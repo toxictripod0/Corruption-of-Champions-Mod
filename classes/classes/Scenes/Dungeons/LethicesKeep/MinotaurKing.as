@@ -34,8 +34,8 @@ package classes.Scenes.Dungeons.LethicesKeep
 			this.balls = 2;
 			this.ballSize = 4;
 			this.hoursSinceCum = 9999;
-			this.hipRating = Hips.RATING_SLENDER;
-			this.buttRating = Butt.RATING_TIGHT;
+			this.hips.rating = Hips.RATING_SLENDER;
+			this.butt.rating = Butt.RATING_TIGHT;
 			initStrTouSpeInte(100,100,50,60);
 			initLibSensCor(66,10,100);
 			this.weaponName = "axe";
