@@ -38,6 +38,7 @@
 
 		public function circlejerk():void { //Not available if Kath has no cock
 			clearOutput();
+			katherine.katherineSprite(true);
 			outputText("There’s no reason to not have some fun with the two of them... plus you don’t think you’d be able resist the allure of joining two of your favourite girls in their bonding.  Stripping off your " + player.armorName + " you step behind the two girls and embrace Urta into a hug, hands wandering her body to loosen the straps of her armor.\n\n");
 			outputText("Urta seems to jump at your touch.  “<i>" + player.short + "?  What are you doing, you naughty [boy]?</i>”  She giggles.  Kath looks at you and smirks, “<i>Couldn’t resist getting into this, huh, " + player.short + "?  Well, why not?  After all, we’re technically a </i>ménage à trois</i>, aren’t we?</i>”\n\n");
 			outputText("You give both girls a winning smile and tell them that you’ll be joining in on their fun shortly, but first you have to take care of a problem... Urta here is a bit overdressed... and come to think of it, so is Kath.\n\n");
@@ -128,6 +129,7 @@
 	
 		public function threeSixtyNine():void {
 			clearOutput();
+			katherine.katherineSprite(true);
 			if (katherine.isAt(Katherine.KLOC_BAR) || katherine.isAt(Katherine.KLOC_BAR_DRUNK))
 				outputText("You drag the " + (katherine.hasCock() ? "eager herms" : "lusty pair") + " to one of the backrooms.  Urta locks the door");
 			else outputText("Urta grabs Kath from behind");
@@ -192,6 +194,7 @@
 
 		public function roastYou():void { //Not available if Kath has no cock
 			clearOutput();
+			katherine.katherineSprite(true);
 			if (katherine.isAt(Katherine.KLOC_BAR) || katherine.isAt(Katherine.KLOC_BAR_DRUNK))
 				outputText("You lead the horny herms toward one of the bar’s backrooms.  You get inside and lock the door but as you turn around Urta jumps you from behind, twisting your arm and pulling you to the floor.  Kath laughs and starts helping Urta as she removes your clothes.\n\n“<i>You’re too slow today " + player.short + ".  I’m horny as anything and I can tell from her scent that Katherine is dying for a good fuck too.  Just relax and we’ll take really good care of you.</i>”");
 			else {
@@ -298,6 +301,7 @@
 
 		public function spitroastKath():void { //Works for all except genderless characters
 			clearOutput();
+			katherine.katherineSprite(true);
 			var atBar:Boolean = katherine.isAt(Katherine.KLOC_BAR) || katherine.isAt(Katherine.KLOC_BAR_DRUNK);
 			if (atBar)
 				outputText("You lead the " + (katherine.hasCock() ? "horny herms" : "lusty pair") + " toward one of the bar’s backrooms.  You get inside, lock the door and when you turn around you see that Urta has grabbed Kath from behind to make sure she couldn’t jump you.");
@@ -814,6 +818,7 @@
 
 		public function doubleStuffKath():void { //Both Kath and Urta are drunk
 			clearOutput();
+			katherine.katherineSprite(true);
 			outputText("You ask your two " + (katherine.hasCock() ? "herms" : "lovers") + " if they want to go somewhere more private.\n\n");
 			var urtaHasHouse:Boolean = player.hasKeyItem("Spare Key to Urta's House") >= 0;
 			outputText("Urta " + katherine.clothesLowerChoice("runs her hand up Kath’s thigh", "slides her hand under Kath’s skirt", "rubs the " + (katherine.hasCock() ? katherine.cockAdj() + "bulge in the " : "") + "crotch of Kath’s bodysuit", "slides her hand under Kath’s dress", "slides her hand between the folds of Kath’s robe") + " and says, “<i>That’s a good idea.  My " + (urtaHasHouse ? "old " : " ") + "apartment’s close enough.</i>”\n\n");
@@ -906,6 +911,7 @@
 		
 		public function doublePenetrateKath():void { //Both Kath and Urta are drunk
 			clearOutput();
+			katherine.katherineSprite(true);
 			outputText("You ask your two " + (katherine.hasCock() ? "herms" : "sluts") + " if it’s time to commandeer one of the back rooms.\n\n");
 			outputText("Urta " + katherine.clothesLowerChoice("runs her hand up Kath’s thigh", "slides her hand under Kath’s skirt", "rubs the " + (katherine.hasCock() ? katherine.cockAdj() + "bulge in the " : "") + "crotch of Kath’s bodysuit", "slides her hand under Kath’s dress", "slides her hand between the folds of Kath’s robe") + " and gives you a wolfish smile.\n\n");
 			outputText("You have to help them both to one of the backrooms and you can feel the eyes of many of the bar’s patrons on your back.  As soon as the door is closed and barred Urta presses Kath against the wall and starts giving her tongue.\n\n");

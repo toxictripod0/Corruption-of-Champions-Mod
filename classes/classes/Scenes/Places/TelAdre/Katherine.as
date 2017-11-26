@@ -802,6 +802,7 @@ private function urtaPlusKathCuddle():void {
 
 public function katherineOnDuty():void {
 	clearOutput();
+	katherineSprite();
 	outputText("As you walk through the streets of Tel’Adre you notice a small group of Watch officers out on patrol.  One of them looks your way and you see a familiar face.  Kath says something to one of the other officers.  Soon enough Kath is headed your way while the others walk to a nearby cafe.\n\n");
 	if (flags[kFLAGS.KATHERINE_UNLOCKED] == 4) { //First encounter since training
 		outputText("“<i>" + player.short + "!</i>” she calls out, running straight into your arms.  “<i>I’ve been hoping to run into you - here,</i>” she says, thrusting a key into your hand.  “<i>I was so excited when I saw you at the gate; I completely forgot to give you this.  It's a key to my new place.</i>”  She beams proudly as she speaks the words.\n\n“<i>Please come by any time, that way we can get up to anything we want,</i>” she adds before kissing you and wrapping her tail around your waist.  She whispers the directions to her new place in your ear, then releases you and steps back.\n\n“<i>Now, as for right now, y");
@@ -5325,6 +5326,7 @@ private function suckleTacularKats():void {
 public function ambushByVagrantKittyKats():void
 {
 	clearOutput();
+	spriteSelect(SpriteDb.s_vagrant_cats);
 	outputText("As you walk through Tel’Adre, taking in the sights, you catch a glimpse of some cat morphs part way down an alley.  It looks like three cat morph men have a younger cat morph woman backed into a corner.  None of the men look to be armed.  The girl is wearing a tattered dress that could once have been white and she looks worried.");
 	//[Get Help] [Intervene] [Leave]
 	//Can’t leave if below 25 corruption - you’re a champion after all.
@@ -5380,6 +5382,7 @@ private function interveneWithKittyKats2():void
 private function interveneWithKittyKats3():void
 {
 	clearOutput();
+	katherineSprite();
 	outputText("You ask her why she’s worried about the milk.  She looks down at you, seems to decide you aren’t much of a threat right now and sits down on the edge of a crate.");
 	outputText("\n\n“<i>I probably shouldn’t be talking to you, but what’s the harm in it?</i>” she says, almost to herself.  Her stomach contributes to the conversation with some long, painful sounding gurgling noises.  She rubs her belly and sighs before continuing.");
 	outputText("\n\n“<i>We need to eat, just like everyone else, and milk is the best kind of food.  All of us love milk.</i>”  Once again she stops to quiet a rumble from her stomach.  “<i>But milk goes off fast.  Last time they saved me some milk but it was almost cheese by the time it got to me.</i>”");
@@ -5474,6 +5477,7 @@ private function leaveKittyKatsLikeANeeeeeerrrrd():void
 public function repeatAmbushKatherineRecruitMent():void
 {
 	clearOutput();
+	spriteSelect(SpriteDb.s_vagrant_cats);
 	outputText("As you walk the streets of Tel’Adre, a familiar sight catches your eye.  In a nearby alley, a young looking cat-morph is being backed into a corner by three larger cat-morph men.  Though you still don’t know the girl’s name you remember the setup.");
 	outputText("\n\nYes, there are just enough dilapidated crates to conceal three or four more cats in ambush positions.  You can’t see Kath, but you");
 	if (player.cor < 75) outputText(" hope she’s here so you can get to know her better.");
@@ -5517,6 +5521,7 @@ private function bargainForKittahKatPussah():void
 private function bargainForKittahKataPussah2():void
 {
 	clearOutput();
+	katherineSprite();
 	outputText("Kath’s shoulders sag, and she sits down heavily on a crate.  She looks up at you and says, “<i>I joined the vagrant cats so I wouldn’t have to sell myself.  Not that most people want me.  And now my ‘friends’ just sold my ass for a drink of milk.</i>”  She sniffs a little and adds, “<i>I won’t fight, there’s no point.  Just do whatever you want.</i>”");
 	//(corruption <25)
 	if (player.cor < 25) outputText("\n\nIt really breaks your heart.  She’s so crushed right now that you have got to find some way to help her, some way to lift her spirits.");
@@ -5552,6 +5557,7 @@ private function donateToCatSlutsYouCatSlut():void
 private function donateToCatSlutsYouCatSlutPt2():void
 {
 	clearOutput();
+	katherineSprite();
 	outputText("Kath leans against the wall and tries to flick some grime off her shirt.  Once the other cat morphs are out of the alley she quietly asks where you’re going.  You say that on the way here you saw a restaurant just down the street.  Would she like to accompany you?");
 	outputText("\n\nHer head sinks a little and says, “<i>I don’t have any money.</i>”");
 	outputText("\n\nYou walk over to her and take her hand, telling her that you’re buying.");
@@ -5591,6 +5597,7 @@ private function threatenCatSluts():void
 private function secondTalkWithKatherine():void
 {
 	clearOutput();
+	katherineSprite();
 	outputText("A short walk takes you to the restaurant where you grab a table and ask Katherine what she’d like.  Without hesitation she says, “<i>A milkshake!  Oh, it’s been soooo long since I had one.</i>”");
 	//(remove 10 gems from inventory)
 	player.gems -= 10;

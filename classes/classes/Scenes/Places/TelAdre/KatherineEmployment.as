@@ -760,6 +760,7 @@ package classes.Scenes.Places.TelAdre{
 
 		public function katherineTrainingWithUrta():void {
 			clearOutput();
+			katherine.katherineSprite();
 			outputText("From Oswald's pawnshop you retrace your steps to the safehouse where Urta is getting Kath into shape and rap your knuckles against the door.\n\n");
 			if (flags[kFLAGS.KATHERINE_TRAINING] >= 100)
 				katherineTrainingWithUrtaComplete();
@@ -1203,6 +1204,7 @@ package classes.Scenes.Places.TelAdre{
 		public function postTrainingAlleyDescription():void
 		{
 			clearOutput();
+			spriteSelect(null);
 			outputText("You go into the alleyway behind Oswald's shop.  It seems empty without a happy cat-morph to greet you.\n\n");
 			outputText("Looking closely you notice a few of the secret hiding spots among the crates have been emptied.  Kath must have been here to collect some of her more sentimental possessions.\n\n");
 			if (!katherine.isAt(Katherine.KLOC_KATHS_APT)) { //Only possible if she's already been seen on guard duty at the gate and you've slept once since
