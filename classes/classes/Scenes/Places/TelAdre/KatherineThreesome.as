@@ -3,6 +3,7 @@
 	import classes.*;
 	import classes.GlobalFlags.*;
 	import classes.display.SpriteDb;
+	import classes.Scenes.Places.TelAdre.Katherine;
 	import classes.Scenes.NPCs.Urta;
 	import classes.lists.BreastCup;
 	import classes.lists.Gender;

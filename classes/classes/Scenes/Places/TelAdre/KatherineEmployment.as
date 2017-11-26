@@ -3,6 +3,7 @@ package classes.Scenes.Places.TelAdre{
 	import classes.BodyParts.*;
 	import classes.GlobalFlags.*;
 	import classes.display.SpriteDb;
+	import classes.Scenes.Places.TelAdre.Katherine;
 	import classes.Scenes.NPCs.Urta;
 
 	public class KatherineEmployment extends TelAdreAbstractContent {
