@@ -332,7 +332,10 @@ package classes.Scenes.NPCs {
 			//pure Jojo’s response to being asked to have tea
 			if (player.hasStatusEffect(StatusEffects.PureCampJojo))
 			{
-			 	outputText("\n\nWhen you get to Jojo’s meditation spot and ask him if he is interested in coming to the campfire for tea, the murine monk looks surprised, but nods his head. <i>\"Tea would be delightful, thank you. It’s been a long time since I was able to enjoy a civil activity such as that.\"</i>");
+				if (flags[kFLAGS.JOJO_BIMBO_STATE] >= 3)
+					outputText("\n\nWhen you get to Joy’s meditation spot and ask her if she is interested in coming to the campfire for tea, the bimbofied mouse agrees immediately. <i>\"Tea would be, like, great! I haven't had a cup in... uh.. lemme think... must have been years.\"</i>");
+				else
+					outputText("\n\nWhen you get to Jojo’s meditation spot and ask him if he is interested in coming to the campfire for tea, the murine monk looks surprised, but nods his head. <i>\"Tea would be delightful, thank you. It’s been a long time since I was able to enjoy a civil activity such as that.\"</i>");
 				//temp follower variable ++
 				teaDrinkers++;
 			}

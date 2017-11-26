@@ -1605,7 +1605,10 @@ public function shouldraWakesUpOrPokesPCsForShitsAndGigglesIdunnoHowLongCanIMake
 			break;
 		//(Pure Jojo is a follower)
 		case 15:
-			outputText("The silence bothers you a bit, so you decide to see if Shouldra is awake and ask her what she thinks about Jojo.  \"<i>You're talking about that holy mouse morph back at camp, right?  Not a fan,</i>\" she replies, shrugging your shoulders.  \"<i>Other than just not really being into people that remind me of rodents, I don't think he'd get along well with 'a spirit that has yet to abandon these mortal bonds.'</i>\"  she mocks.");
+			outputText("The silence bothers you a bit, so you decide to see if Shouldra is awake and ask her what she thinks about ");
+			if (flags[kFLAGS.JOJO_BIMBO_STATE] >= 3) outputText("Joy.  \"<i>You're talking about that bimbofied mouse morph back at camp, right?  Not a big fan,</i>\" she replies, shrugging your shoulders.  \"<i>Other than just not really being into people that remind me of rodents, she's still to much of a monk to");
+			else outputText("Jojo.  \"<i>You're talking about that holy mouse morph back at camp, right?  Not a fan,</i>\" she replies, shrugging your shoulders.  \"<i>Other than just not really being into people that remind me of rodents, I don't think he'd");
+			outputText(" get along well with 'a spirit that has yet to abandon these mortal bonds.'</i>\"  she mocks.");
 			break;
 		//(has any of Marae's gift perks)
 		case 16:
