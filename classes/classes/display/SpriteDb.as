@@ -402,9 +402,9 @@ public class SpriteDb {
 		return is8bit ? s_jojoTentacle_8bit : s_jojoTentacle_16bit;
 	}
 	[Embed(source="../../../res/sprites/joy.png")]
-	public static var s_joy_16bit:Class;
+	public static const s_joy_16bit:Class;
 //	[Embed(source="../../../res/sprites8bit/joy-old.png")]
-	public static var s_joy_8bit:Class;
+	public static const s_joy_8bit:Class;
 	public static function get s_joy(): Class {
 		return is8bit ? s_joy_8bit : s_joy_16bit;
 	}
