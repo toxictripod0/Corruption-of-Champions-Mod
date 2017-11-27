@@ -10,11 +10,11 @@ package classes.BodyParts
 		public static const HUMAN:int      =   0;
 		public static const HARPY:int      =   1;
 		public static const SPIDER:int     =   2;
+		public static const BEE:int        =   3;
 		public static const PREDATOR:int   =   4;
 		public static const SALAMANDER:int =   5;
 		public static const WOLF:int       =   6;
 		public static const COCKATRICE:int =   7;
-		public static const BEE:int        =   8;
 
 		public var type:Number = HUMAN;
 

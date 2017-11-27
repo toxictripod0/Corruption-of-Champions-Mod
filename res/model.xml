@@ -745,7 +745,7 @@
                 <show part="arms/chitin2_p"/>
                 <show part="arms_bg/chitin2_p"/>
             </case>
-            <case value="4"><!--BEE-->
+            <case value="3"><!--BEE-->
                 <hide part="arms/*"/>
                 <hide part="arms_bg/*"/>
                 <show part="arms/bee"/>
