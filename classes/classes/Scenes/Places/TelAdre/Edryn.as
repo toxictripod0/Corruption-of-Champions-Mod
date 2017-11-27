@@ -561,6 +561,7 @@ public function approachHelAtZeBitch():void {
 
 		outputText("Sitting with the salamander, you notice across the crowded bar that Edryn is sitting at her table, sipping a little glass of wine.  Catching your eye, the centauress gives you a sultry wink.  An idea forms in your mind: you could easily introduce the two girls.  Do you?");
 		flags[kFLAGS.HEL_EDRYN_OFFER] = 1;
+		addButton(0, "Edryn3Some", helEdrynThreeSomeStartYerEngines);
 	}
 	else {
 		outputText("\"<i>Hey there, lover mine,</i>\" Helia says with a coy grin as you take a seat across from her.  The two fox-girls giggle drunkenly, prompting Hel to give them each a playful slap on the ass and send them on their way before swinging over and taking her place on your lap.  \"<i>Well, fancy meeting you here, ");
@@ -569,13 +570,18 @@ public function approachHelAtZeBitch():void {
 		outputText(".  In town for business... or pleasure?</i>\" she purrs with a little wink.\n\n");
 
 		outputText("You spend a few minutes talking with the salamander, joking and laughing with your inebriated lover.  ");
-		//Eventually, though, Hel gives a nod toward Edryn, sitting a ways away from you, and asks if you'd be up for a little threesome time.  Are you?\n\n");
-		outputText("  Eventually, though, Hel gives you a sultry look and asks if you're up for a little group activity.  Are you?\n\n");
+		
+		if (edrynBar() && flags[kFLAGS.HEL_EDRYN_OFFER] == 1) {
+			outputText("Eventually, though, Hel gives a nod toward Edryn, sitting a ways away from you, and asks if you'd be up for a little threesome time.  Are you?\n\n");
+			addButton(0, "Edryn3Some", helEdrynThreeSomeStartYerEngines);
+		}
+		else {
+			outputText("Eventually, though, Hel gives you a sultry look and asks if you're up for a little group activity.  Are you?\n\n");
+			addDisabledButton(0, "Edryn3Some");
+		}
 	}
 	//(Display Options: [Threesome] [Leave]
 	
-	if (flags[kFLAGS.HEL_EDRYN_OFFER] == 0) addDisabledButton(0, "Edryn3Some");
-	else addButton(0, "Edryn3Some", helEdrynThreeSomeStartYerEngines);
 	addButton(1, "Fox Girls", kGAMECLASS.helScene.heliaPlusFoxyFluffs);
 	addButton(14, "Leave", leaveHelInZeBitch);
 }
