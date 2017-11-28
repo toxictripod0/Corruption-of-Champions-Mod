@@ -1098,9 +1098,9 @@ import classes.Items.*
 			[Arms.HUMAN, "(0) HUMAN"],
 			[Arms.HARPY, "(1) HARPY"],
 			[Arms.SPIDER, "(2) SPIDER"],
+			[Arms.BEE, "(3) BEE"],
 			/* [INTERMOD: xianxia]
 			[Arms.MANTIS, "(3) MANTIS"],
-			[Arms.BEE, "(4) BEE"],
 			*/
 			[Arms.SALAMANDER, "(5) SALAMANDER"],
 			/* [INTERMOD: xianxia]
