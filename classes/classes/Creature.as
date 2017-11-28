@@ -38,6 +38,7 @@ package classes
 	import classes.lists.BodyPartLists;
 	import classes.lists.BreastCup;
 	import classes.lists.Gender;
+	import classes.lists.PerkLists;
 	import flash.errors.IllegalOperationError;
 	import mx.logging.ILogger;
 
@@ -2276,10 +2277,8 @@ package classes
 
 		public function isBimbo():Boolean
 		{
-			if (hasPerk(PerkLib.BimboBody)) return true;
-			if (hasPerk(PerkLib.BimboBrains)) return true;
-			if (hasPerk(PerkLib.FutaForm)) return true;
-			if (hasPerk(PerkLib.FutaFaculties)) return true;
+			for each (var perk:PerkType in PerkLists.bimboPerks)
+				if (hasPerk(perk)) return true;
 
 			return false;
 		}
