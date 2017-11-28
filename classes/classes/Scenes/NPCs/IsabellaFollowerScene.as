@@ -395,7 +395,7 @@ private function isabellasAccentCoaching():void {
 	clearOutput();
 	//Cooldown rejection
 	if (flags[kFLAGS.ISABELLA_ACCENT_TRAINING_COOLDOWN] > 1) {
-		outputText("Isabella shakes her head and says, \"<i>Nein.  I do not vish to spend time on zis now.</b>\"");
+		outputText("Isabella shakes her head and says, \"<i>Nein.  I do not vish to spend time on zis now.</i>\"");
 		//Back to follower menu!
 		doNext(callForFollowerIsabella);
 		return;

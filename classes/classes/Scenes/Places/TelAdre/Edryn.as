@@ -546,7 +546,7 @@ public function approachHelAtZeBitch():void {
 	outputText(images.showImage("hel-chat-at-bar"));
 
 	menu();
-	addDisabledButton(0, "Edryn3Some");
+
 	if ((edrynBar() && player.cockThatFits(300) >= 0 && player.statusEffectv1(StatusEffects.Edryn) >= 4) && flags[kFLAGS.HEL_EDRYN_OFFER] == 0) {
 		outputText("\"<i>Hey there, lover mine,</i>\" Helia says with a coy grin as you take a seat across from her.  The two fox-girls giggle drunkenly, prompting Hel to give them each a playful slap on the ass and send them on their way.  \"<i>Well, fancy meeting you here, ");
 		if (player.femininity < 49) outputText("handsome");
@@ -560,7 +560,7 @@ public function approachHelAtZeBitch():void {
 		outputText("\"<i>Yeah!  That's the one!  Oh man, I'd pay a pretty gem to stick my tail up her flanks!</i>\" she laughs, snaking her tail under the table to tickle your thighs.  You give her prehensile extremity a little slap until it comes to rest in your lap, snuggling up around your " + player.hipDescript() + " as Hel nonchalantly chugs down the rest of her ale.\n\n");
 
 		outputText("Sitting with the salamander, you notice across the crowded bar that Edryn is sitting at her table, sipping a little glass of wine.  Catching your eye, the centauress gives you a sultry wink.  An idea forms in your mind: you could easily introduce the two girls.  Do you?");
-		flags[kFLAGS.HEL_EDRYN_OFFER]++;
+		flags[kFLAGS.HEL_EDRYN_OFFER] = 1;
 		addButton(0, "Edryn3Some", helEdrynThreeSomeStartYerEngines);
 	}
 	else {
@@ -570,8 +570,15 @@ public function approachHelAtZeBitch():void {
 		outputText(".  In town for business... or pleasure?</i>\" she purrs with a little wink.\n\n");
 
 		outputText("You spend a few minutes talking with the salamander, joking and laughing with your inebriated lover.  ");
-		//Eventually, though, Hel gives a nod toward Edryn, sitting a ways away from you, and asks if you'd be up for a little threesome time.  Are you?\n\n");
-		outputText("  Eventually, though, Hel gives you a sultry look and asks if you're up for a little group activity.  Are you?\n\n");
+		
+		if (edrynBar() && flags[kFLAGS.HEL_EDRYN_OFFER] == 1) {
+			outputText("Eventually, though, Hel gives a nod toward Edryn, sitting a ways away from you, and asks if you'd be up for a little threesome time.  Are you?\n\n");
+			addButton(0, "Edryn3Some", helEdrynThreeSomeStartYerEngines);
+		}
+		else {
+			outputText("Eventually, though, Hel gives you a sultry look and asks if you're up for a little group activity.  Are you?\n\n");
+			addDisabledButton(0, "Edryn3Some");
+		}
 	}
 	//(Display Options: [Threesome] [Leave]
 	
@@ -582,7 +589,7 @@ public function approachHelAtZeBitch():void {
 //First Time - Leave
 private function leaveHelInZeBitch():void {
 	clearOutput();
-	if (flags[kFLAGS.HEL_EDRYN_OFFER] == 1) {
+	if (edrynBar() && flags[kFLAGS.HEL_EDRYN_OFFER] == 1) {
 		outputText("You decide against trying to set something up between the girls -- you like your lovers separate for now.  You spend the rest of the hour quietly chatting with Helia before giving her a friendly kiss goodbye and stepping away.");
 	}
 	else {
