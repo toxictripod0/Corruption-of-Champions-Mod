@@ -107,7 +107,7 @@ private function doCamp():void { //Only called by playerMenu
 		getGame().prison.prisonRoom(true);
 		return;
 	} else if (prison.inPrison && flags[kFLAGS.PRISON_ENABLED] == false) {
-		flags[kFLAGS.IN_PRISON] == 0;
+		flags[kFLAGS.IN_PRISON] = 0;
 		getGame().camp.returnToCamp(0); //Just drop ya in camp I guess
 		return;
 	}
