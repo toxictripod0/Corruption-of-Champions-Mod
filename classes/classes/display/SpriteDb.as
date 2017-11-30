@@ -239,6 +239,13 @@ public class SpriteDb {
 	public static function get s_ghostGirl2(): Class {
 		return s_ghostGirl2_8bit;
 	}
+	[Embed(source="../../../res/sprites/gargoyle.png")]
+	public static const s_gargoyle_16bit:Class;
+//	[Embed(source="../../../res/sprites8bit/gargoyle-old.png")]
+//	public static const s_gargoyle_8bit:Class;
+	public static function get s_gargoyle(): Class {
+		return is8bit ? null : s_gargoyle_16bit;
+	}
 	[Embed(source="../../../res/sprites/giacomo.png")]
 	public static const s_giacomo_16bit:Class;
 	[Embed(source="../../../res/sprites8bit/giacomo-old.png")]
@@ -273,7 +280,6 @@ public class SpriteDb {
 	public static const s_goblinWarrior_8bit:Class;
 	public static function get s_goblinWarrior(): Class {
 		return is8bit ? s_goblinWarrior_8bit : s_goblinWarrior_16bit;
-
 	}
 	[Embed(source="../../../res/sprites/googirlsprite.png")]
 	public static const s_googirlsprite_16bit:Class;
@@ -588,10 +594,12 @@ public class SpriteDb {
 	public static function get s_poisontail(): Class {
 		return is8bit ? s_poisontail_8bit : s_poisontail_16bit;
 	}
+	[Embed(source="../../../res/sprites/raphael.png")]
+	public static const s_raphael_16bit:Class;
 	[Embed(source="../../../res/sprites8bit/raphael-old.png")]
 	public static const s_raphael_8bit:Class;
 	public static function get s_raphael(): Class {
-		return s_raphael_8bit;
+		return is8bit ? s_raphael_8bit : s_raphael_16bit;
 	}
 	[Embed(source="../../../res/sprites/rathazul.png")]
 	public static const s_rathazul_16bit:Class;
