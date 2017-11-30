@@ -543,6 +543,7 @@ public function helAppearance():void {
 //\"<i>Hel</i>\" in Wet Bitch Menu (First Time)
 public function approachHelAtZeBitch():void {
 	clearOutput();
+	kGAMECLASS.helScene.spriteChooser();
 	outputText(images.showImage("hel-chat-at-bar"));
 
 	menu();
