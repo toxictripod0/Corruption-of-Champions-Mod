@@ -266,6 +266,12 @@ package classes
 				else
 					outputText("  You have a cockatrice’s face, complete with [skinFurScales] and a muzzle like beak.");
 			}
+			if (player.face.type == Face.RED_PANDA)
+			{
+				outputText("  Your face has a distinctive animalistic muzzle, proper from a red-panda, complete with a cute pink nose."
+				          +" A coat of soft, [if (hasFur)[furColor]|russet-red] colored fur covers your head, with patches of white on your muzzle,"
+				          +" cheeks and eyebrows.");
+			}
 			//</mod>
 			//M/F stuff!
 			outputText("  It has " + player.faceDesc() + ".");
@@ -305,46 +311,30 @@ package classes
 				else if (player.hasWool()) 
 					outputText("  You have no hair, only a thin layer of wool atop of your head.  ");
 				else outputText("  You are totally bald, showing only shiny [skinTone] [skinDesc] where your hair should be.");
-				if (player.ears.type == Ears.HORSE) 
-					outputText("  A pair of horse-like ears rise up from the top of your head.");
-				else if (player.ears.type == Ears.SHEEP) 
-					outputText("  Two tear drop shaped ears peek out from the sides of your head, their fluffy texture and lazy positioning giving you a cute and sleepy air.");
-				else if (player.ears.type == Ears.FERRET) 
-					outputText("  A pair of small, rounded ferret ears sit on top of your head.");
-				else if (player.ears.type == Ears.DOG) 
-					outputText("  A pair of dog ears protrude from your skull, flopping down adorably.");
-				else if (player.ears.type == Ears.COW) 
-					outputText("  A pair of round, floppy cow ears protrude from the sides of your skull.");
-				else if (player.ears.type == Ears.ELFIN) 
-					outputText("  A pair of large pointy ears stick out from your skull.");
-				else if (player.ears.type == Ears.CAT) 
-					outputText("  A pair of cute, fuzzy cat ears have sprouted from the top of your head.");
-				else if (player.ears.type == Ears.PIG) 
-					outputText("  A pair of pointy, floppy pig ears have sprouted from the top of your head.");
-				else if (player.ears.type == Ears.LIZARD) 
-					outputText("  A pair of rounded protrusions with small holes on the sides of your head serve as your ears.");
-				else if (player.ears.type == Ears.BUNNY) 
-					outputText("  A pair of floppy rabbit ears stick up from the top of your head, flopping around as you walk.");
-				else if (player.ears.type == Ears.FOX) 
-					outputText("  A pair of large, adept fox ears sit high on your head, always listening.");
-				else if (player.ears.type == Ears.DRAGON) 
-					outputText("  A pair of rounded protrusions with small holes on the sides of your head serve as your ears.  Bony fins sprout behind them.");
-				else if (player.ears.type == Ears.RACCOON) 
-					outputText("  A pair of vaguely egg-shaped, furry raccoon ears adorns your head.");
-				else if (player.ears.type == Ears.MOUSE) 
-					outputText("  A pair of large, dish-shaped mouse ears tops your head.");
-				//<mod>
-				else if (player.ears.type == Ears.PIG) 
-					outputText("  A pair of pointy, floppy pig ears have sprouted from the top of your head.");
-				else if (player.ears.type == Ears.RHINO) 
-					outputText("  A pair of open tubular rhino ears protrude from your head.");
-				else if (player.ears.type == Ears.ECHIDNA)
-					outputText("  A pair of small rounded openings appear on your head that are your ears.");
-				else if (player.ears.type == Ears.DEER) 
-					outputText("  A pair of deer-like ears rise up from the top of your head.");
-				else if (player.ears.type == Ears.WOLF) 
-					outputText("  A pair of wolf ears stick out from your head, attuned to every sound around you.");
-				//</mod>
+				switch (player.ears.type) {
+					case Ears.HORSE:     outputText("  A pair of horse-like ears rise up from the top of your head."); break;
+					case Ears.SHEEP:     outputText("  Two tear drop shaped ears peek out from the sides of your head, their fluffy texture and lazy positioning giving you a cute and sleepy air."); break;
+					case Ears.FERRET:    outputText("  A pair of small, rounded ferret ears sit on top of your head."); break;
+					case Ears.DOG:       outputText("  A pair of dog ears protrude from your skull, flopping down adorably."); break;
+					case Ears.COW:       outputText("  A pair of round, floppy cow ears protrude from the sides of your skull."); break;
+					case Ears.ELFIN:     outputText("  A pair of large pointy ears stick out from your skull."); break;
+					case Ears.CAT:       outputText("  A pair of cute, fuzzy cat ears have sprouted from the top of your head."); break;
+					case Ears.PIG:       outputText("  A pair of pointy, floppy pig ears have sprouted from the top of your head."); break;
+					case Ears.LIZARD:    outputText("  A pair of rounded protrusions with small holes on the sides of your head serve as your ears."); break;
+					case Ears.BUNNY:     outputText("  A pair of floppy rabbit ears stick up from the top of your head, flopping around as you walk."); break;
+					case Ears.FOX:       outputText("  A pair of large, adept fox ears sit high on your head, always listening."); break;
+					case Ears.DRAGON:    outputText("  A pair of rounded protrusions with small holes on the sides of your head serve as your ears.  Bony fins sprout behind them."); break;
+					case Ears.RACCOON:   outputText("  A pair of vaguely egg-shaped, furry raccoon ears adorns your head."); break;
+					case Ears.MOUSE:     outputText("  A pair of large, dish-shaped mouse ears tops your head."); break;
+					//<mod>
+					case Ears.PIG:       outputText("  A pair of pointy, floppy pig ears have sprouted from the top of your head."); break;
+					case Ears.RHINO:     outputText("  A pair of open tubular rhino ears protrude from your head."); break;
+					case Ears.ECHIDNA:   outputText("  A pair of small rounded openings appear on your head that are your ears."); break;
+					case Ears.DEER:      outputText("  A pair of deer-like ears rise up from the top of your head."); break;
+					case Ears.WOLF:      outputText("  A pair of wolf ears stick out from your head, attuned to every sound around you."); break;
+					case Ears.RED_PANDA: outputText("  Big, white furred, red-panda ears lie atop your head, keeping you well aware to your surroundings."); break;
+					//</mod>
+				}
 				if (player.antennae.type == Antennae.BEE) 
 					outputText("  Floppy antennae also appear on your skull, bouncing and swaying in the breeze.");
 				else if (player.antennae.type == Antennae.COCKATRICE)
@@ -353,48 +343,31 @@ package classes
 			//not bald
 			else 
 			{
-				if (player.ears.type == Ears.HUMAN) 
-					outputText("  Your [hair] looks good on you, accentuating your features well.");
-				else if (player.ears.type == Ears.FERRET) 
-					outputText("  A pair of small, rounded ferret ears burst through the top of your [hair].");
-				else if (player.ears.type == Ears.SHEEP) 
-					outputText("  Two tear drop shaped ears part your [hair] and peek out from the sides of your head, their fluffy texture and lazy positioning giving you a cute and sleepy air.");
-				else if (player.ears.type == Ears.HORSE) 
-					outputText("  The [hair] on your head parts around a pair of very horse-like ears that grow up from your head.");
-				else if (player.ears.type == Ears.DOG) 
-					outputText("  The [hair] on your head is overlapped by a pair of pointed dog ears.");
-				else if (player.ears.type == Ears.COW) 
-					outputText("  The [hair] on your head is parted by a pair of rounded cow ears that stick out sideways.");
-				else if (player.ears.type == Ears.ELFIN) 
-					outputText("  The [hair] on your head is parted by a pair of cute pointed ears, bigger than your old human ones.");
-				else if (player.ears.type == Ears.CAT) 
-					outputText("  The [hair] on your head is parted by a pair of cute, fuzzy cat ears, sprouting from atop your head and pivoting towards any sudden noises.");
-				else if (player.ears.type == Ears.LIZARD) 
-					outputText("  The [hair] atop your head makes it nigh-impossible to notice the two small rounded openings that are your ears.");
-				else if (player.ears.type == Ears.BUNNY) 
-					outputText("  A pair of floppy rabbit ears stick up out of your [hair], bouncing around as you walk.");
-				else if (player.ears.type == Ears.KANGAROO) 
-					outputText("  The [hair] atop your head is parted by a pair of long, furred kangaroo ears that stick out at an angle.");
-				else if (player.ears.type == Ears.FOX) 
-					outputText("  The [hair] atop your head is parted by a pair of large, adept fox ears that always seem to be listening.");
-				else if (player.ears.type == Ears.DRAGON) 
-					outputText("  The [hair] atop your head is parted by a pair of rounded protrusions with small holes on the sides of your head serve as your ears.  Bony fins sprout behind them.");
-				else if (player.ears.type == Ears.RACCOON) 
-					outputText("  The [hair] on your head parts around a pair of egg-shaped, furry raccoon ears.");
-				else if (player.ears.type == Ears.MOUSE) 
-					outputText("  The [hair] atop your head is funneled between and around a pair of large, dish-shaped mouse ears that stick up prominently.");
-				//<mod> Mod-added ears
-				else if (player.ears.type == Ears.PIG) 
-					outputText("  The [hair] on your head is parted by a pair of pointy, floppy pig ears. They often flick about when you’re not thinking about it.");
-				else if (player.ears.type == Ears.RHINO) 
-					outputText("  The [hair] on your head is parted by a pair of tubular rhino ears.");
-				else if (player.ears.type == Ears.ECHIDNA) 
-					outputText("  Your [hair] makes it near-impossible to see the small, rounded openings that are your ears.");
-				else if (player.ears.type == Ears.DEER) 
-					outputText("  The [hair] on your head parts around a pair of deer-like ears that grow up from your head.");
-				else if (player.ears.type == Ears.WOLF) 
-					outputText("  A pair of wolf ears stick out from your head, parting your [hair] and remaining alert to your surroundings.");
-				//</mod>
+				switch (player.ears.type) {
+					case Ears.HUMAN:     outputText("  Your [hair] looks good on you, accentuating your features well."); break;
+					case Ears.FERRET:    outputText("  A pair of small, rounded ferret ears burst through the top of your [hair]."); break;
+					case Ears.SHEEP:     outputText("  Two tear drop shaped ears part your [hair] and peek out from the sides of your head, their fluffy texture and lazy positioning giving you a cute and sleepy air."); break;
+					case Ears.HORSE:     outputText("  The [hair] on your head parts around a pair of very horse-like ears that grow up from your head."); break;
+					case Ears.DOG:       outputText("  The [hair] on your head is overlapped by a pair of pointed dog ears."); break;
+					case Ears.COW:       outputText("  The [hair] on your head is parted by a pair of rounded cow ears that stick out sideways."); break;
+					case Ears.ELFIN:     outputText("  The [hair] on your head is parted by a pair of cute pointed ears, bigger than your old human ones."); break;
+					case Ears.CAT:       outputText("  The [hair] on your head is parted by a pair of cute, fuzzy cat ears, sprouting from atop your head and pivoting towards any sudden noises."); break;
+					case Ears.LIZARD:    outputText("  The [hair] atop your head makes it nigh-impossible to notice the two small rounded openings that are your ears."); break;
+					case Ears.BUNNY:     outputText("  A pair of floppy rabbit ears stick up out of your [hair], bouncing around as you walk."); break;
+					case Ears.KANGAROO:  outputText("  The [hair] atop your head is parted by a pair of long, furred kangaroo ears that stick out at an angle."); break;
+					case Ears.FOX:       outputText("  The [hair] atop your head is parted by a pair of large, adept fox ears that always seem to be listening."); break;
+					case Ears.DRAGON:    outputText("  The [hair] atop your head is parted by a pair of rounded protrusions with small holes on the sides of your head serve as your ears.  Bony fins sprout behind them."); break;
+					case Ears.RACCOON:   outputText("  The [hair] on your head parts around a pair of egg-shaped, furry raccoon ears."); break;
+					case Ears.MOUSE:     outputText("  The [hair] atop your head is funneled between and around a pair of large, dish-shaped mouse ears that stick up prominently."); break;
+					//<mod> Mod-added ears
+					case Ears.PIG:       outputText("  The [hair] on your head is parted by a pair of pointy, floppy pig ears. They often flick about when you’re not thinking about it."); break;
+					case Ears.RHINO:     outputText("  The [hair] on your head is parted by a pair of tubular rhino ears."); break;
+					case Ears.ECHIDNA:   outputText("  Your [hair] makes it near-impossible to see the small, rounded openings that are your ears."); break;
+					case Ears.DEER:      outputText("  The [hair] on your head parts around a pair of deer-like ears that grow up from your head."); break;
+					case Ears.WOLF:      outputText("  A pair of wolf ears stick out from your head, parting your [hair] and remaining alert to your surroundings."); break;
+					case Ears.RED_PANDA: outputText("  Big, white furred, red-panda ears lie atop your head, keeping you well aware to your surroundings."); break;
+					//</mod>
+				}
 				if (player.gills.type == Gills.FISH) 
 				{
 					output.text("  A set of fish like gills reside on your neck, several small slits that can close flat against your skin."
@@ -601,24 +574,44 @@ package classes
 			}
 			// </mod>
 
-			//Wing arms
-			if (player.arms.type == Arms.HARPY) 
-				outputText("  Feathers hang off your arms from shoulder to wrist, giving them a slightly wing-like look.");
-			else if (player.arms.type == Arms.WOLF) 
-				outputText("  Your arms are shaped like a wolf's, overly muscular at your shoulders and biceps before quickly slimming down. They're covered in [furColor] fur and end in paws with just enough flexibility to be used as hands. They're rather difficult to move in directions besides back and forth.");	
-			else if (player.arms.type == Arms.SPIDER) 
-				outputText("  Shining black exoskeleton covers your arms from the biceps down, resembling a pair of long black gloves from a distance.");	
-			else if (player.arms.type == Arms.BEE)
-				outputText("  Shining black exoskeleton covers your arms from the biceps down, resembling a pair of long black gloves ended with a yellow fuzz from a distance.");
-			else if (player.arms.type == Arms.SALAMANDER)
-				outputText("  Shining thick, leathery red scales cover your arms from the biceps down and your fingernails are now short, fiery-red curved claws.");
-			else if (player.arms.type == Arms.PREDATOR)
-				outputText("  Your arms are covered by [skinFurScales] and your fingernails are now [claws].");
-			else if (player.arms.type == Arms.COCKATRICE) {
-				outputText("  Your arms are covered in " + (player.hasCockatriceSkin() ? player.skin.furColor : player.hair.color) + " feathers from the"
-				          +" shoulder down to the elbow where they stop in a fluffy cuff. A handful of long feathers grow from your elbow in the form"
-				          +" of vestigial wings, and while they may not let you fly, they certainly help you jump. Your lower arm is coated in"
-				          +" leathery [skinTone] scales and your fingertips terminate in deadly looking avian talons.");
+			// arms
+			switch (player.arms.type) {
+				case Arms.HARPY:
+					outputText("  Feathers hang off your arms from shoulder to wrist, giving them a slightly wing-like look.");
+					break;
+
+				case Arms.WOLF:
+					outputText("  Your arms are shaped like a wolf's, overly muscular at your shoulders and biceps before quickly slimming down."
+					          +" They're covered in [furColor] fur and end in paws with just enough flexibility to be used as hands."
+					          +" They're rather difficult to move in directions besides back and forth.");	
+					break;
+
+				case Arms.SPIDER:
+					outputText("  Shining black exoskeleton covers your arms from the biceps down, resembling a pair of long black gloves from a distance.");
+					break;
+
+				case Arms.BEE:
+					outputText("  Shining black exoskeleton covers your arms from the biceps down, resembling a pair of long black gloves ended with a yellow fuzz from a distance.");
+					break;
+
+				case Arms.SALAMANDER:
+					outputText("  Shining thick, leathery red scales cover your arms from the biceps down and your fingernails are now short, fiery-red curved claws.");
+					break;
+
+				case Arms.PREDATOR:
+					outputText("  Your arms are covered by [skinFurScales] and your fingernails are now [claws].");
+					break;
+
+				case Arms.COCKATRICE:
+					outputText("  Your arms are covered in " + (player.hasCockatriceSkin() ? player.skin.furColor : player.hair.color) + " feathers"
+					          +" from the shoulder down to the elbow where they stop in a fluffy cuff. A handful of long feathers grow from your"
+					          +" elbow in the form of vestigial wings, and while they may not let you fly, they certainly help you jump. Your lower"
+					          +" arm is coated in leathery [skinTone] scales and your fingertips terminate in deadly looking avian talons.");
+					break;
+
+				case Arms.RED_PANDA:
+					outputText("  Soft, black-brown fluff cover your arms. Your paws have cute, pink paw pads and short claws.");
+					break;
 			}
 			//Done with head bits. Move on to body stuff
 			// <mod name="BodyParts.UnderBody" author="Stadler76">
@@ -935,67 +928,117 @@ package classes
 			}
 			//</mod>
 			//LOWERBODY SPECIAL
-			if (player.lowerBody.type == LowerBody.HUMAN) 
-				outputText("  [legCountTextUC] normal human legs grow down from your waist, ending in normal human feet.");
-			else if (player.lowerBody.type == LowerBody.FERRET) 
-				outputText("  [legCountTextUC] furry, digitigrade legs form below your [hips].  The fur is thinner on the feet, and your toes are tipped with claws.");
-			else if (player.lowerBody.type == LowerBody.HOOFED) 
-				outputText("  Your [legCountText] legs are muscled and jointed oddly, covered in fur, and end in a bestial hooves.");
-			else if (player.lowerBody.type == LowerBody.WOLF) 
-				outputText("  You have [legCountText] digitigrade legs that end in wolf paws.");
-			else if (player.lowerBody.type == LowerBody.DOG) 
-				outputText("  [legCountTextUC] digitigrade legs grow downwards from your waist, ending in dog-like hind-paws.");
-			else if (player.lowerBody.type == LowerBody.NAGA)
-				if (player.hasReptileUnderBody(true)) {
-					var nagaColors:Array = ["", ""];
-					if (player.underBody.type == UnderBody.NAGA)
-						nagaColors = [player.underBody.skin.tone, player.nagaLowerBodyColor2()];
-					else
-						nagaColors = [player.skin.tone, player.underBody.skin.tone];
+			switch (player.lowerBody.type) {
+				case LowerBody.HUMAN:
+					outputText("  [legCountTextUC] normal human legs grow down from your waist, ending in normal human feet.");
+					break;
 
-					outputText("  Below your waist, in place of where your legs would be, your body transitions into a long snake like tail."
-					          +" Your snake-like lower body is covered by " + nagaColors[0] + " color scales,"
-					          +" with " + nagaColors[1] + " color ventral scales along your underside.");
-				} else
-					outputText("  Below your waist your flesh is fused together into a very long snake-like tail.");
-			//Horse body is placed higher for readability purposes
-			else if (player.lowerBody.type == LowerBody.DEMONIC_HIGH_HEELS) 
-				outputText("  Your [legCountText] perfect lissome legs end in mostly human feet, apart from the horn protruding straight down from the heel that forces you to walk with a sexy, swaying gait.");
-			else if (player.lowerBody.type == LowerBody.DEMONIC_CLAWS) 
-				outputText("  Your [legCountText] lithe legs are capped with flexible clawed feet.  Sharp black nails grow where once you had toe-nails, giving you fantastic grip.");
-			else if (player.lowerBody.type == LowerBody.BEE) 
-				outputText("  Your [legCountText] legs are covered in a shimmering insectile carapace up to mid-thigh, looking more like a set of 'fuck-me-boots' than exoskeleton.  A bit of downy yellow and black fur fuzzes your upper thighs, just like a bee.");
-			else if (player.lowerBody.type == LowerBody.GOO) 
-				outputText("  In place of legs you have a shifting amorphous blob.  Thankfully it's quite easy to propel yourself around on.  The lowest portions of your " + player.armorName + " float around inside you, bringing you no discomfort.");
-			else if (player.lowerBody.type == LowerBody.CAT) 
-				outputText("  [legCountTextUC] digitigrade legs grow downwards from your waist, ending in soft, padded cat-paws.");
-			else if (player.lowerBody.type == LowerBody.LIZARD) 
-				outputText("  [legCountTextUC] digitigrade legs grow down from your [hips], ending in clawed feet.  There are three long toes on the front, and a small hind-claw on the back.");
-			else if(player.lowerBody.type == LowerBody.SALAMANDER) 
-				outputText("  [legCountTextUC] digitigrade legs covered in thick, leathery red scales up to the mid-thigh grow down from your [hips], ending in clawed feet.  There are three long toes on the front, and a small hind-claw on the back.");
-			else if (player.lowerBody.type == LowerBody.BUNNY) 
-				outputText("  Your [legCountText] legs thicken below the waist as they turn into soft-furred rabbit-like legs.  You even have large bunny feet that make hopping around a little easier than walking.");
-			else if (player.lowerBody.type == LowerBody.HARPY) 
-				outputText("  Your [legCountText] legs are covered with [furColor] plumage.  Thankfully the thick, powerful thighs are perfect for launching you into the air, and your feet remain mostly human, even if they are two-toed and tipped with talons.");
-			else if (player.lowerBody.type == LowerBody.KANGAROO) 
-				outputText("  Your [legCountText] furry legs have short thighs and long calves, with even longer feet ending in prominently-nailed toes.");
-			else if (player.lowerBody.type == LowerBody.CHITINOUS_SPIDER_LEGS) 
-				outputText("  Your [legCountText] legs are covered in a reflective black, insectile carapace up to your mid-thigh, looking more like a set of 'fuck-me-boots' than exoskeleton.");
-			else if (player.lowerBody.type == LowerBody.FOX) 
-				outputText("  Your [legCountText] legs are crooked into high knees with hocks and long feet, like those of a fox; cute bulbous toes decorate the ends.");
-			else if (player.lowerBody.type == LowerBody.DRAGON) 
-				outputText("  [legCountTextUC] human-like legs grow down from your [hips], sheathed in scales and ending in clawed feet.  There are three long toes on the front, and a small hind-claw on the back.");
-			else if (player.lowerBody.type == LowerBody.RACCOON) 
-				outputText("  Your [legCountText] legs, though covered in fur, are humanlike.  Long feet on the ends bear equally long toes, and the pads on the bottoms are quite sensitive to the touch.");
-			else if (player.lowerBody.type == LowerBody.CLOVEN_HOOFED) 
-				outputText("  [legCountTextUC] digitigrade legs form below your [hips], ending in cloven hooves.");
-			else if (player.lowerBody.type == LowerBody.IMP) 
-				outputText(" [legCountTextUC] digitigrade legs form below your [hips], ending in clawed feet. Three extend out the front, and one smaller one is in the back to keep your balance.");
-			else if (player.lowerBody.type == LowerBody.COCKATRICE) {
-				outputText(" [legCountTextUC] digitigrade legs grow down from your [hips], ending in clawed feet."
-				          +" There are three long toes on the front, and a small hind-claw on the back."
-				          +" A layer of " + (player.hasCockatriceSkin() ? player.skin.furColor : player.hair.color) + " feathers covers your legs from the"
-				          +" hip to the knee, ending in a puffy cuff.");
+				case LowerBody.FERRET:
+					outputText("  [legCountTextUC] furry, digitigrade legs form below your [hips].  The fur is thinner on the feet, and your toes are tipped with claws.");
+					break;
+
+				case LowerBody.HOOFED:
+					outputText("  Your [legCountText] legs are muscled and jointed oddly, covered in fur, and end in a bestial hooves.");
+					break;
+
+				case LowerBody.WOLF:
+					outputText("  You have [legCountText] digitigrade legs that end in wolf paws.");
+					break;
+
+				case LowerBody.DOG:
+					outputText("  [legCountTextUC] digitigrade legs grow downwards from your waist, ending in dog-like hind-paws.");
+					break;
+
+				case LowerBody.NAGA:
+					if (player.hasReptileUnderBody(true)) {
+						var nagaColors:Array = ["", ""];
+						if (player.underBody.type == UnderBody.NAGA)
+							nagaColors = [player.underBody.skin.tone, player.nagaLowerBodyColor2()];
+						else
+							nagaColors = [player.skin.tone, player.underBody.skin.tone];
+
+						outputText("  Below your waist, in place of where your legs would be, your body transitions into a long snake like tail."
+						          +" Your snake-like lower body is covered by " + nagaColors[0] + " color scales,"
+						          +" with " + nagaColors[1] + " color ventral scales along your underside.");
+					} else
+						outputText("  Below your waist your flesh is fused together into a very long snake-like tail.");
+					break;
+
+				case LowerBody.DEMONIC_HIGH_HEELS:
+					outputText("  Your [legCountText] perfect lissome legs end in mostly human feet, apart from the horn protruding straight down from the heel that forces you to walk with a sexy, swaying gait.");
+					break;
+
+				case LowerBody.DEMONIC_CLAWS:
+					outputText("  Your [legCountText] lithe legs are capped with flexible clawed feet.  Sharp black nails grow where once you had toe-nails, giving you fantastic grip.");
+					break;
+
+				case LowerBody.BEE:
+					outputText("  Your [legCountText] legs are covered in a shimmering insectile carapace up to mid-thigh, looking more like a set of 'fuck-me-boots' than exoskeleton.  A bit of downy yellow and black fur fuzzes your upper thighs, just like a bee.");
+					break;
+
+				case LowerBody.GOO:
+					outputText("  In place of legs you have a shifting amorphous blob.  Thankfully it's quite easy to propel yourself around on.  The lowest portions of your " + player.armorName + " float around inside you, bringing you no discomfort.");
+					break;
+
+				case LowerBody.CAT:
+					outputText("  [legCountTextUC] digitigrade legs grow downwards from your waist, ending in soft, padded cat-paws.");
+					break;
+
+				case LowerBody.LIZARD:
+					outputText("  [legCountTextUC] digitigrade legs grow down from your [hips], ending in clawed feet.  There are three long toes on the front, and a small hind-claw on the back.");
+					break;
+
+				case LowerBody.SALAMANDER:
+					outputText("  [legCountTextUC] digitigrade legs covered in thick, leathery red scales up to the mid-thigh grow down from your [hips], ending in clawed feet.  There are three long toes on the front, and a small hind-claw on the back.");
+					break;
+
+				case LowerBody.BUNNY:
+					outputText("  Your [legCountText] legs thicken below the waist as they turn into soft-furred rabbit-like legs.  You even have large bunny feet that make hopping around a little easier than walking.");
+					break;
+
+				case LowerBody.HARPY:
+					outputText("  Your [legCountText] legs are covered with [furColor] plumage.  Thankfully the thick, powerful thighs are perfect for launching you into the air, and your feet remain mostly human, even if they are two-toed and tipped with talons.");
+					break;
+
+				case LowerBody.KANGAROO:
+					outputText("  Your [legCountText] furry legs have short thighs and long calves, with even longer feet ending in prominently-nailed toes.");
+					break;
+
+				case LowerBody.CHITINOUS_SPIDER_LEGS:
+					outputText("  Your [legCountText] legs are covered in a reflective black, insectile carapace up to your mid-thigh, looking more like a set of 'fuck-me-boots' than exoskeleton.");
+					break;
+
+				case LowerBody.FOX:
+					outputText("  Your [legCountText] legs are crooked into high knees with hocks and long feet, like those of a fox; cute bulbous toes decorate the ends.");
+					break;
+
+				case LowerBody.DRAGON:
+					outputText("  [legCountTextUC] human-like legs grow down from your [hips], sheathed in scales and ending in clawed feet.  There are three long toes on the front, and a small hind-claw on the back.");
+					break;
+
+				case LowerBody.RACCOON:
+					outputText("  Your [legCountText] legs, though covered in fur, are humanlike.  Long feet on the ends bear equally long toes, and the pads on the bottoms are quite sensitive to the touch.");
+					break;
+
+				case LowerBody.CLOVEN_HOOFED:
+					outputText("  [legCountTextUC] digitigrade legs form below your [hips], ending in cloven hooves.");
+					break;
+
+				case LowerBody.IMP:
+					outputText("  [legCountTextUC] digitigrade legs form below your [hips], ending in clawed feet. Three extend out the front, and one smaller one is in the back to keep your balance.");
+					break;
+
+				case LowerBody.COCKATRICE:
+					outputText("  [legCountTextUC] digitigrade legs grow down from your [hips], ending in clawed feet."
+					          +" There are three long toes on the front, and a small hind-claw on the back."
+					          +" A layer of " + (player.hasCockatriceSkin() ? player.skin.furColor : player.hair.color) + " feathers covers your legs from the"
+					          +" hip to the knee, ending in a puffy cuff.");
+					break;
+
+				case LowerBody.RED_PANDA:
+					outputText("  Your [legCountText] legs are equally covered in black-brown fur, ending on red-panda paws with short claws."
+					          +" They have a nimble and strong build, in case you need to escape from something.");
+					break;
 			}
 			if (player.findPerk(PerkLib.Incorporeality) >= 0)
 				outputText("  Of course, your [legs] are partially transparent due to their ghostly nature."); // isn't goo transparent anyway?

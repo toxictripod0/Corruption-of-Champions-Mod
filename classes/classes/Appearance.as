@@ -2258,6 +2258,7 @@ package classes {
 					[Ears.SHEEP, "sheep"],
 					[Ears.IMP, "imp"],
 					[Ears.COCKATRICE, "cockatrice"],
+					[Ears.RED_PANDA, "red-panda"],
 				]
 		);
 		public static const DEFAULT_HORNS_NAMES:Object = createMapFromPairs(
@@ -2291,6 +2292,7 @@ package classes {
 					[Arms.PREDATOR, "predator"],
 					[Arms.SALAMANDER, "salamander"],
 					[Arms.COCKATRICE, "cockatrice"],
+					[Arms.RED_PANDA, "red-panda"],
 				]
 		);
 		public static const DEFAULT_TAIL_NAMES:Object = createMapFromPairs(
@@ -2401,6 +2403,7 @@ package classes {
 					[LowerBody.SALAMANDER, "salamander"],
 					[LowerBody.IMP, "imp"],
 					[LowerBody.COCKATRICE, "cockatrice"],
+					[LowerBody.RED_PANDA, "red-panda"],
 				]
 		);
 		public static const DEFAULT_PIERCING_NAMES:Object = createMapFromPairs(

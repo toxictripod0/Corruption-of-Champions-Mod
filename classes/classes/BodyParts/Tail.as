@@ -44,8 +44,6 @@ package classes.BodyParts
 		/** Tail recharge determines how fast venom/webs comes back per hour. */
 		public var recharge:Number = 5;
 
-		public function Tail() {}
-
 		public function restore():void
 		{
 			type     = NONE;

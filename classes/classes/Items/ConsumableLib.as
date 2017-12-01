@@ -194,6 +194,7 @@ package classes.Items
 		public const PRFRUIT:Consumable = new PurpleFruit();
 		public const PROBOVA:SimpleConsumable = mk("ProBova","ProBova", "a bottle containing a misty fluid labeled \"ProBova\"", curry(m.laBova, true, true), "This cloudy potion has been enhanced by the alchemist Lumi to imbue its drinker with cow-like attributes.");
 		public const PURHONY:BeeHoney			= new BeeHoney(true, false);
+		public const RDRROOT:Consumable = new RedRiverRoot();
 		public const REPTLUM:Consumable = new Reptilum();
 		public const RINGFIG:Consumable = new RingtailFig();
 		public const RIZZART:RizzaRoot			= new RizzaRoot();
