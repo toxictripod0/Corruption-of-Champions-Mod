@@ -301,6 +301,8 @@ import classes.Items.*
 			dyeArray.push(consumables.RAINDYE);
 			dyeArray.push(consumables.RED_DYE);
 			//Page 2
+			dyeArray.push(consumables.RUSSDYE);
+			dyeArray.push(consumables.YELLODY);
 			dyeArray.push(consumables.WHITEDY);
 			
 			//------------
@@ -1175,6 +1177,7 @@ import classes.Items.*
 			[Tail.SHEEP, "(27) SHEEP"],
 			[Tail.IMP, "(28) IMP"],
 			[Tail.COCKATRICE, "(29) COCKATRICE"],
+			[Tail.RED_PANDA, "(30) RED_PANDA"],
 			/* [INTERMOD: xianxia]
 			[Tail.KITSHOO, "(26) KITSHOO"],
 			[Tail.MANTIS_ABDOMEN, "(27) MANTIS_ABDOMEN"],

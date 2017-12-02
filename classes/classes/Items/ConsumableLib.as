@@ -39,8 +39,9 @@ package classes.Items
 		public const PURPDYE:HairDye = new HairDye("PurpDye", "Purple");
 		public const RAINDYE:HairDye = new HairDye("RainDye", "Rainbow");
 		public const RED_DYE:HairDye = new HairDye("Red Dye", "Red");
-		public const WHITEDY:HairDye = new HairDye("WhiteDy", "White");
+		public const RUSSDYE:HairDye = new HairDye("RussetD", "Russet");
 		public const YELLODY:HairDye = new HairDye("YelloDy", "Yellow");
+		public const WHITEDY:HairDye = new HairDye("WhiteDy", "White");
 		
 		//SKIN OILS & BODY LOTIONS
 		public const DARK_OL:SkinOil = new SkinOil("DarkOil", "Dark");

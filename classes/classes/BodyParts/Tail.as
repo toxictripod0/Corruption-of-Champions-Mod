@@ -37,6 +37,7 @@ package classes.BodyParts
 		public static const SHEEP:int          =  27;
 		public static const IMP:int            =  28;
 		public static const COCKATRICE:int     =  29;
+		public static const RED_PANDA:int      =  30;
 
 		public var type:Number     = NONE;
 		/** Tail venom is a 0-100 slider used for tail attacks. Recharges per hour. */

@@ -62,6 +62,7 @@ package classes.lists
 			Tail.WOLF,
 			Tail.IMP,
 			Tail.COCKATRICE,
+			Tail.RED_PANDA,
 		];
 	}
 }

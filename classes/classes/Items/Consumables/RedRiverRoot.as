@@ -197,6 +197,62 @@ package classes.Items.Consumables
 				changes++;
 			}
 
+			// Tail
+			if (player.tail.type !== Tail.RED_PANDA && changes < changeLimit && rand(4) === 0) {
+				if (player.hasMultiTails()) {
+					outputText("\n\nYour tails seem to move on their own, tangling together in a single mass. Before you can ever feel it happening,"
+					          +" you realize that they’re merging! An increased sensation of heat, not unlike the flavor of the roots,"
+					          +" rushes through your body, and once that it fades, you realize that you now have a single tail.");
+					outputText("\n\nThe process doesn’t stop here though, as the feel of that spicy root returns, but now the heat is felt only in"
+					          +" your tail, as it shakes wildly while it elongates and becomes more bushy. Soon it has become almost as long as you."
+					          +" A very thick mass of soft, fluffy furs covers it in a matter of seconds. It acquires a lovely ringed pattern of"
+					          +" red-russet and copperish-orange.");
+					outputText("\n\nWhen the effects finally subside, you decide to test the tail, making it coil around your body,"
+					          +" realizing soon that you can control its movements with ease, and that its fur feels wonderful to the touch."
+					          +" Anyways, <b>you now have a long, bushy, red-panda tail!</b>");
+				} else if (player.tail.type === Tail.NONE) {
+					outputText("\n\nFeeling an uncomfortable sensation on your butt, you stretch yourself, attributing it to having sat on a"
+					          +" rough surface. A burning sensation runs through your body, similar to the one that you had after eating the root."
+					          +" When it migrates to your back, your attention goes to a mass of fluff that has erupted from your backside."
+					          +" Before you can check it properly, it seems to move on its own, following the heated sensation that now pulsates"
+					          +" through your body, and when the heated pulses  seem to have stopped, it has become a long, fluffy tube");
+					outputText("\n\nShortly after, the feel of that spicy root returns, but now the heat is felt only in your tail,"
+					          +" which shakes wildly while it elongates and becomes more bushy. Soon it has become almost as long as you."
+					          +" A very thick mass of soft, fluffy furs covers it in a matter of seconds. It acquires a lovely ringed pattern"
+					          +" of red-russet and copperish-orange.");
+					outputText("\n\nWhen the effects finally subside, you decide to test the tail, making it coil around your body,"
+					          +" realizing soon that you can control its movements with ease, and that its fur feels wonderful at the touch."
+					          +" Anyways, <b>you now have a long, bushy, red-panda tail!</b>");
+				} else if ([Tail.BEE_ABDOMEN, Tail.SPIDER_ABDOMEN].indexOf(player.tail.type) !== -1) {
+					outputText("\n\nYour insectile backside seems affected by the root properties, as your venom production suddenly stops."
+					          +" The flesh within the abdomen retracts into your backside, the chiting covering falling, leaving exposed a layer"
+					          +" of soft, bare skin. When the abdomen disappears, your left with a comically sized butt,"
+					          +" that soon reverts to its usual size.");
+					outputText("\n\nThe root keeps doing its thing, as you feel an uncomfortable sensation on your butt. A burning sensation runs"
+					          +" through your body, similar to the one that you had after eating the root. When it migrates to your back,"
+					          +" your attention goes to a mass of fluff that has erupted from your backside. Before you can check it properly,"
+					          +" it seems to move on its own, following the heated sensation that now pulsates through your body,"
+					          +" and when the heated pulses  seem to have stopped, it has become a long, fluffy tube,"
+					          +" quite different from your former abdomen.");
+					outputText("\n\nShortly after, the feel of that spicy root returns, but now the heat is felt only in your tail,"
+					          +" which shakes wildly while it elongates and becomes more bushy. Soon it has become almost as long as you."
+					          +" A very thick mass of soft, fluffy furs covers it in a matter of seconds."
+					          +" It acquires a lovely ringed pattern of red-russet and copperish-orange.");
+					outputText("\n\nWhen the effects finally subside, you decide to test the tail, making it coil around your body,"
+					          +" realizing soon that you can control its movements with ease, and that its fur feels wonderful at the touch."
+					          +" Anyways, <b>you now have a long, bushy, red-panda tail!</b>");
+				} else {
+					outputText("\n\nThe feel of that spicy root returns, but now the heat is felt on your tail, that shakes wildly while it elongates"
+					          +" and becomes more bushy. Soon it has become almost as long as you. A very thick mass of soft, fluffy furs covers it"
+					          +" in a matter of seconds. It acquires a lovely ringed pattern of red-russet and copperish-orange.");
+					outputText("\n\nWhen the effects finally subside, you decide to test the tail, making it coil around your body,"
+					          +" realizing soon that you can control their moves with easy, and that its fur feels wonderful at the touch."
+					          +" Anyways, <b>you now have a long, bushy, red-panda tail!</b>");
+				}
+				player.tail.setAllProps({type: Tail.RED_PANDA});
+				changes++;
+			}
+
 			//FAILSAFE CHANGE
 			if (changes === 0) {
 				if (rand(100) === 0) {
