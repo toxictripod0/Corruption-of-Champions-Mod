@@ -3,6 +3,7 @@ package classes.Scenes.Areas.HighMountains
 	import classes.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
+	import classes.display.SpriteDb;
 
 	public class PhoenixScene extends BaseContent
 	{
@@ -18,6 +19,7 @@ package classes.Scenes.Areas.HighMountains
 		
 		public function encounterPhoenixFirstTime():void {
 			clearOutput();
+			spriteSelect(SpriteDb.s_phoenix);
 			outputText("Strolling along the mountain path, you realise that you are quite close to the tower where you and Hel fought the Harpy Queen and her little army of hybrids. Pausing for a moment, you are relieved to hear a distinct lack of noise, which hopefully means that no-one's tried to move back into the stronghold after ");
 			if (flags[kFLAGS.HARPY_QUEEN_EXECUTED] > 0) outputText("her Highness became an ex-harpy.");
 			else outputText("you evicted her Majesty from her seat of power.");
@@ -33,6 +35,8 @@ package classes.Scenes.Areas.HighMountains
 		}
 		
 		public function encounterPhoenixRepeat():void {
+			clearOutput();
+			spriteSelect(SpriteDb.s_phoenix);
 			outputText("Strolling along the mountain path, you spot the familiar Phoenix. You ready your " + player.weaponName + ".");
 			if (flags[kFLAGS.PHOENIX_ENCOUNTERED] == 1) outputText("\n\n\"<i>Back again?</i>\" The phoenix says with a glare. \"<i>But... I guess you're a worthy opponent. Let's see what you're made of!</i>\" The phoenix yells as she readies her scimitar and shield. You assume a combat stance.");
 			else outputText("\n\n\"<i>Back again?</i>\" The phoenix says with a glare. \"<i>Get ready for a rematch!</i>\" The phoenix yells as she readies her scimitar and shield. You assume a combat stance.");
