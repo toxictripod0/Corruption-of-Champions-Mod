@@ -764,14 +764,11 @@ package classes.Parser
 
 				var tmp1:String = this.parserState[sceneName];
 				var tmp2:String = recParser(tmp1, 0);		// we have to actually parse the scene now
-				//ret             = Showdown.makeHtml(tmp2)
-
-
-
 				//_ownerClass.rawOutputText(ret, true);			// and then stick it on the display
 
 				//if (sceneParserDebug) trace("WARNING: Scene contents: \"" + tmp1 + "\" as parsed: \"" + tmp2 + "\"")
 				if (sceneParserDebug) LOGGER.warn("WARNING: Scene contents after markdown: \"" + ret + "\"");
+				ret = tmp2;
 			}
 			else if (this.getObjectFromString(_ownerClass, sceneName) != null)
 			{
@@ -1118,8 +1115,7 @@ package classes.Parser
 				// when we return. Therefore, in a horrible hack, we return the contents of mainTest.htmlText as the ret value, so
 				// the outputText call overwrites the window content with the exact same content.
 
-				// LOGGER.warn("WARNING: Returning: ", ret);
-				_ownerClass.currentText = ret;
+				LOGGER.warn("Returning: {0}", ret);
 
 
 			}
