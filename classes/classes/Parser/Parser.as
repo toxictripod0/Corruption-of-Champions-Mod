@@ -732,14 +732,6 @@ package classes.Parser
 		//
 		public function enterParserScene(sceneName:String):String
 		{
-
-			/*
-			if (sceneParserDebug) trace("WARNING: this.parserStateContents:")
-			for (var prop in this.parserState)
-			{
-				if (sceneParserDebug) trace("WARNING: this.parserState."+prop+" = "+this.parserState[prop]);
-			}
-			*/
 			var ret:String = "";
 
 			if (sceneParserDebug) LOGGER.warn("WARNING: Entering parser scene: \""+sceneName+"\"");
@@ -747,13 +739,10 @@ package classes.Parser
 			if (sceneName == "exit")
 			{
 				if (sceneParserDebug) LOGGER.warn("WARNING: Enter scene called to exit");
-				//doNextClear(debugPane);
-
 				// TODO:
 				// This needs to change to something else anyways. I need to add the ability to
 				// tell the parser where to exit to at some point
 				_ownerClass.debugPane();
-
 			}
 			else if (sceneName in this.parserState)
 			{
@@ -764,10 +753,9 @@ package classes.Parser
 
 				var tmp1:String = this.parserState[sceneName];
 				var tmp2:String = recParser(tmp1, 0);		// we have to actually parse the scene now
-				//_ownerClass.rawOutputText(ret, true);			// and then stick it on the display
-
-				//if (sceneParserDebug) trace("WARNING: Scene contents: \"" + tmp1 + "\" as parsed: \"" + tmp2 + "\"")
+				
 				if (sceneParserDebug) LOGGER.warn("WARNING: Scene contents after markdown: \"" + ret + "\"");
+				
 				ret = tmp2;
 			}
 			else if (this.getObjectFromString(_ownerClass, sceneName) != null)
@@ -779,10 +767,8 @@ package classes.Parser
 			{
 				LOGGER.warn("WARNING: Enter scene called with unknown arg/function \""+sceneName+"\". falling back to the debug pane");
 				_ownerClass.doNext(_ownerClass.debugPane);
-
 			}
 			return ret
-
 		}
 
 		// Parses the contents of a scene tag, shoves the unprocessed text in the scene object (this.parserState)
@@ -1075,10 +1061,7 @@ package classes.Parser
 			// Eventually, when this goes properly class-based, we'll add a period, and have this.parserState.
 
 			// Reset the parser's internal state, since we're parsing a new string:
-			// LOGGER.warn("WARNING: Purging scene parser contents")
 			this.parserState = new Object();
-
-
 
 			var ret:String = "";
 			// Run through the parser
@@ -1097,14 +1080,6 @@ package classes.Parser
 			// And repeated spaces (this has to be done after markdown processing)
 			ret = ret.replace(/  +/g, " ");
 
-
-			/*
-			for (var prop in this.parserState)
-			{
-				LOGGER.warn("WARNING: this.parserState."+prop+" = "+this.parserState[prop]);
-			}
-			*/
-
 			// Finally, if we have a parser-based scene. enter the "startup" scene.
 			if ("startup" in this.parserState)
 			{
@@ -1116,13 +1091,9 @@ package classes.Parser
 				// the outputText call overwrites the window content with the exact same content.
 
 				LOGGER.warn("Returning: {0}", ret);
-
-
 			}
-			//LOGGER.warn(ret);
-			// LOGGER.warn("WARNING: Maintext content @ recursiveParser = ", mainText.htmlText.length)
-			return ret
 
+			return ret
 		}
 
 		// ---------------------------------------------------------------------------------------------------------------------------------------
