@@ -1251,6 +1251,8 @@
 				if (face.type == Face.HUMAN)
 					beeCounter++;
 			}
+			if (arms.type == Arms.BEE)
+				beeCounter++;
 			if (lowerBody.type == LowerBody.BEE)
 			{
 				beeCounter++;

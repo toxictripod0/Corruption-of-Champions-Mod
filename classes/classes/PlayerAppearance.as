@@ -608,6 +608,8 @@ package classes
 				outputText("  Your arms are shaped like a wolf's, overly muscular at your shoulders and biceps before quickly slimming down. They're covered in [furColor] fur and end in paws with just enough flexibility to be used as hands. They're rather difficult to move in directions besides back and forth.");	
 			else if (player.arms.type == Arms.SPIDER) 
 				outputText("  Shining black exoskeleton covers your arms from the biceps down, resembling a pair of long black gloves from a distance.");	
+			else if (player.arms.type == Arms.BEE)
+				outputText("  Shining black exoskeleton covers your arms from the biceps down, resembling a pair of long black gloves ended with a yellow fuzz from a distance.");
 			else if (player.arms.type == Arms.SALAMANDER)
 				outputText("  Shining thick, leathery red scales cover your arms from the biceps down and your fingernails are now short, fiery-red curved claws.");
 			else if (player.arms.type == Arms.PREDATOR)

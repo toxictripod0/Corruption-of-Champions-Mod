@@ -183,6 +183,7 @@ package classes.Scenes.Dungeons {
 				"The Lost Dragon City",
 				[]
 			];
+			MAP_DRAGONCITY_B1 = [
 				"The Lost Dragon City, Basement",
 				[]
 			];

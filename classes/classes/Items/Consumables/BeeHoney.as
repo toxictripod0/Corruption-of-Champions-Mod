@@ -160,6 +160,25 @@ package classes.Items.Consumables
 				player.lowerBody.legCount = 2;
 				changes++;
 			}
+			//(Arms to carapace-covered arms)
+			if (player.arms.type !== Arms.BEE && changes < changeLimit && Utils.rand(4) === 0) {
+				outputText("\n\n");
+				if (player.arms.type === Arms.SPIDER) {
+					outputText("On your upper arms slowly starting to grown yellow fuzz making them looks more like those of bee.");
+				} else {
+					//(Bird pretext)
+					if (player.arms.type === Arms.HARPY) {
+						outputText("The feathers covering your arms fall away, leaving them to return to a far more human appearance.  ");
+					}
+					outputText("You watch, spellbound, while your forearms gradually become shiny.  The entire outer structure of your arms tingles"
+					          +" while it divides into segments, <b>turning the [skinFurScales] into a shiny black carapace</b>.  A moment later the"
+					          +" pain fades and you are able to turn your gaze down to your beautiful new arms, covered in shining black chitin from"
+					          +" the upper arm down, and downy yellow fuzz along your upper arm.");
+				}
+				player.arms.type = Arms.BEE;
+				mutations.updateClaws();
+				changes++;
+			}
 			//-Nipples reduction to 1 per tit.
 			if (player.averageNipplesPerBreast() > 1 && changes < changeLimit && Utils.rand(4) == 0) {
 				outputText("\n\nA chill runs over your " + player.allBreastsDescript() + " and vanishes.  You stick a hand under your " + player.armorName + " and discover that your extra nipples are missing!  You're down to just one per ");
