@@ -159,7 +159,7 @@ package classes.Scenes.Dungeons.AnzuPalace
 			else if (anzuRelationshipLevel() == 2) {
 				outputText("Walking around Anzu’s palace, this time you don’t have to search for him, as you find the avian peacefully sleeping on a couch on the living room. Looks like he isn’t using his usual set of clothing, and only has his robes and underwear covering him.");
 				outputText("\n\nApproaching him silently, and seeing now an opportunity which you probably won't have again in a long time, your hand slip inside the folds of the soft fabric, reaching to his chest, and without advertence to him you start tickling his chest and belly. The avian awakens at the sudden touches, and starts laughing at your constant tickling.");
-				outputText("\n\n\"<i>[name], what are you…, no… please no…, stop you… \"<i> he only manages to say, in between laughter.");
+				outputText("\n\n\"<i>[name], what are you…, no… please no…, stop you… \"</i> he only manages to say, in between laughter.");
 				outputText("\n\nSeems you caught him by surprise. Anyways, you won’t have mercy on him. Keeping on the ticking, you start stroking with your fingers the soft feathers of his chest and then making them dance over his belly. You continue your assault for several minutes. ");
 				outputText("\n\nIt's funny to see the normally quiet avian laugh for a change, even if it is a forced laugh combined with a bit of squirming, and the sensation of his feathers under your fingers is strange and funny in the same way, like caressing one of the parrots who lived back in Ingnam, the only difference is that this is a huge one. Finally, when you think that he’s had enough for a while, you release him for your tickles, and leave him fall on the couch, still laughing a bit.");
 				outputText("\n\n\"<i>Oh, thanks.</i>\" he says, sounding relieved. But soon, his tone suddenly changes. \"<i>That was a smart move, attacking when I was asleep, but, being fair, I think that I’ll repay you for this.</i>\"");
@@ -722,7 +722,7 @@ package classes.Scenes.Dungeons.AnzuPalace
 				outputText("Now that you’ve played a bit on the bed, it time to get into business. The perfumed scent of the avian has been driving you crazy for a while, and now that you have a full sight of his athletic form, you attention goes down to his crotch. The thought of the hefty package inside his pants makes your mouth water. You then say Anzu that if he is stressed you’ll be more than happy to help him relieve pressure.");
 				outputText("\n\n\"<i>Relieve pressure?</i>\"...He asks doubtfully.");
 				outputText("\n\nPutting your hand on the bulge between his legs, you make yourself very clear about what kind of pressure are you talking about.");
-				outputText("\n\n\"<i>Oh, you mean that... \"<i> the avian says with a shy smile </i>\"Well, I use to give myself relief from time to time, but has passed a time, and lately I feel a little…</i>\"");
+				outputText("\n\n\"<i>Oh, you mean that... </i>\" the avian says with a shy smile \"<i>Well, I use to give myself relief from time to time, but has passed a time, and lately I feel a little…</i>\"");
 				outputText("\n\nBy the flushed look on his face when he’s saying this and the tone of his voice, sound like the big bird don’t mind having his nuts emptied. Despite that, Anzu seems a bit shy about that. Seeing how he’ll need a little more motivation, you slip a hand through his underwear.");
 				outputText("\n\n\"<i>So, you feel a little pent, up big boy?</i>\" you tease him, fondling his balls.");
 				outputText("\n\n\"<i>Y-yes…</i>\" the avian answers, shuddering in delight at you touch.");
@@ -864,7 +864,7 @@ package classes.Scenes.Dungeons.AnzuPalace
 			else {
 				outputText("\n\n\"<i>Tasty, as always, [name]. Thanks again, for letting me have a drink.</i>\" Anzu says, hugging your upper body in the soft embrace of his warm feathers.");
 				outputText("\n\nYou stay this for a while, with the heat of the avian breath on you neck, and his feathers tickling your [skin]. After some more cuddling, you stand up and redress yourself, not without giving Anzu a last view of your bare chest. The avian then asks:");
-				outputText("\n\n\"<i>You’ll return here again when your breasts feel too full, right?</i>\" He asks, looking at you with his cheeks somewhat red in mild embarrassment </i>\"I’ve grown a taste for your milk…</i>\"");
+				outputText("\n\n\"<i>You’ll return here again when your breasts feel too full, right?</i>\" He asks, looking at you with his cheeks somewhat red in mild embarrassment \"<i>I’ve grown a taste for your milk…</i>\"");
 				outputText("\n\nSure, you answer him, but for now, you have to let them rest for a bit. After saying your goodbyes to the avian, you find your way through the Rift and return safely to your camp.");
 			}
 			dynStats("lus", 20, "sen", -1);

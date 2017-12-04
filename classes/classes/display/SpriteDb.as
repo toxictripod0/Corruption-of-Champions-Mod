@@ -386,6 +386,13 @@ public class SpriteDb {
 	public static function get s_izma(): Class {
 		return is8bit ? s_izma_8bit : s_izma_16bit;
 	}
+//	[Embed(source="../../../res/sprites/izmael.png")]
+//	public static const s_izmael_16bit:Class;
+//	[Embed(source="../../../res/sprites8bit/izmael-old.png")]
+//	public static const s_izmael_8bit:Class;
+//	public static function get s_izmael(): Class {
+//		return is8bit ? null : s_izmael_16bit;
+//	}
 	[Embed(source="../../../res/sprites/jasun.png")]
 	public static const s_jasun_16bit:Class;
 	[Embed(source="../../../res/sprites8bit/jasun-old.png")]
@@ -803,6 +810,13 @@ public class SpriteDb {
 	public static const s_valeria_8bit:Class;
 	public static function get s_valeria(): Class {
 		return is8bit ? s_valeria_8bit : s_valeria_16bit;
+	}
+	[Embed(source="../../../res/sprites/vapula.png")]
+	public static const s_vapula_16bit:Class;
+//	[Embed(source="../../../res/sprites8bit/vapula-old.png")]
+//	public static const s_vapula_8bit:Class;
+	public static function get s_vapula(): Class {
+		return is8bit ? null : s_vapula_16bit;
 	}
 	[Embed(source="../../../res/sprites/venus.png")]
 	public static const s_venus_16bit:Class;

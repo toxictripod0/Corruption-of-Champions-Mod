@@ -5,6 +5,7 @@
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Items.WeaponLib;
 	import classes.Scenes.Places.Owca.*;
+	import classes.display.SpriteDb;
 
 	public class Owca extends BaseContent{
 
@@ -186,6 +187,7 @@ private function acceptRebeccsPlea(firstTime:Boolean = false, sacrificed:Boolean
 }
 private function intoTheDemonPit(sacrifice:Boolean = true):void {
 	clearOutput();
+	spriteSelect(SpriteDb.s_vapula);
 	//N is the number of hours left before night
 	if (model.time.hours < 21) {
 		var passed:int = 21 - model.time.hours;
