@@ -24,6 +24,9 @@ package classes.Scenes.Dungeons {
 		public var MAP_ANZUPALACE_F2:Array;
 		public var MAP_ANZUPALACE_F3:Array;
 		public var MAP_ANZUPALACE_F4:Array;
+		public var MAP_HELLHOUNDLABS:Array;
+		public var MAP_DRAGONCITY_F1:Array;
+		public var MAP_DRAGONCITY_B1:Array;
 		
 		//How to work with the refactored map:
 		//-1 is wide empty space 1x3.
@@ -101,7 +104,7 @@ package classes.Scenes.Dungeons {
 				[-1, -2, -1, -2, 38, -2, -1, -2, -1],
 				[-1, -2, -1, -2, -3, -2, -1, -2, -1],
 				[29, -2, 26, -2, 37, -2, 32, -4, 33],
-				[-3, -2, -3, -2, -3, -2, -3, -2, -2],
+				[-3, -2, -3, -2, d4, -2, -3, -2, -2],
 				[28, -4, 25, -4, 24, -4, 31, -4, 34],
 				[-3, -2, -3, -2, -3, -2, -2, -2, -3],
 				[30, -2, 27, -2, 23, -2, 36, -4, 35],
@@ -168,6 +171,20 @@ package classes.Scenes.Dungeons {
 				[-1, -2, -1, -2, -1],
 				[-1, -2, -1, -2, -1],
 				[-1, -2, 52, -2, -1]
+			];
+			
+			// -- Hellhound Master Dungeon --
+			MAP_HELLHOUNDLABS = [
+				"Hellhound Labs",
+				[]
+			];
+			// -- Dragon City (Ember Quest) --
+			MAP_DRAGONCITY_F1 = [
+				"The Lost Dragon City",
+				[]
+			];
+				"The Lost Dragon City, Basement",
+				[]
 			];
 		}
 		

@@ -403,10 +403,10 @@ public class SpriteDb {
 	}
 	[Embed(source="../../../res/sprites/joy.png")]
 	public static const s_joy_16bit:Class;
-//	[Embed(source="../../../res/sprites8bit/joy-old.png")]
-	public static const s_joy_8bit:Class;
+	//[Embed(source="../../../res/sprites8bit/joy-old.png")]
+	//public static const s_joy_8bit:Class;
 	public static function get s_joy(): Class {
-		return is8bit ? s_joy_8bit : s_joy_16bit;
+		return is8bit ? null : s_joy_16bit;
 	}
 	[Embed(source="../../../res/sprites/katherine-vagrant.png")]
 	public static const s_katherine_vagrant_16bit:Class;
