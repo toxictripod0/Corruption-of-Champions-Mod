@@ -1622,8 +1622,8 @@ public function doSleep(clrScreen:Boolean = true):void {
 	}
 	doNext(superLoop);
 }
-
-public function sleepWrapper():void { //For shit that breaks normal sleep processing
+//For shit that breaks normal sleep processing
+public function sleepWrapper():void {
 	if (model.time.hours == 16) timeQ = 14;
 	if (model.time.hours == 17) timeQ = 13;
 	if (model.time.hours == 18) timeQ = 12;
@@ -1678,13 +1678,15 @@ public function sleepRecovery(display:Boolean = false):void {
 		if (display) outputText("\nYou spend much of the night tossing and turning, aching for a taste of minotaur cum.\n");
 		multiplier *= 0.75;
 	}
-	if (player.hasCock() && player.cocks[0].cockType == CockTypesEnum.BEE) outputText("\nThe desire to find the bee girl that gave you this cursed " + player.cockDescript(0) + " and have her spread honey all over it grows with each passing minute\n"); //Bee cock
-	if (player.armor == armors.GOOARMR && flags[kFLAGS.VALERIA_FLUIDS] <= 0) outputText("\nYou feel the fluid-starved goo rubbing all over your groin as if Valeria wants you to feed her.\n"); //Starved goo armor
+	if (player.hasCock() && player.cocks[0].cockType == CockTypesEnum.BEE) //Bee cock
+		outputText("\nThe desire to find the bee girl that gave you this cursed " + player.cockDescript(0) + " and have her spread honey all over it grows with each passing minute\n");
+	if (player.armor == armors.GOOARMR && flags[kFLAGS.VALERIA_FLUIDS] <= 0) //Starved goo armor
+		outputText("\nYou feel the fluid-starved goo rubbing all over your groin as if Valeria wants you to feed her.\n");
 	HPChange(timeQ * hpRecovery * multiplier, display); //REGULAR HP/FATIGUE RECOVERY
 	player.changeFatigue(-(timeQ * fatRecovery * multiplier)); //Fatigue
 }
-
-public function badEndGIANTBALLZ():void { //Bad End if your balls are too big. Only happens in Realistic Mode
+//Bad End if your balls are too big. Only happens in Realistic Mode
+public function badEndGIANTBALLZ():void {
 	clearOutput();
 	outputText(images.showImage("badend-hBalls"));
 	outputText("You suddenly fall over due to your extremely large " + player.ballsDescriptLight() + ".  You struggle to get back up but the size made it impossible.  Panic spreads throughout your mind and your heart races.\n\n")
@@ -1731,8 +1733,8 @@ private function callRathazulAndEscapeBadEnd():void {
 	outputText("\"<i>Try not to make your balls bigger. If it happens, make sure you have Reducto,</i>\" he says.  He returns to his alchemy equipment, working on who knows what.\n\n")
 	doNext(camp.returnToCampUseOneHour);
 }
-
-public function badEndHunger():void { //Bad End if you starved to death
+//Bad End if you starved to death
+public function badEndHunger():void {
 	clearOutput();
 	outputText(images.showImage("badend-starve"));
 	player.hunger = 0.1; //For Easy Mode/Debug Mode
@@ -1746,7 +1748,8 @@ public function badEndHunger():void { //Bad End if you starved to death
 	getGame().gameOver();
 	removeButton(1); //Can't continue, you're dead!
 }
-public function badEndMinLust():void { //Bad End if you have 100 min lust
+//Bad End if you have 100 min lust
+public function badEndMinLust():void {
 	clearOutput();
 	outputText(images.showImage("badend-masti"));
 	outputText("The thought of release overwhelms you. You frantically remove your " + player.armorName + " and begin masturbating furiously.  The first orgasm hits you but the desire persists.  You continue to masturbate but unfortunately, no matter how hard or how many times you orgasm, your desires will not go away.  Frustrated, you keep masturbating furiously but you are unable to stop.  Your minimum lust is too high.  No matter how hard you try, you cannot even satisfy your desires.");
@@ -1781,8 +1784,8 @@ public function allNaturalSelfStimulationBeltBadEnd():void {
 	outputText("Giacomo loads you up onto his cart and sets off for his next sale.  You do not care.  You do not realize what has happened.  All you know is that the creature keeps cumming and it feels... sooooo GODDAMN GOOD!");
 	getGame().gameOver();
 }
-
-private function dungeonFound():Boolean { //Returns true as soon as any known dungeon is found
+//Returns true as soon as any known dungeon is found
+private function dungeonFound():Boolean {
 	if (flags[kFLAGS.DISCOVERED_DUNGEON_2_ZETAZ] > 0) return true;
 	if (flags[kFLAGS.FACTORY_FOUND] > 0) return true;
 	if (flags[kFLAGS.DISCOVERED_WITCH_DUNGEON] > 0) return true;
@@ -1790,8 +1793,8 @@ private function dungeonFound():Boolean { //Returns true as soon as any known du
 	if (kGAMECLASS.dungeons.checkPhoenixTowerClear()) return true;
 	return false;
 }
-
-private function farmFound():Boolean { //Returns true as soon as any known dungeon is found
+//Returns true as soon as any known dungeon is found
+private function farmFound():Boolean {
 	if (player.hasStatusEffect(StatusEffects.MetWhitney) && player.statusEffectv1(StatusEffects.MetWhitney) > 1) {
 		if (flags[kFLAGS.FARM_DISABLED] == 0) return true;
 		if (player.isCorruptEnough(70) && player.level >= 12 && getGame().farm.farmCorruption.corruptFollowers() >= 2 && flags[kFLAGS.FARM_CORRUPTION_DISABLED] == 0) return true;
@@ -1799,10 +1802,9 @@ private function farmFound():Boolean { //Returns true as soon as any known dunge
 	if (flags[kFLAGS.FARM_CORRUPTION_STARTED]) return true;
 	return false;
 }
-
 //-----------------PLACES MENU-----------------
-private function placesKnown():Boolean { //Returns true as soon as any known place is found
-	if (placesCount() > 0) return true;
+private function placesKnown():Boolean {
+	if (placesCount() > 0) return true; //Returns true as soon as any known place is found
 	return false;
 }
 
@@ -1821,8 +1823,8 @@ public function placesCount():int {
 	if (flags[kFLAGS.PRISON_CAPTURE_COUNTER] > 0) places++;
 	return places;
 }
-
-public function places():Boolean { //All cleaned up!
+//All cleaned up!
+public function places():Boolean {
 	hideMenus();
 	clearOutput();
 	outputText(images.showImage("camp-pathfinder"));
@@ -1866,12 +1868,12 @@ private function placesToPage1():void {
 
 private function dungeons():void {
 	menu();
-	//Turn on dungeon 1
-	if (flags[kFLAGS.FACTORY_FOUND] > 0) addButton(0, "Factory", getGame().dungeons.factory.enterDungeon).hint("Visit the demonic factory in the mountains." + (flags[kFLAGS.FACTORY_SHUTDOWN] > 0 ? "\n\nYou've managed to shut down the factory." : "The factory is still running. Marae wants you to shut down the factory!") + (kGAMECLASS.dungeons.checkFactoryClear() ? "\n\nCLEARED!" : ""));
-	//Turn on dungeon 2
-	if (flags[kFLAGS.DISCOVERED_DUNGEON_2_ZETAZ] > 0) addButton(1, "Deep Cave", getGame().dungeons.deepcave.enterDungeon).hint("Visit the cave you've found in the Deepwoods." + (flags[kFLAGS.DEFEATED_ZETAZ] > 0 ? "\n\nYou've defeated Zetaz, your old rival." : "") + (kGAMECLASS.dungeons.checkDeepCaveClear() ? "\n\nCLEARED!" : ""));
-	//Turn on dungeon 3
-	if (flags[kFLAGS.D3_DISCOVERED] > 0) addButton(2, "Stronghold", kGAMECLASS.lethicesKeep.enterD3).hint("Visit the stronghold in the high mountains that belongs to Lethice, the demon queen." + (flags[kFLAGS.LETHICE_DEFEATED] > 0 ? "\n\nYou have defeated Lethice and put an end to the demonic threats. Congratulations, you've beaten the main story!" : "") + (kGAMECLASS.dungeons.checkLethiceStrongholdClear() ? "\n\nCLEARED!" : ""));
+	if (flags[kFLAGS.FACTORY_FOUND] > 0) //Turn on dungeon 1
+		addButton(0, "Factory", getGame().dungeons.factory.enterDungeon).hint("Visit the demonic factory in the mountains." + (flags[kFLAGS.FACTORY_SHUTDOWN] > 0 ? "\n\nYou've managed to shut down the factory." : "The factory is still running. Marae wants you to shut down the factory!") + (kGAMECLASS.dungeons.checkFactoryClear() ? "\n\nCLEARED!" : ""));
+	if (flags[kFLAGS.DISCOVERED_DUNGEON_2_ZETAZ] > 0) //Turn on dungeon 2
+		addButton(1, "Deep Cave", getGame().dungeons.deepcave.enterDungeon).hint("Visit the cave you've found in the Deepwoods." + (flags[kFLAGS.DEFEATED_ZETAZ] > 0 ? "\n\nYou've defeated Zetaz, your old rival." : "") + (kGAMECLASS.dungeons.checkDeepCaveClear() ? "\n\nCLEARED!" : ""));
+	if (flags[kFLAGS.D3_DISCOVERED] > 0) //Turn on dungeon 3
+		addButton(2, "Stronghold", kGAMECLASS.lethicesKeep.enterD3).hint("Visit the stronghold in the high mountains that belongs to Lethice, the demon queen." + (flags[kFLAGS.LETHICE_DEFEATED] > 0 ? "\n\nYou have defeated Lethice and put an end to the demonic threats. Congratulations, you've beaten the main story!" : "") + (kGAMECLASS.dungeons.checkLethiceStrongholdClear() ? "\n\nCLEARED!" : ""));
 	//Side dungeons
 	if (flags[kFLAGS.DISCOVERED_WITCH_DUNGEON] > 0) addButton(5, "Desert Cave", getGame().dungeons.desertcave.enterDungeon).hint("Visit the cave you've found in the desert." + (flags[kFLAGS.SAND_WITCHES_COWED] + flags[kFLAGS.SAND_WITCHES_FRIENDLY] > 0 ? "\n\nFrom what you've known, this is the source of the Sand Witches." : "") + (kGAMECLASS.dungeons.checkSandCaveClear() ? "\n\nCLEARED!" : ""));
 	if (kGAMECLASS.dungeons.checkPhoenixTowerClear()) addButton(6, "Phoenix Tower", getGame().dungeons.heltower.returnToHeliaDungeon).hint("Re-visit the tower you went there as part of Helia's quest." + (kGAMECLASS.dungeons.checkPhoenixTowerClear() ? "\n\nYou've helped Helia in the quest and resolved the problems. \n\nCLEARED!" : ""));
@@ -1884,31 +1886,32 @@ private function dungeons():void {
 
 private function exgartuanCampUpdate():void {
 	if (player.hasStatusEffect(StatusEffects.Exgartuan)) { //Update Exgartuan stuff
-		if (player.statusEffectv1(StatusEffects.Exgartuan) == 1 && (player.cockArea(0) < 100 || player.cocks.length == 0)) { //If too small dick, remove him
+		if (player.statusEffectv1(StatusEffects.Exgartuan) == 1 && (player.cockArea(0) < 100 || player.cocks.length == 0)) {
 			clearOutput();
 			outputText(images.showImage("camp-exgartuan-urine"));
 			outputText("<b>You suddenly feel the urge to urinate, and stop over by some bushes.  It takes wayyyy longer than normal, and once you've finished, you realize you're alone with yourself for the first time in a long time.");
 			if (player.hasCock()) outputText("  Perhaps you got too small for Exgartuan to handle?</b>\n");
 			else outputText("  It looks like the demon didn't want to stick around without your manhood.</b>\n");
-			player.removeStatusEffect(StatusEffects.Exgartuan);
+			player.removeStatusEffect(StatusEffects.Exgartuan); //If too small dick, remove him
 			awardAchievement("Urine Trouble", kACHIEVEMENTS.GENERAL_URINE_TROUBLE, true);
 		}
-		else if (player.statusEffectv1(StatusEffects.Exgartuan) == 2 && player.biggestTitSize() < 12) { //Tit removal
+		else if (player.statusEffectv1(StatusEffects.Exgartuan) == 2 && player.biggestTitSize() < 12) {
 			clearOutput();
 			outputText(images.showImage("camp-exgartuan-milk"));
 			outputText("<b>Black milk dribbles from your " + player.nippleDescript(0) + ".  It immediately dissipates into the air, leaving you feeling alone.  It looks like you became too small for Exgartuan!\n</b>");
-			player.removeStatusEffect(StatusEffects.Exgartuan);
+			player.removeStatusEffect(StatusEffects.Exgartuan); //Tit removal
 		}
 	}
 	doNext(playerMenu);
 }
-
-public function wakeFromBadEnd():void { //Wake up from a bad end
+//Wake up from a bad end
+public function wakeFromBadEnd():void {
 	clearOutput();
 	outputText(images.showImage("camp-nightmare"));
 	outputText("No, it can't be.  It's all just a dream!  You've got to wake up!");
 	outputText("\n\nYou wake up and scream.  You pull out a mirror and take a look at yourself.  Yep, you look normal again.  That was the craziest dream you ever had.");
-	if (flags[kFLAGS.TIMES_BAD_ENDED] >= 2) outputText("\n\nYou mumble to yourself \"<i>Another goddamn bad-end.</i>\""); //FOURTH WALL BREAKER
+	if (flags[kFLAGS.TIMES_BAD_ENDED] >= 2) //FOURTH WALL BREAKER
+		outputText("\n\nYou mumble to yourself \"<i>Another goddamn bad-end.</i>\"");
 	if (marbleFollower()) outputText("\n\n\"<i>Are you okay, sweetie?</i>\" Marble asks.  You assure her that you're fine; you've just had a nightmare.");
 	if (flags[kFLAGS.HUNGER_ENABLED] > 0) player.hunger = 40;
 	if (flags[kFLAGS.HUNGER_ENABLED] >= 1 && player.ballSize > (18 + (player.str / 2) + (player.tallness / 4))) {
@@ -1950,8 +1953,8 @@ public function wakeFromBadEnd():void { //Wake up from a bad end
 	menu();
 	addButton(0, "Next", playerMenu);
 }
-
-private function buildCampWallPrompt():void { //Camp wall
+//Camp wall
+private function buildCampWallPrompt():void {
 	clearOutput();
 	if (flags[kFLAGS.CAMP_WALL_PROGRESS] <= 20) outputText(images.showImage("camp-wall-partI"));
 	else if (flags[kFLAGS.CAMP_WALL_PROGRESS] <= 40) outputText(images.showImage("camp-wall-partII"));
@@ -2030,8 +2033,8 @@ private function buildCampWall():void {
 		output.flush();
 	}
 }
-
-private function buildCampGatePrompt():void { //Camp gate
+//Camp gate
+private function buildCampGatePrompt():void {
 	clearOutput();
 	if (player.fatigue >= player.maxFatigue() - 50) {
 		outputText("You are too exhausted to work on your camp wall!");
@@ -2140,7 +2143,8 @@ private function promptAscend():void {
 	outputText("\n\n<b>Proceed?</b>");
 	doYesNo(ascendForReal, campActions);
 }
-private function totalChildrenForAscension():int { //Sorted alphabetically
+//Sorted alphabetically
+private function totalChildrenForAscension():int {
 	var amount:int = 0;
 	amount += flags[kFLAGS.AMILY_BIRTH_TOTAL] + flags[kFLAGS.PC_TIMES_BIRTHED_AMILYKIDS]; //Amily
 	amount += flags[kFLAGS.BEHEMOTH_CHILDREN]; //Behemoth
@@ -2233,7 +2237,6 @@ public function setLevelButton():Boolean {
 	}
 	return false;
 }
-
 //------------Camp population------------
 public function getCampPopulation():int {
 	var pop:int = 0; //Once you enter Mareth, this will increase to 1
@@ -2245,7 +2248,7 @@ public function getCampPopulation():int {
 	if (flags[kFLAGS.CLARA_IMPRISONED] > 0) pop++;
 	if (flags[kFLAGS.ANEMONE_KID] > 0) pop++;
 	if (flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 4) pop++;
-	//Children check!
+	//		   Children check!
 	//------------Followers------------
 	if (followerEmber() && emberScene.emberChildren() > 0) pop += emberScene.emberChildren();
 	//Jojo's offsprings don't stay in your camp; they will join with Amily's litters as well
@@ -2266,8 +2269,8 @@ public function getCampPopulation():int {
 }
 
 private function fixFlags():void {
-	if (player.hasStatusEffect(StatusEffects.MetMarae)) { //Marae
-		flags[kFLAGS.MET_MARAE] = 1
+	if (player.hasStatusEffect(StatusEffects.MetMarae)) {
+		flags[kFLAGS.MET_MARAE] = 1 //Marae
 		player.removeStatusEffect(StatusEffects.MetMarae);		
 	}
 	if (player.hasStatusEffect(StatusEffects.MaraesQuestStart)) {
@@ -2282,8 +2285,8 @@ private function fixFlags():void {
 		player.createKeyItem("Marae's Lethicite", 3, 0, 0, 0);
 		player.removeStatusEffect(StatusEffects.MaraesLethicite);
 	}
-	if (player.hasStatusEffect(StatusEffects.FactorySuccubusDefeated)) { //Factory Demons
-		flags[kFLAGS.FACTORY_SUCCUBUS_DEFEATED] = 1;
+	if (player.hasStatusEffect(StatusEffects.FactorySuccubusDefeated)) {
+		flags[kFLAGS.FACTORY_SUCCUBUS_DEFEATED] = 1; //Factory Demons
 		player.removeStatusEffect(StatusEffects.FactorySuccubusDefeated);
 	}
 	if (player.hasStatusEffect(StatusEffects.FactoryIncubusDefeated)) {
@@ -2294,8 +2297,8 @@ private function fixFlags():void {
 		flags[kFLAGS.FACTORY_OMNIBUS_DEFEATED] = 1;
 		player.removeStatusEffect(StatusEffects.FactoryOmnibusDefeated);
 	}
-	if (player.hasStatusEffect(StatusEffects.FoundFactory)) { //Factory Variables
-		flags[kFLAGS.FACTORY_FOUND] = 1;
+	if (player.hasStatusEffect(StatusEffects.FoundFactory)) {
+		flags[kFLAGS.FACTORY_FOUND] = 1; //Factory Variables
 		player.removeStatusEffect(StatusEffects.FoundFactory);
 	}
 	if (player.hasStatusEffect(StatusEffects.IncubusBribed)) {
@@ -2401,8 +2404,8 @@ private function promptSaveUpdate():void {
 			return;
 		}
 		clearOutput();
-		outputText("Starting in version 1.3 of the mod, fur colour is now separate from hair colour. So as a one-time offer, you can now choose fur colour!"); //Update fur
-		furColorSelection1();
+		outputText("Starting in version 1.3 of the mod, fur colour is now separate from hair colour. So as a one-time offer, you can now choose fur colour!");
+		furColorSelection1(); //Update fur
 		return;
 	}
 	if (flags[kFLAGS.MOD_SAVE_VERSION] == 9) {
@@ -2487,8 +2490,8 @@ private function chooseFurColorSaveUpdate(color:String):void {
 	player.skin.furColor = color;
 	doNext(doCamp);
 }
-
-private function updateSaveFlags():void { //Updates save. Done to ensure your save doesn't get screwed up
+//Updates save. Done to ensure your save doesn't get screwed up
+private function updateSaveFlags():void {
 	flags[kFLAGS.MOD_SAVE_VERSION] = kGAMECLASS.modSaveVersion;
 	var startOldIds:int = 1195;
 	var startNewIds:int = 2001;
@@ -2525,7 +2528,7 @@ private function updateAchievements():void {
 	if (flags[kFLAGS.MARAE_QUEST_COMPLETE] > 0) awardAchievement("Marae's Savior", kACHIEVEMENTS.STORY_MARAE_SAVIOR);
 	if (player.hasKeyItem("Zetaz's Map") >= 0) awardAchievement("Revenge at Last", kACHIEVEMENTS.STORY_ZETAZ_REVENGE);
 	if (flags[kFLAGS.LETHICE_DEFEATED] > 0) awardAchievement("Demon Slayer", kACHIEVEMENTS.STORY_FINALBOSS);
-	//Areas
+	//Zones
 	if (flags[kFLAGS.TIMES_EXPLORED_FOREST] > 0 && flags[kFLAGS.TIMES_EXPLORED_LAKE] > 0 && flags[kFLAGS.TIMES_EXPLORED_DESERT] > 0 && flags[kFLAGS.TIMES_EXPLORED_MOUNTAIN] > 0 && flags[kFLAGS.TIMES_EXPLORED_PLAINS] > 0 && flags[kFLAGS.TIMES_EXPLORED_SWAMP] > 0 && player.hasStatusEffect(StatusEffects.ExploredDeepwoods) && flags[kFLAGS.DISCOVERED_HIGH_MOUNTAIN] > 0 && flags[kFLAGS.BOG_EXPLORED] > 0 && flags[kFLAGS.DISCOVERED_GLACIAL_RIFT] > 0) awardAchievement("Explorer", kACHIEVEMENTS.ZONE_EXPLORER);
 	if (placesCount() >= 10) awardAchievement("Sightseer", kACHIEVEMENTS.ZONE_SIGHTSEER);
 	if (flags[kFLAGS.TIMES_EXPLORED] >= 1) awardAchievement("Where am I?", kACHIEVEMENTS.ZONE_WHERE_AM_I);
