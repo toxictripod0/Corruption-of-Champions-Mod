@@ -76,6 +76,7 @@ public class YaraPiercingStudio extends TelAdreAbstractContent {
 		clearOutput();
 		outputText("The interior of the piercing studio is earthy, leaving the stone floors and walls uncovered, though the windows are covered with woven blankets, sewn from multicolored threads.  There are a number of cushy chairs facing a wall of mirrors, along with a shelf covered in needles, piercings, and strong alcohols.  A brunette prowls about the place, tidying it up during a lull in business.	You dully notice that unlike everyone else in this town, she's mostly human.  Perhaps she came through a portal as well?  She approaches you, and you see a cat tail waving behind her, and a pair of fuzzy feline ears, both covered in piercings, perched atop her head.	Clearly she's been here long enough to pick up some of the local flavor.\n\n");
 		outputText("She introduces herself, \"<i>Hello there " + player.mf("sir", "cutie") + ", my name is Yara.  Would you like to get a piercing?</i>\"");
+		menu();
 		addButton(0, "Pierce", pierceMenu);
 		addButton(1, "Remove", piercingRemove);
 		if (!player.hasStatusEffect(StatusEffects.Yara)) {
@@ -100,7 +101,6 @@ public class YaraPiercingStudio extends TelAdreAbstractContent {
 	}
 
 	private function buildLocChoices(fun:Function, inverse:Boolean=false):Boolean {
-		menu();
 		var buttonsAdded:Boolean = false;
 		function check(toCheck:int):Boolean{
 			if (inverse){
@@ -159,6 +159,7 @@ public class YaraPiercingStudio extends TelAdreAbstractContent {
 	}
 
 	private function pierceMenu():void {
+		menu();
 		spriteSelect(63);
 		hideUpDown();
 		clearOutput();
@@ -229,6 +230,7 @@ public class YaraPiercingStudio extends TelAdreAbstractContent {
 	}
 
 	private function chooseMaterials(loc:int, type:int):void {
+		menu();
 		spriteSelect(63);
 		clearOutput();
 		outputText("Yara gathers up her materials and says, \"<i>Ok, now what type of material do you want it made from?  Don't worry about price, none of these are that rare, so the piercing will only be 100 gems.	Though I do have some rarer materials; you'll need 1,000 gems to spend if you want to check them out.</i>\"");
@@ -262,6 +264,7 @@ public class YaraPiercingStudio extends TelAdreAbstractContent {
 	}
 
 	private function chooseAdvancedMaterials(loc:int, type:int):void {
+		menu();
 		spriteSelect(63);
 		clearOutput();
 		outputText("Yara goes back into the back and comes out with a gilded tray full of exotic materials.	 She hands you a brochure and asks, \"<i>Ok, now what am I going to be working with?</i>\"");
@@ -279,7 +282,9 @@ public class YaraPiercingStudio extends TelAdreAbstractContent {
 		if (player.gems >= 2000) {
 			addButton(4, "Icestone", areYouSure, loc, type, MAT_ICESTONE);
 		}
-		addButton(14, "Back", chooseMaterials);
+		//Unsure if this common mats button will work
+		//addButton(8, "Common Mats", chooseMaterials,loc,type);
+		addButton(14, "Back", piercingStudio);
 	}
 
 	private function normalPierceAssemble(loc:int, type:int, mat:int):void {
