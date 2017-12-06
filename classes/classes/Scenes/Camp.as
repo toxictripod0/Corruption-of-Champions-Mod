@@ -1647,7 +1647,6 @@ public function sleepWrapper():void {
 	menu();
 	doNext(superLoop);
 }
-
 public function superLoop():void {
 	clearOutput();
 	if (player.cor >= 95) outputText ("You can constantly enjoy pleasant smell of the sulfur in the air. It's so sweet!");
