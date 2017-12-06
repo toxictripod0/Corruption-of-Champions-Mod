@@ -134,7 +134,7 @@ package classes.Items.Consumables
 			}
 
 			// Face
-			if (player.face.type !== Face.RED_PANDA && changes < changeLimit && rand(3) === 0) {
+			if (player.face.type !== Face.RED_PANDA && player.ears.type === Ears.RED_PANDA && player.hasFur() && changes < changeLimit && rand(3) === 0) {
 				outputText("\n\nNumbness comes to your cheekbones and jaw, while the rest of your head is overwhelmed by a tingling sensation."
 				          +" Every muscle on your face tenses and shifts, while the bones and tissue rearrange, radically changing the shape"
 				          +" of your head. You have troubles breathing as the changes reach your nose, but you manage to see as it changes into an"
@@ -148,7 +148,7 @@ package classes.Items.Consumables
 			}
 
 			// Arms
-			if (player.arms.type !== Arms.RED_PANDA && changes < changeLimit && rand(3) === 0) {
+			if (player.arms.type !== Arms.RED_PANDA && player.ears.type === Ears.RED_PANDA && player.tail.type === Tail.RED_PANDA && changes < changeLimit && rand(3) === 0) {
 				outputText("\n\nWeakness overcomes your arms, and no matter what you do, you can’t muster the strength to raise or move them."
 				          +" Sighing you attribute this to the consumption of that strange root. Sitting on the ground, you wait for the limpness to"
 				          +" end. As you do so, you realize that the bones at your hands are changing, as well as the muscles on your arms."
@@ -161,7 +161,7 @@ package classes.Items.Consumables
 			}
 
 			// Legs
-			if (player.lowerBody.type !== LowerBody.RED_PANDA && changes < changeLimit && rand(4) === 0) {
+			if (player.lowerBody.type !== LowerBody.RED_PANDA && player.arms.type === Arms.RED_PANDA && changes < changeLimit && rand(4) === 0) {
 				if (player.isTaur()) {
 					outputText("\n\nYou legs tremble, forcing you to lie on the ground, as they don't seems to answer you anymore."
 					          +" A burning sensation in them is the last thing you remember before briefly blacking out. When it subsides and you"
@@ -272,8 +272,7 @@ package classes.Items.Consumables
 				setFurrySkin();
 			}
 
-			if (player.skin.type !== Skin.FUR && changes < changeLimit && rand(4) === 0) {
-				
+			if (player.skin.type !== Skin.FUR && player.arms.type === Arms.RED_PANDA && player.lowerBody.type === LowerBody.RED_PANDA && changes < changeLimit && rand(4) === 0) {
 				if (player.hasPlainSkin()) {
 					if (["latex", "rubber"].indexOf(player.skin.adj) === -1) {
 						outputText("\n\nYou start to scratch your [skin], as an uncomfortable itching overcomes you. It’s quite annoying,"

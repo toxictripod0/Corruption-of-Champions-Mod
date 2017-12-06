@@ -825,6 +825,14 @@
 				if (isTaur())
 					race = "cockatrice-taur";
 			}
+			if (redPandaScore() >= 4)
+			{
+				race = "red-panda-morph";
+				if (face.type === Face.HUMAN)
+					race = "red-panda-" + mf("boy", "girl");
+				if (isTaur())
+					race = "red-panda-taur";
+			}
 			if (raccoonScore() >= 4)
 			{
 				race = "raccoon-morph";
@@ -1043,6 +1051,29 @@
 			}
 			
 			return race;
+		}
+
+		//red-panda rating
+		public function redPandaScore():Number
+		{
+			var redPandaCounter:Number = 0;
+			if (ears.type === Ears.RED_PANDA)
+				redPandaCounter++;
+			if (tail.type === Tail.RED_PANDA)
+				redPandaCounter++;
+			if (arms.type === Arms.RED_PANDA)
+				redPandaCounter++;
+			if (face.type === Face.RED_PANDA)
+				redPandaCounter += 2;
+			if (lowerBody.type === LowerBody.RED_PANDA)
+				redPandaCounter++;
+			if (redPandaCounter >= 2) {
+				if (hasFur())
+					redPandaCounter++;
+				if (hasFurryUnderBody())
+					redPandaCounter++;
+			}
+			return redPandaCounter;
 		}
 
 		//cockatrice rating
