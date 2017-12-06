@@ -1,20 +1,23 @@
-﻿package classes {
+package classes {
 	import classes.BodyParts.*;
-	import classes.GlobalFlags.kACHIEVEMENTS;
+	import classes.BodyParts.Butt;
+	import classes.BodyParts.Hips;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
-	import classes.Items.*;
+	import classes.GlobalFlags.kACHIEVEMENTS;
 	import classes.Items.Armors.GooArmor;
-	import classes.Scenes.Inventory;
+	import classes.Items.*;
+	import classes.Saves;
 	import classes.internals.Utils;
 	import classes.lists.BreastCup;
 	import classes.lists.Gender;
-	import coc.view.MainView;
+	import classes.Scenes.Inventory;
+
 	import fl.controls.ComboBox;
 	import fl.data.DataProvider;
 	import flash.events.Event;
 
-
+	import coc.view.MainView;
 
 	public class CharCreation extends BaseContent {
 
@@ -1262,6 +1265,7 @@
 				addButton(12, "Grimdark", chooseModeGrimdark);
 			addButton(14, "Start!", flags[kFLAGS.HARDCORE_MODE] == 1 ? chooseModeHardcoreSlot : startTheGame);
 		}
+
 		private function startTheGame():void {
 			player.startingRace = player.race();
 			if (flags[kFLAGS.HARDCORE_MODE] > 0) getGame().saves.saveGame(flags[kFLAGS.HARDCORE_SLOT])
