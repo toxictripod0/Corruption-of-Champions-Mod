@@ -29,7 +29,7 @@ package classes {
 		public const MAX_VIRILITY_LEVEL:int = 15;
 		public const MAX_FERTILITY_LEVEL:int = 15;
 
-		public static const NEW_GAME_PLUS_RESET_CLIT_LENGTH_MAX : Number = 1.5;
+		public static const NEW_GAME_PLUS_RESET_CLIT_LENGTH_MAX:Number = 1.5;
 
 		private var specialCharacters:CharSpecial = new CharSpecial();
 		private var customPlayerProfile:Function;
@@ -191,10 +191,10 @@ package classes {
 			player.rearBody.restore();
 			player.lowerBody.type = LowerBody.HUMAN;
 			player.lowerBody.legCount = 2;
-			player.face.type = Face.HUMAN;
-			player.eyes.count = 2;
+			player.face.type= Face.HUMAN;
+			player.eye.count = 2;
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) player.tail.type = Tail.NONE;
-			player.tongueType = Tongue.HUMAN;
+			player.tongue.type = Tongue.HUMAN;
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) player.femininity = 50;
 			player.beard.length = 0;
 			player.beard.style = 0;
@@ -711,8 +711,8 @@ package classes {
 			addButton(6, "Russet", setComplexion, "russet");
 		}
 		private function setComplexion(choice:String):void {
-			player.skinTone = choice;
-			player.clawTone = "";
+			player.skin.tone = choice;
+			player.claws.tone = "";
 			clearOutput();
 			outputText(images.showImage("event-question"));
 			outputText("You selected a " + choice + " complexion.\n\nWhat color is your hair?");
@@ -732,43 +732,34 @@ package classes {
 			//chooseEndowment(false);
 			genericStyleCustomizeMenu();
 		}
-		//-----------------
-		//-- GENERAL STYLE
-		//-----------------
+		//-----------------GENERAL STYLE-----------------
 		private function genericStyleCustomizeMenu():void {
 			clearOutput();
 			mainView.nameBox.visible = false;
 			mainView.nameBox.maxChars = 16;
 			mainView.nameBox.restrict = null;
-			
 			outputText("You can finalize your appearance customization before you proceed to perk selection. You will be able to alter your appearance through the usage of certain items.\n\n");
 			outputText("Height: " + Math.floor(player.tallness / 12) + "'" + player.tallness % 12 + "\"\n");
-			outputText("Skin tone: " + player.skin.tone + "\n");
-			outputText("Hair color: " + player.hair.color + "\n");
-			if (player.hasCock()) {
-				outputText("Cock size: " + player.cocks[0].cockLength + "\" long, " + player.cocks[0].cockThickness + "\" thick\n");
-			}
+			outputText("Skin tone: " + player.skinTone + "\n");
+			outputText("Hair color: " + player.hairColor + "\n");
+			if (player.hasCock()) outputText("Cock size: " + player.cocks[0].cockLength + "\" long, " + player.cocks[0].cockThickness + "\" thick\n");
 			outputText("Breast size: " + player.breastCup(0) + "\n");
 			menu();
 			addButton(0, "Complexion", menuSkinComplexion);
 			addButton(1, "Hair Color", menuHairColor);
 			if (player.mf("m", "f") == "m") {
-				if (player.hasBeard()) {
-					outputText("Beard: " + player.beardDescript() + "\n");
-				}
+				if (player.hasBeard()) outputText("Beard: " + player.beardDescript() + "\n");
 				addButton(2, "Beard Style", menuBeardSettings);
 			}
 			addButton(3, "Set Height", setHeight);
-			if (player.hasCock()) addButton(5, "Cock Size", menuCockLength);
+			if (player.hasCock())addButton(5, "Cock Size", menuCockLength);
 			addButton(6, "Breast Size", menuBreastSize);
 			addButton(9, "Done", chooseEndowment);
 		}
-
-		//-----------------
-		//-- SKIN COLOURS
-		//-----------------
+		//-----------------SKIN COLOURS-----------------
 		private function menuSkinComplexion():void {
 			clearOutput();
+			outputText(images.showImage("event-question"));
 			outputText("What is your complexion?");
 			menu();
 			addButton(0, "Light", confirmComplexion, "light");
@@ -784,12 +775,10 @@ package classes {
 			player.skin.tone = complexion;
 			genericStyleCustomizeMenu();
 		}
-
-		//-----------------
-		//-- HAIR COLOURS
-		//-----------------
+		//-----------------HAIR COLOURS-----------------
 		private function menuHairColor():void {
 			clearOutput();
+			outputText(images.showImage("event-question"));
 			outputText("What is your hair color?");
 			menu();
 			addButton(0, "Blonde", chooseHairColor, "blonde");
@@ -801,15 +790,11 @@ package classes {
 			addButton(6, "Auburn", chooseHairColor, "auburn");
 			addButton(14, "Back", genericStyleCustomizeMenu);
 		}
-
 		private function chooseHairColor(color:String = ""):void {
 			player.hair.color = color;
 			genericStyleCustomizeMenu();
 		}
-
-		//-----------------
-		//-- BEARD STYLE
-		//-----------------
+		//-----------------BEARD STYLE-----------------
 		private function menuBeardSettings():void {
 			clearOutput();
 			outputText("You can choose your beard length and style.\n\n");
@@ -821,6 +806,7 @@ package classes {
 		}
 		private function menuBeardStyle():void {
 			clearOutput();
+			outputText(images.showImage("event-question"));
 			outputText("What beard style would you like?");
 			menu();
 			addButton(0, "Normal", chooseBeardStyle, 0);
@@ -835,6 +821,7 @@ package classes {
 		}
 		private function menuBeardLength():void {
 			clearOutput();
+			outputText(images.showImage("event-question"));
 			outputText("How long would you like your beard be? \n\nNote: Beard will slowly grow over time, just like in the real world. Unless you have no beard. You can change your beard style later in the game.");
 			menu();
 			addButton(0, "No Beard", chooseBeardLength, 0);
@@ -850,10 +837,7 @@ package classes {
 			player.beard.length = choiceLength;
 			menuBeardSettings();
 		}
-		
-		//-----------------
-		//-- HEIGHT
-		//-----------------
+		//-----------------HEIGHT-----------------
 		private function setHeight():void {
 			clearOutput();
 			outputText("Set your height in inches.");
@@ -861,22 +845,10 @@ package classes {
 			mainView.nameBox.visible = true;
 			mainView.nameBox.maxChars = 2;
 			mainView.nameBox.restrict = "0-9";
-			if (player.gender == 0)
-			{
-				mainView.nameBox.text = "69";
-			}
-			if (player.gender == 1)
-			{
-				mainView.nameBox.text = "71";
-			}
-			if (player.gender == 2)
-			{
-				mainView.nameBox.text = "67";
-			}	
-			if (player.gender == 3)
-			{
-				mainView.nameBox.text = "69";
-			}
+			if (player.gender == 0) mainView.nameBox.text = "69";
+			if (player.gender == 1) mainView.nameBox.text = "71";
+			if (player.gender == 2) mainView.nameBox.text = "67";
+			if (player.gender == 3) mainView.nameBox.text = "69";
 			menu();
 			addButton(0, "OK", confirmHeight);
 			addButton(4, "Back", genericStyleCustomizeMenu);
@@ -885,28 +857,22 @@ package classes {
 		}
 		private function confirmHeight():void {
 			mainView.nameBox.visible = false;
-			if (int(mainView.nameBox.text) < 48)
-			{
-			clearOutput();
+			if (int(mainView.nameBox.text) < 48) {
+				clearOutput();
 				outputText("That is below your minimum height choices!");
-				//Off to the height selection!
-				doNext(setHeight);
+				doNext(setHeight); //Off to the height selection!
 				return;
 			}
-			if (int(mainView.nameBox.text) > 96)
-			{
-			clearOutput();
+			if (int(mainView.nameBox.text) > 96) {
+				clearOutput();
 				outputText("That is above your maximum height choices!");
-				//Off to the height selection!
-				doNext(setHeight);
+				doNext(setHeight); //Off to the height selection!
 				return;
 			}
-			if (mainView.nameBox.text == "")
-			{
-			clearOutput();
+			if (mainView.nameBox.text == "") {
+				clearOutput();
 				outputText("Please input your height. Off you go to the height selection!");
-				//Off to the height selection!
-				doNext(setHeight);
+				doNext(setHeight); //Off to the height selection!
 				return;
 			}
 			player.tallness = int(mainView.nameBox.text);
@@ -916,10 +882,7 @@ package classes {
 			outputText("You'll be " + Math.floor(player.tallness / 12) + " feet and " + player.tallness % 12 + " inches tall. Is this okay with you?");
 			doYesNo(genericStyleCustomizeMenu, setHeight);
 		}
-
-		//-----------------
-		//-- COCK LENGTH
-		//-----------------
+		//-----------------COCK LENGTH-----------------
 		private function menuCockLength():void {
 			clearOutput();
 			outputText("You can choose a cock length between 4 and 8 inches. Your starting cock length will also affect starting cock thickness. \n\nCock type and size can be altered later in the game through certain items.");
@@ -940,10 +903,7 @@ package classes {
 			player.cocks[0].cockThickness = Utils.floor(((length / 5) - 0.1),1);
 			genericStyleCustomizeMenu();
 		}
-
-		//-----------------
-		//-- BREAST SIZE
-		//-----------------
+		//-----------------BREAST SIZE-----------------
 		private function menuBreastSize():void {
 			clearOutput();
 			outputText("You can choose a breast size. Breast size may be altered later in the game.");
@@ -960,12 +920,10 @@ package classes {
 			player.breastRows[0].breastRating = size;
 			genericStyleCustomizeMenu();
 		}
-
-		//-----------------
-		//-- STARTER PERKS
-		//-----------------
+		//-----------------STARTER PERKS-----------------
 		private function chooseEndowment():void {
 			clearOutput();
+			outputText(images.showImage("event-question"));
 			outputText("Every person is born with a gift.  What's yours?");
 			menu();
 			var totalStartingPerks:int = 0;
@@ -984,62 +942,35 @@ package classes {
 			}
 			//Add buttons
 			for (var i:int = 0; i < buttonTexts.length; i++) {
-				if (player.findPerk(buttonPerks[i]) < 0) {
-					addButton(button++, buttonTexts[i], confirmEndowment, buttonPerks[i]);
-				}
+				if (player.findPerk(buttonPerks[i]) < 0) addButton(button++, buttonTexts[i], confirmEndowment, buttonPerks[i]);
 				else {
 					addButtonDisabled(button++, buttonTexts[i], "You already have this starting perk.");
 					totalStartingPerks++;
 				}
 			}
-			//Option to skip if you have enough starting perks
-			if (totalStartingPerks >= 4) addButton(14, "Skip", chooseHistory);
+			if (totalStartingPerks >= 4) //Option to skip if you have enough starting perks
+				addButton(14, "Skip", chooseHistory);
 		}
 
 		private function confirmEndowment(choice:PerkType):void {
 			clearOutput();
+			outputText(images.showImage("event-question"));
 			switch(choice) {
 				//Attributes
-				case PerkLib.Strong:
-					outputText("Are you stronger than normal? (+5 Strength)\n\nStrength increases your combat damage, and your ability to hold on to an enemy or pull yourself away.");
-					break;
-				case PerkLib.Tough:
-					outputText("Are you unusually tough? (+5 Toughness)\n\nToughness gives you more HP and increases the chances an attack against you will fail to wound you.");
-					break;
-				case PerkLib.Fast:
-					outputText("Are you very quick?  (+5 Speed)\n\nSpeed makes it easier to escape combat and grapples.  It also boosts your chances of evading an enemy attack and successfully catching up to enemies who try to run.");
-					break;
-				case PerkLib.Smart:
-					outputText("Are you a quick learner?  (+5 Intellect)\n\nIntellect can help you avoid dangerous monsters or work with machinery.  It will also boost the power of any spells you may learn in your travels.");
-					break;
-				case PerkLib.Lusty:
-					outputText("Do you have an unusually high sex-drive?  (+5 Libido)\n\nLibido affects how quickly your lust builds over time.  You may find a high libido to be more trouble than it's worth...");
-					break;
-				case PerkLib.Sensitive:
-					outputText("Is your skin unusually sensitive?  (+5 Sensitivity)\n\nSensitivity affects how easily touches and certain magics will raise your lust.  Very low sensitivity will make it difficult to orgasm.");
-					break;
-				case PerkLib.Pervert:
-					outputText("Are you unusually perverted?  (+5 Corruption)\n\Corruption affects certain scenes and having a higher corruption makes you more prone to Bad Ends.\n");
-					break;
+				case PerkLib.Strong: outputText("Are you stronger than normal? (+5 Strength)\n\nStrength increases your combat damage, and your ability to hold on to an enemy or pull yourself away."); break;
+				case PerkLib.Tough: outputText("Are you unusually tough? (+5 Toughness)\n\nToughness gives you more HP and increases the chances an attack against you will fail to wound you."); break;
+				case PerkLib.Fast: outputText("Are you very quick?  (+5 Speed)\n\nSpeed makes it easier to escape combat and grapples.  It also boosts your chances of evading an enemy attack and successfully catching up to enemies who try to run."); break;
+				case PerkLib.Smart: outputText("Are you a quick learner?  (+5 Intellect)\n\nIntellect can help you avoid dangerous monsters or work with machinery.  It will also boost the power of any spells you may learn in your travels."); break;
+				case PerkLib.Lusty: outputText("Do you have an unusually high sex-drive?  (+5 Libido)\n\nLibido affects how quickly your lust builds over time.  You may find a high libido to be more trouble than it's worth..."); break;
+				case PerkLib.Sensitive: outputText("Is your skin unusually sensitive?  (+5 Sensitivity)\n\nSensitivity affects how easily touches and certain magics will raise your lust.  Very low sensitivity will make it difficult to orgasm."); break;
+				case PerkLib.Pervert: outputText("Are you unusually perverted?  (+5 Corruption)\n\Corruption affects certain scenes and having a higher corruption makes you more prone to Bad Ends.\n"); break;
 				//Gender-specific
-				case PerkLib.BigCock:
-					outputText("Do you have a big cock?  (+2\" Cock Length)\n\nA bigger cock will make it easier to get off any sexual partners, but only if they can take your size.");
-					break;
-				case PerkLib.MessyOrgasms:
-					outputText("Are your orgasms particularly messy?  (+50% Cum Multiplier)\n\nA higher cum multiplier will cause your orgasms to be messier.");
-					break;
-				case PerkLib.BigTits:
-					outputText("Are your breasts bigger than average? (+1 Cup Size)\n\nLarger breasts will allow you to lactate greater amounts, tit-fuck larger cocks, and generally be a sexy bitch.");
-					break;
-				case PerkLib.BigClit:
-					outputText("Do you have a big clit?  (1\" Long)\n\nA large enough clit may eventually become as large as a cock.  It also makes you gain lust much faster during oral or manual stimulation.");
-					break;
-				case PerkLib.Fertile:
-					outputText("Is your family particularly fertile?  (+15% Fertility)\n\nA high fertility will cause you to become pregnant much more easily.  Pregnancy may result in: Strange children, larger bust, larger hips, a bigger ass, and other weirdness.");
-					break;
-				case PerkLib.WetPussy:
-					outputText("Does your pussy get particularly wet?  (+1 Vaginal Wetness)\n\nVaginal wetness will make it easier to take larger cocks, in turn helping you bring the well-endowed to orgasm quicker.");
-					break;
+				case PerkLib.BigCock: outputText("Do you have a big cock?  (+2\" Cock Length)\n\nA bigger cock will make it easier to get off any sexual partners, but only if they can take your size."); break;
+				case PerkLib.MessyOrgasms: outputText("Are your orgasms particularly messy?  (+50% Cum Multiplier)\n\nA higher cum multiplier will cause your orgasms to be messier."); break;
+				case PerkLib.BigTits: outputText("Are your breasts bigger than average? (+1 Cup Size)\n\nLarger breasts will allow you to lactate greater amounts, tit-fuck larger cocks, and generally be a sexy bitch."); break;
+				case PerkLib.BigClit: outputText("Do you have a big clit?  (1\" Long)\n\nA large enough clit may eventually become as large as a cock.  It also makes you gain lust much faster during oral or manual stimulation."); break;
+				case PerkLib.Fertile: outputText("Is your family particularly fertile?  (+15% Fertility)\n\nA high fertility will cause you to become pregnant much more easily.  Pregnancy may result in: Strange children, larger bust, larger hips, a bigger ass, and other weirdness."); break;
+				case PerkLib.WetPussy: outputText("Does your pussy get particularly wet?  (+1 Vaginal Wetness)\n\nVaginal wetness will make it easier to take larger cocks, in turn helping you bring the well-endowed to orgasm quicker."); break;
 			}
 			menu();
 			addButton(0, "Yes", setEndowment, choice);
@@ -1120,15 +1051,12 @@ package classes {
 			}
 			chooseHistory();
 		}
-		
-		//-----------------
-		//-- HISTORY PERKS
-		//-----------------
+		//-----------------HISTORY PERKS-----------------
 		public function chooseHistory():void {
 			clearOutput();
-			if (flags[kFLAGS.HISTORY_PERK_SELECTED] != 0) { //This flag can only be non-zero if chooseHistory is called from camp.as
+			outputText(images.showImage("event-question"));
+			if (flags[kFLAGS.HISTORY_PERK_SELECTED] != 0) //This flag can only be non-zero if chooseHistory is called from camp.as
 				outputText("<b>New history perks are available during creation.  Since this character was created before they were available, you may choose one now!</b>\n\n");
-			}
 			outputText("Before you became a champion, you had other plans for your life.  What were you doing before?");
 			menu();
 			var totalHistoryPerks:int = 0;
@@ -1137,9 +1065,8 @@ package classes {
 			var buttonTexts:Array = ["Alchemy", "Fighting", "Fortune", "Healing", "Religion", "Schooling", "Slacking", "Slutting", "Smithing", "Whoring"];
 			var buttonPerks:Array = [PerkLib.HistoryAlchemist, PerkLib.HistoryFighter, PerkLib.HistoryFortune, PerkLib.HistoryHealer, PerkLib.HistoryReligious, PerkLib.HistoryScholar, PerkLib.HistorySlacker, PerkLib.HistorySlut, PerkLib.HistorySmith, PerkLib.HistoryWhore];
 			for (var i:int = 0; i < buttonTexts.length; i++) {
-				if (player.findPerk(buttonPerks[i]) < 0) {
+				if (player.findPerk(buttonPerks[i]) < 0)
 					addButton(button++, buttonTexts[i], confirmHistory, buttonPerks[i]);
-				}
 				else {
 					addButtonDisabled(button++, buttonTexts[i], "You already have this history perk.");
 					totalHistoryPerks++;
@@ -1147,39 +1074,21 @@ package classes {
 			}
 			if (totalHistoryPerks >= 3) addButton(14, "Skip", completeCharacterCreation);
 		}
-		
+
 		private function confirmHistory(choice:PerkType):void {
 			clearOutput();
+			outputText(images.showImage("event-question"));
 			switch (choice) {
-				case PerkLib.HistoryAlchemist:
-					outputText("You spent some time as an alchemist's assistant, and alchemical items always seem to be more reactive in your hands.  Is this your history?");
-					break;
-				case PerkLib.HistoryFighter:
-					outputText("You spent much of your time fighting other children, and you had plans to find work as a guard when you grew up.  You do 10% more damage with physical attacks.  You will also start out with 50 gems.  Is this your history?");
-					break;
-				case PerkLib.HistoryFortune:
-					outputText("You always feel lucky when it comes to fortune.  Because of that, you have always managed to save up gems until whatever's needed and how to make the most out it (+15% gems on victory).  You will also start out with 250 gems.  Is this your history?");
-					break;
-				case PerkLib.HistoryHealer:
-					outputText("You often spent your free time with the village healer, learning how to tend to wounds.  Healing items and effects are 20% more effective.  Is this your history?");
-					break;
-				case PerkLib.HistoryReligious:
-					outputText("You spent a lot of time at the village temple, and learned how to meditate.  The 'masturbation' option is replaced with 'meditate' when corruption is at or below 66.  Is this your history?");
-					break;
-				case PerkLib.HistoryScholar:
-					outputText("You spent much of your time in school, and even begged the richest man in town, Mr. " + (silly() ? "Savin" : "Sellet") + ", to let you read some of his books.  You are much better at focusing, and spellcasting uses 20% less fatigue.  Is this your history?");
-					break;
-				case PerkLib.HistorySlacker:
-					outputText("You spent a lot of time slacking, avoiding work, and otherwise making a nuisance of yourself.  Your efforts at slacking have made you quite adept at resting, and your fatigue comes back 20% faster.  Is this your history?");
-					break;
-				case PerkLib.HistorySlut:
-					outputText("You managed to spend most of your time having sex.  Quite simply, when it came to sex, you were the village bicycle - everyone got a ride.  Because of this, your body is a bit more resistant to penetrative stretching, and has a higher upper limit on what exactly can be inserted.  Is this your history?");
-					break;
-				case PerkLib.HistorySmith:
-					outputText("You managed to get an apprenticeship with the local blacksmith.  Because of your time spent at the blacksmith's side, you've learned how to fit armor for maximum protection.  Is this your history?");
-					break;
-				default:
-					outputText("You managed to find work as a whore.  Because of your time spent trading seduction for profit, you're more effective at teasing (+15% tease damage).  Is this your history?");
+				case PerkLib.HistoryAlchemist: outputText("You spent some time as an alchemist's assistant, and alchemical items always seem to be more reactive in your hands.  Is this your history?"); break;
+				case PerkLib.HistoryFighter: outputText("You spent much of your time fighting other children, and you had plans to find work as a guard when you grew up.  You do 10% more damage with physical attacks.  You will also start out with 50 gems.  Is this your history?"); break;
+				case PerkLib.HistoryFortune: outputText("You always feel lucky when it comes to fortune.  Because of that, you have always managed to save up gems until whatever's needed and how to make the most out it (+15% gems on victory).  You will also start out with 250 gems.  Is this your history?"); break;
+				case PerkLib.HistoryHealer: outputText("You often spent your free time with the village healer, learning how to tend to wounds.  Healing items and effects are 20% more effective.  Is this your history?"); break;
+				case PerkLib.HistoryReligious: outputText("You spent a lot of time at the village temple, and learned how to meditate.  The 'masturbation' option is replaced with 'meditate' when corruption is at or below 66.  Is this your history?"); break;
+				case PerkLib.HistoryScholar: outputText("You spent much of your time in school, and even begged the richest man in town, Mr. " + (silly() ? "Savin" : "Sellet") + ", to let you read some of his books.  You are much better at focusing, and spellcasting uses 20% less fatigue.  Is this your history?"); break;
+				case PerkLib.HistorySlacker: outputText("You spent a lot of time slacking, avoiding work, and otherwise making a nuisance of yourself.  Your efforts at slacking have made you quite adept at resting, and your fatigue comes back 20% faster.  Is this your history?"); break;
+				case PerkLib.HistorySlut: outputText("You managed to spend most of your time having sex.  Quite simply, when it came to sex, you were the village bicycle - everyone got a ride.  Because of this, your body is a bit more resistant to penetrative stretching, and has a higher upper limit on what exactly can be inserted.  Is this your history?"); break;
+				case PerkLib.HistorySmith: outputText("You managed to get an apprenticeship with the local blacksmith.  Because of your time spent at the blacksmith's side, you've learned how to fit armor for maximum protection.  Is this your history?"); break;
+				default: outputText("You managed to find work as a whore.  Because of your time spent trading seduction for profit, you're more effective at teasing (+15% tease damage).  Is this your history?");
 			}
 			menu();
 			addButton(0, "Yes", setHistory, choice);
@@ -1195,23 +1104,18 @@ package classes {
 				}
 				player.ass.analLooseness = 1;
 			}
-			if (choice == PerkLib.HistoryFighter || choice == PerkLib.HistoryWhore) {
-				player.gems += 50;
-			}
-			if (choice == PerkLib.HistoryFortune) {
-				player.gems += 250;
-			}
+			if (choice == PerkLib.HistoryFighter || choice == PerkLib.HistoryWhore) player.gems += 50;
+			if (choice == PerkLib.HistoryFortune) player.gems += 250;
 			if (flags[kFLAGS.HISTORY_PERK_SELECTED] == 0) {
 				flags[kFLAGS.HISTORY_PERK_SELECTED] = 1;
 				completeCharacterCreation();
 			}
-			else { //Special escape clause for very old saves that do not have a history perk. This is used to allow them the chance to select a perk at camp on load.
-				flags[kFLAGS.HISTORY_PERK_SELECTED] = 1;
+			else {
+				flags[kFLAGS.HISTORY_PERK_SELECTED] = 1; //Special escape clause for very old saves that do not have a history perk. This is used to allow them the chance to select a perk at camp on load
 				playerMenu();
 			}
-			
 		}
-		
+
 		private function completeCharacterCreation():void {
 			clearOutput();
 			if (customPlayerProfile != null) {
@@ -1223,7 +1127,7 @@ package classes {
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) chooseGameModes();
 			else startTheGame();
 		}
-			
+
 		public function arrival():void {
 			showStats();
 			statScreenRefresh();
@@ -1236,69 +1140,66 @@ package classes {
 				doNext(playerMenu);
 				return;
 			}
-			outputText(images.showImage("arrival"));
 			outputText("You are prepared for what is to come.  Most of the last year has been spent honing your body and mind to prepare for the challenges ahead.  You are the Champion of Ingnam.  The one who will journey to the demon realm and guarantee the safety of your friends and family, even though you'll never see them again.  You wipe away a tear as you enter the courtyard and see Elder Nomur waiting for you.  You are ready.\n\n");
 			outputText("The walk to the tainted cave is long and silent.  Elder Nomur does not speak.  There is nothing left to say.  The two of you journey in companionable silence.  Slowly the black rock of Mount Ilgast looms closer and closer, and the temperature of the air drops.  You shiver and glance at the Elder, noticing he doesn't betray any sign of the cold.  Despite his age of nearly 80, he maintains the vigor of a man half his age.  You're glad for his strength, as assisting him across this distance would be draining, and you must save your energy for the trials ahead.\n\n");
+			outputText(images.showImage("camp-arrival"));
 			outputText("The entrance of the cave gapes open, sharp stalactites hanging over the entrance, giving it the appearance of a monstrous mouth.  Elder Nomur stops and nods to you, gesturing for you to proceed alone.\n\n");
 			outputText("The cave is unusually warm and damp, ");
-			if (player.gender == Gender.FEMALE)
-				outputText("and your body seems to feel the same way, flushing as you feel a warmth and dampness between your thighs. ");
+			if (player.gender == Gender.FEMALE) outputText("and your body seems to feel the same way, flushing as you feel a warmth and dampness between your thighs. ");
 			else outputText("and your body reacts with a sense of growing warmth focusing in your groin, your manhood hardening for no apparent reason. ");
 			outputText("You were warned of this and press forward, ignoring your body's growing needs.  A glowing purple-pink portal swirls and flares with demonic light along the back wall.  Cringing, you press forward, keenly aware that your body seems to be anticipating coming in contact with the tainted magical construct.  Closing your eyes, you gather your resolve and leap forwards.  Vertigo overwhelms you and you black out...");
 			dynStats("lus", 15);
 			doNext(arrivalPartTwo);
 		}
-		
 		private function arrivalPartTwo():void {
 			clearOutput();
-			outputText(images.showImage("monster-zetaz"));
 			hideUpDown();
 			dynStats("lus", 40, "cor", 2);
 			model.time.hours = 18;
+			outputText(images.showImage("zetaz-encounter-first"));
 			outputText("You wake with a splitting headache and a body full of burning desire.  A shadow darkens your view momentarily and your training kicks in.  You roll to the side across the bare ground and leap to your feet.  A surprised looking imp stands a few feet away, holding an empty vial.  He's completely naked, an improbably sized pulsing red cock hanging between his spindly legs.  You flush with desire as a wave of lust washes over you, your mind reeling as you fight ");
-			if (player.gender == Gender.FEMALE)
-				outputText("the urge to chase down his rod and impale yourself on it.\n\n");
-			else
-				outputText("the urge to ram your cock down his throat.  The strangeness of the thought surprises you.\n\n");
+			if (player.gender == Gender.FEMALE) outputText("the urge to chase down his rod and impale yourself on it.\n\n");
+			else outputText("the urge to ram your cock down his throat.  The strangeness of the thought surprises you.\n\n");
 			outputText("The imp says, \"<i>I'm amazed you aren't already chasing down my cock, human.  The last Champion was an eager whore for me by the time she woke up.  This lust draft made sure of it.</i>\"");
 			doNext(arrivalPartThree);
 		}
-		
 		private function arrivalPartThree():void {
 			clearOutput();
-			outputText(images.showImage("monster-zetaz"));
 			hideUpDown();
 			dynStats("lus", -30);
+			outputText(images.showImage("item-lDraft"));
 			outputText("The imp shakes the empty vial to emphasize his point.  You reel in shock at this revelation - you've just entered the demon realm and you've already been drugged!  You tremble with the aching need in your groin, but resist, righteous anger lending you strength.\n\nIn desperation you leap towards the imp, watching with glee as his cocky smile changes to an expression of sheer terror.  The smaller creature is no match for your brute strength as you pummel him mercilessly.  You pick up the diminutive demon and punt him into the air, frowning grimly as he spreads his wings and begins speeding into the distance.\n\n");
-			outputText("The imp says, \"<i>FOOL!  You could have had pleasure unending... but should we ever cross paths again you will regret humiliating me!  Remember the name Zetaz, as you'll soon face the wrath of my master!</i>\"\n\n");
-			outputText("Your pleasure at defeating the demon ebbs as you consider how you've already been defiled.  You swear to yourself you will find the demon responsible for doing this to you and the other Champions, and destroy him AND his pet imp.");
 			doNext(arrivalPartFour);
 		}
-		
 		private function arrivalPartFour():void {
 			clearOutput();
 			hideUpDown();
+			outputText(images.showImage("zetaz-runaway"));
+			outputText("The imp says, \"<i>FOOL!  You could have had pleasure unending... but should we ever cross paths again you will regret humiliating me!  Remember the name Zetaz, as you'll soon face the wrath of my master!</i>\"\n\n");
+			outputText("Your pleasure at defeating the demon ebbs as you consider how you've already been defiled.  You swear to yourself you will find the demon responsible for doing this to you and the other Champions, and destroy him AND his pet imp.");
+			doNext(arrivalPartFive);
+		}
+		private function arrivalPartFive():void {
+			clearOutput();
+			hideUpDown();
+			outputText(images.showImage("camp-portal"));
 			outputText("You look around, surveying the hellish landscape as you plot your next move.  The portal is a few yards away, nestled between a formation of rocks.  It does not seem to exude the arousing influence it had on the other side.  The ground and sky are both tinted different shades of red, though the earth beneath your feet feels as normal as any other lifeless patch of dirt.   You settle on the idea of making a camp here and fortifying this side of the portal.  No demons will ravage your beloved hometown on your watch.\n\nIt does not take long to set up your tent and a few simple traps.  You'll need to explore and gather more supplies to fortify it any further.  Perhaps you will even manage to track down the demons who have been abducting the other champions!");
 			awardAchievement("Newcomer", kACHIEVEMENTS.STORY_NEWCOMER, true, true);
 			doNext(playerMenu);
 		}
-		
-		//-----------------
-		//-- GAME MODES
-		//-----------------
+		//-----------------GAME MODES-----------------
 		private function chooseModeDifficulty():void {
-			if (flags[kFLAGS.GAME_DIFFICULTY] < 3)
-				flags[kFLAGS.GAME_DIFFICULTY]++;
-			else
-				flags[kFLAGS.GAME_DIFFICULTY] = 0;
+			if (flags[kFLAGS.GAME_DIFFICULTY] < 3) flags[kFLAGS.GAME_DIFFICULTY]++;
+			else flags[kFLAGS.GAME_DIFFICULTY] = 0;
 			chooseGameModes();
-		}	
+		}
 
 		private function chooseModeSurvival():void {
 			if (flags[kFLAGS.HUNGER_ENABLED] < 1) {
 				flags[kFLAGS.HUNGER_ENABLED] += 0.5;
 				player.hunger = 80;
-			} else {
+			}
+			else {
 				flags[kFLAGS.HUNGER_ENABLED] = 0;
 				player.hunger = 0;
 			}
@@ -1323,7 +1224,6 @@ package classes {
 			}
 			addButton(14, "Back", chooseGameModes);
 		}
-
 		//GRIMDARK!
 		private function chooseModeGrimdark():void {
 			clearOutput();
@@ -1334,8 +1234,7 @@ package classes {
 			if (flags[kFLAGS.GRIMDARK_BACKGROUND_UNLOCKED] == 0) flags[kFLAGS.BACKGROUND_STYLE] = 9;
 			player.hunger = 80;
 			doNext(startTheGame);
-		}	
-		
+		}
 		//Choose the game mode when called!
 		private function chooseGameModes():void {
 			clearOutput();
@@ -1344,35 +1243,30 @@ package classes {
 			if (flags[kFLAGS.HUNGER_ENABLED] == 0) outputText("Normal Mode. You don't have to eat.\n");
 			if (flags[kFLAGS.HUNGER_ENABLED] == 0.5) outputText("Survival Mode. You get hungry from time to time.\n");
 			if (flags[kFLAGS.HUNGER_ENABLED] == 1) outputText("Realistic Mode. You get hungry from time to time and cum production is capped. In addition, it's a bad idea to have oversized parts.\n");
-			
+
 			outputText("<b>Hardcore:</b> ");
 			if (flags[kFLAGS.HARDCORE_MODE] == 0) outputText("Normal Mode. You choose when you want to save and load.\n");
-			if (flags[kFLAGS.HARDCORE_MODE] == 1) outputText("Hardcore Mode. The game forces save and if you get a Bad End, your save file is deleted. Disables difficulty selection, debug mode, Low Standarts and Hyper Happy mode once the game is started. For the veteran CoC players only.\n");
-			
+			if (flags[kFLAGS.HARDCORE_MODE] == 1)
+				outputText("Hardcore Mode. The game forces save and if you get a Bad End, your save file is deleted. Disables difficulty selection, debug mode, Low Standarts and Hyper Happy mode once the game is started. For the veteran CoC players only.\n");
 			outputText("<b>Difficulty:</b> ");
 			if (flags[kFLAGS.GAME_DIFFICULTY] == 0) outputText("Normal Mode. No stats changes. Game is nice and simple.\n");
 			if (flags[kFLAGS.GAME_DIFFICULTY] == 1) outputText("Hard Mode. Enemies have would have extra 25% HP and 15% damage.\n");
 			if (flags[kFLAGS.GAME_DIFFICULTY] == 2) outputText("Nightmare Mode. Enemies would have extra 50% HP and 30% damage.\n");
 			if (flags[kFLAGS.GAME_DIFFICULTY] == 3) outputText("Extreme Mode. Enemies would have extra 100% HP and 50% damage.\n");
-			
-			if (debug) outputText("<b>Grimdark mode:</b> (In dev) In the grimdark future, there are only rape and corruptions. Lots of things are changed and Lethice has sent out her minions to wall the borders and put up a lot of puzzles. Can you defeat her in this mode in as few bad ends as possible?\n");
-			
+			if (debug)
+				outputText("<b>Grimdark mode:</b> (In dev) In the grimdark future, there are only rape and corruptions. Lots of things are changed and Lethice has sent out her minions to wall the borders and put up a lot of puzzles. Can you defeat her in this mode in as few bad ends as possible?\n");
 			menu();
 			addButton(0, "Survival", chooseModeSurvival);
 			addButton(1, "Hardcore", chooseModeHardcore);
 			addButton(2, "Difficulty", chooseModeDifficulty);
-			if (debug) addButton(12, "Grimdark", chooseModeGrimdark);
+			if (debug)
+				addButton(12, "Grimdark", chooseModeGrimdark);
 			addButton(14, "Start!", flags[kFLAGS.HARDCORE_MODE] == 1 ? chooseModeHardcoreSlot : startTheGame);
 		}
-
 		private function startTheGame():void {
 			player.startingRace = player.race();
-			if (flags[kFLAGS.HARDCORE_MODE] > 0) {
-				getGame().saves.saveGame(flags[kFLAGS.HARDCORE_SLOT])
-			}
-			if (flags[kFLAGS.GRIMDARK_MODE] > 0) {
-				flags[kFLAGS.BACKGROUND_STYLE] = 9;
-			}
+			if (flags[kFLAGS.HARDCORE_MODE] > 0) getGame().saves.saveGame(flags[kFLAGS.HARDCORE_SLOT])
+			if (flags[kFLAGS.GRIMDARK_MODE] > 0) flags[kFLAGS.BACKGROUND_STYLE] = 9;
 			kGAMECLASS.saves.loadPermObject();
 			flags[kFLAGS.MOD_SAVE_VERSION] = kGAMECLASS.modSaveVersion;
 			statScreenRefresh();
@@ -1395,34 +1289,31 @@ package classes {
 			outputText("Would you like to play through the 3-day prologue in Ingnam or just skip?");
 			doYesNo(goToIngnam, arrival);
 		}
-
 		public function goToIngnam():void {
 			model.time.days = -3;
 			model.time.hours = 8;
 			flags[kFLAGS.IN_INGNAM] = 1;
 			kGAMECLASS.ingnam.menuIngnam();
 		}
-
-		//------------
-		// ASCENSION
-		//------------
+		//------------ASCENSION------------
 		public function ascensionMenu():void {
 			hideStats();
 			clearOutput();
 			hideMenus();
 			mainView.nameBox.visible = false;
+			if (player.hasVagina()) outputText(images.showImage("camp-ascension-female"));
+			else outputText(images.showImage("camp-ascension-male"));
 			kGAMECLASS.displayHeader("Ascension");
 			outputText("The world you have departed is irrelevant and you are in an endless black void dotted with tens of thousands of stars. You encompass everything and everything encompasses you.");
 			outputText("\n\nAscension Perk Points: " + player.ascensionPerkPoints);
 			outputText("\n\n(When you're done, select Reincarnate.)");
 			menu();
-			addButton(0, "Perk Select", ascensionPerkMenu).hint("Spend Ascension Perk Points on special perks!", "Perk Selection");
+			addButton(0, "Perk Select",   ascensionPerkMenu).hint("Spend Ascension Perk Points on special perks!", "Perk Selection");
 			addButton(1, "Perm Perks", ascensionPermeryMenu).hint("Spend Ascension Perk Points to make certain perks permanent.", "Perk Selection");
-			addButton(2, "Respec", respecLevelPerks).hint("Respec all level-up perks for 5 Ascension Perk Points?");
-			addButton(3, "Rename", renamePrompt).hint("Change your name at no charge?");
-			addButton(4, "Reincarnate", reincarnatePrompt).hint("Reincarnate and start an entirely new adventure?");
+			addButton(2, "Respec", 		   respecLevelPerks).hint("Respec all level-up perks for 5 Ascension Perk Points?");
+			addButton(3, "Rename", 			   renamePrompt).hint("Change your name at no charge?");
+			addButton(4, "Reincarnate",   reincarnatePrompt).hint("Reincarnate and start an entirely new adventure?");
 		}
-		
 		//Perk Selection
 		private function ascensionPerkMenu():void {
 			clearOutput();
@@ -1473,43 +1364,34 @@ package classes {
 			menu();
 			for (var i:int = 0; i < player.perks.length; i++) {
 				if (isPermable(player.perks[i].ptype) && button < 14) {
-					//Decrement count before adding buttons.
-					if (countBeforeAdding > 0) {
+					if (countBeforeAdding > 0) //Decrement count before adding buttons
 						countBeforeAdding--;
-					}
-					//Add buttons when the count reaches zero.
-					else {
+					else { //Add buttons when the count reaches zero
 						if (player.perks[i].value4 == 0)
-							addButton(button++, player.perks[i].ptype.id, permanentizePerk, player.perks[i].ptype, null, null, player.perks[i].ptype.desc(player.perks[i]));
-						else
-							addButtonDisabled(button++, player.perks[i].ptype.id, "This perk is already made permanent and will carry over in all subsequent ascensions.");
+							 addButton(button++, player.perks[i].ptype.id, permanentizePerk, player.perks[i].ptype, null, null, player.perks[i].ptype.desc(player.perks[i]));
+						else addButtonDisabled(button++, player.perks[i].ptype.id, "This perk is already made permanent and will carry over in all subsequent ascensions.");
 					}
 				}
-				//Skip slots reserved for next and previous.
+				//Skip slots reserved for next and previous
 				if (button == 4) button++;
 				if (button == 9) button++;
 			}
-			//Next and previous page buttons depending on conditions.
+			//Next and previous page buttons depending on conditions
 			if (button >= 14) addButton(4, "Next", ascensionPermeryMenu, page + 1);
 			if (page > 1) addButton(9, "Previous", ascensionPermeryMenu, page - 1);
 			addButton(14, "Back", ascensionMenu);
 		}
 		private function permanentizePerk(perk:PerkType):void {
-			//Not enough points or perk already permed? Cancel.
-			if (player.ascensionPerkPoints < permanentizeCost()) return;
-			if (player.perkv4(perk) > 0) return;
-			//Deduct points
-			player.ascensionPerkPoints -= permanentizeCost();
-			//Permanentize a perk
-			player.addPerkValue(perk, 4, 1);
+			if (player.ascensionPerkPoints < permanentizeCost()) return; //Not enough points? Cancel
+			if (player.perkv4(perk) > 0) return; //Perk already permed? Cancel
+			player.ascensionPerkPoints -= permanentizeCost(); //Deduct points
+			player.addPerkValue(perk, 4, 1); //Permanentize a perk
 			ascensionPermeryMenu();
 		}
 		private function permanentizeCost():int {
 			var count:int = 1;
-
 			for each (var perk:PerkType in permeablePerks)
 				if (player.perkv4(perk) > 0) count++;
-
 			return count;
 		}
 		private function isPermable(perk:PerkType):Boolean {
@@ -1531,15 +1413,12 @@ package classes {
 			player.ascensionPerkPoints -= 5;
 			player.perkPoints = player.level - 1;
 			var ascendPerkTemp:Array = [];
-			for (var i:int = 0; i < player.perks.length; i++) {
+			for (var i:int = 0; i < player.perks.length; i++)
 				if (isAscensionPerk(player.perks[i], true)) ascendPerkTemp.push(player.perks[i]);
-			}
 			player.removePerks();
-			if (ascendPerkTemp.length > 0) {
-				for (i = 0; i < ascendPerkTemp.length; i++) {
+			if (ascendPerkTemp.length > 0)
+				for (i = 0; i < ascendPerkTemp.length; i++)
 					player.createPerk(ascendPerkTemp[i].ptype, ascendPerkTemp[i].value1, ascendPerkTemp[i].value2, ascendPerkTemp[i].value3, ascendPerkTemp[i].value4);
-				}
-			}
 			outputText("Your level-up perks are now reset and you are refunded the perk points.");
 			doNext(ascensionMenu);
 		}
@@ -1559,13 +1438,11 @@ package classes {
 			mainView.nameBox.x = mainView.mainText.x + 5;
 			mainView.nameBox.y = mainView.mainText.y + 3 + mainView.mainText.textHeight;
 		}
-		
 		private function reincarnatePrompt():void {
 			clearOutput();
 			outputText("Would you like to reincarnate and start a new life as a Champion?");
 			doYesNo(reincarnate, ascensionMenu);
 		}
-		
 		protected function reincarnate():void {
 			flags[kFLAGS.NEW_GAME_PLUS_LEVEL]++;
 			customPlayerProfile = null;
@@ -1607,20 +1484,17 @@ package classes {
 			player.vaginas = new Vector.<VaginaClass>();
 			doNext(routeToGenderChoiceReincarnation);
 		}
-		
+
 		private function routeToGenderChoiceReincarnation():void {
 			clearOutput();
 			genericGenderChoice();
 		}
-		
 		private function isAscensionPerk(perk:PerkClass, respec:Boolean = false):Boolean {
 			return perk.ptype.keepOnAscension(respec) || perk.value4 > 0;
 		}
-
 		private function isSpecialKeyItem(keyName:* = null):Boolean {
 			return (keyName === "Camp - Chest" || keyName === "Camp - Murky Chest" || keyName === "Camp - Ornate Chest" || keyName === "Equipment Rack - Weapons" || keyName === "Equipment Rack - Armor" || keyName === "Equipment Rack - Shields" || keyName === Inventory.STORAGE_JEWELRY_BOX || keyName === "Backpack" || keyName === "Nieve's Tear"); 
 		}
-
 		private function isSpell(statusEffect:* = null):Boolean {
 			return (statusEffect == StatusEffects.KnowsCharge || statusEffect == StatusEffects.KnowsBlind || statusEffect == StatusEffects.KnowsWhitefire || statusEffect == StatusEffects.KnowsArouse || statusEffect == StatusEffects.KnowsHeal || statusEffect == StatusEffects.KnowsMight || statusEffect == StatusEffects.KnowsBlackfire); 
 		}
