@@ -1986,9 +1986,18 @@ private function buildCampWallPrompt():void {
 private function buildCampWall():void {
 	var helpers:int = 0;
 	var helperArray:Array = [];
-	if (marbleFollower()) helperArray[helperArray.length] = "Marble"; helpers++;
-	if (followerHel()) helperArray[helperArray.length] = "Helia"; helpers++;
-	if (followerKiha()) helperArray[helperArray.length] = "Kiha"; helpers++;
+	if (marbleFollower()) {
+		helperArray.push("Marble");
+		helpers++;
+	}
+	if (followerHel()) {
+		helperArray.push("Helia");
+		helpers++;
+	}
+	if (followerKiha()) {
+		helperArray.push("Kiha");
+		helpers++;
+	}
 	flags[kFLAGS.CAMP_CABIN_STONE_RESOURCES] -= 50;
 	flags[kFLAGS.CAMP_CABIN_WOOD_RESOURCES] -= 100;
 	player.addKeyValue("Carpenter's Toolbox", 1, -50);
@@ -2058,15 +2067,15 @@ private function buildCampGate():void {
 	var helpers:int = 0;
 	var helperArray:Array = [];
 	if (marbleFollower()) {
-		helperArray[helperArray.length] = "Marble";
+		helperArray.push("Marble");
 		helpers++;
 	}
 	if (followerHel()) {
-		helperArray[helperArray.length] = "Helia";
+		helperArray.push("Helia");
 		helpers++;
 	}
 	if (followerKiha()) {
-		helperArray[helperArray.length] = "Kiha";
+		helperArray.push("Kiha");
 		helpers++;
 	}
 	flags[kFLAGS.CAMP_CABIN_STONE_RESOURCES] -= 100;
