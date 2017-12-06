@@ -1048,8 +1048,9 @@ package classes
 					break;
 
 				case LowerBody.RED_PANDA:
-					outputText("  Your [legCountText] legs are equally covered in black-brown fur, ending on red-panda paws with short claws."
-					          +" They have a nimble and strong build, in case you need to escape from something.");
+					outputText("  Your [legCountText] legs are equally covered in [if (hasFurryUnderBody)[underBody.furColor]|black-brown] fur,"
+					          +" ending on red-panda paws with short claws. They have a nimble and strong build,"
+					          +" in case you need to escape from something.");
 					break;
 			}
 			if (player.findPerk(PerkLib.Incorporeality) >= 0)

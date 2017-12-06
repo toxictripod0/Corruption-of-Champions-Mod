@@ -4,6 +4,7 @@ package classes.Items.Consumables
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Items.Consumable;
 	import classes.PerkLib;
+	import classes.lists.ColorLists;
 
 	/**
 	 * @since  30.11.2017
@@ -71,16 +72,15 @@ package classes.Items.Consumables
 			}
 
 			// Hair
-			var pandaHairColors:Array = ["white", "auburn", "red", "russet"];
 			// store current states first
-			var hasPandaHairColor:Boolean = pandaHairColors.indexOf(player.hair.color) !== -1;
+			var hasPandaHairColor:Boolean = ColorLists.redPandaHairColors.indexOf(player.hair.color) !== -1;
 			var hasNormalHair:Boolean = player.hair.type === Hair.NORMAL;
 			var oldHairType:Number = player.hair.type;
 			if ((!hasNormalHair || player.hair.length === 0 || !hasPandaHairColor) && changes < changeLimit && rand(3) === 0) {
-				player.hair.setProps({
-					color: randomChoice(pandaHairColors),
-					type: Hair.NORMAL
-				});
+				player.hair.type = Hair.NORMAL;
+				if (!hasPandaHairColor)
+					player.hair.color = randomChoice(ColorLists.redPandaHairColors);
+
 				if (player.hair.length === 0) { // player is bald
 					player.hair.length = 1;
 					outputText("\n\nThe familiar sensation of hair returns to your head. After looking yourself on the stream, you confirm that your"
@@ -251,6 +251,75 @@ package classes.Items.Consumables
 				}
 				player.tail.setAllProps({type: Tail.RED_PANDA});
 				changes++;
+			}
+
+			// SKin
+			function setFurrySkin():void
+			{
+				player.skin.type = Skin.FUR;
+				player.skin.adj = "";
+				player.skin.desc = "fur";
+				player.skin.furColor = "russet";
+				player.underBody.type = UnderBody.FURRY;
+				player.copySkinToUnderBody({furColor: "black"});
+				changes++;
+			}
+
+			// Fix the underBody, if the skin is already furred
+			if (player.skin.type === Skin.FUR && player.underBody.type !== UnderBody.FURRY && changes < changeLimit && rand(3) === 0) {
+				outputText("\n\nLooks, like the root has changed your fur colors."
+				          +" <b>You’re now covered from head to toe with russet-red fur with black fur on your underside!</b>");
+				setFurrySkin();
+			}
+
+			if (player.skin.type !== Skin.FUR && changes < changeLimit && rand(4) === 0) {
+				
+				if (player.hasPlainSkin()) {
+					if (["latex", "rubber"].indexOf(player.skin.adj) === -1) {
+						outputText("\n\nYou start to scratch your [skin], as an uncomfortable itching overcomes you. It’s quite annoying,"
+						          +" like the aftermath of being bitten by a bug, only that it’s all over at the same time.");
+					} else { // if rubbery
+						outputText("\n\nYour usually oily and rubbery skin suddenly feels a bit dry. Thinking that maybe the reason could be the dry"
+						          +" weather in the wastelands, you rush to the stream, washing your skin in the refreshing water.");
+						outputText("\n\nIt has the opposite effect of the one you intended, and you watch as a layer of [skinTone] colored goopy"
+						          +" rubber falls from your arm. Soon all the rubber on your arm melts off, leaving behind a layer of healthy,"
+						          +" normal skin. The process continues over the rest of your body, and before you can react your body is covered"
+						          +" in a layer of fresh new [skinTone] skin, the odd sensation fading.");
+						outputText("\n\nNot for long however, as an uncomfortable itching overcomes you. It’s quite annoying, like the aftermath"
+						          +" of being bitten for a bug, only all over your body at the same time.");
+					}
+				}
+
+				if (player.hasScales()) {
+					outputText("\n\nThe layer of scales covering your body feels weird for a second, almost looking like they’re moving on they own,"
+					          +" and that is when you realize that they changing!");
+					outputText("\n\nThe feeling is quite odd, a bit of an itching from the place where they join your skin, that quickly becomes more"
+					          +" intense as their transformation advances. Then a bunch of [skinTone] scales  fall from your arm. Soon all the scales"
+					          +" on your arm fall off, leaving behind a layer of healthy, normal skin. The process continues overs the rest of"
+					          +" your body, and before long you are covered in a layer of [skinTone] skin.");
+					outputText("\n\nNot for long though, as an uncomfortable itching overcomes you. It’s quite annoying, like the aftermath of being"
+					          +" bitten for a bug, only all over your body at the same time.");
+				}
+
+				if (player.hasGooSkin()) {
+					outputText("\n\nYour usually wet and gooey skin suddenly a bit dry. Thinking that maybe the reason could be the dry weather"
+					          +" in the wastelands, you rush to the stream, washing your skin on the refreshing water.");
+					outputText("\n\nIt has the opposite effect of the one you intended, and you watch as a layer of [skinTone] colored slime falls"
+					          +" from your arm. Alarmed, you try to put it back, but to no avail. Soon all the goo on your arm slides offleaving"
+					          +" behind a layer of healthy, normal skin. The process continues over the rest of your body, and before you can react"
+					          +" your body is covered in a layer of fresh new [skinTone] skin, the odd sensation fading as your core is expelled"
+					          +" from your now perfectly solid body.");
+					outputText("\n\nThis doesn’t last long though, as an uncomfortable itching overcomes you. It’s quite annoying,"
+					          +" like the aftermath of being bitten for a bug, only all over your body  at the same time.");
+				}
+
+				outputText("\n\nSoon you realize that the sensation is coming from under your skin. After rubbing one of your arms in annoyance,"
+				          +" you feel something different, and when you lay your eyes on it, you realize that a patch of fur is growing over"
+				          +" your skin. Then you spot similar patches over your legs, chest and back. Fur grows over your body,"
+				          +" patches joining and closing over your skin, and in a matter of seconds, your entire body is covered with"
+				          +" a lovely coat of thick fur. The soft and fluffy sensation is quite pleasant to the touch.");
+				outputText("\n<b>Seems like you’re now covered from head to toe with russet-red fur with black fur on your underside!</b>");
+				setFurrySkin();
 			}
 
 			//FAILSAFE CHANGE

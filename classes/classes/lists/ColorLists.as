@@ -7,6 +7,13 @@ package classes.lists
 	 */
 	public class ColorLists 
 	{
+		public static const redPandaHairColors:Array = [
+			"white",
+			"auburn",
+			"red",
+			"russet",
+		];
+
 		public static const redPandaTailColors:Array = [
 			["auburn",  "russet"],
 			["black",   "gray"],

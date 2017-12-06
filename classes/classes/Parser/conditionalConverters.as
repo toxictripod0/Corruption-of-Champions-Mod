@@ -57,6 +57,7 @@
 				"hasfur"			: function(thisPtr:*):* {return  kGAMECLASS.player.hasFur();},
 				"haswool"			: function(thisPtr:*):* {return  kGAMECLASS.player.hasWool();},
 				"hasfeathers"		: function(thisPtr:*):* {return  kGAMECLASS.player.hasFeathers();},
+				"hasfurryunderbody"	: function(thisPtr:*):* {return  kGAMECLASS.player.hasFurryUnderBody();},
 				"isfurry"			: function(thisPtr:*):* {return  kGAMECLASS.player.isFurry();},
 				"isfluffy"			: function(thisPtr:*):* {return  kGAMECLASS.player.isFluffy();},
 				"ismale"			: function(thisPtr:*):* {return  (kGAMECLASS.player.isMale());},
