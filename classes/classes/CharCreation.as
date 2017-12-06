@@ -1,21 +1,22 @@
-package classes {
+﻿package classes {
 	import classes.BodyParts.*;
 	import classes.BodyParts.Butt;
 	import classes.BodyParts.Hips;
+	import classes.GlobalFlags.kACHIEVEMENTS;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
-	import classes.GlobalFlags.kACHIEVEMENTS;
-	import classes.Items.Armors.GooArmor;
 	import classes.Items.*;
-	import classes.Saves;
-	import classes.internals.Utils;
+	import classes.Items.Armors.GooArmor;
 	import classes.Scenes.Inventory;
-
+	import classes.internals.Utils;
+	import classes.lists.BreastCup;
+	import classes.lists.Gender;
+	import coc.view.MainView;
 	import fl.controls.ComboBox;
 	import fl.data.DataProvider;
 	import flash.events.Event;
 
-	import coc.view.MainView;
+
 
 	public class CharCreation extends BaseContent {
 
@@ -192,7 +193,7 @@ package classes {
 			player.lowerBody.type = LowerBody.HUMAN;
 			player.lowerBody.legCount = 2;
 			player.face.type= Face.HUMAN;
-			player.eye.count = 2;
+			player.eyes.count = 2;
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) player.tail.type = Tail.NONE;
 			player.tongue.type = Tongue.HUMAN;
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) player.femininity = 50;
@@ -740,8 +741,8 @@ package classes {
 			mainView.nameBox.restrict = null;
 			outputText("You can finalize your appearance customization before you proceed to perk selection. You will be able to alter your appearance through the usage of certain items.\n\n");
 			outputText("Height: " + Math.floor(player.tallness / 12) + "'" + player.tallness % 12 + "\"\n");
-			outputText("Skin tone: " + player.skinTone + "\n");
-			outputText("Hair color: " + player.hairColor + "\n");
+			outputText("Skin tone: " + player.skin.tone + "\n");
+			outputText("Hair color: " + player.hair.color + "\n");
 			if (player.hasCock()) outputText("Cock size: " + player.cocks[0].cockLength + "\" long, " + player.cocks[0].cockThickness + "\" thick\n");
 			outputText("Breast size: " + player.breastCup(0) + "\n");
 			menu();
