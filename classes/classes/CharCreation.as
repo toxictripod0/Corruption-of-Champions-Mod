@@ -1,7 +1,5 @@
 ﻿package classes {
 	import classes.BodyParts.*;
-	import classes.BodyParts.Butt;
-	import classes.BodyParts.Hips;
 	import classes.GlobalFlags.kACHIEVEMENTS;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
