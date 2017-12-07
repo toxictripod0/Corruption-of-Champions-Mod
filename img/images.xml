@@ -481,10 +481,6 @@
 				<ImageFile>./img/arianmale-tent</ImageFile>
 				<ImageFile>./img/arianmale-tent_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="arrival">
-				<ImageFile>./img/arrival</ImageFile>
-				<ImageFile>./img/arrival_1</ImageFile>
-			</ImageSet>
 			<ImageSet id="badend-amarok">
 				<ImageFile>./img/badend-amarok</ImageFile>
 				<ImageFile>./img/badend-amarok_1</ImageFile>
@@ -677,6 +673,10 @@
 				<ImageFile>./img/birth-cock-eggs</ImageFile>
 				<ImageFile>./img/birth-cock-eggs_1</ImageFile>
 			</ImageSet>
+			<ImageSet id="birth-cockatrice">
+				<ImageFile>./img/birth-cockatrice</ImageFile>
+				<ImageFile>./img/birth-cockatrice_1</ImageFile>
+			</ImageSet>
 			<ImageSet id="birth-cowgirl">
 				<ImageFile>./img/birth-cowgirl</ImageFile>
 				<ImageFile>./img/birth-cowgirl_1</ImageFile>
@@ -833,6 +833,10 @@
 				<ImageFile>./img/cGlade-vines</ImageFile>
 				<ImageFile>./img/cGlade-vines_1</ImageFile>
 			</ImageSet>
+			<ImageSet id="callu-avoid">
+				<ImageFile>./img/callu-avoid</ImageFile>
+				<ImageFile>./img/callu-avoid_1</ImageFile>
+			</ImageSet>
 			<ImageSet id="callu-fishing">
 				<ImageFile>./img/callu-fishing</ImageFile>
 				<ImageFile>./img/callu-fishing_1</ImageFile>
@@ -840,6 +844,14 @@
 			<ImageSet id="callu-intro">
 				<ImageFile>./img/callu-intro</ImageFile>
 				<ImageFile>./img/callu-intro_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="callu-repeat">
+				<ImageFile>./img/callu-repeat</ImageFile>
+				<ImageFile>./img/callu-repeat_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="callu-sex-anemone">
+				<ImageFile>./img/callu-sex-anemone</ImageFile>
+				<ImageFile>./img/callu-sex-anemone_1</ImageFile>
 			</ImageSet>
 			<ImageSet id="callu-sex-avian">
 				<ImageFile>./img/callu-sex-avian</ImageFile>
@@ -869,10 +881,6 @@
 				<ImageFile>./img/callu-sex-facesit</ImageFile>
 				<ImageFile>./img/callu-sex-facesit_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="callu-sex-fox">
-				<ImageFile>./img/callu-sex-fox</ImageFile>
-				<ImageFile>./img/callu-sex-fox_1</ImageFile>
-			</ImageSet>
 			<ImageSet id="callu-sex-fuck">
 				<ImageFile>./img/callu-sex-fuck</ImageFile>
 				<ImageFile>./img/callu-sex-fuck_1</ImageFile>
@@ -889,29 +897,53 @@
 				<ImageFile>./img/callu-sex-kangaroo</ImageFile>
 				<ImageFile>./img/callu-sex-kangaroo_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="callu-sex-lizard">
-				<ImageFile>./img/callu-sex-lizard</ImageFile>
-				<ImageFile>./img/callu-sex-lizard_1</ImageFile>
+			<ImageSet id="callu-sex-reptile">
+				<ImageFile>./img/callu-sex-reptile</ImageFile>
+				<ImageFile>./img/callu-sex-reptile_1</ImageFile>
 			</ImageSet>
 			<ImageSet id="callu-sex-tentacle">
 				<ImageFile>./img/callu-sex-tentacle</ImageFile>
 				<ImageFile>./img/callu-sex-tentacle_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="callu-sex-wolf">
-				<ImageFile>./img/callu-sex-wolf</ImageFile>
-				<ImageFile>./img/callu-sex-wolf_1</ImageFile>
+			<ImageSet id="camp-arrival">
+				<ImageFile>./img/camp-arrival</ImageFile>
+				<ImageFile>./img/camp-arrival_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="camp-ascending">
-				<ImageFile>./img/camp-ascending</ImageFile>
-				<ImageFile>./img/camp-ascending_1</ImageFile>
+			<ImageSet id="camp-ascending-amily">
+				<ImageFile>./img/camp-ascending-amily</ImageFile>
+				<ImageFile>./img/camp-ascending-amily_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="camp-ascending-callu">
+				<ImageFile>./img/camp-ascending-callu</ImageFile>
+				<ImageFile>./img/camp-ascending-callu_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="camp-ascending-corrupt">
+				<ImageFile>./img/camp-ascending-corrupt</ImageFile>
+				<ImageFile>./img/camp-ascending-corrupt_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="camp-ascending-marble">
+				<ImageFile>./img/camp-ascending-marble</ImageFile>
+				<ImageFile>./img/camp-ascending-marble_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="camp-ascending-sophie">
+				<ImageFile>./img/camp-ascending-sophie</ImageFile>
+				<ImageFile>./img/camp-ascending-sophie_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="camp-ascending-urta">
+				<ImageFile>./img/camp-ascending-urta</ImageFile>
+				<ImageFile>./img/camp-ascending-urta_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="camp-ascension-female">
+				<ImageFile>./img/camp-ascension-female</ImageFile>
+				<ImageFile>./img/camp-ascension-female_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="camp-ascension-male">
+				<ImageFile>./img/camp-ascension-male</ImageFile>
+				<ImageFile>./img/camp-ascension-male_1</ImageFile>
 			</ImageSet>
 			<ImageSet id="camp-cabin">
 				<ImageFile>./img/camp-cabin</ImageFile>
 				<ImageFile>./img/camp-cabin_1</ImageFile>
-			</ImageSet>
-			<ImageSet id="camp-doings">
-				<ImageFile>./img/camp-doings</ImageFile>
-				<ImageFile>./img/camp-doings_1</ImageFile>
 			</ImageSet>
 			<ImageSet id="camp-dream">
 				<ImageFile>./img/camp-dream</ImageFile>
@@ -945,9 +977,13 @@
 				<ImageFile>./img/camp-sleep-arian</ImageFile>
 				<ImageFile>./img/camp-sleep-arian_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="camp-sleep-ember">
-				<ImageFile>./img/camp-sleep-ember</ImageFile>
-				<ImageFile>./img/camp-sleep-ember_1</ImageFile>
+			<ImageSet id="camp-sleep-ember-female">
+				<ImageFile>./img/camp-sleep-ember-female</ImageFile>
+				<ImageFile>./img/camp-sleep-ember-female_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="camp-sleep-ember-male">
+				<ImageFile>./img/camp-sleep-ember-male</ImageFile>
+				<ImageFile>./img/camp-sleep-ember-male_1</ImageFile>
 			</ImageSet>
 			<ImageSet id="camp-sleep-helia">
 				<ImageFile>./img/camp-sleep-helia</ImageFile>
@@ -981,25 +1017,29 @@
 				<ImageFile>./img/camp-waiting</ImageFile>
 				<ImageFile>./img/camp-waiting_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="camp-wall-part0">
-				<ImageFile>./img/camp-wall-part0</ImageFile>
-				<ImageFile>./img/camp-wall-part0_1</ImageFile>
+			<ImageSet id="camp-wall-gate">
+				<ImageFile>./img/camp-wall-gate</ImageFile>
+				<ImageFile>./img/camp-wall-gate_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="camp-wall-part1">
-				<ImageFile>./img/camp-wall-part1</ImageFile>
-				<ImageFile>./img/camp-wall-part1_1</ImageFile>
+			<ImageSet id="camp-wall-partI">
+				<ImageFile>./img/camp-wall-partI</ImageFile>
+				<ImageFile>./img/camp-wall-partI_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="camp-wall-part2">
-				<ImageFile>./img/camp-wall-part2</ImageFile>
-				<ImageFile>./img/camp-wall-part2_1</ImageFile>
+			<ImageSet id="camp-wall-partII">
+				<ImageFile>./img/camp-wall-partII</ImageFile>
+				<ImageFile>./img/camp-wall-partII_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="camp-wall-part3">
-				<ImageFile>./img/camp-wall-part3</ImageFile>
-				<ImageFile>./img/camp-wall-part3_1</ImageFile>
+			<ImageSet id="camp-wall-partIII">
+				<ImageFile>./img/camp-wall-partIII</ImageFile>
+				<ImageFile>./img/camp-wall-partIII_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="camp-wall-part4">
-				<ImageFile>./img/camp-wall-part4</ImageFile>
-				<ImageFile>./img/camp-wall-part4_1</ImageFile>
+			<ImageSet id="camp-wall-partIV">
+				<ImageFile>./img/camp-wall-partIV</ImageFile>
+				<ImageFile>./img/camp-wall-partIV_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="camp-wall-skull">
+				<ImageFile>./img/camp-wall-skull</ImageFile>
+				<ImageFile>./img/camp-wall-skull_1</ImageFile>
 			</ImageSet>
 			<ImageSet id="camp-watch-stars">
 				<ImageFile>./img/camp-watch-stars</ImageFile>
@@ -1008,6 +1048,10 @@
 			<ImageSet id="camp-watch-sunset">
 				<ImageFile>./img/camp-watch-sunset</ImageFile>
 				<ImageFile>./img/camp-watch-sunset_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="campfire">
+				<ImageFile>./img/campfire</ImageFile>
+				<ImageFile>./img/campfire_1</ImageFile>
 			</ImageSet>
 			<ImageSet id="chameleon-female-lose-facesit-tailfuck">
 				<ImageFile>./img/chameleon-female-lose-facesit-tailfuck</ImageFile>
@@ -1049,21 +1093,49 @@
 				<ImageFile>./img/coc-title</ImageFile>
 				<ImageFile>./img/coc-title_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="cockatrice-foreplay">
-				<ImageFile>./img/cockatrice-foreplay</ImageFile>
-				<ImageFile>./img/cockatrice-foreplay_1</ImageFile>
+			<ImageSet id="cockatrice-fallen-hp">
+				<ImageFile>./img/cockatrice-fallen-hp</ImageFile>
+				<ImageFile>./img/cockatrice-fallen-hp_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="cockatrice-fallen-lust">
+				<ImageFile>./img/cockatrice-fallen-lust</ImageFile>
+				<ImageFile>./img/cockatrice-fallen-lust_1</ImageFile>
 			</ImageSet>
 			<ImageSet id="cockatrice-loss-butt">
 				<ImageFile>./img/cockatrice-loss-butt</ImageFile>
 				<ImageFile>./img/cockatrice-loss-butt_1</ImageFile>
 			</ImageSet>
+			<ImageSet id="cockatrice-loss-oral">
+				<ImageFile>./img/cockatrice-loss-oral</ImageFile>
+				<ImageFile>./img/cockatrice-loss-oral_1</ImageFile>
+			</ImageSet>
 			<ImageSet id="cockatrice-loss-vag">
 				<ImageFile>./img/cockatrice-loss-vag</ImageFile>
 				<ImageFile>./img/cockatrice-loss-vag_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="cockatrice-ridehim">
-				<ImageFile>./img/cockatrice-ridehim</ImageFile>
-				<ImageFile>./img/cockatrice-ridehim_1</ImageFile>
+			<ImageSet id="cockatrice-ridehim-anal">
+				<ImageFile>./img/cockatrice-ridehim-anal</ImageFile>
+				<ImageFile>./img/cockatrice-ridehim-anal_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="cockatrice-ridehim-cunnilingus">
+				<ImageFile>./img/cockatrice-ridehim-cunnilingus</ImageFile>
+				<ImageFile>./img/cockatrice-ridehim-cunnilingus_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="cockatrice-ridehim-drider">
+				<ImageFile>./img/cockatrice-ridehim-drider</ImageFile>
+				<ImageFile>./img/cockatrice-ridehim-drider_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="cockatrice-ridehim-oral">
+				<ImageFile>./img/cockatrice-ridehim-oral</ImageFile>
+				<ImageFile>./img/cockatrice-ridehim-oral_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="cockatrice-ridehim-taur-buttfuck">
+				<ImageFile>./img/cockatrice-ridehim-taur-buttfuck</ImageFile>
+				<ImageFile>./img/cockatrice-ridehim-taur-buttfuck_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="cockatrice-ridehim-vag">
+				<ImageFile>./img/cockatrice-ridehim-vag</ImageFile>
+				<ImageFile>./img/cockatrice-ridehim-vag_1</ImageFile>
 			</ImageSet>
 			<ImageSet id="cockatrice-win-buttfuck">
 				<ImageFile>./img/cockatrice-win-buttfuck</ImageFile>
@@ -1293,6 +1365,10 @@
 				<ImageFile>./img/event-first-steps</ImageFile>
 				<ImageFile>./img/event-first-steps_1</ImageFile>
 			</ImageSet>
+			<ImageSet id="event-floppy">
+				<ImageFile>./img/event-floppy</ImageFile>
+				<ImageFile>./img/event-floppy_1</ImageFile>
+			</ImageSet>
 			<ImageSet id="event-game">
 				<ImageFile>./img/event-game</ImageFile>
 				<ImageFile>./img/event-game_1</ImageFile>
@@ -1324,6 +1400,10 @@
 			<ImageSet id="event-lumi-encounter">
 				<ImageFile>./img/event-lumi-encounter</ImageFile>
 				<ImageFile>./img/event-lumi-encounter_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="event-question">
+				<ImageFile>./img/event-question</ImageFile>
+				<ImageFile>./img/event-question_1</ImageFile>
 			</ImageSet>
 			<ImageSet id="event-stranger">
 				<ImageFile>./img/event-stranger</ImageFile>
@@ -1933,6 +2013,10 @@
 				<ImageFile>./img/item-equinum</ImageFile>
 				<ImageFile>./img/item-equinum_1</ImageFile>
 			</ImageSet>
+			<ImageSet id="item-fishFillet">
+				<ImageFile>./img/item-fishFillet</ImageFile>
+				<ImageFile>./img/item-fishFillet_1</ImageFile>
+			</ImageSet>
 			<ImageSet id="item-gAle">
 				<ImageFile>./img/item-gAle</ImageFile>
 				<ImageFile>./img/item-gAle_1</ImageFile>
@@ -2048,6 +2132,10 @@
 			<ImageSet id="item-rRapier">
 				<ImageFile>./img/item-rRapier</ImageFile>
 				<ImageFile>./img/item-rRapier_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="item-rack">
+				<ImageFile>./img/item-rack</ImageFile>
+				<ImageFile>./img/item-rack_1</ImageFile>
 			</ImageSet>
 			<ImageSet id="item-reducto">
 				<ImageFile>./img/item-reducto</ImageFile>
@@ -2496,6 +2584,22 @@
 			<ImageSet id="location-townruins">
 				<ImageFile>./img/location-townruins</ImageFile>
 				<ImageFile>./img/location-townruins_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="location-townruins-house">
+				<ImageFile>./img/location-townruins-house</ImageFile>
+				<ImageFile>./img/location-townruins-house_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="location-townruins-path">
+				<ImageFile>./img/location-townruins-path</ImageFile>
+				<ImageFile>./img/location-townruins-path_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="location-townruins-shop">
+				<ImageFile>./img/location-townruins-shop</ImageFile>
+				<ImageFile>./img/location-townruins-shop_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="location-townruins-townhall">
+				<ImageFile>./img/location-townruins-townhall</ImageFile>
+				<ImageFile>./img/location-townruins-townhall_1</ImageFile>
 			</ImageSet>
 			<ImageSet id="loppe-comes-after-moar-orgasm-denial">
 				<ImageFile>./img/loppe-comes-after-moar-orgasm-denial</ImageFile>
@@ -4053,6 +4157,10 @@
 				<ImageFile>./img/sheila-vag</ImageFile>
 				<ImageFile>./img/sheila-vag_1</ImageFile>
 			</ImageSet>
+			<ImageSet id="spidermorph-male-loss-vag">
+				<ImageFile>./img/spidermorph-male-loss-vag</ImageFile>
+				<ImageFile>./img/spidermorph-male-loss-vag_1</ImageFile>
+			</ImageSet>
 			<ImageSet id="stronghold-Courtyard-N">
 				<ImageFile>./img/stronghold-Courtyard-N</ImageFile>
 				<ImageFile>./img/stronghold-Courtyard-N_1</ImageFile>
@@ -4236,6 +4344,94 @@
 			<ImageSet id="tentaclebeast-win-male">
 				<ImageFile>./img/tentaclebeast-win-male</ImageFile>
 				<ImageFile>./img/tentaclebeast-win-male_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="thanksgiving">
+				<ImageFile>./img/thanksgiving</ImageFile>
+				<ImageFile>./img/thanksgiving_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="thanksgiving-appetizer">
+				<ImageFile>./img/thanksgiving-appetizer</ImageFile>
+				<ImageFile>./img/thanksgiving-appetizer_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="thanksgiving-approach">
+				<ImageFile>./img/thanksgiving-approach</ImageFile>
+				<ImageFile>./img/thanksgiving-approach_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="thanksgiving-baste">
+				<ImageFile>./img/thanksgiving-baste</ImageFile>
+				<ImageFile>./img/thanksgiving-baste_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="thanksgiving-basteII">
+				<ImageFile>./img/thanksgiving-basteII</ImageFile>
+				<ImageFile>./img/thanksgiving-basteII_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="thanksgiving-dessert">
+				<ImageFile>./img/thanksgiving-dessert</ImageFile>
+				<ImageFile>./img/thanksgiving-dessert_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="thanksgiving-dessert-bitches">
+				<ImageFile>./img/thanksgiving-dessert-bitches</ImageFile>
+				<ImageFile>./img/thanksgiving-dessert-bitches_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="thanksgiving-encounter">
+				<ImageFile>./img/thanksgiving-encounter</ImageFile>
+				<ImageFile>./img/thanksgiving-encounter_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="thanksgiving-ending">
+				<ImageFile>./img/thanksgiving-ending</ImageFile>
+				<ImageFile>./img/thanksgiving-ending_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="thanksgiving-enough">
+				<ImageFile>./img/thanksgiving-enough</ImageFile>
+				<ImageFile>./img/thanksgiving-enough_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="thanksgiving-hello-again">
+				<ImageFile>./img/thanksgiving-hello-again</ImageFile>
+				<ImageFile>./img/thanksgiving-hello-again_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="thanksgiving-main-course">
+				<ImageFile>./img/thanksgiving-main-course</ImageFile>
+				<ImageFile>./img/thanksgiving-main-course_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="thanksgiving-pigslut">
+				<ImageFile>./img/thanksgiving-pigslut</ImageFile>
+				<ImageFile>./img/thanksgiving-pigslut_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="thanksgiving-pigslut-ending">
+				<ImageFile>./img/thanksgiving-pigslut-ending</ImageFile>
+				<ImageFile>./img/thanksgiving-pigslut-ending_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="thanksgiving-pigslut-more">
+				<ImageFile>./img/thanksgiving-pigslut-more</ImageFile>
+				<ImageFile>./img/thanksgiving-pigslut-more_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="thanksgiving-pigslut-spank-epilogue">
+				<ImageFile>./img/thanksgiving-pigslut-spank-epilogue</ImageFile>
+				<ImageFile>./img/thanksgiving-pigslut-spank-epilogue_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="thanksgiving-pigslut-tenderize">
+				<ImageFile>./img/thanksgiving-pigslut-tenderize</ImageFile>
+				<ImageFile>./img/thanksgiving-pigslut-tenderize_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="thanksgiving-pigslut-tenderize-hardcore">
+				<ImageFile>./img/thanksgiving-pigslut-tenderize-hardcore</ImageFile>
+				<ImageFile>./img/thanksgiving-pigslut-tenderize-hardcore_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="thanksgiving-pigslut-tenderize-softcore">
+				<ImageFile>./img/thanksgiving-pigslut-tenderize-softcore</ImageFile>
+				<ImageFile>./img/thanksgiving-pigslut-tenderize-softcore_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="thanksgiving-season">
+				<ImageFile>./img/thanksgiving-season</ImageFile>
+				<ImageFile>./img/thanksgiving-season_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="thanksgiving-spit-roast">
+				<ImageFile>./img/thanksgiving-spit-roast</ImageFile>
+				<ImageFile>./img/thanksgiving-spit-roast_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="thanksgiving-stuff">
+				<ImageFile>./img/thanksgiving-stuff</ImageFile>
+				<ImageFile>./img/thanksgiving-stuff_1</ImageFile>
 			</ImageSet>
 			<ImageSet id="urta-bar">
 				<ImageFile>./img/urta-bar</ImageFile>
@@ -4505,6 +4701,10 @@
 				<ImageFile>./img/yeti-vag-ride</ImageFile>
 				<ImageFile>./img/yeti-vag-ride_1</ImageFile>
 			</ImageSet>
+			<ImageSet id="zetaz-encounter-first">
+				<ImageFile>./img/zetaz-encounter-first</ImageFile>
+				<ImageFile>./img/zetaz-encounter-first_1</ImageFile>
+			</ImageSet>
 			<ImageSet id="zetaz-loss-female">
 				<ImageFile>./img/zetaz-loss-female</ImageFile>
 				<ImageFile>./img/zetaz-loss-female_1</ImageFile>
@@ -4516,6 +4716,10 @@
 			<ImageSet id="zetaz-loss-male">
 				<ImageFile>./img/zetaz-loss-male</ImageFile>
 				<ImageFile>./img/zetaz-loss-male_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="zetaz-runaway">
+				<ImageFile>./img/zetaz-runaway</ImageFile>
+				<ImageFile>./img/zetaz-runaway_1</ImageFile>
 			</ImageSet>
 		</ImageList>
 		<ExtensionList>
