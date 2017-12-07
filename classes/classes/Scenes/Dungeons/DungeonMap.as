@@ -180,12 +180,19 @@ package classes.Scenes.Dungeons {
 			];
 			// -- Dragon City (Ember Quest) --
 			MAP_DRAGONCITY_F1 = [
-				"The Lost Dragon City",
-				[]
+				"Dragon City",
+				[-1, -2, 59, -2, -1],
+				[-1, -2, -3, -2, -3],
+				[57, -4, 58, -2, 61],
+				[-3, -2, -3, -2, -3],
+				[56, -4, 55, -4, 60],
+				[-1, -2, -3, -2, -1]
 			];
 			MAP_DRAGONCITY_B1 = [
-				"The Lost Dragon City, Basement",
-				[]
+				"Dragon City, Sewers",
+				[-1, -2, 64, -2, -1],
+				[-1, -2, -3, -2, -1],
+				[62, -4, 63, -2, -1]
 			];
 		}
 		
@@ -250,6 +257,10 @@ package classes.Scenes.Dungeons {
 				if (kGAMECLASS.dungeonLoc >= 49 && kGAMECLASS.dungeonLoc <= 51) buildMapDisplay(MAP_ANZUPALACE_F3);
 				if (kGAMECLASS.dungeonLoc == 52) buildMapDisplay(MAP_ANZUPALACE_F4);
 				if (kGAMECLASS.dungeonLoc == 53 || kGAMECLASS.dungeonLoc == 54) buildMapDisplay(MAP_ANZUPALACE_B1);
+			}
+			else if (kGAMECLASS.dungeonLoc >= 55 && kGAMECLASS.dungeonLoc < 65) { //Dragon City
+				if (kGAMECLASS.dungeonLoc < 62) buildMapDisplay(MAP_DRAGONCITY_F1);
+				else buildMapDisplay(MAP_DRAGONCITY_B1);
 			}
 		}
 		

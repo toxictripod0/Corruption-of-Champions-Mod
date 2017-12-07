@@ -1,4 +1,4 @@
-//Side Dungeon: Desert Cave (Refactored, may have bugs)
+//Side Dungeon: Desert Cave
 package classes.Scenes.Dungeons 
 {
 	import classes.*;

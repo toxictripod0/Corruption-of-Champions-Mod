@@ -1881,6 +1881,7 @@ private function dungeons():void {
 	if (kGAMECLASS.dungeons.checkPhoenixTowerClear()) addButton(6, "Phoenix Tower", getGame().dungeons.heltower.returnToHeliaDungeon).hint("Re-visit the tower you went there as part of Helia's quest." + (kGAMECLASS.dungeons.checkPhoenixTowerClear() ? "\n\nYou've helped Helia in the quest and resolved the problems. \n\nCLEARED!" : ""));
 		//Fetish Church?
 		//Hellhound Dungeon?
+	//if (debug) addButton(9, "Dragon City", getGame().dungeons.dragoncity.enterDungeonDev).hint("This button is placed temporarily for testing purposes.");
 	//Non-hostile dungeons
 	if (flags[kFLAGS.ANZU_PALACE_UNLOCKED] > 0) addButton(10, "Anzu's Palace", getGame().dungeons.palace.enterDungeon).hint("Visit the palace in the Glacial Rift where Anzu the avian deity resides.");
 	addButton(14, "Back", places);
