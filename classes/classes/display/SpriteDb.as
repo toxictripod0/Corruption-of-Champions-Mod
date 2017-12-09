@@ -246,6 +246,13 @@ public class SpriteDb {
 	public static function get s_gargoyle(): Class {
 		return is8bit ? null : s_gargoyle_16bit;
 	}
+	[Embed(source="../../../res/sprites/ghoul.png")]
+	public static const s_ghoul_16bit:Class;
+//	[Embed(source="../../../res/sprites8bit/ghoul-old.png")]
+//	public static const s_ghoul_8bit:Class;
+	public static function get s_ghoul(): Class {
+		return is8bit ? null : s_ghoul_16bit;
+	}
 	[Embed(source="../../../res/sprites/giacomo.png")]
 	public static const s_giacomo_16bit:Class;
 	[Embed(source="../../../res/sprites8bit/giacomo-old.png")]
@@ -600,6 +607,20 @@ public class SpriteDb {
 //	public static const s_phoenix_8bit:Class;
 	public static function get s_phoenix(): Class {
 		return is8bit ? null : s_phoenix_16bit;
+	}
+	[Embed(source="../../../res/sprites/phylla.png")]
+	public static const s_phylla_16bit:Class;
+//	[Embed(source="../../../res/sprites8bit/phylla-old.png")]
+//	public static const s_phylla_8bit:Class;
+	public static function get s_phylla(): Class {
+		return is8bit ? null : s_phylla_16bit;
+	}
+	[Embed(source="../../../res/sprites/phylla_eggs.png")]
+	public static const s_phylla_eggs_16bit:Class;
+//	[Embed(source="../../../res/sprites8bit/phylla_eggs-old.png")]
+//	public static const s_phylla_eggs_8bit:Class;
+	public static function get s_phylla_eggs(): Class {
+		return is8bit ? null : s_phylla_eggs_16bit;
 	}
 	[Embed(source="../../../res/sprites/poisontail.png")]
 	public static const s_poisontail_16bit:Class;

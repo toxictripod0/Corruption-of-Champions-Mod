@@ -15,6 +15,7 @@ import classes.Scenes.Dungeons.LethicesKeep.*;
 import classes.Scenes.Monsters.*;
 import classes.Scenes.NPCs.*;
 import classes.Scenes.Places.TelAdre.UmasShop;
+import classes.display.SpriteDb;
 
 import coc.view.MainView;
 
@@ -873,6 +874,7 @@ public class Combat extends BaseContent
 			
 			//GHOUL REVEAL, HOPEFULLY
 			if (!ghoulReveal && monster is Ghoul) {
+				spriteSelect(SpriteDb.s_ghoul);
 				outputText("Your " + kGAMECLASS.player.weaponName + " strikes the hyena, causing it to recoil and vanish in a cloud of sandy dust. You stumble back in surprise and look up to see a snarling, ghostly creature in the air. Your enemy wasn't a hyena. <b>It was a ghoul!</b>\n\n");
 				if (silly()) outputText("<b>The wild Ghoul's illusion wore off!</b>\n\n");
 				this.ghoulReveal = true;
