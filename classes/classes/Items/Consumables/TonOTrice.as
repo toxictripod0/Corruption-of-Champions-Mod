@@ -54,9 +54,9 @@ package classes.Items.Consumables
 				outputText("\n\nYou stumble as you shift position, surprised by how quickly you move. After a moment or two of disorientation,"
 				          +" you adjust. You’re certain that you can run faster now.");
 				//+3 spe if less than 50
-				if (player.lib < 50) dynStats("spe", 1);
+				if (player.spe < player.ngPlus(50)) dynStats("spe", 1);
 				//+2 spe if less than 75
-				if (player.lib < 75) dynStats("spe", 1);
+				if (player.spe < player.ngPlus(75)) dynStats("spe", 1);
 				//+1 if above 75.
 				dynStats("spe", 1);
 				//[removed:1.4.10]//changes++;
