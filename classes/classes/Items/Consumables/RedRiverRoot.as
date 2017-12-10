@@ -20,7 +20,7 @@ package classes.Items.Consumables
 		{
 			super(
 				"RdRRoot",
-				"RedRiverRoot",
+				"R.R.Root",
 				"a red river root",
 				14,
 				"A long, odd shaped root. It smells spicy but surprisingly tasty. Eating it would supposedly alter your body in unknown ways."
