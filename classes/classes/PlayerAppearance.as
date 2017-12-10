@@ -1288,38 +1288,25 @@ package classes
 					else if (rando % 3 == 2)  outputText(" in diameter.");
 
 					// What flavor of cock do you have?
-					if (player.cocks[cock_index].cockType == CockTypesEnum.HORSE) 
-						outputText("  It's mottled black and brown in a very animalistic pattern.  The 'head' of its shaft flares proudly, just like a horse's.");
-					else if (player.cocks[cock_index].cockType == CockTypesEnum.DOG) 
-						outputText("  It is shiny, pointed, and covered in veins, just like a large dog's cock.");
-					else if (player.cocks[cock_index].cockType == CockTypesEnum.WOLF) 
-						outputText("  It is shiny red, pointed, and covered in veins, just like a large wolf's cock.");
-					else if (player.cocks[cock_index].cockType == CockTypesEnum.FOX) 
-						outputText("  It is shiny, pointed, and covered in veins, just like a large fox's cock.");
-					else if (player.cocks[cock_index].cockType == CockTypesEnum.DEMON) 
-						outputText("  The crown is ringed with a circle of rubbery protrusions that grow larger as you get more aroused.  The entire thing is shiny and covered with tiny, sensitive nodules that leave no doubt about its demonic origins.");
-					else if (player.cocks[cock_index].cockType == CockTypesEnum.TENTACLE) 
-						outputText("  The entirety of its green surface is covered in perspiring beads of slick moisture.  It frequently shifts and moves of its own volition, the slightly oversized and mushroom-like head shifting in coloration to purplish-red whenever you become aroused.");
-					else if (player.cocks[cock_index].cockType == CockTypesEnum.CAT) 
-						outputText("  It ends in a single point, much like a spike, and is covered in small, fleshy barbs. The barbs are larger at the base and shrink in size as they get closer to the tip.  Each of the spines is soft and flexible, and shouldn't be painful for any of your partners.");
-					else if (player.cocks[cock_index].cockType == CockTypesEnum.LIZARD) 
-						outputText("  It's a deep, iridescent purple in color.  Unlike a human penis, the shaft is not smooth, and is instead patterned with multiple bulbous bumps.");
-					else if (player.cocks[cock_index].cockType == CockTypesEnum.ANEMONE) 
-						outputText("  The crown is surrounded by tiny tentacles with a venomous, aphrodisiac payload.  At its base a number of similar, longer tentacles have formed, guaranteeing that pleasure will be forced upon your partners.");
-					else if (player.cocks[cock_index].cockType == CockTypesEnum.KANGAROO) 
-						outputText("  It usually lies coiled inside a sheath, but undulates gently and tapers to a point when erect, somewhat like a taproot.");
-					else if (player.cocks[cock_index].cockType == CockTypesEnum.DRAGON) 
-						outputText("  With its tapered tip, there are few holes you wouldn't be able to get into.  It has a strange, knot-like bulb at its base, but doesn't usually flare during arousal as a dog's knot would.");
-					else if (player.cocks[cock_index].cockType == CockTypesEnum.BEE)
-						outputText("  It's a long, smooth black shaft that's rigid to the touch.  Its base is ringed with a layer of " + shortSuffix(4) + " long soft bee hair.  The tip has a much finer layer of short yellow hairs.  The tip is very sensitive, and it hurts constantly if you don’t have bee honey on it.");
-					else if (player.cocks[cock_index].cockType == CockTypesEnum.PIG)
-						outputText("  It's bright pinkish red, ending in a prominent corkscrew shape at the tip.");
-					else if (player.cocks[cock_index].cockType == CockTypesEnum.AVIAN)
-						outputText("  It's a red, tapered cock that ends in a tip.  It rests nicely in a sheath.");
-					else if (player.cocks[cock_index].cockType == CockTypesEnum.RHINO)
-						outputText("  It's a smooth, tough pink colored and takes on a long and narrow shape with an oval shaped bulge along the center.");
-					else if (player.cocks[cock_index].cockType == CockTypesEnum.ECHIDNA)
-						outputText("  It is quite a sight to behold, coming well-equipped with four heads.");
+					switch (player.cocks[cock_index].cockType) {
+						case CockTypesEnum.HORSE:     outputText("  It's mottled black and brown in a very animalistic pattern.  The 'head' of its shaft flares proudly, just like a horse's."); break;
+						case CockTypesEnum.DOG:       outputText("  It is shiny, pointed, and covered in veins, just like a large dog's cock."); break;
+						case CockTypesEnum.WOLF:      outputText("  It is shiny red, pointed, and covered in veins, just like a large wolf's cock."); break;
+						case CockTypesEnum.FOX:       outputText("  It is shiny, pointed, and covered in veins, just like a large fox's cock."); break;
+						case CockTypesEnum.DEMON:     outputText("  The crown is ringed with a circle of rubbery protrusions that grow larger as you get more aroused.  The entire thing is shiny and covered with tiny, sensitive nodules that leave no doubt about its demonic origins."); break;
+						case CockTypesEnum.TENTACLE:  outputText("  The entirety of its green surface is covered in perspiring beads of slick moisture.  It frequently shifts and moves of its own volition, the slightly oversized and mushroom-like head shifting in coloration to purplish-red whenever you become aroused."); break;
+						case CockTypesEnum.CAT:       outputText("  It ends in a single point, much like a spike, and is covered in small, fleshy barbs. The barbs are larger at the base and shrink in size as they get closer to the tip.  Each of the spines is soft and flexible, and shouldn't be painful for any of your partners."); break;
+						case CockTypesEnum.LIZARD:    outputText("  It's a deep, iridescent purple in color.  Unlike a human penis, the shaft is not smooth, and is instead patterned with multiple bulbous bumps."); break;
+						case CockTypesEnum.ANEMONE:   outputText("  The crown is surrounded by tiny tentacles with a venomous, aphrodisiac payload.  At its base a number of similar, longer tentacles have formed, guaranteeing that pleasure will be forced upon your partners."); break;
+						case CockTypesEnum.KANGAROO:  outputText("  It usually lies coiled inside a sheath, but undulates gently and tapers to a point when erect, somewhat like a taproot."); break;
+						case CockTypesEnum.DRAGON:    outputText("  With its tapered tip, there are few holes you wouldn't be able to get into.  It has a strange, knot-like bulb at its base, but doesn't usually flare during arousal as a dog's knot would."); break;
+						case CockTypesEnum.BEE:       outputText("  It's a long, smooth black shaft that's rigid to the touch.  Its base is ringed with a layer of " + shortSuffix(4) + " long soft bee hair.  The tip has a much finer layer of short yellow hairs.  The tip is very sensitive, and it hurts constantly if you don’t have bee honey on it."); break;
+						case CockTypesEnum.PIG:       outputText("  It's bright pinkish red, ending in a prominent corkscrew shape at the tip."); break;
+						case CockTypesEnum.AVIAN:     outputText("  It's a red, tapered cock that ends in a tip.  It rests nicely in a sheath."); break;
+						case CockTypesEnum.RHINO:     outputText("  It's a smooth, tough pink colored and takes on a long and narrow shape with an oval shaped bulge along the center."); break;
+						case CockTypesEnum.ECHIDNA:   outputText("  It is quite a sight to behold, coming well-equipped with four heads."); break;
+						case CockTypesEnum.RED_PANDA: outputText("  It lies protected in a soft, fuzzy sheath."); break;
+					}
 
 					// Knot?
 					if (player.cocks[cock_index].knotMultiplier > 1) {

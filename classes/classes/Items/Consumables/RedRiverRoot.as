@@ -1,9 +1,12 @@
 package classes.Items.Consumables 
 {
 	import classes.BodyParts.*;
+	import classes.CockTypesEnum;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Items.Consumable;
 	import classes.PerkLib;
+	import classes.StatusEffects;
+	import classes.lists.BreastCup;
 	import classes.lists.ColorLists;
 
 	/**
@@ -44,6 +47,232 @@ package classes.Items.Consumables
 			          +" of the transformative. Still, it has a rich flavour and texture, but soon that becomes secondary,"
 			          +" as you realize that the foreign rhizome is changing your body!");
 
+			if (player.spe < player.ngPlus(100) && changes < changeLimit && rand(3) === 0) {
+				outputText("\n\nAfter a momentaneous dizziness, you recover your stance,"
+				          +" and find your muscles becoming more nimble and prompt to run.");
+				//+3 spe if less than 50
+				if (player.spe < player.ngPlus(50)) dynStats("spe", 1);
+				//+2 spe if less than 75
+				if (player.spe < player.ngPlus(75)) dynStats("spe", 1);
+				//+1 if above 75.
+				dynStats("spe", 1);
+			}
+
+			// ------------- Sexual changes -------------
+			//-Nipples reduction to 1 per tit.
+			if (player.averageNipplesPerBreast() > 1 && changes < changeLimit && rand(4) === 0) {
+				outputText("\n\nA chill runs over your [allBreasts] and vanishes. You stick a hand under your [armor] and discover that your extra"
+				          +" nipples are missing! You're down to just one per [if (biggestTitSize < 1)'breast'|breast].");
+				changes++;
+				//Loop through and reset nipples
+				for (i = 0; i < player.breastRows.length; i++) {
+					player.breastRows[i].nipplesPerBreast = 1;
+				}
+			}
+
+			//-Remove extra breast rows
+			if (changes < changeLimit && player.breastRows.length > 1 && rand(3) === 0 && !flags[kFLAGS.HYPER_HAPPY]) {
+				mutations.removeExtraBreastRow(tfSource);
+			}
+
+			//-Butt > 5 - decrease butt size
+			if (player.butt.rating > 5 && changes < changeLimit && rand(4) === 0) {
+				changes++;
+				player.butt.rating--;
+				outputText("\n\nA feeling of tightness starts in your [butt], increasing gradually. The sensation grows and grows, but as it does"
+				          +" your center of balance shifts. You reach back to feel yourself, and sure enough your [butt] is shrinking into a"
+				          +" more manageable size.");
+			}
+
+			if (player.isFemaleOrHerm()) {
+				//Breasts > D cup - Decrease breast size by up to 3 cups
+				if (player.biggestTitSize() > BreastCup.D && changes < changeLimit && rand(3) === 0) {
+					for (i = 0; i < player.breastRows.length; i++) {
+						if (player.breastRows[i].breastRating > BreastCup.D)
+							player.breastRows[i].breastRating -= 1 + rand(3);
+					}
+					outputText("\n\nYour breasts feel tight[if (hasArmor), your [armor] feeling looser around your chest]. You watch in shock as your"
+					          +" breast flesh rapidly diminishes, shrinking into your chest. They finally stop when they reach [breastcup] size."
+					          +" You feel a little lighter.");
+					dynStats("spe", 1);
+					changes++;
+				}
+
+				//Breasts < B cup - Increase breast size by 1 cup
+				if (player.smallestTitSize() < BreastCup.B && changes < changeLimit && rand(3) === 0) {
+					for (i = 0; i < player.breastRows.length; i++) {
+						if (player.breastRows[i].breastRating < BreastCup.B)
+							player.breastRows[i].breastRating++;
+					}
+					outputText("\n\nYour breasts feel constrained and painful against your top as they grow larger by the moment, finally stopping as"
+					          +" they reach [breastcup] size. You rub the tender orbs as you get used to your larger breast flesh.");
+					dynStats("lib", 1);
+					changes++;
+				}
+
+				//Hips > 12 - decrease hip size by 1-3 sizes
+				if (player.hips.rating > 12 && changes < changeLimit && rand(3) === 0) {
+					outputText("\n\nYou stumble a bit as the bones in your pelvis rearrange themselves painfully. Your hips have narrowed.");
+					player.hips.rating -= 1 + rand(3);
+					changes++;
+				}
+
+				//Hips < 6 - increase hip size by 1-3 sizes
+				if (player.hips.rating < 6 && changes < changeLimit && rand(3) === 0) {
+					outputText("\n\nYou stumble as you feel the bones in your hips grinding, expanding your hips noticeably.");
+					player.hips.rating += 1 + rand(3);
+					changes++;
+				}
+
+				if (player.nippleLength > 1 && changes < changeLimit && rand(3) === 0) {
+					outputText("\n\nWith a sudden pinch your [nipples] get smaller and smaller,"
+					          +" stopping when they are roughly half their previous size");
+					player.nippleLength /= 2;
+				}
+
+				if (player.hasVagina() && player.vaginas[0].vaginalWetness < 3 && changes < changeLimit && rand(4) === 0) {
+					outputText("\n\nYour [cunt]'s internal walls feel a tingly wave of strange tightness which then transitions into a long"
+					          +" stretching sensation, like you were made of putty. Experimentally, you slip a couple of fingers inside to find"
+					          +" you've become looser and more pliable, ready to take those monster cocks.");
+					player.vaginas[0].vaginalWetness++
+					changes++;
+				}
+
+				//Increase tone (up to 65)
+				if (player.tone < 65 && rand(3) === 0) {
+					outputText(player.modTone(65, 2));
+				}
+
+				//Decrease thickness (down to 35)
+				if (player.thickness > 35 && rand(3) === 0) {
+					outputText(player.modThickness(35, 5));
+				}
+			}
+
+			if (player.isMale()) {
+				//Breasts > B cup - decrease by 1 cup size
+				if (player.biggestTitSize() > BreastCup.B && changes < changeLimit && rand(3) === 0) {
+					for (i = 0; i < player.breastRows.length; i++) {
+						if (player.breastRows[i].breastRating > BreastCup.B)
+							player.breastRows[i].breastRating--;
+					}
+					outputText("\n\nYour breasts feel tight[if (hasArmor), your [armor] feeling looser around your chest]. You watch in shock as your"
+					          +" breast flesh rapidly diminishes, shrinking into your chest. They finally stop when they reach [breastcup] size."
+					          +" You feel a little lighter.");
+					dynStats("spe", 1);
+					changes++;
+				}
+
+				if (player.nippleLength > 1 && changes < changeLimit && rand(3) === 0) {
+					outputText("\n\nWith a sudden pinch your [nipples] get smaller and smaller,"
+					          +" stopping when they are roughly half their previous size");
+					player.nippleLength /= 2;
+				}
+
+				//Hips > 10 - decrease hip size by 1-3 sizes
+				if (player.hips.rating > 10 && changes < changeLimit && rand(3) === 0) {
+					outputText("\n\nYou stumble a bit as the bones in your pelvis rearrange themselves painfully. Your hips have narrowed.");
+					player.hips.rating -= 1 + rand(3);
+					changes++;
+				}
+
+				//Hips < 2 - increase hip size by 1-3 sizes
+				if (player.hips.rating < 2 && changes < changeLimit && rand(3) === 0) {
+					outputText("\n\nYou stumble as you feel the bones in your hips grinding, expanding your hips noticeably.");
+					player.hips.rating += 1 + rand(3);
+					changes++;
+				}
+
+				//Increase tone (up to 70)
+				if (player.tone < 70 && rand(3) === 0) {
+					outputText(player.modTone(65, 2));
+				}
+
+				//Decrease thickness (down to 35)
+				if (player.thickness > 35 && rand(3) === 0) {
+					outputText(player.modThickness(35, 5));
+				}
+			}
+
+			if (player.isMaleOrHerm()) {
+				//Cock -> Red Panda Cock
+				if (player.hasCock() && player.cocks[0].cockType !== CockTypesEnum.RED_PANDA && rand(3) === 0 && changes < changeLimit) {
+					outputText("\n\nThe skin surrounding your penis folds, encapsulating it and turning itself into a protective sheath."
+					          +" <b>You now have a red-panda cock!</b>");
+					player.cocks[0].cockType = CockTypesEnum.RED_PANDA;
+					changes++;
+				}
+				//Cock < 6 inches - increase by 1-2 inches
+				if (player.shortestCockLength() < 6 && rand(3) === 0 && changes < changeLimit) {
+					var increment:Number = player.increaseCock(player.shortestCockIndex(), 1 + rand(2));
+					outputText("Your [if (cocks > 1)shortest] cock fills to its normal size, but doesn’t just stop there. Your cock feels incredibly"
+					          +" tight as a few more inches of length seem to pour out from your crotch."
+					          +" Your cock has gained "+ increment + " inches.");
+					changes++;
+				}
+
+				//Shrink oversized cocks
+				if (player.biggestCockLength() > 16 && rand(3) === 0 && changes < changeLimit) {
+					var idx:int = player.biggestCockIndex();
+						outputText("\n\nYou feel a tightness in your groin like someone tugging on your shaft from behind you. Once the sensation"
+						          +" fades you check [if (hasLowerGarment)inside your [lowergarment]|your [multicock]] and see that your"
+						          +" [if (cocks > 1)largest] [cock] has shrunk to a slightly shorter length.");
+					player.cocks[idx].cockLength -= (rand(10) + 5) / 10;
+					if (player.cocks[idx].cockThickness > 3) {
+						outputText(" Your " + player.cockDescript(idx) + " definitely got a bit thinner as well.");
+						player.cocks[idx].cockThickness -= (rand(4) + 1) / 10;
+					}
+					changes++;
+				}
+
+				//Cock thickness <2 - Increase cock thickness
+				if (player.smallestCockArea() < 10 && rand(3) === 0 && changes < changeLimit) {
+					outputText("[if (cocks > 1) One of your cocks|Your cock] feels swollen and heavy. With a firm, but gentle, squeeze, you confirm"
+					          +" your suspicions. It is definitely thicker.");
+					player.cocks[player.thinnestCockIndex()].thickenCock(1.5);
+					changes++;
+				}
+			}
+
+			//Remove additional cocks
+			if (player.cocks.length > 1 && rand(3) === 0 && changes < changeLimit) {
+				player.removeCock(1, 1);
+				outputText("\n\nYou have a strange feeling as your crotch tingles.  Opening your [armor],"
+				          +" <b>you realize that one of your cocks have vanished completely!</b>");
+				changes++;
+			}
+
+			//Remove additional balls/remove uniball
+			if ((player.balls > 0 || player.hasStatusEffect(StatusEffects.Uniball)) && rand(3) === 0 && changes < changeLimit) {
+				if (player.ballSize > 2) {
+					if (player.ballSize > 5) player.ballSize -= 1 + rand(3);
+					player.ballSize -= 1;
+					outputText("\n\nYour scrotum slowly shrinks, settling down at a smaller size. <b>Your " + player.ballsDescriptLight() + " ");
+					if (player.balls === 1 || player.hasStatusEffect(StatusEffects.Uniball)) outputText("is smaller now.</b>");
+					else outputText("are smaller now.</b>");
+					changes++;
+				}
+				else if (player.balls > 2) {
+					player.balls = 2;
+					//I have no idea if Uniball status effect sets balls to 1 or not so here's a just in case.
+					if (player.hasStatusEffect(StatusEffects.Uniball)) player.removeStatusEffect(StatusEffects.Uniball);
+					outputText("\n\nYour scrotum slowly shrinks until they seem to have reached a normal size. <b>You can feel as if your extra balls fused together, leaving you with a pair of balls.</b>");
+					changes++;
+				}
+				else if (player.balls === 1 || player.hasStatusEffect(StatusEffects.Uniball)) {
+					player.balls = 2;
+					if (player.hasStatusEffect(StatusEffects.Uniball)) player.removeStatusEffect(StatusEffects.Uniball);
+					outputText("\n\nYour scrotum slowly shrinks, and you feel a great pressure release in your groin. <b>Your uniball has split apart, leaving you with a pair of balls.</b>");
+					changes++;
+				}
+			}
+
+			//Ovi perk loss
+			if (rand(5) === 0) {
+				mutations.updateOvipositionPerk(tfSource);
+			}
+
+			// ------------- Physical changes -------------
 			// Ears
 			if (player.ears.type !== Ears.RED_PANDA && changes < changeLimit && rand(3) === 0) {
 				outputText("\n\n[if (bakeryTalkedRoot)The warned dizziness|A sudden dizziness] seems to overcome your head. Your ears tingle,"
