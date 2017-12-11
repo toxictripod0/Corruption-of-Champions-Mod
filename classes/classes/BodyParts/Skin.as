@@ -23,8 +23,6 @@ package classes.BodyParts
 		public var adj:String = "";
 		public var furColor:String = "no";
 
-		public function Skin() {}
-
 		public function skinFurScales():String
 		{
 			var skinzilla:String = "";

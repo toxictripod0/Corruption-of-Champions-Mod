@@ -898,6 +898,11 @@ package classes
 		{
 			return Appearance.nagaLowerBodyColor2(this);
 		}
+
+		public function redPandaTailColor2():String
+		{
+			return Appearance.redPandaTailColor2(this);
+		}
 	}
 
 }

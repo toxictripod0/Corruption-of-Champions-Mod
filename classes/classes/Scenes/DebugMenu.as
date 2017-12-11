@@ -181,13 +181,14 @@ import classes.Items.*
 			transformativeArray.push(consumables.SDELITE);
 			transformativeArray.push(consumables.S_DREAM);
 			transformativeArray.push(consumables.SUCMILK);
+			transformativeArray.push(consumables.RDRROOT);
 			transformativeArray.push(consumables.REPTLUM);
 			transformativeArray.push(consumables.RINGFIG);
 			transformativeArray.push(consumables.RIZZART);
 			transformativeArray.push(consumables.S_GOSSR);
 			transformativeArray.push(consumables.SALAMFW);
-			transformativeArray.push(consumables.SHARK_T);
 			//Page 5
+			transformativeArray.push(consumables.SHARK_T);
 			transformativeArray.push(consumables.SNAKOIL);
 			transformativeArray.push(consumables.SPHONEY);
 			transformativeArray.push(consumables.TAURICO);
@@ -300,6 +301,8 @@ import classes.Items.*
 			dyeArray.push(consumables.RAINDYE);
 			dyeArray.push(consumables.RED_DYE);
 			//Page 2
+			dyeArray.push(consumables.RUSSDYE);
+			dyeArray.push(consumables.YELLODY);
 			dyeArray.push(consumables.WHITEDY);
 			
 			//------------
@@ -671,6 +674,7 @@ import classes.Items.*
 			[Skin.DRAGON_SCALES,"(5) DRAGON_SCALES"],
 			[Skin.FISH_SCALES,"(6) FISH_SCALES"],
 			[Skin.WOOL,"(7) WOOL"],
+			[Skin.FEATHERED,"(8) FEATHERED"],
 		];
 		private static const SKIN_COAT_TYPES:Array = SKIN_BASE_TYPES;
 		/* [INTERMOD: xianxia]
@@ -874,6 +878,9 @@ import classes.Items.*
 			[Face.ECHIDNA,"(22) ECHIDNA"],
 			[Face.DEER,"(23) DEER"],
 			[Face.WOLF,"(24) WOLF"],
+			[Face.COCKATRICE,"(25) COCKATRICE"],
+			//[Face.BEAK,"(26) BEAK"], // Unused placeholder
+			[Face.RED_PANDA,"(27) RED_PANDA"],
 			/* [INTERMOD: xianxia]
 			[Face.MANTICORE,"(25) MANTICORE"],
 			[Face.SALAMANDER_FANGS,"(26) SALAMANDER_FANGS"],
@@ -899,6 +906,7 @@ import classes.Items.*
 			[Tongue.DEMONIC, "(2) DEMONIC"],
 			[Tongue.DRACONIC, "(3) DRACONIC"],
 			[Tongue.ECHIDNA, "(4) ECHIDNA"],
+			[Tongue.LIZARD, "(5) LIZARD"],
 			/* [INTERMOD: xianxia]
 			[Tongue.CAT, "(5) CAT"],
 			*/
@@ -921,6 +929,7 @@ import classes.Items.*
 			[Eyes.BASILISK, "(5) BASILISK"],
 			[Eyes.WOLF, "(6) WOLF"],
 			[Eyes.SPIDER, "(7) SPIDER"],
+			[Eyes.COCKATRICE, "(8) COCKATRICE"],
 		];
 		private static const EAR_TYPE_CONSTANTS:Array    = [
 			[Ears.HUMAN, "(0) HUMAN"],
@@ -949,6 +958,9 @@ import classes.Items.*
 			[Ears.SNAKE, "(22) SNAKE"],
 			*/
 			[Ears.SHEEP, "(19) SHEEP"],
+			[Ears.IMP, "(20) IMP"],
+			[Ears.COCKATRICE, "(21) COCKATRICE"],
+			[Ears.RED_PANDA, "(22) RED_PANDA"],
 		];
 		private static const HORN_TYPE_CONSTANTS:Array    = [
 			[Horns.NONE, "(0) NONE"],
@@ -960,6 +972,9 @@ import classes.Items.*
 			[Horns.GOAT, "(6) GOAT"],
 			[Horns.UNICORN, "(7) UNICORN"],
 			[Horns.RHINO, "(8) RHINO"],
+			[Horns.SHEEP, "(9) SHEEP"],
+			[Horns.RAM, "(10) RAM"],
+			[Horns.IMP, "(11) IMP"],
 			/* [INTERMOD: xianxia]
 			[Horns.OAK, "(9) OAK"],
 			[Horns.GARGOYLE, "(10) GARGOYLE"],
@@ -977,6 +992,7 @@ import classes.Items.*
 			[Antennae.MANTIS, "(1) MANTIS"],
 			 */
 			[Antennae.BEE, "(2) BEE"],
+			[Antennae.COCKATRICE, "(3) COCKATRICE"],
 		];
 		private static const GILLS_TYPE_CONSTANTS:Array   = [
 			[Gills.NONE, "(0) NONE"],
@@ -1157,6 +1173,11 @@ import classes.Items.*
 			[Tail.ECHIDNA, "(23) ECHIDNA"],
 			[Tail.DEER, "(24) DEER"],
 			[Tail.SALAMANDER, "(25) SALAMANDER"],
+			[Tail.WOLF, "(26) WOLF"],
+			[Tail.SHEEP, "(27) SHEEP"],
+			[Tail.IMP, "(28) IMP"],
+			[Tail.COCKATRICE, "(29) COCKATRICE"],
+			[Tail.RED_PANDA, "(30) RED_PANDA"],
 			/* [INTERMOD: xianxia]
 			[Tail.KITSHOO, "(26) KITSHOO"],
 			[Tail.MANTIS_ABDOMEN, "(27) MANTIS_ABDOMEN"],
@@ -1166,8 +1187,6 @@ import classes.Items.*
 			[Tail.ORCA, "(31) ORCA"],
 			[Tail.YGGDRASIL, "(32) YGGDRASIL"],
 			*/
-			[Tail.WOLF, "(26) WOLF"],
-			[Tail.SHEEP, "(27) SHEEP"],
 		];
 		private static const TAIL_COUNT_CONSTANTS:Array = [
 			[0,"0"],1,2,3,4,
@@ -1235,6 +1254,10 @@ import classes.Items.*
 			[LowerBody.CLOVEN_HOOFED, "(21) CLOVEN_HOOFED"],
 			[LowerBody.ECHIDNA, "(23) ECHIDNA"],
 			[LowerBody.SALAMANDER, "(25) SALAMANDER"],
+			[LowerBody.WOLF, "(26) WOLF"],
+			[LowerBody.IMP, "(27) IMP"],
+			[LowerBody.COCKATRICE, "(28) COCKATRICE"],
+			[LowerBody.RED_PANDA, "(29) RED_PANDA"],
 			/* [INTERMOD: xianxia]
 			[LowerBody.SCYLLA, "(26) SCYLLA"],
 			[LowerBody.MANTIS, "(27) MANTIS"],
@@ -1249,7 +1272,6 @@ import classes.Items.*
 			[LowerBody.ORCA, "(37) ORCA"],
 			[LowerBody.YGG_ROOT_CLAWS, "(38) YGG_ROOT_CLAWS"],
 			*/
-			[LowerBody.WOLF, "(26) WOLF"],
 		];
 		private static const LEG_COUNT_CONSTANTS:Array = [
 			1,2,4,6,8,

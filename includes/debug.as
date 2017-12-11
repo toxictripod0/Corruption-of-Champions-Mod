@@ -202,6 +202,8 @@ public function doThatTestingThang():void
 * 30 [if (tallness >= 100)tall|not very tall]
 * 31 you feel your \[if (tallness >= 120)frame|\[if (tallness >= 80)smaller frame|much smaller frame\]\] surrounded 
 * 31 you feel your [if (tallness >= 120)frame|[if (tallness >= 80)smaller frame|much smaller frame]] surrounded 
+* 32 \[if (bakeryTalkedRoot)talked about root|didn't talk about root\]
+* 32 [if (bakeryTalkedRoot)talked about root|didn't talk about root]
 
 
 
