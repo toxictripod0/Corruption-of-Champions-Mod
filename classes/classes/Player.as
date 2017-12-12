@@ -17,6 +17,7 @@
 	import classes.Scenes.Areas.Forest.KitsuneScene;
 	import classes.Scenes.Places.TelAdre.UmasShop;
 	import classes.lists.BreastCup;
+	import classes.lists.ColorLists;
 
 	use namespace kGAMECLASS;
 
@@ -1559,13 +1560,13 @@
 				kitsuneCounter++;
 			//If the character's kitsune score is greater than 1 and:
 			//If the character has "blonde","black","red","white", or "silver" hair, +1
-			if (kitsuneCounter > 0 && (InCollection(hairOrFurColors, convertMixedToStringArray(KitsuneScene.basicKitsuneHair)) || InCollection(hairOrFurColors, KitsuneScene.elderKitsuneColors)))
+			if (kitsuneCounter > 0 && (InCollection(hairOrFurColors, convertMixedToStringArray(ColorLists.basicKitsuneHairColors)) || InCollection(hairOrFurColors, ColorLists.elderKitsuneColors)))
 				kitsuneCounter++;
 			//If the character's femininity is 40 or higher, +1
 			if (kitsuneCounter > 0 && femininity >= 40)
 				kitsuneCounter++;
 			//If the character has fur, scales, or gooey skin, -1
-			if (hasFur() && !InCollection(hairOrFurColors, convertMixedToStringArray(KitsuneScene.basicKitsuneFur)) && !InCollection(hairOrFurColors, KitsuneScene.elderKitsuneColors))
+			if (hasFur() && !InCollection(hairOrFurColors, convertMixedToStringArray(ColorLists.basicKitsuneFurColors)) && !InCollection(hairOrFurColors, ColorLists.elderKitsuneColors))
 				kitsuneCounter--;
 			if (hasScales())
 				kitsuneCounter -= 2;
