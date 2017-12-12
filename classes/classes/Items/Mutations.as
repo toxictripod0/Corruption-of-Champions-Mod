@@ -3,9 +3,8 @@ package classes.Items
 	import classes.*;
 	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
-	import classes.Scenes.Areas.Forest.KitsuneScene;
 	import classes.GlobalFlags.kGAMECLASS;
-	import classes.GlobalFlags.kACHIEVEMENTS;
+	import classes.lists.ColorLists;
 
 	/**
 	 * This class performs the various mutations on the player, transforming one or more
@@ -3596,10 +3595,10 @@ package classes.Items
 
 			//[Change Hair Color: Golden-blonde or Reddish-orange]
 			var fox_hair:Array = ["golden blonde", "reddish-orange", "silver", "white", "red", "black"];
-			if (!InCollection(player.hair.color, fox_hair) && !InCollection(player.hair.color, KitsuneScene.basicKitsuneHair) && !InCollection(player.hair.color, KitsuneScene.elderKitsuneColors) && changes < changeLimit && rand(4) == 0) {
+			if (!InCollection(player.hair.color, fox_hair) && !InCollection(player.hair.color, ColorLists.basicKitsuneHairColors) && !InCollection(player.hair.color, ColorLists.elderKitsuneColors) && changes < changeLimit && rand(4) == 0) {
 				if (player.tail.type == Tail.FOX && player.tail.venom > 1)
-					if (player.tail.venom < 9) player.hair.color = randomChoice(KitsuneScene.basicKitsuneHair);
-					else player.hair.color = randomChoice(KitsuneScene.elderKitsuneColors);
+					if (player.tail.venom < 9) player.hair.color = randomChoice(ColorLists.basicKitsuneHairColors);
+					else player.hair.color = randomChoice(ColorLists.elderKitsuneColors);
 				else player.hair.color = randomChoice(fox_hair);
 				outputText("\n\nYour scalp begins to tingle, and you gently grasp a strand of hair, pulling it out to check it.  Your hair has become " + player.hair.color + "!");
 			}
@@ -3780,16 +3779,6 @@ package classes.Items
 			//FOURTH
 			if ((enhanced || player.lowerBody.type == LowerBody.FOX) && !player.hasFur() && changes < changeLimit && rand(4) == 0) {
 				var colorChoices:Array = ["invalid color"]; // Failsafe ... should hopefully not happen (Stadler76)
-				var foxFurColors:Array = [
-					["orange", "white"],
-					["orange", "white"],
-					["orange", "white"],
-					["red", "white"],
-					["black", "white"],
-					"white",
-					"tan",
-					"brown"
-				];
 				//from scales
 				if (player.hasScales()) outputText("\n\nYour skin shifts and every scale stands on end, sending you into a mild panic.  No matter how you tense, you can't seem to flatten them again.  The uncomfortable sensation continues for some minutes until, as one, every scale falls from your body and a fine coat of fur pushes out.  You briefly consider collecting them, but when you pick one up, it's already as dry and brittle as if it were hundreds of years old.  <b>Oh well; at least you won't need to sun yourself as much with your new fur.</b>");
 				//from skin
@@ -3798,15 +3787,15 @@ package classes.Items
 				player.skin.adj = "";
 				player.skin.desc = "fur";
 				if (player.kitsuneScore() >= 4)
-					if (InCollection(player.hair.color, convertMixedToStringArray(KitsuneScene.basicKitsuneFur)) || InCollection(player.hair.color, KitsuneScene.elderKitsuneColors))
+					if (InCollection(player.hair.color, convertMixedToStringArray(ColorLists.basicKitsuneFurColors)) || InCollection(player.hair.color, ColorLists.elderKitsuneColors))
 						colorChoices = [player.hair.color];
 					else
 						if (player.tail.type == Tail.FOX && player.tail.venom == 9)
-							colorChoices = KitsuneScene.elderKitsuneColors;
+							colorChoices = ColorLists.elderKitsuneColors;
 						else
-							colorChoices = KitsuneScene.basicKitsuneFur;
+							colorChoices = ColorLists.basicKitsuneFurColors;
 				else
-					colorChoices = foxFurColors;
+					colorChoices = ColorLists.foxFurColors;
 				player.setFurColor(colorChoices, {type: UnderBody.FURRY}, true);
 				changes++;
 			}
@@ -4075,9 +4064,9 @@ package classes.Items
 				changes++;
 			}
 			//[Change Hair Color: Golden-blonde, SIlver Blonde, White, Black, Red]
-			if (((mystic && rand(2) == 0) || (!mystic && rand(4) == 0)) && changes < changeLimit && !InCollection(player.hair.color, KitsuneScene.basicKitsuneHair) && !InCollection(player.hair.color, KitsuneScene.elderKitsuneColors)) {
-				if (player.tail.type == Tail.FOX && player.tail.venom == 9) player.hair.color = randomChoice(KitsuneScene.elderKitsuneColors);
-				else player.hair.color = randomChoice(KitsuneScene.basicKitsuneHair);
+			if (((mystic && rand(2) == 0) || (!mystic && rand(4) == 0)) && changes < changeLimit && !InCollection(player.hair.color, ColorLists.basicKitsuneHairColors) && !InCollection(player.hair.color, ColorLists.elderKitsuneColors)) {
+				if (player.tail.type == Tail.FOX && player.tail.venom == 9) player.hair.color = randomChoice(ColorLists.elderKitsuneColors);
+				else player.hair.color = randomChoice(ColorLists.basicKitsuneHairColors);
 				outputText("\n\nYour scalp begins to tingle, and you gently grasp a strand, pulling it forward to check it.  Your hair has become the same " + player.hair.color + " as a kitsune's!");
 				changes++;
 			}
@@ -4089,8 +4078,8 @@ package classes.Items
 
 			if ((player.hasFur() 
 					&& player.face.type != Face.FOX
-					&& !InCollection(theFurColor, convertMixedToStringArray(KitsuneScene.basicKitsuneFur))
-					&& !InCollection(theFurColor, KitsuneScene.elderKitsuneColors)
+					&& !InCollection(theFurColor, convertMixedToStringArray(ColorLists.basicKitsuneFurColors))
+					&& !InCollection(theFurColor, ColorLists.elderKitsuneColors)
 					&& !InCollection(theFurColor, ["orange and white", "black and white", "red and white", "tan", "brown"])
 					)
 				|| player.hasScales() && ((mystic) || (!mystic && rand(2) == 0))) {
