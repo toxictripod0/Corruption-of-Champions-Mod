@@ -4,6 +4,7 @@ package classes.Items
 	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.internals.LoggerFactory;
+	import classes.lists.ColorLists;
 	import mx.logging.ILogger;
 	
 	/**
@@ -344,16 +345,7 @@ package classes.Items
 
 		public function newCockatriceColors():Array
 		{
-			var cockatriceColors:Array = [
-				["blue",   "turquoise", "blue"],
-				["orange", "red",       "orange"],
-				["green",  "yellow",    "green"],
-				["purple", "pink",      "purple"],
-				["black",  "white",     "black"],
-				["blonde", "brown",     "blonde"],
-				["white",  "grey",      "white"],
-			];
-			return randomChoice(cockatriceColors);
+			return randomChoice(ColorLists.cockatriceColors);
 		}
 
 		public function updateClaws(clawType:int = Claws.NORMAL):String

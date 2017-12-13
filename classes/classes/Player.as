@@ -17,6 +17,7 @@
 	import classes.Scenes.Areas.Forest.KitsuneScene;
 	import classes.Scenes.Places.TelAdre.UmasShop;
 	import classes.lists.BreastCup;
+	import classes.lists.ColorLists;
 
 	use namespace kGAMECLASS;
 
@@ -825,6 +826,14 @@
 				if (isTaur())
 					race = "cockatrice-taur";
 			}
+			if (redPandaScore() >= 4)
+			{
+				race = "red-panda-morph";
+				if (face.type === Face.HUMAN)
+					race = "red-panda-" + mf("boy", "girl");
+				if (isTaur())
+					race = "red-panda-taur";
+			}
 			if (raccoonScore() >= 4)
 			{
 				race = "raccoon-morph";
@@ -1043,6 +1052,29 @@
 			}
 			
 			return race;
+		}
+
+		//red-panda rating
+		public function redPandaScore():Number
+		{
+			var redPandaCounter:Number = 0;
+			if (ears.type === Ears.RED_PANDA)
+				redPandaCounter++;
+			if (tail.type === Tail.RED_PANDA)
+				redPandaCounter++;
+			if (arms.type === Arms.RED_PANDA)
+				redPandaCounter++;
+			if (face.type === Face.RED_PANDA)
+				redPandaCounter += 2;
+			if (lowerBody.type === LowerBody.RED_PANDA)
+				redPandaCounter++;
+			if (redPandaCounter >= 2) {
+				if (hasFur())
+					redPandaCounter++;
+				if (hasFurryUnderBody())
+					redPandaCounter++;
+			}
+			return redPandaCounter;
 		}
 
 		//cockatrice rating
@@ -1528,13 +1560,13 @@
 				kitsuneCounter++;
 			//If the character's kitsune score is greater than 1 and:
 			//If the character has "blonde","black","red","white", or "silver" hair, +1
-			if (kitsuneCounter > 0 && (InCollection(hairOrFurColors, convertMixedToStringArray(KitsuneScene.basicKitsuneHair)) || InCollection(hairOrFurColors, KitsuneScene.elderKitsuneColors)))
+			if (kitsuneCounter > 0 && (InCollection(hairOrFurColors, convertMixedToStringArray(ColorLists.basicKitsuneHairColors)) || InCollection(hairOrFurColors, ColorLists.elderKitsuneColors)))
 				kitsuneCounter++;
 			//If the character's femininity is 40 or higher, +1
 			if (kitsuneCounter > 0 && femininity >= 40)
 				kitsuneCounter++;
 			//If the character has fur, scales, or gooey skin, -1
-			if (hasFur() && !InCollection(hairOrFurColors, convertMixedToStringArray(KitsuneScene.basicKitsuneFur)) && !InCollection(hairOrFurColors, KitsuneScene.elderKitsuneColors))
+			if (hasFur() && !InCollection(hairOrFurColors, convertMixedToStringArray(ColorLists.basicKitsuneFurColors)) && !InCollection(hairOrFurColors, ColorLists.elderKitsuneColors))
 				kitsuneCounter--;
 			if (hasScales())
 				kitsuneCounter -= 2;

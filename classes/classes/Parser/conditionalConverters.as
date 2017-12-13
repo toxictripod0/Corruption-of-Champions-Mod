@@ -1,4 +1,5 @@
 ﻿		//Calls are now made through kGAMECLASS rather than thisPtr. This allows the compiler to detect if/when a function is inaccessible.
+		import classes.GlobalFlags.kFLAGS;
 		import classes.GlobalFlags.kGAMECLASS;
 		import classes.Items.ArmorLib;
 		import classes.Items.UndergarmentLib;
@@ -56,6 +57,7 @@
 				"hasfur"			: function(thisPtr:*):* {return  kGAMECLASS.player.hasFur();},
 				"haswool"			: function(thisPtr:*):* {return  kGAMECLASS.player.hasWool();},
 				"hasfeathers"		: function(thisPtr:*):* {return  kGAMECLASS.player.hasFeathers();},
+				"hasfurryunderbody"	: function(thisPtr:*):* {return  kGAMECLASS.player.hasFurryUnderBody();},
 				"isfurry"			: function(thisPtr:*):* {return  kGAMECLASS.player.isFurry();},
 				"isfluffy"			: function(thisPtr:*):* {return  kGAMECLASS.player.isFluffy();},
 				"ismale"			: function(thisPtr:*):* {return  (kGAMECLASS.player.isMale());},
@@ -89,5 +91,8 @@
 
 				//---[NPCs]---
 				//Joy
-				"joyhascock"		: function(thisPtr:*):* {return  kGAMECLASS.joyScene.joyHasCock(); }
+				"joyhascock"		: function(thisPtr:*):* {return  kGAMECLASS.joyScene.joyHasCock(); },
+
+				//Tel Adre
+				"bakerytalkedroot"	: function(thisPtr:*):* {return  kGAMECLASS.flags[kFLAGS.MINO_CHEF_TALKED_RED_RIVER_ROOT] > 0; }
 			}

@@ -24,8 +24,6 @@ package classes.BodyParts
 		public var type:Number  = NONE;
 		public var color:String = "no";
 
-		public function Wings() {}
-
 		public function restore():void
 		{
 			type  = NONE;

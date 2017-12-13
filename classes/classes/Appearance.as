@@ -5,6 +5,7 @@ package classes {
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.internals.Utils;
+	import classes.lists.ColorLists;
 	import classes.lists.Gender;
 
 	public class Appearance extends Utils {
@@ -2048,7 +2049,15 @@ package classes {
 
 			return i_creature.underBody.skin.tone;
 		}
-		
+
+		public static function redPandaTailColor2(i_creature:Creature):String
+		{
+			if (i_creature.skin.furColor in RED_PANDA_TAIL_COLORS)
+				return RED_PANDA_TAIL_COLORS[i_creature.skin.furColor];
+
+			return "dark-gray";
+		}
+
 		public static const BREAST_CUP_NAMES:Array = [
 			"flat",//0
 			//				1			2			3			4			5				6			7		8			9
@@ -2105,28 +2114,10 @@ package classes {
 			return result;
 		}
 
-		public static const NAGA_LOWER_BODY_COLORS:Object = createMapFromPairs(
-				[
-					["red",          "orange"],
-					["orange",       "yellow"],
-					["yellow",       "yellowgreen"],
-					["yellowgreen",  "yellow"],
-					["green",        "light green"],
-					["spring green", "cyan"],
-					["cyan",         "ocean blue"],
-					["ocean blue",   "light blue"],
-					["blue",         "light blue"],
-					["purple",       "light purple"],
-					["magenta",      "blue"],
-					["deep pink",    "pink"],
-					["black",        "dark gray"],
-					["white",        "light gray"],
-					["gray",         "light gray"],
-					["light gray",   "white"],
-					["dark gray",    "gray"],
-					["pink",         "pale pink"],
-				]
-		);
+		public static const NAGA_LOWER_BODY_COLORS:Object = createMapFromPairs(ColorLists.nagaLowerBodyColors);
+
+		public static const RED_PANDA_TAIL_COLORS:Object = createMapFromPairs(ColorLists.redPandaTailColors);
+
 		public static const DEFAULT_GENDER_NAMES:Object = createMapFromPairs(
 				[
 					[Gender.NONE, "genderless"],
@@ -2258,6 +2249,7 @@ package classes {
 					[Ears.SHEEP, "sheep"],
 					[Ears.IMP, "imp"],
 					[Ears.COCKATRICE, "cockatrice"],
+					[Ears.RED_PANDA, "red-panda"],
 				]
 		);
 		public static const DEFAULT_HORNS_NAMES:Object = createMapFromPairs(
@@ -2291,6 +2283,7 @@ package classes {
 					[Arms.PREDATOR, "predator"],
 					[Arms.SALAMANDER, "salamander"],
 					[Arms.COCKATRICE, "cockatrice"],
+					[Arms.RED_PANDA, "red-panda"],
 				]
 		);
 		public static const DEFAULT_TAIL_NAMES:Object = createMapFromPairs(
@@ -2324,6 +2317,7 @@ package classes {
 					[Tail.SHEEP, "sheep"],
 					[Tail.IMP, "imp"],
 					[Tail.COCKATRICE, "cockatrice"],
+					[Tail.RED_PANDA, "red-panda"],
 				]
 		);
 		public static const DEFAULT_REAR_BODY_NAMES:Object = createMapFromPairs(
@@ -2401,6 +2395,7 @@ package classes {
 					[LowerBody.SALAMANDER, "salamander"],
 					[LowerBody.IMP, "imp"],
 					[LowerBody.COCKATRICE, "cockatrice"],
+					[LowerBody.RED_PANDA, "red-panda"],
 				]
 		);
 		public static const DEFAULT_PIERCING_NAMES:Object = createMapFromPairs(

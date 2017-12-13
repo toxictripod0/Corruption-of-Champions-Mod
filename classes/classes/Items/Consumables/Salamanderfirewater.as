@@ -7,6 +7,7 @@ package classes.Items.Consumables
 	import classes.Items.Consumable;
 	import classes.Items.ConsumableLib;
 	import classes.PerkLib;
+	import classes.lists.ColorLists;
 	
 	/**
 	 * Salamander transformative item.
@@ -261,13 +262,12 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//-Skin color change
-			var humanSkinColors:Array = ["light", "fair", "tan", "dark"];
-			if (humanSkinColors.indexOf(player.skin.tone) < 0 && changes < changeLimit && rand(4) === 0) {
+			if (ColorLists.salamanderSkinColors.indexOf(player.skin.tone) < 0 && changes < changeLimit && rand(4) === 0) {
 				changes++;
 				outputText("\n\nIt takes a while for you to notice, but <b>");
 				if (player.hasFur()) outputText("the skin under your " + player.skin.furColor + " " + player.skin.desc + " has ");
 				else outputText("your " + player.skin.desc + (player.skin.desc.indexOf("scales") !== -1 ? " have " : " has "));
-				player.skin.tone = randomChoice(humanSkinColors);
+				player.skin.tone = randomChoice(ColorLists.salamanderSkinColors);
 				mutations.updateClaws(player.claws.type);
 				outputText("changed to become " + player.skin.tone + " colored.</b>");
 			}

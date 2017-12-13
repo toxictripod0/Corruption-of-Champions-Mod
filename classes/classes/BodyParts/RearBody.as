@@ -17,8 +17,6 @@ package classes.BodyParts
 		public var type:Number  = NONE;
 		public var color:String = "no";
 
-		public function RearBody() {}
-
 		public function restore():void
 		{
 			type  = NONE;

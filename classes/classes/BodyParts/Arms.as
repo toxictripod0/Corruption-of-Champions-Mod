@@ -15,10 +15,9 @@ package classes.BodyParts
 		public static const SALAMANDER:int =   5;
 		public static const WOLF:int       =   6;
 		public static const COCKATRICE:int =   7;
+		public static const RED_PANDA:int  =   8;
 
 		public var type:Number = HUMAN;
-
-		public function Arms() {}
 
 		public function restore():void
 		{

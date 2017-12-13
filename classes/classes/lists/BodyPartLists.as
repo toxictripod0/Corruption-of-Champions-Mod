@@ -40,6 +40,7 @@ package classes.lists
 			Face.ECHIDNA,
 			Face.DEER,
 			Face.WOLF,
+			Face.RED_PANDA,
 		];
 
 		public static const longTails:Array = [
@@ -61,6 +62,7 @@ package classes.lists
 			Tail.WOLF,
 			Tail.IMP,
 			Tail.COCKATRICE,
+			Tail.RED_PANDA,
 		];
 	}
 }
