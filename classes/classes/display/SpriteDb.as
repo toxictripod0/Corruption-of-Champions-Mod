@@ -47,6 +47,13 @@ public class SpriteDb {
 	public static function get s_anemone(): Class {
 		return is8bit ? s_anemone_8bit : s_anemone_16bit;
 	}
+	[Embed(source="../../../res/sprites/antguards.png")]
+	public static const s_antguards_16bit:Class;
+//	[Embed(source="../../../res/sprites8bit/antguards-old.png")]
+//	public static const s_antguards_8bit:Class;
+	public static function get s_antguards(): Class {
+		return is8bit ? null : s_antguards_16bit;
+	}
 	[Embed(source="../../../res/sprites/arian.png")]
 	public static const s_arian_16bit:Class;
 	[Embed(source="../../../res/sprites8bit/arian-old.png")]
@@ -477,6 +484,13 @@ public class SpriteDb {
 	public static function get s_kitsune_red(): Class {
 		return is8bit ? s_kitsune_red_8bit : s_kitsune_red_16bit;
 	}
+	[Embed(source="../../../res/sprites/latexgoogirl.png")]
+	public static const s_latexgoogirl_16bit:Class;
+//	[Embed(source="../../../res/sprites8bit/latexgoogirl-old.png")]
+//	public static const s_latexgoogirl_8bit:Class;
+	public static function get s_latexgoogirl(): Class {
+		return is8bit ? null : s_latexgoogirl_16bit;
+	}
 	[Embed(source="../../../res/sprites/lilium.png")]
 	public static const s_lilium_16bit:Class;
 //	[Embed(source="../../../res/sprites8bit/lilium-old.png")]
@@ -537,6 +551,13 @@ public class SpriteDb {
 	public static const s_melinda_8bit:Class;
 	public static function get s_melinda(): Class {
 		return s_melinda_8bit;
+	}
+	[Embed(source="../../../res/sprites/milkgirl.png")]
+	public static const s_milkgirl_16bit:Class;
+//	[Embed(source="../../../res/sprites8bit/milkgirl-old.png")]
+//	public static const s_milkgirl_8bit:Class;
+	public static function get s_milkgirl(): Class {
+		return is8bit ? null : s_milkgirl_16bit;
 	}
 	[Embed(source="../../../res/sprites/minerva.png")]
 	public static const s_minerva_16bit:Class;
@@ -608,6 +629,13 @@ public class SpriteDb {
 	public static function get s_phoenix(): Class {
 		return is8bit ? null : s_phoenix_16bit;
 	}
+	[Embed(source="../../../res/sprites/phoenix_nude.png")]
+	public static const s_phoenix_nude_16bit:Class;
+//	[Embed(source="../../../res/sprites8bit/phoenix-old.png")]
+//	public static const s_phoenix_8bit:Class;
+	public static function get s_phoenix_nude(): Class {
+		return is8bit ? null : s_phoenix_nude_16bit;
+	}
 	[Embed(source="../../../res/sprites/phylla.png")]
 	public static const s_phylla_16bit:Class;
 //	[Embed(source="../../../res/sprites8bit/phylla-old.png")]
@@ -615,12 +643,19 @@ public class SpriteDb {
 	public static function get s_phylla(): Class {
 		return is8bit ? null : s_phylla_16bit;
 	}
-	[Embed(source="../../../res/sprites/phylla_eggs.png")]
-	public static const s_phylla_eggs_16bit:Class;
-//	[Embed(source="../../../res/sprites8bit/phylla_eggs-old.png")]
-//	public static const s_phylla_eggs_8bit:Class;
-	public static function get s_phylla_eggs(): Class {
-		return is8bit ? null : s_phylla_eggs_16bit;
+	[Embed(source="../../../res/sprites/phylla_nude.png")]
+	public static const s_phylla_nude_16bit:Class;
+//	[Embed(source="../../../res/sprites8bit/phylla_nude-old.png")]
+//	public static const s_phylla_nude_8bit:Class;
+	public static function get s_phylla_nude(): Class {
+		return is8bit ? null : s_phylla_nude_16bit;
+	}
+	[Embed(source="../../../res/sprites/phylla_preg.png")]
+	public static const s_phylla_preg_16bit:Class;
+//	[Embed(source="../../../res/sprites8bit/phylla_preg-old.png")]
+//	public static const s_phylla_preg_8bit:Class;
+	public static function get s_phylla_preg(): Class {
+		return is8bit ? null : s_phylla_preg_16bit;
 	}
 	[Embed(source="../../../res/sprites/poisontail.png")]
 	public static const s_poisontail_16bit:Class;
