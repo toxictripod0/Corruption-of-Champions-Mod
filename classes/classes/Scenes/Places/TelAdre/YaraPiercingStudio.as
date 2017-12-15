@@ -2,6 +2,7 @@ package classes.Scenes.Places.TelAdre {
 import classes.GlobalFlags.kFLAGS;
 import classes.PerkLib;
 import classes.StatusEffects;
+import classes.display.SpriteDb;
 
 public class YaraPiercingStudio extends TelAdreAbstractContent {
 	//TODO move to own classes?
@@ -72,7 +73,7 @@ public class YaraPiercingStudio extends TelAdreAbstractContent {
 	//8) **Vulva (+1 sens)
 
 	public function piercingStudio():void {
-		spriteSelect(63);
+		spriteSelect(SpriteDb.s_yara);
 		clearOutput();
 		outputText("The interior of the piercing studio is earthy, leaving the stone floors and walls uncovered, though the windows are covered with woven blankets, sewn from multicolored threads.  There are a number of cushy chairs facing a wall of mirrors, along with a shelf covered in needles, piercings, and strong alcohols.  A brunette prowls about the place, tidying it up during a lull in business.	You dully notice that unlike everyone else in this town, she's mostly human.  Perhaps she came through a portal as well?  She approaches you, and you see a cat tail waving behind her, and a pair of fuzzy feline ears, both covered in piercings, perched atop her head.	Clearly she's been here long enough to pick up some of the local flavor.\n\n");
 		outputText("She introduces herself, \"<i>Hello there " + player.mf("sir", "cutie") + ", my name is Yara.  Would you like to get a piercing?</i>\"");

@@ -4,7 +4,7 @@ import flash.errors.IllegalOperationError;
 
 public class Shop extends TelAdreAbstractContent {
 	//TODO rename Shop to AbstractShop? Because thats what it is.
-	protected var sprite:int = -1;
+	protected var sprite:Object = -1;
 
 	public function enter():void {
 		clearOutput();

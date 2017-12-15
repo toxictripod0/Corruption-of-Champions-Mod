@@ -1,11 +1,12 @@
 package classes.Scenes.Places.TelAdre {
 import classes.GlobalFlags.kFLAGS;
 import classes.ItemType;
+import classes.display.SpriteDb;
 
 public class WeaponShop extends Shop {
 	public function WeaponShop() {
 		super();
-		sprite = 80;
+		sprite = SpriteDb.s_weaponsmith;
 	}
 
 	override protected function inside():void {
