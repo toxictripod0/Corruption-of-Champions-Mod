@@ -338,21 +338,21 @@ package classes.Scenes.Dungeons.AnzuPalace
 			outputText(images.showImage("anzu-talk-palace"));
 			outputText("He said something about valkyries living here before he arrived. How was the palace before?");
 			outputText("\n\n\"<i>The group of women that used to live here before? With them, this place looked a little more rustic back then. Wooden tables, iron decorations, weapons hanging on the walls, and a fountain containing something they call mead. I had to redecorate the place after I threw them out.</i>\"");
-			outputText("\n\nAnzu makes a hand gesture to indicate you to follow him.");			
-			outputText("\n\n\"<i>I had to plaster the inner walls because the most of the bricks were exposed. After that, I decorated the walls and columns with silk and linen. The first floor, as you can see, has four principal areas, all connected to the principal hall.");			
-			outputText("\n\nTo the left, where we’re standing now, is the living room. Almost all of the furniture and vases which are here now were the ones which I could bring with myself from Mittani. The books which you see on the shelves are general history books, told from the mortal point of view of course, very lacking in term of general knowledge but still quite interesting.");			
-			outputText("\n\nNow, to the right side of the hall, is the dining room. I kept most of the furniture that the valkyries left behind. Behind the dining room is the kitchen. The staircase at the end of the hall leads to the basement and another, near the entrance, leads to the second floor. The door near the end of the hall leads to the bathroom. With the cold, a warm bath is always appreciated. ");			
+			outputText("\n\nAnzu makes a hand gesture to indicate you to follow him.");
+			outputText("\n\n\"<i>I had to plaster the inner walls because the most of the bricks were exposed. After that, I decorated the walls and columns with silk and linen. The first floor, as you can see, has four principal areas, all connected to the principal hall.");
+			outputText("\n\nTo the left, where we’re standing now, is the living room. Almost all of the furniture and vases which are here now were the ones which I could bring with myself from Mittani. The books which you see on the shelves are general history books, told from the mortal point of view of course, very lacking in term of general knowledge but still quite interesting.");
+			outputText("\n\nNow, to the right side of the hall, is the dining room. I kept most of the furniture that the valkyries left behind. Behind the dining room is the kitchen. The staircase at the end of the hall leads to the basement and another, near the entrance, leads to the second floor. The door near the end of the hall leads to the bathroom. With the cold, a warm bath is always appreciated.</i>\"");
 			outputText("\n\n\"<i>What’s in the basement?</i>\" You ask.");
 			outputText("\n\n\"<i>Come and see it yourself</i>\" Anzu answers.");
 			outputText("\n\nBoth of you go downstairs to the basement, and the first thing which catches your attention is a chariot. You ask Anzu if this is the chariot in which he arrived on when he travelled to Mareth.");
 			outputText("\n\n\"<i>Yes, I kept the chariot I stole from Ninurta here. It stays here most of the time as I have very little use for it</i>\" Anzu explains, and proceed to point to a door located behind the chariot.");
 			outputText("\n\n\"<i>Behind this door is the armory. Name a kind of weapon, and you’ll find it inside: swords, bows, axes, spears, halberds, and...I’m starting to sound like a weapon seller. Maybe I’ll show you the weapons in more detail later, for now, follow me to the second floor.</i>\"");
 			outputText("\n\nAfter returning to the first floor, you go upstairs to the second floor. The floor is shaped in a U like disposition. There are three rooms, two to the sides and one located at the end, with the hall connecting the three rooms and the staircases.");
-			outputText("\n\n\"<i>Now, " + player.short + " if you look to the left, you’ll see my bedroom.</i>\" He points a pretty large room and beckons you to follow him inside.");			
-			outputText("\n\nWow, this is a huge room. You could fit inside this room almost all of your " + camp.homeDesc() + " located in your camp! You ask Anzu what was this place before it became his bedroom.");			
-			outputText("\n\n\"<i>Apparently, it was the valkyrie’s common dormitories before I arrived. There was almost thirty of them, and after I threw out all the old and small beds, the space left was more than enough for most of my things. As you can see, I repaired the walls and decorated it in a similar way to the living room. I put a small fireplace here too. And that large thing is my bed.</i>\" He says, pointing to a huge mattress covered with linen sheets.");			
-			outputText("\n\nAround the fireplace which Anzu mentioned, there are some armchairs. The scent of flowers catch your attention for a moment, and you see many vases with them around the bedroom.");			
-			outputText("\n\n\"<i>I tried to replicate here my sanctuary in the Temple of Mittani, and besides the cold, I think I did a good job. Apart from my bedroom, on this floor you can find my study, and the rest of the books in the palace. These books contain information from my realm.");			
+			outputText("\n\n\"<i>Now, " + player.short + " if you look to the left, you’ll see my bedroom.</i>\" He points a pretty large room and beckons you to follow him inside.");
+			outputText("\n\nWow, this is a huge room. You could fit inside this room almost all of your " + camp.homeDesc() + " located in your camp! You ask Anzu what was this place before it became his bedroom.");
+			outputText("\n\n\"<i>Apparently, it was the valkyrie’s common dormitories before I arrived. There was almost thirty of them, and after I threw out all the old and small beds, the space left was more than enough for most of my things. As you can see, I repaired the walls and decorated it in a similar way to the living room. I put a small fireplace here too. And that large thing is my bed.</i>\" He says, pointing to a huge mattress covered with linen sheets.");
+			outputText("\n\nAround the fireplace which Anzu mentioned, there are some armchairs. The scent of flowers catch your attention for a moment, and you see many vases with them around the bedroom.");
+			outputText("\n\n\"<i>I tried to replicate here my sanctuary in the Temple of Mittani, and besides the cold, I think I did a good job. Apart from my bedroom, on this floor you can find my study, and the rest of the books in the palace. These books contain information from my realm.</i>\"");
 			outputText("\n\nAfter showing you the study, he points the third room, in the right side of the floor.");
 			outputText("\n\n\"<i>This room has no standard use. Generally I use it for random things when it becomes necessary.</i>\"");
 			outputText("\n\nYou follow him to the third floor. Similar to the second in shape, the only difference resides in the fact of here are only two large rooms, while a hall crosses the floor.");
@@ -362,13 +362,13 @@ package classes.Scenes.Dungeons.AnzuPalace
 			outputText("\n\n\"<i>A little cold at start, but when you get accustomed, it becomes really nice. You know, if you want to have a better view, you can follow me to the roof.</i>\"");
 			outputText("\n\nThe roof of the palace, surrounded by the forest pines, lead to a truly magnificent view. The hills extend for all the horizon, while the soft sound of the wind brings peace to your mind. Above you, the sky, framed by the treetops completes the setting.");
 			if (flags[kFLAGS.LETHICE_DEFEATED] > 0) {
-				outputText("\n\n\"<i>When I’m bored or feel too nostalgic, I use to go here in the night. Makes me focus in what I have now. Previously, those stars didn't appear in the sky but for some reason those stars returned.</i>\"");			
+				outputText("\n\n\"<i>When I’m bored or feel too nostalgic, I use to go here in the night. Makes me focus in what I have now. Previously, those stars didn't appear in the sky but for some reason those stars returned.</i>\"");
 				outputText("\n\nYou tell Anzu of how you defeated Lethice and he congratulates you in your efforts, even giving you an appreciative nod for making the stars return. You chat in the top of the palace with Anzu about the constellations and shooting stars until the cold makes you ask him to go inside again.");
 			}
 			else {
-				outputText("\n\n\"<i>When I’m bored or feel too nostalgic, I use to go here in the night. Makes me focus in what I have now. In the end, the only thing that I really miss from my former world, are the things that I can’t have when looking at the sky.</i>\"");			
-				outputText("\n\nYou give him a confused look.");	
-				outputText("\n\n\"<i>Stars.</i>\"");	
+				outputText("\n\n\"<i>When I’m bored or feel too nostalgic, I use to go here in the night. Makes me focus in what I have now. In the end, the only thing that I really miss from my former world, are the things that I can’t have when looking at the sky.</i>\"");
+				outputText("\n\nYou give him a confused look.");
+				outputText("\n\n\"<i>Stars.</i>\"");
 				outputText("\n\nThe lack of the stars in the night sky can be a little depressing. You recall how in the night, back on Ingnam you used to sit on the grass and count the stars of the sky. You chat in the top of the palace with Anzu about the constellations and shooting stars until the cold makes you ask him to go inside again.");	
 			}
 			outputText("\n\nBack in the living room, you thank him for having showed his palace to you.");			
