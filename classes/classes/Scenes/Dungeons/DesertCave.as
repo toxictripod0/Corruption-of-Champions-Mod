@@ -4185,6 +4185,7 @@ package classes.Scenes.Dungeons
 			outputText("Dancing lights swirl around the roof of the cavern, twirling around each other in patterns too intricate to follow.  Whatever they are, they're clearly magical, and they lend this place an otherworldly ambience unmatched by anything you've seen.  This huge room reminds you of your village commons in a way - it's clearly a communal area.  There's a water-pump in the northwest corner and a blazing purple bonfire in the center of the chamber, heating the cool underground air.  The ground is dirt, rather than sand, and hard-packed as any road.  Various chairs and benches are set up for witches to relax in.  ");
 			dungeons.setDungeonButtons(null, checkExit, roomWestHall1, roomEastHall1)
 			if (flags[kFLAGS.SANDWITCH_MOB_DEFEATED] == 0) {
+				spriteSelect(SpriteDb.s_sandwich);
 				outputText("Worst of all, a huge assortment of spellcasters is assembling into a mob, obviously hostile.");
 				outputText("\n\n<b>A magical barrier appears at the exit, preventing your escape!</b>");
 				startCombat(new SandWitchMob(),true);
@@ -4226,6 +4227,7 @@ package classes.Scenes.Dungeons
 			outputText("This room is surprisingly large - big enough to hold the " + num2Text(rand(6) + 5) + " heavily pregnant women inside plus perhaps a dozen more.  Like the outer tunnel, this room is lit by magic, though its contents are equally mundane, if a great deal more... interesting.  There's female sex-toys of every variety on almost every surface.  They sit in piles on the floor, they hang from the walls, and there are even some mounted on the wall, to be fucked in place.  Many such toys have multiple shafts and come in shapes from standard to canine to obscenely equine.  All of the witches are presently engaged in coitus with each other or their 'marital aids', but once you enter, they glance at you with hungry, lust-filled eyes.");
 			if (silly()) outputText("  Clearly, if you wanted to, you could put some extra meat in a sand witch.");
 			dungeons.setDungeonButtons(roomWestHall1, null, null, null);
+			spriteSelect(SpriteDb.s_sandwich);
 			addDisabledButton(0, "Fuck Witches", "This scene requires you to have cock and sufficient arousal.");
 			if (player.hasCock() && player.lust >= 33) {
 				addButton(0, "Fuck Witches", knockUpSomeDoubleStuffedSandWitches).hint("Use the sand witches to get off.");
@@ -4292,6 +4294,7 @@ package classes.Scenes.Dungeons
 			dungeons.setDungeonButtons(null, null, roomSleepingChamber, null);
 			flags[kFLAGS.MET_MILK_SLAVE] = 1;
 			if (flags[kFLAGS.MILK_NAME] is Number) {
+				spriteSelect(SpriteDb.s_milkgirl);
 				outputText("  There are no faucets or water sources that you can see, but your unasked questions are answered when a heavy, liquid sloshing sound emanates from the corner.  The source of the noise reveals itself to be a tit-encumbered, black-skinned human girl.  She drags her milk-swollen mammaries up to the edge of the tub and asks in a breathy, excited voice, \"<i>Bath time?</i>\"  Whoever she was, the witches seem to have broken her utterly - she's interested in nothing but being milked or lounging in her corner.  The way out lies west.");
 				addButton(0, "Bath Time", milkBathsAhoy).hint("Have a milk bath.");
 			}
@@ -4315,6 +4318,7 @@ package classes.Scenes.Dungeons
 			clearOutput();
 			outputText("<b><u>Eastern Warrens, West Portion, South Side (Cum Witch's Office)</u></b>\n");
 			dungeons.setDungeonButtons(null, null, null, roomCumWitchBedroom);
+			spriteSelect(SpriteDb.s_cumWitch);
 			if (flags[kFLAGS.SAND_WITCHES_FRIENDLY] > 0) {
 				//{SAND WITCHES NOW FRIENDLY}
 				outputText("The cum witch is here, pounding away at one of her sister's cunts, like usual.  She seems to CONSTANTLY excrete her jism into her partner's many cunt-folds, but as her passion and speed rises, the flow thickens, eventually filling the poor milk-witch's wombs entirely.  They go at it like animals for a few seconds more, then separate after a climactic orgasm that leaves a puddle of spooge inches deep on part of the uneven floor.  The cum-witch moves her insensate sister to rest on a nearby bench before putting on her hat and robes.  She winks at you and offers, \"<i>Well, I hope you enjoyed the show, interloper.  Did you come here for some of my gift, or something else?</i>\"");
