@@ -1300,7 +1300,7 @@ public static const UNKNOWN_FLAG_NUMBER_01291:int                               
 public static const UNKNOWN_FLAG_NUMBER_01292:int                                   = 1292;
 public static const UNKNOWN_FLAG_NUMBER_01293:int                                   = 1293;
 public static const UNKNOWN_FLAG_NUMBER_01294:int                                   = 1294;
-public static const UNKNOWN_FLAG_NUMBER_01295:int                                   = 1295;
+public static const OVIMAX_OVERDOSE:int                                             = 1295;
 public static const MINO_CHEF_TALKED_RED_RIVER_ROOT:int                             = 1296;
 public static const RATHAZUL_MIXOLOGY_XP:int                                        = 1297; // 0-200, currently for selling new skin oils only
 public static const DISABLE_QUICKLOAD_CONFIRM:int                                   = 1298; // Disable the confirmation-dialog on quickload

@@ -2,6 +2,7 @@
 		import classes.GlobalFlags.kFLAGS;
 		import classes.GlobalFlags.kGAMECLASS;
 		import classes.Items.ArmorLib;
+		import classes.Items.WeaponLib;
 		import classes.Items.UndergarmentLib;
 
 		/**
@@ -27,6 +28,7 @@
 				"days"				: function(thisPtr:*):* {return  kGAMECLASS.model.time.days;},
 				"hasarmor"			: function(thisPtr:*):* {return  kGAMECLASS.player.armor != ArmorLib.NOTHING;},
 				"haslowergarment"	: function(thisPtr:*):* {return  kGAMECLASS.player.lowerGarment != UndergarmentLib.NOTHING;},
+				"hasweapon"			: function(thisPtr:*):* {return  kGAMECLASS.player.weapon != WeaponLib.FISTS;},
 				"tallness"			: function(thisPtr:*):* {return  kGAMECLASS.player.tallness;},
 				"hairlength"		: function(thisPtr:*):* {return  kGAMECLASS.player.hair.length;},
 				"femininity"		: function(thisPtr:*):* {return  kGAMECLASS.player.femininity;},

@@ -2,6 +2,7 @@ package classes.Scenes
 {
 	import classes.*;
 	import classes.GlobalFlags.*;
+	import classes.Items.ArmorLib;
 	
 	public class PregnancyProgression extends BaseContent
 	{
@@ -2090,7 +2091,23 @@ package classes.Scenes
 					if (player.vaginas.length == 0) {
 						outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.\n\n");
 						player.createVagina();
-					}		
+					}
+					var oviMaxOverdoseGainedOviPerk:Boolean = false;
+					if (!player.hasPerk(PerkLib.Oviposition) && flags[kFLAGS.OVIMAX_OVERDOSE] > 0 && rand(3) < flags[kFLAGS.OVIMAX_OVERDOSE]) {
+						outputText("You instantly feel your body seize up and you know something is wrong."
+						          +" [if (hasWeapon)You let go of your [weapon] before your|Your] legs completely give out from under you and"
+						          +" a high pitched, death curdle escapes your lips as you fall to your knees. Clutching your stomach,"
+						          +" you bury your face into the ground, your screaming turning into a violent high pitched wail."
+						          +" Deep inside your uterus you feel a shuddering, inhuman change as your womb violently and painfully,"
+						          +" shifts and warps around your unfertilized eggs, becoming a more accommodating, cavernous home for them."
+						          +" Your wails quieted down and became a mess of heaving sighs and groans. Your eyes weakly register as your belly"
+						          +" trembles with a vengeance, and you realize there is still more to come.\n\n");
+						if (player.armor !== ArmorLib.NOTHING) {
+							outputText("Realizing you're about to give birth, you rip off your [armor] before it can be ruined by what's coming.\n\n");
+						}
+						oviMaxOverdoseGainedOviPerk = true;
+					}
+					flags[kFLAGS.OVIMAX_OVERDOSE] = 0;
 					//Small egg scenes
 					if (player.statusEffectv2(StatusEffects.Eggs) == 0) {
 						//light quantity
@@ -2126,6 +2143,10 @@ package classes.Scenes
 						outputText("\n\nYou gaze down at the mess, counting " + eggDescript() + ".");
 						player.orgasm('Vaginal');
 						dynStats("scale", false);
+					}
+					if (oviMaxOverdoseGainedOviPerk) {
+						outputText("\n\n(<b>Perk Gained: Oviposition</b>)");
+						player.createPerk(PerkLib.Oviposition, 0, 0, 0, 0);
 					}
 					outputText("\n\n<b>You feel compelled to leave the eggs behind, ");
 					if (player.hasStatusEffect(StatusEffects.AteEgg)) outputText("but you remember the effects of the last one you ate.\n</b>");
