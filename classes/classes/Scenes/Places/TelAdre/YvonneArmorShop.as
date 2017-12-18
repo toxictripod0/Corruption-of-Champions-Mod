@@ -3,11 +3,12 @@ import classes.GlobalFlags.kFLAGS;
 import classes.GlobalFlags.kGAMECLASS;
 import classes.ItemType;
 import classes.Items.Armor;
+import classes.display.SpriteDb;
 
 public class YvonneArmorShop extends Shop {
 	public function YvonneArmorShop() {
 		super();
-		sprite = 64;
+		sprite = SpriteDb.s_yvonne;
 	}
 
 	protected override function inside():void {

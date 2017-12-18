@@ -1,11 +1,12 @@
 package classes.Scenes.Places.TelAdre {
 import classes.ItemType;
 import classes.StatusEffects;
+import classes.display.SpriteDb;
 
 public class VictoriaTailorShop extends Shop {
 	public function VictoriaTailorShop() {
 		super();
-		sprite = 61;
+		sprite = SpriteDb.s_victoria;
 	}
 
 	override protected function inside():void {
