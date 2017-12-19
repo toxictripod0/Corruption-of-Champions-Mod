@@ -24,6 +24,8 @@ import flash.events.MouseEvent;
 import flash.text.TextField;
 
 public class MainView extends Block {
+	[Embed(source="../../../res/ui/CoCLogo.png")]
+	public static const GameLogo:Class;
 	[Embed(source="../../../res/ui/background1.png")]
 	public static const Background1:Class;
 	[Embed(source="../../../res/ui/background2.png")]
