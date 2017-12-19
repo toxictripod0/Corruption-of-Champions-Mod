@@ -125,6 +125,17 @@
 				"tail"						: function(thisPtr:*):* { return kGAMECLASS.player.tailDescript(); },
 				"onetail"					: function(thisPtr:*):* { return kGAMECLASS.player.oneTailDescript(); },
 
+				//Monster strings
+				"monster.short"				: function(thisPtr:*):* { return kGAMECLASS.monster.short; },
+				"monster.a"					: function(thisPtr:*):* { return kGAMECLASS.monster.a; },
+				"monster.capitala"			: function(thisPtr:*):* { return kGAMECLASS.monster.capitalA; },
+				"monster.pronoun1"			: function(thisPtr:*):* { return kGAMECLASS.monster.pronoun1; },
+				"monster.pronoun1caps"		: function(thisPtr:*):* { return kGAMECLASS.monster.Pronoun1; },
+				"monster.pronoun2"			: function(thisPtr:*):* { return kGAMECLASS.monster.pronoun2; },
+				"monster.pronoun2caps"		: function(thisPtr:*):* { return kGAMECLASS.monster.Pronoun2; },
+				"monster.pronoun3"			: function(thisPtr:*):* { return kGAMECLASS.monster.pronoun3; },
+				"monster.pronoun3caps"		: function(thisPtr:*):* { return kGAMECLASS.monster.Pronoun3; },
+
 				//Prisoner
 				"captortitle"				: function(thisPtr:*):* { return kGAMECLASS.prison.prisonCaptor.captorTitle; },
 				"captorname"				: function(thisPtr:*):* { return kGAMECLASS.prison.prisonCaptor.captorName; },
