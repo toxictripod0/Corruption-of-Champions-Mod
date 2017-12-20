@@ -122,7 +122,7 @@ package classes.display
 				newLabel.buttons[i].labelText = args[i][0];
 				newLabel.buttons[i].callback = generateCallback(args[i][1]);
 				//newLabel.buttons[i].disableIf(args[i][3]);
-				_buttonDb.push(new Array(newLabel.buttons[i], newLabel.getChildIndex(), label, colourifyText(args[i][0]), args[i][2], args[i][3]));
+				_buttonDb.push(new Array(newLabel.buttons[i], newLabel, label, colourifyText(args[i][0]), args[i][2], args[i][3]));
 			}
 			_content.addElement(newLabel);
 			return newLabel;
