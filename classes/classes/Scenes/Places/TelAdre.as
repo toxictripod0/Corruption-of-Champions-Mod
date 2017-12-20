@@ -613,6 +613,7 @@ public function barTelAdre():void {
 //-----------------
 public function carpentryShopEntry():void {
 	clearOutput();
+	spriteSelect(SpriteDb.s_carpenter);
 	outputText("You enter the shop marked by a sign with hammer and saw symbol painted on it. There are array of tools all hung neatly. A six feet tall zebra-morph stallion stands behind the counter. He appears to be wearing typical lumberjack outfit.\n\n");
 	outputText("\"<i>Welcome to my hardware shop dear customer. Feel free to look around,</i>\" he says. \n\n");
 	if (flags[kFLAGS.CODEX_ENTRY_ZEBRAS] <= 0) {
@@ -624,7 +625,7 @@ public function carpentryShopEntry():void {
 
 public function carpentryShopInside():void {
 	clearOutput();
-	outputText("<i>So what will it be?</i>\n\n");
+	outputText("\"<i>So what will it be?</i>\"\n\n");
 	if (player.hasKeyItem("Carpenter's Toolbox") >= 0) camp.cabinProgress.checkMaterials();
 	menu();
 	if (player.hasKeyItem("Carpenter's Toolbox") >= 0) {
