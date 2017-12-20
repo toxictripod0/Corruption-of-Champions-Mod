@@ -742,7 +742,7 @@ private function talkToBenoit():void {
 
 		return;
 	}
-	else if (flags[kFLAGS.BENOIT_TALKED_TO_PROPERLY] != 0 && benoitAffection() >= 40 && flags[kFLAGS.BENOIT_TIMES_SEXED_FEMPCS] == 0 && flags[kFLAGS.FEMOIT_UNLOCKED] == 0)
+	else if (flags[kFLAGS.BENOIT_TALKED_TO_PROPERLY] != 0 && benoitAffection() >= 40 && flags[kFLAGS.FEMOIT_UNLOCKED] == 0)
 	{
 		femoitInitialTalk();
 		doNext(camp.returnToCampUseOneHour);
