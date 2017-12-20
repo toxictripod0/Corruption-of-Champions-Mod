@@ -24,7 +24,7 @@ package classes.display
 		 * @param	maxWidth	Defines the maximum available width that the control can consume for positining math
 		 * @param	buttons		Defines the number of buttons to be generated
 		 */
-		public function BindDisplay(maxWidth:int, buttons:int = 2) 
+		public function BindDisplay(maxWidth:int, maxHeight:int = 40, buttons:int = 2) 
 		{
 			layoutConfig = {
 				type: Block.LAYOUT_FLOW,
@@ -32,10 +32,10 @@ package classes.display
 				setWidth: true
 			};
 			width = maxWidth;
-			height = 40;
-			_nameLabel = addTextField({
+			height = maxHeight;
+			_nameLabel = addTextField( {
 				text:"THIS IS SOME KINDA CRAZY LABEL",
-				width: 200,
+				width: 290,
 				defaultTextFormat: {
 					font: 'Times New Roman',
 					size: 20,
@@ -53,13 +53,22 @@ package classes.display
 			}
 		}
 		
-		//public function get text():String { return _nameLabel.text; }
-		//public function set text(value:String):void { _nameLabel.text = value; }
+		public function addButton(label:String, cb:Function):CoCButton {
+			var button:CoCButton = new CoCButton({
+				labelText: label,
+				bitmapClass: MainView.ButtonBackground0,
+				callback: cb
+			})
+			_buttons.push(button);
+			addElement(button);
+			return button;
+		}
 		
 		public function get htmlText():String { return _nameLabel.htmlText; }
 		public function set htmlText(value:String):void { _nameLabel.htmlText = value; }
 		
 		public function get buttons():Array { return _buttons; }
+		public function get label():TextField { return _nameLabel; }
 	}
 
 }

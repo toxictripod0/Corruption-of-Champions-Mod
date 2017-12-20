@@ -61,9 +61,9 @@ package classes
 			menu();
 			if (player.str > 0) addButton(0, "Resume", playerMenu).hint("Get back to gameplay?");
 			else addButtonDisabled(0, "Resume", "Please start or load a game first.");
-			addButton(1, "Settings", kGAMECLASS.gameSettings.settingsScreenMain).hint("Configure game settings and enable cheats.");
+			addButton(1, "Settings", getGame().gameSettings.enterSettings).hint("Configure game settings and enable cheats.");
 			addButton(2, "Instructions", howToPlay).hint("How to play.  Starting tips.  And hotkeys for easy left-handed play...");
-			addButton(3, "Achievements", kGAMECLASS.achievementList.achievementsScreen).hint("View all achievements you have unlocked so far.");
+			addButton(3, "Achievements", getGame().achievementList.achievementsScreen).hint("View all achievements you have unlocked so far.");
 			addButton(4, "Mod Thread", openURL, "https://forum.fenoxo.com/threads/coc-revamp-mod.3/", null, null, "Check the official mod thread on Fenoxo's forum.");
 
 			addButton(5, "Credits", creditsScreen).hint("See a list of all the cool people who have contributed to content for this game!");

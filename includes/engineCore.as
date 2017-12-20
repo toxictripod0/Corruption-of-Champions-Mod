@@ -160,7 +160,10 @@ public function outputText(output:String):void
 }
 
 public function displayHeader(string:String):void {
-	outputText("<font size=\"36\" face=\"Georgia\"><u>" + string + "</u></font>\n");
+	outputText(formatHeader(string));
+}
+public function formatHeader(string:String):String {
+	return "<font size=\"36\" face=\"Georgia\"><u>" + string + "</u></font>\n";
 }
 
 public function buttonIsVisible(index:int):Boolean {

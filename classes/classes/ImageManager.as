@@ -211,7 +211,7 @@
 		{
 			var imageString:String = "";
 			
-			if (kGAMECLASS.flags[kFLAGS.IMAGEPACK_OFF] > 0) {
+			if (kGAMECLASS.flags[kFLAGS.IMAGEPACK_ENABLED] <= 0) {
 				return "";
 			}
 			
