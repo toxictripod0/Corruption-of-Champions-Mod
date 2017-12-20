@@ -1477,7 +1477,7 @@ public class Combat extends BaseContent
 					var bleed:Number = (2 + rand(4))/100;
 					bleed *= player.HP;
 					bleed = takeDamage(bleed);
-					outputText("<b>You gasp and wince in pain, feeling fresh blood pump from your wounds. (<font color=\"" + mainViewManager.colorHpMinus() + "\">" + temp + "</font>)</b>\n\n");
+					outputText("<b>You gasp and wince in pain, feeling fresh blood pump from your wounds. " + getDamageText(bleed) + "</b>\n\n");
 				}
 			}
 			if (player.hasStatusEffect(StatusEffects.AcidSlap)) {
