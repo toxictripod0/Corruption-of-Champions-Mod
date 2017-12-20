@@ -80,6 +80,13 @@ public class SpriteDb {
 	public static function get s_bee_girl(): Class {
 		return is8bit ? s_bee_girl_8bit : s_bee_girl_16bit;
 	}
+	[Embed(source="../../../res/sprites/carpenter.png")]
+	public static const s_carpenter_16bit:Class;
+//	[Embed(source="../../../res/sprites8bit/carpenter-old.png")]
+//	public static const s_carpenter_8bit:Class;
+	public static function get s_carpenter(): Class {
+		return is8bit ? null : s_carpenter_16bit;
+	}
 	[Embed(source="../../../res/sprites/ceraph.png")]
 	public static const s_ceraph_16bit:Class;
 	[Embed(source="../../../res/sprites8bit/ceraph-old.png")]
