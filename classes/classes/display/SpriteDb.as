@@ -400,6 +400,13 @@ public class SpriteDb {
 	public static function get s_isabella(): Class {
 		return is8bit ? s_isabella_8bit : s_isabella_16bit;
 	}
+	[Embed(source="../../../res/sprites/ivory_succubus.png")]
+	public static const s_ivory_succubus_16bit:Class;
+//	[Embed(source="../../../res/sprites8bit/ivory_succubus-old.png")]
+//	public static const s_ivory_succubus_8bit:Class;
+	public static function get s_ivory_succubus(): Class {
+		return is8bit ? null : s_ivory_succubus_16bit;
+	}
 	[Embed(source="../../../res/sprites/izma.png")]
 	public static const s_izma_16bit:Class;
 	[Embed(source="../../../res/sprites8bit/izma-old.png")]
