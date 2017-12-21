@@ -1069,6 +1069,7 @@ package classes.Scenes {
 						break;
 					case CockTypesEnum.TENTACLE:
 						outputText("bulbous ");
+						break;
 					default:
 				}
 				outputText("tip of your " + player.cockDescript() + " against the opening of ");

@@ -125,6 +125,7 @@ package classes.Scenes.Places.TelAdre {
 					case 16:	if (milkOption(KBIT_MILK_SHARE_WITH_FRIENDS | KBIT_MILK_SHARE_WITH_OLD_GANG | KBIT_MILK_SHARE_WITH_HELENA) && model.time.days % 3 == 0) breasts.milked();
 								break;
 					case 17:	if (milkOption(KBIT_MILK_SHARE_WITH_FRIENDS | KBIT_MILK_SHARE_WITH_VALA) && model.time.days % 5 == 2) breasts.milked();
+								break;
 					default:
 				}
 			}
@@ -1948,10 +1949,8 @@ private function talkMilkLimitation():void {
 												break;
 		case BreastStore.LACTATION_HEAVY:		outputText("to keep her breasts in check.  She won't allow more than heavy");
 												break;
-		case BreastStore.LACTATION_MODERATE:	if (doneHighLactation) {
-													outputText("to keep her breasts in check.  She won't allow more than moderate");
-													break;
-												}
+		case BreastStore.LACTATION_MODERATE:	outputText("to keep her breasts in check.  She won't allow more than moderate");
+												break;
 		default:
 												outputText("not to keep her breasts in check.  There's no limit on her");
 	}
@@ -3048,6 +3047,7 @@ private function giveKatTheGiftOFMilk():void {
 			case BreastStore.LACTATION_STRONG:		if (breasts.preventLactationIncrease == BreastStore.LACTATION_STRONG) breasts.preventLactationIncrease = 0;
 													break;
 			case BreastStore.LACTATION_HEAVY:		if (breasts.preventLactationIncrease == BreastStore.LACTATION_HEAVY) breasts.preventLactationIncrease = 0;
+													break;
 			default:
 		}
 		breasts.lactationLevel++;

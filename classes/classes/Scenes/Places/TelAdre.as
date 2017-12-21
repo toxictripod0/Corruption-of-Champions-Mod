@@ -167,6 +167,7 @@ public function telAdreMenu():void {
 				else katherine.repeatAmbushKatherineRecruitMent();
 				return;
 			}
+			break;
 		case  1: //In alley behind Oswald's
 		case  2: //You are training her
 		case  3: //You and Urta are training her
@@ -176,6 +177,7 @@ public function telAdreMenu():void {
 				katherineEmployment.katherineGetsEmployed();
 				return;
 			}
+			break;
 		default: //Has given you a spare key to her apartment
 			if (model.time.hours < 10 && rand(12) == 0) { //If employed or housed she can sometimes be encountered while on duty
 				katherine.katherineOnDuty();
@@ -301,7 +303,7 @@ public function oswaldPawn():void {
 		case 1:
 		case 2: addButton(2, "Kath's Alley", katherine.visitKatherine); break;
 		case 3: addButton(2, "Safehouse", katherineEmployment.katherineTrainingWithUrta); break;
-		case 4: addButton(2, "Kath's Alley", katherineEmployment.postTrainingAlleyDescription); //Appears until Kath gives you her housekeys
+		case 4: addButton(2, "Kath's Alley", katherineEmployment.postTrainingAlleyDescription); break; //Appears until Kath gives you her housekeys
 		default:
 	}
 	if (player.hasKeyItem("Carrot") < 0 && flags[kFLAGS.NIEVE_STAGE] == 3) {

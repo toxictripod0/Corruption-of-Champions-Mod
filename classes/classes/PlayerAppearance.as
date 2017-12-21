@@ -319,7 +319,6 @@ package classes
 					case Ears.COW:       outputText("  A pair of round, floppy cow ears protrude from the sides of your skull."); break;
 					case Ears.ELFIN:     outputText("  A pair of large pointy ears stick out from your skull."); break;
 					case Ears.CAT:       outputText("  A pair of cute, fuzzy cat ears have sprouted from the top of your head."); break;
-					case Ears.PIG:       outputText("  A pair of pointy, floppy pig ears have sprouted from the top of your head."); break;
 					case Ears.LIZARD:    outputText("  A pair of rounded protrusions with small holes on the sides of your head serve as your ears."); break;
 					case Ears.BUNNY:     outputText("  A pair of floppy rabbit ears stick up from the top of your head, flopping around as you walk."); break;
 					case Ears.FOX:       outputText("  A pair of large, adept fox ears sit high on your head, always listening."); break;
@@ -855,8 +854,10 @@ package classes
 
 				case Tail.RABBIT:
 					outputText("  A short, soft bunny tail sprouts just above your [ass], twitching constantly whenever you don't think about it.");
+					break;
 				case Tail.HARPY:
 					outputText("  A tail of feathers fans out from just above your [ass], twitching instinctively to help guide you if you were to take flight.");
+					break;
 				case Tail.KANGAROO:
 					outputText("  A conical, ");
 					if (player.hasGooSkin()) 

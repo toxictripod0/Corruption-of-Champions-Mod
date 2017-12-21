@@ -61,6 +61,7 @@ package classes.Scenes.Monsters
 						break;
 					case VaginaClass.WETNESS_SLAVERING:
 						outputText("Your " + player.allVaginaDescript() + " instantly soak" + (player.vaginas.length > 1 ? "" : "s") + " your groin.");
+						break;
 					default: //Dry vaginas are unaffected
 						
 				}

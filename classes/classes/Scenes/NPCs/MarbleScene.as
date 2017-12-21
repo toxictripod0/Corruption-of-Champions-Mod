@@ -3193,6 +3193,7 @@ public function marbleNightSleepFlavor():Boolean {
 		case 5: outputText("<b>Marble's pregnancy has advanced further still, though the structure of her body keeps it from slowing her down.</b>\n\n"); //18 days in
 				break;
 		case 6: outputText("<b>Marble is probably getting close to giving birth, as her belly has gotten very large.</b>\n\n"); //24 days in
+				break;
 		default:
 	}
 	//Both under 30 - no sex
@@ -3854,6 +3855,7 @@ private function marbleAppearance():void {
 		case 5: outputText("Her belly is very swollen; she is very pregnant.\n\n"); //18 to 24 days in
 				break;
 		case 6: outputText("Her belly is extremely swollen and occasionally quivers when whatever she is pregnant with moves around.\n\n"); //24+ days in
+				break;
 		default:
 	}
 	

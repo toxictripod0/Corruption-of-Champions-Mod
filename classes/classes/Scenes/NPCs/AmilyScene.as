@@ -2617,6 +2617,7 @@ package classes.Scenes.NPCs
 						}
 						break;
 				case 8: outputText("Amily's bulge frequently wriggles and squirms, though this doesn't seem to bother her. " + (flags[kFLAGS.AMILY_FOLLOWER] == 1 ? "T" : "She smiles with glee, t") + "he children mustn't have too much longer until they are born.\n\n");
+						break;
 				default:
 			}
 			amilyMenu(true);

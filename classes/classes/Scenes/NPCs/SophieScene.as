@@ -59,6 +59,7 @@ package classes.Scenes.NPCs{
 							case 200:
 							case 325: sophiesDaughterDescript(); //At these three times we need to output a message about her daughters
 									needNext = true;
+									break;
 							default:
 						}
 					}
