@@ -927,6 +927,7 @@ package classes {
 						case 3:
 							if (!needNext) needNext = player.growHair(1.1);
 							else player.growHair(1.1);
+							break;
 						default:
 					}
 					flags[kFLAGS.INCREASED_HAIR_GROWTH_TIME_REMAINING]--;

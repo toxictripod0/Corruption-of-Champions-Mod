@@ -1246,6 +1246,7 @@ package classes.Scenes.Places
 							trainingFeed.prisonCaptorFeedingEvent();
 							return;
 						}
+						break;
 					case 5:
 					case 6:
 						if (randomCooldownPet <= 0 && rand(petPlayRarity) == 0 && !trainingPet.prisonCaptorPetOptedOut()) {
@@ -2702,7 +2703,7 @@ package classes.Scenes.Places
 				case 4:
 				case 5:
 					billieScene.prisonCaptorBilliePunishmentFuck("choose");
-					return;
+					break;
 				case 6:
 					if (player.gender == 3) outputText(images.showImage("prison-elly-herm"));
 					else if (player.gender == 2) outputText(images.showImage("prison-elly-female"));
@@ -2745,6 +2746,9 @@ package classes.Scenes.Places
 		
 		public function prisonCaptorResistFuck():void
 		{
+			if (player.gender == 3) outputText(images.showImage("prison-elly-herm"));
+			else if (player.gender == 2) outputText(images.showImage("prison-elly-female"));
+			else outputText(images.showImage("prison-elly-male"));
 			var selector:* = undefined;
 			selector = 0;
 			if (player.statusEffectv1(StatusEffects.PrisonCaptorEllyStatus) < 3)
@@ -2808,10 +2812,6 @@ package classes.Scenes.Places
 				case 4:
 				case 5:
 				case 6:
-					if (player.gender == 3) outputText(images.showImage("prison-elly-herm"));
-					else if (player.gender == 2) outputText(images.showImage("prison-elly-female"));
-					else outputText(images.showImage("prison-elly-male"));
-					
 					if (player.hasVagina())
 					{
 						outputText("(Placeholder) \"<i>You're going to get a special treat today, [boy], but first you need to beg me to put a baby in your dirty [cunt].</i>\" You petulantly refuse, ");
@@ -2828,6 +2828,7 @@ package classes.Scenes.Places
 						player.orgasm('Vaginal');
 						break;
 					}
+					break;
 				case 7:
 				case 8:
 				case 9:

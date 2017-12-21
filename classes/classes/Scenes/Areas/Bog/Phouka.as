@@ -120,7 +120,7 @@ package classes.Scenes.Areas.Bog
 				switch (transformChance){
 					case 0: phoukaTransformToBunny(); break;
 					case 1: phoukaTransformToGoat(); break;
-					case 2: phoukaTransformToHorse();
+					case 2: phoukaTransformToHorse(); break;
 					default:
 				}
 				if (PhoukaScene.phoukaForm == PhoukaScene.PHOUKA_FORM_FAERIE)

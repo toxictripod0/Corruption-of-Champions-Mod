@@ -1,25 +1,20 @@
 package classes.display 
 {
-	import classes.BoundControlMethod;
+	import classes.GlobalFlags.kGAMECLASS;
 	import classes.InputManager;
-
-import coc.view.Block;
-
-import mx.core.ScrollControlBase;
-
+	import classes.display.BindDisplay;
+	import coc.view.Block;
 	import fl.containers.ScrollPane;
-	import flash.display.DisplayObject;
 	import flash.display.MovieClip;
 	import flash.display.Stage;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.text.TextField;
-	import flash.text.TextFormat;
-	import flash.utils.Dictionary;
-	import flash.ui.Keyboard;
-	import flash.utils.describeType;
-	import classes.display.BindDisplay;
 	import flash.text.TextFieldAutoSize;
+	import flash.text.TextFormat;
+	import flash.ui.Keyboard;
+	import flash.utils.Dictionary;
+	import flash.utils.describeType;
 	
 	/**
 	 * Defines a new UI element, providing a scrollable container to be used for display of bound
@@ -145,7 +140,7 @@ import mx.core.ScrollControlBase;
 			helpLabel.multiline = true;
 			helpLabel.wordWrap = true;
 			helpLabel.autoSize = TextFieldAutoSize.LEFT; // With multiline enabled, this SHOULD force the textfield to resize itself vertically dependent on content.
-			helpLabel.htmlText = "<b>Keyboard Control Bindings:</b>\n\n";
+			helpLabel.htmlText = kGAMECLASS.formatHeader("Keyboard Control Bindings");
 			helpLabel.htmlText += "Click a button next to the action you wish to bind to a new key, then hit the key you want to bind the selected action to.\n\n"
 			helpLabel.htmlText += "Custom bindings are stored inside your save game files.\n\n";
 			helpLabel.htmlText += "Duplicate keys are automatically unbound from their old control action.\n\n";

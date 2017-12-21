@@ -125,7 +125,6 @@ package classes
 		}
 		
 		// Include the functions. ALL THE FUNCTIONS
-		include "../../includes/input.as";
 		include "../../includes/debug.as";
 		include "../../includes/eventParser.as";
 		include "../../includes/engineCore.as";

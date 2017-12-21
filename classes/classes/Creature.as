@@ -3431,6 +3431,7 @@ package classes
 				case CockTypesEnum.DOG:
 				case CockTypesEnum.FOX:
 					if (dogCocks() == cocks.length) return Appearance.cockNoun(CockTypesEnum.DOG) + "s";
+					break;
 				default:
 			}
 			return Appearance.cockNoun(CockTypesEnum.HUMAN) + "s";

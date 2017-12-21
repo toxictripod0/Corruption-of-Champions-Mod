@@ -1540,7 +1540,7 @@ package classes.Scenes.Combat
 					break;
 				case Tail.SALAMANDER:
 					addButton(button++, "Tail Slap", tailSlapAttack).hint("Set your tail ablaze in red-hot flames to whip your foe with it to hurt and burn them! \n\nFatigue Cost: " + player.physicalCost(30));
-					//break;
+					break;
 				case Tail.SHARK:
 				case Tail.LIZARD:
 				case Tail.KANGAROO:

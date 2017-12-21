@@ -88,6 +88,7 @@ package classes
 					return descript + "boobs";
 				case 9:
 					if (size > 6) return descript + "tits";
+					break;
 				default:
 			}
 			return descript + "breasts";

@@ -191,9 +191,9 @@
 		}
 
 		/** Create a function that will pass one argument. */
-		protected function createCallBackFunction(func:Function, arg:*):Function
+		protected function createCallBackFunction(func:Function, arg:*, arg2:* = null, arg3:* = null):Function
 		{
-			return kGAMECLASS.createCallBackFunction(func,arg);
+			return kGAMECLASS.createCallBackFunction(func, arg, arg2, arg3);
 		}
 
 		protected function doSFWloss():Boolean {
