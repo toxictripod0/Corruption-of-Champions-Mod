@@ -25,7 +25,6 @@ package classes.display
 		private var _contentChildren:int;
 
 		private var _initialized:Boolean = false;
-		private var _buttonDb:Array = []; 
 		
 		/**
 		 * Initiate the BindingPane, setting the stage positioning and reference back to the input manager
@@ -111,32 +110,47 @@ package classes.display
 			return helpLabel;
 		}
 		
-		public function addToggleSettings(label:String, args:Array):BindDisplay {
-			_contentChildren++;
-			
-			var newLabel:BindDisplay = new BindDisplay(this.width - 20, 50, args.length);
-			newLabel.label.multiline = true;
-			newLabel.htmlText = "<b>" + label + ":</b>\n";
-			for (var i:int = 0; i < args.length; i++) {
-				trace(label + ": " + args[i][3]);
-				newLabel.buttons[i].labelText = args[i][0];
-				newLabel.buttons[i].callback = generateCallback(args[i][1]);
-				//newLabel.buttons[i].disableIf(args[i][3]);
-				_buttonDb.push(new Array(newLabel.buttons[i], newLabel, label, colourifyText(args[i][0]), args[i][2], args[i][3]));
+		public function addOrUpdateToggleSettings(label:String, args:Array):BindDisplay {
+			var i:int;
+			if (_content.getElementByName(label) != null) {
+				var existingSetting:BindDisplay = _content.getElementByName(label) as BindDisplay;
+				for (i = 0; i < args.length; i++) {
+					if (args[i] is String) {
+						if (args[i] == "overridesLabel") {
+							existingSetting.htmlText = args[i-1][2];
+							existingSetting.buttons[i].hide();
+						}
+						continue;
+					}
+					existingSetting.buttons[i].disableIf(args[i][3]);
+					if (args[i][3]) existingSetting.htmlText = "<b>" + label + ": " + colourifyText(args[i][0]) + "</b>\n<font size=\"14\">" + args[i][2] + "</font>";
+				}
+				return existingSetting;
 			}
-			_content.addElement(newLabel);
-			return newLabel;
-		}
-		
-		public function updateToggleSettings():SettingPane {
-			trace(_buttonDb.length);
-			for (var i:int = 0; i < _buttonDb.length; i++) {
-				//_buttonDb[i][0].disableIf(_buttonDb[i][5]);
-				_buttonDb[i][1].htmlText = "<b>" + _buttonDb[i][2] + ": " + _buttonDb[i][3] + "</b>\n" + _buttonDb[i][4];
+			else {
+				_contentChildren++;
+				var newSetting:BindDisplay = new BindDisplay(this.width - 20, 55, args.length);
+				newSetting.name = label;
+				newSetting.label.multiline = true;
+				newSetting.label.wordWrap = true;
+				newSetting.htmlText = "<b>" + label + ":</b>\n";
+				for (i = 0; i < args.length; i++) {
+					if (args[i] is String) {
+						if (args[i] == "overridesLabel") {
+							newSetting.htmlText = args[i-1][2];
+							newSetting.buttons[i].hide();
+						}
+					}
+					else {
+						newSetting.buttons[i].labelText = args[i][0];
+						newSetting.buttons[i].callback = generateCallback(args[i][1]);
+						newSetting.buttons[i].disableIf(args[i][3]);
+						if (args[i][3]) newSetting.htmlText = "<b>" + label + ": " + colourifyText(args[i][0]) + "</b>\n<font size=\"14\">" + args[i][2] + "</font>";
+					}
+				}
+				_content.addElement(newSetting);
+				return newSetting;
 			}
-			update();
-			trace("Update triggered.");
-			return this;
 		}
 		
 		private function generateCallback(func:Function):Function {
