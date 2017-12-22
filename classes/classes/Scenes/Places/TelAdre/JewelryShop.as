@@ -46,7 +46,7 @@ public class JewelryShop extends Shop {
 
 	protected override function inside():void {
 		clearOutput();
-		outputText("<i>So what will it be?</i>");
+		outputText("\"<i>So what will it be?</i>\"");
 		menu();
 		addButton(0, "Normal rings", normalRings);
 		addButton(1, "Special rings", specialRings);
