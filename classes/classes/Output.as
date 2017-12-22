@@ -1,8 +1,8 @@
 package classes 
 {
-import flash.utils.setTimeout;
+	import flash.utils.setTimeout;
 
-/**
+	/**
 	 * Class to replace the old and somewhat outdated output-system, which mostly uses the include-file includes/engineCore.as
 	 * @since  08.08.2016
 	 * @author Stadler76
@@ -86,6 +86,7 @@ import flash.utils.setTimeout;
 		public function flush():void
 		{
 			mainViewManager.setText(_currentText);
+			credits.show();
 		}
 
 		/**
@@ -118,6 +119,7 @@ import flash.utils.setTimeout;
 			nextEntry();
 			_currentText = "";
 			mainView.clearOutputText();
+			credits.clear();
 			return this;
 		}
 

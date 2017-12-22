@@ -119,6 +119,11 @@ public class MainView extends Block {
 	internal static const SPRITE_X:Number = GAP;
 	internal static const SPRITE_Y:Number = SCREEN_H - SPRITE_H - GAP;
 
+	internal static const CREDITS_X:Number = GAP;
+	internal static const CREDITS_Y:Number = STATBAR_Y + STATBAR_H + GAP;
+	internal static const CREDITS_W:Number = STATBAR_W - GAP;
+	internal static const CREDITS_H:Number = SPRITE_Y - CREDITS_Y;
+
 	internal static const TOPROW_W:Number = STATBAR_W + 2 * GAP + TEXTZONE_W;
 
 	internal static const BOTTOM_X:Number         = STATBAR_W + GAP;
@@ -139,6 +144,7 @@ public class MainView extends Block {
 
 	public var mainText:TextField;
 	public var nameBox:TextField;
+	public var creditsBox:TextField;
 	public var eventTestInput:TextField;
 	public var aCb:ComboBox;
 
@@ -245,6 +251,19 @@ public class MainView extends Block {
 			mouseEnabled     : true,
 			defaultTextFormat: {
 				size: 20
+			}
+		});
+		creditsBox = addTextField({
+			multiline        : true,
+			wordWrap         : true,
+			x                : CREDITS_X,
+			y                : CREDITS_Y,
+			width            : CREDITS_W,
+			height           : CREDITS_H,
+			mouseEnabled     : true,
+			defaultTextFormat: {
+				size: 16,
+				font: 'Arial'
 			}
 		});
 		scrollBar = new UIScrollBar();

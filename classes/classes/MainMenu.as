@@ -37,6 +37,7 @@ package classes
 			kGAMECLASS.gameStateDirectSet(3);
 			clearOutput();
 			mainView.hideMainText();
+			mainView.creditsBox.visible = false;
 			if (_mainMenu == null) {
 				configureMainMenu();
 			}
@@ -172,6 +173,7 @@ package classes
 			_mainMenu.visible = false;
 			mainView.showMainText();
 			mainView.setTextBackground(flags[kFLAGS.TEXT_BACKGROUND_STYLE]);
+			mainView.creditsBox.visible = true;
 		}
 		
 		public function startupScreenBody():void {

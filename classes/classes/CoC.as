@@ -300,6 +300,7 @@ package classes
 		
 		public var bindings:Bindings = new Bindings();
 		public var output:Output = Output.init();
+		public var credits:Credits = Credits.init();
 		public var measurements:Measurements = Measurements.init();
 		/****
 		   This is used purely for bodges while we get things cleaned up.
