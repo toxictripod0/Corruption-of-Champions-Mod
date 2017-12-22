@@ -369,7 +369,10 @@
 			kGAMECLASS.HPChange(changeNum,display);
 		}
 		
-		protected function playerMenu():void { kGAMECLASS.playerMenu(); }
+		protected function playerMenu():void { 
+			kGAMECLASS.mainMenu.hideMainMenu();
+			kGAMECLASS.playerMenu();
+		}
 		
 		protected function get player():Player
 		{

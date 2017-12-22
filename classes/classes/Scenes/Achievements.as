@@ -34,6 +34,7 @@ package classes.Scenes
 		}
 		
 		public function achievementsScreen():void {
+			getGame().mainMenu.hideMainMenu();
 			achievementsEarned = 0;
 			achievementsTotal = 0;
 			clearOutput();
@@ -209,9 +210,8 @@ package classes.Scenes
 			addAchievement("Make Mareth Great Again", kACHIEVEMENTS.GENERAL_MAKE_MARETH_GREAT_AGAIN, "Build a wall around your camp to defend from those pesky imps.");
 			addAchievement("Terracotta Impy", kACHIEVEMENTS.GENERAL_TERRACOTTA_IMPY, "You've placed 100 imp statues around your camp wall. No, bassy. Bad bassy! Baaad Mr. Bassy!!!", "", true);
 			
-			menu();
-			addButton(13, "" + achievementsEarned + "/" + achievementsTotal + " unlocked", kGAMECLASS.doNothing);
-			addButton(14, "Back", kGAMECLASS.mainMenu.mainMenu);
+			doNext(getGame().mainMenu.mainMenu);
+			addButton(1, "" + achievementsEarned + "/" + achievementsTotal + " earned", kGAMECLASS.doNothing).hint("This is how many achievements you have obtained in the game so far.", "Total Achievements Earned");
 		}
 		
 	}

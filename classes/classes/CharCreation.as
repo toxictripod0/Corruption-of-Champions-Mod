@@ -59,6 +59,7 @@
 			args = [];
 			mainView.eventTestInput.x = -10207.5;
 			mainView.eventTestInput.y = -1055.1;
+			getGame().mainMenu.hideMainMenu();
 			hideStats();
 			hideUpDown();
 			mainView.nameBox.visible = true;
@@ -1231,8 +1232,8 @@
 			addButton(1, "Hardcore", chooseModeHardcore);
 			addButton(2, "Difficulty", chooseModeDifficulty);
 			if (debug)
-				addButton(12, "Grimdark", chooseModeGrimdark);
-			addButton(14, "Start!", flags[kFLAGS.HARDCORE_MODE] == 1 ? chooseModeHardcoreSlot : startTheGame);
+				addButton(3, "Grimdark", chooseModeGrimdark);
+			addButton(4, "Start!", flags[kFLAGS.HARDCORE_MODE] == 1 ? chooseModeHardcoreSlot : startTheGame);
 		}
 
 		private function startTheGame():void {

@@ -2987,8 +2987,8 @@ public static const PRISON_ENABLED:int                                          
 public static const NEW_GAME_PLUS_LEVEL:int                                         = 2979; // Current intensity of New Game+. Each ascension increments this counter by 1.
 public static const NEW_GAME_PLUS_BONUS_UNLOCKED_HERM:int                           = 2980; // Unlocked hermaphrodite.
 public static const USE_OLD_INTERFACE:int                                           = 2981; // 1 if old interface is used, currently disabled until I can re-implement something that mimics the old interface.
-public static const IMAGEPACK_ENABLED:int                                               = 2982; // 1 if imagepack is disabled.
-public static const UNKNOWN_FLAG_NUMBER_02983:int                                   = 2983; // No longer used, now reclaimed for any settings.
+public static const IMAGEPACK_ENABLED:int                                           = 2982; // 1 if imagepack is disabled.
+public static const TEXT_BACKGROUND_STYLE:int                                       = 2983; // 0 for semi-transparent, 1 for white, 2 for tan.
 public static const AUTO_LEVEL:int                                                  = 2984; // 1 if automatic leveling is enabled.
 public static const SFW_MODE:int                                                    = 2985; // 1 if SFW is enabled.
 public static const WATERSPORTS_ENABLED:int                                         = 2986; // 1 if watersport scenes are enabled.

@@ -559,11 +559,13 @@ package classes
 			//}endregion
 			
 			// These are toggled between by the [home] key.
+			mainView.textBGTranslucent.visible = true;
 			mainView.textBGWhite.visible = false;
 			mainView.textBGTan.visible = false;
 			
 			// *************************************************************************************
 			//Workaround.
+			mainViewManager.registerShiftKeys();
 			exploration.configureRooms();
 			lethicesKeep.configureRooms();
 			dungeons.map = new DungeonMap();

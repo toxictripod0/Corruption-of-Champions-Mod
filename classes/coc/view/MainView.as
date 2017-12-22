@@ -26,7 +26,12 @@ import flash.text.TextField;
 public class MainView extends Block {
 	[Embed(source="../../../res/ui/CoCLogo.png")]
 	public static const GameLogo:Class;
-	[Embed(source="../../../res/ui/background1.png")]
+	[Embed(source="../../../res/ui/disclaimer-bg.png")]
+	public static const DisclaimerBG:Class;
+	[Embed(source="../../../res/ui/warning.png")]
+	public static const Warning:Class;
+	
+	[Embed(source="../../../res/ui/background1.jpg")]
 	public static const Background1:Class;
 	[Embed(source="../../../res/ui/background2.png")]
 	public static const Background2:Class;
@@ -126,6 +131,7 @@ public class MainView extends Block {
 	internal static const BOTTOM_Y:Number         = SCREEN_H - BOTTOM_H;
 
 	private var blackBackground:BitmapDataSprite;
+	public var textBGTranslucent:BitmapDataSprite;
 	public var textBGWhite:BitmapDataSprite;
 	public var textBGTan:BitmapDataSprite;
 	public var background:BitmapDataSprite;
@@ -206,6 +212,14 @@ public class MainView extends Block {
 		topRow.addElement(appearanceButton = new CoCButton({
 			labelText  : 'Appearance',
 			bitmapClass: ButtonBackground6
+		}));
+		addElement(textBGTranslucent = new BitmapDataSprite( {
+			alpha    : 0.4,
+			fillColor: '#FFFFFF',
+			x        : TEXTZONE_X,
+			y        : TEXTZONE_Y,
+			width    : TEXTZONE_W,
+			height   : TEXTZONE_H
 		}));
 		addElement(textBGWhite = new BitmapDataSprite({
 			fillColor: '#FFFFFF',
@@ -391,12 +405,15 @@ public class MainView extends Block {
 
 	protected function hookAllButtons():void {
 		var b:Sprite;
-
 		for each(b in this.allButtons) {
-			b.mouseChildren = false;
-			b.addEventListener(MouseEvent.ROLL_OVER, this.hoverButton);
-			b.addEventListener(MouseEvent.ROLL_OUT, this.dimButton);
+			hookButton(b);
 		}
+	}
+	
+	public function hookButton(b:Sprite):void {
+		b.mouseChildren = false;
+		b.addEventListener(MouseEvent.ROLL_OVER, this.hoverButton);
+		b.addEventListener(MouseEvent.ROLL_OUT, this.dimButton);
 	}
 
 	//////// Internal(?) view update methods ////////
@@ -712,6 +729,29 @@ public class MainView extends Block {
 
 		this.scrollBar.scrollTarget = this.mainText;
 
+	}
+	
+	public function showMainText():void {
+		this.setTextBackground();
+		this.mainText.visible = true;
+		this.scrollBar.visible = true;
+	}
+	public function hideMainText():void {
+		this.clearTextBackground();
+		this.mainText.visible = false;
+		this.scrollBar.visible = false;
+	}
+	
+	public function clearTextBackground():void {
+		this.textBGTranslucent.visible = false;
+		this.textBGWhite.visible = false;
+		this.textBGTan.visible = false;
+	}
+	public function setTextBackground(selection:int = -1):void {
+		clearTextBackground();
+		if (selection == 0) this.textBGTranslucent.visible = true;
+		if (selection == 1) this.textBGWhite.visible = true;
+		if (selection == 2) this.textBGTan.visible = true;
 	}
 }
 }

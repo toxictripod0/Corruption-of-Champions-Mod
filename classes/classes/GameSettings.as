@@ -141,6 +141,7 @@ package classes
 		
 		public function enterSettings():void {
 			kGAMECLASS.saves.savePermObject(false);
+			getGame().mainMenu.hideMainMenu();
 			hideMenus();
 			if (!initializedPanes) configurePanes();
 			clearOutput();
@@ -332,29 +333,24 @@ package classes
 			clearOutput();
 			outputText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae turpis nec ipsum fermentum pellentesque. Nam consectetur euismod diam. Proin vitae neque in massa tempor suscipit eget at mi. In hac habitasse platea dictumst. Morbi laoreet erat et sem hendrerit mattis. Cras in mauris vestibulum nunc fringilla condimentum. Nam sed arcu non ipsum luctus dignissim a eget ante. Curabitur dapibus neque at elit iaculis, ac aliquam libero dapibus. Sed non lorem diam. In pretium vehicula facilisis. In euismod imperdiet felis, vitae ultrices magna cursus at. Vivamus orci urna, fringilla ac elementum eu, accumsan vel nunc. Donec faucibus dictum erat convallis efficitur. Maecenas cursus suscipit magna, id dapibus augue posuere ut.\n\n");
 			menu();
-			addButton(0, "Normal", setTextBackground, 0);
-			addButton(1, "White", setTextBackground, 1);
-			addButton(2, "Tan", setTextBackground, 2);
+			addButton(0, "Normal", chooseTextBackground, 0);
+			addButton(1, "White", chooseTextBackground, 1);
+			addButton(2, "Tan", chooseTextBackground, 2);
+			addButton(3, "Clear", chooseTextBackground, -1);
 			addButton(4, "Back", displaySettingPane, lastDisplayedPane);
 		}
-		public function setTextBackground(type:int):void {
-			mainView.textBGWhite.visible = false;
-			mainView.textBGTan.visible = false;
-			if (type == 1) mainView.textBGWhite.visible = true;
-			if (type == 2) mainView.textBGTan.visible = true;
+		private function chooseTextBackground(type:int):void {
+			flags[kFLAGS.TEXT_BACKGROUND_STYLE] = type;
+			mainView.setTextBackground(flags[kFLAGS.TEXT_BACKGROUND_STYLE]);
 		}
+
 		//Needed for keys
 		public function cycleBackground():void {
-			if (!mainView.textBGWhite.visible) { 
-				mainView.textBGWhite.visible = true; 
+			flags[kFLAGS.TEXT_BACKGROUND_STYLE]++;
+			if (flags[kFLAGS.TEXT_BACKGROUND_STYLE] > 2) {
+				flags[kFLAGS.TEXT_BACKGROUND_STYLE] = 0;
 			}
-			else if (!mainView.textBGTan.visible) { 
-				mainView.textBGTan.visible = true; 
-			}
-			else {
-				mainView.textBGWhite.visible = false;
-				mainView.textBGTan.visible = false;
-			}
+			mainView.setTextBackground(flags[kFLAGS.TEXT_BACKGROUND_STYLE]);
 		}
 		
 		public function cycleQuality():void {
