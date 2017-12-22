@@ -3,6 +3,7 @@
  */
 package classes.Items
 {
+	import classes.Credits;
 	import classes.GlobalFlags.*;
 	import classes.CoC_Settings;
 	import classes.Scenes.Camp;
@@ -24,6 +25,7 @@ package classes.Items
 		protected function set changeLimit(val:int):void { mutations.changeLimit = val; }
 
 		protected function get output():Output { return kGAMECLASS.output; }
+		protected function get credits():Credits { return kGAMECLASS.credits; }
 		protected function get player():Player { return kGAMECLASS.player; }
 		protected function get prison():Prison { return kGAMECLASS.prison; }
 		protected function get flags():DefaultDict { return kGAMECLASS.flags; }
