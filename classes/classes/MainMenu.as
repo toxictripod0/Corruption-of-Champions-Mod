@@ -170,7 +170,8 @@ package classes
 			mainView.addElementAt(_mainMenu, 2);
 		}
 		public function hideMainMenu():void {
-			_mainMenu.visible = false;
+			if (_mainMenu !== null)
+				_mainMenu.visible = false;
 			mainView.showMainText();
 			mainView.setTextBackground(flags[kFLAGS.TEXT_BACKGROUND_STYLE]);
 			mainView.creditsBox.visible = true;
