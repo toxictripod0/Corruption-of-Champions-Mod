@@ -638,7 +638,7 @@ private function talkToBenoit():void {
 	}
 	if (flags[kFLAGS.BENOIT_BASIL_EYES_GRANTED] > 0 && player.hasKeyItem("Feathery hair-pin") < 0) {
 		var hasSolidHair:Boolean = (player.hair.type != Hair.GOO && player.hair.length > 0);
-		// Talk scene written by MissBlackthorne
+		credits.authorText = "MissBlackthorne";
 		outputText("\"<i>Ah [name]! I 'ad been 'oping to speak wiz you.</i>\" your basilisk lover says with a toothy smile. \"<i>I 'ave a gift for "
 		          +"you... For all you 'ave done.</i>\" You notice the scales on " + benoitMF("Benoit", "Benoite") + "'s face turn a deeper green,"
 		          +" evidently blushing as " + benoitMF("he", "she") + " thrusts out a closed palm, gaze averted like a kid on Valentines Day."
@@ -668,7 +668,7 @@ private function talkToBenoit():void {
 		return;
 	}
 	if (benoitBigFamily() && player.inte >= 60 && flags[kFLAGS.BENOIT_EYES_TALK_UNLOCKED] == 0) {
-		// Talk scene written by MissBlackthorne
+		credits.authorText = "MissBlackthorne";
 		outputText("You ask " + benoitMF("Benoit", "Benoite") + " how the petrifying effect of " + benoitMF("his", "her") + " brethrens gaze works,"
 		          +" is it something their eyes naturally do or type of sight? " + benoitMF("He","She") + " stiffens for a moment before letting out a frustrated sigh.");
 
@@ -932,6 +932,7 @@ private function benoitHairPinTalk():void
 {
 	// On a new page, since it may trigger the hair TF.
 	clearOutput();
+	credits.authorText = "MissBlackthorne";
 	outputText("You ask " + benoitMF("Benoit", "Benoite") + " about the feathery hair-pin he gave to you.");
 	outputText("\n\n\"<i>Ah, ze pin? It iz a 'eirloom from my mozzers side. I suspect it 'as simply been thrown down through generations, none"
 	          +" wanting sumsing zat was more complex zan a shiny object. I think it 'as escaped ze taint, simply because of zis. I kept it to sell,"
@@ -1328,6 +1329,7 @@ public function equipUnequipHairPin():void
 	if (keyItemNum < 0) return;
 
 	clearOutput();
+	credits.authorText = "MissBlackthorne";
 	if (player.keyItemv1("Feathery hair-pin") > 0) {
 		// unequip it
 		if (player.hair.length > 0)
@@ -1369,6 +1371,7 @@ private function convertToBassyEyes():void
 {
 	var eyesGranted:int = flags[kFLAGS.BENOIT_BASIL_EYES_GRANTED] + 1;
 	clearOutput();
+	credits.authorText = "MissBlackthorne";
 	if (eyesGranted <= 1) { // First time
 		outputText("You tell [benoit name] that you've weighed up the pros and cons and that you want to become more of a basilisk. [benoit Ey]"
 		          +" nods as [benoit ey] feels [benoit eir] way across the counter before rummaging about underneath.");
@@ -1417,6 +1420,7 @@ private function convertToBassyEyes():void
 private function convertToBassyEyesPageTwo():void
 {
 	clearOutput();
+	credits.authorText = "MissBlackthorne";
 	outputText("When you wake, you open your eyes and cry out, quickly closing them again. Gods it's bright! [benoit name] rushes over to you and places a hand on your shoulder.");
 	outputText("\n\n\"<i>What iz it? Did somesing 'appen? You're not 'urt are you?</i>\" [benoit ey] says in an increasing worry. You put your hand to "
 	          +"[benoit eirs] and say that you're fine, everything was just a little bright. You open your eyes again, this time slowly, letting your eyes adjust."
