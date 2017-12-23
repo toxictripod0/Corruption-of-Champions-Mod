@@ -47,6 +47,7 @@ package classes.Items.Consumables
 			if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
 
 			clearOutput();
+			credits.authorText = "MissBlackthorne";
 			outputText("You drink the slimy concoction, grimacing as it reaches your tongue. At first you’re shocked you don’t gag but once you taste"
 			          +" the mixture you realise it's not so bad, almost having a hint of almond behind that thick texture.");
 

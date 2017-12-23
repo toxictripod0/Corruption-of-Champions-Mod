@@ -44,6 +44,11 @@
 			return kGAMECLASS.output;
 		}
 
+		protected function get credits():Credits
+		{
+			return kGAMECLASS.credits;
+		}
+
 		protected function get measurements():Measurements
 		{
 			return kGAMECLASS.measurements;

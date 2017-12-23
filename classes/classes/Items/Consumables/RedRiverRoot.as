@@ -43,6 +43,7 @@ package classes.Items.Consumables
 			if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
 
 			clearOutput();
+			credits.authorText = "Coalsack";
 			outputText("Having bought that odd-looking root on the bakery, you give it a try, only to face the mildly spicy taste"
 			          +" of the transformative. Still, it has a rich flavour and texture, but soon that becomes secondary,"
 			          +" as you realize that the foreign rhizome is changing your body!");
