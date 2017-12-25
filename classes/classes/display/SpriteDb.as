@@ -484,6 +484,13 @@ public class SpriteDb {
 	public static function get s_kiha(): Class {
 		return is8bit ? s_kiha_8bit : s_kiha_16bit;
 	}
+	[Embed(source="../../../res/sprites/kiha_nude.png")]
+	public static const s_kiha_nude_16bit:Class;
+//	[Embed(source="../../../res/sprites8bit/kiha_nude-old.png")]
+//	public static const s_kiha_nude_8bit:Class;
+	public static function get s_kiha_nude(): Class {
+		return is8bit ? null : s_kiha_nude_16bit;
+	}
 	[Embed(source="../../../res/sprites/kitsune_black.png")]
 	public static const s_kitsune_black_16bit:Class;
 	[Embed(source="../../../res/sprites8bit/kitsune_black-old.png")]
@@ -943,6 +950,20 @@ public class SpriteDb {
 	public static const s_yvonne_8bit:Class;
 	public static function get s_yvonne(): Class {
 		return is8bit ? s_yvonne_8bit : s_yvonne_16bit;
+	}
+	[Embed(source="../../../res/sprites/zetaz_imp.png")]
+	public static const s_zetaz_imp_16bit:Class;
+//	[Embed(source="../../../res/sprites8bit/zetaz_imp-old.png")]
+//	public static const s_zetaz_imp_8bit:Class;
+	public static function get s_zetaz_imp(): Class {
+		return is8bit ? null : s_zetaz_imp_16bit;
+	}
+	[Embed(source="../../../res/sprites/zetaz.png")]
+	public static const s_zetaz_16bit:Class;
+//	[Embed(source="../../../res/sprites8bit/zetaz-old.png")]
+//	public static const s_zetaz_8bit:Class;
+	public static function get s_zetaz(): Class {
+		return is8bit ? null : s_zetaz_16bit;
 	}
 
 	public static function bitmapData(clazz:Class):BitmapData {

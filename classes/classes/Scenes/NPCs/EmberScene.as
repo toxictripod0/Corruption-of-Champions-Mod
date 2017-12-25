@@ -218,6 +218,11 @@ package classes.Scenes.NPCs
 			return (flags[kFLAGS.EMBER_ROUNDFACE] == 0 || flags[kFLAGS.EMBER_INTERNAL_DICK] > 0);
 		}
 
+		public function emberSprite():void {
+			spriteSelect(null);
+			// placeholder for now
+		}
+
 //Approaching Ember (Z)
 		public function emberCampMenu():void
 		{
