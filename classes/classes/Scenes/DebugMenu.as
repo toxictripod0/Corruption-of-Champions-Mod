@@ -1102,9 +1102,8 @@ import classes.Items.*
 			addButton(3,"TailType",changeTailType);
 			addButton(4,"TailCount",changeTailCount);
 			addButton(5,"WingType",changeWingType);
-			addButton(6,"WingDesc",changeWingDesc);
-			addButton(7,"LowerBodyType",changeLowerBodyType);
-			addButton(8,"LegCount",changeLegCount);
+			addButton(6,"LowerBodyType",changeLowerBodyType);
+			addButton(7,"LegCount",changeLegCount);
 			/* [INTERMOD: xianxia]
 			addButton(9,"ReadBodyType",changeRearBodyType);
 			*/
@@ -1327,13 +1326,6 @@ import classes.Items.*
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorTorso, page, WING_TYPE_CONSTANTS, changeWingType);
-		}
-		private function changeWingDesc(page:int=0,setIdx:int=-1):void {
-			if (setIdx==0) player.wingDesc = "";
-			if (setIdx>=0) player.wingDesc = WING_DESC_CONSTANTS[setIdx];
-			menu();
-			dumpPlayerData();
-			showChangeOptions(bodyPartEditorTorso, page, WING_DESC_CONSTANTS, changeWingDesc);
 		}
 		private function changeLowerBodyType(page:int=0,setIdx:int=-1):void {
 			/* [INTERMOD: xianxia]
