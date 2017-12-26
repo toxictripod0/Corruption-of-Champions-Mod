@@ -176,10 +176,9 @@ package classes.Scenes.Areas.GlacialRift
 			this.drop = new WeightedDrop()
 					.add(weapons.SPEAR, 1)
 					.add(shields.GREATSH, 2)
-					.add(consumables.W__BOOK, 4)					
+					.add(consumables.W__BOOK, 4)
 					.add(null, 18);
-			this.theWingType = Wings.HARPY
-			this.wingDesc = "fluffy feathery"
+			this.wings.type = Wings.FEATHERED_LARGE;
 			this.special1 = spearAttack;
 			this.special2 = shieldBash;
 			this.special3 = aerialRave;

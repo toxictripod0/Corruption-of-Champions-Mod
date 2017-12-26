@@ -138,8 +138,7 @@ package classes.Scenes.Dungeons.DeepCave
 			this.special3 = special3;
 			if (flags[kFLAGS.TIMES_PC_DEFEATED_VALA] == 0) this.drop = new WeightedDrop(consumables.NUMBROX);
 			else this.drop = NO_DROP;
-			this.theWingType = Wings.BEE_LIKE_LARGE;
-			this.wingDesc = "shimmering wings";
+			this.wings.type = Wings.FAERIE_LARGE;
 			checkMonster();
 		}
 		

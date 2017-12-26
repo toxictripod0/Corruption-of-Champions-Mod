@@ -19,8 +19,7 @@ package classes.Scenes.Areas.HighMountains
 
 		public function wingify():void
 		{
-			theWingType = Wings.FEATHERED_LARGE;
-			wingDesc = "large, feathered";
+			wings.type = Wings.FEATHERED_LARGE;
 			spe += 10;
 			imageName += "withwings";
 		}

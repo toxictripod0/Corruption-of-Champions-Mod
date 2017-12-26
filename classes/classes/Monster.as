@@ -91,7 +91,6 @@
 			kGAMECLASS.images = val;
 		}
 		//For enemies
-		public var wingDesc:String = "non-existant";
 		public var bonusHP:Number = 0;
 		public var bonusLust:Number = 0;
 		private var _long:String = "<b>You have encountered an uninitialized  Please report this as a bug</b>.";
@@ -577,13 +576,6 @@
 			initedLibSensCor = true;
 		}
 
-
-		public function set theWingType(value:Number):void
-		{
-			if (!_checkCalled) this.wingDesc = Appearance.DEFAULT_WING_DESCS[value];
-			super.wings.type = value;
-		}
-
 		override public function validate():String
 		{
 			var error:String = "";
@@ -1050,7 +1042,7 @@
 			if (horns.type == Horns.NONE) result += "no horns, ";
 			else result += horns.value+" "+(Appearance.DEFAULT_HORNS_NAMES[horns.type]||("hornsPart.type#"+horns.type))+" horns, ";
 			if (wings.type == Wings.NONE) result += "no wings, ";
-			else result += wingDesc+" wings (type "+(Appearance.DEFAULT_WING_NAMES[wings.type]||("wingType#"+wings.type))+"), ";
+			else result += Appearance.DEFAULT_WING_DESCS[wings.type]+" wings (type "+(Appearance.DEFAULT_WING_NAMES[wings.type]||("wingType#"+wings.type))+"), ";
 			if (antennae.type == Antennae.NONE) result += "no antennae.\n\n";
 			else result += (Appearance.DEFAULT_ANTENNAE_NAMES[antennae.type]||("antennaeType#"+antennae.type))+" antennae.\n\n";
 
