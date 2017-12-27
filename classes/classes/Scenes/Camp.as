@@ -599,8 +599,6 @@ private function doCamp():void { //Only called by playerMenu
 		else if (flags[kFLAGS.UNABLE_TO_MASTURBATE_BECAUSE_CENTAUR] > 0 && player.isTaur()) outputText("<b>You are delibitatingly aroused, but your sex organs are so difficult to reach that masturbation isn't at the forefront of your mind.</b>\n\n");
 		else {
 			outputText("<b>You are debilitatingly aroused, and can think of doing nothing other than masturbating.</b>\n\n");
-			exploreEvent = null;
-			placesEvent = null;
 			//This once disabled the ability to rest, sleep or wait, but ir hasn't done that for many many builds
 		}
 	}
@@ -620,8 +618,6 @@ private function doCamp():void { //Only called by playerMenu
 		if (companionsCount() > 0 && !(model.time.hours > 4 && model.time.hours < 23)) {
 			outputText("Your camp is silent as your companions are sleeping right now.\n");
 		}
-		exploreEvent = null;
-		placesEvent = null;
 	}
 	else { //Day Time!
 		if (flags[kFLAGS.GAME_END] > 0) { //Lethice defeated
@@ -668,7 +664,7 @@ private function doCamp():void { //Only called by playerMenu
 	//Menu
 	menu();
 	addButton(0, "Explore", exploreEvent).hint("Explore to find new regions and visit any discovered regions.");
-	addButton(1, "Places", placesEvent).hint("Visit any places you have discovered so far.");
+	addButton(1, "Places", placesEvent).hint("Visit any places you have discovered so far.").disableIf(placesEvent == null, "You haven't discovered any places yet...");
 	addButton(2, "Inventory", inventory.inventoryMenu).hint("The inventory allows you to use an item.  Be careful as this leaves you open to a counterattack when in combat.");
 	if (inventory.showStash()) addButton(3, "Stash", inventory.stash).hint("The stash allows you to store your items safely until you need them later.");
 	addButton(4, "Camp Actions", campActions).hint("Interact with the camp surroundings and also read your codex.");
@@ -687,18 +683,18 @@ private function doCamp():void { //Only called by playerMenu
 	if (isAprilFools()) addButton(12, "Cash Shop", getGame().aprilFools.pay2WinSelection).hint("Need more gems? Want to buy special items to give you the edge? Purchase with real money!");
 	//Remove buttons according to conditions.
 	if (model.time.hours >= 21 || model.time.hours < 6) {
-		removeButton(0); //Explore
-		removeButton(1); //Places
+		addDisabledButton(0, getButtonText(0), "It's too dark outside. It wouldn't be a good idea to explore when danger lurks in every corner of darkness."); //Explore
+		addDisabledButton(1, getButtonText(1), "It's too dark outside. It wouldn't be a good idea to explore when danger lurks in every corner of darkness."); //Explore
 		if (model.time.hours >= 23 || model.time.hours < 5) {
-			removeButton(4); //Camp Actions
-			removeButton(5); //Followers
-			removeButton(6); //Lovers
-			removeButton(7); //Slaves
+			addDisabledButton(4, getButtonText(4), "You are too tired to perform any camp actions. All you can do right now is to sleep until morning."); //Camp Actions
+			if (followersCount() > 0) addDisabledButton(5, getButtonText(5), "Your followers are sleeping at the moment."); //Followers
+			if (loversCount() > 0) addDisabledButton(6, getButtonText(6), "Your lovers are sleeping at the moment."); //Followers
+			if (slavesCount() > 0) addDisabledButton(6, getButtonText(7), "Your slaves are sleeping at the moment. Even slaves need their sleepy times to recuperate."); //Followers
 		}
 	}
 	if (player.lust >= player.maxLust() && canFap) {
-		removeButton(0); //Explore
-		removeButton(1); //Places
+		addDisabledButton(0, "Explore", "You are too aroused to consider leaving the camp. It wouldn't be a good idea to explore with all that tension bottled up inside you!"); //Explore
+		addDisabledButton(1, "Places", "You are too aroused to consider leaving the camp. It wouldn't be a good idea to explore with all that tension bottled up inside you!"); //Explore
 	}
 	//Massive Balls Bad End (Realistic Mode only)
 	if (flags[kFLAGS.HUNGER_ENABLED] >= 1 && player.ballSize > (18 + (player.str / 2) + (player.tallness / 4))) {
