@@ -281,7 +281,7 @@ package classes.Scenes.NPCs
 			this.hips.rating = Hips.RATING_INHUMANLY_WIDE;
 			this.butt.rating = Butt.RATING_EXPANSIVE;
 			this.skin.tone = "pink";
-			this.theSkinType = Skin.PLAIN;
+			this.skin.type = Skin.PLAIN;
 			this.skin.desc = "feathers";
 			this.hair.color = "pink";
 			this.hair.length = 16;

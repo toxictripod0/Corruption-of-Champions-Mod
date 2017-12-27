@@ -1,8 +1,9 @@
 package classes.Scenes.Areas.Plains 
 {
 	import classes.*;
-	import classes.internals.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
+	import classes.internals.*;
 	/**
 	 * ...
 	 * @author Kitteh6660
@@ -131,8 +132,7 @@ package classes.Scenes.Areas.Plains
 			this.hips.rating = 2;
 			this.butt.rating = 0;
 			this.skin.tone = "crimson";
-			this.theSkinType = 0;
-			//this.skin.desc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.FUR];
+			this.skin.setType(Skin.PLAIN);
 			this.hair.color = "black";
 			this.hair.length = 8;
 			initStrTouSpeInte(100, 100, 80, 70);

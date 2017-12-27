@@ -156,8 +156,7 @@ package classes.Scenes.Areas.GlacialRift
 			this.hips.rating = Hips.RATING_SLENDER;
 			this.butt.rating = Butt.RATING_TIGHT;
 			this.skin.tone = "light";
-			this.theSkinType = Skin.PLAIN;
-			//this.skin.desc = Appearance.Appearance.DEFAULT_SKIN_DESCS[Skin.FUR];
+			this.skin.setType(Skin.PLAIN);
 			this.hair.color = "white";
 			this.hair.length = 12;
 			initStrTouSpeInte(85, 70, 80, 60);
