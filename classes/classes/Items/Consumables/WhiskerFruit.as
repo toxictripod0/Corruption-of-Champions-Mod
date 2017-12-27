@@ -298,7 +298,7 @@ package classes.Items.Consumables
 				outputText("\n\nYour " + player.skin.desc + " begins to tingle, then itch. ");
 				player.skin.type = Skin.FUR;
 				player.skin.desc = "fur";
-				player.setFurColor(ColorLists.catFurColors, {type: UnderBody.FURRY}, true);
+				player.setFurColor(ColorLists.CAT_FUR, {type: UnderBody.FURRY}, true);
 				outputText("You reach down to scratch your arm absent-mindedly and pull your fingers away to find strands of " + player.skin.furColor + " fur. Wait, fur?  What just happened?! You spend a moment examining yourself and discover that <b>you are now covered in glossy, soft fur.</b>");
 				changes++;
 			}

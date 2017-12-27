@@ -303,13 +303,13 @@ package classes.Items.Consumables
 
 			// Hair
 			// store current states first
-			var hasPandaHairColor:Boolean = ColorLists.redPandaHairColors.indexOf(player.hair.color) !== -1;
+			var hasPandaHairColor:Boolean = ColorLists.RED_PANDA_HAIR.indexOf(player.hair.color) !== -1;
 			var hasNormalHair:Boolean = player.hair.type === Hair.NORMAL;
 			var oldHairType:Number = player.hair.type;
 			if ((!hasNormalHair || player.hair.length === 0 || !hasPandaHairColor) && changes < changeLimit && rand(3) === 0) {
 				player.hair.type = Hair.NORMAL;
 				if (!hasPandaHairColor)
-					player.hair.color = randomChoice(ColorLists.redPandaHairColors);
+					player.hair.color = randomChoice(ColorLists.RED_PANDA_HAIR);
 
 				if (player.hair.length === 0) { // player is bald
 					player.hair.length = 1;

@@ -3582,10 +3582,10 @@ package classes.Items
 
 			//[Change Hair Color: Golden-blonde or Reddish-orange]
 			var fox_hair:Array = ["golden blonde", "reddish-orange", "silver", "white", "red", "black"];
-			if (!InCollection(player.hair.color, fox_hair) && !InCollection(player.hair.color, ColorLists.basicKitsuneHairColors) && !InCollection(player.hair.color, ColorLists.elderKitsuneColors) && changes < changeLimit && rand(4) === 0) {
+			if (!InCollection(player.hair.color, fox_hair) && !InCollection(player.hair.color, ColorLists.BASIC_KITSUNE_HAIR) && !InCollection(player.hair.color, ColorLists.ELDER_KITSUNE) && changes < changeLimit && rand(4) === 0) {
 				if (player.tail.type == Tail.FOX && player.tail.venom > 1)
-					if (player.tail.venom < 9) player.hair.color = randomChoice(ColorLists.basicKitsuneHairColors);
-					else player.hair.color = randomChoice(ColorLists.elderKitsuneColors);
+					if (player.tail.venom < 9) player.hair.color = randomChoice(ColorLists.BASIC_KITSUNE_HAIR);
+					else player.hair.color = randomChoice(ColorLists.ELDER_KITSUNE);
 				else player.hair.color = randomChoice(fox_hair);
 				outputText("\n\nYour scalp begins to tingle, and you gently grasp a strand of hair, pulling it out to check it.  Your hair has become " + player.hair.color + "!");
 			}
@@ -3774,15 +3774,15 @@ package classes.Items
 				player.skin.adj = "";
 				player.skin.desc = "fur";
 				if (player.kitsuneScore() >= 4)
-					if (InCollection(player.hair.color, convertMixedToStringArray(ColorLists.basicKitsuneFurColors)) || InCollection(player.hair.color, ColorLists.elderKitsuneColors))
+					if (InCollection(player.hair.color, convertMixedToStringArray(ColorLists.BASIC_KITSUNE_FUR)) || InCollection(player.hair.color, ColorLists.ELDER_KITSUNE))
 						colorChoices = [player.hair.color];
 					else
 						if (player.tail.type == Tail.FOX && player.tail.venom == 9)
-							colorChoices = ColorLists.elderKitsuneColors;
+							colorChoices = ColorLists.ELDER_KITSUNE;
 						else
-							colorChoices = ColorLists.basicKitsuneFurColors;
+							colorChoices = ColorLists.BASIC_KITSUNE_FUR;
 				else
-					colorChoices = ColorLists.foxFurColors;
+					colorChoices = ColorLists.FOX_FUR;
 				player.setFurColor(colorChoices, {type: UnderBody.FURRY}, true);
 				changes++;
 			}
@@ -4051,9 +4051,9 @@ package classes.Items
 				changes++;
 			}
 			//[Change Hair Color: Golden-blonde, SIlver Blonde, White, Black, Red]
-			if (((mystic && rand(2) === 0) || (!mystic && rand(4) === 0)) && changes < changeLimit && !InCollection(player.hair.color, ColorLists.basicKitsuneHairColors) && !InCollection(player.hair.color, ColorLists.elderKitsuneColors)) {
-				if (player.tail.type == Tail.FOX && player.tail.venom == 9) player.hair.color = randomChoice(ColorLists.elderKitsuneColors);
-				else player.hair.color = randomChoice(ColorLists.basicKitsuneHairColors);
+			if (((mystic && rand(2) === 0) || (!mystic && rand(4) === 0)) && changes < changeLimit && !InCollection(player.hair.color, ColorLists.BASIC_KITSUNE_HAIR) && !InCollection(player.hair.color, ColorLists.ELDER_KITSUNE)) {
+				if (player.tail.type == Tail.FOX && player.tail.venom == 9) player.hair.color = randomChoice(ColorLists.ELDER_KITSUNE);
+				else player.hair.color = randomChoice(ColorLists.BASIC_KITSUNE_HAIR);
 				outputText("\n\nYour scalp begins to tingle, and you gently grasp a strand, pulling it forward to check it.  Your hair has become the same " + player.hair.color + " as a kitsune's!");
 				changes++;
 			}
@@ -4065,8 +4065,8 @@ package classes.Items
 
 			if ((player.hasFur() 
 					&& player.face.type != Face.FOX
-					&& !InCollection(theFurColor, convertMixedToStringArray(ColorLists.basicKitsuneFurColors))
-					&& !InCollection(theFurColor, ColorLists.elderKitsuneColors)
+					&& !InCollection(theFurColor, convertMixedToStringArray(ColorLists.BASIC_KITSUNE_FUR))
+					&& !InCollection(theFurColor, ColorLists.ELDER_KITSUNE)
 					&& !InCollection(theFurColor, ["orange and white", "black and white", "red and white", "tan", "brown"])
 					)
 				|| player.hasScales() && ((mystic) || (!mystic && rand(2) === 0))) {

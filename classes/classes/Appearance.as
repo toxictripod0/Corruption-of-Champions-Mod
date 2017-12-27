@@ -2114,9 +2114,9 @@ package classes {
 			return result;
 		}
 
-		public static const NAGA_LOWER_BODY_COLORS:Object = createMapFromPairs(ColorLists.nagaLowerBodyColors);
+		public static const NAGA_LOWER_BODY_COLORS:Object = createMapFromPairs(ColorLists.NAGA_LOWERBODY);
 
-		public static const RED_PANDA_TAIL_COLORS:Object = createMapFromPairs(ColorLists.redPandaTailColors);
+		public static const RED_PANDA_TAIL_COLORS:Object = createMapFromPairs(ColorLists.RED_PANDA_TAIL);
 
 		public static const DEFAULT_GENDER_NAMES:Object = createMapFromPairs(
 				[

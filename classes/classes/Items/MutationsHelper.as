@@ -345,7 +345,7 @@ package classes.Items
 
 		public function newCockatriceColors():Array
 		{
-			return randomChoice(ColorLists.cockatriceColors);
+			return randomChoice(ColorLists.COCKATRICE);
 		}
 
 		public function updateClaws(clawType:int = Claws.NORMAL):String

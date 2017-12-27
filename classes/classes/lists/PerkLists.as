@@ -9,7 +9,7 @@ package classes.lists
 	 */
 	public class PerkLists 
 	{
-		public static const permeablePerks:Array = [
+		public static const PERMEABLE:Array = [
 			//Transformation Perks
 			PerkLib.Flexibility,
 			PerkLib.Incorporeality,
@@ -37,7 +37,7 @@ package classes.lists
 			PerkLib.ThickSkin,
 		];
 
-		public static const bimboPerks:Array = [
+		public static const BIMBO:Array = [
 			PerkLib.BimboBody,
 			PerkLib.BimboBrains,
 			PerkLib.FutaForm,
