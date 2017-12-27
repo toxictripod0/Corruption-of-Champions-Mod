@@ -65,13 +65,13 @@ package classes.Items.Consumables
 			//Rear body restore
 			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
 			//-Skin color change – light, fair, olive, dark, ebony, mahogany, russet
-			if (ColorLists.humanSkinColors.indexOf(player.skin.tone) === -1 && changes < changeLimit && rand(5) === 0) {
+			if (ColorLists.HUMAN_SKIN.indexOf(player.skin.tone) === -1 && changes < changeLimit && rand(5) === 0) {
 				changes++;
 				outputText("\n\nIt takes a while for you to notice, but <b>");
 				if (player.hasFur()) outputText("the skin under your " + player.skin.furColor + " " + player.skin.desc);
 				else outputText("your " + player.skin.desc);
 				outputText(" has changed to become ");
-				player.skin.tone = randomChoice(ColorLists.humanSkinColors);
+				player.skin.tone = randomChoice(ColorLists.HUMAN_SKIN);
 				outputText(player.skin.tone + " colored.</b>");
 				player.underBody.skin.tone = player.skin.tone;
 				mutations.updateClaws(player.claws.type);

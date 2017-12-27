@@ -1560,13 +1560,13 @@
 				kitsuneCounter++;
 			//If the character's kitsune score is greater than 1 and:
 			//If the character has "blonde","black","red","white", or "silver" hair, +1
-			if (kitsuneCounter > 0 && (InCollection(hairOrFurColors, convertMixedToStringArray(ColorLists.basicKitsuneHairColors)) || InCollection(hairOrFurColors, ColorLists.elderKitsuneColors)))
+			if (kitsuneCounter > 0 && (InCollection(hairOrFurColors, convertMixedToStringArray(ColorLists.BASIC_KITSUNE_HAIR)) || InCollection(hairOrFurColors, ColorLists.ELDER_KITSUNE)))
 				kitsuneCounter++;
 			//If the character's femininity is 40 or higher, +1
 			if (kitsuneCounter > 0 && femininity >= 40)
 				kitsuneCounter++;
 			//If the character has fur, scales, or gooey skin, -1
-			if (hasFur() && !InCollection(hairOrFurColors, convertMixedToStringArray(ColorLists.basicKitsuneFurColors)) && !InCollection(hairOrFurColors, ColorLists.elderKitsuneColors))
+			if (hasFur() && !InCollection(hairOrFurColors, convertMixedToStringArray(ColorLists.BASIC_KITSUNE_FUR)) && !InCollection(hairOrFurColors, ColorLists.ELDER_KITSUNE))
 				kitsuneCounter--;
 			if (hasScales())
 				kitsuneCounter -= 2;
