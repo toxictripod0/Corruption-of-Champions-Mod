@@ -1,5 +1,7 @@
 package classes.BodyParts 
 {
+	import classes.Appearance;
+
 	/**
 	 * Container class for the players skin
 	 * @since December 27, 2016
@@ -22,6 +24,12 @@ package classes.BodyParts
 		public var desc:String = "skin";
 		public var adj:String = "";
 		public var furColor:String = "no";
+
+		public function setType(value:Number):void
+		{
+			desc = Appearance.DEFAULT_SKIN_DESCS[value];
+			type = value;
+		}
 
 		public function skinFurScales():String
 		{

@@ -553,12 +553,6 @@
 			super.tallness = value;
 		}
 
-		public function set theSkinType(value:Number):void
-		{
-			if (!_checkCalled) { this.skin.desc = Appearance.DEFAULT_SKIN_DESCS[value];}
-			super.skin.type = value;
-		}
-
 		protected function initStrTouSpeInte(str:Number, tou:Number, spe:Number, inte:Number):void
 		{
 			this.str = str;

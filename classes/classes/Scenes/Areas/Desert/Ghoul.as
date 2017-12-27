@@ -509,7 +509,7 @@ package classes.Scenes.Areas.Desert {
 			this.arms.type = rand(5) + 1;
 
 			this.skin.tone = skinColour[0];
-			this.theSkinType = rand(5);
+			this.skin.setType(rand(5));
 			this.hair.length = rand(25);
 			if (this.hair.length > 0) {
 				this.hair.color = hairColours[0];

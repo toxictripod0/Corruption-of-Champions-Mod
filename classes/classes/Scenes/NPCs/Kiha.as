@@ -191,7 +191,7 @@ package classes.Scenes.NPCs
 			this.butt.rating = Butt.RATING_AVERAGE+1;
 			this.lowerBody.type = LowerBody.HOOFED;
 			this.skin.tone = "dark";
-			this.theSkinType = Skin.DRAGON_SCALES;
+			this.skin.type = Skin.DRAGON_SCALES;
 			this.skin.desc = "skin and scales";
 			this.hair.color = "red";
 			this.hair.length = 3;
