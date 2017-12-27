@@ -191,7 +191,7 @@ import flash.text.TextField;
 		 */
 		public function disableIf(condition:Boolean, toolTipText:String=null):CoCButton {
 			enabled = !condition;
-			if (toolTipText!==null) this.toolTipText = condition?toolTipText:"";
+			if (toolTipText !== null) this.toolTipText = condition?toolTipText:this.toolTipText;
 			return this;
 		}
 		/**
