@@ -2349,6 +2349,8 @@ package classes {
 					[Wings.DRACONIC_SMALL, "small draconic"],
 					[Wings.DRACONIC_LARGE, "large draconic"],
 					[Wings.GIANT_DRAGONFLY, "giant dragonfly"],
+					[Wings.FAERIE_SMALL, "small faerie"],
+					[Wings.FAERIE_LARGE, "large faerie"],
 				]
 		);
 		public static const DEFAULT_WING_DESCS:Object = createMapFromPairs(
@@ -2365,6 +2367,8 @@ package classes {
 					[Wings.DRACONIC_SMALL, "small, draconic"],
 					[Wings.DRACONIC_LARGE, "large, draconic"],
 					[Wings.GIANT_DRAGONFLY, "giant dragonfly"],
+					[Wings.FAERIE_SMALL, "small, faerie"],
+					[Wings.FAERIE_LARGE, "large, faerie"],
 				]
 		);
 		public static const DEFAULT_LOWER_BODY_NAMES:Object = createMapFromPairs(

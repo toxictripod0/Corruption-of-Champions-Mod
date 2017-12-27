@@ -211,8 +211,7 @@ package classes.Scenes.Dungeons.Factory
 			this.special1 = cockTripAttack;
 			this.special2 = spoogeAttack;
 			this.tail.type = Tail.DEMONIC;
-			this.theWingType = Wings.BAT_LIKE_TINY;
-			this.wingDesc = "tiny hidden";
+			this.wings.type = Wings.BAT_LIKE_TINY;
 			checkMonster();
 		}
 	}

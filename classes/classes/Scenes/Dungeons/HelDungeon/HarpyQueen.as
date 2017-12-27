@@ -103,7 +103,7 @@ package classes.Scenes.Dungeons.HelDungeon
 			this.gems = rand(25) +160;
 			this.additionalXP = 50;
 			this.tail.type = Tail.HARPY;
-			this.theWingType = Wings.FEATHERED_LARGE;
+			this.wings.type = Wings.FEATHERED_LARGE;
 			this.drop = NO_DROP;
 			this.createPerk(PerkLib.ImprovedSelfControl, 0, 0, 0, 0);
 			checkMonster();

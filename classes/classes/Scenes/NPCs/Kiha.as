@@ -211,8 +211,7 @@ package classes.Scenes.NPCs
 			this.level = 16;
 			this.gems = rand(15) + 95;
 			this.drop = new ChainedDrop().add(useables.D_SCALE, 0.2);
-			this.theWingType = Wings.DRACONIC_LARGE;
-			this.wingDesc = "huge";
+			this.wings.type = Wings.DRACONIC_LARGE;
 			this.tail.type = Tail.LIZARD;
 			checkMonster();
 		}

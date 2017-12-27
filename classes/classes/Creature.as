@@ -393,8 +393,6 @@ package classes
 		public var underBody:UnderBody = new UnderBody();
 		public var wings:Wings = new Wings();
 
-		public var wingDesc:String = "non-existant";
-
 		//Piercings
 		//TODO: Pull this out into it's own class and enum.
 		public var nipplesPierced:Number = 0;

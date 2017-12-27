@@ -315,8 +315,8 @@ package classes.Scenes.Areas.Bog
 				.add(consumables.P_WHSKY, 35)
 				.add(null, 20);
 
-			this.theWingType = Wings.GIANT_DRAGONFLY; //Maybe later, if the PC can get them, make a Faerie wing type.
-			this.wingDesc = "small black faerie wings";
+			this.wings.type = Wings.FAERIE_SMALL;
+			this.wings.color = "black";
 			checkMonster();
 		}
 

@@ -108,7 +108,7 @@ package classes.Scenes.Monsters
 					add(consumables.IMPFOOD, 4).
 					add(shields.WOOODSHIELD, 1);
 			this.special1 = lustMagicAttack;
-			this.theWingType = Wings.IMP;
+			this.wings.type = Wings.IMP;
 			checkMonster();
 		}
 

@@ -193,8 +193,7 @@ package classes.Scenes.Dungeons.DeepCave
 			this.gems = rand(55) + 150;
 			this.additionalXP = 100;
 			this.drop = new WeightedDrop(consumables.BIMBOLQ, 1);
-			this.theWingType = Wings.IMP;
-			this.wingDesc = "small";
+			this.wings.type = Wings.IMP;
 			this.createPerk(PerkLib.ImprovedSelfControl, 0, 0, 0, 0);
 			checkMonster();
 		}
