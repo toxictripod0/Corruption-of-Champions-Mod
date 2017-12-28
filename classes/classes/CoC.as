@@ -56,8 +56,7 @@ package classes
 	import classes.display.SpriteDb;
 	import classes.internals.*;
 	import classes.internals.Utils;
-	import coc.model.GameModel;
-	import coc.model.TimeModel;
+	import classes.Time;
 	import coc.view.MainView;
 	import fl.data.DataProvider;
 	import flash.display.DisplayObjectContainer;
@@ -312,8 +311,6 @@ package classes
 		
 		public var mainView:MainView;
 		
-		public var model:GameModel;
-		
 		public var parser:Parser;
 		
 		// ALL THE VARIABLES:
@@ -337,7 +334,7 @@ package classes
 		{
 			return _gameState;
 		}
-		public var time:TimeModel;
+		public var time:Time;
 		
 		public var temp:int;
 		public var args:Array;
@@ -446,7 +443,6 @@ package classes
 			
 			this.parser = new Parser(this, CoC_Settings);
 			
-			this.model = new GameModel();
 			try
 			{
 				this.mainView = new MainView( /*this.model*/);
@@ -481,8 +477,7 @@ package classes
 			// ******************************************************************************************
 			
 			var mainView:MainView = this.mainView;
-			var model:GameModel = this.model;
-			
+
 			/**
 			 * Global Variables used across the whole game. I hope to whittle it down slowly.
 			 */
@@ -497,7 +492,6 @@ package classes
 			
 			//Indicates if building for mobile?
 			mobile = false;
-			model.mobile = mobile;
 			
 			this.images = new ImageManager(stageToUse.stage, mainView);
 			this.inputManager = new InputManager(stageToUse.stage, mainView, false);
@@ -513,7 +507,6 @@ package classes
 			
 			//The Player object, used everywhere
 			player = new Player();
-			model.player = player;
 			player2 = new Player();
 			playerEvent = new PlayerEvents();
 			
@@ -553,8 +546,7 @@ package classes
 			//{ region DisplayVariables
 			
 			//Holds the date and time display in the bottom left
-			time = new TimeModel();
-			model.time = time;
+			time = new Time();
 			
 			//The string holds all the "story" text, mainly used in engineCore
 			//}endregion
@@ -579,7 +571,6 @@ package classes
 			
 			//Used for stat tracking to keep up/down arrows correct.
 			oldStats = {};
-			model.oldStats = oldStats;
 			oldStats.oldStr = 0;
 			oldStats.oldTou = 0;
 			oldStats.oldSpe = 0;

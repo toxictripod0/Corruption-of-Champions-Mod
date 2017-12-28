@@ -1288,7 +1288,7 @@ package classes.Scenes.Places.Bazaar
 			var patronCount:int = 0;
 			clearOutput();
 			menu();
-			if (model.time.hours >= 19) {
+			if (getGame().time.hours >= 19) {
 				outputText("There is a large group of loud satyrs taking up a table, throwing back mugs of beer and belching loudly, obviously too absorbed in their drinking to pay attention to anyone else.\n\n");
 				addButton(0, "Satyrs", satyrGangIntro);
 				patronCount++;

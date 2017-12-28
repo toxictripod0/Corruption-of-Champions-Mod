@@ -105,7 +105,7 @@ public function benoitInClutch():Boolean
 	
 	// Benoit enters "clutch" every 21 days, for 7 days
 	var startDay:int = flags[kFLAGS.FEMOIT_NEXTDAY_EVENT];
-	var currDay:int = this.getGame().model.time.days;
+	var currDay:int = getGame().time.days;
 	var diffDays:int = (currDay - startDay) % 28;
 
 	if (diffDays >= 21) return true;
@@ -163,7 +163,7 @@ public function clearBenoitPreggers():void
 		flags[kFLAGS.FEMOIT_EGGS_LAID] += flags[kFLAGS.FEMOIT_EGGS];
 		flags[kFLAGS.FEMOIT_EGGS] = 0;
 		flags[kFLAGS.FEMOIT_INCUBATION] = 0;
-		flags[kFLAGS.FEMOIT_NEXTDAY_EVENT] = this.getGame().model.time.days; // Cycle "resets" based off birth day.
+		flags[kFLAGS.FEMOIT_NEXTDAY_EVENT] = getGame().time.days; // Cycle "resets" based off birth day.
 	}
 }
 
@@ -187,8 +187,8 @@ public function benoitBigFamily():Boolean
 }
 
 public function setBenoitShop(setButtonOnly:Boolean = false):void {
-	if (model.time.hours >= 9 && model.time.hours <= 17) {
-		if ((flags[kFLAGS.FEMOIT_NEXTDAY_EVENT_DONE] == 1 && this.getGame().model.time.days >= flags[kFLAGS.FEMOIT_NEXTDAY_EVENT]) || flags[kFLAGS.FEMOIT_NEXTDAY_EVENT_DONE] != 1)
+	if (getGame().time.hours >= 9 && getGame().time.hours <= 17) {
+		if ((flags[kFLAGS.FEMOIT_NEXTDAY_EVENT_DONE] == 1 && getGame().time.days >= flags[kFLAGS.FEMOIT_NEXTDAY_EVENT]) || flags[kFLAGS.FEMOIT_NEXTDAY_EVENT_DONE] != 1)
 		{
 			if (flags[kFLAGS.TIMES_IN_BENOITS] == 0) 
 			{
@@ -225,7 +225,7 @@ public function benoitIntro():void {
 		suggest = eggySuggest;
 		suggestText = "Suggest";
 	}
-	else if (flags[kFLAGS.FEMOIT_NEXTDAY_EVENT_DONE] == 1 && flags[kFLAGS.FEMOIT_NEXTDAY_EVENT] <= this.getGame().model.time.days && flags[kFLAGS.BENOIT_STATUS] == 0)
+	else if (flags[kFLAGS.FEMOIT_NEXTDAY_EVENT_DONE] == 1 && flags[kFLAGS.FEMOIT_NEXTDAY_EVENT] <= getGame().time.days && flags[kFLAGS.BENOIT_STATUS] == 0)
 	{
 		femoitNextDayEvent();
 	}
@@ -261,7 +261,7 @@ public function benoitIntro():void {
 			return;
 		}
 	}
-	else if (!benoitInClutch() && !benoitPreggers() && (this.getGame().model.time.days - flags[kFLAGS.FEMOIT_NEXTDAY_EVENT] >= 30) && (flags[kFLAGS.BENOIT_STATUS] > 0))
+	else if (!benoitInClutch() && !benoitPreggers() && (getGame().time.days - flags[kFLAGS.FEMOIT_NEXTDAY_EVENT] >= 30) && (flags[kFLAGS.BENOIT_STATUS] > 0))
 	{
 		if (flags[kFLAGS.FEMOIT_FIRST_CLUTCH_MISSED] == 0)
 		{
@@ -1687,7 +1687,7 @@ public function benoitFeminise():void
 
 		outputText("\n\n\"<i>C... could you come back tomorrow?</i>\" says " + benoitMF("Benoit","Benoite") + " unevenly.  \"<i>Zis is... I need some time to get my 'ead around zis.</i>\"  You put the books back on the counter, scratch a terrified-looking Pierre behind the ear, and take your leave.");
 
-		flags[kFLAGS.FEMOIT_NEXTDAY_EVENT] = this.getGame().model.time.days + 1;
+		flags[kFLAGS.FEMOIT_NEXTDAY_EVENT] = getGame().time.days + 1;
 		flags[kFLAGS.FEMOIT_NEXTDAY_EVENT_DONE] = 1;
 
 		menu();

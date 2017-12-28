@@ -101,7 +101,7 @@ Corruption Path (Arian's body is drastically altered, but [Arian eir] personalit
 		public function timeChange():Boolean
 		{
 			if (flags[kFLAGS.ARIAN_EGG_COUNTER] > 0) flags[kFLAGS.ARIAN_EGG_COUNTER]++;
-			if (model.time.hours > 23) {
+			if (getGame().time.hours > 23) {
 				if (arianScene.arianFollower() && flags[kFLAGS.ARIAN_VAGINA] > 0) flags[kFLAGS.ARIAN_EGG_EVENT]++;
 				flags[kFLAGS.ARIAN_LESSONS] = 0;
 				flags[kFLAGS.ARIAN_TREATMENT] = 0;
@@ -593,7 +593,7 @@ private function arianHomeMenu():void {
 		if (player.hasKeyItem("Arian's Talisman") >= 0 || player.hasKeyItem("Arian's Charged Talisman") >= 0)
 			addButton(2,"Talisman",imbueTalisman);
 		if (flags[kFLAGS.ARIAN_S_DIALOGUE] >= 5) addButton(4,"Treat Corr.",treatCorruption);
-		if (model.time.hours >= 17 && arianFollower()) addButton(8,"Sleep With",sleepWithArian,true);
+		if (getGame().time.hours >= 17 && arianFollower()) addButton(8,"Sleep With",sleepWithArian,true);
 		if (flags[kFLAGS.SLEEP_WITH] == "Arian") addButton(8,"NoSleepWith",dontSleepWithArian);
 		if (!arianFollower()) addButton(14,"Back",telAdre.telAdreMenu);
 		else addButton(14,"Back",camp.campLoversMenu);

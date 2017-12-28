@@ -5,17 +5,13 @@ package classes.Scenes.Dungeons
 	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
-	import classes.BaseContent;
+	import classes.Scenes.Areas.Desert.CumWitch;
+	import classes.Scenes.Dungeons.DesertCave.*;
 	import classes.Scenes.Dungeons.DungeonAbstractContent;
 	import classes.Scenes.Dungeons.DungeonCore;
-	import classes.Scenes.Dungeons.DesertCave.*;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
 	
-	import classes.Scenes.Areas.Desert.CumWitch;
-	
-	import coc.model.GameModel;
-
 	public class DesertCave extends DungeonAbstractContent
 	{
 		/*

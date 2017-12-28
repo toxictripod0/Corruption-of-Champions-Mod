@@ -84,7 +84,7 @@ package classes.Scenes.Places
 					needNext = true;
 					return needNext;
 				}
-				if ((flags[kFLAGS.PRISON_DIRT_ENABLED] > 0 && model.time.hours == 16 && randomCooldownRoomCheck <= 0) || (player.statusEffectv2(StatusEffects.PrisonCaptorEllyStatus) >= 50 && flags[kFLAGS.PRISON_DIRT_ENABLED] == 0)) {
+				if ((flags[kFLAGS.PRISON_DIRT_ENABLED] > 0 && getGame().time.hours == 16 && randomCooldownRoomCheck <= 0) || (player.statusEffectv2(StatusEffects.PrisonCaptorEllyStatus) >= 50 && flags[kFLAGS.PRISON_DIRT_ENABLED] == 0)) {
 					randomCooldownRoomCheck = 6 + rand(18);
 					prisonCaptorRandomEventCleaningCheck();
 					needNext = true;
@@ -1157,7 +1157,7 @@ package classes.Scenes.Places
 				default:
 					outputText("You are in a dimly lit but spacious cell. However, the size of the room is little comfort to you as it is filled with all manner of restraints and torture devices. Eyelets, metal rings, bars and hooks are scattered around the ceiling, floor and walls providing a near endless variety of ways to restrain a person. A wooden stockade is installed in the center of the room, a whipping post and a rack stand in one corner, and in another there is a large and ominous floor to ceiling stone box. \n\n");
 			}
-			if (model.time.hours >= 6 && model.time.hours <= 20) outputText("Mercifully, fresh air and sunlight can enter the room through narrow slit windows opposite the door.");
+			if (getGame().time.hours >= 6 && getGame().time.hours <= 20) outputText("Mercifully, fresh air and sunlight can enter the room through narrow slit windows opposite the door.");
 			else outputText("You can see the blood-red moon contrasting against black sky through the narrow slit windows.");
 			prisonRestraintText();
 			if (flags[kFLAGS.PRISON_DIRT_ENABLED] > 0) {
@@ -1188,7 +1188,7 @@ package classes.Scenes.Places
 					goNext(kGAMECLASS.timeQ);
 					return;
 				}*/
-				if (model.time.hours < 6 || model.time.hours > 20)
+				if (getGame().time.hours < 6 || getGame().time.hours > 20)
 				{
 					camp.doSleep();
 					return;
@@ -1217,7 +1217,7 @@ package classes.Scenes.Places
 			}
 				
 			//Random events
-			if (flags[kFLAGS.PRISON_EVENT_TIMEOUT] == 0 && model.time.hours >= 8) {
+			if (flags[kFLAGS.PRISON_EVENT_TIMEOUT] == 0 && getGame().time.hours >= 8) {
 				flags[kFLAGS.PRISON_EVENT_TIMEOUT] = 2;
 				var petPlayRarity:int = 10;
 				petPlayRarity -= (trainingPet.prisonCaptorPetScore() - 25) / 5;
@@ -1330,7 +1330,7 @@ package classes.Scenes.Places
 			//Show wait/rest/sleep depending on conditions.
 			addButton(9, "Wait", camp.doWait);
 			if (player.fatigue > 40 || player.HP / player.maxHP() <= .9) addButton(9, "Rest", getGame().camp.rest);
-			if (model.time.hours >= 21 || model.time.hours < 6) {
+			if (getGame().time.hours >= 21 || getGame().time.hours < 6) {
 				removeButton(0);
 				removeButton(1);
 				removeButton(2);
@@ -2362,7 +2362,7 @@ package classes.Scenes.Places
 			{
 				if (rand(8) == 0)
 				{
-					prisonCaptor.updateNextWaitRandomEvent(model.time.hours, model.time.days);
+					prisonCaptor.updateNextWaitRandomEvent(getGame().time.hours, getGame().time.days);
 					punishments.prisonCaptorPunishmentStockadesVisitor();
 					return true;
 				}
@@ -2371,7 +2371,7 @@ package classes.Scenes.Places
 			{
 				if (rand(100) + player.fatigue * 0.5 + player.lust * 0.5 - (player.str + player.tou) * 0.2 > 50)
 				{
-					prisonCaptor.updateNextWaitRandomEvent(model.time.hours, model.time.days);
+					prisonCaptor.updateNextWaitRandomEvent(getGame().time.hours, getGame().time.days);
 					outputText("\n\nYour [legs] give in to lust and fatigue and you impale yourself a bit further on the dildos below you. ");
 					punishments.prisonCaptorPunishmentConfinementRestlegs();
 					return true;
@@ -2382,7 +2382,7 @@ package classes.Scenes.Places
 				eventOccurred = trainingPet.prisonCaptorPetDreamStart();
 				if (eventOccurred)
 				{
-					prisonCaptor.updateNextWaitRandomEvent(model.time.hours, model.time.days);
+					prisonCaptor.updateNextWaitRandomEvent(getGame().time.hours, getGame().time.days);
 				}
 			}
 			return eventOccurred;
@@ -2431,7 +2431,7 @@ package classes.Scenes.Places
 			var eventOccurred:Boolean = false;
 			if ((flags[kFLAGS.PRISON_PUNISHMENT] == 0 || flags[kFLAGS.PRISON_PUNISHMENT] == 3) && player.lust >= player.maxLust() && rand(3) == 0)
 			{
-				//prisonCaptor.updateNextRoomRandomEvent(model.time.hours, model.time.days);
+				//prisonCaptor.updateNextRoomRandomEvent(getGame().time.hours, getGame().time.days);
 				//Wild Dildo Rack appears!
 				if (rand(2) == 1 && !prisonCanMasturbate(false) && flags[kFLAGS.PRISON_DILDO_RACK] == 0)
 				{

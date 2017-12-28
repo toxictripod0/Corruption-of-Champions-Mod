@@ -4,15 +4,12 @@ package classes.Scenes.Dungeons
 	import classes.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
-	import classes.BaseContent;
 	import classes.Scenes.Dungeons.DungeonAbstractContent;
 	import classes.Scenes.Dungeons.DungeonCore;
 	import classes.Scenes.Dungeons.Factory.*;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
-	
-	import coc.model.GameModel;
-	
+		
 	use namespace kGAMECLASS;
 	
 	public class Factory extends DungeonAbstractContent

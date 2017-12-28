@@ -1651,7 +1651,7 @@ private function minoMutualPt3(x:Number):void
 				player.changeStatusValue(StatusEffects.Feeder, 2, 0);
 			}
 			//(Acquired minotaur cum!)
-			model.time.hours++;
+			getGame().time.hours++;
 			inventory.takeItem(consumables.MINOCUM, camp.returnToCampUseOneHour);
 		}
 

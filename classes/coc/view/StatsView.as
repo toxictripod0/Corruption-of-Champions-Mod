@@ -67,7 +67,7 @@ public class StatsView extends Block {
 
 
 
-	public function StatsView(mainView:MainView/*, model:GameModel*/) {
+	public function StatsView(mainView:MainView) {
 		super({
 			width: MainView.STATBAR_W,
 			height: MainView.STATBAR_H,
@@ -378,10 +378,10 @@ public class StatsView extends Block {
 			*/
 		}
 
-		var minutesDisplay:String = "" + game.model.time.minutes;
+		var minutesDisplay:String = "" + game.time.minutes;
 		if (minutesDisplay.length == 1) minutesDisplay = "0" + minutesDisplay;
 
-		var hours:Number = game.model.time.hours;
+		var hours:Number = game.time.hours;
 		var hrs:String, ampm:String;
 		if (game.flags[kFLAGS.USE_12_HOURS] == 0) {
 			hrs  = "" + hours;
@@ -390,7 +390,7 @@ public class StatsView extends Block {
 			hrs  = (hours % 12 == 0) ? "12" : "" + (hours % 12);
 			ampm = hours < 12 ? "am" : "pm";
 		}
-		timeText.htmlText = "<u>Day#: " + game.model.time.days + "</u>"+
+		timeText.htmlText = "<u>Day#: " + game.time.days + "</u>"+
 						"\nTime: " + hrs + ":" + minutesDisplay + ampm;
 
 		invalidateLayout();

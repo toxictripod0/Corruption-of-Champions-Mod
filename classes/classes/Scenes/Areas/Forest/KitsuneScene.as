@@ -690,8 +690,8 @@ package classes.Scenes.Areas.Forest
 					}
 					outputText("production has been enhanced.</b>");
 				}
-				model.time.hours = 6;
-				model.time.days++;
+				getGame().time.hours = 6;
+				getGame().time.days++;
 				if (!getGame().inCombat)
 					doNext(camp.returnToCampUseOneHour);
 				else combat.cleanupAfterCombat();

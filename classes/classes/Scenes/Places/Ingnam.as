@@ -28,7 +28,7 @@ package classes.Scenes.Places
 				getGame().saves.saveGame(player.slotName);
 			}
 			//Banished to Mareth.
-			if (model.time.days >= 0 && flags[kFLAGS.INGNAM_PROLOGUE_COMPLETE] <= 0 && flags[kFLAGS.GRIMDARK_MODE] < 1) {
+			if (getGame().time.days >= 0 && flags[kFLAGS.INGNAM_PROLOGUE_COMPLETE] <= 0 && flags[kFLAGS.GRIMDARK_MODE] < 1) {
 				getBanishedToMareth();
 				return;
 			}
@@ -42,7 +42,7 @@ package classes.Scenes.Places
 				outputText("Ingnam is a rich and prosperous village despite its small size. There is already a well-established array of shops with a constant hum of tradesmen and merchants. The temple sits within view of the patrons sitting at tables at the tavern which serves as a hub for people near and far to drink and dance. On the road leading out of the plaza that sits before the temple is a trail that meanders its way to a large farm in the distance.");
 				outputText("\n\nLooming ominously in the distance is a mountain known by the locals as Mount Ilgast. Surrounding Ingnam is a vast expanse of wilderness.");
 			}
-			if (model.time.hours >= 21 || model.time.hours < 6) outputText("\n\nIt's dark outside. Stars dot the night sky and a moon casts the moonlight over the landscape, providing little light. Shops are closed at this time.");
+			if (getGame().time.hours >= 21 || getGame().time.hours < 6) outputText("\n\nIt's dark outside. Stars dot the night sky and a moon casts the moonlight over the landscape, providing little light. Shops are closed at this time.");
 			mainView.showMenuButton( MainView.MENU_NEW_MAIN );
 			mainView.showMenuButton( MainView.MENU_DATA );
 			mainView.showMenuButton( MainView.MENU_STATS );
@@ -87,7 +87,7 @@ package classes.Scenes.Places
 			//Show wait/rest/sleep depending on conditions.
 			addButton(9, "Wait", kGAMECLASS.camp.doWait);
 			if (player.fatigue > 40 || player.HP / player.maxHP() <= .9) addButton(9, "Rest", getGame().camp.rest);
-			if (model.time.hours >= 21 || model.time.hours < 6) {
+			if (getGame().time.hours >= 21 || getGame().time.hours < 6) {
 				removeButton(0);
 				removeButton(1);
 				removeButton(2);

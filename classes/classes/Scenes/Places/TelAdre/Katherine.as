@@ -109,22 +109,22 @@ package classes.Scenes.Places.TelAdre {
 		
 		//Answers the simpler question 'Is Vala at the bar right now' rather than 'can Vala have sex with you right now'
 		public function isValaAtBar():Boolean {
-			return (flags[kFLAGS.FREED_VALA] != 0 && model.time.hours >= 12 && model.time.hours <= 21); 
+			return (flags[kFLAGS.FREED_VALA] != 0 && getGame().time.hours >= 12 && getGame().time.hours <= 21); 
 		}
 		//Implementation of TimeAwareInterface
 		public function timeChange():Boolean
 		{
 			if (breasts.lactationLevel <= breasts.preventLactationIncrease) {
-				switch (model.time.hours) { //Suckling by all NPCs handled here. The player doesn't see this, but they meet up with Kath at different times of the day.
-					case  8:	if (milkOption(KBIT_MILK_SHARE_WITH_FRIENDS) || (milkOption(KBIT_MILK_SHARE_WITH_OLD_GANG) && model.time.days % 2 == 0)) breasts.milked();
+				switch (getGame().time.hours) { //Suckling by all NPCs handled here. The player doesn't see this, but they meet up with Kath at different times of the day.
+					case  8:	if (milkOption(KBIT_MILK_SHARE_WITH_FRIENDS) || (milkOption(KBIT_MILK_SHARE_WITH_OLD_GANG) && getGame().time.days % 2 == 0)) breasts.milked();
 								break; //She shares with friends every day, or shares with the old gang once every two days
-					case 11:	if (milkOption(KBIT_MILK_SHARE_WITH_FRIENDS | KBIT_MILK_SHARE_WITH_URTA) && model.time.days % 5 == 0) breasts.milked();
+					case 11:	if (milkOption(KBIT_MILK_SHARE_WITH_FRIENDS | KBIT_MILK_SHARE_WITH_URTA) && getGame().time.days % 5 == 0) breasts.milked();
 								break;
-					case 14:	if (milkOption(KBIT_MILK_SHARE_WITH_FRIENDS) && model.time.days % 4 == 0) breasts.milked();
+					case 14:	if (milkOption(KBIT_MILK_SHARE_WITH_FRIENDS) && getGame().time.days % 4 == 0) breasts.milked();
 								break;
-					case 16:	if (milkOption(KBIT_MILK_SHARE_WITH_FRIENDS | KBIT_MILK_SHARE_WITH_OLD_GANG | KBIT_MILK_SHARE_WITH_HELENA) && model.time.days % 3 == 0) breasts.milked();
+					case 16:	if (milkOption(KBIT_MILK_SHARE_WITH_FRIENDS | KBIT_MILK_SHARE_WITH_OLD_GANG | KBIT_MILK_SHARE_WITH_HELENA) && getGame().time.days % 3 == 0) breasts.milked();
 								break;
-					case 17:	if (milkOption(KBIT_MILK_SHARE_WITH_FRIENDS | KBIT_MILK_SHARE_WITH_VALA) && model.time.days % 5 == 2) breasts.milked();
+					case 17:	if (milkOption(KBIT_MILK_SHARE_WITH_FRIENDS | KBIT_MILK_SHARE_WITH_VALA) && getGame().time.days % 5 == 2) breasts.milked();
 								break;
 					default:
 				}
@@ -135,19 +135,19 @@ package classes.Scenes.Places.TelAdre {
 				flags[kFLAGS.KATHERINE_LOCATION] = KLOC_STREETS;
 				return false; //She only has tattered clothes, so no need to deal with clothing either.
 			}
-			if (model.time.hours == 6) {
+			if (getGame().time.hours == 6) {
 				flags[kFLAGS.KATHERINE_LOCATION] = KLOC_STREETS; //On duty
 				flags[kFLAGS.KATHERINE_CLOTHES_WORN] = KBIT_CLOTHES_UNIFORM;
 				if (flags[kFLAGS.KATHERINE_URTA_DATE] == KDATE_WHENEVER) {
-					if (model.time.days % 4 == 0) katherineAndUrtaHadSex(false); //Roughly twice a week
+					if (getGame().time.days % 4 == 0) katherineAndUrtaHadSex(false); //Roughly twice a week
 				}
 				else if (flags[kFLAGS.KATHERINE_URTA_DATE] == KDATE_LOTS) katherineAndUrtaHadSex(false); //They fuck at least once a day
 				if (flags[kFLAGS.KATHERINE_VALA_DATE] == KDATE_WHENEVER) {
-					if (model.time.days % 4 == 0) katherineAndValaHadSex(); //Roughly twice a week
+					if (getGame().time.days % 4 == 0) katherineAndValaHadSex(); //Roughly twice a week
 				}
 				else if (flags[kFLAGS.KATHERINE_VALA_DATE] == KDATE_LOTS) katherineAndValaHadSex(); //They fuck at least once a day
 			}
-			else if (model.time.hours == 10) { //Must select her civilian clothes for the day once her shift is over
+			else if (getGame().time.hours == 10) { //Must select her civilian clothes for the day once her shift is over
 				var clothesPref:Number = flags[kFLAGS.KATHERINE_CLOTHES_PREF];
 				
 				if (clothesPref < 0) { //She’s been told what to wear by the PC
@@ -169,7 +169,7 @@ package classes.Scenes.Places.TelAdre {
 					flags[kFLAGS.KATHERINE_CLOTHES_WORN] = clothesArray[rand(clothesArray.length)];
 				}
 			}
-			if (model.time.hours >= 14) {
+			if (getGame().time.hours >= 14) {
 				//Once employed Kath goes home from any encounter after 14:00 hours, unless they happened at either Urta’s apartment or Urta’s house.
 				switch (flags[kFLAGS.KATHERINE_LOCATION]) {
 					case KLOC_KATHS_APT:
@@ -190,7 +190,7 @@ package classes.Scenes.Places.TelAdre {
 					default: flags[kFLAGS.KATHERINE_LOCATION] = KLOC_KATHS_APT;
 				}
 			}
-			else if (model.time.hours >= 10) {
+			else if (getGame().time.hours >= 10) {
 				//Any time after 10:00 but before 14:00 Kath returns to the bar after encounters, though she will stay at her home if the encounter happened there.
 				switch (flags[kFLAGS.KATHERINE_LOCATION]) {
 					case KLOC_BAR:
@@ -550,7 +550,7 @@ package classes.Scenes.Places.TelAdre {
 		}
 
 		public function needIntroductionFromScylla():Boolean {
-			return model.time.hours > 8 && model.time.hours < 18 && player.hasKeyItem("Silver Kitty-Bell") >= 0;
+			return getGame().time.hours > 8 && getGame().time.hours < 18 && player.hasKeyItem("Silver Kitty-Bell") >= 0;
 		}
 		
 		public function katherineSprite(naked:Boolean = false):void {
@@ -678,7 +678,7 @@ public function visitAtHome():void { //You go to Kath's place alone - she may or
 			katherineMenu();
 		}
 	}
-	else if (model.time.hours < 10) {
+	else if (getGame().time.hours < 10) {
 		outputText("Kath's apartment is empty.  That shouldn't be surprising to you, at this time of the morning she's got to be out patrolling the market.\n\n");
 		katherineApartmentEmptyLeave();
 	}
@@ -2088,7 +2088,7 @@ private function katherinesAppearance(clear:Boolean = true):void {
     if (flags[kFLAGS.KATHERINE_UNLOCKED] < 4) { //Still unemployed
 		outputText("Katherine stands before you, nervously watching as you scrutinize her form.  “<i>Um... do you like what you see?</i>”  Nervously trying to break the ice and amateurishly trying to flaunt her body, she strikes what might be a sexy pose... in her mind.\n\n");
 	}
-	else if (model.time.hours >= 10) { //She’s off duty (on duty doesn’t need intro text)
+	else if (getGame().time.hours >= 10) { //She’s off duty (on duty doesn’t need intro text)
 		//She’s at home (appearance function doesn’t get used at the bar)
 		outputText("Katherine stands before you, beaming with pride.  She moves her fingers across her body, hoping to give you ideas.  “<i>Is there anything you’d like to do?</i>” she purrs.\n\n");
 	}
@@ -2141,7 +2141,7 @@ private function katherinesAppearance(clear:Boolean = true):void {
 		outputText("When you're finished looking at her she quickly redresses herself, flaunting her rear at you as if by accident and waiting to see what else you want, reassured by your lack of comments.");
 		katherineMenu(); //Display default Katherine options
 	}
-	else if (model.time.hours >= 10) { //She’s at home (appearance function is never called at the bar). If time < 10 then she is on duty. See katherineOnDuty() for end of conversation & menu
+	else if (getGame().time.hours >= 10) { //She’s at home (appearance function is never called at the bar). If time < 10 then she is on duty. See katherineOnDuty() for end of conversation & menu
 		outputText("Totally naked, tail waving with pleasure, Katherine stretches, giving you a very good show of all her most private parts.  “<i>Like what you see, dearest?</i>” she purrs.\n\n");
 		outputText("Oh yes, you tell her.  The clothes look good on her and what they hid is even better.  “<i>I do like the sound of that,</i>” she replies, “<i>but it is a bit chilly in here.</i>”  Her tail twitches with pent up energy and she slides her hands down her sides, " + catGirl("stroking her milky white skin", "smoothing her shiny fur coat") + " before asking, “<i>Can you think of a way to keep me warm?</i>”\n\n");
 		outputText("She starts to collect her clothes, putting them back on almost as seductively as she removed them.\n\n");
@@ -3910,9 +3910,9 @@ public function pcPenetratesKatDoubly():void {
 	if (isAt(KLOC_KATHS_APT))
 		outputText(".  You toss your clothes on the floor and lift an eager Katherine onto her bed");
 	else {
-		if (model.time.hours < 12)
+		if (getGame().time.hours < 12)
 			outputText("to the morning breeze");
-		else if (model.time.hours < 18)
+		else if (getGame().time.hours < 18)
 			outputText("to the warm afternoon air");
 		else
 			outputText("to the cool evening air");
@@ -5244,7 +5244,7 @@ private function suckleFromKath():void {
 	}
 	
 	if (isAt(KLOC_BAR) || isAt(KLOC_BAR_DRUNK) || isAt(KLOC_BAR_URTA_REFUSED)) {
-		if (model.time.hours >= 8 && model.time.hours <= 16 && flags[kFLAGS.NIAMH_STATUS] == 0)
+		if (getGame().time.hours >= 8 && getGame().time.hours <= 16 && flags[kFLAGS.NIAMH_STATUS] == 0)
 			outputText("You notice " + (flags[kFLAGS.MET_NIAMH] == 0 ? "the huge breasted cat girl" : "Niamh") + " rubbing her own mammaries enviously.  ");
 		outputText("Unfortunately you have places to be, portals to check on.  You give Katherine a kiss and her tail a little stroke before heading back to camp.");
 	}
@@ -5298,7 +5298,7 @@ private function suckleTacularKats():void {
 		outputText("alley walls");
 	else { //At the bar
 		outputText("walls of the bar");
-		if (model.time.hours >= 8 && model.time.hours <= 16 && flags[kFLAGS.NIAMH_STATUS] == 0)
+		if (getGame().time.hours >= 8 && getGame().time.hours <= 16 && flags[kFLAGS.NIAMH_STATUS] == 0)
 			outputText(".  You notice " + (flags[kFLAGS.MET_NIAMH] == 0 ? "the huge breasted cat girl" : "Niamh") + " rubbing her own mammaries enviously");
 	}
 	outputText(".  “<i>I feel great,</i>” Katherine tells you, totally unabashed.  “<i>I must say, I've drunk from people before... but nobody makes milk as wonderful as yours");
@@ -5699,7 +5699,7 @@ public function handjobbiesFurrDemCatFurries():void
 		outputText(" at the " + (isAt(KLOC_DESERT) ? "ground" : "wall") + ".  You pull your fingers from her pussy and rub her wetness over " + (hasBalls() ? "her fuzzy balls" : "her growing knot") + ".  Pulling your head back you tell Kath to cum for you.  She gasps and you feel " + (hasBalls() ? "that " + ballAdj() + " ballsack contract" : "her cock" + cockMultiple("", "s") + " twitch and harden") + " as Kath lets loose with who knows how much pent up cum.");
 		outputText("\n\nYou’re not done with her yet.  As the first shot splatters against the ");
 		if (isAt(KLOC_DESERT))
-			outputText((model.time.hours <= 18 ? "hot" : "cool") + " sand");
+			outputText((getGame().time.hours <= 18 ? "hot" : "cool") + " sand");
 		else outputText(isAt(KLOC_KATHS_APT) ? "plaster" : "brickwork");
 		outputText(" you slip your fingers back to her cunt and attack her clit.  Despite already being in the midst of one orgasm, Kath’s body tenses up even more.  It feels like a cup of water gushes from her pussy and the next blast from her cock" + cockMultiple("", "s") + " is even stronger, " + (isAt(KLOC_DESERT) ? "arcing a good six inches further " : "hitting the wall a good six inches higher") + " than the first.");
 	}

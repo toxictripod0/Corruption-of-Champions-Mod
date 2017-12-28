@@ -951,7 +951,7 @@ package classes.Scenes.Dungeons.AnzuPalace
 		private function dinnerWithAnzu():void {
 			clearOutput();
 			credits.authorText = "Coalsack";
-			if (model.time.hours < 8) {
+			if (getGame().time.hours < 8) {
 				outputText(images.showImage("anzu-prep-breakfast"));
 				if (flags[kFLAGS.ANZU_TIMES_DINED_BREAKFAST] == 0) {
 					outputText("Arriving early to his palace, you search for Anzu until you find him in the kitchen, naked except for an apron. He is cooking some eggs in a frying pan, while watching how some pieces of bacon are cooking in another. The avian is so busy with his labour that he doesn’t notice your arrival.");
@@ -972,7 +972,7 @@ package classes.Scenes.Dungeons.AnzuPalace
 				}
 				doYesNo(eatFoodWithAnzu, dontEatFoodWithAnzu);
 			}
-			else if (model.time.hours < 16) {
+			else if (getGame().time.hours < 16) {
 				outputText(images.showImage("anzu-prep-lunch"));
 				outputText("When you arrive to the palace a smell of meat cooking attracts your attention. The smell leads you to the kitchen, and when your enter, you find Anzu taking some roasted steaks from a grill. Looks like this time he has left behind his robes and now he’s wearing a white apron over his set of shirt and pants. When putting the steaks on a plate, he manages to look you and says.");
 				outputText("\n\n\"<i>[name]. You’re here! Looks like you’ve arrived just in time. As you see, I’m cooking the meal.</i>\" He says, pointing the tables around him.");
@@ -1014,7 +1014,7 @@ package classes.Scenes.Dungeons.AnzuPalace
 			hungerRefillAmount -= Math.floor(player.hunger / 4);
 			if (hungerRefillAmount < 20) hungerRefillAmount = 20;
 			//Scene GO!
-			if (model.time.hours < 8) {
+			if (getGame().time.hours < 8) {
 				outputText(images.showImage("anzu-dining-breakfast"));
 				outputText("You answer giving him a quick peck on his cheek and saying that you’d love to have breakfast with him.");
 				outputText("\n\n\"<i>Excellent.</i>\" He says \"<i>If you want, you could help me to make the food ready</i>\"");
@@ -1030,7 +1030,7 @@ package classes.Scenes.Dungeons.AnzuPalace
 				}*/
 				flags[kFLAGS.ANZU_TIMES_DINED_BREAKFAST]++;
 			}
-			else if (model.time.hours < 16) {
+			else if (getGame().time.hours < 16) {
 				outputText(images.showImage("anzu-dining-lunch"));
 				outputText("With your appetite open by the wonderful smell of the steaks, you accept Anzu’s offer.");
 				outputText("\n\n“We must start now, then. There are some dishes that still need be finished.”");
@@ -1089,12 +1089,12 @@ package classes.Scenes.Dungeons.AnzuPalace
 			clearOutput();
 			credits.authorText = "Coalsack";
 			//Scene GO!
-			if (model.time.hours < 8) {
+			if (getGame().time.hours < 8) {
 				outputText("You thank him for his offer, but state how you already had your breakfast.");
 				outputText("\n\n\"<i>Oh, it’s okay</i>\" he says, a little disappointed. \"<i>Well, if you change your mind, you know where find me on the mornings.</i>\"");
 				outputText("\n\nLeaving the cooking avian to his own matters, you return to your camp.");
 			}
-			else if (model.time.hours < 16) {
+			else if (getGame().time.hours < 16) {
 				outputText("Excusing yourself, you tell him that you don’t have much time now. Maybe in another opportunity.");
 				outputText("\n\n\"<i>No matter, friend. If you change your mind and want to eat with me, come here tomorrow, or another day.</i>\" He says, pointing the empty dining room. \"<i>I have more than enough room for us</i>\"");
 				outputText("\n\nYou’ll see. After waving bye to Anzu, you come back to your camp.");
@@ -1108,7 +1108,7 @@ package classes.Scenes.Dungeons.AnzuPalace
 		}
 		
 		/*private function diningSexGoodness():void {
-			if (model.time.hours < 8) {
+			if (getGame().time.hours < 8) {
 				if (flags[kFLAGS.ANZU_TIMES_HIGH_REL_BREAKFAST] == 0) {
 					outputText("\n\nAfter some talking your throat becomes somewhat dry, and both of you indulge on the milk from the glasses. You wonder, from where he got the milk.");
 					outputText("\n\n\"<i>I bought it from the reindeers. They say it was reindeer milk, from their breasts. I wasn’t sure about it, and only bought it after I’d assured myself if it was drinkable.</i>\"");
@@ -1135,7 +1135,7 @@ package classes.Scenes.Dungeons.AnzuPalace
 				}
 				flags[kFLAGS.ANZU_TIMES_HIGH_REL_BREAKFAST]++;
 			}
-			else if (model.time.hours < 16) {
+			else if (getGame().time.hours < 16) {
 				
 			}
 			else {

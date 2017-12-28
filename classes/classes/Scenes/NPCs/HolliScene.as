@@ -1158,10 +1158,10 @@ internal function defeatHolli():void {
 		temp = 7;
 		while(temp > 0) {
 			temp--;
-			model.time.hours++;
-			if (model.time.hours > 23) {
-				model.time.days++;
-				model.time.hours = 0;
+			getGame().time.hours++;
+			if (getGame().time.hours > 23) {
+				getGame().time.days++;
+				getGame().time.hours = 0;
 			}
 		}
 		statScreenRefresh();
@@ -1173,10 +1173,10 @@ internal function defeatHolli():void {
 		temp = 3;
 		while(temp > 0) {
 			temp--;
-			model.time.hours++;
-			if (model.time.hours > 23) {
-				model.time.days++;
-				model.time.hours = 0;
+			getGame().time.hours++;
+			if (getGame().time.hours > 23) {
+				getGame().time.days++;
+				getGame().time.hours = 0;
 			}
 		}
 		statScreenRefresh();

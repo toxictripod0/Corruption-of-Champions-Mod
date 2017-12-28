@@ -26,7 +26,7 @@ package classes.Scenes.Places.TelAdre {
 		public function timeChange():Boolean
 		{
 			pregnancy.pregnancyAdvance();
-			//trace("\nEdryn time change: Time is " + model.time.hours + ", incubation: " + pregnancy.incubation + ", event: " + pregnancy.event);
+			//trace("\nEdryn time change: Time is " + getGame().time.hours + ", incubation: " + pregnancy.incubation + ", event: " + pregnancy.event);
 			if (pregnancy.isPregnant && flags[kFLAGS.EDRYN_PREGNANT_AND_NOT_TOLD_PC_YET] == 0 && pregnancy.type != PregnancyStore.PREGNANCY_TAOTH) {
 				flags[kFLAGS.EDRYN_PREGNANCY_INCUBATION]++; //Pregnancy on hold until the PC discovers it
 			}
@@ -503,7 +503,7 @@ private function fuckEdrynNonTaur():void {
 }
 
 public function edrynBar():Boolean {
-	if (flags[kFLAGS.EDRYN_NEVER_SEE_AGAIN] == 0 && model.time.hours >= 14 && model.time.hours <= 19 && (model.time.hours < 17 || flags[kFLAGS.EDRYN_NUMBER_OF_KIDS] == 0))
+	if (flags[kFLAGS.EDRYN_NEVER_SEE_AGAIN] == 0 && getGame().time.hours >= 14 && getGame().time.hours <= 19 && (getGame().time.hours < 17 || flags[kFLAGS.EDRYN_NUMBER_OF_KIDS] == 0))
 		return true;
 	return false;
 }
@@ -524,10 +524,10 @@ Scene proc's the first time the PC visits the Wet Bitch after all requirements a
 private var edrynHeliaLastThreesomeCheck:int;
 
 public function edrynHeliaThreesomePossible():Boolean {
-	if (model.time.totalTime == edrynHeliaLastThreesomeCheck || model.time.totalTime == -edrynHeliaLastThreesomeCheck) //Only choose action once per visit to the bar
+	if (getGame().time.totalTime == edrynHeliaLastThreesomeCheck || getGame().time.totalTime == -edrynHeliaLastThreesomeCheck) //Only choose action once per visit to the bar
 		return edrynHeliaLastThreesomeCheck > 0;
-	edrynHeliaLastThreesomeCheck = model.time.totalTime;
-	if (player.gender == 0 || model.time.hours < 14 || model.time.hours >= 20 || rand(2) == 0 || (flags[kFLAGS.HEL_FUCKBUDDY] == 0 && !kGAMECLASS.helFollower.followerHel())
+	edrynHeliaLastThreesomeCheck = getGame().time.totalTime;
+	if (player.gender == 0 || getGame().time.hours < 14 || getGame().time.hours >= 20 || rand(2) == 0 || (flags[kFLAGS.HEL_FUCKBUDDY] == 0 && !kGAMECLASS.helFollower.followerHel())
 	|| (flags[kFLAGS.HEL_FOLLOWER_LEVEL] == 1 && flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED] == 0)) {
 		edrynHeliaLastThreesomeCheck = -edrynHeliaLastThreesomeCheck; //Make the saved time negative to indicate Helia is not at the bar right now
 		return false;

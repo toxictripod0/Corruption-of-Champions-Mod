@@ -15,11 +15,8 @@ package coc.view {
 			hd:TextField,
 			tf:TextField;
 
-		//protected var model:GameModel;
-
-		public function ToolTipView(mainView:MainView/*, model:GameModel*/):void {
+		public function ToolTipView(mainView:MainView):void {
 			super();
-			//this.model = model;
 
 			this.bg = addBitmapDataSprite({
 				x:0, y:0,
@@ -55,19 +52,11 @@ package coc.view {
 			var bx:Number = button.x,
 				by:Number = button.y;
 
-			// TODO: Should we try to remove some of these numbers?
-			/*if (this.model.mobile) {
-				bx = (bx >= 410 ? 405: bx);
-				this.x = bx + 98;
-				this.y = by - 347;
-			}*/
-			//else {
 			bx = (bx >= 688 ? 680: bx);
 			this.x = bx - 13;
 			var y:Number = by - this.height - 2;
 			if (y < 0) y = by + button.height + 6;
 			this.y = y;
-			//}
 
 			this.visible = true;
 		}

@@ -1589,7 +1589,7 @@ package classes.Scenes
 				getGame().plains.satyrScene.satyrBirth(false);
 			}
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_BENOIT && player.pregnancyIncubation <= 2) {
-				if (model.time.hours !== 5 && model.time.hours !== 6) {
+				if (getGame().time.hours !== 5 && getGame().time.hours !== 6) {
 					player.knockUpForce(player.pregnancyType, 3); //Make sure eggs are only birthed early in the morning
 				}
 				else {

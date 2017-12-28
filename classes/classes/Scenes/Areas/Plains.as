@@ -44,7 +44,7 @@ package classes.Scenes.Areas
 				when  : function ():Boolean {
 					return flags[kFLAGS.SHEILA_DEMON] == 0
 						   && flags[kFLAGS.SHEILA_XP] == 3
-						   && model.time.hours == 20
+						   && getGame().time.hours == 20
 						   && flags[kFLAGS.SHEILA_CLOCK] >= 0;
 				},
 				call  : game.sheilaScene.sheilaXPThreeSexyTime

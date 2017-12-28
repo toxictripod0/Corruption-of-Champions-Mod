@@ -163,11 +163,11 @@ public class JewelryShop extends Shop {
 		menu();
 		addButton(0, "Tier 1 rings", tieredRings, 1);
 		
-		if (player.level >= 10 || model.time.days >= 100) {
+		if (player.level >= 10 || getGame().time.days >= 100) {
 			addButton(1, "Tier 2 rings", tieredRings,2);
 		}
 		
-		if (player.level >= 20 || model.time.days >= 200) {
+		if (player.level >= 20 || getGame().time.days >= 200) {
 			addButton(2, "Tier 3 rings", tieredRings,3);
 		}
 		

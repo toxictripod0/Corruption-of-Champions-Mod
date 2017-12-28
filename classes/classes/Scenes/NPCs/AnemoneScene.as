@@ -67,11 +67,11 @@ package classes.Scenes.NPCs
 			var needNext:Boolean = false;
 			if (flags[kFLAGS.ANEMONE_KID] > 0) {
 				//if (flags[kFLAGS.KID_ITEM_FIND_HOURS] < 20) flags[kFLAGS.KID_ITEM_FIND_HOURS]++;
-				if (flags[kFLAGS.KID_SITTER] == 0 && flags[kFLAGS.MARBLE_KIDS] >= 5 && model.time.hours > 10 && model.time.hours < 18 && rand(4) == 0) {
+				if (flags[kFLAGS.KID_SITTER] == 0 && flags[kFLAGS.MARBLE_KIDS] >= 5 && getGame().time.hours > 10 && getGame().time.hours < 18 && rand(4) == 0) {
 					kidABabysitsCows();
 					needNext = true;
 				}
-				if (flags[kFLAGS.KID_SITTER] == 1 && model.time.hours > 10 && model.time.hours < 18 && rand(4) == 0) {
+				if (flags[kFLAGS.KID_SITTER] == 1 && getGame().time.hours > 10 && getGame().time.hours < 18 && rand(4) == 0) {
 					flags[kFLAGS.KID_SITTER] = 2;
 				}
 				else if (flags[kFLAGS.KID_SITTER] == 2) flags[kFLAGS.KID_SITTER] = 1;
@@ -1135,15 +1135,15 @@ package classes.Scenes.NPCs
 
 //KID A FOLLOWER STUFF
 		public function anemoneBarrelDescription():void {
-			if (model.time.hours < 6) //(morning)
+			if (getGame().time.hours < 6) //(morning)
 				outputText("Kid A is sleeping in her barrel right now.");
-			else if (model.time.hours <= 10)
+			else if (getGame().time.hours <= 10)
 				outputText("Kid A stands next to her barrel, refilling it from one of your waterskins.  A second full skin is slung over her shoulder.  She gives you a grin.\n\n");
 			else if (flags[kFLAGS.KID_SITTER] > 1)
 				outputText("Kid A is absent from her barrel right now, dragooned into babysitting again.\n\n");
-			else if (model.time.hours < 16) //(midday)
+			else if (getGame().time.hours < 16) //(midday)
 				outputText("Kid A is deep in her barrel with the lid on top, hiding from the midday sun.\n\n");
-			else if (model.time.hours < 22) //(night hours)
+			else if (getGame().time.hours < 22) //(night hours)
 				outputText("Kid A is peeking out of her barrel.  Whenever you make eye contact she breaks into a smile; otherwise she just stares off into the distance, relaxing.\n\n");
 			else outputText("Kid A is here, seated demurely on the rim of her barrel and looking somewhat more purple under the red moon.  She glances slyly at you from time to time.\n\n");
 		}
@@ -1156,7 +1156,7 @@ package classes.Scenes.NPCs
 			spriteSelect(SpriteDb.s_kida);
 			outputText("You walk over to the barrel.  ");
 			//[(display if hourssinceKiditem >= 16)
-			if (flags[kFLAGS.KID_ITEM_FIND_HOURS] != model.time.days) {
+			if (flags[kFLAGS.KID_ITEM_FIND_HOURS] != getGame().time.days) {
 				outputText("An item sits next to it, left there by the anemone as a present to you.  Or 'rent', if you choose to think of it that way.  ");
 			}
 			//[(if Kid A has been given a weapon)
@@ -1174,7 +1174,7 @@ package classes.Scenes.NPCs
 
 			//Tutor, N.Watch, and Evict require the anemone to be present
 			menu();
-			if (flags[kFLAGS.KID_ITEM_FIND_HOURS] != model.time.days) addButton(0, "Item", getAnemoneItem, undefined, undefined, undefined, "Take her gift.");
+			if (flags[kFLAGS.KID_ITEM_FIND_HOURS] != getGame().time.days) addButton(0, "Item", getAnemoneItem, undefined, undefined, undefined, "Take her gift.");
 			else addButtonDisabled(0, "Item", "She has nothing to give you now.");
 			
 			if (flags[kFLAGS.ANEMONE_WEAPON_ID] != 0) addButton(1, "Take Weapon", takeOutOfAnemone, undefined, undefined, undefined, "Take away her weapon.");
@@ -1237,7 +1237,7 @@ package classes.Scenes.NPCs
 			outputText("\n\n");
 			inventory.takeItem(itype, playerMenu);
 			//(set hourssinceKiditem = 0)
-			flags[kFLAGS.KID_ITEM_FIND_HOURS] = model.time.days;
+			flags[kFLAGS.KID_ITEM_FIND_HOURS] = getGame().time.days;
 		}
 
 //[Give Weapon]

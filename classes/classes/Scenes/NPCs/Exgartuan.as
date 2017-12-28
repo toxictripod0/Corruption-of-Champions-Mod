@@ -129,7 +129,7 @@ package classes.Scenes.NPCs{
 							else dynStats("lus", 1 + rand(2));
 						}
 						if (player.statusEffectv1(StatusEffects.Exgartuan) == 2 && player.biggestTitSize() >= 12) { //Chick stuff
-							if (model.time.hours % 9 == 0) { //Only once every 9 hours or so.
+							if (getGame().time.hours % 9 == 0) { //Only once every 9 hours or so.
 								if (rand(3) == 0) { //lactation messing with!
 									outputText("\n<b>");
 									exgartuanLactationAdjustment();
@@ -159,7 +159,7 @@ package classes.Scenes.NPCs{
 		}
 		
 		public function timeChangeLarge():Boolean {
-			if (checkedExgartuan++ == 0 && player.hasStatusEffect(StatusEffects.Exgartuan) && player.statusEffectv2(StatusEffects.Exgartuan) == 0 && model.time.hours == 4) {
+			if (checkedExgartuan++ == 0 && player.hasStatusEffect(StatusEffects.Exgartuan) && player.statusEffectv2(StatusEffects.Exgartuan) == 0 && getGame().time.hours == 4) {
 				//Exgartuan must be present, must be awake and it must be night time
 				if (player.hasCock() && player.statusEffectv1(StatusEffects.Exgartuan) == 1 && rand(3) == 0 && player.hoursSinceCum >= 24) { //Exgartuan night time surprise!
 					outputText("\n");

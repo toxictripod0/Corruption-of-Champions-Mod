@@ -121,13 +121,13 @@ public function errorPrint(details:* = null):void
 
 //Argument is time passed.  Pass to event parser if nothing happens.
 // The time argument is never actually used atm, everything is done with timeQ instead...
-public function goNext(time:Number, needNext:Boolean):Boolean  {
-	Begin("eventParser","goNext",time);
-	var rslt:Boolean = goNextWrapped(time,needNext);
+public function goNext(timeAmt:Number, needNext:Boolean):Boolean  {
+	Begin("eventParser","goNext",timeAmt);
+	var rslt:Boolean = goNextWrapped(timeAmt,needNext);
 	End("eventParser","goNext");
 	return rslt;
 }
-private function goNextWrapped(time:Number, needNext:Boolean):Boolean  {
+private function goNextWrapped(timeAmt:Number, needNext:Boolean):Boolean  {
 	//Update system time
 	//date = new Date();
 	//trace ("MONTH: " + date.month + " DATE: " + date.date + " MINUTES: " + date.minutes);
@@ -140,21 +140,21 @@ private function goNextWrapped(time:Number, needNext:Boolean):Boolean  {
 	}
 	while (timeQ > 0) {
 		timeQ--;
-		model.time.hours++;
+		time.hours++;
 
 		kGAMECLASS.combat.regeneration(false);
 		//Inform all time aware classes that a new hour has arrived
 		for (var tac:int = 0; tac < _timeAwareClassList.length; tac++) if (_timeAwareClassList[tac].timeChange()) needNext = true;
-		if (model.time.hours > 23) {
-			model.time.hours = 0;
-			model.time.days++;
+		if (time.hours > 23) {
+			time.hours = 0;
+			time.days++;
 		}
-		else if (model.time.hours == 21) {
+		else if (time.hours == 21) {
 			if (flags[kFLAGS.LETHICE_DEFEATED] <= 0) outputText("\nThe sky darkens as a starless night falls.  The blood-red moon slowly rises up over the horizon.\n");
 			else outputText("\nThe sky darkens as a starry night falls.  The blood-red moon slowly rises up over the horizon.\n");
 			needNext = true;
 		}
-		else if (model.time.hours == 6) {
+		else if (time.hours == 6) {
 			outputText("\nThe sky begins to grow brighter as the moon descends over distant mountains, casting a few last ominous shadows before they burn away in the light.\n");
 			needNext = true;
 		}
@@ -185,8 +185,8 @@ private function goNextWrapped(time:Number, needNext:Boolean):Boolean  {
 		if (flags[kFLAGS.CAMP_WALL_PROGRESS] > 0) temp /= 1 + (flags[kFLAGS.CAMP_WALL_PROGRESS] / 100);
 		if (flags[kFLAGS.CAMP_WALL_GATE] > 0) temp /= 2;
 		temp *= 1 - (scarePercent / 100);
-		if (model.time.hours == 2) {
-			if (model.time.days % 30 == 0 && flags[kFLAGS.ANEMONE_KID] > 0 && player.hasCock() && flags[kFLAGS.ANEMONE_WATCH] > 0 && flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] >= 40) {
+		if (time.hours == 2) {
+			if (time.days % 30 == 0 && flags[kFLAGS.ANEMONE_KID] > 0 && player.hasCock() && flags[kFLAGS.ANEMONE_WATCH] > 0 && flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] >= 40) {
 				anemoneScene.goblinNightAnemone();
 				needNext = true;
 			}
@@ -368,8 +368,8 @@ private function goNextWrapped(time:Number, needNext:Boolean):Boolean  {
 	}
 	
 	// Hanging the Uma massage update here, I think it should work...
-	telAdre.umasShop.updateBonusDuration(time);
-	highMountains.izumiScenes.updateSmokeDuration(time);
+	telAdre.umasShop.updateBonusDuration(timeAmt);
+	highMountains.izumiScenes.updateSmokeDuration(timeAmt);
 	//Drop axe if too short!
 	if ((player.tallness < 78 && player.str < 90) && player.weapon == weapons.L__AXE) {
 		outputText("<b>\nThis axe is too large for someone of your stature to use, though you can keep it in your inventory until you are big enough.</b>\n");
@@ -511,24 +511,24 @@ private function goNextWrapped(time:Number, needNext:Boolean):Boolean  {
 	return false;
 }
 
-public function cheatTime(time:Number, needNext:Boolean = false):void {
+public function cheatTime(timeAmt:Number, needNext:Boolean = false):void {
 	//Advance minutes
-	var minutesToPass:Number = (time -= Math.floor(time)) * 60;
+	var minutesToPass:Number = (timeAmt -= Math.floor(timeAmt)) * 60;
 	minutesToPass = Math.round(minutesToPass)
-	model.time.minutes += minutesToPass;
-	if (model.time.minutes > 59) {
+	time.minutes += minutesToPass;
+	if (time.minutes > 59) {
 		timeQ++;
-		model.time.minutes -= 60;
+		time.minutes -= 60;
 		if (!buttonIsVisible(0)) goNext(timeQ, needNext);
 	}
-	time = Math.floor(time);
+	timeAmt = Math.floor(timeAmt);
 	//Advance hours
-	while(time > 0) {
-		time--;
-		model.time.hours++;
-		if (model.time.hours > 23) {
-			model.time.days++;
-			model.time.hours = 0;
+	while(timeAmt > 0) {
+		timeAmt--;
+		time.hours++;
+		if (time.hours > 23) {
+			time.days++;
+			time.hours = 0;
 		}
 	}
 	statScreenRefresh();

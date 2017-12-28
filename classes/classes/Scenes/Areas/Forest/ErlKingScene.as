@@ -125,10 +125,10 @@ public class ErlKingScene extends BaseContent implements Encounter {
 			outputText(images.showImage("wildhunt-encounter"));
 			outputText("As you explore between the tall, ancient trees, you notice a thick fog beginning to spill out from between the trees and over the mossy ground. As the haze pours forth and flows past your [feet], you notice the forest around you growing distinctly darker and colder.\n\n");
 			outputText("A shiver of unnatural fear runs up your spine, just as a hunting horn sounds from the distance.  You gasp, your breath materializing as a puff of fine, white mist.  Just as the echoes of the horn fade, a chorus of canine howls breaks through the");
-			if (model.time.hours >= 0 && model.time.hours <= 10) outputText(" chill morning");
-			else if (model.time.hours >= 11 && model.time.hours <= 13) outputText(" unusually cold daytime");
-			else if (model.time.hours >= 14 && model.time.hours <= 17) outputText(" brisk afternoon");
-			else if (model.time.hours >= 18 && model.time.hours <= 24) outputText(" freezing night");
+			if (getGame().time.hours >= 0 && getGame().time.hours <= 10) outputText(" chill morning");
+			else if (getGame().time.hours >= 11 && getGame().time.hours <= 13) outputText(" unusually cold daytime");
+			else if (getGame().time.hours >= 14 && getGame().time.hours <= 17) outputText(" brisk afternoon");
+			else if (getGame().time.hours >= 18 && getGame().time.hours <= 24) outputText(" freezing night");
 			outputText(" air. Your eyes twitch and ears ring at the sound of hooves pounding through the forest.\n\n");
 			outputText("The unholy choir of horns, hounds, and hooves shake the woods around you as the fog rises, shoulder-high.  Your heart pounds - you’re not sure <b>why</b> you’re frightened, only that you <b>are</b>.  Something is out there in the darkness, and it's coming for you!  Do you flee, or stand your ground?\n\n");
 			menu();

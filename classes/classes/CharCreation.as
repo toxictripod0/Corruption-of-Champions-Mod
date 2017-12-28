@@ -127,7 +127,6 @@
 			//Hold onto old data for NG+
 			var oldPlayer:Player = player;
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] === 0) player = new Player(); //Reset all standard stats
-			model.player = player;
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] === 0) {
 				player.str = 15;
 				player.tou = 15;
@@ -351,9 +350,9 @@
 				if (player.findPerk(PerkLib.RapierTraining) > 0) flags[kFLAGS.RAPHAEL_RAPIER_TRANING] === 4;
 			}
 			//Time reset
-			model.time.days = 0;
-			model.time.hours = 0;
-			model.time.minutes = 0;
+			getGame().time.days = 0;
+			getGame().time.hours = 0;
+			getGame().time.minutes = 0;
 		}
 
 		private function chooseName():void {
@@ -1099,7 +1098,7 @@
 		public function arrival():void {
 			showStats();
 			statScreenRefresh();
-			model.time.hours = 11;
+			getGame().time.hours = 11;
 			clearOutput();
 			if (flags[kFLAGS.GRIMDARK_MODE] > 0) {
 				outputText("You are prepared for what is to come. Most of the last year has been spent honing your body and mind to prepare for the challenges ahead. You are the Champion of Ingnam. The one who will journey to the demon realm and guarantee the safety of your friends and family, even though you'll never see them again. You wipe away a tear as you enter the courtyard and see Elder... Wait a minute...\n\n");
@@ -1123,7 +1122,7 @@
 			clearOutput();
 			hideUpDown();
 			dynStats("lus", 40, "cor", 2);
-			model.time.hours = 18;
+			getGame().time.hours = 18;
 			outputText(images.showImage("zetaz-encounter-first"));
 			outputText("You wake with a splitting headache and a body full of burning desire.  A shadow darkens your view momentarily and your training kicks in.  You roll to the side across the bare ground and leap to your feet.  A surprised looking imp stands a few feet away, holding an empty vial.  He's completely naked, an improbably sized pulsing red cock hanging between his spindly legs.  You flush with desire as a wave of lust washes over you, your mind reeling as you fight ");
 			if (player.gender === Gender.FEMALE) outputText("the urge to chase down his rod and impale yourself on it.\n\n");
@@ -1259,8 +1258,8 @@
 			doYesNo(goToIngnam, arrival);
 		}
 		public function goToIngnam():void {
-			model.time.days = -3;
-			model.time.hours = 8;
+			getGame().time.days = -3;
+			getGame().time.hours = 8;
 			flags[kFLAGS.IN_INGNAM] = 1;
 			kGAMECLASS.ingnam.menuIngnam();
 		}

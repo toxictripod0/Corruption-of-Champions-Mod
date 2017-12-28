@@ -46,10 +46,10 @@ public class WeaponShop extends Shop {
 			forgeScarredBladeStart();
 		}
 		//remove Sheila's Lethicite key item, set sheilacite = 3, start sheilaforge timer, increment once per day at 0:00
-		if (model.time.days - flags[kFLAGS.SHEILA_LETHICITE_FORGE_DAY] < 14) {
+		if (getGame().time.days - flags[kFLAGS.SHEILA_LETHICITE_FORGE_DAY] < 14) {
 			forgeScarredBladeMiddle();
 		}
-		if (model.time.days - flags[kFLAGS.SHEILA_LETHICITE_FORGE_DAY] >= 14) {
+		if (getGame().time.days - flags[kFLAGS.SHEILA_LETHICITE_FORGE_DAY] >= 14) {
 			forgeScarredBladeEnd();
 		}
 	}
@@ -61,7 +61,7 @@ public class WeaponShop extends Shop {
 		outputText("You pull out the dark purple crystal you received from Sheila and ask if it would be possible to alloy a blade from it.  He doesn't move to take it from your outstretched hand just yet, but you can see a hint of interest in the softening of his features.	\"<i>That's a lethicite.  Where'd you get it?</i>\" asks the smith.\n\n");
 		outputText("\"<i>Stole it from a demon,</i>\" you lie.\n\n");
 		outputText("He considers for a moment more before responding.  \"<i>Well done, then.</i>\"	At that, he takes the crystal gingerly from your hand.	\"<i>Never worked with this before.  I promise nothing, but come back in two weeks.  I should have an update for you.</i>\"\n\n");
-		flags[kFLAGS.SHEILA_LETHICITE_FORGE_DAY] = model.time.days;
+		flags[kFLAGS.SHEILA_LETHICITE_FORGE_DAY] = getGame().time.days;
 		player.removeKeyItem("Sheila's Lethicite");
 		doNext(inside);
 	}

@@ -5,17 +5,14 @@ package classes.Scenes.Dungeons
 	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
-	import classes.BaseContent;
+	import classes.Scenes.Dungeons.DeepCave.*;
 	import classes.Scenes.Dungeons.DungeonAbstractContent;
 	import classes.Scenes.Dungeons.DungeonCore;
-	import classes.Scenes.Dungeons.DeepCave.*;
+	import classes.Scenes.NPCs.ShouldraFollower;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
-	
 	import classes.internals.Utils;
-	import classes.Scenes.NPCs.ShouldraFollower;
-	import coc.model.GameModel;
-	
+		
 	use namespace kGAMECLASS;
 	
 	public class DeepCave extends DungeonAbstractContent

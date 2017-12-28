@@ -1,17 +1,13 @@
 package classes.Scenes.Camp 
 {
 	import classes.*;
+	import classes.BaseContent;
+	import classes.GlobalFlags.kACHIEVEMENTS;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
-	import classes.GlobalFlags.kACHIEVEMENTS;
-	import classes.BaseContent;
-import classes.Scenes.API.Encounter;
-import classes.Scenes.API.Encounters;
-
+	import classes.Scenes.API.Encounter;
+	import classes.Scenes.API.Encounters;
 	import classes.Scenes.NPCs.*;
-	import classes.Scenes.Camp;
-	
-	import coc.model.GameModel;
 	
 	/**
 	 * Lovely and comfortable cabin for you to sleep in peace.
@@ -393,8 +389,8 @@ import classes.Scenes.API.Encounters;
 		
 		private function doCabinWork2Part2():void {
 			clearOutput();
-			model.time.hours = 0;
-			model.time.days++;
+			getGame().time.hours = 0;
+			getGame().time.days++;
 			player.HP = player.maxHP();
 			player.fatigue = 0;
 			outputText("As soon as dawn hits and you’ve eaten, you head right back to work. Starting with the roof, you nail stretchers across your rafters. These provide the nailing surface for your primitive roof. You carefully balance yourself on the structure to nail boards one by one across the stretchers to seal up your roof. Then you do the same for the walls. It’s definitely primitive, but it’ll work for now.\n\n");

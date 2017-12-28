@@ -1064,9 +1064,9 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile.data.gameState = gameStateGet(); // Saving game state?
 		
 		//Time and Items
-		saveFile.data.minutes = model.time.minutes;
-		saveFile.data.hours = model.time.hours;
-		saveFile.data.days = model.time.days;
+		saveFile.data.minutes = getGame().time.minutes;
+		saveFile.data.hours = getGame().time.hours;
+		saveFile.data.days = getGame().time.days;
 		saveFile.data.autoSave = player.autoSave;
 		
 		// Save non-flag plot variables.
@@ -1386,8 +1386,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 
 		//KILL ALL COCKS;
 		player = new Player();
-		flags = new DefaultDict();
-		model.player = player;		
+		flags = new DefaultDict();	
 		
 		//trace("Type of saveFile.data = ", getClass(saveFile.data));
 		
@@ -2179,9 +2178,9 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		
 		//Days
 		//Time and Items
-		model.time.minutes = saveFile.data.minutes;
-		model.time.hours = saveFile.data.hours;
-		model.time.days = saveFile.data.days;
+		getGame().time.minutes = saveFile.data.minutes;
+		getGame().time.hours = saveFile.data.hours;
+		getGame().time.days = saveFile.data.days;
 		if (saveFile.data.autoSave == undefined)
 			player.autoSave = false;
 		else
@@ -2333,9 +2332,9 @@ public function unFuckSave():void
 		player.removeStatusEffect(StatusEffects.Tentagrappled);
 	}
 
-	if (isNaN(model.time.minutes)) model.time.minutes = 0;
-	if (isNaN(model.time.hours)) model.time.hours = 0;
-	if (isNaN(model.time.days)) model.time.days = 0;
+	if (isNaN(getGame().time.minutes)) getGame().time.minutes = 0;
+	if (isNaN(getGame().time.hours)) getGame().time.hours = 0;
+	if (isNaN(getGame().time.days)) getGame().time.days = 0;
 
 	if (player.gems < 0) player.gems = 0; //Force fix gems
 	
@@ -2526,9 +2525,9 @@ public function unFuckSave():void
 		else if (flags[kFLAGS.EDRYN_PREGNANCY_INCUBATION] > 0 && flags[kFLAGS.EDRYN_PREGNANCY_TYPE] == 0) flags[kFLAGS.EDRYN_PREGNANCY_TYPE] = PregnancyStore.PREGNANCY_PLAYER;
 	}
 	if (flags[kFLAGS.BEHEMOTH_CHILDREN] > 0) {
-		if (flags[kFLAGS.BEHEMOTH_CHILDREN] >= 1 && flags[kFLAGS.BEHEMOTH_CHILD_1_BIRTH_DAY] <= 0) flags[kFLAGS.BEHEMOTH_CHILD_1_BIRTH_DAY] = model.time.days;
-		if (flags[kFLAGS.BEHEMOTH_CHILDREN] >= 2 && flags[kFLAGS.BEHEMOTH_CHILD_2_BIRTH_DAY] <= 0) flags[kFLAGS.BEHEMOTH_CHILD_2_BIRTH_DAY] = model.time.days;
-		if (flags[kFLAGS.BEHEMOTH_CHILDREN] >= 3 && flags[kFLAGS.BEHEMOTH_CHILD_3_BIRTH_DAY] <= 0) flags[kFLAGS.BEHEMOTH_CHILD_3_BIRTH_DAY] = model.time.days;
+		if (flags[kFLAGS.BEHEMOTH_CHILDREN] >= 1 && flags[kFLAGS.BEHEMOTH_CHILD_1_BIRTH_DAY] <= 0) flags[kFLAGS.BEHEMOTH_CHILD_1_BIRTH_DAY] = getGame().time.days;
+		if (flags[kFLAGS.BEHEMOTH_CHILDREN] >= 2 && flags[kFLAGS.BEHEMOTH_CHILD_2_BIRTH_DAY] <= 0) flags[kFLAGS.BEHEMOTH_CHILD_2_BIRTH_DAY] = getGame().time.days;
+		if (flags[kFLAGS.BEHEMOTH_CHILDREN] >= 3 && flags[kFLAGS.BEHEMOTH_CHILD_3_BIRTH_DAY] <= 0) flags[kFLAGS.BEHEMOTH_CHILD_3_BIRTH_DAY] = getGame().time.days;
 	}
 	if (flags[kFLAGS.LETHICE_DEFEATED] > 0 && flags[kFLAGS.D3_JEAN_CLAUDE_DEFEATED] == 0) flags[kFLAGS.D3_JEAN_CLAUDE_DEFEATED] = 1; 
 	if (gearStorageGet().length < 45) {

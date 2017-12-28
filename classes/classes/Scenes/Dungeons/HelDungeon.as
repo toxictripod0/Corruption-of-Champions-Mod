@@ -2,20 +2,16 @@
 package classes.Scenes.Dungeons 
 {
 	import classes.*;
+	import classes.GlobalFlags.kACHIEVEMENTS;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
-	import classes.GlobalFlags.kACHIEVEMENTS;
 	import classes.Items.Armor;
-	import classes.BaseContent;
 	import classes.Scenes.Dungeons.DungeonAbstractContent;
 	import classes.Scenes.Dungeons.DungeonCore;
 	import classes.Scenes.Dungeons.HelDungeon.*;
+	import classes.Scenes.NPCs.*;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
-	
-	import classes.Scenes.NPCs.*;
-	
-	import coc.model.GameModel;
 	
 	use namespace kGAMECLASS;
 	

@@ -246,8 +246,8 @@ internal function haveAKid():void {
 	player.orgasm('Dick');
 	menu();
 	addButton(0,"Next",HaveAHellKidPartII);
-	model.time.hours = 6;
-	model.time.days++;
+	getGame().time.hours = 6;
+	getGame().time.days++;
 }
 
 private function HaveAHellKidPartII():void {

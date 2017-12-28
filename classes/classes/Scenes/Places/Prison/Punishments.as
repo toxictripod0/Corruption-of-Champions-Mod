@@ -202,8 +202,8 @@ package classes.Scenes.Places.Prison
 			flags[kFLAGS.PRISON_PUNISHMENT] = 0;
 			
 			//Reset random event timers
-			prison.prisonCaptor.updateNextWaitRandomEvent(model.time.hours, model.time.days);
-			prison.prisonCaptor.updateNextRoomRandomEvent(model.time.hours, model.time.days);
+			prison.prisonCaptor.updateNextWaitRandomEvent(getGame().time.hours, getGame().time.days);
+			prison.prisonCaptor.updateNextRoomRandomEvent(getGame().time.hours, getGame().time.days);
 			
 			//Remove Restraints 
 			player.changeStatusValue(StatusEffects.PrisonRestraints,1,2);
@@ -492,8 +492,8 @@ package classes.Scenes.Places.Prison
 		public function prisonCaptorPunishmentConfinementFreedomRelease():void
 		{
 			outputText("\n\n(Placeholder) In exchange, you are released from the confinement box. Apology or not, you are left bound and gagged, but for the time being you are just happy to be free of the darkness and unending physical stress of the box.");
-			prison.prisonCaptor.updateNextWaitRandomEvent(model.time.hours, model.time.days);
-			prison.prisonCaptor.updateNextRoomRandomEvent(model.time.hours, model.time.days);
+			prison.prisonCaptor.updateNextWaitRandomEvent(getGame().time.hours, getGame().time.days);
+			prison.prisonCaptor.updateNextRoomRandomEvent(getGame().time.hours, getGame().time.days);
 			player.changeStatusValue(StatusEffects.PrisonRestraints,1,2);
 			player.changeStatusValue(StatusEffects.PrisonRestraints,2,1);
 			player.changeStatusValue(StatusEffects.PrisonRestraints,3,2);

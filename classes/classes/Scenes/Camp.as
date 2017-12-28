@@ -171,7 +171,7 @@ private function doCamp():void { //Only called by playerMenu
 		joyScene.wakeUpWithJoyPostFuck();
 		return;
 	}
-	if (flags[kFLAGS.EMBER_MORNING] > 0 && ((flags[kFLAGS.BENOIT_CLOCK_BOUGHT] > 0 && model.time.hours >= flags[kFLAGS.BENOIT_CLOCK_ALARM]) || (flags[kFLAGS.BENOIT_CLOCK_BOUGHT] <= 0 && model.time.hours >= 6))) {
+	if (flags[kFLAGS.EMBER_MORNING] > 0 && ((flags[kFLAGS.BENOIT_CLOCK_BOUGHT] > 0 && getGame().time.hours >= flags[kFLAGS.BENOIT_CLOCK_ALARM]) || (flags[kFLAGS.BENOIT_CLOCK_BOUGHT] <= 0 && getGame().time.hours >= 6))) {
 		hideMenus();
 		emberScene.postEmberSleep();
 		return;
@@ -186,7 +186,7 @@ private function doCamp():void { //Only called by playerMenu
 		milkWaifu.ratducto();
 		return;
 	}
-	if (kGAMECLASS.xmas.xmasMisc.nieveHoliday() && model.time.hours == 6) {
+	if (kGAMECLASS.xmas.xmasMisc.nieveHoliday() && getGame().time.hours == 6) {
 		if (player.hasKeyItem("Nieve's Tear") >= 0 && flags[kFLAGS.NIEVE_STAGE] != 5) {
 			kGAMECLASS.xmas.xmasMisc.returnOfNieve();
 			hideMenus();
@@ -221,7 +221,7 @@ private function doCamp():void { //Only called by playerMenu
 						helSpawnScene.heliaGravidity();
 						return;
 				default:
-						if (kGAMECLASS.helScene.pregnancy.incubation == 0 && (model.time.hours == 6 || model.time.hours == 7)) {
+						if (kGAMECLASS.helScene.pregnancy.incubation == 0 && (getGame().time.hours == 6 || getGame().time.hours == 7)) {
 							hideMenus();
 							helSpawnScene.heliaBirthtime();
 							return;
@@ -234,17 +234,17 @@ private function doCamp():void { //Only called by playerMenu
 		helSpawnScene.helSpawnGraduation();
 		return;
 	}
-	if (model.time.hours >= 10 && model.time.hours <= 18 && (model.time.days % 20 == 0 || model.time.hours == 12) && flags[kFLAGS.HELSPAWN_DADDY] == 2 && helSpawnScene.helspawnFollower()) {
+	if (getGame().time.hours >= 10 && getGame().time.hours <= 18 && (getGame().time.days % 20 == 0 || getGame().time.hours == 12) && flags[kFLAGS.HELSPAWN_DADDY] == 2 && helSpawnScene.helspawnFollower()) {
 		hideMenus();
 		helSpawnScene.maiVisitsHerKids();
 		return;
 	}
-	if (model.time.hours == 6 && flags[kFLAGS.HELSPAWN_DADDY] == 1 && model.time.days % 30 == 0 && flags[kFLAGS.SPIDER_BRO_GIFT] == 0 && helSpawnScene.helspawnFollower()) {
+	if (getGame().time.hours == 6 && flags[kFLAGS.HELSPAWN_DADDY] == 1 && getGame().time.days % 30 == 0 && flags[kFLAGS.SPIDER_BRO_GIFT] == 0 && helSpawnScene.helspawnFollower()) {
 		hideMenus();
 		helSpawnScene.spiderBrosGift();
 		return;
 	}
-	if (model.time.hours >= 10 && model.time.hours <= 18 && (model.time.days % 15 == 0 || model.time.hours == 12) && helSpawnScene.helspawnFollower() && flags[kFLAGS.HAKON_AND_KIRI_VISIT] == 0) {
+	if (getGame().time.hours >= 10 && getGame().time.hours <= 18 && (getGame().time.days % 15 == 0 || getGame().time.hours == 12) && helSpawnScene.helspawnFollower() && flags[kFLAGS.HAKON_AND_KIRI_VISIT] == 0) {
 		hideMenus();
 		helSpawnScene.hakonAndKiriComeVisit();
 		return;
@@ -254,12 +254,12 @@ private function doCamp():void { //Only called by playerMenu
 		helSpawnScene.helspawnDiscoversBooze();
 		return;
 	}
-	if (flags[kFLAGS.HELSPAWN_AGE] == 2 && flags[kFLAGS.HELSPAWN_WEAPON] == 0 && flags[kFLAGS.HELSPAWN_GROWUP_COUNTER] >= 3 && model.time.hours >= 10 && model.time.hours <= 18) {
+	if (flags[kFLAGS.HELSPAWN_AGE] == 2 && flags[kFLAGS.HELSPAWN_WEAPON] == 0 && flags[kFLAGS.HELSPAWN_GROWUP_COUNTER] >= 3 && getGame().time.hours >= 10 && getGame().time.hours <= 18) {
 		hideMenus();
 		helSpawnScene.helSpawnChoosesAFightingStyle();
 		return;
 	}
-	if (flags[kFLAGS.HELSPAWN_AGE] == 2 && (model.time.hours == 6 || model.time.hours == 7) && flags[kFLAGS.HELSPAWN_GROWUP_COUNTER] >= 7 && flags[kFLAGS.HELSPAWN_FUCK_INTERRUPTUS] == 1) {
+	if (flags[kFLAGS.HELSPAWN_AGE] == 2 && (getGame().time.hours == 6 || getGame().time.hours == 7) && flags[kFLAGS.HELSPAWN_GROWUP_COUNTER] >= 7 && flags[kFLAGS.HELSPAWN_FUCK_INTERRUPTUS] == 1) {
 		helSpawnScene.helspawnAllGrownUp();
 		return;
 	}
@@ -275,7 +275,7 @@ private function doCamp():void { //Only called by playerMenu
 		sophieBimbo.sophieMoveInAttempt();
 		return;
 	}
-	if (!kGAMECLASS.xmas.xmasMisc.nieveHoliday() && model.time.hours == 6 && flags[kFLAGS.NIEVE_STAGE] > 0) {
+	if (!kGAMECLASS.xmas.xmasMisc.nieveHoliday() && getGame().time.hours == 6 && flags[kFLAGS.NIEVE_STAGE] > 0) {
 		kGAMECLASS.xmas.xmasMisc.nieveIsOver();
 		return;
 	}
@@ -293,7 +293,7 @@ private function doCamp():void { //Only called by playerMenu
 			return;
 		}
 		else {
-			if (model.time.hours < 6 || model.time.hours > 20) doSleep();
+			if (getGame().time.hours < 6 || getGame().time.hours > 20) doSleep();
 			else rest();
 			return;
 		}
@@ -374,7 +374,7 @@ private function doCamp():void { //Only called by playerMenu
 	}
 	//Cotton preg freakout
 	if (player.pregnancyIncubation <= 280 && player.pregnancyType == PregnancyStore.PREGNANCY_COTTON &&
-	   	flags[kFLAGS.COTTON_KNOCKED_UP_PC_AND_TALK_HAPPENED] == 0 && (model.time.hours == 6 || model.time.hours == 7)) {
+	   	flags[kFLAGS.COTTON_KNOCKED_UP_PC_AND_TALK_HAPPENED] == 0 && (getGame().time.hours == 6 || getGame().time.hours == 7)) {
 		kGAMECLASS.telAdre.cotton.goTellCottonShesAMomDad();
 		hideMenus();
 		return;
@@ -496,9 +496,9 @@ private function doCamp():void { //Only called by playerMenu
 	//Isabella upgrades camp level!
 	if (isabellaFollower()) outputText("Your campsite got a lot more comfortable once Isabella moved in.  Carpets cover up much of the barren ground, simple awnings tied to the rocks provide shade, and hand-made wooden furniture provides comfortable places to sit and sleep.  ");
 	else { //Live in-ness
-		if (model.time.days < 10) outputText("Your campsite is fairly simple at the moment.  Your tent and bedroll are set in front of the rocks that lead to the portal.  You have a small fire pit as well.  ");
-		if (model.time.days >= 10 && model.time.days < 20) outputText("Your campsite is starting to get a very 'lived-in' look.  The fire-pit is well defined with some rocks you've arranged around it, and your bedroll and tent have been set up in the area most sheltered by rocks.  ");
-		if (model.time.days >= 20) {
+		if (getGame().time.days < 10) outputText("Your campsite is fairly simple at the moment.  Your tent and bedroll are set in front of the rocks that lead to the portal.  You have a small fire pit as well.  ");
+		if (getGame().time.days >= 10 && getGame().time.days < 20) outputText("Your campsite is starting to get a very 'lived-in' look.  The fire-pit is well defined with some rocks you've arranged around it, and your bedroll and tent have been set up in the area most sheltered by rocks.  ");
+		if (getGame().time.days >= 20) {
 			if (!isabellaFollower()) outputText("Your new home is as comfy as a camp site can be.  ");
 			outputText("The fire-pit ");
 			if (flags[kFLAGS.CAMP_BUILT_CABIN] > 0 && flags[kFLAGS.CAMP_CABIN_FURNITURE_BED] > 0) outputText("is ");
@@ -507,7 +507,7 @@ private function doCamp():void { //Only called by playerMenu
 		}
 	}
 
-	if (model.time.days >= 20) outputText("You've even managed to carve some artwork into the rocks around the camp's perimeter.\n\n");
+	if (getGame().time.days >= 20) outputText("You've even managed to carve some artwork into the rocks around the camp's perimeter.\n\n");
 	if (flags[kFLAGS.CAMP_CABIN_PROGRESS] == 7) outputText("There's an unfinished wooden structure. As of right now, it's just frames nailed together.\n\n")
 	if (flags[kFLAGS.CAMP_CABIN_PROGRESS] == 8) outputText("There's an unfinished cabin. It's currently missing windows and door.\n\n")
 	if (flags[kFLAGS.CAMP_CABIN_PROGRESS] == 9) outputText("There's a nearly-finished cabin. It looks complete from the outside but inside, it's missing flooring.\n\n")
@@ -603,7 +603,7 @@ private function doCamp():void { //Only called by playerMenu
 		}
 	}
 	//Set up rest stuff
-	if (model.time.hours < 6 || model.time.hours > 20) { //Night
+	if (getGame().time.hours < 6 || getGame().time.hours > 20) { //Night
 		if (flags[kFLAGS.GAME_END] == 0) outputText("It is dark out, made worse by the lack of stars in the sky.  A blood-red moon hangs in the sky, seeming to watch you, but providing little light. It's far too dark to leave camp.\n\n"); //Lethice not defeated
 		else { //Lethice defeated, proceed with weather
 			switch(flags[kFLAGS.CURRENT_WEATHER]) {
@@ -615,7 +615,7 @@ private function doCamp():void { //Only called by playerMenu
 				default:outputText("It is dark out. Stars dot the night sky. A blood-red moon hangs in the sky, seeming to watch you, but providing little light. It's far too dark to leave camp.\n\n");
 			}
 		}
-		if (companionsCount() > 0 && !(model.time.hours > 4 && model.time.hours < 23)) {
+		if (companionsCount() > 0 && !(getGame().time.hours > 4 && getGame().time.hours < 23)) {
 			outputText("Your camp is silent as your companions are sleeping right now.\n");
 		}
 	}
@@ -629,11 +629,11 @@ private function doCamp():void { //Only called by playerMenu
 				case 4: outputText("The sky is dark as it's thick with dark grey clouds that rain and occasionally the sky flashes with lightning. "); break;
 			}
 		}
-		if (model.time.hours == 19) {
+		if (getGame().time.hours == 19) {
 			if (flags[kFLAGS.CURRENT_WEATHER] < 2) outputText("The sun is close to the horizon, getting ready to set. ");
 			else outputText("Though you cannot see the sun, the sky near the horizon began to glow orange. ");
 		}
-		if (model.time.hours == 20) {
+		if (getGame().time.hours == 20) {
 			if (flags[kFLAGS.CURRENT_WEATHER] < 2) outputText("The sun has already set below the horizon. The sky glows orange. ");
 			else outputText("Even with the clouds, the sky near the horizon is glowing bright orange. The sun may have already set at this point. ");
 		}
@@ -642,7 +642,7 @@ private function doCamp():void { //Only called by playerMenu
 	//Weather!
 
 	//Unlock cabin.
-	if (flags[kFLAGS.CAMP_CABIN_PROGRESS] <= 0 && model.time.days >= 14) {
+	if (flags[kFLAGS.CAMP_CABIN_PROGRESS] <= 0 && getGame().time.days >= 14) {
 		flags[kFLAGS.CAMP_CABIN_PROGRESS] = 1;
 		clearOutput();
 		outputText(images.showImage("camp-dream"));
@@ -678,14 +678,14 @@ private function doCamp():void { //Only called by playerMenu
 	}
 	addButton(9, "Wait", doWait).hint("Wait for four hours.\n\nShift-click to wait until the night comes.");
 	if (player.fatigue > 40 || player.HP / player.maxHP() <= .9) addButton(9, "Rest", rest).hint("Rest for four hours.\n\nShift-click to rest until fully healed or night comes.");
-	if (model.time.hours >= 21 || model.time.hours < 6) addButton(9, "Sleep", doSleep).hint("Turn yourself in for the night.");
+	if (getGame().time.hours >= 21 || getGame().time.hours < 6) addButton(9, "Sleep", doSleep).hint("Turn yourself in for the night.");
 
 	if (isAprilFools()) addButton(12, "Cash Shop", getGame().aprilFools.pay2WinSelection).hint("Need more gems? Want to buy special items to give you the edge? Purchase with real money!");
 	//Remove buttons according to conditions.
-	if (model.time.hours >= 21 || model.time.hours < 6) {
+	if (getGame().time.hours >= 21 || getGame().time.hours < 6) {
 		addDisabledButton(0, getButtonText(0), "It's too dark outside. It wouldn't be a good idea to explore when danger lurks in every corner of darkness."); //Explore
 		addDisabledButton(1, getButtonText(1), "It's too dark outside. It wouldn't be a good idea to explore when danger lurks in every corner of darkness."); //Explore
-		if (model.time.hours >= 23 || model.time.hours < 5) {
+		if (getGame().time.hours >= 23 || getGame().time.hours < 5) {
 			addDisabledButton(4, getButtonText(4), "You are too tired to perform any camp actions. All you can do right now is to sleep until morning."); //Camp Actions
 			if (followersCount() > 0) addDisabledButton(5, getButtonText(5), "Your followers are sleeping at the moment."); //Followers
 			if (loversCount() > 0) addDisabledButton(6, getButtonText(6), "Your lovers are sleeping at the moment."); //Followers
@@ -808,11 +808,11 @@ public function campLoversMenu(descOnly:Boolean = false):void {
 		if (flags[kFLAGS.HEL_FOLLOWER_LEVEL] == 2) {
 			//Hel @ Camp: Follower Menu
 			//(6-7)
-			if (model.time.hours <= 7) outputText("Hel is currently sitting at the edge of camp, surrounded by her scraps of armor, sword, and a few half-empty bottles of vodka.  By the way she's grunting and growling, it looks like she's getting ready to flip her shit and go running off into the plains in her berserker state.\n\n");
+			if (getGame().time.hours <= 7) outputText("Hel is currently sitting at the edge of camp, surrounded by her scraps of armor, sword, and a few half-empty bottles of vodka.  By the way she's grunting and growling, it looks like she's getting ready to flip her shit and go running off into the plains in her berserker state.\n\n");
 			//(8a-5p)
-			else if (model.time.hours <= 17) outputText("Hel's out of camp at the moment, adventuring on the plains.  You're sure she'd be on hand in moments if you needed her, though.\n\n");
+			else if (getGame().time.hours <= 17) outputText("Hel's out of camp at the moment, adventuring on the plains.  You're sure she'd be on hand in moments if you needed her, though.\n\n");
 			//5-7)
-			else if (model.time.hours <= 19) outputText("Hel's out visiting her family in Tel'Adre right now, though you're sure she's only moments away if you need her.\n\n");
+			else if (getGame().time.hours <= 19) outputText("Hel's out visiting her family in Tel'Adre right now, though you're sure she's only moments away if you need her.\n\n");
 			//(7+)
 			else outputText("Hel is fussing around her hammock, checking her gear and sharpening her collection of blades.  Each time you glance her way, though, the salamander puts a little extra sway in her hips and her tail wags happily.\n\n");
 		}
@@ -824,15 +824,15 @@ public function campLoversMenu(descOnly:Boolean = false):void {
 	}
 	//Isabella
 	if (isabellaFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 0) {
-		if (model.time.hours >= 21 || model.time.hours <= 5) outputText("Isabella is sound asleep in her bunk and quietly snoring.");
-		else if (model.time.hours == 6) outputText("Isabella is busy eating some kind of grain-based snack for breakfast.  The curly-haired cow-girl gives you a smile when she sees you look her way.");
-		else if (model.time.hours == 7) outputText("Isabella, the red-headed cow-girl, is busy with a needle and thread, fixing up some of her clothes.");
-		else if (model.time.hours == 8) outputText("Isabella is busy cleaning up the camp, but when she notices you looking her way, she stretches up and arches her back, pressing eight bullet-hard nipples into the sheer silk top she prefers to wear.");
-		else if (model.time.hours == 9) outputText("Isabella is out near the fringes of your campsite.  She has her massive shield in one hand and appears to be keeping a sharp eye out for intruders or demons.  When she sees you looking her way, she gives you a wave.");
-		else if (model.time.hours == 10) outputText("The cow-girl warrioress, Isabella, is sitting down on a chair and counting out gems from a strange pouch.  She must have defeated someone or something recently.");
-		else if (model.time.hours == 11) outputText("Isabella is sipping from a bottle labelled 'Lactaid' in a shaded corner.  When she sees you looking she blushes, though dark spots appear on her top and in her skirt's middle.");
-		else if (model.time.hours == 12) outputText("Isabella is cooking a slab of meat over the fire.  From the smell that's wafting this way, you think it's beef.  Idly, you wonder if she realizes just how much like her chosen food animal she has become.");
-		else if (model.time.hours == 13) {
+		if (getGame().time.hours >= 21 || getGame().time.hours <= 5) outputText("Isabella is sound asleep in her bunk and quietly snoring.");
+		else if (getGame().time.hours == 6) outputText("Isabella is busy eating some kind of grain-based snack for breakfast.  The curly-haired cow-girl gives you a smile when she sees you look her way.");
+		else if (getGame().time.hours == 7) outputText("Isabella, the red-headed cow-girl, is busy with a needle and thread, fixing up some of her clothes.");
+		else if (getGame().time.hours == 8) outputText("Isabella is busy cleaning up the camp, but when she notices you looking her way, she stretches up and arches her back, pressing eight bullet-hard nipples into the sheer silk top she prefers to wear.");
+		else if (getGame().time.hours == 9) outputText("Isabella is out near the fringes of your campsite.  She has her massive shield in one hand and appears to be keeping a sharp eye out for intruders or demons.  When she sees you looking her way, she gives you a wave.");
+		else if (getGame().time.hours == 10) outputText("The cow-girl warrioress, Isabella, is sitting down on a chair and counting out gems from a strange pouch.  She must have defeated someone or something recently.");
+		else if (getGame().time.hours == 11) outputText("Isabella is sipping from a bottle labelled 'Lactaid' in a shaded corner.  When she sees you looking she blushes, though dark spots appear on her top and in her skirt's middle.");
+		else if (getGame().time.hours == 12) outputText("Isabella is cooking a slab of meat over the fire.  From the smell that's wafting this way, you think it's beef.  Idly, you wonder if she realizes just how much like her chosen food animal she has become.");
+		else if (getGame().time.hours == 13) {
 			outputText("Isabella ");
 			var izzyCreeps:Array = [];
 			//Build array of choices for izzy to talk to
@@ -853,17 +853,17 @@ public function campLoversMenu(descOnly:Boolean = false):void {
 			else if (izzyCreeps[choice] == 4) outputText("is sitting down with Izma and recounting some stories, somewhat nervously.  Izma keeps flashing her teeth in a predatory smile.");
 			else outputText("is sitting down and thumbing through a book.");
 		}
-		else if (model.time.hours == 14) outputText("Isabella is working a grindstone and sharpening her tools.  She even hones the bottom edge of her shield into a razor-sharp cutting edge.  The cow-girl is sweating heavily, but it only makes the diaphanous silk of her top cling more alluringly to her weighty chest.");
-		else if (model.time.hours == 15) outputText("The warrior-woman, Isabella is busy constructing dummies of wood and straw, then destroying them with vicious blows from her shield.  Most of the time she finishes by decapitating them with the sharp, bottom edge of her weapon.  She flashes a smile your way when she sees you.");
-		else if (model.time.hours == 16) outputText("Isabella is sitting down with a knife, the blade flashing in the sun as wood shavings fall to the ground.  Her hands move with mechanical, practiced rhythm as she carves a few hunks of shapeless old wood into tools or art.");
-		else if (model.time.hours == 17) outputText("Isabella is sitting against one of the large rocks near the outskirts of your camp, staring across the wasteland while idly munching on what you assume to be a leg of lamb.  She seems lost in thought, though that doesn't stop her from throwing a wink and a goofy food-filled grin toward you.");
-		else if (model.time.hours == 18) outputText("The dark-skinned cow-girl, Isabella, is sprawled out on a carpet and stretching.  She seems surprisingly flexible for someone with hooves and oddly-jointed lower legs.");
-		else if (model.time.hours == 19) {
+		else if (getGame().time.hours == 14) outputText("Isabella is working a grindstone and sharpening her tools.  She even hones the bottom edge of her shield into a razor-sharp cutting edge.  The cow-girl is sweating heavily, but it only makes the diaphanous silk of her top cling more alluringly to her weighty chest.");
+		else if (getGame().time.hours == 15) outputText("The warrior-woman, Isabella is busy constructing dummies of wood and straw, then destroying them with vicious blows from her shield.  Most of the time she finishes by decapitating them with the sharp, bottom edge of her weapon.  She flashes a smile your way when she sees you.");
+		else if (getGame().time.hours == 16) outputText("Isabella is sitting down with a knife, the blade flashing in the sun as wood shavings fall to the ground.  Her hands move with mechanical, practiced rhythm as she carves a few hunks of shapeless old wood into tools or art.");
+		else if (getGame().time.hours == 17) outputText("Isabella is sitting against one of the large rocks near the outskirts of your camp, staring across the wasteland while idly munching on what you assume to be a leg of lamb.  She seems lost in thought, though that doesn't stop her from throwing a wink and a goofy food-filled grin toward you.");
+		else if (getGame().time.hours == 18) outputText("The dark-skinned cow-girl, Isabella, is sprawled out on a carpet and stretching.  She seems surprisingly flexible for someone with hooves and oddly-jointed lower legs.");
+		else if (getGame().time.hours == 19) {
 			//[(Izzy Milked Yet flag = -1)
 			if (flags[kFLAGS.ISABELLA_MILKED_YET] == -1) outputText("Isabella has just returned from a late visit to Whitney's farm, bearing a few filled bottles and a small pouch of gems.");
 			else outputText("Isabella was hidden behind a rock when you started looking for her, but as soon as you spot her in the darkness, she jumps, a guilty look flashing across her features.  She turns around and adjusts her top before looking back your way, her dusky skin even darker from a blush.  The cow-girl gives you a smile and walks back to her part of camp.  A patch of white decorates the ground where she was standing - is that milk?  Whatever it is, it's gone almost as fast as you see it, devoured by the parched, wasteland earth.");
 		}
-		else if (model.time.hours == 20) outputText("Your favorite chocolate-colored cowgirl, Isabella, is moving about, gathering all of her scattered belongings and replacing them in her personal chest.  She yawns more than once, indicating her readiness to hit the hay, but her occasional glance your way lets you know she wouldn't mind some company before bed.");
+		else if (getGame().time.hours == 20) outputText("Your favorite chocolate-colored cowgirl, Isabella, is moving about, gathering all of her scattered belongings and replacing them in her personal chest.  She yawns more than once, indicating her readiness to hit the hay, but her occasional glance your way lets you know she wouldn't mind some company before bed.");
 		else outputText("Isabella looks incredibly bored right now.");
 		if (isabellaScene.totalIsabellaChildren() > 0) {
 			var babiesList:Array = [];
@@ -882,10 +882,10 @@ public function campLoversMenu(descOnly:Boolean = false):void {
 	if (izmaFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] == 0) {
 		if (flags[kFLAGS.IZMA_BROFIED] > 0) {
 			if (rand(6) == 0 && camp.vapulaSlave() && flags[kFLAGS.VAPULA_HAREM_FUCK] > 0) outputText("Izmael is standing a short distance away with an expression of unadulterated joy on his face, Vapula knelt in front of him and fellating him with noisy enthusiasm.  The shark morph dreamily opens his eyes to catch you staring, and proceeds to give you a huge grin and two solid thumbs up.");
-			else if (model.time.hours >= 6 && model.time.hours <= 12) outputText("You keep hearing the sound of objects hitting water followed by peals of male laughter coming from the stream. It sounds as if Izmael is throwing large rocks into the stream and finding immense gratification from the results. In fact, you’re pretty sure that’s exactly what he’s doing.");
-			else if (model.time.hours <= 16) outputText("Izmael is a short distance away doing squat thrusts, his body working like a piston, gleaming with sweat. He keeps bobbing his head up to see if anybody is watching him.");
-			else if (model.time.hours <= 19) outputText("Izmael is sat against his book chest, masturbating furiously without a care in the world. Eyes closed, both hands pumping his immense shaft, there is an expression of pure, childish joy on his face.");
-			else if (model.time.hours <= 22) outputText("Izmael has built a fire and is flopped down next to it. You can’t help but notice that he’s used several of his books for kindling. His eyes are locked on the flames, mesmerized by the dancing light and heat.");
+			else if (getGame().time.hours >= 6 && getGame().time.hours <= 12) outputText("You keep hearing the sound of objects hitting water followed by peals of male laughter coming from the stream. It sounds as if Izmael is throwing large rocks into the stream and finding immense gratification from the results. In fact, you’re pretty sure that’s exactly what he’s doing.");
+			else if (getGame().time.hours <= 16) outputText("Izmael is a short distance away doing squat thrusts, his body working like a piston, gleaming with sweat. He keeps bobbing his head up to see if anybody is watching him.");
+			else if (getGame().time.hours <= 19) outputText("Izmael is sat against his book chest, masturbating furiously without a care in the world. Eyes closed, both hands pumping his immense shaft, there is an expression of pure, childish joy on his face.");
+			else if (getGame().time.hours <= 22) outputText("Izmael has built a fire and is flopped down next to it. You can’t help but notice that he’s used several of his books for kindling. His eyes are locked on the flames, mesmerized by the dancing light and heat.");
 			else outputText("Izmael is currently on his bedroll, sleeping for the night.");
 			outputText("\n\n");
 			addButton(4, "Izmael", izmaScene.izmaelScene.izmaelMenu);
@@ -904,16 +904,16 @@ public function campLoversMenu(descOnly:Boolean = false):void {
 	//Kiha!
 	if (followerKiha()) {
 		//(6-7)
-		if (model.time.hours < 7) outputText("Kiha is sitting near the fire, her axe laying across her knees as she polishes it.\n\n");
-		else if (model.time.hours < 19) {
-			if (kihaFollower.totalKihaChildren() > 0 && flags[kFLAGS.KIHA_CHILD_MATURITY_COUNTER] > 160 && (flags[kFLAGS.KIHA_CHILD_MATURITY_COUNTER] % 3 == 0 || model.time.hours == 17)) outputText("Kiha is breastfeeding her offspring right now.\n\n");
-			else if (kihaFollower.totalKihaChildren() > 0 && flags[kFLAGS.KIHA_CHILD_MATURITY_COUNTER] > 80 && flags[kFLAGS.KIHA_CHILD_MATURITY_COUNTER] <= 160 && (flags[kFLAGS.KIHA_CHILD_MATURITY_COUNTER] % 7 == 0 || model.time.hours == 17)) outputText("Kiha is telling stories to her draconic child" + (kihaFollower.totalKihaChildren() == 1 ? "" : "ren") + " right now.\n\n");
+		if (getGame().time.hours < 7) outputText("Kiha is sitting near the fire, her axe laying across her knees as she polishes it.\n\n");
+		else if (getGame().time.hours < 19) {
+			if (kihaFollower.totalKihaChildren() > 0 && flags[kFLAGS.KIHA_CHILD_MATURITY_COUNTER] > 160 && (flags[kFLAGS.KIHA_CHILD_MATURITY_COUNTER] % 3 == 0 || getGame().time.hours == 17)) outputText("Kiha is breastfeeding her offspring right now.\n\n");
+			else if (kihaFollower.totalKihaChildren() > 0 && flags[kFLAGS.KIHA_CHILD_MATURITY_COUNTER] > 80 && flags[kFLAGS.KIHA_CHILD_MATURITY_COUNTER] <= 160 && (flags[kFLAGS.KIHA_CHILD_MATURITY_COUNTER] % 7 == 0 || getGame().time.hours == 17)) outputText("Kiha is telling stories to her draconic child" + (kihaFollower.totalKihaChildren() == 1 ? "" : "ren") + " right now.\n\n");
 			else outputText("Kiha's out right now, likely patrolling for demons to exterminate.  You're sure a loud call could get her attention.\n\n");
 		}
 		else {
-			if (kihaFollower.totalKihaChildren() > 0 && flags[kFLAGS.KIHA_CHILD_MATURITY_COUNTER] > 160 && (flags[kFLAGS.KIHA_CHILD_MATURITY_COUNTER] % 3 == 0 || model.time.hours == 20)) outputText("Kiha is breastfeeding her offspring right now.\n\n");
-			else if (kihaFollower.totalKihaChildren() > 0 && flags[kFLAGS.KIHA_CHILD_MATURITY_COUNTER] > 80 && flags[kFLAGS.KIHA_CHILD_MATURITY_COUNTER] <= 160 && (flags[kFLAGS.KIHA_CHILD_MATURITY_COUNTER] % 7 == 0 || model.time.hours == 20)) outputText("Kiha is telling stories to her draconic child" + (kihaFollower.totalKihaChildren() == 1 ? "" : "ren") + " right now.\n\n");
-			else if (kihaFollower.totalKihaChildren() > 0 && flags[kFLAGS.KIHA_CHILD_MATURITY_COUNTER] <= 80 && (flags[kFLAGS.KIHA_CHILD_MATURITY_COUNTER] % 3 == 0 || model.time.hours == 20)) {
+			if (kihaFollower.totalKihaChildren() > 0 && flags[kFLAGS.KIHA_CHILD_MATURITY_COUNTER] > 160 && (flags[kFLAGS.KIHA_CHILD_MATURITY_COUNTER] % 3 == 0 || getGame().time.hours == 20)) outputText("Kiha is breastfeeding her offspring right now.\n\n");
+			else if (kihaFollower.totalKihaChildren() > 0 && flags[kFLAGS.KIHA_CHILD_MATURITY_COUNTER] > 80 && flags[kFLAGS.KIHA_CHILD_MATURITY_COUNTER] <= 160 && (flags[kFLAGS.KIHA_CHILD_MATURITY_COUNTER] % 7 == 0 || getGame().time.hours == 20)) outputText("Kiha is telling stories to her draconic child" + (kihaFollower.totalKihaChildren() == 1 ? "" : "ren") + " right now.\n\n");
+			else if (kihaFollower.totalKihaChildren() > 0 && flags[kFLAGS.KIHA_CHILD_MATURITY_COUNTER] <= 80 && (flags[kFLAGS.KIHA_CHILD_MATURITY_COUNTER] % 3 == 0 || getGame().time.hours == 20)) {
 				outputText("Kiha is training her " + (kihaFollower.totalKihaChildren() == 1 ? "child to become a strong warrior" : "children to become strong warriors") + ". ");
 				if (rand(2) == 0) outputText("Right now, she's teaching various techniques.\n\n");
 				else outputText("Right now, she's teaching her child" + (kihaFollower.totalKihaChildren() == 1 ? "" : "ren") + " how to make use of axes.\n\n");
@@ -933,20 +933,20 @@ public function campLoversMenu(descOnly:Boolean = false):void {
 		//Normal Murbles
 		if (flags[kFLAGS.MARBLE_PURIFICATION_STAGE] === 4) outputText("Marble isn’t here right now; she’s still off to see her family.");
 		//requires at least 1 kid, time is just before sunset, this scene always happens at this time if the PC has at least one kid.
-		else if (flags[kFLAGS.MARBLE_KIDS] >= 1 && (model.time.hours === 19 || model.time.hours === 20)) {
+		else if (flags[kFLAGS.MARBLE_KIDS] >= 1 && (getGame().time.hours === 19 || getGame().time.hours === 20)) {
 			outputText("Marble herself is currently in the nursery, putting your ");
 			if (flags[kFLAGS.MARBLE_KIDS] == 1) outputText("child");
 			else outputText("children");
 			outputText(" to bed.");
 		}
 		//at 6-7 in the morning, scene always displays at this time
-		else if (model.time.hours === 6 || model.time.hours === 7) outputText("Marble is off in an open area to the side of your camp right now.  She is practicing with her large hammer, going through her daily training.");
+		else if (getGame().time.hours === 6 || getGame().time.hours === 7) outputText("Marble is off in an open area to the side of your camp right now.  She is practicing with her large hammer, going through her daily training.");
 		//after nightfall, scene always displays at this time unless PC is wormed
-		else if (model.time.hours >= 21 && !player.hasStatusEffect(StatusEffects.Infested)) {
+		else if (getGame().time.hours >= 21 && !player.hasStatusEffect(StatusEffects.Infested)) {
 			outputText("Marble is hanging around her bedroll waiting for you to come to bed.  However, sometimes she lies down for a bit, and sometimes she paces next to it.");
 			if (flags[kFLAGS.MARBLE_LUST] > 30) outputText("  She seems to be feeling antsy.");
 		}
-		else if (flags[kFLAGS.MARBLE_KIDS] > 0 && model.time.hours < 19 && model.time.hours > 7) {
+		else if (flags[kFLAGS.MARBLE_KIDS] > 0 && getGame().time.hours < 19 && getGame().time.hours > 7) {
 			//requires at least 6 kids, and no other parental characters in camp
 			if (rand(2) === 0 && flags[kFLAGS.MARBLE_KIDS] > 5) outputText("Marble is currently tending to your kids, but she looks a bit stressed out right now.  It looks like " + num2Text(flags[kFLAGS.MARBLE_KIDS]) + " might just be too many for her to handle on her own...");
 			//requires at least 4 kids
@@ -1091,7 +1091,7 @@ public function campFollowers(descOnly:Boolean = false):void {
 	if (player.hasStatusEffect(StatusEffects.PureCampJojo)) {
 		if (flags[kFLAGS.JOJO_BIMBO_STATE] >= 3) {
 			outputText("Joy's tent is set up in a quiet corner of the camp, close to a boulder. Inside the tent, you can see a chest holding her belongings, as well as a few clothes and books spread about her bedroll. ");
-			if (flags[kFLAGS.JOJO_LITTERS] > 0 && model.time.hours >= 16 && model.time.hours < 19) outputText("You spot the little mice you had with Joy playing about close to her tent.");
+			if (flags[kFLAGS.JOJO_LITTERS] > 0 && getGame().time.hours >= 16 && getGame().time.hours < 19) outputText("You spot the little mice you had with Joy playing about close to her tent.");
 			else outputText("Joy herself is nowhere to be found, she's probably out frolicking about or sitting atop the boulder.");
 			outputText("\n\n");
 			addButton(2, "Joy", joyScene.approachCampJoy).hint("Go find Joy around the edges of your camp and meditate with her or have sex with her.");
@@ -1099,7 +1099,7 @@ public function campFollowers(descOnly:Boolean = false):void {
 		else {
 			outputText("There is a small bedroll for Jojo near your own");
 			if (flags[kFLAGS.CAMP_BUILT_CABIN] > 0) outputText(" cabin");
-			if (!(model.time.hours > 4 && model.time.hours < 23)) outputText(" and the mouse is sleeping on it right now.\n\n");
+			if (!(getGame().time.hours > 4 && getGame().time.hours < 23)) outputText(" and the mouse is sleeping on it right now.\n\n");
 			else outputText(", though the mouse is probably hanging around the camp's perimeter.\n\n");
 			addButton(2, "Jojo", jojoScene.jojoCamp).hint("Go find Jojo around the edges of your camp and meditate with him or talk about watch duty.");
 		}
@@ -1110,7 +1110,7 @@ public function campFollowers(descOnly:Boolean = false):void {
 	if (player.hasStatusEffect(StatusEffects.CampRathazul)) { //if rathazul has joined the camp
 		if (flags[kFLAGS.RATHAZUL_SILK_ARMOR_COUNTDOWN] <= 1) {
 			outputText("Tucked into a shaded corner of the rocks is a bevy of alchemical devices and equipment.  ");
-			if (!(model.time.hours > 4 && model.time.hours < 23)) outputText("The alchemist is absent from his usual work location. He must be sleeping right now.");
+			if (!(getGame().time.hours > 4 && getGame().time.hours < 23)) outputText("The alchemist is absent from his usual work location. He must be sleeping right now.");
 			else outputText("The alchemist Rathazul looks to be hard at work with his chemicals, working on who knows what.");
 			if (flags[kFLAGS.RATHAZUL_SILK_ARMOR_COUNTDOWN] == 1) outputText("  Some kind of spider-silk-based equipment is hanging from a nearby rack.  <b>He's finished with the task you gave him!</b>");
 			outputText("\n\n");
@@ -1154,8 +1154,8 @@ private function campActions():void {
 	outputText("What would you like to do?")
 	addButton(0, "SwimInStream", swimInStream).hint("Swim in stream and relax to pass time.", "Swim In Stream");
 	addButton(1, "ExaminePortal", examinePortal).hint("Examine the portal. This scene is placeholder.", "Examine Portal"); //Examine portal.
-	if (model.time.hours == 19) addButton(2, "Watch Sunset", watchSunset).hint("Watch the sunset and relax."); //Relax and watch at the sunset.
-	else if (model.time.hours >= 20 && flags[kFLAGS.LETHICE_DEFEATED] > 0) addButton(2, "Stargaze", watchStars).hint("Look at the starry night sky."); //Stargaze. Only available after Lethice is defeated.
+	if (getGame().time.hours == 19) addButton(2, "Watch Sunset", watchSunset).hint("Watch the sunset and relax."); //Relax and watch at the sunset.
+	else if (getGame().time.hours >= 20 && flags[kFLAGS.LETHICE_DEFEATED] > 0) addButton(2, "Stargaze", watchStars).hint("Look at the starry night sky."); //Stargaze. Only available after Lethice is defeated.
 	else addButtonDisabled(2, "Watch Sky", "The option to watch sunset is available at 7pm.");
 
 	if (flags[kFLAGS.CAMP_CABIN_PROGRESS] > 0 && flags[kFLAGS.CAMP_CABIN_PROGRESS] < 10) addButton(3, "Build Cabin", cabinProgress.initiateCabin).hint("Work on your cabin."); //Work on cabin.
@@ -1401,13 +1401,13 @@ public function rest():void {
 				timeQ += 1;
 				HPChange(hpRecovery * multiplier, false); // no display since it is meant to be full rest anyway
 				player.changeFatigue( -fatRecovery * multiplier); 
-				if (timeQ + model.time.hours == 24 || flags[kFLAGS.HUNGER_ENABLED] > 0 && player.hunger < 5) break;
+				if (timeQ + getGame().time.hours == 24 || flags[kFLAGS.HUNGER_ENABLED] > 0 && player.hunger < 5) break;
 			}
 			if (timeQ == 0) timeQ = 1;
-			if (timeQ > 21 - model.time.hours) timeQ = 21 - model.time.hours;
+			if (timeQ > 21 - getGame().time.hours) timeQ = 21 - getGame().time.hours;
 		}
 		else {
-			timeQ = Math.min(4, 21 - model.time.hours);
+			timeQ = Math.min(4, 21 - getGame().time.hours);
 			HPChange(timeQ * hpRecovery * multiplier, false);
 			player.changeFatigue(timeQ * -fatRecovery * multiplier); 
 		}
@@ -1455,7 +1455,7 @@ public function doWait():void {
 	if (player.findPerk(PerkLib.ControlledBreath) >= 0) fatRecovery *= 1.1;
 	if (timeQ == 0) {
 		timeQ = 4;
-		if (flags[kFLAGS.SHIFT_KEY_DOWN] > 0) timeQ = 21 - model.time.hours;
+		if (flags[kFLAGS.SHIFT_KEY_DOWN] > 0) timeQ = 21 - getGame().time.hours;
 		outputText("You wait " + num2Text(timeQ) + " hours...\n");
 		//Marble withdrawl
 		if (player.hasStatusEffect(StatusEffects.MarbleWithdrawl)) {
@@ -1482,22 +1482,22 @@ public function doWait():void {
 //-- SLEEP
 //-----------------
 public function doSleep(clrScreen:Boolean = true):void {
-	if (kGAMECLASS.urta.pregnancy.incubation == 0 && kGAMECLASS.urta.pregnancy.type == PregnancyStore.PREGNANCY_PLAYER && model.time.hours >= 20 && model.time.hours < 2) {
+	if (kGAMECLASS.urta.pregnancy.incubation == 0 && kGAMECLASS.urta.pregnancy.type == PregnancyStore.PREGNANCY_PLAYER && getGame().time.hours >= 20 && getGame().time.hours < 2) {
 		urtaPregs.preggoUrtaGivingBirth();
 		return;
 	}
 	campQ = true;
 	if (timeQ == 0) {
-		model.time.minutes = 0;
-		if (model.time.hours == 21) timeQ = 9;
-		if (model.time.hours == 22) timeQ = 8;
-		if (model.time.hours >= 23) timeQ = 7;
-		if (model.time.hours == 0) timeQ = 6;
-		if (model.time.hours == 1) timeQ = 5;
-		if (model.time.hours == 2) timeQ = 4;
-		if (model.time.hours == 3) timeQ = 3;
-		if (model.time.hours == 4) timeQ = 2;
-		if (model.time.hours == 5) timeQ = 1;
+		getGame().time.minutes = 0;
+		if (getGame().time.hours == 21) timeQ = 9;
+		if (getGame().time.hours == 22) timeQ = 8;
+		if (getGame().time.hours >= 23) timeQ = 7;
+		if (getGame().time.hours == 0) timeQ = 6;
+		if (getGame().time.hours == 1) timeQ = 5;
+		if (getGame().time.hours == 2) timeQ = 4;
+		if (getGame().time.hours == 3) timeQ = 3;
+		if (getGame().time.hours == 4) timeQ = 2;
+		if (getGame().time.hours == 5) timeQ = 1;
 		if (flags[kFLAGS.BENOIT_CLOCK_ALARM] > 0 && flags[kFLAGS.IN_PRISON] == 0) timeQ += (flags[kFLAGS.BENOIT_CLOCK_ALARM] - 6);
 		//Autosave stuff
 		if (player.slotName != "VOID" && player.autoSave && mainView.getButtonText( 0 ) != "Game Over") getGame().saves.saveGame(player.slotName);
@@ -1620,20 +1620,20 @@ public function doSleep(clrScreen:Boolean = true):void {
 }
 //For shit that breaks normal sleep processing
 public function sleepWrapper():void {
-	if (model.time.hours == 16) timeQ = 14;
-	if (model.time.hours == 17) timeQ = 13;
-	if (model.time.hours == 18) timeQ = 12;
-	if (model.time.hours == 19) timeQ = 11;
-	if (model.time.hours == 20) timeQ = 10;
-	if (model.time.hours == 21) timeQ = 9;
-	if (model.time.hours == 22) timeQ = 8;
-	if (model.time.hours >= 23) timeQ = 7;
-	if (model.time.hours == 0)  timeQ = 6;
-	if (model.time.hours == 1)  timeQ = 5;
-	if (model.time.hours == 2)  timeQ = 4;
-	if (model.time.hours == 3)  timeQ = 3;
-	if (model.time.hours == 4)  timeQ = 2;
-	if (model.time.hours == 5)  timeQ = 1;
+	if (getGame().time.hours == 16) timeQ = 14;
+	if (getGame().time.hours == 17) timeQ = 13;
+	if (getGame().time.hours == 18) timeQ = 12;
+	if (getGame().time.hours == 19) timeQ = 11;
+	if (getGame().time.hours == 20) timeQ = 10;
+	if (getGame().time.hours == 21) timeQ = 9;
+	if (getGame().time.hours == 22) timeQ = 8;
+	if (getGame().time.hours >= 23) timeQ = 7;
+	if (getGame().time.hours == 0)  timeQ = 6;
+	if (getGame().time.hours == 1)  timeQ = 5;
+	if (getGame().time.hours == 2)  timeQ = 4;
+	if (getGame().time.hours == 3)  timeQ = 3;
+	if (getGame().time.hours == 4)  timeQ = 2;
+	if (getGame().time.hours == 5)  timeQ = 1;
 	if (flags[kFLAGS.BENOIT_CLOCK_ALARM] > 0 && (flags[kFLAGS.SLEEP_WITH] == "Ember" || flags[kFLAGS.SLEEP_WITH] == 0))
 		timeQ += (flags[kFLAGS.BENOIT_CLOCK_ALARM] - 6);
 	clearOutput();
@@ -1648,9 +1648,9 @@ public function superLoop():void {
 	if (player.cor >= 95) outputText ("You can constantly enjoy pleasant smell of the sulfur in the air. It's so sweet!");
 	else if (player.cor >= 75) outputText ("You didn't happen to smell any sulfur, by chance?");
 	else if (player.cor >= 50) outputText ("You can smell the impure air. You don't like it...");
-	else if (player.cor >= 25) outputText ("There is some muggy in the air and you worried about it.");
+	else if (player.cor >= 25) outputText ("There is some muggy in the air and you're worried about it.");
 	else outputText ("You can constantly enjoy pleasant freshness in the air. And it's wonderful!");
-	goNext(timeQ, true);
+	goNext(timeQ, false);
 	return
 }
 
@@ -1920,9 +1920,9 @@ public function wakeFromBadEnd():void {
 	if (flags[kFLAGS.EASY_MODE_ENABLE_FLAG] > 0 || debug) outputText("\n\n\nYou get up, still feeling confused from the nightmares.");
 	else outputText("\n\n\nYou get up, still feeling traumatized from the nightmares.");
 	//Skip time forward
-	model.time.days++;
-	if (flags[kFLAGS.BENOIT_CLOCK_BOUGHT] > 0) model.time.hours = flags[kFLAGS.BENOIT_CLOCK_ALARM];
-	else model.time.hours = 6;
+	getGame().time.days++;
+	if (flags[kFLAGS.BENOIT_CLOCK_BOUGHT] > 0) getGame().time.hours = flags[kFLAGS.BENOIT_CLOCK_ALARM];
+	else getGame().time.hours = 6;
 	//Set so you're in camp
 	inDungeon = false;
 	inRoomedDungeon = false;
@@ -2579,14 +2579,14 @@ private function updateAchievements():void {
 	if (getCampPopulation() >= 2500) awardAchievement("Kingdom", kACHIEVEMENTS.POPULATION_KINGDOM);
 	if (getCampPopulation() >= 5000) awardAchievement("Empire", kACHIEVEMENTS.POPULATION_EMPIRE);
 	//Time
-	if (model.time.days >= 30) awardAchievement("It's been a month", kACHIEVEMENTS.TIME_MONTH);
-	if (model.time.days >= 180) awardAchievement("Half-year", kACHIEVEMENTS.TIME_HALF_YEAR);
-	if (model.time.days >= 365) awardAchievement("Annual", kACHIEVEMENTS.TIME_ANNUAL);
-	if (model.time.days >= 730) awardAchievement("Biennial", kACHIEVEMENTS.TIME_BIENNIAL);
-	if (model.time.days >= 1095) awardAchievement("Triennial", kACHIEVEMENTS.TIME_TRIENNIAL);
-	if (model.time.days >= 1825) awardAchievement("In for the long haul", kACHIEVEMENTS.TIME_LONG_HAUL);
-	if (model.time.days >= 3650) awardAchievement("Decade", kACHIEVEMENTS.TIME_DECADE);
-	if (model.time.days >= 36500) awardAchievement("Century", kACHIEVEMENTS.TIME_CENTURY);
+	if (getGame().time.days >= 30) awardAchievement("It's been a month", kACHIEVEMENTS.TIME_MONTH);
+	if (getGame().time.days >= 180) awardAchievement("Half-year", kACHIEVEMENTS.TIME_HALF_YEAR);
+	if (getGame().time.days >= 365) awardAchievement("Annual", kACHIEVEMENTS.TIME_ANNUAL);
+	if (getGame().time.days >= 730) awardAchievement("Biennial", kACHIEVEMENTS.TIME_BIENNIAL);
+	if (getGame().time.days >= 1095) awardAchievement("Triennial", kACHIEVEMENTS.TIME_TRIENNIAL);
+	if (getGame().time.days >= 1825) awardAchievement("In for the long haul", kACHIEVEMENTS.TIME_LONG_HAUL);
+	if (getGame().time.days >= 3650) awardAchievement("Decade", kACHIEVEMENTS.TIME_DECADE);
+	if (getGame().time.days >= 36500) awardAchievement("Century", kACHIEVEMENTS.TIME_CENTURY);
 	//Dungeons
 	var dungeonsCleared:int = 0;
 	if (kGAMECLASS.dungeons.checkFactoryClear()) {
@@ -2643,7 +2643,7 @@ private function updateAchievements():void {
 	if (flags[kFLAGS.NIEVE_STAGE] == 5) awardAchievement("The Lovable Snowman", kACHIEVEMENTS.HOLIDAY_CHRISTMAS_III);
 	if (flags[kFLAGS.ACHIEVEMENT_PROGRESS_EGG_HUNTER] >= 10) awardAchievement("Egg Hunter", kACHIEVEMENTS.HOLIDAY_EGG_HUNTER);
 	//General
-	if (flags[kFLAGS.DEMONS_DEFEATED] >= 25 && model.time.days >= 10) awardAchievement("Portal Defender", kACHIEVEMENTS.GENERAL_PORTAL_DEFENDER);
+	if (flags[kFLAGS.DEMONS_DEFEATED] >= 25 && getGame().time.days >= 10) awardAchievement("Portal Defender", kACHIEVEMENTS.GENERAL_PORTAL_DEFENDER);
 	if (flags[kFLAGS.LETHICE_KILLED] == 2) awardAchievement("Off With Her Head!", kACHIEVEMENTS.GENERAL_OFF_WITH_HER_HEAD);
 	//Check how many NPCs got bad-ended
 	var NPCsBadEnds:int = 0;

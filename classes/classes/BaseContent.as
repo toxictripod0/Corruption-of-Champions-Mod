@@ -1,20 +1,14 @@
 ﻿package classes 
 {
-	import classes.GlobalFlags.kFLAGS;
-	import classes.GlobalFlags.kGAMECLASS;
+	import classes.*;
+	import classes.GlobalFlags.*;
 	import classes.Items.*;
-	import classes.Scenes.Camp;
-	import classes.Scenes.Combat.Combat;
-	import classes.Scenes.Places.Ingnam;
-	import classes.Scenes.Places.Prison;
-	import classes.Scenes.Dungeons.LethicesKeep.LethicesKeep;
-	import classes.Scenes.Inventory;
-	import classes.internals.Utils;
-
-	import coc.model.GameModel;
-	import coc.model.TimeModel;
-	import coc.view.CoCButton;
-	import coc.view.MainView;
+	import classes.Scenes.*;
+	import classes.Scenes.Combat.*;
+	import classes.Scenes.Dungeons.LethicesKeep.*;
+	import classes.Scenes.Places.*;
+	import classes.internals.*;
+	import coc.view.*;
 	/**
 	 * Quick hacky method to wrap new content in a class-based structure
 	 * BaseContent acts as an access wrapper around CoC, enabling children of BaseContent to interact with
@@ -436,12 +430,12 @@
 			return kGAMECLASS.inventory;
 		}
 		
-		protected function get time():TimeModel
+		protected function get time():Time
 		{
 			return kGAMECLASS.time;
 		}
 		
-		protected function set time(val:TimeModel):void
+		protected function set time(val:Time):void
 		{
 			kGAMECLASS.time = val;
 		}
@@ -484,16 +478,6 @@
 		protected function get mainViewManager():MainViewManager
 		{
 			return kGAMECLASS.mainViewManager;
-		}
-
-		protected function get model():GameModel
-		{
-			return kGAMECLASS.model;
-		}
-		
-		protected function set model(val:GameModel):void
-		{
-			kGAMECLASS.model = val;
 		}
 		
 		protected function get flags():DefaultDict

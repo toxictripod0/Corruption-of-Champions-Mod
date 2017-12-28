@@ -40,7 +40,7 @@ public function greetHeckel():void {
 	}
 	//Brooke + Heckel 3some
 	// Affection = 70, after first-time sex, talk to Heckel between 13:00 and 15:00, must not be a first-time encounter with Heckel, requires a gender
-	else if (telAdre.brooke.brookeAffection() >= 70 && flags[kFLAGS.BROOKE_MEDIUM_SCENE] > 0 && flags[kFLAGS.MET_HECKEL] > 0 && model.time.hours >= 13 && model.time.hours <= 15 && (player.hasVagina() || player.cockThatFits(telAdre.brooke.brookeCapacity()) >= 0)) {
+	else if (telAdre.brooke.brookeAffection() >= 70 && flags[kFLAGS.BROOKE_MEDIUM_SCENE] > 0 && flags[kFLAGS.MET_HECKEL] > 0 && getGame().time.hours >= 13 && getGame().time.hours <= 15 && (player.hasVagina() || player.cockThatFits(telAdre.brooke.brookeCapacity()) >= 0)) {
 		telAdre.brooke.specialHeckelAndBrookeEncounter();
 		return;
 	}
