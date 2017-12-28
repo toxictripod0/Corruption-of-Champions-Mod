@@ -454,7 +454,7 @@ package classes
 				throw Error(e.getStackTrace());
 			}
 			this.mainView.name = "mainView";
-			this.mainView.addEventListener("addedToStage", Utils.curry(_postInit, stageToUse));
+			this.mainView.addEventListener(Event.ADDED_TO_STAGE, Utils.curry(_postInit, stageToUse));
 			stageToUse.addChild(this.mainView);
 		}
 		

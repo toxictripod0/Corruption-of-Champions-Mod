@@ -1491,16 +1491,9 @@ public function doSleep(clrScreen:Boolean = true):void {
 	campQ = true;
 	if (timeQ === 0) {
 		getGame().time.minutes = 0;
-		if (getGame().time.hours === 21) timeQ = 9;
-		if (getGame().time.hours === 22) timeQ = 8;
-		if (getGame().time.hours >= 23) timeQ = 7;
-		if (getGame().time.hours === 0) timeQ = 6;
-		if (getGame().time.hours === 1) timeQ = 5;
-		if (getGame().time.hours === 2) timeQ = 4;
-		if (getGame().time.hours === 3) timeQ = 3;
-		if (getGame().time.hours === 4) timeQ = 2;
-		if (getGame().time.hours === 5) timeQ = 1;
-		if (flags[kFLAGS.BENOIT_CLOCK_ALARM] > 0 && flags[kFLAGS.IN_PRISON] === 0) timeQ += (flags[kFLAGS.BENOIT_CLOCK_ALARM] - 6);
+		var wakeTime:int = 6;
+		if (flags[kFLAGS.BENOIT_CLOCK_ALARM] > 0 && flags[kFLAGS.IN_PRISON] === 0 && (flags[kFLAGS.SLEEP_WITH] === "Ember" || flags[kFLAGS.SLEEP_WITH] === 0)) wakeTime += (flags[kFLAGS.BENOIT_CLOCK_ALARM] - 6);
+		timeQ = calculateHoursUntilHour(wakeTime);
 		//Autosave stuff
 		if (player.slotName !== "VOID" && player.autoSave && mainView.getButtonText( 0 ) !== "Game Over") getGame().saves.saveGame(player.slotName);
 		//Clear screen
@@ -1622,22 +1615,9 @@ public function doSleep(clrScreen:Boolean = true):void {
 }
 //For shit that breaks normal sleep processing
 public function sleepWrapper():void {
-	if (getGame().time.hours === 16) timeQ = 14;
-	if (getGame().time.hours === 17) timeQ = 13;
-	if (getGame().time.hours === 18) timeQ = 12;
-	if (getGame().time.hours === 19) timeQ = 11;
-	if (getGame().time.hours === 20) timeQ = 10;
-	if (getGame().time.hours === 21) timeQ = 9;
-	if (getGame().time.hours === 22) timeQ = 8;
-	if (getGame().time.hours >= 23) timeQ = 7;
-	if (getGame().time.hours === 0)  timeQ = 6;
-	if (getGame().time.hours === 1)  timeQ = 5;
-	if (getGame().time.hours === 2)  timeQ = 4;
-	if (getGame().time.hours === 3)  timeQ = 3;
-	if (getGame().time.hours === 4)  timeQ = 2;
-	if (getGame().time.hours === 5)  timeQ = 1;
-	if (flags[kFLAGS.BENOIT_CLOCK_ALARM] > 0 && (flags[kFLAGS.SLEEP_WITH] === "Ember" || flags[kFLAGS.SLEEP_WITH] === 0))
-		timeQ += (flags[kFLAGS.BENOIT_CLOCK_ALARM] - 6);
+	var wakeTime:int = 6;
+	if (flags[kFLAGS.BENOIT_CLOCK_ALARM] > 0 && (flags[kFLAGS.SLEEP_WITH] === "Ember" || flags[kFLAGS.SLEEP_WITH] === 0)) wakeTime += (flags[kFLAGS.BENOIT_CLOCK_ALARM] - 6);
+	timeQ = calculateHoursUntilHour(wakeTime);
 	clearOutput();
 	if (timeQ !== 1) outputText("You lie down to resume sleeping for the remaining " + num2Text(timeQ) + " hours.\n");
 	else outputText("You lie down to resume sleeping for the remaining hour.\n");
@@ -1655,7 +1635,15 @@ public function superLoop():void {
 	goNext(timeQ, false);
 	return
 }
-
+public function calculateHoursUntilHour(targetHour:int):int {
+	var currentHour:int = getGame().time.hours;
+	var amount:int = 0;
+		currentHour++;
+		amount++;
+		if (currentHour >= 24) currentHour = 0;
+	}
+	return amount;
+}
 public function sleepRecovery(display:Boolean = false):void {
 	var multiplier:Number = 1.0;
 	var fatRecovery:Number = 20;
