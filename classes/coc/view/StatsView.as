@@ -285,8 +285,9 @@ public class StatsView extends Block {
 			case 'spiritstones':
 				return spiritstonesBar;
 			*/
+			default:
+				return null;
 		}
-		return null;
 	}
 	public function showStatUp(statName:String):void {
 		var stat:StatBar = statByName(statName);

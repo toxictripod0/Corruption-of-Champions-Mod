@@ -531,6 +531,8 @@ package classes {
 				case CockTypesEnum.WOLF:
 					cockWord += randomChoice("wolf-shaped dong", "canine shaft", "pointed prick", "knotty wolf-shaft", "bestial cock", "animalistic wolf-pecker", "pointed wolf-dick", "pointed shaft", "canine member", "canine cock", "knotted wolf-cock");
 					break;
+				default:
+					cockWord += "";
 			}
 			//cockWord += randomChoice("cock", "dick", "dong", "member", "pecker", "penis", "prick", "shaft", "tool");
 			return cockWord;

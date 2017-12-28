@@ -292,8 +292,8 @@ package classes
 			outputText("<li> Prisoner416</li>");
 			outputText("<li> Chibodee</li>");
 			outputText("</ul>");
-			outputText("<b>Graphical Prettiness:</b>")
-			outputText("<ul>");;
+			outputText("<b>Graphical Prettiness:</b>");
+			outputText("<ul>");
 			outputText("<li> Dasutin (Background Images)</li>");
 			outputText("<li> Invader (Button Graphics, Font, and Other Hawtness)</li>");
 			outputText("</ul>");

@@ -210,6 +210,8 @@ public class YaraPiercingStudio extends TelAdreAbstractContent {
 			case LOC_VULVA:
 				outputText("Yara explains, \"<i>This is gonna hurt a lot, but I think you'll love how it feels after.  I know I do!  Now what kind of jewelry do you want down-town?</i>\"");
 				break;
+			default:
+				//This really shouldn't happen. Move along.
 		}
 		menu();
 		addButton(0,"Stud",chooseMaterials,loc,TYPE_STUD);
@@ -401,6 +403,8 @@ public class YaraPiercingStudio extends TelAdreAbstractContent {
 				}
 				longP += "Icestone ";
 				break;
+			default:
+				//This really shouldn't happen.
 		}
 		switch (loc) {
 			case LOC_CLIT:
@@ -450,6 +454,8 @@ public class YaraPiercingStudio extends TelAdreAbstractContent {
 				shortP += "labia-";
 				longP += "labia-";
 				break;
+			default:
+				//This really shouldn't happen. Move along.
 		}
 		switch (type) {
 				//studs
@@ -498,12 +504,14 @@ public class YaraPiercingStudio extends TelAdreAbstractContent {
 				shortP += "chain";
 				longP += "chain";
 				break;
+			default:
+				//This really shouldn't happen. Move along.
 		}
 		//Actually assign values to their real storage locations
 		applyPiercing(loc, type, shortP, longP);
 		//Girls
 		if (loc === 8 || loc === 0) {
-			yaraSex();
+			yaraSex(true);
 			return;
 		}
 		//Dudes
@@ -562,6 +570,8 @@ public class YaraPiercingStudio extends TelAdreAbstractContent {
 				player.vaginas[0].labiaPShort  = shortP;
 				player.vaginas[0].labiaPLong   = longP;
 				break;
+			default:
+				//This really shouldn't happen. Move along.
 		}
 	}
 
@@ -598,7 +608,7 @@ public class YaraPiercingStudio extends TelAdreAbstractContent {
 		}
 	}
 
-	private function yaraSex(girl:Boolean = true):void {
+	private function yaraSex(girl:Boolean):void {
 		spriteSelect(63);
 		clearOutput();
 		outputText("Yara makes you comfortable and has you look away while she uses her piercing tools.  It hurts, but she's skilled. Before you know it, your piercing is done!  You move to rise, retaining a bit of modesty");

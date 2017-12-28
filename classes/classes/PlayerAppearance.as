@@ -293,6 +293,7 @@ package classes
 					case Eyes.DRAGON: outputText(" prideful, fierce dragon eyes with vertically slitted pupils and burning orange irises. They glitter even in the darkness and they"); break;
 					case Eyes.LIZARD: outputText(" those of a lizard with vertically slitted pupils and green-yellowish irises. They"); break;
 					case Eyes.BASILISK: outputText(" basilisk eyes, grey reptilian pools with vertically slitted pupils. They");
+					default: //Move along
 				}
 				outputText(" come with the typical second set of eyelids, allowing you to blink twice as much as others.");
 				if (player.eyes.type == Eyes.BASILISK)
@@ -333,6 +334,7 @@ package classes
 					case Ears.WOLF:      outputText("  A pair of wolf ears stick out from your head, attuned to every sound around you."); break;
 					case Ears.RED_PANDA: outputText("  Big, white furred, red-panda ears lie atop your head, keeping you well aware to your surroundings."); break;
 					//</mod>
+					default:
 				}
 				if (player.antennae.type == Antennae.BEE) 
 					outputText("  Floppy antennae also appear on your skull, bouncing and swaying in the breeze.");
@@ -366,6 +368,7 @@ package classes
 					case Ears.WOLF:      outputText("  A pair of wolf ears stick out from your head, parting your [hair] and remaining alert to your surroundings."); break;
 					case Ears.RED_PANDA: outputText("  Big, white furred, red-panda ears lie atop your head, keeping you well aware to your surroundings."); break;
 					//</mod>
+					default:
 				}
 				if (player.gills.type == Gills.FISH) 
 				{
@@ -563,13 +566,14 @@ package classes
 					          +" your tail, ending on the tip of your tail in a small tuft. It grows in a thick vertical strip,"
 					          +" maybe two inches wide. It reminds you vaguely of a horse's mane.");
 					break;
-
 				case RearBody.DRACONIC_SPIKES:
 					// Teh spiky mane, similar to the hairy one.
 					outputText("  Tracing your spine, a row of short steel-gray and curved backwards spikes protrude; starting at the base of your"
 					          +" neck and continuing down your tail, ending on the tip of your tail. They've grown in a thick vertical strip,"
 					          +" maybe an inch wide and two inches high. It reminds you very vaguely of a horse's mane.");
 					break;
+				default:
+					//Nothing here, move along!
 			}
 			// </mod>
 
@@ -578,39 +582,34 @@ package classes
 				case Arms.HARPY:
 					outputText("  Feathers hang off your arms from shoulder to wrist, giving them a slightly wing-like look.");
 					break;
-
 				case Arms.WOLF:
 					outputText("  Your arms are shaped like a wolf's, overly muscular at your shoulders and biceps before quickly slimming down."
 					          +" They're covered in [furColor] fur and end in paws with just enough flexibility to be used as hands."
 					          +" They're rather difficult to move in directions besides back and forth.");	
 					break;
-
 				case Arms.SPIDER:
 					outputText("  Shining black exoskeleton covers your arms from the biceps down, resembling a pair of long black gloves from a distance.");
 					break;
-
 				case Arms.BEE:
 					outputText("  Shining black exoskeleton covers your arms from the biceps down, resembling a pair of long black gloves ended with a yellow fuzz from a distance.");
 					break;
-
 				case Arms.SALAMANDER:
 					outputText("  Shining thick, leathery red scales cover your arms from the biceps down and your fingernails are now short, fiery-red curved claws.");
 					break;
-
 				case Arms.PREDATOR:
 					outputText("  Your arms are covered by [skinFurScales] and your fingernails are now [claws].");
 					break;
-
 				case Arms.COCKATRICE:
 					outputText("  Your arms are covered in " + (player.hasCockatriceSkin() ? player.skin.furColor : player.hair.color) + " feathers"
 					          +" from the shoulder down to the elbow where they stop in a fluffy cuff. A handful of long feathers grow from your"
 					          +" elbow in the form of vestigial wings, and while they may not let you fly, they certainly help you jump. Your lower"
 					          +" arm is coated in leathery [skinTone] scales and your fingertips terminate in deadly looking avian talons.");
 					break;
-
 				case Arms.RED_PANDA:
 					outputText("  Soft, black-brown fluff cover your arms. Your paws have cute, pink paw pads and short claws.");
 					break;
+				default:
+					//Nothing here, move along!
 			}
 			//Done with head bits. Move on to body stuff
 			// <mod name="BodyParts.UnderBody" author="Stadler76">
@@ -790,27 +789,21 @@ package classes
 				case Tail.HORSE:
 					outputText("  A long [hairColor] horsetail hangs from your [butt], smooth and shiny.");
 					break;
-
 				case Tail.FERRET:
 					outputText("  A long ferret tail sprouts from above your [butt].  It is thin, tapered, and covered in shaggy [furColor] fur.");
 					break;
-
 				case Tail.SHEEP:
 					outputText("  A fluffy sheep tail hangs down from your [butt]. It occasionally twitches and shakes, its puffy fluff begging to be touched.");
 					break;
-
 				case Tail.DOG:
 					outputText("  A fuzzy [furColor] dogtail sprouts just above your [butt], wagging to and fro whenever you are happy.");
 					break;
-
 				case Tail.DEMONIC:
 					outputText("  A narrow tail ending in a spaded tip curls down from your [butt], wrapping around your [leg] sensually at every opportunity.");
 					break;
-
 				case Tail.COW:
 					outputText("  A long cowtail with a puffy tip swishes back and forth as if swatting at flies.");
 					break;
-
 				case Tail.SPIDER_ABDOMEN:
 					outputText("  A large, spherical spider-abdomen has grown out from your backside, covered in shiny black chitin.  Though it's heavy and bobs with every motion, it doesn't seem to slow you down.");
 					if (player.tail.venom > 50 && player.tail.venom < 80) 
@@ -820,7 +813,6 @@ package classes
 					if (player.tail.venom == 100) 
 						outputText("  Your swollen spider-butt is distended with the sheer amount of webbing it's holding.");
 					break;
-
 				case Tail.BEE_ABDOMEN:
 					outputText("  A large insectile bee-abdomen dangles from just above your backside, bobbing with its own weight as you shift.  It is covered in hard chitin with black and yellow stripes, and tipped with a dagger-like stinger.");
 					if (player.tail.venom > 50 && player.tail.venom < 80) 
@@ -830,15 +822,12 @@ package classes
 					if (player.tail.venom == 100) 
 						outputText("  Venom drips from your poisoned stinger regularly.");
 					break;
-
 				case Tail.SHARK:
 					outputText("  A long shark-tail trails down from your backside, swaying to and fro while giving you a dangerous air.");
 					break;
-
 				case Tail.CAT:
 					outputText("  A soft [furColor] cat-tail sprouts just above your [butt], curling and twisting with every step to maintain perfect balance.");
 					break;
-
 				case Tail.LIZARD:
 					if (player.hasDifferentUnderBody()) {
 						outputText("  A tapered tail, covered in [skinFurScales] with [underBody.skinFurScales] along its underside hangs down from just"
@@ -847,11 +836,9 @@ package classes
 						outputText("  A tapered tail hangs down from just above your [ass].  It sways back and forth, assisting you with keeping your balance.");
 					}
 					break;
-
 				case Tail.SALAMANDER:
 					outputText("  A tapered, covered in red scales tail hangs down from just above your [ass].  It sways back and forth, assisting you with keeping your balance. When you are in battle or when you want could set ablaze whole tail in red-hot fire.");
 					break;
-
 				case Tail.RABBIT:
 					outputText("  A short, soft bunny tail sprouts just above your [ass], twitching constantly whenever you don't think about it.");
 					break;
@@ -865,13 +852,11 @@ package classes
 					else outputText("furry, [furColor]");
 					outputText(" tail extends from your [ass], bouncing up and down as you move and helping to counterbalance you.");
 					break;
-
 				case Tail.FOX:
 					if (player.tail.venom <= 1) 
 						outputText("  A swishing [hairOrFurColors] fox's brush extends from your [ass], curling around your body - the soft fur feels lovely.");
 					else outputText("  " + Num2Text(player.tail.venom) + " swishing [hairOrFurColors] fox's tails extend from your [ass], curling around your body - the soft fur feels lovely.");
 					break;
-
 				case Tail.DRACONIC:
 					if (player.hasDifferentUnderBody()) {
 						outputText("  A thick, muscular, reptilian tail covered in [skinFurScales] with [underBody.skinFurScales] along its"
@@ -883,86 +868,70 @@ package classes
 						          +" with a single, powerful sweep.");
 					}
 					break;
-
 				case Tail.RACCOON:
 					outputText("  A black-and-[furColor]-ringed raccoon tail waves behind you.");
 					break;
-
 				case Tail.MOUSE:
 					outputText("  A naked, [skinTone] mouse tail pokes from your butt, dragging on the ground and twitching occasionally.");
 					break;
-
 				//<mod>
 				case Tail.BEHEMOTH:
 					outputText("  A long seemingly-tapering tail pokes from your butt, ending in spikes just like behemoth's.");
 					break;
-
 				case Tail.PIG:
 					outputText("  A short, curly pig tail sprouts from just above your butt.");
 					break;
-
 				case Tail.SCORPION:
 					outputText("  A chitinous scorpion tail sprouts from just above your butt, ready to dispense venom.");
 					break;
-
 				case Tail.GOAT:
 					outputText("  A very short, stubby goat tail sprouts from just above your butt.");
 					break;
-
 				case Tail.RHINO:
 					outputText("  A ropey rhino tail sprouts from just above your butt, swishing from time to time.");
 					break;
-
 				case Tail.ECHIDNA:
 					outputText("  A stumpy echidna tail forms just about your [ass].");
 					break;
-
 				case Tail.DEER:
 					outputText("  A very short, stubby deer tail sprouts from just above your butt.");
 					break;
-
 				case Tail.WOLF:
 					outputText("  A thick-furred wolf tail hangs above your [ass].");
 					break;
-
 				case Tail.IMP:
 					outputText("  A thin imp tail almost as long as you are tall hangs from above your [butt], dotted at the end with a small puff of hair.");
 					break;
-
 				case Tail.COCKATRICE:
 					outputText("  A thick, scaly, prehensile reptilian tail hangs from your [butt], about half as long as you are tall."
 					          +" The first inch or so is feathered, terminating in a 'v'shape and giving way to your [skinTone] scales.");
 					break;
-
 				case Tail.RED_PANDA:
 					var tailColors:String = player.hasFur() ? (player.skin.furColor + " and " + player.redPandaTailColor2()) : "russet and orange";
 					outputText("  Sprouting from your backside, you have a long, bushy tail. It has a beautiful pattern of rings in " + tailColors
 					          +"  fluffy fur. It waves playfully as you walk giving to your step a mesmerizing touch.");
 					break;
 				//</mod>
+				default:
+					//Nothing here, move along!
 			}
 			//LOWERBODY SPECIAL
 			switch (player.lowerBody.type) {
 				case LowerBody.HUMAN:
 					outputText("  [legCountTextUC] normal human legs grow down from your waist, ending in normal human feet.");
 					break;
-
 				case LowerBody.FERRET:
 					outputText("  [legCountTextUC] furry, digitigrade legs form below your [hips].  The fur is thinner on the feet, and your toes are tipped with claws.");
 					break;
-
 				case LowerBody.HOOFED:
 					outputText("  Your [legCountText] legs are muscled and jointed oddly, covered in fur, and end in a bestial hooves.");
 					break;
-
 				case LowerBody.WOLF:
 					outputText("  You have [legCountText] digitigrade legs that end in wolf paws.");
 					break;
-
 				case LowerBody.DOG:
 					outputText("  [legCountTextUC] digitigrade legs grow downwards from your waist, ending in dog-like hind-paws.");
 					break;
-
 				case LowerBody.NAGA:
 					if (player.hasReptileUnderBody(true)) {
 						var nagaColors:Array = ["", ""];
@@ -970,90 +939,73 @@ package classes
 							nagaColors = [player.underBody.skin.tone, player.nagaLowerBodyColor2()];
 						else
 							nagaColors = [player.skin.tone, player.underBody.skin.tone];
-
 						outputText("  Below your waist, in place of where your legs would be, your body transitions into a long snake like tail."
 						          +" Your snake-like lower body is covered by " + nagaColors[0] + " color scales,"
 						          +" with " + nagaColors[1] + " color ventral scales along your underside.");
 					} else
 						outputText("  Below your waist your flesh is fused together into a very long snake-like tail.");
 					break;
-
 				case LowerBody.DEMONIC_HIGH_HEELS:
 					outputText("  Your [legCountText] perfect lissome legs end in mostly human feet, apart from the horn protruding straight down from the heel that forces you to walk with a sexy, swaying gait.");
 					break;
-
 				case LowerBody.DEMONIC_CLAWS:
 					outputText("  Your [legCountText] lithe legs are capped with flexible clawed feet.  Sharp black nails grow where once you had toe-nails, giving you fantastic grip.");
 					break;
-
 				case LowerBody.BEE:
 					outputText("  Your [legCountText] legs are covered in a shimmering insectile carapace up to mid-thigh, looking more like a set of 'fuck-me-boots' than exoskeleton.  A bit of downy yellow and black fur fuzzes your upper thighs, just like a bee.");
 					break;
-
 				case LowerBody.GOO:
 					outputText("  In place of legs you have a shifting amorphous blob.  Thankfully it's quite easy to propel yourself around on.  The lowest portions of your " + player.armorName + " float around inside you, bringing you no discomfort.");
 					break;
-
 				case LowerBody.CAT:
 					outputText("  [legCountTextUC] digitigrade legs grow downwards from your waist, ending in soft, padded cat-paws.");
 					break;
-
 				case LowerBody.LIZARD:
 					outputText("  [legCountTextUC] digitigrade legs grow down from your [hips], ending in clawed feet.  There are three long toes on the front, and a small hind-claw on the back.");
 					break;
-
 				case LowerBody.SALAMANDER:
 					outputText("  [legCountTextUC] digitigrade legs covered in thick, leathery red scales up to the mid-thigh grow down from your [hips], ending in clawed feet.  There are three long toes on the front, and a small hind-claw on the back.");
 					break;
-
 				case LowerBody.BUNNY:
 					outputText("  Your [legCountText] legs thicken below the waist as they turn into soft-furred rabbit-like legs.  You even have large bunny feet that make hopping around a little easier than walking.");
 					break;
-
 				case LowerBody.HARPY:
 					outputText("  Your [legCountText] legs are covered with [furColor] plumage.  Thankfully the thick, powerful thighs are perfect for launching you into the air, and your feet remain mostly human, even if they are two-toed and tipped with talons.");
 					break;
-
 				case LowerBody.KANGAROO:
 					outputText("  Your [legCountText] furry legs have short thighs and long calves, with even longer feet ending in prominently-nailed toes.");
 					break;
-
 				case LowerBody.CHITINOUS_SPIDER_LEGS:
 					outputText("  Your [legCountText] legs are covered in a reflective black, insectile carapace up to your mid-thigh, looking more like a set of 'fuck-me-boots' than exoskeleton.");
 					break;
-
 				case LowerBody.FOX:
 					outputText("  Your [legCountText] legs are crooked into high knees with hocks and long feet, like those of a fox; cute bulbous toes decorate the ends.");
 					break;
-
 				case LowerBody.DRAGON:
 					outputText("  [legCountTextUC] human-like legs grow down from your [hips], sheathed in scales and ending in clawed feet.  There are three long toes on the front, and a small hind-claw on the back.");
 					break;
-
 				case LowerBody.RACCOON:
 					outputText("  Your [legCountText] legs, though covered in fur, are humanlike.  Long feet on the ends bear equally long toes, and the pads on the bottoms are quite sensitive to the touch.");
 					break;
-
 				case LowerBody.CLOVEN_HOOFED:
 					outputText("  [legCountTextUC] digitigrade legs form below your [hips], ending in cloven hooves.");
 					break;
-
 				case LowerBody.IMP:
 					outputText("  [legCountTextUC] digitigrade legs form below your [hips], ending in clawed feet. Three extend out the front, and one smaller one is in the back to keep your balance.");
 					break;
-
 				case LowerBody.COCKATRICE:
 					outputText("  [legCountTextUC] digitigrade legs grow down from your [hips], ending in clawed feet."
 					          +" There are three long toes on the front, and a small hind-claw on the back."
 					          +" A layer of " + (player.hasCockatriceSkin() ? player.skin.furColor : player.hair.color) + " feathers covers your legs from the"
 					          +" hip to the knee, ending in a puffy cuff.");
 					break;
-
 				case LowerBody.RED_PANDA:
 					outputText("  Your [legCountText] legs are equally covered in [if (hasFurryUnderBody)[underBody.furColor]|black-brown] fur,"
 					          +" ending on red-panda paws with short claws. They have a nimble and strong build,"
 					          +" in case you need to escape from something.");
 					break;
+				default:
+					//Nothing here, move along!
 			}
 			if (player.findPerk(PerkLib.Incorporeality) >= 0)
 				outputText("  Of course, your [legs] are partially transparent due to their ghostly nature."); // isn't goo transparent anyway?
@@ -1308,6 +1260,7 @@ package classes
 						case CockTypesEnum.RHINO:     outputText("  It's a smooth, tough pink colored and takes on a long and narrow shape with an oval shaped bulge along the center."); break;
 						case CockTypesEnum.ECHIDNA:   outputText("  It is quite a sight to behold, coming well-equipped with four heads."); break;
 						case CockTypesEnum.RED_PANDA: outputText("  It lies protected in a soft, fuzzy sheath."); break;
+						default: //Nothing here, move along!
 					}
 
 					// Knot?

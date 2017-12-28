@@ -2123,6 +2123,8 @@ private function guardMyCampKiha():void {
 				case 8: 
 						outputText("\nKiha has grown to the point that she can barely stand, much less walk, so she uses her wings to float several inches above the ground. She has grown very weary as her pregnancy advances, pleading to the gods that her plight will be over soon. \n");
 						return true;
+				default:
+						//Nothing happens here.
 			}
 			return false; //If there's no update then return false so needNext is not set to true
 		}

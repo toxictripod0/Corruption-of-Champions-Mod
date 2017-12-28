@@ -103,6 +103,8 @@ package classes.Scenes.Places.Prison
 					outputText("(Placeholder) A guard enters, but rather than helping you or taking advantage of your helplessness he adjusts the chain attached to the hook in your ass, shortening it by several inches leaving you barely able to reach the ground. He then looks on, chuckling with amusement as you wear yourself out trying to avoid the mortifying situation of being left hanging helplessly by your asshole.");
 					player.changeFatigue(20);
 					break;
+				default:
+					outputText("You shouldn't really see this text at all.");
 			}
 			doNext(camp.returnToCampUseOneHour);
 		}

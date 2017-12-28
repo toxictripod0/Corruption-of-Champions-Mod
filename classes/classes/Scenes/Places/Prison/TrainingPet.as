@@ -184,6 +184,7 @@ package classes.Scenes.Places.Prison
 				case 3:
 				case 4:
 					break;
+				default:
 			}
 		}
 		
@@ -412,6 +413,8 @@ package classes.Scenes.Places.Prison
 					case 2:
 						outputText("(Placeholder) (Lazy dream) Variation 2. \n\n");
 						break;
+					default:
+						outputText("You shouldn't see this text.");
 				}
 				outputText("How do you react to this unexpected reverie?\n\n");
 				outputText("\n\n");
@@ -482,6 +485,8 @@ package classes.Scenes.Places.Prison
 					case 2:
 						outputText("(Placeholder) (Modest dream) Variation 2. \n\n");
 						break;
+					default:
+						outputText("You shouldn't see this text.");
 				}
 				outputText("How do you react to this unexpected reverie?\n\n");
 				outputText("\n\n");
@@ -555,6 +560,8 @@ package classes.Scenes.Places.Prison
 					case 2:
 						outputText("(Placeholder) (Excited dream) Variation 2. \n\n");
 						break;
+					default:
+						outputText("You shouldn't see this text.");
 				}
 				outputText("How do you react to this unexpected reverie?\n\n");
 				outputText("\n\n");
@@ -1304,6 +1311,8 @@ package classes.Scenes.Places.Prison
 				case 3:
 					outputText("Crate broken variation\n\n");
 					break;
+				default:
+					outputText("You shouldn't see this text.");
 			}
 			flags[kFLAGS.PRISON_TRAIN_PUPPY_TRICKS_UNLOCKED] = 1;
 			doNext(playerMenu);

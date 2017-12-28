@@ -1,15 +1,13 @@
 package classes 
 {
-import classes.GlobalFlags.kGAMECLASS;
-
-import flash.events.Event;
-	import fl.controls.ComboBox;;
-	import fl.data.DataProvider;
 	import classes.*;
-	import classes.Scenes.NPCs.IsabellaScene;
 	import classes.GlobalFlags.*;
-	import classes.display.SpriteDb;
+	import classes.GlobalFlags.kGAMECLASS;
+	import classes.Scenes.NPCs.IsabellaScene;
 	import classes.internals.*;
+	import fl.controls.ComboBox;
+	import fl.data.DataProvider;
+	import flash.events.Event;
 	
 	/**
 	 * The new home of Stats and Perks

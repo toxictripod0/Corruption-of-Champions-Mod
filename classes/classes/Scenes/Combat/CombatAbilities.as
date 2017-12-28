@@ -1550,6 +1550,8 @@ package classes.Scenes.Combat
 				case Tail.DRACONIC:
 					addButton(button++, "Tail Slam", tailSlamAttack).hint("Slam your foe with your mighty dragon tail! This attack causes grievous harm and can stun your opponent or let it bleed. \n\nFatigue Cost: " + player.physicalCost(20));
 					break;
+				default:
+					//Nothing here, move along.
 			}
 			if (player.shield != ShieldLib.NOTHING) {
 				addButton(button++, "Shield Bash", shieldBash).hint("Bash your opponent with a shield. Has a chance to stun. Bypasses stun immunity. \n\nThe more you stun your opponent, the harder it is to stun them again. \n\nFatigue Cost: " + player.physicalCost(20));

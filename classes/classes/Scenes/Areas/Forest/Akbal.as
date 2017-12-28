@@ -145,7 +145,6 @@ import classes.internals.WeightedDrop;
 					return;
 				}
 				outputText("You are burned badly by the flames! ("+player.takeDamage(40) +")");
-				;
 			}
 			game.combat.combatRoundOver();
 		}

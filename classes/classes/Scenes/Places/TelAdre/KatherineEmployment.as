@@ -270,7 +270,8 @@ package classes.Scenes.Places.TelAdre{
 			switch (rand(3)) {
 				case 0: doNext(katherineTrainingStage1Success); break;
 				case 1: doNext(katherineTrainingStage1Failure); break;
-				case 2: doNext(katherineTrainingStage1Horny);
+				case 2: doNext(katherineTrainingStage1Horny); break;
+				default: doNext(katherineTrainingStage1Success);
 			}
 		}
 
@@ -321,7 +322,8 @@ package classes.Scenes.Places.TelAdre{
 			switch (rand(3)) {
 				case 0: doNext(katherineTrainingStage2Success); break;
 				case 1: doNext(katherineTrainingStage2Failure); break;
-				case 2: doNext(katherineTrainingStage2Horny);
+				case 2: doNext(katherineTrainingStage2Horny); break;
+				default: doNext(katherineTrainingStage2Success);
 			}
 		}
 
@@ -394,7 +396,8 @@ package classes.Scenes.Places.TelAdre{
 				switch (rand(3)) {
 					case 0: doNext(katherineTrainingStage3Success); break;
 					case 1: doNext(katherineTrainingStage3Failure); break;
-					case 2: doNext(katherineTrainingStage3Horny);
+					case 2: doNext(katherineTrainingStage3Horny); break;
+					default: doNext(katherineTrainingStage3Success);
 				}
 			}
 		}
@@ -798,7 +801,8 @@ package classes.Scenes.Places.TelAdre{
 			switch (rand(3)) {
 				case 0: doNext(katherineTrainingWithUrtaStage1Success); break;
 				case 1: doNext(katherineTrainingWithUrtaStage1Failure); break;
-				case 2: doNext(katherineTrainingWithUrtaStage1Horny);
+				case 2: doNext(katherineTrainingWithUrtaStage1Horny); break;
+				default: doNext(katherineTrainingWithUrtaStage1Success);
 			}
 		}
 
@@ -939,7 +943,8 @@ package classes.Scenes.Places.TelAdre{
 			switch (rand(3)) {
 				case 0: doNext(katherineTrainingWithUrtaStage2Success); break;
 				case 1: doNext(katherineTrainingWithUrtaStage2Failure); break;
-				case 2: doNext(katherineTrainingWithUrtaStage2Horny);
+				case 2: doNext(katherineTrainingWithUrtaStage2Horny); break;
+				default: doNext(katherineTrainingWithUrtaStage2Success);
 			}
 		}
 
@@ -1026,7 +1031,8 @@ package classes.Scenes.Places.TelAdre{
 				switch (rand(3)) {
 					case 0: doNext(katherineTrainingWithUrtaStage3Success); break;
 					case 1: doNext(katherineTrainingWithUrtaStage3Failure); break;
-					case 2: doNext(katherineTrainingWithUrtaStage3Horny);
+					case 2: doNext(katherineTrainingWithUrtaStage3Horny); break;
+					default: doNext(katherineTrainingWithUrtaStage3Success);
 				}
 			}
 		}

@@ -1688,6 +1688,8 @@ package classes.Scenes.Places.Bazaar
 					case Hair.ANEMONE:
 						outputText("\n\nYou feel something strange going in on your head. You reach your hands up to feel your tentacle-hair, only to find out that the tentacles have vanished and replaced with normal hair. <b>Your hair is normal again!</b>");
 						break;
+					default:
+						//This shouldn't happen, moving along...
 				}
 				changes++;
 				player.hair.type = Hair.NORMAL;

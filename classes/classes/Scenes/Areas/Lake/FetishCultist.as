@@ -1,10 +1,9 @@
 package classes.Scenes.Areas.Lake
 {
 	import classes.*;
-	import classes.BodyParts.Butt;
-	import classes.BodyParts.Hips;
-	import classes.internals.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.*;
+	import classes.internals.*;
 
 	public class FetishCultist extends Monster
 	{
@@ -61,6 +60,8 @@ package classes.Scenes.Areas.Lake
 						changed = true;
 					}
 					break;
+				default:
+					//Move along.
 			}
 			//Talk abouts it mang!
 			if (changed) outputText("The fetish cultist's clothing shifts and twists, taking on the appearance of a " + armorName + ".\n\n");

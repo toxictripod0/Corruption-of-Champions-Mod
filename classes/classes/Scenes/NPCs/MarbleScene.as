@@ -3122,9 +3122,10 @@ public function marblePoopsBaybees():void {
 					case 9:
 						outputText("Nicky");
 						break;
+					default:
+						outputText("Glitchy");
 				}
 				outputText(", yes, that's a good name for her.</i>\"");
-
 			}
 			else {
 				outputText("...hmm, well Sweetie, I can't think of a good name right now, I'll figure one out tomorrow.</i>\"");

@@ -2970,7 +2970,6 @@ package classes.Scenes.Places
 			{
 				case 0:
 				case 1:
-					break;
 				case 2:
 					if (player.obey < 10)
 					{
@@ -3041,6 +3040,7 @@ package classes.Scenes.Places
 						}
 					}
 					break;
+				default:
 			}
 		}
 		

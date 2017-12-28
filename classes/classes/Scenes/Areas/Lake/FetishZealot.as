@@ -1,8 +1,8 @@
 package classes.Scenes.Areas.Lake
 {
 	import classes.*;
-	import classes.BodyParts.Butt;
-	import classes.BodyParts.Hips;
+	import classes.BodyParts.*;
+	import classes.GlobalFlags.*;
 	import classes.internals.*;
 
 	public class FetishZealot extends Monster
@@ -59,8 +59,9 @@ package classes.Scenes.Areas.Lake
 						this.armorName = STUDENTS_CLOTHES;
 						changed = true;
 					}
-
 					break;
+				default:
+					//Move along.
 			}
 			//Talk abouts it mang!
 			if (changed) outputText("The fetish zealot's clothing shifts and twists, until he is wearing " + armorName + ".\n\n");

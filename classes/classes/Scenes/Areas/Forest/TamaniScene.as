@@ -326,6 +326,8 @@ internal function tamaniSexLetHer():void {
 				case 2:
 					outputText(player.nippleDescript(0));
 					break;
+				default: 
+					//Shouldn't happen.
 			}
 			outputText(" a quick kiss before pushing hard against you, shoving you onto the ground and flashing a brilliant smile.\n\n"); 
 			outputText("\"<i>Just lie there and take it " + player.mf("stud","slut") + ",</i>\" she commands.\n\n");

@@ -173,7 +173,7 @@ public function buttonIsVisible(index:int):Boolean {
 	else {
 		return button(index).visible;
 	}
-};
+}
 
 public function buttonText(buttonName:String):String {
 	var matches:*,

@@ -1853,6 +1853,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		switch (player.underBody.type) {
 			case UnderBody.DRAGON: player.underBody.type = UnderBody.REPTILE; break;
 			case UnderBody.WOOL:   player.underBody.type = UnderBody.FURRY;   break;
+			default: //Move along.
 		}
 
 		//Sexual Stuff

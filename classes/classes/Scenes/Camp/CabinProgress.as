@@ -15,9 +15,7 @@ package classes.Scenes.Camp
 	 */
 	public class CabinProgress extends BaseContent {
 		
-		public function CabinProgress() {
-			
-		}
+		public function CabinProgress() {}
 		
 		//------------
 		// VALUES
@@ -196,6 +194,8 @@ package classes.Scenes.Camp
 					case 10:
 						enterCabinFirstTime();
 						break;
+					default:
+						thinkOfCabin(); //This shouldn't happen, move along! Failsafe method.
 				}
 			}
 			else

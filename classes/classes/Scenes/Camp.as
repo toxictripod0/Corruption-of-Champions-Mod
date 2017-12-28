@@ -627,6 +627,7 @@ private function doCamp():void { //Only called by playerMenu
 				case 2: outputText("The sky is light gray as it's covered by the clouds. "); break;
 				case 3: outputText("The sky is fairly dark as it's covered by the clouds that rain water upon the lands. "); break;
 				case 4: outputText("The sky is dark as it's thick with dark grey clouds that rain and occasionally the sky flashes with lightning. "); break;
+				default: outputText("The sky is black and flashing green 0's and 1's, seems like the weather is broken! "); break;
 			}
 		}
 		if (getGame().time.hours == 19) {
@@ -896,6 +897,7 @@ public function campLoversMenu(descOnly:Boolean = false):void {
 				case 0: outputText("Izma's lazily sitting on the trunk beside her bedroll, reading one of the many books from inside it. She smiles happily when your eyes linger on her, and you know full well she's only half-interested in it."); break;
 				case 1: outputText("You notice Izma isn't around right now. She's probably gone off to the nearby stream to get some water. Never mind, she comes around from behind a rock, still dripping wet."); break;
 				case 2: outputText("Izma is lying on her back near her bedroll. You wonder at first just why she isn't using her bed, but as you look closer you notice all the water pooled beneath her and the few droplets running down her arm, evidence that she's just returned from the stream."); break;
+				default: //This line shouldn't happen, move along!
 			}
 			outputText("\n\n");
 			addButton(4, "Izma", izmaScene.izmaFollowerMenu);

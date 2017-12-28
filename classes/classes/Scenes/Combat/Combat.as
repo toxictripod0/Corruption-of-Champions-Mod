@@ -1104,7 +1104,7 @@ public class Combat extends BaseContent
 			if (player.findPerk(PerkLib.ShieldMastery) >= 0 && player.tou >= 50) blockChance += (player.tou - 50) / 5;
 			if (blockChance < 10) blockChance = 10;
 			//Fatigue limit
-			var fatigueLimit:int = player.maxFatigue() - player.physicalCost(10);;
+			var fatigueLimit:int = player.maxFatigue() - player.physicalCost(10);
 			if (blockChance >= (rand(100) + 1) && player.fatigue <= fatigueLimit && player.shieldName != "nothing") {
 				if (doFatigue) player.changeFatigue(10, 2);
 				return true;
@@ -1812,7 +1812,6 @@ public class Combat extends BaseContent
 			//hpDisplay = "(<b>" + String(int(math * 1000) / 10) + "% HP</b>)";
 			hpDisplay   = Math.floor(monster.HP) + " / " + monster.maxHP() + " (" + floor(math*100,1) + "%)";
 			lustDisplay = Math.floor(monster.lust) + " / " + monster.maxLust();
-			;
 			//imageText set in beginCombat()
 			outputText(imageText);
 			

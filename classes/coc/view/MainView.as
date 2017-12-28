@@ -600,8 +600,9 @@ public class MainView extends Block {
 				return perksButton;
 			case MENU_APPEARANCE:
 				return appearanceButton;
+			default:
+				return null;
 		}
-		return null;
 	}
 
 	////////
