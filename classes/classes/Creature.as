@@ -93,7 +93,7 @@ package classes
 		public function get a():String { return _a; }
 		public function set a(value:String):void { _a = value; }
 		public function get capitalA():String {
-			if (_a.length === 0) return "";
+			if (_a.length == 0) return "";
 			return _a.charAt(0).toUpperCase() + _a.substr(1);
 		}
 
@@ -420,13 +420,17 @@ package classes
 		//TODO: Tuck away into Male genital class?
 		public var cocks:Vector.<Cock>;
 		//balls
-		public var balls:int = 0;
+		public var balls:Number = 0;
 		public var cumMultiplier:Number = 1;
 		public var ballSize:Number = 0;
 		
-		private var _hoursSinceCum:int = 0;
-		public function get hoursSinceCum():int { return _hoursSinceCum; }
-		public function set hoursSinceCum(v:int):void {
+		private var _hoursSinceCum:Number = 0;
+		public function get hoursSinceCum():Number { return _hoursSinceCum; }
+		public function set hoursSinceCum(v:Number):void {
+			/*if (v == 0)
+			{
+				trace("noop");
+			}*/
 			_hoursSinceCum = v; 
 		}
 		
@@ -497,7 +501,7 @@ package classes
 		public function get femininity():Number {
 			var fem:Number = _femininity;
 			const effect:StatusEffectClass = statusEffectByType(StatusEffects.UmasMassage);
-			if (effect !== null && effect.value1 === UmasShop.MASSAGE_MODELLING_BONUS) {
+			if (effect != null && effect.value1 == UmasShop.MASSAGE_MODELLING_BONUS) {
 				fem += effect.value2;
 			}
 			if (fem > 100)
@@ -559,14 +563,14 @@ package classes
 			}
 			// 4.2. hair
 			if (hair.length <= 0) {
-				if (hair.type !== Hair.NORMAL) error += "No hair but hairType = " + hair.type + ". ";
+				if (hair.type != Hair.NORMAL) error += "No hair but hairType = " + hair.type + ". ";
 			}
 			// 4.3. tail
-			if (tail.type === Tail.NONE) {
-				if (tail.venom !== 0) error += "No tail but tailVenom = "+tail.venom+". ";
+			if (tail.type == Tail.NONE) {
+				if (tail.venom != 0) error += "No tail but tailVenom = "+tail.venom+". ";
 			}
 			// 4.4. horns
-			if (horns.type === Horns.NONE){
+			if (horns.type == Horns.NONE){
 				if (horns.value>0) error += "horns.value > 0 but horns.type = Horns.NONE. ";
 			} else {
 				if (horns.value==0) error += "Has horns but their number 'horns' = 0. ";
@@ -641,7 +645,7 @@ package classes
 					return; // Prevent calling orgasmReal() twice
 
 				case 'DickAnal':
-					orgasm((rand(2) === 0 ? 'Dick' : 'Anal'), real);
+					orgasm((rand(2) == 0 ? 'Dick' : 'Anal'), real);
 					return;
 
 				case 'Default':
@@ -653,7 +657,7 @@ package classes
 					}
 
 					if (hasVagina() && hasCock()) {
-						orgasm((rand(2) === 0 ? 'Vaginal' : 'Dick'), real);
+						orgasm((rand(2) == 0 ? 'Vaginal' : 'Dick'), real);
 						return;
 					}
 
@@ -690,7 +694,7 @@ package classes
 			var keySlot:Number = 0;
 			var counter:Number = 0;
 			//Start the array if its the first bit
-			if (perks.length === 0)
+			if (perks.length == 0)
 			{
 				//trace("New Perk Started Array! " + keyName);
 				perks.push(newKeyItem);
@@ -782,7 +786,7 @@ package classes
 			while (counter > 0)
 			{
 				counter--;
-				if (perk(counter).ptype === ptype)
+				if (perk(counter).ptype == ptype)
 				{
 					perks.splice(counter, 1);
 					//trace("Attempted to remove \"" + perkName + "\" perk.");
@@ -801,7 +805,7 @@ package classes
 				return -2;
 			for (var counter:int = 0; counter<perks.length; counter++)
 			{
-				if (perk(counter).ptype === ptype)
+				if (perk(counter).ptype == ptype)
 					return counter;
 			}
 			return -1;
@@ -816,7 +820,7 @@ package classes
 				return false;
 			for (var counter:int = 0; counter<perks.length; counter++)
 			{
-				if (perk(counter).ptype === ptype)
+				if (perk(counter).ptype == ptype)
 					return true;
 			}
 			return false;
@@ -831,7 +835,7 @@ package classes
 				return false;
 			for (var counter:int = 0; counter<perks.length; counter++)
 			{
-				if (perk(counter).ptype === ptype)
+				if (perk(counter).ptype == ptype)
 					timesFound++;
 			}
 			return (timesFound > 1);
@@ -854,13 +858,13 @@ package classes
 				CoC_Settings.error("addPerkValue(" + ptype.id + ", " + valueIdx + ", " + bonus + ").");
 				return;
 			}
-			if (valueIdx === 1)
+			if (valueIdx == 1)
 				perk(counter).value1 += bonus;
-			if (valueIdx === 2)
+			if (valueIdx == 2)
 				perk(counter).value2 += bonus;
-			if (valueIdx === 3)
+			if (valueIdx == 3)
 				perk(counter).value3 += bonus;
-			if (valueIdx === 4)
+			if (valueIdx == 4)
 				perk(counter).value4 += bonus;
 		}
 		
@@ -877,13 +881,13 @@ package classes
 				CoC_Settings.error("setPerkValue(" + ptype.id + ", " + valueIdx + ", " + newNum + ").");
 				return;
 			}
-			if (valueIdx === 1)
+			if (valueIdx == 1)
 				perk(counter).value1 = newNum;
-			if (valueIdx === 2)
+			if (valueIdx == 2)
 				perk(counter).value2 = newNum;
-			if (valueIdx === 3)
+			if (valueIdx == 3)
 				perk(counter).value3 = newNum;
-			if (valueIdx === 4)
+			if (valueIdx == 4)
 				perk(counter).value4 = newNum;
 		}
 		
@@ -952,7 +956,7 @@ package classes
 			return newStatusEffect;
 		}
 		public function addStatusEffect(sec:StatusEffectClass/*,fireEvent:Boolean = true*/):void {
-			if (sec.host !== this) {
+			if (sec.host != this) {
 				sec.remove();
 				sec.attach(this/*,fireEvent*/);
 			} else {
@@ -979,7 +983,7 @@ package classes
 		
 		public function indexOfStatusEffect(stype:StatusEffectType):int {
 			for (var counter:int = 0; counter < statusEffects.length; counter++) {
-				if ((statusEffects[counter] as StatusEffectClass).stype === stype)
+				if ((statusEffects[counter] as StatusEffectClass).stype == stype)
 					return counter;
 			}
 			return -1;
@@ -997,18 +1001,18 @@ package classes
 		public function changeStatusValue(stype:StatusEffectType, statusValueNum:Number = 1, newNum:Number = 0):void {
 			var effect:StatusEffectClass = statusEffectByType(stype);
 			//Various Errors preventing action
-			if (effect === null)return;
+			if (effect == null)return;
 			if (statusValueNum < 1 || statusValueNum > 4) {
 				CoC_Settings.error("ChangeStatusValue called with invalid status value number.");
 				return;
 			}
-			if (statusValueNum === 1)
+			if (statusValueNum == 1)
 				effect.value1 = newNum;
-			if (statusValueNum === 2)
+			if (statusValueNum == 2)
 				effect.value2 = newNum;
-			if (statusValueNum === 3)
+			if (statusValueNum == 3)
 				effect.value3 = newNum;
-			if (statusValueNum === 4)
+			if (statusValueNum == 4)
 				effect.value4 = newNum;
 		}
 		
@@ -1016,19 +1020,19 @@ package classes
 		{
 			//Various Errors preventing action
 			var effect:StatusEffectClass = statusEffectByType(stype);
-			if (effect === null) return;
+			if (effect == null) return;
 			if (statusValueNum < 1 || statusValueNum > 4)
 			{
 				CoC_Settings.error("ChangeStatusValue called with invalid status value number.");
 				return;
 			}
-			if (statusValueNum === 1)
+			if (statusValueNum == 1)
 				effect.value1 += bonus;
-			if (statusValueNum === 2)
+			if (statusValueNum == 2)
 				effect.value2 += bonus;
-			if (statusValueNum === 3)
+			if (statusValueNum == 3)
 				effect.value3 += bonus;
-			if (statusValueNum === 4)
+			if (statusValueNum == 4)
 				effect.value4 += bonus;
 		}
 		
@@ -1102,7 +1106,7 @@ package classes
 		/* [    ? ? ?    ] */
 		public function biggestTitSize():Number
 		{
-			if (breastRows.length === 0)
+			if (breastRows.length == 0)
 				return -1;
 			var counter:Number = breastRows.length;
 			var index:Number = 0;
@@ -1124,14 +1128,14 @@ package classes
 		
 		public function biggestCockLength():Number
 		{
-			if (cocks.length === 0)
+			if (cocks.length == 0)
 				return 0;
 			return cocks[biggestCockIndex()].cockLength;
 		}
 		
 		public function biggestCockArea():Number
 		{
-			if (cocks.length === 0)
+			if (cocks.length == 0)
 				return 0;
 			var counter:Number = cocks.length;
 			var index:Number = 0;
@@ -1165,10 +1169,10 @@ package classes
 			{
 				counter--;
 				//Is this spot claimed by the biggest?
-				if (counter !== index)
+				if (counter != index)
 				{
 					//Not set yet?
-					if (index2 === -1)
+					if (index2 == -1)
 						index2 = counter;
 					//Is the stored value less than the current one?
 					if (cockArea(index2) < cockArea(counter))
@@ -1178,14 +1182,14 @@ package classes
 				}
 			}
 			//If it couldn't find a second biggest...
-			if (index === index2)
+			if (index == index2)
 				return 0;
 			return cockArea(index2);
 		}
 		
 		public function longestCock():Number
 		{
-			if (cocks.length === 0)
+			if (cocks.length == 0)
 				return 0;
 			var counter:Number = cocks.length;
 			var index:Number = 0;
@@ -1200,7 +1204,7 @@ package classes
 		
 		public function longestCockLength():Number
 		{
-			if (cocks.length === 0)
+			if (cocks.length == 0)
 				return 0;
 			var counter:Number = cocks.length;
 			var index:Number = 0;
@@ -1215,14 +1219,14 @@ package classes
 		
 		public function longestHorseCockLength():Number
 		{
-			if (cocks.length === 0)
+			if (cocks.length == 0)
 				return 0;
 			var counter:Number = cocks.length;
 			var index:Number = 0;
 			while (counter > 0)
 			{
 				counter--;
-				if ((cocks[index].cockType !== CockTypesEnum.HORSE && cocks[counter].cockType === CockTypesEnum.HORSE) || (cocks[index].cockLength < cocks[counter].cockLength && cocks[counter].cockType === CockTypesEnum.HORSE))
+				if ((cocks[index].cockType != CockTypesEnum.HORSE && cocks[counter].cockType == CockTypesEnum.HORSE) || (cocks[index].cockLength < cocks[counter].cockLength && cocks[counter].cockType == CockTypesEnum.HORSE))
 					index = counter;
 			}
 			return cocks[index].cockLength;
@@ -1241,12 +1245,12 @@ package classes
 			//For ze loop
 			var temp:int = 0;
 			//Make sure they arent the same at initialization
-			if (thinnest2 === thinnest)
+			if (thinnest2 == thinnest)
 				thinnest2 = 1;
 			//Loop through to find 2nd thinnest
 			while (temp < cocks.length)
 			{
-				if (cocks[thinnest2].cockThickness > cocks[temp].cockThickness && temp !== thinnest)
+				if (cocks[thinnest2].cockThickness > cocks[temp].cockThickness && temp != thinnest)
 					thinnest2 = temp;
 				temp++;
 			}
@@ -1268,7 +1272,7 @@ package classes
 		
 		public function thickestCock():Number
 		{
-			if (cocks.length === 0)
+			if (cocks.length == 0)
 				return 0;
 			var counter:Number = cocks.length;
 			var index:Number = 0;
@@ -1283,7 +1287,7 @@ package classes
 		
 		public function thickestCockThickness():Number
 		{
-			if (cocks.length === 0)
+			if (cocks.length == 0)
 				return 0;
 			var counter:Number = cocks.length;
 			var index:Number = 0;
@@ -1298,7 +1302,7 @@ package classes
 		
 		public function thinnestCockIndex():Number
 		{
-			if (cocks.length === 0)
+			if (cocks.length == 0)
 				return 0;
 			var counter:Number = cocks.length;
 			var index:Number = 0;
@@ -1313,7 +1317,7 @@ package classes
 		
 		public function smallestCockIndex():Number
 		{
-			if (cocks.length === 0)
+			if (cocks.length == 0)
 				return 0;
 			var counter:Number = cocks.length;
 			var index:Number = 0;
@@ -1330,14 +1334,14 @@ package classes
 		
 		public function smallestCockLength():Number
 		{
-			if (cocks.length === 0)
+			if (cocks.length == 0)
 				return 0;
 			return cocks[smallestCockIndex()].cockLength;
 		}
 		
 		public function shortestCockIndex():Number
 		{
-			if (cocks.length === 0)
+			if (cocks.length == 0)
 				return 0;
 			var counter:Number = cocks.length;
 			var index:Number = 0;
@@ -1352,7 +1356,7 @@ package classes
 		
 		public function shortestCockLength():Number
 		{
-			if (cocks.length === 0)
+			if (cocks.length == 0)
 				return 0;
 			var counter:Number = cocks.length;
 			var index:Number = 0;
@@ -1376,7 +1380,7 @@ package classes
 			while (cockIdxPtr > 0)
 			{
 				cockIdxPtr--;
-				if (type === "area")
+				if (type == "area")
 				{
 					if (cockArea(cockIdxPtr) <= i_fits)
 					{
@@ -1392,7 +1396,7 @@ package classes
 							cockIndex = cockIdxPtr;
 					}
 				}
-				else if (type === "length")
+				else if (type == "length")
 				{
 					if (cocks[cockIdxPtr].cockLength <= i_fits)
 					{
@@ -1415,7 +1419,7 @@ package classes
 		//Find the 2nd biggest cock that fits inside a given value
 		public function cockThatFits2(fits:Number = 0):Number
 		{
-			if (cockTotal() === 1)
+			if (cockTotal() == 1)
 				return -1;
 			var counter:Number = cocks.length;
 			//Current largest fitter
@@ -1434,19 +1438,19 @@ package classes
 						if (cockArea(counter) > cockArea(index))
 						{
 							//Save old wang
-							if (index !== -1)
+							if (index != -1)
 								index2 = index;
 							index = counter;
 						}
 						//If this one fits and is smaller than the other great
 						else
 						{
-							if ((cockArea(index2) < cockArea(counter)) && counter !== index)
+							if ((cockArea(index2) < cockArea(counter)) && counter != index)
 							{
 								index2 = counter;
 							}
 						}
-						if (index >= 0 && index === index2)
+						if (index >= 0 && index == index2)
 							CoC_Settings.error("FUCK ERROR COCKTHATFITS2 SHIT IS BROKED!");
 					}
 					//Store the index of fitting dick
@@ -1459,7 +1463,7 @@ package classes
 		
 		public function smallestCockArea():Number
 		{
-			if (cockTotal() === 0)
+			if (cockTotal() == 0)
 				return -1;
 			return cockArea(smallestCockIndex());
 		}
@@ -1471,7 +1475,7 @@ package classes
 		
 		public function biggestCockIndex():Number
 		{
-			if (cocks.length === 0)
+			if (cocks.length == 0)
 				return 0;
 			var counter:Number = cocks.length;
 			var index:Number = 0;
@@ -1507,19 +1511,19 @@ package classes
 				//Make sure index2 doesn't get stuck
 				//at the same value as index1 if the
 				//initial location is biggest.
-				if (index === index2 && counter !== index)
+				if (index == index2 && counter != index)
 					index2 = counter;
 				//Is the stored value less than the current one?
 				if (cockArea(index2) < cockArea(counter))
 				{
 					//Make sure we don't set index2 to be the same
 					//as the biggest dick.
-					if (counter !== index)
+					if (counter != index)
 						index2 = counter;
 				}
 			}
 			//If it couldn't find a second biggest...
-			if (index === index2)
+			if (index == index2)
 				return 0;
 			return index2;
 		}
@@ -1546,19 +1550,19 @@ package classes
 				//Make sure index2 doesn't get stuck
 				//at the same value as index1 if the
 				//initial location is biggest.
-				if (index === index2 && counter !== index)
+				if (index == index2 && counter != index)
 					index2 = counter;
 				//Is the stored value less than the current one?
 				if (cockArea(index2) > cockArea(counter))
 				{
 					//Make sure we don't set index2 to be the same
 					//as the biggest dick.
-					if (counter !== index)
+					if (counter != index)
 						index2 = counter;
 				}
 			}
 			//If it couldn't find a second biggest...
-			if (index === index2)
+			if (index == index2)
 				return 0;
 			return index2;
 		}
@@ -1585,10 +1589,10 @@ package classes
 			{
 				counter--;
 				//If this index isn't used already
-				if (counter !== index)
+				if (counter != index)
 				{
 					//Has index been set to anything yet?
-					if (index2 === -1)
+					if (index2 == -1)
 						index2 = counter;
 					//Is the stored value less than the current one?
 					else if (cockArea(index2) < cockArea(counter))
@@ -1598,7 +1602,7 @@ package classes
 				}
 			}
 			//If it couldn't find a second biggest...
-			if (index === index2 || index2 === -1)
+			if (index == index2 || index2 == -1)
 				index2 = 0;
 			//Reset counter and find the next biggest
 			counter = cocks.length;
@@ -1606,10 +1610,10 @@ package classes
 			{
 				counter--;
 				//If this index isn't used already
-				if (counter !== index && counter !== index2)
+				if (counter != index && counter != index2)
 				{
 					//Has index been set to anything yet?
-					if (index3 === -1)
+					if (index3 == -1)
 						index3 = counter;
 					//Is the stored value less than the current one?
 					else if (cockArea(index3) < cockArea(counter))
@@ -1619,7 +1623,7 @@ package classes
 				}
 			}
 			//If it fails for some reason.
-			if (index3 === -1)
+			if (index3 == -1)
 				index3 = 0;
 			return index3;
 		}
@@ -1632,15 +1636,15 @@ package classes
 		
 		public function cockAdjective(index:Number = -1):String {
 			if (index < 0) index = biggestCockIndex();
-			var isPierced:Boolean = (cocks.length === 1) && (cocks[index].isPierced); //Only describe as pierced or sock covered if the creature has just one cock
-			var hasSock:Boolean = (cocks.length === 1) && (cocks[index].sock !== "");
-			var isGooey:Boolean = (skin.type === Skin.GOO);
+			var isPierced:Boolean = (cocks.length == 1) && (cocks[index].isPierced); //Only describe as pierced or sock covered if the creature has just one cock
+			var hasSock:Boolean = (cocks.length == 1) && (cocks[index].sock != "");
+			var isGooey:Boolean = (skin.type == Skin.GOO);
 			return Appearance.cockAdjective(cocks[index].cockType, cocks[index].cockLength, cocks[index].cockThickness, lust, cumQ(), isPierced, hasSock, isGooey);
 		}
 		
 		public function wetness():Number
 		{
-			if (vaginas.length === 0)
+			if (vaginas.length == 0)
 				return 0;
 			else
 				return vaginas[0].vaginalWetness;
@@ -1650,7 +1654,7 @@ package classes
 		{
 			if (!hasVagina())
 				return -1;
-			if (newType !== -1)
+			if (newType != -1)
 			{
 				vaginas[0].type = newType;
 			}
@@ -1661,7 +1665,7 @@ package classes
 		{
 			if (vag)
 			{
-				if (vaginas.length === 0)
+				if (vaginas.length == 0)
 					return 0;
 				else
 					return vaginas[0].vaginalLooseness;
@@ -1686,7 +1690,7 @@ package classes
 
 			if (isTaur()){
 				bonus += 50;
-			}else if (lowerBody.type === LowerBody.NAGA){
+			}else if (lowerBody.type == LowerBody.NAGA){
 				bonus += 20;
 			}
 
@@ -1789,7 +1793,7 @@ package classes
 		
 		public function biggestLactation():Number
 		{
-			if (breastRows.length === 0)
+			if (breastRows.length == 0)
 				return 0;
 			var counter:Number = breastRows.length;
 			var index:Number = 0;
@@ -1822,7 +1826,7 @@ package classes
 		}
 		public function boostLactation(todo:Number):Number
 		{
-			if (breastRows.length === 0)
+			if (breastRows.length == 0)
 				return 0;
 			var counter:Number = breastRows.length;
 			var index:Number = 0;
@@ -1907,7 +1911,7 @@ package classes
 		
 		public function averageLactation():Number
 		{
-			if (breastRows.length === 0)
+			if (breastRows.length == 0)
 				return 0;
 			var counter:Number = breastRows.length;
 			var index:Number = 0;
@@ -1957,7 +1961,7 @@ package classes
 			if (hasPerk(PerkLib.SatyrSexuality))
 				percent += 0.10;
 			//Fertite ring bonus!
-			if (jewelryEffectId === JewelryLib.MODIFIER_FERTILITY)
+			if (jewelryEffectId == JewelryLib.MODIFIER_FERTILITY)
 				percent += (jewelryEffectMagnitude / 100);
 			if (hasPerk(PerkLib.AscensionVirility))
 				percent += perkv1(PerkLib.AscensionVirility) * 0.05;				
@@ -1996,7 +2000,7 @@ package classes
 			//Pilgrim's bounty maxes lust coefficient
 			if (hasPerk(PerkLib.PilgrimsBounty))
 				lustCoefficient = 150 / 10;
-			if (balls === 0)
+			if (balls == 0)
 				quantity = int(1.25 * 2 * cumMultiplier * 2 * lustCoefficient * (hoursSinceCum + 10) / 24) / 10;
 			else
 				quantity = int(ballSize * balls * cumMultiplier * 2 * lustCoefficient * (hoursSinceCum + 10) / 24) / 10;
@@ -2026,7 +2030,7 @@ package classes
 				quantity += 50;
 			quantity += statusEffectv1(StatusEffects.Rut);
 			quantity *= (1 + (2 * perkv1(PerkLib.PiercedFertite)) / 100);
-			if (jewelryEffectId === JewelryLib.MODIFIER_FERTILITY)
+			if (jewelryEffectId == JewelryLib.MODIFIER_FERTILITY)
 				quantity *= (1 + (jewelryEffectMagnitude / 100));
 			//trace("Final Cum Volume: " + int(quantity) + "mLs.");
 			//if (quantity < 0) trace("SOMETHING HORRIBLY WRONG WITH CUM CALCULATIONS");
@@ -2060,20 +2064,20 @@ package classes
 			cumCap += statusEffectv1(StatusEffects.Rut);
 			cumCap *= (1 + (2 * perkv1(PerkLib.PiercedFertite)) / 100);
 			//Alter capacity by accessories.
-			if (jewelryEffectId === JewelryLib.MODIFIER_FERTILITY) cumCap *= (1 + (jewelryEffectMagnitude / 100));
+			if (jewelryEffectId == JewelryLib.MODIFIER_FERTILITY) cumCap *= (1 + (jewelryEffectMagnitude / 100));
 				
 			cumCap *= cumMultiplier
-			cumCap === Math.round(cumCap);
+			cumCap == Math.round(cumCap);
 			if (cumCap > int.MAX_VALUE) 
 				cumCap = int.MAX_VALUE;
 			return cumCap;
 		}
 		
 		public function countCocksOfType(type:CockTypesEnum):int {
-			if (cocks.length === 0) return 0;
+			if (cocks.length == 0) return 0;
 			var counter:int = 0;
 			for (var x:int = 0; x < cocks.length; x++) {
-				if (cocks[x].cockType === type) counter++;
+				if (cocks[x].cockType == type) counter++;
 			}
 			return counter;
 		}
@@ -2082,12 +2086,12 @@ package classes
 		// of the PC's attributes, and this is recaluculated every hour spent at camp.
 		// As such, delineating between the two is kind of silly.
 		public function dogCocks():int { //How many dogCocks
-			if (cocks.length === 0) return 0;
+			if (cocks.length == 0) return 0;
 			return countCocksOfType(CockTypesEnum.DOG) + countCocksOfType(CockTypesEnum.FOX);
 		}
 		
 		public function wolfCocks():int {
-			if (cocks.length === 0) return 0;
+			if (cocks.length == 0) return 0;
 			return countCocksOfType(CockTypesEnum.WOLF);
 		}
 		
@@ -2097,7 +2101,7 @@ package classes
 			//if (cocks[index].cockType == ctype)
 			//	return index;
 			for (index = 0; index < cocks.length; index++) {
-				if (cocks[index].cockType === ctype)
+				if (cocks[index].cockType == ctype)
 					return index;
 			}
 			//trace("Creature.findFirstCockType ERROR - searched for cocktype: " + ctype + " and could not find it.");
@@ -2128,31 +2132,31 @@ package classes
 			{
 				counter--;
 				//Human - > horse
-				if (cocks[counter].cockType === CockTypesEnum.HUMAN)
+				if (cocks[counter].cockType == CockTypesEnum.HUMAN)
 				{
 					cocks[counter].cockType = CockTypesEnum.HORSE;
 					return counter;
 				}
 				//Dog - > horse
-				if (cocks[counter].cockType === CockTypesEnum.DOG)
+				if (cocks[counter].cockType == CockTypesEnum.DOG)
 				{
 					cocks[counter].cockType = CockTypesEnum.HORSE;
 					return counter;
 				}
 				//Wolf - > horse
-				if (cocks[counter].cockType === CockTypesEnum.WOLF)
+				if (cocks[counter].cockType == CockTypesEnum.WOLF)
 				{
 					cocks[counter].cockType = CockTypesEnum.HORSE;
 					return counter;
 				}
 				//Tentacle - > horse
-				if (cocks[counter].cockType === CockTypesEnum.TENTACLE)
+				if (cocks[counter].cockType == CockTypesEnum.TENTACLE)
 				{
 					cocks[counter].cockType = CockTypesEnum.HORSE;
 					return counter;
 				}
 				//Demon -> horse
-				if (cocks[counter].cockType === CockTypesEnum.DEMON)
+				if (cocks[counter].cockType == CockTypesEnum.DEMON)
 				{
 					cocks[counter].cockType = CockTypesEnum.HORSE;
 					return counter;
@@ -2193,7 +2197,7 @@ package classes
 			while (index > 0)
 			{
 				index--;
-				if (cocks[index].sock === "")
+				if (cocks[index].sock == "")
 					return true;
 			}
 			return false
@@ -2206,9 +2210,9 @@ package classes
 			while (index > 0)
 			{
 				index--;
-				if (cocks[index].sock !== "")
+				if (cocks[index].sock != "")
 				{
-				if (arg === "" || cocks[index].sock === arg)
+				if (arg == "" || cocks[index].sock == arg)
 					return true;
 				}
 			}
@@ -2219,7 +2223,7 @@ package classes
 			var count:int = 0;
 			
 			for (var i:Number = 0; i < cocks.length; i++) {
-				if (cocks[i].sock === type) {
+				if (cocks[i].sock == type) {
 					count++
 				}
 			}
@@ -2237,7 +2241,7 @@ package classes
 		public function copySkinToUnderBody(p:Object = null):void
 		{
 			underBody.skin.setProps(skin);
-			if (p !== null) underBody.skin.setProps(p);
+			if (p != null) underBody.skin.setProps(p);
 		}
 
 		//PC can fly?
@@ -2251,7 +2255,7 @@ package classes
 
 		public function canUseStare():Boolean
 		{
-			return [Eyes.BASILISK, Eyes.COCKATRICE].indexOf(eyes.type) !== -1;
+			return [Eyes.BASILISK, Eyes.COCKATRICE].indexOf(eyes.type) != -1;
 		}
 
 		public function isHoofed():Boolean
@@ -2259,7 +2263,7 @@ package classes
 			return [
 				LowerBody.HOOFED,
 				LowerBody.CLOVEN_HOOFED,
-			].indexOf(lowerBody.type) !== -1;
+			].indexOf(lowerBody.type) != -1;
 		}
 
 		public function isCentaur():Boolean
@@ -2343,7 +2347,7 @@ package classes
 		
 		public function mfn(male:String, female:String, neuter:String):String
 		{
-			if (gender === 0)
+			if (gender == 0)
 				return neuter;
 			else
 				return mf(male, female);
@@ -2353,7 +2357,7 @@ package classes
 		public function mf(male:String, female:String):String
 		{
 			if (hasCock() && hasVagina()) // herm
-				return (biggestTitSize() >= 2 || biggestTitSize() === 1 && femininity >= 50 || femininity >= 75) ? female : male;
+				return (biggestTitSize() >= 2 || biggestTitSize() == 1 && femininity >= 50 || femininity >= 75) ? female : male;
 
 			if (hasCock()) // male
 				return (biggestTitSize() >= 1 && femininity > 55 || femininity >= 75) ? female : male;
@@ -2381,7 +2385,7 @@ package classes
 		 */
 		public function isMale():Boolean
 		{
-			return gender === Gender.MALE;
+			return gender == Gender.MALE;
 		}
 		
 		/**
@@ -2389,7 +2393,7 @@ package classes
 		 */
 		public function isFemale():Boolean
 		{
-			return gender === Gender.FEMALE;
+			return gender == Gender.FEMALE;
 		}
 		
 		/**
@@ -2397,7 +2401,7 @@ package classes
 		 */
 		public function isHerm():Boolean
 		{
-			return gender === Gender.HERM;
+			return gender == Gender.HERM;
 		}
 		
 		/**
@@ -2405,7 +2409,7 @@ package classes
 		 */
 		public function isGenderless():Boolean
 		{
-			return gender === Gender.NONE;
+			return gender == Gender.NONE;
 		}
 
 		/**
@@ -2413,7 +2417,7 @@ package classes
 		 */
 		public function isMaleOrHerm():Boolean
 		{
-			return (gender & Gender.MALE) !== 0;
+			return (gender & Gender.MALE) != 0;
 		}
 
 		/**
@@ -2421,13 +2425,13 @@ package classes
 		 */
 		public function isFemaleOrHerm():Boolean
 		{
-			return (gender & Gender.FEMALE) !== 0;
+			return (gender & Gender.FEMALE) != 0;
 		}
 		
 		//Create a cock. Default type is HUMAN
 		public function createCock(clength:Number = 5.5, cthickness:Number = 1,ctype:CockTypesEnum=null):Boolean
 		{
-			if (ctype === null) ctype = CockTypesEnum.HUMAN;
+			if (ctype == null) ctype = CockTypesEnum.HUMAN;
 			if (cocks.length >= 10)
 				return false;
 			var newCock:Cock = new Cock(clength, cthickness,ctype);
@@ -2469,7 +2473,7 @@ package classes
 				//trace("ERROR: removeCock called but arraySpot is negative or totalRemoved is 0.");
 				return;
 			}
-			if (cocks.length === 0)
+			if (cocks.length == 0)
 			{
 				//trace("ERROR: removeCock called but cocks do not exist.");
 			}
@@ -2484,19 +2488,19 @@ package classes
 					try
 					{
 						var cock:Cock = cocks[arraySpot];
-						if (cock.sock === "viridian")
+						if (cock.sock == "viridian")
 						{
 							removePerk(PerkLib.LustyRegeneration);
 						}
-						else if (cock.sock === "cockring")
+						else if (cock.sock == "cockring")
 						{
 							var numRings:int = 0;
 							for (var i:int = 0; i < cocks.length; i++)
 							{
-								if (cocks[i].sock === "cockring") numRings++;
+								if (cocks[i].sock == "cockring") numRings++;
 							}
 							
-							if (numRings === 0) removePerk(PerkLib.PentUp);
+							if (numRings == 0) removePerk(PerkLib.PentUp);
 							else setPerkValue(PerkLib.PentUp, 1, 5 + (numRings * 5));
 						}
 						cocks.splice(arraySpot, totalRemoved);
@@ -2519,7 +2523,7 @@ package classes
 				//trace("ERROR: removeVagina called but arraySpot is negative or totalRemoved is 0.");
 				return;
 			}
-			if (vaginas.length === 0)
+			if (vaginas.length == 0)
 			{
 				//trace("ERROR: removeVagina called but cocks do not exist.");
 			}
@@ -2546,11 +2550,11 @@ package classes
 				//trace("ERROR: removeBreastRow called but arraySpot is negative or totalRemoved is 0.");
 				return;
 			}
-			if (breastRows.length === 0)
+			if (breastRows.length == 0)
 			{
 				//trace("ERROR: removeBreastRow called but cocks do not exist.");
 			}
-			else if (breastRows.length === 1 || breastRows.length - totalRemoved < 1)
+			else if (breastRows.length == 1 || breastRows.length - totalRemoved < 1)
 			{
 				//trace("ERROR: Removing the current breast row would break the Creature classes assumptions about breastRow contents.");
 			}
@@ -2633,7 +2637,7 @@ package classes
 		}
 
 		public function cuntChangeNoDisplay(cArea : Number) : Boolean {
-			if (vaginas.length === 0) return false;
+			if (vaginas.length == 0) return false;
 			var stretched : Boolean = vaginas[0].stretch(cArea, vaginalCapacityBonus(), hasPerk(PerkLib.FerasBoonMilkingTwat));
 			
 			// Delay stretch recovery
@@ -2669,7 +2673,7 @@ package classes
 				counter += 10 + (perkv1(PerkLib.MagicalFertility) * 5);
 			counter += perkv2(PerkLib.ElvenBounty);
 			counter += perkv1(PerkLib.PiercedFertite);
-			if (jewelryEffectId === JewelryLib.MODIFIER_FERTILITY)
+			if (jewelryEffectId == JewelryLib.MODIFIER_FERTILITY)
 				counter += jewelryEffectMagnitude;
 			counter += perkv1(PerkLib.AscensionFertility) * 5;
 			return counter;
@@ -2682,12 +2686,12 @@ package classes
 
 		public function hasBeak():Boolean
 		{
-			return [Face.BEAK, Face.COCKATRICE].indexOf(face.type) !== -1;
+			return [Face.BEAK, Face.COCKATRICE].indexOf(face.type) != -1;
 		}
 
 		public function hasGills():Boolean
 		{
-			return gills.type !== Gills.NONE;
+			return gills.type != Gills.NONE;
 		}
 
 		public function hasFeathers():Boolean
@@ -2697,22 +2701,22 @@ package classes
 
 		public function hasScales():Boolean
 		{
-			return [Skin.LIZARD_SCALES, Skin.DRAGON_SCALES, Skin.FISH_SCALES].indexOf(skin.type) !== -1;
+			return [Skin.LIZARD_SCALES, Skin.DRAGON_SCALES, Skin.FISH_SCALES].indexOf(skin.type) != -1;
 		}
 
 		public function hasReptileScales():Boolean
 		{
-			return [Skin.LIZARD_SCALES, Skin.DRAGON_SCALES].indexOf(skin.type) !== -1;
+			return [Skin.LIZARD_SCALES, Skin.DRAGON_SCALES].indexOf(skin.type) != -1;
 		}
 
 		public function hasDragonScales():Boolean
 		{
-			return skin.type === Skin.DRAGON_SCALES;
+			return skin.type == Skin.DRAGON_SCALES;
 		}
 
 		public function hasLizardScales():Boolean
 		{
-			return skin.type === Skin.LIZARD_SCALES;
+			return skin.type == Skin.LIZARD_SCALES;
 		}
 
 		public function hasNonLizardScales():Boolean
@@ -2747,12 +2751,12 @@ package classes
 
 		public function hasGooSkin():Boolean
 		{
-			return skin.type === Skin.GOO;
+			return skin.type == Skin.GOO;
 		}
 
 		public function hasPlainSkin():Boolean
 		{
-			return skin.type === Skin.PLAIN;
+			return skin.type == Skin.PLAIN;
 		}
 
 		public function get hairOrFurColors():String
@@ -2760,7 +2764,7 @@ package classes
 			if (!isFluffy())
 				return hair.color;
 
-			if (!underBody.skin.isFluffy() || ["no", skin.furColor].indexOf(underBody.skin.furColor) !== -1)
+			if (!underBody.skin.isFluffy() || ["no", skin.furColor].indexOf(underBody.skin.furColor) != -1)
 				return skin.furColor;
 
 			// Uses formatStringArray in case we add more skin layers
@@ -2773,12 +2777,12 @@ package classes
 
 		public function isBiped():Boolean
 		{
-			return lowerBody.legCount === 2;
+			return lowerBody.legCount == 2;
 		}
 
 		public function isNaga():Boolean
 		{
-			return lowerBody.type === LowerBody.NAGA;
+			return lowerBody.type == LowerBody.NAGA;
 		}
 
 		public function isTaur():Boolean
@@ -2788,17 +2792,17 @@ package classes
 
 		public function isDrider():Boolean
 		{
-			return lowerBody.type === LowerBody.DRIDER;
+			return lowerBody.type == LowerBody.DRIDER;
 		}
 
 		public function hasSpiderEyes():Boolean
 		{
-			return eyes.type === Eyes.SPIDER && eyes.count === 4;
+			return eyes.type == Eyes.SPIDER && eyes.count == 4;
 		}
 
 		public function isGoo():Boolean
 		{
-			return lowerBody.type === LowerBody.GOO;
+			return lowerBody.type == LowerBody.GOO;
 		}
 
 		public function legs():String
@@ -2809,63 +2813,63 @@ package classes
 				return num2Text(lowerBody.legCount)+" spider legs";
 			if (isTaur())
 				return num2Text(lowerBody.legCount)+" legs";
-			if (lowerBody.type === LowerBody.HUMAN)
+			if (lowerBody.type == LowerBody.HUMAN)
 				return "legs";
-			if (lowerBody.type === LowerBody.HOOFED)
+			if (lowerBody.type == LowerBody.HOOFED)
 				return "legs";
-			if (lowerBody.type === LowerBody.DOG)
+			if (lowerBody.type == LowerBody.DOG)
 				return "legs";
-			if (lowerBody.type === LowerBody.NAGA)
+			if (lowerBody.type == LowerBody.NAGA)
 				return "snake-like coils";
-			if (lowerBody.type === LowerBody.GOO)
+			if (lowerBody.type == LowerBody.GOO)
 				return "mounds of goo";
-			if (lowerBody.type === LowerBody.PONY)
+			if (lowerBody.type == LowerBody.PONY)
 				return "cute pony-legs";
-			if (lowerBody.type === LowerBody.BUNNY) {
+			if (lowerBody.type == LowerBody.BUNNY) {
 				select = Math.floor(Math.random() * (5));
-				if (select === 0)
+				if (select == 0)
 					return "fuzzy, bunny legs";
-				else if (select === 1)
+				else if (select == 1)
 					return "fur-covered legs";
-				else if (select === 2)
+				else if (select == 2)
 					return "furry legs";
 				else
 					return "legs";
 			}
-			if (lowerBody.type === LowerBody.HARPY) {
+			if (lowerBody.type == LowerBody.HARPY) {
 				select = Math.floor(Math.random() * (5));
-				if (select === 0)
+				if (select == 0)
 					return "bird-like legs";
-				else if (select === 1)
+				else if (select == 1)
 					return "feathered legs";
 				else
 					return "legs";
 			}
-			if (lowerBody.type === LowerBody.FOX) {
+			if (lowerBody.type == LowerBody.FOX) {
 				select = Math.floor(Math.random() * (4));
-				if (select === 0)
+				if (select == 0)
 					return "fox-like legs";
-				else if (select === 1)
+				else if (select == 1)
 					return "legs";
-				else if (select === 2)
+				else if (select == 2)
 					return "legs";
 				else
 					return "vulpine legs";
 			}
-			if (lowerBody.type === LowerBody.RACCOON) {
+			if (lowerBody.type == LowerBody.RACCOON) {
 				select = Math.floor(Math.random() * (4));
-				if (select === 0)
+				if (select == 0)
 					return "raccoon-like legs";
 				else
 					return "legs";
 			}
-			if (lowerBody.type === LowerBody.CLOVEN_HOOFED) {
+			if (lowerBody.type == LowerBody.CLOVEN_HOOFED) {
 				select = Math.floor(Math.random() * (4));
-				if (select === 0)
+				if (select == 0)
 					return "pig-like legs";
-				else if (select === 1)
+				else if (select == 1)
 					return "legs";
-				else if (select === 2)
+				else if (select == 2)
 					return "legs";
 				else
 					return "swine legs";
@@ -2880,7 +2884,7 @@ package classes
 		// <mod name="Predator arms" author="Stadler76">
 		public function clawsDescript():String
 		{
-			var toneText:String = claws.tone === "" ? " " : (", " + claws.tone + " ");
+			var toneText:String = claws.tone == "" ? " " : (", " + claws.tone + " ");
 
 			switch (claws.type) {
 				case Claws.NORMAL: return "fingernails";
@@ -2897,54 +2901,54 @@ package classes
 		{
 			var select:Number = 0;
 
-			if (lowerBody.type === LowerBody.HUMAN)
+			if (lowerBody.type == LowerBody.HUMAN)
 				return "leg";
-			if (lowerBody.type === LowerBody.HOOFED)
+			if (lowerBody.type == LowerBody.HOOFED)
 				return "leg";
-			if (lowerBody.type === LowerBody.DOG)
+			if (lowerBody.type == LowerBody.DOG)
 				return "leg";
-			if (lowerBody.type === LowerBody.NAGA)
+			if (lowerBody.type == LowerBody.NAGA)
 				return "snake-tail";
-			if (lowerBody.type === LowerBody.HOOFED && isTaur())
+			if (lowerBody.type == LowerBody.HOOFED && isTaur())
 				return "equine leg";
-			if (lowerBody.type === LowerBody.GOO)
+			if (lowerBody.type == LowerBody.GOO)
 				return "mound of goo";
-			if (lowerBody.type === LowerBody.PONY)
+			if (lowerBody.type == LowerBody.PONY)
 				return "cartoonish pony-leg";
-			if (lowerBody.type === LowerBody.BUNNY) {
+			if (lowerBody.type == LowerBody.BUNNY) {
 				select = Math.random() * (5);
-				if (select === 0)
+				if (select == 0)
 					return "fuzzy, bunny leg";
-				else if (select === 1)
+				else if (select == 1)
 					return "fur-covered leg";
-				else if (select === 2)
+				else if (select == 2)
 					return "furry leg";
 				else
 					return "leg";
 			}
-			if (lowerBody.type === LowerBody.HARPY) {
+			if (lowerBody.type == LowerBody.HARPY) {
 				select = Math.floor(Math.random() * (5));
-				if (select === 0)
+				if (select == 0)
 					return "bird-like leg";
-				else if (select === 1)
+				else if (select == 1)
 					return "feathered leg";
 				else
 					return "leg";
 			}
-			if (lowerBody.type === LowerBody.FOX) {
+			if (lowerBody.type == LowerBody.FOX) {
 				select = Math.floor(Math.random() * (4));
-				if (select === 0)
+				if (select == 0)
 					return "fox-like leg";
-				else if (select === 1)
+				else if (select == 1)
 					return "leg";
-				else if (select === 2)
+				else if (select == 2)
 					return "leg";
 				else
 					return "vulpine leg";
 			}
-			if (lowerBody.type === LowerBody.RACCOON) {
+			if (lowerBody.type == LowerBody.RACCOON) {
 				select = Math.floor(Math.random() * (4));
-				if (select === 0)
+				if (select == 0)
 					return "raccoon-like leg";
 				else
 					return "leg";
@@ -2955,60 +2959,60 @@ package classes
 		public function feet():String
 		{
 			var select:Number = 0;
-			if (lowerBody.type === LowerBody.HUMAN)
+			if (lowerBody.type == LowerBody.HUMAN)
 				return "feet";
-			if (lowerBody.type === LowerBody.HOOFED)
+			if (lowerBody.type == LowerBody.HOOFED)
 				return "hooves";
-			if (lowerBody.type === LowerBody.DOG)
+			if (lowerBody.type == LowerBody.DOG)
 				return "paws";
-			if (lowerBody.type === LowerBody.NAGA)
+			if (lowerBody.type == LowerBody.NAGA)
 				return "coils";
-			if (lowerBody.type === LowerBody.DEMONIC_HIGH_HEELS)
+			if (lowerBody.type == LowerBody.DEMONIC_HIGH_HEELS)
 				return "demonic high-heels";
-			if (lowerBody.type === LowerBody.DEMONIC_CLAWS)
+			if (lowerBody.type == LowerBody.DEMONIC_CLAWS)
 				return "demonic foot-claws";
-			if (lowerBody.type === LowerBody.GOO)
+			if (lowerBody.type == LowerBody.GOO)
 				return "slimey cillia";
-			if (lowerBody.type === LowerBody.PONY)
+			if (lowerBody.type == LowerBody.PONY)
 				return "flat pony-feet";
-			if (lowerBody.type === LowerBody.BUNNY) {
+			if (lowerBody.type == LowerBody.BUNNY) {
 				select = rand(5);
-				if (select === 0)
+				if (select == 0)
 					return "large bunny feet";
-				else if (select === 1)
+				else if (select == 1)
 					return "rabbit feet";
-				else if (select === 2)
+				else if (select == 2)
 					return "large feet";
 				else
 					return "feet";
 			}
-			if (lowerBody.type === LowerBody.HARPY) {
+			if (lowerBody.type == LowerBody.HARPY) {
 				select = Math.floor(Math.random() * (5));
-				if (select === 0)
+				if (select == 0)
 					return "taloned feet";
 				else
 					return "feet";
 			}
-			if (lowerBody.type === LowerBody.KANGAROO)
+			if (lowerBody.type == LowerBody.KANGAROO)
 				return "foot-paws";
-			if (lowerBody.type === LowerBody.FOX) {
+			if (lowerBody.type == LowerBody.FOX) {
 				select = rand(4);
-				if (select === 0)
+				if (select == 0)
 					return "paws";
-				else if (select === 1)
+				else if (select == 1)
 					return "soft, padded paws";
-				else if (select === 2)
+				else if (select == 2)
 					return "fox-like feet";
 				else
 					return "paws";
 			}
-			if (lowerBody.type === LowerBody.RACCOON) {
+			if (lowerBody.type == LowerBody.RACCOON) {
 				select = Math.floor(Math.random() * (3));
-				if (select === 0)
+				if (select == 0)
 					return "raccoon-like feet";
-				else if (select === 1)
+				else if (select == 1)
 					return "long-toed paws";
-				else if (select === 2)
+				else if (select == 2)
 					return "feet";
 				else
 					return "paws";
@@ -3019,56 +3023,56 @@ package classes
 		public function foot():String
 		{
 			var select:Number = 0;
-			if (lowerBody.type === LowerBody.HUMAN)
+			if (lowerBody.type == LowerBody.HUMAN)
 				return "foot";
-			if (lowerBody.type === LowerBody.HOOFED)
+			if (lowerBody.type == LowerBody.HOOFED)
 				return "hoof";
-			if (lowerBody.type === LowerBody.DOG)
+			if (lowerBody.type == LowerBody.DOG)
 				return "paw";
-			if (lowerBody.type === LowerBody.NAGA)
+			if (lowerBody.type == LowerBody.NAGA)
 				return "coiled tail";
-			if (lowerBody.type === LowerBody.GOO)
+			if (lowerBody.type == LowerBody.GOO)
 				return "slimey undercarriage";
-			if (lowerBody.type === LowerBody.PONY)
+			if (lowerBody.type == LowerBody.PONY)
 				return "flat pony-foot";
-			if (lowerBody.type === LowerBody.BUNNY) {
+			if (lowerBody.type == LowerBody.BUNNY) {
 				select = Math.random() * (5);
-				if (select === 0)
+				if (select == 0)
 					return "large bunny foot";
-				else if (select === 1)
+				else if (select == 1)
 					return "rabbit foot";
-				else if (select === 2)
+				else if (select == 2)
 					return "large foot";
 				else
 					return "foot";
 			}
-			if (lowerBody.type === LowerBody.HARPY) {
+			if (lowerBody.type == LowerBody.HARPY) {
 				select = Math.floor(Math.random() * (5));
-				if (select === 0)
+				if (select == 0)
 					return "taloned foot";
 				else
 					return "foot";
 			}
-			if (lowerBody.type === LowerBody.FOX) {
+			if (lowerBody.type == LowerBody.FOX) {
 				select = Math.floor(Math.random() * (4));
-				if (select === 0)
+				if (select == 0)
 					return "paw";
-				else if (select === 1)
+				else if (select == 1)
 					return "soft, padded paw";
-				else if (select === 2)
+				else if (select == 2)
 					return "fox-like foot";
 				else
 					return "paw";
 			}
-			if (lowerBody.type === LowerBody.KANGAROO)
+			if (lowerBody.type == LowerBody.KANGAROO)
 				return "foot-paw";
-			if (lowerBody.type === LowerBody.RACCOON) {
+			if (lowerBody.type == LowerBody.RACCOON) {
 				select = Math.floor(Math.random() * (3));
-				if (select === 0)
+				if (select == 0)
 					return "raccoon-like foot";
-				else if (select === 1)
+				else if (select == 1)
 					return "long-toed paw";
-				else if (select === 2)
+				else if (select == 2)
 					return "foot";
 				else
 					return "paw";
@@ -3078,14 +3082,14 @@ package classes
 
 		public function canOvipositSpider():Boolean
 		{
-			if (eggs() >= 10 && hasPerk(PerkLib.SpiderOvipositor) && isDrider() && tail.type === Tail.SPIDER_ABDOMEN)
+			if (eggs() >= 10 && hasPerk(PerkLib.SpiderOvipositor) && isDrider() && tail.type == Tail.SPIDER_ABDOMEN)
 				return true;
 			return false;
 		}
 
 		public function canOvipositBee():Boolean
 		{
-			if (eggs() >= 10 && hasPerk(PerkLib.BeeOvipositor) && tail.type === Tail.BEE_ABDOMEN)
+			if (eggs() >= 10 && hasPerk(PerkLib.BeeOvipositor) && tail.type == Tail.BEE_ABDOMEN)
 				return true;
 			return false;
 		}
@@ -3215,7 +3219,7 @@ package classes
 
 		public function smallestTitSize():Number
 		{
-			if (breastRows.length === 0)
+			if (breastRows.length == 0)
 				return -1;
 			var counter:Number = breastRows.length;
 			var index:Number = 0;
@@ -3229,7 +3233,7 @@ package classes
 
 		public function smallestTitRow():Number
 		{
-			if (breastRows.length === 0)
+			if (breastRows.length == 0)
 				return -1;
 			var counter:Number = breastRows.length;
 			var index:Number = 0;
@@ -3261,7 +3265,7 @@ package classes
 				counter--;
 				average += breastRows[counter].breastRating;
 			}
-			if (breastRows.length === 0)
+			if (breastRows.length == 0)
 				return 0;
 			return (average / breastRows.length);
 		}
@@ -3274,7 +3278,7 @@ package classes
 				counter--;
 				average += cocks[counter].cockThickness;
 			}
-			if (cocks.length === 0)
+			if (cocks.length == 0)
 				return 0;
 			return (average / cocks.length);
 		}
@@ -3295,7 +3299,7 @@ package classes
 			var counter:Number = vaginas.length;
 			var average:Number = 0;
 			//If the player has no vaginas
-			if (vaginas.length === 0)
+			if (vaginas.length == 0)
 				return 2;
 			while (counter > 0) {
 				counter--;
@@ -3307,7 +3311,7 @@ package classes
 		public function averageVaginalWetness():Number
 		{
 			//If the player has no vaginas
-			if (vaginas.length === 0)
+			if (vaginas.length == 0)
 				return 2;
 			var counter:Number = vaginas.length;
 			var average:Number = 0;
@@ -3326,14 +3330,14 @@ package classes
 				counter--;
 				average += cocks[counter].cockLength;
 			}
-			if (cocks.length === 0)
+			if (cocks.length == 0)
 				return 0;
 			return (average / cocks.length);
 		}
 
 		public function canTitFuck():Boolean
 		{
-			if (breastRows.length === 0) return false;
+			if (breastRows.length == 0) return false;
 			
 			var counter:Number = breastRows.length;
 			var index:Number = 0;
@@ -3349,7 +3353,7 @@ package classes
 
 		public function mostBreastsPerRow():Number
 		{
-			if (breastRows.length === 0) return 2;
+			if (breastRows.length == 0) return 2;
 			
 			var counter:Number = breastRows.length;
 			var index:Number = 0;
@@ -3371,7 +3375,7 @@ package classes
 				breasts += breastRows[counter].breasts;
 				nipples += breastRows[counter].nipplesPerBreast * breastRows[counter].breasts;
 			}
-			if (breasts === 0)
+			if (breasts == 0)
 				return 0;
 			return Math.floor(nipples / breasts);
 		}
@@ -3403,7 +3407,7 @@ package classes
 				CoC_Settings.error("<b>ERROR: NO WANGS DETECTED for cockMultiLightDesc()</b>");
 				return "<b>ERROR: NO WANGS DETECTED for cockMultiLightDesc()</b>";
 			}
-			if (cocks.length === 1) { //For a songle cock return the default description
+			if (cocks.length == 1) { //For a songle cock return the default description
 				return Appearance.cockDescript(this, 0);
 			}
 			switch (cocks[0].cockType) { //With multiple cocks only use the descriptions for specific cock types if all cocks are of a single type
@@ -3418,11 +3422,11 @@ package classes
 				case CockTypesEnum.LIZARD:
 				case CockTypesEnum.PIG:
 				case CockTypesEnum.TENTACLE:
-					if (countCocksOfType(cocks[0].cockType) === cocks.length) return Appearance.cockNoun(cocks[0].cockType) + "s";
+					if (countCocksOfType(cocks[0].cockType) == cocks.length) return Appearance.cockNoun(cocks[0].cockType) + "s";
 					break;
 				case CockTypesEnum.DOG:
 				case CockTypesEnum.FOX:
-					if (dogCocks() === cocks.length) return Appearance.cockNoun(CockTypesEnum.DOG) + "s";
+					if (dogCocks() == cocks.length) return Appearance.cockNoun(CockTypesEnum.DOG) + "s";
 					break;
 				default:
 			}
@@ -3430,7 +3434,7 @@ package classes
 		}
 		
 		public function hasSheath():Boolean {
-			if (cocks.length === 0) return false;
+			if (cocks.length == 0) return false;
 			for (var x:int = 0; x < cocks.length; x++) {
 				switch (cocks[x].cockType) {
 					case CockTypesEnum.CAT:
@@ -3467,7 +3471,7 @@ package classes
 		}
 
 		public function allVaginaDescript():String {
-			if (vaginas.length === 1)
+			if (vaginas.length == 1)
 				return vaginaDescript(rand(vaginas.length - 1));
 			else
 				return vaginaDescript(rand(vaginas.length - 1)) + "s";
@@ -3509,10 +3513,10 @@ package classes
 			}
 			switch (cocks[cockNum].cockType) {
 				case CockTypesEnum.CAT:
-					if (rand(2) === 0) return "point";
+					if (rand(2) == 0) return "point";
 					return "narrow tip";
 				case CockTypesEnum.DEMON:
-					if (rand(2) === 0) return "tainted crown";
+					if (rand(2) == 0) return "tainted crown";
 					return "nub-ringed tip";
 				case CockTypesEnum.DISPLACER:
 					switch (rand(5)) {
@@ -3525,33 +3529,33 @@ package classes
 				case CockTypesEnum.DOG:
 				case CockTypesEnum.WOLF:
 				case CockTypesEnum.FOX:
-					if (rand(2) === 0) return "pointed tip";
+					if (rand(2) == 0) return "pointed tip";
 					return "narrow tip";
 				case CockTypesEnum.HORSE:
-					if (rand(2) === 0) return "flare";
+					if (rand(2) == 0) return "flare";
 					return "flat tip";
 				case CockTypesEnum.KANGAROO:
-					if (rand(2) === 0) return "tip";
+					if (rand(2) == 0) return "tip";
 					return "point";
 				case CockTypesEnum.LIZARD:
-					if (rand(2) === 0) return "crown";
+					if (rand(2) == 0) return "crown";
 					return "head";
 				case CockTypesEnum.TENTACLE:
-					if (rand(2) === 0) return "mushroom-like tip";
+					if (rand(2) == 0) return "mushroom-like tip";
 					return "wide plant-like crown";
 				case CockTypesEnum.PIG:
-					if (rand(2) === 0) return "corkscrew tip";
+					if (rand(2) == 0) return "corkscrew tip";
 					return "corkscrew head";
 				case CockTypesEnum.RHINO:
-					if (rand(2) === 0) return "flared head";
+					if (rand(2) == 0) return "flared head";
 					return "rhinoceros dickhead";
 				case CockTypesEnum.ECHIDNA:
-					if (rand(2) === 0) return "quad heads";
+					if (rand(2) == 0) return "quad heads";
 					return "echidna quad heads";
 				default:
 			}
-			if (rand(2) === 0) return "crown";
-			if (rand(2) === 0) return "head";
+			if (rand(2) == 0) return "crown";
+			if (rand(2) == 0) return "head";
 			return "cock-head";
 		}
 
@@ -3559,13 +3563,13 @@ package classes
 		public function cockDescriptShort(i_cockIndex:int = 0):String
 		{
 			// catch calls where we're outside of combat, and eCockDescript could be called.
-			if (cocks.length === 0)
+			if (cocks.length == 0)
 				return "<B>ERROR. INVALID CREATURE SPECIFIED to cockDescriptShort</B>";
 
 			var description:String = "";
 			var descripted:Boolean = false;
 			//Discuss length one in 3 times
-			if (rand(3) === 0) {
+			if (rand(3) == 0) {
 				if (cocks[i_cockIndex].cockLength >= 30)
 					description = "towering ";
 				else if (cocks[i_cockIndex].cockLength >= 18)
@@ -3582,7 +3586,7 @@ package classes
 					description = "short ";
 				descripted = true;
 			}
-			else if (rand(2) === 0) { //Discuss girth one in 2 times if not already talked about length.
+			else if (rand(2) == 0) { //Discuss girth one in 2 times if not already talked about length.
 				//narrow, thin, ample, broad, distended, voluminous
 				if (cocks[i_cockIndex].cockThickness <= .75) description = "narrow ";
 				if (cocks[i_cockIndex].cockThickness > 1 && cocks[i_cockIndex].cockThickness <= 1.4) description = "ample ";
@@ -3698,8 +3702,8 @@ package classes
 			}
 			//Modify armor rating based on weapons.
 			if (applyModifiers) {
-				if (game.player.weapon === game.weapons.JRAPIER || game.player.weapon === game.weapons.SPEAR || game.player.weaponName.indexOf("staff") !== -1 && game.player.hasPerk(PerkLib.StaffChanneling)) armorMod = 0;
-				if (game.player.weapon === game.weapons.KATANA) armorMod -= 5;
+				if (game.player.weapon == game.weapons.JRAPIER || game.player.weapon == game.weapons.SPEAR || game.player.weaponName.indexOf("staff") != -1 && game.player.hasPerk(PerkLib.StaffChanneling)) armorMod = 0;
+				if (game.player.weapon == game.weapons.KATANA) armorMod -= 5;
 				if (game.player.hasPerk(PerkLib.LungingAttacks)) armorMod /= 2;
 				if (armorMod < 0) armorMod = 0;
 			}
@@ -3709,7 +3713,7 @@ package classes
 			//Take damage you masochist!
 			if (hasPerk(PerkLib.Masochist) && lib >= 60) {
 				mult *= 0.8;
-				if (short === game.player.short && !displayMode) dynStats("lus", 2);
+				if (short == game.player.short && !displayMode) dynStats("lus", 2);
 			}
 			if (hasPerk(PerkLib.ImmovableObject) && tou >= 75) {
 				mult *= 0.9;
@@ -3721,7 +3725,7 @@ package classes
 				mult *= 0.75;
 			// Uma's Massage bonuses
 			var effect:StatusEffectClass = statusEffectByType(StatusEffects.UmasMassage);
-			if (effect !== null && effect.value1 === UmasShop.MASSAGE_RELAXATION) {
+			if (effect != null && effect.value1 == UmasShop.MASSAGE_RELAXATION) {
 				mult *= effect.value2;
 			}
 			//Round things off.
@@ -3784,14 +3788,14 @@ package classes
 			//Berserking removes half!
 			if (hasStatusEffect(StatusEffects.Lustzerking)) lust += ((100 - lust) / 2);
 			//Items
-			if (jewelryEffectId === JewelryLib.PURITY) lust *= 1 - (jewelryEffectMagnitude / 100);
-			if (armorName === game.armors.DBARMOR.name) lust *= 0.9;
-			if (weaponName === game.weapons.HNTCANE.name) lust *= 0.75;
+			if (jewelryEffectId == JewelryLib.PURITY) lust *= 1 - (jewelryEffectMagnitude / 100);
+			if (armorName == game.armors.DBARMOR.name) lust *= 0.9;
+			if (weaponName == game.weapons.HNTCANE.name) lust *= 0.75;
 			// Lust mods from Uma's content -- Given the short duration and the gem cost, I think them being multiplicative is justified.
 			// Changing them to an additive bonus should be pretty simple (check the static values in UmasShop.as)
 			var effect:StatusEffectClass = statusEffectByType(StatusEffects.UmasMassage);
-			if (effect !== null) {
-				if (effect.value1 === UmasShop.MASSAGE_RELIEF || effect.value1 === UmasShop.MASSAGE_LUST) {
+			if (effect != null) {
+				if (effect.value1 == UmasShop.MASSAGE_RELIEF || effect.value1 == UmasShop.MASSAGE_LUST) {
 					lust *= effect.value2;
 				}
 			}
@@ -3810,7 +3814,7 @@ package classes
 			var chance:Number = 0;
 			if (hasPerk(PerkLib.Evade)) chance += 10;
 			if (hasPerk(PerkLib.Flexibility)) chance += 6;
-			if (hasPerk(PerkLib.Misdirection) && armorName === "red, high-society bodysuit") chance += 10;
+			if (hasPerk(PerkLib.Misdirection) && armorName == "red, high-society bodysuit") chance += 10;
 			return chance;
 		}
 	   
@@ -3833,8 +3837,8 @@ package classes
 		public function getEvasionReason(useMonster:Boolean = true, attackSpeed:int = int.MIN_VALUE):String
 		{
 			// speed
-			if (useMonster && game.monster !== null && attackSpeed === int.MIN_VALUE) attackSpeed = game.monster.spe;
-			if (attackSpeed !== int.MIN_VALUE && spe - attackSpeed > 0 && int(Math.random() * (((spe - attackSpeed) / 4) + 80)) > 80) return "Speed";
+			if (useMonster && game.monster != null && attackSpeed == int.MIN_VALUE) attackSpeed = game.monster.spe;
+			if (attackSpeed != int.MIN_VALUE && spe - attackSpeed > 0 && int(Math.random() * (((spe - attackSpeed) / 4) + 80)) > 80) return "Speed";
 			//note, Player.speedDodge is still used, since this function can't return how close it was
 
 			evasionRoll = rand(100);
@@ -3842,13 +3846,13 @@ package classes
 			// perks
 			if (hasPerk(PerkLib.Evade) && ((evasionRoll = evasionRoll - 10) < 0)) return "Evade";
 			if (hasPerk(PerkLib.Flexibility) && ((evasionRoll = evasionRoll - 6) < 0)) return "Flexibility";
-			if (hasPerk(PerkLib.Misdirection) && armorName === "red, high-society bodysuit" && ((evasionRoll = evasionRoll - 10) < 0)) return "Misdirection";
+			if (hasPerk(PerkLib.Misdirection) && armorName == "red, high-society bodysuit" && ((evasionRoll = evasionRoll - 10) < 0)) return "Misdirection";
 			return null;
 		}
 	   
 		public function getEvasionRoll(useMonster:Boolean = true, attackSpeed:int = int.MIN_VALUE):Boolean
 		{
-			return getEvasionReason(useMonster, attackSpeed) !== null;
+			return getEvasionReason(useMonster, attackSpeed) != null;
 		}
 		
 		public function maxFatigue():Number
@@ -3856,7 +3860,6 @@ package classes
 			var max:Number = 100;
 			if (findPerk(PerkLib.ImprovedEndurance) >= 0) max += 20;
 			if (findPerk(PerkLib.AscensionEndurance) >= 0) max += perkv1(PerkLib.AscensionEndurance) * 5;
-			if (max < 50) max = 50;
 			if (max > 999) max = 999;
 			return max;
 		}
@@ -3875,10 +3878,9 @@ package classes
 				max += level * 5;
 			else
 				max += level * 15;
-			if (jewelryEffectId === JewelryLib.MODIFIER_HP) max += jewelryEffectMagnitude;
+			if (jewelryEffectId == JewelryLib.MODIFIER_HP) max += jewelryEffectMagnitude;
 			max *= 1 + (countCockSocks("green") * 0.02);
 			max = Math.round(max);
-			if (max < 50) max = 50;
 			if (max > 9999) max = 9999;
 			return max;
 		}
@@ -3896,12 +3898,11 @@ package classes
 		public function maxLust():Number
 		{
 			var max:Number = 100;
-			if (this === game.player && game.player.demonScore() >= 4) max += 20;
+			if (this == game.player && game.player.demonScore() >= 4) max += 20;
 			if (findPerk(PerkLib.ImprovedSelfControl) >= 0) max += 20;
 			if (findPerk(PerkLib.BroBody) >= 0 || findPerk(PerkLib.BimboBody) >= 0 || findPerk(PerkLib.FutaForm) >= 0) max += 20;
 			if (findPerk(PerkLib.OmnibusGift) >= 0) max += 15;
 			if (findPerk(PerkLib.AscensionDesires) >= 0) max += perkv1(PerkLib.AscensionDesires) * 5;
-			if (max < 50) max = 50;
 			if (max > 999) max = 999;
 			return max;
 		}
@@ -3933,7 +3934,7 @@ package classes
 				mod += perkv1(PerkLib.WizardsFocus);
 			}
 			if (hasPerk(PerkLib.ChiReflowMagic)) mod += UmasShop.NEEDLEWORK_MAGIC_SPELL_MULTI;
-			if (jewelryEffectId === JewelryLib.MODIFIER_SPELL_POWER) mod += (jewelryEffectMagnitude / 100);
+			if (jewelryEffectId == JewelryLib.MODIFIER_SPELL_POWER) mod += (jewelryEffectMagnitude / 100);
 			if (countCockSocks("blue") > 0) mod += (countCockSocks("blue") * .05);
 			if (hasPerk(PerkLib.AscensionMysticality)) mod *= 1 + (perkv1(PerkLib.AscensionMysticality) * 0.05);
 			return mod;
@@ -3964,7 +3965,7 @@ package classes
 		 * */
 		public static function parseDynStatsArgs(c:Creature, args:Array):Object {
 			// Check num of args, we should have a multiple of 2
-			if ((args.length % 2) !== 0)
+			if ((args.length % 2) != 0)
 			{
 				//trace("dynStats aborted. Keys->Arguments could not be matched");
 				return {str:0,tou:0,spe:0,inte:0,wis:0,lib:0,sens:0,lust:0,cor:0,scale:true,max:true};
@@ -3999,10 +4000,10 @@ package classes
 			
 			for (var i:int = 0; i < args.length; i += 2)
 			{
-				if (typeof(args[i]) === "string")
+				if (typeof(args[i]) == "string")
 				{
 					// Make sure the next arg has the POSSIBILITY of being correct
-					if ((typeof(args[i + 1]) !== "number") && (typeof(args[i + 1]) !== "boolean"))
+					if ((typeof(args[i + 1]) != "number") && (typeof(args[i + 1]) != "boolean"))
 					{
 						//trace("dynStats aborted. Next argument after argName is invalid! arg is type " + typeof(args[i + 1]));
 						continue;
@@ -4010,7 +4011,7 @@ package classes
 					var argOp:String = "";
 					// Figure out which array to search
 					var argsi:String = (args[i] as String);
-					if ("+-*/=".indexOf(argsi.charAt(argsi.length - 1)) !== -1) {
+					if ("+-*/=".indexOf(argsi.charAt(argsi.length - 1)) != -1) {
 						argOp = argsi.charAt(argsi.length - 1);
 						argsi = argsi.slice(0, argsi.length - 1);
 					}

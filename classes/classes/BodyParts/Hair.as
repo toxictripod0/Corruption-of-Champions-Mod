@@ -17,9 +17,9 @@ package classes.BodyParts
 		public static const BASILISK_PLUME:int  =    7;
 		public static const WOOL:int            =    8;
 
-		public var type:int = NORMAL;
+		public var type:Number   = NORMAL;
 		public var color:String  = "no";
-		public var length:int = 0;
+		public var length:Number = 0;
 
 		public function restore():void
 		{

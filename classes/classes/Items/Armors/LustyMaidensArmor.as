@@ -84,8 +84,8 @@ package classes.Items.Armors
 		
 		//"Chaste" Paizuri - works for most foes with penises.
 		public function lustyMaidenPaizuri(player:Player = null, monster:Monster = null):void {
-			if (player === null) player = game.player;
-			if (monster === null) monster = game.monster;
+			if (player == null) player = game.player;
+			if (monster == null) monster = game.monster;
 			clearOutput();
 			outputText("You make sure " + monster.a + monster.short + " is comfortably lying down, " + monster.pronoun3 + " " + monster.cockDescriptShort(0) + " exposed to the air");
 			if (monster.lust100 < 50) outputText(", soft and not yet ready.  You purr throatily as you touch the burgeoning boner, tracing your thumb across the sensitive urethral bulge.  It pulses slowly at your touch, and the base begins to fill with blood, thickening against your palm.  You splay your remaining fingers just under the " + monster.cockHead() + ", tickling around the glans until that too is flooding with blood, expanding under your caresses until it slowly lifts away from " + monster.pronoun3 + " abdomen.");
@@ -102,7 +102,7 @@ package classes.Items.Armors
 
 			outputText("\n\n" + monster.capitalA + monster.short + " nods solemnly while " + monster.pronoun3 + " eyes half-cross from pleasure.  You bottom out around " + monster.pronoun3 + " base");
 			if (monster.balls > 0) outputText(" and fondle " + monster.pronoun3 + " balls one-handed, squeezing the virile orbs to try and coax more of " + monster.pronoun3 + " dirty, perverted thoughts to distill into salty seed");
-			else if (monster.short === "anemone") outputText(" and stroke " + monster.pronoun3 + " taint, even brushing over the featureless spot where an asshole would be, if she had one, to try and coax more of " + monster.pronoun3 + " dirty, perverted thoughts to distill into salty seed");
+			else if (monster.short == "anemone") outputText(" and stroke " + monster.pronoun3 + " taint, even brushing over the featureless spot where an asshole would be, if she had one, to try and coax more of " + monster.pronoun3 + " dirty, perverted thoughts to distill into salty seed");
 			else outputText(" and stroke " + monster.pronoun3 + " taint, even brushing close to " + monster.pronoun3 + " asshole to try and coax more of " + monster.pronoun3 + " dirty, perverted thoughts to distill into salty seed");
 			outputText(".  A startled moan slips out of " + monster.pronoun3 + " lips, but you're just getting warmed up.  You dive down onto " + monster.pronoun3 + " " + monster.cockDescriptShort(0) + ", taking the " + monster.cockHead() + " straight into your mouth with a smooth gulp.");
 			if (monster.cockArea(0) >= 80) outputText("  It's so big and strong that it pushes right into your throat, stretching out your neck in the shape of the intruding cock.");
@@ -134,7 +134,7 @@ package classes.Items.Armors
 			if (player.hasVirginVagina()) game.dynStats("cor", -1);
 			//If minotaur, increase addiction slightly.
 			if (monster is Minotaur || monster is MinotaurMob) player.minoCumAddiction(3);
-			if (monster.short === "Ceraph") game.flags[kFLAGS.CERAPH_BEATEN_AND_RAPED_COUNTER]++;
+			if (monster.short == "Ceraph") game.flags[kFLAGS.CERAPH_BEATEN_AND_RAPED_COUNTER]++;
 			//Usable on: Imps, Minotaurs, Satyrs, Incubus Mechanic, Anemones, Spider Guys, Akbal, Drider, Fetish Zealot, Sand Trap, Very Corrupt Jojo (Maybe slight decorruption to him), Ceraph, Red Kitsune if cock out.
 			if (game.inCombat)
 				game.combat.cleanupAfterCombat();

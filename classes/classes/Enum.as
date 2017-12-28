@@ -27,7 +27,7 @@ package classes
 		public static function GetConstants(i_type:Class):Array
 		{
 			var constants:EnumConstants = _enumDb[getQualifiedClassName(i_type)];
-			if (constants === null)
+			if (constants == null)
 				return null;
 			
 			// return a copy to prevent caller modifications
@@ -37,11 +37,11 @@ package classes
 		public static function ParseConstant(i_type:Class, i_constantName:String, i_caseSensitive:Boolean = false):Enum
 		{
 			var constants:EnumConstants = _enumDb[getQualifiedClassName(i_type)];
-			if (constants === null)
+			if (constants == null)
 				return null;
 			
 			var constant:Enum = constants.ByName[i_constantName.toLowerCase()];
-			if (i_caseSensitive && (constant !== null) && (i_constantName !== constant.Name))
+			if (i_caseSensitive && (constant != null) && (i_constantName != constant.Name))
 				return null;
 			
 			return constant;
@@ -50,11 +50,11 @@ package classes
 		public static function ParseConstantByIndex(i_type:Class, i_constantIndex:int):Enum
 		{
 			var constants:EnumConstants = _enumDb[getQualifiedClassName(i_type)];
-			if (constants === null)
+			if (constants == null)
 				return null;
 				
 			var constant:Enum = constants.ByIndex[i_constantIndex];
-			if (constant !== null && i_constantIndex !== constant.Index)
+			if (constant != null && i_constantIndex != constant.Index)
 				return null;
 				
 			return constant;			
@@ -70,16 +70,16 @@ package classes
 			
 			// discourage people new'ing up constants on their own instead
 			// of using the class constants
-			if (_enumDb[typeName] !== null)
+			if (_enumDb[typeName] != null)
 			{
 				//throw new Error("Enum constants can only be constructed as static consts " + "in their own enum class " + "(bad type='" + typeName + "')");
 			}
 			
-			if (_enumDb[typeName] === null)
+			if (_enumDb[typeName] == null)
 			{
 				// if opening up a new type, alloc an array for its constants
 				var constants:Array = _pendingDb[typeName];
-				if (constants === null)
+				if (constants == null)
 					_pendingDb[typeName] = constants = [];
 				
 				// record
@@ -93,16 +93,16 @@ package classes
 			var typeName:String = getQualifiedClassName(i_type);
 			
 			// can't call initEnum twice on same type (likely copy-paste bug)
-			if (_enumDb[typeName] !== null)
+			if (_enumDb[typeName] != null)
 			{
 				//throw new Error("Can't initialize enum twice (type='" + typeName + "')");
 			}
 			
-			if (_enumDb[typeName] === null)
+			if (_enumDb[typeName] == null)
 			{
 				// no constant is technically ok, but it's probably a copy-paste bug
 				var constants:Array = _pendingDb[typeName];
-				if (constants === null)
+				if (constants == null)
 				{
 					throw new Error("Can't have an enum without any constants (type='" + typeName + "')");
 				}
@@ -117,7 +117,7 @@ package classes
 					// if the types don't match then probably have a copy-paste error.
 					// this is really common so it's good to catch it here.
 					var enumConstantType:* = Object(enumConstant).constructor;
-					if (enumConstantType !== i_type)
+					if (enumConstantType != i_type)
 					{
 						throw new Error("Constant type '" + enumConstantType + "' " + "does not match its enum class '" + i_type + "'");
 					}

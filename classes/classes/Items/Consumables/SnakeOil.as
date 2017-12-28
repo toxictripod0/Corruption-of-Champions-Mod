@@ -62,19 +62,19 @@ package classes.Items.Consumables
 				//[removed:1.4.10]//changes++;
 			}
 			//Neck restore
-			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type != Neck.NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
 			//Rear body restore
-			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) mutations.restoreRearBody(tfSource);
+			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
 			//Ovi perk loss
 			if (rand(5) === 0) {
 				mutations.updateOvipositionPerk(tfSource);
 			}
 			//-Remove extra breast rows
-			if (changes < changeLimit && player.breastRows.length > 1 && rand(3) === 0 && !flags[kFLAGS.HYPER_HAPPY]) {
+			if (changes < changeLimit && player.breastRows.length > 1 && rand(3) == 0 && !flags[kFLAGS.HYPER_HAPPY]) {
 				mutations.removeExtraBreastRow(tfSource);
 			}
 			//Removes wings and shark fin
-			if ((player.wings.type !== Wings.NONE || player.rearBody.type === RearBody.SHARK_FIN) && rand(3) === 0 && changes < changeLimit) {
+			if ((player.wings.type != Wings.NONE || player.rearBody.type === RearBody.SHARK_FIN) && rand(3) === 0 && changes < changeLimit) {
 				if (player.rearBody.type === RearBody.SHARK_FIN) {
 					outputText("\n\nA wave of tightness spreads through your back, and it feels as if someone is stabbing a dagger into your spine."
 					          +" After a moment the pain passes, though your fin is gone!");
@@ -87,7 +87,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Removes antennae
-			if (player.antennae.type !== Antennae.NONE && rand(3) === 0 && changes < changeLimit) {
+			if (player.antennae.type != Antennae.NONE && rand(3) === 0 && changes < changeLimit) {
 				mutations.removeAntennae();
 			}
 			//9c) II The tongue (sensitivity bonus, stored as a perk?)

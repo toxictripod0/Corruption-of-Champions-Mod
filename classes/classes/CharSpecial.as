@@ -387,7 +387,7 @@ package classes
 			//Other:
 			if (!player.hasVagina()) {
 				player.createVagina();
-				if (player.getClitLength() === 0) player.setClitLength(0.25);
+				if (player.getClitLength() == 0) player.setClitLength(0.25);
 			}
 			//Hair length: Very long
 			player.hair.length = 22;
@@ -1586,7 +1586,7 @@ package classes
 			player.setClitLength(0.3);
 			player.fertility = 5;
 			
-			if (player.bRows() === 0) player.createBreastRow();			
+			if (player.bRows() == 0) player.createBreastRow();			
 			player.breastRows[0].breastRating = BreastCup.A; // a-cup, 'cause huge boobs wouldn't fit your small frame... in fact, you almost considered to have flats
 			
 			player.ballSize = 0;
@@ -1673,8 +1673,8 @@ package classes
 			if (player.findPerk(PerkLib.Incorporeality) < 0) player.createPerk(PerkLib.Incorporeality, 0, 0, 0, 0);	// some was... strange
 			// Metamorph, Magic Metabolism and Puppeteer suggested perks would be also nice addition to character, but they are not implemented yet
 			
-			if (player.armor === ArmorLib.NOTHING || player.armor === armors.C_CLOTH) player.setArmor(armors.KIMONO);
-			if (player.weapon === WeaponLib.FISTS) player.setWeapon(weapons.KATANA);
+			if (player.armor == ArmorLib.NOTHING || player.armor == armors.C_CLOTH) player.setArmor(armors.KIMONO);
+			if (player.weapon == WeaponLib.FISTS) player.setWeapon(weapons.KATANA);
 			
 			// you still aren't sure about gender preferences, but have some stashed eggs just in case... [why almost all inventory functions are private?]
 			if (player.itemSlot1.isEmpty())  player.itemSlot1.setItemAndQty(consumables.L_PNKEG, 1); // if you want to get rid of tentacles, but still maintain dragon one you'll have to find Ceraph
@@ -1711,7 +1711,7 @@ package classes
 			player.vaginas[0].vaginalWetness = rand(4)+1; // from normal to slavering
 			player.vaginas[0].virgin = false;
 			
-			player.setClitLength(rand(3) === 0 ? (rand(10)+1)*0.25 : 0.25); // from 0.25 to 2.5
+			player.setClitLength(rand(3) == 0 ? (rand(10)+1)*0.25 : 0.25); // from 0.25 to 2.5
 			player.fertility = (rand(5)+1)*5; // from 5 to 25 with 5 step
 			
 			// 1-4 breast rows, from flats to dd sized
@@ -1724,9 +1724,9 @@ package classes
 			else
 				player.breastRows[row].breastRating = player.breastRows[row-1].breastRating - rand(2); // lower rows are same size or one size smaller than upper
 			row++;
-			}while(row < 4 && rand(2) === 0 && player.breastRows[0].breastRating > 1); // if last row was flat do not add more
+			}while(row < 4 && rand(2) == 0 && player.breastRows[0].breastRating > 1); // if last row was flat do not add more
 						
-			var tent:Boolean = rand(5) === 0; // 20% chance to have tentacle cluster
+			var tent:Boolean = rand(5) == 0; // 20% chance to have tentacle cluster
 			var cocks:Number = rand(5)+(tent ? 4 : 2); // 2-6 mixed cocks
 			var i:int; 
 			for (i = 0; i < cocks; i++) 
@@ -1771,7 +1771,7 @@ package classes
 				else
 					player.cocks[i].cockType = CockTypesEnum.PIG;				
 					
-				if (player.cocks[i].knotMultiplier === 1 && rand(5) === 0)
+				if (player.cocks[i].knotMultiplier == 1 && rand(5) == 0)
 					player.cocks[i].knotMultiplier = 1.2 + rand(9) / 10.;
 			}
 			
@@ -1780,7 +1780,7 @@ package classes
 			var balls:Number = rand(5);
 			if (balls <= 1){player.balls = 0;}
 			else if (balls <= 3){player.balls = 2;}
-			else if (balls === 4){player.balls = 4;}
+			else if (balls == 4){player.balls = 4;}
 			if (player.balls>0)player.ballSize = rand(4)+1;
 			player.cumMultiplier = 5+player.ballSize*player.balls*2.5+rand(25);
 			
@@ -1824,48 +1824,48 @@ package classes
 				player.skin.desc = "skin";
 				player.skin.adj = "slimy";}
 					
-			if (rand(3) !== 0) // 2/3 to have human face
+			if (rand(3) != 0) // 2/3 to have human face
 				player.face.type = Face.HUMAN;
 			else // totally random one
 				player.face.type = rand(20)+1; // since it is not a enum, it is impossible to make it auto-ajust...
 				
-			if (player.face.type === Face.SPIDER_FANGS && rand(2) === 0)
+			if (player.face.type == Face.SPIDER_FANGS && rand(2) == 0)
 					player.eyes.type = Eyes.FOUR_SPIDER_EYES; // 50% to have spider eyes with spider fangs
-			else if (rand(20) === 0) // 5% for inhuman eyes otherwise
-				if (rand(2) === 0)
+			else if (rand(20) == 0) // 5% for inhuman eyes otherwise
+				if (rand(2) == 0)
 					player.eyes.type = Eyes.FOUR_SPIDER_EYES;
 				else
 					player.eyes.type = Eyes.BLACK_EYES_SAND_TRAP;
 
-			if (player.face.type === Face.HUMAN && rand(2)!=0) // if human face, 50% to have human ears
+			if (player.face.type == Face.HUMAN && rand(2)!=0) // if human face, 50% to have human ears
 				player.ears.type = Ears.HUMAN;
 			else // totally random one
 				player.ears.type = rand(14)+1; // since it is not a enum, it is impossible to make it auto-ajust...
 
 
-			if (rand(2) !== 0) // 50% to have human lower body
+			if (rand(2) != 0) // 50% to have human lower body
 				player.lowerBody.type = LowerBody.HUMAN;
 			else // totally random one
 			{
 				player.lowerBody.type = rand(21) + 1; // since it is not a enum, it is impossible to make it auto-ajust...
-				if (player.lowerBody.type === 4) {
+				if (player.lowerBody.type == 4) {
 					player.lowerBody.type = LowerBody.HOOFED;
 					player.lowerBody.legCount = 4;
 				}
-				else if (player.lowerBody.type === LowerBody.DRIDER)
+				else if (player.lowerBody.type == LowerBody.DRIDER)
 					player.lowerBody.legCount = 8;
-				else if (player.lowerBody.type === LowerBody.NAGA || player.lowerBody.type === LowerBody.GOO)	
+				else if (player.lowerBody.type == LowerBody.NAGA || player.lowerBody.type == LowerBody.GOO)	
 					player.lowerBody.legCount = 1;
-				else if (rand(15) === 0)
+				else if (rand(15) == 0)
 					player.lowerBody.legCount = 4;
 			}
 			
 			player.tail.type = rand(21); // always have totally random tail
-			if (player.tail.type === Tail.SPIDER_ABDOMEN || player.tail.type === Tail.BEE_ABDOMEN)
+			if (player.tail.type == Tail.SPIDER_ABDOMEN || player.tail.type == Tail.BEE_ABDOMEN)
 			{ // insect abdomens comes with poison
 				player.tail.venom = 5;
 				player.tail.recharge = 5;
-				if (player.tail.type === Tail.SPIDER_ABDOMEN && rand(2)==0)
+				if (player.tail.type == Tail.SPIDER_ABDOMEN && rand(2)==0)
 					player.createPerk(PerkLib.SpiderOvipositor, 0, 0, 0, 0); // spider abdomen have chance 50/50 to have ovipositor
 			}
 			
@@ -1891,20 +1891,20 @@ package classes
 				player.horns.value = 2;}
 			
 			var wings:Number = rand(4); // always have wings to fly... small boon to make up for lack of fighting power
-			if (wings === 0)
+			if (wings == 0)
 				player.wings.type = Wings.BAT_LIKE_LARGE;
-			else if (wings === 1)
+			else if (wings == 1)
 				player.wings.type = Wings.FEATHERED_LARGE;
-			else if (wings === 2)
+			else if (wings == 2)
 				player.wings.type = Wings.DRACONIC_LARGE;
 			else
 				player.wings.type = Wings.GIANT_DRAGONFLY;
 				
 			
 			var arms:Number = rand(100); // if have harpy wings 33% chance to have harpy hands, otherwise 5% to have spider hands
-			if (player.wings.type === Wings.FEATHERED_LARGE && rand(4) === 0)
+			if (player.wings.type == Wings.FEATHERED_LARGE && rand(4) == 0)
 				player.arms.type = Arms.HARPY;
-			else if (rand(20) === 0)
+			else if (rand(20) == 0)
 				player.arms.type = Arms.SPIDER;
 			else
 				player.arms.type = Arms.HUMAN;

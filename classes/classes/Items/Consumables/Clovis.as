@@ -69,10 +69,10 @@ package classes.Items.Consumables
 				outputText("\n\nYou feel your clothes tighten around your [butt], your behind expanding. Thankfully, it stops before your clothes can't handle it. As you run your hand over the tight fabric, you can't help but grope the now plumper flesh.");
 			}
 			//Neck restore
-			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0)
+			if (player.neck.type != Neck.NORMAL && changes < changeLimit && rand(4) == 0)
 				mutations.restoreNeck(tfSource);
 			//Rear body restore
-			if (player.rearBody.type !== RearBody.NONE && changes < changeLimit && rand(5) === 0) mutations.restoreRearBody(tfSource);
+			if (player.rearBody.type != RearBody.NONE && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
 			if (player.ears.type !== Ears.SHEEP && rand(3) === 0 && changes < changeLimit) {
 				if (player.ears.type === -1) { outputText("\n\nTwo painful nubs begin sprouting from your head, growing out in a tear-drop shape and flopping over. To top it off, wool coats them."); } else { outputText("\n\nYou feel your ears shift and elongate, becoming much floppier. They take on a more tear drop shape, flopping at the side of your head cutely as a light coat of downy wool forms on them.");	}		
 				player.ears.type = Ears.SHEEP;

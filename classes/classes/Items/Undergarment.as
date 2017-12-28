@@ -30,9 +30,9 @@ package classes.Items
 		override public function get description():String {
 			var desc:String = _description;
 			desc += "\n\nType: Undergarment ";
-			if (type === 0) desc += "(Upper)";
-			else if (type === 1) desc += "(Lower)";
-			else if (type === 2) desc += "(Full)";
+			if (type == 0) desc += "(Upper)";
+			else if (type == 1) desc += "(Lower)";
+			else if (type == 2) desc += "(Full)";
 			//Defense
 			if (armorDef > 0) desc += "\nDefense: " + String(armorDef);
 			//Sexiness
@@ -40,7 +40,7 @@ package classes.Items
 			//Value
 			desc += "\nBase value: " + String(value);
 			//Naga wearable?
-			if (type === 1 && perk === "NagaWearable" && game.player.isNaga()) desc += "\nNagas aren't restricted from wearing this type of lower undergarment.";
+			if (type == 1 && perk == "NagaWearable" && game.player.isNaga()) desc += "\nNagas aren't restricted from wearing this type of lower undergarment.";
 			return desc;
 		}
 		
@@ -103,7 +103,7 @@ package classes.Items
 				outputText("It would be awkward to put on undergarments when you're currently wearing your type of clothing. You should consider switching to different clothes. You put it back into your inventory.");
 				return false;
 			}
-			if (type === UndergarmentLib.TYPE_LOWERWEAR) {
+			if (type == UndergarmentLib.TYPE_LOWERWEAR) {
 				if (game.player.isBiped() || game.player.isGoo()) {
 					return true; //It doesn't matter what leg type you have as long as you're biped.
 				}
@@ -112,7 +112,7 @@ package classes.Items
 					return false;
 				}
 				else if (game.player.isNaga()) {
-					if (perk !== "NagaWearable") {
+					if (perk != "NagaWearable") {
 						outputText("It's impossible to put on this undergarment as it's designed for someone with two legs. You put it back into your inventory.");
 						return false;
 					}

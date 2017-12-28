@@ -42,38 +42,38 @@ package classes
 		}
 
 		private function setOrUpdateSettings(pane:SettingPane):void {
-			if (pane.name === PANES_CONFIG[0][0]) {
+			if (pane.name == PANES_CONFIG[0][0]) {
 				pane.addOrUpdateToggleSettings("Game Difficulty", [
 					["Choose", difficultySelectionMenu, getDifficultyText(), false],
 					"overridesLabel"
 				]);
 				pane.addOrUpdateToggleSettings("Debug Mode", [
-					["ON", createCallBackFunction(toggleDebug, true), "Items will not be consumed by use, fleeing always succeeds, and bad-ends can be ignored.", debug === true],
-					["OFF", createCallBackFunction(toggleDebug, false), "Items consumption will occur as normal.", debug === false]
+					["ON", createCallBackFunction(toggleDebug, true), "Items will not be consumed by use, fleeing always succeeds, and bad-ends can be ignored.", debug == true],
+					["OFF", createCallBackFunction(toggleDebug, false), "Items consumption will occur as normal.", debug == false]
 				]);
 				pane.addOrUpdateToggleSettings("Silly Mode", [
-					["ON", createCallBackFunction(toggleSetting, kFLAGS.SILLY_MODE_ENABLE_FLAG, true), "Crazy, nonsensical, and possibly hilarious things may occur.", flags[kFLAGS.SILLY_MODE_ENABLE_FLAG] === true],
-					["OFF", createCallBackFunction(toggleSetting, kFLAGS.SILLY_MODE_ENABLE_FLAG, false), "You're an incorrigible stick-in-the-mud with no sense of humor.", flags[kFLAGS.SILLY_MODE_ENABLE_FLAG] === false]
+					["ON", createCallBackFunction(toggleSetting, kFLAGS.SILLY_MODE_ENABLE_FLAG, true), "Crazy, nonsensical, and possibly hilarious things may occur.", flags[kFLAGS.SILLY_MODE_ENABLE_FLAG] == true],
+					["OFF", createCallBackFunction(toggleSetting, kFLAGS.SILLY_MODE_ENABLE_FLAG, false), "You're an incorrigible stick-in-the-mud with no sense of humor.", flags[kFLAGS.SILLY_MODE_ENABLE_FLAG] == false]
 				]);
 				pane.addOrUpdateToggleSettings("Low Standards", [
-					["ON", createCallBackFunction(toggleSetting, kFLAGS.LOW_STANDARDS_FOR_ALL, true), "NPCs ignore body type preferences. Not gender preferences though; you still need the right hole.", flags[kFLAGS.LOW_STANDARDS_FOR_ALL] === true],
-					["OFF", createCallBackFunction(toggleSetting, kFLAGS.LOW_STANDARDS_FOR_ALL, false), "NPCs have body-type preferences.", flags[kFLAGS.LOW_STANDARDS_FOR_ALL] === false]
+					["ON", createCallBackFunction(toggleSetting, kFLAGS.LOW_STANDARDS_FOR_ALL, true), "NPCs ignore body type preferences. Not gender preferences though; you still need the right hole.", flags[kFLAGS.LOW_STANDARDS_FOR_ALL] == true],
+					["OFF", createCallBackFunction(toggleSetting, kFLAGS.LOW_STANDARDS_FOR_ALL, false), "NPCs have body-type preferences.", flags[kFLAGS.LOW_STANDARDS_FOR_ALL] == false]
 				]);
 				pane.addOrUpdateToggleSettings("Hyper Happy", [
-					["ON", createCallBackFunction(toggleSetting, kFLAGS.HYPER_HAPPY, true), "Only reducto and humus shrink endowments. Incubus draft doesn't affect breasts, and succubi milk doesn't affect cocks.", flags[kFLAGS.HYPER_HAPPY] === true],
-					["OFF", createCallBackFunction(toggleSetting, kFLAGS.HYPER_HAPPY, false), "Male enhancement potions shrink female endowments, and vice versa.", flags[kFLAGS.HYPER_HAPPY] === false]
+					["ON", createCallBackFunction(toggleSetting, kFLAGS.HYPER_HAPPY, true), "Only reducto and humus shrink endowments. Incubus draft doesn't affect breasts, and succubi milk doesn't affect cocks.", flags[kFLAGS.HYPER_HAPPY] == true],
+					["OFF", createCallBackFunction(toggleSetting, kFLAGS.HYPER_HAPPY, false), "Male enhancement potions shrink female endowments, and vice versa.", flags[kFLAGS.HYPER_HAPPY] == false]
 				]);
 				pane.addOrUpdateToggleSettings("Automatic Leveling", [
-					["ON", createCallBackFunction(toggleSetting, kFLAGS.AUTO_LEVEL, true), "Leveling up is done automatically once you accumulate enough experience.", flags[kFLAGS.AUTO_LEVEL] === true],
-					["OFF", createCallBackFunction(toggleSetting, kFLAGS.AUTO_LEVEL, false), "Leveling up is done manually by pressing 'Level Up' button.", flags[kFLAGS.AUTO_LEVEL] === false]
+					["ON", createCallBackFunction(toggleSetting, kFLAGS.AUTO_LEVEL, true), "Leveling up is done automatically once you accumulate enough experience.", flags[kFLAGS.AUTO_LEVEL] == true],
+					["OFF", createCallBackFunction(toggleSetting, kFLAGS.AUTO_LEVEL, false), "Leveling up is done manually by pressing 'Level Up' button.", flags[kFLAGS.AUTO_LEVEL] == false]
 				]);
 				pane.addOrUpdateToggleSettings("SFW Mode", [
-					["ON", createCallBackFunction(toggleSetting, kFLAGS.SFW_MODE, true), "SFW mode is enabled. You won't see sex scenes nor will you get raped.", flags[kFLAGS.SFW_MODE] === true],
-					["OFF", createCallBackFunction(toggleSetting, kFLAGS.SFW_MODE, false), "SFW mode is disabled. You'll see sex scenes.", flags[kFLAGS.SFW_MODE] === false]
+					["ON", createCallBackFunction(toggleSetting, kFLAGS.SFW_MODE, true), "SFW mode is enabled. You won't see sex scenes nor will you get raped.", flags[kFLAGS.SFW_MODE] == true],
+					["OFF", createCallBackFunction(toggleSetting, kFLAGS.SFW_MODE, false), "SFW mode is disabled. You'll see sex scenes.", flags[kFLAGS.SFW_MODE] == false]
 				]);
 				pane.addOrUpdateToggleSettings("Prison", [
-					["ON", createCallBackFunction(toggleSetting, kFLAGS.PRISON_ENABLED, true), "The prison can be accessed.\nWARNING: The prison is very buggy and may break your game. Enter it at your own risk!", flags[kFLAGS.PRISON_ENABLED] === true],
-					["OFF", createCallBackFunction(toggleSetting, kFLAGS.PRISON_ENABLED, false), "The prison cannot be accessed.", flags[kFLAGS.PRISON_ENABLED] === false]
+					["ON", createCallBackFunction(toggleSetting, kFLAGS.PRISON_ENABLED, true), "The prison can be accessed.\nWARNING: The prison is very buggy and may break your game. Enter it at your own risk!", flags[kFLAGS.PRISON_ENABLED] == true],
+					["OFF", createCallBackFunction(toggleSetting, kFLAGS.PRISON_ENABLED, false), "The prison cannot be accessed.", flags[kFLAGS.PRISON_ENABLED] == false]
 				]);
 				pane.addOrUpdateToggleSettings("Enable Survival", [
 					["Enable", enableSurvivalPrompt, "Survival mode is already enabled.", flags[kFLAGS.HUNGER_ENABLED] >= 0.5]
@@ -83,7 +83,7 @@ package classes
 				]);
 				pane.update();
 			}
-			else if (pane.name === PANES_CONFIG[1][0]) {
+			else if (pane.name == PANES_CONFIG[1][0]) {
 				pane.addOrUpdateToggleSettings("Main Background", [
 					["Choose", menuMainBackground, "", false]
 				]);
@@ -95,40 +95,40 @@ package classes
 					"overridesLabel"
 				]);
 				pane.addOrUpdateToggleSettings("Sidebar Font", [
-					["New", createCallBackFunction(toggleSetting, kFLAGS.USE_OLD_FONT, false), "Palatino Linotype will be used. This is the current font.", flags[kFLAGS.USE_OLD_FONT] === false],
-					["Old", createCallBackFunction(toggleSetting, kFLAGS.USE_OLD_FONT, true), "Lucida Sans Typewriter will be used. This is the old font.", flags[kFLAGS.USE_OLD_FONT] === true]
+					["New", createCallBackFunction(toggleSetting, kFLAGS.USE_OLD_FONT, false), "Palatino Linotype will be used. This is the current font.", flags[kFLAGS.USE_OLD_FONT] == false],
+					["Old", createCallBackFunction(toggleSetting, kFLAGS.USE_OLD_FONT, true), "Lucida Sans Typewriter will be used. This is the old font.", flags[kFLAGS.USE_OLD_FONT] == true]
 				]);
 				pane.addOrUpdateToggleSettings("Sprites", [
-					["Off", createCallBackFunction(toggleSetting, kFLAGS.SHOW_SPRITES_FLAG, 0), "There are only words. Nothing else.", flags[kFLAGS.SHOW_SPRITES_FLAG] === 0],
-					["Old", createCallBackFunction(toggleSetting, kFLAGS.SHOW_SPRITES_FLAG, 1), "You like to look at pretty pictures. Old, 8-bit sprites will be shown.", flags[kFLAGS.SHOW_SPRITES_FLAG] === 1],
-					["New", createCallBackFunction(toggleSetting, kFLAGS.SHOW_SPRITES_FLAG, 2), "You like to look at pretty pictures. New, 16-bit sprites will be shown.", flags[kFLAGS.SHOW_SPRITES_FLAG] === 2]
+					["Off", createCallBackFunction(toggleSetting, kFLAGS.SHOW_SPRITES_FLAG, 0), "There are only words. Nothing else.", flags[kFLAGS.SHOW_SPRITES_FLAG] == 0],
+					["Old", createCallBackFunction(toggleSetting, kFLAGS.SHOW_SPRITES_FLAG, 1), "You like to look at pretty pictures. Old, 8-bit sprites will be shown.", flags[kFLAGS.SHOW_SPRITES_FLAG] == 1],
+					["New", createCallBackFunction(toggleSetting, kFLAGS.SHOW_SPRITES_FLAG, 2), "You like to look at pretty pictures. New, 16-bit sprites will be shown.", flags[kFLAGS.SHOW_SPRITES_FLAG] == 2]
 				]);
 				pane.addOrUpdateToggleSettings("Image Pack", [
-					["ON", createCallBackFunction(toggleSetting, kFLAGS.IMAGEPACK_ENABLED, true), "Image pack is currently enabled.", flags[kFLAGS.IMAGEPACK_ENABLED] === true],
-					["OFF", createCallBackFunction(toggleSetting, kFLAGS.IMAGEPACK_ENABLED, false), "Images from image pack won't be shown.", flags[kFLAGS.IMAGEPACK_ENABLED] === false]
+					["ON", createCallBackFunction(toggleSetting, kFLAGS.IMAGEPACK_ENABLED, true), "Image pack is currently enabled.", flags[kFLAGS.IMAGEPACK_ENABLED] == true],
+					["OFF", createCallBackFunction(toggleSetting, kFLAGS.IMAGEPACK_ENABLED, false), "Images from image pack won't be shown.", flags[kFLAGS.IMAGEPACK_ENABLED] == false]
 				]);
 				pane.addOrUpdateToggleSettings("Time Format", [
-					["12-hour", createCallBackFunction(toggleSetting, kFLAGS.USE_12_HOURS, true), "Time will be shown in 12-hour format. (AM/PM)", flags[kFLAGS.USE_12_HOURS] === true],
-					["24-hour", createCallBackFunction(toggleSetting, kFLAGS.USE_12_HOURS, false), "Time will be shown in 24-hour format.", flags[kFLAGS.USE_12_HOURS] === false]
+					["12-hour", createCallBackFunction(toggleSetting, kFLAGS.USE_12_HOURS, true), "Time will be shown in 12-hour format. (AM/PM)", flags[kFLAGS.USE_12_HOURS] == true],
+					["24-hour", createCallBackFunction(toggleSetting, kFLAGS.USE_12_HOURS, false), "Time will be shown in 24-hour format.", flags[kFLAGS.USE_12_HOURS] == false]
 				]);
 				pane.addOrUpdateToggleSettings("Measurements", [
-					["Metric", createCallBackFunction(toggleSetting, kFLAGS.USE_METRICS, true), "Various measurements will be shown in metrics. (Centimeters, meters)", flags[kFLAGS.USE_METRICS] === true],
-					["Imperial", createCallBackFunction(toggleSetting, kFLAGS.USE_METRICS, false), "Various measurements will be shown in imperial units. (Inches, feet)", flags[kFLAGS.USE_METRICS] === false]
+					["Metric", createCallBackFunction(toggleSetting, kFLAGS.USE_METRICS, true), "Various measurements will be shown in metrics. (Centimeters, meters)", flags[kFLAGS.USE_METRICS] == true],
+					["Imperial", createCallBackFunction(toggleSetting, kFLAGS.USE_METRICS, false), "Various measurements will be shown in imperial units. (Inches, feet)", flags[kFLAGS.USE_METRICS] == false]
 				]);
 				pane.addOrUpdateToggleSettings("Quicksave Confirmation", [
-					["ON", createCallBackFunction(toggleSetting, kFLAGS.DISABLE_QUICKSAVE_CONFIRM, false), "Quicksave confirmation dialog is enabled.", flags[kFLAGS.DISABLE_QUICKSAVE_CONFIRM] === false],
-					["OFF", createCallBackFunction(toggleSetting, kFLAGS.DISABLE_QUICKSAVE_CONFIRM, true), "Quicksave confirmation dialog is disabled.", flags[kFLAGS.DISABLE_QUICKSAVE_CONFIRM] === true]
+					["ON", createCallBackFunction(toggleSetting, kFLAGS.DISABLE_QUICKSAVE_CONFIRM, false), "Quicksave confirmation dialog is enabled.", flags[kFLAGS.DISABLE_QUICKSAVE_CONFIRM] == false],
+					["OFF", createCallBackFunction(toggleSetting, kFLAGS.DISABLE_QUICKSAVE_CONFIRM, true), "Quicksave confirmation dialog is disabled.", flags[kFLAGS.DISABLE_QUICKSAVE_CONFIRM] == true]
 				]);
 				pane.addOrUpdateToggleSettings("Quickload Confirmation", [
-					["ON", createCallBackFunction(toggleSetting, kFLAGS.DISABLE_QUICKLOAD_CONFIRM, false), "Quickload confirmation dialog is enabled.", flags[kFLAGS.DISABLE_QUICKLOAD_CONFIRM] === false],
-					["OFF", createCallBackFunction(toggleSetting, kFLAGS.DISABLE_QUICKLOAD_CONFIRM, true), "Quickload confirmation dialog is disabled.", flags[kFLAGS.DISABLE_QUICKLOAD_CONFIRM] === true]
+					["ON", createCallBackFunction(toggleSetting, kFLAGS.DISABLE_QUICKLOAD_CONFIRM, false), "Quickload confirmation dialog is enabled.", flags[kFLAGS.DISABLE_QUICKLOAD_CONFIRM] == false],
+					["OFF", createCallBackFunction(toggleSetting, kFLAGS.DISABLE_QUICKLOAD_CONFIRM, true), "Quickload confirmation dialog is disabled.", flags[kFLAGS.DISABLE_QUICKLOAD_CONFIRM] == true]
 				]);
 				pane.update();
 			}
-			else if (pane.name === PANES_CONFIG[2][0]) {
+			else if (pane.name == PANES_CONFIG[2][0]) {
 				pane.addOrUpdateToggleSettings("Watersports (Urine)", [
-					["ON", createCallBackFunction(toggleSetting, kFLAGS.WATERSPORTS_ENABLED, true), "Watersports are enabled. You kinky person.", flags[kFLAGS.WATERSPORTS_ENABLED] === true],
-					["OFF", createCallBackFunction(toggleSetting, kFLAGS.WATERSPORTS_ENABLED, false), "You won't see watersports scenes.", flags[kFLAGS.WATERSPORTS_ENABLED] === false]
+					["ON", createCallBackFunction(toggleSetting, kFLAGS.WATERSPORTS_ENABLED, true), "Watersports are enabled. You kinky person.", flags[kFLAGS.WATERSPORTS_ENABLED] == true],
+					["OFF", createCallBackFunction(toggleSetting, kFLAGS.WATERSPORTS_ENABLED, false), "You won't see watersports scenes.", flags[kFLAGS.WATERSPORTS_ENABLED] == false]
 				]);
 				pane.addOrUpdateToggleSettings("Worms", [
 					["ON", createCallBackFunction(setWorms, true, false), "You have chosen to encounter worms as you find the mountains.", player.hasStatusEffect(StatusEffects.WormsOn) && !player.hasStatusEffect(StatusEffects.WormsHalf)],
@@ -164,7 +164,7 @@ package classes
 			addButton(10, "Debug Info", enterDebugPane);
 			addButton(14, "Back", exitSettings);
 			for (var i:int = 0; i < panes.length; i++) {
-				if (lastDisplayedPane === panes[i]) {
+				if (lastDisplayedPane == panes[i]) {
 					addButtonDisabled(i, mainView.bottomButtons[i].labelText);
 				}
 			}
@@ -180,7 +180,7 @@ package classes
 		}
 		private function hideSettingPane():void {
 			mainView.mainText.visible = true;
-			if (lastDisplayedPane !== null && lastDisplayedPane.parent !== null) lastDisplayedPane.parent.removeChild(lastDisplayedPane);
+			if (lastDisplayedPane != null && lastDisplayedPane.parent != null) lastDisplayedPane.parent.removeChild(lastDisplayedPane);
 		}
 		
 		private function enterDebugPane():void {
@@ -362,9 +362,9 @@ package classes
 		}
 		
 		public function cycleQuality():void {
-			if (mainView.stage.quality === StageQuality.LOW) mainView.stage.quality = StageQuality.MEDIUM;
-			else if (mainView.stage.quality === StageQuality.MEDIUM) mainView.stage.quality = StageQuality.HIGH;
-			else if (mainView.stage.quality === StageQuality.HIGH) mainView.stage.quality = StageQuality.LOW;
+			if (mainView.stage.quality == StageQuality.LOW) mainView.stage.quality = StageQuality.MEDIUM;
+			else if (mainView.stage.quality == StageQuality.MEDIUM) mainView.stage.quality = StageQuality.HIGH;
+			else if (mainView.stage.quality == StageQuality.HIGH) mainView.stage.quality = StageQuality.LOW;
 		}
 
 		public function toggleDebug(selection:Boolean):void { 
@@ -393,9 +393,9 @@ package classes
 		}
 		public function adjustFontSize(change:int):void {
 			var fmt:TextFormat = mainView.mainText.getTextFormat();
-			if (fmt.size === null) fmt.size = 20;
+			if (fmt.size == null) fmt.size = 20;
 			fmt.size = (fmt.size as Number) + change;
-			if (change === 0) fmt.size = 20;
+			if (change == 0) fmt.size = 20;
 			if ((fmt.size as Number) < 14) fmt.size = 14;
 			if ((fmt.size as Number) > 32) fmt.size = 32;
 			mainView.mainText.setTextFormat(fmt);

@@ -25,17 +25,17 @@ package classes.Items.Armors
 			//Put on leggings
 			if (game.player.isBiped()) {
 				outputText("\n\nNext, you slip into the leggings. By the time you get the leggings fully adjusted, you realize that the intricately-designed opening gives access to your groin! ");
-				if (game.player.hasCock() && game.player.lowerGarment === UndergarmentLib.NOTHING) outputText("Your " + game.player.multiCockDescriptLight() + " hang" + (game.player.cocks.length === 1 ? "s" : "") + " freely. ");
+				if (game.player.hasCock() && game.player.lowerGarment == UndergarmentLib.NOTHING) outputText("Your " + game.player.multiCockDescriptLight() + " hang" + (game.player.cocks.length == 1 ? "s" : "") + " freely. ");
 				if (game.player.cor < 33) { //Low corruption
-					if (game.player.lowerGarment !== UndergarmentLib.NOTHING) outputText("Good thing you have your " + game.player.lowerGarment + " on!");
+					if (game.player.lowerGarment != UndergarmentLib.NOTHING) outputText("Good thing you have your " + game.player.lowerGarment + " on!");
 					else outputText("You blush with embarrassment. ");
 				}
 				else if (game.player.cor >= 33 && game.player.cor < 66) { //Medium corruption
-					if (game.player.lowerGarment !== UndergarmentLib.NOTHING) outputText("You are unsure about whether you should keep your " + game.player.lowerGarment + " on or not.");
+					if (game.player.lowerGarment != UndergarmentLib.NOTHING) outputText("You are unsure about whether you should keep your " + game.player.lowerGarment + " on or not.");
 					else outputText("You are unsure how you feel about your crotch being exposed to the world.");
 				}
 				else if (game.player.cor >= 66) { //High corruption
-					if (game.player.lowerGarment !== UndergarmentLib.NOTHING) outputText("You ponder over taking off your undergarments.");
+					if (game.player.lowerGarment != UndergarmentLib.NOTHING) outputText("You ponder over taking off your undergarments.");
 					else outputText("You delight in having your nether regions open to the world.");
 				}
 				outputText(" Then, you slip your feet into the 'boots'; they aren't even covering your feet. You presume they were originally designed for demons, considering how the demons either have high-heels or clawed feet.");

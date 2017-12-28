@@ -60,7 +60,7 @@ package classes.Items.Consumables
 			clearOutput();
 			outputText("You smear the foul-smelling ointment all over your " + game.player.allBreastsDescript() + ", covering them entirely as the paste begins to get absorbed into your " + game.player.skin.desc + ".\n");
 			game.player.shrinkTits(true);
-			if (Utils.rand(2) === 0 && game.player.biggestTitSize() >= 1) {
+			if (Utils.rand(2) == 0 && game.player.biggestTitSize() >= 1) {
 				outputText("\nThe effects of the paste continue to manifest themselves, and your body begins to change again...");
 				game.player.shrinkTits(true);
 			}
@@ -102,13 +102,13 @@ package classes.Items.Consumables
 		
 		private function reductoCock():void {
 			clearOutput();
-			if (game.player.cocks[0].cockType === CockTypesEnum.BEE) {
+			if (game.player.cocks[0].cockType == CockTypesEnum.BEE) {
 				outputText("The gel produces an odd effect when you rub it into your " + game.player.cockDescript(0) + ".  It actually seems to calm the need that usually fills you.  In fact, as your " + game.player.cockDescript(0) + " shrinks, its skin tone changes to be more in line with yours and the bee hair that covered it falls out.  <b>You now have a human cock!</b>");
 				game.player.cocks[0].cockType = CockTypesEnum.HUMAN;
 			}
 			else {
 				outputText("You smear the repulsive smelling paste over your " + game.player.multiCockDescriptLight() + ".  It immediately begins to grow warm, almost uncomfortably so, as your " + game.player.multiCockDescriptLight() + " begins to shrink.\n\n");
-				if (game.player.cocks.length === 1) {
+				if (game.player.cocks.length == 1) {
 					outputText("Your " + game.player.cockDescript(0) + " twitches as it shrinks, disappearing steadily into your " + (game.player.hasSheath() ? "sheath" : "crotch") + " until it has lost about a third of its old size.");
 					game.player.cocks[0].cockLength *= 2 / 3;
 					game.player.cocks[0].cockThickness *= 2 / 3;

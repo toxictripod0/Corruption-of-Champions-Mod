@@ -80,8 +80,8 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//remove wings
-			if ((player.wings.type !== Wings.NONE || player.rearBody.type === RearBody.SHARK_FIN) && rand(3) === 0 && changes < changeLimit) {
-				if (player.rearBody.type === RearBody.SHARK_FIN) {
+			if ((player.wings.type !== Wings.NONE || player.rearBody.type == RearBody.SHARK_FIN) && rand(3) === 0 && changes < changeLimit) {
+				if (player.rearBody.type == RearBody.SHARK_FIN) {
 					outputText("\n\nA wave of tightness spreads through your back, and it feels as if someone is stabbing a dagger into your spine."
 					          +" After a moment the pain passes, though your fin is gone!");
 					player.rearBody.restore();
@@ -104,7 +104,7 @@ package classes.Items.Consumables
 					outputText("\n\nYou feel a twinge in your eyes and you blink. It feels like black cataracts have just fallen away from you, and you know without needing to see your reflection that your eyes have gone back to looking human.");
 				} else {
 					outputText("\n\nYou blink and stumble, a wave of vertigo threatening to pull your " + player.feet() + " from under you. As you steady and open your eyes, you realize something seems different. Your vision is changed somehow.");
-					if (player.eyes.type === Eyes.FOUR_SPIDER_EYES || player.eyes.type === Eyes.SPIDER) outputText(" Your arachnid eyes are gone!");
+					if (player.eyes.type === Eyes.FOUR_SPIDER_EYES || player.eyes.type == Eyes.SPIDER) outputText(" Your arachnid eyes are gone!");
 					outputText("  <b>You have normal, human eyes.</b>");
 				}
 				player.eyes.type = Eyes.HUMAN;
@@ -386,9 +386,9 @@ package classes.Items.Consumables
 			}
 			//MISC CRAP
 			//Neck restore
-			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type != Neck.NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
 			//Rear body restore
-			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) mutations.restoreRearBody(tfSource);
+			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
 			//Ovi perk loss
 			if (rand(5) === 0) {
 				mutations.updateOvipositionPerk(tfSource);

@@ -45,7 +45,7 @@ package classes
 		override flash_proxy function getProperty(name:*):*
 		{
 			if (debugPrintDict) LOGGER.debug("getProperty Called");
-			if (name === "length")
+			if (name == "length")
 			{
 				if (debugPrintDict) LOGGER.debug("Querying array length. Faking out retVal");
 				return 3000;
@@ -68,7 +68,7 @@ package classes
 		// If x == 0, it removes {name} from _dict if it's present, otherwise does nothing. Else, it sets _dict[name] = x
 		override flash_proxy function setProperty(name:*, value:*):void 
 		{
-			if (value !== 0)
+			if (value != 0)
 			{
 				if (debugPrintDict) LOGGER.debug("setProperty ", name, value);
 				_dict[name] = value;
@@ -90,7 +90,7 @@ package classes
 		override flash_proxy function callProperty(methodName:*, ... args):* 
 		{
 			if (debugPrintDict) LOGGER.debug("call Property ", methodName);
-			if (String(methodName) === "push")
+			if (String(methodName) == "push")
 			{
 				if (debugPrintDict) LOGGER.debug("Doing nothing (this ain't an array anymore!)");
 			}

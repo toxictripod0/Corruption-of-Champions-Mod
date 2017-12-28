@@ -20,8 +20,8 @@ package classes.Items
 			var desc:String = _description;
 			//Type
 			desc += "\n\nType: ";
-			if (shortName === "Condom" || shortName === "GldStat") desc += "Miscellaneous";
-			else if (shortName === "Debug Wand") desc += "Miscellaneous (Cheat Item)";
+			if (shortName == "Condom" || shortName == "GldStat") desc += "Miscellaneous";
+			else if (shortName == "Debug Wand") desc += "Miscellaneous (Cheat Item)";
 			else desc += "Material";
 			//Value
 			desc += "\nBase value: " + String(value);

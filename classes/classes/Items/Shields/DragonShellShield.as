@@ -26,7 +26,7 @@ package classes.Items.Shields
 		}
 		
 		override public function useText():void { //Produces any text seen when equipping the armor normally
-			if (game.flags[kFLAGS.TIMES_EQUIPPED_EMBER_SHIELD] === 0) {
+			if (game.flags[kFLAGS.TIMES_EQUIPPED_EMBER_SHIELD] == 0) {
 				clearOutput();
 				outputText("Turning the sturdy shield over in inspection, you satisfy yourself as to its craftsmanship and adjust the straps to fit your arm snugly.  You try a few practice swings, but find yourself overbalancing at each one due to the deceptive lightness of the material.  Eventually, though, you pick up the knack of putting enough weight behind it to speed it through the air while thrusting a leg forward to stabilize yourself, and try bashing a nearby rock with it.  You smile with glee as ");
 				if (game.player.str < 80) outputText("bits and pieces from the surface of the");

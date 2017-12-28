@@ -67,9 +67,9 @@ package classes.Items.Consumables
 				//[removed:1.4.10]//changes++;
 			}
 			//Neck restore
-			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type != Neck.NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
 			//Rear body restore
-			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) mutations.restoreRearBody(tfSource);
+			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
 			//Ovi perk loss
 			if (rand(5) === 0) {
 				mutations.updateOvipositionPerk(tfSource);
@@ -116,8 +116,8 @@ package classes.Items.Consumables
 			//GENERAL APPEARANCE STUFF BELOW
 			//REMOVAL STUFF
 			//Removes wings!
-			if ((player.wings.type !== Wings.NONE) && changes < changeLimit && rand(4) === 0) {
-				if (player.rearBody.type === RearBody.SHARK_FIN) {
+			if ((player.wings.type != Wings.NONE) && changes < changeLimit && rand(4) === 0) {
+				if (player.rearBody.type == RearBody.SHARK_FIN) {
 					outputText("\n\nYour back tingles, feeling lighter.  Something lands behind you with a 'thump', and when you turn to look, you"
 					          +" see your fin has fallen off.  This might be the best (and worst) booze you've ever had!"
 					          +"  <b>You no longer have a fin!</b>");
@@ -131,7 +131,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Removes antennae!
-			if (player.antennae.type !== Antennae.NONE && changes < changeLimit && rand(3) === 0) {
+			if (player.antennae.type != Antennae.NONE && changes < changeLimit && rand(3) === 0) {
 				mutations.removeAntennae();
 			}
 			//Remove odd eyes

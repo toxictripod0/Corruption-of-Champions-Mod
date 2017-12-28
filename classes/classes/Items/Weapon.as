@@ -33,14 +33,14 @@ package classes.Items
 			var desc:String = _description;
 			//Type
 			desc += "\n\nType: Weapon ";
-			if (perk === "Large") desc += "(Large)";
+			if (perk == "Large") desc += "(Large)";
 			else if (name.indexOf("staff") >= 0) desc += "(Staff)";
 			else if (verb.indexOf("whip") >= 0) desc += "(Whip)";
 			else if (verb.indexOf("punch") >= 0) desc += "(Gauntlet)";
-			else if (verb === "shot") desc += "(Ranged)";
-			else if (verb === "slash" || verb === "keen cut") desc += "(Sword)";
-			else if (verb === "stab") desc += "(Dagger)";
-			else if (verb === "smash") desc += "(Blunt)";
+			else if (verb == "shot") desc += "(Ranged)";
+			else if (verb == "slash" || verb == "keen cut") desc += "(Sword)";
+			else if (verb == "stab") desc += "(Dagger)";
+			else if (verb == "smash") desc += "(Blunt)";
 			//Attack
 			desc += "\nAttack: " + String(attack);
 			//Value
@@ -50,7 +50,7 @@ package classes.Items
 		
 		override public function useText():void {
 			outputText("You equip " + longName + ".  ");
-			if (perk === "Large" && game.player.shield !== ShieldLib.NOTHING) {
+			if (perk == "Large" && game.player.shield != ShieldLib.NOTHING) {
 				outputText("Because the weapon requires the use of two hands, you have unequipped your shield. ");
 			}
 		}
@@ -60,7 +60,7 @@ package classes.Items
 		}
 		
 		public function playerEquip():Weapon { //This item is being equipped by the player. Add any perks, etc. - This function should only handle mechanics, not text output
-			if (perk === "Large" && game.player.shield !== ShieldLib.NOTHING) {
+			if (perk == "Large" && game.player.shield != ShieldLib.NOTHING) {
 				game.inventory.unequipShield();
 			}
 			return this;
@@ -92,8 +92,8 @@ package classes.Items
 		{
 			if (returnToInventory) {
 				var itype:ItemType = unequipReturnItem(player, output);
-				if (itype !== null) {
-					if (output && itype === this)
+				if (itype != null) {
+					if (output && itype == this)
 						outputText("You still have " + itype.longName + " left over.  ");
 					game.itemSwapping = true;
 					game.inventory.takeItem(this, false);
