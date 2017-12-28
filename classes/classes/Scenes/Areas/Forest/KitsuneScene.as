@@ -2383,24 +2383,24 @@ package classes.Scenes.Areas.Forest
 					player.createPerk(PerkLib.EnlightenedNinetails, 0, 0, 0, 0);
 					
 					// Nine tail kitsunes have their fur/hair color golden, silver or pure white
-					if (!InCollection(player.hair.color, ColorLists.elderKitsuneColors)) // wrong hair color
-						if (player.hasFur() && InCollection(player.skin.furColor, ColorLists.elderKitsuneColors)) { // right fur color
+					if (!InCollection(player.hair.color, ColorLists.ELDER_KITSUNE)) // wrong hair color
+						if (player.hasFur() && InCollection(player.skin.furColor, ColorLists.ELDER_KITSUNE)) { // right fur color
 							player.hair.color = player.skin.furColor;
 							if (player.hair.length > 0) outputText("\n\nNow you have " + player.hair.color + " hair matching your fur, like true kitsune elder. You look really regal!");
 						}
 						else if (player.hasFur()) { // wrong fur color
-							player.hair.color = randomChoice(ColorLists.elderKitsuneColors);
+							player.hair.color = randomChoice(ColorLists.ELDER_KITSUNE);
 							player.skin.furColor = player.hair.color;
 							if (player.hair.length > 0) outputText("\n\Now you have " + player.hair.color + " fur and hair, like true kitsune elder. You look really regal!");
 							else outputText("\n\Now you have " + player.skin.furColor + " fur, like true kitsune elder. You look really regal!");
 						}
 						else { // no fur
-							player.hair.color = randomChoice(ColorLists.elderKitsuneColors);
+							player.hair.color = randomChoice(ColorLists.ELDER_KITSUNE);
 							player.skin.furColor = player.hair.color;
 							if (player.hair.length > 0) outputText("\n\Now you have " + player.hair.color + " hair, like true kitsune elder.");
 						}
 					else // right hair color
-						if (player.hasFur() && !InCollection(player.skin.furColor, ColorLists.elderKitsuneColors)) { // wrong fur color
+						if (player.hasFur() && !InCollection(player.skin.furColor, ColorLists.ELDER_KITSUNE)) { // wrong fur color
 							player.skin.furColor = player.hair.color;
 							outputText("\n\Now you have " + player.skin.furColor + " fur matching your hair, like true kitsune elder. You look really regal!");
 						}

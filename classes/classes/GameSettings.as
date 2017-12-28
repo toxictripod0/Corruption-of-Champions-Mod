@@ -161,6 +161,7 @@ package classes
 			addButton(1, "Interface", displaySettingPane, panes[1]);
 			addButton(2, "Fetishes", displaySettingPane, panes[2]);
 			addButton(4, "Controls", displayControls);
+			addButton(10, "Debug Info", enterDebugPane);
 			addButton(14, "Back", exitSettings);
 			for (var i:int = 0; i < panes.length; i++) {
 				if (lastDisplayedPane == panes[i]) {
@@ -180,6 +181,11 @@ package classes
 		private function hideSettingPane():void {
 			mainView.mainText.visible = true;
 			if (lastDisplayedPane != null && lastDisplayedPane.parent != null) lastDisplayedPane.parent.removeChild(lastDisplayedPane);
+		}
+		
+		private function enterDebugPane():void {
+			hideSettingPane();
+			kGAMECLASS.debugPane();
 		}
 		
 		//------------

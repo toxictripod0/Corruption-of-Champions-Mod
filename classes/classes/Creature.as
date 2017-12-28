@@ -2252,7 +2252,7 @@ package classes
 			//web also makes false!
 			if (hasStatusEffect(StatusEffects.Web))
 				return false;
-			return BodyPartLists.canFlyWings.indexOf(wings.type) !== -1;
+			return BodyPartLists.CAN_FLY_WINGS.indexOf(wings.type) !== -1;
 		}
 
 		public function canUseStare():Boolean
@@ -2275,7 +2275,7 @@ package classes
 
 		public function isBimbo():Boolean
 		{
-			for each (var perk:PerkType in PerkLists.bimboPerks)
+			for each (var perk:PerkType in PerkLists.BIMBO)
 				if (hasPerk(perk)) return true;
 
 			return false;
@@ -3670,7 +3670,7 @@ package classes
 
 		public function hasLongTongue():Boolean
 		{
-			return BodyPartLists.longTongues.indexOf(tongue.type) !== -1;
+			return BodyPartLists.LONG_TONGUES.indexOf(tongue.type) !== -1;
 		}
 
 		private function breastSize(val:Number):String

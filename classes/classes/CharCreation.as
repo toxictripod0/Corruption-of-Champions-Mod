@@ -1364,12 +1364,12 @@
 		private function permanentizeCost():int {
 			var count:int = 1;
 
-			for each (var perk:PerkType in PerkLists.permeablePerks)
+			for each (var perk:PerkType in PerkLists.PERMEABLE)
 				if (player.perkv4(perk) > 0) count++;
 			return count;
 		}
 		private function isPermable(perk:PerkType):Boolean {
-			return PerkLists.permeablePerks.indexOf(perk) != -1;
+			return PerkLists.PERMEABLE.indexOf(perk) != -1;
 		}
 		//Respec
 		private function respecLevelPerks():void {

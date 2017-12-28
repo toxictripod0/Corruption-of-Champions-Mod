@@ -296,7 +296,7 @@ package classes
 
 		public function hasMuzzle():Boolean
 		{
-			return BodyPartLists.muzzles.indexOf(face.type) !== -1;
+			return BodyPartLists.MUZZLES.indexOf(face.type) !== -1;
 		}
 		
 		public function faceDescript():String
@@ -358,7 +358,7 @@ package classes
 		{
 			if (isNaga()) return true;
 
-			return BodyPartLists.longTails.indexOf(tail.type) !== -1;
+			return BodyPartLists.LONG_TAILS.indexOf(tail.type) !== -1;
 		}
 
 		public function isPregnant():Boolean { return _pregnancyType != 0; }

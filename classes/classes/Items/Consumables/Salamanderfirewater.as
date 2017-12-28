@@ -262,12 +262,12 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//-Skin color change
-			if (ColorLists.salamanderSkinColors.indexOf(player.skin.tone) < 0 && changes < changeLimit && rand(4) === 0) {
+			if (ColorLists.SALAMANDER_SKIN.indexOf(player.skin.tone) < 0 && changes < changeLimit && rand(4) === 0) {
 				changes++;
 				outputText("\n\nIt takes a while for you to notice, but <b>");
 				if (player.hasFur()) outputText("the skin under your " + player.skin.furColor + " " + player.skin.desc + " has ");
 				else outputText("your " + player.skin.desc + (player.skin.desc.indexOf("scales") !== -1 ? " have " : " has "));
-				player.skin.tone = randomChoice(ColorLists.salamanderSkinColors);
+				player.skin.tone = randomChoice(ColorLists.SALAMANDER_SKIN);
 				mutations.updateClaws(player.claws.type);
 				outputText("changed to become " + player.skin.tone + " colored.</b>");
 			}

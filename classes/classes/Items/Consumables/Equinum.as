@@ -448,7 +448,7 @@ package classes.Items.Consumables
 			}
 			//Fur - if has horse tail && ears and not at changelimit
 			if (!player.hasFur() && changes < changeLimit && rand(4) === 0 && player.tail.type === Tail.HORSE) {
-				player.setFurColor(ColorLists.horseFurColors);
+				player.setFurColor(ColorLists.HORSE_FUR);
 				if (player.hasPlainSkin()) outputText("\n\nAn itchy feeling springs up over every inch of your skin.  As you scratch yourself madly, you feel fur grow out of your skin until <b>you have a fine coat of " + player.skin.furColor + "-colored fur.</b>");
 				if (player.hasScales()) {
 					player.skin.desc = "fur";
