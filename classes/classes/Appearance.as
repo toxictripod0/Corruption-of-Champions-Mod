@@ -1791,7 +1791,7 @@ package classes {
 			// This is just fucking awful but I'm just making things work in the face of bugs I'm running into.
 			
 			// 66% Wetness Descript
-			var ANAL_WETNESS_DESCRIPTORS:Object = new Object(); 
+			var ANAL_WETNESS_DESCRIPTORS:Array = new Array([]); 
 			ANAL_WETNESS_DESCRIPTORS[AssClass.WETNESS_DRY] = "";
 			ANAL_WETNESS_DESCRIPTORS[AssClass.WETNESS_NORMAL] = "";
 			ANAL_WETNESS_DESCRIPTORS[AssClass.WETNESS_MOIST] = "moist ";
@@ -1804,7 +1804,7 @@ package classes {
 				description += ANAL_WETNESS_DESCRIPTORS[i_creature.ass.analWetness];
 			}
 			
-			var ANAL_TIGHTNESS_DESCRIPTORS:Object = new Object();
+			var ANAL_TIGHTNESS_DESCRIPTORS:Array = new Array([]);
 			ANAL_TIGHTNESS_DESCRIPTORS[AssClass.LOOSENESS_VIRGIN] = "virgin ";
 			ANAL_TIGHTNESS_DESCRIPTORS[AssClass.LOOSENESS_TIGHT] = "tight ";
 			ANAL_TIGHTNESS_DESCRIPTORS[AssClass.LOOSENESS_NORMAL] = "loose ";

@@ -20,7 +20,7 @@ package classes.Items.Other
 		override public function canUse():Boolean 
 		{
 			clearOutput();
-			if (canUseFunction != null)
+			if (canUseFunction !== null)
 			{
 				canUseFunction();
 			}

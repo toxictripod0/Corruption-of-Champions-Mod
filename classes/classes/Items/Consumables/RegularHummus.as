@@ -60,10 +60,10 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Restore neck
-			if (player.neck.type != Neck.NORMAL && changes < changeLimit && rand(5) == 0)
+			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(5) === 0)
 				mutations.restoreNeck(tfSource);
 			//Rear body restore
-			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
+			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) mutations.restoreRearBody(tfSource);
 			//-Skin color change – light, fair, olive, dark, ebony, mahogany, russet
 			if (ColorLists.HUMAN_SKIN.indexOf(player.skin.tone) === -1 && changes < changeLimit && rand(5) === 0) {
 				changes++;
@@ -169,8 +169,8 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Removes wings
-			if ((player.wings.type !== Wings.NONE || player.rearBody.type == RearBody.SHARK_FIN) && rand(5) === 0 && changes < changeLimit) {
-				if (player.rearBody.type == RearBody.SHARK_FIN) {
+			if ((player.wings.type !== Wings.NONE || player.rearBody.type === RearBody.SHARK_FIN) && rand(5) === 0 && changes < changeLimit) {
+				if (player.rearBody.type === RearBody.SHARK_FIN) {
 					outputText("\n\nA wave of tightness spreads through your back, and it feels as if someone is stabbing a dagger into your spine."
 					          +" After a moment the pain passes, though your fin is gone!");
 					player.rearBody.restore();

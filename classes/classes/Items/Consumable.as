@@ -40,9 +40,9 @@ package classes.Items
 			var desc:String = _description;
 			//Type
 			desc += "\n\nType: Consumable ";
-			if (shortName == "Wingstick") desc += "(Thrown)";
-			if (shortName == "S.Hummus") desc += "(Cheat Item)";
-			if (shortName == "BroBrew" || shortName == "BimboLq" || shortName == "P.Pearl") desc += "(Rare Item)";
+			if (shortName === "Wingstick") desc += "(Thrown)";
+			if (shortName === "S.Hummus") desc += "(Cheat Item)";
+			if (shortName === "BroBrew" || shortName === "BimboLq" || shortName === "P.Pearl") desc += "(Rare Item)";
 			if (longName.indexOf("dye") >= 0) desc += "(Dye)";
 			if (longName.indexOf("egg") >= 0) desc += "(Egg)";
 			if (longName.indexOf("book") >= 0) desc += "(Magic Book)";

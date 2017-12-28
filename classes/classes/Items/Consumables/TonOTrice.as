@@ -39,10 +39,10 @@ package classes.Items.Consumables
 			changes = 0;
 			changeLimit = 1;
 			// Randomly choose affects limit
-			if (rand(2) == 0) changeLimit++;
-			if (rand(2) == 0) changeLimit++;
-			if (rand(3) == 0) changeLimit++;
-			if (rand(4) == 0) changeLimit++;
+			if (rand(2) === 0) changeLimit++;
+			if (rand(2) === 0) changeLimit++;
+			if (rand(3) === 0) changeLimit++;
+			if (rand(4) === 0) changeLimit++;
 			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
 			if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
 
@@ -51,7 +51,7 @@ package classes.Items.Consumables
 			outputText("You drink the slimy concoction, grimacing as it reaches your tongue. At first you’re shocked you don’t gag but once you taste"
 			          +" the mixture you realise it's not so bad, almost having a hint of almond behind that thick texture.");
 
-			if (player.spe < player.ngPlus(100) && changes < changeLimit && rand(3) == 0) {
+			if (player.spe < player.ngPlus(100) && changes < changeLimit && rand(3) === 0) {
 				outputText("\n\nYou stumble as you shift position, surprised by how quickly you move. After a moment or two of disorientation,"
 				          +" you adjust. You’re certain that you can run faster now.");
 				//+3 spe if less than 50
@@ -63,7 +63,7 @@ package classes.Items.Consumables
 				//[removed:1.4.10]//changes++;
 			}
 
-			if (player.tou > player.ngPlus(80) && changes < changeLimit && rand(4) == 0) {
+			if (player.tou > player.ngPlus(80) && changes < changeLimit && rand(4) === 0) {
 				outputText("\n\nYou feel yourself become a little more delicate, as though you can’t handle quite so strong hits anymore. Then again,"
 				          +" who needs to withstand a blow when you can just move with the speed of the wind and dodge it?");
 				dynStats("tou", -1);
@@ -72,18 +72,18 @@ package classes.Items.Consumables
 			}
 
 			//-Reduces sensitivity.
-			if (player.sens > 20 && changes < changeLimit && rand(3) == 0) {
+			if (player.sens > 20 && changes < changeLimit && rand(3) === 0) {
 				outputText("\n\nThe sensation of prickly pins and needles moves over your body, leaving your senses a little dulled in its wake.");
 				dynStats("sen", -1);
 				//[removed:1.4.10]//changes++;
 			}
 
 			//Raises libido greatly to 50, then somewhat to 75, then slowly to 100.
-			if (player.lib < 100 && changes < changeLimit && rand(3) == 0) {
+			if (player.lib < 100 && changes < changeLimit && rand(3) === 0) {
 				outputText("\n\nA knot of fire in your gut doubles you over but passes after a few moments. As you straighten you can feel the heat"
 				          +" seeping into you, ");
 				//(DICK)
-				if (player.cocks.length > 0 && (player.gender != Gender.HERM || rand(2) == 0)) {
+				if (player.cocks.length > 0 && (player.gender !== Gender.HERM || rand(2) === 0)) {
 					outputText("filling [if (cocks > 1)each of] your [cocks] with the desire to breed. You get a bit hornier when you realize your"
 					          +" sex-drive has gotten a boost.");
 				}
@@ -110,8 +110,8 @@ package classes.Items.Consumables
 			//Sexual changes
 
 			//-Lactation stoppage.
-			if (player.biggestLactation() >= 1 && changes < changeLimit && rand(4) == 0) {
-				outputText("\n\n[if (totalNipples == 2)Both of your|All of your many] nipples relax. It's a strange feeling, and you pull back your"
+			if (player.biggestLactation() >= 1 && changes < changeLimit && rand(4) === 0) {
+				outputText("\n\n[if (totalNipples === 2)Both of your|All of your many] nipples relax. It's a strange feeling, and you pull back your"
 				          +" top to touch one. It feels fine, though there doesn't seem to be any milk leaking out.  You give it a squeeze and marvel"
 				          +" when nothing [if (hasNippleCunts)but sexual fluid] escapes it. <b>You are no longer lactating.</b> That makes sense,"
 				          +" only mammals lactate!  Smiling, you muse at how much time this will save you when cleaning your gear.");
@@ -128,7 +128,7 @@ package classes.Items.Consumables
 			}
 
 			//-Nipples reduction to 1 per tit.
-			if (player.averageNipplesPerBreast() > 1 && changes < changeLimit && rand(4) == 0) {
+			if (player.averageNipplesPerBreast() > 1 && changes < changeLimit && rand(4) === 0) {
 				outputText("\n\nA chill runs over your [allBreasts] and vanishes. You stick a hand under your [armor] and discover that your extra"
 				          +" nipples are missing! You're down to just one per [if (biggestTitSize < 1)'breast'|breast].");
 				changes++;
@@ -139,12 +139,12 @@ package classes.Items.Consumables
 			}
 
 			//-Remove extra breast rows
-			if (changes < changeLimit && player.breastRows.length > 1 && rand(3) == 0 && !flags[kFLAGS.HYPER_HAPPY]) {
+			if (changes < changeLimit && player.breastRows.length > 1 && rand(3) === 0 && !flags[kFLAGS.HYPER_HAPPY]) {
 				mutations.removeExtraBreastRow(tfSource);
 			}
 
 			//-Butt > 5 - decrease butt size
-			if (player.butt.rating > 5 && changes < changeLimit && rand(4) == 0) {
+			if (player.butt.rating > 5 && changes < changeLimit && rand(4) === 0) {
 				changes++;
 				player.butt.rating--;
 				outputText("\n\nA feeling of tightness starts in your [butt], increasing gradually. The sensation grows and grows, but as it does"
@@ -154,7 +154,7 @@ package classes.Items.Consumables
 
 			if (player.isFemaleOrHerm()) {
 				//Breasts > D cup - Decrease breast size by up to 3 cups
-				if (player.isFemaleOrHerm() && player.biggestTitSize() > BreastCup.D && changes < changeLimit && rand(3) == 0) {
+				if (player.isFemaleOrHerm() && player.biggestTitSize() > BreastCup.D && changes < changeLimit && rand(3) === 0) {
 					for (i = 0; i < player.breastRows.length; i++) {
 						if (player.breastRows[i].breastRating > BreastCup.D)
 							player.breastRows[i].breastRating -= 1 + rand(3);
@@ -167,7 +167,7 @@ package classes.Items.Consumables
 				}
 
 				//Breasts < B cup - Increase breast size by 1 cup
-				if (player.isFemaleOrHerm() && player.smallestTitSize() < BreastCup.B && changes < changeLimit && rand(3) == 0) {
+				if (player.isFemaleOrHerm() && player.smallestTitSize() < BreastCup.B && changes < changeLimit && rand(3) === 0) {
 					for (i = 0; i < player.breastRows.length; i++) {
 						if (player.breastRows[i].breastRating < BreastCup.B)
 							player.breastRows[i].breastRating++;
@@ -179,26 +179,26 @@ package classes.Items.Consumables
 				}
 
 				//Hips > 12 - decrease hip size by 1-3 sizes
-				if (player.hips.rating > 12 && changes < changeLimit && rand(3) == 0) {
+				if (player.hips.rating > 12 && changes < changeLimit && rand(3) === 0) {
 					outputText("\n\nYou stumble a bit as the bones in your pelvis rearrange themselves painfully. Your hips have narrowed.");
 					player.hips.rating -= 1 + rand(3);
 					changes++;
 				}
 
 				//Hips < 6 - increase hip size by 1-3 sizes
-				if (player.hips.rating < 6 && changes < changeLimit && rand(3) == 0) {
+				if (player.hips.rating < 6 && changes < changeLimit && rand(3) === 0) {
 					outputText("\n\nYou stumble as you feel the bones in your hips grinding, expanding your hips noticeably.");
 					player.hips.rating += 1 + rand(3);
 					changes++;
 				}
 
-				if (player.nippleLength > 1 && changes < changeLimit && rand(3) == 0) {
+				if (player.nippleLength > 1 && changes < changeLimit && rand(3) === 0) {
 					outputText("\n\nWith a sudden pinch your [nipples] get smaller and smaller,"
 					          +" stopping when they are roughly half their previous size");
 					player.nippleLength /= 2;
 				}
 
-				if (player.hasVagina() && player.vaginas[0].vaginalWetness < 3 && changes < changeLimit && rand(4) == 0) {
+				if (player.hasVagina() && player.vaginas[0].vaginalWetness < 3 && changes < changeLimit && rand(4) === 0) {
 					outputText("\n\nYour [cunt]'s internal walls feel a tingly wave of strange tightness which then transitions into a long"
 					          +" stretching sensation, like you were made of putty. Experimentally, you slip a couple of fingers inside to find"
 					          +" you've become looser and more pliable, ready to take those monster cocks. Or better yet, to lay eggs.");
@@ -207,23 +207,23 @@ package classes.Items.Consumables
 				}
 
 				//Increase tone (up to 65)
-				if (player.tone < 65 && rand(3) == 0) {
+				if (player.tone < 65 && rand(3) === 0) {
 					outputText(player.modTone(65, 2));
 				}
 
 				//Decrease thickness (down to 35)
-				if (player.thickness > 35 && rand(3) == 0) {
+				if (player.thickness > 35 && rand(3) === 0) {
 					outputText(player.modThickness(35, 5));
 				}
 
-				if (rand(5) == 0 && player.cockatriceScore() > 3) {
+				if (rand(5) === 0 && player.cockatriceScore() > 3) {
 					mutations.updateOvipositionPerk(tfSource); // does all the magic, nuff said!
 				}
 			}
 
 			if (player.isMale()) {
 				//Breasts > B cup - decrease by 1 cup size
-				if (player.biggestTitSize() > BreastCup.B && changes < changeLimit && rand(3) == 0) {
+				if (player.biggestTitSize() > BreastCup.B && changes < changeLimit && rand(3) === 0) {
 					for (i = 0; i < player.breastRows.length; i++) {
 						if (player.breastRows[i].breastRating > BreastCup.B)
 							player.breastRows[i].breastRating--;
@@ -235,40 +235,40 @@ package classes.Items.Consumables
 					changes++;
 				}
 
-				if (player.nippleLength > 1 && changes < changeLimit && rand(3) == 0) {
+				if (player.nippleLength > 1 && changes < changeLimit && rand(3) === 0) {
 					outputText("\n\nWith a sudden pinch your [nipples] get smaller and smaller,"
 					          +" stopping when they are roughly half their previous size");
 					player.nippleLength /= 2;
 				}
 
 				//Hips > 10 - decrease hip size by 1-3 sizes
-				if (player.hips.rating > 10 && changes < changeLimit && rand(3) == 0) {
+				if (player.hips.rating > 10 && changes < changeLimit && rand(3) === 0) {
 					outputText("\n\nYou stumble a bit as the bones in your pelvis rearrange themselves painfully. Your hips have narrowed.");
 					player.hips.rating -= 1 + rand(3);
 					changes++;
 				}
 
 				//Hips < 2 - increase hip size by 1-3 sizes
-				if (player.hips.rating < 2 && changes < changeLimit && rand(3) == 0) {
+				if (player.hips.rating < 2 && changes < changeLimit && rand(3) === 0) {
 					outputText("\n\nYou stumble as you feel the bones in your hips grinding, expanding your hips noticeably.");
 					player.hips.rating += 1 + rand(3);
 					changes++;
 				}
 
 				//Increase tone (up to 70)
-				if (player.tone < 70 && rand(3) == 0) {
+				if (player.tone < 70 && rand(3) === 0) {
 					outputText(player.modTone(65, 2));
 				}
 
 				//Decrease thickness (down to 35)
-				if (player.thickness > 35 && rand(3) == 0) {
+				if (player.thickness > 35 && rand(3) === 0) {
 					outputText(player.modThickness(35, 5));
 				}
 			}
 
 			if (player.isMaleOrHerm()) {
 				//Cock < 6 inches - increase by 1-2 inches
-				if (player.shortestCockLength() < 6 && rand(3) == 0 && changes < changeLimit) {
+				if (player.shortestCockLength() < 6 && rand(3) === 0 && changes < changeLimit) {
 					var increment:Number = player.increaseCock(player.shortestCockIndex(), 1 + rand(2));
 					outputText("Your [if (cocks > 1)shortest] cock fills to its normal size, but doesn’t just stop there. Your cock feels incredibly"
 					          +" tight as a few more inches of length seem to pour out from your crotch."
@@ -277,7 +277,7 @@ package classes.Items.Consumables
 				}
 
 				//Shrink oversized cocks
-				if (player.biggestCockLength() > 16 && rand(3) == 0 && changes < changeLimit) {
+				if (player.biggestCockLength() > 16 && rand(3) === 0 && changes < changeLimit) {
 					var idx:int = player.biggestCockIndex();
 						outputText("\n\nYou feel a tightness in your groin like someone tugging on your shaft from behind you. Once the sensation"
 						          +" fades you check [if (hasLowerGarment)inside your [lowergarment]|your [multicock]] and see that your"
@@ -291,7 +291,7 @@ package classes.Items.Consumables
 				}
 
 				//Cock thickness <2 - Increase cock thickness
-				if (player.smallestCockArea() < 10 && rand(3) == 0 && changes < changeLimit) {
+				if (player.smallestCockArea() < 10 && rand(3) === 0 && changes < changeLimit) {
 					outputText("[if (cocks > 1) One of your cocks|Your cock] feels swollen and heavy. With a firm, but gentle, squeeze, you confirm"
 					          +" your suspicions. It is definitely thicker.");
 					player.cocks[player.thinnestCockIndex()].thickenCock(1.5);
@@ -300,7 +300,7 @@ package classes.Items.Consumables
 			}
 
 			//-Lizard dick - first one
-			if (player.countCocksOfType(CockTypesEnum.LIZARD) == 0 && player.cockTotal() > 0 && changes < changeLimit && rand(4) == 0) {
+			if (player.countCocksOfType(CockTypesEnum.LIZARD) === 0 && player.cockTotal() > 0 && changes < changeLimit && rand(4) === 0) {
 				//Find the first non-lizzy dick
 				for (i = 0; i < player.cocks.length; i++) {
 					//Stop loopahn when dick be found
@@ -334,14 +334,14 @@ package classes.Items.Consumables
 			}
 			//(CHANGE OTHER DICK)
 			//Requires 1 lizard cock, multiple cocks
-			if (player.cockTotal() > 1 && player.countCocksOfType(CockTypesEnum.LIZARD) > 0 && player.cockTotal() > player.countCocksOfType(CockTypesEnum.LIZARD) && rand(4) == 0 && changes < changeLimit) {
+			if (player.cockTotal() > 1 && player.countCocksOfType(CockTypesEnum.LIZARD) > 0 && player.cockTotal() > player.countCocksOfType(CockTypesEnum.LIZARD) && rand(4) === 0 && changes < changeLimit) {
 				outputText("\n\nA familiar tingle starts in your crotch, and before you can miss the show, you pull open your [armor]."
 				          +"  As if operating on a cue, ");
 				for (i = 0; i < player.cocks.length; i++) {
 					//Stop loopahn when dick be found
 					if (player.cocks[i].cockType !== CockTypesEnum.LIZARD) break;
 				}
-				if (player.cockTotal() == 2) outputText("your other dick");
+				if (player.cockTotal() === 2) outputText("your other dick");
 				else outputText("another one of your dicks");
 				outputText(" starts to change into the strange reptilian shape you've grown familiar with.  It warps visibly, trembling and radiating"
 				          +" pleasurable feelings back to you as the transformation progresses.  ");
@@ -364,7 +364,7 @@ package classes.Items.Consumables
 
 			//--Worms leave if 100% lizard dicks?
 			//Require mammals?
-			if (player.countCocksOfType(CockTypesEnum.LIZARD) == player.cockTotal() && changes < changeLimit && player.hasStatusEffect(StatusEffects.Infested)) {
+			if (player.countCocksOfType(CockTypesEnum.LIZARD) === player.cockTotal() && changes < changeLimit && player.hasStatusEffect(StatusEffects.Infested)) {
 				outputText("\n\nLike rats from a sinking ship, worms escape from your body in a steady stream.  Surprisingly, the sensation is"
 				          +" remarkably pleasant, similar to the pleasure of sexual release in a way.  Though they seem inexhaustible, the tiny,"
 				          +" cum-slimed invertebrates slow to a trickle.  The larger worm-kin inside you stirs as if disturbed from a nap, coming"
@@ -382,7 +382,7 @@ package classes.Items.Consumables
 			}
 
 			//Increase height up to 5ft 7in.
-			if (player.tallness < 67 && changes < changeLimit && rand(5) == 0) {
+			if (player.tallness < 67 && changes < changeLimit && rand(5) === 0) {
 				outputText("\n\nYou shift uncomfortably as you realize you feel off balance."
 				          +" Gazing down, you realize you have grown SLIGHTLY taller.");
 				player.tallness += rand(3) + 1;
@@ -390,7 +390,7 @@ package classes.Items.Consumables
 			}
 
 			//Decrease height down to a maximum of 6ft 8in.
-			if (player.tallness > 80 && changes < changeLimit && rand(5) == 0) {
+			if (player.tallness > 80 && changes < changeLimit && rand(5) === 0) {
 				outputText("\n\nYour skin crawls, making you close your eyes and shiver. When you open them again the world seems... different."
 				          +" After a bit of investigation, you realize you've become shorter!");
 				player.tallness -= rand(3) + 1;
@@ -399,11 +399,11 @@ package classes.Items.Consumables
 
 			//Physical changes:
 			//Removes other antennae
-			if (player.hasNonCockatriceAntennae() && rand(3) == 0 && changes < changeLimit) {
+			if (player.hasNonCockatriceAntennae() && rand(3) === 0 && changes < changeLimit) {
 				mutations.removeAntennae();
 			}
 			//Gain antennae like feathers
-			if (player.antennae.type == Antennae.NONE && player.face.type == Face.COCKATRICE && player.ears.type == Ears.COCKATRICE && rand(3) == 0 && changes < changeLimit) {
+			if (player.antennae.type === Antennae.NONE && player.face.type === Face.COCKATRICE && player.ears.type === Ears.COCKATRICE && rand(3) === 0 && changes < changeLimit) {
 				// Other antennae types are handled above! (Stadler76)
 				outputText("\n\nYour forehead suddenly itches, making you run your fingers through your hairline as you try to scratch. Under your"
 				          +" roving fingertips you feel your pores stretch as the shaft of one of your feathers gets thicker and sturdier. A sudden"
@@ -416,9 +416,9 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Removes horns
-			if (changes < changeLimit && (player.horns.type != Horns.NONE || player.horns.value != 0) && rand(5) == 0) {
+			if (changes < changeLimit && (player.horns.type !== Horns.NONE || player.horns.value !== 0) && rand(5) === 0) {
 				outputText("\n\nYour ");
-				if (player.horns.type == Horns.UNICORN || player.horns.type == Horns.RHINO) outputText("horn");
+				if (player.horns.type === Horns.UNICORN || player.horns.type === Horns.RHINO) outputText("horn");
 				else outputText("horns");
 				outputText(" crumble, falling apart in large chunks until they flake away to nothing.");
 				player.horns.value = 0;
@@ -427,7 +427,7 @@ package classes.Items.Consumables
 			}
 
 			//Face TF
-			if (player.face.type != Face.COCKATRICE && player.arms.type == Arms.COCKATRICE && player.lowerBody.type == LowerBody.COCKATRICE && changes < changeLimit && rand(3) == 0) {
+			if (player.face.type !== Face.COCKATRICE && player.arms.type === Arms.COCKATRICE && player.lowerBody.type === LowerBody.COCKATRICE && changes < changeLimit && rand(3) === 0) {
 				outputText("\n\nYour head is suddenly wracked with pain. You throw back your head and scream in agony as you feel your skull’s"
 				          +" structure shifting, reforming into something... different. Your lower face elongates, your nose and lips fusing into the"
 				          +" new upper half of your mouth while your jaw soon catches it up as they both harden. Your larger upper lip curves over"
@@ -441,7 +441,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Hair TF
-			if (player.hair.type != Hair.FEATHER && changes < changeLimit && rand(4) == 0) {
+			if (player.hair.type !== Hair.FEATHER && changes < changeLimit && rand(4) === 0) {
 				outputText("\n\nA tingling starts in your scalp, getting worse and worse until you're itching like mad, the feathery strands of your"
 				          +" hair tickling your fingertips while you scratch like a dog itching a flea. When you pull back your hand, you're treated"
 				          +" to the sight of downy fluff trailing from your [claws]. A realization dawns on you - <b>you have feathers for hair,"
@@ -450,7 +450,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Eye TF
-			if (player.eyes.type != Eyes.COCKATRICE && player.face.type == Face.COCKATRICE && player.underBody.type == UnderBody.COCKATRICE && player.ears.type == Ears.COCKATRICE && changes < changeLimit && rand(3) == 0) {
+			if (player.eyes.type !== Eyes.COCKATRICE && player.face.type === Face.COCKATRICE && player.underBody.type === UnderBody.COCKATRICE && player.ears.type === Ears.COCKATRICE && changes < changeLimit && rand(3) === 0) {
 				outputText("\n\nYour eyes suddenly burn, tears streaming down your cheeks. Your irises grow, taking up your entire eye as a spiderweb"
 				          +" of light blue crawls across your now vibrant blue eyes, looking like lightning strikes. Your pupils rapidly grow to"
 				          +" match, elongating into slit like shapes, similar to that of a feline. When your eyes stop watering you finally get a"
@@ -462,11 +462,11 @@ package classes.Items.Consumables
 				player.eyes.count = 2;
 			}
 			//Lizard tongue TF
-			if (player.tongue.type != Tongue.LIZARD && player.face.type == Face.COCKATRICE && changes < changeLimit && rand(3) == 0) {
+			if (player.tongue.type !== Tongue.LIZARD && player.face.type === Face.COCKATRICE && changes < changeLimit && rand(3) === 0) {
 				mutations.gainLizardTongue();
 			}
 			//Ears TF
-			if (player.ears.type != Ears.COCKATRICE && player.face.type == Face.COCKATRICE && changes < changeLimit && rand(3) == 0) {
+			if (player.ears.type !== Ears.COCKATRICE && player.face.type === Face.COCKATRICE && changes < changeLimit && rand(3) === 0) {
 				outputText("\n\nA prickling sensation suddenly fills your ears; unpleasant, but hardly painful. It grows and grows until you can't"
 				          +" stand it any more, and reach up to scratch at them. To your surprise, you find them melting away like overheated"
 				          +" candles. You panic as they fade into nothingness, leaving you momentarily deaf and dazed, stumbling around in confusion."
@@ -479,7 +479,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Arm TF
-			if (player.arms.type != Arms.COCKATRICE && changes < changeLimit && rand(4) == 0) {
+			if (player.arms.type !== Arms.COCKATRICE && changes < changeLimit && rand(4) === 0) {
 				outputText("\n\nPrickling discomfort suddenly erupts all over your body, like every last inch of your skin has suddenly developed"
 				          +" pins and needles. You scratch yourself, hoping for relief; but soon notice lumps forming under the skin as your lower"
 				          +" arm begins to shed. A coat of " + (player.hasCockatriceSkin() ? player.skin.furColor : player.hair.color) + " feathers sprouts"
@@ -493,12 +493,12 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Neck loss, if not cockatrice neck
-			if (player.neck.type != Neck.COCKATRICE && changes < changeLimit && rand(4) == 0)
+			if (player.neck.type !== Neck.COCKATRICE && changes < changeLimit && rand(4) === 0)
 				mutations.restoreNeck(tfSource);
 			//Rear body restore
-			if (player.rearBody.type != RearBody.NONE && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
+			if (player.rearBody.type !== RearBody.NONE && changes < changeLimit && rand(5) === 0) mutations.restoreRearBody(tfSource);
 			//Body TF
-			if (!player.hasCockatriceSkin() && player.face.type == Face.COCKATRICE && changes < changeLimit && rand(3) == 0) {
+			if (!player.hasCockatriceSkin() && player.face.type === Face.COCKATRICE && changes < changeLimit && rand(3) === 0) {
 				mutations.restoreNeck(tfSource + "-forceRestoreNeck");
 				var colorChoice:Array = mutations.newCockatriceColors();
 				outputText("\n\nYour body feels hot and your skin feels tight, making you fall to your knees in a bout of lightheadedness."
@@ -532,7 +532,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Neck TF, if not already TFed from Body TF above
-			if (player.neck.type != Neck.COCKATRICE && player.hasCockatriceSkin() && player.face.type == Face.COCKATRICE && changes < changeLimit && rand(3) == 0) {
+			if (player.neck.type !== Neck.COCKATRICE && player.hasCockatriceSkin() && player.face.type === Face.COCKATRICE && changes < changeLimit && rand(3) === 0) {
 				mutations.restoreNeck(tfSource);
 				outputText("\n\nYour neck starts to tingle and [secondary furcolor] feathers begin to grow out of it one after another until a ruff"
 				          +" of soft fluffy feathers has formed like that of an exotic bird.");
@@ -544,7 +544,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Leg TF
-			if (player.lowerBody.type != LowerBody.COCKATRICE && changes < changeLimit && rand(4) == 0) {
+			if (player.lowerBody.type !== LowerBody.COCKATRICE && changes < changeLimit && rand(4) === 0) {
 				outputText("\n\nYou scream in agony as you feel the bones in your feet suddenly break and restructure themselves,"
 				          +" becoming digitigrade. These strange new legs have three-toed, clawed feet, complete with a small vestigial claw-toe on"
 				          +" the back for added grip, yet from hip to knee are covered with a layer of "
@@ -555,7 +555,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Tail TF
-			if (player.tail.type != Tail.COCKATRICE && changes < changeLimit && rand(4) == 0) {
+			if (player.tail.type !== Tail.COCKATRICE && changes < changeLimit && rand(4) === 0) {
 				outputText("\n\nA sudden dull, throbbing pain in your [butt] forces your hands to it; you can feel an ominous lump over your tail"
 				          +" bone, swelling bigger and bigger with every heartbeat.  All of a sudden, it seems to explode, jutting out and around"
 				          +" until it hovers near your ankles. The skin beneath your fingers is covered in feathers but terminates about an inch"
@@ -567,9 +567,9 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Wings TF
-			if (player.wings.type != Wings.FEATHERED_LARGE && player.arms.type == Arms.COCKATRICE && changes < changeLimit && rand(4) == 0) {
+			if (player.wings.type !== Wings.FEATHERED_LARGE && player.arms.type === Arms.COCKATRICE && changes < changeLimit && rand(4) === 0) {
 				outputText("\n");
-				if (player.wings.type != Wings.NONE) {
+				if (player.wings.type !== Wings.NONE) {
 					outputText("\nSensation fades from your [wings] slowly but surely, leaving them dried out husks that break off to fall on the"
 					          +" ground. Your back closes up to conceal the loss, as smooth and unbroken as the day you entered the portal.");
 				}
@@ -587,7 +587,7 @@ package classes.Items.Consumables
 			}
 
 			//FAILSAFE CHANGE
-			if (changes == 0) {
+			if (changes === 0) {
 				outputText("\n\nInhuman vitality spreads through your body, invigorating you!\n");
 				game.HPChange(50, true);
 				dynStats("lus", 3);

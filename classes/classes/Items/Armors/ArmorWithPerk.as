@@ -37,14 +37,14 @@ package classes.Items.Armors
 		override public function playerEquip():Armor { //This item is being equipped by the player. Add any perks, etc.
 			while (game.player.findPerk(playerPerk) >= 0) game.player.removePerk(playerPerk);
 			game.player.createPerk(playerPerk, playerPerkV1, playerPerkV2, playerPerkV3, playerPerkV4);
-			if (playerPerk2 != null && game.player.findPerk(playerPerk2) >= 0) game.player.removePerk(playerPerk2);
-			if (playerPerk2 != null) game.player.createPerk(playerPerk2, playerPerk2V1, playerPerk2V2, playerPerk2V3, playerPerk2V4);
+			if (playerPerk2 !== null && game.player.findPerk(playerPerk2) >= 0) game.player.removePerk(playerPerk2);
+			if (playerPerk2 !== null) game.player.createPerk(playerPerk2, playerPerk2V1, playerPerk2V2, playerPerk2V3, playerPerk2V4);
 			return super.playerEquip();
 		}
 		
 		override public function playerRemove():Armor { //This item is being removed by the player. Remove any perks, etc.
 			while (game.player.findPerk(playerPerk) >= 0) game.player.removePerk(playerPerk);
-			if (playerPerk2 != null && game.player.findPerk(playerPerk2) >= 0) game.player.removePerk(playerPerk2);
+			if (playerPerk2 !== null && game.player.findPerk(playerPerk2) >= 0) game.player.removePerk(playerPerk2);
 			return super.playerRemove();
 		}
 
@@ -52,12 +52,12 @@ package classes.Items.Armors
 			var desc:String = super.description;
 			//Perk
 			desc += "\nSpecials: " + playerPerk.name;
-			if (playerPerk == PerkLib.WizardsEndurance) desc += " (-" + playerPerkV1 + "% Spell Cost)";
+			if (playerPerk === PerkLib.WizardsEndurance) desc += " (-" + playerPerkV1 + "% Spell Cost)";
 			else if (playerPerkV1 > 0) desc += " (Magnitude: " + playerPerkV1 + ")";
 			//Second perk
-			if (playerPerk2 != null) {
+			if (playerPerk2 !== null) {
 				desc += "\n" + playerPerk2.name;
-				if (playerPerk2 == PerkLib.WizardsEndurance) desc += " (-" + playerPerk2V1 + "% Spell Cost)";
+				if (playerPerk2 === PerkLib.WizardsEndurance) desc += " (-" + playerPerk2V1 + "% Spell Cost)";
 				else if (playerPerk2V1 > 0) desc += " (Magnitude: " + playerPerk2V1 + ")";
 			}
 			return desc;

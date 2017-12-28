@@ -35,22 +35,22 @@ public class CustomOviElixir extends Consumable {
 	override public function useItem():Boolean {
 		game.player.slimeFeed();
 		outputText("You pop the cork and gulp down the thick greenish fluid.  The taste is unusual and unlike anything you've tasted before.");
-		if (game.player.pregnancyType == PregnancyStore.PREGNANCY_GOO_STUFFED) {
+		if (game.player.pregnancyType === PregnancyStore.PREGNANCY_GOO_STUFFED) {
 			outputText("\n\nFor a moment you feel even more bloated than you already are.  That feeling is soon replaced by a dull throbbing pain.  It seems that with Valeria's goo filling your womb the ovielixir is unable to work its magic on you.");
 				return(false);
 		}
-		if (game.player.pregnancyType == PregnancyStore.PREGNANCY_WORM_STUFFED) {
+		if (game.player.pregnancyType === PregnancyStore.PREGNANCY_WORM_STUFFED) {
 			outputText("\n\nFor a moment you feel even more bloated than you already are.  That feeling is soon replaced by a dull throbbing pain.  It seems that with the worms filling your womb the ovielixir is unable to work its magic on you.");
 				return(false);
 		}
 		const incubation:int = game.player.pregnancyIncubation;
-		if (incubation == 0) { //If the player is not pregnant, get preggers with eggs!
+		if (incubation === 0) { //If the player is not pregnant, get preggers with eggs!
 			outputText("\n\nThe elixir has an immediate effect on your belly, causing it to swell out slightly as if pregnant.  You guess you'll be laying eggs sometime soon!");
 			createPregnancy(rand(6),randBigEgg(), randEggCount());
 				return(false);
 		}
 		var changeOccurred:Boolean = false;
-		if (game.player.pregnancyType == PregnancyStore.PREGNANCY_OVIELIXIR_EGGS) { //If player already has eggs, chance of size increase!
+		if (game.player.pregnancyType === PregnancyStore.PREGNANCY_OVIELIXIR_EGGS) { //If player already has eggs, chance of size increase!
 			if (this is OvipositionMax && !player.hasPerk(PerkLib.Oviposition) && !canSpeedUp()) {
 				outputText("\n\nYou start to feel a bit of a rumble. You look down at your belly, and it seems to have started a slight twitch,"
 				          +" and then stops. You take a look at the empty ovimax bottle for information when suddenly your womb lurches forward"
@@ -65,7 +65,7 @@ public class CustomOviElixir extends Consumable {
 			}
 			if (game.player.hasStatusEffect(StatusEffects.Eggs)) {
 				//If eggs are small, chance of increase!
-				if (game.player.statusEffectv2(StatusEffects.Eggs) == 0) {
+				if (game.player.statusEffectv2(StatusEffects.Eggs) === 0) {
 					//1 in 2 chance!
 					if (randDoIncEggSize()) {
 						game.player.addStatusValue(StatusEffects.Eggs, 2, 1);
@@ -97,15 +97,15 @@ public class CustomOviElixir extends Consumable {
 	}
 
 	protected function canSpeedUp():Boolean {
-		return game.player.pregnancyIncubation > 20 && game.player.pregnancyType != PregnancyStore.PREGNANCY_BUNNY;
+		return game.player.pregnancyIncubation > 20 && game.player.pregnancyType !== PregnancyStore.PREGNANCY_BUNNY;
 	}
 
 	protected function bonusEggQty():int {
-		return rand(2) == 0 ? rand(4) + 1 : 0;
+		return rand(2) === 0 ? rand(4) + 1 : 0;
 	}
 
 	protected function randDoIncEggSize():Boolean {
-		return rand(3) == 0;
+		return rand(3) === 0;
 	}
 
 	protected function randEggCount():int {

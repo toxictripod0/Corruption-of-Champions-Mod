@@ -80,7 +80,7 @@ package classes.Items.Consumables
 			}
 			
 			//Imp wings - I just kinda robbed this from demon changes ~Foxwells
-			if (rand(3) == 0 && changes < changeLimit && player.wings.type != Wings.IMP_LARGE && player.isCorruptEnough(25)) {
+			if (rand(3) === 0 && changes < changeLimit && player.wings.type !== Wings.IMP_LARGE && player.isCorruptEnough(25)) {
 				//grow smalls to large
 				if (player.wings.type === Wings.IMP && player.isCorruptEnough(50)) {
 					outputText("\n\n");
@@ -244,9 +244,9 @@ package classes.Items.Consumables
 			}
 			
 			//Neck restore
-			if (player.neck.type != Neck.NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) mutations.restoreNeck(tfSource);
 			//Rear body restore
-			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
+			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) mutations.restoreRearBody(tfSource);
 			//Ovi perk loss
 			if (rand(5) === 0 && changes < changeLimit) {
 				mutations.updateOvipositionPerk(tfSource);

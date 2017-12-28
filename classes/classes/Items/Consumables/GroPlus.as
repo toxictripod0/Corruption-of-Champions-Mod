@@ -44,7 +44,7 @@ package classes.Items.Consumables
 			game.player.slimeFeed();
 			outputText("You sink the needle deep into your " + game.player.sackDescript() + ".  It hurts like hell, but you push down the plunger and the pain vanishes as the needles contents flow into you.\n\n");
 			//1 in 4 BIG growth.
-			if (Utils.rand(4) == 0) {
+			if (Utils.rand(4) === 0) {
 				outputText("You feel a trembling in your " + game.player.ballsDescriptLight() + " as the chemicals start to go to work.  You can tell they're going to be VERY effective.\n");
 				game.player.ballSize += Utils.rand(4) + 2;
 				outputText("They shift, stretching your " + game.player.sackDescript() + " tight as they gain inches of size.  You step to steady yourself as your center of balance shifts due to your newly enlarged " + game.player.ballsDescriptLight() + ".  ");
@@ -62,7 +62,7 @@ package classes.Items.Consumables
 			clearOutput();
 			game.player.slimeFeed();
 			outputText("You sink the needle into the flesh of your " + game.player.allBreastsDescript() + " injecting each with a portion of the needle.\n\n");
-			if (game.player.breastRows.length == 1)
+			if (game.player.breastRows.length === 1)
 				game.player.growTits(Utils.rand(5) + 1, 1, true, 1);
 			else
 				game.player.growTits(Utils.rand(2) + 1, game.player.breastRows.length, true, 1);
@@ -84,7 +84,7 @@ package classes.Items.Consumables
 			clearOutput();
 			game.player.slimeFeed();
 			outputText("You sink the needle into the base of your " + game.player.multiCockDescriptLight() + ".  It hurts like hell, but as you depress the plunger, the pain vanishes, replaced by a tingling pleasure as the chemicals take effect.\n\n");
-			if (game.player.cocks.length == 1) {
+			if (game.player.cocks.length === 1) {
 				outputText("Your " + game.player.cockDescript(0) + " twitches and thickens, pouring more than an inch of thick new length from your ");
 				game.player.increaseCock(0, 4);
 				game.player.cocks[0].cockLength += 1; // This was forcing "what was said" to match "what actually happened" no matter what increase/growCock /actually/ did.
@@ -115,7 +115,7 @@ package classes.Items.Consumables
 			game.player.nippleLength += (Utils.rand(2) + 3) / 10;
 			game.dynStats("lus", 15);
 			//NIPPLECUNTZZZ
-			if (!game.player.hasFuckableNipples() && Utils.rand(4) == 0) {
+			if (!game.player.hasFuckableNipples() && Utils.rand(4) === 0) {
 				var nowFuckable:Boolean = false;
 				for (var x:int = 0; x < game.player.breastRows.length; x++) {
 					if (!game.player.breastRows[x].fuckable && game.player.nippleLength >= 2) {

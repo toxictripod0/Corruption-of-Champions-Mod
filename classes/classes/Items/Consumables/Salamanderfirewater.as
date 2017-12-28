@@ -183,15 +183,15 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//-Remove extra breast rows
-			if (changes < changeLimit && player.breastRows.length > 1 && rand(3) == 0 && !flags[kFLAGS.HYPER_HAPPY]) {
+			if (changes < changeLimit && player.breastRows.length > 1 && rand(3) === 0 && !flags[kFLAGS.HYPER_HAPPY]) {
 				mutations.removeExtraBreastRow(tfSource);
 			}
 			//Neck restore
-			if (player.neck.type != Neck.NORMAL && changes < changeLimit && rand(4) === 0) {
+			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) {
 				mutations.restoreNeck(tfSource);
 			}
 			//Rear body restore
-			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) {
+			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) {
 				mutations.restoreRearBody(tfSource);
 			}
 			//Ovi perk loss

@@ -244,9 +244,9 @@ package classes.Items.Consumables
 				}
 			}
 			//Neck restore
-			if (player.neck.type != Neck.NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) mutations.restoreNeck(tfSource);
 			//Rear body restore
-			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
+			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) mutations.restoreRearBody(tfSource);
 			//Ovi perk loss
 			if (rand(5) === 0) {
 				mutations.updateOvipositionPerk(tfSource);
@@ -258,7 +258,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//Remove odd eyes
-			if ((player.eyes.type === Eyes.FOUR_SPIDER_EYES || player.eyes.type == Eyes.SPIDER) && rand(2) === 0 && changes < changeLimit) {
+			if ((player.eyes.type === Eyes.FOUR_SPIDER_EYES || player.eyes.type === Eyes.SPIDER) && rand(2) === 0 && changes < changeLimit) {
 				outputText("\n\nYou blink and stumble, a wave of vertigo threatening to pull your " + player.feet() + " from under you.  As you steady and open your eyes, you realize something seems different.  Your vision is changed somehow. <b>Your arachnid eyes are gone! You have normal, humanoid eyes again.</b>");
 				player.eyes.type = Eyes.HUMAN;
 				player.eyes.count = 2;

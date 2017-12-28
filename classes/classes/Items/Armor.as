@@ -30,7 +30,7 @@ package classes.Items
 		
 		public function get name():String { return _name; }
 		
-		public function get supportsBulge():Boolean { return _supportsBulge && game.player.modArmorName == ""; }
+		public function get supportsBulge():Boolean { return _supportsBulge && game.player.modArmorName === ""; }
 			//For most clothes if the modArmorName is set then it's Exgartuan's doing. The comfortable clothes are the exception, they override this function.
 		
 		public function get supportsUndergarment():Boolean { return _supportsUndergarment; }
@@ -39,9 +39,9 @@ package classes.Items
 			var desc:String = _description;
 			//Type
 			desc += "\n\nType: ";
-			if (perk == "Light" || perk == "Medium" || perk == "Heavy") {
+			if (perk === "Light" || perk === "Medium" || perk === "Heavy") {
 				desc += "Armor (" + perk + ")";
-			} else if (perk == "Adornment") desc += "Adornment ";
+			} else if (perk === "Adornment") desc += "Adornment ";
 			else desc += "Clothing ";
 			//Defense
 			desc += "\nDefense: " + String(def);
@@ -51,17 +51,17 @@ package classes.Items
 		}
 		
 		override public function canUse():Boolean {
-			if (this.supportsUndergarment == false && (game.player.upperGarment != UndergarmentLib.NOTHING || game.player.lowerGarment != UndergarmentLib.NOTHING)) {
+			if (this.supportsUndergarment === false && (game.player.upperGarment !== UndergarmentLib.NOTHING || game.player.lowerGarment !== UndergarmentLib.NOTHING)) {
 				var output:String = "";
 				var wornUpper:Boolean = false;
 
 				output += "It would be awkward to put on " + longName + " when you're currently wearing ";
-				if (game.player.upperGarment != UndergarmentLib.NOTHING) {
+				if (game.player.upperGarment !== UndergarmentLib.NOTHING) {
 					output += game.player.upperGarment.longName;
 					wornUpper = true;
 				}
 
-				if (game.player.lowerGarment != UndergarmentLib.NOTHING) {
+				if (game.player.lowerGarment !== UndergarmentLib.NOTHING) {
 					if (wornUpper) {
 						output += " and ";
 					}
@@ -111,9 +111,9 @@ package classes.Items
 			while(player.findPerk(PerkLib.BulgeArmor) >= 0) player.removePerk(PerkLib.BulgeArmor);// TODO remove this Exgartuan hack
 			if (returnToInventory) {
 				var itype:ItemType = unequipReturnItem(player, output);
-				if (itype != null) {
+				if (itype !== null) {
 					game.itemSwapping = true;
-					if (output && itype == this)
+					if (output && itype === this)
 						outputText("You have your old set of " + longName + " left over.  ");
 					game.inventory.takeItem(this, false);
 				}

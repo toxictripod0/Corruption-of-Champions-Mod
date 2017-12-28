@@ -15,14 +15,14 @@ package classes.Items.Consumables
 		
 		override public function useItem():Boolean
 		{
-			sharkTooth(this.id == "TSTooth" ? 1 : 0);
+			sharkTooth(this.id === "TSTooth" ? 1 : 0);
 			return false;
 		}
 		
 		public function sharkTooth(type:Number):void
 		{
 			var tfSource:String = "sharkTooth";
-			if (type == 1) tfSource += "-tigershark";
+			if (type === 1) tfSource += "-tigershark";
 			changes = 0;
 			changeLimit = 2;
 			if (rand(2) === 0) changeLimit++;
@@ -30,17 +30,17 @@ package classes.Items.Consumables
 			if (player.hasPerk(PerkLib.HistoryAlchemist)) changeLimit++;
 			if (player.hasPerk(PerkLib.TransformationResistance)) changeLimit--;
 			clearOutput();
-			if (type == 0) outputText("You have no idea why, but you decide to eat the pointed tooth. To your surprise, it's actually quite brittle, turning into a fishy-tasting dust. You figure it must just be a tablet made to look like a shark's tooth.");
-			else if (type == 1) outputText("You have no idea why, but you decide to eat the pointed, glowing tooth. To your surprise, it's actually quite brittle, crumbling into a fishy-tasting dust. Maybe it's just a tablet made to look like a shark's tooth.");
+			if (type === 0) outputText("You have no idea why, but you decide to eat the pointed tooth. To your surprise, it's actually quite brittle, turning into a fishy-tasting dust. You figure it must just be a tablet made to look like a shark's tooth.");
+			else if (type === 1) outputText("You have no idea why, but you decide to eat the pointed, glowing tooth. To your surprise, it's actually quite brittle, crumbling into a fishy-tasting dust. Maybe it's just a tablet made to look like a shark's tooth.");
 			//STATS
 			//Increase strength 1-2 points (Up to 50) (60 for tiger)
-			if (((player.str100 < 60 && type == 1) || player.str100 < 50) && rand(3) === 0) {
+			if (((player.str100 < 60 && type === 1) || player.str100 < 50) && rand(3) === 0) {
 				dynStats("str", 1 + rand(2));
 				outputText("\n\nA painful ripple passes through the muscles of your body.  It takes you a few moments, but you quickly realize you're a little bit stronger now.");
 				//[removed:1.4.10]//changes++;
 			}
 			//Increase Speed 1-3 points (Up to 75) (100 for tigers)
-			if (((player.spe100 < 100 && type == 1) || player.spe100 < 75) && rand(3) === 0) {
+			if (((player.spe100 < 100 && type === 1) || player.spe100 < 75) && rand(3) === 0) {
 				dynStats("spe", 1 + rand(3));
 				//[removed:1.4.10]//changes++;
 				outputText("\n\nShivering without warning, you nearly trip over yourself as you walk.  A few tries later you realize your muscles have become faster.");
@@ -52,7 +52,7 @@ package classes.Items.Consumables
 				outputText("\n\nIt takes a while, but you eventually realize your body has become less sensitive.");
 			}
 			//Increase Libido 2-4 points (Up to 75 points) (100 for tigers)
-			if (((player.lib100 < 100 && type == 1) || player.lib100 < 75) && rand(3) === 0 && changes < changeLimit) {
+			if (((player.lib100 < 100 && type === 1) || player.lib100 < 75) && rand(3) === 0 && changes < changeLimit) {
 				dynStats("lib", (1 + rand(3)));
 				//[removed:1.4.10]//changes++;
 				outputText("\n\nA blush of red works its way across your skin as your sex drive kicks up a notch.");
@@ -65,7 +65,7 @@ package classes.Items.Consumables
 			}
 			//Smexual stuff!
 			//-TIGGERSHARK ONLY: Grow a cunt (guaranteed if no gender)
-			if (type == 1 && (player.gender == 0 || (!player.hasVagina() && changes < changeLimit && rand(3) === 0))) {
+			if (type === 1 && (player.gender === 0 || (!player.hasVagina() && changes < changeLimit && rand(3) === 0))) {
 				changes++;
 				//(balls)
 				if (player.balls > 0) outputText("\n\nAn itch starts behind your " + player.ballsDescriptLight() + ", but before you can reach under to scratch it, the discomfort fades. A moment later a warm, wet feeling brushes your " + player.sackDescript() + ", and curious about the sensation, <b>you lift up your balls to reveal your new vagina.</b>");
@@ -78,12 +78,12 @@ package classes.Items.Consumables
 				dynStats("sen", 10);
 			}
 			//WANG GROWTH - TIGGERSHARK ONLY
-			if (type == 1 && (!player.hasCock()) && changes < changeLimit && rand(3) === 0) {
+			if (type === 1 && (!player.hasCock()) && changes < changeLimit && rand(3) === 0) {
 				//Genderless:
 				if (!player.hasVagina()) outputText("\n\nYou feel a sudden stabbing pain in your featureless crotch and bend over, moaning in agony. Your hands clasp protectively over the surface - which is swelling in an alarming fashion under your fingers! Stripping off your clothes, you are presented with the shocking site of once-smooth flesh swelling and flowing like self-animate clay, resculpting itself into the form of male genitalia! When the pain dies down, you are the proud owner of a new human-shaped penis");
 				//Female:
 				else outputText("\n\nYou feel a sudden stabbing pain just above your " + player.vaginaDescript() + " and bend over, moaning in agony. Your hands clasp protectively over the surface - which is swelling in an alarming fashion under your fingers! Stripping off your clothes, you are presented with the shocking site of once-smooth flesh swelling and flowing like self-animate clay, resculpting itself into the form of male genitalia! When the pain dies down, you are the proud owner of not only a " + player.vaginaDescript() + ", but a new human-shaped penis");
-				if (player.balls == 0) {
+				if (player.balls === 0) {
 					outputText(" and a pair of balls");
 					player.balls = 2;
 					player.ballSize = 2;
@@ -94,12 +94,12 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//(Requires the player having two testicles)
-			if (type == 1 && (player.balls == 0 || player.balls == 2) && player.hasCock() && changes < changeLimit && rand(3) === 0) {
-				if (player.balls == 2) {
+			if (type === 1 && (player.balls === 0 || player.balls === 2) && player.hasCock() && changes < changeLimit && rand(3) === 0) {
+				if (player.balls === 2) {
 					outputText("\n\nYou gasp in shock as a sudden pain racks your abdomen. Within seconds, two more testes drop down into your " + player.sackDescript() + ", your skin stretching out to accommodate them. Once the pain clears, you examine <b>your new quartet of testes.</b>");
 					player.balls = 4;
 				}
-				else if (player.balls == 0) {
+				else if (player.balls === 0) {
 					outputText("\n\nYou gasp in shock as a sudden pain racks your abdomen. Within seconds, two balls drop down into a new sack, your skin stretching out to accommodate them. Once the pain clears, you examine <b>your new pair of testes.</b>");
 					player.balls = 2;
 					player.ballSize = 2;
@@ -128,12 +128,12 @@ package classes.Items.Consumables
 			}
 			//Remove odd eyes
 			if (changes < changeLimit && rand(5) === 0 && player.eyes.type !== Eyes.HUMAN) {
-				if (player.eyes.type == Eyes.BLACK_EYES_SAND_TRAP) {
+				if (player.eyes.type === Eyes.BLACK_EYES_SAND_TRAP) {
 					outputText("\n\nYou feel a twinge in your eyes and you blink.  It feels like black cataracts have just fallen away from you, and you know without needing to see your reflection that your eyes have gone back to looking human.");
 				}
 				else {
 					outputText("\n\nYou blink and stumble, a wave of vertigo threatening to pull your " + player.feet() + " from under you.  As you steady and open your eyes, you realize something seems different.  Your vision is changed somehow.");
-					if (player.eyes.type == Eyes.FOUR_SPIDER_EYES || player.eyes.type == Eyes.SPIDER) outputText("  Your arachnid eyes are gone!</b>");
+					if (player.eyes.type === Eyes.FOUR_SPIDER_EYES || player.eyes.type === Eyes.SPIDER) outputText("  Your arachnid eyes are gone!</b>");
 					outputText("  <b>You have normal, humanoid eyes again.</b>");
 				}
 				player.eyes.type = Eyes.HUMAN;
@@ -143,12 +143,12 @@ package classes.Items.Consumables
 			//Tail TF
 			if (player.tail.type !== Tail.SHARK && rand(3) === 0 && changes < changeLimit) {
 				changes++;
-				if (player.tail.type == Tail.NONE) outputText("\n\nJets of pain shoot down your spine, causing you to gasp in surprise and fall to your hands and knees. Feeling a bulging at the end of your back, you lower your " + player.armorName + " down just in time for a fully formed shark tail to burst through. You swish it around a few times, surprised by how flexible it is. After some modifications to your clothing, you're ready to go with your brand new shark tail.");
+				if (player.tail.type === Tail.NONE) outputText("\n\nJets of pain shoot down your spine, causing you to gasp in surprise and fall to your hands and knees. Feeling a bulging at the end of your back, you lower your " + player.armorName + " down just in time for a fully formed shark tail to burst through. You swish it around a few times, surprised by how flexible it is. After some modifications to your clothing, you're ready to go with your brand new shark tail.");
 				else outputText("\n\nJets of pain shoot down your spine into your tail.  You feel the tail bulging out until it explodes into a large and flexible shark-tail.  You swish it about experimentally, and find it quite easy to control.");
 				player.tail.type = Tail.SHARK;
 			}
 			//Gills TF
-			if (player.gills.type !== Gills.FISH && player.tail.type == Tail.SHARK && player.face.type == Face.SHARK_TEETH && changes < changeLimit && rand(3) === 0)
+			if (player.gills.type !== Gills.FISH && player.tail.type === Tail.SHARK && player.face.type === Face.SHARK_TEETH && changes < changeLimit && rand(3) === 0)
 				mutations.updateGills(Gills.FISH);
 			//Hair
 			if (player.hair.color !== "silver" && rand(4) === 0 && changes < changeLimit) {
@@ -161,8 +161,8 @@ package classes.Items.Consumables
 				outputText("\n\n");
 				if (player.isFurryOrScaley()) outputText("Your " + player.skin.desc + " falls out, collecting on the floor and exposing your supple skin underneath.  ");
 				else if (player.hasGooSkin()) outputText("Your gooey skin solidifies, thickening up as your body starts to solidify into a more normal form. ");
-				else if (type == 0) outputText("Your skin itches and tingles becoming slightly rougher and turning gray.  ");
-				if (type == 0) {
+				else if (type === 0) outputText("Your skin itches and tingles becoming slightly rougher and turning gray.  ");
+				if (type === 0) {
 					outputText("You abruptly stop moving and gasp sharply as a shudder goes up your entire frame. Your skin begins to shift and morph, growing slightly thicker and changing into a shiny grey color. Your skin now feels oddly rough too, comparable to that of a marine mammal. You smile and run your hands across your new shark skin.");
 					player.skin.type = Skin.PLAIN;
 					player.skin.desc = "skin";
@@ -192,7 +192,7 @@ package classes.Items.Consumables
 				player.wings.restore();
 				changes++;
 			}
-			if (changes == 0) {
+			if (changes === 0) {
 				outputText("\n\nNothing happened.  Weird.");
 			}
 			player.refillHunger(5);

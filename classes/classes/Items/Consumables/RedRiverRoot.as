@@ -36,9 +36,9 @@ package classes.Items.Consumables
 			changes = 0;
 			changeLimit = 1;
 			// Randomly choose affects limit
-			if (rand(2) == 0) changeLimit++;
-			if (rand(2) == 0) changeLimit++;
-			if (rand(4) == 0) changeLimit++;
+			if (rand(2) === 0) changeLimit++;
+			if (rand(2) === 0) changeLimit++;
+			if (rand(4) === 0) changeLimit++;
 			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
 			if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
 

@@ -41,7 +41,7 @@ package classes.Items.Consumables
 		}
 
 		public function oilSkin():void {
-			if (game.player.skin.tone == _color) {
+			if (game.player.skin.tone === _color) {
 				outputText("You " + game.player.clothedOrNaked("take a second to disrobe before uncorking the bottle of oil and rubbing", "uncork the bottle of oil and rub") + " the smooth liquid across your body. Once you’ve finished you feel rejuvenated.");
 				game.player.changeFatigue(-10);
 			}
@@ -74,7 +74,7 @@ package classes.Items.Consumables
 		}
 
 		public function oilUnderBodySkin():void {
-			if (game.player.underBody.skin.tone == _color) {
+			if (game.player.underBody.skin.tone === _color) {
 				outputText("You " + game.player.clothedOrNaked("take a second to disrobe before uncorking the bottle of oil and rubbing", "uncork the bottle of oil and rub") + " the smooth liquid across your underbody. Once you’ve finished you feel rejuvenated.");
 				game.player.changeFatigue(-10);
 			}

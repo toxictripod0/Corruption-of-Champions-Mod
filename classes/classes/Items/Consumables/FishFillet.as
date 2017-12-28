@@ -21,8 +21,8 @@ package classes.Items.Consumables
 			//Increase HP by quite a bit!)
 			//(Slight chance at increasing Toughness?)
 			//(If lake has been tainted, +1 Corruption?)
-			if (flags[kFLAGS.FACTORY_SHUTDOWN] == 2) dynStats("cor", 0.5);
-			if (flags[kFLAGS.FACTORY_SHUTDOWN] == 1) dynStats("cor", -0.1);
+			if (flags[kFLAGS.FACTORY_SHUTDOWN] === 2) dynStats("cor", 0.5);
+			if (flags[kFLAGS.FACTORY_SHUTDOWN] === 1) dynStats("cor", -0.1);
 			dynStats("cor", 0.1);
 			game.HPChange(Math.round(player.maxHP() * .25), true);
 			player.refillHunger(30);

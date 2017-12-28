@@ -20,7 +20,7 @@ package classes.BodyParts
 		public static const RAM:int                      =  10;
 		public static const IMP:int                      =  11;
 
-		public var type:Number  = NONE;
+		public var type:int = NONE;
 		/** horns length or number depending on the type */
 		public var value:Number = 0;
 

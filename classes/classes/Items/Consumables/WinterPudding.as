@@ -32,7 +32,7 @@ package classes.Items.Consumables
 			dynStats("lus", (10+player.lib/10), "scale", false);
 			
 			//[Optional, give the player antlers! (30% chance) Show this description if the player doesn't have horns already.]
-			if (player.horns.value == 0 && rand(2) === 0) {
+			if (player.horns.value === 0 && rand(2) === 0) {
 				outputText("\n\nYou hear the sound of cracking branches erupting from the tip of your skull.  Small bulges on either side of your head advance outwards in a straight line, eventually spreading out in multiple directions like a miniature tree.  Investigating the exotic additions sprouting from your head, the situation becomes clear.  <b>You've grown antlers!</b>");
 				//[Player horn type changed to Antlers.]
 				player.horns.type = Horns.ANTLERS;

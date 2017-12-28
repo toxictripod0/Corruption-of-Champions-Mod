@@ -17,8 +17,8 @@ package classes.Items.Armors
 		
 		override public function useText():void { //Produces any text seen when equipping the armor normally
 			
-			var wornUpper:Boolean = (game.player.upperGarment != UndergarmentLib.NOTHING);
-			var wornLower:Boolean = (game.player.lowerGarment != UndergarmentLib.NOTHING);
+			var wornUpper:Boolean = (game.player.upperGarment !== UndergarmentLib.NOTHING);
+			var wornLower:Boolean = (game.player.lowerGarment !== UndergarmentLib.NOTHING);
 			
 			if (wornLower && wornLower) {
 				outputText("You look very awkward wearing " + game.player.lowerGarment.longName + " while putting your skirt on.");
@@ -95,7 +95,7 @@ package classes.Items.Armors
 						default: //Move along
 					}
 				}
-				if (game.player.gender == 0) {
+				if (game.player.gender === 0) {
 					outputText("Despite your lack of features, you indeed feel arousal all over your body. ");
 				}
 				outputText("\n\n");
@@ -112,8 +112,8 @@ package classes.Items.Armors
 		
 		override public function canUse():Boolean {
 			
-			var wornUpper:Boolean = game.player.upperGarment != UndergarmentLib.NOTHING;
-			var wornLower:Boolean = game.player.lowerGarment != UndergarmentLib.NOTHING;
+			var wornUpper:Boolean = game.player.upperGarment !== UndergarmentLib.NOTHING;
+			var wornLower:Boolean = game.player.lowerGarment !== UndergarmentLib.NOTHING;
 			
 			if (!game.player.isPureEnough(10)) {
 				if (wornUpper || wornLower) {

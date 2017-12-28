@@ -34,8 +34,8 @@ package classes
 				if (_pShortDesc.length>0) error += "Not pierced but _pShortDesc = "+_pShortDesc+". ";
 				if (_pLongDesc.length>0) error += "Not pierced but pLong = "+_pLongDesc+". ";
 			} else {
-				if (_pShortDesc.length==0) error += "Pierced but no _pShortDesc. ";
-				if (_pLongDesc.length==0) error += "Pierced but no pLong. ";
+				if (_pShortDesc.length === 0) error += "Pierced but no _pShortDesc. ";
+				if (_pLongDesc.length === 0) error += "Pierced but no pLong. ";
 			}
 			return error;
 		}
