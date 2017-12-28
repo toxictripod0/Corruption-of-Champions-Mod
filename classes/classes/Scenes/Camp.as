@@ -1638,6 +1638,7 @@ public function superLoop():void {
 public function calculateHoursUntilHour(targetHour:int):int {
 	var currentHour:int = getGame().time.hours;
 	var amount:int = 0;
+	while (currentHour != targetHour) {
 		currentHour++;
 		amount++;
 		if (currentHour >= 24) currentHour = 0;
