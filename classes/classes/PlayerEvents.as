@@ -13,7 +13,7 @@ package classes {
 		public static const VAGINA_RECOVER_THRESHOLD_GAPING_WIDE:Number = 70;
 		public static const VAGINA_RECOVER_THRESHOLD_CLOWN_CAR:Number = 50;
 		
-		public function PlayerEvents():void
+		public function PlayerEvents()
 		{
 			CoC.timeAwareClassAdd(this);
 		}

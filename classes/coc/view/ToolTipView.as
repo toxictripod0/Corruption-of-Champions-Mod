@@ -15,7 +15,7 @@ package coc.view {
 			hd:TextField,
 			tf:TextField;
 
-		public function ToolTipView(mainView:MainView):void {
+		public function ToolTipView(mainView:MainView) {
 			super();
 
 			this.bg = addBitmapDataSprite({

@@ -169,7 +169,7 @@ public class MainView extends Block {
 	protected var options:Object;
 
 	public var charView:CharView;
-	public function MainView():void {
+	public function MainView() {
 		super();
 		addElement(blackBackground = new BitmapDataSprite({
 			bitmapClass: ButtonBackground2,

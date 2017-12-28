@@ -13,7 +13,7 @@ package classes.Items.Consumables
 	 */
 	public class EmberTFs extends Consumable 
 	{
-		public function EmberTFs(type:int = 0):void 
+		public function EmberTFs(type:int = 0) 
 		{
 			var id:String;
 			var shortName:String;
@@ -29,7 +29,6 @@ package classes.Items.Consumables
 					description = "A rare, beautiful flower.  It could make an exquisite perfume.  According to a legend, dragons give this flower to the ones they intend to court.";
 					value = 50;
 					break;
-
 				default:
 					id = "EmberBl";
 					shortName = "EmberBlood";

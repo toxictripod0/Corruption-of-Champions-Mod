@@ -44,7 +44,7 @@ import flash.text.TextField;
 		/**
 		 * @param options  enabled, labelText, bitmapClass, callback
 		 */
-		public function CoCButton(options:Object = null):void {
+		public function CoCButton(options:Object = null) {
 			super();
 			_backgroundGraphic = addBitmapDataSprite({
 				stretch: true,
