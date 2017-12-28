@@ -282,7 +282,7 @@ package classes.Scenes.Places.Prison
 			else
 			{
 				outputText("You realize that this was probably the closest thing to a friendly gesture you are likely to encounter in this place, so you ");
-				if (player.statusEffectv4(StatusEffects.PrisonRestraints) == 0)
+				if (player.statusEffectv4(StatusEffects.PrisonRestraints) === 0)
 				{
 					outputText("politely but firmly turn down the offer. ");
 				}
@@ -320,7 +320,7 @@ package classes.Scenes.Places.Prison
 			clearOutput();
 			outputText("Acknowledging how true it is that a good meal is hard to come by in your current situation, you decide that it wouldn't hurt to (as the imp put it) show a bit of gratitude in exchange for some extra food, especially considering that relative to your other experiences in this place Scruffy's offer was downright good natured. ");
 			outputText("Your mind made up, you assume a subservient posture and meeky communicate your acceptance ");
-			if (player.statusEffectv4(StatusEffects.PrisonRestraints) == 0)
+			if (player.statusEffectv4(StatusEffects.PrisonRestraints) === 0)
 			{
 				outputText("with a mumbled word. ");
 			}
@@ -361,7 +361,7 @@ package classes.Scenes.Places.Prison
 			else
 			{
 				outputText("An attempt at kindness or not, the offer is humiliating in a way you aren't willing to accept at the moment. Gathering your courage, ");
-				if (player.statusEffectv4(StatusEffects.PrisonRestraints) == 0)
+				if (player.statusEffectv4(StatusEffects.PrisonRestraints) === 0)
 				{
 					outputText("you unleash a verbal stream of pent up aggression on the scrawny imp janitor, flatly rejecting his deal. ");
 				}
@@ -370,7 +370,7 @@ package classes.Scenes.Places.Prison
 					outputText("you assume a defensive posture and scream your rejection of the deal through your gag. ");
 				}
 				outputText("\n\nBefore you can even begin to react, you see his face turn to a mask of rage as he hammers you over the head with the bucket he was so recently using to clean up your filth. You momentarily black out, and when you come to you realize that ");
-				if (player.statusEffectv2(StatusEffects.PrisonRestraints) != 2)
+				if (player.statusEffectv2(StatusEffects.PrisonRestraints) !== 2)
 				{
 					outputText("he has hogtied you. ");
 				}

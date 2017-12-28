@@ -13,7 +13,7 @@ package classes.Scenes.Dungeons.Factory
 		
 		override public function defeated(hpVictory:Boolean):void
 		{
-			if (flags[kFLAGS.D3_DISCOVERED] == 0)
+			if (flags[kFLAGS.D3_DISCOVERED] === 0)
 			{
 				defeatedInDungeon1(hpVictory);
 			}
@@ -30,7 +30,7 @@ package classes.Scenes.Dungeons.Factory
 				outputText("You smile in satisfaction as the " + short + " collapses, unable to continue fighting.");
 			else outputText("You smile in satisfaction as the " + short + " collapses, masturbating happily.");
 			outputText("  Now would be the perfect opportunity to put his tool to use...\n\nWhat do you do?");
-			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] >= 2 && flags[kFLAGS.FACTORY_INCUBUS_BRIBED] == 0) outputText("\n\n<b>You swear you can hear a clicking sound coming from the west.</b>");
+			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] >= 2 && flags[kFLAGS.FACTORY_INCUBUS_BRIBED] === 0) outputText("\n\n<b>You swear you can hear a clicking sound coming from the west.</b>");
 			
 			if (!player.isGenderless()) {
 				game.addButton(0, "Rape", game.lethicesKeep.incubusMechanic.doRapeIncubus).hint(player.hasCock() ? "Fuck his butt." : "Ride him vaginally.");
@@ -39,7 +39,7 @@ package classes.Scenes.Dungeons.Factory
 			}
 			game.addButton(1, "Service Him", game.lethicesKeep.incubusMechanic.doOralIncubus).hint("Service the incubus orally.");
 			game.addButton(2, "AnalRide", game.lethicesKeep.incubusMechanic.doRideIncubusAnally).hint("Ride him anally.");
-			if (player.hasVagina() && player.biggestTitSize() >= 4 && player.armor == armors.LMARMOR) game.addButton(3, "B.Titfuck", (player.armor as LustyMaidensArmor).lustyMaidenPaizuri, player, this);
+			if (player.hasVagina() && player.biggestTitSize() >= 4 && player.armor === armors.LMARMOR) game.addButton(3, "B.Titfuck", (player.armor as LustyMaidensArmor).lustyMaidenPaizuri, player, this);
 			// no disabled button for this option
 			game.addButton(14, "Leave", game.combat.cleanupAfterCombat);
 		}
@@ -51,7 +51,7 @@ package classes.Scenes.Dungeons.Factory
 
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
 		{
-			if (flags[kFLAGS.D3_DISCOVERED] == 0)
+			if (flags[kFLAGS.D3_DISCOVERED] === 0)
 			{
 				wonInDungeon1(hpVictory, pcCameWorms);
 			}
@@ -115,7 +115,7 @@ package classes.Scenes.Dungeons.Factory
 				return;
 			}
 			outputText("Your demonic foe places his hands behind his head and lewdly pumps and thrusts his hips at you.  Your eyes open wide as a globule of cum erupts from the demon-prick and flies right at you.  ");
-			if (player.shield == game.shields.DRGNSHL && rand(2) == 0)
+			if (player.shield === game.shields.DRGNSHL && rand(2) === 0)
 			{
 				outputText("Your shield managed to absorb the attack!")
 				combatRoundOver();

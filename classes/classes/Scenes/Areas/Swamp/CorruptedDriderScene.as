@@ -34,7 +34,7 @@ package classes.Scenes.Areas.Swamp
 			var drider:CorruptedDrider = new CorruptedDrider();
 			outputText(images.showImage("monster-corrupteddrider"));
 			//First time
-			if (flags[kFLAGS.TIMES_ENCOUNTERED_DRIDER] == 0) {
+			if (flags[kFLAGS.TIMES_ENCOUNTERED_DRIDER] === 0) {
 				outputText("While you explore the swamp, the sun's light withers and fades.  You look up through the mossy trees, but the sky is totally blocked from sight.  It's nearly as purple as twilight here, but you press on, brushing aside old spider-webs as you go.  Faintly, you can hear the sound of skittering legs moving around you, but with the way the damp air muffles everything, it's impossible to tell from which direction.\n\n");
 				outputText("You catch a blur of movement to the side, but by the time you turn for a better look, it's gone.  How odd.  Turning your eyes back to your path, you're shocked to see the form of a massive spider-woman in front of you.  She isn't just some humanoid spider-morph - she's a full-fledged drider, with a giant spider's body from the waist down and eight spindly legs supporting her.  Her eyes practically glow bright " + drider.skin.tone + " while her venom-soaked lips twist into a cruel, confident smile.\n\n");
 
@@ -99,7 +99,7 @@ package classes.Scenes.Areas.Swamp
 				}
 				if (player.cockThatFits(monster.vaginalCapacity()) >= 0) {
 					addButton(1, "Fuck Pussy", winDriderPCDickInSpiderCunt, undefined, undefined, undefined, "You could fuck her pussy, though you'd be within easy reach of her lips.  If she gets any crazy ideas, it'd be hard to stop her.");
-					if (player.tail.type == Tail.SPIDER_ABDOMEN || player.hasItem(useables.T_SSILK)) {
+					if (player.tail.type === Tail.SPIDER_ABDOMEN || player.hasItem(useables.T_SSILK)) {
 						addButton(2, "Bondage Fuck", driderVagSmartFuck, undefined, undefined, undefined, "You could bind her up with some webbing for some bondage.  Her lips are dangerous, after all.");
 					}
 				}
@@ -135,14 +135,14 @@ package classes.Scenes.Areas.Swamp
 			if (player.hasCock()) select[select.length] = 0;
 			if (player.hasVagina()) select[select.length] = 1;
 			//Genderless scene has low chance for gendered folks
-			if (player.gender == 0 || (player.gender > 0 && rand(3) == 0)) select[select.length] = 2;
+			if (player.gender === 0 || (player.gender > 0 && rand(3) === 0)) select[select.length] = 2;
 
 			//SELECT SCENE HERE
 			var choice:Number = select[rand(select.length)];
 			//*Loss Ride Ovi Anal unsexed - gats (done)
-			if (choice == 2) loseVSDriderGetAnalledOvi();
+			if (choice === 2) loseVSDriderGetAnalledOvi();
 			//*Loss Vaginal Impregnation and forced BJ - Symphonie (done)
-			else if (choice == 1) loseVSDriderAndVaginallyImpreggleOvi();
+			else if (choice === 1) loseVSDriderAndVaginallyImpreggleOvi();
 			//*Loss Ride & Impregnate Butt (done) MALE
 			else loseVSDriderAndGetFuckedANDAnalImpreggegity();
 		}
@@ -231,7 +231,7 @@ package classes.Scenes.Areas.Swamp
 			else outputText("You mumble out a denial.  You're not a beast... you just like to take charge and fuck.  It's just so hard to resist jumping on a nice wet pussy and making it squirt while you pack it full... no!  That's not what...\n\n");
 
 			outputText("\"<i>Oooh, are you leaking out more pre-cum already?  You're insatiable!  I bet you start thinking about your next fuck before you even finish getting off, don't you?  You can deny it all you want, but I felt your dick puff up a little bit more as soon as I said it.  No matter what you think, your cock is a dumb, happy little tattle-tale that always tells the girls exactly what you're thinking.</i>\"");
-			if (player.statusEffectv1(StatusEffects.Exgartuan) == 1) outputText("  Exgartuan mumbles telepathically, \"<i>Fuck yes I do, but I wanna see how this plays out.</i>\"");
+			if (player.statusEffectv1(StatusEffects.Exgartuan) === 1) outputText("  Exgartuan mumbles telepathically, \"<i>Fuck yes I do, but I wanna see how this plays out.</i>\"");
 			outputText("  She adds, \"<i>Face the music - there's nothing you love more than defeating someone and letting your dick tell you what to do.  You dumb... domineering... beast...</i>\"\n\n");
 
 			outputText("Gods!  It's getting so hard to think with that tight cunt clutching at your cock and the soft, feminine enunciations constantly interrupting your thoughts.  How can she concentrate with the stink of sex hanging so thick in the air?  Your " + player.cockDescript(x) + " is so horny, why aren't you fucking her yet?  You shudder weakly and remember ");
@@ -393,7 +393,7 @@ package classes.Scenes.Areas.Swamp
 			outputText("There's a moment of terrific, agonizing pain that forces you farther onto your back, and then it vanishes, the only signal of its passage a muffled slosh coming from your belly.  You shiver, feeling strange, unexpected bliss welling up from your loins, just in time for the next egg to traverse your ovipositor-gaped, goo-spewing cunny.  Even before this one can squeeze through your abused cervix, another backs up behind... and another... and another.  Your poor, stretched-out pussy clenches, shooting spasms of pleasure through your whole body that make you grunt and moan.  Lost in your orgasm, you throw your head back to howl, only to find the drider's cock, graduated from its larval clitoris, twitching and spewing its foul steaming load directly where you just laid your head.  Several ropes of the demonic jizz land in your " + player.hairDescript() + " and even patter on your forehead, but you can't be put out to care right now.");
 			if (player.hasCock()) {
 				outputText("  Your own " + player.multiCockDescriptLight() + " retaliate");
-				if (player.cockTotal() == 1) outputText("s");
+				if (player.cockTotal() === 1) outputText("s");
 				outputText(" automatically, dumping ");
 				if (player.cumQ() < 500) outputText("scores of");
 				else outputText("unending");
@@ -524,7 +524,7 @@ package classes.Scenes.Areas.Swamp
 			clearOutput();
 			var x:Number = player.smallestCockIndex();
 			outputText("Quickly shedding your " + player.armorName + ", you eye up the incapacitated drider, wondering how best to take advantage of your successes.  A remarkably nasty thought strikes you, and your lips nearly curl into a devious grin then and there.  You stride toward your trophy, taking pleasure in the simmering hatred in her eyes as she glares up at you.  A sudden bout of mocking laughter stops your progress; the drider seems to have noticed ");
-			if (player.cockTotal() == 1) outputText("your");
+			if (player.cockTotal() === 1) outputText("your");
 			else outputText("one of your");
 			outputText(" sub-par (by Marethian standards at least) cock");
 			if (player.cockTotal() > 1) outputText("s");
@@ -825,7 +825,7 @@ package classes.Scenes.Areas.Swamp
 			}
 
 			outputText("Around you, your many drider children fervently explore their surroundings.  One climbs up your back and perches atop your head.  She raises one hand to her forehead to block the sun's glare and stretches all four of her jewel-like eyes wide, delighting in the wondrous world she surveys.");
-			if (player.eyes.type != Eyes.FOUR_SPIDER_EYES || player.eyes.type != Eyes.SPIDER) outputText("  Suddenly she flops forward, leaning against your eyebrows and causing you to cross your eyes in an attempt to focus on her.  She seems confused by the way your eyes are different to hers.");
+			if (player.eyes.type !== Eyes.FOUR_SPIDER_EYES || player.eyes.type !== Eyes.SPIDER) outputText("  Suddenly she flops forward, leaning against your eyebrows and causing you to cross your eyes in an attempt to focus on her.  She seems confused by the way your eyes are different to hers.");
 			if (player.isNaga()) outputText("  A few baby driders crawl ponderously across your scaled tail.  You give your tail a little wiggle and suddenly they go wild crawling around it and letting out the faintest, cute little squeals.");
 			else outputText("  A few baby driders sit on each of your legs, facing each other.  Some gesture and squeak at each other in wonder while others pull faces.");
 			outputText("\n\n");
@@ -863,7 +863,7 @@ package classes.Scenes.Areas.Swamp
 			else if (player.cockTotal() > 1) outputText(" as");
 			if (player.cockTotal() > 1) {
 				outputText(" your spare cock");
-				if (player.cockTotal() == 2) outputText(" coats");
+				if (player.cockTotal() === 2) outputText(" coats");
 				else outputText("s coat");
 				outputText(" her human back with a thick white layer of spooge");
 			}
@@ -893,7 +893,7 @@ package classes.Scenes.Areas.Swamp
 			else outputText("stuffed with her fingers, femcum streaming down the front of her spider-half as she desperately plays with herself.");
 			outputText("  The need to bury your aching length inside that puffy snatch is almost unbearable, but you don't want to risk exposing yourself to any of her tricks, especially considering how close you'd be to her mouth as you take her.  Racking your brain for a solution, the mass of webbing that covers the canopy around this area catches your eye.");
 
-			if (player.tail.type == Tail.SPIDER_ABDOMEN) {
+			if (player.tail.type === Tail.SPIDER_ABDOMEN) {
 				outputText("\n\nA plan quickly forms in your mind and you feel your spinnerets twitch with anticipation as you ");
 				if (player.isDrider()) outputText("scuttle");
 				else outputText("saunter");

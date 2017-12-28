@@ -10,23 +10,23 @@ package classes.Scenes.NPCs
 	public class GooArmor extends GooGirl
 	{
 		public function gooArmorAI():void {
-			if (rand(2) == 0 && !player.hasStatusEffect(StatusEffects.GooArmorSilence)) gooSilenceAttack();
+			if (rand(2) === 0 && !player.hasStatusEffect(StatusEffects.GooArmorSilence)) gooSilenceAttack();
 			else if (rand(3) > 0) gooArmorAttackPhysical();
 			else gooArmorAttackTwoGooConsume();
 		}
 		//ATTACK ONE: Greatsword
 		public function gooArmorAttackPhysical():void {
 			var evade:String = player.getEvasionReason();
-			if (evade == EVASION_EVADE) {
+			if (evade === EVASION_EVADE) {
 				outputText("The goo-armor rushes forward and swings her sword in a mighty arc, but you evade the attack!");
 			}
-			else if (evade == EVASION_FLEXIBILITY) {
+			else if (evade === EVASION_FLEXIBILITY) {
 				outputText("The goo-armor swings a greatsword at you in a mighty arc, but your cat-like flexibility makes it easy to twist out of the way.");		
 			}
-			else if (evade == EVASION_MISDIRECTION) {
+			else if (evade === EVASION_MISDIRECTION) {
 				outputText("The goo-armor swings a sword at you in a mighty arc, but your training with Raphael allows you to misdirect her into a miss!");	
 			}
-			else if (evade == EVASION_SPEED || evade != null) {
+			else if (evade === EVASION_SPEED || evade !== null) {
 				outputText("The goo-armor rushes forward and swings her sword in a mighty arc, but you dodge it!");		
 			}
 			//HIT!

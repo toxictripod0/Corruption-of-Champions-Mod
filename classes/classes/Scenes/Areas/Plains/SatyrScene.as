@@ -26,10 +26,10 @@ Note: Satyrs actively increase their own lust in order to use their lust charge,
 public function satyrEncounter(location:int = 0):void {
 	clearOutput();
 	spriteSelect(SpriteDb.s_satyr);
-	if (rand(2) == 0 || player.pregnancyIncubation > 0 || player.buttPregnancyIncubation > 0 || player.gender == 0) {
+	if (rand(2) === 0 || player.pregnancyIncubation > 0 || player.buttPregnancyIncubation > 0 || player.gender === 0) {
 		outputText(images.showImage("monster-satyr"));
 		outputText("As you cross the ");
-		if (location == 0) outputText("grassy plains");
+		if (location === 0) outputText("grassy plains");
 		else outputText("sodden expanse of the swamp");
 		outputText(", you hear lewd bellowings and drunken curses.  From out of the expanse of green comes a humanoid figure with a set of goat-like horns curling from his head.  Seeing you, he lets out a randy bleat and charges, naked erection jabbing before him!");
 		if (flags[kFLAGS.CODEX_ENTRY_SATYRS] <= 0) {
@@ -43,11 +43,11 @@ public function satyrEncounter(location:int = 0):void {
 	//Pregnant PCs can't get this encounter.
 	else {
 		outputText("You wander through the ");
-		if (location == 0) outputText("grassy plains");
+		if (location === 0) outputText("grassy plains");
 		else outputText("sodden expanse of the swamp");
 		outputText(" when you hear strange music emanating not far from where you are.  Do you investigate?");
 		//[Yes][No]
-		if (location == 0) doYesNo(createCallBackFunction(consensualSatyrFuck,0), camp.returnToCampUseOneHour);
+		if (location === 0) doYesNo(createCallBackFunction(consensualSatyrFuck,0), camp.returnToCampUseOneHour);
 		else doYesNo(createCallBackFunction(consensualSatyrFuck,0), camp.returnToCampUseOneHour);
 	}
 }
@@ -60,7 +60,7 @@ private function consensualSatyrFuck(loc:int = 0):void {
 	outputText("You decide to search for the source of the music.");
 	
 	outputText("\n\nSitting in a small circle of ");
-	if (loc == 0) outputText("trampled-down grass");
+	if (loc === 0) outputText("trampled-down grass");
 	else outputText("relatively dry and solid ground");
 	outputText(" is a strange figure, resembling a man with the legs and horns of a goat - a satyr.  He is surrounded by bottles and skins of drinkables and plates of food.  Currently playing a set of panpipes, he stops the music to grab a skin and messily guzzles down its contents, spilling purplish liquid across his chest and producing a strong smell of alcoholic liquor.  He finishes quenching his thirst, wipes his lips with the back of one hairy arm, and laughs contentedly.  Finally noticing you, he beams widely.  \"<i>Welcome!  Welcome, friend; please, come!  Sit!  Drink with me!  I rarely have good company to share my meals with these days!</i>\" he exhorts you, full of cheer.");
 	
@@ -230,9 +230,9 @@ internal function loseToSatyr():void {
 
 	outputText("\n\nYou moan in shame as you feel yourself growing ");
 	if (player.hasVagina()) outputText("wet ");
-	if (player.gender == 3) outputText("and ");
+	if (player.gender === 3) outputText("and ");
 	if (player.hasCock()) outputText("hard ");
-	if (player.gender == 0) outputText("aroused ");
+	if (player.gender === 0) outputText("aroused ");
 	outputText("from your rough fucking.  Beads of lubricant splatter about as his brutal thrusts rock you.  Each loud slap from his hips sends a wave of shock and pleasure quaking throughout your body, and you find yourself moaning each time.  The scent of sex grows so overpowering that it even manages to block the thick reek of alcohol emanating from your goat-like partner.");
 	
 	outputText("\n\nThe satyr's thrusts pick up the pace as he grows more excited at finally having a victim to fuck, his pumps cause his swollen nuts to slap meatily against your ass, rocking you in his strong, powerful arms.  He grunts and coughs in his throat; he's on the very verge of climax...");
@@ -289,7 +289,7 @@ internal function defeatASatyr():void {
 		}
 		if (player.hasVagina()) {
 			addButton(1, "Ride Face", femaleTakesAdvantageOfSatyr);
-			if (player.biggestTitSize() >= 4 && player.armor == armors.LMARMOR) {
+			if (player.biggestTitSize() >= 4 && player.armor === armors.LMARMOR) {
 				addButton(2, "Ride Face", (player.armor as LustyMaidensArmor).lustyMaidenPaizuri);
 			}
 		}
@@ -414,7 +414,7 @@ private function willinglyBoneSatyr():void {
 	
 	outputText("\n\nYou cry out, howling your joy as his hot masculinity fills you with his potent seed, and then shudder as orgasm rocks through your body in turn;  your own ");
 	if (player.hasVagina()) outputText("pussy gushes fluids down his massive manhood");
-	if (player.gender == 3) outputText(" and ");
+	if (player.gender === 3) outputText(" and ");
 	if (player.hasCock()) outputText("cock spurts cream across your intertwined forms");
 	outputText(".  Moaning softly and heaving in great lungfuls of breath, you sink back down onto him, feeling well and truly sated.");
 	
@@ -424,7 +424,7 @@ private function willinglyBoneSatyr():void {
 	outputText("; making slow, short thrusts to ensure you've got all the seed that you need.  Panting, he grins at you from his prone position.  \"<i>Tell me then... did you like it?  Think that was enough baby batter to put a little satyr inside you?  Because if not I can go again.</i>\"  He grins confidently.");
 	
 	//(if male/genderless and 0 satyr children)
-	if (!player.hasVagina() && flags[kFLAGS.SATYR_KIDS] == 0) {
+	if (!player.hasVagina() && flags[kFLAGS.SATYR_KIDS] === 0) {
 		outputText("\n\nYou stare at him blankly, then, as coherent thought returns to you, you ask how he can knock you up when you don't have a womb.");
 		outputText("\n\nHe winks at your disquieted expression.  \"<i>Satyr seed is so potent that we can impregnate anything, even ");
 		if (player.hasCock()) outputText("males");
@@ -496,7 +496,7 @@ public function satyrBirth(vag:Boolean):void {
 	//badabingbadaboom
 	flags[kFLAGS.SATYR_KIDS]++;
     //Butt increase
-    if (player.butt.rating < 10 && rand(2) == 0) {
+    if (player.butt.rating < 10 && rand(2) === 0) {
         player.butt.rating++;
         outputText("\n\nYou notice your " + player.buttDescript() + " feeling larger and plumper after the ordeal.");
     }

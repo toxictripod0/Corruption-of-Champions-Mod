@@ -486,7 +486,7 @@ package classes.Scenes.Areas.Desert {
 			this.imageName = "ghoul";
 			this.long = "";
 				
-			if (rand(2) == 0) {
+			if (rand(2) === 0) {
 				this.createCock(rand(4) + 5, rand(2) + 1, CockTypesEnum.DISPLACER);
 				this.balls = 2;
 				this.ballSize = rand(2) + 1;
@@ -552,7 +552,7 @@ package classes.Scenes.Areas.Desert {
 			}
 			this.wings.type = rand(13);
 			this.antennae.type = rand(2);
-			if (this.antennae.type == 2) {
+			if (this.antennae.type === 2) {
 				this.antennae.type = Antennae.BEE;
 			} else {
 				this.antennae.type = Antennae.NONE;

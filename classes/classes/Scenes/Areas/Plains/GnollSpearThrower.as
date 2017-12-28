@@ -19,7 +19,7 @@ import classes.internals.*;
 			if (hasStatusEffect(StatusEffects.Blind) && rand(3) < 2) {
 				outputText(capitalA + short + " completely misses you with a blind attack!\n");
 				//See below, removes the attack count once it hits rock bottom.
-				if (statusEffectv1(StatusEffects.Attacks) == 0) removeStatusEffect(StatusEffects.Attacks);
+				if (statusEffectv1(StatusEffects.Attacks) === 0) removeStatusEffect(StatusEffects.Attacks);
 				//Count down 1 attack then recursively call the function, chipping away at it.
 				if (statusEffectv1(StatusEffects.Attacks) - 1 >= 0) {
 					addStatusValue(StatusEffects.Attacks,1,-1);
@@ -36,7 +36,7 @@ import classes.internals.*;
 			if (player.findPerk(PerkLib.Evade) >= 0 && rand(100) < 10) {
 				outputText("Using your skills at evading attacks, you anticipate and sidestep " + a + short + "'s attack.\n");
 				//See below, removes the attack count once it hits rock bottom.
-				if (statusEffectv1(StatusEffects.Attacks) == 0) removeStatusEffect(StatusEffects.Attacks);
+				if (statusEffectv1(StatusEffects.Attacks) === 0) removeStatusEffect(StatusEffects.Attacks);
 				//Count down 1 attack then recursively call the function, chipping away at it.
 				if (statusEffectv1(StatusEffects.Attacks) - 1 >= 0) {
 					addStatusValue(StatusEffects.Attacks,1,-1);
@@ -45,10 +45,10 @@ import classes.internals.*;
 				return;
 			}
 			//("Misdirection"
-			if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
+			if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName === "red, high-society bodysuit") {
 				outputText("Using Raphael's teachings, you anticipate and sidestep " + a + short + "' attacks.\n");
 				//See below, removes the attack count once it hits rock bottom.
-				if (statusEffectv1(StatusEffects.Attacks) == 0) removeStatusEffect(StatusEffects.Attacks);
+				if (statusEffectv1(StatusEffects.Attacks) === 0) removeStatusEffect(StatusEffects.Attacks);
 				//Count down 1 attack then recursively call the function, chipping away at it.
 				if (statusEffectv1(StatusEffects.Attacks) - 1 >= 0) {
 					addStatusValue(StatusEffects.Attacks,1,-1);
@@ -62,7 +62,7 @@ import classes.internals.*;
 				if (plural) outputText("' attacks.\n");
 				else outputText("'s attack.\n");
 				//See below, removes the attack count once it hits rock bottom.
-				if (statusEffectv1(StatusEffects.Attacks) == 0) removeStatusEffect(StatusEffects.Attacks);
+				if (statusEffectv1(StatusEffects.Attacks) === 0) removeStatusEffect(StatusEffects.Attacks);
 				//Count down 1 attack then recursively call the function, chipping away at it.
 				if (statusEffectv1(StatusEffects.Attacks) - 1 >= 0) {
 					addStatusValue(StatusEffects.Attacks,1,-1);
@@ -83,13 +83,13 @@ import classes.internals.*;
 				else outputText("The gnoll rushes forward, almost too fast to detect before twin fists slam into your torso.  Before you can recover, ivory jaws flash before your eyes and you feel the sharp teeth start to clamp onto the " + player.skin.desc + " of your neck.  Blinding pain causes you to fling yourself backwards, away from the teeth and drawing angry scrapes as you escape the jaws.  You roll away before picking yourself up, the hyena moving confidently towards you as you try to shake off the pain from the blow.");
 			}
 			if (damage > 0) {
-				if (short == "fetish zealot") {
+				if (short === "fetish zealot") {
 					outputText("\nYou notice that some kind of unnatural heat is flowing into your body from the wound");
 					if (player.inte > 50) outputText(", was there some kind of aphrodisiac on the knife?");
 					else outputText(".");
 					player.takeLustDamage((player.lib/20 + rand(4) +1), true);
 				}
-				if (lustVuln > 0 && player.armorName == "barely-decent bondage straps") {
+				if (lustVuln > 0 && player.armorName === "barely-decent bondage straps") {
 					if (!plural) outputText("\n" + capitalA + short + " brushes against your exposed skin and jerks back in surprise, coloring slightly from seeing so much of you revealed.");
 					else outputText("\n" + capitalA + short + " brush against your exposed skin and jerk back in surprise, coloring slightly from seeing so much of you revealed.");
 					lust += 5 * lustVuln;
@@ -120,7 +120,7 @@ import classes.internals.*;
 				outputText("Using your skills at evading attacks, you anticipate and sidestep " + a + short + "'s thrown spear.\n");
 			}
 			//("Misdirection"
-			else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
+			else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName === "red, high-society bodysuit") {
 				outputText("Using Raphael's teachings, you anticipate and sidestep " + a + short + "' thrown spear.\n");
 			}
 			//Determine if cat'ed
@@ -128,7 +128,7 @@ import classes.internals.*;
 				outputText("With your incredible flexibility, you squeeze out of the way of " + a + short + "'s thrown spear.");
 			}
 			//<Hyena Attack 2 – Javelin – Unsuccessful – Absorbed>
-			else if (player.armorDef > 10 && rand(2) == 0) {
+			else if (player.armorDef > 10 && rand(2) === 0) {
 				outputText("The gnoll pulls a long, dark wooden javelin from over her shoulder.  Her spotted arm strikes forward, launching the missile through the air.  The spear flashes through the air but hits at an angle, sliding off your " + player.armorName + " without doing any damage.  It disappears into the grass.");
 			}
 			else if (player.findPerk(PerkLib.Resolute) >= 0 && player.tou >= 75) {
@@ -165,7 +165,7 @@ import classes.internals.*;
 				outputText("Using your skills at evading attacks, you anticipate and sidestep " + a + short + "'s snap-kick.\n");
 			}
 			//("Misdirection"
-			else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
+			else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName === "red, high-society bodysuit") {
 				outputText("Using Raphael's teachings, you anticipate and sidestep " + a + short + "' snap-kick.\n");
 			}
 			//Determine if cat'ed
@@ -222,7 +222,7 @@ import classes.internals.*;
 			if (hasStatusEffect(StatusEffects.Blind) && rand(3) < 2) {
 				outputText(capitalA + short + " completely misses you with a blind attack!\n");
 				//See below, removes the attack count once it hits rock bottom.
-				if (statusEffectv1(StatusEffects.Attacks) == 0) removeStatusEffect(StatusEffects.Attacks);
+				if (statusEffectv1(StatusEffects.Attacks) === 0) removeStatusEffect(StatusEffects.Attacks);
 				//Count down 1 attack then recursively call the function, chipping away at it.
 				if (statusEffectv1(StatusEffects.Attacks) - 1 >= 0) {
 					addStatusValue(StatusEffects.Attacks, 1, -1);
@@ -237,7 +237,7 @@ import classes.internals.*;
 			if (player.findPerk(PerkLib.Evade) >= 0 && rand(100) < 10) {
 				outputText("Using your skills at evading attacks, you anticipate and sidestep " + a + short + "'s attack.\n");
 				//See below, removes the attack count once it hits rock bottom.
-				if (statusEffectv1(StatusEffects.Attacks) == 0) removeStatusEffect(StatusEffects.Attacks);
+				if (statusEffectv1(StatusEffects.Attacks) === 0) removeStatusEffect(StatusEffects.Attacks);
 				//Count down 1 attack then recursively call the function, chipping away at it.
 				if (statusEffectv1(StatusEffects.Attacks) - 1 >= 0) {
 					addStatusValue(StatusEffects.Attacks, 1, -1);
@@ -245,10 +245,10 @@ import classes.internals.*;
 				}
 			}
 //("Misdirection"
-			if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
+			if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName === "red, high-society bodysuit") {
 				outputText("Using Raphael's teachings, you anticipate and sidestep " + a + short + "' attacks.\n");
 				//See below, removes the attack count once it hits rock bottom.
-				if (statusEffectv1(StatusEffects.Attacks) == 0) removeStatusEffect(StatusEffects.Attacks);
+				if (statusEffectv1(StatusEffects.Attacks) === 0) removeStatusEffect(StatusEffects.Attacks);
 				//Count down 1 attack then recursively call the function, chipping away at it.
 				if (statusEffectv1(StatusEffects.Attacks) - 1 >= 0) {
 					addStatusValue(StatusEffects.Attacks, 1, -1);
@@ -261,7 +261,7 @@ import classes.internals.*;
 				if (plural) outputText("' attacks.\n");
 				else outputText("'s attack.\n");
 				//See below, removes the attack count once it hits rock bottom.
-				if (statusEffectv1(StatusEffects.Attacks) == 0) removeStatusEffect(StatusEffects.Attacks);
+				if (statusEffectv1(StatusEffects.Attacks) === 0) removeStatusEffect(StatusEffects.Attacks);
 				//Count down 1 attack then recursively call the function, chipping away at it.
 				if (statusEffectv1(StatusEffects.Attacks) - 1 >= 0) {
 					addStatusValue(StatusEffects.Attacks, 1, -1);
@@ -282,13 +282,13 @@ import classes.internals.*;
 				else outputText("The gnoll rushes forward, almost too fast to detect before twin fists slam into your torso.  Before you can recover, ivory jaws flash before your eyes and you feel the sharp teeth start to clamp onto the " + player.skin.desc + " of your neck.  Blinding pain causes you to fling yourself backwards, away from the teeth and drawing angry scrapes as you escape the jaws.  You roll away before picking yourself up, the hyena moving confidently towards you as you try to shake off the pain from the blow.");
 			}
 			if (damage > 0) {
-				if (short == "fetish zealot") {
+				if (short === "fetish zealot") {
 					outputText("\nYou notice that some kind of unnatural heat is flowing into your body from the wound");
 					if (player.inte > 50) outputText(", was there some kind of aphrodisiac on the knife?");
 					else outputText(".");
 					game.dynStats("lus", (player.lib / 20 + rand(4) + 1));
 				}
-				if (lustVuln > 0 && player.armorName == "barely-decent bondage straps") {
+				if (lustVuln > 0 && player.armorName === "barely-decent bondage straps") {
 					if (!plural) outputText("\n" + capitalA + short + " brushes against your exposed skin and jerks back in surprise, coloring slightly from seeing so much of you revealed.");
 					else outputText("\n" + capitalA + short + " brush against your exposed skin and jerk back in surprise, coloring slightly from seeing so much of you revealed.");
 					lust += 5 * lustVuln;
@@ -303,7 +303,7 @@ import classes.internals.*;
 
 		override public function defeated(hpVictory:Boolean):void
 		{
-			if (short == "alpha gnoll") {
+			if (short === "alpha gnoll") {
 				game.clearOutput();
 				outputText("The gnoll alpha is defeated!  You could use her for a quick, willing fuck to sate your lusts before continuing on.  Hell, you could even dose her up with that succubi milk you took from the goblin first - it might make her even hotter.  Do you?");
 				game.menu();
@@ -317,7 +317,7 @@ import classes.internals.*;
 
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
 		{
-			if (short == "alpha gnoll"){
+			if (short === "alpha gnoll"){
 				game.urtaQuest.loseToGnollPrincessAndGetGangBanged();
 			} else if (pcCameWorms){
 				outputText("\n\nYour foe doesn't seem put off enough to leave...");

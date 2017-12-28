@@ -43,7 +43,7 @@ Sex Life: The shark girls treat sex like a game or a sport, constantly battling 
 //[Explore Lake]
 public function sharkGirlEncounter(exploreLoc:Number = 0):void {
 	//Set 'PC met Sharkgirls' for Izma stuff
-	if (flags[kFLAGS.IZMA_ENCOUNTER_COUNTER] == 0) flags[kFLAGS.IZMA_ENCOUNTER_COUNTER] = 1;
+	if (flags[kFLAGS.IZMA_ENCOUNTER_COUNTER] === 0) flags[kFLAGS.IZMA_ENCOUNTER_COUNTER] = 1;
 	if (!player.hasStatusEffect(StatusEffects.SharkGirl)) player.createStatusEffect(StatusEffects.SharkGirl,0,0,0,0);
 	else if (player.statusEffectv1(StatusEffects.SharkGirl) >= 7 && player.totalCocks() > 0) {
 		spriteSelect(SpriteDb.s_sharkgirl);
@@ -54,7 +54,7 @@ public function sharkGirlEncounter(exploreLoc:Number = 0):void {
 	clearOutput();
 	spriteSelect(SpriteDb.s_sharkgirl);
 	//Rowboat
-	if (exploreLoc == 1) {
+	if (exploreLoc === 1) {
 		outputText("While rowing the boat across the lake you spy a shark fin heading your way.  Worried it might damage the small boat, you hastily row back to shore, jumping out of the boat.  The shark shows no signs of slowing, and the fin disappears just before coming ashore.  ");
 	}
 	//Lake
@@ -135,10 +135,10 @@ private function sharkgirlDickFuck():void {
 	else {
 		outputText("You sneer at the fallen shark girl, making up your mind to have your way with her. You tear her bikini off as you whip out your " + player.cockDescript(0) + " and start to order, \"<i>Get to i--!</i>\" But you're cut short by the shark girl suddenly taking the entirety of your cock into her mouth, forcing it as deep into her mouth as possible. Quite a slutty creature, that's for sure. What surprises you more is that those sharp fangs of hers appear to be retractable, and she has a more human-like set hidden behind them.\n\n");
 		//[if herm] 
-		if (player.gender == 3) outputText("While sucking you off, her hand steadily snakes its way between your legs. Without warning, she shoves three fingers into your " + player.vaginaDescript(0) + ", pushing in and stretching the moist passage out.\n\n");
+		if (player.gender === 3) outputText("While sucking you off, her hand steadily snakes its way between your legs. Without warning, she shoves three fingers into your " + player.vaginaDescript(0) + ", pushing in and stretching the moist passage out.\n\n");
 		outputText("You abruptly pull your cock from her mouth, causing the shark girl to gasp in surprise. She looks up at you, tears welling up in her eyes, \"<i>Please let me finish! I need this!</i>\" You smirk and order the shark girl onto her hands and knees. Her expression brightens and she obediently complies, getting down and raising her ass towards you. Taking a firm grip on her well-toned buttocks, you quickly shove your " + player.cockDescript(0) + " into her damp pussy and the shark girl squeals in excitement. You find yourself surprised by its texture; while it looks human enough on the outside, the inside is actually filled with strange feeler-like structures that wriggle and massage your cock as it pushes through.");
 		//[if herm]
-		if (player.gender == 3) outputText("  The sensation is incredible, and you find yourself massaging your " + player.biggestBreastSizeDescript() + " and tweaking your " + player.nippleDescript(0) + "s in an attempt to bring your pleasure to even greater heights.");
+		if (player.gender === 3) outputText("  The sensation is incredible, and you find yourself massaging your " + player.biggestBreastSizeDescript() + " and tweaking your " + player.nippleDescript(0) + "s in an attempt to bring your pleasure to even greater heights.");
 		outputText("\n\n");
 	
 		outputText("The shark girl cries out in orgasm, her pussy tightening as the feelers wrap around your cock. The pleasure drives you over the edge, and you pump your load of cum into her needy pussy, the feelers milking you for every drop you have. You pull out, satisfied, and as you turn to leave you see the shark girl rubbing cum into her cunt and winking at you.");
@@ -167,13 +167,13 @@ private function sharkgirlSixtyNine():void {
 	else {
 		outputText("Making up your mind to rape the shark girl, you remove your " + player.armorName + " and approach the slut before taking a firm grip on her silver hair. \"<i>You know what to do, bitch,</i>\" you sneer, pulling her head into your damp cunt. The shark girl needs no encouragement, eagerly probing your pussy with her long tongue");
 		//[if female] 
-		if (player.gender == 2) outputText(", pulling out every few minutes to lick your " + player.clitDescript() + ".");
+		if (player.gender === 2) outputText(", pulling out every few minutes to lick your " + player.clitDescript() + ".");
 		//[if herm]
-		if (player.gender == 3) outputText(". You remind her not to neglect your " + player.cockDescript(0) + ", and the shark girl responds by thoroughly licking your hard erection and sucking at your " + player.ballsDescriptLight() + ".");
+		if (player.gender === 3) outputText(". You remind her not to neglect your " + player.cockDescript(0) + ", and the shark girl responds by thoroughly licking your hard erection and sucking at your " + player.ballsDescriptLight() + ".");
 		outputText("\n\n");
 		outputText("You shove the shark girl down onto the ground and quickly plant your crotch on her face, ordering the shark girl to continue. She complies enthusiastically, licking with a greater intensity and clearly loving the sensation of being dominated. You have to admit, you are enjoying your role as master.\n\n");
 		outputText("To reward your little slut for her efforts, your hand reaches back between her legs and slips under her skimpy black thong. You get to work fingering her moist cunt and you soon hear a series of muffled moans coming from beneath your legs. But she's smart enough to know not to stop licking, and you smirk at the effect you're having on the shark girl.  A cute little cry escapes from your little slave's mouth, and you pull your hand from her cunt before licking her sweet juices from your fingers. Shortly after, you cry out in orgasm");
-		if (player.gender == 2) outputText(", juices spraying from your sex and coating the girl's face.");
+		if (player.gender === 2) outputText(", juices spraying from your sex and coating the girl's face.");
 		//[if herm]  
 		else outputText(" and stand up, gripping your " + player.cockDescript(0) + " and splattering thick jets of cum onto her face.");
 		outputText("  The shark slut licks up your fluids hungrily.\n\n");
@@ -190,7 +190,7 @@ private function sharkgirlSixtyNine():void {
 public function sharkGirlGetsDildoed():void {
 	clearOutput();
 	outputText("You grin from ear to ear, revealing enough teeth to make even the defeated shark-girl shiver.  Advancing upon the prone monster-woman, you ");
-	if (player.weaponName != "fists") outputText("put away your " + player.weaponName + " and ");
+	if (player.weaponName !== "fists") outputText("put away your " + player.weaponName + " and ");
 	outputText("draw out a glistening pink dildo from your pouches, as if it were a weapon.   She looks up at you, at once knowing your intent.  ");
 	if (monster.lust >= monster.maxLust()) outputText("Her legs spread invitingly wide and she tears off her bikini bottom in a lusty frenzy.  You hold the dildo over her and give it a tiny squeeze, wringing out a few drops of pink fluid from the special dildo.  They land on her exposed cunt and in seconds she's writhing underneath you, humping the air.");
 	else outputText("She holds her legs together defiantly, but you pry them open, tear off her bikini bottom and expose her bald nether-lips.   You hold the dildo over her and squeeze, squirting a gush of pink fluid onto her exposed cunt.  The effect is immediate, and in moments she's humping the air and wet with her own fluids.");
@@ -308,7 +308,7 @@ internal function sharkLossRape():void {
 	clearOutput();
 	spriteSelect(SpriteDb.s_sharkgirl);
 	//Genderless:
-	if (player.gender == 0) {
+	if (player.gender === 0) {
 		outputText("You slump down in defeat, too ");
 		if (player.HP < 1) outputText("hurt ");
 		else outputText("horny ");
@@ -319,7 +319,7 @@ internal function sharkLossRape():void {
 		return;
 	}
 	//Female:
-	if (player.hasVagina() && (player.totalCocks() == 0 || rand(2) == 0)) {
+	if (player.hasVagina() && (player.totalCocks() === 0 || rand(2) === 0)) {
 		outputText("You slump down in defeat, too ");
 		//[defeat via HP] 
 		if (player.HP < 1) outputText("hurt ");
@@ -329,7 +329,7 @@ internal function sharkLossRape():void {
 		outputText("The shark girl giggles and moves over to you, tugging at your " + player.armorName + "  impatiently. Her tail swishes around and smacks your " + player.assDescript() + ". \"<i>You're gonna make me very happy, you hear? Otherwise...</i>\" she opens her mouth wide and you see her fangs glinting menacingly in the light. You gulp hard and nod, bringing a smile from the shark girl.\n\n"); 
 		outputText("Wasting no time, she removes her skimpy swimwear and your own gear.  ");
 		//[if herm]
-		if (player.gender == 3) outputText("Seeing your " + player.cockDescript(0) + " puts a smile on the shark girl's face as she takes a firm grip on your erection. \"<i>Well, you're just full of surprises, aren't you? Maybe I'll give this bad boy a whirl sometime. For now though...</i>\"  ");
+		if (player.gender === 3) outputText("Seeing your " + player.cockDescript(0) + " puts a smile on the shark girl's face as she takes a firm grip on your erection. \"<i>Well, you're just full of surprises, aren't you? Maybe I'll give this bad boy a whirl sometime. For now though...</i>\"  ");
 		outputText("Her gaze drifts over to your " + player.vaginaDescript(0) + " and she licks her lips in delight. \"<i>Now that's what I'm looking for! Tell you what dear, you get me wet and I might just give you some pleasure too.</i>\"\n\n");
 		
 		outputText("She roughly grabs you by the hair and pulls your face into her drooling cunt, your tongue instinctively probing into her. \"<i>Mmm... don't you dare stop licking you dumb bitch, if you know what's good for you,</i>\" she orders. You reply by speeding up your tongue work. You're a little ashamed to admit it, but her dominant command makes you feel rather hot and bothered.\n\n");

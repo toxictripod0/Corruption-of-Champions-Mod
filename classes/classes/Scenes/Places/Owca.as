@@ -36,7 +36,7 @@
 
 public function gangbangVillageStuff():void {
 	clearOutput();
-	if (flags[kFLAGS.OWCA_UNLOCKED] == 1) owcaMainScreenOn();
+	if (flags[kFLAGS.OWCA_UNLOCKED] === 1) owcaMainScreenOn();
 	else gangbangVillageFirstGoRound()
 }
 //First encounter (Z)
@@ -46,7 +46,7 @@ private function gangbangVillageFirstGoRound():void {
 		desperateVillages();
 		return;
 	}*/
-	if (flags[kFLAGS.DECLINED_TO_VISIT_REBECCS_VILLAGE] == 0 && flags[kFLAGS.TIMES_REFUSED_REBECCS_OFFER] == 0 && flags[kFLAGS.TIMES_IN_DEMON_PIT] == 0) {
+	if (flags[kFLAGS.DECLINED_TO_VISIT_REBECCS_VILLAGE] === 0 && flags[kFLAGS.TIMES_REFUSED_REBECCS_OFFER] === 0 && flags[kFLAGS.TIMES_IN_DEMON_PIT] === 0) {
 		//[Attitude is set to 50]
 		flags[kFLAGS.OWCAS_ATTITUDE] = 50;
 		flags[kFLAGS.VAPULA_SUBMISSIVENESS] = 50;
@@ -59,7 +59,7 @@ private function gangbangVillageFirstGoRound():void {
 		doYesNo(agreeToFollowRebecFirstTime,dontGoToZeVillage);
 	}
 	//As long as you don't follow her once, display this on subsequent encounters (Z)
-	else if (flags[kFLAGS.TIMES_IN_DEMON_PIT] == 0) {
+	else if (flags[kFLAGS.TIMES_IN_DEMON_PIT] === 0) {
 		outputText("After wandering across the plains for a while, you spot Rebecc, the girl you met before, amongst a group of fellow farmers; she calls out to you.  \"<i>Hello again, traveler!  You seem lost... would you mind spending some time with us at our village?</i>\"");
 		outputText("\n\nAs before, you notice while speaking with her that she keeps glancing at your crotch for a few seconds at a time.  She puts on a sultry smile as she nudges the edges of her dress, revealing more and more cleavage each time.  She's a bit shaky as well; it's almost as if she's attempting to seduce you, but is only with difficulty able to contain herself.  Will you spend time with her in the village?");
 		//Yes/No
@@ -86,9 +86,9 @@ private function dontGoToZeVillage():void {
 //First plea (Z)
 private function agreeToFollowRebecFirstTime():void {
 	clearOutput();
-	if (flags[kFLAGS.TIMES_REFUSED_REBECCS_OFFER] == 0) {
+	if (flags[kFLAGS.TIMES_REFUSED_REBECCS_OFFER] === 0) {
 		outputText("How could you refuse an invitation from such an alluring girl?  You eagerly agree to go to her village; everyone sets out at once, chatting with each other jovially, but your attention is squarely focused on Rebecc.  She seems impressed by the tales of your adventures and has nothing but praise for your endless bravery, delivered while clinging to your arm and pressing her body against yours.  Her sweet scent is invigorating, and a significant amount of blood flows toward your ");
-		if (player.gender == 0) outputText("regretfully bare ");
+		if (player.gender === 0) outputText("regretfully bare ");
 		outputText("groin as you feel the contact of her tender curves against your body.  Taking advantage of the effect you seem to have on her, you start questioning her about her village, her people and how she was affected by demons.");
 		outputText("\n\n\"<i>There, we've almost arrived at Owca, our village; you can see the first houses.  As for demons... well, you know, they are the reason we wanted you to follow us.  You see, a large group of them have been harassing us.  At first they were just scavenging for food and various supplies, but soon they started claiming... another kind of prize.  You know these creatures, you know what they do.  There have been many battles to protect our rightful clay and hard-earned food, but there were simply too many of them.  Besides, they often use some kind of... black magic in order to subdue their foes and turn them into obedient slaves.  ");
 		//[if silly mode on]
@@ -147,7 +147,7 @@ private function agreeToFollowRebecFirstTime():void {
 	}
 	//Yes/No
 	menu();
-	addButton(0, "Yes", acceptRebeccsPlea, flags[kFLAGS.TIMES_IN_DEMON_PIT] == 0, true);
+	addButton(0, "Yes", acceptRebeccsPlea, flags[kFLAGS.TIMES_IN_DEMON_PIT] === 0, true);
 	addButton(1, "No", declineRebeccsPlea);
 }
 //Refuse plea (Z)
@@ -168,7 +168,7 @@ private function acceptRebeccsPlea(firstTime:Boolean = false, sacrificed:Boolean
 	if (flags[kFLAGS.OWCAS_ATTITUDE] > 100) flags[kFLAGS.OWCAS_ATTITUDE] = 100;
 	outputText("You tell the desperate girl that you're going to do as she asks.  As soon as you finish speaking, everyone cheers and applauds you, praising you as their savior.  Rebecc grabs hold of your shoulders and gives you a soft kiss on your lips; she whispers, \"<i>Thank you, champion.  We all owe you.  I promise that you will be rewarded for the heroic deed you're about to undertake.</i>\"");
 	outputText("\n\nA group of the farmers then proceeds to lead you across the village to a strange circle-shaped pit.  It's about one meter deep and ten meters in diameter.  At the center of the pit stands a tall wooden pole, adorned with several dangling ropes and chains.  You grimace as you realize you will be tied up and bound to the crudely fashioned post in order to make sure you don't escape before the demons show up.");
-	//if (player.armorName != "comfortable clothes") outputText("  The farmers almost eagerly help you out of your " +player.armorName+ ", supplying you with a set of shabby but comfortable peasant clothes.");
+	//if (player.armorName !== "comfortable clothes") outputText("  The farmers almost eagerly help you out of your " +player.armorName+ ", supplying you with a set of shabby but comfortable peasant clothes.");
 	//[[if corr >70 and have gender]
 	if (player.cor > 70 && player.gender > 0) {
 		outputText("\n\nYou lick your lips in anticipation, your ");
@@ -202,7 +202,7 @@ private function intoTheDemonPit(sacrifice:Boolean = true):void {
 	if (sacrifice) outputText(", tangled in your restraints");
 	outputText(".  She leans down and coos, ");
 	//[if first time]
-	if (flags[kFLAGS.TIMES_IN_DEMON_PIT] == 0) outputText("\"<i>Awww, look at the poor little thing!  So this is what they gave us this time... Look at [him], everyone!  Do you know you'd be a cute pet?  People here call me Vapula, and I don't think you'll forget that name any time soon.</i>\"");
+	if (flags[kFLAGS.TIMES_IN_DEMON_PIT] === 0) outputText("\"<i>Awww, look at the poor little thing!  So this is what they gave us this time... Look at [him], everyone!  Do you know you'd be a cute pet?  People here call me Vapula, and I don't think you'll forget that name any time soon.</i>\"");
 	//[else if Vapula Submissiveness >50]
 	else if (flags[kFLAGS.VAPULA_SUBMISSIVENESS] > 50) outputText("\"<i>You again?  By Lethice, you must really enjoy it!  You love being a bitch for Vapula, don't you?  Yes you do!</i>\"");
 	//[else]
@@ -429,7 +429,7 @@ private function rapeZeVapula():void {
 		//[if massive cum production]
 		if (player.cumQ() > 1000) outputText("  Some of it spurts by little jets outside of her, even as she instinctively contracts her muscles to keep as much spooge as possible and her belly accommodates by bloating out absurdly.");
 		outputText("  Needless to say, watching this rough ");
-		if (player.cockTotal() == 1) outputText("anal");
+		if (player.cockTotal() === 1) outputText("anal");
 		else outputText("double-penetration");
 		outputText(" session has brought Vapula to a new level of arousal; she is struggling to free her arms and finger herself, but her tight restraints only allow her to wriggle uncomfortably.  Her pussy is gushing of its own and she whimpers from time to time, unable to control her lust.");
 		outputText("\n\nYou throw away your expendable");
@@ -534,16 +534,16 @@ private function rapeZeVapula():void {
 private function owcaMainScreenOn():void {
 	clearOutput();
 	
-	if (flags[kFLAGS.REBECCS_LAST_PLEA] == 1 && !kGAMECLASS.vapula.vapulaSlave()) {
+	if (flags[kFLAGS.REBECCS_LAST_PLEA] === 1 && !kGAMECLASS.vapula.vapulaSlave()) {
 		rebeccsLastPlea();
 		return;
 	}
-	if (flags[kFLAGS.OWCAS_ATTITUDE] <= 5 && flags[kFLAGS.OWCA_ANGER_DISABLED] == 0 && flags[kFLAGS.OWCA_SACRIFICE_DISABLED] == 0) {
+	if (flags[kFLAGS.OWCAS_ATTITUDE] <= 5 && flags[kFLAGS.OWCA_ANGER_DISABLED] === 0 && flags[kFLAGS.OWCA_SACRIFICE_DISABLED] === 0) {
 		desperateVillages();
 		return;
 	}
 	//Desperate plea
-	if (rand(10) <= 2 && flags[kFLAGS.DAYS_SINCE_LAST_DEMON_DEALINGS] >= 7 && flags[kFLAGS.OWCA_SACRIFICE_DISABLED] == 0) {
+	if (rand(10) <= 2 && flags[kFLAGS.DAYS_SINCE_LAST_DEMON_DEALINGS] >= 7 && flags[kFLAGS.OWCA_SACRIFICE_DISABLED] === 0) {
 		//(30% chance of spawning upon going to the village once a week has passed since last demon fight)
 		//should happen instead of the normal village menu every week
 		outputText("The village shows unusual signs of activity.  As you walk down the main road, people are all looking at you uncomfortably.  Some try to approach you but back off awkwardly at the last moment.  You don't understand until you stumble upon Rebecc, who seems on better terms with you than the rest of the village; she is displaying a worried face.");
@@ -571,13 +571,13 @@ private function owcaMainScreenOn():void {
 	outputText("  The village is rather small.  A dozen humble thatched cottages are standing here and there, linked by dirt tracks and enclosed with small palisades.  There seems to be very little activity.");
 	outputText("\n\nAt the end of the main road you notice the pit and the pole standing at the middle of it.  It looks rather sinister, reminding you of the permanent curse that lies on the villagers.  It is still unguarded.");
 	//[if a week has passed since last sacrifice]
-	if (flags[kFLAGS.DAYS_SINCE_LAST_DEMON_DEALINGS] == 7 && flags[kFLAGS.OWCA_SACRIFICE_DISABLED] == 0) outputText("  A week");
-	else if (flags[kFLAGS.DAYS_SINCE_LAST_DEMON_DEALINGS] > 7 && flags[kFLAGS.OWCA_SACRIFICE_DISABLED] == 0) outputText("  More than a week");
-	if (flags[kFLAGS.DAYS_SINCE_LAST_DEMON_DEALINGS] >= 7 && flags[kFLAGS.OWCA_SACRIFICE_DISABLED] == 0) outputText(" has passed since the last offering to the demons; guarding the pit would certainly help improve your relations with the little town's denizens.");
+	if (flags[kFLAGS.DAYS_SINCE_LAST_DEMON_DEALINGS] === 7 && flags[kFLAGS.OWCA_SACRIFICE_DISABLED] === 0) outputText("  A week");
+	else if (flags[kFLAGS.DAYS_SINCE_LAST_DEMON_DEALINGS] > 7 && flags[kFLAGS.OWCA_SACRIFICE_DISABLED] === 0) outputText("  More than a week");
+	if (flags[kFLAGS.DAYS_SINCE_LAST_DEMON_DEALINGS] >= 7 && flags[kFLAGS.OWCA_SACRIFICE_DISABLED] === 0) outputText(" has passed since the last offering to the demons; guarding the pit would certainly help improve your relations with the little town's denizens.");
 	//Option: 
 	//[Pit][Herds][Rebecc][Tavern]
 	menu();
-	if (getGame().time.hours >= 16 && flags[kFLAGS.OWCA_SACRIFICE_DISABLED] == 0) {
+	if (getGame().time.hours >= 16 && flags[kFLAGS.OWCA_SACRIFICE_DISABLED] === 0) {
 		//Pit. Requires 16:00 or later. Leads to the night gangbang (with possible fight) scene, this time fully equipped and clothed. Attitude is raised by 3.
 		addButton(0, "Pit", zePit);
 	} else {
@@ -663,10 +663,10 @@ public function owcaTavern():void {
 }
 
 private function owcaBuySetup(item:ItemType):void {
-	if (item == consumables.SHEEPMK) buyOwcaShit(item,(180 - flags[kFLAGS.OWCAS_ATTITUDE]));
-	else if (item == consumables.GOB_ALE) buyOwcaShit(item,(60 - Math.round(flags[kFLAGS.OWCAS_ATTITUDE]/2)));
-	else if (item == consumables.BROBREW) buyOwcaShit(item,2000);
-	else if (item == consumables.CLOVERS) buyOwcaShit(item,(80 - Math.round(flags[kFLAGS.OWCAS_ATTITUDE]/2)));
+	if (item === consumables.SHEEPMK) buyOwcaShit(item,(180 - flags[kFLAGS.OWCAS_ATTITUDE]));
+	else if (item === consumables.GOB_ALE) buyOwcaShit(item,(60 - Math.round(flags[kFLAGS.OWCAS_ATTITUDE]/2)));
+	else if (item === consumables.BROBREW) buyOwcaShit(item,2000);
+	else if (item === consumables.CLOVERS) buyOwcaShit(item,(80 - Math.round(flags[kFLAGS.OWCAS_ATTITUDE]/2)));
 	else buyOwcaShit(item,(300 - flags[kFLAGS.OWCAS_ATTITUDE]));
 }
 
@@ -744,7 +744,7 @@ private function rebeccBathScene():void {
 	outputText("\n\nShe grabs hold of a nearby soap and starts lathering it all over your naked body.  You can't see her hands under the moving milky surface but you feel very pleasant tingles in the most intimate places.  She tickles you a bit and you can't help but giggle some more as you feel her delicate hands working you over.");
 	outputText("\n\n\"<i>Shhh... Relax now, soldier.  I'll take care of everything.</i>\"");
 	outputText("\n\nShe first softly brushes your hair with her fingers and strokes your head, then massages every tense muscle at the edge of your face, making you sigh and moan in relief.  Before you even notice, her hands are squeezing and pinching the nape of your neck, completely releasing your tension.  You don't know where she learned to be so good at this, but it just feels so right.  Now her hands are moving downwards...  Gods, she is so sweet, so delicate.  You let out another moan, making her chortle.  Putting her head just above yours, her perky tits press against your back.  You can feel her erect nipples gently scratching you as she slowly rubs her appreciable bosom against you; her expert ministrations are arousing you little by little");
-	if (player.gender == 0) outputText("."); 
+	if (player.gender === 0) outputText("."); 
 	else {
 		//[if cock]
 		if (player.hasCock()) outputText("; your " + player.cockDescript(0) + " grows to full erect size");
@@ -904,7 +904,7 @@ private function torchUpVillagersAndLeave():void {
 public function loseToOwca():void {
 	clearOutput();
 	outputText("You kneel down and then fall, overwhelmed by the villagers' fury and numbers.  Without hesitation, the angry mob jumps on you; you recoil in terror, persuaded that you're going to be beaten to death.  Instead, you are carelessly lifted and completely stripped off; ");
-	if (player.weaponName != "fists") outputText("your " + player.weaponName + " is taken away and ");
+	if (player.weaponName !== "fists") outputText("your " + player.weaponName + " is taken away and ");
 	outputText("you are being uncomfortably transported to a destination you can guess easily.  Too dazed to resist or even worry about it; you are promptly brought to the dreaded pit, where the villagers tie you up and rudely shackle you.  Then, before you even realize how desperate your situation is, they're all gone.  Your numerous bruises and fatigue get the better of you and you quickly fall asleep.");
 	//redirect to dusk transition text, restore hp/fat consonant with sleeping until nightfall
 	HPChange(50,false);

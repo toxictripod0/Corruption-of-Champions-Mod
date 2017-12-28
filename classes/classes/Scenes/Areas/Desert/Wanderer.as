@@ -98,7 +98,7 @@ private function wandererDemonEpilogue():void {
 	spriteSelect(SpriteDb.s_markus_and_lucia);
 	if (player.hasStatusEffect(StatusEffects.WandererDemon)) {
 		//First time...
-		if (player.statusEffectv1(StatusEffects.WandererDemon) == 0) {
+		if (player.statusEffectv1(StatusEffects.WandererDemon) === 0) {
 			clearOutput();
 			outputText("A winged shadow flashes by.  You look up, but can't find its source in the searing desert sun.   A tap on your shoulder is all the warning you get before a curvy body is pressed against you, stroking and touching you in all the right ways.\n\n");
 			outputText("\"<i>I stopped by and I wanted to thank you for this,</i>\" Lucia purrs, balancing a purple crystal along her knuckles.  It sparkles and glitters with a light in the sunlight as she speaks, \"<i>You see, when a human or other mortal creature finally begins to desire corruption and pleasure more than everything else, they can become a demon.  The process leaves behind a single crystal of lethicite – this crystal.  It's a power source beyond anything you can comprehend, and I have you to thank for giving it to me.</i>\"\n\n");
@@ -109,7 +109,7 @@ private function wandererDemonEpilogue():void {
 			player.statusEffectByType(StatusEffects.WandererDemon).value1 = 1;
 		}
 		//Second Encounter
-		else if (player.statusEffectv1(StatusEffects.WandererDemon) == 1) {
+		else if (player.statusEffectv1(StatusEffects.WandererDemon) === 1) {
 			clearOutput();
 			outputText("Lucia zips by overhead, spreading her legs and openly frigging her moist hairless slit and moaning lustily.  After a few moments she creams herself, dripping her juices over the dunes.  She licks her fingers and waves, unclipping an item from her belt and dropping it down towards you.\n\n");
 			//Catch it
@@ -130,7 +130,7 @@ private function wandererEpilogueHuman():void {
 	spriteSelect(SpriteDb.s_markus_and_lucia);
 	if (player.hasStatusEffect(StatusEffects.WandererHuman)) {
 		//Human Epilogue 1
-		if (player.statusEffectv1(StatusEffects.WandererHuman) == 0) {
+		if (player.statusEffectv1(StatusEffects.WandererHuman) === 0) {
 			clearOutput();
 			outputText("As you journey the desert, you see the twin figures of Marcus and his demonic companion, Lucia, in the distance.   Judging by the frantic bobbing of Lucia's head in Marcus's lap, she's just getting ready for a meal.  Closing the distance, you watch curiously as her throat bulges obscenely to keep up with the huge cum-load.  In time she flops back, a few huge globules of cum exploding onto her form like bursting water-balloons as Marcus' orgasm finishes, leaving her a cum-stained wreck.\n\n");
 			if (player.cor < 33) outputText("You duck back behind a dune, blushing furiously.");
@@ -142,7 +142,7 @@ private function wandererEpilogueHuman():void {
 			doNext(camp.returnToCampUseOneHour);
 		}
 		//Human Epilogue 2
-		else if (player.statusEffectv1(StatusEffects.WandererHuman) == 1) {
+		else if (player.statusEffectv1(StatusEffects.WandererHuman) === 1) {
 			clearOutput();
 			outputText("While exploring the desert, you find a strange bottle half-buried in the sand.  A small note is tied to it:\n\n\"<i>I just knew you'd find this.  Try this a few times and I think you might change your mind about Marcus' situation.\n  -Lovely Lucia</i>\"\n\n");
 			inventory.takeItem(consumables.SDELITE, camp.returnToCampUseOneHour);

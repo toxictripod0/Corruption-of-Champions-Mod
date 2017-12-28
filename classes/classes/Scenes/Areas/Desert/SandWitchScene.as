@@ -27,7 +27,7 @@ package classes.Scenes.Areas.Desert {
 		{
 			pregnancy.pregnancyAdvance();
 			//trace("\nSand Witch time change: Time is " + getGame().time.hours + ", incubation: " + pregnancy.incubation + ", event: " + pregnancy.event);
-			if (pregnancy.isPregnant && pregnancy.incubation == 0) pregnancy.knockUpForce(); //Silently clear the Sand Witch's pregnancy if the player has not met her in time
+			if (pregnancy.isPregnant && pregnancy.incubation === 0) pregnancy.knockUpForce(); //Silently clear the Sand Witch's pregnancy if the player has not met her in time
 			return false;
 		}
 	
@@ -44,7 +44,7 @@ package classes.Scenes.Areas.Desert {
 				flags[kFLAGS.CODEX_ENTRY_SANDWITCHES] = 1;
 				outputText("\n\n<b>New codex entry unlocked: Sand Witches!</b>\n\n")
 			}
-			if (player.statusEffectv1(StatusEffects.Exgartuan) == 1 && player.cockArea(0) > 100 && player.statusEffectv2(StatusEffects.Exgartuan) == 0) {
+			if (player.statusEffectv1(StatusEffects.Exgartuan) === 1 && player.cockArea(0) > 100 && player.statusEffectv2(StatusEffects.Exgartuan) === 0) {
 				outputText("\n\nThe " + player.armorName + " covering your lower half hits the ground, as if yanked down by magic.  Your " + player.cockDescript(0) + " pulsates darkly, growing rigid in seconds as the demon within you takes over.  It barks, \"<i>Fuck, how about I cast my spell on you baby?</i>\"\n\n");
 				outputText("The sandwitch ");
 				if (player.cor < 50)
@@ -59,12 +59,12 @@ package classes.Scenes.Areas.Desert {
 		private function allowSandWitchMagic():void {
 			spriteSelect(SpriteDb.s_sandwich);
 			clearOutput();
-			if (player.hair.color == "sandy blonde") {
+			if (player.hair.color === "sandy blonde") {
 				outputText("She smiles wickedly and intones, \"<i>Tresed eht retaw llahs klim ruoy.</i>\"\n\n");
-				if (player.breastRows.length == 0 || player.biggestTitSize() == 0) {
+				if (player.breastRows.length === 0 || player.biggestTitSize() === 0) {
 					outputText("You grow a perfectly rounded pair of C-cup breasts!  ");
 					
-					if (player.breastRows.length == 0) {
+					if (player.breastRows.length === 0) {
 						player.createBreastRow();
 					}
 					
@@ -174,11 +174,11 @@ internal function sandwitchRape():void {
 		}
 		clearOutput();
 		outputText("Your wobbly legs give out underneath you as your body's will to fight evaporates.\n\n");
-		if (player.hair.color.indexOf("sandy blonde") != -1) {
+		if (player.hair.color.indexOf("sandy blonde") !== -1) {
 			outputText("The Sand Witch smiles wickedly and intones, \"<i>Tresed eht retaw llahs klim ruoy.</i>\"\n\n"); 
-			if (player.breastRows.length == 0 || player.biggestTitSize() == 0) {
+			if (player.breastRows.length === 0 || player.biggestTitSize() === 0) {
 				outputText("You grow a perfectly rounded pair of C-cup breasts!  ");
-				if (player.breastRows.length == 0) player.createBreastRow();
+				if (player.breastRows.length === 0) player.createBreastRow();
 				player.breastRows[0].breasts = 2;
 				player.breastRows[0].breastRating = 3;
 				if (player.breastRows[0].nipplesPerBreast < 1) player.breastRows[0].nipplesPerBreast = 1;
@@ -214,7 +214,7 @@ internal function sandwitchRape():void {
 				dynStats("lib", 1, "sen", 4, "lus", 15);
 				titsOrgasm = true;
 			}
-			if (player.biggestLactation() == 0) {
+			if (player.biggestLactation() === 0) {
 				outputText("A pleasurable release suddenly erupts from your nipples!  Twin streams of milk are spraying from your breasts, soaking into the sand immediately.  It stops all too soon, though the witch assures you that you can lactate quite often now.  ");
 				player.boostLactation(1);
 				dynStats("lib", .5, "sen", 1, "lus", 10);
@@ -292,7 +292,7 @@ private function sandwitchRaped():void {
 	}
 	outputText("Even as you rip her sand-colored robes from her body, her eyes hold power and defiance. Her chest holds four large breasts, each leaking milk upon the sands.  "); 
 	//Malllllleeeee (or has penis)
-	if (player.gender == 1 || player.gender == 3) {
+	if (player.gender === 1 || player.gender === 3) {
 		//Not so corrupt
 		if (player.isPureEnough(50)) {
 			outputText("You smile at the sand witch, trying to seem enticing. A tiny smile plays across her face even though she supports a worried frown. She reaches up to you, and you allow her to gently pull you down to her. You marvel at her multiple breasts, each perfectly rounded. Each has a nipple approximately two inches long, enough to suck if you wanted to.  ");
@@ -305,7 +305,7 @@ private function sandwitchRaped():void {
 		else 
 		{
 			//Single cock
-			if (player.cockTotal() == 1) {
+			if (player.cockTotal() === 1) {
 				//DOGGIES
 				if (player.dogCocks() > 0 && player.cocks[0].knotMultiplier > 1.4) knotSandwitch();
 				else {
@@ -322,7 +322,7 @@ private function sandwitchRaped():void {
 			//Multiprick
 			if (player.cockTotal() > 1) {
 				player.orgasm('Dick');
-				if (rand(2) == 0) {
+				if (rand(2) === 0) {
 					rapeSandwitchMultis();
 					return;
 				}
@@ -411,10 +411,10 @@ private function sandwitchCentaurBoning():void {
 		//[cock only]
 		if (player.totalCocks() > 0 && !player.hasVagina()) outputText(" and your " + player.cockDescript(0) + " hardens.");
 		//[cunt only]
-		if (player.hasVagina() && player.totalCocks() == 0) outputText(" and your " + player.vaginaDescript(0) + " begins to drip with moisture.");
+		if (player.hasVagina() && player.totalCocks() === 0) outputText(" and your " + player.vaginaDescript(0) + " begins to drip with moisture.");
 		//[cock and cunt]
 		if (player.hasVagina() && player.totalCocks() > 0) outputText(" and your " + player.cockDescript(0) + " hardens as your " + player.vaginaDescript(0) + " begins to drip with moisture.");
-		if (player.gender == 0) outputText(" her.");  
+		if (player.gender === 0) outputText(" her.");  
 		outputText(" She seems hesitant at first, but soon approaches and begins to run her hands along your stomach and your " + player.hipDescript());
 		//[has breasts]
 		if (player.biggestTitSize() > 0) outputText(", eyes fixed on your " + player.allBreastsDescript());
@@ -462,15 +462,15 @@ private function SWCentaurMore(argument:Number):Boolean {
 	spriteSelect(SpriteDb.s_sandwich);
 	//{ GoTo results }}
 	//[SW_1]
-	if (argument == 1) {
+	if (argument === 1) {
 		outputText("You realize too late that she has been casting a spell for the past few minutes. Before you can react, everything grows dark.");
 		//[Whatever effect the witch has if the player wins, rapes her, and she gets to cast a spell] [end]
 		//1 change
 		player.orgasm('Generic');
 		//Grow tits
-		if (player.biggestTitSize() == 0) {
+		if (player.biggestTitSize() === 0) {
 			outputText("\n\n(You grow a perfectly rounded pair of C-cup breasts!)");
-			if (player.breastRows.length == 0) player.createBreastRow();
+			if (player.breastRows.length === 0) player.createBreastRow();
 			player.breastRows[0].breasts = 2;
 			player.breastRows[0].breastRating = 3;
 			if (player.breastRows[0].nipplesPerBreast < 1) player.breastRows[0].nipplesPerBreast = 1;
@@ -484,7 +484,7 @@ private function SWCentaurMore(argument:Number):Boolean {
 			dynStats("sen", 1, "lus", 1);
 			return false;
 		}
-		if (player.biggestLactation() == 0) {
+		if (player.biggestLactation() === 0) {
 			outputText("\n\n(Your breasts now lactate.)");
 			player.boostLactation(1);
 			dynStats("lib", .5, "sen", 1, "lus", 10);
@@ -547,12 +547,12 @@ private function SWCentaurMore(argument:Number):Boolean {
 			}
 			//[largest cock is long, non-tentacle]
 			if (player.cocks[0].cockLength >= 12) {
-				if (player.cockTotal() == 1) outputText("Her body surrenders more and more as your " + player.multiCockDescriptLight() + " presses against her cervix. ");
+				if (player.cockTotal() === 1) outputText("Her body surrenders more and more as your " + player.multiCockDescriptLight() + " presses against her cervix. ");
 				else outputText("Her body surrenders more and more as your " + player.multiCockDescriptLight() + "  press against her cervixes. ");
 				outputText("Her mouth opens in a soundless and agonizing cry when you finally push past. ");
 			}
 			//[1 cock, tentacle] 
-			if (player.countCocksOfType(CockTypesEnum.TENTACLE) == 1 && player.cockTotal() == 1) {
+			if (player.countCocksOfType(CockTypesEnum.TENTACLE) === 1 && player.cockTotal() === 1) {
 				outputText("Her body surrenders more and more as your " + player.cockDescript(0) + " pushes deep into her bowels, snaking its way further into her body as it fucks her insides. ");
 			}
 			outputText("It feels like you have been pushing yourself into her for hours");
@@ -563,7 +563,7 @@ private function SWCentaurMore(argument:Number):Boolean {
 			//[largest cock is not wide and/or long]
 			else outputText(", and her cries have long since turned into groans of pleasure. ");
 			outputText("You cannot hold off your orgasm any longer. Your " + player.multiCockDescriptLight() + " explode");
-			if (player.cockTotal() == 1) outputText("s");
+			if (player.cockTotal() === 1) outputText("s");
 			outputText(", ");
 			//[large cum production] 
 			if (player.cumQ() >= 250) outputText("gushing massive amounts of your cum ");
@@ -571,12 +571,12 @@ private function SWCentaurMore(argument:Number):Boolean {
 			else outputText("pushing your sperm ");
 			outputText("deep into her ");
 			//[1 cock, tentacle]
-			if (player.cockTotal() == 1 && player.countCocksOfType(CockTypesEnum.TENTACLE) == 1) outputText("anus");
+			if (player.cockTotal() === 1 && player.countCocksOfType(CockTypesEnum.TENTACLE) === 1) outputText("anus");
 			else {
 				//[largest cock is not wide and/or long]
 				if (player.cocks[0].cockLength >= 12 || player.cocks[0].cockThickness >= 3) {
 					//[1 cock]
-					if (player.cockTotal() == 1) outputText("cunt");
+					if (player.cockTotal() === 1) outputText("cunt");
 					//[2+ cocks]
 					if (player.cockTotal() >= 2) outputText("cunts");
 				}
@@ -635,7 +635,7 @@ private function SWCentaurMore(argument:Number):Boolean {
 		return false;
 	}
 	//[SW_3]
-	if (argument == 3) {
+	if (argument === 3) {
 		outputText("As she begins to seem less skittish, you reach your hands into her robe and push it off of her shoulders, revealing a beautiful body underneath.  A pair of pussies is betraying the sand witch's arousal - her thighs are already dripping wet.  You begin to tease her four breasts as you lower your mouth to her lips for a passionate kiss.  Breaking off the kiss and grinning, you ");
 		//[STR > 50]
 		if (player.str > 50) outputText("pick her up and toss her onto your back. ");
@@ -854,7 +854,7 @@ private function ovipositSandWitches():void {
 	if (monster.HP < 1) outputText("\n\nRolling your eyes, you offer a sympathetic hand to the defeated witch, showing her that you don't mean to hurt her any further, that you have something more... pleasurable in mind.  ")
 	outputText("The sand witch slows to a dead stop as she assesses your intentions, which are made all the more clear as you disrobe and toss your [armor] aside, exposing your ");
 	if (player.hasCock()) outputText("hardened  " + player.multiCockDescriptLight());
-	if (player.gender == 3) outputText(" and ");
+	if (player.gender === 3) outputText(" and ");
 	if (player.hasVagina()) outputText(player.clitDescript());
 	outputText(" for her viewing consumption.  Making quite the persuasive argument of non-hostility as you do, the sand witch finally relents, removing her cloak and exposing her four-breasted, ");
 	if (player.totalCocks() > 1) outputText(num2Text(player.cockTotal() + 1));
@@ -882,7 +882,7 @@ private function eggwitchForeplay():void {
 	outputText(" clits all hard from the apparent promise of your carnal attentions.  Positioned between her thighs, your hands rest and you wait for the eager gaze of her eyes, the imploring of your continued progress.  The sand witch doesn't disappoint; her needy eyes beseech you to splay her legs open and get intimately acquainted with her naughty bits.");
 	
 	outputText("\n\nGrinning in delight at the desert vixen's willful submission, you oblige her desires and spread her thighs apart; the aroma and heat of her excitement rising to your nostrils is the perfect greeting and welcome for you.  With blood surging to your sex");
-	if (player.cockTotal() > 1 || player.gender == 3) outputText("es");
+	if (player.cockTotal() > 1 || player.gender === 3) outputText("es");
 	outputText(", you descend on her love buttons, the smack of sweet female juices embracing your taste buds with the plunge of tongue.  The once-defiant woman who attacked you for rejecting her offer melts to your whims, cooing and moaning as you press your face against her pelvis and helping to stimulate her other vagina");
 	if (player.cockTotal() > 1) outputText("s");
 	outputText(" in step with your tongue.  Each flutter along her sex produces more fluids, more contractions, and more squeezes of her thighs as you soldier on, the sand witch all too willing to keep you pinned right where you are as she cries out to the sky, face flush with ecstatic pleasure and longing to keep this going as long as humanly possible.  But you didn't come here  for 'foreplay' alone; you have a payload of young that needs a host and a lust that needs to be sated.");
@@ -929,7 +929,7 @@ private function getToFuckingWithZeEggsInWitch():void {
 //choose pussy or anus randomly
 private function laySomeEggsInThatWitchFinally():void {
 	clearOutput();
-	var cunt:Boolean = (rand(2) == 0);
+	var cunt:Boolean = (rand(2) === 0);
 	if (player.canOvipositBee()) outputText(images.showImage("sandwitch-u-lay-beeegg"));
 	else outputText(images.showImage("sandwitch-u-lay-drideregg"));
 	outputText("Before long the intense need to culminate the act grows too lucid to ignore, and with a hum of satisfaction you finally bore your ovipositor through the tight ");
@@ -974,15 +974,15 @@ private function laySomeEggsInThatWitchFinally():void {
 	outputText(" to her face.  The cute stare of her half-glazed eyes turns to the lunge of lips toward your sex, the sand witch driven like a woman possessed in her efforts to get the next batch going...");
 	
 	outputText("\n\nFor what feels like an eternity you sit atop the pliant sorceress, having her tend to your sex");
-	if (player.cockTotal() > 1 || player.gender == 3) outputText("es");
+	if (player.cockTotal() > 1 || player.gender === 3) outputText("es");
 	outputText(" while you slowly pump her full of eggs, her girlish little moans resonating through your body as she orally stimulates your ");
 	if (player.hasCock()) outputText(player.multiCockDescriptLight());
-	if (player.gender == 3) outputText(" and ");
+	if (player.gender === 3) outputText(" and ");
 	if (player.hasVagina()) outputText("your " + player.vaginaDescript(0));
 	outputText(".  At long last her enthusiastic efforts bring you to a more 'traditional' release, lathering ");
 	var facial:int = rand(2);
-	if (facial == 0) outputText("her facial features with proof of your climax");
-	else if (facial == 1) outputText("the interior of her mouth with sweltering streams of your cum");
+	if (facial === 0) outputText("her facial features with proof of your climax");
+	else if (facial === 1) outputText("the interior of her mouth with sweltering streams of your cum");
 	outputText(".  Having finally achieved release, and also having run out of eggs, you pull yourself free of the desert woman with a loud pop, the ");
 	if (player.canOvipositBee()) outputText("honey-like");
 	else outputText("goopy");

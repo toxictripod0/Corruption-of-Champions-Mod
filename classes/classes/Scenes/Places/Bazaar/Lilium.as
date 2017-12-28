@@ -27,7 +27,7 @@ package classes.Scenes.Places.Bazaar{
 public function LiliumText(output:Boolean = false):Function {
 	if (output) {
 		//Before paying:
-		if (flags[kFLAGS.LILIUM_TIMES_TALKED] == 0) outputText("\n\nYou can see a pale, scantily clad demon woman leaning casually against the wall of a building.");
+		if (flags[kFLAGS.LILIUM_TIMES_TALKED] === 0) outputText("\n\nYou can see a pale, scantily clad demon woman leaning casually against the wall of a building.");
 		//After paying:
 		else outputText("\n\nYou can see Lilium standing in her usual spot.");
 	}
@@ -40,7 +40,7 @@ private function approachLilium():void {
 	spriteSelect(SpriteDb.s_lilium);
 	var pay:Function = null;
 	//#########FIRST TIME INTRODUCTION#########
-	if (flags[kFLAGS.LILIUM_TIMES_TALKED] == 0) {
+	if (flags[kFLAGS.LILIUM_TIMES_TALKED] === 0) {
 		outputText("As you approach the demon woman, her gaze shifts to you, and she runs her eyes down your body, scrutinizing you.  You respond in kind, taking in her form.  Two nearly foot-long horns grow up and out of her forehead, one of which is adorned with a shiny, silver band.  Her dark hair spills across her bare shoulders in loose coils and her black lipstick and heavy eyeshadow contrast with the paleness of her skin.  A black underbust corset wraps around her waist, leaving her breasts exposed, and long black gloves adorn her arms up to the shoulder.  She also wears a crinoline skirt with an opening at the front which reveals her smooth bare legs, a tail which wraps around her thigh like a garter, and her crotch, which sports an average cock curiously clad in a lacy sock in spite of her otherwise brazen exposure.\n\n");
 
 		outputText("Her assessment of you seems to be positive, as a smile crosses her face and she says, \"<i>You look like you've got more than a few gems to rub together; looking for a little fun?</i>\"\n\n");
@@ -82,13 +82,13 @@ private function payForLilium():void {
 		return;
 	}
 	//First time - Pay: 
-	if (flags[kFLAGS.LILIUM_TIMES_TALKED] == 0) {
+	if (flags[kFLAGS.LILIUM_TIMES_TALKED] === 0) {
 		outputText("\"<i>Sounds good,</i>\" you answer while fishing for your gem stash.\n\n");
 	
 		outputText("\"<i>I'm Lilium, by the way,</i>\" she states, as you give the woman your name and your payment in return.\n\n");
 	
 		//(If player name is also Lilium)
-		if (player.short == "Lilium") outputText("\"<i>No way!</i>\" she cries upon learning of your identical name.  \"<i>Well... I hope you're not going to ask me to scream your name during sex.  That might be a bit awkward.</i>\"\n\nHow do you want to have the whore?\n\n");
+		if (player.short === "Lilium") outputText("\"<i>No way!</i>\" she cries upon learning of your identical name.  \"<i>Well... I hope you're not going to ask me to scream your name during sex.  That might be a bit awkward.</i>\"\n\nHow do you want to have the whore?\n\n");
 		
 		outputText("What will you do with her?");
 	}
@@ -121,7 +121,7 @@ private function payForLilium():void {
 private function leaveLilium():void {
 	clearOutput();
 	spriteSelect(SpriteDb.s_lilium);
-	if (flags[kFLAGS.LILIUM_TIMES_TALKED] == 0) outputText("\"<i>I'm deathly allergic to fun, unfortunately,</i>\" you reply before moving on to examine more of the bazaar.");
+	if (flags[kFLAGS.LILIUM_TIMES_TALKED] === 0) outputText("\"<i>I'm deathly allergic to fun, unfortunately,</i>\" you reply before moving on to examine more of the bazaar.");
 	else outputText("\"<i>Just passing through, and I thought I'd see how you were doing,</i>\" you reply, and leave Lilium alone at her post.");
 	doNext(bazaar.enterTheBazaar);
 }
@@ -251,7 +251,7 @@ private function liliumNippleFuck():void {
 		doubleNipFuck = true;
 	}
 	//(else if demon/naga tail)
-	else if (player.tail.type == Tail.DEMONIC || player.isNaga()) {
+	else if (player.tail.type === Tail.DEMONIC || player.isNaga()) {
 		outputText("Thinking it unfair that just one of her breasts receives your attention, you draw your tail up and unceremoniously jam it into Lilium's lonely nipple-cunt, causing her to let out a loud squeal from the extra penetration.  The extra purchase on Lilium's body from both your cock and your tail now being inside her breasts causes the demon's body to rock back and forth vigorously with each of your thrusts.  You move yourself backwards slightly, pulling her with you away from the wall to avoid concussing her.  When you resume your thrusts you can hear her moans warble as her body rocks with yours.\n\n");
 	}
 	

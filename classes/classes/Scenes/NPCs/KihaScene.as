@@ -28,23 +28,23 @@ public function encounterKiha():void {
 	var temp:Function;
 	clearOutput();
 	spriteSelect(SpriteDb.s_kiha);
-	if (kihaFollower.followerKiha() && flags[kFLAGS.KIHA_NEEDS_TO_REACT_TO_HORSECOCKING] == 1) {
+	if (kihaFollower.followerKiha() && flags[kFLAGS.KIHA_NEEDS_TO_REACT_TO_HORSECOCKING] === 1) {
 		kihaFollower.kihaReactsToHorseDicking();
 		return;
 	}
 	//kihaBitchesOutCorruptPCs()
-	if (flags[kFLAGS.KIHA_AFFECTION_LEVEL] > 0 && !player.isPureEnough(66) && flags[kFLAGS.KIHA_CORRUPTION_BITCH] != 1) {
+	if (flags[kFLAGS.KIHA_AFFECTION_LEVEL] > 0 && !player.isPureEnough(66) && flags[kFLAGS.KIHA_CORRUPTION_BITCH] !== 1) {
 		kihaFollower.kihaBitchesOutCorruptPCs();
 		return;
 	}
 	//kihaUnBitchesOutCorruptPCs()
-	if (player.isPureEnough(66) && flags[kFLAGS.KIHA_CORRUPTION_BITCH] == 1) {
+	if (player.isPureEnough(66) && flags[kFLAGS.KIHA_CORRUPTION_BITCH] === 1) {
 		kihaFollower.kihaUnbitchesUncorruptedFolks();
 		return;
 	}
 	//Friendly+ meeting
-	if (flags[kFLAGS.KIHA_AFFECTION_LEVEL] >= 1 && flags[kFLAGS.KIHA_CORRUPTION_BITCH] != 1) {
-		if (flags[kFLAGS.KIHA_AFFECTION_LEVEL] == 2 && flags[kFLAGS.KIHA_AFFECTION] >= 100 && flags[kFLAGS.KIHA_MOVE_IN_OFFER] == 0) {
+	if (flags[kFLAGS.KIHA_AFFECTION_LEVEL] >= 1 && flags[kFLAGS.KIHA_CORRUPTION_BITCH] !== 1) {
+		if (flags[kFLAGS.KIHA_AFFECTION_LEVEL] === 2 && flags[kFLAGS.KIHA_AFFECTION] >= 100 && flags[kFLAGS.KIHA_MOVE_IN_OFFER] === 0) {
 			kihaFollower.kihaOffersToMoveIn();
 			return;
 		}
@@ -59,13 +59,13 @@ public function encounterKiha():void {
 	//Count meetings
 	flags[kFLAGS.TIMES_MET_KIHA]++;
 	//PLOT FIGHT TIME!
-	if (player.isPureEnough(66) && flags[kFLAGS.KIHA_AFFECTION_LEVEL] == 0 && flags[kFLAGS.KIHA_TALK_STAGE] >= 3 && player.gender > 0) {
+	if (player.isPureEnough(66) && flags[kFLAGS.KIHA_AFFECTION_LEVEL] === 0 && flags[kFLAGS.KIHA_TALK_STAGE] >= 3 && player.gender > 0) {
 		kihaFollower.kihaSpiderEventIntro();
 		return;
 	}
 	outputText(images.showImage("kiha-intro"));
 	//First time
-	if (flags[kFLAGS.TIMES_MET_KIHA] == 1) {
+	if (flags[kFLAGS.TIMES_MET_KIHA] === 1) {
 		outputText("An imposing figure drops out of the gnarled swamp trees, spraying loam and moss everywhere as it impacts the ground.  You immediately put up your " + player.weaponName + " and take up a combat stance.  Laughing uproariously, the stranger straightens, tucking her rust-red wings behind her back.  She's so busy with her mirth that you get a chance to get a good look at the six-foot tall monster of a woman.  Though her face has human-like features, a pair of wicked horns protrude from her forehead, giving evidence to more than a little taint.  The twin spikes match the curve of her skull, the pointed tips sticking out a ways behind her.  Her eyes are nearly solid crimson with inky black slits in the middle.  Dark red scales run up her arms and legs to meet on her back.  A powerful reptilian tail hangs down behind her, whipping back and forth with dangerous strength.\n\n");
 		
 		outputText("\"<i>Eyes up here, " + player.mf("dick-head","slut-bag") + ",</i>\" commands the draconic woman - and she's definitely a woman; the dark-skinned entrance between her muscled legs is evidence enough of that.  She twirls a wicked-looking double-headed axe as she warns, \"<i>You seem to have stumbled across my territory.  Let me make this clear to you: I own this stretch of swamp, and if you step foot in this area again, I'm going to beat you until you wish you ran into Lethice herself.  Now run along, before you dread the day you met Kiha!</i>\"  A thin trail of heat shimmers in the air with each pass of her axe's blades, left behind by the obviously magical implement.\n\n");
@@ -79,7 +79,7 @@ public function encounterKiha():void {
 		addButton(4, "Leave", leaveWhenMeetingAgressiveKiha);
 	}
 	//*Repeat Encounter - PC WAS VICTORIOUS LAST FIGHT 
-	else if (flags[kFLAGS.PC_WIN_LAST_KIHA_FIGHT] == 1) {
+	else if (flags[kFLAGS.PC_WIN_LAST_KIHA_FIGHT] === 1) {
 		outputText("Kiha plummets from the sky, slamming down into the mossy earth with enough force to spray chunks of dirt everywhere.  She stands and growls, \"<i>Just because you beat me before doesn't mean you've defeated me.  I'll NEVER BE DEFEATED!</i>\"\n\n");
 		
 		outputText("As she screams out in defiance, she charges you, giving you barely enough time to ready yourself for combat!");
@@ -88,7 +88,7 @@ public function encounterKiha():void {
 		startCombat(new Kiha());
 	}
 	//Tribute Offer (1st Time) - Req's Kiha not be mad and PC suggested it at some point. 
-	else if (flags[kFLAGS.KIHA_TOLL] == 1 && rand(2) == 0) {
+	else if (flags[kFLAGS.KIHA_TOLL] === 1 && rand(2) === 0) {
 		outputText("Kiha steps out from behind a tree with her axe on her back and her arms folded across her sizable chest.  \"<i>You again?  I've been thinking about what you said.  How about instead of beating you senseless, you pay me a tribute of 200 gems, and I'll let you pass through my territory unhindered.  Of course, if you stumble into my lair I might have to teach you a lesson.</i>\"  A greedy smile spreads across her dusky visage while her eyes burn with mischievous crimson light.  Wait a moment... wasn't this your idea?\n\n");
 		menu();
 		addButton(0, "Fight", meetKihaAndFight).hint("Fight the dragoness!");
@@ -103,8 +103,8 @@ public function encounterKiha():void {
 	}
 	//*Repeat Encounter - Tribute Wore off 
 	else if (flags[kFLAGS.KIHA_TOLL] > 1 && 
-		(flags[kFLAGS.KIHA_TOLL_DURATION] == 1 || 
-		(flags[kFLAGS.KIHA_TOLL_DURATION] == 0 && rand(2) == 0))) {
+		(flags[kFLAGS.KIHA_TOLL_DURATION] === 1 || 
+		(flags[kFLAGS.KIHA_TOLL_DURATION] === 0 && rand(2) === 0))) {
 		outputText("Kiha steps out from behind a tree with her axe on her back and her arms folded across her sizable chest.  \"<i>If you want to explore my territory again, you'll need to pay the fee,</i>\" she flatly states.  This is absurd - she wants more gems already?  You'll go broke like this, AND it was your idea to begin with!  What do you do?");
 		menu();
 		addButton(0, "Fight", meetKihaAndFight).hint("Fight the dragoness!");
@@ -123,7 +123,7 @@ public function encounterKiha():void {
 		
 		outputText("\"<i>Don't even start,</i>\" she commands, advancing on you as she continues, \"<i>I told you to avoid my domain and yet you ignored my imperative and returned.  You may be a fucking masochist or a retard, but trust me, you won't enjoy this.</i>\"\n\n");
 		
-		if (flags[kFLAGS.KIHA_TOLL] == 0) {
+		if (flags[kFLAGS.KIHA_TOLL] === 0) {
 			outputText("If you hurry, you might get a word in edge-wise.  What do you do?");
 			//[Fight] [Ask Why][Buy Passage][Leave]
 			menu();
@@ -197,7 +197,7 @@ public function kihaExplore(clearScreen:Boolean = true):void {
 	var event:Number = rand(10);
 	var itype:ItemType;
 	//Grabbin' Inquisitor Armor
-	if (event == 0 && flags[kFLAGS.GOTTEN_INQUISITOR_ARMOR] == 0) {
+	if (event === 0 && flags[kFLAGS.GOTTEN_INQUISITOR_ARMOR] === 0) {
 		inquisitorRobesDiscovery();
 		return;
 	}	
@@ -257,9 +257,9 @@ internal function kihaVictoryIntroduction():void {
 		addButton(1, "Use Tail", kihaVictoryPomfTail).hint("Use her tail as a dildo.");
 	}
 	if (player.hasCock()) { //Vagina with optional double-dick!
-		if (player.cockThatFits(monster.vaginalCapacity()) != -1 && player.lust >= 33) {
+		if (player.cockThatFits(monster.vaginalCapacity()) !== -1 && player.lust >= 33) {
 			outputText("\n\nYou could fuck her vagina");
-			if (player.cockThatFits2(monster.vaginalCapacity()) != -1 && player.cockTotal() > 1)
+			if (player.cockThatFits2(monster.vaginalCapacity()) !== -1 && player.cockTotal() > 1)
 				outputText(" and ass");
 			outputText(".");
 			addButton(2, "FuckHerPussy", victoryDickKiha).hint("Penetrate Kiha vaginally.");
@@ -297,12 +297,12 @@ internal function kihaLossIntro():void {
 		//TO THE RAPES!
 		
 		//Genderless - Lukadoc (Zed)
-		if (player.gender == 0) kihaGenderlessBeating();
+		if (player.gender === 0) kihaGenderlessBeating();
 		//*Male - Adj
-		else if (player.gender == 1) kihaRapesMen();
+		else if (player.gender === 1) kihaRapesMen();
 		//*Herm - Adj
-		else if (player.gender == 3) kihaRapesHerms();
-		else if (player.gender == 2) kihaRapesLittleGirlsISawItOnTheNews();
+		else if (player.gender === 3) kihaRapesHerms();
+		else if (player.gender === 2) kihaRapesLittleGirlsISawItOnTheNews();
 	}
 	//If not horny, get a beating!
 	else {
@@ -374,7 +374,7 @@ private function kihaRapesMen():void {
 	outputText("With a swift kick to your collarbone, Kiha knocks you on your back and stands over you, her vulva swollen with excitement despite her frosty insults.  She opens your " + player.armorName + " with her long, clenching talons just enough to expose " + player.sMultiCockDesc() + ".  The dragoness curls her tail between her legs, the warm, scaled surface of the dexterous limb rubbing your tender flesh impatiently, tip flicking " + player.oMultiCockDesc() + " before coiling around the crest of your cockhead.  The narrow point of her backside pokes at your urethra, parting the narrow slit and tickling the sensitive, silken interior to draw a weak gasp from you.  \"<i>Yeah, I bet you'd love to get penetrated,</i>\" she scoffs, wrapping her hands around the thick girth of tail poking between her thighs like a massive, scale-textured cock.  She strokes the fat plates and thumbs the ridge-like nobs lining its underside with a hip-swaying motion that sends her chest wobbling.  \"<i>But,</i>\" she continues, her tail lifting off of your " + player.multiCockDescriptLight() + " and curling upwards, \"<i>this isn't about what you want.</i>\"\n\n");
 
 	outputText("Kiha's haunches clench, and the wriggling rudder between her legs snakes upward, pressing firmly against her inflamed nethers - the plush, dusky lips of her pussy pliant to the touch of her scarlet extremity.  The tip that teased your cock a moment ago instead wraps itself around her clitoral hood, pulling her foreskin-like sheath back to expose the button-stiff joybuzzer.  In tightening circles, the dragon girl stimulates herself over you, her lips curled into a crooked grin as she rests her hands on her hips.  ");
-	if (player.isNaga() || player.tail.type == Tail.LIZARD) outputText("\"<i>Heh, if you had half as much dexterity as you do impudence, I'd let you do this for me.  Fat chance of that,</i>\" she remarks off-handedly.  ");
+	if (player.isNaga() || player.tail.type === Tail.LIZARD) outputText("\"<i>Heh, if you had half as much dexterity as you do impudence, I'd let you do this for me.  Fat chance of that,</i>\" she remarks off-handedly.  ");
 	outputText("Before long, her cunny practically drools, but you're not sure what she's getting off on more, the tail teasing her clit or your dick stiffening uncontrollably at her feet.  She grins, more to show her teeth than in pleasure, and begins to feed her tail into her snatch, the girl's folds parting eagerly to the rough limb, her honeypot polishing her scales to a liquid gleam almost immediately.  As she pumps long, slow thrusts inside herself, Kiha shifts to one leg, bringing her adept foot to your " + player.cockDescript(x) + " once more");
 	if (player.balls > 0) outputText(", resting the heel of her foot against the swell of your " + player.ballsDescriptLight() + " and applying just enough pressure to feel the cum churning within");
 	outputText(".  \"<i>Ah! J- just stay ri- ri- right there!</i>\" she commands, as her tail picks up the pace.  \"<i>I'll attend to y-y-you in a m-m... Aaah! Minute,</i>\" she coos, pumping herself to the verge of climax.  Clenching her eyes and balling her hands into fists, the dragoness impales herself on the pistoning appendage, and chokes back a shuddering moan as she bottoms out and creams a crystal polish of girl cum across it, which wicks down and coats her scaled posterior with a shimmering veneer. \"<i>Ahhhaaa...</i>\" she shudders.  \"<i>Now then, at least I'll have cum once today if you prove to be as worthless at fucking as you were at fighting.</i>\"\n\n");
@@ -385,7 +385,7 @@ private function kihaRapesMen():void {
 
 	outputText("With a rumbling growl, the dragoness impales herself on your " + player.cockDescript(x) + " hard enough to knock the wind from your lungs. She clamps down and begins rolling her ass back and forth over your groin, stroking you off with only the rippling contractions from the toned walls of her rectum.  Your orgasm moments away, you helplessly clench your fingers in the earth");
 	//[Lizard/naga tail: 
-	if (player.isNaga() || player.tail.type == Tail.LIZARD) outputText(" while your tail curls around to find your own asshole.  The grip of the dragon's nethers so intense, you barely feel the pressure of your own tail, pushing in easily to soothingly stroke your overtaxed prostate");
+	if (player.isNaga() || player.tail.type === Tail.LIZARD) outputText(" while your tail curls around to find your own asshole.  The grip of the dragon's nethers so intense, you barely feel the pressure of your own tail, pushing in easily to soothingly stroke your overtaxed prostate");
 	outputText(".  The tail in your mouth begins to pump deeper into your throat, wrenching your jaw open as the slick, textured scales thrust past your tongue and uvula to snake into your esophagus, forcing the girl's honey into every crevasse of your maw.  The sight of you being face-fucked by her phallic appendage is enough to bring her to a second, screaming climax, Kiha's ass finally loosening enough for the orgasm seething in your loins to burst free");
 	if (player.balls > 0) outputText(", your " + player.ballsDescriptLight() + " practically leaping in over-burdened joy as their heavy load rushes through your flesh");
 	outputText(".  A geyser of hot spunk sprays from your " + player.cockDescript(x) + ", flooding her innards with the excruciatingly hefty torrent of seed all her teasing and abuse built within you.");
@@ -454,7 +454,7 @@ private function tsundereMasturbationChristmasCarol():void {
 	outputText(".\n\n");
 	
 	//If Multi/Herm
-	if (player.cockTotal() > 1 || player.gender == 3) outputText("\"<i>W-what are you going to do, you freak of nature?  If you make me play with those, I swear... I swear I'll hit you!</i>\"");
+	if (player.cockTotal() > 1 || player.gender === 3) outputText("\"<i>W-what are you going to do, you freak of nature?  If you make me play with those, I swear... I swear I'll hit you!</i>\"");
 	//If Cock
 	else if (player.hasCock()) outputText("\"<i>G-get that away from me!  As if I'd want anything to do with your hard, juicy cock!  Idiot!</i>\"");
 	//If Vagina
@@ -463,7 +463,7 @@ private function tsundereMasturbationChristmasCarol():void {
 	else outputText("\"<i>H-huh?  Why the hell are you coming closer?  How can you possibly do anything when you're as smooth as a board down there, you loser!</i>\"");
 	
 	outputText("  Today, however, you don't have any plans to fuck her directly");
-	if (player.gender == 0) outputText(", and seeing as you don't have anything to fuck her with, it's not like you could");
+	if (player.gender === 0) outputText(", and seeing as you don't have anything to fuck her with, it's not like you could");
 	outputText(".  Without saying a word, you walk behind her, slouching in between the tree and her warm figure as you scoot yourself closer.  She desperately tries to turn around to look behind her, but she appears to be too weak to even move her neck.  In only moments, you've managed to lay against the tree, with the feeble dragon-girl sitting down comfortably on your lap ");
 	if (player.tallness < 72) outputText("- though you're hidden behind her tallness");
 	else outputText("- though you're much taller than her");
@@ -474,7 +474,7 @@ private function tsundereMasturbationChristmasCarol():void {
 	outputText("You notice the dragon-girl's warm breath pervade the air as you feel the warmth of her insides, her slick tongue beginning to drool out of her mouth from the sensation of her moist lips being invaded by your stern hand.  The aroused state of her nipples poking up into the humid air give you an idea, as you take your free hand and begin to grope and massage the breasts in between your fingers.  The teats perk to your ministrations while you roughly squeeze her heaving bosom, almost as if to milk her like a cow.  A grunt escapes your lips as you rub your ");
 	if (player.hasCock()) {
 		outputText(player.multiCockDescriptLight() + " against her soft flesh, ");
-		if (player.cockTotal() == 1) outputText("a small bead of pre-cum forming from the tip and slathering her back with your juices.");
+		if (player.cockTotal() === 1) outputText("a small bead of pre-cum forming from the tip and slathering her back with your juices.");
 		else outputText("small beads of pre-cum forming from the tips and slathering her back with your juices.");
 	}
 	else outputText(player.nippleDescript(0) + "s against the hard ridges of her back, your tongue softly licking her smooth skin.");
@@ -571,9 +571,9 @@ private function victoryDickKiha():void {
 	outputText("You advance on her helpless form and repeat your actions, raising her leg and shoving her tail aside.  She resists, but not as fiercely as before.  Her tail is easily kept at bay while you lower yourself to align your " + player.hipDescript() + " with the Kiha's moist cunt.  The heat rolling out of her loins is unreal.  Her pussy seems to fog the air with its combination of warmth and wetness, and as you press your " + player.cockDescript(x) + " closer, it feels almost like a woman is about to give you head, with her hot breath washing over your genitals.\n\n");
 	
 	//(DOUBLE DICKING VARIANT)
-	if (y != -1 && player.cockTotal() > 1) {
+	if (y !== -1 && player.cockTotal() > 1) {
 		outputText("That perfect, dripping entrance beckons for your " + player.cockDescript(x) + ", but your other penis");
-		if (player.cockTotal() == 2) outputText(" is");
+		if (player.cockTotal() === 2) outputText(" is");
 		else outputText("es are");
 		outputText(" aching so much that you may as well try to double your pleasure and fun.  Without hesitation, you slide two cocks inside your unsuspecting partner.  The top one smoothly sheaths itself inside Kiha's velvety tunnel.  Her tightly-clenched pucker proves more resistant to your " + player.cockDescript(y) + "'s sudden intrusion, pushing back with near painful force as inch after inch penetrates her delicious rear passage.  One last, glorious push completely buries both your bones in their draconic sockets, much to the delight of your captive, if her moans are to be believed.\n\n");
 		
@@ -592,14 +592,14 @@ private function victoryDickKiha():void {
 		temp = player.cocks.length;
 		while(temp > 0) {
 			temp--;
-			if (player.cocks[temp].cockType == CockTypesEnum.TENTACLE && temp != x && temp != y) {
+			if (player.cocks[temp].cockType === CockTypesEnum.TENTACLE && temp !== x && temp !== y) {
 				z = temp;
 				break;
 			}
 		}
-		if (player.isNaga() || player.tail.type == Tail.LIZARD || z >= 0) {
+		if (player.isNaga() || player.tail.type === Tail.LIZARD || z >= 0) {
 			outputText("Spitefully, your ");
-			if (z == -1) outputText("tail");
+			if (z === -1) outputText("tail");
 			else outputText("idle tentacle");
 			outputText(" responds in kind, bending up to squeeze Kiha's own neck and even inserting the tip into her mouth when next she opens it to let out an aroused gasp, forcing itself down her gullet.  A cross look flashes across her visage for only a second as she realizes she's become subject to your own draconic retribution, but the next few desperate thrusts into her wanton holes do much to dissipate it.  For every thrust she squeezes your windpipe a bit tighter, and you respond in kind");
 			if (z >= 0) outputText(", plunging the head of your cock in and out of her throat.");
@@ -607,7 +607,7 @@ private function victoryDickKiha():void {
 		}
 
 		outputText("Dully, you realize " + player.sMultiCockDesc() + " are twitching, her powerful clenching holes combining with your frenzied strokes too much for you to endure.  Heat boils out from your " + player.ballsDescriptLight() + " as your orgasm approaches, threatening to burst from your loins even as blackness eats at the edges of your vision.  Screw it - if she's choking you out, you're at least going to get to cum first.  You grab both her nipples as you hilt yourself and twist, HARD.  Jizm spurts from your cocks, glazing Kiha's hot, juicy puss,");
-		if (player.isNaga() || player.tail.type == Tail.LIZARD || z >= 0) outputText(" gasping mouth,");
+		if (player.isNaga() || player.tail.type === Tail.LIZARD || z >= 0) outputText(" gasping mouth,");
 		outputText(" and tight anus with waves of white.");
 		if (player.cumQ() >= 500) outputText("  Her belly distends before long, stuffed by the heavy loads of cream you push out.");
 		if (player.cockTotal() > 2) {
@@ -656,7 +656,7 @@ private function kihaRapesLittleGirlsISawItOnTheNews():void {
 	outputText("Despite the pleasure of your crumbling restraint, the pleading shudders of your cumming body makes her even more aggressive than before.  \"<i>Yes!  Beg for mercy!  You don't deserve a minute of my time! How could someone like me ever be interested in a pig like you?</i>\"  To punctuate the game she's playing with your honeypot, Kiha pinches your " + player.clitDescript() + " between her fingers, the narrow nails of her claws squeezing your sensitive nub so tightly your jaw drops in a soundless scream of bliss.\n\n");
 
 	outputText("\"<i>Here's how this is going to go,</i>\" she murmurs when you've finally stopped gasping for breath.  \"<i>You will lick me until I tell you to stop, and every time you displease me I'm going to take it out on your sensitive little fuck hole.</i>\"  She swings around and sits on your face, smashing her wet cunt on your " + player.faceDescript() + ".  \"<i>Be grateful that I'm letting you do this,</i>\" she gurgles, pinching your clit again for emphasis.  Doing as you're told, you lick deeply into the warm velvet of the dragon's folds.");
-	if (player.tongue.type == Tongue.SNAKE) outputText("  You are grateful for your forked tongue, which allows you to cover more of her pussy at once.");
+	if (player.tongue.type === Tongue.SNAKE) outputText("  You are grateful for your forked tongue, which allows you to cover more of her pussy at once.");
 	else if (player.hasLongTongue()) outputText("  Your inhumanly long, prehensile tongue is a blessing here; you can reach into her deepest recesses, slurp your way into every nook and cranny, and generally provide a tongue-fuck that no human ever could.");
 	outputText("\n\n");
 
@@ -679,7 +679,7 @@ private function rapeKihaWithWORDS():void {
 	clearOutput();
 	outputText(images.showImage("kiha-forced-talk"));
 	spriteSelect(SpriteDb.s_kiha);
-	if (flags[kFLAGS.KIHA_TALK_STAGE] == 0) {
+	if (flags[kFLAGS.KIHA_TALK_STAGE] === 0) {
 		outputText("Kneeling down, you meet the defeated dragoness' gaze and ask her why she's so violent and territorial.  Kiha looks up at you in confusion and asks, \"<i>Wait... you defeated me, and you want to... talk?</i>\"\n\n");
 		
 		outputText("You nod your head and ask her again why she's so dead-set on defeating anyone that comes near her.  Kiha scratches at her elbow nervously and answers, \"<i>I don't know.  I just DO.  I-I'm so powerful - I have to defeat everyone.  It's the only way I can become the strongest.  I can't rely on weaklings or expect mercies like this.  The demons gave me none and I intend to return the favor.  You shouldn't even be talking to me.  You should rape me or kill me, anything to weaken me and cement yourself as the top predator.</i>\"\n\n");
@@ -689,7 +689,7 @@ private function rapeKihaWithWORDS():void {
 		outputText("Kiha recoils at the passion in your voice and shakes her head like a child trying to find the courage not to fear the dark, \"<i>No.  You sound like someone from the before times, from long, long ago, but it can't be that simple.  If it was, the demons would not rule this world.</i>\"  While you chew that over, Kiha suddenly grabs her weapon and springs to her feet.  Her wings unfurl and she flies away.  Even if she denied you, you feel like you might have gotten through to her.");
 	}
 	//Conversation Level 2 (40- Corruption! PUREBABIES ONLY!) (Zed)
-	else if (flags[kFLAGS.KIHA_TALK_STAGE] == 1) {
+	else if (flags[kFLAGS.KIHA_TALK_STAGE] === 1) {
 		outputText("Once again, you crouch down and begin talking with your foe.  Kiha immediately sighs and says, \"<i>This again? I thought I told you - you're wrong.</i>\"\n\n");
 		
 		outputText("You ask her if she really believes that.  After all, you've beaten her twice now.  Kiha shudders and yells, \"<i>I just said so!  Gods, don't be so... so fucking dense!  If you were right, Lethice wouldn't be on her throne and they never would've been able to make monsters like... ahh, n-never mind.  Dumbass!</i>\"\n\n");
@@ -700,7 +700,7 @@ private function rapeKihaWithWORDS():void {
 		if (silly() && flags[kFLAGS.LOTTIE_ENCOUNTER_COUNTER] > 0 && telAdre.lottie.lottieMorale() <= 33) outputText("  Is that what it feels like to be Lottie?");
 	}
 	//Conversation Level 3 (40- Corruption! PUREBABIES ONLY!) (Zed)
-	else if (flags[kFLAGS.KIHA_TALK_STAGE] == 2) {
+	else if (flags[kFLAGS.KIHA_TALK_STAGE] === 2) {
 		outputText("Even though you've taken the dragoness down again, you settle down for another chat instead of anything more carnal.  Kiha smiles at that, relaxing a little as she asks, \"<i>Still sticking to your morals, huh?</i>\"\n\n");
 		
 		outputText("You nod and ask her if perhaps she'd like to tell her story since you shared yours the last time.  The dragoness laughs so hard that tiny spurts of flame flare in the air while small puffs of smoke burst from her nostrils.  She clutches at her stomach and doubles over, gasping for air.  Only after she manages to recover from her mirth does she breathlessly respond, saying, \"<i>You're serious about that?</i>\"\n\n");
@@ -776,7 +776,7 @@ private function analRapuzulaKiha():void {
 	//[if multi-cocks and one is within cock area of 20]
 	if (y >= 0) {
 		outputText("A perverted idea forms in your mind. You reach down, grab");
-		if (player.cockTotal() == 2) outputText(" your other dick");
+		if (player.cockTotal() === 2) outputText(" your other dick");
 		else outputText(" another of your dicks");
 		outputText(", and line it up to the entrance of her now-stretched hole, ramming them both in on your next thrust, expanding her tight passage far beyond its normal limits.  The dragon breaks her silence with a shriek as your two cocks ravage her bunghole, her walls nearly crushing your members as she clenches her muscles in shock.  The extreme tightness and the unbelievable heat enveloping your dicks becomes too much, and you feel the point of no return approaching quickly.\n\n");
 		
@@ -786,7 +786,7 @@ private function analRapuzulaKiha():void {
 
 		outputText("Kiha shudders in her own climax, soaking her thighs as you finally release your seed into her ravaged ass.  Your other " + Appearance.cockNoun(player.cocks[y].cockType) + " follows its brother, painting her leather-colored skin with alabaster cream");
 		if (player.cockTotal() >= 3) {
-			if (player.cockTotal() == 3) outputText("; your remaining cock tarnishes the ground with your cum");
+			if (player.cockTotal() === 3) outputText("; your remaining cock tarnishes the ground with your cum");
 			else outputText("; your remaining cocks tarnish the ground with your cum");
 		}
 		else if (player.hasVagina()) outputText("; your " + player.vaginaDescript() + " pulses with pleasure, soaking your thighs with girl-cum as your cocks unload");

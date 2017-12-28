@@ -51,7 +51,7 @@ package classes.Scenes
 			// Exploration Menu //
 			outputText("You can continue to search for new locations, or explore your previously discovered locations.");
 
-			/*if (flags[kFLAGS.EXPLORATION_PAGE] == 2) {
+			/*if (flags[kFLAGS.EXPLORATION_PAGE] === 2) {
 				explorePageII();
 				return;
 			}*/
@@ -130,7 +130,7 @@ package classes.Scenes
 					return;
 				}
 				else {
-					if (rand(10) == 0) { //Two imps clashing, UTG stuff.
+					if (rand(10) === 0) { //Two imps clashing, UTG stuff.
 						clearOutput();
 						outputText(images.showImage("monster-imp"));
 						outputText("A small imp bursts from behind a rock and buzzes towards you. You prepare for a fight, but it stays high and simply flies above you. Suddenly another imp appears from nowhere and attacks the first. In the tussle one of them drops an item, which you handily catch, as the scrapping demons fight their way out of sight. ");
@@ -230,7 +230,7 @@ package classes.Scenes
 		public function get normalExploreEncounter():Encounter {
 			const game:CoC     = kGAMECLASS;
 			const fn:FnHelpers = Encounters.fn;
-			if (_normalExploreEncounter == null) _normalExploreEncounter =
+			if (_normalExploreEncounter === null) _normalExploreEncounter =
 					Encounters.group("explore", game.commonEncounters.withImpGob, {
 						name  : "grimdark_skip",
 						call  : game.commonEncounters.withImpGob.execEncounter,
@@ -277,7 +277,7 @@ package classes.Scenes
 						name  : "cathedral",
 						call  : gargoyle,
 						when  : function ():Boolean {
-							return flags[kFLAGS.FOUND_CATHEDRAL] == 0;
+							return flags[kFLAGS.FOUND_CATHEDRAL] === 0;
 						},
 						chance: 0.1
 					}, {
@@ -292,7 +292,7 @@ package classes.Scenes
 						name  : "prisonmod",
 						call  : prisonFn,
 						when  : function ():Boolean {
-							return flags[kFLAGS.BAZAAR_ENTERED] == 0;
+							return flags[kFLAGS.BAZAAR_ENTERED] === 0;
 						},
 						chance: 0.01
 					}, {
@@ -309,11 +309,11 @@ package classes.Scenes
 		
 		public function prisonFn():void {
 			outputText(images.showImage("event-wagon"));
-			if (flags[kFLAGS.PRISON_ENABLED] == true) {
+			if (flags[kFLAGS.PRISON_ENABLED] === true) {
 					outputText("Your curiosity draws you towards the smoke of a campfire on the edges of the forest. In the gloom ahead you see what appears to be a cage wagon surrounded by several tents, and hear the sounds of guttural voices engaged in boisterous conversation. Inexplicably you find yourself struck by an unwholesome sense of foreboding. <b>Even from here that cage looks like it is designed to carry people off to somewhere very unpleasant, some place where your life could be turned upside down and the rules you have become accustomed to in this world may no longer apply.</b> You take a long moment to consider turning back. Do you throw caution to the wind and investigate further?");
 					//outputText("\n\n(<b>NOTE:</b> Prisoner mod is currently under development and not all scenes are available.)");
 					doYesNo(kGAMECLASS.prison.goDirectlyToPrisonDoNotPassGoDoNotCollect200Gems, camp.returnToCampUseOneHour);
-			} else if (flags[kFLAGS.PRISON_ENABLED] == false) {
+			} else if (flags[kFLAGS.PRISON_ENABLED] === false) {
 				clearOutput();
 				outputText("Your curiosity draws you towards the smoke of a campfire on the edges of the forest. In the gloom ahead you see what appears to be a cage wagon surrounded by several tents, and hear the sounds of guttural voices engaged in boisterous conversation. Inexplicably you find yourself struck by an unwholesome sense of foreboding. Even from here that cage looks like it is designed to carry people off to somewhere very unpleasant, some place where your life could be turned upside down and the rules you have become accustomed to in this world may no longer apply. You take the wise decision of walking away.");
 				menu();
@@ -322,7 +322,7 @@ package classes.Scenes
 		}
 
 		public function gargoyle():void {
-					if (flags[kFLAGS.GAR_NAME] == 0) kGAMECLASS.gargoyle.gargoylesTheShowNowOnWBNetwork();
+					if (flags[kFLAGS.GAR_NAME] === 0) kGAMECLASS.gargoyle.gargoylesTheShowNowOnWBNetwork();
 					else kGAMECLASS.gargoyle.returnToCathedral();
 		}
 		

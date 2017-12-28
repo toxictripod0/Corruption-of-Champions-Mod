@@ -15,7 +15,7 @@ package classes.Scenes
 		
 		private function addAchievement(title:String, achievement:*, descLocked:String, descUnlocked:String = "", isShadow:Boolean = false):void {
 			//If not specified, default to the locked description.
-			if (descUnlocked == "") descUnlocked = descLocked;
+			if (descUnlocked === "") descUnlocked = descLocked;
 			if (isShadow && achievements[achievement] <= 0) return;
 			//Set text.
 			outputText("<li><b>" + title + ":</b> ");

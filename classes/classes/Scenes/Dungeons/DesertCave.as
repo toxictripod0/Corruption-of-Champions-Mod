@@ -75,7 +75,7 @@ package classes.Scenes.Dungeons
 			clearOutput();
 			outputText(images.showImage("dungeon-entrance-desertcave"));
 			//Touch Sphere to Open: 
-			if (flags[kFLAGS.ENTERED_SANDWITCH_DUNGEON] == 0) {
+			if (flags[kFLAGS.ENTERED_SANDWITCH_DUNGEON] === 0) {
 				outputText("You hesitantly touch the dark sphere, admiring its smooth, glossy finish.  Almost as soon as you come in contact with it, it recedes into the wall.  The doorway rumbles, a giant slab vanishing into the sandy depths, opening a portal to the inside.  Meticulous carvings inlaid with pearl depict large breasted witches in great quantity, and though the specific means of the glyphs are foreign to you, it's clear this place is some kind of sanctuary for sand witches.");
 				flags[kFLAGS.ENTERED_SANDWITCH_DUNGEON] = 1;
 			}
@@ -144,7 +144,7 @@ package classes.Scenes.Dungeons
 			else outputText("Your frustration is too much to bear and you fall over, using your [weapon] to support yourself.  Your vision is blurry and your loins ache to be touched as all of the sand-witches gather around you.  One of them walks up to your panting form and kicks your [weapon] out from under you, making you fall flat on your face, producing a few laughs and giggles out of these girls.  You turn onto your back and look up at the figures looming over you.");
 			
 			outputText("\n\nThey rip off every piece of your [armor] and throw it ");
-			if (flags[kFLAGS.SAND_WITCHES_FRIENDLY] == 0) outputText("into the fire like it was trash");
+			if (flags[kFLAGS.SAND_WITCHES_FRIENDLY] === 0) outputText("into the fire like it was trash");
 			else outputText("off to the side");
 			outputText(", leaving you naked and exposed before these ravishing women.");
 			
@@ -353,7 +353,7 @@ package classes.Scenes.Dungeons
 			outputText("\n\n\"<i>Now now, patience, pet.  We'll have you comfortable soon enough,</i>\" the leader promises with an undercurrent of... is that compassion?   She pets your head as her sisters cluster around you, dozens of breasts pressing in on you from all sides as you're lifted up by a crowd of lustful arms.  More than one hand finds a nipple to tweak, a butt-cheek to squeeze, or orifice to play with, and as you're carried down the tunnels your [armor] vanishes, bit by bit, pulled away by the crowd's kleptomaniacal grip.");
 			
 			outputText("\n\nA hand discovers [oneCock]");
-			if (player.cockTotal() == 2) outputText(" while another grabs your other one");
+			if (player.cockTotal() === 2) outputText(" while another grabs your other one");
 			else if (player.cockTotal() > 2) outputText(" while others latch onto the rest");
 			outputText(", and the stroking starts up again with an immediacy that's too much for your overstimulated body.  [EachCock] belches out a stream of white liquid love, straight into the crowd of giggling women, but they don't seem to mind you stickying their hands, robes, and skin with your spermy deposits.  It's an intriguing new experience for them - it must have been some time since they've had the chance to dominate a penis so completely.  Moaning, you bounce along in an orgasmic haze, spurting the whole way into your new home, not registering your own arrival until the splooge-slicked palms release your " + player.multiCockDescriptLight() + " and leave you to blurt a small rope onto your own belly.");
 			
@@ -377,7 +377,7 @@ package classes.Scenes.Dungeons
 				outputText("  Similarly textured cunnies playfully snake around your other phallus");
 				if (player.cockTotal() > 2) outputText("es");
 				outputText(", gleefully slurping up your twitching hardness inside ");
-				if (player.cockTotal() == 2) outputText("itself");
+				if (player.cockTotal() === 2) outputText("itself");
 				else outputText("themselves");
 				outputText(".");
 			}
@@ -406,7 +406,7 @@ package classes.Scenes.Dungeons
 			clearOutput();
 			outputText("<b><u>One week later...</u></b>\n");
 			outputText("The door cracks open, shedding light on the sordid, coiled scene that you've spend the past few days languishing in.  At some point, you learned that your companion had been named Ophelia by the sisters, and as your cum-spurting, pussy-licking, cock-milking orgy continued, you were drawn closer and closer to her.  Sure, the first night you slept alone (or as alone as you can be with a bundle of tentacles ");
-			if (player.cockTotal() == 1) outputText("fighting over your cock");
+			if (player.cockTotal() === 1) outputText("fighting over your cock");
 			else outputText("milking your cocks");
 			outputText(", forcing you to wet dream after wet dream), but she was always kind to you, even if you didn't get a choice in how often you'd be brought to orgasm.  The second night you slept in her coils.  The third night, you had begun to genuinely like her.  The fourth, she showed you her primary vagina, and you slept beneath her, letting her ride you through the night.");
 			
@@ -599,7 +599,7 @@ package classes.Scenes.Dungeons
 			doYesNo(reallyVolunteer, roomCumWitchOffice);
 		}
 		public function reallyVolunteer():void {
-			if (player.hasCock() && (player.gender == 1 || rand(2) == 0)) cumWitchCumPumpBadEnd(true);
+			if (player.hasCock() && (player.gender === 1 || rand(2) === 0)) cumWitchCumPumpBadEnd(true);
 			else turnIntoASammitch(true);
 		}
 		
@@ -622,7 +622,7 @@ package classes.Scenes.Dungeons
 			else {
 				outputText("The Cum Sorceress smiles and giggles, \"<i>So you want to become a Sand Witch?  Good, we need more.  Now, ");
 			}
-			if (player.pregnancyType == 0) outputText("let's go ahead and get your first daughter inside you, shall we?");
+			if (player.pregnancyType === 0) outputText("let's go ahead and get your first daughter inside you, shall we?");
 			else outputText("let's go ahead and have some fun, shall we?  We'll have to wait until you pop out whatever's in your womb before I give you your first witch child.");
 			outputText("  There will be plenty of time to make you one of us while we're waiting.</i>\"");
 			
@@ -764,7 +764,7 @@ package classes.Scenes.Dungeons
 		public function beACumPumpPartII():void {
 			clearOutput();
 			outputText("<b>*SNAP*</b>  You yawn and begin to blink the sleep from your eyes, shielding your gaze from the room's ambient light with your hand.  Your head is muzzy, like you stayed up too late or overindulged in milk again.  A soft hand is massaging your balls, caressing the orbs with the tenderness of a lover. They feel warm... and full.  ");
-			if (player.balls == 0) outputText("Wait a moment, you don't - didn't - have balls! Turning your accusing stare towards the busty witch, you watch in wonder as the newly grown sack slowly turns taut, stretched by the burgeoning size of your cum-stuffed spunk-factories.  She pats your newly-stuffed nutsack and remarks, \"<i>I had to make sure you were suitably virile...  Besides, I needed to make sure you'd only sire daughters for us.  We don't need that many like you, my loyal " + player.mf("stud","cum donor") + ".</i>\"");
+			if (player.balls === 0) outputText("Wait a moment, you don't - didn't - have balls! Turning your accusing stare towards the busty witch, you watch in wonder as the newly grown sack slowly turns taut, stretched by the burgeoning size of your cum-stuffed spunk-factories.  She pats your newly-stuffed nutsack and remarks, \"<i>I had to make sure you were suitably virile...  Besides, I needed to make sure you'd only sire daughters for us.  We don't need that many like you, my loyal " + player.mf("stud","cum donor") + ".</i>\"");
 			else if (player.cumQ() < 3000) outputText("The cum witch gives them a gentle shake, smiling as they grow and swell, burgeoning with full, ripe seed.  She remarks, \"<i>Nothing like the virility of a bull and enough seed to father an army of females to make a useless intruder a contributing member of society, eh breeder?</i>\"");
 			else outputText("The cum witch gives them a gentle pat and remarks, \"<i>No sense messing with perfection... at least not beyond necessary.  We wouldn't want you fathering any boys, would we?</i>\"");
 			//add balls if necessary
@@ -826,7 +826,7 @@ package classes.Scenes.Dungeons
 		public function cumPumpVolumeThree():void {
 			clearOutput();
 			outputText("With the champion brainwashed into a little more than a loyal cum-pump for the sand witches, they grow in number and strength with alarming speed.  In the space of eight years, the desert is transformed into a verdant forest.  For better or for worse, the witches finally rival the demons in power.  They spread their influence wider, eventually ");
-			if (flags[kFLAGS.FACTORY_SHUTDOWN] == 2) outputText("destroying");
+			if (flags[kFLAGS.FACTORY_SHUTDOWN] === 2) outputText("destroying");
 			else outputText("rescuing");
 			outputText(" Marae.  Their abilities, numbers, and familiarity at dealing with demons lend them great success at battling Lethice's growing hordes, and within the span of another decade, the demons are exterminated.  The witches are hailed as saviors, and young females of all races seek to join them.  You, of course, inseminate all of them.");
 			
@@ -1014,7 +1014,7 @@ package classes.Scenes.Dungeons
 			if (player.cockTotal() > 1) {
 				outputText("\n\nWith your " + player.cockDescript(x) + " well entrenched in her singular vagina, the witch reaches over and pulls several small cloth pouches out of her discarded robes.  She smiles when she notices your confusion, but refrains from giving an explanation before putting a pouch onto ");
 				//if (cocks = 2)
-				if (player.cockTotal() == 2) outputText("your other phallus.");
+				if (player.cockTotal() === 2) outputText("your other phallus.");
 				//[if (cocks > 2)
 				else outputText("the rest of your " + player.multiCockDescriptLight() + ".");
 				outputText("  The futa on top of you continues to smile mysteriously, and spares not another moment of her attention on your genitals.");
@@ -1073,13 +1073,13 @@ package classes.Scenes.Dungeons
 			spriteSelect(SpriteDb.s_cumWitch);
 			if (kGAMECLASS.inDungeon) {
 				//Dudally-diddly.
-				if (player.hasCock() && (player.gender == 1 || rand(2) == 0)) cumWitchCumPumpBadEnd();
+				if (player.hasCock() && (player.gender === 1 || rand(2) === 0)) cumWitchCumPumpBadEnd();
 				//Ladies and Genderless
 				else turnIntoASammitch();
 			}
 			else {
-				if (player.hasCock() && (!player.hasVagina() || rand(2) == 0)) {
-					if (rand(2) == 0) TDMsLoseToCumWitchScene();
+				if (player.hasCock() && (!player.hasVagina() || rand(2) === 0)) {
+					if (rand(2) === 0) TDMsLoseToCumWitchScene();
 					else repeatLoseToCumWitchForDudes();
 				}
 				else if (player.hasVagina()) {
@@ -1146,7 +1146,7 @@ package classes.Scenes.Dungeons
 			outputText(" inside her, sheathed deep in her under-used twat.  Her tight passage fits around your " + player.cockDescript(x) + " like a custom-made glove, a slippery warm embrace that threatens to rob you of your very reason.  The witch begins pumping her ebony cock along with the motions of your hips, throwing her head back in wordless pleasure that only a true hermaphrodite can experience.");
 			if (player.hasVagina()) outputText("  Two can play at that game.");
 			//Herm sexback
-			if (player.gender == 3) {
+			if (player.gender === 3) {
 				outputText("\n\nYou pivot around so your [butt] is facing her and your dick is spearing straight down into her honeyed vise.  It's less pleasurable than your previous position, at least until you yank the dickgirl's cock out of her hands and ram it into your slit, fucking both her virile tool and fertile cunt at the same time.  Your futanari lover finally gives in the pleasures of the act and stops resisting.  She begs, \"<i>Yes, don't stop!  Fucking ride me!  By the mothers, that's good!</i>\" while her hips lift against your, slamming hard into your groin with echoing force.");
 				//cuntchange
 				player.cuntChange(monster.biggestCockArea(), true, true, false);
@@ -1440,15 +1440,15 @@ package classes.Scenes.Dungeons
 			//[skip riddles, just request from menu (requires some event occurrence > 1)]
 			if (skipped) {
 				outputText("\"<i>Really, [name]?</i>\"  Sanura smirks and shakes her head.  \"<i>I probably shouldn't do this sort of thing just because you ask for it, but your fascination with my paws is too cute to ignore.  Go on, then, strip for me and I'll get to it.</i>\"  You oblige, happily tossing aside your armor.  [EachCock], already standing erect with anticipation, bounces freely before you.  The sphinx eyes ");
-				if (player.cockTotal() == 1) outputText("it");
+				if (player.cockTotal() === 1) outputText("it");
 				else outputText("them");
 				outputText(" lustfully, momentarily entranced by the swaying motions of your member");
 				if (player.cockTotal() > 1) outputText("s");
 				outputText(".");
 			}
 			//[player requests big fluffy paws on their dick after solving a riddle]
-			//[if event occurrence == 0]
-			else if (flags[kFLAGS.PAWJOBS] == 0) {
+			//[if event occurrence === 0]
+			else if (flags[kFLAGS.PAWJOBS] === 0) {
 				outputText("Sanura raises her eyebrows at your demand, her expression somewhere between surprise and curiosity.  \"<i>Well, that's something of an odd request, but I suppose I'm obliged if it's your wish.</i>\"  Not bothering to give her a chance to consider your demand any further, you pull off your armor and cast it aside.  \"<i>Can't say I've even been asked for something like this before...  I apologize in advance for my inexperience, [name].</i>\"  The sphinx looks down at her paws, obviously confused as to why you would ask for this in particular.");
 			}
 			//[if event occurrence > 0]
@@ -1460,11 +1460,11 @@ package classes.Scenes.Dungeons
 				
 			outputText("\n\nSanura asks that you kneel, and you eagerly comply.  ");
 			//[if dick isn't already hard and PC knows what's coming]
-			if (player.lust100 < 50 && flags[kFLAGS.PAWJOBS] == 0) {
+			if (player.lust100 < 50 && flags[kFLAGS.PAWJOBS] === 0) {
 				outputText("Even as you drop to your knees before Sanura, your cock");
 				if (player.cockTotal() > 1) outputText("s");
 				outputText(" begin");
-				if (player.cockTotal() == 1) outputText("s");
+				if (player.cockTotal() === 1) outputText("s");
 				outputText(" to harden in anticipation while your mind wonders at just what this will feel like.  ");
 			}
 			outputText("The sphinx bends too, so that her head is level with your crotch.  With a little bounce, she throws her large paws around your hips and roughly pulls you closer.  The guardian wastes no time, licking along the shaft");
@@ -1475,7 +1475,7 @@ package classes.Scenes.Dungeons
 			if (player.cockTotal() > 1) outputText("s");
 			outputText(" with a soft, skilled tongue.");
 			//[if pc was soft before]
-			if (player.lust100 < 50 && flags[kFLAGS.PAWJOBS] == 0) {
+			if (player.lust100 < 50 && flags[kFLAGS.PAWJOBS] === 0) {
 				outputText("  It isn't long before her oral ministrations have your cock");
 				if (player.cockTotal() > 1) outputText("s");
 				outputText(" standing erect, throbbing with hunger for more sensation.  You wonder as to what exactly she has planned, but you think it's shaping up to be something good.");
@@ -1490,7 +1490,7 @@ package classes.Scenes.Dungeons
 			else outputText("it");
 			outputText(" sufficiently lubricated, Sanura lifts a foreleg and carefully guides her paw towards your crotch.");
 			//[if PC doesn't expect it]
-			if (player.lust100 < 50 && flags[kFLAGS.PAWJOBS] == 0) outputText("  You raise your eyebrows in surprise, but you're not in much of a position to do anything about her foot's advance.");
+			if (player.lust100 < 50 && flags[kFLAGS.PAWJOBS] === 0) outputText("  You raise your eyebrows in surprise, but you're not in much of a position to do anything about her foot's advance.");
 			outputText("  She playfully taps at your cock, purring sensually as she sets it bouncing with a light bat.  After watching it for a moment, she hesitantly pushes forward so that her paw gingerly rests against ");
 			if (player.cockTotal() > 1) outputText("one of ");
 			outputText("your shaft");
@@ -1500,8 +1500,8 @@ package classes.Scenes.Dungeons
 			if (player.smallestCockArea() < 100) outputText("  As she pushes onto you just a bit more forcefully, your member slips between two of her digits.  She continues her slow, rhythmic movements with just a bit more grip, and you're made quite thankful that her claws are so retractable as she brushes against your belly.");
 			
 			outputText("\n\nTan, fluffy fur tickles you as Sanura keeps stroking away, motions made perfectly smooth by the thick coat of saliva that still covers your cock.  The wide, cushiony embrace of her paw feels as though it might engulf your cock at any moment, so strongly do you feel the comfortable, pleasurable sensations.  ");
-			//[if PC did not request da paws && event occurrence == 0]
-			if (!skipped && flags[kFLAGS.PAWJOBS] == 0) outputText("It feels wonderful in a peculiar sort of way; though it's certainly not the treatment you expected to receive, you can definitely feel your arousal being pushed along and built up by her foot.  ");
+			//[if PC did not request da paws && event occurrence === 0]
+			if (!skipped && flags[kFLAGS.PAWJOBS] === 0) outputText("It feels wonderful in a peculiar sort of way; though it's certainly not the treatment you expected to receive, you can definitely feel your arousal being pushed along and built up by her foot.  ");
 			//[if PC has 2+ dicks]
 			if (player.cockTotal() > 1) outputText("Not content to leave your other cocks neglected, the sphinx leans in and starts to lick and suckle once again at the pricks not beneath her paw.  You shudder at the feeling of her tongue darting from shaft to shaft and teasing your heads, sharper sensations punctuating her foot's more constant pleasuring.  ");
 			outputText("The fuzzy warmth clouding your mind dazes you, and you sway slightly in place, letting her rock you back and forth with her motions.");
@@ -1555,23 +1555,23 @@ package classes.Scenes.Dungeons
 
 		public function riddlePicker():void {
 			var choices:Array = [];
-			if (flags[kFLAGS.RIDDLE_ONE] != riddleOne && flags[kFLAGS.RIDDLE_TWO] != riddleOne) choices[choices.length] = riddleOne;
-			if (flags[kFLAGS.RIDDLE_ONE] != riddleTwo && flags[kFLAGS.RIDDLE_TWO] != riddleTwo) choices[choices.length] = riddleTwo;
-			if (flags[kFLAGS.RIDDLE_ONE] != riddleThree && flags[kFLAGS.RIDDLE_TWO] != riddleThree) choices[choices.length] = riddleThree;
-			if (flags[kFLAGS.RIDDLE_ONE] != riddleFour && flags[kFLAGS.RIDDLE_TWO] != riddleFour) choices[choices.length] = riddleFour;
-			if (flags[kFLAGS.RIDDLE_ONE] != riddleFive && flags[kFLAGS.RIDDLE_TWO] != riddleFive) choices[choices.length] = riddleFive;
-			if (flags[kFLAGS.RIDDLE_ONE] != riddleSix && flags[kFLAGS.RIDDLE_TWO] != riddleTwo) choices[choices.length] = riddleSix;
-			if (flags[kFLAGS.RIDDLE_ONE] != riddleSeven && flags[kFLAGS.RIDDLE_TWO] != riddleSeven) choices[choices.length] = riddleSeven;
-			if (flags[kFLAGS.RIDDLE_ONE] != riddleEight && flags[kFLAGS.RIDDLE_TWO] != riddleEight) choices[choices.length] = riddleEight;
-			if (flags[kFLAGS.RIDDLE_ONE] != riddleNine && flags[kFLAGS.RIDDLE_TWO] != riddleNine) choices[choices.length] = riddleNine;
-			if (flags[kFLAGS.RIDDLE_ONE] != riddleTen && flags[kFLAGS.RIDDLE_TWO] != riddleTen) choices[choices.length] = riddleTen;
-			if (flags[kFLAGS.RIDDLE_ONE] != riddleEleven && flags[kFLAGS.RIDDLE_TWO] != riddleEleven) choices[choices.length] = riddleEleven;
-			if (flags[kFLAGS.RIDDLE_ONE] != riddleTwelve && flags[kFLAGS.RIDDLE_TWO] != riddleTwelve) choices[choices.length] = riddleTwelve;
-			if (flags[kFLAGS.RIDDLE_ONE] == 0) {
+			if (flags[kFLAGS.RIDDLE_ONE] !== riddleOne && flags[kFLAGS.RIDDLE_TWO] !== riddleOne) choices[choices.length] = riddleOne;
+			if (flags[kFLAGS.RIDDLE_ONE] !== riddleTwo && flags[kFLAGS.RIDDLE_TWO] !== riddleTwo) choices[choices.length] = riddleTwo;
+			if (flags[kFLAGS.RIDDLE_ONE] !== riddleThree && flags[kFLAGS.RIDDLE_TWO] !== riddleThree) choices[choices.length] = riddleThree;
+			if (flags[kFLAGS.RIDDLE_ONE] !== riddleFour && flags[kFLAGS.RIDDLE_TWO] !== riddleFour) choices[choices.length] = riddleFour;
+			if (flags[kFLAGS.RIDDLE_ONE] !== riddleFive && flags[kFLAGS.RIDDLE_TWO] !== riddleFive) choices[choices.length] = riddleFive;
+			if (flags[kFLAGS.RIDDLE_ONE] !== riddleSix && flags[kFLAGS.RIDDLE_TWO] !== riddleTwo) choices[choices.length] = riddleSix;
+			if (flags[kFLAGS.RIDDLE_ONE] !== riddleSeven && flags[kFLAGS.RIDDLE_TWO] !== riddleSeven) choices[choices.length] = riddleSeven;
+			if (flags[kFLAGS.RIDDLE_ONE] !== riddleEight && flags[kFLAGS.RIDDLE_TWO] !== riddleEight) choices[choices.length] = riddleEight;
+			if (flags[kFLAGS.RIDDLE_ONE] !== riddleNine && flags[kFLAGS.RIDDLE_TWO] !== riddleNine) choices[choices.length] = riddleNine;
+			if (flags[kFLAGS.RIDDLE_ONE] !== riddleTen && flags[kFLAGS.RIDDLE_TWO] !== riddleTen) choices[choices.length] = riddleTen;
+			if (flags[kFLAGS.RIDDLE_ONE] !== riddleEleven && flags[kFLAGS.RIDDLE_TWO] !== riddleEleven) choices[choices.length] = riddleEleven;
+			if (flags[kFLAGS.RIDDLE_ONE] !== riddleTwelve && flags[kFLAGS.RIDDLE_TWO] !== riddleTwelve) choices[choices.length] = riddleTwelve;
+			if (flags[kFLAGS.RIDDLE_ONE] === 0) {
 				flags[kFLAGS.RIDDLE_ONE] = choices[rand(choices.length)];
 				flags[kFLAGS.RIDDLE_ONE]();
 			}
-			else if (flags[kFLAGS.RIDDLE_TWO] == 0) {
+			else if (flags[kFLAGS.RIDDLE_TWO] === 0) {
 				flags[kFLAGS.RIDDLE_TWO] = choices[rand(choices.length)];
 				flags[kFLAGS.RIDDLE_TWO]();
 			}
@@ -1600,9 +1600,9 @@ package classes.Scenes.Dungeons
 			clearOutput();
 			outputText("The sphinx narrows her eyes at you, crossing her arms over her chest.  \"<i>You don't say?  Come on, step it up, [name].  Sorry, but that's wrong.  Let's try again.</i>\"");
 			menu();
-			if (flags[kFLAGS.RIDDLE_ONE] == riddleOne) flags[kFLAGS.RIDDLE_ONE] = 0;
-			else if (flags[kFLAGS.RIDDLE_TWO] == riddleOne) flags[kFLAGS.RIDDLE_TWO] = 0;
-			else if (flags[kFLAGS.RIDDLE_THREE] == riddleOne) flags[kFLAGS.RIDDLE_THREE] = 0;
+			if (flags[kFLAGS.RIDDLE_ONE] === riddleOne) flags[kFLAGS.RIDDLE_ONE] = 0;
+			else if (flags[kFLAGS.RIDDLE_TWO] === riddleOne) flags[kFLAGS.RIDDLE_TWO] = 0;
+			else if (flags[kFLAGS.RIDDLE_THREE] === riddleOne) flags[kFLAGS.RIDDLE_THREE] = 0;
 			addButton(0,"Next",riddlePicker);
 		}
 
@@ -1758,7 +1758,7 @@ package classes.Scenes.Dungeons
 		//ANSWER A RIDDLE RIGHT (Like a Boss)
 		public function answerCorrect():void {
 			clearOutput();
-			if (flags[kFLAGS.RIDDLE_THREE] == 0) {
+			if (flags[kFLAGS.RIDDLE_THREE] === 0) {
 				outputText("The sphinx-girl sighs, \"<i>That's... correct.  Not bad, I suppose.  Well, we're not done yet... I've still got some tricks up my sleeves.  Er, so to speak.</i>\"");
 				menu();
 				addButton(0,"Next",riddlePicker);
@@ -1766,7 +1766,7 @@ package classes.Scenes.Dungeons
 			else {
 				
 				//BEAT THE SPHINX AT HER OWN GAME (First Time)
-				if (flags[kFLAGS.BEATEN_SANURA_COUNT] == 0) {
+				if (flags[kFLAGS.BEATEN_SANURA_COUNT] === 0) {
 					outputText("\"<i>W-what!?</i>\"  the sphinx gasps as you correctly answer the last of her riddles.   \"<i>I-I don't... but how?  No one's ever had the wits to answer all three riddles!</i>\"");
 					outputText("\n\nShe takes a moment to collect herself, then shrugs her shoulders lightly, \"<i>Well, that <i>was</i> unexpected.  My apologies, but I never actually expected you to win... still, I did offer you recompense for your efforts.  I am Sanura,</i>\" she bows, and over her shoulder you suddenly see a small door in the face of a dune emerge.  \"<i>You may enter the lair of the Sand Witches at your leisure.  Or... if you so desire... my body is yours to do with as you will,</i>\" she adds playfully.");
 				}
@@ -1865,7 +1865,7 @@ package classes.Scenes.Dungeons
 			//If Multi-cock = 3
 			if (player.cockTotal() >= 3) {
 				outputText("\n\nAs Sanura slurps up the tip of your [cock], her ethereal hands grasp ");
-				if (player.cockTotal() == 2) outputText("your ");
+				if (player.cockTotal() === 2) outputText("your ");
 				else outputText("two of your ");
 				outputText("other " + num2Text(player.cockTotal()-1) + " members, wrapping tightly around their meaty lengths.  You groan throatily as tingling digits slowly work their way up your shafts, making your heart flutter wildly with the alien sensation.");
 				//AND If Multicock = 5
@@ -1955,7 +1955,7 @@ package classes.Scenes.Dungeons
 			else outputText("\n\nSanura's eyes go wide upon seeing your monstrous cock.  She opens her mouth, attempting to speak, but no words come out.  Her tail reaches out, coiling around your dick in futility.  \"<i>By Marae's pillowy tits that thing is huge,</i>\" she says finally, regaining her voice.  \"<i>I don't know if I can take something that big... but goddamnit, I'm going to try.</i>\"");
 			
 			outputText("\n\nYour manhood spikes upwards at the attention, becoming painfully hard as the sphinx continues to survey your body.  Her tail flicks over your " + player.skinFurScales() + " gently, stopping briefly to tantalize ");
-			if (player.totalNipples() == 2) outputText("both");
+			if (player.totalNipples() === 2) outputText("both");
 			else outputText("each");
 			outputText(" of your nipples, which stiffen in response, just like your cock.  You can't help but think there's some sort of magic at work here.  Her tail passes between your thighs, gracefully tickling your ");
 			if (player.hasVagina()) outputText("damp cunt, which suddenly tightens up and practically gushes with slick juices.");
@@ -2026,7 +2026,7 @@ package classes.Scenes.Dungeons
 			outputText("Starting to disrobe, ");
 			if (player.hasCock()) {
 				outputText("you flop your " + player.multiCockDescriptLight() + " free in the dry desert heat, allowing ");
-				if (player.cockTotal() == 1) outputText("it");
+				if (player.cockTotal() === 1) outputText("it");
 				else outputText("them");
 				outputText(" to sway back and forth");
 			}
@@ -2066,7 +2066,7 @@ package classes.Scenes.Dungeons
 			else {
 				outputText("\n\nYou will yourself to relax, but you just aren't big enough back there to make much of a difference.  Just having such an immense dong pressing at your backdoor is enough to push you to your limits, but your sphincter hasn't even dilated enough to take a fraction of her girth.  Sanura growls in frustration and begins to hump at it, smacking the blunted tip into it again and again. The shocking sensation makes your anal muscles twitch, spasm, and relax as she works to plow her way through your more than token resistance.");
 				//VIRGIN ALT: 
-				if (player.ass.analLooseness == 0) {
+				if (player.ass.analLooseness === 0) {
 					outputText("\n\nShe grunts, \"<i>Don't tell me you're a virgin?</i>\"  You nod and bite your lip as you try to endure.  Sanura stops immediately at that news, mulling it over with a detached expression, a smile slowly spreading across her features.  \"<i>Really?</i>\" she asks as her hips begin to slowly work at your ass once more, slowly picking back up to their old tempo.  \"<i>Then it's a good thing you're getting to ride my magic cock and not some brute's.  It might hurt a little, but I promise this will be buttsex worth remembering....</i>\"");
 				}
 				//Non-virgin
@@ -2116,7 +2116,7 @@ package classes.Scenes.Dungeons
 
 		public function sandWitchMotherFriendlyMenu():void {
 			menu();
-			if (flags[kFLAGS.SAND_WITCH_LEAVE_ME_ALONE] == 0) addButton(0,"StopAttacking",leaveAloneSendLackeysToggle).hint("You've had enough with the Sand Witches. They should leave you alone.", "Talk: Stop Attacking");
+			if (flags[kFLAGS.SAND_WITCH_LEAVE_ME_ALONE] === 0) addButton(0,"StopAttacking",leaveAloneSendLackeysToggle).hint("You've had enough with the Sand Witches. They should leave you alone.", "Talk: Stop Attacking");
 			else addButton(0,"StartAttacking",leaveAloneSendLackeysToggle).hint("Tell the Sand Mother that you want to encounter the Sand Witches again.", "Talk: Start Attacking");
 			addButton(1,"SandMothers",askHowSandMothersAreChosen).hint("Ask the Sand Mother about how she's chosen.", "Talk: Sand Mothers");
 			addButton(2,"Cum Witches",discussCumWitches).hint("Ask the Sand Mother about the Cum Witches.", "Talk: Cum Witches");
@@ -2124,7 +2124,7 @@ package classes.Scenes.Dungeons
 			addButton(4,"History",sandWitchHistory).hint("Ask the Sand Mother about the history of the Sand Witches.", "Talk: History");
 			addButton(5,"Buy LaBova",buyPotion, consumables.LABOVA_, 25, null, consumables.LABOVA_.description);
 			addButton(6,"Buy Lactaid",buyPotion, consumables.LACTAID, 50, null, consumables.LACTAID.description);
-			if ((flags[kFLAGS.ESSY_MET_IN_DUNGEON] > 0 && flags[kFLAGS.TOLD_MOTHER_TO_RELEASE_ESSY] == 0) || (flags[kFLAGS.MET_MILK_SLAVE] > 0 && flags[kFLAGS.MILK_NAME] is Number))
+			if ((flags[kFLAGS.ESSY_MET_IN_DUNGEON] > 0 && flags[kFLAGS.TOLD_MOTHER_TO_RELEASE_ESSY] === 0) || (flags[kFLAGS.MET_MILK_SLAVE] > 0 && flags[kFLAGS.MILK_NAME] is Number))
 				addButton(7,"Free Slaves",slavesDiscussion).hint("Request the Sand Mother to release a slave.");
 			if (player.lust >= 33) addButton(8, "Sex", sexWithFriendlySandMother).hint("Have some sexy time with the Sand Mother.");
 			else addDisabledButton(8, "Sex", "You are not aroused enough.");
@@ -2136,7 +2136,7 @@ package classes.Scenes.Dungeons
 			clearOutput();
 			outputText("You ask if you can get a dose of " + iType.shortName + " from her coven.");
 			
-			if (iType == consumables.LACTAID) {
+			if (iType === consumables.LACTAID) {
 				outputText("You ");
 				if (player.cor < 33) outputText("politely request");
 				else if (player.cor < 66) outputText("request");
@@ -2176,7 +2176,7 @@ package classes.Scenes.Dungeons
 
 		public function slavesDiscussion():void {
 			menu();
-			if (flags[kFLAGS.ESSY_MET_IN_DUNGEON] > 0 && flags[kFLAGS.TOLD_MOTHER_TO_RELEASE_ESSY] == 0) addButton(0,"Essrayle",kGAMECLASS.forest.essrayle.askMotherToReleaseEssy).hint("Request the Sand Mother to release Essrayle.");
+			if (flags[kFLAGS.ESSY_MET_IN_DUNGEON] > 0 && flags[kFLAGS.TOLD_MOTHER_TO_RELEASE_ESSY] === 0) addButton(0,"Essrayle",kGAMECLASS.forest.essrayle.askMotherToReleaseEssy).hint("Request the Sand Mother to release Essrayle.");
 			if (flags[kFLAGS.MET_MILK_SLAVE] > 0 && flags[kFLAGS.MILK_NAME] is Number) addButton(1,"Milk-Slave",freeSlaves).hint("Request the Sand Mother to release the milk slave you've found in the bathroom.");
 		}
 		//Getting a Milk Slut, Purity Style
@@ -2280,7 +2280,7 @@ package classes.Scenes.Dungeons
 		}
 
 		public function sexWithFriendlySandMother():void {
-			if (monster == null || monster.short != "Sand Mother") {
+			if (monster === null || monster.short !== "Sand Mother") {
 				monster = new SandMother();
 				monster.HP = 0;
 			}
@@ -2296,13 +2296,13 @@ package classes.Scenes.Dungeons
 
 
 		public function sandMotherPOMenu():void {
-			if (monster == null || monster.short != "Sand Mother") {
+			if (monster === null || monster.short !== "Sand Mother") {
 				monster = new SandMother();
 				monster.HP = 0;
 			}
 			menu();
 			//toggle withc attacking
-			if (flags[kFLAGS.SAND_WITCH_LEAVE_ME_ALONE] == 0) addButton(0,"StopAttacking",unfriendlyWitchToggle).hint("You've had enough with the Sand Witches. They should leave you alone.", "Talk: Stop Attacking");
+			if (flags[kFLAGS.SAND_WITCH_LEAVE_ME_ALONE] === 0) addButton(0,"StopAttacking",unfriendlyWitchToggle).hint("You've had enough with the Sand Witches. They should leave you alone.", "Talk: Stop Attacking");
 			else addButton(0, "StartAttacking", unfriendlyWitchToggle).hint("Tell the Sand Mother that you want to encounter the Sand Witches again.", "Talk: Start Attacking");
 			
 			addDisabledButton(1, "Scissor", "This scene requires you to have vagina and sufficient arousal.");
@@ -2317,7 +2317,7 @@ package classes.Scenes.Dungeons
 				addButton(5,"Get LaBova",takeLaBovaOrLactaid, false, null, null, consumables.LABOVA_.description);
 				addButton(6,"Get Lactaid",takeLaBovaOrLactaid, true, null, null, consumables.LACTAID.description);
 			}
-			if (flags[kFLAGS.ESSY_MET_IN_DUNGEON] > 0 && flags[kFLAGS.TOLD_MOTHER_TO_RELEASE_ESSY] == 0) addButton(7,"Essrayle",kGAMECLASS.forest.essrayle.askMotherToReleaseEssy).hint("Request the Sand Mother to release Essrayle.");
+			if (flags[kFLAGS.ESSY_MET_IN_DUNGEON] > 0 && flags[kFLAGS.TOLD_MOTHER_TO_RELEASE_ESSY] === 0) addButton(7,"Essrayle",kGAMECLASS.forest.essrayle.askMotherToReleaseEssy).hint("Request the Sand Mother to release Essrayle.");
 			addButton(14,"Leave",playerMenu);
 		}
 
@@ -2460,11 +2460,11 @@ package classes.Scenes.Dungeons
 			clearOutput();
 			//>Requires 5+ tentacles.  Every hole is plowed.
 			outputText("Grinning, you discard your [armor] with glee, releasing your wriggling bunch of genital appendages to wave in the air, slithering over each other's spongy, sweat and pre slicked skin.  They wave in the air menacingly, an orgy of glistening green cocks just waiting to be let loose upon the formidable female flesh before you.  Fearfully, the Sand Mother pushes herself against the wall, stammering, \"<i>No... ");
-			if (flags[kFLAGS.TIMES_TENTACLED_SAND_MOTHER] == 0) outputText("it can't be like this!  W-we were going to free Mareth!");
+			if (flags[kFLAGS.TIMES_TENTACLED_SAND_MOTHER] === 0) outputText("it can't be like this!  W-we were going to free Mareth!");
 			else outputText("not again!");
 			outputText("</i>\"");
 			
-			if (flags[kFLAGS.TIMES_TENTACLED_SAND_MOTHER] == 0) outputText("\n\nThe dumb cunt still thinks you're working with the demons!");
+			if (flags[kFLAGS.TIMES_TENTACLED_SAND_MOTHER] === 0) outputText("\n\nThe dumb cunt still thinks you're working with the demons!");
 			else outputText("\n\nThe dumb cunt still thinks she has a say in this!");
 			outputText("  Well, no sense in disabusing her of that mistaken notion.  You unleash your array of hungry tentacles, allowing them to stretch out, lengthening beyond their normal, meager sizes to slide under the witch's hem.  The silken fabric tickles your fleshy shafts delightfully as they slide up into it, gliding between it and the trembling slut's flawless skin.  She tries to shake your questing members, but you twine them around her legs, methodically wiggling them higher.");
 			
@@ -2485,10 +2485,10 @@ package classes.Scenes.Dungeons
 				if (player.countCocksOfType(CockTypesEnum.TENTACLE) >= 7) outputText("untended serpentine shafts to please");
 				else outputText("an untended serpentine shaft to please");
 				outputText(", but all the holes are full!  You take the ");
-				if (player.countCocksOfType(CockTypesEnum.TENTACLE) == 6) outputText("leftover one and thread it");
+				if (player.countCocksOfType(CockTypesEnum.TENTACLE) === 6) outputText("leftover one and thread it");
 				else outputText("leftover ones and thread them");
 				outputText(" through the dick-dominated enchantrix's fingers.  By now, her body has completely and utterly betrayed her, and she grabs hold like a cock-hungry slut, immediately stroking up and down, jacking it like a pro.  A muffled sigh of contentment shivers up your throat-fucking cock, alerting you to your depraved foe's prick-addled state.  You begin to pump your quartette of buried cocks into their respective holes with renewed vigor.  The titty-fucking vine pistons through its curvy path along with them, sending the witch's tits jiggling and squirting wildly.  The only thing");
-				if (player.countCocksOfType(CockTypesEnum.TENTACLE) == 6) outputText(" held still is the one getting a hand job, and you only hold it still");
+				if (player.countCocksOfType(CockTypesEnum.TENTACLE) === 6) outputText(" held still is the one getting a hand job, and you only hold it still");
 				else outputText("s held still are the two getting hand jobs, and you only hold them still");
 				outputText(" so that part of you can relax and enjoy your captive Queen's enthusiastic wanking.");
 			}
@@ -2503,7 +2503,7 @@ package classes.Scenes.Dungeons
 			outputText("  That was just the first explosions of relief.  You orgasm drags on as you squirt like a firehose, drenching the poor witch with white from head to toe.  Her belly rounds obscenely, stuffed from her throat, ass, and wombs, filled to absolute capacity until all four of the aforementioned holes are squirting torrents of sticky white man-milk into thick puddles.");
 				
 			outputText("\n\nYou pull out as your pleasure dies down, aiming all " + num2Text(player.countCocksOfType(CockTypesEnum.TENTACLE)) + " of your cum-nozzles above her like an obscene shower, and drench her from head to toe again, a salty white wreck of a cumslut.  With her throat free for the first time in a long time, she swallows and whimpers, \"<i>Oooooh... gods.</i>\"  The cum-drunk fuck-slut begins to clean herself the only way she can right now - with her mouth.  She's so fucked out that she couldn't channel her magic if she tried.  You get dressed with a satisfied swagger.");
-			if (flags[kFLAGS.SAND_WITCHES_COWED] == 0) {
+			if (flags[kFLAGS.SAND_WITCHES_COWED] === 0) {
 				outputText("\n\nThe witches are suitably cowed, but you've ruined any chance at a friendly peace with them.");
 				flags[kFLAGS.SAND_WITCHES_COWED] = 1;
 			}
@@ -2517,7 +2517,7 @@ package classes.Scenes.Dungeons
 		//*Fuck Her Cunt
 		//>Sets to resisting with options for repeat rapes.
 		public function fuckTheSandMothersCunt():void {
-			if (monster == null || monster.short != "Sand Mother") {
+			if (monster === null || monster.short !== "Sand Mother") {
 				monster = new SandMother();
 				monster.HP = 0;
 			}
@@ -2581,7 +2581,7 @@ package classes.Scenes.Dungeons
 			
 			outputText("\n\n\"<i>Ahhhh,</i>\" she sighs, slumping down into the puddles of sex, \"<i>Told... told you... you couldn't - mmmm... break me...</i>\"");
 			
-			if (flags[kFLAGS.SAND_WITCHES_COWED] == 0) {
+			if (flags[kFLAGS.SAND_WITCHES_COWED] === 0) {
 				outputText("\n\nThe witches are suitably cowed, but you've ruined any chance at a friendly peace with them.");
 				flags[kFLAGS.SAND_WITCHES_COWED] = 1;
 			}
@@ -2631,7 +2631,7 @@ package classes.Scenes.Dungeons
 			
 			outputText("\n\n\"<i>Ahhhh,</i>\" the Sand Mother sighs, slumping down into the puddles of sex, \"<i>Told... told you... you couldn't - mmmm... break me...</i>\"");
 			
-			if (flags[kFLAGS.SAND_WITCHES_COWED] == 0) {
+			if (flags[kFLAGS.SAND_WITCHES_COWED] === 0) {
 				outputText("\n\nThe witches are suitably cowed, but you've ruined any chance at a friendly peace with them.");
 				flags[kFLAGS.SAND_WITCHES_COWED] = 1;
 			}
@@ -2665,7 +2665,7 @@ package classes.Scenes.Dungeons
 			if (player.cor < 66) outputText("aren't corrupt");
 			else outputText("don't serve the demons");
 			outputText(", looking up at her pleadingly ");
-			if (player.cockTotal() == 1) outputText("while she gleefully pumps you, smearing your leaky juices all over your shaft.");
+			if (player.cockTotal() === 1) outputText("while she gleefully pumps you, smearing your leaky juices all over your shaft.");
 			else outputText("while she gleefully moves to your second cock, smearing it with your first dick's pre-cum, messing your " + player.multiCockDescriptLight() + " with each penis's leaky drippings.");
 			
 			outputText("\n\nThose torturous strokes slow, eventually stopping entirely, leaving you achingly hard, tremblingly tumescent and ready to pop, but unable without any stimulation.  The imposing sand witch considers you, adjusting a free-flowing lock of her bleached crown behind her shoulder as she thinks.  At last, she murmurs, \"<i>...the ring of truth.</i>\"  Hope surges through you, warring with disappointment at the sudden halt of your carnal pleasure.  The Sand Mother lazily slides her big toe across the pre-glazed length of your cock as she proclaims, \"<i>It doesn't matter.  I cannot let you go with your knowledge and weakness, or you'll give us up to the demons.</i>\"  Your dream of freedom shatters, while a dark, feral part of you rejoices at the return of the teasing touches.");
@@ -2731,7 +2731,7 @@ package classes.Scenes.Dungeons
 			outputText("The champion woke to a body changed.  " + player.mf("He","She") + " now looked every bit the mirror image of the Cum Witch - a thick, girthy cock, two swollen balls, a pair of pendulous breasts, and skin as dark as the blackest night.  She had become one of them, a futanari witch with an insatiable libido.  As best as she could remember, she had been born a scant ten years earlier, and aged to maturity in five.  She volunteered to be a cum witch when the call went out and beat out over two dozen of her lusty sisters for the vaunted position.  Now, the elder Cum Witch was her best friend, and the two gleefully spent their days dick-deep in double-cunts, knocking up their sisters with reckless abandon.  In their free time, they studied spells and practiced stuffing each other with increasingly large seminal deposits.");
 			
 			outputText("\n\nTwo years later, at the call of the Great Mother, the sand witches went to war.  ");
-			if (flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED] == 0) outputText("Their harpy and phoenix allies allowed them to approach Lethice's fortress unhindered, and i");
+			if (flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED] === 0) outputText("Their harpy and phoenix allies allowed them to approach Lethice's fortress unhindered, and i");
 			else outputText("I");
 			outputText("n the bloodiest battle ever to take place on Mareth, the demons were defeated, wiped from the world in a blaze of white fire.  In the years that followed, the covens worked to undo all that had been wronged in the world.  Many demons remained, but their influence was on the wane.  The world moved on, and those that remained wisely hid.");
 			
@@ -2771,12 +2771,12 @@ package classes.Scenes.Dungeons
 			outputText(" hinders all of your attempts to fight back.  You try to argue that you aren't a servant of the demons, that you were fighting against them for your own people just as she is, but every time you open your mouth she forces it closed again with her magic.  \"<i>I am not interested in the lies of a demonic servant.  It is time we dealt with you once and for all.</i>\"");
 			
 			outputText("\n\nShe kneels and prods your slick pussy with her fingers, forcing sensations that rise up through your body and exit your lips as moans.  \"<i>You'll need an extra one of these of course.</i>\"  The Sand Mother reaches forwards with her free hand to grope your tits.");
-			if (player.bRows() == 1) {
+			if (player.bRows() === 1) {
 				outputText("  Plus an extra set of these to ensure you produce as much milk as the rest of your soon-to-be sisters.");
 				player.createBreastRow();
 			}
 			//if player has four breasts
-			else if (player.bRows() == 2) outputText("  Thankfully you're already endowed with enough breasts to begin immediate production of milk.");
+			else if (player.bRows() === 2) outputText("  Thankfully you're already endowed with enough breasts to begin immediate production of milk.");
 			//if player has six breasts
 			else outputText("  Hmmm. We've never had a sister blessed with more than four breasts. I wonder if perhaps we can use your unusual anatomy to our advantage.");
 			outputText("  She squeezes a [nipple] and a yelp of pleasure escapes you.  \"<i>I see you like that idea. Excellent.</i>\"");
@@ -2796,7 +2796,7 @@ package classes.Scenes.Dungeons
 			outputText("  Her fingers start pressing deeper, playing upon your erogenous zones like an instrument, strumming your body's sense of pleasure to new heights.  She plays your cunt until you cum again and again around palm and gush your juice down her arm.  Everything below your waist abandons your control and submits itself to her administrations.  You cum and all you can do is grope your own tits as you ride the waves of pleasure that saturate your flesh.");
 			
 			outputText("\n\nBy the time the Sand Mother has finished reducing the pleasure centers of your brain to mush, a robed figure has entered the room.  Through an erotic haze, you squint and make out the features of an ebony-skinned woman clad in a robe covered in fresh white stains. It fails to hide the sizable erection that she bears; one large enough to shame most normal men.");
-			if (flags[kFLAGS.CUM_WITCH_DEFEATED] == 1) outputText("  It is obviously the Cum Witch you encountered, and she has clearly regained her strength!");
+			if (flags[kFLAGS.CUM_WITCH_DEFEATED] === 1) outputText("  It is obviously the Cum Witch you encountered, and she has clearly regained her strength!");
 			else outputText("This must be the Cum Witch the Sand Mother sent for!");
 			
 			outputText("\n\nShe and the Sand Mother whisper back and forth, and they seem to disagree about something.  From the stares the Cum Witch gives you, you infer that their discussion concerns you.  Finally, the Cum Witch frowns and speaks loud enough to be heard, \"<i>I don't think we need it, but you're right.  It would be a waste.</i>\"  She bows to the Sand Mother and then approaches you");
@@ -2842,7 +2842,7 @@ package classes.Scenes.Dungeons
 			if (player.findPerk(PerkLib.BroodMother) >= 0 && player.biggestTitSize() >= 22) outputText("  As a result, the champion who could no longer remember her true past became little more than a giant pregnant belly surrounded by " + num2Text(player.bRows()) + " breasts so massive that the other sand witches often used her tits as comfortable cushions to sit upon, their thighs tightly gripping each giant nipple against their aching cunts for pleasure.");
 			
 			outputText("\n\nTwo years later, at the call of the Great Mother, the sand witches went to war.  ");
-			if (flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED] == 0) outputText("Their harpy and phoenix allies allowed them to approach Lethice's fortress unhindered, and i");
+			if (flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED] === 0) outputText("Their harpy and phoenix allies allowed them to approach Lethice's fortress unhindered, and i");
 			else outputText("I");
 			outputText("n the bloodiest battle ever to take place on Mareth, the demons were defeated, wiped from the world in a blaze of white fire.  In the years that followed, the covens worked to undo all that had been wronged in the world. Many demons remained, but their influence was on the wane.  The world moved on, and those that remained wisely hid.");
 			
@@ -2857,7 +2857,7 @@ package classes.Scenes.Dungeons
 		//*Friendly Fuck (Optional?)
 		//>Fuck her friendly style.
 		public function friendlySandMotherFuck():void {
-			if (monster == null || monster.short != "Sand Mother") {
+			if (monster === null || monster.short !== "Sand Mother") {
 				monster = new SandMother();
 				monster.HP = 0;
 			}
@@ -2865,7 +2865,7 @@ package classes.Scenes.Dungeons
 			var x:int = player.cockThatFits(monster.vaginalCapacity());
 			var y:int = player.cockThatFits2(monster.vaginalCapacity());
 			//First Time:
-			if (flags[kFLAGS.TIMES_FRIENDLY_FUCKED_SAND_MOTHER] == 0) {
+			if (flags[kFLAGS.TIMES_FRIENDLY_FUCKED_SAND_MOTHER] === 0) {
 				outputText("Casting your gaze around to ensure privacy, you lower your brows conspiringly and inquire into the Sand Mother's love life.");
 				
 				outputText("\n\nThe Sand Mother blushes slightly, her hand idly fanning at her reddened cheek before pushing a strand of white-blonde hair out of her face.  She bites her lower lip nervously before admitting, \"<i>Not that it is any business of yours, Champion, but no, my duties are quite demanding.  I am much too busy to saddle myself with offspring, and the milkers provide all the... stimulation that I require.</i>\"  Her large nipples are slowly stiffening, lifting her silken robes away from her breasts as they erect needily.  You swear you can hear the liquid bounty sloshing around inside her immense orbs as she shifts position, crossing her legs, and then you smell the unmistakable aroma of an aroused woman.");
@@ -2966,9 +2966,9 @@ package classes.Scenes.Dungeons
 			//Newline
 			outputText("\n\n");
 			//More than 2 dongs or one doesn't fit
-			if (player.cockTotal() > 2 || (player.cockTotal() == 2 && y < 0)) {
+			if (player.cockTotal() > 2 || (player.cockTotal() === 2 && y < 0)) {
 				outputText("White love-batter fires in thick ropes onto her robes from your unbound penis");
-				if (player.cockTotal() > 3 || (player.cockTotal() == 3 && y < 0)) outputText("es");
+				if (player.cockTotal() > 3 || (player.cockTotal() === 3 && y < 0)) outputText("es");
 				outputText(".  One after another, the syrupy strands mix in with the dripping milk to make an alabaster drapery of sex-juice.  ");
 			}
 			//light ejaculate
@@ -3012,7 +3012,7 @@ package classes.Scenes.Dungeons
 			
 			flags[kFLAGS.TIMES_FRIENDLY_FUCKED_SAND_MOTHER]++;
 			//First Time:
-			if (flags[kFLAGS.TIMES_FRIENDLY_FUCKED_SAND_MOTHER] == 1) {
+			if (flags[kFLAGS.TIMES_FRIENDLY_FUCKED_SAND_MOTHER] === 1) {
 				outputText("Casting your gaze around to ensure privacy, you lower your brows conspiringly and inquire into the Sand Mother's love life.");
 				outputText("\n\nThe Sand Mother blushes slightly, her hand idly fanning at her reddened cheek before pushing a strand of white-blonde hair out of her face.  She bites her lower lip nervously before admitting, \"<i>Not that it is any business of yours, Champion, but no, my duties are quite demanding.  I am much too busy to saddle myself with offspring, and the milkers provide all the... stimulation that I require.</i>\"  Her large nipples are slowly stiffening, lifting her silken robes away from her breasts as they erect needily.  You swear you can hear the liquid bounty sloshing around inside her immense orbs as she shifts position, crossing her legs, and then you smell the unmistakable aroma of an aroused woman.");
 				outputText("\n\nLooking at her stiff, moist teats, you comment that she seems to have been left wanting in more ways than one.  She squirms visibly when she traces your gaze down to her breasts and she gasps, \"<i>Why... I... I don't...</i>\"  Her glowing eyes flick towards your [chest], eying your supple form as you approach her throne.  She licks her lips without meaning to and disentangles an idle finger that had been twirling her shimmering hair.");
@@ -3054,7 +3054,7 @@ package classes.Scenes.Dungeons
 			if (!player.isTaur()) outputText("  Somehow, she's able to pull her hand away from your hip while still holding you aloft.  A glowing, arm-shaped silhouette remains, even as she diverts her attention elsewhere.");
 			outputText("  'Schluck-schluck-schluck.'  You can hear her pushing her fingers deep into her neglected womanhoods, and judging by the doubled, wet sounds of penetration, she must be jamming two fingers in her doubled cunts.");
 			outputText("\n\n\"<i>Ooohh yes, Champion, this IS what I needed,</i>\" she purrs, accompanied by the lewd sounds of her own self-pleasure.  A second, three-inch, mock-phallus starts to prod at your milky slit along with its brother, and with a pleasured moan, you feel it slide inside, stretching you twice as wide and wet.  Alternating back and forth, hot jets of alabaster cream lance deep inside you, one after another.  You can see the witch using her free hand to compress her breasts in turn, milking her gushing, over-productive breasts again and again.  ");
-			if (player.pregnancyIncubation == 0) outputText("Your poor womb is flooding with the stuff.  It's getting so full that you're starting to feel like you should be labelled 'cream-filled', and a tiny bump has begun to swell on your midsection in response.");
+			if (player.pregnancyIncubation === 0) outputText("Your poor womb is flooding with the stuff.  It's getting so full that you're starting to feel like you should be labelled 'cream-filled', and a tiny bump has begun to swell on your midsection in response.");
 			else outputText("Your poor pregnant womb is battered with the stuff, but since you're already full, jets of hot cream are spraying out from your [vagina] around nipple-shaped milk-injectors.");
 			//CuntChange 6
 			player.cuntChange(6,true,true,false);
@@ -3066,7 +3066,7 @@ package classes.Scenes.Dungeons
 			player.cuntChange(9,true,true,false);
 			outputText("\n\nThe Sand Mother gasps, \"<i>So good.  How's the milk, Champion?  Is it good?  Your pussy is slurping it down so well!</i>\"");
 			outputText("\n\nIt IS good.  You nod to her, noting the way her tongue is lolling out and the rapidly increasing pace of her masturbatory noises.  She's going to cum soon and probably fountain from her nipples just as hard as she will from her two twats.  Your thoughts are interrupted by a sudden intrusion in your packed delta - is that... is that a FOURTH nipple inside you?  The answering injection of cream confirms what your startled consciousness is struggling to come to terms with.  Four nipples are spraying almost continually into you.  Gods, you're getting so full!  ");
-			if (player.pregnancyIncubation == 0) outputText("You can feel your midsection going round, wobbling wildly.  POP!  Your belly-button has turned into an outie, accompanied by a wobbling, comforting weight inside you.  Four months... five, no - six... you give up on counting, but with every second that passes, you're getting bigger and bigger, visually matching any of the pregnant women you saw growing up.");
+			if (player.pregnancyIncubation === 0) outputText("You can feel your midsection going round, wobbling wildly.  POP!  Your belly-button has turned into an outie, accompanied by a wobbling, comforting weight inside you.  Four months... five, no - six... you give up on counting, but with every second that passes, you're getting bigger and bigger, visually matching any of the pregnant women you saw growing up.");
 			else outputText("You can feel it fountaining out of you, backwashing out to splatter the witch with wetness, her skin going glossy under the tide of white.  If you weren't already pregnant, you'd probably be ballooning up with her lactic cargo, a rounded, milk-filled cream-balloon.");
 			
 			outputText("\n\n\"<i>Ungh, uhh... gonna c-c-u-uuuhhhhhhh!</i>\" the Sand Mother babbles, splattering wetness from her pussies onto your [butt] in a shower of girl-goo.  She screeches, \"<i>FUCK YES!  SO GOOD!</i>\" before shutting down.  with her four tits cradled in her arm, she squeezes all of them at once, and you you're suddenly stuffed with what feels like gallons of gushing pleasure.  Your body was climbing towards orgasm already, but the explosive injection is just too potent for your ecstatic, quivering pussy-lips to endure.  You groan as orgasmic heat radiates through you, culminating in a cunt-clenching squeeze so strong that the nipples are forced to empty inside you a moment before they're popped out.  A milky creampie drips down your [legs] as your twitching [butt] falls into the witch's lap, leaking all over her.");
@@ -3114,7 +3114,7 @@ package classes.Scenes.Dungeons
 			outputText("\n\nGently adjusting herself on her throne, the sorceress recounts, \"<i>We are many, and the cum witch's magics only continue to swell our numbers.  Accelerated growth was one of the first things the great Mother pioneered, so it only takes a few years for a new witch to mature to adulthood and swell our numbers.  Goblins and imps outbreed us by a wide margin, but that's to be expected.</i>\"  A proud smile graces the Sand Mother's face as she brags, \"<i>Between the covens I know of, we should have the numbers to challenge the demons in a head-on assault in a year or two.</i>\"");
 			outputText("\n\nReally?  That is quite a mighty force indeed!");
 			outputText("\n\nThe dusky matriarch grins wolfishly as she says, \"<i>Really.  We have not been idle while corruption rises across the lands.  The Great Mother wisely set us upon this path, gathering us, moulding us, and grooming us for the time when we would resurface as saviors.  ");
-			if (flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED] == 0) outputText("All that remains is to ready those still maturing and wait on our allies to finish growing their numbers.  We shall be carried into the Demon Queen's fortress on the wings of phoenixes, to fight as glorious a battle as has ever been fought!");
+			if (flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED] === 0) outputText("All that remains is to ready those still maturing and wait on our allies to finish growing their numbers.  We shall be carried into the Demon Queen's fortress on the wings of phoenixes, to fight as glorious a battle as has ever been fought!");
 			else outputText("All that remains is for us to find new aerial allies or a method of easy, sustained flight.  The phoenixes were smashed apart by fiery demons, their lair raided and destroyed by an interloper.  If only things had been different... Calais was so close.");
 			outputText("</i>\"");
 			
@@ -3147,9 +3147,9 @@ package classes.Scenes.Dungeons
 			
 			outputText("\n\nThe Sand Mother grimaces, but blushes darker, \"<i>Yes, before I had a coven of my own, I tried out for that position as well.  I was young and foolish, believing it a position of power and glory.  Doubtless those who hold the station believe it so, but I see it for what it is now.  Slavery.  Slavery to the thrumming heat of one's own body and constant service of her sisters.  Sand witches can go free to roam the deserts, scouting or hunting for recruits.  Cum witches?  They fuck.  And fuck.  And fuck.  Their only real respite is studying magic, something they have little enough time for as is.</i>\"  Smiling ruefully, she admits, \"<i>I'm glad I did not become a cum witch.  I was allowed to become something more, and perhaps some day, I shall inherit my mother's mantle, to rule over a free Mareth.</i>\"");
 			menu();
-			if (flags[kFLAGS.MORE_CUM_WITCHES] == 1) {
+			if (flags[kFLAGS.MORE_CUM_WITCHES] === 1) {
 				outputText("\n\nYou already convinced her to add more cum witches to her harem so that they might experience a little freedom.");
-				if (flags[kFLAGS.CUM_WITCHES_FIGHTABLE] == 0) {
+				if (flags[kFLAGS.CUM_WITCHES_FIGHTABLE] === 0) {
 					outputText("  If you asked her to send them out hunting for recruits, you could potentially fight and fuck them in the deserts sands in the future.");
 					addButton(0,"Send Out",sendOutCumWitch).hint("Request the Sand Mother to send the Cum Witch out in search for new recruits.", "Send Them Out");
 				}
@@ -3226,7 +3226,7 @@ package classes.Scenes.Dungeons
 			outputText("You ask the Sand Mother how her people choose who will be a Sand Mother of a new coven.");
 			
 			outputText("\n\nThe statuesque woman smirks ruefully, \"<i>Politics, of course.</i>\"  Politics?  She sees the confused look on your face and explains, \"<i>It shouldn't surprise you.  You");
-			if (player.race() == "human") outputText("'re a human");
+			if (player.race() === "human") outputText("'re a human");
 			else outputText(" were a human");
 			outputText(".  Our people are notorious for forming gangs and cliques, groups focused around a leader's charisma.  It's only natural that has continued in Mareth.  It would not surprise me to learn that even the demons have their own factions and political malcontents, though I imagine they deal with them far more harshly than we.</i>\"");
 			
@@ -3244,7 +3244,7 @@ package classes.Scenes.Dungeons
 		public function leaveAloneSendLackeysToggle():void {
 			clearOutput();
 			//Leave Alone
-			if (flags[kFLAGS.SAND_WITCH_LEAVE_ME_ALONE] == 0) {
+			if (flags[kFLAGS.SAND_WITCH_LEAVE_ME_ALONE] === 0) {
 				outputText("You request that the scouts in the desert stop bothering you with their barbed offers of magic.  Fighting them is not something you want to have to do.  It's a waste of effort on both sides you that feel should come to an end.");
 				outputText("\n\nThe Sand Mother's tanned visage remains impassive as she digests your request.  The silence is almost palpable, and the longer it stretches out, the more you wonder if you've committed some kind of faux pas.");
 				outputText("\n\n\"<i>Fine,</i>\" she states with brevity so sharp it slightly startles you.  Her incandescent eyes fix your own as she continues, \"<i>My girls will not trouble you in your journeys, but know that doing so is no easy task - our covens are not used to being that discerning about potential recruits.</i>\"  She folds her arms across her bosom in an imperious gesture of finality.");
@@ -3303,7 +3303,7 @@ package classes.Scenes.Dungeons
 		//TURN EM OFF!
 		public function unfriendlyWitchToggle():void {
 			clearOutput();
-			if (flags[kFLAGS.SAND_WITCH_LEAVE_ME_ALONE]  == 0) {
+			if (flags[kFLAGS.SAND_WITCH_LEAVE_ME_ALONE]  === 0) {
 				outputText("Imperiously, you fold your arms and tell the queen of the milky slatterns to cease her coven's constant, badgering attacks out on the sands.  Her face registers an incredulous expression at the decree, and she matches your confrontation pose, her forearms pressing deep into the recesses of her prodigious bust.  You await her response, and for a moment, you think you're going to have to fight her again.  Then, her stern gaze wavers as she sags into her throne, defeated before she could even start to resist.");
 				outputText("\n\n\"<i>Fine.  I guess then...</i>\" she casts her incandescent gaze to the side, \"<i>...you won't be able to force yourself on them.</i>\"  You chuckle at that.");
 				if (player.cor < 50) outputText("  You probably wouldn't do something like that, at least not without provocation!/  You could see how she would think that.");
@@ -3493,7 +3493,7 @@ package classes.Scenes.Dungeons
 			var x:int = player.cockThatFits(50);
 			if (x < 0) x = player.smallestCockIndex();
 			//{if player does not have a tentacle cock} 
-			if (player.countCocksOfType(CockTypesEnum.TENTACLE) == 0) outputText("You grab the tanned shoulders of the closest pregnant witch and flip her over on to her back, trapping her beneath the weight of her belly and breasts while you grab both of her ankles.  Her dirty blonde, sweat-soaked hair lies in waves around her head on the floor as she pants heavily in sexual desperation.");
+			if (player.countCocksOfType(CockTypesEnum.TENTACLE) === 0) outputText("You grab the tanned shoulders of the closest pregnant witch and flip her over on to her back, trapping her beneath the weight of her belly and breasts while you grab both of her ankles.  Her dirty blonde, sweat-soaked hair lies in waves around her head on the floor as she pants heavily in sexual desperation.");
 			//{else if player has a tentacle cock}
 			else outputText("Your tentacle cock lashes outwards, extending as it goes, and wraps around the ankle of the closest girl. It flips her over on to her back, trapping her own torso beneath the weight of her heavy pregnancy and her own four massive leaking breasts.");
 			//{if player has two tentacle cocks}
@@ -3503,12 +3503,12 @@ package classes.Scenes.Dungeons
 			outputText("\n\nHer dual set of labia are a darker shade than the rest of her tan flesh and enthusiastically drip with her juices.  One set is gaping wide, clearly under pressure from her womb within.  The other set are swollen but eager to be filled with true cock flesh capable of sowing her second womb full of seed.  \"<i>P-please!</i>\" she begs as if she was a wounded animal.  Her multiple breasts and belly jiggle and sway over the rest of her as she tries to angle her pelvis towards you.  The knob of her belly button traces circles in the air as her hips gyrate.");
 			var multi:Boolean = false;
 			//{if player has two tentacle cocks and at least one other cock that will fit her pussy}
-			if (player.countCocksOfType(CockTypesEnum.TENTACLE) >= 2 && player.cockTotal() >= 3 && player.cocks[x].cockType != CockTypesEnum.TENTACLE) {
+			if (player.countCocksOfType(CockTypesEnum.TENTACLE) >= 2 && player.cockTotal() >= 3 && player.cocks[x].cockType !== CockTypesEnum.TENTACLE) {
 				outputText("\n\nYour tentacle cocks release the pregnant witch's ankles and wrap around her thighs instead. You align a third cock at the base of her second pussy with the head gently sliding between her nether's sopping wet lips. With a strong tug your tentacle cocks pull on the girl's tanned thighs and impale her sex upon your manhood.");
 				multi = true;
 			}
 			//else if players without two long tentacle cocks have multiple cocks that fit
-			else if (player.countCocksOfType(CockTypesEnum.TENTACLE) >= 2 && player.cocks[x].cockType != CockTypesEnum.TENTACLE && player.cockThatFits2(50) >= 0 && player.cockTotal() >= 4) {
+			else if (player.countCocksOfType(CockTypesEnum.TENTACLE) >= 2 && player.cocks[x].cockType !== CockTypesEnum.TENTACLE && player.cockThatFits2(50) >= 0 && player.cockTotal() >= 4) {
 				outputText("\n\nReleasing the girl's ankles you align your cocks between the drooling labia of her second pussy.  \"<i>Y-yes!</i>\" she squeals as you start pushing the multiple shafts into her all at once, \"<i>S-so-much c-c-cock!</i>\" she blissfully exclaims as her womanhood is stretched almost painfully beyond what it should be able to take.");
 				multi = true;
 			}
@@ -3534,7 +3534,7 @@ package classes.Scenes.Dungeons
 			else if (player.biggestTitSize() >= 15) {
 				outputText("\n\nYour [chest] are massive enough that they jiggle instead of bounce with each thrust.");
 				//if player has only one set of massive breasts 
-				if (player.bRows() == 1) outputText("  Your two heavy milk sacs sway and at times you must rest them on top of the poor witch's belly to keep from prematurely exhausting yourself.");
+				if (player.bRows() === 1) outputText("  Your two heavy milk sacs sway and at times you must rest them on top of the poor witch's belly to keep from prematurely exhausting yourself.");
 				else if (player.bRows() >= 2) outputText("  Resting on top of each other and on top of the witch's legs, your giant globes of tit flesh quake each time you hips move.");
 				outputText("  The witches around the room can't help but gawk at how much more endowed your mammaries are than even their own, and how the wrong forwards or backwards movement could result in either you or the witch you're fucking to be suddenly smothered under the weight of your ridiculously engorged tits.");
 			}
@@ -3582,7 +3582,7 @@ package classes.Scenes.Dungeons
 				outputText("\n\nCarefully you pull out, even as your shaft");
 				if (player.cockTotal() > 1) outputText("s");
 				outputText(" continue");
-				if (player.cockTotal() == 1) outputText("s");
+				if (player.cockTotal() === 1) outputText("s");
 				outputText(" to release loads of cum.  Ropes of your white jizz splash over the witch's bare belly and naked breasts.  With both hands you stroke your " + player.cockDescript(x) + " until it has soaked the tanned beauty from head to foot in your cum.  The other witches quickly set upon the exhausted girl, licking the cum from her breasts and scooping it out of her various valleys of cleavage to slop against their own pussies in the desperate hope of seeding their own extra wombs.");
 			}
 			player.orgasm('Generic');
@@ -3614,13 +3614,13 @@ package classes.Scenes.Dungeons
 				
 			outputText("\n\nYou feel supremely ready to fulfill those cum craving needs and you carefully align your cocks for the purpose.");
 			//{if has two horse cocks} 
-			if (player.cocks[x].cockType == CockTypesEnum.HORSE && player.cocks[y].cockType == CockTypesEnum.HORSE) outputText("  The wide flaring tips of your equine pricks press flatly against the pair of sweltering nether lips, but they easily part with only a little pressing.  The hot swollen folds eagerly slurp around the wide ridged crowns of your cock heads as you press against their vaginal entrances.  They're looser than most normal pussies, yet around such thick cock heads they nonetheless feel enjoyably tight.  With a slightly harsher shove forwards you easily impale both whorish witches.  Pleasured cries of shock escapes their lips as your horse-dongs bore through their depths.");
+			if (player.cocks[x].cockType === CockTypesEnum.HORSE && player.cocks[y].cockType === CockTypesEnum.HORSE) outputText("  The wide flaring tips of your equine pricks press flatly against the pair of sweltering nether lips, but they easily part with only a little pressing.  The hot swollen folds eagerly slurp around the wide ridged crowns of your cock heads as you press against their vaginal entrances.  They're looser than most normal pussies, yet around such thick cock heads they nonetheless feel enjoyably tight.  With a slightly harsher shove forwards you easily impale both whorish witches.  Pleasured cries of shock escapes their lips as your horse-dongs bore through their depths.");
 			//{else if two dog cocks} 
-			else if (player.cocks[x].cockType == CockTypesEnum.DOG && player.cocks[y].cockType == CockTypesEnum.DOG) outputText("  Your canine pricks easily part the obscenely wet folds of the girls' labia.  Each woman's juices drip down your smooth shafts as you begin pressing their pointed heads into their tight entrances, eliciting pleasured and desperate pleas for more from each of them.  A gentle thrust of your pelvis and both pussies become simultaneously impaled upon your doggy dicks, giving you complete control over the hormonal witches.");
+			else if (player.cocks[x].cockType === CockTypesEnum.DOG && player.cocks[y].cockType === CockTypesEnum.DOG) outputText("  Your canine pricks easily part the obscenely wet folds of the girls' labia.  Each woman's juices drip down your smooth shafts as you begin pressing their pointed heads into their tight entrances, eliciting pleasured and desperate pleas for more from each of them.  A gentle thrust of your pelvis and both pussies become simultaneously impaled upon your doggy dicks, giving you complete control over the hormonal witches.");
 			//{else if two tentacle cocks} 
-			else if (player.cocks[x].cockType == CockTypesEnum.TENTACLE && player.cocks[y].cockType == CockTypesEnum.TENTACLE) outputText("  Your green tentacle formed cocks stiffen yet weave their ways around the various pussies in front of you.  Their dark fuchsia heads almost seem to have a mind of their own as they trace the outlines of each pussy, teasing the poor hormonal witches into even higher states of sexual desperation. Pussy juice squirts from the anxious cunts with each teasing slide along their labia.  Satisfied with the pleasured taunting your prehensile cocks get down to business, darting into each slutty snatch like snakes striking at prey.  You feel each girl's entrance brutally stretch to accommodate your shafts as they deeply worm a path into each girl's vaginal orifice, causing both to scream in frantic bliss.");
+			else if (player.cocks[x].cockType === CockTypesEnum.TENTACLE && player.cocks[y].cockType === CockTypesEnum.TENTACLE) outputText("  Your green tentacle formed cocks stiffen yet weave their ways around the various pussies in front of you.  Their dark fuchsia heads almost seem to have a mind of their own as they trace the outlines of each pussy, teasing the poor hormonal witches into even higher states of sexual desperation. Pussy juice squirts from the anxious cunts with each teasing slide along their labia.  Satisfied with the pleasured taunting your prehensile cocks get down to business, darting into each slutty snatch like snakes striking at prey.  You feel each girl's entrance brutally stretch to accommodate your shafts as they deeply worm a path into each girl's vaginal orifice, causing both to scream in frantic bliss.");
 			//{else if two demon dicks}
-			else if (player.cocks[x].cockType == CockTypesEnum.DEMON && player.cocks[y].cockType == CockTypesEnum.DEMON) outputText("\n\nThe big bumps and nodules that line the rims of each of your demonic cockheads feel particularly wonderful as they force their way between the dark, swollen folds of each witch's as yet unseeded pussy.  Both girls whimper and yelp in pleasure as the demonic ridges and soft protrusions along your shafts tease and taunt the erogenous zones of the inner walls of their cunts.  Your blighted cocks seem to swell even larger specifically to ensure the tightest fit possible within these two girls and it isn't long before each girl is leaking copious amounts of pussy juice around each cock as the highly textured shafts double time the twin twats.");
+			else if (player.cocks[x].cockType === CockTypesEnum.DEMON && player.cocks[y].cockType === CockTypesEnum.DEMON) outputText("\n\nThe big bumps and nodules that line the rims of each of your demonic cockheads feel particularly wonderful as they force their way between the dark, swollen folds of each witch's as yet unseeded pussy.  Both girls whimper and yelp in pleasure as the demonic ridges and soft protrusions along your shafts tease and taunt the erogenous zones of the inner walls of their cunts.  Your blighted cocks seem to swell even larger specifically to ensure the tightest fit possible within these two girls and it isn't long before each girl is leaking copious amounts of pussy juice around each cock as the highly textured shafts double time the twin twats.");
 			//{else all other cocks and combinations}
 			else outputText("\n\nYou press a cock-head against each wet pair of swollen labia, separating the dark folds as your pricks seek the entrances within.  A slurping sensation spreads over each head as your dicks achieve their goal; spearing the respective entrances of these hormonally overwrought sluts.  Your shafts effortlessly slide in to the wanton pussies, forcing each whorish witch to blissfully cry out from the pleasure they've been so desperately seeking.  Their inner walls clamp around each of your shafts as the muscles in their bodies tremble from the sensations.");
 			//{if player has 4+ cocks}
@@ -3682,7 +3682,7 @@ package classes.Scenes.Dungeons
 			var multi:Boolean = false;
 			
 			//{if player has a single cock} 
-			if (player.cockTotal() == 1 || player.cockThatFits2(50) < 0) {
+			if (player.cockTotal() === 1 || player.cockThatFits2(50) < 0) {
 				outputText("\n\nWasting no time you move forwards to slide the shaft of your [cock] up and down the folds of the nearest witch's labia to lube it up.  She moans in frustrated pleasure, anxious to feel the length of your manhood pushing directly into those folds.  As you feel the crown of your cock head sliding along the lips of her cunt you decide not to tease her for the sake of your own pleasure.  With fingers from each hand you pull her nethers aside and press your cock directly into her entrance, feeling the tight orifice stretch around your man-flesh and swallow your cock as deeply as it can.");
 			}
 			//else if player has two long cocks}
@@ -3886,9 +3886,9 @@ package classes.Scenes.Dungeons
 			outputText(".");
 			
 			outputText("\n\n\"<i>O-oh,</i>\" she moans, just on the edge of hearing, her cheeks flushing hotly in your hand. The cute little slave turns aside, moving her udders out of the way so that she can rest her head on your chest, obviously enjoying the simple act of your arm around her shoulders and the odd gentle touch. You let her enjoy it for a few long, pleasurable minutes, content in the silent company of the milky girl. From time to time you gently stroke her cow-like teats, or reach down to rub her thick, rich milk into your loins, enjoying the incredible texture of it on your ");
-			if (player.gender == 1) outputText("[cock]");
-			else if (player.gender == 2) outputText("[vagina]");
-			else if (player.gender == 3) outputText("[cock] and [vagina]");
+			if (player.gender === 1) outputText("[cock]");
+			else if (player.gender === 2) outputText("[vagina]");
+			else if (player.gender === 3) outputText("[cock] and [vagina]");
 			else outputText("sexless crotch, still burning hotly with your desires");
 			outputText(".  After a time, though, you give the girl a gentle little push, having her rest her arms and tits on the edge of the pool.  You shift around behind her, cupping up handfuls of her milk.  You start to pour it down her back and shoulders, getting her nice and soaked in her own sweet cream before you close in, starting to massage her back, rubbing it in nice and slow until she's shivering quietly.  She moans under her breath as your fingers sink into her soft, yielding flesh, gently kneading her shoulders and hips, giving special attention to her full, round ass, tentatively slipping a few fingers around her leg to caress along her slick vulva and the bud of her clit.");
 			
@@ -3995,13 +3995,13 @@ package classes.Scenes.Dungeons
 			outputText("\n\nAn excited moan worms out of the inky slave-girl's puffy lips, a testament to the raw sensitivity of her milk-bloated jugs.  As your tongue swirls over the leaky nozzle's pebbly skin, she releases another breathy pant of delight.  The vocal tremors seem to coo all the way down to your loins, joining with your fingers' caresses to stir you to aching, trembling arousal.");
 			//{Fork, no new PG}
 			//(DA HERMS) 
-			if (player.gender == 3) {
+			if (player.gender === 3) {
 				outputText("  Your [cock] throbs painfully in your hand, so hot and hard that you're sure you must have begun to leak precum, but any fluid is swiftly washed away by the ever-present milk.");
 				if (player.cockTotal() > 1) outputText("  You make sure to fondle each of your members equally, caressing, squeezing, and stroking to the tempo of your swelling passion.");
 				outputText("  With your off-hand, you rub your cream-lubricated fingers through your sodden gash, the flesh parting easily to allow a few of your questing fingers inside.  Delicious bliss unfolds from your [clit] as it pushes free of its hood, fully engorging, faintly throbbing from aching need.  You brush the button a few times before going back to fingering your box, yet you make sure to strum your thumb across your clit every few moments to keep yourself as close to peak as possible.  Truly, being a hermaphrodite is bliss.");
 			}
 			//(DA SCHLICKS)
-			else if (player.gender == 2) outputText("  Your pussy juices mix freely with the tub's white-colored 'waters', allowing your cream-lubed fingers to plunge into your [vagina] with ease.  You stroke your lips and caress the interior of your birth canal with the intimate familiarity of a skilled lover, playing with your body until you feel your control slipping, so wound up with lust that you feel like an over-tightened guitar string vibrating out of control.");
+			else if (player.gender === 2) outputText("  Your pussy juices mix freely with the tub's white-colored 'waters', allowing your cream-lubed fingers to plunge into your [vagina] with ease.  You stroke your lips and caress the interior of your birth canal with the intimate familiarity of a skilled lover, playing with your body until you feel your control slipping, so wound up with lust that you feel like an over-tightened guitar string vibrating out of control.");
 			//(DA DUDES)
 			else {
 				outputText("  Your [cock] throbs painfully in your hand, so hot and hard that you're sure you must have begun to leak precum, but any fluid is swiftly washed away by the ever-present milk.  ");
@@ -4028,21 +4028,21 @@ package classes.Scenes.Dungeons
 			doNext(playerMenu);
 		}
 
-		/*336 == bigger belly
-		280 == prolly pregger
-		216 == unmistakable bulge
-		180 == obvious pregnancy
-		120 == impossible to conceal
-		72 == painfully distended
-		48 == bulges with unclean spawn..blahblahblah*/
+		/*336 === bigger belly
+		280 === prolly pregger
+		216 === unmistakable bulge
+		180 === obvious pregnancy
+		120 === impossible to conceal
+		72 === painfully distended
+		48 === bulges with unclean spawn..blahblahblah*/
 		public function sandPregUpdate():Boolean {
 			//1: 
-			if (player.pregnancyIncubation == 336) {
+			if (player.pregnancyIncubation === 336) {
 				outputText("\nYour breasts have felt unusually heavy recently, and a strange pulsing sensation occasionally emanates from them.  Your appetite is a little off; you could really go for some milk...\n");
 				return true;
 			}
 			//2:
-			if (player.pregnancyIncubation == 280) {
+			if (player.pregnancyIncubation === 280) {
 				outputText("\nYou've been having strange dreams recently, about seeds growing before your eyes into beautiful flowers; what's really weird is the sense of pride and maternal contentment that seeing them bloom makes you feel.  Your breasts are definitely heavier than normal, and sometimes you wake up to find them damp; are you ");
 				if (player.biggestLactation() < 1) outputText("starting to lactate");
 				else outputText("lactating more");
@@ -4059,7 +4059,7 @@ package classes.Scenes.Dungeons
 				return true;
 			}
 			//3:
-			if (player.pregnancyIncubation == 216) {
+			if (player.pregnancyIncubation === 216) {
 				outputText("\nYour breasts have definitely grown bigger, and they occasionally trickle milk.  More importantly than that, your stomach is bulging out in a small but unquestionable pot belly.  You're definitely pregnant.\n");
 				temp = player.bRows();
 				while(temp > 0) {
@@ -4073,7 +4073,7 @@ package classes.Scenes.Dungeons
 				return true;
 			}
 			//4:
-			if (player.pregnancyIncubation == 180) {
+			if (player.pregnancyIncubation === 180) {
 				outputText("\nYour belly continues to grow, the hormones triggering your milk's production to kick it up a notch.  Your breasts are so heavy and sensitive, aching to be used to feed life-giving milk to something.\n");
 				while(player.biggestLactation() < 2) {
 					player.boostLactation(.5);
@@ -4081,7 +4081,7 @@ package classes.Scenes.Dungeons
 				return true;
 			}
 			//5:
-			if (player.pregnancyIncubation == 120) {
+			if (player.pregnancyIncubation === 120) {
 				outputText("\nYou sometimes catch yourself humming to your unborn child, stroking your belly like a contented mother.  At other times, you catch yourself proudly stroking your swollen breasts, admiring the way it makes the milk spurt and flow.");
 				while(player.biggestLactation() < 3) {
 					player.boostLactation(.5);
@@ -4089,7 +4089,7 @@ package classes.Scenes.Dungeons
 				return true;
 			}
 			//6:
-			if (player.pregnancyIncubation == 72) {
+			if (player.pregnancyIncubation === 72) {
 				outputText("\nMilk dribbles constantly out of your nipples now, in many ways being harder to deal with than the ever-increasing swell of your midriff.  The scent of milk hangs in the air around you constantly, giving you a craving to suckle almost as bad as your breasts' need to be suckled from.\n");
 				while(player.biggestLactation() < 4.5) {
 					player.boostLactation(.5);
@@ -4097,7 +4097,7 @@ package classes.Scenes.Dungeons
 				return true;
 			}
 			//7:
-			if (player.pregnancyIncubation == 48) {
+			if (player.pregnancyIncubation === 48) {
 				outputText("\nYour stomach hangs out, heavy and round as any full-term mother's back in Ingnam, your breasts feeling almost as taut and swollen, as if jealous of the life nearly grown inside your womb.  At morning, you find yourself milking your breasts until the cascading fluid ends up glazing your engorged stomach in a beautiful liquid white sheen, not that it seems to make much difference to your production.  You can only hope whatever's growing inside you will be hungry enough to keep up with all the food you'll have for it...");
 				while(player.biggestLactation() < 5.5) {
 					player.boostLactation(.5);
@@ -4110,7 +4110,7 @@ package classes.Scenes.Dungeons
 		//*Witch Birth Scene:
 		public function birthAWitch():void {
 			outputText("\n<b><u>Something amazing happens...</u></b>\n");
-			if (player.vaginas.length == 0) {
+			if (player.vaginas.length === 0) {
 				outputText("You feel a terrible pressure in your groin... then an incredible discomfort accompanied by the rending of flesh.  You look down and behold a vagina.  ");
 				player.createVagina();
 			}
@@ -4137,13 +4137,13 @@ package classes.Scenes.Dungeons
 			if (flags[kFLAGS.SANURA_DISABLED] > 0) {
 				outputText("Just ahead, in one of the larger dunes, is a square stone doorway, built into the side of a large, sparkling mountain of sand.  You never would have noticed it if the sun hadn't been at the perfect angle to trace a rectangular shadow down the side of the incline.  As you approach, you notice a familiar obsidian orb embedded into the side of it.  It's obviously the mechanism to open it.");
 			}
-			else if (flags[kFLAGS.MET_SANURA] == 0) {
+			else if (flags[kFLAGS.MET_SANURA] === 0) {
 				flags[kFLAGS.MET_SANURA] = 1;
 				outputText("Just ahead, in one of the larger dunes, is a square stone doorway, built into the side of a large, sparkling mountain of sand.  You never would have noticed it if the sun hadn't been at the perfect angle to trace a rectangular shadow down the side of the incline.  As you approach, you notice a smooth obsidian orb embedded into the side of it.  Perhaps that's the mechanism to open it?");
 				outputText("\n\nSuddenly, a huge shadow looms over you, and the sound of beating wings echo from on high. You spin around in time to see a huge creature leap from the dune tops and slam into the ground a few feet away.  At first glance, the creature looks like a tall, tanned woman with flowing black hair, adorned in a great wealth of gold and jewels.  A moment later, though, you're able to take in the full view of her form: from the waist down, her shapely human form morphs into the lower body of a great, golden-haired lion, padding on a quartet of powerful legs ending in sharp claws.  From her leonine sides grow a pair of massive wings, easily over a dozen feet across, which quickly furl up against her body.  She's a sphinx!");
 				outputText("\n\nThe sphinx-girl pads over towards you, her arms crossed under her small, palmable breasts. Chestnut-colored eyes examine you, looking you over from your [hair] to your [feet], a playful grin playing across her feminine features.  \"<i>O-ho!  What's this we have here?  A poor, lost " + player.race() + " wandering the desert; or are you something more?  Indeed, I should think so, with your [weapon] so eager for battle, and your [armor] that looks to have seen a thousand blows.  My, my.  Could it be you've come to brave my Mistress's lair?  Ah, if so... you must answer my riddles three, lest I keep from you the key!</i>\" she says, a little tune springing into her voice as she stalks towards you.");
 				outputText("\n\n\"<i>We could even make it interesting...  If you can't guess my riddles, you must surrender your body to my pleasure.  If you win, your pleasure shall be my wish.</i>\"");
-				if (flags[kFLAGS.DISCOVERED_WITCH_DUNGEON] == 0) {
+				if (flags[kFLAGS.DISCOVERED_WITCH_DUNGEON] === 0) {
 					outputText("\n\n(<b>You've discovered a new dungeon, available in the places menu in the future!  Make sure you save before delving too deeply...</b>)");
 					flags[kFLAGS.DISCOVERED_WITCH_DUNGEON] = 1;
 				}
@@ -4171,7 +4171,7 @@ package classes.Scenes.Dungeons
 					}
 				}
 			}
-			if (flags[kFLAGS.BEATEN_SANURA_COUNT] + flags[kFLAGS.SANURA_DISABLED] == 0) removeButton(6); //Locks north.
+			if (flags[kFLAGS.BEATEN_SANURA_COUNT] + flags[kFLAGS.SANURA_DISABLED] === 0) removeButton(6); //Locks north.
 			addButton(11, "Leave", exitDungeon);
 		}
 		public function roomCaveCommons():void {
@@ -4180,7 +4180,7 @@ package classes.Scenes.Dungeons
 			outputText("<b><u>Cavernous Commons</u></b>\n");
 			outputText("Dancing lights swirl around the roof of the cavern, twirling around each other in patterns too intricate to follow.  Whatever they are, they're clearly magical, and they lend this place an otherworldly ambience unmatched by anything you've seen.  This huge room reminds you of your village commons in a way - it's clearly a communal area.  There's a water-pump in the northwest corner and a blazing purple bonfire in the center of the chamber, heating the cool underground air.  The ground is dirt, rather than sand, and hard-packed as any road.  Various chairs and benches are set up for witches to relax in.  ");
 			dungeons.setDungeonButtons(null, checkExit, roomWestHall1, roomEastHall1)
-			if (flags[kFLAGS.SANDWITCH_MOB_DEFEATED] == 0) {
+			if (flags[kFLAGS.SANDWITCH_MOB_DEFEATED] === 0) {
 				spriteSelect(SpriteDb.s_sandwich);
 				outputText("Worst of all, a huge assortment of spellcasters is assembling into a mob, obviously hostile.");
 				outputText("\n\n<b>A magical barrier appears at the exit, preventing your escape!</b>");
@@ -4193,7 +4193,7 @@ package classes.Scenes.Dungeons
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] >= 3 && flags[kFLAGS.SAND_WITCHES_COWED] + flags[kFLAGS.SAND_WITCHES_FRIENDLY] <= 0) {
 				outputText("\n\nA magical barrier blocks the path south. Seems like you can't leave until you find the leader.");
 			}
-			if (flags[kFLAGS.SANDWITCH_THRONE_UNLOCKED] == 0) {
+			if (flags[kFLAGS.SANDWITCH_THRONE_UNLOCKED] === 0) {
 				outputText("\n\nA huge stone doorway blocks the path north.  You cannot see a way to open it.");
 			}
 			else {
@@ -4235,7 +4235,7 @@ package classes.Scenes.Dungeons
 			outputText("<b><u>Western Warrens Main Hall (Western Portion)</u></b>\n");
 			outputText("The smooth tunnel comes to an end here, blocked by the omnipresent sandstone.  The sapphire light plays beautifully across the rough-hewn stone as you watch, but you don't take the time to give it much thought.  To the east, the arching hallway leads back towards a large common area of a cave.  Along the north and south walls are door-sized openings, blocked with rugs of fine make and thick fabric.  They don't leave enough of a gap for any light or sound to bleed into the hall.  You'll have to take a peek if you want to see what's going on.");
 			dungeons.setDungeonButtons(roomNursery, checkPharmacyDoorUnlocked, null, roomWestHall1);
-			if (flags[kFLAGS.ESSRAYLE_ESCAPED_DUNGEON] == 0 && flags[kFLAGS.MET_ESSY] > 0) {
+			if (flags[kFLAGS.ESSRAYLE_ESCAPED_DUNGEON] === 0 && flags[kFLAGS.MET_ESSY] > 0) {
 				flags[kFLAGS.ESSY_MET_IN_DUNGEON] = 1;
 				if (flags[kFLAGS.TOLD_MOTHER_TO_RELEASE_ESSY] > 0) {
 					outputText("\n\n<b>Your attention is immediately drawn to Essrayle...</b>");
@@ -4261,7 +4261,7 @@ package classes.Scenes.Dungeons
 			outputText("<b><u>Western Warrens, Western Portion, South Side (Pharmacy)</u></b>\n");
 			outputText("This room is so tiny it can barely get away with being called that.  If anything, it's more of a small, cozy nook.  There isn't anyone else here, though the room is illuminated by the same omnipresent magics found elsewhere in this little cave of wonders.  Standing silent vigil on the southern wall, a large chest looms over you, stretching most of the way to the ceiling.  It is completely, almost impossibly neat, with every drawer fully and completely closed.  Spurred on by this strangeness, you pop a few of them open.  One drawer has pink pills, another brown.  Searching drawer by drawer until you discover that every single compartment houses the same dual medicines.  You glance about the room and spy a faded parchment on the wall.  It reads \"<i>Tnangerp rof knip, nerrab rof nworb.</i>\"  There is an opening in the wall to the north.");
 			dungeons.setDungeonButtons(roomWestHall2, null, null, null);
-			if (flags[kFLAGS.SANDWITCH_THRONE_UNLOCKED] == 0) {
+			if (flags[kFLAGS.SANDWITCH_THRONE_UNLOCKED] === 0) {
 				outputText("\n\nThere is also a lever on the floor.  Looking closely at it, it appears that it connects with machinery that leads to the east...");
 				addButton(0, "Pull Lever", pullLever).hint("Pull the lever. You suspect that it might open the door");
 			}
@@ -4320,13 +4320,13 @@ package classes.Scenes.Dungeons
 				outputText("The cum witch is here, pounding away at one of her sister's cunts, like usual.  She seems to CONSTANTLY excrete her jism into her partner's many cunt-folds, but as her passion and speed rises, the flow thickens, eventually filling the poor milk-witch's wombs entirely.  They go at it like animals for a few seconds more, then separate after a climactic orgasm that leaves a puddle of spooge inches deep on part of the uneven floor.  The cum-witch moves her insensate sister to rest on a nearby bench before putting on her hat and robes.  She winks at you and offers, \"<i>Well, I hope you enjoyed the show, interloper.  Did you come here for some of my gift, or something else?</i>\"");
 				//{VOLUNTEER FOR SERVICE: BAD-END, BLESSING: +CUM PRODUCTION}
 				addButton(0, "Volunteer", volunteerConfirmation).hint("Volunteer to become a Cum Witch. \n\nThis will end your adventures.");
-				if (flags[kFLAGS.BEEN_BLESSED_BY_CUM_WITCH] == 0) {
+				if (flags[kFLAGS.BEEN_BLESSED_BY_CUM_WITCH] === 0) {
 					addButton(1, "Blessing", friendlyCumWitchBlessing).hint("Receive a blessing from the Cum Witch.");
 				}
 			}
 			else {
 				//{CUM WITCH UNDEFEATED}
-				if (flags[kFLAGS.CUM_WITCH_DEFEATED] == 0) {
+				if (flags[kFLAGS.CUM_WITCH_DEFEATED] === 0) {
 					menu();
 					outputText("The curtain pulls to the side easily, and as soon as you enter, you're greeted by the sound of flesh slapping on flesh from somewhere to your left.  Briefly, you note a number of desks as you turn towards the sexual audio, but what really catches your eyes are the two girls locked in coitus.  One, a normal-looking sand witch, is bent over a bench and taking quite the fucking.  Milk drips in huge beads from her four fat teats while fresh rivulets of cum run down past the dried-cum on her thighs.  Above her is something else entirely, a taller woman with a single pair of obscenely large breasts.  She's so dark skinned that at first you have difficulty picking out her features in the dim lighting.  Glittering sweat runs down her form, dripping from her pendulous breasts as she throws back her head and moans, \"<i>Gonna... just... take it!  Take my gift!</i>\"");
 					outputText("\n\nBeneath the ebony woman, you see the sand witch begin to quiver and moan, thick gouts of semen back-flooding from her packed cunny as her belly rounds with delicious fecundity.  Her muscles lock, then twitch feebly for a few seconds before she slides off into the new-born cum-puddle, slipping along the floor in an insensate pile of orgasmic bliss.  You're so enraptured by the sight, that you don't even try to hide when the ebony futanari turns to face you, putting on a pointed, wide-brimmed hat and black robe.  For the slightest second you see a pair of orange-sized balls and one thick, cum-lubed member, but those quickly disappear into the voluminous robes.");

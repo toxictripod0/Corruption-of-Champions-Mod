@@ -21,7 +21,7 @@ package classes.Scenes.Places.Prison
 			resistanceCounter = prison.prisonCaptor.prisonCaptorScratch(1);
 			totalResistance = prison.prisonCaptor.prisonCaptorScratch(2);
 			saidNo = prison.prisonCaptor.prisonCaptorScratch(3);
-			if (branchChoice == "choose")
+			if (branchChoice === "choose")
 			{
 				outputText("Your head begins to bob more vigorously along Mistress Elly's shaft, your tongue timidly collecting the salty rivulets that wreathe her length, and you acknowledge that your body seems to have made the decision for you. You need to come, ");
 				if (player.esteem < 40)
@@ -110,10 +110,10 @@ package classes.Scenes.Places.Prison
 				addButton(1,"No, Mistress",prisonCaptorFeedingOrgasmTrainingAccept,2);
 				return;
 			}
-			if (branchChoice == "1" || branchChoice == "2")
+			if (branchChoice === "1" || branchChoice === "2")
 			{
 				outputText("");
-				if (branchChoice == "1")
+				if (branchChoice === "1")
 				{
 					outputText("\"<i>Yes, Mistress,</i>\" ");
 					if (player.esteem < 40)
@@ -242,7 +242,7 @@ package classes.Scenes.Places.Prison
 				
 				outputText(".\n\n");
 				outputText("\"<i>Huu... haaaauuuh!</i>\" You feel yourself teetering on the edge of climax, but even if you wanted to disobey and come, her hand's supervision prevents it. She giggles playfully in your ear at your increasing distress, and allows it to continue for what feels like an eternity.\n\n");
-				if (branchChoice == "1")
+				if (branchChoice === "1")
 				{
 					outputText("\"<i>Okay, slave, you've clearly overcome your fear now. Whenever you are ready for your orgasm, you may fall to your knees and ask for it.</i>\"\n\n");
 				}
@@ -251,7 +251,7 @@ package classes.Scenes.Places.Prison
 					outputText("\"<i>Well, slave, it seems like you're well on your way to conquering that fear. So, are you ready to show me now? You only need to fall to your knees and ask for permission, and I'll allow it.</i>\"\n\n");
 				}
 				menu();
-				if (saidNo == 1)
+				if (saidNo === 1)
 				{
 					addButton(0,"Resist",prisonCaptorFeedingOrgasmTrainingAccept,3);
 				}
@@ -262,7 +262,7 @@ package classes.Scenes.Places.Prison
 				addButton(1,"Collapse",prisonCaptorFeedingOrgasmTrainingAccept,4);
 				return;
 			}
-			if (branchChoice == "3")
+			if (branchChoice === "3")
 			{
 				sceneVariation = resistanceCounter - saidNo;
 				prison.prisonCaptor.prisonCaptorScratchChange(1,1);
@@ -271,7 +271,7 @@ package classes.Scenes.Places.Prison
 				totalResistance++;
 				outputText("");
 				prison.changeEsteem(1,prison.inPrison);
-				if (saidNo == 1)
+				if (saidNo === 1)
 				{
 					prison.changeWill(-prison.prisonWillCost(3));
 					if (player.esteem < 40)
@@ -329,7 +329,7 @@ package classes.Scenes.Places.Prison
 								outputText("down to where her own tip bobs below");
 							}
 							outputText(" [eachCock] to gather her copious drippings, then back to rub them into ");
-							if (player.totalCocks() == 1)
+							if (player.totalCocks() === 1)
 							{
 								outputText("your");
 							}
@@ -370,7 +370,7 @@ package classes.Scenes.Places.Prison
 				{
 					case 0:
 					case 2:
-						if (saidNo == 1)
+						if (saidNo === 1)
 						{
 							outputText("\"<i>Remember, slave, when you've reached the point where you need your orgasm you have my permission to fall to your knees and ask for it.</i>\"\n\n");
 						}
@@ -394,11 +394,11 @@ package classes.Scenes.Places.Prison
 						}
 						else if (player.hasCock())
 						{
-							if (player.totalCocks() == 1)
+							if (player.totalCocks() === 1)
 							{
 								outputText("Your silly little cock is");
 							}
-							else if (player.totalCocks() == 1)
+							else if (player.totalCocks() === 1)
 							{
 								outputText("Your silly pair of cocks are");
 							}
@@ -408,7 +408,7 @@ package classes.Scenes.Places.Prison
 							}
 							
 							outputText(" going to have the flavor and scent of my cum for a month -- not that anyone other than you is likely to taste ");
-							if (player.totalCocks() == 1)
+							if (player.totalCocks() === 1)
 							{
 								outputText("it");
 							}
@@ -428,11 +428,11 @@ package classes.Scenes.Places.Prison
 				menu();
 				if (sceneVariation < 4)
 				{
-					if (saidNo == 1 && player.will > prison.prisonWillCost(3))
+					if (saidNo === 1 && player.will > prison.prisonWillCost(3))
 					{
 						addButton(0,"Resist",prisonCaptorFeedingOrgasmTrainingAccept,3);
 					}
-					else if (saidNo == 0)
+					else if (saidNo === 0)
 					{
 						addButton(0,"Endure",prisonCaptorFeedingOrgasmTrainingAccept,3);
 					}
@@ -441,7 +441,7 @@ package classes.Scenes.Places.Prison
 				addButton(1,"Collapse",prisonCaptorFeedingOrgasmTrainingAccept,4);
 				return;
 			}
-			if (branchChoice == "4")
+			if (branchChoice === "4")
 			{
 				outputText("");
 				outputText("Every muscle in your legs has become a twitching, gelatinous mass, and as the last twinkle of willpower within you blinks out they all collapse at once. Thankfully, Mistress Elly is there to support your weight as you fall");
@@ -456,15 +456,15 @@ package classes.Scenes.Places.Prison
 				addButton(0,"Beg to Come",prisonCaptorFeedingOrgasmTrainingAccept,5);
 				return;
 			}
-			if (branchChoice == "5" || branchChoice == "6")
+			if (branchChoice === "5" || branchChoice === "6")
 			{
 				begVariation = totalResistance - resistanceCounter;
 				outputText("");
 				prison.changeEsteem(-1,prison.inPrison);
-				if (resistanceCounter == totalResistance)
+				if (resistanceCounter === totalResistance)
 				{
 					outputText("\"<i>Mistress... may I... ooh...  [if (esteem < 40) <b>please</b>\" else \"please] have permission... haahh... to come?</i>\" you beg between breathy moans.\n\n");
-					if (resistanceCounter == 1)
+					if (resistanceCounter === 1)
 					{
 						outputText("\"<i>Very soon. But first, I think there is something you need to confess to yourself before I allow it.</i>\" Your jaw drops wide in an expression of anguish and yearning. \"<i>Now, slave, ");
 					}
@@ -483,12 +483,12 @@ package classes.Scenes.Places.Prison
 					switch(begVariation)
 					{
 						case 1:
-							if (saidNo == 1)
+							if (saidNo === 1)
 							{
 								outputText("\"<i>Servicing --</i>\"\n\n");
 								outputText("\"<i>Manners, slave.</i>\"\n\n");
 							}
-							if (branchChoice == "5")
+							if (branchChoice === "5")
 							{
 								outputText("\"<i>Mistress... servicing your cock...</i>\" your admission breaks into another lewd moan. Mistress Elly waits with patient delight for you to compose yourself. \"<i>it, ooh... it makes me so horny.</i>\" You're not sure what's more humiliating: the way you're debasing yourself, that you're such a wreck you can barely submit successfully, or that you're not even resisting it anymore.\n\n");
 							}
@@ -498,7 +498,7 @@ package classes.Scenes.Places.Prison
 							}
 							break;
 						case 2:
-							if (branchChoice == "5")
+							if (branchChoice === "5")
 							{
 								outputText("\"<i>Mistress, crawling to you... crawling like a bitch in heat...[if (esteem < 40)  it makes me feel good --\" else \"it makes me feel, uhm...] free, natural... uncomplicated.</i>\" [if (esteem < 40) Almost like your body was built for it.\" else \"Again, there is more truth in your words than you'd like.]\n\n");
 							}
@@ -508,7 +508,7 @@ package classes.Scenes.Places.Prison
 							}
 							break;
 						case 3:
-							if (branchChoice == "5")
+							if (branchChoice === "5")
 							{
 								outputText("\"<i>Mistress, when I feel... aaah... feel you come,[if (esteem < 40)  when you feed me,] when you fill my stomach... haaahhh... it's wonderful[if (esteem < 40) ... it makes me, uhm, happy].</i>\" [if (esteem >= 40) Is it really? You pray it's just your pent up orgasm talking.]\n\n");
 							}
@@ -518,7 +518,7 @@ package classes.Scenes.Places.Prison
 							}
 							break;
 						case 4:
-							if (branchChoice == "5")
+							if (branchChoice === "5")
 							{
 								outputText("\"<i>Mistress...</i>\" Even in your wretched state this is getting harder to do.\n\n");
 								outputText("\"<i>Yes, dear, continue.</i>\"\n\n");
@@ -556,7 +556,7 @@ package classes.Scenes.Places.Prison
 							}
 							break;
 						case 5:
-							if (branchChoice == "5")
+							if (branchChoice === "5")
 							{
 								if (player.esteem < 40)
 								{
@@ -588,7 +588,7 @@ package classes.Scenes.Places.Prison
 							
 							break;
 						case 6:
-							if (branchChoice == "5")
+							if (branchChoice === "5")
 							{
 								if (player.esteem < 20)
 								{
@@ -626,7 +626,7 @@ package classes.Scenes.Places.Prison
 					{
 						outputText("\"<i>Very good, dear. You may come now.</i>\"\n\n");
 					}
-					else if (resistanceCounter == 1)
+					else if (resistanceCounter === 1)
 					{
 						outputText("\"<i>Good [boy]. Now, slave, ");
 					}
@@ -867,7 +867,7 @@ package classes.Scenes.Places.Prison
 		public function prisonCaptorFeedingEvent():Boolean
 		{
 			clearOutput();
-			if (prison.prisonCaptor.captorName != "Elly")
+			if (prison.prisonCaptor.captorName !== "Elly")
 			{
 				outputText("The door opens and a guard tosses a pathetic piece of bread at your feet.\n\n");
 				inventory.takeItem(consumables.P_BREAD, playerMenu);
@@ -1088,7 +1088,7 @@ package classes.Scenes.Places.Prison
 					outputText("you hope that she knows how sorry you are to require her discipline.");
 				}
 				
-				if (player.statusEffectv1(StatusEffects.PrisonCaptorEllyStatus) == 3)
+				if (player.statusEffectv1(StatusEffects.PrisonCaptorEllyStatus) === 3)
 				{
 					outputText("You remove her cock from your mouth, but continue to hold it gently in your hand. Then, assuming an apologetic tone, you ");
 				}
@@ -1189,7 +1189,7 @@ package classes.Scenes.Places.Prison
 				
 				outputText("\n\n");
 				outcomeSelect = rand(5);
-				if (outcomeSelect == 0)
+				if (outcomeSelect === 0)
 				{
 					outputText("To your great relief, you see her look of stern disappointment soften into one of concern and caring. She takes a gentle step towards you then reaches down and lifts you to your feet, cupping your [face] softly in her hands. \"<i>Oh, you poor, pitiful little creature. I can only imagine how hard it must be coming to terms with what you are, and I can see how desperately you want to.</i>\" As she speaks, still cradling your cheek in her left hand, her right descends with delicate purpose. Her fingers trace the nape of your neck, briefly lingering on your collarbone, before slowly snaking their way over your [chest]. A wave of goosebumps follows her touch, and she gives a savage twist to one of your suddenly erect [nipples][if (milkQuantity > 10) , eliciting a tentative spurt of milk in response]. \"<i>Yes, quite desperately.</i>\"\n\n");
 					outputText("A wicked, satisfied smile crosses her lips at your surprised gasp, but just as quickly her expression returns to its previous nurturing state as she pulls you into a sympathetic embrace. Her right hand fondles and pinches at your [nipple] with calculated cruelty, but her left hand now rhythmically strokes up and down your spine, inducing ever stronger waves of gooseflesh which shiver their way through your body. Reflexive or not, the pleasant sensations momentarily overwhelm you causing your [asshole] to pucker uncontrollably and leaving your mind blank as her soothing voice continues to speak.\n\n");
@@ -1220,7 +1220,7 @@ package classes.Scenes.Places.Prison
 					doNext(playerMenu);
 					return;
 				}
-				if (outcomeSelect == 1)
+				if (outcomeSelect === 1)
 				{
 					outputText("You can't help but feel a rush of shame as you see her look of stern disappointment cloud over with pity. She moves back towards the door, pauses to think for a moment, then turns back toward you. \"<i>Apology or not, you've disobeyed me and have not earned the right to eat today. But I have a soft spot for you, little slave, and you have shown that you have a desire to be a better servant. While you should still expect to be punished for anything but absolute obedience, today I will make an exception and reward your desire despite your failure to please me.</i>\" Out of thin air she produces a pitiful loaf of bread and crumbles it into a bowl. With a smile of supreme satisfaction, she begins to milk her cock into it. Before long, the bowl is overflowing with her sticky seed. She sets it on the ground and gives you a playful wink and a flick of her spade-tipped tail before leaving you alone in the cell.\n\n");
 					if (prison.prisonIsRestrained())
@@ -1431,7 +1431,7 @@ package classes.Scenes.Places.Prison
 					outputText("you know you will have to be rude about it to ensure you get the punishment you crave for your failure to live up to your true nature.");
 				}
 				
-				if (player.statusEffectv1(StatusEffects.PrisonCaptorEllyStatus) == 3)
+				if (player.statusEffectv1(StatusEffects.PrisonCaptorEllyStatus) === 3)
 				{
 					outputText(" You pull her cock from your mouth and shrink away, assume a combative tone, and ");
 				}
@@ -1621,7 +1621,7 @@ package classes.Scenes.Places.Prison
 			var doneChoice:Boolean = false;
 			var begChoice:Boolean = false;
 			fastLearner = false;
-			if (branchChoice == "choose")
+			if (branchChoice === "choose")
 			{
 				outputText("[if (esteem < 50) Being][if (esteem >= 50) Allowing yourself to be] taught to call her Mistress may have broken your spirit a bit, but not enough to make following this order even remotely easy. Still, ");
 				if (player.hunger < 40)
@@ -1902,7 +1902,7 @@ package classes.Scenes.Places.Prison
 				if (begChoice) addButton(2, "More!", prisonCaptorFeedingBJTrainingAccept, "beg");
 				return;
 			}
-			if (branchChoice == "done")
+			if (branchChoice === "done")
 			{
 				if (player.obey < 20)
 				{
@@ -1924,7 +1924,7 @@ package classes.Scenes.Places.Prison
 					}
 				}
 			}
-			else if (branchChoice == "beg")
+			else if (branchChoice === "beg")
 			{
 				if (player.esteem < 45)
 				{
@@ -2106,7 +2106,7 @@ package classes.Scenes.Places.Prison
 			var titChoice:Boolean = false;
 			var cuntChoice:Boolean = false;
 			var itemSelector:int = 0;
-			if (branchChoice == "choose")
+			if (branchChoice === "choose")
 			{
 				outputText("You reach a[if (esteem >= 40)  bold but] difficult[if (esteem < 40)  and desperate] decision. ");
 				if (player.hunger < 40)
@@ -2446,7 +2446,7 @@ package classes.Scenes.Places.Prison
 				addButton(2, "Deep Throat", prisonCaptorFeedingBJTrainingPerform, "deepthroat");
 				return;
 			}
-			if (branchChoice == "titfuck")
+			if (branchChoice === "titfuck")
 			{
 				if (player.cor < 20)
 				{
@@ -2565,7 +2565,7 @@ package classes.Scenes.Places.Prison
 				}
 				outputText(" on my dick, you are here for my pleasure, not your own. I think it is time for you to swallow me whole and show me you know what to do with my seed.</i>\"");
 			}
-			else if (branchChoice == "cunt")
+			else if (branchChoice === "cunt")
 			{
 				if (!prison.trainingPet.prisonCaptorPetOptedOut() && player.esteem < 15 && player.cor < 10)
 				{
@@ -2712,7 +2712,7 @@ package classes.Scenes.Places.Prison
 			{
 				outputText(" You shift your weight back into a comfortable kneeling position, return your hands obediently to your lap, and fill your mouth once again with her cock. It isn't long before you are again pumping your mouth along her shaft at your earlier pace, only now each stroke terminates with your [face] flush with her crotch and her tight ball sack slapping lewdly against your chin");
 			}
-			if (branchChoice != "deepthroat")
+			if (branchChoice !== "deepthroat")
 			{
 				outputText(" -- something you would marvel at were you less overcome with lust");
 			}
@@ -2787,7 +2787,7 @@ package classes.Scenes.Places.Prison
 			outputText("\"<i>Nooo... Millth... streth...</i>\" you say, head tilted back so as to avoid spilling as you gargle out the syllables. Despite your best efforts, a waterfall of cum still flows down your chin, the sight of which makes her smile from ear to ear.\n\n");
 			outputText("\"<i>Good [boy]! Oh, you've made me so proud today. You may swallow once I've left -- masturbate too, should you feel the need.</i>\" Her tail gives you one final tantalizing hug, then she releases you with another conspiratorial wink. ");
 			var shortName:Useable = consumables.P_BREAD;
-			if (branchChoice == "titfuck" && player.biggestTitSize() < 3)
+			if (branchChoice === "titfuck" && player.biggestTitSize() < 3)
 			{
 				outputText("\"<i>And, as promised, here's a special meal to help you grow the tits you so clearly desire. Trust me, you've earned it.</i>\" With no further ado she turns and walks to the door, dripping satisfaction with every step she takes.\n\n");
 				itemSelector = rand(4);
@@ -2859,7 +2859,7 @@ package classes.Scenes.Places.Prison
 			var accept:Function = prisonCaptorFeedingTitleTrainingAccept;
 			var reject:Function = prisonCaptorFeedingTrainingReject;
 			var perform:Function = prisonCaptorFeedingTitleTrainingPerform;
-			if (flags[kFLAGS.PRISON_TRAINING_LEVEL] == 0)
+			if (flags[kFLAGS.PRISON_TRAINING_LEVEL] === 0)
 			{
 				outputText("Curled up on the floor in a miserable fog of thought and pondering how you found yourself in this hopeless situation, you are startled by the sound of the door to your cell being quickly opened and confidently slammed shut. You look up to see [captorTitle] [captorName] studying you with an amused expression. Just as when you first met her, you are alarmed by the extent to which her commanding presence, intoxicating charisma, and exotic beauty pacifies you. For some reason, your usual instinct when presented with a threat, to defend yourself with force, refuses to activate  -- and even if it did, ");
 				if (player.level < 3)
@@ -2885,7 +2885,7 @@ package classes.Scenes.Places.Prison
 				outputText("\"<i>The first step is to learn to show your Mistress the proper respect.</i>\" Just as in your first encounter she drifts closer to you as she speaks, overwhelming your senses with her powerful scent. \"<i>All you need to do is politely say one little sentence for me.</i>\" She lightly tilts your chin in her grasp, your eyes drifting down to watch her moist, shapely lips mouth the words you are to learn with a lilting, pliable voice. \"<i>Hello Mistress, how may I serve you today?</i>\" Her thumb grazes across your lower lip and [if (libido >= 60) your mouth involuntarily drifts open, as if inviting the intruder in][if (libido < 60) you blush at the rush of excitement the touch sends through your body]. A knowing smile crosses her face[if (libido >= 60)  and her tail curls behind her back], but she doesn't press the advantage. Instead she backs off, perhaps to see how you react when not so directly under her overpowering influence.\n\n");
 				flags[kFLAGS.PRISON_TRAINING_LEVEL] = 1;
 			}
-			else if (flags[kFLAGS.PRISON_TRAINING_LEVEL] == -1)
+			else if (flags[kFLAGS.PRISON_TRAINING_LEVEL] === -1)
 			{
 				outputText("The door to your cell opens and you look up to see [captorTitle] [captorName] enter the room with an air of stern disappointment. ");
 				if (prison.prisonIsRestrained())
@@ -2967,7 +2967,7 @@ package classes.Scenes.Places.Prison
 			var accept:Function = prisonCaptorFeedingBJTrainingAccept;
 			var reject:Function = prisonCaptorFeedingTrainingReject;
 			var perform:Function = prisonCaptorFeedingBJTrainingPerform;
-			if (flags[kFLAGS.PRISON_TRAINING_LEVEL] == 0)
+			if (flags[kFLAGS.PRISON_TRAINING_LEVEL] === 0)
 			{
 				outputText("The door to your cell opens and you realize it must be feeding time as [captorTitle] [captorName] enters the room with a sense of mischievous purpose. \"<i>Hello, <b>slave</b>,\"</i> she purrs, and punctuates the word with a single forceful tap of her spiked boot heel against the floor. The sharp, harsh clack rings in your ears, bringing an unbidden but now familiar rush of adrenaline to your heart.\n\n");
 				outputText("\"<i>Hello Mistress, how may I serve you today?</i>\"\n\n");
@@ -3053,7 +3053,7 @@ package classes.Scenes.Places.Prison
 				outputText("Abruptly, she stands and walks back across the room, affording you a brief moment to collect your thoughts. \"<i>Now, slave: <b>start crawling</b>.</i>\"\n\n");
 				flags[kFLAGS.PRISON_TRAINING_LEVEL] = 1;
 			}
-			else if (flags[kFLAGS.PRISON_TRAINING_LEVEL] == -1)
+			else if (flags[kFLAGS.PRISON_TRAINING_LEVEL] === -1)
 			{
 				outputText("The door to your cell opens and you realize it must be feeding time as [captorTitle] [captorName] enters the room. ");
 				if (prison.prisonIsRestrained())
@@ -3231,7 +3231,7 @@ package classes.Scenes.Places.Prison
 			var accept:Function = prisonCaptorFeedingOrgasmTrainingAccept;
 			var reject:Function = prisonCaptorFeedingTrainingReject;
 			var perform:Function = prisonCaptorFeedingOrgasmTrainingPerform;
-			if (flags[kFLAGS.PRISON_TRAINING_LEVEL] == 0)
+			if (flags[kFLAGS.PRISON_TRAINING_LEVEL] === 0)
 			{
 				if (prison.prisonIsRestrained())
 				{
@@ -3373,7 +3373,7 @@ package classes.Scenes.Places.Prison
 				outputText("The heat coursing through your body practically begs you to do as you have been told, but even as you[if (corruption > 30)  greedily] lick the salty leavings from her shaft you still feel reluctant to allow her such intimate control over your body.\n\n");
 				flags[kFLAGS.PRISON_TRAINING_LEVEL] = 1;
 			}
-			else if (flags[kFLAGS.PRISON_TRAINING_LEVEL] == -1)
+			else if (flags[kFLAGS.PRISON_TRAINING_LEVEL] === -1)
 			{
 				if (prison.prisonIsRestrained())
 				{
@@ -3660,12 +3660,12 @@ package classes.Scenes.Places.Prison
 			var accept:Function = prisonCaptorFeedingAnalTrainingAccept;
 			var reject:Function = prisonCaptorFeedingTrainingReject;
 			var perform:Function = prisonCaptorFeedingAnalTrainingPerform;
-			if (flags[kFLAGS.PRISON_TRAINING_LEVEL] == 0)
+			if (flags[kFLAGS.PRISON_TRAINING_LEVEL] === 0)
 			{
 				outputText("(Placeholder) Intro to new level of training.\n\n");
 				flags[kFLAGS.PRISON_TRAINING_LEVEL] = 1;
 			}
-			if (flags[kFLAGS.PRISON_TRAINING_LEVEL] == -1)
+			if (flags[kFLAGS.PRISON_TRAINING_LEVEL] === -1)
 			{
 				outputText("(Placeholder) Intro to reduced training level.\n\n");
 				flags[kFLAGS.PRISON_TRAINING_LEVEL] = 1;
@@ -3748,12 +3748,12 @@ package classes.Scenes.Places.Prison
 				doNext(playerMenu);
 				return;
 			}
-			if (flags[kFLAGS.PRISON_TRAINING_LEVEL] == 0)
+			if (flags[kFLAGS.PRISON_TRAINING_LEVEL] === 0)
 			{
 				outputText("(Placeholder) Intro to new level of training.\n\n");
 				flags[kFLAGS.PRISON_TRAINING_LEVEL] = 1;
 			}
-			if (flags[kFLAGS.PRISON_TRAINING_LEVEL] == -1)
+			if (flags[kFLAGS.PRISON_TRAINING_LEVEL] === -1)
 			{
 				outputText("(Placeholder) Intro to reduced training level.\n\n");
 				flags[kFLAGS.PRISON_TRAINING_LEVEL] = 1;
@@ -3851,12 +3851,12 @@ package classes.Scenes.Places.Prison
 				return;
 			}
 			var lustChange:int = 0;
-			if (flags[kFLAGS.PRISON_TRAINING_LEVEL] == 0)
+			if (flags[kFLAGS.PRISON_TRAINING_LEVEL] === 0)
 			{
 				outputText("(Placeholder) Intro to new level of training.\n\n");
 				flags[kFLAGS.PRISON_TRAINING_LEVEL] = 1;
 			}
-			if (flags[kFLAGS.PRISON_TRAINING_LEVEL] == -1)
+			if (flags[kFLAGS.PRISON_TRAINING_LEVEL] === -1)
 			{
 				outputText("(Placeholder) Intro to reduced training level.\n\n");
 				flags[kFLAGS.PRISON_TRAINING_LEVEL] = 1;
@@ -3981,7 +3981,7 @@ package classes.Scenes.Places.Prison
 		{
 			var newval1:* = undefined;
 			var newval2:* = undefined;
-			if (!player.hasStatusEffect(StatusEffects.PrisonCaptorEllyQuest) || !(player.statusEffectv1(StatusEffects.PrisonCaptorEllyQuest) == questID))
+			if (!player.hasStatusEffect(StatusEffects.PrisonCaptorEllyQuest) || !(player.statusEffectv1(StatusEffects.PrisonCaptorEllyQuest) === questID))
 			{
 				return;
 			}

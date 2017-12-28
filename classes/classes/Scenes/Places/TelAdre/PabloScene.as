@@ -14,7 +14,7 @@ package classes.Scenes.Places.TelAdre
 		public function pabloIntro(textOutput:Boolean = true):Boolean {
 			if (getGame().time.hours > 14 && getGame().time.hours <= 20) {
 				if (textOutput) {
-					if (flags[kFLAGS.PABLO_MET] == 0) 
+					if (flags[kFLAGS.PABLO_MET] === 0) 
 						outputText("\n\nOver in the back, there is a short, no, -really- short figure doing chin-ups. He couldn’t possibly stand more than three and a half feet tall. He is shirtless, wearing only a pair of shorts. His skin is a bright peach color with a hint of blush on his nose and cheeks. He is lithe, but still noticeably muscular. Behind him swings a tail that nearly matches his body height in length, tipped with a tiny, arrowhead-like shape. A pair of small, bat-like wings grow out from his shoulderblades. His toes end in sharp claws, as well as his fingers. Your attention then turns to his face. It is slightly effeminate, though still visibly masculine. Atop his head is a mop of shaggy, curly, unkempt hair, sandy blonde hair. Squinting, you can make out a pair of tiny horns under the mop on his head, as well as a pair of cute, pointed ears. His eyes are almost completely black, save for his vermillon irises. Come to think of it, he kind of looks like… an imp? No, not in Tel’Adre. There’s no way he can be an imp. Or is there?");
 					else
 						outputText("\n\nAs usual, Pablo is in the back doing his usual chin-up workout.");
@@ -35,12 +35,12 @@ package classes.Scenes.Places.TelAdre
 		
 		private function checkPablosVirginity(anal:Boolean):void {
 			if (anal) {
-				if (flags[kFLAGS.PABLO_GOT_DICKED_ANALLY] == 0) {
+				if (flags[kFLAGS.PABLO_GOT_DICKED_ANALLY] === 0) {
 					outputText("<b>You have claimed Pablo's anal virginity!</b>");
 				}
 			}
 			else {
-				if (flags[kFLAGS.PABLO_GOT_DICKED_VAGINALLY] == 0) {
+				if (flags[kFLAGS.PABLO_GOT_DICKED_VAGINALLY] === 0) {
 					outputText("<b>You have claimed Pablo's vaginal virginity!</b>");
 				}
 			}
@@ -49,7 +49,7 @@ package classes.Scenes.Places.TelAdre
 		//Introduction to Pablo
 		public function approachPablo():void {
 			clearOutput();
-			if (flags[kFLAGS.PABLO_MET] == 0) {
+			if (flags[kFLAGS.PABLO_MET] === 0) {
 				outputText("You approach the imp-like creature, a whole swarm of questions flooding your mind. Noticing you, he hops down from his bar.");
 				outputText("\n\n\"<i><i>Hello there. I don’t believe we’ve met. The name’s Pablo. And you?</i></i>\"");
 				outputText("\n\n\"<i>" + player.short + ",</i>\" you respond.");
@@ -61,7 +61,7 @@ package classes.Scenes.Places.TelAdre
 				outputText("\n\n\"<i>They did,</i>\" he begins, lowering his head and shuffling his feet. He can’t help but chuckle as he looks back on the day he first arrived in the city. \"<i>I had a lot of explaining to do, and it certainly wasn’t easy. In the end, it all came down to this weird corruption scan with some kind of special crystal. You could imagine how surprised they were when I passed their test.</i>\"");
 				outputText("\n\nIf he wasn’t always like this, what was he? And how did he get this way? You really hope he doesn’t mind you asking.");
 				outputText("\n\n\"<i>If you can believe it, I was a human once. I was an adventurer, you see. One day, I stumbled through this portal, and voila! I was in this place, the land of Mareth!</i>\"");
-				outputText("\n\nYour eyes widen. He used to be a human, just like you " + (player.race() == "human" ? "are" : "were") + "!");
+				outputText("\n\nYour eyes widen. He used to be a human, just like you " + (player.race() === "human" ? "are" : "were") + "!");
 				outputText("\n\n\"<i>Eventually, I got hungry, -really- hungry. For a while, food was hard to come by, and I had to make do with whatever I could find. Sometimes the imps would have this strange food on them, and sometimes they would have drinks. I think you can see where I’m going here. Long story short, the things I ate ended up changing me.</i>\"");
 				outputText("\n\nYou intently continue to listen to his story.");
 				outputText("\n\n\"<i>My hair wasn’t always this color, either. It was black.</i>\" he says, twirling one of his sandy blonde locks. \"<i>Some crazy bitch out in the desert made it that way, called herself a Sand Witch. Heh. She threw this hissy fit when I refused to let her cast a spell on me. What else was I supposed to do? She wouldn’t even tell me what kind of spell it was. In the end, I gave in just to calm her crazy tits. I’ve gotten kinda used to this color, actually. But I guess that’s enough about me. Perhaps you and I could work out together?</i>\"");
@@ -82,9 +82,9 @@ package classes.Scenes.Places.TelAdre
 		//Stop! Workout time!
 		private function workoutWithPablo():void {
 			clearOutput();
-			if (flags[kFLAGS.PABLO_WORKOUT_COUNTER] == 0) {
+			if (flags[kFLAGS.PABLO_WORKOUT_COUNTER] === 0) {
 				outputText("You nod at the faux imp, telling him that you could use some exercise.");
-				if (flags[kFLAGS.LIFETIME_GYM_MEMBER] == 0) outputText("\n\nThe centauress working the door walks up to collect her fee, and you drop 10 gems for an hour workout into her hand.");
+				if (flags[kFLAGS.LIFETIME_GYM_MEMBER] === 0) outputText("\n\nThe centauress working the door walks up to collect her fee, and you drop 10 gems for an hour workout into her hand.");
 				outputText("\n\n\"<i>Great,</i>\" Pablo responds with a grin. \"<i>There’s another bar next to mine. Maybe you could try doing some chin-ups?</i>\"");
 				outputText("\n\nWith that, Pablo flutters his wings, lifting himself to his bar.");
 				outputText("\n\n");
@@ -113,7 +113,7 @@ package classes.Scenes.Places.TelAdre
 		
 		private function declineWorkout():void {
 			clearOutput();
-			if (flags[kFLAGS.PABLO_WORKOUT_COUNTER] == 0) {
+			if (flags[kFLAGS.PABLO_WORKOUT_COUNTER] === 0) {
 				outputText("You politely decline, not really feeling up to working out at the moment.");
 				outputText("\n\n\"<i>It’s alright,</i>\" the imp says. \"<i>You’re welcome to work out with me anytime, though.</i>\"");
 				outputText("\n\nWith that, you make your leave.");
@@ -144,7 +144,7 @@ package classes.Scenes.Places.TelAdre
 			outputText("\n\n\"<i>No, no, damn it, no!</i>\" he whimpers, hastily wrapping the towel around him. \"<i>I was hoping that no-one would ever see me like this!</i>\"");
 			outputText("\n\nYou look down at him, confused. Was he referring to the fact that he was a maleherm? Why, in a place like Mareth, would someone be embarrassed by such a thing, let alone want to keep it a secret? You elect to ask him that exactly.");
 			outputText("\n\nThe imp-morph removes his hands from his face at looks up at you, nodding sadly.");
-			outputText("\n\nBut why does that embarrass him so much? You’ve come across many just like him" + (player.gender == 3 ? ", and you happen to be one yourself." : "."));
+			outputText("\n\nBut why does that embarrass him so much? You’ve come across many just like him" + (player.gender === 3 ? ", and you happen to be one yourself." : "."));
 			outputText("\n\nHe looks to the side for a moment, and then back to you.");
 			outputText("\n\n\"<i>You mean… You’re actually interested in me, and why I’d want to hide it?</i>\" he asks.");
 			outputText("\n\nOf course you’re interested. You’re friends, aren’t you?");

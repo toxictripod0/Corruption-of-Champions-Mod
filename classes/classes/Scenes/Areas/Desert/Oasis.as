@@ -116,7 +116,7 @@ internal function oasisSexing():void {
 		//Multizz
 		if (player.cocks.length > 1) {
 			outputText("As you lie there under the needy demon your other ");
-			if (player.cocks.length == 2) outputText(player.cockDescript(1) + " is");
+			if (player.cocks.length === 2) outputText(player.cockDescript(1) + " is");
 			else outputText("cocks are");
 			outputText(" taken by other hands and other eager pussies ranging from painfully, childishly tight to freakishly huge!");
 		}
@@ -126,7 +126,7 @@ internal function oasisSexing():void {
 	//Girly bitz funtimes!
 	if (player.vaginas.length > 0) {
 		//Herms only!
-		if (player.gender == 3) outputText("From your cock it is only a tiny trip downward between your legs before the demons discover something new to play with.  ");
+		if (player.gender === 3) outputText("From your cock it is only a tiny trip downward between your legs before the demons discover something new to play with.  ");
 		//Girlies only!
 		else outputText("The demons quickly find your " + player.vaginaDescript(0) + " and tussle eagerly for position at your entrance, first with hands and then with a wide range of demonic dicks.  ");
 		//gaping cunners!
@@ -145,8 +145,8 @@ internal function oasisSexing():void {
 		//Preggers chance!
 		player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP, 90);
 	}
-	if (player.gender == 3) outputText(images.showImage("demonmob-surround-herm"));
-	else if (player.gender == 2) outputText(images.showImage("demonmob-surround-female"));
+	if (player.gender === 3) outputText(images.showImage("demonmob-surround-herm"));
+	else if (player.gender === 2) outputText(images.showImage("demonmob-surround-female"));
 	else outputText(images.showImage("demonmob-surround-male"));
 	//Buttbutt buuuuuttt
 	if (player.gender > 0) outputText("However, the demons are interested in every part of you, not just your crotch.  ");
@@ -166,7 +166,7 @@ internal function oasisSexing():void {
 	//Newline for oral!
 	outputText("\n\nSoon even your mouth is taken by a demoness lowering her slick honeypot down onto your lips. You lick and suck as she moans like a whore atop your head. It's impossible to count how many times she comes and so you just relax into a rhythm of licking and sucking, interrupted only by your own bone-creaking orgasms as the demonic attentions to the rest of your body drive you over the edge time and time again.");
 	//Non-preggers text!
-	if (player.pregnancyIncubation == 0 && player.gender > 1) {
+	if (player.pregnancyIncubation === 0 && player.gender > 1) {
 		//Newline for potential preggers?
 		outputText("\n\n");
 		outputText("You do your best to keep a vague mental catalogue of what has been in where, but eventually it becomes impossible to remember the type or number of demonic dicks that have filled you with their cum. The sand below your ass is wet with seed that has spilled out of your overflowing " + player.vaginaDescript(0) + " and there is every indication of more to come.\n\n");
@@ -223,7 +223,7 @@ private function oasisBadEnd():void {
 	outputText("\"<i>What the hell are you talking about? I'm no one's slave!</i>\" you yell in indignation, only to cry out in pain as the tribe leader's hand comes down and smacks you across the face. Your head jerks back from the force of the blow, successfully silencing you.\n\n");
 	outputText("\"<i>There will no longer be any of that back talk, slave. As for what I'm talking about... After all of our encounters with you, my tribesmen and I have made a decision.</i>\" The leader's smirk widens as he reaches down and grips your face tightly, forcing you to look up at him. His eyes look you over appraisingly as he pulls out a black collar with a long chain attached and fastens it to your neck. His other hand reaches down to one of your " + player.nippleDescript(0) + "s and grabs it roughly, giving it a hard squeeze and causing you to let out a small moan of pain and pleasure. He relinquishes his grip and walks around you, continually looking you over and scrutinizing your body from every angle. \"<i>We have decided that you would make an excellent addition to our group, and have laid claim to you as our sex slave... to be used in any way that we want.</i>\" He stops in front of you and continues, \"<i>We were lucky to catch you while you were still unconscious, before you could sneak off on us. I will personally enjoy using you for my own purposes. Maybe I'll even use you to carry my children once you're properly broken in.</i>\"\n\n");
 	//[If herm] 
-	if (player.gender == 3) {
+	if (player.gender === 3) {
 		if (player.isTaur()) outputText("\"<i>Everyone will have a great time playing with you,</i>\" the leader says, smirking wider still as he stares at your centaur body. He reaches out and gives your " + player.buttDescript() + " a hard smack, causing you to yelp and quickly stand to your feet. You stagger a bit as your legs strain against the shackles as you stand. Without warning, he sticks his fingers inside of your " + player.assholeDescript() + " and stretches it out as his free hand reaches between your legs to play with both your " + player.vaginaDescript(0) + " and " + player.cockDescript(0) + ". You gasp and moan in pleasure as your cock becomes erect in his hand. He laughs as he lets go and moves back in front of you. \"<i>Plus we could use you to carry our heavy loads like a pack animal. You have the perfect body for it.</i>\"\n\n"); 
 		else outputText("His smirk widens even more as he stares down at your uncovered " + player.cockDescript(0) + " laying flaccidly between your legs against the hot desert sand. You gasp in surprise as he suddenly reaches down and takes a firm hold of your " + player.cockDescript(0) + ". He strokes it and gives it a rough squeeze, making you whimper sensually as it becomes fully erect in his hand. He laughs as he lets it go, \"<i>Our girls will definitely be having fun with you, slave.</i>\"\n\n");
 	}

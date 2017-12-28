@@ -34,7 +34,7 @@ package classes.Scenes.Areas.Mountain
 		
 		public function wormsEntice():void {
 			//FAIL
-			if (rand(2) == 0) {
+			if (rand(2) === 0) {
 				if (player.lust100 < 50) outputText("The worm colony stands before you and begins secreting a significant amount of slime. You are perplexed as to why the worms have done this. You shrug your shoulders and remain on guard.\n");
 				else outputText("The worm colony shambles over to you and attempts to grapple you. Quickly sidestepping the clumsy movements of the creature, you avoid what could have been a horrible fate as the mass falls over and splatters in its failed attempt to engulf you.\n");
 				combatRoundOver();
@@ -65,7 +65,7 @@ package classes.Scenes.Areas.Mountain
 		override protected function performCombatAction():void
 		{
 			//Worms have different AI
-			if (rand(2) == 0)
+			if (rand(2) === 0)
 				special1();
 			else special2();
 		}

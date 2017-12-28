@@ -23,22 +23,22 @@ package classes.Scenes.Areas.Forest
 		public function tamaniHypnoTease():void {
 			var selector:Number = rand(3);
 			//Choose 1 of 3 variations
-			if (selector == 0) outputText("Tamani smiles and shifts her leather straps, pulling one into the puffy gash that is her vagina.  She groans out loud, sliding the studded leather band into her outer lips and sawing it along her clit.  Her whole body blushes as she pulls it free, running a fingertip up the now wet strip of leather, \"<i>Mmm, can't you see how much my pussy needs a man inside it?  Be a good husband and fuck Tamani full!  You know you want to.</i>\"\n\n");
-			if (selector == 1) outputText("Tamani saunters up to you, sliding her fingers down to each side of her pussy and spreading them.  Your eyes are drawn to her honeyed tunnel, unable to look away she gets closer.  She whispers, \"<i>Your cock knows what it needs.  Just be a good husband and obey your dick, it KNOWS how badly you need mistress's pussy.</i>\"\n\n");
-			if (selector == 2) outputText("Tamani turns around and bends down, pressing her hands into the dirt as she kicks her legs apart.  Your stare open-mouthed at her bouncy ass-cheeks and the tantalizingly wet entrance of her slit.  She smirks and offers, \"<i>You've cum so many times inside me, why resist when you can give in and feel that pleasure again today?  Come on husband, don't make Tamani beg...</i>\"\n\n");
+			if (selector === 0) outputText("Tamani smiles and shifts her leather straps, pulling one into the puffy gash that is her vagina.  She groans out loud, sliding the studded leather band into her outer lips and sawing it along her clit.  Her whole body blushes as she pulls it free, running a fingertip up the now wet strip of leather, \"<i>Mmm, can't you see how much my pussy needs a man inside it?  Be a good husband and fuck Tamani full!  You know you want to.</i>\"\n\n");
+			if (selector === 1) outputText("Tamani saunters up to you, sliding her fingers down to each side of her pussy and spreading them.  Your eyes are drawn to her honeyed tunnel, unable to look away she gets closer.  She whispers, \"<i>Your cock knows what it needs.  Just be a good husband and obey your dick, it KNOWS how badly you need mistress's pussy.</i>\"\n\n");
+			if (selector === 2) outputText("Tamani turns around and bends down, pressing her hands into the dirt as she kicks her legs apart.  Your stare open-mouthed at her bouncy ass-cheeks and the tantalizingly wet entrance of her slit.  She smirks and offers, \"<i>You've cum so many times inside me, why resist when you can give in and feel that pleasure again today?  Come on husband, don't make Tamani beg...</i>\"\n\n");
 
 			//REACTIONS
 			//LOW HYPNO VALUE:
 			if (flags[kFLAGS.TAMANI_TIMES_HYPNOTISED] < 5) {
 				selector = rand(3);
-				if (selector == 0) outputText("You reluctantly pull your stare away from the heavenly entrance between her legs.  There's an urge to walk over to her and plunge yourself inside her over and over, but you dismiss it.");
-				if (selector == 1) outputText("You find it hard to pull your gaze from her inviting twat, but you manage.  You shake your head, clearing away thoughts of fertilizing your wife.  Her rhetoric must be getting to you.");
-				if (selector == 2) outputText("No matter the case, her actions shifted a fair bit of your blood-flow to your groin.");
+				if (selector === 0) outputText("You reluctantly pull your stare away from the heavenly entrance between her legs.  There's an urge to walk over to her and plunge yourself inside her over and over, but you dismiss it.");
+				if (selector === 1) outputText("You find it hard to pull your gaze from her inviting twat, but you manage.  You shake your head, clearing away thoughts of fertilizing your wife.  Her rhetoric must be getting to you.");
+				if (selector === 2) outputText("No matter the case, her actions shifted a fair bit of your blood-flow to your groin.");
 			}
 			//MEDIUM HYPNO VALUE:
 			else if (flags[kFLAGS.TAMANI_TIMES_HYPNOTISED] < 10) {
 				selector = rand(2);
-				if (selector == 0) {
+				if (selector === 0) {
 					outputText("With effort you manage to wrench your eyes away from the inviting folds of Tamani's vagina.  ");
 					if (player.totalCocks() > 1) outputText("Each of y");
 					else outputText("Y");
@@ -63,7 +63,7 @@ package classes.Scenes.Areas.Forest
 			//HIGH HYPNO VALUE
 			else {
 				selector = rand(2);
-				if (selector == 0) {
+				if (selector === 0) {
 					outputText("You barely manage to step yourself from lunging forward to bury your mouth between your mistress's legs.  Hard and trembling between your legs, ");
 					if (player.totalCocks() > 1) outputText("each of ");
 					outputText("your " + player.multiCockDescriptLight() + " aches with need.  You battle with the compulsion to kneel before your short, stacked mistress and perform your duties as her breeder husband.");
@@ -96,7 +96,7 @@ package classes.Scenes.Areas.Forest
 			clearOutput();
 			if (hpVictory){
 				if (player.totalCocks() > 0) {
-					if (rand(2) == 0) game.forest.tamaniScene.tamaniSexLost();
+					if (rand(2) === 0) game.forest.tamaniScene.tamaniSexLost();
 					else game.forest.tamaniScene.tamaniSexLetHer();
 				}else {
 					outputText("Tamani sighs as you begin to lose conscious, \"<i>You dummy, why'd you get rid of the fun parts?</i>\"");
@@ -105,9 +105,9 @@ package classes.Scenes.Areas.Forest
 			} else {
 				if (player.totalCocks() > 0) {
 				//hypnoslut loss scene
-				if (game.flags[kFLAGS.TAMANI_TIMES_HYPNOTISED] > 19 && rand(2) == 0) {
+				if (game.flags[kFLAGS.TAMANI_TIMES_HYPNOTISED] > 19 && rand(2) === 0) {
 					game.forest.tamaniScene.getRapedByTamaniYouHypnoSlut();
-				} else if (rand(2) == 0) game.forest.tamaniScene.tamaniSexLost();
+				} else if (rand(2) === 0) game.forest.tamaniScene.tamaniSexLost();
 				else game.forest.tamaniScene.tamaniSexLetHer();
 				} else {
 					outputText("You give into your lusts and masturbate, but Tamani doesn't seem to care.  She kicks and punches you over and over, screaming, \"<i>You dummy, why'd you get rid of the fun parts?</i>\"");

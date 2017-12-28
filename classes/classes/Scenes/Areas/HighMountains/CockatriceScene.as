@@ -16,7 +16,7 @@ package classes.Scenes.Areas.HighMountains {
 			//spriteSelect(75);
 			clearOutput();
 			credits.authorText = "MissBlackthorne";
-			if (flags[kFLAGS.TIMES_ENCOUNTERED_COCKATRICES] == 0) { //First encounter:
+			if (flags[kFLAGS.TIMES_ENCOUNTERED_COCKATRICES] === 0) { //First encounter:
 				outputText("As you follow the trails in the high mountains, the rocky terrain becomes less stable, the path devolving into a series of loose crags with gravel like sediment surrounding large boulders and rough stepping stone-like structures. "
 				          +"As you cling to the rock face trying to step from one rock to another you see something in the distance. "
 				          +"A figure, perched on one of the outcroppings with surprising ease.\n\n");
@@ -160,7 +160,7 @@ package classes.Scenes.Areas.HighMountains {
 			outputText("\n\nUnder you, the cockatrice groans, his cock twitching as his seed begins to surge up it, bloating his member a little as it jets out in thick ropes, determined to thoroughly coat your womb. "
 			          +"The pair of you lay there panting for a while, him running a hand through your hair as he chirps softly. "
 			          +"When you finally climb off him, [if (cumQuantity > 350)your body slick with your release, with] his seed dripping down your thighs as you ");
-			outputText(player.armor != ArmorLib.NOTHING ? "get dressed,":"grab your gear,");
+			outputText(player.armor !== ArmorLib.NOTHING ? "get dressed,":"grab your gear,");
 			outputText(" you can’t help but smile at him. Already standing again he shakes himself, trying to get himself presentable, but his feathers are puffed out in random directions."
 			          +" The goofball has sex-hair! With a slight laugh, you give him a kiss on the tip of his beak before telling him you had fun.\n\n");
 			outputText("\"So did I. Let’s do this again sometime.\" he says with a smile before giving himself one last smooth over before "
@@ -225,7 +225,7 @@ package classes.Scenes.Areas.HighMountains {
 			else outputText(" your asshole twitching and hungrily wringing him dry.\n\n");
 			outputText("You both sit there for a while, enjoying the afterglow and the warmth of each others bodies. "
 			          +"You spend a little time enjoying the softness of his feathers on your skin before you remove yourself from him with a wet ‘shlorp’. ");
-			if (player.armor != ArmorLib.NOTHING) outputText("As you get dressed you give him another glance over. ");
+			if (player.armor !== ArmorLib.NOTHING) outputText("As you get dressed you give him another glance over. ");
 			else outputText("As you grab your gear you give him another glance over. ");
 			outputText("Already standing again he shakes himself, trying to get himself presentable, but it does nothing as his feathers are puffed out in random directions. "
 			          +"The goofball has sex-hair! With a slight laugh, you give him a kiss on the tip of his beak before telling him you had fun.\n\n");
@@ -273,7 +273,7 @@ package classes.Scenes.Areas.HighMountains {
 			outputText(images.showImage("cockatrice-win-buttfuck"));
 			if (player.longestCockLength() <= 12) {
 				outputText("You slowly feed more of your [cock] into him, reveling in the hot, twitching walls that cling to you, trying to wring you dry with each inch you see disappear. ");
-				if (player.balls > 0) outputText("Your [balls] " + (player.balls == 1 ? "presses":"press") + " firmly against his fluffy cheeks, caressed by his downy plumage in a delightful way.");
+				if (player.balls > 0) outputText("Your [balls] " + (player.balls === 1 ? "presses":"press") + " firmly against his fluffy cheeks, caressed by his downy plumage in a delightful way.");
 			}
 			else outputText(" You slowly try to feed more of your [cock] into his tight cavity, but soon the crushing tightness becomes too much to handle. You sigh a little as you withdraw to a more comfortable position, disappointed you’re too big to give him a proper reaming. ");
 			outputText("Each movement you make causes him to shudder, his cock steadily leaking pre as he moans at first in pain and soon in pleasure.\n\n");
@@ -287,7 +287,7 @@ package classes.Scenes.Areas.HighMountains {
 			if (player.balls > 0) outputText("You feel your [balls] churning, heavy with thick seed that you can’t wait to pour into him.");
 			else outputText("You feel heat welling up in your middle, your cock swelling in preparation of the filling you’re going to give him.");
 			outputText(" With one last thrust you ready yourself for release, smacking those firm cheeks one more time, only to let out a strangled groan as your cock pulses within him with no effect,");
-			if (player.balls > 0) outputText(" your balls tightening and clenching as " + (player.balls == 1 ? "it gets":"they get") + " hotter and hotter");
+			if (player.balls > 0) outputText(" your balls tightening and clenching as " + (player.balls === 1 ? "it gets":"they get") + " hotter and hotter");
 			else outputText(" while the heat in your belly blazes into an inferno");
 			outputText("[if (player.hasKnot) and your knot swells, further plugging you inside him]. ");
 			if (player.cocks.length > 1) outputText("Your other " + (player.cocks.length > 2 ? "cocks only manage":"cock only manages") + " to spurt white tinged pre that dribbles down your lengths. ");
@@ -407,14 +407,14 @@ package classes.Scenes.Areas.HighMountains {
 			          +"You contemplate playing with him longer, idly toying with the idea of rubbing him to release a few times, only to pin him again and get him wonderfully backed up.\n");
 			outputText("\"Show me how much you want it.\" you say with a smirk, looking over your shoulder at him. With a grunt of effort and purple flushed cheeks he nods, stilling himself suddenly. Confusion is evident on your face before your expression melts into a shocked ‘o’. "
 			          +"Something has squirmed up against your [if (hasVagina)pussy|[if (player.balls > 0)ball[if (player.balls > 1)s]|cock]], something thick and scaly, rubbing itself over you like a perverse fleshy dildo, seeking out your genitals with surprising accuracy."
-			          +"[if (hasVagina == false)It coils around your cock, squeezing you in tight pulses[if (player.balls > 0) as closer to the base gently rubs back and forth against your [balls]], hugging you in a warm and soft sheath that flexes with each movement. That’s one impressive tail!|"
+			          +"[if (hasVagina === false)It coils around your cock, squeezing you in tight pulses[if (player.balls > 0) as closer to the base gently rubs back and forth against your [balls]], hugging you in a warm and soft sheath that flexes with each movement. That’s one impressive tail!|"
 			          +"It prods the entrance to your pussy, the tapered tip slowly working its way in and stretching you as more of it follows. Slow thrusts cause the scaly appendage to rub your clit each time it stretches you wide, making you feel full as you clench around the intruder. That’s one talented tail!] "
 			          +"All the while his cock remains pressed against your back door, twitching and oozing as his tail works your sex.\n\n");
 			outputText(images.showImage("cockatrice-ridehim-taur-buttfuck"));
 			outputText("With a quick shift of your hips and a dip of your forelegs, you manage to slip his length into your [if (analLooseness <= 1)tight|practised] passageway, reveling in the dual stimulation you are receiving. "
 			          +"His nubby length drags along your walls with each backwards thrust you make, while those delightful bumps tease your [if (analLooseness > 1)stretched|eager] ring on each exit. "
 			          +"His tail’s ministrations lessen as you fuck yourself on his cock, his hips bucking to meet you each time you thrust instead. "
-			          +"[if (hasVagina == false) The looser grip on your cock lets you glide through his coiled tail with ease, giving you a smooth tailjob, with his tail tensing each time you clench on his purple prick.| "
+			          +"[if (hasVagina === false) The looser grip on your cock lets you glide through his coiled tail with ease, giving you a smooth tailjob, with his tail tensing each time you clench on his purple prick.| "
 			          +"Though his tails thrusts are weaker now, your movements make up for it, fucking you on both his cock and his tail, the two tapered lengths rubbing against other another through the thin wall separating them.] "
 			          +"His cock twitches as his claws dig into your rear, his hips pumping into you hard as he pulls you against him as best he can. "
 			          +"With a forceful thrust he blows his load in your ass, seed coating your innards while his tail [if (hasCock)ripples around your cock|thrusts deep into your cunt]. "
@@ -434,7 +434,7 @@ package classes.Scenes.Areas.HighMountains {
 			const CHOICE_PUSSY:int = 1;
 			const CHOICE_COCK:int  = 2;
 			var choice:int;
-			if (player.hasCock() && player.hasVagina()) choice = rand(2) == 0 ? CHOICE_PUSSY : CHOICE_COCK; //50/50 chance for herms
+			if (player.hasCock() && player.hasVagina()) choice = rand(2) === 0 ? CHOICE_PUSSY : CHOICE_COCK; //50/50 chance for herms
 			else choice = player.hasVagina() ? CHOICE_PUSSY : CHOICE_COCK;
 			//spriteSelect(75);
 			clearOutput();
@@ -452,7 +452,7 @@ package classes.Scenes.Areas.HighMountains {
 			          +"As you use your behind to tease his girthy cock you run your hands over your chest [if (hasbreasts)cupping your [breasts]|trailing over your pecs] as you pinch your [nipples]. "
 			          +"You feel wetness trail down your crack, the cockatrice breathing heavily as he enjoys the show and his cock slides against your pucker easier. "
 			          +"The nubby texture of his cock makes you shudder, your asshole quivering as your [if (hasCock)[cock] hardens|[cunt] moistens].\n\n");
-			if (choice == CHOICE_PUSSY) {
+			if (choice === CHOICE_PUSSY) {
 				outputText("You chuckle as you slip two fingers into your [pussy], exaggerating each thrust and moan as you continue to rock against his freely leaking cock. "
 				          +"You look at the cockatrice over your shoulder with a lusty gaze as you pick up speed, starting to schlick yourself with earnest, your clit poking out and begging for your touch."
 				          +"[if (player.balls > 0) You cup your [balls] with your free hand, rolling them between your fingers as they begin to roil with seed]"
@@ -477,7 +477,7 @@ package classes.Scenes.Areas.HighMountains {
 			          +"With a pulsing shudder, his cock swells and lets loose rope after rope of hot cum deep into your ass. "
 			          +"He nips your shoulder as he empties himself into you, triggering you to lose your cool. You cum hard,"
 			          +"[if (hasCock) your [cock] spurting pearly white cum against the wall"
-			          +"[if (cumQuantity > 350) painting it white by the time it stops]][if (hasCock == true && hasVagina == true) and]"
+			          +"[if (cumQuantity > 350) painting it white by the time it stops]][if (hasCock === true && hasVagina === true) and]"
 			          +"[if (hasVagina) your [pussy] soaking your thighs as your walls flutter]"
 			          +"[if (player.balls > 0), heat spreading through your clenched [balls] as "
 			          +"[if (player.balls > 1)they slowly relax|it slowly relaxes]].\n\n");
@@ -500,14 +500,14 @@ package classes.Scenes.Areas.HighMountains {
 			// Intro text
 			outputText("You slowly make your way over to the cockatrice, ");
 			player.biggestTitSize();
-			if (player.armor != ArmorLib.NOTHING) outputText("stripping out of your [armor] as you approach, ");
+			if (player.armor !== ArmorLib.NOTHING) outputText("stripping out of your [armor] as you approach, ");
 			outputText("standing over him as you give him a good look over. Now he isn’t rushing you, you can see he has quite the charming face, a dashing mix of mischievous and kind. As you present yourself to him, he looks up at you, ");
 			if (player.biggestTitSize() >= BreastCup.H) outputText("or at least tries to, his view of your face obstructed by your bountiful breast flesh.");
 			else outputText("as if asking for permission with his gaze. While he may be head level with your groin which would suggest your intent, he hasn’t moved to touch you once.");
 			outputText(" The moment you tell him to start he smiles, scaled hands slowly sliding up the back of your [if (isNaga)serpentine lower body|calves]."
 			          +" Surprisingly smooth and warm, his powerful grip massages up your [if (isNaga)tail|legs], palms coming to rest on your [butt] as he leans forward."
 			          +" The heat of his breath on your [if (hasCock)[cocks]|[if (hasVagina)[vagina]|crotch]] makes you shudder.\n\n");
-			if (player.hasVagina() && player.hasCock()) chooser = rand(2) == 0 ? FOREPLAY_VAGINAL : FOREPLAY_BLOWJOB;
+			if (player.hasVagina() && player.hasCock()) chooser = rand(2) === 0 ? FOREPLAY_VAGINAL : FOREPLAY_BLOWJOB;
 			else if (player.hasVagina()) chooser = FOREPLAY_VAGINAL;
 			else if (player.hasCock()) chooser = FOREPLAY_BLOWJOB;
 			else chooser = FOREPLAY_NEUTRAL;
@@ -542,7 +542,7 @@ package classes.Scenes.Areas.HighMountains {
 						          +"He barely manages to take your length, his throat bulging obscenely as you thrust.");
 						if (player.hasVagina() || player.balls > 0) {
 							if (player.hasVagina()) outputText(" Your slit drips");
-							if (player.balls > 0) outputText(" [if (hasVagina)and your|Your] [balls] swing[if (player.balls == 1)s] roughly");
+							if (player.balls > 0) outputText(" [if (hasVagina)and your|Your] [balls] swing[if (player.balls === 1)s] roughly");
 							outputText(" with each cock sheathing thrust.");
 						}
 					}
@@ -551,7 +551,7 @@ package classes.Scenes.Areas.HighMountains {
 						          +"Unfortunately your sheer size halts you making much progress, much of your length still simply exposed to the open air, rather than buried deep in his clenching throat.");
 						if (player.hasVagina() || player.balls > 0) {
 							if (player.hasVagina()) outputText(" Your slit drips");
-							if (player.balls > 0) outputText(" [if (hasVagina)and your|Your] [balls] swing[if (player.balls == 1)s] roughly");
+							if (player.balls > 0) outputText(" [if (hasVagina)and your|Your] [balls] swing[if (player.balls === 1)s] roughly");
 							outputText(" with each incomplete thrust.");
 						}
 						outputText(" You notice his purple member is slick with pre, straining out of his genital slit."
@@ -565,7 +565,7 @@ package classes.Scenes.Areas.HighMountains {
 					          +"After a moment of silence you sigh, removing yourself from his grip and drag him over to a nearby rock. "
 					          +"The flat slab is perfect for you to bend over, presenting your [ass] to him with a slight wiggle. "
 					          +"Your [breasts] rub gently against the cool surface as you tell him to get you nice and slick.\n\n");
-					outputText("Your [nipples] [if (hasNippleCunts == true || isLactating == true)moisten|harden] as you feel the heat of his breath against your cheeks, his clawed fingers gently digging in as they spread your cheeks so that your [butthole] is exposed. "
+					outputText("Your [nipples] [if (hasNippleCunts === true || isLactating === true)moisten|harden] as you feel the heat of his breath against your cheeks, his clawed fingers gently digging in as they spread your cheeks so that your [butthole] is exposed. "
 					          +"You shiver as his moist breath ghosts over your fluttering tunnel, gasping as something thick and wet begins to probe your depths. "
 					          +"His tongue pushes past your ring of muscle with ease, its reptilian forks tickling your sensitive inner walls. "
 					          +"As his tongue retreats his hands slide up your sides, gripping your [hips] as he then gives your crack a long, hard lick. "
@@ -602,8 +602,8 @@ package classes.Scenes.Areas.HighMountains {
 			outputText("With a buck of his hips as he shifts forwards, he forces you to curl up enough for his cock to press insistently at your rear entrance while [if (isNaga)your coils are bunched up beneath him|[if (isGoo)mound is bunched up beneath him|your legs hook over his hips]]. "
 			          +"The slick heat that is spread against your pucker makes you flush as his tapered tip teases you open. "
 			          +"You can’t help but feel [if (hasCock) your [cock] harden under his steady but persistent assault] "
-			          +"[if (hasCock == true && hasVagina == true) and ][if (hasVagina) your pussy moistens as he buries himself in you] "
-			          +"[if (hasCock == false && hasVagina == false)your tunnel flutter and try to draw this intruder deeper], "
+			          +"[if (hasCock === true && hasVagina === true) and ][if (hasVagina) your pussy moistens as he buries himself in you] "
+			          +"[if (hasCock === false && hasVagina === false)your tunnel flutter and try to draw this intruder deeper], "
 			          +"his bumpy cock [if (analLooseness <= 1)slowly stretching you wide|sinking into your practised tunnel].\n\n");
 			outputText("He begins to withdraw letting cool air rush in the gap he left behind before plugging you again, rocking his hips back and forth until he bottoms out in your heated asshole, the nubs along his length making your ring twitch as they enter and exit. "
 			          +"He picks up the pace, moaning and nipping your [if (hasBreasts)breasts|chest] as he leans forward. "
@@ -612,9 +612,9 @@ package classes.Scenes.Areas.HighMountains {
 			outputText("Breathy moans and the slap of flesh on flesh fills the quiet mountainside as the cockatrice’s thrusts become more and more erratic, his cock twitching in your pucker. "
 			          +"Before long his cock pulses, shooting jet after jet of hot cum deep into your rectum as he slumps over you. "
 			          +"As he fills you with wet, thick heat you join him in orgasm[if (hasCock) your cock spurting your creamy load over both of your bellies]"
-			          +"[if (cumQuantity > 350) drenching you both thoroughly][if (hasCock == true && hasVagina == true) while ]"
+			          +"[if (cumQuantity > 350) drenching you both thoroughly][if (hasCock === true && hasVagina === true) while ]"
 			          +"[if (hasVagina) your pussy clenches and soaks your thighs with girl cum which drips down your crack]"
-			          +"[if (hasCock == false && hasVagina == false) your ass eagerly milking him for all he can give as heat pools in your belly, your mind going blank in pleasure].\n\n");
+			          +"[if (hasCock === false && hasVagina === false) your ass eagerly milking him for all he can give as heat pools in your belly, your mind going blank in pleasure].\n\n");
 			outputText("He withdraws his softening member with a wet ‘slurp’ and stands up, leaving your prone form on the ground as you drift to sleep in a post orgasmic haze. "
 			          +"The last thing you see is his swinging tail and feathered rump as he happily continues on his way.");
 			player.buttChange(80, true);
@@ -654,7 +654,7 @@ package classes.Scenes.Areas.HighMountains {
 
 		public function cockatriceBirth():void {
 			outputText(images.showImage("birth-cockatrice"));
-			if (player.vaginas.length == 0) {
+			if (player.vaginas.length === 0) {
 				outputText("You feel a terrible pressure in your groin... then an sharp pain accompanied by the rending of flesh. <b>You look down and behold a new vagina</b>.\n\n");
 				player.createVagina();
 			}

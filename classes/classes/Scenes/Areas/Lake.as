@@ -45,7 +45,7 @@ import classes.Scenes.API.FnHelpers;
 			//==============================
 			//EVENTS GO HERE!
 			//==============================
-			if (_exploreEncounter == null) _exploreEncounter = Encounters.group(
+			if (_exploreEncounter === null) _exploreEncounter = Encounters.group(
 					game.commonEncounters,
 					fetishCultistScene,
 					gooGirlScene, {

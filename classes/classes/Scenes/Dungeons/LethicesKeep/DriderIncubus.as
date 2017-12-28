@@ -70,7 +70,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 		
 		public function set goblinFree(v:Boolean):void
 		{
-			if (v != this._goblinFree)
+			if (v !== this._goblinFree)
 			{
 				this.long = "The drider incubus is a marvel of demonic perversions applied to inhuman flesh. His glittering dark skin is like a solid sheet of coal. Twisted obsidian horns spiral from his forehead like a pair of misshapen spears. Even his eyes are an eerie marvel, no longer windows to the soul, only pits of endless hunger. His evil visage pales in comparison to the monstrous form below his waist - that of a gigantic spider. Eight clattering legs skitter across the floor with his every move. A bulbous abdomen hangs behind them, covered with twitching spinnerets so full of silk that half-formed blobs of it dangle behind him.";
 				if (!v)
@@ -116,7 +116,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 		private function performPhysicalAttack():void
 		{
 			var opts:Array = null;
-			if (this._combatRound >= 3 && (this._combatRound % 6 == 0 || this._combatRound == 3))
+			if (this._combatRound >= 3 && (this._combatRound % 6 === 0 || this._combatRound === 3))
 			{
 				this.stunningSpear();
 			}
@@ -131,7 +131,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 		private function performLustAttack():void
 		{
 			var opts:Array = null;
-			if (this._combatRound >= 3 && (this._combatRound % 6 == 0 || this._combatRound == 3))
+			if (this._combatRound >= 3 && (this._combatRound % 6 === 0 || this._combatRound === 3))
 			{
 				this.constrictingThoughts();
 			}
@@ -164,15 +164,15 @@ package classes.Scenes.Dungeons.LethicesKeep
 		{
 			this.addHP(this.maxHP() * 0.1);
 			this.lust += 8;
-			if (this._hpGains == 0)
+			if (this._hpGains === 0)
 			{
 				outputText("<i>“You won’t defeat me so easily!”</i>");
 			}
-			else if (this._hpGains == 1)
+			else if (this._hpGains === 1)
 			{
 				outputText("<i>“I can keep this up longer than you, mortal!”</i>");
 			}
-			else if (this._hpGains == 2)
+			else if (this._hpGains === 2)
 			{
 				outputText("<i>“So stubborn! Lethice take you!”</i>");
 			}
@@ -209,15 +209,15 @@ package classes.Scenes.Dungeons.LethicesKeep
 			outputText("The drider rears back, lancing out with his spear.");
 			var damage:Number = ((str + weaponAttack) * 0.4) * (1 + (player.newGamePlusMod() * 0.3));
 			var evade:String = player.getEvasionReason();
-			if (damage <= 0 || evade == EVASION_SPEED || evade == EVASION_FLEXIBILITY || evade == EVASION_UNHINDERED)
+			if (damage <= 0 || evade === EVASION_SPEED || evade === EVASION_FLEXIBILITY || evade === EVASION_UNHINDERED)
 			{
 				outputText(" You barely slide out of the way.");
 			}
-			else if (evade == EVASION_EVADE)
+			else if (evade === EVASION_EVADE)
 			{
 				outputText(" You evade the strike.");
 			}
-			else if (evade == EVASION_MISDIRECTION)
+			else if (evade === EVASION_MISDIRECTION)
 			{
 				outputText(" Using your skills at misdirection, you avoid the strike.");
 			}
@@ -259,11 +259,11 @@ package classes.Scenes.Dungeons.LethicesKeep
 			else
 			{
 				outputText("Twisting over, the arachnid demon bares his fangs, attempting to bite you!");
-				if (evade == EVASION_MISDIRECTION)
+				if (evade === EVASION_MISDIRECTION)
 					outputText(" You misdirect his venomous strike!");
-				else if (evade == EVASION_EVADE)
+				else if (evade === EVASION_EVADE)
 					outputText(" You evade his venomous strike!");
-				else if (evade == EVASION_SPEED || evade == EVASION_FLEXIBILITY || evade == EVASION_UNHINDERED)
+				else if (evade === EVASION_SPEED || evade === EVASION_FLEXIBILITY || evade === EVASION_UNHINDERED)
 					outputText(" You avoid his venomous strike!");
 				else {
 					outputText(" Those needle-like canines punch into you, delivering their venomous payload! You already feel weaker, your muscles not responding as effectively.");
@@ -277,11 +277,11 @@ package classes.Scenes.Dungeons.LethicesKeep
 		{
 			outputText("While you’re busy with his spear, he nonchalantly snaps a kick in your direction!");
 			var evade:String = player.getEvasionReason();
-			if (evade == EVASION_MISDIRECTION)
+			if (evade === EVASION_MISDIRECTION)
 			{
 				outputText(" You twist out of the way at the last moment thanks to your misdirection.");
 			}
-			else if (evade != null)
+			else if (evade !== null)
 			{
 				outputText(" You twist out of the way at the last moment, evading with ease.");
 			}
@@ -305,15 +305,15 @@ package classes.Scenes.Dungeons.LethicesKeep
 			outputText("Twirling his weapon until it appears a blurred disc, the drider pivots, bringing the haft around at your head!");
 			var damage:Number = 0;
 			var evade:String = player.getEvasionReason();
-			if (evade == EVASION_SPEED || evade == EVASION_FLEXIBILITY || evade == EVASION_UNHINDERED)
+			if (evade === EVASION_SPEED || evade === EVASION_FLEXIBILITY || evade === EVASION_UNHINDERED)
 			{
 				outputText(" You duck in the nick of time.");
 			}
-			else if (evade == EVASION_MISDIRECTION)
+			else if (evade === EVASION_MISDIRECTION)
 			{
 				outputText(" You were already changing direction. You silently thank Raphael for his training.");
 			}
-			else if (evade == EVASION_EVADE)
+			else if (evade === EVASION_EVADE)
 			{
 				outputText(" You lean in the direction of the swing, letting gravity pull you down and away from the stunning blow.");
 			}
@@ -344,15 +344,15 @@ package classes.Scenes.Dungeons.LethicesKeep
 			outputText("He skitters forward and presses his attack, stabbing out with his spear once more.");
 			var damage:Number = str + weaponAttack + 10 - rand(player.tou);
 			var evade:String = player.getEvasionReason();
-			if (damage <= 0 || evade == EVASION_SPEED || evade == EVASION_FLEXIBILITY || evade == EVASION_UNHINDERED)
+			if (damage <= 0 || evade === EVASION_SPEED || evade === EVASION_FLEXIBILITY || evade === EVASION_UNHINDERED)
 			{
 				outputText(" You barely slide out of the way.");
 			}
-			else if (evade == EVASION_EVADE)
+			else if (evade === EVASION_EVADE)
 			{
 				outputText(" You evade the strike.");
 			}
-			else if (evade == EVASION_MISDIRECTION)
+			else if (evade === EVASION_MISDIRECTION)
 			{
 				outputText(" Using your skills at misdirection, you avoid the strike.");
 			}
@@ -464,7 +464,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 		private function webNipplechain():void
 		{
 			outputText("Every time she makes a grab for the demonic drider’s tool, he skitters aside, the ebb and flow of your fight keeping her from her objective. In a huff, she grabs hold of a hanging strand of web and affixes the sticky end to one of her nipples. Then, she gives the source spinnaret a squeeze, but not before pressing her other jiggling tit against it.");
-			if (this._goblinWebChain == false)
+			if (this._goblinWebChain === false)
 			{
 				outputText("\n\nShe comes away with an organic nipple chain, one that has her moaning with need as she shakes her diminutive body for her master’s pleasure. He tries his best to ignore her, even a demon can’t ignore a pair of white-plastered tits shaking a few feet away.");
 				this._goblinWebChain = true;

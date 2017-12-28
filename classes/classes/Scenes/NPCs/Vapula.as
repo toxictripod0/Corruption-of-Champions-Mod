@@ -17,14 +17,14 @@ package classes.Scenes.NPCs
 		public function timeChange():Boolean
 		{
 			if (getGame().time.hours > 23) {
-				if (vapulaSlave() && flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 0) {
-					if (flags[kFLAGS.VAPULA_HAREM_FUCK] == 0) flags[kFLAGS.VAPULA_DAYS_SINCE_FED]++;
+				if (vapulaSlave() && flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] === 0) {
+					if (flags[kFLAGS.VAPULA_HAREM_FUCK] === 0) flags[kFLAGS.VAPULA_DAYS_SINCE_FED]++;
 					else flags[kFLAGS.VAPULA_DAYS_SINCE_FED] = 0;
 				}
-				if (flags[kFLAGS.VAPULA_FOLLOWER] == .5 || flags[kFLAGS.VAPULA_FOLLOWER] == 1.5) flags[kFLAGS.VAPULA_FOLLOWER]++;
+				if (flags[kFLAGS.VAPULA_FOLLOWER] === .5 || flags[kFLAGS.VAPULA_FOLLOWER] === 1.5) flags[kFLAGS.VAPULA_FOLLOWER]++;
 				flags[kFLAGS.DAYS_SINCE_LAST_DEMON_DEALINGS]++;
 			}
-			if (vapulaSlave() && player.hasKeyItem("Demonic Strap-On") < 0 && player.gender == 2 && flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 0 && (flags[kFLAGS.IN_PRISON] == 0 && flags[kFLAGS.IN_INGNAM] == 0)) {
+			if (vapulaSlave() && player.hasKeyItem("Demonic Strap-On") < 0 && player.gender === 2 && flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] === 0 && (flags[kFLAGS.IN_PRISON] === 0 && flags[kFLAGS.IN_INGNAM] === 0)) {
 				vapulaGivesPCAPresent();
 				return true;
 			}
@@ -33,11 +33,11 @@ package classes.Scenes.NPCs
 	
 		public function timeChangeLarge():Boolean {
 			if (prison.inPrison || flags[kFLAGS.IN_INGNAM] > 0) return false;
-			if (flags[kFLAGS.VAPULA_FOLLOWER] >= 2.5 && getGame().time.hours == 6 && flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 0) {
+			if (flags[kFLAGS.VAPULA_FOLLOWER] >= 2.5 && getGame().time.hours === 6 && flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] === 0) {
 				femaleVapulaRecruitmentPartII();
 				return true;
 			}
-			if (getGame().time.hours == 2 && vapulaSlave() && flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 0 && flags[kFLAGS.VAPULA_DAYS_SINCE_FED] >= 5 && (player.hasCock() || (player.hasKeyItem("Demonic Strap-On") >= 0 && player.hasVagina()))) {
+			if (getGame().time.hours === 2 && vapulaSlave() && flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] === 0 && flags[kFLAGS.VAPULA_DAYS_SINCE_FED] >= 5 && (player.hasCock() || (player.hasKeyItem("Demonic Strap-On") >= 0 && player.hasVagina()))) {
 				vapulaForceFeeds();
 				return true;
 			}
@@ -46,7 +46,7 @@ package classes.Scenes.NPCs
 		//End of Interface Implementation
 		
 		override public function vapulaSlave():Boolean {
-			return flags[kFLAGS.VAPULA_FOLLOWER] == 1;
+			return flags[kFLAGS.VAPULA_FOLLOWER] === 1;
 
 		}
 
@@ -83,48 +83,48 @@ package classes.Scenes.NPCs
 		public function vapulaSlaveFlavorText():void
 		{
 			var choice:int = rand(11);
-			if (choice == 0) outputText("Vapula is currently resting on a very rough bed of leaves she's gathered herself.  She sleeps quietly, her hand absent-mindedly laid on her vagina and the other one resting on her breasts.  A thin trickle of her juice is leaking out of her crotch.");
-			if (choice == 1) outputText("Your succubus slut, Vapula, is furiously stroking herself on her bed of leaves, her purple body shining in sweat.  She moans raggedly, often looking up to you with lust-consumed eyes.");
-			if (choice == 2) {
-				if (flags[kFLAGS.VAPULA_HAREM_FUCK] == 0) choice = 3;
+			if (choice === 0) outputText("Vapula is currently resting on a very rough bed of leaves she's gathered herself.  She sleeps quietly, her hand absent-mindedly laid on her vagina and the other one resting on her breasts.  A thin trickle of her juice is leaking out of her crotch.");
+			if (choice === 1) outputText("Your succubus slut, Vapula, is furiously stroking herself on her bed of leaves, her purple body shining in sweat.  She moans raggedly, often looking up to you with lust-consumed eyes.");
+			if (choice === 2) {
+				if (flags[kFLAGS.VAPULA_HAREM_FUCK] === 0) choice = 3;
 				else outputText("Vapula is currently absent, probably getting screwed by some of the imps surrounding your camp in order to get her semen rations.  You're sure she would come back instantly if you ever needed to give her YOUR cum instead.");
 			}
-			if (choice == 3) outputText("Vapula is busy drinking a vial of milk that looks very much like the kind you'd usually find on imps.  Her purple cheeks seem to blush darker when she sees you; she awkwardly gulps the rest of the bottle, hiccups, and giggles softly, eyeing you with a coy smile and a lust-filled gaze.  The potion seems to have made her even more aroused than usual.");
-			if (choice == 4) {
+			if (choice === 3) outputText("Vapula is busy drinking a vial of milk that looks very much like the kind you'd usually find on imps.  Her purple cheeks seem to blush darker when she sees you; she awkwardly gulps the rest of the bottle, hiccups, and giggles softly, eyeing you with a coy smile and a lust-filled gaze.  The potion seems to have made her even more aroused than usual.");
+			if (choice === 4) {
 				outputText("Vapula is currently toying with ");
 				if (player.hasKeyItem("Deluxe Dildo") >= 0) outputText("your deluxe dildo");
 				else outputText("a dildo");
 				outputText(", pumping as fast as she can.  In her feverish display of lust she doesn't even notice you.");
 			}
-			if (choice == 5) {
-				if (flags[kFLAGS.VAPULA_HAREM_FUCK] == 0 || !(sophieBimbo.bimboSophie())) choice = 6;
+			if (choice === 5) {
+				if (flags[kFLAGS.VAPULA_HAREM_FUCK] === 0 || !(sophieBimbo.bimboSophie())) choice = 6;
 				//if harem fucking is on)
 				else outputText("Vapula is fingering herself while eating out Sophie, your harpy slut.  The dumb avian matron keeps moaning like she's in heat while the succubus furiously assaults her lush fuck-hole; both of their pair of wings flap in rhythm as they feel their pleasure rising in waves.");
 			}
-			if (choice == 6) {
-				if (flags[kFLAGS.VAPULA_HAREM_FUCK] == 0 || flags[kFLAGS.IZMA_NO_COCK] > 0 || !izmaFollower()) choice = 7;
+			if (choice === 6) {
+				if (flags[kFLAGS.VAPULA_HAREM_FUCK] === 0 || flags[kFLAGS.IZMA_NO_COCK] > 0 || !izmaFollower()) choice = 7;
 				//if Izma has cock and harem fucking is on)
 				else outputText("Your succubus is currently very busy with Izma, your tigershark lover.  Izma is standing and hiding Vapula from your sight and you don't notice what Vapula is doing to her until you see her frantic bobbing movements, and hear Izma's hisses and growls of pleasure.  Obviously your succubus must get the cum she needs from somewhere.");
 			}
-			if (choice == 7) {
+			if (choice === 7) {
 				//if C. Jojo and harem fucking is on)
-				if (flags[kFLAGS.VAPULA_HAREM_FUCK] == 0 || !jojoScene.campCorruptJojo()) choice = 8;
+				if (flags[kFLAGS.VAPULA_HAREM_FUCK] === 0 || !jojoScene.campCorruptJojo()) choice = 8;
 				else {
 					outputText("You routinely hear screams of pleasure outside the camp, as well as some frantic male squeaks coming from Jojo, your ");
 					if (jojoScene.tentacleJojo()) outputText("tentacled ");
 					outputText("mouse pet.  Vapula seems to be having a lot of fun with your fuck-toy!");
 				}
 			}
-			if (choice == 8) {
-				if (flags[kFLAGS.VAPULA_HAREM_FUCK] == 0 || !(amilyScene.amilyFollower() && amilyScene.amilyCorrupt())) choice = 9;
+			if (choice === 8) {
+				if (flags[kFLAGS.VAPULA_HAREM_FUCK] === 0 || !(amilyScene.amilyFollower() && amilyScene.amilyCorrupt())) choice = 9;
 				//if C. Amily and harem fucking on)
 				else outputText("Vapula is busy caressing your corrupted mousette, Amily while softly kissing her breasts.  Her fingers are buried in your fuck-toy's pussy, and Amily is moaning whorishly and doesn't even bother to stop when she looks at you, her helpless eyes betraying her lack of control over her own lust.");
 			}
-			if (choice == 9) {
+			if (choice === 9) {
 				if (!player.hasStatusEffect(StatusEffects.CampRathazul)) choice = 10;
 				else outputText("Vapula is having a very active conversation with Rathazul, the alchemist.  They seem to be discussing the chemical properties of demonic mixtures and the various taints that could occur from their ingestion.  The succubus is holding a bottle of a purplish white fluid that appears to be her own milk, probably waiting for an analysis.");
 			}
-			if (choice == 10) outputText("Vapula is resting on her stomach, a buttplug shoved into her ass.  She doesn't seem to notice you watching her butt jiggle under the effect of her unconscious anal contractions.");
+			if (choice === 10) outputText("Vapula is resting on her stomach, a buttplug shoved into her ass.  She doesn't seem to notice you watching her butt jiggle under the effect of her unconscious anal contractions.");
 		}
 
 
@@ -186,7 +186,7 @@ package classes.Scenes.NPCs
 					//Enable village encounters
 					flags[kFLAGS.AMILY_VILLAGE_ENCOUNTERS_DISABLED] = 0;
 					//Change to plain mouse birth!
-					if (player.pregnancyType == PregnancyStore.PREGNANCY_AMILY) player.knockUpForce(PregnancyStore.PREGNANCY_MOUSE, player.pregnancyIncubation);
+					if (player.pregnancyType === PregnancyStore.PREGNANCY_AMILY) player.knockUpForce(PregnancyStore.PREGNANCY_MOUSE, player.pregnancyIncubation);
 					//FLAG THAT THIS SHIT WENT DOWN
 					flags[kFLAGS.AMILY_CORRUPT_FLIPOUT] = 1;
 					//Make sure the camp warning thing is off so she never moves back in.  Bitch be mad.
@@ -231,7 +231,7 @@ package classes.Scenes.NPCs
 			if (output) {
 				clearOutput();
 				spriteSelect(SpriteDb.s_vapula);
-				if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 0)
+				if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] === 0)
 				{
 					outputText("You gently tap Vapula on her shoulder and tell her you intend to put her goddess-like body to use.  She grunts at first but quickly smiles at you kinkily, letting you see her fangs as she voraciously stares at your crotch. You tear open the rags she's stitched together and cup her bouncy breasts. She swiftly responds with a passionate kiss, moaning in lust and quickly undressing you as you literally tongue-fuck each other. One of her hands darts at your crotch, slowly massaging it as she presses her body against your own, letting you feel the warmth of her jiggly bosom against your chest. You decide to return the favor; moving your own hands down, you slap her firm-yet-ample ass, getting a good grope of her purple flesh; your other hand starts exploring the depth of her vaginal recesses. She pulls back and openly cries in pleasure, her whole body shaking between your arms, a trickle of delicious succubus-saliva hanging between your lips.  After a few minutes of playful teasing, you release her; she stares at you with longing and flirtatious eyes.");
 					outputText("\n\n\"<i>Want to have some fun, " + player.short + "?</i>\"");
@@ -240,7 +240,7 @@ package classes.Scenes.NPCs
 				{
 					outputText("Vapula mooches over when you call her name, resentfully kicking an imp out of the way as she does. “<i>Yes, [master]?</i>” she says, with exaggerated sweetness.");
 					
-					if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA_GIBS_MILK] == 1)
+					if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA_GIBS_MILK] === 1)
 					{
 						flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA_GIBS_MILK] = 2;
 						outputText("\n\nYou wordlessly hold out your hand. Leering, Vapula places some bottled succubus milk into it.\n\n");
@@ -280,13 +280,13 @@ package classes.Scenes.NPCs
 			}
 			addButton(14, "Leave", camp.campSlavesMenu);
 					
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 0 && flags[kFLAGS.FARM_CORRUPTION_STARTED] == 1) addButton(6, "Farm Work", sendToFarm);
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 1) addButton(6, "Go Camp", backToCamp);
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] === 0 && flags[kFLAGS.FARM_CORRUPTION_STARTED] === 1) addButton(6, "Farm Work", sendToFarm);
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] === 1) addButton(6, "Go Camp", backToCamp);
 			
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 1 && flags[kFLAGS.FOLLOWER_PRODUCTION_VAPULA] == 0) addButton(7, "Harvest Milk", harvestMilk);
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 1 && flags[kFLAGS.FOLLOWER_PRODUCTION_VAPULA] == 1) addButton(7, "Stop Harvest", stopHarvest);
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] === 1 && flags[kFLAGS.FOLLOWER_PRODUCTION_VAPULA] === 0) addButton(7, "Harvest Milk", harvestMilk);
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] === 1 && flags[kFLAGS.FOLLOWER_PRODUCTION_VAPULA] === 1) addButton(7, "Stop Harvest", stopHarvest);
 					
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 1) addButton(14, "Back", kGAMECLASS.farm.farmCorruption.rootScene);
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] === 1) addButton(14, "Back", kGAMECLASS.farm.farmCorruption.rootScene);
 			dynStats("lus", 10);
 		}
 		
@@ -328,7 +328,7 @@ package classes.Scenes.NPCs
 
 			outputText("\n\n“<i>Ooh, so that’s why you wanted me to come out here!</i>” Vapula grins and her fingers reach for a breast, already fantasising about insistent pressure on her nipples.");
 			
-			if (flags[kFLAGS.FARM_UPGRADES_REFINERY] == 0) outputText("“<i>It’ll sure as hell beat whatever disgusting thing the bitch would have me doing instead. Why don’t you make her build a concentration machine? Lethice has loads; makes one dose of cream go so much further.</i>”");
+			if (flags[kFLAGS.FARM_UPGRADES_REFINERY] === 0) outputText("“<i>It’ll sure as hell beat whatever disgusting thing the bitch would have me doing instead. Why don’t you make her build a concentration machine? Lethice has loads; makes one dose of cream go so much further.</i>”");
 			else outputText("“<i>As you insist, [master]. It’ll sure as hell beat working.</i>”");
 			
 			flags[kFLAGS.FOLLOWER_PRODUCTION_VAPULA] = 1;
@@ -370,10 +370,10 @@ package classes.Scenes.NPCs
 					if (kGAMECLASS.farm.farmCorruption.numTattoos("vapula") > 1) outputText("She has the following tattoos emblazoned across her body:\n");
 					else outputText("She has ");
 
-					if (flags[kFLAGS.VAPULA_TATTOO_COLLARBONE] != 0) outputText(flags[kFLAGS.VAPULA_TATTOO_COLLARBONE] + "\n");
-					if (flags[kFLAGS.VAPULA_TATTOO_SHOULDERS] != 0) outputText(flags[kFLAGS.VAPULA_TATTOO_SHOULDERS] + "\n");
-					if (flags[kFLAGS.VAPULA_TATTOO_LOWERBACK] != 0) outputText(flags[kFLAGS.VAPULA_TATTOO_LOWERBACK] + "\n");
-					if (flags[kFLAGS.VAPULA_TATTOO_BUTT] != 0) outputText(flags[kFLAGS.VAPULA_TATTOO_BUTT] + "\n");
+					if (flags[kFLAGS.VAPULA_TATTOO_COLLARBONE] !== 0) outputText(flags[kFLAGS.VAPULA_TATTOO_COLLARBONE] + "\n");
+					if (flags[kFLAGS.VAPULA_TATTOO_SHOULDERS] !== 0) outputText(flags[kFLAGS.VAPULA_TATTOO_SHOULDERS] + "\n");
+					if (flags[kFLAGS.VAPULA_TATTOO_LOWERBACK] !== 0) outputText(flags[kFLAGS.VAPULA_TATTOO_LOWERBACK] + "\n");
+					if (flags[kFLAGS.VAPULA_TATTOO_BUTT] !== 0) outputText(flags[kFLAGS.VAPULA_TATTOO_BUTT] + "\n");
 				}
 			}
 
@@ -388,7 +388,7 @@ package classes.Scenes.NPCs
 			//Option: Stop Fucking Harem OR Fucking Harem OK (if toggled on off)
 			//Option: Cerulean Threesome On/Off
 			menu();
-			if (flags[kFLAGS.VAPULA_HAREM_FUCK] == 0) {
+			if (flags[kFLAGS.VAPULA_HAREM_FUCK] === 0) {
 				outputText("\n\nVapula will not currently fuck anyone else in your camp without permission.");
 				addButton(0, "FuckFollowers", toggleVapulaHaremFucks);
 			}
@@ -398,7 +398,7 @@ package classes.Scenes.NPCs
 			}
 			//IF PC has cerulean succubused before
 			if (player.hasStatusEffect(StatusEffects.RepeatSuccubi)) {
-				if (flags[kFLAGS.VAPULA_THREESOMES] == 0) {
+				if (flags[kFLAGS.VAPULA_THREESOMES] === 0) {
 					outputText("\n\nShe won't currently assist the cerulean succubus if you invite her over.");
 					addButton(1, "Assist On", toggleCeruleanVapulaAssist);
 				}
@@ -414,7 +414,7 @@ package classes.Scenes.NPCs
 		{
 			clearOutput();
 			//Cerulean Threesome On (Z)
-			if (flags[kFLAGS.VAPULA_THREESOMES] == 0) {
+			if (flags[kFLAGS.VAPULA_THREESOMES] === 0) {
 				outputText("You inform Vapula that a succubus might join you in the following nights, and you want her to join the party; after all, if there's enough cum to feed one, there should be extra to feed another one.  Vapula wiggles and chortles, excited at the prospect of meeting a fellow creature to have a good fuck.  You warn her that she'll have to be very skilled if she doesn't want to be replaced.  Vapula smiles at you seductively and gently fondles your crotch, then says, \"<i>Don't worry; I know that deep down inside, you prefer giving your cum to me, right?</i>\"  The tingle is very pleasant, and you give your slut a soft kiss before sending her on her way.  You look forward to the oncoming threesome.");
 				flags[kFLAGS.VAPULA_THREESOMES] = 1;
 			}
@@ -432,7 +432,7 @@ package classes.Scenes.NPCs
 		{
 			clearOutput();
 			//Stop Fucking Harem
-			if (flags[kFLAGS.VAPULA_HAREM_FUCK] == 1) {
+			if (flags[kFLAGS.VAPULA_HAREM_FUCK] === 1) {
 				outputText("You tell Vapula that you're fed up with seeing her fucking nearly everyone at camp and getting screwed by any living creature in its surroundings.  She's supposed to be YOUR succubus, and no one else's. You insist that you don't want to see anything near her pussy but your own genitals. You're her [master], after all, and her body is yours.");
 				outputText("\n\nVapula protests, \"<i>But how am I supposed to feed? It's in my nature to get other people's spunk; I need it, just like you need to eat and breathe.</i>\"");
 				outputText("\n\nYou assure her that your own cum production will be enough to satiate her needs. You just don't want her to feed off anyone else's.");
@@ -491,7 +491,7 @@ package classes.Scenes.NPCs
 				if (jojoScene.campCorruptJojo()) {
 					addButton(3, "Jojo", vapulaJojoThreesomes);
 				}
-				if (izmaFollower() && flags[kFLAGS.IZMA_NO_COCK] == 0) {
+				if (izmaFollower() && flags[kFLAGS.IZMA_NO_COCK] === 0) {
 					addButton(4, "Izma", vapulaAndIzmaThreeSome);
 				}
 			}
@@ -561,10 +561,10 @@ package classes.Scenes.NPCs
 			outputText("\n\nAt last, the sweet ministrations of your pair of hell-girls prove too much for your cum-stained body and you spurt a third load of spooge, [eachCock] quivering and trembling as it unloads its ultimate shot of semen directly in a waiting stomach.  The hell-girls cling to your dick");
 			if (player.cockTotal() > 1) outputText("s");
 			outputText(", their lips doing their best to milk ");
-			if (player.cockTotal() == 1) outputText("it");
+			if (player.cockTotal() === 1) outputText("it");
 			else outputText("them");
 			outputText(" of all ");
-			if (player.cockTotal() == 1) outputText("its ");
+			if (player.cockTotal() === 1) outputText("its ");
 			else outputText("their ");
 			outputText("cream.  Once your junk feels completely empty, [oneCock] is released with a loud POP.");
 			outputText("\n\nSatisfied, you kiss both of your sluts.  \"<i>Thank you " + player.mf("Master", "Mistress") + ".</i>\" they say in unison, before you pat their heads and send them on their way; they will probably need to rest in order to digest their heavy meal.");
@@ -705,7 +705,7 @@ package classes.Scenes.NPCs
 			outputText("\n\nThis mad triangle of lust eventually breaks as Vapula pulls back feverishly and screams, her body taken by a series of shivering orgasms.  You watch in fascination as the succubus jerks and twitches hypnotically, her lustrous vagina delivering torrent after torrent of fem-spunk.  Amily's upper body is soon wholly drenched, despite her best efforts to waste as little of the succubus' juices as possible.  She keeps gulping at Vapula's baby-maker in a ravenous display of lust.");
 			outputText("\n\nAs Amily drinks, you can't help but notice her body is slowly being transformed by Vapula's essence.  Her horns start growing, her hips widen; her tits keep burgeoning");
 			//[if not defurred]
-			if (flags[kFLAGS.AMILY_NOT_FURRY] == 0) outputText(" and her fur starts shrinking, letting her rosy skin shine below");
+			if (flags[kFLAGS.AMILY_NOT_FURRY] === 0) outputText(" and her fur starts shrinking, letting her rosy skin shine below");
 			outputText(".  By Lethice, your succubus is literally warping your cumslut into a replica of herself!  All the more aroused by this obscene show of corruption, you pound harder, grabbing hold of her horns for better leverage.  At last, your " + player.cockDescript(x) + " is suddenly squeezed as Amily's ample butt swells under the taint of Vapula's juice; this extra pressure is enough to make you cum, your loins churning and your junk bulging as you shoot your load through Amily's anus.  The poor cumslut starts fainting from the sheer flow of spunk flooding her interior as well as her mouth; with a pathetic squirting orgasm, she goes limp and moans pitifully.  You pump ragingly as you reach your climax, making entire ropes of jism spurt in and out of her ass and slathering her backside.  Once your orgasm begins to falter, you carelessly drop your mousy slut, letting her crawl in a small pool of mixed juices.  Vapula lets go of Amily's jaw, discarding her disposable fuck-toy, satiated.");
 			//[if balls]
 			if (player.balls > 0) {
@@ -902,10 +902,10 @@ package classes.Scenes.NPCs
 			temp = player.cockTotal();
 			while (temp > 0) {
 				temp--;
-				if (player.cocks[temp].cockType == CockTypesEnum.TENTACLE && temp != x) {
-					if (n1 == -1) n1 = temp;
-					else if (n2 == -1) n2 = temp;
-					else if (n3 == -1) n3 = temp;
+				if (player.cocks[temp].cockType === CockTypesEnum.TENTACLE && temp !== x) {
+					if (n1 === -1) n1 = temp;
+					else if (n2 === -1) n2 = temp;
+					else if (n3 === -1) n3 = temp;
 					break;
 				}
 			}
@@ -1002,7 +1002,7 @@ package classes.Scenes.NPCs
 			//Feed/Tease
 			menu();
 			addButton(0, "Feed", chicksFeedVapula);
-			if (flags[kFLAGS.VAPULA_HAREM_FUCK] == 0) {
+			if (flags[kFLAGS.VAPULA_HAREM_FUCK] === 0) {
 				addButton(1, "Tease", teaseVapula);
 			} else {
 				addDisabledButton(1, "Tease", "Vapula should not be not fucking harem.");
@@ -1014,7 +1014,7 @@ package classes.Scenes.NPCs
 		{
 			clearOutput();
 			//Requires: Vapula not fucking harem
-			if (flags[kFLAGS.VAPULA_HAREM_FUCK] == 0 && (flags[kFLAGS.VAPULA_DAYS_SINCE_FED] == 0)) {
+			if (flags[kFLAGS.VAPULA_HAREM_FUCK] === 0 && (flags[kFLAGS.VAPULA_DAYS_SINCE_FED] === 0)) {
 				outputText("You decide you aren't going to give her what she wants so easily . You're also genuinely curious about how badly she needs cum, and how far you can push her.  You don't say anything as you slowly buckle the strap-on, sighing as you slip the small, pink end into your " + player.vaginaDescript(0) + ".  You make Vapula wait as you close your eyes and make the dildo pulse inside you, slowly filling you up and then withdrawing, letting it push up against your " + player.clitDescript() + ".");
 				outputText("\n\nYou open your eyes to find Vapula is biting her lip fretfully from watching you, a small pool of liquid arousal collecting beneath her.  You smile lazily as you stand over her and brush the purple end against her face; the way this makes the end wedged inside of you push to and fro against your sensitive walls makes you coo.  Vapula follows the bulbous tip like a cat and a string; as it brushes against her mouth she tries to wrap her lips around it, but you tut mockingly and pull it out of reach. With an evidently huge force of will the succubus makes herself be still again, and you resume stroking her face with your artificial cock.");
 				outputText("\n\n\"<i>How badly do you want this, slut?</i>\" you ask.");
@@ -1031,7 +1031,7 @@ package classes.Scenes.NPCs
 			}
 			//Second Tease
 			//Requires: Vapula not fucking harem, teased the day before
-			else if (flags[kFLAGS.VAPULA_HAREM_FUCK] == 0 && flags[kFLAGS.VAPULA_DAYS_SINCE_FED] == 1) {
+			else if (flags[kFLAGS.VAPULA_HAREM_FUCK] === 0 && flags[kFLAGS.VAPULA_DAYS_SINCE_FED] === 1) {
 				outputText("You smile as once again Vapula gets into position on her knees, and you buckle on the strap-on and stand over her.  This time you make the pink end grow long, closing your eyes as it inches up your tunnel, before slowly thrusting your " + player.hipDescript() + " backwards and forwards in front of your succubus, letting it shrink and grow so it climbs up and down your wet walls.");
 				outputText("\n\nBreathing heavily, you open your eyes to find Vapula is struggling to stop herself from openly drooling, her eyes shooting from you back to the tip of the purple dildo in front of her as she licks her lips and swallows continuously.");
 				outputText("\n\n\"<i>You must be very hungry by now, slut,</i>\" you tease.");
@@ -1040,16 +1040,16 @@ package classes.Scenes.NPCs
 				outputText("\n\n\"<i>It has given me a valuable insight into cruelty, certainly,</i>\" Vapula growls.  She is having trouble concentrating, her lips instinctively reaching for your dildo's crown.  \"<i>It amazes me you still have a soul.</i>\"");
 				outputText("\n\n\"<i>That's not a very nice thing to say,</i>\" you purr, stopping your ministrations for a moment and pulling away slightly.  A look of anguish appears on Vapula's face.  \"<i>What would you do for me now, just to get your fix?</i>\"");
 				//[Hooves:
-				if (player.lowerBody.type == LowerBody.HOOFED || player.isTaur()) outputText("\"<i>I would worship your feet, mistress.  I would clean your hooves with my tongue to a shine, tease out every scrap of dirt from every crevice.  And I would thank you for the privilege.</i>\"");
+				if (player.lowerBody.type === LowerBody.HOOFED || player.isTaur()) outputText("\"<i>I would worship your feet, mistress.  I would clean your hooves with my tongue to a shine, tease out every scrap of dirt from every crevice.  And I would thank you for the privilege.</i>\"");
 				//[Naga:
 				else if (player.isNaga()) outputText("\n\n\"<i>I would worship your scales, mistress.  I would buff every single one with my tongue so it shone, lick every inch of your tail, deep throat you all the way down into my belly.  And I would thank you for the privilege.</i>\"");
 				//[Drider:
 				else if (player.isDrider()) outputText("\n\n\"<i>I would be your egg dump, mistress.  I would take your dripping ovipositor in every hole, my cunt, my ass, my mouth, then clean it with my tongue afterwards.  I would find and feed you ovi-potions just so you could keep me stuffed with your essence constantly.  And I would thank you for the privilege.</i>\"");
 				//[Goo:
 				else if (player.isGoo()) outputText("\n\n\"<i>I would let you engulf me, mistress.  I would let you push yourself into my every hole and crevice, drown me in your essence, fuck me so completely I wouldn't know where I started and you began.  And I would thank you for the privilege.</i>\"");
-				else if (player.lowerBody.type == LowerBody.DOG || player.lowerBody.type == LowerBody.CAT || player.lowerBody.type == LowerBody.LIZARD || player.lowerBody.type == LowerBody.KANGAROO || player.lowerBody.type == LowerBody.FOX) outputText("\n\n\"<i>I would worship your feet, mistress.  I would lick every inch of your claws, massage your soft undersides with my tongue.  I would pare all of your claws to needle sharpness and then let you test them on my backside.  And I would thank you for the privilege.</i>\"");
+				else if (player.lowerBody.type === LowerBody.DOG || player.lowerBody.type === LowerBody.CAT || player.lowerBody.type === LowerBody.LIZARD || player.lowerBody.type === LowerBody.KANGAROO || player.lowerBody.type === LowerBody.FOX) outputText("\n\n\"<i>I would worship your feet, mistress.  I would lick every inch of your claws, massage your soft undersides with my tongue.  I would pare all of your claws to needle sharpness and then let you test them on my backside.  And I would thank you for the privilege.</i>\"");
 				//[Insect:
-				else if (player.lowerBody.type == LowerBody.BEE || player.lowerBody.type == LowerBody.CHITINOUS_SPIDER_LEGS) outputText("\n\n\"<i>I would worship your feet, mistress.  I would lick every inch of your boots, clean your soles with my tongue.  I wouldn't stop until they shone. And I would thank you for the privilege.</i>\"");
+				else if (player.lowerBody.type === LowerBody.BEE || player.lowerBody.type === LowerBody.CHITINOUS_SPIDER_LEGS) outputText("\n\n\"<i>I would worship your feet, mistress.  I would lick every inch of your boots, clean your soles with my tongue.  I wouldn't stop until they shone. And I would thank you for the privilege.</i>\"");
 				//[Human/demonic feet:
 				else outputText("\n\n\"<i>I would worship your feet, mistress.  I would lick every inch of them, clean your soles with my tongue, between your toes, lavish each of your pinkies with attention as if they were ten cocks belonging to you.  And I would thank you for the privilege.</i>\"");
 
@@ -1168,7 +1168,7 @@ package classes.Scenes.NPCs
 			outputText("\n\nVapula cries,  \"<i>Lemme go!  Can't we just go double team some people and forget about all this?</i>\"  Her violet eyes crane hopefully towards you, and she wears a winning smile across the smooth curves of her lips.  For a moment, you reconsider your plans, but then again, she earned this when she forced herself on you.  Upon seeing the resolve in your gaze, her struggles start anew, but you have her firm - she's not going anywhere.");
 			outputText("\n\nOnce you have the rebellious succubus well in hand, you lift your right palm high in the air, upraised and ready to drop.  The moment seems to drag on for a while, and once your female slave is trembling with worry, you bring it down hard.  SMACK!  The hit rings out through your camp");
 			if (camp.companionsCount() > 2) outputText(", drawing the eyes of your other companions.");
-			else if (camp.companionsCount() == 2) outputText(", drawing the attention of your other companion.");
+			else if (camp.companionsCount() === 2) outputText(", drawing the attention of your other companion.");
 			else outputText(", echoing off the sentinel-like rocks that seem to ring your encampment.");
 			outputText("  Her tail goes wild at the impact, whipping around in a frenzy and actually managing to slap your cheek!  That bitch!");
 			outputText("\n\nThis time, your hand cocks and releases in a split-second, coming down with even more force than before.  Vapula screams, \"<i>Ow! Stop it, by Lethice, please!</i>\"  This time, her thrashing, spaded tail stays obediently low, harmlessly cutting through the air so as not to irritate you.");

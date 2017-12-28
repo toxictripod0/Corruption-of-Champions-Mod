@@ -26,7 +26,7 @@ public class GooGirlScene extends AbstractLakeContent implements Encounter {
 		chance: function ():Number {
 			//Chance of seeing ooze convert goo! More common if factory blew up
 			//Else pretty rare.
-			if (flags[kFLAGS.FACTORY_SHUTDOWN] == 2) return 0.2;
+			if (flags[kFLAGS.FACTORY_SHUTDOWN] === 2) return 0.2;
 			return 0.05;
 		}
 	}, {
@@ -69,20 +69,20 @@ public class GooGirlScene extends AbstractLakeContent implements Encounter {
 		if (player.inte >= 25) {
 			outputText("A soft shuffling sound catches your attention and you turn around, spotting an amorphous green mass sliding towards you!  Realizing it's been spotted, the ooze's mass surges upwards into a humanoid form with thick arms and wide shoulders.  The beast surges forward to attack!");
 			startCombat(new GreenSlime());
-			if (flags[kFLAGS.FACTORY_SHUTDOWN] == 1) outputText("\n\n<b>You are amazed to encounter a slime creature with the factory shut down - most of them have disappeared.</b>");
+			if (flags[kFLAGS.FACTORY_SHUTDOWN] === 1) outputText("\n\n<b>You are amazed to encounter a slime creature with the factory shut down - most of them have disappeared.</b>");
 			return;
 		}
 		//High speed starts on even footing.
 		if (player.spe >= 30) {
 			outputText("You feel something moist brush the back of your ankle and instinctively jump forward and roll, coming up to face whatever it is behind you.  The nearly silent, amorphous green slime that was at your feet surges vertically, its upper body taking the form of a humanoid with thick arms and wide shoulders, which attacks!");
 			startCombat(new GreenSlime());
-			if (flags[kFLAGS.FACTORY_SHUTDOWN] == 1) outputText("\n\n<b>You are amazed to encounter a slime creature with the factory shut down - most of them have disappeared.</b>");
+			if (flags[kFLAGS.FACTORY_SHUTDOWN] === 1) outputText("\n\n<b>You are amazed to encounter a slime creature with the factory shut down - most of them have disappeared.</b>");
 			return;
 		}
 		//High strength gets stunned first round.
 		if (player.str >= 40) {
 			outputText("Without warning, you feel something moist and spongy wrap around your ankle, nearly pulling you off balance.  With a ferocious tug, you pull yourself free and turn to face your assailant.  It is a large green ooze that surges upwards to take the form of humanoid with wide shoulders and massive arms.  It shudders for a moment, and its featureless face shifts into a green version of your own! The sight gives you pause for a moment, and the creature strikes!");
-			if (flags[kFLAGS.FACTORY_SHUTDOWN] == 1) outputText("\n\n<b>You are amazed to encounter a slime creature with the factory shut down - most of them have disappeared.</b>");
+			if (flags[kFLAGS.FACTORY_SHUTDOWN] === 1) outputText("\n\n<b>You are amazed to encounter a slime creature with the factory shut down - most of them have disappeared.</b>");
 			startCombat(new GreenSlime());
 			outputText("\n\n");
 			monster.eAttack();
@@ -90,7 +90,7 @@ public class GooGirlScene extends AbstractLakeContent implements Encounter {
 		}
 		//Player's stats suck and you should feel bad.
 		outputText("Without warning, you feel something moist and spongy wrap around your ankle, pulling you off balance!  You turn and try to pull your leg away, struggling against a large green ooze for a moment before your foot comes away with a *schlorp* and a thin coating of green fluid.  The rest of the ooze rises to tower over you, forming a massive green humanoid torso with hugely muscled arms and wide shoulders.  Adrenaline rushes into your body as you prepare for combat, and you feel your heart skip a beat as your libido begins to kick up as well!");
-		if (flags[kFLAGS.FACTORY_SHUTDOWN] == 1) outputText("\n\n<b>You are amazed to encounter a slime creature with the factory shut down - most of them have disappeared.</b>");
+		if (flags[kFLAGS.FACTORY_SHUTDOWN] === 1) outputText("\n\n<b>You are amazed to encounter a slime creature with the factory shut down - most of them have disappeared.</b>");
 		dynStats("lib", 1, "lus", 10);
 		startCombat(new GreenSlime());
 	}
@@ -98,7 +98,7 @@ public class GooGirlScene extends AbstractLakeContent implements Encounter {
 		private function gooGirl():GooGirl
 		{
 			var g:GooGirl = monster as GooGirl;
-			if (g == null) {
+			if (g === null) {
 				CoC_Settings.error(monster.short+", not GooGirl!");
 				g = new GooGirl();
 			}
@@ -112,7 +112,7 @@ public class GooGirlScene extends AbstractLakeContent implements Encounter {
 			clearOutput();
 			spriteSelect(SpriteDb.s_googirlsprite);
 			outputText("As you walk around the lake, you notice a pale red light pulsing in the ");
-			if (!flags[kFLAGS.FACTORY_SHUTDOWN] == 2) outputText("sapphire ");
+			if (!flags[kFLAGS.FACTORY_SHUTDOWN] === 2) outputText("sapphire ");
 			else outputText("murky ");
 			outputText("waters. You pause, trying to figure out what the shape might be. Just under the surface of the water, there appears to be a fist-sized heart shedding a crimson glow. Leaning closer, you gaze down into your reflection only to find your face rising up with pursed lips, trying to kiss you! You jerk backwards and the pseudo-head quivers, resolving its face into a gooey-looking girl, her ");
 			startCombat(new GooGirl());
@@ -127,7 +127,7 @@ public class GooGirlScene extends AbstractLakeContent implements Encounter {
 //New Perk – Slime Core (requires goo player, random drop rate?)
 		private function coreDropChance():void
 		{
-			if (rand(4) == 0 && player.hasStatusEffect(StatusEffects.SlimeCraving) && player.findPerk(PerkLib.SlimeCore) < 0 && player.isGoo() && player.gooScore() >= 4) {
+			if (rand(4) === 0 && player.hasStatusEffect(StatusEffects.SlimeCraving) && player.findPerk(PerkLib.SlimeCore) < 0 && player.isGoo() && player.gooScore() >= 4) {
 				outputText("\n\nAs the goo-girl slithers away, into the lake's placid waves, you notice she seems to have left behind a small blob. Upon investigation, it appears to be a tiny, ruby heart, encased in a slimy " + gooColor8() + " membrane. As you reach to pick it up, the jelly ball quivers and pulses with a warm, cheerful light. Your fingers close on it and the nucleus slides through your palm, into your body!\n\n");
 
 				outputText("There is a momentary pressure in your chest and a few memories that are not your own flicker before your eyes. The dizzying sight passes and the slime core settles within your body, imprinted with your personality and experiences. There is a comforting calmness from your new nucleus and you feel as though, with your new memories, you will be better able to manage your body's fluid requirements.\n\n");
@@ -209,9 +209,9 @@ public class GooGirlScene extends AbstractLakeContent implements Encounter {
 			if (doSFWloss()) return; //No rape in SFW mode.
 			flags[kFLAGS.GOOGIRL_CONSECUTIVE_LOSSES]++;
 			if (flags[kFLAGS.GOOGIRL_CONSECUTIVE_LOSSES] >= 5 && player.gooScore() >= 4) gooGirlBadEnd();
-			else if (player.gender == 0) genderlessLoseToGooGal();
-			else if (player.gender == 1) dudeLoseToGooGal();
-			else if (player.gender == 2) femaleLoseToGooGal();
+			else if (player.gender === 0) genderlessLoseToGooGal();
+			else if (player.gender === 1) dudeLoseToGooGal();
+			else if (player.gender === 2) femaleLoseToGooGal();
 			else hermLoseToGooGal();
 			flags[kFLAGS.TIMES_FUCKED_NORMAL_GOOS]++;
 		}
@@ -353,7 +353,7 @@ public class GooGirlScene extends AbstractLakeContent implements Encounter {
 		{
 			flags[kFLAGS.GOOGIRL_BIRTHS]++;
 			outputText("\n");
-			if (player.vaginas.length == 0) {
+			if (player.vaginas.length === 0) {
 				outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  You look down and behold a vagina.  ");
 				player.createVagina();
 			}
@@ -390,7 +390,7 @@ public class GooGirlScene extends AbstractLakeContent implements Encounter {
 			addDisabledButton(6, "Lay Eggs", "This scene requires you to have bee ovipositor and enough eggs.");
 			addDisabledButton(7, "Valeria", "This scene requires you to have goo armor, sufficient arousal and not be pregnant.");
 			
-			if ((flags[kFLAGS.GOO_TFED_MEAN] == 0 && flags[kFLAGS.GOO_TFED_NICE] == 0) && flags[kFLAGS.TIMES_FUCKED_NORMAL_GOOS] >= 2)
+			if ((flags[kFLAGS.GOO_TFED_MEAN] === 0 && flags[kFLAGS.GOO_TFED_NICE] === 0) && flags[kFLAGS.TIMES_FUCKED_NORMAL_GOOS] >= 2)
 				addDisabledButton(8, "Make Slave", "Maybe if you drugged one of these things with a black egg and some succubi milk, you could make it your pet?");
 			
 			addButton(14, "Leave", combat.cleanupAfterCombat);
@@ -413,9 +413,9 @@ public class GooGirlScene extends AbstractLakeContent implements Encounter {
 						addButton(4, "Exhib.Fuck", exhibitionismGooGirlVictoryRape);
 					}
 				}
-				if (player.armorName == "goo armor" && !player.isButtPregnant() && !player.isPregnant()) {
+				if (player.armorName === "goo armor" && !player.isButtPregnant() && !player.isPregnant()) {
 					outputText("\n\nValeria's armored form seems to ebb towards the puddled goo-woman before you, almost eager to close the distance with her despite her pledge to protect you. ");
-					if (flags[kFLAGS.TIMES_VALERIA_GOO_THREESOMED] == 0) outputText("Do you offer a threesome with the girl to Valeria? It could get a little weird....");
+					if (flags[kFLAGS.TIMES_VALERIA_GOO_THREESOMED] === 0) outputText("Do you offer a threesome with the girl to Valeria? It could get a little weird....");
 					else outputText("Do you offer a threesome with the girl to Valeria? She'll likely try flood with you with more sloshing, shuddering pleasure than your body can handle.");
 					addButton(7, "Valeria", kGAMECLASS.valeria.valeriaAndGooThreeStuff, undefined, undefined, undefined, "Have a treesome with Valeria.");
 				}
@@ -427,7 +427,7 @@ public class GooGirlScene extends AbstractLakeContent implements Encounter {
 				addButton(6, "Lay Eggs", layBeeEggsInGoo);
 			}
 			//corrupt chances
-			if ((flags[kFLAGS.GOO_TFED_MEAN] == 0 && flags[kFLAGS.GOO_TFED_NICE] == 0) && flags[kFLAGS.TIMES_FUCKED_NORMAL_GOOS] >= 2) {
+			if ((flags[kFLAGS.GOO_TFED_MEAN] === 0 && flags[kFLAGS.GOO_TFED_NICE] === 0) && flags[kFLAGS.TIMES_FUCKED_NORMAL_GOOS] >= 2) {
 				if (player.isPureEnough(50) && (player.hasItem(consumables.SUCMILK) || player.hasItem(consumables.P_S_MLK)) && (player.hasItem(consumables.BLACKEG) || player.hasItem(consumables.L_BLKEG))) {
 					kGAMECLASS.latexGirl.pureGooRecruitmentStart();
 					return;
@@ -435,7 +435,7 @@ public class GooGirlScene extends AbstractLakeContent implements Encounter {
 				else if (flags[kFLAGS.PC_KNOWS_ABOUT_BLACK_EGGS] > 0) {
 					//Recruitment:
 					//Notice After Victory:
-					if (flags[kFLAGS.TIMES_THOUGHT_ABOUT_GOO_RECRUITMENT] == 0) {
+					if (flags[kFLAGS.TIMES_THOUGHT_ABOUT_GOO_RECRUITMENT] === 0) {
 						outputText("\n\nWith this quivering lump of goo before you, a devilish idea comes to mind.  What would it take to make one of these aqueous sluts your willing slave?  ...Something to make them a little solid - perhaps one of those black eggs to make its skin a little more solid and restrainable?  Maybe a succubi milk to help make it a little more human-like, and the increased libido certainly couldn't hurt.");
 						flags[kFLAGS.TIMES_THOUGHT_ABOUT_GOO_RECRUITMENT]++;
 					}
@@ -459,7 +459,7 @@ public class GooGirlScene extends AbstractLakeContent implements Encounter {
 			clearOutput();
 			var x:Number = player.biggestCockIndex();
 			if (player.longestCockLength() >= 24 && player.shortestCockLength() < 24) {
-				if (type == 1) x = player.longestCock();
+				if (type === 1) x = player.longestCock();
 				else x = player.shortestCockIndex();
 			}
 			outputText("The girl wriggles in place, staring hopefully at you from her oozing puddle, her arms folded under her chest, eagerly waiting for your next move. Your skin still prickles from the lingering heat of her touch, impatient desire bubbling in your chest. You descend on the girl and she proudly puffs out her breast, presenting herself to you.\n\n");
@@ -477,7 +477,7 @@ public class GooGirlScene extends AbstractLakeContent implements Encounter {
 
 				outputText("You dump the rest of your load in the hollow girl and try to pull away, but she clings to you, desperately. Lacking a brain, all that's left of the girl appears to be her final impulse to fuck and suck endlessly. You indulge her again and again, but before long it's clear she's not stopping. Thankfully, after nearly an hour of her exhausting play, she finally looses consistency and collapses into a slimy puddle of muck, now more white than " + gooColor() + ". She slides into the lake, returning to whatever liquid state she came from. You take a dip yourself, to clean the lingering ooze on your body and slake your dehydration.");
 				//Corrupt victory ooze – (After specific sex scenes while the player has a 70+ corruption score)
-				if (player.isCorruptEnough(85) && rand(2) == 0) outputText("\n\nAs you're leaving, you happen to glance back at the lake and notice something strange; the sludge left by the melting shell of the goo-girl is quivering with renewed life! The swirling opalescence of your corrupt seed is clearly visible through her membrane, her " + gooColor11() + " slowly bleeding into a pale emerald hue. Your eyes widen as the muck regains solidity, first a head and then shoulders slowly rising from the puddle. The empty girl regains her shape, but the rippling within her does not stop. Gradually, her breasts shrink, flattening against her chest while a viridian phallus rises from between her legs.  Your cum floats down her torso and inflates a pair of jiggling, slimy balls.  The potency of your semen has reanimated the goo-girl, it seems, but has transformed her into an instinctual, mindless ooze. She- now a he- stares vacantly at you, the slick, green cock at his base stiffening, before he plunges into the lake. You'll have to check on your new son one of these days.");
+				if (player.isCorruptEnough(85) && rand(2) === 0) outputText("\n\nAs you're leaving, you happen to glance back at the lake and notice something strange; the sludge left by the melting shell of the goo-girl is quivering with renewed life! The swirling opalescence of your corrupt seed is clearly visible through her membrane, her " + gooColor11() + " slowly bleeding into a pale emerald hue. Your eyes widen as the muck regains solidity, first a head and then shoulders slowly rising from the puddle. The empty girl regains her shape, but the rippling within her does not stop. Gradually, her breasts shrink, flattening against her chest while a viridian phallus rises from between her legs.  Your cum floats down her torso and inflates a pair of jiggling, slimy balls.  The potency of your semen has reanimated the goo-girl, it seems, but has transformed her into an instinctual, mindless ooze. She- now a he- stares vacantly at you, the slick, green cock at his base stiffening, before he plunges into the lake. You'll have to check on your new son one of these days.");
 			}
 			//[Dick 2ft or larger]
 			else {
@@ -520,7 +520,7 @@ public class GooGirlScene extends AbstractLakeContent implements Encounter {
 			outputText("Before long, you find yourself mimicking the heartless whore, eyes lidded heavily and mouth agape at the doubled sensations of the hard fucking you're giving yourself. You know your body's sensitive weaknesses too well, it seems, and you're unable to hold out for very long. The slime-duplicate cock that strokes every delicate inch of your drooling pussy blends into the slippery cunt between the goo's breasts, tightening in pulsing rings of lubricated, velvet muscle. When you cum, both organs twitch in orgasmic spree, the feeling of filling and being filled scrambling your mind with sensory overload. Thick globs of cum splurt into the slime girl's body, pushing equally huge bubbles of seething hot muck into your clenched lower lips, splooshing gunk plopping against your cervix and sloshing together into one gurgling blob of slime-ejaculate. Wrapping her arms around you in a big, cheerful hug, the mindless shell keeps you pinned down until your cunt aches and your dick begins to stiffen again. Before a second round, however, the goo loses her consistency, the lack of a nucleus melting her wobbling form into a seed-saturated sludge that wiggles back toward the water's edge. You rise, panting hotly, deciding it's time to move on.");
 
 			//Corrupt victory ooze – (After specific sex scenes while the player has a 70+ corruption score)
-			if (player.isCorruptEnough(85) && rand(2) == 0) outputText("\n\nAs you're leaving, you happen to glance back at the lake and notice something strange; the sludge left by the melting shell of the goo-girl is quivering with renewed life! The swirling opalescence of your corrupt seed is clearly visible through her membrane, her " + gooColor11() + " slowly bleeding into a pale emerald hue. Your eyes widen as the muck regains solidity, first a head and then shoulders slowly rising from the puddle. The empty girl regains her shape, but the rippling within her does not stop. Gradually, her breasts shrink, flattening against her chest while a viridian phallus rises from between her legs.  Your cum floats down her torso and inflates a pair of jiggling, slimy balls.  The potency of your semen has reanimated the goo-girl, it seems, but has transformed her into an instinctual, mindless ooze. She- now a he- stares vacantly at you, the slick, green cock at his base stiffening, before he plunges into the lake. You'll have to check on your new son one of these days.");
+			if (player.isCorruptEnough(85) && rand(2) === 0) outputText("\n\nAs you're leaving, you happen to glance back at the lake and notice something strange; the sludge left by the melting shell of the goo-girl is quivering with renewed life! The swirling opalescence of your corrupt seed is clearly visible through her membrane, her " + gooColor11() + " slowly bleeding into a pale emerald hue. Your eyes widen as the muck regains solidity, first a head and then shoulders slowly rising from the puddle. The empty girl regains her shape, but the rippling within her does not stop. Gradually, her breasts shrink, flattening against her chest while a viridian phallus rises from between her legs.  Your cum floats down her torso and inflates a pair of jiggling, slimy balls.  The potency of your semen has reanimated the goo-girl, it seems, but has transformed her into an instinctual, mindless ooze. She- now a he- stares vacantly at you, the slick, green cock at his base stiffening, before he plunges into the lake. You'll have to check on your new son one of these days.");
 			coreDropChance();
 			player.orgasm('Dick');
 			player.slimeFeed();

@@ -46,8 +46,8 @@ internal function heliaAnalCapacity():Number {
 	return helAnalCapacity();
 }
 public function helAffection(diff:Number = 0):Number {
-	if (flags[kFLAGS.HEL_AFFECTION_FOLLOWER] > 70 && flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED] == 0) flags[kFLAGS.HEL_AFFECTION_FOLLOWER] = 70;
-	if (flags[kFLAGS.HEL_AFFECTION_FOLLOWER] < 100 || (flags[kFLAGS.HEL_BONUS_POINTS] == 0 && diff < 0)) {
+	if (flags[kFLAGS.HEL_AFFECTION_FOLLOWER] > 70 && flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED] === 0) flags[kFLAGS.HEL_AFFECTION_FOLLOWER] = 70;
+	if (flags[kFLAGS.HEL_AFFECTION_FOLLOWER] < 100 || (flags[kFLAGS.HEL_BONUS_POINTS] === 0 && diff < 0)) {
 		flags[kFLAGS.HEL_AFFECTION_FOLLOWER] += diff;
 		if (flags[kFLAGS.HEL_AFFECTION_FOLLOWER] >= 100) flags[kFLAGS.HEL_AFFECTION_FOLLOWER] = 100;
 		if (flags[kFLAGS.HEL_AFFECTION_FOLLOWER] < 0) flags[kFLAGS.HEL_AFFECTION_FOLLOWER] = 0;
@@ -62,7 +62,7 @@ public function helAffection(diff:Number = 0):Number {
 	//trace("HEL AFFECTION" + flags[kFLAGS.HEL_AFFECTION_FOLLOWER]);
 }
 public function isHeliaBirthday():Boolean {
-	return date.month == 7;
+	return date.month === 7;
 
 }
 
@@ -293,7 +293,7 @@ public function helFollowersIntro():void {
 		outputText("\n\nLaughing, you lead Hel along towards her new home.");
 	}
 	//If Bimbo Sophie is at Camp:
-	else if (flags[kFLAGS.HEL_INTROS_LEVEL] < 4 && bimboSophie() && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) {
+	else if (flags[kFLAGS.HEL_INTROS_LEVEL] < 4 && bimboSophie() && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] === 0) {
 		flags[kFLAGS.HEL_INTROS_LEVEL] = 4;
 		outputText("As you help Hel string up her hammock between a few of the rocks inside your perimeter, you hear the tell-tale flapping of useless wings and a clattering of claws on the hard-packed dirt.  You brace for impact as your bimbo harpy prances up to you, planting a big, wet kiss on your cheek");
 		//{PC lust goes up if not immunized to luststick}
@@ -484,8 +484,8 @@ public function heliaFollowerMenu(display:Boolean = true):void {
 		clearOutput();
 		helScene.spriteChooser();
 	}
-	if (flags[kFLAGS.HEL_FOLLOWER_LEVEL] == 2) {
-		if (flags[kFLAGS.HELIA_ANAL_TRAINING_OFFERED] == 0 && display && player.biggestCockArea() > heliaAnalCapacity()) {
+	if (flags[kFLAGS.HEL_FOLLOWER_LEVEL] === 2) {
+		if (flags[kFLAGS.HELIA_ANAL_TRAINING_OFFERED] === 0 && display && player.biggestCockArea() > heliaAnalCapacity()) {
 			heliaAnalTrainingPrompt();
 			return;
 		}
@@ -515,14 +515,14 @@ public function heliaFollowerMenu(display:Boolean = true):void {
 		if (!kGAMECLASS.helScene.pregnancy.isPregnant) addButton(5,"Spar",sparWithHeliaFirebuttsAreHot).hint("Do a quick fight session with Helia! \n\nCurrent Intensity: " + getGame().helScene.heliaSparIntensity());
 		else outputText("\n\n<b>Helia will not spar or box while pregnant.</b>");
 		if (!kGAMECLASS.helScene.pregnancy.isPregnant) addButton(6,"Box",boxWithInCampHel).hint("Box with Helia and train your strength and toughness.");
-		if (flags[kFLAGS.HEL_LOVE] == 1 || flags[kFLAGS.HEL_LOVE] == -1) {
+		if (flags[kFLAGS.HEL_LOVE] === 1 || flags[kFLAGS.HEL_LOVE] === -1) {
 			if (player.hasCock() && player.cockThatFits(heliaCapacity()) >= 0 && player.lust >= 33 &&
-					!helPregnant() && flags[kFLAGS.HELSPAWN_AGE] == 0) addButton(7,"Have A Kid",helSpawnScene.haveAKid).hint("Get Helia pregnant and start a family with her.");
+					!helPregnant() && flags[kFLAGS.HELSPAWN_AGE] === 0) addButton(7,"Have A Kid",helSpawnScene.haveAKid).hint("Get Helia pregnant and start a family with her.");
 		}
 		addButton(14,"Back",camp.campLoversMenu)
 	}
-	else if (flags[kFLAGS.HEL_FOLLOWER_LEVEL] == 1) {
-		if (flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED] == 1) {
+	else if (flags[kFLAGS.HEL_FOLLOWER_LEVEL] === 1) {
+		if (flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED] === 1) {
 			if (display) outputText("(You've reached the culmination of Helia's current storyline.  Stay tuned for more!)");
 		}
 		else {
@@ -540,11 +540,11 @@ public function heliaFollowerMenu(display:Boolean = true):void {
 }
 
 private function heliaOptions():void {
-	if (kGAMECLASS.helScene.pregnancy.event >= 3 && flags[kFLAGS.HELIA_TALK_SEVEN] == 0) {
+	if (kGAMECLASS.helScene.pregnancy.event >= 3 && flags[kFLAGS.HELIA_TALK_SEVEN] === 0) {
 		helSpawnScene.heliaTalkSeven();
 		return;
 	}
-	if (flags[kFLAGS.HELSPAWN_AGE] == 1 && flags[kFLAGS.HEL_TALK_EIGHT] == 0) {
+	if (flags[kFLAGS.HELSPAWN_AGE] === 1 && flags[kFLAGS.HEL_TALK_EIGHT] === 0) {
 		helSpawnScene.heliaTalkEight();
 		return;
 	}
@@ -552,14 +552,14 @@ private function heliaOptions():void {
 	addButton(0,"Discuss",talkToHel).hint("Talk to her about random topics.");
 	if (getGame().time.hours >= 21) addButton(1,"Cuddle",hugASmokeyTail).hint("Cuddle with Helia and sleep with her.");
 	else {
-		if (flags[kFLAGS.SLEEP_WITH] == "Helia") addButton(1, "NoSleepWith", dontSleepWithHelia).hint("Stop sleeping with Helia, for now.", "No Sleep With");
+		if (flags[kFLAGS.SLEEP_WITH] === "Helia") addButton(1, "NoSleepWith", dontSleepWithHelia).hint("Stop sleeping with Helia, for now.", "No Sleep With");
 		addButton(2,"Hug",hugASmokeyTail).hint("Give that salamander bitch a hug. Bitches love hugs.");
 	}
 	if (flags[kFLAGS.HELIA_ANAL_TRAINING_OFFERED] > 0 && flags[kFLAGS.HELIA_ANAL_TRAINING] < 2 && player.biggestCockArea() > heliaAnalCapacity() && player.hasItem(consumables.GOB_ALE, 1)) addButton(3, "Anal Train", heliaGapeSceneChoices);
 	//addButton(4, "Futafication", talkAboutFuta).hint("See if she's in the mood to grow a new penis.");
 	addButton(5, "Bathe", takeABath).hint("Swim in stream with Helia.");
-	if (flags[kFLAGS.HELSPAWN_AGE] == 1) addButton(7,flags[kFLAGS.HELSPAWN_NAME],helSpawnScene.playWithYourKid).hint("Spend some time with your salamander child.");
-	if (flags[kFLAGS.HEL_GUARDING] == 0) addButton(8,"GuardCamp",helGuardToggle).hint("Request her to guard the camp every night.", "Guard Camp");
+	if (flags[kFLAGS.HELSPAWN_AGE] === 1) addButton(7,flags[kFLAGS.HELSPAWN_NAME],helSpawnScene.playWithYourKid).hint("Spend some time with your salamander child.");
+	if (flags[kFLAGS.HEL_GUARDING] === 0) addButton(8,"GuardCamp",helGuardToggle).hint("Request her to guard the camp every night.", "Guard Camp");
 	else addButton(8,"NoGuarding",helGuardToggle).hint("Request her to stop guarding the camp.", "No Guarding");
 	addButton(14,"Back",heliaFollowerMenu);
 }
@@ -640,7 +640,7 @@ internal function PCBeatsUpSalamanderSparring():void {
 private function talkToHel():void {
 	clearOutput();
 	//Hel Talk 1 (Play at First Time)
-	if (flags[kFLAGS.FOLLOWER_HEL_TALKS] == 0) {
+	if (flags[kFLAGS.FOLLOWER_HEL_TALKS] === 0) {
 		outputText("You run a hand through Hel's hair and ask the recent addition to your camp if she'd like to talk.");
 		outputText("\n\n<i>\"Sounds good to me, " + player.mf("bud","babe") + ",\"</i> Hel grins, leading you by the arm to a rock near her hammock.  The two of you sit yourselves down, with Hel locking her fingers through yours in her lap.  <i>\"So what's on your mind, lover mine?\"</i>");
 		
@@ -664,7 +664,7 @@ private function talkToHel():void {
 		outputText("\n\nHel nestles her head on your [chest], wrapping her tail around your waist and curling up in your lap.  Smiling at your salamander, you wrap your arms around her and finish off your stein as Hel cuddles up.");
 	}
 	//Hel Talk 2
-	else if (flags[kFLAGS.FOLLOWER_HEL_TALKS] == 1) {
+	else if (flags[kFLAGS.FOLLOWER_HEL_TALKS] === 1) {
 		outputText("Sitting Hel down, you ask if she's got any stories she'd like to share.  After all, she's been adventuring for years - surely she's got some fun tales to tell.");
 		
 		outputText("\n\n\"<i>Me? Good stories?  Psssh, naw,</i>\" she laughs, grabbing a glass from her home-made still and filling it up.  \"<i>Well, there's always that one time...  Okay, context: way back when, three, maybe four years ago.  I was still with some of the old tribe - we hadn't quite gotten ourselves wiped out yet, but we were already hurting pretty bad, you follow?  So we're sending out little scouting parties: raiders, really, going to steal what we can't forage ourselves from the gnolls.  Fuck gnolls, by the way.  Just throwin' that out there.  Anyway, so I get slotted for a party: me, Anika, who made me look like a busty giantess - and I'm on the short side for a salamander bitch - though she was amazing with a bow; and this big fucking bruiser, Dane.  Oh, shit, Dane was awesome.  He'd literally rip people in half.  Saw him do it two, three times.  Big scary motherfucker, but the nicest guy otherwise.</i>\"");
@@ -705,12 +705,12 @@ private function talkToHel():void {
 		return;
 	}
 	//Hel Talk 3(C)
-	else if (flags[kFLAGS.FOLLOWER_HEL_TALKS] == 2) {
+	else if (flags[kFLAGS.FOLLOWER_HEL_TALKS] === 2) {
 		outputText("Just as you're starting to speak, Hel suddenly throws her arms around your shoulders and pulls you into her lap.  You yelp in surprise as your salamander lover holds you tight, running a hand through your [hair] as she settles onto the big rock near her hammock.  Giving a surprisingly girlish giggle, Hel nuzzles you, slipping her muscular legs and tail around your waist.");
 		outputText("\n\n<i>\"Mine,\"</i> she purrs, nipping and kissing along the nape of your neck.");
 	}
 	//Hel Talk 4(C)
-	else if (flags[kFLAGS.FOLLOWER_HEL_TALKS] == 3) {
+	else if (flags[kFLAGS.FOLLOWER_HEL_TALKS] === 3) {
 		//Hel Talk 4(C)
 		outputText("You ask Hel if she has a few minutes to spare.");
 		outputText("\n\n<i>\"I dunno, I was about to go find some gnolls to beat up,\"</i> she laughs.  Before you can protest, your salamander chuckles and grabs your hand.  <i>\"Come on, lover, let's take a walk.\"</i>  You shrug and follow Hel, letting your lover lock her fingers through yours as the two of you head out onto the plains.");
@@ -726,7 +726,7 @@ private function talkToHel():void {
 		outputText("\n\nYou pull Hel down into another long, tongue-filled kiss.");
 	}
 	//Hel Talk 5(C)
-	else if (flags[kFLAGS.FOLLOWER_HEL_TALKS] == 4) {
+	else if (flags[kFLAGS.FOLLOWER_HEL_TALKS] === 4) {
 		outputText("<i>\"Hey, [name],\"</i> Hel says, slipping out of your grasp with a come-hither wag of her finger, <i>\"wanna have a drink with me?\"</i>");
 		outputText("\n\n<i>\"Sure,\"</i> you say, following Hel over to her still.");
 		
@@ -763,7 +763,7 @@ private function talkToHel():void {
 		outputText("\n\n<i>\"Mmm, you're a cutie, you know that?\"</i>  Hel giggles, planting a kiss on your brow before letting you go.  By the time you get turned around again, Hel's already breathing fire again.");
 	}
 	//Hel Talk 6 (Needs Isabella and Kiha at camp; at least 1 gem)(C)
-	else if (flags[kFLAGS.FOLLOWER_HEL_TALKS] == 5 && player.gems >= 1 && isabellaFollower() && kihaFollower.followerKiha()) {
+	else if (flags[kFLAGS.FOLLOWER_HEL_TALKS] === 5 && player.gems >= 1 && isabellaFollower() && kihaFollower.followerKiha()) {
 		outputText(images.showImage("helia-follower-poker"));		
 		var gems:int = 0;
 		outputText("<i>\"Hey, [name],\"</i> Hel says with a sly grin.  <i>\"Me, Izzy, and spitfire were just playing a little game.  Wanna deal in?\"</i>");
@@ -807,7 +807,7 @@ private function talkToHel():void {
 			gems = 40 + rand(40);
 		}
 		//[Fail 1]
-		else if (rand(3) == 0) {
+		else if (rand(3) === 0) {
 			outputText("\n\n<i>\"Booyah, bitches,\"</i> Hel yells an hour later, raking in the last of the gems you cared to wager.  Isabella and Kiha glower at the salamander as she scoops her new wealth into a haversack.");
 			outputText("\n\n<i>\"Y-you cheated!\"</i> Kiha yells, lurching to her feet.");
 			if (isabellaAccent()) outputText("\n\n<i>\"Nein, zilly girl,\"</i> Isabella groans, crossing her arms, <i>\"Ve vere beaten by ze luck of ze draw.\"</i>");
@@ -817,7 +817,7 @@ private function talkToHel():void {
 			gems = -5 - rand(10);
 		}
 		//[Fail 2]
-		else if (rand(2) == 0) {
+		else if (rand(2) === 0) {
 			if (isabellaAccent()) {
 				outputText("\n\n<i>\"Ja, ja, come to mama Isabella,\"</i> your feisty cow-girl laughs, throwing down a stunning, crushing hand.  Groaning, you, Hel, and Kiha all relinquish the last of the gems you can spare for the game.");
 				outputText("\n\n<i>\"Oh, I zee ein new skirt in ze future!\"</i> Isabella laughs, dumping your gems into her pouch before sauntering off.");
@@ -1049,7 +1049,7 @@ private function heliaRoughSex(output:Boolean = true):void {
 			buttons++;	
 		}
 	}
-	if (player.lust >= 33 && player.findPerk(PerkLib.Incorporeality) >= 0 && izmaFollower() && flags[kFLAGS.IZMA_NO_COCK] == 0 && buttons < 14) {
+	if (player.lust >= 33 && player.findPerk(PerkLib.Incorporeality) >= 0 && izmaFollower() && flags[kFLAGS.IZMA_NO_COCK] === 0 && buttons < 14) {
 		addButton(buttons,"Possess",heliaCampPossession);
 		buttons++;
 	}
@@ -1394,7 +1394,7 @@ private function boxWithInCampHel():void {
 		outputText("\n\n\"<i>Ha! Not today, [name]! You're good, lover, but you're gonna need to practice a lot more to beat me!  Now then.... what shall the victor do with her spoils?</i>\"");
 		//[Proceed to Lose to Hel sex scenes]
 		dynStats("tou", 2);
-		if (player.lust >= 33 && player.hasCock() && rand(2) == 0) {
+		if (player.lust >= 33 && player.hasCock() && rand(2) === 0) {
 			if (player.cockThatFits(helCapacity()) >= 0) {
 				muddyLizardFeet();
 				return;
@@ -1481,7 +1481,7 @@ private function muddyLizardFeet():void {
 private function takeABath():void {
 	clearOutput();
 	//{First Time intro}
-	if (flags[kFLAGS.HEL_CAN_SWIM] == 0) {
+	if (flags[kFLAGS.HEL_CAN_SWIM] === 0) {
 		outputText("Noticing Hel smells particularly strongly of beer and sex - even for her - you ask your salamander lover if she'd like to join you for a dip in the stream.  Rather than with her usual energy, though, Hel's reply is to look quickly away and say, \"<i>Uh, not today, [name]. I'm, uh, not feeling in the swimming mood.</i>\"");
 		outputText("\n\nYou slump your shoulders and ask why not.");
 		
@@ -1506,7 +1506,7 @@ private function takeABath():void {
 		
 		outputText("\n\n\"<i>Mmm, that's nice...</i>\" she moans, nuzzling against you. \"<i>Don't stop....</i>\"");
 		//Swim With Hel -- While Wearing Valeria
-		if (player.armor.name == "goo armor" && player.lust >= 33 && 9999 == 0) {
+		if (player.armor.name === "goo armor" && player.lust >= 33 && 9999 === 0) {
 			outputText("\n\nYou and Helia cuddle in the steaming river, the minutes passing pleasantly in each other's embrace. After a moment, though, you notice a particularly blue patch of water swirling around Hel's bosom.  Curious, you reach down and cop a feel - of slimy goo.  You recoil, splashing back until a familiar voice drawls, \"<i>Howdy, partner!</i>\"");
 			outputText("\n\nHel leaps to her feet, yelping as her tits start to talk...  and form Valeria's face, a circlet of goo surrounding Helia's breasts as a second patch covers her nethers, effectively a bright blue goo bikini.");
 			
@@ -1599,7 +1599,7 @@ public function heliaThreesomes():void {
 	if (followerKiha() && player.lust >= 33 && player.gender > 0) {
 		addButton(0,"Kiha",campHelAndKihaThreeSome);
 	}
-	if ((player.armor.name == "goo armor" || flags[kFLAGS.VALARIA_AT_CAMP] == 1) && player.lust >= 33/* && player.hasVagina()*/) {
+	if ((player.armor.name === "goo armor" || flags[kFLAGS.VALARIA_AT_CAMP] === 1) && player.lust >= 33/* && player.hasVagina()*/) {
 		addButton(2,"Valeria",helAndValeriaCampThreesomes);
 	}
 	if (player.lust >= 33 && bimboSophie())
@@ -1709,8 +1709,8 @@ private function campHelAndKihaThreeSome():void {
 	outputText("\n\n\"<i>Well, if it's okay with [name]...  I guess I could grace you with the sexual prowess of a dragon.</i>\"");
 	//[Play sex-appropriate scene; herms can choose]
 	menu();
-	if (player.gender == 1) addButton(0,"Next",dudeHeliaAndKihaThreeSome);
-	else if (player.gender == 2) addButton(0,"Next",girlsThreesomeHelAndKiha);
+	if (player.gender === 1) addButton(0,"Next",dudeHeliaAndKihaThreeSome);
+	else if (player.gender === 2) addButton(0,"Next",girlsThreesomeHelAndKiha);
 	else {
 		addButton(0,"Male",dudeHeliaAndKihaThreeSome);
 		addButton(1,"Female",girlsThreesomeHelAndKiha);
@@ -1759,7 +1759,7 @@ private function dudeHeliaAndKihaThreeSome():void {
 	outputText(images.showImage("helia-follower-threesome-kiha"));
 	outputText("You put a hand on each lizard-girl's shoulder and push them down onto their knees, giving them a good view of the bulge [eachCock] is making in your [armor].  Eagerly, they start stripping you of your grab until [oneCock] is freed, falling out of its restraints to bop Kiha on the nose.  The dragoness recoils, giving Hel the chance to snatch it in her mouth, her lips wrapping around your shaft like a silky wet vice.  Kiha recovers, but too late to get a taste of your head, nor the first thick dollop of pre that rolls off onto Hel's reptilian tongue, but she soon busies herself tending to ");
 	//if 1 cock: 
-	if (player.cockTotal() == 1) outputText("the rest of your shaft, her own tongue coiling around your tool");
+	if (player.cockTotal() === 1) outputText("the rest of your shaft, her own tongue coiling around your tool");
 	else outputText("your second erection, taking it in both hands and giving it long, loving strokes before slurping up the [cockHead 1]");
 	outputText(".");
 	
@@ -1798,7 +1798,7 @@ private function dudeHeliaAndKihaThreeSome():void {
 private function helAndValeriaCampThreesomes():void {
 	clearOutput();
 	//If PC is wearing Valeria: 
-	if (player.armor.name == "goo armor") outputText("Giving Hel a little wink, you ask your current clothing if she'd like to come out and play.  The gooey parts of your armor slither out, Valeria's face materializing out of your breastplate with a grin.  \"<i>Howdy, firebutt,</i>\" the armor-goo says, giving Hel a big hug. Your salamander lover giggles, squeezing Val so hard she pops in half, only to reform beside you.  \"<i>Thanks for the invite, partner... I was getting pretty hungry, you know...</i>\"");
+	if (player.armor.name === "goo armor") outputText("Giving Hel a little wink, you ask your current clothing if she'd like to come out and play.  The gooey parts of your armor slither out, Valeria's face materializing out of your breastplate with a grin.  \"<i>Howdy, firebutt,</i>\" the armor-goo says, giving Hel a big hug. Your salamander lover giggles, squeezing Val so hard she pops in half, only to reform beside you.  \"<i>Thanks for the invite, partner... I was getting pretty hungry, you know...</i>\"");
 	//{if PC is NOT wearing Valeria:}
 	else outputText("You look over to your stash and give a sharp whistle, calling Valeria over.  An amorphous blue blob soon pops up, forming into Valeria's shapely body as she strides over to give Helia a big hug.  Your salamander lover giggles, squeezing Val so hard she pops in half, only to reform beside you as you ask if she'd like to join in on your fun.  She beams, nodding quickly.  \"<i>Thanks for the invite, partner... I was getting pretty hungry, you know...</i>\"");
 	
@@ -1862,7 +1862,7 @@ private function helXValeriaFemalePC():void {
 private function helGuardToggle():void {
 	clearOutput();
 	//[If Hel is NOT guarding Camp]
-	if (flags[kFLAGS.HEL_GUARDING] == 0) {
+	if (flags[kFLAGS.HEL_GUARDING] === 0) {
 		outputText("You ask Hel if she wouldn't mind watching the perimeter for a few hours during the night.");
 		outputText("\n\n\"<i>Sure thing, [name]!  I've got your back!</i>\" she says, her tail reaching around to give you a pop on the [butt].");
 		flags[kFLAGS.HEL_GUARDING] = 1;
@@ -1950,8 +1950,8 @@ private function giveHeliaAnalTraining():void {
 }
 
 private function heliaGapeSceneChoices():void {
-	if (flags[kFLAGS.HELIA_ANAL_TRAINING] == 0) giveHeliaAnalTraining();
-	else if (flags[kFLAGS.HELIA_ANAL_TRAINING] == 1) heliaAnalTrainingPartTwo();
+	if (flags[kFLAGS.HELIA_ANAL_TRAINING] === 0) giveHeliaAnalTraining();
+	else if (flags[kFLAGS.HELIA_ANAL_TRAINING] === 1) heliaAnalTrainingPartTwo();
 }
 
 //Anal Training #2
@@ -2039,13 +2039,13 @@ private function helPartyMenu():void {
 	awardAchievement("Happy Birthday, Helia!", kACHIEVEMENTS.HOLIDAY_HELIA_BIRTHDAY);
 	menu();
 	//heliaDrinks
-	if (flags[kFLAGS.HELIA_BDAY_DRINKS] == 0) addButton(0,"Drinks",heliaDrinks);
+	if (flags[kFLAGS.HELIA_BDAY_DRINKS] === 0) addButton(0,"Drinks",heliaDrinks);
 	//heliaHakonAndKiri
-	if (flags[kFLAGS.HELIA_BDAY_HAKON_AND_KIRI] == 0) addButton(1,"Hakon 'n Kiri",heliaHakonAndKiri);
+	if (flags[kFLAGS.HELIA_BDAY_HAKON_AND_KIRI] === 0) addButton(1,"Hakon 'n Kiri",heliaHakonAndKiri);
 	//heliaPhoenixes
-	if (flags[kFLAGS.HELIA_BDAY_PHOENIXES] == 0) addButton(2,"Phoenixes",heliaPhoenixes);
+	if (flags[kFLAGS.HELIA_BDAY_PHOENIXES] === 0) addButton(2,"Phoenixes",heliaPhoenixes);
 	//heliaAndFoxTwins
-	if (flags[kFLAGS.HELIA_BDAY_FOX_TWINS] == 0) addButton(3,"Fox Twins",heliaAndFoxTwins);
+	if (flags[kFLAGS.HELIA_BDAY_FOX_TWINS] === 0) addButton(3,"Fox Twins",heliaAndFoxTwins);
 	//leaveWithoutSex
 	addButton(4,"Leave",leaveWithoutSex);
 	//leaveWithGirls
@@ -2058,7 +2058,7 @@ private function goWithHelia():void {
 	clearOutput();
 	outputText("\"<i>Sounds like fun.  Let's go,</i>\" you say, offering your arm to Hel.  She grins and takes it, holding herself close as she takes the lead, steady paces quickly drawing you out into the vast deserts of Mareth beside your lover.");
 	//{If Kiha, Isabella, and/or Valeria are at camp:}
-	if (isabellaFollower() || followerKiha() || flags[kFLAGS.VALARIA_AT_CAMP] == 1) {
+	if (isabellaFollower() || followerKiha() || flags[kFLAGS.VALARIA_AT_CAMP] === 1) {
 		outputText("  Looking over your shoulder as you depart, though, you notice that camp looks particularly... empty. Perhaps your other camp-mate");
 		if (camp.companionsCount() > 1) outputText("s are");
 		else outputText(" is");
@@ -2074,7 +2074,7 @@ private function goWithHelia():void {
 	outputText("\n\n\"<i>Hey, cutie,</i>\" she says with a wink, pushing open the door for you.");
 	//If PC did UrtaQuest: 
 	outputText("\n\n");
-	if (flags[kFLAGS.URTA_MET_HEL] == 1) outputText("From the quick look she and the salamander exchange, you get the feeling they've met before. Weird. Still, ");
+	if (flags[kFLAGS.URTA_MET_HEL] === 1) outputText("From the quick look she and the salamander exchange, you get the feeling they've met before. Weird. Still, ");
 	outputText("Urta gives you a small nod as Hel leads you into town, past the half-empty guard post and into the bustling main street.  The market way's particularly busy in the late afternoon, bustling with activity as merchants hawk their wares and the first of the street-walkers start to come out, standing in seductive poses in the shade of the alleys.  More than a few send catcalls your way, a few even offering discounts for couples.");
 	
 	outputText("\n\nHel grins at the attention, suggesting that when your visit with her folks is over, maybe you'd like to \"swing back and pick up a little fun for the night.\"  You consider her suggestion a moment, but before you can give answer, you feel the heat of her body pressing tightly to you");
@@ -2087,14 +2087,14 @@ private function goWithHelia():void {
 	
 	outputText("\n\nHel jumps back, practically falling into your arms as the bar lights up, filled with people: Hakon and Kiri at the forefront, her family smiling wide.  Behind them, surrounding a great big cake practically as tall as Hel is, stands ");
 	var list:Array = ["Edryn"];
-	if (flags[kFLAGS.VALARIA_AT_CAMP] == 1) list.push("Valeria");
+	if (flags[kFLAGS.VALARIA_AT_CAMP] === 1) list.push("Valeria");
 	if (followerKiha()) list.push("Kiha");
 	if (isabellaFollower()) list.push("Isabella");
 	list.push("a handful of her wide-hipped and winged half-sisters, the phoenixes");
 	outputText(formatStringArray(list) + ". You turn to Helia and cock a grin as you see the surprise etched on her face, followed by the growing smile.  \"<i>Happy birthday, Helia!</i>\" they all shout out at once, raising mugs frothing over with beer.");
 /*
 	addToList("Edryn");
-	if (flags[kFLAGS.VALARIA_AT_CAMP] == 1) {
+	if (flags[kFLAGS.VALARIA_AT_CAMP] === 1) {
 		addToList("Valeria");
 	}
 	if (followerKiha()) {
@@ -2119,7 +2119,7 @@ private function goWithHelia():void {
 	if (flags[kFLAGS.HARPY_QUEEN_EXECUTED] > 0) outputText("finally killing that bitch of a queen");
 	else outputText("setting the queen right, but leaving her alive for when it's finally time to bring the fight to Lethice");
 	outputText(".  You nod at his thanks, and his hand is soon replaced by Helia's as she grabs you on her way toward the gigantic cake.  The towering white confectionary seems more than big enough to feed everyone in the group, a huge extravagance on the part of her family.  You hear a quiet whisper about ");
-	if (flags[kFLAGS.FREED_VALA] == 1) outputText("a certain waitress fairy having... supplied the icing herself");
+	if (flags[kFLAGS.FREED_VALA] === 1) outputText("a certain waitress fairy having... supplied the icing herself");
 	else outputText("a certain minotaur chef having supplied the icing himself");
 	outputText(" as Hel is handed an oversized knife and urged to blow out the candles atop it, arranged into a perfect 23.");
 	
@@ -2130,7 +2130,7 @@ private function goWithHelia():void {
 	outputText("\n\nAnd then the cake explodes.");
 	
 	outputText("\n\nYou and Hel both yelp and stumble back as creamy white blasts everywhere, the top of the cake thrown off as ");
-	if (flags[kFLAGS.HEL_FOXY_FOURSOME_WARNED] == 1) outputText("a pair of lovely fox-eared herms");
+	if (flags[kFLAGS.HEL_FOXY_FOURSOME_WARNED] === 1) outputText("a pair of lovely fox-eared herms");
 	else outputText("Miko and Mai");
 	outputText(" burst out, their big breasts covered in nothing but tiny pink pasties and an all-too-small thong sheathing their red pricks.  Arm in arm with tail wagging furiously, they cry out \"<i>Happy birthday, Hel!</i>\" before hopping out and slipping into the salamander's arms.  \"<i>Ladies,</i>\" Hel says, grinning like an idiot, a moment before she's pushed into a waiting chair behind her.  One of the girl's busts is quickly shoved into her face as the rest of the group laughs and starts passing out another round of drinks.");
 	
@@ -2187,7 +2187,7 @@ private function heliaPhoenixes():void {
 private function heliaAndFoxTwins():void {
 	clearOutput();
 	outputText("You approach the foxy strippers, still well into giving Helia a dual lap-dance, their red puppy peckers poking well out of their tiny thongs.  They grin as you approach, and Hel pulls you into her lap, and you quickly find yourself with a pair of big, soft breasts to rest your head on, courtesy of ");
-	if (flags[kFLAGS.HEL_FOXY_FOURSOME_WARNED] == 1) outputText("Mai");
+	if (flags[kFLAGS.HEL_FOXY_FOURSOME_WARNED] === 1) outputText("Mai");
 	else outputText("one of the foxes");
 	outputText(".  Hel plants a deep, serpent-tongue filled kiss on your lips, nuzzling her cheek on your [chest].");
 
@@ -2291,7 +2291,7 @@ private function helAndSluttyHarpyMale():void
 	outputText("\n\nSophie silences Hel’s moans by giving her a big sloppy kiss, sliding her tongue into the salamander's mouth. Helia’s eyes widen in surprise at first, but as you continue to pound her they droop back down and she returns Sophie’s kiss. ");
 
 	// 1 cock
-	if (player.cocks.length == 1)
+	if (player.cocks.length === 1)
 	{
 		outputText("\n\nYour bimbo’s pussy is beginning to look awfully neglected, and you can’t have that. On the next rock of your hips you pull out of Hel with a pop and transition your [cock] to Sophie’s sopping box.");
 
@@ -2320,15 +2320,15 @@ private function helAndSluttyHarpyMale():void
 		 	}
 		}
 		outputText(".");
-		if (player.cocks.length == 3) outputText(" Your unused cock splatters the two with hot, white jizz.");
+		if (player.cocks.length === 3) outputText(" Your unused cock splatters the two with hot, white jizz.");
 		if (player.vaginas.length > 0) outputText(" Your unused [vagina] cums with your cocks in a show of sympathetic orgasm, coating your thighs with femcum.");
 	}
 	// > 4 cocks
 	else
 	{
 		outputText("\n\nYou realize that there's a lot of holes on offer between the two sluts; luckily you have just the right thing to solve the problem, cocks! You unleash [eachCock] upon the three holes that are still open. One [cock biggest2] snakes under the one currently pounding into Helia and slips inside her");
-		if (flags[kFLAGS.HELIA_ANAL_TRAINING] == 0) outputText(" tight");
-		else if (flags[kFLAGS.HELIA_ANAL_TRAINING] == 1) outputText(" well-trained");
+		if (flags[kFLAGS.HELIA_ANAL_TRAINING] === 0) outputText(" tight");
+		else if (flags[kFLAGS.HELIA_ANAL_TRAINING] === 1) outputText(" well-trained");
 		else if (flags[kFLAGS.HELIA_ANAL_TRAINING] >= 2) outputText(" gaped");
 		outputText(" asshole. She gasps at the sudden double penetration, and you reciprocate because of the furnace-like heat of both her holes. Your [cock biggest3] lines up with Sophie’s slutty pussy and drives home while your [cock smallest] does the same to her ass."); // Haha look at me being a lazy shit.
 
@@ -2389,7 +2389,7 @@ private function helAndSluttyHarpyFemale():void
 	outputText("\n\nSeeing your fiery lover orgasm makes you realize how close your own explosion of pleasure is. You try to hold out as long as possible to feel her wonderfully hot tongue playing across your deepest, most intimate parts. As much as you would want for it to last forever your body can’t take any more of the pleasurable barrage. You cum hard, drenching Helia’s face with freshly heated love juice.");
 
 	// has cock
-	if (player.cocks.length == 1)
+	if (player.cocks.length === 1)
 	{
 		outputText("\n\nYour unused cock spurts streams of jizz all over the sandwiched girl’s stomachs. ");
 	}

@@ -13,7 +13,7 @@ package classes.Scenes.Areas.Desert
 		override protected function performCombatAction():void
 		{
 			//Demon pack has different AI
-			if (rand(2) == 0)
+			if (rand(2) === 0)
 				special1();
 			else special2();
 		}
@@ -46,7 +46,7 @@ package classes.Scenes.Areas.Desert
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
 		{
 			clearOutput();
-			if (player.gender == 0){
+			if (player.gender === 0){
 				if (hpVictory) {
 					outputText("You collapse before the demons, who laugh at your utter lack of male or female endowments, beating you until you pass out.");
 				} else {
@@ -83,7 +83,7 @@ package classes.Scenes.Areas.Desert
 		override public function teased(lustDelta:Number):void
 		{
 			outputText("\n");
-			if (lustDelta == 0) outputText("\n" + capitalA + short + " seems unimpressed.");
+			if (lustDelta === 0) outputText("\n" + capitalA + short + " seems unimpressed.");
 			else if (lustDelta > 0 && lustDelta < 5) outputText("The demons lessen somewhat in the intensity of their attack, and some even eye up your assets as they strike at you.");
 			else if (lustDelta >= 5 && lustDelta < 10) outputText("The demons are obviously steering clear from damaging anything you might use to fuck and they're starting to leave their hands on you just a little longer after each blow. Some are starting to cop quick feels with their other hands and you can smell the demonic lust of a dozen bodies on the air.");
 			else if (lustDelta >= 10) outputText("The demons are less and less willing to hit you and more and more willing to just stroke their hands sensuously over you. The smell of demonic lust is thick on the air and part of the group just stands there stroking themselves openly.");

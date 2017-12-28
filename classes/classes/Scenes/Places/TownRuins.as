@@ -69,10 +69,10 @@ package classes.Scenes.Places  {
 				name:"shouldra",
 				chance:0.5,
 				when: function():Boolean {
-					return flags[kFLAGS.SHOULDRA_PALADIN_MAIDEN_COUNTDOWN] == 0
+					return flags[kFLAGS.SHOULDRA_PALADIN_MAIDEN_COUNTDOWN] === 0
 						   && rackCount() >= 2
 						   && !game.shouldraFollower.followerShouldra()
-						   && flags[kFLAGS.SHOULDRA_FOLLOWER_STATE] != .5;
+						   && flags[kFLAGS.SHOULDRA_FOLLOWER_STATE] !== .5;
 				},
 				call: getGame().shouldraScene.shouldraGreeting
 			},{
@@ -85,13 +85,13 @@ package classes.Scenes.Places  {
 			},{
 				name: "amily",
 				when: function():Boolean {
-					return flags[kFLAGS.AMILY_VILLAGE_ENCOUNTERS_DISABLED] != 1;
+					return flags[kFLAGS.AMILY_VILLAGE_ENCOUNTERS_DISABLED] !== 1;
 				},
 				call: game.amilyScene.encounterAmily
 			},{
 				name:"scavenge",
 				when: function():Boolean {
-					return flags[kFLAGS.AMILY_VILLAGE_ENCOUNTERS_DISABLED] == 1;
+					return flags[kFLAGS.AMILY_VILLAGE_ENCOUNTERS_DISABLED] === 1;
 				},
 				call: scavengeTownRuinsOption
 			});
@@ -136,7 +136,7 @@ package classes.Scenes.Places  {
 
 		private function scavengeTownRuinsOption():void { // SCAVENGING
 			outputText(images.showImage("location-townruins"));
-			if (flags[kFLAGS.TOWN_RUINS_SCAVENGE_CONSIDERED] == 0) {
+			if (flags[kFLAGS.TOWN_RUINS_SCAVENGE_CONSIDERED] === 0) {
 				outputText("Even though the village is in ruins, there are plenty of resources to salvage; wood, stones, and nails are all there for you to haul. You contemplate which structure you should focus on salvaging for resources to bring to your camp.");
 				flags[kFLAGS.TOWN_RUINS_SCAVENGE_CONSIDERED] = 1;
 			}
@@ -145,7 +145,7 @@ package classes.Scenes.Places  {
 				outputText("\n\n");
 				if (totalDismantled() < 8) {
 					outputText("There are burnt-down houses, smashed-in doorways, ripped-off roofs... everything is covered with dust and grime. ");
-					if (totalDismantled() >= 1) outputText(Num2Text(totalDismantled()) + " of the structures " + (totalDismantled() == 1 ? "is" : "are") + " completely stripped, leaving only " + (totalDismantled() == 1 ? "its foundation" : "their foundations") + ".");
+					if (totalDismantled() >= 1) outputText(Num2Text(totalDismantled()) + " of the structures " + (totalDismantled() === 1 ? "is" : "are") + " completely stripped, leaving only " + (totalDismantled() === 1 ? "its foundation" : "their foundations") + ".");
 				}
 				else {
 					outputText("Most of the ruined houses are gone, leaving only foundations in their wake. ");
@@ -167,7 +167,7 @@ package classes.Scenes.Places  {
 			clearOutput();
 			outputText(images.showImage("location-townruins-house"));
 			outputText("A house seems like a good start. You walk over to one of the ruined houses and enter to check for any furniture to be removed.");
-			if (flags[kFLAGS.TOWN_RUINS_HOUSE_FURNITURE_FOUND] == 0 && flags[kFLAGS.TOWN_RUINS_HOUSE_SCAVENGE_PROGRESS] == 0 && rand(100) < 80) findFurniture("house");
+			if (flags[kFLAGS.TOWN_RUINS_HOUSE_FURNITURE_FOUND] === 0 && flags[kFLAGS.TOWN_RUINS_HOUSE_SCAVENGE_PROGRESS] === 0 && rand(100) < 80) findFurniture("house");
 			dismantleMainText(kFLAGS.TOWN_RUINS_HOUSE_SCAVENGE_PROGRESS, "house");
 		}
 
@@ -175,7 +175,7 @@ package classes.Scenes.Places  {
 			clearOutput();
 			outputText(images.showImage("location-townruins-townhall"));
 			outputText("Your eyes land on the remains of the town hall.  Of all the broken down structures, this is the largest and it definitely might yield something of use. You enter the town hall and check for any furniture to be removed.");
-			if (flags[kFLAGS.TOWN_RUINS_TOWNHALL_FURNITURE_FOUND] == 0 && flags[kFLAGS.TOWN_RUINS_TOWNHALL_SCAVENGE_PROGRESS] == 0) findFurniture("town hall");
+			if (flags[kFLAGS.TOWN_RUINS_TOWNHALL_FURNITURE_FOUND] === 0 && flags[kFLAGS.TOWN_RUINS_TOWNHALL_SCAVENGE_PROGRESS] === 0) findFurniture("town hall");
 			dismantleMainText(kFLAGS.TOWN_RUINS_TOWNHALL_SCAVENGE_PROGRESS, "town hall");
 		}
 
@@ -183,7 +183,7 @@ package classes.Scenes.Places  {
 			clearOutput();
 			outputText(images.showImage("location-townruins-shop"));
 			outputText("Your eyes are drawn to what was once a shop from the look of its vandalized sign. Who knows what might be inside? You enter the ruined shop and check for anything to be removed.");
-			if (flags[kFLAGS.TOWN_RUINS_TOWNHALL_FURNITURE_FOUND] == 0 && flags[kFLAGS.TOWN_RUINS_TOWNHALL_SCAVENGE_PROGRESS] == 0) findFurniture("shop");
+			if (flags[kFLAGS.TOWN_RUINS_TOWNHALL_FURNITURE_FOUND] === 0 && flags[kFLAGS.TOWN_RUINS_TOWNHALL_SCAVENGE_PROGRESS] === 0) findFurniture("shop");
 			dismantleMainText(kFLAGS.TOWN_RUINS_SHOP_SCAVENGE_PROGRESS, "shop");
 		}
 
@@ -198,7 +198,7 @@ package classes.Scenes.Places  {
 				doNext(camp.returnToCampUseOneHour);
 				return;
 			}
-			if (flags[progress] == 0) { //Have toolbox?
+			if (flags[progress] === 0) { //Have toolbox?
 				outputText("With the interior now checked and confirmed to be empty, you set down your toolbox and open it to take out a tool belt and put it around your waist. After putting on your belt, you load it with the necessary tools. Safety first, of course! You put on your safety goggles and hard hat. Time to get started with recovering useful resources.\n\n");
 				outputText("The roof is something you should remove first and from the looks of it, it’s pretty much just wooden frames nailed together. It’s possible that the roof once had some kind of thatch to keep the rain out. Whatever it was must have burned away, leaving the wooden frame behind. You’ll have to reach it, though.\n\n");
 				if (!(player.isTaur() || !player.canFly())) {
@@ -226,19 +226,19 @@ package classes.Scenes.Places  {
 				nails = 10 + rand(20) + Math.floor(rand((player.str + player.inte) / 4));
 				wood = 10 + rand(10) + Math.floor(rand((player.str + player.inte) / 8));
 			}
-			else if (flags[progress] == 1) {
+			else if (flags[progress] === 1) {
 				outputText("Now that the roof has been removed, you can safely dismantle the interior walls. You pull out a hammer and chisel from your tool belt, angle the chisel against one of the walls and strike the handle, causing the plaster to break away. With the plaster broken off, you strike the exposed section and it collapses, sending out a cloud of chipped plaster and dust. Once the cloud has cleared, you chisel away the remaining section of the wall and knock it down. Next, you pull up the wooden studs from the floor and lay them neatly on the ground. You repeat the process for the rest of the interior walls. With the interior walls now removed, you comb through the heaps of debris for intact stone bricks. The process takes you an entire hour.\n\n");
 				outputText("You pick up the stone bricks, place them in a neat pile on a pallet and tie them together along with the wooden pieces before finally hauling the newly-scavenged resources home.");
 				wood = 10 + rand(10) + Math.floor(rand((player.str + player.inte) / 8));
 				stones = 5 + rand(5) + Math.floor(rand((player.str + player.inte) / 20));
 			}
-			else if (flags[progress] == 2) {
+			else if (flags[progress] === 2) {
 				outputText("With the interior of the building hollow and the roof removed you can begin dismantling the frame. Taking out your hammer and chisel you begin to chip away at the mortar keeping the stone wall together, slowly weakening the structure with each strike. Once you reach the end you look back at your progress, piles of chipped mortar line the floor next to the wall. Taking one last look at it, you take a place inside the hollow structure and push the wall outwards, sending it crashing down, upon impact with the ground it breaks into debris that consists of stone and left-over mortar. Repeating this process for the other sides you get a good look at the wooden studs that have been freed from the surrounding stone; it takes " + (player.str < 80 ? "great" : "a bit of") + " effort, but you manage to pluck them from the ground and arrange them in a neat pile to be hauled off back to camp.");
 				player.changeFatigue(Math.max(10, 40 - Math.floor(player.str / 5)));
 				wood = 10 + rand(10) + Math.floor(rand((player.str + player.inte) / 8));
 				stones = 5 + rand(5) + Math.floor(rand((player.str + player.inte) / 20));
 			}
-			else if (flags[progress] == 3) {
+			else if (flags[progress] === 3) {
 				outputText("With the " + buildingDesc + " now reduced to a pile of debris, you can focus on grabbing anything of use. The stone bricks are in a decent condition, even after all the trauma they could still be reclaimed for use in your construction projects. You take out your chisel and strike it with your hammer to chip away at the remaining mortar. It doesn’t take a lot of effort as the bricks easily fall apart into usable pieces. You sort the stone bricks into a neat pile on a pallet; the process taking you the better half of an hour. You tie the bricks together to secure them and take a final look at what was once a " + buildingDesc + ", now completely stripped down to the foundation. You leave behind the barren plot and haul the pile of stone bricks to your camp.");
 				stones = 5 + rand(5) + Math.floor(rand((player.str + player.inte) / 12));
 			}
@@ -247,15 +247,15 @@ package classes.Scenes.Places  {
 			flags[kFLAGS.CAMP_CABIN_WOOD_RESOURCES] += wood;
 			flags[kFLAGS.CAMP_CABIN_STONE_RESOURCES] += stones;
 
-			if (nails > 0) resourceGainText.push("" + nails + (nails == 1 ? " nail" : " nails"));
+			if (nails > 0) resourceGainText.push("" + nails + (nails === 1 ? " nail" : " nails"));
 			if (wood > 0) resourceGainText.push(wood + " wood");
-			if (stones > 0) resourceGainText.push("" + stones + (stones == 1 ? " stone" : " stones"));
+			if (stones > 0) resourceGainText.push("" + stones + (stones === 1 ? " stone" : " stones"));
 
 			if (nails + wood + stones > 0) outputText("\n\n<b>You have scavenged " + formatStringArray(resourceGainText) + "!</b>");
 			
 			flags[progress]++; //Increment progress and clear furniture found variable, if any.
-			if (progress == 4) outputText("\n\n<b>The " + buildingDesc + " you had been focusing on dismantling and scavenging has been completely stripped down to the foundation.</b>");
-			if (progress == kFLAGS.TOWN_RUINS_HOUSE_SCAVENGE_PROGRESS && flags[kFLAGS.TOWN_RUINS_HOUSES_DISMANTLED] < 10 && flags[progress] >= 4) {
+			if (progress === 4) outputText("\n\n<b>The " + buildingDesc + " you had been focusing on dismantling and scavenging has been completely stripped down to the foundation.</b>");
+			if (progress === kFLAGS.TOWN_RUINS_HOUSE_SCAVENGE_PROGRESS && flags[kFLAGS.TOWN_RUINS_HOUSES_DISMANTLED] < 10 && flags[progress] >= 4) {
 				flags[progress] = 0;
 				flags[kFLAGS.TOWN_RUINS_HOUSES_DISMANTLED]++;
 				flags[kFLAGS.TOWN_RUINS_HOUSE_FURNITURE_FOUND] = 0;
@@ -265,16 +265,16 @@ package classes.Scenes.Places  {
 		}
 
 		private function findFurniture(building:String = "house"):void { //Find furniture? Lucky!
-			if (furnitureFoundToday != "") return;
+			if (furnitureFoundToday !== "") return;
 			var choice:Array = [];
 			var select:int;
-			if (flags[kFLAGS.CAMP_CABIN_FURNITURE_BED] == 0 && building == "house") choice[choice.length] = 0;
-			if (flags[kFLAGS.CAMP_CABIN_FURNITURE_NIGHTSTAND] == 0 && building == "house") choice[choice.length] = 1;
-			if (flags[kFLAGS.CAMP_CABIN_FURNITURE_DRESSER] == 0 && building == "house") choice[choice.length] = 2;
-			if (flags[kFLAGS.CAMP_CABIN_FURNITURE_TABLE] == 0) choice[choice.length] = 3;
-			if (flags[kFLAGS.CAMP_CABIN_FURNITURE_CHAIR1] == 0 || flags[kFLAGS.CAMP_CABIN_FURNITURE_CHAIR2] == 0 || flags[kFLAGS.CAMP_CABIN_FURNITURE_DESKCHAIR]) choice[choice.length] = 4;
-			if (flags[kFLAGS.CAMP_CABIN_FURNITURE_BOOKSHELF] == 0) choice[choice.length] = 5;
-			if (flags[kFLAGS.CAMP_CABIN_FURNITURE_DESK] == 0) choice[choice.length] = 6;
+			if (flags[kFLAGS.CAMP_CABIN_FURNITURE_BED] === 0 && building === "house") choice[choice.length] = 0;
+			if (flags[kFLAGS.CAMP_CABIN_FURNITURE_NIGHTSTAND] === 0 && building === "house") choice[choice.length] = 1;
+			if (flags[kFLAGS.CAMP_CABIN_FURNITURE_DRESSER] === 0 && building === "house") choice[choice.length] = 2;
+			if (flags[kFLAGS.CAMP_CABIN_FURNITURE_TABLE] === 0) choice[choice.length] = 3;
+			if (flags[kFLAGS.CAMP_CABIN_FURNITURE_CHAIR1] === 0 || flags[kFLAGS.CAMP_CABIN_FURNITURE_CHAIR2] === 0 || flags[kFLAGS.CAMP_CABIN_FURNITURE_DESKCHAIR]) choice[choice.length] = 4;
+			if (flags[kFLAGS.CAMP_CABIN_FURNITURE_BOOKSHELF] === 0) choice[choice.length] = 5;
+			if (flags[kFLAGS.CAMP_CABIN_FURNITURE_DESK] === 0) choice[choice.length] = 6;
 			select = choice[rand(choice.length)];
 			switch(select) {
 				case 0: outputText("\n\nMoving around the debris inside of the house you find a bed! Thinking you'll finally have something other than your old sleep roll to lay on gives you a sense of hope, which is quickly shattered when you find the actual mattress. It's covered in ash and some wh... Oh that's… Well, you aren't going to sleep on that, but the bed frame itself still seems usable and untainted.");
@@ -307,7 +307,7 @@ package classes.Scenes.Places  {
 				default:outputText("\n\nYou continue to search thoroughly but despite that, you fail to find anything useful."); //Failsafe
 						furnitureFoundToday = "null";
 			}
-			if (furnitureFoundToday != "null") {
+			if (furnitureFoundToday !== "null") {
 				outputText("\n\n");
 				if (flags[kFLAGS.CAMP_CABIN_PROGRESS] >= 10) outputText("This would be a great addition to your cabin. ");
 				outputText("You haul the " + furnitureFoundToday + " outside the " + building + ", sitting it down in sight but away from the " + building + ". Ready to be hauled back to camp when you're done here.");

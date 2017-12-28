@@ -12,11 +12,11 @@ package classes.Scenes.Places.Boat
 		public function tentacleAttack():void {
 			outputText("You spot barrage of tentacles coming your way! You attempt to dodge your way out ");
 			var evade:String = player.getEvasionReason();
-			if (evade == EVASION_SPEED)
+			if (evade === EVASION_SPEED)
 			{
 				outputText("and you successfully dodge her tentacles!");
 			}
-			else if (evade != null)
+			else if (evade !== null)
 			{
 				outputText("and you successfully dodge her tentacles thanks to your superior evasion!");
 			}
@@ -35,11 +35,11 @@ package classes.Scenes.Places.Boat
 			
 			outputText("You spot barrage of tentacles coming your way! The tentacles are coming your way, aiming for your groin! ");
 			var evade:String = player.getEvasionReason();
-			if (evade == EVASION_SPEED)
+			if (evade === EVASION_SPEED)
 			{
 				outputText("You manage to successfully run from her tentacles! ");
 			}
-			else if (evade != null)
+			else if (evade !== null)
 			{
 				outputText("You manage to avoid her tentacles thanks to your superior evasion!");
 			}
@@ -60,7 +60,7 @@ package classes.Scenes.Places.Boat
 			combatRoundOver();
 		}
 		public function smiteHit():void {
-			if (game.flags[kFLAGS.IN_COMBAT_USE_PLAYER_WAITED_FLAG] == 1) {
+			if (game.flags[kFLAGS.IN_COMBAT_USE_PLAYER_WAITED_FLAG] === 1) {
 				outputText("You look up in the sky to see the lightning incoming! Thanks to your preparedness, you manage to leap away before the lightning hits you! ");
 			}
 			else {
@@ -109,11 +109,11 @@ package classes.Scenes.Places.Boat
 				eAttack();
 				return
 			}
-			else if (game.flags[kFLAGS.FACTORY_SHUTDOWN] == 1) {
+			else if (game.flags[kFLAGS.FACTORY_SHUTDOWN] === 1) {
 				if (chooser >= 4 && chooser < 7) eAttack();
 				if (chooser >= 7 && chooser < 10) smite();
 			}
-			else if (game.flags[kFLAGS.FACTORY_SHUTDOWN] == 2) {
+			else if (game.flags[kFLAGS.FACTORY_SHUTDOWN] === 2) {
 				if (chooser >= 4 && chooser < 7) tentacleAttack();
 				if (chooser >= 7 && chooser < 10) tentacleRape();
 			}
@@ -124,7 +124,7 @@ package classes.Scenes.Places.Boat
 			this.a = "";
 			this.short = "Marae";
 			this.imageName = "marae";
-			if (game.flags[kFLAGS.FACTORY_SHUTDOWN] == 2) {
+			if (game.flags[kFLAGS.FACTORY_SHUTDOWN] === 2) {
 				this.long = "This being is known as the goddess of Mareth. She is corrupted due to the aftermath of the factory valves being blown up. She's white all over and textured with bark. The \"flower\" below her belly button resembles more of a vagina than a flower. Her G-cup sized breasts jiggle with every motion."
 				this.createVagina(false, VaginaClass.WETNESS_DROOLING, VaginaClass.LOOSENESS_NORMAL);
 				createBreastRow(Appearance.breastCupInverse("G"));
@@ -143,7 +143,7 @@ package classes.Scenes.Places.Boat
 			this.skin.setType(Skin.PLAIN);
 			this.hair.color = "green";
 			this.hair.length = 36;
-			if (game.flags[kFLAGS.FACTORY_SHUTDOWN] == 2) {
+			if (game.flags[kFLAGS.FACTORY_SHUTDOWN] === 2) {
 				initStrTouSpeInte(150, 150, 70, 110);
 				initLibSensCor(60, 25, 100);
 				this.weaponName = "tentacles";
@@ -163,7 +163,7 @@ package classes.Scenes.Places.Boat
 			this.armorDef = 30;
 			this.bonusHP = 4750;
 			this.bonusLust = 80;
-			if (game.flags[kFLAGS.FACTORY_SHUTDOWN] == 1) {
+			if (game.flags[kFLAGS.FACTORY_SHUTDOWN] === 1) {
 				this.bonusHP += 2700;
 				if (game.flags[kFLAGS.MINERVA_TOWER_TREE] > 0) this.bonusHP += 1000;
 			}
@@ -172,15 +172,15 @@ package classes.Scenes.Places.Boat
 			this.temperment = TEMPERMENT_RANDOM_GRAPPLES;
 			this.level = 99;
 			this.additionalXP = 2500;
-			if (game.flags[kFLAGS.FACTORY_SHUTDOWN] == 1) {
+			if (game.flags[kFLAGS.FACTORY_SHUTDOWN] === 1) {
 				this.additionalXP += 500;
 			}
 			this.drop = NO_DROP;
 			this.gems = 1000;
-			if (game.flags[kFLAGS.FACTORY_SHUTDOWN] == 1) {
+			if (game.flags[kFLAGS.FACTORY_SHUTDOWN] === 1) {
 				this.special1 = smite;
 			}
-			if (game.flags[kFLAGS.FACTORY_SHUTDOWN] == 2) {
+			if (game.flags[kFLAGS.FACTORY_SHUTDOWN] === 2) {
 				this.special1 = tentacleAttack;
 				this.special2 = tentacleRape;
 			}

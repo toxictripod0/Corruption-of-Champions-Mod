@@ -16,12 +16,12 @@ package classes.Scenes.Quests.UrtaQuest
 
 		override protected function performCombatAction():void
 		{
-			if (HP < 300 && statusEffectv1(StatusEffects.MinoMilk) < 4 && flags[kFLAGS.URTA_QUEST_STATUS] == 0.75) minotaurDrankMalk();
-			else if (rand(4) == 0 && player.weaponName != "fists") minotaurDisarm();
+			if (HP < 300 && statusEffectv1(StatusEffects.MinoMilk) < 4 && flags[kFLAGS.URTA_QUEST_STATUS] === 0.75) minotaurDrankMalk();
+			else if (rand(4) === 0 && player.weaponName !== "fists") minotaurDisarm();
 			else if (!hasStatusEffect(StatusEffects.Timer)) minotaurLordEntangle();
 			else if (hasStatusEffect(StatusEffects.MinotaurEntangled)) minotaurCumPress();
 			else {
-				if (rand(2) == 0) minotaurPrecumTease();
+				if (rand(2) === 0) minotaurPrecumTease();
 				else eAttack();
 			}
 		}
@@ -50,14 +50,14 @@ package classes.Scenes.Quests.UrtaQuest
 
 		private function minotaurDisarm():void
 		{
-			if (flags[kFLAGS.URTA_QUEST_STATUS] == 0.75) {
+			if (flags[kFLAGS.URTA_QUEST_STATUS] === 0.75) {
 				outputText("The giant of a minotaur raises his chain threateningly into the air, clearly intent on striking you down.  With your trained reflexes, you quickly move to block his blow with your halberd.  You recoil as the chain impacts your halberd with a loud clang, wrapping around it.  You smile triumphantly at the minotaur, only to glance at his smirk.  With a strong pull, he rips the halberd off your hands and into a corner of the room. Shit!");
 				outputText("\n\nThe succubus laughs maniacally.  \"<i>Good boy, Fido!  Take that fox slut's toys away so she'll be easier to play with!</i>\"  The minotaur puffs his chest, proud of himself for pleasing his mistress.");
 				player.setWeapon(WeaponLib.FISTS);
 			}
 			else {
 				outputText("The giant of a minotaur raises his chain threateningly into the air, clearly intent on striking you down.  With your trained reflexes, you quickly move to block his blow with your [weapon].  You recoil as the chain impacts your [weapon] with a loud clang, wrapping around it.  You smile triumphantly at the minotaur, only to glance at his smirk.  ");
-				if (player.weaponName != "fists") {
+				if (player.weaponName !== "fists") {
 					outputText("With a strong pull, he yanks your " + player.weaponName + " off your hands and into a corner of the room. Shit!");
 					flags[kFLAGS.PLAYER_DISARMED_WEAPON_ID] = player.weapon.id;
 					flags[kFLAGS.PLAYER_DISARMED_WEAPON_ATTACK] = player.weaponAttack;
@@ -78,7 +78,7 @@ package classes.Scenes.Quests.UrtaQuest
 			}
 			else {
 				outputText("You try to avoid it, but you're too slow, and the chain slaps into your hip, painfully bruising you with the strength of the blow, even through your armor.  The inertia carries the back half of the whip around you, and in a second, the chain has you all wrapped up with your arms pinned to your sides and your movement restricted.");
-				if (flags[kFLAGS.URTA_QUEST_STATUS] == 0.75) outputText("\n\n\"<i>Hahaha!  Good boy, Fido!  Leash that bitch up!</i>\"  The succubus laughs with glee.");
+				if (flags[kFLAGS.URTA_QUEST_STATUS] === 0.75) outputText("\n\n\"<i>Hahaha!  Good boy, Fido!  Leash that bitch up!</i>\"  The succubus laughs with glee.");
 				outputText("\n\n<b>You're tangled up in the minotaur lord's chain, and at his mercy, unless you can break free!</b>");
 				createStatusEffect(StatusEffects.MinotaurEntangled, 0, 0, 0, 0);
 			}
@@ -114,7 +114,7 @@ package classes.Scenes.Quests.UrtaQuest
 		private function minotaurPrecumTease():void
 		{
 			outputText("The minotaur smiles at you and lifts his loincloth, flicking it at you.  Thick ropes of pre-cum fly through the air in a swarm,");
-			if (rand(2) == 0) {
+			if (rand(2) === 0) {
 				outputText(" slapping into your face before you can react!  You wipe the slick snot-like stuff out of your eyes and nose, ");
 				if (player.lust100 >= 70) outputText("swallowing it into your mouth without thinking.  You greedily guzzle the potent, narcotic aphrodisiac down, even going so far as to lick it from each of your fingers in turn, sucking every drop into your waiting gullet.");
 				else outputText("feeling your heart hammer lustily.");
@@ -122,7 +122,7 @@ package classes.Scenes.Quests.UrtaQuest
 			}
 			else {
 				outputText(" right past your head, but the smell alone is enough to make you weak at the knees.");
-				if (flags[kFLAGS.URTA_QUEST_STATUS] == 0.75) outputText("  The animalistic scent of it seems to get inside you, the musky aroma burning a path of liquid heat to your groin, stiffening your horse-cock to absurd degrees.");
+				if (flags[kFLAGS.URTA_QUEST_STATUS] === 0.75) outputText("  The animalistic scent of it seems to get inside you, the musky aroma burning a path of liquid heat to your groin, stiffening your horse-cock to absurd degrees.");
 				else outputText("  The animalistic scent of it seems to get inside you, the musky aroma burning a path of liquid heat to your groin.");
 				kGAMECLASS.dynStats("lus", 11 + player.lib / 10);
 			}
@@ -136,7 +136,7 @@ package classes.Scenes.Quests.UrtaQuest
 		{
 			game.clearOutput();
 			outputText("The minotaur lord is defeated!  ");
-			if (flags[kFLAGS.URTA_QUEST_STATUS] == 0.75) {
+			if (flags[kFLAGS.URTA_QUEST_STATUS] === 0.75) {
 				outputText("  You could use him for a quick fuck to sate your lusts before continuing on.  Do you?");
 				game.menu();
 				game.addButton(0,"Fuck",game.urtaQuest.winRapeAMinoLordAsUrta);
@@ -147,7 +147,7 @@ package classes.Scenes.Quests.UrtaQuest
 
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
 		{
-			if (flags[kFLAGS.URTA_QUEST_STATUS] == 0.75) {
+			if (flags[kFLAGS.URTA_QUEST_STATUS] === 0.75) {
 				if (hpVictory) game.urtaQuest.urtaLosesToMinotaurRoughVersion();
 				else game.urtaQuest.urtaSubmitsToMinotaurBadEnd();
 			}
@@ -159,7 +159,7 @@ package classes.Scenes.Quests.UrtaQuest
 			this.a = "the ";
 			this.short = "minotaur lord";
 			this.imageName = "minotaurlord";
-			if (flags[kFLAGS.URTA_QUEST_STATUS] == 0.75) this.long = "Across from you is the biggest minotaur you've ever seen.  Fully eleven feet tall, this shaggy monstrosity has muscles so thick that they stand even through his thick, obscuring fur.  A leather collar with a tag indicates his status as 'pet' though it seems completely out of place on the herculean minotaur.  His legs and arms are like thick tree trunks, imposing and implacable, flexing fiercely with every movement.  This can only be a minotaur lord, a minotaur of strength and virility far beyond his lesser brothers. In his hands, a massive chain swings, connected to his collar, but used as an impromptu weapon for now.  A simple loincloth girds his groin, though it does little to hide the massive, erect length that tents it.  It winds up looking more like a simple, cloth condom than any sort of clothing, and it drips long strings of musky pre-slime in ribbons onto the ground.  Below, heavy testes, each easily the size of a basketball, swing in a taut, sloshing sack.  You can almost smell the liquid bounty he has for you, and the musk he's giving off makes it seem like a good idea...";
+			if (flags[kFLAGS.URTA_QUEST_STATUS] === 0.75) this.long = "Across from you is the biggest minotaur you've ever seen.  Fully eleven feet tall, this shaggy monstrosity has muscles so thick that they stand even through his thick, obscuring fur.  A leather collar with a tag indicates his status as 'pet' though it seems completely out of place on the herculean minotaur.  His legs and arms are like thick tree trunks, imposing and implacable, flexing fiercely with every movement.  This can only be a minotaur lord, a minotaur of strength and virility far beyond his lesser brothers. In his hands, a massive chain swings, connected to his collar, but used as an impromptu weapon for now.  A simple loincloth girds his groin, though it does little to hide the massive, erect length that tents it.  It winds up looking more like a simple, cloth condom than any sort of clothing, and it drips long strings of musky pre-slime in ribbons onto the ground.  Below, heavy testes, each easily the size of a basketball, swing in a taut, sloshing sack.  You can almost smell the liquid bounty he has for you, and the musk he's giving off makes it seem like a good idea...";
 			else this.long = "Across from you is the biggest minotaur you've ever seen.  Fully eleven feet tall, this shaggy monstrosity has muscles so thick that they stand even through his thick, obscuring fur.  His legs and arms are like thick tree trunks, imposing and implacable, flexing fiercely with every movement.  This can only be a minotaur lord, a minotaur of strength and virility far beyond his lesser brothers. In his hands, a massive chain swings, connected to his collar, but used as an impromptu weapon for now.  A simple loincloth girds his groin, though it does little to hide the massive, erect length that tents it.  It winds up looking more like a simple, cloth condom than any sort of clothing, and it drips long strings of musky pre-slime in ribbons onto the ground.  Below, heavy testes, each easily the size of a basketball, swing in a taut, sloshing sack.  You can almost smell the liquid bounty he has for you, and the musk he's giving off makes it seem like a good idea...";
 			// this.plural = false;
 			this.createCock(rand(13 + 24),2 + rand(3),CockTypesEnum.HORSE);
@@ -194,7 +194,7 @@ package classes.Scenes.Quests.UrtaQuest
 			this.level = 15;
 			this.additionalXP = 50;
 			this.gems = rand(15) + 25;
-			if (flags[kFLAGS.URTA_QUEST_STATUS] != 0.75) {
+			if (flags[kFLAGS.URTA_QUEST_STATUS] !== 0.75) {
 				this.drop = new ChainedDrop().add(consumables.MINOCUM, 1 / 5)
 						.add(consumables.MINOBLO, 1 / 2)
 						.elseDrop(null);

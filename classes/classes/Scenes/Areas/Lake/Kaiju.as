@@ -19,12 +19,12 @@ public class Kaiju extends AbstractLakeContent implements Encounter {
 
 	public function encounterChance():Number {
 		return player.level >= 5
-			   && flags[kFLAGS.KAIJU_DISABLED] == 0
+			   && flags[kFLAGS.KAIJU_DISABLED] === 0
 			   && player.hasStatusEffect(StatusEffects.BoatDiscovery) ? 1 : 0;
 	}
 
 	public function kaijuSprite():void {
-		if (flags[kFLAGS.KAIJU_COCK] == 0) spriteSelect(SpriteDb.s_venus);
+		if (flags[kFLAGS.KAIJU_COCK] === 0) spriteSelect(SpriteDb.s_venus);
 		else spriteSelect(SpriteDb.s_venus_herm);
 	}
 
@@ -38,7 +38,7 @@ public class Kaiju extends AbstractLakeContent implements Encounter {
 //Boat
 public function execEncounter():void {
 	clearOutput();
-	if (flags[kFLAGS.KAIJU_MEETINGS] == 0) {
+	if (flags[kFLAGS.KAIJU_MEETINGS] === 0) {
 		outputText(images.showImage("event-island"));
 		outputText("Your explorations take you to a small island you haven't seen before.  It appears to be a large, smooth rock hill jutting out of the water.  Do you explore it?");
 		//[Yes/No]
@@ -48,14 +48,14 @@ public function execEncounter():void {
 		addButton(2,"Never",noMeetingKaijus, true);
 	}
 	else {
-		if (flags[kFLAGS.FACTORY_SHUTDOWN] == 2 && !kaijuCock()) kaijuGrowsWangus();
+		if (flags[kFLAGS.FACTORY_SHUTDOWN] === 2 && !kaijuCock()) kaijuGrowsWangus();
 		else if (flags[kFLAGS.KAIJU_BAD_END_COUNTER] >= 5) kaijuBadEndToyBOOSH();
 		else repeatKaijuEncounter();
 	}
 }
 
 private function kaijuCock():Boolean {
-	return (flags[kFLAGS.KAIJU_COCK] == 1);
+	return (flags[kFLAGS.KAIJU_COCK] === 1);
 }
 
 //[If no]
@@ -77,7 +77,7 @@ private function meetDatKaijuYo():void {
 	outputText(images.showImage("kaiju-encounter"));
 	kaijuSprite();
 	flags[kFLAGS.KAIJU_MEETINGS] = 1;
-	if (flags[kFLAGS.FACTORY_SHUTDOWN] == 2) flags[kFLAGS.KAIJU_COCK] = 1;
+	if (flags[kFLAGS.FACTORY_SHUTDOWN] === 2) flags[kFLAGS.KAIJU_COCK] = 1;
 	outputText("You step up onto the hill and slowly make your way to the top.  The rock seems to be unnaturally symmetrical, more like a large upside down oval.  Walking around, there seems to be little of interest to explore here.  You decide to head back for the boat when suddenly the island shifts and you are nearly knocked off your feet.  You look around, wondering if it was an earthquake or an attack when suddenly the island begins shaking violently.  You run for the boat, practically falling in as you almost lose your footing.  The island seems to be rising out of the water rapidly, until towering above you is a massive terrapin girl!  What you had mistaken for an island was really a large turtle shell!");
 	
 	outputText("\n\nShe takes in a tremendous gulp of air before stretching, arching her back as far her shell will let her while her green hands flutter near her monumental rack.  You take in the sight of the green giantess, from her wet yet curly red locks of hair, to her dark green, her almost black lips, her massive mammaries which she’s currently fondling quite lewdly, to the hard turtle shell, the front of which covers her belly yet supports her exposed breasts like some kind of perverse hard corset.  She pinches a pert nipple, cooing in pleasure before finally opening her eyes and taking notice of you.");
@@ -192,9 +192,9 @@ private function letKaijuHaveWayWithYou():void {
 	if (player.hasVagina()) outputText("  Your [vagina] moistens from your body's growing arousal.");
 	
 	outputText("\n\n\"<i>Oh my, it seems someone is enjoying my special hug,</i>\" the giant beauty says noticing your rising arousal.  The lusty giant removes the lower half of your [armor] revealing your ");
-	if (player.gender == 3) outputText(player.multiCockDescriptLight() + " and [vagina]");
-	else if (player.gender == 1) outputText(player.multiCockDescriptLight());
-	else if (player.gender == 2) outputText("[vagina]");
+	if (player.gender === 3) outputText(player.multiCockDescriptLight() + " and [vagina]");
+	else if (player.gender === 1) outputText(player.multiCockDescriptLight());
+	else if (player.gender === 2) outputText("[vagina]");
 	else outputText("bare groin");
 	outputText(".  \"<i>Let's have some fun!</i>\"");
 	
@@ -292,7 +292,7 @@ private function flirtWithKaiju():void {
 			//[If PC has vagina and/or cock]
 			outputText("  Undeterred, you continue grinding upon the spurting pole until you reach your own smaller, far less impressive orgasm, releasing your own ");
 			if (player.hasVagina()) outputText("feminine juices");
-			if (player.gender == 3) outputText(" and ");
+			if (player.gender === 3) outputText(" and ");
 			if (player.hasCock()) outputText("thick cum");
 			outputText(".  You look out upon the lake to see much of it has taken on a remarkably more milky white color.  Even for a giant that was a prodigious amount of cum she unleashed!");
 			//[lust decreases, end corrupted herm scene]
@@ -444,7 +444,7 @@ private function fuckThisGiantYouDumbCuntt():void {
 			if (player.gender > 0) {
 				outputText("  Undeterred, you continue grinding upon the spurting pole until you reach your own smaller, far less impressive orgasm, releasing your own ");
 				if (player.hasVagina()) outputText("feminine juices");
-				if (player.gender == 3) outputText(" and ");
+				if (player.gender === 3) outputText(" and ");
 				if (player.hasCock()) outputText("thick cum");
 				outputText(".");
 				player.orgasm('Vaginal');
@@ -511,7 +511,7 @@ private function talkToKaiju():void {
 	flags[kFLAGS.KAIJU_BAD_END_COUNTER]--;
 	outputText("\"<i>Oh?  You want to talk?</i>\" she says, a bit taken by surprise, \"<i>What about?</i>\"");
 	//(One of the available lines of dialog plays.)
-	if (flags[kFLAGS.KAIJU_TALK_CYCLE] == 1) {
+	if (flags[kFLAGS.KAIJU_TALK_CYCLE] === 1) {
 		//Dialog one: 
 		outputText("\n\nYou ask her to talk about herself and who she is.");
 		outputText("\n\n\"<i>Well, I'm not really sure what to say.  I was born the youngest of my family shortly after the demons first took over.  Mother was once a shaman of our tribe, a beauteous woman famed for her dances that could call down the rain or predict small pieces of the future.  I never knew my father but mother claimed he was a demon.  Though whether he really was or she was just insulting him for not sticking around and raising his child I do not know.  My elder half sisters all took the path of becoming priestesses and my big brother became a warrior.  Eventually he went off to fight the demons, and I never saw him again,</i>\" she says, a note of sadness creeping into her voice.");
@@ -522,19 +522,19 @@ private function talkToKaiju():void {
 		outputText("\n\nShe seems to grow silent and draws inward as she finishes her story.  She thanks you for listening before sending you on your way.");
 	}
 	//Dialog two: 
-	else if (flags[kFLAGS.KAIJU_TALK_CYCLE] == 2) {
+	else if (flags[kFLAGS.KAIJU_TALK_CYCLE] === 2) {
 		outputText("\n\nYou decide to ask her a very delicate question that has been bothering you for a while.  How did she become such a giant?");
 		outputText("\n\n\"<i>I thought you would ask eventually,</i>\" the big green gal says, tapping a finger on her bottom lip for a few seconds as she considers what she'll say.  \"<i>Well, it all began well after the demons took over the land.  I've always tended to go back and forth between the lake and swamp ever since I can remember.  One day I was bathing in the lake all alone when it suddenly... changed.  I couldn't put my finger on it at the time, but the more I bathed the dirtier I felt. I soon left, deciding that I should stay away for a while... but I had such intense dreams that night, unlike any I ever had before.  I kept thinking of naked bodies rubbing up and down against my own body, of large cocks of every shape and description teasing my pussy or my plump rear, sliding between my cunt lips or my buttocks.  After that I just couldn't seem to help myself, I had to go back to the lake and take another dip, and another, and another.  As the waters became more corrupt and my dreams more intense I had to find the source of my pleasures.  So I began to explore every inch of the lake, until I finally came to a spot where the lake meets the mountains.</i>\"");
 		
 		outputText("\n\nHer body seems to quiver in delight as she continues on.  \"<i>I'm not sure why they want to taint the waters or what it is they use, but I found the spot where the corruption enters the lake and is the strongest.  I go there daily to absorb the warmth and delicious taint of those chemicals.  It increased my lust, and over time my size.</i>\"");
 		//[If factory has been shut down and Marae was left uncorrupted]
-		if (flags[kFLAGS.FACTORY_SHUTDOWN] == 1) outputText("  But the flow of yummy fluids seems to have been stopped.");
+		if (flags[kFLAGS.FACTORY_SHUTDOWN] === 1) outputText("  But the flow of yummy fluids seems to have been stopped.");
 		//[If the Factory was shut down and Marae corrupted]
 		else if (kaijuCock()) outputText("  But the pouring of liquids has been stopped for some reason, but not before there was one final, huge burst of tainted fluids. It was so strong and changed me even further, making me grow this,</i>\" she says as she rises further out of the lake's waters, revealing a large green cock.");
 		
 		outputText("\n\nYou thank the giantess for her explanation as you row away.");
 	}
-	else if (flags[kFLAGS.KAIJU_TALK_CYCLE] == 3) {
+	else if (flags[kFLAGS.KAIJU_TALK_CYCLE] === 3) {
 		//Dialog three: 
 		outputText("\n\nYou decide to ask if there are any other turtle people.");
 		outputText("\n\n\"<i>Oh yes, lots,</i>\" she says, \"<i>though we’re all scattered about and hard to find these days.  Actually there are two groups of us.  The freshwater turtles are a bit more reptilian, bald with no ears, and they have no nipples, though they still have boobs.  I admit I spend a lot of time swimming in the lake, but I’m a land turtle. Hair, ears, pert nipples to tug and play with...</i>\" she says, demonstrating just that as she pulls on one massive pink nub.  \"<i>The water turtles teased us all the time, saying we look more like goblins with shells than turtles, but I think they’re just jealous.</i>\"");
@@ -648,7 +648,7 @@ private function mockDatTurtleGirl():void {
 	//[If player has vagina]
 	if (player.hasVagina()) outputText("You begin to feel a wetness between your legs as your cunt begins leaking as your arousal spikes from the intense rubbing the herm's penis is giving your whole body.  ");
 	//[If genderless]
-	if (player.gender == 0) outputText("Your cheeks blush in arousal from all this heavy rubbing.  ");
+	if (player.gender === 0) outputText("Your cheeks blush in arousal from all this heavy rubbing.  ");
 	if (player.cor < 33) outputText("You can't believe that you're being aroused by this.  Aren't you suppose to be a champion?");
 	else if (player.cor < 66) outputText("Wow, this is arousing you.  You wonder if you really are a champion.");
 	else outputText("You just want to get off now.");
@@ -791,7 +791,7 @@ private function badEndPartTwo():void {
 	clearOutput();
 	//kaijuSprite();
 	outputText("The horny giantess makes short work of your [armor] and soon the green gal has you mashed against her puckered lips, doing her best to give a passionate kiss despite the size barrier.  Pulling you up towards eye level, her voice growls with lust as she says, \"<i>By Marae you get me so hot and bothered.  We've just been fucking so much lately I can't get you out of my mind!  You naughty, wonderful, glorious, perverted " + player.mf("boy","girl") + "!  I just don't think I can stand it without you any longer!</i>\"  Without further comment she places you at the tip of one of her great big green milk machines, shoving your face into a pink colossal nipple.  \"<i>Drink up now.</i>\"  It's apparent she wants to feed you her corrupted milk, and there doesn't appear to be much of a choice in the matter now.  Her nipple is larger than even some of the more massive cocks you've seen in this land, yet you manage to get your mouth around the very tip of it and begin to suck mercilessly at the milky teat as you bring your hands up to stroke and pinch at the base of the overly sensitive large nub.  \"<i>Oh goddess!</i>\" the giant slut moans above you.");
-	if (player.tongue.type == Tongue.SNAKE) outputText("  Your snaky forked tongue begins lashing about, flicking at the nipple tip in your mouth while rubbing at the underside of it, urging the tender spot to give up a drop of the heavenly white liquid.");
+	if (player.tongue.type === Tongue.SNAKE) outputText("  Your snaky forked tongue begins lashing about, flicking at the nipple tip in your mouth while rubbing at the underside of it, urging the tender spot to give up a drop of the heavenly white liquid.");
 	//[If PC has demonic/dragon tongue]
 	else if (player.tongue.type > Tongue.HUMAN) {
 		outputText("  The long tongue in your mouth slowly crawls around the nipple tip clenched between your lips, wrapping around the milky nip and squeezing to urge a dollop of milk out.");

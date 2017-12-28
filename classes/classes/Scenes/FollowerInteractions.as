@@ -263,7 +263,7 @@ public function amilyIngredientDelivery():void {
 	clearOutput();
 	outputText("As you make your way to Rathazul's lab, a ");
 	
-	if (flags[kFLAGS.AMILY_NOT_FURRY] == 1) outputText("big-eared blur whizzes past you");
+	if (flags[kFLAGS.AMILY_NOT_FURRY] === 1) outputText("big-eared blur whizzes past you");
 	else outputText("blur of fur whizzes past you");
 	
 	outputText(".  Amily sprints into the rat's lab with an armful of flowers, plants, and other ingredients.  Rathazul says, \"<i>Thank you, child - these will be a huge help.  It is fortunate you knew where to find some of these.  Purchasing them is difficult and expensive.</i>\"\n\n");
@@ -442,7 +442,7 @@ private function srslyPimpinGuyz():void {
 	outputText("\"<i>Yes I'm serious.  What, you don't think I can take both of you?</i>\" you say while putting your hands on your hips and swinging them around.  The two of them almost scream as one before descending upon you.  In an instant you're hit with a dart from Amily, causing your body to lock up, just before Marble brings her hammer down onto your head in a massive overhead swing and everything goes black.\n\n");
 	player.takeDamage(player.HP - 1);
 	outputText("You wake up several hours later to find that neither of the two girls are still around, your camp is in shambles, and most of your equipment is gone.  After looking around camp, you realize that all of your expendable items, gems, and even your weapons and armor have been taken.  ")
-	if (player.armorName != "goo armor") outputText("All that is left is a suit of comfortable clothes that you put on.  ");
+	if (player.armorName !== "goo armor") outputText("All that is left is a suit of comfortable clothes that you put on.  ");
 	else outputText("\"<i>Are you all right?</i>\" the armor-goo asks.  You insist her that you have a terrible headache.  ");
 	outputText("You also find a note in a rough script that says: <i>This is what you get for being an asshole.</i>  Those damn bitches.");
 	player.gems *= 0;
@@ -507,7 +507,7 @@ private function LucyYouGotSomeSplainingToDo():void {
 public function BlameMarblezSweetVagoozle():void {
 	clearOutput();
 	outputText("You turn to Marble and point blankly tell her that it's her fault that you weren't faithful to Amily.  You start to rant about how Marble's milk has affected you, and how you lost your willpower to the addiction.  You go on about how she uses it to get what she wants, and how she didn't warn you about what would happen if you drank it.  At this Amily runs to your side and looks into your eyes for a moment before turning back to Marble and saying, \"<i>Is this the truth?</i>\"  Marble looks at you for a moment like she is going to explode before saying, \"<i>Is that really what you think of me?  How could you lie to me like this up until now?!</i>\" she then turns around and almost mechanically gathers her things ");
-	if (flags[kFLAGS.MARBLE_KIDS] == 1) outputText("and child");
+	if (flags[kFLAGS.MARBLE_KIDS] === 1) outputText("and child");
 	else if (flags[kFLAGS.MARBLE_KIDS] > 1) outputText("and her children");
 	outputText(" before slowly walking away from the camp without looking back.  \"<i>I'm going back to the farm, I guess I'll see you around.</i>\"\n\n");
 	//end event, Marble leaves the camp and returns to the farm, she can now be encountered if she had not joined you in the camp.
@@ -530,7 +530,7 @@ private function blameAmilysDumbMouseCunt():void {
 
 //Amily/Urta Interaction
 //Must have Pure Amily as follower
-//flags[kFLAGS.AMILY_FOLLOWER] == 1
+//flags[kFLAGS.AMILY_FOLLOWER] === 1
 //Must have "UrtaSexed" flagged
 
 //Must have Lover Urta?
@@ -617,7 +617,7 @@ private function endThisMadness():void {
 	outputText("You slam your fist into the wall and rage at the two cheating bitches.  Did they really think you wouldn't notice them screwing around on you behind your back?  You tell them that no, this is not going to make things better, and you scowl at Amily as you tell her that her excuse is piss-poor.  Looking towards Urta, you shout that she needs to think and stop letting her pecker lead her around.  For fuck's sake, she's nearly as bad as the monsters in the wilds!\n\n");
 	
 	//(Chance of Amily rage)
-	if (rand(2) == 0) {
+	if (rand(2) === 0) {
 		outputText("\"<i>" + player.short + ", I did this for you!  I loved you so much I worked to see what you liked in Urta!</i>\" cries Amily.  Her face blushes, not in shame, but in anger as her temper flares.  She actually says, \"<i>Everything, all of this, it was me wanting things to be perfect for YOU!  FOR US!  You... you... asshole!</i>\"\n\n");
 		outputText("The mouse scurries past you and disappears into the night.  Somehow you know you won't see her again.\n\n");
 		//No more amily follower

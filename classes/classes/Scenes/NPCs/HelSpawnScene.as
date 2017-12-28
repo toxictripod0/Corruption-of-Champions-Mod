@@ -53,12 +53,12 @@
 	//It was really fucking hard to decide what this bitch is supposed to call you. So, here’s the dealio: If you’re a herm AND her mother, she calls you “Mom;” dude and her dad, she calls you “Daddy;” she’ll change between mom and daddy as the PC’s gender changes. If she was fathered by someone OTHER than the PC, she calls the PC by their name. Simple enough?
 
 private function championRef():String {
-	if (flags[kFLAGS.HELSPAWN_DADDY] == 0) return player.mf("Daddy","Mom");
+	if (flags[kFLAGS.HELSPAWN_DADDY] === 0) return player.mf("Daddy","Mom");
 	else return player.short;
 }
 
 override public function helspawnFollower():Boolean {
-	return flags[kFLAGS.HELSPAWN_AGE] == 3;
+	return flags[kFLAGS.HELSPAWN_AGE] === 3;
 }
 
 override public function helPregnant():Boolean {
@@ -81,7 +81,7 @@ internal function heliasAppearanceScreen():void {
 	//if Isabella is cool: 
 	if (flags[kFLAGS.HEL_ISABELLA_THREESOME_ENABLED] >= 1) outputText("; she’s got her blue bandanna wrapped around her head, mostly obscured by her fiery hair");
 	outputText(".  She has a human face, with bright red eyes, gentle, feminine features and a smattering of pale scales on her cheeks, like freckles.  Hel has long, bright-red hair bound in a pony-tail that hangs down her back.  She has wide-flared hips and a soft, squishy butt.  Her two reptilian legs are visibly adorned with scales and claws, ending in soft, leathery soles.");
-	if (flags[kFLAGS.HELSPAWN_NAME] != 0) {
+	if (flags[kFLAGS.HELSPAWN_NAME] !== 0) {
 		outputText("  A dark trio of scars run down Hel’s thighs, left by " + flags[kFLAGS.HELSPAWN_NAME] + "’s youthful claws.");
 	}
 	else {
@@ -108,21 +108,21 @@ internal function heliasAppearanceScreen():void {
 //" + flags[kFLAGS.HELSPAWN_NAME] + "’s Appearance Screen
 private function helSpawnsAppearanceScreen():void {
 	clearOutput();
-	if (flags[kFLAGS.HELSPAWN_DADDY] == 0) outputText("Your ");
+	if (flags[kFLAGS.HELSPAWN_DADDY] === 0) outputText("Your ");
 	else outputText("Hel’s ");
 	outputText("salamander daughter, " + flags[kFLAGS.HELSPAWN_NAME] + ", stands about six-foot-six tall, with pale skin and thick, ");
-	if (flags[kFLAGS.HELSPAWN_DADDY] == 1) outputText("chitin-black");
+	if (flags[kFLAGS.HELSPAWN_DADDY] === 1) outputText("chitin-black");
 	else outputText("bright-red");
 	outputText(" scales covering her arms and legs, though she has a normal human face and torso.  A long leathery tail swishes happily behind her, surrounded by a dim fiery aura that emits a pleasant heat, though thankfully it isn’t hot to the touch, seemingly incapable of harming you.  " + flags[kFLAGS.HELSPAWN_NAME] + " is wearing ");
 	if (flags[kFLAGS.HELSPAWN_PERSONALITY] >= 50) outputText("a scale bikini, just like her mother’s");
 	else outputText("a short skirt, thigh-high boots, and a sky-blue blouse, in stark contrast to her mother’s sluttier attire");
 	if (flags[kFLAGS.HEL_ISABELLA_THREESOME_ENABLED] >= 1) outputText(", with a brightly-colored scarf wrapped around her neck");
 	outputText(". She has a human face, with ");
-	if (flags[kFLAGS.HELSPAWN_DADDY] == 0) outputText("golden");
-	else if (flags[kFLAGS.HELSPAWN_DADDY] == 2) outputText("bright green");
+	if (flags[kFLAGS.HELSPAWN_DADDY] === 0) outputText("golden");
+	else if (flags[kFLAGS.HELSPAWN_DADDY] === 2) outputText("bright green");
 	else outputText("crimson");
 	outputText(" eyes, girlish features, and a smattering of pale red scales on her cheeks, like freckles.  Her short, dark-red hair cuts off just below her ");
-	if (flags[kFLAGS.HELSPAWN_DADDY] == 2) outputText("puppy-dog");
+	if (flags[kFLAGS.HELSPAWN_DADDY] === 2) outputText("puppy-dog");
 	else outputText("reptilian");
 	outputText(" ears, and it’s adorned with a pretty pink bow.  She has surprisingly large hips, and a big, squishy butt behind her.  Her reptilian legs are covered with thick, dark scales, ending in short claws atop soft, leathery soles.");
 	outputText("\n\n" + flags[kFLAGS.HELSPAWN_NAME] + " has a pair of perky, palmable C-cup breasts, each with a sensitive half-inch nipple at its tip.");
@@ -142,7 +142,7 @@ public function heliaBonusPointsAward():void {
 	
 	outputText("\n\nYou nod, rubbing the sleep out of your eyes as you stagger up onto your [feet].  You note that Hel's wrapped her old cloak tightly around herself, held closed so that nothing but her face is visible.  You start to ask what's up, but Hel shushes you, saying she needs to talk to you privately.  ");
 	//{If Hel's the only one at camp: 
-	if (camp.companionsCount() == 1) outputText("You cock an eyebrow, saying that you're already alone, but she shakes her head, saying she needs somewhere private, away from prying eyes.  ");
+	if (camp.companionsCount() === 1) outputText("You cock an eyebrow, saying that you're already alone, but she shakes her head, saying she needs somewhere private, away from prying eyes.  ");
 	outputText("You nod your assent, and let her help you up and lead you away from camp.  You follow Hel through the darkness, stumbling after her until you're hidden away beneath the old ruined wall a stone's throw from the perimeter.  Safely tucked away beneath the shadow of the wall, Hel takes your hands in hers and hesitantly, says, \"<i>Look, I don't... this isn't easy for me, okay?  But I have to tell you something, [name].  And it's important, alright?  To me, anyway. I wouldn't bring it up if I could deal with it myself, honest.  But I can't and... and I'm afraid, [name].</i>\"");
 	
 	outputText("\n\nYou squeeze Helia's hands and reassure her as best you can, saying she can tell you anything.  She looks away, blushing hotly; beneath her cloak, the radiant fire of her long tail shines brighter, casting a pale glow even through the heavy fabric.  You ask again what's wrong, and with a little coaxing, Hel looks up, her bright crimson eyes staring into yours.");
@@ -194,7 +194,7 @@ private function heliaLoveFollowup():void {
 	
 	outputText("\n\nHel reaches up and undoes the clasp on her cloak.  When it falls away, your eyes are drawn immediately to her tail - once burning with a blood-red hellfire, her leathery tail is now surrounded by a pale radiance, shimmering like white gold.  Your eyes widen, but Hel flinches back as you try to approach.  \"<i>It's called the Pale Flame, [name].  Just like it looks.  When a 'mander girl finds the person she wants to be with, our bodies change.  While I'm like this... I'm as fertile as a goblin, and... and I </i>want<i> to be.  I want... I need... a child, [name].  I want to be pumped full of cum until I'm bloated, to bear a little salamander for us to raise and love.  ");
 	//If HelLove = No:
-	if (flags[kFLAGS.HEL_LOVE] == -1) outputText("Even if you don't love me, you'd love our child, right?  You can fuck me full of kids, or even... even get someone else to, I don't care.  I just </i>need<i> it, [name].  More than anything else in the whole wide world.");
+	if (flags[kFLAGS.HEL_LOVE] === -1) outputText("Even if you don't love me, you'd love our child, right?  You can fuck me full of kids, or even... even get someone else to, I don't care.  I just </i>need<i> it, [name].  More than anything else in the whole wide world.");
 	else {
 		outputText("I love you, [name].  I love you so much.  I want to share this with you.  ");
 		if (player.hasCock()) outputText("You'll fuck me full of kids, right?  Please?  Give me your seed, [name].  Give it all to me until I'm fucking gravid with your salamander babies.");
@@ -269,7 +269,7 @@ private function HaveAHellKidPartII():void {
 	outputText("\n\nYou lift yourself up onto your elbow, staring at your love as her fiery eyes gaze into the void.  \"<i>I thought this was what you wanted, Hel.  You were-</i>\"");
 	
 	outputText("\n\n\"<i>Yeah, I know.  Forget about it, I'm fine.  Really.  It's just that this happened all so suddenly, you know?  This isn't exactly where I saw myself a year ago.  Not that I'm complaining,</i>\" she adds, turning back to you with another kiss, squeezing your shoulder.  \"<i>I just hope I'm ready, I guess.  Until the Pale Flame took, I'd never really thought about being a mother.  Never really wanted it.  But last night, it was like I was possessed, like I couldn't control myself.  I just... needed you.  And there you were, like always, ready to help.  I love you with all my heart, [name]");
-	if (flags[kFLAGS.HEL_LOVE] == 1) outputText(", and I'm so very, very glad you love me back.");
+	if (flags[kFLAGS.HEL_LOVE] === 1) outputText(", and I'm so very, very glad you love me back.");
 	else outputText(", even if you can't say the same.  And that's alright; it doesn't change my heart, and it never will. I love you");
 	outputText(".</i>\"");
 	
@@ -366,7 +366,7 @@ public function helGotKnockedUp():void {
 	flags[kFLAGS.HEL_NTR_TRACKER] = 2;
 
 	outputText("\n<b>After your decision with Helia last night,</b> you decide to check in on your lusty salamander.  You find her sitting on a rock near her part of camp, knees held close to her chest, seemingly deep in thought.  She gives you a ");
-	if (flags[kFLAGS.HELSPAWN_DADDY] == 2) outputText("warm ");
+	if (flags[kFLAGS.HELSPAWN_DADDY] === 2) outputText("warm ");
 	else outputText("wan ");
 	outputText("smile as you approach, scooting over to allow you to sit beside her.  She almost seems distant, though she's quick to wrap her tail around your waist, hugging you close against her.");
 	outputText("\n\nAfter a few quiet minutes, you finally ask, \"<i>How'd it go?</i>\"");
@@ -374,12 +374,12 @@ public function helGotKnockedUp():void {
 
 	menu();
 	//Hel Got Knocked Up by Mai
-	if (flags[kFLAGS.HELSPAWN_DADDY] == 2) {
+	if (flags[kFLAGS.HELSPAWN_DADDY] === 2) {
 		addButton(0,"Sure",sureHelGimmeMaiDetails);
 		addButton(1,"Nope",dontTellMeAboutMai);
 	}
 	//Hel Got Knocked Up by a Spiderboy
-	else if (flags[kFLAGS.HELSPAWN_DADDY] == 1) {
+	else if (flags[kFLAGS.HELSPAWN_DADDY] === 1) {
 		addButton(0,"Sure",sureHelGimmeSpidahBoyDetails);		
 		addButton(1,"Nope",dontTellMeAboutSpiderboy);
 	}
@@ -421,7 +421,7 @@ private function dontTellMeAboutSpiderboy():void {
 	outputText("\n\nYou put an arm around the mother-to-be's shoulder, saying, \"<i>I thought this was what you wanted, Hel.  You were-</i>\"");
 	
 	outputText("\n\n\"<i>Yeah, I know.  Forget about it, I'm fine.  Really.  It's just that this happened all so suddenly, you know?  This isn't exactly where I saw myself a year ago.  Not that I'm complaining,</i>\" she adds, turning back to you with a kiss, squeezing you with her tail.  \"<i>I just hope I'm ready, I guess.  Until the Pale Flame took, I'd never really thought about being a mother.  Never really wanted it.  But last night, it was like I was possessed, like I couldn't control myself.  I just... needed you.  Well, maybe not your sperm - not literally, I mean - but it was like my body screaming 'You've found [him], [he]'s the one, this is a keeper!  Time to propagate!' I-I can't help but feel like this wasn't entirely my choice, you know?  Like I was acting on instinct, like an animal, not a person.  But at the same time, if I've made a mistake, then I have you here with me, to help me like you always do.  I love you with all my heart, [name]");
-	if (flags[kFLAGS.HEL_LOVE] == 1) outputText(", and I'm so very, very glad you love me back.");
+	if (flags[kFLAGS.HEL_LOVE] === 1) outputText(", and I'm so very, very glad you love me back.");
 	else outputText(", even if you can't say the same.  And that's alright; it doesn't change my heart, and it never will. I love you.");
 	outputText("</i>\"");
 	
@@ -466,7 +466,7 @@ private function dontTellMeAboutMai():void {
 	
 	outputText("\n\n\"<i>Yeah, I know.  Forget about it, I'm fine.  Really.  It's just that this happened all so suddenly, you know?  This isn't exactly where I saw myself a year ago.  Not that I'm complaining,</i>\" she adds, turning back to you with a kiss, squeezing you with her tail.  \"<i>I just hope I'm ready, I guess.  Until the Pale Flame took, I'd never really thought about being a mother.  Never really wanted it.  But last night, it was like I was possessed, like I couldn't control myself.  I just... needed you.  Well, maybe not your sperm - not literally, I mean - but it was like my body screaming 'You've found " + player.mf("him","her") + ", " + player.mf("he","she") + "'s the one, this is a keeper!  Time to propagate!'  I-I can't help but feel like this wasn't entirely my choice, you know? Like I was acting on instinct, like an animal, not a person.  But at the same time, if I've made a mistake, then I have you here with me, to help me like you always do.  I love you with all my heart, [name]");
 	//if HelLove is Yes:
-	if (flags[kFLAGS.HEL_LOVE] == 1) outputText(", and I'm so very, very glad you love me back.");
+	if (flags[kFLAGS.HEL_LOVE] === 1) outputText(", and I'm so very, very glad you love me back.");
 	else outputText(", even if you can't say the same. And that's alright; it doesn't change my heart, and it never will. I love you.");
 	outputText("</i>\"");
 	
@@ -488,7 +488,7 @@ private function dontTellMeAboutMai():void {
 //Note that, during the pregnancy, Hel's ability to Fight and Wrestle with the PC is removed. She's not willing to let her baby get hurt!
 
 //Hel enters "bulging" state, play at random from camp menu:
-//if (flags[kFLAGS.HELIA_PREGNANCY_INCUBATION] < 300 && flags[kFLAGS.HEL_PREGNANCY_NOTICES] == 0) {
+//if (flags[kFLAGS.HELIA_PREGNANCY_INCUBATION] < 300 && flags[kFLAGS.HEL_PREGNANCY_NOTICES] === 0) {
 public function bulgyCampNotice():void {
 	clearOutput();
 	spriteChooser();
@@ -496,7 +496,7 @@ public function bulgyCampNotice():void {
 	doNext(playerMenu);
 }
 //Hel enters "swollen" state, play at random from camp menu:
-//if (flags[kFLAGS.HELIA_PREGNANCY_INCUBATION] == 200 && flags[kFLAGS.HEL_PREGNANCY_NOTICES] == 1)
+//if (flags[kFLAGS.HELIA_PREGNANCY_INCUBATION] === 200 && flags[kFLAGS.HEL_PREGNANCY_NOTICES] === 1)
 public function heliaSwollenNotice():void {
 	clearOutput();
 	spriteChooser();
@@ -541,7 +541,7 @@ private function youWantAGirl():void {
 }
 
 //Hel enters "gravid" state, play at random from camp menu:
-//if (flags[kFLAGS.HELIA_PREGNANCY_INCUBATION] == 100)
+//if (flags[kFLAGS.HELIA_PREGNANCY_INCUBATION] === 100)
 public function heliaGravidity():void {
 	clearOutput();
 	spriteChooser();
@@ -580,7 +580,7 @@ internal function heliaTalkSeven():void {
 	
 	outputText("\n\nA moment of laughing passes before Hel adds, \"<i>But seriously, lover, thanks for checking in on me.  I don't... I can't do this on my own, you know?  I'm trying, but it's hard, and getting harder.  Every night since this started, I've lain up thinking 'Oh god, what if I screw this up?  Wh-what if I say something wrong, or do something that just twists my kid's mind and fucks her up forever?  Or she turns into a bigger whore than I am,' or a million other things I can't stop thinking about.  I just keep worrying that I'm going to be a shit mom.  But you know... with you around, I feel at least a little more confident.  I don't know if I even could have a good impression on our kid, but... I know you will, [name].  You're a strong " + player.mf("man","woman") + "; stronger than I'll ever be.  I just hope a tiny little sliver of your strength - and maybe a healthy dose of your looks - rub off on him.  Or her.  That's all I'd ask for");
 	//if PC isn't daddy:
-	if (flags[kFLAGS.HELSPAWN_DADDY] != 0) outputText(", even if he's not your get, I can hope, you know?  If he spends enough time around you, maybe he'll take more after you than me");
+	if (flags[kFLAGS.HELSPAWN_DADDY] !== 0) outputText(", even if he's not your get, I can hope, you know?  If he spends enough time around you, maybe he'll take more after you than me");
 	outputText(".</i>\"");
 	menu();
 	addButton(0,"EncourageHer",encouragePregalia);
@@ -594,7 +594,7 @@ private function encouragePregalia():void {
 	clearOutput();
 	spriteChooser();
 	outputText("You squeeze Hel's shoulder and tell her that she's going to be a great mother, and that her child would do well to learn from a beautiful, powerful warrior like dear old mom.  ");
-	if (flags[kFLAGS.HEL_LOVE] == 1) outputText("You love Hel");
+	if (flags[kFLAGS.HEL_LOVE] === 1) outputText("You love Hel");
 	else outputText("Hel's your friend");
 	outputText(", and if her child follows in her footsteps, so much the better.  Your lover manages a half-hearted laugh, blushing at your words.  Her tail tip brushes your cheek as its owner cuddles up against you, smiling.  \"<i>Thanks, lover mine.  I just hope I - we - can do right by the kid.  That's all.</i>\"");
 	outputText("\n\n\"<i>I know,</i>\" you answer, kissing her.");
@@ -606,7 +606,7 @@ private function helsLifestyle():void {
 	clearOutput();
 	spriteChooser();
 	outputText("Being very serious for a moment, you tell Hel that if she's worried about her terrible choices rubbing off on her kid, maybe she ought to reconsider some of the things she's done: be less of a slut, drink less, be less of a bloodthirsty maniac in battle.  Slowly, Hel nods to the rhythm of your words.  \"<i>Yeah, maybe... maybe I should.  I don't know if I can change though, [name].  I'm not as young as I was - or at least, I don't feel it - and I've been living the way I have been for years.  I don't know if I could just give up the shit I do: the partying and the drinking, the fighting and the fucking.  It's part of who I am, ");
-	if (flags[kFLAGS.HEL_LOVE] == 1) outputText("and I hope that's part of why you love me");
+	if (flags[kFLAGS.HEL_LOVE] === 1) outputText("and I hope that's part of why you love me");
 	else outputText("even though I know that's probably part of why you can't love me back");
 	outputText(".  I'll try and rein it in, but maybe... it'd be better if you were the one who raised my child, [name].  God knows I'm the least qualified person to do it.</i>\"");
 	
@@ -631,7 +631,7 @@ public function heliaBirthtime():void {
 	outputText("\n\n\"<i>I-I don't know!</i>\" Hel cries, leaning back against you, her legs spreading.  \"<i>I don't </i>fucking<i> know! Just - aahhhh - hold my hand!</i>\"");
 	
 	outputText("\n\nYou dutifully hold Helia's hand as water gushes out from between her legs, heralding the birth of ");
-	if (flags[kFLAGS.HELSPAWN_DADDY] == 1) outputText("your ");
+	if (flags[kFLAGS.HELSPAWN_DADDY] === 1) outputText("your ");
 	else outputText("her ");
 	outputText("child.  Hel screams and cries, gripping your hand so tight you feel like your bones are about to break in her iron gasp; you try and tell her to push, to remember everything the Midwives of Ingnam would say when a village girl gave birth.  It seems a small comfort to the screaming salamander, but she does as you say, pushing harder and harder until you can see the crown of a little baby's head pushing out of your lover's well-stretched cunt.  Suddenly with a roar that echoes across the wasteland and a mighty push, a squalling baby tumbles out of Hel's birth canal and into your waiting arms.");
 	menu();
@@ -643,9 +643,9 @@ private function heliaBirthEpilogue():void {
 	spriteChooser();
 	//It's a girl! 
 	//If PC was the father: 
-	if (flags[kFLAGS.HELSPAWN_DADDY] == 0) outputText("A healthy baby salamander gurgles and cries as you wrap her in a towel, looking up at you with a pair of bright golden eyes.  Hel takes your daughter, holding the little bundle of you to herself, cooing and laughing at the new life in her arms.  \"<i>Oh my god, [name], look... it's... it's our baby girl.  And she's got your eyes.  The same look I see in your eyes every day.  Oh, this one's going to grow up big and strong.  Aren't you?</i>\" she laughs, rubbing the baby's cheek.  It makes a high, gay little coo in response, nuzzling against Hel's finger.");
+	if (flags[kFLAGS.HELSPAWN_DADDY] === 0) outputText("A healthy baby salamander gurgles and cries as you wrap her in a towel, looking up at you with a pair of bright golden eyes.  Hel takes your daughter, holding the little bundle of you to herself, cooing and laughing at the new life in her arms.  \"<i>Oh my god, [name], look... it's... it's our baby girl.  And she's got your eyes.  The same look I see in your eyes every day.  Oh, this one's going to grow up big and strong.  Aren't you?</i>\" she laughs, rubbing the baby's cheek.  It makes a high, gay little coo in response, nuzzling against Hel's finger.");
 	//If Mai was the father:
-	else if (flags[kFLAGS.HELSPAWN_DADDY] == 2) outputText("What you hold in your arms isn't <b>quite</b> a salamander, though.  The little girl you've by now got wrapped up in a towel looks mostly like her mother, with a full body of red scales and pale flesh, and a brightly flaming tail; but atop her head, rather than finned reptilian ears are a pair of perky, puppy-dog like ears.  Taking her daughter, Hel laughs, scratching the newborn behind the ears, making it coo and giggle.  \"<i>Oh my god, [name], look... it's... it's our baby girl.  And she's got Mai's ears, holy shit.  Look at that.  Oh, you're going to be adorable when you grow up, aren't you?</i>\" she laughs, rubbing the baby's cheek.  It makes a high, gay little giggle in response, nuzzling against Hel's finger.");
+	else if (flags[kFLAGS.HELSPAWN_DADDY] === 2) outputText("What you hold in your arms isn't <b>quite</b> a salamander, though.  The little girl you've by now got wrapped up in a towel looks mostly like her mother, with a full body of red scales and pale flesh, and a brightly flaming tail; but atop her head, rather than finned reptilian ears are a pair of perky, puppy-dog like ears.  Taking her daughter, Hel laughs, scratching the newborn behind the ears, making it coo and giggle.  \"<i>Oh my god, [name], look... it's... it's our baby girl.  And she's got Mai's ears, holy shit.  Look at that.  Oh, you're going to be adorable when you grow up, aren't you?</i>\" she laughs, rubbing the baby's cheek.  It makes a high, gay little giggle in response, nuzzling against Hel's finger.");
 	else outputText("What you hold in your arms isn't <b>quite</b> a salamander, though. The little girl you've got wrapped up in a towel has the same shape as her mothers, a body covered in leather scales and a brightly-flaming tail... but her scales are a midnight black, the same color as a spider's chitin.  The little girl looks up at you with bright red eyes as Hel takes her from you, laughing as she runs her hand across her daughter's dark scales.  \"<i>Well, that's a hell of a thing, isn't it [name]?  A black-scaled salamander... she's beautiful.  Oh you're going to be gorgeous when you grow up, aren't you?</i>\" she laughs, rubbing the baby's cheek.  It makes a high, gay little giggle in response, nuzzling against Hel's finger.");
 	//[New Paragraph]
 	outputText("\n\nThough still panting from the ordeal, Hel's motherly instincts kick in as her daughter tries to eat her finger, and pulls her scaled top down to reveal the swell of her big, milky breast.  The newborn latches on immediately, sighing happily as it takes its first meal.  A sentiment echoed by her mother, who slumps over onto your shoulder, breathing easy for the first time in the day.  \"<i>That was... gaaah.  But look... look at her.  My god, she's amazing.  So beautiful... she's perfect, [name].  And she's- oh, she's got a hell of a bite.  Ow.</i>\"");
@@ -658,7 +658,7 @@ private function nameDatHelspawn():void {
 	clearOutput();
 	spriteChooser();
 	outputText("You and Helia share a laugh, looking down at ");
-	if (flags[kFLAGS.HELSPAWN_DADDY] == 0) outputText("your ");
+	if (flags[kFLAGS.HELSPAWN_DADDY] === 0) outputText("your ");
 	else outputText("her ");
 	outputText("little girl as she suckles.  After a few happy, blissful minutes though, Hel turns to you with a question:");
 	outputText("\n\n\"<i>So... what do we name her, love?  I honestly hadn't put that much thought into girl names.  Kind of expected a boy, I guess, but... it's up to you, [name].  What do you think?</i>\"");
@@ -673,22 +673,22 @@ private function nameDatHelspawn():void {
 private function applyHelspawnName():void {
 	spriteChooser();
 	//Easter Egg Names Hel WILL NOT ALLOW:
-	if (mainView.nameBox.text == "" 
-			|| mainView.nameBox.text == "Hellgirl" 
-			|| mainView.nameBox.text == "Kid" 
-			|| mainView.nameBox.text == "Phoenix" 
-			|| mainView.nameBox.text == "Savin" 
-			|| mainView.nameBox.text == "Helia" 
-			|| mainView.nameBox.text == "Mini-doofus") 
+	if (mainView.nameBox.text === "" 
+			|| mainView.nameBox.text === "Hellgirl" 
+			|| mainView.nameBox.text === "Kid" 
+			|| mainView.nameBox.text === "Phoenix" 
+			|| mainView.nameBox.text === "Savin" 
+			|| mainView.nameBox.text === "Helia" 
+			|| mainView.nameBox.text === "Mini-doofus") 
 	{
 		clearOutput();
-		if (mainView.nameBox.text == "") outputText("<b>You must select a name.</b>");
-		else if (mainView.nameBox.text == "Hellgirl") outputText("\"<i>Hey, that's copyright infringement.  Probably.</i>\"");
-		else if (mainView.nameBox.text == "Kid") outputText("\"<i>Wow, what are you, five?</i>\"");
-		else if (mainView.nameBox.text == "Phoenix") outputText("\"<i>Oh hell no.  You're not naming my little girl after one of those... things!  Sorry Kiri, but still!</i>\"");
-		else if (mainView.nameBox.text == "Savin") outputText("\"<i>That's a boy's name, dumbass.</i>\"");
-		else if (mainView.nameBox.text == "Helia") outputText("\"<i>My favorite name!  Except it's kinda taken, love.  Don't want things to get too confusing around here, do you?</i>\"");
-		else if (mainView.nameBox.text == "Mini-doofus") outputText("\"<i>Oh yeah, Kiha'll get a laugh out of that.  You ass.</i>\"");
+		if (mainView.nameBox.text === "") outputText("<b>You must select a name.</b>");
+		else if (mainView.nameBox.text === "Hellgirl") outputText("\"<i>Hey, that's copyright infringement.  Probably.</i>\"");
+		else if (mainView.nameBox.text === "Kid") outputText("\"<i>Wow, what are you, five?</i>\"");
+		else if (mainView.nameBox.text === "Phoenix") outputText("\"<i>Oh hell no.  You're not naming my little girl after one of those... things!  Sorry Kiri, but still!</i>\"");
+		else if (mainView.nameBox.text === "Savin") outputText("\"<i>That's a boy's name, dumbass.</i>\"");
+		else if (mainView.nameBox.text === "Helia") outputText("\"<i>My favorite name!  Except it's kinda taken, love.  Don't want things to get too confusing around here, do you?</i>\"");
+		else if (mainView.nameBox.text === "Mini-doofus") outputText("\"<i>Oh yeah, Kiha'll get a laugh out of that.  You ass.</i>\"");
 		//[Back to the name field you go!]
 		menu();
 		mainView.nameBox.x = mainView.mainText.x + 5;
@@ -701,18 +701,18 @@ private function applyHelspawnName():void {
 	//[Name Field]
 	//Easter Egg Names:
 	clearOutput();
-	if (flags[kFLAGS.HELSPAWN_NAME] == "Helspawn") outputText("\"<i>That's what I was gonna call her!  Except not at all.  God dammit, seriously, [name]?</i>\"\n\n");
-	if (flags[kFLAGS.HELSPAWN_NAME] == "Jayne") outputText("\"<i>That sounds like a hero's name... I like it.  A name that demands respect!</i>\"\n\n");
-	if (flags[kFLAGS.HELSPAWN_NAME] == "Hesper") outputText("\"<i>Ah, the Evening Star.  She'll be the star of my life, alright...</i>\"\n\n");
-	if (flags[kFLAGS.HELSPAWN_NAME] == "Kiri") outputText("\"<i>Aw, that's great, lover.  Sis'll shit her pants when she hears her niece is named after her!  Gonna get confusing, though...</i>\"\n\n");
-	if (flags[kFLAGS.HELSPAWN_NAME] == "Mai") outputText("\"<i>Aw, that's great, lover.  Mai'll be honored, I know it.  And it is a great name...</i>\"\n\n");
-	if (flags[kFLAGS.HELSPAWN_NAME] == "Tanis") outputText("\<i>I don't... I don't know if I want her to have that name, lover.  It's got a lot of baggage, but... but it does my mother an honor.  More than I could ever give her.</i>\"\n\n");
+	if (flags[kFLAGS.HELSPAWN_NAME] === "Helspawn") outputText("\"<i>That's what I was gonna call her!  Except not at all.  God dammit, seriously, [name]?</i>\"\n\n");
+	if (flags[kFLAGS.HELSPAWN_NAME] === "Jayne") outputText("\"<i>That sounds like a hero's name... I like it.  A name that demands respect!</i>\"\n\n");
+	if (flags[kFLAGS.HELSPAWN_NAME] === "Hesper") outputText("\"<i>Ah, the Evening Star.  She'll be the star of my life, alright...</i>\"\n\n");
+	if (flags[kFLAGS.HELSPAWN_NAME] === "Kiri") outputText("\"<i>Aw, that's great, lover.  Sis'll shit her pants when she hears her niece is named after her!  Gonna get confusing, though...</i>\"\n\n");
+	if (flags[kFLAGS.HELSPAWN_NAME] === "Mai") outputText("\"<i>Aw, that's great, lover.  Mai'll be honored, I know it.  And it is a great name...</i>\"\n\n");
+	if (flags[kFLAGS.HELSPAWN_NAME] === "Tanis") outputText("\<i>I don't... I don't know if I want her to have that name, lover.  It's got a lot of baggage, but... but it does my mother an honor.  More than I could ever give her.</i>\"\n\n");
 	//Syn: 
-	if (flags[kFLAGS.HELSPAWN_NAME] == "Syn") outputText("\"Awesome.  I was hoping you'd choose that one, lover mine.</i>\"\n\n");
-	if (flags[kFLAGS.HELSPAWN_NAME] == "Chara") outputText("\"<i>Awesome.  You liked my ideas, after all!</i>\"\n\n");
+	if (flags[kFLAGS.HELSPAWN_NAME] === "Syn") outputText("\"Awesome.  I was hoping you'd choose that one, lover mine.</i>\"\n\n");
+	if (flags[kFLAGS.HELSPAWN_NAME] === "Chara") outputText("\"<i>Awesome.  You liked my ideas, after all!</i>\"\n\n");
 	
 	outputText("\"<i>So... " + flags[kFLAGS.HELSPAWN_NAME] + " it is.  That's a good name, my love.  A strong name.  ");
-	if (flags[kFLAGS.HELSPAWN_DADDY] == 0) outputText("Our");
+	if (flags[kFLAGS.HELSPAWN_DADDY] === 0) outputText("Our");
 	else outputText("my");
 	outputText(" little girl's going to grow up big and strong with a name like that... and with you around to guide her,</i>\" Hel says, kissing your cheek.  \"<i>Why don't you give me a minute to catch my breath and get the little one situated, and let's talk.  Alright?</i>\"");
 	
@@ -727,10 +727,10 @@ public function helSpawnsSetup():void {
 	//Depending on who her daddy was, she gets a bonus to one or the other stat:
 	//>If Mai is the daddy: +10 HelspawnSlutty
 	flags[kFLAGS.HELSPAWN_PERSONALITY] = 50;
-	if (flags[kFLAGS.HELSPAWN_DADDY] == 2) flags[kFLAGS.HELSPAWN_PERSONALITY] += 10;
+	if (flags[kFLAGS.HELSPAWN_DADDY] === 2) flags[kFLAGS.HELSPAWN_PERSONALITY] += 10;
 	//>If Spiderbro is daddy: +10 HelspawnChaste
-	if (flags[kFLAGS.HELSPAWN_DADDY] == 1) flags[kFLAGS.HELSPAWN_PERSONALITY] -= 10;
-	if (flags[kFLAGS.HELSPAWN_DADDY] == 0) {
+	if (flags[kFLAGS.HELSPAWN_DADDY] === 1) flags[kFLAGS.HELSPAWN_PERSONALITY] -= 10;
+	if (flags[kFLAGS.HELSPAWN_DADDY] === 0) {
 		//>If Corrupt (66+ Corr) PC is daddy: +10 Helspawn Slutty
 		if (player.cor >= 66) flags[kFLAGS.HELSPAWN_PERSONALITY] += 10;
 		//>If Pure (33> Corr) PC is daddy: +10 Helspawn Chaste
@@ -749,7 +749,7 @@ internal function heliaTalkEight():void {
 	spriteChooser();
 	outputText("Watching your little daughter crawl around, you and Hel sit down together arm in arm, smiling as the little salamander girl plays with bits and pieces of Hel's gear.");
 	outputText("\n\n\"<i>She's growing up so fast... and only getting faster.  By the time I pulled her off my breast the first time, I swear she'd doubled in size.</i>\"  You nod, able to see it clearly yourself.  Your little girl's growing fast... and it's not just a ");
-	if (flags[kFLAGS.HELSPAWN_DADDY] == 0) outputText("parental ");
+	if (flags[kFLAGS.HELSPAWN_DADDY] === 0) outputText("parental ");
 	else outputText("care giver's ");
 	outputText("pride, either.  She really is growing up faster, many times faster than a human girl.  And, by the sound of things, many times faster than a salamander ought to.  You ask Hel if that's right, and she nods gravely.");
 	
@@ -761,7 +761,7 @@ internal function heliaTalkEight():void {
 	if (amilyScene.amilyFollower()) outputText("\n\nYou mention how Amily managed to reverse-engineer a goblin's potion to accelerate her childrens' growth.  Hel grimaces, running a hand over her belly.  \"<i>God damn green menaces.  I never - almost never - drank any of their shit.  Succubus milk?  Sure, why not.  Snake oil, bring it on... But goblin potions?  I'm not that stupid, [name].  It couldn't have been...</i>\"");
 	
 	outputText("\n\nSighing, Hel leans her head on your shoulder, wrapping her tail around your waist.  \"<i>Well, I guess we get even less time to learn how to be parents, huh?  I guess it doesn't matter how it happened - what matters is that ");
-	if (flags[kFLAGS.HELSPAWN_DADDY] == 0) outputText("our");
+	if (flags[kFLAGS.HELSPAWN_DADDY] === 0) outputText("our");
 	else outputText("my");
 	outputText(" little girl's going to be a big girl damn soon.  Let's enjoy it while we can, eh?</i>\"");
 	
@@ -774,7 +774,7 @@ internal function playWithYourKid():void {
 	clearOutput();
 	spriteChooser();
 	outputText("Picking " + flags[kFLAGS.HELSPAWN_NAME] + " up off the ground, you spin the giggling little girl around, laughing as your ");
-	if (flags[kFLAGS.HELSPAWN_DADDY] != 0) outputText("ward ");
+	if (flags[kFLAGS.HELSPAWN_DADDY] !== 0) outputText("ward ");
 	else outputText("daughter ");
 	outputText("cries out in surprise and glee.  Soon, you're bouncing her, then down on the ground crawling around with her, playing peek-a-boo and a dozen other games as you and " + flags[kFLAGS.HELSPAWN_NAME] + " laugh and hug.  Helia herself slips down with you before you know it, holding her daughter close as she tries to communicate, teaching the ever-growing girl a few words at a time.");
 	
@@ -796,7 +796,7 @@ public function helSpawnGraduation():void {
 	flags[kFLAGS.HELSPAWN_AGE]++;
 	outputText("You wake up to a scream, high-pitched and terrified.  You bolt up out of bed, tangling up in your bedroll for a minute before stumbling over to Hel and... " + flags[kFLAGS.HELSPAWN_NAME] + "?");
 	outputText("\n\nYou do a double take as you lay eyes on the ");
-	if (flags[kFLAGS.HELSPAWN_DADDY] == 1) outputText("black");
+	if (flags[kFLAGS.HELSPAWN_DADDY] === 1) outputText("black");
 	else outputText("red");
 	outputText("-scaled figure curled up next to Helia; Hel herself is looking wide-eyed down at the drowsy figure on her breast, just barely opening her eyes.  \"<i>Y-you're... you're huge!</i>\" Hel manages to gasp out, pushing herself back and away from her daughter.");
 	
@@ -806,7 +806,7 @@ public function helSpawnGraduation():void {
 	outputText("\n\n\"<i>Oh my god you're a giant!</i>\" Hel babbles, curling her knees up to her chest.  \"<i>Wh-wh-what... what happened to... to my little girl?</i>\"");
 	
 	outputText("\n\nYou have to admit, the change is sudden and drastic... but the girl's scales, her eyes, they're certainly " + flags[kFLAGS.HELSPAWN_NAME] + "'s.  ");
-	if (flags[kFLAGS.HELSPAWN_DADDY] == 2) outputText("And the puppy ears, now more wolf-like, are a dead giveaway.  Utterly unique to her.  ");
+	if (flags[kFLAGS.HELSPAWN_DADDY] === 2) outputText("And the puppy ears, now more wolf-like, are a dead giveaway.  Utterly unique to her.  ");
 	outputText("You sit down beside the obviously confused girl and stroke her hair, telling her it's all right, her mother's just startled, that's all.");
 	
 	outputText("\n\n\"<i>It's just me, mom,</i>\" " + flags[kFLAGS.HELSPAWN_NAME] + " says, sliding over to sit beside her mother, who's still wide-eyed with shock.  Your girl tries for a few moments to talk to Hel, but seeing that venture prove fruitless - Hel seems utterly insensate, paralyzed by shock - she instead curls back up beside her mother, head rested on Helia's shoulder.  Eventually, warily, Hel reaches out a trembling hand to brush her daughter's cheek.");
@@ -825,7 +825,7 @@ public function helspawnDiscoversBooze():void {
 	spriteChooser();
 	flags[kFLAGS.HELSPAWN_DISCOVER_BOOZE] = 1;
 	outputText("As you're moving through camp, you notice Hel's away from her little nook - probably off visiting the family, seeing as her cloak's gone.  You wouldn't have given her part of camp a second look, except for a sudden whiff of brimstone and burning brewery on the wind.  Cocking an eyebrow, you creep over to Hel's still, quiet as ");
-	if (player.race() != "cat-boy" && player.race() != "cat-girl") outputText("a cat");
+	if (player.race() !== "cat-boy" && player.race() !== "cat-girl") outputText("a cat");
 	else outputText("the cat you are");
 	outputText(", and poke your head around the iron body of the still.");
 	
@@ -864,7 +864,7 @@ private function encourageHelspawn():void {
 	outputText("\n\n\"<i>Hey, what gives,</i>\" a voice snaps from somewhere beyond your hazy sight.  It sounds mildly like a cat, though you can't tell why in your state.");
 	
 	outputText("\n\n\"<i>Uh...</i>\" you groan, slumping over onto your [ass].  " + flags[kFLAGS.HELSPAWN_NAME] + "'s right behind you, collapsing on top of you in a pile of ");
-	if (flags[kFLAGS.HELSPAWN_DADDY] != 1) outputText("red ");
+	if (flags[kFLAGS.HELSPAWN_DADDY] !== 1) outputText("red ");
 	else outputText("black ");
 	outputText("scales and the smell of a burning brewery.");
 	
@@ -917,10 +917,10 @@ private function snipermanders():void {
 	spriteChooser();
 	flags[kFLAGS.HELSPAWN_WEAPON] = "bow";
 	outputText("You tell Hel to take a break: you've got this handled. Grabbing your bow and quiver from over your shoulder, you hand them over to ");
-	if (flags[kFLAGS.HELSPAWN_DADDY] == 0) outputText("your");
+	if (flags[kFLAGS.HELSPAWN_DADDY] === 0) outputText("your");
 	else outputText("Hel's");
 	outputText(" eager daughter. " + flags[kFLAGS.HELSPAWN_NAME] + " takes them up with surprising reverence, holding them as gingerly as glass.  Grinning, you clasp her shoulder and tell her how to put the quiver on, and get her stance right for shooting.  It takes her a moment to get set up: her scaled, reptilian legs don't naturally stand in the shooting pose you've adopted");
-	if (player.lowerBody.type == LowerBody.LIZARD) outputText(", even with your own lizard legs");
+	if (player.lowerBody.type === LowerBody.LIZARD) outputText(", even with your own lizard legs");
 	outputText(", and you find yourself having to correct her grip on the haft several times.  But, finally, you get her ready to shoot.");
 	
 	outputText("\n\nYou slip behind " + flags[kFLAGS.HELSPAWN_NAME] + ", putting your arms on hers as you guide her through nocking an arrow, head resting on her fist, a lone finger outstretched toward the desiccated dummy.");
@@ -929,7 +929,7 @@ private function snipermanders():void {
 	//If Rath is @ camp:
 	if (player.hasStatusEffect(StatusEffects.CampRathazul)) outputText("  You hear your old alchemist friend suddenly putting up a ruckus as the sounds of breaking glass echo throughout camp.  " + flags[kFLAGS.HELSPAWN_NAME] + " looks up at you nervously, but you ruffle her fiery hair and tell her to try again. Rath is probably just fine.");
 	//else if Valeria/Latexy is at camp: 
-	else if (flags[kFLAGS.VALARIA_AT_CAMP] == 1) outputText("  You hear a sudden yelp of pain from across camp. Valeria slithers up to you with an irritated look on her gooey face, pointing an accusing finger at an arrow sticking out of her tit.  \"<i>Dammit, [name], I'm a googirl, not a pin cushion!</i>\"  You wave her off, and tell " + flags[kFLAGS.HELSPAWN_NAME] + " to try again.");
+	else if (flags[kFLAGS.VALARIA_AT_CAMP] === 1) outputText("  You hear a sudden yelp of pain from across camp. Valeria slithers up to you with an irritated look on her gooey face, pointing an accusing finger at an arrow sticking out of her tit.  \"<i>Dammit, [name], I'm a googirl, not a pin cushion!</i>\"  You wave her off, and tell " + flags[kFLAGS.HELSPAWN_NAME] + " to try again.");
 	else if (latexGooFollower()) outputText("  You hear a sudden yelp of pain from across camp.  " + flags[kFLAGS.GOO_NAME] + " slithers up to you with an irritated look on her gooey face, pointing an accusing finger at an arrow sticking out of her tit.  \"<i>Dammit, [name], I'm a googirl, not a pin cushion!</i>\"  You wave her off, and tell " + flags[kFLAGS.HELSPAWN_NAME] + " to try again.");
 	
 	outputText("\n\n\"<i>I-I dunno, " + championRef() + ",</i>\" " + flags[kFLAGS.HELSPAWN_NAME] + " whines, biting her lip as she traces the arrow's path with her eyes.  \"<i>Maybe mom was right. I should just stick to a sword. That's easy....</i>\"");
@@ -947,10 +947,10 @@ private function snipermanders():void {
 	outputText("\n\nBy the time " + flags[kFLAGS.HELSPAWN_NAME] + " has her shooting stance back, her mother's already set the dummy back up, ready for round two.  It's several hours long before the three of you quit: time spent drilling " + flags[kFLAGS.HELSPAWN_NAME] + " on stance and aim, even going a round with her and a pair of daggers to remind her that enemies will eventually close in if she's not careful.  She learns quickly, though, and soon she hardly needs your help to plant an arrow in the target's chest.");
 	
 	outputText("\n\nA few hours like this every night, and ");
-	if (flags[kFLAGS.HELSPAWN_DADDY] == 0) outputText("your ");
+	if (flags[kFLAGS.HELSPAWN_DADDY] === 0) outputText("your ");
 	else outputText("Hel's ");
 	outputText("daughter will be a warrior worthy of her parent");
-	if (flags[kFLAGS.HELSPAWN_DADDY] == 0) outputText("s");
+	if (flags[kFLAGS.HELSPAWN_DADDY] === 0) outputText("s");
 	outputText("."); 
 	doNext(camp.returnToCampUseOneHour);
 }
@@ -976,7 +976,7 @@ private function swordAndBoardmander():void {
 	
 	outputText("\n\n\"<i>Get " + player.mf("him","her") + ", " + flags[kFLAGS.HELSPAWN_NAME] + "!</i>\" Hel calls from the sidelines, sipping on a mug.  \"<i>Show " + player.mf("him","her") + " what a salamander can do!</i>\"");
 	
-	if (flags[kFLAGS.HELSPAWN_DADDY] == 0) outputText("\n\nYour");
+	if (flags[kFLAGS.HELSPAWN_DADDY] === 0) outputText("\n\nYour");
 	else outputText("\n\nHer");
 	outputText(" daughter braces herself, drawing a breath just a second before she launches her attack, giving herself away.  You parry three quick blows, stepping back as " + flags[kFLAGS.HELSPAWN_NAME] + " leaps into another overhand strike.  You dodge, spinning out of the attack and slicing her right across her bare belly.");
 	
@@ -990,15 +990,15 @@ private function swordAndBoardmander():void {
 	outputText("\n\n\"<i>Alright, alright,</i>\" Hel says, grabbing the dummy sword from your hand.  \"<i>Now it's time to fight a REAL warrior, " + flags[kFLAGS.HELSPAWN_NAME] + ". Come get some!</i>\"");
 	
 	outputText("\n\nIt's several hours long before the three of you quit: time spent drilling " + flags[kFLAGS.HELSPAWN_NAME] + " on stance and parrying, trading off with Helia every few rounds to keep ");
-	if (flags[kFLAGS.HELSPAWN_DADDY] != 0) outputText("her");
+	if (flags[kFLAGS.HELSPAWN_DADDY] !== 0) outputText("her");
 	else outputText("your");
 	outputText(" daughter on her toes.  She learns quickly, though, and soon she hardly needs reminding to keep her shield up and stance braced against Helia's overwhelming assaults.");
 	
 	outputText("\n\nA few hours like this every night, and ");
-	if (flags[kFLAGS.HELSPAWN_DADDY] == 0) outputText("your ");
+	if (flags[kFLAGS.HELSPAWN_DADDY] === 0) outputText("your ");
 	else outputText("Hel's ");
 	outputText("daughter will be a warrior worthy of her parent");
-	if (flags[kFLAGS.HELSPAWN_DADDY] == 0) outputText("s");
+	if (flags[kFLAGS.HELSPAWN_DADDY] === 0) outputText("s");
 	outputText(".");
 	//{HelSpawnChaste +10}
 	flags[kFLAGS.HELSPAWN_PERSONALITY] -= 10;
@@ -1040,12 +1040,12 @@ public function helspawnIsASlut():void {
 	outputText("\nSomething's moving in your camp.");
 	
 	outputText("\n\nYour eyes flicker open as a scaled foot moves past your face, hushed breathing barely concealing a giggle.  Another foot, this time a shimmering blue-black, moves past.  You ");
-	if (player.weaponName != "fists") outputText("clutch your [weapon]");
+	if (player.weaponName !== "fists") outputText("clutch your [weapon]");
 	else outputText("ball your fists");
 	outputText(" as the intruder passes by, ready to defend yourself and your loved ones.  The moment they're out of reach, you roll onto your [feet], looking around for signs of a massed demon attack.  Instead, you see the outline of " + flags[kFLAGS.HELSPAWN_NAME] + " in the dying embers of the fire light, leading what looks like a spider girl by the hand toward her bed.");
 	
 	outputText("\n\nYou creep closer, trying to get a closer look at what your ");
-	if (flags[kFLAGS.HELSPAWN_DADDY] == 0) outputText("daughter ");
+	if (flags[kFLAGS.HELSPAWN_DADDY] === 0) outputText("daughter ");
 	else outputText("ward ");
 	outputText("is doing.  Well, it doesn't take a genius to figure that out, really, but still, you have to be sure.  You slide right up to them, just out of their lines of sight, as " + flags[kFLAGS.HELSPAWN_NAME] + " turns around, letting the spider-kin unclasp her bra and grab her tits, squeezing the small mounds as " + flags[kFLAGS.HELSPAWN_NAME] + " suppresses a moan, reaching back to slip a hand into the spider's crotch, grabbing her - his dick.");
 	
@@ -1074,14 +1074,14 @@ private function helSpawnStopFucking():void {
 	if (player.tallness >= 90) outputText("up ");
 	else if (player.tallness <= 72) outputText("down ");
 	outputText("at your ");
-	if (flags[kFLAGS.HELSPAWN_DADDY] == 0) outputText("daughter ");
+	if (flags[kFLAGS.HELSPAWN_DADDY] === 0) outputText("daughter ");
 	else outputText("ward ");
 	outputText(". " + flags[kFLAGS.HELSPAWN_NAME] + " gives a shrill cry of surprise and tumbles away from you, trying to cover herself as best she can; the spider trap squirms in your unrelenting grasp, one set of arms covering his rapidly-wilting erection as the other flails around, trying to get you off of him.  Not happening.");
 	
 	outputText("\n\n\"<i>You!</i>\" you say, pointing an accusing finger at " + flags[kFLAGS.HELSPAWN_NAME] + ".  \"<i>What the hell, kid?  Who the fuck is this?</i>\"");
 	
 	outputText("\n\n\"<i>That's, uh.... Alex, meet ");
-	if (flags[kFLAGS.HELSPAWN_DADDY] == 0) outputText("my dad");
+	if (flags[kFLAGS.HELSPAWN_DADDY] === 0) outputText("my dad");
 	else outputText("[name]");
 	outputText(". " + championRef() + ", Alex.</i>\"");
 	
@@ -1097,9 +1097,9 @@ private function helSpawnStopFucking():void {
 	
 	outputText("\n\n\"<i>That's why you </i>shouldn't<i> be bringing men home.  Or women.  Or anything else, kiddo.");
 	//If No Hel Love:
-	if (flags[kFLAGS.HEL_LOVE] != 0) outputText("  You don't want to be a whore like your mother, do you?  The girl that everyone's had a ride with.");
+	if (flags[kFLAGS.HEL_LOVE] !== 0) outputText("  You don't want to be a whore like your mother, do you?  The girl that everyone's had a ride with.");
 	//if HelLove:
-	if (flags[kFLAGS.HEL_LOVE] == 1) outputText("  I'm not going to a raise a whore, " + flags[kFLAGS.HELSPAWN_NAME] + ".  Your mother's made mistakes, sure, but...</i>\" you sigh.  \"<i>");
+	if (flags[kFLAGS.HEL_LOVE] === 1) outputText("  I'm not going to a raise a whore, " + flags[kFLAGS.HELSPAWN_NAME] + ".  Your mother's made mistakes, sure, but...</i>\" you sigh.  \"<i>");
 	outputText("  You don't have to be that person, " + flags[kFLAGS.HELSPAWN_NAME] + ".  Don't just give yourself out to the first person that asks, you know?  Save it for someone you really care about.  Trust me, it'll be worth it.</i>\"");
 	outputText("\n\nYou spend a bit more time with the chastened, and hopefully now more chaste, salamander girl before putting her to bed.  Stroking her hair, you slip back to your own bunk, hoping she'll take what you've said to heart.");
 	//{HelspawnChaste +10}
@@ -1116,7 +1116,7 @@ public function helspawnAllGrownUp():void {
 	
 	outputText("\n\nA part of you is sad to see her all grown up, and now you know it's time to treat your ");
 	
-	if (flags[kFLAGS.HELSPAWN_DADDY] == 0) outputText("daughter ");
+	if (flags[kFLAGS.HELSPAWN_DADDY] === 0) outputText("daughter ");
 	else outputText("ward ");
 	outputText("like a woman.  The time to raise her, to shape her development, is over.  You can only hope you've done a good enough job to keep her safe in this hellish world; to give her sound judgment and the abilities she'll need to protect herself in the years and adventures to come.");
 	
@@ -1156,7 +1156,7 @@ private function hugHelspawn():void {
 	//{if PC is less than 6' tall:}
 	if (player.tallness <= 72) {
 		outputText("You reach up and pull " + flags[kFLAGS.HELSPAWN_NAME] + " down to your level, wrapping your arms tight around her slender shoulders.  Grinning from ear to ear, the towering girl squeezes you right back, her powerful muscles just about crushing your smaller body.  Her tail slips around your [hips], the warm leather binding you to your beloved ");
-		if (flags[kFLAGS.HELSPAWN_DADDY] == 0) outputText("daughter ");
+		if (flags[kFLAGS.HELSPAWN_DADDY] === 0) outputText("daughter ");
 		else outputText("ward ");
 		outputText("as she nuzzles up against you.");
 		
@@ -1165,7 +1165,7 @@ private function hugHelspawn():void {
 	//{If PC is 6' or taller:}
 	else {
 		outputText("You grab " + flags[kFLAGS.HELSPAWN_NAME] + " and pull her into a tight hug.  She lets out a girlish giggle as she falls into your arms and squeezes you right back.  Her powerful arms threaten to crush your bigger body, smothering you in affection.  Her tail slips around your [leg], the warm leather binding you to your beloved ");
-		if (flags[kFLAGS.HELSPAWN_DADDY] == 0) outputText("daughter ");
+		if (flags[kFLAGS.HELSPAWN_DADDY] === 0) outputText("daughter ");
 		else outputText("ward ");
 		outputText(" as she nuzzles into your [chest].");
 		
@@ -1180,7 +1180,7 @@ private function talkToHelspawn():void {
 	clearOutput();
 	var temp:int = rand(5);
 	//Talk 1
-	if (flags[kFLAGS.HAD_FIRST_HELSPAWN_TALK] == 0) {
+	if (flags[kFLAGS.HAD_FIRST_HELSPAWN_TALK] === 0) {
 		flags[kFLAGS.HAD_FIRST_HELSPAWN_TALK]++;
 		outputText("You sit down with " + flags[kFLAGS.HELSPAWN_NAME] + ", telling her you need to talk.  Specifically, about her nocturnal misadventures.  She gulps, but you reassure her with a pat on the back, telling her it's all right.  She's a grown woman, now, as frightening as that is - for her and her mother both, it seems.  But she's an adult now, with the needs and cunning and abilities of one.  She can fight, drink, and she can fuck.  She's not a child anymore, even if she'll always be your kid at heart.");
 		outputText("\n\nShe smiles.  \"<i>Sorry for bringing my friend home uninvited.  I just... didn't want to upset you. I love you, " + championRef() + ",</i>\" she says, resting her head on your shoulder, tail slipping around your waist.  You smile, holding the young 'mander girl - no, woman - close.  You tell her that you love her too, and that you're worried about her bringing random monsters home.");
@@ -1189,7 +1189,7 @@ private function talkToHelspawn():void {
 		else outputText("  She should know better than to bring monsters back.  She's not her mother; lust doesn't have to dominate her life like that.");
 		
 		outputText("\n\nPerhaps you could learn more about this spider boy of hers.  He actually had a name, and seemed to be fairly civil.  Lucky break for her.  Then again, you could tell her to just save herself and stop trying to fuck things altogether.  ");
-		if (flags[kFLAGS.HELSPAWN_DADDY] == 0) outputText("Of course, as her father, you could always say it's your duty to keep her happy...");
+		if (flags[kFLAGS.HELSPAWN_DADDY] === 0) outputText("Of course, as her father, you could always say it's your duty to keep her happy...");
 		else outputText("Of course, as her adoptive father, you could always say that you love her in a different, more intimate way.");
 		outputText("  She wouldn't need monsters with you around.");
 		menu();
@@ -1231,7 +1231,7 @@ private function talkToHelspawn():void {
 	//{Bath Slut w/ DD or HHH must be at camp}
 	else if (temp <= 2 && milkSlave() && flags[kFLAGS.MILK_SIZE] > 0) {
 		outputText("\"<i>Hey, have you seen " + flags[kFLAGS.MILK_NAME] + " around anywhere, " + championRef() + "?</i>\" " + flags[kFLAGS.HELSPAWN_NAME] + " asks, looking around the camp.  \"<i>Mom asked me to milk her, but I haven't seen her around.  She wouldn't have run off, would she?</i>\"");
-		if (flags[kFLAGS.MILK_SIZE] == 1) outputText("\n\nYou tell her it'd be more of a wobble, but");
+		if (flags[kFLAGS.MILK_SIZE] === 1) outputText("\n\nYou tell her it'd be more of a wobble, but");
 		else outputText("\n\nYou doubt she would have; " + flags[kFLAGS.MILK_NAME] + " seems to have a fancy for you, but");
 		outputText(" it wouldn't hurt to check around.  She does tend to wander into the traps around camp from time to time.  Offering " + flags[kFLAGS.HELSPAWN_NAME] + " your hand, you start searching the camp for your missing milk maid.  The two of you make a circuit around camp, checking the traps and behind various rocks and hollows, to no avail.  Finally, as you're starting to get worried about the dusky maid, you happen to look into the steel pool in her part of camp.  Sure enough, you spy " + flags[kFLAGS.MILK_NAME] + " curled up at the bottom of the pool, cuddled up with a ragged blanket to catch a quick nap.");
 		outputText("\n\n\"<i>Aww,</i>\" " + flags[kFLAGS.HELSPAWN_NAME] + " grins, looking down at the napping " + flags[kFLAGS.MILK_NAME] + ".  \"<i>Guess I can milk her later, then.</i>\"");
@@ -1249,7 +1249,7 @@ private function talkToHelspawn():void {
 		outputText("\n\nA soft, melodic tune starts to play as " + flags[kFLAGS.HELSPAWN_NAME] + "'s dexterous fingers dance across the fret, plucking at the strings with some small hesitation.  She's a beginner, but not bad at all; the simple tune is sweet and she plays it with burgeoning proficiency, slowly settling into the rhythm of the piece until you can close your eyes and relax, letting her playing sooth you, carrying your troubles far away.  You barely notice when a high, soft voice adds itself to the guitar, a lilting, haunting soprano that slowly grows in power as the young 'mander's playing intensifies, building toward crescendo.  She's singing, surely, but the words are alien and unknowable; you think, for a moment, that perhaps they're in Helia's native tongue, but when a second voice, powerful and operatic, joins " + flags[kFLAGS.HELSPAWN_NAME] + "'s, you know who's been teaching her.");
 		
 		outputText("\n\nYou open an eye as Isabella approaches, belting out a misty-eyed verse in her strange language, and you can practically feel her homesickness, her separation from a lifetime of friends and loved ones.  As her arms cross under her enormous breasts, you can't help but think of the mutations she has undergone");
-		if (player.race() != "human") outputText(" and you yourself have suffered as well");
+		if (player.race() !== "human") outputText(" and you yourself have suffered as well");
 		outputText(".  You smile as Isabella seats herself beside " + flags[kFLAGS.HELSPAWN_NAME] + ", joining their voices together for the final chorus that leaves them both shaking as " + flags[kFLAGS.HELSPAWN_NAME] + " strums the last, desperate notes, nearly clawing through the strings in her passion.");
 		
 		outputText("\"<i>");
@@ -1351,7 +1351,7 @@ private function umYum():void {
 		outputText("\n\nCringing, you are about to set the offered bowl back down but you are reminded by your growling stomach. You have no choice but to cover your nose and just gulp down the contents of the stew. ")
 		player.refillHunger(25);
 		outputText("\nYou feel a bit nauseous. That stew surely is strange.")
-		if (rand(3) == 0)
+		if (rand(3) === 0)
 		{
 			//Player vomits. Poor player. Damages hunger by 15-25.
 			outputText("\n\nGasp! You feel like you're going to throw up. You get up and rush behind the bushes. You suddenly bend over and spew the contents of your stomach from your mouth onto the ground. It takes a while but you eventually recover and you get up. ")
@@ -1383,7 +1383,7 @@ private function helSpawnMilkHerNow():void {
 	outputText("\n\n" + flags[kFLAGS.HELSPAWN_NAME] + " gives a rebellious huff as she clambers down, slipping down to the bottom and giving " + flags[kFLAGS.MILK_NAME] + " a gentle nudge.  \"<i>C'mon, cutey, wake up.  Time to relieve some pressure.</i>\"");
 	
 	outputText("\n\nYawning powerfully, " + flags[kFLAGS.MILK_NAME] + " rises to her knees and rubs the sleep from her eyes");
-	if (flags[kFLAGS.MILK_SIZE] == 2) outputText(", already working to unfasten her shift");
+	if (flags[kFLAGS.MILK_SIZE] === 2) outputText(", already working to unfasten her shift");
 	outputText(".  \"<i>Suckle?</i>\" she asks, turning her full teats toward " + flags[kFLAGS.HELSPAWN_NAME] + ".");
 	
 	//If Sluttymander:
@@ -1418,7 +1418,7 @@ internal function loseSparringToDaughter():void {
 		if (player.lust >= player.maxLust()) outputText("succumbing to your own lusts");
 		else outputText("unable to withstand her unending hail of attacks");
 		outputText(", " + flags[kFLAGS.HELSPAWN_NAME] + " quickly sweeps your [legs] out from under you, dropping you right on your ass.  You collapse with a grunt, ");
-		if (player.weaponName != "fists") outputText("weapon tumbling out of hand");
+		if (player.weaponName !== "fists") outputText("weapon tumbling out of hand");
 		else outputText("unable to even clench your fists anymore");
 		outputText(", and a moment later " + flags[kFLAGS.HELSPAWN_NAME] + "'s on you, straddling you with her powerful legs, pushing you down into the dirt.");
 		
@@ -1453,7 +1453,7 @@ internal function beatUpYourDaughter():void {
 		
 		outputText("\n\nShaking your head, you give her a little push, flopping her onto her back.  She just lets out a little whimper and finally tears her panties away, giving her unrestricted access to her sodden box.  \"<i>Hey, d-don't just leave me like this,</i>\" she whines, but to no avail.");
 		//If No Incest: 
-		if (flags[kFLAGS.HELSPAWN_INCEST] == 0) outputText("  You wash your hands of the defeated slut and head back to camp, leaving her to work through her tension herself.");
+		if (flags[kFLAGS.HELSPAWN_INCEST] === 0) outputText("  You wash your hands of the defeated slut and head back to camp, leaving her to work through her tension herself.");
 		else {
 			outputText("  You reach down and give your lovely, lusty daughter a pat on her expansive rear, telling her she'll always look her best with her ass in the air, begging for ");
 			if (!player.hasCock()) outputText("sex");
@@ -1567,12 +1567,12 @@ public function hakonAndKiriComeVisit():void {
 	outputText("\n\n\"<i>Old scales!?  I'll show you old, you little brat.  Come on, hit me!</i>\" Hakon says, just before " + flags[kFLAGS.HELSPAWN_NAME] + " punches him right in the chest, knocking him right on his ass.  He tumbles back with a grunt, shaking his head with a wry laugh.  \"<i>Ha!  Maybe these scales are getting old after all.  This one's gonna be a hell of a fighter, though.  Should take her hunting with us one of these days.  What do you say, kid?</i>\"");
 	
 	outputText("\n\n\"<i>Sure!  ");
-	if (flags[kFLAGS.HELSPAWN_WEAPON] == "scimitar and shield") outputText(championRef() + "'s been teaching me how to fight.");
+	if (flags[kFLAGS.HELSPAWN_WEAPON] === "scimitar and shield") outputText(championRef() + "'s been teaching me how to fight.");
 	else outputText("Mom's been teaching me how to fight.");
 	outputText("  I'm not as good as mom and " + championRef() + " yet, but I'd love to come along.</i>\"");
 	
 	outputText("\n\n\"<i>That's the spirit.  Now we just have to convince your aunt Kiri to come along.  And ");
-	if (flags[kFLAGS.HELSPAWN_DADDY] == 0) outputText("your old man");
+	if (flags[kFLAGS.HELSPAWN_DADDY] === 0) outputText("your old man");
 	else outputText("[name]");
 	outputText(", too.</i>\"");
 	

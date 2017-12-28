@@ -148,12 +148,12 @@ package classes.Scenes.Dungeons.Factory
 				else {
 					if (player.balls > 0) outputText("grinding down against the ribbed and textured demonic cock as it slides between your " + player.ballsDescriptLight() + ".");
 					else if (player.cocks.length > 0) outputText("squeezing your legs around the thick demonic flesh as a steady dribble of pre-cum drips from your " + player.cockDescript(0) + ".");
-					if (player.gender == 0) outputText("grinding suggestively on your captor's rods, barely noticing as the last of your " + player.armorName + " falls away.");
+					if (player.gender === 0) outputText("grinding suggestively on your captor's rods, barely noticing as the last of your " + player.armorName + " falls away.");
 				}
 				outputText("\n\n");
 				//FUCKKKING
 				//Female paragraph
-				if (player.vaginas.length > 0 && (player.cocks.length == 0 || rand(2))) {
+				if (player.vaginas.length > 0 && (player.cocks.length === 0 || rand(2))) {
 					outputText("The incubus at last decides to tend to your over-aroused body and pulls you off the ground with his tentacles, suspending you in mid-air.  ");
 					if (player.cor < 80) outputText("You feel your " + player.legs() + " lifted and pulled tight as countless demonic cocks encircle your body, binding and constraining you further.  You whimper as a demonic tentacle probes your back door while a thicker one lines itself up just below your " + player.clitDescript() + ".  ");
 					else outputText("As he lifts you, you spread your legs, showing him your cunt which is dripping wet from anticipation, and grabbing your ass to give him a perfect view of your " + player.assholeDescript() + ".  You then beg him, between lecherous moans, to use his three biggest tentacles, as you want to have the most sensations.  With a sadistic smile, he lines up two tentacle cocks about as big as your arm over your " + player.vaginaDescript(0) + " and your " + player.assholeDescript() + ".  ");
@@ -186,7 +186,7 @@ package classes.Scenes.Dungeons.Factory
 					if (player.balls > 0) outputText("  You groan around the dick plugging your throat as another tentacle-like appendage wraps around your " + player.sackDescript() + ", pulling your " + player.ballsDescriptLight() + " down and gently squeezing them.");
 					outputText("\n\n");
 					//Genderless Orgasm
-					if (player.gender == 0) outputText("The tainted cum mixed with the sensation of fullness provide you with pleasures beyond what your genderless body could accomplish on its own.  You writhe as the demon face-fucks you with one tendril while another continues to bury itself ever-deeper into your abused " + player.assholeDescript() + ".  ");
+					if (player.gender === 0) outputText("The tainted cum mixed with the sensation of fullness provide you with pleasures beyond what your genderless body could accomplish on its own.  You writhe as the demon face-fucks you with one tendril while another continues to bury itself ever-deeper into your abused " + player.assholeDescript() + ".  ");
 					if (player.cocks.length > 0) outputText("The cock-tentacle around your " + player.cockDescript(0) + "  increases the pace of its stimulation as it begins to spurt hot wet cum over you, giving it lubrication as it jacks you off while staying tight around your base to prevent you from an orgasming.  ");
 					outputText("You feel cum pulse through the tentacles encircling you as the incubus loses control of his tentacles.  Cum pumps into your belly, suffusing you with drug-like warmth as the tentacle around your neck pulls tight enough to squeeze the cock inside your throat.  You squirm and gasp for oxygen as spooge begins unloading into and around your body to the point where you aren't sure where your body begins and the demonic-spunk ends.  You twitch in what you assume is orgasm as you fight to breathe; all the while more cum is squeezed into your stuffed belly and ruined anus. The tentacle in your ass backs out slowly, having filled every inch of your intestines with cum, until it pops free with a splatter.");
 					outputText("\n\n");
@@ -234,7 +234,7 @@ package classes.Scenes.Dungeons.Factory
 			//(BUTTRAPE - Requires Penis)
 			if (player.cocks.length > 0) {
 				outputText("With a few deft motions, you shift your " + player.armorName + " to expose your ");
-				if (player.gender == 3) {
+				if (player.gender === 3) {
 					if (player.balls > 0) outputText(player.multiCockDescriptLight() + ", " + player.ballsDescriptLight() + ", and " + player.vaginaDescript(0));
 					else outputText(player.multiCockDescriptLight() + " and " + player.vaginaDescript(0));
 				}
@@ -244,9 +244,9 @@ package classes.Scenes.Dungeons.Factory
 				}
 				outputText(".  Having resolved to take the demon's backdoor, you approach his weakened form with brimming confidence.  He looks up, clearly hoping your plan is to squat on his throbbing member.  You dispel his misguided notion when you grab him by the horns and shove his face against the floor. He struggles weakly until you press down harder, making it clear he is to stay in position - on his knees with his head down and his ass in the air.  Circling your prey, you inspect his flawless body and carefully note that the hole at his crotch actually exposes a fair portion of his very supple and surprisingly feminine-looking backside.\n\n");
 				outputText("You don't waste any time, gripping your " + player.cockDescript(0) + " in one hand and ");
-				if (player.cocks[0].cockType == CockTypesEnum.HORSE) outputText("pressing your thick flare ");
-				if (player.cocks[0].cockType == CockTypesEnum.DOG) outputText("pressing your pointed tip ");
-				if (player.cocks[0].cockType == CockTypesEnum.HUMAN || player.cocks[0].cockType.Index > 2) outputText("pressing your head ");
+				if (player.cocks[0].cockType === CockTypesEnum.HORSE) outputText("pressing your thick flare ");
+				if (player.cocks[0].cockType === CockTypesEnum.DOG) outputText("pressing your pointed tip ");
+				if (player.cocks[0].cockType === CockTypesEnum.HUMAN || player.cocks[0].cockType.Index > 2) outputText("pressing your head ");
 				outputText("between the incubus' cheeks towards his inhumanly smooth rear-passage.  You gasp in delight at the tight ribbed texture of his asshole as you slide ");
 				if (player.cocks[0].cockLength > 10) outputText("deep inside ");
 				else outputText("inside ");
@@ -271,7 +271,7 @@ package classes.Scenes.Dungeons.Factory
 				player.slimeFeed();
 				outputText("With a few deft motions, you shift your " + player.armorName + " to expose your ");
 				//Herm
-				if (player.gender == 3) {
+				if (player.gender === 3) {
 					if (player.balls > 0) outputText(player.multiCockDescriptLight() + ", " + player.ballsDescriptLight() + ", and " + player.vaginaDescript(0));
 					else if (player.balls > 0) outputText(player.multiCockDescriptLight() + " and " + player.vaginaDescript(0));
 				}
@@ -284,8 +284,8 @@ package classes.Scenes.Dungeons.Factory
 				
 				outputText("Thankful for the gesture, you sink down onto him, letting the nubs of his crown stimulate your lips and the underside of your " + player.clitDescript() + ".  ");
 				if (player.vaginas[0].vaginalWetness >= VaginaClass.WETNESS_SLICK) outputText("In no time flat your drooling fluids soak him in slippery wetness.  ");
-				if (player.vaginas[0].vaginalWetness < VaginaClass.WETNESS_SLICK && player.vaginas[0].vaginalWetness != VaginaClass.WETNESS_DRY) outputText("Before long, you've lubricated a fair portion of his tool with wetness.  ");
-				if (player.vaginas[0].vaginalWetness == VaginaClass.WETNESS_DRY) outputText("Despite your usual light lubrication, you manage to moisten the top-half of his tool with wetness.  ");
+				if (player.vaginas[0].vaginalWetness < VaginaClass.WETNESS_SLICK && player.vaginas[0].vaginalWetness !== VaginaClass.WETNESS_DRY) outputText("Before long, you've lubricated a fair portion of his tool with wetness.  ");
+				if (player.vaginas[0].vaginalWetness === VaginaClass.WETNESS_DRY) outputText("Despite your usual light lubrication, you manage to moisten the top-half of his tool with wetness.  ");
 				outputText("Relaxing the muscles in your " + player.legs() + ", you let a few inches of his length slip inside you, every nub and nodule of his corrupted prick filling the walls of your love-canal with inhuman pleasures that make your knees weak.  A particularly delightful bump brushes your " + player.clitDescript() + ", causing your " + player.legs() + " to finally give out. The incubus' nubbly cock plunges entirely inside you.\n\n");
 				outputText("You gasp and moan like a cheap whore, disgusted by yourself and yet so turned on by the total loss of self-control.  The incubus is leering up at you, having regained some of his lost confidence.  Despite the lust, desire and pleasure burning through the hot pole buried in your abdomen, you work up enough rage to grip his neck with your left hand and practically choke him out.  You work your hips quickly as you feel his pre start to drip into your canal, spreading tingling warmth in the deepest parts of your passage and into your cervix.  You tighten your grip as you forcibly take your pleasure, barking in displeasure at the demon, \"<i>Don't look like you're enjoying this too much bitch, or I'll take it out of your hide.</i>\"  Satisfied at the renewed look of fear in his eyes, you return to using his magnificent tool as a masturbation aid.\n\n");
 				outputText("Unable to contain your body's desires due to either the demon's aura or his wonderful penis, you slam your " + player.vaginaDescript(0) + " onto his member with impunity, twitching and squeezing involuntarily.  His tainted pre-cum begins seeping deep inside your uterus and you cry out with orgasmic intensity.  Your entire body clenches down, even the hand clamped on the incubus' windpipe. You feel his demon-cock swell up inside you in response to his stress, stretching your cunt taut.  His skin darkens from the lack of oxygen as he begins cumming HARD inside you.  Your womb immediately fills with his demon-seed, leaving ribbons of spunk to drip from your tightly-stretched cunt.  You sigh in delight as your muscles slowly stop quivering.  With a pleasured gasp, you rise off the distended demon-prick, and realize that you've choked your foe into unconsciousness. Still, you did let him cum, so maybe he won't mind too much when he wakes.  Feeling sensual and sated, you redress and prepare to explore the rest of the factory. ");
@@ -321,7 +321,7 @@ package classes.Scenes.Dungeons.Factory
 		//------------
 		public function meetAtElevator():void
 		{
-			if (flags[kFLAGS.D3_MECHANIC_LAST_GREET] == MECHANIC_NO_SELECTION)
+			if (flags[kFLAGS.D3_MECHANIC_LAST_GREET] === MECHANIC_NO_SELECTION)
 			{
 				outputText("\n\nA");
 				if (metIncubusMechanicInD1()) outputText(" familiar,");
@@ -357,7 +357,7 @@ package classes.Scenes.Dungeons.Factory
 				addButton(1, "Suck Dick", suckIncubusDick);
 				addButton(2, "Fight", startCombatImmediate, new IncubusMechanic());
 			}
-			else if (flags[kFLAGS.D3_MECHANIC_LAST_GREET] == MECHANIC_SUCKED)
+			else if (flags[kFLAGS.D3_MECHANIC_LAST_GREET] === MECHANIC_SUCKED)
 			{
 				outputText("\n\nAs soon as the incubus mechanic spots you approaching, his wriggling, exotic cock settles slightly, growing longer and thicker in anticipation. The demonic, corrupted nubs that encircle its girth pulsate as the whole of his dong floods with arousal, and you cannot help but imagine the feel and taste of it on your tongue once more, the corrupted flavor making your mouth salivate with such intensity that you're forced to swallow to keep yourself from drooling all over yourself. Why is his dick so goddamn delicious?");
 				
@@ -370,7 +370,7 @@ package classes.Scenes.Dungeons.Factory
 				addButton(1, "Suck Dick", suckIncubusDick);
 				addButton(2, "Fight", startCombatImmediate, new IncubusMechanic());
 			}
-			else if (flags[kFLAGS.D3_MECHANIC_LAST_GREET] == MECHANIC_PAID)
+			else if (flags[kFLAGS.D3_MECHANIC_LAST_GREET] === MECHANIC_PAID)
 			{
 				outputText("\n\n\"<i>Back again?</i>\" the incubus queries while he reclines against the softly thrumming machinery. \"<i>I was just calibrating my baby here. Now she purrs like a kitten.</i>\" He affectionately pats the metal devices that power the lift. \"<i>If you want to use her, you're going to need to pay up, [name]. 500 gems seems fitting recompense, but between you and me, I'd rather have you on your knees polishing my python here.</i>\" The mechanic's cock suddenly rears up, swaying back and forth in a decidedly snake-like motion, the light glistening off his purple-hued pecker as it stiffens encouragingly.");
 
@@ -392,7 +392,7 @@ package classes.Scenes.Dungeons.Factory
 				addButton(1, "Suck Dick", suckIncubusDick);
 				addButton(2, "Fight", startCombatImmediate, new IncubusMechanic());
 			}
-			else if (flags[kFLAGS.D3_MECHANIC_LAST_GREET] == MECHANIC_FOUGHT)
+			else if (flags[kFLAGS.D3_MECHANIC_LAST_GREET] === MECHANIC_FOUGHT)
 			{
 				addButton(0, "Lift", useLiftPostDefeat);
 			}
@@ -531,7 +531,7 @@ package classes.Scenes.Dungeons.Factory
 			flags[kFLAGS.D3_MECHANIC_FIGHT_RESULT] = MECHANIC_FUCKED;
 
 			var x:int = player.cockThatFits(200);
-			if (x == -1) x = 0;
+			if (x === -1) x = 0;
 
 			clearOutput();
 			outputText("\n\nThe incubus may have done his best to seduce you with his");
@@ -634,7 +634,7 @@ package classes.Scenes.Dungeons.Factory
 			outputText("Well, he does have quite the thick, throbbing piece of male genitalia on display for you.... There's no sense in letting a good cock go to waste, right? You stalk over to him, looming over the defeated demon with a predatory grin. Your tongue flicks out to lick your lips. Meanwhile, your lower ones go suddenly and irrevocably slick, excited and instantly ready for a helping of thick demon-cock. Your [vagina] is getting warmer and warmer as you tease the poor demon, leaving him to wonder if you're going to kill him or fuck him. The worry is as obvious on his face as the upraised tumescence that jabs spear-like out from his crotch, aimed straight at you.");
 
 			outputText("\n\nAbruptly, you drop your [butt] down on top of him, sitting square on top of his chest");
-			if (player.tail.type != 0) outputText(", tail draped across his face");
+			if (player.tail.type !== 0) outputText(", tail draped across his face");
 			outputText(", and casually begin to undress. Looking over your shoulders, you see hope in his soulless eyes. You tease, \"<i>I wouldn't want to stain my clothes when I finish you off, would I?</i>\" His dick wilts a little at that, and he looks about to faint. Giggling, you toss aside your [armor] and grab hold of his mostly-hard cock, feeling the corrupted, textured nodules that encircle his shaft flaring up at your gentle squeeze. He firms up nicely in your grip, filling back to a pulsating, rigid hardness in seconds.");
 
 			outputText("\n\n\"<i>Hey, you can transform your dick, right?</i>\" you call over your shoulder.");
@@ -664,12 +664,12 @@ package classes.Scenes.Dungeons.Factory
 			clearOutput();
 
 			//Demon first:
-			if (cType == MECHANIC_DEMON_COCK)
+			if (cType === MECHANIC_DEMON_COCK)
 			{
 				outputText("Giving the incubus's sweaty cock an affectionate squeeze, you decide, \"<i>I think I like this just the way it is.\"</i> With your hand, you cup his balls and tenderly stroke his surprisingly smooth, supple sack for emphasis, rewarding him for not struggling any further. He moans and releases a dollop of pre-cum from his tip, coating his own glans is liquid excitement. Around his swollen crown, the bumps flare and expand out to reach their full size. You can't help but wonder what it would feel like to have his dick inside you, pulsating, sliding, and dragging its many stimulating knobs all over your slick, sensitive inner walls.");
 			}
 			//Demon first:
-			else if (cType == MECHANIC_HORZ_GOG)
+			else if (cType === MECHANIC_HORZ_GOG)
 			{
 				outputText("Giving the incubus's sweaty tool an affectionate squeeze, you decide, \"<i>Make it a horse-cock. If I'm going to play with you, I want you to have the biggest, strongest, most inhumanly virile cock to put inside me.</i>\" He starts twitching and leaking pre-cum halfway through your explanation.");
 				outputText("\n\nA little breathlessly, the incubus says, \"<i>And so, the predator becomes the accommodating servant. Your wish is my command.</i>\" He closes his eyes and focuses, dick lurching hard enough to wrench itself out of your grip. It shrinks downward, the skin at its base bunching up, fold after fold. You didn't want him to get smaller! The surface of the miniature demon-cock smoothes to become fleshy and mottled, patterned black and pink. Its human-like glans flattens out as if it was being stepped on, widening until its blunt tip hangs over the edges of his tiny shaft.");
@@ -683,7 +683,7 @@ package classes.Scenes.Dungeons.Factory
 				monster.cocks[0].cockType = CockTypesEnum.HORSE;
 			}
 			//Dogdick
-			else if (cType == MECHANIC_DOG_COCK)
+			else if (cType === MECHANIC_DOG_COCK)
 			{
 				outputText("Giving the incubus's sweaty tool an affectionate squeeze, you decide, \"<i>Grow a dog-cock. Let's see if I can take the knot, shall we, pet?</i>\"");
 				outputText("\n\nA little breathlessly, the incubus responds, \"<i>Your wish is my command. How fitting that the former predator take on such a wolf-like aspect.</i>\" He closes his eyes to focus, and his dick lurches so hard that it wrenches itself out of your grip. Before you can snatch it up again, it begins to shrink, withdrawing back into itself; the only evidence of its former size is a growing bundle of folded skin at its base. It's almost like some of his length is being converted into the swelling, canine-looking sheath, not stopping until his tip vanishes into the recessed entrance.");
@@ -715,16 +715,16 @@ package classes.Scenes.Dungeons.Factory
 			if (pCuntArea >= mCockArea * 1.5)
 			{
 				outputText(" and feel the girthy boner start to slide deeper inside you. Your capacitative cunt hugs and squeezes tightly about its new best friend, guiding it deep into your heated channel. You slide on down, reveling in the blissful sensation of being properly filled for once, ecstatic as you realize just how hard this demon's dick is going to make you cum. You're so busy riding the thrill of pleasure that you barely notice when you bottom out above his balls");
-				if (cType == MECHANIC_HORZ_GOG) outputText(", your belly bulging with his equine shape");
-				else if (cType == MECHANIC_DOG_COCK) outputText(", your lips slurping noisily about his knot");
+				if (cType === MECHANIC_HORZ_GOG) outputText(", your belly bulging with his equine shape");
+				else if (cType === MECHANIC_DOG_COCK) outputText(", your lips slurping noisily about his knot");
 				outputText(".");
 			}
 			//Decent Fit - Player cunt can fit between 95% - 149% of the total cock area
 			else if (pCuntArea >= (mCockArea * 0.95))
 			{
 				outputText(" and feel the girthy boner slowly start to slide through your clinging lips. He's so big and yet fits so well. It's like his " + monster.cockDescriptShort() + " was made to violate your channel - to slip and to slide through you while keeping you oh-so-pleasantly full. You're so busy enjoying the agonizingly slow pleasure that you barely notice when you bottom out above his balls");
-				if (cType == MECHANIC_HORZ_GOG) outputText(", your belly bulging with his equine shape");
-				else if (cType == MECHANIC_DOG_COCK) outputText(", your lips slurping noisily about his knot");
+				if (cType === MECHANIC_HORZ_GOG) outputText(", your belly bulging with his equine shape");
+				else if (cType === MECHANIC_DOG_COCK) outputText(", your lips slurping noisily about his knot");
 				outputText(".");
 			}
 			//Two (dohohoh, wrong too) tight - Player cunt can fit between 50% - 94% of the total cock area
@@ -732,8 +732,8 @@ package classes.Scenes.Dungeons.Factory
 			{
 				tightFit = true;
 				outputText(" and feel the girthy boner slowly pry your lips further apart. He's so goddamn big that it feels like it's barely fitting inside. The first inch eventually slips into your tightly-clinging lips, forcing an inadvertent clench to run up the length of your channel. Your [vagina] noisily squelches around the slowly inserting member. You're stretched so full, and you're loving every moment of it. His "+ monster.cockDescriptShort() +" is so goddamn filling, and you've only taken the first few inches! The feel of him sliding through you is so fulfilling, so all-consuming, that you barely notice your [butt] touching down against his crotch");
-				if (cType == MECHANIC_HORZ_GOG) outputText(", your belly bulging with his equine shape");
-				else if (cType == MECHANIC_DOG_COCK) outputText(", your lips slurping noisily about his knot");
+				if (cType === MECHANIC_HORZ_GOG) outputText(", your belly bulging with his equine shape");
+				else if (cType === MECHANIC_DOG_COCK) outputText(", your lips slurping noisily about his knot");
 				outputText(".");
 			}
 			//Cunt WRECKER - Basically anything sub-50% of the cock area
@@ -768,20 +768,20 @@ package classes.Scenes.Dungeons.Factory
 			outputText("\n\n\"<i>Getting close?</i>\" you ask. The question could have easily been directed to you. It's getting hard to hold back, even if you want this perfect, cunt-filling fullness to remain with you forever. Tainted demon pre is running out with your juices in steady trickles as you climb the to the peak of orgasm together, your sweat-slicked bodies writhing against one each other. Your mask of composure slips, and moan like a whore, begging the incubus to nut inside you, to pump you full of his hot, creamy seed. You don't mind a little corruption, after all, but you'll always be the champion - just a champion who really likes getting her pussy fucked full of succulent demon-cum.");
 
 			outputText("\n\nHis dick suddenly expands even more, stretching you tight");
-			if (cType == MECHANIC_HORZ_GOG) outputText(", the head flaring to seal itself against your cervix");
-			else if (cType == MECHANIC_DOG_COCK) outputText(", the knot popping in just in time to start bloating, locking you in place");
+			if (cType === MECHANIC_HORZ_GOG) outputText(", the head flaring to seal itself against your cervix");
+			else if (cType === MECHANIC_DOG_COCK) outputText(", the knot popping in just in time to start bloating, locking you in place");
 			outputText(", and jism begins to shoot out in waves.");
 			if (!player.isPregnant())
 			{
 				outputText(" Your empty womb drinks up the virile, seed-filled sludge with abandon.");
-				if (cType == MECHANIC_HORZ_GOG) outputText(" After all, that bestial horse-cock doesn't really leave it anywhere else to go. The demonic animal-cunt just continues spurting straight on in to have its way with your eggs, and you're sure there isn't a contraceptive this side of Mareth that could stop you from having his imps.");
-				else if (cType == MECHANIC_DOG_COCK) outputText(" After all, that immense knot doesn't really leave it anywhere else to go. Once every fold is bathed in alabaster doggie-cream, the continued ejaculations start pouring in after your eggs. His knot is so big and stretching you so wide; you don't think he would pop out even if he filled your belly to look nine months pregnant. Worse, or perhaps better, you're sure with how thick and virile his seed feels that you'll be getting pregnant with his imps from this.");
+				if (cType === MECHANIC_HORZ_GOG) outputText(" After all, that bestial horse-cock doesn't really leave it anywhere else to go. The demonic animal-cunt just continues spurting straight on in to have its way with your eggs, and you're sure there isn't a contraceptive this side of Mareth that could stop you from having his imps.");
+				else if (cType === MECHANIC_DOG_COCK) outputText(" After all, that immense knot doesn't really leave it anywhere else to go. Once every fold is bathed in alabaster doggie-cream, the continued ejaculations start pouring in after your eggs. His knot is so big and stretching you so wide; you don't think he would pop out even if he filled your belly to look nine months pregnant. Worse, or perhaps better, you're sure with how thick and virile his seed feels that you'll be getting pregnant with his imps from this.");
 				player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP);
 			}
 			else
 			{
 				outputText(" Your blocked womb deflects the seed, forcing it all to stay in your channel");
-				if (cType != MECHANIC_DOG_COCK) outputText(" and drip out over his balls, much to his chagrin.");
+				if (cType !== MECHANIC_DOG_COCK) outputText(" and drip out over his balls, much to his chagrin.");
 				else outputText(" and stretch you further.");
 			}
 
@@ -793,7 +793,7 @@ package classes.Scenes.Dungeons.Factory
 			outputText(".");
 
 			outputText("\n\nYou both cum for what feels like hours. Yet, all good things must come to an end. You do have a queen bitch to depose, after all.");
-			if (cType == MECHANIC_DOG_COCK) outputText(" When you try to rise, you find that his knot is still stubbornly inflated, trying to hold all his fertile sperm deep inside you. It won't come out! Glaring at him, you put as much of your gear on as possible and start dragging him through the dungeon after you until he has the good sense to shift his cock into another shape. He weakly slides out, panting something about seeing you at your camp. He's gone by the time your gear is properly settled.");
+			if (cType === MECHANIC_DOG_COCK) outputText(" When you try to rise, you find that his knot is still stubbornly inflated, trying to hold all his fertile sperm deep inside you. It won't come out! Glaring at him, you put as much of your gear on as possible and start dragging him through the dungeon after you until he has the good sense to shift his cock into another shape. He weakly slides out, panting something about seeing you at your camp. He's gone by the time your gear is properly settled.");
 			else outputText(" When you rise, it amazes you just how many inches of cock are sliding out of your well-used snatch. The " + monster.cockHead() + " eventually slips free, and you watch in awe at how his musky semen runs out from your gaped, thoroughly creamed lips. By the time you dress, he's vanished, but you recall hearing him panting something about seeing you at camp.");
 
 			outputText("\n\nHe's a demon. Maybe he'll actually find his way to your camp to be your fucktoy. More likely he was just saying whatever would save his hide and sharing his excessive perversions with you. You wouldn't mind him fucking you every morning, would you?");
@@ -858,7 +858,7 @@ package classes.Scenes.Dungeons.Factory
 		
 				//Merge size forks
 				outputText("\n\nYou hump against your palm and lick your lips encouragingly. The sheer need thrumming through your veins will allow nothing less. You want to fuck and be fucked. To be used and abused. To sink");
-				if (player.cocks.length == 1) outputText(" your");
+				if (player.cocks.length === 1) outputText(" your");
 				else outputText(" a");
 				outputText(" length inside any hole and thrust until you're quivering in orgasmic release. That gorgeous demon-cock taunts you, swaying just out of reach.");
 			}
@@ -912,7 +912,7 @@ package classes.Scenes.Dungeons.Factory
 				outputText("\n\nThe ring is being forced down your bundled shafts. Below, your dicks remain as they are. Above, they're being merged together into one impressive tool.");
 
 				var allDemon:Boolean = false;
-				if (player.countCocksOfType(CockTypesEnum.DEMON) == player.cocks.length) allDemon = true;
+				if (player.countCocksOfType(CockTypesEnum.DEMON) === player.cocks.length) allDemon = true;
 
 				if (!allDemon) outputText(" The skin of your transforming length is darkening to a purplish hue, and in the wake of the magical cock-ring, nodules are slowly emerging, growing into an imitation of the cock you're still suckling.");
 				outputText(" The incubus chuckles, easily pushing the ring the rest of the way down, smiling at the way your demonic tip pulsates and leaks pre-cum. Once it's nestled firmly against your groin, your new master withdraws his hands (and his cock). <b>Your singular, demonic cock is impossibly hard.</b>");
@@ -922,7 +922,7 @@ package classes.Scenes.Dungeons.Factory
 				//Single
 				outputText("\n\nThe incubus grabs your [cock] in his hand, holding it steady, not really intending to bring you much pleasure. His touch feels so nice that you piston your [hips] against him anyway, but he holds you firm and steady. A warm tightness, pleasant and unyielding presses down against your [cockHead], so tight that you whimper at the slight touch of pain. You crane your head for a better look, careful not to lose your mouth's grip on its leaking fixation. What you see nearly makes you swoon.");
 				//Has nondemon dick
-				if (player.countCocksOfType(CockTypesEnum.DEMON) == 0)
+				if (player.countCocksOfType(CockTypesEnum.DEMON) === 0)
 				{
 					outputText("\n\nThe gleaming ring is sliding down your length, and every inch that passes through it is turning... changing into a purple-hued monstrosity - a pale imitation of the cock currently plugging your hungry lips. It feels... surprisingly good to transform, and the sensation of your dick's nubs growing in is wonderfully divine. You blissfully sigh as the ring touches down against your crotch, <b>completing your transformation into a demon-cocked toy.</b>");
 				}

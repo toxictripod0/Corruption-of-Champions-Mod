@@ -9,34 +9,34 @@ package classes.Scenes.Places.Prison
 		public function PrisonLetters() {}
 		
 		public function deliverChildWhileInPrison():Boolean {
-			if (flags[kFLAGS.IN_PRISON] == 0) return false;
-			if (player.vaginas.length == 0) {
+			if (flags[kFLAGS.IN_PRISON] === 0) return false;
+			if (player.vaginas.length === 0) {
 				outputText(images.showImage("birth-prison"));
 				outputText("\nYou feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.\n");
 				player.createVagina();
 			}
 			outputText("\nIt's time! You " + player.clothedOrNakedLower("remove your [lowergarment] and ") + "sit down at one of the corners and spread your [legs]. A sudden gush of fluids erupt from your [pussy] - your water just broke. You grunt painfully as you feel wriggling and squirming inside your belly, muscle contractions forcing it downwards. ");
 			//Various scenes
-			if (player.pregnancyType == PregnancyStore.PREGNANCY_MARBLE) {
+			if (player.pregnancyType === PregnancyStore.PREGNANCY_MARBLE) {
 				outputText("\n\nEventually, a newborn cow-girl comes out of your womb and into your cell; Marble would love to see them. You call for Mistress Elly and she rushes to your cell to see the newborn sirens. \"<i>Don't worry. I promise your newborn cow-girl will be delivered to Marble. I've ordered two imps to carry her,</i>\" she says. Two imp guards come into your cell to take away the newborn cow-girl. Hopefully you'll receive a letter.");
 				outputText("\n\n<b>Some time passes...</b>");
 				letterFromMarbleAfterGivingBirth();
 				flags[kFLAGS.MINERVA_CHILDREN] += 2;
 			}
-			if (player.pregnancyType == PregnancyStore.PREGNANCY_MINERVA) {
+			if (player.pregnancyType === PregnancyStore.PREGNANCY_MINERVA) {
 				outputText("\n\nEventually, the twin sirens come out of your womb and into your cell; Minerva would love to see them. You call for Mistress Elly and she rushes to your cell to see the newborn sirens. \"<i>Don't worry. I promise your newborn sirens will be delivered to Minerva. I've ordered two imps to carry them,</i>\" she says. Two imp guards come into your cell to take away the siren twins. Hopefully you'll receive a letter.");
 				outputText("\n\n<b>Some time passes...</b>");
 				letterFromMinervaAfterGivingBirth();
 				flags[kFLAGS.MINERVA_CHILDREN] += 2;
 			}
-			if (player.pregnancyType == PregnancyStore.PREGNANCY_BEHEMOTH) {
+			if (player.pregnancyType === PregnancyStore.PREGNANCY_BEHEMOTH) {
 				outputText("\n\nEventually, the purple creature comes out of your womb and into your cell; Behemoth would love to see him. You call for Mistress Elly and she rushes to your cell to see the newborn sirens. \"<i>Don't worry. I promise your newborn behemoth will be delivered to Behemoth. I've ordered two imps to carry him,</i>\" she says. Two imp guards come into your cell to take away the newborn behemoth. Hopefully you'll receive a letter.");
 				outputText("\n\n<b>Some time passes...</b>");
 				letterFromMinervaAfterGivingBirth();
 				flags[kFLAGS.BEHEMOTH_CHILDREN]++;
-				if (flags[kFLAGS.BEHEMOTH_CHILDREN] == 1) flags[kFLAGS.BEHEMOTH_CHILD_1_BIRTH_DAY] = getGame().time.days;
-				if (flags[kFLAGS.BEHEMOTH_CHILDREN] == 2) flags[kFLAGS.BEHEMOTH_CHILD_2_BIRTH_DAY] = getGame().time.days;
-				if (flags[kFLAGS.BEHEMOTH_CHILDREN] == 3) flags[kFLAGS.BEHEMOTH_CHILD_3_BIRTH_DAY] = getGame().time.days;
+				if (flags[kFLAGS.BEHEMOTH_CHILDREN] === 1) flags[kFLAGS.BEHEMOTH_CHILD_1_BIRTH_DAY] = getGame().time.days;
+				if (flags[kFLAGS.BEHEMOTH_CHILDREN] === 2) flags[kFLAGS.BEHEMOTH_CHILD_2_BIRTH_DAY] = getGame().time.days;
+				if (flags[kFLAGS.BEHEMOTH_CHILDREN] === 3) flags[kFLAGS.BEHEMOTH_CHILD_3_BIRTH_DAY] = getGame().time.days;
 			}
 			//Post-birthing
 			if (player.hips.rating < 10) {
@@ -61,9 +61,9 @@ package classes.Scenes.Places.Prison
 			var name:String = randomNames[rand(randomNames.length)];
 			initialMessage("Helia");
 			outputText("\"<i>Hey lover! Sorry you have to miss out on me giving birth to my daughter. She's beautiful. I've named her \"" + name + "\". I've drawn something to describe what she looks like. I would save you but I can't find the prison.  -Helia</i>\"");
-			if (flags[kFLAGS.HELSPAWN_DADDY] == 0) outputText("\n\nLooking at the drawing, you notice that " + name + " has mostly the traits of Helia except that she has your eye colour.");
-			else if (flags[kFLAGS.HELSPAWN_DADDY] == 1) outputText("\n\nLooking at the drawing, you notice that " + name + " isn't <b>quite</b> a salamander, though. The little girl has the same shape as her mothers, a body covered in leather scales and a brightly-flaming tail... but her scales are a midnight black, the same color as a spider's chitin.");
-			else if (flags[kFLAGS.HELSPAWN_DADDY] == 2) outputText("\n\nLooking at the drawing, you notice that " + name + " isn't <b>quite</b> a salamander, though. The little girl looks mostly like her mother, with a full body of red scales and pale flesh, and a brightly flaming tail; but atop her head, rather than finned reptilian ears are a pair of perky, puppy-dog like ears.");
+			if (flags[kFLAGS.HELSPAWN_DADDY] === 0) outputText("\n\nLooking at the drawing, you notice that " + name + " has mostly the traits of Helia except that she has your eye colour.");
+			else if (flags[kFLAGS.HELSPAWN_DADDY] === 1) outputText("\n\nLooking at the drawing, you notice that " + name + " isn't <b>quite</b> a salamander, though. The little girl has the same shape as her mothers, a body covered in leather scales and a brightly-flaming tail... but her scales are a midnight black, the same color as a spider's chitin.");
+			else if (flags[kFLAGS.HELSPAWN_DADDY] === 2) outputText("\n\nLooking at the drawing, you notice that " + name + " isn't <b>quite</b> a salamander, though. The little girl looks mostly like her mother, with a full body of red scales and pale flesh, and a brightly flaming tail; but atop her head, rather than finned reptilian ears are a pair of perky, puppy-dog like ears.");
 			outputText(" You chuckle and scratch your head. If only you've went there to witness the birth. Oh well!");
 			flags[kFLAGS.HELSPAWN_NAME] = name;
 			kGAMECLASS.helSpawnScene.helSpawnsSetup();
@@ -72,7 +72,7 @@ package classes.Scenes.Places.Prison
 		public function noControlOverHelspawn():void {
 			flags[kFLAGS.HELSPAWN_PERSONALITY] += 10;
 			flags[kFLAGS.HELSPAWN_FUCK_INTERRUPTUS] = 1;
-			outputText("\nYou have a feeling that " + (flags[kFLAGS.HELSPAWN_DADDY] == 0 ? "your" : "Hel's") + " daughter is making a slut out of herself. She is beyond your control as long as you're confined in this prison.\n");
+			outputText("\nYou have a feeling that " + (flags[kFLAGS.HELSPAWN_DADDY] === 0 ? "your" : "Hel's") + " daughter is making a slut out of herself. She is beyond your control as long as you're confined in this prison.\n");
 		}
 		
 		//------------
@@ -166,7 +166,7 @@ package classes.Scenes.Places.Prison
 		public function letterFromMarble():void {
 			initialMessage("Marble");
 			var boyOrGirl:Boolean; //true for boy, false for girl.
-			if (flags[kFLAGS.MARBLE_PURIFIED] > 0 && rand(2) == 0) {
+			if (flags[kFLAGS.MARBLE_PURIFIED] > 0 && rand(2) === 0) {
 				flags[kFLAGS.MARBLE_BOYS]++;
 				boyOrGirl = true;
 			}
@@ -180,7 +180,7 @@ package classes.Scenes.Places.Prison
 		public function letterFromMarbleAfterGivingBirth():void {
 			initialMessage("Marble");
 			var boyOrGirl:Boolean; //true for boy, false for girl.
-			if (flags[kFLAGS.MARBLE_PURIFIED] > 0 && rand(2) == 0) {
+			if (flags[kFLAGS.MARBLE_PURIFIED] > 0 && rand(2) === 0) {
 				flags[kFLAGS.MARBLE_BOYS]++;
 				boyOrGirl = true;
 			}

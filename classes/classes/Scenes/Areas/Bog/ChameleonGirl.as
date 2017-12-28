@@ -74,8 +74,8 @@ package classes.Scenes.Areas.Bog
 		{
 			game.spriteSelect(SpriteDb.s_chameleon);
 			var select:int = rand(3);
-			if (select == 0) rollKickClawWhatTheFuckComboIsThisShit();
-			else if (select == 1) chameleonTongueAttack();
+			if (select === 0) rollKickClawWhatTheFuckComboIsThisShit();
+			else if (select === 1) chameleonTongueAttack();
 			else chameleonClaws();
 		}
 

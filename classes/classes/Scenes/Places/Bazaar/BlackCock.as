@@ -66,13 +66,13 @@ package classes.Scenes.Places.Bazaar
 			else if (isHolidays()) outputText("The interior is lit by a combination of black rooster-shaped candles on each table and a large globe sitting in the center of the tent. It looks like they just dumped the glowing creamy fluid from all the small globes into a larger one. You also see a big festive tree tucked into the corner decorated with glowing frosting… oh... wait, that's not frosting.");
 			else outputText("The interior is lit by what looks like round globes on each table, each of which is filled with a thick creamy liquid that emits a pale glow.");
 			//Staff descriptor
-			if (flags[kFLAGS.BLACK_COCK_MET_ANITA] == 0) outputText("\n\nThere is a harpy lady sitting next to a sign promising she'll sing if you pay her 5 gems.");
+			if (flags[kFLAGS.BLACK_COCK_MET_ANITA] === 0) outputText("\n\nThere is a harpy lady sitting next to a sign promising she'll sing if you pay her 5 gems.");
 			else outputText("\n\nAnita sits next to a sign promising she'll sing for you if you pay her 5 gems.");
 			
-			if (flags[kFLAGS.BLACK_COCK_MET_ANDY] == 0) outputText("\n\nThere is an odd satyr going about the place serving customers.");
+			if (flags[kFLAGS.BLACK_COCK_MET_ANDY] === 0) outputText("\n\nThere is an odd satyr going about the place serving customers.");
 			else outputText("\n\nAndy walks around the tables serving customers.");
 			
-			if (flags[kFLAGS.BLACK_COCK_MET_FRIDA] == 0) outputText("\n\nThere is also an echidna-morph leaning on a counter towards the back of the tent.");
+			if (flags[kFLAGS.BLACK_COCK_MET_FRIDA] === 0) outputText("\n\nThere is also an echidna-morph leaning on a counter towards the back of the tent.");
 			else outputText("\n\nFrida leans on a counter towards the back of the tent, looking a little bored.");
 			//General menu
 			menu();
@@ -163,7 +163,7 @@ package classes.Scenes.Places.Bazaar
 					break;
 				default:
 			}
-			outputText("\n" + (header != "" ? header : foodName) + " - " + gems + " gems");
+			outputText("\n" + (header !== "" ? header : foodName) + " - " + gems + " gems");
 			addButton(button, foodName, orderFoodPlate, foodName, gems, foodEatDesc, tooltip, header);
 		}
 		
@@ -174,7 +174,7 @@ package classes.Scenes.Places.Bazaar
 				doNext(checkFoodMenu);
 				return;
 			}
-			if ((player.hunger100 >= 90 && flags[kFLAGS.HUNGER_ENABLED] > 0) || (player.hasStatusEffect(StatusEffects.Fullness) && flags[kFLAGS.HUNGER_ENABLED] == 0)) {
+			if ((player.hunger100 >= 90 && flags[kFLAGS.HUNGER_ENABLED] > 0) || (player.hasStatusEffect(StatusEffects.Fullness) && flags[kFLAGS.HUNGER_ENABLED] === 0)) {
 				outputText("<b>You are too full to consider eating that.</b>");
 				doNext(checkFoodMenu);
 				return;
@@ -197,18 +197,18 @@ package classes.Scenes.Places.Bazaar
 					break;
 				case "Giant Burger":
 					player.refillHunger(70);
-					if (flags[kFLAGS.HUNGER_ENABLED] == 0) player.modThickness(100, 4);
-					if (rand(3) == 0 && player.hair.length < 16) player.hair.length += 0.5;
+					if (flags[kFLAGS.HUNGER_ENABLED] === 0) player.modThickness(100, 4);
+					if (rand(3) === 0 && player.hair.length < 16) player.hair.length += 0.5;
 					break;
 				case "P. Potatoes":
 					player.refillHunger(70);
-					if (flags[kFLAGS.HUNGER_ENABLED] == 0) player.modThickness(100, 2);
-					if (flags[kFLAGS.HUNGER_ENABLED] == 0 || (rand(2) == 0 && player.hunger100 >= 80)) player.butt.rating++;
+					if (flags[kFLAGS.HUNGER_ENABLED] === 0) player.modThickness(100, 2);
+					if (flags[kFLAGS.HUNGER_ENABLED] === 0 || (rand(2) === 0 && player.hunger100 >= 80)) player.butt.rating++;
 					break;
 				case "Spicy Chilli":
 					player.refillHunger(60);
-					if (flags[kFLAGS.HUNGER_ENABLED] == 0) player.modThickness(100, 1);
-					if (flags[kFLAGS.HUNGER_ENABLED] == 0 || (rand(2) == 0 && player.hunger100 >= 80)) player.hips.rating++;
+					if (flags[kFLAGS.HUNGER_ENABLED] === 0) player.modThickness(100, 1);
+					if (flags[kFLAGS.HUNGER_ENABLED] === 0 || (rand(2) === 0 && player.hunger100 >= 80)) player.hips.rating++;
 					break;
 				case "Prot. Shake":
 					player.refillHunger(30);
@@ -218,19 +218,19 @@ package classes.Scenes.Places.Bazaar
 				case "Funnel Cake":
 					player.refillHunger(50);
 					player.modTone(0, 2);
-					if (flags[kFLAGS.HUNGER_ENABLED] == 0) player.modThickness(100, 1);
+					if (flags[kFLAGS.HUNGER_ENABLED] === 0) player.modThickness(100, 1);
 					break;
 				case "R.Tk. Dinner":
 					if (player.hunger < 60) player.hunger = 60;
 					player.refillHunger(40);
 					player.modTone(0, 5);
-					if (flags[kFLAGS.HUNGER_ENABLED] == 0) player.modThickness(100, 2);
+					if (flags[kFLAGS.HUNGER_ENABLED] === 0) player.modThickness(100, 2);
 					break;
 				case "G.Ham Dinner":
 					if (player.hunger < 60) player.hunger = 60;
 					player.refillHunger(40);
 					player.modTone(0, 2);
-					if (flags[kFLAGS.HUNGER_ENABLED] == 0) player.modThickness(100, 5);
+					if (flags[kFLAGS.HUNGER_ENABLED] === 0) player.modThickness(100, 5);
 					break;
 				case "MysteryMeat":
 					player.refillHunger(50);
@@ -251,7 +251,7 @@ package classes.Scenes.Places.Bazaar
 			clearOutput();
 			menu();
 			//Anita Roswell
-			if (flags[kFLAGS.BLACK_COCK_MET_ANITA] == 0) {
+			if (flags[kFLAGS.BLACK_COCK_MET_ANITA] === 0) {
 				outputText("There is a scantily clad harpy with pale rosy skin whose feathers and short-styled hair are both a dirty blond color. She wears a blue flannel shirt with long sleeves, the bottom of which is tied in the front, pushing her soft milky white tits together and showing off her trim and lightly-toned stomach. Her blue pants are cut off, showing off a pair of stunning legs as well as a firm, pert rump. She is apparently some sort of singer, as the sign next to her promises a song for 5 gems.\n\n");
 				addButton(0, "Harpy", meetAnitaRoswell);
 			}
@@ -260,7 +260,7 @@ package classes.Scenes.Places.Bazaar
 				addButton(0, "Anita", meetAnitaRoswell);
 			}
 			//Andy Mathis
-			if (flags[kFLAGS.BLACK_COCK_MET_ANDY] == 0) {
+			if (flags[kFLAGS.BLACK_COCK_MET_ANDY] === 0) {
 				outputText("The waiter is a Satyr. Unlike the table full of his pot-bellied kinsmen his waist is trim and his tall-standing horns are polished to a shine. Curly dark brown hair frames his face but fails to conceal his pointy ears. His goatee is neatly trimmed and tastefully styled. From the look of things he takes great pride in his appearance. He wears nothing more than a simple black shirt with the sleeves cut off; his heavy balls are visible just below the sheath that conceals his presumably dog-like manhood.\n\n");
 				addButton(1, "Satyr", meetAndyMathis);
 			}
@@ -269,7 +269,7 @@ package classes.Scenes.Places.Bazaar
 				addButton(1, "Andy", meetAndyMathis);
 			}
 			//Harry Roswell
-			if (flags[kFLAGS.BLACK_COCK_MET_HARRY] == 0) {
+			if (flags[kFLAGS.BLACK_COCK_MET_HARRY] === 0) {
 				outputText("You see the sign saying \"Keep Out\" leading to the back. You assume the cook is back there.\n\n");
 				addButton(2, "Sneak", meetHarryRoswell).hint("Sneak into the kitchen?");
 			}
@@ -278,7 +278,7 @@ package classes.Scenes.Places.Bazaar
 				addButton(2, "Harry", meetHarryRoswell);
 			}
 			//Frida
-			if (flags[kFLAGS.BLACK_COCK_MET_FRIDA] == 0) {
+			if (flags[kFLAGS.BLACK_COCK_MET_FRIDA] === 0) {
 				outputText("Behind a counter near the back is a busy echidna-morph. You see her wiping off the top of the counter and drying a glass from time to time. Her hair is an afro of quills that sits like a spiky cloud upon her crown. She has a long, thin snout and a lengthy tongue that occasionally flits out from between her lips. It has to be at least a foot long. She has a pair of generous breasts, likely C-cup. When she turns around, you can see that she is wearing nothing under her apron except for a pair of really short shorts, but even they ride low below the waist, revealing her tiny stump of a tail and a good portion of her crack. On her section of the counter, there is a glass cake stand holding a beautifully-crafted cake.");
 				addButton(3, "Echidna", meetFrida);
 			}
@@ -295,7 +295,7 @@ package classes.Scenes.Places.Bazaar
 			clearOutput();
 			displayAnitaSprite();
 			outputText(images.showImage("anita-intro"));
-			if (flags[kFLAGS.BLACK_COCK_MET_ANITA] == 0) {
+			if (flags[kFLAGS.BLACK_COCK_MET_ANITA] === 0) {
 				outputText("You catch the sky blue eyes of the songbird and summon her to your table with a nod. As she walks towards you her hard gait causes her tits, twin B-cups by the looks of it, to bounce up and down in her tied and knotted flannel shirt.");
 				outputText("\n\n\"<i>Well howdy there...?</i>\" She says as bubbly as can be with a weird hickish accent. Hearing the question in her voice, you tell her your name.");
 				outputText("\n\nShe begins talking fast, \"<i>Well shucks, I don't believe I've had the pleasure. It's nice to meet you [name], I'm Anita Roswell, my husband Harry owns the place and he's also the cook. Now did you wanna get a song or is this a more social visit?</i>\" Her eyes make a round trip, taking in your full form before she licks her lips. Wait, didn't she just say she was married?");
@@ -375,7 +375,7 @@ package classes.Scenes.Places.Bazaar
 		
 		private function rompUpAnitaOffer():void {
 			clearOutput();
-			if (flags[kFLAGS.BLACK_COCK_ANITA_SEX_INTRO] == 0) {
+			if (flags[kFLAGS.BLACK_COCK_ANITA_SEX_INTRO] === 0) {
 				outputText("Picking up on the slutty little songbird's obvious flirtation you decide to test it by asking if she likes to taste her customers.");
 				outputText("\n\nShe gives you an amused smile. \"<i>Oh huuunny... No! I don't like to taste the customers... Not unless the customers wanna taste me furst,</i>\" she says without batting an eyelash, \"<i>I gotta say though, I like to fuck 'em much more than I like to suck ‘em.</i>\"");
 				outputText("\n\nWell, that was easy. When you let her know you'lll take her up on her offer, she gives the waiter a nod and struts out of the bar with you at her heels, her pert little country-girl butt looking dangerously sexy in those cut-off shorts. Once the two of you are outside she turns a crooked finger and leads you behind the bar where she pulls her arms in close, pushing her B-cup harpy lady tits together and looking up at you as she unbuttons her little cut-off shorts.");
@@ -441,7 +441,7 @@ package classes.Scenes.Places.Bazaar
 			outputText("\n\nSuddenly the legs clamped around your neck become dangerously tight. With surprising strength Anita holds you in place and grinds her pussy against your [face] with a high pitch keen rending the air. Then she begins to squirt. It is a sudden spray of girlcum drenching your face, coating your jaw in the sugary substance as it travels down to your [fullChest], it leaks down your erect [cock] [if (hasBalls = true) \"and dribbles past your [balls]\"] before streaming down your [legs] and ending at your [feet]. With your entire front half covered in sweet girl cum the Harpy slides down your body, a look of supreme bliss on her face as she says, \"<i>Well partner, let's get that there cock taken care of.</i>\"");
 			if (player.isBiped() || player.isGoo() || player.isDrider()) {
 				outputText("\n\nSoft hands reach down and encircle your [cock], pulling it towards Anita's dripping wet pussy. The lust-crazed harpy groans the moment your [cockHead] begins to push into her gushy wetness of her salivating vagina.");
-				if (player.cockTotal() == 1) {
+				if (player.cockTotal() === 1) {
 					if (player.biggestCockLength() < 10) {
 						outputText("\n\nWith a groan she drops your [cock], allowing you to take over. Feeling triumphant, a growl surges up from deep inside your chest as you hike her legs up and push forward. She gives a hoot and a holler when you begin to slide in and out, enjoying the wetness of her ecstasy-flooded pussy as she flexes those strong internal muscles.");
 						outputText("\n\nFuck me hard, stud,</i>\" she says in that country drawl. Holding her light, soft, milky white body in the air with your arms you begin to vigorously fuck her dripping cunt.[if (hasBalls = true) \"You can feel it slobbering down your [balls] and dripping onto your [legs].\"] Soft tits rise and fall in time with your strokes as the harpy's hands clutch at your [ass]. You just continue to hammer her to the fence she's propped against, watching her scream, groan and pant in response to your [cock] greedily using her like an onahole.");
@@ -475,7 +475,7 @@ package classes.Scenes.Places.Bazaar
 			}
 			else if (player.isNaga()) {
 				outputText("\n\nYou nod as you pull the sexy harpy lady close.");
-				//if (player.cockTotal() == 1) { // No multi-cock love :(
+				//if (player.cockTotal() === 1) { // No multi-cock love :(
 					outputText("\n\nYou rise up and begin swirling around her as you wrap her up in your coils, your [cockHead] pressed against her still drooling pussy. You use the strength in your lower snake half to slowly and gently guide her to the ground where you take her hands in yours and press them into the grass. With a grin spread across your [face] you tighten your coils, pulling her closer until your [cockHead] pushes into her slobbering, hungry pussy.");
 					if (player.biggestCockLength() < 10) outputText("\n\nAs you begin to work your coils, undulating each one to twist your [cock] around inside the girl and shoving forward to drill deeper into her in a sensual motion that sends shivers of longing up into your chest, the harpy girl trembles beneath you. With a holler she reaches out and grabs your [ass], begging to be fucked hard. You oblige her, increasing the tempo of your [hips] as you begin writhing against the girl, your [cock] twisting around and pumping in and out in the same motion, driving her mad as you fuck that blissfully dripping pussy.");
 					else if (player.biggestCockLength() >= 10 && player.biggestCockLength() < 18) outputText("\n\nYou begin to work your coils, squeezing and loosening each one, causing your embedded [cock] to swirl around inside the sexy harpy lady as you keep her pressed to the ground. She openly groans and shudders as you move in and out of her pretty little harpy lady pussy. Then you add a sharp thrust, dipping in and out of the dripping hole squeezing your [cock] with surprisingly strong internal muscles. Anita goes berserk, her voice climbing higher and higher only to break when you slam forward, fully hilting the little cock lover. Without needing further instruction you speed it up and watch that pretty little country girl begin to grimace as you shudder out another orgasm, her lusty secretions squirting around your still rapidly fucking [cock] and drooling down your writhing [legs].");
@@ -546,7 +546,7 @@ package classes.Scenes.Places.Bazaar
 			clearOutput();
 			displayAndySprite();
 			outputText(images.showImage("andy-intro"));
-			if (flags[kFLAGS.BLACK_COCK_MET_ANDY] == 0) {
+			if (flags[kFLAGS.BLACK_COCK_MET_ANDY] === 0) {
 				outputText("With a flick of your fingers you catch the waiter's attention. The satyr walks towards you and pulls out his notepad and a little black pencil.");
 				outputText("\n\n\"<i>Hello, my name is Andy Mathis and I'll be your waiter this evening,</i>\" he says as he twirls the pencil between his fingers, \"<i>So what'll it be… um…?</i>\" You give him your name, \"<i>Ok... so what'll it be, [name]?</i>\"");
 				outputText("\n\nYou tell him you're not ready to order anything off the menu just yet. Before you can go on to say more, he puts the pad away and says, \"<i>Well if you want to order something off the menu, I keep my stash out back. I used to sell it on the floor but the boss's wife likes free samples. Free is bad for business.</i>\"");
@@ -577,7 +577,7 @@ package classes.Scenes.Places.Bazaar
 		
 		private function checkAndyStash():void {
 			clearOutput();
-			if (flags[kFLAGS.BLACK_COCK_ANDY_STASH_STATE] == 0) {
+			if (flags[kFLAGS.BLACK_COCK_ANDY_STASH_STATE] === 0) {
 				outputText("You decide to take a look at Andy's \"stash\". He gives you a wicked grin in response and says, \"<i>Oh, you are in for a treat.</i>\" He nods towards the flap in the back of the tent, the one with the keep out sign and says, \"<i>Well… follow me,</i>\" and with that he leads you through a hot cluttered kitchen past a big furiously-swearing rhino and out the back of the tent.");
 				outputText("\n\n\"<i>Over here,</i>\" the deep voice of the satyr calls as he heads towards a bunch of barrels. As you follow him you look around, noting the high fence that keeps others out of this area. There's a large door you assume is for taking deliveries and a huge carriage where they'd probably put all the gear for the tent in if they needed to move.");
 				outputText("\n\nOnce you've caught up to the satyr you look at him and are greeted with his bare ass. He is bent over and fishing something out from between the barrels. Once he has it he straightens up and shows you a multi-colored lamp made from crystalline glass in one hand and a bag of ground plant in another.");
@@ -874,7 +874,7 @@ package classes.Scenes.Places.Bazaar
 		
 		private function rompUpWithAndyTheSatyr():void {
 			clearOutput();
-			if (flags[kFLAGS.BLACK_COCK_ANDY_SEX_COUNTER] == 0) {
+			if (flags[kFLAGS.BLACK_COCK_ANDY_SEX_COUNTER] === 0) {
 				outputText("You tell Andy that you’d like to accompany him out back.");
 				outputText("\n\nHe nods, tucking his pen behind his ear and his pad into a band of leather strapped to his shoulder. As he does this you get a good look at his sheath and balls, idly wondering at the size of the dick concealed within. When he turns away you can’t help quietly appraising his ass, the soft little globes with a flitting little goat tail just above them.");
 				outputText("\n\nOnce the two of you reach the back tent flap he holds up a hand, silently telling you to stop, \"<i>Ok so I’m supposed to be working right now and I don’t want my boss to see me leave. So be careful... and quiet.</i>\" You nod and the two of you sneak past the rhino morph cook.");
@@ -922,20 +922,20 @@ package classes.Scenes.Places.Bazaar
 				outputText("\n\nYou begin removing your [armor] slowly, saving the reveal of [eachCock] for last.");
 				if (player.biggestCockLength() < 7) {
 					outputText("\n\nAs you pull out your [cock] Andy’s shoulders slump for a moment but he falls to his knees and sucks your rigid length into his mouth regardless of how he feels about your size. ");
-					if (player.cockTotal() == 2) outputText("He takes your remaining [cock 2] into his hand and fists it with a sure and practiced hand. ");
+					if (player.cockTotal() === 2) outputText("He takes your remaining [cock 2] into his hand and fists it with a sure and practiced hand. ");
 					else if (player.cockTotal() > 2) outputText("He takes two of your remaining dicks and fists them with two sure and practiced hands. ");
 					outputText("He hums as he sucks you in, drool leaking from the side of his mouth as you grab his curly hair and pull his talented mouth up and down your [cock], fucking his face hard due to his reaction to your size.");
 				}
 				else if (player.biggestCockLength() >= 7 && player.biggestCockLength() < 13) {
 					outputText("\n\nAs you reveal [eachCock] Andy gives you an approving grunt as he falls to his knees and takes your [cock] into his mouth with the hungry slurp of a dick loving slut. In one deft motion he sucks your entire length in, his throat muscles massaging your [cockHead] as he smashes his face against your trunk. ");
-					if (player.cockTotal() == 2) outputText("He takes your remaining [cock 2] into his hand and fists it with a sure and practiced hand. ");
+					if (player.cockTotal() === 2) outputText("He takes your remaining [cock 2] into his hand and fists it with a sure and practiced hand. ");
 					else if (player.cockTotal() > 2) outputText("He takes two of your remaining dicks and fists them with two sure and practiced hands. ");
 					outputText("\n\nHe doesn’t choke or gag or even flinch when the sensation of his dick pleasing machinations cause you to thrust into his mouth. Throwing caution and decorum to the wind you grab a fist full of curly hair and pull the little sub up and down your [cock], roughly fucking his throat as strings of spit fly off the blur that is your [cock].");
 					
 				}
 				else {
 					outputText("\n\nAs you reveal your [eachCock] Andy’s jaw drops. Your [fullChest] swells with pride as he falls to his knees like a reverent priest praying at a treasured alter. He wraps a trembling hand around your [cock] and pulls it to his lips. He gags as you greedily shove forward but the little satyr sub doesn’t give up; he accepts your challenge and begins to furiously bob up and down the length of your [cock], fighting through the gagging sensation until he’s able to take about a foot of your dick into his hungry mouth.");
-					if (player.cockTotal() == 2) outputText("He takes your remaining [cock 2] into his hand and fists it with a sure and practiced hand. ");
+					if (player.cockTotal() === 2) outputText("He takes your remaining [cock 2] into his hand and fists it with a sure and practiced hand. ");
 					else if (player.cockTotal() > 2) outputText("He takes two of your remaining dicks and fists them with two sure and practiced hands. ");
 					outputText("\n\nOn a whim you wrap twin fists around the base of his polished black horns, a greedy smile spreading across your [face]. He stops, looking up into your eyes and silently begging you to do exactly what you’re about to do. With a snarl you begin fucking his face as hard as you can, listening to him choke and gag as you force his mouth wide and pump your [cock] deep into his throat. ");
 					if (player.cockTotal() > 1) outputText("He even drops your other dicks as he grabs your [legs] and lets you soundly and deeply fuck his throat.</i>\" You feel his voice vibrate your dick as he groans and his face jerks, but looking down at him, you see pure and utter bliss in his happy face with tears leaking down the side as you pump his mouth full of [cock].");
@@ -1102,7 +1102,7 @@ package classes.Scenes.Places.Bazaar
 			clearOutput();
 			displayHarrySprite();
 			outputText(images.showImage("harry-intro"));
-			if (flags[kFLAGS.BLACK_COCK_MET_HARRY] == 0) {
+			if (flags[kFLAGS.BLACK_COCK_MET_HARRY] === 0) {
 				outputText("You catch yourself staring at the keep out sign stuck into the bare ground at the back of the tent. It makes you wonder what the cook's like and how he makes food with such an enticing aroma. Instead of doing the logical thing and asking a member of the staff if you can meet the cook, you resolve to sneak in.");
 				outputText("\n\nIt doesn't prove to be too hard. Neither the harpy, the satyr nor the echidna morph look up as you " + (player.isNaga() ? "slither" : "walk") + " on silent [feet] towards the back. You open the flap and glance over your shoulder, scanning the tent to make sure you're not being caught. You spot one of the ubiquitous pot- bellied satyrs. He looks you straight in the eye and gives you a conspiratorial wink before going back to his drinking game. Apparently the only security in this place is the sign itself.");
 				outputText("\n\nThen you turn around and come face to face with an angry rhino morph. Bulging muscles wrapped in rough gray skin wearing nothing but an apron greats you with a furious sneer. From the looks of things he's ready to pummel you into mush.");
@@ -1135,7 +1135,7 @@ package classes.Scenes.Places.Bazaar
 		
 		private function rompUpWithHarry():void {
 			clearOutput();
-			if (flags[kFLAGS.BLACK_COCK_HARRY_SEX_INTRO] == 0) {
+			if (flags[kFLAGS.BLACK_COCK_HARRY_SEX_INTRO] === 0) {
 				outputText("Looking at the big burly masculine rhino morph you can't help but wonder at his partial nudity. He seems to be naked beneath his apron, an observation confirmed when a long tube appears as he moves, swinging just below his knees. As you stare at the enormity of that bulge he clears his throat. You look up to find his eyes looking onto yours, his face pulled into a cocky grin.");
 				outputText("\n\nThen he chuckles, \"<i>Alright [name], if you wanna play I'm game.</i>\" Then he takes a knife and points it at you, a menacing but playful gesture, \"<i>...but my back door's off limits and the only pussy I get pregnant is my wife's.</i>\"");
 				flags[kFLAGS.BLACK_COCK_HARRY_SEX_INTRO] = 1;
@@ -1226,7 +1226,7 @@ package classes.Scenes.Places.Bazaar
 			clearOutput();
 			displayFridaSprite();
 			outputText(images.showImage("frida-intro"));
-			if (flags[kFLAGS.BLACK_COCK_MET_FRIDA] == 0) {
+			if (flags[kFLAGS.BLACK_COCK_MET_FRIDA] === 0) {
 				outputText("You approach the echidna-girl's side of the counter, taking a seat in one of the barstools. She approaches you, a pleased smile decorating her visage.");
 				outputText("\n\n\"<i>I don't think I've seen you in here before. The name's Frida. Now, stranger, might I ask your name?</i>\"");
 				outputText("\n\n\"<i>[name],</i>\" you respond.");
@@ -1253,17 +1253,17 @@ package classes.Scenes.Places.Bazaar
 				doNext(enterTheBlackCock);
 				return;
 			}
-			if ((player.hunger100 >= 90 && flags[kFLAGS.HUNGER_ENABLED] > 0) || (player.hasStatusEffect(StatusEffects.Fullness) && flags[kFLAGS.HUNGER_ENABLED] == 0)) {
+			if ((player.hunger100 >= 90 && flags[kFLAGS.HUNGER_ENABLED] > 0) || (player.hasStatusEffect(StatusEffects.Fullness) && flags[kFLAGS.HUNGER_ENABLED] === 0)) {
 				outputText("<b>You are too full to consider ordering that that.</b>");
 				doNext(enterTheBlackCock);
 				return;
 			}
 			outputText("You drop 10 gems into Frida's waiting hand. She stuffs them in one of her apron pockets as she removes the lid from the cake stand. She takes a dull knife from a nearby knife block and cuts you a piece, putting it on a plate. She sits the plate in front of you before retreating to the back of the tent to pour your milk. Within seconds, she returns with the milk, putting it down next to your plate.");
 			outputText("\n\n\"<i>Enjoy!</i>\"");
-			if (flags[kFLAGS.BLACK_COCK_FRIDAS_CAKE_EATEN_COUNTER] == 0) outputText("\n\nYou waste no time digging into the cake. She's right. The cake is absolutely delicious! Within moments, the savory morsel is gone. You wish that there had been more.");
+			if (flags[kFLAGS.BLACK_COCK_FRIDAS_CAKE_EATEN_COUNTER] === 0) outputText("\n\nYou waste no time digging into the cake. She's right. The cake is absolutely delicious! Within moments, the savory morsel is gone. You wish that there had been more.");
 			else outputText("\n\nYou immediately dig in, very excited for another piece. You let out a small burp as you finish, but let out a sigh of disappointment at the fact that there is nothing left of your piece of cake.");
 			player.refillHunger(35);
-			if (flags[kFLAGS.HUNGER_ENABLED] == 0) player.modThickness(100, 2);
+			if (flags[kFLAGS.HUNGER_ENABLED] === 0) player.modThickness(100, 2);
 			player.modTone(0, 1);
 			if (!player.hasStatusEffect(StatusEffects.Fullness)) player.createStatusEffect(StatusEffects.Fullness, 2, 0, 0, 0);
 			else player.changeStatusValue(StatusEffects.Fullness, 1, 2);
@@ -1273,7 +1273,7 @@ package classes.Scenes.Places.Bazaar
 		
 		private function noThanksToCake():void {
 			clearOutput();
-			if (flags[kFLAGS.BLACK_COCK_FRIDAS_CAKE_EATEN_COUNTER] == 0) outputText("You politely decline, not feeling very hungry at the moment.");
+			if (flags[kFLAGS.BLACK_COCK_FRIDAS_CAKE_EATEN_COUNTER] === 0) outputText("You politely decline, not feeling very hungry at the moment.");
 			else {
 				outputText("You politely decline, explaining that you were just stopping by to say hello. Frida waves at you as you get up.");
 				outputText("\n\n\"<i>You come back and see me soon, you hear?</i>\"");
@@ -1293,7 +1293,7 @@ package classes.Scenes.Places.Bazaar
 				addButton(0, "Satyrs", satyrGangIntro);
 				patronCount++;
 			}
-			if (patronCount == 0) outputText("There appears to be nobody interesting here.");
+			if (patronCount === 0) outputText("There appears to be nobody interesting here.");
 			addButton(14, "Back", enterTheBlackCock);
 		}
 		
@@ -1349,7 +1349,7 @@ package classes.Scenes.Places.Bazaar
 				}
 				if (player.hasCock()) {
 					outputText("\n\nAs you are fucked hard, your wagging of [eachCock] draws the attention of several of the satyrs. Despite the fact that most of them are already getting fucked you can see them eyeing your meat in obvious hunger.");
-					if (player.cockTotal() == 1) {
+					if (player.cockTotal() === 1) {
 						outputText("\n\nA single one of the dick hungry satyrs climbs onto your body. The pot bellied little guy is shorter than the rest and as he reaches down and pulls your dick to his hole the satyr filling your ass reaches onto his shoulders and pushes the little guy down with a fierce snarl");
 						if (player.hasVagina()) outputText(", surprising the satyr balls deep in your [pussy]");
 						outputText(".");
@@ -1411,7 +1411,7 @@ package classes.Scenes.Places.Bazaar
 			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
 			if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
 			//Stats and genital changes
-			if (rand(2) == 0) {
+			if (rand(2) === 0) {
 				outputText("\n\nHeat floods your loins as thoughts of tight round asses and dripping pussies flood your mind.");
 				dynStats("lus", 25);
 				if (player.lib100 < 100) {
@@ -1419,17 +1419,17 @@ package classes.Scenes.Places.Bazaar
 					dynStats("lib", 1);
 				}
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.hasCock() && player.cocks[player.smallestCockIndex()].cockLength < 12) {
+			if (rand(3) === 0 && changes < changeLimit && player.hasCock() && player.cocks[player.smallestCockIndex()].cockLength < 12) {
 				outputText("\n\nHeat funnels into your cock as the alcohol flushes through you. Reaching down to inspect it, you find it has grown longer.");
 				player.cocks[player.smallestCockIndex()].cockLength++;
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.hasCock() && player.cocks[player.smallestCockIndex()].cockThickness < 4) {
+			if (rand(3) === 0 && changes < changeLimit && player.hasCock() && player.cocks[player.smallestCockIndex()].cockThickness < 4) {
 				outputText("\n\nYou cock feels warm. When you reach down to inspect it your suspicions are confirmed; it's gotten thicker.");
 				player.cocks[player.smallestCockIndex()].cockThickness += 0.5;
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.balls > 0) {
+			if (rand(3) === 0 && changes < changeLimit && player.balls > 0) {
 				outputText("\n\nYou feel a warmth rising into your face along with a bubbling of alcohol tickling your nose. Once it's subsided, you notice your face has a more masculine, angular shape to it.");
 				//player.modFem(0, 2 + rand(4));
 				dynStats("lus", 20);
@@ -1437,7 +1437,7 @@ package classes.Scenes.Places.Bazaar
 				if (player.cumMultiplier < 50) player.cumMultiplier += 0.5;
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.hasVagina() && player.hasStatusEffect(StatusEffects.BonusVCapacity)) {
+			if (rand(3) === 0 && changes < changeLimit && player.hasVagina() && player.hasStatusEffect(StatusEffects.BonusVCapacity)) {
 				outputText("\n\nYou feel a tingling sensation in your vagina… that was weird.");
 				if (player.statusEffectv1(StatusEffects.BonusVCapacity) >= 0) {
 					player.addStatusValue(StatusEffects.BonusVCapacity, 1, -(rand(5) + 5));
@@ -1445,13 +1445,13 @@ package classes.Scenes.Places.Bazaar
 				}
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.hasVagina() && !player.hasCock()) {
+			if (rand(3) === 0 && changes < changeLimit && player.hasVagina() && !player.hasCock()) {
 				outputText("\n\nYour vagina begins to feel hot. Removing your [armor], you look down and watch your vagina shrinks to nothing, <b>while your clitoris enlarges to form a human dick</b>.");
 				player.removeVagina();
 				player.createCock(6, 1, CockTypesEnum.HUMAN);
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.hasCock() && player.balls <= 0) {
+			if (rand(3) === 0 && changes < changeLimit && player.hasCock() && player.balls <= 0) {
 				outputText("Without warning your body begins to tremble as just below [eachCock] you feel a warm trickling sensation of fluid sliding down your body. Before you can check it, the sensation becomes overwhelming as [eachCock] grows hard and ejaculates " + player.clothedOrNaked("into your [armor]", "all over the ground") + ". Once you've recovered from your intense orgasm you " + player.clothedOrNakedLower("remove your [armor] to ") + "clean yourself and find a <b>new pair of balls</b> hanging just below [eachCock].");
 				player.balls = 2;
 				player.ballSize = 1;
@@ -1460,86 +1460,86 @@ package classes.Scenes.Places.Bazaar
 			}
 			//Transformations
 			//Neck restore
-			if (player.neck.type != Neck.NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) mutations.restoreNeck(tfSource);
 			//Rear body restore
-			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
+			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) mutations.restoreRearBody(tfSource);
 			//Ovi perk loss
-			if (rand(5) == 0) mutations.updateOvipositionPerk(tfSource);
+			if (rand(5) === 0) mutations.updateOvipositionPerk(tfSource);
 
-			if (rand(3) == 0 && changes < changeLimit && player.hasScales()) {
+			if (rand(3) === 0 && changes < changeLimit && player.hasScales()) {
 				outputText("\n\nYou feel an odd rolling sensation as your scales begin to shift, spreading and reforming as they grow and disappear, <b>becoming normal human skin</b>.");
 				player.skin.type = Skin.PLAIN;
 				player.underBody.restore();
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.arms.type != Arms.HUMAN) {
+			if (rand(3) === 0 && changes < changeLimit && player.arms.type !== Arms.HUMAN) {
 				outputText("\n\nYou feel a pleasant heat in your arms as smoke rises from them, <b>leaving normal human arms</b>.");
 				player.arms.type = Arms.HUMAN;
 				changes++;
 			}
-			if (rand(4) == 0 && changes < changeLimit && player.lowerBody.type != LowerBody.CLOVEN_HOOFED) {
+			if (rand(4) === 0 && changes < changeLimit && player.lowerBody.type !== LowerBody.CLOVEN_HOOFED) {
 				outputText("\n\nYou feel an odd sensation in your lower region. Your [feet] shift and you hear bones cracking as they reform. Fur grows on your legs and soon you're looking at a <b>new pair of goat legs</b>.");
 				player.lowerBody.type = LowerBody.CLOVEN_HOOFED;
 				player.lowerBody.legCount = 2;
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.lowerBody.type == LowerBody.CLOVEN_HOOFED && player.horns.type == Horns.GOAT && player.face.type != Face.HUMAN) {
+			if (rand(3) === 0 && changes < changeLimit && player.lowerBody.type === LowerBody.CLOVEN_HOOFED && player.horns.type === Horns.GOAT && player.face.type !== Face.HUMAN) {
 				outputText("\n\nYour face grows warm as suddenly your vision is engulfed in smoke, coughing and beating the smoke back you noticed a marked change in your features. Touching yourself you confirm you have a <b>normal human shaped face once again</b>.");
 				player.face.type = Face.HUMAN;
 				changes++;
 			}
-			if (rand(4) == 0 && changes < changeLimit && !player.hasScales() && player.ears.type != Ears.ELFIN) {
+			if (rand(4) === 0 && changes < changeLimit && !player.hasScales() && player.ears.type !== Ears.ELFIN) {
 				outputText("\n\nYou feel an odd shifting sensation on the side of your head and, reaching up to inspect it, find a <b>pair of fleshy pointed ears</b>. "); 
 				if (player.hasFur()) ("As you examine your new elvish ears you feel fur grow around them, matching the rest of you.");
 				player.ears.type = Ears.ELFIN;
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.horns.type == Horns.NONE) {
+			if (rand(3) === 0 && changes < changeLimit && player.horns.type === Horns.NONE) {
 				outputText("\n\nYou begin to feel a prickling sensation at the top of your head. Reaching up to inspect it, you find a pair of hard stubs. <b>You now have a pair of goat horns.</b>");
 				player.horns.type = Horns.GOAT;
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.horns.type != Horns.GOAT) {
+			if (rand(3) === 0 && changes < changeLimit && player.horns.type !== Horns.GOAT) {
 				outputText("\n\nYou begin to feel an odd itching sensation as you feel your horns repositioning. Once it's over, you reach up and find a pair of hard stubs. <b>You now have a pair of goat horns.</b>");
 				player.horns.value = 1;
 				player.horns.type = Horns.GOAT;
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.horns.type == Horns.GOAT && player.horns.value == 1) {
+			if (rand(3) === 0 && changes < changeLimit && player.horns.type === Horns.GOAT && player.horns.value === 1) {
 				outputText("\n\nYou feel heat blooming in your forehead. Confused you reach up to find your goat horns growing and thickening into a pair of horns with ridges and a slight curve. <b>You now have a pair of tall-standing goat horns.</b>");
 				player.horns.value = 2;
 				changes++;
 			}
-			if (rand(4) == 0 && changes < changeLimit && player.antennae.type != Antennae.NONE) {
+			if (rand(4) === 0 && changes < changeLimit && player.antennae.type !== Antennae.NONE) {
 				mutations.removeAntennae();
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.cockTotal() == 1 && player.countCocksOfType(CockTypesEnum.HUMAN) == 0) {
+			if (rand(3) === 0 && changes < changeLimit && player.cockTotal() === 1 && player.countCocksOfType(CockTypesEnum.HUMAN) === 0) {
 				outputText("\n\nYou feel a stirring in your loins as your cock grows rock hard. You " + player.clothedOrNakedLower("pull it out from your [armor], to ") + "take a look. It seems you now <b>have a human dick again</b>.");
 				player.cocks[0].cockType = CockTypesEnum.HUMAN;
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.cockTotal() > 1 && (player.cockTotal() - player.countCocksOfType(CockTypesEnum.HUMAN)) > 0) {
+			if (rand(3) === 0 && changes < changeLimit && player.cockTotal() > 1 && (player.cockTotal() - player.countCocksOfType(CockTypesEnum.HUMAN)) > 0) {
 				outputText("\n\nOne of your penises begins to feel strange. You " + player.clothedOrNakedLower("pull it out from your [armor], releasing", "notice") + " a plume of thick smoke. When you look down you see it has <b>become a human dick</b>.");
 				for (var i:int = 0; i < player.cockTotal(); i++) {
-					if (player.cocks[i].cockType != CockTypesEnum.HUMAN) {
+					if (player.cocks[i].cockType !== CockTypesEnum.HUMAN) {
 						player.cocks[i].cockType = CockTypesEnum.HUMAN;
 						break;
 					}
 				}
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.tail.type == 0) {
+			if (rand(3) === 0 && changes < changeLimit && player.tail.type === 0) {
 				outputText("\n\nYou feel an odd itchy sensation just above your [ass]. Twisting around to inspect it you find a short stubby tail that wags when you're happy. <b>You now have a goat tail.</b>");
 				player.tail.type = Tail.GOAT;
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.tail.type > 0 && player.tail.type != Tail.GOAT) {
+			if (rand(3) === 0 && changes < changeLimit && player.tail.type > 0 && player.tail.type !== Tail.GOAT) {
 				outputText("\n\nYou [tail] suddenly goes numb. Looking back you see it changing, twisting and reforming into a <b>short stubby goat-like tail</b>.");
 				player.tail.type = Tail.GOAT;
 				changes++;
 			}
 			//No changes?
-			if (changes == 0) {
+			if (changes === 0) {
 				outputText("\n\nAside from a mild buzz, the wine has no further effect.");
 			}
 			flags[kFLAGS.TIMES_TRANSFORMED] += changes;
@@ -1554,7 +1554,7 @@ package classes.Scenes.Places.Bazaar
 			if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
 			// Stats Changes
 			//------------
-			if (rand(3) == 0 && player.str100 < 100) {
+			if (rand(3) === 0 && player.str100 < 100) {
 				//[removed:1.4.10]//changes++;
 				if (player.str100 < 50) {
 					outputText("\n\nShivering, you feel a feverish sensation that reminds you of the last time you got sick. Thankfully, it passes swiftly, leaving slightly enhanced strength in its wake.");
@@ -1565,40 +1565,40 @@ package classes.Scenes.Places.Bazaar
 				}
 				dynStats("str", .5);
 			}
-			if (rand(3) == 0 && player.tou100 < 100) {
+			if (rand(3) === 0 && player.tou100 < 100) {
 				outputText("\n\nYou thump your chest and grin - your foes will have a harder time taking you down while you're fortified by liquid courage.");
 				dynStats("tou", 1);
 			}
-			if (rand(2) == 0 && player.spe100 > 80 && player.str100 >= 50) {
+			if (rand(2) === 0 && player.spe100 > 80 && player.str100 >= 50) {
 				outputText("\n\nYou begin to feel that the size of your muscles is starting to slow you down.");
 				dynStats("spe", -1);
 			}
-			if (rand(3) == 0 && player.tou100 < 50 && changes < changeLimit) {
+			if (rand(3) === 0 && player.tou100 < 50 && changes < changeLimit) {
 				outputText("\n\nYour skin feels clammy and a little rubbery. You touch yourself experimentally and notice that you can barely feel the pressure from your fingertips. Consumed with curiosity, you punch yourself lightly in the arm; the most you feel is a dull throb!");
 				dynStats("sen", -1);
 			}
-			if (rand(3) == 0 && player.inte > 15 && player.face.type == Face.RHINO && player.horns.value == 2) {
+			if (rand(3) === 0 && player.inte > 15 && player.face.type === Face.RHINO && player.horns.value === 2) {
 				outputText("\n\nYou shake your head and struggle to gather your thoughts, feeling a bit slow.");
 				dynStats("int", -1);
 			}
-			if (rand(3) == 0 && player.rhinoScore() >= 2 && (rand(2) == 0 || !player.inRut) && player.hasCock()) {
+			if (rand(3) === 0 && player.rhinoScore() >= 2 && (rand(2) === 0 || !player.inRut) && player.hasCock()) {
 				player.goIntoRut(true);
 			}
 			//Neck restore
-			if (player.neck.type != Neck.NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) mutations.restoreNeck(tfSource);
 			//Rear body restore
-			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
+			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) mutations.restoreRearBody(tfSource);
 			//Ovi perk loss
-			if (rand(5) == 0) mutations.updateOvipositionPerk(tfSource);
+			if (rand(5) === 0) mutations.updateOvipositionPerk(tfSource);
 			// Special TFs
 			//------------
-			if (rand(4) == 0 && changes < changeLimit && player.horns.type != Horns.UNICORN && player.ears.type == Ears.HORSE && (player.lowerBody.type == LowerBody.HOOFED || player.lowerBody.type == LowerBody.CLOVEN_HOOFED || player.horseScore() >= 3)) {
+			if (rand(4) === 0 && changes < changeLimit && player.horns.type !== Horns.UNICORN && player.ears.type === Ears.HORSE && (player.lowerBody.type === LowerBody.HOOFED || player.lowerBody.type === LowerBody.CLOVEN_HOOFED || player.horseScore() >= 3)) {
 				outputText("\n\nYou begin to feel an annoying tingling sensation at the top of your head. Reaching up to inspect it you find the <b>sharp nub of a horn protruding from the center of your forehead</b> and growing. Once it's complete you estimate it to be about six inches long.");
 				player.horns.type = Horns.UNICORN;
 				player.horns.value = 6;
 				changes++;
 			}
-			if (rand(4) == 0 && changes < changeLimit && player.horns.type == Horns.UNICORN && player.horns.value > 0 && player.horns.value < 12) {
+			if (rand(4) === 0 && changes < changeLimit && player.horns.type === Horns.UNICORN && player.horns.value > 0 && player.horns.value < 12) {
 				outputText("\n\nYou begin to feel an intense pinching sensation in your central horn as it pushes out, growing longer and larger. You reach up and find <b>it has developed its own cute little spiral,</b> you estimate it to be about a foot long, two inches thick and very sturdy, a very useful natural weapon.");
 				player.horns.value = 12;
 				changes++;
@@ -1606,8 +1606,8 @@ package classes.Scenes.Places.Bazaar
 			// Normal TFs
 			//------------
 			//Removes wings
-			if (rand(4) == 0 && changes < changeLimit && (player.wings.type != Wings.NONE || player.rearBody.type == RearBody.SHARK_FIN)) {
-				if (player.rearBody.type == RearBody.SHARK_FIN) {
+			if (rand(4) === 0 && changes < changeLimit && (player.wings.type !== Wings.NONE || player.rearBody.type === RearBody.SHARK_FIN)) {
+				if (player.rearBody.type === RearBody.SHARK_FIN) {
 					outputText("\n\nA wave of tightness spreads through your back, and it feels as if someone is stabbing a dagger into your spine."
 					          +" After a moment the pain passes, though your fin is gone!");
 					player.rearBody.restore();
@@ -1619,7 +1619,7 @@ package classes.Scenes.Places.Bazaar
 				changes++;
 			}
 			//Fur/scales fall out
-			if (rand(4) == 0 && changes < changeLimit && (!player.hasPlainSkin() || player.skin.tone != "gray" || player.skin.adj != "tough")) {
+			if (rand(4) === 0 && changes < changeLimit && (!player.hasPlainSkin() || player.skin.tone !== "gray" || player.skin.adj !== "tough")) {
 				outputText("\n\n");
 				switch(player.skin.type) {
 					case Skin.PLAIN:
@@ -1648,7 +1648,7 @@ package classes.Scenes.Places.Bazaar
 				changes++;
 			}
 			//Arms change to regular
-			if (rand(3) == 0 && changes < changeLimit && player.arms.type != Arms.HUMAN) {
+			if (rand(3) === 0 && changes < changeLimit && player.arms.type !== Arms.HUMAN) {
 				switch(player.arms.type) {
 					case Arms.HARPY:
 						outputText("\n\nYou scratch at your biceps absentmindedly, but no matter how much you scratch, it isn't getting rid of the itch. Glancing down in irritation, you discover that your feathery arms are shedding their feathery coating. The wing-like shape your arms once had is gone in a matter of moments, leaving " + player.skin.desc + " behind.");
@@ -1663,18 +1663,18 @@ package classes.Scenes.Places.Bazaar
 				changes++;
 			}
 			//Change legs to normal
-			if (rand(4) == 0 && changes < changeLimit && player.lowerBody.type != LowerBody.HUMAN) {
+			if (rand(4) === 0 && changes < changeLimit && player.lowerBody.type !== LowerBody.HUMAN) {
 				if (player.isBiped()) outputText("You feel an odd sensation in your [feet]. Your [feet] shift and you hear bones cracking as they reform into normal human feet.");
 				player.lowerBody.type = LowerBody.HUMAN;
 				player.lowerBody.legCount = 2;
 				changes++;
 			}
 			//Removes antennaes!
-			if (rand(3) == 0 && changes < changeLimit && player.antennae.type > Antennae.NONE) {
+			if (rand(3) === 0 && changes < changeLimit && player.antennae.type > Antennae.NONE) {
 				mutations.removeAntennae();
 			}
 			//Hair turns back to normal
-			if (rand(4) == 0 && changes < changeLimit && player.hair.type != Hair.NORMAL) {
+			if (rand(4) === 0 && changes < changeLimit && player.hair.type !== Hair.NORMAL) {
 				switch(player.hair.type) {
 					case Hair.FEATHER:
 						if (player.hair.length >= 6) outputText("\n\nA lock of your downy-soft feather-hair droops over your eye. Before you can blow the offending down away, you realize the feather is collapsing in on itself. It continues to curl inward until all that remains is a normal strand of hair. <b>Your hair is no longer feathery!</b>");
@@ -1696,22 +1696,22 @@ package classes.Scenes.Places.Bazaar
 				flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] = 0;
 			}
 			//Restart hair growth
-			if (rand(3) == 0 && changes < changeLimit && flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] > 0) {
+			if (rand(3) === 0 && changes < changeLimit && flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] > 0) {
 				outputText("\n\nYou feel an itching sensation in your scalp as you realize the change. <b>Your hair is growing normally again!</b>");
 				flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] = 0;
 				changes++;
 			}
 			//Remove gills
-			if (rand(4) == 0 && changes < changeLimit && player.hasGills()) mutations.updateGills();
+			if (rand(4) === 0 && changes < changeLimit && player.hasGills()) mutations.updateGills();
 			// Rhino TFs
 			//------------
 			//Change a cock to rhino.
-			if (rand(4) == 0 && changes < changeLimit && player.hasCock() && player.countCocksOfType(CockTypesEnum.RHINO) < player.cockTotal()) {
-				if (player.cockTotal() == 1) outputText("\n\nYou feel a stirring in your loins as your cock grows rock hard. ");
+			if (rand(4) === 0 && changes < changeLimit && player.hasCock() && player.countCocksOfType(CockTypesEnum.RHINO) < player.cockTotal()) {
+				if (player.cockTotal() === 1) outputText("\n\nYou feel a stirring in your loins as your cock grows rock hard. ");
 				else outputText("\n\nOne of your penises begins to feel strange. ");
 				outputText("You " + player.clothedOrNakedLower("pull it out from your [armor]", "lean over") + ", right there in the center of The Black Cock, to take a look. You watch as the skin of your cock becomes a smooth, tough pink colored phallus. It takes on a long and narrow shape with an oval shaped bulge along the center. You feel a tightness near the base where your skin seems to be bunching up. A sheath begins forming around your flared rhino cock’s root, tightening as your stiff rhino dick elongates and settles, the thick flared head leaking a steady stream of funky animal-cum. <b>You now have a rhino-dick.</b>");
 				for (var i:int = 0; i < player.cocks.length; i++) {
-					if (player.cocks[i].cockType != CockTypesEnum.RHINO) {
+					if (player.cocks[i].cockType !== CockTypesEnum.RHINO) {
 						player.cocks[i].cockType = CockTypesEnum.RHINO;
 						break;
 					}
@@ -1720,19 +1720,19 @@ package classes.Scenes.Places.Bazaar
 				changes++;
 			}
 			//Change ears to rhino
-			if (rand(3) == 0 && changes < changeLimit && player.ears.type != Ears.RHINO) {
+			if (rand(3) === 0 && changes < changeLimit && player.ears.type !== Ears.RHINO) {
 				outputText("\n\nYou feel an odd uncomfortable sensation in your ears. Reaching up you find your ears shifting into an open tube shape, once they’re done you flick them around, enjoying the sensation of your new ears swishing through the air. <b>You now have rhino ears.</b>");
 				player.ears.type = Ears.RHINO;
 				changes++;
 			}
 			//Change face to rhino
-			if (rand(4) == 0 && changes < changeLimit && player.ears.type == Ears.RHINO && player.skin.tone == "gray" && player.face.type != Face.RHINO) {
+			if (rand(4) === 0 && changes < changeLimit && player.ears.type === Ears.RHINO && player.skin.tone === "gray" && player.face.type !== Face.RHINO) {
 				outputText("\n\nYour face suddenly goes numb. You begin to hear bone cracking as you vision suddenly shifts as you face stretches out and thickens. When your face is done growing you can see the edges of your elongated mouth and noise in the center of your field of vision. They barely impede your vision though. <b>You now have a rhino face.</b>");
 				player.face.type = Face.RHINO;
 				changes++;
 			}
 			//Change tail to rhino
-			if (rand(3) == 0 && changes < changeLimit && player.isBiped() && player.tail.type != Tail.RHINO) {
+			if (rand(3) === 0 && changes < changeLimit && player.isBiped() && player.tail.type !== Tail.RHINO) {
 				if (player.tail.type > 0) outputText("\n\nYou [tail] suddenly goes numb. Looking back you see it changing, twisting and reforming into a long ropy tail with a little " + player.skin.furColor + " tuft at the end. <b>You now have a rhino tail.</b>");
 				else outputText("\n\nYou feel an odd itchy sensation just above your [ass]. Twisting around to inspect it you find a long ropy tail with a little " + player.skin.furColor + " tuft on the end. <b>You now have a rhino tail.</b>");
 				player.tail.type = Tail.RHINO;
@@ -1740,14 +1740,14 @@ package classes.Scenes.Places.Bazaar
 			}
 			//Gain rhino horns
 			//Tier 1
-			if (rand(4) == 0 && changes < changeLimit && player.face.type == Face.RHINO && player.horns.type != Horns.RHINO) {
+			if (rand(4) === 0 && changes < changeLimit && player.face.type === Face.RHINO && player.horns.type !== Horns.RHINO) {
 				outputText("\n\nYou begin to feel an annoying tingling sensation at the top of your head. Reaching up to inspect it you find the sharp nub of a horn protruding from the center of your forehead and growing. Once it's complete you estimate it to be about six inches long. If it were sharper and a little longer it would make a useful natural weapon.");
 				player.horns.value = 1;
 				player.horns.type = Horns.RHINO;
 				changes++;
 			}
 			//Tier 2
-			if (rand(4) == 0 && changes < changeLimit && player.face.type == Face.RHINO && player.horns.type == Horns.RHINO && player.horns.value == 1) {
+			if (rand(4) === 0 && changes < changeLimit && player.face.type === Face.RHINO && player.horns.type === Horns.RHINO && player.horns.value === 1) {
 				outputText("\n\nYou begin to feel an annoying tingling sensation at the edge of your nose, above your field of vision. Reaching up you feel the sharp edge of a curved horn growing out the edge of your face. The itchy tingle continues as you feel both of your horns become sharp and tall. You estimate your older horn to be a mere seven inches and your new horn to be around a foot long. They’ll be useful natural weapons.");
 				outputText("\n<b>(Gained physical special: Upheaval! Any time you lose your rhino face or horns, you will lose this ability.)</b>");
 				player.horns.value = 2;
@@ -1758,10 +1758,10 @@ package classes.Scenes.Places.Bazaar
 			//------------
 			//Increase cock size of non-rhino up to 10 inches.
 			var cocksAffected:int = 0;
-			if (rand(3) == 0 && changes < changeLimit && player.hasCock() && player.smallestCockLength() < 10 && player.cockTotal() - player.countCocksOfType(CockTypesEnum.RHINO) > 0) {
+			if (rand(3) === 0 && changes < changeLimit && player.hasCock() && player.smallestCockLength() < 10 && player.cockTotal() - player.countCocksOfType(CockTypesEnum.RHINO) > 0) {
 				cocksAffected = 0;
 				for (i = 0; i < player.cockTotal(); i++) {
-					if (player.cocks[i].cockType == CockTypesEnum.RHINO && player.cocks[i].cockLength >= 10) continue; //Skip over if rhino cock.
+					if (player.cocks[i].cockType === CockTypesEnum.RHINO && player.cocks[i].cockLength >= 10) continue; //Skip over if rhino cock.
 					temp = player.increaseCock(player.smallestCockIndex(), rand(2) + 1);
 					dynStats("lib", 0.5, "lus", 3);
 					cocksAffected++;
@@ -1771,10 +1771,10 @@ package classes.Scenes.Places.Bazaar
 				changes++;
 			}
 			//Increase girth of rhino cock.
-			if (rand(3) == 0 && changes < changeLimit && player.hasCock() && player.countCocksOfType(CockTypesEnum.RHINO) > 0) {
+			if (rand(3) === 0 && changes < changeLimit && player.hasCock() && player.countCocksOfType(CockTypesEnum.RHINO) > 0) {
 				cocksAffected = 0;
 				for (i = 0; i < player.cockTotal(); i++) {
-					if (player.cocks[i].cockType == CockTypesEnum.RHINO && player.cocks[i].cockThickness < 3) {
+					if (player.cocks[i].cockType === CockTypesEnum.RHINO && player.cocks[i].cockThickness < 3) {
 						player.cocks[i].thickenCock(0.5);
 						dynStats("lib", 0.5, "lus", 3);
 						break;
@@ -1783,10 +1783,10 @@ package classes.Scenes.Places.Bazaar
 				changes++;
 			}
 			//Increase length of rhino cock.
-			if (rand(3) == 0 && changes < changeLimit && player.hasCock() && player.countCocksOfType(CockTypesEnum.RHINO) > 0) {
+			if (rand(3) === 0 && changes < changeLimit && player.hasCock() && player.countCocksOfType(CockTypesEnum.RHINO) > 0) {
 				cocksAffected = 0;
 				for (i = 0; i < player.cockTotal(); i++) {
-					if (player.cocks[i].cockType == CockTypesEnum.RHINO && player.cocks[i].cockLength < 18) {
+					if (player.cocks[i].cockType === CockTypesEnum.RHINO && player.cocks[i].cockLength < 18) {
 						temp = player.increaseCock(i, 1 + rand(2));
 						outputText("\n\n");
 						player.lengthChange(temp, 1);
@@ -1797,7 +1797,7 @@ package classes.Scenes.Places.Bazaar
 				changes++;
 			}
 			//Grow balls
-			if (rand(3) == 0 && changes < changeLimit && player.balls > 0 && player.ballSize < 4) {
+			if (rand(3) === 0 && changes < changeLimit && player.balls > 0 && player.ballSize < 4) {
 				if (player.ballSize <= 2) outputText("\n\nA flash of warmth passes through you and a sudden weight develops in your groin. You pause to examine the changes and your roving fingers discover your " + player.simpleBallsDescript() + " have grown larger than a human's.");
 				if (player.ballSize > 2) outputText("\n\nA sudden onset of heat envelops your groin, focusing on your " + player.sackDescript() + ". Walking becomes difficult as you discover your " + player.simpleBallsDescript() + " have enlarged again.");
 				dynStats("lib", 1, "lus", 3);
@@ -1805,14 +1805,14 @@ package classes.Scenes.Places.Bazaar
 				changes++;
 			}
 			//Boost vaginal capacity without gaping
-			if (rand(3) == 0 && changes < changeLimit && player.hasVagina() && player.statusEffectv1(StatusEffects.BonusVCapacity) < 40) {
+			if (rand(3) === 0 && changes < changeLimit && player.hasVagina() && player.statusEffectv1(StatusEffects.BonusVCapacity) < 40) {
 				if (!player.hasStatusEffect(StatusEffects.BonusVCapacity)) player.createStatusEffect(StatusEffects.BonusVCapacity, 0, 0, 0, 0);
 				player.addStatusValue(StatusEffects.BonusVCapacity, 1, 5);
 				outputText("\n\nThere is a sudden... emptiness within your " + player.vaginaDescript(0) + ". Somehow you know you could accommodate even larger... insertions.");
 				changes++;
 			}
 			//Boost anal capacity without gaping
-			if (rand(3) == 0 && changes < changeLimit && player.hasVagina() && player.statusEffectv1(StatusEffects.BonusVCapacity) < 60) {
+			if (rand(3) === 0 && changes < changeLimit && player.hasVagina() && player.statusEffectv1(StatusEffects.BonusVCapacity) < 60) {
 				if (player.statusEffectv1(StatusEffects.BonusACapacity) < 60) {
 					if (!player.hasStatusEffect(StatusEffects.BonusACapacity)) player.createStatusEffect(StatusEffects.BonusACapacity, 0, 0, 0, 0);
 					player.addStatusValue(StatusEffects.BonusACapacity, 1, 5);
@@ -1821,32 +1821,32 @@ package classes.Scenes.Places.Bazaar
 				}
 			}
 			//Gain height
-			if (rand(2) == 0 && changes < changeLimit && player.tallness < 102) {
+			if (rand(2) === 0 && changes < changeLimit && player.tallness < 102) {
 				temp = rand(5) + 3;
 				//Slow rate of growth near ceiling
 				if (player.tallness > 90) temp = Math.floor(temp / 2);
 				//Constrain height growth
-				if (temp == 0) temp = 1; //Never 0
+				if (temp === 0) temp = 1; //Never 0
 				if (temp > 6) temp = 6; //Constrain growth to 6 inches
 				//Flavor texts. Flavored like 1950's cigarettes. Yum.
 				if (temp < 3) outputText("\n\nYou shift uncomfortably as you realize you feel off balance. Gazing down, you realize you have grown SLIGHTLY taller.");
 				if (temp >= 3 && temp < 6) outputText("\n\nYou feel dizzy and slightly off, but quickly realize it's due to a sudden increase in height.");
-				if (temp == 6) outputText("\n\nStaggering forwards, you clutch at your head dizzily. You spend a moment getting your balance, and stand up, feeling noticeably taller.");
+				if (temp === 6) outputText("\n\nStaggering forwards, you clutch at your head dizzily. You spend a moment getting your balance, and stand up, feeling noticeably taller.");
 				player.tallness += temp;
 				changes++;
 			}
 			//Gain muscle tone
-			if (rand(2) == 0 && player.tone < 80) {
+			if (rand(2) === 0 && player.tone < 80) {
 				if (player.tone < 50) player.modTone(80, 2 + rand(2));
 				else player.modTone(80, 1 + rand(2));
 			}
 			//Gain thickness
-			if (rand(2) == 0 && player.thickness < 80) {
+			if (rand(2) === 0 && player.thickness < 80) {
 				if (player.thickness < 50) player.modThickness(80, 2 + rand(2));
 				else player.modThickness(80, 1 + rand(2));
 			}
 			//Slow hair production
-			if (rand(3) == 0 && changes < changeLimit && flags[kFLAGS.INCREASED_HAIR_GROWTH_SERUM_TIMES_APPLIED] > 0) {
+			if (rand(3) === 0 && changes < changeLimit && flags[kFLAGS.INCREASED_HAIR_GROWTH_SERUM_TIMES_APPLIED] > 0) {
 				outputText("\n\nYou feel a tingling sensation in your scalp. After a few seconds it stops… that was odd.");
 				flags[kFLAGS.INCREASED_HAIR_GROWTH_SERUM_TIMES_APPLIED] = 0;
 				changes++;
@@ -1868,26 +1868,26 @@ package classes.Scenes.Places.Bazaar
 			
 			// Normal TFs
 			//------------
-			if (rand(4) == 0 && changes < changeLimit && player.hair.type != Hair.NORMAL && player.hair.type != Hair.QUILL) {
+			if (rand(4) === 0 && changes < changeLimit && player.hair.type !== Hair.NORMAL && player.hair.type !== Hair.QUILL) {
 				outputText("\n\nYour scalp feels really strange, but the sensation is brief. You feel your hair, and you immediately notice the change. <b>It would seem that your hair is normal again!</b>");
 				player.hair.type = Hair.NORMAL;
 				changes++;
 			}
-			if (rand(4) == 0 && changes < changeLimit && player.arms.type == Arms.HARPY) {
+			if (rand(4) === 0 && changes < changeLimit && player.arms.type === Arms.HARPY) {
 				outputText("\n\nYour arm feathers fall out completely, <b>leaving only the " + player.skinFurScales() + " underneath.</b>");
 				player.arms.type = Arms.HUMAN;
 				changes++;
 			}
 			//Remove gills
-			if (rand(3) == 0 && changes < changeLimit && player.hasGills()) mutations.updateGills();
+			if (rand(3) === 0 && changes < changeLimit && player.hasGills()) mutations.updateGills();
 
-			if (rand(3) == 0 && changes < changeLimit && player.eyes.type == Eyes.FOUR_SPIDER_EYES || player.eyes.type == Eyes.SPIDER) {
+			if (rand(3) === 0 && changes < changeLimit && player.eyes.type === Eyes.FOUR_SPIDER_EYES || player.eyes.type === Eyes.SPIDER) {
 				outputText("\n\nYour eyes start throbbing painfully, your sight in them eventually going dark. You touch your head to inspect your eyes, only to find out that they have changed. <b>You have human eyes now!</b>");
-				player.eyes.type == Eyes.HUMAN;
+				player.eyes.type === Eyes.HUMAN;
 				player.eyes.count = 2;
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.averageNipplesPerBreast() > 4) {
+			if (rand(3) === 0 && changes < changeLimit && player.averageNipplesPerBreast() > 4) {
 				outputText("\n\nA tightness arises in your nipples as three out of four on each breast recede completely, the leftover nipples migrating to the middle of your breasts. <b>You are left with only one nipple on each breast.</b>");
 				for (i = 0; i < player.breastRows.length; i++) {
 					player.breastRows[i].nipplesPerBreast = 1;
@@ -1897,7 +1897,7 @@ package classes.Scenes.Places.Bazaar
 			// Main TFs
 			//------------
 			//Change to fur
-			if (rand(3) == 0 && changes < changeLimit && !player.hasFur()) {
+			if (rand(3) === 0 && changes < changeLimit && !player.hasFur()) {
 				outputText("\n\nYou shiver, feeling a bit cold. Just as you begin to wish for something to cover up with, it seems your request is granted; <b>fur begins to grow all over your body!</b> You tug at the tufts in alarm, but they're firmly rooted and... actually pretty soft. Huh. ");
 				player.skin.adj = "";
 				player.skin.desc = "fur";
@@ -1907,7 +1907,7 @@ package classes.Scenes.Places.Bazaar
 				changes++;
 			}
 			//Gain Echidna ears
-			if (rand(3) == 0 && changes < changeLimit && player.ears.type != Ears.ECHIDNA) {
+			if (rand(3) === 0 && changes < changeLimit && player.ears.type !== Ears.ECHIDNA) {
 				outputText("\n\n");
 				switch(player.ears.type) {
 					case Ears.LIZARD:
@@ -1921,7 +1921,7 @@ package classes.Scenes.Places.Bazaar
 				changes++;
 			}
 			//Gain Echidna tail
-			if (rand(3) == 0 && changes < changeLimit && player.ears.type == Ears.ECHIDNA && player.tail.type != Tail.ECHIDNA) {
+			if (rand(3) === 0 && changes < changeLimit && player.ears.type === Ears.ECHIDNA && player.tail.type !== Tail.ECHIDNA) {
 				outputText("\n\n");
 				switch(player.tail.type) {
 					case Tail.NONE:
@@ -1976,7 +1976,7 @@ package classes.Scenes.Places.Bazaar
 				changes++;
 			}
 			//Gain Echidna legs
-			if (rand(3) == 0 && changes < changeLimit && player.ears.type == Ears.ECHIDNA && player.tail.type && Tail.ECHIDNA && player.lowerBody.type != LowerBody.ECHIDNA) {
+			if (rand(3) === 0 && changes < changeLimit && player.ears.type === Ears.ECHIDNA && player.tail.type && Tail.ECHIDNA && player.lowerBody.type !== LowerBody.ECHIDNA) {
 				outputText("\n\n");
 				switch(player.lowerBody.type) {
 					//Irregular lower body type
@@ -2019,13 +2019,13 @@ package classes.Scenes.Places.Bazaar
 				changes++;
 			}
 			//Gain Echidna cock
-			if (rand(3) == 0 && changes < changeLimit && player.hasCock() && player.countCocksOfType(CockTypesEnum.ECHIDNA) < player.cockTotal()) {
+			if (rand(3) === 0 && changes < changeLimit && player.hasCock() && player.countCocksOfType(CockTypesEnum.ECHIDNA) < player.cockTotal()) {
 				outputText("\n\n");
-				if (player.cockTotal() == 1) outputText("Your [cock] suddenly becomes rock hard out of nowhere. You " + player.clothedOrNakedLower("pull it out from your [armor], right in the middle of the food tent, watching", "watch") + " as it begins to shift and change. It becomes pink in color, and you feel a pinch at the head as it splits to become four heads. " + (player.hasSheath() ? "" : "The transformation finishes off with a fleshy sheath forming at the base.") + " It ejaculates before going limp, retreating into your sheath.");
+				if (player.cockTotal() === 1) outputText("Your [cock] suddenly becomes rock hard out of nowhere. You " + player.clothedOrNakedLower("pull it out from your [armor], right in the middle of the food tent, watching", "watch") + " as it begins to shift and change. It becomes pink in color, and you feel a pinch at the head as it splits to become four heads. " + (player.hasSheath() ? "" : "The transformation finishes off with a fleshy sheath forming at the base.") + " It ejaculates before going limp, retreating into your sheath.");
 				else outputText("One of your penises begins to feel strange. You " + player.clothedOrNakedLower("pull the offending cock out from your [armor], right in the middle of the food tent, watching", "watch") + " as it begins to shift and change. It becomes pink in color, and you feel a pinch at the head as it splits to become four heads. " + (player.hasSheath() ? "" : "The transformation finishes off with a fleshy sheath forming at the base.") + " It ejaculates before going limp, retreating into your sheath.");
 				outputText(" <b>You now have an echidna penis!</b>");
 				for (i = 0; i < player.cocks.length; i++) {
-					if (player.cocks[i].cockType != CockTypesEnum.ECHIDNA) {
+					if (player.cocks[i].cockType !== CockTypesEnum.ECHIDNA) {
 						player.cocks[i].cockType = CockTypesEnum.ECHIDNA;
 						break;
 					}
@@ -2033,19 +2033,19 @@ package classes.Scenes.Places.Bazaar
 				changes++;
 			}
 			//Gain Echidna tongue
-			if (rand(3) == 0 && changes < changeLimit && player.echidnaScore() >= 2 && player.tongue.type != Tongue.ECHIDNA) {
+			if (rand(3) === 0 && changes < changeLimit && player.echidnaScore() >= 2 && player.tongue.type !== Tongue.ECHIDNA) {
 				outputText("\n\nYou feel an uncomfortable pressure in your tongue as it begins to shift and change. Within moments, you are able to behold your long, thin tongue. It has to be at least a foot long. <b>You now have an echidna tongue!</b>");
 				player.tongue.type = Tongue.ECHIDNA;
 				changes++;
 			}
 			//Gain quill hair
-			if (rand(4) == 0 && changes < changeLimit && flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] == 1 && player.hair.type == Hair.NORMAL) {
+			if (rand(4) === 0 && changes < changeLimit && flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] === 1 && player.hair.type === Hair.NORMAL) {
 				outputText("\n\nYour scalp begins to tingle as your hair falls out in clumps, leaving you with a bald head. You aren’t bald for long, though. An uncomfortable pressure racks the entirety of your scalp as hard quills begin to sprout from your hair pores. Their growth stops as they reach shoulder length. <b>You now have quills in place of your hair!</b>");
 				player.hair.type = Hair.QUILL;
 				changes++;
 			}
 			//Gain Echidna face if you have the right conditions.
-			if (rand(4) == 0 && changes < changeLimit && player.hasFur() && player.ears.type == Ears.ECHIDNA && player.tail.type == Tail.ECHIDNA && player.tongue.type == Tongue.ECHIDNA) {
+			if (rand(4) === 0 && changes < changeLimit && player.hasFur() && player.ears.type === Ears.ECHIDNA && player.tail.type === Tail.ECHIDNA && player.tongue.type === Tongue.ECHIDNA) {
 				outputText("You groan loudly as the bones in your face begin to reshape and rearrange. Most notable, you feel your mouth lengthening into a long, thin snout. <b>You now have an echidna face!</b>");
 				player.face.type = Face.ECHIDNA;
 				changes++;
@@ -2053,7 +2053,7 @@ package classes.Scenes.Places.Bazaar
 			// Other Changes
 			//------------
 			//Hair stops growing
-			if (rand(4) == 0 && changes < changeLimit && player.echidnaScore() >= 2 && flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] == 0) {
+			if (rand(4) === 0 && changes < changeLimit && player.echidnaScore() >= 2 && flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] === 0) {
 				outputText("\n\nYour scalp tingles oddly. In a panic, you reach up to your " + player.hairDescript() + ", but thankfully it appears unchanged.\n");
 				outputText("(<b>Your hair has stopped growing.</b>)");
 				changes++;
@@ -2061,39 +2061,39 @@ package classes.Scenes.Places.Bazaar
 			}
 
 			//Sexual changes
-			if (rand(3) == 0 && changes < changeLimit && player.hasCock() && player.cumMultiplier < 25) {
+			if (rand(3) === 0 && changes < changeLimit && player.hasCock() && player.cumMultiplier < 25) {
 				temp = 1 + rand(4);
 				//Lots of cum raises cum multiplier cap to 2 instead of 1.5
 				if (player.findPerk(PerkLib.MessyOrgasms) >= 0) temp += rand(10);
 				temp *= 0.1;
 				player.cumMultiplier += temp;
 				//Flavor text
-				if (player.balls == 0) outputText("\n\nYou feel a churning inside your gut as something inside you changes.");
+				if (player.balls === 0) outputText("\n\nYou feel a churning inside your gut as something inside you changes.");
 				if (player.balls > 0) outputText("\n\nYou feel a churning in your " + player.ballsDescriptLight() + ". It quickly settles, leaving them feeling somewhat more dense.");
 				outputText(" A bit of milky pre dribbles from your " + player.multiCockDescriptLight() + ", pushed out by the change.");
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.gender == Gender.MALE && player.averageBreastSize() > 2 && flags[kFLAGS.HYPER_HAPPY] == 0) {
+			if (rand(3) === 0 && changes < changeLimit && player.gender === Gender.MALE && player.averageBreastSize() > 2 && flags[kFLAGS.HYPER_HAPPY] === 0) {
 				outputText("\n\nYou cup your tits as they begin to tingle strangely. You can actually feel them getting smaller in your hands!");
 				player.shrinkTits();
 				changes++;
 			}
 			//Neck restore
-			if (player.neck.type != Neck.NORMAL && changes < changeLimit && rand(4) == 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) mutations.restoreNeck(tfSource);
 			//Rear body restore
-			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) mutations.restoreRearBody(tfSource);
+			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) mutations.restoreRearBody(tfSource);
 			//Ovi perk gain
-			if (rand(4) == 0 && changes < changeLimit && player.echidnaScore() >= 3 && player.hasVagina() && player.findPerk(PerkLib.Oviposition) < 0) {
+			if (rand(4) === 0 && changes < changeLimit && player.echidnaScore() >= 3 && player.hasVagina() && player.findPerk(PerkLib.Oviposition) < 0) {
 				mutations.updateOvipositionPerk(tfSource);
 			}
-			if (rand(3) == 0 && (rand(2) == 0 || !player.inHeat) && player.hasVagina() && player.statusEffectv2(StatusEffects.Heat) < 30) {
+			if (rand(3) === 0 && (rand(2) === 0 || !player.inHeat) && player.hasVagina() && player.statusEffectv2(StatusEffects.Heat) < 30) {
 				player.goIntoHeat(true);
 			}
 			//Thickness and hip modifier
-			if (rand(2) == 0 && player.thickness < 90) {
+			if (rand(2) === 0 && player.thickness < 90) {
 				player.modThickness(90, 2);
 			}
-			if (rand(2.4) == 0 && changes < changeLimit && player.hasVagina() && player.mf("m", "f") == "f" && player.hips.rating < 14) {
+			if (rand(2.4) === 0 && changes < changeLimit && player.hasVagina() && player.mf("m", "f") === "f" && player.hips.rating < 14) {
 				outputText("\n\nAfter finishing, you find that your gait has changed. Did your [hips] widen?");
 				player.hips.rating++;
 				changes++;

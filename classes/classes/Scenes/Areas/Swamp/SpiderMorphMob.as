@@ -37,7 +37,7 @@ package classes.Scenes.Areas.Swamp
 				if (damage > 0) outputText("<b>(<font color=\"#800000\">" + damage + "</font>)</b>")
 				else outputText("<b>(<font color=\"#000080\">" + damage + "</font>)</b>")
 				if (damage > 0) {
-					if (lustVuln > 0 && player.armorName == "barely-decent bondage straps") {
+					if (lustVuln > 0 && player.armorName === "barely-decent bondage straps") {
 						if (!plural) outputText("\n" + capitalA + short + " brushes against your exposed skin and jerks back in surprise, coloring slightly from seeing so much of you revealed.");
 						else outputText("\n" + capitalA + short + " brush against your exposed skin and jerk back in surprise, coloring slightly from seeing so much of you revealed.");
 						lust += 10 * lustVuln;
@@ -76,7 +76,7 @@ package classes.Scenes.Areas.Swamp
 		override protected function performCombatAction():void
 		{
 			game.spriteSelect(SpriteDb.s_kiha);
-			if (rand(2) == 0 || player.hasStatusEffect(StatusEffects.UBERWEB)) spiderStandardAttack();
+			if (rand(2) === 0 || player.hasStatusEffect(StatusEffects.UBERWEB)) spiderStandardAttack();
 			else spoidahHordeWebLaunchahs();
 		}
 

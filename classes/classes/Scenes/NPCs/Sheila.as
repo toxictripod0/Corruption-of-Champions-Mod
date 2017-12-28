@@ -20,7 +20,7 @@ package classes.Scenes.NPCs
 			var damage:Number = 0;
 			spe -= 30;
 			//Midget misfire (if PC < 3'6"):
-			if (player.tallness < 42 && rand(2) == 0) {
+			if (player.tallness < 42 && rand(2) === 0) {
 				outputText("Sheila bounces up to you and crouches low, curling her body like a watchspring.  She uncoils with her fist aimed at your jaw, but you easily perform a crouch of your own and duck under her lanky form, unbending yourself to push her legs up as she flies harmlessly overhead.  You can hear a partial shriek before she crashes face-first into the dirt behind you. ");
 				damage = 3 + rand(10);
 				damage = game.combat.doDamage(damage, true);
@@ -42,7 +42,7 @@ package classes.Scenes.NPCs
 				outputText("Sheila bounces up to you and crouches low, curling up her body like a watchspring.  The girl uncoils just as quickly, launching herself at your face with a fist raised in front of her.  She lands a staggering crack on your jaw which knocks your head back and blurs your vision!  ");
 				//deals minor concussion which adds 5-10 pts fatigue, may stun pc and prevent attack, misses while blinded or misfires on pcs under 3'6")
 				player.changeFatigue(5+rand(5));
-				if (rand(2) == 0 && player.findPerk(PerkLib.Resolute) < 0) {
+				if (rand(2) === 0 && player.findPerk(PerkLib.Resolute) < 0) {
 					player.createStatusEffect(StatusEffects.Stunned,1,0,0,0);
 					outputText("<b>You are stunned!</b>  ");
 				}
@@ -59,7 +59,7 @@ package classes.Scenes.NPCs
 			var damage:Number = 0;
 			spe -= 60;
 			//Miss:
-			if (player.getEvasionRoll() || (hasStatusEffect(StatusEffects.Blind) && rand(3) == 0)) {
+			if (player.getEvasionRoll() || (hasStatusEffect(StatusEffects.Blind) && rand(3) === 0)) {
 				outputText("Sheila squats down, then bounds explosively toward you!  She swings her leg out in front to kick, but you roll to the side and she slips past your shoulder.  You hear an \"<i>Oof!</i>\" as she lands on her butt behind you.  When you turn to look, she's already back to her feet, rubbing her smarting posterior and looking a bit embarrassed.");
 				//(small Sheila HP loss)
 				damage = 3 + rand(10);
@@ -99,7 +99,7 @@ package classes.Scenes.NPCs
 		//Demon Sheila Combat - Special Attacks
 		//1: Suspicious Glint (int-based hit chance)
 		private function suspiciousGlint():void {
-			if (hasStatusEffect(StatusEffects.Blind) && rand(2) == 0) {
+			if (hasStatusEffect(StatusEffects.Blind) && rand(2) === 0) {
 				outputText("Sheila's blind eyes glint suspiciously as she focuses her power, trying to send her fantasy to anything caught in their stare.  It seems to work - the rock next to you vibrates a little.");
 			}
 			//Miss:
@@ -255,30 +255,30 @@ package classes.Scenes.NPCs
 
 		override protected function performCombatAction():void
 		{
-			if (game.flags[kFLAGS.SHEILA_DEMON] == 1) {
+			if (game.flags[kFLAGS.SHEILA_DEMON] === 1) {
 				demonSheilaAI();
 				return;
 			}
-			if (rand(3) == 0) eAttack();
-			else if (rand(2) == 0) sheilaFlyingKick();
+			if (rand(3) === 0) eAttack();
+			else if (rand(2) === 0) sheilaFlyingKick();
 			else sheilaFrogPunch();
 		}
 
 		override public function defeated(hpVictory:Boolean):void
 		{
-			if (game.flags[kFLAGS.SHEILA_DEMON] == 1) game.sheilaScene.beatUpDemonSheila();
+			if (game.flags[kFLAGS.SHEILA_DEMON] === 1) game.sheilaScene.beatUpDemonSheila();
 			else game.sheilaScene.sheilaGotWhomped();
 		}
 
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
 		{
-			if (game.flags[kFLAGS.SHEILA_DEMON] == 1) game.sheilaScene.loseToSheila();
+			if (game.flags[kFLAGS.SHEILA_DEMON] === 1) game.sheilaScene.loseToSheila();
 			else game.sheilaScene.getBeatUpBySheila();
 		}
 
 		public function Sheila()
 		{
-			var sheilaDemon:Boolean = game.flags[kFLAGS.SHEILA_DEMON] == 1;
+			var sheilaDemon:Boolean = game.flags[kFLAGS.SHEILA_DEMON] === 1;
 			this.a = "";
 			this.short = "Sheila";
 			this.imageName = "sheila";
@@ -337,7 +337,7 @@ package classes.Scenes.NPCs
 			this.temperment = TEMPERMENT_LUSTY_GRAPPLES;
 			this.level = 14;
 			this.gems = rand(5) + 5;
-			if (game.flags[kFLAGS.SHEILA_DEMON] == 0){
+			if (game.flags[kFLAGS.SHEILA_DEMON] === 0){
 				this.drop = new WeightedDrop(consumables.KANGAFT, 1);
 			} else {
 				this.drop = new ChainedDrop(consumables.KANGAFT).

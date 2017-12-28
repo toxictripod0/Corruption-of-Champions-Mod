@@ -43,7 +43,7 @@ package classes.Scenes.Areas.Bog
 			clearOutput();
 			startCombat(new ChameleonGirl());
 			spriteSelect(SpriteDb.s_chameleon);
-			if (flags[kFLAGS.TIMES_MET_CHAMELEON] == 0) {
+			if (flags[kFLAGS.TIMES_MET_CHAMELEON] === 0) {
 				outputText("You work your way through the dense foliage of the bog, pushing aside branches and slogging through the thick mud in search of something new.  Feeling exhausted, you slow down and look for a place to rest; finding a small clearing with shallow water no more than a couple inches deep and firmer ground, you sit back against a tree to catch your breath.  You're so soaked by now that you hardly notice the murky water beneath you and the slick mud on the trunk seeping into your " + player.armorName + ".  You lean your head back and close your eyes, enjoying a few moments of peace.");
 
 				outputText("\n\nYour brief respite is disturbed by the sensation of warm breath against your face.  You snap your head up to see a humanoid face hanging upside down in front of you, watching you intently.  Startled, you scramble to your feet, pressing your back against the tree.  Before you have a chance to get a better look at whatever was observing you, it drops from the branch and flips itself over in a whirl, landing on its feet in a crouched position.  Your observer is some sort of lizard-like humanoid, though it appears to have smooth " + monster.skin.tone + " skin rather than any sort of scales.  Long, " + monster.skin.adj + " stripes run along its body from ankle to shoulder.   It straightens itself up, allowing you to see that it's definitely female:  she has a slender body with slightly pronounced hips, their bones easily visible beneath her skin, and her breasts look to be about B-cups.  Her arms and legs are a bit longer than they would be on a human body, and her tail is quite long by a lizard's standards.  Her hands, too, are disproportionately large and look as though they're made to better grip and climb trees.  The skin on her front side is a light tan, and looks softer than the rest.   A set of long, brown horns protrudes forward from her forehead.  She's hardly clothed, wearing only a thick silken cloth tied around her back to hide her chest and a thong tied at her hip cut from the same material.  Her long, thin tongue hangs out of her slightly parted mouth.  She licks her lips grotesquely and slurps it back into her mouth as she eyes you up and down.");
@@ -77,8 +77,8 @@ package classes.Scenes.Areas.Bog
 
 			//Savin's Note: Dude what the fuck. Bracket off your bits and pieces and LABEL YOUR SCENES RIGHT. -Savin
 			//Abraxas' Note: This is like the tenth edition of this doc, something got mixed up in one of the transitions, I lost a paragraph along the way. Your scene is fine though, sorry about that.
-			if (player.gender == 3 && rand(2) == 0) loseToChameleonWithCockAnBallsAnCunt();
-			else if (player.gender == 1 || (player.gender == 3 && rand(2) == 0)) dudesLoseToChamChams();
+			if (player.gender === 3 && rand(2) === 0) loseToChameleonWithCockAnBallsAnCunt();
+			else if (player.gender === 1 || (player.gender === 3 && rand(2) === 0)) dudesLoseToChamChams();
 			else if (player.hasVagina()) loseToChamChamWithPCCunt();
 			else {
 				outputText("\n\nThe Chameleon Girl gives you a once-over, but finding no genitals, she sighs and slaps you hard enough to have you black out.");

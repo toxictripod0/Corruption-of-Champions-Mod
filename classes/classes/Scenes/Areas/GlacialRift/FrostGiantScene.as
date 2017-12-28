@@ -20,7 +20,7 @@ package classes.Scenes.Areas.GlacialRift
 		public function winAgainstGiant():void {
 			clearOutput();
 			outputText("The giant staggers and falls down on his knees. You wonder what you should do next.");
-			if (player.weaponName == "fists" && player.armor.name == "nothing" && player.shieldName == "nothing") awardAchievement("Like Chuck Norris", kACHIEVEMENTS.GENERAL_LIKE_CHUCK_NORRIS);
+			if (player.weaponName === "fists" && player.armor.name === "nothing" && player.shieldName === "nothing") awardAchievement("Like Chuck Norris", kACHIEVEMENTS.GENERAL_LIKE_CHUCK_NORRIS);
 	
 			if (flags[kFLAGS.SFW_MODE] > 0) {
 				combat.cleanupAfterCombat();
@@ -51,7 +51,7 @@ package classes.Scenes.Areas.GlacialRift
 			if (player.cocks.length > 1) outputText("s");
 			outputText(". The cold air nearly instantly makes them soft, but the giant's breath eases them back to erection. You contemplate what you're about to do one more time, allowing your " + player.multiCockDescriptLight() + " to surge to full hardness. Taking a breath, you plunge into the depths. While not quite like a vagina, the giant is breathing hard to make up for the blockage you’re providing. ");
 			//Multi-cock check
-			if (player.cocks.length == 1) outputText("His contracting nostril massages your prick enough to get you going.");
+			if (player.cocks.length === 1) outputText("His contracting nostril massages your prick enough to get you going.");
 			else outputText("His contracting nostrils massage your pricks enough to get you going.");
 			outputText("After some awkward moments of fighting with the giant's sufficiently giant beard, you manage to slip into a rhythm, breathe in, cock out, breathe out, cock in. The alternating currents of cold air in and warm air out from the giant's nose is a strange feeling, but not unpleasant - the contrasts complement each other quite well, and as your balls tighten with anticipation, precum finally begins to dribble into the giant's throat. You hear the giant begin to gurgle and sputter, and you realize you better hurry this up. \n\n");
 			//Balls check

@@ -25,7 +25,7 @@ public function cinnabarAppearance(output:Boolean = true):Function {
 	if (getGame().time.hours < 15 || getGame().time.hours > 20) return null;
 	if (output) {
 		//Not yet introduced
-		if (flags[kFLAGS.CINNABAR_NUMBER_ENCOUNTERS] == 0) outputText("\n\nThere's a generously proportioned woman lurking near a tavern.  Looking closer, you can see she has a ruby-red dress over her ruddy fur, and as she turns you make out an unmistakable, rat-like muzzle.");
+		if (flags[kFLAGS.CINNABAR_NUMBER_ENCOUNTERS] === 0) outputText("\n\nThere's a generously proportioned woman lurking near a tavern.  Looking closer, you can see she has a ruby-red dress over her ruddy fur, and as she turns you make out an unmistakable, rat-like muzzle.");
 		//Appearance Repeat:
 		else outputText("\n\nCinnabar is on the prowl, looking for well-endowed johns to lie with.");
 	}
@@ -36,7 +36,7 @@ private function cinnabarGreeting():void {
 	clearOutput();
 	spriteSelect(SpriteDb.s_cinnabar);
 	//1st Time:
-	if (flags[kFLAGS.CINNABAR_NUMBER_ENCOUNTERS] == 0) {
+	if (flags[kFLAGS.CINNABAR_NUMBER_ENCOUNTERS] === 0) {
 		flags[kFLAGS.CINNABAR_NUMBER_ENCOUNTERS]++;
 		//(No cock) 
 		if (!player.hasCock()) {
@@ -207,7 +207,7 @@ private function cinnabarNonHugeDickings():void {
 		outputText(" in its hungry embrace.");
 	}
 	//(No dick/cunt:
-	if (player.gender == 0) outputText("  Her soft pads rub your " + player.assholeDescript() + " just right, setting off your climax with professional skill.  You grunt and squeeze, wringing her fingers inside your hungry hole as if you could milk cum from them.");
+	if (player.gender === 0) outputText("  Her soft pads rub your " + player.assholeDescript() + " just right, setting off your climax with professional skill.  You grunt and squeeze, wringing her fingers inside your hungry hole as if you could milk cum from them.");
 	outputText("  The orgasm is intense, and as you both succumb to exhaustion, two sets of limbs slip from abused orifices.  Cinnabar and you fall into each other, collapsing in a puddle of sexual juices and sweaty limbs.");
 	if (player.wetness() < 3) {}
 	else if (player.wetness() < 5) outputText("  Her arm seems quite soaked with your leavings.");
@@ -378,7 +378,7 @@ private function cinnabarHuger():void {
 	outputText("\n\n");
 	
 	outputText("Her body is squirming, writhing from the complete and total dick-domination.  You push her hands off your " + player.cockDescript(x) + ", and jack yourself off while you cum inside her, watching with fascination as each blast bulges her belly before it vanishes inside her with a wet slosh.  Her huge, stretched lips leak like a sieve, splattering girlcum everywhere while your " + player.ballsDescriptLight() + " pack");
-	if (player.balls == 0) outputText("s");
+	if (player.balls === 0) outputText("s");
 	outputText(" her with goo, claiming her ruined body.  Cinnabar pants and screams in between pleasure-squeaks, \"<i>F-fuck... fuck your fuck-toy!  Stuff her cunt... YES!  S-slut is so fucked... Cum, " + player.mf("master","mistress") + ", then toss slut aside l-l-like a discarded, broken toy.  YOU'VE RUINED ME " + player.mf("MASTER","MISTRESS") + "!</i>\"\n\n");
 	
 	outputText("Those wonderful, perverse words milk your " + player.ballsDescriptLight() + " dry as effectively as her massively-gaped cunt and broken body, but you keep pumping until you're sore and completely emptied.  ");
@@ -437,7 +437,7 @@ private function cinnabarHuge():void {
 	outputText("... YES!  CLAIM ME!  I'm yours... your cock-addicted, stretched-out fucktoy!  More... more!</i>\"\n\n");
 	
 	outputText("You don't hold back, and you fuck her raw, jerking yourself off through her stretched hide until your ");
-	if (player.balls == 0) outputText("prostate has been squeezed dry.");
+	if (player.balls === 0) outputText("prostate has been squeezed dry.");
 	else outputText(player.ballsDescriptLight() + " feel sore and empty, completely drained.");
 	if (player.cumQ() > 500) {
 		outputText("  The rat-girl has gained a nice, ");
@@ -484,7 +484,7 @@ private function cinnabarMultiCockPortalFuckFest():void {
 	if (player.lust >= 70) outputText(" you have");
 	else outputText(" she's given you");
 	outputText(".  She's teasing you, but it's clear she's no dominatrix.  No, she wants you to take charge, and if you're going to get off, you'll need to.  You hook your hand in between her cleavage, feeling the tight, silky embrace of her fur and the gentle, pounding beat of her heart.  It beats faster as soon as you start tugging her, dragging her towards the wagons.  ");
-	if (flags[kFLAGS.CINNABAR_HOUSE_VISITED] == 0) outputText("She leans, guiding you towards her home even as she lets herself be led.");
+	if (flags[kFLAGS.CINNABAR_HOUSE_VISITED] === 0) outputText("She leans, guiding you towards her home even as she lets herself be led.");
 	else outputText("She blushes hard, her thighs darkening from the fluid racing down them as you pull her towards her house.");
 	outputText("\n\n");
 	
@@ -509,7 +509,7 @@ private function cinnabarMultiCockPortalFuckFest():void {
 	outputText("Your " + player.hipDescript() + " rock forwards of their own volition.  There's no way your " + player.multiCockDescriptLight() + " can resist such a lewd, needy specimen, or the chance to fuck her in so many different ways simultaneously.  First, your " + player.cockDescript(x) + " hits her swollen pussy, and as you batter your way inside the slippery entrance, her body rewards you with a gush of girl-cum that soaks your manhood and drips over your " + player.cockDescript(y) + ".  A split-second later that second member is pressing at her anus, forcing through the clenched star in a violent, animalistic thrust.\n\n");
 	
 	outputText("Cinnabar moans, utterly and completely delighted, but you muffle those moans by spearing her throat on your " + player.cockDescript(z) + ", filling her oral orifice completely.  You reach through a pair of portals at arm height to squeeze her spread ass-cheeks, holding tight while you push forwards to completely bury your three lucky members in furry fuck-sleeves.");
-	if (player.cockTotal() == 4) outputText("  The extra dick dives into the pillowy mounds, smearing a streamer of pre-cum over the tit's surface before it slides into that warm, welcoming cleavage.");
+	if (player.cockTotal() === 4) outputText("  The extra dick dives into the pillowy mounds, smearing a streamer of pre-cum over the tit's surface before it slides into that warm, welcoming cleavage.");
 	else if (player.cockTotal() > 4) outputText("  The extra dicks dive into the pillowy mounds, smearing streamers of pre-cum all over the tits' surfaces before they slide home into that warm, welcoming cleavage.");
 	outputText("\n\n");
 	
@@ -518,7 +518,7 @@ private function cinnabarMultiCockPortalFuckFest():void {
 	outputText(".  Slippery-soft warmth wreathes your " + player.cockDescript(x) + ", the plush black love-tunnel contracting slightly to happily squeeze you every few seconds.  The darker, sinfully tight star of Cinnabar's anus glazes with your pre-cum, her ass-cheeks wobbling perfectly in your hands with each rhythmic penetration.");
 	if (player.cockTotal() >= 4) {
 		outputText("  Meanwhile, the soft, downy fur on the rat's chest is starting to mat against her skin, coated with the slick leavings from your ");
-		if (player.cockTotal() == 4) outputText("extra dick");
+		if (player.cockTotal() === 4) outputText("extra dick");
 		else outputText("remaining dicks");
 		outputText(".");
 	}

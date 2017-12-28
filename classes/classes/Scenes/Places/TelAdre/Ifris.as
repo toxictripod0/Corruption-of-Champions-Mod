@@ -25,7 +25,7 @@ public function ifrisIntro():Boolean {
 public function approachIfris():void {
 	spriteSelect(SpriteDb.s_ifris);
 	clearOutput();
-	if (flags[kFLAGS.MET_IFRIS] == 0) {
+	if (flags[kFLAGS.MET_IFRIS] === 0) {
 		flags[kFLAGS.MET_IFRIS] = 1;
 		outputText("The curious, appraising gaze on her pretty face turns into a pleased smile as you walk over, and her clawed toes click gently on the floor as she takes the last few steps to meet you. As you open your mouth to speak she preempts you, those pretty, black-painted lips parting, a voice too husky and smooth to be up to any good greeting you.\n\n");
 	
@@ -36,10 +36,10 @@ public function approachIfris():void {
 		outputText("\"<i>It's nice to meet you. Are you here to use the machines, or were you just hoping to watch the pretty bodies working up a sweat?</i>\" she giggles cutely, two of her clawed fingers covering her mouth demurely.\n\n");
 	}
 	//2a-Repeat approach, no sex-
-	else if (flags[kFLAGS.TIMES_FUCKED_IFRIS_BLOWJOB] + flags[kFLAGS.TIMES_FUCKED_IFRIS_LICKED] == 0) {
+	else if (flags[kFLAGS.TIMES_FUCKED_IFRIS_BLOWJOB] + flags[kFLAGS.TIMES_FUCKED_IFRIS_LICKED] === 0) {
 		outputText("Ifris grins as you walk over again, the devil girl's dark tongue dabbing at her even darker lips as she all but coos up at you.\n\n");
 
-		if (flags[kFLAGS.IFRIS_SHOWED_OFF] == 0) outputText("\"<i>Hello darling... here to actually give me a show?</i>\"\n\n");
+		if (flags[kFLAGS.IFRIS_SHOWED_OFF] === 0) outputText("\"<i>Hello darling... here to actually give me a show?</i>\"\n\n");
 		else outputText("\"<i>Hello darling... here to give another show? I did so enjoy your last performance.</i>\"\n\n");
 	}
 	//2b-Repeat approach, had oral-
@@ -98,7 +98,7 @@ private function liftWhileIfrisWatches():void {
 	spriteSelect(SpriteDb.s_ifris);
 	flags[kFLAGS.IFRIS_SHOWED_OFF]++;
 	clearOutput();
-	if (flags[kFLAGS.LIFETIME_GYM_MEMBER] == 0) {
+	if (flags[kFLAGS.LIFETIME_GYM_MEMBER] === 0) {
 		outputText("The centauress working the door walks up to collect her fee, and you drop 10 gems for an hour workout into her hand.\n\n");
 		player.gems -= 10;
 		statScreenRefresh();
@@ -124,7 +124,7 @@ private function showOffForIfris():void {
 	flags[kFLAGS.IFRIS_SHOWED_OFF]++;
 	player.changeFatigue(30);
 	clearOutput();
-	if (flags[kFLAGS.LIFETIME_GYM_MEMBER] == 0) {
+	if (flags[kFLAGS.LIFETIME_GYM_MEMBER] === 0) {
 		outputText("The centauress working the door walks up to collect her fee, and you drop 10 gems for an hour workout into her hand.\n\n");
 		player.gems -= 10;
 		statScreenRefresh();
@@ -158,7 +158,7 @@ private function showOffForIfris():void {
 		return;
 	}
 	//4b5-PC masculinity > 60, corruption > 75, has cow features-
-	if (player.isGenderless() || (player.femininity < 40 && !player.isPureEnough(75) && player.face.type == Face.COW_MINOTAUR)) {
+	if (player.isGenderless() || (player.femininity < 40 && !player.isPureEnough(75) && player.face.type === Face.COW_MINOTAUR)) {
 		outputText("Ifris watches you for a moment as you move down to the bench, but her eyes clearly wander elsewhere now and then. The pleasant smile never leaves her pretty face, but it's clear she's distracted or even disinterested for some reason. Soon enough she turns to leave, a bored little sigh leaving her. Her hips sway with a sexy gait as though it were natural, though nothing about her seems particularly excited at the moment...");
 		//Stat changes HERE!
 		if (player.str100 < 90) dynStats("str", .5);
@@ -172,12 +172,12 @@ private function showOffForIfris():void {
 	//4b3-PC succeeds! Is male/herm-
 	if (player.hasCock()) {
 		//Double dickings!
-		if (player.cockTotal() > 1 && rand(2) == 0 && player.cockThatFits(70) != -1 && player.cockThatFits2(70) != -1) {
+		if (player.cockTotal() > 1 && rand(2) === 0 && player.cockThatFits(70) !== -1 && player.cockThatFits2(70) !== -1) {
 			ifrisDP();
 			return;
 		}
 		//First time
-		if (flags[kFLAGS.TIMES_FUCKED_IFRIS_BLOWJOB] == 0) {
+		if (flags[kFLAGS.TIMES_FUCKED_IFRIS_BLOWJOB] === 0) {
 			outputText("Gripping the bars tightly, you grit your teeth and give a mighty push upwards! Your muscles strain and you grunt with effort, a little amazed gasp leaving the red beauty's lips as the weights lift slowly but surely. You can't help but grin proudly as your elbows lock, the weight completely lifted, and you bring it back down, only to push again.\n\n"); 
 	
 			outputText("Ifris moves closer, her oiled skin glistening as she watches your muscles straining, bending in to get a closer look. As you look down you notice her bend forward, the weight momentarily forgotten as those luscious, perfect mounds of tit-flesh almost spill out of her bikini top. She grins slowly at you, following your gaze, and even giving a teasing little shake, making the orbs jiggle.\n\n"); 
@@ -220,7 +220,7 @@ private function showOffForIfris():void {
 	}
 	//4b4-PC succeeds! Is female!-
 	else if (player.hasVagina()) {
-		if (flags[kFLAGS.TIMES_FUCKED_IFRIS_LICKED] == 0) {
+		if (flags[kFLAGS.TIMES_FUCKED_IFRIS_LICKED] === 0) {
 			outputText("Gripping the bars tightly, you grit your teeth and give a mighty push upwards! Your muscles strain and you grunt with effort, a little amazed gasp leaving the red beauty's lips as the weights lift slowly but surely. You can't help but grin proudly as your elbows lock, the weight completely lifted, and you bring it back down, only to push again.\n\n");
 	
 			outputText("Ifris moves closer, her oiled skin glistening as she watches your muscles straining, bending in to get a closer look. As you look down you notice her bend forward, the weight momentarily forgotten as those luscious, perfect mounds of tit-flesh almost spill out of her bikini top. She grins slowly at you, following your gaze, and even giving a teasing little shake, making the orbs jiggle.\n\n");
@@ -318,7 +318,7 @@ private function ifrisDP():void {
 		outputText("Both your cocks explode inside Ifris, submitting alabaster pillars to her request for your release.  The red-hued sexpot exhales a happy hum and rocks her hips back and forth, her oily, lubricated holes squeezing your dicks for every drop of delectable seed.  ");
 		if (player.cockTotal() > 2) {
 			outputText("The ");
-			if (player.cockTotal() == 1) outputText("one unbound prick remaining paints the muscular woman's lower back with goo, but she doesn't seem to mind.");
+			if (player.cockTotal() === 1) outputText("one unbound prick remaining paints the muscular woman's lower back with goo, but she doesn't seem to mind.");
 			else outputText("other, unbound pricks paint the muscular woman's lower back in goo, but she doesn't seem to mind.");
 			outputText("  ");
 		}

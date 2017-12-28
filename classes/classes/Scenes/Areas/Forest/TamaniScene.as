@@ -35,9 +35,9 @@ Males:
 	public var tamaniDaughtersScene:TamainsDaughtersScene = new TamainsDaughtersScene();
 
 	public function encounterChance():Number {
-		return flags[kFLAGS.TAMANI_TIME_OUT] == 0
+		return flags[kFLAGS.TAMANI_TIME_OUT] === 0
 			   && player.gender > 0
-			   && flags[kFLAGS.TAMANI_BAD_ENDED] == 0
+			   && flags[kFLAGS.TAMANI_BAD_ENDED] === 0
 			   && (player.totalCocks() > 0
 				   || player.hasKeyItem("Deluxe Dildo") < 0) ? 1 : 0;
 	}
@@ -47,7 +47,7 @@ Males:
 	}
 
 	public function execEncounter():void {
-		if (player.totalCocks() > 0 && flags[kFLAGS.TAMANI_DAUGHTER_PREGGO_COUNTDOWN] == 0 && flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] >= 24) {
+		if (player.totalCocks() > 0 && flags[kFLAGS.TAMANI_DAUGHTER_PREGGO_COUNTDOWN] === 0 && flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] >= 24) {
 			tamaniDaughtersScene.encounterTamanisDaughters();
 		} else encounterTamani();
 	}
@@ -65,7 +65,7 @@ Males:
 		{
 			pregnancy.pregnancyAdvance();
 			//trace("\nTamani time change: Time is " + getGame().time.hours + ", incubation: " + pregnancy.incubation + ", event: " + pregnancy.event);
-			if (pregnancy.isPregnant && pregnancy.incubation == 0) tamaniGivesBirth(); //Silently clear Tamani's pregnancy if the player doesn't encounter her in time
+			if (pregnancy.isPregnant && pregnancy.incubation === 0) tamaniGivesBirth(); //Silently clear Tamani's pregnancy if the player doesn't encounter her in time
 			return false;
 		}
 	
@@ -75,7 +75,7 @@ Males:
 		//End of Interface Implementation
 		
 private function tamaniGivesBirth():void {
-	if (pregnancy.type == PregnancyStore.PREGNANCY_PLAYER) { //Don't want drider eggs to add to her daughers
+	if (pregnancy.type === PregnancyStore.PREGNANCY_PLAYER) { //Don't want drider eggs to add to her daughers
 		flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] += flags[kFLAGS.TAMANI_PREGNANCY_COUNT];
 		flags[kFLAGS.TAMANI_PREGNANCY_COUNT] = 0;
 		flags[kFLAGS.TAMANI_TIMES_IMPREGNATED]++;
@@ -87,18 +87,18 @@ internal function tamaniChest():String {
 	var descript:String = "";
 	switch (flags[kFLAGS.TAMANI_TIMES_IMPREGNATED]) {
 		case -1:
-		case  0: descript = (rand(2) == 0 ? "ample " : "handful of "); break;
+		case  0: descript = (rand(2) === 0 ? "ample " : "handful of "); break;
 		case  1:
 		case  2:
-		case  3: descript = (rand(2) == 0 ? "large " : "jiggling "); break;
+		case  3: descript = (rand(2) === 0 ? "large " : "jiggling "); break;
 		case  4:
 		case  5:
-		case  6: descript = (rand(2) == 0 ? "wobbling " : "impressive "); break;
+		case  6: descript = (rand(2) === 0 ? "wobbling " : "impressive "); break;
 		case  7:
 		case  8:
 		case  9:
-		case 10: descript = (rand(2) == 0 ? "over-proportioned " : "super-sized "); break;
-		default: descript = (rand(2) == 0 ? "massive " : "gigantic "); break;
+		case 10: descript = (rand(2) === 0 ? "over-proportioned " : "super-sized "); break;
+		default: descript = (rand(2) === 0 ? "massive " : "gigantic "); break;
 	}
 	switch (rand(11)) {
 		case  0:
@@ -261,7 +261,7 @@ private function tamaniMaleRepeatEncounter():void {
 	if (pregnancy.isPregnant || flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] > 0) outputText("While exploring, you're startled by the feeling of tiny hands stroking the insides of your thighs.  You look down and find Tamani there, grinning wolfishly,  \"<i>Ready for another fuck, big " + player.mf("boy", "girl") + "?</i>\"\n\n");
 	//(ELSE) 
 	else outputText("While exploring, you're startled by the feeling of tiny hands stroking the insides of your thighs.  You look down and find Tamani the goblin there, grinning with desire, \"<i>Ready to stuff me with cum?  I'm not taking no for an answer this time.</i>\"\n\n");
-	if (flags[kFLAGS.TAMANI_TIMES_HYPNOTISED] > 19 && rand(2) == 0) {
+	if (flags[kFLAGS.TAMANI_TIMES_HYPNOTISED] > 19 && rand(2) === 0) {
 		getRapedByTamaniYouHypnoSlut();
 		return;
 	}
@@ -302,7 +302,7 @@ internal function tamaniSexLetHer():void {
 			if (player.HP < 1) outputText("You collapse, unable to fight back any longer.  For her part, Tamani seems disappointed with the outcome, but approaches your prone form in spite of your sorry appearance.");
 			else outputText("You tear off your clothes in a frenzy of lust and stagger towards Tamani, openly fondling your groin.   She smirks and pushes you hard, throwing you off balance and onto your back.");
 			outputText("  She wiggles her " + tamaniChest() + ", and despite your efforts to control your body, ");
-			if (player.cockTotal() == 1) outputText("an erection emerges");
+			if (player.cockTotal() === 1) outputText("an erection emerges");
 			else outputText("erections sprout up like weeds");
 			outputText(".  She strips you down, giving you a smirk as she says, \"<i>Just lie there and I'll take what I need, babe.</i>\"\n\n");
 		}
@@ -343,7 +343,7 @@ internal function tamaniSexLetHer():void {
 		if (player.cocks[0].cockLength <= 18) {
 			outputText("Before you can get too far she stops and agonizingly shifts her attention; you feel her transfer her weight to her hands, and then the rough but soft bottoms of her feet work their way down to the other end of your " + player.cockDescript(0) + ", pressing against your inner thighs. The wet velvet sensation of her snatch envelopes your head and then slowly works its way down your shaft. Before she can bottom out, Tamani stops, teasingly and slowly withdraws until once again your head is pressed against her sopping entrance. She begins to work her thighs, smearing herself against the end of your straining cock with increasing urgency until she squeals in orgasm, slathering her juices onto your tip. Then, with a sigh and a snicker and again with agonising slowness, she works herself down onto your " + player.cockDescript(0) + ". ");
 			//No balls: 
-			if (player.balls == 0) outputText("You find yourself wondering vaguely where a goblin learns these kinds of gymnastics.\n\n");
+			if (player.balls === 0) outputText("You find yourself wondering vaguely where a goblin learns these kinds of gymnastics.\n\n");
 			else outputText("You find yourself wondering vaguely where a goblin learns these kinds of gymnastics, before the goblin in question drives all thoughts out of your head by mashing her soft soles into your " + player.ballsDescriptLight() + ".\n\n");
 
 			outputText("Tamani has her way with you like this for what seems like hours, squealing as she gets off over and over until your underside is drenched in her juices, but drawing away every time you get close to your own release, playing you like the world's most sensitive fiddle until your human half is drenched with sweat. You stamp your back hooves in deep agitation and fill the forest with bellowing shouts. There is nothing you can do; attached securely to your nether regions as she is, you couldn't reach her or otherwise knock her off even if you wanted to. She is evidently enjoying every minute it, laughing cruelly every time she manages to draw a scream from you, spurring her on to invent some new way of agonizing your poor cock. There is something about this situation which is driving you wild; that you can't do anything about what a creature many times smaller than you is doing to you, and that you willingly allowed it to happen, is a shamefully powerful sensation.\n\n");
@@ -356,7 +356,7 @@ internal function tamaniSexLetHer():void {
 		//If >18 Inches 
 		else {
 			outputText("Before you can get too far she stops and agonizingly shifts her attention; you feel her rough but soft bottoms of her feet work their way down to the other end of your " + player.cockDescript(0) + ". Hanging onto the base of your member she begins to rub her plump, diminutive form along the bottom of it, her tits and thighs caressing your length. ");
-			if (player.balls == 0) outputText("You find yourself wondering vaguely where a goblin learns these kinds of gymnastics.\n\n");
+			if (player.balls === 0) outputText("You find yourself wondering vaguely where a goblin learns these kinds of gymnastics.\n\n");
 			else outputText("You find yourself wondering vaguely where a goblin learns these kinds of gymnastics, before the goblin in question drives all thoughts out of your head by beginning to mash her soft soles into your " + player.ballsDescriptLight() + ".\n\n");
 
 			outputText("Tamani has her way with you like this for what seems like hours, crawling up and down your massive cock");
@@ -406,7 +406,7 @@ internal function tamaniSexLetHer():void {
 			if (player.cocks[0].cockLength >= 12) outputText("Her body visibly stretches around you, and you silently thank whatever gods or demons adapted goblins to be able to fulfill this role.  ");
 			outputText("Moaning like a whore, she easily slips the rest of the way down, bottoming out her sopping-wet fuck-tunnel.\n\n");
 			outputText("You gasp in pain and surprise as Tamani pinches and tugs ");
-			if (player.totalNipples() == 2) outputText("both");
+			if (player.totalNipples() === 2) outputText("both");
 			else outputText("all");
 			outputText(" of your " + player.nippleDescript(0) + "s.  She eases up her grip a bit when she sees how bad it hurts, but she does not release them.  The noisy squelching of her cunt fucking you draws your attention back to your groin.  Your body begins thrusting up to meet her, finally understanding it's on the receiving end of a passionate screw.  ");
 			if (player.biggestTitSize() >= 2) outputText("Your " + player.allBreastsDescript() + " bounce and jiggle obscenely as the goblin twists and pulls, abusing your nipples.");
@@ -548,7 +548,7 @@ internal function tamaniSexWon():void {
 	spriteSelect(SpriteDb.s_tamani);
 	tamaniKnockUp();
 	var x:Number = player.cockThatFits(90);
-	if (x == -1) x = player.biggestCockIndex();
+	if (x === -1) x = player.biggestCockIndex();
 	clearOutput();
 	outputText(images.showImage("tamani-win-fuck"));
 	if (player.cockArea(x) <= 90) {
@@ -564,10 +564,10 @@ internal function tamaniSexWon():void {
 		outputText(" clenching and squeezing around you quickly washes it away.\n\n");
 		
 		outputText("You rock back and forth methodically, treating Tamani like a tight cock-sleeve.  The goblin slut's hands rub her belly, not even attempting to pull her face out of the mud as she moans and giggles like a whore.  You keep working her cunt like a ");
-		if (player.gender == 1) outputText("man");
+		if (player.gender === 1) outputText("man");
 		else outputText("herm");
 		outputText(" possessed, sawing in and out with brutal efficiency, the wet squelches of the slut's juices driving you to piston back and forth with even greater force.  She gurgles happily, her ");
-		if (player.totalCocks() == 1) outputText("pussy squeezing tightly as she cums hard.\n\n");
+		if (player.totalCocks() === 1) outputText("pussy squeezing tightly as she cums hard.\n\n");
 		else outputText("holes squeezing tightly as she cums hard.\n\n"); 
 	
 		if (player.totalCocks() > 1) {
@@ -695,7 +695,7 @@ private function tamaniPoopsOutBabies():void {
 		outputText("  Moments later a third appears");
 		if (flags[kFLAGS.TAMANI_PREGNANCY_COUNT] > 3) {
 			outputText(", a fourth");
-			if (flags[kFLAGS.TAMANI_PREGNANCY_COUNT] == 5) {
+			if (flags[kFLAGS.TAMANI_PREGNANCY_COUNT] === 5) {
 				outputText(", and a fifth");
 			}
 			else outputText(", and more than you can count");
@@ -704,7 +704,7 @@ private function tamaniPoopsOutBabies():void {
 	}
 	outputText("\n\n");
 	
-	if (flags[kFLAGS.TAMANI_PREGNANCY_COUNT] == 2) {
+	if (flags[kFLAGS.TAMANI_PREGNANCY_COUNT] === 2) {
 		outputText("The twins drink deeply, growing taller before your eyes as Tamani comes out of her pregnancy induced orgasms.");
 	}
 	else {
@@ -725,13 +725,13 @@ internal function tamaniKnockUp():void {
 	var cum:Number = player.cumQ();
 	//Breeder perk is awesome
 	if (player.findPerk(PerkLib.MaraesGiftStud) >= 0) flags[kFLAGS.TAMANI_PREGNANCY_COUNT] += 3;
-	if (cum >=  50 && rand(2) == 0) flags[kFLAGS.TAMANI_PREGNANCY_COUNT]++;
-	if (cum >= 100 && rand(2) == 0) flags[kFLAGS.TAMANI_PREGNANCY_COUNT]++;
-	if (cum >= 200 && rand(2) == 0) flags[kFLAGS.TAMANI_PREGNANCY_COUNT]++;
-	if (cum >= 300 && rand(2) == 0) flags[kFLAGS.TAMANI_PREGNANCY_COUNT]++;
-	if (cum >= 400 && rand(2) == 0) flags[kFLAGS.TAMANI_PREGNANCY_COUNT]++;
-	if (cum >= 500 && rand(2) == 0) flags[kFLAGS.TAMANI_PREGNANCY_COUNT]++;
-	if (cum >= 600 && rand(2) == 0) flags[kFLAGS.TAMANI_PREGNANCY_COUNT]++;
+	if (cum >=  50 && rand(2) === 0) flags[kFLAGS.TAMANI_PREGNANCY_COUNT]++;
+	if (cum >= 100 && rand(2) === 0) flags[kFLAGS.TAMANI_PREGNANCY_COUNT]++;
+	if (cum >= 200 && rand(2) === 0) flags[kFLAGS.TAMANI_PREGNANCY_COUNT]++;
+	if (cum >= 300 && rand(2) === 0) flags[kFLAGS.TAMANI_PREGNANCY_COUNT]++;
+	if (cum >= 400 && rand(2) === 0) flags[kFLAGS.TAMANI_PREGNANCY_COUNT]++;
+	if (cum >= 500 && rand(2) === 0) flags[kFLAGS.TAMANI_PREGNANCY_COUNT]++;
+	if (cum >= 600 && rand(2) === 0) flags[kFLAGS.TAMANI_PREGNANCY_COUNT]++;
 }
 
 public function encounterTamani():void {
@@ -740,7 +740,7 @@ public function encounterTamani():void {
 		tamaniFemaleEncounter();
 	}
 	//Dudezillaz:
-	else if (flags[kFLAGS.TAMANI_MET] == 0) {
+	else if (flags[kFLAGS.TAMANI_MET] === 0) {
 			tamaniMaleFirstEncounter();
 	}
 	else {
@@ -795,15 +795,15 @@ internal function getRapedByTamaniYouHypnoSlut():void {
 		if (player.hasFur()) outputText("matted");
 		else outputText("slicked");
 		outputText(" " + player.skin.desc + " impacting her ass fill the air.  You fuck your wife harder and faster with every stroke, knowing you won't last more than a few more thrusts before you're painting her womb white.  Your wife is too cummed out to care or respond, ");
-		if (cocks == 1) outputText("her tongue hanging out as she pants nonsensical pleasure-noises.");
+		if (cocks === 1) outputText("her tongue hanging out as she pants nonsensical pleasure-noises.");
 		else outputText("and her mouth is too full of " + player.cockDescript(secondary) + " to do anything but gurgle out nonsensical pleasure-noises.");
 		outputText("  Swelling wider inside the wet hole, your " + player.cockDescript(primary) + " tingles and clenches, about to unload.\n\n");
 		
 		outputText("An intense orgasm rolls through you, making your body clench as your piston your " + player.cockDescript(primary) + " forwards, burying it deeply inside the goblin-shaped cum-receptacle.  ");
 		if (player.hasKnot(primary)) outputText("Your knot balloons inside her, locking her in place");
-		else if (player.cocks[primary].cockType == CockTypesEnum.HORSE) outputText("Your flare widens, actually holding itself inside Tamani's womb");
-		else if (player.cocks[primary].cockType == CockTypesEnum.DEMON) outputText("The corrupted nodules along your " + player.cockDescript(primary) + " pulsate in rippling, wave-like motions, massaging the interior of Tamani's twat");
-		else if (player.cocks[primary].cockType == CockTypesEnum.TENTACLE) outputText("Your tentacle-cock's tip widens, becoming mushroom-like inside Tamani's womb");
+		else if (player.cocks[primary].cockType === CockTypesEnum.HORSE) outputText("Your flare widens, actually holding itself inside Tamani's womb");
+		else if (player.cocks[primary].cockType === CockTypesEnum.DEMON) outputText("The corrupted nodules along your " + player.cockDescript(primary) + " pulsate in rippling, wave-like motions, massaging the interior of Tamani's twat");
+		else if (player.cocks[primary].cockType === CockTypesEnum.TENTACLE) outputText("Your tentacle-cock's tip widens, becoming mushroom-like inside Tamani's womb");
 		else outputText("Your sensitive head swells slightly in time with the contractions of your orgasm");
 		outputText(" as you begin to fill your wife's womb with seed.   The orgasm is intense");
 		if (player.cumQ() < 50) outputText(", but brief, and after a few moments of spasming pleasure, the flood of cum slows to a trickle.");
@@ -870,7 +870,7 @@ internal function getRapedByTamaniYouHypnoSlut():void {
 			outputText(".");
 		}
 		if (cocks > 1) {
-			if (cocks == 2) outputText("  Your other" + player.cockDescript(1));
+			if (cocks === 2) outputText("  Your other" + player.cockDescript(1));
 			else outputText("  Each of your other " + player.multiCockDescriptLight());
 			outputText(" splatters its own orgasmic juice everywhere, making a thorough mess of things, but neither of you seem to mind.");
 		}
@@ -957,7 +957,7 @@ internal function tamaniBeaten():void {
 	outputText(".  She's clueless to the growing size that dangles beneath your spider-half, the secret drider treasure that you usually keep retracted.  A dollop of green goo drips from the tip of the semi-hard organ, still hidden from the goblin matron.");
 	outputText("\n\nYou skitter up to her and calmly say, \"<i>Bend over.  I want to take you with my spider half.</i>\"");
 	outputText("\n\nThe eager slut smirks and chuckles, \"<i>Whatever you say, ");
-	if (flags[kFLAGS.TIMES_OVIPOSITED_TAMANI] == 0) outputText("my baby-" + player.mf("daddy","momma"));
+	if (flags[kFLAGS.TIMES_OVIPOSITED_TAMANI] === 0) outputText("my baby-" + player.mf("daddy","momma"));
 	else outputText("my egg-obsessed arachnophile");
 	outputText(".</i>\"  Soon, the purple-haired skank has assumed the position, though she has the temerity to look back over her shoulder and lick her lips.  Her smouldering gaze is just beckoning for cock, but in this case, she'll be making do with your ovipositor.  You look away from her hungry eyes down to the green bubble-butt, admiring the swell of her cheeks, her puckered anus, and best of all, her sopping wet nethers.\n\n");
 	
@@ -974,7 +974,7 @@ internal function tamaniBeaten():void {
 	outputText("\n\nAt last, the bloated bitch slides into the gooey green puddle with a splash, freeing your ovipositor to retract.  She immediately begins snoring, clearly as satisfied as you.  What a strange creature.");
 	flags[kFLAGS.TIMES_OVIPOSITED_TAMANI]++;
 	//Don't encounter Tamani for 3 days if fertilized
-	if (player.fertilizedEggs() == 0) pregnancy.knockUpForce(PregnancyStore.PREGNANCY_DRIDER_EGGS, 72);
+	if (player.fertilizedEggs() === 0) pregnancy.knockUpForce(PregnancyStore.PREGNANCY_DRIDER_EGGS, 72);
 	player.dumpEggs();
 	player.orgasm('Ovi');
 	combat.cleanupAfterCombat();
@@ -1074,7 +1074,7 @@ public function openTamanisSatchel():void {
 	menu();
 	if (player.keyItemv1("Tamani's Satchel") > 0) {
 		outputText(images.showImage("item-reducto"));
-		outputText("\nThere " + (player.keyItemv1("Tamani's Satchel") == 1 ? "is a container" : "are two containers") + " of pasty substance labelled as 'Reducto'.");
+		outputText("\nThere " + (player.keyItemv1("Tamani's Satchel") === 1 ? "is a container" : "are two containers") + " of pasty substance labelled as 'Reducto'.");
 		addButton(0, consumables.REDUCTO.shortName, satchelTakeItem, consumables.REDUCTO, 1);
 		isEmpty = false;
 	}
@@ -1086,7 +1086,7 @@ public function openTamanisSatchel():void {
 	}
 	if (player.keyItemv3("Tamani's Satchel") > 0) {
 		outputText(images.showImage("item-lDraft"));
-		outputText("\nThere " + (player.keyItemv3("Tamani's Satchel") == 1 ? "is a bottle" : "are two bottles") + " of pink fluid, labelled 'Lust Draft'.");
+		outputText("\nThere " + (player.keyItemv3("Tamani's Satchel") === 1 ? "is a bottle" : "are two bottles") + " of pink fluid, labelled 'Lust Draft'.");
 		addButton(2, consumables.L_DRAFT.shortName, satchelTakeItem, consumables.L_DRAFT, 3);
 		isEmpty = false;
 	}

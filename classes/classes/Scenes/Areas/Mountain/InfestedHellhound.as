@@ -17,7 +17,7 @@ package classes.Scenes.Areas.Mountain
 		{
 			outputText("The thing rears up onto its hind legs, revealing its more humanoid stature, and allowing it to use its flexible paws to caress its twinned-penises.  It lurches forwards powerfully, its thickness twitching and flaring as it launches a wave of worm-filled canine cum at you.");
 			outputText("\n");
-			if (rand(2) == 0) {
+			if (rand(2) === 0) {
 				//Get hit – 10+ lust
 				game.dynStats("lus", 5 + player.lib / 20);
 				outputText("Taken off-guard by the unexpected sexual display, you fail to move out of the way, and the wormy jism splatters you from the chest down.");
@@ -43,7 +43,7 @@ package classes.Scenes.Areas.Mountain
 						if (player.balls > 0) outputText(player.ballsDescriptLight());
 						else outputText(player.multiCockDescriptLight());
 						outputText(" wriggle");
-						if (player.balls == 0 && player.cockTotal() == 1) outputText("s");
+						if (player.balls === 0 && player.cockTotal() === 1) outputText("s");
 						outputText(" hotly, expelling a few of your own worms in response along with a dribble of thick pre-cum.   You wonder what it would feel like to let his worms crawl inside you...");
 						player.takeLustDamage(10, true);
 					} else {

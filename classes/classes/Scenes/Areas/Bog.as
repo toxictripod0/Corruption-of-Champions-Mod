@@ -46,13 +46,13 @@ package classes.Scenes.Areas
 		public function get explorationEncounter():Encounter {
 			const game:CoC     = kGAMECLASS;
 			const fn:FnHelpers = Encounters.fn;
-			if (_explorationEncounter == null) _explorationEncounter =
+			if (_explorationEncounter === null) _explorationEncounter =
 					Encounters.group(game.commonEncounters, {
 						name: "phoukahalloween",
 						when: function ():Boolean {
 							//Must have met them enough times to know what they're called, have some idea of their normal behaviour
 							return isHalloween()
-								   && date.fullYear > flags[kFLAGS.TREACLE_MINE_YEAR_DONE] == 0
+								   && date.fullYear > flags[kFLAGS.TREACLE_MINE_YEAR_DONE] === 0
 								   && flags[kFLAGS.PHOUKA_LORE] > 0;
 						},
 						call: phoukaScene.phoukaHalloween
@@ -66,7 +66,7 @@ package classes.Scenes.Areas
 					}, {
 						name: "froggirl",
 						when: function ():Boolean {
-							return player.buttPregnancyIncubation == 0
+							return player.buttPregnancyIncubation === 0
 						},
 						call: frogGirlScene.findTheFrogGirl
 					}, {

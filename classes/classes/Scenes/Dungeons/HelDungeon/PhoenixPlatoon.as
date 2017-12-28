@@ -36,7 +36,7 @@ package classes.Scenes.Dungeons.HelDungeon
 				phoenixPlatoonRush();
 				createStatusEffect(StatusEffects.Platoon,0,0,0,0);
 			}
-			else if (statusEffectv1(StatusEffects.Platoon) == 0) {
+			else if (statusEffectv1(StatusEffects.Platoon) === 0) {
 				phoenixPlatoonFireBreath();
 				addStatusValue(StatusEffects.Platoon,1,1);
 			}

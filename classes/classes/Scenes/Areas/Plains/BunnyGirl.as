@@ -7,7 +7,7 @@ package classes.Scenes.Areas.Plains{
 
 	public class BunnyGirl extends BaseContent{
 		public function isItEaster():Boolean {
-			return (date.date >= 30 && date.date <= 31 && date.month == 2) || (date.month == 3 && date.date <= 1);
+			return (date.date >= 30 && date.date <= 31 && date.month === 2) || (date.month === 3 && date.date <= 1);
 		}
 
 //Easter Bunny 
@@ -18,7 +18,7 @@ package classes.Scenes.Areas.Plains{
 public function bunnbunbunMeet():void {
 	clearOutput();
 	spriteSelect(SpriteDb.s_easter_bunneh);
-	if (flags[kFLAGS.MET_BUNBUN] == 0) {
+	if (flags[kFLAGS.MET_BUNBUN] === 0) {
 		outputText("A ");
 		if (player.tallness > 64) outputText("short ");
 		outputText("bunny-girl appears from behind some bushes, hopping about and clutching a basket full of multicolored eggs tightly in front of her muscular, fur-covered thighs.  She hops around a few times, peering closely at the ground as if searching for something.  Her slow, deliberate hopping comes to an end as she looks up and spots you.  The bunny's eyes widen into shocked dinner-plates, like she's utterly amazed someone saw her.  She freezes completely still, watching you, and you're given the chance to give her a good looking over.\n\n");
@@ -40,7 +40,7 @@ public function bunnbunbunMeet():void {
 	//Met her
 	else {
 		//Bunbunsplosions!
-		if (rand(6) == 0 || (isEaster() && rand(3) == 0)) {
+		if (rand(6) === 0 || (isEaster() && rand(3) === 0)) {
 			adjathaEggsplosions();
 			return;
 		}
@@ -70,7 +70,7 @@ public function bunnbunbunMeet():void {
 			addButton(2, "69", bunbun69, undefined, undefined, undefined, "Sixty-nine her?");
 		}
 		if (player.canOviposit()) {
-			if (!player.canOvipositBee() || rand(2) == 0)
+			if (!player.canOvipositBee() || rand(2) === 0)
 				addButton(3, "LayYourEggs", ovipositBunnyEaster, undefined, undefined, undefined, "Fill her with your own eggs?");
 			else
 				addButton(3, "LayYourEggs", layEggsInBunbuns, undefined, undefined, undefined, "Fill her with your own eggs?");
@@ -167,7 +167,7 @@ private function bunbunFucksYourVag():void {
 	clearOutput();
 	outputText("An anticipatory grin widens across your " + player.faceDescript() + " as you speedily disrobe, discarding your " + player.armorName);
 	
-	if (player.weaponName != "fists") outputText(" and " + player.weaponName);
+	if (player.weaponName !== "fists") outputText(" and " + player.weaponName);
 	outputText(" in a hurry.   Meanwhile the bunny looks on in a semi-aroused stupor, stroking her length with one hand while her other teases one of the hard nubs of her nipples.  You sigh with excitement as you position yourself above her, lining up her somewhat angular crown with the entrance to your " + player.vaginaDescript(0) + " before you start to drop.");
 	if (player.vaginas[0].vaginalWetness >= VaginaClass.WETNESS_DROOLING) outputText("  Moisture leaks in a steady drizzle, mixing with bunny-pre to totally slick the soon-to-be invading member.");
 	outputText("\n\n");
@@ -212,7 +212,7 @@ private function bunbunFucksYourVag():void {
 		else if (player.cocks[0].cockLength < 28) outputText("on the bunny's face");
 		else outputText("past the bunny's head");
 		outputText(", and your free hand wastes no time in tending to your male ");
-		if (player.cockTotal() == 1) outputText("half's needs, slathering it in pre-cum and stroking hard and fast.");
+		if (player.cockTotal() === 1) outputText("half's needs, slathering it in pre-cum and stroking hard and fast.");
 		else outputText("halfs' needs, slathering them in pre-cum and stroking hard and fast.");
 	}
 	outputText("  The futanari rabbit's dick-head swells as the egg reaches her tip, completely opening your womb, and then with one last explosive push, launches it deep inside you.\n\n");
@@ -345,16 +345,16 @@ private function bunbunGetsFucked():void {
 	var y:Number = player.cockThatFits2(40);
 	
 	outputText("You disrobe and toss your " + player.armorName + " to the side, immediately forgetting about it as the bunny-girl lifts her sack to expose the bright pink flesh of her femininity.  It glistens, practically steaming up the air with her plentiful lubricants.  She runs a slender finger around the moist hole, beckoning you to plunge inside and fill her hungry flesh with your " + player.cockDescript(x) + ".  Lust burns through you as you drop to your knees and line your " + player.cockDescript(x) + " up with that ready opening");
-	if (y != -1) outputText(", taking care to align your " + player.cockDescript(y) + " with her tightly puckered backdoor as well.");
+	if (y !== -1) outputText(", taking care to align your " + player.cockDescript(y) + " with her tightly puckered backdoor as well.");
 	else outputText(", barely able to restrain yourself as the time for penetration approaches.");
 	outputText("\n\n");
 	
 	outputText("The nubile bunny's eyes cross as you push forwards, sliding your " + player.cockHead(x) + " over her love-slicked lips until it has a generous coating and pressing harder.  ");
-	if (y != -1) outputText("She squeaks at the pressure on her tender asshole, but doesn't object as your pre-cum smears over it.  ");
+	if (y !== -1) outputText("She squeaks at the pressure on her tender asshole, but doesn't object as your pre-cum smears over it.  ");
 	outputText("At once, her greedy breeding hole relaxes ");
-	if (y != -1) outputText("along with her anus ");
+	if (y !== -1) outputText("along with her anus ");
 	outputText("and your " + player.cockDescript(x));
-	if (y != -1) outputText(" and " + player.cockDescript(y) + " sink");
+	if (y !== -1) outputText(" and " + player.cockDescript(y) + " sink");
 	else outputText(" sinks");
 	outputText(" into her slippery, warm depths.  She pants and groans with happiness, going so far as to vocalize her pleasure, \"<i>Oooh yes, I don't know why but it feels just as good as breeding season!  If you keep this up, " + player.mf("stud","sexy") + ", you might... ahhhh.. make me egg!</i>\"\n\n");
 	
@@ -363,7 +363,7 @@ private function bunbunGetsFucked():void {
 	outputText("Once you bottom out, the hermaphrodite actually starts to squirt pre-cum onto herself.  It isn't quite as much as you'd expect from a real orgasm, but it's enough that she makes a slippery mess of her tits and belly.  She gathers it up and starts stroking herself off with it, and you watch the enthusiastic bunny masturbate herself.\n\n");
 	
 	outputText("\"<i>Nooooooo,</i>\" she cries, thinking you meant to stop, but you savagely slam back in, rocking her body and making her petite, pre-cum-glazed tits jiggle pleasantly.   Her 'no' turns into an 'OHHH' in that split second, and before she can stop or catch her breath, you start fucking hard, watching her cum-shined breasts wobble underneath you.  ");
-	if (y != -1) outputText("Her tight asshole slowly loosens around your " + player.cockDescript(y) + ", and so much lubricant splatters from her cunt with each thrust that the sensations of both your dicks become nigh-identical, save for the tight ring gripping the bottom one.");
+	if (y !== -1) outputText("Her tight asshole slowly loosens around your " + player.cockDescript(y) + ", and so much lubricant splatters from her cunt with each thrust that the sensations of both your dicks become nigh-identical, save for the tight ring gripping the bottom one.");
 	else {
 		outputText("So much lubricant splatters from her cunt that your thighs");
 		if (player.balls > 0) outputText(", belly, and balls");
@@ -375,7 +375,7 @@ private function bunbunGetsFucked():void {
 	outputText("The bunny-girl never lets up on the fourteen inch monster between her legs, and it seems to have gotten a little bit thicker and harder from all the attention.  Her cock has never stopped dripping and spurting pre-cum in all this time, and she's turning into a syrupy, cum-slicked mess before either of you have even gotten off.  The moans and heat pouring off her loins make it very clear that's going to change very soon, so you reach down and give her taut ass a rough slap.  It sets off a far different orgasm than you would've expected.\n\n");
 	
 	outputText("Before your eyes the rabbit-girl's balls disappear and the flesh of her sack pulls tight against her.  It actually looks like she never had one at all.  You look to her for answers, but her eyes are rolled back, her body is quaking around you, and her mouth is babbling, \"<i>Eggfuck... eggbreedegg... ungungegg... eggegg,</i>\" over and over.  Her cunt clamps down on you with a vice-like grip that makes your eyes cross and your crotch bubble with the heat of a coming orgasm.");
-	if (y != -1) outputText("  Surprisingly, her asshole stays about the same, but it was already a little tighter and you know you'll be pumping it full of goo in a second.");
+	if (y !== -1) outputText("  Surprisingly, her asshole stays about the same, but it was already a little tighter and you know you'll be pumping it full of goo in a second.");
 	outputText("\n\n");
 	
 	outputText("The bunny's convulsions take on a manic, thrashing pace, and before your eyes the base of her swollen cock begins to distend, nearly doubling in width from some internal object.  You wonder how she could enjoy something like that, but maybe her body is built for it?  It slowly works its way up the shaft while your long-eared lover stays locked in orgasm, panting, gasping, and leaking whiter-colored pre-cum that stops the convulsions anywhere it hits.  There must be something in it that forcibly relaxes the muscles, but before you can ponder it further your own climax has arrived.\n\n");
@@ -386,9 +386,9 @@ private function bunbunGetsFucked():void {
 	if (player.hasSheath()) outputText("sheath");
 	else outputText("base");
 	outputText(" rubs her passion-inflamed pussy-lips.  " + player.SMultiCockDesc() + " unloads, splattering out ropes of cum into ");
-	if ((player.cockTotal() == 2 && y == -1) || player.cockTotal() > 2) outputText("and onto ");
+	if ((player.cockTotal() === 2 && y === -1) || player.cockTotal() > 2) outputText("and onto ");
 	outputText("the insensate bunny-breeder.  Her silken pussy milks and squeezes as you cum, seeming to draw your seed from your cock itself and pull it deeper inside, leaving none to waste.");
-	if (y != -1) {
+	if (y !== -1) {
 		outputText("  Her ass gurgles from your deposit");
 		if (player.cumQ() > 500) outputText(", and her stomach gains a bit of pudge from the copious jism deluge you pump into her");
 		outputText(".");
@@ -423,7 +423,7 @@ private function bunbun69():void {
 	clearOutput();
 	//Centaur
 	if (player.isTaur()) {
-		if (rand(2) == 0) {
+		if (rand(2) === 0) {
 			//should trigger if PC is a centaur and height > 4'0", since a horse <= 4feet could 69 the bunny >_>
 			outputText("Without thinking it over beyond 'that sounds hot', you declare your intention to 69 the bunny girl.  She stands there, mouth hanging open and heat briefly forgotten.\n\n");
 			
@@ -492,13 +492,13 @@ private function bunbun69():void {
 			
 			outputText("Her second egg forces its way down your throat with gushing shudders and you can feel your hips straining against the weight of your overburdened stomach. You're a little afraid of what the second one will do to you as it slides out of the flared tip of the bunny's fourteen inches. Maybe it's the milking motion of the bunny's head bobbing in happy hops on your cock or maybe it's the swelling of the second egg, but your body begins to feel hot and your flesh tingles at your scalp and butt. You clench your eyes, willing yourself to digest the bunny's candy eggs and, to your surprise, your belly slows its expansion, gradually shrinking as the eggs burst in your stomach, unloading their gooey candy filling.");
 			player.refillHunger(60);
-			if (player.tail.type != Tail.RABBIT) {
+			if (player.tail.type !== Tail.RABBIT) {
 				//[No Tail: 
-				if (player.tail.type == Tail.NONE) outputText("  The heat around your lower back clutches at your tail bone and you feel a fluffy explosion swell around your butt cheeks as <b>a fluffy bunny's tail pops out of your back</b>, twitching excitedly!");
+				if (player.tail.type === Tail.NONE) outputText("  The heat around your lower back clutches at your tail bone and you feel a fluffy explosion swell around your butt cheeks as <b>a fluffy bunny's tail pops out of your back</b>, twitching excitedly!");
 				//[Existing tail: 
 				else outputText("  Your tail jiggles and shrinks, slowly sucking back into your body until only a tiny nub remains which quickly explodes with fluff into <b>your new cuddly, twitching bunny tail!</b>");
 			}
-			if (player.ears.type != Ears.BUNNY) {
+			if (player.ears.type !== Ears.BUNNY) {
 				outputText("  The top of your head is next, it seems.");
 				//[No antennae: 
 				outputText("  Your eyebrows feel like they're being drawn upwards, your eyes getting larger and larger until you're almost painfully aware of every color and sound around you. You shake your head and <b>large, floppy bunny ears bounce in front of your eyes</b>. You slap the sides of your head and, sure enough, your old ears are gone.");
@@ -547,13 +547,13 @@ private function bunbun69():void {
 			
 			outputText("Her second egg forces its way down your throat with pulsing shudders and you can feel your hips straining against the weight of your overburdened stomach. You're a little afraid of what the second one will do to you as it slides out of the flared tip of the bunny's fourteen inches. Maybe it's the milking motion of the bunny's head bobbing in happy hops on your cock or maybe it's the swelling numbness of the eggs, but your body begins to feel hot and your flesh tingles at your scalp and butt. You clench your eyes, grunting through the heat of the bunny's eggs and, to your surprise, your belly begins to feel like it's emptying.");
 			player.refillHunger(60);
-			if (player.tail.type != Tail.RABBIT) {
+			if (player.tail.type !== Tail.RABBIT) {
 				//[No Tail: 
-				if (player.tail.type == Tail.NONE) outputText("  The heat around your lower back clutches at your tail bone and you feel a fluffy explosion swell around your butt cheeks as a fluffy bunny's tail pops out of your back, twitching excitedly!");
+				if (player.tail.type === Tail.NONE) outputText("  The heat around your lower back clutches at your tail bone and you feel a fluffy explosion swell around your butt cheeks as a fluffy bunny's tail pops out of your back, twitching excitedly!");
 				//Existing tail: 
 				else outputText("  Your tail jiggles and shrinks, slowly sucking back into your body until only a tiny nub remains which quickly explodes with fluff into a cuddly, twitching bunny tail!");
 			}
-			if (player.ears.type != Ears.BUNNY) {
+			if (player.ears.type !== Ears.BUNNY) {
 				outputText("  The top of your head is next, it seems.");
 				//[No antennae:
 				outputText("  Your eyebrows feel like they're being drawn upwards, your eyes getting larger and larger until you're almost painfully aware of every color and sound around you. You shake your head and large, floppy bunny ears bounce in front of your eyes.");
@@ -565,7 +565,7 @@ private function bunbun69():void {
 			else if (player.cumQ() < 1000) outputText("a noticeable girth");
 			else outputText("bloated obscenely");
 			outputText(", your spunk calming the egg-laying passion. She pulls her shrinking phallus from your mouth with a wet slurp, the taste of her strange cum sweet on your lips. She rises to a crouch and gives your ");
-			if (player.ears.type != Ears.BUNNY) outputText("new ");
+			if (player.ears.type !== Ears.BUNNY) outputText("new ");
 			outputText("ears a playful tweak between her thumb and forefinger. \"<i>Sorry about that, I don't know what came over me! I certainly didn't expect this, though! Kind of makes me want to stick around and see if you and I could pop out more bunnies,</i>\" she winks. \"<i>But unfortunately, I've got to get going! Maybe I'll try to find you again, some time down the line.</i>\" She gives you a moist little kiss and hops away, still energetic after all that. You groan, still recovering from the eggs.");
 			
 			player.tail.type = Tail.RABBIT;
@@ -593,13 +593,13 @@ private function bunbun69():void {
 		outputText("Still possessed by the delirious egg-laying hysteria, the bunny grunts and jams her cock back down your throat, pushing the egg along with it. Your skin mushrooms as the bunny's load slides down your cum-lubricated neck and tumbles into your belly with an audible, vulgar plop. A feeling of incredible fullness fills you, as if you've been swallowing spunk and eggs for hours. You become dizzy from the bunny's numbing jizz and when her sac deflates as the second egg slides into her dick, you shake your head weakly, as if to say 'no more.' The girl is too far gone in her wanton ardor to take your motion as anything but encouragement, however, and she nuzzles her nose into your vulva, whiskers vibrating with a happy little hum, her buck teeth massaging you enthusiastically, impatient for her own creamy meal. Her hands slide from the back of your head, along your neck, down your back, and to your rump, fingers wrapping around to find your sphincter. Slipping both middle fingers in, she strokes your inner walls with fingers and tongue until your orgasm overpowers your bunny-fucked daze and you climax again, your egg-bloated body spurting in gushing jets of female lubrication into the olive girl's twitching nose.\n\n");
 		
 		outputText("Her second egg forces its way down your throat with pulsing shudders and you can feel your hips straining against the weight of your overburdened stomach. You're a little afraid of what the second one will do to you as it slides out of the flared tip of the bunny's fourteen inches. Maybe it's the milking motion of the bunny's head bobbing in happy hops on your clit or maybe it's the swelling numbness of the eggs, but your body begins to feel hot and your flesh tingles at your scalp and butt. You clench your eyes, grunting through the heat of the bunny's eggs and, to your surprise, your belly begins to feel like it's emptying.");
-		if (player.tail.type != Tail.RABBIT) {
+		if (player.tail.type !== Tail.RABBIT) {
 			//[No Tail: 
-			if (player.tail.type == Tail.NONE) outputText("  The heat around your lower back clutches at your tail bone and you feel a fluffy explosion swell around your butt cheeks as a fluffy bunny's tail pops out of your back, twitching excitedly!");
+			if (player.tail.type === Tail.NONE) outputText("  The heat around your lower back clutches at your tail bone and you feel a fluffy explosion swell around your butt cheeks as a fluffy bunny's tail pops out of your back, twitching excitedly!");
 			//Existing tail: 
 			else outputText("  Your tail jiggles and shrinks, slowly sucking back into your body until only a tiny nub remains which quickly explodes with fluff into a cuddly, twitching bunny tail!");
 		}
-		if (player.ears.type != Ears.BUNNY) {
+		if (player.ears.type !== Ears.BUNNY) {
 			outputText("  The top of your head is next, it seems.");
 			//[No antennae:
 			outputText("  Your eyebrows feel like they're being drawn upwards, your eyes getting larger and larger until you're almost painfully aware of every color and sound around you. You shake your head and large, floppy bunny ears bounce in front of your eyes.");
@@ -607,7 +607,7 @@ private function bunbun69():void {
 		outputText("\n\n");
 		
 		outputText("With a happy sigh, the girl rubs your slick honey off of her face and gives your clit a final, pleased lick. She pulls her shrinking phallus from your mouth with a wet slurp, the taste of her cum sweetly icy on your lips. She rises to a crouch and gives your ");
-		if (player.ears.type != Ears.BUNNY) outputText("new ");
+		if (player.ears.type !== Ears.BUNNY) outputText("new ");
 		outputText("ears a playful tweak between her thumb and forefinger. \"<i>Sorry about that, I don't know what came over me! I certainly didn't expect this, though! Kind of makes me want to stick around and see if you and I could pop out more bunnies,</i>\" she winks. \"<i>But unfortunately, I've got to get going! Maybe I'll try to find you again, some time down the line.</i>\" She gives you a moist little kiss and hops away, still energetic after all that. You groan, still recovering from the eggs.");
 		player.tail.type = Tail.RABBIT;
 		player.ears.type = Ears.BUNNY;
@@ -629,7 +629,7 @@ public function layEggsInBunbuns():void {
 	else outputText("low-hanging bee abdomen drools honey-like ichor down its carapace from the bulge where the thick black organ shows its need to relieve your burden.");
 	outputText("  The bunny gasps upon noticing it, the herm's hips wiggling. \"<i>Oh my, could... could you mount me with that?  I need to egg so badly.</i>\"  Not needing to be urged further, you arch your bee-section up underneath you while lifting the lusty bunny against you.");
 	outputText("\n\nPulling her so that she presses her tits against your [chest], the throbbing egg-depositor rubs between her legs.  With a high squeal she pushes forward harder, the long lapin cock twitching with her heartbeat");
-	if (player.gender == 0) outputText(" against the empty place of your crotch.");
+	if (player.gender === 0) outputText(" against the empty place of your crotch.");
 	else {
 		if (player.hasCock()) outputText(" alongside [eachCock]");
 		if (player.hasVagina()) outputText(" and her hefty oval balls rubbing the [vagina] tucked between your thighs");
@@ -644,11 +644,11 @@ public function layEggsInBunbuns():void {
 	if (player.gender > 0) {
 		outputText(", ");
 		if (player.hasCock()) outputText("[eachCock]");
-		if (player.gender == 3) outputText(" and ");
+		if (player.gender === 3) outputText(" and ");
 		if (player.hasVagina()) outputText("your [vagina]");
 		outputText(" lathering the bunny-girl in ");
 		if (player.hasCock()) outputText("spunk");
-		if (player.gender == 3) outputText(" and ");
+		if (player.gender === 3) outputText(" and ");
 		if (player.hasVagina()) outputText("femcum");
 	}
 	outputText(".  Stuffing a warm hole with egg after egg is not only fulfilling (for <i>both</i> involved) but is also damn fun, which the rabbit agrees with!");
@@ -658,7 +658,7 @@ public function layEggsInBunbuns():void {
 	if (player.gender > 0) {
 		outputText("  You add to the mess, ");
 		if (player.hasCock()) outputText("spraying a long, thick load against the bunny's soft tits from your [eachCock]");
-		if (player.gender == 3) outputText(" and ");
+		if (player.gender === 3) outputText(" and ");
 		if (player.hasVagina()) outputText("splashing her balls with your girlcum");
 		outputText(".");
 	}

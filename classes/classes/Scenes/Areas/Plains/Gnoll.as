@@ -32,7 +32,7 @@ package classes.Scenes.Areas.Plains
 				outputText("Using your skills at evading attacks, you anticipate and sidestep " + a + short + "'s attack.\n");
 			}
 			//("Misdirection"
-			else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
+			else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName === "red, high-society bodysuit") {
 				outputText("Using Raphael's teachings, you anticipate and sidestep " + a + short + "' attacks.\n");
 			}
 			//Determine if cat'ed
@@ -47,7 +47,7 @@ package classes.Scenes.Areas.Plains
 				if (damage <= 0) {
 					damage = 0;
 					//hapies have their own shit
-					if (short == "harpy") outputText("The harpy dives at you with her foot-talons, but you deflect the attack, grasp onto her leg, and swing her through the air, tossing her away from you before she has a chance to right herself.");
+					if (short === "harpy") outputText("The harpy dives at you with her foot-talons, but you deflect the attack, grasp onto her leg, and swing her through the air, tossing her away from you before she has a chance to right herself.");
 					//Due to toughness or amor...
 					else if (rand(player.armorDef + player.tou) < player.armorDef) outputText("Your " + player.armorName + " absorb and deflect every " + weaponVerb + " from " + a + short + ".");
 					else outputText("You deflect and block every " + weaponVerb + " " + a + short + " throws at you.");
@@ -55,27 +55,27 @@ package classes.Scenes.Areas.Plains
 				//everyone else
 				else {
 					//Gnoll Attack #1
-					if (attack == 0) {
+					if (attack === 0) {
 						outputText("The gnoll leaps forward, her jaws slamming shut across your upper arm.  She twists away before you can touch her, laughing the entire time.");
 						damage += 10;
 					}
 					//Gnoll Attack #2
-					else if (attack == 1) {
+					else if (attack === 1) {
 						outputText("With a shudder and lurch, the gnoll barrels forward into your gut, the claws of her free hand raking across your belly.");
 						damage += 3;
 					}
 					//Gnoll Attack #3
-					else if (attack == 2) {
+					else if (attack === 2) {
 						outputText("The gnoll tumbles to the ground, then comes up with a handful of sand.  The sand goes in your face; the club goes into your cheek.  Ow.");
 						damage += 13;
 					}
 					//Gnoll Attack #4
-					else if (attack == 3) {
+					else if (attack === 3) {
 						outputText("The hyena girl giggles and darts forward, teeth snapping.  Spittle flies everywhere, and the snapping teeth find purchase, drawing red lines across your body.");
 						damage += 8;
 					}
 					//Gnoll Attack #5
-					else if (attack == 4) {
+					else if (attack === 4) {
 						outputText("With a mocking laugh, the gnoll brings her club high and then down in a savage strike that catches you across the temple.");
 						damage += 25;
 					}
@@ -94,27 +94,27 @@ package classes.Scenes.Areas.Plains
 			var tease:Number = rand(6);
 			var bonus:Number = 0;
 			//Gnoll Tease #1
-			if (tease == 0) {
+			if (tease === 0) {
 				outputText("The gnoll takes a moment to stretch her sleek, athletic body.  Her free hand runs up her side and she leers knowingly at you.");
 				bonus += 5;
 			}
 			//Gnoll Tease #2
-			else if (tease == 1) {
+			else if (tease === 1) {
 				outputText("With one hand, the hyena girl grasps her eight-inch clitoris and strokes it.  \"<i>I know you're curious!</i>\" she laughs.  \"<i>You want to try this.</i>\"");
 				bonus += 5;
 			}
 			//Gnoll Tease #3
-			else if (tease == 2) {
+			else if (tease === 2) {
 				outputText("The gnoll bounds forward, but instead of clobbering you she slides her lithe body against yours.  \"<i>We don't have to fight,</i>\" she titters.  \"<i>It's lots easier if I just fuck you.</i>\"");
 				bonus += 10;
 			}
 			//Gnoll Tease #4
-		 	else if (tease == 3) {
+		 	else if (tease === 3) {
 				outputText("The gnoll slides her fingers down the length of her pseudo-penis and collects the cream that drips from its end.  With two steps, she's inside your guard, but all she does is wave her hand in front of your nose.  The reek of sex nearly bowls you over.");
 				bonus += 12;
 			}
 			//Gnoll Tease #5
-			else if (tease == 4) outputText("\"<i>I love outlanders,</i>\" the gnoll confides in you as she circles.  \"<i>You have such interesting cries when you get fucked in a new way.</i>\"  She laughs, and the sound is far louder than it has any right to be.\n\n");
+			else if (tease === 4) outputText("\"<i>I love outlanders,</i>\" the gnoll confides in you as she circles.  \"<i>You have such interesting cries when you get fucked in a new way.</i>\"  She laughs, and the sound is far louder than it has any right to be.\n\n");
 			//Gnoll Tease #6
 			else {
 				outputText("The gnoll dances forward, then back, her whole body alive with sensual movement.  She catches the way you watch her and smirks, throwing in a hip-shake just for you.");
@@ -145,7 +145,7 @@ package classes.Scenes.Areas.Plains
 				outputText("Using your skills at evading attacks, you anticipate and sidestep " + a + short + "'s attack.\n");
 			}
 			//("Misdirection"
-			else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
+			else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName === "red, high-society bodysuit") {
 				outputText("Using Raphael's teachings, you anticipate and sidestep " + a + short + "' attacks.\n");
 			}
 			//Determine if cat'ed
@@ -160,7 +160,7 @@ package classes.Scenes.Areas.Plains
 				if (damage <= 0) {
 					damage = 0;
 					//hapies have their own shit
-					if (short == "harpy") outputText("The harpy dives at you with her foot-talons, but you deflect the attack, grasp onto her leg, and swing her through the air, tossing her away from you before she has a chance to right herself.");
+					if (short === "harpy") outputText("The harpy dives at you with her foot-talons, but you deflect the attack, grasp onto her leg, and swing her through the air, tossing her away from you before she has a chance to right herself.");
 					//Due to toughness or amor...
 					else if (rand(player.armorDef + player.tou) < player.armorDef) outputText("Your " + player.armorName + " absorb and deflect every " + weaponVerb + " from " + a + short + ".");
 					else outputText("You deflect and block every " + weaponVerb + " " + a + short + " throws at you.");
@@ -168,27 +168,27 @@ package classes.Scenes.Areas.Plains
 				//everyone else
 				else {
 					//Gnoll Attack #1
-					if (attack == 0) {
+					if (attack === 0) {
 						outputText("The gnoll leaps forward, her jaws slamming shut across your upper arm.  She twists away before you can touch her, laughing the entire time.");
 						damage += 10;
 					}
 					//Gnoll Attack #2
-					else if (attack == 1) {
+					else if (attack === 1) {
 						outputText("With a shudder and lurch, the gnoll barrels forward into your gut, the claws of her free hand raking across your belly.");
 						damage += 3;
 					}
 					//Gnoll Attack #3
-					else if (attack == 2) {
+					else if (attack === 2) {
 						outputText("The gnoll tumbles to the ground, then comes up with a handful of sand.  The sand goes in your face; the club goes into your cheek.  Ow.");
 						damage += 13;
 					}
 					//Gnoll Attack #4
-					else if (attack == 3) {
+					else if (attack === 3) {
 						outputText("The hyena girl giggles and darts forward, teeth snapping.  Spittle flies everywhere, and the snapping teeth find purchase, drawing red lines across your body.");
 						damage += 8;
 					}
 					//Gnoll Attack #5
-					else if (attack == 4) {
+					else if (attack === 4) {
 						outputText("With a mocking laugh, the gnoll brings her club high and then down in a savage strike that catches you across the temple.");
 						damage += 25;
 					}
@@ -212,7 +212,7 @@ package classes.Scenes.Areas.Plains
 				combatRoundOver();
 			}
 			if (hasStatusEffect(StatusEffects.Fear)) {
-				if (statusEffectv1(StatusEffects.Fear) == 0) {
+				if (statusEffectv1(StatusEffects.Fear) === 0) {
 					if (plural) {
 						removeStatusEffect(StatusEffects.Fear);
 						outputText("Your foes shake free of their fear and ready themselves for battle.");
@@ -232,7 +232,7 @@ package classes.Scenes.Areas.Plains
 			var select:Number = 1;
 			var rando:Number = 1;
 //Exgartuan gets to do stuff!
-			if (player.hasStatusEffect(StatusEffects.Exgartuan) && player.statusEffectv2(StatusEffects.Exgartuan) == 0 && rand(3) == 0) {
+			if (player.hasStatusEffect(StatusEffects.Exgartuan) && player.statusEffectv2(StatusEffects.Exgartuan) === 0 && rand(3) === 0) {
 				game.exgartuan.exgartuanCombatUpdate();
 				outputText("\n\n");
 			}
@@ -248,14 +248,14 @@ package classes.Scenes.Areas.Plains
 			}
 //If grappling...
 /* Grappling was never included
-			if (game.gameState == 2) {
+			if (game.gameState === 2) {
 				//temperment - used for determining grapple behaviors
 				//0 - avoid grapples/break grapple
 				//1 - lust determines > 50 grapple
 				//2 - random
 				//3 - love grapples
-				//		if (temperment == 0) eGrappleRetreat();
-				if (temperment == 1) {
+				//		if (temperment === 0) eGrappleRetreat();
+				if (temperment === 1) {
 					//			if (lust < 50) eGrappleRetreat();
 					doNext(3);
 				}
@@ -263,7 +263,7 @@ package classes.Scenes.Areas.Plains
 				doNext(3);
 			}
 */
-			if (rand(2) == 0) gnollTease();
+			if (rand(2) === 0) gnollTease();
 			else {
 				var damage:Number = 0;
 				var attack:Number = rand(6);
@@ -284,7 +284,7 @@ package classes.Scenes.Areas.Plains
 					outputText("Using your skills at evading attacks, you anticipate and sidestep " + a + short + "'s attack.\n");
 				}
 				//("Misdirection"
-				else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
+				else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName === "red, high-society bodysuit") {
 					outputText("Using Raphael's teachings, you anticipate and sidestep " + a + short + "' attacks.\n");
 				}
 				//Determine if cat'ed
@@ -299,7 +299,7 @@ package classes.Scenes.Areas.Plains
 					if (damage <= 0) {
 						damage = 0;
 						//hapies have their own shit
-						if (short == "harpy") outputText("The harpy dives at you with her foot-talons, but you deflect the attack, grasp onto her leg, and swing her through the air, tossing her away from you before she has a chance to right herself.");
+						if (short === "harpy") outputText("The harpy dives at you with her foot-talons, but you deflect the attack, grasp onto her leg, and swing her through the air, tossing her away from you before she has a chance to right herself.");
 						//Due to toughness or amor...
 						else if (rand(player.armorDef + player.tou) < player.armorDef) outputText("Your " + player.armorName + " absorb and deflect every " + weaponVerb + " from " + a + short + ".");
 						else outputText("You deflect and block every " + weaponVerb + " " + a + short + " throws at you.");
@@ -307,27 +307,27 @@ package classes.Scenes.Areas.Plains
 					//everyone else
 					else {
 						//Gnoll Attack #1
-						if (attack == 0) {
+						if (attack === 0) {
 							outputText("The gnoll leaps forward, her jaws slamming shut across your upper arm.  She twists away before you can touch her, laughing the entire time.");
 							damage += 10;
 						}
 						//Gnoll Attack #2
-						else if (attack == 1) {
+						else if (attack === 1) {
 							outputText("With a shudder and lurch, the gnoll barrels forward into your gut, the claws of her free hand raking across your belly.");
 							damage += 3;
 						}
 						//Gnoll Attack #3
-						else if (attack == 2) {
+						else if (attack === 2) {
 							outputText("The gnoll tumbles to the ground, then comes up with a handful of sand.  The sand goes in your face; the club goes into your cheek.  Ow.");
 							damage += 13;
 						}
 						//Gnoll Attack #4
-						else if (attack == 3) {
+						else if (attack === 3) {
 							outputText("The hyena girl giggles and darts forward, teeth snapping.  Spittle flies everywhere, and the snapping teeth find purchase, drawing red lines across your body.");
 							damage += 8;
 						}
 						//Gnoll Attack #5
-						else if (attack == 4) {
+						else if (attack === 4) {
 							outputText("With a mocking laugh, the gnoll brings her club high and then down in a savage strike that catches you across the temple.");
 							damage += 25;
 						}

@@ -107,7 +107,7 @@ package classes.Scenes.Dungeons
 			clearOutput();
 			getGame().dungeonLoc = DungeonCore.DUNGEON_DRAGON_HOUSING_DISTRICT;
 			outputText("<b><u>Housing District</u></b>\n");
-			if (9999 != 9999) {
+			if (9999 !== 9999) {
 				//Ember dialogue would go here.
 			}
 			else {
@@ -137,7 +137,7 @@ package classes.Scenes.Dungeons
 			//This comment is to be replaced with Ember dialogue. 
 			outputText("According to the signs in this area. North is the Library, West are the Baths and South is the City Square.");
 			dungeons.setDungeonButtons(roomLibrary, createCallBackFunction(traverseCorridor, "2b"), createCallBackFunction(traverseCorridor, "4a"), null);
-			if (9999 != 9999) {
+			if (9999 !== 9999) {
 				outputText("The doors leading into the arena are busted open, meaning you could just walk in if you wanted. Even though your nose is less sensitive than Ember’s, you can smell the scent of kobolds and sex. It is very strong and you’ve no doubt there are many of them inside, you should consider the merits of going in before making a hasty decision, lest you be overwhelmed by the lizard critters.");
 				//addButton(0, "Enter Arena", null);
 			}
@@ -153,7 +153,7 @@ package classes.Scenes.Dungeons
 			outputText("Though the exterior is constructed of solid stone blocks, making it look more like a castle of some sort than a library - there are even towers and minarets - the interior is quite obviously that of a library. Cavernous spaces connected by long passageways reveal seemingly countless shelves of books and scrolls; who can say how much lore must be hidden here? The place smells strongly of sexual musk, and there have obviously been vandals at work here; puddles of slime are splattered here and there, seeped into the dust, and broken shelves, torn or half-burnt tomes, and even the ash-heap remains of fires make it obvious that the present visitors care nothing for learning.\n\n");
 			//This comment is to be replaced with Ember dialogue. 
 			dungeons.setDungeonButtons(null, roomArena, null, null);
-			if (9999 != 9999) {
+			if (9999 !== 9999) {
 				outputText("You notice a wooden door adorned with a plaque written “Basement” on its center. When you try to open the door, you realise it won’t budge... something must be blocking it from inside.");
 			}
 			else {
@@ -188,7 +188,7 @@ package classes.Scenes.Dungeons
 			outputText("The room is dank and smells quite unpleasant. You seem to be located in a deep pool in the rock underfoot that serves as some sort of dam, and you can see a closed floodgate at one end of the room, keeping the water on the other side from rendering the tunnel impassable. Looking back you spot a floodgate above the tunnel you just came through, apparently it was made so the water can flood this room and be rerouted through a couple of water pipes above. What water seeps through into the empty pool that makes the room you’re currently at is a noxiously thick slime, choked with mud and other fluids you don't want to guess at.\n\n");
 			outputText("You can feel a soft breeze coming from the tunnels above,a tunnel that winds away into the distance. You also can spot a number of passageways and oozing pipes about, but the main thing of interest is a set of stairs near the floodgate, just across the pool.\n\n");
 			dungeons.setDungeonButtons(null, null, null, roomSewerEast);
-			if (9999 != 9999) {
+			if (9999 !== 9999) {
 				//This comment is to be replaced with Ember dialogue.
 				outputText("Kobolds suddenly begin swarming all around you. They surge out of the filthy water by the dozens and squeeze their way out of the smaller pipes, a living wave of reptilian forms charging towards you, yipping and babbling in their bizarre language.\n\n");
 				outputText("You and Ember get ready for battle, covering each other’s backs. <b>It’s a fight!</b>");
@@ -203,7 +203,7 @@ package classes.Scenes.Dungeons
 			outputText("The tunnel eventually leads you to what looks like some sort of hub for the sewer system; a great chamber opening to some kind of central pool, myriad pipes and openings of all sizes littering the walls. From most of them pours more of the foul muck that the kobolds have created, churning into a stinking whirlpool in the central pond. Metallic grating forms a circular path around the walls of the chamber, and you can spot four other doorways similar to the one you had to fight your way through to reach this point.\n\n");
 			//This comment is to be replaced with Ember dialogue.
 			dungeons.setDungeonButtons(roomSewerBreedingDen, null, null, null);
-			if (9999 != 9999) {
+			if (9999 !== 9999) {
 				//This is where Kobold fight would happen.
 				//addButton(0, "FIGHT!", null);
 			}
@@ -215,7 +215,7 @@ package classes.Scenes.Dungeons
 			outputText("<b><u>Breeding Den</u></b>\n");
 			outputText("Placeholdery placeholder is placeholdery.");
 			dungeons.setDungeonButtons(null, null, roomLibrary, roomCityHall);
-			if (9999 != 9999) {
+			if (9999 !== 9999) {
 				//This is where Kobold fight would happen.
 				//addButton(0, "FIGHT!", null);
 			}

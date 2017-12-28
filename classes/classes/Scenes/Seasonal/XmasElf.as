@@ -16,7 +16,7 @@ package classes.Scenes.Seasonal {
 			outputText("Your sleep is disturbed by something repeatedly smacking into your side.  Groggily at first, you grumble and throw back your blanket.  Then you remember where you are, and snap to full wakefulness.  You launch onto your feet, bring up your fists, and stare bewildered at the sight in front of you.\n\n");
 
 			outputText("Standing there, innocent as can be, ");
-			if (flags[kFLAGS.PC_ENCOUNTERED_CHRISTMAS_ELF_BEFORE] == 0) outputText("is an elf.  She can't be more than four and a half feet tall, and though she has fairly womanly hips, her chest is nothing to speak of.  Her clothing is strange – a red two piece lined with some kind of white fur.  She has typically pointed ears, blond hair, and a red fur-lined cap topped with a white puffball. She's holding a large box in front of her and looking at you expectantly as you stare, dumbfounded.\n\n");
+			if (flags[kFLAGS.PC_ENCOUNTERED_CHRISTMAS_ELF_BEFORE] === 0) outputText("is an elf.  She can't be more than four and a half feet tall, and though she has fairly womanly hips, her chest is nothing to speak of.  Her clothing is strange – a red two piece lined with some kind of white fur.  She has typically pointed ears, blond hair, and a red fur-lined cap topped with a white puffball. She's holding a large box in front of her and looking at you expectantly as you stare, dumbfounded.\n\n");
 			else outputText("is the same elf you met last year.  She can't be more than four and a half feet tall, and though she has fairly womanly hips, her chest is nothing to speak of.  Her clothing is strange – a red two piece lined with some kind of white fur.  She has typically pointed ears, blond hair, and a red fur-lined cap topped with a white puffball. She's holding a large box in front of her and looking at you expectantly as you stare, dumbfounded.\n\n");
 
 			outputText("The elf says, \"<i>Hiya " + player.short + "!  I brought you a");
@@ -223,7 +223,7 @@ package classes.Scenes.Seasonal {
 			outputText("Determined to get off, you wiggle against her, mashing your " + player.clitDescript() + " into her own.  She squirms and cries out, actually getting off before you!  You muse that elves must have extraordinarily sensitive clitorises, but before you can act on it, you feel a sudden stirring in your loins.   The dildo is starting to spin!  You prop yourself up and watch, unbelieving as the elf's orgasmic contractions visibly contort her belly, moving more and more quickly as the spinning speeds up.  In seconds the twirling assault has placed you back on the edge of orgasm, and you're groaning and rubbing against your insensate lover for more.\n\n");
 
 			outputText("You cum, ");
-			if (player.vaginas[0].vaginalWetness == VaginaClass.WETNESS_SLAVERING) outputText("gushing fluids");
+			if (player.vaginas[0].vaginalWetness === VaginaClass.WETNESS_SLAVERING) outputText("gushing fluids");
 			else if (player.vaginas[0].vaginalWetness >= VaginaClass.WETNESS_SLICK) outputText("dripping fluids");
 			else outputText("squishing wetly");
 			outputText(" as your " + player.vaginaDescript(0) + " is drilled by the elf's double-ended dong.   It feels beyond good, like having a cock inside you that rubs against each part of your pussy over and over and over without the barest hint of mercy.  Your gasp and pant, glancing back up at the elf.  She's already recovered from her orgasm, though she has an intense look of concentration on her face while she focuses on twisting the dildo inside you.\n\n");
@@ -277,14 +277,14 @@ package classes.Scenes.Seasonal {
 
 		public function xmasPerkM():void {
 			if (player.findPerk(PerkLib.ElvenBounty) < 0) {
-				if (temp == 1001) player.createPerk(PerkLib.ElvenBounty,250,0,0,0);
+				if (temp === 1001) player.createPerk(PerkLib.ElvenBounty,250,0,0,0);
 				else player.createPerk(PerkLib.ElvenBounty,0,15,0,0);
 				outputText("<b>New Perk Acquired - Elven Bounty!</b>");
 			}
 			else {
 				clearOutput();
 				outputText("<b>Perk Enhanced - Elven Bounty!</b>");
-				if (temp == 1001) {
+				if (temp === 1001) {
 					player.addPerkValue(PerkLib.ElvenBounty,1,250);
 					outputText("<b> - +250mL cum production!</b>");
 				}

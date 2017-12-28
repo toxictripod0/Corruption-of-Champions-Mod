@@ -26,9 +26,9 @@ package classes.Scenes.Areas.Lake {
 			clearOutput();
 			flags[kFLAGS.MET_OTTERGIRL]++;
 			//First Time
-			if (flags[kFLAGS.MET_OTTERGIRL] == 1) {
+			if (flags[kFLAGS.MET_OTTERGIRL] === 1) {
 				outputText("Your exploration of the lakeside takes you further than you've gone before.  The water here is almost completely still, its waters ");
-				if (!flags[kFLAGS.FACTORY_SHUTDOWN] == 2) outputText("crystal clear, giving you a stunning view of the lakebed");
+				if (!flags[kFLAGS.FACTORY_SHUTDOWN] === 2) outputText("crystal clear, giving you a stunning view of the lakebed");
 				else outputText("only slightly clouded, giving you an obscured view of the lakebed");
 				outputText(".  Fish dart to and fro within the waters, caring little for your explorations above the waves.");
 				outputText("\n\nYou watch the fish for a few minutes until you notice that you're not alone on the shoreline. Further down the sandy beaches sits a solitary, feminine figure, her legs parted and arched.  A fishing rod is held lazily in her hands.  You trace the fishing line with your eyes, seeing a little piece of flotsam bobbing up and down a fair distance into the water.");
@@ -105,13 +105,13 @@ package classes.Scenes.Areas.Lake {
 			outputText("\n\nLikewise, her tongue and lips dance over your " + player.cockDescript(x) + " like a trio of dancers. They spin, twist, hop and tease, ensuring that no inch is left untouched.");
 			outputText("  She pays particularly close attention ");
 			//[equine]
-			if (player.cocks[x].cockType == CockTypesEnum.HORSE) outputText("to your flare, sucking, teasing and ");
+			if (player.cocks[x].cockType === CockTypesEnum.HORSE) outputText("to your flare, sucking, teasing and ");
 			//[canine]
 			else if (player.hasKnot(x)) outputText("to the base of your cock, planting sloppy kisses on your knot, ");
 			//[demonic]
-			else if (player.cocks[x].cockType == CockTypesEnum.DEMON) outputText("to the demonic nodules ringing your cock, ");
+			else if (player.cocks[x].cockType === CockTypesEnum.DEMON) outputText("to the demonic nodules ringing your cock, ");
 			//[anemone]
-			else if (player.cocks[x].cockType == CockTypesEnum.ANEMONE) outputText("to the little wriggling tentacles ringing the head and base of your cock, ");
+			else if (player.cocks[x].cockType === CockTypesEnum.ANEMONE) outputText("to the little wriggling tentacles ringing the head and base of your cock, ");
 			else outputText("to the sensitive little spot on the underside of the head, ");
 			outputText("lavishing it with attention.  Precum and saliva practically pour down the length of your shaft, tickling your ");
 			if (player.balls > 0 && player.hasVagina()) outputText("balls and cunt");
@@ -131,19 +131,19 @@ package classes.Scenes.Areas.Lake {
 			if (player.cocks[x].cockThickness >= 3) outputText("impressive ");
 			outputText("girth within her she settles down on your lap, stretching her legs out before retrieving her fishing rod.  \"<i>Now don't you go movin' about, darlin',</i>\" Callu says over her shoulder.  \"<i>Don't wanna go scarin' the fish away.  I'll let ya go after I catch a few good ones.</i>\"");
 			outputText("\n\nSurprisingly, you can still feel a throbbing around your " + player.cockDescript(x) + ", reaffirming your belief that she can somehow control the muscles buried within her abdomen.  Even as you lay stock-still on the sandy beach, you feel the sensation of thrusting, as though you were actively fucking this little slut sitting atop you.  The feeling is extremely pleasant, not to mention a little hypnotic.  You reach your hands up to grasp Callu's hips lightly.  She doesn't seem to mind, though as you start squeezing her in time with your phantom thrusts a quick swat to your hand lets you know that you're crossing an unspoken boundary.\n\n");
-			if (player.cocks[x].cockType == CockTypesEnum.AVIAN) outputText(images.showImage("callu-sex-avian"));
-			else if (player.cocks[x].cockType == CockTypesEnum.KANGAROO) outputText(images.showImage("callu-sex-kangaroo"));
-			else if (player.cocks[x].cockType == CockTypesEnum.TENTACLE) outputText(images.showImage("callu-sex-tentacle"));
-			else if (player.cocks[x].cockType == CockTypesEnum.ANEMONE) outputText(images.showImage("callu-sex-anemone"));
-			else if (player.cocks[x].cockType == CockTypesEnum.ECHIDNA) outputText(images.showImage("callu-sex-echidna"));
-			else if (player.cocks[x].cockType == CockTypesEnum.LIZARD) outputText(images.showImage("callu-sex-reptile"));
-			else if (player.cocks[x].cockType == CockTypesEnum.DRAGON) outputText(images.showImage("callu-sex-dragon"));
-			else if (player.cocks[x].cockType == CockTypesEnum.DEMON) outputText(images.showImage("callu-sex-demon"));
-			else if (player.cocks[x].cockType == CockTypesEnum.HORSE) outputText(images.showImage("callu-sex-horse"));
-			else if (player.cocks[x].cockType == CockTypesEnum.HUMAN) outputText(images.showImage("callu-sex-human"));
-			else if (player.cocks[x].cockType == CockTypesEnum.HUMAN) outputText(images.showImage("callu-sex-human"));
-			else if (player.cocks[x].cockType == CockTypesEnum.CAT) outputText(images.showImage("callu-sex-cat"));
-			else if (player.cocks[x].cockType == CockTypesEnum.DOG) outputText(images.showImage("callu-sex-dog"));
+			if (player.cocks[x].cockType === CockTypesEnum.AVIAN) outputText(images.showImage("callu-sex-avian"));
+			else if (player.cocks[x].cockType === CockTypesEnum.KANGAROO) outputText(images.showImage("callu-sex-kangaroo"));
+			else if (player.cocks[x].cockType === CockTypesEnum.TENTACLE) outputText(images.showImage("callu-sex-tentacle"));
+			else if (player.cocks[x].cockType === CockTypesEnum.ANEMONE) outputText(images.showImage("callu-sex-anemone"));
+			else if (player.cocks[x].cockType === CockTypesEnum.ECHIDNA) outputText(images.showImage("callu-sex-echidna"));
+			else if (player.cocks[x].cockType === CockTypesEnum.LIZARD) outputText(images.showImage("callu-sex-reptile"));
+			else if (player.cocks[x].cockType === CockTypesEnum.DRAGON) outputText(images.showImage("callu-sex-dragon"));
+			else if (player.cocks[x].cockType === CockTypesEnum.DEMON) outputText(images.showImage("callu-sex-demon"));
+			else if (player.cocks[x].cockType === CockTypesEnum.HORSE) outputText(images.showImage("callu-sex-horse"));
+			else if (player.cocks[x].cockType === CockTypesEnum.HUMAN) outputText(images.showImage("callu-sex-human"));
+			else if (player.cocks[x].cockType === CockTypesEnum.HUMAN) outputText(images.showImage("callu-sex-human"));
+			else if (player.cocks[x].cockType === CockTypesEnum.CAT) outputText(images.showImage("callu-sex-cat"));
+			else if (player.cocks[x].cockType === CockTypesEnum.DOG) outputText(images.showImage("callu-sex-dog"));
 			else outputText(images.showImage("callu-sex-fuck"));
 			outputText("With nothing else to do, you close your eyes and relax.  The rhythmic pulsing of this otter-girl's tight pussy seems to deepen your relaxation, though your dick remains as hard as it's ever been. Minutes pass, and the thrusting sensation doesn't appear to be dying down.");
 			outputText("\n\nA sudden, strange high-pitched sound suddenly rings out and your head bolts upright, only to see Callu reeling in a fish.  She looks it over, nods once to herself and tucks it away in an ice chest cleverly buried under the sand right next to the two of you.  Afterwards she stands up, letting your dick fall out of her.  Your " + player.cockDescript(x) + " feels strange, and uncomfortably naked somehow, especially as a cool wind blows over its saliva and femcum-covered skin.");

@@ -44,12 +44,12 @@ package classes.Scenes.Places.Bazaar {
 		public function transactionYes(item:ItemType, price:int, shop:int):void {
 			//Determine sub-shop
 			var shopToGo:Function = null
-			if (shop == 1) shopToGo = buySomeWeapons;
+			if (shop === 1) shopToGo = buySomeWeapons;
 			else shopToGo = buySomeArmor;
 			//Process
 			clearOutput();
 			if (player.gems >= price) {
-				if (flags[kFLAGS.MRAPIER_BOUGHT] == 0 && item == weapons.MRAPIER) flags[kFLAGS.MRAPIER_BOUGHT]++;
+				if (flags[kFLAGS.MRAPIER_BOUGHT] === 0 && item === weapons.MRAPIER) flags[kFLAGS.MRAPIER_BOUGHT]++;
 				outputText("You fill out a couple papers while Sun takes off a security tag. He then holds out " + item.longName + " to you, saying, \"<i>Here.</i>\"");
 				player.gems -= price;
 				menu();
@@ -64,7 +64,7 @@ package classes.Scenes.Places.Bazaar {
 		}
 		
 		public function transactionNo(shop:int):void {
-			if (shop == 1) buySomeWeapons();
+			if (shop === 1) buySomeWeapons();
 			else buySomeArmor();
 		}
 		
@@ -112,7 +112,7 @@ package classes.Scenes.Places.Bazaar {
 			addShopItem(5, weapons.SCIMITR, 500, 1);
 			addShopItem(6, weapons.SPEAR  , 450, 1);
 			addShopItem(7, weapons.U_SWORD, 800, 1);
-			if (flags[kFLAGS.MRAPIER_BOUGHT] == 0 && !player.hasItem(weapons.MRAPIER, 1) && !inventory.hasItemInStorage(weapons.MRAPIER)) {
+			if (flags[kFLAGS.MRAPIER_BOUGHT] === 0 && !player.hasItem(weapons.MRAPIER, 1) && !inventory.hasItemInStorage(weapons.MRAPIER)) {
 				addShopItem(8, weapons.MRAPIER, 25000, 1); //One-buy and one-own only given its power.
 			}
 			else {
@@ -131,17 +131,17 @@ package classes.Scenes.Places.Bazaar {
 			addShopItem(2, armors.FULLPLT, 700, 2);
 			addShopItem(3, armors.SCALEML, 500, 2);
 			
-			if (flags[kFLAGS.GOTTEN_INQUISITOR_ARMOR] == 1) { //A way for you to get the other armor, considering you have to give the Corset to Rubi. If these need price raising, let me know :3
-				if (flags[kFLAGS.GOTTEN_INQUISITOR_ROBES] == 1 && flags[kFLAGS.GOTTEN_INQUISITOR_CORSET] == 0) {
+			if (flags[kFLAGS.GOTTEN_INQUISITOR_ARMOR] === 1) { //A way for you to get the other armor, considering you have to give the Corset to Rubi. If these need price raising, let me know :3
+				if (flags[kFLAGS.GOTTEN_INQUISITOR_ROBES] === 1 && flags[kFLAGS.GOTTEN_INQUISITOR_CORSET] === 0) {
 					addButton(5, armors.I_CORST.shortName, buyInquiCorset);
 					outputText("\nAn inquisitor's corset - 20000 Gems");
-				} else if (flags[kFLAGS.GOTTEN_INQUISITOR_CORSET] == 1 && flags[kFLAGS.GOTTEN_INQUISITOR_ROBES] == 0) {
+				} else if (flags[kFLAGS.GOTTEN_INQUISITOR_CORSET] === 1 && flags[kFLAGS.GOTTEN_INQUISITOR_ROBES] === 0) {
 					addButton(5, armors.I_ROBES.shortName, buyInquiRobes);
 					outputText("\nAn inquisitor's robes - 20000 Gems");
-				} else if (flags[kFLAGS.GOTTEN_INQUISITOR_CORSET] == 1 && flags[kFLAGS.GOTTEN_INQUISITOR_ROBES] == 1) {
+				} else if (flags[kFLAGS.GOTTEN_INQUISITOR_CORSET] === 1 && flags[kFLAGS.GOTTEN_INQUISITOR_ROBES] === 1) {
 					addShopItem(5, armors.EBNJACK, 6000, 2);
 				}
-			} else if (flags[kFLAGS.GOTTEN_INQUISITOR_ARMOR] == 0) {
+			} else if (flags[kFLAGS.GOTTEN_INQUISITOR_ARMOR] === 0) {
 				addShopItem(5, armors.EBNJACK, 6000, 2);
 			}
 			addShopItem(6, armors.SS_ROBE, 2500, 2);
@@ -213,13 +213,13 @@ package classes.Scenes.Places.Bazaar {
 		public function theFuckIsYouWho():void { //Talk stuff
 			clearOutput();
 			outputText("You walk up to Sun and give him a merry greeting. He glances you up and down, looking less than pleased.\n\n");
-			if (rand(10) == 0) {
+			if (rand(10) === 0) {
 				outputText("With a long sigh, he grabs a book from a nearby shelf and shoves it into your arms, saying, \"<i>Here. Take this and leave me to do my damn job. This isn't a fucking playground.</i>\"\n\n");
 				outputText("You frown. You'd only wanted to talk. Still, you mumble a thanks and quickly back out of the store. You read the book and blink with new knowledge when you're done-- <b>you have learned the spell Blackfire!</b>");
 				player.createStatusEffect(StatusEffects.KnowsBlackfire, 0, 0, 0, 0);
 			}
 			else {
-				if (rand(4) == 0) {
+				if (rand(4) === 0) {
 					outputText("Sun reaches into his pocket and and crams a handful of Gems against your chest, saying, \"<i>I'm gonna pay you five ");
 					if (silly()) outputText("dollars");
 					else outputText("Gems");
@@ -227,7 +227,7 @@ package classes.Scenes.Places.Bazaar {
 					player.gems += 5;
 				}
 				else {
-					if (rand(2) == 0) outputText("When he says nothing besides giving you a hard glare, you get the point and back away with a murmured apology.");
+					if (rand(2) === 0) outputText("When he says nothing besides giving you a hard glare, you get the point and back away with a murmured apology.");
 					else outputText("\"<i>I have a boyfriend.</i>\" He jabs a thumb in Harmony's direction. You glance at Harmony, then blink at Sun a couple times. That wasn't what you really wanted, but okay. You give him a congrats and duck out of the store.");
 				}
 			}

@@ -44,20 +44,20 @@ package classes.Scenes.Areas
 		public function get explorationEncounter():Encounter {
 			const game:CoC     = kGAMECLASS;
 			const fn:FnHelpers = Encounters.fn;
-			if (_explorationEncounter == null) _explorationEncounter =
+			if (_explorationEncounter === null) _explorationEncounter =
 					Encounters.group(game.commonEncounters, {
 						name: "d3",
 						when: function ():Boolean {
-							return flags[kFLAGS.D3_DISCOVERED] == 0 && player.hasKeyItem("Zetaz's Map") >= 0;
+							return flags[kFLAGS.D3_DISCOVERED] === 0 && player.hasKeyItem("Zetaz's Map") >= 0;
 						},
 						call: game.lethicesKeep.discoverD3
 					}, {
 						name: "snowangel",
 						when: function ():Boolean {
 							return player.gender > 0
-								   && flags[kFLAGS.GATS_ANGEL_DISABLED] == 0
-								   && flags[kFLAGS.GATS_ANGEL_GOOD_ENDED] == 0
-								   && (flags[kFLAGS.GATS_ANGEL_QUEST_BEGAN] == 0
+								   && flags[kFLAGS.GATS_ANGEL_DISABLED] === 0
+								   && flags[kFLAGS.GATS_ANGEL_GOOD_ENDED] === 0
+								   && (flags[kFLAGS.GATS_ANGEL_QUEST_BEGAN] === 0
 									   || player.hasKeyItem("North Star Key") >= 0);
 						},
 						call: game.xmas.snowAngel.gatsSpectacularRouter
@@ -142,7 +142,7 @@ package classes.Scenes.Areas
 			spriteSelect(SpriteDb.s_minotaur);
 			//Cum addictus interruptus!  LOL HARRY POTTERFAG
 			//Withdrawl auto-fuck!
-			if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] == 3) {
+			if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] === 3) {
 				getGame().mountain.minotaurScene.minoAddictionFuck();
 			} else {
 				getGame().mountain.minotaurScene.getRapedByMinotaur(true);
@@ -156,7 +156,7 @@ package classes.Scenes.Areas
 			clearOutput();
 			spriteSelect(SpriteDb.s_chickenHarpy);
 			outputText(images.showImage("event-chicken"));
-			if (flags[kFLAGS.TIMES_MET_CHICKEN_HARPY] == 0) {
+			if (flags[kFLAGS.TIMES_MET_CHICKEN_HARPY] === 0) {
 				outputText("Taking a stroll along the mountains, you come across a peculiar-looking harpy wandering around with a large wooden cart in tow.  She's far shorter and bustier than any regular harpy you've seen before, reaching barely 4' in height but managing to retain some semblance of their thick feminine asses.  In addition to the fluffy white feathers decorating her body, the bird-woman sports about three more combed back upon her forehead like a quiff, vividly red in color.");
 				outputText("\n\nHaving a long, hard think at the person you're currently making uncomfortable with your observational glare, you've come to a conclusion - she must be a chicken harpy!");
 				outputText("\n\nAs you take a look inside of the cart you immediately spot a large hoard of eggs stacked clumsily in a pile.  The curious collection of eggs come in many colors and sizes, protected by a sheet of strong canvas to keep it all together.");

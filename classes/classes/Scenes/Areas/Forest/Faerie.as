@@ -25,7 +25,7 @@ public class Faerie extends BaseContent implements Encounter{
 	spriteSelect(SpriteDb.s_faerie);
 	clearOutput();
 	outputText("A faerie slightly taller and thicker than your middle finger flits about the air. Her flat chest and girlish bob of hair make her look quite cute, but the solid black stockings and leather straps covering her chest show her slutty nature. Her wings are a light red, the color of aroused genitals.\n\n");
-	if (player.cockTotal() > 0 && (player.biggestTitSize() <= BreastCup.B || rand(2) == 0)) {
+	if (player.cockTotal() > 0 && (player.biggestTitSize() <= BreastCup.B || rand(2) === 0)) {
 		outputText("She seems to notice you getting hard at the sight of her and looks down. \"<i>Ew, man parts!</i>\" the faerie exclaims, flying away like a frightened bird.");
 		if (rand(player.spe/2) + player.statusEffectv1(StatusEffects.FaerieFucked) > 15) {
 			if (player.statusEffectv1(StatusEffects.FaerieFucked) < 5) {
@@ -47,7 +47,7 @@ public class Faerie extends BaseContent implements Encounter{
 		dynStats("lus", player.lib/10+2);
 		if (player.lust100 >= 90) {
 			outputText("\n\nYou groan miserably with frustration. Desperate for stimulation, you sink to your knees and start jacking off, the faerie's visage still fresh in your mind. You catch a fleeting glimpse of yourself tightly gripping the faerie's legs in each of your fists, dragging her toward ");
-			if (player.cockTotal() == 1) outputText("your dick");
+			if (player.cockTotal() === 1) outputText("your dick");
 			else outputText("one of your dicks");
 			outputText(", too large for her tiny frame... the depraved image overwhelms your mind's eye and you find yourself shooting all over the ground furiously.");
 			player.orgasm('Dick');
@@ -74,7 +74,7 @@ private function faerieRAEP():void {
 	clearOutput();
 	outputText("You let the tiny faerie buzz closer to investigate, then with an explosion of movement, snatch her out of the air.  She squirms in your palm, struggling futilely in your grasp.  You poke between her legs with a finger, noting the flushed redness of the faerie's skin.  ");
 	//Changes based on times fucked
-	if (player.statusEffectv1(StatusEffects.FaerieFemFuck) == 1) outputText("She juices herself and screams, \"<i>Let me goooooooo,</i>\" trying to sound outraged instead of turned on, but the tiny girl's body gives away the lie.");
+	if (player.statusEffectv1(StatusEffects.FaerieFemFuck) === 1) outputText("She juices herself and screams, \"<i>Let me goooooooo,</i>\" trying to sound outraged instead of turned on, but the tiny girl's body gives away the lie.");
 	else if (player.statusEffectv1(StatusEffects.FaerieFemFuck) <= 5) outputText("She juices herself and moans, \"<i>Stop teasing meeeeee,</i>\" doing her best to wriggle back against you, as if she could somehow impale herself on your digit.");
 	else outputText("She squeals, rocking her hips back against you and moaning, \"<i>Ohhhh I love it when you do that,</i>\" grinding her incredibly small love-button on your digit.");
 	//Special Taurness
@@ -140,7 +140,7 @@ private function faerieRAEP():void {
 	}
 	//[OH SHIT ITS OVER, POOR BITCH CRAWLS OUT ALL STONE ON GIRLCUM]
 	//[FIRST TIME] 
-	if (player.statusEffectv1(StatusEffects.FaerieFemFuck) == 1) {
+	if (player.statusEffectv1(StatusEffects.FaerieFemFuck) === 1) {
 		outputText("Lying in the forest loam as you recover, you watch as the faerie stumbles out of your groin, holding her head and giggling nonstop.  She tries to put on a serious face but it's instantly overpowered by another fit of laughter, \"<i>Hehe, did you know I'd get stoned off your girlcum?  Omigod I've never been this -heheheheheh- high before!  Like I can see EVERYTHING.  Puuhleeeease don't make me do this again...</i>\"\n\n");
 		outputText("She flies off, hungry and looking for a flower to munch on.");
 	}
@@ -186,7 +186,7 @@ protected function faerieDoNothing():void {
 		doNext(camp.returnToCampUseOneHour);
 		return;
 	}
-	if (player.hasVagina() && player.getClitLength() >= 1.0 && player.getClitLength() <= 4.5 && rand(2) == 0) {
+	if (player.hasVagina() && player.getClitLength() >= 1.0 && player.getClitLength() <= 4.5 && rand(2) === 0) {
 		outputText("A smile crosses her face and she flutters down to your crotch. She starts by scissoring you despite the size difference, driving your clit into her despite its erect state. Compared to her, it looks massive. She swings one leg over it and starts impaling herself on it. Your taut clitoris barely fits inside her, and the tight confines on your sensitive nub are enough to make you weak in the knees. Staggering to the ground, you grab hold of her frail body in your fist and thrust her roughly on your engorged button. She wails in both pain and pleasure, being crushed and stretched open at once. Her cries of pain combined with the intense stimulation on your most sensitive part bring you to a quick orgasm.\n\n");
 		if (player.vaginas[0].vaginalWetness >= VaginaClass.WETNESS_DROOLING) outputText("You drench the poor faerie completely in your female juices, soaking her hair and body. Overwhelmed and spent, you drop her to the ground and catch your breath. She licks up what's around her face, but is too weak to do anything else but lie in the dirt.\n\n");
 		else outputText("Shuddering, you maintain your composure and keep going, trying to ride the high for another. Eventually you look down and you can see the faerie's eyes have glazed over and rolled to the back of her head. Her cunt has started clamping down on you a lot harder, evidence of her state of near-constant orgasm. The random clenching brings you off again very quickly and you have an intense orgasm, joining your fae cohort.\n\n");
@@ -255,7 +255,7 @@ private function faerieCaptureHJ():void {
 		outputText("Your body begins to naturally jerk forward and backward, attempting to hump the mare that isn't there. You can feel the faerie sliding about until she clenches onto you tighter, which only serves to make you hump harder. Realizing her mistake too late, she attempts to loosen herself, but your wild bucking sends her flying forward.\n\n");
 		outputText("She smashes onto the end of your " + player.multiCockDescriptLight() + " and grasps at it. Her face crushes into your urethra as her tiny legs wrap themselves around the tip. Your wildly flailing cock starts to grow larger as your orgasm approaches, but the faerie doesn't notice as she happily drinks up your pre.\n\n");
 		//[No testicles:
-		if (player.balls == 0) outputText("Your tiny globules of semen go straight into her open mouth and she sucks them down gleefully before falling with a splat onto the pre soaked ground.\n\n");
+		if (player.balls === 0) outputText("Your tiny globules of semen go straight into her open mouth and she sucks them down gleefully before falling with a splat onto the pre soaked ground.\n\n");
 		else {
 			//[Small amount of cum:
 			if (player.cumQ() < 50) outputText("Your semen splashes straight into her face and she's quick to suck it up. She falls with a splat onto the pre soaked ground while your member drips periodic droplets of cum onto her head.\n\n");
@@ -277,9 +277,9 @@ private function faerieCaptureHJ():void {
 	else {
 		outputText("The faerie reaches your swollen member and ");
 		if (player.hasKnot(0)) outputText("climbs atop your knot, wrapping her legs around the narrower shaft to hold on.  You can feel her cheeks resting atop the 'bulb' of your canine anatomy, teasing you with feminine features you're far too large to penetrate.  ");
-		else if (player.cocks[0].cockType == CockTypesEnum.HORSE) outputText("climbs atop your " + player.cockDescript(0) + ", hanging onto your ring of prepuce and wrapping her legs as far around your horse-like maleness as she can.  ");
-		else if (player.cocks[0].cockType == CockTypesEnum.DEMON) outputText("climbs atop your " + player.cockDescript(0) + ", hanging on to the corrupted nubs and nodules as she threads her legs between them, squeezing you tightly as she hangs on.  You can feel her wet gash sitting atop a particularly sensitive bump, teasing you with a tiny cunt you'll never be able to penetrate.  ");
-		else if (player.cocks[0].cockType == CockTypesEnum.TENTACLE) outputText("climbs onto your squirming " + player.cockDescript(0) + ", wrapping her legs tightly around it as it wiggles and writhes with excitement.  Unbidden, it curls around and rubs its reddish-purple head against her face like an animal.  She gives it a gentle squeeze and licks it.  ");
+		else if (player.cocks[0].cockType === CockTypesEnum.HORSE) outputText("climbs atop your " + player.cockDescript(0) + ", hanging onto your ring of prepuce and wrapping her legs as far around your horse-like maleness as she can.  ");
+		else if (player.cocks[0].cockType === CockTypesEnum.DEMON) outputText("climbs atop your " + player.cockDescript(0) + ", hanging on to the corrupted nubs and nodules as she threads her legs between them, squeezing you tightly as she hangs on.  You can feel her wet gash sitting atop a particularly sensitive bump, teasing you with a tiny cunt you'll never be able to penetrate.  ");
+		else if (player.cocks[0].cockType === CockTypesEnum.TENTACLE) outputText("climbs onto your squirming " + player.cockDescript(0) + ", wrapping her legs tightly around it as it wiggles and writhes with excitement.  Unbidden, it curls around and rubs its reddish-purple head against her face like an animal.  She gives it a gentle squeeze and licks it.  ");
 		else outputText("climbs on to your hardness, wrapping her legs tightly around it as she secures a perch against you.   You can feel her wet gash rubbing against your sensitive skin, teasing you with a tiny cunt you'll never be able to penetrate.  ");
 		outputText("Your internal muscles clench unconsciously, squeezing out a dollop of pre that rolls down into the faerie's hair, soaking her head and face.  You can't see her reaction, but you can feel it oozing between her body and you, lubricating her as she humps and rubs against you.  Tiny muffled moans escape " + player.clothedOrNakedLower("your " + player.armorName + "", "her mouth") + ", indicating that some part of her is enjoying the task.\n\n");
 		outputText("Though she can only stimulate a few inches of you at a time, it feels really good – better than it should, and a budding warmth on the edge of release builds inside you.  " + player.clothedOrNakedLower("Too late you realize you should have gotten at least partially undressed.  You cum before you can do anything about it, splattering your " + player.armorName + " with seed and leaving a wet patch on the crotch.  You can feel it dripping back onto you and the faerie as more spunk squirts out, soaking the tiny girl in spooge as the wet spot grows", "Good thing your junk is exposed as otherwise you would have ended up jizzing in your pants. You cum, splattering the faerie with seed. This continues until the tiny girl is soaked in spooge") + ".  ");
@@ -300,8 +300,8 @@ private function faerieCaptureHJ():void {
 		outputText("The faerie takes off, still dripping, and flying in something less than a straight line...");
 		player.orgasm('Generic');
 		dynStats("lib", -.5);
-		if (!player.hasStatusEffect(StatusEffects.Jizzpants) && player.armor.name != "nothing" && player.armor != armors.LTHCARM && player.armor != armors.GOOARMR) player.createStatusEffect(StatusEffects.Jizzpants,1,0,0,0);
-		if (player.armor == armors.GOOARMR) {
+		if (!player.hasStatusEffect(StatusEffects.Jizzpants) && player.armor.name !== "nothing" && player.armor !== armors.LTHCARM && player.armor !== armors.GOOARMR) player.createStatusEffect(StatusEffects.Jizzpants,1,0,0,0);
+		if (player.armor === armors.GOOARMR) {
 			outputText("\n\nFortunately, your jizz gets absorbed into the blue goo covering your body.");
 			getGame().valeria.feedValeria(player.cumQ() / 10);
 		}

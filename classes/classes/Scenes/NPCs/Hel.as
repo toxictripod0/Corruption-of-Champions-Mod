@@ -27,7 +27,7 @@ package classes.Scenes.NPCs
 				outputText("Using your skills at evading attacks, you anticipate and sidestep " + a + short + "'s attack.\n");
 			}
 			//("Misdirection"
-			else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
+			else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName === "red, high-society bodysuit") {
 				outputText("Using Raphael's teachings, you anticipate and sidestep " + a + short + "' attacks.\n");
 			}
 			//Determine if cat'ed
@@ -48,7 +48,7 @@ package classes.Scenes.NPCs
 				//Take Damage
 				else outputText("The salamander lunges at you, sword swinging in a high, savage arc.  You attempt to duck her attack, but she suddenly spins about mid-swing, bringing the sword around on a completely different path.  It bites deep into your flesh, sending you stumbling back. ");
 				if (damage > 0) {
-					if (lustVuln > 0 && (player.armor.name == "barely-decent bondage straps" || player.armor.name == "nothing")) {
+					if (lustVuln > 0 && (player.armor.name === "barely-decent bondage straps" || player.armor.name === "nothing")) {
 						outputText("\n" + capitalA + short + " brushes against your exposed skin and jerks back in surprise, coloring slightly from seeing so much of you revealed. ");
 						lust += 5 * lustVuln;
 					}
@@ -83,7 +83,7 @@ package classes.Scenes.NPCs
 				return;
 			}
 			//("Misdirection"
-			if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 5 && player.armorName == "red, high-society bodysuit") {
+			if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 5 && player.armorName === "red, high-society bodysuit") {
 				outputText("Using Raphael's teachings, you anticipate and sidestep " + a + short + "' tail-swipe.\n");
 				return;
 			}
@@ -104,7 +104,7 @@ package classes.Scenes.NPCs
 			//Take Damage
 			else outputText("The salamander rushes at you, knocking aside your defensive feint and sliding in past your guard.  She lashes out at your feet with her tail, and you can feel the heated wake of the fiery appendage on your ensuing fall toward the now-smouldering grass. ");
 			if (damage > 0) {
-				if (lustVuln > 0 && player.armorName == "barely-decent bondage straps") {
+				if (lustVuln > 0 && player.armorName === "barely-decent bondage straps") {
 					outputText("\n" + capitalA + short + " brushes against your exposed skin and jerks back in surprise, coloring slightly from seeing so much of you revealed.");
 					lust += 5 * lustVuln;
 				}
@@ -165,7 +165,7 @@ package classes.Scenes.NPCs
 
 		public function Hel()
 		{
-			if (game.flags[kFLAGS.HEL_TALKED_ABOUT_HER] == 1) {
+			if (game.flags[kFLAGS.HEL_TALKED_ABOUT_HER] === 1) {
 				this.a = "";
 				this.short = "Hel";
 			} else {

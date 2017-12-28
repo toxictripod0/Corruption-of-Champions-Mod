@@ -26,7 +26,7 @@ package classes.Scenes.Areas.Desert
 				choices[choices.length] = shellDefense;
 			}
 			//HERMS
-			if (player.gender == 3) choices[choices.length] = genderConfusionAttack;
+			if (player.gender === 3) choices[choices.length] = genderConfusionAttack;
 			//VAGOOZLES
 			if (player.hasVagina()) choices[choices.length] = cumHungerAttack;
 			choices[rand(choices.length)]();
@@ -42,26 +42,26 @@ package classes.Scenes.Areas.Desert
 			while (hits > 0) {
 				var evade:String = player.getEvasionReason();
 				//Evade
-				if (evade == EVASION_EVADE) outputText("\nYou roll away from some of the hermaphrodite spunk, easily evading it.");
+				if (evade === EVASION_EVADE) outputText("\nYou roll away from some of the hermaphrodite spunk, easily evading it.");
 				//Misdirect
-				else if (evade == EVASION_MISDIRECTION) outputText("\nYou feint one direction and then move another, misdirecting like a pro and avoiding some of the sexual artillery.");
+				else if (evade === EVASION_MISDIRECTION) outputText("\nYou feint one direction and then move another, misdirecting like a pro and avoiding some of the sexual artillery.");
 				//Flexibility
-				else if (evade == EVASION_FLEXIBILITY) outputText("\nYou twist aside, making the most of your cat-like reflexes to avoid some of the stuff.");
-				else if (evade == EVASION_SPEED || evade != null) { // failsafe
+				else if (evade === EVASION_FLEXIBILITY) outputText("\nYou twist aside, making the most of your cat-like reflexes to avoid some of the stuff.");
+				else if (evade === EVASION_SPEED || evade !== null) { // failsafe
 					//Miss1
-					if (rand(3) == 0) outputText("\nA glob of her goo goes wide, over your shoulder!");
-					else if (rand(2) == 0) outputText("\nOne wave of alabaster falls short, to splatter at your [feet].");
+					if (rand(3) === 0) outputText("\nA glob of her goo goes wide, over your shoulder!");
+					else if (rand(2) === 0) outputText("\nOne wave of alabaster falls short, to splatter at your [feet].");
 					else outputText("\nSome of the Cum Witch's cum nearly hits you, but you manage to step aside.");
 				}
 				//Dragon-shell shield
-				else if (player.shield == game.shields.DRGNSHL && rand(2) == 0) outputText("\nYou ready your dragon-shell shield, letting the futa-cum hit your shield. Within a short span of time, the cum is absorbed into your shield.");
+				else if (player.shield === game.shields.DRGNSHL && rand(2) === 0) outputText("\nYou ready your dragon-shell shield, letting the futa-cum hit your shield. Within a short span of time, the cum is absorbed into your shield.");
 				else {
 					var temp:Number = rand(5);
 					//Hit1
-					if (temp == 0) outputText("\nA mass of jizz splatters into your [hair], soaking it with thick, salty goo.");
-					else if (temp == 1) outputText("\nOne jet of thick witch-cum hits you in the [chest] before you can react.  You can feel it getting inside your [armor], squishing and sliding over your [nipples] as you try to fight.");
-					else if (temp == 2) outputText("\nSome of the stuff spatters off your arm and soaks your hand, making it a slimy mess.");
-					else if (temp == 3) outputText("\nA creamy deluge hits your [legs], though rather than running down, it seems to come up, flowing into your [armor] to squish wetly across your sensitive groin.");
+					if (temp === 0) outputText("\nA mass of jizz splatters into your [hair], soaking it with thick, salty goo.");
+					else if (temp === 1) outputText("\nOne jet of thick witch-cum hits you in the [chest] before you can react.  You can feel it getting inside your [armor], squishing and sliding over your [nipples] as you try to fight.");
+					else if (temp === 2) outputText("\nSome of the stuff spatters off your arm and soaks your hand, making it a slimy mess.");
+					else if (temp === 3) outputText("\nA creamy deluge hits your [legs], though rather than running down, it seems to come up, flowing into your [armor] to squish wetly across your sensitive groin.");
 					else {
 						outputText("\nSpunk nearly blinds you as the Cum Witch's virile fluids take you in the face.  You spit some of it out, the smell of the stuff making your head swim.");
 						//bonus damage!

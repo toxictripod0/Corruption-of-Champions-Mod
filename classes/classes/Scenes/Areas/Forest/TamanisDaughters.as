@@ -11,19 +11,19 @@ package classes.Scenes.Areas.Forest
 	{
 		private function midRoundMadness():void {
 			var selector:Number = rand(4);
-			if (selector == 0) {
+			if (selector === 0) {
 				outputText("A slender hand reaches inside your " + player.armorName + " and gives your ");
 				if (player.balls > 0) {
-					if (rand(2) == 0) outputText(player.multiCockDescriptLight());
+					if (rand(2) === 0) outputText(player.multiCockDescriptLight());
 					else outputText(player.ballsDescriptLight());
 				}
 				else outputText(player.multiCockDescriptLight());
 				outputText(" a gentle squeeze.  You twist away but your breathing gets a little heavier.\n\n");
 			}
-			else if (selector == 1) {
+			else if (selector === 1) {
 				outputText("A girl latches onto your " + player.legs() + " and begins caressing your body lovingly, humming happily.  You quickly shake her loose but the attention makes you blush a little more.\n\n");
 			}
-			else if (selector == 2) {
+			else if (selector === 2) {
 				outputText("One of your daughters launches onto your back and presses her hard, pierced nipples against your neck.  She whispers in your ear, \"<i>Twist my nipples dad!</i>\"\n\n");
 				outputText("You reach back and throw her off, but her perverted taunts still leave you feeling a little hot under the collar.\n\n");
 			}
@@ -34,9 +34,9 @@ package classes.Scenes.Areas.Forest
 
 		private function tamaniShowsUp():void {
 			if (TamainsDaughtersScene.tamaniPresent) {
-				if (rand(4) == 0) goblinDrugAttack(); //Tamani already there - chance of potion
+				if (rand(4) === 0) goblinDrugAttack(); //Tamani already there - chance of potion
 			}
-			else if (rand(6) == 0) {
+			else if (rand(6) === 0) {
 				TamainsDaughtersScene.tamaniPresent = true;
 				outputText("A high-pitched yet familiar voice calls out, \"<i><b>So this is where you skanks ran off to---wait a second.  Are you trying to poach Tamani's man!?</b></i>\"\n\n");
 				outputText("You can see Tamani lurking around the rear of the goblin pack, visibly berating her daughters.  On one hand it sounds like she might help you, but knowing goblins, she'll probably forget about her anger and help them subdue you for more cum...\n\n");
@@ -59,9 +59,9 @@ package classes.Scenes.Areas.Forest
 			midRoundMadness();
 			tamaniShowsUp();
 
-			if (special1 != null) select++;
-			if (special2 != null) select++;
-			if (special3 != null) select++;
+			if (special1 !== null) select++;
+			if (special2 !== null) select++;
+			if (special3 !== null) select++;
 			switch (rand(select)) {
 				case 0:
 					createStatusEffect(StatusEffects.Attacks, int(flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] / 20), 0, 0, 0); //Tamani's Daughters get multiattacks!

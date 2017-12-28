@@ -37,7 +37,7 @@ package classes.Scenes.Dungeons.LethicesKeep {
 			var tRoom:room;
 			LOGGER.info("Setting up D3 rooms...");
 			LOGGER.debug("Dungeons are {0}", kGAMECLASS.dungeons);
-			if (kGAMECLASS.dungeons != null) LOGGER.debug("Rooms are {0}", kGAMECLASS.dungeons.rooms);
+			if (kGAMECLASS.dungeons !== null) LOGGER.debug("Rooms are {0}", kGAMECLASS.dungeons.rooms);
 			//Entrance
 			tRoom = new room();
 			tRoom.RoomName = "entrance";
@@ -212,7 +212,7 @@ package classes.Scenes.Dungeons.LethicesKeep {
 		}
 		//Entrance/Exit
 		public function discoverD3():Boolean {
-			if (flags[kFLAGS.D3_DISCOVERED] == 0 && player.hasKeyItem("Zetaz's Map") >= 0 && rand(5) == 0) {
+			if (flags[kFLAGS.D3_DISCOVERED] === 0 && player.hasKeyItem("Zetaz's Map") >= 0 && rand(5) === 0) {
 				flags[kFLAGS.D3_DISCOVERED] = 1;
 				clearOutput();
 				outputText(images.showImage("stronghold-entrance"));
@@ -273,13 +273,13 @@ package classes.Scenes.Dungeons.LethicesKeep {
 			outputText(images.showImage("stronghold-Mirrors-room"));
 			outputText("<b><u>Room of Mirrors</u></b>\n");
 			outputText("The metal door opens soundlessly onto a fairly large, unlit room, shabby and grey with disuse. It is cluttered with a great quantity of mirrors. Round hand mirrors are stacked on shelves, square wall mirrors are leant against walls, a large,");
-			if (flags[kFLAGS.D3_MIRRORS_SHATTERED] == 1) outputText(" now shattered,");
+			if (flags[kFLAGS.D3_MIRRORS_SHATTERED] === 1) outputText(" now shattered,");
 			outputText(" ornate standing mirror dominates the center of the room, and a number of broken, jagged specimens are stacked near the back. They reflect the dull trappings of this place back at you emptily. You guess as self-centred a race as the demons probably has quite a large use for these.");
 			
 			if (player.hasKeyItem("Laybans") >= 0) outputText("\n\nThe place feels hollow and creepy, even after the ad hoc exorcism you performed here. There is no reason to linger.");
 			else {
 				outputText("\n\nNear the back, next to the broken stack is a white stand, displaying what appear to be a number of dark shades.");
-				if (flags[kFLAGS.D3_ENTERED_MAGPIEHALL] == 1) outputText("  Your spirits rise. They look like they may very well be made of the same material as the screen in the basilisk hall.");
+				if (flags[kFLAGS.D3_ENTERED_MAGPIEHALL] === 1) outputText("  Your spirits rise. They look like they may very well be made of the same material as the screen in the basilisk hall.");
 				if (player.inte >= 70 || player.sens >= 70) outputText("  Disquiet edges down your spine. Something about this place doesn’t feel right. The room seems faded at the corners, as if it’s not quite there.");
 				addButton(2, "Glasses", doppleganger.getDemGlasses);
 			}
@@ -287,15 +287,15 @@ package classes.Scenes.Dungeons.LethicesKeep {
 		}
 
 		public function magpiehallsRoomFunc():Boolean {
-			if (flags[kFLAGS.D3_JEAN_CLAUDE_DEFEATED] == 0) outputText(images.showImage("stronghold-basilisks"));
+			if (flags[kFLAGS.D3_JEAN_CLAUDE_DEFEATED] === 0) outputText(images.showImage("stronghold-basilisks"));
 			else outputText(images.showImage("stronghold-Magpie-hall"));
 			outputText("<b><u>Magpie Hall</u></b>\n");
-			if (flags[kFLAGS.D3_JEAN_CLAUDE_DEFEATED] == 0) {
-				if (flags[kFLAGS.D3_ENTERED_MAGPIEHALL] == 0) {
+			if (flags[kFLAGS.D3_JEAN_CLAUDE_DEFEATED] === 0) {
+				if (flags[kFLAGS.D3_ENTERED_MAGPIEHALL] === 0) {
 					flags[kFLAGS.D3_ENTERED_MAGPIEHALL] = 1;
 					outputText("You creep through the archway. The sound of movement and bustle is closer here; it seems to be coming from directly below you. Ahead is the screen, a large window made from tinted glass. Cautiously you peer through it. You have entered a vast hall, near the very top of it; this seems to be some sort of observation booth set high in the stone wall. It’s designed in the grand, classical tradition, fluted balustrades flanking the walls, each decorated at the top by a carved magpie in flight. Below is - well. You blink, trying to take it all in.\n\n");
 					outputText("Many feet below the hall swarms with activity: tall, thin, grey-green reptiles sliding sinuously around each other and the long tables that run the length of the room. There must be hundreds, no, at least a thousand basilisks down there, carrying, analyzing, sorting the vast amount of junk the tables are heaped with.  ");
-					if (flags[kFLAGS.BENOIT_AFFECTION] == 100) outputText("This can only be the hall that " + getGame().bazaar.benoit.benoitMF("Benoit", "Benoite") + " once worked in.  ");
+					if (flags[kFLAGS.BENOIT_AFFECTION] === 100) outputText("This can only be the hall that " + getGame().bazaar.benoit.benoitMF("Benoit", "Benoite") + " once worked in.  ");
 					outputText("You get the fright of your life when you think you see a number of depthless pools of grey revolve up to meet yours- but they don’t freeze you, you note as you reflexively turn away. The tinted glass must carry some sort of anti-petrifying charm, and further it must be reflective on the other side, because no one below seems to realize you’re standing there. Relaxing a bit, you continue to absorb the massive room. At the end furthest away from you two huge piles have been created- one of eggs, a massed assortment of every color and size imaginable, and one of pure junk, presumably everything the basilisks have found whilst scavenging and considered worth keeping. The detritus of a dozen collapsed civilizations must be down there, collected for the demons’ perusal by their scaly custodians. Directly below you, you can see archways like the one you just passed under, through which the basilisks ebb and flow.\n\n");
 					outputText("Your heartbeat quickens as you consider. There is a grid gantry running from where you are right around the room to the other side, where you can see a matching observation booth, presumably containing another exit. But it’s quite a distance, there are stairs leading down to the ground level, and outside the protective glass you would surely be spotted and apprehended");
 					if (player.canFly()) outputText(", even if you tried to fly it");
@@ -358,21 +358,21 @@ package classes.Scenes.Dungeons.LethicesKeep {
 
 		public function takeEgg(eggMask:int):void {
 			var item:SimpleConsumable;
-			if (eggMask == BLACK) item = consumables.L_BLKEG;
-			if (eggMask == BLUE) item = consumables.L_BLUEG;
-			if (eggMask == WHITE) item = consumables.L_WHTEG;
-			if (eggMask == PINK) item = consumables.L_PNKEG;
-			if (eggMask == BROWN) item = consumables.L_BRNEG;
-			if (eggMask == PURPLE) item = consumables.L_PRPEG;
+			if (eggMask === BLACK) item = consumables.L_BLKEG;
+			if (eggMask === BLUE) item = consumables.L_BLUEG;
+			if (eggMask === WHITE) item = consumables.L_WHTEG;
+			if (eggMask === PINK) item = consumables.L_PNKEG;
+			if (eggMask === BROWN) item = consumables.L_BRNEG;
+			if (eggMask === PURPLE) item = consumables.L_PRPEG;
 			//menuLoc = 9999;
 			//Should actually be handled by the fallthrough of doNext(1) in the takeItem shit
 			clearOutput();
-			if (eggMask == BLACK) outputText(images.showImage("item-egg-black"));
-			if (eggMask == BLUE) outputText(images.showImage("item-egg-blue"));
-			if (eggMask == WHITE) outputText(images.showImage("item-egg-white"));
-			if (eggMask == PINK) outputText(images.showImage("item-egg-pink"));
-			if (eggMask == BROWN) outputText(images.showImage("item-egg-brown"));
-			if (eggMask == PURPLE) outputText(images.showImage("item-egg-purple"));
+			if (eggMask === BLACK) outputText(images.showImage("item-egg-black"));
+			if (eggMask === BLUE) outputText(images.showImage("item-egg-blue"));
+			if (eggMask === WHITE) outputText(images.showImage("item-egg-white"));
+			if (eggMask === PINK) outputText(images.showImage("item-egg-pink"));
+			if (eggMask === BROWN) outputText(images.showImage("item-egg-brown"));
+			if (eggMask === PURPLE) outputText(images.showImage("item-egg-purple"));
 			outputText("You pluck out " + item.longName + " ");
 			flags[kFLAGS.D3_EGGS_AVAILABLE] += eggMask;
 			inventory.takeItem(item, playerMenu); //playerMenu is equivalent to doNext(1)
@@ -389,10 +389,10 @@ package classes.Scenes.Dungeons.LethicesKeep {
 		}
 
 		public function magpiehallnRoomFunc():Boolean {
-			if (flags[kFLAGS.D3_JEAN_CLAUDE_DEFEATED] == 0) outputText(images.showImage("stronghold-Magpie-locked"));
+			if (flags[kFLAGS.D3_JEAN_CLAUDE_DEFEATED] === 0) outputText(images.showImage("stronghold-Magpie-locked"));
 			else outputText(images.showImage("stronghold-Magpie-hall"));
 			outputText("<b><u>Magpie Hall</u></b>\n");
-			if (flags[kFLAGS.D3_JEAN_CLAUDE_DEFEATED] == 0) {
+			if (flags[kFLAGS.D3_JEAN_CLAUDE_DEFEATED] === 0) {
 				outputText("You find yourself back in the small booth, with the locked door leading out into the Magpie Hall. Just like the one on the opposite side, there is a darkened screen here through which you can see hundreds of basilisks milling down below, sorting through the vast amount of junk and eggs they have collected from the mountainside. They don’t seem to have taken any extra precautions following your narrow escape of them- the gantry remains free of any guards, and the door on the other side looks open.");
 				menu();
 				addButton(0, "Go!", jeanClaude.gogoFuckTheseBasilisksNorth);
@@ -442,11 +442,11 @@ package classes.Scenes.Dungeons.LethicesKeep {
 		}
 
 		public function southwestwalkRoomFunc():Boolean {
-			if (flags[kFLAGS.D3_GARDENER_DEFEATED] == 0) outputText(images.showImage("sGardener-encounter"));
+			if (flags[kFLAGS.D3_GARDENER_DEFEATED] === 0) outputText(images.showImage("sGardener-encounter"));
 			else outputText(images.showImage("stronghold-walk-SW"));
 			outputText("<b><u>Southwest Walk</u></b>\n");
 			outputText("The bushes surrounding the path have given way here to a mass of tentacles, some still bedecked in the flowers that surround the air. They twist and writhe but seem content to stay in their place for now. Besides, if you hang back along the edge of the walk, you should be out of their reach. The path heads north and south... if the wall of oily-looking tendrils leaves you alone.");
-			if (flags[kFLAGS.D3_GARDENER_DEFEATED] == 0) {
+			if (flags[kFLAGS.D3_GARDENER_DEFEATED] === 0) {
 				outputText("\n\nThe slick foilage parts just ahead, revealing a lissom leg clad in green hosiery that resembles the spiderwork patterns of leafy veins more than any garment. Its owner follows but a moment later, so perfectly, wonderfully shapely that you freeze in place, compelled by biology to take notice. Her expansive bosom, womanly hips, and gentle, soft curves invite you to fall into her embrace. Her lips, full and pouting, beckon for you to taste them. Her hair's lustrous shine glitters like an angler fish's lure, just out of reach and oh so foolish to pursue. The smooth, twists of her ram-like horns keep her coiffure stylish while simultaneously jolting you out of your reverie.");
 				outputText("\n\nYou shake your head to regain your focus. This is a demon, and you won't fall for her tricks this easily");
 				if (player.lust <= 75) //I'm not sure what this variation was supposed to point at specifically
@@ -466,7 +466,7 @@ package classes.Scenes.Dungeons.LethicesKeep {
 			outputText(images.showImage("stronghold-walk-West"));
 			outputText("<b><u>West Walk</u></b>\n");
 			outputText("Pollen clings to you, released by the many flowering bushes in the area. They only grow thicker to the south, too. To the east, you can");
-			if (flags[kFLAGS.D3_STATUE_DEFEATED] == 0) outputText(" see a massive statue with an immense hammer");
+			if (flags[kFLAGS.D3_STATUE_DEFEATED] === 0) outputText(" see a massive statue with an immense hammer");
 			else outputText(" a mound of rubble, the scattered remains of the animated statue that you slew");
 			outputText(". The warm, sandstone bricks underfoot fork in a T-intersection, leading north, east, and south. The thick castle walls prevent passage to the west.");
 			return false;
@@ -502,7 +502,7 @@ package classes.Scenes.Dungeons.LethicesKeep {
 			outputText(images.showImage("stronghold-courtyard-NE"));
 			outputText("<b><u>Northeast Courtyard</u></b>\n");
 			outputText("This particular corner of the courtyard feels remarkably cramped, even a little claustrophobic. To the north, a stone wall rises, dwarfing the smaller one to the east, and to make matters worse, the hedges to the southwest are high and square, virtually a wall in their own right. The only avenues of travel available are to the south or west, following the red sandstone bricks as they bend around the corner.");
-			if (flags[kFLAGS.D3_CENTAUR_DEFEATED] == 0) {
+			if (flags[kFLAGS.D3_CENTAUR_DEFEATED] === 0) {
 				hermCentaur.encounterThePony();
 				return true;
 			} return false;
@@ -519,7 +519,7 @@ package classes.Scenes.Dungeons.LethicesKeep {
 			outputText(images.showImage("stronghold-walk-East"));
 			outputText("<b><u>East Walk</u></b>\n");
 			outputText("The smooth, almost flawlessly laid stones split into a T-intersection here, heading north, south, and west. The bushes that hem in the paths are likewise split, though they have been maintained with the same sense of care you’ve seen elsewhere in the garden. One particularly interesting shrub has been trimmed into the shape of a large bust, complete with erect nipples. You shake your head and glance west, where you can spot");
-			if (flags[kFLAGS.D3_STATUE_DEFEATED] == 0) outputText(" a massive statue with an immense hammer.");
+			if (flags[kFLAGS.D3_STATUE_DEFEATED] === 0) outputText(" a massive statue with an immense hammer.");
 			else outputText(" a mound of rubble, the scattered remains of the animated statue that you slew.");
 			return false;
 		}
@@ -543,7 +543,7 @@ package classes.Scenes.Dungeons.LethicesKeep {
 			outputText("<b><u>Courtyard Square</u></b>\n");
 			//Statue not exploded - mossy - 30’ high
 			outputText("A circle of polished stone wraps around a colossus here in the center of the courtyard, ringed by cushioned benches that would be a delight to sit on were they not stained with bodily fluids of all colors and sexes. You didn’t think pink cum was possible, but the demons’ endless sexual creativity doesn’t seem to be bound by such notions. You can leave east and west from here.");
-			if (flags[kFLAGS.D3_STATUE_DEFEATED] == 0) {
+			if (flags[kFLAGS.D3_STATUE_DEFEATED] === 0) {
 				outputText("\n\nWait... what’s that?");
 				menu();
 				addButton(0, "Next", livingStatue.encounter);
@@ -562,9 +562,9 @@ package classes.Scenes.Dungeons.LethicesKeep {
 		}
 
 		public function throneRoomFunc():Boolean {
-			if (flags[kFLAGS.DRIDERINCUBUS_DEFEATED] == 0) { driderIncubus.encounterDriderIncbutt(); return true; }
-			if (flags[kFLAGS.MINOTAURKING_DEFEATED] == 0) {	minotaurKing.encounterMinotaurKing(); return true; }
-			if (flags[kFLAGS.LETHICE_DEFEATED] == 0) { lethice.encounterLethice(); return true; }
+			if (flags[kFLAGS.DRIDERINCUBUS_DEFEATED] === 0) { driderIncubus.encounterDriderIncbutt(); return true; }
+			if (flags[kFLAGS.MINOTAURKING_DEFEATED] === 0) {	minotaurKing.encounterMinotaurKing(); return true; }
+			if (flags[kFLAGS.LETHICE_DEFEATED] === 0) { lethice.encounterLethice(); return true; }
 			else {
 				outputText(images.showImage("stronghold-Throne-room"));
 				outputText("<b><u>Throne Room</u></b>\n");

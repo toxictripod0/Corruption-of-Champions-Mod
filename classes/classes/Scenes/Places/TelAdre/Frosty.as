@@ -15,7 +15,7 @@ public function Frosty(){
 //[Deciding to talk to her]
 public function approachFrosty():void {
 	clearOutput();
-	if (flags[kFLAGS.MET_FROSTY] == 0)
+	if (flags[kFLAGS.MET_FROSTY] === 0)
 	{
 		flags[kFLAGS.MET_FROSTY] = 1;
 		outputText("You approach the pink girl and as she sees you walking towards her, she immediately makes a beeline for you. Before you know it, the girl is right in front of you, jamming one of her fliers right in your face and speaking fast and hyperactivily to you. “<i>Hello " + player.mf("sir","madam") + ", would you like to come to ‘Frosty Cake’s Cupcake stand’? I’m Frosty- Nice to meet you- I recently opened a sweets-stand and can’t wait to have loyal customers such as you coming to my stand every day and buying all kinds of super delicious cupcakes!”</i> You have to take a step back to process everything she just blurted out; you also take the flyer from her just so she stops pushing it against your face. “<i>So do you wanna come to my stand, do ya, do ya, do ya!?</i>” You answer her with an uncertain “<i>yes</i>”, still wondering what she just said.");
@@ -71,7 +71,7 @@ public function frostyMainMenu():void
 	if (player.gems >= 60) addButton(1,"x5",cupcakeBuy,5);
 	if (player.gems >= 110) addButton(2,"x10",cupcakeBuy,10);
 	if (player.gems >= 200) addButton(3,"x20",cupcakeBuy,20);
-	if (flags[kFLAGS.SIGNED_FROSTYS_CONTRACT] == 0) addButton(8,"Contract",getAFuckingFuckContractFromFucks);
+	if (flags[kFLAGS.SIGNED_FROSTYS_CONTRACT] === 0) addButton(8,"Contract",getAFuckingFuckContractFromFucks);
 	else addButton(8,"Specials",frostysLimitedSpecialMenu);
 	addButton(14,"Leave",kGAMECLASS.telAdre.telAdreMenu);
 	
@@ -95,13 +95,13 @@ public function cupcakeBuy(arg:int = 1):void
 	clearOutput();
 	outputText("You make your purchase and swiftly devour the results. They're surprisingly delicious!");
 	//15
-	if (arg == 1) player.gems -= 15;
+	if (arg === 1) player.gems -= 15;
 	//60
-	if (arg == 5) player.gems -= 60;
+	if (arg === 5) player.gems -= 60;
 	//110
-	if (arg == 10) player.gems -= 110;
+	if (arg === 10) player.gems -= 110;
 	//200
-	if (arg == 20) player.gems -= 200;
+	if (arg === 20) player.gems -= 200;
 	frostyPoints(arg);
 	player.refillHunger(5 * arg);
 	menu();
@@ -194,7 +194,7 @@ public function frostysLimitedSpecialMenu():void
 }
 
 private function frostyPoints(arg:int = 0):int {
-	if (arg == 0) return flags[kFLAGS.FROSTY_POINTS];
+	if (arg === 0) return flags[kFLAGS.FROSTY_POINTS];
 	//If any change, add it in.
 	flags[kFLAGS.FROSTY_POINTS] += arg;
 	//Make sure it aint negative
@@ -386,7 +386,7 @@ public function useFrostysMouth():void
 public function genderlessCatchAllForFrosty():void
 {
 	clearOutput();
-	if (flags[kFLAGS.SEEN_GENDERLESS_FROSTY_REJECTION] == 0)
+	if (flags[kFLAGS.SEEN_GENDERLESS_FROSTY_REJECTION] === 0)
 	{
 		flags[kFLAGS.SEEN_GENDERLESS_FROSTY_REJECTION]++;
 		//[If player selects any option and is Gender-less 1st time]
@@ -513,7 +513,7 @@ function pitcherInTheRyeAndByRyeIMeanFrostysBrownHole():void
 	outputText("“<i>Ok, let’s see if you can strike me out.</i>”  She closes one eye and sticks her tongue out at you.  This girl has a few screws loose, doesn’t she? You see her pull the strings of her bikini-bottom and you can assume she bare ass naked  behind the counter now. Through you couldn’t really see from where you standing, as the countertop is a little above waist level to her. She motions for you to walk around and join her on the cashier side.  You move around the counter, and you were right, her bikini bottom has fallen to the  ground and Frosty is practically naked, save for the little bit of cloth holding back her massive, pink tits.");
 	outputText("\n\n“<i>Well, what are you waiting for? Get that thing out and let the fun start!</i>\"");
 	outputText("\n\nYou squeeze behind her, there being just enough room for the two to stand front to butt from one another, your body squishing against her soft back-side.  You reach into your [armor] and release your " + player.multiCockDescriptLight() + " from ");
-	if (player.cockTotal() == 1) output("its");
+	if (player.cockTotal() === 1) output("its");
 	else output("their");
 	outputText(" prision, the hot mass getting tangled in the curly hair draping over her back. It’ll take some maneuvering from the both of you but eventually your cock-head makes contact with her tight pink hole. Frosty take a deep breath and starts easing her-self down your " + player.cockDescript(x) + ". It takes her only a few moment for your cock to  be snugly secured in her insides. She stands up straight and the grip around your cock becomes tighter. She breath out “This is like the only service where I can man the shop and pleasure a customer, a bit exhausting but business is business.”   
 

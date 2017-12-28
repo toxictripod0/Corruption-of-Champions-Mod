@@ -39,7 +39,7 @@ package classes.Scenes.NPCs
 				outputText("Using your skills at evading attacks, you anticipate and sidestep " + a + short + "'s attack.\n");
 				return;
 			}
-			if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
+			if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName === "red, high-society bodysuit") {
 				outputText("Using Raphael's teachings and the movement afforded by your bodysuit, you anticipate and sidestep " + a + short + "'s attack.\n");
 				return;
 			}
@@ -98,7 +98,7 @@ package classes.Scenes.NPCs
 				outputText("Using your skills at evading attacks, you determine " + a + short + " is aiming for your upper body and slide under the attack.\n");
 				return;
 			}
-			if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 40 && player.armorName == "red, high-society bodysuit") {
+			if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 40 && player.armorName === "red, high-society bodysuit") {
 				outputText("Using Raphael's teachings and the movement afforded by your bodysuit, you anticipate and sidestep " + a + short + "'s attack.\n");
 				return;
 			}
@@ -110,7 +110,7 @@ package classes.Scenes.NPCs
 			}
 			//YOU GOT HIT SON
 			outputText("She hits you hard, nearly bowling you over.  Thankfully, her talons passed to either side of your torso.  They lock together behind your back and your face is pulled tightly into Sophie's smotheringly large mounds!");
-			if (rand(2) == 0) outputText("  She jiggles them around you pleasantly and coos, \"<i>Don't fight it baby.  Just let your body do what comes naturally.</i>\"\n");
+			if (rand(2) === 0) outputText("  She jiggles them around you pleasantly and coos, \"<i>Don't fight it baby.  Just let your body do what comes naturally.</i>\"\n");
 			else outputText("  She runs her long fingernails through your hair as she whispers, \"<i>Why fight it?  I'll make you feel so good.  Just relax and play with momma Sophie's tits.</i>\"\n");
 			player.takeLustDamage(13 + player.sens/10, true);
 		}
@@ -155,7 +155,7 @@ package classes.Scenes.NPCs
 				outputText("Using your skills at evading attacks, you watch " + a + short + " and deftly sidestep her brutal talons.\n");
 				return;
 			}
-			if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 30 && player.armorName == "red, high-society bodysuit") {
+			if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 30 && player.armorName === "red, high-society bodysuit") {
 				outputText("Using Raphael's teachings and the movement afforded by your bodysuit, you anticipate and sidestep " + a + short + "'s attack.\n");
 				return;
 			}
@@ -228,16 +228,16 @@ package classes.Scenes.NPCs
 				special3 = sophieCompulsionAttack;
 			}
 			select = rand(4);
-			if (select == 0) {
+			if (select === 0) {
 				eAttack();
 				combatRoundOver();
 				return;
 			}
 			if (player.hasCock() && !hasStatusEffect(StatusEffects.BimboBrawl)) rando = 1 + rand(3);
 			else rando = 1 + rand(2);
-			if (rando == 1) special1();
-			if (rando == 2) special2();
-			if (rando == 3) special3();
+			if (rando === 1) special1();
+			if (rando === 2) special2();
+			if (rando === 3) special3();
 			combatRoundOver();
 		}
 

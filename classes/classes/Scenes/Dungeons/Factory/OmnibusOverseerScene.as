@@ -76,7 +76,7 @@ package classes.Scenes.Dungeons.Factory
 			spriteSelect(SpriteDb.s_factory_omnibus);
 			clearOutput();
 			//Grow if none
-			if (player.breastRows.length == 0) {
+			if (player.breastRows.length === 0) {
 			clearOutput();
 				outputText("<b>Your chest swells out, forming rounded C-cup globes, capped with tiny erect nipples!</b>");
 				player.createBreastRow();
@@ -106,7 +106,7 @@ package classes.Scenes.Dungeons.Factory
 				if (player.breastRows.length >= 4) {
 					outputText("Your remaining " + player.breastDescript(3) + " feel so wonderful that you just can't resist cupping and squeezing them as they reshape to fit in perfectly with the rest of your breasts.  ");
 					player.breastRows[3].breastRating = player.breastRows[2].breastRating-1;
-					if (player.breastRows.length == 5) player.breastRows[4].breastRating = player.breastRows[3].breastRating-1;
+					if (player.breastRows.length === 5) player.breastRows[4].breastRating = player.breastRows[3].breastRating-1;
 				}
 				if (player.nippleLength < .75) {
 					player.nippleLength += .5;
@@ -120,7 +120,7 @@ package classes.Scenes.Dungeons.Factory
 			spriteSelect(SpriteDb.s_factory_omnibus);
 			clearOutput();
 			//No dick?  Grow one!
-			if (player.cocks.length == 0) {
+			if (player.cocks.length === 0) {
 				outputText("A sudden pressure builds in your groin.  You look down in wonder, more than a little turned on by the prospect of growing your own penis.  Your skin ripples and bulges outwards, the sensation turning from pressure to feelings of intense warmth.  The bump distends, turning purple near the tip as it reaches three inches in size.  You touch it and cry out with pleasure, watching it leap forwards another inch in response.  Your tiny dick's crown becomes more and more defined as it grows larger, until you have what looks like a normal six inch dick.  You sigh with happiness and desire at your new addition.  Before you can enjoy it, another wave of heat washes through you, making your new addition respond.  It grows painfully hard as it crests eight inches in length.  ");
 				if (player.cor < 80) outputText("In horror you watch the skin turn a shiny-dark purple.  Tiny wriggling nodules begin to erupt from the purplish skin, making your cock look more like a crazed sex-toy than a proper penis.  You pant and nearly cum as it lengthens one last time, peaking at ten inches long.  One last ring of nodules forms around the edge of your demon-dick's crown, pulsating darkly with each beat of your horrified heart.");
 				else outputText("Curious, you watch the skin turn a shiny-dark purple.  Tiny wriggling nodules begin to erupt from the purplish skin, making your penis look more like those amazing cocks you saw on demons!  You pant and moan in happiness as it lengthens one last time, peaking at ten inches long.  The excitement of possessing such a magnificent pleasure tool makes you cum.  As one last ring of nodules forms around the edge of your new demon-dick's crown, you notice to your surprise that the liquid you ejaculated is pitch black!  But as your new cock pulsates darkly with each beat of your heart, the only thing you have on your mind is to try it out as soon as possible...");
@@ -129,7 +129,7 @@ package classes.Scenes.Dungeons.Factory
 				player.cocks[0].cockLength = 10;
 				player.cocks[0].cockThickness = 2;
 			}
-			if (player.cocks.length == 1) {
+			if (player.cocks.length === 1) {
 				if (player.countCocksOfType(CockTypesEnum.DEMON) < 1) {
 					outputText("You smile, watching your " + player.cockDescript(0) + " grow longer.  Inches of newfound dick-flesh erupt from your crotch in response to omnibus' dark magics.  Before you can play with your transformed tool, a wave of burning desire passes through you.  ");
 					if (player.cor < 80) outputText("You watch in horror as the skin of your " + player.cockDescript(0) + " turns shiny and purplish-black.  ");
@@ -148,7 +148,7 @@ package classes.Scenes.Dungeons.Factory
 			}
 			if (player.cocks.length > 1) {
 				//Already has demoncocks
-				if (player.countCocksOfType(CockTypesEnum.DEMON) == player.cockTotal()) {
+				if (player.countCocksOfType(CockTypesEnum.DEMON) === player.cockTotal()) {
 					outputText("Your " + player.multiCockDescriptLight() + " leap forwards, taking to the dark magic with ease.  Inch after inch of new length erupts from your groin as your " + player.multiCockDescriptLight() + " get longer and thicker.  They pulsate, as if promising dark pleasure as they settle into their new enhanced size.");
 					temp = player.cocks.length;
 					while(temp > 0) {
@@ -190,12 +190,12 @@ package classes.Scenes.Dungeons.Factory
 				mutations.removeAntennae(true);
 			}
 			//EARS
-			if (player.ears.type != Ears.HUMAN) {
+			if (player.ears.type !== Ears.HUMAN) {
 				outputText("Pain erupts from both sides of your head as your ears reform and move, returning to look like your old human ears!  ");
 				player.ears.type = Ears.HUMAN;
 			}
 			//Face
-			if (player.face.type != Face.HUMAN) {
+			if (player.face.type !== Face.HUMAN) {
 				outputText("Your facial structure rearranges itself into a normal human visage, exactly like yours was before you came to this horrid place.");
 				player.face.type = Face.HUMAN;
 			}
@@ -240,7 +240,7 @@ package classes.Scenes.Dungeons.Factory
 				temp++;
 			}
 			//Nothing changed
-			if (temp == 0) {
+			if (temp === 0) {
 				outputText("You tingle briefly but feel no obvious change.  Your chest is already fairly human.");
 			}
 			postOmnibusBoon();
@@ -271,13 +271,13 @@ package classes.Scenes.Dungeons.Factory
 					temp++;
 				}
 				//Humanitize
-				if (player.cocks[0].cockType != CockTypesEnum.HUMAN && player.cocks[0].cockType != CockTypesEnum.DEMON) {
+				if (player.cocks[0].cockType !== CockTypesEnum.HUMAN && player.cocks[0].cockType !== CockTypesEnum.DEMON) {
 					outputText("The inhuman appearance of your " + player.cockDescript(0) + " shifts, the flesh rearranging itself into a more human configuration.  After a few seconds you have a very normal looking penis.  ");
 					player.cocks[0].cockType = CockTypesEnum.HUMAN;
 					temp++;
 				}
 				//If demon cocked....
-				if (player.cocks[0].cockType == CockTypesEnum.DEMON) {
+				if (player.cocks[0].cockType === CockTypesEnum.DEMON) {
 					outputText("Your " + player.cockDescript(0) + " tingles as the bumps begin to fade.  After a moment the flesh darkens, and every single nodule reappears.  <b>Your corrupt penis resisted the magic!</b>  ");
 					temp++;
 				}
@@ -298,8 +298,8 @@ package classes.Scenes.Dungeons.Factory
 				}		
 			}
 			//Being genderless isn't normal too...
-			if (player.gender == Gender.NONE) {
-				if (player.balls > 0 || player.femininity < 35 || rand(3) == 0) {
+			if (player.gender === Gender.NONE) {
+				if (player.balls > 0 || player.femininity < 35 || rand(3) === 0) {
 					player.createCock();
 					player.cocks[0].cockType = CockTypesEnum.DEMON;
 					player.cocks[0].cockLength = 10;
@@ -307,7 +307,7 @@ package classes.Scenes.Dungeons.Factory
 					outputText("A sudden pressure builds in your groin.  You look down in wonder, more than a little turned on by the prospect of growing your own penis.  Your skin ripples and bulges outwards, the sensation turning from pressure to feelings of intense warmth.  The bump distends, turning purple near the tip as it reaches three inches in size.  You touch it and cry out with pleasure, watching it leap forwards another inch in response.  Your tiny dick's crown becomes more and more defined as it grows larger, until you have what looks like a normal six inch dick.  You sigh with happiness and desire at your new addition.  Before you can enjoy it, another wave of heat washes through you, making your new addition respond.  It grows painfully hard as it crests eight inches in length.  ");
 					if (player.cor < 80) outputText("In horror you watch the skin turn a shiny-dark purple.  Tiny wriggling nodules begin to erupt from the purplish skin, making your cock look more like a crazed sex-toy than a proper penis.  You pant and nearly cum as it lengthens one last time, peaking at ten inches long.  One last ring of nodules forms around the edge of your demon-dick's crown, pulsating darkly with each beat of your horrified heart.");
 					else outputText("Curious, you watch the skin turn a shiny-dark purple.  Tiny wriggling nodules begin to erupt from the purplish skin, making your penis look more like those amazing cocks you saw on demons!  You pant and moan in happiness as it lengthens one last time, peaking at ten inches long.  The excitement of possessing such a magnificent pleasure tool makes you cum.  As one last ring of nodules forms around the edge of your new demon-dick's crown, you notice to your surprise that the liquid you ejaculated is pitch black!  But as your new cock pulsates darkly with each beat of your heart, the only thing you have on your mind is to try it out as soon as possible...");
-					if (player.balls == 0) {
+					if (player.balls === 0) {
 						player.balls = 2;
 						outputText("\n\nIncredible pain scythes through your crotch, doubling you over.  In shock, you barely register the sight before your eyes: <b>You have balls!</b>");
 						player.ballSize = 1;    
@@ -328,7 +328,7 @@ package classes.Scenes.Dungeons.Factory
 			}
 
 			//Nothing changed
-			if (temp == 0) {
+			if (temp === 0) {
 				outputText("You tingle briefly but feel no obvious change.  Your crotch isn't really in need of becoming more human.");
 			}
 			postOmnibusBoon();
@@ -336,7 +336,7 @@ package classes.Scenes.Dungeons.Factory
 		private function normalLegs():void {
 			spriteSelect(SpriteDb.s_factory_omnibus);
 			clearOutput();
-			if (player.lowerBody.type == LowerBody.HUMAN) outputText("You feel as if you should slap yourself for stupidy.  Your legs are already normal!  You flush hotly as the corrupt magics wash over you, changing nothing.");
+			if (player.lowerBody.type === LowerBody.HUMAN) outputText("You feel as if you should slap yourself for stupidy.  Your legs are already normal!  You flush hotly as the corrupt magics wash over you, changing nothing.");
 			else outputText("You collapse as your " + player.legs() + " are unable to support you.  The sounds of bones breaking and reshaping fills the room, but oddly you feel no pain, only mild arousal.  You blink your eyes and sigh, and when you look down again <b>you have normal human legs</b>!");
 			player.lowerBody.type = LowerBody.HUMAN;
 			player.lowerBody.legCount = 2;
@@ -422,14 +422,14 @@ package classes.Scenes.Dungeons.Factory
 				outputText("*FLASH* \"<i>You want to cum for the plant.</i>\"\n\n");
 				outputText("Tendrils of plant crawl up your belly, coating you in slime as they massage every inch of you.\n\n");
 				outputText("*FLASH* \"<i>You need to cum for the plant.</i>\"\n\n");
-				if (player.breastRows.length == 1) outputText("They reach the lower curve of your breasts.\n\n");
+				if (player.breastRows.length === 1) outputText("They reach the lower curve of your breasts.\n\n");
 				if (player.breastRows.length > 1) outputText("They slide over your lowest pair of breasts, encapsulating them in wriggling tightness.\n\n");
 				outputText("*FLASH* \"<i>You love cumming for anything and anyone.</i>\"\n\n");
-				if (player.breastRows.length == 3) outputText("Your middle breasts tingle with absolute pleasure as they too become engulfed in tightness.\n\n");
-				if (player.breastRows.length == 2) outputText("You groan as the plant grows up the summit of your top breasts, coating the bottom half of your aureola.\n\n");
-				if (player.breastRows.length == 1) outputText("Your " + player.nippleDescript(0) + "s become hard as steel as the wave of slick pleasure washes over them.\n\n");  
+				if (player.breastRows.length === 3) outputText("Your middle breasts tingle with absolute pleasure as they too become engulfed in tightness.\n\n");
+				if (player.breastRows.length === 2) outputText("You groan as the plant grows up the summit of your top breasts, coating the bottom half of your aureola.\n\n");
+				if (player.breastRows.length === 1) outputText("Your " + player.nippleDescript(0) + "s become hard as steel as the wave of slick pleasure washes over them.\n\n");  
 				outputText("*FLASH* \"<i>You love being told to orgasm.</i>\"\n\n");
-				if (player.breastRows.length == 1) outputText("The wriggling mass slides up the top-most parts of your breasts, narrowing into two tiny tendrils that loop around your neck.\n\n");
+				if (player.breastRows.length === 1) outputText("The wriggling mass slides up the top-most parts of your breasts, narrowing into two tiny tendrils that loop around your neck.\n\n");
 				if (player.breastRows.length >= 2) outputText("The wriggling mass climbs your top pair of breasts with ease, wrapping your diamond-hard nipples in slime and sensation.  It continues climbing upward, narrowing into two bands that loop around the back of your neck.\n\n");
 				outputText("*FLASH* \"<i>To orgasm is to obey.  You love to orgasm.  You love to obey.  You love to obey my voice more than any other.  Obeying my voice gave you these orgasms.  Since you love to obey me, you must be my pet.</i>\"\n\n");
 				outputText("Your mistress' OTHER pet wraps around your neck, forming a choker comprised of shifting green colors.  You smile as you realize it is done - you've become one of her pet cattle.  Your body is wrapped in an emerald sea of shifting pleasure, just like your mistress wanted.  If it weren't for the obvious bulges of your " + player.multiCockDescriptLight() + ", you'd look to be wearing an extraordinarily revealing one piece swim-suit.  The constant teasing at your crotch continues, and you stay rock-hard, even though you just came.  The idea of being milked to feed your new clothing just turns you on so much that you bet you're leaking constant streams of pre-cum for your new green master.\n\n");
@@ -447,7 +447,7 @@ package classes.Scenes.Dungeons.Factory
 				return;
 			}
 			//Dick version
-			if (player.cocks.length == 1) {
+			if (player.cocks.length === 1) {
 				outputText("In her hand is a squirming purplish mass.  It has a smooth outer surface, spotted with dark shades of iridescent purple. The opposite side is comprised of a smooth mucusy membrane covered with wriggling pink cilia.\n\n");
 				outputText("She leans over you with a predatory smile, \"<i>This little guy is my favorite.  I've even given him a bit of 'field testing'.</i>\"  She gestures towards a small dripping orifice, explaining, \"<i>You see, once I put this on you, it'll open up niiice and wide.  It'll suck your nice little cock into its mouth and starting squeezing and massaging you with each of its tiny tentacles until you can't help but release all your ");
 				if (player.cor < 33) outputText("sweet ");
@@ -485,9 +485,9 @@ package classes.Scenes.Dungeons.Factory
 				return;
 			}
 			//(Female) 
-			if (player.vaginas.length == 1 || player.gender == 0) {
+			if (player.vaginas.length === 1 || player.gender === 0) {
 				outputText("In her hand is a seamless pair of panties.  Their surface reflects light perfectly, as if its bright pink surface were coated in slippery oil or made from latex.  ");
-				if (player.gender == 0) {
+				if (player.gender === 0) {
 					outputText("The demoness smiles with wicked intent and yanks the bottoms of your " + player.armorName + " the rest of the way off.  Your lack of genitalia does not faze her, and she responds by swiftly pulling out a needle and injecting your groin.  In seconds your crotch splits open, revealing a fresh virgin vagina.  Licking her perfect lips with anticipation, she inverts the panties and holds them up for you to see.\n\n");
 					player.createVagina();
 				}

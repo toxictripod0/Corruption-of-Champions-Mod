@@ -34,10 +34,10 @@ package classes.Scenes.Areas
 			flags[kFLAGS.TIMES_EXPLORED_DESERT] = 1;
 			outputText(images.showImage("area-desert"));
 			outputText("You stumble as the ground shifts a bit underneath you.  Groaning in frustration, you straighten up and discover the rough feeling of sand ");
-			if (player.lowerBody.type == LowerBody.HUMAN) outputText("inside your footwear, between your toes");
-			else if (player.lowerBody.type == LowerBody.HOOFED) outputText("in your hooves");
-			else if (player.lowerBody.type == LowerBody.DOG) outputText("in your paws");
-			else if (player.lowerBody.type == LowerBody.NAGA) outputText("in your scales");
+			if (player.lowerBody.type === LowerBody.HUMAN) outputText("inside your footwear, between your toes");
+			else if (player.lowerBody.type === LowerBody.HOOFED) outputText("in your hooves");
+			else if (player.lowerBody.type === LowerBody.DOG) outputText("in your paws");
+			else if (player.lowerBody.type === LowerBody.NAGA) outputText("in your scales");
 			outputText(".\n\n<b>You've discovered the Desert!</b>");
 			doNext(camp.returnToCampUseOneHour);
 		}
@@ -46,7 +46,7 @@ package classes.Scenes.Areas
 		public function get desertEncounter():Encounter { // lateinit because it references getGame()
 			const game:CoC     = getGame();
 			const fn:FnHelpers = Encounters.fn;
-			if (_desertEncounter == null) _desertEncounter =
+			if (_desertEncounter === null) _desertEncounter =
 					Encounters.group(game.commonEncounters, {
 						name: "naga",
 						call: nagaScene.nagaEncounter
@@ -61,7 +61,7 @@ package classes.Scenes.Areas
 					}, {
 						name: "sandwitch",
 						when: function ():Boolean {
-							return flags[kFLAGS.SAND_WITCH_LEAVE_ME_ALONE] == 0;
+							return flags[kFLAGS.SAND_WITCH_LEAVE_ME_ALONE] === 0;
 						},
 						call: sandWitchScene.encounter
 					}, {
@@ -81,7 +81,7 @@ package classes.Scenes.Areas
 					}, {
 						name: "sw_preg",
 						when: function ():Boolean {
-							return sandWitchScene.pregnancy.event == 2;
+							return sandWitchScene.pregnancy.event === 2;
 						},
 						call: sandWitchPregnancyEvent
 					}, {
@@ -92,7 +92,7 @@ package classes.Scenes.Areas
 					}, {
 						name  : "ants",
 						when  : function ():Boolean {
-							return player.level >= 5 && flags[kFLAGS.ANT_WAIFU] == 0 && flags[kFLAGS.ANTS_PC_FAILED_PHYLLA] == 0 && flags[kFLAGS.ANT_COLONY_KEPT_HIDDEN] == 0;
+							return player.level >= 5 && flags[kFLAGS.ANT_WAIFU] === 0 && flags[kFLAGS.ANTS_PC_FAILED_PHYLLA] === 0 && flags[kFLAGS.ANT_COLONY_KEPT_HIDDEN] === 0;
 						},
 						chance: 0.25,
 						call  : antsScene.antColonyEncounter
@@ -100,13 +100,13 @@ package classes.Scenes.Areas
 						name: "dungeon",
 						when: function ():Boolean {
 							return (player.level >= 4 || flags[kFLAGS.TIMES_EXPLORED_DESERT] > 45)
-								   && flags[kFLAGS.DISCOVERED_WITCH_DUNGEON] == 0;
+								   && flags[kFLAGS.DISCOVERED_WITCH_DUNGEON] === 0;
 						},
 						call: game.dungeons.desertcave.enterDungeon
 					}, {
 						name: "wstaff",
 						when: function ():Boolean {
-							return flags[kFLAGS.FOUND_WIZARD_STAFF] == 0 && player.inte100 > 50;
+							return flags[kFLAGS.FOUND_WIZARD_STAFF] === 0 && player.inte100 > 50;
 						},
 						call: wstaffEncounter
 					}, {
@@ -153,7 +153,7 @@ package classes.Scenes.Areas
 		}
 
 		public function sandWitchPregnancyEvent():void {
-			if (flags[kFLAGS.EGG_WITCH_TYPE] == PregnancyStore.PREGNANCY_DRIDER_EGGS) sandWitchScene.sammitchBirthsDriders();
+			if (flags[kFLAGS.EGG_WITCH_TYPE] === PregnancyStore.PREGNANCY_DRIDER_EGGS) sandWitchScene.sammitchBirthsDriders();
 			else sandWitchScene.witchBirfsSomeBees();
 		}
 
@@ -209,10 +209,10 @@ package classes.Scenes.Areas
 			clearOutput();
 			outputText(images.showImage("area-desert"));
 			outputText("You walk through the shifting sands for an hour, finding nothing.\n\n");
-			//Chance of boost == 50%
-			if (rand(2) == 0) {
+			//Chance of boost === 50%
+			if (rand(2) === 0) {
 				//50/50 strength/toughness
-				if (rand(2) == 0 && player.str100 < 50) {
+				if (rand(2) === 0 && player.str100 < 50) {
 					outputText("The effort of struggling with the uncertain footing has made you stronger.");
 					dynStats("str", .5);
 				}

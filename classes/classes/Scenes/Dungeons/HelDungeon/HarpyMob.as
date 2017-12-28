@@ -6,7 +6,7 @@ package classes.Scenes.Dungeons.HelDungeon
 	public class HarpyMob extends Monster
 	{
 		public function harpyHordeAI():void {
-			if (rand(3) == 0) harpyHordeLustAttack();
+			if (rand(3) === 0) harpyHordeLustAttack();
 			else if (rand(3) > 0) harpyHordeClawFlurry()
 			else harpyHordeGangBangAttack();
 		}

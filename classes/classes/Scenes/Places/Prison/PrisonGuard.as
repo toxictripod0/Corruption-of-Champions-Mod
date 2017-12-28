@@ -35,7 +35,7 @@ package classes.Scenes.Places.Prison
 		{
 			hideMenus();
 			clearOutput();
-			if (flags[kFLAGS.PRISON_TRAINING_LEVEL] == 0 && player.statusEffectv1(StatusEffects.PrisonCaptorEllyStatus) <= 1)
+			if (flags[kFLAGS.PRISON_TRAINING_LEVEL] === 0 && player.statusEffectv1(StatusEffects.PrisonCaptorEllyStatus) <= 1)
 			{
 				return prison.prisonCaptorRandomEventSounds();
 			}

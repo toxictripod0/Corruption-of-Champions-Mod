@@ -9,7 +9,7 @@
 		{
 		}
 private function urtaQuestDone():Boolean {
-	return (flags[kFLAGS.URTA_QUEST_STATUS] == 1);
+	return (flags[kFLAGS.URTA_QUEST_STATUS] === 1);
 }
 
 //[Approach Sober Urta]
@@ -135,12 +135,12 @@ private function notInterestedInUburDrunkUrtaRuts():void {
 	clearOutput();
 	urta.urtaSprite();
 	outputText("You say it's her who seems to be different today, and gently push her away, before apologizing and making your leave.  ");
-	if (player.face.type == 2) outputText("Your nose does seem to pick up that Urta was and still is getting unusually aroused behind you.  ");
+	if (player.face.type === 2) outputText("Your nose does seem to pick up that Urta was and still is getting unusually aroused behind you.  ");
 	if (player.inRut && player.hasCock()) outputText("[EachCock] twitches in protest at you leaving a willing lay behind.  ");
 	//[Medium lust increase] 
 
 	//[If the PC has a snake tongue]
-	if (player.tongue.type == Tongue.SNAKE) outputText("You instinctively taste the air, and Urta suddenly seems utterly delicious. ");
+	if (player.tongue.type === Tongue.SNAKE) outputText("You instinctively taste the air, and Urta suddenly seems utterly delicious. ");
 	//Rut: 
 	if (player.inRut && player.hasCock()) outputText("Your " + player.multiCockDescriptLight() + " hardens in your pants as you still force yourself to leave.");
 	//[Medium lust increase]
@@ -193,40 +193,40 @@ private function drunkUrtaIntroPartDuex(chosenSex:int = 1, newl:Boolean = true):
 
 	outputText("Suddenly, Urta's hand dashes to ");
 	//[if players has balls]
-	if (player.balls > 0 && chosenSex == 1) outputText("your [balls], rolling them in her hand and squeezing a bit too roughly.");
+	if (player.balls > 0 && chosenSex === 1) outputText("your [balls], rolling them in her hand and squeezing a bit too roughly.");
 	else if (player.hasVagina()) {
 		outputText("your [clit], rubbing it until it's ");
-		if (chosenSex == 1) outputText("the very same state [eachCock] seems to be in so often recently, ");
+		if (chosenSex === 1) outputText("the very same state [eachCock] seems to be in so often recently, ");
 		outputText("erect and throbbing.");
 	}
 	else outputText("your [hips], stroking along them towards [eachCock] in an agonizing display of teasing.");
 
 	outputText("\n\nThe fox herself shuts you up immediately by smashing her lips against yours and forcing her tongue inside your mouth.  You can't help but be excited by her aggressiveness");
-	if (chosenSex == 1) outputText(", and [eachCock] already gets hard in your [armor].");
+	if (chosenSex === 1) outputText(", and [eachCock] already gets hard in your [armor].");
 	else outputText(", and you feel the inside of your [armor] rapidly slickened by your [vagina]'s excitement.");
 
 	outputText("\n\nYou're a bit surprised by the reaction, and while you're still putty in her hands, Urta pushes you onto the bar table with strength nigh-impossible for her frame.  You feel wood under your back.  Her tail unfolds and presents her already erect equine penis to you, ");
 	//Player in both : 
 	if (player.inRut && player.inHeat && player.hasCock() && player.hasVagina()) outputText("and she proceeds to maul her breasts, pre-cum seeping copiously from her cock and her snatch drooling over her balls and onto the floor.");
-	else if (chosenSex == 1) outputText("but she doesn't seem to mind it for the moment.  Rather, the fur between her thighs appears to be rapidly soaking.");
+	else if (chosenSex === 1) outputText("but she doesn't seem to mind it for the moment.  Rather, the fur between her thighs appears to be rapidly soaking.");
 	else outputText("which she seems more than intent to push into you, although you do see a bit of female lubricant sliding down her balls.");
 
 	outputText("\n\nShe starts to struggle to get you free of your [armor], continuing her assault verbally.  \"<i>Of course, if you actually planned to do this, you'd at least have the courtesy to wait 'til I'm out of here, so I'm sure you don't mind.</i>\"  She seems frustrated by the fact your clothes are less than willing to cooperate in this position.  She does admirably well for someone already intoxicated.  \"<i>Ugh, you better be ");
-	if (chosenSex == 1) outputText("hard");
+	if (chosenSex === 1) outputText("hard");
 	else outputText("wet");
 	outputText(" for me</i>\"  Moments later, as you feel your naked [butt] against the table, her eyes dart to your ");
-	if (chosenSex == 1) outputText(player.multiCockDescriptLight());
+	if (chosenSex === 1) outputText(player.multiCockDescriptLight());
 	else outputText("[vagina]");
 	outputText(".  Her smile opens wider as Urta presents you with a sexy face that seems a mix of positively delighted and predatory.");
 
 	//[If player is in Rut, OR is in Heat AND Rut AND chose "Cock":
-	if (chosenSex == 1) outputText("\n\n\"<i>Well, I'm sure you don't mind if I take all your spunk and those few hours of fucking all for myself, instead,</i>\" she says as she brings one leg onto the table and the side of you as she sheds her dress, lubricant now drooling from the fox's female half, falling onto your [hips].");
+	if (chosenSex === 1) outputText("\n\n\"<i>Well, I'm sure you don't mind if I take all your spunk and those few hours of fucking all for myself, instead,</i>\" she says as she brings one leg onto the table and the side of you as she sheds her dress, lubricant now drooling from the fox's female half, falling onto your [hips].");
 
 	//[If player is in Heat, OR is in Heat AND Rut AND chose "Pussy":]
 	else outputText("\n\n\"<i>I think you'll find that I'm more than stud enough for your greedy little twat...</i>\" she growls with lust, one hand stroking your [vagina], before she awkwardly hops up onto the table between your legs.");
 
 	menu();
-	if (chosenSex == 1) {
+	if (chosenSex === 1) {
 		if (player.cockThatFits(urta.urtaCapacity()) >= 0) addButton(0,"Next",drunkUrtaRidesARutPCsCock);
 		else addButton(0,"Next",sateRutWithDrunkUrtaWithHugeDick);
 	}
@@ -414,7 +414,7 @@ private function soberUrtaSatingPCHeat():void {
 	//[If Urta's fertility quest is done]
 	else {
 		outputText("\n\n\"<i>Ahhh, [name], you might get pregnant!</i>\"  She kneels in front of you, kissing you on the forehead. \"<i>I don't think all the contraceptives in the world could stop that...</i>\"");
-		if (flags[kFLAGS.URTA_FERTILE] == 1) {
+		if (flags[kFLAGS.URTA_FERTILE] === 1) {
 			player.knockUp(PregnancyStore.PREGNANCY_URTA, PregnancyStore.INCUBATION_URTA, 25);
 			player.knockUp(PregnancyStore.PREGNANCY_URTA, PregnancyStore.INCUBATION_URTA, 25);
 			player.knockUp(PregnancyStore.PREGNANCY_URTA, PregnancyStore.INCUBATION_URTA, 25);
@@ -524,7 +524,7 @@ private function sateRutWithSoberUrta():void {
 	//If fertility quest done:
 	if (urtaQuestDone()) {
 		outputText("\n\nYou ask Urta what she's going to do; you didn't have the chance to use a condom.");
-		if (flags[kFLAGS.URTA_FERTILE] == 1) outputText("\n\n\"<i>We'll just have to hope then, won't we, [name]?</i>\"");
+		if (flags[kFLAGS.URTA_FERTILE] === 1) outputText("\n\n\"<i>We'll just have to hope then, won't we, [name]?</i>\"");
 		else outputText("\n\n\"<i>I'm not likely to get pregnant with all the birth control I'm on right now, even with all that cum in me.</i>\"\n\nFeeling relieved, you turn and head out into the streets of the city.");
 		urta.knockUpUrtaChance();
 		urta.knockUpUrtaChance();
@@ -606,7 +606,7 @@ private function drunkenUrtaFucksPCInHeat():void {
 	//If fertility quest is done: 
 	if (urtaQuestDone()) {
 		outputText("\n\nYou hesitantly ask her what the two of you are going to do now; you were in heat, and you know for a fact she didn't have a condom on.");
-		if (flags[kFLAGS.URTA_FERTILE] != 1) outputText("\n\nUrta smiles and informs you that she was taking things to prevent that, luckily.");
+		if (flags[kFLAGS.URTA_FERTILE] !== 1) outputText("\n\nUrta smiles and informs you that she was taking things to prevent that, luckily.");
 		else outputText("\n\nUrta smiles beatifically, \"<i>I know, isn't it wonderful?</i>\"");
 	}
 
@@ -614,7 +614,7 @@ private function drunkenUrtaFucksPCInHeat():void {
 
 	outputText("\n\nThe walk back to camp is quite painful, but you'll live.  That which doesn't kill you makes you stronger, and all that...");
 
-	if (flags[kFLAGS.URTA_FERTILE] == 1) {
+	if (flags[kFLAGS.URTA_FERTILE] === 1) {
 		player.knockUp(PregnancyStore.PREGNANCY_URTA, PregnancyStore.INCUBATION_URTA, 25);
 		player.knockUp(PregnancyStore.PREGNANCY_URTA, PregnancyStore.INCUBATION_URTA, 25);
 		player.knockUp(PregnancyStore.PREGNANCY_URTA, PregnancyStore.INCUBATION_URTA, 25);
@@ -754,7 +754,7 @@ private function drunkUrtaRidesARutPCsCock():void {
 	outputText("\n\nYour tired and lust-hazed mind sees no reason not to, and you grab her, so Urta's massive mare member starts to be pleasured by her own hand as well as yours.  Squealing in delight, the horny vixen returns to what seems to occupy her mind completely: bouncing fervently on top of you, with your " + player.cockDescript(x) + " trapped in her wet snatch.");
 
 	outputText("\n\nThe stimulation is intense, your now far more sensitive member completely at the mercy of her inner muscles.  Urta doesn't seem tired at all, instead being even more ferocious and eager to share another set of mind-blowing orgasms with you, ramming her own hips against your [hips] while the back of her tail occasionally teases");
-	if (!player.hasVagina() && player.balls == 0) outputText(" the inside of your thighs");
+	if (!player.hasVagina() && player.balls === 0) outputText(" the inside of your thighs");
 	else if (player.balls > 0) outputText(" your [balls]");
 	else if (player.hasVagina()) outputText(" your [clit]");
 	outputText(" when she's pressed entirely against you.  She smacks her own bottom and you run your other hand over her body as the two of you tug on and pull her massive erection towards your face and over your [chest], thick dollops of pre-cum and leftover semen dripping from her member over your body.  Urta licks her lips as she looks down on you with ");
@@ -858,7 +858,7 @@ private function drunkUrtaRidesARutPCsCock():void {
 	//[If Urta is fertile]
 	else {
 		outputText("\n\nYou realize that Urta went ahead and forced many orgasms out of you and inside herself without as much as a hint of protection.  Worried that neither of you was in a clear state of mind at the time, you ask her about this.");
-		if (flags[kFLAGS.URTA_FERTILE] != 1) outputText("\n\n\"<i>Don't worry love, I'm on enough contraceptives that we shouldn't have to worry,</i>\" Urta admits.");
+		if (flags[kFLAGS.URTA_FERTILE] !== 1) outputText("\n\n\"<i>Don't worry love, I'm on enough contraceptives that we shouldn't have to worry,</i>\" Urta admits.");
 		else outputText("\n\n\"<i>We did, didn't we?  It would be nice, wouldn't it?  If every time you got in a rutting mood you could just drill another baby into me...  I really wanted it, [name]!  I love you!</i>\"");
 		outputText("\n\nYou nod and tell her you understand.");
 		urta.knockUpUrtaChance();

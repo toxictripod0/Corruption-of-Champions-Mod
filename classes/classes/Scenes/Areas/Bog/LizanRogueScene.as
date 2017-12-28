@@ -158,7 +158,7 @@ package classes.Scenes.Areas.Bog
 			outputText("The lizan watches you with obvious interest as he asks \"<i>How do you like to do this?</i>\"");
 			outputText("\n\nYou tell him you want his ass, making sure to assert your dominance. He doesn't seem to mind as he turns away and peels off his loincloth, exposing his tight little toned ass with a lift of his glistening " + monster.skin.tone + " tail. After he has discarded the meager clothing he turns back around to face you, displaying dual bumpy purple lizan dicks, neither of which are small.");
 			outputText("\n\nTaking charge of the situation you take him by the shoulders and push him down to his knees. He doesn't seem to mind the gentle reminder of your dominance. From the way he begins flicking his tongue at [eachCock] you feel that he is actually quite turned on by the gesture.");
-			if (player.cocks.length == 1) { //One cock
+			if (player.cocks.length === 1) { //One cock
 				if (player.cocks[0].cockLength < 10) {
 					outputText("\n\nLike a snake his dripping tongue slithers from his lips and begins to coil around your engorged [cock]. The long muscle wraps you up like a present. You feel a tug and watch as your tongue wrapped [cock] is pulled into the obviously experienced lizan's hot mouth. Then he closes his lips around the base and begins to leisurely bob up and down the full length of your [cock]. Every time he sucks you in his tongue slithers back around your [cock] before he sucks off, unwrapping it in the process. The rapid coiling sensation combined with the awe inspiring suction has you trembling before long.");
 					outputText("\n\nYou place your hand on his cool scaley head for balance, inadvertently causing him to increase tempo. It feels like you're fucking a living hole whose only purpose is to bring you unbearable amounts of pleasure. For a moment you revel in the sensation before reaching down and pulling him off your [cock] with an audible pop. He wipes his arm across his face and, still licking his lips, gives you a bright self satisfied smile.");
@@ -289,9 +289,9 @@ package classes.Scenes.Areas.Bog
 				outputText("\n\nThe lizan pushes into your [asshole] with a swoon, bottoming out instantly. As he begins to move through your body you get a great idea. With a grin you glance over his shoulder and ask him if he wants to stuff both of his dicks into your [ass].");
 				outputText("\n\n\"<i>Fuck yeah!</i>\" He says after his initial surprise is gone from his cute face. Then with a grin on his face like a kid in a candy store, he stuffs both of his lizan dicks into your [asshole]. The lizan groans as his shafts are pressed together inside of you. You begin to rock back onto an awestruck lizan, showing him that you can take it. With a roar of triumph he grabs your waist and begins roughly fucking both of his lizan dicks into your [asshole] with all the force he can muster. He leans into you, repositioning to fuck deeper into your [asshole], even pulling you back into his thrusts to increase the force of your wild fucking.");
 			}
-			if (player.gender == 1) outputText("\n\nThe lizan reaches around you, taking a hold of your [cock] while continuing to pound your [asshole] inward. The dual sensations are too much and you can feel yourself being pushed over the edge."); 
-			if (player.gender == 2) outputText("\n\nThe lizan reaches around you, and begins to play with your [clit], before dipping his finger into your [vagina]. The dual sensations are too intense and you begin to feel yourself being pushed over the edge.");
-			if (player.gender == 3) outputText("\n\nThe lizan reaches around you, taking a hold of your [cock] while he also begins to play with your [clit], before dipping his finger into your [vagina]. The dual sensations are too intense and you begin to feel yourself being pushed over the edge.");
+			if (player.gender === 1) outputText("\n\nThe lizan reaches around you, taking a hold of your [cock] while continuing to pound your [asshole] inward. The dual sensations are too much and you can feel yourself being pushed over the edge."); 
+			if (player.gender === 2) outputText("\n\nThe lizan reaches around you, and begins to play with your [clit], before dipping his finger into your [vagina]. The dual sensations are too intense and you begin to feel yourself being pushed over the edge.");
+			if (player.gender === 3) outputText("\n\nThe lizan reaches around you, taking a hold of your [cock] while he also begins to play with your [clit], before dipping his finger into your [vagina]. The dual sensations are too intense and you begin to feel yourself being pushed over the edge.");
 			outputText("\n\nWith a hoarse groan you reach your climax.");
 			if (player.hasCock()) outputText("\n\nThe lizan's grip on your [cock] tightens and with a sudden shiver you're gushing into his hand.");
 			if (player.hasVagina()) outputText("\n\nYou shiver as the finger inside your [vagina] is painted with evidence of your orgasm.");
@@ -371,7 +371,7 @@ package classes.Scenes.Areas.Bog
 				outputText("You squat over the lizan and release your pressure, a stream of warm urine flows from your vagina");
 			}
 			else if (player.hasCock()) {
-				if (player.cocks.length == 1) outputText("You stand in front of the lizan and aim your [cock] at him and release your pressure, a stream of warm urine flows from your penis");
+				if (player.cocks.length === 1) outputText("You stand in front of the lizan and aim your [cock] at him and release your pressure, a stream of warm urine flows from your penis");
 				else outputText("You stand in front of the lizan and aim your [cock] at him and release your pressure, streams of warm urine flow from your multiple cocks");
 			}
 			else { //Just because you're a genderless doesn't mean you can't pee.

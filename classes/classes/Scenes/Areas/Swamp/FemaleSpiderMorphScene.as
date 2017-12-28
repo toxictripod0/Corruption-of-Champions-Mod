@@ -27,7 +27,7 @@ package classes.Scenes.Areas.Swamp
 		public function timeChange():Boolean
 		{
 			pregnancy.pregnancyAdvance();
-			if (pregnancy.isPregnant && pregnancy.incubation == 0) pregnancy.knockUpForce(); //Silently clear the spider morph's pregnancy if the player doesn't see the egg sac in time
+			if (pregnancy.isPregnant && pregnancy.incubation === 0) pregnancy.knockUpForce(); //Silently clear the spider morph's pregnancy if the player doesn't see the egg sac in time
 			//trace("\nFemale Spidermorph time change: Time is " + getGame().time.hours + ", incubation: " + pregnancy.incubation + ", event: " + pregnancy.event);
 			return false;
 		}
@@ -42,12 +42,12 @@ package classes.Scenes.Areas.Swamp
 			clearOutput();
 			spriteSelect(SpriteDb.s_spidergirl);
 			//Egg sack sometimes
-			if (pregnancy.event == 2) { //If she's past event 2 then she has laid the eggs
+			if (pregnancy.event === 2) { //If she's past event 2 then she has laid the eggs
 				findASpiderMorphEggSack();
 				return;
 			}
 			//*Greeting Event (1st time):
-			if (flags[kFLAGS.TIMES_ENCOUNTERED_FEMALE_SPIDERMORPHS] == 0) {
+			if (flags[kFLAGS.TIMES_ENCOUNTERED_FEMALE_SPIDERMORPHS] === 0) {
 				outputText("You go exploring into the swamp, doing your best to ignore the oppressive heat and moisture of the place.  Insects buzz and flit about you constantly in an attempt to drive you mad with their incessant buzzing.  You swat a particularly noisy one from your " + player.faceDescript() + " before you realize you're no longer alone.\n\n");
 
 				outputText("A strange, naked female stands before you, hands on her hips as she eyes you up and down.  She's completely unclothed, revealing the paleness of her glistening skin to the humid swamp air, and though her legs and arms are both wreathed in some kind of shiny black covering, it only seems to enhance her nudity rather than conceal it.  Bobbing behind her is a sizable, black sphere with a few small protrusions that you can only assume are spinnerets. She's clearly a spider-girl, and now that you look closer, that black material is her exoskeleton!  The monster-girl flashes her needle-like fangs at you in a smile as she approaches.\n\n");
@@ -82,7 +82,7 @@ package classes.Scenes.Areas.Swamp
 			clearOutput();
 			spriteSelect(SpriteDb.s_spidergirl);
 			//Selecting has a 50% chance of displaying the following:
-			if (rand(2) == 0) {
+			if (rand(2) === 0) {
 				outputText("You turn around and flee before she can get any closer.  After running for a few moments, you realize the spider-woman isn't trying to pursue you at all.  The last image you see of her is her looking down at the ground with an expression of incredible melancholy.");
 				doNext(camp.returnToCampUseOneHour);
 			}
@@ -98,13 +98,13 @@ package classes.Scenes.Areas.Swamp
 		{
 			clearOutput();
 			spriteSelect(SpriteDb.s_spidergirl);
-			if (rand(2) == 0) {
+			if (rand(2) === 0) {
 				outputText("You hold up your hands non-threateningly and ask the spider-girl why she's trying to sneak up on you.  Her eyes go wide and she claps her chitinous hands over her mouth in shock before she cries, \"<i>Omigosh, I'm so sorry!</i>\"  You smirk at the decidedly girlish response while she recovers and continues to speak, \"<i>I didn't mean to scare you!  I've been living out here by myself for so long... ever since the demons destroyed our village.  C-could we just... umm... talk for a little while?</i>\"\n\n");
 				outputText("The spider-girl twiddles her fingers nervously for a moment until you give her a nod.  You did mean to talk to her, and it seems that it's worked out a little better than you intended.  She takes a few tiny steps forward before sitting down cross-legged on some ferns.  Feeling no threat from the strange monster-girl, you sit down across from her and let her ply you with questions about your adventures, and once she's finished, you do the same.\n\n");
 				//(OPTION 1 - SEX) 
-				if (rand(2) == 0) {
+				if (rand(2) === 0) {
 					outputText("After you've both had your fill of talk, the spider-girl asks, \"<i>I-I w-was wondering if you'd do me a favor... I have certain... urges, and");
-					if (player.gender == 0) {
+					if (player.gender === 0) {
 						outputText(" o-oh nevermind, you're genderless... crap.</i>\"  She blushes and lifts her abdomen, shooting a web into the trees that she uses to escape from the awkward situation.  You're left utterly alone, once again.");
 						doNext(camp.returnToCampUseOneHour);
 						return;
@@ -233,7 +233,7 @@ package classes.Scenes.Areas.Swamp
 
 			outputText("The spider-girl pulls back and admires her handiwork for a moment before she repeats the action on ");
 			if (player.biggestTitSize() < 1) outputText("the other side of your chest");
-			else if (player.totalBreasts() == 2) outputText("your other breast");
+			else if (player.totalBreasts() === 2) outputText("your other breast");
 			else outputText("another one of your many breasts");
 			outputText(".  By now, your body is thrumming with sexual need and even the pain of her fangs penetrating your flesh registers as nothing more than a burst of masochistic pleasure.  A ");
 			if (player.wetness() >= 4) outputText("gush");
@@ -249,8 +249,8 @@ package classes.Scenes.Areas.Swamp
 			outputText("To emphasize her point, the spider-girl bites down on your " + player.leg() + " and squirts a fresh load of her overwhelming, sexual venom deep inside you.  Another squirt gushes out, soaking the dominatrix's fingertip, and you pant and beg for release, knowing you'll do anything she asks at this point.  In response, the exoskeleton-covered legs spread further apart, lowering those midnight lips close enough to be within easy licking distance.  The first bead of moisture drops down to splat on your lips, and you lick it off unthinkingly, getting your first taste of your spidery mistress.\n\n");
 
 			outputText("The arachnid sex tastes... sweet - unnaturally so, almost cloying in its intensity.  You lean up to lick at her slimy black box, and as soon as you make contact with her oozing nether-lips, her legs give out, dropping her weight fully on to you and smothering you in her honey-dripping cunt.  Grunting in discomfort from the change in pressure, your aphrodisiac-addled mind remembers that licking her pussy will get you release.  You thrust your tongue forward with every ounce of your strength, burying ");
-			if (player.tongue.type == Tongue.SNAKE) outputText("the snake-like length the whole way into her womb, slithering right past her cervix.");
-			else if (player.tongue.type == Tongue.DEMONIC) outputText("the massive, demonic length into her vagina, curling it around the walls and stroking them all with even motions.");
+			if (player.tongue.type === Tongue.SNAKE) outputText("the snake-like length the whole way into her womb, slithering right past her cervix.");
+			else if (player.tongue.type === Tongue.DEMONIC) outputText("the massive, demonic length into her vagina, curling it around the walls and stroking them all with even motions.");
 			else if (player.hasLongTongue()) outputText("the inhuman length into her vagina, curling it around the walls and stroking them all with even motions.");
 			else outputText("all of your length as deep into her passage as possible, licking and lapping at it in an orgasm-seeking frenzy.");
 			outputText("  The hard nub of her clit bumps your lower lip, and you start to open and close your jaw as fast as possible to stroke that tiny pleasure-organ off.\n\n");
@@ -316,7 +316,7 @@ package classes.Scenes.Areas.Swamp
 			outputText(", a tight ring that holds your dick immobile in its vice-like grasp.  ");
 			if (player.cockTotal() > 1) {
 				outputText("She makes ");
-				if (player.cockTotal() == 2) outputText("a similar ring");
+				if (player.cockTotal() === 2) outputText("a similar ring");
 				else outputText("similar rings");
 				outputText(" for your other penis");
 				if (player.cockTotal() > 2) outputText("es");
@@ -350,9 +350,9 @@ package classes.Scenes.Areas.Swamp
 				outputText("  Meanwhile, your extra penis");
 				if (player.cockTotal() > 2) outputText("es");
 				outputText(" drool");
-				if (player.cockTotal() == 2) outputText("s");
+				if (player.cockTotal() === 2) outputText("s");
 				outputText(" pre-cum, but ");
-				if (player.cockTotal() == 2) outputText("is");
+				if (player.cockTotal() === 2) outputText("is");
 				else outputText("are");
 				outputText(" completely ignored.");
 			}
@@ -438,7 +438,7 @@ package classes.Scenes.Areas.Swamp
 			outputText("The faster you go, the faster she jerks you with the webs.  Soon both of you are breathing hard, gasping out nonsense noises of pleasure, and drizzling your lusty fluids freely.  The fast pumping, slippery web-pussy bunches up around your base, pulling tight at your tip with every downstroke, and with each upstroke, it creates a small vacuum, sucking on your cock while it exposes a little of your flesh to the air.  It feels wondrous, and though you're utterly and completely bound, the muscles of your " + player.hipDescript() + " continually thrust and buck against their restraints, trying to rut with the gossamer sleeve like some unthinking beast.\n\n");
 
 			outputText("A splash of candy-sweet syrup bursts onto your tongue, and then the plush black spider-cunt is being mashed down into your face hard enough to cut off your breathing.  The motion leaves you with nothing to do but lick at the spasming passage while it squirts feminine fluids all over your face.  You lick and swallow, mewling piteously into the sweet snatch while your own orgasm slowly builds from the slippery-tight embrace of your mistress's sensuous webs.  Spooge bursts from your massive cum-slit, spurting hard enough to distort the webs and create a bubble of cum atop your cock.  You gulp down another helping of lady spunk, and then the next pulse of seed pumps into the bubble, making a nice rounded cum-pouch atop your silken condom.  You cum over and over, pumping up the little balloon until your ");
-			if (player.balls == 0) outputText("body is completely empty");
+			if (player.balls === 0) outputText("body is completely empty");
 			else outputText("balls have completely emptied");
 			outputText(".\n\n");
 
@@ -468,7 +468,7 @@ package classes.Scenes.Areas.Swamp
 				return;
 			}
 			if (player.hasCock()) {
-				if (player.cockThatFits(monster.vaginalCapacity()) == -1) femaleSpiderMorphTooBigWebRape();
+				if (player.cockThatFits(monster.vaginalCapacity()) === -1) femaleSpiderMorphTooBigWebRape();
 				else spiderMorphFemaleRidesACawk();
 			}
 			else if (player.hasVagina()) defeatFemale();
@@ -503,10 +503,10 @@ package classes.Scenes.Areas.Swamp
 				outputText("\n\nWhat do you do to her?");
 				
 				if (player.hasCock()) {
-					if (player.cockThatFits(monster.analCapacity()) != -1) {
+					if (player.cockThatFits(monster.analCapacity()) !== -1) {
 						addButton(0, "Fuck Ass", evilSpiderGirlVictoryAnal);
 					}
-					if (player.cockThatFits(monster.vaginalCapacity()) != -1) {
+					if (player.cockThatFits(monster.vaginalCapacity()) !== -1) {
 						addButton(1, "Fuck Pussy", fSpiderMorphRapeDude);
 					}
 				}
@@ -603,7 +603,7 @@ package classes.Scenes.Areas.Swamp
 			outputText("That was unexpected.  You slap her ass and bite down on her nipple to silence her worthless words - if she didn't want you to fuck her pussy she shouldn't have been trying so hard to get in your pants.  She writhes, squirming and venting tiny strands of half-formed web from her abdomen with each thrust, nearly cumming but still wide-eyed and worried about pregnancy.  You massage her other breast with your free hand, pumping and pounding away at her");
 			if (player.cockTotal() > 1) {
 				outputText(" while your other ");
-				if (player.cockTotal() == 2) outputText("cock flops about uselessly");
+				if (player.cockTotal() === 2) outputText("cock flops about uselessly");
 				else outputText("cocks flop about uselessly");
 			}
 			outputText(".  That extra stimulation is all it takes to get her off and make her squirt your groin with her copious lady-spunk.  You tweak her nipple and bite down again, ");
@@ -650,7 +650,7 @@ package classes.Scenes.Areas.Swamp
 		private function evilSpiderGirlVictoryAnal():void
 		{
 			var x:Number = player.cockThatFits(monster.analCapacity());
-			if (x == -1) x = 0;
+			if (x === -1) x = 0;
 			var y:Number = player.cockThatFits2(monster.analCapacity());
 			clearOutput();
 			spriteSelect(SpriteDb.s_spidergirl);
@@ -677,7 +677,7 @@ package classes.Scenes.Areas.Swamp
 			outputText("Your victim bites her lip, trying to hold in the gasps of pleasure, but you slap her pillowy asscheek, forcing her to cry out in surprise.  With the dam broken, you're treated to an audible symphony of verbal enjoyment.  The spider-girl gasps and croons, moans and pants, and eventually just starts babbling 'yes' with every ass-filling thrust of your " + player.cockDescript(x) + ".  Her legs go weak, and you're forced to hold her aloft by her abdomen while you rail away at her exposed ass, fucking the spider-girl as hard as your muscles will allow.\n\n");
 
 			outputText("The spider-skank cums hard, revealing her orgasm ");
-			if (y == -1) outputText("by splattering her fragrant lady-spunk into the dirt");
+			if (y === -1) outputText("by splattering her fragrant lady-spunk into the dirt");
 			else {
 				outputText("by splattering your " + player.cockDescript(y));
 				if (player.balls > 0) outputText(" and balls");
@@ -686,14 +686,14 @@ package classes.Scenes.Areas.Swamp
 			outputText(".  Still a ways from a climax of your own, you toy with the insensate spider's spinnerets, tugging, pulling, and eventually prodding a finger inside their openings experimentally.  Your anal fuck-toy goes hog-wild, bucking and shivering, her whole body shaking and writhing while her moan escalates in pitch and volume until it borders on being too high-pitched to detect.\n\n");
 
 			outputText("Sloppy white goo starts spurting from her spinnerets, drizzling into your hands in a half-formed, sticky mess.  You experimentally tug on one of the miniature organs, twisting it to point at the spider-girl's back.  Heavy ropes of goopey proto-web spurt all over her, puddling in the small of her shaking back.  You content yourself with bukkaking her in her own fluids while you savage her ruined asshole");
-			if (y != -1) outputText(" and cum-drizzling slit");
+			if (y !== -1) outputText(" and cum-drizzling slit");
 			outputText(" and watch her cheeks jiggle from the force of your blow.\n\n");
 
 			outputText("Fucking her like this, it doesn't take long to reach orgasm, and ");
 			if (player.balls > 0) outputText("with your balls squirming and unloading");
 			else outputText("prostate unloading");
 			outputText(", you pump injections of fertile cream deep into her empty bowels");
-			if (y != -1) outputText(" and pussy");
+			if (y !== -1) outputText(" and pussy");
 			outputText(", filling her up with warm seed.  The spider-girl slowly starts to calm down, her spinnerets going limp in your grip.  She reaches around to touch her belly, as if to feel the intestine-stuffing loads washing into her backside");
 			if (player.cumQ() > 500) {
 				outputText(".  Incredibly, she can, and as you jizz even more inside her, she's treated to the feel of her belly inflating");
@@ -707,7 +707,7 @@ package classes.Scenes.Areas.Swamp
 			else if (player.cumQ() < 500) outputText("gush");
 			else outputText("river");
 			outputText(" of seed rushes out of her gaped anus, pooling on the swamp floor as she slowly loses consciousness.  You give her ass an affectionate slap and get dressed, feeling sated and ready to resume your adventures.");
-			if (y != 1) pregnancy.knockUpForce(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.INCUBATION_SPIDER - 200); //Spiders carry for half as long as the player does for some reason
+			if (y !== 1) pregnancy.knockUpForce(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.INCUBATION_SPIDER - 200); //Spiders carry for half as long as the player does for some reason
 			player.orgasm('Dick');
 			if (!getGame().inCombat)
 				doNext(camp.returnToCampUseOneHour);

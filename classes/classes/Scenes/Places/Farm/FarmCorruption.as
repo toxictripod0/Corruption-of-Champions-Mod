@@ -46,7 +46,7 @@ package classes.Scenes.Places.Farm
 
 		public function whitneyCorruption(mod:Number = 0):int
 		{
-			if (mod != 0)
+			if (mod !== 0)
 			{
 				flags[kFLAGS.WHITNEY_CORRUPTION] += mod;
 				
@@ -55,19 +55,19 @@ package classes.Scenes.Places.Farm
 			}
 			
 			// Cap the values into the appropriate range
-			if (flags[kFLAGS.FARM_CORRUPTION_APPROACHED_WHITNEY] == 0 && flags[kFLAGS.WHITNEY_CORRUPTION] > 30 )
+			if (flags[kFLAGS.FARM_CORRUPTION_APPROACHED_WHITNEY] === 0 && flags[kFLAGS.WHITNEY_CORRUPTION] > 30 )
 			{
 				flags[kFLAGS.WHITNEY_CORRUPTION] = 30; // Whitney at 30 corruption clamp.
 			}
-			else if (flags[kFLAGS.WHITNEY_LEAVE_0_60] == 0 && flags[kFLAGS.WHITNEY_CORRUPTION] > 60)
+			else if (flags[kFLAGS.WHITNEY_LEAVE_0_60] === 0 && flags[kFLAGS.WHITNEY_CORRUPTION] > 60)
 			{
 				flags[kFLAGS.WHITNEY_CORRUPTION] = 60; // Whitney at 60 corruption clamp.
 			}
-			else if (flags[kFLAGS.WHITNEY_LEAVE_61_90] == 0 && flags[kFLAGS.WHITNEY_CORRUPTION] > 90)
+			else if (flags[kFLAGS.WHITNEY_LEAVE_61_90] === 0 && flags[kFLAGS.WHITNEY_CORRUPTION] > 90)
 			{
 				flags[kFLAGS.WHITNEY_CORRUPTION] = 90; // Whitney at 90 corruption clamp.
 			}
-			else if (flags[kFLAGS.WHITNEY_MENU_91_119] == 0 && flags[kFLAGS.WHITNEY_CORRUPTION] > 119)
+			else if (flags[kFLAGS.WHITNEY_MENU_91_119] === 0 && flags[kFLAGS.WHITNEY_CORRUPTION] > 119)
 			{
 				flags[kFLAGS.WHITNEY_CORRUPTION] = 119; // Whitney at 119 corruption clamp.
 			}
@@ -93,22 +93,22 @@ package classes.Scenes.Places.Farm
 
 		public function whitneyDom():Boolean
 		{
-			if (flags[kFLAGS.WHITNEY_DOM] == 1) return true;
+			if (flags[kFLAGS.WHITNEY_DOM] === 1) return true;
 			return false;
 		}
 
 		public function whitneyDefurred():Boolean
 		{
-			if (flags[kFLAGS.WHITNEY_DEFURRED] == 1) return true;
+			if (flags[kFLAGS.WHITNEY_DEFURRED] === 1) return true;
 			return false;
 		}
 
 		public function whitneyHasTattoo():Boolean
 		{
-			if (flags[kFLAGS.WHITNEY_TATTOO_COLLARBONE] != 0) return true;
-			if (flags[kFLAGS.WHITNEY_TATTOO_SHOULDERS] != 0) return true;
-			if (flags[kFLAGS.WHITNEY_TATTOO_LOWERBACK] != 0) return true;
-			if (flags[kFLAGS.WHITNEY_TATTOO_BUTT] != 0) return true;
+			if (flags[kFLAGS.WHITNEY_TATTOO_COLLARBONE] !== 0) return true;
+			if (flags[kFLAGS.WHITNEY_TATTOO_SHOULDERS] !== 0) return true;
+			if (flags[kFLAGS.WHITNEY_TATTOO_LOWERBACK] !== 0) return true;
+			if (flags[kFLAGS.WHITNEY_TATTOO_BUTT] !== 0) return true;
 			return false;
 		}
 
@@ -126,7 +126,7 @@ package classes.Scenes.Places.Farm
 
 		public function whitneyMaxedOralTraining():Boolean
 		{
-			if (flags[kFLAGS.WHITNEY_ORAL_TRAINING] == 100) return true;
+			if (flags[kFLAGS.WHITNEY_ORAL_TRAINING] === 100) return true;
 			return false;
 		}
 
@@ -138,7 +138,7 @@ package classes.Scenes.Places.Farm
 			if (flags[kFLAGS.FARM_CORRUPTION_STARTED] <= 0) return flags[kFLAGS.WHITNEY_CORRUPTION];
 			
 			// If Whitney was disabled the previous day, set the flag for a follow up
-			if (flags[kFLAGS.WHITNEY_DISABLED_FOR_DAY] == 1)
+			if (flags[kFLAGS.WHITNEY_DISABLED_FOR_DAY] === 1)
 			{
 				flags[kFLAGS.WHITNEY_DISABLED_FOR_DAY] = 2;
 			}
@@ -146,21 +146,21 @@ package classes.Scenes.Places.Farm
 			// Process queued farm upgrades
 
 			// Breastmilkers
-			if (flags[kFLAGS.QUEUE_BREASTMILKER_UPGRADE] != 0 && player.hasKeyItem("Breast Milker - Installed At Whitney's Farm") < 0)
+			if (flags[kFLAGS.QUEUE_BREASTMILKER_UPGRADE] !== 0 && player.hasKeyItem("Breast Milker - Installed At Whitney's Farm") < 0)
 			{
 				flags[kFLAGS.QUEUE_BREASTMILKER_UPGRADE] = 0;
 				player.createKeyItem("Breast Milker - Installed At Whitney's Farm", 0, 0, 0, 0);
 			}
 
 			// Cockmilkers
-			if (flags[kFLAGS.QUEUE_COCKMILKER_UPGRADE] != 0 && player.hasKeyItem("Cock Milker - Installed At Whitney's Farm") < 0)
+			if (flags[kFLAGS.QUEUE_COCKMILKER_UPGRADE] !== 0 && player.hasKeyItem("Cock Milker - Installed At Whitney's Farm") < 0)
 			{
 				flags[kFLAGS.QUEUE_COCKMILKER_UPGRADE] = 0;
 				player.createKeyItem("Cock Milker - Installed At Whitney's Farm", 0, 0, 0, 0);
 			}
 
 			// Contraceptives
-			if (flags[kFLAGS.QUEUE_CONTRACEPTIVE_UPGRADE] != 0)
+			if (flags[kFLAGS.QUEUE_CONTRACEPTIVE_UPGRADE] !== 0)
 			{
 				flags[kFLAGS.QUEUE_CONTRACEPTIVE_UPGRADE]++;
 
@@ -172,7 +172,7 @@ package classes.Scenes.Places.Farm
 			}
 
 			// Refinery
-			if (flags[kFLAGS.QUEUE_REFINERY_UPGRADE] != 0)
+			if (flags[kFLAGS.QUEUE_REFINERY_UPGRADE] !== 0)
 			{
 				flags[kFLAGS.QUEUE_REFINERY_UPGRADE]++;
 
@@ -184,7 +184,7 @@ package classes.Scenes.Places.Farm
 			}
 
 			// Milktank
-			if (flags[kFLAGS.QUEUE_MILKTANK_UPGRADE] != 0)
+			if (flags[kFLAGS.QUEUE_MILKTANK_UPGRADE] !== 0)
 			{
 				flags[kFLAGS.QUEUE_MILKTANK_UPGRADE]++;
 
@@ -199,7 +199,7 @@ package classes.Scenes.Places.Farm
 			}
 
 			// Branding
-			if (flags[kFLAGS.QUEUE_BRANDING_UPGRADE] != 0)
+			if (flags[kFLAGS.QUEUE_BRANDING_UPGRADE] !== 0)
 			{
 				flags[kFLAGS.QUEUE_BRANDING_UPGRADE]++
 
@@ -212,7 +212,7 @@ package classes.Scenes.Places.Farm
 			}
 
 			// Orgyroom
-			if (flags[kFLAGS.QUEUE_ORGYROOM_UPGRADE] != 0)
+			if (flags[kFLAGS.QUEUE_ORGYROOM_UPGRADE] !== 0)
 			{
 				flags[kFLAGS.QUEUE_ORGYROOM_UPGRADE]++;
 
@@ -226,18 +226,18 @@ package classes.Scenes.Places.Farm
 			// Figure out how much corruption we're going to slap on to Whitney
 			var modValue:Number = -1;
 
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 1) modValue += 2;
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] == 1) modValue += 2;
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 1 && kGAMECLASS.sophieBimbo.bimboSophie()) modValue += 1;
-			// Izmael if (flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] == 1) modValue += 1;
-			// Bimbo if (flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 1) modValue += 2;
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 1) modValue += 4;
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] == 1) modValue += 1;
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] === 1) modValue += 2;
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] === 1) modValue += 2;
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] === 1 && kGAMECLASS.sophieBimbo.bimboSophie()) modValue += 1;
+			// Izmael if (flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] === 1) modValue += 1;
+			// Bimbo if (flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] === 1) modValue += 2;
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] === 1) modValue += 4;
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] === 1) modValue += 1;
 			if (flags[kFLAGS.FOLLOWER_AT_FARM_HOLLI] > 0)
 			{
 				modValue += 4;
 			}
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_KELLY] == 1) modValue += 2;
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_KELLY] === 1) modValue += 2;
 
 			whitneyCorruption(modValue);
 
@@ -245,28 +245,28 @@ package classes.Scenes.Places.Farm
 			flags[kFLAGS.FARM_CORRUPTION_GEMS_WAITING] += farmValue();
 
 			// If Amily is producing, stack up some milks to gib
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 1 && flags[kFLAGS.FOLLOWER_PRODUCTION_AMILY] == 1 && flags[kFLAGS.FARM_UPGRADES_REFINERY] == 1)
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] === 1 && flags[kFLAGS.FOLLOWER_PRODUCTION_AMILY] === 1 && flags[kFLAGS.FARM_UPGRADES_REFINERY] === 1)
 			{
-				if (flags[kFLAGS.FOLLOWER_AT_FARM_AMILY_GIBS_MILK] == 0) flags[kFLAGS.FOLLOWER_AT_FARM_AMILY_GIBS_MILK] = 1;
+				if (flags[kFLAGS.FOLLOWER_AT_FARM_AMILY_GIBS_MILK] === 0) flags[kFLAGS.FOLLOWER_AT_FARM_AMILY_GIBS_MILK] = 1;
 				flags[kFLAGS.FARM_SUCCUMILK_STORED]++;
 			}
 			
 			// If jojo is producing, stack up some drafts to gib
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] == 1 && flags[kFLAGS.FOLLOWER_PRODUCTION_JOJO] == 1 && flags[kFLAGS.FARM_UPGRADES_REFINERY] == 1)
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] === 1 && flags[kFLAGS.FOLLOWER_PRODUCTION_JOJO] === 1 && flags[kFLAGS.FARM_UPGRADES_REFINERY] === 1)
 			{
-				if (flags[kFLAGS.FOLLOWER_AT_FARM_JOJO_GIBS_DRAFT] == 0) flags[kFLAGS.FOLLOWER_AT_FARM_JOJO_GIBS_DRAFT] = 1;
+				if (flags[kFLAGS.FOLLOWER_AT_FARM_JOJO_GIBS_DRAFT] === 0) flags[kFLAGS.FOLLOWER_AT_FARM_JOJO_GIBS_DRAFT] = 1;
 				flags[kFLAGS.FARM_INCUDRAFT_STORED]++;
 				if (kGAMECLASS.jojoScene.tentacleJojo()) flags[kFLAGS.FARM_INCUDRAFT_STORED]++;
 			}
 			
 			// If Sophie is producing, count up time since last egg and gib a new one when ready
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] > 0 && flags[kFLAGS.FOLLOWER_PRODUCTION_SOPHIE] == 1)
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] > 0 && flags[kFLAGS.FOLLOWER_PRODUCTION_SOPHIE] === 1)
 			{
-				if (flags[kFLAGS.FARM_EGG_STORED] == 0)
+				if (flags[kFLAGS.FARM_EGG_STORED] === 0)
 				{
 					flags[kFLAGS.FARM_EGG_COUNTDOWN]--;
 					
-					if (flags[kFLAGS.FARM_EGG_COUNTDOWN] == 0)
+					if (flags[kFLAGS.FARM_EGG_COUNTDOWN] === 0)
 					{
 						flags[kFLAGS.FARM_EGG_STORED] = 1;
 						flags[kFLAGS.FARM_EGG_COUNTDOWN] = 7;
@@ -275,12 +275,12 @@ package classes.Scenes.Places.Farm
 			}
 			
 			// If Vapula is producing, stack up some milks to gib
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 1 && flags[kFLAGS.FOLLOWER_PRODUCTION_VAPULA] == 1)
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] === 1 && flags[kFLAGS.FOLLOWER_PRODUCTION_VAPULA] === 1)
 			{
 				flags[kFLAGS.FARM_SUCCUMILK_STORED]++;
-				if (flags[kFLAGS.FARM_UPGRADES_REFINERY] == 1) flags[kFLAGS.FARM_SUCCUMILK_STORED]++;
+				if (flags[kFLAGS.FARM_UPGRADES_REFINERY] === 1) flags[kFLAGS.FARM_SUCCUMILK_STORED]++;
 				
-				if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA_GIBS_MILK] == 0) flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA_GIBS_MILK] = 1;
+				if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA_GIBS_MILK] === 0) flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA_GIBS_MILK] = 1;
 			}
 			
 			// Item caps
@@ -296,7 +296,7 @@ package classes.Scenes.Places.Farm
 			}
 			
 			// If Latexy is at the farm, further modify her status values
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] == 1)
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] === 1)
 			{
 				kGAMECLASS.latexGirl.gooHappiness( -0.5, false);
 				kGAMECLASS.latexGirl.gooObedience(  0.5, false);
@@ -319,9 +319,9 @@ package classes.Scenes.Places.Farm
 			}
 			
 			// Contraceptives
-			if (flags[kFLAGS.FARM_UPGRADES_CONTRACEPTIVE] == 1)
+			if (flags[kFLAGS.FARM_UPGRADES_CONTRACEPTIVE] === 1)
 			{
-				if (flags[kFLAGS.FARM_CONTRACEPTIVE_STORED] == 0) flags[kFLAGS.FARM_CONTRACEPTIVE_STORED] = 1;
+				if (flags[kFLAGS.FARM_CONTRACEPTIVE_STORED] === 0) flags[kFLAGS.FARM_CONTRACEPTIVE_STORED] = 1;
 			}
 			
 			// Increment days since last paid out
@@ -357,7 +357,7 @@ package classes.Scenes.Places.Farm
 			if (flags[kFLAGS.FARM_SUCCUMILK_STORED] > 0)
 			{
 				outputText("<b>" + flags[kFLAGS.FARM_SUCCUMILK_STORED] + "x ");
-				if (flags[kFLAGS.FARM_SUCCUMILK_STORED] == 1) outputText("vial of Succubi milk.");
+				if (flags[kFLAGS.FARM_SUCCUMILK_STORED] === 1) outputText("vial of Succubi milk.");
 				else outputText("vials of Succubi milk.");
 				outputText("</b>\n");
 				addButton(0, getItemObj(kFLAGS.FARM_SUCCUMILK_STORED).shortName, takeItems, kFLAGS.FARM_SUCCUMILK_STORED);
@@ -365,7 +365,7 @@ package classes.Scenes.Places.Farm
 			if (flags[kFLAGS.FARM_INCUDRAFT_STORED] > 0)
 			{
 				outputText("<b>" + flags[kFLAGS.FARM_INCUDRAFT_STORED] + "x ");
-				if (flags[kFLAGS.FARM_INCUDRAFT_STORED] == 1) outputText("vial of Incubi draft.");
+				if (flags[kFLAGS.FARM_INCUDRAFT_STORED] === 1) outputText("vial of Incubi draft.");
 				else outputText("vials of Incubi draft.");
 				outputText("</b>\n");
 				addButton(1, getItemObj(kFLAGS.FARM_INCUDRAFT_STORED).shortName, takeItems, kFLAGS.FARM_INCUDRAFT_STORED);
@@ -392,10 +392,10 @@ package classes.Scenes.Places.Farm
 		
 		private function getItemObj(flag:int):Consumable
 		{
-			if (flag == kFLAGS.FARM_SUCCUMILK_STORED) return consumables.SUCMILK;
-			if (flag == kFLAGS.FARM_INCUDRAFT_STORED) return consumables.INCUBID;
-			if (flag == kFLAGS.FARM_EGG_STORED) return kGAMECLASS.sophieBimbo.eggTypes[kGAMECLASS.sophieBimbo.eggColors.indexOf(flags[kFLAGS.FOLLOWER_PRODUCTION_SOPHIE_COLORCHOICE])];
-			if (flag == kFLAGS.FARM_CONTRACEPTIVE_STORED) return consumables.HRBCNT;
+			if (flag === kFLAGS.FARM_SUCCUMILK_STORED) return consumables.SUCMILK;
+			if (flag === kFLAGS.FARM_INCUDRAFT_STORED) return consumables.INCUBID;
+			if (flag === kFLAGS.FARM_EGG_STORED) return kGAMECLASS.sophieBimbo.eggTypes[kGAMECLASS.sophieBimbo.eggColors.indexOf(flags[kFLAGS.FOLLOWER_PRODUCTION_SOPHIE_COLORCHOICE])];
+			if (flag === kFLAGS.FARM_CONTRACEPTIVE_STORED) return consumables.HRBCNT;
 			
 			//trace("No valid argument given.");
 			return null;
@@ -405,7 +405,7 @@ package classes.Scenes.Places.Farm
 		{
 			var item:Consumable = getItemObj(flag);
 			
-			if (flag == kFLAGS.FARM_EGG_STORED) flags[kFLAGS.FARM_EGG_COUNTDOWN] = 7;
+			if (flag === kFLAGS.FARM_EGG_STORED) flags[kFLAGS.FARM_EGG_COUNTDOWN] = 7;
 			flags[flag]--;
 			inventory.takeItem(item, afterTakeItems);
 		}
@@ -420,39 +420,39 @@ package classes.Scenes.Places.Farm
 		{
 			var protection:int = 0;
 
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 1) protection += 1;
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] === 1) protection += 1;
 
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] == 1) protection += 2;
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] === 1) protection += 2;
 
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 1)
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] === 1)
 			{
 				if (kGAMECLASS.sophieBimbo.bimboSophie()) protection += 1;
 				else protection += 2;
 			}
 
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] == 1)
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] === 1)
 			{
 				protection += 4;
 				// Izmael = 5
 			}
 
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 1)
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] === 1)
 			{
 				protection += 3;
 				// Bimbo = 2
 			}
 
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 1) protection += 2;
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] === 1) protection += 2;
 
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_KELLY] == 1)
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_KELLY] === 1)
 			{
 				if (flags[kFLAGS.KELT_BREAK_LEVEL] >= 4) protection += 1;
 				else protection += 2;
 			}
 
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_MARBLE] == 1) protection += 2;
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_MARBLE] === 1) protection += 2;
 
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] == 1)
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] === 1)
 			{
 				if (flags[kFLAGS.MILK_SIZE] > 0) protection += 1;
 			}
@@ -466,44 +466,44 @@ package classes.Scenes.Places.Farm
 		{
 			var fValue:int = 0;
 
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 1) fValue += 3;
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] == 1) fValue += 2;
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] === 1) fValue += 3;
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] === 1) fValue += 2;
 
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 1)
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] === 1)
 			{
 				if (kGAMECLASS.sophieBimbo.bimboSophie()) fValue += 4;
 				else fValue += 3;
 			}
 
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] == 1) fValue += 1;
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] === 1) fValue += 1;
 
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 1) fValue += 3;
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] === 1) fValue += 3;
 
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 1) fValue += 1;
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] === 1) fValue += 1;
 
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] == 1) fValue += 2;
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] === 1) fValue += 2;
 
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_KELLY] == 1)
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_KELLY] === 1)
 			{
 				if (flags[kFLAGS.KELT_BREAK_LEVEL] >= 4) fValue += 1;
 			}
 
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_MARBLE] == 1) fValue += 2;
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_MARBLE] === 1) fValue += 2;
 
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] == 1)
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] === 1)
 			{
 				if (flags[kFLAGS.MILK_SIZE] > 0) fValue += 3;
 				else fValue += 7;
 			}
 
-			if (flags[kFLAGS.WHITNEY_CORRUPTION_COMPLETE] == 1) fValue *= 1.25;
+			if (flags[kFLAGS.WHITNEY_CORRUPTION_COMPLETE] === 1) fValue *= 1.25;
 			return fValue;
 		}
 		
 		public function takeoverPrompt():Boolean
 		{
-			if (flags[kFLAGS.FARM_CORRUPTION_DISABLED] == 1) return false;
-			if (flags[kFLAGS.FARM_CORRUPTION_STARTED] == 1)
+			if (flags[kFLAGS.FARM_CORRUPTION_DISABLED] === 1) return false;
+			if (flags[kFLAGS.FARM_CORRUPTION_STARTED] === 1)
 			{
 				farmMenu();
 				return true; // Hook the corrupt menu here
@@ -511,7 +511,7 @@ package classes.Scenes.Places.Farm
 			
 			if (player.isCorruptEnough(70) && corruptFollowers() >= 2 && player.level >= 12)
 			{
-				if (flags[kFLAGS.FARM_CORRUPT_PROMPT_DISPLAY] == 0)
+				if (flags[kFLAGS.FARM_CORRUPT_PROMPT_DISPLAY] === 0)
 				{	
 					clearOutput();
 					if (flags[kFLAGS.KELT_BREAK_LEVEL] >= 4)
@@ -531,7 +531,7 @@ package classes.Scenes.Places.Farm
 					
 					return true;
 				}
-				else if (flags[kFLAGS.FARM_CORRUPT_PROMPT_DISPLAY] == 3 || flags[kFLAGS.FARM_DISABLED] == 1)
+				else if (flags[kFLAGS.FARM_CORRUPT_PROMPT_DISPLAY] === 3 || flags[kFLAGS.FARM_DISABLED] === 1)
 				{
 					clearOutput();
 					takeoverPromptMerge();
@@ -619,7 +619,7 @@ package classes.Scenes.Places.Farm
 			clearOutput();
 			
 			outputText("You stride down to the farm and leap over a gate. You move casually, swaggering towards the pepper field with no obvious intent. When Whitney spots you and slowly stands up from her weeding, you raise your hand in friendly greeting"); 
-			if (player.weaponName != "fists") outputText(", and to demonstrate your peacefulness, you theatrically hold up your [weapon] and then discard it with a careless swing of your arm.");
+			if (player.weaponName !== "fists") outputText(", and to demonstrate your peacefulness, you theatrically hold up your [weapon] and then discard it with a careless swing of your arm.");
 			else outputText(".");
 
 			// if PC has Kelly or PC raped Marble
@@ -678,7 +678,7 @@ package classes.Scenes.Places.Farm
 				}
 
 				// if Kelt is still around
-				// (Kelt being disabled doesn't remove him from the farm iirc, so it's literally just if Kelt != Kelly)
+				// (Kelt being disabled doesn't remove him from the farm iirc, so it's literally just if Kelt !== Kelly)
 				if (flags[kFLAGS.KELT_BREAK_LEVEL] < 4)
 				{
 					outputText("\n\n“<i>Do you think Kelt will take you muscling in on his territory? He’ll kill you before letting that happen.</i>”");
@@ -730,7 +730,7 @@ package classes.Scenes.Places.Farm
 			clearOutput();
 			spriteSelect(SpriteDb.s_whitney);
 			
-			if (flags[kFLAGS.WHITNEY_DISABLED_FOR_DAY] == 2)
+			if (flags[kFLAGS.WHITNEY_DISABLED_FOR_DAY] === 2)
 			{
 				flags[kFLAGS.WHITNEY_DISABLED_FOR_DAY] = 3;
 
@@ -747,9 +747,9 @@ package classes.Scenes.Places.Farm
 			{
 				outputText("You stand on the rise you’ve taken to using to look down on the farm which you are invested in.")
 				
-				if (flags[kFLAGS.FARM_UPGRADES_REFINERY] == 1) outputText(" A large machine, bulky and rotund with a conical top, has been built into the milking barn. Fat pipes crawl up onto the roof from it like metal ivy, and white smoke billows busily out of its whistle chimney.");
+				if (flags[kFLAGS.FARM_UPGRADES_REFINERY] === 1) outputText(" A large machine, bulky and rotund with a conical top, has been built into the milking barn. Fat pipes crawl up onto the roof from it like metal ivy, and white smoke billows busily out of its whistle chimney.");
 				
-				if (flags[kFLAGS.FARM_UPGRADES_CONTRACEPTIVE] == 1) outputText(" Next to the pepper patch another crop has been planted, a field of verdant green shrubs. Their thin stems bob idly in the breeze.");
+				if (flags[kFLAGS.FARM_UPGRADES_CONTRACEPTIVE] === 1) outputText(" Next to the pepper patch another crop has been planted, a field of verdant green shrubs. Their thin stems bob idly in the breeze.");
 
 				if (flags[kFLAGS.QUEUE_ORGYROOM_UPGRADE] > 1)
 				{
@@ -763,8 +763,8 @@ package classes.Scenes.Places.Farm
 				{
 					outputText(player.mf("You feel an irresistible hankering for a cigar.", "You feel an irresistible hankering for a cigarette holder."));
 				}
-				if (flags[kFLAGS.FARM_UPGRADES_REFINERY] == 1) outputText(" A large machine, bulky and rotund with a conical top, has been built into the milking barn. Fat pipes crawl up onto the roof from it like metal ivy, and white smoke billows busily out of its whistle chimney.");
-				if (flags[kFLAGS.FARM_UPGRADES_CONTRACEPTIVE] == 1) outputText(" Next to the pepper patch another crop has been planted, a field of verdant green shrubs. Their thin stems bob idly in the breeze.");
+				if (flags[kFLAGS.FARM_UPGRADES_REFINERY] === 1) outputText(" A large machine, bulky and rotund with a conical top, has been built into the milking barn. Fat pipes crawl up onto the roof from it like metal ivy, and white smoke billows busily out of its whistle chimney.");
+				if (flags[kFLAGS.FARM_UPGRADES_CONTRACEPTIVE] === 1) outputText(" Next to the pepper patch another crop has been planted, a field of verdant green shrubs. Their thin stems bob idly in the breeze.");
 			}
 
 			// [Follower taster and “blessing” text goes here]
@@ -782,56 +782,56 @@ package classes.Scenes.Places.Farm
 			}
 			
 			// Amily
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 1)
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] === 1)
 			{
 				outputText("\n\nAmily is in the pepper patch with a trowel happily beavering away. If she wasn’t purple and naked apart from her work gloves it would be difficult to believe she was corrupt at all.");
 				
 			}
 			
 			// Jojo
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] == 1)
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] === 1)
 			{
 				outputText("\n\nYou cannot see Jojo but you have no doubt he was aware of your presence the moment you arrived, and that he’s somewhere nearby, watching.");
 			}
 			
 			// Bimbo Sophie
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 1 && kGAMECLASS.sophieBimbo.bimboSophie())
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] === 1 && kGAMECLASS.sophieBimbo.bimboSophie())
 			{
 				outputText("\n\nYou cannot see Sophie but distinctive coos and giggles are coming from the hen coop.");
 			}
 			
 			// Regular Sophie
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 1 && !kGAMECLASS.sophieBimbo.bimboSophie())
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] === 1 && !kGAMECLASS.sophieBimbo.bimboSophie())
 			{
 				outputText("\n\nSophie has put together a huge nest on top of the hen coop from which she pensively stares out at the lake. When she sees you looking she brightens noticeably and begins to preen her plumage.");
 			}
 			
 			// Izma
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] == 1)
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] === 1)
 			{
 				outputText("\n\nIzma is sitting in Whitney’s old spot below the oak tree, curled up in a book.");
 			}
 			
 			// Isabella
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 1)
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] === 1)
 			{
 				outputText("\n\nIsabella is hauling steel canisters in and out of the milking barn, singing merrily to herself as she does.");
 			}
 			
 			// Vapula
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 1)
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] === 1)
 			{
 				outputText("\n\nVapula is slouched against a barn wall, looking like the world’s grumpiest one woman gang. Not even a number of comatose imps nearby seem to have been able to cheer her up.");
 			}
 			
 			// Latexy
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] == 1)
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] === 1)
 			{
 				outputText("\n\nYou can see something black shimmering wetly underneath Whitney’s porch which could only be a certain latex goo.");
 			}
 			
 			// BathSlut
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] == 1)
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] === 1)
 			{
 				if (flags[kFLAGS.MILK_SIZE] > 0)
 				{
@@ -850,18 +850,18 @@ package classes.Scenes.Places.Farm
 		{
 			menu();
 			
-			if (flags[kFLAGS.WHITNEY_DISABLED_FOR_DAY] != 1)
+			if (flags[kFLAGS.WHITNEY_DISABLED_FOR_DAY] !== 1)
 			{
 				if (!whitneyCorrupt()) addButton(0, "Whitney", dogeNotCorruptYet);
 				else addButton(0, "Whitney", dogeCorruptedMissionComplete);
 			}
 			
-			if (!player.hasStatusEffect(StatusEffects.MarbleRapeAttempted) && !player.hasStatusEffect(StatusEffects.NoMoreMarble) && player.hasStatusEffect(StatusEffects.Marble) && flags[kFLAGS.MARBLE_WARNING] == 0) addButton(1, "Marble", farm.meetMarble);
+			if (!player.hasStatusEffect(StatusEffects.MarbleRapeAttempted) && !player.hasStatusEffect(StatusEffects.NoMoreMarble) && player.hasStatusEffect(StatusEffects.Marble) && flags[kFLAGS.MARBLE_WARNING] === 0) addButton(1, "Marble", farm.meetMarble);
 			
 			if (player.hasStatusEffect(StatusEffects.Kelt) && !player.hasStatusEffect(StatusEffects.KeltOff))
 			{
 				if (flags[kFLAGS.KELT_BREAK_LEVEL] >= 4) addButton(2, "Kelly", farm.kelly.breakingKeltOptions);
-				else if (flags[kFLAGS.KELT_BREAK_LEVEL] == 0 && flags[kFLAGS.KELT_TALKED_FARM_MANAGEMENT] == 0) addButton(2, "Kelt", keltAChangeInManagement);
+				else if (flags[kFLAGS.KELT_BREAK_LEVEL] === 0 && flags[kFLAGS.KELT_TALKED_FARM_MANAGEMENT] === 0) addButton(2, "Kelt", keltAChangeInManagement);
 				else addButton(2, "Kelt", farm.kelly.breakingKeltOptions);
 			}
 			
@@ -918,7 +918,7 @@ package classes.Scenes.Places.Farm
 			outputText("“<i>Hear there’s been a change in management,</i>” says Kelt, clopping to a halt in front of you. You confirm that that is the case. The big centaur looks at you thoughtfully. There’s something different in his dark eyes and rugged scowl than his usual wearied contempt. Grudging admiration? ");
 
 			outputText("“<i>Find it difficult to believe someone like you could put a bitch in her place,</i>” he says eventually. “<i>Perhaps you’ve got bigger balls than I thought you had."); 
-			if (player.balls == 0) outputText(" So to speak, anyway.");
+			if (player.balls === 0) outputText(" So to speak, anyway.");
 			outputText("</i>” He snorts, and trots towards the butts. “<i>Just don’t expect me to treat you any different. As long as you’re getting free instruction from me, I’m the master and you’re the whelp. Got that?</i>”");
 			
 			outputText("\n\nYou reply evenly you can get along with that, and he’s welcome to stay on at the farm, but if he lays a finger on any of your own slaves you’re going to break every bone in his hands. Kelt roars with laughter.");
@@ -937,12 +937,12 @@ package classes.Scenes.Places.Farm
 		{
 			var count:int = 0;
 
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 1) count++;
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] == 1) count++;
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 1 && kGAMECLASS.sophieBimbo.bimboSophie()) count++;
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 1) count++;
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] == 1) count++;
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] == 1) count++;
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] === 1) count++;
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] === 1) count++;
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] === 1 && kGAMECLASS.sophieBimbo.bimboSophie()) count++;
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] === 1) count++;
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] === 1) count++;
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] === 1) count++;
 
 			return count;
 		}
@@ -957,17 +957,17 @@ package classes.Scenes.Places.Farm
 		{
 			menu();
 			
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 1) addButton(0, "Amily", kGAMECLASS.amilyScene.amilyFollowerEncounter);
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] === 1) addButton(0, "Amily", kGAMECLASS.amilyScene.amilyFollowerEncounter);
 			
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] == 1) addButton(1, "Jojo", kGAMECLASS.jojoScene.corruptCampJojo);
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] === 1) addButton(1, "Jojo", kGAMECLASS.jojoScene.corruptCampJojo);
 			
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 1 && kGAMECLASS.sophieBimbo.bimboSophie()) addButton(2, "Sophie", kGAMECLASS.sophieBimbo.approachBimboSophieInCamp);
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] === 1 && kGAMECLASS.sophieBimbo.bimboSophie()) addButton(2, "Sophie", kGAMECLASS.sophieBimbo.approachBimboSophieInCamp);
 			
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 1) addButton(3, "Vapula", kGAMECLASS.vapula.callSlaveVapula);
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] === 1) addButton(3, "Vapula", kGAMECLASS.vapula.callSlaveVapula);
 			
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] == 1) addButton(4, flags[kFLAGS.GOO_NAME], kGAMECLASS.latexGirl.approachLatexy);
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] === 1) addButton(4, flags[kFLAGS.GOO_NAME], kGAMECLASS.latexGirl.approachLatexy);
 			
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] == 1) addButton(5, flags[kFLAGS.MILK_NAME], kGAMECLASS.milkWaifu.milkyMenu);
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] === 1) addButton(5, flags[kFLAGS.MILK_NAME], kGAMECLASS.milkWaifu.milkyMenu);
 			
 			addButton(14, "Back", farmMenu);
 		}
@@ -976,7 +976,7 @@ package classes.Scenes.Places.Farm
 		{
 			var count:int = 0;
 
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 1 && !kGAMECLASS.sophieBimbo.bimboSophie()) count++;
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] === 1 && !kGAMECLASS.sophieBimbo.bimboSophie()) count++;
 
 			return count;
 		}
@@ -991,7 +991,7 @@ package classes.Scenes.Places.Farm
 		{
 			menu();
 			
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 1 && !kGAMECLASS.sophieBimbo.bimboSophie()) addButton(0, "Sophie", kGAMECLASS.sophieFollowerScene.followerSophieMainScreen);
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] === 1 && !kGAMECLASS.sophieBimbo.bimboSophie()) addButton(0, "Sophie", kGAMECLASS.sophieFollowerScene.followerSophieMainScreen);
 			
 			addButton(14, "Back", farmMenu);
 		}
@@ -1016,10 +1016,10 @@ package classes.Scenes.Places.Farm
 		{
 			menu();
 			
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] == 1) addButton(0, "Izma", kGAMECLASS.izmaScene.izmaFollowerMenu);
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] == 2) addButton(0, "Izmael", kGAMECLASS.gameOver);
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] === 1) addButton(0, "Izma", kGAMECLASS.izmaScene.izmaFollowerMenu);
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] === 2) addButton(0, "Izmael", kGAMECLASS.gameOver);
 			
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 1) addButton(1, "Isabella", kGAMECLASS.isabellaFollowerScene.callForFollowerIsabella);
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] === 1) addButton(1, "Isabella", kGAMECLASS.isabellaFollowerScene.callForFollowerIsabella);
 			
 			addButton(14, "Back", farmMenu);
 		}
@@ -1032,14 +1032,14 @@ package classes.Scenes.Places.Farm
 			flags[kFLAGS.FARM_CORRUPTION_APPROACHED_WHITNEY] = 1;
 
 			// Farm Corruption drops below 30 after being higher: 
-			if (whitneyCorruption() < 30 && flags[kFLAGS.WHITNEY_CORRUPTION_HIGHEST] > 30 && flags[kFLAGS.WHITNEY_CORRUPTION_0_30_DROP_MESSAGE] == 0)
+			if (whitneyCorruption() < 30 && flags[kFLAGS.WHITNEY_CORRUPTION_HIGHEST] > 30 && flags[kFLAGS.WHITNEY_CORRUPTION_0_30_DROP_MESSAGE] === 0)
 			{
 				outputText("You hail Whitney as she hauls a bag of grain towards the storage barn. She entirely ignores you; there’s an expression of cold triumph on her face as she breezes past you, color high in her cheeks. You notice that she’s rediscovered her crossbow and has it strapped to her back. It hurts your eyes slightly to look at her, as if she’s standing directly in front of the sun. You scowl at her retreating back. You’ll have to do something about this.");
 
 				// [Plays once, reverts to standard message]
 				flags[kFLAGS.WHITNEY_CORRUPTION_0_30_DROP_MESSAGE] = 1;
 				
-				if (flags[kFLAGS.WHITNEY_LEAVE_0_60] == 0) doNext(dogeNotCorruptLeaveFirstTime);
+				if (flags[kFLAGS.WHITNEY_LEAVE_0_60] === 0) doNext(dogeNotCorruptLeaveFirstTime);
 				else doNext(camp.returnToCampUseOneHour);
 
 				return;
@@ -1053,7 +1053,7 @@ package classes.Scenes.Places.Farm
 
 				outputText("\n\nYou wave in exasperation and leave; if that’s the way she wants it. If she’s working with you and your followers for any length of time, she’ll have to loosen up eventually.");
 
-				if (flags[kFLAGS.WHITNEY_LEAVE_0_60] == 0) doNext(dogeNotCorruptLeaveFirstTime);
+				if (flags[kFLAGS.WHITNEY_LEAVE_0_60] === 0) doNext(dogeNotCorruptLeaveFirstTime);
 				else doNext(camp.returnToCampUseOneHour);
 
 				return;
@@ -1062,7 +1062,7 @@ package classes.Scenes.Places.Farm
 			// 31-60 Farm Corruption
 			if (whitneyCorruption() >= 31 && whitneyCorruption() <= 60)
 			{
-				if (flags[kFLAGS.WHITNEY_MENU_31_60] == 0)
+				if (flags[kFLAGS.WHITNEY_MENU_31_60] === 0)
 				{
 					flags[kFLAGS.WHITNEY_MENU_31_60] = 1;
 
@@ -1087,7 +1087,7 @@ package classes.Scenes.Places.Farm
 
 			if (whitneyCorruption() >= 61 && whitneyCorruption() <= 90)
 			{
-				if (flags[kFLAGS.WHITNEY_MENU_61_90] == 0)
+				if (flags[kFLAGS.WHITNEY_MENU_61_90] === 0)
 				{
 					flags[kFLAGS.WHITNEY_MENU_61_90] = 1;
 
@@ -1111,7 +1111,7 @@ package classes.Scenes.Places.Farm
 			if (whitneyCorruption() >= 91 && whitneyCorruption() <= 119)
 			{
 				// 91-119 Farm Corruption
-				if (flags[kFLAGS.WHITNEY_MENU_91_119] == 0)
+				if (flags[kFLAGS.WHITNEY_MENU_91_119] === 0)
 				{
 					flags[kFLAGS.WHITNEY_MENU_91_119] = 1;
 
@@ -1143,9 +1143,9 @@ package classes.Scenes.Places.Farm
 				return;
 			}
 
-			if (whitneyCorruption() == 120)
+			if (whitneyCorruption() === 120)
 			{
-				if (flags[kFLAGS.WHITNEY_CORRUPTION_COMPLETE] == 0)
+				if (flags[kFLAGS.WHITNEY_CORRUPTION_COMPLETE] === 0)
 				{
 					flags[kFLAGS.WHITNEY_CORRUPTION_COMPLETE] = 1;
 					
@@ -1212,17 +1212,17 @@ package classes.Scenes.Places.Farm
 
 			addButton(14, "Back", rootScene);
 
-			if (whitneyCorruption() <= 60 && flags[kFLAGS.WHITNEY_LEAVE_0_60] == 0) addButton(14, "Back", dogeNotCorruptLeaveFirstTime);
-			else if (whitneyCorruption() <= 90 && flags[kFLAGS.WHITNEY_LEAVE_61_90] == 0) addButton(14, "Back", dogeNotCorruptLeave6190);
+			if (whitneyCorruption() <= 60 && flags[kFLAGS.WHITNEY_LEAVE_0_60] === 0) addButton(14, "Back", dogeNotCorruptLeaveFirstTime);
+			else if (whitneyCorruption() <= 90 && flags[kFLAGS.WHITNEY_LEAVE_61_90] === 0) addButton(14, "Back", dogeNotCorruptLeave6190);
 		}
 		
 		public function availableInvestments():Boolean
 		{
-			if (player.hasKeyItem("Breast Milker - Installed At Whitney's Farm") < 0 && flags[kFLAGS.QUEUE_BREASTMILKER_UPGRADE] == 0) return true;
-			if (player.hasKeyItem("Cock Milker - Installed At Whitney's Farm") < 0 && flags[kFLAGS.QUEUE_COCKMILKER_UPGRADE] == 0) return true;
-			if (flags[kFLAGS.FARM_UPGRADES_REFINERY] == 0 && flags[kFLAGS.QUEUE_REFINERY_UPGRADE] == 0) return true;
-			if (flags[kFLAGS.FARM_UPGRADES_CONTRACEPTIVE] == 0 && flags[kFLAGS.QUEUE_CONTRACEPTIVE_UPGRADE] == 0) return true;
-			if (flags[kFLAGS.FARM_UPGRADES_MILKTANK] == 0 && kGAMECLASS.milkWaifu.milkSlave() && flags[kFLAGS.QUEUE_MILKTANK_UPGRADE] == 0) return true;
+			if (player.hasKeyItem("Breast Milker - Installed At Whitney's Farm") < 0 && flags[kFLAGS.QUEUE_BREASTMILKER_UPGRADE] === 0) return true;
+			if (player.hasKeyItem("Cock Milker - Installed At Whitney's Farm") < 0 && flags[kFLAGS.QUEUE_COCKMILKER_UPGRADE] === 0) return true;
+			if (flags[kFLAGS.FARM_UPGRADES_REFINERY] === 0 && flags[kFLAGS.QUEUE_REFINERY_UPGRADE] === 0) return true;
+			if (flags[kFLAGS.FARM_UPGRADES_CONTRACEPTIVE] === 0 && flags[kFLAGS.QUEUE_CONTRACEPTIVE_UPGRADE] === 0) return true;
+			if (flags[kFLAGS.FARM_UPGRADES_MILKTANK] === 0 && kGAMECLASS.milkWaifu.milkSlave() && flags[kFLAGS.QUEUE_MILKTANK_UPGRADE] === 0) return true;
 			return false;
 		}
 
@@ -1252,10 +1252,10 @@ package classes.Scenes.Places.Farm
 			{
 				if (numTattoos("whitney") > 1) outputText("\nShe has the following tattoos emblazoned across her body:\n");
 				else outputText("\nShe has ")
-				if (flags[kFLAGS.WHITNEY_TATTOO_COLLARBONE] != 0) outputText(flags[kFLAGS.WHITNEY_TATTOO_COLLARBONE] + "\n");
-				if (flags[kFLAGS.WHITNEY_TATTOO_SHOULDERS] != 0) outputText(flags[kFLAGS.WHITNEY_TATTOO_SHOULDERS] + "\n");
-				if (flags[kFLAGS.WHITNEY_TATTOO_LOWERBACK] != 0) outputText(flags[kFLAGS.WHITNEY_TATTOO_LOWERBACK] + "\n");
-				if (flags[kFLAGS.WHITNEY_TATTOO_BUTT] != 0) outputText(flags[kFLAGS.WHITNEY_TATTOO_BUTT] + "\n");
+				if (flags[kFLAGS.WHITNEY_TATTOO_COLLARBONE] !== 0) outputText(flags[kFLAGS.WHITNEY_TATTOO_COLLARBONE] + "\n");
+				if (flags[kFLAGS.WHITNEY_TATTOO_SHOULDERS] !== 0) outputText(flags[kFLAGS.WHITNEY_TATTOO_SHOULDERS] + "\n");
+				if (flags[kFLAGS.WHITNEY_TATTOO_LOWERBACK] !== 0) outputText(flags[kFLAGS.WHITNEY_TATTOO_LOWERBACK] + "\n");
+				if (flags[kFLAGS.WHITNEY_TATTOO_BUTT] !== 0) outputText(flags[kFLAGS.WHITNEY_TATTOO_BUTT] + "\n");
 			} 
 
 			outputText("\n");
@@ -1284,7 +1284,7 @@ package classes.Scenes.Places.Farm
 			if (lowValue && lowProtection)
 			{
 				outputText("\n\nShe shrugs exasperatedly. “<i>I used to get by just fine on my own,</i>” she says. “<i>‘Til you started demanding 20% of everything. You think gems grow on cornstalks?");
-				if (numFollowersAtFarm() + numSlavesAtFarm() + numLoversAtFarm() == 0) outputText(" Send me any kind of decent body - someone, anyone - and I can start trying to make more-a this place.");
+				if (numFollowersAtFarm() + numSlavesAtFarm() + numLoversAtFarm() === 0) outputText(" Send me any kind of decent body - someone, anyone - and I can start trying to make more-a this place.");
 				else outputText(" I need more hands to make the best of the place. More suitable hands at least.");
 				outputText("</i>”");
 			}
@@ -1301,11 +1301,11 @@ package classes.Scenes.Places.Farm
 		private function investmentMenu():void
 		{
 			menu();
-			if (player.hasKeyItem("Breast Milker - Installed At Whitney's Farm") < 0 && flags[kFLAGS.QUEUE_BREASTMILKER_UPGRADE] == 0) addButton(0, "Breast Milker", investmentBreastMilker);
-			if (player.hasKeyItem("Cock Milker - Installed At Whitney's Farm") < 0 && flags[kFLAGS.QUEUE_COCKMILKER_UPGRADE] == 0) addButton(1, "Cock Milker", investmentCockMilker);
-			if (flags[kFLAGS.FARM_UPGRADES_REFINERY] == 0 && flags[kFLAGS.QUEUE_REFINERY_UPGRADE] == 0) addButton(2, "Refinery", investmentRefinery);
-			if (flags[kFLAGS.FARM_UPGRADES_CONTRACEPTIVE] == 0 && flags[kFLAGS.QUEUE_CONTRACEPTIVE_UPGRADE] == 0) addButton(3, "Contraceptive", investmentContraceptive);
-			if (flags[kFLAGS.FARM_UPGRADES_MILKTANK] == 0 && kGAMECLASS.milkWaifu.milkSlave() && flags[kFLAGS.QUEUE_MILKTANK_UPGRADE] == 0) addButton(4, "MilkTank", investmentMilktank);
+			if (player.hasKeyItem("Breast Milker - Installed At Whitney's Farm") < 0 && flags[kFLAGS.QUEUE_BREASTMILKER_UPGRADE] === 0) addButton(0, "Breast Milker", investmentBreastMilker);
+			if (player.hasKeyItem("Cock Milker - Installed At Whitney's Farm") < 0 && flags[kFLAGS.QUEUE_COCKMILKER_UPGRADE] === 0) addButton(1, "Cock Milker", investmentCockMilker);
+			if (flags[kFLAGS.FARM_UPGRADES_REFINERY] === 0 && flags[kFLAGS.QUEUE_REFINERY_UPGRADE] === 0) addButton(2, "Refinery", investmentRefinery);
+			if (flags[kFLAGS.FARM_UPGRADES_CONTRACEPTIVE] === 0 && flags[kFLAGS.QUEUE_CONTRACEPTIVE_UPGRADE] === 0) addButton(3, "Contraceptive", investmentContraceptive);
+			if (flags[kFLAGS.FARM_UPGRADES_MILKTANK] === 0 && kGAMECLASS.milkWaifu.milkSlave() && flags[kFLAGS.QUEUE_MILKTANK_UPGRADE] === 0) addButton(4, "MilkTank", investmentMilktank);
 
 			if (!whitneyCorrupt()) addButton(14, "Back", dogeNotCorruptYetMenu);
 			else addButton(14, "Back", dogeCorruptedMissionComplete);
@@ -1508,7 +1508,7 @@ package classes.Scenes.Places.Farm
 			if (!whitneyCorrupt())
 			{
 				// If Bathgirl normal:
-				if (flags[kFLAGS.MILK_SIZE] > 0 && flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] == 1)
+				if (flags[kFLAGS.MILK_SIZE] > 0 && flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] === 1)
 				{
 					outputText("You tell Whitney you want her to give [bathgirlName] an intensive course of Gro-plus and Lactaid, and to build a small swimming tank to house her.");
 
@@ -1526,7 +1526,7 @@ package classes.Scenes.Places.Farm
 			}
 			else
 			{
-				if (flags[kFLAGS.MILK_SIZE] > 0 && flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] == 1)
+				if (flags[kFLAGS.MILK_SIZE] > 0 && flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] === 1)
 				{
 					outputText("You tell Whitney you want her to give [bathgirlName] an intensive course of Gro-plus and Lactaid, and to build a small swimming tank to house her.");
 
@@ -1721,13 +1721,13 @@ package classes.Scenes.Places.Farm
 
 		private function dogeCorruptedMissionComplete(output:Boolean = true):void
 		{
-			if (flags[kFLAGS.QUEUE_BRANDING_AVAILABLE_TALK] == 1 && output)
+			if (flags[kFLAGS.QUEUE_BRANDING_AVAILABLE_TALK] === 1 && output)
 			{
 				brandingAvailableTalk();
 				return;
 			}
 
-			if (flags[kFLAGS.FARM_UPGRADES_ORGYROOM] == 2 && output)
+			if (flags[kFLAGS.FARM_UPGRADES_ORGYROOM] === 2 && output)
 			{
 				orgyRoomTalk();
 				flags[kFLAGS.FARM_UPGRADES_ORGYROOM] = 1;
@@ -1756,7 +1756,7 @@ package classes.Scenes.Places.Farm
 			menu();
 			addButton(0, "Appearance", whitneyAppearanceCorrupt);
 			if (availableInvestments()) addButton(1, "Investment", investmentMenu);
-			if (flags[kFLAGS.FARM_CORRUPTION_BRANDING_MENU_UNLOCKED] == 1 || flags[kFLAGS.QUEUE_BRANDING_UPGRADE] < 1) addButton(2, "Branding", brandingMenu);
+			if (flags[kFLAGS.FARM_CORRUPTION_BRANDING_MENU_UNLOCKED] === 1 || flags[kFLAGS.QUEUE_BRANDING_UPGRADE] < 1) addButton(2, "Branding", brandingMenu);
 			if (whitneyDom()) addButton(3, "Pleasure", whitneyDomPleasure);
 			else addButton(3, "Pleasure", whitneySubPleasure);
 			orgyRoomRouter();
@@ -1771,7 +1771,7 @@ package classes.Scenes.Places.Farm
 			var doFunctor:Function = null;
 			var functorOnNext:Boolean = false;
 
-			if (flags[kFLAGS.WHITNEY_ORAL_TRAINING] == 0)
+			if (flags[kFLAGS.WHITNEY_ORAL_TRAINING] === 0)
 			{
 				functorOnNext = true;
 				firstOralTraining();
@@ -1799,7 +1799,7 @@ package classes.Scenes.Places.Farm
 
 		private function cockOralTraining():Function
 		{
-			if (flags[kFLAGS.WHITNEY_ORAL_TRAINING] == 0)
+			if (flags[kFLAGS.WHITNEY_ORAL_TRAINING] === 0)
 			{
 				return firstCockOralTraining;
 			}
@@ -1807,7 +1807,7 @@ package classes.Scenes.Places.Farm
 			{
 				return cockOralTrainingStageOne;
 			}
-			else if (flags[kFLAGS.WHITNEY_ORAL_TRAINING] == 4)
+			else if (flags[kFLAGS.WHITNEY_ORAL_TRAINING] === 4)
 			{
 				return firstCockOralTrainingStageTwo;
 			}
@@ -1815,11 +1815,11 @@ package classes.Scenes.Places.Farm
 			{
 				return cockOralTrainingStageTwo;
 			}
-			else if (flags[kFLAGS.WHITNEY_ORAL_TRAINING] == 10)
+			else if (flags[kFLAGS.WHITNEY_ORAL_TRAINING] === 10)
 			{
 				return firstCockOralTrainingStageThree;
 			}
-			else if (flags[kFLAGS.WHITNEY_ORAL_TRAINING] == 11)
+			else if (flags[kFLAGS.WHITNEY_ORAL_TRAINING] === 11)
 			{
 				return cockOralTrainingStageThree;
 			}
@@ -1831,7 +1831,7 @@ package classes.Scenes.Places.Farm
 
 		private function vaginaOralTraining():Function
 		{
-			if (flags[kFLAGS.WHITNEY_ORAL_TRAINING] == 0)
+			if (flags[kFLAGS.WHITNEY_ORAL_TRAINING] === 0)
 			{
 				return firstVaginaOralTraining;
 			}
@@ -1839,7 +1839,7 @@ package classes.Scenes.Places.Farm
 			{
 				return vaginaOralTrainingStageOne;
 			}
-			else if (flags[kFLAGS.WHITNEY_ORAL_TRAINING] == 4)
+			else if (flags[kFLAGS.WHITNEY_ORAL_TRAINING] === 4)
 			{
 				return firstVaginaOralTrainingStageTwo;
 			}
@@ -1847,11 +1847,11 @@ package classes.Scenes.Places.Farm
 			{
 				return vaginaOralTrainingStageTwo;
 			}
-			else if (flags[kFLAGS.WHITNEY_ORAL_TRAINING] == 10)
+			else if (flags[kFLAGS.WHITNEY_ORAL_TRAINING] === 10)
 			{
 				return firstVaginaOralTrainingStageThree;
 			}
-			else if (flags[kFLAGS.WHITNEY_ORAL_TRAINING] == 11)
+			else if (flags[kFLAGS.WHITNEY_ORAL_TRAINING] === 11)
 			{
 				return vaginaOralTrainingStageThree;
 			}
@@ -2017,7 +2017,7 @@ package classes.Scenes.Places.Farm
 				outputText("\n\n“<i>Gods, that was am- something, mistress,</i>” she says eventually. “<i>Did... did I do well?</i>” You rub behind her floppy ear and tell her she’s getting better, but - and you say this pointedly - she’s still quite forgetful. You watch her closely as she mumbles an apology and then sets about cleaning you, first sending her tongue slicking deliciously around your sopping vagina, licking up every splash of your fluids that she finds, before rising up to your oozing [cock biggest]. There’s an eagerness on display here which you don’t think was evident before as she laps at your cock head, and you think she even stifles a disappointed whine when she’s finished. Smiling softly, you get up and send her on her way.");
 			}
 			//Herm without balls
-			else if (player.hasVagina() && player.balls == 0)
+			else if (player.hasVagina() && player.balls === 0)
 			{
 				outputText("\n\n“<i>This is a bit more delicate than simply being a good cocksucker, so follow my instruction carefully.</i>” Whitney peers out around your [eachCock]. Her hand is still jammed in her panties and she is panting slightly, color high in her cheeks. You smile at her encouragingly. “<i>Behind my [dickplural] you’ll find my pussy. I think if you’re knelt there pleasuring yourself you should at least be extending the same courtesy to your mistress, hmm? Start slow and gentle to begin with.</i>”");
 
@@ -2050,7 +2050,7 @@ package classes.Scenes.Places.Farm
 
 				outputText("\n\n“<i>Ooh, you’re a natural.</i>” ");
 				//monocock
-				if (player.cocks.length == 1)
+				if (player.cocks.length === 1)
 				{
 					outputText("\n\nYou lean back and consider her luxuriously. “<i>Put your other hand here - there we go - and then you can get back to it.</i>” Her other hand clutching one cheek of your [ass], Whitney steals a moment’s rest, the hand buried in her pussy no doubt aching a bit by now, before pulling back and focusing on your [cock biggest]. You sigh deeply, your eyes closing as your [cockHead biggest] is once again enveloped with sweet, wringing warmth, whilst smooth pressure clutches your behind.");
 
@@ -2082,7 +2082,7 @@ package classes.Scenes.Places.Farm
 				if (player.cocks.length > 1) outputText(" The second cock trapped in her grasp flexes out cum just as eagerly as the first, sweat standing out on your forehead as you are clenched by your twin high; it paints her skirt with its generous discharge.");
 			}
 			//Male without balls:
-			else if (!player.hasVagina() && player.balls == 0)
+			else if (!player.hasVagina() && player.balls === 0)
 			{
 				//multicock
 				if (player.cocks.length > 1)
@@ -2098,7 +2098,7 @@ package classes.Scenes.Places.Farm
 					outputText("\n\nEventually you cannot hold your lust back. You grab her by the head and begin to thrust deep into her " + ((player.biggestCockLength() < 8) ? "mouth" : "throat") + ". Her breath wheezes through her nose as she lets you use her mouth, struggling to keep both both sets of her teasing fingers moving; you coo as your own hard movements force her to move the hand on your [cock biggest2] faster and more erratic, wringing your urgently bulging prick tightly and making you pump into her wet, milking warmth all the more frenetically.");
 				}
 				//monocock
-				if (player.cocks.length == 1)
+				if (player.cocks.length === 1)
 				{
 					outputText("\n\n“<i>Put your other hand here - there we go - and then you can get back to it.</i>” Her other hand clutching one cheek of your [ass], Whitney steals a moment’s rest, the hand buried in her pussy no doubt aching a bit by now, before pulling back and focusing on your [cock]. You sigh deeply, your eyes closing as your cock end is once again enveloped with sweet, wringing warmth, whilst smooth pressure clutches your behind.");
 
@@ -2155,7 +2155,7 @@ package classes.Scenes.Places.Farm
 				if (player.cocks.length > 1) outputText(" The second cock trapped in her grasp flexes out cum just as eagerly as the first, sweat standing out on your forehead as you are clenched by your twin high; it paints her skirt with its generous discharge.");
 
 				outputText("\n\nOnce you have tensed your last you sigh beatifically and float high and formless on your post-blowjob haze. You close your eyes as, without any bidding, ");
-				if (player.cocks.length == 1) outputText("Whitney cleans your [cock biggest] with her flat tongue, humming as she laps your oozing head clean, deliciously soothing your aching cock.");
+				if (player.cocks.length === 1) outputText("Whitney cleans your [cock biggest] with her flat tongue, humming as she laps your oozing head clean, deliciously soothing your aching cock.");
 				else outputText("Whitney cleans first your [cock biggest2] and then your [cock biggest] with her flat tongue, humming as she laps each of your oozing heads clean, deliciously soothing your aching cock.");
 
 				outputText("\n\n“<i>Did you enjoy that, [master]?</i>” she says with a slightly woozy edge. She looks slightly drunk, her eyes heavy-lidded. “<i>Think I’ve... think I’ve got it.</i>” She’s become very accomplished, but you know instinctively she’s not quite as good as she can be quite yet. Holding her gaze, you tell her she’s doing well - but the very best cocksuckers never stop finding ways of bettering themselves. Your dog girl accepts this will a slight frown.");
@@ -2252,8 +2252,8 @@ package classes.Scenes.Places.Farm
 					if (player.cocks.length > 2) outputText(" they flex");
 					else outputText(" it flexes");
 					outputText(" out cum just as eagerly as the first, delirium seizing you as you are clenched by your");
-					if (player.cocks.length == 2) outputText(" twin");
-					else if (player.cocks.length == 3) outputText(" triple");
+					if (player.cocks.length === 2) outputText(" twin");
+					else if (player.cocks.length === 3) outputText(" triple");
 					else outputText(" transcendent");
 					outputText(" high;")
 					if (player.cocks.length > 2) outputText(" they paint");
@@ -2268,7 +2268,7 @@ package classes.Scenes.Places.Farm
 					outputText("Once you’re almost done, as ever you pull out and spurt the last few creamy ropes across her face and clothes. Red with her own huge high, the dog woman does her level best to catch them in her mouth.");
 				}
 
-				outputText("\n\nOnce you have tensed your last you sigh beatifically and float high and formless on your post-blowjob haze. You close your eyes as, without any bidding, " + ((player.cocks.length == 1) ? "Whitney cleans your [cock biggest] with her flat tongue, lapping your oozing head clean, deliciously soothing your aching cock" : "Whitney cleans all of your pricks with her flat tongue, lapping each of your oozing heads clean, deliciously soothing your aching cock") + ". She moans the low, blissed-out moan of an addict as she cleans you up, actually gently pumping your spent [prickplural] to make the last of it drool out. Gods... just these sounds and sensations, the gentle licking at your [cock biggest]’s tip and the little gasping exhale as she manages to coax a final drop onto her thirsty tongue, make you want to do it all over again... if only she hadn’t just drained you utterly. You pull her up before she makes your cock ache even more, pressing her firm, petite body into your [chest] and gaze proudly and complacently at your champion cocksucker.");
+				outputText("\n\nOnce you have tensed your last you sigh beatifically and float high and formless on your post-blowjob haze. You close your eyes as, without any bidding, " + ((player.cocks.length === 1) ? "Whitney cleans your [cock biggest] with her flat tongue, lapping your oozing head clean, deliciously soothing your aching cock" : "Whitney cleans all of your pricks with her flat tongue, lapping each of your oozing heads clean, deliciously soothing your aching cock") + ". She moans the low, blissed-out moan of an addict as she cleans you up, actually gently pumping your spent [prickplural] to make the last of it drool out. Gods... just these sounds and sensations, the gentle licking at your [cock biggest]’s tip and the little gasping exhale as she manages to coax a final drop onto her thirsty tongue, make you want to do it all over again... if only she hadn’t just drained you utterly. You pull her up before she makes your cock ache even more, pressing her firm, petite body into your [chest] and gaze proudly and complacently at your champion cocksucker.");
 
 				outputText("\n\n“<i>Think I’ve got it,</i>” she whispers, grinning back at you woozily, red throbbing deep in the brown pools of her eyes. You rub her behind the ear and tell her she almost has; there’s one last lesson she has to learn. You grip her tight, hot body for a few moments more and then send her on her unsteady way.");
 			}
@@ -2320,7 +2320,7 @@ package classes.Scenes.Places.Farm
 			if (player.cumQ() >= 1500) outputText(" Once you’re almost done, as ever you pull out and spurt the last few creamy ropes across her face and clothes. Red with her own huge high, the dog woman does her level best to catch them in her mouth.");
 
 			outputText("\n\nOnce you have tensed your last you sigh beatifically and float high and formless on your post-blowjob haze. You close your eyes as, without any bidding, ");
-			if (player.cocks.length == 1) outputText("Whitney first cleans your [vagina] and then your [cock biggest] with her flat tongue, polishing your dripping pussy and thighs to a shine before lapping your oozing head clean, deliciously soothing your aching cock.");
+			if (player.cocks.length === 1) outputText("Whitney first cleans your [vagina] and then your [cock biggest] with her flat tongue, polishing your dripping pussy and thighs to a shine before lapping your oozing head clean, deliciously soothing your aching cock.");
 			else outputText("Whitney uses her flat tongue to clean first your [vagina], polishing your dripping pussy and thighs to a shine, and then each of your pricks, lapping the oozing heads clean, deliciously soothing your aching cocks.");
 			outputText(" She moans the low, blissed-out moan of an addict as she cleans you up, actually gently pumping your spent [prickplural] to make the last of it drool out. Gods... just these sounds and sensations, the gentle licking at your [cock biggest]’s tip and the little gasping exhale as she manages to coax a final drop onto her thirsty tongue, make you want to do it all over again... if only she hadn’t so adroitly drained you utterly. You pull her up before she makes your cock ache even more, pressing her firm, petite body into your [chest] and gaze proudly and complacently at your champion cocksucker.");
 
@@ -2386,20 +2386,20 @@ package classes.Scenes.Places.Farm
 					outputText("She doesn’t forget the cock");
 					if (player.cocks.length > 2) outputText("s");
 					outputText(" trapped in her grasp for a moment; she milks");
-					if (player.cocks.length == 2) outputText(" it");
+					if (player.cocks.length === 2) outputText(" it");
 					else outputText(" them");
 					outputText(" as hard as you’re fucking her mouth, and");
-					if (player.cocks.length == 2) outputText(" it flexes");
+					if (player.cocks.length === 2) outputText(" it flexes");
 					else outputText(" they flex");
 					outputText(" out cum just as eagerly as the first, delirium seizing you as you are clenched by your");
-					if (player.cocks.length == 2) outputText(" twin");
-					else if (player.cocks.length == 3) outputText(" triple");
+					if (player.cocks.length === 2) outputText(" twin");
+					else if (player.cocks.length === 3) outputText(" triple");
 					else outputText(" transcendent");
 					outputText(" high;");
-					if (player.cocks.length == 2) outputText(" it paints");
+					if (player.cocks.length === 2) outputText(" it paints");
 					else outputText(" they paint");
 					outputText(" her skirt with ");
-					if (player.cocks.length == 2) outputText(" its");
+					if (player.cocks.length === 2) outputText(" its");
 					else outputText(" their");
 					outputText(" generous discharge. ");
 				}
@@ -2458,7 +2458,7 @@ package classes.Scenes.Places.Farm
 				if (player.cocks.length > 1)
 				{
 					outputText(" She doesn’t forget the cock trapped in her grasp for a moment; she milks it as hard as you’re fucking her mouth, and it flexes out cum just as eagerly as the first, delirium seizing you as you are clenched by your ");
-					if (player.cocks.length == 2) outputText("triple");
+					if (player.cocks.length === 2) outputText("triple");
 					else outputText("transcendent");
 					outputText(" high; it paints her skirt with its generous discharge.");
 				}
@@ -2509,7 +2509,7 @@ package classes.Scenes.Places.Farm
 
 				outputText("\n\nSuch is her mastery now Whitney probably could make you cum any time if she wanted to, but just like you she wants to keep this going for as long as she possibly can, so she blows you incredibly slowly and sensually. Her intermittent hungry moans send pleasurable vibrations through your cock, pushing as much of her sensitive, cum-addicted lips around your girth as she can. ");
 				if (player.cocks.length > 1) outputText("In the long, delicious daze that follows you move her around");
-				if (player.cocks.length == 2) outputText(", switching her attention to your [cock biggest2] for a while");
+				if (player.cocks.length === 2) outputText(", switching her attention to your [cock biggest2] for a while");
 				else if (player.cocks.length >= 3) outputText(" switching her attention first to one cock and then the other");
 				if (player.cocks.length > 1) outputText(" so that each of your fiercely erect pricks has time to enjoy the tight, sucking embrace of her mouth.");
 
@@ -2531,20 +2531,20 @@ package classes.Scenes.Places.Farm
 					outputText(" She doesn’t forget the cock");
 					if (player.cocks.length > 2) outputText("s");
 					outputText(" trapped in her grasp for a moment; she milks");
-					if (player.cocks.length == 2) outputText(" it");
+					if (player.cocks.length === 2) outputText(" it");
 					else outputText(" them");
 					outputText(" as hard as you’re fucking her mouth, and");
 					if (player.cocks.length > 2) outputText(" they flex");
 					else outputText(" it flexes");
 					outputText(" out cum just as eagerly as the first, delirium seizing you as you are clenched by your");
-					if (player.cocks.length == 2) outputText(" twin");
-					else if (player.cocks.length == 3) outputText(" triple");
+					if (player.cocks.length === 2) outputText(" twin");
+					else if (player.cocks.length === 3) outputText(" triple");
 					else outputText(" transcendent");
 					outputText(" high;");
-					if (player.cocks.length == 2) outputText(" it paints");
+					if (player.cocks.length === 2) outputText(" it paints");
 					else outputText(" they paint");
 					outputText(" her skirt with");
-					if (player.cocks.length == 2) outputText(" its");
+					if (player.cocks.length === 2) outputText(" its");
 					else outputText(" their");
 					outputText(" generous discharge.");
 				}
@@ -2575,7 +2575,7 @@ package classes.Scenes.Places.Farm
 
 				outputText("\n\nSuch is her mastery now Whitney probably could make you cum any time if she wanted to, but just like you she wants to keep this going for as long as she possibly can, so she blows you incredibly slowly and sensually. Her intermittent hungry moans send pleasurable vibrations through your cock, pushing as much of her sensitive, cum-addicted lips around your girth as she can, all the while caressing your [clit] and keeping you wetly simmering.");
 				if (player.cocks.length > 1) outputText(" In the long, delicious daze that follows you move her around");
-				if (player.cocks.length == 2) outputText(", switching her attention to your [cock biggest2] for a while");
+				if (player.cocks.length === 2) outputText(", switching her attention to your [cock biggest2] for a while");
 				if (player.cocks.length >= 3) outputText(", switching her first to one cock then another");
 				if (player.cocks.length > 1) outputText(" so that each of your fiercely erect pricks has time to enjoy the tight, sucking embrace of her mouth.");
 
@@ -2957,7 +2957,7 @@ package classes.Scenes.Places.Farm
 			// (Vaginal and Anal Wetness set to max for a day
 			player.orgasm('Vaginal');
 			dynStats("sen-", 1);
-			if (player.wetness() < 5 && rand(4) == 0) player.vaginas[0].vaginalWetness++;
+			if (player.wetness() < 5 && rand(4) === 0) player.vaginas[0].vaginalWetness++;
 			doNext(camp.returnToCampUseOneHour);
 		}
 
@@ -2966,7 +2966,7 @@ package classes.Scenes.Places.Farm
 			clearOutput();
 			whitneySprite();
 
-			if (flags[kFLAGS.WHITNEY_DOM_FIRST_PLEASURE] == 0)
+			if (flags[kFLAGS.WHITNEY_DOM_FIRST_PLEASURE] === 0)
 			{
 				firstWhitneyDomPleasure();
 				flags[kFLAGS.WHITNEY_DOM_FIRST_PLEASURE] = 1;
@@ -3274,7 +3274,7 @@ package classes.Scenes.Places.Farm
 
 			outputText("\n\nOnce she’s done tying you down the dog woman gets off the bed with a spring and disappears from your limited sightline, rummaging around her bedroom with ominous-sounding intent. Is she shifting particularly heavy things about just to torment you? You crane your neck to get a glimpse at what she’s holding as she returns to your side - and then cry out in shock as a black curtain falls down on the world.");
 
-			outputText("\n\n“<i>Stop fussing now, sweetheart,</i>” Whitney croons, adjusting the black, elastic blindfold so it is firmly secured over your eyes." + ((player.eyes.type == Eyes.FOUR_SPIDER_EYES || player.eyes.count > 2) ? " Once she’s finished with that she places another blindfold over your additional eyes. You can only groan with laughter at the sheer level of preparation the dog woman is capable of." : "") + " “<i>Wouldn’t want you to see what’s coming, would we? That’d ruin half the fun.</i>” ");
+			outputText("\n\n“<i>Stop fussing now, sweetheart,</i>” Whitney croons, adjusting the black, elastic blindfold so it is firmly secured over your eyes." + ((player.eyes.type === Eyes.FOUR_SPIDER_EYES || player.eyes.count > 2) ? " Once she’s finished with that she places another blindfold over your additional eyes. You can only groan with laughter at the sheer level of preparation the dog woman is capable of." : "") + " “<i>Wouldn’t want you to see what’s coming, would we? That’d ruin half the fun.</i>” ");
 
 			outputText("\n\nShe crawls down to your lower body, taking her time now as she slides her hands across your abdomen and [hips] and sits herself down in front of [eachCock]" + ((player.balls > 0) ? ", making you twitch as she momentarily cups your [balls]" : "") + ". She teases you with slow, deliberate movements of her smooth digits, fully aware that all you can do now in your black space is lie there, feeling and listening to what she’s doing to you.");
 
@@ -3291,7 +3291,7 @@ package classes.Scenes.Places.Farm
 			var tooBig:Boolean = false;
 
 			// Catch a no-cock-fits scenario so we can do things.
-			if (cockI == 0)
+			if (cockI === 0)
 			{
 				tooBig = true;
 				cockI = player.smallestCock() + 1;
@@ -3399,7 +3399,7 @@ package classes.Scenes.Places.Farm
 			clearOutput();
 			whitneySprite();
 
-			if (flags[kFLAGS.FARM_CORRUPTION_BRANDING_MENU_UNLOCKED] == 0)
+			if (flags[kFLAGS.FARM_CORRUPTION_BRANDING_MENU_UNLOCKED] === 0)
 			{
 				outputText("You idly put an arm around Whitney, drawing her into you. You want her in the right frame of mind before you lead her down this path of inquiry. Her breath is hot and heavy against your [chest], her desire-lit eyes unable to tear away from yours as your hand slides down the curve of her back and round around her enjoyably tight ass. You ask her what she knows about branding.");
 
@@ -3423,13 +3423,13 @@ package classes.Scenes.Places.Farm
 				if (player.gems >= 50)
 				{
 					if (hasFreeTattooSlot("whitney")) addButton(0, "Whitney", brandWhitney);
-					if (flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 1 && hasFreeTattooSlot("amily")) addButton(1, "Amily", brandAmily);
-					if (flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] == 1 && hasFreeTattooSlot("jojo")) addButton(2, "Jojo", brandJojo);
-					if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 1 && kGAMECLASS.sophieBimbo.bimboSophie() && hasFreeTattooSlot("sophie")) addButton(3, "Sophie", brandBimboSophie);
-					if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 1 && hasFreeTattooSlot("vapula")) addButton(4, "Vapula", brandVapula);
+					if (flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] === 1 && hasFreeTattooSlot("amily")) addButton(1, "Amily", brandAmily);
+					if (flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] === 1 && hasFreeTattooSlot("jojo")) addButton(2, "Jojo", brandJojo);
+					if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] === 1 && kGAMECLASS.sophieBimbo.bimboSophie() && hasFreeTattooSlot("sophie")) addButton(3, "Sophie", brandBimboSophie);
+					if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] === 1 && hasFreeTattooSlot("vapula")) addButton(4, "Vapula", brandVapula);
 					if (flags[kFLAGS.KELT_BREAK_LEVEL] >= 4 && hasFreeTattooSlot("kelly")) addButton(5, "Kelly", brandKelly);
-					if (flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] == 1 && flags[kFLAGS.MILK_SIZE] > 0 && hasFreeTattooSlot("milky")) addButton(6, flags[kFLAGS.MILK_NAME], brandSmallMilky);
-					if (flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] == 1 && flags[kFLAGS.MILK_SIZE] == 0 && hasFreeTattooSlot("milky")) addButton(6, flags[kFLAGS.MILK_NAME], brandBigMilky);
+					if (flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] === 1 && flags[kFLAGS.MILK_SIZE] > 0 && hasFreeTattooSlot("milky")) addButton(6, flags[kFLAGS.MILK_NAME], brandSmallMilky);
+					if (flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] === 1 && flags[kFLAGS.MILK_SIZE] === 0 && hasFreeTattooSlot("milky")) addButton(6, flags[kFLAGS.MILK_NAME], brandBigMilky);
 				}
 
 				addButton(14, "Back", dogeCorruptedMissionComplete);
@@ -3438,60 +3438,60 @@ package classes.Scenes.Places.Farm
 
 		private function hasFreeTattooSlot(name:String):Boolean
 		{
-			if (name == "whitney")
+			if (name === "whitney")
 			{
-				if (flags[kFLAGS.WHITNEY_TATTOO_COLLARBONE] == 0) return true;
-				if (flags[kFLAGS.WHITNEY_TATTOO_LOWERBACK] == 0) return true;
-				if (flags[kFLAGS.WHITNEY_TATTOO_SHOULDERS] == 0) return true;
-				if (flags[kFLAGS.WHITNEY_TATTOO_BUTT] == 0) return true;
+				if (flags[kFLAGS.WHITNEY_TATTOO_COLLARBONE] === 0) return true;
+				if (flags[kFLAGS.WHITNEY_TATTOO_LOWERBACK] === 0) return true;
+				if (flags[kFLAGS.WHITNEY_TATTOO_SHOULDERS] === 0) return true;
+				if (flags[kFLAGS.WHITNEY_TATTOO_BUTT] === 0) return true;
 				return false;
 			}
-			else if (name == "amily")
+			else if (name === "amily")
 			{
-				if (flags[kFLAGS.AMILY_TATTOO_COLLARBONE] == 0) return true;
-				if (flags[kFLAGS.AMILY_TATTOO_LOWERBACK] == 0) return true;
-				if (flags[kFLAGS.AMILY_TATTOO_SHOULDERS] == 0) return true;
-				if (flags[kFLAGS.AMILY_TATTOO_BUTT] == 0) return true;
+				if (flags[kFLAGS.AMILY_TATTOO_COLLARBONE] === 0) return true;
+				if (flags[kFLAGS.AMILY_TATTOO_LOWERBACK] === 0) return true;
+				if (flags[kFLAGS.AMILY_TATTOO_SHOULDERS] === 0) return true;
+				if (flags[kFLAGS.AMILY_TATTOO_BUTT] === 0) return true;
 				return false;
 			}
-			else if (name == "jojo")
+			else if (name === "jojo")
 			{
-				if (flags[kFLAGS.JOJO_TATTOO_COLLARBONE] == 0) return true;
-				if (flags[kFLAGS.JOJO_TATTOO_LOWERBACK] == 0) return true;
-				if (flags[kFLAGS.JOJO_TATTOO_SHOULDERS] == 0) return true;
-				if (flags[kFLAGS.JOJO_TATTOO_BUTT] == 0) return true;
+				if (flags[kFLAGS.JOJO_TATTOO_COLLARBONE] === 0) return true;
+				if (flags[kFLAGS.JOJO_TATTOO_LOWERBACK] === 0) return true;
+				if (flags[kFLAGS.JOJO_TATTOO_SHOULDERS] === 0) return true;
+				if (flags[kFLAGS.JOJO_TATTOO_BUTT] === 0) return true;
 				return false;
 			}
-			else if (name == "sophie")
+			else if (name === "sophie")
 			{
-				if (flags[kFLAGS.SOPHIE_TATTOO_COLLARBONE] == 0) return true;
-				if (flags[kFLAGS.SOPHIE_TATTOO_LOWERBACK] == 0) return true;
-				if (flags[kFLAGS.SOPHIE_TATTOO_SHOULDERS] == 0) return true;
-				if (flags[kFLAGS.SOPHIE_TATTOO_BUTT] == 0) return true;
+				if (flags[kFLAGS.SOPHIE_TATTOO_COLLARBONE] === 0) return true;
+				if (flags[kFLAGS.SOPHIE_TATTOO_LOWERBACK] === 0) return true;
+				if (flags[kFLAGS.SOPHIE_TATTOO_SHOULDERS] === 0) return true;
+				if (flags[kFLAGS.SOPHIE_TATTOO_BUTT] === 0) return true;
 				return false;
 			}
-			else if (name == "vapula")
+			else if (name === "vapula")
 			{
-				if (flags[kFLAGS.VAPULA_TATTOO_COLLARBONE] == 0) return true;
-				if (flags[kFLAGS.VAPULA_TATTOO_LOWERBACK] == 0) return true;
-				if (flags[kFLAGS.VAPULA_TATTOO_SHOULDERS] == 0) return true;
-				if (flags[kFLAGS.VAPULA_TATTOO_BUTT] == 0) return true;
+				if (flags[kFLAGS.VAPULA_TATTOO_COLLARBONE] === 0) return true;
+				if (flags[kFLAGS.VAPULA_TATTOO_LOWERBACK] === 0) return true;
+				if (flags[kFLAGS.VAPULA_TATTOO_SHOULDERS] === 0) return true;
+				if (flags[kFLAGS.VAPULA_TATTOO_BUTT] === 0) return true;
 				return false;
 			}
-			else if (name == "kelly")
+			else if (name === "kelly")
 			{
-				if (flags[kFLAGS.KELLY_TATTOO_COLLARBONE] == 0) return true;
-				if (flags[kFLAGS.KELLY_TATTOO_LOWERBACK] == 0) return true;
-				if (flags[kFLAGS.KELLY_TATTOO_SHOULDERS] == 0) return true;
-				if (flags[kFLAGS.KELLY_TATTOO_BUTT] == 0) return true;
+				if (flags[kFLAGS.KELLY_TATTOO_COLLARBONE] === 0) return true;
+				if (flags[kFLAGS.KELLY_TATTOO_LOWERBACK] === 0) return true;
+				if (flags[kFLAGS.KELLY_TATTOO_SHOULDERS] === 0) return true;
+				if (flags[kFLAGS.KELLY_TATTOO_BUTT] === 0) return true;
 				return false;
 			}
-			else if (name == "milky")
+			else if (name === "milky")
 			{
-				if (flags[kFLAGS.MILKY_TATTOO_COLLARBONE] == 0) return true;
-				if (flags[kFLAGS.MILKY_TATTOO_LOWERBACK] == 0) return true;
-				if (flags[kFLAGS.MILKY_TATTOO_SHOULDERS] == 0) return true;
-				if (flags[kFLAGS.MILKY_TATTOO_BUTT] == 0) return true;
+				if (flags[kFLAGS.MILKY_TATTOO_COLLARBONE] === 0) return true;
+				if (flags[kFLAGS.MILKY_TATTOO_LOWERBACK] === 0) return true;
+				if (flags[kFLAGS.MILKY_TATTOO_SHOULDERS] === 0) return true;
+				if (flags[kFLAGS.MILKY_TATTOO_BUTT] === 0) return true;
 				return false;
 			}
 			else
@@ -3502,60 +3502,60 @@ package classes.Scenes.Places.Farm
 
 		public function hasTattoo(name:String):Boolean
 		{
-			if (name == "whitney")
+			if (name === "whitney")
 			{
-				if (flags[kFLAGS.WHITNEY_TATTOO_COLLARBONE] != 0) return true;
-				if (flags[kFLAGS.WHITNEY_TATTOO_LOWERBACK] != 0) return true;
-				if (flags[kFLAGS.WHITNEY_TATTOO_SHOULDERS] != 0) return true;
-				if (flags[kFLAGS.WHITNEY_TATTOO_BUTT] != 0) return true;
+				if (flags[kFLAGS.WHITNEY_TATTOO_COLLARBONE] !== 0) return true;
+				if (flags[kFLAGS.WHITNEY_TATTOO_LOWERBACK] !== 0) return true;
+				if (flags[kFLAGS.WHITNEY_TATTOO_SHOULDERS] !== 0) return true;
+				if (flags[kFLAGS.WHITNEY_TATTOO_BUTT] !== 0) return true;
 				return false;
 			}
-			else if (name == "amily")
+			else if (name === "amily")
 			{
-				if (flags[kFLAGS.AMILY_TATTOO_COLLARBONE] != 0) return true;
-				if (flags[kFLAGS.AMILY_TATTOO_LOWERBACK] != 0) return true;
-				if (flags[kFLAGS.AMILY_TATTOO_SHOULDERS] != 0) return true;
-				if (flags[kFLAGS.AMILY_TATTOO_BUTT] != 0) return true;
+				if (flags[kFLAGS.AMILY_TATTOO_COLLARBONE] !== 0) return true;
+				if (flags[kFLAGS.AMILY_TATTOO_LOWERBACK] !== 0) return true;
+				if (flags[kFLAGS.AMILY_TATTOO_SHOULDERS] !== 0) return true;
+				if (flags[kFLAGS.AMILY_TATTOO_BUTT] !== 0) return true;
 				return false;
 			}
-			else if (name == "jojo")
+			else if (name === "jojo")
 			{
-				if (flags[kFLAGS.JOJO_TATTOO_COLLARBONE] != 0) return true;
-				if (flags[kFLAGS.JOJO_TATTOO_LOWERBACK] != 0) return true;
-				if (flags[kFLAGS.JOJO_TATTOO_SHOULDERS] != 0) return true;
-				if (flags[kFLAGS.JOJO_TATTOO_BUTT] != 0) return true;
+				if (flags[kFLAGS.JOJO_TATTOO_COLLARBONE] !== 0) return true;
+				if (flags[kFLAGS.JOJO_TATTOO_LOWERBACK] !== 0) return true;
+				if (flags[kFLAGS.JOJO_TATTOO_SHOULDERS] !== 0) return true;
+				if (flags[kFLAGS.JOJO_TATTOO_BUTT] !== 0) return true;
 				return false;
 			}
-			else if (name == "sophie")
+			else if (name === "sophie")
 			{
-				if (flags[kFLAGS.SOPHIE_TATTOO_COLLARBONE] != 0) return true;
-				if (flags[kFLAGS.SOPHIE_TATTOO_LOWERBACK] != 0) return true;
-				if (flags[kFLAGS.SOPHIE_TATTOO_SHOULDERS] != 0) return true;
-				if (flags[kFLAGS.SOPHIE_TATTOO_BUTT] != 0) return true;
+				if (flags[kFLAGS.SOPHIE_TATTOO_COLLARBONE] !== 0) return true;
+				if (flags[kFLAGS.SOPHIE_TATTOO_LOWERBACK] !== 0) return true;
+				if (flags[kFLAGS.SOPHIE_TATTOO_SHOULDERS] !== 0) return true;
+				if (flags[kFLAGS.SOPHIE_TATTOO_BUTT] !== 0) return true;
 				return false;
 			}
-			else if (name == "vapula")
+			else if (name === "vapula")
 			{
-				if (flags[kFLAGS.VAPULA_TATTOO_COLLARBONE] != 0) return true;
-				if (flags[kFLAGS.VAPULA_TATTOO_LOWERBACK] != 0) return true;
-				if (flags[kFLAGS.VAPULA_TATTOO_SHOULDERS] != 0) return true;
-				if (flags[kFLAGS.VAPULA_TATTOO_BUTT] != 0) return true;
+				if (flags[kFLAGS.VAPULA_TATTOO_COLLARBONE] !== 0) return true;
+				if (flags[kFLAGS.VAPULA_TATTOO_LOWERBACK] !== 0) return true;
+				if (flags[kFLAGS.VAPULA_TATTOO_SHOULDERS] !== 0) return true;
+				if (flags[kFLAGS.VAPULA_TATTOO_BUTT] !== 0) return true;
 				return false;
 			}
-			else if (name == "kelly")
+			else if (name === "kelly")
 			{
-				if (flags[kFLAGS.KELLY_TATTOO_COLLARBONE] != 0) return true;
-				if (flags[kFLAGS.KELLY_TATTOO_LOWERBACK] != 0) return true;
-				if (flags[kFLAGS.KELLY_TATTOO_SHOULDERS] != 0) return true;
-				if (flags[kFLAGS.KELLY_TATTOO_BUTT] != 0) return true;
+				if (flags[kFLAGS.KELLY_TATTOO_COLLARBONE] !== 0) return true;
+				if (flags[kFLAGS.KELLY_TATTOO_LOWERBACK] !== 0) return true;
+				if (flags[kFLAGS.KELLY_TATTOO_SHOULDERS] !== 0) return true;
+				if (flags[kFLAGS.KELLY_TATTOO_BUTT] !== 0) return true;
 				return false;
 			}
-			else if (name == "milky")
+			else if (name === "milky")
 			{
-				if (flags[kFLAGS.MILKY_TATTOO_COLLARBONE] != 0) return true;
-				if (flags[kFLAGS.MILKY_TATTOO_LOWERBACK] != 0) return true;
-				if (flags[kFLAGS.MILKY_TATTOO_SHOULDERS] != 0) return true;
-				if (flags[kFLAGS.MILKY_TATTOO_BUTT] != 0) return true;
+				if (flags[kFLAGS.MILKY_TATTOO_COLLARBONE] !== 0) return true;
+				if (flags[kFLAGS.MILKY_TATTOO_LOWERBACK] !== 0) return true;
+				if (flags[kFLAGS.MILKY_TATTOO_SHOULDERS] !== 0) return true;
+				if (flags[kFLAGS.MILKY_TATTOO_BUTT] !== 0) return true;
 				return false;
 			}
 			else
@@ -3568,54 +3568,54 @@ package classes.Scenes.Places.Farm
 		{
 			var count:int = 0;
 
-			if (name == "whitney")
+			if (name === "whitney")
 			{
-				if (flags[kFLAGS.WHITNEY_TATTOO_COLLARBONE] != 0) count++;
-				if (flags[kFLAGS.WHITNEY_TATTOO_LOWERBACK] != 0) count++;
-				if (flags[kFLAGS.WHITNEY_TATTOO_SHOULDERS] != 0) count++;
-				if (flags[kFLAGS.WHITNEY_TATTOO_BUTT] != 0) count++;
+				if (flags[kFLAGS.WHITNEY_TATTOO_COLLARBONE] !== 0) count++;
+				if (flags[kFLAGS.WHITNEY_TATTOO_LOWERBACK] !== 0) count++;
+				if (flags[kFLAGS.WHITNEY_TATTOO_SHOULDERS] !== 0) count++;
+				if (flags[kFLAGS.WHITNEY_TATTOO_BUTT] !== 0) count++;
 			}
-			else if (name == "amily")
+			else if (name === "amily")
 			{
-				if (flags[kFLAGS.AMILY_TATTOO_COLLARBONE] != 0) count++;
-				if (flags[kFLAGS.AMILY_TATTOO_LOWERBACK] != 0) count++;
-				if (flags[kFLAGS.AMILY_TATTOO_SHOULDERS] != 0) count++;
-				if (flags[kFLAGS.AMILY_TATTOO_BUTT] != 0) count++;
+				if (flags[kFLAGS.AMILY_TATTOO_COLLARBONE] !== 0) count++;
+				if (flags[kFLAGS.AMILY_TATTOO_LOWERBACK] !== 0) count++;
+				if (flags[kFLAGS.AMILY_TATTOO_SHOULDERS] !== 0) count++;
+				if (flags[kFLAGS.AMILY_TATTOO_BUTT] !== 0) count++;
 			}
-			else if (name == "jojo")
+			else if (name === "jojo")
 			{
-				if (flags[kFLAGS.JOJO_TATTOO_COLLARBONE] != 0) count++;
-				if (flags[kFLAGS.JOJO_TATTOO_LOWERBACK] != 0) count++;
-				if (flags[kFLAGS.JOJO_TATTOO_SHOULDERS] != 0) count++;
-				if (flags[kFLAGS.JOJO_TATTOO_BUTT] != 0) count++;
+				if (flags[kFLAGS.JOJO_TATTOO_COLLARBONE] !== 0) count++;
+				if (flags[kFLAGS.JOJO_TATTOO_LOWERBACK] !== 0) count++;
+				if (flags[kFLAGS.JOJO_TATTOO_SHOULDERS] !== 0) count++;
+				if (flags[kFLAGS.JOJO_TATTOO_BUTT] !== 0) count++;
 			}
-			else if (name == "sophie")
+			else if (name === "sophie")
 			{
-				if (flags[kFLAGS.SOPHIE_TATTOO_COLLARBONE] != 0) count++;
-				if (flags[kFLAGS.SOPHIE_TATTOO_LOWERBACK] != 0) count++;
-				if (flags[kFLAGS.SOPHIE_TATTOO_SHOULDERS] != 0) count++;
-				if (flags[kFLAGS.SOPHIE_TATTOO_BUTT] != 0) count++;
+				if (flags[kFLAGS.SOPHIE_TATTOO_COLLARBONE] !== 0) count++;
+				if (flags[kFLAGS.SOPHIE_TATTOO_LOWERBACK] !== 0) count++;
+				if (flags[kFLAGS.SOPHIE_TATTOO_SHOULDERS] !== 0) count++;
+				if (flags[kFLAGS.SOPHIE_TATTOO_BUTT] !== 0) count++;
 			}
-			else if (name == "vapula")
+			else if (name === "vapula")
 			{
-				if (flags[kFLAGS.VAPULA_TATTOO_COLLARBONE] != 0) count++;
-				if (flags[kFLAGS.VAPULA_TATTOO_LOWERBACK] != 0) count++;
-				if (flags[kFLAGS.VAPULA_TATTOO_SHOULDERS] != 0) count++;
-				if (flags[kFLAGS.VAPULA_TATTOO_BUTT] != 0) count++;
+				if (flags[kFLAGS.VAPULA_TATTOO_COLLARBONE] !== 0) count++;
+				if (flags[kFLAGS.VAPULA_TATTOO_LOWERBACK] !== 0) count++;
+				if (flags[kFLAGS.VAPULA_TATTOO_SHOULDERS] !== 0) count++;
+				if (flags[kFLAGS.VAPULA_TATTOO_BUTT] !== 0) count++;
 			}
-			else if (name == "kelly")
+			else if (name === "kelly")
 			{
-				if (flags[kFLAGS.KELLY_TATTOO_COLLARBONE] != 0) count++;
-				if (flags[kFLAGS.KELLY_TATTOO_LOWERBACK] != 0) count++;
-				if (flags[kFLAGS.KELLY_TATTOO_SHOULDERS] != 0) count++;
-				if (flags[kFLAGS.KELLY_TATTOO_BUTT] != 0) count++;
+				if (flags[kFLAGS.KELLY_TATTOO_COLLARBONE] !== 0) count++;
+				if (flags[kFLAGS.KELLY_TATTOO_LOWERBACK] !== 0) count++;
+				if (flags[kFLAGS.KELLY_TATTOO_SHOULDERS] !== 0) count++;
+				if (flags[kFLAGS.KELLY_TATTOO_BUTT] !== 0) count++;
 			}
-			else if (name == "milky")
+			else if (name === "milky")
 			{
-				if (flags[kFLAGS.MILKY_TATTOO_COLLARBONE] != 0) count++;
-				if (flags[kFLAGS.MILKY_TATTOO_LOWERBACK] != 0) count++;
-				if (flags[kFLAGS.MILKY_TATTOO_SHOULDERS] != 0) count++;
-				if (flags[kFLAGS.MILKY_TATTOO_BUTT] != 0) count++;
+				if (flags[kFLAGS.MILKY_TATTOO_COLLARBONE] !== 0) count++;
+				if (flags[kFLAGS.MILKY_TATTOO_LOWERBACK] !== 0) count++;
+				if (flags[kFLAGS.MILKY_TATTOO_SHOULDERS] !== 0) count++;
+				if (flags[kFLAGS.MILKY_TATTOO_BUTT] !== 0) count++;
 			}
 			else
 			{
@@ -3825,73 +3825,73 @@ package classes.Scenes.Places.Farm
 		public function brandSlotSelect():void
 		{
 			menu();
-			if (flags[kFLAGS.WHITNEY_TATTOO_COLLARBONE] == 0) addButton(0, "Collarbone", brandSelect, 0)
-			if (flags[kFLAGS.WHITNEY_TATTOO_SHOULDERS] == 0) addButton(1, "Shoulders", brandSelect, 1);
-			if (flags[kFLAGS.WHITNEY_TATTOO_LOWERBACK] == 0) addButton(2, "Lower Back", brandSelect, 2);
-			if (flags[kFLAGS.WHITNEY_TATTOO_BUTT] == 0) addButton(3, "Butt", brandSelect, 3);
+			if (flags[kFLAGS.WHITNEY_TATTOO_COLLARBONE] === 0) addButton(0, "Collarbone", brandSelect, 0)
+			if (flags[kFLAGS.WHITNEY_TATTOO_SHOULDERS] === 0) addButton(1, "Shoulders", brandSelect, 1);
+			if (flags[kFLAGS.WHITNEY_TATTOO_LOWERBACK] === 0) addButton(2, "Lower Back", brandSelect, 2);
+			if (flags[kFLAGS.WHITNEY_TATTOO_BUTT] === 0) addButton(3, "Butt", brandSelect, 3);
 		}
 
 		public function amilyBrandSlotSelect():void
 		{
 			menu();
-			if (flags[kFLAGS.AMILY_TATTOO_COLLARBONE] == 0) addButton(0, "Collarbone", amilyBrandSelect, 0)
-			if (flags[kFLAGS.AMILY_TATTOO_SHOULDERS] == 0) addButton(1, "Shoulders", amilyBrandSelect, 1);
-			if (flags[kFLAGS.AMILY_TATTOO_LOWERBACK] == 0) addButton(2, "Lower Back", amilyBrandSelect, 2);
-			if (flags[kFLAGS.AMILY_TATTOO_BUTT] == 0) addButton(3, "Butt", amilyBrandSelect, 3);
+			if (flags[kFLAGS.AMILY_TATTOO_COLLARBONE] === 0) addButton(0, "Collarbone", amilyBrandSelect, 0)
+			if (flags[kFLAGS.AMILY_TATTOO_SHOULDERS] === 0) addButton(1, "Shoulders", amilyBrandSelect, 1);
+			if (flags[kFLAGS.AMILY_TATTOO_LOWERBACK] === 0) addButton(2, "Lower Back", amilyBrandSelect, 2);
+			if (flags[kFLAGS.AMILY_TATTOO_BUTT] === 0) addButton(3, "Butt", amilyBrandSelect, 3);
 		}
 
 		public function jojoBrandSlotSelect():void
 		{
 			menu();
-			if (flags[kFLAGS.JOJO_TATTOO_COLLARBONE] == 0) addButton(0, "Collarbone", jojoBrandSelect, 0)
-			if (flags[kFLAGS.JOJO_TATTOO_SHOULDERS] == 0) addButton(1, "Shoulders", jojoBrandSelect, 1);
-			if (flags[kFLAGS.JOJO_TATTOO_LOWERBACK] == 0) addButton(2, "Lower Back", jojoBrandSelect, 2);
-			if (flags[kFLAGS.JOJO_TATTOO_BUTT] == 0) addButton(3, "Butt", jojoBrandSelect, 3);
+			if (flags[kFLAGS.JOJO_TATTOO_COLLARBONE] === 0) addButton(0, "Collarbone", jojoBrandSelect, 0)
+			if (flags[kFLAGS.JOJO_TATTOO_SHOULDERS] === 0) addButton(1, "Shoulders", jojoBrandSelect, 1);
+			if (flags[kFLAGS.JOJO_TATTOO_LOWERBACK] === 0) addButton(2, "Lower Back", jojoBrandSelect, 2);
+			if (flags[kFLAGS.JOJO_TATTOO_BUTT] === 0) addButton(3, "Butt", jojoBrandSelect, 3);
 		}
 
 		public function bimboSophieSlotSelect():void
 		{
 			menu();
-			if (flags[kFLAGS.SOPHIE_TATTOO_COLLARBONE] == 0) addButton(0, "Collarbone", bimboSophieBrandSelect, 0)
-			if (flags[kFLAGS.SOPHIE_TATTOO_SHOULDERS] == 0) addButton(1, "Shoulders", bimboSophieBrandSelect, 1);
-			if (flags[kFLAGS.SOPHIE_TATTOO_LOWERBACK] == 0) addButton(2, "Lower Back", bimboSophieBrandSelect, 2);
-			if (flags[kFLAGS.SOPHIE_TATTOO_BUTT] == 0) addButton(3, "Butt", bimboSophieBrandSelect, 3);
+			if (flags[kFLAGS.SOPHIE_TATTOO_COLLARBONE] === 0) addButton(0, "Collarbone", bimboSophieBrandSelect, 0)
+			if (flags[kFLAGS.SOPHIE_TATTOO_SHOULDERS] === 0) addButton(1, "Shoulders", bimboSophieBrandSelect, 1);
+			if (flags[kFLAGS.SOPHIE_TATTOO_LOWERBACK] === 0) addButton(2, "Lower Back", bimboSophieBrandSelect, 2);
+			if (flags[kFLAGS.SOPHIE_TATTOO_BUTT] === 0) addButton(3, "Butt", bimboSophieBrandSelect, 3);
 		}
 
 		public function vapulaSlotSelect():void
 		{
 			menu();
-			if (flags[kFLAGS.VAPULA_TATTOO_COLLARBONE] == 0) addButton(0, "Collarbone", vapulaBrandSelect, 0)
-			if (flags[kFLAGS.VAPULA_TATTOO_SHOULDERS] == 0) addButton(1, "Shoulders", vapulaBrandSelect, 1);
-			if (flags[kFLAGS.VAPULA_TATTOO_LOWERBACK] == 0) addButton(2, "Lower Back", vapulaBrandSelect, 2);
-			if (flags[kFLAGS.VAPULA_TATTOO_BUTT] == 0) addButton(3, "Butt", vapulaBrandSelect, 3);
+			if (flags[kFLAGS.VAPULA_TATTOO_COLLARBONE] === 0) addButton(0, "Collarbone", vapulaBrandSelect, 0)
+			if (flags[kFLAGS.VAPULA_TATTOO_SHOULDERS] === 0) addButton(1, "Shoulders", vapulaBrandSelect, 1);
+			if (flags[kFLAGS.VAPULA_TATTOO_LOWERBACK] === 0) addButton(2, "Lower Back", vapulaBrandSelect, 2);
+			if (flags[kFLAGS.VAPULA_TATTOO_BUTT] === 0) addButton(3, "Butt", vapulaBrandSelect, 3);
 		}
 
 		public function kellySlotSelect():void
 		{
 			menu();
-			if (flags[kFLAGS.KELLY_TATTOO_COLLARBONE] == 0) addButton(0, "Collarbone", kellyBrandSelect, 0)
-			if (flags[kFLAGS.KELLY_TATTOO_SHOULDERS] == 0) addButton(1, "Shoulders", kellyBrandSelect, 1);
-			if (flags[kFLAGS.KELLY_TATTOO_LOWERBACK] == 0) addButton(2, "Lower Back", kellyBrandSelect, 2);
-			if (flags[kFLAGS.KELLY_TATTOO_BUTT] == 0) addButton(3, "Butt", kellyBrandSelect, 3);
+			if (flags[kFLAGS.KELLY_TATTOO_COLLARBONE] === 0) addButton(0, "Collarbone", kellyBrandSelect, 0)
+			if (flags[kFLAGS.KELLY_TATTOO_SHOULDERS] === 0) addButton(1, "Shoulders", kellyBrandSelect, 1);
+			if (flags[kFLAGS.KELLY_TATTOO_LOWERBACK] === 0) addButton(2, "Lower Back", kellyBrandSelect, 2);
+			if (flags[kFLAGS.KELLY_TATTOO_BUTT] === 0) addButton(3, "Butt", kellyBrandSelect, 3);
 		}
 
 		public function smallMilkySlotSelect():void
 		{
 			menu();
-			if (flags[kFLAGS.MILKY_TATTOO_COLLARBONE] == 0) addButton(0, "Collarbone", smallMilkyBrandSelect, 0)
-			if (flags[kFLAGS.MILKY_TATTOO_SHOULDERS] == 0) addButton(1, "Shoulders", smallMilkyBrandSelect, 1);
-			if (flags[kFLAGS.MILKY_TATTOO_LOWERBACK] == 0) addButton(2, "Lower Back", smallMilkyBrandSelect, 2);
-			if (flags[kFLAGS.MILKY_TATTOO_BUTT] == 0) addButton(3, "Butt", smallMilkyBrandSelect, 3);
+			if (flags[kFLAGS.MILKY_TATTOO_COLLARBONE] === 0) addButton(0, "Collarbone", smallMilkyBrandSelect, 0)
+			if (flags[kFLAGS.MILKY_TATTOO_SHOULDERS] === 0) addButton(1, "Shoulders", smallMilkyBrandSelect, 1);
+			if (flags[kFLAGS.MILKY_TATTOO_LOWERBACK] === 0) addButton(2, "Lower Back", smallMilkyBrandSelect, 2);
+			if (flags[kFLAGS.MILKY_TATTOO_BUTT] === 0) addButton(3, "Butt", smallMilkyBrandSelect, 3);
 		}
 
 		public function bigMilkySlotSelect():void
 		{
 			menu();
-			if (flags[kFLAGS.MILKY_TATTOO_COLLARBONE] == 0) addButton(0, "Collarbone", bigMilkyBrandSelect, 0)
-			if (flags[kFLAGS.MILKY_TATTOO_SHOULDERS] == 0) addButton(1, "Shoulders", bigMilkyBrandSelect, 1);
-			if (flags[kFLAGS.MILKY_TATTOO_LOWERBACK] == 0) addButton(2, "Lower Back", bigMilkyBrandSelect, 2);
-			if (flags[kFLAGS.MILKY_TATTOO_BUTT] == 0) addButton(3, "Butt", bigMilkyBrandSelect, 3);
+			if (flags[kFLAGS.MILKY_TATTOO_COLLARBONE] === 0) addButton(0, "Collarbone", bigMilkyBrandSelect, 0)
+			if (flags[kFLAGS.MILKY_TATTOO_SHOULDERS] === 0) addButton(1, "Shoulders", bigMilkyBrandSelect, 1);
+			if (flags[kFLAGS.MILKY_TATTOO_LOWERBACK] === 0) addButton(2, "Lower Back", bigMilkyBrandSelect, 2);
+			if (flags[kFLAGS.MILKY_TATTOO_BUTT] === 0) addButton(3, "Butt", bigMilkyBrandSelect, 3);
 		}
 
 		public function brandSelect(slot:int):void
@@ -3923,7 +3923,7 @@ package classes.Scenes.Places.Farm
 			addButton(1, "Heart", amilyHeartTattoo, slot);
 			addButton(2, "Property Of", amilyPropertyTattoo, slot);
 			addButton(3, "Breeding Bitch", amilyBreedingBitchTattoo, slot);
-			if (player.hasCock() && slot == 2) addButton(4, "Cock Here", amilyCockGoesHereTattoo, slot);
+			if (player.hasCock() && slot === 2) addButton(4, "Cock Here", amilyCockGoesHereTattoo, slot);
 			if (player.hasVagina()) addButton(5, "Mommy's Girl", amilyMommysGirlTattoo, slot);
 
 			addButton(14, "Back", amilyBrandSlotSelect);
@@ -3940,7 +3940,7 @@ package classes.Scenes.Places.Farm
 			addButton(1, "Heart", jojoHeartTattoo, slot);
 			addButton(2, "Property Of", jojoPropertyTattoo, slot);
 			addButton(3, "Sissy Slut", jojoSissySlutTattoo, slot);
-			if (player.hasCock() && slot == 2) addButton(4, "Cock Here", jojoCockGoesHereTattoo, slot);
+			if (player.hasCock() && slot === 2) addButton(4, "Cock Here", jojoCockGoesHereTattoo, slot);
 			if (player.hasVagina()) addButton(5, "Mommy's Boy", jojoMommysBoyTattoo, slot);
 
 			addButton(14, "Back", jojoBrandSlotSelect);
@@ -3958,8 +3958,8 @@ package classes.Scenes.Places.Farm
 			addButton(2, "Swallow", bimboSophieSwallowTattoo, slot);
 			addButton(3, "Property Of", bimboSophiePropertyOfTattoo, slot);
 			addButton(4, "Breeding Bitch", bimboSophieBreedingBitchTattoo, slot);
-			if (slot == 3) addButton(5, "Wide Load", bimboSophieWideLoadTattoo, slot);
-			if (player.hasCock() && slot == 2) addButton(6, "Cock Goes Here", bimboSophieCockGoesHereTattoo, slot);
+			if (slot === 3) addButton(5, "Wide Load", bimboSophieWideLoadTattoo, slot);
+			if (player.hasCock() && slot === 2) addButton(6, "Cock Goes Here", bimboSophieCockGoesHereTattoo, slot);
 
 			addButton(14, "Back", bimboSophieSlotSelect);
 		}
@@ -3975,7 +3975,7 @@ package classes.Scenes.Places.Farm
 			addButton(1, "Heart", vapulaHeartTattoo, slot);
 			addButton(2, "Property Of", vapulaPropertyOfTattoo, slot);
 			addButton(3, "Cum Addict", vapulaCumAddictTattoo, slot);
-			if (slot == 2 || slot == 3) addButton(4, "Buttslut", vapulaButtslutTattoo, slot);
+			if (slot === 2 || slot === 3) addButton(4, "Buttslut", vapulaButtslutTattoo, slot);
 			if (!player.hasCock()) addButton(5, "Dildo Polisher", vapulaDildoPolisherTattoo, slot);
 
 			addButton(14, "Back", vapulaSlotSelect);
@@ -3993,7 +3993,7 @@ package classes.Scenes.Places.Farm
 			addButton(2, "Property Of", kellyPropertyOfTattoo, slot);
 			addButton(3, "No.1 Filly", kellyNo1FillyTattoo, slot);
 			if (silly()) addButton(4, "Dick Won", kellyDickWonTattoo, slot);
-			if (slot == 1) addButton(5, "Horseshoe", kellyHorseshoeTattoo, slot);
+			if (slot === 1) addButton(5, "Horseshoe", kellyHorseshoeTattoo, slot);
 
 			addButton(14, "Back", kellySlotSelect);
 		}
@@ -4010,8 +4010,8 @@ package classes.Scenes.Places.Farm
 			addButton(2, "Butteryfly", smallMilkyButterflyTattoo, slot);
 			addButton(3, "Property Of", smallMilkyPropertyOfTattoo, slot);
 			addButton(4, "Bath Toy", smallMilkyBathToyTattoo, slot);
-			if (slot == 0) addButton(5, "Mega Milk", smallMilkyMegaMilkTattoo, slot);
-			if (slot == 0 && player.hasCock()) addButton(6, "Cock Cozy", smallMilkyCockCozyTattoo, slot);
+			if (slot === 0) addButton(5, "Mega Milk", smallMilkyMegaMilkTattoo, slot);
+			if (slot === 0 && player.hasCock()) addButton(6, "Cock Cozy", smallMilkyCockCozyTattoo, slot);
 
 			addButton(14, "Back", smallMilkySlotSelect);
 		}
@@ -4027,8 +4027,8 @@ package classes.Scenes.Places.Farm
 			addButton(1, "Heart", bigMilkyHeartTattoo, slot);
 			addButton(2, "Property Of", bigMilkyPropertyOfTattoo, slot);
 			addButton(3, "Bath Toy", bigMilkyBathToyTattoo, slot);
-			if (slot == 0) addButton(4, "Mega Milk", bigMilkyMegaMilkTattoo, slot);
-			if (slot == 0 && player.hasCock()) addButton(5, "Cock Cozy", bigMilkyCockCozyTattoo, slot);
+			if (slot === 0) addButton(4, "Mega Milk", bigMilkyMegaMilkTattoo, slot);
+			if (slot === 0 && player.hasCock()) addButton(5, "Cock Cozy", bigMilkyCockCozyTattoo, slot);
 
 			addButton(14, "Back", bigMilkySlotSelect);
 		}
@@ -4277,26 +4277,26 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "A tribal tattoo, all snaking, erotic lines, across her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				collarboneIntro();
 				outputText("\n\n“<i>You’ve got skilled fingers, [master],</i>” she says, touching what you’ve drawn admiringly. “<i>Although guess I already knew that.</i>”");
 				tText += "collarbone.";
 				flags[kFLAGS.WHITNEY_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				shouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.WHITNEY_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				lowerbackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.WHITNEY_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				buttIntro();
 				tText += "butt.";
@@ -4312,26 +4312,26 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "A tribal tattoo, all snaking, erotic lines, across her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				amilyCollarboneIntro();
 				outputText("\n\n“<i>Does this make me more beautiful to you, [master]?</i>” she says, touching what you’ve drawn admiringly. “<i>If so... it’s exactly what I wanted.</i>”");
 				tText += "collarbone.";
 				flags[kFLAGS.AMILY_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				amilyShouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.AMILY_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				amilyLowerBackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.AMILY_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				amilyButtIntro();
 				tText += "butt.";
@@ -4347,25 +4347,25 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "A tribal tattoo, all snaking, erotic lines, across his ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				jojoCollarboneIntro();
 				tText += "collarbone.";
 				flags[kFLAGS.JOJO_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				jojoShouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.JOJO_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				jojoLowerbackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.JOJO_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				jojoButtIntro();
 				tText += "butt.";
@@ -4381,7 +4381,7 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "A tribal tattoo, all snaking, erotic lines, across her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				bimboSophieCollarboneIntro();
 				outputText("\n\n“<i>Woah,</i>” she says, awed at your drawing. “<i>You are sooooo artsy [name], that’s beautiful! You’ll like do more on me, right?</i>” Laughing, you tell her maybe, if she behaves well for Mistress Whitney and lays plenty of eggs for you. An expression of deepest determination emerges on the harpy’s beautiful features.");
@@ -4390,19 +4390,19 @@ package classes.Scenes.Places.Farm
 				tText += "collarbone.";
 				flags[kFLAGS.SOPHIE_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				bimboSophieShouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.SOPHIE_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				bimboSophieLowerBackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.SOPHIE_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				bimboSophieButtIntro();
 				tText += "butt.";
@@ -4418,26 +4418,26 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "A tribal tattoo, all snaking, erotic lines, across her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				vapulaCollarboneIntro();
 				outputText("\n\n“<i>How gauche,</i>” she yawns after you’re done. “<i>I might have to start wearing clothes now.</i>” You can tell by the grin curling her lip and the way she touches the design she’s quietly pleased with it, though.");
 				tText += "collarbone.";
 				flags[kFLAGS.VAPULA_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				vapulaShouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.VAPULA_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				vapulaLowerBackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.VAPULA_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				vapulaButtIntro();
 				tText += "butt.";
@@ -4453,26 +4453,26 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "A tribal tattoo, all snaking, erotic lines, across her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				kellyCollarboneIntro();
 				outputText("“<i>That’s- that’s actually really pretty, [master]!</i>” Kelly says when you’re done, looking down with delight. “<i>Thank you!</i>”");
 				tText += "collarbone.";
 				flags[kFLAGS.KELLY_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				kellyShouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.KELLY_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				kellyLowerBackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.KELLY_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				kellyButtIntro();
 				tText += "butt.";
@@ -4488,14 +4488,14 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "A tribal tattoo, all snaking, erotic lines, across her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				smallMilkyCollarboneIntro();
 				outputText("“<i>Oh hey, that’s quite pretty.</i>” [bathgirlName] smiles down at what you’ve drawn as you withdraw the pen. “<i>Thanks, [name]!</i>” You kiss her fondly on the forehead and send her on her way.");
 				tText += "collarbone.";
 				flags[kFLAGS.MILKY_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				smallMilkyShouldersIntro();
 				outputText("\n\n“<i>So, uh...</i>” she says when you’re done. “<i>What did you do?</i>” Something much better than a butterfly you say, grinning as you touch the permanent marking before turning to go stow the branding gear away.");
@@ -4504,7 +4504,7 @@ package classes.Scenes.Places.Farm
 				tText += "shoulders.";
 				flags[kFLAGS.MILKY_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				smallMilkyLowerBackIntro();
 				outputText("\n\n“<i>So, uh...</i>” she says when you’re done. “<i>What did you do?</i>” Something much better than a butterfly you say, grinning as you touch the permanent marking before putting her down to go stow the branding gear away.");
@@ -4513,7 +4513,7 @@ package classes.Scenes.Places.Farm
 				tText += "lower back.";
 				flags[kFLAGS.MILKY_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				smallMilkyButtIntro();
 				outputText("\n\n“<i>So, uh...</i>” she says when you’re done. “<i>What did you do?</i>” Something much better than a butterfly you say, grinning as you touch the permanent marking before putting her down to go stow the branding gear away.");
@@ -4532,25 +4532,25 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "A tribal tattoo, all snaking, erotic lines, across her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				bigMilkyCollarboneIntro();
 				tText += "collarbone.";
 				flags[kFLAGS.MILKY_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				bigMilkyShouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.MILKY_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				bigMilkyLowerBackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.MILKY_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				bigMilkyButtIntro();
 				tText += "butt.";
@@ -4566,25 +4566,25 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "A plump, red love heart tattoo on her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				bigMilkyCollarboneIntro();
 				tText += "collarbone.";
 				flags[kFLAGS.MILKY_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				bigMilkyShouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.MILKY_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				bigMilkyLowerBackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.MILKY_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				bigMilkyButtIntro();
 				tText += "butt.";
@@ -4600,25 +4600,25 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "“Property of [Name]” tattooed across her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				bigMilkyCollarboneIntro();
 				tText += "collarbone.";
 				flags[kFLAGS.MILKY_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				bigMilkyShouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.MILKY_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				bigMilkyLowerBackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.MILKY_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				bigMilkyButtIntro();
 				tText += "butt.";
@@ -4634,25 +4634,25 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "“Bath Toy” tattooed across her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				bigMilkyCollarboneIntro();
 				tText += "collarbone.";
 				flags[kFLAGS.MILKY_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				bigMilkyShouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.MILKY_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				bigMilkyLowerBackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.MILKY_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				bigMilkyButtIntro();
 				tText += "butt.";
@@ -4693,26 +4693,26 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "A plump, red love heart tattoo on her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				collarboneIntro();
 				outputText("\n\n“<i>You’ve got skilled fingers, [master],</i>” she says, touching what you’ve drawn admiringly. “<i>Although guess I already knew that.</i>”");
 				tText += "collarbone.";
 				flags[kFLAGS.WHITNEY_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				shouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.WHITNEY_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				lowerbackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.WHITNEY_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				buttIntro();
 				tText += "butt.";
@@ -4728,26 +4728,26 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "A plump, red love heart tattoo on her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				amilyCollarboneIntro();
 				outputText("\n\n“<i>Does this make me more beautiful to you, [master]?</i>” she says, touching what you’ve drawn admiringly. “<i>If so... it’s exactly what I wanted.</i>”");
 				tText += "collarbone.";
 				flags[kFLAGS.AMILY_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				amilyShouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.AMILY_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				amilyLowerBackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.AMILY_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				amilyButtIntro();
 				tText += "butt.";
@@ -4763,25 +4763,25 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "A plump, red love heart tattoo on his ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				jojoCollarboneIntro();
 				tText += "collarbone.";
 				flags[kFLAGS.JOJO_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				jojoShouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.JOJO_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				jojoLowerbackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.JOJO_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				jojoButtIntro();
 				tText += "butt.";
@@ -4797,7 +4797,7 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "A plump, red love heart tattoo on her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				bimboSophieCollarboneIntro();
 				outputText("\n\n“<i>Woah,</i>” she says, awed at your drawing. “<i>You are sooooo artsy [name], that’s beautiful! You’ll like do more on me, right?</i>” Laughing, you tell her maybe, if she behaves well for Mistress Whitney and lays plenty of eggs for you. An expression of deepest determination emerges on the harpy’s beautiful features.");
@@ -4806,19 +4806,19 @@ package classes.Scenes.Places.Farm
 				tText += "collarbone.";
 				flags[kFLAGS.SOPHIE_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				bimboSophieShouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.SOPHIE_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				bimboSophieLowerBackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.SOPHIE_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				bimboSophieButtIntro();
 				tText += "butt.";
@@ -4834,26 +4834,26 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "A plump, red love heart tattoo on her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				vapulaCollarboneIntro();
 				outputText("\n\n“<i>How gauche,</i>” she yawns after you’re done. “<i>I might have to start wearing clothes now.</i>” You can tell by the grin curling her lip and the way she touches the design she’s quietly pleased with it, though.");
 				tText += "collarbone.";
 				flags[kFLAGS.VAPULA_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				vapulaShouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.VAPULA_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				vapulaLowerBackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.VAPULA_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				vapulaButtIntro();
 				tText += "butt.";
@@ -4869,26 +4869,26 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "A plump, red love heart tattoo on her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				kellyCollarboneIntro();
 				outputText("“<i>That’s- that’s actually really pretty, [master]!</i>” Kelly says when you’re done, looking down with delight. “<i>Thank you!</i>”");
 				tText += "collarbone.";
 				flags[kFLAGS.KELLY_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				kellyShouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.KELLY_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				kellyLowerBackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.KELLY_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				kellyButtIntro();
 				tText += "butt.";
@@ -4904,14 +4904,14 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "A plump, red love heart tattoo on her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				smallMilkyCollarboneIntro();
 				outputText("“<i>Oh hey, that’s quite pretty.</i>” [bathgirlName] smiles down at what you’ve drawn as you withdraw the pen. “<i>Thanks, [name]!</i>” You kiss her fondly on the forehead and send her on her way.");
 				tText += "collarbone.";
 				flags[kFLAGS.MILKY_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				smallMilkyShouldersIntro();
 				outputText("\n\n“<i>So, uh...</i>” she says when you’re done. “<i>What did you do?</i>” Something much better than a butterfly you say, grinning as you touch the permanent marking before turning to go stow the branding gear away.");
@@ -4920,7 +4920,7 @@ package classes.Scenes.Places.Farm
 				tText += "shoulders.";
 				flags[kFLAGS.MILKY_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				smallMilkyLowerBackIntro();
 				outputText("\n\n“<i>So, uh...</i>” she says when you’re done. “<i>What did you do?</i>” Something much better than a butterfly you say, grinning as you touch the permanent marking before putting her down to go stow the branding gear away.");
@@ -4929,7 +4929,7 @@ package classes.Scenes.Places.Farm
 				tText += "lower back.";
 				flags[kFLAGS.MILKY_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				smallMilkyButtIntro();
 				outputText("\n\n“<i>So, uh...</i>” she says when you’re done. “<i>What did you do?</i>” Something much better than a butterfly you say, grinning as you touch the permanent marking before putting her down to go stow the branding gear away.");
@@ -4948,14 +4948,14 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "“Property of [Name]” tattooed across her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				smallMilkyCollarboneIntro();
 				outputText("“<i>[name],</i>” [bathgirlName] groans with laughter, deep embarrassment coloring her tan cheeks as she looks down at what you’ve written. “<i>Everyone can see that!</i>” That’s the whole point you reply, with a rakish grin. She sighs in exasperation as you kiss her fondly on the forehead and take your leave.");
 				tText += "collarbone.";
 				flags[kFLAGS.MILKY_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				smallMilkyShouldersIntro();
 				outputText("\n\n“<i>So, uh...</i>” she says when you’re done. “<i>What did you do?</i>” Something much better than a butterfly you say, grinning as you touch the permanent marking before turning to go stow the branding gear away.");
@@ -4964,7 +4964,7 @@ package classes.Scenes.Places.Farm
 				tText += "shoulders.";
 				flags[kFLAGS.MILKY_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				smallMilkyLowerBackIntro();
 				outputText("\n\n“<i>So, uh...</i>” she says when you’re done. “<i>What did you do?</i>” Something much better than a butterfly you say, grinning as you touch the permanent marking before putting her down to go stow the branding gear away.");
@@ -4973,7 +4973,7 @@ package classes.Scenes.Places.Farm
 				tText += "lower back.";
 				flags[kFLAGS.MILKY_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				smallMilkyButtIntro();
 				outputText("\n\n“<i>So, uh...</i>” she says when you’re done. “<i>What did you do?</i>” Something much better than a butterfly you say, grinning as you touch the permanent marking before putting her down to go stow the branding gear away.");
@@ -4992,14 +4992,14 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "“Bath Toy” tattooed across her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				smallMilkyCollarboneIntro();
 				outputText("“<i>[name],</i>” [bathgirlName] groans with laughter, deep embarrassment coloring her tan cheeks as she looks down at what you’ve written. “<i>Everyone can see that!</i>” That’s the whole point you reply, with a rakish grin. She sighs in exasperation as you kiss her fondly on the forehead and take your leave.");
 				tText += "collarbone.";
 				flags[kFLAGS.MILKY_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				smallMilkyShouldersIntro();
 				outputText("\n\n“<i>So, uh...</i>” she says when you’re done. “<i>What did you do?</i>” Something much better than a butterfly you say, grinning as you touch the permanent marking before turning to go stow the branding gear away.");
@@ -5008,7 +5008,7 @@ package classes.Scenes.Places.Farm
 				tText += "shoulders.";
 				flags[kFLAGS.MILKY_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				smallMilkyLowerBackIntro();
 				outputText("\n\n“<i>So, uh...</i>” she says when you’re done. “<i>What did you do?</i>” Something much better than a butterfly you say, grinning as you touch the permanent marking before putting her down to go stow the branding gear away.");
@@ -5017,7 +5017,7 @@ package classes.Scenes.Places.Farm
 				tText += "lower back.";
 				flags[kFLAGS.MILKY_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				smallMilkyButtIntro();
 				outputText("\n\n“<i>So, uh...</i>” she says when you’re done. “<i>What did you do?</i>” Something much better than a butterfly you say, grinning as you touch the permanent marking before putting her down to go stow the branding gear away.");
@@ -5084,7 +5084,7 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "A butterfly, its four leaf-like wings in flight, tattooed across her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				smallMilkyCollarboneIntro();
 
@@ -5104,7 +5104,7 @@ package classes.Scenes.Places.Farm
 				tText += "collarbone.";
 				flags[kFLAGS.MILKY_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				smallMilkyShouldersIntro();
 
@@ -5124,7 +5124,7 @@ package classes.Scenes.Places.Farm
 				tText += "shoulders.";
 				flags[kFLAGS.MILKY_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				smallMilkyLowerBackIntro();
 
@@ -5144,7 +5144,7 @@ package classes.Scenes.Places.Farm
 				tText += "lower back.";
 				flags[kFLAGS.MILKY_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				smallMilkyButtIntro();
 
@@ -5186,26 +5186,26 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "“Property of [Name]” tattooed across her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				kellyCollarboneIntro();
 				outputText("\n\n“<i>Oh, [master],</i>” Kelly sighs with a mixture of exasperation and shameless lust when you’re done, looking at what you’ve permanently inscribed on her chest. “<i>Did you have to write it quite so large?</i>” You say in a tone of complete reasonableness that you tattoo things relative to the size of the truth behind them, to which she has no answer.");
 				tText += "collarbone.";
 				flags[kFLAGS.KELLY_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				kellyShouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.KELLY_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				kellyLowerBackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.KELLY_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				kellyButtIntro();
 				tText += "butt.";
@@ -5221,26 +5221,26 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "“#1 Filly” tattooed across her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				kellyCollarboneIntro();
 				outputText("\n\n“<i>Oh, [master],</i>” Kelly sighs with a mixture of exasperation and shameless lust when you’re done, looking at what you’ve permanently inscribed on her chest. “<i>Did you have to write it quite so large?</i>” You say in a tone of complete reasonableness that you tattoo things relative to the size of the truth behind them, to which she has no answer.");
 				tText += "collarbone.";
 				flags[kFLAGS.KELLY_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				kellyShouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.KELLY_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				kellyLowerBackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.KELLY_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				kellyButtIntro();
 				tText += "butt.";
@@ -5256,26 +5256,26 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "“I Fought the Dick And the Dick Won” tattooed in fine text across her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				kellyCollarboneIntro();
 				outputText("\n\n“<i>Oh, [master],</i>” Kelly sighs with a mixture of exasperation and shameless lust when you’re done, looking at what you’ve permanently inscribed on her chest. “<i>Did you have to write it quite so large?</i>” You say in a tone of complete reasonableness that you tattoo things relative to the size of the truth behind them, to which she has no answer.");
 				tText += "collarbone.";
 				flags[kFLAGS.KELLY_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				kellyShouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.KELLY_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				kellyLowerBackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.KELLY_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				kellyButtIntro();
 				tText += "butt.";
@@ -5292,26 +5292,26 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "“Property of [Name]” tattooed across her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				collarboneIntro();
 				outputText("\n\n“<i>As if I ever need reminding of that, [master],</i>” she says with an exasperated, flustered laugh, when she looks down at what is now inscribed for all to see on her chest.");
 				tText += "collarbone.";
 				flags[kFLAGS.WHITNEY_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				shouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.WHITNEY_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				lowerbackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.WHITNEY_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				buttIntro();
 				tText += "butt.";
@@ -5327,26 +5327,26 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "“Property of [Name]” tattooed across her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				amilyCollarboneIntro();
 				outputText("\n\n“<i>As if I ever need reminding of that, [master],</i>” she says with a delighted laugh when she looks down at what is now inscribed for all to see on her naked chest.");
 				tText += "collarbone.";
 				flags[kFLAGS.AMILY_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				amilyShouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.AMILY_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				amilyLowerBackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.AMILY_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				amilyButtIntro();
 				tText += "butt.";
@@ -5362,25 +5362,25 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "“Property of [Name]” tattooed across his ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				jojoCollarboneIntro();
 				tText += "collarbone.";
 				flags[kFLAGS.JOJO_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				jojoShouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.JOJO_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				jojoLowerbackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.JOJO_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				jojoButtIntro();
 				tText += "butt.";
@@ -5396,25 +5396,25 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "“Sissy Slut” tattooed across his ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				jojoCollarboneIntro();
 				tText += "collarbone.";
 				flags[kFLAGS.JOJO_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				jojoShouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.JOJO_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				jojoLowerbackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.JOJO_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				jojoButtIntro();
 				tText += "butt.";
@@ -5430,7 +5430,7 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "“Property of [Name]” tattooed across her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				bimboSophieCollarboneIntro();
 				outputText("\n\n“<i>F...</i>” she says, looking down and reading aloud. “<i>Fa...wait. Is that a p? P...pro...no wait, I am a silly! It’s an R. Ro...</i>”");
@@ -5439,19 +5439,19 @@ package classes.Scenes.Places.Farm
 				tText += "collarbone.";
 				flags[kFLAGS.SOPHIE_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				bimboSophieShouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.SOPHIE_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				bimboSophieLowerBackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.SOPHIE_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				bimboSophieButtIntro();
 				tText += "butt.";
@@ -5467,26 +5467,26 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "“Property of [Name]” tattooed across her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				vapulaCollarboneIntro();
 				outputText("\n\n“<i>Way to state the blindingly obvious, [master],</i>” she sighs with a roll of the eyes after she’s glanced down. You can tell by the grin curling her lip and the way she touches the words the slut is quietly pleased with it though.");
 				tText += "collarbone.";
 				flags[kFLAGS.VAPULA_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				vapulaShouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.VAPULA_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				vapulaLowerBackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.VAPULA_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				vapulaButtIntro();
 				tText += "butt.";
@@ -5502,26 +5502,26 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "“Cum Addict” tattooed across her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				vapulaCollarboneIntro();
 				outputText("\n\n“<i>Way to state the blindingly obvious, [master],</i>” she sighs with a roll of the eyes after she’s glanced down. You can tell by the grin curling her lip and the way she touches the words the slut is quietly pleased with it though.");
 				tText += "collarbone.";
 				flags[kFLAGS.VAPULA_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				vapulaShouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.VAPULA_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				vapulaLowerBackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.VAPULA_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				vapulaButtIntro();
 				tText += "butt.";
@@ -5549,26 +5549,26 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "“Dildo Polisher” tattooed across her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				vapulaCollarboneIntro();
 				outputText("\n\n“<i>Way to state the blindingly obvious, [master],</i>” she sighs with a roll of the eyes after she’s glanced down. You can tell by the grin curling her lip and the way she touches the words the slut is quietly pleased with it though.");
 				tText += "collarbone.";
 				flags[kFLAGS.VAPULA_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				vapulaShouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.VAPULA_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				vapulaLowerBackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.VAPULA_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				vapulaButtIntro();
 				tText += "butt.";
@@ -5584,7 +5584,7 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "A swallow with its tapering wings in flight across her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				bimboSophieCollarboneIntro();
 				outputText("\n\n“<i>Woah,</i>” she says, awed at your drawing. “<i>You are sooooo artsy [name], that’s beautiful! You’ll like do more on me, right?</i>” Laughing, you tell her maybe, if she behaves well for Mistress Whitney and lays plenty of eggs for you. An expression of deepest determination emerges on the harpy’s beautiful features.");
@@ -5593,19 +5593,19 @@ package classes.Scenes.Places.Farm
 				tText += "collarbone.";
 				flags[kFLAGS.SOPHIE_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				bimboSophieShouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.SOPHIE_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				bimboSophieLowerBackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.SOPHIE_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				bimboSophieButtIntro();
 				tText += "butt.";
@@ -5621,7 +5621,7 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "“Breeding Bitch” tattooed across her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				bimboSophieCollarboneIntro();
 				outputText("\n\n“<i>Woah,</i>” she says, awed at your drawing. “<i>You are sooooo artsy [name], that’s beautiful! You’ll like do more on me, right?</i>” Laughing, you tell her maybe, if she behaves well for Mistress Whitney and lays plenty of eggs for you. An expression of deepest determination emerges on the harpy’s beautiful features.");
@@ -5630,19 +5630,19 @@ package classes.Scenes.Places.Farm
 				tText += "collarbone.";
 				flags[kFLAGS.SOPHIE_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				bimboSophieShouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.SOPHIE_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				bimboSophieLowerBackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.SOPHIE_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				bimboSophieButtIntro();
 				tText += "butt.";
@@ -5683,26 +5683,26 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "“No. 1 Bitch” tattooed across her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				collarboneIntro();
 				outputText("\n\n“<i>As if I ever need reminding of that, [master],</i>” she says with an exasperated, flustered laugh, when she looks down at what is now inscribed for all to see on her chest.");
 				tText += "collarbone.";
 				flags[kFLAGS.WHITNEY_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				shouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.WHITNEY_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				lowerbackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.WHITNEY_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				buttIntro();
 				tText += "butt.";
@@ -5718,26 +5718,26 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "“Breeding Bitch” tattooed across her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				amilyCollarboneIntro();
 				outputText("\n\n“<i>As if I ever need reminding of that, [master],</i>” she says with a delighted laugh when she looks down at what is now inscribed for all to see on her naked chest.");
 				tText += "collarbone.";
 				flags[kFLAGS.AMILY_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				amilyShouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.AMILY_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				amilyLowerBackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.AMILY_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				amilyButtIntro();
 				tText += "butt.";
@@ -5754,26 +5754,26 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "“Champion Cocksucker” tattooed across her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				collarboneIntro();
 				outputText("\n\n“<i>As if I ever need reminding of that, [master],</i>” she says with an exasperated, flustered laugh, when she looks down at what is now inscribed for all to see on her chest.");
 				tText += "collarbone.";
 				flags[kFLAGS.WHITNEY_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				shouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.WHITNEY_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				lowerbackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.WHITNEY_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				buttIntro();
 				tText += "butt.";
@@ -5789,26 +5789,26 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "“Cock Goes Here” tattooed across her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				amilyCollarboneIntro();
 				outputText("\n\n“<i>As if I ever need reminding of that, [master],</i>” she says with a delighted laugh when she looks down at what is now inscribed for all to see on her naked chest.");
 				tText += "collarbone.";
 				flags[kFLAGS.AMILY_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				amilyShouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.AMILY_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				amilyLowerBackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.AMILY_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				amilyButtIntro();
 				tText += "butt.";
@@ -5824,25 +5824,25 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "“Cock Goes Here” tattooed across his ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				jojoCollarboneIntro();
 				tText += "collarbone.";
 				flags[kFLAGS.JOJO_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				jojoShouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.JOJO_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				jojoLowerbackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.JOJO_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				jojoButtIntro();
 				tText += "butt.";
@@ -5858,26 +5858,26 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "“Mommy’s Girl” tattooed across her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				amilyCollarboneIntro();
 				outputText("\n\n“<i>As if I ever need reminding of that, [master],</i>” she says with a delighted laugh when she looks down at what is now inscribed for all to see on her naked chest.");
 				tText += "collarbone.";
 				flags[kFLAGS.AMILY_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				amilyShouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.AMILY_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				amilyLowerBackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.AMILY_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				amilyButtIntro();
 				tText += "butt.";
@@ -5893,25 +5893,25 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "“Mommy’s Boy” tattooed across his ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				jojoCollarboneIntro();
 				tText += "collarbone.";
 				flags[kFLAGS.JOJO_TATTOO_COLLARBONE] = tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				jojoShouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.JOJO_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				jojoLowerbackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.JOJO_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				jojoButtIntro();
 				tText += "butt.";
@@ -5928,26 +5928,26 @@ package classes.Scenes.Places.Farm
 
 			var tText:String = "“Champion Pussylicker” tattooed across her ";
 
-			if (slot == 0)
+			if (slot === 0)
 			{
 				collarboneIntro();
 				outputText("\n\n“<i>As if I ever need reminding of that, [master],</i>” she says with an exasperated, flustered laugh, when she looks down at what is now inscribed for all to see on her chest.");
 				tText += "collarbone.";
 				flags[kFLAGS.WHITNEY_TATTOO_COLLARBONE] += tText;
 			}
-			else if (slot == 1)
+			else if (slot === 1)
 			{
 				shouldersIntro();
 				tText += "shoulders.";
 				flags[kFLAGS.WHITNEY_TATTOO_SHOULDERS] = tText;
 			}
-			else if (slot == 2)
+			else if (slot === 2)
 			{
 				lowerbackIntro();
 				tText += "lower back.";
 				flags[kFLAGS.WHITNEY_TATTOO_LOWERBACK] = tText;
 			}
-			else if (slot == 3)
+			else if (slot === 3)
 			{
 				buttIntro();
 				tText += "butt.";
@@ -6017,13 +6017,13 @@ package classes.Scenes.Places.Farm
 
 		public function whitneyFullTribalTats():Boolean
 		{
-			if (numWhitneyTribalTats() == 4) return true;
+			if (numWhitneyTribalTats() === 4) return true;
 			return false;
 		}
 
 		public function amilyFullTribalTats():Boolean
 		{
-			if (numAmilyTribalTats() == 4) return true;
+			if (numAmilyTribalTats() === 4) return true;
 			return false;
 		}
 
@@ -6051,7 +6051,7 @@ package classes.Scenes.Places.Farm
 
 		public function jojoFullTribalTats():Boolean
 		{
-			if (numJojoTribalTats() == 4) return true;
+			if (numJojoTribalTats() === 4) return true;
 			return false;
 		}
 
@@ -6079,7 +6079,7 @@ package classes.Scenes.Places.Farm
 
 		public function sophieFullTribalTats():Boolean
 		{
-			if (numSophieTribalTats() == 4) return true;
+			if (numSophieTribalTats() === 4) return true;
 			return false;
 		}
 
@@ -6107,7 +6107,7 @@ package classes.Scenes.Places.Farm
 
 		public function vapulaFullTribalTats():Boolean
 		{
-			if (numVapulaTribalTats() == 4) return true;
+			if (numVapulaTribalTats() === 4) return true;
 			return false;
 		}
 
@@ -6135,7 +6135,7 @@ package classes.Scenes.Places.Farm
 
 		public function kellyFullTribalTats():Boolean
 		{
-			if (numKellyTribalTats() == 4) return true;
+			if (numKellyTribalTats() === 4) return true;
 			return false;
 		}
 
@@ -6163,7 +6163,7 @@ package classes.Scenes.Places.Farm
 
 		public function milkyFullTribalTats():Boolean
 		{
-			if (numMilkyTribalTats() == 4) return true;
+			if (numMilkyTribalTats() === 4) return true;
 			return false;
 		}
 
@@ -6171,12 +6171,12 @@ package classes.Scenes.Places.Farm
 		{
 			var doFunctor:Function = null;
 
-			if (flags[kFLAGS.FARM_UPGRADES_ORGYROOM] == 0 && flags[kFLAGS.QUEUE_ORGYROOM_UPGRADE] == 0 && !whitneyDom())
+			if (flags[kFLAGS.FARM_UPGRADES_ORGYROOM] === 0 && flags[kFLAGS.QUEUE_ORGYROOM_UPGRADE] === 0 && !whitneyDom())
 			{
 				doFunctor = wantOrgyRoom;
 			}
 
-			if (flags[kFLAGS.FARM_UPGRADES_ORGYROOM] == 1)
+			if (flags[kFLAGS.FARM_UPGRADES_ORGYROOM] === 1)
 			{
 				if (whitneyDom())
 				{
@@ -6188,7 +6188,7 @@ package classes.Scenes.Places.Farm
 				}
 			}
 
-			if (doFunctor != null) addButton(4, "Massage", doFunctor);
+			if (doFunctor !== null) addButton(4, "Massage", doFunctor);
 		}
 
 		private function wantOrgyRoom():void
@@ -6333,7 +6333,7 @@ package classes.Scenes.Places.Farm
 			if (player.isBiped())
 			{
 				outputText("\n\nShe spends a short time with your calves before encapsulating a [foot] in her oily hands.");
-				if (!(player.lowerBody.type == LowerBody.HOOFED || player.lowerBody.type == LowerBody.NAGA || player.lowerBody.type == LowerBody.GOO || player.lowerBody.type == LowerBody.PONY))
+				if (!(player.lowerBody.type === LowerBody.HOOFED || player.lowerBody.type === LowerBody.NAGA || player.lowerBody.type === LowerBody.GOO || player.lowerBody.type === LowerBody.PONY))
 				{
 					outputText(" Your mouth opens as a twinge of pure pleasure veins up your [leg] as she massages the soft arch of the sole, making your");
 					if (player.hasCock()) outputText(" cock thicken");
@@ -6342,7 +6342,7 @@ package classes.Scenes.Places.Farm
 					outputText(".");
 
 					outputText(" There must be a direct nerve link leading right from the bottom of your body up to your groin because my word, that really shouldn’t feel as good as it does. She swirls her thumbs across the rougher pads of your feet, dipping her warm fingers in and around the valleys of your");
-					if (player.lowerBody.type == LowerBody.DEMONIC_CLAWS || player.lowerBody.type == LowerBody.LIZARD || player.lowerBody.type == LowerBody.HARPY || player.lowerBody.type == LowerBody.DRAGON) outputText(" claws");
+					if (player.lowerBody.type === LowerBody.DEMONIC_CLAWS || player.lowerBody.type === LowerBody.LIZARD || player.lowerBody.type === LowerBody.HARPY || player.lowerBody.type === LowerBody.DRAGON) outputText(" claws");
 					else outputText(" toes")
 					outputText(", before returning deliberately to stroke at your arch, indulging that nervous link until you are deep in the unexpected bliss of it... before slowly releasing, leaving you to wallow delightfully in the knowledge that that same slow, delicious attention is about to be lavished on your other [foot].")
 				}
@@ -6375,7 +6375,7 @@ package classes.Scenes.Places.Farm
 				outputText("\n\n“<i>It’s just from watching you, [master],</i>” she replies quietly, as relaxing sensation inundates your lower half. “<i>When you sl- move around, you can see where the stress lands and builds. You may not have any hinges down here, but that don’t mean you don’t have the same needs as animals that do.</i>”");
 
 				outputText("\n\n“<i>You watch me a lot, then?</i>” Silence from behind you as the questing, rubbing oil moves down almost to your tip.");
-				if (player.tongue.type == Tongue.SNAKE) outputText(" You grin, flicking your forked tongue out to smell her arousal.");
+				if (player.tongue.type === Tongue.SNAKE) outputText(" You grin, flicking your forked tongue out to smell her arousal.");
 				outputText(" “<i>I imagine watching your [master] move around is almost a masochistic experience for you. Something so alien and unnerving now linked forever with pleasure and obedience. Is that how it is? You can’t stop staring at my beautiful, deadly form because it’s almost like a slutty punishment for you?</i>”");
 
 				outputText("\n\n“<i>S-something like that,</i>” Whitney whispers, shakily. You smile serenely as a warm, oily hand grasps your reptilian tip, moving up and down in an almost masturbatory rhythm. It took almost as long again for her to rub oil into your coils as she spent on the rest of her body, but it was well worth it.");
@@ -6388,7 +6388,7 @@ package classes.Scenes.Places.Farm
 			else outputText(" You play with the idea of ‘rewarding’ her but... damn. She’s actually managed to relax you <i>too</i> much. You thank her regally, redress, and head out the door, enjoying the lightness of step and self-control which thrums through you.");
 
 			menu();
-			if (player.lust >= 33 && (player.hasCock() && player.cockThatFits(whitneyVagCapacity() * 1.33) != -1 || player.hasVagina()))
+			if (player.lust >= 33 && (player.hasCock() && player.cockThatFits(whitneyVagCapacity() * 1.33) !== -1 || player.hasVagina()))
 			{
 				addButton(0, "Happy Ending", orgyRoomSubMassageHappyEnding);
 				addButton(1, "Leave", camp.returnToCampUseOneHour);
@@ -6422,14 +6422,14 @@ package classes.Scenes.Places.Farm
 
 			outputText("\n\nYou sigh as you sink further and further into the tub, the hot water and air wrapping itself around your limbs and groin, a virtual second massage for your ridiculously pampered form. If you could feel more at peace with the world, you’d be horizontal. That said... you sit and watch through heavily lidded eyes the deeply enjoyable sight of Whitney following suit on the opposite side, sinking her slim, brown body into the water, gasping slightly as her tidy, pretty pussy disappears beneath the roiling surface. Even in the heavy humidity the nipples on her prim, perky breasts remain rock hard, pointing at you accusingly, and blood pumps insistently to your groin, leaving you feeling light-headed in the heat.");
 
-			if (player.hasCock() && player.cockThatFits(whitneyVagCapacity() * 1.33) != -1 && player.hasVagina())
+			if (player.hasCock() && player.cockThatFits(whitneyVagCapacity() * 1.33) !== -1 && player.hasVagina())
 			{
 				outputText(" You take a long moment to consider which of your sexes you will satisfy yourself with.");
 			}
 
 			//[Male][Female]/[Next]
 			menu();
-			if (player.cockThatFits(whitneyVagCapacity() * 1.33) != -1) addButton(0, "Male", subHappyEndingMale);
+			if (player.cockThatFits(whitneyVagCapacity() * 1.33) !== -1) addButton(0, "Male", subHappyEndingMale);
 			if (player.hasVagina()) addButton(1, "Female", subHappyEndingFemale);
 		}
 
@@ -6439,7 +6439,7 @@ package classes.Scenes.Places.Farm
 			var cockThatFits:int = player.cockThatFits(whitneyVagCapacity() * 1.33) + 1;
 			var hasBiggerCock:Boolean = false;
 
-			if (player.cockArea(cockThatFits -1) != player.biggestCockArea()) hasBiggerCock = true;
+			if (player.cockArea(cockThatFits -1) !== player.biggestCockArea()) hasBiggerCock = true;
 
 			outputText("You drift across and envelope her in your body, your [chest] pushing into the soft suppleness of her small breasts. Feeling your urge but not overcome by it in your relaxed state you instead take time to enjoy the give and take of your slave’s body, her flat stomach planing over yours, the feeling of her hard nipples against your chest, her long, "+ ((whitneyDefurred()) ? "smooth" : "downy") +" legs tangling with yours in the slow motion of the water.  Her breath catches in her chest, panting and trembling there as you push your hand between her thighs, sinking your fingers into her tight, welcoming hole. ");
 
@@ -6447,7 +6447,7 @@ package classes.Scenes.Places.Farm
 			if (hasBiggerCock) outputText(" Your [cock biggest], so used to getting preferential treatment, bulges in agitation and the lizard impulse to fuck her wide and silly with it saturates the back of your mind; but you know it makes much more sense to keep her nice and tight rather than turn her into another blown out whore in a single bull-in-a-china-shop fuckfest. And anyway... as you test her with your [cock " + cockThatFits + "], you slide your [cock biggest] up her abdomen, enjoying the smoothness of her flesh on one side and the sloshing hot foam on the other. Whitney hums with pleasure and clasps the thick cock pointing towards her breasts in her hands, slowly rubbing it up and down as you prepare to penetrate her.}");
 
 			// First time:
-			if (flags[kFLAGS.MASSAGE_HAPPY_ENDINGS] == 0)
+			if (flags[kFLAGS.MASSAGE_HAPPY_ENDINGS] === 0)
 			{
 				outputText("\n\n“<i>Been a while, I take it?</i>” you say softly, as you line your [cock " + cockThatFits +"] up to her pink slit, sighing at its soft, delicious resistance.");
 
@@ -6493,7 +6493,7 @@ package classes.Scenes.Places.Farm
 			if (player.hasCock()) outputText("\n\nYour [cock biggest], so used to getting the premium treatment, bulges in agitation and the male impulse to fuck her wide and silly with it saturates the back of your mind - but in this steamy, leisured moment you are much more interested in indulging your female side. And anyway... as you push your [vagina] into her, you slide your [cock biggest] up her abdomen, enjoying the smoothness of her flesh on one side and the sloshing hot foam on the other. Whitney hums with pleasure and clasps the thick cock pointing towards her breasts in her hands, slowly rubbing it up and down as you prepare to scissor her.");
 
 			// First time:
-			if (flags[kFLAGS.MASSAGE_HAPPY_ENDINGS] == 0)
+			if (flags[kFLAGS.MASSAGE_HAPPY_ENDINGS] === 0)
 			{
 				outputText("\n\n“<i>Been a while, I take it?</i>” you say softly, sighing at the soft, delicious resistance of her puffy vulva against your [clit].");
 

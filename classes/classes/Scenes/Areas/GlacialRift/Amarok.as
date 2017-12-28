@@ -50,7 +50,7 @@ package classes.Scenes.Areas.GlacialRift
 			else {
 				//Damageeee + stun! Reference to the legend of it slapping a kid with its tail, except minus the bone breaking.
 				outputText("The hit sends you stumbling back");
-				if (player.findPerk(PerkLib.Resolute) <= 0 && rand(2) == 0) 
+				if (player.findPerk(PerkLib.Resolute) <= 0 && rand(2) === 0) 
 				{
 					outputText(", stunning you");
 					player.createStatusEffect(StatusEffects.Stunned, 0, 0, 0, 0);

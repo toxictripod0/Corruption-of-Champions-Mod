@@ -108,7 +108,7 @@ package classes.Scenes.Dungeons.Factory
 			clearOutput();
 			outputText("Advancing slowly, the succubus gives you a hungry look.  She extends a hand, allowing her fingers to lengthen into razor-sharp claws.  With a single expert slash, she cuts away everything holding together your " + player.armorName + ".  They fall into a discarded pile, already forgotten as your ");
 			//[genderless]
-			if (player.gender == 0) {
+			if (player.gender === 0) {
 				outputText("entire body blushes read before the sexy seductress.  She looks at you, frowning as she murmurs, \"<i>Now this just won't do.  You look more like a " + player.mf("boy", "girl") + " to me, so why don't I make the plumbing match the exterior?</i>\"\n\n");  
 				outputText("Her palm caresses your crotch, stoking the warmth inside you until it blazes white-hot with new sensation.  Your skin ripples and parts, ");
 				if (player.biggestTitSize() <= 1) {
@@ -128,7 +128,7 @@ package classes.Scenes.Dungeons.Factory
 				outputText("\n\n\"<i>Much better,</i>\" the demon coos, licking her lips as your ");
 			}
 			//[male]
-			if (player.gender == 1) {
+			if (player.gender === 1) {
 				//Multispoooooo
 				if (player.cockTotal() > 1) {
 					outputText(player.multiCockDescriptLight() + " pulsate, straining for just a touch of the succubus' hand.  She paces around you, giggling and toying with you as your " + player.multiCockDescript() + " seem to follow her, twitching and thickening any time she takes a step closer.\n\n");
@@ -181,7 +181,7 @@ package classes.Scenes.Dungeons.Factory
 				}
 			}
 			//[female]
-			else if (player.gender == 2) {
+			else if (player.gender === 2) {
 				outputText(player.vaginaDescript(0) + " grows wet and ready, practically juicing itself as the demoness' hand caresses your inner thigh.  She teases, \"<i>Oh my! You're so wet and ready and I haven't even touched your moist little cum-receptacle.  You're a slut aren't you?  Who else would be so turned on by the idea of cumming until all your humanity drips out?</i>\"\n\n");
 				outputText("The words make you blush hard, shaming you and stoking the growing fire between your " + player.legs() + ".  You know two things for certain: she's right and you're more turned on that ever.  You don't resist as the demoness easily lifts you up, setting you down on a table with your " + player.legs() + " spread.  \"<i>There,</i>\" she comments, \"<i>now your juicy snatch is on display, just like you've always wanted.</i>\"\n\n");
 				outputText("She effortlessly swings her lissome legs onto the table as she pulls herself up, mounting you as a man might.  You can feel waves of heat rolling off her sex, bathing your own slit in her warmth.  ");
@@ -233,8 +233,8 @@ package classes.Scenes.Dungeons.Factory
 		
 		private function doBadEndDemon():void {
 			clearOutput();
-			if (player.gender == 1) outputText("As a demon, you rapidly moved up the ranks, eventually taking command of the factory and its inhabitants.  The previous commander was reduced to a willing cock-sleeve, ever-eager to obey your slightest order.  By the time the next year has come around, you've managed to earn the coveted honor of collecting the next champion.");
-			else if (player.gender == 2) outputText("Now a full-fledged demon, you leave the factory, setting off on your own.  Over the next year you capture many foolish mortals, and even convince more than a few of them to give up their souls.  With your rapid gain in power, it's easy to rise in the demonic ranks, and in no time flat your power far exceeds that of the succubus that 'turned' you.  You live in luxury, surrounded by a harem of slaves, waiting in your camp for the next victim to step through...");
+			if (player.gender === 1) outputText("As a demon, you rapidly moved up the ranks, eventually taking command of the factory and its inhabitants.  The previous commander was reduced to a willing cock-sleeve, ever-eager to obey your slightest order.  By the time the next year has come around, you've managed to earn the coveted honor of collecting the next champion.");
+			else if (player.gender === 2) outputText("Now a full-fledged demon, you leave the factory, setting off on your own.  Over the next year you capture many foolish mortals, and even convince more than a few of them to give up their souls.  With your rapid gain in power, it's easy to rise in the demonic ranks, and in no time flat your power far exceeds that of the succubus that 'turned' you.  You live in luxury, surrounded by a harem of slaves, waiting in your camp for the next victim to step through...");
 			else outputText("As a demon, you rapidly moved up the ranks, eventually taking command of the factory and its inhabitants.  The previous commander was reduced to a willing cock-sleeve, ever-eager to obey your slightest order.  By the time the next year has come around, you've managed to earn the coveted honor of collecting the next champion. It should be quite satisfying...");
 			getGame().gameOver();
 		}
@@ -257,7 +257,7 @@ package classes.Scenes.Dungeons.Factory
 			player.slimeFeed();
 			clearOutput();
 			//MALE
-			if (player.cocks.length > 0 && (player.gender != 3 || rand(2))) {
+			if (player.cocks.length > 0 && (player.gender !== 3 || rand(2))) {
 				//(LUSTY) 
 
 				if (monster.lust >= monster.maxLust()) outputText("Panting hotly, the succubus staggers towards you, her eyes fixated on the bulge in your crotch.  Dark viscous liquid drips from her dusky folds as her hips undulate hypnotically.  Blue fingers smear the corrupted lubricants over the smooth outer folds of her sex as she lies back enticingly, giving up on anything but bedding you.  In moments your " + player.armorName + " are on the floor and you approach your prize.\n\n");
@@ -365,7 +365,7 @@ package classes.Scenes.Dungeons.Factory
 				if (player.totalBreasts() > 2) outputText("s");
 				outputText(" in sympathy, drenching your " + player.skin.desc + " with creamy goodness until it puddles on your captive demon.\n\n");
 			}
-			if (player.totalNipples() == 2) outputText("As your first nipple drains, you move her to your other breast, being sure to motivate her cunt by grinding it with your " + player.foot() + ".  She squeals and sucks harder, emptying the last of your milk with a cute burp.  ");
+			if (player.totalNipples() === 2) outputText("As your first nipple drains, you move her to your other breast, being sure to motivate her cunt by grinding it with your " + player.foot() + ".  She squeals and sucks harder, emptying the last of your milk with a cute burp.  ");
 			if (player.totalNipples() > 2 && player.totalNipples() < 6) outputText("As your first " + player.nippleDescript(0) + " drains, you forcibly move her to the next, unleashing a fresh batch of milk for her to feast upon.  Eventually, it too dries up, so you migrate her onwards to your next " + player.nippleDescript(0) + ".  After she drains each of your " + num2Text(player.totalNipples()) + ", you smile happily at your now emptied breasts.  ");
 			if (player.totalNipples() >= 6) outputText("As your first " + player.nippleDescript(0) + " drains, you force her over to the next, unleashing even more milk for her to feast upon.  In time, that " + player.nippleDescript(0) + " also empties and you rotate her on to the next.  The cycle repeats seemingly endlessly as you work her from nipple to nipple, relieving the insistent pressure of your breasts and slowly filling her with your milk.  ");
 			if (player.averageLactation() * player.totalBreasts() < 6) outputText("Her belly bulges slightly from all the breast-milk she's consumed.\n\n");
@@ -374,7 +374,7 @@ package classes.Scenes.Dungeons.Factory
 			if (player.cocks.length > 0) outputText(" and " + player.multiCockDescriptLight() + " feel hungrier than ever.  ");
 			else outputText(" feels hungrier than ever.  ");
 			outputText("You shove your crotch into your milk-dazed foe's white-stained visage, grinding your " + player.vaginaDescript(0) + " into her mouth until you cum all over her");
-			if (player.cocks.length == 0) {
+			if (player.cocks.length === 0) {
 				temp = rand(3);
 				if (player.vaginas[0].vaginalWetness >= VaginaClass.WETNESS_SLAVERING) outputText(", soaking her with girl-cum.");
 				else {
@@ -423,7 +423,7 @@ package classes.Scenes.Dungeons.Factory
 				}
 				else {
 					//[[no balls no pussy]]
-					if (player.vaginas.length == 0) outputText("Your sultry captor leans low over you, her luscious tits wobbling enticingly as she reaches down and caresses the skin between your " + player.cockDescript(0) + " and " + player.assholeDescript() + " with a slender finger.  Almost immediately you feel your groin clench with the boiling heat of a growing orgasm, thick cum churning out from your prostate as your body readies a load large enough to satisfy a thirsty succubus.");
+					if (player.vaginas.length === 0) outputText("Your sultry captor leans low over you, her luscious tits wobbling enticingly as she reaches down and caresses the skin between your " + player.cockDescript(0) + " and " + player.assholeDescript() + " with a slender finger.  Almost immediately you feel your groin clench with the boiling heat of a growing orgasm, thick cum churning out from your prostate as your body readies a load large enough to satisfy a thirsty succubus.");
 					//[[no balls + pussy]]
 					else outputText("Your sultry captor leans low over you, her luscious tits wobbling enticingly as she reaches down and caresses the slick skin of your slit with a single digit.  Other fingers circle your " + player.clitDescript() + ", teasing it from between the folds as it grows hard, peeking out from the hood and turning cherry-red.  Almost immediately you feel your groin clench with the boiling heat of a growing orgasm, thick cum churning in your prostate as your body readies a load large enough to satisfy a thirsty succubus.");
 				}
@@ -487,7 +487,7 @@ package classes.Scenes.Dungeons.Factory
 			//Tits – megalactating
 			if (player.biggestLactation() >= 3) outputText("Your " + player.nippleDescript(0) + "s get painfully hard as milk begins drooling down your over-productive chest, making your " + player.armorName + " slide across your leaky milk-spouts in an agonizingly pleasurable way.  "); 
 			//Cock – single
-			if (player.cocks.length == 1) {
+			if (player.cocks.length === 1) {
 				if (player.cockArea(0) < 30) outputText("Swooning from sudden blood loss, you struggle to maintain the kiss as your body takes your " + player.cockDescript(0) + " to full hardness in seconds.  ");
 				//Cock – single big
 				if (player.cockArea(0) >= 30 && player.cockArea(0) < 100) outputText("Nearly blacking out, you struggle to stay awake as your body shifts your blood to your disproportionate " + Appearance.cockNoun(CockTypesEnum.HUMAN) + ".  ");
@@ -511,10 +511,10 @@ package classes.Scenes.Dungeons.Factory
 			//New PG
 			outputText("No longer caring about modesty, etiquette, or even your own safety, you squirm against your bindings, lewdly putting on a display for your captor as you suck her tongue as if your life depended on it.   She breaks the kiss with a smile, \"<i>I told you I'd make sure it was pleasurable.  Now you sit tight while I get you hooked up, and we'll have you cumming what's left of your brains out in no time,</i>\" she promises.\n\n");
 			outputText("The succubus pushes a button on the wall, and a number of strange looking suction tubes and hoses drop down from above you.   Moving with practiced efficiency, she hooks a ");
-			if (player.breastRows.length == 1) outputText("pair of");
+			if (player.breastRows.length === 1) outputText("pair of");
 			else outputText("number of");
 			outputText(" hoses to your breasts, ");
-			if (player.cocks.length == 0) {
+			if (player.cocks.length === 0) {
 				if (player.vaginas.length > 0) outputText("and a vacuum pump to your clit.  ");
 				else {
 					outputText("and another vacuum pump to your bare groin.  In seconds a wet fleshy growth erupts.  You have grown a cock!  ");
@@ -526,7 +526,7 @@ package classes.Scenes.Dungeons.Factory
 				else outputText("and a pump many times bigger than your " + player.cockDescript(0) + " to it.  ");
 			}
 			outputText("At first there is only a gentle suction, you assume in order to keep them in place.  Unfinished, your captor places something large and hollow against your backdoor");
-			if (player.vaginas.length == 0) outputText(".");
+			if (player.vaginas.length === 0) outputText(".");
 			else outputText(" and an ever larger dildo against your " + player.vaginaDescript(0) + ".  It seems to pulse and wiggle with a life of its own rubbing the bumps of it's lumpy head against your lips.");
 			outputText("  You swoon as you hear the solid click of a button being pushed, and all at once all devices attached to you leap to life.");
 			doNext(doBadEndSuccubusPart2);
@@ -551,7 +551,7 @@ package classes.Scenes.Dungeons.Factory
 			if (player.vaginas.length > 0) outputText("Clenching tightly, your " + player.vaginaDescript(0) + " squeezes tightly on it's intruder as it's repeatedly violated by the machines.  ");
 			//End
 			outputText("\n\nThe world around you disappears, leaving you alone with the drug-enhanced sensations assaulting your body.  In truth, you don't want it to end.  You find yourself wishing it would never end, and no doubt the equipment you're hooked in to will see to that.\n\n");
-			if (player.statusEffectv3(StatusEffects.Marble) == 1) {
+			if (player.statusEffectv3(StatusEffects.Marble) === 1) {
 				outputText("Later on, you are briefly pulled out of your reverie by a familiar warm fluid flowing down your throat.  You come to your senses and see Marble looking down at you with an odd expression on her face.  ");
 				outputText("She seems to be in a state of bliss. Looking down, you see that she is wearing some kind of pair of pink panties.  Marble gasps and the surface of the panties ripples; it's a living thing!\n\nYou look around and realize you aren't alone.  ");
 			}
@@ -561,7 +561,7 @@ package classes.Scenes.Dungeons.Factory
 			}
 			else outputText("Later on, in a moment of clarity, you look around and realize you aren't alone.  ");		
 			outputText("In rows alongside you are a large number of other captives, every single one endowed with freakishly sized breasts, and nearly all gifted with throbbing demonic dicks.  Some small analytical part of you notes that the farther down the line they are, the older and larger they have become.   You look down and see your own massive tits, shiny tainted nipples still pumping out streams of milk.  The huge throbbing demon-cock between your legs begins to get hard as the machines crank back up, filling you full of happy horniness.");
-			if (player.statusEffectv3(StatusEffects.Marble) == 1 || player.hasStatusEffect(StatusEffects.CampMarble)) outputText("  With Marble here too, you'll be around for a long time.");
+			if (player.statusEffectv3(StatusEffects.Marble) === 1 || player.hasStatusEffect(StatusEffects.CampMarble)) outputText("  With Marble here too, you'll be around for a long time.");
 			getGame().gameOver();
 		}
 		

@@ -78,7 +78,7 @@ flags[kFLAGS.GOO_EYES]
 flags[kFLAGS.GOO_TOSSED_AFTER_NAMING] = 1;
 */
 public function gooFluid(arg:Number= 0, output:Boolean = true):Number {
-	if (arg != 0) {
+	if (arg !== 0) {
 		flags[kFLAGS.GOO_FLUID_AMOUNT] += arg;
 		if (output) outputText("\n<b>Fluid change: " + Math.round(arg*10)/10 + "%</b>");
 		if (flags[kFLAGS.GOO_FLUID_AMOUNT] < 1) flags[kFLAGS.GOO_FLUID_AMOUNT] = 1;
@@ -87,7 +87,7 @@ public function gooFluid(arg:Number= 0, output:Boolean = true):Number {
 	return flags[kFLAGS.GOO_FLUID_AMOUNT];
 }
 public function gooHappiness(arg:Number = 0, output:Boolean = true):Number {
-	if (arg != 0) {
+	if (arg !== 0) {
 		flags[kFLAGS.GOO_HAPPINESS] += arg;
 		if (output) outputText("\n<b>Happiness change: " + Math.round(arg*10)/10 + "%</b>");
 		if (flags[kFLAGS.GOO_HAPPINESS] < 1) flags[kFLAGS.GOO_HAPPINESS] = 1;
@@ -96,7 +96,7 @@ public function gooHappiness(arg:Number = 0, output:Boolean = true):Number {
 	return flags[kFLAGS.GOO_HAPPINESS];
 }
 public function gooObedience(arg:Number = 0, output:Boolean = true):Number {
-	if (arg != 0) {
+	if (arg !== 0) {
 		flags[kFLAGS.GOO_OBEDIENCE] += arg;
 		if (output) outputText("\n<b>Obedience change: " + Math.round(arg*10)/10 + "%</b>");
 		if (flags[kFLAGS.GOO_OBEDIENCE] < 1) flags[kFLAGS.GOO_OBEDIENCE] = 1;
@@ -218,7 +218,7 @@ private function PCCarriedGooBackHomeII():void {
 }
 private function nameZeLatexGoo():void 
 {
-	if (mainView.nameBox.text == "") 
+	if (mainView.nameBox.text === "") 
 	{
 		clearOutput();
 		outputText("<b>You must select a name.</b>");
@@ -233,29 +233,29 @@ private function nameZeLatexGoo():void
 	//After Naming Her:
 	clearOutput();
 	outputText("\"<i>");
-	if (flags[kFLAGS.GOO_NAME] == "Cattleya") outputText("Cattleya, huh?  I don't know if my tits are big enough to live up to that name,");
-	else if (flags[kFLAGS.GOO_NAME] == "Helia") outputText("Helia, huh?  I don't know if I like anal enough for that!");
-	else if (flags[kFLAGS.GOO_NAME] == "Urta") outputText("Urta, huh?  What do you take me for, a furry?  I guess it will have to do,");
-	else if (flags[kFLAGS.GOO_NAME] == "Tifa") outputText("Tifa, huh?  I like the sound of that one!");
-	else if (flags[kFLAGS.GOO_NAME] == "Aeris") outputText("Aeris, huh?  That sounds like a name for a hoity-toity pain in the ass!");
-	else if (flags[kFLAGS.GOO_NAME] == "Latexy") outputText("Latexy, huh? That's, uh... real original...");
-	else if (flags[kFLAGS.GOO_NAME] == "Goo") outputText("Goo, huh?  Wow, not too bright, are you?  Still, I guess I can live with it.  Call me Goo, I guess,");
-	else if (flags[kFLAGS.GOO_NAME] == "Blacky") outputText("Blacky, huh?  Do I look like a horse or something?  I guess it will have to do,");
-	else if (flags[kFLAGS.GOO_NAME] == "Fetish") outputText("Fetish, huh?  You're pretty transparent about your motives, aren't you?");
-	else if (flags[kFLAGS.GOO_NAME] == "Fenoxo") outputText("Fenoxo?</i>\"  Her hair slowly morphs into a fedora.  \"<i>I'm not sure this is quite my look, but it's a lovely name,");
-	else if (flags[kFLAGS.GOO_NAME] == "Maria") outputText("Maria?  Fuck, this isn't Cursed!  You don't expect me to turn you into a woman, do you?");
-	else if (flags[kFLAGS.GOO_NAME] == "Valeria") outputText("Valeria? Wait, I've heard that name before...");
-	else if (flags[kFLAGS.GOO_NAME] == "Christmas") outputText("Christmas, huh?  How very festive.  The big difference is that I can come more than once a year.");
-	else if (flags[kFLAGS.GOO_NAME] == "Symphonie") outputText("Symphonie, eh?  That seems very... fitting.  Snug and comfortable, somehow,");
-	else if (flags[kFLAGS.GOO_NAME] == "Savin") outputText("Savin, huh? Why would you want to name me after the second worst person since Stalin?");
-	else if (flags[kFLAGS.GOO_NAME] == "Galatea") outputText("Galatea?  By Oblimo, that's a beautiful name!");
-	else if (flags[kFLAGS.GOO_NAME] == "Kara") outputText("Kara, huh? Like, that sounds like a name for a girl with big gropable boobs in a French maid outfit!  I, like, totally love it!");
-	else if (flags[kFLAGS.GOO_NAME] == "Karazelle") outputText("Karazelle, huh? Like, that sounds like a name for a girl with big gropable boobs in a French maid outfit!  I, like, totally love it!");
-	else if (flags[kFLAGS.GOO_NAME] == "Jacques") outputText("Jacques?  That's kind of a boy's name isn't it?  ...Did my boobs just get bigger?");
-	else if (flags[kFLAGS.GOO_NAME] == "Whitney") outputText("Whitney?  The farm-girl?  Well, I suppose I can fill in for that frigid cunt.");
-	else if (flags[kFLAGS.GOO_NAME] == "Hedrah") outputText("Hedrah?  A nice strong name.  I approve,");
-	else if (flags[kFLAGS.GOO_NAME] == "Third") outputText("Third, huh?  Do I speak with a silly accent and miss headshots all day long?  Well, I suppose it will work,");
-	else if (flags[kFLAGS.GOO_NAME] == "Luckster") outputText("Luckster, huh?  Strange, I don't feel that Lucky.  Are there any cow-girls about?");
+	if (flags[kFLAGS.GOO_NAME] === "Cattleya") outputText("Cattleya, huh?  I don't know if my tits are big enough to live up to that name,");
+	else if (flags[kFLAGS.GOO_NAME] === "Helia") outputText("Helia, huh?  I don't know if I like anal enough for that!");
+	else if (flags[kFLAGS.GOO_NAME] === "Urta") outputText("Urta, huh?  What do you take me for, a furry?  I guess it will have to do,");
+	else if (flags[kFLAGS.GOO_NAME] === "Tifa") outputText("Tifa, huh?  I like the sound of that one!");
+	else if (flags[kFLAGS.GOO_NAME] === "Aeris") outputText("Aeris, huh?  That sounds like a name for a hoity-toity pain in the ass!");
+	else if (flags[kFLAGS.GOO_NAME] === "Latexy") outputText("Latexy, huh? That's, uh... real original...");
+	else if (flags[kFLAGS.GOO_NAME] === "Goo") outputText("Goo, huh?  Wow, not too bright, are you?  Still, I guess I can live with it.  Call me Goo, I guess,");
+	else if (flags[kFLAGS.GOO_NAME] === "Blacky") outputText("Blacky, huh?  Do I look like a horse or something?  I guess it will have to do,");
+	else if (flags[kFLAGS.GOO_NAME] === "Fetish") outputText("Fetish, huh?  You're pretty transparent about your motives, aren't you?");
+	else if (flags[kFLAGS.GOO_NAME] === "Fenoxo") outputText("Fenoxo?</i>\"  Her hair slowly morphs into a fedora.  \"<i>I'm not sure this is quite my look, but it's a lovely name,");
+	else if (flags[kFLAGS.GOO_NAME] === "Maria") outputText("Maria?  Fuck, this isn't Cursed!  You don't expect me to turn you into a woman, do you?");
+	else if (flags[kFLAGS.GOO_NAME] === "Valeria") outputText("Valeria? Wait, I've heard that name before...");
+	else if (flags[kFLAGS.GOO_NAME] === "Christmas") outputText("Christmas, huh?  How very festive.  The big difference is that I can come more than once a year.");
+	else if (flags[kFLAGS.GOO_NAME] === "Symphonie") outputText("Symphonie, eh?  That seems very... fitting.  Snug and comfortable, somehow,");
+	else if (flags[kFLAGS.GOO_NAME] === "Savin") outputText("Savin, huh? Why would you want to name me after the second worst person since Stalin?");
+	else if (flags[kFLAGS.GOO_NAME] === "Galatea") outputText("Galatea?  By Oblimo, that's a beautiful name!");
+	else if (flags[kFLAGS.GOO_NAME] === "Kara") outputText("Kara, huh? Like, that sounds like a name for a girl with big gropable boobs in a French maid outfit!  I, like, totally love it!");
+	else if (flags[kFLAGS.GOO_NAME] === "Karazelle") outputText("Karazelle, huh? Like, that sounds like a name for a girl with big gropable boobs in a French maid outfit!  I, like, totally love it!");
+	else if (flags[kFLAGS.GOO_NAME] === "Jacques") outputText("Jacques?  That's kind of a boy's name isn't it?  ...Did my boobs just get bigger?");
+	else if (flags[kFLAGS.GOO_NAME] === "Whitney") outputText("Whitney?  The farm-girl?  Well, I suppose I can fill in for that frigid cunt.");
+	else if (flags[kFLAGS.GOO_NAME] === "Hedrah") outputText("Hedrah?  A nice strong name.  I approve,");
+	else if (flags[kFLAGS.GOO_NAME] === "Third") outputText("Third, huh?  Do I speak with a silly accent and miss headshots all day long?  Well, I suppose it will work,");
+	else if (flags[kFLAGS.GOO_NAME] === "Luckster") outputText("Luckster, huh?  Strange, I don't feel that Lucky.  Are there any cow-girls about?");
 	else outputText(flags[kFLAGS.GOO_NAME] + ", huh?  I can live with that, I suppose,");
 	outputText("</i>\" she muses, her mood brightening.  A storm cloud blows across her brow, darkening her gaze.  Petulantly, she asks, \"<i>Well, what now, [Master]?  What are the rules?</i>\"  Her voice carries an unhappy undercurrent that makes it clear she already resents her situation a little bit.");
 	outputText("\n\nYou take her by the chin, tilting her head up to look at you.  ");
@@ -263,7 +263,7 @@ private function nameZeLatexGoo():void
 	else outputText("Impatiently");
 	outputText(", you explain that she is not to leave the camp.  The furthest she should go is to the stream, if she needs moisture.");
 	outputText("\n\n\"<i>I don't need that much liquid... not any more,</i>\" " + flags[kFLAGS.GOO_NAME] + " says.  \"<i>I can already tell that I'm not losing it like I used to... but I still hunger for... well, juices.  I can probably live on water, but I won't be healthy that way.  I need you to feed me");
-	if (player.gender == 0) outputText(", so please grow some genitals");
+	if (player.gender === 0) outputText(", so please grow some genitals");
 	outputText("!  Just every now and again...  It'll be pretty apparent when I'm hurting for food...  Take care of me, please?</i>\"");
 	outputText("\n\nYou nod and tell her to get settled, you'll be back to check up on her shortly.");
 	outputText("\n\n<b>(" + flags[kFLAGS.GOO_NAME] + " has been added to the slaves tab!)</b>");
@@ -280,7 +280,7 @@ private function nameZeLatexGoo():void
 		chance:0.3,
 		when:function():Boolean {
 			return (flags[kFLAGS.GOO_TFED_MEAN] + flags[kFLAGS.GOO_TFED_NICE] > 0)
-				   && flags[kFLAGS.GOO_SLAVE_RECRUITED] == 0;
+				   && flags[kFLAGS.GOO_SLAVE_RECRUITED] === 0;
 		}
 	});
 //PC Couldn't Bring Her Back
@@ -424,7 +424,7 @@ private function pureGooGalRecruitAftermathII():void {
 
 //After Naming Latexy(F):
 private function nameZeLatexGooNice():void {
-	if (mainView.nameBox.text == "") {
+	if (mainView.nameBox.text === "") {
 		clearOutput();
 		outputText("<b>You must select a name.</b>");
 		mainView.nameBox.x = mainView.mainText.x + 5;
@@ -437,29 +437,29 @@ private function nameZeLatexGooNice():void {
 	mainView.nameBox.visible = false;
 	clearOutput();
 	outputText("\"<i>");
-	if (flags[kFLAGS.GOO_NAME] == "Cattleya") outputText("Cattleya, huh?  I don't know if my tits are big enough to live up to that name,");
-	else if (flags[kFLAGS.GOO_NAME] == "Helia") outputText("Helia, huh?  I don't know if I like anal enough for that!");
-	else if (flags[kFLAGS.GOO_NAME] == "Urta") outputText("Urta, huh?  What do you take me for, a furry?  I guess it will have to do,");
-	else if (flags[kFLAGS.GOO_NAME] == "Tifa") outputText("Tifa, huh?  I like the sound of that one!");
-	else if (flags[kFLAGS.GOO_NAME] == "Aeris") outputText("Aeris, huh?  That sounds like a name for a hoity-toity pain in the ass!");
-	else if (flags[kFLAGS.GOO_NAME] == "Latexy") outputText("Latexy, huh? That's, uh... real original...");
-	else if (flags[kFLAGS.GOO_NAME] == "Goo") outputText("Goo, huh?  Wow, not too bright, are you?  Still, I guess I can live with it.  Call me Goo, I guess,");
-	else if (flags[kFLAGS.GOO_NAME] == "Blacky") outputText("Blacky, huh?  Do I look like a horse or something?  I guess it will have to do,");
-	else if (flags[kFLAGS.GOO_NAME] == "Fetish") outputText("Fetish, huh?  You're pretty transparent about your motives, aren't you?");
-	else if (flags[kFLAGS.GOO_NAME] == "Fenoxo") outputText("Fenoxo?</i>\"  Her hair slowly morphs into a fedora.  \"<i>I'm not sure this is quite my look, but it's a lovely name,");
-	else if (flags[kFLAGS.GOO_NAME] == "Maria") outputText("Maria?  Fuck, this isn't Cursed!  You don't expect me to turn you into a woman, do you?");
-	else if (flags[kFLAGS.GOO_NAME] == "Valeria") outputText("Valeria? Wait, I've heard that name before...");
-	else if (flags[kFLAGS.GOO_NAME] == "Christmas") outputText("Christmas, huh?  How very festive.  The big difference is that I can come more than once a year.");
-	else if (flags[kFLAGS.GOO_NAME] == "Symphonie") outputText("Symphonie, eh?  That seems very... fitting.  Snug and comfortable, somehow,");
-	else if (flags[kFLAGS.GOO_NAME] == "Savin") outputText("Savin, huh? Why would you want to name me after the second worst person since Stalin?");
-	else if (flags[kFLAGS.GOO_NAME] == "Galatea") outputText("Galatea?  By Oblimo, that's a beautiful name!");
-	else if (flags[kFLAGS.GOO_NAME] == "Kara") outputText("Kara, huh? Like, that sounds like a name for a girl with big gropable boobs in a French maid outfit!  I, like, totally love it!");
-	else if (flags[kFLAGS.GOO_NAME] == "Karazelle") outputText("Karazelle, huh? Like, that sounds like a name for a girl with big gropable boobs in a French maid outfit!  I, like, totally love it!");
-	else if (flags[kFLAGS.GOO_NAME] == "Jacques") outputText("Jacques?  That's kind of a boy's name isn't it?  ...Did my boobs just get bigger?");
-	else if (flags[kFLAGS.GOO_NAME] == "Whitney") outputText("Whitney?  The farm-girl?  Well, I suppose I can fill in for that frigid cunt.");
-	else if (flags[kFLAGS.GOO_NAME] == "Hedrah") outputText("Hedrah?  A nice strong name.  I approve,");
-	else if (flags[kFLAGS.GOO_NAME] == "Third") outputText("Third, huh?  Do I speak with a silly accent and miss headshots all day long?  Well, I suppose it will work,");
-	else if (flags[kFLAGS.GOO_NAME] == "Luckster") outputText("Luckster, huh?  Strange, I don't feel that Lucky.  Are there any cow-girls about?");
+	if (flags[kFLAGS.GOO_NAME] === "Cattleya") outputText("Cattleya, huh?  I don't know if my tits are big enough to live up to that name,");
+	else if (flags[kFLAGS.GOO_NAME] === "Helia") outputText("Helia, huh?  I don't know if I like anal enough for that!");
+	else if (flags[kFLAGS.GOO_NAME] === "Urta") outputText("Urta, huh?  What do you take me for, a furry?  I guess it will have to do,");
+	else if (flags[kFLAGS.GOO_NAME] === "Tifa") outputText("Tifa, huh?  I like the sound of that one!");
+	else if (flags[kFLAGS.GOO_NAME] === "Aeris") outputText("Aeris, huh?  That sounds like a name for a hoity-toity pain in the ass!");
+	else if (flags[kFLAGS.GOO_NAME] === "Latexy") outputText("Latexy, huh? That's, uh... real original...");
+	else if (flags[kFLAGS.GOO_NAME] === "Goo") outputText("Goo, huh?  Wow, not too bright, are you?  Still, I guess I can live with it.  Call me Goo, I guess,");
+	else if (flags[kFLAGS.GOO_NAME] === "Blacky") outputText("Blacky, huh?  Do I look like a horse or something?  I guess it will have to do,");
+	else if (flags[kFLAGS.GOO_NAME] === "Fetish") outputText("Fetish, huh?  You're pretty transparent about your motives, aren't you?");
+	else if (flags[kFLAGS.GOO_NAME] === "Fenoxo") outputText("Fenoxo?</i>\"  Her hair slowly morphs into a fedora.  \"<i>I'm not sure this is quite my look, but it's a lovely name,");
+	else if (flags[kFLAGS.GOO_NAME] === "Maria") outputText("Maria?  Fuck, this isn't Cursed!  You don't expect me to turn you into a woman, do you?");
+	else if (flags[kFLAGS.GOO_NAME] === "Valeria") outputText("Valeria? Wait, I've heard that name before...");
+	else if (flags[kFLAGS.GOO_NAME] === "Christmas") outputText("Christmas, huh?  How very festive.  The big difference is that I can come more than once a year.");
+	else if (flags[kFLAGS.GOO_NAME] === "Symphonie") outputText("Symphonie, eh?  That seems very... fitting.  Snug and comfortable, somehow,");
+	else if (flags[kFLAGS.GOO_NAME] === "Savin") outputText("Savin, huh? Why would you want to name me after the second worst person since Stalin?");
+	else if (flags[kFLAGS.GOO_NAME] === "Galatea") outputText("Galatea?  By Oblimo, that's a beautiful name!");
+	else if (flags[kFLAGS.GOO_NAME] === "Kara") outputText("Kara, huh? Like, that sounds like a name for a girl with big gropable boobs in a French maid outfit!  I, like, totally love it!");
+	else if (flags[kFLAGS.GOO_NAME] === "Karazelle") outputText("Karazelle, huh? Like, that sounds like a name for a girl with big gropable boobs in a French maid outfit!  I, like, totally love it!");
+	else if (flags[kFLAGS.GOO_NAME] === "Jacques") outputText("Jacques?  That's kind of a boy's name isn't it?  ...Did my boobs just get bigger?");
+	else if (flags[kFLAGS.GOO_NAME] === "Whitney") outputText("Whitney?  The farm-girl?  Well, I suppose I can fill in for that frigid cunt.");
+	else if (flags[kFLAGS.GOO_NAME] === "Hedrah") outputText("Hedrah?  A nice strong name.  I approve,");
+	else if (flags[kFLAGS.GOO_NAME] === "Third") outputText("Third, huh?  Do I speak with a silly accent and miss headshots all day long?  Well, I suppose it will work,");
+	else if (flags[kFLAGS.GOO_NAME] === "Luckster") outputText("Luckster, huh?  Strange, I don't feel that Lucky.  Are there any cow-girls about?");
 	else outputText(flags[kFLAGS.GOO_NAME] + ", huh?  I can live with that, I suppose,");
 	outputText("</i>\" she muses, her mood brightening.  \"<i>I-I suppose I should start to get used to it... to all of this.  I... thank you, friend.  You didn't have to take me back here, to help me, but you did.  I'm grateful, truly I am.  But I don't think I would survive long out in the wilds, on my own.  I've lived my whole life as a goo, and it will take some time - years, maybe - to relearn how to survive on my own.  I know it's a lot to ask, but would you mind if I stayed here?  With... with you?  At least until I can get on my, uh, feet, as it were,</i>\" she says, her hands tracing along her body down to her new, dainty little feet.");
 	//[Keep Her] [Boot her Out]
@@ -481,7 +481,7 @@ private function niceGuysKeepTheirGooGals():void {
 	clearOutput();
 	outputText("You take her by the chin, tilting her head up to look at you.  Of course you'll help her.  How could you not?  Overjoyed by your answer, " + flags[kFLAGS.GOO_NAME] + " throws her slender arms around you, pulling herself up so that her slick black lips press against yours.  \"<i>Oh, thank you! Thank you!</i>\" she cries, kissing you again.  Suddenly realizing what she's done, though, the latex-girl releases you and slips back against her rock, looking abashedly away.  \"<i>I'm sorry, I just...  Thank you.  I'm not going to just be a burden on you, I promise!  I don't know how much I can do, but so long as I'm here...  Just ask, for anything, and I promise I'll do my best.  It's the least I can do to pay you back for being so kind to me.</i>\"");
 	outputText("\n\nYou smile, telling that seeing her safe and sound will be payment enough.  Speaking of which, what exactly is she going to need -- what can you do to help her now?  \"<i>All I used to need to survive was liquid, but... not that much.  Not any more,</i>\" " + flags[kFLAGS.GOO_NAME] + " says.  \"<i>I can already tell that I'm not losing it like I used to... but I still hunger for... well, juices.  I can probably live on water, but I won't be healthy that way.  I'll need you to, well, uh... feed me");
-	if (player.gender == 0) outputText(", so you had better grow some genitals");
+	if (player.gender === 0) outputText(", so you had better grow some genitals");
 	outputText(".  Just every now and again, though - and I promise I'll make it feel good for you, too!  I'll try and let you know when I get... hungry... but keep an eye out for me, all right?  I'm not entirely used to this new metabolism yet..</i>\"");
 	outputText("\n\nYou nod and tell her to get settled, you'll be back to check up on her shortly.");
 	outputText("\n\n<b>(" + flags[kFLAGS.GOO_NAME] + " has been added to the slaves tab!)</b>");
@@ -539,9 +539,9 @@ public function approachLatexy():void {
 	//{Regardless} 
 	outputText("  You estimate " + flags[kFLAGS.GOO_NAME] + "'s chest would fit a " + Appearance.breastCup(gooTitSize()) + " bra, were she to wear one.");
 	//Dicknips:
-	if (flags[kFLAGS.GOO_NIPPLE_TYPE] == 1) outputText("  Those proud nipples have odd bulges at the tips, bulges that can swell tremendously, turning into rigid dicknipples.");
+	if (flags[kFLAGS.GOO_NIPPLE_TYPE] === 1) outputText("  Those proud nipples have odd bulges at the tips, bulges that can swell tremendously, turning into rigid dicknipples.");
 	//Cuntnips:
-	else if (flags[kFLAGS.GOO_NIPPLE_TYPE] == -1) outputText("  Those proud nipples have a visible slit down the middle, just waiting to be spread into hungry pussies.");
+	else if (flags[kFLAGS.GOO_NIPPLE_TYPE] === -1) outputText("  Those proud nipples have a visible slit down the middle, just waiting to be spread into hungry pussies.");
 	//Third Line - Fluid content
 	//{Above 75}
 	if (gooFluid() >= 75) outputText("  Her onyx lips are plush and inviting, full of liquid.  Likewise, her body seems flush and full of life, certainly not suffering for fluid nutrients.");
@@ -593,10 +593,10 @@ public function approachLatexy():void {
 	addButton(3,"Breast Size",setLatexysBustSize);
 	addButton(4, "Dick Options", changeGooDick);
 	
-	if (flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] == 1) addButton(14, "Back", kGAMECLASS.farm.farmCorruption.rootScene);
+	if (flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] === 1) addButton(14, "Back", kGAMECLASS.farm.farmCorruption.rootScene);
 	
-	if (flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] == 0 && flags[kFLAGS.FARM_CORRUPTION_STARTED] == 1) addButton(5, "Farm Work", sendToFarm);
-	if (flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] == 1) addButton(5, "Go Camp", backToCamp);
+	if (flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] === 0 && flags[kFLAGS.FARM_CORRUPTION_STARTED] === 1) addButton(5, "Farm Work", sendToFarm);
+	if (flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] === 1) addButton(5, "Go Camp", backToCamp);
 }
 
 private function sendToFarm():void
@@ -647,28 +647,28 @@ private function changeGooDick():void {
 	//Supah High obedience slut!
 	if (gooObedience() >= 60) {
 		outputText("You ");
-		if (flags[kFLAGS.GOO_DICK_LENGTH] == 0) outputText("ask " + flags[kFLAGS.GOO_NAME] + " if she's ever considered growing a dick for fun.");
+		if (flags[kFLAGS.GOO_DICK_LENGTH] === 0) outputText("ask " + flags[kFLAGS.GOO_NAME] + " if she's ever considered growing a dick for fun.");
 		else outputText("ask her if she'd like to change what kind of dick she has.");
 		outputText("  She whimpers and moans, \"<i>[Master], I loved growing penises back before I changed.  More than that, ");
-		if (flags[kFLAGS.GOO_DICK_LENGTH] == 0) outputText("I want to grow one for you.  ");
+		if (flags[kFLAGS.GOO_DICK_LENGTH] === 0) outputText("I want to grow one for you.  ");
 		else outputText("I want you to order me to shift it often.  ");
 		outputText("Changing myself further, twisting my body into a sexual playground for you... that would be the ultimate thrill!</i>\"");
-		if (flags[kFLAGS.GOO_DICK_LENGTH] == 0) outputText("\n\n" + flags[kFLAGS.GOO_NAME] + " pulls a hand away from her pussy and says, \"<i>I'll need something masculine if you want me to grow a cock, [Master].  An incubi draft would work, or some minotaur blood, though the blood might make it a horsecock...</i>\"  She shudders and closes her eyes, imagining herself with a rigid equine pole.  Your goo must have a bit of a fetish.");
+		if (flags[kFLAGS.GOO_DICK_LENGTH] === 0) outputText("\n\n" + flags[kFLAGS.GOO_NAME] + " pulls a hand away from her pussy and says, \"<i>I'll need something masculine if you want me to grow a cock, [Master].  An incubi draft would work, or some minotaur blood, though the blood might make it a horsecock...</i>\"  She shudders and closes her eyes, imagining herself with a rigid equine pole.  Your goo must have a bit of a fetish.");
 		else outputText("\n\n" + flags[kFLAGS.GOO_NAME] + " pulls a hand away from her pussy and says, \"<i>What kind of penis would please you most?  I could probably do the human ones, dog dicks, horse cocks, cat pricks, tentacle wangs, or demon dongs.</i>\"  She gives a little shudder at the last one and licks her lips.  \"<i>You'll need to have an appropriate item to assist me though, [Master].  I'm not as flexible as I once was.</i>\"");
 	}
 	//High Happiness + Whatever Obedience(F)
 	else if (gooHappiness() >= 70) {
 		outputText("You ask " + flags[kFLAGS.GOO_NAME] + " if ");
-		if (flags[kFLAGS.GOO_DICK_LENGTH] == 0) outputText("she's ever considered growing a dick for fun.");
+		if (flags[kFLAGS.GOO_DICK_LENGTH] === 0) outputText("she's ever considered growing a dick for fun.");
 		else outputText("she'd like to change what kind of dick she has.");
 		outputText("  She beams and titters, \"<i>Omigod, I loved growing penises back before I changed!  It was so much fun to see how surprised it would make people and to make new shapes to see how they'd feel.  Let's do it!</i>\"");
-		if (flags[kFLAGS.GOO_DICK_LENGTH] == 0) outputText("\n\n" + flags[kFLAGS.GOO_NAME] + " taps her chin and says, \"<i>I'll need something masculine if you want me to grow a cock.  An incubi draft would work, or some minotaur blood, though the blood might make it a horsecock...</i>\"  She smiles wickedly.");
+		if (flags[kFLAGS.GOO_DICK_LENGTH] === 0) outputText("\n\n" + flags[kFLAGS.GOO_NAME] + " taps her chin and says, \"<i>I'll need something masculine if you want me to grow a cock.  An incubi draft would work, or some minotaur blood, though the blood might make it a horsecock...</i>\"  She smiles wickedly.");
 		else outputText("\n\n" + flags[kFLAGS.GOO_NAME] + " taps her chin and says, \"<i>I can probably make almost any kind of penis, though I only really like the human ones, dog dicks, horse cocks, cat pricks, tentacle wangs, and demon dongs.</i>\"  She gives a little shudder at the last one and licks her lips.  \"<i>You'll need to have an appropriate item to assist me though, I'm not as flexible as I once was.</i>\"");
 	}
 	//Low Obedience(F)
 	else {
 		outputText("You ");
-		if (flags[kFLAGS.GOO_DICK_LENGTH] == 0) outputText("ask " + flags[kFLAGS.GOO_NAME] + " if she's ever considered growing a dick for fun.");
+		if (flags[kFLAGS.GOO_DICK_LENGTH] === 0) outputText("ask " + flags[kFLAGS.GOO_NAME] + " if she's ever considered growing a dick for fun.");
 		else outputText("she'd like to change what kind of dick she has.");
 		outputText("  She rolls her eyes and says, \"<i>Sorry, but I think you've made me change quite enough for right now.</i>\"");
 		outputText("\n\nShe's going to have to learn to be a little more obedient before she'll do that.");
@@ -679,12 +679,12 @@ private function changeGooDick():void {
 	}
 	menu();
 	if (flags[kFLAGS.GOO_DICK_LENGTH] > 0) {
-		if (player.hasItem(consumables.CANINEP) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.DOG) addButton(2,"Canine Pepper",latexyEatsADickItem,consumables.CANINEP);
-		if (player.hasItem(consumables.EQUINUM) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.HORSE) addButton(3,"Equinum",latexyEatsADickItem,consumables.EQUINUM);
-		if (player.hasItem(consumables.P_DRAFT) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.HUMAN) addButton(4,"Pure Draft",latexyEatsADickItem,consumables.P_DRAFT);
-		if (player.hasItem(consumables.W_FRUIT) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.CAT) addButton(5,"Whisker Fruit",latexyEatsADickItem,consumables.W_FRUIT);
-		if (player.hasItem(consumables.INCUBID) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.DEMON) addButton(0,"Incubi Draft",latexyEatsADickItem,consumables.INCUBID);
-		if (player.hasItem(consumables.MINOBLO) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.HORSE) addButton(1,"Mino Blood",latexyEatsADickItem,consumables.MINOBLO);
+		if (player.hasItem(consumables.CANINEP) && flags[kFLAGS.GOO_DICK_TYPE] !== CockTypesEnum.DOG) addButton(2,"Canine Pepper",latexyEatsADickItem,consumables.CANINEP);
+		if (player.hasItem(consumables.EQUINUM) && flags[kFLAGS.GOO_DICK_TYPE] !== CockTypesEnum.HORSE) addButton(3,"Equinum",latexyEatsADickItem,consumables.EQUINUM);
+		if (player.hasItem(consumables.P_DRAFT) && flags[kFLAGS.GOO_DICK_TYPE] !== CockTypesEnum.HUMAN) addButton(4,"Pure Draft",latexyEatsADickItem,consumables.P_DRAFT);
+		if (player.hasItem(consumables.W_FRUIT) && flags[kFLAGS.GOO_DICK_TYPE] !== CockTypesEnum.CAT) addButton(5,"Whisker Fruit",latexyEatsADickItem,consumables.W_FRUIT);
+		if (player.hasItem(consumables.INCUBID) && flags[kFLAGS.GOO_DICK_TYPE] !== CockTypesEnum.DEMON) addButton(0,"Incubi Draft",latexyEatsADickItem,consumables.INCUBID);
+		if (player.hasItem(consumables.MINOBLO) && flags[kFLAGS.GOO_DICK_TYPE] !== CockTypesEnum.HORSE) addButton(1,"Mino Blood",latexyEatsADickItem,consumables.MINOBLO);
 		if (player.hasItem(consumables.GROPLUS) && flags[kFLAGS.GOO_DICK_LENGTH] < 24 + (flags[kFLAGS.HYPER_HAPPY] ? 0 : 36)) addButton(6,"Gro Plus",latexyEatsADickItem,consumables.GROPLUS);
 		if (player.hasItem(consumables.REDUCTO) && flags[kFLAGS.GOO_DICK_LENGTH] >= 5) addButton(7,"Reducto",latexyEatsADickItem,consumables.REDUCTO);
 	}	
@@ -700,41 +700,41 @@ private function latexyEatsADickItem(item:ItemType):void {
 	player.consumeItem(item,1);
 	clearOutput();
 	outputText(flags[kFLAGS.GOO_NAME] + " uses your proffered item without a second though.  Surprisingly she doesn't seem to react in any way, aside from closing her eyes and taking on a look of incredible concentration.  ");
-	if (flags[kFLAGS.GOO_DICK_LENGTH] == 0) {
+	if (flags[kFLAGS.GOO_DICK_LENGTH] === 0) {
 		outputText("Her onyx mound bulges, the luscious lips spreading around something internal.  Gradually, they part like a silken veil to reveal a ");
-		if (item == consumables.MINOBLO) outputText("flattened head");
+		if (item === consumables.MINOBLO) outputText("flattened head");
 		else outputText("bulbous crown");
 		outputText(".  The newborn cock-tip thickens, spreading her wider as it gradually droops out of the female flesh surrounding it.  ");
 		flags[kFLAGS.GOO_DICK_LENGTH] = 8;
 		flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.HUMAN;
-		if (item == consumables.MINOBLO) {
+		if (item === consumables.MINOBLO) {
 			outputText("On and on it comes.  She's truly going to be hung like a stallion at this rate!   ");
 			flags[kFLAGS.GOO_DICK_LENGTH] = 13;
 			flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.HORSE;
 		}
 		outputText("Then, it begins to stiffen, arching up into full arousal.  The new-grown cock appears to have grown from her clit, but as you lean down to examine her vagina, you realize her cunt has shifted down slightly, and a new clit has grown to replace the old.");
 		outputText("\n\n\"<i>You're making it harder!</i>\" " + flags[kFLAGS.GOO_NAME] + " whines, trying to cover it with her hands.  Of course, that only makes it harder, and a bead of oily pre-cum beads at the tip.  You could get used to this.  <b>" + flags[kFLAGS.GOO_NAME] + " now has a " + num2Text(flags[kFLAGS.GOO_DICK_LENGTH]) + "-inch ");
-		if (item == consumables.MINOBLO) outputText("horse-");
+		if (item === consumables.MINOBLO) outputText("horse-");
 		outputText("cock!</b>");
 		gooObedience(5);
 	}
 	else {
-		if (item == consumables.GROPLUS) {
+		if (item === consumables.GROPLUS) {
 			outputText("Her " + gooCock() + " shivers, and starts to sprout outward from the base, lengthening before your very eyes.  One... two... three... new inches of gleaming prick reveal themselves to you!\n\n" + flags[kFLAGS.GOO_NAME] + " giggles, \"<i>You sure do like them big!</i>\"");
 			flags[kFLAGS.GOO_DICK_LENGTH] += 3;
 		}
-		else if (item == consumables.REDUCTO) {
+		else if (item === consumables.REDUCTO) {
 			outputText("Her " + gooCock() + " trembles, and starts to shrink inward, disappearing into her polished abdomen.  The effect is so startling profound that you have to do a double-take.  " + flags[kFLAGS.GOO_NAME]+ "'s penis is barely two thirds its original size!\n\nShe giggles, \"<i>Not a fan of the big boys, huh?</i>\"");
 			flags[kFLAGS.GOO_DICK_LENGTH] = Math.round(flags[kFLAGS.GOO_DICK_LENGTH] * .66);
 		}
 		else {
 			outputText("Her " + gooCock() + " rapidly erects, rising to full tumescence in seconds.  The veins begin to shift, crawling around under her onyx skin like little worms as her penis reshapes it.  A muffled moan escapes from " + flags[kFLAGS.GOO_NAME] + "'s lips along with a discharge of black pre-cum from her tip and slit.  Then, with a powerful flex, the latex woman's penis solidifies into a new shape.  <b>" + flags[kFLAGS.GOO_NAME] + "'s maleness is now a ");
-			if (item == consumables.CANINEP) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.DOG;
-			if (item == consumables.EQUINUM) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.HORSE;
-			if (item == consumables.P_DRAFT) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.HUMAN;
-			if (item == consumables.W_FRUIT) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.CAT;
-			if (item == consumables.INCUBID) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.DEMON;
-			if (item == consumables.MINOBLO) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.HORSE;
+			if (item === consumables.CANINEP) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.DOG;
+			if (item === consumables.EQUINUM) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.HORSE;
+			if (item === consumables.P_DRAFT) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.HUMAN;
+			if (item === consumables.W_FRUIT) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.CAT;
+			if (item === consumables.INCUBID) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.DEMON;
+			if (item === consumables.MINOBLO) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.HORSE;
 			outputText(gooCock() + "!</b>");
 		}
 		gooObedience(2);
@@ -761,14 +761,14 @@ private function setLatexysBustSize():void {
 		outputText("\n\nShe nods and casually hefts her tits in her hands, bouncing them back and forth with a slutty expression on her face.  \"<i>How big do you want me to be, [Master]?  I could be a big-breasted whore for you, barely able to move under the weight of my own tits.  Then you'd have a mountain of latex cleavage to play in.  Or, I could keep them as pert, apple-sized breasts that just barely fit into your hands.  I'd be a glossy, petite slut for you then, wouldn't I?</i>\"  She groans at the thoughts coursing through her obedient, depraved little mind and whimpers, \"<i>Just keep me well fed if you want them full, [Master].  Without enough fluid, I can't keep them big!</i>\"  " + flags[kFLAGS.GOO_NAME] + " watches you, awaiting the command to change herself.");
 	}
 	menu();
-	if (gooTitClass(gooTitSize()) != 1) addButton(0,"A-Cups",changeLatexyTits,1);
-	if (gooTitClass(gooTitSize()) != 2) addButton(1,"C-Cups",changeLatexyTits,3);
-	if (gooTitClass(gooTitSize()) != 3) addButton(2,"DD-Cups",changeLatexyTits,4);
-	if (gooTitClass(gooTitSize()) != 4) addButton(3,"Volleyballs",changeLatexyTits,8);
-	if (gooTitClass(gooTitSize()) != 5) addButton(4,"Basketballs",changeLatexyTits,15);
-	if (gooTitClass(gooTitSize()) != 6) addButton(5,"Huge",changeLatexyTits,24);
-	if (gooTitClass(gooTitSize()) != 7) addButton(6,"Gigantic",changeLatexyTits,35);
-	if (flags[kFLAGS.GOO_PREFERRED_TIT_SIZE] != 0) addButton(7,"Whatever",changeLatexyTits,0);
+	if (gooTitClass(gooTitSize()) !== 1) addButton(0,"A-Cups",changeLatexyTits,1);
+	if (gooTitClass(gooTitSize()) !== 2) addButton(1,"C-Cups",changeLatexyTits,3);
+	if (gooTitClass(gooTitSize()) !== 3) addButton(2,"DD-Cups",changeLatexyTits,4);
+	if (gooTitClass(gooTitSize()) !== 4) addButton(3,"Volleyballs",changeLatexyTits,8);
+	if (gooTitClass(gooTitSize()) !== 5) addButton(4,"Basketballs",changeLatexyTits,15);
+	if (gooTitClass(gooTitSize()) !== 6) addButton(5,"Huge",changeLatexyTits,24);
+	if (gooTitClass(gooTitSize()) !== 7) addButton(6,"Gigantic",changeLatexyTits,35);
+	if (flags[kFLAGS.GOO_PREFERRED_TIT_SIZE] !== 0) addButton(7,"Whatever",changeLatexyTits,0);
 	addButton(14,"Back",approachLatexy);
 }
 private function gooTitClass(arg:int):int {
@@ -788,53 +788,53 @@ private function changeLatexyTits(arg:int = 0):void {
 	//PC wants tits bigger than current preferred and fluid not sufficient to reach new size
 	if (gooTitClass(arg) > gooTitClass(flags[kFLAGS.GOO_PREFERRED_TIT_SIZE]) && gooTitClass(flags[kFLAGS.GOO_FLUID_AMOUNT]/2) < gooTitClass(arg)) {
 		//If already as big as possible
-		if (gooTitClass(flags[kFLAGS.GOO_FLUID_AMOUNT]/2) == gooTitClass(gooTitSize()))
+		if (gooTitClass(flags[kFLAGS.GOO_FLUID_AMOUNT]/2) === gooTitClass(gooTitSize()))
 			outputText(flags[kFLAGS.GOO_NAME] + " nods, but her body doesn't change.  \"<i>There's not enough of me to make them any bigger right now.  You'll have to feed me if you want to see what they'll look at... full size.</i>\"");
 		//Tits can't quite grow to max size:
 		else 
 			outputText(flags[kFLAGS.GOO_NAME] + " places her hands on her nipples and takes a deep breath.  She holds it for one second... two... three...  As she exhales, her breasts visibly inflate, not with air, but with ponderous liquid weight.  Unfortunately, they stop short of the size you requested.  " + flags[kFLAGS.GOO_NAME] + " just doesn't have enough juice to fill them... yet.  She tells you that once you feed her enough she'll be as rounded as you requested.");
 	}
 	//To max {Giant}size!
-	else if (gooTitClass(arg) == 7) {
+	else if (gooTitClass(arg) === 7) {
 		outputText(flags[kFLAGS.GOO_NAME] + " places her hands on her nipples and takes a deep breath.  She holds it for one second... two... three...  As she exhales, her breasts visibly inflate, not with air, but with ponderous liquid weight.  They grow bigger and bigger, until they nearly obscure her waist.  They're clearly heavy, with something of a teardrop shape to them.  In between them, the lush latex cleavage draws your eyes.  Part of you wants to climb in and see if you can disappear into those heavy, latex-encased udders.");
 	}
 	//To huge {very nice} size!
-	else if (gooTitClass(arg) == 6) {
+	else if (gooTitClass(arg) === 6) {
 		//BIGGER
 		if (gooTitClass(gooTitSize()) < 6) outputText(flags[kFLAGS.GOO_NAME] + " places her hands on the underside of her breasts and winks.  As you watch, her " + gooTits() + " fill with greater and greater amounts of goo, stretching out to accommodate their obscene liquid weight.  They don't stop until they're nearly the size of beach balls, swaying heavily and obscuring most of your pet's torso from view.  Inky cleavage wobbles with every movement, inviting you to put something inside it.");
 		//Smaller: 
 		else outputText(flags[kFLAGS.GOO_NAME] + " places her hands on the underside of her gigantic breasts and winks.  Before your eyes, the mammoth mounds slowly recede, compressing their excessive mass into a smaller, more manageable form.  The smaller tits don't stop their shrinkage until they just barely obscure " + flags[kFLAGS.GOO_NAME] + "'s torso from view.  They still have an unbridled amount of cleavage, but now they come in a form that might be a little easier for your companion to carry.");
 	}
 	//To basketball {pretty nice} sized
-	else if (gooTitClass(arg) == 5) {
+	else if (gooTitClass(arg) === 5) {
 		//Bigger: 
 		if (gooTitClass(gooTitSize()) < 5) outputText(flags[kFLAGS.GOO_NAME] + " cups her " + gooTits() + " and pinches on her areola, tugging them outward.  The reflective black flesh gives to her pulls, stretching out and growing heavy with newfound weight.  The mammary growth doesn't stop until the breasts are about as big as basketballs, though far more jiggly.  The cleavage in between those impressive orbs seems to go on forever, almost inviting you to place something in it.");
 		//Smaller: 
 		else outputText(flags[kFLAGS.GOO_NAME] + " sighs and grabs hold of her bloated breasts.  She presses down, compressing them inward.  As if by magic, the pressure actually causes the oversized jugs to decrease in size.  They get smaller and smaller until they're just about the size of basketballs, still very big by any measure.  " + flags[kFLAGS.GOO_NAME] + "'s cleavage remains impressive, but not to such an obscene degree.  The women back home would've killed to have hooters like her.");
 	}
 	//To volley ball {big} sized
-	else if (gooTitClass(arg) == 4) {
+	else if (gooTitClass(arg) === 4) {
 		//Bigger: 
 		if (gooTitClass(gooTitSize()) < 4) outputText(flags[kFLAGS.GOO_NAME] + " giggles and asks, \"<i>Are you sure we can't go bigger?  The best part about being latex is that my new skin holds the shape without much work from me.  I can have huge, floor-dragging tits without any fuss!  Fuck, I'd be so horny having my nipples catch on every pebble!</i>\"  She sighs as she fantasizes and pulls on her nipples.  With every tug, her breasts expand a little bigger, engorging with fresh fluid.  They slosh and shake a little as they even out into volleyball-sized tits with a gorgeous slash of cleavage dividing them.");
 		//Smaller:
 		else outputText(flags[kFLAGS.GOO_NAME] + " sighs and says, \"<i>I wish you would've made me make them bigger.  Then I could crawl around on my hands and knees, dragging them on the ground and trying not to cum every time a nipple snagged on a pebble.</i>\"  She sighs as she fantasizes and pushes down on her oversized tits.  As if by magic, they shrink, compressing down until her breasts are about the size of volleyballs with a gorgeous slash of cleavage dividing them.");
 	}
 	//To DDish {large} sized:
-	else if (gooTitClass(arg) == 3) {
+	else if (gooTitClass(arg) === 3) {
 		//Bigger: 
 		if (gooTitClass(gooTitSize()) < 3) outputText(flags[kFLAGS.GOO_NAME] + " sighs as she cups her breasts and breaths, \"<i>Grow,</i>\" aloud.  Like the obedient sweater-puppies they are, her breasts expand and fill.  Their curves fill, the cleavage deepens, and " + flags[kFLAGS.GOO_NAME] + " smiles at the result.  Her breasts are now around a DD-cup - just as requested.");
 		//Smaller: " + 
 		else outputText(flags[kFLAGS.GOO_NAME] + " groans in disappointment, \"<i>I liked em big!  Well, you're the boss...</i>\"  She clenches her fists and closes her eyes.  Nothing happens at first, but after a moment, her " + gooTits() + " tighten up.  Over the span of a few dozen seconds, " + flags[kFLAGS.GOO_NAME] + " is reduced to having something like a DD-cup - a nice but fairly normal size, as ordered.");
 	}
 	//To C {medium} sized:
-	else if (gooTitClass(arg) == 2) {
+	else if (gooTitClass(arg) === 2) {
 		//Bigger: 
 		if (gooTitClass(gooTitSize()) < 2) outputText(flags[kFLAGS.GOO_NAME] + " says, \"<i>Well, that's a start I suppose.</i>\"  She cups her tiny teats and massages them with gentle gropes.  Each time, they jiggle a little bit more.  Almost as soon as she starts, she stops, leaving them as curvy C-cups.  \"<i>Could we go bigger?</i>\"");
 		//Smaller: 
 		else outputText(flags[kFLAGS.GOO_NAME] + " shudders, but obeys.  First, she presses down on her " + gooTits() + ", then, she blinks her eyes closed and shivers.  Before your eyes, the breast-flesh diminishes, eventually settling on a pair of curvy C-cups.  \"<i>I look like I must be dehydrated!  Good thing the other girls can't see me!</i>\"");
 	}
 	//To A {light} sized:
-	else if (gooTitClass(arg) == 1 && arg > 0) {
+	else if (gooTitClass(arg) === 1 && arg > 0) {
 		outputText(flags[kFLAGS.GOO_NAME] + " says, \"<i>I'll look anemic!  The other goo-girls will think I'm starving!</i>\"  You give her a condescending look and she sighs.  \"<i>All right, all right.  If my [master] wants tiny tits, " + player.mf("he'll","she'll") + " get them.</i>\"  She grabs hold of her " + gooTits() + " and compresses them in her grip.  Amazingly, the latex chest-flesh recedes into her as she pushes, diminishing before your very eyes.  She whimpers when they hit B-cups and groans when they reach A's.  " + flags[kFLAGS.GOO_NAME] + " pulls her hands away to show you the fruits of her labors - two tiny breasts, each barely a palmful.  A river of latex lubricants runs from her cleft, her arousal enhanced by the very act of obeying you against her wishes.");
 	}
 	else {
@@ -875,7 +875,7 @@ private function feedLatexy():void {
 private function feedLatexyCumIndirectly():void {
 	clearOutput();
 	//{1st Time, any indirect scene:  
-	if (flags[kFLAGS.GOO_INDIRECT_FED] == 0) {
+	if (flags[kFLAGS.GOO_INDIRECT_FED] === 0) {
 		outputText("You toss a wooden bowl on the ground in your latex pet's area.  She looks more than a little confused by this development, poking it and asking, \"<i>What's this for?</i>\"\n\n");
 		flags[kFLAGS.GOO_INDIRECT_FED] = 1;
 	}
@@ -884,7 +884,7 @@ private function feedLatexyCumIndirectly():void {
 	else outputText(", obediently waiting with her tongue wagging.");
 	if (gooFluid() < 33) {
 		outputText("  The hunger in her eyes is so relentless you fear her gaze could drill directly into your ");
-		if (player.balls == 0) outputText("body");
+		if (player.balls === 0) outputText("body");
 		else outputText("ballsack");
 		outputText(".");
 	}
@@ -927,7 +927,7 @@ private function feedLatexyCumIndirectly():void {
 private function feedLatexyGirlCumIndirectly():void {
 	clearOutput();
 	//{1st Time, any indirect scene:  
-	if (flags[kFLAGS.GOO_INDIRECT_FED] == 0) {
+	if (flags[kFLAGS.GOO_INDIRECT_FED] === 0) {
 		outputText("You toss a wooden bowl on the ground in your latex pet's area.  She looks more than a little confused by this development, poking it and asking, \"<i>What's this for?</i>\"\n\n");
 		flags[kFLAGS.GOO_INDIRECT_FED] = 1;
 	}
@@ -1071,7 +1071,7 @@ private function feedLatexyCumDirectly():void {
 	outputText("\n\nSilky smooth fingers dig into your [butt], a mirror of the digits that hold her head tight.  Both of her hands pull and tug, mashing loins to lips in a salacious kiss of cock-creaming pleasure.  Your body goes rigid, your hands pull tighter, and you begin to shake as orgasm hits.  The pulsing warmth of her throat seems to wick up into your middle, where it churns and bubbles before bursting out in an explosion of gooey pleasure.  Rope after rope of seed fires into your pet's gooey interior, silencing her humming and setting her sloppy-slick walls to squeeze you with your convulsions, wringing your [cock biggest] dry.");
 	if (player.cockTotal() > 1) {
 		outputText("  Your remaining ");
-		if (player.cockTotal() == 2) outputText("dick fruitlessly paints");
+		if (player.cockTotal() === 2) outputText("dick fruitlessly paints");
 		else outputText("dicks fruitlessly paint");
 		outputText(" her " + gooTits() + " with a sheen of white, wasting their moisture in a decadent display of virility.");
 	}
@@ -1120,7 +1120,7 @@ private function maleDirectFeedLatexGooGoneWrong():void {
 		if (player.cockTotal() > 2) outputText("your remaining erections");
 		else outputText("your other erection");
 		outputText(", stroking ");
-		if (player.cockTotal() == 2) outputText("it");
+		if (player.cockTotal() === 2) outputText("it");
 		else outputText("them");
 		outputText(" with slow caresses.  Using the extra ejaculate as lubricant, she ensures that they're nearly as engulfed in slippery latex as your main member.  ");
 	}
@@ -1132,7 +1132,7 @@ private function maleDirectFeedLatexGooGoneWrong():void {
 	if (player.biggestCockArea() > 80) outputText("impressive ");
 	outputText("mouthful of cock as it pumps directly into her belly, allowing her to drink even more deeply of your essence.");
 	outputText("\n\n" + flags[kFLAGS.GOO_NAME] + " releases you from your oral imprisonment long enough to leak a few trailing strands of spunk from your [cockHead biggest].  ");
-	if (player.cockTotal() == 1) outputText("Her hands fixate on your slick, black-coated length, beginning to stroke it with eager pumps");
+	if (player.cockTotal() === 1) outputText("Her hands fixate on your slick, black-coated length, beginning to stroke it with eager pumps");
 	else outputText("Her eager pumps never slow, and she moves one of her busy mitts to stroke your black-coated length");
 	outputText(".  The latex waif tickles your ");
 	if (player.balls > 0) outputText("[balls]");
@@ -1143,7 +1143,7 @@ private function maleDirectFeedLatexGooGoneWrong():void {
 	outputText(".  Worse, the slimy handjob");
 	if (player.cockTotal() > 1) outputText("s");
 	outputText(" you've been getting morph");
-	if (player.cockTotal() == 1) outputText("s");
+	if (player.cockTotal() === 1) outputText("s");
 	outputText(" into something that gives you even stronger strokes of pleasure.  If you could roll your eyes down to look, you'd see " + flags[kFLAGS.GOO_NAME] + "'s fingers merging together, joining into a single cylinder.  Dark-oil begins to drip from that tight grip, made all the more difficult to endure by the pleasant, purple-tinged latex lips that form on the bottom of her 'hand', a mock-pussy complete with latex-based lubricant.  At the bottom of every downstroke, your dick bursts free from the top, appearing just long enough for her to slurp languidly on your [cockHead].");
 	outputText("\n\nOrgasm slams into you with the force of a sledgehammer, turning your vision red and ringing your ears.  More wet slurps and squelches emanate from your groin as " + flags[kFLAGS.GOO_NAME] + " drinks deeper of your essence, coaxing fresh spurts of white from your thoroughly milked [balls].  As you fire your liquid bliss into her, your tired eyelids close.");
 	outputText("\n\n\"<i>You're not done yet, are you?</i>\" a sultry voice whispers, accompanied by fresh ministrations to your maleness.  \"<i>You promised to feed me, [Master], now come on, squirt in my slippery squeezes.  Give me your spunk!</i>\"  The voice begs and pleads, only silencing itself to plant itself back on your [cock biggest] again.  You lapse from conscious thought, only stirring to lift your hips high and release a fresh draught of nutrients for your greedy pet.");
@@ -1400,7 +1400,7 @@ private function femalePCDomFucksLatexGoo():void {
 		outputText(".  Of course, you've got a pet right here that's already an obedient little cunt-cleaner.  You plant your [vagina] right on her face and command, \"<i>Lick it clean.</i>\"");
 		outputText("\n\n" + flags[kFLAGS.GOO_NAME] + " enthusiastically puts her tongue to work, and at her touch, the inky substance melts away.  The parting fluid washes you with warmth as it vanishes into your pet's mouth, one drop at a time.  She greedily devours her leavings along with your copious, post-orgasmic lubrication, hungrily devouring it all.  Her tongue dives inside you to clean out your passageway.  Pistoning back and forth, she fucks you with it, making a meal for herself and carrying the liquid latex away on waves of your own lady-lubricants.  " + flags[kFLAGS.GOO_NAME] + " appears intent on slaking her unnatural thirst, and she continues to stimulate and drink long past when you think she'd be done.");
 		//{FIRST TIME}
-		if (flags[kFLAGS.LATEX_GOO_TIMES_FEMDOMMED_BY_PC] == 0) {
+		if (flags[kFLAGS.LATEX_GOO_TIMES_FEMDOMMED_BY_PC] === 0) {
 			outputText("\n\n" + flags[kFLAGS.GOO_NAME] + " will not relent.  You command her, \"<i>Stop, I'm clean!</i>\"  She doesn't.  You push her away with a [foot], nearly dropping as two feet of tongue unspool from your tongue-gaped vagina.  She pants up at you, then tries again.  You boot her back down, this time pinning her under a leg.  " + flags[kFLAGS.GOO_NAME] + "'s tongue reaches out, but you grab it in your hand and push her forehead back down with her other.  She whimpers.  Calmly, you tell her that next time you request a cleaning, she had better stop on command.");
 			outputText("\n\n" + flags[kFLAGS.GOO_NAME] + " blinks raven-hued tears away, understanding at last.  You release her and step rise, feeling a twinge of fresh arousal.  Your pet appears humbled but sated.  Best of all, she's left a puddle of onyx cunt-juice below her, freshly excreted while she was restrained.  Good girl.");
 		}
@@ -1457,7 +1457,7 @@ private function femalePCDomFucksLatexGooFuta():void {
 	outputText("\n\nYou bounce atop " + flags[kFLAGS.GOO_NAME] + " faster and faster");
 	if (flags[kFLAGS.GOO_DICK_LENGTH] * flags[kFLAGS.GOO_DICK_LENGTH]/6 <= player.vaginalCapacity()) outputText(", your [butt] clapping wetly against her onyx thighs");
 	outputText(".  All too soon, you feel a telltale twitching of the " + gooCock() + " inside you, and before you can stop it, a thick, slick feeling of warmth radiates outward from your womb.  Accompanying the explosion of moisture and bodily heat, a gradual pressure wells up in your womb, culminating in an explosion of slick sable goop that ");
-	if (flags[kFLAGS.GOO_DICK_TYPE] == CockTypesEnum.DOG) outputText("stays trapped inside you thanks to your pet's thick knot");
+	if (flags[kFLAGS.GOO_DICK_TYPE] === CockTypesEnum.DOG) outputText("stays trapped inside you thanks to your pet's thick knot");
 	else outputText("sprays out of your [vagina]");
 	outputText(".  You look over your shoulder and scold, \"<i>I didn't give you permission to cum!</i>\"");
 	
@@ -1465,13 +1465,13 @@ private function femalePCDomFucksLatexGooFuta():void {
 	outputText("\n\nDeciding that you'll forgive her for now");
 	if (!player.isTaur()) {
 		outputText(", you turn around to face her, pressing your [chest] into hers.");
-		if (flags[kFLAGS.GOO_NIPPLE_TYPE] == -1) {
+		if (flags[kFLAGS.GOO_NIPPLE_TYPE] === -1) {
 			outputText("  Her nipple-cunts ");
 			if (player.hasFuckableNipples()) outputText("kiss yours");
 			else outputText("swallow your nipples");
 			outputText(".");
 		}
-		else if (flags[kFLAGS.GOO_NIPPLE_TYPE] == 1) {
+		else if (flags[kFLAGS.GOO_NIPPLE_TYPE] === 1) {
 			outputText("  Her nipple-cocks ");
 			if (!player.hasFuckableNipples()) outputText("smear over the tops of your tits");
 			else outputText("disappear into your nipplecunts");
@@ -1497,7 +1497,7 @@ private function femalePCDomFucksLatexGooFuta():void {
 	if (player.hasCock()) outputText("  White erupts from your " + player.multiCockDescriptLight() + " with abandon.  You don't even care that it stains " + flags[kFLAGS.GOO_NAME] + "'s " + gooTits() + ".  It feels so good and she looks so pretty with strands of icing spattering over top of her.");
 	if (player.hasCock() && player.cumQ() >= 750) outputText("  Of course, you quickly bury those strands in a wave of alabaster.");
 	outputText("\n\n" + flags[kFLAGS.GOO_NAME] + " hugs you tight as she finishes unloading inside you.  Those last few squirts of sable spunk make your cunny feel like a mush of pleasure.  Sighing contentedly, you rise up off of your conquest");
-	if (flags[kFLAGS.GOO_DICK_TYPE] == CockTypesEnum.DOG) outputText(", ignoring the loud 'pop' of her knot slipping free,");
+	if (flags[kFLAGS.GOO_DICK_TYPE] === CockTypesEnum.DOG) outputText(", ignoring the loud 'pop' of her knot slipping free,");
 	outputText(" and present your stained vagina to her face.  She knows what to do, and immediately sets to cleaning it with her tongue.  Over two feet of flexible mouth muscle burrow into your [vagina], and the pleasant caresses let you know just much your pet enjoys this task.  She devours her sticky spunk and your female fluids with ardor, never slowing in her task.  Even when you're sure that you're clean, she keeps going, inciting tingles of fresh lust from your body.");
 	outputText("\n\nThat will not do.  You command her to stop");
 	if (flags[kFLAGS.LATEX_GOO_TIMES_FEMDOMMED_BY_PC] > 0) outputText(", and obediently, she does.  To reward her for being a good pet, you give her a deep tongue kiss.");
@@ -1523,7 +1523,7 @@ private function malePCDomFucksLatexGoo():void {
 	if (gooObedience() > 50) outputText(", [Master]");
 	outputText("?</i>\"");
 	outputText("\n\nYou take her chin in your palm and tilt her up to look at you as you explain.  You intend to fuck her nice and hard.  Then, you're going to blow a nice thick load in her stretchy, gooey little pussy until there's ribbons of white dripping out of her slit.  " + flags[kFLAGS.GOO_NAME] + " blushes violet at your proclamation.  Between her knees, a few drops fall unbidden to the ground.  Solid black nipple");
-	if (flags[kFLAGS.GOO_NIPPLE_TYPE] == 1) outputText("-cock");
+	if (flags[kFLAGS.GOO_NIPPLE_TYPE] === 1) outputText("-cock");
 	outputText("s harden on her chest, jutting out and just begging to be sucked.");
 	//{NOT OBEDIENT ENOUGH}
 	if (gooObedience() < 60) {
@@ -1649,7 +1649,7 @@ private function feedLatexySomeMilk():void {
 	else outputText("\n\nAs she suckles, " + flags[kFLAGS.GOO_NAME] + "'s hands wander downward, her fingers brushing tantalizingly across your supple flesh until her smooth tips send a shiver up your spine, her knuckles running across your exposed [asshole] as she works her fingers into your [butt].  With no other genitalia on offer, you grit your teeth as " + flags[kFLAGS.GOO_NAME] + " slithers a smooth finger into your rectum, pushing into your ass with agonizing slowness, tiny thrusts in and out timed with her suckling from your teat.");
 	//{Combine, next paragraph}
 	outputText("\n\nUnder the latex girl's combined milking and sexual advances, you feel an orgasm rising deep in your gut.  You steel yourself, trying to hold out a moment longer as " + flags[kFLAGS.GOO_NAME] + " intensifies her assault, suckling every last drop from you as her fingers work wonders upon your ");
-	if (player.gender == 3) outputText("double genitals");
+	if (player.gender === 3) outputText("double genitals");
 	else if (player.hasCock()) outputText("cock");
 	else if (player.hasVagina()) outputText("cunt");
 	else outputText("asshole");

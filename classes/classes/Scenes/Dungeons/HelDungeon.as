@@ -61,7 +61,7 @@ package classes.Scenes.Dungeons
 			outputText("Before bedding down for the night, you make one last check of your camp's perimeter, making sure all your traps and defenses are still in place and primed in the event of a surprise nighttime assault.  As you come to the outermost parts of your makeshift camp, you notice a cloaked stranger approaching out of the evening darkness.  You're about to ready your [weapon], but you recognize the shapely figure of Hel the salamander walking towards you, hips a-sway underneath her loose traveling cloak.");
 
 			//(If Hel has never been to camp before (ie, no Isabella threesome at camp)
-			if (flags[kFLAGS.HEL_ISABELLA_THREESOME_ENABLED] == 0) {
+			if (flags[kFLAGS.HEL_ISABELLA_THREESOME_ENABLED] === 0) {
 				outputText("\n\n\"<i>[name]!</i>\" the salamander shouts, waving emphatically as she approaches.  \"<i>Shit, do you have any idea how hard you are to track down? I've been looking for you everywhere!</i>\"  You ");
 				//[(pussy)
 				if (player.cor < 50) outputText("quickly rush over and stop Hel before she loses a leg to one of your traps");
@@ -371,7 +371,7 @@ package classes.Scenes.Dungeons
 			spriteSelect(SpriteDb.s_valeria);
 			clearOutput();
 			//In Tower of the Phoenix
-			if (flags[kFLAGS.VALERIA_FOUND_IN_GLACIAL_RIFT] == 0) {
+			if (flags[kFLAGS.VALERIA_FOUND_IN_GLACIAL_RIFT] === 0) {
 				outputText("You tell her to fuck off -- you don't need armor that might try to kill or rape you at night.");
 				outputText("\n\nShe huffs indignantly and scrambles to her feet.  \"<i>Well fine, and fuck you anyway.  I hope you get raped by harpies, " + player.mf("sir","madam") + ".</i>\"  After a moment, she hesitantly adds, \"<i>But if you change your mind later... Well, we'll see if you live through this place without me!</i>\"  Before you can stop her, she ducks out the front door and off to... Wherever goo-armor-girl-things would go, you guess.  Still, to your surprise, you feel rather invigorated after the battle, and rolling your shoulders, you turn your attention back to the dungeon ahead.");
 				HPChange(1000,false);
@@ -393,7 +393,7 @@ package classes.Scenes.Dungeons
 			spriteSelect(SpriteDb.s_valeria);
 			clearOutput();
 			//In Tower of the Phoenix
-			if (flags[kFLAGS.VALERIA_FOUND_IN_GLACIAL_RIFT] == 0) {
+			if (flags[kFLAGS.VALERIA_FOUND_IN_GLACIAL_RIFT] === 0) {
 				outputText("You tell her that... no thanks, not now -- you don't need armor right now.");
 				outputText("\n\nShe huffs indignantly and scrambles to her feet.  \"<i>Well fine, maybe you can take me later, " + player.mf("sir", "madam") + "?</i>\"  After a moment, she hesitantly adds, \"<i>But if you change your mind later... Well, we'll see if you live through this place without me! But if you need me later, I'll be at Glacial Rift.</i>\"  Before you can stop her, she ducks out the front door and off to... Wherever goo-armor-girl-things would go, you guess.  Still, to your surprise, you feel rather invigorated after the battle, and rolling your shoulders, you turn your attention back to the dungeon ahead.");
 			}
@@ -423,12 +423,12 @@ package classes.Scenes.Dungeons
 			flags[kFLAGS.TOOK_GOO_ARMOR] = 1;
 			//(PC regains HP)
 			var item:Armor = player.setArmor(armors.GOOARMR); //Item is now the player's old armor
-			if (item == null) {
-				if (flags[kFLAGS.VALERIA_FOUND_IN_GLACIAL_RIFT] == 0) doNext(roomGuardHall);
+			if (item === null) {
+				if (flags[kFLAGS.VALERIA_FOUND_IN_GLACIAL_RIFT] === 0) doNext(roomGuardHall);
 				else doNext(camp.returnToCampUseOneHour);
 			}
 			else {
-				if (flags[kFLAGS.VALERIA_FOUND_IN_GLACIAL_RIFT] == 0) inventory.takeItem(item, roomGuardHall);
+				if (flags[kFLAGS.VALERIA_FOUND_IN_GLACIAL_RIFT] === 0) inventory.takeItem(item, roomGuardHall);
 				else inventory.takeItem(item, camp.returnToCampUseOneHour);
 			}
 		}
@@ -540,7 +540,7 @@ package classes.Scenes.Dungeons
 			//If Male: [Anal]
 			//If Female [Get Licked]
 			//If Genderless: \"<i>Unfortunately, there's not much she can do for you...</i>\"
-			if (player.gender == 0) outputText("Unfortunately, there's not much she can do for you...");
+			if (player.gender === 0) outputText("Unfortunately, there's not much she can do for you...");
 			if (player.hasCock()) addButton(0, "Anal", kiriSexAnal).hint("Put your [cock] into Kiri's ass!");
 			if (player.hasVagina()) addButton(1, "Get Licked", kiriSexGetLicked).hint("Have Kiri lick your [pussy].");
 			addButton(4, "Back", playerMenu);
@@ -598,11 +598,11 @@ package classes.Scenes.Dungeons
 			outputText("\n\n\"<i>Well hey there, cutie,</i>\" Valeria says, giving Kiri a little wink.  The harpy shudders slightly and shakes the surprise off.");
 			outputText("\n\nYou clear your throat and repeat your question.");
 			//[If Broodmother hasn't been defeated]
-			if (flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED] == 0) outputText("\n\n\"<i>Oh, right. Well, that harpy broodmother is serious business. She's a powerful mage, and a heavy-hitter besides.  Careful with her, or you're liable to end up drugged out of your mind and used as breeding stock 'till you die.  I've seen it happen to other adventurers coming through.</i>\"");
+			if (flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED] === 0) outputText("\n\n\"<i>Oh, right. Well, that harpy broodmother is serious business. She's a powerful mage, and a heavy-hitter besides.  Careful with her, or you're liable to end up drugged out of your mind and used as breeding stock 'till you die.  I've seen it happen to other adventurers coming through.</i>\"");
 			//[If Jailer hasn't been defeated]
-			if (flags[kFLAGS.HEL_BRIGID_DEFEATED] == 0) outputText("\n\n\"<i>Brigid the Jailer is a big girl, probably the meanest harpy here. The others give her plenty of space, from what I've seen.  She uses a hot poker as her weapon, too.  Watch out unless you wanna get burned!</i>\"");
+			if (flags[kFLAGS.HEL_BRIGID_DEFEATED] === 0) outputText("\n\n\"<i>Brigid the Jailer is a big girl, probably the meanest harpy here. The others give her plenty of space, from what I've seen.  She uses a hot poker as her weapon, too.  Watch out unless you wanna get burned!</i>\"");
 			//[If phoenixes haven't been defeated]
-			if (flags[kFLAGS.HEL_PHOENIXES_DEFEATED] == 0) outputText("\n\n\"<i>There's some freaky-ass half-breed harpy things upstairs that I've seen around a bit.  Phoenixes, I guess they're called.  They breathe fire, so watch your ass.  I can absorb some of the heat, but... Don't get roasted, okay?</i>\"");
+			if (flags[kFLAGS.HEL_PHOENIXES_DEFEATED] === 0) outputText("\n\n\"<i>There's some freaky-ass half-breed harpy things upstairs that I've seen around a bit.  Phoenixes, I guess they're called.  They breathe fire, so watch your ass.  I can absorb some of the heat, but... Don't get roasted, okay?</i>\"");
 			doNext(playerMenu);
 		}
 
@@ -612,19 +612,19 @@ package classes.Scenes.Dungeons
 			clearOutput();
 			menu();
 			outputText("You walk up to the torture rack.  ");
-			if (flags[kFLAGS.HEL_DUNGEON_TAKEN_WHIP] == 0 || flags[kFLAGS.HEL_DUNGEON_TAKEN_STRAPS] == 0 || flags[kFLAGS.HEL_DUNGEON_TAKEN_DAGGER] == 0) {
+			if (flags[kFLAGS.HEL_DUNGEON_TAKEN_WHIP] === 0 || flags[kFLAGS.HEL_DUNGEON_TAKEN_STRAPS] === 0 || flags[kFLAGS.HEL_DUNGEON_TAKEN_DAGGER] === 0) {
 				outputText("The rack contains: ");
-				if (flags[kFLAGS.HEL_DUNGEON_TAKEN_WHIP] == 0) {
+				if (flags[kFLAGS.HEL_DUNGEON_TAKEN_WHIP] === 0) {
 					outputText("A whip");
 					addButton(0, "SucWhip", takeWhip);
 				}
-				if (flags[kFLAGS.HEL_DUNGEON_TAKEN_STRAPS] == 0) {
-					if (flags[kFLAGS.HEL_DUNGEON_TAKEN_WHIP] == 0) outputText(", ");
+				if (flags[kFLAGS.HEL_DUNGEON_TAKEN_STRAPS] === 0) {
+					if (flags[kFLAGS.HEL_DUNGEON_TAKEN_WHIP] === 0) outputText(", ");
 					outputText("some leather straps");
 					addButton(1, "BonStrp", takeStraps);
 				}
-				if (flags[kFLAGS.HEL_DUNGEON_TAKEN_DAGGER] == 0) {
-					if (flags[kFLAGS.HEL_DUNGEON_TAKEN_STRAPS] == 0 || flags[kFLAGS.HEL_DUNGEON_TAKEN_WHIP] == 0) outputText(", ");
+				if (flags[kFLAGS.HEL_DUNGEON_TAKEN_DAGGER] === 0) {
+					if (flags[kFLAGS.HEL_DUNGEON_TAKEN_STRAPS] === 0 || flags[kFLAGS.HEL_DUNGEON_TAKEN_WHIP] === 0) outputText(", ");
 					outputText("a lust-draft coated dagger");
 					addButton(2, "L.Daggr", takeDagger);
 				}
@@ -638,7 +638,7 @@ package classes.Scenes.Dungeons
 		//[Prisoner] (First Time)
 		public function helDungeonPrisonerTalk():void {
 			clearOutput();
-			if (flags[kFLAGS.HEL_PC_TALKED_WITH_HAKON] == 0) {
+			if (flags[kFLAGS.HEL_PC_TALKED_WITH_HAKON] === 0) {
 				outputText("You approach the Salamander strapped to the table.  He looks at you with his one good eye, warily gauging you as you approach.");
 				outputText("\n\n\"<i>Well, aren't you a sight for sore eyes,</i>\" he laughs, his voice little more than a rasp.  \"<i>About time somebody put a boot up that punk bitch's ass.  Ha!  Hey, the name's Hakon.  I'd shake your hand, but, uh, I'm a bit tied up at the moment as it were.  So, what brings an outsider all the way up here?</i>\"");
 				outputText("\n\nYou tell him that you're here to rescue him as it happens.");
@@ -904,7 +904,7 @@ package classes.Scenes.Dungeons
 			//(Display Options: [Hakon](if PC knows this) [Kiri] [Queen](If not dead/gone))
 			if (flags[kFLAGS.HEL_PC_TALKED_WITH_HAKON] > 0) addButton(0, "Hakon", heliaHakonTalk).hint("Ask Helia about Hakon, the salamander you've found in the dungeon.");
 			addButton(1, "Kiri", heliaKiriTalk).hint("Ask Helia about Kiri, the half-breed girl.");
-			if (flags[kFLAGS.HARPY_QUEEN_EXECUTED] == 0) addButton(2, "Queen", heliaQueenTalk).hint("Ask Helia about the Harpy Queen.");
+			if (flags[kFLAGS.HARPY_QUEEN_EXECUTED] === 0) addButton(2, "Queen", heliaQueenTalk).hint("Ask Helia about the Harpy Queen.");
 			addButton(4, "Back", playerMenu);
 			}
 		//Throne Room -- [Helia] -- [Hakon]
@@ -914,7 +914,7 @@ package classes.Scenes.Dungeons
 			outputText("\n\n\"<i>Wha... what. No, that's not... It can't be...</i>\"");
 			outputText("\n\nYou assure her that it's true. The salamander she came here to rescue is none other than father, Hakon.");
 			outputText("\n\n\"<i>I don't believe it,</i>\" Hel says, rubbing at the corners of her eyes.  \"<i>I thought all these years... I was sure he was dead.  How... No.  It doesn't matter,</i>\" she says, turning to the broodmother beneath her.");
-			if (flags[kFLAGS.HARPY_QUEEN_EXECUTED] == 0) outputText("  \"<i>You're going to pay for what you did to my father, you bitch.  I promise you that.</i>\"");
+			if (flags[kFLAGS.HARPY_QUEEN_EXECUTED] === 0) outputText("  \"<i>You're going to pay for what you did to my father, you bitch.  I promise you that.</i>\"");
 			flags[kFLAGS.HEL_KNOWS_ABOUT_HAKON] = 1;
 			doNext(playerMenu);
 		}
@@ -939,7 +939,7 @@ package classes.Scenes.Dungeons
 			outputText("\n\nYou ask Hel exactly what she thinks you ought to do with the 'queen cunt.'");
 			outputText("\n\n\"<i>Well, we can start by me shoving my tail so far up her twat that she'll never have kids again.  That's a goddamn start.</i>\"");
 			//[If PC has already told her about Hakon: 
-			if (flags[kFLAGS.HEL_KNOWS_ABOUT_HAKON] == 1) outputText("  \"<i>Maybe snap her neck afterwards.</i>\"");
+			if (flags[kFLAGS.HEL_KNOWS_ABOUT_HAKON] === 1) outputText("  \"<i>Maybe snap her neck afterwards.</i>\"");
 			doNext(playerMenu);
 		}
 
@@ -972,7 +972,7 @@ package classes.Scenes.Dungeons
 			outputText("\n\nYou nod for Hel to get off.  She does so grudgingly, letting the Harpy Queen stand and roll her shoulders, spreading her great wings wide.");
 			outputText("\n\n\"<i>Hmm. You're a fool, Champion,</i>\" she says, \"<i>But perhaps I was wrong about you.  Come, my children!  We are leaving this place!</i>\"");
 			//[If you told Hel about Hakon:]
-			if (flags[kFLAGS.HEL_KNOWS_ABOUT_HAKON] == 1) {
+			if (flags[kFLAGS.HEL_KNOWS_ABOUT_HAKON] === 1) {
 				outputText("\n\nThe harpies beat their wings and croon happily, eager to be away from you.  As the Harpy Queen is ready to take off, she gives you an appreciative nod, with what might have even been a smile.  It looks as though you've made a friend tod-- OH FUCK!");
 				outputText("\n\nYou try and yell out, but too late. Hel has lunged forward and, grabbing the broodmother by the neck, spins around.  The sound of neck bones snapping echoes through the tower as the queen falls, hitting the floor with a wet thump.");
 				outputText("\n\n\"<i>Bullshit,</i>\" Hel snaps, wringing the dead queen's neck under her arm.  The other harpies around you shriek in outrage, pain, and fear.  \"<i>Do you have ANY IDEA what this bitch did?  To my father--to me?  There was no fucking way I was going to just let her walk off.  No, [name]. No way.</i>\"");
@@ -1005,7 +1005,7 @@ package classes.Scenes.Dungeons
 			outputText("\n\nShe stands up from the body and wraps you in a tight hug. \"<i>...Thank you.</i>\"");
 			outputText("\n\nYou pat Helia on the head and with a shout, tell the harpies to get lost.  They do so reluctantly, too afraid to fight you, but still outraged at the murder.  They take flight, hurtling out the hole in the ceiling crying curses and epitaphs behind them.");
 			outputText("\n\n\"<i>Alright. You've got the key, so go break ");
-			if (flags[kFLAGS.HEL_KNOWS_ABOUT_HAKON] == 1) outputText("Dad ");
+			if (flags[kFLAGS.HEL_KNOWS_ABOUT_HAKON] === 1) outputText("Dad ");
 			else outputText("that poor salamander ");
 			outputText("out of the dungeon.  I'll make sure the phoenixes and harpies don't give you two trouble on the way out.</i>\"");
 			outputText("\n\nWith that, Hel trots out the door and down the stairs, leaving you alone in the room. You notice that the queen's staff has fallen beside her body.");
@@ -1035,7 +1035,7 @@ package classes.Scenes.Dungeons
 			outputText("\n\n\"<i>Well then. I guess that's that, then,</i>\" Hel says, swinging her sword over her shoulder into its sheath.");
 			outputText("\n\nYou nod your agreement.");
 			outputText("\n\n\"<i>Alright. You've got the key, so go break ");
-			if (flags[kFLAGS.HEL_KNOWS_ABOUT_HAKON] == 1) outputText("Dad ");
+			if (flags[kFLAGS.HEL_KNOWS_ABOUT_HAKON] === 1) outputText("Dad ");
 			else outputText("that poor salamander ");
 			outputText("out of the dungeon.  I'll make sure the phoenixes and harpies don't give you two trouble on the way out.</i>\"");
 			outputText("\n\nWith that, Hel trots out the door and down the stairs, leaving you alone in the room. You notice that the queen's staff has fallen beside her body.");
@@ -1066,7 +1066,7 @@ package classes.Scenes.Dungeons
 			//If Herm: All Above
 			//If Genderless: \"<i>You don't really see how this is going to work out...</i>\" (NO SMUT 4 U)
 			menu();
-			if (player.gender == 0)
+			if (player.gender === 0)
 			{
 				outputText("\n\n<b>Unfortunately, you lack the endowments needed to perform this action.</b>");
 				if (silly()) outputText("<b> Another reason not to be genderless.</b>");
@@ -1148,7 +1148,7 @@ package classes.Scenes.Dungeons
 			outputText("\n\n\"<i>You bitch!</i>\" Hel snaps, grinding her foot into the harpy's chest.  \"<i>What the fuck is wrong with you people?  Did you even think, for one fucking second, actually THINK to maybe ask one of us?  Just fly down and ask any horny salamander boy, 'Wanna fill me with your seed till my eggs pop and make an army?' Guess what - he'd say yes! Any man in Mareth who's still pure at heart would say YES!</i>\"");
 			outputText("\n\nThe harpy queen turns her gaze toward Hel. \"<i>This one did not.</i>\"");
 			//[If PC told Hel about Hakon:
-			if (flags[kFLAGS.HEL_KNOWS_ABOUT_HAKON] == 1) outputText("\n\n\"<i>That's because he was MARRIED, YOU BITCH!</i>\" Hel screams, her tail practically blazing behind her. The queen recoils, but falls silent.");
+			if (flags[kFLAGS.HEL_KNOWS_ABOUT_HAKON] === 1) outputText("\n\n\"<i>That's because he was MARRIED, YOU BITCH!</i>\" Hel screams, her tail practically blazing behind her. The queen recoils, but falls silent.");
 			else outputText("\n\n\Hel scowls, but says nothing. It doesn't seem like you'll get anything further from the queen.");
 			//(Return PC to room menu)
 			doNext(playerMenu);
@@ -1158,9 +1158,9 @@ package classes.Scenes.Dungeons
 		//(Play when the PC interacts with Hakon, in the dungeon, while possessing both HARPY KEY key items)
 		public function towerOutro():void {
 			clearOutput();
-			if (flags[kFLAGS.HARPY_QUEEN_EXECUTED] == 0) flags[kFLAGS.HARPY_QUEEN_EXECUTED] = 1;
+			if (flags[kFLAGS.HARPY_QUEEN_EXECUTED] === 0) flags[kFLAGS.HARPY_QUEEN_EXECUTED] = 1;
 			//[IF PC DID NOT TELL HEL ABOUT HAKON BEFORE]
-			if (flags[kFLAGS.HEL_KNOWS_ABOUT_HAKON] == 0) {
+			if (flags[kFLAGS.HEL_KNOWS_ABOUT_HAKON] === 0) {
 				outputText("With Hakon's arm slung over your shoulder, you help the long-imprisoned salamander up the stairs and, with great effort, out the ancient doors of the tower.  Outside, you see Helia and her pseudo-phoenix half-sister Kiri.  Hakon recoils as the evening sunlight hits his eyes, his first taste of the sun in years.");
 				outputText("\n\nHel and Kiri turn to you, smiling from ear to ear as you bring Hakon outside.");
 				outputText("\n\n\"<i>Hel,</i>\" Kiri says, taking the salamander by the hand.  \"<i>I've got someone you might want to meet.</i>\"");
@@ -1207,8 +1207,8 @@ package classes.Scenes.Dungeons
 			outputText("You stand in what might have been a guard room once upon a time.  Now it is a ruined, ransacked mess.  It seems not to have been used in years, and the table, chairs, and spears lined up against the wall have all rotted away to almost nothing.");
 			dungeons.setDungeonButtons(roomStairwell, null, null, null);
 			//[If Armor has not been taken/fought with: 
-			if (flags[kFLAGS.WON_GOO_ARMOR_FIGHT] + flags[kFLAGS.LOST_GOO_ARMOR_FIGHT] == 0) {
-				if (flags[kFLAGS.CLEARED_HEL_TOWER] == 0) {
+			if (flags[kFLAGS.WON_GOO_ARMOR_FIGHT] + flags[kFLAGS.LOST_GOO_ARMOR_FIGHT] === 0) {
+				if (flags[kFLAGS.CLEARED_HEL_TOWER] === 0) {
 					outputText("  However, a suit of half-plate armor has been left up against the eastern wall, hanging loosely on a rack; it seems to be in usable shape.");
 					addButton(0, "Armor", takeGooArmor).hint("Approach the armor. You're sure the armor might be useful.");
 				}
@@ -1235,7 +1235,7 @@ package classes.Scenes.Dungeons
 			outputText(".  To your surprise, nothing horrifying jumps out and tries to rape you.  ");
 			if (flags[kFLAGS.HEL_DUNGEON_MEAD_LOOTED] < 5) {
 				outputText("You see a few horns of mead slung up in a wine rack - they smell a bit pungent, but alcohol improves with age they say... ");
-				outputText("There " + (flags[kFLAGS.HEL_DUNGEON_MEAD_LOOTED] == 4 ? "is" : "are") + " " + num2Text(5 - flags[kFLAGS.HEL_DUNGEON_MEAD_LOOTED]) + " God's Mead " + (flags[kFLAGS.HEL_DUNGEON_MEAD_LOOTED] == 4 ? "horn" : "horns") + " here to take.\n\n");
+				outputText("There " + (flags[kFLAGS.HEL_DUNGEON_MEAD_LOOTED] === 4 ? "is" : "are") + " " + num2Text(5 - flags[kFLAGS.HEL_DUNGEON_MEAD_LOOTED]) + " God's Mead " + (flags[kFLAGS.HEL_DUNGEON_MEAD_LOOTED] === 4 ? "horn" : "horns") + " here to take.\n\n");
 				addButton(0, "GodMead", takeGodMead);
 			}
 			else {
@@ -1249,7 +1249,7 @@ package classes.Scenes.Dungeons
 			clearOutput();
 			outputText("<b><u>Stair Well</u></b>\n");
 			dungeons.setDungeonButtons(null, roomGuardHall, null, null);
-			if (flags[kFLAGS.HEL_HARPIES_DEFEATED] == 0) {
+			if (flags[kFLAGS.HEL_HARPIES_DEFEATED] === 0) {
 				outputText("You open the heavy double doors and cringe as a loud \"<i>SCREECH!</i>\" echoes out and up the next room - a wide open stairwell, it seems, with minimal cover.  The perfect place for a harpy to fight... Oh, shit!");
 				outputText("\n\nYou ready your [weapon] as a wing of harpies looks up from eating at a small table in the center of the stone stairwell, all staring at you with wide, astonished eyes.  Another few harpies peer down from above, poking their heads down the stairs to get a look at the intruder.  Almost in unison, they jump to their feet and bare their claws.");
 				outputText("\n\nIt's a fight!");
@@ -1259,11 +1259,11 @@ package classes.Scenes.Dungeons
 				return;
 			}
 			else {
-				if (flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED] == 0) {
+				if (flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED] === 0) {
 					outputText("There's a pile of drugged, unconscious harpies you've already defeated on the floor, as well as Kiri, the only one that didn't attack you.  You recall that she knows Hel and is here to help the both of you.");
 					//(Display Options: [Talk] [Sex] [Valeria](If Encountered) [Go Upstairs] [Go Downstairs])
 					var valeria:Number = 0;
-					if (player.armorName == "goo armor") addButton(1, "Valeria", talkToValeria).hint("Talk to Valeria about the current situation.");
+					if (player.armorName === "goo armor") addButton(1, "Valeria", talkToValeria).hint("Talk to Valeria about the current situation.");
 					addButton(0, "Kiri", kiriInteraction).hint("Approach Kiri, the half-breed girl.");
 				}
 				else {
@@ -1282,7 +1282,7 @@ package classes.Scenes.Dungeons
 			outputText("<b><u>Dungeon</u></b>\n");
 			dungeons.setDungeonButtons(null, null, null, null);
 			//(Intro -- Before Fight)
-			if (flags[kFLAGS.HEL_BRIGID_DEFEATED] == 0) {
+			if (flags[kFLAGS.HEL_BRIGID_DEFEATED] === 0) {
 				outputText("You make your way downstairs into a small, smoky stone room.  A thick smell of steam and burnt meat hangs over the room, making you cough as you descend the stairs.  As you make your way into the tower's little dungeon, you quickly notice the salamander chained to a table.  He's a great big man, nearly eight feet tall and covered in scars.  He has short, spiky red hair, the same color as his tail and limb scales, and a black eyepatch covers his left socket.  He looks like hell, emaciated and exhausted, covered in thick cum-stains from being used an untold number of times by the harpies of the tower.");
 				outputText("\n\nBeside him, though, is the tallest harpy you've ever seen.  A foot over most of her sisters, she stands stark naked save for a red-hot iron poker in her hand and a heavy iron shield in the other.  Her pink hair is shaved down to a mohawk, and her face is covered with a dozen iron studs and rings.");
 				outputText("\n\n\"<i>'Bout time you made it down here, you " + player.mf("bastard","bitch") + ".  Mama Brigid's been waiting a loooong time for someone to try and break out one of her toys.</i>\"  She pats the hefty keyring on the underside of her shield and leers at you.");
@@ -1292,9 +1292,9 @@ package classes.Scenes.Dungeons
 				return;
 			}
 			else {
-				if (flags[kFLAGS.CLEARED_HEL_TOWER] == 0) {
+				if (flags[kFLAGS.CLEARED_HEL_TOWER] === 0) {
 					outputText("You're standing in a small dungeon room, nearly gagging on the smells of burnt meat and smoke.  A number of nasty torture devices hang on the walls, and a table sits in the middle of the room, ");
-					if (flags[kFLAGS.HEL_PC_TALKED_WITH_HAKON] == 0) {
+					if (flags[kFLAGS.HEL_PC_TALKED_WITH_HAKON] === 0) {
 						outputText("on which the salamander prisoner lies");
 						addButton(0, "Prisoner", helDungeonPrisonerTalk).hint("Talk to the salamander prisoner.")
 					}
@@ -1319,7 +1319,7 @@ package classes.Scenes.Dungeons
 			outputText("<b><u>Mezzanine</u></b>\n");
 			dungeons.setDungeonButtons(null, null, null, null);
 			//(Intro; Before Battle)
-			if (flags[kFLAGS.HEL_PHOENIXES_DEFEATED] == 0) {
+			if (flags[kFLAGS.HEL_PHOENIXES_DEFEATED] === 0) {
 				outputText("You ascend the heavy stone steps, circling the tower's walls as you ascend.  You are stopped perhaps half-way to the second main floor on a small terrace level with a wide open view overlooking the vale beneath the high mountains.  As you step onto the mezzanine, you watch with a scowl as a number of tall, muscular hermaphrodites step out from the shadows.  Each is clad in heavy chainmail and wields a scimitar and a blood-red shield, but is otherwise nude, revealing their reptilian pricks and slick pussies.  The soldiers standing before you look like harpies, but they have scaled, humanoid legs, long, fiery tails and their wings are the darkest crimson.  These are phoenixes - the dread half-breed warriors you and Hel are here to stop!");
 				menu();
 				startCombat(new PhoenixPlatoon());
@@ -1327,12 +1327,12 @@ package classes.Scenes.Dungeons
 				return;
 			}
 			else {
-				if (flags[kFLAGS.CLEARED_HEL_TOWER] == 0) outputText("You're standing in the Mezzanine of the tower, a small terrace with a magnificent view of the High Mountains and the valleys below.  There are stairs leading up and down from here, as well as a pile of defeated phoenixes that don't look like they'll be recovering for a bit.");
+				if (flags[kFLAGS.CLEARED_HEL_TOWER] === 0) outputText("You're standing in the Mezzanine of the tower, a small terrace with a magnificent view of the High Mountains and the valleys below.  There are stairs leading up and down from here, as well as a pile of defeated phoenixes that don't look like they'll be recovering for a bit.");
 				else outputText("You're standing in the Mezzanine of the tower, a small terrace with a magnificent view of the High Mountains and the valleys below.  There are stairs leading up and down from here.");
 				//(Display Options: [Go Upstairs] [Go Downstairs] [Phoenixes])
 				addButton(5, "Upstairs", roomThroneRoom);
 				addButton(7, "Downstairs", roomStairwell);
-				if (flags[kFLAGS.CLEARED_HEL_TOWER] == 0) addButton(0, "Phoenixes", checkOutDemBirdBitches).hint("Examine the phoenixes and possibly sate your baser needs.");
+				if (flags[kFLAGS.CLEARED_HEL_TOWER] === 0) addButton(0, "Phoenixes", checkOutDemBirdBitches).hint("Examine the phoenixes and possibly sate your baser needs.");
 				//(Go Downstairs returns you to the Stairwell; Go Up takes you to the throne room)
 			}
 		}
@@ -1342,7 +1342,7 @@ package classes.Scenes.Dungeons
 			outputText("<b><u>Throne Room</u></b>\n");
 			dungeons.setDungeonButtons(null, null, null, null);
 			//Throne Room Descript (Before Combat!)
-			if (flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED] == 0) {
+			if (flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED] === 0) {
 				outputText("Ascending the stairs, you are stopped by a pair of heavy double doors.  They're covered with rotting, chipped purple paint and laurels that look years old.  The sharp, screeching sounds of metal on metal ring out in the next room - the sounds of a fight!  You kick the door open, and charge into what must be some kind of throne room; a large carpet dominates your view, leading up to a towering throne surrounded by pillows and cushions, currently vacant.");
 
 				outputText("\n\nIn the center of the throne room stand Helia the Salamander and a harpy that could only be described as a broodmother.  She isn't particularly tall or menacing looking, but her hips are truly inhuman, thrice as wide as she is at the least, and her pillowy ass seems canyon-like in her nudity, the type of butt you could lose yourself in forever.  The harpy matron, wielding a staff, is currently locked in a fierce battle against Hel's red-hot scimitar.");
@@ -1371,17 +1371,17 @@ package classes.Scenes.Dungeons
 			}
 			else {
 				//Room Description:
-				if (flags[kFLAGS.CLEARED_HEL_TOWER] == 0) outputText("You stand in the harpy throne room - a long, circular room dominated by a high throne surrounded by cushions and drapes.  A single long carpet flows from the heavy double doors to the throne, reminding you of a castle's great hall in days gone by.  A number of harpies cower in the shadows, afraid to oppose you further now that their mighty leader is defeated.");
+				if (flags[kFLAGS.CLEARED_HEL_TOWER] === 0) outputText("You stand in the harpy throne room - a long, circular room dominated by a high throne surrounded by cushions and drapes.  A single long carpet flows from the heavy double doors to the throne, reminding you of a castle's great hall in days gone by.  A number of harpies cower in the shadows, afraid to oppose you further now that their mighty leader is defeated.");
 				else outputText("You stand in the harpy throne room - a long, circular room dominated by a high throne surrounded by cushions and drapes.  A single long carpet flows from the heavy double doors to the throne, reminding you of a castle's great hall in days gone by.  ");
 				//[if PC hasn't executed the queen: 
-				if (flags[kFLAGS.HARPY_QUEEN_EXECUTED] == 0) {
+				if (flags[kFLAGS.HARPY_QUEEN_EXECUTED] === 0) {
 					outputText("  The Harpy Queen slumps in her throne, insensate.");
 					addButton(1, "Harpy Queen", harpyQueenAdvantage);
 				}
-				if (flags[kFLAGS.HARPY_QUEEN_EXECUTED] == 0) {
+				if (flags[kFLAGS.HARPY_QUEEN_EXECUTED] === 0) {
 					addButton(0, "Helia", HeliaThroneRoom);
 				}
-				if (flags[kFLAGS.HARPY_QUEEN_EXECUTED] == 1 && flags[kFLAGS.TOOK_QUEEN_STAFF] == 0) {
+				if (flags[kFLAGS.HARPY_QUEEN_EXECUTED] === 1 && flags[kFLAGS.TOOK_QUEEN_STAFF] === 0) {
 					addButton(1, "Take Staff", takeQueensStaff).hint(weapons.E_STAFF.description);
 				}
 				addButton(7, "Downstairs", roomMezzanine);

@@ -101,35 +101,35 @@ package classes.Scenes.Areas.Forest
 			if (player.findPerk(PerkLib.HistoryReligious) >= 0 && player.isPureEnough(20)) resist += 20 - player.corAdjustedDown();
 			var select:int = rand(7);
 			//Attack:
-			if (select == 0) {
+			if (select === 0) {
 				outputText("The kitsune playfully darts around you, grinning coyly.  She somehow slips in under your reach, and before you can react, draws a small circle on your chest with her fingertip.  As you move to strike again, the flaming runic symbol she left on you glows brightly, and your movements are halted mid-swing.");
 				outputText("\n\n\"<i>Naughty naughty, you should be careful with that.</i>\"");
 
 				outputText("\n\nDespite your best efforts, every time you attempt to attack her, your muscles recoil involuntarily and prevent you from going through with it.  <b>The kitsune's spell has sealed your attack!</b>  You'll have to wait for it to wear off before you can use your basic attacks.");
 				player.createStatusEffect(StatusEffects.Sealed, 4, 0, 0, 0);
 			}
-			else if (select == 1) {
+			else if (select === 1) {
 				//Tease:
 				outputText("You are taken by surprise when the kitsune appears in front of you out of nowhere, trailing a fingertip down your chest.  She draws a small circle, leaving behind a glowing, sparking rune made of flames.  You suddenly find that all your knowledge of seduction and titillation escapes you.  <b>The kitsune's spell has sealed your ability to tease!</b>  Seems you won't be getting anyone hot and bothered until it wears off.");
 				player.createStatusEffect(StatusEffects.Sealed, 4, 1, 0, 0);
 			}
 			//Spells:
-			else if (select == 2) {
+			else if (select === 2) {
 				outputText("\"<i>Oh silly, trying to beat me at my own game are you?</i>\"  the kitsune says with a smirk, surprising you as she appears right in front of you.  She traces a small circle around your mouth, and you find yourself stricken mute!  You try to remember the arcane gestures to cast your spell and find that you've forgotten them too.  <b>The kitsune's spell has sealed your magic!</b>  You won't be able to cast any spells until it wears off.");
 				player.createStatusEffect(StatusEffects.Sealed, 4, 2, 0, 0);
 			}
 			//Items:
-			else if (select == 3) {
+			else if (select === 3) {
 				outputText("\"<i>Tsk tsk, using items?  That's cheating!</i>\"  the kitsune says as she appears right in front of you, taking you off guard.  Her finger traces a small circle on your pouch, leaving behind a glowing rune made of crackling flames.  No matter how hard you try, you can't seem to pry it open.  <b>The kitsune's spell has sealed your item pouch!</b>  Looks like you won't be using any items until the spell wears off.");
 				player.createStatusEffect(StatusEffects.Sealed, 4, 3, 0, 0);
 			}
 			//Run:
-			else if (select == 4) {
+			else if (select === 4) {
 				outputText("\"<i>Tsk tsk, leaving so soon?</i>\"  the kitsune says, popping up in front of you suddenly as you attempt to make your escape.  Before you can react, she draws a small circle on your chest with her fingertip, leaving behind a glowing rune made of crackling blue flames.  You try to run the other way, but your " + player.legs() + " won't budge!\n\n\"<i>Sorry baby, you'll just have to stay and play~.</i>\" she says in a singsong tone, appearing in front of you again.  <b>The kitsune's spell prevents your escape!</b>  You'll have to tough it out until the spell wears off.");
 				player.createStatusEffect(StatusEffects.Sealed, 4, 4, 0, 0);
 			}
 			//P.Special:
-			else if (select == 5) {
+			else if (select === 5) {
 				outputText("You jump with surprise as the kitsune appears in front of you, grinning coyly.  As she draws a small circle on your forehead with her fingertip, you find that you suddenly can't remember how to use any of your physical skills!");
 				outputText("\n\n\"<i>Oh no darling, </i>I'm<i> the one with all the tricks here.</i>\"");
 				outputText("\n\n<b>The kitsune's spell has sealed your physical skills!</b>  You won't be able to use any of them until the spell wears off.");
@@ -153,10 +153,10 @@ package classes.Scenes.Areas.Forest
 		private function kitSuneTeases():void
 		{
 			var select:int = rand(3);
-			if (hair.color == "red" && rand(2) == 0) select = 3;
-			if (select == 0) outputText("You rub your eyes, suddenly seeing triple as you find yourself in the midst of a crowd of kitsune doppelgangers.  They run their hands all over you, teasing and doting on you as their tails caress every inch of your body.  Taken by surprise, you forget to fight back until they have already dispersed, blending back into a single fox-woman.");
-			else if (select == 1) outputText("Bending forward, the kitsune runs her hands down over her breasts, jiggling them enticingly and squeezing them together.  Hooking a finger in her robes, she slides it down, tugging them aside until her nipples are just barely covered, and with a teasing smirk, pulls them back up, leaving you wanting.");
-			else if (select == 2) outputText("Turning her back to you, the kitsune fans out her tails, peering back as she lifts the hem of her robe to expose her plump hindquarters.  Her tails continually shift and twist, blocking your view, but it only serves to make you want it even <i>more</i>, licking your lips in anticipation.");
+			if (hair.color === "red" && rand(2) === 0) select = 3;
+			if (select === 0) outputText("You rub your eyes, suddenly seeing triple as you find yourself in the midst of a crowd of kitsune doppelgangers.  They run their hands all over you, teasing and doting on you as their tails caress every inch of your body.  Taken by surprise, you forget to fight back until they have already dispersed, blending back into a single fox-woman.");
+			else if (select === 1) outputText("Bending forward, the kitsune runs her hands down over her breasts, jiggling them enticingly and squeezing them together.  Hooking a finger in her robes, she slides it down, tugging them aside until her nipples are just barely covered, and with a teasing smirk, pulls them back up, leaving you wanting.");
+			else if (select === 2) outputText("Turning her back to you, the kitsune fans out her tails, peering back as she lifts the hem of her robe to expose her plump hindquarters.  Her tails continually shift and twist, blocking your view, but it only serves to make you want it even <i>more</i>, licking your lips in anticipation.");
 			//Redhead only:
 			else outputText("The kitsune sways her hips enticingly as she appears in front of you abruptly, rubbing up against your side.  Her teasing caresses make you shiver with arousal, and you can feel something thick and warm pressing against your [hips].  She gives you a wry grin as she breaks away from you, sporting an obvious tent in her robes.  \"<i>Just you wait...</i>\"");
 			var lustDmg:int = 5 + player.sens / 7;
@@ -193,7 +193,7 @@ package classes.Scenes.Areas.Forest
 		public function Kitsune(hairColor:String)
 		{
 
-			if (rand(3) != 2) game.flags[kFLAGS.redheadIsFuta] = 1;
+			if (rand(3) !== 2) game.flags[kFLAGS.redheadIsFuta] = 1;
 			this.a = "a ";
 			this.short = "kitsune";
 			this.imageName = "kitsune";
@@ -204,7 +204,7 @@ package classes.Scenes.Areas.Forest
 					}[hair.color]) +
 							" hair.  She appears mostly human, except for a pair of large, furry ears poking through her hair and six luxurious silky tails swaying in the air behind her.  Her robes are revealing but comfortable-looking, hugging her voluptuous curves and exposing large swaths of tattooed skin.  A layer of ornate tattoos covers patches of her exposed flesh, accentuating her feminine curves nicely, and each movement brings a pleasant jiggle from her plump backside and large breasts.";
 			// this.plural = false;
-			if (hair.color=="red" && game.flags[kFLAGS.redheadIsFuta] == 1) {
+			if (hair.color=="red" && game.flags[kFLAGS.redheadIsFuta] === 1) {
 				this.createCock(rand(13) + 14,1.5 + rand(20)/2,CockTypesEnum.HUMAN);
 				this.balls = 2;
 				this.ballSize = 2 + rand(13);

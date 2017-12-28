@@ -12,7 +12,7 @@ package classes.Scenes.Areas.Plains
 	{
 		
 		public function scimitarSpecial():void {
-			if (rand(3) == 0) scimitarCrossAttack();
+			if (rand(3) === 0) scimitarCrossAttack();
 			else scimitarAttack();
 		}
 		
@@ -28,15 +28,15 @@ package classes.Scenes.Areas.Plains
 				outputText("and slashes towards you. You attempt to dodge your way out ");
 			}
 			var evade:String = player.getEvasionReason();
-			if (evade == EVASION_EVADE || evade == EVASION_MISDIRECTION)
+			if (evade === EVASION_EVADE || evade === EVASION_MISDIRECTION)
 			{
 				outputText("and you successfully dodge his scimitars thanks to your superior evasion! ");
 			}
-			else if (evade == EVASION_FLEXIBILITY)
+			else if (evade === EVASION_FLEXIBILITY)
 			{
 				outputText("and you use your incredible flexibility to barely fold your body and avoid his attacks!");
 			}
-			else if (evade == EVASION_SPEED || evade != null)
+			else if (evade === EVASION_SPEED || evade !== null)
 			{
 				outputText("and you successfully dodge his scimitars! ");
 			}

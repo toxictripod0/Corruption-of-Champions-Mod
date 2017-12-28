@@ -174,20 +174,20 @@ package classes.Scenes
 		}
 		
 		private function setCodexMenusAfterDisplay():void {
-			if (flags[kFLAGS.CODEX_CURRENT_PAGE] == PAGE_RACES_1) menuRaces();
-			if (flags[kFLAGS.CODEX_CURRENT_PAGE] == PAGE_RACES_2) menuRacesII();
-			if (flags[kFLAGS.CODEX_CURRENT_PAGE] == PAGE_FACTIONS_1) menuFactions();
-			if (flags[kFLAGS.CODEX_CURRENT_PAGE] == PAGE_OTHERS_1) menuItems();
+			if (flags[kFLAGS.CODEX_CURRENT_PAGE] === PAGE_RACES_1) menuRaces();
+			if (flags[kFLAGS.CODEX_CURRENT_PAGE] === PAGE_RACES_2) menuRacesII();
+			if (flags[kFLAGS.CODEX_CURRENT_PAGE] === PAGE_FACTIONS_1) menuFactions();
+			if (flags[kFLAGS.CODEX_CURRENT_PAGE] === PAGE_OTHERS_1) menuItems();
 		}
 		
 		private function addCodexButton(codexEntryName:String, codexEntryId:String, codexEntry:Function, flag:int):void {
 			var button:int = 0;
 			for (var i:int = 0; i < 14; i++) {
 				if (buttonIsVisible(i)) button++;
-				if (button == 4 || button == 9) button++; //Last slot of the row is reserved for next and previous.
+				if (button === 4 || button === 9) button++; //Last slot of the row is reserved for next and previous.
 			}
 			if (flags[flag] > 0) {
-				if (flags[kFLAGS.CODEX_CURRENT_ENTRY] == codexEntryId) addButton(button, "( " + codexEntryName + " )", codexEntry);
+				if (flags[kFLAGS.CODEX_CURRENT_ENTRY] === codexEntryId) addButton(button, "( " + codexEntryName + " )", codexEntry);
 				else addButton(button, "" + codexEntryName + "", codexEntry);
 			}
 			else addButtonDisabled(button, "???");

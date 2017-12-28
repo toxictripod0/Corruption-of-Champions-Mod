@@ -41,7 +41,7 @@ import classes.internals.WeightedDrop;
 			}
 			//Determine damage - str modified by enemy toughness!
 			//*Normal Attack A - 
-			if (rand(2) == 0) {
+			if (rand(2) === 0) {
 				//(medium HP damage)
 				damage = int((str + weaponAttack) - Math.random() * (player.tou) - player.armorDef);
 				if (damage <= 0) {
@@ -58,7 +58,7 @@ import classes.internals.WeightedDrop;
 			} else { //*Normal Attack B
 				//(high HP damage)
 				damage = int((str + 25 + weaponAttack) - Math.random() * (player.tou) - player.armorDef);
-				if (damage == 0) {
+				if (damage === 0) {
 					outputText("Akbal lunges forwards but between your toughness ");
 					if (player.armorDef > 0)
 						outputText("and " + player.armorName + ", he fails to deal any damage.");
@@ -106,7 +106,7 @@ import classes.internals.WeightedDrop;
 		public function akbalSpecial():void
 		{
 			//*Special Attack A - 
-			if (rand(2) == 0 && player.spe > 20)
+			if (rand(2) === 0 && player.spe > 20)
 			{
 				outputText("Akbal's eyes fill with light, and a strange sense of fear begins to paralyze your limbs.");
 				//(Speed decrease)

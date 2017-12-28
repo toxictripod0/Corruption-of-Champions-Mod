@@ -30,7 +30,7 @@ package classes.Scenes.Seasonal {
 		public function Thanksgiving() {}
 
 		public function isItThanksgiving():Boolean {
-			return ((date.date >= 21 && date.month == 10) && (date.date < 30 && date.month == 10) || flags[kFLAGS.ITS_EVERY_DAY] > 0);
+			return ((date.date >= 21 && date.month === 10) && (date.date < 30 && date.month === 10) || flags[kFLAGS.ITS_EVERY_DAY] > 0);
 		}
 		   
 		public function datTurkeyRumpMeeting():void { //Introduction: -McGirt
@@ -68,7 +68,7 @@ package classes.Scenes.Seasonal {
 		}
 
 		public function letZeTurkeyApproach():void { //Let her Approach
-			if (player.gender == 2 || (player.gender == 3 && rand(2) == 0)) {
+			if (player.gender === 2 || (player.gender === 3 && rand(2) === 0)) {
 				femaleLetZeTurkeyGalApproach();
 				return;
 			}
@@ -132,7 +132,7 @@ package classes.Scenes.Seasonal {
 			outputText("\n\nSoon, between your kneading out the thick gravy from her breasts and the spunk leaking out from her loins, mixing with what you splattered across her minutes earlier, the poor turkey is absolutely filthy, covered in the remnants of your rough fucking.  Slowly, languidly, you pull out from inside her, your cock still dribbling little rivulets of cum onto the musky girl's thighs.  The air around you now reeks of sex and a warm meal, her strange breastmilk creating a strong aroma of its own below that of drying spooge.");
 			player.orgasm('Dick');
 			dynStats("sen", -1);
-			if (flags[kFLAGS.HEL_FUCKBUDDY] == 1 && flags[kFLAGS.HEL_REDUCED_ENCOUNTER_RATE] == 0) {
+			if (flags[kFLAGS.HEL_FUCKBUDDY] === 1 && flags[kFLAGS.HEL_REDUCED_ENCOUNTER_RATE] === 0) {
 				outputText("\n\nAs you lay atop the turkey, you hear a faint, almost pleading, \"<i>Gobble?</i>\"  from her. Furrowing your brow, you pick yourself up to look at the cum-slathered turkey.  As soon as you're off her, she rolls over onto her hands and knees, her big bubble butt sticking up in the air for you, her plume of feathers tickling your cheeks.  She... still wants more?</i>\"");
 				menu();
 				addButton(0, "Spit-Roast", spitRoastThatTurkey);
@@ -355,7 +355,7 @@ package classes.Scenes.Seasonal {
 			outputText("\n\n\"<i>Fuck!</i>\" you groan as the venom drips off your [cock], a small droplet vanishing into your dilated urethra.  Your heart skips a beat as the lusty cream works its magic, pounding through your sex.  Well, that backfired! You clutch at your [chest]");
 			if (player.biggestTitSize() > 1) outputText(", cupping a tit");
 			outputText(" as the venom takes control, flushing your skin and forcing out all thoughts but one: fuck that turkey! There's nothing for it, now: you grab Gobbles' hips and plunge in");
-			if (player.cockTotal() == 2) outputText(" with both cocks, one ramming into her abused cunny and the other right up her vulnerable little bumhole");
+			if (player.cockTotal() === 2) outputText(" with both cocks, one ramming into her abused cunny and the other right up her vulnerable little bumhole");
 			else if (player.cockTotal() > 2) outputText(" with every cock you've got, half in the pink and half in the stink, spreading her as wide as you are in both barrels");
 			outputText(", shocking her so much that she can't hold back, screaming and cumming on the spot! You groan, thrusting forward as her spasming muscles contract around your cock");
 			if (player.cockTotal() > 1) outputText("s");
@@ -405,7 +405,7 @@ package classes.Scenes.Seasonal {
 			outputText(" wilting inside her until like a broken dam, her cunt");
 			if (player.cockTotal() > 1) outputText(" and ass");
 			outputText(" begin");
-			if (player.cockTotal() == 1) outputText("s");
+			if (player.cockTotal() === 1) outputText("s");
 			outputText(" to drool spunk, pooling onto the hungry ground with the gallons of spilt gravy and fem-spooge.");
 
 			outputText("\n\n\"<i>Gobble,</i>\" you agree, wrapping the giddy turkey up in your arms and planting one last kiss on her big ol' boob.  She stares sedately at you with big, blue eyes, a cute little smile on her lips as you withdraw from her, wiping the last of your spunk on her feathery thigh.  Running your hand through the turkey-girl’s hair, you whisper what a good little cockgobbler she is.  However, you soon find that the poor thing’s passed out, your rut finally over with.  Still, she's left you with a nice soft tit-pillow to lay your head down upon as you pick up the lunch you’d been preparing to eat before the eager slut arrived.");

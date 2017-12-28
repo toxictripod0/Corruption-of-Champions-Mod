@@ -15,10 +15,10 @@ public class Helspawn extends Monster
 			var choices:Array = [];
 			choices[choices.length] = helspawnTwinStrikes;
 			//Bowmander only
-			if (flags[kFLAGS.HELSPAWN_WEAPON] == "bow") choices[choices.length] = calledShot;
+			if (flags[kFLAGS.HELSPAWN_WEAPON] === "bow") choices[choices.length] = calledShot;
 			//Zerker ability
-			if (weaponAttack < 50 || flags[kFLAGS.HELSPAWN_WEAPON] == "scimitar") choices[choices.length] = helSpawnBerserk;	//Shield Bash (Shieldmander Only)
-			if (flags[kFLAGS.HELSPAWN_WEAPON] == "scimitar and shield") choices[choices.length] = helSpawnShieldBash;
+			if (weaponAttack < 50 || flags[kFLAGS.HELSPAWN_WEAPON] === "scimitar") choices[choices.length] = helSpawnBerserk;	//Shield Bash (Shieldmander Only)
+			if (flags[kFLAGS.HELSPAWN_WEAPON] === "scimitar and shield") choices[choices.length] = helSpawnShieldBash;
 			//Tease (Sluttymander Only)
 			if (flags[kFLAGS.HELSPAWN_PERSONALITY] >= 50) choices[choices.length] = sluttyMander;
 			//Focus (Chastemander Only)
@@ -26,7 +26,7 @@ public class Helspawn extends Monster
 			if (flags[kFLAGS.HELSPAWN_PERSONALITY] < 50) choices[choices.length] = helSpawnFocus;
 			choices[rand(choices.length)]();
 			//Tail Whip
-			if (rand(4) == 0) tailWhipShitYo();
+			if (rand(4) === 0) tailWhipShitYo();
 			combatRoundOver();
 		}
 
@@ -34,7 +34,7 @@ public class Helspawn extends Monster
 // Two light attacks
 private function helspawnTwinStrikes():void {
 	//if Bowmander
-	if (flags[kFLAGS.HELSPAWN_WEAPON] == "bow") outputText(flags[kFLAGS.HELSPAWN_NAME] + " leaps back out of your reach and nocks a pair of blunted arrows, drawing them back together and loosing them at once!\n");
+	if (flags[kFLAGS.HELSPAWN_WEAPON] === "bow") outputText(flags[kFLAGS.HELSPAWN_NAME] + " leaps back out of your reach and nocks a pair of blunted arrows, drawing them back together and loosing them at once!\n");
 	else outputText(flags[kFLAGS.HELSPAWN_NAME] + " lunges at you, scimitar cleaving through the air toward your throat!\n");
 	createStatusEffect(StatusEffects.Attacks,0,0,0,0);
 	eAttack();
@@ -46,7 +46,7 @@ private function calledShot():void {
 	outputText(flags[kFLAGS.HELSPAWN_NAME] + " draws back her bowstring, spending an extra second aiming before letting fly!");
 	var damage:Number = int((str + weaponAttack) - rand(player.tou) - player.armorDef);
 	//standard dodge/miss text
-	if (damage <= 0 || (rand(2) == 0 && (player.getEvasionRoll()))) outputText("\nYou avoid the hit!");
+	if (damage <= 0 || (rand(2) === 0 && (player.getEvasionRoll()))) outputText("\nYou avoid the hit!");
 	else {
 		outputText("\nOne of her arrows smacks right into your [leg], nearly bowling you over.  God DAMN that hurt! You're going to be limping for a while! ");
 		var sec:CalledShotDebuff = player.createOrFindStatusEffect(StatusEffects.CalledShot) as CalledShotDebuff;
@@ -74,7 +74,7 @@ private function calledShot():void {
 			else {
 				outputText("\nHer shield catches you right in the face, sending you tumbling to the ground and leaving you open to attack! ");
 				damage = player.takeDamage(damage, true);
-				if (rand(2) == 0 && !player.hasStatusEffect(StatusEffects.Stunned)) {
+				if (rand(2) === 0 && !player.hasStatusEffect(StatusEffects.Stunned)) {
 					player.createStatusEffect(StatusEffects.Stunned,0,0,0,0);
 					outputText(" <b>The hit stuns you.</b>");
 				}
@@ -99,7 +99,7 @@ private function calledShot():void {
 			// Medium Lust damage
 			outputText(flags[kFLAGS.HELSPAWN_NAME] + " jumps just out of reach before spinning around, planting her weapon in the ground as she turns her backside to you and gives her sizable ass a rhythmic shake, swaying her full hips hypnotically.");
 			//if no effect:
-			if (rand(2) == 0) outputText("\nWhat the fuck is she trying to do?  You walk over and give her a sharp kick in the kiester, \"<i>Keep your head in the game, kiddo.  Pick up your weapon!</i>\"");
+			if (rand(2) === 0) outputText("\nWhat the fuck is she trying to do?  You walk over and give her a sharp kick in the kiester, \"<i>Keep your head in the game, kiddo.  Pick up your weapon!</i>\"");
 			else {
 				outputText("\nDat ass.  You lean back, enjoying the show as the slutty little salamander slips right past your guard, practically grinding up against you until you can feel a fire boiling in your loins!");
 				var lustDelta:Number = player.lustVuln * (10 + player.lib/10);

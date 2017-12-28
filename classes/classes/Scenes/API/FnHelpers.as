@@ -118,7 +118,7 @@ public class FnHelpers extends BaseContent {
 			if (x <= xA) return yA;
 			if (x >= xB) return yB;
 			}
-		if (xA == xB) return (yA + yB) / 2;
+		if (xA === xB) return (yA + yB) / 2;
 		const y:Number = yA + (x - xA) * (yB - yA) / (xB - xA);
 		return Math.min(max, Math.max(min, y));
 	}
@@ -179,7 +179,7 @@ public class FnHelpers extends BaseContent {
 
 	public function ifPregnantWith(pregnancyType:int,iftrue:*=1,iffalse:*=0):Function {
 		return function():* {
-			return player.pregnancyIncubation > 1 && player.pregnancyType == pregnancyType ? iftrue : iffalse
+			return player.pregnancyIncubation > 1 && player.pregnancyType === pregnancyType ? iftrue : iffalse
 		}
 	}
 }

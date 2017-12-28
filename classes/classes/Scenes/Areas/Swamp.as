@@ -40,7 +40,7 @@ import classes.Scenes.Areas.Swamp.*;
 		public function get explorationEncounter():Encounter {
 			const game:CoC     = kGAMECLASS;
 			const fn:FnHelpers = Encounters.fn;
-			if (_explorationEncounter == null) _explorationEncounter =
+			if (_explorationEncounter === null) _explorationEncounter =
 					Encounters.group(game.commonEncounters, {
 						name: "bog",
 						when: function ():Boolean {
@@ -52,19 +52,19 @@ import classes.Scenes.Areas.Swamp.*;
 						name: "kihaxhel",
 						when: function ():Boolean {
 							return !kGAMECLASS.kihaFollower.followerKiha()
-									/* && flags[kFLAGS.KIHA_KILLED] == 0 */ // [INTERMOD:8chan]
+									/* && flags[kFLAGS.KIHA_KILLED] === 0 */ // [INTERMOD:8chan]
 									&& player.cor < 60
 									&& flags[kFLAGS.KIHA_AFFECTION_LEVEL] >= 1
 									&& flags[kFLAGS.HEL_FUCKBUDDY] > 0
 									&& player.hasCock()
-									&& flags[kFLAGS.KIHA_AND_HEL_WHOOPIE] == 0;
+									&& flags[kFLAGS.KIHA_AND_HEL_WHOOPIE] === 0;
 						},
 						call: game.kihaFollower.kihaXSalamander
 					}, {
 						name  : "ember",
 						when  : function ():Boolean {
-							return flags[kFLAGS.TOOK_EMBER_EGG] == 0
-								   && flags[kFLAGS.EGG_BROKEN] == 0
+							return flags[kFLAGS.TOOK_EMBER_EGG] === 0
+								   && flags[kFLAGS.EGG_BROKEN] === 0
 								   && flags[kFLAGS.TIMES_EXPLORED_SWAMP] > 0;
 						},
 						chance: 0.1,
@@ -72,7 +72,7 @@ import classes.Scenes.Areas.Swamp.*;
 					}, {
 						name: "rogar",
 						when: function ():Boolean {
-							return flags[kFLAGS.ROGAR_DISABLED] == 0 && flags[kFLAGS.ROGAR_PHASE] < 3;
+							return flags[kFLAGS.ROGAR_DISABLED] === 0 && flags[kFLAGS.ROGAR_PHASE] < 3;
 						},
 						call: rogar.encounterRogarSwamp
 					}, {

@@ -19,7 +19,7 @@ package classes.Scenes.Seasonal {
 		public function XmasSnowAngel() {}
 		
 		public function gatsSpectacularRouter():void {
-			if (flags[kFLAGS.GATS_ANGEL_QUEST_BEGAN] == 0) christmasEncounterAngelJunk();
+			if (flags[kFLAGS.GATS_ANGEL_QUEST_BEGAN] === 0) christmasEncounterAngelJunk();
 			else if (player.hasKeyItem("North Star Key") < 0) findTheWindUpKey();
 			else giveThatBitchAKeyYo();
 		}
@@ -182,7 +182,7 @@ package classes.Scenes.Seasonal {
 			outputText("\n\n\"<i>That can't be right.  Carol was lying beside me up on the mountain.  Then you came and dragged me away,</i>\" North replies, still as casual and calm as before.  Carol... you figure that must be the name of the spirit you left behind.  Without missing a beat, you devise an explanation consisting of dreams, loneliness and immeasurable amounts of time leading to North's obvious hallucinations.  Why would a spirit be so large and leave the two of you lost to a cold and forgotten mountaintop?  As North processes your explanation, you figure it best to just go straight for your coup de grace, insisting on the love between the two of you.");
 			outputText("\n\nIt's hard to get a read on just what's going on in that tin-covered head of his.  In a last ditch effort to reign in the situation, you strip free of your [armor], accentuating ");
 			if (player.hasCock()) outputText("[eachCock]");
-			if (player.gender == 3) outputText(" and ");
+			if (player.gender === 3) outputText(" and ");
 			if (player.hasVagina()) outputText("your [vagina]");
 			outputText(" to try and convince the confused soldier.  You look North over, figuring the best way to work him under your spell.  It isn't a long search, as you decide that his ");
 			//[if (hasCock = true) 
@@ -261,7 +261,7 @@ package classes.Scenes.Seasonal {
 			outputText(" all along her starving tongue, your eyes lifting up as you stretch to force as much as you can upon her.  A slick, stubby tendril fits between your [butt], while more of her taste buds rub against you in your squirting ecstasy.  Your ");
 			if (player.hasCock()) {
 				outputText(player.multiCockDescriptLight());
-				if (player.cockTotal() == 1) outputText("throbs");
+				if (player.cockTotal() === 1) outputText("throbs");
 				else outputText("throb");
 			}
 			else outputText(player.vaginaDescript() + " throbs");
@@ -386,7 +386,7 @@ package classes.Scenes.Seasonal {
 			outputText("\n\nAfter a long pause, you pocket the key, square yourself with Carol and North, returning her hand gesture before giving them a goofy grin that positively sparks in the snow-cushioned landscape.  As you turn to depart once more, you wave over your shoulder, escorted out with the continued giggles and lovey-dovey conversation of the unlikely couple.");
 			outputText("\n\nMerry Christmas indeed!");
 			//[if you haven't been introduced to christmas via elf or otherwise] 
-			if (flags[kFLAGS.PC_ENCOUNTERED_CHRISTMAS_ELF_BEFORE] == 0) outputText("\n\nYou have no idea what that is.");
+			if (flags[kFLAGS.PC_ENCOUNTERED_CHRISTMAS_ELF_BEFORE] === 0) outputText("\n\nYou have no idea what that is.");
 			awardAchievement("A Christmas Carol", kACHIEVEMENTS.HOLIDAY_CHRISTMAS_II);
 			if (player.findPerk(PerkLib.AChristmasCarol) < 0) {
 				player.createPerk(PerkLib.AChristmasCarol, 0, 0, 0, 0);
