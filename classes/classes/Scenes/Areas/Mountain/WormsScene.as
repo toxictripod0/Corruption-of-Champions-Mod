@@ -136,7 +136,7 @@ package classes.Scenes.Areas.Mountain
 			}
 			//trace("GET INFESTED HERE");
 			if (!player.hasStatusEffect(StatusEffects.Infested)) {
-				if (flags[kFLAGS.EVER_INFESTED] === 0) flags[kFLAGS.EVER_INFESTED] = 1;
+				if (flags[kFLAGS.EVER_INFESTED] == 0) flags[kFLAGS.EVER_INFESTED] = 1;
 				player.createStatusEffect(StatusEffects.Infested,0,0,0,0);
 				dynStats("cor", 0);
 			}
@@ -156,9 +156,9 @@ package classes.Scenes.Areas.Mountain
 					player.addStatusValue(StatusEffects.Infested,1,1);
 					player.cumMultiplier+=0.5;
 					//fifth time is the charm!
-					if (player.statusEffectv1(StatusEffects.Infested) === 5) {
+					if (player.statusEffectv1(StatusEffects.Infested) == 5) {
 						//Futaz
-						if (player.balls === 0) {
+						if (player.balls == 0) {
 							outputText("\n\nAfter you empty yourself, you feel your body shift. The presence of the large worm is no longer discomforting. It is as if your seminal bladder has enlarged to accommodate the new thing inside you. Likewise, your ejaculations have become truly monstrous and the amount of worms you expel has also increased. You realize that the large worm has become a part of you and you can now <b>infest</b> your enemies much in the same manner as you have been infested, yourself. All you need now is some poor fool to overwhelm with your new 'pets'.");
 						}
 						//non-ball-less
@@ -187,7 +187,7 @@ package classes.Scenes.Areas.Mountain
 			}
 			
 			//(if PC uses Infest)
-			if (monster.short === "Izma") {
+			if (monster.short == "Izma") {
 				player.changeFatigue(40,2);
 				outputText("With a great squeeze, you will your body to push out a load of semen filled with worms.  Izma's eyes widen in shock as she dives and rolls away from the torrent.  \"<i>What the fuck!</i>\" she yells. \"<i>Is that what that smell was?  That's disgusting!  Get away from me " + player.short + ", I DON'T want what you've got.  Don't talk to me again while you've got those nasty things!</i>\"  Izma grabs her locker between her hands and wades into the lake, swimming away by means of her tail while holding the books out of the water.");
 				//(set Izmacounter to 0)
@@ -209,7 +209,7 @@ package classes.Scenes.Areas.Mountain
 			player.changeFatigue(40,2);
 			outputText("With a great squeeze, you will your body to push out a load of semen filled with worms. You moan in pleasure and release as your fluids launch at your enemy. Worms and cum fly through the air in an attempt to coat your opponent with your new pets.  ");
 			//Viable target?
-			if (monster.short === "minotaur" || monster.short === "imp") {
+			if (monster.short == "minotaur" || monster.short == "imp") {
 				if (monster.lust100 > 70) {
 					outputText("Your load washes over the " + monster.short + " and " + monster.pronoun1 + " stops dead in " + monster.pronoun3 + " tracks as " + monster.pronoun1 + " chokes and sputters to clear the cum from " + monster.pronoun3 + " face and nose to breathe. The " + monster.short + " stumbles, attempting to stand in your fresh cum puddle and quickly busts its ass on the ground. The worms quickly take over and swarm around the " + monster.short + "' s " + monster.cockDescriptShort(0) + ". With wild hunger, the worms easily push into the " + monster.short + "'s urethra and begin venturing into your victim's body. The " + monster.short + " begins to convulse wildly as " + monster.pronoun3 + " body begins to react to the squirming invaders. The " + monster.short + " quickly peaks and cum flies in all directions, along with some worms. You laugh hysterically as the " + monster.short + " must now endure the endless orgasms your new pets provide. You choose to unload one last batch on your fallen foe to ensure a good infestation and walk away to leave the " + monster.short + " in the hell of endless pleasure.\n");
 					monster.lust = 100;
@@ -221,10 +221,10 @@ package classes.Scenes.Areas.Mountain
 					monster.lust+=5;
 				}
 			}
-			else if (monster.short === "lizan rogue") {
+			else if (monster.short == "lizan rogue") {
 				outputText("The lizan makes no attempt to dodge your worm-infused attack. The worms hit him with a fierce clash and slide down his body, disappearing into the ground without even attempting to infect the lizan. Maybe they prefer mammals...");
 			}
-			else if (monster.short === "anemone") {
+			else if (monster.short == "anemone") {
 				//Infest vs. anemone:
 				outputText("The white mess takes the anemone square in the torso, and the worms nearest her blue shaft waste no time in heading for it.  You both watch curiously as the lead worms ascend her dick, only to run headlong into the tentacles and slip off, stunned.  Eyes twinkling, the girl scoops up a handful of the squirming load still on her stomach and slurps it down greedily.  She smacks her lips and says, \"<i>Chewy!</i>\"\n");
 				monster.HP += 20;
@@ -260,11 +260,11 @@ package classes.Scenes.Areas.Mountain
 				if (player.cockTotal() > 2) outputText("es are");
 				else outputText(" is");
 				outputText("already turning into ");
-				if (player.cockTotal() === 2) outputText("an ");
+				if (player.cockTotal() == 2) outputText("an ");
 				outputText("infestation highway");
 				if (player.cockTotal() > 2) outputText("s");
 				outputText(".  ");
-				if (player.cockTotal() === 2) outputText("Its");
+				if (player.cockTotal() == 2) outputText("Its");
 				else outputText("Their");
 				outputText("inside");
 				if (player.cockTotal() > 2) outputText("s are");

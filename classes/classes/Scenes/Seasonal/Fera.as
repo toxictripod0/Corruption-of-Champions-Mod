@@ -29,7 +29,7 @@ import classes.Scenes.API.Encounter;
 			}
 			//Fera is free!
 			else {
-				if (flags[kFLAGS.FERAS_TRAP_SPRUNG_YEAR] === 0) {
+				if (flags[kFLAGS.FERAS_TRAP_SPRUNG_YEAR] == 0) {
 					if (date.fullYear > flags[kFLAGS.FERAS_GLADE_EXPLORED_YEAR]) {
 						kGAMECLASS.fera.feraSceneTwoIntroduction();
 					}
@@ -38,7 +38,7 @@ import classes.Scenes.API.Encounter;
 		}
 
 		public function isItHalloween():Boolean {
-			return ((date.date >= 28 && date.month === 9) || (date.date < 2 && date.month === 10) || flags[kFLAGS.ITS_EVERY_DAY] > 0);
+			return ((date.date >= 28 && date.month == 9) || (date.date < 2 && date.month == 10) || flags[kFLAGS.ITS_EVERY_DAY] > 0);
 		}
 
 		public function pumpkinFuckEncounter():void {
@@ -111,7 +111,7 @@ import classes.Scenes.API.Encounter;
 				outputText("\n\nOver and over you empty your [balls] into the growing gourd, inflating it larger and larger, passionately giving up every drop of sperm to fuel its unnatural growth.  Even once you feel empty, your [cock biggest] continues to clench and pump, firing blanks in an effort to feed EVERYTHING to the semen-hungry plant.  Still, even your prodigious virility can only take so much, and once your dick starts to go soft inside the massive cunt, it releases you, allowing you to ride out the rest of your orgasm, below, on the ground.  Your descent is graceless, a lazy slide down the orange rind.  Were it not for the gentle slope, it would be a dangerous six-foot fall.");
 				outputText("\n\nYou thank the gods for that small mercy as you calm down and climb to your feet, beholding the sudden gargantuan growth as if for the first time.  That pumpkin is at least six feet tall, and the swollen pussy that devoured your cum?  It has grown with it, now a gash big enough to devour a man.  A few strings of semen trail from the labia to the ground, but it looks like most of your cum is vanishing into the pumpkin's depths, drank down for some purpose only the demons would know.");
 				outputText("\n\nA faint rumbling is the only warning you get (or need).  You jump back and ready yourself for anything, ");
-				if (player.weaponName === "fists") outputText("brandishing your fists");
+				if (player.weaponName == "fists") outputText("brandishing your fists");
 				else outputText("picking up your [weapon]");
 				outputText(" as if it would somehow protect your nude body.");
 				doNext(pumpkinFuckPartII);
@@ -133,12 +133,12 @@ import classes.Scenes.API.Encounter;
 			outputText("\n\n\"<i>How should I thank my savior?  That is the human tradition, is it not?</i>\" Fera interrupts, sliding her palm along the sensitive underside of your [cock]");
 			if (player.cockTotal() > 1) {
 				outputText(", her free hand working ");
-				if (player.cockTotal() === 2) outputText("your other");
+				if (player.cockTotal() == 2) outputText("your other");
 				else outputText("another");
 				outputText(" dick with child-like glee");
 			}
 			outputText(".  \"<i>");
-			if (player.race() !== "human") outputText("I know what you were, virile suitor.  ");
+			if (player.race() != "human") outputText("I know what you were, virile suitor.  ");
 			outputText("There's never too much of a good thing.  Of course, my champion must have the proper train of thought...</i>\"");
 			outputText("\n\nWait... what?  You start to pull back, but her grip tightens, forcing you rigid with involuntary pain.  Prickly vines boil out of the ground around your [legs] and entwine into a twisted web with the strength of iron.  In seconds, you're firmly bound up to your [chest], the only part left mobile being your poor, depleted dick.  It swings freely, controlled as effortlessly by the tainted goddess as your veridian prison.");
 			outputText("\n\nFera rambles, \"<i>My sister is not so strong anymore... the planet itself has been turned to my way of thinking, just like you.</i>\"  She leans forward to kiss you, those ruby lips as smooth as glass and soft as the finest velvet.  You lose yourself in her lips, immediately kissing her back, devoting all your muscle control to passionately twisting your tongue about hers, tasting her cinnamon-sweet mouth, moist organs lapping against one another while bubbles of saliva roll between your hungry lips.  It's enough to blind you to the rising wall of verdant tentacles, at least until they touch your ears.");
@@ -207,7 +207,7 @@ import classes.Scenes.API.Encounter;
 				outputText("\n\nYou thank the gods for that small mercy as you calm down and climb to your feet, beholding the sudden gargantuan growth as if for the first time.  That pumpkin is at least six feet tall, and the swollen stem that filled you with pumpkin ooze?  It has grown with it, now a towering rod as big as an average woman's torso.  As you wonder how you managed to fit such a monstrosity inside you at the end, you notice that only a few strings of mixed pumpkin goo and female cum trail from the stem to the ground.  It looks like most of the combined fluids are vanishing into the pumpkin's depths, drank down for some purpose only demons would know.");
 				
 				outputText("\n\nA faint rumbling is the only warning you get (or need).  You jump back and ready yourself for anything, ");
-				if (player.weaponName !== "fists") outputText("picking up your [weapon]");
+				if (player.weaponName != "fists") outputText("picking up your [weapon]");
 				else outputText("raising your guard");
 				outputText(" as if it would somehow protect your nude body.");
 				
@@ -397,7 +397,7 @@ import classes.Scenes.API.Encounter;
 			outputText("\n\nYour mind has all the ability to resist of a fertile field before a plow, and you do the only thing you can think of: agreeing.  \"<i>Yyeshhh...</i>\" you slur, drooling sugar-sweetened spit out of the corner of your mouth.");
 			
 			outputText("\n\nFera rubs your ");
-			if (player.balls === 0) outputText("inner thighs");
+			if (player.balls == 0) outputText("inner thighs");
 			else outputText("[balls]");
 			outputText(", squeezing you encouragingly.  \"<i>Now, I am a generous goddess. Your gift will be to aid me by being a rapacious, horny predator, one who will seed every strong person or monster " + player.mf("he","she") + " encounters until there is an army of unstoppable fuck-monsters roaming the lands.  You will fertilize the weak again and again, until they give birth to strong offspring.  You'll make the males your subservient bitches, only fit to serve your pregnant slaves and to take your steaming loads in their holes whenever there's no suitable female around</i>\"  She taps her chin thoughtfully.  \"<i>How does that sound?</i>\"");
 			outputText("\n\nThere isn't enough guidance in that question to rouse a response from your supine form, so Fera continues on, smiling all the while.  \"<i>Oh, I'm going to do it, [name].  You're going to do this for me.</i>\"  She idly slips a finger along the underside of [oneCock] and licks her lips.");
@@ -420,7 +420,7 @@ import classes.Scenes.API.Encounter;
 			outputText(" to swell up a little, and when the rest of your length is plowed through the tight, slippery ring, the tugging vacuum increases, plumping your dick");
 			if (player.cockTotal() > 1) outputText("s");
 			outputText(" bigger, harder, and fatter than ");
-			if (player.cockTotal() === 1) outputText("it");
+			if (player.cockTotal() == 1) outputText("it");
 			else outputText("they");
 			outputText(" should be.");
 			
@@ -521,7 +521,7 @@ import classes.Scenes.API.Encounter;
 			outputText("\n\nFera's voice whispers with a voice that has as much heat as the crackling coals of a long-burning bonfire, \"<i>Feel the pleasure of being filled, my servant.  Feel the bliss of stuffing yourself so full, so very full.  Only the biggest, strongest, most well-hung of mates will ever come close to filling you like this, and you will seek them out.  Your twat will hunger for huge cocks.  It will </i>thirst<i> for the cum that's lurking in those big, meaty balls.  Your womb will ache for impregnation, and you will seek it, won't you?  Answer me, my pet champion.</i>\"");
 			outputText("\n\nYour lips mouth, exhaling your answer in a barely audible, \"<i>yessss....</i>\"");
 			outputText("\n\nThe sap-oozing tendrils respond by pulling back and thrusting in, scraping your tightly-stretched walls, rubbing over every sensitive place. Your lips, your clit, your g-spot - they're all caressed by slick heat, forced to accept the hip-stretching insertion with nothing short of incredible excitement.  Your body shudders from head to ");
-			if (player.lowerBody.type === LowerBody.HUMAN) outputText("toe");
+			if (player.lowerBody.type == LowerBody.HUMAN) outputText("toe");
 			else if (player.tail.type > Tail.NONE) outputText("tail");
 			else outputText("[foot]");
 			outputText(" as you climax, arching your back and making guttural, beast-like sounds of pleasure.  Your eyelids hang low, lazily obscuring some of those wonderful colors from your view as the pleasure and plant-sap work on you.  Shuddering, you gush girlcum harder than ever, spraying a thick wave of lady-spunk across the tentacles, shining them with your juices");
@@ -553,7 +553,7 @@ import classes.Scenes.API.Encounter;
 		public function gapeByFeraEpilogue():void {
 			clearOutput();
 			outputText("You awaken fully dressed with a familiar ache between your legs. Damn, that was a good nap.  You rise, stretching as you rub your back, sore from lying against a tree for so long.  You suppose you could hunt down a tentacle monster and see if it'd really give you a filling");
-			if (player.pregnancyIncubation === 0) outputText(", but you'd rather fuck something that'll get you good and pregnant with a well-hung fuck-monster, like a minotaur!");
+			if (player.pregnancyIncubation == 0) outputText(", but you'd rather fuck something that'll get you good and pregnant with a well-hung fuck-monster, like a minotaur!");
 			else outputText(".");
 			outputText("  You idly reach into your [armor] and stuff four fingers into yourself before sighing and removing them.  It just isn't the same as being full of cock.");
 			outputText("\n\nAs you head back to camp to prepare for your next adventure, you realize that you had some really, really fucked up dreams.  You hope you have more tomorrow night.");
@@ -569,7 +569,7 @@ import classes.Scenes.API.Encounter;
 			outputText("\n\nMeanwhile, one of the tentacles that had been holding you decides to disentangle itself from its brethren, swaying over towards Fera like a snake to a snake-charmer.  The goddess grabs the tentacle in her hands and smiles, tickling it just behind its exoticly-shaped glans in a way that makes it drip sweet-goo everywhere.  She stops before it can cum and changes posture, gripping the stalk tightly in her hand and curling her fingers inward until the tips of her nails pierce the plant-beast's skin.  It stiffens as if in pain and then goes limp, pinpricks of inky blackness spreading from where it's been punctured.  The inky coloration doesn't appear to be decay but rather an almost latex-like sheen.");
 			outputText("\n\nThe tentacle's inky spots expand to big, black blotches before combining together to turn the first foot of the thing into a rubbery onyx dong.  The corrupted, sextoy-like texture spreads like wildfire down the stalk and beyond your view, though you're sure it must stop somewhere, because the other tentacles never change color.  That succulent syrup that leaks from the tip changes to the same color, every bit the same tone but still completely liquid, dripping down off of it to splatter wetly on the floor as Fera strokes it once more.");
 			outputText("\n\n\"<i>Don't mind the exotic tone, dear.  It won't change how your pussy looks one iota");
-			if (player.skin.adj === "latex" || player.skin.adj === "rubber") {
+			if (player.skin.adj == "latex" || player.skin.adj == "rubber") {
 				outputText(", not that a " + player.skin.adj + " honey like you would notice");
 			}
 			outputText(", but it will change how quickly your pussy recovers from a nice gape.  It will definitely change how your pussy feels about getting fucked, no doubt about that,</i>\"  Fera promises as she continues to stroke her pet rubber-plant, leaning low to kiss you once she finishes.  Though you lack the capacity to kiss back by this point, your mouth is pliant and unresisting, and you are able to feel the intensely erotic sensation of a goddess' tongue in your mouth.  More importantly, you can taste her, and while her flavor is different than the nectary plant-sap you were instantly addicted to, it is even more divine, like cinnamon mixed with the essence of lust and sex.");
@@ -635,7 +635,7 @@ import classes.Scenes.API.Encounter;
 			player.createCock();
 			player.cocks[0].cockLength = 10;
 			player.cocks[0].cockThickness = 2.5;
-			if (rand(2) === 0) player.cocks[0].cockType = CockTypesEnum.TENTACLE;
+			if (rand(2) == 0) player.cocks[0].cockType = CockTypesEnum.TENTACLE;
 			//Add five corruption.
 			player.createPerk(PerkLib.FerasBoonSeeder,0,0,0,0);
 			menu();

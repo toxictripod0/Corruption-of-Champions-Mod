@@ -29,7 +29,7 @@ package classes.Scenes.Dungeons.HelDungeon
 		//Brigid the Jailer -- PC Defeated
 		public function pcDefeatedByBrigid():void {
 			clearOutput();
-			if (flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED] === 0) {
+			if (flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED] == 0) {
 				outputText("\"<i>Tsk tsk tsk,</i>\" the harpy jailer croons, looming over you as you slump to the ground. \"<i>You shouldn't have messed with me, bitch!</i>\" she snaps, giving you a rough kick to the side. \"<i>Now, let's see what Mother has to say about this...</i>\"");
 				//(Go to \"<i>Harpy Breeding Slut</i>\" Bad End)
 				doNext(getGame().dungeons.heltower.harpyQueenBeatsUpPCBadEnd);

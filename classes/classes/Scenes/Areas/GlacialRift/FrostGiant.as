@@ -59,7 +59,7 @@ import classes.internals.WeightedDrop;
 			combatRoundOver();
 		}
 		public function giantGrabStruggle():void {
-			if (rand(100) >= player.str || rand(10) === 0) giantGrabFail();
+			if (rand(100) >= player.str || rand(10) == 0) giantGrabFail();
 			else giantGrabSuccess();
 		}
 		public function giantGrabFail(struggle:Boolean = true):void {
@@ -79,13 +79,13 @@ import classes.internals.WeightedDrop;
 				}
 				else if (player.str >= 20 && player.str < 40) {
 					outputText("The giant's grip nearly crushes you to bits right there; sheer force of will allows you to struggle and resist, though it proves futile. ");
-					if (player.findPerk(PerkLib.Juggernaut) < 0 && armorPerk !== "Heavy") {damage = 10 + rand(str * 0.5);
+					if (player.findPerk(PerkLib.Juggernaut) < 0 && armorPerk != "Heavy") {damage = 10 + rand(str * 0.5);
 					player.takeDamage(damage, true);
 					}
 				}
 				else if (player.str < 20) {
 					outputText("The giant squeezes you mercilessly, the pressure on your body reaching critical levels. The giant doesn't seem to want to murder you, fortunately, so he lessens his grip slightly. No dice escaping it though. ");
-					if (player.findPerk(PerkLib.Juggernaut) < 0 && armorPerk !== "Heavy") {damage = 20 + rand(str * 0.75);
+					if (player.findPerk(PerkLib.Juggernaut) < 0 && armorPerk != "Heavy") {damage = 20 + rand(str * 0.75);
 					player.takeDamage(damage, true);
 					}
 				}
@@ -177,8 +177,8 @@ import classes.internals.WeightedDrop;
 		}
 		public function giantBoulderHit(mode:int = 0):void {
 			clearOutput();
-			if (mode === 0) outputText("You charge at the giant, running as fast as you can, hoping to get to him before he can throw the huge rock. However, you getting closer just makes it easier for him to hit you, and he does, the full force of the boulder hitting your upper body square-on, whipping you directly down into the snow while the boulder mercifully lands some yards away. ");
-			else if (mode === 1) outputText(", but you do look up just in time to nearly avoid the large boulder he chucked your way. Scrambling to react, you jump to the side, only to realize you chose the wrong side. The boulder hits you in the back, propelling you.  Battered, beaten, bruised, you struggle to stand, when the giant picks you up, laughs in his deep, mighty bellow, and punts you over a mountain. You land several feet deep in a snowbank, and see something flying toward you before passing out. ");
+			if (mode == 0) outputText("You charge at the giant, running as fast as you can, hoping to get to him before he can throw the huge rock. However, you getting closer just makes it easier for him to hit you, and he does, the full force of the boulder hitting your upper body square-on, whipping you directly down into the snow while the boulder mercifully lands some yards away. ");
+			else if (mode == 1) outputText(", but you do look up just in time to nearly avoid the large boulder he chucked your way. Scrambling to react, you jump to the side, only to realize you chose the wrong side. The boulder hits you in the back, propelling you.  Battered, beaten, bruised, you struggle to stand, when the giant picks you up, laughs in his deep, mighty bellow, and punts you over a mountain. You land several feet deep in a snowbank, and see something flying toward you before passing out. ");
 			else outputText("You begin to cast, focusing intently on summoning your magic. Too focused, though, as the giant propels the boulder in an arc to you. You notice the boulder just in time to not be crushed by it, though it still hits you and you fly several dozen yards before hitting a nice, jagged rock face. ");
 			if (player.hasStatusEffect(StatusEffects.GiantBoulder)) player.removeStatusEffect(StatusEffects.GiantBoulder);
 			var damage:int = (str * 2) + 100 + rand(250);

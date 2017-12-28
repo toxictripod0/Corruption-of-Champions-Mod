@@ -27,7 +27,7 @@ package classes.Scenes.NPCs
 				outputText("You easily evade her incredibly linear attack.\n");
 			}
 			//("Misdirection"
-			else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName === "red, high-society bodysuit") {
+			else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
 				outputText("You easily misdirect her and step aside at the last moment.\n");
 			}
 			//Determine if cat'ed
@@ -66,7 +66,7 @@ package classes.Scenes.NPCs
 				outputText("You easily evade her incredibly linear attack.\n");
 			}
 			//("Misdirection"
-			else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName === "red, high-society bodysuit") {
+			else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
 				outputText("You easily misdirect her and step aside at the last moment.\n");
 			}
 			//Determine if cat'ed
@@ -110,7 +110,7 @@ package classes.Scenes.NPCs
 				outputText("You easily evade her incredibly linear attack.\n");
 			}
 			//("Misdirection"
-			else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName === "red, high-society bodysuit") {
+			else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
 				outputText("You easily misdirect her and step aside at the last moment.\n");
 			}
 			//Determine if cat'ed
@@ -148,13 +148,13 @@ package classes.Scenes.NPCs
 		override protected function performCombatAction():void
 		{
 			//-If below 70% HP, 50% chance of milk drinking
-			if (HPRatio() < .7 && rand(3) === 0) drankMalkYaCunt();
+			if (HPRatio() < .7 && rand(3) == 0) drankMalkYaCunt();
 			//if PC has spells and isn't silenced, 1/3 chance of silence.
-			else if (player.hasSpells() && !player.hasStatusEffect(StatusEffects.ThroatPunch) && rand(3) === 0) {
+			else if (player.hasSpells() && !player.hasStatusEffect(StatusEffects.ThroatPunch) && rand(3) == 0) {
 				isabellaThroatPunch();
 			}
 			//if PC isn't stunned, 1/4 chance of stun
-			else if (!player.hasStatusEffect(StatusEffects.IsabellaStunned) && rand(4) === 0) {
+			else if (!player.hasStatusEffect(StatusEffects.IsabellaStunned) && rand(4) == 0) {
 				isabellaStun();
 			}
 			else isabellaAttack();

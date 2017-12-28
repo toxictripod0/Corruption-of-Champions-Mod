@@ -219,7 +219,7 @@ public class CommonEncounters extends BaseContent implements Encounter {
 		outputText(", you find yourself increasingly impeded by the bulk of your " + player.cockDescript(x) + " dragging along the ");
 		if (lake) outputText("wet ground behind you.");
 		else outputText("earth behind you.");
-		if (player.cocks.length === 1) {
+		if (player.cocks.length == 1) {
 			if (lake) outputText("  As it drags through the lakeside mud, the sensation forces you to imagine the velvety folds of a monstrous pussy sliding along the head of your " + Appearance.cockNoun(player.cocks[x].cockType) + ", gently attempting to suck it off.");
 			else outputText("  As it drags across the grass, twigs, and exposed tree roots, the sensation forces you to imagine the fingers of a giant hand sliding along the head of your " + Appearance.cockNoun(player.cocks[x].cockType) + ", gently jerking it off.");
 		}
@@ -319,7 +319,7 @@ public class CommonEncounters extends BaseContent implements Encounter {
 		//PARAGRAPH 1
 		outputText("Walking along the sandy dunes of the desert you find yourself increasingly impeded by the bulk of your " + player.cockDescript(x) + " dragging along the sandscape behind you.  The incredibly hot surface of the desert causes your loins to sweat heavily and fills them with relentless heat.");
 
-		if (player.cocks.length === 1) outputText("  As it drags along the dunes, the sensation forces you to imagine the rough textured tongue of a monstrous animal sliding along the head of your " + Appearance.cockNoun(player.cocks[x].cockType) + ".");
+		if (player.cocks.length == 1) outputText("  As it drags along the dunes, the sensation forces you to imagine the rough textured tongue of a monstrous animal sliding along the head of your " + Appearance.cockNoun(player.cocks[x].cockType) + ".");
 		else if (player.cocks.length >= 2) outputText("  With all of your " + player.multiCockDescriptLight() + " dragging through the sands they begin feeling as if the rough textured tongues of " + num2Text(player.cockTotal()) + " different monstrous animals were slobbering over each one.");
 		outputText("\n\n");
 

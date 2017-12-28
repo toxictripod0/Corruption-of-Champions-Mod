@@ -630,7 +630,7 @@ public class YaraPiercingStudio extends TelAdreAbstractContent {
 		if (flags[kFLAGS.HYPER_HAPPY]) {
 			x = player.cockThatFits(50000);
 		}
-		else if ((x === -1) && !girl)  // No cock that fits
+		else if ((x == -1) && !girl)  // No cock that fits
 		{
 			if (player.hasVagina()) // But the PC has a vagoo! Swap over to female mode"
 			{

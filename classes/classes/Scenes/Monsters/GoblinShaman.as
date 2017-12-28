@@ -21,26 +21,26 @@ package classes.Scenes.Monsters
 			//Makes sure to not stack spell effects.
 			if (lust100 < 50) spellChooser = rand(3);
 			if (lust100 > 75) spellChooser = rand(3) + 3;
-			if (spellChooser === 0 && hasStatusEffect(StatusEffects.ChargeWeapon)) {
+			if (spellChooser == 0 && hasStatusEffect(StatusEffects.ChargeWeapon)) {
 				spellChooser = rand(5) + 1;
 			}
-			if (spellChooser === 4 && HPRatio() >= 0.7) {
+			if (spellChooser == 4 && HPRatio() >= 0.7) {
 				spellChooser++;
 			}
-			if (spellChooser === 5 && hasStatusEffect(StatusEffects.Might)) {
+			if (spellChooser == 5 && hasStatusEffect(StatusEffects.Might)) {
 				spellChooser = rand(5);
-				if (spellChooser === 0 && hasStatusEffect(StatusEffects.ChargeWeapon)) spellChooser++;
+				if (spellChooser == 0 && hasStatusEffect(StatusEffects.ChargeWeapon)) spellChooser++;
 			}
 			//Spell time!
 			//Charge Weapon
-			if (spellChooser === 0 && fatigue <= (maxFatigue() - spellCostCharge)) {
+			if (spellChooser == 0 && fatigue <= (maxFatigue() - spellCostCharge)) {
 				outputText("The goblin utters word of power, summoning an electrical charge around her staff. <b>It looks like she'll deal more physical damage now!</b>");
 				createStatusEffect(StatusEffects.ChargeWeapon, 25 * spellMultiplier(), 0, 0, 0);
 				this.weaponAttack += 25 * spellMultiplier();
 				fatigue += spellCostCharge;
 			}
 			//Blind
-			else if (spellChooser === 1 && fatigue <= (maxFatigue() - spellCostBlind)) {
+			else if (spellChooser == 1 && fatigue <= (maxFatigue() - spellCostBlind)) {
 				outputText("The goblin glares at you and points at you! A bright flash erupts before you!  ");
 				if (rand(player.inte / 5) <= 4) {
 					outputText("<b>You are blinded!</b>");
@@ -52,28 +52,28 @@ package classes.Scenes.Monsters
 				fatigue += spellCostBlind;
 			}
 			//Whitefire
-			else if (spellChooser === 2 && fatigue <= (maxFatigue() - spellCostWhitefire)) {
+			else if (spellChooser == 2 && fatigue <= (maxFatigue() - spellCostWhitefire)) {
 				outputText("The goblin narrows her eyes and focuses her mind with deadly intent. She snaps her fingers and you are enveloped in a flash of white flames!  ");
 				var damage:int = inte + rand(50) * spellMultiplier();
 				if (player.isGoo()) {
 					damage *= 1.5;
 					outputText("It's super effective! ");
 				}
-				if (flags[kFLAGS.GAME_DIFFICULTY] === 1) damage *= 1.15;
-				else if (flags[kFLAGS.GAME_DIFFICULTY] === 2) damage *= 1.3;
+				if (flags[kFLAGS.GAME_DIFFICULTY] == 1) damage *= 1.15;
+				else if (flags[kFLAGS.GAME_DIFFICULTY] == 2) damage *= 1.3;
 				else if (flags[kFLAGS.GAME_DIFFICULTY] >= 3) damage *= 1.5;
 				player.takeDamage(damage, true);
 				fatigue += spellCostWhitefire;
 			}
 			//Arouse
-			else if (spellChooser === 3 && fatigue <= (maxFatigue() - spellCostArouse)) {
+			else if (spellChooser == 3 && fatigue <= (maxFatigue() - spellCostArouse)) {
 				outputText("She makes a series of arcane gestures, drawing on her lust to inflict it upon you! ");
 				var lustDmg:int = (inte / 10) + (player.lib / 10) + rand(10) * spellMultiplier();
 				player.takeLustDamage(lustDmg, true);
 				fatigue += spellCostArouse;
 			}
 			//Heal
-			else if (spellChooser === 4 && fatigue <= (maxFatigue() - spellCostHeal)) {
+			else if (spellChooser == 4 && fatigue <= (maxFatigue() - spellCostHeal)) {
 				outputText("She focuses on her body and her desire to end pain, trying to draw on her arousal without enhancing it.");
 				var temp:int = int(10 + (inte/2) + rand(inte/3)) * spellMultiplier();
 				outputText("She flushes with success as her wounds begin to knit! <b>(<font color=\"#008000\">+" + temp + "</font>)</b>.");
@@ -81,7 +81,7 @@ package classes.Scenes.Monsters
 				fatigue += spellCostHeal;
 			}
 			//Might
-			else if (spellChooser === 5 && fatigue <= (maxFatigue() - spellCostMight)) {
+			else if (spellChooser == 5 && fatigue <= (maxFatigue() - spellCostMight)) {
 				outputText("She flushes, drawing on her body's desires to empower her muscles and toughen her up.");
 				outputText("The rush of success and power flows through her body.  She feels like she can do anything!");
 				createStatusEffect(StatusEffects.Might, 20 * spellMultiplier(), 20 * spellMultiplier(), 0, 0);
@@ -101,8 +101,8 @@ package classes.Scenes.Monsters
 		override protected function performCombatAction():void {
 			var choice:Number = rand(8);
 			if (choice < 3) eAttack();
-			else if (choice === 3) goblinDrugAttack();
-			else if (choice === 4) goblinTeaseAttack();
+			else if (choice == 3) goblinDrugAttack();
+			else if (choice == 4) goblinTeaseAttack();
 			else castSpell();
 		}
 		
@@ -112,7 +112,7 @@ package classes.Scenes.Monsters
 		}
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
 		{
-			if (player.gender === 0 || flags[kFLAGS.SFW_MODE] > 0) {
+			if (player.gender == 0 || flags[kFLAGS.SFW_MODE] > 0) {
 				outputText("You collapse in front of the goblin, too wounded to fight.  She growls and kicks you in the head, making your vision swim. As your sight fades, you hear her murmur, \"<i>Fucking dicks can't even bother to grow a dick or cunt.</i>\"");
 				game.combat.cleanupAfterCombat();
 			} 

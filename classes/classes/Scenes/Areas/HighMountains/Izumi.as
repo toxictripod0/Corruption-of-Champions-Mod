@@ -387,7 +387,7 @@ package classes.Scenes.Areas.HighMountains
 			}
 			else
 			{
-				if (rand(2) === 0)
+				if (rand(2) == 0)
 				{
 					clearOutput();
 					outputText("“Hah!  Say goodnight, ‘cause I’m going to choke the fight right out of you!”  She cries exuberantly, forcibly mashing your face into her bosom.  It would appear that she is trying to throttle you, but only having one hand is making the task difficult.  You can breathe just fine, but having your face forced into the constantly jostling mass of tit-flesh before you is distracting to say the least.\n\n");

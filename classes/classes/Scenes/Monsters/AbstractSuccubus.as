@@ -22,13 +22,13 @@ package classes.Scenes.Monsters
 				var damage:int;
 				var lustDmg:int;
 				//Whip yo ass!
-				if (temp === 0) {
+				if (temp == 0) {
 					outputText("ass");
 					damage = 4;
 					lustDmg = 6 + int(player.sens / 20);
 				}
 				//Whip yo tits!
-				if (temp === 1) {
+				if (temp == 1) {
 					if (player.breastRows.length > 0 && player.biggestTitSize() > 0) outputText(player.allBreastsDescript() + "");
 					else outputText("chest");
 					damage = 9 - player.armor.def;
@@ -39,22 +39,22 @@ package classes.Scenes.Monsters
 					lustDmg = 4 + int(player.sens / 15);
 				}
 				//Whip yo groin
-				if (temp === 2) {
+				if (temp == 2) {
 					var groinProtection:int = 0;
 					//Take armor in account.
-					if (player.armor !== ArmorLib.NOTHING) {
-						if (player.armor.perk === "Light") groinProtection = 1;
-						else if (player.armor.perk === "Medium") groinProtection = 2;
+					if (player.armor != ArmorLib.NOTHING) {
+						if (player.armor.perk == "Light") groinProtection = 1;
+						else if (player.armor.perk == "Medium") groinProtection = 2;
 						else groinProtection = 3;
 						//Certain armor affects protection.
-						if (player.armor === armors.BEEARMR || player.armor === armors.SSARMOR || player.armor === armors.DBARMOR || player.armor === armors.TBARMOR) groinProtection = 2; //The only thing protecting your groin is a loincloth.
-						if (player.armor === armors.GOOARMR) groinProtection = 2; //Goo armor is soft and gooey so not complete protection.
-						if (player.armor === armors.LTHCARM) groinProtection = 0; //Lethicite armor exposes your groin.
+						if (player.armor == armors.BEEARMR || player.armor == armors.SSARMOR || player.armor == armors.DBARMOR || player.armor == armors.TBARMOR) groinProtection = 2; //The only thing protecting your groin is a loincloth.
+						if (player.armor == armors.GOOARMR) groinProtection = 2; //Goo armor is soft and gooey so not complete protection.
+						if (player.armor == armors.LTHCARM) groinProtection = 0; //Lethicite armor exposes your groin.
 					}
 					//Wearing armored undergarments? BONUS POINTS!
-					if (player.lowerGarment !== UndergarmentLib.NOTHING) {
-						if (player.lowerGarment === undergarments.SS_LOIN || player.lowerGarment === undergarments.SSPANTY) groinProtection += 1;
-						else if (player.lowerGarment === undergarments.DS_LOIN || player.lowerGarment === undergarments.DSTHONG) groinProtection += 2;
+					if (player.lowerGarment != UndergarmentLib.NOTHING) {
+						if (player.lowerGarment == undergarments.SS_LOIN || player.lowerGarment == undergarments.SSPANTY) groinProtection += 1;
+						else if (player.lowerGarment == undergarments.DS_LOIN || player.lowerGarment == undergarments.DSTHONG) groinProtection += 2;
 					}
 					//Apply damage
 					if (groinProtection >= 3) {
@@ -62,12 +62,12 @@ package classes.Scenes.Monsters
 						damage = 0;
 					}
 					else {
-						if (player.gender === 0) {
+						if (player.gender == 0) {
 							outputText("groin");
 							damage = 5;
 							damage = int(damage / (groinProtection + 1)); 
 						}
-						if (player.gender === 1) {
+						if (player.gender == 1) {
 							outputText("groin, dealing painful damage to your " + player.multiCockDescriptLight() + ", doubling you over in agony");
 							damage = int((player.maxHP()) / 4);
 							if (groinProtection > 0) {
@@ -78,12 +78,12 @@ package classes.Scenes.Monsters
 							if (damage < 20) damage = 10;
 							lustDmg = -15;
 						}
-						if (player.gender === 2) {
+						if (player.gender == 2) {
 							outputText("groin, making your " + player.vaginaDescript(0) + " sting with pain");
 							damage = 10;
 							lustDmg = -8;
 						}
-						if (player.gender === 3) {
+						if (player.gender == 3) {
 							outputText("groin, dealing painful damage to your " + player.multiCockDescriptLight() + " and " + player.vaginaDescript(0) + ", doubling you over in agony");
 							damage = int((player.maxHP()) / 3)
 							if (groinProtection > 0) {
@@ -97,17 +97,17 @@ package classes.Scenes.Monsters
 					}
 				}
 				//Whip yo legs
-				if (temp === 3) {
+				if (temp == 3) {
 					outputText("legs");
 					damage = 7;
 				}
 				//Whip yo arms
-				if (temp === 4) {
+				if (temp == 4) {
 					outputText("arms");
 					damage = 8;
 				}
 				//Whip yo neck
-				if (temp === 5) {
+				if (temp == 5) {
 					outputText("neck (24)");
 					damage = 24;
 				}
@@ -134,7 +134,7 @@ package classes.Scenes.Monsters
 			//[Kiss of Death Text]
 			outputText("The succubus dances forwards, cocking her elbow back for a vicious strike.");
 			//avoid!
-			if (player.spe > spe && rand(4) === 0 || (player.findPerk(PerkLib.Evade) >= 0 && rand(4) === 0) || (player.findPerk(PerkLib.Misdirection) >= 0 && rand(4) === 0 && player.armorName === "red, high-society bodysuit")) {
+			if (player.spe > spe && rand(4) == 0 || (player.findPerk(PerkLib.Evade) >= 0 && rand(4) == 0) || (player.findPerk(PerkLib.Misdirection) >= 0 && rand(4) == 0 && player.armorName == "red, high-society bodysuit")) {
 				outputText("  You start to sidestep and realize it's a feint.   Ducking low, you slide under her real attack... a kiss?!  ");
 				if (player.lust100 >= 70) outputText("  Maybe you shouldn't have bothered to move, it might have been fun.");
 			}
@@ -153,7 +153,7 @@ package classes.Scenes.Monsters
 			//determine which method of teasing you use
 			temp = rand(3);
 			//Butt slap!
-			if (temp === 0) {
+			if (temp == 0) {
 				outputText(capitalA + short + " slaps her " + Appearance.buttDescriptionShort(this));
 				if (butt.rating >= 10) {
 					outputText(", making it jiggle delightfully.");
@@ -176,10 +176,10 @@ package classes.Scenes.Monsters
 			player.takeLustDamage(lustDmg, true);
 			}
 			//Jiggly-tits
-			if (temp === 1 && breastRows[0].breastRating >= 2) {
+			if (temp == 1 && breastRows[0].breastRating >= 2) {
 				//rand(breastRating) + breastRows*BreastperRow
 				//Single breast row
-				if (breastRows.length === 1) {
+				if (breastRows.length == 1) {
 					//50+ breastsize% success rate
 					outputText(capitalA + short + " caresses some of her ample chest-flesh before shaking it from side to side enticingly.");
 					if (lust100 >= 50) outputText("  " + pronoun2 + " hard nipples seem to demand your attention.");
@@ -203,7 +203,7 @@ package classes.Scenes.Monsters
 			player.takeLustDamage(lustDmg, true);
 			}
 			//Genetals flash!
-			if (temp === 2) {
+			if (temp == 2) {
 				outputText(capitalA + short + " reaches down and strokes her moist lips.  She sighs and licks her fingers clean, giving you a smoldering gaze.");
 				//Success = 50% + 10% times each cock/vagina
 				//rand(vaginas*2 + cocks*2) + wetness and/or length/6

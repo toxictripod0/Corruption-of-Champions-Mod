@@ -122,14 +122,14 @@ package classes.Scenes.Seasonal {
 			clearOutput();
 			//Each follower PC has adds a block, having no followers just plays the no followers block.
 			//Corrupts can forget about their lust for one day to play on the snow.
-			if (flags[kFLAGS.JACK_FROST_PROGRESS] === 1) {
+			if (flags[kFLAGS.JACK_FROST_PROGRESS] == 1) {
 				outputText("As you approach your camp, you can see that Jack Frost's efforts are paying off.  A great, constant flurry of snowflakes is gently drifting down, swaying in the wind as it makes its inevitable descent towards the ground.  A layer of snowflakes is quickly building up, growing wider and deeper as more snow is launched from out of the mountains to rain down on your camp. You can't help but enjoy the cool air as the snowflakes fall down languidly onto the ground.  It's so beautiful you almost forget the rather perverted origin of it all.\n\n");
 				flags[kFLAGS.JACK_FROST_PROGRESS] = 2;
 				menu();
 				addButton(0,"Next",processJackFrostEvent);
 			}
 			//No followers
-			else if (camp.companionsCount() === 0) {
+			else if (camp.companionsCount() == 0) {
 				//Only if PC really has NO ONE to be with. aka: ForeverAlone.gif
 				outputText("You sigh... this really reminds you of back home... you only wish you had someone to share this feeling with... Well, there is no reason you shouldn't enjoy yourself while it snows, so you set about rolling a big ball of snow to make a snowman out of...");
 				//Skip to next day...
@@ -139,7 +139,7 @@ package classes.Scenes.Seasonal {
 				doNext(camp.returnToCampUseEightHours);
 			}
 			//Rathazul
-			else if (player.hasStatusEffect(StatusEffects.CampRathazul) && flags[kFLAGS.JACK_FROST_PROGRESS] === 2) {
+			else if (player.hasStatusEffect(StatusEffects.CampRathazul) && flags[kFLAGS.JACK_FROST_PROGRESS] == 2) {
 				outputText("Rathazul approaches you.  \"<i>[name]?  What is going on?  It hasn't snowed in Mareth for years now.  And why only around the camp?  I wandered out to investigate, but outside there is no snow at all...</i>\" he asks, concerned.");
 				
 				outputText("\n\nYou tell Rathazul that you met a friendly... er... wizard up in the mountains who wanted to try and bring snow back to Mareth.  You offered to let him cast it out over your camp, so it's basically being flung from the mountains to land here.  But, really, why is he worrying about it?  This is the first time it's happened in years, doesn't he want to enjoy it while it lasts, before it melts away?");
@@ -155,7 +155,7 @@ package classes.Scenes.Seasonal {
 				return;
 			}
 			//Izma
-			else if (flags[kFLAGS.IZMA_FOLLOWER_STATUS] === 1 && flags[kFLAGS.JACK_FROST_PROGRESS] <= 3) {
+			else if (flags[kFLAGS.IZMA_FOLLOWER_STATUS] == 1 && flags[kFLAGS.JACK_FROST_PROGRESS] <= 3) {
 				outputText("You wonder where Izma is; as a shark, maybe she doesn't like the cold?  Even as the thought crosses your mind, you note a surprisingly large pile of snow sitting not too far - with a very suspicious striped fin jutting out of it.  You rush over, calling for Izma and asking if she's all right.");
 				outputText("\n\nThe mound snow suddenly explodes as Izma pounces you, knocking you on your back and pinning you against the snowy ground.  \"<i>Gotcha!</i>\"  At once she notices who it is she's pounced upon.  \"<i>Hi there, [name].</i>\"");
 				outputText("\n\nYou tell her she's a bold one indeed to do something like that to you - isn't she supposed to be your beta?");
@@ -344,12 +344,12 @@ package classes.Scenes.Seasonal {
 					outputText("your kid");
 					if (flags[kFLAGS.MARBLE_KIDS] > 1) outputText("s");
 					outputText(", playing in the snow, blowing the snow, and experimenting with the snow.  Exactly what ");
-					if (flags[kFLAGS.MARBLE_KIDS] === 1) outputText("she");
+					if (flags[kFLAGS.MARBLE_KIDS] == 1) outputText("she");
 					else outputText("they");
 					outputText(" are up to at any given moment is really hard to say, and you're not even sure that the little girl");
 					if (flags[kFLAGS.MARBLE_KIDS] > 1) outputText("s");
 					outputText(" know");
-					if (flags[kFLAGS.MARBLE_KIDS] === 1) outputText("s herself.");
+					if (flags[kFLAGS.MARBLE_KIDS] == 1) outputText("s herself.");
 					else outputText(" themselves.");
 					
 					outputText("\n\nMarble lifts up her hand, then takes a step forward as you approach.  It looks like she is about to catch a flake in her hands, only to instead suddenly slip on the frozen ground under her hooves, and fall down onto her backside with a cry of surprise.  \"<i>Oww...</i>\" she grumbles, giving her backside a rub as you come up in front of her.  You tell her to be careful, that stuff can be slippery while extending your hand to help her up.  \"<i>Yeah, thanks sweetie, I noticed.</i>\" she sighs and accepts your hand.");
@@ -357,7 +357,7 @@ package classes.Scenes.Seasonal {
 					outputText("\n\n\"<i>" + player.short + ", do you know what this is?</i>\" your lover asks while raising her arms in the air and looking around in amazement once more.  \"<i>How can stuff fall from the sky?</i>\"  You laugh, and say that it's snow, or frozen rain.  The cow-girl looks at you in confusion once more and asks what rain is.  Now it is your turn to be surprised, she has never seen it rain before in her life?  It has never gotten cloudy and water has fallen from the sky?  Marble shakes her head no, \"<i>Sweetie, I'm not sure what a cloud is either.  Every day of my life has always been sunny and warm.  This is something I've never experienced before...</i>\"");
 					
 					outputText("\n\nYou're left at a loss for words once more, and the two of you turn back to look at your ");
-					if (flags[kFLAGS.MARBLE_KIDS] === 1) outputText("child");
+					if (flags[kFLAGS.MARBLE_KIDS] == 1) outputText("child");
 					else outputText("children");
 					outputText(" playing together once more.  A moment later, Marble puts her hand to her expansive backend again, before suddenly exclaiming again in realization.  \"<i>Sweetie, watch our kid");
 					if (flags[kFLAGS.MARBLE_KIDS] > 1) outputText("s");
@@ -369,7 +369,7 @@ package classes.Scenes.Seasonal {
 					if (flags[kFLAGS.MARBLE_KIDS] > 1) outputText("They");
 					else outputText("She");
 					outputText(" listen");
-					if (flags[kFLAGS.MARBLE_KIDS] === 1) outputText("s");
+					if (flags[kFLAGS.MARBLE_KIDS] == 1) outputText("s");
 					outputText(" with rapt attention when you explain what snow is, and about all the things you use to do in it back home.  Hands-on demonstrations are also in high demand.");
 					
 					outputText("\n\nWhen Marble returns, she can't find a single face that isn't showing a huge smile.  That isn't to say that there wasn't more excitement when what she went off to get is revealed; a big sled for the little one");
@@ -457,7 +457,7 @@ package classes.Scenes.Seasonal {
 				if (player.gender > 0) {
 					outputText(", as evidenced by ");
 					if (player.hasCock()) outputText("your erect " + player.multiCockDescriptLight());
-					if (player.gender === 3) outputText(" and ");
+					if (player.gender == 3) outputText(" and ");
 					else if (player.hasVagina()) outputText("your ");
 					if (player.hasVagina()) outputText("dripping [vagina]");
 				}
@@ -555,11 +555,11 @@ package classes.Scenes.Seasonal {
 				outputText("This small holiday of yours was much needed.  You feel reinvigorated and even more determined to put an end to this struggle with demons.");
 				outputText("\n\nThe only thing left to end this day is a feast.  Though your family is not here to join you, at least you won't be dining alone.");
 				//(if One sexable follower)
-				if (camp.loversCount() + camp.slavesCount() === 1) {
+				if (camp.loversCount() + camp.slavesCount() == 1) {
 					outputText("\n\nYou take care of the preparations and cooking, whipping up a delightful meal for you and your companion.  You can tell that you were not the only one needing this break, and judging by the way your companions eyes you as the two of you eat... it seems the day is not over yet...");
 				}
 				//(if no sexable follower)
-				else if (camp.loversCount() + camp.slavesCount() === 0) {
+				else if (camp.loversCount() + camp.slavesCount() == 0) {
 					outputText("\n\nYou take care of the preparations and cooking, whipping up a delightful meal for you and your companion");
 					if (camp.companionsCount() > 1) outputText("s");
 					outputText(".  You can tell that you were not the only one needing this break... but unfortunately all good things must come to an end, and so you bid your companion");

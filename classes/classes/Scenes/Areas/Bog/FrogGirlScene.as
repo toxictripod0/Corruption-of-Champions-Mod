@@ -15,7 +15,7 @@ public function findTheFrogGirl():void {
 	clearOutput();
 	//Picture is here
 	outputText(images.showImage("froggirl"));
-	if (flags[kFLAGS.TIMES_ENCOUNTERED_FROG] === 0) {
+	if (flags[kFLAGS.TIMES_ENCOUNTERED_FROG] == 0) {
 		outputText("You begin your trudge through the bog, slogging through the soupy muck.  Insects buzz by every second, spinning in hectic spirals around your head.");
 		outputText("\n\nYou soon become aware of a new sound behind the buzzing - a musical chirping.  Step by step, you move toward it, pushing aside hanging curtains of gray moss until the dark trees of the swamp give way to the wide roots of mangroves.  The sporadic notes trickle into your ears, and you feel unusually relaxed as you move toward their source.");
 		outputText("\n\nThe wide roots of the trees create separate, tiny ponds, where it looks like condensed water has collected into pools of pristine, blue water.  The chirping echoes from the high walls of mangrove roots, coming from a slim figure seated in the largest pool.  Vaguely feminine, it sits cross-legged and waist-deep in the pool, arms open wide and welcoming.  Light glints off the smooth skin of the lithe form as her lips part, issuing out another stream of alluring, musical notes.");
@@ -255,7 +255,7 @@ private function superBonusFrogEggsInYerCooch():void {
 public function layFrogEggs():void {
 	//Picture is here
 	outputText(images.showImage("birth-froggirl-vag"));
-	if (player.vaginas.length === 0) {
+	if (player.vaginas.length == 0) {
 		outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  You look down and behold: a vagina.  ");
 		player.createVagina();
 	}

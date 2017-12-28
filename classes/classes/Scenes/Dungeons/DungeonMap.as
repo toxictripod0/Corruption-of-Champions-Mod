@@ -190,12 +190,12 @@ package classes.Scenes.Dungeons {
 		public function chooseRoomToDisplay():void {
 			updateMap();
 			if (getGame().inRoomedDungeon) {
-			//	if (getGame().inRoomedDungeonName === "GrimdarkMareth") buildMapDisplay(MAP_MARETH);
-				if (getGame().inRoomedDungeonName === "BasiliskCave") buildMapDisplay(MAP_STRONGHOLD_P1);
-				if (getGame().inRoomedDungeonName === "LethicesKeep") buildMapDisplay(MAP_STRONGHOLD_P2);
+			//	if (getGame().inRoomedDungeonName == "GrimdarkMareth") buildMapDisplay(MAP_MARETH);
+				if (getGame().inRoomedDungeonName == "BasiliskCave") buildMapDisplay(MAP_STRONGHOLD_P1);
+				if (getGame().inRoomedDungeonName == "LethicesKeep") buildMapDisplay(MAP_STRONGHOLD_P2);
 			}
 			else if (kGAMECLASS.dungeonLoc >= 0 && kGAMECLASS.dungeonLoc < 10) { //Factory
-				if (kGAMECLASS.dungeonLoc < 6 || kGAMECLASS.dungeonLoc === 9)
+				if (kGAMECLASS.dungeonLoc < 6 || kGAMECLASS.dungeonLoc == 9)
 					 buildMapDisplay(MAP_FACTORY_F1);
 				else buildMapDisplay(MAP_FACTORY_F2);
 			}
@@ -218,8 +218,8 @@ package classes.Scenes.Dungeons {
 				if (kGAMECLASS.dungeonLoc >= 39 && kGAMECLASS.dungeonLoc <= 44) buildMapDisplay(MAP_ANZUPALACE_F1);
 				if (kGAMECLASS.dungeonLoc >= 45 && kGAMECLASS.dungeonLoc <= 48) buildMapDisplay(MAP_ANZUPALACE_F2);
 				if (kGAMECLASS.dungeonLoc >= 49 && kGAMECLASS.dungeonLoc <= 51) buildMapDisplay(MAP_ANZUPALACE_F3);
-				if (kGAMECLASS.dungeonLoc === 52) buildMapDisplay(MAP_ANZUPALACE_F4);
-				if (kGAMECLASS.dungeonLoc === 53 || kGAMECLASS.dungeonLoc === 54) buildMapDisplay(MAP_ANZUPALACE_B1);
+				if (kGAMECLASS.dungeonLoc == 52) buildMapDisplay(MAP_ANZUPALACE_F4);
+				if (kGAMECLASS.dungeonLoc == 53 || kGAMECLASS.dungeonLoc == 54) buildMapDisplay(MAP_ANZUPALACE_B1);
 			}
 			else if (kGAMECLASS.dungeonLoc >= 55 && kGAMECLASS.dungeonLoc < 65) { //Dragon City
 				if (kGAMECLASS.dungeonLoc < 62)
@@ -264,7 +264,7 @@ package classes.Scenes.Dungeons {
 						}
 					}
 					else if (getGame().inRoomedDungeon) {
-						if (getGame().dungeons._currentRoom === map[i][j])
+						if (getGame().dungeons._currentRoom == map[i][j])
 							 rawOutputText("[<u>@</u>]");
 						else rawOutputText("[<u> </u>]");
 					}

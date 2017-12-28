@@ -55,7 +55,7 @@ Variable List
 //const FOUND_ISABELLA_AT_FARM_TODAY:int = 707;
 
 override public function isabellaFollower():Boolean {
-	return flags[kFLAGS.ISABELLA_FOLLOWER_ACCEPTED] === 1 && flags[kFLAGS.ISABELLA_CAMP_DISABLED] === 0;
+	return flags[kFLAGS.ISABELLA_FOLLOWER_ACCEPTED] == 1 && flags[kFLAGS.ISABELLA_CAMP_DISABLED] == 0;
 
 }
 override public function isabellaAccent():Boolean {
@@ -76,7 +76,7 @@ public function isabellaSprite():void
 }
 
 public function isabellaKnockUpAttempt():void {
-	if (flags[kFLAGS.ISABELLA_POTENCY_STATE] === 1 && !isabellaScene.pregnancy.isPregnant) { //Pregnancy is enabled
+	if (flags[kFLAGS.ISABELLA_POTENCY_STATE] == 1 && !isabellaScene.pregnancy.isPregnant) { //Pregnancy is enabled
 		//Set chance
 		var chance:int = 30;
 		chance += Math.floor(Math.sqrt(player.cumQ()));
@@ -93,7 +93,7 @@ public function isabellaKnockUpAttempt():void {
 internal function isabellaMoovesInGreeting():void {
 	spriteSelect(SpriteDb.s_isabella);
 	clearOutput();
-	if (flags[kFLAGS.ISABELLA_TIMES_OFFERED_FOLLOWER] === 0) {
+	if (flags[kFLAGS.ISABELLA_TIMES_OFFERED_FOLLOWER] == 0) {
 		outputText("Isabella gives you a warm smile when you wander into her camp and spikes the sharp edge of her shield into the ground, leaving it standing next to her.  Her big brown eyes are filled with warmth and affection for a friend as she greets you, saying, \"<i>Velcome back, " + player.short + ".  Did you miss little old me?</i>\"\n\n");
 		
 		outputText("You ");
@@ -173,7 +173,7 @@ private function moveTheBitchIn():void {
 public function callForFollowerIsabella():void {
 	spriteSelect(SpriteDb.s_isabella);
 	clearOutput();
-	if (flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] === 0)
+	if (flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 0)
 	{
 		outputText("You get Isabella's attention and call the busty cow-girl your way.  She seems a bit consterned as she breaks away from her previous task, but as she closes in towards you, she's all smiles.  You're given plenty of time to appreciate the curvaceous beauty's body while she ambles over.\n\n");
 		
@@ -193,7 +193,7 @@ public function callForFollowerIsabella():void {
 			}
 			else
 			{
-				if (flags[kFLAGS.ISABELLA_BLOWJOBS_DISABLED] === 0) 
+				if (flags[kFLAGS.ISABELLA_BLOWJOBS_DISABLED] == 0) 
 				{
 					outputText("\n\nYou could ask Isabella not to suck you off in the morning. (In Sex Menu)");
 				}
@@ -224,14 +224,14 @@ public function callForFollowerIsabella():void {
 		outputText("\n\n<b>Isabella would probably drink a bottle of Pro Bova if you gave it to her.</b>");
 		addButton(6, "GiveProBova", isabellaBurps).hint("Give a bottle of Pro Bova to Isabella?", "Give Pro Bova");
 	}
-	if (player.hasItem(consumables.OVIELIX) && isabellaScene.pregnancy.isPregnant && flags[kFLAGS.ISABELLA_PREGNANCY_BOOSTED] === 0) {
+	if (player.hasItem(consumables.OVIELIX) && isabellaScene.pregnancy.isPregnant && flags[kFLAGS.ISABELLA_PREGNANCY_BOOSTED] == 0) {
 		outputText("\n\n<b>You can give Isabella a bottle of Ovi Elixir to take ten days off her pregnancy although it only works once per pregnancy.</b>");
 		addButton(7, "GiveOviElixir", isabellaTakesOviElixir).hint("Give a bottle of Ovi Elixir to Isabella? This will shorten her current pregnancy by ten days but you cannot do it again until she gives birth.", "Give Ovi Elixir");
 	}
-	if (flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] === 0 && flags[kFLAGS.FARM_CORRUPTION_STARTED] === 1) addButton(10, "Farm Work", sendToFarm);
-	if (flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] === 1) addButton(10, "Go Camp", backToCamp);
+	if (flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 0 && flags[kFLAGS.FARM_CORRUPTION_STARTED] == 1) addButton(10, "Farm Work", sendToFarm);
+	if (flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 1) addButton(10, "Go Camp", backToCamp);
 	
-	if (flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] === 1) addButton(14, "Back", kGAMECLASS.farm.farmCorruption.rootScene);
+	if (flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 1) addButton(14, "Back", kGAMECLASS.farm.farmCorruption.rootScene);
 	else addButton(14, "Back", camp.campLoversMenu);
 }
 
@@ -360,7 +360,7 @@ protected function campIzzySexMenu():void {
 	var bjTogText:String = "";
 	var getSucked:Function = null;
 	if (player.hasCock()) {
-		if (flags[kFLAGS.ISABELLA_BLOWJOBS_DISABLED] === 0) {
+		if (flags[kFLAGS.ISABELLA_BLOWJOBS_DISABLED] == 0) {
 			bjTogText = "No BJs";
 		}
 		else {
@@ -371,8 +371,8 @@ protected function campIzzySexMenu():void {
 	}
 	outputText("\n\n");
 	outputText("You could get a drink of Isabella's delicious milk, straight from the tap.");
-	if (tentacle !== null) outputText("  Or you could take advantage of your numerous tentacles to show her a truly grand time.");
-	if (getSucked !== null) outputText("  Or you could have her suck you off now, since she seems quite taken with the size of your penis.");
+	if (tentacle != null) outputText("  Or you could take advantage of your numerous tentacles to show her a truly grand time.");
+	if (getSucked != null) outputText("  Or you could have her suck you off now, since she seems quite taken with the size of your penis.");
 	outputText("  There's always the opportunity to climb under her skirt and service her as well.");
 	if (player.lust < 33) outputText("  <b>You aren't aroused enough to initiate sex.</b>");
 	if (player.hasCock() && player.lust >= 33) hotdog = repeatGermanBratwurstInCamp;
@@ -403,7 +403,7 @@ private function isabellasAccentCoaching():void {
 	/*(req's 100% teach score to replace dialogue.  Success 
 	based on inte)*/
 	//(FIRST TIME) 
-	if (flags[kFLAGS.ISABELLA_ACCENT_TRAINING_PERCENT] === 0) {
+	if (flags[kFLAGS.ISABELLA_ACCENT_TRAINING_PERCENT] == 0) {
 		outputText("You tell Isabella you'd like to offer her lessons in order to reduce her accent and make her more understandable.  She folds her arms across her chest and protests, \"<i>You have an accent too, nein?</i>\"\n\n");
 		outputText("Chuckling, a little, you nod, but note that yours is far closer to the people of this land than her own.  She agrees, albeit reluctantly.\n\n");
 		flags[kFLAGS.ISABELLA_ACCENT_TRAINING_PERCENT] = 1;
@@ -416,9 +416,9 @@ private function isabellasAccentCoaching():void {
 	//(Success/Fail texts)
 	if (result < 12) {
 		temp = rand(3);
-		if (temp === 0) outputText("You spend an hour speaking with Isabella, but ultimately, you wind up making little, if any, progress.  The cow-girl seems a bit dispirited at the failure, but she gives you a big hug anyway.");
+		if (temp == 0) outputText("You spend an hour speaking with Isabella, but ultimately, you wind up making little, if any, progress.  The cow-girl seems a bit dispirited at the failure, but she gives you a big hug anyway.");
 		//(FAIL2) 
-		else if (temp === 1) {
+		else if (temp == 1) {
 			outputText("In spite of your efforts to teach the foreign cow-girl, she doesn't seem to make any progress.  The worst part is, she keeps slumping down when you correct her, which only sets her bosom to jiggling, her cleavage looking larger than ever before.  You wind up quite distracted by the time the two of you get finished.");
 			dynStats("lus", 10);
 		}
@@ -434,19 +434,19 @@ private function isabellasAccentCoaching():void {
 	}
 	else if (result < 14) {
 		temp = rand(2);
-		if (temp === 0) outputText("You spend an hour going over Isabella's language and diction with her.  She seems to make a little progress with it, which makes her happy, but you feel that in the grand scheme of things, she could do better.");
+		if (temp == 0) outputText("You spend an hour going over Isabella's language and diction with her.  She seems to make a little progress with it, which makes her happy, but you feel that in the grand scheme of things, she could do better.");
 		else outputText("You go over Isabella's word choice with her and try to correct her whenever she uses the wrong word or slips into her native tongue.  She seems to make a modicum of progress, yet the downward cast of her eyes shows just how much better she feels she could have done.");
 		accentChange = 4 + rand(5);
 	}
 	else if (result <= 20) {
 		temp = rand(2);
-		if (temp === 0) outputText("You spend an hour trying to teach Isabella how to speak properly.  While she is often flustered by her mistakes, she makes notable improvements from this session.  By the time you two finish, she seems quite pleased with herself.");
-		else if (temp === 1) outputText("You go over Isabella's word choice with her and try to correct her whenever she uses the wrong word or slips into her native tongue.  It takes some time, but you're happy to tell Isabella that she seems to be making significant progress.");
+		if (temp == 0) outputText("You spend an hour trying to teach Isabella how to speak properly.  While she is often flustered by her mistakes, she makes notable improvements from this session.  By the time you two finish, she seems quite pleased with herself.");
+		else if (temp == 1) outputText("You go over Isabella's word choice with her and try to correct her whenever she uses the wrong word or slips into her native tongue.  It takes some time, but you're happy to tell Isabella that she seems to be making significant progress.");
 		accentChange = 8 + rand(8);
 	}
 	else {
 		temp = rand(2);
-		if (temp === 0) outputText("You sit down with Isabella to work on her language once again.  She gets quite involved in the lesson, and the cow-girl makes large strides toward lessening her accent.");
+		if (temp == 0) outputText("You sit down with Isabella to work on her language once again.  She gets quite involved in the lesson, and the cow-girl makes large strides toward lessening her accent.");
 		else outputText("You go over Isabella's word choice with her in an effort to reduce her accent.  In short order, the cow-girl is looking at you with rapt, attentive eyes, hanging on to your every word as you help her disguise her tongue to match those she's surrounded by.");
 		accentChange = 12 + rand(10);
 	}
@@ -489,7 +489,7 @@ public function isabellaMorningWakeupCall():void {
 	outputText("Sighing happily, your dream takes on a markedly sexual tone, a bevy of delightful sensations wrapping around your loins in your sleep.  Your " + player.hipDescript() + " pump slightly as your body reacts to the hot, pleasant feelings emanating from your now-stiff cock.  The turgid member is like a lightning rod, shuddering every few seconds under an assault of thunderous pleasure-strikes.  You let out a sleepy, contented sigh as your body starts to stir to wakefulness.  The tactile sensations seem so similar to a hot, tight cunt, and yet so achingly different.  Sometimes, a few places are left exposed to the cool morning air, the breeze chilling that portion of your member's skin in sensual contrast with the heat of whatever is squeezing the rest of it.\n\n");
 	
 	outputText("There's a quiet, almost inaudible squishing noise prodding at your muzzy consciousness, like the irritating drip of a leaky faucet; you do the only thing a half-asleep, pleasure-drunk " + player.mf("man","herm") + " can do in a situation like this: blink open your eyes and glance down toward your groin.  There's a tangle of curly crimson hair blocking your view of your crotch, flanked by two down-turned, cute cow-ears.  ");
-	if (flags[kFLAGS.ISABELLA_MORNING_FELLATIO_COUNT] === 1) outputText("Isabella is fellating you!?");
+	if (flags[kFLAGS.ISABELLA_MORNING_FELLATIO_COUNT] == 1) outputText("Isabella is fellating you!?");
 	else outputText("Isabella is giving you one of her traditional good-morning blowjobs.");
 	outputText("  Her massive, malleable tongue moulds around your " + player.cockDescript(x) + " as she works to enhance your pleasure.  A trickle of warm, creamy milk escapes the heavy jugs resting on your " + player.legs() + ", showing you just how much she enjoys dispensing oral pleasure.  The tangled, crimson mass of hair slowly begins to bob up and down upon your loins, and Isabella's big brown eyes look up at you with radiant happiness, the corners of her mouth curling into a cock-filled smile.\n\n");
 	
@@ -529,7 +529,7 @@ public function isabellaMorningWakeupCall():void {
 	outputText("The orally-fixated red-head shudders and quietly moans as she rises, her pleasure evident on her stained fingers as they withdraw from under her rumpled skirt.  Isabella's silky white top is utterly soaked with sweet-smelling cream, an aroma echoed by the ");
 	if (player.cumQ() >= 2000) outputText("spunk-tainted ");
 	outputText("milk-puddle around your " + player.legs() + ".  She sighs and says, \"<i>");
-	if (flags[kFLAGS.ISABELLA_MORNING_FELLATIO_COUNT] === 1) {
+	if (flags[kFLAGS.ISABELLA_MORNING_FELLATIO_COUNT] == 1) {
 		if (isabellaAccent()) outputText("Mmm, your penis has such tasty treats for me.  Keep zat cock small enough for mein mouth and I vill be happy to tend to it every morning, ja?");
 		else outputText("Mmm, your penis has such tasty treats for me.  Keep that cock small enough for my mouth and I'll be happy to tend to it every morning, okay?");
 	}
@@ -552,7 +552,7 @@ public function isabellaMorningWakeupCall():void {
 private function toggleIsabellasMorningWoodChopping():void {
 	spriteSelect(SpriteDb.s_isabella);
 	clearOutput();
-	if (flags[kFLAGS.ISABELLA_BLOWJOBS_DISABLED] === 0) {
+	if (flags[kFLAGS.ISABELLA_BLOWJOBS_DISABLED] == 0) {
 		outputText("You let Isabella know that you'd rather manage your morning wood yourself, and if possible, save up your cum rather than having her drain it every morning.  She looks a little disappointed but agrees to leave you be in the morning.  Before you go, she offers, \"<i>");
 		if (isabellaAccent()) outputText("Just let Isabella know if you change your mind, ja?</i>\"");
 		else outputText("Just let me know if you change your mind, all right?</i>\"");
@@ -635,7 +635,7 @@ private function repeatGermanBratwurstInCamp():void {
 	else outputText("\"<i>Good " + player.mf("boy","girl") + ".  Relax, Momma Isabella will take care of you.</i>\"\n\n");
 	
 	outputText("The curvaceous cow-girl's stance shifts slightly, her teasing, shaking dance coming to a stop for just a moment as she adjusts to rest her rump against your " + player.cockDescript(x) + ".  ");
-	if (player.cockTotal() === 2) outputText("The other penis is shoved to the side, forgotten about as Isabella selects the lucky fuck-stick.  ");
+	if (player.cockTotal() == 2) outputText("The other penis is shoved to the side, forgotten about as Isabella selects the lucky fuck-stick.  ");
 	else if (player.cockTotal() > 2) outputText("The other penises are shoved aside, forgotten about as Isabella selects the lucky fuck-stick.  ");
 	outputText("She arches her body and slides up and down your " + player.cockDescript(x) + ", gradually increasing the weight she's pressing on it with every stroke.  Your dripping member slips into Isabella's tightly-compressed ass-cleavage with a wet-sounding *POP*.  Her derriere is so hot... so sweat-slicked... so... so... perfectly tight.  You aren't even fucking her yet");
 	if (player.cockArea(x) <= 38) outputText(", though with your dick completely devoured by her big butt-cheeks, you may as well be.");
@@ -718,7 +718,7 @@ private function izzyTentacleRapeBool():Boolean {
 	while(counter < player.countCocksOfType(CockTypesEnum.TENTACLE) && temp > 0) {
 		temp--;
 		//Does this dick work for it?
-		if (player.cocks[temp].cockType === CockTypesEnum.TENTACLE && player.cocks[temp].cockLength >= 24) {
+		if (player.cocks[temp].cockType == CockTypesEnum.TENTACLE && player.cocks[temp].cockLength >= 24) {
 			counter++;
 		}
 	}
@@ -748,19 +748,19 @@ private function tentacleBoneFollowerIzzy():void {
 	while(counter < player.countCocksOfType(CockTypesEnum.TENTACLE) && temp > 0) {
 		temp--;
 		//Does this dick work for it?
-		if (player.cocks[temp].cockType === CockTypesEnum.TENTACLE && player.cocks[temp].cockLength >= 24) {
+		if (player.cocks[temp].cockType == CockTypesEnum.TENTACLE && player.cocks[temp].cockLength >= 24) {
 			counter++;
 			//Set the tentacle array up
-			if (t1 === -1) t1 = temp;
-			else if (t2 === -1) t2 = temp;
-			else if (t3 === -1) t3 = temp;
-			else if (t4 === -1) t4 = temp;
-			else if (t5 === -1) t5 = temp;
-			else if (t6 === -1) t6 = temp;
-			else if (t7 === -1) t7 = temp;
-			else if (t8 === -1) t8 = temp;
-			else if (t9 === -1) t9 = temp;
-			else if (t10 === -1) t10 = temp;
+			if (t1 == -1) t1 = temp;
+			else if (t2 == -1) t2 = temp;
+			else if (t3 == -1) t3 = temp;
+			else if (t4 == -1) t4 = temp;
+			else if (t5 == -1) t5 = temp;
+			else if (t6 == -1) t6 = temp;
+			else if (t7 == -1) t7 = temp;
+			else if (t8 == -1) t8 = temp;
+			else if (t9 == -1) t9 = temp;
+			else if (t10 == -1) t10 = temp;
 		}
 	}
 	clearOutput();
@@ -790,7 +790,7 @@ private function tentacleBoneFollowerIzzy():void {
 	outputText("After toying with her for a while, you decide to bring your other tentacle dicks into the game; with expert precision, you move your " + player.cockDescript(t3) + " to her face.  Moaning under your gentle ministrations, she doesn't even notice the protruding mammoth about to lodge inside her drooling mouth. With a ferocious thrust you slam it all the way between her pulpy lips. Her sighs of pleasure are abruptly muffled as you block her windpipe with vegetal dickflesh. You start ramming your meat up and down her throat, its raw musk making her dizzy.  She tries to accommodate the monster stretching her mouth by moving her tongue around your erect " + player.cockDescript(t3) + ", squeezing it there and there, fondling your veins and milking your urethra of your pre-cum. You groan from the tongue-teasing and start filling her stomach with oozing fluid; the intimate contact makes her squirm a little more under the almost unbearable arousal. She's doing an expert job with her mouth, and her throat feels so good, so tender...  You try to stuff more of your " + player.cockDescript(t3) + " inside her, always wanting more pleasure; the additional pressure almost sends her over the edge as she eagerly gobbles your vegetal rod.\n\n");
 	
 	//[if demon tongue]
-	if (player.tongue.type === Tongue.DEMONIC || player.tongue.type === Tongue.SNAKE || player.tongue.type === Tongue.DRACONIC) {
+	if (player.tongue.type == Tongue.DEMONIC || player.tongue.type == Tongue.SNAKE || player.tongue.type == Tongue.DRACONIC) {
 		outputText("Using your long, extensible tongue, you decide to take a lick at her body.  Your tongue darts forward and gently locates her supple tits; you bring Isabelle closer with your vigorous tentacle dicks and start suckling at her breasts, drinking drops of her tasty milk one at a time.  Your constant stimulations arouse her more and more, and soon her nipples are releasing a regular trickle of her essence. You mercilessly drink her, probing your tongue around either of her udders as if to dig deeper to the source of this wonderful ambrosia. You keep gulping milk until you reach satiation, and then you drink some more. It's sweet, savory and invigorating; you could feed off her breasts for days.  You suckle her until her body shakes from the steady tactile provocation, before darting your tongue back.\n\n");
 		//end d-tongue inset
 	}
@@ -991,13 +991,13 @@ private function getMilk():void {
 	//Izzy overmilked
 	if (flags[kFLAGS.ISABELLA_MILK_COOLDOWN] > 0) {
 		outputText("Isabella shakes her head and tells you she");
-		if (flags[kFLAGS.ISABELLA_MILKED_YET] === -1) outputText("'s out of bottled milk right now, and that you should check back later.");
+		if (flags[kFLAGS.ISABELLA_MILKED_YET] == -1) outputText("'s out of bottled milk right now, and that you should check back later.");
 		else outputText("'s still sore from last time, and that you should wait till later.");
 		doNext(callForFollowerIsabella);
 		return;
 	}
 	//[(if Izzy Milked Yet flag = -1)
-	if (flags[kFLAGS.ISABELLA_MILKED_YET] === -1) {
+	if (flags[kFLAGS.ISABELLA_MILKED_YET] == -1) {
 		if (isabellaAccent()) outputText("Isabella nods, and fetches you one of the spares from her latest milking session at the farm.  \"<i>Here you go!  Less zan twenty-four hours old, ja?</i>\"");
 		else outputText("Isabella nods, and fetches you one of the spares from her latest milking session at the farm.  \"<i>Here you go!  Less than twenty-four hours old, okay?</i>\"\n\n");
 	}
@@ -1035,7 +1035,7 @@ public function angryMurble():void {
 private function isabellaSparMenu():void {
 	spriteSelect(SpriteDb.s_isabella);
 	clearOutput();
-	if (flags[kFLAGS.ISABELLA_SPARRING_INTRO] === 0) {
+	if (flags[kFLAGS.ISABELLA_SPARRING_INTRO] == 0) {
 		outputText("Isabella smiles when you suggest sparring and vigorously nods, exclaiming, \"<i>");
 		if (isabellaAccent()) outputText("Zis vill be good for both of us, ya!?</i>\"  The beaming cow-girl taps a finger to her chin and suggests, \"<i>Ve should set up out on ze edges of the plains, so ve don't damage zis camp.</i>\"");
 		else outputText("This ought to be good for both of us!</i>\"  The beaming cow-girl taps a finger to her chin and suggests, \"<i>Why don't we set up a faux camp on the edge of the plains, so we don't damage this one.  Okay?</i>\"");
@@ -1056,7 +1056,7 @@ private function isabellaSparMenu():void {
 private function sparring(type:int = 1):void {
 	spriteSelect(SpriteDb.s_isabella);
 	clearOutput();
-	if (flags[kFLAGS.ISABELLA_SPARRING_INTRO] === 1) {
+	if (flags[kFLAGS.ISABELLA_SPARRING_INTRO] == 1) {
 		outputText("You and Isabella hike to the border of the plains with some old furniture and worn out blankets, arranging a faux camp for you to fight around.  Once it is finished, you take a quick breather before getting started.\n\n");
 		flags[kFLAGS.ISABELLA_SPARRING_INTRO] = 2;
 	}
@@ -1064,13 +1064,13 @@ private function sparring(type:int = 1):void {
 		outputText("You and Isabella hike to the border of the plains, where you set up the make-shift camp for your sparring sessions.\n\n");
 	}
 	outputText("Isabella lifts her shield and raps her knuckles against the solid steel, making a loud, gong-like sound that carries for some distance.  You raise your " + player.weaponName + " and prepare to fight.  It's on!");
-	if (type === 1) outputText("  The knowledge that you're playing for keeps makes your heart beat faster.");
+	if (type == 1) outputText("  The knowledge that you're playing for keeps makes your heart beat faster.");
 	startCombat(new Isabella());
 	monster.createStatusEffect(StatusEffects.Sparring,type,0,0,0);
 	//No gems.
 	monster.gems = 0;
 	//Nerf XP if light mode
-	if (type === 2) monster.XP = Math.round(monster.XP / 2);
+	if (type == 2) monster.XP = Math.round(monster.XP / 2);
 	spriteSelect(SpriteDb.s_isabella);
 }
 
@@ -1082,7 +1082,7 @@ private function isabellaBurps():void {
 	spriteSelect(SpriteDb.s_isabella);
 	clearOutput();
 	//First time
-	if (flags[kFLAGS.ISABELLA_PROBOVA_BURP_COUNT] === 0) {
+	if (flags[kFLAGS.ISABELLA_PROBOVA_BURP_COUNT] == 0) {
 		if (isabellaAccent()) outputText("\"<i>Vhat is zat, dear?</i>\"");
 		else outputText("\"<i>What do you have there?</i>\"");
 		outputText(" Isabella asks innocently, inspecting the bottle of cloudy fluid you're offering her.  You reveal the contents to be Pro Bova, basically a supercharged version of what she took to become as she is now.  Her eyes cloud a bit as she absentmindedly presses her oversized bosom together, the most obvious indication of her changes.  \"<i>And you ");
@@ -1128,7 +1128,7 @@ private function runAwayFromIzzyBurps():void {
 	clearOutput();
 	spriteSelect(SpriteDb.s_isabella);
 	//First time
-	if (flags[kFLAGS.ISABELLA_PROBOVA_BURP_COUNT] === 0) {
+	if (flags[kFLAGS.ISABELLA_PROBOVA_BURP_COUNT] == 0) {
 		outputText("Allowing common sense to dictate your judgment, you step back from the dark-skinned woman, backing up until she stops waving at you.  She grimaces in an evident cross of pain and... pleasure?  Her cheeks are puffing up and chest, puffing out.  Despite yourself, you can't help but admire the way her 'udders' sit on her out-thrust torso, jiggling constantly from the tremors running through her body.  Finally, when she can't seem to hold herself back any longer, her mouth flies open as wide as you've ever seen it, a gigantic burp thundering out.  A visible misty cloud issues from her gaping gob, gaining volume and hovering ominously around her as subsequent belches ripple forth.  In an attempt to free all of the offending gas from her poor body, Isabella roughly squishes her midsection, wincing at each emission as she forces them out.\n\n");
 	
 		outputText("The gaseous assault eventually diminishes, her belly returning to a healthy state and the cloud dispersing.  After waiting a few minutes to confirm the end of the episode, Isabella stomps up to you, a fierce blush painting her cheeks.  \"<i>");
@@ -1160,7 +1160,7 @@ private function getIzzyBurped():void {
 	spriteSelect(SpriteDb.s_isabella);
 	flags[kFLAGS.ISABELLA_PROBOVA_BURP_COUNT]++;
 	//First time
-	if (flags[kFLAGS.ISABELLA_PROBOVA_BURP_COUNT] === 1) {
+	if (flags[kFLAGS.ISABELLA_PROBOVA_BURP_COUNT] == 1) {
 		outputText("You completely ignore the warning, immediately moving to help your cow-girl companion with her upset stomach problems. She casts a disbelieving look at you, vocally stumbling over a dozen different protests. Determined as you are, however, you dutifully rub her belly, intent on alleviating her pains.  \"<i>You... you.... dummkopf! ");
 		if (isabellaAccent()) outputText("V");
 		else outputText("W");
@@ -1172,29 +1172,29 @@ private function getIzzyBurped():void {
 		
 		var changed:Boolean = false;
 		//no new paragraph, but this obviously shouldn't happen with characters who already have hooves, cow/bull horns, lactating breasts, or a penis smaller than 8 inches. If you want to simply disable the following for those with the first two while simply adding a 'more' to the lactation or an 'even smaller' to the wang growing, I don't blame you, but if you could go in and 'if cow feet don't look at this shit' and whatever with each individual part, it'd probably read the best. Your call, you probably want to get done with this sooner than later. tl;dr it would be cool if you could make it fit as many of the criteria that apply at once.
-		if (player.lowerBody.type !== LowerBody.HOOFED || player.horns.value <= 0 || player.horns.type !== Horns.COW_MINOTAUR) {
+		if (player.lowerBody.type != LowerBody.HOOFED || player.horns.value <= 0 || player.horns.type != Horns.COW_MINOTAUR) {
 			outputText("  With that whole affair over with, you go to stand... and find yourself falling once more.");
 		}
-		if (player.lowerBody.type !== LowerBody.HOOFED) {
+		if (player.lowerBody.type != LowerBody.HOOFED) {
 			//[if no hooves present already]
 			if (player.isTaur()) outputText("  Confused, you quickly inspect yourself before your gaze settles on your hooves – or should you say, your SINGLE PAIR of hooves.  Triggered by what you surmise are the Pro Bova's fumes, your centaur body has vanished, leaving you with a single pair of cow-like hooves.");
 			else outputText("  Confused, you quickly inspect yourself before your gaze settles on your " + player.feet() + " – or should you say, former " + player.feet() + ".  Triggered by what you surmise are the Pro Bova's fumes, your " + player.feet() + " have quickly and painlessly refashioned themselves into cloven hooves – not unlike those Isabella is currently sporting.");
 			changed = true;
 		}
 		//[if no cow horns present]
-		if (player.horns.value <= 0 || player.horns.type !== Horns.COW_MINOTAUR) {
+		if (player.horns.value <= 0 || player.horns.type != Horns.COW_MINOTAUR) {
 			if (player.horns.value > 0 && player.horns.type > Horns.NONE) outputText("  Your existing horns quiver, then reform into those of a " + player.mf("bull","cow"));
 			else outputText("  Two nubs sprout from your forehead, swiftly thickening and growing into a large pair of curved bovine horns");
 			outputText(", throwing your center of balance off and aborting yet another attempt to right yourself.");
 			changed = true;
 		}
 		//[if no cow ears]
-		if (player.ears.type !== Ears.COW) {
+		if (player.ears.type != Ears.COW) {
 			outputText("  Your ears wiggle a bit, then simply migrate higher up your head, lengthening and widening as they go.  Before you know it, you have cow ears.");
 			changed = true;
 		}
 		//[if no cow tail]
-		if (player.tail.type !== Tail.COW) {
+		if (player.tail.type != Tail.COW) {
 			if (player.tail.type > Tail.NONE) outputText("  The tip of your tail reshapes into a burst of fur, the entire length changing to match.");
 			else outputText("  A tail creeps out of your " + player.armorName + ", perking up and growing rapidly.  A flare of fur bursts from the tip, the rest of the length changing to match.");
 			changed = true;
@@ -1218,7 +1218,7 @@ private function getIzzyBurped():void {
 			changed = true;
 		}
 		//[if female/herm and player race not cow-girl]
-		if (changed && player.hasVagina() && player.race() !== "cow-girl") {
+		if (changed && player.hasVagina() && player.race() != "cow-girl") {
 			outputText("  \"<i>Goodness, look at you!</i>\" Isabella exclaims, waving away the remnant wisps of the gassy mist.  \"<i>Surely, you're giving me a run for ");
 			if (isabellaAccent()) outputText("mein money now, ja?");
 			else outputText("my money now, darling!");
@@ -1236,7 +1236,7 @@ private function getIzzyBurped():void {
 			outputText("</i>\"\n\n");
 		}
 		//[if male and player race not cowboy]
-		else if (changed && player.hasCock() && player.race() !== "cow-morph") {
+		else if (changed && player.hasCock() && player.race() != "cow-morph") {
 			outputText("  \"<i>");
 			if (isabellaAccent()) outputText("Nein nein nein nein, zis von't do at all!");
 			else outputText("No, no! This is awful!");
@@ -1269,9 +1269,9 @@ private function getIzzyBurped():void {
 		outputText("She rewards you by freeing one of her arms and wrapping it around your head, pulling you in between her gleaming ebony melons.  Shaking about and wrapping your head in a marshmallowy shroud of comfort, Isabella continues to force burps out, not content until all of the gas is gone.  She pulls you out of your fleshy prison after the oral venting subsides, dragging you down to the ground with her as her gassy magic begins to take hold.\n\n");
 		
 		//if meets any requirements for cow-y TF
-		if (player.lowerBody.type !== LowerBody.HOOFED || player.horns.value <= 0 || player.horns.type !== Horns.COW_MINOTAUR || player.ears.type !== Ears.COW || player.tail.type !== Tail.COW || (player.hasCock() && player.longestCockLength() < 18)) {
+		if (player.lowerBody.type != LowerBody.HOOFED || player.horns.value <= 0 || player.horns.type != Horns.COW_MINOTAUR || player.ears.type != Ears.COW || player.tail.type != Tail.COW || (player.hasCock() && player.longestCockLength() < 18)) {
 			outputText("You're not surprised when you take the now-familiar cow-" + player.mf("boy","girl") + " form, ");
-			if ((!player.hasCock() || rand(2) === 0) && player.hasVagina()) outputText("Isabella beaming with eagerness at your sloshing and swelling bosom.\n\n");
+			if ((!player.hasCock() || rand(2) == 0) && player.hasVagina()) outputText("Isabella beaming with eagerness at your sloshing and swelling bosom.\n\n");
 			else if (player.hasCock()) outputText("Isabella not able to keep a little frustration from her face as your dick grows to enviable size.\n\n");
 		}
 		//if all requirements already filled (already a busty cow-girl/well-endowed cowboy)
@@ -1286,7 +1286,7 @@ private function getIzzyBurped():void {
 private function declineIzzysCowBurpApology():void {
 	clearOutput();
 	spriteSelect(SpriteDb.s_isabella);
-	if (flags[kFLAGS.ISABELLA_PROBOVA_BURP_COUNT] === 1) {
+	if (flags[kFLAGS.ISABELLA_PROBOVA_BURP_COUNT] == 1) {
 		outputText("As strange as the situation is, you're too weirded out to reassure Isabella, at least for now, and you relay that to her.  Though crestfallen, she takes the news well, apologizing - sincerely and soberly - once more before moving back to her designated camping spot.  ");
 		if (player.hasStatusEffect(StatusEffects.BurpChanged)) {
 			outputText("  Happily, after about an hour, you go back to your old form, leaving the belch-borne bovine bounty behind.");
@@ -1310,7 +1310,7 @@ private function acceptCowpology():void {
 	player.orgasm('Generic');
 	dynStats("sen", -1);
 	//FIRST TIME
-	if (flags[kFLAGS.ISABELLA_PROBOVA_BURP_COUNT] === 1) {
+	if (flags[kFLAGS.ISABELLA_PROBOVA_BURP_COUNT] == 1) {
 		outputText("Flashing a smirk, you beckon her your way, stripping from your " + player.armorName + ".  With delicate and deliberate motions you pull the hem of Isabella's milk-stained blouse down, reaching into the depths of her cleavage and taking hold of her oversized breasts.  It takes effort to heave the heavy, fluid-filled mammaries up and out of her shirt.  Once exposed to the open air, her quadruplet of nipples twitch and stiffen, only swelling further as you alternatingly tease her teats with the edge of your fingernail.  You trace little circles along the areola, running up and over the nubs; your gentle-but-devastating caressing technique sets Isabella all a-shiver, knees knocking together in hardly-contained ecstasy.  If given enough time, you figure you could push the cow-girl to climax merely from nipple stimulation, but your own body demands satisfaction as well.\n\n");
 		//male: titjoob (Z)
 		if (player.hasCock()) {
@@ -1345,7 +1345,7 @@ private function acceptCowpology():void {
 	else {
 		outputText("Flashing a smirk, you beckon her your way, stripping from your " + player.armorName + ".  With delicate and deliberate motions you pull the hem of Isabella's milk-stained blouse down, reaching into the depths of her cleavage and taking hold of her oversized breasts.  It takes effort to heave the heavy, fluid-filled mammaries up and out of her shirt.  Once exposed to the open air, her quadruplet of nipples twitch and stiffen, only swelling further as you alternatingly tease her teats with the edge of your fingernail.  You trace little circles along the areola, running up and over the nubs; your gentle-but-devastating caressing technique sets Isabella all a-shiver, knees knocking together in hardly-contained ecstasy.  If given enough time, you figure you could push the cow-girl to climax merely from nipple stimulation, but your own body demands satisfaction as well.\n\n");
 		//male
-		if (player.hasCock() && (!player.hasVagina() || rand(2) === 0)) {
+		if (player.hasCock() && (!player.hasVagina() || rand(2) == 0)) {
 			outputText("Figuring to put your oversized organ to use, you pull Isabella's tits apart and slap your hard length between them.  As soon as she has figured out your intentions, the cow-girl moves to take over, mashing her pillowy endowments together around your maleness.  Perhaps it was from the gas, but what should be a simple titfuck is driving you insane with pleasure; her warm, sweaty boob flesh contours to the curves of your shaft and head as well as any pussy.  You can't help yourself – you begin to pump your hips, your tip poking out to dance tantalizingly above Isabella's face before withdrawing, only to peek out again seconds later.  The cow-girl smiles and opens wide, her long tongue slithering free from its shelter.\n\n");
 
 			outputText("She expertly licks and flicks at the underside of your cock during your next thrust, sending an almost electric current of pleasure through you.  You two find a rhythm quickly, grinding, thrusting, and licking in perfect unison.  As you come closer to orgasm, you begin increasing the pace; your lover is more than happy to match.  Suddenly, Isabella releases her hold on her bosom and instead wraps her arms around your " + player.buttDescript() + ", pulling you toward her and her wide-open mouth. Your legs catch on her boobs, but she doesn't even notice, closing her full lips around as much of your shaft as she can fit.  As good as her warm, wet mouth feels, her tongue demands the majority of your attention.  It besieges your junk completely, wrapping around the shaft, tickling the undercarriage, and even stroking – a perfect prehensile ejaculatory aid.\n\n");
@@ -1627,20 +1627,20 @@ private function isabellaTalkMenu():void {
 		outputText("\n\n<b><u>DEBUG:</u></b>");
 		if (isabellaScene.isabellaOffspringData.length > 0) {
 			for (var i:int = 0; i < isabellaScene.isabellaOffspringData.length; i += 2) {
-				outputText("\nType: " + isabellaScene.isabellaOffspringData[i] + "; Age: " + (getGame().time.days - isabellaScene.isabellaOffspringData[i+1]) + " day" + (getGame().time.days - isabellaScene.isabellaOffspringData[i+1] === 1 ? "" : "s"));
+				outputText("\nType: " + isabellaScene.isabellaOffspringData[i] + "; Age: " + (getGame().time.days - isabellaScene.isabellaOffspringData[i+1]) + " day" + (getGame().time.days - isabellaScene.isabellaOffspringData[i+1] == 1 ? "" : "s"));
 			}
 		}
 	}
 	menu();
 	addButton(0, "Just Talk", isabellaScene.talkWithIsabella).hint("Have a chat with Isabella to pass the time.");
-	if (flags[kFLAGS.ISABELLA_COUNTDOWN_TO_CONTRACEPTIONS] === -1) addButton(1, "Contraception", toggleIsabellaContraceptives).hint(flags[kFLAGS.ISABELLA_POTENCY_STATE] === 1 ? "Tell Isabella to start using the contraceptive herbs. This should prevent Isabella from getting pregnancy although it does not cancel any existing pregnancies." : "Tell Isabella to stop using the contraceptive herbs. This will allow you to get her pregnant.");
+	if (flags[kFLAGS.ISABELLA_COUNTDOWN_TO_CONTRACEPTIONS] == -1) addButton(1, "Contraception", toggleIsabellaContraceptives).hint(flags[kFLAGS.ISABELLA_POTENCY_STATE] == 1 ? "Tell Isabella to start using the contraceptive herbs. This should prevent Isabella from getting pregnancy although it does not cancel any existing pregnancies." : "Tell Isabella to stop using the contraceptive herbs. This will allow you to get her pregnant.");
 	if ((isabellaScene.totalIsabellaChildren() > 0 || isabellaScene.pregnancy.isPregnant) && flags[kFLAGS.ISABELLA_COWMOTHER] < 1) addButton(2, "Cowify", isabellaCowifyPrompt).hint("Ask Isabella if she can turn into something special.");
 	addButton(4, "Back", callForFollowerIsabella);
 }
 
 public function isabellaTalksAboutPotentialPregnancy():void {
 	spriteSelect(SpriteDb.s_isabella);
-	outputText("\nAs you head for your " + (camp.homeDesc() === "cabin" ? "bed" : "sleeping bag") + ", looking forward to the end of another long day, you notice Isabella approaching, seeming strangely nervous for the bovine warrior-woman.  You call out to her in greeting, asking if something is the matter.");
+	outputText("\nAs you head for your " + (camp.homeDesc() == "cabin" ? "bed" : "sleeping bag") + ", looking forward to the end of another long day, you notice Isabella approaching, seeming strangely nervous for the bovine warrior-woman.  You call out to her in greeting, asking if something is the matter.");
 	outputText("\n\n\"<i>Ah, [name], I was hoping to see you.</i>\" She replies.  Nervously looking at the ground, pawing at the dry earth with one cloven hoof, she suddenly blurts out, \"<i>what do you think of children, [name]?</i>\"");
 	outputText("\n\nYou look at her in surprise and ask why she is asking you that.  Isabella retains her nervous expression, before awkwardly beginning, \"<i>I... well, I always thought that, one day, I would have a family, but first I had to find a man who was worthy, and then there was the adventuring and... well, I never had the chance before I ended up in this world.  But, now that I have you... I understand that there are many reasons not to, but, if you do want to start a family with me, I am willing. Okay? I just wanted to tell you that, and for you to remember that.</i>\"");
 	outputText("\n\nThat said and done, the bovine warrior beats a hasty retreat, allowing you to get to bed.  Admittedly, with something to think over while you sleep.");
@@ -1651,10 +1651,10 @@ public function isabellaTalksAboutPotentialPregnancy():void {
 
 private function toggleIsabellaContraceptives():void {
 	clearOutput();
-	if (flags[kFLAGS.ISABELLA_POTENCY_STATE] === 1) { //Not on contraceptives
+	if (flags[kFLAGS.ISABELLA_POTENCY_STATE] == 1) { //Not on contraceptives
 		outputText("You tell Isabella that you think maybe it’s best if she starts taking her contraceptives again.");
 		outputText("\n\nThe cowgirl nods her head reasonably. \"<i>Da, this makes sense.  It is a hard life we live out here; the times they are too dangerous to reasonably expect you to look after a pregnant woman and then a little baby, yes?");
-		if (isabellaScene.totalIsabellaChildren() > 0) outputText(" Besides, we have " + num2Text(isabellaScene.totalIsabellaChildren()) + " small " + (isabellaScene.totalIsabellaChildren() === 1 ? "baby" : "babies") + " to look after already.");
+		if (isabellaScene.totalIsabellaChildren() > 0) outputText(" Besides, we have " + num2Text(isabellaScene.totalIsabellaChildren()) + " small " + (isabellaScene.totalIsabellaChildren() == 1 ? "baby" : "babies") + " to look after already.");
 		outputText("</i>\"\n\nYou thank her for understanding, and then head back to the main part of the camp.");
 		outputText("\n\n<b>(Isabella can no longer get pregnant.)</b>");
 		flags[kFLAGS.ISABELLA_POTENCY_STATE] = -1;
@@ -1662,7 +1662,7 @@ private function toggleIsabellaContraceptives():void {
 	else { //On contraceptives
 		outputText("You tell Isabella that, if she still wants to have a family with you, you would like to be the father of her children.");
 		outputText("\n\nIsabella’s face lights up. \"<i>Of course I still want you, silly [man].</i>\" She grabs you in a fierce hug, squeezing you into her breasts so hard that you can feel milk seeping from her eight nipples" + player.clothedOrNaked(" and staining your clothes") + ".");
-		if (isabellaScene.totalIsabellaChildren() > 0) outputText("\n\nShe grins at you wickedly. \"<i>" + Num2Text(isabellaScene.totalIsabellaChildren()) + " small " + (isabellaScene.totalIsabellaChildren() === 1 ? "baby" : "babies") + " was not enough, hmm? You are wanting more?</i>\"");
+		if (isabellaScene.totalIsabellaChildren() > 0) outputText("\n\nShe grins at you wickedly. \"<i>" + Num2Text(isabellaScene.totalIsabellaChildren()) + " small " + (isabellaScene.totalIsabellaChildren() == 1 ? "baby" : "babies") + " was not enough, hmm? You are wanting more?</i>\"");
 		outputText("\n\nYou just smile at her, enjoy the hug for several moments, then politely wriggle free and excuse yourself.");
 		outputText("\n\n<b>(Isabella can now get pregnant.)</b>");
 		flags[kFLAGS.ISABELLA_POTENCY_STATE] = 1;
@@ -1672,7 +1672,7 @@ private function toggleIsabellaContraceptives():void {
 
 private function isabellaCowifyPrompt():void {
 	clearOutput();
-	if (flags[kFLAGS.ISABELLA_COWMOTHER] === 0) {
+	if (flags[kFLAGS.ISABELLA_COWMOTHER] == 0) {
 		outputText("As you chat to the expectant warrior-woman, you notice an occasional sad expression when she touches her bulging belly, and ask her what the matter is.  “It is nothing, [name].” She replies, at first, but you can tell that’s not the truth and continue probing until she sighs and explains.  \"<i>It is just, well... I am not human any more, but, from what I heard on the plains, my little babies will be human.  I do not regret giving up my humanity, but I do worry sometimes how it will affect them, to have a literal cow-woman like myself for a mother.</i>\"");
 		outputText("\n\nYou note that does sound like a bit of a worry, but, well, it’s not as if either of you have a way of changing that.");
 		outputText("\n\nIsabella’s face morphs into a strange expression, at once pleased and nervous.  \"<i>Well, that is not entirely true.  You see, I encountered a demon, some time ago in the plains, and after a little... persuasion... they gave me something.</i>\"  She turns and begins rummaging through her chest of belongings, giving you an excellent view of her ass as she does so, before turning back towards you with a tightly-wrapped bundle of dense cloth.  Gingerly she unwraps it, exposing to you a small shard of some crystalline material.");
@@ -1689,7 +1689,7 @@ private function isabellaCowifyPrompt():void {
 private function yesToIsabellaTF():void {
 	clearOutput();
 	outputText("You tell Isabella that, after much consideration, you think she should use the lethicite on herself.  After all, didn’t her transformations make her bigger and stronger than any normal human?  While you do seek to topple the lord of the demons, you doubt that will make them all just vanish into the wind, so passing that strength on to her children would be the kindest thing to do.");
-	outputText("\n\n\"<i>...I had not thought of that.</i>\" Isabella admits.  She then " + (flags[kFLAGS.ISABELLA_COWMOTHER] === 0.5 ? "retrieves the wrapped bundle from her belongs and opens it before she " : "") + "takes the shard of crystalised soul-stuff in one hand, gently dropping the blankets to the ground next to her hoof.  She wraps her other hand around it and closes her eyes, looking like she is praying, before starting to gently murmur to herself.  You realise that what she’s speaking must be her own language; it expands upon her normal accent and thickens it until you cannot understand a word she is saying.  You idly wonder if maybe she can teach it to you before you are interrupted by a blinding flash of light.  When you can see again, Isabella is blinking her own vision back and opens her hands, revealing nothing.");
+	outputText("\n\n\"<i>...I had not thought of that.</i>\" Isabella admits.  She then " + (flags[kFLAGS.ISABELLA_COWMOTHER] == 0.5 ? "retrieves the wrapped bundle from her belongs and opens it before she " : "") + "takes the shard of crystalised soul-stuff in one hand, gently dropping the blankets to the ground next to her hoof.  She wraps her other hand around it and closes her eyes, looking like she is praying, before starting to gently murmur to herself.  You realise that what she’s speaking must be her own language; it expands upon her normal accent and thickens it until you cannot understand a word she is saying.  You idly wonder if maybe she can teach it to you before you are interrupted by a blinding flash of light.  When you can see again, Isabella is blinking her own vision back and opens her hands, revealing nothing.");
 	outputText("\n\n\"<i>Well... I guess that is that.</i>\" She declares, giving you a crooked smile.  \"<i>I suppose we will not know if it worked until this little one comes out to say hello.</i>\" She notes, rubbing her swollen midriff.");
 	outputText("\n\nYou agree with her, and suggest she have a lie down; that must have drained her, after all.  Isabella looks a little skeptical, but evidently figures that a bit of rest is well-deserved, so she just nods and, awkwardly reclaiming the blanket, heads off to have a nap, leaving you to go away.");
 	flags[kFLAGS.ISABELLA_COWMOTHER] = 1;
@@ -1698,7 +1698,7 @@ private function yesToIsabellaTF():void {
 
 private function noToIsabellaTF():void {
 	clearOutput();
-	if (flags[kFLAGS.ISABELLA_COWMOTHER] === 0) {
+	if (flags[kFLAGS.ISABELLA_COWMOTHER] == 0) {
 		outputText("You tell Isabella that you think she should stay just the way she is - at least, until you’ve had a chance to think it over.  The bovine braud looks thankful and nods in understanding, wrapping the lethicite back up and putting it away.  You excuse yourself and wander back to your part of the camp, giving the matter some thought.");
 	}
 	else {
@@ -1720,7 +1720,7 @@ private function isabellaTakesOviElixir():void {
 }
 
 private function babyMF(male:String, female:String, gender:int):String {
-	if (gender === 1) return male;
+	if (gender == 1) return male;
 	else return female;
 }
 
@@ -1745,19 +1745,19 @@ public function isabellaGivesBirth():void {
 	outputText("\n\nThere, as you expected, you find the bovine braud leaning against a convenient boulder, stripped naked and with one hand wrapped around her distended midriff.  She sees you and manages to give you a weak smile, but doesn’t bother trying to speak.  Instead, she lets out a very bovine bellow as another contraction hits.  You promptly move to support her, standing behind her and reaching around her as best you can to cuddle and rub and support her overstuffed womb and the frantically wriggling baby doing its level best to leave it.");
 	outputText("\n\nFinally, several hours later, Isabella lets out one final bellow of pain and her newborn child slips its way free of her womb and into your waiting arms.");
 	if (flags[kFLAGS.ISABELLA_COWMOTHER] < 1) { //Not cowmother
-		outputText("\n\nThe wriggling infant you hold in your hands is a beautiful, perfectly formed little human child; a quick look between its legs confirms it is a " + (babyGender === 1 ? "boy" : babyGender === 2 ? "girl" : "hermaphrodite") + ". [He] has your " + player.hair.color + " hair, and you think maybe your eyes, but " + babyMF("his", "her", babyGender) + " skin is " + (rand(2) === 0 ? "warm chocolate brown" : "milky white") + ", like a single-toned version of " + babyMF("his", "her", babyGender) + " mother.  With a paternal smile of adoration, you announce the baby’s gender to Isabella and hand " + babyMF("him", "her", babyGender) + " over.");
+		outputText("\n\nThe wriggling infant you hold in your hands is a beautiful, perfectly formed little human child; a quick look between its legs confirms it is a " + (babyGender == 1 ? "boy" : babyGender == 2 ? "girl" : "hermaphrodite") + ". [He] has your " + player.hair.color + " hair, and you think maybe your eyes, but " + babyMF("his", "her", babyGender) + " skin is " + (rand(2) == 0 ? "warm chocolate brown" : "milky white") + ", like a single-toned version of " + babyMF("his", "her", babyGender) + " mother.  With a paternal smile of adoration, you announce the baby’s gender to Isabella and hand " + babyMF("him", "her", babyGender) + " over.");
 		outputText("\n\nIsabella takes " + babyMF("him", "her", babyGender) + " with a smile of motherly delight, already forgetting about the strain of birth now that she can hold her " + babyMF("son", "daughter", babyGender) + ".  \"<i>Isn’t " + babyMF("he", "she", babyGender) + " just beautiful, [name]?</i>\" She asks.  You agree that " + babyMF("he", "she", babyGender) + " is, watching as the delighted new mother puts her new baby to her ever-seeping quad-nipples; the smell of the bountiful milk helps guide the infant to her breast and " + babyMF("he", "she", babyGender) + " is soon sucking away with the greedy enthusiasm of the newborn.  With a soft groan of effort, Isabella sinks to the ground, seating herself against the boulder to nurse her new " + babyMF("son", "daughter", babyGender) + ".");
 	}
 	else { //COW MOTHER!
-		if (babyGender === 1) { //Perfectly normal human baby, always male.
+		if (babyGender == 1) { //Perfectly normal human baby, always male.
 			outputText("\n\nTo your " + (isabellaScene.getIsabellaChildType(IsabellaScene.OFFSPRING_HUMAN_BOYS) > 0 ? "continued" : "") + " surprise, the baby is not a bovine like Isabella, but a perfectly formed and completely human boy.  His skin is pale white, and he seems to take more after you than her, even having your eyes and " + player.hair.color + " hair.  Still you doubt Isabella would ever care; he’s her son, after all.");
 		}
 		else {
-			outputText("The baby is, unsurprisingly, a little cowgirl, just like her mother, with " + (rand(2) === 0 ? "her mom’s milk-white-spotted chocolate skin" : "a strange reversal of her mother’s skin tone, being white with spots of chocolate brown") + ". She doesn’t have horns yet, but you’re certain she’ll grow into them in time, and she already has the bovine ears, tail, and hooved legs of her mother, not to mention the eight tiny little nipples, in two patches of four, that you know will grow into spectacular milky breasts like her mother has. ");
-			if (babyGender === 3) outputText("One thing she does have that her mother lacks, however, is a juvenile yet very masculine appendage swinging between her legs.  The shape of it kind of reminds you of a minotaur’s distinctive masculinity, but you quietly confirm that she also has an infantile vagina there as well; she’s a herm.");
+			outputText("The baby is, unsurprisingly, a little cowgirl, just like her mother, with " + (rand(2) == 0 ? "her mom’s milk-white-spotted chocolate skin" : "a strange reversal of her mother’s skin tone, being white with spots of chocolate brown") + ". She doesn’t have horns yet, but you’re certain she’ll grow into them in time, and she already has the bovine ears, tail, and hooved legs of her mother, not to mention the eight tiny little nipples, in two patches of four, that you know will grow into spectacular milky breasts like her mother has. ");
+			if (babyGender == 3) outputText("One thing she does have that her mother lacks, however, is a juvenile yet very masculine appendage swinging between her legs.  The shape of it kind of reminds you of a minotaur’s distinctive masculinity, but you quietly confirm that she also has an infantile vagina there as well; she’s a herm.");
 		}
 		outputText("\n\nWith a paternal smile of adoration, you announce the baby’s gender to Isabella and hand " + babyMF("him", "her", babyGender) + " over.");
-		outputText("\n\nIsabella takes " + babyMF("him", "her", babyGender) + " with a smile of motherly delight, already forgetting about the strain of birth now that she can hold her " + babyMF("son", "daughter", babyGender) + ".  “Isn’t " + babyMF("he", "she", babyGender) + " just beautiful, [name]?” She asks. " + (babyGender === 1 ? "\"<i>It’s strange that it didn’t work on him... but he’s just so precious this way.</i>\"" : "") + " You agree that " + babyMF("he", "she", babyGender) + " is, watching as the delighted new mother puts her new baby to her ever-seeping quad-nipples; the smell of the bountiful milk helps guide the infant to her breast and " + babyMF("he", "she", babyGender) + " is soon sucking away with the greedy enthusiasm of the newborn.  With a soft groan of effort, Isabella sinks to the ground, seating herself against the boulder to nurse her new " + babyMF("son", "daughter", babyGender) + ".");
+		outputText("\n\nIsabella takes " + babyMF("him", "her", babyGender) + " with a smile of motherly delight, already forgetting about the strain of birth now that she can hold her " + babyMF("son", "daughter", babyGender) + ".  “Isn’t " + babyMF("he", "she", babyGender) + " just beautiful, [name]?” She asks. " + (babyGender == 1 ? "\"<i>It’s strange that it didn’t work on him... but he’s just so precious this way.</i>\"" : "") + " You agree that " + babyMF("he", "she", babyGender) + " is, watching as the delighted new mother puts her new baby to her ever-seeping quad-nipples; the smell of the bountiful milk helps guide the infant to her breast and " + babyMF("he", "she", babyGender) + " is soon sucking away with the greedy enthusiasm of the newborn.  With a soft groan of effort, Isabella sinks to the ground, seating herself against the boulder to nurse her new " + babyMF("son", "daughter", babyGender) + ".");
 	}
 	outputText("\n\nYou gently fetch a blanket for the new mother and " + babyMF("son", "daughter", babyGender) + ", wrapping them both in its warm softness even as Isabella continues to nurse.  You ask if there’s anything else she needs, but the bovine braud simply gives you a blissful smile and shakes her head.  You kiss her gently on the cheek and quietly withdraw to let mother and child bond.");
 	//Increment children count

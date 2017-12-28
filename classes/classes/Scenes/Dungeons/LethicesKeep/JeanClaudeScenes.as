@@ -187,7 +187,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			}
 
 			outputText("\n\nThere’s an echoing silence as the ranks of basilisks stare at their dead king. Then, with a shifting sound that spreads out like a tidal wave through the huge room, they drop one by one to a knee, their eyes closed and spiked heads pointed towards you. Elation inflates in your breast and fills out to the very tips of your digits as you take in the reptile horde bowing before you, the significance of it dawning brilliantly.");
-			if (player.mf("m", "f") === "f" && silly()) outputText("  You raise your fists in glee and crow “<i>I AM THE LIZARD QUEEN!</i>” at the ceiling.");
+			if (player.mf("m", "f") == "f" && silly()) outputText("  You raise your fists in glee and crow “<i>I AM THE LIZARD QUEEN!</i>” at the ceiling.");
 
 			outputText("\n\nThere’s a bit of scuffling and shoving at the front, and finally a smaller-than-average basilisk is pushed out towards you. He almost trips over the flagstones in his attempts to keep his eyes squeezed shut and head bowed in deference to you.");
 
@@ -256,7 +256,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 
 			outputText("\n\n“<i>Lethice will set us high in her service for bringing her you, interloper,</i>” he murmurs. “<i>But it is lacking, eh, the personal touch, n’est ce pas?</i>”");
 
-			if (player.skin.adj !== "smooth" || player.skin.adj !== "latex" || player.skin.adj !== "rubber")
+			if (player.skin.adj != "smooth" || player.skin.adj != "latex" || player.skin.adj != "rubber")
 			{
 				outputText("\n\nHe turns, snaps his fingers and raps out some instructions, too fast for you to follow, and a number of basilisks break off to hurry towards the back of the hall. His eyes are away from yours for a moment but it doesn’t matter; your mind is floating in the vast golden sea, your body submerged in its radiance. When an object is pushed into your hands, it takes you a while to focus upon it, a while longer to recognise what it is. An egg- a black egg. You look up in dozy confusion to find Jean-Claude staring back deep into your eyes, amusement curling his long mouth. Why have they given you this? You must have asked for it. Yes- it’s obvious now, what you have to do. You crack the egg’s shell and greedily gulp down its contents.");
 				if (player.hasFur()) outputText("  Your fur drops away in ragged clumps as you drink."); 

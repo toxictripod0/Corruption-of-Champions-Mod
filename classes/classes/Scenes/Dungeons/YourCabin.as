@@ -32,7 +32,7 @@ package classes.Scenes.Dungeons
 					if (player.hasKeyItem("Camp - Chest") >= 0) chests++;
 					if (player.hasKeyItem("Camp - Murky Chest") >= 0) chests++;
 					if (player.hasKeyItem("Camp - Ornate Chest") >= 0) chests++;
-					outputText("Your storage " + (chests === 1 ? "chest is" : "chests are") + " located in front of your bed.")
+					outputText("Your storage " + (chests == 1 ? "chest is" : "chests are") + " located in front of your bed.")
 				}
 				outputText("\n\n");
 			}
@@ -147,12 +147,12 @@ package classes.Scenes.Dungeons
 			outputText("You take the book titled 'Combat Manual' from the bookshelf and sit down on the chair while you lay the book on the desk.  You open the book and study its content.\n\n");
 			//(One of the following random effects happens)
 			var choice:Number = rand(3);
-			if (choice === 0) {
+			if (choice == 0) {
 				outputText("You learn a few new guarding stances that seem rather promising.");
 				//(+2 Toughness)
 				dynStats("tou", 2);
 			}
-			else if (choice === 1) {
+			else if (choice == 1) {
 				outputText("After a quick skim you reach the end of the book. You don't learn any new fighting moves, but the refresher on the overall mechanics and flow of combat and strategy helped.");
 				//(+2 Intelligence)
 				dynStats("int", 2);
@@ -195,7 +195,7 @@ package classes.Scenes.Dungeons
 			clearOutput();
 			outputText("What furniture would you like to construct?\n\n");
 			camp.cabinProgress.checkMaterials();
-			if (flags[kFLAGS.CAMP_CABIN_FURNITURE_BED] === 0 && flags[kFLAGS.CAMP_CABIN_FURNITURE_NIGHTSTAND] === 0 && flags[kFLAGS.CAMP_CABIN_FURNITURE_DRESSER] === 0 && flags[kFLAGS.CAMP_CABIN_FURNITURE_TABLE] === 0 && flags[kFLAGS.CAMP_CABIN_FURNITURE_CHAIR1] === 0 && flags[kFLAGS.CAMP_CABIN_FURNITURE_CHAIR2] === 0 && flags[kFLAGS.CAMP_CABIN_FURNITURE_BOOKSHELF] === 0 && flags[kFLAGS.CAMP_CABIN_FURNITURE_DESK] === 0 && flags[kFLAGS.CAMP_CABIN_FURNITURE_DESKCHAIR] === 0)
+			if (flags[kFLAGS.CAMP_CABIN_FURNITURE_BED] == 0 && flags[kFLAGS.CAMP_CABIN_FURNITURE_NIGHTSTAND] == 0 && flags[kFLAGS.CAMP_CABIN_FURNITURE_DRESSER] == 0 && flags[kFLAGS.CAMP_CABIN_FURNITURE_TABLE] == 0 && flags[kFLAGS.CAMP_CABIN_FURNITURE_CHAIR1] == 0 && flags[kFLAGS.CAMP_CABIN_FURNITURE_CHAIR2] == 0 && flags[kFLAGS.CAMP_CABIN_FURNITURE_BOOKSHELF] == 0 && flags[kFLAGS.CAMP_CABIN_FURNITURE_DESK] == 0 && flags[kFLAGS.CAMP_CABIN_FURNITURE_DESKCHAIR] == 0)
 			{
 				outputText("<b>Your cabin is empty.</b>\n\n");
 			}

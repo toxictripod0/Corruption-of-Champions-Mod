@@ -234,10 +234,10 @@ private function apologizeToDebimboSophie():void {
 
 //Catch Sophie Teaching Her Daughters Not To Talk Like Idiots*
 public function sophieDaughterDebimboUpdate():void {
-	if (flags[kFLAGS.SOPHIE_ADULT_KID_COUNT] === 1) {
+	if (flags[kFLAGS.SOPHIE_ADULT_KID_COUNT] == 1) {
 		outputText("\nPerhaps the most impressive change that happens around your camp is Sophie taking charge of the daughter she had BEFORE you gave her the cure.  She's right next to her mom, preening her feathers and checking her make-up against a shiny piece of metal.  Sophie get her attention, and immediately sets to making some changes - leading her in choruses of vocalization training.  She seems utterly intent on eradicating the 'accent' that her daughter picked up from her, and the younger harpy takes to it with surprising swiftness.  You guess you won't be hearing too many 'like's or 'totally's in the days to come.\n");
 	}
-	else if (flags[kFLAGS.SOPHIE_ADULT_KID_COUNT] === 2) {
+	else if (flags[kFLAGS.SOPHIE_ADULT_KID_COUNT] == 2) {
 		outputText("\nPerhaps the most impressive change that happens around your camp is Sophie taking charge of the daughters she had BEFORE you gave her the cure.  They're both gathered up around her, preening their feathers and checking their make-up against shiny pieces of metal.  Sophie gets their attention, and immediately sets to making some changes - leading them in choruses of vocalization training.  She seems utterly intent on eradicating the 'accent' that her daughters picked up from her, and the younger harpies take to it with surprising swiftness.  You guess you won't be hearing too many 'like's or 'totally's in the days to come.\n");
 	}
 	else {
@@ -252,7 +252,7 @@ public function followerSophieMainScreen():void {
 	clearOutput();
 	sophieBimbo.sophieSprite();
 	//Sophie is in season
-	if (sophieBimbo.sophieIsInSeason() && player.hasCock() && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] === 0) {
+	if (sophieBimbo.sophieIsInSeason() && player.hasCock() && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) {
 		//Replacement Greeting Screen For In Season
 		//Similar to bimbo sophie
 		outputText("Sophie's entire soft body jiggles and shudders visibly when she hears you call her.  Her walk towards you is a bit too fast to be sensuous, despite her best attempts, and her tail feathers twitch, fanning a breeze towards you that reeks of pheromones and her needy sex.  She puts a hand on her hip, making a small show of her jiggling butt and immense mammaries as she gives you a wink and stares at you with lowered eyelids, bedroom eyes seeking to provoke more arousal from you.  Her finger presses against your [chest] as she speaks, slowly and seductively, trying to accentuate every word by adding the power of her lips to it.  \"<i>Sooo, you wanted to see me?  That's good, because Momma Sophie wanted to see you as well.</i>\"");
@@ -276,14 +276,14 @@ public function followerSophieMainScreen():void {
 		}
 		else outputText("\n\nYou need a penis to fuck her!");
 		
-		if (flags[kFLAGS.SLEEP_WITH] === "Sophie") {
+		if (flags[kFLAGS.SLEEP_WITH] == "Sophie") {
 			addButton(8,"NoSleepWith",sleepWithSophieToggle);
 			outputText("\n\nYou're currently sharing your bed with Sophie at night, but you could kick her out, if you wanted.");
 		}
 		addButton(14,"Back",camp.campFollowers);
 		return;
 	}
-	else if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] === 0) {
+	else if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) {
 		if (flags[kFLAGS.SOPHIE_BIMBO] > 0) outputText("Sophie leans back in her nest as you approach, her prominent, bare F-cups on display.  She's completely nude, as always, and sits with her avian legs shamelessly spread, revealing the slick slit of her womanhood framed by downy-soft platinum blonde feathers.  \"<i>Hey there, " + player.mf("handsome","cutey") + ".  What can Momma Sophie do for you?  Come for a cuddle in my welcoming wings, maybe; or for something more... exciting?</i>\"");
 		else outputText("Sophie leans back in her nest as you approach, her prominent, bare DD-cups on display.  She's completely nude, as always, and sits with her avian legs demurely crossed, concealing the slick slit of her womanhood from you.  \"<i>Hey there, " + player.mf("handsome","cutey") + ".  What can Momma Sophie do for you?</i>\"");
 	}
@@ -299,23 +299,23 @@ public function followerSophieMainScreen():void {
 	addButton(0,"Appearance",sophieAppearance);
 	if (player.lust >= 33) addButton(1,"Sex",sexWithFollowerSophie);
 	else outputText("\n\nYou aren't aroused enough to sleep with Sophie at the moment.");
-	if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] === 0) addButton(8,"Sleep With",sleepWithSophieToggle);
-	if (flags[kFLAGS.SLEEP_WITH] === "Sophie" && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] === 0) {
+	if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) addButton(8,"Sleep With",sleepWithSophieToggle);
+	if (flags[kFLAGS.SLEEP_WITH] == "Sophie" && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) {
 		addButton(8,"NoSleepWith",sleepWithSophieToggle);
 		outputText("\n\nYou're currently sharing your bed with Sophie at night, but you could kick her out, if you wanted.");
 	}
-	if (flags[kFLAGS.SOPHIE_CAMP_EGG_COUNTDOWN] > 0 && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] === 0) outputText("\n\n<b>Sophie's egg is sitting nearby.</b>");
+	if (flags[kFLAGS.SOPHIE_CAMP_EGG_COUNTDOWN] > 0 && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) outputText("\n\n<b>Sophie's egg is sitting nearby.</b>");
 	if (flags[kFLAGS.SOPHIE_DAUGHTER_MATURITY_COUNTER] > 0) {
 		addButton(7,"Daughter",sophieBimbo.daughterCheckup);
 	}
-	if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] === 0) addButton(14, "Back", camp.campFollowers);
+	if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) addButton(14, "Back", camp.campFollowers);
 	else addButton(14, "Back", kGAMECLASS.farm.farmCorruption.rootScene);
 	
-	if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] === 0 && flags[kFLAGS.FARM_CORRUPTION_STARTED] === 1) addButton(2, "Farm Work", sendToFarm);
-	if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] === 1) addButton(2, "Go Camp", backToCamp);
+	if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0 && flags[kFLAGS.FARM_CORRUPTION_STARTED] == 1) addButton(2, "Farm Work", sendToFarm);
+	if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 1) addButton(2, "Go Camp", backToCamp);
 	
-	if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] === 1 && flags[kFLAGS.FOLLOWER_PRODUCTION_SOPHIE] === 0) addButton(3, "Harvest Eggs", harvestEggs);
-	if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] === 1 && flags[kFLAGS.FOLLOWER_PRODUCTION_SOPHIE] === 1) 
+	if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 1 && flags[kFLAGS.FOLLOWER_PRODUCTION_SOPHIE] == 0) addButton(3, "Harvest Eggs", harvestEggs);
+	if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 1 && flags[kFLAGS.FOLLOWER_PRODUCTION_SOPHIE] == 1) 
 	{
 		addButton(3, "Change Eggs", changeEggs);
 		addButton(4, "Stop Harvest", stopHarvest);
@@ -378,7 +378,7 @@ private var _eggTypes:Array
 
 public function get eggTypes():Array
 {
-	if (_eggTypes === null)
+	if (_eggTypes == null)
 	{
 		_eggTypes = [
 			consumables.L_BLKEG,
@@ -408,7 +408,7 @@ private function postEggSelector(selected:String):void
 	outputText("“<i>I’ll make some nice " + selected.toLowerCase() + "eggs for you then, hun,</i>” she says with a small grin. “<i>I can only produce one a week, though. I’ll put it with everything else you earn out of this hole in the ground. How’s that?</i>”");
 	
 	flags[kFLAGS.FOLLOWER_PRODUCTION_SOPHIE] = 1;
-	if (flags[kFLAGS.FOLLOWER_PRODUCTION_SOPHIE_COLORCHOICE] !== selected)
+	if (flags[kFLAGS.FOLLOWER_PRODUCTION_SOPHIE_COLORCHOICE] != selected)
 	{
 		flags[kFLAGS.FOLLOWER_PRODUCTION_SOPHIE_COLORCHOICE] = selected;
 		flags[kFLAGS.FARM_EGG_STORED] = 0;
@@ -494,10 +494,10 @@ private function sophieAppearance():void {
 			if (kGAMECLASS.farm.farmCorruption.numTattoos("sophie") > 1) outputText("She has the following tattoos emblazoned across her body:\n");
 			else outputText("She has ");
 
-			if (flags[kFLAGS.SOPHIE_TATTOO_COLLARBONE] !== 0) outputText(flags[kFLAGS.SOPHIE_TATTOO_COLLARBONE] + "\n");
-			if (flags[kFLAGS.SOPHIE_TATTOO_SHOULDERS] !== 0) outputText(flags[kFLAGS.SOPHIE_TATTOO_SHOULDERS] + "\n");
-			if (flags[kFLAGS.SOPHIE_TATTOO_LOWERBACK] !== 0) outputText(flags[kFLAGS.SOPHIE_TATTOO_LOWERBACK] + "\n");
-			if (flags[kFLAGS.SOPHIE_TATTOO_BUTT] !== 0) outputText(flags[kFLAGS.SOPHIE_TATTOO_BUTT] + "\n");
+			if (flags[kFLAGS.SOPHIE_TATTOO_COLLARBONE] != 0) outputText(flags[kFLAGS.SOPHIE_TATTOO_COLLARBONE] + "\n");
+			if (flags[kFLAGS.SOPHIE_TATTOO_SHOULDERS] != 0) outputText(flags[kFLAGS.SOPHIE_TATTOO_SHOULDERS] + "\n");
+			if (flags[kFLAGS.SOPHIE_TATTOO_LOWERBACK] != 0) outputText(flags[kFLAGS.SOPHIE_TATTOO_LOWERBACK] + "\n");
+			if (flags[kFLAGS.SOPHIE_TATTOO_BUTT] != 0) outputText(flags[kFLAGS.SOPHIE_TATTOO_BUTT] + "\n");
 		}
 	}
 
@@ -509,7 +509,7 @@ private function sophieAppearance():void {
 //Sleep With:*
 private function sleepWithSophieToggle():void {
 	clearOutput();
-	if (flags[kFLAGS.SLEEP_WITH] !== "Sophie") {
+	if (flags[kFLAGS.SLEEP_WITH] != "Sophie") {
 		outputText("You ask Sophie if she'd like to start sleeping with you at night.  Sophie cocks an eyebrow up at the suggestion.");
 		//DEBIMBO'ed
 		if (flags[kFLAGS.SOPHIE_BIMBO] > 0) {
@@ -536,7 +536,7 @@ private function sleepWithSophieToggle():void {
 	else {
 		//Don't Sleep WIth:*
 		outputText("You tell Sophie that you'd rather not sleep with her for now.  She sighs heavily at the proclamation and says, \"<i>");
-		if (flags[kFLAGS.SOPHIE_BIMBO] === 0) outputText("Well, it is your bed.  Let me know if you want me coming back for snuggles, okay?");
+		if (flags[kFLAGS.SOPHIE_BIMBO] == 0) outputText("Well, it is your bed.  Let me know if you want me coming back for snuggles, okay?");
 		else outputText("Couldn't handle all these curves, huh, [name]?  Don't fret, Momma Sophie will stick around until you can't stop yourself from cuddling up on her.");
 		outputText("</i>\"");
 		flags[kFLAGS.SLEEP_WITH] = "";
@@ -753,7 +753,7 @@ private function forceSophieBlowjob():void {
 	outputText(".");
 	
 	outputText("\n\nWith her snug, gold lips clinging around your rod, Sophie looks up with lust-lidded eyes, the noisy squelching that's coming from below leaving no doubt in your mind as to her state.  The burning, lust-fueling make-up that girds her cock-pillows seems to be seeping into you in greater and greater quantities.  It makes your whole body feel flush, burning-hot and ready to fuck her sweet, feathery behind.  You prepare to pull out, until you see those plush golden lips locked in place, sliding with slippery friction along every single inch of your " + player.cockDescript(x) + ".  You throb powerfully at that sight and flex inside her oral embrace, causing the harpy to churn out a delighted giggle, interrupted by a pleasured moan as she masturbates beneath your maleness.");
-	if (player.cockTotal() === 2) outputText("  Your extra cock flops against her cheek, catching on her ear and slowly leaking pre-cum into her down-soft hair.");
+	if (player.cockTotal() == 2) outputText("  Your extra cock flops against her cheek, catching on her ear and slowly leaking pre-cum into her down-soft hair.");
 	else if (player.cockTotal() > 2) outputText("  Your extra cocks flop against her cheeks, catching on her ear and shoulder and slowly leaking pre-cum into her down-soft hair.");
 	
 	outputText("\n\nSophie abruptly grabs hold of one of her big, motherly tits and gropes herself passionately.  Her lips open just enough to separate from your " + player.cockDescript(x) + " and exude a lascivious moan as she masturbates herself.  The quivering tongue tickling at your underside is utterly enjoyable, a fact enhanced by the golden gloss now smeared all over your rod.  There's a tingling, pulsating quickening inside you.");
@@ -775,13 +775,13 @@ private function forceSophieBlowjob():void {
 	}
 	
 	outputText("\n\nAlmost regretfully, you ");
-	if (player.cocks[x].cockType !== CockTypesEnum.DOG) outputText("slip your spasming boner out of her golden gates, dripping the last few drops onto her pouty lower-lip.");
+	if (player.cocks[x].cockType != CockTypesEnum.DOG) outputText("slip your spasming boner out of her golden gates, dripping the last few drops onto her pouty lower-lip.");
 	else outputText("pull against Sophie's cock-locked mouth, but your knot won't budge.  You sit there waiting for it to go down for what seems like forever, and her lipstick doesn't exactly help - it seems like your cum continues to flow and dribble the entire time, your animal-dong intent on inseminating the harpy's mouth.  Still, you manage to 'pop' free eventually, even though it stretches Sophie's jaw and echoes around your camp.");
 	outputText("\n\nThe harpy blushes up at you, gulping down the last thick deposit as she continues to masturbate her way to a second breathless orgasm, her tailfeathers quivering as it runs through her.  You tweak one of her tits for good measure before getting dressed and reminding her that she enjoyed it.  Sophie protests through her white-stained lips, \"<i>");
-	if (flags[kFLAGS.SOPHIE_FOLLOWER_IRRITATION] === 1) outputText("Ahhh... not... not as much as... I would if you'd reciprocate!");
+	if (flags[kFLAGS.SOPHIE_FOLLOWER_IRRITATION] == 1) outputText("Ahhh... not... not as much as... I would if you'd reciprocate!");
 	else if (flags[kFLAGS.SOPHIE_FOLLOWER_IRRITATION] < 4) outputText("Ahhh... I... I don't know how many times I'll put up with this kind of treatment!");
 	else if (flags[kFLAGS.SOPHIE_FOLLOWER_IRRITATION] < 8) outputText("Ahhh... are... are you ever going to reciprocate?");
-	else if (flags[kFLAGS.SOPHIE_FOLLOWER_IRRITATION] === 8) outputText("Ahhh... I think... I've had enough...");
+	else if (flags[kFLAGS.SOPHIE_FOLLOWER_IRRITATION] == 8) outputText("Ahhh... I think... I've had enough...");
 	else outputText("Ahhh... actually... I think... <b>I think if you don't treat me nicer, I might leave.</b>");
 	outputText("</i>\"");
 	
@@ -1082,10 +1082,10 @@ internal function sophieIncestInHerCooterOrSomethingIDunno():void {
 	if (daughterCap > 4) daughterCap = 4;
 	daughterCap = rand(daughterCap);
 	
-	if (daughterCap === 0) {
+	if (daughterCap == 0) {
 		//[first daughter: 
 		outputText("\n\nYour busty bimbo of a daughter poses for you, pushing her massive mammaries out and blowing you a kiss, showing off her body's tremendous assets.  Lifting her hands, she pushes her soft pillows up before releasing them, letting them enticingly bounce and sway before your eyes.  Not able to wait a moment longer, she bounds over to you.  Her creamy cleavage shakes and jiggles like jello with every step until she wraps her arms around you and presses them against you, her marshmallow-like chest spilling over you as she tries her best to entice you into her nest, ");
-		if (flags[kFLAGS.DAUGHTER_ONE_BIMBO] > 0 && flags[kFLAGS.SOPHIES_DAUGHTERS_DEBIMBOED] === 0) outputText("\"<i>Like, how do I look, " + player.mf("Daddy","Mommy") + "?  Aren't my breasts so totally soft?  Don't you just want to suck and squeeze them?  Ooohhh!  " + player.mf("Daddy","Mommy") + ", can you please touch me?  I want you so bad!  My pussy gets sooo wet when I, like, think about you pounding my cunny!</i>\"");
+		if (flags[kFLAGS.DAUGHTER_ONE_BIMBO] > 0 && flags[kFLAGS.SOPHIES_DAUGHTERS_DEBIMBOED] == 0) outputText("\"<i>Like, how do I look, " + player.mf("Daddy","Mommy") + "?  Aren't my breasts so totally soft?  Don't you just want to suck and squeeze them?  Ooohhh!  " + player.mf("Daddy","Mommy") + ", can you please touch me?  I want you so bad!  My pussy gets sooo wet when I, like, think about you pounding my cunny!</i>\"");
 		//normal speech:
 		else outputText("\"<i>Don't you like how big and soft my breasts are, " + player.mf("Daddy","Mommy") + "?  Don't you just want to squeeze them and suck on them?  Ooohh, " + player.mf("Daddy","Mommy") + ", please, I want you so bad.  I get so hot and wet when I think of you!  I just want your [cock] inside me, pounding my hot cunt until I scream!</i>\"");
 		
@@ -1093,29 +1093,29 @@ internal function sophieIncestInHerCooterOrSomethingIDunno():void {
 		
 		outputText("\n\nUnable to resist the feeling of her achingly hard nipples being pressed against you so tightly, you reach out for your daughter's big, creamy udders and grab her hard nipples.  You pull your stacked daughter's sensitive buds before you pinch and squeeze them.  Not quite done with her, you let go of her nipples, letting your hands sink into the supple flesh of her enormous breasts before grabbing them harder, starting to knead and massage the soft, pliant jugs.  The rough and passionate touching of her body only seems to excite and arouse your firstborn further.  She's clearly enjoying the groping and teasing of her sensitive breasts, and you draw needy, birdlike coos and cries from her pouty lips.  ");
 		
-		if (flags[kFLAGS.DAUGHTER_ONE_BIMBO] > 0 && flags[kFLAGS.SOPHIES_DAUGHTERS_DEBIMBOED] === 0) outputText("\n\n\"<i>Ohhh, oooohhhh!  " + player.mf("D-Daddy","M-Mommy") + "!  L-like, I can't take so much teasing!  Please, Gimme your h-haaard cock, " + player.mf("Dad","Mom") + "!</i>\"");
+		if (flags[kFLAGS.DAUGHTER_ONE_BIMBO] > 0 && flags[kFLAGS.SOPHIES_DAUGHTERS_DEBIMBOED] == 0) outputText("\n\n\"<i>Ohhh, oooohhhh!  " + player.mf("D-Daddy","M-Mommy") + "!  L-like, I can't take so much teasing!  Please, Gimme your h-haaard cock, " + player.mf("Dad","Mom") + "!</i>\"");
 		//[normal speech:
 		else outputText("\n\n\"<i>Ohhh, oooohhhh!  " + player.mf("D-Daddy","M-Mommy") + "!  Nnnnn... I can't take so much teasing!  Please, please give it to me, fuck me as hard as you can, " + player.mf("Daddy","Mommy") + "!</i>\"");
 	}
 	//second daughter: 
-	else if (daughterCap === 1) {
+	else if (daughterCap == 1) {
 		outputText("\n\nYour huge assed daughter poses for you, turning her back to you and showing off her huge, rounded ass and thick, fertile hips.  Her bountiful badonkadonk is teasingly hidden by her long, feathery hair and tail.  Looking back at you, she pouts her plump ");
 		if (flags[kFLAGS.DAUGHTER_TWO_BIMBO] > 0) outputText("bimbo ");
 		outputText("lips and blows you a kiss.  She slides her hands over her hips, pushing her taut butt out even more before spanking herself for your pleasure, her lips gasping at the feeling of her self-spank as she tries to work you into a breeding frenzy.");
 		
 		outputText("\n\nYou bite your lip at her erotic display, the sight of your own daughter trying so hard to entice you into a incestuous romp.  The growing desire to grab your girl and fuck her right then and there only grows stronger when you smell her.  The hungry harpy fans her long feathers to blow her hot and heady scent to you, letting you smell her arousal, the scent of a ripe and wanting female, ready to be bred.  ");
-		if (flags[kFLAGS.DAUGHTER_TWO_BIMBO] > 0 && flags[kFLAGS.SOPHIES_DAUGHTERS_DEBIMBOED] === 0) outputText("\"<i>Mmmm... doncha want to just like, pound my sexy ass, " + player.mf("Daddy","Mommy") + "?  It's so big, it's just begging to be spanked and squeezed till it's totally red and sensitive</i>\"");
+		if (flags[kFLAGS.DAUGHTER_TWO_BIMBO] > 0 && flags[kFLAGS.SOPHIES_DAUGHTERS_DEBIMBOED] == 0) outputText("\"<i>Mmmm... doncha want to just like, pound my sexy ass, " + player.mf("Daddy","Mommy") + "?  It's so big, it's just begging to be spanked and squeezed till it's totally red and sensitive</i>\"");
 		else outputText("\"<i>Come on, " + player.mf("Daddy","Mommy") + ", touch me, spank me like the bad girl I am, lusting after my " + player.mf("Daddy","Mommy") + " like this.  Give it to me hard, spank my big round ass and pound my hot tight cunt like I know you want</i>\"");
 		
 		outputText("\n\nUnable to take her teasing any longer, you step forward, raising your hand, and you give her the swat on the butt she wanted, the hard touch pulling a gasp from your daughters lips.  Leaning your girl over, you take the time to properly inspect your voluptuous daughter's needy backside.  Sliding your hands over her round rump, you squeeze and grope the soft flesh, your hands kneading the blatantly begging behind before racing back and giving her the spanking she so wants.  Her cheeks burn red with embarrassment, but the way she is jiggling and shaking her blubbery bottom at you tells you she wants it just as much as you do.  Finally getting a really good view of it, your eyes widen as you run your hands over every inch of her bouncy rear.  An ass this fine isn't to be wasted, and so you lean down and bury your face between those luxurious orbs, planting your mouth firmly over her drooling pussy and tasting her sweet juices.  Your senses quickly get overwhelmed from how good the lewd flower of your big-assed daughter tastes.  She exudes the sweet flavor of a fine, feathery, daughterly 'bitch' in heat, lusting to have daddy's cock stuffed inside her dripping, eager pussy.  As sumptuous as her enormous rump is, you can't resist taking her right then and there.  The scent and taste of her pussy has taken a serious effect on you.  The call to rut and breed your daughter is just too much to stop.");
 	}
 	//third daughter:
-	else if (daughterCap === 2) {
+	else if (daughterCap == 2) {
 		outputText("\n\nUnlike her two older sisters, the daughterly harpy before you is far more average compared to her mother and sisters, though she is still more sumptuous and sexy than a common, mountain harpy.  Under your watchful gaze, your daughter can't help but be bashful.  She blushes and looks down, her hands fidgeting and feet playing with the dirt under them.  The harpy girl is clearly embarrassed by how she isn't as juicy and stacked as her mother and older sisters.  Despite how eager she is for you, she can't help but think herself unworthy of you when you could fuck her mother or older siblings.  She takes a deep breath, putting on a brave face before striking a pose for you.");
 		outputText("\n\nSeeing her try so hard despite her self consciousness, warms your heart.  Your daughter is trying hard just to please you.  You watch her for awhile, watching as your daughter starts to dance and undulate for you, showing off her toned body as best she can.  Her hands slide up and down her body, feeling up her hips, her flat tight belly, her soft perky breasts.  As soon as she grabs her tender tits, she lets out a groan as she looks over at you with her violet eyes, hoping that she was able to please you with her dance.");
 		
 		outputText("\n\nYou clap your hands and applaud your daughter's work.  The curvy little harpy is working so hard to please her " + player.mf("daddy","mommy") + " and entice him into her nest...  ");
-		if (flags[kFLAGS.DAUGHTER_THREE_BIMBO] > 0 && flags[kFLAGS.SOPHIES_DAUGHTERS_DEBIMBOED] === 0) outputText("\"<i>L-like, did I do a good job, " + player.mf("Daddy","Mommy") + "?  I so totally did my best for you.  I know I'm not super sexy like Mom and my sisters... but, " + player.mf("Daddy","Mommy") + ".. I will like, still please you, like, totally the best that I can!</i>\"");
+		if (flags[kFLAGS.DAUGHTER_THREE_BIMBO] > 0 && flags[kFLAGS.SOPHIES_DAUGHTERS_DEBIMBOED] == 0) outputText("\"<i>L-like, did I do a good job, " + player.mf("Daddy","Mommy") + "?  I so totally did my best for you.  I know I'm not super sexy like Mom and my sisters... but, " + player.mf("Daddy","Mommy") + ".. I will like, still please you, like, totally the best that I can!</i>\"");
 		else outputText("\"<i>W-well, what did you think, " + player.mf("Dad","Mommy") + "?  Did I do a good job?  I know I'm not as hot as Mom, but I promise I'll please you as best I can!</i>\"");
 		outputText(" she says, wanting more than anything to be able to please you.");
 		
@@ -1125,13 +1125,13 @@ internal function sophieIncestInHerCooterOrSomethingIDunno():void {
 		outputText("\n\nYour daughter unfurls her wings in an elegant display, her downy soft feathers looking snuggly soft as she brings them down around her, using them to just barely conceal her nudity.  Moving as gracefully as she can, your daughter starts to dance for you, swaying her body and undulating like the finest dancers in the seediest bars.  Moving her voluptuous hips, shaking her spankable ass, and squeezing her suckable breasts, the pink woman croons for you.  She moans and groans as she dances and plays with herself, her blue eyes flicking over to you every chance she gets, her gaze wandering across your body, betraying her lust for you.");
 		
 		outputText("\n\nSlowly approaching you, she swings her hips back and forth enticingly, showing off her fertile hips.  ");
-		if (flags[kFLAGS.DAUGHTER_FOUR_BIMBO] > 0 && flags[kFLAGS.SOPHIES_DAUGHTERS_DEBIMBOED] === 0) outputText("\"<i>Come on " + player.mf("Daddy","Mommy") + ", can't you see how totally hot I am?  Don't you just want to let loose and like, just fuck me till I scream.</i>\"");
+		if (flags[kFLAGS.DAUGHTER_FOUR_BIMBO] > 0 && flags[kFLAGS.SOPHIES_DAUGHTERS_DEBIMBOED] == 0) outputText("\"<i>Come on " + player.mf("Daddy","Mommy") + ", can't you see how totally hot I am?  Don't you just want to let loose and like, just fuck me till I scream.</i>\"");
 		else outputText("\"<i>Just look at me, " + player.mf("Daddy","Mommy") + ", so curvy, so ready, so hot and wet for you.  Just let loose and show me your love, show me how much you love me, " + player.mf("Daddy","Mommy") + ", fuck me hard, make me scream and claim me as yours.</i>\"");
 		outputText(" the horny birdgirl says with a lick of her plump, kissable lips, aching hunger for your incestuous seed.  She wraps her arms around you, pulling her body against yours and sliding a long downy leg around you.  Her position opens her up to you and presses her sodden sex against your crotch.  She's such a lusty, lovely woman, and she wants you so badly, her body begging for you to take her and to seed her fertile body with your potent virility.");
 		
 		outputText("\n\nUnable to hold back a moment longer, you grab hold of your fluffy, feathery daughter, your hands grabbing her ass, kneading and pulling at the soft curvaceous behind.  At your behest, she presses herself tighter against you, her perverted cock-pillows squishing like the softest, sweetest marshmallows between you.");
 		//bimbo speech
-		if (flags[kFLAGS.DAUGHTER_FOUR_BIMBO] > 0 && flags[kFLAGS.SOPHIES_DAUGHTERS_DEBIMBOED] === 0) outputText("  \"<i>Ahh... ohhh... oh, " + player.mf("Daddy","Mommy") + "!  You like my butt, don't you; isn't it nice?  It's so good to grab and squeeze.  I bet it would be fun to, like, spank it too....</i>\"");
+		if (flags[kFLAGS.DAUGHTER_FOUR_BIMBO] > 0 && flags[kFLAGS.SOPHIES_DAUGHTERS_DEBIMBOED] == 0) outputText("  \"<i>Ahh... ohhh... oh, " + player.mf("Daddy","Mommy") + "!  You like my butt, don't you; isn't it nice?  It's so good to grab and squeeze.  I bet it would be fun to, like, spank it too....</i>\"");
 		//[normal speech:]
 		else outputText("  \"<i>Mmmm... Oh, " + player.mf("Daddy","Mommy") + ", yessss...  That's it, touch me, touch me and play with me, do whatever you want with me.</i>\"");
 		outputText(" she coos into your ear, temping you even more with the taboo of her incestuous flesh.  With such a demanding offer of pleasure, your daughter so open and ready to receive your pleasure, how could you say no to such a lovely girl?");
@@ -1146,12 +1146,12 @@ private function phaseTwoOfIncest(daughter:int):void {
 	if (x < 0) x = player.smallestCockIndex();
 	daughter++;
 	outputText("Tightening your hold on your curvaceous daughter, you shove her down onto the ground.  Growling with an almost primal edge, you lean down and inspect your prize, hands running over her ");
-	if (daughter === 1) outputText("massive pillowy tits");
+	if (daughter == 1) outputText("massive pillowy tits");
 	else outputText("tender perky breasts");
 	outputText(", your fingers sinking into her soft flesh as you caress and squeeze your daughter's bountiful body.  You lean down, kissing and sucking her neck, your lips latching on and sucking hard enough to leave your mark on her skin for the world to see.  She's unwilling to do anything against your lustful advances, mind and body ready and fully accepting whatever naughty things you would do to her.  With how heavily she is breathing and how lusty her moans and calls to you are, your daughter clearly wants the sweet incestuous union between " + player.mf("father","mother") + " and daughter even more than you do.  What a sexy and lovely daughter you have here...  at your aggressive touch, she groans and croons for you, beckoning to you to continue your familial onslaught.  She wraps her legs around your body, grinding her hips against you.  \"<i>Yesss, yessss!  More, " + player.mf("Daddy","Mommy") + "!</i>\" she squawks in between her breathy moans.");
 	
 	outputText("\n\nYou run your hands up and down her body, exploring and stroking every inch of her curvaceous form you can reach.  You move down to her ");
-	if (daughter === 2) outputText("massive, round, spankable ass");
+	if (daughter == 2) outputText("massive, round, spankable ass");
 	else outputText("gropable, soft ass");
 	outputText(" and grab her hard, squeezing and pulling her pliant flesh.  You growl to her, giving her rump a hard spank before pushing her down and pinning her beneath you.  Your eyes run over her body, taking in her creamy skin and her colorful feathers, her eyes looking back at you with burning, aching desire.  Not wanting to wait a moment longer, you free yourself from her long, silky legs and strip yourself of your [armor].");
 	//[if breasts: 
@@ -1165,9 +1165,9 @@ private function phaseTwoOfIncest(daughter:int):void {
 	
 	outputText("\n\nBetween your legs, [eachCock] flops free, your " + player.cockDescript(x) + " achingly hard and ready for your fuck-hungry daughter.  The mass of masculine flesh throbs with your arousal, the insatiable organ longing to be sheathed within the welcoming depths of your daughter's soaking cunt, her tight, velvety folds ready to accept your potent, virile essence.");
 	
-	if (flags[kFLAGS.DAUGHTER_FOUR_BIMBO] > 0 && flags[kFLAGS.SOPHIES_DAUGHTERS_DEBIMBOED] === 0)
+	if (flags[kFLAGS.DAUGHTER_FOUR_BIMBO] > 0 && flags[kFLAGS.SOPHIES_DAUGHTERS_DEBIMBOED] == 0)
 	
-	var bimbo:Boolean = (((daughter === 4 && flags[kFLAGS.DAUGHTER_FOUR_BIMBO] > 0) || (daughter === 3 && flags[kFLAGS.DAUGHTER_THREE_BIMBO] > 0) || (daughter === 2 && flags[kFLAGS.DAUGHTER_TWO_BIMBO] > 0) || (daughter === 1 && flags[kFLAGS.DAUGHTER_ONE_BIMBO] > 0)) && flags[kFLAGS.SOPHIES_DAUGHTERS_DEBIMBOED] === 0);
+	var bimbo:Boolean = (((daughter == 4 && flags[kFLAGS.DAUGHTER_FOUR_BIMBO] > 0) || (daughter == 3 && flags[kFLAGS.DAUGHTER_THREE_BIMBO] > 0) || (daughter == 2 && flags[kFLAGS.DAUGHTER_TWO_BIMBO] > 0) || (daughter == 1 && flags[kFLAGS.DAUGHTER_ONE_BIMBO] > 0)) && flags[kFLAGS.SOPHIES_DAUGHTERS_DEBIMBOED] == 0);
 	
 	if (bimbo) outputText("\n\n\"<i>Yessss!  Please, " + player.mf("Daddy","Mommy") + "!  Give it to me!  Like, fuck my brains out till I can't think of anything but your, like, totally amazing cock!</i>\"");
 	else outputText("\n\n\"<i>Yesssss! Please, " + player.mf("Daddy","Mommy") + ", I've been wanting this so badly!  Give it to me, fuck me like the stud you are and fuck my cunt full of spunk!</i>\"");
@@ -1176,7 +1176,7 @@ private function phaseTwoOfIncest(daughter:int):void {
 	outputText("\n\nTaking your sensitive, throbbing cock in hand, you give yourself a stroke and let out a groan at how ready you are; how hard you are for the incestuous fuck you're going to enjoy.  With as much grace as a fuck-hungry beast, you align yourself with your daughter's tender folds and plunge yourself in, your " + player.cockDescript(x) + " sliding into her slippery cunt easily thanks to all the sweet juices oozing from her.  The sudden hard thrust into her body sends shockwaves of pleasure through your over-aroused daughter, her legs wrapping around your waist as soon as you hilt yourself inside her.  Not waiting for her to get used to you, you start to buck your hips, pistoning your " + player.cockDescript(x) + " into her over and over as you keep her pinned to the ground.  Her bird-like cries of delight fill the air and mix with the hard, slippery slaps of your hips against hers, telling you all you need to know about her pleasure and how she loves to be fucked by her " + player.mf("father","mother") + ".");
 	
 	outputText("\n\nNot content to merely fuck and breed your slutty girl like this, you lean down and capture her lips with your own.  ");
-	if (daughter === 1) outputText("The sensation of your lips pressing against her puffy, sensitive lips so roughly only makes her pleasure greater; her pussy quivering around you and clenching hard as you kiss her.  ");
+	if (daughter == 1) outputText("The sensation of your lips pressing against her puffy, sensitive lips so roughly only makes her pleasure greater; her pussy quivering around you and clenching hard as you kiss her.  ");
 	outputText("Eagerly, she kisses you back, wrapping her feathery arms around you as she opens her lips to you.  Her tongue slides out to lick your lips and seek out your tongue to draw it into a sweet, illicit dance of incestuous delight.  Pushing her body, your feathery spawn bucks back against you, wanting more of this spine tingling ecstasy she feels, the all consuming need to rut and breed with her virile mate taking full hold over her, nothing but the dream of having her eggs fertilized by her " + player.mf("father","mother") + " filling her mind.");
 	
 	outputText("\n\nKissing the horny, needy girl back, you force your tongue against hers, plunging into her warm, wet mouth and silencing her rampant, lusty moans.  Sliding a hand down, you grab a handful of your daughter's ample, spankable butt and squeeze, using her body as a handhold while you screw her and claim her quivering form as yours.  Like her mother before her, she belongs to you.  Your daughter's body is your property, made to sate your boiling lust and take your seed deep into her womb to mother your young as a good, fertile female should.  Already you can feel the swelling pressure inside you, the searing hot pleasure of your impending orgasm, the seed that gave your daughter life soon to be flooding her womb in an explosion of " + player.mf("father","mother") + "ly lust.");

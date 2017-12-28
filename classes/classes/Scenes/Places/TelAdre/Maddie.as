@@ -16,7 +16,7 @@ public function Maddie(){
 //[Bakery One Off – Madeleine's Creation]
 internal function procMaddieOneIntro():void {
 	clearOutput();
-	if (flags[kFLAGS.MINO_CHEF_INTRO] === 0) {
+	if (flags[kFLAGS.MINO_CHEF_INTRO] == 0) {
 		outputText("You enter the bakery, savoring the sweet smells of sugar and baked goods.  A burly, hairy figure steps up beside you and places a strong hand on your shoulder.   The gravelly voice of the stranger says, \"<i>You ain't from around here.  Come.  I need your help.  Show you something.</i>\"  You turn to look, and are quite surprised when you see the horned visage of a minotaur ");
 		if (player.tallness < 72) outputText("looking down at");
 		else if (player.tallness < 100) outputText("staring levelly at");
@@ -36,7 +36,7 @@ internal function procMaddieOneIntro():void {
 private function followMinotaurIntoBackroom():void {
 	clearOutput();
 	//	(Not yet explained) 
-	if (flags[kFLAGS.MINO_CHEF_EXPLAINED_INGREDIENTS] === 0) {
+	if (flags[kFLAGS.MINO_CHEF_EXPLAINED_INGREDIENTS] == 0) {
 		outputText("You follow the burly beast through the door, turning several times as he leads you through the blisteringly hot ovens.  The minotaur is sweating heavily by the time you reach his destination, and for that matter so are you.  With all the musk boiling off of him, you find yourself wondering if he was just setting up an elaborate ruse to lure you into a sexual situation.  He grabs a white, fluffy hat and drops it on his head, firmly dispelling that notion as he tries to explain in as few words as possible, \"<i>I am cook.  I make great éclairs, but making masterpiece now.  Need special ingredients.  You get to leave city.  Bring me lust draft and honey.  Not pure stuff, too strong. Go.</i>\"\n\n");
 		outputText("You get a chance to look over his work station, noting the many bowls of batter, hundreds of massive eclairs, and the largest onahole you've ever seen.  ");
 		if (player.findPerk(PerkLib.MinotaurCumAddict) >= 0) outputText("You lick your lips when you realize you're meeting the source of the 'special' éclairs.");
@@ -189,7 +189,7 @@ private function talkToMaddie():void {
 		outputText(".  Maddie squeezes her puckered cock-suckers tight around the turgid shaft while she whips her melty tongue in circles around it.  Your climax hits like a hammer-blow to the temple, knocking the thoughts from your head while you pump rope after rope of 'icing' down the cupcake's dick-gripping neck-hole.  The suction relaxes as you fill the ravenous pastry with your seed and let your head limply sink deeper against the cushion of her sponge-cake-soft breast.\n\n");
 		
 		outputText("Maddie milks you for what seems like ages");
-		if (player.cockTotal() === 1) outputText(", your " + player.cockDescript(x) + " emptying every drop of jizz into the baked cum-tank.");
+		if (player.cockTotal() == 1) outputText(", your " + player.cockDescript(x) + " emptying every drop of jizz into the baked cum-tank.");
 		else {
 			outputText(" while her skin absorbs the generous donation of your other member");
 			if (player.cockTotal() > 2) outputText("s");
@@ -197,7 +197,7 @@ private function talkToMaddie():void {
 		}
 		outputText("  When the jizz-guzzling pastry-girl pulls back at last to free your empty member, it's coated from top to bottom in gooey blue jelly, though it's tinged white in places.  The milked-out member slowly softens");
 		if (player.cockTotal() > 1) {
-			if (player.cockTotal() === 2) outputText(" along with your other penis");
+			if (player.cockTotal() == 2) outputText(" along with your other penis");
 			else outputText(" along with your other dicks");
 		}
 		outputText(".  Satisfied, your body goes limp and sags against the wall while your face leans on the cupcake-girl's departing breast.\n\n");

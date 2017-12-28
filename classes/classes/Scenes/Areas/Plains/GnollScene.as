@@ -176,10 +176,10 @@ package classes.Scenes.Areas.Plains
 			var x:Number = player.cockThatFits(monster.analCapacity());
 			if (x < 0) x = 0;
 			var y:Number = player.cockThatFits2(monster.analCapacity());
-			if (rand(2) === 0) {
+			if (rand(2) == 0) {
 				outputText("The gnoll must be taught a lesson, but you're staying the hell away from her freaky anatomy.  You roughly roll her onto her belly and pull her lean ass up into the air.  You line up your " + player.cockDescript(x) + " and ram it home into her tiny puckered entrance, eliciting a half-conscious gasp from the hyena girl.\n\n");
 				//(if cockTotal>1)
-				if (player.totalCocks() > 1 && player.cockArea(x) < monster.analCapacity() && y !== -1) {
+				if (player.totalCocks() > 1 && player.cockArea(x) < monster.analCapacity() && y != -1) {
 					outputText("With a smirk, you pound away for a few minutes to get her loosened up.  Then you reach down and slap another " + Appearance.cockNoun(CockTypesEnum.HUMAN) + " alongside the first.  With a grunt and a thrust, you shove both of them inside.");
 					//(if cockTotal>2)
 					if (player.totalCocks() > 2 && player.cockArea(x) + player.cockArea(y) < monster.analCapacity()) outputText("  A few thrusts more, and you slow again.  As you gather up your third cock, the gnoll whimpers quietly, fearing what she knows will come next.  You slowly push forward, sinking your rigid meat into her ass.  When all three are in, it's very slow going, but you don't let up.");
@@ -284,7 +284,7 @@ package classes.Scenes.Areas.Plains
 			//[either Gnoll loss, if the player has a succubi's dream in inventory]
 
 			outputText("A rolling, harsh laughter surrounds you as you sink to ground, no longer strong enough to remain upright.  The gnoll's mocking bark fills the air as she disposes of your " + player.armorName);
-			if (player.weaponName !== "fists") outputText(" and " + player.weaponName);
+			if (player.weaponName != "fists") outputText(" and " + player.weaponName);
 			outputText(" with rough motions, the soft pads of her paw-like hands coarsely grasping your " + player.hipDescript() + " as much to grope as to strip you.  As she knocks your belongings aside, a small, bulbous bottle rolls out of your pouches, the lurid white fluid sloshing inside like an alabaster stain against the dull browns and greens of the plains.  The hyena-girl pauses in her eagerness to taste the spoils of victory, regarding the stray vial doubtfully.  Her lips curl into a sneer that approaches a smile and she stoops down to retrieve the creamy flask.  Through the panting haze obscuring your vision, you can make out the murky whorls of curious thickness in the cum-colored elixir and you realize that the amazon has found your Succubi's Dream.\n\n");
 
 			outputText("You try to protest the theft, but she casually snaps her leg into a kick that jerks your chin up and the ground rushes to meet the back of your head, white pain exploding before your eyes.  \"<i>All that you have and all that you are belongs to me,</i>\" the hyena-woman snarls.  \"<i>I will take what tribute I see fit.</i>\"  Laughing again, she flicks the cork from your potion and sniffs the concoction with renewed interest.  Her nostrils crinkle at the scent, but she locks her gaze to yours and, in an aggressive, unblinking gesture, throws her head back to swallow the curiously thick ivory fluid.  Discarding the empty glass, she licks her lips as if the refreshingly cool cream merely inflamed a different sort of thirst.\n\n");

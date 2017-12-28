@@ -47,7 +47,7 @@ package classes.Scenes.Areas
 		return _explorationEncounter ||= Encounters.group(kGAMECLASS.commonEncounters, {
 			name  : "aprilfools",
 			when  : function ():Boolean {
-				return isAprilFools() && flags[kFLAGS.DLC_APRIL_FOOLS] === 0;
+				return isAprilFools() && flags[kFLAGS.DLC_APRIL_FOOLS] == 0;
 			},
 			chance: Encounters.ALWAYS,
 			call  : cragAprilFools
@@ -62,7 +62,7 @@ package classes.Scenes.Areas
 		}, {
 			name: "golem",
 			when: function ():Boolean {
-				return flags[kFLAGS.DESTROYEDVOLCANICGOLEM] !== 1;
+				return flags[kFLAGS.DESTROYEDVOLCANICGOLEM] != 1;
 			},
 			call: volcanicGolemScene.volcanicGolemIntro
 		}, {

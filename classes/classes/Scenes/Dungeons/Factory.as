@@ -38,12 +38,12 @@ package classes.Scenes.Dungeons
 			outputText(images.showImage("dungeon-entrance-factory"));
 			kGAMECLASS.inDungeon = true;
 			//Shutdown state
-			if (flags[kFLAGS.FACTORY_SHUTDOWN] === 2) outputText("Rounding a bend in the mountainous foothills, you stumble upon a large, rusted and eerily silent iron structure with a number of tall gray smokestacks.  A bevy of green-tinged copper pipes stem from the rear of the building, climbing up the steep mountainside toward a jagged hole in its face.  Most of these are cracked open along their seams and both the pipes and mountainside are glazed with pink tinted runoff.");
-			else if (flags[kFLAGS.FACTORY_SHUTDOWN] === 1) outputText("Rounding a bend in the mountainous foothills, you stumble upon a large, rusted and eerily silent iron structure with a number of tall gray smokestacks.  A bevy of green-tinged copper pipes stem from the rear of the building, climbing up the steep mountainside and disappearing into a hole in its face.");
+			if (flags[kFLAGS.FACTORY_SHUTDOWN] == 2) outputText("Rounding a bend in the mountainous foothills, you stumble upon a large, rusted and eerily silent iron structure with a number of tall gray smokestacks.  A bevy of green-tinged copper pipes stem from the rear of the building, climbing up the steep mountainside toward a jagged hole in its face.  Most of these are cracked open along their seams and both the pipes and mountainside are glazed with pink tinted runoff.");
+			else if (flags[kFLAGS.FACTORY_SHUTDOWN] == 1) outputText("Rounding a bend in the mountainous foothills, you stumble upon a large, rusted and eerily silent iron structure with a number of tall gray smokestacks.  A bevy of green-tinged copper pipes stem from the rear of the building, climbing up the steep mountainside and disappearing into a hole in its face.");
 			else outputText("Rounding a bend in the mountainous foothills, you stumble upon a large and rusted iron structure belching cloying pink smoke from its tall smokestacks.  A bevy of green-tinged copper pipes stem from the rear of the building, climbing up the steep mountainside and disappearing into a hole in its face.  It must be some kind of demonic factory, though you've no idea what they could be pumping out.  High atop the roof, you spy a huge water tower fed by smaller pipes that run down the building's side and off in the direction of the lake.  ");
 			//Generic text
 			outputText("\n\nThere are no windows to the hellish factory, with only a single iron door adorning the front wall. ");
-			if (flags[kFLAGS.FACTORY_SHUTDOWN] === 0) outputText("If you go inside there will undoubtedly be many demons to fight and little chance to escape. Death or worse awaits should you fall into their hands.");
+			if (flags[kFLAGS.FACTORY_SHUTDOWN] == 0) outputText("If you go inside there will undoubtedly be many demons to fight and little chance to escape. Death or worse awaits should you fall into their hands.");
 			outputText("\n\nDo you enter the factory or leave?");
 			if (flags[kFLAGS.FACTORY_FOUND] < 1) {
 				outputText("\n\n<b>The factory is now accessible from the 'Dungeons' submenu inside 'Places' menu.</b>");
@@ -123,7 +123,7 @@ package classes.Scenes.Dungeons
 		
 		private function takeSupervisorKey():void {
 			clearOutput();
-			if (flags[kFLAGS.GRIMDARK_MODE] === 0) {
+			if (flags[kFLAGS.GRIMDARK_MODE] == 0) {
 				outputText("You search the desk and find a silver key labelled 'Supervisor'.\n\nYou take the <b>Supervisor Key</b> to keep with your other important items.");
 			}
 			else {
@@ -189,7 +189,7 @@ package classes.Scenes.Dungeons
 			//Second/third times...
 			else {
 				//[[2nd time]] 
-				if (player.statusEffectv1(StatusEffects.TensionReleased) === 0) {
+				if (player.statusEffectv1(StatusEffects.TensionReleased) == 0) {
 					outputText("You eagerly put on the modified harness and let them inject you with more of those body-altering chemicals.  As they fill you with artificial lust and desire, you cry out and beg for more.  They oblige you and give you a larger dose than the first time.  ");
 					//Grow dick!
 					if (player.cocks.length > 0) {
@@ -213,7 +213,7 @@ package classes.Scenes.Dungeons
 					}
 					//Grow chest
 					//(If player has 0 bewbs)
-					if (player.breastRows.length === 0) {
+					if (player.breastRows.length == 0) {
 						player.createBreastRow();
 						outputText("Your chest tingles, revealing a pair of pink nipples on your new mammory glands.  ");
 					}
@@ -223,9 +223,9 @@ package classes.Scenes.Dungeons
 					if (player.cocks.length > 0) outputText("and " + player.multiCockDescript());
 					outputText(" become rock hard, leaking fluids constantly.  ");
 					//MALE
-					if (player.cocks.length > 0 && player.vaginas.length === 0) outputText("Glancing over into the sea of sex, you find yourself drawn to the nearest pussy, as if it was the only thing in the world to matter.  You lose track of the time as you fuck hard dozens of gaping cunts, each of them overflowing with cum from all participants in this infernal orgy.  ");
+					if (player.cocks.length > 0 && player.vaginas.length == 0) outputText("Glancing over into the sea of sex, you find yourself drawn to the nearest pussy, as if it was the only thing in the world to matter.  You lose track of the time as you fuck hard dozens of gaping cunts, each of them overflowing with cum from all participants in this infernal orgy.  ");
 					//FEMALE
-					if (player.vaginas.length > 0 && player.cocks.length === 0) {
+					if (player.vaginas.length > 0 && player.cocks.length == 0) {
 						outputText("As you enter the sex-crazed crowd, you notice several \"girls\" with demonic cocks bloated by the use of drugs, getting drawn to you by the scent of your dripping wet " + player.vaginaDescript(0) + ". Sitting on the floor, you spread your legs wide, facing the nearest one with an inviting lewd moan, while you hungrily grab another cum-covered cock, that just filled up an obscenely wide gaping vagina, to suck it.  You are soon penetrated and fucked hard and deep, one huge infernal dick after another, as they all cum into you in turn. ");
 						player.cuntChange(150, true);
 					}
@@ -267,9 +267,9 @@ package classes.Scenes.Dungeons
 		public function doBadEndGeneric():void {
 			clearOutput();
 			outputText("You crack your sleep-fuzzed eyes, blinking at the sudden light as you try to get your bearings and remember where you are.  A nearby voice is moaning like a bitch in heat, or a drunk slut.  You giggle a bit at the thought as you work at focusing your eyes.  You feel warm and happy, particularly in your chest and groin.  The cobwebs of sleep clear from your mind with agonizing slowness, but you find it hard to worry about with how warm and wonderful you feel.  It's almost like hot wet mouths are latched onto your crotch and breasts, licking and sucking in perfect rhythm.  ");
-			if (player.cocks.length === 0 || player.biggestTitSize() <= 1) {
+			if (player.cocks.length == 0 || player.biggestTitSize() <= 1) {
 				outputText("A small inner voice pipes up to remind you that you don't have ");
-				if (player.cocks.length === 0) {
+				if (player.cocks.length == 0) {
 					outputText("anything in your groin to suck on");
 					if (player.biggestTitSize() <= 1) outputText(" or ");
 				}
@@ -279,7 +279,7 @@ package classes.Scenes.Dungeons
 			else outputText("A small inner voice tries to warn you of something, only to be swept away in the feelings of perfect pleasure and rightness that wash away the last remnants of your sleep.\n\n");
 			outputText("You realize that the moaning voice is your own, and find that the thought just turns you on more.\n\n");
 			outputText("'<i>You're such a horny slut!</i>' echoes a voice in your head.  You want to nod and smile, but are prevented by something.  You realize you're strapped into some kind of chair and harness so securely that you can't even move.  Tiny soothing fingers massage your temples, rubbing away the fears that moments ago threatened to interrupt your pleasure.  You can see a ");
-			if (player.totalBreasts() === 2) outputText("pair of ");
+			if (player.totalBreasts() == 2) outputText("pair of ");
 			else outputText("multitude of ");
 			outputText(" clear hoses coming away from your cow-like chest udders.  ");
 			if (player.biggestLactation() <= 1.5) outputText("Creamy white milk is flowing in a steady stream up the tubes and away from you.  ");
@@ -304,12 +304,12 @@ package classes.Scenes.Dungeons
 			if (player.cocks.length > 0) {
 				outputText(", filling your " + player.multiCockDescriptLight());
 				outputText(" with sensation");
-				if (player.cockTotal() === 1) outputText("s");
+				if (player.cockTotal() == 1) outputText("s");
 				outputText(" as ");
 				if (player.cocks.length > 1) outputText("they");
 				else outputText("it");
 				outputText(" grow");
-				if (player.cocks.length === 1) outputText("s");
+				if (player.cocks.length == 1) outputText("s");
 				outputText(" massive and engorged.  ");
 			}
 			else outputText(".  ");

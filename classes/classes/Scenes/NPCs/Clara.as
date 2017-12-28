@@ -21,8 +21,8 @@ package classes.Scenes.NPCs
 		protected function claraDrugAttack():void {
 			var temp2:Number = rand(2);
 			var color:String = "";
-			if (temp2 === 0) color = "red";
-			if (temp2 === 1) color = "black";
+			if (temp2 == 0) color = "red";
+			if (temp2 == 1) color = "black";
 			//Throw offensive potions at the player
 			outputText("Clara suddenly snatches something from a pouch at her belt. \"<i>Try this, little cutie!</i>\" She snarls, and throws a vial of potion at you.");
 			//Dodge chance!
@@ -33,12 +33,12 @@ package classes.Scenes.NPCs
 			{
 				//Get hit!
 				//Temporary heat
-				if (color === "red") {
+				if (color == "red") {
 					outputText("\nThe red fluids hit you and instantly soak into your skin, disappearing.  Your skin flushes and you feel warm.  Oh no...\n");
 					if (!player.hasStatusEffect(StatusEffects.TemporaryHeat)) player.createStatusEffect(StatusEffects.TemporaryHeat,0,0,0,0);
 				}
 				//Increase fatigue
-				if (color === "black") {
+				if (color == "black") {
 					outputText("\nThe black fluid splashes all over you and wicks into your skin near-instantly.  It makes you feel tired and drowsy.\n");
 					player.changeFatigue(10 + rand(25));
 				}
@@ -50,8 +50,8 @@ package classes.Scenes.NPCs
 		protected function claraTeaseAttack():void
 		{
 			//[cocked PCs only] 
-			if (rand(3) === 0) outputText("Clara hesitates, then lifts up her dress and shows you her womanhood.  Then she slowly utters, \"<i>You know, I’m still a virgin.  You’d be the first thing to ever enter inside this hole, something that Marble never could have offered you.</i>\"  What would it be like, you wonder for a moment, before catching yourself and trying to focus back on the fight.");
-			else if (rand(2) === 0) outputText("Clara seems to relax for a moment and bounces her breasts in her hands.  \"<i>Come on, you know how good it is to drink cow-girl milk, just give up!</i>\" she coos.  Despite yourself, you can’t help but remember what it was like, and find yourself becoming aroused.");
+			if (rand(3) == 0) outputText("Clara hesitates, then lifts up her dress and shows you her womanhood.  Then she slowly utters, \"<i>You know, I’m still a virgin.  You’d be the first thing to ever enter inside this hole, something that Marble never could have offered you.</i>\"  What would it be like, you wonder for a moment, before catching yourself and trying to focus back on the fight.");
+			else if (rand(2) == 0) outputText("Clara seems to relax for a moment and bounces her breasts in her hands.  \"<i>Come on, you know how good it is to drink cow-girl milk, just give up!</i>\" she coos.  Despite yourself, you can’t help but remember what it was like, and find yourself becoming aroused.");
 			else outputText("Instead of attacking, Clara runs her hands up and down her body, emphasizing all the curves it has.  \"<i>You were made to be the milk slave of this, stop fighting it!</i>\" she says almost exasperated.  Even so, you find your gaze lingering on those curves against your will.");
 			outputText("\n");
 			player.takeLustDamage((5+player.lib/20), true);
@@ -74,7 +74,7 @@ package classes.Scenes.NPCs
 		public function claraGropesBlindPCs():void
 		{
 			//Clara gropes the PC while they're blinded.  Damage is based on corruption + sensitivity.
-			if (player.hasCock() && (!player.hasVagina() || rand(2) === 0)) outputText("Suddenly Clara wraps an arm around you, and sticks a hand into your " + player.armorName + "!  She is able to give your " + player.multiCockDescriptLight + " a good fondle before you can push her away.  \"<i>Admit it - I make you soo hard, don't I?</i>\" she taunts you behind your dazzled vision.");
+			if (player.hasCock() && (!player.hasVagina() || rand(2) == 0)) outputText("Suddenly Clara wraps an arm around you, and sticks a hand into your " + player.armorName + "!  She is able to give your " + player.multiCockDescriptLight + " a good fondle before you can push her away.  \"<i>Admit it - I make you soo hard, don't I?</i>\" she taunts you behind your dazzled vision.");
 			//Vagina: 
 			else if (player.hasVagina()) outputText("A sudden rush of Clara's hoofs clopping is the only warning you get before her attack comes, and you try to bring up your guard, only for her to deftly move past your defense and stick a hand into your " + player.armorName + "!  She manages to worm her way to your [vagina] and pinches your [clit] before you can push her back out!  \"<i>Hmm, yeah, you're soo wet for me.</i>\" she taunts you behind your dazzled vision.");
 			//Bum: 
@@ -96,7 +96,7 @@ package classes.Scenes.NPCs
 				HP = 0;
 				combatRoundOver();
 			}
-			if (HP < 50 && rand(2) === 0) {
+			if (HP < 50 && rand(2) == 0) {
 				notMurbleEnjoysTheLacticAcid();
 			}
 			else if (player.hasStatusEffect(StatusEffects.Blind))

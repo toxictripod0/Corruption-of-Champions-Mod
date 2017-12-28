@@ -8,14 +8,14 @@ package classes.Scenes.Dungeons.DeepCave
 	{
 		public function impGangAI():void {
 			if (hasStatusEffect(StatusEffects.ImpUber)) impGangUber();
-			else if (lust100 > 50 && rand(2) === 0) impGangBukkake();
+			else if (lust100 > 50 && rand(2) == 0) impGangBukkake();
 			else {
 				var choice:Number = rand(4);
 				if (choice < 3) imtacularMultiHitzilla();
 				else impGangUber();
 			}
 			//(½ chance during any round):
-			if (rand(2) === 0) {
+			if (rand(2) == 0) {
 				outputText("\nOne of the tiny demons latches onto one of your " + player.legs() + " and starts humping it.  You shake the little bastard off and keep fighting!");
 				player.takeLustDamage(1, true);
 			}
@@ -43,7 +43,7 @@ package classes.Scenes.Dungeons.DeepCave
 					outputText("become stained with feminine moisture");
 					if (player.getClitLength() > 3) outputText(" as your clit swells up in a more sensitive imitation of a cock");
 				}
-				if (player.gender === 0) outputText("rub the sensitive skin of your thighs and featureless groin in a way that makes you wish you had a sex of some sort");
+				if (player.gender == 0) outputText("rub the sensitive skin of your thighs and featureless groin in a way that makes you wish you had a sex of some sort");
 				player.takeLustDamage(50, true);
 				outputText(".\n");
 				removeStatusEffect(StatusEffects.ImpUber);
@@ -69,45 +69,45 @@ package classes.Scenes.Dungeons.DeepCave
 				//Determine if dodged!
 				else if (player.spe - spe > 0 && rand(((player.spe-spe)/4) +90) > 80) {
 					damage = rand(4);
-					if (damage === 0) outputText("A wad of cum spatters into the floor as you narrowly sidestep it.\n");
-					else if (damage === 1) outputText("One of the imps launches his seed so hard it passes clean over you, painting the wall white.\n");
-					else if (damage === 2) outputText("You duck a glob of spooge and it passes harmlessly by.  A muffled grunt of disgust can be heard from behind you.\n");
-					else if (damage === 3) outputText("You easily evade a blast of white fluid.\n");
+					if (damage == 0) outputText("A wad of cum spatters into the floor as you narrowly sidestep it.\n");
+					else if (damage == 1) outputText("One of the imps launches his seed so hard it passes clean over you, painting the wall white.\n");
+					else if (damage == 2) outputText("You duck a glob of spooge and it passes harmlessly by.  A muffled grunt of disgust can be heard from behind you.\n");
+					else if (damage == 3) outputText("You easily evade a blast of white fluid.\n");
 				}
 				//Determine if evaded
 				else if (player.findPerk(PerkLib.Evade) >= 0 && rand(100) < 30) {
 					damage = rand(4);
 					outputText("(Evade) ");
-					if (damage === 0) outputText("A wad of cum spatters into the floor as you narrowly sidestep it.\n");
-					else if (damage === 1) outputText("One of the imps launches his seed so hard it passes clean over you, painting the wall white.\n");
-					else if (damage === 2) outputText("You duck a glob of spooge and it passes harmlessly by.  A muffled grunt of disgust can be heard from behind you.\n");
-					else if (damage === 3) outputText("You easily evade a blast of white fluid.\n");
+					if (damage == 0) outputText("A wad of cum spatters into the floor as you narrowly sidestep it.\n");
+					else if (damage == 1) outputText("One of the imps launches his seed so hard it passes clean over you, painting the wall white.\n");
+					else if (damage == 2) outputText("You duck a glob of spooge and it passes harmlessly by.  A muffled grunt of disgust can be heard from behind you.\n");
+					else if (damage == 3) outputText("You easily evade a blast of white fluid.\n");
 				}
-				else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName === "red, high-society bodysuit") {
+				else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
 					outputText("(Misdirection) ");
-					if (damage === 0) outputText("A wad of cum spatters into the floor as you narrowly sidestep it.\n");
-					else if (damage === 1) outputText("One of the imps launches his seed so hard it passes clean over you, painting the wall white.\n");
-					else if (damage === 2) outputText("You duck a glob of spooge and it passes harmlessly by.  A muffled grunt of disgust can be heard from behind you.\n");
-					else if (damage === 3) outputText("You easily evade a blast of white fluid.\n");
+					if (damage == 0) outputText("A wad of cum spatters into the floor as you narrowly sidestep it.\n");
+					else if (damage == 1) outputText("One of the imps launches his seed so hard it passes clean over you, painting the wall white.\n");
+					else if (damage == 2) outputText("You duck a glob of spooge and it passes harmlessly by.  A muffled grunt of disgust can be heard from behind you.\n");
+					else if (damage == 3) outputText("You easily evade a blast of white fluid.\n");
 				}
 				//Determine if cat'ed
 				else if (player.findPerk(PerkLib.Flexibility) >= 0 && rand(100) < 15) {
 					damage = rand(4);
 					outputText("(Agility) ");
-					if (damage === 0) outputText("A wad of cum spatters into the floor as you narrowly sidestep it.\n");
-					else if (damage === 1) outputText("One of the imps launches his seed so hard it passes clean over you, painting the wall white.\n");
-					else if (damage === 2) outputText("You duck a glob of spooge and it passes harmlessly by.  A muffled grunt of disgust can be heard from behind you.\n");
-					else if (damage === 3) outputText("You easily evade a blast of white fluid.\n");
+					if (damage == 0) outputText("A wad of cum spatters into the floor as you narrowly sidestep it.\n");
+					else if (damage == 1) outputText("One of the imps launches his seed so hard it passes clean over you, painting the wall white.\n");
+					else if (damage == 2) outputText("You duck a glob of spooge and it passes harmlessly by.  A muffled grunt of disgust can be heard from behind you.\n");
+					else if (damage == 3) outputText("You easily evade a blast of white fluid.\n");
 				}
 				//(2-6 hits for +10 lust each!) (-5 lust per successful hit)
 				else {
 					damage = rand(6);
-					if (damage === 0) outputText("A squirt of hot demonic cum splatters into your face!\n");
-					if (damage === 1) outputText("Your " + player.allBreastsDescript() + " are coated with thick demonic spunk!\n");
-					if (damage === 2) outputText("Some of the fluid splatters into your midriff and drools down to your waist, making your " + player.armorName + " slimy and wet.\n");
-					if (damage === 3) outputText("Seed lands in your " + player.hairDescript() + ", slicking you with demonic fluid.\n");
-					if (damage === 4) outputText("Another blast of jizz splatters against your face, coating your lips and forcing a slight taste of it into your mouth.\n");
-					if (damage === 5) outputText("The last eruption of cum soaks your thighs and the lower portions of your " + player.armorName + ", turning it a sticky white.\n");
+					if (damage == 0) outputText("A squirt of hot demonic cum splatters into your face!\n");
+					if (damage == 1) outputText("Your " + player.allBreastsDescript() + " are coated with thick demonic spunk!\n");
+					if (damage == 2) outputText("Some of the fluid splatters into your midriff and drools down to your waist, making your " + player.armorName + " slimy and wet.\n");
+					if (damage == 3) outputText("Seed lands in your " + player.hairDescript() + ", slicking you with demonic fluid.\n");
+					if (damage == 4) outputText("Another blast of jizz splatters against your face, coating your lips and forcing a slight taste of it into your mouth.\n");
+					if (damage == 5) outputText("The last eruption of cum soaks your thighs and the lower portions of your " + player.armorName + ", turning it a sticky white.\n");
 					player.takeLustDamage((7+int(player.lib/40+player.cor/40)), true);
 				}
 				lust -= 5;
@@ -142,7 +142,7 @@ package classes.Scenes.Dungeons.DeepCave
 				else if (player.findPerk(PerkLib.Evade) >= 0 && rand(100) < 10) {
 					outputText("Using your skills at evading attacks, you anticipate and sidestep " + a + short + "'s attack.\n");
 				}
-				else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName === "red, high-society bodysuit") {
+				else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
 					outputText("With the easy movement afforded by your bodysuit and Raphael's teachings, you easily avoid " + a + short + "'s attack.\n");
 				}
 				//Determine if cat'ed
@@ -153,12 +153,12 @@ package classes.Scenes.Dungeons.DeepCave
 				}
 				//OH SHIT SON YOU GOT REAPED
 				else {
-					if (hits === 6) outputText("You're clawed viciously by an imp!");
-					if (hits === 5) outputText("One bites your ankle!");
-					if (hits === 4) outputText("An imp rakes his claws down your back.");
-					if (hits === 3) outputText("One of the little bastards manages to scratch up your legs!");
-					if (hits === 2) outputText("Another imp punches you in the gut, hard!");
-					if (hits === 1) outputText("Your arm is mauled by the clawing!");
+					if (hits == 6) outputText("You're clawed viciously by an imp!");
+					if (hits == 5) outputText("One bites your ankle!");
+					if (hits == 4) outputText("An imp rakes his claws down your back.");
+					if (hits == 3) outputText("One of the little bastards manages to scratch up your legs!");
+					if (hits == 2) outputText("Another imp punches you in the gut, hard!");
+					if (hits == 1) outputText("Your arm is mauled by the clawing!");
 					damage = 20 - rand(player.tou/10);
 					if (damage <= 0) damage = 1;
 					outputText(" ");

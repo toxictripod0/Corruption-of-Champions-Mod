@@ -11,13 +11,13 @@ package classes.Scenes.Monsters
 		protected function goblinDrugAttack():void {
 			var temp2:Number = rand(5);
 			var color:String = "";
-			if (temp2 === 0) color = "red";
-			if (temp2 === 1) color = "green";
-			if (temp2 === 2) color = "blue";
-			if (temp2 === 3) color = "white";
-			if (temp2 === 4) color = "black";
+			if (temp2 == 0) color = "red";
+			if (temp2 == 1) color = "green";
+			if (temp2 == 2) color = "blue";
+			if (temp2 == 3) color = "white";
+			if (temp2 == 4) color = "black";
 			//Throw offensive potions at the player
-			if (color !== "blue") {
+			if (color != "blue") {
 				outputText(capitalA + short + " uncorks a glass bottle full of " + color + " fluid and swings her arm, flinging a wave of fluid at you.");
 			}
 			//Drink blue pots
@@ -35,22 +35,22 @@ package classes.Scenes.Monsters
 			}
 			//Get hit!
 			//Temporary heat
-			if (color === "red") {
+			if (color == "red") {
 				outputText("\nThe red fluids hit you and instantly soak into your skin, disappearing.  Your skin flushes and you feel warm.  Oh no...\n");
 				if (!player.hasStatusEffect(StatusEffects.TemporaryHeat)) player.createStatusEffect(StatusEffects.TemporaryHeat,0,0,0,0);
 			}
 			//Green poison
-			if (color === "green") {
+			if (color == "green") {
 				outputText("\nThe greenish fluids splash over you, making you feel slimy and gross.  Nausea plagues you immediately - you have been poisoned!\n");
 				if (!player.hasStatusEffect(StatusEffects.Poison)) player.createStatusEffect(StatusEffects.Poison,0,0,0,0);
 			}
 			//sticky flee prevention
-			if (color === "white") {
+			if (color == "white") {
 				outputText("\nYou try to avoid it, but it splatters the ground around you with very sticky white fluid, making it difficult to run.  You'll have a hard time escaping now!\n");
 				if (!player.hasStatusEffect(StatusEffects.NoFlee)) player.createStatusEffect(StatusEffects.NoFlee,0,0,0,0);
 			}
 			//Increase fatigue
-			if (color === "black") {
+			if (color == "black") {
 				outputText("\nThe black fluid splashes all over you and wicks into your skin near-instantly.  It makes you feel tired and drowsy.\n");
 				player.changeFatigue(10 + rand(25));
 			}
@@ -110,7 +110,7 @@ package classes.Scenes.Monsters
 		}
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
 		{
-			if (player.gender === 0 || flags[kFLAGS.SFW_MODE] > 0) {
+			if (player.gender == 0 || flags[kFLAGS.SFW_MODE] > 0) {
 				outputText("You collapse in front of the goblin, too wounded to fight.  She growls and kicks you in the head, making your vision swim. As your sight fades, you hear her murmur, \"<i>Fucking dicks can't even bother to grow a dick or cunt.</i>\"");
 				game.combat.cleanupAfterCombat();
 			} 

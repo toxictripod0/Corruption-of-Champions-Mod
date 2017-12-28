@@ -13,7 +13,7 @@ package classes.Scenes.Areas.Forest
 			var temp:int = int((str + weaponAttack) - Math.random()*(player.tou) - player.armorDef);
 			if (temp < 0) temp = 0;
 			//Miss
-			if (temp === 0 || (player.spe - spe > 0 && int(Math.random()*(((player.spe-spe)/4) +80)) > 80)) {
+			if (temp == 0 || (player.spe - spe > 0 && int(Math.random()*(((player.spe-spe)/4) +80)) > 80)) {
 				outputText("However, you quickly evade the clumsy efforts of the abomination to strike you.");
 			}
 			//Hit
@@ -95,7 +95,7 @@ package classes.Scenes.Areas.Forest
 		override protected function performCombatAction():void
 		{
 			//tentacle beasts have special AI
-			if (rand(2) === 0 || hasStatusEffect(StatusEffects.TentacleCoolDown))
+			if (rand(2) == 0 || hasStatusEffect(StatusEffects.TentacleCoolDown))
 				special1();
 			else special2();
 		}

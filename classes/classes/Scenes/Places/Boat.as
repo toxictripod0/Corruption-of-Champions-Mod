@@ -68,7 +68,7 @@ import classes.Scenes.Areas.Lake.*;
 			clearOutput();
 			player.addStatusValue(StatusEffects.BoatDiscovery, 1, 1);
 			outputText("You reach the dock without any incident and board the small rowboat.  The water is calm and placid, perfect for rowing.  ");
-			if (flags[kFLAGS.FACTORY_SHUTDOWN] === 2) {
+			if (flags[kFLAGS.FACTORY_SHUTDOWN] == 2) {
 				outputText("The water appears somewhat muddy and has a faint pungent odor.  ");
 				if (player.inte > 40) outputText("You realize what it smells like – sex.  ");
 			}
@@ -79,7 +79,7 @@ import classes.Scenes.Areas.Lake.*;
 
 		private function nothingSpecial():void {
 			outputText(images.showImage("location-boat"));
-			if (rand(2) === 0) {
+			if (rand(2) == 0) {
 				outputText("You row for nearly an hour, until your arms practically burn with exhaustion from all the rowing.");
 			} else {
 				outputText("You give up on finding anything interesting, and decide to go check up on your camp.");

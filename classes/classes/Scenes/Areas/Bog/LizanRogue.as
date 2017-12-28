@@ -60,7 +60,7 @@ import classes.internals.*;
 		}
 		
 		protected function chooseBlowpipe():void {
-			if (rand(2) === 0) blowGun();
+			if (rand(2) == 0) blowGun();
 			else immaHurtYouBadly();
 		}
 		

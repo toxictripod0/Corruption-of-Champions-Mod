@@ -37,12 +37,12 @@ package classes.Scenes.Dungeons.HelDungeon
 		{
 			if (player.hasStatusEffect(StatusEffects.Stunned)) {
 				player.removeStatusEffect(StatusEffects.Stunned);
-				if (rand(2) === 0) BrigidAssGrind();
+				if (rand(2) == 0) BrigidAssGrind();
 				else brigidPoke();
 				return;
 			}
-			if (rand(3) === 0) BrigidAssGrind();
-			else if (rand(2) === 0) brigidBop();
+			if (rand(3) == 0) BrigidAssGrind();
+			else if (rand(2) == 0) brigidBop();
 			else brigidPoke();
 		}
 

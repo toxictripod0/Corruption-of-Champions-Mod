@@ -61,7 +61,7 @@ package classes.Scenes.NPCs {
 		else outputText("bovine");
 	 	outputText(" head still in her hands, and sighs loudly. <i>\"I’m sorry, sweetie, I just... I’ve tried to ignore it, but I just don’t feel comfortable here.\"</i>");
 	 	outputText("\n\nYou ask her what’s wrong; doesn’t she like being with you?");
-		if (amilyScene.amilyFollower() && !amilyScene.amilyCorrupt() || followerKiha() || flags[kFLAGS.IZMA_FOLLOWER_STATUS] === 1)
+		if (amilyScene.amilyFollower() && !amilyScene.amilyCorrupt() || followerKiha() || flags[kFLAGS.IZMA_FOLLOWER_STATUS] == 1)
 		{
 		 	outputText("  ...Has she been fighting with ");
 			if (amilyScene.amilyFollower() && !amilyScene.amilyCorrupt()) outputText("Amily");
@@ -98,13 +98,13 @@ package classes.Scenes.NPCs {
 		player.consumeItem(consumables.P_LBOVA);
 	 	outputText("You tell Marble that you managed to get some LaBova alchemically purified, and you want her to drink some.");
 		//First time
-		if (flags[kFLAGS.TIMES_GIVEN_MARBLE_PURE_LABOVA] === 0)
+		if (flags[kFLAGS.TIMES_GIVEN_MARBLE_PURE_LABOVA] == 0)
 		{
 			//Marble’s corruption is reduced by 4
 			player.addStatusValue(StatusEffects.Marble, 4, -4);
 			outputText("\n\nYour bovine lover meets your eyes calmly and nods, holding out her hand for the vial, which you hand over to her. She opens the bottle of creamy, milk-based fluid and chugs it down without hesitation.");
 		 	outputText("\n\nShe promptly drops the empty bottle on the ground, where it smashes, her hands going to her stomach and pressing themselves against it. She grimaces in pain, her stomach audibly gurgling as it rebels against the alien fluid she’s forced herself to drink. She arches her back and lets out a pained moan as her ");
-			if (player.statusEffectv2(StatusEffects.MarbleSpecials) === 4) outputText("eight");
+			if (player.statusEffectv2(StatusEffects.MarbleSpecials) == 4) outputText("eight");
 			else outputText("two");
 		 	outputText(" nipples suddenly discharge themselves, soaking her shirt and actually managing to spurt visible arcs of milk through the fabric. Minutes go past as the milk sprays everywhere, but then it stops as suddenly as it started. Marble sighs in relief and pats her belly. \"<i>That really didn’t feel very good... hope I don’t have to go through that too often.</i>\" She then realizes her shirt is sopping wet. \"<i>Aw, no, my shirt! I haven’t milked myself since I was a little girl,</i>\" she complains, pulling the milk-sodden garment off of herself and eyeing it sadly. \"<i>I’ll need to hang this out to dry and wear one of my spares...</i>\" she mumbles, even as you politely leave her to take care of that.");
 		}
@@ -127,7 +127,7 @@ package classes.Scenes.NPCs {
 		 	outputText("\n\nShe quickly hurries to remove her shirt lest she stain it again, allowing her great, heavy");
 			if (flags[kFLAGS.MARBLE_BOVA_LEVEL] > 1) outputText(", fur covered");
 		 	outputText(" breasts to dangle freely. Stoically she bears the pain as her stomach loudly rumbles and groans, holding her breasts up proudly as her ");
-			if (player.statusEffectv2(StatusEffects.MarbleSpecials) === 4) outputText("eight");
+			if (player.statusEffectv2(StatusEffects.MarbleSpecials) == 4) outputText("eight");
 			else outputText("two");
 		 	outputText(" nipples begin spray milk everywhere - you have to take a step back to avoid being squirted yourself. Finally, Marble’s breasts stop their spraying, leaving the two of you standing in a milky puddle of mud. The cowgirl pulls her shirt back on over her body. \"<i>That stuff still tastes vile, but I guess it’s worth it. I just hope it finishes working soon.</i>\" she tells you. You assure her that you believe in her ability to get through this, and then head back to the main part of your camp.");
 		}
@@ -323,7 +323,7 @@ package classes.Scenes.NPCs {
 			}
 			//if (Izma is in camp)
 			//Izma’s response to being asked to have tea
-			if (flags[kFLAGS.IZMA_FOLLOWER_STATUS] === 1)
+			if (flags[kFLAGS.IZMA_FOLLOWER_STATUS] == 1)
 			{
 			 	outputText("\n\nYou take a short walk over to the stream that Izma likes to bathe in and call her over.  She asks you what’s up and you let her know what Clara’s got brewing.  The tigershark snorts. \"<i>No thank you; I don’t trust anything that might have milk in it from one of those damn cows,</i>\" she snaps, showing her teeth in a predatory expression of disdain. You try to argue that she’s being rude and distrustful of Marble’s sister, but the tigershark won’t listen, instead pointedly pushing away from the shore and diving into the depths - such as they are - of the stream.");
 			 	outputText("\n\nYou wait for several minutes, but she doesn’t resurface; deciding that there’s no point in asking any more, you leave her to sulk on the riverbed.");
@@ -416,7 +416,7 @@ package classes.Scenes.NPCs {
 	 	outputText("\n\n\"<i>Wondering what’s happening?  Don’t you worry your pretty head about it.  You’re just being made ready to be my mate and slave for the rest of my life.  Come on back to my breast darling. I’ll get you good and addicted soon,</i>\" your kidnaper intones with an increasingly crazed look on her face.");
 	 	outputText("\n\nYour body desperately wants to do what she is saying; you can feel it.  You have no idea how long you’ve been drinking from her, but you’re definitely close to becoming completely dependent on Clara.  Due to your current location, it will be impossible to get away without getting past Clara, and that’s going to be really hard given your current condition.  With each moment your desire to submit to her only becomes stronger.  Still, if you want to escape this insane cow-girl, you’re going to need to fight her.  At least ");
 		//(if player is not using fists)
-		if (player.weaponName !== "fists") outputText("your [weapon] is nearby, and ");
+		if (player.weaponName != "fists") outputText("your [weapon] is nearby, and ");
 	 	outputText(" you’re still wearing your [armor].");
 		//PC chooses fight or submit.
 		menu();
@@ -428,7 +428,7 @@ package classes.Scenes.NPCs {
 	public function fightCowCuntAfterBeingTotesMcGoatsDrugged():void {
 		clearOutput();
 	 	outputText("You steel yourself, ");
-		if (player.weaponName === "fists") outputText("raise your fists");
+		if (player.weaponName == "fists") outputText("raise your fists");
 		else outputText("grab your " + player.weaponName);
 	 	outputText(" and get ready to fight to free yourself from this mad milkmaid’s mammaries.  Realizing your intentions, Clara’s face turns from a crazed grin to an angry glare.  With barely contained fury, she screams at you, \"<i>Oh don’t you worry darling, I will <b>make</b> you love drinking my milk!</i>\" before standing up, hefting a nasty looking heavy mace, and charging at you.");
 		//go to Clara’s fight
@@ -624,7 +624,7 @@ package classes.Scenes.NPCs {
 	 	outputText("\n\nAlmost as if on cue, you feel her presence getting closer to you, and your captor steps inside the room.  \"<i>Ah, yoour awake then?</i>\" she coos, \"<i>Feeling up for some milk, I hope?</i>\"  You can’t help yourself, you need that milk, so you nod.  \"<i>Goood, keeping you asleep for a while loooks like it was the right chooice.</i>\"  She laughs uproariously.");
 	 	outputText("\n\n\"<i>Now, my milk slave, aren’t you going to come over here and get that milk?  Oh that’s right, you can’t without my permission, can you?</i>\" she laughs again at you, as you continue to stare at her.  ");
 		//if (PC said to Marble they wanted to get addicted)
-		if (player.statusEffectv3(StatusEffects.Marble) === 1)
+		if (player.statusEffectv3(StatusEffects.Marble) == 1)
 		{
 		 	outputText("\"<i>Oh?  Wondering how I know about that?  Marble told me when she was explaining about you breaking free of the addiction.  Unlike her, I’m going to make sure you behave yourself.</i>\"  ");
 		} 
@@ -635,7 +635,7 @@ package classes.Scenes.NPCs {
 	 	outputText("This woman is nothing like her sister, she loves the power she has over you, and loves to show you just how much she has.");
 
 	 	outputText("\n\nClara leans down and puts her face right in front of yours.  \"<i>I think that if you want to drink some of my milk, you’re going to have to do some things for me.</i>  Her voice is soft, but the meaning couldn’t be harder.  \"<i>From now on, you aren’t allowed to go anywhere without my say so, and I’m the only one you’re allowed to love.  Either emotionally or physically.  Understand?</i>\"  You shudder, and think of ");
-		if (kGAMECLASS.camp.loversCount() === 1) outputText("Marble");
+		if (kGAMECLASS.camp.loversCount() == 1) outputText("Marble");
 		else outputText("the others");
 	 	outputText(".  Then your eyes drop down to Clara’s chest, and you think of your need.");
 
@@ -992,7 +992,7 @@ package classes.Scenes.NPCs {
 		 	outputText("\n\nIt doesn't take much longer for you and Marble to rush to your peaks and fill up the cow-girl holes together.  Clara seems to have fallen just short of her peak when the two of you pull back, and she seems to suddenly regain her composure.  \"<i>Wait, what?  Noo!  You can't just, uh....  What am I saying?!</i>\"  It looks like she's having a bit of a crisis deciding if she wants to cum or is too bothered by the thought of what just happened to her.");
 		 	outputText("\n\n\"<i>Damn it all, why couldn't " + player.short + " have taken the front?  Now I'll never be able to experience it for the first time with my perfect mate!  You're evil, sister.</i>\"  Marble looks like she is about to blow up once more at that comment....");
 		} //else if (PC has a cock, Marble does not)
-		else if ((player.hasCock() && x >= 0) && flags[kFLAGS.MARBLE_DICK_TYPE] === 0)
+		else if ((player.hasCock() && x >= 0) && flags[kFLAGS.MARBLE_DICK_TYPE] == 0)
 		{
 			//n is the index of the PC's biggest cock under 20 area.
 		 	outputText("\n\nEventually you push her down on all fours.  You stand behind her, while Marble stands in front of her sister's face.  \"<i>Wait, do you actually think I'll service yoou?</i>\" Clara asks indignantly.");
@@ -1162,7 +1162,7 @@ package classes.Scenes.NPCs {
 	 	outputText("\n\n\"<i>The day when I met you, I felt that you were just one of the cutest things that I've ever seen.  I immediately took a liking to you after you helped me out with my breasts.  You spent time with me, talked to me, worked alongside me, and every day my affection for you grew stronger.  I didn't think it was love at first, but everyday I looked forward to a visit from you.</i>\"  You give a warm smile hearing those words from her, happy to know your feelings were mutual as your relationship advanced.  \"<i>I was so happy when you agreed to drink the milk directly from my breasts.  It made me so happy to nurse someone like that again and remember the utter bliss I felt from that.</i>\"");
 	 	outputText("\n\n<i>\"Unfortunately that time didn't last long and before I knew it I had addicted you.  ");
 		//if (PC said they wanted to be addicted)
-		if (player.statusEffectv3(StatusEffects.Marble) === 1)
+		if (player.statusEffectv3(StatusEffects.Marble) == 1)
 		{
 		 	outputText("When you said that you wanted to rely on my milk, it felt like you'd just given me the world.  Then, the power I suddenly held over you made my instincts kick in, and I started to turn into something like my mom.  When you resisted, it felt like a betrayal, but my love for you proved stronger than that.  The day you stopped me from slipping away for good, when you revealed your feelings for me, that you cared more about me than my milk, I felt wonderful, and my love for you blossomed full bloom that day.  ");
 		}
@@ -1212,7 +1212,7 @@ package classes.Scenes.NPCs {
 		 	outputText("\n\n\"<i>Now that we know it works, we should purify your child");
 			if (flags[kFLAGS.MARBLE_KIDS] > 1) outputText("ren");
 		 	outputText(" right away.  Give ");
-			if (flags[kFLAGS.MARBLE_KIDS] === 1) outputText("her");
+			if (flags[kFLAGS.MARBLE_KIDS] == 1) outputText("her");
 			else outputText("each");
 		 	outputText(" a two drop dose,</i>\" the alchemist instructs you and hands over the bottle of his formula.");
 
@@ -1224,9 +1224,9 @@ package classes.Scenes.NPCs {
 			if (flags[kFLAGS.MARBLE_KIDS] > 1) outputText("They ");
 			else outputText("She ");
 		 	outputText("take");
-			if (flags[kFLAGS.MARBLE_KIDS] === 1) outputText("s");
+			if (flags[kFLAGS.MARBLE_KIDS] == 1) outputText("s");
 		 	outputText(" it easily enough, and while there are no outward effects, ");
-			if (flags[kFLAGS.MARBLE_KIDS] === 1) outputText("your ");
+			if (flags[kFLAGS.MARBLE_KIDS] == 1) outputText("your ");
 			else outputText("each ");
 		 	outputText("child does report feeling like something was lifted from ");
 			if (flags[kFLAGS.MARBLE_KIDS] > 1) outputText("their");
@@ -1388,13 +1388,13 @@ package classes.Scenes.NPCs {
 			//increase Marble's breast size by 1
 			flags[kFLAGS.MARBLE_BREAST_SIZE]++;
 			outputText(kGAMECLASS.marbleScene.marbleBreastSize() + " melons!");
-			//if (Marble's breast size === 1)
-			if (flags[kFLAGS.MARBLE_BREAST_SIZE] === 1)
+			//if (Marble's breast size == 1)
+			if (flags[kFLAGS.MARBLE_BREAST_SIZE] == 1)
 			{
 			 	outputText("\n\nYour mate examines her now larger bust, and gets a feel for it.  \"<i>Hmm, not quite what I'm used too, but it's better than those tiny things that I used to have.  Thank you sweetie!</i>\"");
 			}
-			//else if (Marble's breast size === 2)
-			else if (flags[kFLAGS.MARBLE_BREAST_SIZE] === 2)
+			//else if (Marble's breast size == 2)
+			else if (flags[kFLAGS.MARBLE_BREAST_SIZE] == 2)
 			{
 			 	outputText("\n\nYour mate gives her chest a shake, then smiles happily.  \"<i>Thank you so much sweetie!  Now this feels much better, a good balance, nice weight, and just think of what I could do to you with these girls.</i>\"");
 			}
@@ -1438,12 +1438,12 @@ package classes.Scenes.NPCs {
 			//decrease Marble's breast size by 1
 			flags[kFLAGS.MARBLE_BREAST_SIZE]--;
 			outputText(kGAMECLASS.marbleScene.marbleBreastSize() + " sized breasts.");
-			if (flags[kFLAGS.MARBLE_BREAST_SIZE] === 0)
+			if (flags[kFLAGS.MARBLE_BREAST_SIZE] == 0)
 			{
 			 	outputText("\n\nYour mate grips one of her sizable DDs, and gives an exaggerated sigh.  \"<i>This is just so tiny.  Remember that I'm only doing this because I care about you sweetie.  I'm not going to shrink them any further.</i>\"");
 			}
 			//else if (Marble's breast size ==1)
-			else if (flags[kFLAGS.MARBLE_BREAST_SIZE] === 1)
+			else if (flags[kFLAGS.MARBLE_BREAST_SIZE] == 1)
 			{
 			 	outputText("\n\nYour mate gives an experimental bounce of her now reduced chest, \"<i>Hmm, I guess this isn't too bad, do you like the new me, sweetie?</i>\"");
 			}
@@ -1549,7 +1549,7 @@ package classes.Scenes.NPCs {
 		//if (PC has more than one child with Marble)
 		if (flags[kFLAGS.MARBLE_KIDS] > 1) outputText(" , and with her children in tow");
 		//else if (PC has one child with Marble)
-		else if (flags[kFLAGS.MARBLE_KIDS] === 1) outputText(", and holding her child's hand");
+		else if (flags[kFLAGS.MARBLE_KIDS] == 1) outputText(", and holding her child's hand");
 	 	outputText(".  \"<i>I'm sorry sweetie.  I tried to warn you, but-</i>\" she stops for a moment and takes a deep breath to steady herself.  ");
 		//if (PC has at least one child with Marble)
 		if (flags[kFLAGS.MARBLE_KIDS] > 0)

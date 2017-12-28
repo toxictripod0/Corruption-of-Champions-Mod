@@ -32,17 +32,17 @@ package classes.Scenes.Camp
 		
 		public function checkMaterials(highlight:int = 0):void {
 			//Nails
-			if (highlight === 1) outputText("<b>");
+			if (highlight == 1) outputText("<b>");
 			outputText("Nails: " + player.keyItemv1("Carpenter's Toolbox") + "/" + maxNailSupply() + " \n");
-			if (highlight === 1) outputText("</b>");
+			if (highlight == 1) outputText("</b>");
 			//Wood
-			if (highlight === 2) outputText("<b>");
+			if (highlight == 2) outputText("<b>");
 			outputText("Wood: " + flags[kFLAGS.CAMP_CABIN_WOOD_RESOURCES] + "/" + maxWoodSupply() + " \n");
-			if (highlight === 2) outputText("</b>");
+			if (highlight == 2) outputText("</b>");
 			//Stones
-			if (highlight === 3) outputText("<b>");
+			if (highlight == 3) outputText("<b>");
 			outputText("Stones: " + flags[kFLAGS.CAMP_CABIN_STONE_RESOURCES] + "/" + maxStoneSupply() + " \n");
-			if (highlight === 3) outputText("</b>");
+			if (highlight == 3) outputText("</b>");
 		}
 		
 		//------------
@@ -68,7 +68,7 @@ package classes.Scenes.Camp
 				doNext(camp.returnToCampUseOneHour);
 				return;
 			}
-			if (player.hasItem(weapons.L__AXE) || player.weaponName === "large axe") 
+			if (player.hasItem(weapons.L__AXE) || player.weaponName == "large axe") 
 			{
 				outputText("You are carrying a large axe with you.") 
 				addButton(0, "Axe", cutTreeTIMBER);
@@ -117,7 +117,7 @@ package classes.Scenes.Camp
 		private function cutTreeTIMBER():void {
 			clearOutput();
 			var wood:int = 10 + Math.floor(player.str / 8);
-			if (player.weaponName === "large axe") outputText("You ready your oversized axe. ");
+			if (player.weaponName == "large axe") outputText("You ready your oversized axe. ");
 			else outputText("You ready your axe. ");
 			outputText("With your strength, you hack away at the tree, making wedge-shaped cuts. After ten strikes, you yell \"<i>TIMMMMMMMMBER!</i>\" as the tree falls and lands on the ground with a loud crash. You are quite the fine lumberjack! You then cut the felled tree into pieces and you haul the wood back to your camp.\n\n");
 			flags[kFLAGS.ACHIEVEMENT_PROGRESS_DEFORESTER] += (wood);
@@ -157,7 +157,7 @@ package classes.Scenes.Camp
 			if (player.hasKeyItem("Nails") >= 0) player.removeKeyItem("Nails");
 			//Start cabin project!
 			if (flags[kFLAGS.CAMP_CABIN_PROGRESS] >= 10) flags[kFLAGS.CAMP_BUILT_CABIN] = 1;
-			if (flags[kFLAGS.CAMP_BUILT_CABIN] === 1) {
+			if (flags[kFLAGS.CAMP_BUILT_CABIN] == 1) {
 				kGAMECLASS.dungeons.cabin.enterCabin();
 				return;
 			}
@@ -240,7 +240,7 @@ package classes.Scenes.Camp
 			if (player.hasKeyItem("Carpenter's Toolbox") >= 0) {
 				outputText("Luckily, you found that carpenter’s shop in Tel’Adre and picked up a tool kit. That has an axe, an adze, and a spud, and a bunch of other tools. Everything you need to turn logs into basic beams for a cabin. It’s quite a heavy kit, but you did manage to lug it back across the desert to your campsite. You might as well put it to good use!");
 			}
-			else if (player.hasItem(weapons.L__AXE) || player.weapon === weapons.L__AXE) {
+			else if (player.hasItem(weapons.L__AXE) || player.weapon == weapons.L__AXE) {
 				outputText("Good thing you found that big axe, right? That’ll make the job easy.\n\n");
 				outputText("Although when you think about it, an axe alone isn’t going to be enough. You’ll need at least an adze and a bark spud. Maybe there’s somewhere you can buy a toolkit with all the things you need. Tel’Adre maybe?\n\n");
 			}
@@ -329,7 +329,7 @@ package classes.Scenes.Camp
 			if (camp.companionsCount() > 0) outputText("The sound attracts some of your companions.");
 			outputText("\n\n");
 			//NPC comments, WIP
-			//if (kGAMECLASS.amilyScene.amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] === 1) outputText("\"<i>PLACEHOLDER</i>\" Amily asks. \n\n");
+			//if (kGAMECLASS.amilyScene.amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 1) outputText("\"<i>PLACEHOLDER</i>\" Amily asks. \n\n");
 			outputText("You start to construct a wooden frame according to the instructions. Using your hammer and nails, you put the wood frame together and put it up. You then add temporary supports to ensure it doesn't fall down. You make two more frames of the same shape. Lastly, you construct one more frame, this time the frame is designed to have door and window.\n\n");
 			if (player.hasStatusEffect(StatusEffects.CampRathazul)) outputText("\"<i>My, my. What are you building?</i>\" Rathazul asks. \n\n");
 			if (player.hasStatusEffect(StatusEffects.PureCampJojo)) outputText("\"<i>You're building something?</i>\" Jojo asks. \n\n");
@@ -343,7 +343,7 @@ package classes.Scenes.Camp
 			else outputText("You construct a temporary ramp to push the roof frame into place. ");
 			outputText("You then hammer nails in place to secure the roof frame.\n\n");
 			outputText("<b>You have finished framing the cabin! You can work on constructing wall.</b>\n\n");
-			if (camp.companionsCount() === 1) outputText("Your lone camp follower comes to see what you've been working on. They nod in approval, impressed by your handiwork.");
+			if (camp.companionsCount() == 1) outputText("Your lone camp follower comes to see what you've been working on. They nod in approval, impressed by your handiwork.");
 			else if (camp.companionsCount() > 1) outputText("Your camp followers come to see what you've built so far. Most of them are even impressed.");*/
 			//Deduct resources
 			player.addKeyValue("Carpenter's Toolbox", 1, -100);

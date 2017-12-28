@@ -67,15 +67,15 @@ package classes.Scenes.Dungeons.LethicesKeep
 		override public function get long():String
 		{
 			var str:* = "";
-			if (_fightPhase === 1) {
+			if (_fightPhase == 1) {
 				str += "Lethice is the epitome of all things demonic. From her luxurious purple hair, interwoven with black roses, to her pink skin and goat-like horns, she is the perfect image of sensual, enticing corruption. Tall heels of bone complement her revealing"; 
-				if (armorName === "lethicite armor") //New Game+++ description
+				if (armorName == "lethicite armor") //New Game+++ description
 					str += ", pink armor. It appears to be made of lethicite; who knows how many souls were corrupted in order to create such strange armor? It covers Lethice from neck to toe and definitely gives her a lot of defense. The fact that it leaves her nipples and dripping cunt exposed adds to the lewdness of her otherwise-protective armor.";
 				else
 					str += ", black clothes. They look almost like a nun’s habit, but pared down to an almost fetishistic extreme. Her slim breasts provide just a hint of shape to the diaphanous fabric, a promise of feminine delights instead of the garish acres of flesh her outfit displays.";  
 				str += " Outsized wings, like those of a dragon, hold Lethice aloft as she zips about her throne room, gathering her corruptive magics. The strangely slit pupils of her black-rimmed eyes never seem to leave you.";
 			}
-			else if (_fightPhase === 2) {
+			else if (_fightPhase == 2) {
 				str += "You're completely surrounded by demons! The members of Lethice's corrupted court have flooded the throne hall like a sea of tainted flesh, crushing in on you with the sheer weight of bodies being thrown against you. Incubi, succubi, and forms between and combining them all grasp and thrust at you, trying to overwhelm you with desire for their inhuman bodies and the unspeakable pleasures only demons command.";
 				if (hasStatusEffect(StatusEffects.Blind))
 				{
@@ -88,7 +88,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			}
 			else {
 				str += "Lethice is the epitome of all things demonic. From her luxurious purple hair, interwoven with black roses, to her pink skin and goat-like horns, she is the perfect image of sensual, enticing corruption. Tall heels of bone complement her revealing";
-				if (armorName === "lethicite armor") //New Game+ description
+				if (armorName == "lethicite armor") //New Game+ description
 					str += ", pink armor. It appears to be made of lethicite; who knows how many souls were corrupted in order to create such strange armor? It covers Lethice from neck to toe and definitely gives her a lot of defense. The fact that it leaves her nipples and dripping cunt exposed adds to the lewdness of her otherwise-protective armor.";
 				else
 					str += ", black clothes. They look almost like a nun’s habit, but pared down to an almost fetishistic extreme. Her slim breasts provide just a hint of shape to the diaphanous fabric, a promise of feminine delights instead of the garish acres of flesh her outfit displays.";  
@@ -98,13 +98,13 @@ package classes.Scenes.Dungeons.LethicesKeep
 					str += ", her wings in tatters";
 				}
 				str += ", Lethice regards you with a snarl and a crack of her flaming whip. Her yellow-black eyes are wide with fury, the pointed tips of her teeth bared in a snarl. Gorged with lethicite, the enraged demon queen is determined to finish you. Her endurance can’t possible hold for too much longer. You can beat her!";
-				if (_fightPhase === 3 && _defMode !== 0)
+				if (_fightPhase == 3 && _defMode != 0)
 				{
-					if (_defMode === 1)
+					if (_defMode == 1)
 					{
 						str += "\nLethice is standing ready for your next attack, ready to defend against any strike. Perhaps you could surprise her with something else?";
 					}
-					else if (_defMode === 2)
+					else if (_defMode == 2)
 					{
 						str += "\nLethice is smirking and confident, prepared to resist any sort of libidinous advance, but her posture is ill-suited to deflecting attacks.";
 					}
@@ -113,7 +113,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			if (player.hasStatusEffect(StatusEffects.LethicesRapeTentacles))
 			{
 				str += "\n\n<b>A forest of black tentacles sprout from the floor, snaring any demons unlucky enough to venture close - or any champions unlucky enough to be in the center of it all.</b>";
-				if (player.statusEffectv3(StatusEffects.LethicesRapeTentacles) !== 0)
+				if (player.statusEffectv3(StatusEffects.LethicesRapeTentacles) != 0)
 				{
 					outputText(" Unfortunately, they’ve grabbed you. You need to break free to do anything!");
 				}
@@ -145,12 +145,12 @@ package classes.Scenes.Dungeons.LethicesKeep
 		
 		override public function defeated(hpVictory:Boolean):void
 		{
-			if (_fightPhase === 1)
+			if (_fightPhase == 1)
 			{
 				phase1Ends(hpVictory);
 				return;
 			}
-			if (_fightPhase === 2)
+			if (_fightPhase == 2)
 			{
 				phase2Ends(hpVictory);
 				return;
@@ -191,7 +191,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 		private function phase1():void
 		{
 			var atks:Array = [demonicArouse,demonfire];
-			if (_roundCount % 10 === 3)
+			if (_roundCount % 10 == 3)
 			{
 				atks.push(rapetacles);
 			}
@@ -260,7 +260,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 		public function dispellRapetacles():void
 		{
 			clearOutput();
-			if (player.statusEffectv3(StatusEffects.LethicesRapeTentacles) === 0)
+			if (player.statusEffectv3(StatusEffects.LethicesRapeTentacles) == 0)
 			{
 				outputText("You raise your arm and");
 			}
@@ -305,19 +305,19 @@ package classes.Scenes.Dungeons.LethicesKeep
 			outputText("Swooping low, the Demonic Queen takes a swipe at you with claws that are suddenly six inches long and as sharp as razors!");
 			var damage:Number = str + weaponAttack - rand(player.tou);
 			var evade:String = player.getEvasionReason();
-			if (evade === EVASION_SPEED || evade === EVASION_UNHINDERED)
+			if (evade == EVASION_SPEED || evade == EVASION_UNHINDERED)
 			{
 				outputText("You manage to dodge her slash!");
 			}
-			else if (evade === EVASION_MISDIRECTION)
+			else if (evade == EVASION_MISDIRECTION)
 			{
 				outputText(" Misdirecting her with your movements, you avoid the swipe.");
 			}
-			else if (evade === EVASION_FLEXIBILITY)
+			else if (evade == EVASION_FLEXIBILITY)
 			{
 				outputText(" With your feline flexibility, you bend double to avoid the swipe.");
 			}
-			else if (evade === EVASION_EVADE)
+			else if (evade == EVASION_EVADE)
 			{
 				outputText(" You evade her slash with a quick roll.");
 			}
@@ -355,16 +355,16 @@ package classes.Scenes.Dungeons.LethicesKeep
 					outputText("Even held aloft by her sprawling dragon wings, Lethice can’t hide from your righteous wrath.");
 					outputText(" Taking wing yourself, you slam into the demoness, striking a final blow that sends her toppling to the ground. She shrieks and spirals, crashing into the hard stone floor just before her throne.");
 				}
-				else if (flags[kFLAGS.LAST_ATTACK_TYPE] === 1)
+				else if (flags[kFLAGS.LAST_ATTACK_TYPE] == 1)
 				{
 					outputText("Even held aloft by her sprawling dragon wings, Lethice can’t hide from your righteous wrath.");
 					outputText(" You draw your bowstring and let loose one last arrow, sending the missile hurtling through the air - and right into Lethice’s wing! The Demon Queen lets out an ear-piercing shriek of pain and, with her wing flopping weakly beside her, goes tumbling to the earth! She’s down!");
 				}
-				else if (flags[kFLAGS.LAST_ATTACK_TYPE] === 2)
+				else if (flags[kFLAGS.LAST_ATTACK_TYPE] == 2)
 				{
 					outputText("Unable to resist your arcane assault, Lethice lets loose a howl of frustration and swoops back to the earth, mounting her throne once again.");
 				}
-				else if (flags[kFLAGS.LAST_ATTACK_TYPE] === 4)
+				else if (flags[kFLAGS.LAST_ATTACK_TYPE] == 4)
 				{
 					outputText("Even held aloft by her sprawling dragon wings, Lethice can’t hide from your righteous wrath.");
 					outputText(" You draw your bowstring and let loose one last arrow, sending the missile hurtling through the air - and right into Lethice’s wing! The Demon Queen lets out an ear-piercing shriek of pain and, with her wing flopping weakly beside her, goes tumbling to the earth! She’s down!");
@@ -399,7 +399,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 		private function phase2():void
 		{
 			var atks:Array = [demonLustMagic,dirtyDancing,hornyPoke,crushingBodies];
-			if (rand(10) === 0 && !player.hasStatusEffect(StatusEffects.Blind))
+			if (rand(10) == 0 && !player.hasStatusEffect(StatusEffects.Blind))
 			{
 				atks.push(bukkakeTime);
 			}
@@ -483,19 +483,19 @@ package classes.Scenes.Dungeons.LethicesKeep
 			outputText("Several of the demons nearest you have grown immense sets of curling, sharp horns. When they can’t get at you to sexually provoke or hurl magic at you, they’re more than content to just give you an old-fashioned ram!");
 			var damage:Number = 0;
 			var evade:String = player.getEvasionReason();
-			if (evade === EVASION_SPEED || evade === EVASION_UNHINDERED)
+			if (evade == EVASION_SPEED || evade == EVASION_UNHINDERED)
 			{
 				outputText(" You deftly dodge out of the way!");
 			}
-			else if (evade === EVASION_MISDIRECTION)
+			else if (evade == EVASION_MISDIRECTION)
 			{
 				outputText(" At least, they try to! Too bad for them you’re already elsewhere in the crowd, well away from harm!");
 			}
-			else if (evade === EVASION_FLEXIBILITY)
+			else if (evade == EVASION_FLEXIBILITY)
 			{
 				outputText(" You contort and bend in ways a human never could, easily twisting between all the pairs of horns the demons can thrust at you. By the time they’re done, you’re sitting on top of a demon’s head, balanced on his antlers until with a furious howl he throws you back into the sea of maledicts.");
 			}
-			else if (evade === EVASION_EVADE)
+			else if (evade == EVASION_EVADE)
 			{
 				outputText(" You manage to duck down enough to avoid the worst of the horn-spikes, and your [armor] deflects the rest!");
 			}
@@ -511,7 +511,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 		{
 			var damage:Number = 0;
 			outputText("The sheer weight of a hundred demonic bodies crushing down on you is enough to make you cry out in discomfort, then pain. Are they just trying to crush you to death!?");
-			if (player.getEvasionReason() === EVASION_EVADE)
+			if (player.getEvasionReason() == EVASION_EVADE)
 			{
 				outputText("\n\nYou drop to the ground, squirming between several of their legs until you get somewhere you can stand again -- this time without breaking your ribs. Howls of frustration and anger echo through the hall, and the horde just comes barreling down on your again!");
 			}
@@ -528,19 +528,19 @@ package classes.Scenes.Dungeons.LethicesKeep
 		{
 			outputText("Considering how half of the demon host is just getting fucked by whoever’s behind them, it’s just a question of how long they last before the cum starts flowing. The answer just happens to be now! You gasp and gag as the air is suddenly flooded by the reek of potent, virile jizz, and ropes of thick white spunk start flying through the air. This is less of a gank mob and more of an orgy now!");
 			var evade:String = player.getEvasionReason();
-			if (evade === EVASION_SPEED || evade === EVASION_UNHINDERED)
+			if (evade == EVASION_SPEED || evade == EVASION_UNHINDERED)
 			{
 				outputText(" You grab the biggest incubus you can find and shove him in the way of the airborne bukkake, letting his burly back take the brunt of the demons’ load. He grunts in displeasure, giving you a rough shove back into the demonic gang-bang. <i>“No escape!”</i>");
 			}
-			else if (evade === EVASION_MISDIRECTION)
+			else if (evade == EVASION_MISDIRECTION)
 			{
 				outputText(" You duck under the nearest group of succubi, happily letting the demonic hussies get plastering with the wave of flying spooge. They seem to enjoy it, too, and quickly you’re surrounded by less demonic fighting and much, much more infernal cock-sucking. Seems they’re hungry!");
 			}
-			else if (evade === EVASION_FLEXIBILITY)
+			else if (evade == EVASION_FLEXIBILITY)
 			{
 				outputText(" You do a graceful backflip out of the way, making sure it’s a group of eager succubi who get painted white with cum rather than you!");
 			}
-			else if (evade === EVASION_EVADE)
+			else if (evade == EVASION_EVADE)
 			{
 				outputText(" You at least manage to close your eyes before the wave of spooge hits you, splattering all over your [armor].");
 				player.takeLustDamage(5, true);
@@ -728,7 +728,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			clearOutput();
 			outputText("Drawing on your magic, you use the opportunity to mend your wounds. No foe dares challenge you during the brief lull in battle, enabling you to maintain perfect concentration. With your flesh freshly knit and ready for battle, you look to Lethice.");
 			var temp:int = int((player.level + (player.inte / 1.5) + rand(player.inte)) * player.spellMod()) * 2;
-			if (player.armorName === "skimpy nurse's outfit")
+			if (player.armorName == "skimpy nurse's outfit")
 			{
 				temp = temp * 1.2;
 			}
@@ -761,7 +761,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			pronoun1 = "she";
 			pronoun2 = "her";
 			pronoun3 = "her";
-			if (player.newGamePlusMod() >= 1 && armorName !== "lethicite armor") { //In New Game+, have her use Lethicite armour.
+			if (player.newGamePlusMod() >= 1 && armorName != "lethicite armor") { //In New Game+, have her use Lethicite armour.
 				this.armorName = "lethicite armor";
 				this.armorDef += 30;
 			}
@@ -780,16 +780,16 @@ package classes.Scenes.Dungeons.LethicesKeep
 		{
 			var atks:Array = null;
 			//Determine defense mode
-			if (flags[kFLAGS.LAST_ATTACK_TYPE] === 1 || flags[kFLAGS.LAST_ATTACK_TYPE] === 2 || flags[kFLAGS.LAST_ATTACK_TYPE] === 4)
+			if (flags[kFLAGS.LAST_ATTACK_TYPE] == 1 || flags[kFLAGS.LAST_ATTACK_TYPE] == 2 || flags[kFLAGS.LAST_ATTACK_TYPE] == 4)
 				_defMode = 1;
 			else
 				_defMode = 2;
 			//Texts and effects
-			if (_defMode === 1) {
+			if (_defMode == 1) {
 				outputText("Lethice dabs at her injury, then licks her finger, smiling sensually. She seems excited and invigorated. Scales appear over her skin, and her spaded tail swishes back and forth in a blur, too fast to follow.\n\n");
 				spe = 400;
 				armorDef = 400;
-				if (armorName === "lethicite armor")
+				if (armorName == "lethicite armor")
 					armorDef += 30;
 				lustVuln = 1.125;
 			}
@@ -797,11 +797,11 @@ package classes.Scenes.Dungeons.LethicesKeep
 				outputText("Shuddering, the Demon Queen steels herself. Her curves soften visibly as she prepares herself for additional arousing efforts, forgoing physical defense.\n\n");
 				spe = 80;
 				armorDef = 14;
-				if (armorName === "lethicite armor")
+				if (armorName == "lethicite armor")
 					armorDef += 30;
 				lustVuln = 0;
 			}
-			if (_roundCount === 5) {
+			if (_roundCount == 5) {
 				gropehands();
 			}
 			else
@@ -821,19 +821,19 @@ package classes.Scenes.Dungeons.LethicesKeep
 			var damage:Number = 0;
 			var evade:String = player.getEvasionReason();
 			outputText("Lethice retrieves three squirming, star-shaped creatures from beneath her clothes and flings them at you. A split second after they leave her hand, needles burst from their edges!");
-			if (evade === EVASION_SPEED || evade === EVASION_UNHINDERED)
+			if (evade == EVASION_SPEED || evade == EVASION_UNHINDERED)
 			{
 				outputText(" The living throwing stars whistle by you, barely missing you.");
 			}
-			else if (evade === EVASION_EVADE)
+			else if (evade == EVASION_EVADE)
 			{
 				outputText(" You barely avoid the living throwing stars.");
 			}
-			else if (evade === EVASION_MISDIRECTION)
+			else if (evade == EVASION_MISDIRECTION)
 			{
 				outputText(" Your misdirecting movements allow you to avoid the living throwing stars.");
 			}
-			else if (evade === EVASION_FLEXIBILITY)
+			else if (evade == EVASION_FLEXIBILITY)
 			{
 				outputText(" You bend over backwards to avoid the living throwing stars.");
 			}
@@ -869,11 +869,11 @@ package classes.Scenes.Dungeons.LethicesKeep
 			outputText("Lethice slashes her whip in a wide, low arc.");
 			var minDamage:Boolean = false;
 			var evade:String = player.getEvasionReason();
-			if (evade === EVASION_SPEED || evade === EVASION_UNHINDERED) {
+			if (evade == EVASION_SPEED || evade == EVASION_UNHINDERED) {
 				outputText(" You jump over it at the last second, the heat singing your [feet]. ");
 				minDamage = true;
 			}
-			else if (evade === EVASION_EVADE) {
+			else if (evade == EVASION_EVADE) {
 				outputText(" You evade her trip, but the heat pouring off the whip singes your [feet]. ");
 				minDamage = true;
 			}
@@ -905,19 +905,19 @@ package classes.Scenes.Dungeons.LethicesKeep
 			var damage:Number = 0;
 			outputText("<i>“Silence your prattling, curr.”</i> Lethice strikes out with her whip, aimed at your neck!");
 			var evade:String = player.getEvasionReason();
-			if (evade === EVASION_SPEED || evade === EVASION_UNHINDERED)
+			if (evade == EVASION_SPEED || evade == EVASION_UNHINDERED)
 			{
 				outputText(" You barely avoid it.");
 			}
-			else if (evade === EVASION_EVADE)
+			else if (evade == EVASION_EVADE)
 			{
 				outputText(" You evade the targeted strike.");
 			}
-			else if (evade === EVASION_FLEXIBILITY)
+			else if (evade == EVASION_FLEXIBILITY)
 			{
 				outputText(" You twist aside at the last moment.");
 			}
-			else if (evade === EVASION_MISDIRECTION)
+			else if (evade == EVASION_MISDIRECTION)
 			{
 				outputText(" Raphael taught you well. Lethice failed to account for your misleading movements and swung wide.");
 			}

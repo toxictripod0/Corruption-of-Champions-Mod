@@ -90,7 +90,7 @@ package classes.Scenes.Dungeons
 		}
 		
 		internal function setAnzuButton():void {
-			if (kGAMECLASS.dungeonLoc === anzuLocationTimes[getGame().time.hours] && kGAMECLASS.dungeonLoc >= 39 && kGAMECLASS.dungeonLoc < 55) {
+			if (kGAMECLASS.dungeonLoc == anzuLocationTimes[getGame().time.hours] && kGAMECLASS.dungeonLoc >= 39 && kGAMECLASS.dungeonLoc < 55) {
 				addButton(0, "Anzu", anzuScene.anzuMenus).hint("Interact with Anzu the avian deity.");
 			}
 		}

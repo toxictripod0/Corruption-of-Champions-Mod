@@ -142,7 +142,7 @@ package classes.Scenes.Explore
 			clearOutput();
 			menu();
 
-			if (monsterIdx === 0) {
+			if (monsterIdx == 0) {
 				outputText("<b>WARNING.</b> You are going to fight (probably) all the monsters. " +
 						"You won't be penalized for defeat or awarded for victory. " +
 						"Even though the monsters' victory and defeat events are removed, " +

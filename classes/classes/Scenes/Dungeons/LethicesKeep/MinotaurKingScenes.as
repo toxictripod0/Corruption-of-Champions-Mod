@@ -24,7 +24,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			outputText("\n\nEven for one of the bovine beast-men, he’s a giant among giants. His broad shoulders seem ready to scrape the gilding from the cavernous chamber. His crimson-rimmed eyes glare down like a pair of low-burning coals. Stretching from end to end, a cow-girl could barely touch each end of his wide-spread horns. If it weren’t for the three feet of glistening, freshly-fucked maleness jutting from between his legs, he’d look almost regal.");
 			outputText("\n\n<i>“You’re strong, Champion, but your quest ends here,”</i> the brute promises. He snorts and extends a hand toward the crowd. <i>“Excellia, my weapon.”</i>");
 			outputText("\n\nA vision of curves and ripe sexuality emerges from the curtain of wet and wiggling flesh. She’s at least part cow, with upraised horns and a happily flicking tail - to say nothing of her egregiously supple breasts, still leaking milk from a recent suckle or their own overtly-abundant production. In her hands is a massive axe; it’s too large to be wielded by human hands.");
-			if (flags[kFLAGS.ISABELLA_FOLLOWER_ACCEPTED] !== 0)
+			if (flags[kFLAGS.ISABELLA_FOLLOWER_ACCEPTED] != 0)
 			{
 				outputText(" Even Isabella would struggle to wield such a weapon.");
 			}
@@ -148,7 +148,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			outputText("\n\nThe Minotaur King is moaning, and his cock is getting still harder in your hands, making it even harder to pull yourself free. Panicked now, you tug in vain, anything to get free before your cum and a wave of bovine beast-cum flows back into you. Your [feet] slip in the puddled juices, and the surging bull’s member pulls you over onto his chest, still joined at the crotch. He catches you, holding you an angle so as not to damage either of your members, and then you feel it: pre-cum mixed with your liquid relief pushing back into your [cock " + (cockIdx + 1) + "].\n\n");
 			outputText(images.showImage("badend-minotaurlord-knot"));
 			outputText("Orgasmic pressure has reversed the liquid flow, and the moment his hips lift from the floor, carrying you with them, the pressure redoubles, turning your urethra into a minotaur cum pipeline. Some of your own is mixed in of course, but you’ve never had the alabaster jism applied to your body so directly. You sag bonelessly into the brute’s grip as he turns you into his personal twinkie");
-			if (player.balls === 0)
+			if (player.balls == 0)
 			{
 				outputText(", fat with bull-cream.");
 			}
@@ -169,7 +169,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			outputText(images.showImage("monster-minotaurlord"));
 			outputText("Why fuck the spoiled tart when you’ve got such a virile, muscular specimen at your beck and call? He’s pumping his cock with wild, frenetic strokes, spurting bullet-sized bursts of pre-cum over his musky balls and abdominal fur, but no matter how he tugs or squeezes, he doesn’t seem to be getting any closer to release.");
 			outputText("\n\nHow perfect. You shed your [armor], intent on a little relief yourself. Normally a brute like this might take offense to the forceful claiming of his backdoor. Now, when he’s writhing and bleating, begging the demons in the audience to mount him and provide relief? He’ll accept anything you give him, even if it’s a thorough prostate pounding. Your [cocks] swell");
-			if (player.cocks.length === 1)
+			if (player.cocks.length == 1)
 			{
 				outputText("s");
 			}
@@ -261,7 +261,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 				outputText(", probably");
 			}
 			outputText(".");
-			if (player.averageVaginalLooseness() === 4)
+			if (player.averageVaginalLooseness() == 4)
 			{
 				outputText(" One of the perks of having experience with well-endowed lovers is not having to second-guess yourself when you come upon a real treat like this one.");
 			}
@@ -306,7 +306,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 					outputText("s");
 				}
 				outputText(" twitch");
-				if (player.cocks.length === 1)
+				if (player.cocks.length == 1)
 				{
 					outputText("es");
 				}
@@ -379,7 +379,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			}
 			outputText(". Your body has given itself over to this hedonistic relief. So long as the minotaur’s hips saw in and out of your soaked delta, you’re going to keep cumming.");
 			outputText("\n\nThen you feel it. The swollen crown of the King’s equine phallus palpably expands inside you, arresting your motions. Somehow it doesn’t");
-			if (player.pregnancyIncubation !== 0)
+			if (player.pregnancyIncubation != 0)
 			{
 				outputText(" force its way past your cervix");
 			}
@@ -516,7 +516,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			outputText("\n\nPart of you wants to stop, but that part of you is getting smaller with every thrust. This is wonderful, the raw, almost feral feeling of an athletic fuck unbounded by civilization or decency. Excellia’s pussy was designed to glove your [cock " + x + "] perfectly, to match its ravenous thrusting with a sordid massage. Faintly, you hear cheering and the greedy slut begging for more. She wants you to cum inside of her; you can tell. Everything from her body-language to the pitch of her delirious voice is begging you to feed her overactive ovaries their second meal of the hour. Her body is ravenous for cum, even when she’s so stuffed with it that it won’t stop pouring out.");
 			outputText("\n\nYou need to get off more than you ever thought possible. Logically, you want this over quickly so that you can fu- face Lethice in all her naked glory. You bet you’ll even get to squeeze her tits at least once before you take her down... Those purple orbs beckon for your fingertips. But then there’s the ecstatic undulations wreathing you in fleshy heaven, caressing your nerves with individualized attention, playing your body like a harp. How could you possibly want this to end? You’ve grown so addicted to this pleasure in such a short time that ever leaving it seems an alien concept to your cunt-obsessed mind. You want to fuck this pussy <i>forever.</i>");
 			outputText("\n\nThe light shimmers across Excellia’s sweat-shined ass hypnotically from the hard-fucking you’re giving her. You swat it, just to watch it ripple - and to feel the way Excellia clenches down around you, her voice lilting into an almost musical, blissful moo. It’s fascinating, how her body reacts to your thrusts, the way she seems to wrap her whole self around you. You barely register than you’re panting or that your [cock] is hard enough to cut diamonds.");
-			if (player.cocks.length === 2)
+			if (player.cocks.length == 2)
 			{
 				outputText(" Your other penis is enjoying sliding between her perspiring thighs almost as much.");
 			}
@@ -638,7 +638,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			flags[kFLAGS.MINOTAURKING_ALIVE] = 1;
 			clearOutput();
 			outputText("\n\nYou square yourself off at the demon queen");
-			if (player.weapon !== WeaponLib.FISTS)
+			if (player.weapon != WeaponLib.FISTS)
 			{
 				outputText(", [weapon] in hand");
 			}

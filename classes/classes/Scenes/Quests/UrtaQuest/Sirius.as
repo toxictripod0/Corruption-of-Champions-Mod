@@ -34,17 +34,17 @@ package classes.Scenes.Quests.UrtaQuest
 		{
 			var attack:int = rand(4);
 			if (player.hasStatusEffect(StatusEffects.Blind)) attack = rand(3);
-			if (attack === 0) eAttack();
-			if (attack === 1) poisonBite();
-			if (attack === 2) manNagaTease();
-			if (attack === 3) nagaSpitAttack();
+			if (attack == 0) eAttack();
+			if (attack == 1) poisonBite();
+			if (attack == 2) manNagaTease();
+			if (attack == 3) nagaSpitAttack();
 		}
 
 		private function manNagaTease():void
 		{
 			outputText("The snake-man stares deeply into your eyes, seemingly looking past them, and for a moment your body goes numb.");
 //Miss:
-			if (rand(10) === 0) {
+			if (rand(10) == 0) {
 				outputText("  You blink and shake yourself free of the effects of the snake-man's penetrating gaze.");
 				combatRoundOver();
 			}

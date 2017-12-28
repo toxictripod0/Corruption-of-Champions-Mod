@@ -32,7 +32,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			else
 			{
 				outputText("  Your");
-				if (player.weaponName === "fists") outputText(" [weapon]");
+				if (player.weaponName == "fists") outputText(" [weapon]");
 				else outputText(" [weapon]s");
 				outputText(" meet with a bone-jarring impact, and you are sent staggering backwards by a force exactly equal to your own.");
 
@@ -157,15 +157,15 @@ package classes.Scenes.Dungeons.LethicesKeep
 
 			outputText("\n\n“<i>Picked up a few things since you’ve been here, then?</i>” [he] yawns. Flickers of flame cling to [his] fingers, its radiance sputtering and burning away, replaced by a livid black color. “<i>Serf magic. Easy to pick up, easy to use, difficult to impress with. Let me show you how it’s really done!</i>” [He] thrusts [his] hands out and hurls a pitiless black fireball straight at you, a negative replica of the one you just shot at [him].");
 			
-			if (spell === "fireball")
+			if (spell == "fireball")
 			{
 				player.takeDamage(player.level * 10 + 45 + rand(10), true);
 			}
-			else if (spell === "whitefire")
+			else if (spell == "whitefire")
 			{
 				player.takeDamage(10 + (player.inte / 3 + rand(player.inte / 2)), true);
 			}
-			else if (spell === "blackfire")
+			else if (spell == "blackfire")
 			{
 				player.takeDamage(30 + (player.inte / 3 + rand(player.inte / 2)), true); //REST IN FUCK
 			}
@@ -257,7 +257,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 				(this.vaginas[0] as VaginaClass).virgin = player.vaginas[0].virgin;
 			}
 			//Genderless get forced to have a cunny
-			if (player.vaginas.length === 0 && player.cocks.length === 0)
+			if (player.vaginas.length == 0 && player.cocks.length == 0)
 			{
 				this.createVagina();
 				(this.vaginas[0] as VaginaClass).vaginalLooseness = 2;
@@ -345,7 +345,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			
 			str += ". " + player.mf("He", "She") + " keeps exploring the area around " + player.mf("his", "her") +" mouth with " + player.mf("his", "her") +" tongue with a horribly acquisitive, sensual interest.";
 			str += " " + player.mf("He", "She") + " moves around on " + player.mf("his", "her") +" " + player.legs() + " with a twitchy jerkiness, " + player.mf("his", "her") + " " + player.hipDescript() + " swinging and tightening.";
-			if (player.tail.type !== 0) str += " " + player.mf("His", "Her") + " tail flicks this way and that.";
+			if (player.tail.type != 0) str += " " + player.mf("His", "Her") + " tail flicks this way and that.";
 			str += " " + player.mf("He", "She") + " wields the exact same " + player.weaponName + " you do, and is dressed in the mirror image of your " + player.armorName +  ". ";
 			if (player.biggestTitSize() >= 2) str += "It’s difficult not to notice the way the mirror image of your " + player.breastDescript(player.biggestTitRow()) + " ebbs and heaves within it.";
 			

@@ -23,7 +23,7 @@ package classes.Scenes.NPCs
 				return;
 			}
 			//("Misdirection"
-			if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName === "red, high-society bodysuit") {
+			if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
 				outputText("The girl wades in for a swing, but you deftly misdirect her and avoid the attack. She recovers quickly, spinning back at you.");
 				return;
 			}
@@ -44,15 +44,15 @@ package classes.Scenes.NPCs
 			else {
 				var choice:Number = rand(3);
 				//(regular attack 1)
-				if (choice === 0) outputText("Ducking in close, the girl thunders a punch against your midsection, leaving a painful sting. ");
+				if (choice == 0) outputText("Ducking in close, the girl thunders a punch against your midsection, leaving a painful sting. ");
 				//(regular attack 2)
-				else if (choice === 1) outputText("The girl feints a charge, leans back, and snaps a kick against your " + player.hipDescript() + ". You stagger, correct your posture, and plunge back into combat. ");
+				else if (choice == 1) outputText("The girl feints a charge, leans back, and snaps a kick against your " + player.hipDescript() + ". You stagger, correct your posture, and plunge back into combat. ");
 				//(regular attack 3)
-				else if (choice === 2) outputText("You momentarily drop your guard as the girl appears to stumble. She rights herself as you step forward and lands a one-two combination against your torso. ");
+				else if (choice == 2) outputText("You momentarily drop your guard as the girl appears to stumble. She rights herself as you step forward and lands a one-two combination against your torso. ");
 				damage = player.takeDamage(damage, true);
 			}
 			if (damage > 0) {
-				if (lustVuln > 0 && player.armorName === "barely-decent bondage straps") {
+				if (lustVuln > 0 && player.armorName == "barely-decent bondage straps") {
 					outputText("\n" + capitalA + short + " brushes against your exposed skin and jerks back in surprise, coloring slightly from seeing so much of you revealed.");
 					lust += 5 * lustVuln;
 				}
@@ -64,7 +64,7 @@ package classes.Scenes.NPCs
 
 		//(lust attack 1)
 		private function shouldraLustAttack():void {
-			if (rand(2) === 0) outputText("The girl spins away from one of your swings, her tunic flaring around her hips. The motion gives you a good view of her firm and moderately large butt. She notices your glance and gives you a little wink.\n");
+			if (rand(2) == 0) outputText("The girl spins away from one of your swings, her tunic flaring around her hips. The motion gives you a good view of her firm and moderately large butt. She notices your glance and gives you a little wink.\n");
 			else outputText("The girl's feet get tangled on each other and she tumbles to the ground. Before you can capitalize on her slip, she rolls with the impact and comes up smoothly. As she rises, however, you reel back and raise an eyebrow in confusion; are her breasts FILLING the normally-loose tunic? She notices your gaze and smiles, performing a small pirouette on her heel before squaring up to you again. Your confusion only heightens when her torso comes back into view, her breasts back to their normal proportions. A trick of the light, perhaps? You shake your head and try to fall into the rhythm of the fight.\n");
 			player.takeLustDamage((8+player.lib/10), true);
 			combatRoundOver();
@@ -80,8 +80,8 @@ package classes.Scenes.NPCs
 		override protected function performCombatAction():void
 		{
 			var attack:Number = rand(3);
-			if (attack === 0) shouldrattack();
-			else if (attack === 1) shouldraLustAttack();
+			if (attack == 0) shouldrattack();
+			else if (attack == 1) shouldraLustAttack();
 			else shouldraMagicLazers();
 		}
 

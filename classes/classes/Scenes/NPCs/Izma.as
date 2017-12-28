@@ -29,7 +29,7 @@ package classes.Scenes.NPCs
 				return;
 			}
 			//("Misdirection"
-			if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName === "red, high-society bodysuit") {
+			if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
 				outputText("Izma attempts to get close, but you put Raphael's teachings to use and side-step the sharkgirl, confusing her with your movements.\n");
 				return;
 			}
@@ -60,7 +60,7 @@ package classes.Scenes.NPCs
 				return;
 			}
 			//("Misdirection"
-			if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName === "red, high-society bodysuit") {
+			if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
 				outputText("Izma ducks and weaves forward to clinch you, but thanks to Raphael's teachings, you're easily able to misguide her and avoid the clumsy grab.\n");
 				return;
 			}
@@ -73,7 +73,7 @@ package classes.Scenes.NPCs
 			damage = Math.round(130 - rand(player.tou+player.armorDef));
 			if (damage < 0) damage = 0;
 			outputText("Izma ducks and jinks, working to close quarters, and clinches you. Unable to get your weapon into play, you can only ");
-			if (player.armorDef >= 10 || damage === 0) {
+			if (player.armorDef >= 10 || damage == 0) {
 				//(armor-dependent Health damage, fullplate, chain, scale, and bee chitin armor are unaffected, has a chance to inflict 'Bleed' damage which removes 2-5% of health for the next three turns if successful)
 				outputText("writhe as she painfully drags the blades of her glove down your back");
 				player.createStatusEffect(StatusEffects.IzmaBleed,3,0,0,0);
@@ -91,15 +91,15 @@ package classes.Scenes.NPCs
 		private function IzmaAI():void {
 			var choice:Number = rand(5);
 			if (choice <= 1) eAttack();
-			if (choice === 2) {
+			if (choice == 2) {
 				if (player.fatigue100 >= 80) choice = 3;
 				else IzmaSpecials1();
 			}
-			if (choice === 3) {
-				if (player.armorDef >= 10 && rand(3) === 0) IzmaSpecials2();
+			if (choice == 3) {
+				if (player.armorDef >= 10 && rand(3) == 0) IzmaSpecials2();
 				else choice = 4;
 			}
-			if (choice === 4) IzmaSpecials3();
+			if (choice == 4) IzmaSpecials3();
 			combatRoundOver();
 		}
 
@@ -113,15 +113,15 @@ package classes.Scenes.NPCs
 		{
 			var choice:Number = rand(5);
 			if (choice <= 1) eAttack();
-			if (choice === 2) {
+			if (choice == 2) {
 				if (player.fatigue100 >= 80) choice = 3;
 				else IzmaSpecials1();
 			}
-			if (choice === 3) {
-				if (player.armorDef >= 10 && rand(3) === 0) IzmaSpecials2();
+			if (choice == 3) {
+				if (player.armorDef >= 10 && rand(3) == 0) IzmaSpecials2();
 				else choice = 4;
 			}
-			if (choice === 4) IzmaSpecials3();
+			if (choice == 4) IzmaSpecials3();
 			combatRoundOver();
 		}
 

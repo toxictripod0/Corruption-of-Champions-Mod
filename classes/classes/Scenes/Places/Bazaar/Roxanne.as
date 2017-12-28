@@ -99,7 +99,7 @@ public function RoxanneAppearance():void {
 	//When she there?
 	if (getGame().time.hours > 12 && getGame().time.hours < 19) {
 		//(Not Met) 
-		if (flags[kFLAGS.ROXANNE_MET] === 0) outputText("\n\nThere's a table with a half-dozen oddly-dressed lizans not too far from the fire.  A keg is set up a few feet away and they seem to be having a good time.");
+		if (flags[kFLAGS.ROXANNE_MET] == 0) outputText("\n\nThere's a table with a half-dozen oddly-dressed lizans not too far from the fire.  A keg is set up a few feet away and they seem to be having a good time.");
 		//Met) 
 		else outputText("\n\nRoxanne and her usual crew are sitting at a table, drinking and telling bawdy stories near the fire.");
 	}
@@ -123,7 +123,7 @@ public function Roxanne1stApproach():void {
 public function RoxanneChooseApproachOrRepeat():void {
 	spriteSelect(SpriteDb.s_poisontail);
 	clearOutput();
-	if (flags[kFLAGS.ROXANNE_MET] === 0) {
+	if (flags[kFLAGS.ROXANNE_MET] == 0) {
 		flags[kFLAGS.ROXANNE_MET]++;
 		outputText("You walk up and take an empty chair, getting a better look at the lizans while their leader does the same to you.  The others seem to ignore you, moving towards the table's far edge to converse in hushed tones.   The well-endowed girl leans over, sliding you a mug as she introduces herself.  \"<i>The name's Roxanne Poisontail.  Once a famed pirate, now another soul trapped in this twisted realm.  You can just call me Cap'n Poisontail or Roxanne - what's your story?</i>\"\n\n");
 		outputText("Her eyes slide up and down your body, half-listening as you introduce yourself and explain your role as a champion of Ingnam, sent here to protect it from demonic incursion.\n\n");
@@ -145,7 +145,7 @@ public function RoxanneChooseApproachOrRepeat():void {
 		outputText("Do you engage Captain Poisontail in a drinking contest?");
 	}
 	//[Approach – lost last contest and she's huge]
-	else if (flags[kFLAGS.ROXANNE_DRINKING_CONTEST_LAST_WINNER] === 2 && flags[kFLAGS.ROXANNE_TIME_WITHOUT_SEX] >= 200) {
+	else if (flags[kFLAGS.ROXANNE_DRINKING_CONTEST_LAST_WINNER] == 2 && flags[kFLAGS.ROXANNE_TIME_WITHOUT_SEX] >= 200) {
 		outputText("\"<i>Oooh, praise the sea god Ulrun, you've returned.  " + player.short + ", it's been a while, and I've gotten sooooo big,</i>\" cheers an ecstatic Roxanne.  To emphasize her point she shows the seam-splitting bulge in her pants, rubbing it from the base all the way down to the tip, which rests next to her knee.  She's so big, and a damp spot appears at her pant-leg's knee while the huge cock-sausage visibly inflates.  Captain Poisontail asks, \"<i>So, can I count on you to get sauced and help me take care of this beast again, or do you actually think you have a chance of winning now?</i>\"\n\n");
 		outputText("It looks like she wants to engage you in another drinking contest.  If you lose ");
 		if (player.analCapacity() >= 100) outputText("she's going to keep you stretched and gaping");
@@ -153,17 +153,17 @@ public function RoxanneChooseApproachOrRepeat():void {
 		outputText(".  Do you enter a drinking contest with Roxanne?");
 	}
 	//[Approach – lost last contest and she's not big]
-	else if (flags[kFLAGS.ROXANNE_DRINKING_CONTEST_LAST_WINNER] === 2 && flags[kFLAGS.ROXANNE_TIME_WITHOUT_SEX] < 200) {
+	else if (flags[kFLAGS.ROXANNE_DRINKING_CONTEST_LAST_WINNER] == 2 && flags[kFLAGS.ROXANNE_TIME_WITHOUT_SEX] < 200) {
 		outputText("\"<i>Welcome back " + player.short + ".  Did you miss my touch badly enough that you came back for more?</i>\" asks Roxanne.  She pats an empty chair and spreads her legs, shifting her position to get more comfortable while reminding you of your recent 'defeat'.  Thankfully it looks like she's had sex recently and her dick is a far more normal size.  The lizan asks, \"<i>So, ready for another drinking contest?  Standard rules – I win; I plug your sweet ass full.  You win; I lick you to climax.</i>\"\n\n");
 		outputText("Do you drink with Roxanne again?");
 	}
 	//[Approach Roxanne and won last time – small Roxanne]
-	else if (flags[kFLAGS.ROXANNE_DRINKING_CONTEST_LAST_WINNER] === 1 && flags[kFLAGS.ROXANNE_TIME_WITHOUT_SEX] < 200) {
+	else if (flags[kFLAGS.ROXANNE_DRINKING_CONTEST_LAST_WINNER] == 1 && flags[kFLAGS.ROXANNE_TIME_WITHOUT_SEX] < 200) {
 		outputText("Roxanne glares at you as you approach, throwing back a mug of ale before she greets you.  \"<i>Welcome back.  Well, I suppose I'm not too big right now anyway.  Still, getting it back down would make walking around a little easier.  What do you say, how about another drinking contest?  Same rules – I win; you get reamed.  You win, and I'll give you a sloppy oral tongue-bath that's sure to make you squirm.</i>\"\n\n");
 		outputText("Roxanne slides an empty mug your way.  Do you try to drink her under the table again?");
 	}
 	//[Approach Roxanne and won last time – HUEG Roxanne]
-	else if (flags[kFLAGS.ROXANNE_DRINKING_CONTEST_LAST_WINNER] === 1 && flags[kFLAGS.ROXANNE_TIME_WITHOUT_SEX] >= 200) {
+	else if (flags[kFLAGS.ROXANNE_DRINKING_CONTEST_LAST_WINNER] == 1 && flags[kFLAGS.ROXANNE_TIME_WITHOUT_SEX] >= 200) {
 		outputText("Roxanne winces when you come back, idling rubbing the massive bulge in her trouser.  Beads of pre run down the fabric, darkening it noticeably.  She grunts, \"<i>You came back huh?  I've been practicing and I NEED release.  Let's have another drinking contest!  The rules are unchanged, and this time I'll win and fuck you 'til you gape!</i>\"  She looks desperate and horny, clearly aching for release.\n\n");
 		outputText("Do you accept her offer to partake in the drinking contest?");
 		
@@ -182,9 +182,9 @@ public function RoxanneChooseApproachOrRepeat():void {
 }
 
 private function roxanneDrinkingContestNo():void {
-	if (getGame().time.hours === 19 || getGame().time.hours === 20) {
+	if (getGame().time.hours == 19 || getGame().time.hours == 20) {
 		flags[kFLAGS.COUNTDOWN_TO_NIGHT_RAPE]++;
-		if (flags[kFLAGS.COUNTDOWN_TO_NIGHT_RAPE] % 4 === 0 && player.gender === 1) {
+		if (flags[kFLAGS.COUNTDOWN_TO_NIGHT_RAPE] % 4 == 0 && player.gender == 1) {
 			bazaar.nightBazaarButtfuck();
 			return;
 		}
@@ -548,7 +548,7 @@ private function roxanneReamsYouNormal():void {
 	//(DICKS:  
 	if (player.hasCock()) {
 		outputText("The constant pressure of her thrusts seems to flow straight to " + player.sMultiCockDesc() + " as if each of Roxanne's prostate-pounding bumps is injecting you with her lust.  ");
-		if (player.cockTotal() === 1) outputText("It bounces against your belly with your heartbeats, loving the forced anal pressure.  ");
+		if (player.cockTotal() == 1) outputText("It bounces against your belly with your heartbeats, loving the forced anal pressure.  ");
 		else outputText("They bounce against your belly with your heartbeats, loving the anal pressure.  ");
 		outputText("Sticky droplets of pre-cum leak from you, and you can't stifle the pleasured gasps that burst from your maw.");
 		if (player.hasVagina()) outputText("  To your delight and shame, your pussy is equally aroused by the action, musky and wet from the pirate's lewd anal battering.");

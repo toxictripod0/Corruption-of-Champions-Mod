@@ -48,18 +48,18 @@ import classes.internals.ChainedDrop;
 			}
 			//Sting successful!  Paralize or lust?
 			//Lust 50% of the time
-			if (rand(2) === 0) {
+			if (rand(2) == 0) {
 				outputText("Searing pain lances through you as " + a + short + " manages to sting you!  You stagger back a step and nearly trip, flushing hotly.  ");
 				outputText("Oh no!  You've been injected with some kind of aphrodisiac.  You've got to keep focused, you can't think about... fucking... ");
-				if (player.gender === 1) outputText("or dripping honey-slicked cunts beckoning you. ");
-				if (player.gender === 2) outputText("planting your aching sex over her face while you lick her sweet honeypot. ");
-				if (player.gender === 3) outputText("or cocks, tits, and puffy nipples. ");
+				if (player.gender == 1) outputText("or dripping honey-slicked cunts beckoning you. ");
+				if (player.gender == 2) outputText("planting your aching sex over her face while you lick her sweet honeypot. ");
+				if (player.gender == 3) outputText("or cocks, tits, and puffy nipples. ");
 				var lustDmg:int = 25;
 				player.takeLustDamage(lustDmg, true);
 				if (player.lust100 > 60) {
 					outputText(" You shake your head and struggle to stay focused,");
-					if (player.gender === 1 || player.gender === 3) outputText(" but it's difficult with the sensitive bulge in your groin.");
-					if (player.gender === 2) outputText(" but can't ignore the soaking wetness in your groin.");
+					if (player.gender == 1 || player.gender == 3) outputText(" but it's difficult with the sensitive bulge in your groin.");
+					if (player.gender == 2) outputText(" but can't ignore the soaking wetness in your groin.");
 					if (player.sens100 > 50) outputText("  The sensitive nubs of your nipples rub tightly under your " + player.armorName + ".");
 				}
 				else outputText(" You shake your head and clear the thoughts from your head, focusing on the task at hand.");

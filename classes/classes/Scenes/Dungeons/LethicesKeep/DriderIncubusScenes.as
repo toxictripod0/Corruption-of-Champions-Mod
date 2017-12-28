@@ -48,7 +48,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			else
 			{
 				outputText(" You were too turned on to care when you started slinking down to the polished granite.");
-				if (player.weapon !== WeaponLib.FISTS)
+				if (player.weapon != WeaponLib.FISTS)
 				{
 					outputText(" Your [weapon] clattered dully next to you, forgotten next to your all-consuming need.");
 				}
@@ -121,12 +121,12 @@ package classes.Scenes.Dungeons.LethicesKeep
 				outputText(", you’ve been sorely tempted by the rampant corruption of these lands");
 			}
 			outputText(".");
-			if (flags[kFLAGS.FACTORY_SHUTDOWN] === 2)
+			if (flags[kFLAGS.FACTORY_SHUTDOWN] == 2)
 			{
 				outputText(" You couldn’t even save one of the last pure spirits in this place, Marae.");
 			}
 			outputText(" It’s only a matter of time until Tel’Adre falls,");
-			if (flags[kFLAGS.FARM_CORRUPTION_STARTED] === 0)
+			if (flags[kFLAGS.FARM_CORRUPTION_STARTED] == 0)
 			{
 				outputText(" Whitney’s farm is consumed");
 			}
@@ -204,7 +204,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			if (player.vaginas.length > 0)
 			{
 				outputText(" Your [vagina]");
-				if (player.cocks.length === 0)
+				if (player.cocks.length == 0)
 				{
 					outputText(" drenches your undergarments");
 				}
@@ -233,7 +233,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 		{
 			clearOutput();
 			outputText("True to " + player.mf("his","her") + " words, Lethice conquered Tel’Adre that same year, and the rest of Mareth fell in short order. The Champion came to understand the truth of Lethice’s words");
-			if (player.vaginas.length === 0)
+			if (player.vaginas.length == 0)
 			{
 				outputText(", and after being outfitted with suitable genitalia,");
 			}
@@ -305,7 +305,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			var doneDriderbus:Boolean = false;
 			var doneGoblin:Boolean = false;
 			menu();
-			if (flags[kFLAGS.DRIDERINCUBUS_KILLED] !== 1 && flags[kFLAGS.DRIDERINCUBUS_FUCKED] !== 1)
+			if (flags[kFLAGS.DRIDERINCUBUS_KILLED] != 1 && flags[kFLAGS.DRIDERINCUBUS_FUCKED] != 1)
 			{
 				addButton(0,"Kill Drider",killDrider);
 				if (player.vaginas.length > 0)
@@ -325,9 +325,9 @@ package classes.Scenes.Dungeons.LethicesKeep
 			{
 				doneDriderbus = true;
 			}
-			if (flags[kFLAGS.MITZI_RECRUITED] !== 1)
+			if (flags[kFLAGS.MITZI_RECRUITED] != 1)
 			{
-				if (flags[kFLAGS.MITZI_FUCKED] !== 1)
+				if (flags[kFLAGS.MITZI_FUCKED] != 1)
 				{
 					if (player.cocks.length > 0)
 					{
@@ -369,7 +369,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 		{
 			clearOutput();
 			outputText("You laugh at Lethice and the goblin. <i>“This is all the reward I need.”</i> You press your");
-			if (player.lowerBody.type === 5)
+			if (player.lowerBody.type == 5)
 			{
 				outputText(" heel");
 			}
@@ -397,7 +397,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			if (player.cocks.length > 1)
 			{
 				outputText(" <i>“Or maybe this one?”</i> You grab your");
-				if (player.cocks.length === 2)
+				if (player.cocks.length == 2)
 				{
 					outputText(" second");
 				}
@@ -618,7 +618,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 					outputText("s");
 				}
 				outputText(" angled out of the way, though from time to time she favors");
-				if (player.cocks.length === 2)
+				if (player.cocks.length == 2)
 				{
 					outputText(" it");
 				}
@@ -687,7 +687,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			if (player.cocks.length > 1)
 			{
 				outputText(" - they");
-				if (player.cocks.length === 2)
+				if (player.cocks.length == 2)
 				{
 					outputText(" both");
 				}
@@ -803,7 +803,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			{
 				outputText(" slither");
 			}
-			else if (player.lowerBody.type === LowerBody.HOOFED)
+			else if (player.lowerBody.type == LowerBody.HOOFED)
 			{
 				outputText(" clop");
 			}
@@ -881,7 +881,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			{
 				outputText("\n\nThe best part is the way your [clit] is smashed up against the upper half of his dick, rubbing against the thick, veiny shaft in the most delicious way. You can barely stand the avalanche of sensations coming from your oversized button while you frot it against the needy demon, but isn’t that what you wanted? To get off so powerfully that Lethice would have nothing left to tempt you with?");
 				outputText("\n\nThe mounting hunger in your channel for some kind of penetration jars you from your surprisingly heterosexual frottage. You want him inside you. He can always manage your cock-sized clitty with one of his hands while you mount him again and again, trading a little corruption for the kind of");
-				if (player.pregnancyType !== 0)
+				if (player.pregnancyType != 0)
 				{
 					outputText(" cunt");
 				}
@@ -894,7 +894,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			else if (player.cocks.length > 0)
 			{
 				outputText("\n\nThe best part is the way your [cocks]");
-				if (player.cocks.length === 1)
+				if (player.cocks.length == 1)
 				{
 					outputText(" is");
 				}
@@ -904,7 +904,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 				}
 				outputText(" smashed up against his, rubbing thick, veiny shaft against rigid length in the most sinfully delicious way. You can barely keep yourself from humping away at his cock until you cum, but isn’t that what you wanted? To use this demon until your base urges were wholly satisfied?");
 				outputText("\n\nThe mounting hunger in your channel for some kind of penetration jars you from stirring");
-				if (player.cocks.length === 1)
+				if (player.cocks.length == 1)
 				{
 					outputText(" your");
 				}
@@ -913,7 +913,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 					outputText(" a");
 				}
 				outputText(" dick against his. You want him inside you. He can always manage [oneCock] with a hand while you’re riding him again and again, trading a little corruption for the kind of");
-				if (player.pregnancyType !== 0)
+				if (player.pregnancyType != 0)
 				{
 					outputText(" cunt");
 				}

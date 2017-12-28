@@ -18,7 +18,7 @@ public class CorruptedGlade extends BaseContent implements TimeAwareInterface,En
 	}
 
 	public function execEncounter():void {
-			if (rand(4) === 0) {
+			if (rand(4) == 0) {
 				trappedSatyr();
 			} else {
 				intro();
@@ -31,9 +31,9 @@ public class CorruptedGlade extends BaseContent implements TimeAwareInterface,En
 		
 		public function timeChange():Boolean {
 			if (flags[kFLAGS.CORRUPTED_GLADES_DESTROYED] > 1 && flags[kFLAGS.CORRUPTED_GLADES_DESTROYED] < 100) { //Extinct if you destroyed 100 Corrupted Glades.
-				if (flags[kFLAGS.AMILY_DESTROYING_CORRUPTED_GLADES] > 0 && rand(6) === 0) flags[kFLAGS.CORRUPTED_GLADES_DESTROYED]++;
-				if (flags[kFLAGS.KIHA_DESTROYING_CORRUPTED_GLADES] > 0 && rand(4) === 0) flags[kFLAGS.CORRUPTED_GLADES_DESTROYED]++;
-				if (getGame().time.days % (3 + Math.floor(flags[kFLAGS.CORRUPTED_GLADES_DESTROYED] / 15)) === 0 && getGame().time.hours > 23) flags[kFLAGS.CORRUPTED_GLADES_DESTROYED]--; //Decrement by 1 every 3 days.
+				if (flags[kFLAGS.AMILY_DESTROYING_CORRUPTED_GLADES] > 0 && rand(6) == 0) flags[kFLAGS.CORRUPTED_GLADES_DESTROYED]++;
+				if (flags[kFLAGS.KIHA_DESTROYING_CORRUPTED_GLADES] > 0 && rand(4) == 0) flags[kFLAGS.CORRUPTED_GLADES_DESTROYED]++;
+				if (getGame().time.days % (3 + Math.floor(flags[kFLAGS.CORRUPTED_GLADES_DESTROYED] / 15)) == 0 && getGame().time.hours > 23) flags[kFLAGS.CORRUPTED_GLADES_DESTROYED]--; //Decrement by 1 every 3 days.
 			}
 			if (flags[kFLAGS.CORRUPTED_GLADES_DESTROYED] >= 100) { //Extinct state
 				if (flags[kFLAGS.AMILY_DESTROYING_CORRUPTED_GLADES] > 0) flags[kFLAGS.AMILY_DESTROYING_CORRUPTED_GLADES] = 0;
@@ -98,7 +98,7 @@ public class CorruptedGlade extends BaseContent implements TimeAwareInterface,En
 			outputText(images.showImage("cGlade-flowers"));
 			spriteSelect(SpriteDb.s_corruptedGlade);
 			if (player.hasCock()) { //Sex scenes for those with cawks
-				if (player.cocks.length === 1) { //Single Cawk
+				if (player.cocks.length == 1) { //Single Cawk
 					outputText("You grin to yourself as you decide to see just how close to a pussy these perverted little flowers are.  The thick stem bends with ease as you grasp it and bend it towards your groin, your other hand fumbling to open your " + player.armorName + ".  In seconds you free yourself and gingerly bring the folds closer, the musky scent that fills the air rapidly bringing you to a full, throbbing hardness.  The first touch of petals to your skin slicks you with the flower's silky secretions, allowing you to easily slip between the petals.  Though the flower looks fairly deep, you quickly feel yourself bottom out inside the petal's slippery grip.  Shrugging, you decide to make the best of it and begin thrusting into the plant, enjoying the unusual sensations along the front-most parts of your " + player.cockDescript(0) + ".  As you pound away, you begin to notice a change in the rear of the flower.\n\n");
 
 					outputText("It feels as if something is opening up, and the tip of your cock begins slipping through a tight ring, bulging the plant's stem noticeably.  The sudden change worries you enough to pull back for a moment, your " + player.cockDescript(0) + " nearly clearing the opening before dozens of tiny whip-like tendrils burst from the flower, wrapping your maleness with painful tightness.  They constrict further and with a burst of movement, slam the flower down onto your " + player.cockDescript(0) + ", pulling you further and further into the stem with painful force.  You struggle briefly but the pain it causes your over-stimulated member is too much, so you just give up, letting the pussy-like plant draw the last of you inside its stem, the silken flowers cupping around your ");
@@ -132,7 +132,7 @@ public class CorruptedGlade extends BaseContent implements TimeAwareInterface,En
 				player.orgasm('Dick');
 				dynStats("sen", 2);
 				var booster:int = 1;
-				if (player.balls === 0)
+				if (player.balls == 0)
 					booster += 3;
 				else if (player.ballSize < 6)
 					booster += 2;
@@ -158,11 +158,11 @@ public class CorruptedGlade extends BaseContent implements TimeAwareInterface,En
 			clearOutput();
 			outputText(images.showImage("cGlade-vines"));
 			spriteSelect(SpriteDb.s_corruptedGlade);
-			if (player.vaginas.length > 0 && rand(2) === 0) { //Vaginal Variant 50% of the time
+			if (player.vaginas.length > 0 && rand(2) == 0) { //Vaginal Variant 50% of the time
 				outputText("You saunter over to a dangling group of perverted looking vines, discarding your " + player.armorName + " along the way. Running your fingertips along the bulbous-tipped tentacle-like vines, you find one that looks ");
 				var tentacle:int = rand(3); //Big, medium or small size tentacle
 				var tentacleSize:int = 0;
-				if (tentacle === 0) { //Small
+				if (tentacle == 0) { //Small
 					outputText("a little small for your ");
 					switch (player.vaginas[0].vaginalLooseness) {
 						case VaginaClass.LOOSENESS_TIGHT:		tentacleSize =   0; break;
@@ -173,7 +173,7 @@ public class CorruptedGlade extends BaseContent implements TimeAwareInterface,En
 						default:							tentacleSize = 100;
 					}
 				}
-				if (tentacle === 1) { //Normal
+				if (tentacle == 1) { //Normal
 					outputText("well suited to your ");
 					switch (player.vaginas[0].vaginalLooseness) {
 						case VaginaClass.LOOSENESS_TIGHT:		tentacleSize =   3; break;
@@ -184,7 +184,7 @@ public class CorruptedGlade extends BaseContent implements TimeAwareInterface,En
 						default:							tentacleSize = 175;
 					}
 				}
-				if (tentacle === 2) { //Large
+				if (tentacle == 2) { //Large
 					outputText("almost too big to cram in your ");
 					switch (player.vaginas[0].vaginalLooseness) {
 						case VaginaClass.LOOSENESS_TIGHT:		tentacleSize =   6; break;
@@ -198,11 +198,11 @@ public class CorruptedGlade extends BaseContent implements TimeAwareInterface,En
 				//resume secksings
 				outputText(player.vaginaDescript(0) + ". Pulling gently, you manage to yank a bit more vine free, allowing it to brush against the damp forest loam. That same soft earth makes the perfect cushion for you as you lay down, spreading your legs. With both hands you grasp the vine, guiding it towards the entrance of your " + player.vaginaDescript(0) + ". The beaded moisture that covers the vine tingles tantalizingly at the first contact with your lips.\n\n");
 
-				if (tentacle === 0) //Small
+				if (tentacle == 0) //Small
 					outputText("With a sexy little sigh, you slip the mushroom-like tip between your nether-lips, feeling it bulge a little as it penetrates you. The vine's lubricants combine with your own, turning your horny cunt into a sloppy little slip-and-slide. You take it all the way to your cervix, easily handling its smaller size as you begin to use it like a favorite dildo. Deep inside your " + player.vaginaDescript(0) + ", the vine's lubricants begin to make your passage tingle, intensifying until your entire channel is overloaded with clit-like levels of sensation.\n\n");
-				if (tentacle === 1) //Medium
+				if (tentacle == 1) //Medium
 					outputText("With a soft grunt, you manage to wrangle the fat tip of the vine between your nether-lips, feeling the swollen bulge pulse inside you penetrate yourself with it. The vine's lubricants combine with your own, turning your horny cunt into a sloppy slip-and-slide. You force in the rest of the vine's length, taking it all the way to your cervix, enjoying the feeling of fullness it gives you as you begin pumping it in and out like an obscene green dildo. Deep inside your " + player.vaginaDescript(0) + ", the vine's lubricants begin to make your passage tingle, intensifying until your entire channel is overloaded with clit-like levels of sensation.\n\n");
-				if (tentacle === 2) //Large
+				if (tentacle == 2) //Large
 					outputText("With a desperate grunt, you barely manage to force the obscene cock-head of the vine between your nether-lips. The swollen bulge pulses inside you, stretching you uncomfortably as it reacts to the warmth and tightness of your " + player.vaginaDescript(0) + ". The vine's lubricants begin to combine with your own, rapidly transforming your horny cunt into a sloppy slip-and-slide. You manage to cram the vine the rest of the way inside, bottoming it out against your cervix, reveling in the feeling of being stretched so wide, as you begin pumping it in and out of your " + player.vaginaDescript(0) + " like an over-sized sex-toy. Deep inside your " + player.vaginaDescript(0) + ", the vine's lubricants begin to make your passage tingle, intensifying until your entire channel is overloaded with clit-like levels of sensation.\n\n");
 				if (player.cuntChange(tentacleSize, true)) outputText("\n\n"); //Stretch cuuuuunt and newline if it gets stretched
 
@@ -213,11 +213,11 @@ public class CorruptedGlade extends BaseContent implements TimeAwareInterface,En
 				player.orgasm('Vaginal');
 				dynStats("sen", 5, "cor", 2);
 				//Xforms
-				if (rand(3) === 0 && player.hair.color !== "green") { //Change hair to green sometimes
+				if (rand(3) == 0 && player.hair.color != "green") { //Change hair to green sometimes
 					outputText("You don't get far before you realize all the hair on your body has shifted to a verdant green color.  <b>You now have green hair.</b>  ");
 					player.hair.color = "green";
 				}
-				if (rand(4) === 0 && player.hips.rating <= 10) { //+hip up to 10
+				if (rand(4) == 0 && player.hips.rating <= 10) { //+hip up to 10
 					outputText("A strange shifting occurs below your waist, making your " + player.armorName + " feel tight.  <b>Your hips have grown larger</b>, becoming " + player.hipDescript() + ".  ");
 					player.hips.rating += rand(3) + 1;
 					player.fertility++;
@@ -235,7 +235,7 @@ public class CorruptedGlade extends BaseContent implements TimeAwareInterface,En
 				outputText("As you leave the corrupted plant-life behind a comforting warmth seems to radiate from your gut, suffusing you with gentle heat that makes your ");
 				
 				if (player.cocks.length > 0) { //Cocks (and maybe vagina)
-					outputText(player.cocks.length === 1 ? player.cockDescript(0) : player.multiCockDescriptLight());
+					outputText(player.cocks.length == 1 ? player.cockDescript(0) : player.multiCockDescriptLight());
 					if (player.vaginas.length > 0) outputText(" and " + player.vaginaDescript(0));
 				}
 				else if (player.vaginas.length > 0) //Vagina
@@ -246,19 +246,19 @@ public class CorruptedGlade extends BaseContent implements TimeAwareInterface,En
 				//Simple stat changes - + lust.
 				dynStats("lus", 25 + player.lib / 10, "cor", 2);
 				//Change hair to green sometimes
-				if (rand(3) === 0 && player.hair.color !== "green") {
+				if (rand(3) == 0 && player.hair.color != "green") {
 					outputText("You don't get far before you realize all the hair on your body has shifted to a verdant green color.  <b>You now have green hair.</b>  ");
 					player.hair.color = "green";
 				}
 				//+butt up to 10
-				if (rand(4) === 0 && player.butt.rating <= 10) {
+				if (rand(4) == 0 && player.butt.rating <= 10) {
 					outputText("A strange shifting occurs on your backside, making your " + player.armorName + " feel tight.  <b>Your butt has grown larger</b>, becoming a " + player.buttDescript() + ".  ");
 					player.butt.rating += rand(3) + 1;
 				}
 				//Rarely change one prick to a vine-like tentacle cock. 
-				if (rand(3) === 0 && player.cocks.length > 0 && player.hair.color === "green") {
+				if (rand(3) == 0 && player.cocks.length > 0 && player.hair.color == "green") {
 					if (player.countCocksOfType(CockTypesEnum.TENTACLE) < player.cockTotal()) {
-						if (player.cocks.length === 1) { //Single cawks
+						if (player.cocks.length == 1) { //Single cawks
 							outputText("Your feel your " + player.cockDescript(0) + " bending and flexing of its own volition... looking down, you see it morph into a green vine-like shape.  <b>You now have a tentacle cock!</b>  ");
 							//Set primary cock flag
 							player.cocks[0].cockType = CockTypesEnum.TENTACLE;
@@ -284,19 +284,19 @@ public class CorruptedGlade extends BaseContent implements TimeAwareInterface,En
 			dynStats("sen", 1, "lus", 15, "cor", .5);
 			player.slimeFeed();
 			if (!player.hasStatusEffect(StatusEffects.LustyTongue)) {
-				if (rand(4) === 0) { //25% Chance of sensitive mouth status – increased lust gain/hour due to licking your lips :3
+				if (rand(4) == 0) { //25% Chance of sensitive mouth status – increased lust gain/hour due to licking your lips :3
 					outputText("  The feeling doesn't seem to fade, only becoming more and more intense over the coming hour.  It will be hard to keep from getting turned on any time you lick your lips or eat some food.");
 					player.createStatusEffect(StatusEffects.LustyTongue, 24, 0, 0, 0);
 				}
 				else outputText("  Thankfully, the feeling goes away after a few minutes, leaving you feeling just a bit more sensitive.");
 			}
-			if (rand(2) === 0) { //50% Chance of breast-growth
+			if (rand(2) == 0) { //50% Chance of breast-growth
 				if (player.biggestTitSize() > 5) {
 					outputText("  As you redress, you feel a sense of added weight on your chest.  After a few moments you realize your already-formidable chest has grown even larger.");
 					player.growTits(1, 1 + rand(3), false, 1);
 				}
 				else {
-					if (player.biggestTitSize() === 0) { //No tits yet
+					if (player.biggestTitSize() == 0) { //No tits yet
 						outputText("  As you redress, you realize you have grown a pair of luscious breasts!  Perhaps this was a good idea after all...");
 						player.growTits(1, 2 + rand(3), false, 1);
 					}
@@ -324,10 +324,10 @@ public class CorruptedGlade extends BaseContent implements TimeAwareInterface,En
 			if (player.hasStatusEffect(StatusEffects.KnowsWhitefire) || player.hasStatusEffect(StatusEffects.KnowsBlackfire)) {
 				addButton(button++, "Fire", destroyTheCorruptedGlades, 2);
 			}
-			if (player.hasKeyItem("Carpenter's Toolbox") >= 0 || player.weapon === weapons.L__AXE) {
+			if (player.hasKeyItem("Carpenter's Toolbox") >= 0 || player.weapon == weapons.L__AXE) {
 				addButton(button++, "Axe", destroyTheCorruptedGlades, 3);
 			}
-			if (player.weaponVerb === "stab" || player.weaponVerb === "slash" || player.weaponVerb === "cleave" || player.weaponVerb === "keen cut") {
+			if (player.weaponVerb == "stab" || player.weaponVerb == "slash" || player.weaponVerb == "cleave" || player.weaponVerb == "keen cut") {
 				addButton(button++, "Weapon", destroyTheCorruptedGlades, 4);
 			}
 			addButton(button++, "Your Hands", destroyTheCorruptedGlades, 5);
@@ -386,17 +386,17 @@ public class CorruptedGlade extends BaseContent implements TimeAwareInterface,En
 				default:
 					outputText("<b>Please report this error to Kitteh6660.</b>\n\n");
 			}
-			if (flags[kFLAGS.CORRUPTED_GLADES_DESTROYED] === 0) outputText("That's one glade eliminated! With effort and dedication, you will be able to cleanse the forest of foul glades.");
+			if (flags[kFLAGS.CORRUPTED_GLADES_DESTROYED] == 0) outputText("That's one glade eliminated! With effort and dedication, you will be able to cleanse the forest of foul glades.");
 			else outputText("Once again, the forest is cleansed of a tainted glade.");
 			
 			dynStats("cor", -1);
 			destroyAmount++;
 			flags[kFLAGS.CORRUPTED_GLADES_DESTROYED] += destroyAmount;
 			//Milestone events
-			if (flags[kFLAGS.CORRUPTED_GLADES_DESTROYED] === 25) outputText("\n\nYou have a feeling you'll see the glades somewhat less often.");
-			if (flags[kFLAGS.CORRUPTED_GLADES_DESTROYED] === 50) outputText("\n\nYou have a feeling you'll see the glades less often.");
-			if (flags[kFLAGS.CORRUPTED_GLADES_DESTROYED] === 75) outputText("\n\nYou have a feeling you'll see the glades much less often.");
-			if (flags[kFLAGS.CORRUPTED_GLADES_DESTROYED] === 100) outputText("\n\nThat should be the last of the glades! <b>Corrupted Glades are now extinct.</b>");
+			if (flags[kFLAGS.CORRUPTED_GLADES_DESTROYED] == 25) outputText("\n\nYou have a feeling you'll see the glades somewhat less often.");
+			if (flags[kFLAGS.CORRUPTED_GLADES_DESTROYED] == 50) outputText("\n\nYou have a feeling you'll see the glades less often.");
+			if (flags[kFLAGS.CORRUPTED_GLADES_DESTROYED] == 75) outputText("\n\nYou have a feeling you'll see the glades much less often.");
+			if (flags[kFLAGS.CORRUPTED_GLADES_DESTROYED] == 100) outputText("\n\nThat should be the last of the glades! <b>Corrupted Glades are now extinct.</b>");
 			doNext(camp.returnToCampUseOneHour);
 		}
 	//Catch a Satyr using the corrupt glade and either leave or have your way with him.

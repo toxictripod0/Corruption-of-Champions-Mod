@@ -52,7 +52,7 @@ package classes.Scenes.Areas
 		return _explorationEncounter ||= Encounters.group(kGAMECLASS.commonEncounters, {
 			name  : "aprilfools",
 			when  : function ():Boolean {
-				return isAprilFools() && flags[kFLAGS.DLC_APRIL_FOOLS] === 0;
+				return isAprilFools() && flags[kFLAGS.DLC_APRIL_FOOLS] == 0;
 			},
 			chance: Encounters.ALWAYS,
 			call  : riftAprilFools
@@ -75,9 +75,9 @@ package classes.Scenes.Areas
 		}, {
 			name: "valeria",
 			when: function ():Boolean {
-				return flags[kFLAGS.VALARIA_AT_CAMP] === 0
-					   && player.armor !== armors.GOOARMR
-					   && (flags[kFLAGS.HARPY_QUEEN_EXECUTED] !== 0
+				return flags[kFLAGS.VALARIA_AT_CAMP] == 0
+					   && player.armor != armors.GOOARMR
+					   && (flags[kFLAGS.HARPY_QUEEN_EXECUTED] != 0
 						   || flags[kFLAGS.HEL_REDUCED_ENCOUNTER_RATE] > 0)
 			},
 			call: valeriaAtRift
@@ -180,7 +180,7 @@ package classes.Scenes.Areas
 				outputText("Taking in the familiar surroundings, you realize you must have fallen through one of those chutes again. You begin to wonder if they are for the Yeti’s use, or if they are meant to bring in unsuspecting travelers. A meal delivery service set up with their limited ice magic? You shake off the snow on you and get to your feet. Looking to the passage, sure enough shadows dance along the walls as the thumps reach your ears.\n\n")
 			}
 			outputText("Hearing a thunderous roar, you ready yourself for a fight");
-			if (player.weaponName !== "fists") outputText(", holding your " + player.weaponName + " at the ready");
+			if (player.weaponName != "fists") outputText(", holding your " + player.weaponName + " at the ready");
 			outputText(". A massive hulking creature barrels around the corner and sets its gaze on you, its clawed hands and feet launching its body over the iced caverns with ease as you stare the beast down. The white blur of an ice yeti attacks you!");
 			startCombat(new Yeti());
 		}

@@ -69,8 +69,8 @@ public class FetishCultistScene extends AbstractLakeContent implements Encounter
 			//ZOOKEEPER RAEPS.  WEIRDOZ
 			if (player.isTaur() || player.isNaga()) {
 				//Special centaur version by Astronomy
-				if (player.lowerBody.type === LowerBody.HOOFED && player.balls > 0 && player.totalCocks() > 0 && rand(4) < 3) {
-					if (player.cocks[0].cockType === CockTypesEnum.HORSE) {
+				if (player.lowerBody.type == LowerBody.HOOFED && player.balls > 0 && player.totalCocks() > 0 && rand(4) < 3) {
+					if (player.cocks[0].cockType == CockTypesEnum.HORSE) {
 						outputText("The entrance door to the stables swings open. Standing there is the familiar sight of your favorite zookeeper.  She's wearing overalls and a plain, dirt marked t-shirt, but you notice the overalls have the familiar logo of the zoo – your home.  You can make out a part of the logo says  \"Featsy's Slutty Beast Zoo - Zoo Keeper\" on it. As she walks into the stables, you see she's carrying a small stool with her, a sight that fills you with anticipation. You watch her walk down the aisle in between all the stable stands, glancing between all the zoo's pet centaurs, yourself included.  Most of them are male and you can even see the odd herm going by her big pair of tits and large set of balls with a dangling cock. The zookeeper smiles lustfully as she looks from side to side at the different centaurs available. As she slowly walks towards you, you can't help but hope that she'll choose you for today's 'treatment'.  To your immense delight, you see that the girl has stopped in front of you.  You try to move but the ropes holding you in place arrest your movement.  The omnipresent weight of your cock as it dangles between your legs grows heavier and heavier as your body remembers the zookeeper.  The girl steps into your stand, closing the door behind her.  As you look at her, you can see her face is blushing red, and her eyes are clearly fixated on your " + player.cockDescript(0) + " and " + player.ballsDescriptLight() + ".\n\n");
 
 						outputText("As she stands there, she sets her stool down beside her. With a hungry grin, she snaps the buttons to her overalls off and lets them fall down around her feet, revealing her cunt. She grips the bottom of her t-shirt and pulls it up and off of her, tossing it to the side. You can see she's got a big pair of tits, roughly DD-cup you guess. You feel confused as she walks up to you and starts to stroke her hands along your torso, feeling the shape of your 'human' upper body with her fingers. You know what she's planning and whicker excitedly, eager for her to get on with it. The girl leans her head into your torso and kisses the skin gently, her tongue slipping beyond her lips to taste your skin. You gasp in surprise as you feel the warm tickle of her tongue on your " + player.skin.desc + ". Your " + player.cockDescript(0) + " twitches beneath you, surging with blood as it fills to full erectness.  She kisses you again, licking her tongue over more of your body this time. You gasp again, her touches and kisses arousing you as you feel a light sweat break out over your skin. Seeing the beads of moisture beginning to drip from you, she hungrily licks across your skin, tasting you as she closes her eyes and sighs with joy.  An animalistic hunger grows from your crotch as your " + player.cockDescript(0) + " gradually throbs, growing harder and harder. The zoo-keeper presses herself right up against you, her breasts squishing against your skin as she rubs herself over you, clearly getting more and more aroused herself at the feel of your bestial body.\n\n");
@@ -84,14 +84,14 @@ public class FetishCultistScene extends AbstractLakeContent implements Encounter
 						outputText("As the girl regains her senses, she sighs and licks her lips, then gets up off the stool. With a grin, she watches your cock soften and hang limp in front of her.  The zoo-keeper gets off the stool and pushes it aside. With an eager moan, she kneels into the puddle of horse cum and pussy-juices, clearly loving the feeling of the hot and sticky seed on her skin.  She opens her mouth and sucks the " + player.cockHead() + " of your " + player.cockDescript(0) + ", inside, hungrily sucking up any stray sperm, swallowing down all she can drink from your shaft.  The taste obviously arouses her again as she rubs her fingers in the puddle of seed she's so happily sitting in. She sucks your cock-head for what seems like ages, gulping down anything she can milk your " + player.ballsDescriptLight() + ". Eventually, the girl calms down as she rubs your cum over her body and tits.  She sits there in the puddle of sexual fluids, happily allowing your cock slip out of her mouth with a POP.  It hangs limply over her shoulder while she sighs as she closes her eyes, her mouth coated in her drool and cum.  You gasp and slump in your harness as your exhausted body loses its grip on consciousness, your last memory the taste of your bridle and the feel of your harness binding you as your keeper readies you for the next show...\n\n");
 
 						//make sure the PC is properly dressed after such a scene
-						if (player.armor === armors.C_CLOTH) player.modArmorName = "bridle bit and saddle set";
+						if (player.armor == armors.C_CLOTH) player.modArmorName = "bridle bit and saddle set";
 
 						//Check for bad-end start!
-						if (player.inte <= 10 && rand(2) === 0) cultistBadEnd();
+						if (player.inte <= 10 && rand(2) == 0) cultistBadEnd();
 						//(ending after all cultist rape scenes)
 						else {
 							outputText("A few hours later your mind finally returns to reality.  You look around, but can see no sign of the cultist that you saw earlier.  ");
-							if (player.armor === armors.C_CLOTH) outputText("You find your " + player.armorName + " back on your body with no sign of the strange clothes you were wearing before.  ");
+							if (player.armor == armors.C_CLOTH) outputText("You find your " + player.armorName + " back on your body with no sign of the strange clothes you were wearing before.  ");
 							else outputText("You are still wearing the " + player.armorName + " that she gave you, and there is no sign of your old clothes.  ");
 							outputText("The ordeal has also left you with a slightly dulled mind, and some of the desire you felt still lingers.");
 							player.orgasm('Dick');
@@ -136,14 +136,14 @@ public class FetishCultistScene extends AbstractLakeContent implements Encounter
 					outputText("You can't do anything but continue to lick and probe her folds while she continues to push you deeper inside her.  At the same time, she pushes herself up onto you more and more, so that her weight pushes your " + player.faceDescript() + " deeper into her slobbering depths.  In moments, your keeper is creaming herself all over your face while you simultaneously achieve your own release.  She dismounts from your face and walks back outside the cage, whistling that same tune again while you keep your head bent in shame from having gotten a release from doing something like that; again!  \"<i>Don't look so sad, horsey, soon more will be here to avail themselves of the pleasures you have to offer.</i>\" your keeper says to you with that same, sick grin on her face again before she locks the cage and walks away.\n\n");
 
 					//make sure the PC is properly dressed after such a scene
-					if (player.armor === armors.C_CLOTH) player.modArmorName = "bridle bit and saddle set";
+					if (player.armor == armors.C_CLOTH) player.modArmorName = "bridle bit and saddle set";
 
 					//Check for bad-end start!
-					if (player.inte <= 10 && rand(2) === 0) cultistBadEnd();
+					if (player.inte <= 10 && rand(2) == 0) cultistBadEnd();
 					//(ending after all cultist rape scenes)
 					else {
 						outputText("A few hours later your mind finally returns to reality.  You look around, but can see no sign of the cultist that you saw earlier.  ");
-						if (player.armor !== armors.C_CLOTH) outputText("You find your " + player.armorName + " back on your body with no sign of the strange clothes you were wearing before.  ");
+						if (player.armor != armors.C_CLOTH) outputText("You find your " + player.armorName + " back on your body with no sign of the strange clothes you were wearing before.  ");
 						else outputText("You are still wearing the " + player.armorName + " that she gave you, and there is no sign of your old clothes.  ");
 						outputText("The ordeal has also left you with a slightly dulled mind, and some of the desire you felt still lingers.");
 						player.orgasm('Generic');
@@ -165,11 +165,11 @@ public class FetishCultistScene extends AbstractLakeContent implements Encounter
 					outputText("With a cute ah, your keeper plops herself down on the pile of pillows, spreading her legs wide so you can clearly see her wet and ready sex pot.  You can't help but feel aroused at the sight, ");
 					//how does the PC show their arousal?
 					//no naughty bits
-					if (player.gender === 0) {
+					if (player.gender == 0) {
 						outputText("but there is nothing you can do but wait.\n\n");
 					}
 					//boy's surprise
-					else if (player.gender === 1) {
+					else if (player.gender == 1) {
 						outputText("and to your shame, you feel ");
 						if (player.totalCocks() > 1) outputText("each of ");
 						outputText("your " + player.multiCockDescriptLight() + " poke out of your pelvic slit, growing to full erectness.  You strain against your bonds, desperate to bring release to ");
@@ -177,7 +177,7 @@ public class FetishCultistScene extends AbstractLakeContent implements Encounter
 						outputText("your " + player.multiCockDescriptLight() + ", but there is nothing you can do and you keeper laughs at you.  \"<i>Oh so eager to bury that eager cock of yours inside my snatch?  Too bad, I'm the one who gets to choose what goes in there, and it's not your cock.</i>\" she says to you, clearly enjoying the frustration you're going through.\n\n");
 					}
 					//girl's surprise
-					else if (player.gender === 2) {
+					else if (player.gender == 2) {
 						outputText("and to your shame, you feel your pelvic slit open up to reveal your " + player.vaginaDescript(0) + ", already wet from the sight.  You pull against your bonds a little, hoping to find some way to get some release from your arousal.  \"<i>Sorry girly, that slit of yours isn't supposed to be filled now,</i>\" she says, before pointing at her cunt, \"<i>this one is.</i>\"  She is clearly enjoying the frustration you're going through.\n\n");
 					}
 					//herm's frustrations
@@ -192,14 +192,14 @@ public class FetishCultistScene extends AbstractLakeContent implements Encounter
 					outputText("The feeling of her fluids running all over your tail is such an exotic and arousing feeling, as per usual, but it only leaves you feeling more frustrated that you can't get proper release.  Thankfully for you, you don't have to wait long for the release to come; as you feel your keeper spray the proof of her release onto your tail, you finally feel your own release.  You can only hang your head in shame from having gotten a release from being used like that, again!  \"<i>Don't look so bad snaky, the customers like to see someone high and mighty before they come in here and beat you into the ground.</i>\" You don't bother looking back up at her as she locks the cage and your restraints finally release you.\n\n");
 
 					//put them in the right attire after seeing this
-					if (player.armor === armors.C_CLOTH) player.modArmorName = "headdress, necklaces, and many body-chains";
+					if (player.armor == armors.C_CLOTH) player.modArmorName = "headdress, necklaces, and many body-chains";
 
 					//Check for bad-end start!
-					if (player.inte <= 10 && rand(2) === 0) cultistBadEnd();
+					if (player.inte <= 10 && rand(2) == 0) cultistBadEnd();
 					//(ending after all cultist rape scenes)
 					else {
 						outputText("A few hours later your mind finally returns to reality.  You look around, but can see no sign of the cultist that you saw earlier.  ");
-						if (player.armor !== armors.C_CLOTH) outputText("You find your " + player.armorName + " back on your body with no sign of the strange clothes you were wearing before.  ");
+						if (player.armor != armors.C_CLOTH) outputText("You find your " + player.armorName + " back on your body with no sign of the strange clothes you were wearing before.  ");
 						else outputText("You are still wearing the " + player.armorName + " that she gave you, and there is no sign of your old clothes.  ");
 						outputText("The ordeal has also left you with a slightly dulled mind, and some of the desire you felt still lingers.");
 						player.orgasm('Generic');
@@ -211,15 +211,15 @@ public class FetishCultistScene extends AbstractLakeContent implements Encounter
 				}
 			}
 			//Nurse raeeeepp
-			//if (monster.armorName === "naughty nurse's uniform" && !sexed) {
-			if (rand(2) === 0 && !sexed) {
+			//if (monster.armorName == "naughty nurse's uniform" && !sexed) {
+			if (rand(2) == 0 && !sexed) {
 				outputText("You stand up and look over at the cultist. She is now wearing a nurse's uniform with bared breasts.  You notice that your " + player.armorName + " changed into a bizarre cross between a patient's gown and a collection of black straps with buckles.  While tight in some places, it doesn't hinder your movement or hide your more sexual parts at all.");
 				if (player.isTaur()) {
 					outputText("  It also dawns to your fogged mind that you now have a human-looking lower body, though your sexual organs are unchanged.");
 					if (player.cockTotal() > 0) outputText("  As you see your " + player.multiCockDescriptLight() + ", 'incredibly large' is the only qualifier you can think of.");
 				}
 				outputText("\n\n");
-				if (player.armor === armors.C_CLOTH) player.modArmorName = "bondage patient clothes";
+				if (player.armor == armors.C_CLOTH) player.modArmorName = "bondage patient clothes";
 				outputText("\"<i>Um, ");
 				if (player.gender <= 1) outputText("sir");
 				else outputText("madam");
@@ -258,11 +258,11 @@ public class FetishCultistScene extends AbstractLakeContent implements Encounter
 				if (player.biggestTitSize() > 1 && !changed) {
 					outputText("The smile disappears from her lips and she says, 'Now if I understand it correctly, you are beset by random panic attacks due to unnaturally low levels of lactation.  To address this issue, I will be giving you a special injection at the site.'  She briefly steps out of the room before returning with a syringe.  'It'll be ok, the good news is that the pain for this injection will quickly subside, just take nice easy breaths and you'll be fine.  In fact, you might find this quite enjoyable after the first hurdle.'  She steps over to you and carefully pushes the syringe into your first breast.  You feel a sharp pain from the needle going in, but after a moment you start to feel a glowing pleasure spread throughout your breast.  ");
 					//[if player only has one row of breasts]
-					if (player.breastRows.length === 1) {
+					if (player.breastRows.length == 1) {
 						outputText("Once about half of the fluid has been injected into your first breast, she moves on to the other and you feel a similar sharp pain followed by the glowing pleasure.  ");
 					}
 					//[if the player has two rows of breasts] 
-					if (player.breastRows.length === 2) outputText("Once about a quarter of the fluid has been injected into the first breast, she moves on to the second and you feel a similar sharp pain followed by the glowing pleasure.  She continues this until all of your " + player.allBreastsDescript() + " have been injected.  ");
+					if (player.breastRows.length == 2) outputText("Once about a quarter of the fluid has been injected into the first breast, she moves on to the second and you feel a similar sharp pain followed by the glowing pleasure.  She continues this until all of your " + player.allBreastsDescript() + " have been injected.  ");
 					//[if the player has three rows of breasts]
 					if (player.breastRows.length > 2)  outputText("Once about a sixth of the fluid has been injected into the first breast, she moves on to the second and you feel a similar sharp pain followed by the glowing pleasure.  She continues this until all of your " + player.allBreastsDescript() + " have been injected.  ");
 					outputText("Soon the glowing pleasure fills your breasts completely and you feel an orgasm shoot through your body as your " + player.allBreastsDescript());
@@ -288,7 +288,7 @@ public class FetishCultistScene extends AbstractLakeContent implements Encounter
 					changedCock = true;
 				}
 				//(5 - if player has no genitals)
-				if (player.gender === 0 && !changed) {
+				if (player.gender == 0 && !changed) {
 					outputText("The smile disappears from her lips and she says, 'Now if I understand it correctly, you are beset by random panic attacks due to a lack of genitals.'  To address this issue, I will be giving you a special injection at the site.'  She briefly steps out of the room before returning with a syringe.  'It'll be ok, the good news is that the pain for this injection will quickly subside, just take nice easy breaths and you'll be fine.  In fact, you might find this quite enjoyable after the first hurdle.'  She leans down and pushes the needle into your crotch.  The pain is quite intense, but thankfully it does not last long.  'This injection will address your unnatural body shape by giving you a penis,' she says to you, smiling while pulling the needle out, 'and then, I get to be the first to play with it!'.  You look down to see that the flesh where she injected you is pushing out of your body, becoming larger and more defined as the seconds tick by.\n\n");
 					player.createCock();
 					outputText("Soon you have a fully formed " + player.cockDescript(0) + " standing tall and proud where your bare crotch used to lie.  The nurse sets the syringe aside and climbs on top of your legs. She giggles softly before lowering herself and taking your " + player.cockDescript(0) + " between her breasts and starts rubbing and playing with them while running your " + player.cockDescript(0) + " between them.  It is an exquisite experience having her tit fuck your brand new " + player.cockDescript(0) + ", and you notice that she seems to be enjoying it just as much as you are.  It doesn't take long for her ministrations to make you cum between her breasts, and cum you do.  Satisfied, the nurse rises from you and says \"<i>That was fun, maybe later we can practice more.  For now, I've got to go take care of another patient. Don't you do anymore running about until I get back, ok?  I'll be back to check on your progress as soon as I'm able!</i>\"  She gives you a wink, and turns to walk out the door.");
@@ -297,11 +297,11 @@ public class FetishCultistScene extends AbstractLakeContent implements Encounter
 					changedCock = true;
 				}
 				//Check for bad-end start!
-				if (player.inte <= 10 && rand(2) === 0) cultistBadEnd();
+				if (player.inte <= 10 && rand(2) == 0) cultistBadEnd();
 				//(ending after all cultist rape scenes)
 				else {
 					outputText("\n\nA few hours pass by and your mind finally returns to reality.  You look around, but can see no sign of the cultist that you saw earlier.  ");
-					if (player.armor !== armors.C_CLOTH) {
+					if (player.armor != armors.C_CLOTH) {
 						outputText("You find your " + player.armorName + " back on your body with no sign of the strange clothes you were wearing before.  ");
 					}
 					else outputText("You are still wearing the " + player.armorName + " that she gave you, and there is no sign of your old clothes.  ");
@@ -325,7 +325,7 @@ public class FetishCultistScene extends AbstractLakeContent implements Encounter
 				//(variant 3: special toy, requires both dick and vagina)
 				if (player.vaginas.length > 0 && player.cocks.length > 0) {
 					outputText("You see your " + player.armorName + " becoming a nice, comfortable outfit of a white shirt and black pants that make you look well-suited to work in a manor... if they didn't have an exposed crotch and butt that puts your " + player.multiCockDescriptLight() + ", your " + player.vaginaDescript(0) + ", and your " + player.buttDescript() + " on full display.  Any undergarments you had are now gone.\n\n");
-					if (player.armor === armors.C_CLOTH) player.modArmorName = "crotch-revealing clothes";
+					if (player.armor == armors.C_CLOTH) player.modArmorName = "crotch-revealing clothes";
 					outputText("\"<i>Toy, I am feeling aroused,</i>\" she says to you in an authoritative voice. \"<i>I want you to please me.</i>\"\n\n");
 					outputText("\"<i>Yes, mistress,</i>\" you reply without hesitation, your thoughts unable to comprehend anything besides this 'game'.  You could swear that you were in the sitting room of a manor.  \"<i>How do you wish to be pleased?</i>\"\n\n");
 					outputText("\"<i>I'm glad to see you remember your place.  I wish you to first rub my feet, then move up my legs, and finally, start relieving the tension in my lower lips with your capable hands.</i>\"\n\n");
@@ -333,7 +333,7 @@ public class FetishCultistScene extends AbstractLakeContent implements Encounter
 					outputText("After a minute of this, she stops you and says, \"<i>Good; I am now ready to have you inside of me, toy.  Lie down and start fingering your " + player.vaginaDescript(0) + " while I use the " + player.multiCockDescriptLight() + " that I keep you here for.</i>\"\n\n");
 					outputText("With your hands slightly trembling in anticipation, you lie down and grab at your very erect " + player.multiCockDescriptLight() + " just before you slip your fingers into your " + player.vaginaDescript(0) + ", ready to please your mistress the best way you can.  You watch your mistress rise off her chair and slowly lower herself onto your " + player.cockDescript(0) + ", moaning in pleasure.  Her interior is so familiar and so wonderful.  You increase the pace that your fingers plunge into your depths, moaning in the way you know your mistress loves. She starts to rock back and forth, your " + player.cockDescript(0) + " bringing her to the height of ecstasy. ");
 					//[if player has 2 dicks] 
-					if (player.cocks.length === 2) outputText("Your " + player.cockDescript(1) + " rubs against her skin pleasantly.  ");
+					if (player.cocks.length == 2) outputText("Your " + player.cockDescript(1) + " rubs against her skin pleasantly.  ");
 					//[if player has more than 2 dicks] 
 					if (player.cocks.length > 2) outputText("The rest of your " + player.multiCockDescriptLight() + " rubs against her skin pleasantly.  ");
 					outputText("Thanks to your extended foreplay, your mistress quickly comes to a climax that reverberates through both your bodies, causing you to release yourself into your mistress and cover your fingers with your other fluids.");
@@ -343,11 +343,11 @@ public class FetishCultistScene extends AbstractLakeContent implements Encounter
 				}
 				else {
 					//(variant 1: servant boy, requires dick)
-					if (player.cocks.length > 0 && (player.vaginas.length === 0 || rand(2) === 0)) {
+					if (player.cocks.length > 0 && (player.vaginas.length == 0 || rand(2) == 0)) {
 						outputText("  You see that your " + player.armorName + " have become a nice looking, if simple, frilled white shirt and bow tie along with black pants and matching shoes.  They make you look like you would be at home in a manor attending the needs of a noble, if it were not for the flaps on the front and back of your pants that give easy access to your " + player.multiCockDescriptLight());
 						if (player.vaginas.length) outputText(", your " + player.vaginaDescript(0) + ",");
 						outputText(" and your " + player.buttDescript() + ".  Any undergarments you had are now gone.\n\n");
-						if (player.armor === armors.C_CLOTH) player.modArmorName = "cute servant's clothes";
+						if (player.armor == armors.C_CLOTH) player.modArmorName = "cute servant's clothes";
 						outputText("'Boy, I am feeling aroused.' she says to you in an authoritative voice. 'I want you to please me.'\n\n");
 						outputText("'Yes, mistress.' you reply without hesitation, your thoughts unable to comprehend anything besides this 'game'. You could swear that you were in the sitting room of a manor.  'How do you wish to be pleased?'\n\n");
 						outputText("'I'm glad to see you remember your place.  I wish you to first rub my feet, then move up my legs, and finally, start relieving the tension in my lower lips with your capable hands.'\n\n");
@@ -356,7 +356,7 @@ public class FetishCultistScene extends AbstractLakeContent implements Encounter
 						outputText("With a cry of joy you lift the front flap on your pants revealing your very erect " + player.multiCockDescriptLight() + " and lie on the ground ready to please your mistress the best way you can.  You watch your mistress rise off her chair and slowly lower herself onto your " + player.cockDescript(0) + " moaning in pleasure.  Her interior is so familiar and so wonderful.  ");
 						if (player.vaginas.length > 0) outputText("You feel desire start to well up in your " + player.vaginaDescript(0) + ", but you resist the urge to act on it; that's not why your mistress keeps you. ");
 						outputText("She starts to rock back and forth, your " + player.cockDescript(0) + " bringing her to the height of pleasure. ");
-						if (player.cocks.length === 2) outputText("Your " + player.cockDescript(1) + " rubs against her skin pleasantly.  ");
+						if (player.cocks.length == 2) outputText("Your " + player.cockDescript(1) + " rubs against her skin pleasantly.  ");
 						if (player.cocks.length > 2) outputText("The rest of your " + player.multiCockDescriptLight() + " rub against her skin pleasantly.  ");
 						outputText("Thanks to your extended foreplay, your mistress quickly comes to a climax that reverberates through both your bodies, causing you to release yourself into your mistress.  ");
 						if (player.cocks.length > 1) outputText("You take special care to make sure that the rest of your cum does not get on your mistress in any way.  ");
@@ -368,7 +368,7 @@ public class FetishCultistScene extends AbstractLakeContent implements Encounter
 						//[if player has a dick] 
 						if (player.cocks.length > 0) outputText(", your " + player.multiCockDescriptLight() + ",");
 						outputText(" and your " + player.buttDescript() + ".\n\n");
-						if (player.armor === armors.C_CLOTH) player.modArmorName = "maid's clothes";
+						if (player.armor == armors.C_CLOTH) player.modArmorName = "maid's clothes";
 						outputText("'Girl, I am feeling aroused.' she says to you in an authoritative voice. 'I want you to please me.'\n\n");
 						outputText("'Yes, mistress.' you reply without hesitation, your thoughts unable to comprehend anything besides this 'game'.  You could swear that you were in the sitting room of a manor.  'How do you wish to be pleased?'\n\n");
 						outputText("'I'm glad to see you remember your place.  I wish you to first rub my feet, then move up my legs, and finally, start relieving the tension in my lower lips with your capable hands.'\n\n");
@@ -382,9 +382,9 @@ public class FetishCultistScene extends AbstractLakeContent implements Encounter
 					}
 				}
 				//(variant 4: gender-less servant, requires that you have no dick or vagina)
-				if (player.gender === 0) {
+				if (player.gender == 0) {
 					outputText("You see that your " + player.armorName + " have become a nice and comfortable outfit of a shirt white and black pants, that make you look well suited to work in a manor.  However, you notice that there is a flap on your pants that gives easy access to your " + player.buttDescript() + ".\n\n");
-					if (player.armor === armors.C_CLOTH) player.modArmorName = "servant's clothes";
+					if (player.armor == armors.C_CLOTH) player.modArmorName = "servant's clothes";
 					outputText("'Servant, I am feeling aroused.' she says to you in an authoritative voice. 'I want you to please me.'\n\n");
 					outputText("'Yes, mistress.' you reply without hesitation, your thoughts unable to comprehend anything besides this 'game'.  You could swear that you were in the sitting room of a manor.  'How do you wish to be pleased?'\n\n");
 					outputText("'I'm glad to see you remember your place.  I wish you to first rub my feet, then move up my legs, and finally, start relieving the tension in my lower lips with your capable hands.'\n\n");
@@ -393,11 +393,11 @@ public class FetishCultistScene extends AbstractLakeContent implements Encounter
 					outputText("Satisfied, your mistress rises and dresses.  She tells you that she is going for a walk, and that you should continue your duties now.  ");
 				}
 				//Check for bad-end start!
-				if (player.inte <= 10 && rand(2) === 0) cultistBadEnd();
+				if (player.inte <= 10 && rand(2) == 0) cultistBadEnd();
 				//(ending after all cultist rape scenes)
 				else {
 					outputText("A few hours later your mind finally returns to reality.  You look around, but can see no sign of the cultist that you saw earlier.  ");
-					if (player.armor !== armors.C_CLOTH) outputText("You find your " + player.armorName + " back on your body with no sign of the strange clothes you were wearing before.  ");
+					if (player.armor != armors.C_CLOTH) outputText("You find your " + player.armorName + " back on your body with no sign of the strange clothes you were wearing before.  ");
 					else outputText("You are still wearing the " + player.armorName + " that she gave you, and there is no sign of your old clothes.  ");
 					outputText("The ordeal has also left you with a slightly dulled mind, and some of the desire you felt still lingers.");
 					player.orgasm('Generic');
@@ -412,14 +412,14 @@ public class FetishCultistScene extends AbstractLakeContent implements Encounter
 		{
 			clearOutput();
 			//(nun worship version, this one looks like it will be a little shorter than the other one was, only two variations again)
-			if (monster.armorName === "pervy nun's clothing") {
+			if (monster.armorName == "pervy nun's clothing") {
 				outputText("You see that the cultist's outfit has fixed on a naughty nun outfit with specially placed holes over her sexual parts.  As you get close to her, she goes down on her hands and knees and says to you, \"<i>Mighty sex god, who have shown me your power; please, take my body!</i>\"\n\n");
 				if (player.cor < 40) outputText("You are rather taken aback by this odd declaration, but in the end you decide: <i>what the hell, I'm horny.</i>\n\n");
 				else outputText("You nod to yourself thinking: <i>that's right, I am a sex god.</i>\n\n");
 				outputText("You stride over to her and loosen your " + player.armorName + " and let them drop to the ground before sitting down in front of her.  \"<i>Show me your affections, then maybe I'll be willing to take you,</i>\" you tell her.  She looks over your naked body with a sort of reverence before bowing her head and saying, \"<i>Of course my lord.</i>\"  With that, she gets to work on you.\n\n");
 				outputText("She takes one of your arms and begins kissing it, from your shoulder to your hand.  Each kiss sends a short quiver of pleasure through you, one you could swear the cultist was also feeling.  When she gets to your hands she kisses each of your fingers, then takes each one into her mouth in turn, sucking on them and licking them with passion.  Her lustful acts are intense, and you can feel yourself getting close to your peak, just from her playing with your fingers.  With a shudder from the sensations, you haltingly tell her, \"<i>Good, now the other arm.</i>\"  With no hesitation, she complies.  Before too long, the fingers on your other hand are being teased and cleaned by her mouth, and again you are brought to the brink.  You shakily pull your hand back and tell her that she has done enough; you are willing to take her now.\n\n");
 				//(if player has a dick)
-				if (player.cocks.length > 0 && (player.gender !== 3 || rand(2))) {
+				if (player.cocks.length > 0 && (player.gender != 3 || rand(2))) {
 					outputText("She meekly leans back onto the ground and parts her legs with her hands, giving you a clear view of her needy hole through the large opening in her clothing.  \"<i>My lord, please fill me!</i>\" she begs you.  You stand and stride over to her.  \"<i>Yes little girl, accept my divine rod");
 					if (player.cocks.length > 1) outputText("s");
 					outputText(" in your pussy,</i>\" you reply.  ");
@@ -432,7 +432,7 @@ public class FetishCultistScene extends AbstractLakeContent implements Encounter
 						outputText("You thrust once, before using one of your hands to guide the second of your " + player.multiCockDescriptLight() + " inside her.  You are rather surprised at how easily she seems to accommodate your size");
 						if (player.cocks.length > 2) {
 							outputText(" and decide to push the ");
-							if (player.cocks.length === 3) outputText("last");
+							if (player.cocks.length == 3) outputText("last");
 							if (player.cocks.length > 3) outputText("rest");
 							outputText(" in the same way.  ");
 						}
@@ -457,7 +457,7 @@ public class FetishCultistScene extends AbstractLakeContent implements Encounter
 				outputText("Satisfied, you continue on your way.");
 				player.orgasm('Generic');
 			}
-			else if (monster.armorName === "swimsuit") {
+			else if (monster.armorName == "swimsuit") {
 				//(scene requires that the PC not be genderless)
 				//foreplay
 				outputText("You advance on the defeated cultist, whose outfit seems to have fixated on such a ridiculously skimpy swimming suit that she might as well be naked.  She looks up at you with a worried expression as you take a closer look at her.  The cultist slowly starts to speak, \"\"<i>Ah, hey there " + player.mf("mister", "miss") + ", what a surprise to see you here!</i>\"  Embarrassed, she tries to make her incredibly revealing swimming suit somewhat less obscene while blushing furiously.  \"<i>Oh mercy me, just thinking about how much of me that you can see is turning me on.</i>\"  You arch an eyebrow: is this girl an exhibitionist?\n\n");
@@ -507,7 +507,7 @@ public class FetishCultistScene extends AbstractLakeContent implements Encounter
 				if (player.cor < 40) outputText("You stop, thinking that maybe you should let her go, but she grabs your hand and gives you a look of desperation.  Deciding to finish the job, you push her to her knees and the look of fear returns to her face.  ");
 				else outputText("With a wicked smile, you push her to her knees.  ");
 				//(if player has a dick)
-				if (player.cocks.length > 0 && (player.gender !== 3 || rand(2))) {
+				if (player.cocks.length > 0 && (player.gender != 3 || rand(2))) {
 					outputText("Telling her that she is going to please you whether she wants to or not, you reveal your " + player.multiCockDescriptLight() + ".  She screams for help and starts struggling against your grip, but you tell her that no one is going to save her now.  Easily overpowering her, you force her to the ground with no care for her comfort and start tearing off her clothes.  Once you have a clear view of her love hole, you look back up at her face and see that she has stopped struggling and is now crying.  ");
 					//[if not corrupted] 
 					if (player.cor < 40) outputText("Feeling uncomfortable at this, you start to pull away, but her expression turns instantly into a look of pure horror and her body becomes completely tense.  As you move back to her, her body relaxes and her expression returns to the tear-stricken face.  Obviously this is an act and she would be far more bothered by you if you left her without finishing the job.  ");
@@ -524,7 +524,7 @@ public class FetishCultistScene extends AbstractLakeContent implements Encounter
 					outputText("A few minutes later, you close your " + player.armorName + " back up, and look back at the cultist.  She is lying on the ground in her farm hand outfit with a look of utter bliss on her face.  Satisfied, you continue on your way.");
 					player.orgasm('Vaginal');
 				}
-				if (player.gender === 0) {
+				if (player.gender == 0) {
 					outputText("You make her rub your body down, but you don't really have a means to rape her.  Afterwards you do feel better, but didn't get any real release.  Disappointed, you continue on your way.");
 				}
 			}
@@ -549,7 +549,7 @@ public class FetishCultistScene extends AbstractLakeContent implements Encounter
 			outputText("After all the foreplay, the two of you are already reaching your peaks thanks to her incredible, tight cunt and its ministrations to your member.  The cultist is screaming in pleasure, telling you to look at her, to fondle her, and to fuck her; you happily oblige her.  Her interior contracts about your " + player.cockDescript(x) + " as you loose the proof of your orgasm deep inside her.");
 			if (player.cockTotal() > 1) {
 				outputText("  Your remaining cock");
-				if (player.cockTotal() === 2) outputText(" lets loose its load");
+				if (player.cockTotal() == 2) outputText(" lets loose its load");
 				else outputText("s let loose their loads");
 				outputText(" onto her back and legs, ");
 				if (player.cumQ() < 50) outputText("adding a little white decoration");

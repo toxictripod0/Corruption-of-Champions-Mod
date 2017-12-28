@@ -23,7 +23,7 @@ package classes.Scenes.Places
 		//Main Ingnam menu.
 		public function menuIngnam():void {
 			//Force autosave
-			if (player.slotName !== "VOID" && mainView.getButtonText(0) !== "Game Over" && flags[kFLAGS.HARDCORE_MODE] > 0) 
+			if (player.slotName != "VOID" && mainView.getButtonText(0) != "Game Over" && flags[kFLAGS.HARDCORE_MODE] > 0) 
 			{
 				getGame().saves.saveGame(player.slotName);
 			}
@@ -54,7 +54,7 @@ package classes.Scenes.Places
 			if (camp.setLevelButton()) return;
 			hideUpDown();
 			menu();
-			if (flags[kFLAGS.GRIMDARK_MODE] === 0) {
+			if (flags[kFLAGS.GRIMDARK_MODE] == 0) {
 				addButton(0, "Explore", exploreIngnam);
 				addButton(1, "Shops", menuShops);
 			}
@@ -79,7 +79,7 @@ package classes.Scenes.Places
 						) && (
 								!player.hasStatusEffect(StatusEffects.Exgartuan)
 								||
-								player.statusEffectv2(StatusEffects.Exgartuan) !== 0
+								player.statusEffectv2(StatusEffects.Exgartuan) != 0
 						)
 						|| flags[kFLAGS.SFW_MODE] >= 1
 				) addButton(8, "Meditate", kGAMECLASS.masturbation.masturbateMenu);
@@ -105,8 +105,8 @@ package classes.Scenes.Places
 			clearOutput();
 			hideMenus();
 			outputText("Your time has come to meet up with the village elders. You know you are going to get sent to the demon realm and you're most likely not going to be able to return to Ingnam. You give your family and friends a long farewell.");
-			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] === 0) { //Doesn't happen in New Game+.
-				if (player.weaponName !== "fists") {
+			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) { //Doesn't happen in New Game+.
+				if (player.weaponName != "fists") {
 					hasWeapon = true;
 					player.setWeapon(WeaponLib.FISTS);
 				}
@@ -158,7 +158,7 @@ package classes.Scenes.Places
 			hideMenus();
 			clearOutput();
 			var chooser:int = rand(4);
-			if (chooser === 0) {
+			if (chooser == 0) {
 				thiefScene.encounterThief();
 				return;
 			}
@@ -322,11 +322,11 @@ package classes.Scenes.Places
 		public function transactionYes(item:ItemType, price:int, shop:int):void {
 			//Determine shop
 			var shopToGo:Function = null
-			if (shop === 1) shopToGo = shopBlacksmith;
-			else if (shop === 2) shopToGo = shopBlacksmith;
-			else if (shop === 3) shopToGo = shopTailor;
-			else if (shop === 4) shopToGo = shopAlchemist;
-			else if (shop === 5) shopToGo = shopTradingPost;
+			if (shop == 1) shopToGo = shopBlacksmith;
+			else if (shop == 2) shopToGo = shopBlacksmith;
+			else if (shop == 3) shopToGo = shopTailor;
+			else if (shop == 4) shopToGo = shopAlchemist;
+			else if (shop == 5) shopToGo = shopTradingPost;
 			else shopToGo = shopBlackMarket;
 			//Process
 			clearOutput();
@@ -344,12 +344,12 @@ package classes.Scenes.Places
 			}
 		}
 		public function transactionNo(shop:int):void {
-			if (shop === 1) shopBlacksmith();
-			else if (shop === 2) shopBlacksmith();
-			else if (shop === 3) shopTailor();
-			else if (shop === 4) shopAlchemist();
-			else if (shop === 5) shopTradingPost();
-			else if (shop === 6) shopBlackMarket();
+			if (shop == 1) shopBlacksmith();
+			else if (shop == 2) shopBlacksmith();
+			else if (shop == 3) shopTailor();
+			else if (shop == 4) shopAlchemist();
+			else if (shop == 5) shopTradingPost();
+			else if (shop == 6) shopBlackMarket();
 			else shopBlackMarket();
 		}
 		
@@ -384,7 +384,7 @@ package classes.Scenes.Places
 			if (flags[kFLAGS.INGNAM_PROLOGUE_COMPLETE] > 0 && flags[kFLAGS.INGNAM_GREETED_AFTER_LONGTIME] <= 0) {
 				welcomeBack();
 			}
-			if ((player.ears.type > 0 && player.ears.type !== flags[kFLAGS.INGNAM_EARS_LAST_TYPE] && flags[kFLAGS.INGNAM_EARS_FREAKOUT] <= 0) || (player.tail.type > 0 && player.tail.type !== flags[kFLAGS.INGNAM_TAIL_LAST_TYPE] && flags[kFLAGS.INGNAM_TAIL_FREAKOUT] <= 0) && flags[kFLAGS.INGNAM_PROLOGUE_COMPLETE] <= 0) {
+			if ((player.ears.type > 0 && player.ears.type != flags[kFLAGS.INGNAM_EARS_LAST_TYPE] && flags[kFLAGS.INGNAM_EARS_FREAKOUT] <= 0) || (player.tail.type > 0 && player.tail.type != flags[kFLAGS.INGNAM_TAIL_LAST_TYPE] && flags[kFLAGS.INGNAM_TAIL_FREAKOUT] <= 0) && flags[kFLAGS.INGNAM_PROLOGUE_COMPLETE] <= 0) {
 				appearanceFreakout();
 				return;
 			}
@@ -401,16 +401,16 @@ package classes.Scenes.Places
 			outputText("The innkeeper looks at you and says, \"<i>Welcome back! I've missed you! How did your adventures go?</i>\"");
 			outputText("\n\nYou tell the innkeeper about your adventures and how you've met various denizens in Mareth.\n\n");
 			if (flags[kFLAGS.TIMES_TRANSFORMED] <= 0) outputText("The innkeeper looks at you in awe and says, \"<i>Wow, you haven't changed at all! How did you manage to stay in that strange realm for years and still be normal?</i>\""); 
-			else if (player.race() === "human") {
+			else if (player.race() == "human") {
 				outputText("The innkeeper looks at you and says, \"<i>I can see that you have changed a bit.</i>\" ");
 			}
 			else {
 				outputText("The innkeeper looks at you and says, \"<i>I can see that you have changed quite a lot! Back then, before you left, you were a human. Now look at yourself!</i>\"");
 			}
 			if (player.horns.value > 0 && player.horns.type > 0) {
-				outputText("\n\n\"<i>Are these " + (player.horns.type === Horns.ANTLERS ? "antlers" : "horns") + "? I can imagine they must be real,</i>\" The innkeeper says before touching your [horns]. You can already feel his fingers rubbing against your [horns]. \"<i>Yes, they're real and I think you look better,</i>\" he says. You thank him for complimenting on your horns.");
+				outputText("\n\n\"<i>Are these " + (player.horns.type == Horns.ANTLERS ? "antlers" : "horns") + "? I can imagine they must be real,</i>\" The innkeeper says before touching your [horns]. You can already feel his fingers rubbing against your [horns]. \"<i>Yes, they're real and I think you look better,</i>\" he says. You thank him for complimenting on your horns.");
 			}
-			if (player.wings.type !== Wings.NONE) {
+			if (player.wings.type != Wings.NONE) {
 				outputText("\n\nNext, he looks at your wings that sprout from your back and says, \"<i>Wings? I've never seen a person with wings before!</i>\" ");
 				if (player.canFly()) outputText("You tell him that you can fly. To demonstrate, you guide the innkeeper outside and you grit your teeth with effort as you flap your wings and you finally launch off from the ground and fly around the town! The people of Ingnam, including your family and friends, look at you in shock and some even say, \"<i>" + player.mf("He", "She") + " can fly!</i>\"");
 			}
@@ -423,13 +423,13 @@ package classes.Scenes.Places
 			clearOutput();
 			outputText("The innkeeper stands up to see that there's something unusual with your appearance.");
 			if (player.ears.type > 0) {
-				if (player.ears.type === Ears.HORSE) {
+				if (player.ears.type == Ears.HORSE) {
 					outputText("\n\nHe says, \"<i>Your ears... They look different! They look like horse's! I have no idea how your ears changed.</i>\"");
 				}
-				if (player.ears.type === Ears.DOG) {
+				if (player.ears.type == Ears.DOG) {
 					outputText("\n\nHe says, \"<i>Your ears... They look like dog's! I have no idea how your ears changed.</i>\"");
 				}
-				if (player.ears.type === Ears.CAT) {
+				if (player.ears.type == Ears.CAT) {
 					outputText("\n\nHe says, \"<i>Your ears... They look like cat's! I have no idea how your ears changed but other than that, you look much cuter with cat ears!</i>\" He walks over to you and scratch your cat-ears. \"<i>They look and feel so real,</i>\" he says.");
 				}
 				flags[kFLAGS.INGNAM_EARS_LAST_TYPE] = player.ears.type;
@@ -484,7 +484,7 @@ package classes.Scenes.Places
 			else {
 				player.addStatusValue(StatusEffects.Drunk, 2, 1);
 				if (player.statusEffectv1(StatusEffects.Drunk) < 2) player.addStatusValue(StatusEffects.Drunk, 1, 1);
-				if (player.statusEffectv2(StatusEffects.Drunk) === 2) {
+				if (player.statusEffectv2(StatusEffects.Drunk) == 2) {
 					outputText("\n\n<b>You feel a bit drunk. Maybe you should cut back on the beers?</b>");
 				}
 				//Get so drunk you end up peeing! Genderless can still urinate.
@@ -614,19 +614,19 @@ package classes.Scenes.Places
 			clearOutput();
 			var rumor:int = rand(4);
 			outputText("You ask the innkeeper if he has anything special to tell you.");
-			if (flags[kFLAGS.INGNAM_RUMORS] === 0) {
+			if (flags[kFLAGS.INGNAM_RUMORS] == 0) {
 				outputText("\n\nHe nods and says, \"<i>Let me tell you. You know what happens to the so-called 'champions'?</i>\" ");
 				outputText("\n\nYou nod in response and he continues, \"<i>Well... Nobody ever came. I've seen twenty people departing over the course of my career. Twenty years. None of them ever returned. Who knows what happened to them? Some say they're abducted by an evil presence as soon as they set foot into the portal.</i>\"");
 				outputText("\n\nHe looks at you and sniffles. \"<i>Truth be told, you're going to be the Champion of Ingnam. You will be sent to the so-called 'portal' that is supposedly located in Mount Ilgast. I will miss your patronage at the inn. You're still welcome anytime.</i>\"");
 				flags[kFLAGS.INGNAM_RUMORS] = 1;
 			}
-			else if (flags[kFLAGS.INGNAM_RUMORS] === 1) {
+			else if (flags[kFLAGS.INGNAM_RUMORS] == 1) {
 				outputText("\n\nHe nods and says, \"<i>You know Mount Ilgast?</i>\" ");
 				outputText("\n\nYou nod in response and he continues, \"<i>Before I began my work as an innkeeper, I was an adventurer. I've explored Mount Ilgast once. There was something glowing. It's a portal but it's no ordinary portal. Even strange was that there was something stirring in my groin. Honestly, I swear I never felt that sensation before. I winded up masturbating at the cave entrance just because of that warmth. As soon as I go near the portal, the warm sensation came back again. It's just strange, really strange. So I've hurried back to Ingnam and never visited the mountain again.</i>\"");
 				outputText("\n\nYou thank him for telling you.");
 				flags[kFLAGS.INGNAM_RUMORS] = 2;
 			}
-			else if (flags[kFLAGS.INGNAM_RUMORS] === 2) {
+			else if (flags[kFLAGS.INGNAM_RUMORS] == 2) {
 				outputText("\n\nHe nods and says, \"<i>Would you really like to know something special?</i>\" You nod in response and he continues, \"<i>One time I've seen a man with cat ears and a tail. I thought they were just accessories but he insisted it was real. So I tugged on his ears and it was... real. I thought he used a lot of glue but he insisted that it's real. His ears do feel real. His tail even swished from side to side like it's an actual cat tail. He told me about something called 'Whisker Fruit' or something. So my guess is that the food in the so-called 'demon realm' can change you.</i>\"");
 				outputText("\n\nYou tell him if he has some tips for you. He says, \"<i>Yes. If I were you, I would eat them only as last resort. Even a food that could transform you can make the difference between life and death.</i>\" You thank him for the advice.");
 				outputText("\n\n\"<i>You're welcome. I have nothing left to tell you but you're always welcome,</i>\" he says.");

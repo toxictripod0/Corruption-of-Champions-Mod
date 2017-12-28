@@ -19,7 +19,7 @@ package classes.Scenes.Areas.GlacialRift
 					var yetiDamage:Number = 30 + rand(50);
 					HP -= yetiDamage;
 					outputText("The beast takes <b><font color=\"#080000\">" + yetiDamage + "</font></b> damage. ");
-					if (rand(2) === 0) {
+					if (rand(2) == 0) {
 						outputText("<b>He is now stunned.</b>");
 						createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
 					}

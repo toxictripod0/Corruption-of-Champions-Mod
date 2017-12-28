@@ -42,9 +42,9 @@ package classes.Scenes.Areas
 				name  : "sheila_xp3",
 				chance: Encounters.ALWAYS,
 				when  : function ():Boolean {
-					return flags[kFLAGS.SHEILA_DEMON] === 0
-						   && flags[kFLAGS.SHEILA_XP] === 3
-						   && getGame().time.hours === 20
+					return flags[kFLAGS.SHEILA_DEMON] == 0
+						   && flags[kFLAGS.SHEILA_XP] == 3
+						   && getGame().time.hours == 20
 						   && flags[kFLAGS.SHEILA_CLOCK] >= 0;
 				},
 				call  : game.sheilaScene.sheilaXPThreeSexyTime
@@ -63,31 +63,31 @@ package classes.Scenes.Areas
 			}, {
 				name: "niamh",
 				when: function ():Boolean {
-					return flags[kFLAGS.NIAMH_MOVED_OUT_COUNTER] === 1
+					return flags[kFLAGS.NIAMH_MOVED_OUT_COUNTER] == 1
 				},
 				call: game.telAdre.niamh.niamhPostTelAdreMoveOut
 			}, {
 				name  : "owca",
 				chance: 0.3,
 				when  : function ():Boolean {
-					return flags[kFLAGS.OWCA_UNLOCKED] === 0;
+					return flags[kFLAGS.OWCA_UNLOCKED] == 0;
 				},
 				mods  : [fn.ifLevelMin(8)],
 				call  : game.owca.gangbangVillageStuff
 			}, {
 				name: "bazaar",
 				when: function ():Boolean {
-					return flags[kFLAGS.BAZAAR_ENTERED] === 0;
+					return flags[kFLAGS.BAZAAR_ENTERED] == 0;
 				},
 				call: game.bazaar.findBazaar
 			}, {
 				name  : "helXizzy",
 				chance: 0.2,
 				when  : function ():Boolean {
-					return flags[kFLAGS.ISABELLA_CAMP_APPROACHED] !== 0
-						   && flags[kFLAGS.ISABELLA_MET] !== 0
-						   && flags[kFLAGS.HEL_FUCKBUDDY] === 1
-						   && flags[kFLAGS.ISABELLA_ANGRY_AT_PC_COUNTER] === 0
+					return flags[kFLAGS.ISABELLA_CAMP_APPROACHED] != 0
+						   && flags[kFLAGS.ISABELLA_MET] != 0
+						   && flags[kFLAGS.HEL_FUCKBUDDY] == 1
+						   && flags[kFLAGS.ISABELLA_ANGRY_AT_PC_COUNTER] == 0
 						   && !kGAMECLASS.isabellaFollowerScene.isabellaFollower()
 						   && (player.tallness <= 78 || flags[kFLAGS.ISABELLA_OKAY_WITH_TALL_FOLKS])
 				},
@@ -114,7 +114,7 @@ package classes.Scenes.Areas
 			}, {
 				name: "isabella",
 				when: function ():Boolean {
-					return flags[kFLAGS.ISABELLA_PLAINS_DISABLED] === 0
+					return flags[kFLAGS.ISABELLA_PLAINS_DISABLED] == 0
 				},
 				call: game.isabellaScene.isabellaGreeting
 			}, {
@@ -132,7 +132,7 @@ package classes.Scenes.Areas
 			}, {
 				name: "sheila",
 				when: function ():Boolean {
-					return flags[kFLAGS.SHEILA_DISABLED] === 0 && flags[kFLAGS.SHEILA_CLOCK] >= 0
+					return flags[kFLAGS.SHEILA_DISABLED] == 0 && flags[kFLAGS.SHEILA_CLOCK] >= 0
 				},
 				call: game.sheilaScene.sheilaEncounterRouter
 			});
@@ -145,10 +145,10 @@ package classes.Scenes.Areas
 		}
 
 		private function helXIzzy():void {
-			if (flags[kFLAGS.HEL_ISABELLA_THREESOME_ENABLED] === 0) {
+			if (flags[kFLAGS.HEL_ISABELLA_THREESOME_ENABLED] == 0) {
 				//Hell/Izzy threesome intro
 				kGAMECLASS.helScene.salamanderXIsabellaPlainsIntro();
-			} else if (flags[kFLAGS.HEL_ISABELLA_THREESOME_ENABLED] === 1) {
+			} else if (flags[kFLAGS.HEL_ISABELLA_THREESOME_ENABLED] == 1) {
 				//Propah threesomes here!
 				kGAMECLASS.helScene.isabellaXHelThreeSomePlainsStart();
 			}

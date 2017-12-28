@@ -36,12 +36,12 @@ package classes.Scenes.Places.Prison
 		{
 			clearOutput();
 			outputText("You call out, hoping someone might come help you.\n\n");
-			if (rand(2) === 1)
+			if (rand(2) == 1)
 			{
 				prisonCaptorPunishmentStockadesVisitor();
 				return;
 			}
-			if (rand(2) === 1)
+			if (rand(2) == 1)
 			{
 				prisonCaptorPunishmentStockadesFreedom();
 				return;
@@ -182,7 +182,7 @@ package classes.Scenes.Places.Prison
 			outputText("(Placeholder) You reluctantly accept your " + prison.prisonCaptor.captorTitle + "'s terms, and apologize for misbehaving. ");
 			prison.changeEsteem(-3,prison.inPrison);
 			prison.changeObey(1,prison.inPrison);
-			if (rand(4) === 1)
+			if (rand(4) == 1)
 			{
 				outputText("\n\n(Placeholder) Your " + prison.prisonCaptor.captorTitle + " isn't satisfied that you've learned your lesson, and decides to leave you in the stockades a bit longer. ");
 				player.changeStatusValue(StatusEffects.PrisonCaptorEllyStatus,3,2 + rand(4));
@@ -481,7 +481,7 @@ package classes.Scenes.Places.Prison
 			outputText("(Placeholder) You reluctantly accept your " + prison.prisonCaptor.captorTitle + "'s terms, half heartedly thanking her for punishing you and apologize for misbehaving. ");
 			prison.changeEsteem(-3,prison.inPrison);
 			prison.changeObey(1,prison.inPrison);
-			if (rand(4) === 1)
+			if (rand(4) == 1)
 			{
 				outputText("\n\n(Placeholder) Your " + prison.prisonCaptor.captorTitle + " isn't satisfied that you've learned your lesson, and decides to leave you in the confinement box a bit longer. ");
 				player.changeStatusValue(StatusEffects.PrisonCaptorEllyStatus,3,2 + rand(4));
@@ -514,7 +514,7 @@ package classes.Scenes.Places.Prison
 			prison.changeWill(-prison.prisonWillCost(10));
 			var successChance:int = 5;
 			successChance += (player.str / 4);
-			if (player.lowerBody.type === LowerBody.HOOFED || player.lowerBody.type === LowerBody.BUNNY || player.lowerBody.type === LowerBody.KANGAROO) successChance += 10;
+			if (player.lowerBody.type == LowerBody.HOOFED || player.lowerBody.type == LowerBody.BUNNY || player.lowerBody.type == LowerBody.KANGAROO) successChance += 10;
 			if (rand(100) < successChance) {
 				outputText("You struggle as hard as you can. With all of your strength, you manage to snap the belts attaching you to vertical metal bars. You kick the panel as hard as you can and with a loud THUD, the panel breaks off!");
 				outputText("\n\n" + prison.prisonCaptor.captorTitle + prison.prisonCaptor.captorName + " hears the sound and rushes over to your cell to find out that you've broken the confinement box. \"<i>No! You BROKE the confinement box! You know this thing costs 1,000 gems to order and you've ruined it. I'll have to send it to get it repaired. Very well, I'll lift your punishment.</i>\" She looks angry.");
@@ -532,7 +532,7 @@ package classes.Scenes.Places.Prison
 		//-----------------------------------------------------------------------
 		public function prisonCaptorPunishmentBJTrainer():void
 		{
-			if (flags[kFLAGS.PRISON_PUNISHMENT] === 3)
+			if (flags[kFLAGS.PRISON_PUNISHMENT] == 3)
 			{
 				outputText("\"<i>I should be clapping you in the stockade or strapping you to the rack for your continued disobedience, but I want you to finish your current lesson first. The clock is ticking, slut. Start sucking if you really want to be free.</i>\"\n\n ");
 				doNext(playerMenu);
@@ -558,7 +558,7 @@ package classes.Scenes.Places.Prison
 			clearOutput();
 			var fillVal:int = 0;
 			var selector:int = 0;
-			if (player.statusEffectv4(StatusEffects.PrisonRestraints) > 0 && !(player.statusEffectv4(StatusEffects.PrisonRestraints) === 4))
+			if (player.statusEffectv4(StatusEffects.PrisonRestraints) > 0 && !(player.statusEffectv4(StatusEffects.PrisonRestraints) == 4))
 			{
 				outputText("Because of the way your mouth is gagged you are unable to suck on the dildo. You are consumed by the thought that the next time you are given the chance to earn your freedom this way, it might be wise to avoid doing things that would earn you a gag.");
 				doNext(playerMenu);

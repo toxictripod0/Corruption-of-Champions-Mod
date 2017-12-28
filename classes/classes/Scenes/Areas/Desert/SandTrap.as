@@ -15,7 +15,7 @@
 			game.spriteSelect(SpriteDb.s_sandtrap);
 			if (!hasStatusEffect(StatusEffects.Climbed)) createStatusEffect(StatusEffects.Climbed,0,0,0,0);
 			outputText("Instead of attacking, you turn away from the monster and doggedly attempt to climb back up the pit, digging all of your limbs into the soft powder as you climb against the sandslide.");
-			if (trapLevel() === 4) {
+			if (trapLevel() == 4) {
 				outputText("\n\nYou eye the ground above you.  The edge of the pit is too sheer, the ground too unstable... although it looks like you can fight against the currents carrying you further down, it seems impossible to gain freedom with the sand under the monster's spell.");
 			}
 			else {
@@ -37,7 +37,7 @@
 
 		public function trapLevel(adjustment:Number = 0):Number {
 			if (!hasStatusEffect(StatusEffects.Level)) createStatusEffect(StatusEffects.Level,4,0,0,0);
-			if (adjustment !== 0) {
+			if (adjustment != 0) {
 				addStatusValue(StatusEffects.Level,1,adjustment);
 				//Keep in bounds ya lummox
 				if (statusEffectv1(StatusEffects.Level) < 1) changeStatusValue(StatusEffects.Level,1,1);
@@ -81,7 +81,7 @@
 		override protected function performCombatAction():void
 		{
 			if (hasStatusEffect(StatusEffects.Level)) {
-				if (trapLevel() === 4 && !hasStatusEffect(StatusEffects.Climbed)) nestleQuikSandAttack();
+				if (trapLevel() == 4 && !hasStatusEffect(StatusEffects.Climbed)) nestleQuikSandAttack();
 				else sandTrapPheremones();
 //PC sinks a level (end of any turn in which player didn't successfully \"<i>Wait</i>\"):
 				if (!hasStatusEffect(StatusEffects.Climbed)) {
@@ -111,7 +111,7 @@
 		public function SandTrap()
 		{
 			//1/3 have fertilized eggs!
-			if (rand(3) === 0) this.createStatusEffect(StatusEffects.Fertilized,0,0,0,0);
+			if (rand(3) == 0) this.createStatusEffect(StatusEffects.Fertilized,0,0,0,0);
 			this.a = "the ";
 			if (game.silly())
 				this.short = "sand tarp";

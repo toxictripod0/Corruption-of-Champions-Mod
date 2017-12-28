@@ -31,7 +31,7 @@ package classes.Scenes.NPCs
 			if (player.canFly()) outputText("beat your wings and ");
 			outputText("try to escape, but " + short + " wraps one of her writhing roots around your [leg], slamming you to the ground and tying you up with several more!  \"<i>And just where do you think you're going, my little meat?</i>\" she hisses.  Her bark splits open, exposing her body, and a green shaft snakes out of her crotch, sprouting thorns and blooming into a rose at the tip.  She holds the drooling blossom over your [face] as she forces your mouth open with her roots! ");
 			//hp loss, begin lust constrict next round
-			if (player.findPerk(PerkLib.Juggernaut) < 0 && armorPerk !== "Heavy") {var damage:int = 15;
+			if (player.findPerk(PerkLib.Juggernaut) < 0 && armorPerk != "Heavy") {var damage:int = 15;
 			damage = player.takeDamage(damage, true);
 			}
 			outputText("\n\n");
@@ -76,7 +76,7 @@ package classes.Scenes.NPCs
 				else if (statusEffectv1(StatusEffects.JojoPyre) <= 1) {
 					//display applicable EOR outputs for fire not lit, then these
 					//Round 2:
-					if (statusEffectv1(StatusEffects.JojoPyre) === 0) {
+					if (statusEffectv1(StatusEffects.JojoPyre) == 0) {
 						outputText("\n\nJojo scurries toward the woodpile carrying a lit torch, but an eye opens on one of the demon's upper branches and she catches him with a root, sending him tumbling.  For a moment you lose hope, but the plucky monk rolls to the side before she can deliver another lash and from there to his feet.");
 						addStatusValue(StatusEffects.JojoPyre, 1, 1);
 					}
@@ -133,7 +133,7 @@ package classes.Scenes.NPCs
 		{
 			outputText("A forest of thick roots bursts from the ground and several lash toward your [legs], trying to ensnare you!");
 			//Blinded - hit penalty, but not 100%
-			if (hasStatusEffect(StatusEffects.Blind) && rand(6) === 0) {
+			if (hasStatusEffect(StatusEffects.Blind) && rand(6) == 0) {
 				outputText("  Luckily, the demon's blindness makes it fairly easy to dodge the grasping roots, though there are a few close scrapes.");
 			}
 			//Miss
@@ -203,9 +203,9 @@ package classes.Scenes.NPCs
 
 		override protected function performCombatAction():void
 		{
-			if (HP < 50 && rand(2) === 0) healHolli();
-			else if (rand(4) === 0 && !player.hasStatusEffect(StatusEffects.HolliConstrict)) holliConstrictAttack();
-			else if (rand(2) === 0) fuckinJamanjiFlowerDarts();
+			if (HP < 50 && rand(2) == 0) healHolli();
+			else if (rand(4) == 0 && !player.hasStatusEffect(StatusEffects.HolliConstrict)) holliConstrictAttack();
+			else if (rand(2) == 0) fuckinJamanjiFlowerDarts();
 			else eAttack();
 			holliBonusHealing();
 		}

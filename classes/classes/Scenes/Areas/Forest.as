@@ -48,7 +48,7 @@ import classes.Scenes.API.FnHelpers;
 		public function get forestEncounter():Encounter { // lateinit because it references getGame()
 			const game:CoC     = getGame();
 			const fn:FnHelpers = Encounters.fn;
-			if (_forestEncounter === null) _forestEncounter =
+			if (_forestEncounter == null) _forestEncounter =
 					Encounters.group(game.commonEncounters.withImpGob, {
 						call  : tamaniScene,
 						chance: 0.15
@@ -91,7 +91,7 @@ import classes.Scenes.API.FnHelpers;
 								   !player.hasStatusEffect(StatusEffects.MarbleRapeAttempted)
 								   && !player.hasStatusEffect(StatusEffects.NoMoreMarble)
 								   && player.hasStatusEffect(StatusEffects.Marble)
-								   && flags[kFLAGS.MARBLE_WARNING] === 0;
+								   && flags[kFLAGS.MARBLE_WARNING] == 0;
 						},
 						chance: 0.10
 					}, {
@@ -157,7 +157,7 @@ import classes.Scenes.API.FnHelpers;
 		public function findChitin():void {
 			outputText(images.showImage("item-bChitin"));
 			outputText("You find a large piece of insectile carapace obscured in the ferns to your left. It's mostly black with a thin border of bright yellow along the outer edge. There's still a fair portion of yellow fuzz clinging to the chitinous shard. ");
-			if (player.statusEffectv2(StatusEffects.MetRathazul) === 0) outputText("It feels strong and flexible - maybe someone can make something of it. ");
+			if (player.statusEffectv2(StatusEffects.MetRathazul) == 0) outputText("It feels strong and flexible - maybe someone can make something of it. ");
 			inventory.takeItem(useables.B_CHITN, camp.returnToCampUseOneHour);
 		}
 		public function forestWalkFn():void {
@@ -168,10 +168,10 @@ import classes.Scenes.API.FnHelpers;
 			}
 			else {
 				outputText("As you wander in the forest, you keep ");
-				if (player.gender === 1) outputText("stroking your half-erect " + player.multiCockDescriptLight() + " as you daydream about fucking all kinds of women, from weeping tight virgins to lustful succubi with gaping, drooling fuck-holes.");
-				if (player.gender === 2) outputText("idly toying with your " + player.vaginaDescript(0) + " as you daydream about getting fucked by all kinds of monstrous cocks, from minotaurs' thick, smelly dongs to demons' towering, bumpy pleasure-rods.");
-				if (player.gender === 3) outputText("stroking alternatively your " + player.multiCockDescriptLight() + " and your " + player.vaginaDescript(0) + " as you daydream about fucking all kinds of women, from weeping tight virgins to lustful succubi with gaping, drooling fuck-holes, before, or while, getting fucked by various monstrous cocks, from minotaurs' thick, smelly dongs to demons' towering, bumpy pleasure-rods.");
-				if (player.gender === 0) outputText("daydreaming about sex-demons with huge sexual attributes, and how you could please them.");
+				if (player.gender == 1) outputText("stroking your half-erect " + player.multiCockDescriptLight() + " as you daydream about fucking all kinds of women, from weeping tight virgins to lustful succubi with gaping, drooling fuck-holes.");
+				if (player.gender == 2) outputText("idly toying with your " + player.vaginaDescript(0) + " as you daydream about getting fucked by all kinds of monstrous cocks, from minotaurs' thick, smelly dongs to demons' towering, bumpy pleasure-rods.");
+				if (player.gender == 3) outputText("stroking alternatively your " + player.multiCockDescriptLight() + " and your " + player.vaginaDescript(0) + " as you daydream about fucking all kinds of women, from weeping tight virgins to lustful succubi with gaping, drooling fuck-holes, before, or while, getting fucked by various monstrous cocks, from minotaurs' thick, smelly dongs to demons' towering, bumpy pleasure-rods.");
+				if (player.gender == 0) outputText("daydreaming about sex-demons with huge sexual attributes, and how you could please them.");
 				outputText("");
 				dynStats("tou", .5, "lib", .25, "lus", player.lib / 5);
 			}

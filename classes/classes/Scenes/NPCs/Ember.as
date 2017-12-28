@@ -32,7 +32,7 @@ package classes.Scenes.NPCs
 			//Basic attack, average damage, average accuracy
 			outputText("With a growl, the dragon lashes out in a ferocious splay-fingered slash, "+ emberMF("his","her") + " claws poised to rip into your flesh.  ");
 			//Blind dodge change
-			if (hasStatusEffect(StatusEffects.Blind) && rand(2) === 0) {
+			if (hasStatusEffect(StatusEffects.Blind) && rand(2) == 0) {
 				outputText(capitalA + short + " completely misses you with a blind attack!");
 			}
 			//Miss/dodge
@@ -50,7 +50,7 @@ package classes.Scenes.NPCs
 		
 		//Dragon Breath: Very rare attack, very high damage
 		private function embersSupahSpecialDragonBreath():void {
-			if (hasStatusEffect(StatusEffects.Blind) && rand(2) === 0) {
+			if (hasStatusEffect(StatusEffects.Blind) && rand(2) == 0) {
 				//Blind Ember: 
 				outputText("The blinded dragon tracks you with difficulty as you sprint around the landscape; seeing an opportunity, you strafe around " + emberMF("his","her") + " side, planting yourself behind a large flat boulder near " + emberMF("him","her") + " and pelting " + emberMF("him","her") + " with a small rock.  The scream as the dragon turns the magical conflagration toward you, only to have it hit the rock and blow up in " + emberMF("his","her") + " face, is quite satisfying. ");
 				//(Ember HP damage)
@@ -78,9 +78,9 @@ package classes.Scenes.NPCs
 				return;
 			}
 			outputText("Ember suddenly spins on "+ emberMF("his","her") + " heel, the long tail that splays behind " + emberMF("him","her") + " lashing out like a whip.  As it hurtles through the air towards you, your attention focuses on the set of spikes suddenly protruding from its tip!");
-			if (player.getEvasionRoll() || rand(2) === 0) {
+			if (player.getEvasionRoll() || rand(2) == 0) {
 				outputText("  You ");
-				if (rand(2) === 0) outputText("duck under");
+				if (rand(2) == 0) outputText("duck under");
 				else outputText("leap over");
 				outputText(" the tail at the last moment, causing Ember to lose control of "+ emberMF("his","her") + " own momentum and stumble.");
 			}
@@ -103,7 +103,7 @@ package classes.Scenes.NPCs
 			}
 			else {
 				outputText("Try as you might, you can't seem to protect yourself; and the blast hits you like a stone, throwing you to the ground. ");
-				if (player.findPerk(PerkLib.Resolute) < 0 || (game.emberScene.emberSparIntensity() >= 30 && rand(2) === 0)) {
+				if (player.findPerk(PerkLib.Resolute) < 0 || (game.emberScene.emberSparIntensity() >= 30 && rand(2) == 0)) {
 					outputText("Your head swims - it'll take a moment before you can regain your balance. ");
 					player.createStatusEffect(StatusEffects.Stunned,0,0,0,0);
 				}
@@ -127,12 +127,12 @@ package classes.Scenes.NPCs
 				addStatusValue(StatusEffects.StunCooldown, 1, -1);
 				if (statusEffectv1(StatusEffects.StunCooldown) <= 0) removeStatusEffect(StatusEffects.StunCooldown);
 			}
-			else if (rand(3) === 0 && game.emberScene.emberSparIntensity() >= 15) {
+			else if (rand(3) == 0 && game.emberScene.emberSparIntensity() >= 15) {
 				dragonFarce();
 				return;
 			}
-			if (rand(4) === 0 && game.emberScene.emberSparIntensity() >= 5) embersSupahSpecialDragonBreath();
-			else if (rand(3) === 0) emberTailSlap();
+			if (rand(4) == 0 && game.emberScene.emberSparIntensity() >= 5) embersSupahSpecialDragonBreath();
+			else if (rand(3) == 0) emberTailSlap();
 			else emberAttack();
 		}
 
@@ -160,7 +160,7 @@ package classes.Scenes.NPCs
 			this.pronoun2 = game.emberScene.emberMF("him", "her");
 			this.pronoun3 = game.emberScene.emberMF("his", "her");
 			var gender:int = game.flags[kFLAGS.EMBER_GENDER];
-			if (gender === 1 || gender === 3) {
+			if (gender == 1 || gender == 3) {
 				this.createCock(16,2,CockTypesEnum.DRAGON);
 				this.balls = 2;
 				this.ballSize = 4;
@@ -168,7 +168,7 @@ package classes.Scenes.NPCs
 				// this.hoursSinceCum = 0;
 			}
 			if (gender >= 2) {
-				this.createVagina(game.flags[kFLAGS.EMBER_PUSSY_FUCK_COUNT] === 0, VaginaClass.WETNESS_SLAVERING, VaginaClass.LOOSENESS_LOOSE);
+				this.createVagina(game.flags[kFLAGS.EMBER_PUSSY_FUCK_COUNT] == 0, VaginaClass.WETNESS_SLAVERING, VaginaClass.LOOSENESS_LOOSE);
 				createBreastRow(Appearance.breastCupInverse("F"));
 			} else {
 				createBreastRow(Appearance.breastCupInverse("flat"));

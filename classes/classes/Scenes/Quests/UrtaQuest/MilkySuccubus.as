@@ -13,11 +13,11 @@ package classes.Scenes.Quests.UrtaQuest
 
 		override protected function performCombatAction():void
 		{
-			if (!hasStatusEffect(StatusEffects.MilkyUrta) && rand(3) === 0) cowCubiMilkSprayAttack();
+			if (!hasStatusEffect(StatusEffects.MilkyUrta) && rand(3) == 0) cowCubiMilkSprayAttack();
 			else if (HP < 400) drinkMinoCum();
 			else if (player.HP < 100) eAttack();
 			else if (player.lust100 >= 90) succubusTease();
-			else if (rand(2) === 0) succubusTease();
+			else if (rand(2) == 0) succubusTease();
 			else eAttack();
 		}
 
@@ -60,9 +60,9 @@ package classes.Scenes.Quests.UrtaQuest
 
 		private function succubusTease():void
 		{
-			if (rand(4) === 0) outputText("Turning around, the succubus begins to bounce her rather round derriere in your direction, the cheeks lewdly clapping together with each change in direction, exposing her dark anal star and juicy snatch, literally gushing forth a stream of lubricants.  Her eyes glow with faint, purple light as she whispers, \"<i>Don't you just want to... slide on in?</i>\"");
-			else if (rand(3) === 0) outputText("The succubus squeezes her spotted, sweat-oiled breasts together, squirting out trickles of fresh, creamy, succubi milk.  Bending down, she laps at her own bounty, taking to meet your eyes, her own glowing violet.  You can feel her next words as much as hear them, reaching into your brain and stirring a familiar heat in your loins.  \"<i>Giving in would mean pleasure unending, my dear vixen.</i>\"");
-			else if (rand(2) === 0) outputText("The succubus turns slightly and slowly bends over, sliding her hands down the sides of her milk laden jugs. \"<i>Mmm, would you help a poor girl relax? These things need some attention,</i>\" she says with a lust filled moan as her hands reach her multitude of nipples.");
+			if (rand(4) == 0) outputText("Turning around, the succubus begins to bounce her rather round derriere in your direction, the cheeks lewdly clapping together with each change in direction, exposing her dark anal star and juicy snatch, literally gushing forth a stream of lubricants.  Her eyes glow with faint, purple light as she whispers, \"<i>Don't you just want to... slide on in?</i>\"");
+			else if (rand(3) == 0) outputText("The succubus squeezes her spotted, sweat-oiled breasts together, squirting out trickles of fresh, creamy, succubi milk.  Bending down, she laps at her own bounty, taking to meet your eyes, her own glowing violet.  You can feel her next words as much as hear them, reaching into your brain and stirring a familiar heat in your loins.  \"<i>Giving in would mean pleasure unending, my dear vixen.</i>\"");
+			else if (rand(2) == 0) outputText("The succubus turns slightly and slowly bends over, sliding her hands down the sides of her milk laden jugs. \"<i>Mmm, would you help a poor girl relax? These things need some attention,</i>\" she says with a lust filled moan as her hands reach her multitude of nipples.");
 			else outputText("The succubus leans forwards holding her tits, while wrapping her fingers around her nipples.  \"<i>My boobs are soo full.  Would you like to help me drain them?</i>\" she says with a husky voice.");
 			kGAMECLASS.dynStats("lus", 20);
 			combatRoundOver();

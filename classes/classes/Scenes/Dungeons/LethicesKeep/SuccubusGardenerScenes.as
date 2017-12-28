@@ -29,19 +29,19 @@
 
 		public function gardenerKilled():Boolean
 		{
-			if (flags[kFLAGS.D3_GARDENER_DEFEATED] === 3) return true;
+			if (flags[kFLAGS.D3_GARDENER_DEFEATED] == 3) return true;
 			return false;
 		}
 
 		public function gardenerFucked():Boolean
 		{
-			if (flags[kFLAGS.D3_GARDENER_DEFEATED] === 2) return true;
+			if (flags[kFLAGS.D3_GARDENER_DEFEATED] == 2) return true;
 			return false;
 		}
 
 		public function gardenerLeft():Boolean
 		{
-			if (flags[kFLAGS.D3_GARDENER_DEFEATED] === 1) return true;
+			if (flags[kFLAGS.D3_GARDENER_DEFEATED] == 1) return true;
 			return false;
 		}
 
@@ -225,7 +225,7 @@
 			// Herms can have either!
 			if (player.hasVagina() && player.hasCock())
 			{
-				if (rand(2) === 0) femGenderlessLoss(hpVictory);
+				if (rand(2) == 0) femGenderlessLoss(hpVictory);
 				else maleLoss(hpVictory);
 			}
 		}
@@ -239,7 +239,7 @@
 			else outputText(", too turned on to try and stop your hands from diving into your needy crotch.");
 			
 			outputText("\n\n<i>\"Fallen already? Has the once mighty champion finally lost herself to the corruption of this land? Who would have thought that the one to");
-			if (flags[kFLAGS.FACTORY_SHUTDOWN] === 2) outputText(" destroy");
+			if (flags[kFLAGS.FACTORY_SHUTDOWN] == 2) outputText(" destroy");
 			else outputText(" shut down");
 			outputText(" our factory would fall to a simple succubus and her lowly garden?\"</i> She strides over to you, hips wiggling in pleasure, and kneels alongside you, running her hand over your abdomen like a girl handling a new pet for the first time. <i>\"You're going to be so useful in my garden!\"</i>");
 			
@@ -376,7 +376,7 @@
 			else if (player.biggestCockLength() >= 8)
 			{
 				outputText(" <i>\"Oh, that's quite the nice bone you've got there, isn't it? Why, everyone is going to see how big you are down there, even while you're walking on all fours. I suppose you'd be good for breeding the bitches");
-				if (player.cocks[player.biggestCockIndex()].cockType !== CockTypesEnum.DOG) outputText(", once you have an appropriately-shaped cock");
+				if (player.cocks[player.biggestCockIndex()].cockType != CockTypesEnum.DOG) outputText(", once you have an appropriately-shaped cock");
 				outputText(".");
 			}
 			else
@@ -421,14 +421,14 @@
 			if (!player.isTaur()) outputText(" You scrabble over, unused to having to move in such a way,");
 			else outputText(" You gallop over and drop down on your forelegs");
 			outputText(" and plant your [face] right into the succubus' milk. It's a little thicker than milk normally is and stickier too, like honey, but it's also sweeter. The ambrosial fluid fills your mouth with scintillating, indescribable flavor that sets");
-			if (player.tail.type !== 0)
+			if (player.tail.type != 0)
 			{
 				outputText(" your tail");
-				if (player.tail.type === 13 && player.tail.venom > 1) outputText("s");
+				if (player.tail.type == 13 && player.tail.venom > 1) outputText("s");
 			}
 			else outputText(" your stubby, new tail");
 			outputText(" wagging.");
-			if (player.tail.type !== 2) outputText(" Never mind that it gets longer and fuzzier with every gulp or that your");
+			if (player.tail.type != 2) outputText(" Never mind that it gets longer and fuzzier with every gulp or that your");
 			else outputText(" Never mind that your");
 			outputText(" tongue is swelling up, wide, flat, and perfect for panting, licking, and lapping up a drink.");
 			player.tail.type = 2;
@@ -552,13 +552,13 @@
 			outputText("\n\nYou... you're not sure. You noisily gulp down the proffered, delectable goo to buy time to think. It doesn't just taste good; it feels good in your belly as well. It fills you up in ways that food never could. Trickles of that delight radiate out from your slowly-filling gut. They make your [skin] seem to fizzle with raw energy, particularly in your crotch. It's impossible to ignore the way that [eachCock] is swelling or how wonderful the currents of moist air against it feel. ");
 
 			outputText("\n\nRunning her finger down");
-			if (player.cocks.length === 1) outputText(" its");
+			if (player.cocks.length == 1) outputText(" its");
 			else outputText(" one's");
 			outputText(" twitching length, the succubus giggles. <i>\"Can you feel it? Can you feel your body just welling up with cum? I suppose I should have mentioned that, huh?\"</i> She runs her finger back the other way, and your muscles clench, squeezing out a big, fat drop of pre from your cock, dripping down to hit");
 			if (player.biggestTitSize() >= 3) outputText(" the underside of your breasts");
 			else outputText(" your chin");
 			outputText(". You whimper with need. It's impossible not to. Hell, your " + player.multiCockDescriptLight());
-			if (player.cocks.length === 1) outputText(" is");
+			if (player.cocks.length == 1) outputText(" is");
 			else outputText(" are");
 			outputText(" flexing, and if you had anything to brace off of, you'd be thrusting into the first orifice you could find.");
 
@@ -567,7 +567,7 @@
 			outputText("\n\nA breeze caresses your [leg] as the succubus casually removes your [armor]. It feels like oiled fingertips sliding over your flesh. Your [nipples] are like live wires, and your " + player.multiCockDescriptLight() + ".... Well, you're leaking pre in thick, solid ropes now, an act that feels like halfway between a good tonguing and orgasm itself. Your lips are slick with the tentacle's fluid and tingling like sex-organs of their own. Sealing them tight, you moan, gurgle, and swallow. Attempts to beg for more have fallen away. This is enough, and if it keeps up, you're going to cum, touches or no.");
 
 			//Prostate swelling
-			if (player.balls === 0)
+			if (player.balls == 0)
 			{
 				outputText("\n\nThe familiar tightness in your core is there, but rather than climaxing immediately, the sensation intensifies. It grows like an itch you can't scratch, driving you to distraction. Your body tightens like a watchspring being cranked before eventually snapping, sending your muscles into uncontrollable convulsions, squeezing and grinding against something swelling up inside you. Clenching down against it feels unconscionably good and earns you a thicker drizzle of pre. You twist in your bindings while the flow thickens and your spasms turn into a steady fluttering. It's clear that your prostate is getting bigger, but it feels too good to worry about.");
 			}
@@ -627,15 +627,15 @@
 			outputText(". It's like every single nerve has its own skilled masseuse giving it a rubdown, coaxing more pleasure from every square inch of skin than you thought it capable of producing. You cry out, totally overwhelmed, only to be silenced by a familiar presence in your mouth.");
 
 			outputText("\n\nThis new tentacle is already cumming, though. Using its own sappy spooge for lube, it slithers past your unresisting tonsils to provide its life-giving moisture directly. It can't quite compete with the huge, stalk-distending blobs of jism you're pouring out, at least not alone. A second tendril winds its way");
-			if (player.tail.type !== 0) outputText(" past your tail to slither");
+			if (player.tail.type != 0) outputText(" past your tail to slither");
 			outputText(" between your cheeks.");
-			if (player.ass.analLooseness === 0) outputText(" The virginal tightness of your pucker holds the tentacle at bay at first. Still, it's no match for the combination of slippery plant fluid and constant pressure.");
+			if (player.ass.analLooseness == 0) outputText(" The virginal tightness of your pucker holds the tentacle at bay at first. Still, it's no match for the combination of slippery plant fluid and constant pressure.");
 			else if (player.ass.analLooseness <= 3) outputText(" The tentacle has little problem slipping through your tight backdoor, slick as it is with fluid and backed by constant pressure.");
 			else outputText(" The tentacle has little difficulty squeezing into your well-loosened ass. Even without its constant, firm pressure and slippery fluid, it could enter with ease.");
 			outputText(" You gasp at the odd, room-temperature feel of an intruder squirming through your rearmost passage. It's entirely unexpected, but once its mass slithers across your prostate, squeezing even bigger blobs of cum from your rapt, attentive body, you forgive its intrusion.");
 
 			outputText("\n\nTimed perfectly with the tentacle in your mouth, the one in your ass unleashes its own sappy payload. This, of course, only pushes your pleasure to new heights, all while providing you with what you need to keep churning out fresh,");
-			if (player.balls === 0) outputText(" prostate");
+			if (player.balls == 0) outputText(" prostate");
 			else outputText(" ball");
 			outputText("-draining spurts of plant-food. The cradling vines squirm over your touch-heightened skin, grinding the whole of your body. It's like your entire being is being fucked");
 			if (player.hasVagina()) outputText(", and once a thick, cock-shaped plant slides inside your [vagina], you truly are");

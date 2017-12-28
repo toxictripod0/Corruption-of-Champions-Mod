@@ -64,7 +64,7 @@
 			else outputText("  You smile widely at your clone as you begin to shake off your [armor].");
 			outputText("  [He] moans lowly in miserable disbelief, but [he]’s not capable of resisting you as, butt naked, you sit yourself down and methodically repeat the action, sliding your hands over and into [his] replicated clothing, finding [his] warm flesh, clutching and testing it curiously. Obviously you’ve laid your fingers upon this many times before, but touching it now second hand causes an emotion you cannot name to rise in your breast. Is this getting you hot? Yes. In the strangest, most perverse way imaginable, it is.");
 			
-			if (player.vaginas.length === 0 && player.cocks.length === 0) 
+			if (player.vaginas.length == 0 && player.cocks.length == 0) 
 			{
 				outputText("\n\nStrangely, the more you think about fucking this strange creature, the hotter your groin becomes. In moments, you find your fingers pushing against a dampening slit with feather-light caresses. <b>Somehow this place's magic has given you a vagina to match your duplicate!</b> You pull away with a shuddering breath and marvel at the glittering wetness oozing down your fingertips. This is going to be fun.");
 				player.createVagina();
@@ -74,7 +74,7 @@
 				outputText("\n\nYou turn the mirror demon’s wild stare and ragged breath away from you, laying a comforting but firm hand upon [his] shoulder as, grinning, you lower your eyes to [his] [butt]. Nice.");
 				if (player.isNaga()) outputText("  You sigh at the smooth, pleasurable feeling of your scales rubbing over each other as you sensuously wind yourself around [his] tail until you are tightly bound together. Twin lithe snake boys wound around each other- all you really need is a paying audience. Or a stick and a hospital. You laugh with a similar tinge of madness that your partner did a short while ago and [he] groans raggedly in response.");
 				else if (player.isDrider()) outputText("  The tangle of spindly legs in front of you initially puts you off, but then your arachnid instincts take over and you find yourself eagerly clambering onto [his] bulging back before you know it, your hardening dick pressing against the human softness which rises above the gleaming chitin as your monstrous body presses heavily down onto its mirror counterpart, making [him] groan raggedly.");
-				else if (!player.hasFur() && player.tail.type !== Tail.NONE) outputText("  You clamber on top of [him], the rough mingling of your fur sparking deep urges within you, your animal half dreaming of frenzied, bestial mating in the wild. Your hardening dick presses against [his] [tail] and [he] groans raggedly in response.");
+				else if (!player.hasFur() && player.tail.type != Tail.NONE) outputText("  You clamber on top of [him], the rough mingling of your fur sparking deep urges within you, your animal half dreaming of frenzied, bestial mating in the wild. Your hardening dick presses against [his] [tail] and [he] groans raggedly in response.");
 				else outputText("  You clamber on top of [him], enjoying the give and take of [his] "+ (player.isGoo() ? "gooey" : "smooth") +" flesh as you lock your [hips] around their mirror counterparts, making [him] groan raggedly in response.");
 
 				outputText("\n\n“<i>I cannot believe you are doing this. There- there are demons who wouldn’t do this. What kind of sick bastard even are you?</i>“");

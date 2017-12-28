@@ -24,7 +24,7 @@ package classes.Scenes.NPCs
 			//Miss:
 			if (player.spe - spe > 0 && int(Math.random()*(((player.spe-spe)/4) +80)) > 80) {
 				outputText("You take the opportunity to walk away, watching the slow-motion attack unravel before you; the fire bursts from her knuckle in the shape of a bird in flight, wings unfurled.  ");
-				if (rand(2) === 0) outputText("You only owned an XJasun back home, so you don't really understand the reference.");
+				if (rand(2) == 0) outputText("You only owned an XJasun back home, so you don't really understand the reference.");
 				else outputText("You stifle a laugh as your memories turn to many an evening spent with your friends in front of your SharkCube console, contesting each other in games of ridiculous, stylized combat.");
 			}
 			else {
@@ -56,7 +56,7 @@ package classes.Scenes.NPCs
 				outputText("Using your skills at evasion, you manage to jump to the side, intense heat rushing past you as you narrowly avoid her advance.  You twist around, finding that she's reunited with her axe and angrier than before.");
 			}
 			//("Misdirection"
-			else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName === "red, high-society bodysuit") {
+			else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
 				outputText("Using your skills at misdirection, you manage to make Kiha think you're going to dodge one way before stepping in the other direction.  You turn back, finding she has her axe in hand and looks rather steamed.");
 			}
 			//Determine if cat'ed
@@ -84,7 +84,7 @@ package classes.Scenes.NPCs
 				outputText("Using your talent for evasion, you manage to sidestep the flames in the nick of time; much to the dragoness' displeasure.");
 			}
 			//("Misdirection"
-			else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName === "red, high-society bodysuit") {
+			else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
 				outputText("Using your talent for misdirection, you manage to sidestep the flames in the nick of time; much to the dragoness' displeasure.");
 			}
 			//Determine if cat'ed
@@ -133,11 +133,11 @@ package classes.Scenes.NPCs
 		{
 			var select:Number = rand(5);
 			if (select <= 1) eAttack();
-			else if (select === 2) {
+			else if (select == 2) {
 				if (game.silly()) sillyModeKihaAttack();
 				else kihaFirePunch();
 			}
-			else if (select === 3) kihaFireBreath();
+			else if (select == 3) kihaFireBreath();
 			else kihaTimeWaster();
 		}
 
@@ -176,7 +176,7 @@ package classes.Scenes.NPCs
 			this.imageName = "kiha";
 			this.long = "Kiha is standing across from you, holding a double-bladed axe that's nearly as big as she is.  She's six feet tall, and her leathery wings span nearly twelve feet extended.  Her eyes are pure crimson, save for a black slit in the center, and a pair of thick draconic horns sprout from her forehead, arcing over her ruby-colored hair to point behind her.  Dim red scales cover her arms, legs, back, and strong-looking tail, providing what protection they might to large areas of her body.  The few glimpses of exposed skin are dark, almost chocolate in color, broken only by a few stray scales on the underside of her bosom and on her cheekbones.  ";
 			if (game.flags[kFLAGS.KIHA_UNDERGARMENTS] > 0)
-				this.long += "Damp patch forms in her silk " + (game.flags[kFLAGS.KIHA_UNDERGARMENTS] === 1 ? "panties" : "loincloth") + ", regardless of her state of arousal.  Despite her near nudity, Kiha stands with the confidence and poise of a trained fighter.";
+				this.long += "Damp patch forms in her silk " + (game.flags[kFLAGS.KIHA_UNDERGARMENTS] == 1 ? "panties" : "loincloth") + ", regardless of her state of arousal.  Despite her near nudity, Kiha stands with the confidence and poise of a trained fighter.";
 			else 
 				this.long += "Her vagina constantly glistens with moisture, regardless of her state of arousal.  Despite her nudity, Kiha stands with the confidence and poise of a trained fighter.";
 			// this.plural = false;

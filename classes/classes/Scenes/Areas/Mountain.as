@@ -43,7 +43,7 @@ package classes.Scenes.Areas
 		public function get explorationEncounter():Encounter {
 			const game:CoC     = kGAMECLASS;
 			const fn:FnHelpers = Encounters.fn;
-			if (_explorationEncounter === null) _explorationEncounter =
+			if (_explorationEncounter == null) _explorationEncounter =
 					Encounters.group(game.commonEncounters.withImpGob,{
 								name: "salon",
 								when: fn.not(salon.isDiscovered),
@@ -64,8 +64,8 @@ package classes.Scenes.Areas
 								when: function():Boolean {
 									return isHolidays()
 										   && player.gender > 0
-										   && flags[kFLAGS.GATS_ANGEL_DISABLED] === 0
-										   && flags[kFLAGS.GATS_ANGEL_GOOD_ENDED] === 0
+										   && flags[kFLAGS.GATS_ANGEL_DISABLED] == 0
+										   && flags[kFLAGS.GATS_ANGEL_GOOD_ENDED] == 0
 										   && (flags[kFLAGS.GATS_ANGEL_QUEST_BEGAN] > 0
 										   && player.hasKeyItem("North Star Key") < 0)
 								},
@@ -123,7 +123,7 @@ package classes.Scenes.Areas
 								when:function ():Boolean {
 									return !game.ceraphFollowerScene.ceraphIsFollower()
 											/* [INTERMOD:8chan]
-											&& flags[kFLAGS.CERAPH_KILLED] === 0
+											&& flags[kFLAGS.CERAPH_KILLED] == 0
 											 */
 										   /*&& game.fetishManager.compare(FetishManager.FETISH_EXHIBITION)*/;
 								},
@@ -134,14 +134,14 @@ package classes.Scenes.Areas
 								chance:2,
 								when:function():Boolean {
 									//Requires canine face, [either two dog dicks, or a vag and pregnant with a hellhound], at least two other hellhound features (black fur, dog legs, dog tail), and corruption >=60.
-									var check1:Boolean = player.face.type === Face.DOG && player.cor >= 60;
+									var check1:Boolean = player.face.type == Face.DOG && player.cor >= 60;
 									var check2:Boolean = player.dogCocks() >= 2
-													|| (player.hasVagina() && player.pregnancyType === PregnancyStore.PREGNANCY_HELL_HOUND);
-									var check3:int = (player.tail.type === Tail.DOG ? 1 : 0) +
-													 (player.lowerBody.type === LowerBody.DOG ? 1 : 0) +
-													 (player.hair.color === "midnight black" ? 1 : 0);
-									var check4a:Boolean = flags[kFLAGS.HELLHOUND_MASTER_PROGRESS] === 0;
-									var check4b:Boolean = flags[kFLAGS.HELLHOUND_MASTER_PROGRESS] === 1
+													|| (player.hasVagina() && player.pregnancyType == PregnancyStore.PREGNANCY_HELL_HOUND);
+									var check3:int = (player.tail.type == Tail.DOG ? 1 : 0) +
+													 (player.lowerBody.type == LowerBody.DOG ? 1 : 0) +
+													 (player.hair.color == "midnight black" ? 1 : 0);
+									var check4a:Boolean = flags[kFLAGS.HELLHOUND_MASTER_PROGRESS] == 0;
+									var check4b:Boolean = flags[kFLAGS.HELLHOUND_MASTER_PROGRESS] == 1
 														  && player.hasKeyItem("Marae's Lethicite") >= 0
 														  && player.keyItemv2("Marae's Lethicite") < 3;
 									return flags[kFLAGS.HELLHOUND_MASTER_PROGRESS] < 3
@@ -166,7 +166,7 @@ package classes.Scenes.Areas
 		public function ceraphFn():void {
 			//Rarer 'nice' Ceraph encounter
 			//Overlaps half the old encounters once pierced.
-			if (rand(3) === 0
+			if (rand(3) == 0
 				/* [INTERMOD:8chan]
 				&& kGAMECLASS.fetishManager.compare(FetishManager.FETISH_EXHIBITION)
 				else */
@@ -184,7 +184,7 @@ package classes.Scenes.Areas
 		private function minotaurRouter():void {
 			spriteSelect(SpriteDb.s_minotaur);
 			//Every 16 explorations chance at mino bad-end!
-			if (flags[kFLAGS.TIMES_EXPLORED_MOUNTAIN] % 16 === 0 && player.findPerk(PerkLib.MinotaurCumAddict) >= 0 && rand(3) === 0) {
+			if (flags[kFLAGS.TIMES_EXPLORED_MOUNTAIN] % 16 == 0 && player.findPerk(PerkLib.MinotaurCumAddict) >= 0 && rand(3) == 0) {
 				minotaurScene.minoAddictionBadEndEncounter();
 			} else {
 				if (!player.hasStatusEffect(StatusEffects.TF2) && player.level <= 1 && player.str <= 40) {
@@ -212,9 +212,9 @@ package classes.Scenes.Areas
 					}
 					player.createStatusEffect(StatusEffects.TF2, 0, 0, 0, 0);
 					doNext(camp.returnToCampUseOneHour);
-				} else if (!player.hasStatusEffect(StatusEffects.MinoPlusCowgirl) || rand(10) === 0) {
+				} else if (!player.hasStatusEffect(StatusEffects.MinoPlusCowgirl) || rand(10) == 0) {
 					//Mino gangbang
-					if (flags[kFLAGS.HAS_SEEN_MINO_AND_COWGIRL] === 1 && player.cowScore() >= 4 && player.lactationQ() >= 200 && player.biggestTitSize() >= 3 && player.minotaurAddicted()) {
+					if (flags[kFLAGS.HAS_SEEN_MINO_AND_COWGIRL] == 1 && player.cowScore() >= 4 && player.lactationQ() >= 200 && player.biggestTitSize() >= 3 && player.minotaurAddicted()) {
 						//PC must be a cowmorph (horns, legs, ears, tail, lactating, breasts at least C-cup)
 						//Must be addicted to minocum
 						outputText(images.showImage("minotaur-cumslut"));
@@ -265,11 +265,11 @@ package classes.Scenes.Areas
 						outputText("The pair quickly settles into a rhythm, punctuated with numerous grunts, groans, and moans of sexual excess. To you it's almost a violent assault sure to leave both of them bruised and sore, but the cow-girl's lolling tongue and expression of overwhelming desire tells you otherwise. She's enjoying every thrust as well as the strokes, gropes, and seemingly painful squeezes the minotaur's powerful hands deliver to her jiggling ass and ponderous tits. He's little better, his eyes glazed over with lust as he continues banging the fuck-hole he found and all but mauling its owner.");
 						doNext(minotaurScene.continueMinoVoyeurism);
 					}
-				} else if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] === 3 && rand(2) === 0 && player.inte / 10 + rand(20) < 15) {
+				} else if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] == 3 && rand(2) == 0 && player.inte / 10 + rand(20) < 15) {
 					//Cum addictus interruptus!  LOL HARRY POTTERFAG
 					//Withdrawl auto-fuck!
 					minotaurScene.minoAddictionFuck();
-				} else if (rand(5) === 0 && player.level >= 10) {
+				} else if (rand(5) == 0 && player.level >= 10) {
 					//Rare Minotaur Lord
 					clearOutput();
 					outputText(images.showImage("monster-minotaurlord"));

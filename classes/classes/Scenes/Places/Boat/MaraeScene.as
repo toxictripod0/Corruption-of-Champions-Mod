@@ -17,13 +17,13 @@ public class MaraeScene extends AbstractBoatContent implements TimeAwareInterfac
 	public function timeChange():Boolean {
 		if (getGame().time.hours > 23) {
 			if (flags[kFLAGS.CORRUPT_MARAE_FOLLOWUP_ENCOUNTER_STATE] > 0) { //Marae met 2nd time?
-				if (flags[kFLAGS.FUCK_FLOWER_KILLED] === 0) { //If flower hasn't been burned down yet
+				if (flags[kFLAGS.FUCK_FLOWER_KILLED] == 0) { //If flower hasn't been burned down yet
 					if (flags[kFLAGS.FUCK_FLOWER_LEVEL] < 4 && flags[kFLAGS.FUCK_FLOWER_GROWTH_COUNTER] < 1000) { //Grow flower if it isn't fully grown.
 						flags[kFLAGS.FUCK_FLOWER_GROWTH_COUNTER]++;
 					}
 				}
 			}
-			if (flags[kFLAGS.HOLLI_FUCKED_TODAY] === 1) flags[kFLAGS.HOLLI_FUCKED_TODAY] = 0; //Holli Fuck Tracking
+			if (flags[kFLAGS.HOLLI_FUCKED_TODAY] == 1) flags[kFLAGS.HOLLI_FUCKED_TODAY] = 0; //Holli Fuck Tracking
 		}
 
 		return false;
@@ -114,7 +114,7 @@ public class MaraeScene extends AbstractBoatContent implements TimeAwareInterfac
 		//Dungeon inoperable
 		else {
 			//Not corrupt
-			if (flags[kFLAGS.FACTORY_SHUTDOWN] === 1) {
+			if (flags[kFLAGS.FACTORY_SHUTDOWN] == 1) {
 				outputText("Marae smiles broadly at you, and steps free from her tree.  The lithe plant-goddess gives you a warm hug and a kiss on the cheek.\n\n");
 				outputText("\"<i>Thank you,</i>\" she says, breaking the hug and turning back to her tree, \"<i>The onslaught has lessened, and I feel more myself already.  Let me thank you for your heroic deeds.</i>\"\n\n");
 				outputText("She plunges a hand inside the tree and pulls out a small pearl.  \"<i>This is a pearl from the very depths of the lake, infused with my purity.  If you eat it, it will grant you my aid in resisting the lust and corruption of this land.</i>\"\n\n");
@@ -164,10 +164,10 @@ public class MaraeScene extends AbstractBoatContent implements TimeAwareInterfac
 //FIGHT!
 	public function initiateFightMarae():void {
 		clearOutput();
-		if (flags[kFLAGS.CORRUPT_MARAE_FOLLOWUP_ENCOUNTER_STATE] === 2) {
+		if (flags[kFLAGS.CORRUPT_MARAE_FOLLOWUP_ENCOUNTER_STATE] == 2) {
 			outputText("Your mind finally made up, she must pay for forcibly giving you her 'gift'.\n\n");
 		}
-		if (flags[kFLAGS.FACTORY_SHUTDOWN] === 2) {
+		if (flags[kFLAGS.FACTORY_SHUTDOWN] == 2) {
 			outputText("You ready your " + player.weaponName + " and assume a combat stance! \"<i>Pity. You're dealing with a goddess,</i>\" she coos.");
 			outputText("\n\nTentacles come up to keep your boat in place so you can't flee.");
 		}
@@ -181,7 +181,7 @@ public class MaraeScene extends AbstractBoatContent implements TimeAwareInterfac
 //Lose against Marae
 	public function loseAgainstMarae():void {
 		clearOutput();
-		if (flags[kFLAGS.FACTORY_SHUTDOWN] === 2) {
+		if (flags[kFLAGS.FACTORY_SHUTDOWN] == 2) {
 			if (player.HP <= 0) outputText("You collapse, too weak to continue fighting. You know that your journey will be over. ");
 			else outputText("Your desire to keep fighting has been slain by your overwhelming lust and you collapse. You know that your journey will be over. ");
 			doNext(maraeBadEnd);
@@ -196,7 +196,7 @@ public class MaraeScene extends AbstractBoatContent implements TimeAwareInterfac
 	public function winAgainstMarae():void {
 		clearOutput();
 		outputText(images.showImage("marae-defeated"));
-		if (flags[kFLAGS.FACTORY_SHUTDOWN] === 2) {
+		if (flags[kFLAGS.FACTORY_SHUTDOWN] == 2) {
 			outputText("\"<i>NO! How can a mortal defeat me?! That's IMPOSSIBLE!</i>\" Marae yells. You tell her that just because she's a goddess doesn't mean a mortal can't defeat her.");
 			if (silly()) {
 				outputText("\n\n<b>Did you just punch out Cthulhu? Or in this case, Marae?</b>\n\n");
@@ -246,14 +246,14 @@ public class MaraeScene extends AbstractBoatContent implements TimeAwareInterfac
 		outputText(images.showImage("marae-bad-end"));
 		if (flags[kFLAGS.MET_MARAE_CORRUPTED] <= 0) outputText("The goddess flows out of the tree, stepping away from it as a living woman, curvy and nude.\n\n");
 		outputText("She approaches you, her breasts swinging pendulously and dripping sap.   Mesmerized by her swaying mammaries, you watch until she mashes you into them with an enormous hug.  A hand traces down your chest to your groin");
-		if (player.gender === 0) outputText(" where it pauses in momentary confusion");
+		if (player.gender == 0) outputText(" where it pauses in momentary confusion");
 		outputText(".  She giggles and presses your face into her one of her verdant nipples.  You open your mouth to accept the purplish-green bud, licking and suckling it, encouraging her sweet sap to flow into your hungry mouth.  She gushes fluids and pulls you tightly against her tits, crushing you with soft flesh.\n\n");
 
 		outputText("The sap inside you makes your throat and belly tingle warmly, as if you had taken a strong drink.   Her milk-sap flows so quickly that you have to gulp it down to keep up.  Tiny burps escape your mouth every now and then as you work to gulp down the tainted treat.  You feel happy and secure, nestled in the bosom of a lust goddess.  ");
 		if (player.statusEffectv3(StatusEffects.Marble) > 0) outputText("Any thought or need to drink Marble's milk vanishes from your mind and body.  ");
 		outputText("Foggy euphoria seems to float into your mind, making it difficult to think of anything but emptying the nipple in front of you.   You feel the last few drops splash on your tongue before unnatural strength breaks the seal, yanking you away and forcing a fresh dripping tit into your lips.\n\n");
 
-		if (player.cocks.length === 0) {
+		if (player.cocks.length == 0) {
 			outputText("A building sense of pressure grows in your groin, bulging the flesh of your crotch out.  You ignore it, focusing on suckling more of the sweet fluids from your goddess' breasts.   The warmth in your middle feels like it's dripping down into that new bulge, making it tingle with sensitivity.  You ignore it, and lash your tongue across the slippery nipple in your mouth, being rewarded with another warm blast of syrupy sap.   Your mind fills with an impenetrable haze of lust, overcoming any logic with thoughts of raw sex intermingled with animal desire. You're pulled back again by that unholy strength, fighting to get one last lick on that nipple.  Your " + player.legs() + " and " + player.hipDescript() + " shake with lust, driven mad by sweet desire.  Marae reaches down to cup your groin, and blinds you with intense sensation.  She guides your gaze down to a new appendage that's sprouted from your needy groin – <b>a tentacle dick</b>!  It wavers to and fro, coiling on itself and tasting the air like a snake.\n\n");
 			player.createCock();
 			player.cocks[0].cockLength    = 36;
@@ -264,7 +264,7 @@ public class MaraeScene extends AbstractBoatContent implements TimeAwareInterfac
 			outputText("You drink deeply, suckling her thick syrupy milk with strength born of an instantaneous addiction.  The desire to attain more of her 'milk' overrides any other thoughts, clouding over them like a dense morning fog.  The slick nipples feel like they tense and squirm in your mouth as you draw every last bit of their delicious cargo into your greedy gullet.  You " + player.hipDescript() + " twitch and squirm, throbbing and hard, making your " + player.multiCockDescriptLight() + " bob in the air.   Heedless of your groin's incessant begging, you work the nipple in your mouth as if it was your whole world, trying to pleasure as much as suckle.  You can feel your " + player.multiCockDescriptLight() + " squirming in the air  as if reaching for her.  Wait, squirming!?  You're pulled back from her nipple and given the chance to look down, where ");
 			if (player.countCocksOfType(CockTypesEnum.TENTACLE) < player.cockTotal()) {
 				//Single cawks
-				if (player.cocks.length === 1) {
+				if (player.cocks.length == 1) {
 					//Set primary cock flag
 					player.cocks[0].cockType = CockTypesEnum.TENTACLE;
 				}
@@ -311,7 +311,7 @@ public class MaraeScene extends AbstractBoatContent implements TimeAwareInterfac
 			outputText("The tentacles lower you to the ground, but do not release you from their tight embrace.\n\n");
 			outputText("Marae steps closer, playing her fingers softly up your thigh, \"<i>BUT, you'll leave with a little something extra.  A gift from the new goddess of fertile unions...</i>\"\n\n");
 			//DICK
-			if (player.gender === 1 || (player.gender === 3 && rand(2) === 1)) {
+			if (player.gender == 1 || (player.gender == 3 && rand(2) == 1)) {
 				outputText("She extends a hand expectantly, watching with detached concentration while a tentacle lowers from the tree into her palm.   Hips swaying sexually, she advances, peeling back the tentacle's outer layer.  It opens up to reveal a wet, gummy mouth.  She giggles and bumps the opening against your ");
 				if (player.cocks.length > 1) outputText("largest ");
 				outputText(player.cockDescript(0));
@@ -335,7 +335,7 @@ public class MaraeScene extends AbstractBoatContent implements TimeAwareInterfac
 			//FEM)
 			else {
 				outputText("She extends a hand expectantly, watching with detached concentration while a tentacle lowers from the tree into her palm.  A swift slash of her free hand cuts your " + player.armorName + " free, exposing your ");
-				if (player.gender === 0) {
+				if (player.gender == 0) {
 					outputText("hairless crotch.  She holds the tentacle back a moment and raises her free hand.  It begins to glow and shimmer as she points to your groin.  Warmth explodes in your crotch as a wriggling wet gash opens up - <b>your new vagina</b>.  ");
 					player.createVagina();
 				}
@@ -372,7 +372,7 @@ public class MaraeScene extends AbstractBoatContent implements TimeAwareInterfac
 		if (player.spe < 50) outputText("dropping you flat on your ass");
 		else outputText("nearly dropping you flat on your ass before you catch yourself and sit down");
 		outputText(".  The old dinghy's cutting through the water with amazing speed, leaving foot-high waves in its wake.  Marae's island grows larger with each passing second, almost taunting you with your inability to get away.   By now the root-like vines have crept over the gunwales, and they wriggle at you, seemingly in warning.  Getting in the water is definitely not a good idea right now.	The bone-chilling scrape of sand on wood grates at your ears.  You've arrived.  There's no point in putting off the inevitable.  You straighten up your " + player.armorName);
-		if (player.weaponName !== "fists") outputText(", adjust your " + player.weaponName + ",");
+		if (player.weaponName != "fists") outputText(", adjust your " + player.weaponName + ",");
 		outputText(" and step out of the boat onto the small, sandy beach that rings the island.  The tentacles that dragged your boat ashore are gone, leaving the well-used vessel in pristine condition, or as close as any such water-craft can be.  Looking up, you behold the monstrous, demonic-tree that sprouts from the island's apex.   It has no leaves, only small, teat-like protrusions that sprout from some of the 'branches', which in truth have more in common with tentacles than plant-life.  The squirming mass of sexual shrubbery stays in constant motion, and its intertwined tentacles occasionally bulge and flex as they spurt thick, jism-like sap over one-another.\n\n");
 
 		outputText("You advance on the twisted, arboreal orgy with reluctant determination.  Marae wants you here, and there's no way back without dealing with the sex-intoxicated goddess.  Her long, languid moans make it easy to find her.  The delirious deity's arms are entwined through the roots of her trees while a green-patterned tentacle goes diving into the petal-lined entrance of her sloppy sex.  She cranes her neck back at the sound of your footfalls and asks, \"<i>");
@@ -419,7 +419,7 @@ public class MaraeScene extends AbstractBoatContent implements TimeAwareInterfac
 		flags[kFLAGS.CORRUPT_MARAE_FOLLOWUP_ENCOUNTER_STATE] = 2;
 		//[Girls]
 		//Marae grows vine-cawks for DP action
-		if (player.gender === 2) {
+		if (player.gender == 2) {
 			outputText("Marae coos with pleasure and allows a nectar-slicked tentacle to slip free of her flower.   Her sweet, corrupted smell filters through the air, like pollen carried on a spring breeze.  The goddess' fingers trace the outline of her budding clit, and you watch, enraptured, as it swells up and turns purple.  A clear ridge forms underneath the tip, delineating the under-side of a newly grown cock-tip.  Marae bats her eyelashes and strokes the newly-formed growth as it fills out, surpassing the length of any mortal man.  The crown is a shiny, almost slick purple color, fading to green the further down the stalk-like shaft it goes.   She climbs to her feet, fingernails tracing the outline of the newly-formed urethral bulge on her shaft as she glides closer to you.\n\n");
 
 			outputText("Paralyzed by ");
@@ -453,7 +453,7 @@ public class MaraeScene extends AbstractBoatContent implements TimeAwareInterfac
 		}
 		//[Dudezillaz]
 		//Marae uses a tree-tentacle to 'milk' male PC's.  Oral or Vajayjay? Not sure.
-		else if (player.gender === 1) {
+		else if (player.gender == 1) {
 			outputText("Marae coos with pleasure and allows a nectar-slicked tentacle to slip free of her flower.   Her sweet, corrupted smell filters through the air, like pollen carried on a spring breeze.  You watch, awestruck while the curvy goddess approaches you, cradling a squirming tree-tentacle in each of her hands.  The one in her right twitches and spurts, dribbling seed over her hand in a surprisingly weak display that seems to invigorate the lusty, tainted deity.\n\n");
 
 			outputText("You watch, standing stock-still and paralyzed with ");
@@ -463,7 +463,7 @@ public class MaraeScene extends AbstractBoatContent implements TimeAwareInterfac
 			outputText(".  Marae's advance seems like an inexorable march to your eyes, and before you have a chance to react, she's crushed against you in a full-body hug.  Her tongue digs into your mouth, rooting out your tongue and melting your resistance in an overwhelming, lust-powered assault.  You vision swims for a moment when she releases you and pulls back.  It's hard to focus with the busty, nude image of fertility beckoning you.  It makes " + player.sMultiCockDesc() + " strain to reach her, but she dances back with a knowing smile and says, \"<i>Not yet my eager little subject.  Let me undress you, THEN you can worship me.</i>\"\n\n");
 
 			outputText("Vines whip out, sliding under your " + player.armorName + ", undoing clasps, and removing it until you stand naked and exposed to Marae.  She smirks and crooks her finger at you in a 'come hither' gesture.  You lurch forward, as if pulled on an invisible string until you're standing inches away from her, your " + player.cockDescript(0) + " rubbing her belly");
-			if (player.cockTotal() === 2) outputText(" while your other dangles against her thigh");
+			if (player.cockTotal() == 2) outputText(" while your other dangles against her thigh");
 			else if (player.cockTotal() > 2) outputText(" while your others dangle against her thighs");
 			outputText(".  The goddess gives you a cruel smile, as if she knows something you don't, and she commands, \"<i>Worship me with your cum, champion.  Submit to your goddess and spend your fertile seed for her.</i>\"\n\n");
 
@@ -472,13 +472,13 @@ public class MaraeScene extends AbstractBoatContent implements TimeAwareInterfac
 			outputText("The tentacle on her right arm convulses, then splits open along four joints.  The tip folds open to reveal a pink, wriggling interior that promises pleasures mortal minds weren't meant to comprehend.  Meanwhile, while you're distracted by the eager plant-hole, the other tentacle slips behind you and climbs up your " + player.leg() + ", leaving a trail of slime in its wake.   It slides between your cheeks and prods at your " + player.assholeDescript() + ".  You jerk forwards in surprise, but Marae pushes your " + player.hipDescript() + " back, allowing it to work its way inside.");
 			player.buttChange(12, true, true, false);
 			outputText("  The open plant-hole dives for your groin while you're distracted, hits your " + player.cockDescript(0) + " and devours it with a greedy sluuuuurp.");
-			if (player.cockTotal() === 2) outputText("  Another vine that may as well be the first's twin snakes from between the goddess' legs and jumps onto your " + player.cockDescript(1) + ".");
+			if (player.cockTotal() == 2) outputText("  Another vine that may as well be the first's twin snakes from between the goddess' legs and jumps onto your " + player.cockDescript(1) + ".");
 			else if (player.cockTotal() > 2) outputText("  More 'open' vines shimmy forth from between Marae's legs and jump up onto your " + Appearance.cockNoun(CockTypesEnum.HUMAN) + "s.");
 
 			outputText("You grunt and pump your hips, shameless as you give in to the squeezing, textured tentacle");
 			if (player.cockTotal() > 1) outputText("s");
 			outputText(".  Cum boils out from your ");
-			if (player.balls === 0) outputText("body");
+			if (player.balls == 0) outputText("body");
 			else outputText("balls");
 			outputText(", but it's quickly devoured by Marae's tree-based tentacle-beast without a sound.  ");
 			if (player.cumQ() > 500) {
@@ -500,7 +500,7 @@ public class MaraeScene extends AbstractBoatContent implements TimeAwareInterfac
 			if (player.hasFuckableNipples()) outputText(", slipping inside your cunt-like nipples with ease.  You moan into her ear at the unexpected penetration and shiver from the tingling shocks of pleasure in your " + player.breastDescript(0) + ".");
 			else outputText(".");
 			outputText("  Hammering in your chest, your heart beats fast enough to flush your whole body when your " + player.cockDescript(0) + " manages to slip between Marae's legs.  It doesn't penetrate, merely trapping itself between her fluid-lubed thighs");
-			if (player.cockTotal() === 2) outputText(" while your other cock rubs over her surface");
+			if (player.cockTotal() == 2) outputText(" while your other cock rubs over her surface");
 			else if (player.cockTotal() > 2) outputText(" while your other cocks rubs over her surface");
 			outputText(".\n\n");
 
@@ -559,7 +559,7 @@ public class MaraeScene extends AbstractBoatContent implements TimeAwareInterfac
 		clearOutput();
 		//[EPILOGUE]
 		//[Dudes]
-		if (player.gender === 1) {
+		if (player.gender == 1) {
 			outputText("You awaken in the midst of a powerful orgasm.  Jism boils out of " + player.sMultiCockDesc() + ", pumping into the tight, sucking tentacle-hole.  Your eyes open wider, and your head clears while you rock your hips in bliss.  You're hanging upside down, suspended in the tentacle tree!  Marae isn't far from you, and she's busy deep-throating the fattest tentacle you've seen while another pair are working her openings.  She turns to you, aware of your wakefulness, and removes the oral intruder, though it manages to squirt a layer of spunk into her face in defiance.   The goddess smirks and slaps it, scolding it before she speaks, \"<i>");
 			//(FORK STUD vs NO STUD)
 			//(STUD)
@@ -580,7 +580,7 @@ public class MaraeScene extends AbstractBoatContent implements TimeAwareInterfac
 			}
 		}
 		//[Chickzillas]
-		else if (player.gender === 2) {
+		else if (player.gender == 2) {
 			outputText("You awaken in the midst of a powerful orgasm.   Jism is pumping into your clenching birth-canal, and you can feel it worming its way into your over-packed womb.  Your eyes open wider as the pleasure brings you to full wakefulness.  You're hanging upside down, suspended in the tentacle tree!  Marae isn't far from you, and she's busy deep-throating the fattest tentacle you've seen while another pair are working her openings.  She turns to you, aware of your wakefulness, and removes the oral intruder, though it manages to squirt a layer of spunk into her face in defiance.   The goddess smirks and slaps it, scolding it before she speaks, \"<i>");
 			//(BREEDER)
 			if (player.findPerk(PerkLib.MaraesGiftFertility) >= 0) {
@@ -615,7 +615,7 @@ public class MaraeScene extends AbstractBoatContent implements TimeAwareInterfac
 			//(HAZ NEITHER)
 			if (player.findPerk(PerkLib.MaraesGiftFertility) < 0 && player.findPerk(PerkLib.MaraesGiftStud) < 0) {
 				//(RANDOM 1)
-				if (rand(2) === 0 && player.findPerk(PerkLib.MaraesGiftFertility) < 0) {
+				if (rand(2) == 0 && player.findPerk(PerkLib.MaraesGiftFertility) < 0) {
 					outputText("You might feel a little sore.  I gave your little womb a makeover to make sure you'll be nice and fertile for all the boys out there.  You're going to serve me so well.  So many died fighting the demons, and you'll be popping out kids from every dick that gets anywhere near your little birth-hole.</i>\"  ");
 					player.createPerk(PerkLib.MaraesGiftFertility, 0, 0, 0, 0);
 				}
@@ -728,7 +728,7 @@ public class MaraeScene extends AbstractBoatContent implements TimeAwareInterfac
 		spriteSelect(SpriteDb.s_marae);
 		clearOutput();
 		outputText("As you step into the boat and sail it out into the depths of the lake, you focus on trying to find Marae. After all, you need a good challenge. Thankfully, luck is with you and you soon find yourself pulling ashore at the lushly forested island where the nature goddess dwells. In response to your presence, Marae herself materializes from the vegetation, looking at you in a concerned manner.");
-		if (flags[kFLAGS.PURE_MARAE_ENDGAME] === 0) {
+		if (flags[kFLAGS.PURE_MARAE_ENDGAME] == 0) {
 			outputText("\n\n\"<i>What brings you here, champion?</i> the deity gently asks you.");
 			outputText("\n\nYou let Marae know that you're looking for a challenge.");
 			outputText("\n\n\"<i>Very well, I deem you worthy to fight me. If you can manage to defeat me, you shall be rewarded greatly,</i>\" she says.");
@@ -752,17 +752,17 @@ public class MaraeScene extends AbstractBoatContent implements TimeAwareInterfac
 		}, {
 			name: "aboutMinerva",
 			when: function ():Boolean {
-				return flags[kFLAGS.FACTORY_SHUTDOWN] === 1
+				return flags[kFLAGS.FACTORY_SHUTDOWN] == 1
 					   && flags[kFLAGS.MARAE_QUEST_COMPLETE] >= 1
-					   && flags[kFLAGS.MINERVA_PURIFICATION_MARAE_TALKED] === 1;
+					   && flags[kFLAGS.MINERVA_PURIFICATION_MARAE_TALKED] == 1;
 			},
 			call: talkToMaraeAboutMinervaPurification
 		}, {
 			name: "endgamePure",
 			when: function ():Boolean {
-				return flags[kFLAGS.FACTORY_SHUTDOWN] === 1
+				return flags[kFLAGS.FACTORY_SHUTDOWN] == 1
 					   && flags[kFLAGS.MARAE_QUEST_COMPLETE] >= 1
-					   && flags[kFLAGS.MINERVA_PURIFICATION_MARAE_TALKED] !== 1
+					   && flags[kFLAGS.MINERVA_PURIFICATION_MARAE_TALKED] != 1
 					   && flags[kFLAGS.LETHICE_DEFEATED] > 0
 					   && flags[kFLAGS.PURE_MARAE_ENDGAME] < 2
 					   && player.level >= 30;
@@ -771,7 +771,7 @@ public class MaraeScene extends AbstractBoatContent implements TimeAwareInterfac
 		}, {
 			name: "level2",
 			when: function ():Boolean {
-				return flags[kFLAGS.CORRUPT_MARAE_FOLLOWUP_ENCOUNTER_STATE] === 0
+				return flags[kFLAGS.CORRUPT_MARAE_FOLLOWUP_ENCOUNTER_STATE] == 0
 					   && flags[kFLAGS.MET_MARAE_CORRUPTED] > 0
 					   && player.gender > 0
 					   && flags[kFLAGS.CORRUPTED_MARAE_KILLED] <= 0;
@@ -780,7 +780,7 @@ public class MaraeScene extends AbstractBoatContent implements TimeAwareInterfac
 		}, {
 			name: "level3",
 			when: function ():Boolean {
-				return flags[kFLAGS.CORRUPT_MARAE_FOLLOWUP_ENCOUNTER_STATE] === 2
+				return flags[kFLAGS.CORRUPT_MARAE_FOLLOWUP_ENCOUNTER_STATE] == 2
 					   && flags[kFLAGS.MET_MARAE_CORRUPTED] > 0
 					   && player.gender > 0
 					   && flags[kFLAGS.CORRUPTED_MARAE_KILLED] <= 0

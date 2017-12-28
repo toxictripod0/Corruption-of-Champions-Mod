@@ -15,9 +15,9 @@ import classes.StatusEffects.Combat.AmilyVenomDebuff;
 
 		override protected function performCombatAction():void
 		{
-			if (!hasStatusEffect(StatusEffects.Concentration) && rand(4) === 0) amilyConcentration();
-			else if (rand(3) === 0) amilyDartGo();
-			else if (rand(2) === 0) amilyDoubleAttack();
+			if (!hasStatusEffect(StatusEffects.Concentration) && rand(4) == 0) amilyConcentration();
+			else if (rand(3) == 0) amilyDartGo();
+			else if (rand(2) == 0) amilyDoubleAttack();
 			else amilyAttack();
 		}
 
@@ -38,7 +38,7 @@ import classes.StatusEffects.Combat.AmilyVenomDebuff;
 			//Determine damage - str modified by enemy toughness!
 			damage = int((str + weaponAttack) - Math.random()*(player.tou+player.armorDef));
 			//Dodged
-			if (dodged !== null) {
+			if (dodged != null) {
 				outputText("Amily dashes at you and swipes her knife, but you quickly sidestep the blow.");
 				//Add tags for miss/evade/flexibility/etc.
 				switch(dodged) {
@@ -76,7 +76,7 @@ import classes.StatusEffects.Combat.AmilyVenomDebuff;
 				damage = player.takeDamage(damage, true);
 			}
 			if (damage > 0) {
-				if (lustVuln > 0 && player.armorName === "barely-decent bondage straps") {
+				if (lustVuln > 0 && player.armorName == "barely-decent bondage straps") {
 					if (!plural) outputText("\n" + capitalA + short + " brushes against your exposed skin and jerks back in surprise, coloring slightly from seeing so much of you revealed.");
 					else outputText("\n" + capitalA + short + " brush against your exposed skin and jerk back in surprise, coloring slightly from seeing so much of you revealed.");
 					lust += 10 * lustVuln;
@@ -107,7 +107,7 @@ import classes.StatusEffects.Combat.AmilyVenomDebuff;
 				dodged++;
 			}
 			//("Misdirection"
-			if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName === "red, high-society bodysuit") {
+			if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
 				dodged++;
 			}
 			//Determine if cat'ed
@@ -119,9 +119,9 @@ import classes.StatusEffects.Combat.AmilyVenomDebuff;
 				//Determine damage - str modified by enemy toughness!
 				damage = int((str + weaponAttack) - Math.random()*(player.tou+player.armorDef));
 				//Double damage if no dodge.
-				if (dodged === 0) damage *= 2;
+				if (dodged == 0) damage *= 2;
 				//Blocked?
-				if (damage === 0) {
+				if (damage == 0) {
 					outputText("Amily dashes at you and slashes at you twice in the time it would take most to throw a single blow, but she can't cut deep enough to wound you!");
 				}
 				//NOT BLOCKED!
@@ -157,7 +157,7 @@ import classes.StatusEffects.Combat.AmilyVenomDebuff;
 				dodged = 2;
 			}
 			//("Misdirection"
-			if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 15 && player.armorName === "red, high-society bodysuit") {
+			if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 15 && player.armorName == "red, high-society bodysuit") {
 				dodged = 3;
 			}
 			//Determine if cat'ed

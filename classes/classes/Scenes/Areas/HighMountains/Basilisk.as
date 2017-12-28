@@ -51,7 +51,7 @@ import classes.internals.ChainedAction;
 		//Special 3: basilisk tail swipe (Small physical damage):
 		private function basiliskTailSwipe():void {
 			outputText("The basilisk suddenly whips its tail at you, swiping your " + player.feet() + " from under you!  You quickly stagger upright, being sure to hold the creature's feet in your vision.  ");
-			if (damage === 0) outputText("The fall didn't harm you at all.  ");
+			if (damage == 0) outputText("The fall didn't harm you at all.  ");
 			var damage:Number = int((str + 20) - Math.random()*(player.tou+player.armorDef));
 			damage = player.takeDamage(damage, true);			
 			game.combat.combatRoundOver();

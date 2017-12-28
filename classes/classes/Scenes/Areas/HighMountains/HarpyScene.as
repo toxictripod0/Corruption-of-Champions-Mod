@@ -55,7 +55,7 @@ package classes.Scenes.Areas.HighMountains
 				}
 			}
 			
-			if (player.canOvipositSpider() && (player.face.type === Face.SNAKE_FANGS || player.face.type === Face.SPIDER_FANGS)) {
+			if (player.canOvipositSpider() && (player.face.type == Face.SNAKE_FANGS || player.face.type == Face.SPIDER_FANGS)) {
 				addButton(5, "Lay Eggs", spoidahsLegEggsInHarpeis).hint("Use your ovipositor to lay the eggs into harpy.");
 			}
 			
@@ -69,7 +69,7 @@ package classes.Scenes.Areas.HighMountains
 			var x:Number = -1;
 			if (player.hasCock()) x = player.cockThatFits(monster.vaginalCapacity());
 			//Genderless people get boned
-			if (player.gender === 0 && player.isGoo()) {
+			if (player.gender == 0 && player.isGoo()) {
 				harpyGooGenderlessLoss();
 				combat.cleanupAfterCombat();
 				return;
@@ -182,8 +182,8 @@ package classes.Scenes.Areas.HighMountains
 			var y:Number = x + 1;
 			//If second cock is out of bounds, choose one in bounds
 			if (y >= player.cocks.length) y -= 2;
-			if (y === x && player.totalCocks() > 1) {
-				if (y === 0) y++;
+			if (y == x && player.totalCocks() > 1) {
+				if (y == 0) y++;
 				else y--;
 			}
 
@@ -237,14 +237,14 @@ package classes.Scenes.Areas.HighMountains
 				outputText("As you succumb to the powerful aphrodisiac in the harpy girls' lipstick, the feathered beauties are squabbling all over again, but this is lost to you.  The harpy girl straddling your chest shifts up, her moist, glistening sex shining in the light and peeking out from between her incredible asscheeks. Without waiting for you to draw breath she lets her whole weight SLAM down onto your face, her slick honeypot grinding back and forth across your nose as she rolls her hips.  She squawks and moans in slutty enjoyment while you struggle for breath in vain.  The chemicals in that lipstick shut down your sense of self-preservation, forcing you to perk up and mash your face lustfully into her sweet-tasting pussy.  Both of your hands snap up, seemingly of their own accord, and knead and squeeze at her fat rear cheeks.  Her feathers become ruffled in short order from the groping. The squawking in the background has quietened down and some part of your mind steels yourself for what's coming.\n\n");
 			}
 			//[(Male, Shemale, Herm, One cock)
-			if (x >= 0 && player.cockTotal() === 1) {
+			if (x >= 0 && player.cockTotal() == 1) {
 				outputText("Another powerful sensation shoots through you, forcing your back to tense from the simple, pure pleasure, and further forcing your face to lick and taste her moist cunt. You're blinded completely by the huge ass-cheeks stifling your face, and can only feel the hot, rough walls of a harpy's pussy as it descends on your " + player.cockDescript(x) + ", slipping all the way down to the base as the slutty harpy squawks in a perfect duet with her face-riding sister. The clutching tightness engulfs your whole length as she slips down to the base");
 				if (player.balls > 0) outputText(", her huge feathery bottom coming to rest on your " + player.ballsDescriptLight());
 				outputText(". Even as you come to bear this tremendous pleasure, you feel your hands wrenched carelessly from the big butt that's grinding against your face, and a small feathery pair of hands guides them to their goal.  Your fingers slip into the hot, clutching tightness of two harpy holes, the sensations made even more vivid by the blinding faceful of ass.  A sharp-clawed foot steps dominantly on your navel, digging the claws into your " + player.skin.desc + ". The two harpies whose asses are pinning you to the ground start to bounce their full weight brutally on your already broken body in unison.  The sheer, vast weight of their hips batters every inch of you, twin feathery punchbags slamming into your cheeks and onto your crotch. Were it not for the hot, moist hole that's coating your mouth, you would be screaming in pain");
 				if (player.balls >= 0) {
 					outputText(".  Your " + player.ballsDescriptLight() + " bounce with such force as to fetch the cock-speared harpy a stinging slap on the rear with every brutal, mechanical fuck");
 					//{(If herm)
-					if (player.gender === 3) outputText(" before swinging back to spanking your " + player.vaginaDescript(0) + " wetly.");
+					if (player.gender == 3) outputText(" before swinging back to spanking your " + player.vaginaDescript(0) + " wetly.");
 					else outputText(".");
 				}
 				else if (player.biggestTitSize() >= 2) outputText(" while your " + player.allBreastsDescript() + " are shaking and jiggling around helplessly.");
@@ -271,7 +271,7 @@ package classes.Scenes.Areas.HighMountains
 			if (x >= 0 && player.hasCock()) {
 				outputText("They ride you brutally, switching position every now and then to make sure all three harpies get the satisfaction they need. You lose track of the amount of times you've spurted thick, creamy cum into those hot, rough passages");
 				//{(If herm)
-				if (player.gender === 3) outputText(", and the number of times your " + player.vaginaDescript(0) + " has dripped your sweet feminine cum over your thighs");
+				if (player.gender == 3) outputText(", and the number of times your " + player.vaginaDescript(0) + " has dripped your sweet feminine cum over your thighs");
 				outputText(". Every part of your being screams in pain from the hours of relentless hammering by the harpies' immense, wobbling rears; you think a few bones might even have broken.  Yet every time you came close to blacking out from the pain, the three harpy girls had squawk and trill loudly, abandoning their actions to all lick and slurp at your " + player.multiCockDescriptLight() + ".  Their drug-laced kisses pull you back from the brink and allow them to continue their relentless pounding!");
 			}
 			//[(Female)
@@ -304,8 +304,8 @@ package classes.Scenes.Areas.HighMountains
 			var y:Number = x + 1;
 			//If second cock is out of bounds, choose one in bounds
 			if (y >= player.cocks.length) y -= 2;
-			if (y === x && player.totalCocks() > 1) {
-				if (y === 0) y++;
+			if (y == x && player.totalCocks() > 1) {
+				if (y == 0) y++;
 				else y--;
 			}
 
@@ -328,7 +328,7 @@ package classes.Scenes.Areas.HighMountains
 			//(If balls-less) 
 			else outputText("Leaning low over her back, you adjust to drive yourself ever deeper, forcing the whole length of your " + player.cockDescript(x) + " into her, the soft down on her gelatinous thighs prickling at your thighs maddeningly.\n\n");
 
-			if (player.gender === 1) {
+			if (player.gender == 1) {
 				//(Male, no breasts)
 				if (player.biggestTitSize() < 1) {
 					outputText("Taking care not to waste your opportunity with an immense butt by cumming too soon, you slowly start to push and pull her fat, quivering cheeks up and down your " + player.cockDescript(x) + ", feeling her rough walls and clutching, gasping convulsions massage your manhood");
@@ -349,7 +349,7 @@ package classes.Scenes.Areas.HighMountains
 				}
 			}
 			//[(Herm)
-			else if (player.gender === 3) {
+			else if (player.gender == 3) {
 				outputText("Grinning and massaging your conquest's round, soft ass in anticipation, you gently begin to thrust your " + player.hipDescript() + ", moaning loudly as her rough, grasping walls drag over the sensitive flesh of your " + player.multiCockDescriptLight() + ". Your " + player.vaginaDescript(0) + " practically spurts fluids out, dribbling down the inside of your thighs as you pump in and out of the helpless harpy.  You love every second you get to spend in her harsh inner walls.\n\n");
 			}
 
@@ -381,8 +381,8 @@ package classes.Scenes.Areas.HighMountains
 			var y:Number = x + 1;
 			//If second cock is out of bounds, choose one in bounds
 			if (y >= player.cocks.length) y -= 2;
-			if (y === x && player.totalCocks() > 1) {
-				if (y === 0) y++;
+			if (y == x && player.totalCocks() > 1) {
+				if (y == 0) y++;
 				else y--;
 			}
 
@@ -410,7 +410,7 @@ package classes.Scenes.Areas.HighMountains
 				if (player.biggestTitSize() >= 2) outputText(", the motions causing your " + player.allBreastsDescript() + " to bounce and sway wildly, slapping into one another lewdly, adding to your growing lust");
 				outputText(". You keep a firm grip on her rump and thighs, ensuring that every time she nearly wriggles her hot anus free of your cock, you can drive your hot meat straight back into her lush depths, laughing at her helplessness.");
 				//(If herm)
-				if (player.gender === 3) {
+				if (player.gender == 3) {
 					outputText("  Her struggles are driving you wild, and your " + player.vaginaDescript(0) + " is seeping fluids, growing more and more aroused as she bounces and slamming that immense, rippling rear into you, the force squishing your moist lips together, releasing yet more sticky juices and adding an extra little tone of pleasure.");
 					//{(If balls)
 					if (player.balls > 0) outputText("  She even makes your " + player.ballsDescript() + " slap against your " + player.vaginaDescript(0) + ", a hot, moist SPLAT accompanying every tiny motion the harpy makes.");
@@ -436,7 +436,7 @@ package classes.Scenes.Areas.HighMountains
 			var x:Number = -1;
 			if (player.hasCock()) x = player.cockThatFits(monster.analCapacity());
 			var y:Number = x + 1;
-			if (y === x && player.totalCocks() > 1) {
+			if (y == x && player.totalCocks() > 1) {
 				//If second cock is out of bounds, choose one in bounds
 				if (y >= player.cocks.length) y -= 2;
 			}
@@ -462,10 +462,10 @@ package classes.Scenes.Areas.HighMountains
 			outputText("\n\n");
 
 			//[(Male, shemale, herm, one cock)
-			if (player.cockTotal() === 1) {
+			if (player.cockTotal() == 1) {
 				outputText("Breaking the kiss, your lips tingle sharply as you realize her golden lipstick is drugged! The heat flows to your groin, your " + player.multiCockDescriptLight() + " swelling noticeably and growing even more sensitive.  Even the slightest breeze feels like a lover's hands passing across the tender flesh. Almost apologetically, the harpy leans in to wrap her hands around your " + player.cockDescript(0) + " those drugged lips brushing sensuously across your cock-tip. Her beautifully formed hands give your shaft a squeeze, sending a wave of pleasure through you that brings you to your knees.  You throw both hands out behind you as you lean away from her, pushing your " + player.hipDescript() + " towards her. The submissive bird-girl waggles her huge, jiggling ass behind her, softly guiding the very tip of your " + player.cockDescript(0) + " between those tainted lips, that tingling sensation slipping down your hyper-sensitive member. Her mouth is warm, soft and suckling while her short tongue is flicking frantically across the underside of your shaft, the pleasure being harsh but oh-so intense.");
 				//(if herm)
-				if (player.gender === 3) outputText("  Her expert fingers tease up the sides of your thighs, coming to softly brush across your moist nether lips, her fingers spreading your " + player.vaginaDescript(0) + " wide before plunging into the warmth within, adding another sweet sensation of pleasure to the amazing orchestra of sensations her lips were giving to you.");
+				if (player.gender == 3) outputText("  Her expert fingers tease up the sides of your thighs, coming to softly brush across your moist nether lips, her fingers spreading your " + player.vaginaDescript(0) + " wide before plunging into the warmth within, adding another sweet sensation of pleasure to the amazing orchestra of sensations her lips were giving to you.");
 				//(If balls) 
 				if (player.balls > 0) outputText("  Her hands creep down to softly squeeze and massage your " + player.ballsDescriptLight() + ", the harpy's eager head bobbing back and forth along the sweet tasting shaft of your " + player.cockDescript(0) + ", sending waves of powerful, overwhelming pleasure resonating through your body.");
 				outputText("\n\n");
@@ -483,11 +483,11 @@ package classes.Scenes.Areas.HighMountains
 				//(If balls)
 				if (player.balls > 0) outputText("  She moves that hand to softly squeeze and pet at your " + player.ballsDescriptLight() + ", massaging those bloated cum-factories with expertise. You can feel a distinct rumble as your " + player.sackDescript() + " really ups its production, almost feeling heavier.");
 				//(If herm)
-				if (player.gender === 3) outputText("  Her other perfect hand creeps beneath your tense " + player.multiCockDescriptLight() + " to the " + player.vaginaDescript(0) + " that's nestled between your thighs. At the first touch of her hand, an explosive ecstasy shoots through you, forcing you to tense up and arch your back.  You grit your teeth while puissant waves of orgasmic glee flood through you.");
+				if (player.gender == 3) outputText("  Her other perfect hand creeps beneath your tense " + player.multiCockDescriptLight() + " to the " + player.vaginaDescript(0) + " that's nestled between your thighs. At the first touch of her hand, an explosive ecstasy shoots through you, forcing you to tense up and arch your back.  You grit your teeth while puissant waves of orgasmic glee flood through you.");
 				outputText("\n\n");
 			}
 			//(Female) 
-			if (player.gender === 2) {
+			if (player.gender == 2) {
 				outputText("Tearing your lips away from hers, you feel a distinct, sharp tingle across your mouth and cheeks as you realized that her shining, gilded lipstick was drugged! The tingle spreads through your body, prickling across your whole body, flowing inexorably in a wave of sensation towards your groin, the ticklish feeling concentrating on your " + player.vaginaDescript(0) + ". You fall to your knees at the sheer unbridled pleasure shooting up and down your body, the thick hipped harpy crawling towards you meekly, applying a gentle pressure to your shoulder and pressing your back to the ground, trilling and squawking quietly, her perfectly formed hand reaching to your overwhelmed pussy. At the slightest first touch of her hand an explosive ecstasy shoots through you, forcing you to tense up and arch your back, teeth gritted. ");
 				//(If breasts)
 				if (player.biggestTitSize() >= 2) outputText("You grasp onto your " + player.allBreastsDescript() + " violently, kneading and tweaking your " + player.nippleDescript(0) + " in a horny haze as the harpy's fingers tease around your pussy.  ");
@@ -499,17 +499,17 @@ package classes.Scenes.Areas.HighMountains
 			}
 
 			//(Male, Shemale, Herm, one cock)
-			if (player.cockTotal() === 1) {
+			if (player.cockTotal() == 1) {
 				outputText("The horny harpy slips one hand between her fat thighs, digging her fingers into her plush, leaking pussy");
 				//(if herm)
-				if (player.gender === 3) outputText(", her other hand doing the exact same to your own " + player.vaginaDescript(0) + ", digging those perfect fingers deep into the wet, hyper-sensitive flesh, spreading those lips wide");
+				if (player.gender == 3) outputText(", her other hand doing the exact same to your own " + player.vaginaDescript(0) + ", digging those perfect fingers deep into the wet, hyper-sensitive flesh, spreading those lips wide");
 				outputText(".  Her mouth greedily gobbles up inch after inch of your " + player.cockDescript(0) + ", until at last she bottoms out, pressing her nose against your groin, those tainted lips tingling all the way down, increasing the intensity of the pleasure by the second. It takes a surprisingly short time of the harpy bobbing her head, that stubby tongue wetly caressing the sweet shaft of your " + player.cockDescript(0) + ", before you let out a vast, quaking moan, blasting a much larger load than normal into her gentle throat. She doesn't stop though, quite the opposite in fact, as her attentions to your dick became even more aggressive. Her submissive side all but vanishes as her golden lips brush up and down the hot shaft of that " + player.cockDescript(0) + ".  ");
 				//(If balls) 
 				if (player.balls > 0 && player.cocks[0].cockLength <= 16) outputText("She even deep throats you, taking your length into her expertly-controlled mouth, that tongue creeping out to tickle at your " + player.ballsDescriptLight() + ".  ");
 				outputText("More slutty trills and squawks creep from her tainted lips, muffled by the girth of meat plugged so perfectly into her sucking, slurping mouth. For nearly an hour she keeps milking you of your seed, and you cum a full six times into her incredible mouth before she finally pops free, gasping for her breath with her fat, wobbling thighs coated in her feminine cum. How many times she orgasmed while giving herself to you was a mystery, but she bears down on you with a smile and a slightly-bulging belly. You flinch as she dives at your head, but it was merely to deliver a soft, drugged kiss to your forehead, which lulls you into sleep just as she turns on her heel and takes wing.\n\n");
 			}
 			//(Female)
-			if (player.gender === 2) {
+			if (player.gender == 2) {
 				outputText("Her approach changes quickly however, as her stubby tongue soon starts to flick rapidly across your " + player.clitDescript() + " the shuddering, powerful sensations rendering you powerless on the ground before the horny harpy. More aphrodisiac slowly seeps into your body as you gasp, your hand reaching down to mash her finely-feathered face into your " + player.vaginaDescript(0) + ", forcing the big-bottomed bird to probe deeper into your cunt. For an hour you keep her face buried between your thighs, your " + player.hipDescript() + " raising and falling uncontrollably, her tongue thrashing around inside your lush depths more and more desperately, compelling you to cum over and over onto her beautiful face. For the final time you explode, releasing a massive load of sticky girl-cum onto her face before releasing her, the harpy recoiling. Her tongue licks its way across those golden lips, her pudgy thighs coated with her own cum. Your vision swims as you wonder whether this thick-hipped beauty came from the simple act of serving you so submissively, as she clambers over your body to plant a long, loving kiss on your lips, tangling her stumpy bird-tongue with yours as the last dose of those tainted lips slips into your brain, carrying you off to sleep. You are left with just one last glimpse of her fine, feathered ass before blacking out.\n\n");
 			}
 
@@ -520,7 +520,7 @@ package classes.Scenes.Areas.HighMountains
 				if (player.balls > 0) outputText(", dribbling all over your " + player.sackDescript());
 				outputText(".  You cum over and over again under the powerful ministrations of her drooling mouth, the horny harpy's tainted lips coaxing even more sticky seed out of you than usual.");
 				//(If herm)
-				if (player.gender === 3) outputText("  Her fingers never stop their sweet teasing of your " + player.vaginaDescript(0) + ", using all four fingers on her hand to plumb your velvet depths.");
+				if (player.gender == 3) outputText("  Her fingers never stop their sweet teasing of your " + player.vaginaDescript(0) + ", using all four fingers on her hand to plumb your velvet depths.");
 				outputText("  For one last time, you feel the rising intensity of the pleasure, galloping headlong towards an explosive final orgasm.  Reaching down, you plant both your hands on the back of her head and violently thrust your " + player.hipDescript() + " forward to cram the full length of your cocks into her gagging, clenching throat. A final detonation of seed escapes down her esophagus and into her already-swollen belly.  You shiver, biting on your lower lip, as your orgasm gradually subsides and you collapse backwards as your leg muscles give way, wrenching your " + player.multiCockDescriptLight() + " away from the breathless bird-girl. Your vision becomes hazy as her beautiful face comes into view above you, descending to softly smooch across your lips, giving a last dose of those drugs into your brain. You black out, catching one final glimpse of her fine, feathered rear before you do.\n\n");
 				//Apply harpy status.
 				kGAMECLASS.sophieScene.luststickApplication(8);
@@ -614,7 +614,7 @@ package classes.Scenes.Areas.HighMountains
 
 			outputText("\n\nShe manages to stand up, and hops a step closer, an action that sends a tantalizing jiggle through her expansive behind.  She leans ");
 			if (player.tallness > 78) outputText("up");
-			else if (player.tallness === 78) outputText("forward");
+			else if (player.tallness == 78) outputText("forward");
 			else outputText("down");
 			outputText(", eyes closed and lips puckered seductively, ready to deliver a heady dose of her drugged lipstick.");
 

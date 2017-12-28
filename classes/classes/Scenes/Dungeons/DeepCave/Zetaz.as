@@ -30,7 +30,7 @@ package classes.Scenes.Dungeons.DeepCave
 			var select:Number=1;
 			var rando:Number=1;
 			//Exgartuan gets to do stuff!
-			if (player.hasStatusEffect(StatusEffects.Exgartuan) && player.statusEffectv2(StatusEffects.Exgartuan) === 0 && rand(3) === 0) {
+			if (player.hasStatusEffect(StatusEffects.Exgartuan) && player.statusEffectv2(StatusEffects.Exgartuan) == 0 && rand(3) == 0) {
 				game.exgartuan.exgartuanCombatUpdate();
 				outputText("\n\n");
 			}
@@ -56,13 +56,13 @@ package classes.Scenes.Dungeons.DeepCave
 			}
 			else {
 				var attackChoice:Number = rand(3);
-				if (attackChoice === 0) {
+				if (attackChoice == 0) {
 					//Chucks faux-heat draft ala goblins. - 
 					outputText("Zetaz grabs a bottle from a drawer and hurls it in your direction!  ");
-					if ((player.findPerk(PerkLib.Evade) >= 0 && rand(4) === 0) ||
-						(player.findPerk(PerkLib.Flexibility) >= 0 && rand(6) === 0) ||
-						(player.spe > 65 && rand(10) === 0) ||
-						(player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 20 && player.armorName === "red, high-society bodysuit")) {
+					if ((player.findPerk(PerkLib.Evade) >= 0 && rand(4) == 0) ||
+						(player.findPerk(PerkLib.Flexibility) >= 0 && rand(6) == 0) ||
+						(player.spe > 65 && rand(10) == 0) ||
+						(player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 20 && player.armorName == "red, high-society bodysuit")) {
 						outputText("You sidestep it a moment before it shatters on the wall, soaking the tapestries with red fluid!");
 					}
 					else {
@@ -71,7 +71,7 @@ package classes.Scenes.Dungeons.DeepCave
 						if (!player.hasStatusEffect(StatusEffects.TemporaryHeat)) player.createStatusEffect(StatusEffects.TemporaryHeat,0,0,0,0);
 					}
 				}
-				else if (attackChoice === 1) {
+				else if (attackChoice == 1) {
 					//'Gust' – channels a pidgy's spirit to beat 
 					//his wings and kick up dust, blinding the PC 
 					//next turn and dealing light damage. - 
@@ -104,14 +104,14 @@ package classes.Scenes.Dungeons.DeepCave
 			if (player.lust100 >= 60) outputText("Your mouth begins to drool as you close your eyes and imagine yourself sucking off Zetaz, then riding him, letting him sate his desires in your inviting flesh.  The unnatural visions send pulses of lust through you so strongly that your body shivers.  ");
 			if (player.cocks.length > 0) {
 				if (player.lust100 >= 60 && player.cocks.length > 0) outputText("You feel " + player.SMultiCockDesc() + " dribble pre-cum, bouncing with each beat of your heart and aching to be touched.  ");
-				if (player.lust100 >= 30 && player.lust100 < 60 && player.cocks.length === 1) outputText(player.SMultiCockDesc() + " hardens and twitches, distracting you further.  ");
+				if (player.lust100 >= 30 && player.lust100 < 60 && player.cocks.length == 1) outputText(player.SMultiCockDesc() + " hardens and twitches, distracting you further.  ");
 			}
 			if (player.vaginas.length > 0) {
-				if (player.lust100 >= 60 && player.vaginas[0].vaginalWetness === VaginaClass.WETNESS_NORMAL && player.vaginas.length === 1) outputText("Your " + player.vaginaDescript() + " dampens perceptibly, feeling very empty.  ");
-				if (player.lust100 >= 60 && player.vaginas[0].vaginalWetness === VaginaClass.WETNESS_WET && player.vaginas.length > 0) outputText("Your crotch becomes sticky with girl-lust, making it clear to " + a + short + " just how welcome your body finds the spell.  ");
-				if (player.lust100 >= 60 && player.vaginas[0].vaginalWetness === VaginaClass.WETNESS_SLICK && player.vaginas.length === 1) outputText("Your " + player.vaginaDescript() + " becomes sloppy and wet, dribbling with desire to be mounted and fucked.  ");
-				if (player.lust100 >= 60 && player.vaginas[0].vaginalWetness === VaginaClass.WETNESS_DROOLING && player.vaginas.length > 0) outputText("Thick runners of girl-lube stream down the insides of your thighs as your crotch gives into the demonic magics.  You wonder what " + a + short + "'s cock would feel like inside you?  ");
-				if (player.lust100 >= 60 && player.vaginas[0].vaginalWetness === VaginaClass.WETNESS_SLAVERING && player.vaginas.length === 1) outputText("Your " + player.vaginaDescript() + " instantly soaks your groin with the heady proof of your need.  You wonder just how slippery you could " + a + short + "'s dick when it's rammed inside you?  ");
+				if (player.lust100 >= 60 && player.vaginas[0].vaginalWetness == VaginaClass.WETNESS_NORMAL && player.vaginas.length == 1) outputText("Your " + player.vaginaDescript() + " dampens perceptibly, feeling very empty.  ");
+				if (player.lust100 >= 60 && player.vaginas[0].vaginalWetness == VaginaClass.WETNESS_WET && player.vaginas.length > 0) outputText("Your crotch becomes sticky with girl-lust, making it clear to " + a + short + " just how welcome your body finds the spell.  ");
+				if (player.lust100 >= 60 && player.vaginas[0].vaginalWetness == VaginaClass.WETNESS_SLICK && player.vaginas.length == 1) outputText("Your " + player.vaginaDescript() + " becomes sloppy and wet, dribbling with desire to be mounted and fucked.  ");
+				if (player.lust100 >= 60 && player.vaginas[0].vaginalWetness == VaginaClass.WETNESS_DROOLING && player.vaginas.length > 0) outputText("Thick runners of girl-lube stream down the insides of your thighs as your crotch gives into the demonic magics.  You wonder what " + a + short + "'s cock would feel like inside you?  ");
+				if (player.lust100 >= 60 && player.vaginas[0].vaginalWetness == VaginaClass.WETNESS_SLAVERING && player.vaginas.length == 1) outputText("Your " + player.vaginaDescript() + " instantly soaks your groin with the heady proof of your need.  You wonder just how slippery you could " + a + short + "'s dick when it's rammed inside you?  ");
 			}
 			if (player.lust >= player.maxLust()) doNext(game.combat.endLustLoss)
 			else combatRoundOver();
@@ -128,13 +128,13 @@ package classes.Scenes.Dungeons.DeepCave
 			}
 			else {
 				addStatusValue(StatusEffects.round,1,1);
-				if (statusEffectv1(StatusEffects.round) === 2) outputText("\"<i>I lost my post!  And when you screwed up the factory?  I barely escaped with my life!  You ruined EVERYTHING!</i>\" screams Zetaz.");
-				else if (statusEffectv1(StatusEffects.round) === 3) outputText("Zetaz snarls, \"<i>Do you know how hard it is to hide from Lethice?  DO YOU HAVE ANY IDEA!?  I've had to live in this fetid excuse for a jungle, and just when I found some friends and made it livable, you show up and DESTROY EVERYTHING!</i>\"");
-				else if (statusEffectv1(StatusEffects.round) === 4) outputText("Zetaz explains, \"<i>I won't let you go.  I'm going to break you.</i>\"");
-				else if (statusEffectv1(StatusEffects.round) === 5) outputText("\"<i>Would it have been that bad to go along with me?  You've seen the factory.  We would've kept you fed, warm, and provided you with limitless pleasure.  You would've tasted heaven and served a greater purpose.  It's not too late.  If you come willingly I can make sure they find a good machine to milk you with,</i>\" offers the imp lord.");
-				else if (statusEffectv1(StatusEffects.round) === 6) outputText("\"<i>Why won't you fall?</i>\" questions Zetaz incredulously.");
-				else if (statusEffectv1(StatusEffects.round) === 7) outputText("The imp lord suggests, \"<i>If you give up and let me fuck your ass maybe I'll let you go.</i>\"");
-				else if (statusEffectv1(StatusEffects.round) === 8) outputText("Zetaz pants, \"<i>Just give up!  I'm nothing like the weakling you met so long ago!  I've been through hell to get here and I'm not giving it up just because you've shown up to destroy my hard work!</i>\"");
+				if (statusEffectv1(StatusEffects.round) == 2) outputText("\"<i>I lost my post!  And when you screwed up the factory?  I barely escaped with my life!  You ruined EVERYTHING!</i>\" screams Zetaz.");
+				else if (statusEffectv1(StatusEffects.round) == 3) outputText("Zetaz snarls, \"<i>Do you know how hard it is to hide from Lethice?  DO YOU HAVE ANY IDEA!?  I've had to live in this fetid excuse for a jungle, and just when I found some friends and made it livable, you show up and DESTROY EVERYTHING!</i>\"");
+				else if (statusEffectv1(StatusEffects.round) == 4) outputText("Zetaz explains, \"<i>I won't let you go.  I'm going to break you.</i>\"");
+				else if (statusEffectv1(StatusEffects.round) == 5) outputText("\"<i>Would it have been that bad to go along with me?  You've seen the factory.  We would've kept you fed, warm, and provided you with limitless pleasure.  You would've tasted heaven and served a greater purpose.  It's not too late.  If you come willingly I can make sure they find a good machine to milk you with,</i>\" offers the imp lord.");
+				else if (statusEffectv1(StatusEffects.round) == 6) outputText("\"<i>Why won't you fall?</i>\" questions Zetaz incredulously.");
+				else if (statusEffectv1(StatusEffects.round) == 7) outputText("The imp lord suggests, \"<i>If you give up and let me fuck your ass maybe I'll let you go.</i>\"");
+				else if (statusEffectv1(StatusEffects.round) == 8) outputText("Zetaz pants, \"<i>Just give up!  I'm nothing like the weakling you met so long ago!  I've been through hell to get here and I'm not giving it up just because you've shown up to destroy my hard work!</i>\"");
 				else outputText("He glares at you silently.");
 			}
 		}

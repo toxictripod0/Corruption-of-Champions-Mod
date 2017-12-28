@@ -57,7 +57,7 @@ package classes.Scenes.Areas.VolcanicCrag
 			else addButtonDisabled(2, "His Past", "Talk to the behemoth at least once to unlock this.");
 			if (timesSexed() >= 2) addButton(3, "His Cum", talkAboutHisCum).hint("Talk to the behemoth about the special properties of his cum.");
 			else addButtonDisabled(3, "His Cum", "Have sex with the behemoth at least twice to unlock this.");
-			if (flags[kFLAGS.BEHEMOTH_CHILDREN] > 0) addButton(4, "Children", talkAboutHisChildren).hint("Talk to the behemoth about his son" + (flags[kFLAGS.BEHEMOTH_CHILDREN] === 1 ? "" : "s") + ".");
+			if (flags[kFLAGS.BEHEMOTH_CHILDREN] > 0) addButton(4, "Children", talkAboutHisChildren).hint("Talk to the behemoth about his son" + (flags[kFLAGS.BEHEMOTH_CHILDREN] == 1 ? "" : "s") + ".");
 			else addButtonDisabled(4, "???", "Have at least 1 child with him to unlock this.");
 			addButton(14, "Back", behemothMenu);
 		}
@@ -68,10 +68,10 @@ package classes.Scenes.Areas.VolcanicCrag
 			outputText("\n\n\"<i>Ingnam sounds nice,</i>\" he says eventually, a bit wistful.  \"<i>I came from a portal from another world, too.</i>\"  He doesn't elaborate, however, leaving you to tell him about your travels.");
 			if (flags[kFLAGS.FACTORY_SHUTDOWN] > 0) {
 				outputText("\n\nHe's intrigued as you tell him about Marae's quest for you to shut down the factory, too. ");
-				if (flags[kFLAGS.FACTORY_SHUTDOWN] === 1) {
+				if (flags[kFLAGS.FACTORY_SHUTDOWN] == 1) {
 					outputText("\"<i>Wow, you're quite the hero! Well done: we'll need her help if we're to get out of this.</i>\" he says, his tail swishing with pride.");
 				}
-				else if (flags[kFLAGS.FACTORY_SHUTDOWN] === 2) {
+				else if (flags[kFLAGS.FACTORY_SHUTDOWN] == 2) {
 					outputText("\"<i>Sounds like you just made it worse,</i>\" he says frankly, his brow creasing in worry. \"<i>Do you think it'll be okay?</i>\"");
 				}
 			}
@@ -85,9 +85,9 @@ package classes.Scenes.Areas.VolcanicCrag
 			if (flags[kFLAGS.LETHICE_DEFEATED] > 0) {
 				outputText("\n\nYou do a lot of embellishing as you tell him about taking down the demons in Lethice's stronghold, though the story barely needs it. ");
 				outputText("\n\n\"<i>Holy shit,</i>\" he says, and he offers a hand for a high five. You return it, and both of you beam with pride as you settle back down. \"<i>Guess you did what you came here for,</i>\" he adds, and he's a bit wistful. ");
-				if (player.armor === armors.LTHCARM) {
+				if (player.armor == armors.LTHCARM) {
 					outputText("It doesn't stop him from admiring your lethicite armor, though. \"<i>Wow, Lethice actually managed to harvest enough for that?  Pretty clever, though I notice it doesn't cover your groin.</i>\"");
-					if (player.lowerGarment.name === "nothing") outputText("\n\nHe blushes when he looks " + (player.hasCock() ? "at your [cock] hanging freely " : "") + "through the opening, and you're tempted to tease him.");
+					if (player.lowerGarment.name == "nothing") outputText("\n\nHe blushes when he looks " + (player.hasCock() ? "at your [cock] hanging freely " : "") + "through the opening, and you're tempted to tease him.");
 				}
 			}
 			outputText("\n\nAfter chatting for a good while, you and the behemoth part ways and you return to your camp.");
@@ -150,12 +150,12 @@ package classes.Scenes.Areas.VolcanicCrag
 		private function talkAboutHisChildren():void {
 			clearOutput();
 			outputText("You ask the behemoth how your child" + (flags[kFLAGS.BEHEMOTH_CHILDREN] > 1 ? "ren are": " is") + " doing.\n\n");
-			if (flags[kFLAGS.BEHEMOTH_CHILDREN] === 1) outputText("\"<i>He's ");
+			if (flags[kFLAGS.BEHEMOTH_CHILDREN] == 1) outputText("\"<i>He's ");
 			else outputText("\"<i>They're ");
 			outputText("great,</i>\" the behemoth says with a big toothy grin.  \"<i>I'll go get " + (flags[kFLAGS.BEHEMOTH_CHILDREN] > 1 ? "them": "him") + ".</i>\"");
 			//Interact!
 			var chooser:int = rand(4);
-			if (chooser === 0) {
+			if (chooser == 0) {
 				//Story-telling!
 				
 			}
@@ -235,15 +235,15 @@ package classes.Scenes.Areas.VolcanicCrag
 			player.cuntChange(48, true);
 			player.orgasm('Vaginal');
 			flags[kFLAGS.BEHEMOTH_CHILDREN]++;
-			if (flags[kFLAGS.BEHEMOTH_CHILDREN] === 1) {
+			if (flags[kFLAGS.BEHEMOTH_CHILDREN] == 1) {
 				outputText("\"<i>I can't believe I finally have a family.  Thank you so much.,</i>\"");
 				flags[kFLAGS.BEHEMOTH_CHILD_1_BIRTH_DAY] = getGame().time.days;
 			}
-			else if (flags[kFLAGS.BEHEMOTH_CHILDREN] === 2) {
+			else if (flags[kFLAGS.BEHEMOTH_CHILDREN] == 2) {
 				outputText("\"<i>Two kids! Thank you for making sure my son wouldn't be lonely.</i>\"");
 				flags[kFLAGS.BEHEMOTH_CHILD_2_BIRTH_DAY] = getGame().time.days;
 			}
-			else if (flags[kFLAGS.BEHEMOTH_CHILDREN] === 3) {
+			else if (flags[kFLAGS.BEHEMOTH_CHILDREN] == 3) {
 				outputText("\n\n\"<i>Three kids is a good number,</i>\" he says drowsily, and he gives you a kiss as you all rest for a while together.");
 				flags[kFLAGS.BEHEMOTH_CHILD_3_BIRTH_DAY] = getGame().time.days;
 			}
@@ -304,7 +304,7 @@ package classes.Scenes.Areas.VolcanicCrag
 		}
 		
 		private function analCatchBehemoth():void {
-			var isVirgin:Boolean = (player.looseness(false) === 0);
+			var isVirgin:Boolean = (player.looseness(false) == 0);
 			clearOutput();
 			outputText(images.showImage("behemoth-anal-catch"));
 			if (player.HP <= 0 || player.lust >= player.maxLust()) {
@@ -328,7 +328,7 @@ package classes.Scenes.Areas.VolcanicCrag
 			if (player.looseness(false) < 3) outputText("You're tight enough you only move a little at a time, ");
 			else outputText("You've done this enough times for your ass to welcome him with ease, ");
 			outputText("but you're still surprised when you feel his ballsack touch you that he fit in that well painlessly, no matter his size.  He lifts you back up a little faster, leaving only the head in your ass, and you whine from the lack of pressure, eager to be filled and your energy already restoring.  Your [ass] clamps down to keep him from escaping, though the bit of you that can still think doubts he'd want to, and he pushes back in, ");
-			if (player.hasCock()) outputText("your " + (player.cocks.length === 1 ? "cock": "cocks") + " springing to full erectness");
+			if (player.hasCock()) outputText("your " + (player.cocks.length == 1 ? "cock": "cocks") + " springing to full erectness");
 			if (player.hasCock() && player.hasVagina()) outputText(" and ");
 			if (player.hasVagina()) outputText("femspunk leaking from your " + player.vaginaDescript()); 
 			outputText(".\n\n\"<i>You good so far?</i>\" he asks, and you groan for more as you touch yourself and try to grind down on him, most of your weight already under his control.  He laughs, but he does go faster, his hands squeezing your waist as his claws edge just shy of causing pain and you moan, his obscene length sliding easily through your ass as he thrusts faster, pulling you onto his cock as much as he's pushing into you, and you think you might black out a little.\n\n");
@@ -337,7 +337,7 @@ package classes.Scenes.Areas.VolcanicCrag
 			player.refillHunger(70, false);
 			outputText("His orgasm gives you energy, and you cum as well, feeling rejuvenated as ");
 			if (player.hasCock()) {
-				outputText("your " + (player.cocks.length === 1 ? "cock": "cocks") + "shoot ");
+				outputText("your " + (player.cocks.length == 1 ? "cock": "cocks") + "shoot ");
 				if (player.cumQ() < 50) outputText("small ropes of jism all over the ground and yourself.");
 				else if (player.cumQ() >= 50 && player.cumQ() < 250) outputText("ropes of jism all over the ground and yourself.");
 				else if (player.cumQ() >= 250 && player.cumQ() < 500) outputText("jets of cum all over the ground and yourself, puddling on your belly.");
@@ -350,7 +350,7 @@ package classes.Scenes.Areas.VolcanicCrag
 				else outputText("femspunk spurts out of your cunt and splashes onto the ground");
 				outputText(" as your " + player.vaginaDescript() + " clenches relentlessly on your fingers, hard enough to bruise.");  
 			}
-			if (player.gender === 0) outputText("your whole body shakes in overwhelming pleasure.");
+			if (player.gender == 0) outputText("your whole body shakes in overwhelming pleasure.");
 			outputText("  You'd collapse if you were under your own power, but the behemoth carefully lifts you off his cock and spooge floods out of your [ass], coating his legs and the hard ground.  He waits for the dripping to slow before setting you down gently and lying next to you, the two of you sharing the wet spot.  \"<i>I love having someone to fuck,</i>\" he says warmly, his arm over you in claim as you feel his muscles spasm in aftershocks and you rest for a while, sure nothing would pick a fight with him.\n\n");
 			outputText("You wake up some time later and kiss his cheek before letting him know you'll be going.  \"<i>See you later,</i>\" he says as he lets you up, though he doesn't bother getting up. The main thing you remember as " + player.clothedOrNaked("he watches you redress and ") + "you walk back to your camp is his expression of utter contentment, and your mood carries on for the rest of the day.");
 			player.orgasm('Anal');
@@ -381,7 +381,7 @@ package classes.Scenes.Areas.VolcanicCrag
 			if (player.isLactating()) outputText("Your milk soaks his fur under the pressure, though, and you hope he'll enjoy licking it off later. ");
 			outputText("\n\n\"<i>Got to cum!</i>\" he cries, and you clench in preparation as he spews torrents of cum into your womb, hot and unbelievably filling. Moaning, you hook your [legs] around him as he fills you up, his strength seeping into you with his spunk, and it doesn't end. By Marae, how much can his balls hold? You're already stuffed with your belly bulging like you're pregnant and due with twins and he's not done, the fluid making you orgasm hard enough it hurts. ");
 			if (player.hasCock()) outputText("Your own [cock] tries to match him for it as best you can, and you're filled with pride as you paint him with your own spunk. ");
-			outputText("\n\nHe finally finishes and pulls out, all his cum drenching you, him, and his bed. He joins you in the wet spot (not that there even IS a dry spot now) and purrs. \"<i>I love you, " + player.mf("dude", "lady") + "." + (flags[kFLAGS.BEHEMOTH_VAGINAL_CATCH] === 0 ? " Just so you know, though, if that knocked you up -- my kind takes a long time to grow, okay? And it won't take if you aren't pure." : "") + "</i>\" You smile at him while rubbing your cum-filled belly and fall into a nice nap.");
+			outputText("\n\nHe finally finishes and pulls out, all his cum drenching you, him, and his bed. He joins you in the wet spot (not that there even IS a dry spot now) and purrs. \"<i>I love you, " + player.mf("dude", "lady") + "." + (flags[kFLAGS.BEHEMOTH_VAGINAL_CATCH] == 0 ? " Just so you know, though, if that knocked you up -- my kind takes a long time to grow, okay? And it won't take if you aren't pure." : "") + "</i>\" You smile at him while rubbing your cum-filled belly and fall into a nice nap.");
 			outputText("\n\n<b>Some time later...</b>");
 			outputText("\n\nYou wake up from your nap refreshed and invigorated and give the Behemoth a kiss before you " + player.clothedOrNaked("redress yourself in your [armor], and ") + "make your way back to your camp.");
 			player.orgasm('Vaginal');
@@ -436,20 +436,20 @@ package classes.Scenes.Areas.VolcanicCrag
 				outputText("In the middle of the room is a huge metal basin, big enough to fit two people. \"<i>Like my tent?</i>\" he asks, and you praise his taste in decor as he beams. ");
 				flags[kFLAGS.BEHEMOTH_TENT] = 1;
 			}
-			outputText("\n\n" + player.clothedOrNaked(player.armor === armors.GOOARMR ? "Valeria pours away from you as you " : "You remove your [armor], put it into a neat pile on his bed and ","You ") + (player.isGoo() || player.isNaga() ? "slither": "walk") + " over to the basin. \"<i>This is where I cum in,</i>\" he puns terribly, gesturing to the tub, and you get in as he lifts aside his loincloth.");
+			outputText("\n\n" + player.clothedOrNaked(player.armor == armors.GOOARMR ? "Valeria pours away from you as you " : "You remove your [armor], put it into a neat pile on his bed and ","You ") + (player.isGoo() || player.isNaga() ? "slither": "walk") + " over to the basin. \"<i>This is where I cum in,</i>\" he puns terribly, gesturing to the tub, and you get in as he lifts aside his loincloth.");
 			outputText("\n\nHis prick is absolutely massive, and you eagerly stroke it for him as he fondles his balls. Precum soaks your hands as you masturbate him together, and his ears twitch in concentration. He's fantasizing about something beyond you being here with him, you think, but he doesn't share what and you don't mind.");
 			outputText("\n\nEventually, he can hold back no more. \"<i>Gonna cum,</i>\" he announces, aiming his cock away from you, and cum gushes out from it and into the basin in mindblowing quantities. You sit back and relax as the thick warm goop covers your body, and by the time he's done, it's up to your neck. He taps his cock on the edge to knock a few drips off, then takes off his loincloth and joins you, his huge body leaving you a little cramped.");
-			outputText("\n\n\With the " + (player.armor === armors.GOOARMR ? "three" : "two") + " of you now having a literal cum bath, you relax for some time. ");
+			outputText("\n\n\With the " + (player.armor == armors.GOOARMR ? "three" : "two") + " of you now having a literal cum bath, you relax for some time. ");
 			if (flags[kFLAGS.BEHEMOTH_CUM_BATH] <= 0) outputText("It's even better than you expected.");
 			outputText("\n\nHe takes the opportunity to kiss you languidly, his sharp teeth careful around your tongue, and you moan as he probes your mouth. \"<i>I love you,</i>\" he says, leaning back");
-			if (player.armor === armors.GOOARMR) outputText(" and Valeria ruins the moment: \"<i>Thanks for the fluids!</i>\"");
+			if (player.armor == armors.GOOARMR) outputText(" and Valeria ruins the moment: \"<i>Thanks for the fluids!</i>\"");
 			outputText(".\n\nYou caress his cheeks, and lean back to enjoy yourself, too.");
 			outputText("\n\n<b>One hour later...</b>");
 			outputText("\n\nYou get out of the cum-filled basin and " + (player.isGoo() ? "absorb the cum into your gooey body": "shake the excessive cum off") + " before " + player.clothedOrNaked("getting yourself re-dressed into your [armor] and") + " rustling the behemoth's hair.  \"<i>See you later. Come back anytime for more fun,</i>\" the behemoth says. You give him a final kiss before you make your way back to camp, already feeling a lot better.");
 			flags[kFLAGS.BEHEMOTH_CUM_BATH]++;
 			HPChange(player.maxHP() / 2, false);
 			player.changeFatigue(-50);
-			if (player.armor === armors.GOOARMR) kGAMECLASS.valeria.feedValeria(100);
+			if (player.armor == armors.GOOARMR) kGAMECLASS.valeria.feedValeria(100);
 			dynStats("str", 0.5, "tou", 0.5, "lus", 30);
 			player.slimeFeed();
 			if (kGAMECLASS.inCombat) combat.cleanupAfterCombat();
@@ -491,7 +491,7 @@ package classes.Scenes.Areas.VolcanicCrag
 				outputText("\n\nUnfortunately, by the time you finish peeing, there isn't pretty much anything else to do. \"<i>I'm sorry but I'm not really interested in centaurs. I don't really hate centaurs; I just find it a bit awkward. But you're always welcome to come back,</i>\" the behemoth says.");
 			}
 			else {
-				outputText("\n\nYou join him in filling the bucket with warm yellow liquid. You " + player.clothedOrNakedLower((player.armor === armors.LTHCARM && player.lowerGarment.name === "nothing") ? "take advantage of the opening in your lethicite armor, " : "open up your [armor], "));
+				outputText("\n\nYou join him in filling the bucket with warm yellow liquid. You " + player.clothedOrNakedLower((player.armor == armors.LTHCARM && player.lowerGarment.name == "nothing") ? "take advantage of the opening in your lethicite armor, " : "open up your [armor], "));
 				if (player.hasCock()) { //Cock has priority over vagina.
 					outputText("aim your " + player.cockDescript(player.biggestCockIndex()) + " into the bucket and let out a pressure as your urine mingles with the behemoth's.");
 				}

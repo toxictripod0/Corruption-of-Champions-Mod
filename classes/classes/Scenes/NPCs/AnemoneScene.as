@@ -67,14 +67,14 @@ package classes.Scenes.NPCs
 			var needNext:Boolean = false;
 			if (flags[kFLAGS.ANEMONE_KID] > 0) {
 				//if (flags[kFLAGS.KID_ITEM_FIND_HOURS] < 20) flags[kFLAGS.KID_ITEM_FIND_HOURS]++;
-				if (flags[kFLAGS.KID_SITTER] === 0 && flags[kFLAGS.MARBLE_KIDS] >= 5 && getGame().time.hours > 10 && getGame().time.hours < 18 && rand(4) === 0) {
+				if (flags[kFLAGS.KID_SITTER] == 0 && flags[kFLAGS.MARBLE_KIDS] >= 5 && getGame().time.hours > 10 && getGame().time.hours < 18 && rand(4) == 0) {
 					kidABabysitsCows();
 					needNext = true;
 				}
-				if (flags[kFLAGS.KID_SITTER] === 1 && getGame().time.hours > 10 && getGame().time.hours < 18 && rand(4) === 0) {
+				if (flags[kFLAGS.KID_SITTER] == 1 && getGame().time.hours > 10 && getGame().time.hours < 18 && rand(4) == 0) {
 					flags[kFLAGS.KID_SITTER] = 2;
 				}
-				else if (flags[kFLAGS.KID_SITTER] === 2) flags[kFLAGS.KID_SITTER] = 1;
+				else if (flags[kFLAGS.KID_SITTER] == 2) flags[kFLAGS.KID_SITTER] = 1;
 			}
 			if (player.hasStatusEffect(StatusEffects.AnemoneArousal)) {
 				if (player.pregnancyIncubation > 1) {
@@ -102,7 +102,7 @@ package classes.Scenes.NPCs
 
 		public function kidAXP(diff:Number = 0):Number
 		{
-			if (diff === 0) return flags[kFLAGS.KID_A_XP];
+			if (diff == 0) return flags[kFLAGS.KID_A_XP];
 			flags[kFLAGS.KID_A_XP] += diff;
 			if (flags[kFLAGS.KID_A_XP] < 0) flags[kFLAGS.KID_A_XP] = 0;
 			if (flags[kFLAGS.KID_A_XP] > 100) flags[kFLAGS.KID_A_XP] = 100;
@@ -114,7 +114,7 @@ package classes.Scenes.NPCs
 		{
 			spriteSelect(SpriteDb.s_anemone);
 			clearOutput();
-			if (flags[kFLAGS.TIMES_MET_ANEMONE] === 0 || player.hasItem(consumables.MINOCUM)) {
+			if (flags[kFLAGS.TIMES_MET_ANEMONE] == 0 || player.hasItem(consumables.MINOCUM)) {
 				flags[kFLAGS.TIMES_MET_ANEMONE]++;
 				outputText("You step into the boat and begin to slip off the mooring rope when you are distracted by a swirl of bright colors under the surface of the lake.  As you peer over the side to get a better look at the oscillating mass of greens and purples, the swirl begins drawing closer to the boat as if reciprocating your interest; it grows larger and brighter as it closes the distance.  The cloud parts to reveal an attractive feminine face cast in a deep blue shade.  It lightens responsively as its gaze takes you in from the depths of two opaque eyes.  The confusing mass of colors resolves itself into tresses of two-inch-thick anemone tentacles sprouting from the head in place of hair!\n\n");
 
@@ -223,7 +223,7 @@ package classes.Scenes.NPCs
 			}
 			outputText(".  The anemone must have been right on the edge with you, because after a few more thrusts in your hungry asshole she achieves her own climax and shoots several strings of cool, thick semen into you.  You collapse backward against your partner and she idly caresses your " + player.nippleDescript(0) + ".  After several minutes of relaxing in the warm water, you sit up and push yourself off of the anemone's limp penis, which drags a string of semen out of your " + player.assholeDescript() + " and prompts ");
 			//[(dix)
-			if (player.totalCocks() > 0 || player.gender === 0) outputText("a ");
+			if (player.totalCocks() > 0 || player.gender == 0) outputText("a ");
 			else if (player.hasVagina()) outputText("another ");
 			outputText(" giggle from the blue girl.  Standing up, you gather your gear and blow her a kiss before you leave.  She darkens in color, her camouflage reflex causing her to 'blush' in discomfort at this display of affection.");
 			//(pass 1 hour, reduce lust to min)
@@ -255,7 +255,7 @@ package classes.Scenes.NPCs
 					outputText("As you push all the way into her, your other dick");
 					if (player.cockTotal() > 2) outputText("s");
 					outputText(" rub");
-					if (player.cockTotal() === 2) outputText("s");
+					if (player.cockTotal() == 2) outputText("s");
 					outputText(" up against the feelers lining her pussy.  Unexpectedly, they also contain the venomous nematocysts of her tentacles and in that single stroke " + player.sMultiCockDesc() + " is throbbing hard and squeezing pre-cum all over her groin.  She reaches down and plays with it");
 					if (player.cockTotal() > 2) outputText(", and them,");
 					outputText(" as you start pumping.  ");
@@ -424,7 +424,7 @@ package classes.Scenes.NPCs
 			//(wormshot blurb)
 			//The anemone, having reached out to try and catch some of the load but missing the grab, sets her face in an irate scowl and approaches you.
 			//loss, neuter:
-			if (player.gender === 0) {
+			if (player.gender == 0) {
 				outputText("Shivering, you slump before the anemone and begin trying to remove your " + player.armorName + ".  She claps and peals happily, splashing over to you.  Pushing your trembling hands out of the way, she unfastens your garments and pulls them free of you... and then stops.  You look the girl in the face uncomprehendingly and she answers your gaze with a look of equal confusion.  Your head turns to follow her as she looks you up and down and even makes a circle around you, inspecting every inch and chewing her lip anxiously.");
 				//[(lactating)
 				if (player.biggestLactation() > 1) outputText("  For a moment the examination stops at the dribble of milk leaking from your " + player.nippleDescript(0) + "s.  With one finger she collects a bit and tastes it, only to grimace and stick her tongue out.");
@@ -464,7 +464,7 @@ package classes.Scenes.NPCs
 					//[(if dual/multi-cox)
 					if (player.cockTotal() > 1) {
 						//[(cock2 doesn't exist)
-						if (player.cockTotal() === 2) outputText("Your other dick rubs");
+						if (player.cockTotal() == 2) outputText("Your other dick rubs");
 						//(cock2 exists)
 						else outputText("The rest of your " + player.multiCockDescriptLight() + " rub");
 						outputText(" against her cheek, smearing slick wetness on her blue face.");
@@ -495,7 +495,7 @@ package classes.Scenes.NPCs
 					if (player.totalCocks() > 1) {
 						outputText(" as ");
 						//[(dick2 = no)
-						if (player.totalCocks() === 2) outputText("your cocks shoot");
+						if (player.totalCocks() == 2) outputText("your cocks shoot");
 						else outputText("the rest of your " + player.multiCockDescriptLight() + " shoot");
 						outputText(" all over her face and hair, ");
 						//[(small skeet)
@@ -513,7 +513,7 @@ package classes.Scenes.NPCs
 					outputText("After a grateful moment of rest as the anemone swallows your issue, her hands begin pumping once again.  Oh god!  Your " + Appearance.cockNoun(CockTypesEnum.HUMAN) + " quickly returns to erectness under the renewed siege of aphrodisiac");
 					//[(multi)
 					if (player.cockTotal() > 1) {
-						if (player.cockTotal() === 2) outputText(" and your other " + player.cockDescript(1) + " follows suit");
+						if (player.cockTotal() == 2) outputText(" and your other " + player.cockDescript(1) + " follows suit");
 						else outputText(" and your other pricks follow suit");
 					}
 					outputText(".  The blue girl continues to stroke your privates with her tentacle hair, flicking your urethra with her tongue, until you've come twice more.  Nor does she display any intention of stopping there, but mercifully you black out and collapse into the water.  Half-frowning, the anemone shrugs and pushes your insensible form up onto the sandy shore.");
@@ -549,7 +549,7 @@ package classes.Scenes.NPCs
 					outputText(".  This doesn't escape your blue lover's notice, and she quickly stops pumping.  Left at the edge of orgasm, you panic and look over your shoulder at her.  Judging by her grinning demeanour, she seems to be up to something diabolical.  You stare at her confusedly until you feel a new heat at the base of your " + player.multiCockDescriptLight() + ". Glancing down, you see that her tentacle-hair has wrapped around " + player.sMultiCockDesc() + " and is squeezing tightly!  Pleased with the arrangement, the anemone begins pumping and rubbing your prostate again, spreading new warmth through your " + player.assholeDescript() + ".  Your delayed climax finally arrives, but the <i>de facto</i> cockring");
 					if (player.cockTotal() > 1) outputText("s");
 					outputText(" prevent");
-					if (player.cockTotal() === 1) outputText("s");
+					if (player.cockTotal() == 1) outputText("s");
 					outputText(" any semen from escaping!  The sensations swell and fade as your orgasm passes fruitlessly, your blue partner fucking away as merrily as ever.\n\n");
 
 					outputText("For nearly an hour the anemone continues her performance, even going so far as to caress your swollen " + player.multiCockDescriptLight() + " with her unoccupied tentacles.  Several more orgasms arrive and desert you without bringing any relief from the pressure on your ");
@@ -628,11 +628,11 @@ package classes.Scenes.NPCs
 			outputText("The initial surprise subsides to wooly-headedness and a feeling of mild arousal as the stingers in her tentacles find exposed flesh.  In panic of drowning you pull free of the ropy mass and backpaddle away from the girl until your " + player.feet() + " reassuringly touch the shallows of the lakebed.  As you shake your head to clear the haze, you notice a few of your items have fallen out of your pouches and are floating in the water.  The anemone has picked one in particular up and is examining it; a bottle of minotaur cum.  Her eyes light up in recognition as the fluid sloshes back and forth and she looks beseechingly at you, cradling it next to her cheek.  \"<i>Gimme?</i>\" she asks, trying to look as sweet as possible.\n\n");
 
 			//[(PC not addicted)
-			if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] === 0) {
+			if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] == 0) {
 				outputText("Do you want to make a present of the bottle?");
 			}
 			//(PC addicted but sated)
-			else if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] === 1) {
+			else if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] == 1) {
 				outputText("You're still riding high from your last dose; do you want to share your buzz with the girl? It might lead to something fun...");
 			}
 			//(PC addicted but in withdrawal)
@@ -837,7 +837,7 @@ package classes.Scenes.NPCs
 				else outputText("squirts obscenely, coating your length and her face with your female orgasm.  ");
 				outputText("Your body shivers as near-painful sensations wrack you, engulfed in the anemone's questing passage");
 				if (player.balls > 0) outputText(".  Your lover, hopeful, watches and waits for your testicles to rise into your groin and unload their cargo");
-				if (player.cockTotal() === 0) outputText("; she even tries to push them up herself with her hands, as if that would make your clit produce the semen inside them");
+				if (player.cockTotal() == 0) outputText("; she even tries to push them up herself with her hands, as if that would make your clit produce the semen inside them");
 				outputText(".");
 				if (player.hasCock()) outputText("  Your clit remains unproductive; your male orgasm squirts out uselessly around her head, mingling with the lake water.  The girl's expression upon seeing this is pained, and she tries but fails to get free to follow the arcing white ropes, sending further spasms of pleasure through your sensitive distaff staff.");
 				outputText("  Eventually your body calms enough to respond to your impulses, and you carefully draw your [clit] out of your lover's throat.");
@@ -958,7 +958,7 @@ package classes.Scenes.NPCs
 				//[(cock)
 				if (player.hasCock()) {
 					outputText("\n\nYou hurriedly open your armor as your ");
-					if (player.totalCocks() === 1) outputText("male part erupts");
+					if (player.totalCocks() == 1) outputText("male part erupts");
 					else outputText("male parts erupt");
 					outputText(" in sympathy, lancing semen over your partner.  Surprisingly, the anemone doesn't even notice, so absorbed is she in experimenting with your modified stinger.");
 				}
@@ -1156,11 +1156,11 @@ package classes.Scenes.NPCs
 			spriteSelect(SpriteDb.s_kida);
 			outputText("You walk over to the barrel.  ");
 			//[(display if hourssinceKiditem >= 16)
-			if (flags[kFLAGS.KID_ITEM_FIND_HOURS] !== getGame().time.days) {
+			if (flags[kFLAGS.KID_ITEM_FIND_HOURS] != getGame().time.days) {
 				outputText("An item sits next to it, left there by the anemone as a present to you.  Or 'rent', if you choose to think of it that way.  ");
 			}
 			//[(if Kid A has been given a weapon)
-			if (flags[kFLAGS.ANEMONE_WEAPON_ID] !== 0) {
+			if (flags[kFLAGS.ANEMONE_WEAPON_ID] != 0) {
 				outputText("She has " + ItemType.lookupItem(flags[kFLAGS.ANEMONE_WEAPON_ID]).longName + " sitting next to it.  ");
 			}
 			//(if babysitting)
@@ -1174,19 +1174,19 @@ package classes.Scenes.NPCs
 
 			//Tutor, N.Watch, and Evict require the anemone to be present
 			menu();
-			if (flags[kFLAGS.KID_ITEM_FIND_HOURS] !== getGame().time.days) addButton(0, "Item", getAnemoneItem, undefined, undefined, undefined, "Take her gift.");
+			if (flags[kFLAGS.KID_ITEM_FIND_HOURS] != getGame().time.days) addButton(0, "Item", getAnemoneItem, undefined, undefined, undefined, "Take her gift.");
 			else addButtonDisabled(0, "Item", "She has nothing to give you now.");
 			
-			if (flags[kFLAGS.ANEMONE_WEAPON_ID] !== 0) addButton(1, "Take Weapon", takeOutOfAnemone, undefined, undefined, undefined, "Take away her weapon.");
+			if (flags[kFLAGS.ANEMONE_WEAPON_ID] != 0) addButton(1, "Take Weapon", takeOutOfAnemone, undefined, undefined, undefined, "Take away her weapon.");
 			else addButton(1, "Give Weapon", giveAnemoneWeapon, undefined, undefined, undefined, "Give her a weapon.");
 			
 			if (flags[kFLAGS.KID_SITTER] <= 1) {
-				if (flags[kFLAGS.ANEMONE_WEAPON_ID] !== 0 && player.fatigueLeft() >= 10) addButton(3, "Tutor", tutorAnemoneKid, undefined, undefined, undefined, "Have a training session with her.");
-				else if (flags[kFLAGS.ANEMONE_WEAPON_ID] === 0) addButtonDisabled(3, "Tutor", "You should give her some kind of weapon.");
+				if (flags[kFLAGS.ANEMONE_WEAPON_ID] != 0 && player.fatigueLeft() >= 10) addButton(3, "Tutor", tutorAnemoneKid, undefined, undefined, undefined, "Have a training session with her.");
+				else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == 0) addButtonDisabled(3, "Tutor", "You should give her some kind of weapon.");
 				else if (player.fatigueLeft() < 10) addButtonDisabled(3, "Tutor", "You're too tired to tutor Kid A.");
 				
 				if (flags[kFLAGS.ANEMONE_WATCH] > 0) addButton(4, "No Watch", anemoneWatchToggle, undefined, undefined, undefined, "Ask Kid A to stop watching for enemies at night.");
-				else if (flags[kFLAGS.ANEMONE_WEAPON_ID] === 0) addButtonDisabled(4, "Watch", "Your anemone daughter will not be able to guard you at night without a weapon.");
+				else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == 0) addButtonDisabled(4, "Watch", "Your anemone daughter will not be able to guard you at night without a weapon.");
 				else addButton(4, "Watch", anemoneWatchToggle, undefined, undefined, undefined, "Ask Kid A to watch for enemies at night.");
 				
 				if (flags[kFLAGS.HAD_KID_A_DREAM] > 0 && flags[kFLAGS.ANEMONE_KID] >= 2) {
@@ -1209,7 +1209,7 @@ package classes.Scenes.NPCs
 			spriteSelect(SpriteDb.s_kida);
 			var itype:ItemType;
 			outputText("You reach down and pick up her present.  Today, she's left you ");
-			if (kidAXP() === 0) itype = consumables.DRYTENT;
+			if (kidAXP() == 0) itype = consumables.DRYTENT;
 			else if (kidAXP() < 50) {
 				///[IncubusDraft/SuccubusMilk/ImpFood/MinoBlood/LargeAxe]
 				itype = randomChoice(consumables.INCUBID, consumables.SUCMILK, consumables.IMPFOOD, consumables.GOB_ALE, consumables.WETCLTH, consumables.L_DRAFT, consumables.W_FRUIT, consumables.EQUINUM, useables.GREENGL);
@@ -1217,23 +1217,23 @@ package classes.Scenes.NPCs
 			else if (kidAXP() < 75) {
 				//White Book/Bee Honey/Ovi Elixir/Shark Tooth/S. Swimwear/Lust Draft/Bimbo Liqueur(same odds as player drop)
 				itype = randomChoice(consumables.W__BOOK,consumables.BEEHONY,consumables.OVIELIX,consumables.SHARK_T, armors.S_SWMWR, consumables.L_DRAFT, useables.B_CHITN);
-				if (rand(100) === 0) itype = consumables.BIMBOLQ;
+				if (rand(100) == 0) itype = consumables.BIMBOLQ;
 			}
 			else if (kidAXP() < 100) {
 				//Mino Blood/Large Axe/Comfortable Clothes/Lust Draft/Lust Dagger/Bro Brew(same odds as player drop)
 				itype = randomChoice(consumables.MINOBLO, weapons.L__AXE, armors.C_CLOTH, consumables.L_DRAFT, weapons.L_DAGGR);
-				if (rand(100) === 0) itype = consumables.BROBREW;
+				if (rand(100) == 0) itype = consumables.BROBREW;
 			}
 			else {
 				//T.Shark Tooth/Pink Gossamer/Black Gossamer/Reptilum
 				var choice:Number = rand(100);
-				if (choice === 0) itype = consumables.BROBREW;
-				else if (choice === 1) itype = consumables.BIMBOLQ;
+				if (choice == 0) itype = consumables.BROBREW;
+				else if (choice == 1) itype = consumables.BIMBOLQ;
 				else
 					itype = randomChoice(consumables.TSTOOTH, consumables.S_GOSSR,consumables.B_GOSSR,useables.T_SSILK,consumables.REPTLUM);
 			}
 			outputText(itype.longName + ".");
-			if (itype === weapons.L__AXE) outputText("  Holy... how did she drag this thing home!?");
+			if (itype == weapons.L__AXE) outputText("  Holy... how did she drag this thing home!?");
 			outputText("\n\n");
 			inventory.takeItem(itype, playerMenu);
 			//(set hourssinceKiditem = 0)
@@ -1246,7 +1246,7 @@ package classes.Scenes.NPCs
 			spriteSelect(SpriteDb.s_kida);
 			outputText("What do you want to give her?");
 			function giveableToAnemone(item:ItemType):Boolean {
-				return item === consumables.W__BOOK || item === consumables.B__BOOK || item === consumables.W_STICK || item is Weapon;
+				return item == consumables.W__BOOK || item == consumables.B__BOOK || item == consumables.W_STICK || item is Weapon;
 			}
 			menu();
 			kGAMECLASS.hideUpDown();
@@ -1299,7 +1299,7 @@ package classes.Scenes.NPCs
 				flags[kFLAGS.ANEMONE_WATCH] = 0;
 			}
 			else {
-				if (flags[kFLAGS.ANEMONE_WEAPON_ID] === 0) {
+				if (flags[kFLAGS.ANEMONE_WEAPON_ID] == 0) {
 					outputText("You're not really going to set this featherweight against the night barehanded, are you?!  Her hair hasn't even grown out!  You'd better hand her some kind of weapon.");
 				}
 				else {
@@ -1331,24 +1331,24 @@ package classes.Scenes.NPCs
 
 			//duel effects by weapon, output in new PG
 			//[Pipe] or [Wizard Staff] or [Eldritch Staff]
-			if (flags[kFLAGS.ANEMONE_WEAPON_ID] === weapons.PIPE.id ||
-					flags[kFLAGS.ANEMONE_WEAPON_ID] === weapons.MACE.id ||
-					flags[kFLAGS.ANEMONE_WEAPON_ID] === weapons.W_STAFF.id ||
-					flags[kFLAGS.ANEMONE_WEAPON_ID] === weapons.E_STAFF.id ||
-					flags[kFLAGS.ANEMONE_WEAPON_ID] === weapons.L_STAFF.id) {
+			if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.PIPE.id ||
+					flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.MACE.id ||
+					flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.W_STAFF.id ||
+					flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.E_STAFF.id ||
+					flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.L_STAFF.id) {
 				outputText("\n\nThough she acts like she's not serious and pulls her swings more often than not, the heft of the ");
-				if (flags[kFLAGS.ANEMONE_WEAPON_ID] === weapons.PIPE.id) outputText("pipe");
-				else if (flags[kFLAGS.ANEMONE_WEAPON_ID] === weapons.MACE.id) outputText("mace");
+				if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.PIPE.id) outputText("pipe");
+				else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.MACE.id) outputText("mace");
 				else outputText("stick");
-				if (flags[kFLAGS.ANEMONE_WEAPON_ID] !== weapons.MACE.id) outputText(" is still enough to bruise you a bit.");
+				if (flags[kFLAGS.ANEMONE_WEAPON_ID] != weapons.MACE.id) outputText(" is still enough to bruise you a bit.");
 				else outputText(" manages to bruise you a lot.");
 				HPChange(-5, false);
-				if (flags[kFLAGS.ANEMONE_WEAPON_ID] === weapons.MACE.id) HPChange(-15, false);
+				if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.MACE.id) HPChange(-15, false);
 				kidAXP(6);
 			}
 			//(HP - 5, KidXP + 1)
 			//[Riding Crop]
-			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] === weapons.RIDINGC.id) {
+			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.RIDINGC.id) {
 				outputText("\n\nShe seems to enjoy smacking you with the riding crop, making sultry eyes at you and pursing her lips whenever she lands a crack on your [butt] or [chest].  So much so, in fact, that her own penis is betraying her arousal, bobbing in time as she swishes the weapon around.  The humiliation ");
 				if (player.lib < 50) outputText("is");
 				else outputText("isn't");
@@ -1359,7 +1359,7 @@ package classes.Scenes.NPCs
 				kidAXP(6);
 			}
 			//[Lust Dagger]
-			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] === weapons.L_DAGGR.id) {
+			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.L_DAGGR.id) {
 				outputText("\n\nThe enchanted dagger is light enough for the anemone to use one-handed, and she makes a good practice of turning aside your mock blows with it while reaching in to stimulate you with her other hand.  For good measure, she nicks you with the blade itself whenever her caress elicits a distracted flush.");
 				//(HP -5, lust +10, KidXP + 3)
 				HPChange(-5, false);
@@ -1367,7 +1367,7 @@ package classes.Scenes.NPCs
 				kidAXP(5);
 			}
 			//[Dagger]
-			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] === weapons.DAGGER.id) {
+			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.DAGGER.id) {
 				outputText("\n\nThe dagger is light enough for the anemone to use one-handed, and she makes a good practice of turning aside your mock blows with it while reaching in to stimulate you with her other hand.  For good measure, she nicks you with the blade itself whenever her caress elicits a distracted flush.");
 				//(HP -5, lust +5, KidXP + 3)
 				HPChange(-5, false);
@@ -1375,7 +1375,7 @@ package classes.Scenes.NPCs
 				kidAXP(5);
 			}
 			//[Beautiful Sword]
-			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] === weapons.B_SWORD.id) {
+			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.B_SWORD.id) {
 				outputText("\n\nThe sword seems to dance in the air, as though it were the perfect weight and balance for your daughter.  She delivers several playful thrusts at you and though you deflect all but the last, that one slips by your guard.  The girl's eyes widen as the point lunges at your breast, but it delivers barely a scratch before twisting away.");
 				outputText("\n\nPerhaps anemones are a bit too corrupt to use the sword effectively?");
 				//(HP -1, KidXP - 2)
@@ -1383,57 +1383,57 @@ package classes.Scenes.NPCs
 				kidAXP(-2);
 			}
 			//[Jeweled Rapier] or [Raphael's Rapier]
-			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] === weapons.RRAPIER.id ||
-					flags[kFLAGS.ANEMONE_WEAPON_ID] === weapons.JRAPIER.id) {
+			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.RRAPIER.id ||
+					flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.JRAPIER.id) {
 				outputText("\n\nThe rapier is light enough for the girl, but it takes a multitude of reminders before she handles the slender blade with the care and style it deserves.  She seems to regard it as little more than a tool for thwacking you in the butt that, coincidentally, has a pointy end.");
 				//(no effect, señorita)
 			}
 			//[Large Axe], [Large Hammer], [Large Claymore], or [Huge Warhammer]
-			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] === weapons.L__AXE.id ||
-					flags[kFLAGS.ANEMONE_WEAPON_ID] === weapons.L_HAMMR.id ||
-					flags[kFLAGS.ANEMONE_WEAPON_ID] === weapons.WARHAMR.id ||
-					flags[kFLAGS.ANEMONE_WEAPON_ID] === weapons.L__AXE.id) {
+			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.L__AXE.id ||
+					flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.L_HAMMR.id ||
+					flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.WARHAMR.id ||
+					flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.L__AXE.id) {
 				outputText("\n\nShe can barely lift the weapon you've given her, although for a while she does manage to support one end with the ground and tilt it by the haft to ward off your blows with cleverness.  Distracting her by way of a feint, you part her from it and advance with a smile full of playful menace... whereupon she shrieks and pushes you backwards, causing you to trip over the weapon and fall with a crash.");
 				//(HP - 5, KidXP - 4)
 				kidAXP(-4);
 				HPChange(-5, false);
 			}
 			//[Katana] or [Spellsword]
-			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] === weapons.KATANA.id ||
-					flags[kFLAGS.ANEMONE_WEAPON_ID] === weapons.S_BLADE.id ||
-					flags[kFLAGS.ANEMONE_WEAPON_ID] === weapons.SCIMITR.id ||
-					flags[kFLAGS.ANEMONE_WEAPON_ID] === weapons.B_SCARB.id ) {
+			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.KATANA.id ||
+					flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.S_BLADE.id ||
+					flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.SCIMITR.id ||
+					flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.B_SCARB.id ) {
 				outputText("\n\nThe light sword and the light anemone seem to be a good match, and she actually manages to make several deft moves with it after your instruction.  One is a bit too deft, as she fails to rein in her swing and delivers a long, drawing cut that connects with your [leg].");
 				//(HP - 20, KidXP + 2)
 				kidAXP(4);
 				HPChange(-20, false);
 			}
 			//[Spear]
-			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] === weapons.SPEAR.id) {
+			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.SPEAR.id) {
 				outputText("\n\nThe natural length of the spear and the anemone racial mindset to get close and communicate by touch don't mesh well; she chokes up well past halfway on the haft despite your repeated instruction and pokes at you from close range with very little force, the idle end of the weapon waggling through the air behind her.");
 				//(HP -5, KidXP - 1)
 				kidAXP(-1);
 				HPChange(-5, false);
 			}
 			//[Whip] or [Succubi's Whip]
-			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] === weapons.WHIP.id ||
-					flags[kFLAGS.ANEMONE_WEAPON_ID] === weapons.SUCWHIP.id) {
+			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.WHIP.id ||
+					flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.SUCWHIP.id) {
 				outputText("\n\nThe whip seems almost like an extension of her hand once she decides its purpose is to tangle things up as opposed to lashing and lacerating flesh.  One of her overzealous swings finds you <i>both</i> tied in its coils; her petite body presses against yours as she colors in embarrassment.  Her distracted struggles to loosen the bonds accomplish little except to rub her sensitive parts along yours.");
-				if (flags[kFLAGS.ANEMONE_WEAPON_ID] === weapons.SUCWHIP.id) outputText("  The demonic enchantment chooses then to activate, and her color deepens as her lust peaks, as does your own.");
+				if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.SUCWHIP.id) outputText("  The demonic enchantment chooses then to activate, and her color deepens as her lust peaks, as does your own.");
 				outputText("  You feel a point digging into your groin as her prick hardens and her struggles cease; she begins to moan openly in arousal.  As she relaxes, the coils of the whip finally loosen enough for you to extricate yourself.");
 				//(HP -0, lust +10 if normal whip or +20 if succubus, KidXP + 3)
 				dynStats("lus", 10, "scale", false);
-				if (flags[kFLAGS.ANEMONE_WEAPON_ID] === weapons.SUCWHIP.id) dynStats("lus", 10, "scale", false);
+				if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.SUCWHIP.id) dynStats("lus", 10, "scale", false);
 				kidAXP(6);
 			}
 			//[Spiked Gauntlets] or [Hooked Gauntlets]
-			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] === weapons.S_GAUNT.id ||
-					flags[kFLAGS.ANEMONE_WEAPON_ID] === weapons.H_GAUNT.id) {
+			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.S_GAUNT.id ||
+					flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.H_GAUNT.id) {
 				outputText("\n\nThe anemone wears the gauntlets easily and comfortably, but doesn't seem to understand that to attack she needs to ball up her fists and swing them, no matter how many times you tell her.  The most she manages is to deflect a few of your mock lunges by batting them aside with the metal atop her knuckles.");
 				//(no tigereffect)
 			}
 			//[Wingstick]
-			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] === consumables.W_STICK.id) {
+			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == consumables.W_STICK.id) {
 				outputText("\n\nThe girl stares at the stick, still uncomprehending how you intend her to use it.  One last time, you take the weapon from her and make a throwing motion, then return it.  She looks from it back to you once more, then tosses it at your head.  As it impacts with a clunk and your vision jars, she clutches her stomach in laughter.");
 				//(HP - 10, set Kidweapon to empty, KidXP + 1)
 				HPChange(-10, false);
@@ -1441,7 +1441,7 @@ package classes.Scenes.NPCs
 				kidAXP(5);
 			}
 			//[Dragonshell Shield]
-			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] === shields.DRGNSHL.id) {
+			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == shields.DRGNSHL.id) {
 				outputText("\n\nYour protégé takes to the shield quite well, hiding behind it like... well, like a portable water barrel.  Even the way she peeks over the top is reminiscent.  She makes effective use of her cover, pushing forward relentlessly and delivering soft headbutts to spread venom to unprotected areas.");
 				//(lust + 5, temp str/spd down, KidXP + 5)
 				//str/spd loss reverts after clicking Next button
@@ -1449,13 +1449,13 @@ package classes.Scenes.NPCs
 				dynStats("lus", 10, "scale", false);
 			}
 			//[White Book]
-			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] === consumables.W__BOOK.id) {
+			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == consumables.W__BOOK.id) {
 				outputText("\n\nPart literacy training and part magic instruction, your progress through the book is painstakingly slow.  After almost an hour of trying to get the anemone to concentrate on the words, she finally manages to cause a small flash of white light on the page in front of her - whereupon she shrieks and drops the book, covering her head with her arms and backing away.");
 				//(KidXP - 5)
 				kidAXP(-5);
 			}
 			//[Black Book]
-			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] === consumables.B__BOOK.id) {
+			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == consumables.B__BOOK.id) {
 				outputText("\n\nThe girl sits attentively with you, resting her head against your arm, as you teach her the words needed to evoke the formulae in the book.  When you suggest she try one out, however, she shakes her head with wide eyes.  Insisting, you stand apart from her and fold your arms.  Blushing a deep blue, the anemone resigns herself to focusing on your crotch as she mouths quiet syllables.  After a few moments, you actually feel a small glow of lust where she's staring.  The girl giggles nervously and looks away as you flush and your garments ");
 				if (player.hasCock()) outputText("tighten");
 				else if (player.hasVagina()) outputText("dampen");
@@ -1466,7 +1466,7 @@ package classes.Scenes.NPCs
 				kidAXP(4);
 			}
 			//[Scarred Blade]
-			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] === weapons.S_BLADE.id) {
+			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.S_BLADE.id) {
 				outputText("\n\nThe anemone attempts to draw the bloodthirsty saber at your insistence, but as she pulls it free of the scabbard, it jerks from her hands, lashing across her thigh before clattering noisily to the ground and spinning away.  Her shock grows as thick, clear fluid seeps from the cut, and she covers her mouth with her hands, looking up at you with piteous, wet eyes.");
 				//[(if corr <=70)
 				//if (player.cor <= 70) outputText("  The blade's edge flashes toward you as well, when you try to pick it up.  After a few frustrated attempts, it becomes clear that you'll have to abandon it for now.");
@@ -1482,7 +1482,7 @@ package classes.Scenes.NPCs
 				return;
 			}
 			//[Flintlock Pistol] (Because guns are awesome.)
-			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] === weapons.FLINTLK.id) {
+			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.FLINTLK.id) {
 				outputText("\n\nAs if the anemone girl already knows how to use a gun, she easily pulls the trigger and fires rounds of ammunition towards you!  ");
 				if (silly()) outputText("Pew pew pew!  ");
 				if (player.spe >= 70) {
@@ -1498,7 +1498,7 @@ package classes.Scenes.NPCs
 				}
 				kidAXP(5);
 			}
-			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] === weapons.CROSSBW.id) {
+			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.CROSSBW.id) {
 				outputText("\n\nAs if the anemone girl already knows how to use a crossbow, she easily pulls the lever mechanism and fires a bolt towards you!  She reloads the crossbow and fires again.  ");
 				if (player.spe >= 60) {
 					outputText("You easily dodge the incoming bolts thanks to your speed!");
@@ -1513,7 +1513,7 @@ package classes.Scenes.NPCs
 				}
 				kidAXP(5);
 			}
-			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] === weapons.FLAIL.id) {
+			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.FLAIL.id) {
 				outputText("\n\nThe girl holds up the flail with no problem and you teach her how to use the weapon.  However, after dozens of swings, she accidentally hits herself with the spiked ball and looks at you with a whimper.  You tell her to stop; maybe this isn't the right weapon for her?");
 				HPChange(-10, false);
 				kidAXP( -2);
@@ -1527,8 +1527,8 @@ package classes.Scenes.NPCs
 			//if hp = 0 after tutor, override any other result and output new PG:
 			if (player.HP < 1) {
 				outputText("\n\nWith a groan, you fall flat on your back and close your eyes.  As if from far away, you hear ");
-				if (flags[kFLAGS.ANEMONE_WEAPON_ID] !== weapons.S_GAUNT.id &&
-						flags[kFLAGS.ANEMONE_WEAPON_ID] !== weapons.H_GAUNT.id) outputText("the thump of something hitting the ground and ");
+				if (flags[kFLAGS.ANEMONE_WEAPON_ID] != weapons.S_GAUNT.id &&
+						flags[kFLAGS.ANEMONE_WEAPON_ID] != weapons.H_GAUNT.id) outputText("the thump of something hitting the ground and ");
 				outputText("the anemone gasp, and then the world slips away from you.");
 
 				outputText("\n\n<b>Eight hours later...</b>");
@@ -1573,7 +1573,7 @@ package classes.Scenes.NPCs
 			var y:int;
 			//pseudo-virgin vaginal, one time only
 			//if KidXP >= 40 and lust > 99 after tutor and PC has wang of area <36 and Kidswag = 2
-			if (flags[kFLAGS.ANEMONE_KID] === 2 && player.hasCock() && player.cockThatFits(36) >= 0) {
+			if (flags[kFLAGS.ANEMONE_KID] == 2 && player.hasCock() && player.cockThatFits(36) >= 0) {
 				x = player.cockThatFits(36);
 				outputText("\n\n");
 				outputText(images.showImage("anemone-kid-male-vagfuck"));
@@ -1611,7 +1611,7 @@ package classes.Scenes.NPCs
 				y = -1;
 				temp = 0;
 				while (temp < player.cockTotal()) {
-					if (temp !== x) {
+					if (temp != x) {
 						y = temp;
 						break;
 					}
@@ -1682,7 +1682,7 @@ package classes.Scenes.NPCs
 				outputText("\n\nYou lay back, spent, and slip from consciousness.");
 				//lose 100 lust, pass 2 hr, if Kidswag = 1, set Kidswag = 2
 				player.orgasm('Dick');
-				if (flags[kFLAGS.ANEMONE_KID] === 1) flags[kFLAGS.ANEMONE_KID] = 2;
+				if (flags[kFLAGS.ANEMONE_KID] == 1) flags[kFLAGS.ANEMONE_KID] = 2;
 				doNext(camp.returnToCampUseTwoHours);
 				return true;
 			}
@@ -1711,7 +1711,7 @@ package classes.Scenes.NPCs
 				anemonePreg();
 				player.slimeFeed();
 				player.orgasm('Vaginal');
-				if (flags[kFLAGS.ANEMONE_KID] === 1) flags[kFLAGS.ANEMONE_KID] = 2;
+				if (flags[kFLAGS.ANEMONE_KID] == 1) flags[kFLAGS.ANEMONE_KID] = 2;
 				doNext(camp.returnToCampUseEightHours);
 				return true;
 			}
@@ -1836,12 +1836,12 @@ package classes.Scenes.NPCs
 			clearOutput();
 			outputText("As you look over your shark family playing in the shallow stream, a soft, wet footstep sounds behind you.  Kid A is there when you turn around, holding empty waterskins and looking desperately at the running water.");
 			//[(KidXP < 40 or Kidweapon is empty)
-			if (kidAXP() < 40 || flags[kFLAGS.ANEMONE_WEAPON_ID] === 0) outputText("\n\nThe sharks notice as well and stand up, baring their teeth in wide, unwelcoming smiles.  Kid A whimpers and shuffles behind you, placing her hands on your back and attempting to push you in front of her.  Your shark-daughters watch in amusement as she tries to maneuver close enough to fill her waterskins while still using you as cover.  Awkwardly, she manages to cap them off and then departs as fast as she can.");
+			if (kidAXP() < 40 || flags[kFLAGS.ANEMONE_WEAPON_ID] == 0) outputText("\n\nThe sharks notice as well and stand up, baring their teeth in wide, unwelcoming smiles.  Kid A whimpers and shuffles behind you, placing her hands on your back and attempting to push you in front of her.  Your shark-daughters watch in amusement as she tries to maneuver close enough to fill her waterskins while still using you as cover.  Awkwardly, she manages to cap them off and then departs as fast as she can.");
 
 			//(else KidXP < 75 and Kidweapon = White Book or Black Book)
-			else if (kidAXP() < 40 && (flags[kFLAGS.ANEMONE_WEAPON_ID] === consumables.B__BOOK.id || flags[kFLAGS.ANEMONE_WEAPON_ID] === consumables.W__BOOK.id)) {
+			else if (kidAXP() < 40 && (flags[kFLAGS.ANEMONE_WEAPON_ID] == consumables.B__BOOK.id || flags[kFLAGS.ANEMONE_WEAPON_ID] == consumables.W__BOOK.id)) {
 				outputText("\n\nThe anemone watches carefully for a bit, then hangs the skins over her shoulders and opens her book.  Focusing on the few words she can understand, she gestures toward the shark family and ");
-				if (flags[kFLAGS.ANEMONE_WEAPON_ID] === consumables.W__BOOK.id) outputText("blinds them with a sudden flash of white light");
+				if (flags[kFLAGS.ANEMONE_WEAPON_ID] == consumables.W__BOOK.id) outputText("blinds them with a sudden flash of white light");
 				else outputText("turns deep blue as the various shark-girls clap their thighs together and look away from one another in embarrassment");
 				outputText(".  Before any of them can react, she dives into the water and fills the waterskins, then hightails it away.");
 			}

@@ -43,19 +43,19 @@ package classes.Scenes.Areas.Plains
 			}
 			else {
 				var evade:String = player.getEvasionReason();
-				if (evade === EVASION_EVADE) {
+				if (evade == EVASION_EVADE) {
 					outputText("He charges at you with a loud bleat, but using your evasive skills, you nimbly dodge and strike a vicious blow with your [weapon] in return that sends him crashing into the ground, hollering in pain. (5)");
 					HP -= 5;
 				}
-				else if (evade === EVASION_FLEXIBILITY) {
+				else if (evade == EVASION_FLEXIBILITY) {
 					outputText("He charges at you with a loud bleat, but using your flexibility, you nimbly dodge and strike a vicious blow with your [weapon] in return that sends him crashing into the ground, hollering in pain. (5)");
 					HP -= 5;
 				}
-				else if (evade === EVASION_MISDIRECTION) {
+				else if (evade == EVASION_MISDIRECTION) {
 					outputText("He charges at you with a loud bleat, but using your misdirecting skills, you nimbly dodge and strike a vicious blow with your [weapon] in return that sends him crashing into the ground, hollering in pain. (5)");
 					HP -= 5;
 				}
-				else if (evade === EVASION_SPEED || evade !== null) {
+				else if (evade == EVASION_SPEED || evade != null) {
 					outputText("He charges at you with a loud bleat, but you nimbly dodge and strike a vicious blow with your [weapon] in return that sends him crashing into the ground, hollering in pain. (5)");
 					HP -= 5;
 				}
@@ -63,7 +63,7 @@ package classes.Scenes.Areas.Plains
 					var damage:Number = int((str + weaponAttack) - rand(player.tou));
 					if (damage > 0) {
 						outputText("He charges at you with a loud bleat, catching you off-guard and sending you flying into the ground.");
-						if (player.findPerk(PerkLib.Resolute) < 0 && rand(2) === 0) {
+						if (player.findPerk(PerkLib.Resolute) < 0 && rand(2) == 0) {
 							outputText("  The pain of the impact is so big you feel completely dazed, almost seeing stars.");
 							player.createStatusEffect(StatusEffects.Stunned,0,0,0,0);
 						}
@@ -105,9 +105,9 @@ package classes.Scenes.Areas.Plains
 		
 		override protected function performCombatAction():void
 		{
-			if (lust >= 75 && rand(2) === 0) highLustChugRape();
-			else if (lust < 75 && rand(2) === 0) {
-				if (rand(2) === 0) satyrBate();
+			if (lust >= 75 && rand(2) == 0) highLustChugRape();
+			else if (lust < 75 && rand(2) == 0) {
+				if (rand(2) == 0) satyrBate();
 				else bottleChug();
 			}
 			else if (!hasStatusEffect(StatusEffects.Charged)) satyrCharge();

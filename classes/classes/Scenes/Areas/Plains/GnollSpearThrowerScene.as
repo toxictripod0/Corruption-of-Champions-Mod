@@ -35,7 +35,7 @@ package classes.Scenes.Areas.Plains
 			clearOutput();
 			outputText(images.showImage("monster-gnollspearthrower"));
 			//<First Encounter>
-			if (flags[kFLAGS.HAVE_ENCOUNTERED_GNOLL_PLAINS] === 0) {
+			if (flags[kFLAGS.HAVE_ENCOUNTERED_GNOLL_PLAINS] == 0) {
 				flags[kFLAGS.HAVE_ENCOUNTERED_GNOLL_PLAINS]++;
 				outputText("Waves of long, dry grass spread before you in gentle, rolling hills.  Your mind begins to wander, staring at the featureless expanse as the waist-high grass rustles against your body.  It seems like there is nothing but peace to be found here below the expansive blue sky and the dry grass.\n\n");
 
@@ -82,7 +82,7 @@ package classes.Scenes.Areas.Plains
 			//<Lust Defeat>
 			else outputText("arousal coursing through your veins, unable to think clearly enough to stand.");
 			outputText("  A jolt of fear passes through you as the hyena woman draws a long javelin from her back.  Her dark eyes glint gleefully as she plunges the javelin down, slamming it down into the ground in front of you.  You gasp with relief, glad for your life as she slams two more down, forming a rough pyramid in front of you.  ");
-			if (player.weaponName !== "fists") outputText("Before you can recover, she tosses your " + player.weaponName + " into the long grass.  She roughly pulls the " + player.armorName + " from your body and it, too, is tossed into the high grass, leaving you naked before this amazon.");
+			if (player.weaponName != "fists") outputText("Before you can recover, she tosses your " + player.weaponName + " into the long grass.  She roughly pulls the " + player.armorName + " from your body and it, too, is tossed into the high grass, leaving you naked before this amazon.");
 			else outputText("She roughly pulls the " + player.armorName + " from your body and it's tossed into the high grass, leaving you naked before this amazon.");
 			outputText("\n\n");
 
@@ -152,7 +152,7 @@ package classes.Scenes.Areas.Plains
 			else outputText("letting you fall hard into the grass.");
 			outputText("  As you slowly fade into unconsciousness from the orgasm, you see the hyena draw a finger along the tip of her cunt until the spotted fingers glisten with moisture.  Those fingers roughly rub the thick, potent fluid against your face, coating it with her scent and the knowledge of her victory.");
 			//<For Slimes> 
-			if (player.lowerBody.type === LowerBody.GOO) outputText("  Even as your eyes slide closed, you see the hyena kicking open the circle of dust.");
+			if (player.lowerBody.type == LowerBody.GOO) outputText("  Even as your eyes slide closed, you see the hyena kicking open the circle of dust.");
 			outputText("  The last thing you hear before blackness overtakes you is the barking laugh of the hyena as she leaves her newest conquest to sleep in the fields of grass.");
 			player.orgasm('Anal');
 			dynStats("sen", 2);
@@ -193,9 +193,9 @@ package classes.Scenes.Areas.Plains
 			var x:Number = player.cockThatFits(40);
 			if (x < 0) x = 0;
 			var y:Number = player.cockThatFits2(40);
-			if (player.cockTotal() > 1 && (y < 0 || y === x)) {
+			if (player.cockTotal() > 1 && (y < 0 || y == x)) {
 				y = 0;
-				if (y === x) y = 1;
+				if (y == x) y = 1;
 			}
 			clearOutput();
 			outputText(images.showImage("gnoll-fuck-oral"));
@@ -213,9 +213,9 @@ package classes.Scenes.Areas.Plains
 			outputText("as it starts to be pulled from your encased member.\n\n");
 
 			//<One Cock> 
-			if (player.cockTotal() === 1) outputText("Even as the most incredible sensations flow through you from the feel of her muzzle, you see one of her spotted hands drop from her pendulous breast to grip her own shaft.  Her second hand follows, sliding two furred fingers into the tip of her strange shaft as she starts to move up and down the dark flesh in time to the suckling of her muzzle.  Her dark brown eyes slowly slide closed in bliss as she pleasures herself while servicing the shaft buried deep within her maw.\n\n");
+			if (player.cockTotal() == 1) outputText("Even as the most incredible sensations flow through you from the feel of her muzzle, you see one of her spotted hands drop from her pendulous breast to grip her own shaft.  Her second hand follows, sliding two furred fingers into the tip of her strange shaft as she starts to move up and down the dark flesh in time to the suckling of her muzzle.  Her dark brown eyes slowly slide closed in bliss as she pleasures herself while servicing the shaft buried deep within her maw.\n\n");
 			//<Two Cocks>
-			else if (player.cockTotal() === 2) {
+			else if (player.cockTotal() == 2) {
 				outputText("Even as the most incredible sensations flow through you from the feel of her muzzle, a spotted hand leaves one pendulous breast to wrap around your unattended " + player.cockDescript(y) + ".  Her powerful grip feels like a vice as she begins to slide the paw along the length.  Moving in time to the rippling of her throat, the hand tries hard to match the flood of sensations radiating from her muzzle.");
 				//<If character has Scrotum> 
 				if (player.balls > 0) outputText("  Her second paw finally cups your " + player.ballsDescriptLight() + ", squeezing and massaging to add to the powerful sensations.");
@@ -224,7 +224,7 @@ package classes.Scenes.Areas.Plains
 			//Three or More Cocks>
 			if (player.totalCocks() > 2) {
 				outputText("Even as the most incredible sensations flow through you from the feel of her muzzle, a spotted hand leaves one pendulous breast to wrap around your unattended " + player.cockDescript(y) + ".  Soon, her second hand slides along ");
-				if (player.cockTotal() === 3) outputText("your other ");
+				if (player.cockTotal() == 3) outputText("your other ");
 				else outputText("another ");
 				outputText("free member.  Her powerful grips feel like a vice on the twin members as she begins to slide her paws along two of your shafts.  Moving in time to the rippling of her throat, the hands try hard to match the flood of sensations radiating from her muzzle.  Her own 'member' throbs, untouched, as she loses herself in trying to pleasure you.\n\n");
 			}
@@ -238,7 +238,7 @@ package classes.Scenes.Areas.Plains
 			if (player.cocks[x].cockLength >= 7) {
 				outputText("Orgasm crashes through your body and mind as time loses its meaning.  The gnoll's muzzle plunges forward once more, enveloping the pulsing shaft deep into her maw.  The powerful muscles of her throat ripple as she swallows, milking your " + player.cockDescript(x) + " for each spurt of your potent seed.");
 				//<Two Cocks> 
-				if (player.cockTotal() === 2) outputText("  Your second " + player.cockDescript(y) + " throbs in her hand, spraying her face and throat with thick ropes of cum.");
+				if (player.cockTotal() == 2) outputText("  Your second " + player.cockDescript(y) + " throbs in her hand, spraying her face and throat with thick ropes of cum.");
 				//<Three or More Cocks>
 				if (player.cockTotal() >= 3) outputText("  Your " + player.multiCockDescriptLight() + " throb in her paws, coating her muzzle, neck, and breasts with thick ropes of cum.");
 				outputText("  You feel your knees weaken as her muzzle works harder and faster, trying to drain you of every drop.  Her paws wrap around your waist and powerful arms lift you and lay you on the ground as that talented muzzle continues to milk you dry.\n\n");
@@ -247,7 +247,7 @@ package classes.Scenes.Areas.Plains
 			else {
 				outputText("Orgasm crashes through your body and mind as time loses its meaning.  The gnolls's cheeks sink in as she starts to suck as hard as she can, increasing the glorious pressure on your trapped member.  The powerful muscles of her muzzle ripple as she swallows, milking your " + player.cockDescript(x) + " as each spurt of your potent seed splashes across her tongue.");
 				//<Two Cocks> 
-				if (player.totalCocks() === 2) outputText("  Your " + player.cockDescript(y) + " throbs in her hand, spraying her face and throat with thick ropes of cum.");
+				if (player.totalCocks() == 2) outputText("  Your " + player.cockDescript(y) + " throbs in her hand, spraying her face and throat with thick ropes of cum.");
 				//<Three or More Cocks>
 				if (player.cockTotal() >= 3) outputText("  Your " + player.multiCockDescriptLight() + " throb in her paws, coating her muzzle, neck, and breasts with thick ropes of cum.");
 				outputText("  You feel your knees weaken as her muzzle works harder and faster, trying to drain you of every drop.  He paws wrap around your waist and powerful arms lift you and lay you on the ground as that talented muzzle continues to milk you dry.\n\n");

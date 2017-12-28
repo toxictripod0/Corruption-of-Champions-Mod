@@ -32,7 +32,7 @@ import classes.internals.*;
 		protected function nagaConstrict():void {
 			outputText("The naga draws close and suddenly wraps herself around you, binding you in place! You can't help but feel strangely aroused by the sensation of her scales rubbing against your body. All you can do is struggle as she begins to squeeze tighter!");
 			player.createStatusEffect(StatusEffects.NagaBind,0,0,0,0); 
-			if (player.findPerk(PerkLib.Juggernaut) < 0 && armorPerk !== "Heavy") {player.takeDamage(2+rand(4));
+			if (player.findPerk(PerkLib.Juggernaut) < 0 && armorPerk != "Heavy") {player.takeDamage(2+rand(4));
 			}
 			combatRoundOver();
 		}
@@ -42,10 +42,10 @@ import classes.internals.*;
 		protected function nagaTailWhip():void {
 			outputText("The naga tenses and twists herself forcefully.  ");
 			//[if evaded]
-			if ((player.findPerk(PerkLib.Evade) && rand(6) === 0)) {
+			if ((player.findPerk(PerkLib.Evade) && rand(6) == 0)) {
 				outputText("You see her tail whipping toward you and evade it at the last second. You quickly roll back onto your feet.");
 			}
-			else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName === "red, high-society bodysuit") {
+			else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
 				outputText("Using Raphael's teachings and the movement afforded by your bodysuit, you anticipate and sidestep " + a + short + "'s tail-whip.");
 			}
 			else if (player.spe > rand(300)) {

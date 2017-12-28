@@ -193,7 +193,7 @@ public class Encounters {
 	}
 	private static var debug_callsite:String = "";
 	internal static function ch2str(n:Number):String {
-		if (n === Number.POSITIVE_INFINITY) return "ALWAYS";
+		if (n == Number.POSITIVE_INFINITY) return "ALWAYS";
 		//if (n <= 0) return "0";
 		return n.toFixed(3).replace(/\.?0+$/,"");
 	}

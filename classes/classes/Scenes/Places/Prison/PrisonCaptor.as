@@ -87,7 +87,7 @@ package classes.Scenes.Places.Prison
 			var chooser:int = rand(6);
 			if (lightOrHeavy < lightChance) { //Light
 				if (chooser > 0) prison.prisonCaptorPunishmentRestrain();
-				//else if (chooser === 4) prison.billieScene.prisonCaptorBilliePunishmentFuck();
+				//else if (chooser == 4) prison.billieScene.prisonCaptorBilliePunishmentFuck();
 				else prison.punishments.prisonCaptorPunishmentBJTrainer();
 			}
 			else { //Heavy
@@ -97,13 +97,13 @@ package classes.Scenes.Places.Prison
 		}
 		
 		/*public function restraintDescriptionsV1():Boolean {
-			if (player.statusEffectv1(StatusEffects.PrisonRestraints) === 1) {
+			if (player.statusEffectv1(StatusEffects.PrisonRestraints) == 1) {
 				return true;
 			}
 			else return false;
 		}
 		public function restraintDescriptionsV2():Boolean {
-			if (player.statusEffectv2(StatusEffects.PrisonRestraints) === 1) {
+			if (player.statusEffectv2(StatusEffects.PrisonRestraints) == 1) {
 				outputText("Your legs are fettered and chained securely to the wall.");
 				return true;
 			}
@@ -141,7 +141,7 @@ package classes.Scenes.Places.Prison
 		
 		public function timeForWaitRandomEvent(hours:int, days:int, goal:int):Boolean {
 			var timesPassed:int = getGame().time.totalTime;
-			if (timesPassed % goal === 0) return true;
+			if (timesPassed % goal == 0) return true;
 			else return false;
 		}
 	}

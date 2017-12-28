@@ -11,7 +11,7 @@
 		public function Valentines() {}
 		
 		public function isItValentine():Boolean {
-			return ((date.date >= 13 && date.date <= 15 && date.month === 1) || flags[kFLAGS.ITS_EVERY_DAY] > 0);
+			return ((date.date >= 13 && date.date <= 15 && date.month == 1) || flags[kFLAGS.ITS_EVERY_DAY] > 0);
 		}
 
 		/*First of all, a few notes:
@@ -222,7 +222,7 @@
 			//[pg]
 			outputText("\n\nAfter a longer while, Scylla's tongue unwraps from yours and, with a moist slurp, she swallows your mixed drool as your lips break their touch.  You both pant heavily, and ");
 			//[if (cocks = 1)
-			if (player.cockTotal() === 1) outputText("your [cock] is completely hard and stiff, forming a bulge in your clothing");
+			if (player.cockTotal() == 1) outputText("your [cock] is completely hard and stiff, forming a bulge in your clothing");
 			else if (player.cockTotal() > 1) outputText("[eachCock] is by now completely hard, eager to be touched and wanting to be caressed by the nun you're kissing");
 			outputText(".");
 			
@@ -380,7 +380,7 @@
 			
 			outputText("\n\nAfter a while of doing this, you're pretty sure Abylon starts approaching her second orgasm, and you intent to fill her as much as you can for the occasion.");
 			//([Naga tongue]
-			if (player.tongue.type === Tongue.SNAKE) outputText("  Your fingers make it into her pussy alongside your tongue, and the prehensile thing, longer and more flexible than a human's, ravages the insides of her pussy, tasting everywhere as Abby shakes in her orgasm.  Her pussy eagerly tries to milk both your fingers and your tongue, clenching and gripping at them as it drips her pussy juices all over your face.  Abby screams out in a loud, uninhibited orgasm at last, expressing her ecstasy.");
+			if (player.tongue.type == Tongue.SNAKE) outputText("  Your fingers make it into her pussy alongside your tongue, and the prehensile thing, longer and more flexible than a human's, ravages the insides of her pussy, tasting everywhere as Abby shakes in her orgasm.  Her pussy eagerly tries to milk both your fingers and your tongue, clenching and gripping at them as it drips her pussy juices all over your face.  Abby screams out in a loud, uninhibited orgasm at last, expressing her ecstasy.");
 			//([Demon/Dragon Tongue]
 			else if (player.hasLongTongue()) outputText("  Abylon shakes in excitement, pleasure, and fear as you extend your inhuman tongue to reach deep into the recesses of her pussy.  She cannot hold out a moment longer, her cunt gripping your inhuman muscle tightly, the hole and muscles inside quivering as you can taster her orgasmic juices with every single point of your tongue.  She screams, shudders and moans, tongue lolling out from the intense pleasure as you force your own tongue to roll around inside her and stretch her in multiple ways. Only you holding her stops Abylon from slumping forward, it seems...");
 			//([Human tongue]
@@ -421,7 +421,7 @@
 
 		public function pastieValentineIntro(choice:String = ""):void {
 			clearOutput();
-			if (choice === "vag") {
+			if (choice == "vag") {
 				outputText("You tell Pastie that indeed, she could get her fix, as you have something you're sure every fairy likes to drink not far away... between your legs.  \"<i>T-that's an... unusual drink proposition...  Umm, and I'm more susceptible to girls than most fairies, so... Ohhh, who am I kidding, that sounds pretty good right now.</i>\"");
 				outputText("\n\nFollowing you into a back alley, you prepare to get yourself naked and let the fairy get her fix.");
 				//((Move straight to pussy scene)) )
@@ -457,14 +457,14 @@
 
 		public function valentineDayGetPastieDrink(itype:ItemType):void {
 			//{Black Cat Beer}
-			if (itype === consumables.BC_BEER) {
+			if (itype == consumables.BC_BEER) {
 				outputText("\n\nPastie suddenly starts running her hands along her body, licking her lips as she does so. \"<i>Odd... Imma bit of a horny drunk, yah know, but thish ish... overkill...</i>\"  The little fairy-drunkard complains as she reaches between her legs and starts fingering herself, while rubbing a nipple.  \"<i>Daaaamnnnn, I'm sooo horny! I need more... to, uhhh, to driiink!</i>\"");
 				outputText("\n\nWell, that was an expected effect, to be honest.  You guess you could also comply with her request, and horny as she is, she'd probably degrade herself with whatever sex bits you want her to... although, too big of a member can definitely be a problem for her.");
 				//[RubDick][PussyDive]
 				//{Rub Dick option is present if a character has a member underneath 28 cock area. Pussy Dive is obviously present if a character has a pussy of any kind.}
 			}
 			//{Bimbo Champagne}
-			else if (itype === consumables.BIMBOCH) {
+			else if (itype == consumables.BIMBOCH) {
 				outputText("\n\nPastie giggles as her body starts to slowly show the effects of the liquid she just drank.  \"<i>Hihihi... I feel kinda funny,</i>\" she says, and you start to see the changes the champagne is starting to have on her body.  Her hair starts turning blonde, and her position in mid-air changes somewhat... almost as if she was imitating standing on \"<i>fuck-me</i>\" pumps, and, slowly, her little cupid dress stretches, as you become aware that her body is starting to become curvier, especially in the chest area.  \"<i>Hahaha... it's, like, I'm hitting three puberties at once!  Ummm... pu... puber, ah, nevermind.  Look, look!  It's gonna rip!</i>\" The seams in the little dress indeed pop, exposing a significant amount of the little girl's cleavage, now very significant.  True, compared to your body size her breasts are still nothing, but on her little body they're very prominent.  She even seems to have trouble flying from the added mass!  Her hips gained the slightest bit of curve, too, and Pastie's hair is now completely blonde.");
 				outputText("\n\n\"<i>Uhh, like... baby, you know, the usual drink gets me hot, and this one is as special as my new titties!  Would you mind helping me out?</i>\"");
 				
@@ -474,7 +474,7 @@
 				//{Fuck is only present if a character has a cock under 8 cock area, Rub Dick option is present if a character has a member underneath 28 cock area. Pussy Dive is obviously present if a character has a pussy of any kind.}
 			}
 			//{Goblin Ale}
-			else if (itype === consumables.GOB_ALE) {
+			else if (itype == consumables.GOB_ALE) {
 				outputText("\n\n\"<i>Huuuh? Feels weird!</i>\" Pastie says, as she runs her hands over her body, and then slips a finger into her little pussy... four fingers... her hand, and then, reaches halfway up to her elbow before she cannot bend any more in her drunken state.  \"<i>Thissh... got me more horny than usual, and I feel so... stretchy, hehehe!</i>\"");
 				
 				outputText("\n\nHer body's still totally diminutive, but you guess someone with a small enough endowment might actually be able to take advantage of her now.  You doubt she'd refuse a little cum or pussy juice, either.");

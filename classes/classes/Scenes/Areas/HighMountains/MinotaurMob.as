@@ -20,7 +20,7 @@ package classes.Scenes.Areas.HighMountains
 			var oldLust:Number = player.lust;
 			game.spriteSelect(SpriteDb.s_minotaurSons);
 			//(Big taur pre-cum tease)
-			if (rand(2) === 0) {
+			if (rand(2) == 0) {
 				teased = true;
 				if (rand(5) > 0) {
 					outputText("The biggest lifts his loincloth, giving you a perfect view of his veiny hardness.  Pre-cum visibly bubbles from his flared tip, splattering wetly on the rocks and filling the air with his bestial musk.  He says, \"<i>See how much I need you?</i>\"\n");
@@ -33,7 +33,7 @@ package classes.Scenes.Areas.HighMountains
 				}
 			}
 			//(Middle Taur pre-cum tease)
-			if (rand(2) === 0) {
+			if (rand(2) == 0) {
 				teased = true;
 				if (rand(5) > 0) {
 					outputText("\"<i>Hey, slut, look at this!</i>\" taunts one of the beast-men.  He shakes his hips lewdly, spinning his thick horse-cock in wide circles and sending his potent pre flying through the air.  Droplets rain down around you, filling the air with even more of that delicious smell.\n");
@@ -53,7 +53,7 @@ package classes.Scenes.Areas.HighMountains
 				outputText("\n");
 			}
 			//(Minitaur pre-cum tease)
-			if (!teased || rand(3) === 0) {
+			if (!teased || rand(3) == 0) {
 				outputText("The smallest of the beastmen, the minitaur, moans and begs, \"<i>Please Mom, can we please fuck you?  I... I need it so bad.</i>\"  He raises the edge of his loincloth to show exactly what he's talking about.  His member is limp but leaking.  What really catches your eyes sits behind that drizzling shaft - a pair of balls looking swollen and pent up beyond belief.  A sticky web of his leavings hangs between his genitals and his loincloth, showing you just how much he's been leaking at the thought of fucking you.  Fanning the sopping garment, he inadvertently blows a wave of his pheromones your way.\n");
 				damage = 9 + player.lib/20;
 			}
@@ -128,7 +128,7 @@ package classes.Scenes.Areas.HighMountains
 			var select:Number = rand(7);
 			if (select <= 2) precumTease();
 			else if (select <= 4) minotaurGangGropeAttack();
-			else if (select === 5) minotaurGangGangGropeAttack();
+			else if (select == 5) minotaurGangGangGropeAttack();
 			else minotaurGangWaste();
 		}
 

@@ -47,7 +47,7 @@ package classes.Scenes.Monsters
 				return;
 			}
 			
-			if (rand(2) === 0) {
+			if (rand(2) == 0) {
 				eAttack();
 				combatRoundOver();
 			} else {
@@ -79,13 +79,13 @@ package classes.Scenes.Monsters
 				default:
 					this.imageName = "mimic";
 			}
-			if (type === 2) 
+			if (type == 2) 
 				this.createCock(80, 16, CockTypesEnum.HUMAN);
 			else
 				this.initedGenitals = true;
 			this.balls = 0;
 			this.ballSize = 0;
-			if (type === 1)
+			if (type == 1)
 				createBreastRow(BreastCup.JACQUES00);
 			else
 				createBreastRow(0);
@@ -94,9 +94,9 @@ package classes.Scenes.Monsters
 			this.tallness = rand(24) + 25;
 			this.hips.rating = Hips.RATING_BOYISH;
 			this.butt.rating = Butt.RATING_TIGHT;
-			if (type === 3)
+			if (type == 3)
 				this.skin.tone = "brown";
-			if (type === 1 || type === 2)
+			if (type == 1 || type == 2)
 				this.skin.tone = "light";
 			else
 				this.skin.tone = "gray";
@@ -110,11 +110,11 @@ package classes.Scenes.Monsters
 			this.weaponName = "mouth";
 			this.weaponVerb = "bite";
 			this.weaponAttack = 20 + player.level;
-			if (type === 3) {
+			if (type == 3) {
 				this.armorName = "wooden surface";
 				this.armorDef = 10;
 			}
-			if (type === 2 || type === 1) {
+			if (type == 2 || type == 1) {
 				this.armorName = "flesh";
 				this.armorDef = 0;
 			}

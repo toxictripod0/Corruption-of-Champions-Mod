@@ -150,7 +150,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 		{
 			clearOutput();
 			//[Tentacle]
-			if (cockType === TENTACOCK)
+			if (cockType == TENTACOCK)
 			{
 				outputText("You give her throbbing maleness an affection pat and proclaim, \"<i>Make it a tentacle, one that will fit me properly.  Then we can fuck.</i>\"");
 
@@ -181,7 +181,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 
 				outputText("\n\nIt takes a few minutes for enough cum to drain from your sore orifices to let you stand, and when you do, your belly gurgles uncomfortably.  It was undignified, but gods are you satisfied!");
 			}
-			else if (cockType === DOGGECOCK)
+			else if (cockType == DOGGECOCK)
 			{
 				outputText("You give her throbbing maleness an affection pat and proclaim, \"<i>Make it a dog-cock, one that fit to knot properly.  Then we can fuck.</i>\"");
 
@@ -256,7 +256,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 		{
 			if (player.hasCock() && player.hasVagina())
 			{
-				if (rand(2) === 0) maleLoss(hpVictory);
+				if (rand(2) == 0) maleLoss(hpVictory);
 				else femLoss(hpVictory);
 			}
 
@@ -415,7 +415,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			if (player.balls > 0) outputText(" [balls] feel fit to burst!");
 			else outputText(" manhood feels swollen to bursting!");
 			outputText("  Realizing the only way out will be with your tongue, you open wide");
-			if (player.tongue.type !== 0) outputText(" and uncoil your inhuman length to spear");
+			if (player.tongue.type != 0) outputText(" and uncoil your inhuman length to spear");
 			else outputText(" and begin to lap");
 			outputText(" at her inhuman entrance.  She whinnies in delight, grinding her clydesdale-sized bulk back and forth on your face as you start to get into her eating her out.");
 
@@ -434,13 +434,13 @@ package classes.Scenes.Dungeons.LethicesKeep
 			outputText("\n\nIn light of your hapless situation, you cling tight and watch as you're given a rampant, dick-squeezingly tight tour of the demons' headquarters. You're taken past masturbating succubi, fapping incubi, and even snickering imps.  All manner of demons sneer at you, the once champion, now a slave to a centaur's sodden snatch.  The sheer, debauched exhibition of it sends a spike of pleasure to your [balls], the upwelling of desire burning with wet heat that seems to dwarf the roaring furnace that is the demon's thighs.  Your burgeoning orgasmic sensation is brought to a screeching halt along with your mistress when she comes to an abrupt stop.");
 
 			outputText("\n\nThen, someone else joins you on the centaur's back - it's an omnibus");
-			if (flags[kFLAGS.D1_OMNIBUS_KILLED] !== 1) outputText(", and a familiar one at that");
+			if (flags[kFLAGS.D1_OMNIBUS_KILLED] != 1) outputText(", and a familiar one at that");
 			outputText(".  She wears a black reflective bra, though you swear you can see pink protrusions under the shiny fabric, wriggling around constantly.  As expected with such dress, her nipples are hard as bullets.  A bulbous, ten-inch penis bobs between her thighs, thickening nicely as it fills to its full size, kissing your lips with a moist bead of pre as it fully erects.  The omnibus");
-			if (flags[kFLAGS.D1_OMNIBUS_KILLED] !== 1) outputText(" overseer asks, \"<i>Remember me?  I thought it only proper that I thank you for letting me live.  Now, be a good boy and suck my dick - show all everyone just what a horny, helplessly fuckable toy you are.</i>\"");
+			if (flags[kFLAGS.D1_OMNIBUS_KILLED] != 1) outputText(" overseer asks, \"<i>Remember me?  I thought it only proper that I thank you for letting me live.  Now, be a good boy and suck my dick - show all everyone just what a horny, helplessly fuckable toy you are.</i>\"");
 			else outputText(" asks, \"<i>I hope you don't mind slurping down a little cock, because you're going to anyway.</i>\"");
 			
 			outputText("\n\nThe second herm grabs you by the");
-			if (player.horns.type !== 0) outputText(" horns");
+			if (player.horns.type != 0) outputText(" horns");
 			else outputText(" head");
 			outputText(" and sidles forward, ramming her glans into your mouth and down the back of your throat.  You can feel her glans pulsing deep inside you, and as soon as the herm starts moaning, the centaur starts trotting forward again.  Amazingly, having her holding you up makes it easy to maintain your position and keep your dick bouncing in that hot twat. Fuck it! You're too horny to care anymore.");
 

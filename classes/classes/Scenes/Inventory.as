@@ -61,7 +61,7 @@ package classes.Scenes
 		
 //		public function currentCallNext():Function { return callNext; }
 		
-		public function itemGoNext():void { if (callNext !== null) doNext(callNext); }
+		public function itemGoNext():void { if (callNext != null) doNext(callNext); }
 		
 		public function inventoryMenu():void {
 			var x:int;
@@ -97,21 +97,21 @@ package classes.Scenes
 				addButton(10, "Unequip", manageEquipment);
 			}
 			
-			if (!getGame().inCombat && flags[kFLAGS.DELETE_ITEMS] === 1) {
+			if (!getGame().inCombat && flags[kFLAGS.DELETE_ITEMS] == 1) {
 				addButton(11, "Del Item: One", deleteItems).hint("Trash your items, one by one.\n\nClick to trash all in a stack.\nClick twice to stop.", "Delete Items (Single)");
-			} else if (!getGame().inCombat && flags[kFLAGS.DELETE_ITEMS] === 2) {
+			} else if (!getGame().inCombat && flags[kFLAGS.DELETE_ITEMS] == 2) {
 				addButton(11, "Del Item: All", deleteItems).hint("Trash all of your items in a stack.\n\nClick to stop.\nClick twice to trash your items one by one.", "Delete Items (Stack)");
-			} else if (!getGame().inCombat && flags[kFLAGS.DELETE_ITEMS] === 0) {
+			} else if (!getGame().inCombat && flags[kFLAGS.DELETE_ITEMS] == 0) {
 				addButton(11, "Del Item: OFF", deleteItems).hint("Start throwing away your items.\n\nClick to trash your items one by one.\nClick twice to trash all in a stack.", "Delete Items (Off)");
 			}
 			
 			
-			if (!getGame().inCombat && inDungeon === false && inRoomedDungeon === false && flags[kFLAGS.IN_PRISON] === 0 && flags[kFLAGS.IN_INGNAM] === 0 && checkKeyItems(true)) {
+			if (!getGame().inCombat && inDungeon == false && inRoomedDungeon == false && flags[kFLAGS.IN_PRISON] == 0 && flags[kFLAGS.IN_INGNAM] == 0 && checkKeyItems(true)) {
 				addButton(12, "Key Items", checkKeyItems);
 				foundItem = true;
 			}
-			if (!getGame().inCombat && player.armor === armors.BIMBOSK) {
-				addButton(13, (flags[kFLAGS.BIMBO_MINISKIRT_PROGRESS_DISABLED] === 0 ? "Disable Bimbo" : "Enable Bimbo"), getGame().bimboProgress.toggleProgress, null, null, null, (flags[kFLAGS.BIMBO_MINISKIRT_PROGRESS_DISABLED] === 0 ? "Disable bimbo progression from Bimbo Miniskirt." : "Enable bimbo progression from Bimbo Miniskirt."));
+			if (!getGame().inCombat && player.armor == armors.BIMBOSK) {
+				addButton(13, (flags[kFLAGS.BIMBO_MINISKIRT_PROGRESS_DISABLED] == 0 ? "Disable Bimbo" : "Enable Bimbo"), getGame().bimboProgress.toggleProgress, null, null, null, (flags[kFLAGS.BIMBO_MINISKIRT_PROGRESS_DISABLED] == 0 ? "Disable bimbo progression from Bimbo Miniskirt." : "Enable bimbo progression from Bimbo Miniskirt."));
 			}
 			if (!foundItem) {
 				outputText("\nYou have no usable items.");
@@ -121,7 +121,7 @@ package classes.Scenes
 				}
 				return;
 			}
-			if (getGame().inCombat && player.hasStatusEffect(StatusEffects.Sealed) && player.statusEffectv1(StatusEffects.Sealed) === 3) {
+			if (getGame().inCombat && player.hasStatusEffect(StatusEffects.Sealed) && player.statusEffectv1(StatusEffects.Sealed) == 3) {
 				outputText("\nYou reach for your items, but you just can't get your pouches open.  <b>Your ability to use items was sealed, and now you've wasted a chance to attack!</b>\n\n");
 				monster.doAI();
 				return;
@@ -155,7 +155,7 @@ package classes.Scenes
 				if (player.hasKeyItem("Camp - Murky Chest") >= 0) chestArray.push("a medium damp chest");
 				if (player.hasKeyItem("Camp - Ornate Chest") >= 0) chestArray.push("a medium gilded chest");
 				outputText("You have " + formatStringArray(chestArray) + " to help store excess items located ");
-				if (camp.homeDesc() === "cabin") outputText("inside your cabin");
+				if (camp.homeDesc() == "cabin") outputText("inside your cabin");
 				else outputText("near the portal entrance");
 				outputText(".\n\n");
 				addButton(0, "Chest Store", pickItemToPlaceInCampStorage);
@@ -210,12 +210,12 @@ package classes.Scenes
 		}
 			
 		public function takeItem(itype:ItemType, nextAction:Function, overrideAbandon:Function = null, source:ItemSlotClass = null):void {
-			if (itype === null) {
+			if (itype == null) {
 				CoC_Settings.error("takeItem(null)");
 				return;
 			}
-			if (itype === ItemType.NOTHING) return;
-			if (nextAction !== null)
+			if (itype == ItemType.NOTHING) return;
+			if (nextAction != null)
 				callNext = nextAction;
 			else callNext = playerMenu;
 			//Check for an existing stack with room in the inventory and return the value for it.
@@ -235,7 +235,7 @@ package classes.Scenes
 				itemGoNext();
 				return;
 			}
-			if (overrideAbandon !== null) //callOnAbandon only becomes important if the inventory is full
+			if (overrideAbandon != null) //callOnAbandon only becomes important if the inventory is full
 				callOnAbandon = overrideAbandon;
 			else callOnAbandon = callNext;
 			//OH NOES! No room! Call replacer functions!
@@ -244,7 +244,7 @@ package classes.Scenes
 		
 		public function returnItemToInventory(item:Useable, showNext:Boolean = true):void { //Used only by items that have a sub menu if the player cancels
 			if (!debug) {
-				if (currentItemSlot === null) {
+				if (currentItemSlot == null) {
 					takeItem(item, callNext, callNext, null); //Give player another chance to put item in inventory
 				}
 				else if (currentItemSlot.quantity > 0) { //Add it back to the existing stack
@@ -272,7 +272,7 @@ package classes.Scenes
 			temp = itemStorage.length;
 			while(temp > 0) {
 				temp--;
-				if (itemStorage[temp].itype === itype && itemStorage[temp].quantity > 0) {
+				if (itemStorage[temp].itype == itype && itemStorage[temp].quantity > 0) {
 					itemStorage[temp].quantity--;
 					return true;
 				}
@@ -322,7 +322,7 @@ package classes.Scenes
 		//Clear storage slots
 		public function clearStorage():void {
 			//Various Errors preventing action
-			if (itemStorage === null){
+			if (itemStorage == null){
 				LOGGER.error("Cannot clear storage because it does not exist.");
 			}
 			else {
@@ -333,7 +333,7 @@ package classes.Scenes
 		
 		public function clearGearStorage():void {
 			//Various Errors preventing action
-			if (gearStorage === null) {
+			if (gearStorage == null) {
 				LOGGER.error("Cannot clear gear storage because it does not exist.");
 			}
 			else {
@@ -344,7 +344,7 @@ package classes.Scenes
 		
 		public function initializeGearStorage():void {
 			//Completely empty storage array
-			if (gearStorage === null) {
+			if (gearStorage == null) {
 				//TODO refactor this to use clearGearStorage()
 				LOGGER.error("Cannot clear gearStorage because storage does not exist.");
 			}
@@ -364,10 +364,10 @@ package classes.Scenes
 			clearOutput();
 			if (player.itemSlots[slotNum].itype is Useable) {
 				var item:Useable = player.itemSlots[slotNum].itype as Useable;
-				if (flags[kFLAGS.DELETE_ITEMS] === 1) {
+				if (flags[kFLAGS.DELETE_ITEMS] == 1) {
 					deleteItemPrompt(item, slotNum);
 					return;
-				} else if (flags[kFLAGS.DELETE_ITEMS] === 2) {
+				} else if (flags[kFLAGS.DELETE_ITEMS] == 2) {
 					deleteItemsPrompt(item, slotNum);
 					return;
 				}
@@ -391,11 +391,11 @@ package classes.Scenes
 		}
 		
 		private function deleteItems():void {
-			if (flags[kFLAGS.DELETE_ITEMS] === 0) {
+			if (flags[kFLAGS.DELETE_ITEMS] == 0) {
 				flags[kFLAGS.DELETE_ITEMS]++;
-			} else if (flags[kFLAGS.DELETE_ITEMS] === 1) {
+			} else if (flags[kFLAGS.DELETE_ITEMS] == 1) {
 				flags[kFLAGS.DELETE_ITEMS]++;
-			} else if (flags[kFLAGS.DELETE_ITEMS] === 2) {
+			} else if (flags[kFLAGS.DELETE_ITEMS] == 2) {
 				flags[kFLAGS.DELETE_ITEMS] = 0;
 			}
 			inventoryMenu();
@@ -411,7 +411,7 @@ package classes.Scenes
 		
 		private function deleteItemsPrompt(item:Useable, slotNum:int):void {
 			clearOutput();
-			outputText("Are you sure you want to destroy " + player.itemSlots[slotNum].quantity + "x " + item.shortName + "?  You won't be able to retrieve " + (player.itemSlots[slotNum].quantity === 1 ? "it": "them") + "!");
+			outputText("Are you sure you want to destroy " + player.itemSlots[slotNum].quantity + "x " + item.shortName + "?  You won't be able to retrieve " + (player.itemSlots[slotNum].quantity == 1 ? "it": "them") + "!");
 			menu();
 			addButton(0, "Yes", deleteItem, item, slotNum);
 			addButton(1, "No", inventoryMenu);
@@ -426,7 +426,7 @@ package classes.Scenes
 		
 		private function deleteItem(item:Useable, slotNum:int):void {
 			clearOutput();
-			outputText(player.itemSlots[slotNum].quantity + "x " + item.shortName + " " + (player.itemSlots[slotNum].quantity === 1 ? "has": "have") + " been destroyed.");
+			outputText(player.itemSlots[slotNum].quantity + "x " + item.shortName + " " + (player.itemSlots[slotNum].quantity == 1 ? "has": "have") + " been destroyed.");
 			player.destroyItems(item, player.itemSlots[slotNum].quantity);
 			doNext(inventoryMenu);
 		}
@@ -436,36 +436,36 @@ package classes.Scenes
 			if (item is Armor) {
 				player.armor.removeText();
 				item = player.setArmor(item as Armor); //Item is now the player's old armor
-				if (item === null)
+				if (item == null)
 					itemGoNext();
 				else takeItem(item, callNext);
 			}
 			else if (item is Weapon) {
 				player.weapon.removeText();
 				item = player.setWeapon(item as Weapon); //Item is now the player's old weapon
-				if (item === null)
+				if (item == null)
 					itemGoNext();
 				else takeItem(item, callNext);
 			}
 			else if (item is Jewelry) {
 				player.jewelry.removeText();
 				item = player.setJewelry(item as Jewelry); //Item is now the player's old jewelry
-				if (item === null)
+				if (item == null)
 					itemGoNext();
 				else takeItem(item, callNext);
 			}
 			else if (item is Shield) {
 				player.shield.removeText();
 				item = player.setShield(item as Shield); //Item is now the player's old shield
-				if (item === null)
+				if (item == null)
 					itemGoNext();
 				else takeItem(item, callNext);
 			}
 			else if (item is Undergarment) {
-				if (item["type"] === 0) player.upperGarment.removeText();
+				if (item["type"] == 0) player.upperGarment.removeText();
 				else player.lowerGarment.removeText();
 				item = player.setUndergarment(item as Undergarment, item["type"]); //Item is now the player's old shield
-				if (item === null)
+				if (item == null)
 					itemGoNext();
 				else takeItem(item, callNext);
 			}
@@ -485,7 +485,7 @@ package classes.Scenes
 				if (player.itemSlots[x].unlocked)
 					addButton(x, (player.itemSlots[x].itype.shortName + " x" + player.itemSlots[x].quantity), replaceItem, itype, x);
 			}
-			if (source !== null) {
+			if (source != null) {
 				currentItemSlot = source;
 				addButton(12, "Put Back", returnItemToInventory, itype, false);
 			}
@@ -505,10 +505,10 @@ package classes.Scenes
 		
 		private function replaceItem(itype:ItemType, slotNum:int):void {
 			clearOutput();
-			if (player.itemSlots[slotNum].itype === itype) //If it is the same as what's in the slot...just throw away the new item
+			if (player.itemSlots[slotNum].itype == itype) //If it is the same as what's in the slot...just throw away the new item
 				outputText("You discard " + itype.longName + " from the stack to make room for the new one.");
 			else { //If they are different...
-				if (player.itemSlots[slotNum].quantity === 1) outputText("You throw away " + player.itemSlots[slotNum].itype.longName + " and replace it with " + itype.longName + ".");
+				if (player.itemSlots[slotNum].quantity == 1) outputText("You throw away " + player.itemSlots[slotNum].itype.longName + " and replace it with " + itype.longName + ".");
 				else outputText("You throw away " + player.itemSlots[slotNum].itype.longName + "(x" + player.itemSlots[slotNum].quantity + ") and replace it with " + itype.longName + ".");
 				player.itemSlots[slotNum].setItemAndQty(itype, 1);
 			}
@@ -585,22 +585,22 @@ package classes.Scenes
 		
 		private function itemAnyInStorage(storage:Array, startSlot:int, endSlot:int):Boolean {
 			for (var x:int = startSlot; x < endSlot; x++) {
-				if (storage[x] !== undefined) if (storage[x].quantity > 0) return true;
+				if (storage[x] != undefined) if (storage[x].quantity > 0) return true;
 			}
 			return false;
 		}
 		
 		private function itemTypeInStorage(storage:Array, startSlot:int, endSlot:int, itype:ItemType):Boolean {
 			for (var x:int = startSlot; x < endSlot; x++) {
-				if (storage[x] !== undefined) if (storage[x].quantity > 0 && storage[x].itype === itype) return true;
+				if (storage[x] != undefined) if (storage[x].quantity > 0 && storage[x].itype == itype) return true;
 			}
 			return false;
 		}
 		
 		public function removeItemFromStorage(storage:Array, itype:ItemType):void {
 			for (var x:int = 0; x < storage.length; x++) {
-				if (storage[x] !== undefined) {
-					if (storage[x].quantity > 0 && storage[x].itype === itype) {
+				if (storage[x] != undefined) {
+					if (storage[x].quantity > 0 && storage[x].itype == itype) {
 						storage[x].quantity--;
 						return;
 					}
@@ -617,32 +617,32 @@ package classes.Scenes
 			clearOutput();
 			outputText("Which would you like to unequip?\n\n");
 			menu();
-			if (player.weapon !== WeaponLib.FISTS)
+			if (player.weapon != WeaponLib.FISTS)
 				addButton(0, "Weapon", unequipWeapon).hint(player.weapon.description, capitalizeFirstLetter(player.weapon.name));
 			else 
 				addButtonDisabled(0, "Weapon");
 				
-			if (player.shield !== ShieldLib.NOTHING)
+			if (player.shield != ShieldLib.NOTHING)
 				addButton(1, "Shield", unequipShield).hint(player.shield.description, capitalizeFirstLetter(player.shield.name));
 			else
 				addButtonDisabled(1, "Shield");
 				
-			if (player.jewelry !== JewelryLib.NOTHING)
+			if (player.jewelry != JewelryLib.NOTHING)
 				addButton(2, "Accessory", unequipJewel).hint(player.jewelry.description, capitalizeFirstLetter(player.jewelry.name));
 			else 
 				addButtonDisabled(2, "Accessory");
 				
-			if (player.armor !== ArmorLib.NOTHING)
+			if (player.armor != ArmorLib.NOTHING)
 				addButton(5, "Armour", unequipArmor).hint(player.armor.description, capitalizeFirstLetter(player.armor.name));
 			else 
 				addButtonDisabled(5, "Armour");
 				
-			if (player.upperGarment !== UndergarmentLib.NOTHING)
+			if (player.upperGarment != UndergarmentLib.NOTHING)
 				addButton(6, "Upperwear", unequipUpperwear).hint(player.upperGarment.description, capitalizeFirstLetter(player.upperGarment.name));
 			else 
 				addButtonDisabled(6, "Upperwear");
 				
-			if (player.lowerGarment !== UndergarmentLib.NOTHING)
+			if (player.lowerGarment != UndergarmentLib.NOTHING)
 				addButton(7, "Lowerwear", unequipLowerwear).hint(player.lowerGarment.description, capitalizeFirstLetter(player.lowerGarment.name));
 			else 
 				addButtonDisabled(7, "Lowerwear");
@@ -654,7 +654,7 @@ package classes.Scenes
 			takeItem(player.setWeapon(WeaponLib.FISTS), inventoryMenu);
 		}
 		public function unequipArmor():void {
-			if (player.armorName !== "goo armor") takeItem(player.setArmor(ArmorLib.NOTHING), inventoryMenu); 
+			if (player.armorName != "goo armor") takeItem(player.setArmor(ArmorLib.NOTHING), inventoryMenu); 
 			else { //Valeria belongs in the camp, not in your inventory!
 				player.armor.removeText();
 				player.setArmor(ArmorLib.NOTHING);
@@ -680,7 +680,7 @@ package classes.Scenes
 			if (!countOnly) menu();
 			if (getGame().xmas.xmasMisc.nieveHoliday() && flags[kFLAGS.NIEVE_STAGE] > 0 && flags[kFLAGS.NIEVE_STAGE] < 5) {
 				if (!countOnly) {
-					if (flags[kFLAGS.NIEVE_STAGE] === 1)
+					if (flags[kFLAGS.NIEVE_STAGE] == 1)
 						outputText("\nThere's some odd snow here that you could do something with...\n");
 					else
 						outputText("\nYou have a snow" + getGame().xmas.xmasMisc.nieveMF("man", "woman") + " here that seems like it could use a little something...\n");
@@ -688,9 +688,9 @@ package classes.Scenes
 				}
 				foundItem = true;
 			}
-			if (flags[kFLAGS.FUCK_FLOWER_KILLED] === 0 && flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 1) {
+			if (flags[kFLAGS.FUCK_FLOWER_KILLED] == 0 && flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 1) {
 				if (!countOnly) {
-					if (flags[kFLAGS.FUCK_FLOWER_LEVEL] === 4) outputText("\nHolli is in her tree at the edges of your camp.  You could go visit her if you want.\n");
+					if (flags[kFLAGS.FUCK_FLOWER_LEVEL] == 4) outputText("\nHolli is in her tree at the edges of your camp.  You could go visit her if you want.\n");
 					addButton(button++, (flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 3 ? "Tree" : "Plant"), getGame().holliScene.treeMenu);
 				}
 				foundItem = true;
@@ -851,24 +851,24 @@ package classes.Scenes
 			var orig:int = qty;
 			player.itemSlots[slotNum].emptySlot();
 			for (x = startSlot; x < endSlot && qty > 0; x++) { //Find any slots which already hold the item that is being stored
-				if (storage[x].itype === itype && storage[x].quantity < 5) {
+				if (storage[x].itype == itype && storage[x].quantity < 5) {
 					temp = 5 - storage[x].quantity;
 					if (qty < temp) temp = qty;
 					outputText("You add " + temp + "x " + itype.shortName + " into storage slot " + num2Text(x + 1 - startSlot) + ".\n");
 					storage[x].quantity += temp;
 					qty -= temp;
-					if (qty === 0) return;
+					if (qty == 0) return;
 				}
 			}
 			for (x = startSlot; x < endSlot && qty > 0; x++) { //Find any empty slots and put the item(s) there
-				if (storage[x].quantity === 0) {
+				if (storage[x].quantity == 0) {
 					storage[x].setItemAndQty(itype, qty);
 					outputText("You place " + qty + "x " + itype.shortName + " into storage slot " + num2Text(x + 1 - startSlot) + ".\n");
 					qty = 0;
 					return;
 				}
 			}
-			outputText("There is no room for " + (orig === qty ? "" : "the remaining ") + qty + "x " + itype.shortName + ".  You leave " + (qty > 1 ? "them" : "it") + " in your inventory.\n");
+			outputText("There is no room for " + (orig == qty ? "" : "the remaining ") + qty + "x " + itype.shortName + ".  You leave " + (qty > 1 ? "them" : "it") + " in your inventory.\n");
 			player.itemSlots[slotNum].setItemAndQty(itype, qty);
 		}
 	}

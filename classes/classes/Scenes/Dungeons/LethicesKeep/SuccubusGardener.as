@@ -227,7 +227,7 @@ this.HP = this.maxHP();
 			{
 				outputText("You scrabble desperately against the tentacles enveloping your body, pulling against the cast-iron grip around your limbs. You tug against them again and again");
 				
-				if (rand(2) === 0)
+				if (rand(2) == 0)
 				{
 					outputText(", but the vines encircling you squeeze you tighter, twisting and sliding across your [skinFurScales] as they press more tightly around you. It gets hard to breathe, but at the same time, some of them are inside your [armor], gliding across your most sensitive places with oiled ease that's made all the more arousing by the force behind it.");	
 				}
@@ -237,7 +237,7 @@ this.HP = this.maxHP();
 				}
 				
 				player.addStatusValue(StatusEffects.Tentagrappled, 1, 1);
-				if (player.findPerk(PerkLib.Juggernaut) < 0 && armorPerk !== "Heavy") {
+				if (player.findPerk(PerkLib.Juggernaut) < 0 && armorPerk != "Heavy") {
 					player.takeDamage(75 + rand(15));
 				}
 				player.takeLustDamage(3 + rand(3), true);
@@ -255,7 +255,7 @@ this.HP = this.maxHP();
 		
 		private function squeeze():void
 		{
-			if (rand(2) === 0)
+			if (rand(2) == 0)
 			{
 				outputText("The vines encircling you squeeze you tighter, twisting and sliding across your [skinFurScales] as they press more tightly around you. It gets hard to breathe, but at the same time, some of them are inside your [armor], gliding across your most sensitive places with oiled ease that's made all the more arousing by the force behind it.");
 			}
@@ -265,7 +265,7 @@ this.HP = this.maxHP();
 			}
 	
 			player.addStatusValue(StatusEffects.Tentagrappled, 1, 1);
-			if (player.findPerk(PerkLib.Juggernaut) < 0 && armorPerk !== "Heavy") {
+			if (player.findPerk(PerkLib.Juggernaut) < 0 && armorPerk != "Heavy") {
 				player.takeDamage(75 + rand(15));
 			}
 			player.takeLustDamage(3 + rand(3), true);
@@ -358,7 +358,7 @@ this.HP = this.maxHP();
 				}
 				else if (player.hasVagina())
 				{
-					outputText(" soaked twat threatens to " + ((player.wetness() === 4) ? "drown" : "further soak") + " your [legs].");
+					outputText(" soaked twat threatens to " + ((player.wetness() == 4) ? "drown" : "further soak") + " your [legs].");
 				}
 				else outputText(".");
 			}

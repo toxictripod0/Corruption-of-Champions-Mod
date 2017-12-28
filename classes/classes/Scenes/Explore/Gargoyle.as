@@ -19,7 +19,7 @@ package classes.Scenes.Explore{
 //const GAR_NAME_TALKS:int = 831;
 
 private function gargoyleConfidence(arg:Number = 0):Number {
-	if (arg !== 0) {
+	if (arg != 0) {
 		flags[kFLAGS.GAR_CONFIDENCE] += arg;
 		if (flags[kFLAGS.GAR_CONFIDENCE] > 100) flags[kFLAGS.GAR_CONFIDENCE] = 100;
 		else if (flags[kFLAGS.GAR_CONFIDENCE] < 0) flags[kFLAGS.GAR_CONFIDENCE] = 0;
@@ -95,7 +95,7 @@ private function breakZeChains():void {
 	//Introduces two new values: " + flags[kFLAGS.GAR_NAME] + ", the gargoyle's name, given by the Champion, and Confidence, a value that has a base score of 0 (submissive/slave) rising to 100 (equal). Negatives are possible.
 	outputText("You swing your [weapon] up over your head and strike the chains.");
 	//if using your hands:
-	if (player.weaponName === "fists") outputText("  \"<i>OW! Dammit, that hurt!</i>\"  What the hell were you thinking!?  Still, looks like you got results...");
+	if (player.weaponName == "fists") outputText("  \"<i>OW! Dammit, that hurt!</i>\"  What the hell were you thinking!?  Still, looks like you got results...");
 	outputText("  An ear-splitting <i>SCHING!</i> echoes through the cathedral as shards of gold go flying.  You recoil, shielding your face from the surprisingly explosive force of the chains' shattering.  When the dust settles you cautiously lower your arms, giving you a good view of what lies – or rather, kneels – before you:");
 	
 	outputText("\n\nThe gargoyle has stepped down from her pedestal, and now kneels as a supplicant before a king, forehead near the ground and weight rested upon her stone knuckles even as her massive wingspan unfolds behind her and her mace-like tail swishes rapidly behind her.  Slowly, the gargoyle raises her head to gaze upon you, her now ruby-red eyes staring into yours. Her smooth, nippleless breasts heave, once-stone hair falling forward in strands, fringing her smooth, angular face.  Her thin, gray lips slowly curl into a small, sultry smile as she says, just on the edge of hearing...");
@@ -238,9 +238,9 @@ public function returnToCathedral(woken:Boolean = false):void {
 	spriteSelect(SpriteDb.s_gargoyle);
 	if (!woken) {
 		clearOutput();
-		if (rand(3) === 0) outputText("You make your way back to the ruined Cathedral in the wastelands.  You notice some of the debris has been cleared away from the courtyard, and some of the windows have been boarded up.  " + flags[kFLAGS.GAR_NAME] + "'s obviously been working since you last left, trying to make the building more habitable.  With your path less obstructed than before, you enter.");
+		if (rand(3) == 0) outputText("You make your way back to the ruined Cathedral in the wastelands.  You notice some of the debris has been cleared away from the courtyard, and some of the windows have been boarded up.  " + flags[kFLAGS.GAR_NAME] + "'s obviously been working since you last left, trying to make the building more habitable.  With your path less obstructed than before, you enter.");
 		//[b]Player Returns to the Cathedral B[/b]
-		else if (rand(2) === 0) outputText("You spot the Cathedral in the distance, and see plumes of smoke rising. Alarmed, you ready your [weaponName] and rush over.  To your relief, however, you discover the burning objects are just a few dead imps that were looking for easy pillage, but found the Cathedral's newly-awoken protector instead.  Stepping around their charred corpses, you enter.");
+		else if (rand(2) == 0) outputText("You spot the Cathedral in the distance, and see plumes of smoke rising. Alarmed, you ready your [weaponName] and rush over.  To your relief, however, you discover the burning objects are just a few dead imps that were looking for easy pillage, but found the Cathedral's newly-awoken protector instead.  Stepping around their charred corpses, you enter.");
 		//[b]Player Returns to the Cathedral C[/b]
 		else outputText("You wander into the Cathedral grounds, and are rather alarmed to see a pair of little green goblin sluts poking around outside, trying to cart off some of the stone tombstones for their nefarious schemes.  They see you approaching, however, and quickly flee – more interested in salvage than fighting or fucking today.  Chuckling to yourself, you enter.");
 	}
@@ -528,7 +528,7 @@ private function useHerGargoyleFemale():void {
 //[b]Ritual (First Time)[/b]
 private function ritualGargoyle():void {
 	clearOutput();
-	if (flags[kFLAGS.RITUAL_INTRO] === 0) {
+	if (flags[kFLAGS.RITUAL_INTRO] == 0) {
 		flags[kFLAGS.RITUAL_INTRO] = 1;
 		outputText("You note that the sanctuary's altar has been cleared of rubble, and a number of candles have been lit upon it. Resting atop the flat stone surface is a simple iron bowl filled with what appears to be water. Curious, you ask " + flags[kFLAGS.GAR_NAME] + " what she's been up to.");
 		outputText("\n\n\"<i>Long before Master came, I watched over the parishioners and their faith. They performed strange sacraments and rituals to purify the body and dispel evils. ");
@@ -688,7 +688,7 @@ private function cuddleForBanishments():void {
 //(While Confidence 70+)
 private function gargoyleKinkyRituals():void {
 	clearOutput();
-	if (flags[kFLAGS.KINKY_RITUALS_SPOKEN] === 0) {
+	if (flags[kFLAGS.KINKY_RITUALS_SPOKEN] == 0) {
 		outputText("You broach the subject of rituals to your gargoyle and are met with a surprisingly coy smile from her.  You ask her what's on her mind, to which " + flags[kFLAGS.GAR_NAME] + " chuckles and says, \"<i>I've been thinking, Master. If you so desire, it may be possible to... enhance... the rituals that I've been using.</i>\"");
 		outputText("\n\nYou ask her exactly what she has in mind.");
 		outputText("\n\n\"<i>The last Master was obsessed with pleasures of the flesh, and when she learned I was able to perform spiritual rituals, designed corrupted versions of them to fit her tastes.  If you'll allow it, I believe I can strike a middle-ground – making the rituals more pleasurable to us both, without the corrupting influence.  Would Master be interested in attempting one with me?</i>\"");
@@ -858,11 +858,11 @@ private function talkToGargoyle(output:Boolean = true):void {
 }
 
 private function historyGo():void {
-	if (flags[kFLAGS.GAR_HISTORY] === 0) {
+	if (flags[kFLAGS.GAR_HISTORY] == 0) {
 		flags[kFLAGS.GAR_HISTORY] = 1;
 		talkToGargoyleHistoryA();
 	}
-	else if (flags[kFLAGS.GAR_HISTORY] === 1) {
+	else if (flags[kFLAGS.GAR_HISTORY] == 1) {
 		historyOfGargoylesB();
 		flags[kFLAGS.GAR_HISTORY] = 2;
 	}
@@ -1047,11 +1047,11 @@ private function gargoylesAreGirlfriends():void {
 }
 
 private function cathedralTalks():void {
-	if (flags[kFLAGS.GAR_CATHEDRAL] === 0) {
+	if (flags[kFLAGS.GAR_CATHEDRAL] == 0) {
 		flags[kFLAGS.GAR_CATHEDRAL]++;
 		talkCathedralA();
 	}
-	else if (flags[kFLAGS.GAR_CATHEDRAL] === 1) {
+	else if (flags[kFLAGS.GAR_CATHEDRAL] == 1) {
 		cathedralBTalk();
 		flags[kFLAGS.GAR_CATHEDRAL] = 2;
 	}
@@ -1165,11 +1165,11 @@ private function berateDatGargoyle4SomeSavin():void {
 }
 
 private function talkAboutGarName():void {
-	if (flags[kFLAGS.GAR_NAME_TALKS] === 0) {
+	if (flags[kFLAGS.GAR_NAME_TALKS] == 0) {
 		flags[kFLAGS.GAR_NAME_TALKS] = 1;
 		garNameA();
 	}
-	else if (flags[kFLAGS.GAR_NAME_TALKS] === 1) {
+	else if (flags[kFLAGS.GAR_NAME_TALKS] == 1) {
 		flags[kFLAGS.GAR_NAME_TALKS] = 2;
 		garNameB();
 	}
@@ -1187,7 +1187,7 @@ private function garNameA():void {
 	outputText("Curious about your gargoyle, you ask " + flags[kFLAGS.GAR_NAME] + " to tell you a little bit about her life before you arrived.  She makes a nervous chuckle at the request, and shyly says, \"<i>Master is too kind...  I am no one special...</i>\"");
 	
 	outputText("\n\nYou urge her on, adding that you can make it a command if you have to.  She fidgets awkwardly for a moment, but finally says, \"<i>If Master insists.  I was sculpted in a village not far from here.  The high priest ordered me and a dozen others from the finest sculptor in the land.  We were perfect, in a way.  Each of us was unique, complete, made to be as human as you ");
-	if (player.race() === "human") outputText("are");
+	if (player.race() == "human") outputText("are");
 	else outputText("once were");
 	outputText(", Master, and more.  We were to be their guardians, protectors – their perfect servants.</i>\"");
 	

@@ -57,7 +57,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 		override public function get long():String
 		{
 			var str:* = null;
-			if (!_orgasms === 0)
+			if (!_orgasms == 0)
 			{
 				return "Positioned between you and the Demon Queen is an opponent of singular size and stature - the Minotaur King. He is a beast beyond measure, covered in shaggy fur and a few scraps of leather that do nothing to hide the pillar of flared cuntplow between his legs. In his hands is a gigantic axe, though he seems loathe to use it, preferring to rely on the erotic scent emanating from between his legs. He smells virile, strong, and more alluring than you’d expect. You’d best be careful not to dwell on it.";
 			}
@@ -74,9 +74,9 @@ package classes.Scenes.Dungeons.LethicesKeep
 			{
 				str += "\n\nBeneath his legs is the creampied form of his favored slut, Excellia. Milk-white cum puddles between her spread legs, matched only by the sheen of leaking lactose on her lewdly-jutting nipples. Her lord never lets her fallen form out of arm’s reach, just in case he needs a drink.";
 			}
-			if (_milkDrinks !== 0)
+			if (_milkDrinks != 0)
 			{
-				if (_milkDrinks === 1)
+				if (_milkDrinks == 1)
 				{
 					str += "\n\n<b>The King has been glancing appreciatively in your direction ever since he took a drink from his slave-slut’s nipples. Perhaps he’s more vulnerable to baser needs...</b>";
 				}
@@ -96,7 +96,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 		
 		override public function defeated(hpVictory:Boolean):void
 		{
-			if (_orgasms === 0 && !hpVictory)
+			if (_orgasms == 0 && !hpVictory)
 			{
 				lustDump();
 				combatRoundOver();
@@ -133,7 +133,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 					return;
 				}
 			}
-			if (_lastSpellCastCount !== flags[kFLAGS.SPELLS_CAST])
+			if (_lastSpellCastCount != flags[kFLAGS.SPELLS_CAST])
 			{
 				_lastSpellCastCount = flags[kFLAGS.SPELLS_CAST];
 				headbutt();
@@ -176,15 +176,15 @@ package classes.Scenes.Dungeons.LethicesKeep
 			outputText("<i>“Settle down,”</i> the brute growls, moments before attempting to slam his forehead into your own.");
 			var damage:Number = (((str + weaponAttack) / 2) - rand(player.tou)) * (1 + (player.newGamePlusMod() * 0.3));
 			var evade:String = player.getEvasionReason();
-			if (damage <= 0 || evade === EVASION_SPEED || evade === EVASION_FLEXIBILITY || evade === EVASION_UNHINDERED)
+			if (damage <= 0 || evade == EVASION_SPEED || evade == EVASION_FLEXIBILITY || evade == EVASION_UNHINDERED)
 			{
 				outputText(" Luckily, you dodge aside.");
 			}
-			else if (evade === EVASION_EVADE)
+			else if (evade == EVASION_EVADE)
 			{
 				outputText(" Luckily, you evade.");
 			}
-			else if (evade === EVASION_MISDIRECTION)
+			else if (evade == EVASION_MISDIRECTION)
 			{
 				outputText(" Luckily, you misdirect his attack.");
 			}
@@ -245,7 +245,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 		private function minoPheromones():void
 		{
 			outputText("The minotaur smiles at you and lifts his loincloth, flicking it at you.  Thick ropes of pre-cum fly through the air, ");
-			if (rand(3) === 0)
+			if (rand(3) == 0)
 			{
 				outputText("slapping into your face before you can react!  You wipe the slick snot-like stuff out of your eyes and nose, ");
 				if (player.lust100 > 75)
@@ -267,7 +267,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			player.takeLustDamage(15 + player.lib / 20, true);
 			if (player.findPerk(PerkLib.MinotaurCumAddict) >= 0 || flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] >= 2)
 			{
-				if (rand(2) === 0)
+				if (rand(2) == 0)
 				{
 					outputText("\n<b>You shiver with need, wanting nothing more than to bury your face under that loincloth and slurp out every drop of goopey goodness.</b>");
 				}
@@ -300,7 +300,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			if (player.hasCock())
 			{
 				sel = rand(3);
-				if (sel === 0)
+				if (sel == 0)
 				{
 					outputText("Excellia crawls over to you while you’re distracted with her lord and wraps her arms around your waist, crushing her milk-swollen tits against your crotch. You can feel their warmth through your [armor], promising nothing but bliss in their embrace. When you push her away, you become aware of the rivers of milk she poured down your");
 					if (player.isNaga())
@@ -313,7 +313,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 					}
 					outputText(", a reminder of the woman’s insane fuckability.");
 				}
-				else if (sel === 1)
+				else if (sel == 1)
 				{
 					outputText("Turning about, the cow-slave aims her bubbly ass in your direction and lifts her tail, revealing both her dripping delta and the puckered star of her asshole. She looks back over her shoulder and sensuously slides her tongue across her gold-gilt lips, blowing you a pouty kiss once her mouth is suitably shiny. If she meant to distract you, she was at least partially successful.");
 				}

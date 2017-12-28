@@ -9,8 +9,8 @@ package classes.Scenes.Dungeons.DesertCave
 		public function sandWitchMobAI():void {
 			if (!hasStatusEffect(StatusEffects.Sandstorm)) sandStormAttack();
 			else if (HPRatio() < .5) drankSomeMialk();
-			else if (hasStatusEffect(StatusEffects.Sandstorm) && rand(2) === 0 && !player.hasStatusEffect(StatusEffects.LustStones)) sandstonesAreCool();
-			else if (rand(3) === 0) headbuttABitch();
+			else if (hasStatusEffect(StatusEffects.Sandstorm) && rand(2) == 0 && !player.hasStatusEffect(StatusEffects.LustStones)) sandstonesAreCool();
+			else if (rand(3) == 0) headbuttABitch();
 			else gangrush();
 		}
 		
@@ -66,7 +66,7 @@ package classes.Scenes.Dungeons.DesertCave
 				if (!player.isGoo()) {
 					outputText("\n\nThey crawl up your [legs].  You try to swat them all off, but there are too many.");
 					//If PC has 1 cock:
-					if (player.cockTotal() === 1) outputText("  A stone crawls onto your [cock].");
+					if (player.cockTotal() == 1) outputText("  A stone crawls onto your [cock].");
 					//[If PC has multi-cocks: 
 					if (player.cockTotal() > 1) outputText("  A bunch of the stones crawl onto your " + player.multiCockDescriptLight() + ".");
 					if (player.hasCock()) bonus++;
@@ -85,7 +85,7 @@ package classes.Scenes.Dungeons.DesertCave
 					}
 					outputText("  " + num2Text(player.totalNipples()) + " crawl up to your chest and over your top " + player.nippleDescript(0) + "s");
 					if (player.bRows() > 1) {
-						if (player.bRows() === 2) outputText(" and");
+						if (player.bRows() == 2) outputText(" and");
 						else outputText(",");
 						outputText(" your middle " +  player.nippleDescript(1) + "s");
 						bonus++;

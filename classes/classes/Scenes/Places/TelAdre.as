@@ -118,7 +118,7 @@ private function telAdreCrystal():void {
 		outputText("The crystal pendant shimmers, vibrating in place and glowing a purple hue.  Edryn steps back, watching you warily, \"<i>You've been deeply touched by corruption.  You balance on a razor's edge between falling completely and returning to sanity.  You may enter, but we will watch you closely.</i>\"\n\n");
 	}
 	//-25+ corruption or corrupted Marae
-	else if (!player.isPureEnough(25) || flags[kFLAGS.FACTORY_SHUTDOWN] === 2) {
+	else if (!player.isPureEnough(25) || flags[kFLAGS.FACTORY_SHUTDOWN] == 2) {
 		outputText("The crystal pendant twirls in place, glowing a dull red.  Edryn takes a small step back and murmurs, \"<i>You've seen the darkness of this land first hand, but its hold on you is not deep.  You'll find sanctuary here.  The demons cannot find this place yet, and we promise you safe passage within the walls.</i>\"\n\n");
 	}
 	//-Low corruption/pure characters
@@ -150,19 +150,19 @@ public function telAdreMenu():void {
 		kGAMECLASS.valentines.crazyVDayShenanigansByVenithil();
 		return;
 	}
-	if (!kGAMECLASS.urtaQuest.urtaBusy() && flags[kFLAGS.PC_SEEN_URTA_BADASS_FIGHT] === 0 && rand(15) === 0 && getGame().time.hours > 15) {
+	if (!kGAMECLASS.urtaQuest.urtaBusy() && flags[kFLAGS.PC_SEEN_URTA_BADASS_FIGHT] == 0 && rand(15) == 0 && getGame().time.hours > 15) {
 		urtaIsABadass();
 		return;
 	}
-	if (!kGAMECLASS.urtaQuest.urtaBusy() && kGAMECLASS.urta.pregnancy.event > 5 && rand(30) === 0) {
+	if (!kGAMECLASS.urtaQuest.urtaBusy() && kGAMECLASS.urta.pregnancy.event > 5 && rand(30) == 0) {
 		kGAMECLASS.urtaPregs.urtaIsAPregnantCopScene();
 	   return;
 	}
 	switch (flags[kFLAGS.KATHERINE_UNLOCKED]) {
 		case -1:
 		case  0: //Still potentially recruitable
-			if (flags[kFLAGS.KATHERINE_RANDOM_RECRUITMENT_DISABLED] === 0 && player.gems > 34 && rand(25) === 0) {
-				if (flags[kFLAGS.KATHERINE_UNLOCKED] === 0)
+			if (flags[kFLAGS.KATHERINE_RANDOM_RECRUITMENT_DISABLED] == 0 && player.gems > 34 && rand(25) == 0) {
+				if (flags[kFLAGS.KATHERINE_UNLOCKED] == 0)
 					katherine.ambushByVagrantKittyKats()
 				else katherine.repeatAmbushKatherineRecruitMent();
 				return;
@@ -179,12 +179,12 @@ public function telAdreMenu():void {
 			}
 			break;
 		default: //Has given you a spare key to her apartment
-			if (getGame().time.hours < 10 && rand(12) === 0) { //If employed or housed she can sometimes be encountered while on duty
+			if (getGame().time.hours < 10 && rand(12) == 0) { //If employed or housed she can sometimes be encountered while on duty
 				katherine.katherineOnDuty();
 				return;
 			}
 	}
-	if (flags[kFLAGS.ARIAN_PARK] === 0 && rand(10) === 0 && flags[kFLAGS.NOT_HELPED_ARIAN_TODAY] === 0) {
+	if (flags[kFLAGS.ARIAN_PARK] == 0 && rand(10) == 0 && flags[kFLAGS.NOT_HELPED_ARIAN_TODAY] == 0) {
 		kGAMECLASS.arianScene.meetArian();
 		return;
 	}
@@ -194,11 +194,11 @@ public function telAdreMenu():void {
 	//Must have Urta's Key.
 	//Urta must be pregnant to trigger this scene.
 	//Play this scene upon entering Tel'Adre.
-	if (kGAMECLASS.urta.pregnancy.event > 2 && rand(4) === 0 && flags[kFLAGS.URTA_PREGNANT_DELIVERY_SCENE] === 0 && player.hasKeyItem("Spare Key to Urta's House") >= 0) {
+	if (kGAMECLASS.urta.pregnancy.event > 2 && rand(4) == 0 && flags[kFLAGS.URTA_PREGNANT_DELIVERY_SCENE] == 0 && player.hasKeyItem("Spare Key to Urta's House") >= 0) {
 		kGAMECLASS.urtaPregs.urtaSpecialDeliveries();
 		return;
 	}
-	if (flags[kFLAGS.MADDIE_STATUS] === -1) {
+	if (flags[kFLAGS.MADDIE_STATUS] == -1) {
 		maddie.runAwayMaddieFollowup();
 		return;
 	}
@@ -207,7 +207,7 @@ public function telAdreMenu():void {
 	clearOutput();
 	outputText("Tel'Adre is a massive city, though most of its inhabitants tend to hang around the front few city blocks.  It seems the fall of Mareth did not leave the city of Tel'Adre totally unscathed.  A massive tower rises up in the center of the city, shimmering oddly.  From what you overhear in the streets, the covenant's magic-users slave away in that tower, working to keep the city veiled from outside dangers.  There does not seem to be a way to get into the unused portions of the city, but you'll keep your eyes open.\n\n");
 	outputText("A sign depicting a hermaphroditic centaur covered in piercings hangs in front of one of the sandstone buildings, and bright pink lettering declares it to be the 'Piercing Studio'.  You glance over and see the wooden facade of Urta's favorite bar, 'The Wet Bitch'.  How strange that those would be what she talks about during a tour.  In any event you can also spot some kind of wolf-man banging away on an anvil in a blacksmith's stand, and a foppishly-dressed dog-man with large floppy ears seems to be running some kind of pawnshop in his stand.  Steam boils from the top of a dome-shaped structure near the far end of the street, and simple lettering painted on the dome proclaims it to be a bakery.  Perhaps those shops will be interesting as well.");
-	if (flags[kFLAGS.RAPHEAL_COUNTDOWN_TIMER] === -2 && !kGAMECLASS.raphael.RaphaelLikes()) {
+	if (flags[kFLAGS.RAPHEAL_COUNTDOWN_TIMER] == -2 && !kGAMECLASS.raphael.RaphaelLikes()) {
 		outputText("\n\nYou remember Raphael's offer about the Orphanage, but you might want to see about shaping yourself more to his tastes first.  He is a picky fox, after all, and you doubt he would take well to seeing you in your current state.");
 	}
 	telAdreMenuShow();
@@ -215,7 +215,7 @@ public function telAdreMenu():void {
 
 public function telAdreMenuShow():void { //Just displays the normal Tel'Adre menu options, no special events, no description. Useful if a special event has already played
 	var homes:Boolean = false;
-	if (flags[kFLAGS.RAPHEAL_COUNTDOWN_TIMER] === -2 && kGAMECLASS.raphael.RaphaelLikes())
+	if (flags[kFLAGS.RAPHEAL_COUNTDOWN_TIMER] == -2 && kGAMECLASS.raphael.RaphaelLikes())
 		homes = true;
 	else if (player.hasKeyItem("Spare Key to Urta's House") >= 0)
 		homes = true;
@@ -261,7 +261,7 @@ public function houses():void {
 	clearOutput();
 	outputText("Whose home will you visit?");
 	var orphanage:Function = null;
-	if (flags[kFLAGS.RAPHEAL_COUNTDOWN_TIMER] === -2) {
+	if (flags[kFLAGS.RAPHEAL_COUNTDOWN_TIMER] == -2) {
 		if (kGAMECLASS.raphael.RaphaelLikes())
 		{
 			orphanage = kGAMECLASS.raphael.orphanageIntro;
@@ -306,7 +306,7 @@ public function oswaldPawn():void {
 		case 4: addButton(2, "Kath's Alley", katherineEmployment.postTrainingAlleyDescription); break; //Appears until Kath gives you her housekeys
 		default:
 	}
-	if (player.hasKeyItem("Carrot") < 0 && flags[kFLAGS.NIEVE_STAGE] === 3) {
+	if (player.hasKeyItem("Carrot") < 0 && flags[kFLAGS.NIEVE_STAGE] == 3) {
 		outputText("\n\nIn passing, you mention that you're looking for a carrot.\n\nOswald's tophat tips precariously as his ears perk up, and he gladly announces, \"<i>I happen to have come across one recently - something of a rarity in these dark times, you see.  I could let it go for 500 gems, if you're interested.</i>\"");
 		if (player.gems < 500)
 			outputText("\n\n<b>You can't afford that!</b>");
@@ -345,8 +345,8 @@ private function oswaldTransactBuy(slot:int = 1):void {
 	clearOutput();
 	var itype:ItemType;
 	var buyMod:Number = 2;
-	if (slot === 1) itype = ItemType.lookupItem(flags[kFLAGS.BENOIT_1]);
-	else if (slot === 2) itype = ItemType.lookupItem(flags[kFLAGS.BENOIT_2]);
+	if (slot == 1) itype = ItemType.lookupItem(flags[kFLAGS.BENOIT_1]);
+	else if (slot == 2) itype = ItemType.lookupItem(flags[kFLAGS.BENOIT_2]);
 	else itype = ItemType.lookupItem(flags[kFLAGS.BENOIT_3]);
 	if (player.gems < Math.round(buyMod * itype.value)) {
 		outputText("You consider making a purchase, but you lack the gems to go through with it.");
@@ -357,7 +357,7 @@ private function oswaldTransactBuy(slot:int = 1):void {
 	player.gems -= Math.round(buyMod * itype.value);
 	statScreenRefresh();
 
-	if (flags[kFLAGS.SHIFT_KEY_DOWN] === 1 && itype is Consumable) {
+	if (flags[kFLAGS.SHIFT_KEY_DOWN] == 1 && itype is Consumable) {
 		(itype as Consumable).useItem();
 		doNext(oswaldBuyMenu);
 	} else inventory.takeItem(itype, oswaldBuyMenu);
@@ -386,8 +386,8 @@ private function oswaldPawnSell(slot:int):void { //Moved here from Inventory.as
 	spriteSelect(SpriteDb.s_oswald);
 	var itemValue:int = int(player.itemSlots[slot].itype.value / 2);
 	clearOutput();
-	if (flags[kFLAGS.SHIFT_KEY_DOWN] === 1) {
-		if (itemValue === 0)
+	if (flags[kFLAGS.SHIFT_KEY_DOWN] == 1) {
+		if (itemValue == 0)
 			outputText("You hand over " + num2Text(player.itemSlots[slot].quantity) + " " +  player.itemSlots[slot].itype.shortName + " to Oswald.  He shrugs and says, “<i>Well ok, it isn't worth anything, but I'll take it.</i>”");
 		else outputText("You hand over " + num2Text(player.itemSlots[slot].quantity) + " " +  player.itemSlots[slot].itype.shortName + " to Oswald.  He nervously pulls out " + num2Text(itemValue * player.itemSlots[slot].quantity)  + " gems and drops them into your waiting hand.");
 		while (player.itemSlots[slot].quantity > 0){
@@ -396,7 +396,7 @@ private function oswaldPawnSell(slot:int):void { //Moved here from Inventory.as
 		}
 	}
 	else {
-		if (itemValue === 0)
+		if (itemValue == 0)
 			outputText("You hand over " + player.itemSlots[slot].itype.longName + " to Oswald.  He shrugs and says, “<i>Well ok, it isn't worth anything, but I'll take it.</i>”");
 		else outputText("You hand over " + player.itemSlots[slot].itype.longName + " to Oswald.  He nervously pulls out " + num2Text(itemValue) + " gems and drops them into your waiting hand.");
 		player.itemSlots[slot].removeOneItem();
@@ -429,7 +429,7 @@ private function anotherButton(button:int, nam:String, func:Function, arg:* = -9
 	return button;
 }
 private function enterBarTelAdre():void {
-	if (isThanksgiving() && flags[kFLAGS.PIG_SLUT_DISABLED] === 0) kGAMECLASS.thanksgiving.pigSlutRoastingGreet();
+	if (isThanksgiving() && flags[kFLAGS.PIG_SLUT_DISABLED] == 0) kGAMECLASS.thanksgiving.pigSlutRoastingGreet();
 	else barTelAdre();
 }
 
@@ -441,7 +441,7 @@ public function barTelAdre():void {
 	hideUpDown();
 	var button:int = 0;
 	clearOutput();
-	if (flags[kFLAGS.LOPPE_DISABLED] === 0 && flags[kFLAGS.LOPPE_MET] === 0 && rand(10) === 0) {
+	if (flags[kFLAGS.LOPPE_DISABLED] == 0 && flags[kFLAGS.LOPPE_MET] == 0 && rand(10) == 0) {
 		loppe.loppeFirstMeeting();
 		return;
 	}
@@ -456,20 +456,20 @@ public function barTelAdre():void {
 
 	menu();
 	//AMILY!
-	if (flags[kFLAGS.AMILY_VISITING_URTA] === 1) {
+	if (flags[kFLAGS.AMILY_VISITING_URTA] == 1) {
 		button = anotherButton(button,"Ask4Amily",kGAMECLASS.followerInteractions.askAboutAmily);
 	}
 	//DOMINIKA
-	if (getGame().time.hours > 17 && getGame().time.hours < 20 && flags[kFLAGS.DOMINIKA_STAGE] !== -1) {
+	if (getGame().time.hours > 17 && getGame().time.hours < 20 && flags[kFLAGS.DOMINIKA_STAGE] != -1) {
 		button = anotherButton(button,"Dominika",dominika.fellatrixBarApproach);
 	}
 	//EDRYN!
-	if (edryn.pregnancy.type !== PregnancyStore.PREGNANCY_TAOTH) { //Edryn is unavailable while pregnant with Taoth
+	if (edryn.pregnancy.type != PregnancyStore.PREGNANCY_TAOTH) { //Edryn is unavailable while pregnant with Taoth
 		if (edryn.edrynBar()) {
 			if (edryn.pregnancy.isPregnant) {
-				if (flags[kFLAGS.EDRYN_PREGNANT_AND_NOT_TOLD_PC_YET] === 0) {
+				if (flags[kFLAGS.EDRYN_PREGNANT_AND_NOT_TOLD_PC_YET] == 0) {
 					flags[kFLAGS.EDRYN_PREGNANT_AND_NOT_TOLD_PC_YET] = 1;
-					if (flags[kFLAGS.EDRYN_NUMBER_OF_KIDS] === 0) { //Edryn panic appearance! (First time mom)
+					if (flags[kFLAGS.EDRYN_NUMBER_OF_KIDS] == 0) { //Edryn panic appearance! (First time mom)
 						outputText("\n\nEdryn smiles when she sees you and beckons you towards her.  Fear and some kind of frantic need are painted across her face, imploring you to come immediately.  Whatever the problem is, it doesn't look like it can wait.");
 						doNext(edryn.findOutEdrynIsPregnant);
 						return;
@@ -483,7 +483,7 @@ public function barTelAdre():void {
 				}
 			}
 			//Edryn just had a kid and hasn't talked about it!
-			else if (flags[kFLAGS.EDRYN_NEEDS_TO_TALK_ABOUT_KID] === 1) {
+			else if (flags[kFLAGS.EDRYN_NEEDS_TO_TALK_ABOUT_KID] == 1) {
 				outputText("\n\nEdryn the centaur isn't pregnant anymore!  She waves excitedly at you, beckoning you over to see her.  It looks like she's already given birth to your child!");
 			}
 			//Appearance changes if has had kids
@@ -497,12 +497,12 @@ public function barTelAdre():void {
 			button = anotherButton(button,"Edryn",edryn.edrynBarTalk);
 		}
 	}
-	if (flags[kFLAGS.KATHERINE_LOCATION] === Katherine.KLOC_BAR) {
-		if (flags[kFLAGS.KATHERINE_UNLOCKED] === 4) { 
+	if (flags[kFLAGS.KATHERINE_LOCATION] == Katherine.KLOC_BAR) {
+		if (flags[kFLAGS.KATHERINE_UNLOCKED] == 4) { 
 			katherine.barFirstEncounter();
 			return;
 		}
-		if (flags[kFLAGS.KATHERINE_URTA_AFFECTION] === 31 && kGAMECLASS.urta.urtaAtBar() && !kGAMECLASS.urta.urtaDrunk() && flags[kFLAGS.URTA_ANGRY_AT_PC_COUNTDOWN] === 0) {
+		if (flags[kFLAGS.KATHERINE_URTA_AFFECTION] == 31 && kGAMECLASS.urta.urtaAtBar() && !kGAMECLASS.urta.urtaDrunk() && flags[kFLAGS.URTA_ANGRY_AT_PC_COUNTDOWN] == 0) {
 			katherine.barKathUrtaLoveAnnounce();
 			return;
 		}
@@ -512,7 +512,7 @@ public function barTelAdre():void {
 	//trace("HEL FOLLOWER LEVEL: " + flags[kFLAGS.HEL_FOLLOWER_LEVEL] + " HEL FUCKBUDDY: " + flags[kFLAGS.HEL_FUCKBUDDY] + " HARPY QUEEN DEFEATED: " + flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED]);
 	//trace("REDUCED ENCOUNTER RATE (DISPLINED): " + flags[kFLAGS.HEL_REDUCED_ENCOUNTER_RATE]);
 	//HELIA
-//	if (player.gender > 0 && getGame().time.hours >= 14 && rand(2) === 0 && getGame().time.hours < 20 && (flags[kFLAGS.HEL_FUCKBUDDY] !== 0 || kGAMECLASS.helFollower.followerHel()) && !(flags[kFLAGS.HEL_FOLLOWER_LEVEL] === 1 && flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED]== 0)) {
+//	if (player.gender > 0 && getGame().time.hours >= 14 && rand(2) == 0 && getGame().time.hours < 20 && (flags[kFLAGS.HEL_FUCKBUDDY] != 0 || kGAMECLASS.helFollower.followerHel()) && !(flags[kFLAGS.HEL_FOLLOWER_LEVEL] == 1 && flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED]== 0)) {
 	if (edryn.edrynHeliaThreesomePossible()) {
 		edryn.helAppearance();
 		button = anotherButton(button,"Helia",edryn.approachHelAtZeBitch);
@@ -526,19 +526,19 @@ public function barTelAdre():void {
 	else outputText("\n\nIt doesn't look like there's a bartender working at the moment.");
 
 	//NIAMH
-	if (getGame().time.hours >= 8 && getGame().time.hours <= 16 && flags[kFLAGS.NIAMH_STATUS] === 0) {
+	if (getGame().time.hours >= 8 && getGame().time.hours <= 16 && flags[kFLAGS.NIAMH_STATUS] == 0) {
 		niamh.telAdreNiamh();
-		if (flags[kFLAGS.MET_NIAMH] === 0) button = anotherButton(button,"Beer Cat",niamh.approachNiamh);
+		if (flags[kFLAGS.MET_NIAMH] == 0) button = anotherButton(button,"Beer Cat",niamh.approachNiamh);
 		else button = anotherButton(button,"Niamh",niamh.approachNiamh);
 	}
 	//ROGAR #1
-	if (flags[kFLAGS.ROGAR_PHASE] === 3 && flags[kFLAGS.ROGAR_DISABLED] === 0 && flags[kFLAGS.ROGAR_FUCKED_TODAY] === 0) {
+	if (flags[kFLAGS.ROGAR_PHASE] == 3 && flags[kFLAGS.ROGAR_DISABLED] == 0 && flags[kFLAGS.ROGAR_FUCKED_TODAY] == 0) {
 		button = anotherButton(button,"HoodedFig",kGAMECLASS.swamp.rogar.rogarThirdPhase);
 		//Wet Bitch screen text when Ro'gar phase = 3:
 		outputText("\n\nYou notice a cloaked figure at the bar, though you're quite unable to discern anything else as its back is turned to you.");
 	}
 	//ROGAR #2
-	else if (flags[kFLAGS.ROGAR_PHASE] >= 4 && flags[kFLAGS.ROGAR_DISABLED] === 0 && flags[kFLAGS.ROGAR_FUCKED_TODAY] === 0) {
+	else if (flags[kFLAGS.ROGAR_PHASE] >= 4 && flags[kFLAGS.ROGAR_DISABLED] == 0 && flags[kFLAGS.ROGAR_FUCKED_TODAY] == 0) {
 		button = anotherButton(button,"Rogar",kGAMECLASS.swamp.rogar.rogarPhaseFour);
 		//Wet Bitch bar text when Ro'gar phase = 4:
 		outputText("\n\nRo'gar is here with his back turned to the door, wearing his usual obscuring cloak.");
@@ -580,15 +580,15 @@ public function barTelAdre():void {
 	//URTA
 	if (kGAMECLASS.urta.urtaAtBar()) {
 		//Scylla & The Furries Foursome
-		if (scylla.action === Scylla.SCYLLA_ACTION_FURRY_FOURSOME)
+		if (scylla.action == Scylla.SCYLLA_ACTION_FURRY_FOURSOME)
 		{
 			//trace("SCYLLA ACTION: " + scylla.action);
 			outputText("\n\nScylla’s spot in the bar is noticeably empty. She’s usually around at this time of day, isn’t she? Urta grabs your attention with a whistle and points to a back room with an accompanying wink. Oh... that makes sense. Surely the nun won’t mind a little help with her feeding...");
 			button = anotherButton(button,"Back Room",scylla.openTheDoorToFoursomeWivScyllaAndFurries);
 		}
 		//Urta X Scylla threesome
-		if (scylla.action === Scylla.SCYLLA_ACTION_FUCKING_URTA) {
-			if (flags[kFLAGS.TIMES_CAUGHT_URTA_WITH_SCYLLA] === 0)
+		if (scylla.action == Scylla.SCYLLA_ACTION_FUCKING_URTA) {
+			if (flags[kFLAGS.TIMES_CAUGHT_URTA_WITH_SCYLLA] == 0)
 				outputText("\n\n<b>Though Urta would normally be here getting sloshed, her usual spot is completely vacant.  You ask around but all you get are shrugs and giggles.  Something isn't quite right here.  You see an empty bottle of one of her favorite brands of whiskey still rolling on her table, so she can't have been gone long.  Maybe she had guard business, or had to head to the back rooms for something?</b>");
 			else
 				outputText("\n\nUrta's usual place is vacant, though her table still holds a half-drank mug of something potent and alcoholic.  If it's anything like the last time this happened, she's snuck into a back room with Scylla to relieve some pressure.  It might not hurt to join in...");
@@ -596,7 +596,7 @@ public function barTelAdre():void {
 			button = anotherButton(button, "Back Room", kGAMECLASS.urta.scyllaAndUrtaSittingInATree);
 		}
 		else if (kGAMECLASS.urta.urtaBarDescript()) {
-			if (auntNancy.auntNancy(false) && flags[kFLAGS.URTA_INCUBATION_CELEBRATION] === 0 && kGAMECLASS.urta.pregnancy.type === PregnancyStore.PREGNANCY_PLAYER) {
+			if (auntNancy.auntNancy(false) && flags[kFLAGS.URTA_INCUBATION_CELEBRATION] == 0 && kGAMECLASS.urta.pregnancy.type == PregnancyStore.PREGNANCY_PLAYER) {
 				kGAMECLASS.urtaPregs.urtaIsHappyAboutPregnancyAtTheBar();
 				return;
 			}
@@ -816,7 +816,7 @@ public function carpentryShopSellNails():void {
 private function carpentryShopSellNailsAmount(amount:int):void {
 	clearOutput();
 	nails = amount;
-	outputText("You're willing to offer " + num2Text(amount) + " " + (player.keyItemv1("Carpenter's Toolbox") === 1 ? "piece" : "pieces") + " of nails. He replies \"<i>I'll buy that for " + amount + " gems.</i>\" \n\nDo you sell the nails?");
+	outputText("You're willing to offer " + num2Text(amount) + " " + (player.keyItemv1("Carpenter's Toolbox") == 1 ? "piece" : "pieces") + " of nails. He replies \"<i>I'll buy that for " + amount + " gems.</i>\" \n\nDo you sell the nails?");
 	doYesNo(carpentryShopSellNailsYes, carpentryShopSellNails);
 }
 
@@ -852,7 +852,7 @@ public function carpentryShopSellWood():void {
 private function carpentryShopSellWoodAmount(amount:int):void {
 	clearOutput();
 	wood = amount;
-	outputText("You're willing to offer " + num2Text(amount) + " " + (flags[kFLAGS.CAMP_CABIN_WOOD_RESOURCES] === 1 ? "piece" : "pieces") + " of wood. He replies \"<i>I'll buy that for " + (amount * 5) + " gems.</i>\" \n\nDo you sell the wood?");
+	outputText("You're willing to offer " + num2Text(amount) + " " + (flags[kFLAGS.CAMP_CABIN_WOOD_RESOURCES] == 1 ? "piece" : "pieces") + " of wood. He replies \"<i>I'll buy that for " + (amount * 5) + " gems.</i>\" \n\nDo you sell the wood?");
 	doYesNo(carpentryShopSellWoodYes, carpentryShopSellWood);
 }
 
@@ -861,7 +861,7 @@ private function carpentryShopSellWoodYes():void {
 	if (flags[kFLAGS.CAMP_CABIN_WOOD_RESOURCES] >= wood) {
 		player.gems += (wood * 5);
 		flags[kFLAGS.CAMP_CABIN_WOOD_RESOURCES] -= wood;
-		outputText("You sign the permission form for " + num2Text(wood) + " " + (flags[kFLAGS.CAMP_CABIN_WOOD_RESOURCES] === 1 ? "piece" : "pieces") + " of wood to be unloaded from your camp. \"<i>Deal. Here are " + (wood * 5) + " gems,</i>\" he says.\n\n");
+		outputText("You sign the permission form for " + num2Text(wood) + " " + (flags[kFLAGS.CAMP_CABIN_WOOD_RESOURCES] == 1 ? "piece" : "pieces") + " of wood to be unloaded from your camp. \"<i>Deal. Here are " + (wood * 5) + " gems,</i>\" he says.\n\n");
 		camp.cabinProgress.checkMaterials(2);
 	}
 	else {
@@ -888,7 +888,7 @@ public function carpentryShopSellStone():void {
 private function carpentryShopSellStoneAmount(amount:int):void {
 	clearOutput();
 	stone = amount;
-	outputText("You're willing to offer " + num2Text(amount) + " " + (flags[kFLAGS.CAMP_CABIN_STONE_RESOURCES] === 1 ? "piece" : "pieces") + " of stone. He replies \"<i>I'll buy that for " + (amount * 10) + " gems.</i>\" \n\nDo you sell the stones?");
+	outputText("You're willing to offer " + num2Text(amount) + " " + (flags[kFLAGS.CAMP_CABIN_STONE_RESOURCES] == 1 ? "piece" : "pieces") + " of stone. He replies \"<i>I'll buy that for " + (amount * 10) + " gems.</i>\" \n\nDo you sell the stones?");
 	doYesNo(carpentryShopSellStoneYes, carpentryShopSellStone);
 }
 
@@ -897,7 +897,7 @@ private function carpentryShopSellStoneYes():void {
 	if (flags[kFLAGS.CAMP_CABIN_STONE_RESOURCES] >= stone) {
 		player.gems += (stone * 10);
 		flags[kFLAGS.CAMP_CABIN_STONE_RESOURCES] -= stone;
-		outputText("You sign the permission form for " + num2Text(stone) + " " + (flags[kFLAGS.CAMP_CABIN_STONE_RESOURCES] === 1 ? "piece" : "pieces") + " of stones to be unloaded from your camp. \"<i>Deal. Here are " + (stone * 10) + " gems,</i>\" he says.\n\n");
+		outputText("You sign the permission form for " + num2Text(stone) + " " + (flags[kFLAGS.CAMP_CABIN_STONE_RESOURCES] == 1 ? "piece" : "pieces") + " of stones to be unloaded from your camp. \"<i>Deal. Here are " + (stone * 10) + " gems,</i>\" he says.\n\n");
 		camp.cabinProgress.checkMaterials(3);
 	}
 	else {
@@ -1015,7 +1015,7 @@ private function watchUrtaBeABadass():void {
 
 public function gymDesc():void {
 	//PREGGO ALERT!
-	if (flags[kFLAGS.PC_IS_A_GOOD_COTTON_DAD] + flags[kFLAGS.PC_IS_A_DEADBEAT_COTTON_DAD] === 0 && cotton.pregnancy.isPregnant) {
+	if (flags[kFLAGS.PC_IS_A_GOOD_COTTON_DAD] + flags[kFLAGS.PC_IS_A_DEADBEAT_COTTON_DAD] == 0 && cotton.pregnancy.isPregnant) {
 		cotton.cottonPregnantAlert();
 		return;
 	}
@@ -1031,17 +1031,17 @@ public function gymDesc():void {
 	//(An extraordinarily well-muscled centaur male is by the weights, lifting some huge dumbbells and sweating like crazy.  In true centaur fashion, he's not wearing any clothes, but then again, male centaurs don't have much that regular clothes would hide.)
 	//(There's a lizan girl jogging laps on one of the tracks.  She's quite thin, but her muscles have a lean definition to them.  She's wearing a one-piece, spandex leotard that hugs her tight ass and pert, b-cup breasts nicely.)
 	outputText("  There's a centauress in a tank-top just inside the doorway with huge, rounded melons and perky nipples, but she merely coughs to get you to look up and says, \"<i>");
-	if (flags[kFLAGS.LIFETIME_GYM_MEMBER] === 0) outputText("10 gems an hour to use the facilities here, or 500 for a life-time membership.</i>\"  She has her hands on her hips, and it looks you'll have to pay ten gems to actually get to use any of this stuff.");
+	if (flags[kFLAGS.LIFETIME_GYM_MEMBER] == 0) outputText("10 gems an hour to use the facilities here, or 500 for a life-time membership.</i>\"  She has her hands on her hips, and it looks you'll have to pay ten gems to actually get to use any of this stuff.");
 	else outputText("Oh, welcome back " + player.short + ".  Have a nice workout!</i>\"");
 
-	if (player.gems < 10 && flags[kFLAGS.LIFETIME_GYM_MEMBER] === 0) {
+	if (player.gems < 10 && flags[kFLAGS.LIFETIME_GYM_MEMBER] == 0) {
 		outputText("\n\n<b>You reach into your pockets for the fee and come up empty.  It looks like you don't have enough money to use the equipment or meet anyone.  Damn!</b>");
 		//(back to tel'adre streets)
 		doNext(telAdreMenu);
 		return;
 	}
 	lottie.lottieAppearance();
-	if (flags[kFLAGS.LOPPE_MET] > 0 && flags[kFLAGS.LOPPE_DISABLED] === 0) {
+	if (flags[kFLAGS.LOPPE_MET] > 0 && flags[kFLAGS.LOPPE_DISABLED] == 0) {
 		outputText("\n\nYou spot Loppe the laquine wandering around, towel slung over her shoulder.  When she sees you, she smiles and waves to you and you wave back.");
 	}
 	if (getGame().time.hours > 9 && getGame().time.hours <= 15) heckel.heckelAppearance();
@@ -1055,19 +1055,19 @@ private function gymMenu():void {
 	addButton(1, "Jog", goJogging);
 	addButton(2, "LiftWeights", weightLifting);
 	//addButton(3, "Go Swimming", goSwimming);
-	if (flags[kFLAGS.LIFETIME_GYM_MEMBER] === 0 && player.gems >= 500)
+	if (flags[kFLAGS.LIFETIME_GYM_MEMBER] == 0 && player.gems >= 500)
 		addButton(4, "Life Member", buyGymLifeTimeMembership).hint("Buy lifetime membership for 500 gems? It could save you gems in the long run.", "Lifetime Membership");
 	else if (flags[kFLAGS.LIFETIME_GYM_MEMBER] > 0)
 		addButtonDisabled(4, "Life Member", "You already have the lifetime membership. So go ahead and use the facilities.", "Lifetime Membership");
 	else
 		addButtonDisabled(4, "Life Member", "You cannot afford to purchase the lifetime membership for the gym. You need 500 gems.", "Lifetime Membership");
 	//NPCs
-	if (flags[kFLAGS.PC_IS_A_DEADBEAT_COTTON_DAD] === 0 && cotton.cottonsIntro()) addButton(5, flags[kFLAGS.COTTON_MET_FUCKED] > 0 ? "Cotton" : "Horsegirl", cotton.cottonGreeting);
+	if (flags[kFLAGS.PC_IS_A_DEADBEAT_COTTON_DAD] == 0 && cotton.cottonsIntro()) addButton(5, flags[kFLAGS.COTTON_MET_FUCKED] > 0 ? "Cotton" : "Horsegirl", cotton.cottonGreeting);
 	if (getGame().time.hours > 9 && getGame().time.hours <= 15) addButton(6, flags[kFLAGS.MET_HECKEL] > 0 ? "Heckel" : "Hyena", heckel.greetHeckel);
 	if (ifris.ifrisIntro()) addButton(7, flags[kFLAGS.MET_IFRIS] > 0 ? "Ifris" : "Demon-Girl", ifris.approachIfris);
 	addButton(8, flags[kFLAGS.LOTTIE_ENCOUNTER_COUNTER] > 0 ? "Lottie" : "Pig-Girl", lottie.lottieAppearance(false));
-	if (flags[kFLAGS.LOPPE_MET] > 0 && flags[kFLAGS.LOPPE_DISABLED] === 0) addButton(9, "Loppe", loppe.loppeGenericMeetings);
-	if (pablo.pabloIntro() && flags[kFLAGS.PABLO_FREAKED_OUT_OVER_WORMS] !== 1) addButton(10, flags[kFLAGS.PABLO_MET] > 0 ? "Pablo" : "Imp?", pablo.approachPablo);
+	if (flags[kFLAGS.LOPPE_MET] > 0 && flags[kFLAGS.LOPPE_DISABLED] == 0) addButton(9, "Loppe", loppe.loppeGenericMeetings);
+	if (pablo.pabloIntro() && flags[kFLAGS.PABLO_FREAKED_OUT_OVER_WORMS] != 1) addButton(10, flags[kFLAGS.PABLO_MET] > 0 ? "Pablo" : "Imp?", pablo.approachPablo);
 	addButton(14, "Leave", telAdreMenu);
 }
 
@@ -1092,12 +1092,12 @@ private function weightLifting():void {
 	//Too tired?  Fuck off.
 	if (player.fatigue > player.maxFatigue() - 25) {
 		outputText("<b>There's no way you could exercise right now - you're exhausted!</b>  ");
-		if (flags[kFLAGS.LIFETIME_GYM_MEMBER] === 0) outputText("It'd be better to save your money and come back after you've rested.");
+		if (flags[kFLAGS.LIFETIME_GYM_MEMBER] == 0) outputText("It'd be better to save your money and come back after you've rested.");
 		doNext(telAdreMenu);
 		return;
 	}
 	//Deduct gems if not a full member.
-	if (flags[kFLAGS.LIFETIME_GYM_MEMBER] === 0) {
+	if (flags[kFLAGS.LIFETIME_GYM_MEMBER] == 0) {
 		player.gems -= 10;
 		statScreenRefresh();
 	}
@@ -1124,9 +1124,9 @@ private function weightLifting():void {
 	//Muscleness boost!
 	outputText(player.modTone(85,5+rand(5)));
 	outputText("\n\nDo you want to hit the showers before you head back to camp?");
-	if (flags[kFLAGS.BROOKE_MET] === 1) {
+	if (flags[kFLAGS.BROOKE_MET] == 1) {
 		menu();
-		if (flags[kFLAGS.DISABLED_SEX_MACHINE] === 0) {
+		if (flags[kFLAGS.DISABLED_SEX_MACHINE] == 0) {
 			addButton(0,"\"Showers\"",sexMachine.exploreShowers);
 			addButton(1,"Showers",brooke.repeatChooseShower);
 			addButton(4, "Leave", camp.returnToCampUseOneHour);
@@ -1143,12 +1143,12 @@ private function goJogging():void {
 	//Too tired?  Fuck off.
 	if (player.fatigue > player.maxFatigue() - 30) {
 		outputText("<b>There's no way you could exercise right now - you're exhausted!</b>  ");
-		if (flags[kFLAGS.LIFETIME_GYM_MEMBER] === 0) outputText("It'd be better to save your money and come back after you've rested.");
+		if (flags[kFLAGS.LIFETIME_GYM_MEMBER] == 0) outputText("It'd be better to save your money and come back after you've rested.");
 		doNext(telAdreMenu);
 		return;
 	}
 	//Deduct gems if not a full member.
-	if (flags[kFLAGS.LIFETIME_GYM_MEMBER] === 0) {
+	if (flags[kFLAGS.LIFETIME_GYM_MEMBER] == 0) {
 		player.gems -= 10;
 		statScreenRefresh();
 	}
@@ -1178,15 +1178,15 @@ private function goJogging():void {
 		player.butt.rating--;
 	}
 	else {
-		if (player.butt.rating >= 10 && rand(3) === 0) {
+		if (player.butt.rating >= 10 && rand(3) == 0) {
 			outputText("\n\nThe jogging really helped trim up your " + player.buttDescript() + ".");
 			player.butt.rating--;
 		}
-		else if (player.butt.rating >= 5 && rand(3) === 0) {
+		else if (player.butt.rating >= 5 && rand(3) == 0) {
 			outputText("\n\nYour " + player.buttDescript() + " seems to have gotten a little bit more compact from the work out.");
 			player.butt.rating--;
 		}
-		else if (player.butt.rating > 1 && rand(4) === 0) {
+		else if (player.butt.rating > 1 && rand(4) == 0) {
 			outputText("\n\nYour " + player.buttDescript() + " seems to have gotten a little bit more compact from the work out.");
 			player.butt.rating--;
 		}
@@ -1196,15 +1196,15 @@ private function goJogging():void {
 		player.hips.rating--;
 	}
 	else {
-		if (player.hips.rating >= 10 && rand(3) === 0) {
+		if (player.hips.rating >= 10 && rand(3) == 0) {
 			outputText("\n\nIt feels like your " + player.hipDescript() + " have shed some pounds and narrowed.");
 			player.hips.rating--;
 		}
-		else if (player.hips.rating >= 5 && rand(3) === 0) {
+		else if (player.hips.rating >= 5 && rand(3) == 0) {
 			outputText("\n\nIt feels like your " + player.hipDescript() + " have shed some pounds and narrowed.");
 			player.hips.rating--;
 		}
-		else if (player.hips.rating > 1 && rand(4) === 0) {
+		else if (player.hips.rating > 1 && rand(4) == 0) {
 			outputText("\n\nIt feels like your " + player.hipDescript() + " have shed some pounds and narrowed.");
 			player.hips.rating--;
 		}
@@ -1215,7 +1215,7 @@ private function goJogging():void {
 	//Muscleness boost!
 	outputText(player.modTone(100,2+rand(4)));
 	outputText("\n\nDo you want to hit the showers before you head back to camp?");
-	if (flags[kFLAGS.BROOKE_MET] === 1) {
+	if (flags[kFLAGS.BROOKE_MET] == 1) {
 		menu();
 		addButton(0,"\"Showers\"",sexMachine.exploreShowers);
 		addButton(1,"Showers",brooke.repeatChooseShower);

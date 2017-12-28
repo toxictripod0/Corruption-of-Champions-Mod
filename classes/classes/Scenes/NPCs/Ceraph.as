@@ -16,7 +16,7 @@ package classes.Scenes.NPCs
 		{
 			game.spriteSelect(SpriteDb.s_ceraph);
 			if (!hasStatusEffect(StatusEffects.Uber)) {
-				if (rand(2) === 0) {
+				if (rand(2) == 0) {
 					outputText("Ceraph winks and says, \"<i>Have you ever cum without being touched? You will.</i>\"\n\n");
 				}
 				else {
@@ -27,9 +27,9 @@ package classes.Scenes.NPCs
 			}
 			else {
 				//(Next Round)
-				if (statusEffectv1(StatusEffects.Uber) === 0) {
+				if (statusEffectv1(StatusEffects.Uber) == 0) {
 					addStatusValue(StatusEffects.Uber, 1, 1);
-					if (rand(2) === 0) outputText("The demonic hermaphrodite begins forging demonic symbols in the air before her, each glowing brilliant pink before they blur away in a haze.");
+					if (rand(2) == 0) outputText("The demonic hermaphrodite begins forging demonic symbols in the air before her, each glowing brilliant pink before they blur away in a haze.");
 					else outputText("The demonette makes obscene motions with her hands, as if masturbating an imaginary cock or vagina while her hands are wreathed in pink flames.");
 					outputText("  <b>She's about to unleash something huge!</b>");
 					if (player.inte > 50) outputText("  You should probably wait so you'll have a chance to avoid whatever's coming.");
@@ -38,7 +38,7 @@ package classes.Scenes.NPCs
 				else {
 					removeStatusEffect(StatusEffects.Uber);
 					//(Avoid!)
-					if (flags[kFLAGS.IN_COMBAT_USE_PLAYER_WAITED_FLAG] === 1) {
+					if (flags[kFLAGS.IN_COMBAT_USE_PLAYER_WAITED_FLAG] == 1) {
 						outputText("She throws her hands out, palms facing you, and a rush of pink flame washes towards you.  Thanks to your decision to wait, it's easy to avoid the onrushing flames and her attack.\n\n");
 						outputText("Ceraph sighs and asks, \"<i>Why would you move?  It would make you feel soooo good!</i>\"");
 					}
@@ -65,7 +65,7 @@ package classes.Scenes.NPCs
 			}
 			//[SPECIAL WHILE PC RESTRAINED]
 			else {
-				if (rand(2) === 0) {
+				if (rand(2) == 0) {
 					outputText("Ceraph cuddles up against you, embracing you tenderly.  Her more-than-ample bosom crushes against your flank, and her demonic prick grinds and rubs against your " + player.skin.desc + ", smearing it with her juices.  Her hands slide over your bound form, sneaking underneath your " + player.armorName + " to caress you more intimately while you're at her mercy.");
 					player.takeLustDamage(9 + player.sens / 10, true);
 				}
@@ -152,7 +152,7 @@ package classes.Scenes.NPCs
 			//First hit!
 			doNext(game.playerMenu);
 			//Blind dodge change
-			if (hasStatusEffect(StatusEffects.Blind) && rand(10) !== 9) {
+			if (hasStatusEffect(StatusEffects.Blind) && rand(10) != 9) {
 				outputText(capitalA + short + " completely misses you with a blind attack!");
 			}
 			//Determine if dodged!
@@ -165,7 +165,7 @@ package classes.Scenes.NPCs
 			else if (player.findPerk(PerkLib.Evade) >= 0 && rand(100) < 10) {
 				outputText("Using your skills at evading attacks, you anticipate and sidestep " + a + short + "'s attack.");
 			}
-			else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 15 && player.armorName === "red, high-society bodysuit") {
+			else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 15 && player.armorName == "red, high-society bodysuit") {
 				outputText("With Raphael's teachings and the easy movement afforded by your bodysuit, you easily anticipate and sidestep " + a + short + "'s attack.");
 			}
 			//Determine damage - str modified by enemy toughness!
@@ -199,7 +199,7 @@ package classes.Scenes.NPCs
 			outputText("\n");
 			//SECOND ATTACK HERE------
 			//Blind dodge change
-			if (hasStatusEffect(StatusEffects.Blind) && rand(10) !== 9) {
+			if (hasStatusEffect(StatusEffects.Blind) && rand(10) != 9) {
 				outputText(capitalA + short + " completely misses you with a blind attack!");
 			}
 			//Determine if dodged!
@@ -212,7 +212,7 @@ package classes.Scenes.NPCs
 			else if (player.findPerk(PerkLib.Evade) >= 0 && rand(100) < 10) {
 				outputText("Using your skills at evading attacks, you anticipate and sidestep " + a + short + "'s attack.");
 			}
-			else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 15 && player.armorName === "red, high-society bodysuit") {
+			else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 15 && player.armorName == "red, high-society bodysuit") {
 				outputText("With Raphael's teachings and the easy movement afforded by your bodysuit, you easily anticipate and sidestep " + a + short + "'s attack.");
 			}
 			else {

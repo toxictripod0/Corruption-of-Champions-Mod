@@ -29,14 +29,14 @@ public class Benoit extends BazaarAbstractContent {
 
 //Fen, you'll need a function to determine gendered pronouns and version of name for this character. I've formatted all the eligible places I found in the order of [male/female]. -Z
 public function benoitMF(stringM:String,stringF:String):String {
-	if (flags[kFLAGS.BENOIT_STATUS] === 1 || flags[kFLAGS.BENOIT_STATUS] === 2 || flags[kFLAGS.BENOIT_STATUS] === 3) return stringF;
+	if (flags[kFLAGS.BENOIT_STATUS] == 1 || flags[kFLAGS.BENOIT_STATUS] == 2 || flags[kFLAGS.BENOIT_STATUS] == 3) return stringF;
 	return stringM;
 }
 private function benoitLover():Boolean {
 	return flags[kFLAGS.BENOIT_TIMES_SEXED_FEMPCS] >= 2;
 }
 public function benoitAffection(changes:Number = 0):Number {
-	if (changes !== 0) {
+	if (changes != 0) {
 		flags[kFLAGS.BENOIT_AFFECTION] += changes;
 		if (flags[kFLAGS.BENOIT_AFFECTION] > 100) flags[kFLAGS.BENOIT_AFFECTION] = 100;
 		else if (flags[kFLAGS.BENOIT_AFFECTION] < 0) flags[kFLAGS.BENOIT_AFFECTION] = 0;
@@ -46,11 +46,11 @@ public function benoitAffection(changes:Number = 0):Number {
 
 private function benoitKnocksUpPCCheck():void {
 	//Convert old basi's to real basi's!
-	if (player.pregnancyType === PregnancyStore.PREGNANCY_BASILISK && player.findPerk(PerkLib.BasiliskWomb) >= 0) player.knockUpForce(PregnancyStore.PREGNANCY_BENOIT, player.pregnancyIncubation);
+	if (player.pregnancyType == PregnancyStore.PREGNANCY_BASILISK && player.findPerk(PerkLib.BasiliskWomb) >= 0) player.knockUpForce(PregnancyStore.PREGNANCY_BENOIT, player.pregnancyIncubation);
 	//Knock up chances:
-	if ((player.pregnancyType === PregnancyStore.PREGNANCY_OVIELIXIR_EGGS || player.findPerk(PerkLib.HarpyWomb) >= 0 || player.findPerk(PerkLib.Oviposition) >= 0 || player.findPerk(PerkLib.BasiliskWomb) >= 0) && (player.pregnancyIncubation === 0 || player.pregnancyType === PregnancyStore.PREGNANCY_OVIELIXIR_EGGS)) {
-		if (player.findPerk(PerkLib.BasiliskWomb) >= 0 && flags[kFLAGS.BENOIT_TESTED_BASILISK_WOMB] === 1) {
-			if (player.pregnancyType !== PregnancyStore.PREGNANCY_OVIELIXIR_EGGS || player.pregnancyIncubation === 0) {
+	if ((player.pregnancyType == PregnancyStore.PREGNANCY_OVIELIXIR_EGGS || player.findPerk(PerkLib.HarpyWomb) >= 0 || player.findPerk(PerkLib.Oviposition) >= 0 || player.findPerk(PerkLib.BasiliskWomb) >= 0) && (player.pregnancyIncubation == 0 || player.pregnancyType == PregnancyStore.PREGNANCY_OVIELIXIR_EGGS)) {
+		if (player.findPerk(PerkLib.BasiliskWomb) >= 0 && flags[kFLAGS.BENOIT_TESTED_BASILISK_WOMB] == 1) {
+			if (player.pregnancyType != PregnancyStore.PREGNANCY_OVIELIXIR_EGGS || player.pregnancyIncubation == 0) {
 				player.knockUp(PregnancyStore.PREGNANCY_BENOIT, PregnancyStore.INCUBATION_BASILISK);
 			}
 			if (player.pregnancyIncubation > 0) player.knockUpForce(PregnancyStore.PREGNANCY_BENOIT, player.pregnancyIncubation);
@@ -66,42 +66,42 @@ private function benoitKnocksUpPCCheck():void {
 */
 public function benoitPreggers():Boolean
 {
-	if (flags[kFLAGS.BENOIT_STATUS] === 0) return false;
+	if (flags[kFLAGS.BENOIT_STATUS] == 0) return false;
 	if (flags[kFLAGS.FEMOIT_EGGS] > 0) return true;
 	return false;
 }
 
 public function benoitRegularPreggers():Boolean
 {
-	if (flags[kFLAGS.BENOIT_STATUS] === 0) return false;
+	if (flags[kFLAGS.BENOIT_STATUS] == 0) return false;
 	if (flags[kFLAGS.FEMOIT_EGGS] >= 1 && flags[kFLAGS.FEMOIT_EGGS] <= 4) return true;
 	return false;
 }
 
 public function benoitHeavyPreggers():Boolean
 {
-	if (flags[kFLAGS.BENOIT_STATUS] === 0) return false;
+	if (flags[kFLAGS.BENOIT_STATUS] == 0) return false;
 	if (flags[kFLAGS.FEMOIT_EGGS] >= 5 && flags[kFLAGS.FEMOIT_EGGS] <= 8) return true;
 	return false;
 }
 
 public function benoitVeryHeavyPreggers():Boolean
 {
-	if (flags[kFLAGS.BENOIT_STATUS] === 0) return false;
+	if (flags[kFLAGS.BENOIT_STATUS] == 0) return false;
 	if (flags[kFLAGS.FEMOIT_EGGS] >= 9 && flags[kFLAGS.FEMOIT_EGGS] <= 12) return true;
 	return false;
 }
 
 public function benoitExtremePreggers():Boolean
 {
-	if (flags[kFLAGS.BENOIT_STATUS] === 0) return false;
+	if (flags[kFLAGS.BENOIT_STATUS] == 0) return false;
 	if (flags[kFLAGS.FEMOIT_EGGS] >= 13) return true;
 	return false;
 }
 
 public function benoitInClutch():Boolean
 {
-	if (flags[kFLAGS.BENOIT_STATUS] === 0) return false;
+	if (flags[kFLAGS.BENOIT_STATUS] == 0) return false;
 	
 	// Benoit enters "clutch" every 21 days, for 7 days
 	var startDay:int = flags[kFLAGS.FEMOIT_NEXTDAY_EVENT];
@@ -158,7 +158,7 @@ public function benoitKnockUp():Boolean
 
 public function clearBenoitPreggers():void
 {
-	if (flags[kFLAGS.FEMOIT_EGGS] !== 0)
+	if (flags[kFLAGS.FEMOIT_EGGS] != 0)
 	{
 		flags[kFLAGS.FEMOIT_EGGS_LAID] += flags[kFLAGS.FEMOIT_EGGS];
 		flags[kFLAGS.FEMOIT_EGGS] = 0;
@@ -188,9 +188,9 @@ public function benoitBigFamily():Boolean
 
 public function setBenoitShop(setButtonOnly:Boolean = false):void {
 	if (getGame().time.hours >= 9 && getGame().time.hours <= 17) {
-		if ((flags[kFLAGS.FEMOIT_NEXTDAY_EVENT_DONE] === 1 && getGame().time.days >= flags[kFLAGS.FEMOIT_NEXTDAY_EVENT]) || flags[kFLAGS.FEMOIT_NEXTDAY_EVENT_DONE] !== 1)
+		if ((flags[kFLAGS.FEMOIT_NEXTDAY_EVENT_DONE] == 1 && getGame().time.days >= flags[kFLAGS.FEMOIT_NEXTDAY_EVENT]) || flags[kFLAGS.FEMOIT_NEXTDAY_EVENT_DONE] != 1)
 		{
-			if (flags[kFLAGS.TIMES_IN_BENOITS] === 0) 
+			if (flags[kFLAGS.TIMES_IN_BENOITS] == 0) 
 			{
 				if (!setButtonOnly) outputText("\n\nYou notice a large market stall wedged between two wagons, swaddled in carpets and overflowing with all manner of objects.  On top of its looming fabric canopy is a wooden sign with the words \"<b>Geckos Garbidg</b>\" crudely scrawled upon them.  You wonder what that's all about.");
 				else addButton(0, "Market Stall", benoitIntro);
@@ -203,7 +203,7 @@ public function setBenoitShop(setButtonOnly:Boolean = false):void {
 		}
 	}
 	else {
-		addButtonDisabled(0, flags[kFLAGS.TIMES_IN_BENOITS] === 0 ? "Market Stall" : benoitMF("Benoit", "Benoite"), "The shop is currently closed. Come back later.\n\nHours of operation: 9am to 5pm");
+		addButtonDisabled(0, flags[kFLAGS.TIMES_IN_BENOITS] == 0 ? "Market Stall" : benoitMF("Benoit", "Benoite"), "The shop is currently closed. Come back later.\n\nHours of operation: 9am to 5pm");
 	}
 }
 
@@ -213,23 +213,23 @@ public function benoitIntro():void {
 	var suggestText:String = "";
 	var suggest:Function = null;
 	var womb:Function = null;
-	if (flags[kFLAGS.TIMES_IN_BENOITS] === 0) {
+	if (flags[kFLAGS.TIMES_IN_BENOITS] == 0) {
 		outputText("You cautiously approach the stall.  The shadow thrown by its large, overhanging canopy makes it quite difficult to see into its interior, and getting inside is made even more hazardous by the sheer volume of objects which clutter the area around it and hang out of the shelves arranged along its wooden walls.  Everything Mareth has ever created or distilled seems to be here - or at least, everything Mareth has ever thrown out.  Pots, pans, ugly crockery, shelves stuffed with clothing, a spice rack bulging with all manner of suspect-looking potions... you imagine you could probably find anything you'd ever want in here - or something closely resembling it - if you looked hard enough.");
 		outputText("\n\n\"<i>Allo?</i>\" says a raspy voice from further in the gloom.  \"<i>'Oo is zair?</i>\"  You can make out a counter constructed from crates, and a tall, thin shape behind it - a lizan, by the looks of his build and smooth scales.  Something about his shape makes you feel uneasy, though... you shift further in to take a closer look at the stall owner.  He's seated in the only area of his shop not taken up by junk, right next to a heap of rugs and robes, and has a fez perched on top of his blunt head.  It's when he turns his grey slit eyes to you that you realize what is putting you on edge - it's a basilisk!  Panic grips you as you try to wrench your eyes away... which you do, easily.  Curious despite yourself, you look back tentatively.  The creature's eyes seem oddly milky, and they seem to be staring beyond you.  Realisation takes hold when you see the white stick balanced carefully on the counter's side.");
 		outputText("\n\n\"<i>Yes, go ahead, stare,</i>\" says the basilisk in a long-suffering tone, making you jump. \"<i>It is a funny joke, yes?  Believe me, I wake up laughing about it every morning.  At least here zey stare.  In ze mountains, zey are so embarrassed zey can't even look at me.  Or at least I assume zey can't.</i>\"  He straightens his back and sets his jaw.  \"<i>'Owever, my slack-jawed friend, zis is not a freak show.  Zis is Benoit's Spectacular Salvage Shop!  So if you are not 'ere to buy or sell salvage... kindly piss off.</i>\"");
 		
 		outputText("\n\nYou wonder how a blind anything can make it in such a rough and ready place as the Bazaar, but then Benoit curls " + benoitMF("his","her") + " claws protectively into what appears to be a pile of robes sitting next to " + benoitMF("him","her") + ", which opens dark brown eyes and sets its muzzle on the counter, looking at you plaintively.  The Alsatian buried within the cloth looks to you like a big softy, but you're willing to concede the point as made.");
 	}
-	else if (flags[kFLAGS.BENOIT_SUGGEST_UNLOCKED] === 0 && player.hasVagina() && (player.inHeat || player.pregnancyType === PregnancyStore.PREGNANCY_OVIELIXIR_EGGS || player.findPerk(PerkLib.HarpyWomb) >= 0 || player.findPerk(PerkLib.Oviposition) >= 0) && (player.pregnancyType === PregnancyStore.PREGNANCY_OVIELIXIR_EGGS || player.pregnancyIncubation === 0) && (flags[kFLAGS.BENOIT_STATUS] === 0 || flags[kFLAGS.BENOIT_STATUS] === 3)) {
-		if (flags[kFLAGS.BENOIT_SUGGEST_UNLOCKED] === 0) benoitAndFemPCTalkAboutEggings();
+	else if (flags[kFLAGS.BENOIT_SUGGEST_UNLOCKED] == 0 && player.hasVagina() && (player.inHeat || player.pregnancyType == PregnancyStore.PREGNANCY_OVIELIXIR_EGGS || player.findPerk(PerkLib.HarpyWomb) >= 0 || player.findPerk(PerkLib.Oviposition) >= 0) && (player.pregnancyType == PregnancyStore.PREGNANCY_OVIELIXIR_EGGS || player.pregnancyIncubation == 0) && (flags[kFLAGS.BENOIT_STATUS] == 0 || flags[kFLAGS.BENOIT_STATUS] == 3)) {
+		if (flags[kFLAGS.BENOIT_SUGGEST_UNLOCKED] == 0) benoitAndFemPCTalkAboutEggings();
 		suggest = eggySuggest;
 		suggestText = "Suggest";
 	}
-	else if (flags[kFLAGS.FEMOIT_NEXTDAY_EVENT_DONE] === 1 && flags[kFLAGS.FEMOIT_NEXTDAY_EVENT] <= getGame().time.days && flags[kFLAGS.BENOIT_STATUS] === 0)
+	else if (flags[kFLAGS.FEMOIT_NEXTDAY_EVENT_DONE] == 1 && flags[kFLAGS.FEMOIT_NEXTDAY_EVENT] <= getGame().time.days && flags[kFLAGS.BENOIT_STATUS] == 0)
 	{
 		femoitNextDayEvent();
 	}
-	else if (benoitInClutch() && flags[kFLAGS.FEMOIT_READY_FOR_EGGS] === 0 && (flags[kFLAGS.BENOIT_STATUS] === 1 || flags[kFLAGS.BENOIT_STATUS] === 2))
+	else if (benoitInClutch() && flags[kFLAGS.FEMOIT_READY_FOR_EGGS] == 0 && (flags[kFLAGS.BENOIT_STATUS] == 1 || flags[kFLAGS.BENOIT_STATUS] == 2))
 	{
 		flags[kFLAGS.FEMOIT_READY_FOR_EGGS]++;
 		
@@ -263,7 +263,7 @@ public function benoitIntro():void {
 	}
 	else if (!benoitInClutch() && !benoitPreggers() && (getGame().time.days - flags[kFLAGS.FEMOIT_NEXTDAY_EVENT] >= 30) && (flags[kFLAGS.BENOIT_STATUS] > 0))
 	{
-		if (flags[kFLAGS.FEMOIT_FIRST_CLUTCH_MISSED] === 0)
+		if (flags[kFLAGS.FEMOIT_FIRST_CLUTCH_MISSED] == 0)
 		{
 			flags[kFLAGS.FEMOIT_FIRST_CLUTCH_MISSED]++;
 			outputText("When you enter the stall, you are greeted by the smell of something cooking. Investigating further brings you to the blind basilisk's small kitchen, where she is busy frying something. Her nose preoccupied with her meal, she doesn't realize you're approaching until you touch her shoulder, yelping in shock.");
@@ -295,7 +295,7 @@ public function benoitIntro():void {
 		//Subsequent Visit, Affection 0-10: 
 		if (benoitAffection() <= 10) outputText("Once again, you carefully enter the gloom of Benoit's salvage shop.  The proprietor sniffs the air as you enter, and then looks at you sourly.  \"<i>Well?</i>\" " + benoitMF("he","she") + " rasps.");
 		//Benoit reacts after fucking the PC.
-		else if (flags[kFLAGS.BENOIT_TIMES_SEXED_FEMPCS] === 1 && flags[kFLAGS.BENOIT_POST_FIRSTFUCK_TALK] === 0)
+		else if (flags[kFLAGS.BENOIT_TIMES_SEXED_FEMPCS] == 1 && flags[kFLAGS.BENOIT_POST_FIRSTFUCK_TALK] == 0)
 			firstTimeAfterBoningEncounterBenoit();
 		else if (benoitAffection() < 35) outputText("Once again, you carefully enter the gloom of Benoit's salvage shop.  The proprietor sniffs the air as you enter, and then relaxes in " + benoitMF("his","her") + " seat.  \"<i>Allo again, " + player.short + ".  What brings you 'ere?</i>\"");
 		//Subsequent Visit, Affection 35+ but pre-lover/pre-fem: 
@@ -326,19 +326,19 @@ public function benoitIntro():void {
 	addButton(2, "Talk", talkToBenoit);
 	addButton(14, "Leave", bazaar.enterTheBazaarAndMenu);
 	//Feminize & Herminize
-	if (flags[kFLAGS.FEMOIT_UNLOCKED] === 1 && flags[kFLAGS.BENOIT_STATUS] === 0)
+	if (flags[kFLAGS.FEMOIT_UNLOCKED] == 1 && flags[kFLAGS.BENOIT_STATUS] == 0)
 		addButton(3, "Feminize", benoitFeminise);
 	if (flags[kFLAGS.BENOIT_STATUS] > 0 && flags[kFLAGS.BENOIT_STATUS] < 3)
 		addButton(3, "Herminize", benoitHerminise);
 	//Basilisk Womb
-	if (flags[kFLAGS.BENOIT_WOMB_TALK_UNLOCKED] === 1 && player.findPerk(PerkLib.BasiliskWomb) < 0 && flags[kFLAGS.BENOIT_TESTED_BASILISK_WOMB] === 0 && [0, 3].indexOf(flags[kFLAGS.BENOIT_STATUS]) >= 0)
+	if (flags[kFLAGS.BENOIT_WOMB_TALK_UNLOCKED] == 1 && player.findPerk(PerkLib.BasiliskWomb) < 0 && flags[kFLAGS.BENOIT_TESTED_BASILISK_WOMB] == 0 && [0, 3].indexOf(flags[kFLAGS.BENOIT_STATUS]) >= 0)
 		addButton(4, "Basil. Womb", tryToConvertToBassyWomb);
 	//Suggest & sex
-	if (flags[kFLAGS.BENOIT_SUGGEST_UNLOCKED] > 0 && player.hasVagina() && (flags[kFLAGS.BENOIT_STATUS] === 0 || flags[kFLAGS.BENOIT_STATUS] === 3))
+	if (flags[kFLAGS.BENOIT_SUGGEST_UNLOCKED] > 0 && player.hasVagina() && (flags[kFLAGS.BENOIT_STATUS] == 0 || flags[kFLAGS.BENOIT_STATUS] == 3))
 		addButton(5, "Suggest", eggySuggest);
 	if (player.hasCock() && flags[kFLAGS.BENOIT_STATUS] > 0 && player.lust >= 33)
-		addButton(6, "Sex", (flags[kFLAGS.TIMES_FUCKED_FEMOIT] === 0 ? femoitFirstTimeYes : femoitSexIntro));
-	if (flags[kFLAGS.BENOIT_EYES_TALK_UNLOCKED] === 1 && player.eyes.type !== Eyes.BASILISK)
+		addButton(6, "Sex", (flags[kFLAGS.TIMES_FUCKED_FEMOIT] == 0 ? femoitFirstTimeYes : femoitSexIntro));
+	if (flags[kFLAGS.BENOIT_EYES_TALK_UNLOCKED] == 1 && player.eyes.type != Eyes.BASILISK)
 		addButton(7, "Basil. Eyes", convertToBassyEyes);
 }
 //Buy or Sell First Time, only if prelover/prefem: You ask him what the deal is with his shop.
@@ -349,11 +349,11 @@ private function buyOrSellExplanationFirstTime():void {
 
 public function benoitsBuyMenu():void {
 	clearOutput();
-	if (flags[kFLAGS.BENOIT_1] === 0) updateBenoitInventory();
-	if (flags[kFLAGS.BENOIT_EXPLAINED_SHOP] === 0) buyOrSellExplanationFirstTime();
+	if (flags[kFLAGS.BENOIT_1] == 0) updateBenoitInventory();
+	if (flags[kFLAGS.BENOIT_EXPLAINED_SHOP] == 0) buyOrSellExplanationFirstTime();
 	var buyMod:Number = 2;
 	
-	if (flags[kFLAGS.BENOIT_STATUS] !== 0) 
+	if (flags[kFLAGS.BENOIT_STATUS] != 0) 
 	{
 		buyMod = 1.66;
 		outputText("\"<i>Some may call zis junk,</i>\" says Benoite, indicating her latest wares.  \"<i>Me... I call it garbage.</i>\"");
@@ -378,13 +378,13 @@ public function benoitsBuyMenu():void {
 
 private function benoitSellMenu():void {
 	clearOutput();
-	if (flags[kFLAGS.BENOIT_EXPLAINED_SHOP] === 0)
+	if (flags[kFLAGS.BENOIT_EXPLAINED_SHOP] == 0)
 		buyOrSellExplanationFirstTime();
 	else
 		outputText("\"<i>Let us feel what you are trying to palm off upon me zis time, zen,</i>\" sighs Benoit" + benoitMF("", "e") + ", sitting down and opening " + benoitMF("his","her") + " hand to you.");
 	var sellMod:int = 3;
 	outputText("\n\n(You can shift-click to sell all items in a stack.)");
-	if (flags[kFLAGS.BENOIT_EGGS] > 0 || flags[kFLAGS.BENOIT_STATUS] !== 0) sellMod = 2;
+	if (flags[kFLAGS.BENOIT_EGGS] > 0 || flags[kFLAGS.BENOIT_STATUS] != 0) sellMod = 2;
 	outputText("\n\n<b><u>Benoit" + benoitMF("", "e") + "'s Estimates</u></b>");
 	menu();
 	var totalItems:int = 0;
@@ -404,10 +404,10 @@ private function benoitTransactBuy(slot:int = 1):void {
 	var itype:ItemType;
 	var buyMod:Number = 2;
 	
-	if (flags[kFLAGS.BENOIT_STATUS] !== 0) buyMod = 1.66;
+	if (flags[kFLAGS.BENOIT_STATUS] != 0) buyMod = 1.66;
 	
-	if (slot === 1) itype = ItemType.lookupItem(flags[kFLAGS.BENOIT_1]);
-	else if (slot === 2) itype = ItemType.lookupItem(flags[kFLAGS.BENOIT_2]);
+	if (slot == 1) itype = ItemType.lookupItem(flags[kFLAGS.BENOIT_1]);
+	else if (slot == 2) itype = ItemType.lookupItem(flags[kFLAGS.BENOIT_2]);
 	else itype = ItemType.lookupItem(flags[kFLAGS.BENOIT_3]);
 	if (player.gems < Math.round(buyMod * itype.value)) {
 		outputText("You consider making a purchase, but you lack the gems to go through with it.");
@@ -422,7 +422,7 @@ private function benoitTransactBuy(slot:int = 1):void {
 	player.gems -= Math.round(buyMod * itype.value);
 	statScreenRefresh();
 	
-	if (flags[kFLAGS.SHIFT_KEY_DOWN] === 1 && itype is Consumable) {
+	if (flags[kFLAGS.SHIFT_KEY_DOWN] == 1 && itype is Consumable) {
 		(itype as Consumable).useItem();
 		doNext(benoitsBuyMenu);
 	} else inventory.takeItem(itype, benoitsBuyMenu);
@@ -432,7 +432,7 @@ private function benoitSellTransact(slot:int, sellMod:int):void {
 	clearOutput();
 	if (benoitLover()) outputText("Benoit" + benoitMF("","e") + " gives your object the briefest of goings-over with " + benoitMF("his","her") + " fingers before stowing it away and handing over your gem reward with a trusting smile.");
 	else outputText("Following a painstaking examination of what you've given " + benoitMF("him", "her") + " with his hands and nose, Benoit grudgingly accepts it and carefully counts out your reward.");
-	if (flags[kFLAGS.SHIFT_KEY_DOWN] === 1) {
+	if (flags[kFLAGS.SHIFT_KEY_DOWN] == 1) {
 		while (player.itemSlots[slot].quantity > 0) {
 			player.gems += int(player.itemSlots[slot].itype.value / sellMod);
 			player.itemSlots[slot].removeOneItem();
@@ -486,11 +486,11 @@ public function updateBenoitInventory():void
 		consumables.DBLPEPP.id,
 		consumables.REPTLUM.id,
 	];
-	benoitSlot1Items.push(rand(3) === 0 ? consumables.PURHONY.id : consumables.BEEHONY.id);
+	benoitSlot1Items.push(rand(3) == 0 ? consumables.PURHONY.id : consumables.BEEHONY.id);
 	flags[kFLAGS.BENOIT_1] = randomChoice(benoitSlot1Items);
 
 	//If the player discarded a unique item, the first time they arrive at the Salvage Shop after a week has passed it will appear in Slot 1.
-	if (rand(10) === 0) {
+	if (rand(10) == 0) {
 		flags[kFLAGS.BENOIT_1] = consumables.GODMEAD.id;
 	}
 
@@ -632,12 +632,12 @@ private function talkToBenoit():void {
 	clearOutput();
 
 	//(+5 Affection per day if used)
-	if (flags[kFLAGS.BENOIT_TALKED_TODAY] === 0) {
+	if (flags[kFLAGS.BENOIT_TALKED_TODAY] == 0) {
 		flags[kFLAGS.BENOIT_TALKED_TODAY] = 1;
 		benoitAffection(5);
 	}
 	if (flags[kFLAGS.BENOIT_BASIL_EYES_GRANTED] > 0 && player.hasKeyItem("Feathery hair-pin") < 0) {
-		var hasSolidHair:Boolean = (player.hair.type !== Hair.GOO && player.hair.length > 0);
+		var hasSolidHair:Boolean = (player.hair.type != Hair.GOO && player.hair.length > 0);
 		credits.authorText = "MissBlackthorne";
 		outputText("\"<i>Ah [name]! I 'ad been 'oping to speak wiz you.</i>\" your basilisk lover says with a toothy smile. \"<i>I 'ave a gift for "
 		          +"you... For all you 'ave done.</i>\" You notice the scales on " + benoitMF("Benoit", "Benoite") + "'s face turn a deeper green,"
@@ -667,7 +667,7 @@ private function talkToBenoit():void {
 		doNext(camp.returnToCampUseOneHour);
 		return;
 	}
-	if (benoitBigFamily() && player.inte >= 60 && flags[kFLAGS.BENOIT_EYES_TALK_UNLOCKED] === 0) {
+	if (benoitBigFamily() && player.inte >= 60 && flags[kFLAGS.BENOIT_EYES_TALK_UNLOCKED] == 0) {
 		credits.authorText = "MissBlackthorne";
 		outputText("You ask " + benoitMF("Benoit", "Benoite") + " how the petrifying effect of " + benoitMF("his", "her") + " brethrens gaze works,"
 		          +" is it something their eyes naturally do or type of sight? " + benoitMF("He","She") + " stiffens for a moment before letting out a frustrated sigh.");
@@ -693,7 +693,7 @@ private function talkToBenoit():void {
 	}
 	//Basilisk Womb
 	//Requires: Had sex with Benoit at least twice, have vagina, select talk
-	if (((flags[kFLAGS.BENOIT_TIMES_SEXED_FEMPCS] > 2 && player.inte >= 60 && flags[kFLAGS.BENOIT_WOMB_TALK_UNLOCKED] === 0) || flags[kFLAGS.BENOIT_TIMES_SEXED_FEMPCS] === 2) && player.hasVagina()) {
+	if (((flags[kFLAGS.BENOIT_TIMES_SEXED_FEMPCS] > 2 && player.inte >= 60 && flags[kFLAGS.BENOIT_WOMB_TALK_UNLOCKED] == 0) || flags[kFLAGS.BENOIT_TIMES_SEXED_FEMPCS] == 2) && player.hasVagina()) {
 		outputText("You ask " + benoitMF("Benoit","Benoite") + " if " + benoitMF("he","she") + " has ever thought about trying to do something to help his people's plight.");
 
 		outputText("\n\nThe basilisk is silent for a time, running his claws along the counter pensively.  \"<i>Yes,</i>\" " + benoitMF("he","she") + " says eventually, in a quiet tone.  \"<i>I 'ave.  Away from ze mountains, I 'ave 'ad time to sink.  I am not ze demons' slave anymore, and I am a funny joke of a basilisk anyway, so I 'ave often thought about... making certain zacrifices.  If we 'ad just one female, away from zeir corruption, zen...</i>\" " + benoitMF("he","she") + " trails off, sighing heavily before smiling ruefully at you.  \"<i>Zose were ze kind of soughts I 'ad before I met you.  Crazy, yes?  Even more crazy to be still sinking zem when a good woman is giving me 'er love for no reason except through ze kindness of 'er 'art.  Still... it is so frustrating, being able to sink clearly about zese sings and not being able to do anysing about it.</i>\"");
@@ -712,7 +712,7 @@ private function talkToBenoit():void {
 		doNext(camp.returnToCampUseOneHour);
 	}
 	//First time Talk: 
-	else if (flags[kFLAGS.BENOIT_TALKED_TO_PROPERLY] === 0) {
+	else if (flags[kFLAGS.BENOIT_TALKED_TO_PROPERLY] == 0) {
 		flags[kFLAGS.BENOIT_TALKED_TO_PROPERLY]++;
 		outputText("You take a moment to look the strange merchant over.  Although blind, " + benoitMF("he","she") + " doesn't seem very old - " + benoitMF("he","she") + " retains the tight, thin muscular frame of other basilisks you've seen, but looks to be slightly shorter and for all his proud, cruel profile seems slightly shabby around the edges.  In what is presumably a nod towards civilized manners, " + benoitMF("he","she") + " is wearing a pair of denim long johns as well as his fez, perched upon one of his head spines.  You introduce yourself, and then decide to ask " + benoitMF("him","her") + " about basilisks.");
 		
@@ -721,7 +721,7 @@ private function talkToBenoit():void {
 		outputText("\n\nHe shrugs. \"<i>What were we going to do?  Go down and throw ourselves on the mercy of the races 'oo despise us?  Ze demons offered to set us high in zeir service, augment our natural abilities if we agreed to help zem.  I suppose zey did, at zat.</i>\"  Benoit scratches a long groove in his counter, trembling with anger.  \"<i>By making us all male zey made sure we are always fixated on finding egg bearers, on keeping ze harpies down, and bringing scrap and statues to zem so zey don't do anysing worse to us.  We are just a brainless natural defence to zem now, in zeir mountain hideaways.  Don't go up ze mountain or ze evil basilisks will get you!  Bastards.  Bastards.</i>\"  Benoit finishes mutilating the wood in front of " + benoitMF("him","her") + " and sighs.  \"<i>But zat is by ze by.  Are you going to buy sumsing or not?</i>\"");
 	}
 	// First time Femoit talk
-	else if (flags[kFLAGS.FEMOIT_TALKED_TO] === 0 && flags[kFLAGS.BENOIT_STATUS] !== 0)
+	else if (flags[kFLAGS.FEMOIT_TALKED_TO] == 0 && flags[kFLAGS.BENOIT_STATUS] != 0)
 	{
 		flags[kFLAGS.FEMOIT_TALKED_TO]++;
 		outputText("You ask Benoite if she intends to go back to the mountains now.  She laughs long and hard at this.  One thing the transformation has certainly gifted her is an extraordinarily filthy laugh.");
@@ -742,7 +742,7 @@ private function talkToBenoit():void {
 
 		return;
 	}
-	else if (flags[kFLAGS.BENOIT_TALKED_TO_PROPERLY] !== 0 && benoitAffection() >= 40 && flags[kFLAGS.FEMOIT_UNLOCKED] === 0)
+	else if (flags[kFLAGS.BENOIT_TALKED_TO_PROPERLY] != 0 && benoitAffection() >= 40 && flags[kFLAGS.FEMOIT_UNLOCKED] == 0)
 	{
 		femoitInitialTalk();
 		doNext(camp.returnToCampUseOneHour);
@@ -763,16 +763,16 @@ private function talkToBenoit():void {
 			}
 		}
 		//option 9 is non-lover non-fem only
-		if (!benoitLover() && benoitMF("he","she") === "he") choices[choices.length] = 9;
+		if (!benoitLover() && benoitMF("he","she") == "he") choices[choices.length] = 9;
 		//Special male benoit fucker only talks
-		if (benoitLover() && benoitMF("he","she") === "he" && player.hasVagina()) {
+		if (benoitLover() && benoitMF("he","she") == "he" && player.hasVagina()) {
 			choices[choices.length] = 10;
 			choices[choices.length] = 11;
 			choices[choices.length] = 12;
 			choices[choices.length] = 13;
 		}
 		// Femoit specials
-		if (flags[kFLAGS.BENOIT_STATUS] !== 0)
+		if (flags[kFLAGS.BENOIT_STATUS] != 0)
 		{
 			choices.push(14);
 			choices.push(15);
@@ -782,38 +782,38 @@ private function talkToBenoit():void {
 		//Pick one and go!
 		choice = choices[rand(choices.length)];
 		//(Randomly generated)
-		if (choice === 0) {
+		if (choice == 0) {
 			outputText("You ask if all basilisks talk as " + benoitMF("he","she") + " does.");
 			outputText("\n\n\"<i>Only on zis side of ze mountain,</i>\" comes the reply.  \"<i>Ze uzzer side are all stuck-up snobs who speak 'orribly.  Zey are all pale and flabby too, and zeir cooking is terrible.  Pwah!</i>\"  " + benoitMF("He","She") + " makes an exasperated gesture with a claw.");
 		}
-		else if (choice === 1) {
+		else if (choice == 1) {
 			outputText("You ask " + benoitMF("Benoit","Benoite") + " about the dog.");
 			outputText("\n\n\"<i>Pierre 'asn't been giving you trouble, as 'e?  Big stupid mutt does not know 'is mouth from 'is arse.  Which is why 'e checks so often,</i>\" says the basilisk fondly, rubbing the Alsatian behind his ear.  \"<i>I found 'im prowling around eating scraps from ze food sellers when I first got ere; I sink 'e must 'ave belonged to anuzzer trader 'oo left " + benoitMF("him","her") + " behind.  I do not sink I could run this shop without " + benoitMF("him","her") + " - every evening I go out into the wilds with " + benoitMF("him","her") + " and 'unt down more salvage.  'Ee is so good at finding perfectly good sings other people 'ave left behind.  Particularly cloze.  'E loves robes, Pierre.  Don't you, boy?</i>\"  Pierre whines.");
 		}
-		else if (choice === 2) {
+		else if (choice == 2) {
 			outputText("You ask " + benoitMF("him","her") + " about the sign above the shop.");
 			outputText("\n\n\"<i>It's good, isn't it?</i>\"  the trader says proudly.  \"<i>I got a catguy to do it when I first got 'ere and didn't know ze language so well.  'E suggested...</i>\"  " + benoitMF("He","She") + " spreads " + benoitMF("his","her") + " claws expressively.  \"<i>'Salamander's Salubrious Salvage'.  Because, everyone likes salamanders, and once zey get in and realize I am not a salamander and it is just a play on words, zey would be so entranced by what I am selling zey would not care.</i>\"  " + benoitMF("Benoit","Benoite") + " taps the counter happily.  \"<i>In gold print, too!  It is a surprise it has not brought more customers in.</i>\"");
 			outputText("\n\nYou decide not to disillusion the blind basilisk.");
 		}
-		else if (choice === 3) {
+		else if (choice == 3) {
 			outputText("You ask if " + benoitMF("he","she") + " has always been blind.");
 			outputText("\n\n\"<i>I don't know,</i>\" " + benoitMF("he","she") + " says. \"<i>Ask me what red is.</i>\"");
 			outputText("\n\nYou ask what red is.");
 			outputText("\n\n\"<i>'Ow ze fuck should I know?</i>\" the basilisk replies, deadpan.  \"<i>Stop asking stupid questions.</i>\"");
 			outputText("\n\nYou decide not to pursue the subject.");
 		}
-		else if (choice === 4) {
+		else if (choice == 4) {
 			outputText("You ask " + benoitMF("Benoit","Benoite") + " how " + benoitMF("he","she") + " got into this line of work.");
 			outputText("\n\n\"<i>I 'ave always worked with salvage,</i>\" " + benoitMF("he","she") + " shrugs.  \"<i>Back in ze mountains I worked in ze magpie room - obviously, because I was no good on ze outside.  You can tell from ze weight of sings, and 'ow zey smell, what it is and 'ow much it is worth.  More zan zat you can tell... what it meant to its last owner.  Zat is ze true worse of an object.</i>\"  " + benoitMF("He","She") + " taps his claws on the counter, lost in thought.  \"<i>Ze magpie room is amazing, [name], I wish I could show it to you.  Such good acoustics, filled with ze sound and smell of a thousand pieces of junk - every day a new symphony.  And 'oo would ever steal ze demons' treasures?  You would 'ave to be mad to try to steal from a hall full of basilisks.  Or blind.</i>\"");
 			outputText("\n\n" + benoitMF("He","She") + " laughs throatily, then sighs.  \"<i>Ah, but it was rotten, really - always a sour note underneath everysing.  A thousand basilisks, driven by nussing but greed and lust.  I got sick of it, being stuck in zat place with zose thoughts, zat 'opeless cycle, and one day ran away.  I took what I could carry and used zat to start up here.  Away from ze mountains, I can zink clearly.  I can say what ze uzzer basilisks only know at ze back of zeir minds.</i>\"  " + benoitMF("Benoit","Benoite") + " slams a fist into the counter, making you jump.  \"<i>Don't ever make a deal with a demon, [name],</i>\" " + benoitMF("he","she") + " says, voice thick with rage.  \"<i>Even when you sink it is a win-win?  Zey will still find a way to fuck you good.</i>\"");
 			dynStats("cor", -1);
 		}
-		else if (choice === 5) {
+		else if (choice == 5) {
 			outputText("You ask Benoit if " + benoitMF("he","she") + " can tell you anything about the Bazaar.");
 			
 			outputText("\n\n\"<i>You are really asking zis question to a blind person?</i>\" comes the reply.  \"<i>Ok, I will tell you what I know, for what it is worth.  Over zeir by ze fire, I know zeir are lizans having a good time, because zey shout insults when zey get really drunk.  Zey would get violent with me I sink, if it weren't for Pierre.  Zeir leader has a big problem with her male hormones, judging from ze way she smells.</i>\"  " + benoitMF("He","She") + " sniggers with a distinct lack of sympathy.  \"<i>In ze uzzer direction, I can smell a lot of males together in one place.  Smell like zey are doing something very macho - and a bit painful, from ze sound of zeir walk afterwards.</i>\"  " + benoitMF("He","She") + " points in the opposite direction.  \"<i>Zerr are plenty of, ow you say, crumpets who work around here.  Some of zem can do some pretty wild sings for you, for a fee.  Or so I'm told.</i>\"  " + benoitMF("He","She") + " coughs.");
 		}
-		else if (choice === 6) {
+		else if (choice == 6) {
 			outputText("You ask " + benoitMF("Benoit","Benoite") + " for any rumors going around.");
 			//[Deep cave cleared: 
 			if (flags[kFLAGS.DEFEATED_ZETAZ] > 0) outputText("\n\n\"<i>Somesing strange did 'appen ze uzzer day, now you mention it,</i>\" " + benoitMF("he","she") + " says, tapping a curved tooth.  \"<i>I got a big group of imps in ere.  I normally don't serve zem because zey are always stealing sings whilst one of zem is paying, but zese guys seemed too worked up to even sink about lifting ze shop - zey smelt of fear.  Zey were buying lots of food and survival gear - one of zem kept going on and on about ze fact zey left \"<i>ze fairy</i>\" behind, until one of ze uzzers slapped 'im and said if 'ee didn't shut up, 'ee would be ze fairy.</i>\"  " + benoitMF("Benoit","Benoite") + " shrugs.  \"<i>Nasty little sings.  Tasty, though.</i>\"");
@@ -821,18 +821,18 @@ private function talkToBenoit():void {
 			else if (flags[kFLAGS.FACTORY_SHUTDOWN] <= 0) outputText("\n\n\"<i>Not anysing very interesting,</i>\" " + benoitMF("he","she") + " shrugs.  \"<i>I get a few customers from ze desert city, Tel'Adre, coming in 'ere in secret to pick up a few sings zey cannot find back 'ome.  So zey are still a sing.  You 'ave to wonder ow much longer zey can keep hiding, though.</i>\"");
 			else {
 				//[Factory destroyed: 
-				if (flags[kFLAGS.FACTORY_SHUTDOWN] === 2){
+				if (flags[kFLAGS.FACTORY_SHUTDOWN] == 2){
 					outputText("\n\n\"<i>I don't know what is 'appening exactly,</i>\" " + benoitMF("he","she") + " says, leaning over the counter. \"<i>But ze demons 'oo I trade with, zey seem very worked up about sumsing.  Sumsing went wrong at one of zeir facilities, I sink.  I also get a number of shark ladies coming in ere, asking if I sell fresh water.  Zey also seem very unhappy.</i>\"");
 				}
 				else outputText("\n\n\"<i>I don't know what is 'appening exactly,</i>\" " + benoitMF("he","she") + " says, leaning over the counter.  \"<i>But ze demons 'oo I trade with, zey seem very worked up about somesing.  Sumsing went wrong at one of zeir facilities, I sink.  I also hear a number of passers-by talking about ze lake.  Apparently it is much cleaner now; many are going back to use it for water.  Now if only someone could make zose crazy cultists go away, eh?</i>\"");
 			}
 		}
-		else if (choice === 7) {
+		else if (choice == 7) {
 			outputText("You ask if " + benoitMF("he","she") + "'s ever had any trouble with the demons who frequent the Bazaar.");
 			outputText("\n\n\"<i>Not really,</i>\" " + benoitMF("he","she") + " replies.  \"<i>I don't like zem, but zey are my main source of income.  Zey are always coming in here to sell zeir fluids.  The truth is it's worthless - I pour most of ze disgusting stuff away.  But it is worth paying for zeir custom because zey are always buying many more potions.  It isn't a good demon party unless you 'ave sprouted two new dicks and four new nipples for it, apparently.  Always one of zem is asking if zey can 'do ze dinosaur' as way of payment.  I 'ate zem so much.</i>\"");
 			if (silly()) outputText("\n\nThe basilisk rubs Pierre behind the ear as " + benoitMF("he","she") + " thinks.  \"<i>I did once get a group of demons coming in ere, asking me what 'cheese omelette' is in basilisk.  When I told zem, zey ran away laughing, shouting 'Zat is all you can say! Zat is all you can say!'</i>\"  " + benoitMF("He","She") + " shrugs, irritated.  \"<i>Arseholes.</i>\"");
 		}
-		else if (choice === 8) {
+		else if (choice == 8) {
 			outputText("You ask [benoit name] what results when basilisks mate with harpies.");
 			outputText("\n\n\"<i>Most of ze time?  Basilisks,</i>\" [benoit ey] replies, carefully counting gems with [benoit eir] fingers."
 			          +"  \"<i>Some of ze time?  'Arpies.  But ze arpies feed zeir basilisk children to zeir chicks if ze former do not get away"
@@ -845,27 +845,27 @@ private function talkToBenoit():void {
 				flags[kFLAGS.COCKATRICES_UNLOCKED] = 1;
 			}
 		}
-		else if (choice === 9) {
+		else if (choice == 9) {
 			//non-lover non-fem only
 			outputText("You ask if " + benoitMF("Benoit","Benoite") + " really can tell who you are just by smell.");
 			
-			if (player.race() === "human") outputText("\n\n\"<i>Certainly!</i>\" " + benoitMF("he","she") + " smiles.  \"<i>Ze smell of shaved monkey is distinctive.  I get very few 'uman customers, you know.</i>\"  The basilisk scratches " + benoitMF("his","her") + " jaw absent-mindedly.  \"<i>If you do not mind me saying so, [name], you also smell... different.  Like you do not really belong 'ere.  In ze nicest possible way, of course.</i>\"");
+			if (player.race() == "human") outputText("\n\n\"<i>Certainly!</i>\" " + benoitMF("he","she") + " smiles.  \"<i>Ze smell of shaved monkey is distinctive.  I get very few 'uman customers, you know.</i>\"  The basilisk scratches " + benoitMF("his","her") + " jaw absent-mindedly.  \"<i>If you do not mind me saying so, [name], you also smell... different.  Like you do not really belong 'ere.  In ze nicest possible way, of course.</i>\"");
 			else outputText("\n\n\"<i>Certainly!</i>\" " + benoitMF("he","she") + " smiles.  \"<i>Ze smell of shaved monkey is distinctive.  I get very few 'uman customers, you know.</i>\"  You look down at yourself, then back at the basilisk suspiciously, before saying you don't much look or feel human.  \"<i>Oh, I do not doubt zat,</i>\" says the trader.  \"<i>You 'umans and your flexible genes - zat makes you very alluring, as I am sure you 'ave already noticed, eh?  I am sure somebody 'oo relied upon sight would not be able to tell you are 'uman.  But 'oo you are underneath all zat, zat never changes, and I can smell zat.  All you are doing really is dressing up as something else.  If you wanted to, you could change back tomorrow, if you 'ad ze right ingredienns.</i>\"");
 			//[(male Benoit only)
-			if (benoitMF("he","she") === "he") outputText("  There's a hint of longing jealousy in the basilisk's voice and when " + benoitMF("he","she") + " lapses into silence you decide not to push the subject.");
+			if (benoitMF("he","she") == "he") outputText("  There's a hint of longing jealousy in the basilisk's voice and when " + benoitMF("he","she") + " lapses into silence you decide not to push the subject.");
 		}
 		//Male Benoit Lover Talk options
 		//(Randomly generated.  Added to normal talk options after PC has had sex with Benoit two times or more regardless of womb quest.)
-		else if (choice === 10) {
+		else if (choice == 10) {
 			outputText("You ask Benoit there is anything useful " + benoitMF("he","she") + " can tell you about the demon strongholds.");
 			
 			outputText("\n\n\"<i>I'm afraid I cannot be very 'elpful zeir, [name],</i>\" "+benoitMF("he","she") +" sighs.  \"<i>Unless you want me to tell you what zey smell like.  I do not sink you want to be knowing zis.  Ze demons, zey were not much in ze business of telling us what zeir plans were, and zey did not much like 'anging around us, which is understandable.   Zair is every treasure you can ever imagine in ze magpie room, but zeir is no way you could ever get at zem unless you could work out some way of making many undreds of basilisks close zeir eyes at once.</i>\"");
 		}
-		else if (choice === 11) {
+		else if (choice == 11) {
 			outputText("You ask Benoit if " + benoitMF("he","she") + " can suggest anything to help you fight his brethren in the high mountains.");
 			outputText("\n\n\"<i>You could carry a mirror with you,</i>\" " + benoitMF("he","she") + " says, pointing.  \"<i>There's one over zair, isn't zair?</i>\" You report that it is cracked badly - at any rate, you're not carrying a bulky mirror up a mountain two or three times a day.  \"<i>I will give it to you half price,</i>\" " + benoitMF("he","she") + " says hopefully.  \"<i>Sink 'ow useful it will be to check for transformations!  You could get somebody else to carry it for you... ok, alright, so you don't want ze mirror.  Most prey, my bruzzers are expecting zem to lash out in a panic.  So use sings which do not involve approaching.  We do not like magic or ranged sings, zey are too unpredictable - I suggest using zem.</i>\"");
 		}
-		else if (choice === 12) {
+		else if (choice == 12) {
 			outputText("\"<i>Gnoll.</i>\"");
 			outputText("\n\n You make a gentle humming noise.");
 			outputText("\n\n\"<i>Bee maiden,</i>\" says Benoit after a moment.");
@@ -880,12 +880,12 @@ private function talkToBenoit():void {
 			
 			outputText("\n\n\"<i>Oh, I see.  You are pulling my tail.  Very amusing.</i>\"  You laugh even harder at the expression of wounded dignity which replaces the terror.");
 		}
-		else if (choice === 13) {
+		else if (choice == 13) {
 			outputText("You ask Benoit if " + benoitMF("he","she") + " really, <b>really</b> can tell who you are just by smell.");
 			
 			outputText("\n\n\"<i>Well, of course I can,</i>\" " + benoitMF("he","she") + " says teasingly.  \"<i>When you end up smelling like someone else for several hours, it is a difficult sing to mistake.  It is a memento of you and it reminds me of 'appiness; I wish I could smell zat way for longer.  My sexy little shaved monkey.</i>\"");
 		}
-		else if (choice === 14)
+		else if (choice == 14)
 		{
 			outputText("You ask Benoite how she’s getting on with being the opposite sex.  Benoite stops cleaning the tarnished silver plate in her hands to think.");
 
@@ -905,13 +905,13 @@ private function talkToBenoit():void {
 				outputText("\n\nBenoite nods thoughtfully. “<i>I never sought about it like zat.  Ze demons just love slaves zey can change wizzer a few potions, don’t zey? You are right [name], I will count my blessings in ze future.</i>”");
 			}
 		}
-		else if (choice === 15)
+		else if (choice == 15)
 		{
 			outputText("\n\nYou ask Benoite if she isn’t worried that demon customers won’t notice what she is.");
 
 			outputText("\n\n“<i>Zat is why I am wearing zis cunning disguise,</i>” she says, patting her large beret.  She lowers her voice to a growl. “<i>And I talk like zis when I am serving zem.  Grr.  To be honest I do not sink I ‘ave to be worrying much,</i>” she goes on in her normal tone, tightening her apron. “<i>Most of ze demons 'oo come 'ere are not very bright, zey are not very interested in anysing except when zey are next banging zair bits together.  Also I sink most mammals are 'aving trouble telling ze difference between male and female reptiles wizzout looking closely.  Am I right?</i>” She grins her long, meandering smile at you and you take her point.");
 		}
-		else if (choice === 16)
+		else if (choice == 16)
 		{
 			outputText("You ask Benoite if she really can tell who you are just by smell.");
 
@@ -919,7 +919,7 @@ private function talkToBenoit():void {
 		}
 
 		// Hair pin talk
-		if (player.hasKeyItem("Feathery hair-pin") >= 0 && (debug || flags[kFLAGS.BENOIT_HAIRPIN_TALKED_TODAY] === 0))
+		if (player.hasKeyItem("Feathery hair-pin") >= 0 && (debug || flags[kFLAGS.BENOIT_HAIRPIN_TALKED_TODAY] == 0))
 		{
 			doNext(benoitHairPinTalk);
 			return;
@@ -943,7 +943,7 @@ private function benoitHairPinTalk():void
 
 private function benoitHairPinTFCheck():void
 {
-	if (player.cor < 30 && player.isFemaleOrHerm() && player.featheryHairPinEquipped() && [Hair.BASILISK_PLUME, Hair.GOO].indexOf(player.hair.type) === -1)
+	if (player.cor < 30 && player.isFemaleOrHerm() && player.featheryHairPinEquipped() && [Hair.BASILISK_PLUME, Hair.GOO].indexOf(player.hair.type) == -1)
 	{
 		outputText("\n\nYou feel the hair pin " + benoitMF("Benoit", "Benoite") + " gave you heat up, a gentle warmth suffusing through your body."
 		          +" Something tells you that if you let it, this feminine hair piece will evoke some sort of change.");
@@ -972,7 +972,7 @@ private function benoitHairPinTFYes():void
 	          + benoitMF(" that your hair has changed into a plume of feathers that, like legend is told, belongs to a female basilisk!",
 	                     " that you have a plume, like a female basilisk!"));
 
-	if (flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] !== 0)
+	if (flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] != 0)
 		outputText("\n\n<b>Your hair is growing again and is now a plume of short red feathers.</b>");
 	else
 		outputText("\n\n<b>Your hair is now a plume of short red feathers.</b>");
@@ -1007,7 +1007,7 @@ private function benoitAndFemPCTalkAboutEggings():void {
 //Suggest: 
 private function eggySuggest():void {
 	clearOutput();
-	if (flags[kFLAGS.BENOIT_TESTED_BASILISK_WOMB] === .5) {
+	if (flags[kFLAGS.BENOIT_TESTED_BASILISK_WOMB] == .5) {
 		suggestSexAfterBasiWombed(true);
 		return;
 	}
@@ -1035,7 +1035,7 @@ private function eggySuggest():void {
 		outputText("\n\n“Zis will sound strange,” says " + benoitMF("Benoit","Benoite") + " in a thick voice, “But- would you mind if I just touched you a bit first? All I know about you is ze sound of your voice.”  You acquiesce and draw close, taking " + benoitMF("his","her") + " hands once again and gently laying them upon you.  You sigh as, holding " + benoitMF("his","her") + " index claws back, " + benoitMF("he","she") + " begins to move them slowly up and down.");
 		outputText("\n\n" + benoitMF("His","Her") + " warm fingers travel over your body, brushing over your face, your belly, your [hips]; you feel like you're being read like a book in Braille.  “Good Gods,” " + benoitMF("he","she") + " murmurs as " + benoitMF("his","her") + " hands lead back onto your flanks.  “Good Gods!” " + benoitMF("he","she") + " cries out as " + benoitMF("he","she") + " follows you all the way back to your mighty, powerful rear.  “I knew you were a 'taur because of all ze stomping,” " + benoitMF("he","she") + " says, rubbing your side back and forth in wonder.  “But to know it and actually feel it, zey are somesing very different.” " + benoitMF("He","She") + " sighs.  “I 'ope you do not mind zis being a bit... awkward, but I am guessing you are probably used to zat by now, yes?”");
 		// Herm: 
-		if (player.gender === 3) {
+		if (player.gender == 3) {
 			outputText("\n\n" + benoitMF("His","Her") + " hands travel down your behind until, with a sharp intake of breath, " + benoitMF("he","she") + " touches [oneCock].  “Aren't you just full of surprises,” " + benoitMF("he","she") + " says dryly.  After a pause, " + benoitMF("he","she") + " slowly wraps " + benoitMF("his","her") + " dry, smooth grasp around your semi-erect cock and moves it up and down, rubbing and coiling you until you are straining.");
 			//[cock 10 inches or less: 
 			if (player.longestCockLength() <= 10) outputText("  Although this is evidently an uncanny experience for " + benoitMF("him","her") + ", " + benoitMF("he","she") + " does manage a cocky smile as " + benoitMF("his","her") + " hand moves around your male sex. “Mine is bigger,” " + benoitMF("he","she") + " teases.  Unable to reward " + benoitMF("his","her") + " cheek from where " + benoitMF("he","she") + " is, you simply snort and shuffle your hooves, impatient now with need.");
@@ -1060,7 +1060,7 @@ private function eggySuggest():void {
 		if (player.lactationQ() >= 50) outputText("  The slow, sensual sex is enough for you to begin to bead milk from your sensitive [nipples]; you moan as the flow intensifies until you are instinctively kneading your [chest], spurting your sweet, warm fluids onto the floor.  " + benoitMF("Benoit","Benoite") + " starts in genuine amazement at the sound.  “Mammals are so damn weird,” " + benoitMF("he","she") + " mutters, making you giggle.");
 		
 		outputText("\n\nYour lust ratchets up as " + benoitMF("his","her") + " warm hands continue to move over your behind, and at last losing your discipline you begin to thrust into " + benoitMF("him","her") + " with abandon, eager now for your peak.  " + benoitMF("Benoit","Benoite") + " pants as you really begin to fuck " + benoitMF("him","her") + " and thrusts with you; the wetness of your arousal spatters against " + benoitMF("his","her") + " thighs as your body slaps into the basilisk's tight muscles.  " + benoitMF("He","She") + " makes a harsh, bestial noise when " + benoitMF("he","she") + " cums; " + benoitMF("his","her") + " blind eyes roll as " + benoitMF("he","she") + " clutches your back and shoots surge after surge of cum into your churning depths.  The warmth of " + benoitMF("his","her") + " jizz and " + benoitMF("his","her") + " helpless bucking thrust you to your own orgasm; irrepressible pulses of pleasure overwhelm your mind and you can do nothing for long minutes except cry and squeal against the basilisk, clutching " + benoitMF("him","her") + " back as you work " + benoitMF("his","her") + " dick for every last drop.");
-		if (player.gender === 3) outputText("  [EachCock] thickens and spurts in sympathy to your female high, spattering the floor with white paint.");
+		if (player.gender == 3) outputText("  [EachCock] thickens and spurts in sympathy to your female high, spattering the floor with white paint.");
 	}
 	else {
 		outputText("You reach your fingers across the counter and lightly touch " + benoitMF("Benoit","Benoite") + "'s hands, saying you don't mind working out a few natural urges, if " + benoitMF("he","she") + "'s in the mood.");
@@ -1072,24 +1072,24 @@ private function eggySuggest():void {
 		outputText("\n\n\"<i>Zis will sound strange,</i>\" says " + benoitMF("Benoit","Benoite") + " in a low, thick voice, \"<i>But - would you mind if I just touched you a bit first?  All I know about you is your smell and ze sound of your voice.</i>\"  You acquiesce and draw close, taking " + benoitMF("his","her") + " hands once again and gently laying them upon your body.  You sigh as, holding " + benoitMF("his","her") + " index claws back, " + benoitMF("he","she") + " begins to move them slowly up and down.");
 		
 	//[Demon: 
-		if (player.horns.value > 0 && player.horns.type === Horns.DEMON && player.tail.type === Tail.DEMONIC && player.demonScore() >= 3) outputText("\n\n" + benoitMF("His","Her") + " warm fingers travel over your body, brushing over your face, your belly, your [hips]; you feel as though you're being read like a book.  " + benoitMF("He","She") + " touches your horns and pauses; " + benoitMF("he","she") + " reaches around, finds and grips your tail, running " + benoitMF("his","her") + " pads up to the spaded point.  \"<i>So,</i>\" " + benoitMF("he","she") + " says quietly.  \"<i>You are one of zem.</i>\"  " + benoitMF("He","She") + " is silent for a while before finding a warm smile.  \"<i>But I am being silly.  I know you are different inside.</i>\"");
+		if (player.horns.value > 0 && player.horns.type == Horns.DEMON && player.tail.type == Tail.DEMONIC && player.demonScore() >= 3) outputText("\n\n" + benoitMF("His","Her") + " warm fingers travel over your body, brushing over your face, your belly, your [hips]; you feel as though you're being read like a book.  " + benoitMF("He","She") + " touches your horns and pauses; " + benoitMF("he","she") + " reaches around, finds and grips your tail, running " + benoitMF("his","her") + " pads up to the spaded point.  \"<i>So,</i>\" " + benoitMF("he","she") + " says quietly.  \"<i>You are one of zem.</i>\"  " + benoitMF("He","She") + " is silent for a while before finding a warm smile.  \"<i>But I am being silly.  I know you are different inside.</i>\"");
 		//[Dog enough for ears and tail: 
-		else if (player.ears.type === Ears.DOG && player.tail.type === Tail.DOG && player.dogScore() >= 3) outputText("\n\n" + benoitMF("His","Her") + " warm fingers travel over your body, brushing over your face, your belly, your [hips]; you feel as though you're being read like a book.  " + benoitMF("He","She") + " grins as " + benoitMF("he","she") + " finds your floppy ears and outright laughs when " + benoitMF("he","she") + " reaches around and touches your tail. \"<i>I like dogs, but not ZAT much, [name],</i>\" " + benoitMF("he","she") + " laughs.");
+		else if (player.ears.type == Ears.DOG && player.tail.type == Tail.DOG && player.dogScore() >= 3) outputText("\n\n" + benoitMF("His","Her") + " warm fingers travel over your body, brushing over your face, your belly, your [hips]; you feel as though you're being read like a book.  " + benoitMF("He","She") + " grins as " + benoitMF("he","she") + " finds your floppy ears and outright laughs when " + benoitMF("he","she") + " reaches around and touches your tail. \"<i>I like dogs, but not ZAT much, [name],</i>\" " + benoitMF("he","she") + " laughs.");
 		//[Cat/Bunny enough for ditto: 
-		else if (player.catScore() >= 3 && player.tail.type === Tail.CAT && player.ears.type === Ears.CAT) outputText("\n\n" + benoitMF("His","Her") + " warm fingers travel over your body, brushing over your face, your belly, your [hips]; you feel as though you're being read like a book.  " + benoitMF("He","She") + " grins as " + benoitMF("he","she") + " finds your ears, outright laughs when " + benoitMF("he","she") + " reaches around and touches your soft tail.  \"<i>I always wondered why Pierre gets all excited when 'e sees you,</i>\" " + benoitMF("he","she") + " chuckles huskily.");
+		else if (player.catScore() >= 3 && player.tail.type == Tail.CAT && player.ears.type == Ears.CAT) outputText("\n\n" + benoitMF("His","Her") + " warm fingers travel over your body, brushing over your face, your belly, your [hips]; you feel as though you're being read like a book.  " + benoitMF("He","She") + " grins as " + benoitMF("he","she") + " finds your ears, outright laughs when " + benoitMF("he","she") + " reaches around and touches your soft tail.  \"<i>I always wondered why Pierre gets all excited when 'e sees you,</i>\" " + benoitMF("he","she") + " chuckles huskily.");
 		//[Avian with wings and feet:  
-		else if (player.lowerBody.type === LowerBody.HARPY && player.wings.type === Wings.FEATHERED_LARGE) outputText("\n\n" + benoitMF("His","Her") + " warm fingers travel over your body, brushing over your face, your belly, your [hips]; you feel as though you're being read like a book.  " + benoitMF("He","She") + " finds your wings and follows them up as far as " + benoitMF("he","she") + " can reach, making you twitch as " + benoitMF("he","she") + " caresses your delicate pinfeathers; " + benoitMF("he","she") + " carefully shifts " + benoitMF("his","her") + " feet forward to touch at your own clawed toes.  \"<i>So,</i>\" " + benoitMF("he","she") + " sighs, a smile playing on " + benoitMF("his","her") + " lips as " + benoitMF("he","she") + " touches your shoulder.  \"<i>What is in front of me is a terrible 'arpy.  Come from ze skies to ravish me.</i>\"");
+		else if (player.lowerBody.type == LowerBody.HARPY && player.wings.type == Wings.FEATHERED_LARGE) outputText("\n\n" + benoitMF("His","Her") + " warm fingers travel over your body, brushing over your face, your belly, your [hips]; you feel as though you're being read like a book.  " + benoitMF("He","She") + " finds your wings and follows them up as far as " + benoitMF("he","she") + " can reach, making you twitch as " + benoitMF("he","she") + " caresses your delicate pinfeathers; " + benoitMF("he","she") + " carefully shifts " + benoitMF("his","her") + " feet forward to touch at your own clawed toes.  \"<i>So,</i>\" " + benoitMF("he","she") + " sighs, a smile playing on " + benoitMF("his","her") + " lips as " + benoitMF("he","she") + " touches your shoulder.  \"<i>What is in front of me is a terrible 'arpy.  Come from ze skies to ravish me.</i>\"");
 		//[Reptile/Naga: 
 		else if (player.hasReptileScales() && (player.lizardScore() >= 3 || player.nagaScore() >= 3) || player.dragonScore() >= 3) outputText("\n\n" + benoitMF("His","Her") + " warm fingers travel over your body, brushing over your face, your belly, your [hips]; you feel as though you're being read like a book.  " + benoitMF("He","She") + " starts slightly when " + benoitMF("he","she") + " touches your scales, and then caresses the reptilian parts of your body with increasing interest.  \"<i>I cannot believe I did not realize you were a sister of ze scales,</i>\" " + benoitMF("he","she") + " says huskily.  \"<i>Zat is very... interesting.</i>\"  You can see real arousal in the tense lines of " + benoitMF("his","her") + " face now.");
 		//[Bee: 
-		else if ((player.wings.type === Wings.BEE_LIKE_SMALL || player.wings.type === Wings.BEE_LIKE_LARGE) && player.lowerBody.type === LowerBody.BEE) outputText("\n\n" + benoitMF("His","Her") + " warm fingers travel over your body, brushing over your face, your belly, your [hips]; you feel as though you're being read like a book.  " + benoitMF("He","She") + " finds your diaphanous wings and follows them up as far as " + benoitMF("he","she") + " can reach, " + benoitMF("his","her") + " grip on your sensitive membranes making you twitch a bit; then " + benoitMF("he","she") + " sends " + benoitMF("his","her") + " hands trailing down your carapace-armored limbs.  \"<i>I sought you just liked wearing big boots,</i>\" " + benoitMF("he","she") + " murmurs.  \"<i>But zis is actually a part of you?  'Ow... interesting.</i>\"");
+		else if ((player.wings.type == Wings.BEE_LIKE_SMALL || player.wings.type == Wings.BEE_LIKE_LARGE) && player.lowerBody.type == LowerBody.BEE) outputText("\n\n" + benoitMF("His","Her") + " warm fingers travel over your body, brushing over your face, your belly, your [hips]; you feel as though you're being read like a book.  " + benoitMF("He","She") + " finds your diaphanous wings and follows them up as far as " + benoitMF("he","she") + " can reach, " + benoitMF("his","her") + " grip on your sensitive membranes making you twitch a bit; then " + benoitMF("he","she") + " sends " + benoitMF("his","her") + " hands trailing down your carapace-armored limbs.  \"<i>I sought you just liked wearing big boots,</i>\" " + benoitMF("he","she") + " murmurs.  \"<i>But zis is actually a part of you?  'Ow... interesting.</i>\"");
 		//[Centaur: 
 		else if (player.isTaur()) outputText("\n\n" + benoitMF("His","Her") + " warm fingers travel over your body, brushing over your face, your belly, your [hips]; you feel as though you're being read like a book.  \"<i>Good Gods,</i>\" " + benoitMF("he","she") + " murmurs as " + benoitMF("his","her") + " hands lead back onto your flanks.  \"<i>Good Gods!</i>\" " + benoitMF("he","she") + " cries out as " + benoitMF("he","she") + " follows you all the way back to your mighty, powerful rear.  \"<i>I knew you were a centaur because of all ze clopping,</i>\" " + benoitMF("he","she") + " says, rubbing your flank back and forth in wonder.  \"<i>But to know it and actually feel it, zey are very different.</i>\"  " + benoitMF("He","She") + " sighs.  \"<i>Zis is going to be a bit... awkward, but I am guessing you are all too used to zat by now, yes?</i>\"");
 		else if (player.isDrider()) outputText("\n\n" + benoitMF("His","Her") + " warm fingers travel over your body, brushing over your face, your belly, your [hips]; you feel as though you're being read like a book.  \"<i>Good Gods,</i>\" " + benoitMF("he","she") + " murmurs as " + benoitMF("his","her") + " hands lead back onto your tough exoskeleton. \"<i>Good Gods!</i>\" " + benoitMF("he","she") + " cries out as " + benoitMF("he","she") + " follows your bulging abdomen all the way back to your spinnerets. \"<i>I knew you were a spider because of all ze click-clacking,</i>\" " + benoitMF("he","she") + " says, " + benoitMF("his","her") + " fingers feeling around one of your intricate, many-jointed legs in wonder.  \"<i>But to know it and actually feel it, zey are very different.</i>\"");
 		//[Slime: 
 		else if (player.isGoo()) outputText("\n\n" + benoitMF("His", "Her") + " warm fingers travel over your body, brushing over your face, your belly, your [hips]; you feel as though you're being read like a book.  \"<i>I knew you were different from ze squishy sounds you made,</i>\" " + benoitMF("he", "she") + " murmurs as " + benoitMF("his", "her") + " hands sink into your soft, amorphous mass.  \"<i>But zis is...good Gods, zis is strange.  And zis doesn't 'urt you at all?</i>\" " + benoitMF("he", "she") + " asks incredulously as " + benoitMF("he", "she") + " gently pokes a finger into you.  You answer " + benoitMF("his", "her") + " question by giggling.  \"<i>Zat must come in very useful,</i>\" " + benoitMF("he", "she") + " says, shaking " + benoitMF("his", "her") + " head in wonder.  You push yourself slowly up " + benoitMF("his", "her") + " arms and tell " + benoitMF("him", "her") + " " + benoitMF("he", "she") + " has no idea.");
 		//[Fox:
-		else if ((player.foxScore() >= 4 || player.kitsuneScore() >= 4) && player.ears.type === Ears.FOX && player.tail.type === Tail.FOX) {
+		else if ((player.foxScore() >= 4 || player.kitsuneScore() >= 4) && player.ears.type == Ears.FOX && player.tail.type == Tail.FOX) {
 			if (player.tail.venom <= 1) outputText("\n\n" + benoitMF("His", "Her") + " warm fingers travel over your body, brushing over your face, your belly, your [hips]; you feel as though you're being read like a book.  " + benoitMF("He","She") + " grins as " + benoitMF("he","she") + " finds your perky ears, outright laughs when " + benoitMF("he","she") + " reaches around and touches your fluffy tail.  \"<i>I always wondered why Pierre gets all excited when 'e sees you,</i>\" " + benoitMF("he laughs", "she giggles") + ".");
 			else outputText("\n\n" + benoitMF("His", "Her") + " warm fingers travel over your body, brushing over your face, your belly, your [hips]; you feel as though you're being read like a book.  " + benoitMF("He","She") + " grins as " + benoitMF("he","she") + " finds your perky ears and outright laughs when " + benoitMF("he","she") + " reaches around and touches your fluffy tails.  \"<i>You didn't do zis just to trick me, did you [name]?</i>\" " + benoitMF("he laughs", "she giggles") + ".");
 		}
@@ -1131,7 +1131,7 @@ private function eggySuggest():void {
 	outputText("\n\nEventually, the two of you part, dripping your mixed fluids as you step back.  \"<i>Phew!</i>\" " + benoitMF("Benoit","Benoite") + " says after " + benoitMF("he","she") + "'s managed to catch " + benoitMF("his","her") + " breath.  \"<i>That was... somesing.  Mademoiselle, you are... amazing.</i>\"  You find yourself laughing at " + benoitMF("his","her") + " slightly shell-shocked expression, and the light, happy sound seems to bring " + benoitMF("him","her") + " around a bit.  " + benoitMF("He","She") + " brushes your shoulder as " + benoitMF("he","she") + " walks past you, feeling around the stock room until " + benoitMF("he","she") + " finds a chest of drawers.  " + benoitMF("He","She") + " opens a compartment and withdraws a small woollen bag, stuffed with pungent green leaves.");
 	outputText("\n\n\"<i>Ze shark ladies are always coming up from ze lake to sell me zis,</i>\" " + benoitMF("he","she") + " says. \"<i>It is a very effective, 'ow you say, 'counter septic'?");
 	player.orgasm('Generic');
-	if ((player.pregnancyType === PregnancyStore.PREGNANCY_OVIELIXIR_EGGS || player.findPerk(PerkLib.HarpyWomb) >= 0 || player.findPerk(PerkLib.Oviposition) >= 0) && (player.pregnancyIncubation === 0 || player.pregnancyType === PregnancyStore.PREGNANCY_OVIELIXIR_EGGS)) {
+	if ((player.pregnancyType == PregnancyStore.PREGNANCY_OVIELIXIR_EGGS || player.findPerk(PerkLib.HarpyWomb) >= 0 || player.findPerk(PerkLib.Oviposition) >= 0) && (player.pregnancyIncubation == 0 || player.pregnancyType == PregnancyStore.PREGNANCY_OVIELIXIR_EGGS)) {
 		outputText("  I would not inflict my children upon you.  Ere, take as much as you like.</i>\"");
 		menu();
 		addButton(0, "Take It", takeBenoitsContraceptives);
@@ -1342,7 +1342,7 @@ public function equipUnequipHairPin():void
 		player.keyItems[keyItemNum].value2 = 0; // if its not equipped it won't trigger any TF, right? ^^
 	} else {
 		// equip it
-		if (player.hair.type === Hair.GOO)
+		if (player.hair.type == Hair.GOO)
 			outputText("You try to slide the hair pin into your " + player.hairDescript() + ", but their semi-liquid state isn't enough to hold it in"
 			          +" place. The pin falls to the ground with a wet splat the moment you let it go. With a sigh you clean it up and then you put"
 			          +" it back.");
@@ -1396,7 +1396,7 @@ private function convertToBassyEyes():void
 	} else {
 		outputText("You tell [benoit name], that you've lost the basilisk eyes and ask [benoit em], if "
 		          +"[benoit ey] could grant them to you again.");
-		if (eyesGranted === 2) { // Second time
+		if (eyesGranted == 2) { // Second time
 			outputText("\n\n[benoit name] says: \"<i>Oh, you’ve lost zem?"
 			          +" Not what I expected to hear today, but very well [name]. I shall make ze potion...</i>\" ");
 		} else if (eyesGranted >= 3 && eyesGranted < 6) { // Third time and later
@@ -1555,7 +1555,7 @@ private function suggestSexAfterBasiWombed(later:Boolean = true):void {
 		player.createPerk(PerkLib.Oviposition,0,0,0,0);
 		outputText("\n(<b>Perk Unlocked: Oviposition - You will now regularly lay unfertilized eggs.</b>)");
 	}
-	if (player.pregnancyType === PregnancyStore.PREGNANCY_BASILISK) player.knockUpForce(PregnancyStore.PREGNANCY_BENOIT, player.pregnancyIncubation);
+	if (player.pregnancyType == PregnancyStore.PREGNANCY_BASILISK) player.knockUpForce(PregnancyStore.PREGNANCY_BENOIT, player.pregnancyIncubation);
 	doNext(camp.returnToCampUseOneHour);
 	player.orgasm('Vaginal');
 	dynStats("sen", -2);
@@ -1565,7 +1565,7 @@ private function suggestSexAfterBasiWombed(later:Boolean = true):void {
 //happens only at night, after all other night events
 //PC lays 2 eggs per 10 points of Fertility they have
 public function popOutBenoitEggs():void {
-	if (player.vaginas.length === 0) {
+	if (player.vaginas.length == 0) {
 		outputText("\nYou feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.\n");
 		player.createVagina();
 	}
@@ -1590,7 +1590,7 @@ public function popOutBenoitEggs():void {
 	outputText("clutch hatches, anyway.");
 	
 	//First Time: 
-	if (flags[kFLAGS.BENOIT_EGGS] === 0) {
+	if (flags[kFLAGS.BENOIT_EGGS] == 0) {
 		outputText("\n\nHe beams with joy, then looks confused.  \"<i>But... why have you brought zem 'ere?</i>\" " + benoitMF("he","she") + " questions.");
 		
 		outputText("\n\nYou explain that you don't feel your camp is safe enough to keep them there, and " + benoitMF("Benoit","Benoite") + " nods.  \"<i>Yes, I can see your point... come, give zem 'ere, and I shall look after them for ze both of us.</i>\"");
@@ -1743,14 +1743,14 @@ public function femoitFirstTimeYes():void
 	if (player.isTaur()) outputText("\n\nHer warm fingers travel over your body, brushing over your face, your belly, your [hips]; you feel as though you're being read like a book.  \"<i>Good Gods,</i>\" she murmurs as her hands lead back onto your flanks.  \"<i>Good Gods!</i>\" she cries out as she follows you all the way back to your mighty, powerful rear.  \"<i>I knew you were a centaur because of all ze clopping,</i>\" she says, rubbing your side back and forth in wonder.  \"<i>But to know it and actually feel it, zey are very different.</i>\"  She sighs.  \"<i>Zis is going to be... awkward, but I guess you are probably used to zat by now, yes?</i>\"");
 	else if (player.isDrider()) outputText("\n\nHer warm fingers travel over your body, brushing over your face, your belly, your [hips]; you feel as though you're being read like a book.  \"<i>Good Gods,</i>\" she murmurs as her hands lead back onto your abdomen. \"<i>Good Gods!</i>\" she cries out as she follows your bulging abdomen all the way back to your spinnerets. \"<i>I knew you were a spider because of all ze click clacking,</i>\" she says, her fingers feeling around one of your intricate, many-jointed legs in wonder . \"<i>But to know it and actually feel it, zey are very different.</i>\"");
 	else if (player.demonScore() > 4) outputText("\n\nHer warm fingers travel over your body, brushing over your face, your belly, your [hips]; you feel as though you're being read like a book.  She touches your horns and pauses; she reaches around, finds and grips your tail, running her grasp up to the spaded point. \"<i>So,</i>\" she says quietly. \"<i>You are one of zem.</i>\" She is silent for a while before finding a warm smile. \"<i>But I am being zilly.  I know you are different inside.</i>\"")
-	else if (player.dogScore() >= 4 && player.ears.type === 2 && player.tail.type === 2) outputText("\n\nHer warm fingers travel over your body, brushing over your face, your belly, your [hips]; you feel as though you're being read like a book.  She grins as she finds your floppy ears and outright laughs when she reaches around and touches your tail.  \"<i>I like dogs but not ZAT much, [name],</i>\" she giggles.  \"<i>No wonder Pierre 'as been acting jealous recently.</i>\"");
-	else if ((player.bunnyScore() >= 4 && player.ears.type === 7 && player.tail.type === 10) || (player.catScore() >= 4 && player.ears.type === 5 && player.tail.type === 8)) outputText("\n\nHer warm fingers travel over your body, brushing over your face, your belly, your [hips]; you feel as though you're being read like a book.  She grins as she finds your ears, outright laughs when she reaches around and touches your soft tail.  \"<i>I always wondered why Pierre gets all excited when 'e sees you,</i>\" she giggles.");
-	else if (player.harpyScore() >= 4 && player.wings.type !== 0 && player.arms.type === 1) outputText("\n\nHer warm fingers travel over your body, brushing over your face, your belly, your [hips]; you feel as though you're being read like a book.  She finds your wings and follows them up as far as she can reach; she carefully shifts her feet forward to touch at your own clawed toes.  \"<i>So zis is what irony is,</i>\" she murmurs, a smile playing on her lips as she touches your shoulder.  \"<i>My saviour is an 'arpy, come to ravish me.</i>\"");
-	else if (player.beeScore() >= 4 && player.wings.type !== 0 && player.lowerBody.type === 7) outputText("\n\nHer warm fingers travel over your body, brushing over your face, your belly, your [hips]; you feel as though you're being read like a book.  She finds your diaphanous wings and follows them up as far as she can reach, her grip on your sensitive membranes making you twitch a bit; then she sends her hands trailing down your carapace-armored limbs. \"<i>I always sought you just liked wearing big boots,</i>\" she murmurs. \"<i>But zis is actually a part of you?  'Ow... interesting.</i>\"");
+	else if (player.dogScore() >= 4 && player.ears.type == 2 && player.tail.type == 2) outputText("\n\nHer warm fingers travel over your body, brushing over your face, your belly, your [hips]; you feel as though you're being read like a book.  She grins as she finds your floppy ears and outright laughs when she reaches around and touches your tail.  \"<i>I like dogs but not ZAT much, [name],</i>\" she giggles.  \"<i>No wonder Pierre 'as been acting jealous recently.</i>\"");
+	else if ((player.bunnyScore() >= 4 && player.ears.type == 7 && player.tail.type == 10) || (player.catScore() >= 4 && player.ears.type == 5 && player.tail.type == 8)) outputText("\n\nHer warm fingers travel over your body, brushing over your face, your belly, your [hips]; you feel as though you're being read like a book.  She grins as she finds your ears, outright laughs when she reaches around and touches your soft tail.  \"<i>I always wondered why Pierre gets all excited when 'e sees you,</i>\" she giggles.");
+	else if (player.harpyScore() >= 4 && player.wings.type != 0 && player.arms.type == 1) outputText("\n\nHer warm fingers travel over your body, brushing over your face, your belly, your [hips]; you feel as though you're being read like a book.  She finds your wings and follows them up as far as she can reach; she carefully shifts her feet forward to touch at your own clawed toes.  \"<i>So zis is what irony is,</i>\" she murmurs, a smile playing on her lips as she touches your shoulder.  \"<i>My saviour is an 'arpy, come to ravish me.</i>\"");
+	else if (player.beeScore() >= 4 && player.wings.type != 0 && player.lowerBody.type == 7) outputText("\n\nHer warm fingers travel over your body, brushing over your face, your belly, your [hips]; you feel as though you're being read like a book.  She finds your diaphanous wings and follows them up as far as she can reach, her grip on your sensitive membranes making you twitch a bit; then she sends her hands trailing down your carapace-armored limbs. \"<i>I always sought you just liked wearing big boots,</i>\" she murmurs. \"<i>But zis is actually a part of you?  'Ow... interesting.</i>\"");
 	else if (player.gooScore() >= 4 && player.hasGooSkin()) outputText("\n\nHer warm fingers travel over your body, brushing over your face, your belly, your [hips]; you feel as though you're being read like a book.  \"<i>I knew you were different from ze squishy sounds you made,</i>\" she murmurs as her hands sink into your soft, amorphous mass.  \"<i>But zis is... good Gods, zis is strange.  And zis doesn't 'urt you at all?</i>\" she asks incredulously as she gently pokes a finger into you.  You answer her question by laughing.  \"<i>Zat must come in very useful,</i>\" she says.  You push yourself slowly up her arms and tell her she has no idea.");
 	else if (player.hasScales()) outputText("\n\nHer warm fingers travel over your body, brushing over your face, your belly, your [hips]; you feel as though you're being read like a book.  She starts slightly when she touches your scales, and then caresses the reptilian parts of your body with increasing interest.  \"<i>You didn't do zis just for me, did you [name]?</i>\" she murmurs.  \"<i>I 'ave to admit - it feels very good.</i>\"");
 	//[Fox:
-	else if ((player.foxScore() >= 4 || player.kitsuneScore() >= 4) && player.ears.type === Ears.FOX && player.tail.type === Tail.FOX) {
+	else if ((player.foxScore() >= 4 || player.kitsuneScore() >= 4) && player.ears.type == Ears.FOX && player.tail.type == Tail.FOX) {
 		if (player.tail.venom <= 1) outputText("\n\n" + benoitMF("His", "Her") + " warm fingers travel over your body, brushing over your face, your belly, your [hips]; you feel as though you're being read like a book.  " + benoitMF("He","She") + " grins as " + benoitMF("he","she") + " finds your perky ears, outright laughs when " + benoitMF("he","she") + " reaches around and touches your fluffy tail.  \"<i>I always wondered why Pierre gets all excited when 'e sees you,</i>\" " + benoitMF("he laughs", "she giggles") + ".");
 		else outputText("\n\n" + benoitMF("His", "Her") + " warm fingers travel over your body, brushing over your face, your belly, your [hips]; you feel as though you're being read like a book.  " + benoitMF("He","She") + " grins as " + benoitMF("he","she") + " finds your perky ears and outright laughs when " + benoitMF("he","she") + " reaches around and touches your fluffy tails.  \"<i>You didn't do zis just to trick me, did you [name]?</i>\" " + benoitMF("he laughs", "she giggles") + ".");
 	}
@@ -1763,9 +1763,9 @@ public function femoitFirstTimeYes():void
 	outputText("\n\nThe scent of your arousal is in the air and as Benoite inhales it in her own breath comes heavier.  Still grasping her butt, you spread her hips to reveal her genital slit, gleaming with wetness.  Bracing her against the wall, you press your [cock] against her ready sex.  \"<i>Please be gentle,</i>\" says a husky, nervous voice below you.  You respond by slowly pushing open her lips and sliding your head into her warmth.");
 
 	outputText("Benoite's pussy is virginally tight and you go as slowly as you can, lightly moving your hips as you work more of your length in.  Sharp claws grasp your back as you feel resistance that gives as you push more of yourself in; blood trickles down your shaft to drip onto the floor.  You keep working her slowly, withdrawing almost completely before sinking yourself in, using your head on the outward pull to tease at the clit hidden in her folds.  Benoite seems almost frozen by what's happening; she simply clutches at your back, breathing heavily and allowing you to do all the work.  You don't mind; whatever her mind is thinking her body is responding to your methodical treatment, her lips widening and slick moisture oiling your dick as you press into that tight, graspingly tight tunnel.");
-	if (player.biggestCockLength() < 15 && player.balls === 0) outputText("  Eventually you manage to hilt yourself entirely in her depths, your stomach pressing against her own tight belly.");
+	if (player.biggestCockLength() < 15 && player.balls == 0) outputText("  Eventually you manage to hilt yourself entirely in her depths, your stomach pressing against her own tight belly.");
 	else if (player.biggestCockLength() < 15 && player.balls > 0) outputText("  Eventually you manage to hilt yourself in her depths, your [balls] pressing into her sex as your stomach bumps into her own tight belly.");
-	else if (player.biggestCockLength() >= 15 && player.balls === 0) outputText("  Eventually you manage to bottom out, your dick pressed against her cervix.");
+	else if (player.biggestCockLength() >= 15 && player.balls == 0) outputText("  Eventually you manage to bottom out, your dick pressed against her cervix.");
 	else if (player.biggestCockLength() >= 15 && player.balls > 0) outputText("  Eventually you manage to bottom out, your dick pressed against her cervix, your [balls] swinging heavily below your shaft.");
 	outputText("  Staying like that for a moment, you slowly withdraw almost all of the way out before pushing all the way in again, continuing the process, your grunts melding with Benoite's soft moans at the almost-agonizingly slow sex, exercising all the self-restraint you have not to begin pounding away at the basilisk's deliciously tight cunt.  Occasionally you pause at the deepest moment, waiting for your blood to cool down and letting Benoite get used to the sensation of being fully stuffed by you.");
 
@@ -1869,7 +1869,7 @@ public function femoitSexIntro():void
 		}
 		else
 		{
-			if (flags[kFLAGS.FEMOIT_SPOONED] === 0)
+			if (flags[kFLAGS.FEMOIT_SPOONED] == 0)
 			{
 				flags[kFLAGS.FEMOIT_SPOONED]++;
 				outputText("Benoite seems to peer at you, then places her clawed hand gently on her belly. \"<i>And I sought my eyes were the ones that didn't work... You can surely see how big I am, yes?  Do you really sink you could carry me for the sex?  Because there is no way I can let you sit on my lap with all zese eggs in me.</i>\"");
@@ -1903,7 +1903,7 @@ public function femoitSexIntro():void
 			outputText("\n\nWith a surprising amount of languidness, you gently rock yourself back and forth inside of her, slowly drawing yourself out and then sliding back inside.  The basilisk's belly leaves her at your mercy, and you take full advantage of that, playing with her small nipples (after all, what other purpose do they have besides being used for her pleasure?) and stroking her belly.  She hisses and coos, but remains immobile; living proof of your virility, your sheer masculine potency.  Your hands cannot reach far enough to encompass all of her belly, so heavy is she with your offspring, and this merely spurs your pride and your arousal.  Only the need to avoid injuring her or her precious cargo keeps you from rutting her like a wild animal... though her desperate cries as she begs you to go faster, to do it harder, help quench the urges.  She is yours, totally and utterly, and you will have her as you want her.");
 
 			outputText("\n\nSeeing that her pleas aren't getting her anywhere, Benoite manages to fight past her lust to try a different tack.  \"<i>C-Come on!  Is zis ze cock zat knocked me up?  Ze virile fuckstick zat made all zese eggs?</i>\"  She grinds her crotch into you as best she can, her slick cunt hungrily squeezing your intruding cock.  \"<i>I am not ze nervous leetle virgin anymore, [name]; I am ze expectant mozzair.  Give me your cum; let me be warm and full of your seed again! Zat is, if you have ze balls to do eet?</i>\" she coos");
-			if (player.balls === 0) outputText(" with a smile, knowing damn well you don't, literally");
+			if (player.balls == 0) outputText(" with a smile, knowing damn well you don't, literally");
 			outputText(".");
 
 			outputText("\n\nYou can't resist it anymore; you slide yourself home in one final forceful thrust and cum, eliciting a delighted squawk from Benoite as jizz thunders from your cock into her depths, her own orgasm lost amidst the cascade of fluids churning and seething into her.  With her womb as jam-packed as it is, incapable of holding any more, the pressure just sends everything spurting back out of her cunt, drenching the pair of you in your seed.  Finally, your orgasm ends and you sigh in unison with her.");
@@ -1930,7 +1930,7 @@ public function femoitSexIntro():void
 		outputText("\n\nShe lets out a howl of pain, claws digging deeply into the scarred wood of the tough old table she's leaning on, her huge belly hanging heavily over the floor. Instinct motivates you to help the soon-to-be mother of your children, and you dart around behind her.");
 
 	// (First time: 
-		if (flags[kFLAGS.FEMOIT_HELPED_LAY] === 0)
+		if (flags[kFLAGS.FEMOIT_HELPED_LAY] == 0)
 		{
 			outputText("\n\nYou ask if she can think of any way for you to help her.");
 
@@ -1944,7 +1944,7 @@ public function femoitSexIntro():void
 			if (benoitVeryHeavyPreggers() || benoitExtremePreggers()) outputText("... which is good, because you can tell there're a lot of them coming");
 			outputText(".  That done, you squat down behind Benoite, keeping your head down to avoid having it slapped by her swishing tail, and reach up between her legs. She promptly lets out a shriek.");
 
-			if (flags[kFLAGS.FEMOIT_HELPED_LAY] === 1)
+			if (flags[kFLAGS.FEMOIT_HELPED_LAY] == 1)
 			{
 				outputText("\"<i>What's the matter?</i>\" you blurt, alarmed.");
 

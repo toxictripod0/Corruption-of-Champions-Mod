@@ -13,7 +13,7 @@ package classes.Scenes.Seasonal
 		public function XmasBase() {}
 		
 		public function isItHolidays():Boolean {
-			return (date.date >= 25 && date.month === 11 || flags[kFLAGS.ITS_EVERY_DAY] > 0 || player.findPerk(PerkLib.AChristmasCarol) >= 0);
+			return (date.date >= 25 && date.month == 11 || flags[kFLAGS.ITS_EVERY_DAY] > 0 || player.findPerk(PerkLib.AChristmasCarol) >= 0);
 		}
 		
 	}

@@ -17,11 +17,11 @@ public function auntNancy(display:Boolean = true):Boolean {
 		if (display) {
 			outputText("\n\nYou see a rather buxom woman with short, white hair in a neck- and sleeve-less black dress cleaning glasses with her bar towel.  She makes the task look simple, moreso because she has two pairs of arms, wrapped in what look like shiny black gloves.");
 			//[If MetNancy = 0]
-			if (flags[kFLAGS.NANCY_MET] === 0) outputText("  She");
+			if (flags[kFLAGS.NANCY_MET] == 0) outputText("  She");
 			else outputText("  Aunt Nancy");
 			outputText(" glances up at you and smiles as you enter");
 			//[(if unmet)
-			if (flags[kFLAGS.NANCY_MET] === 0) outputText(", and you see that she has additional red eyes spread across her forehead");
+			if (flags[kFLAGS.NANCY_MET] == 0) outputText(", and you see that she has additional red eyes spread across her forehead");
 			outputText(".");
 		}
 		return true;
@@ -33,7 +33,7 @@ public function interactWithAuntNancy():void {
 	clearOutput();
 	//[Interaction 2]
 	//[If Time = 1400, Relationship with Aunt Nancy >= 30, and PillowTalk= 0]
-	if (flags[kFLAGS.NANCY_RELATIONSHIP_LEVEL] >= 30 && getGame().time.hours === 14 && flags[kFLAGS.NANCY_TIMES_BONED] === 0) {
+	if (flags[kFLAGS.NANCY_RELATIONSHIP_LEVEL] >= 30 && getGame().time.hours == 14 && flags[kFLAGS.NANCY_TIMES_BONED] == 0) {
 		outputText("As you enter the bar, looking forward to spending some time with Aunt Nancy, you see that she is cleaning up and getting ready to leave.  She spots you with one of her eyes and smiles, waving you closer with a single hand as the other three set glasses under the bar.\n\n");
 
 		outputText("\"<i>Afternoon, friend!</i>\" she says, cheerily.  \"<i>You've certainly been coming in a lot, and I can't say I don't appreciate your company.</i>\"  Aunt Nancy looks you over a little, smiling a little more wistfully and melancholically now.  \"<i>You remind me a little of my husband,</i>\" she admits, finishing up and skittering out from behind the bar on her many legs as the afternoon shift bartender takes her place.  \"<i>It's... nothing I can put my finger on.  Just, you have a certain... <b>quality</b> to you.</i>\"\n\n");
@@ -136,7 +136,7 @@ private function lightStuff():void {
 	outputText("Once she gives you the drink, you take a tentative sip, and find it very sweet and refreshing, without seeming very strong or alcoholic.  It's very good, and you quickly have another.  ");
 	
 	//[If FirstTalkNancy = 0]
-	if (flags[kFLAGS.NANCY_TIMES_TALKED] === 0) {
+	if (flags[kFLAGS.NANCY_TIMES_TALKED] == 0) {
 		flags[kFLAGS.NANCY_TIMES_TALKED]++;
 		outputText("\"<i>So,</i>\" she says, settling one set of arms on the bar and supporting her head with the other, \"<i>what's your story, friend?  You have a certain...</i>\" Aunt Nancy waves with a hand. \"<i>look about you.  Like my late husband, Marae send him to his reward.  You're an... adventurer, I take it?  You live off the land, fighting monsters for gems, scavenging all your equipment off what you can find or put together yourself?</i>\"\n\n");
 
@@ -172,14 +172,14 @@ private function lightStuff():void {
 		outputText("She takes another drink, melancholically, before shaking her head to clear it.  \"<i>Well, thank you for sharing some time with an old widow like me.</i>\"  She flutters her still-beautiful eyelashes at you once or twice, then chuckles.  \"<i>Come back some time.</i>\"\n\n");
 	
 		//[50% chance to gain 1-2 Intelligence, +20 Relationship with Aunt Nancy, FirstTalkNancy += 1]
-		if (rand(2) === 0) dynStats("int", 1+rand(2));
+		if (rand(2) == 0) dynStats("int", 1+rand(2));
 		flags[kFLAGS.NANCY_RELATIONSHIP_LEVEL] += 20;
 	}
 	//[Else:]
 	else {
 		outputText("As you sip your drink, you and Nancy swap adventuring stories for a while, enjoying one another's company in the fairly quiet bar.  The older spider-lady is a good conversationalist, and you feel a little closer for having shared some time with her.");
 		//[50% chance to gain 1-2 Intelligence, +10 Relationship with Aunt Nancy]
-		if (rand(2) === 0) dynStats("int", 1+rand(2));
+		if (rand(2) == 0) dynStats("int", 1+rand(2));
 		flags[kFLAGS.NANCY_RELATIONSHIP_LEVEL] += 20;
 	}
 	doNext(camp.returnToCampUseOneHour);
@@ -221,7 +221,7 @@ private function auntNancyPoonPartII():void {
 	outputText("With her other three hands, the spider-lady lights a match and ignites a little lantern, which she raises to hang from the wall.  In the little area it illuminates, you can see that Aunt Nancy has removed her neck-less black dress, letting her impressive bosom bounce modestly as she works, and catch a glimpse of her unusual genitals before she turns to face you again.\n\n");
 
 	//[If PillowTalk = 0]
-	if (flags[kFLAGS.NANCY_TIMES_BONED] === 0) outputText("\"<i>It's... been a long, long time,</i>\" murmurs Aunt Nancy, her throaty voice washing over you, as two of her hands rest on your " + player.chestDesc() + " and the other two wrap carefully around your shoulders and neck, gently rubbing you in the promised massage.  She's crawling along the web, her many feet easily avoiding the sticky parts, and her face is mere inches from yours.  You can smell her sweet, slightly alcohol-scented breath as her many eyes look down at you.  \"<i>I haven't... been with anyone since I lost my husband, and... well... I... I need this.  Will you please be with me, if only for a little while?</i>\"\n\n");
+	if (flags[kFLAGS.NANCY_TIMES_BONED] == 0) outputText("\"<i>It's... been a long, long time,</i>\" murmurs Aunt Nancy, her throaty voice washing over you, as two of her hands rest on your " + player.chestDesc() + " and the other two wrap carefully around your shoulders and neck, gently rubbing you in the promised massage.  She's crawling along the web, her many feet easily avoiding the sticky parts, and her face is mere inches from yours.  You can smell her sweet, slightly alcohol-scented breath as her many eyes look down at you.  \"<i>I haven't... been with anyone since I lost my husband, and... well... I... I need this.  Will you please be with me, if only for a little while?</i>\"\n\n");
 	else outputText("\"<i>Are you ready for me, friend?</i>\" murmurs Aunt Nancy, her throaty voice washing over you, as two of her hands rest on your " + player.chestDesc() + " and the other two wrap carefully around your neck and shoulders, gently rubbing you in the promised massage. She's crawling along the web, her many feet easily avoiding the sticky parts, and her face is mere inches from yours. You can smell her sweet, slightly alcohol-scented breath as her many eyes look down at you.  \"<i>I certainly am, little fly.</i>\"\n\n");
 
 	outputText("Quietly, mesmerized by her needy red eyes, you nod.  Aunt Nancy smiles demurely.  \"<i>Good,</i>\" she purrs, and lowers her lips to yours.  You weren't quite sure what to expect, but her lips are soft and gentle as she presses them on you.  Her tongue gently snakes into your mouth, wrapping around yours with ease, and her sweet-tasting saliva is soon sliding down your throat.  Instantly, you feel your body loosening up, and ");
@@ -266,7 +266,7 @@ private function auntNancyPoonPartII():void {
 		outputText("Aunt Nancy gently caresses your " + player.multiCockDescriptLight() + " with her smooth black hands, enjoying your moans of delight, before lowering her head to kiss the head of your " + player.cockDescript(0) + ".  Her tongue snakes around it, and the spider-lady sucks a little, drinking up the little stream of pre-cum now leaking out, before raising her head up to look at you, a gentle smile on her face as her many hands continue to rub and explore your " + player.multiCockDescriptLight() + ".  \"<i>Not as good as my husband's,</i>\" she whispers, \"<i>but quite a piece, certainly.</i>\"\n\n");
 	}
 	//[If you have no genitals at all:]
-	if (player.gender === 0) outputText("\"<i>Well, well, well,</i>\" murmurs Aunt Nancy, intrigued by what she sees.  \"<i>Very unorthodox, but we'll see what we can do.</i>\"  She pauses to lick the fleshy expanse where your genitals used to be.\n\n");
+	if (player.gender == 0) outputText("\"<i>Well, well, well,</i>\" murmurs Aunt Nancy, intrigued by what she sees.  \"<i>Very unorthodox, but we'll see what we can do.</i>\"  She pauses to lick the fleshy expanse where your genitals used to be.\n\n");
 
 	//[All:] 
 	outputText("Two of her hands suddenly wrap themselves around the cheeks of your " + player.buttDescript() + ", and squeeze gently.  \"<i>Very nice,</i>\" the spider-lady whispers, and then her long tongue spools out to slide over the surface of your " + player.buttDescript() + ".  The tip of it even slips inside, gently, and you feel her saliva coating the inside of your bum.  It feels sensitive, and much more relaxed now than a minute ago.\n\n");
@@ -287,7 +287,7 @@ private function auntNancyPoonPartII():void {
 				outputText("As Aunt Nancy rides you enthusiastically, the spider-lady lifts ");
 				if (player.totalCocks() > 2) outputText("another one of ");
 				outputText("your ");
-				if (player.cockTotal() === 2) outputText("other cock ");
+				if (player.cockTotal() == 2) outputText("other cock ");
 				else outputText("cocks ");
 				outputText("up to her heaving bosom, and slips it between her soft, lovely breasts.  \"<i>Want something else nice?</i>\" asks the spider-lady, eyes twinkling.\n\n");
 	
@@ -303,13 +303,13 @@ private function auntNancyPoonPartII():void {
 			}
 			//[If there are still dicks left over:]
 			if (player.cockTotal() > 2) {
-				 if (player.cockTotal() === 3) outputText("Another of her hands wraps itself around your other cock");
+				 if (player.cockTotal() == 3) outputText("Another of her hands wraps itself around your other cock");
 				 else outputText("Her other hands wrap themselves around more of your cocks");
 				 outputText(", milking and stroking the ");
 				 outputText("pulsating prick");
 				 if (player.cockTotal() > 3) outputText("s");
 				 outputText(" for all ");
-				 if (player.cockTotal() === 3) outputText("it's");
+				 if (player.cockTotal() == 3) outputText("it's");
 				 else outputText("they're");
 				 outputText(" worth.\n\n");
 			}
@@ -398,7 +398,7 @@ private function auntNancyPoonPartIII():void {
 		if (player.cockTotal() > 2) {
 			//[If no cocks are of titfucking size and # Cocks = 2 or if there are cocks of titfucking size and # Cocks = 3] 
 			if (player.cockTotal() > 1) {
-				if ((player.cocks[y].cockLength < 22 && player.cockTotal() === 2) || (player.cocks[y].cockLength >= 22 && player.cockTotal() === 2)) 
+				if ((player.cocks[y].cockLength < 22 && player.cockTotal() == 2) || (player.cocks[y].cockLength >= 22 && player.cockTotal() == 2)) 
 					outputText("Your other dick fires off too, her smooth, shell-covered hands still wrapped around it, and it makes even more of a mess, splattering over both of you.\n\n");
 				//[Else] 
 				else if ((player.cocks[y].cockLength < 22 && player.cockTotal() > 2) || (player.cocks[y].cockLength >= 22 && player.cockTotal() > 2))
@@ -408,7 +408,7 @@ private function auntNancyPoonPartIII():void {
 		//[If you also have a vagina:]
 		if (player.hasVagina()) {
 			outputText("Your " + player.vaginaDescript(0) + " clenches, tightly, ");
-			if (player.balls === 0 && (player.cocks[y].cockLength < 22 || (player.cocks[y].cockLength >= 22 && player.cockTotal() <= 2)))
+			if (player.balls == 0 && (player.cocks[y].cockLength < 22 || (player.cocks[y].cockLength >= 22 && player.cockTotal() <= 2)))
 				outputText("squeezing the fingers on Aunt Nancy's hand still tickling your insides");
 			else outputText("making you long for something inside of it");
 			outputText(", as " + player.sMultiCockDesc() + " spasms in ecstasy.\n\n");
@@ -475,7 +475,7 @@ private function auntNancyPoonPartIV():void {
 	flags[kFLAGS.NANCY_RELATIONSHIP_LEVEL] += 20;
 	
 	//[Next Page, If PillowTalk = 0]
-	if (flags[kFLAGS.NANCY_TIMES_BONED] === 0) {
+	if (flags[kFLAGS.NANCY_TIMES_BONED] == 0) {
 		outputText("You awaken on Aunt Nancy's \"<i>bed,</i>\" an unbelievably comfortable pile of discarded, non-sticky webbing, your head still resting on her comfortable, pillowy bosom.  Slowly, you manage to sit up, tenderly massaging your aching body, especially your ");
 		if (player.gender > 0) outputText("genitals");
 		else outputText("jaw");

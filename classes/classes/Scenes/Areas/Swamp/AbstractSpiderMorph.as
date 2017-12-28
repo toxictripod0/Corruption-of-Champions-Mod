@@ -17,16 +17,16 @@ public class AbstractSpiderMorph extends Monster
 
 		override protected function performCombatAction():void
 		{
-			if (player.spe >= 2 && rand(2) === 0) {
+			if (player.spe >= 2 && rand(2) == 0) {
 				spiderMorphWebAttack();
 			}
-			else if (!player.hasStatusEffect(StatusEffects.WebSilence) && rand(3) === 0) {
+			else if (!player.hasStatusEffect(StatusEffects.WebSilence) && rand(3) == 0) {
 				spiderSilence();
 			}
-			else if (!player.hasStatusEffect(StatusEffects.Disarmed) && player.weaponName !== "fists" && rand(3) === 0) {
+			else if (!player.hasStatusEffect(StatusEffects.Disarmed) && player.weaponName != "fists" && rand(3) == 0) {
 				spiderDisarm();
 			}
-			else if (rand(2) === 0 || player.spe < 2) getBitten();
+			else if (rand(2) == 0 || player.spe < 2) getBitten();
 			else eAttack();
 		}
 
@@ -49,7 +49,7 @@ public class AbstractSpiderMorph extends Monster
 				outputText("You evade, avoiding the sticky strands!");
 			}
 			//("Misdirection"
-			else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName === "red, high-society bodysuit") {
+			else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
 				outputText("Your misleading movements allow you to easily sidestep the sticky strands!");
 			}
 			//Determine if cat'ed
@@ -59,7 +59,7 @@ public class AbstractSpiderMorph extends Monster
 			//Got hit
 			else {
 				var web:WebDebuff = player.statusEffectByType(StatusEffects.Web) as WebDebuff;
-				if (web === null) {
+				if (web == null) {
 					outputText("The silky strands hit you, webbing around you and making it hard to move with any degree of speed.");
 					if (player.canFly()) outputText("  Your wings struggle uselessly in the bindings, no longer able to flap fast enough to aid you.");
 					outputText("\n");
@@ -111,7 +111,7 @@ public class AbstractSpiderMorph extends Monster
 				outputText("You evade, avoiding the bite!");
 			}
 			//("Misdirection"
-			else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName === "red, high-society bodysuit") {
+			else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
 				outputText("Your misleading movements allow you to easily sidestep the spider bite!");
 			}
 			//Determine if cat'ed
@@ -119,7 +119,7 @@ public class AbstractSpiderMorph extends Monster
 				outputText("You throw yourself out of the way with cat-like agility at the last moment, avoiding " + mf("his", "her") + " attack.\n");
 			}
 			else {
-				if (rand(5) === 0) {
+				if (rand(5) == 0) {
 					outputText("You react far too slowly, and before you can even think to dodge, " + mf("he", "she") + "'s bitten deep into you, pumping large squirts of venom deep into your body.  Unnatural heat rolls through you, pooling in your groin until you're lewdly bucking your hips against the spider-morph's thigh.  " + mf("He", "She") + " pulls out and steps back, ");
 					if (hasVagina()) outputText("casually cupping her breasts while you watch with venom-dilated eyes, slowly touching yourself.  Once she stops, you shake your head and master yourself, remembering that you're supposed to be fighting this " + mf("boy", "girl") + "!\n");
 					else outputText("casually tugging on his relatively short, girthy dick as you watch with venom-dilated eyes, slowly touching yourself.  Once he stops, you shake your head and master yourself, remembering that you're supposed to be fighting this " + mf("boy", "girl") + "!\n");
@@ -151,16 +151,16 @@ public class AbstractSpiderMorph extends Monster
 				outputText("You pull your weapon back evasively and the webbing goes wide, missing entirely!");
 			}
 			//("Misdirection"
-			else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName === "red, high-society bodysuit") {
+			else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
 				outputText("Your misleading movements allow you to easily sidestep the webbing!");
 			}
 			//Determine if cat'ed
 			else if (player.findPerk(PerkLib.Flexibility) >= 0 && rand(100) < 6) {
 				outputText("You throw yourself out of the way with cat-like agility at the last moment, avoiding " + mf("his", "her") + " attack.\n");
 			}
-			else if (player.weaponName === "spiked gauntlet" || player.weaponName === "hooked gauntlets") {
+			else if (player.weaponName == "spiked gauntlet" || player.weaponName == "hooked gauntlets") {
 				outputText("The webbing hits your ");
-				if (player.weaponName === "spiked gauntlet") outputText("gauntlet, but it's so effectively fastened to your hands that the attack fails to disarm you.\n");
+				if (player.weaponName == "spiked gauntlet") outputText("gauntlet, but it's so effectively fastened to your hands that the attack fails to disarm you.\n");
 				else outputText("gauntlets, but they're so effectively fastened to your hands that the attack fails to disarm you.\n");
 			}
 			else {
@@ -191,7 +191,7 @@ public class AbstractSpiderMorph extends Monster
 				outputText("You pull your weapon back evasively and the webbing goes wide, missing entirely.");
 			}
 			//("Misdirection"
-			else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName === "red, high-society bodysuit") {
+			else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
 				outputText("Your misleading movements allow you to easily sidestep the webbing!");
 			}
 			//Determine if cat'ed

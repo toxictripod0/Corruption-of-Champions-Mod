@@ -153,7 +153,7 @@ internal function sheilaCup():String {
 	else if (flags[kFLAGS.SHEILA_CORRUPTION] < 290) return "'so big it makes you say' OO-cup";
 	else if (flags[kFLAGS.SHEILA_CORRUPTION] < 300) return "P-cup";
 	else if (flags[kFLAGS.SHEILA_CORRUPTION] < 310 && player.cocks.length > 0) return "'would feel great around your' PP-cup";
-	else if (flags[kFLAGS.SHEILA_CORRUPTION] < 310 && player.cocks.length === 0) return "PP-cup";
+	else if (flags[kFLAGS.SHEILA_CORRUPTION] < 310 && player.cocks.length == 0) return "PP-cup";
 	else if (flags[kFLAGS.SHEILA_CORRUPTION] < 320) return "Q-cup";
 	else if (flags[kFLAGS.SHEILA_CORRUPTION] < 330) return "QQ-cup";
 	else if (flags[kFLAGS.SHEILA_CORRUPTION] < 340) return "R-u-serious?-cup";
@@ -183,33 +183,33 @@ public function sheilaEncounterRouter():void {
 	//UNFUCK FLAGS
 	if (flags[kFLAGS.SHEILA_CLOCK] > 0)
 		flags[kFLAGS.SHEILA_CLOCK] = 0
-	if (sheilaCorruption() >= 100 && flags[kFLAGS.SHEILA_DEMON] === 0)
+	if (sheilaCorruption() >= 100 && flags[kFLAGS.SHEILA_DEMON] == 0)
 		flags[kFLAGS.SHEILA_DEMON] = 1;
-	if (flags[kFLAGS.SHEILA_DEMON] === 1)
+	if (flags[kFLAGS.SHEILA_DEMON] == 1)
 		flags[kFLAGS.SHEILA_XP] = 4;
 	
 	//ACTUALLY PICK ENCOUNTER!
-	if (flags[kFLAGS.SHEILA_DEMON] === 0) {
+	if (flags[kFLAGS.SHEILA_DEMON] == 0) {
 		//PREG SHIT
-		if (pregnancy.isPregnant && pregnancy.incubation === 0 && flags[kFLAGS.SHEILA_XP] >= -2) {
-			if (flags[kFLAGS.SHEILA_JOEYS] === 0) normalSheilaPregNotifNumberOne();
+		if (pregnancy.isPregnant && pregnancy.incubation == 0 && flags[kFLAGS.SHEILA_XP] >= -2) {
+			if (flags[kFLAGS.SHEILA_JOEYS] == 0) normalSheilaPregNotifNumberOne();
 			else normalSheilaPregNotifREPEATEDED();
 			return;
 		}
-		if (flags[kFLAGS.SHEILA_XP] === 0) sheilaFirstEncounter();
-		else if (flags[kFLAGS.SHEILA_XP] === -1 ) sheilaApology();
+		if (flags[kFLAGS.SHEILA_XP] == 0) sheilaFirstEncounter();
+		else if (flags[kFLAGS.SHEILA_XP] == -1 ) sheilaApology();
 		//XP-2 Sheila's apology (sheila xp = -2 and demon sheila = 0):
-		else if (flags[kFLAGS.SHEILA_XP] === -2) sheilaIsSorrySheRapedYou();
+		else if (flags[kFLAGS.SHEILA_XP] == -2) sheilaIsSorrySheRapedYou();
 		//XP-3 or XP-4 She-mad (Sheila XP <= -3 and demon sheila = 0):
-		else if (flags[kFLAGS.SHEILA_XP] === -3 || flags[kFLAGS.SHEILA_XP] === -4) sheilaReallyMad();
+		else if (flags[kFLAGS.SHEILA_XP] == -3 || flags[kFLAGS.SHEILA_XP] == -4) sheilaReallyMad();
 		//XP1: Reconciliation encounter (sheila xp = 1 and demon sheila = 0):
-		else if (flags[kFLAGS.SHEILA_XP] === 1) sheilaReconcile();
+		else if (flags[kFLAGS.SHEILA_XP] == 1) sheilaReconcile();
 		//XP2: Familiarizing (Sheila XP = 2; or Sheila XP = 3 AND time =/= 20:00 and demon sheila = 0):
-		else if (flags[kFLAGS.SHEILA_XP] === 2 || (flags[kFLAGS.SHEILA_XP] === 3 && getGame().time.hours !== 20)) sheilaGettingFamiliar();
+		else if (flags[kFLAGS.SHEILA_XP] == 2 || (flags[kFLAGS.SHEILA_XP] == 3 && getGame().time.hours != 20)) sheilaGettingFamiliar();
 		//XP3: Sexy Time (sheila xp = 3 AND time = 20:00 and demon sheila = 0):
-		else if (flags[kFLAGS.SHEILA_XP] === 3 && getGame().time.hours === 20) sheilaXPThreeSexyTime();
+		else if (flags[kFLAGS.SHEILA_XP] == 3 && getGame().time.hours == 20) sheilaXPThreeSexyTime();
 		//XP4: Fancy meeting you here (sheila xp >= 4 and demon sheila = 0):
-		else if (flags[kFLAGS.SHEILA_XP] === 4) fuckBuddySheilaMeeting();
+		else if (flags[kFLAGS.SHEILA_XP] == 4) fuckBuddySheilaMeeting();
 		else {
 			outputText("A BUG HAPPENED.  YOUR SHEILA_XP: " + flags[kFLAGS.SHEILA_XP] + ". <b>Value should be between -3 to 4.</b>");
 			doNext(camp.returnToCampUseOneHour);
@@ -219,7 +219,7 @@ public function sheilaEncounterRouter():void {
 	else {
 		//Post-demon pregnancy notif (demon sheila = 1 and sheilapreg = 4)
 		//increment imp children counter?
-		if (pregnancy.isPregnant && pregnancy.incubation === 0) demonImpChildren();
+		if (pregnancy.isPregnant && pregnancy.incubation == 0) demonImpChildren();
 		//Demon Sheila encounter (demon sheila = 1 and sheilapreg < 4)
 		else demonSheilaEncounter();
 
@@ -241,7 +241,7 @@ private function sheilaCorruptionUpdate():void {
 		else {
 			temp = 0;
 			//Small change, do as much as possible.
-			while(Math.round(player.cor) !== Math.round(sheilaCorruption())) {
+			while(Math.round(player.cor) != Math.round(sheilaCorruption())) {
 				player.cor -= 1;
 				if (Math.round(player.cor) <= Math.round(sheilaCorruption())) {
 				   break;
@@ -264,7 +264,7 @@ private function sheilaCorruptionUpdate():void {
 		else {
 			temp = 0;
 			//Small change, do as much as possible.
-			while(Math.round(player.cor) !== Math.round(sheilaCorruption())) {
+			while(Math.round(player.cor) != Math.round(sheilaCorruption())) {
 				player.cor += 1;
 				if (Math.round(player.cor) >= Math.round(sheilaCorruption())) {
 				   break;
@@ -279,7 +279,7 @@ private function sheilaCorruptionUpdate():void {
 		}
 	}
 	//Get one for demon Sheila regardless.
-	if (flags[kFLAGS.SHEILA_DEMON] === 1) dynStats("cor", 1);
+	if (flags[kFLAGS.SHEILA_DEMON] == 1) dynStats("cor", 1);
 }
 
 //XP0: the first encounter (sheila xp =0 and demon sheila = 0):
@@ -319,13 +319,13 @@ private function sheila1ndEncLookCloserPtII():void {
 	clearOutput();
 	outputText("You subject yourself to her examination; she seems to take professional interest in the way you hold your [weapon].  ");
 	//[(PC weapon = Scarred Blade)]
-	if (player.weaponName === "Scarred Blade") outputText("As the blade feels her gaze, it vibrates eagerly toward her, sliding partway out of the oiled scabbard; she stares into the exposed metal transfixed, as if looking into the diary of a past life.  Abruptly, she shakes her head and turns away, and the saber calms down.  ");
+	if (player.weaponName == "Scarred Blade") outputText("As the blade feels her gaze, it vibrates eagerly toward her, sliding partway out of the oiled scabbard; she stares into the exposed metal transfixed, as if looking into the diary of a past life.  Abruptly, she shakes her head and turns away, and the saber calms down.  ");
 	outputText("Meanwhile, you use the opportunity to take your own look at her.  She's about six and a half feet unbent, though her legs are crooked like an animal's and could conceivably push her up to seven if straightened.  Her tapered tail only reaches a little past her hips.  The straight hair on her head is colored like her fur and chopped off at the jawline, and her bangs are tucked behind one of her long ears.  They slip forward whenever she bends her head down, only to be retucked with a free hand when she looks up again.  Her face is rather pretty overall, with an egg or oval shape that tapers at the chin and slight cheekbones, but falls short of true beauty by being a shade too commonplace.  She has a small, even nose, and her eyes are a very light brown - amber, even, depending on the angle of the light.  Looking downwards, you can see her shirt is cut with a v-neck, revealing cleavage from a pair of medium-sized breasts; probably C-cup, though it's hard to say with the vest in the way.  Her body is toned and her skin is somewhat tan, you'd guess she spends a lot of time out of doors.");
 	outputText("\n\nFinally satisfied with looking you over, she says, \"<i>She'll be apples.  Sorry to put y'out, but you never know what sort you'll find in the back of nowhere, right?</i>\"");
 	//[(libido>=50)
 	if (player.lib >= 50) outputText("  Noting you still checking out her body, she smirks and says, \"<i>Enjoying your lookie, then?  Up here, cobber,</i>\" causing you to snap your head up sheepishly.");
 	outputText("  You nod at the strange woman and introduce yourself.");
-	if (player.short !== "Sheila") outputText("  \"<i>" + player.short + ", eh?  My mates just call me Sheila.  Bunch of jokers, the bastards.</i>\"");
+	if (player.short != "Sheila") outputText("  \"<i>" + player.short + ", eh?  My mates just call me Sheila.  Bunch of jokers, the bastards.</i>\"");
 	else outputText("  \"<i>You too, eh?  Sheila's what my mates call me for a nickname.  Don't suppose you got yours from a bunch of adolescent-minded wankers, though.</i>\"");
 	
 	outputText("\n\nStrange to see another person so far from anywhere, and a friendly one at that.  Sheila smiles a tight-lipped smile at you and tells you she felt the same herself.  \"<i>Right dangerous out here, with all the bloody gnolls and belligerent cows about.  Of course they've always been whackers.  I was just hunting a bit of tucker, but it's got clean away.</i>\"  She gestures toward the ground.  Next to her feet is a trap cleverly hidden in the brush, though it looks like her quarry broke the snare.");
@@ -602,7 +602,7 @@ private function sheilaReallyMad():void {
 	//[(sheila corruption >= 90)
 	if (flags[kFLAGS.SHEILA_CORRUPTION] >= 90) outputText("It's so hard to remember myself anymore, and the taint you've put in my body goes crazy when you touch me.  Do you want me to get on my hands and knees?</i>\"  The woman lowers herself to the ground.  \"<i>I beg you.  ");
 	outputText("Please, please leave me alone.");
-	if (flags[kFLAGS.SHEILA_XP] === -3) outputText("  I know you... you're not as bad as the rest of the monsters out here, so... please.");
+	if (flags[kFLAGS.SHEILA_XP] == -3) outputText("  I know you... you're not as bad as the rest of the monsters out here, so... please.");
 	outputText("</i>\"");
 	//[Stand][Leave]
 	menu();
@@ -699,7 +699,7 @@ private function sheilaReconcileKay2():void {
 	
 	outputText("\n\n\"<i>You make it sound like it's only the three blokes and yours truly huddled in a cave for warmth,</i>\" she responds, finally.  \"<i>Sorry, I know I've never said otherwise; just a funny thought.  Actually we're part of a little hidden alcove, village-sized, with over fifteen families.  Everyone I've ever met that's like me lives in a similar enclave, led by a political and quasi-religious yobbo");
 	//[(pc is kangaroo)
-	if (player.race() === "kangaroo-morph") outputText(" - except you, I suppose");
+	if (player.race() == "kangaroo-morph") outputText(" - except you, I suppose");
 	outputText(".  We trade our goods in prearranged op shops and dead drops but avoid bringing outsiders into our own settlements, even when they're right corkers.</i>\"");
 	
 	outputText("\n\nYou press her on the last point.  \"<i>Well, what you don't know, you can't reveal when the demons take you, right?</i>\" she answers.  \"<i>I dunno if I should tell you this, but... the other reason has to do with our bodies.</i>\"  She looks over at you, searching your face for something inscrutable; you compose a mask of patient, perfect attention as you chew another mouthful of meat.  \"<i>Y'see, we're very empathetic to and conductive of emotions under certain circumstances - namely, during a shag.</i>\"  She looks away again, into the fire; as you peer closer, she actually appears to be blushing.  \"<i>When we, er... orgasm,</i>\" she resumes, still not meeting your eyes, \"<i>we give or take emotion and feeling from our partner depending on whether they have more or less than us.  For example, it means that horny buggers");
@@ -991,10 +991,10 @@ private function shielaXPThreeSexyTimePostSexStayII():void {
 		else outputText("  Her pussy squirts and sucks alternately, trying to find purchase on your cock even as her pumping hips deny it; the sensation drives you wild.  \"<i>[name], your old fella is amazing...</i>\"");
 		outputText("  Your dick twitches and swells, as if to fulfill her words, and your pelvis rocks into Sheila's as you begin to ejaculate.  \"<i>No... pull out, or you'll get me pregnant,</i>\" she cries, when ");
 		//[(single cox)
-		if (player.cockTotal() === 1) outputText("your dick twitches inside her");
+		if (player.cockTotal() == 1) outputText("your dick twitches inside her");
 		//(multicox)
 		else outputText("she spies the first bead of pearly semen exiting");
-		if (player.cockTotal() === 2) outputText(" your lonely, unused prick");
+		if (player.cockTotal() == 2) outputText(" your lonely, unused prick");
 		if (player.cockTotal() > 2) outputText(" each of your lonely, unused pricks");
 		outputText(".");
 		
@@ -1109,7 +1109,7 @@ private function shielaXPThreeSexyTimePostSexStayII():void {
 		//(if cock)
 		if (player.hasCock()) {
 			outputText("  Your neglected ");
-			if (player.cockTotal() === 1) outputText("prick quakes and spurts");
+			if (player.cockTotal() == 1) outputText("prick quakes and spurts");
 			else outputText("pricks quake and spurt");
 			outputText(" weakly, drooling semen that pools on her skin.");
 		}
@@ -1282,7 +1282,7 @@ private function sheilaXPThreeSexyTimeGuardDuty():void {
 		outputText("\n\nYou smile approvingly.  \"<i>That looks just about right.  Perfect, almost.  It's only missing one thing.</i>\"  Sheila stares at you without understanding, fingering herself only halfheartedly while she tries to work out your meaning, until you ");
 		//[(cock.length > 0)
 		if (player.hasCock()) outputText("shift your pelvis forward");
-		//(cock.length === 0)
+		//(cock.length == 0)
 		else outputText("stick out your tongue playfully");
 		outputText(".  The girl giggles at that, relaxing and finally letting herself get into the masturbation.");
 		
@@ -1539,7 +1539,7 @@ private function fuckBuddySheilaMeetingChatLiveWithMe():void {
 private function fuckBuddySheilaMeetingChatKids():void {
 	clearOutput();
 	//if joeycount = 1
-	if (flags[kFLAGS.SHEILA_JOEYS] === 1) {
+	if (flags[kFLAGS.SHEILA_JOEYS] == 1) {
 		outputText("\"<i>Ah?</i>\" Sheila says, turning toward you sheepishly.");
 
 		outputText("\n\n\"<i>I said, 'how's the kid doing?',</i>\" you repeat.");
@@ -1839,7 +1839,7 @@ private function consensualSheila69(cock:Boolean = true):void {
 		outputText("   Her thighs tense, forcing her pelvis into the air and her cunt toward you as her chest slumps; slowly, you feel the perky nipples pressing into your stomach pull away.");
 	}
 	//(else if equal but below 90)
-	else if (player.cor === flags[kFLAGS.SHEILA_CORRUPTION] && player.cor < 90) {
+	else if (player.cor == flags[kFLAGS.SHEILA_CORRUPTION] && player.cor < 90) {
 		outputText("drooling a trickle of fluid and licking at you as she screams her ecstasy into your crotch.");
 	}
 	outputText("  Sheila jams her face upward, ");
@@ -1871,7 +1871,7 @@ private function consensualSheila69(cock:Boolean = true):void {
 			//(multicocks)
 			if (player.cockTotal() > 1) {
 				outputText("  Your other cock");
-				if (player.cockTotal() === 2) outputText(" spasms");
+				if (player.cockTotal() == 2) outputText(" spasms");
 				else outputText("s spasm");
 				outputText(" as well, adding their own issue to the unholy mess covering the poor woman.");
 			}
@@ -1900,7 +1900,7 @@ private function consensualSheila69(cock:Boolean = true):void {
 		return;
 	}
 	//[(corruption threshold warning if sheila corruption >= 80 and PC corr > sheila corruption and sheila xp =/= 3)
-	else if ((player.cor > 90 || player.cor > sheilaCorruption()) && sheilaCorruption() >= 80 && flags[kFLAGS.SHEILA_XP] !== 3) {
+	else if ((player.cor > 90 || player.cor > sheilaCorruption()) && sheilaCorruption() >= 80 && flags[kFLAGS.SHEILA_XP] != 3) {
 		sheilaCorruptionUpdate();
 		/*if (player.cor > 90 || player.cor > sheilaCorruption()) {
 			dynStats("cor", -10);
@@ -1930,7 +1930,7 @@ private function consensualSheila69(cock:Boolean = true):void {
 	outputText("\n\n\"<i>Gods damn, [name],</i>\" Sheila coughs, staring at you.  Still slack-muscled from your orgasm, you look over at her.  ");
 	if (cock && player.balls > 0) {
 		outputText("What you see manages to pull an explosive laugh from you, tired as you are.  Sheila gives you the stink-eye until you've recovered enough to explain the source of your mirth: on her forehead, making a perfect ");
-		if (player.balls === 2) outputText("infinity");
+		if (player.balls == 2) outputText("infinity");
 		else outputText("double infinity");
 		outputText(" shape against the rest of her skin, is an imprint of your " + player.ballsDescriptLight() + ".  The kangaroo girl rolls her eyes at the juvenile display and resumes her harangue.  ");
 	}
@@ -1952,7 +1952,7 @@ private function consensualSheila69(cock:Boolean = true):void {
 	
 	outputText("\n\nShe unruffles for a moment, and then pulls in close beside you.  ");
 	//[(sheila xp = 3)
-	if (flags[kFLAGS.SHEILA_XP] === 3) {
+	if (flags[kFLAGS.SHEILA_XP] == 3) {
 		outputText("\"<i>[name]... thanks.  Even being covered in your mess is better than being stuck outside all night, too scared to touch myself and too horny to run.</i>\"  Sheila kisses you on the cheek.  \"<i>My sloppy hero, eh?  I'm okay now; I can make it 'til morning when the gate reopens.</i>\"");
 		outputText("\n\nWhatever that means... does she plan to spend all night outside, alone and covered in drying sexual fluids?");
 		outputText("\n\n\"<i>Er... pretty much, yeah?  It won't be the first time - the staying up all night, I mean.</i>\"  Sheila colors a bit.  \"<i>That's how it goes if I can't make curfew; gotta watch out for myself.  But it'll be okay now that you've... helped, and I can actually focus.</i>\"");
@@ -1990,7 +1990,7 @@ private function consentacleVagSexForKangarooSlutBitches():void {
 	
 	outputText("\n\n\"<i>Please... I can't take any more,</i>\" she whines.  \"<i>Stop pashing on my nips and put it in, mate.</i>\"  The hand at her crotch begins trying to unfasten her belt while the other grabs and fondles her breast; you smirk and complete your own undressing quickly with both hands.  As " + player.sMultiCockDesc() + " emerges, engorged with blood, from your clothing, she switches from undressing back to rubbing, breathing heavily and stroking herself through the fabric as she stares at your ");
 	//[(if wangaroo)
-	if (player.cocks[player.cockThatFits(32)].cockType === CockTypesEnum.KANGAROO) outputText("tapered, fleshy penis.  \"<i>Wow... you never see those.</i>\"");
+	if (player.cocks[player.cockThatFits(32)].cockType == CockTypesEnum.KANGAROO) outputText("tapered, fleshy penis.  \"<i>Wow... you never see those.</i>\"");
 	else outputText(player.multiCockDescriptLight() + ".");
 	
 	outputText("\n\n\"<i>What's wrong?</i>\" you tease.  \"<i>I thought you wanted it in, but your pants are still in the way?</i>\"");
@@ -2029,7 +2029,7 @@ private function consentacleVagSexForKangarooSlutBitches():void {
 		else outputText(player.vaginaDescript(0));
 		outputText(" and tickling you as she writhes in pleasure.  ");
 		//(if vag)
-		if (player.balls === 0 && player.hasVagina()) outputText("Your cunt twitches and drools a bit of fluid on the furry intruder.  ");
+		if (player.balls == 0 && player.hasVagina()) outputText("Your cunt twitches and drools a bit of fluid on the furry intruder.  ");
 	}
 	outputText("You fuck harder, stuffing Sheila with such force that her ");
 	if (sheilaCorruption() < 30) outputText("perky, erect nipples trace long arcs against your skin");
@@ -2042,7 +2042,7 @@ private function consentacleVagSexForKangarooSlutBitches():void {
 		//[(multi)
 		if (player.cockTotal() > 1 ) {
 			outputText("  Your other ");
-			if (player.cockTotal() === 2) outputText("dick erupts");
+			if (player.cockTotal() == 2) outputText("dick erupts");
 			else outputText("dicks erupt");
 			outputText(" as well, festooning her crotch with sticky strings.");
 		}
@@ -2100,7 +2100,7 @@ private function consentacleVagSexForKangarooSlutBitches():void {
 		return;
 	}
 	//[(corruption threshold warning if sheila corruption >= 80 and PC corr > sheila corruption and sheila xp =/= 3)
-	else if ((player.cor > 90 || player.cor > sheilaCorruption()) && sheilaCorruption() >= 80 && flags[kFLAGS.SHEILA_XP] !== 3) {
+	else if ((player.cor > 90 || player.cor > sheilaCorruption()) && sheilaCorruption() >= 80 && flags[kFLAGS.SHEILA_XP] != 3) {
 		sheilaCorruptionUpdate();
 		/*if (player.cor > 90 || player.cor > sheilaCorruption()) {
 			dynStats("cor", -10);
@@ -2142,7 +2142,7 @@ private function consentacleVagSexForKangarooSlutBitches():void {
 	
 	outputText("\n\n\"<i>You better be, mate,</i>\" she teases.  Kissing your cheek gingerly, she murmurs, almost too quietly to hear, \"<i>... you're still the best.</i>\"");
 	//[(sheila xp = 3)
-	if (flags[kFLAGS.SHEILA_XP] === 3) {
+	if (flags[kFLAGS.SHEILA_XP] == 3) {
 		outputText("  Sheila looks over, thankfulness written on every inch of her brow.  \"<i>[name]... I really appreciate what you did.  I'd rather be knocked up than caught by some nightmare because I was too horny to hide properly until the colony opened - er, not that I want to be knocked up by you, sweet as you are.</i>\"");
 		
 		outputText("\n\nHuh... so she's planning to hide the rest of the night?");
@@ -2198,9 +2198,9 @@ private function sheilaMutualMasturbation():void {
 	}
 	if (player.hasVagina() && !player.isTaur()) choices[choices.length] = "vagina";
 	if (player.hasFuckableNipples()) choices[choices.length] = "nipplecunt";
-	if (player.gender === 0 || choices.length === 0) choices[choices.length] = "ass";
+	if (player.gender == 0 || choices.length == 0) choices[choices.length] = "ass";
 	
-	if (choices.length === 0) 
+	if (choices.length == 0) 
 	{
 		CoC_Settings.error("");
 		outputText("ERROR - SHEILA MASTURBATE BROKE, SON");
@@ -2221,15 +2221,15 @@ private function sheilaMutualMasturbation():void {
 	if (player.isTaur()) outputText(", folding your legs under you,");
 	outputText(" and begin ");
 	//[(adequate-length cock)
-	if (target === "cock") {
+	if (target == "cock") {
 		outputText("stroking your [cock], pointing it at her as you smear pre-cum onto your fingers");
 	}
 	//(non-horse vag)
-	else if (target === "cunt") outputText(" sliding your hand to your [vagina], parting your lips with two fingers");
+	else if (target == "cunt") outputText(" sliding your hand to your [vagina], parting your lips with two fingers");
 	//(gross-ass nipcunts)
-	else if (target === "nipplecunt") outputText("plunging your fingers into one of your awkward, distended nipples");
+	else if (target == "nipplecunt") outputText("plunging your fingers into one of your awkward, distended nipples");
 	//(Unsexed non-centaur only)
-	else if (target === "ass" && !player.isTaur()) outputText("licking a finger and teasing your asshole with shallow strokes, gently circling the ring");
+	else if (target == "ass" && !player.isTaur()) outputText("licking a finger and teasing your asshole with shallow strokes, gently circling the ring");
 	//(centaur who hasn't got shit)
 	else outputText("sucking a single digit salaciously, fingerfucking your mouth and coating it with saliva");
 	outputText(".  \"<i>Oh... are you going to touch me, or just play with that?</i>\" Sheila asks, grinning.");
@@ -2240,20 +2240,20 @@ private function sheilaMutualMasturbation():void {
 
 	
 	outputText("\n\n\"<i>Making sure you know how to fool around,</i>\" you tease.  \"<i>Use your imagination.</i>\"  Sheila blushes at that, allowing you to sink her fingers into her pussy with increasing vigor.  Just as she starts to moan, you pull your hand away, returning it to duty on your own body.  Her eyes sink, but as you ");
-	if (target === "cock") outputText("begin stroking your shaft, drooling pre-cum onto her skin and ");
+	if (target == "cock") outputText("begin stroking your shaft, drooling pre-cum onto her skin and ");
 	//(non-horse vag)
-	else if (target === "cunt") outputText("demonstrate by slipping your fingers into your own [vagina] and ");
+	else if (target == "cunt") outputText("demonstrate by slipping your fingers into your own [vagina] and ");
 	outputText("sigh in arousal, she follows your lead and begins rubbing at herself.  You wait, toying with yourself until her face flushes, and then lean in, stealing a kiss.  The girl closes her eyes and moans openly into your mouth as you part her lips with your tongue, and then you pull away, leaving her breathless.  \"<i>Think you can use this to make your own fantasy world?</i>\" you ask.");
 	
 	outputText("\n\n\"<i>Maybe,</i>\" Sheila answers, \"<i>if you kiss me here... or touch me there...</i>\"  She slips her free hand first to a breast and then her midriff, encouraging you to play along, and you lower your lips to her chest, pressing them down just above the nipple while caressing her stomach.  Your fingers leave little trails of your fluids on her hot skin as you play with her body, and her long neck stretches as she tilts her head back and pushes her chest toward you.  \"<i>Ah... ah... yeah,</i>\" the girl moans rhythmically.");
 	
 	outputText("\n\n\"<i>So, are you just going to make me do whatever you please?</i>\" you ask, before rolling her firm little nipple on your tongue.  ");
 	//[(if using eligible cock)
-	if (target === "cock") outputText("You return your hand to your [cock], pumping vigorously to catch up to your lover, spurred onward by the smooth skin she presses into your lips.");
+	if (target == "cock") outputText("You return your hand to your [cock], pumping vigorously to catch up to your lover, spurred onward by the smooth skin she presses into your lips.");
 	//(else if nonhorse vag)
-	else if (target === "cunt") outputText("You slide your hand between your [legs] again, intent on recovering the march Sheila's stolen on you, and begin rubbing your [clit] vigorously while sighing into her breast.");
+	else if (target == "cunt") outputText("You slide your hand between your [legs] again, intent on recovering the march Sheila's stolen on you, and begin rubbing your [clit] vigorously while sighing into her breast.");
 	//(else if RNG disgusting nipplecunts)
-	else if (target === "nipplecunt") outputText("Your hand returns to your chest, slipping inside the sensitive flesh of your nipple, and you groan into Sheila's as a trickle of moisture falls from your chest.");
+	else if (target == "nipplecunt") outputText("Your hand returns to your chest, slipping inside the sensitive flesh of your nipple, and you groan into Sheila's as a trickle of moisture falls from your chest.");
 	//(else if non-centaur asshole)
 	else if (!player.isTaur()) outputText("Your hand reaches back to your [asshole], neglected for too long, and a finger spears your pucker, stroking the nerves inside as you hurry to bring your arousal in line with Sheila's.");
 	///(else if fucking nothing)
@@ -2267,23 +2267,23 @@ private function sheilaMutualMasturbation():void {
 	outputText(images.showImage("sheila-masti"));
 	outputText("\n\nSheila places a hand alongside your head even as she gasps and shoves her fingers deep inside her pussy.  \"<i>[name], as long as you'll touch me like this, I'll be your star; I'll beg on my knees!</i>\"  Her hand moves irregularly now, as her hips jerk and swivel");
 	//[(if fucking nothing)
-	if (target !== "cock" && target !== "cunt" && target !== "nipplecunt") outputText(", and yours joins her, slipping into her entrance alongside");
+	if (target != "cock" && target != "cunt" && target != "nipplecunt") outputText(", and yours joins her, slipping into her entrance alongside");
 	outputText(".  \"<i>Just... say I'm always yours!</i>\"  She turns you toward her face again, locking you in a kiss, and your ");
 	//[(if cock)
-	if (target === "cock") {
-		if (player.cockTotal() === 1) outputText("prick begins");
+	if (target == "cock") {
+		if (player.cockTotal() == 1) outputText("prick begins");
 		else outputText("pricks begin");
 		outputText(" to twitch, ejaculating a stroke onto Sheila's midriff and wrist.  The girl groans in your mouth at the new heat, and her body shakes in orgasm.");
 	}
 	//(vag)
-	else if (target === "cunt") {
+	else if (target == "cunt") {
 		outputText("pussy convulses, ");
 		if (player.wetness() < 4) outputText("drooling");
 		else outputText("squirting");
 		outputText(" around your hand.  As your body shakes and your lips rattle against Sheila's, she shivers and her own orgasm begins.");
 	}
 	//(nipcunts)
-	else if (target === "nipplecunt") {
+	else if (target == "nipplecunt") {
 		outputText("nipple constricts around your fingers in climax, oozing lubrication onto your partner.  As the drops from your " + player.breastDescript(0) + " hit her own, Sheila's back arches again and her own orgasm begins.");
 	}
 	//(jack shit)
@@ -2300,11 +2300,11 @@ private function sheilaMutualMasturbation():void {
 	else {
 		outputText("She breaks the kiss, drawing her hand from her pussy, and holds your head in front of her; her eyes soften with affection as she shudders.");
 		//[(not jack shit)
-		if (target === "cunt" || target === "cock" || target === "nipplecunt") outputText("  Emptying your reserves, you allow yourself to fall into her arms, resting your head on her chest.");
+		if (target == "cunt" || target == "cock" || target == "nipplecunt") outputText("  Emptying your reserves, you allow yourself to fall into her arms, resting your head on her chest.");
 	}
 	
 	//if not fucking nothing, reduce lust and reset hours since cum; if sheila corr = 90 and pc corr >= 90, go to demonization, else continue
-	if (target === "cunt" || target === "cock" || target === "nipplecunt") player.orgasm('Generic');
+	if (target == "cunt" || target == "cock" || target == "nipplecunt") player.orgasm('Generic');
 	else dynStats("lus", 50);
 	if (player.cor >= 90 && sheilaCorruption() >= 90) {
 		menu();
@@ -2312,7 +2312,7 @@ private function sheilaMutualMasturbation():void {
 		return;
 	}
 	//[(corruption threshold warning if sheila corruption >= 80 and PC corr > sheila corruption and sheila xp =/= 3)
-	else if ((player.cor > 90 || player.cor > sheilaCorruption()) && sheilaCorruption() >= 80 && flags[kFLAGS.SHEILA_XP] !== 3) {
+	else if ((player.cor > 90 || player.cor > sheilaCorruption()) && sheilaCorruption() >= 80 && flags[kFLAGS.SHEILA_XP] != 3) {
 		sheilaCorruptionUpdate();
 		/*if (player.cor > 90 || player.cor > sheilaCorruption()) {
 			dynStats("cor", -10);
@@ -2350,14 +2350,14 @@ private function sheilaMutualMasturbation():void {
 			sheilaCorruption(-10);
 		}*/
 		outputText("\n\nSheila strokes your " + player.hairDescript() + " as you lie ");
-		if (target === "cock") outputText("there, staring at the load you left in her bellybutton");
+		if (target == "cock") outputText("there, staring at the load you left in her bellybutton");
 		else outputText("together");
 		outputText(".  \"<i>Oh, I had so much fun, mate.");
 		//[(if sex =U and sillymode)
-		if (player.gender === 0 && silly()) outputText("  I love you, my Ken doll.");
+		if (player.gender == 0 && silly()) outputText("  I love you, my Ken doll.");
 		outputText("</i>\"");
 		//[(if sheila xp = 3)
-		if (flags[kFLAGS.SHEILA_XP] === 3) {
+		if (flags[kFLAGS.SHEILA_XP] == 3) {
 			outputText("\n\nShe sighs and slips out from under you.");
 			outputText("\n\n\"<i>What's up?</i>\" you ask, sitting up.");
 			outputText("\n\n\"<i>Still gotta find a place to hide tonight,</i>\" Sheila replies.  \"<i>Then I can hit the town again in the morning.  I'll remember you the next time I feel like hanky-panky, though.</i>\"  The girl's cheeks color a bit.");
@@ -2584,7 +2584,7 @@ private function rapeSheilasCooter():void {
 		//[(multicock)
 		if (player.cockTotal() > 1 ) {
 			outputText("  Your other ");
-			if (player.cockTotal() === 2) outputText("dick spits");
+			if (player.cockTotal() == 2) outputText("dick spits");
 			else outputText("dicks spit");
 			outputText(" as well, leaving trails all over her light-brown skin.");
 		}
@@ -2711,7 +2711,7 @@ private function forcedSheilaOral(dick:Boolean = true):void {
 		//end width fork and length fork
 		//begin corruption worms fork
 		//(if corr >= 70 and Infest command is unlocked)
-		if (player.cor >= 70 && player.statusEffectv1(StatusEffects.Infested) === 5) {
+		if (player.cor >= 70 && player.statusEffectv1(StatusEffects.Infested) == 5) {
 			outputText("\n\nA wicked idea flits through your head, brought on by the squirming annoyances ");
 			if (player.balls > 0) outputText("packing your [balls] and driving up your lust in their zeal to multiply");
 			else outputText("deep inside your body, trailing sensation along the nerves in your most intimate places and ramping up your production");
@@ -2776,7 +2776,7 @@ private function forcedSheilaOral(dick:Boolean = true):void {
 		}
 		outputText("Or I could take you home and give you personal training myself, whenever I feel like it, and invite travelers to do the same");
 		//[(PC has Izma with cock)
-		if (izmaFollower() && flags[kFLAGS.IZMA_NO_COCK] === 0) outputText("; I personally know fifteen inches of fat, orange dick and four heavy balls that'd love to get in at your other end while I ride your face");
+		if (izmaFollower() && flags[kFLAGS.IZMA_NO_COCK] == 0) outputText("; I personally know fifteen inches of fat, orange dick and four heavy balls that'd love to get in at your other end while I ride your face");
 		outputText(".</i>\"");
 		
 		outputText("\n\nYour [vagOrAss] squeezes around Sheila's hesitant tongue, turned on more by the spectacle of selling her body than by any of her poor efforts.  She squirms under you, rubbing her thighs together as you paint the worst pictures of her future you can imagine, and you climax");
@@ -2904,7 +2904,7 @@ private function sheilaLossRapeRouter():void {
 	//RNG biased against giving this scene to men/herms, but it should still be possible
 	//boilerplate face-in-cunt shit
 	//if sheila xp >= -3, set sheila xp = -2
-	if ((!player.hasCock() || rand(3) === 0)) sheilaForcedOralGeneric();
+	if ((!player.hasCock() || rand(3) == 0)) sheilaForcedOralGeneric();
 	//loss scene - cowgirl (for M,H)
 	//if sheila xp >= -3, set sheila xp = -2
 	else {
@@ -3135,7 +3135,7 @@ private function sheilaForcedOralGeneric():void {
 	//Picture is here
 	outputText(images.showImage("sheila-lickhergina"));
 	outputText("\n\n\"<i>Lick...</i>\" she whispers, almost apologetically, \"<i>... please.  Or... or I'll have to hit you again.</i>\"  She sets her face and takes a handful of your hair, twisting it");
-	if (player.hair.type === 4) outputText(" and flushing as your stingers release their payloads into her palm");
+	if (player.hair.type == 4) outputText(" and flushing as your stingers release their payloads into her palm");
 	outputText(".  You obediently stick out your tongue");
 	if (player.cor > 60) outputText(", motivated more by whimsy than the meager, almost playful pain,");
 	outputText(" and shallowly penetrate Sheila's vagina with it.");
@@ -3453,7 +3453,7 @@ private function normalSheilaPregNotifREPEATEDEDHelpABitchOut():void {
 		//[Stay With Her][To Camp(excluded for PCs with Vapula or Holli)][Welp]
 		menu();
 		addButton(0,"StayWithHer",normalSheilaPregNotifREPEATEDEDHelpABitchOutANDSTAYDERE);
-		if (!(flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 4 && flags[kFLAGS.FUCK_FLOWER_KILLED] === 0) && !vapulaSlave())
+		if (!(flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 4 && flags[kFLAGS.FUCK_FLOWER_KILLED] == 0) && !vapulaSlave())
 			addButton(1,"To Camp",normalSheilaPregNotifREPEATEDEDHelpABitchOutTOCAMP);
 		addButton(2,"Welp",normalSheilaPregNotifREPEATEDEDHelpABitchOutANDWELP);
 	}
@@ -3531,7 +3531,7 @@ private function normalSheilaPregNotifREPEATEDEDHelpABitchOutANDSTAYDERE():void 
 		if (player.sens >= 40) dynStats("lus", player.sens/4, "scale", false);
 	}
 	//(harpy - minimum score for birdlegs at least)
-	else if (player.lowerBody.type === LowerBody.HARPY && player.tail.type === Tail.HARPY) {
+	else if (player.lowerBody.type == LowerBody.HARPY && player.tail.type == Tail.HARPY) {
 		outputText("\n\nShe shifts in your embrace, pushing up and down and giving you fits.  \"<i>Good lord, woman, what is the matter?</i>\" you ask.");
 		
 		outputText("\n\n\"<i>Sorry, mate... your feathers are tickling me,</i>\" Sheila protests.");
@@ -3541,7 +3541,7 @@ private function normalSheilaPregNotifREPEATEDEDHelpABitchOutANDSTAYDERE():void 
 		outputText("\n\nShe does so, resting in your downy lap for a moment, but gets up again.  You raise an eyebrow at her, but she just takes off her vest and sets it under her head, then settles, evidently at ease.  This is somewhat irritating; you're basically sitting up straight, with perfect posture.  A bit of an uncomfortable pose to hold for hours on end.");
 	}
 	//(bees with boots)
-	else if (player.lowerBody.type === LowerBody.BEE) {
+	else if (player.lowerBody.type == LowerBody.BEE) {
 		outputText("\n\nNo sooner does she get her head down than it's back up again.  You look a question at her.");
 		outputText("\n\n\"<i>Your legs are so bloody hard and cold, [name],</i>\" she clarifies brutally, tapping on the chitin digging into her back.");
 		outputText("\n\n\"<i>Well, sorry,</i>\" you answer, almost offended.  \"<i>Can't help the way god made me.</i>\"");
@@ -3666,11 +3666,11 @@ private function normalSheilaPregNotifREPEATEDEDHelpABitchOutTOCAMP():void {
 	outputText("\n\n\"<i>I need to go before dawn, so I'll get this out in case you're asleep when I do,</i>\" she announces, still looking at the ground.  \"<i>I appreciate the help... now, and from before.  Really, you're a bottler.</i>\"");
 	
 	//[(if no watch)
-	if (!player.hasStatusEffect(StatusEffects.JojoNightWatch) || !player.hasStatusEffect(StatusEffects.PureCampJojo) || flags[kFLAGS.ANEMONE_WATCH] === 0) outputText("\n\nShe gets to her feet as you grin, then makes her way over to your bedroll.  It doesn't take her long to fall asleep; you amuse yourself watching her toss and turn... and drool on your pillow.");
+	if (!player.hasStatusEffect(StatusEffects.JojoNightWatch) || !player.hasStatusEffect(StatusEffects.PureCampJojo) || flags[kFLAGS.ANEMONE_WATCH] == 0) outputText("\n\nShe gets to her feet as you grin, then makes her way over to your bedroll.  It doesn't take her long to fall asleep; you amuse yourself watching her toss and turn... and drool on your pillow.");
 	//(if watch)
 	else {
 		outputText("\n\nYou grin and get up, and Sheila tails you to your bed.  ");
-		if (flags[kFLAGS.SLEEP_WITH] !== 0 && flags[kFLAGS.SLEEP_WITH] !== "") outputText("She looks with some distaste at the nearby sleeper, and steps past.  You pick up the bedroll and follow her, reasoning that if she keeps her promise to be gone before dawn, it shouldn't raise any questions.  \"<i>Making friends, I see,</i>\" Sheila mutters... but as you unroll the bed again, her eyes zero in on it like a drowning man's on a raft, and she says nothing else.  ");
+		if (flags[kFLAGS.SLEEP_WITH] != 0 && flags[kFLAGS.SLEEP_WITH] != "") outputText("She looks with some distaste at the nearby sleeper, and steps past.  You pick up the bedroll and follow her, reasoning that if she keeps her promise to be gone before dawn, it shouldn't raise any questions.  \"<i>Making friends, I see,</i>\" Sheila mutters... but as you unroll the bed again, her eyes zero in on it like a drowning man's on a raft, and she says nothing else.  ");
 		outputText("She lies down first, allowing you to cozy up to her as far as you dare.  Just as you're about to drift off, you feel Sheila take your hand and pull your arm over her body.");
 	}
 	outputText("\n\nShe's gone in the morning.");
@@ -4081,7 +4081,7 @@ internal function loseToSheila(consensual:Boolean = false):void {
 		if (player.hasVagina())
 			choices[choices.length] = clitSwellingDemonSheilaClitSoundingAnal;
 		//Loss - unsexed joke scene
-		if (player.gender === 0)
+		if (player.gender == 0)
 			choices[choices.length] = aintGotNoGenderAndKangarooRaped;
 		//RUN DAT SHIT, YO!
 		choices[rand(choices.length)]();
@@ -4261,11 +4261,11 @@ private function tailSpadeSoundingForFuckHugeDongsWithDemonSheila():void {
 	outputText(images.showImage("sheila-corrupted-vag"));
 	outputText("\n\nSheila's eyes gloss over with desire, and she turns around once more, raising her pussy to your [cockHead biggest].  \"<i>Inside...</i>\" she mumbles, and then more loudly, \"<i>Squirt it inside!</i>\"  She guides your tip to her pussy with both tails now, spreading her labia with two fingers, and the next splat goes into her.  Black and white liquid drools from Sheila's messy cunt as your oversized cock ejaculates into and onto the woman");
 	if (player.cockTotal() > 1) outputText("; unguided, the ");
-	if (player.cockTotal() === 2) outputText("other twitches and sprays");
+	if (player.cockTotal() == 2) outputText("other twitches and sprays");
 	else if (player.cockTotal() > 2) outputText("others twitch and spray");
 	if (player.cockTotal() > 1) outputText(" all over, coating her back, you, the grass, and anything ");
 	if (player.cockTotal() > 2) outputText("else they happen to point at");
-	if (player.cockTotal() === 2) outputText("else it happens to point at");
+	if (player.cockTotal() == 2) outputText("else it happens to point at");
 	outputText(".  Your hips automatically try to push your dick further into her warm hole but only succeed in unbalancing her, forcing the demon onto her hands.  As your climax winds down, your head leans back and your cock slips from her vulva, squirting the last stroke onto her ass.");
 	
 	outputText("\n\nSheila sighs happily as she stands back up, and two intermingled colors stain her thighs.  \"<i>That was... mmm.  I wonder if it feels the same for you as it does for me, love?</i>\"  She walks up to you and takes your face in her hands; planting a passionate kiss on your lips, then lowers your nerveless form to the ground.  \"<i>Rest for now, [name]... I want to do that again soon.</i>\"");
@@ -4472,7 +4472,7 @@ internal function beatUpDemonSheila(output:Boolean = true):void {
 		combat.cleanupAfterCombat();
 		return;
 	}
-	if (player.gender === 0){
+	if (player.gender == 0){
 		combat.cleanupAfterCombat();
 		return;
 	}
@@ -4537,7 +4537,7 @@ private function missionaryForThePurposesOfCreatingImpsWithSheila():void {
 	outputText(".  Your cock ");
 	if (player.cockTotal() > 1) {
 		outputText(" and its ");
-		if (player.cockTotal() === 2) outputText("brother");
+		if (player.cockTotal() == 2) outputText("brother");
 		else outputText("brethren");
 		outputText(" swell and squirt");
 	}
@@ -4896,7 +4896,7 @@ private function bigDickAndThighs():void {
 		outputText(" toward her and aim underneath her cunt to rub your [cockHead biggest] against her palm, smearing a glob of precum on it.  You can see her shivering wordlessly, sliding her fingers together to play with the hot, clingy fluid, making translucent webbing between them.");
 		//[(multi)
 		if (player.cockTotal() > 1) {
-			if (player.cockTotal() === 2) outputText("  Both");
+			if (player.cockTotal() == 2) outputText("  Both");
 			else outputText("  All");
 			outputText(" of them... slide them here, love,</i>\" the demon insists.  You line the remainder of your manhood up and force it between her thighs as well.");
 		}
@@ -4913,7 +4913,7 @@ private function bigDickAndThighs():void {
 		outputText(".");
 		
 		outputText("\n\n\"<i>We'll see who finishes first.</i>\"  Resting herself against your " + player.multiCockDescriptLight() + " for support, she brings her other hand up and touches you; almost the full sensation is there this time, and you sign in happiness.  Sheila begins stroking with the new hand as well as the old, grabbing ");
-		if (player.cockTotal() === 1) outputText("your dick with both");
+		if (player.cockTotal() == 1) outputText("your dick with both");
 		else outputText("a prick in each");
 		outputText(" and angling upward so the precum drools downward and lubes her fingers.");
 	}
@@ -4932,7 +4932,7 @@ private function bigDickAndThighs():void {
 		//[(multi)
 		if (player.cockTotal() > 1) {
 			outputText("\n\nYou shudder at her surprising facility, but your mind still latches onto a way to get even more pleasure.  \"<i>Fine,</i>\" you agree, \"<i>but it won't be easy for you.</i>\"  Lining up your other prick");
-			if (player.cockTotal() === 2) outputText(", you slide it through her legs between your first cock and her cunt, plowing through her entrance like a furrow; she quakes and you can feel it contracting against your skin.  ");
+			if (player.cockTotal() == 2) outputText(", you slide it through her legs between your first cock and her cunt, plowing through her entrance like a furrow; she quakes and you can feel it contracting against your skin.  ");
 			else outputText("s, you push them through the woman's legs one by one, smearing warm precum on her thighs as you do; her pussy squeezes against the top of your [cock biggest] as you coat her skin with your fluids.  ");
 		}
 		else outputText("\n\n");
@@ -4945,7 +4945,7 @@ private function bigDickAndThighs():void {
 	if (player.cockTotal() > 1) outputText("s");
 	outputText(" and teasing each one; you thrust weakly into her hand, helping guide her hands, but your lonely tip wants for stimulation.  As the feeling becomes so acute that you prepare to say something, Sheila uncannily anticipates you and scoots her pussy along your shaft, popping your [cockHead biggest] into her mouth.  Her tongue dabs at your slit, tasting your fluid, and her hands ");
 	if (player.cockTotal() > 2) outputText("relinquish your other pricks and ");
-	if (player.cockTotal() === 2) outputText("relinquish your other prick and ");
+	if (player.cockTotal() == 2) outputText("relinquish your other prick and ");
 	outputText("focus on squeezing more drops out of you.  She fairly coats her lips with it, rubbing your hole against them before popping the whole [cockHead biggest] back into her mouth.  A moan escapes you just as another one returns from Sheila's throat, transmitted through your [cock biggest].");
 	
 	outputText("\n\nAs her attentions refocus on your [cockHead biggest], a pang of loss arises from the middle of your " + player.multiCockDescriptLight() + " - and is quickly smothered with her chest.");
@@ -4982,7 +4982,7 @@ private function bigDickAndThighs():void {
 	outputText(" from between her still-squeezing thighs with a shudder; Sheila shudders with you until you finally draw free and break skin contact, then lowers herself carefully to the ground.  The demon turns toward you, exposing a face and chest splattered with your semen.  She stares at your deflating prick");
 	if (player.cockTotal() > 1) outputText("s");
 	outputText(", looking almost wistful to see ");
-	if (player.cockTotal() === 1) outputText("it");
+	if (player.cockTotal() == 1) outputText("it");
 	else outputText("them");
 	outputText(" go.");
 	

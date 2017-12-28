@@ -29,13 +29,13 @@ package classes.Scenes.Areas.Lake
 				return;
 			}
 			//Determine if evaded
-			if (short !== "Kiha" && player.findPerk(PerkLib.Evade) >= 0 && rand(100) < 10) {
+			if (short != "Kiha" && player.findPerk(PerkLib.Evade) >= 0 && rand(100) < 10) {
 				if (findPerk(PerkLib.Acid) >= 0) outputText("tries to slap you, but you evade her attack.");
 				else outputText(", but you evade the clumsy attack.");
 				return;
 			}
 			//("Misdirection"
-			if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName === "red, high-society bodysuit") {
+			if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armorName == "red, high-society bodysuit") {
 				if (findPerk(PerkLib.Acid) >= 0) outputText("tries to slap you.  You misdirect her, avoiding the hit.");
 				else outputText(", missing as you misdirect her attentions.");
 				return;
@@ -71,7 +71,7 @@ package classes.Scenes.Areas.Lake
 				else outputText(", painfully smacking her gooey limbs against your head.  You shake your " + player.hairDescript() + ", clearing your head of the dazing slap. ");
 			}
 			if (damage > 0) {
-				if (lustVuln > 0 && player.armorName === "barely-decent bondage straps") {
+				if (lustVuln > 0 && player.armorName == "barely-decent bondage straps") {
 					if (!plural) outputText("\n" + capitalA + short + " brushes against your exposed skin and jerks back in surprise, coloring slightly from seeing so much of you revealed. ");
 					else outputText("\n" + capitalA + short + " brush against your exposed skin and jerk back in surprise, coloring slightly from seeing so much of you revealed. ");
 					lust += 5 * lustVuln;
@@ -112,10 +112,10 @@ package classes.Scenes.Areas.Lake
 		override protected function performCombatAction():void
 		{
 			//1/3 chance of base attack + bonus if in acid mode
-			if ((findPerk(PerkLib.Acid) >= 0 && rand(3) === 0) || rand(3) === 0)
+			if ((findPerk(PerkLib.Acid) >= 0 && rand(3) == 0) || rand(3) == 0)
 				gooGalAttack();
-			else if (rand(5) === 0) gooEngulph();
-			else if (rand(3) === 0) gooPlay();
+			else if (rand(5) == 0) gooEngulph();
+			else if (rand(3) == 0) gooPlay();
 			else gooThrow();
 		}
 
@@ -202,80 +202,80 @@ package classes.Scenes.Areas.Lake
 //[azure/plum/crystalline] 
 		public function gooColor2():String
 		{
-			if (skin.tone === "blue") return "azure";
-			else if (skin.tone === "purple") return "plum";
+			if (skin.tone == "blue") return "azure";
+			else if (skin.tone == "purple") return "plum";
 			else return "crystalline";
 		}
 
 //[cerulean/violet/clear]
 		public function gooColor3():String
 		{
-			if (skin.tone === "blue") return "cerulean";
-			else if (skin.tone === "purple") return "violet";
+			if (skin.tone == "blue") return "cerulean";
+			else if (skin.tone == "purple") return "violet";
 			else return "clear";
 		}
 
 //[teal/lavender/glassy] 
 		public function gooColor4():String
 		{
-			if (skin.tone === "blue") return "teal";
-			else if (skin.tone === "purple") return "lavender";
+			if (skin.tone == "blue") return "teal";
+			else if (skin.tone == "purple") return "lavender";
 			else return "glassy";
 		}
 
 //[sapphire/amethyst/diamond]
 		public function gooColor5():String
 		{
-			if (skin.tone === "blue") return "sapphire";
-			else if (skin.tone === "purple") return "amethyst";
+			if (skin.tone == "blue") return "sapphire";
+			else if (skin.tone == "purple") return "amethyst";
 			else return "diamond";
 		}
 
 //[lapis/periwinkle/pure]
 		public function gooColor6():String
 		{
-			if (skin.tone === "blue") return "sapphire";
-			else if (skin.tone === "purple") return "amethyst";
+			if (skin.tone == "blue") return "sapphire";
+			else if (skin.tone == "purple") return "amethyst";
 			else return "diamond";
 		}
 
 //[blue berry/grape/crystal]
 		public function gooColor7():String
 		{
-			if (skin.tone === "blue") return "blueberry";
-			else if (skin.tone === "purple") return "grape";
+			if (skin.tone == "blue") return "blueberry";
+			else if (skin.tone == "purple") return "grape";
 			else return "crystal";
 		}
 
 //[aquamarine/plum/transparent]
 		public function gooColor8():String
 		{
-			if (skin.tone === "blue") return "aquamarine";
-			else if (skin.tone === "purple") return "plum";
+			if (skin.tone == "blue") return "aquamarine";
+			else if (skin.tone == "purple") return "plum";
 			else return "transparent";
 		}
 
 //[an aquamarine/a lilac/a translucent]
 		public function gooColor9():String
 		{
-			if (skin.tone === "blue") return "an aquamarine";
-			else if (skin.tone === "purple") return "a plum";
+			if (skin.tone == "blue") return "an aquamarine";
+			else if (skin.tone == "purple") return "a plum";
 			else return "a translucent";
 		}
 
 //[blueberries/grapes/strawberries]
 		public function gooColor10():String
 		{
-			if (skin.tone === "blue") return "blueberries";
-			else if (skin.tone === "purple") return "grapes";
+			if (skin.tone == "blue") return "blueberries";
+			else if (skin.tone == "purple") return "grapes";
 			else return "strawberries";
 		}
 
 //[cerulean tint/violet tint/clear body]
 		public function gooColor11():String
 		{
-			if (skin.tone === "blue") return "cerulean tint";
-			else if (skin.tone === "purple") return "violet tint";
+			if (skin.tone == "blue") return "cerulean tint";
+			else if (skin.tone == "purple") return "violet tint";
 			else return "clear body";
 		}
 	}

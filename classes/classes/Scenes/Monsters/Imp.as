@@ -39,7 +39,7 @@ package classes.Scenes.Monsters
 			if (player.cocks.length > 0) {
 				if (player.lust100 >= 60)
 					outputText("You feel your " + player.multiCockDescriptLight() + " dribble pre-cum.");
-				else if (player.lust100 >= 30 && player.cocks.length === 1)
+				else if (player.lust100 >= 30 && player.cocks.length == 1)
 					outputText("Your " + player.cockDescript(0) + " hardens, distracting you further.");
 				else if (player.lust100 >= 30 && player.cocks.length > 1)
 					outputText("Your " + player.multiCockDescriptLight() + " harden uncomfortably.");

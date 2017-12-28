@@ -44,7 +44,7 @@ package classes.Scenes.Monsters
 		}
 		
 		public function warriorSpecial():void {
-			if (rand(2) === 0) slash();
+			if (rand(2) == 0) slash();
 			else shieldBash();
 		}
 		
@@ -54,7 +54,7 @@ package classes.Scenes.Monsters
 		}
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
 		{
-			if (player.gender === 0 || flags[kFLAGS.SFW_MODE] > 0) {
+			if (player.gender == 0 || flags[kFLAGS.SFW_MODE] > 0) {
 				outputText("You collapse in front of the goblin, too wounded to fight.  She growls and kicks you in the head, making your vision swim. As your sight fades, you hear her murmur, \"<i>Fucking dicks can't even bother to grow a dick or cunt.</i>\"");
 				game.combat.cleanupAfterCombat();
 			} 

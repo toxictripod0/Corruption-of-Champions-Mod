@@ -24,7 +24,7 @@ package classes.Scenes.Areas.HighMountains
 		// Return a height-based nickname for the player
 		public function heightDesc(doName:Boolean = true):String
 		{
-			if (rand(4) !== 0) return "kid";
+			if (rand(4) != 0) return "kid";
 			else
 			{
 				if (player.tallness < 60) return "pint-size";
@@ -63,7 +63,7 @@ package classes.Scenes.Areas.HighMountains
 		{
 			clearOutput();
 			
-			if (flags[kFLAGS.IZUMI_MET] === 0)
+			if (flags[kFLAGS.IZUMI_MET] == 0)
 			{
 				outputText("As you wander the wasted landscape searching for anything of interest, you come across a large rock blocking what appears to be the entrance to a cave.  Wondering about how to best get around it, you suddenly become aware of a strange sound on the edge of your hearing.\n\n");
 
@@ -92,21 +92,21 @@ package classes.Scenes.Areas.HighMountains
 		{
 			clearOutput();
 
-			if (flags[kFLAGS.IZUMI_LAST_ENCOUNTER] === 0) flags[kFLAGS.IZUMI_LAST_ENCOUNTER] = 2;
+			if (flags[kFLAGS.IZUMI_LAST_ENCOUNTER] == 0) flags[kFLAGS.IZUMI_LAST_ENCOUNTER] = 2;
 			
-			if (flags[kFLAGS.IZUMI_LAST_ENCOUNTER] === 1)
+			if (flags[kFLAGS.IZUMI_LAST_ENCOUNTER] == 1)
 			{
 				outputText("Remembering the outcome of your last visit, you peer cautiously around the mouth of the cave.  Izumi, as before, is seated by the fire, happily puffing away at whatever bizarre narcotic she keeps in her pipe.  She sees you almost immediately, raising a hand cheerfully and beckoning for you to enter.\n\n");
 
 				outputText("“<i>Hey, it’s you! How’s it going, "+ this.heightDesc() + "? Killed any demon kings yet?</i>” Izumi ribs. “<i>Let me guess.. You’re here to take revenge on the big bad Oni, grr argh, right? Or...</i>”  She pauses for a second to shift around into a more comfortable position that - completely inadvertently, you’re sure - ends up with her showing off much more of her thighs and impressive bust.  “<i>Could it be you just came back to ask for another turn, hmm?</i>”\n\n");
 			}
-			else if (flags[kFLAGS.IZUMI_LAST_ENCOUNTER] === 2)
+			else if (flags[kFLAGS.IZUMI_LAST_ENCOUNTER] == 2)
 			{
 				outputText("Remembering your last visit, you peer cautiously around the mouth of the cave.  Izumi, as before, is seated by the fire, happily puffing away at whatever bizarre narcotic she keeps in her pipe.  She sees you almost immediately, raising a hand cheerfully and beckoning for you to enter.\n\n");
 
 				outputText("“<i>Oh hey, you came back!</i>”  She announces.  “<i>That’s good, ‘cause for a while there I thought you were a wuss.  Crazy idea, right?  So, did you decide to try your luck, or are you just gonna give up and let me have some fun?</i>”\n\n");
 			}
-			else if (flags[kFLAGS.IZUMI_LAST_ENCOUNTER] === 3)
+			else if (flags[kFLAGS.IZUMI_LAST_ENCOUNTER] == 3)
 			{
 				outputText("Ranging through mountains and valleys, you find yourself back at Izumi’s camp.  Remembering the outcome of your last visit, you peer cautiously around the mouth of the cave.  Izumi, as before, is seated by the fire, puffing away at whatever bizarre narcotic she keeps in her pipe.  She catches sight of you almost immediately, frowns slightly, then raises a hand in a hesitant greeting.  There’s an awkward silence for a moment, during which Izumi avoids your gaze.\n\n");
 
@@ -155,7 +155,7 @@ package classes.Scenes.Areas.HighMountains
 
 			// Fire won, parser is being thrown out of the window. I'll let you have at the original docs Fake-Name so you can figure out wtf.
 			// Trying to code this + figure out the parser + make sure I've not fucked up the logic + how difficult it is to debug issues
-			// in the parsed strings === noplz :(
+			// in the parsed strings == noplz :(
 
 			// PC is > 9’ Tall
 			if (player.tallness >= 108)
@@ -193,10 +193,10 @@ package classes.Scenes.Areas.HighMountains
 				else outputText(" trying to force");
 				outputText(" your way through little Izumi’s door uninvited.  I’d tell you off, but I’ve got to admit, I don’t get many visitors of your... </i>stature.<i>");
 				
-				if (player.horns.type !== Horns.COW_MINOTAUR)
+				if (player.horns.type != Horns.COW_MINOTAUR)
 				{
 					outputText("  Or at least, ones without a pair of bulls horns");
-					if (this.actsLikeACow() === true)
+					if (this.actsLikeACow() == true)
 					{
 						outputText(" - and the temperament to match - ");
 					}
@@ -207,7 +207,7 @@ package classes.Scenes.Areas.HighMountains
 				}
 				else
 				{
-					if (this.actsLikeACow() === true)
+					if (this.actsLikeACow() == true)
 					{
 						outputText("  Or at least, ones without the temperament to match the... physique, ");
 					}
@@ -369,7 +369,7 @@ package classes.Scenes.Areas.HighMountains
 		public function updateSmokeDuration(hours:int):void
 		{
 			var effect:StatusEffectClass = player.statusEffectByType(StatusEffects.IzumisPipeSmoke);
-			if (effect !== null) {
+			if (effect != null) {
 				effect.value1 -= hours;
 				if (effect.value1 <= 0) {
 					this.smokeEffectWearsOff();
@@ -382,7 +382,7 @@ package classes.Scenes.Areas.HighMountains
 		{
 			var effect:StatusEffectClass = player.statusEffectByType(StatusEffects.IzumisPipeSmoke);
 
-			if (effect !== null) {
+			if (effect != null) {
 				player.spe += Math.abs(effect.value2);
 				player.sens -= effect.value3;
 				player.lib -= effect.value4;
@@ -484,7 +484,7 @@ package classes.Scenes.Areas.HighMountains
 			clearOutput();
 
 			// First time
-			if (flags[kFLAGS.IZUMI_LAST_ENCOUNTER] === 0)
+			if (flags[kFLAGS.IZUMI_LAST_ENCOUNTER] == 0)
 			{
 				outputText("You don’t know what Izumi is thinking, but there’s no way you’re just going to lie back and let some strange woman walk all over you, metaphorically <b>or</b> literally - and you tell her exactly that.  To your surprise, rather than lunging forwards to attack or flying off the handle, she actually beams at you.\n\n");
 
@@ -499,14 +499,14 @@ package classes.Scenes.Areas.HighMountains
 				outputText("You nod, rising to your [feet] and dropping into a fighting stance. Izumi grins.  “<i>Let me just say this to start... I am </i>quite<i> strong.</i>”\n\n");
 			}
 			// PC won last fight
-			else if (flags[kFLAGS.IZUMI_LAST_ENCOUNTER] === 3)
+			else if (flags[kFLAGS.IZUMI_LAST_ENCOUNTER] == 3)
 			{
 				outputText("“<i>So, you’re not gonna apologize?!</i>” Izumi scowls at you, blushing slightly. “<i>You’re a real jerk, you know that?  Fine then, I’ll just have to spank some manners into you!  Don’t cry!</i>”\n\n");
 
 				outputText("She drops into a fighting stance once again, but this time, instead of bending one arm behind her back, she hesitantly holds it up in front of her horn.  Her blush deepens as you stare at her.  “<i>Y-You cheat! I’m not falling for that kind of thing again!</i>” she explains hotly.\n\n");
 			}
 			// PC lost last fight
-			else if (flags[kFLAGS.IZUMI_LAST_ENCOUNTER] === 1)
+			else if (flags[kFLAGS.IZUMI_LAST_ENCOUNTER] == 1)
 			{
 				outputText("There’s no way you’re just going to lie back and let Izumi walk all over you again; at least, not without resistance.\n\n");
 
@@ -515,7 +515,7 @@ package classes.Scenes.Areas.HighMountains
 				outputText("You nod, rising to your feet and dropping into a fighting stance.\n\n");
 			}
 			// PC ran away
-			else if (flags[kFLAGS.IZUMI_LAST_ENCOUNTER] === 2)
+			else if (flags[kFLAGS.IZUMI_LAST_ENCOUNTER] == 2)
 			{
 				outputText("Sooner or later, you’re going to have to face up to the large Oni.  No time like the present, right?\n\n");
 
@@ -607,7 +607,7 @@ package classes.Scenes.Areas.HighMountains
 			outputText("... “<i>Hey, don’t get upset.  After all, </i>” She pauses for a moment, her hand lingering in place.  “<i>Some women </i>like<i> ‘em small...</i>”\n\n");
 
 			outputText("“<i>So, let me guess.  In a place like this, it’s gotta be weird having something this small, right?  I mean, it’s a pretty unique trait, given the circumstances.</i>”  She continues.  “<i>Hey, tell me something.  Do the harpies leave you alone?  Are you so small that they think you’re ");
-			if (player.gender === 3) outputText(" just a regular");
+			if (player.gender == 3) outputText(" just a regular");
 			else outputText(" a");
 			outputText(" girl?</i>”  Suddenly, her hand bottoms out around your [cock biggest]");
 
@@ -675,9 +675,9 @@ package classes.Scenes.Areas.HighMountains
 			if (player.hasVagina())
 			{
 				outputText(", your [vagina]");
-				if (player.wetness() === 0) outputText(" moistening");
-				else if (player.wetness() === 1) outputText(" dribbling runnels of sticky fem-juice");
-				else if (player.wetness() === 2) outputText(" constantly oozing feminine arousal");
+				if (player.wetness() == 0) outputText(" moistening");
+				else if (player.wetness() == 1) outputText(" dribbling runnels of sticky fem-juice");
+				else if (player.wetness() == 2) outputText(" constantly oozing feminine arousal");
 				else outputText(" a soppy mess, gushing a veritable lake of fem-slime");
 				outputText(" in lust-fueled harmony with your cock.");
 			}
@@ -784,7 +784,7 @@ package classes.Scenes.Areas.HighMountains
 			 
 			outputText("“<i>Four.</i>”  She whispers, and without warning her legs unfold, both feet flying out from beneath her and latching onto the [sheath] of your [cock biggest]!  Izumi leers at you with undisguised amusement as she watches your reaction to the sensation of her bare soles rolling over the [sheath] of your shaft");
 			if (player.balls > 0 && !player.hasVagina()) outputText(", occasionally sliding down to massage your [balls] before returning to your cock.");
-			else if (player.balls === 0 && player.hasVagina()) outputText(", occasionally sliding down to tease at the lips of your [vagina].");
+			else if (player.balls == 0 && player.hasVagina()) outputText(", occasionally sliding down to tease at the lips of your [vagina].");
 			else if (player.balls > 0 && player.hasVagina()) outputText(", occasionally sliding down, alternating between a gentle massage of your [balls] and teasing caresses of your [vagina].");
 			outputText("\n\n");
 
@@ -824,7 +824,7 @@ package classes.Scenes.Areas.HighMountains
 			outputText("You resign yourself to letting Izumi do as she wills with you, and hesitantly reach to start undressing.");
 
 			// First time addition to the start of the scene
-			if (flags[kFLAGS.IZUMI_TIMES_SUBMITTED] === 0)
+			if (flags[kFLAGS.IZUMI_TIMES_SUBMITTED] == 0)
 			{
 				outputText("  Before you can remove your clothes, however, Izumi grabs a hold of your wrist.\n\n");
 
@@ -1437,7 +1437,7 @@ package classes.Scenes.Areas.HighMountains
 		{
 			lossSceneStay();
 
-			if (flags[kFLAGS.IZUMI_SEEN_PC_GENDER] !== 2 && !player.hasCock())
+			if (flags[kFLAGS.IZUMI_SEEN_PC_GENDER] != 2 && !player.hasCock())
 			{
 				outputText("Izumi’s fingers stroke questingly over your slit for a moment, then she frowns, confused.\n\n");
 
@@ -1505,7 +1505,7 @@ package classes.Scenes.Areas.HighMountains
 			outputText("“<i>You’re really gonna try your luck, aren’t ya?</i>”  Izumi asks. When you nod in response, she throws back her head and lets out a booming, uproarious laugh.  “<i>I love it! I </i>love<i> this attitude!  Fighting you is more exciting than anything else I’ve encountered on this godawful rock!  Alright, here – I’ll give you a gift! A glimpse of my full strength, no gimmicks, no holding back. And remember, you asked for this, so I don’t want to see you crying when you lose!</i>” \n\n");
 
 			// Original version of the scene for seeleey modes
-			if (flags[kFLAGS.SILLY_MODE_ENABLE_FLAG] === true)
+			if (flags[kFLAGS.SILLY_MODE_ENABLE_FLAG] == true)
 			{
 				outputText("Without warning, Izumi suddenly brings one leg up, swings it wide and smashes it back down onto the ground.  A second later, she does the same with her other leg, assuming some kind of strange, half-crouching stance.  You ready yourself for an attack, but instead Izumi takes a deep breath, clenches her fists, and then....\n\n");
 				 
@@ -1968,8 +1968,8 @@ package classes.Scenes.Areas.HighMountains
 
 			var cockIndex:int = player.biggestCockIndex();
 
-			if (player.cocks[cockIndex].cockType === CockTypesEnum.HORSE) outputText("  Visibly unsure of where to put herself, Izumi finally settles for brushing her lips against the exact center of the flared mass that makes up the head of your stallion-prick.");
-			else if (player.cocks[cockIndex].cockType === CockTypesEnum.DOG) outputText("  Her eyes darting nervously from side to side, Izumi leans forwards and takes the very tip of your dogcock into her mouth, pressing her lips against the main bulk of what passes for your head.");
+			if (player.cocks[cockIndex].cockType == CockTypesEnum.HORSE) outputText("  Visibly unsure of where to put herself, Izumi finally settles for brushing her lips against the exact center of the flared mass that makes up the head of your stallion-prick.");
+			else if (player.cocks[cockIndex].cockType == CockTypesEnum.DOG) outputText("  Her eyes darting nervously from side to side, Izumi leans forwards and takes the very tip of your dogcock into her mouth, pressing her lips against the main bulk of what passes for your head.");
 			else outputText("  You feel the soft, warm sensation of Izumi’s lips brushing against the sensitive head of your cock for a moment, then the process repeats itself as Izumi actually darts in again, unbidden, for a second smooch.");
 			outputText("\n\n");
 

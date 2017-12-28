@@ -30,27 +30,27 @@ package classes.Scenes.Places.Prison
 				case 2:
 					outputText("Dreaming\n");
 					outputText("<b>Dream Progress: </b>");
-					if (currentEvent === 0)
+					if (currentEvent == 0)
 					{
 						outputText("none/teasing\n");
 					}
-					else if (currentEvent === 1)
+					else if (currentEvent == 1)
 					{
 						outputText("intro seen\n");
 					}
-					else if (currentEvent === 2)
+					else if (currentEvent == 2)
 					{
 						outputText("lazy seen\n");
 					}
-					else if (currentEvent === 3)
+					else if (currentEvent == 3)
 					{
 						outputText("modest seen\n");
 					}
-					else if (currentEvent === 4)
+					else if (currentEvent == 4)
 					{
 						outputText("excited seen\n");
 					}
-					else if (currentEvent === 5)
+					else if (currentEvent == 5)
 					{
 						outputText("had a chance to play\n");
 					}
@@ -267,7 +267,7 @@ package classes.Scenes.Places.Prison
 			var currentScore:int = 0;
 			var itemEvent:Function = null;
 			
-			if (branchChoice === "choose")
+			if (branchChoice == "choose")
 			{
 				clearOutput();
 				outputText("You look at the bowl full of cum with bits of soggy bread floating in it, and take a moment to decide whether you should eat it normally, or set the bowl on the ground and lick it clean using just your tongue.");
@@ -279,7 +279,7 @@ package classes.Scenes.Places.Prison
 				addButton(1, "Eat", prison.prisonItemBread, true, false);
 				return;
 			}
-			if (branchChoice === "afterlick")
+			if (branchChoice == "afterlick")
 			{
 				outputText("(Placeholder) Afterward, you find yourself overcome with an odd sensation of tranquility. ");
 				prisonCaptorPetScratchSet(0);
@@ -289,7 +289,7 @@ package classes.Scenes.Places.Prison
 			}
 			outputText("(Placeholder) You place the bowl on the floor, get down on all fours, and lick the bowl clean using only your tongue. \n\n");
 			prison.prisonItemBreadHeatEffect(15);
-			if (prisonCaptorPetTier() === 1)
+			if (prisonCaptorPetTier() == 1)
 			{
 				prisonCaptorPetEventChange(1);
 			}
@@ -330,9 +330,9 @@ package classes.Scenes.Places.Prison
 			var currentTier:* = undefined;
 			var corChange:* = undefined;
 			currentTier = prisonCaptorPetTier();
-			if (branchChoice === "choose")
+			if (branchChoice == "choose")
 			{
-				if (currentTier === 2)
+				if (currentTier == 2)
 				{
 					prisonCaptorPetEventSet(1);
 				}
@@ -347,7 +347,7 @@ package classes.Scenes.Places.Prison
 				addButton(2,"Outraged",prisonCaptorPetDreamIntro,3);
 				return;
 			}
-			if (branchChoice === "1")
+			if (branchChoice == "1")
 			{
 				clearOutput();
 				outputText("(Placeholder) (Intro dream) PC decides he liked it, giving his petScore an initial bump to make the randomized dreams more frequent.\n\n");
@@ -357,12 +357,12 @@ package classes.Scenes.Places.Prison
 				corChange = -1;
 				dynStats("cor", corChange);
 			}
-			else if (branchChoice === "2")
+			else if (branchChoice == "2")
 			{
 				clearOutput();
 				outputText("(Placeholder) (Intro dream) PC is unsure and decides to figure it out later. Event proceeds as normal, but the dreams will be less frequent and he'll have to indulge a few extra to reach the next Tier.\n\n");
 			}
-			else if (branchChoice === "3")
+			else if (branchChoice == "3")
 			{
 				clearOutput();
 				outputText("(Placeholder) (Intro dream) Text indicating that the PC resolves to never enjoy being treated like a dog and will probably never such dreams again.\n\n");
@@ -384,9 +384,9 @@ package classes.Scenes.Places.Prison
 			var petScore:int = prisonCaptorPetScore();
 			previousDreamValue = prisonCaptorPetScratch();
 			var demandFlagged:int = flags[kFLAGS.PRISON_TRAINING_REFUSED];
-			if (branchChoice === "choose")
+			if (branchChoice == "choose")
 			{
-				if (currentTier === 2 && currentEvent < 2)
+				if (currentTier == 2 && currentEvent < 2)
 				{
 					prisonCaptorPetEventSet(2);
 				}
@@ -399,7 +399,7 @@ package classes.Scenes.Places.Prison
 					dreamSelect = rand(3);
 					dreamValue = 10 + dreamSelect;
 				}
-				while(previousDreamValue === dreamValue);
+				while(previousDreamValue == dreamValue);
 				
 				prisonCaptorPetScratchSet(dreamValue);
 				switch(dreamSelect)
@@ -423,7 +423,7 @@ package classes.Scenes.Places.Prison
 				addButton(1,"Wake Up",prisonCaptorPetDreamLazy,2);
 				return;
 			}
-			if (branchChoice === "1")
+			if (branchChoice == "1")
 			{
 				clearOutput();
 				outputText("(Placeholder) (Lazy dream) PC decides to see the dream through, getting a cute conclusion and increasing his petScore.\n\n");
@@ -433,7 +433,7 @@ package classes.Scenes.Places.Prison
 				corChange = -0.25;
 				dynStats("cor", corChange);
 			}
-			else if (branchChoice === "2")
+			else if (branchChoice == "2")
 			{
 				clearOutput();
 				outputText("(Placeholder) (Lazy dream) PC decides to stop the dream for whatever reason, reducing his petScore.\n\n");
@@ -456,9 +456,9 @@ package classes.Scenes.Places.Prison
 			var petScore:* = prisonCaptorPetScore();
 			previousDreamValue = prisonCaptorPetScratch();
 			var demandFlagged:* = flags[kFLAGS.PRISON_TRAINING_REFUSED];
-			if (branchChoice === "choose")
+			if (branchChoice == "choose")
 			{
-				if (currentTier === 2 && currentEvent < 3)
+				if (currentTier == 2 && currentEvent < 3)
 				{
 					prisonCaptorPetEventSet(3);
 				}
@@ -471,7 +471,7 @@ package classes.Scenes.Places.Prison
 					dreamSelect = rand(3);
 					dreamValue = 20 + dreamSelect;
 				}
-				while(previousDreamValue === dreamValue);
+				while(previousDreamValue == dreamValue);
 				
 				prisonCaptorPetScratchSet(dreamValue);
 				switch(dreamSelect)
@@ -497,7 +497,7 @@ package classes.Scenes.Places.Prison
 				addButton(1,"Wake Up",prisonCaptorPetDreamModest,2);
 				return;
 			}
-			if (branchChoice === "1")
+			if (branchChoice == "1")
 			{
 				clearOutput();
 				outputText("(Placeholder) (Modest dream) PC decides to progress the dream, seeing the cute conclusion and increasing his petScore.\n\n");
@@ -507,7 +507,7 @@ package classes.Scenes.Places.Prison
 				corChange = -0.25;
 				dynStats("cor", corChange);
 			}
-			else if (branchChoice === "2")
+			else if (branchChoice == "2")
 			{
 				clearOutput();
 				outputText("(Placeholder) (Modest dream) PC decides to stop the dream for whatever reason, reducing his petScore.\n\n");
@@ -531,9 +531,9 @@ package classes.Scenes.Places.Prison
 			petScore = prisonCaptorPetScore();
 			previousDreamValue = prisonCaptorPetScratch();
 			var demandFlagged:int = flags[kFLAGS.PRISON_TRAINING_REFUSED];
-			if (branchChoice === "choose")
+			if (branchChoice == "choose")
 			{
-				if (currentTier === 2 && currentEvent < 4)
+				if (currentTier == 2 && currentEvent < 4)
 				{
 					prisonCaptorPetEventSet(4);
 				}
@@ -546,7 +546,7 @@ package classes.Scenes.Places.Prison
 					dreamSelect = rand(3);
 					dreamValue = 20 + dreamSelect;
 				}
-				while(previousDreamValue === dreamValue);
+				while(previousDreamValue == dreamValue);
 				
 				prisonCaptorPetScratchSet(dreamValue);
 				switch(dreamSelect)
@@ -572,7 +572,7 @@ package classes.Scenes.Places.Prison
 				addButton(1,"Enough!",prisonCaptorPetDreamExcited,2);
 				return;
 			}
-			if (branchChoice === "1")
+			if (branchChoice == "1")
 			{
 				clearOutput();
 				outputText("(Placeholder) (Excited dream) PC barks, having fun with his indulgence, seeing the cute conclusion and increasing his petScore.\n\n");
@@ -590,7 +590,7 @@ package classes.Scenes.Places.Prison
 				}
 				outputText("(Placeholder) (Excited dream) If you need to have a smooth ending instead of transitioning to play offer, it goes here.\n\n");
 			}
-			else if (branchChoice === "2")
+			else if (branchChoice == "2")
 			{
 				clearOutput();
 				outputText("(Placeholder) (Excited dream) PC decides to stop the dream for whatever reason, reducing his petScore by 2).\n\n");
@@ -612,11 +612,11 @@ package classes.Scenes.Places.Prison
 			var previousDreamValue:* = prisonCaptorPetScratch();
 			var demandFlagged:int = flags[kFLAGS.PRISON_TRAINING_REFUSED];
 			corChange = 0;
-			if (prisonCaptorPetEvent() < 5 && currentTier === 2)
+			if (prisonCaptorPetEvent() < 5 && currentTier == 2)
 			{
 				prisonCaptorPetEventSet(5);
 			}
-			if (branchChoice === "choose")
+			if (branchChoice == "choose")
 			{
 				clearOutput();
 				outputText("(Placeholder) (Play offer) PC is thoroughly enjoying his little dream, his owner doing something above/away from him while he feels his belly being rubbed. Rolling over to enjoy it, it faintly occurs to him that the sensation is coming from...nowhere? His reverie slowly fades away and his eyes flutter open to see Mistress Elly rubbing his belly while he yaps and paddles his limbs playfully in the air. Assuming he survives the heart attack...\n\n");
@@ -628,18 +628,18 @@ package classes.Scenes.Places.Prison
 				addButton(0,"Eagerly",prisonCaptorPetPlayOffer,1);
 				addButton(1,"Shyly",prisonCaptorPetPlayOffer,2);
 				addButton(2,"Decline",prisonCaptorPetPlayOffer,3);
-				if (currentTier === 2)
+				if (currentTier == 2)
 				{
 					addButton(3,"Never!",prisonCaptorPetPlayOffer,4);
 				}
 				return;
 			}
-			if (branchChoice === "1")
+			if (branchChoice == "1")
 			{
 				clearOutput();
 				outputText("(Placeholder) (Play offer) PC dives right in and does the equivalent of a \"Perform\" for Elly.\n\n");
 				prisonCaptorPetScoreChange(3);
-				if (currentTier === 2)
+				if (currentTier == 2)
 				{
 					prisonCaptorPetEventChange(1);
 				}
@@ -647,7 +647,7 @@ package classes.Scenes.Places.Prison
 				prison.changeWill(10);
 				corChange = -0.25;
 				dynStats("cor", corChange);
-				if (petScore >= 30 && currentTier === 2 && currentEvent >= 7)
+				if (petScore >= 30 && currentTier == 2 && currentEvent >= 7)
 				{
 					outputText("(Placeholder) (Play offer) Smooth transition to training offer event. \"As you begin to tire out, Mistress Elly gives you a calculating glance.\"\n\n");
 					menu();
@@ -656,18 +656,18 @@ package classes.Scenes.Places.Prison
 				}
 				outputText("(Placeholder) (Play offer) If you need to have a smooth ending instead of transitioning to training offer, it goes here.\n\n");
 			}
-			else if (branchChoice === "2")
+			else if (branchChoice == "2")
 			{
 				clearOutput();
 				outputText("(Placeholder) (Play offer) PC decides to give it a try for reasons left ambiguous. The text would probably hint that he is either legitimately shy but interested or simply too startled to mount a refusal.\n\n");
 				prisonCaptorPetScoreChange(2);
-				if (currentTier === 2)
+				if (currentTier == 2)
 				{
 					prisonCaptorPetEventChange(1);
 				}
 				corChange = -0.25;
 				dynStats("cor", corChange);
-				if (petScore >= 30 && currentTier === 2 && currentEvent >= 7)
+				if (petScore >= 30 && currentTier == 2 && currentEvent >= 7)
 				{
 					outputText("(Placeholder) (Play offer) Smooth transition to training offer event. \"As you begin to tire out, Mistress Elly gives you a calculating glance.\"\n\n");
 					menu();
@@ -678,7 +678,7 @@ package classes.Scenes.Places.Prison
 			}
 			else
 			{
-				if (branchChoice === "3")
+				if (branchChoice == "3")
 				{
 					clearOutput();
 					outputText("(Placeholder) (Play offer) PC politely declines. Elly coaxes him by offering a treat.\n\n");
@@ -687,13 +687,13 @@ package classes.Scenes.Places.Prison
 					outputText("\n\n");
 					menu();
 					addButton(0,"Alright...",prisonCaptorPetPlayOffer,5);
-					if (currentTier === 2)
+					if (currentTier == 2)
 					{
 						addButton(1,"No!",prisonCaptorPetPlayOffer,6);
 					}
 					return;
 				}
-				if (branchChoice === "4")
+				if (branchChoice == "4")
 				{
 					clearOutput();
 					outputText("(Placeholder) (Play offer) PC does the equivalent of a \"Reject\", Elly gets mad and decides to remind him what he is if he's not willing to be her pet. Box/Stockades/Etc.\n\n");
@@ -701,18 +701,18 @@ package classes.Scenes.Places.Prison
 					prison.prisonPunishment(0);
 					return;
 				}
-				if (branchChoice === "5")
+				if (branchChoice == "5")
 				{
 					clearOutput();
 					outputText("(Placeholder) (Play offer) Transitions into \"Shyly\", which should give a treat anyway but I suppose would be made to if necessary.\n\n");
 					prisonCaptorPetScoreChange(1);
-					if (currentTier === 2)
+					if (currentTier == 2)
 					{
 						prisonCaptorPetEventChange(1);
 					}
 					corChange = -0.25;
 					dynStats("cor", corChange);
-					if (petScore >= 30 && currentTier === 2 && currentEvent >= 7)
+					if (petScore >= 30 && currentTier == 2 && currentEvent >= 7)
 					{
 						outputText("(Placeholder) (Play offer) Smooth transition to training offer event. \"As you begin to tire out, Mistress Elly gives you a calculating glance.\"\n\n");
 						menu();
@@ -721,7 +721,7 @@ package classes.Scenes.Places.Prison
 					}
 					outputText("(Placeholder) (Play offer) If you need to have a smooth ending instead of transitioning to training offer, it goes here.\n\n");
 				}
-				else if (branchChoice === "6")
+				else if (branchChoice == "6")
 				{
 					clearOutput();
 					outputText("(Placeholder) (Play offer) Elly makes fun of the PC and teases him for being reluctant, but does not force the issue. Might make a chance for \"punish\" reluctant puppies if I can think of any compelling scenes that would fit this tier.\n\n");
@@ -745,7 +745,7 @@ package classes.Scenes.Places.Prison
 			var previousDreamValue:* = prisonCaptorPetScratch();
 			var demandFlagged:int = flags[kFLAGS.PRISON_TRAINING_REFUSED];
 			corChange = 0;
-			if (branchChoice === "choose")
+			if (branchChoice == "choose")
 			{
 				outputText("\n\n");
 				outputText("(Placeholder) (Training offer) Elly tells the PC they could have much more fun if he were more proficient and says she should start \"training\" him to be a proper puppy.\n\n");
@@ -756,7 +756,7 @@ package classes.Scenes.Places.Prison
 				addButton(1,"Decline",prisonCaptorPetTrainingOffer,2);
 				return;
 			}
-			if (branchChoice === "1")
+			if (branchChoice == "1")
 			{
 				clearOutput();
 				outputText("(Placeholder) (Training offer) PC accepts her offer to be trained; she's very happy and gives the player a treat.\n\n");
@@ -771,7 +771,7 @@ package classes.Scenes.Places.Prison
 				addButton(0,"Continue...",prisonCaptorPetTrainingAcceptedIntro,0);
 				return;
 			}
-			if (branchChoice === "2")
+			if (branchChoice == "2")
 			{
 				clearOutput();
 				outputText("(Placeholder) (Training offer) PC politely declines. Implies he's not comfortable with being \"trained\" even if he enjoys this a bit. Elly eggs him on.\n\n");
@@ -781,7 +781,7 @@ package classes.Scenes.Places.Prison
 				addButton(1,"No!",prisonCaptorPetTrainingOffer,4);
 				return;
 			}
-			if (branchChoice === "3")
+			if (branchChoice == "3")
 			{
 				clearOutput();
 				outputText("(Placeholder) (Training offer) Transitions into a shy version of \"Accept\" scene.\n\n");
@@ -793,12 +793,12 @@ package classes.Scenes.Places.Prison
 				addButton(0,"Continue...",prisonCaptorPetTrainingAcceptedIntro,1);
 				return;
 			}
-			if (branchChoice === "4")
+			if (branchChoice == "4")
 			{
 				clearOutput();
 				outputText("(Placeholder) (Training offer) PC refuses training more forcefully. Elly warns him that she's not going to play with him if he can't be a good boy.\n\n");
 				prisonCaptorPetScoreSet(30);
-				if (currentTier === 2)
+				if (currentTier == 2)
 				{
 					prisonCaptorPetEventSet(5);
 				}
@@ -818,7 +818,7 @@ package classes.Scenes.Places.Prison
 			var previousDreamValue:* = prisonCaptorPetScratch();
 			var demandFlagged:int = flags[kFLAGS.PRISON_TRAINING_REFUSED];
 			corChange = 0;
-			if (branchChoice === "choose")
+			if (branchChoice == "choose")
 			{
 				outputText("\n\n");
 				outputText("(Placeholder) (Training Demand!) Elly informs the PC that since he clearly wants to be her puppy, but is too shy / rambunctious to accept being trained, she's no longer giving him the choice. Probably apologizes for giving him the choice to begin with and comforts that she won't put that burden on him ever again. Probably brings a leash, too...\n\n");
@@ -829,7 +829,7 @@ package classes.Scenes.Places.Prison
 				addButton(1,"Refuse",prisonCaptorPetTrainingDemand,2);
 				return;
 			}
-			if (branchChoice === "1")
+			if (branchChoice == "1")
 			{
 				clearOutput();
 				outputText("(Placeholder) (Training Demand!) PC displays his submission; she's very happy and puts a leash on him.\n\n");
@@ -843,7 +843,7 @@ package classes.Scenes.Places.Prison
 				addButton(0,"Continue...",prisonCaptorPetTrainingAcceptedIntro,1);
 				return;
 			}
-			if (branchChoice === "2")
+			if (branchChoice == "2")
 			{
 				clearOutput();
 				outputText("(Placeholder) (Training Demand!) PC politely declines. Elly informs him that she is not asking and tells him to stay still so she can leash him.\n\n");
@@ -854,7 +854,7 @@ package classes.Scenes.Places.Prison
 				addButton(1,"Resist",prisonCaptorPetTrainingDemand,4);
 				return;
 			}
-			if (branchChoice === "3")
+			if (branchChoice == "3")
 			{
 				clearOutput();
 				outputText("(Placeholder) (Training Demand!) Transitions into a shy version of \"Submit\" scene.\n\n");
@@ -866,7 +866,7 @@ package classes.Scenes.Places.Prison
 				addButton(0,"Continue...",prisonCaptorPetTrainingAcceptedIntro,2);
 				return;
 			}
-			if (branchChoice === "4")
+			if (branchChoice == "4")
 			{
 				clearOutput();
 				outputText("(Placeholder) (Training Demand!) PC backs away. Elly forcefully warns him that he is going to learn his lessons and his only choice is whether he wants it to be hard or easy.\n\n");
@@ -877,7 +877,7 @@ package classes.Scenes.Places.Prison
 				addButton(1,"Never!",prisonCaptorPetTrainingCrateIntro);
 				return;
 			}
-			if (branchChoice === "5")
+			if (branchChoice == "5")
 			{
 				clearOutput();
 				outputText("(Placeholder) (Training Demand!) Transitions into a shy version of \"Submit\" with additional text of Elly apologizing for having to be so forceful but being proud of him for recognizing his place.\n\n");
@@ -900,7 +900,7 @@ package classes.Scenes.Places.Prison
 			var petScore:* = prisonCaptorPetScore();
 			var previousDreamValue:* = prisonCaptorPetScratch();
 			clearOutput();
-			if (branchChoice === "choose")
+			if (branchChoice == "choose")
 			{
 				player.changeStatusValue(StatusEffects.PrisonCaptorEllyStatus,4,0);
 				prison.changeEsteem(20, prison.inPrison);
@@ -912,7 +912,7 @@ package classes.Scenes.Places.Prison
 			outputText("(Placeholder) (Training Crate Intro) PC opts-out -- oops too late. Elly laments that she needs to begin with such a harsh lesson, but tells the PC [he] needs to learn to behave if they're ever going to get anywhere.\n\n");
 			outputText("(Placeholder) (Training Crate Intro) Mistress Elly snaps her fingers, and within moments the door opens and two imps enter the room hauling a sizeable rectangular cage between them -- apparently she was well prepared for your resistance. Once the imps have set it up in the corner of your cell and departed, she hauls you roughly by your collar towards the open door on the cage's broad side. It appears as though it was designed to house a large dog, being roughly twice as long as it is wide and tall, and as she ushers you inside with a stern spank on your [ass] you find that there is only barely enough room for you to turn about, and space enough for you to rise to your hands and knees, but no higher. Thankfully the cage is furnished with a large, soft pad, allowing you to rest comfortably within. It is also equipped with a water dish and a food bowl, although the latter is notably empty.\n\n");
 			outputText("(Placeholder) (Training Crate Intro) Once you are locked inside, Mistress Elly explains that you will remain inside your crate until you are willing to accept what you are and show your submission by putting on your leash, picking it up in your mouth, and begging for your Mistress to train you as she <i>so kindly</i> offered to do before you rudely refused her help.\n\n");
-			if (currentTier === 2)
+			if (currentTier == 2)
 			{
 				prisonCaptorPetTierUpdate(true);
 			}
@@ -1003,7 +1003,7 @@ package classes.Scenes.Places.Prison
 			corChange = 0;
 			lustChange = 0;
 			behaviorCounter = player.statusEffectv3(StatusEffects.PrisonCaptorEllyStatus);
-			if (branchChoice === "choose")
+			if (branchChoice == "choose")
 			{
 				outputText("(Placeholder) (Training Crate Callout) Politely as you can, you call out for  Mistress Elly. She comes to see you, makes some comments about your current state of esteem, lust, hunger, and fatigue, as well as your recent behavior. She then asks \"<i>What's wrong [boy]?</i>\"\n\n");
 				outputText("How do you respond?\n\n");
@@ -1030,7 +1030,7 @@ package classes.Scenes.Places.Prison
 				}
 				return;
 			}
-			if (branchChoice === "1")
+			if (branchChoice == "1")
 			{
 				clearOutput();
 				outputText("(Placeholder) (Training Crate Callout) You indicate that you are hungry. Depending on your recent behavior and your hunger level, she might feed you.\n\n");
@@ -1057,7 +1057,7 @@ package classes.Scenes.Places.Prison
 			}
 			else
 			{
-				if (branchChoice === "2")
+				if (branchChoice == "2")
 				{
 					clearOutput();
 					outputText("(Placeholder) (Training Crate Callout) You indicate that you are are restless, and need to move around. She will offer you a chance to walk around the room, but only if you allow her to leash you.\n\n");
@@ -1071,7 +1071,7 @@ package classes.Scenes.Places.Prison
 					}
 					return;
 				}
-				if (branchChoice === "3")
+				if (branchChoice == "3")
 				{
 					clearOutput();
 					outputText("(Placeholder) (Training Crate Callout) You allow her to leash you, and she walks you around your cell so that you can stretch and work the cramps out of your muscles.\n\n");
@@ -1083,7 +1083,7 @@ package classes.Scenes.Places.Prison
 					corChange = -0.25;
 					dynStats("cor", corChange);
 				}
-				else if (branchChoice === "4")
+				else if (branchChoice == "4")
 				{
 					clearOutput();
 					outputText("(Placeholder) (Training Crate Callout) You decline her offer. She chastises you, and leaves you to continue to stew in your cage. \n\n");
@@ -1094,7 +1094,7 @@ package classes.Scenes.Places.Prison
 					corChange = -0.25;
 					dynStats("cor", corChange);
 				}
-				else if (branchChoice === "5")
+				else if (branchChoice == "5")
 				{
 					clearOutput();
 					outputText("(Placeholder) (Training Crate Callout) You indicate that you are horny, and don't want to make a mess of your bed.'.\n\n");
@@ -1114,7 +1114,7 @@ package classes.Scenes.Places.Prison
 					corChange = -0.25;
 					dynStats("cor", corChange);
 				}
-				else if (branchChoice === "6")
+				else if (branchChoice == "6")
 				{
 					clearOutput();
 					outputText("(Placeholder) (Training Crate Callout) You sheepishly say you don't need anything.\n\n");
@@ -1146,11 +1146,11 @@ package classes.Scenes.Places.Prison
 			behaviorCounter = player.statusEffectv3(StatusEffects.PrisonCaptorEllyStatus);
 			trainingSource = player.statusEffectv4(StatusEffects.PrisonCaptorEllyStatus);
 			entryPath = prisonCaptorPetScratch();
-			if (!(entryPath === 1) && !(entryPath === 2))
+			if (!(entryPath == 1) && !(entryPath == 2))
 			{
 				entryPath = 1;
 			}
-			if (branchChoice === "choose")
+			if (branchChoice == "choose")
 			{
 				prisonCaptorPetScratchSet(1);
 				outputText("(Placeholder) (Training Crate Leash) You examine the leash that Mistress Elly has left for you.\n\n");
@@ -1169,7 +1169,7 @@ package classes.Scenes.Places.Prison
 				addButton(1,"Put Down",prisonCaptorPetTrainingCrateLeash,2);
 				return;
 			}
-			if (branchChoice === "0")
+			if (branchChoice == "0")
 			{
 				clearOutput();
 				prisonCaptorPetScratchSet(2);
@@ -1179,11 +1179,11 @@ package classes.Scenes.Places.Prison
 				addButton(0,"Fasten",prisonCaptorPetTrainingCrateLeash,1);
 				return;
 			}
-			if (branchChoice === "1")
+			if (branchChoice == "1")
 			{
 				clearOutput();
 				outputText("(Placeholder) (Training Crate Leash) You attach the leash to the ring on the back of your collar.\n\n");
-				if (entryPath === 2)
+				if (entryPath == 2)
 				{
 					outputText("(Placeholder) (Training Crate Leash) Mistress Elly watches with approval.\n\n");
 				}
@@ -1196,7 +1196,7 @@ package classes.Scenes.Places.Prison
 				addButton(0,"Bite Leash",prisonCaptorPetTrainingCrateLeash,3);
 				return;
 			}
-			if (branchChoice === "2")
+			if (branchChoice == "2")
 			{
 				clearOutput();
 				outputText("(Placeholder) (Training Crate Leash) You can't bring yourself to go any farther at the moment. Perhaps if you focus on behaving like a good dog, you might be able to get your ego in check enough to ask her to train you.\n\n");
@@ -1206,7 +1206,7 @@ package classes.Scenes.Places.Prison
 			}
 			else
 			{
-				if (branchChoice === "3")
+				if (branchChoice == "3")
 				{
 					clearOutput();
 					outputText("(Placeholder) (Training Crate Leash) You pick the leash up with your mouth.\n\n");
@@ -1216,7 +1216,7 @@ package classes.Scenes.Places.Prison
 					corChange = -0.25;
 					dynStats("cor", corChange);
 					menu();
-					if (entryPath === 2)
+					if (entryPath == 2)
 					{
 						addButton(0,"Beg",prisonCaptorPetTrainingCrateLeash,6);
 					}
@@ -1234,10 +1234,10 @@ package classes.Scenes.Places.Prison
 					}
 					return;
 				}
-				if (branchChoice === "4" || branchChoice === "5")
+				if (branchChoice == "4" || branchChoice == "5")
 				{
 					clearOutput();
-					if (branchChoice === "4")
+					if (branchChoice == "4")
 					{
 						outputText("(Placeholder) (Training Crate Leash) You bark around the leather strap in your mouth, and Mistress Elly appears. She is quite pleased to see you wearing your leash and prepared to give it to her.\n\n");
 						prisonCaptorPetScoreChange(1);
@@ -1256,10 +1256,10 @@ package classes.Scenes.Places.Prison
 					addButton(0,"Beg",prisonCaptorPetTrainingCrateLeash,6);
 					return;
 				}
-				if (branchChoice === "6")
+				if (branchChoice == "6")
 				{
 					clearOutput();
-					if (entryPath === 2)
+					if (entryPath == 2)
 					{
 						outputText("(Placeholder) (Training Crate Leash) Transition directly from bite leash for players who submit.\n\n");
 					}
@@ -1278,7 +1278,7 @@ package classes.Scenes.Places.Prison
 					flags[kFLAGS.PRISON_PUNISHMENT] = 0;
 					flags[kFLAGS.PRISON_TRAINING_REFUSED] = 1;
 					menu();
-					if (trainingSource === 0)
+					if (trainingSource == 0)
 					{
 						addButton(0, "Continue...", prisonCaptorPetTrainingAcceptedIntro, 3);
 					}
@@ -1350,7 +1350,7 @@ package classes.Scenes.Places.Prison
 			var lustChange:int = 75;
 			var shortName:ItemType = null;
 			prisonCaptorPetTierUpdate();
-			if (branchChoice === "complain")
+			if (branchChoice == "complain")
 			{
 				outputText("\"<i>B-but...</i>\" you whisper almost silently, mouth still hanging open. As she doesn't even seem to notice, you can't help but release a mournful whimper, too overcome with shame and arousal to muster much else.\n\n");
 				outputText("At that, the light clicking of her departure ceases, and you see her turn. Her expression is difficult to make out through your misty eyes, but another light chuckle betrays an amused curiosity. \"<i>Why, whatever's the matter, dear?</i>\" As you timidly lower your eyes to the bowl of soup before you, she gives a short, sympathetic breath of understanding.\n\n");
@@ -1373,13 +1373,13 @@ package classes.Scenes.Places.Prison
 				addButton(2, "Never again", prisonCaptorFeedingBJTrainingPerformPuppyFinale, "optout");
 				return;
 			}
-			if (branchChoice === "letgo")
+			if (branchChoice == "letgo")
 			{
 				outputText("You decide there's not much point trying to convince her and watch your [if (obey < 20) captor\"][if (obey >= 20) \"Mistress\"] depart. As you look down at your reward, you can't help but admit that your performance <i>was</i> asking for this a little -- and even though her suggestion was a tease, the thought of lapping up your meal on all fours makes your heart flutter for a moment.\n\n");
 				outputText("You figure that if you want to avoid being treated like an animal, you should probably avoid acting like one.\n\n");
 				shortName = consumables.C_BREAD;
 			}
-			else if (branchChoice === "beg")
+			else if (branchChoice == "beg")
 			{
 				outputText("You give your Mistress a faint nod. She responds with a delighted smile, giving another encouraging show of your treat, and you close your eyes. You begin a deep breath in an attempt to compose yourself, but your lungs stagger under the battering sensations of the heat in your loins, the hole in your heart, and the chill creeping down your torso in slow, viscous rivulets. As you give up -- swallowing the rest of your breath in an apprehensive gulp -- you lower your head, let your vision seep back, and look upon your half-curled hands...\n\n");
 				outputText("…with no idea how you managed to do this in a single movement before. Not only do you find your limbs numb with embarrassment at the thought of it, but the practical considerations alone are disorienting. You <i>did</i> do it once, though...\n\n");
@@ -1489,7 +1489,7 @@ package classes.Scenes.Places.Prison
 				prisonCaptorPetTierUpdate();
 				shortName = consumables.C_BREAD;
 			}
-			else if (branchChoice === "optout")
+			else if (branchChoice == "optout")
 			{
 				outputText("This is outrageous! You know you can't stop her from refusing you your meal, but your performance is <i>over</i> and you're not going to let yourself be treated this way <b>ever</b> again.\n\n");
 				outputText("\"<i>I'm not your damn <b>DOG</b>!</i>\" you yell viciously, tears clouding your eyes as your body strains against your show of rebellion. A stone seems to settle in your stomach as you realize what you've done, and your enraged expression goes blank as you blink away the dampness to find that Mistress Elly isn't there anymore.\n\n");
@@ -1502,7 +1502,7 @@ package classes.Scenes.Places.Prison
 				prison.changeEsteem(3, prison.inPrison);
 				shortName = consumables.C_BREAD;
 			}
-			else if (branchChoice === "nevermind")
+			else if (branchChoice == "nevermind")
 			{
 				outputText("You look away from her indecisively and finally lift your hands from the floor. When you unravel your paws and cross your arms in a meek show of reticence, she lets slip an affectionate laugh.\n\n");
 				outputText("\"<i>You're a bit late to play shy, dear, but alright. Enjoy your bowl, okay?</i>\" She finishes with expected sincerity, and you can't help but glance back at her as she turns to depart. There's a violet glint as she gives you a parting wink, and you feel yourself blush as you look down at your reward.\n\n");

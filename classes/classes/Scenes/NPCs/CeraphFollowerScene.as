@@ -36,9 +36,9 @@ package classes.Scenes.NPCs
 				return;
 			}
 			
-			if (rand(24) === 0 && player.hasCock())
+			if (rand(24) == 0 && player.hasCock())
 				catgirlEncounter();
-			else if (rand(24) === 0 && flags[kFLAGS.CERAPH_FAUX_CORRUPTION_DISABLED] === 0)
+			else if (rand(24) == 0 && flags[kFLAGS.CERAPH_FAUX_CORRUPTION_DISABLED] == 0)
 				carephCorruptionSlaves();
 			else if (rand(24) <= 1 && player.gender > 0)
 				encounterZetsuko();
@@ -58,7 +58,7 @@ package classes.Scenes.NPCs
 			spriteSelect(SpriteDb.s_ceraphClothed);
 			if (output) {
 				outputText("You move to a secluded portion of your camp and mentally call for your tamed Omnibus.\n\nCeraph strides from around a boulder, as if by magic.  The slave-demon wears her red-studded collar as always.  However, instead of prancing around naked like she used to, she's arrived wearing a scandalous latex outfit that's as concealing as it is titillating.  From the tips of her fingers all the way to her shoulders, she's sleeved in the glossy black material.  At her neck, the top opens up, exposing the purple curves of her breasts, even though her nipples are hidden away by a clingy, scandalous scarlet bra, also of latex.  It looks as though it would be effortless to tear away. A rubbery faux-corset hugs her waist, connected to the material over her arms and shoulders in the back. The crimson micro bikini bottom beneath it looks unfit for covering anything Ceraph has ever had between her legs, but it somehow seems to just barely be holding things together.");
-				if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0) outputText("  Her demonic prick forms a ridge in the tight fabric, its head peeking ever-so-slightly over the top");
+				if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText("  Her demonic prick forms a ridge in the tight fabric, its head peeking ever-so-slightly over the top");
 				else outputText("  Thankfully, she seems to have removed or hidden her demonic cock somehow, so as not to disrupt her fragile outfit with unfeminine bulges");
 				outputText(".  Tight buckles link her corset to the long thigh high boots over her legs, the platforms and heels adding nearly a foot to her height.  Red stripes run right down the front of them and along the soles, as an imitation of laces.\n\n");
 
@@ -86,14 +86,14 @@ package classes.Scenes.NPCs
 			} else {
 				addDisabledButton(8, "RemoveFetish", "You have no fetishes... Forced on you by Ceraph.");
 			}
-			if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0) {
+			if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) {
 				addButton(9, "Go Female", cawkTawgle);
 			} else {
 				addButton(9, "Go Herm", cawkTawgle);
 			}
 			addButton(14, "Leave", camp.campSlavesMenu);
 			
-			if (flags[kFLAGS.FOLLOWER_AT_FARM_CERAPH] === 0 && flags[kFLAGS.FARM_CORRUPTION_STARTED] === 1) addButton(1, "Farm Work", helpWithFarm);
+			if (flags[kFLAGS.FOLLOWER_AT_FARM_CERAPH] == 0 && flags[kFLAGS.FARM_CORRUPTION_STARTED] == 1) addButton(1, "Farm Work", helpWithFarm);
 		}
 		
 		private function helpWithFarm():void
@@ -216,7 +216,7 @@ package classes.Scenes.NPCs
 			if (player.lust >= 33) {
 				if (player.hasCock()) {
 					addButton(1, "Fuck Her", ceraphScene.maleFuckCeraphsPussy);
-					if (player.cockThatFits(monster.analCapacity()) !== -1) {
+					if (player.cockThatFits(monster.analCapacity()) != -1) {
 						addButton(3, "FuckHerAss", ceraphScene.buttRapeCeraph);
 					} else {
 						addDisabledButton(3, "FuckHerAss", "There's no way you could fit inside her ass - you're too big.");
@@ -285,7 +285,7 @@ package classes.Scenes.NPCs
 				
 				if (player.hasCock()) {
 					addButton(0, "Fuck Her", ceraphScene.maleFuckCeraphsPussy);
-					if (player.cockThatFits(monster.analCapacity()) !== -1) {
+					if (player.cockThatFits(monster.analCapacity()) != -1) {
 						addButton(2, "FuckHerAss", ceraphScene.buttRapeCeraph);
 					} else {
 						addDisabledButton(2, "FuckHerAss", "There's no way you could fit inside her ass - you're too big.");
@@ -326,7 +326,7 @@ package classes.Scenes.NPCs
 				
 				if (player.hasCock()) {
 					addButton(0, "Fuck Her", ceraphScene.maleFuckCeraphsPussy);
-					if (player.cockThatFits(monster.analCapacity()) !== -1) {
+					if (player.cockThatFits(monster.analCapacity()) != -1) {
 						addButton(2, "FuckHerAss", ceraphScene.buttRapeCeraph);
 					} else {
 						addDisabledButton(2, "FuckHerAss", "There's no way you could fit inside her ass - you're too big.");
@@ -346,7 +346,7 @@ package classes.Scenes.NPCs
 			clearOutput();
 			spriteSelect(SpriteDb.s_ceraphClothed);
 			//Off
-			if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0) {
+			if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) {
 				outputText("You tell Ceraph that you want her to hide her demonic cock when she's around you.  Your collared demoness nods, lowering her eyelids seductively.  She slides a hand up the front of her latex panties, stroking her defiled member through the material once before concealing its form with fingers pointed down.\n\n");
 
 				outputText("She lets out a low hum, then suddenly arches her back as her hand sinks in an inch.  \"<i>O-oh-oh!</i>\" she moans, pulling it away with a small string of pre-cum tying it to her now-bulgeless panties.  Absently she licks the fluid from her fingers and asks, \"<i>Was there anything else, my " + player.mf("Master", "Mistress") + "?</i>\"\n\n");
@@ -371,13 +371,13 @@ package classes.Scenes.NPCs
 			clearOutput();
 			spriteSelect(SpriteDb.s_ceraphClothed);
 			//*Fetish level = 0
-			if (flags[kFLAGS.PC_FETISH] === 0) {
+			if (flags[kFLAGS.PC_FETISH] == 0) {
 				outputText("Ceraph comes forward on your command, whispering calmly as she ");
-				if (player.earsPierced === 0) outputText("pulls a pair of gleaming, green piercings from a pouch.  \"<i>Oh, don't worry " + player.mf("Master", "Mistress") + "; you're going to love this so much.  These piercings are special, and they'll give you exactly what you want.</i>\"");
+				if (player.earsPierced == 0) outputText("pulls a pair of gleaming, green piercings from a pouch.  \"<i>Oh, don't worry " + player.mf("Master", "Mistress") + "; you're going to love this so much.  These piercings are special, and they'll give you exactly what you want.</i>\"");
 				else outputText("places her hands upon your pierced ears.  She whispers softly, \"<i>Don't worry " + player.mf("Master", "Mistress") + ", I can easily use the piercings you already have.  It won't hurt.</i>\"");
 				outputText("\n\n");
 				//(NOT PIERCED) 
-				if (player.earsPierced === 0) outputText("The demon places a hand on your forehead and rubs your temples.  Numbness spreads through your body with every touch, until you can barely feel a thing.  She snaps an earring into your left ear, and dizziness washes over you.  A moment later she's piercing the other side, and the now-familiar vertigo that accompanies it seems to come and go quicker than before.  ");
+				if (player.earsPierced == 0) outputText("The demon places a hand on your forehead and rubs your temples.  Numbness spreads through your body with every touch, until you can barely feel a thing.  She snaps an earring into your left ear, and dizziness washes over you.  A moment later she's piercing the other side, and the now-familiar vertigo that accompanies it seems to come and go quicker than before.  ");
 				//(PIERCED) 
 				else outputText("The demon rubs your ears in her hands, numbing them slightly.  A gradual buzz builds behind your eyes, accompanied by a wave of dizziness.  You blink and try to shake your head, but as numb as you are, it's quite difficult.  After a few moments, the odd sensations pass, returning normal feeling to your ears and " + player.faceDescript() + ", much to your relief.  ");
 				outputText("You hope she doesn't take your " + player.armorName + " while you're paralyzed, leaving you to roam the realm totally exposed.  Confusion and waves of new desire battle in your mind as you try to come to grips with the odd thought.\n\n");
@@ -389,7 +389,7 @@ package classes.Scenes.NPCs
 				outputText(" as the new thoughts and desires settle themselves inside you.  She gives you a gentle pat and explains, \"<i>It's ok " + player.mf("Master", "Mistress") + "; you're an exhibitionist now.  Would you like your piercing slave to give you even more?</i>\"\n\n");
 
 				outputText("Ceraph is right – <b>you're an exhibitionist now.</b>");
-				if (player.earsPierced === 0) {
+				if (player.earsPierced == 0) {
 					player.earsPierced = 1;
 					player.earsPShort = "green gem-stone ear-studs";
 					player.earsPLong = "Green gem-stone ear-studs";
@@ -398,9 +398,9 @@ package classes.Scenes.NPCs
 				dynStats("lus", 25, "cor", 1);
 			}
 			//*Fetish level = 1
-			else if (flags[kFLAGS.PC_FETISH] === 1) {
+			else if (flags[kFLAGS.PC_FETISH] == 1) {
 				outputText("Ceraph giggles as she closes in on you once again.  Sighing, you lie there and allow your slave to massage your temples, using her magic to paralyze and numb your body.  ");
-				if (player.nipplesPierced === 0) {
+				if (player.nipplesPierced == 0) {
 					outputText("She's all too happy to build up the suspense as she pulls out a pair of shining black studs, \"<i>Oh, do you know what these are going to do?  Well, how about I slide them into your ");
 					if (player.hasFuckableNipples()) outputText("slutty");
 					else if (player.nippleLength < 1) outputText("cute");
@@ -419,7 +419,7 @@ package classes.Scenes.NPCs
 
 				outputText("Your body goes beet-red as it suddenly tries to struggle against the invisible binding of her magic.  It... it feels good!  You nearly cry out with lust as the restraint turns you on more and more.  Ceraph's magic has given you a fetish for being tied up!  You nearly faint when you think of all the strange things in this land that might try to restrain you, and you know you have no hope of resisting if they ever catch you.  <b>Though somehow you think you might enjoy being a bondage fetishist...</b>");
 				dynStats("lus", 25, "cor", 1);
-				if (player.nipplesPierced === 0) {
+				if (player.nipplesPierced == 0) {
 					player.nipplesPierced = 1;
 					player.nipplesPShort = "seamless black nipple-studs";
 					player.nipplesPLong = "Seamless black nipple-studs";
@@ -427,7 +427,7 @@ package classes.Scenes.NPCs
 				flags[kFLAGS.PC_FETISH] = 2;
 			}
 			//*Fetish level = 2
-			else if (flags[kFLAGS.PC_FETISH] === 2) {
+			else if (flags[kFLAGS.PC_FETISH] == 2) {
 				outputText("The demoness pulls out a diamond-studded piercing and closes in on you, her cock peeking out of her panties, her pussy moist, and her hips swaying seductively as she advances.  Ceraph gives you a serious look and warns you, \"<i>You realize you're not even going to be able to lift a hand against your foes after this?  You really love a challenge, don't you " + player.mf("Master", "Mistress") + "?</i>\"\n\n");
 
 				outputText("The idea of facing the denizens of this land without even so much as the ability to throw a punch turns you on immensely, and you pant and gasp as ");
@@ -507,9 +507,9 @@ package classes.Scenes.NPCs
 			else outputText("You slap her across the face for her temerity.");
 
 			dynStats("tou", -1, "cor", 1);
-			if (flags[kFLAGS.PC_FETISH] === 3) flags[kFLAGS.PC_FETISH] = 2;
-			else if (flags[kFLAGS.PC_FETISH] === 2) flags[kFLAGS.PC_FETISH] = 1;
-			else if (flags[kFLAGS.PC_FETISH] === 1) flags[kFLAGS.PC_FETISH] = 0;
+			if (flags[kFLAGS.PC_FETISH] == 3) flags[kFLAGS.PC_FETISH] = 2;
+			else if (flags[kFLAGS.PC_FETISH] == 2) flags[kFLAGS.PC_FETISH] = 1;
+			else if (flags[kFLAGS.PC_FETISH] == 1) flags[kFLAGS.PC_FETISH] = 0;
 			//Back to follower menu
 			doNext(ceraphFollowerAppearance);
 		}
@@ -524,13 +524,13 @@ package classes.Scenes.NPCs
 			spriteSelect(SpriteDb.s_ceraphClothed);
 			//*Summary: Bind Ceraph's arms behind her back and make her lie facedown in the dirt, then grab her ankles and wheelbarrow fuck her, with her face as the wheel.
 			outputText("You let Ceraph know that you'll be using her pussy.  She sighs and says, \"<i>Yes, " + player.mf("Master", "Mistress") + ",</i>\" unable to hide the disappointment in her tone.  Ceraph shifts, the panties of her outfit fading away to reveal her dripping cunny");
-			if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0) outputText(" and half-erect, throbbing cock");
+			if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText(" and half-erect, throbbing cock");
 			outputText(".  ");
 			if (player.cor < 33) outputText("She gets down on all fours, then lays her cheek in the dirt.  Her arms cross behind her back, suddenly bound there by the abrupt appearance of those same panties, tied in a knot.  Supported by only her knees, her tits, shoulders, and her face, she asks, \"<i>Grab me and fuck me " + player.mf("Master", "Mistress") + ", please grind your slave's face in the dirt!</i>\"\n\n");
 			else if (player.cor < 66) outputText("She gets down on all fours, then lays her cheek in the dirt.  Her arms cross behind her back, and you pin them there for her, smiling as her panties appear as if by magic, tied in a binding knot around her wrists.  With only her knees and upper body supporting her, Ceraph begs, \"<i>Be rough with me.</i>\"\n\n");
 			else {
 				outputText("You push her onto all fours, then grab her arms and fold them behind her back, grinding her face into the dirt.  The demoness groans, her pussy dripping ");
-				if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0) outputText("and her dick releasing a squirt of pre-cum ");
+				if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText("and her dick releasing a squirt of pre-cum ");
 				outputText("as she gets more turned on by the rough, sexual play.  Suddenly, as if by magic, her panties appear around her wrists, and you tie them tightly to bind her securely.  With only her knees and upper body supporting her, Ceraph begs, \"<i>Be rough with me.</i>\"\n\n");
 			}
 
@@ -541,7 +541,7 @@ package classes.Scenes.NPCs
 			if (player.str < 60) outputText(" and heave, lifting her up off the ground and forcing her to straddle you.");
 			else outputText(" and easily lift her, forcing her to straddle you.");
 			outputText("  Dragging the demon back, you bring her slutty, sodden puss up to your " + player.cockDescript(x));
-			if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0) outputText(", ignoring the rope of dangling pre-cum that hangs from her bumpy prick.");
+			if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText(", ignoring the rope of dangling pre-cum that hangs from her bumpy prick.");
 			else outputText(", feeling the heat washing off her mons and onto your " + player.cockHead(x) + ".");
 			outputText("  Yanking back, you bury all " + num2Text(Math.round(player.cocks[x].cockLength)) + " inches of your " + player.cockDescript(x) + " into Ceraph's unholy, warm snatch, ");
 			if (player.cockArea(x) > 150) outputText("distorting her body around the sheer bulk of your massive member.\n\n");
@@ -550,7 +550,7 @@ package classes.Scenes.NPCs
 			outputText("For a moment, the two of you simply stay like that: you buried to the hilt and her moaning in the dirt.  Ceraph's arms are flexing against her bondage as if she could rip through the latex panties by sheer force; though she could free herself by magic, she's chosen to struggle in futility.  Perhaps she accepts her bondage as a true submissive slut should?  Deciding it's time to reward her, you squeeze her thighs again and languidly withdraw, gazing at the marvelous wetness now soaking your tool.  The demoness whimpers at the emptiness, her voice carrying only simpering, anguished desire.  Lazily, you slide back, gently rocking her body when your crotches clasp together, twisting Ceraph's face.\n\n");
 
 			outputText("Your slut moans, \"<i>Ohhhh, yesssssss,</i>\" while you slide home, culminating in an inarticulate gurgle.  Heavy drops of drool hang from her lips, turning the earth below into a thin layer of viscous mud for your pet to pillow her head in while you rail her.  Starting slow, you gently work your whore's pussy over, gleefully watching her girlish lube drip from the puffy, purple lips of her sex.  ");
-			if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0) outputText("Her cock dangles towards the ground, dripping thick ropes of pre-spunk as readily as her pussy.  ");
+			if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText("Her cock dangles towards the ground, dripping thick ropes of pre-spunk as readily as her pussy.  ");
 			outputText("Somehow, she feels as tight around your " + player.cockDescript(x) + " as any virgin and three times as wet.  The gentle claps of genital against genital send ripples through Ceraph, smearing her cheek in the growing mud-puddle while her tits wobble dangerously inside the sheer latex bra.\n\n");
 
 			outputText("\"<i>M-more!  Harder, " + player.mf("Master", "Mistress") + "!</i>\" the demon pants as she crosses her legs behind your back, as if it could somehow stop you from pulling the whole way out.  You hold her one handed, just long enough to crack your palm against her tight, toned ass, and then you pick up the pace.  Now that you're fucking her faster, the slut isn't even trying to talk anymore.  Her hair is plastered against her scalp, stained brown by the mud, and her arms are slack in the restraints.  Ceraph gives every impression of being utterly resigned to being fucked like a toy, used without care for her own feelings or emotions.  Knowing that you've taken a powerful dominatrix and turned her into... this - it sends a chill up your back, invigorating your fast-pumping hips.\n\n");
@@ -558,7 +558,7 @@ package classes.Scenes.NPCs
 			//(DOUBLE PENN!) 
 			if (y >= 0) {
 				outputText("A wicked idea crosses your mind, and you reach down to grab your " + player.cockDescript(y) + ", aiming it at the flexing asshole just above the slave's squelching snatch.  Your next thrust plows it deep into Ceraph's anus, thankfully lubricated by the demon's constant squirting.  Growling at the mounting, doubling pleasure, you resume your tempo and slam both your cocks hilt-deep in Ceraph.  ");
-				if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0) outputText("She squeals and sprays a thick rope of jizz from her bloated cock.  It seems a little prostate pressure was all it took to put her maleness over the edge.  ");
+				if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText("She squeals and sprays a thick rope of jizz from her bloated cock.  It seems a little prostate pressure was all it took to put her maleness over the edge.  ");
 				outputText("Your slave's reaction is to wiggle her backside at you and curl her tail about your waist, trying to pull you even further into her body.  Delirious and high on pleasure, you " + player.mf("chuckle", "giggle") + " and pound away, heedless of anything but your own pending climax.");
 				if (player.cockTotal() >= 3) {
 					outputText("  Sadly, your extra penis");
@@ -570,7 +570,7 @@ package classes.Scenes.NPCs
 			//(Single Penn!) 
 			else {
 				outputText("Working the bitch harder and harder, you start slamming your " + player.cockDescript(x) + " so violently into the captive puss that Ceraph's sliding a few inches through the mud with each push.  Her cunt starts squeezing and contracting, tightening even more than you would have thought imaginable.  With such a vice-like twat, you're having a hard time even pushing back inside.  Sighing, you hilt yourself and let the wringing, milking tightness work you.  Not wanting to let your slave assume control of the situation, you start spanking her, bringing your palm down hard enough on her ass to leave hand-prints behind from the blows.  Her tail curls about your waist protectively");
-				if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0) outputText(" while her cock spews ropes of pre-cum into the dirt");
+				if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText(" while her cock spews ropes of pre-cum into the dirt");
 				outputText(".  Holding still for the sucking, squeezing embrace, there's little on your mind but punishing your slut and enjoying the feel of your coming climax.\n\n");
 			}
 
@@ -581,7 +581,7 @@ package classes.Scenes.NPCs
 			outputText(" and basting the corrupt slave's tunnel");
 			if (y >= 0) outputText("s");
 			outputText(" with sloppy spooge.  Ceraph screams, \"<i>Yes!  Yes!  Fuck me!  Fill me!  Use me " + player.mf("Master", "Mistress") + "!  Pump me full of cum while you grind my whorish face in the dirt!</i>\"  Her voice goes ragged, high pitched and screaming");
-			if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0) outputText(", and her cock starts pumping more demonic spunk into the mud");
+			if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText(", and her cock starts pumping more demonic spunk into the mud");
 			outputText(".  It trails off, though her pussy continues teasing your " + player.cockDescript(x) + ", wringing the last of your seed from your " + player.ballsDescriptLight() + ".\n\n");
 
 			outputText("Ceraph sighs, ");
@@ -644,7 +644,7 @@ package classes.Scenes.NPCs
 			else if (player.wetness() >= 2) outputText(", even though you produce enough for her to gulp.");
 			else outputText(", even though your pussy doesn't gush like most of the corrupted creatures in this realm.");
 			outputText("  Still shaking and clenching, you start to come down, still holding Ceraph in her proper place.  She doesn't show any sign of discomfort, and as a matter of fact, once you deign to look down at her, her eyes are twinkling happily and her face is flushed.  ");
-			if (flags[kFLAGS.CERAPH_LICKED_YOU_OUT] === 0) outputText("Did she... get off with her tongue?\n\nSeeing the confusion on your face, Ceraph releases your spit-slathered genitals, her tongue returns to normal, and she says, \"<i>Mmm, of course, dear.  If only men knew what they were missing... tasting a woman's pussy while it climaxes on your cock is divine.</i>\"\n\n");
+			if (flags[kFLAGS.CERAPH_LICKED_YOU_OUT] == 0) outputText("Did she... get off with her tongue?\n\nSeeing the confusion on your face, Ceraph releases your spit-slathered genitals, her tongue returns to normal, and she says, \"<i>Mmm, of course, dear.  If only men knew what they were missing... tasting a woman's pussy while it climaxes on your cock is divine.</i>\"\n\n");
 			else outputText("Shuddering, Ceraph returns her tongue to normal and slides it out of your tender quim with a knowing smile.\n\n\"<i>I'll never get tired of that, " + player.mf("Master", "Mistress") + ",</i>\" she quips.\n\n");
 
 			outputText("You pull her back to your " + player.vaginaDescript() + " to lick the last of your lady-spunk from your nethers, then send her on her way with a smile on your face.  Your expression widens when you see Ceraph stagger, still a bit shaky from her own orgasm.");
@@ -661,13 +661,13 @@ package classes.Scenes.NPCs
 			spriteSelect(SpriteDb.s_ceraphClothed);
 
 			outputText("You tear off your " + player.armorName + " and instruct Ceraph, \"<i>Please me.  All of me.</i>\"  To her credit, Ceraph only spends a moment eyeing you before she springs into action.  Her panties vanish into shreds of flying latex, utterly demolished by the sudden growth of a pair of purple, undulating tendrils, each tipped with a swollen cockhead.  Squeezing up behind them is a third, slower tentacle.  Unlike its brothers, this one is capped with a sucking orifice, drooling clear slime and ringed by nub-like nodules, peeking out from folds of skin that remind you of clitoral hoods.");
-			if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0) outputText("  You can vaguely see Ceraph's hard, demonic-dick underneath all the waving tentacles.  She must have taken your command to keep her dick out for your use quite literally, even though there's little chance you'll get to put it anywhere.");
+			if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText("  You can vaguely see Ceraph's hard, demonic-dick underneath all the waving tentacles.  She must have taken your command to keep her dick out for your use quite literally, even though there's little chance you'll get to put it anywhere.");
 			outputText("\n\n");
 
 			outputText("The two amethyst cocks wind their way over your " + player.legs() + " and lift you into the air with unholy strength, dangling you upside down while they crawl over your body, the smooth skin rubbing and stroking at your " + player.skinFurScales() + ".  They curl up and slide through your hands, allowing you to feel the inhuman warmth of Ceraph's passion.  Smiling, you indulge your slave, marvelling at the incredible degree of control she has over her shape-shifting.  Ceraph slides the two phallic tendrils between your loins and butt-cheeks, threading one in from the front and the other from the back.  They grind on your " + player.vaginaDescript() + " and " + player.assholeDescript() + ", teasing you, giving time for you to get as wet as possible.\n\n");
 
 			outputText("A warm, sucking orifice aligns itself with your " + player.multiCockDescriptLight() + ", making obscene squelching noises as it dilates to take ");
-			if (player.cockTotal() === 1) outputText("all of your girth");
+			if (player.cockTotal() == 1) outputText("all of your girth");
 			else outputText("in all of your members simultaneously");
 			outputText(".  You arch your back in pleasure, trying to push even more of your tingling cock-flesh into the tentacle-pussy.  The interior is FLOODED with lube, so much that it leaks from the clit-ringed seal at your ");
 			if (player.hasSheath()) outputText("sheath");
@@ -685,12 +685,12 @@ package classes.Scenes.NPCs
 
 			outputText("You smile and nod, licking your lips as the tentacles bring you lower and closer, still fucking you.  Ceraph latches onto your lips, her tongue making love to your mouth while you hang, suspended in her tendrils' grip.  Spit-slathered mouths press together harder, and you french-kiss your demonic slave as passionately as you can, trying to do to her mouth what her cocks are doing to your " + player.vaginaDescript() + " and " + player.assholeDescript() + ".  You swoon, lost in the fast-fucking, slow-sucking, and eager tongue-thrusting of each other's oral orifices.\n\n");
 
-			if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0 && flags[kFLAGS.CERAPH_PUNISHED] === 0) {
+			if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0 && flags[kFLAGS.CERAPH_PUNISHED] == 0) {
 				outputText("Suddenly pulling you back, Ceraph lowers you down further, spearing her pulsating, pre-cum soaked prick into your throat.  You gurgle from the sudden intrusion and the slippery, sweet cream she's leaking.  She might need a punishment later, but for now, there's nothing to do but suck.  You slurp and lick, the motions coming easy to you thanks to the silken caresses of the sloppy cunt-tentacle's cilia around your own " + player.multiCockDescriptLight() + ".  Her nodules bulge out in your mouth, rippling in wave-like motions from her base up to the fat cock-tip, signalling that her orgasm is at hand.  The thick, textured cock explodes, pouring Ceraph's load straight into your mouth.  At the same time, the dick-tentacles in your pussy and ass release their own seed, stuffing your womb and rectal cavity so full of cum that you're left with a bit of extra pudge in your belly.  You swallow and gulp, trying to keep up with the demon's hot, spouting jizz.  After a moment, Ceraph's control loosens, and you're pulled up into the air, temporarily freeing your mouth.\n\n");
 			}
 			else outputText("Suddenly pulling you away, Ceraph throws her head back and moans.  You can feel the tentacles piston faster, and through your haze of arousal, you realize she's about to orgasm.  The warning does little to prepare you for what's coming, and as one, the twin tentacles blast cum deep into your nethers and asshole, stuffing both body cavities full of potent demon-sperm.  It's warm - hot even - and your innards tingle and soak in the corruptive spooge while they continue to pump more inside.  After a few spurts, you feel absolutely stuffed and even have a bit of extra pudge on your belly from the hefty fluid-filling.\n\n");
 
-			if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0) outputText("Ceraph's cock sprays cum all over her belly as her climax winds on, her poor, ignored prick blasting seed with reckless abandon.\n\n");
+			if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText("Ceraph's cock sprays cum all over her belly as her climax winds on, her poor, ignored prick blasting seed with reckless abandon.\n\n");
 
 			outputText("Your body seizes up and explodes with pleasure, spraying sexual fluids into and over Ceraph's new additions.  The cunt-tentacle ");
 			if (player.cumQ() >= 800) outputText("bulges wide from the sheer size, sucking");
@@ -703,7 +703,7 @@ package classes.Scenes.NPCs
 
 			dynStats("sen", -2, "cor", .25);
 			player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP - 32, 61); //Ceraph causes faster pregnancies
-			if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0 && flags[kFLAGS.CERAPH_PUNISHED] === 0) {
+			if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0 && flags[kFLAGS.CERAPH_PUNISHED] == 0) {
 				outputText("You smirk and wonder if you should punish her for stuffing her cock down your throat.  Do you?");
 				menu();
 				addButton(0, "Punish", punishCeraphForSurpriseThroatFuck);
@@ -772,13 +772,13 @@ package classes.Scenes.NPCs
 			if (player.biggestLactation() > 1) outputText("  When some of your milk seeps out, she leans forward and latches onto a nipple eagerly, alternating between sucking on the tip and licking the drops off of it.");
 			else {
 				outputText("  She seems to delight in playing with her chest, modest though it may be, pushing it into your face and tweaking the fuzzy nipples just past your nose.  You blow a raspberry and shake your face into her cleavage, ");
-				if (rand(5) === 0) outputText(" but some of the fur tickles your nose a bit <i>too</i> deeply; you deliver a sudden sneeze into her bosom, causing it to heave and jiggle.");
+				if (rand(5) == 0) outputText(" but some of the fur tickles your nose a bit <i>too</i> deeply; you deliver a sudden sneeze into her bosom, causing it to heave and jiggle.");
 				else outputText("vibrating it wildly back and forth.");
 			}
 			outputText("  Her sister, watching all this, shakes with muffled laughter delivered directly into your cockhead, sending rough jolts of sensation down the shaft and forcing out a drop of pre-cum.\n\n");
 
 			outputText("The cat lying on your face sits up as her sister's eyes glimmer desirously upon tasting the drop; apparently she has recognized the expression, because she looks down at you and says, \"<i>Please, don't give all your rich, tasty cream to my sister.  She always steals my fair share, the bad kitty!</i>\"  Her meaning is obvious in context, moreso when she moves around to your groin, trying to shoulder her sibling aside and ");
-			if (player.cockTotal() === 1) outputText("sliding her hand between the furry tits, down the base of your " + player.cockDescript(x) + ".");
+			if (player.cockTotal() == 1) outputText("sliding her hand between the furry tits, down the base of your " + player.cockDescript(x) + ".");
 			else outputText("grabbing the lonely, neglected dickflesh left outside the warm embrace of her sister's breasts and shoving them into her own while caressing the tip with her tongue.");
 			outputText("\n\n");
 
@@ -869,7 +869,7 @@ package classes.Scenes.NPCs
 			player.orgasm('Generic');
 			dynStats("lib", -1, "sen", -2, "cor", 2);
 			//Preggers chance!
-			if (player.hasVagina() && player.totalFertility() >= rand(45) && player.pregnancyIncubation === 0) {
+			if (player.hasVagina() && player.totalFertility() >= rand(45) && player.pregnancyIncubation == 0) {
 				player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP - 32, 61); //Ceraph causes faster pregnancies
 			}
 			doNext(camp.returnToCampUseOneHour);
@@ -981,7 +981,7 @@ package classes.Scenes.NPCs
 			var demon:Boolean = false;
 			x = player.biggestCockIndex();
 			if (player.hasCock()) {
-				if (player.cocks[x].cockType === CockTypesEnum.DEMON) demon = true;
+				if (player.cocks[x].cockType == CockTypesEnum.DEMON) demon = true;
 			}
 			//(else if PC's cock is below cock area 48)
 			if (player.cockArea(player.biggestCockIndex()) < 48 && player.hasCock()) {
@@ -1099,7 +1099,7 @@ package classes.Scenes.NPCs
 			else outputText("not too different from the ones you've seen in Ingnam, although modified for human use, it seems.");
 			outputText("  Any more exploration of your environment is put on hold as your gaze falls back to Ceraph.  Her latex ensemble shimmers and slackens, the strategic peep-holes closing up with unremarkable cotton.  The material reforms until she's left with a pair of overalls and a button-up blouse that are both at least four sizes too big.  ");
 			//([if first time]
-			if (flags[kFLAGS.CERAPH_SWEETIE_NO_RP_DONE] === 0) outputText("Seeing your confused stare, she simply answers with, \"<i>Ah, do be patient... sweetie,</i>\" and goes back to her work.");
+			if (flags[kFLAGS.CERAPH_SWEETIE_NO_RP_DONE] == 0) outputText("Seeing your confused stare, she simply answers with, \"<i>Ah, do be patient... sweetie,</i>\" and goes back to her work.");
 			else outputText("You simply chuckle knowingly at the apparent size disparity of the garment.");
 			outputText("  She reaches up and takes a tentative grasp of her curved, demonic horns, straightening and molding them into more bovine models.  The spade-tip of her tail shrinks, then puffs out with hair, and the whole appendage droops as it becomes remarkably more cow-like.  Almost as an afterthought, she paces up to you and slowly strips you of your " + player.armorName + ".  She teases " + player.oMultiCockDesc() + " a bit before gliding back to her previous position.\n\n");
 
@@ -1109,12 +1109,12 @@ package classes.Scenes.NPCs
 
 			outputText("The increasingly cow-like omnibus takes a grip on either side of her hips and, with an ecstatic cry, tugs outward, widening her hips and throwing her gait off even more.  She sticks her thumb into her mouth and blows, and though you suspect that's simply for theatrics, her thighs thicken and her butt plumps up, filling up her overalls perfectly.  Ceraph reaches up and pinches her own cheeks, rounding her angled features off into a more rounded, softer visage.  With a snap of her fingers, a blossom of creamy-colored skin starts at her nose, running along her face and down her neck, enveloping the previously purple hue.  ");
 			//([if real Marble has cock]
-			if (flags[kFLAGS.MARBLE_DICK_LENGTH] > 0 && flags[kFLAGS.CERAPH_HIDING_DICK] === 0) outputText("Her nubbly member presumably shifts its color from royal purple to a lighter, brownish tone as well, inflating to the familiar seven-inch measurement; at least, so you'd judge by the sudden bulge in the overalls.  ");
+			if (flags[kFLAGS.MARBLE_DICK_LENGTH] > 0 && flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText("Her nubbly member presumably shifts its color from royal purple to a lighter, brownish tone as well, inflating to the familiar seven-inch measurement; at least, so you'd judge by the sudden bulge in the overalls.  ");
 			outputText("A ruffle of her hair sparks a similar coloration shift to the same brown as her leg fur, and the black of her eyes shift to whites with brown irises.\n\n");
 
 			outputText("\"<i>One last touch,</i>\" she moans as her whole frame begins to jostle about.  With a shake, her entire body leaps up a couple inches in height, and another, and another until she's roughly the same size as that familiar cowgirl.");
 
-			if (flags[kFLAGS.CERAPH_SWEETIE_NO_RP_UTTER_MOO_DISABLED] === 1) doNext(postUdderChoice);
+			if (flags[kFLAGS.CERAPH_SWEETIE_NO_RP_UTTER_MOO_DISABLED] == 1) doNext(postUdderChoice);
 			else {
 				outputText("  \"<i>Now then, " + player.mf("Master", "Mistress") + "... or, should I say, Sweetie,</i>\" she breathes, her sultry tones smoothing into an earthy, slightly drawn-out accent, \"<i>there's one more detail that she - sorry, I - don't have; would you like me to have... an udder?</i>\"\n\n");
 				outputText("The question strikes you as a curious one.  Do you want your make-believe Marble to make an udder, or is she better off without?");
@@ -1155,10 +1155,10 @@ package classes.Scenes.NPCs
 
 			outputText("'Marble' backs up, tripping over a bucket and falling onto her spacious ass.  \"<i>Please, don't hook me up to that milker, sweetie... anything but that!</i>\"  An evil smirk graces your lips as you catch up to her intention; you regard the cowgirl omnibus, her face a mask of terror and her body all a-tremble.  She manages a small squeak of terror as you approach and take a handful of her voluminous hair, dragging her over to the indicated stall.  Her blubbering sobs don't cease as you ready the equipment");
 			//([if udder] 
-			if (flags[kFLAGS.CERAPH_SWEETIE_NO_RP_UTTER_MOO_DISABLED] === 1) outputText(", making sure to prep four extra tubes for her udder");
+			if (flags[kFLAGS.CERAPH_SWEETIE_NO_RP_UTTER_MOO_DISABLED] == 1) outputText(", making sure to prep four extra tubes for her udder");
 			outputText(".  You idly reach over and rip her strained blouse right off, sliding the overall straps off her shoulders and exposing her massive HH-cups.  Despite her protests, her sunken nipples quickly snap to attention, milk leaking freely from the excited things.  You reach over and flick the machine on, dragging 'Marble' across to it.  You're aware of the actual cowgirl's fear of bondage, so you take great pleasure in chaining her understudy's hands to two overhanging shackles and dangling the two cups in front of her huge tits.  The suction is just strong enough to draw her nipples towards the hoses.  Her scream of protest is stifled by a strangled cry as you jam the two cups home, the machine instantly kicking in.");
 			//([if udder] 
-			if (flags[kFLAGS.CERAPH_SWEETIE_NO_RP_UTTER_MOO_DISABLED] === 1) outputText("  The four others quickly follow, the udder-cups sucking onto the nubs like hungry children.");
+			if (flags[kFLAGS.CERAPH_SWEETIE_NO_RP_UTTER_MOO_DISABLED] == 1) outputText("  The four others quickly follow, the udder-cups sucking onto the nubs like hungry children.");
 			outputText("\n\n");
 
 			outputText("Marble's entire frame is jostled with each alternating piston of the milkers, her eyes rolling back from the feeling of the rough milking.  \"<i>S-stop,</i>\" she pants, thighs twitching in barely-suppressed arousal.  You laugh as you raise her to her hooves, leaving her bent double with her bosom and its attachments nearly brushing the ground.  Her cow-sized butt is raised in front of you and swaying from side to side from her pent-up arousal.  Slowly, drawing out her high-pitched groans of protest, you slide her overalls down over her posterior, letting them drop to the floor.  Despite her continued pleadings, you ease your pointer and middle fingers into her dripping cunt, eliciting a gasp from the tied-up cowgirl.  \"<i>Please, d-don't... my vagina...</i>\" she moans, struggling in vain against her bindings as she tries to shake you away from her.  Marble's resistance only makes your " + player.multiCockDescriptLight() + " harder, however, and you're about ready to punish her for her impudence.\n\n");
@@ -1180,7 +1180,7 @@ package classes.Scenes.NPCs
 			else if (cum < 2000) outputText("Normal girls might not be able to take this much cum at one time, but 'Marble' simply bucks her hips happily as her belly is stretched as least as large as her boobs to make room for the load.");
 			else outputText("Her entire body writhes in ecstatic bliss as your gigantic load pumps into her, wave after wave of baby-batter inflating her gut so full of cum.  By the time you're done, her navel is an outtie; what's more, it's actually scraping the barn floor, and if her arms were free, you don't doubt she'd be rubbing happily at it.");
 			if (cum >= 10000) outputText("  Marble's body convulses so hard it actually dislodges the funnel, dragging the tube free of her mouth.  \"<i>SWEETIE!</i>\" she screams, grinding herself against you as her stomach burgeons forward, filled with enough seed to propagate an entire city of goblins for months.  \"<i>MORE!</i>\"  You're able to give her just that, bloating her billowing belly obscenely, stretching the creamy skin to its near-breaking point with your virility.  Even if you wanted to pull out, you couldn't, not with her anal walls clamped onto your " + player.cockDescript(0) + " like this.  Her belly actually gains enough mass to nearly fill up the stall, pushing her tits up into her chin.");
-			if (player.cockTotal() === 2) outputText("  Your other cock sprays ");
+			if (player.cockTotal() == 2) outputText("  Your other cock sprays ");
 			else if (player.cockTotal() > 2) outputText("  Your other cocks spray ");
 			if (player.cockTotal() > 1) {
 				outputText("a ");
@@ -1216,7 +1216,7 @@ package classes.Scenes.NPCs
 			spriteSelect(SpriteDb.s_uncloaked_dominika);
 			clearOutput();
 			//[first time]
-			if (flags[kFLAGS.CERAPH_ROLEPLAY_AS_DOMINIKA_COUNT] === 0) {
+			if (flags[kFLAGS.CERAPH_ROLEPLAY_AS_DOMINIKA_COUNT] == 0) {
 				outputText("\"<i>Who?</i>\" Ceraph asks.\n\n");
 
 				outputText("You explain about the dark-lipped witch to your demon whore.  \"<i>Mmm, tattoos, that's gonna be rough,</i>\" she muses, licking her lower lip in thought.  \"<i>Think about her for a moment?</i>\"  You were already thinking of Dominika given that you were explaining who she was to Ceraph, but you suppose dealing with her idiocy is the price you pay for the sex.  Still, you acknowledge that you are.  Ceraph places her hands on your forehead and closes her eyes for a few moments, before purring and grinning.  \"<i>Oo, she's cute. Ask her if she likes piercings.</i>\"\n\n");
@@ -1225,7 +1225,7 @@ package classes.Scenes.NPCs
 			outputText("Taking a deep breath, Ceraph closes her eyes.  When she opens them again their darkness has been replaced by bright white sclera, and brilliant blue irises.  Starting at the roots her hair brightens and blondes, pulling itself up into a stylized bun.  The demon's face shifts and squirms beneath the flesh, bones and muscle settling into subtle differences and adapting the cabalist's features.  Eyelashes adjust and shrink, losing the excessive glamour of the demonic and gaining a more down to earth and natural appearance.  Throughout the process her skin gradually shifts in hue to a more tanned shade, now resembling a color someone could actually be born with.\n\n");
 
 			outputText("Her figure retracts somewhat, growing slighter and shorter.  Previously obscene breasts diminish in size, and Ceraph removes her outfit to prevent undue damage.  Before your eyes her areolae shrink and change, nipples becoming positively petite.  Arms slender, shifting to a physique more expected of a sorceress.  Her demonic heels pull into her feet, the soles paling far more than the rest of her skin.  Amusingly, her ass plumpens somewhat, achieving the jiggle of the non-athletic.  Between her legs Ceraph's pussy becomes dignified and neat");
-			if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0) outputText(" while her cock shrinks to what looks approximately like six inches of meat, an outright tiny penis for Mareth");
+			if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText(" while her cock shrinks to what looks approximately like six inches of meat, an outright tiny penis for Mareth");
 			outputText(".\n\n");
 
 			outputText("Though much of her shrinks, her lips grow.  While unsurprising, it remains very enjoyable to watch.  Her lower lip rounds and swells, while her upper grows further defined.  Like a bruise, they darken, until no color but a glossy void remains.  As though they were being drawn directly into her skin, the lines of her tattoos begin to spread, starting from a single circle across her breast until the latticework of ink covers her tanned body.\n\n");
@@ -1236,25 +1236,25 @@ package classes.Scenes.NPCs
 			if (player.hasCock()) {
 				outputText("\"<i>Champion,</i>\" those dark lips purr, \"<i>You have done everything I could have asked you for.</i>\"  She runs a hand along your cheek, stepping in close and caressing your arm.  \"<i>I owe you more than I can express.</i>\"  Her hand roams up into your hair, brushing through it before cupping the back of your head.  Dominika pulls you into a deep kiss, pressing her lips to yours in a breath-stealing passion.  Her tongue rolls into your mouth as though it intends to steal yours away, her leg eventually rising up and curling around you.");
 				//[CERAPH COCK: 
-				if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0) outputText("  Her dick presses up into your crotch.");
+				if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText("  Her dick presses up into your crotch.");
 				outputText("  \"<i>I dare say,</i>\" she purrs between the kiss, pressing her forehead to yours, \"<i>You may have seduced me, champion.</i>\"\n\n");
 
 				outputText("Pressing her hands on your shoulders she eases you down, straddling your lap.  \"<i>I linger in chastity out of fear that my dignity shall be taken from me in this land,</i>\" she purrs softly, tracing her hand across your chest.  ");
 				if (player.biggestTitSize() >= 0) outputText("She casually and playfully gives the gentlest squeeze to your " + player.chestDesc() + ".  ");
 				outputText("\"<i>But if I can rely on you – perhaps I do not need to worry.</i>\"  She pulls your " + player.armorName + " away, letting her hands roam hungrily across your body.  Blatantly turned on, her pussy rubs its juices against your crotch");
-				if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0) outputText(", and her prick has remained firm and hard");
+				if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText(", and her prick has remained firm and hard");
 				outputText(".  Her tongue roams hungrily over her inky lips, and an almost predatory grin sets across her features as she pulls up your " + player.cockDescript(0) + ".  Her fingernails cup under your head delicately and carefully tease you, rubbing her palm into the underside of your shaft.\n\n");
 
 				outputText("\"<i>How long,</i>\" she purrs, \"<i>Have you wanted to really be inside me?</i>\"\n\n");
 
 				outputText("Dominika slides her body back, rubbing the softness of her folds against your " + player.cockDescript(0) + ".  ");
-				if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0) outputText("The very base of her prick teases the veins of your own shaft, but she seems focused on the pleasure of her cunt for now.  ");
+				if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText("The very base of her prick teases the veins of your own shaft, but she seems focused on the pleasure of her cunt for now.  ");
 				outputText("She grins at you as she reaches the top of your cock, grinding back and forth across it.  \"<i>Mmm,</i>\" she muses quietly, biting her lower lip for a moment.  \"<i>It's been a long time since I let someone have me.  I forgot just how... warm a prick can feel down there.</i>\"  Her pussy casually clenches, brushing herself across your tip.  \"<i>You should feel honored.</i>\"\n\n");
 
 				outputText("You grab her hips and pull her into your lap.  The warmth and wetness of her pussy engulfs your shaft immediately, clinging to you incredibly tightly.  She gives a surprised noise at the sudden aggression, placing her hands on your belly.  The holier-than-thou act is cute, but you're here to fuck and no amount of preening is going to keep you from that.  \"<i>I-I see that you've longed for this as well!</i>\" she gasps out, attempting to keep some dignity while her cheeks flush.");
-				if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0) outputText("  The degree that her cock abruptly shoots straight up is perhaps the most amusing part of the act.");
+				if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText("  The degree that her cock abruptly shoots straight up is perhaps the most amusing part of the act.");
 				outputText("  You simply smirk at her, starting to bounce her into your lap and shoving your " + player.cockDescript(0) + " deeper inside. Once more she bites her lip, fingers digging into your stomach. No matter how classy she wants to appear, you can quite easily feel how wet she is");
-				if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0) outputText(", and the heat of her prick bouncing into your lap");
+				if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText(", and the heat of her prick bouncing into your lap");
 				outputText(".  \"<i>Hey,</i>\" she gasps, \"<i>Don't you want to savor it?</i>\"\n\n");
 
 				outputText("You slap her tit.\n\n");
@@ -1262,7 +1262,7 @@ package classes.Scenes.NPCs
 				outputText("The inability to frame her expression and hang it on a tree in your campsite is the greatest injustice the world has ever known.  Her black lips sit in a stunned part as she stares at you, even as you hump away at her sopping mound.  She blinks a few times, shakes her head once, the entire disbelief package.  Eventually her hands slide down her side to find your own, rubbing over your fingers as they hold her hips.  Then, sharply and surprisingly painfully, she digs her fingernails into your wrists, forcing you to let go.  \"<i>No,</i>\" she says with a wicked grin as she brings your hands to the side of your head, leaning forward and slowly undulating her hips in your lap.  \"<i>Really. Enjoy me.</i>\"\n\n");
 
 				outputText("You give her a carefully crafted retort that demonstrates your intellectual superiority, but she just gives you a fake smile and pats your cheek.  Eyes half-closed she slowly slides herself along you, enjoying the sensation of each inch of your " + player.cockDescript(0) + " as it brushes along her walls.  \"<i>Mmmm,</i>\" she lets herself purr out, \"<i>Worth... the wait.</i>\"  Her toes curl slightly, one of her legs shifting back slightly to alter the angle you enter her at.  It seems to work how she wants it to, as a deep, satisfied breath accompanies the next downward slide of her hips.");
-				if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0) outputText("  A single bead of pre-cum forms slowly at the tip of her prick, growing larger until it finally slips down into the curve of her head, sliding down her shaft and into your lap.");
+				if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText("  A single bead of pre-cum forms slowly at the tip of her prick, growing larger until it finally slips down into the curve of her head, sliding down her shaft and into your lap.");
 				outputText("  She brushes her hair back behind her ear, sitting up straighter. In her quest to indulge in and feel your prick against all the warm flesh inside, she's neglected to keep you pinned.\n\n");
 
 				outputText("Grabbing her shoulders, you surprise her once more by twisting and rolling on top of her.  \"<i>No!</i>\" she shouts immediately, knowing your plot, \"<i>You " + player.mf("bastard", "bitch") + "!  No one puts me on my own back!</i>\"  You remind her that facts need more proof than the assumption that things will never change.  She spits at you, but you take solace in the fact that your hands are over her wrists and your " + player.cockDescript(0) + " is shoved so deep in Dominika there's a chance she could spit up cum when you're done rather than swallow it.  Presuming, of course, that her vagina is connected to her stomach, which it probably is not.\n\n");
@@ -1270,16 +1270,16 @@ package classes.Scenes.NPCs
 				outputText("Yet.  You haven't decided what you'll make her put in her mouth now that she's here.\n\n");
 
 				outputText("\"<i>F-fuck!</i>\"  Those dark lips manage to stammer out, \"<i>Stop fucking me! Let me ride you, you piece of shit!</i>\"  She manages to pull her hands free from the grip you have on them, only to beat on your chest a few times and push futilely against it.  ");
-				if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0) outputText("Her prick bounces between her belly and yours as you take her.  ");
+				if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText("Her prick bounces between her belly and yours as you take her.  ");
 				outputText("For your part you have no interest in slowing down, gripping back onto her hips and pounding away at the delightfully tight cunt presently dominated by your " + player.cockDescript(0) + ".  More in charge than you were before, you have a chance to truly appreciate the sensation of her labia being shoved apart for your needs.  Absolutely soaked with her needy juices, it's easy to penetrate the sorceress.  Forcing so much of her sopping nectar out is making a terrible mess of her thighs, but given how stuck up she's been about finally letting you take her, she could stand to get a little messy.  Her fingernails claw at your collarbone");
 				if (player.biggestTitSize() >= 1) outputText(" and slap at your own chest");
 				outputText(", hissing bloody murder while at the same time trying not to groan so much that she completely reveals how much she's enjoying having you piston away into her nethers. In that regard, she is failing.\n\n");
 
-				if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0) outputText("A light spurt of pre-cum from her prick warms the flesh where your hips meet.  ");
+				if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText("A light spurt of pre-cum from her prick warms the flesh where your hips meet.  ");
 				outputText("Slowly her fingers trail up to your shoulders, gripping you tightly and gritting her teeth as you thrust.  Sweating and grunting in tempered exertion from the pounding you put her through, the bun in her hair begins to fall apart.  Some of her blonde locks cling to her forehead.  Her legs curl around you, rubbing against your body and clenching with each strangled gasp coming from her dark lips.  The backs of her heels dig into your backside, rubbing in as she pins you closer.  You think little of it, until you attempt to take a deep thrust only to be rudely tugged back in by her feet. Gripping you tighter with her hands and holding onto the back of your head, she hisses happily, rocking her hips against you to feel your " + player.cockDescript(0) + " shift inside.  \"<i>I said enjoy me,</i>\" she hisses wickedly, licking her ebony lips and casually nipping at you.  \"<i>Stay here, " + player.mf("handsome", "gorgeous") + ".</i>\"\n\n");
 
 				outputText("You had no intentions of letting her control the pace before, and you aren't interested in letting her do so now.  Feigning acceptance of her authority for now, you allow her to settle you into a tight, intimate thrusting.  You pierce into her damp mound, deeper and deeper, letting her inner walls squeeze you harder than her hands.  Holding onto Dominika's back, you wait for the perfect moment.  The right shortness of breath, the proper shudder that rocks through her body.  It arrives, her eyes half-lidded as she gazes past you with a gasping moan, and you seize the opportunity.  A sorceress' grip is only so strong, and it takes a single firm movement to break her hold on you, pulling out in the process.  Her eyes open quickly, recognizing that you're doing something, but she's too late to stop you.  You grab her wrists and spin her in place, forcing her face and those dark lips into the dirt.");
-				if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0) outputText("  You can practically hear her rock-hard cock kicking up the ground.");
+				if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText("  You can practically hear her rock-hard cock kicking up the ground.");
 				outputText("  \"<i>What the fuck are you-</i>\" she begins, before shouting \"<i>Don't you DARE!</i>\"\n\n");
 
 				outputText("Grinding your prick between her dusky cheeks, you had already decided that you very much dared and didn't particularly care about her inevitable protests.  You calmly taunt her and her helplessness, pushing your fingers into her blonde locks as you hold her down and completely destroy any semblance of a nice, ordered hairdo.  \"<i>Stay away from my butt!</i>\" she eventually explicitly shouts, ruining the mystique of intruding upon it.\n\n");
@@ -1297,7 +1297,7 @@ package classes.Scenes.NPCs
 				outputText("She wails in mixed frustration and pleasure, juices splattering against the ground as her hungry cunt grows hornier.  A darkness overtakes her eyes, and her nails grow long and sharp, and through it all your " + player.cockDescript(0) + " continues to degrade her ass.  As though a heartbeat pumping blood through her body, each thrust spreads the color over her skin a little more.  Her feet push and scrabble lightly against the ground in tormented frustration, but she is helpless beneath you.  You go without stopping, only slowing when wings unexpectedly burst from her shoulder blades, dark and starry.\n\n");
 
 				outputText("Grabbing your sorceress-cum-succubus fucktoy firmly around the hips, you go upright, lifting her off the ground and bouncing her against your body.  Moaning and squirting her juices against the ground, Dominika lifts her legs to help you, swelling indigo tits bouncing from your forceful thrusts.");
-				if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0) outputText("  Her prick has become engorged and infernal, covered with abnormal bumps and veins. It practically spits up pre-cum, gurgling with a greatly increased supply.");
+				if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText("  Her prick has become engorged and infernal, covered with abnormal bumps and veins. It practically spits up pre-cum, gurgling with a greatly increased supply.");
 				outputText("  \"<i>Take it then,</i>\" she gasps, \"<i>Take me... j-just give me... moreeeee...</i>\"  Her long nails – more slutclaws than anything else – dig into your arms as you hold her up almost painfully.  Squealing ecstatically, a long demonic tongue slips past her full corrupted ebony lips, slapping against her collarbone as her eyes roll up in pleasure.  Blonder and fuller, her hair naturally pulls back into an exaggerated bimbo-esque bun, and her horns have grown large and sinister.\n\n");
 
 				outputText("Satisfied with the ruined chastity of the former scholar, you wrap your arms around her hips and give a few final gut-wrenching slams into her dominated pucker.  Each one makes her squeal and gasp, and each one brings you one step closer to the shuddering eruption that is that slut's purpose.  Groping one of the whorish slutbags on her chest, you hold her to your body not out of intimacy, but dominance.  There is no mistaking your absolute control over her as the first thick blasts of cum spew into her abused ass and clog her cockhole.  Whimpering and clutching at you, all she can do is squeal and gasp your name, spitting your praises for destroying her dignity.");
@@ -1305,11 +1305,11 @@ package classes.Scenes.NPCs
 				if (player.cumQ() >= 500) outputText("  You dump loads in her as though she's an addict who hasn't fed for days, bloating and humiliating her with the sheer volume of spunk that now inflates her belly.  Not as though the demon whore has much humility left to take.");
 				else outputText("  She shudders as your " + player.cockDescript(0) + " fills her guts with warmth, hips seizing as she rides out her assgasm.");
 				outputText("  Her cunt nearly waterfalls her juices, squirting obscenely as she rides out the pleasure.");
-				if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0) outputText("  The demonic prick placed between her legs stops bouncing only because of how rock-hard it is as it spews her own filthy fucksludge across her body, splattering onto her tits and across her face.  The volume of off-white cream it spews out takes even longer to finish than you do, painting her obscenely.");
+				if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText("  The demonic prick placed between her legs stops bouncing only because of how rock-hard it is as it spews her own filthy fucksludge across her body, splattering onto her tits and across her face.  The volume of off-white cream it spews out takes even longer to finish than you do, painting her obscenely.");
 				outputText("\n\n");
 
 				outputText("Her hands drag across your chest as she slinks off you, moaning and shaking.  You shift back on your ass to sit down after the long fuck, only to smirk as she eventually crawls back up to you.");
-				if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0) outputText("  Her own filthy jizz has already been licked clean by her hungry mouth, so as not to dirty your handsome prick.");
+				if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText("  Her own filthy jizz has already been licked clean by her hungry mouth, so as not to dirty your handsome prick.");
 				outputText("  The demoness laps at your " + player.cockDescript(0) + ", cleaning it of spunk, sweat, and all the various filth it accumulates, sucking and dragging her fat, midnight lips across them.  Dominika purrs her happiness, her joy at being forced into such a whorish form.\n\n");
 
 				outputText("\"<i>Was that good?</i>\" Ceraph asks in her own voice, immediately ruining the illusion. \"<i>");
@@ -1342,7 +1342,7 @@ package classes.Scenes.NPCs
 			var vag:Function =null;
 			var dick:Function =null;
 			//First time
-			if (flags[kFLAGS.ZETSUKO_MET] === 1) {
+			if (flags[kFLAGS.ZETSUKO_MET] == 1) {
 				outputText("You call on Ceraph, but rather than the purple-skinned demoness you were expecting, you are surprised to see a fox-eared girl appear in a wash of corrupted violet flames.  She steps out of the portal and shakes off the flames as if they are water, and you take a moment to look her over.  The first thing you notice is that her arms are bound in a white straitjacket that is open at the chest, allowing her F-cup breasts to swing freely.  Four large fox tails twist erratically in the air behind her, and you can see a pair of small horns poking up from her hair in front of her large triangular ears.  Her body and face are covered in tribal tattoos, and her somewhat maniacal amber eyes are framed nicely by a head of messy auburn hair with black highlights.  Like many of Ceraph's harem members, she is adorned with numerous piercings and studs — almost too many to count them all — as well as a large studded collar.  Once you have had time to take it all in, she speaks.\n\n");
 				outputText("\"<i>Zetsuko apologizes for Mistress's absence, " + player.mf("Master", "other Mistress") + ".  Mistress wasn't able to be here, so she sent Zetsuko instead.  She hopes Zetsuko will be to your liking...</i>\"\n\n");
 
@@ -1457,7 +1457,7 @@ package classes.Scenes.NPCs
 
 			if (x >= 0) {
 				outputText("In a somewhat impressive feat of contortion, Zetsuko brings her feet in toward her groin to stimulate your " + player.multiCockDescriptLight() + ", lifting ");
-				if (player.cockTotal() === 1) outputText("it");
+				if (player.cockTotal() == 1) outputText("it");
 				else outputText("them");
 				outputText(" up using her toes and stroking along the underside of the shaft");
 				if (player.cockTotal() > 1) outputText("s");
@@ -1554,7 +1554,7 @@ package classes.Scenes.NPCs
 				addDisabledButton(2, "Vagina");
 				addDisabledButton(3, "Breasts");
 				if (player.hasCock()) {
-					outputText("\nYou can give her your [if (cocks === 1) penis|biggest penis or smallest penis].");
+					outputText("\nYou can give her your [if (cocks == 1) penis|biggest penis or smallest penis].");
 					addButton(0, "Penis", ceraphFollowerCockTaking);
 					if (player.cockTotal() > 1) {
 						addButton(1, "Smallest Penis", ceraphFollowerCockTaking, true);
@@ -1591,13 +1591,13 @@ package classes.Scenes.NPCs
 			outputText("\n\nCeraph's fingers feel unexpectedly hot as they brush your " + player.cockDescript(x) + ", as if she had just come out of a heated tub.  You don't have long to ponder that little detail as they pinch into a tight ring");
 			if (player.cocks[x].cockThickness >= 4) outputText(", compressing your massive girth into the rigid shaft");
 			outputText(", slowly closing.  It should hurt but it doesn't, it just feels warmer and warmer, and then with a sudden 'PYOING!', Ceraph is holding your " + player.cockDescript(x));
-			if (player.balls > 0 && player.cockTotal() === 1) {
+			if (player.balls > 0 && player.cockTotal() == 1) {
 				outputText(" and balls");
 				//Gotcher balls!
 				player.balls = 0;
 				player.ballSize = 1;
 			}
-			if (player.cockTotal() === 1) player.removeStatusEffect(StatusEffects.Infested);
+			if (player.cockTotal() == 1) player.removeStatusEffect(StatusEffects.Infested);
 			outputText(" in her hand!  At the base there's smooth flesh and an arcane mark, somehow keeping the disembodied dick alive to pulse and squirm in her grasp.  The place on your groin is left completely smooth and featureless, as if it had never been there at all.");
 			outputText("\n\nCeraph runs a finger up and down the length, setting off fireworks in your brain – you can still feel it!  The demoness laughs and says, \"<i>Don't worry, that will fade once I get it further away, though you know what to expect at night, right?  For now, enjoy the pleasure!  Oh, and thank you again for this, you won't regret it.  If you do, no refunds.</i>\"");
 			outputText("\n\nShe pirouettes away, practically dancing into the sky while she strokes and teases the cock you just lost.  You shudder and shake as orgasm wracks your body, your cum falling like rain thousands of feet away.  You swear, you can hear your pet laughing.");
@@ -1645,7 +1645,7 @@ package classes.Scenes.NPCs
 				player.removeBreastRow(x, 1);
 			}
 			//Top row is only row
-			else if (x === 0) {
+			else if (x == 0) {
 				outputText("your now-flat chest slowly gains two tiny, quarter-inch nipples.");
 				player.breastRows[0].breastRating = 0;
 				player.nippleLength = .25;
@@ -1660,12 +1660,12 @@ package classes.Scenes.NPCs
 				player.removeBreastRow(x, 1);
 			}
 			//Oh shit something went wrong.
-			if (player.breastRows.length === 0) outputText("<b>ERROR!  ERROR!  Please contact Fenoxo and reload your game if you don't want your save messed up.</b>");
+			if (player.breastRows.length == 0) outputText("<b>ERROR!  ERROR!  Please contact Fenoxo and reload your game if you don't want your save messed up.</b>");
 			outputText("\n\n");
 
 			outputText("You gasp when Ceraph ");
-			if (flags[kFLAGS.CERAPH_GENITAL_STEAL_CHOICE] === 3) outputText("rolls the nipples in her hands");
-			else if (flags[kFLAGS.CERAPH_GENITAL_STEAL_CHOICE] === 4) outputText("pushes her fingertips inside the leaky nipple-cunts");
+			if (flags[kFLAGS.CERAPH_GENITAL_STEAL_CHOICE] == 3) outputText("rolls the nipples in her hands");
+			else if (flags[kFLAGS.CERAPH_GENITAL_STEAL_CHOICE] == 4) outputText("pushes her fingertips inside the leaky nipple-cunts");
 			else outputText("squeezes out a squirt of milk");
 			outputText(", going a little weak in the knees.  Ceraph laughs and lowers the bouncy orbs down between her legs, and you can feel every little bump and nodule of her corrupted cock as she tit-fucks herself on your disembodied breasts.\n\n");
 
@@ -1685,7 +1685,7 @@ package classes.Scenes.NPCs
 			clearOutput();
 			outputText("Wanting to take advantage of some of the more extreme of your body's changes, you pull down your [armor] to bare your hungry nipple-twats, the well-lubricated tips of your nipples slowly opening in anticipation of what's to come.  You kick the discarded gear aside and command, \"<i>Slave, fuck my nipples.</i>\"");
 			outputText("\n\nCeraph looks at you, then down at your chest, and finally back up at you with a look of incredulousness glinting in her eyes.  \"<i>You want... [Master] is... kinky,</i>\" she coos, peeling out of her tight outfit to bare her demonic bosom.  Your demonic slave approaches, hips swaying as her bottom falls away to display her puffy purple womanhood");
-			if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0) outputText(" and proud demon-dick");
+			if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText(" and proud demon-dick");
 			outputText(".  She grabs your [chest] to examine, and her fingers probe hesitantly around the entrances of your budding chest-cunnies.  Ceraph smiles with wicked intent.  Her fingers thrust in forcefully, drawing a sensual moan from your lips as she violates ");
 			if (player.totalNipples() > 2) outputText("two of ");
 			outputText("your tit-pussies.");
@@ -1694,12 +1694,12 @@ package classes.Scenes.NPCs
 			if (player.lactationQ() > 0) outputText("  A squirt of breastmilk nearly takes your slave in the eye, your milk letting down uncontrollably from the tit-puckering finger-fuck.");
 			if (player.hasCock()) outputText("  [EachCock] is so hard by this point that it's smearing its pre-cum all over Ceraph's belly, but she doesn't mind.");
 			if (player.hasVagina()) outputText("  As for your [vagina], you've grown more than wet enough for a hard dicking, but honestly, right now, all you want is your [nipples] to be perfectly and completely fucked.");
-			if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0) outputText("  The fetishistic slut's sloppy cock is dribbling on your hip, neglected and aroused.  Poor thing.");
+			if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText("  The fetishistic slut's sloppy cock is dribbling on your hip, neglected and aroused.  Poor thing.");
 			outputText("\n\nSatisfied with her work, your submissive Omnibus steps back to look at you.  Your [skin] is flushed.  Every inch of your underboob is wet with lubricant[if (isLactating = true)  and milk].  Your [nipples] are a soggy, inflamed mess.  Worst of all, you're panting like some bitch in heat.  Your slave is just out of arm's reach, watching you with a knowing smile.  Her own purple-hued dermis is tinted rose, though she seems to be hiding her arousal better than you.  You growl, \"<i>I said, fuck my gods damned nipples!</i>\" at her and jiggle your dripping teats for emphasis.");
 			outputText("\n\nCeraph frowns with distaste, but she answers, \"<i>[Master], please, shapeshifting takes time and preparation.  However, I believe I am almost ready to serve you.  Watch me change, for you...</i>\"  Ceraph cups her own sizable breasts in her palms and begins to rub them.  Her nipples, while already hard, pop out further, elongating with a well-timed, breathy exhalation of pleasure from their owner.");
 			if (player.bRows() > 1) {
 				outputText("  A second later, ");
-				if (player.bRows() === 2) outputText("another row of female flesh begins");
+				if (player.bRows() == 2) outputText("another row of female flesh begins");
 				else outputText("more rows of female flesh begin");
 				outputText(" to sprout beneath her top pair, the demoness's chest mimicking yours in size and structure.  While the top pair of super-sized nipples continue to grow into massive teats, Ceraph repeats her caresses lower, and the newly-formed nipples mimic their big brothers, filling out to obscene length.");
 			}
@@ -1710,7 +1710,7 @@ package classes.Scenes.NPCs
 			outputText("\n\nYour pet demon immediately gives in to her instincts and begins to raise and lower herself atop you.  At the bottom of each stroke, fluids squirt from your violated holes and the pairs of docked boobflesh squish outward, bulging obscenely.  Interlocked bodies grind together in the throes of passion, Ceraph going faster and faster, filling the air with squishing slaps of intercourse.  Soon, she is going so fast that it's impossible to pick apart the myriad of sultry sounds, not that you can think properly at present to try.  You lie there to simply enjoy the sex, wallowing in it like a sow in mud.");
 			outputText("\n\nCeraph chews on her lower lip in nervous pleasure as she bobs up and down atop you, and in a moment of surprising clarity, you order, \"<i>Slave, kiss me.</i>\"  She does so with gusto, her purple-hued mouth instantly locking to yours, tongues twisting around each other like warring snakes.  It's almost enough to make you forget the pounding rhythm of her lube-soaked tits slapping against your own, ALMOST.  The turgid tit-cocks feel even bigger with every pistoning movement in and out of your cavities.  You realize she's getting close to orgasm, and a moment later, it dawns on your lust-fogged mind that you too are about to climax.");
 			outputText("\n\nBiting down on Ceraph's lower lip, you get her to pull back long enough for you to command, \"<i>Cum inside me pet, fill my tits!</i>\"  Ceraph's violet eyes cross ever so slightly, the black sclera glittering with moisture as her eyelids flutter in rapture.  She throws herself down on top of you with bruising force, bottoming out all " + num2Text(player.totalNipples()) + " twitching dicks inside you, just in time to release their creamy cargo.  Gods, she's filling you up so good!  You reach up with your hands and squeeze the edges of your [chest] hard enough to feel the rigid, cum-spouting flesh inside you.  Jizz wells up from each entrance in sync as you begin to tremble and shake.  Ceraph lets out a low moan as she fills you");
-			if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0) outputText(", her cock spouting its own ivory wetness onto your belly in sympathetic release.");
+			if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText(", her cock spouting its own ivory wetness onto your belly in sympathetic release.");
 			else outputText(", her pussy dripping weakly in sympathetic release.");
 			outputText("  Her hands run through your [hair] and pull your [face] into her shoulder.  She holds you tightly, clingingly even.  If you weren't so enraptured by the sensation of your sperm-filled nipples, you might actually care.");
 			outputText("\n\nThe two of you slowly relax, dueling climaxes winding down to return some level of sanity at last.  As soon as the demoness' eyes uncross, she stands up, " + num2Text(player.totalNipples()) + " dicks sliding free of clutching, spunk-stuffed twats at once.  You gasp and shudder, the sensitive flesh nearly setting you off again.  As she stretches, Ceraph's new appendages shrink, losing their masculinity and even faster their size.  You rise while trying to ignore the runnels of demon-spunk that spout from your well-fucked chest, your [chest] wobbling fantastically with the extra fluid weight.  Ceraph leans over to suck a [nipple] into her mouth, and after a few quick swallows, she sighs contently.");
@@ -1728,32 +1728,32 @@ package classes.Scenes.NPCs
 			var x:int = player.cockThatFits(100);
 			var y:int = x + 1;
 			//FIRST TIME:
-			if (flags[kFLAGS.TIMES_CERAPH_PORTAL_FUCKED] === 0) {
+			if (flags[kFLAGS.TIMES_CERAPH_PORTAL_FUCKED] == 0) {
 				outputText("You undress and ask Ceraph if she has any ideas to mix things up.  Your demon smiles and answers, \"<i>Oh, I think I have just the thing: a pair of trinkets I picked up at the bazaar.  There's a... gifted prostitute there who I would love to have in my harem, but alas, if I am to have access to that cursed place, I must abide by their rules.</i>\"  A shadow clouds the greedy demoness's expression at that admission, but she continues on, \"<i>I was able to get her to produce for me two magical cock-rings.  They're powerfully enchanted with white AND black magic.</i>\"");
 				outputText("\n\nCareph smiles knowingly, still not revealing their true purpose.  With an impatient wave of your hand, you command her to finish.  She harrumphs, \"<i>Fine, take all the drama out of it!  These cock-rings create portals, portals to anywhere the user desires.  You could put one on, and have your dick rammed into my throat, simply by imagining it.  You could sit there, in a chair, masturbating yourself with the ring and actually manage to fuck my hot little cunt at the same time.</i>\"");
 				outputText("\n\nYou look at the golden rings a bit skeptically, but Ceraph assures you, \"<i>Trust me, they work.  I resized one of them to fit me perfectly, and I'll often use it to keep my pets in line, no matter what part of my lair they're in - even the sensory deprivation tanks.");
-				if (flags[kFLAGS.CERAPH_HIDING_DICK] === 1) outputText("  Of course, you don't seem to like that appendage, so my ring won't get much use today, will it?");
+				if (flags[kFLAGS.CERAPH_HIDING_DICK] == 1) outputText("  Of course, you don't seem to like that appendage, so my ring won't get much use today, will it?");
 				outputText("</i>\"");
-				if (flags[kFLAGS.CERAPH_HIDING_DICK] === 1) outputText("  Ceraph twirls one of the rings into her palm, where it promptly vanishes in a puff of purple smoke.");
+				if (flags[kFLAGS.CERAPH_HIDING_DICK] == 1) outputText("  Ceraph twirls one of the rings into her palm, where it promptly vanishes in a puff of purple smoke.");
 				outputText("\n\nThe mauve miscreant tosses the ring to you, still warm from her body heat and tingling with embedded magic.  You sit down in a simple chair and turn it over in your hand before deciding to go with one of her suggestions.  \"<i>Slave!</i>\" you bark, \"<i>Lie on your back before me with your legs spread.</i>\"");
 			}
 			else {
 				outputText("You suggest Ceraph retrieve her fantastically enchanted cock-rings, and with an impish smile, your slave produces a pair of them in puffs of purple smoke.");
-				if (flags[kFLAGS.CERAPH_HIDING_DICK] === 1) outputText("  She sadly teleports one of them away, knowing you've commanded her to stay female for you.");
+				if (flags[kFLAGS.CERAPH_HIDING_DICK] == 1) outputText("  She sadly teleports one of them away, knowing you've commanded her to stay female for you.");
 				outputText("  The mauve miscreant tosses your ring to you, still warm from her body heat and tingling with the embedded magic.  She requests, \"<i>Please, [Master], do me like you did before!  It was so hot for you to watch me like that!</i>\"");
 			}
 			outputText("\n\nCeraph obediently lays on the ground beneath you and spreads the flawless purple skin of her thighs apart to reveal her womanhood");
-			if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0) outputText(" and eager cock");
+			if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText(" and eager cock");
 			outputText(".  She scoots her ass up so that it's resting against your [legs] and the front side of the chair, a tantalizing heart-shaped butt just within arms' reach.  You give it a slap, which garners a delighted coo from the tainted slut.");
 			outputText("\n\nNow that everything is in position, it's time for the moment of truth.  You push the ring down on your [cockHead " + y + "] until the warm metal frame is snugly secured just above your [sheath].  The tingling you could feel when it was in your hand was a mild pinprick compared to the prickling sensations it shoots through your [cock " + y + "].  They aren't unpleasant, but they are certainly intense, and combined with the tightness of the ring, they keep you nice and hard.");
-			if (flags[kFLAGS.TIMES_CERAPH_PORTAL_FUCKED] === 0) outputText("  Well, your dick doesn't look any different, aside from the gilden adornment stuck near the bottom.  Now, if it were hilt-deep in the demon's cunt, that would be something!");
+			if (flags[kFLAGS.TIMES_CERAPH_PORTAL_FUCKED] == 0) outputText("  Well, your dick doesn't look any different, aside from the gilden adornment stuck near the bottom.  Now, if it were hilt-deep in the demon's cunt, that would be something!");
 			else outputText("  Well, no sense wasting time!  You look down at Ceraph's moist box and imagine your dick spearing through her folds.");
 			outputText("\n\nWhite light flashes along with a wave of tingling pinpricks under the ring on your [cock " + y + "]!  You blink and look down, seeing a strange arcane symbol INSIDE the cock-ring's center.  That glimmering glyph has become the terminus of your suddenly-stunted, plateau-like member.  Ceraph's coo of pleasure tears your gaze further down, and you see a matching glyph just above her pussy, with the rest of your [cock " + y + "] completely buried into her wetness.  You don't just see it, you can feel it too.  Her wet snugness is molding around your girth, yielding to the intrusion like a glove wrapping around a hand.");
 			outputText("\n\nExperimentally, you grab the ring and move it slightly.  Taking it up slides your dick partway out of her cunt, more flesh appearing by magic on your loins as the glyph is pushed away.  Moving it down diminishes your visible erection, but it also fucks Ceraph's twat.  The demoness's gaze is riveted on her magic-illuminated snatch, watching happily as you experimentally plunge in and out of her sodden box.");
-			if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0) outputText("\n\nNot one to be outdone, your pet takes the other ring and begins to force it down her nubby demonic dong.  The gold-gilt dick-jewelry settles quite firmly just above her creamy pussy, and with a matching flash of light, her own member disappears.  Surprisingly, it doesn't appear in any of your orifices.  A quick glance her way reveals just where her dick wound up - in her mouth.  Ceraphs glossy lips are spread in a wide 'o', a thick demon-dick holding them open as she bobs her head up and down.  Greedy slurps and muffled moans drift up from her through the autofellatio, and you watch excitedly while masturbating yourself with her cunt.");
+			if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText("\n\nNot one to be outdone, your pet takes the other ring and begins to force it down her nubby demonic dong.  The gold-gilt dick-jewelry settles quite firmly just above her creamy pussy, and with a matching flash of light, her own member disappears.  Surprisingly, it doesn't appear in any of your orifices.  A quick glance her way reveals just where her dick wound up - in her mouth.  Ceraphs glossy lips are spread in a wide 'o', a thick demon-dick holding them open as she bobs her head up and down.  Greedy slurps and muffled moans drift up from her through the autofellatio, and you watch excitedly while masturbating yourself with her cunt.");
 			outputText("\n\nYou make good use of your new toy, pulling it up to just below the head before slamming it down hard, all the way to your [sheath].  It feels every bit as good as fucking her normally, but without having to actually move your whole body, you're able to relax and enjoy the experience more.  As an added benefit, you can see the way your pet slut's purple nether-lips blush as she gets more aroused, moisture spilling out around your thickness to drizzle through her asscrack.  With your free hand, you grope one of the slaves contoured cheeks, feeling its heft, its softness, and its lewd jiggles.  You begin to moan, enjoying this more than you ought to, yet helpless to slow your pumping hand.");
 			outputText("\n\nThere's no stopping the surging passion as it races through you, and with a throaty sigh, you release your seed.  It's amazing, from this vantage you can do more than just experience your orgasm, you can watch it happen.  You can see the underside of your disembodied cock bulging with each urethra-stretching load.[if (cumQuantity > 500)   Jizz foams at her lips as her belly rounds, and you're treated to the sight of Ceraph's bellybutton suddenly becoming an outtie.][if (cumQuantity > 1000)   A moment later, her stomach rounds further, taking on a positively pregnant appearance.][if (cumQuantity > 1500)   Spunky rivers pump from the demon's overfull womb as it loses its ability to stretch any further.]  You sigh and idly move the portal up and down, fucking through the sloshing, sperm-filled mess that the demon's cunt has turned into.  Delightful.");
-			if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0) outputText("\n\nCeraph gurgles happily for a second, then her cheeks bulge.  Her throat begins working, and you realize she's cumming into her own mouth.  By the look of how squirrel-like her visage has become, she can barely manage to swallow a mouthful before the next is stuffing her full, dribbles of pearly cream running freely from the corners of her mouth.  Ceraph quietly gulps and swallows over and over until her dick finally begins to soften, spent at last.");
+			if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText("\n\nCeraph gurgles happily for a second, then her cheeks bulge.  Her throat begins working, and you realize she's cumming into her own mouth.  By the look of how squirrel-like her visage has become, she can barely manage to swallow a mouthful before the next is stuffing her full, dribbles of pearly cream running freely from the corners of her mouth.  Ceraph quietly gulps and swallows over and over until her dick finally begins to soften, spent at last.");
 			outputText("\n\nYou stand up and stretch, your cock still lodged tight in Ceraph's cooch.  Alas, all good things must come to an end, and with one slow tug, you remove the ring from your [cock " + y + "] (and your maleness from her cunt).  You toss the borrowed item back to her, letting it fall on your slave's heaving bosom as she tries to recover, a fucked-out mess in the dirt.  You turn to get dressed, and when you glance back, Ceraph is gone, until the next time you call for her.");
 			player.orgasm('Generic');
 			dynStats("cor", 1);
@@ -1775,10 +1775,10 @@ package classes.Scenes.NPCs
 			else outputText("  Ceraph frowns as she glances towards your crotch.  She is disciplined enough to answer you quickly, however, with a sharp \"<i>Yes, [master].</i>\"");
 
 			outputText("\n\nYou command her to turn around and bend over.  Your demonic slave hastens to comply, presenting her latex-covered sex to you brazenly.  The shimmering scrap of fabric hovers on the bare edge of decency; the strip is so narrow, you can see her puffy outer lips bulging out on both sides.");
-			if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0) outputText("  The whole garment creaks and strains under the pressure of her hardening member.");
+			if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText("  The whole garment creaks and strains under the pressure of her hardening member.");
 
 			outputText("\n\nYou frown.  Your slut knows that you're going to use her as an egg dump; how does she expect you to do that with panties in the way?  Growling, you grasp the shear latex around the waistband, right beneath her twisting tail, and [if (strength < 80) haul upwards.|pull upwards with such force that Ceraph is left dangling from the bikini bottom.]  The omnibus screams as the fabric cuts into the soft flesh of her sex");
-			if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0) outputText("; unable to keep it penned up, her demonic cock spills out the side, waving back and forth obscenely as you saw the offending garment into her crotch");
+			if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText("; unable to keep it penned up, her demonic cock spills out the side, waving back and forth obscenely as you saw the offending garment into her crotch");
 			outputText(".");
 
 			outputText("\n\n\"<i>Stop!</i>\" Ceraph cries as you jerk the bottoms back and forth savagely, \"<i>I'll take them off, " + player.mf("Master", "Mistress") + "!  I'm sorry!</i>\"");
@@ -1826,12 +1826,12 @@ package classes.Scenes.NPCs
 
 			outputText("\n\nScowling down at you, Ceraph commands, \"<i>Pets don't get to sit up - they roll over in the mud and crawl on your hands and knees like the beasts they are.  Remember that, [name].  You aren't a person.</i>\"  Her whip lightly smacks your hip.  \"<i>You're a pet.</i>\"  SMACK!  \"<i>A slave.</i>\"  CRACK!  \"<i>Property.</i>\"  SNAP!");
 			outputText("\n\nYou mewl pathetically under the blows but do your best to present yourself as ordered, rolling over and climbing up, [armor] covered in grime.  Worse still, your excitement is showing in more ways than one");
-			if (player.gender === 3) {
+			if (player.gender == 3) {
 				outputText(", both in the hardness of your manhood");
 				if (player.cockTotal() > 1) outputText("s");
 				outputText(" and the moisture leaking from under your equipment");
 			}
-			else if (player.gender === 2) outputText(", what with the beads of moisture forming between your legs");
+			else if (player.gender == 2) outputText(", what with the beads of moisture forming between your legs");
 			else outputText(".  Your hardness is easily visible to anyone who knows where to look, and the demoness definitely knows where to look");
 			outputText(".");
 
@@ -1887,7 +1887,7 @@ package classes.Scenes.NPCs
 			if (player.tail.type > Tail.NONE) outputText(", wagging your tail excitedly");
 			outputText(".");
 			outputText("\n\nCeraph casually pulls her panties a bit lower to ");
-			if (flags[kFLAGS.CERAPH_HIDING_DICK] === 0) outputText("ease the pressure on her tightly-contained phallus");
+			if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText("ease the pressure on her tightly-contained phallus");
 			else outputText("allow a penis to grow, fully-formed from where her clit was");
 			outputText(".  The stalk of her cock drips with the swampy cunt-lubricant her delta exudes, and she pumps it a few times to make it stand long and erect, nine inches of pulsating, demonic horror.  Tiny nodules decorate the shaft in concentric rings to stimulated anyone lucky enough to experience her cock.  As Ceraph eyes your backside, you realize that you're going to be feeling it before long.");
 
@@ -1906,7 +1906,7 @@ package classes.Scenes.NPCs
 			if (dog) outputText("doggie");
 			else outputText("kitty-cat");
 			outputText(".</i>\"  Her hips press the hot spear harder against your [asshole].  ");
-			if (player.ass.analLooseness === 0) {
+			if (player.ass.analLooseness == 0) {
 				outputText("Even though you're a virgin, the cunt-slick tool worms its way into your rectum with ease, the nodules massaging your sorely-stretched anal ring as it accommodates to handle the bigger width, forever ruined by Ceraph's boner.");
 			}
 			else if (player.analCapacity() < 20) outputText("Even though you're pretty tight, the cunt-slick tool slides into your rectum with ease, the semi-soft nodules massaging your anal ring as it adjusts to the heated impalement.");
@@ -1940,7 +1940,7 @@ package classes.Scenes.NPCs
 			if (player.hasCock()) outputText("[eachCock]");
 			else outputText("your slightly parted twat");
 			outputText(" into a pool on the floor as you're expertly brought to a tingly, body-quivering, anal orgasm.  It can barely be called an ejaculation, really.  The ");
-			if (player.gender === 2) outputText("fem-");
+			if (player.gender == 2) outputText("fem-");
 			outputText("cum is just ");
 			if (player.hasCock()) outputText("sliding");
 			else outputText("pouring");
@@ -1960,7 +1960,7 @@ package classes.Scenes.NPCs
 			else outputText("a need within you");
 			outputText(" feels released, you're still horny");
 			if (player.hasCock()) {
-				if (player.cockTotal() === 1) outputText(", even with a soft cock");
+				if (player.cockTotal() == 1) outputText(", even with a soft cock");
 				else outputText(", even with soft cocks");
 			}
 			outputText(".  Ceraph purrs, \"<i>I told you that I was a good owner, didn't I?  Now just lie there and enjoy myself on your sensitive tush.</i>\"");
@@ -2030,9 +2030,9 @@ package classes.Scenes.NPCs
 
 			var choices:Array = [];
 			//Choose one of the following at random
-			if (flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 4 && flags[kFLAGS.FUCK_FLOWER_KILLED] === 0)
+			if (flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 4 && flags[kFLAGS.FUCK_FLOWER_KILLED] == 0)
 				choices[choices.length] = 0;
-			if (amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] === 2)
+			if (amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 2)
 				choices[choices.length] = 1;
 			else if (campCorruptJojo())
 				choices[choices.length] = 1;
@@ -2041,9 +2041,9 @@ package classes.Scenes.NPCs
 			var select:int = choices[rand(choices.length)];
 
 			//HOLLI
-			if (select === 0) {
+			if (select == 0) {
 				//{Normal Holli}
-				if (flags[kFLAGS.HOLLI_SUBMISSIVE] === 0) {
+				if (flags[kFLAGS.HOLLI_SUBMISSIVE] == 0) {
 					outputText("\n\nThe corrupted dryad peeps out of her tree when Ceraph leads you by.  \"<i>Oh, this is just too rich!  Are you a little ");
 					if (dog) outputText("doggie");
 					else outputText("kitty-cat");
@@ -2078,9 +2078,9 @@ package classes.Scenes.NPCs
 				outputText(" with unfilled need, but there's no sating it.  Only after all your muscles are sore and exhausted does Ceraph take you home.  You collapse onto your belly, panting while the whip is untied.  When you turn to talk to Ceraph, you find she's left you there, aroused beyond measure.");
 			}
 			//Corrupt Jojo or Amily
-			else if (select === 1) {
+			else if (select == 1) {
 				//Both
-				if (amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] === 2 && campCorruptJojo()) {
+				if (amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 2 && campCorruptJojo()) {
 					//Both Corrupt Jojo & Amily
 					outputText("\n\nBefore long, you come across both of your corrupt, mouse-like slaves.  They stop fondling each other's genitals long enough to ask, \"<i>[Master], what are you doing?</i>\"");
 					outputText("\n\nCeraph looks down at you with her hand tight on your leash.");
@@ -2122,17 +2122,17 @@ package classes.Scenes.NPCs
 				}
 				//Mice finisher
 				outputText("\n\nYou go for an exhausting walk around the nearby wasteland with your companion");
-				if (amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] === 2 && campCorruptJojo()) outputText("s");
+				if (amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 2 && campCorruptJojo()) outputText("s");
 				outputText(", and you thoroughly enjoy the degrading experience.  Lust and humiliation are all jumbled up inside you into one big mass of sex, such that getting turned on from this humiliates you, and being humiliated gets you even more aroused");
 				outputText(".  It's an endless feedback loop of sexual excitement that has you about to blow, except you're back in camp.  The collar is untied, and your owner's sweet voice whispers, \"<i>Good walk, pet.</i>\" before vanishing into the wind.");
 
 				outputText("\n\n");
 				if (campCorruptJojo()) {
 					outputText("Jojo");
-					if (amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] === 2) outputText(" and ");
+					if (amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 2) outputText(" and ");
 				}
-				if (amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] === 2) outputText("Amily");
-				if (amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] === 2 && campCorruptJojo()) outputText("look around uncertainly before darting back to their usual places, knowing you'll give the command if you want them to take care of your desires.");
+				if (amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 2) outputText("Amily");
+				if (amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 2 && campCorruptJojo()) outputText("look around uncertainly before darting back to their usual places, knowing you'll give the command if you want them to take care of your desires.");
 				else outputText("looks around uncertainly before darting back to the usual places, knowing you'll give the command if you want a slave to take care of your desires.");
 			}
 			//Generic

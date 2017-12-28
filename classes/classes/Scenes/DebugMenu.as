@@ -98,11 +98,11 @@ import classes.Items.*
 			menu();
 			var buttonPos:int = 0; //Button positions 4 and 9 are reserved for next and previous.
 			for (var i:int = 0; i < 12; i++) {
-				if (array[((page-1) * 12) + i] !== undefined) {
-					if (array[((page-1) * 12) + i] !== null) addButton(buttonPos, array[((page-1) * 12) + i].shortName, inventory.takeItem, array[((page-1) * 12) + i], curry(displayItemPage, array, page));
+				if (array[((page-1) * 12) + i] != undefined) {
+					if (array[((page-1) * 12) + i] != null) addButton(buttonPos, array[((page-1) * 12) + i].shortName, inventory.takeItem, array[((page-1) * 12) + i], curry(displayItemPage, array, page));
 				}
 				buttonPos++;
-				if (buttonPos === 4 || buttonPos === 9) buttonPos++;
+				if (buttonPos == 4 || buttonPos == 9) buttonPos++;
 			}
 			if (!isNextPageEmpty(array, page)) addButton(4, "Next", displayItemPage, array, page+1);
 			if (!isPreviousPageEmpty(array, page)) addButton(9, "Previous", displayItemPage, array, page-1);
@@ -112,7 +112,7 @@ import classes.Items.*
 		private function isPreviousPageEmpty(array:Array, page:int):Boolean {
 			var isEmpty:Boolean = true;
 			for (var i:int = 0; i < 12; i++) {
-				if (array[((page-2) * 12) + i] !== undefined) {
+				if (array[((page-2) * 12) + i] != undefined) {
 					isEmpty = false;
 				}
 			}
@@ -122,7 +122,7 @@ import classes.Items.*
 		private function isNextPageEmpty(array:Array, page:int):Boolean {
 			var isEmpty:Boolean = true;
 			for (var i:int = 0; i < 12; i++) {
-				if (array[((page) * 12) + i] !== undefined) {
+				if (array[((page) * 12) + i] != undefined) {
 					isEmpty = false;
 				}
 			}
@@ -1043,7 +1043,7 @@ import classes.Items.*
 		}
 		private function changeEyeType(page:int=0,setIdx:int=-1):void {
 			if (setIdx >= 0) player.eyes.type = setIdx;
-			if (player.eyes.type === Eyes.SPIDER) player.eyes.count = 4;
+			if (player.eyes.type == Eyes.SPIDER) player.eyes.count = 4;
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorHead, page, EYE_TYPE_CONSTANTS, changeEyeType);
@@ -1411,24 +1411,24 @@ import classes.Items.*
 			//Stored equipment
 			outputText("<b><u>Stored equipment:</u></b>");
 			outputText("\n<b>Stored armour:</b> ");
-			if (flags[kFLAGS.PRISON_STORAGE_ARMOR] !== 0) {
+			if (flags[kFLAGS.PRISON_STORAGE_ARMOR] != 0) {
 				outputText("" + ItemType.lookupItem(flags[kFLAGS.PRISON_STORAGE_ARMOR]));
 			}
 			else outputText("None");
 			outputText("\n<b>Stored weapon:</b> ");
-			if (flags[kFLAGS.PRISON_STORAGE_WEAPON] !== 0) {
+			if (flags[kFLAGS.PRISON_STORAGE_WEAPON] != 0) {
 				outputText("" + ItemType.lookupItem(flags[kFLAGS.PRISON_STORAGE_WEAPON]));
 			}
 			else outputText("None");
 			outputText("\n<b>Stored shield:</b> ");
-			if (flags[kFLAGS.PRISON_STORAGE_SHIELD] !== 0) {
+			if (flags[kFLAGS.PRISON_STORAGE_SHIELD] != 0) {
 				outputText("" + ItemType.lookupItem(flags[kFLAGS.PRISON_STORAGE_SHIELD]));
 			}
 			else outputText("None");
 			//Stored items
 			outputText("\n\n<b><u>Stored items:</u></b>");
 			for (var i:int = 0; i < 10; i++) {
-				if (player.prisonItemSlots[i*2] !== null && player.prisonItemSlots[i*2] !== undefined) {
+				if (player.prisonItemSlots[i*2] != null && player.prisonItemSlots[i*2] != undefined) {
 					outputText("\n" + player.prisonItemSlots[i*2]);
 					outputText(" x" + player.prisonItemSlots[(i*2) +1]);
 				}
@@ -1438,7 +1438,7 @@ import classes.Items.*
 
 		private function toggleMeaninglessCorruption():void {
 			clearOutput();
-			if (flags[kFLAGS.MEANINGLESS_CORRUPTION] === 0) {
+			if (flags[kFLAGS.MEANINGLESS_CORRUPTION] == 0) {
 				flags[kFLAGS.MEANINGLESS_CORRUPTION] = 1;
 				outputText("<b>Set MEANINGLESS_CORRUPTION flag to 1.</b>");
 			}
@@ -1452,7 +1452,7 @@ import classes.Items.*
 			clearOutput();
 			outputText("Which NPC would you like to reset?");
 			menu();
-			if (flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] < 0 || flags[kFLAGS.URTA_QUEST_STATUS] === -1) addButton(0, "Urta", resetUrta);
+			if (flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] < 0 || flags[kFLAGS.URTA_QUEST_STATUS] == -1) addButton(0, "Urta", resetUrta);
 			if (flags[kFLAGS.JOJO_STATUS] >= 5 || flags[kFLAGS.JOJO_DEAD_OR_GONE] > 0) addButton(1, "Jojo", resetJojo);
 			if (flags[kFLAGS.EGG_BROKEN] > 0) addButton(2, "Ember", resetEmber);
 			if (flags[kFLAGS.SHEILA_DISABLED] > 0 || flags[kFLAGS.SHEILA_DEMON] > 0 || flags[kFLAGS.SHEILA_CITE] < 0 || flags[kFLAGS.SHEILA_CITE] >= 6) addButton(6, "Sheila", resetSheila);
@@ -1467,7 +1467,7 @@ import classes.Items.*
 		}
 		private function reallyResetUrta():void {
 			clearOutput();
-			if (flags[kFLAGS.URTA_QUEST_STATUS] === -1) {
+			if (flags[kFLAGS.URTA_QUEST_STATUS] == -1) {
 				outputText("Somehow, you have a feeling that Urta somehow went back to Tel'Adre.  ");
 				flags[kFLAGS.URTA_QUEST_STATUS] = 0;
 			}

@@ -10,17 +10,17 @@ import classes.Scenes.API.Encounters;
 	{
 		//for all april fools gags
 		public function isItAprilFools():Boolean {
-			return (date.date === 1 && date.month === 3);
+			return (date.date == 1 && date.month == 3);
 		}
 
 	public const poniesEncounter:Encounter = Encounters.build({
 		name  : "ponies",
 		call  : poniesFn,
 		when  : function ():Boolean {
-			return player.lowerBody.type === LowerBody.HOOFED
+			return player.lowerBody.type == LowerBody.HOOFED
 				   && player.isTaur()
-				   && date.date === 1 && date.month === 3
-				   && flags[kFLAGS.SILLY_MODE_PONIES] === 0
+				   && date.date == 1 && date.month == 3
+				   && flags[kFLAGS.SILLY_MODE_PONIES] == 0
 		},
 		chance: 0.25
 	});
@@ -49,7 +49,7 @@ import classes.Scenes.API.Encounters;
 			outputText("The purple one turns to you looking apologetic and a bit exasperated, \"<i>Sorry for our friend startling you. She gets excited <b>really</b> easily.</i>\"\n\n");
 			
 			outputText("You respond that it's no problem, but she should be more careful approaching strangers");
-			if (player.weaponName !== "fists") outputText(", especially armed strangers");
+			if (player.weaponName != "fists") outputText(", especially armed strangers");
 			outputText(".\n\n");
 			
 			outputText("The blue one looks at you in a puzzled manner while hovering above the ground, \"<i>Actually, you are the first person we have seen who isn't a pony.</i>\"\n\n");
@@ -102,7 +102,7 @@ import classes.Scenes.API.Encounters;
 			outputText("\n\nYou can purchase " + dlcName + " for " + dlcPrice + ". Would you like to purchase it now?");
 			menu();
 			addButton(0, "Yes", buyDLCPrompt, dlcName, dlcPrice, nextFunc);
-			if (nextFunc !== null) addButton(1, "No", nextFunc);
+			if (nextFunc != null) addButton(1, "No", nextFunc);
 			else addButton(1, "No", playerMenu);
 		}
 		private function buyDLCPrompt(dlcName:String, dlcPrice:String, nextFunc:Function = null):void {
@@ -119,7 +119,7 @@ import classes.Scenes.API.Encounters;
 		}
 		private function proceedToCheckout(method:String, nextFunc:Function = null):void {
 			clearOutput();
-			if (method !== "Gems") {
+			if (method != "Gems") {
 				outputText("You will be taken to an external website to complete your checkout. Proceed?");
 			}
 			else {

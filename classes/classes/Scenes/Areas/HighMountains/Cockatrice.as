@@ -77,7 +77,7 @@ package classes.Scenes.Areas.HighMountains
 			          +" dirt and rocks, directing it at you as he soars above you.|sweeps his tail along the ground, whipping up a flurry of loose"
 			          +" dirt and small rocks. With a swift movement he then swipes across at you, flinging debris in your direction.]  ");
 			if (player.spe / 5 + rand(20) < 28 + player.newGamePlusMod() * 5) { // dodge chance here
-				if (rand(2) === 0) {
+				if (rand(2) == 0) {
 					// Hit
 					outputText("The dirt and rocks engulf you, causing you to try to cover your eyes. You fail to move fast enough,"
 					          +" dirt getting in your eyes, making them stream with tears and temporarily blinding you.");
@@ -106,7 +106,7 @@ package classes.Scenes.Areas.HighMountains
 			outputText("The cockatrice suddenly whips its tail at you, swiping your " + player.feet() + " from under you!  You quickly stagger upright, being sure to hold the creature's feet in your vision.  ");
 			var damage:Number = int((str + 20) - Math.random()*(player.tou+player.armorDef));
 			damage = player.takeDamage(damage, true);
-			if (damage === 0) outputText("The fall didn't harm you at all.  ");
+			if (damage == 0) outputText("The fall didn't harm you at all.  ");
 			fatigue += spellCostTailSwipe;
 			game.combat.combatRoundOver();
 		}
@@ -114,7 +114,7 @@ package classes.Scenes.Areas.HighMountains
 		//Tease attack
 		private function cockaTease():void
 		{
-			if (rand(2) === 0) {
+			if (rand(2) == 0) {
 				outputText("The cockatrice turns around slowly, looking over his shoulder as he slowly lifts his tail to reveal his tight rump."
 				          +" He rubs his clawed fingers over the taut flesh of his feathered cheeks, before his tail cracks against one cheek"
 				          +" like a whip. You can’t help but flush at his brazen display.");

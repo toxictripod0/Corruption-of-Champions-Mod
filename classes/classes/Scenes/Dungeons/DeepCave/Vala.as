@@ -60,11 +60,11 @@ package classes.Scenes.Dungeons.DeepCave
 			}
 			else {
 				addStatusValue(StatusEffects.Vala,1,1);
-				if (statusEffectv1(StatusEffects.Vala) === 1) outputText("\"<i>If you won't fuck Bitch, you must not be a master,</i>\" she realizes, the fight invigorating her lust-deadened brain. \"<i>You get to be a pet for the masters, too!</i>\"");
-				else if (statusEffectv1(StatusEffects.Vala) === 2) outputText("\"<i>If the masters like you, maybe they will let Bitch keep you for herself! Won't you like that?</i>\"");
-				else if (statusEffectv1(StatusEffects.Vala) === 3) outputText("\"<i>We obey the masters. They fed Bitch until she became big enough to please them. The masters love their pets so much, you'll see.</i>\"");
-				else if (statusEffectv1(StatusEffects.Vala) === 4) outputText("\"<i>Thoughts are so hard. Much easier to be a toy slut. Won't you like being a toy? All that nasty memory fucked out of your head.</i>\"");
-				else if (statusEffectv1(StatusEffects.Vala) === 5) outputText("\"<i>Bitch has given birth to many of the masters' children. She will teach you to please the masters. Maybe you can birth more masters for us to fuck?</i>\"");
+				if (statusEffectv1(StatusEffects.Vala) == 1) outputText("\"<i>If you won't fuck Bitch, you must not be a master,</i>\" she realizes, the fight invigorating her lust-deadened brain. \"<i>You get to be a pet for the masters, too!</i>\"");
+				else if (statusEffectv1(StatusEffects.Vala) == 2) outputText("\"<i>If the masters like you, maybe they will let Bitch keep you for herself! Won't you like that?</i>\"");
+				else if (statusEffectv1(StatusEffects.Vala) == 3) outputText("\"<i>We obey the masters. They fed Bitch until she became big enough to please them. The masters love their pets so much, you'll see.</i>\"");
+				else if (statusEffectv1(StatusEffects.Vala) == 4) outputText("\"<i>Thoughts are so hard. Much easier to be a toy slut. Won't you like being a toy? All that nasty memory fucked out of your head.</i>\"");
+				else if (statusEffectv1(StatusEffects.Vala) == 5) outputText("\"<i>Bitch has given birth to many of the masters' children. She will teach you to please the masters. Maybe you can birth more masters for us to fuck?</i>\"");
 				else outputText("\"<i>Bitch loves when her children use her as their fathers did. Sluts belong to them. Slut love them. You will love them too!</i>\"");
 			}
 		}
@@ -76,9 +76,9 @@ package classes.Scenes.Dungeons.DeepCave
 			outputText("\n\n");
 			//Select Attack
 			//BLood magic special
-			if (HPRatio() < .85 && rand(3) === 0) valaSpecial1();
+			if (HPRatio() < .85 && rand(3) == 0) valaSpecial1();
 			//25% chance of milksquirt.
-			else if (rand(4) === 0) valaSpecial2();
+			else if (rand(4) == 0) valaSpecial2();
 			else valaMasturbate();
 		}
 
@@ -136,7 +136,7 @@ package classes.Scenes.Dungeons.DeepCave
 			this.special1 = special1;
 			this.special2 = special2;
 			this.special3 = special3;
-			if (flags[kFLAGS.TIMES_PC_DEFEATED_VALA] === 0) this.drop = new WeightedDrop(consumables.NUMBROX);
+			if (flags[kFLAGS.TIMES_PC_DEFEATED_VALA] == 0) this.drop = new WeightedDrop(consumables.NUMBROX);
 			else this.drop = NO_DROP;
 			this.wings.type = Wings.FAERIE_LARGE;
 			checkMonster();

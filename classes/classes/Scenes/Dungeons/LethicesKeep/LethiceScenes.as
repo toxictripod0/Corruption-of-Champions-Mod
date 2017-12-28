@@ -64,12 +64,12 @@ package classes.Scenes.Dungeons.LethicesKeep
 			}
 			outputText("\n\n<b>It’s a fight!</b>");
 			var m:Lethice = new Lethice();
-			if(player.wings.type !== 0)
+			if(player.wings.type != 0)
 			{
 				m.createStatusEffect(StatusEffects.PhysicalDisabled,0,0,0,0);
 				m.createStatusEffect(StatusEffects.AttackDisabled,0,0,0,0);
 			}
-			if(flags[kFLAGS.MINOTAURKINGS_TOUCH] === 1)
+			if(flags[kFLAGS.MINOTAURKINGS_TOUCH] == 1)
 			{
 				player.createStatusEffect(StatusEffects.MinotaurKingsTouch,0,0,0,0);
 			}
@@ -105,7 +105,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			}
 			addButton(2,"Boob Play",boobPlay,hpVictory);
 			var hasLethicite:Boolean = player.hasKeyItem("Sheila's Lethicite") > 0 || player.hasKeyItem("Stone Statue Lethicite") > 0;
-			if (Boolean(hasLethicite) && flags[kFLAGS.MET_MARAE] > 0 && flags[kFLAGS.FACTORY_SHUTDOWN] === 1)
+			if (Boolean(hasLethicite) && flags[kFLAGS.MET_MARAE] > 0 && flags[kFLAGS.FACTORY_SHUTDOWN] == 1)
 			{
 				addButton(5, "Redemption", redemption, hpVictory);
 			}
@@ -133,7 +133,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			outputText("\n\nGlancing down between her legs, you can see clear as day that her puffy pink pussy is glistening with moisture. Oh-ho, for such a haughty queen, Lethice might just have a hidden fetish deep down there... You give her another swat, and another, alternating cheeks as you make the Demon Queen croon with agonizing ecstasy. She fucking loves it! Ten spanks in and her crotch is a swamp, thighs bathed in glistening rivulets of her excitement. Ten more, and you’re fairly sure she orgasms, giving off a shrill cry of pleasure that echoes through the throne room. Every other demon in the place is silent for once, locked in a rapture of confusion and arousal.");
 			outputText("\n\nAnd Lethice? Lethice is panting and gasping, whining with the lingering sting you’ve left on her bubble butt. You’re half sure she’s used her shapeshifting powers to pad her rump out, making her ass as full and soft as a cow-girl’s - and as sensitive as a clit, if the way just running your fingers across her bare behind makes her gasp and bite at her lip, wings batting weakly under your firm grasp.");
 			outputText("\n\nYou’re already hard as a rock, your");
-			if(player.cocks.length === 1)
+			if(player.cocks.length == 1)
 			{
 				outputText(" [cock]");
 			}
@@ -142,7 +142,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 				outputText(" cocks");
 			}
 			outputText(" [cocks] pushing uncomfortably against your [armor]. Deciding she’s had enough of an ass-beating, you shrug out of your gear and grab your prick, letting it flop mightily between Lethice’s up-turned cheeks. She gasps, clawing her fingers into the seat of her throne but finding no purchase as your [hips] bear down on her. After the spanking you’ve given her, though, Lethice is too lust-addled and weak-kneed to do anything but whimper and lift her spaded tail like a bitch in heat, all but inviting you to plow your cock into her sweet demon’s cunny.");
-			if(player.cocks.length === 1)
+			if(player.cocks.length == 1)
 			{
 				outputText("\n\nUnless you have better plans...");
 				menu();
@@ -215,7 +215,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			clearOutput();
 			outputText(images.showImage("lethice-plow-her-double"));
 			outputText("You smirk down at Lethice’s winged back and reddened ass, letting your multiple cocks tell her what’s in store. Your [cock] presses against the tight, dark ring of her asshole while the");
-			if(player.cocks.length === 2)
+			if(player.cocks.length == 2)
 			{
 				outputText(" other");
 			}
@@ -497,7 +497,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			outputText("\n\nThe goddess reaches back to the great tree she’s buried in at the hips, and in a shimmer of magic, disappears within herself. Your attentions return to Lethice, in time to see the sprawling cavalcade of demonic horns crumble from her brow, leaving only the curling goat-like ones behind. Her wings, once huge and draconic, a dark imitation of the great wyrms of legend, twist and writhe within themselves. They fold back into themselves, melding back into their owner’s flesh until nothing remains beneath her churchwear’s torn back but a pair of smooth, slender shoulder blades.");
 			outputText("\n\nYou’d barely recognize her now, save the unchanging, statuesque form of her slender body. That, at least, remains unchanged - perhaps this is really how Lethice appeared even before her demonic transformation. With beauty like hers, then, she’d have had no reason to change her appearance.");
 			outputText("\n\nWarily, you");
-			if(player.weapon === WeaponLib.FISTS)
+			if(player.weapon == WeaponLib.FISTS)
 			{
 				outputText(" flip a knife out of your pack");
 			}
@@ -530,7 +530,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 		
 		private function redemptionIIIGoName():void
 		{
-			if(mainView.nameBox.text === "")
+			if(mainView.nameBox.text == "")
 			{
 				clearOutput();
 				outputText("<b>You must select a name.</b>");
@@ -543,7 +543,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			flags[kFLAGS.LETHICE_NAME] = mainView.nameBox.text;
 			mainView.nameBox.visible = false;
 			clearOutput();
-			if(flags[kFLAGS.LETHICE_NAME] === "Lethice")
+			if(flags[kFLAGS.LETHICE_NAME] == "Lethice")
 			{
 				outputText("You decide to tell her the truth - to give her back the name she bore as the Demon Queen. Trying to hide who and what she was from her - and from the world - will do you no good. The rest of the demons, and those who fight against them, deserve to see that there is hope. That even the Demon Queen could be made whole again.");
 				outputText("\n\nAt least, that’s what you hope. So you tell her that, slowly and in great detail explaining to the confused-looking girl that she is Lethice, the ruler of the demons who even now plague the realm of Mareth. Though she and her minions have committed atrocities beyond imagining, brought ruin to the world, you showed her mercy. You’re giving her a second chance.");
@@ -581,7 +581,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			clearOutput();
 			outputText(images.showImage("lethice-join"));
 			outputText("Stepping towards the infamous Demon Queen, you");
-			if(player.weapon === WeaponLib.FISTS)
+			if(player.weapon == WeaponLib.FISTS)
 			{
 				outputText(" raise your empty hands");
 			}
@@ -592,7 +592,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			outputText(" and smile. Lethice cocks a bemused brow, crossing her legs and tracing her slender fingers around the rim of her Lethicite-filled goblet. None of her remaining minions move to stop you, allowing you to approach their queen, right to the foot of her throne.");
 			outputText("\n\n<i>“Well, well,”</i> Lethice purrs, mighty wings twitching expectantly behind her. <i>“What’s going through your mind, I wonder. Shouldn’t you be raising your hackles and telling me how you’re going to topple me off my throne and put an end to my reign of lust about now?”</i>");
 			outputText("\n\nNo, no. You have a very different speech in mind right about now. You sweep an arm back towards the defeated bodies of the Demon Queen’s most elite servants, her own personal guard and the very king of the minotaurs. Both");
-			if(flags[kFLAGS.DRIDERINCUBUS_KILLED] === 0 || flags[kFLAGS.MINOTAURKING_KILLED] === 0)
+			if(flags[kFLAGS.DRIDERINCUBUS_KILLED] == 0 || flags[kFLAGS.MINOTAURKING_KILLED] == 0)
 			{
 				outputText(" humiliated");
 			}
@@ -605,7 +605,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			outputText("\n\nSlowly, a smile spreads across the demon’s face. <i>“Someone like you?”</i> she smirks, flicking a small crystal into her mouth. The resounding crunch of a soul being devoured echoes through the grand chamber, to the delight of the demonic courtiers in the stands. <i>“Perhaps I underestimated you, ‘Champion.’ You’ve certainly proved yourself most capable. And </i>most<i> arousing.”</i>");
 			outputText("\n\nLethice stands, high heels clicking on the stone floor and wings unfurling behind her. You notice with keen appreciation the way her dark churchware clings to every lush mound and shapely curve. She even has a regal walk, one leg sensuously slipping in front of the other until she’s within arm’s reach; then closer still, tracing a pale finger around your chin.");
 			outputText("\n\n<i>“So. You’ve resisted my poor imps and demons at every turn.");
-			if(flags[kFLAGS.DRIDERINCUBUS_KILLED] === 1 || flags[kFLAGS.MINOTAURKING_KILLED] === 1)
+			if(flags[kFLAGS.DRIDERINCUBUS_KILLED] == 1 || flags[kFLAGS.MINOTAURKING_KILLED] == 1)
 			{
 				outputText(" Carved a bloody swathe");
 			}
@@ -651,7 +651,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			{
 				outputText(" newgrown cock. Just another side benefit of demonhood: molding your body on the fly to suit whatever takes your fancy moment to moment.\n\n");
 			}
-			if (player.gender === 2) outputText(images.showImage("lethice-joined-female"));
+			if (player.gender == 2) outputText(images.showImage("lethice-joined-female"));
 			else outputText(images.showImage("lethice-joined-male"));
 			outputText("The thrill of victory simply and utterly overwhelmed your queen when she arrived to survey the scene of your victory, and you soon found yourself with Lethice bent over the sandy stone walls, breasts bared to the growing crowd of demons in the streets as you plow her from behind, hips pistoning hard against her lush, soft rump.");
 			outputText("\n\nSomething clicks inside you as you unleash yet another potent load into the queen’s womb. Already, her stomach grows with the freshest clutch of soulless, pleasure-hungry imps inside her. Realization dawns to the beat of Lethice’s pussy clenching around your tainted member and accepting your virile seed once more.");
@@ -696,7 +696,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 				outputText(" to your knees");
 			}
 			outputText(",");
-			if(player.weapon !== WeaponLib.FISTS)
+			if(player.weapon != WeaponLib.FISTS)
 			{
 				outputText(" your [weapon] clattering away across the stone");
 			}
@@ -737,7 +737,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			outputText("\n\n<i>“Heel, Champ!”</i>");
 			outputText("\n\nYou look up with a start, blinking away the haze of lust that has fallen over you. Your [hips] are still pistoning like a jackhammer, but you wrest your attentions up to the glorious throne high above you where Mistress reclines, casually consuming the glowing soul-crystals that bear her name. The black-skinned dragoness beneath you moans and shudders, cum gushing from her corrupted cock and splattering onto the floor. Her whole body convulses in mindless pleasure, making a mess of your mistress’s throne dais.");
 			outputText("\n\n<i>“Tsk! Now look what you’ve done, Champ,”</i> Mistress chides, tracing one of her lush fingers across the rim of her goblet. Slowly, sensuously, she drops her hand down to the side of her throne and coils her slender digits around a leather strap hooked there. Mistress coils her hand around it and gives the strap a harsh pull, yanking you by the neck off of the prostrate woman. Cum sprays from your");
-			if(player.dogCocks() === 0)
+			if(player.dogCocks() == 0)
 			{
 				outputText(" newly-grown doggy cock");
 			}
@@ -764,7 +764,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			else
 			{
 				outputText("How did you escape from the factory, I wonder? And so clean and pure, too... your belly’s not yet swollen with imps, and your breasts are so small. Did you slip through");
-				if(flags[kFLAGS.ZETAZ_DEFEATED_AND_KILLED] === 0)
+				if(flags[kFLAGS.ZETAZ_DEFEATED_AND_KILLED] == 0)
 				{
 					outputText(" Zetaz");
 				}
@@ -852,7 +852,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 		}
 		
 		private function killHerPrompt():void {
-			if (player.weaponVerb === "slash" || player.weaponVerb === "cleave" || player.weaponVerb === "keen cut" || player.weaponVerb === "stab") {
+			if (player.weaponVerb == "slash" || player.weaponVerb == "cleave" || player.weaponVerb == "keen cut" || player.weaponVerb == "stab") {
 				clearOutput();
 				outputText("How shall you end Lethice? Do you snap her neck and make it quick? Or do you chop her head off and scare the demons?");
 				addButton(0, "Snap Her Neck", killHer, 0, null, null, "Snap her neck and make it quick.");
@@ -866,11 +866,11 @@ package classes.Scenes.Dungeons.LethicesKeep
 		private function killHer(method:int = 0):void
 		{
 			clearOutput();
-			if (method === 0) {
+			if (method == 0) {
 				outputText("Lethice probably deserves the worst sorts of torture imaginable, but you don’t have time to dawdle. You snap her neck and drop her twitching body to the ground. ");				
 				flags[kFLAGS.LETHICE_KILLED] = 1;
 			}
-			else if (method === 1) {
+			else if (method == 1) {
 				outputText(images.showImage("lethice-head"));
 				outputText("Lethice probably deserves a punishment that would fit her foul deeds indeed. You raise your [weapon] and slice through her neck, causing her head to fall to the floor and demonic blood spills forth. You pick up your prize and show it to the demons to let them know not to mess with you. ");
 				awardAchievement("Off With Her Head!", kACHIEVEMENTS.GENERAL_OFF_WITH_HER_HEAD, true, true, true);
@@ -994,66 +994,66 @@ package classes.Scenes.Dungeons.LethicesKeep
 		{
 			var levelOfFuckedness:Number = 0;
 			//Increases the fuckedness
-			if(flags[kFLAGS.FACTORY_SHUTDOWN] === 2)
+			if(flags[kFLAGS.FACTORY_SHUTDOWN] == 2)
 				levelOfFuckedness += 50;
-			if(flags[kFLAGS.SHEILA_DEMON] === 1)
+			if(flags[kFLAGS.SHEILA_DEMON] == 1)
 				levelOfFuckedness += 10;
-			if(flags[kFLAGS.LETHICE_KILLED] === 0)
+			if(flags[kFLAGS.LETHICE_KILLED] == 0)
 				levelOfFuckedness += 25;
-			if(flags[kFLAGS.MINOTAURKING_KILLED] === 0)
+			if(flags[kFLAGS.MINOTAURKING_KILLED] == 0)
 				levelOfFuckedness += 10;
-			if(flags[kFLAGS.DRIDERINCUBUS_KILLED] === 0)
+			if(flags[kFLAGS.DRIDERINCUBUS_KILLED] == 0)
 				levelOfFuckedness += 10;
-			if(flags[kFLAGS.D3_CENTAUR_DEFEATED] !== 1)
+			if(flags[kFLAGS.D3_CENTAUR_DEFEATED] != 1)
 				levelOfFuckedness += 10;
-			if(flags[kFLAGS.D3_GARDENER_DEFEATED] !== 3)
+			if(flags[kFLAGS.D3_GARDENER_DEFEATED] != 3)
 				levelOfFuckedness += 10;
-			if(flags[kFLAGS.D1_OMNIBUS_KILLED] !== 1)
+			if(flags[kFLAGS.D1_OMNIBUS_KILLED] != 1)
 				levelOfFuckedness += 10;
-			if(flags[kFLAGS.ZETAZ_DEFEATED_AND_KILLED] !== 1)
+			if(flags[kFLAGS.ZETAZ_DEFEATED_AND_KILLED] != 1)
 				levelOfFuckedness += 10;
-			if(flags[kFLAGS.HARPY_QUEEN_EXECUTED] !== 1)
+			if(flags[kFLAGS.HARPY_QUEEN_EXECUTED] != 1)
 				levelOfFuckedness += 25;
 			if(getGame().camp.campCorruptJojo())
 				levelOfFuckedness += 10;
 			if(player.hasStatusEffect(StatusEffects.WandererDemon))
 				levelOfFuckedness += 10;
-			if(flags[kFLAGS.AMILY_FOLLOWER] === 2)
+			if(flags[kFLAGS.AMILY_FOLLOWER] == 2)
 				levelOfFuckedness += 10;
-			if(flags[kFLAGS.PUMPKIN_FUCK_YEAR_DONE] !== 0)
+			if(flags[kFLAGS.PUMPKIN_FUCK_YEAR_DONE] != 0)
 				levelOfFuckedness += 10;
 			//Decrease the fuckedness
-			if(flags[kFLAGS.MORE_CUM_WITCHES] === 1)
+			if(flags[kFLAGS.MORE_CUM_WITCHES] == 1)
 				levelOfFuckedness -= 10;
-			if(flags[kFLAGS.FREED_VALA] === 1)
+			if(flags[kFLAGS.FREED_VALA] == 1)
 				levelOfFuckedness -= 10;
 			if(getGame().camp.ceraphIsFollower())
 				levelOfFuckedness -= 5;
-			if(flags[kFLAGS.OWCA_SACRIFICE_DISABLED] === 1)
+			if(flags[kFLAGS.OWCA_SACRIFICE_DISABLED] == 1)
 				levelOfFuckedness -= 10;
-			if(flags[kFLAGS.SAND_WITCHES_FRIENDLY] === 1)
+			if(flags[kFLAGS.SAND_WITCHES_FRIENDLY] == 1)
 				levelOfFuckedness -= 10;
-			if(flags[kFLAGS.URTA_QUEST_STATUS] === 1)
+			if(flags[kFLAGS.URTA_QUEST_STATUS] == 1)
 				levelOfFuckedness -= 30;
-			if(flags[kFLAGS.HELSPAWN_NAME] !== 0)
+			if(flags[kFLAGS.HELSPAWN_NAME] != 0)
 				levelOfFuckedness -= 10;
-			if(flags[kFLAGS.FARM_CORRUPTION_FIRST_DATE] !== 0)
+			if(flags[kFLAGS.FARM_CORRUPTION_FIRST_DATE] != 0)
 				levelOfFuckedness += 20;
-			if(flags[kFLAGS.KID_A_XP] >= 100 && flags[kFLAGS.ANEMONE_WEAPON_ID] !== 0)
+			if(flags[kFLAGS.KID_A_XP] >= 100 && flags[kFLAGS.ANEMONE_WEAPON_ID] != 0)
 				levelOfFuckedness -= 10;
 			if(flags[kFLAGS.FUCK_FLOWER_LEVEL] > 3)
 				levelOfFuckedness += 15;
-			if(flags[kFLAGS.EDRYN_NUMBER_OF_KIDS] !== 0)
+			if(flags[kFLAGS.EDRYN_NUMBER_OF_KIDS] != 0)
 				levelOfFuckedness -= 5;
-			if(flags[kFLAGS.COTTON_KID_COUNT] !== 0)
+			if(flags[kFLAGS.COTTON_KID_COUNT] != 0)
 				levelOfFuckedness -= 5;
-			if(flags[kFLAGS.ANT_KIDS] !== 0)
+			if(flags[kFLAGS.ANT_KIDS] != 0)
 				levelOfFuckedness -= 20;
 			if(getGame().camp.followerKiha())
 				levelOfFuckedness -= 15;
 			if(player.hasStatusEffect(StatusEffects.PureCampJojo))
 				levelOfFuckedness -= 5;
-			if(flags[kFLAGS.KATHERINE_UNLOCKED] === 4)
+			if(flags[kFLAGS.KATHERINE_UNLOCKED] == 4)
 				levelOfFuckedness -= 5;
 			if(player.hasStatusEffect(StatusEffects.CampRathazul))
 				levelOfFuckedness -= 5;
@@ -1131,7 +1131,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 				outputText("\n\nIn time, peace came to Mareth.");
 				if (flags[kFLAGS.CORRUPTED_MARAE_KILLED] > 0)
 					outputText(" The demise of Marae by you was a tragic one but it had to be done. Her fall was the biggest blight on your campaign, a sad footnote on an otherwise successful reclamation.");
-				else if (flags[kFLAGS.FACTORY_SHUTDOWN] !== 2)
+				else if (flags[kFLAGS.FACTORY_SHUTDOWN] != 2)
 					outputText(" Marae reclaimed the full network of her roots and single-handedly purged the last holdouts of corruption from the lands, choking it out of her world like weeds from a garden.");
 				else
 					outputText(" Marae fought for a time, but even corrupted goddesses cannot hold back your tide of purity. Her fall was the biggest blight on your campaign, a sad footnote on an otherwise successful reclamation.");
@@ -1144,13 +1144,13 @@ package classes.Scenes.Dungeons.LethicesKeep
 				outputText("\n\n");
 				if (flags[kFLAGS.CORRUPTED_MARAE_KILLED] > 0)
 					outputText("With the demise of Marae caused by you in the past, she's no longer an aid to the demons. It would have been much easier if she was still alive and wasn't corrupted but still, you persevere.");
-				else if (flags[kFLAGS.FACTORY_SHUTDOWN] !== 2)
+				else if (flags[kFLAGS.FACTORY_SHUTDOWN] != 2)
 					outputText("Marae is a wonderful aid in your quest, always able to manifest in her newly purified roots and offer words of wisdom or encouragement. Her magical might is a rock you can lean upon when times are tough. You aren’t sure how long you could keep this up without her.");
 				else
 					outputText("Marae is always there, always lending her power to the demons, even when you dig her roots out of the ground with shovels and axes, burning the greasy lumber into nothingness. This task would be so much easier if the goddess was on your side, but still, you persevere.");
 				outputText("\n\nSlowly but steadily, you make headway. On your fortieth birthday, you receive word that Tel’Adre has been restored to its full strength. On your forty-fifth, you realize that you’re close to winning. Those few demons that remain are madly spawning imps, but the flimsy fliers are no match for a hail of flaming arrows or arcs of magic.");
 				outputText("\n\nYou are well into your fifties by the time you’re ready to declare victory.");
-				if (flags[kFLAGS.FACTORY_SHUTDOWN] !== 2)
+				if (flags[kFLAGS.FACTORY_SHUTDOWN] != 2)
 					outputText(" Those few pockets that escaped your armies could not escape Marae’s all-encompassing roots. Mareth is purified once more.");
 				else
 					outputText(" A few places are tainted still, but it’s impossible to cleanse every cave. Instead, you make instructions to maintain the army. Should evidence of corruption arise anywhere, your forces will swiftly put it to flame.");
@@ -1187,7 +1187,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 				}
 				outputText(" familiarize yourself with the place. Rather than driving off the few remaining demons you find, you place them into your service, explaining that so long as they serve you loyally they may yet live.");
 				outputText("\n\nWord gets out over the coming days about the new " + player.mf("King","Queen") + " of the demons, and little by little, the masterless hordes find their way back.");
-				if(flags[kFLAGS.LETHICE_KILLED] === 0)
+				if(flags[kFLAGS.LETHICE_KILLED] == 0)
 				{
 					outputText(" Lethice herself is even brought back, though this time securely leashed and empty-eyed.");
 				}
@@ -1252,7 +1252,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			outputText("What would you like to do?");
 			menu();
 			addButton(0, "Export", exportSaveData).hint("Export your save for possible use in CoC2.");
-			if (flags[kFLAGS.GAME_END] === GAME_END_CONSORT)
+			if (flags[kFLAGS.GAME_END] == GAME_END_CONSORT)
 				addButtonDisabled(1, "Continue", "Nuh-uh. Mareth is too fucked up to let you continue and it's all due to the consequences you've made.");
 			else
 				addButton(1, "Continue", postEndingReturn).hint("Continue the game so you complete anything you've missed.");

@@ -11,27 +11,27 @@ package classes.Scenes.Monsters
 		protected function goblinDrugAttack():void {
 			var temp2:Number = rand(2);
 			var multiplier:Number = 1; //Higher tier goblins have powerful potions.
-			if (short === "goblin assassin") multiplier += 0.2;
-			if (short === "goblin shaman") multiplier += 0.4;
-			if (short === "goblin warrior") multiplier += 0.5;
-			if (short === "goblin elder") multiplier += 1;
+			if (short == "goblin assassin") multiplier += 0.2;
+			if (short == "goblin shaman") multiplier += 0.4;
+			if (short == "goblin warrior") multiplier += 0.5;
+			if (short == "goblin elder") multiplier += 1;
 			multiplier += player.newGamePlusMod() * 0.5;
-			if (short === "Tamani") temp2 = rand(5);
-			if (short === "Tamani's daughters") temp2 = rand(5);
+			if (short == "Tamani") temp2 = rand(5);
+			if (short == "Tamani's daughters") temp2 = rand(5);
 			var color:String = "";
-			if (temp2 === 0) color = "red";
-			if (temp2 === 1) color = "green";
-			if (temp2 === 2) color = "blue";
-			if (temp2 === 3) color = "white";
-			if (temp2 === 4) color = "black";
+			if (temp2 == 0) color = "red";
+			if (temp2 == 1) color = "green";
+			if (temp2 == 2) color = "blue";
+			if (temp2 == 3) color = "white";
+			if (temp2 == 4) color = "black";
 			//Throw offensive potions at the player
-			if (color !== "blue") {
-				if (short === "Tamani's daughters") outputText("Tamani uncorks a glass bottle full of " + color + " fluid and swings her arm, flinging a wave of fluid at you.");
+			if (color != "blue") {
+				if (short == "Tamani's daughters") outputText("Tamani uncorks a glass bottle full of " + color + " fluid and swings her arm, flinging a wave of fluid at you.");
 				else outputText(capitalA + short + " uncorks a glass bottle full of " + color + " fluid and swings her arm, flinging a wave of fluid at you.");
 			}
 			//Drink blue pots
 			else {
-				if (short === "Tamani's daughters") {
+				if (short == "Tamani's daughters") {
 					outputText("Tamani pulls out a blue vial and uncaps it, then douses the mob with the contents.");
 					if (HPRatio() < 1) {
 						outputText("  Though less effective than ingesting it, the potion looks to have helped the goblins recover from their wounds!\n");
@@ -45,7 +45,7 @@ package classes.Scenes.Monsters
 					if (HPRatio() < 1) {
 						outputText("  She looks to have recovered from some of her wounds!\n");
 						addHP((maxHP() / 4) * multiplier);
-						if (short === "Tamani") addHP((maxHP() / 4) * multiplier);
+						if (short == "Tamani") addHP((maxHP() / 4) * multiplier);
 					}
 					else outputText("  There doesn't seem to be any effect.\n");
 					combatRoundOver();
@@ -58,22 +58,22 @@ package classes.Scenes.Monsters
 			}
 			else {
 				//Get hit!
-				if (color === "red") {
+				if (color == "red") {
 					//Temporary heat
 					outputText("\nThe red fluids hit you and instantly soak into your skin, disappearing.  Your skin flushes and you feel warm.  Oh no...\n");
 					if (!player.hasStatusEffect(StatusEffects.TemporaryHeat)) player.createStatusEffect(StatusEffects.TemporaryHeat, 0, multiplier, 0, 0);
 				}
-				else if (color === "green") {
+				else if (color == "green") {
 					//Green poison
 					outputText("\nThe greenish fluids splash over you, making you feel slimy and gross.  Nausea plagues you immediately - you have been poisoned!\n");
 					if (!player.hasStatusEffect(StatusEffects.Poison)) player.createStatusEffect(StatusEffects.Poison, 0, multiplier, 0, 0);
 				}
-				else if (color === "white") {
+				else if (color == "white") {
 					//sticky flee prevention
 					outputText("\nYou try to avoid it, but it splatters the ground around you with very sticky white fluid, making it difficult to run.  You'll have a hard time escaping now!\n");
 					if (!player.hasStatusEffect(StatusEffects.NoFlee)) player.createStatusEffect(StatusEffects.NoFlee, 0, 0, 0, 0);
 				}
-				else if (color === "black") {
+				else if (color == "black") {
 					//Increase fatigue
 					outputText("\nThe black fluid splashes all over you and wicks into your skin near-instantly.  It makes you feel tired and drowsy.\n");
 					player.changeFatigue(10 + rand(25) * multiplier);
@@ -84,31 +84,31 @@ package classes.Scenes.Monsters
 		}
 		protected function goblinTeaseAttack():void {
 			var det:Number = rand(3);
-			if (short === "goblin" || short === "goblin assassin") {
-				if (det === 0) outputText(capitalA + short + " runs her hands along her leather-clad body and blows you a kiss. \"<i>Why not walk on the wild side?</i>\" she asks.");
-				if (det === 1) outputText(capitalA + short + " grabs her heel and lifts it to her head in an amazing display of flexibility.  She caresses her snatch and gives you a come hither look.");
-				if (det === 2) outputText(capitalA + short + " bends over, putting on a show and jiggling her heart-shaped ass at you.  She looks over her shoulder and sucks on her finger, batting her eyelashes.");
+			if (short == "goblin" || short == "goblin assassin") {
+				if (det == 0) outputText(capitalA + short + " runs her hands along her leather-clad body and blows you a kiss. \"<i>Why not walk on the wild side?</i>\" she asks.");
+				if (det == 1) outputText(capitalA + short + " grabs her heel and lifts it to her head in an amazing display of flexibility.  She caresses her snatch and gives you a come hither look.");
+				if (det == 2) outputText(capitalA + short + " bends over, putting on a show and jiggling her heart-shaped ass at you.  She looks over her shoulder and sucks on her finger, batting her eyelashes.");
 			}
-			else if (short === "goblin warrior") {
-				if (det === 0) outputText(capitalA + short + " runs her hands along her metal-clad body and blows you a kiss. \"<i>Why not walk on the wild side?</i>\" she asks.");
-				if (det === 1) outputText(capitalA + short + " grabs her heel and lifts it to her head in an amazing display of flexibility despite the armor she's wearing.  She caresses her snatch and gives you a come hither look.");
-				if (det === 2) outputText(capitalA + short + " bends over, putting on a show and jiggling her heart-shaped ass at you.  She looks over her shoulder and sucks on her finger, batting her eyelashes.");
+			else if (short == "goblin warrior") {
+				if (det == 0) outputText(capitalA + short + " runs her hands along her metal-clad body and blows you a kiss. \"<i>Why not walk on the wild side?</i>\" she asks.");
+				if (det == 1) outputText(capitalA + short + " grabs her heel and lifts it to her head in an amazing display of flexibility despite the armor she's wearing.  She caresses her snatch and gives you a come hither look.");
+				if (det == 2) outputText(capitalA + short + " bends over, putting on a show and jiggling her heart-shaped ass at you.  She looks over her shoulder and sucks on her finger, batting her eyelashes.");
 			}
-			else if (short === "goblin shaman") {
-				if (det === 0) outputText(capitalA + short + " runs her hands along her leather-clad body and blows you a kiss. \"<i>Why not walk on the wild side?</i>\" she asks.");
-				if (det === 1) outputText(capitalA + short + " grabs her heel and lifts it to her head in an amazing display of flexibility.  She lifts her loincloth and caresses her snatch and gives you a come hither look.");
-				if (det === 2) outputText(capitalA + short + " bends over, putting on a show and jiggling her heart-shaped ass at you.  She looks over her shoulder and sucks on her finger, batting her eyelashes.");
+			else if (short == "goblin shaman") {
+				if (det == 0) outputText(capitalA + short + " runs her hands along her leather-clad body and blows you a kiss. \"<i>Why not walk on the wild side?</i>\" she asks.");
+				if (det == 1) outputText(capitalA + short + " grabs her heel and lifts it to her head in an amazing display of flexibility.  She lifts her loincloth and caresses her snatch and gives you a come hither look.");
+				if (det == 2) outputText(capitalA + short + " bends over, putting on a show and jiggling her heart-shaped ass at you.  She looks over her shoulder and sucks on her finger, batting her eyelashes.");
 			}
-			else if (short === "goblin elder") {
-				if (det === 0) outputText(capitalA + short + " runs her hands along her bone-clad body and blows you a kiss. \"<i>Why not walk on the wild side?</i>\" she asks.");
-				if (det === 1) outputText(capitalA + short + " grabs her heel and lifts it to her head in an amazing display of flexibility.  She lifts her loincloth and caresses her snatch and gives you a come hither look.");
-				if (det === 2) outputText(capitalA + short + " bends over, putting on a show and jiggling her heart-shaped ass at you.  She looks over her shoulder and sucks on her finger, batting her eyelashes.");
+			else if (short == "goblin elder") {
+				if (det == 0) outputText(capitalA + short + " runs her hands along her bone-clad body and blows you a kiss. \"<i>Why not walk on the wild side?</i>\" she asks.");
+				if (det == 1) outputText(capitalA + short + " grabs her heel and lifts it to her head in an amazing display of flexibility.  She lifts her loincloth and caresses her snatch and gives you a come hither look.");
+				if (det == 2) outputText(capitalA + short + " bends over, putting on a show and jiggling her heart-shaped ass at you.  She looks over her shoulder and sucks on her finger, batting her eyelashes.");
 			}
 			var lustDmg:int = rand(player.lib / 10) + 8;
-			if (short === "goblin assassin") lustDmg *= 1.4;
-			if (short === "goblin warrior") lustDmg *= 1.6;
-			if (short === "goblin shaman") lustDmg *= 1.6;
-			if (short === "goblin elder") lustDmg *= 2;
+			if (short == "goblin assassin") lustDmg *= 1.4;
+			if (short == "goblin warrior") lustDmg *= 1.6;
+			if (short == "goblin shaman") lustDmg *= 1.6;
+			if (short == "goblin elder") lustDmg *= 2;
 			outputText("  The display distracts you long enough to prevent you from taking advantage of her awkward pose, leaving you more than a little flushed.\n\n");
 			player.takeLustDamage(lustDmg, true);
 			combatRoundOver();
@@ -121,7 +121,7 @@ package classes.Scenes.Monsters
 
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
 		{
-			if (player.gender === 0 || flags[kFLAGS.SFW_MODE] > 0) {
+			if (player.gender == 0 || flags[kFLAGS.SFW_MODE] > 0) {
 				outputText("You collapse in front of the goblin, too wounded to fight.  She giggles and takes out a tube of lipstick smearing it whorishly on your face.  You pass into unconsciousness immediately.  It must have been drugged.");
 				game.combat.cleanupAfterCombat();
 			} else if (pcCameWorms) {
