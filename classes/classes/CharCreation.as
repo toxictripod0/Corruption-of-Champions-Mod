@@ -44,7 +44,7 @@
 
 		public function newGamePlus():void {
 				flags[kFLAGS.NEW_GAME_PLUS_BONUS_STORED_XP] = player.XP;
-			if (flags[kFLAGS.NEW_GAME_PLUS_BONUS_STORED_XP] == 0)
+			if (flags[kFLAGS.NEW_GAME_PLUS_BONUS_STORED_XP] === 0)
 				flags[kFLAGS.NEW_GAME_PLUS_BONUS_STORED_XP] = 1;
 			while (player.level > 1) {
 				flags[kFLAGS.NEW_GAME_PLUS_BONUS_STORED_XP] += player.level * 100;
@@ -69,15 +69,8 @@
 			mainView.hideMenuButton( MainView.MENU_LEVEL );
 			mainView.hideMenuButton( MainView.MENU_PERKS );
 			mainView.aCb.visible = false; //Hide perk boxes
-			//If first PC, track status of EZ mode and other such nonsense.
-			var silly:Boolean = flags[kFLAGS.SILLY_MODE_ENABLE_FLAG];
-			var easy:Boolean = flags[kFLAGS.EASY_MODE_ENABLE_FLAG];
-			var sprite:Boolean = flags[kFLAGS.SHOW_SPRITES_FLAG];
-			var prison:Boolean = flags[kFLAGS.PRISON_ENABLED];
 			mainView.setButtonText(0, "Newgame"); // b1Text.text = "Newgame";
-			//flags[kFLAGS.CUSTOM_PC_ENABLED] = 0;
 			var showSpecialNames:Boolean = true; // achievements[kACHIEVEMENTS.STORY_FINALBOSS] > 0;			
-
 			clearOutput();
 			outputText(images.showImage("location-ingnam"));
 			outputText("You grew up in the small village of Ingnam, a remote village with rich traditions, buried deep in the wilds.  Every year for as long as you can remember, your village has chosen a champion to send to the cursed Demon Realm.  Legend has it that in years Ingnam has failed to produce a champion, chaos has reigned over the countryside.  Children disappear, crops wilt, and disease spreads like wildfire.  This year, <b>you</b> have been selected to be the champion.\n\n");
@@ -109,7 +102,7 @@
 			//function _add(element:Array):void{preList.push({label: element[0], data:element});}
 			//if (CoC_Settings.debugBuild) preList.push( { label: "TestChar", data: [ "TestChar", customTestChar, true, "For debug." ]} );			
 			for (var t:int = 0; t < specialCharacters.customs.length; t++) preList.push( { label: specialCharacters.customs[t][0], data:specialCharacters.customs[t] } );
-			if (boxNames == null) {
+			if (boxNames === null) {
 				boxNames = new ComboBox(); 
 				boxNames.dropdownWidth = 200; 
 				boxNames.width = 200; 
@@ -122,7 +115,7 @@
 			boxNames.addEventListener(Event.CHANGE, selectName); 
 			boxNames.dataProvider = new DataProvider(preList);
 			if (showSpecialNames) boxNames.visible = true;
-			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) {
+			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] === 0) {
 				player.slotName = "VOID";
 				player.autoSave = false; //Reset autosave
 			}
@@ -133,9 +126,9 @@
 			kGAMECLASS.inRoomedDungeonResume = null;
 			//Hold onto old data for NG+
 			var oldPlayer:Player = player;
-			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) player = new Player(); //Reset all standard stats
+			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] === 0) player = new Player(); //Reset all standard stats
 			model.player = player;
-			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) {
+			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] === 0) {
 				player.str = 15;
 				player.tou = 15;
 				player.spe = 15;
@@ -148,9 +141,9 @@
 			player.obey = 10;
 			player.esteem = 50;
 			player.will = 80;
-			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) getGame().saves.notes = "No Notes Available.";
+			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] === 0) getGame().saves.notes = "No Notes Available.";
 			player.lust = 15;
-			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) {
+			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] === 0) {
 				player.XP = flags[kFLAGS.NEW_GAME_PLUS_BONUS_STORED_XP];
 				player.level = 1;
 				player.gems = flags[kFLAGS.NEW_GAME_PLUS_BONUS_STORED_ITEMS];
@@ -165,16 +158,16 @@
 			player.lowerBody.legCount = 2;
 			player.face.type= Face.HUMAN;
 			player.eyes.count = 2;
-			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) player.tail.type = Tail.NONE;
+			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] === 0) player.tail.type = Tail.NONE;
 			player.tongue.type = Tongue.HUMAN;
-			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) player.femininity = 50;
+			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] === 0) player.femininity = 50;
 			player.beard.length = 0;
 			player.beard.style = 0;
 			player.tone = 50;
 			player.thickness = 50;
 			player.skin.desc = "skin";
 			player.skin.adj = "";
-			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) {
+			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] === 0) {
 				player.balls = 0;
 				player.ballSize = 0;
 			}
@@ -185,7 +178,7 @@
 			player.ass.fullness = 0;
 			player.fertility = 5;
 			player.fatigue = 0;
-			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) {
+			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] === 0) {
 				player.horns.value = 0;
 				player.tallness = 60;
 				player.tail.venom = 0;
@@ -193,13 +186,13 @@
 
 			}
 			else {
-				if (!(player.tail.type == Tail.FOX || player.tail.type == Tail.SPIDER_ABDOMEN || player.tail.type == Tail.BEE_ABDOMEN || player.tail.type == Tail.SCORPION)) {
+				if (!(player.tail.type === Tail.FOX || player.tail.type === Tail.SPIDER_ABDOMEN || player.tail.type === Tail.BEE_ABDOMEN || player.tail.type === Tail.SCORPION)) {
 					player.tail.venom = 0;
 					player.tail.recharge = 0;
 				}
 			}
 			player.wings.type = Wings.NONE;
-			if (player.eyes.type == Eyes.BASILISK) player.eyes.type = Eyes.LIZARD; //Silently change them to be lizard eyes again. Simple and stupid ;)
+			if (player.eyes.type === Eyes.BASILISK) player.eyes.type = Eyes.LIZARD; //Silently change them to be lizard eyes again. Simple and stupid ;)
 			//Default
 			player.skin.tone = "light";
 			player.claws.tone = "";
@@ -208,7 +201,7 @@
 			player.beard.length = 0;
 			player.beard.style = 0;
 			//Exploration
-			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) {
+			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] === 0) {
 				//Inventory clear
 				player.itemSlot1.unlocked = true;
 				player.itemSlot1.emptySlot();
@@ -245,9 +238,9 @@
 			//Lets get this bitch started
 			kGAMECLASS.inCombat = false;
 			kGAMECLASS.inDungeon = false;
-			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) {
+			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] === 0) {
 				//NG+ Clothes reset
-				if (flags[kFLAGS.NEW_GAME_PLUS_BONUS_STORED_ITEMS] != 0) {
+				if (flags[kFLAGS.NEW_GAME_PLUS_BONUS_STORED_ITEMS] !== 0) {
 					flags[kFLAGS.RAPHAEL_RAPIER_TRANING] = 0; //Clear Raphael's training variable so it does not effect
 					if (!(oldPlayer.armor is GooArmor))
 						 player.setArmor(oldPlayer.armor);
@@ -355,7 +348,7 @@
 				flags[kFLAGS.HARDCORE_SLOT] = hardcoreSlot;
 				flags[kFLAGS.MRAPIER_BOUGHT] = mrapierBought;
 				if (player.findPerk(PerkLib.Misdirection) > 0) flags[kFLAGS.RAPHAEL_INTELLIGENCE_TRAINING];
-				if (player.findPerk(PerkLib.RapierTraining) > 0) flags[kFLAGS.RAPHAEL_RAPIER_TRANING] == 4;
+				if (player.findPerk(PerkLib.RapierTraining) > 0) flags[kFLAGS.RAPHAEL_RAPIER_TRANING] === 4;
 			}
 			//Time reset
 			model.time.days = 0;
@@ -364,11 +357,11 @@
 		}
 
 		private function chooseName():void {
-			if (mainView.nameBox.text == "") {
+			if (mainView.nameBox.text === "") {
 				//If part of newgame+, don't fully wipe. / Isn't this redundant? This is covered in `newGameGo`.
 				if (player.XP > 0) {
 					flags[kFLAGS.NEW_GAME_PLUS_BONUS_STORED_XP] = player.XP;
-					if (flags[kFLAGS.NEW_GAME_PLUS_BONUS_STORED_XP] == 0)
+					if (flags[kFLAGS.NEW_GAME_PLUS_BONUS_STORED_XP] === 0)
 						flags[kFLAGS.NEW_GAME_PLUS_BONUS_STORED_XP] = 1;
 					while (player.level > 1) {
 						flags[kFLAGS.NEW_GAME_PLUS_BONUS_STORED_XP] += player.level * 100;
@@ -382,7 +375,7 @@
 				return;
 			}
 			clearOutput();
-			if (boxNames != null) boxNames.visible = false;
+			if (boxNames !== null) boxNames.visible = false;
 			mainView.nameBox.visible = false;
 			player.short = mainView.nameBox.text;
 			if (flags[kFLAGS.LETHICE_DEFEATED] > 0) { //Dirty checking as the NG+ flag is incremented after reincarnating.
@@ -393,7 +386,7 @@
 			}
 			customPlayerProfile = customName(mainView.nameBox.text);
 			menu();
-			if (customPlayerProfile != null) {
+			if (customPlayerProfile !== null) {
 				outputText(images.showImage("event-question"));
 				outputText("This name, like you, is special.  Do you live up to your name or continue on, assuming it to be coincidence?");
 				addButton(0, "SpecialName", useCustomProfile);
@@ -417,7 +410,7 @@
 
 		private function useCustomProfile():void {
 			clearOutput();
-			if (specialName(player.short) != null) {
+			if (specialName(player.short) !== null) {
 				outputText("Your name defines everything about you, and as such, it is time to wake...\n\n");
 				flags[kFLAGS.HISTORY_PERK_SELECTED] = 1;
 				completeCharacterCreation(); //Skip character creation, customPlayerProfile will be called in completeCharacterCreation
@@ -452,21 +445,21 @@
 		//Determines if has character creation bonuses
 		internal function customName(arg:String):Function {
 			for (var i:int = 0; i < specialCharacters.customs.length; i++)
-				if (specialCharacters.customs[i][0] == arg && !specialCharacters.customs[i][2])
+				if (specialCharacters.customs[i][0] === arg && !specialCharacters.customs[i][2])
 					return specialCharacters.customs[i][1];
 			return specialName(arg); //Must check against the special name list as well
 		}
 		//Does PC skip creation?
 		private function specialName(arg:String):Function {
 			for (var i:int = 0; i < specialCharacters.customs.length; i++)
-				if (specialCharacters.customs[i][0] == arg && specialCharacters.customs[i][2])
+				if (specialCharacters.customs[i][0] === arg && specialCharacters.customs[i][2])
 					return specialCharacters.customs[i][1];
 			return null;
 		}
 
 		private function isAMan():void {
 			//Attributes
-			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) {
+			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] === 0) {
 				player.str += 3;
 				player.tou += 2;
 			}
@@ -498,7 +491,7 @@
 
 		internal function isAWoman():void {
 			//Attributes
-			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) {
+			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] === 0) {
 				player.spe += 3;
 				player.inte += 2;
 			}
@@ -526,7 +519,7 @@
 
 		internal function isAHerm():void {
 			//Attributes
-			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) {
+			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] === 0) {
 				player.str+=1;
 				player.tou+=1;
 				player.spe+=1;
@@ -719,7 +712,7 @@
 			menu();
 			addButton(0, "Complexion", menuSkinComplexion);
 			addButton(1, "Hair Color", menuHairColor);
-			if (player.mf("m", "f") == "m") {
+			if (player.mf("m", "f") === "m") {
 				if (player.hasBeard()) outputText("Beard: " + player.beardDescript() + "\n");
 				addButton(2, "Beard Style", menuBeardSettings);
 			}
@@ -817,10 +810,10 @@
 			mainView.nameBox.visible = true;
 			mainView.nameBox.maxChars = 2;
 			mainView.nameBox.restrict = "0-9";
-			if (player.gender == 0) mainView.nameBox.text = "69";
-			if (player.gender == 1) mainView.nameBox.text = "71";
-			if (player.gender == 2) mainView.nameBox.text = "67";
-			if (player.gender == 3) mainView.nameBox.text = "69";
+			if (player.gender === 0) mainView.nameBox.text = "69";
+			if (player.gender === 1) mainView.nameBox.text = "71";
+			if (player.gender === 2) mainView.nameBox.text = "67";
+			if (player.gender === 3) mainView.nameBox.text = "69";
 			menu();
 			addButton(0, "OK", confirmHeight);
 			addButton(4, "Back", genericStyleCustomizeMenu);
@@ -841,7 +834,7 @@
 				doNext(setHeight); //Off to the height selection!
 				return;
 			}
-			if (mainView.nameBox.text == "") {
+			if (mainView.nameBox.text === "") {
 				clearOutput();
 				outputText("Please input your height. Off you go to the height selection!");
 				doNext(setHeight); //Off to the height selection!
@@ -943,6 +936,7 @@
 				case PerkLib.BigClit: outputText("Do you have a big clit?  (1\" Long)\n\nA large enough clit may eventually become as large as a cock.  It also makes you gain lust much faster during oral or manual stimulation."); break;
 				case PerkLib.Fertile: outputText("Is your family particularly fertile?  (+15% Fertility)\n\nA high fertility will cause you to become pregnant much more easily.  Pregnancy may result in: Strange children, larger bust, larger hips, a bigger ass, and other weirdness."); break;
 				case PerkLib.WetPussy: outputText("Does your pussy get particularly wet?  (+1 Vaginal Wetness)\n\nVaginal wetness will make it easier to take larger cocks, in turn helping you bring the well-endowed to orgasm quicker."); break;
+				default: outputText("Something broke!");
 			}
 			menu();
 			addButton(0, "Yes", setEndowment, choice);
@@ -1020,6 +1014,8 @@
 					player.vaginas[0].vaginalWetness = VaginaClass.WETNESS_WET;
 					player.createPerk(PerkLib.WetPussy, 2, 0, 0, 0);
 					break;
+				default:
+					//Move along, nothing happens in this defaultness.
 			}
 			chooseHistory();
 		}
@@ -1027,7 +1023,7 @@
 		public function chooseHistory():void {
 			clearOutput();
 			outputText(images.showImage("event-question"));
-			if (flags[kFLAGS.HISTORY_PERK_SELECTED] != 0) //This flag can only be non-zero if chooseHistory is called from camp.as
+			if (flags[kFLAGS.HISTORY_PERK_SELECTED] !== 0) //This flag can only be non-zero if chooseHistory is called from camp.as
 				outputText("<b>New history perks are available during creation.  Since this character was created before they were available, you may choose one now!</b>\n\n");
 			outputText("Before you became a champion, you had other plans for your life.  What were you doing before?");
 			menu();
@@ -1069,16 +1065,16 @@
 
 		private function setHistory(choice:PerkType):void {
 			player.createPerk(choice, 0, 0, 0, 0);
-			if (choice == PerkLib.HistorySlut || choice == PerkLib.HistoryWhore) {
+			if (choice === PerkLib.HistorySlut || choice === PerkLib.HistoryWhore) {
 				if (player.hasVagina()) {
 					player.vaginas[0].virgin = false;
 					player.vaginas[0].vaginalLooseness = VaginaClass.LOOSENESS_LOOSE;
 				}
 				player.ass.analLooseness = 1;
 			}
-			if (choice == PerkLib.HistoryFighter || choice == PerkLib.HistoryWhore) player.gems += 50;
-			if (choice == PerkLib.HistoryFortune) player.gems += 250;
-			if (flags[kFLAGS.HISTORY_PERK_SELECTED] == 0) {
+			if (choice === PerkLib.HistoryFighter || choice === PerkLib.HistoryWhore) player.gems += 50;
+			if (choice === PerkLib.HistoryFortune) player.gems += 250;
+			if (flags[kFLAGS.HISTORY_PERK_SELECTED] === 0) {
 				flags[kFLAGS.HISTORY_PERK_SELECTED] = 1;
 				completeCharacterCreation();
 			}
@@ -1090,13 +1086,13 @@
 
 		private function completeCharacterCreation():void {
 			clearOutput();
-			if (customPlayerProfile != null) {
+			if (customPlayerProfile !== null) {
 				customPlayerProfile();
-				if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) doNext(chooseGameModes);
+				if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] === 0) doNext(chooseGameModes);
 				else doNext(startTheGame);
 				return;
 			}
-			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) chooseGameModes();
+			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] === 0) chooseGameModes();
 			else startTheGame();
 		}
 
@@ -1117,7 +1113,7 @@
 			outputText(images.showImage("camp-arrival"));
 			outputText("The entrance of the cave gapes open, sharp stalactites hanging over the entrance, giving it the appearance of a monstrous mouth.  Elder Nomur stops and nods to you, gesturing for you to proceed alone.\n\n");
 			outputText("The cave is unusually warm and damp, ");
-			if (player.gender == Gender.FEMALE) outputText("and your body seems to feel the same way, flushing as you feel a warmth and dampness between your thighs. ");
+			if (player.gender === Gender.FEMALE) outputText("and your body seems to feel the same way, flushing as you feel a warmth and dampness between your thighs. ");
 			else outputText("and your body reacts with a sense of growing warmth focusing in your groin, your manhood hardening for no apparent reason. ");
 			outputText("You were warned of this and press forward, ignoring your body's growing needs.  A glowing purple-pink portal swirls and flares with demonic light along the back wall.  Cringing, you press forward, keenly aware that your body seems to be anticipating coming in contact with the tainted magical construct.  Closing your eyes, you gather your resolve and leap forwards.  Vertigo overwhelms you and you black out...");
 			dynStats("lus", 15);
@@ -1130,7 +1126,7 @@
 			model.time.hours = 18;
 			outputText(images.showImage("zetaz-encounter-first"));
 			outputText("You wake with a splitting headache and a body full of burning desire.  A shadow darkens your view momentarily and your training kicks in.  You roll to the side across the bare ground and leap to your feet.  A surprised looking imp stands a few feet away, holding an empty vial.  He's completely naked, an improbably sized pulsing red cock hanging between his spindly legs.  You flush with desire as a wave of lust washes over you, your mind reeling as you fight ");
-			if (player.gender == Gender.FEMALE) outputText("the urge to chase down his rod and impale yourself on it.\n\n");
+			if (player.gender === Gender.FEMALE) outputText("the urge to chase down his rod and impale yourself on it.\n\n");
 			else outputText("the urge to ram your cock down his throat.  The strangeness of the thought surprises you.\n\n");
 			outputText("The imp says, \"<i>I'm amazed you aren't already chasing down my cock, human.  The last Champion was an eager whore for me by the time she woke up.  This lust draft made sure of it.</i>\"");
 			doNext(arrivalPartThree);
@@ -1179,7 +1175,7 @@
 		}
 
 		private function chooseModeHardcore():void {
-			if (flags[kFLAGS.HARDCORE_MODE] == 0) flags[kFLAGS.HARDCORE_MODE] = 1;
+			if (flags[kFLAGS.HARDCORE_MODE] === 0) flags[kFLAGS.HARDCORE_MODE] = 1;
 			else flags[kFLAGS.HARDCORE_MODE] = 0;
 			chooseGameModes();
 		}
@@ -1203,7 +1199,7 @@
 			flags[kFLAGS.GRIMDARK_MODE] = 1;
 			flags[kFLAGS.HUNGER_ENABLED] = 1;
 			flags[kFLAGS.GAME_DIFFICULTY] = 3;
-			if (flags[kFLAGS.GRIMDARK_BACKGROUND_UNLOCKED] == 0) flags[kFLAGS.BACKGROUND_STYLE] = 9;
+			if (flags[kFLAGS.GRIMDARK_BACKGROUND_UNLOCKED] === 0) flags[kFLAGS.BACKGROUND_STYLE] = 9;
 			player.hunger = 80;
 			doNext(startTheGame);
 		}
@@ -1212,19 +1208,19 @@
 			clearOutput();
 			outputText("Choose a game mode.\n\n");
 			outputText("<b>Survival:</b> ");
-			if (flags[kFLAGS.HUNGER_ENABLED] == 0) outputText("Normal Mode. You don't have to eat.\n");
-			if (flags[kFLAGS.HUNGER_ENABLED] == 0.5) outputText("Survival Mode. You get hungry from time to time.\n");
-			if (flags[kFLAGS.HUNGER_ENABLED] == 1) outputText("Realistic Mode. You get hungry from time to time and cum production is capped. In addition, it's a bad idea to have oversized parts.\n");
+			if (flags[kFLAGS.HUNGER_ENABLED] === 0) outputText("Normal Mode. You don't have to eat.\n");
+			if (flags[kFLAGS.HUNGER_ENABLED] === 0.5) outputText("Survival Mode. You get hungry from time to time.\n");
+			if (flags[kFLAGS.HUNGER_ENABLED] === 1) outputText("Realistic Mode. You get hungry from time to time and cum production is capped. In addition, it's a bad idea to have oversized parts.\n");
 
 			outputText("<b>Hardcore:</b> ");
-			if (flags[kFLAGS.HARDCORE_MODE] == 0) outputText("Normal Mode. You choose when you want to save and load.\n");
-			if (flags[kFLAGS.HARDCORE_MODE] == 1)
+			if (flags[kFLAGS.HARDCORE_MODE] === 0) outputText("Normal Mode. You choose when you want to save and load.\n");
+			if (flags[kFLAGS.HARDCORE_MODE] === 1)
 				outputText("Hardcore Mode. The game forces save and if you get a Bad End, your save file is deleted. Disables difficulty selection, debug mode, Low Standarts and Hyper Happy mode once the game is started. For the veteran CoC players only.\n");
 			outputText("<b>Difficulty:</b> ");
-			if (flags[kFLAGS.GAME_DIFFICULTY] == 0) outputText("Normal Mode. No stats changes. Game is nice and simple.\n");
-			if (flags[kFLAGS.GAME_DIFFICULTY] == 1) outputText("Hard Mode. Enemies have would have extra 25% HP and 15% damage.\n");
-			if (flags[kFLAGS.GAME_DIFFICULTY] == 2) outputText("Nightmare Mode. Enemies would have extra 50% HP and 30% damage.\n");
-			if (flags[kFLAGS.GAME_DIFFICULTY] == 3) outputText("Extreme Mode. Enemies would have extra 100% HP and 50% damage.\n");
+			if (flags[kFLAGS.GAME_DIFFICULTY] === 0) outputText("Normal Mode. No stats changes. Game is nice and simple.\n");
+			if (flags[kFLAGS.GAME_DIFFICULTY] === 1) outputText("Hard Mode. Enemies have would have extra 25% HP and 15% damage.\n");
+			if (flags[kFLAGS.GAME_DIFFICULTY] === 2) outputText("Nightmare Mode. Enemies would have extra 50% HP and 30% damage.\n");
+			if (flags[kFLAGS.GAME_DIFFICULTY] === 3) outputText("Extreme Mode. Enemies would have extra 100% HP and 50% damage.\n");
 			if (debug)
 				outputText("<b>Grimdark mode:</b> (In dev) In the grimdark future, there are only rape and corruptions. Lots of things are changed and Lethice has sent out her minions to wall the borders and put up a lot of puzzles. Can you defeat her in this mode in as few bad ends as possible?\n");
 			menu();
@@ -1233,7 +1229,7 @@
 			addButton(2, "Difficulty", chooseModeDifficulty);
 			if (debug)
 				addButton(3, "Grimdark", chooseModeGrimdark);
-			addButton(4, "Start!", flags[kFLAGS.HARDCORE_MODE] == 1 ? chooseModeHardcoreSlot : startTheGame);
+			addButton(4, "Start!", flags[kFLAGS.HARDCORE_MODE] === 1 ? chooseModeHardcoreSlot : startTheGame);
 		}
 
 		private function startTheGame():void {
@@ -1248,7 +1244,7 @@
 		}
 
 		public function chooseToPlay():void {
-			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) {
+			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] === 0) {
 				if (player.femininity >= 55) player.setUndergarment(undergarments.C_PANTY);
 				else player.setUndergarment(undergarments.C_LOIN);
 				if (player.biggestTitSize() >= 2) player.setUndergarment(undergarments.C_BRA);
@@ -1340,14 +1336,14 @@
 					if (countBeforeAdding > 0) //Decrement count before adding buttons
 						countBeforeAdding--;
 					else { //Add buttons when the count reaches zero
-						if (player.perks[i].value4 == 0)
+						if (player.perks[i].value4 === 0)
 							 addButton(button++, player.perks[i].ptype.id, permanentizePerk, player.perks[i].ptype, null, null, player.perks[i].ptype.desc(player.perks[i]));
 						else addButtonDisabled(button++, player.perks[i].ptype.id, "This perk is already made permanent and will carry over in all subsequent ascensions.");
 					}
 				}
 				//Skip slots reserved for next and previous
-				if (button == 4) button++;
-				if (button == 9) button++;
+				if (button === 4) button++;
+				if (button === 9) button++;
 			}
 			//Next and previous page buttons depending on conditions
 			if (button >= 14) addButton(4, "Next", ascensionPermeryMenu, page + 1);
@@ -1369,7 +1365,7 @@
 			return count;
 		}
 		private function isPermable(perk:PerkType):Boolean {
-			return PerkLists.PERMEABLE.indexOf(perk) != -1;
+			return PerkLists.PERMEABLE.indexOf(perk) !== -1;
 		}
 		//Respec
 		private function respecLevelPerks():void {
@@ -1379,7 +1375,7 @@
 				doNext(ascensionMenu);
 				return;
 			}
-			if (player.perkPoints == player.level - 1) {
+			if (player.perkPoints === player.level - 1) {
 				outputText("There is no need to respec as you've already resetted your level-up perks.");
 				doNext(ascensionMenu);
 				return;
@@ -1470,7 +1466,7 @@
 			return (keyName === "Camp - Chest" || keyName === "Camp - Murky Chest" || keyName === "Camp - Ornate Chest" || keyName === "Equipment Rack - Weapons" || keyName === "Equipment Rack - Armor" || keyName === "Equipment Rack - Shields" || keyName === Inventory.STORAGE_JEWELRY_BOX || keyName === "Backpack" || keyName === "Nieve's Tear"); 
 		}
 		private function isSpell(statusEffect:* = null):Boolean {
-			return (statusEffect == StatusEffects.KnowsCharge || statusEffect == StatusEffects.KnowsBlind || statusEffect == StatusEffects.KnowsWhitefire || statusEffect == StatusEffects.KnowsArouse || statusEffect == StatusEffects.KnowsHeal || statusEffect == StatusEffects.KnowsMight || statusEffect == StatusEffects.KnowsBlackfire); 
+			return (statusEffect === StatusEffects.KnowsCharge || statusEffect === StatusEffects.KnowsBlind || statusEffect === StatusEffects.KnowsWhitefire || statusEffect === StatusEffects.KnowsArouse || statusEffect === StatusEffects.KnowsHeal || statusEffect === StatusEffects.KnowsMight || statusEffect === StatusEffects.KnowsBlackfire); 
 		}
 	}
 }

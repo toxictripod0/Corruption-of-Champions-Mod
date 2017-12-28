@@ -75,13 +75,13 @@ package classes.Items
 									message += "\n\nYour gooey claws melt into your fingers."
 									          +" Well, who cares, gooey claws aren't very useful in combat to begin with.";
 								break;
-
 							case Skin.PLAIN:
 							case Skin.FUR:
 							case Skin.LIZARD_SCALES:
 								message += "\n\nYou feel a sudden tingle in your [claws] and then you realize,"
 								          +" that they have become normal human fingernails again.";
 								break;
+							default: //Move along
 						}
 						break;
 
@@ -338,9 +338,8 @@ package classes.Items
 				case 2: return ["white", "light gray"];
 				case 3: return ["blue", "ocean blue"];
 				case 4: return ["black", "dark gray"];
+				default: return ["invalid", "invalid"]; // Will never happen. Suppresses 'Error: Function does not return a value.' 
 			}
-
-			return ["invalid", "invalid"]; // Will never happen. Suppresses 'Error: Function does not return a value.'
 		}
 
 		public function newCockatriceColors():Array

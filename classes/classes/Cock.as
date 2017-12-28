@@ -43,7 +43,7 @@ package classes
 		//constructor. Default type is HUMAN
 		public function Cock(i_cockLength:Number = 5.5, i_cockThickness:Number = 1, i_cockType:CockTypesEnum=null)
 		{
-			if (i_cockType == null) i_cockType = CockTypesEnum.HUMAN;
+			if (i_cockType === null) i_cockType = CockTypesEnum.HUMAN;
 			_cockLength = i_cockLength;
 			_cockThickness = i_cockThickness;
 			_cockType = i_cockType;
@@ -65,7 +65,7 @@ package classes
 		public function growCock(lengthDelta:Number, bigCock:Boolean):Number
 		{
 			
-			if (lengthDelta == 0) {
+			if (lengthDelta === 0) {
 				//trace("Whoops! growCock called with 0, aborting...");
 				return lengthDelta;
 			}
@@ -85,14 +85,14 @@ package classes
 					threshhold += 12;
 				}
 				// Not a human cock? Multiple the length before dimishing returns set in by 3
-				if (cockType != CockTypesEnum.HUMAN)
+				if (cockType !== CockTypesEnum.HUMAN)
 					threshhold *= 2;
 				// Modify growth for cock socks
-				if (sock == "scarlet") {
+				if (sock === "scarlet") {
 					//trace("growCock found Scarlet sock");
 					lengthDelta *= 1.5;
 				}
-				else if (sock == "cobalt") {
+				else if (sock === "cobalt") {
 					//trace("growCock found Cobalt sock");
 					lengthDelta *= .5;
 				}
@@ -113,14 +113,14 @@ package classes
 					threshhold += 12;
 				}
 				// Not a human cock? Add 12 to the length before dimishing returns set in
-				if (cockType != CockTypesEnum.HUMAN)
+				if (cockType !== CockTypesEnum.HUMAN)
 					threshhold += 12;
 				// Modify growth for cock socks
-				if (sock == "scarlet") {
+				if (sock === "scarlet") {
 					//trace("growCock found Scarlet sock");
 					lengthDelta *= 0.5;
 				}
-				else if (sock == "cobalt") {
+				else if (sock === "cobalt") {
 					//trace("growCock found Cobalt sock");
 					lengthDelta *= 1.5;
 				}

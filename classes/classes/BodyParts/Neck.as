@@ -48,9 +48,9 @@ package classes.BodyParts
 
 		public function modify(diff:Number, newType:Number = -1):void
 		{
-			if (newType != -1) type = newType;
+			if (newType !== -1) type = newType;
 
-			if (_nlMax[type] == undefined) { // Restore length and pos, if the type is not associated with a certain max length
+			if (_nlMax[type] === undefined) { // Restore length and pos, if the type is not associated with a certain max length
 				pos = false;
 				len = 2;
 				return;
@@ -68,12 +68,12 @@ package classes.BodyParts
 
 		override public function canDye():Boolean
 		{
-			return type == COCKATRICE;
+			return type === COCKATRICE;
 		}
 
 		override public function hasDyeColor(_color:String):Boolean
 		{
-			return color == _color;
+			return color === _color;
 		}
 
 		override public function applyDye(_color:String):void

@@ -1097,15 +1097,13 @@ package classes
 				case 'inte':
 					return (createOrFindStatusEffect(StatusEffects.GenericCombatInteBuff)
 							as CombatInteBuff).applyEffect(buff);
+				default:
+					CoC_Settings.error("/!\\ ERROR: addCombatBuff('"+stat+"', "+buff+")");
+					return 0;
 			}
-			CoC_Settings.error("/!\\ ERROR: addCombatBuff('"+stat+"', "+buff+")");
-			return 0;
 		}
-		/*
 		
-		[    ? ? ?    ]
-		
-		*/
+		/* [    ? ? ?    ] */
 		public function biggestTitSize():Number
 		{
 			if (breastRows.length == 0)
@@ -2893,7 +2891,7 @@ package classes
 				case Claws.LIZARD: return "short curved" + toneText + "claws";
 				case Claws.DRAGON: return "powerful, thick curved" + toneText + "claws";
 				case Claws.IMP:    return "long" + toneText + "claws";
-				// Since mander and cockatrice arms are hardcoded and the others are NYI, we're done here for now
+				default: // Since mander and cockatrice arms are hardcoded and the others are NYI, we're done here for now
 			}
 			return "fingernails";
 		}

@@ -46,12 +46,12 @@ package classes.BodyParts
 
 		override public function canDye():Boolean
 		{
-			return [HARPY, FEATHERED_LARGE].indexOf(type) != -1;
+			return [HARPY, FEATHERED_LARGE].indexOf(type) !== -1;
 		}
 
 		override public function hasDyeColor(_color:String):Boolean
 		{
-			return color == _color;
+			return color === _color;
 		}
 
 		override public function applyDye(_color:String):void

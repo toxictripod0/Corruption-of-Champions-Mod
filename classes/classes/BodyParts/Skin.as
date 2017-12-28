@@ -35,7 +35,7 @@ package classes.BodyParts
 		{
 			var skinzilla:String = "";
 			//Adjectives first!
-			if (adj != "")
+			if (adj !== "")
 				skinzilla += adj + ", ";
 
 			//Fur handled a little differently since it uses haircolor
@@ -49,7 +49,7 @@ package classes.BodyParts
 			var skinzilla:String = "";
 
 			//Adjectives first!
-			if (!noAdj && adj != "" && !noTone && tone != "rough gray")
+			if (!noAdj && adj !== "" && !noTone && tone !== "rough gray")
 				skinzilla += adj + ", ";
 			if (!noTone)
 				skinzilla += tone + " ";
@@ -62,27 +62,27 @@ package classes.BodyParts
 
 		public function hasFur():Boolean
 		{
-			return type == FUR;
+			return type === FUR;
 		}
 
 		public function hasWool():Boolean
 		{
-			return type == WOOL;
+			return type === WOOL;
 		}
 
 		public function hasFeathers():Boolean
 		{
-			return  type == FEATHERED;
+			return  type === FEATHERED;
 		}
 
 		public function isFurry():Boolean
 		{
-			return [FUR, WOOL].indexOf(type) != -1;
+			return [FUR, WOOL].indexOf(type) !== -1;
 		}
 
 		public function isFluffy():Boolean
 		{
-			return [FUR, WOOL, FEATHERED].indexOf(type) != -1;
+			return [FUR, WOOL, FEATHERED].indexOf(type) !== -1;
 		}
 
 		public function restore(keepTone:Boolean = true):void

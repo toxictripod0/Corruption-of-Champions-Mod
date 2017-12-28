@@ -10,7 +10,7 @@ package classes.Scenes.Dungeons  {
 	import coc.view.MainView;
 
 	public class DungeonCore extends BaseContent {
-		public var rooms:Object = {};
+		public var rooms:Array = [];
 		public var _currentRoom:String; //I don't think we'll need to save/load this, as we're not gonna allow saving in the dungeon, and it'll be overwritten by calling enterD3();
 //		Dungeon constants
 		//Factory
@@ -100,91 +100,91 @@ package classes.Scenes.Dungeons  {
 
 		public function checkRoom():void {
 			//Cabin
-			if (kGAMECLASS.dungeonLoc == -10) cabin.enterCabin();
+			if (kGAMECLASS.dungeonLoc === -10) cabin.enterCabin();
 			//Factory
-			if (kGAMECLASS.dungeonLoc == DUNGEON_FACTORY_FOYER) factory.roomLobby();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_FACTORY_BREAK_ROOM) factory.roomBreakRoom();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_FACTORY_PUMP_ROOM) factory.roomPumpRoom();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_FACTORY_FURNACE_ROOM) factory.roomFurnaceRoom();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_FACTORY_REPAIR_CLOSET) factory.roomRepairCloset();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_FACTORY_MAIN_CHAMBER) factory.roomMainChamber();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_FACTORY_FOREMANS_OFFICE) factory.roomForemanOffice();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_FACTORY_PUMP_CONTROL) factory.roomControlRoom();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_FACTORY_STORE_ROOM) factory.roomPremiumStorage();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_FACTORY_BATHROOM) factory.roomBathroom();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_FACTORY_FOYER) factory.roomLobby();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_FACTORY_BREAK_ROOM) factory.roomBreakRoom();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_FACTORY_PUMP_ROOM) factory.roomPumpRoom();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_FACTORY_FURNACE_ROOM) factory.roomFurnaceRoom();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_FACTORY_REPAIR_CLOSET) factory.roomRepairCloset();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_FACTORY_MAIN_CHAMBER) factory.roomMainChamber();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_FACTORY_FOREMANS_OFFICE) factory.roomForemanOffice();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_FACTORY_PUMP_CONTROL) factory.roomControlRoom();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_FACTORY_STORE_ROOM) factory.roomPremiumStorage();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_FACTORY_BATHROOM) factory.roomBathroom();
 			//Deep Cave
-			if (kGAMECLASS.dungeonLoc == DUNGEON_CAVE_ENTRANCE) deepcave.roomEntrance();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_CAVE_TUNNEL) deepcave.roomTunnel();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_CAVE_GATHERING_HALL) deepcave.roomGatheringHall();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_CAVE_FUNGUS_CAVERN) deepcave.roomFungusCavern();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_CAVE_TORTURE_ROOM) deepcave.roomTortureRoom();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_CAVE_SECRET_TUNNEL) deepcave.roomSecretPassage();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_CAVE_ZETAZ_CHAMBER) deepcave.roomZetazChamber();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_CAVE_ENTRANCE) deepcave.roomEntrance();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_CAVE_TUNNEL) deepcave.roomTunnel();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_CAVE_GATHERING_HALL) deepcave.roomGatheringHall();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_CAVE_FUNGUS_CAVERN) deepcave.roomFungusCavern();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_CAVE_TORTURE_ROOM) deepcave.roomTortureRoom();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_CAVE_SECRET_TUNNEL) deepcave.roomSecretPassage();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_CAVE_ZETAZ_CHAMBER) deepcave.roomZetazChamber();
 			//Tower of the Phoenix (Helia's Quest)
-			if (kGAMECLASS.dungeonLoc == DUNGEON_HEL_GUARD_HALL) heltower.roomGuardHall();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_HEL_WINE_CELLAR) heltower.roomCellar();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_HEL_STAIR_WELL) heltower.roomStairwell();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_HEL_DUNGEON) heltower.roomDungeon();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_HEL_MEZZANINE) heltower.roomMezzanine();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_HEL_THRONE_ROOM) heltower.roomThroneRoom();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_HEL_GUARD_HALL) heltower.roomGuardHall();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_HEL_WINE_CELLAR) heltower.roomCellar();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_HEL_STAIR_WELL) heltower.roomStairwell();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_HEL_DUNGEON) heltower.roomDungeon();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_HEL_MEZZANINE) heltower.roomMezzanine();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_HEL_THRONE_ROOM) heltower.roomThroneRoom();
 			//Desert Cave
-			if (kGAMECLASS.dungeonLoc == DUNGEON_WITCH_ENTRANCE_GATEWAY) desertcave.roomEntrance();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_WITCH_CAVERNOUS_COMMONS) desertcave.roomCaveCommons();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_WITCH_WEST_WARRENS_MAIN) desertcave.roomWestHall1();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_WITCH_CHILDRENS_PLAYROOM) desertcave.roomPlayRoom();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_WITCH_PREGNANT_LUST_ROOM) desertcave.roomLustRoom();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_WITCH_WEST_WARRENS_WEST) desertcave.roomWestHall2();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_WITCH_NURSERY) desertcave.roomNursery();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_WITCH_PHARMACY) desertcave.roomPharmacy();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_WITCH_EAST_WARRENS_MAIN) desertcave.roomEastHall1();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_WITCH_SLEEPING_CHAMBER) desertcave.roomSleepingChamber();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_WITCH_BATH_ROOM) desertcave.roomBathroom();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_WITCH_EAST_WARRENS_EAST) desertcave.roomEastHall2();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_WITCH_CUM_WITCH_BEDROOM) desertcave.roomCumWitchBedroom();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_WITCH_CUM_WITCH_OFFICE) desertcave.roomCumWitchOffice();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_WITCH_SACRIFICIAL_ALTAR) desertcave.roomSacrificalAltar();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_WITCH_THRONE_ROOM) desertcave.roomSandMotherThrone();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_WITCH_ENTRANCE_GATEWAY) desertcave.roomEntrance();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_WITCH_CAVERNOUS_COMMONS) desertcave.roomCaveCommons();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_WITCH_WEST_WARRENS_MAIN) desertcave.roomWestHall1();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_WITCH_CHILDRENS_PLAYROOM) desertcave.roomPlayRoom();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_WITCH_PREGNANT_LUST_ROOM) desertcave.roomLustRoom();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_WITCH_WEST_WARRENS_WEST) desertcave.roomWestHall2();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_WITCH_NURSERY) desertcave.roomNursery();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_WITCH_PHARMACY) desertcave.roomPharmacy();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_WITCH_EAST_WARRENS_MAIN) desertcave.roomEastHall1();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_WITCH_SLEEPING_CHAMBER) desertcave.roomSleepingChamber();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_WITCH_BATH_ROOM) desertcave.roomBathroom();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_WITCH_EAST_WARRENS_EAST) desertcave.roomEastHall2();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_WITCH_CUM_WITCH_BEDROOM) desertcave.roomCumWitchBedroom();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_WITCH_CUM_WITCH_OFFICE) desertcave.roomCumWitchOffice();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_WITCH_SACRIFICIAL_ALTAR) desertcave.roomSacrificalAltar();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_WITCH_THRONE_ROOM) desertcave.roomSandMotherThrone();
 			//Anzu's Palace
-			if (kGAMECLASS.dungeonLoc == DUNGEON_ANZU_OUTSIDE) palace.roomEntrance();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_ANZU_HALL_FLOOR1) palace.roomFoyer();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_ANZU_LIVING_ROOM) palace.roomLivingRoom();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_ANZU_BATHROOM) palace.roomBathroom();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_ANZU_DINING_ROOM) palace.roomDiningRoom();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_ANZU_KITCHEN) palace.roomKitchen();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_ANZU_HALL_FLOOR2) palace.roomHallFloor2();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_ANZU_BEDROOM) palace.roomBedroom();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_ANZU_LIBRARY) palace.roomLibrary();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_ANZU_MULTIUSE_ROOM) palace.roomMultiuse();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_ANZU_HALL_FLOOR3) palace.roomHallFloor3();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_ANZU_PALACE_VAULTS) palace.roomVault();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_ANZU_ALCHEMY_ROOM) palace.roomAlchemyRoom();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_ANZU_ROOF) palace.roomRoof();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_ANZU_BASEMENT) palace.roomBasement();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_ANZU_ARMORY) palace.roomArmory();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_ANZU_OUTSIDE) palace.roomEntrance();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_ANZU_HALL_FLOOR1) palace.roomFoyer();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_ANZU_LIVING_ROOM) palace.roomLivingRoom();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_ANZU_BATHROOM) palace.roomBathroom();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_ANZU_DINING_ROOM) palace.roomDiningRoom();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_ANZU_KITCHEN) palace.roomKitchen();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_ANZU_HALL_FLOOR2) palace.roomHallFloor2();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_ANZU_BEDROOM) palace.roomBedroom();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_ANZU_LIBRARY) palace.roomLibrary();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_ANZU_MULTIUSE_ROOM) palace.roomMultiuse();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_ANZU_HALL_FLOOR3) palace.roomHallFloor3();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_ANZU_PALACE_VAULTS) palace.roomVault();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_ANZU_ALCHEMY_ROOM) palace.roomAlchemyRoom();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_ANZU_ROOF) palace.roomRoof();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_ANZU_BASEMENT) palace.roomBasement();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_ANZU_ARMORY) palace.roomArmory();
 			//Dragon City
-			if (kGAMECLASS.dungeonLoc == DUNGEON_DRAGON_CITY_SQUARE) dragoncity.roomCitySquare();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_DRAGON_HOUSING_DISTRICT) dragoncity.roomHousingDistrict();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_DRAGON_BATHS) dragoncity.roomBaths();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_DRAGON_ARENA) dragoncity.roomArena();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_DRAGON_LIBRARY) dragoncity.roomLibrary();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_DRAGON_CITY_HALL_FRONT) dragoncity.roomCityHallFront();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_DRAGON_CITY_HALL) dragoncity.roomCityHall();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_DRAGON_SEWERS_WEST) dragoncity.roomSewerWest();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_DRAGON_SEWERS_EAST) dragoncity.roomSewerEast();
-			if (kGAMECLASS.dungeonLoc == DUNGEON_DRAGON_BREEDING_DEN) dragoncity.roomSewerBreedingDen();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_DRAGON_CITY_SQUARE) dragoncity.roomCitySquare();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_DRAGON_HOUSING_DISTRICT) dragoncity.roomHousingDistrict();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_DRAGON_BATHS) dragoncity.roomBaths();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_DRAGON_ARENA) dragoncity.roomArena();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_DRAGON_LIBRARY) dragoncity.roomLibrary();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_DRAGON_CITY_HALL_FRONT) dragoncity.roomCityHallFront();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_DRAGON_CITY_HALL) dragoncity.roomCityHall();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_DRAGON_SEWERS_WEST) dragoncity.roomSewerWest();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_DRAGON_SEWERS_EAST) dragoncity.roomSewerEast();
+			if (kGAMECLASS.dungeonLoc === DUNGEON_DRAGON_BREEDING_DEN) dragoncity.roomSewerBreedingDen();
 		}
 
 		public function checkFactoryClear():Boolean {
 			return (flags[kFLAGS.FACTORY_SHUTDOWN] > 0 && flags[kFLAGS.FACTORY_SUCCUBUS_DEFEATED] > 0 && flags[kFLAGS.FACTORY_INCUBUS_DEFEATED] > 0 && flags[kFLAGS.FACTORY_OMNIBUS_DEFEATED] > 0);
 		}
 		public function checkDeepCaveClear():Boolean {
-			return (flags[kFLAGS.ZETAZ_IMP_HORDE_DEFEATED] > 0 && flags[kFLAGS.ZETAZ_FUNGUS_ROOM_DEFEATED] > 0 && flags[kFLAGS.FREED_VALA] == 1 && player.hasKeyItem("Zetaz's Map") >= 0);
+			return (flags[kFLAGS.ZETAZ_IMP_HORDE_DEFEATED] > 0 && flags[kFLAGS.ZETAZ_FUNGUS_ROOM_DEFEATED] > 0 && flags[kFLAGS.FREED_VALA] === 1 && player.hasKeyItem("Zetaz's Map") >= 0);
 		}
 		public function checkSandCaveClear():Boolean {
-			return ((flags[kFLAGS.ESSRAYLE_ESCAPED_DUNGEON] > 0 || flags[kFLAGS.MET_ESSY] == 0) && (flags[kFLAGS.SAND_WITCHES_FRIENDLY] > 0 || flags[kFLAGS.SAND_WITCHES_COWED] > 0));
+			return ((flags[kFLAGS.ESSRAYLE_ESCAPED_DUNGEON] > 0 || flags[kFLAGS.MET_ESSY] === 0) && (flags[kFLAGS.SAND_WITCHES_FRIENDLY] > 0 || flags[kFLAGS.SAND_WITCHES_COWED] > 0));
 		}
 		public function checkPhoenixTowerClear():Boolean {
-			return (flags[kFLAGS.HARPY_QUEEN_EXECUTED] != 0 && flags[kFLAGS.HEL_HARPIES_DEFEATED] > 0 && flags[kFLAGS.HEL_PHOENIXES_DEFEATED] > 0 && flags[kFLAGS.HEL_BRIGID_DEFEATED] > 0);
+			return (flags[kFLAGS.HARPY_QUEEN_EXECUTED] !== 0 && flags[kFLAGS.HEL_HARPIES_DEFEATED] > 0 && flags[kFLAGS.HEL_PHOENIXES_DEFEATED] > 0 && flags[kFLAGS.HEL_BRIGID_DEFEATED] > 0);
 		}
 		public function checkLethiceStrongholdClear():Boolean {
 			return (flags[kFLAGS.D3_MIRRORS_SHATTERED] > 0 && flags[kFLAGS.D3_JEAN_CLAUDE_DEFEATED] > 0 && flags[kFLAGS.D3_GARDENER_DEFEATED] > 0 && flags[kFLAGS.D3_CENTAUR_DEFEATED] > 0 && flags[kFLAGS.LETHICE_DEFEATED] > 0);
@@ -197,7 +197,7 @@ package classes.Scenes.Dungeons  {
 			factory.enterDungeon();
 		}
 		public function canFindDeepCave():Boolean {
-			return flags[kFLAGS.DISCOVERED_DUNGEON_2_ZETAZ] == 0 && flags[kFLAGS.FACTORY_SHUTDOWN] > 0;
+			return flags[kFLAGS.DISCOVERED_DUNGEON_2_ZETAZ] === 0 && flags[kFLAGS.FACTORY_SHUTDOWN] > 0;
 		}
 		public function enterDeepCave():void {
 			deepcave.enterDungeon();
@@ -206,9 +206,9 @@ package classes.Scenes.Dungeons  {
 			palace.enterDungeon();
 		}
 
-		public function navigateToRoom(room:Function = null, timeToPass:Number = 1/12):void {
+		public function navigateToRoom(roomFunc:Function = null, timeToPass:Number = 1/12):void {
 			cheatTime(timeToPass);
-			room();
+			roomFunc();
 		}
 
 		//Set the top buttons for use while in dungeons
@@ -252,10 +252,10 @@ package classes.Scenes.Dungeons  {
 			hideUpDown();
 			spriteSelect(null);
 			menu();
-			if (northFunction != null) addButton(6, "North", navigateToRoom, northFunction);
-			if (southFunction != null) addButton(11, "South", navigateToRoom, southFunction);
-			if (westFunction != null) addButton(10, "West", navigateToRoom, westFunction);
-			if (eastFunction != null) addButton(12, "East", navigateToRoom, eastFunction);
+			if (northFunction !== null) addButton(6, "North", navigateToRoom, northFunction);
+			if (southFunction !== null) addButton(11, "South", navigateToRoom, southFunction);
+			if (westFunction !== null) addButton(10, "West", navigateToRoom, westFunction);
+			if (eastFunction !== null) addButton(12, "East", navigateToRoom, eastFunction);
 			if (player.lust >= 30) addButton(8, "Masturbate", getGame().masturbation.masturbateGo);
 			else addButtonDisabled(8, "Masturbate", "You are not horny enough to do that.");
 			addButton(13, "Inventory", inventory.inventoryMenu).hint("The inventory allows you to use an item.  Be careful as this leaves you open to a counterattack when in combat.");
@@ -274,17 +274,17 @@ package classes.Scenes.Dungeons  {
 			hideUpDown();
 			spriteSelect(null);
 			setTopButtons();
-			if (tRoom.NorthExit != null && tRoom.NorthExit.length > 0) {
-				if (tRoom.NorthExitCondition == null || tRoom.NorthExitCondition()) addButton(6, "North", move, tRoom.NorthExit, 1/12);
+			if (tRoom.NorthExit !== null && tRoom.NorthExit.length > 0) {
+				if (tRoom.NorthExitCondition === null || tRoom.NorthExitCondition()) addButton(6, "North", move, tRoom.NorthExit, 1/12);
 			}
-			if (tRoom.EastExit != null && tRoom.EastExit.length > 0) {
-				if (tRoom.EastExitCondition == null || tRoom.EastExitCondition()) addButton(12, "East", move, tRoom.EastExit, 1/12);
+			if (tRoom.EastExit !== null && tRoom.EastExit.length > 0) {
+				if (tRoom.EastExitCondition === null || tRoom.EastExitCondition()) addButton(12, "East", move, tRoom.EastExit, 1/12);
 			}
-			if (tRoom.SouthExit != null && tRoom.SouthExit.length > 0) {
-				if (tRoom.SouthExitCondition == null || tRoom.SouthExitCondition()) addButton(11, "South", move, tRoom.SouthExit, 1/12);
+			if (tRoom.SouthExit !== null && tRoom.SouthExit.length > 0) {
+				if (tRoom.SouthExitCondition === null || tRoom.SouthExitCondition()) addButton(11, "South", move, tRoom.SouthExit, 1/12);
 			}
-			if (tRoom.WestExit != null && tRoom.WestExit.length > 0) {
-				if (tRoom.WestExitCondition == null || tRoom.WestExitCondition()) addButton(10, "West", move, tRoom.WestExit, 1/12);
+			if (tRoom.WestExit !== null && tRoom.WestExit.length > 0) {
+				if (tRoom.WestExitCondition === null || tRoom.WestExitCondition()) addButton(10, "West", move, tRoom.WestExit, 1/12);
 			}
 			addButton(13, "Inventory", inventory.inventoryMenu);
 			addButton(14, "Map", kGAMECLASS.dungeons.map.displayMap);
@@ -296,14 +296,14 @@ package classes.Scenes.Dungeons  {
 		//	trace("Entering room", roomName);
 			cheatTime(timeToPass);
 			clearOutput();
-			if (rooms[roomName] == undefined) {
+			if (rooms[roomName] === undefined) {
 				clearOutput();
 				outputText("Error: Couldn't find the room indexed as: " + roomName);
 				menu();
 				return;
 			}
 			var tRoom:room = rooms[roomName];
-			if (tRoom.RoomFunction == null) {
+			if (tRoom.RoomFunction === null) {
 				outputText("Error: Room entry function for room indexed as '" + roomName + "' was not set.");
 				return;
 			}

@@ -207,6 +207,8 @@ package classes
 				case 3:
 					text += "<font color=\"#FF0000\">Extreme</font></b>\n<font size=\"14\">Opponent has 100% more HP and does more 50% damage.</font>";
 					break;
+				default:
+					text += "Something derped with the coding!";
 			}
 			return text;
 		}

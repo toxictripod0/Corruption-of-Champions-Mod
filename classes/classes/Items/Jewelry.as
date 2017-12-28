@@ -68,6 +68,8 @@ package classes.Items
 				case JewelryLib.CORRUPTION:
 					desc += "Slowly corrupts the wearer over time.";
 					break;
+				default:
+					desc += "You shouldn't see this line at all. Something must be wrong with the coding.";
 			}
 			//Value
 			desc += "\nBase value: " + String(value);

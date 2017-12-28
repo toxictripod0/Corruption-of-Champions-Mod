@@ -69,6 +69,8 @@ package classes {
 						"untameable woolen hair",
 					];
 					return description + randomChoice(options);
+				default:
+					//Move along.
 			}
 			// TODO: Fix the spaghetti-code below to use a switch-case-return and it'll be
 			// case Hair.GOO: return description + "goo-mane";
@@ -177,7 +179,6 @@ package classes {
 			var haveDescription:Boolean = false;
 			var description:String = "";
 			var options:Array;
-			var rando:Number = 0;
 			//Size descriptors 33% chance
 			if (rand(4) === 0) {
 				//TINAHHHH
@@ -474,244 +475,65 @@ package classes {
 		}
 
 		public static function cockNoun(cockType:CockTypesEnum):String {
-			/*
-			if (cockType is int) {
-				trace("Someone is still calling cockNoun with an integer cock type");
-				trace("Fix this shit already, dammit!")
-				cockType = CockTypesEnum.ParseConstantByIndex(cockType);
+			var cockWord:String = "";
+			switch(cockType) {
+				case CockTypesEnum.ANEMONE:
+					cockWord += randomChoice("anemone dick", "tentacle-ringed cock", "blue member", "stinger-laden shaft", "pulsating prick", "anemone prick", "stinger-coated member", "blue cock", "tentacle-ringed dick", "near-transparent shaft", "squirming shaft");
+					break;
+				case CockTypesEnum.AVIAN:
+					cockWord += randomChoice("bird cock", "bird dick", "bird pecker", "avian cock", "avian dick", "avian penis", "avian prick", "avian pecker", "tapered cock", "tapered prick");
+					break;
+				case CockTypesEnum.BEE:
+					cockWord += randomChoice("bee prick", "bee prick", "bee prick", "bee prick", "insectoid cock", "insectoid cock", "furred monster");
+					break;
+				case CockTypesEnum.CAT:
+					cockWord += randomChoice("feline dick", "spined cat-cock", "pink kitty-cock", "spiny prick", "animalistic kitty-prick", "oddly-textured cat-penis", "feline member", "spined shaft", "feline shaft", "barbed dick", "nubby kitten-prick");
+					break;
+				case CockTypesEnum.DEMON:
+					cockWord += randomChoice("nub-covered demon-dick", "nubby shaft", "corrupted cock", "perverse pecker", "bumpy demon-dick", "demonic cock", "demonic dong", "cursed cock", "infernal prick", "unholy cock", "blighted cock");
+					break;
+				case CockTypesEnum.DISPLACER:
+					cockWord += randomChoice("coerl cock", "tentacle-tipped phallus", "starfish-tipped shaft", "alien member", "almost-canine dick", "bizarre prick", "beastly cock", "cthulhu-tier cock", "coerl cock", "animal dong", "star-capped tool", "knotted erection");
+					break;
+				case CockTypesEnum.DOG:
+					cockWord += randomChoice("dog-shaped dong", "canine shaft", "pointed prick", "knotty dog-shaft", "bestial cock", "animalistic puppy-pecker", "pointed dog-dick", "pointed shaft", "canine member", "canine cock", "knotted dog-cock");
+					break;
+				case CockTypesEnum.DRAGON:
+					cockWord += randomChoice("dragon-like dick", "segmented shaft", "pointed prick", "knotted dragon-cock", "mythical mast", "segmented tool", "draconic dick", "draconic cock", "tapered dick", "unusual endowment", "scaly shaft");
+					break;
+				case CockTypesEnum.ECHIDNA:
+					cockWord += randomChoice("strange echidna dick", "strange echidna cock", "echidna dick", "echidna penis", "echidna cock", "exotic endowment", "four-headed prick", "four-headed penis", "four-headed cock", "four-headed dick");
+					break;
+				case CockTypesEnum.FOX:
+					cockWord += randomChoice("fox-shaped dong", "vulpine shaft", "pointed prick", "knotty fox-shaft", "bestial cock", "animalistic vixen-pricker", "pointed fox-dick", "pointed shaft", "vulpine member", "vulpine cock", "knotted fox-cock");
+					break;
+				case CockTypesEnum.HORSE:
+					cockWord += randomChoice("flared horse-cock", "equine prick", "bestial horse-shaft", "flat-tipped horse-member", "animalistic stallion-prick", "equine dong", "beast cock", "flared stallion-cock");
+					break;
+				case CockTypesEnum.HUMAN:
+					cockWord += randomChoice("human cock", "humanoid cock", "cock", "cock", "cock", "humanoid prick", "prick", "pecker", "shaft", "shaft", "shaft");
+					break;
+				case CockTypesEnum.KANGAROO:
+					cockWord += randomChoice("kangaroo-like dick", "pointed cock", "marsupial member", "tapered shaft", "curved pecker", "pointed prick", "squirming kangaroo-cock", "marsupial cock", "tapered kangaroo-dick", "curved kangaroo-cock", "squirming shaft");
+					break;
+				case CockTypesEnum.LIZARD:
+					cockWord += randomChoice("reptilian dick", "purple cock", "inhuman cock", "reptilian prick", "purple prick", "purple member", "serpentine member", "serpentine shaft", "reptilian shaft", "bulbous snake-shaft", "bulging snake-dick");
+					break;
+				case CockTypesEnum.PIG:
+					cockWord += randomChoice("pig cock", "pig dick", "pig penis", "pig-like cock", "pig-like dick", "swine cock", "swine penis", "corkscrew-tipped cock", "hoggish cock", "pink pig-cock", "pink pecker");
+					break;
+				case CockTypesEnum.RHINO:
+					cockWord += randomChoice("oblong cock", "oblong dick", "oblong prick", "rhino cock", "rhino dick", "rhino penis", "rhino pecker", "rhino prick", "bulged rhino cock", "bulged rhino dick");
+					break;
+				case CockTypesEnum.TENTACLE:
+					cockWord += randomChoice("twisting tentacle-prick", "wriggling plant-shaft", "sinuous tentacle-cock", "squirming cock-tendril", "writhing tentacle-pecker", "wriggling plant-prick", "penile flora", "smooth shaft", "undulating tentacle-dick", "slithering vine-prick", "vine-shaped cock");
+					break;
+				case CockTypesEnum.WOLF:
+					cockWord += randomChoice("wolf-shaped dong", "canine shaft", "pointed prick", "knotty wolf-shaft", "bestial cock", "animalistic wolf-pecker", "pointed wolf-dick", "pointed shaft", "canine member", "canine cock", "knotted wolf-cock");
+					break;
 			}
-			*/
-			if (cockType === CockTypesEnum.HUMAN) {
-				// Yeah, this is kind of messy
-				// there is no other easy way to preserve the weighting fenoxo did
-				return randomChoice("cock",
-					"cock",
-					"cock",
-					"cock",
-					"cock",
-					"prick",
-					"prick",
-					"pecker",
-					"shaft",
-					"shaft",
-					"shaft");
-			}
-			else if (cockType === CockTypesEnum.BEE) {
-				return randomChoice("bee prick",
-					"bee prick",
-					"bee prick",
-					"bee prick",
-					"insectoid cock",
-					"insectoid cock",
-					"furred monster");
-			}
-			else if (cockType === CockTypesEnum.DOG) {
-				return randomChoice("dog-shaped dong",
-					"canine shaft",
-					"pointed prick",
-					"knotty dog-shaft",
-					"bestial cock",
-					"animalistic puppy-pecker",
-					"pointed dog-dick",
-					"pointed shaft",
-					"canine member",
-					"canine cock",
-					"knotted dog-cock");
-			}
-			else if (cockType === CockTypesEnum.FOX) {
-				return randomChoice("fox-shaped dong",
-					"vulpine shaft",
-					"pointed prick",
-					"knotty fox-shaft",
-					"bestial cock",
-					"animalistic vixen-pricker",
-					"pointed fox-dick",
-					"pointed shaft",
-					"vulpine member",
-					"vulpine cock",
-					"knotted fox-cock");
-			}
-			else if (cockType === CockTypesEnum.HORSE) {
-				return randomChoice("flared horse-cock",
-					"equine prick",
-					"bestial horse-shaft",
-					"flat-tipped horse-member",
-					"animalistic stallion-prick",
-					"equine dong",
-					"beast cock",
-					"flared stallion-cock");
-			}
-			else if (cockType === CockTypesEnum.DEMON) {
-				return randomChoice("nub-covered demon-dick",
-					"nubby shaft",
-					"corrupted cock",
-					"perverse pecker",
-					"bumpy demon-dick",
-					"demonic cock",
-					"demonic dong",
-					"cursed cock",
-					"infernal prick",
-					"unholy cock",
-					"blighted cock");
-			}
-			else if (cockType === CockTypesEnum.TENTACLE) {
-				return randomChoice("twisting tentacle-prick",
-					"wriggling plant-shaft",
-					"sinuous tentacle-cock",
-					"squirming cock-tendril",
-					"writhing tentacle-pecker",
-					"wriggling plant-prick",
-					"penile flora",
-					"smooth shaft",
-					"undulating tentacle-dick",
-					"slithering vine-prick",
-					"vine-shaped cock");
-			}
-			else if (cockType === CockTypesEnum.CAT) {
-				return randomChoice("feline dick",
-					"spined cat-cock",
-					"pink kitty-cock",
-					"spiny prick",
-					"animalistic kitty-prick",
-					"oddly-textured cat-penis",
-					"feline member",
-					"spined shaft",
-					"feline shaft",
-					"barbed dick",
-					"nubby kitten-prick");
-			}
-			else if (cockType === CockTypesEnum.LIZARD) {
-				return randomChoice("reptilian dick",
-					"purple cock",
-					"inhuman cock",
-					"reptilian prick",
-					"purple prick",
-					"purple member",
-					"serpentine member",
-					"serpentine shaft",
-					"reptilian shaft",
-					"bulbous snake-shaft",
-					"bulging snake-dick");
-			}
-			else if (cockType === CockTypesEnum.ANEMONE) {
-				return randomChoice("anemone dick",
-					"tentacle-ringed cock",
-					"blue member",
-					"stinger-laden shaft",
-					"pulsating prick",
-					"anemone prick",
-					"stinger-coated member",
-					"blue cock",
-					"tentacle-ringed dick",
-					"near-transparent shaft",
-					"squirming shaft");
-			}
-			else if (cockType === CockTypesEnum.KANGAROO) {
-				return randomChoice("kangaroo-like dick",
-					"pointed cock",
-					"marsupial member",
-					"tapered shaft",
-					"curved pecker",
-					"pointed prick",
-					"squirming kangaroo-cock",
-					"marsupial cock",
-					"tapered kangaroo-dick",
-					"curved kangaroo-cock",
-					"squirming shaft");
-			}
-			else if (cockType === CockTypesEnum.DRAGON) {
-				return randomChoice("dragon-like dick",
-					"segmented shaft",
-					"pointed prick",
-					"knotted dragon-cock",
-					"mythical mast",
-					"segmented tool",
-					"draconic dick",
-					"draconic cock",
-					"tapered dick",
-					"unusual endowment",
-					"scaly shaft");
-			}
-			else if (cockType === CockTypesEnum.DISPLACER) {
-				return randomChoice("coerl cock",
-					"tentacle-tipped phallus",
-					"starfish-tipped shaft",
-					"alien member",
-					"almost-canine dick",
-					"bizarre prick",
-					"beastly cock",
-					"cthulhu-tier cock",
-					"coerl cock",
-					"animal dong",
-					"star-capped tool",
-					"knotted erection");
-			}
-			else if (cockType === CockTypesEnum.AVIAN) {
-				return randomChoice("bird cock",
-					"bird dick",
-					"bird pecker",
-					"avian cock",
-					"avian dick",
-					"avian penis",
-					"avian prick",
-					"avian pecker",
-					"tapered cock",
-					"tapered prick");
-			}
-			else if (cockType === CockTypesEnum.PIG) {
-				return randomChoice("pig cock",
-					"pig dick",
-					"pig penis",
-					"pig-like cock",
-					"pig-like dick",
-					"swine cock",
-					"swine penis",
-					"corkscrew-tipped cock",
-					"hoggish cock",
-					"pink pig-cock",
-					"pink pecker");
-			}
-			else if (cockType === CockTypesEnum.RHINO) {
-				return randomChoice("oblong cock",
-					"oblong dick",
-					"oblong prick",
-					"rhino cock",
-					"rhino dick",
-					"rhino penis",
-					"rhino pecker",
-					"rhino prick",
-					"bulged rhino cock",
-					"bulged rhino dick");
-			}
-			else if (cockType === CockTypesEnum.WOLF) {
-				return randomChoice("wolf-shaped dong",
-					"canine shaft",
-					"pointed prick",
-					"knotty wolf-shaft",
-					"bestial cock",
-					"animalistic wolf-pecker",
-					"pointed wolf-dick",
-					"pointed shaft",
-					"canine member",
-					"canine cock",
-					"knotted wolf-cock");
-			}
-			else if (cockType === CockTypesEnum.ECHIDNA) {
-				return randomChoice("strange echidna dick",
-					"strange echidna cock",
-					"echidna dick",
-					"echidna penis",
-					"echidna cock",
-					"exotic endowment",
-					"four-headed prick",
-					"four-headed penis",
-					"four-headed cock",
-					"four-headed dick");
-			}
-			return randomChoice("cock",
-				"prick",
-				"pecker",
-				"shaft");
+			//cockWord += randomChoice("cock", "dick", "dong", "member", "pecker", "penis", "prick", "shaft", "tool");
+			return cockWord;
 		}
 
 		//New cock adjectives.  The old one sucked dicks
@@ -1187,8 +1009,6 @@ package classes {
 		{
 			if (i_creature.balls === 0) return "prostate";
 
-			var haveDescription:Boolean = false;
-			var rando:Number = 0;
 			var description:String = "";
 			var options:Array;
 
