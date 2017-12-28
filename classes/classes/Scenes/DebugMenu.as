@@ -70,7 +70,7 @@ import classes.Items.*
 			for each (var effect:StatusEffectClass in player.statusEffects) {
 				outputText("'"+effect.stype.id+"': "+effect.value1+" "+effect.value2+" "+effect.value3+" "+effect.value4+"\n");
 			}
-			doNext(playerMenu);
+			doNext(accessDebugMenu);
 		}
 
 		//Spawn items menu
@@ -261,7 +261,6 @@ import classes.Items.*
 			consumableArray.push(consumables.W_PDDNG);
 			consumableArray.push(consumables.TRAILMX);
 			consumableArray.push(consumables.URTACUM);
-			consumableArray.push(null);
 			consumableArray.push(null);
 			consumableArray.push(null);
 			consumableArray.push(null);

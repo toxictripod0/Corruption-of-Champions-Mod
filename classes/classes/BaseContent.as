@@ -267,50 +267,6 @@
 			kGAMECLASS.hideMenus();
 		}
 		
-
-		//[Deprecated(replacement = "Use a series of BaseContent.addButton instead")]
-		/**[DEPRECATED] Creates a menu with 10 buttons. 
-		 */
-		/*protected function choices(text1:String, butt1:Function,
-								text2:String, butt2:Function,
-								text3:String, butt3:Function,
-								text4:String, butt4:Function,
-								text5:String, butt5:Function,
-								text6:String, butt6:Function,
-								text7:String, butt7:Function,
-								text8:String, butt8:Function,
-								text9:String, butt9:Function,
-								text0:String, butt0:Function):void { //Now typesafe
-			kGAMECLASS.choices(
-					text1, butt1,
-					text2, butt2,
-					text3, butt3,
-					text4, butt4,
-					text5, butt5,
-					text6, butt6,
-					text7, butt7,
-					text8, butt8,
-					text9, butt9,
-					text0, butt0
-			);
-		}*/
-
-		//[Deprecated(replacement = "Use a series of BaseContent.addButton instead.")]
-		/**
-		 * [DEPRECATED] Creates a menu with 5 buttons. 
-		 */
-		/*protected function simpleChoices(text1:String, butt1:Function,
-								text2:String, butt2:Function,
-								text3:String, butt3:Function,
-								text4:String, butt4:Function,
-								text5:String, butt5:Function):void { //Now typesafe
-			kGAMECLASS.simpleChoices(text1, butt1,
-					text2, butt2,
-					text3, butt3,
-					text4, butt4,
-					text5, butt5);
-		}*/
-
 		protected function doYesNo(eventYes:Function, eventNo:Function):void { //Now typesafe
 			kGAMECLASS.doYesNo(eventYes, eventNo);
 		}
