@@ -1403,7 +1403,7 @@ package classes.Scenes.Combat
 			var TheMonster:String      = monster.capitalA + monster.short;
 			var stareTraining:Number   = flags[kFLAGS.BASILISK_RESISTANCE_TRACKER] / 100;
 			var bse:BasiliskSlowDebuff = monster.createOrFindStatusEffect(StatusEffects.BasiliskSlow) as BasiliskSlowDebuff;
-			var slowEffect:Number      = -bse.buffValue('spe');
+			var slowEffect:Number      = bse.count;
 			var oldSpeed:Number        = monster.spe;
 			var speedDiff:int          = 0;
 			var message:String         = "";
@@ -1458,7 +1458,9 @@ package classes.Scenes.Combat
 				        + " helplessness of it feels so good... " + monster.pronoun1 + " can't banish the feeling that really, " + monster.pronoun1
 				        + " wants to look into your eyes forever, for you to have total control over " + monster.pronoun2 + ". ";
 				slowEffect++;
-				bse.applyEffect(16 + stareTraining * 8 - slowEffect * (4 + stareTraining * 2));
+				if (monster.spe > 1) monster.spe -= 16 + stareTraining * 8 - slowEffect * (4 + stareTraining * 2);
+				if (monster.spe < 1) monster.spe = 1;
+				bse.count++;
 				flags[kFLAGS.BASILISK_RESISTANCE_TRACKER] += 4;
 				speedDiff = Math.round(oldSpeed - monster.spe);
 				output.text(message + combat.getDamageText(speedDiff) + "\n\n");
