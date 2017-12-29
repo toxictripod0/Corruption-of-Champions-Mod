@@ -488,7 +488,7 @@ package classes
 			 */
 			debug = false; //DEBUG, used all over the place
 			ver = "1.0.2_mod_1.4.12"; //Version NUMBER
-			version = ver + " (<b>All-new Main Menu!</b>)"; //Version TEXT
+			version = ver + " (<b>Interface Prettiness!</b>)"; //Version TEXT
 			
 			//Indicates if building for mobile?
 			mobile = false;

@@ -289,7 +289,7 @@ private function doCamp():void { //Only called by playerMenu
 		if (!campQ) {
 			clearOutput();
 			outputText("More time passes...\n");
-			doNext(superLoop);
+			goNext(timeQ, false); //doNext(superLoop);
 			return;
 		}
 		else {
@@ -1441,7 +1441,7 @@ public function rest():void {
 		if (timeQ != 1) outputText("You continue to rest for " + num2Text(timeQ) + " more hours.\n");
 		else outputText("You continue to rest for another hour.\n");
 	}
-	doNext(superLoop);
+	goNext(timeQ, true); //doNext(superLoop);
 }
 
 //-----------------
@@ -1477,7 +1477,7 @@ public function doWait():void {
 		if (timeQ != 1) outputText("You continue to wait for " + num2Text(timeQ) + " more hours.\n");
 		else outputText("You continue to wait for another hour.\n");
 	}
-	doNext(superLoop);
+	goNext(timeQ, true); //doNext(superLoop);
 }
 
 //-----------------
@@ -1503,7 +1503,7 @@ public function doSleep(clrScreen:Boolean = true):void {
 			if (timeQ > 1) outputText("s");
 			outputText(". ");
 			sleepRecovery(true);
-			doNext(superLoop);
+			goNext(timeQ, true); //doNext(superLoop);
 			return;
 		}
 		/******************************************************************/
@@ -1611,7 +1611,8 @@ public function doSleep(clrScreen:Boolean = true):void {
 		if (timeQ != 1) outputText("You lie down to resume sleeping for the remaining " + num2Text(timeQ) + " hours.\n");
 		else outputText("You lie down to resume sleeping for the remaining hour.\n");
 	}
-	doNext(superLoop);
+	goNext(timeQ, true);
+	//doNext(superLoop);
 }
 //For shit that breaks normal sleep processing
 public function sleepWrapper():void {
@@ -1622,10 +1623,10 @@ public function sleepWrapper():void {
 	if (timeQ != 1) outputText("You lie down to resume sleeping for the remaining " + num2Text(timeQ) + " hours.\n");
 	else outputText("You lie down to resume sleeping for the remaining hour.\n");
 	sleepRecovery(true);
-	menu();
-	doNext(superLoop);
+	goNext(timeQ, true);
+	//doNext(superLoop);
 }
-public function superLoop():void {
+/*public function superLoop():void {
 	clearOutput();
 	if (player.cor >= 95) outputText ("You can constantly enjoy pleasant smell of the sulfur in the air. It's so sweet!");
 	else if (player.cor >= 75) outputText ("You didn't happen to smell any sulfur, by chance?");
@@ -1634,7 +1635,7 @@ public function superLoop():void {
 	else outputText ("You can constantly enjoy pleasant freshness in the air. And it's wonderful!");
 	goNext(timeQ, false);
 	return
-}
+}*/
 public function calculateHoursUntilHour(targetHour:int):int {
 	var currentHour:int = getGame().time.hours;
 	var amount:int = 0;

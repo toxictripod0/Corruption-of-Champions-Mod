@@ -442,6 +442,10 @@ public class StatsView extends Block {
 	}
 	
 	public function animateBarChange(bar:StatBar, newValue:Number):void {
+		if (kGAMECLASS.flags[kFLAGS.ANIMATE_STATS_BARS] == 0) {
+			bar.value = newValue;
+			return;
+		}
 		var oldValue:Number = bar.value;
 		//Now animate the bar.
 		var tmr:Timer = new Timer(32, 30);
