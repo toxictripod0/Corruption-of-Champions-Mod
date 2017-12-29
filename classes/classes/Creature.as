@@ -205,6 +205,8 @@ package classes
 		public function get hp100():Number { return 100*HP/maxHP(); }
 		public function get lust100():Number { return 100*lust/maxLust(); }
 
+		public function HPRatio():Number { return HP / maxHP(); }
+		
 		/**
 		 * @return keys: str, tou, spe, inte
 		 */

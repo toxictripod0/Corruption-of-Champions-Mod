@@ -5,9 +5,11 @@ import classes.GlobalFlags.kGAMECLASS;
 import classes.Player;
 import classes.internals.LoggerFactory;
 import classes.internals.Utils;
+import flash.events.TimerEvent;
 import flash.filters.DropShadowFilter;
 import flash.text.TextField;
 import flash.text.TextFormat;
+import flash.utils.Timer;
 import mx.logging.ILogger;
 
 public class StatsView extends Block {
@@ -64,8 +66,6 @@ public class StatsView extends Block {
 	*/
 
 	private var allStats:Array;
-
-
 
 	public function StatsView(mainView:MainView) {
 		super({
@@ -325,16 +325,17 @@ public class StatsView extends Block {
 		senBar.value          = player.sens;
 		corBar.value          = player.cor;
 		hpBar.maxValue        = player.maxHP();
-		hpBar.value           = player.HP;
+		animateBarChange(hpBar, player.HP);
+		//hpBar.value           = player.HP;
 		/* [INTERMOD: xianxia]
 		wrathBar.maxValue 	  = player.maxWrath();
 		wrathBar.value    	  = player.wrath;
 		*/
 		lustBar.maxValue      = player.maxLust();
 		lustBar.minValue      = player.minLust();
-		lustBar.value         = player.lust;
+		animateBarChange(lustBar, player.lust);
 		fatigueBar.maxValue   = player.maxFatigue();
-		fatigueBar.value      = player.fatigue;
+		animateBarChange(fatigueBar, player.fatigue);
 		/* [INTERMOD: xianxia]
 		manaBar.maxValue 	  = player.maxMana();
 		manaBar.value    	  = player.mana;
@@ -367,7 +368,7 @@ public class StatsView extends Block {
 			levelBar.value           = player.level;
 			if (player.level < kGAMECLASS.levelCap) {
 				xpBar.maxValue  = player.requiredXP();
-				xpBar.value     = player.XP;
+				animateBarChange(xpBar, player.XP);
 			} else {
 				xpBar.maxValue  = player.XP;
 				xpBar.value     = player.XP;
@@ -437,6 +438,23 @@ public class StatsView extends Block {
 			tf.defaultTextFormat = dtf;
 			tf.setTextFormat(dtf);
 		}
+		
+	}
+	
+	public function animateBarChange(bar:StatBar, newValue:Number):void {
+		var oldValue:Number = bar.value;
+		//Now animate the bar.
+		var tmr:Timer = new Timer(32, 30);
+		tmr.addEventListener(TimerEvent.TIMER, kGAMECLASS.createCallBackFunction(stepBarChange, bar, [oldValue, newValue, tmr]));
+		tmr.start();
+	}
+	private function stepBarChange(bar:StatBar, args:Array):void {
+		var originalValue:Number = args[0]; 
+		var targetValue:Number = args[1]; 
+		var timer:Timer = args[2];
+		bar.value = originalValue + (((targetValue - originalValue) / timer.repeatCount) * timer.currentCount);
+		if (timer.currentCount >= timer.repeatCount) bar.value = targetValue;
+		if (bar == hpBar) bar.bar.fillColor = Color.fromRgbFloat((1 - (bar.value / bar.maxValue)) * 0.8, (bar.value / bar.maxValue) * 0.8, 0);
 	}
 }
 }

@@ -202,13 +202,6 @@
 		}
 
 		/**
-		 * @return HP/eMaxHP()
-		 */
-		public function HPRatio():Number {
-			return HP / maxHP();
-		}
-
-		/**
 		 * @return damage not reduced by player stats
 		 */
 		public function eBaseDamage():Number {

@@ -2,15 +2,14 @@ package classes.Scenes
 {
 	import classes.*;
 	import classes.BodyParts.*;
-import classes.Items.*
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
-	import classes.MainViewManager;
+	import classes.Items.*;
 	import classes.internals.Profiling;
-
+	import flash.events.TimerEvent;
+	import flash.utils.*;
 	import flash.utils.describeType;
-	import flash.utils.*
-	
+
 	public class DebugMenu extends BaseContent
 	{
 		public var flagNames:XML = describeType(kFLAGS);
@@ -570,6 +569,7 @@ import classes.Items.*
 			addButton(4, "Debug Prison", debugPrison);
 			addButton(5, "Tooltips Ahoy", kGAMECLASS.doNothing).hint("Ahoy! I'm a tooltip! I will show up a lot in future updates!", "Tooltip 2.0");
 			addButton(8, "BodyPartEditor", bodyPartEditorRoot).hint("Inspect and fine-tune the player body parts");
+			addButton(9, "HP Colour Debug", debugHPColour);
 			addButton(14, "Back", accessDebugMenu);
 		}
 		private function generateTagDemos(...tags:Array):String {
@@ -1403,6 +1403,19 @@ import classes.Items.*
 			player.horns.value = 4;
 			player.wings.type = Wings.DRACONIC_LARGE;
 			doNext(styleHackMenu);
+		}
+		
+		private function debugHPColour():void {
+			var normalHP:int = player.HP;
+			player.HP = 0;
+			statScreenRefresh();
+			var t:Timer = new Timer(3000, 1);
+			t.addEventListener(TimerEvent.TIMER, createCallBackFunction(messWithHP, normalHP));
+			t.start();
+		}
+		private function messWithHP(normalHP:int):void {
+			player.HP = player.maxHP();
+			statScreenRefresh();
 		}
 		
 		private function debugPrison():void {

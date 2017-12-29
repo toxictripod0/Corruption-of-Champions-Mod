@@ -89,7 +89,7 @@ public function loadSaveDisplay(saveFile:Object, slotName:String):String
 		holding += ": <b>";
 		holding += saveFile.data.short;
 		holding += "</b> - <i>" + saveFile.data.notes + "</i>\r";
-		holding += "Days - " + saveFile.data.days + " | Gender - ";
+		holding += "    Days - " + saveFile.data.days + " | Gender - ";
 		if (saveFile.data.gender == 0)
 			holding += "U";
 		if (saveFile.data.gender == 1)
@@ -320,7 +320,7 @@ public function saveScreen():void
 			{
 				clearOutput();
 				//trace("Saving game with name", saveFileNames[i], "at index", i);
-				saveGame(saveFileNames[i]);
+				saveGame(saveFileNames[i], true);
 			}
 		})(i);
 		
