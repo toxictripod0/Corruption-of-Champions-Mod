@@ -372,6 +372,13 @@ public class SpriteDb {
 	public static function get s_imp(): Class {
 		return is8bit ? s_imp_8bit : s_imp_16bit;
 	}
+	[Embed(source="../../../res/sprites/impMob.png")]
+	public static const s_impMob_16bit:Class;
+//	[Embed(source="../../../res/sprites8bit/impMob-old.png")]
+//	public static const s_impMob_8bit:Class;
+	public static function get s_impMob(): Class {
+		return is8bit ? null : s_impMob_16bit;
+	}
 	[Embed(source="../../../res/sprites/impOverlord.png")]
 	public static const s_impOverlord_16bit:Class;
 	[Embed(source="../../../res/sprites8bit/impOverlord-old.png")]
