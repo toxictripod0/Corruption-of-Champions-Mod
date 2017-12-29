@@ -199,7 +199,7 @@ private function leaveKelt4Good():void {
 }
 
 //Naked Requirement
-public function keltRequiresNakedness():void {
+private function keltRequiresNakedness():void {
 	clearOutput();
 	outputText(images.showImage("kelt-encounter"));
 	outputText("Once more, you encounter Kelt the centaur at Whitney's farm.  You approach him to ask for another archery lesson, but Kelt is already scowling at you as you draw near.\r\r");
