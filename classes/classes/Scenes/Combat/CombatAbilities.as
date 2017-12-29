@@ -1458,9 +1458,7 @@ package classes.Scenes.Combat
 				        + " helplessness of it feels so good... " + monster.pronoun1 + " can't banish the feeling that really, " + monster.pronoun1
 				        + " wants to look into your eyes forever, for you to have total control over " + monster.pronoun2 + ". ";
 				slowEffect++;
-				if (monster.spe > 1) monster.spe -= 16 + stareTraining * 8 - slowEffect * (4 + stareTraining * 2);
-				if (monster.spe < 1) monster.spe = 1;
-				bse.count++;
+				bse.applyEffect(16 + stareTraining * 8 - slowEffect * (4 + stareTraining * 2));
 				flags[kFLAGS.BASILISK_RESISTANCE_TRACKER] += 4;
 				speedDiff = Math.round(oldSpeed - monster.spe);
 				output.text(message + combat.getDamageText(speedDiff) + "\n\n");
