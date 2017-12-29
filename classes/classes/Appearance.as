@@ -478,63 +478,75 @@ package classes {
 			var cockWord:String = "";
 			switch(cockType) {
 				case CockTypesEnum.ANEMONE:
-					cockWord += randomChoice("anemone dick", "tentacle-ringed cock", "blue member", "stinger-laden shaft", "pulsating prick", "anemone prick", "stinger-coated member", "blue cock", "tentacle-ringed dick", "near-transparent shaft", "squirming shaft");
+					cockWord += randomChoice("anemone ", "tentacle-ringed ", "blue ", "stinger-laden ", "pulsating ", "anemone ", "stinger-coated ", "blue ", "tentacle-ringed ", "near-transparent ", "squirming ");
 					break;
 				case CockTypesEnum.AVIAN:
-					cockWord += randomChoice("bird cock", "bird dick", "bird pecker", "avian cock", "avian dick", "avian penis", "avian prick", "avian pecker", "tapered cock", "tapered prick");
+					cockWord += randomChoice("bird ", "avian ", "tapered ");
 					break;
 				case CockTypesEnum.BEE:
-					cockWord += randomChoice("bee prick", "bee prick", "bee prick", "bee prick", "insectoid cock", "insectoid cock", "furred monster");
+					cockWord += randomChoice("bee ", "insectoid ", "furred ");
 					break;
 				case CockTypesEnum.CAT:
-					cockWord += randomChoice("feline dick", "spined cat-cock", "pink kitty-cock", "spiny prick", "animalistic kitty-prick", "oddly-textured cat-penis", "feline member", "spined shaft", "feline shaft", "barbed dick", "nubby kitten-prick");
+					if (rand(3) >= 1) cockWord += randomChoice("pink ", "animalistic ", "spiny ", "spined ", "oddly-textured ", "barbed ", "nubby");
+					cockWord += randomChoice("feline ", "cat-", "kitty-", " kitten-");
 					break;
 				case CockTypesEnum.DEMON:
-					cockWord += randomChoice("nub-covered demon-dick", "nubby shaft", "corrupted cock", "perverse pecker", "bumpy demon-dick", "demonic cock", "demonic dong", "cursed cock", "infernal prick", "unholy cock", "blighted cock");
+					cockWord += randomChoice("corrupted ", "nub-covered ", "nubby ", "perverse ", "bumpy ", "cursed ", "infernal ", "unholy ", "blighted ");
+					if (rand(2) >= 1) cockWord += randomChoice("demon-", "demonic ");
 					break;
 				case CockTypesEnum.DISPLACER:
-					cockWord += randomChoice("coerl cock", "tentacle-tipped phallus", "starfish-tipped shaft", "alien member", "almost-canine dick", "bizarre prick", "beastly cock", "cthulhu-tier cock", "coerl cock", "animal dong", "star-capped tool", "knotted erection");
+					cockWord += randomChoice("tentacle-tipped ", "starfish-tipped ", "bizarre ", "beastly ", "cthulhu-tier ", "star-capped ", "knotted ");
+					if (rand(3) >= 1) cockWord += randomChoice("coerl ", "alien ", "almost-canine ", "animal ", "displacer ");
 					break;
 				case CockTypesEnum.DOG:
-					cockWord += randomChoice("dog-shaped dong", "canine shaft", "pointed prick", "knotty dog-shaft", "bestial cock", "animalistic puppy-pecker", "pointed dog-dick", "pointed shaft", "canine member", "canine cock", "knotted dog-cock");
+					if (rand(2) >= 1) cockWord += randomChoice("pointed ", "knotty ", "knotted", "bestial ", "animalistic ");
+					cockWord += randomChoice("dog-", "dog-shaped ", "canine ", "bestial ", " puppy-", "canine cock");
 					break;
 				case CockTypesEnum.DRAGON:
-					cockWord += randomChoice("dragon-like dick", "segmented shaft", "pointed prick", "knotted dragon-cock", "mythical mast", "segmented tool", "draconic dick", "draconic cock", "tapered dick", "unusual endowment", "scaly shaft");
+					if (rand(2) >= 1) cockWord += randomChoice("segmented ", "pointed ", "knotted ", "mythical ", "tapered", "unusual ", "scaly ");
+					cockWord += randomChoice("dragon-like ", "draconic ", "dragon-");
 					break;
 				case CockTypesEnum.ECHIDNA:
-					cockWord += randomChoice("strange echidna dick", "strange echidna cock", "echidna dick", "echidna penis", "echidna cock", "exotic endowment", "four-headed prick", "four-headed penis", "four-headed cock", "four-headed dick");
+					if (rand(2) >= 1) cockWord += randomChoice("strange ", "four-headed ", "exotic ", "unusual ");
+					if (rand(4) >= 1) cockWord += randomChoice("echidna");
 					break;
 				case CockTypesEnum.FOX:
-					cockWord += randomChoice("fox-shaped dong", "vulpine shaft", "pointed prick", "knotty fox-shaft", "bestial cock", "animalistic vixen-pricker", "pointed fox-dick", "pointed shaft", "vulpine member", "vulpine cock", "knotted fox-cock");
+					if (rand(2) >= 1) cockWord += randomChoice("pointed ", "knotty ", "knotted", "bestial ", "animalistic ");
+					cockWord += randomChoice("fox-", "fox-shaped ", "vulpine ", "vixen-");
 					break;
 				case CockTypesEnum.HORSE:
-					cockWord += randomChoice("flared horse-cock", "equine prick", "bestial horse-shaft", "flat-tipped horse-member", "animalistic stallion-prick", "equine dong", "beast cock", "flared stallion-cock");
+					if (rand(3) >= 1) cockWord += randomChoice("flared ", "bestial ", "flat-tipped ", "mushroom-headed ", "");
+					cockWord += randomChoice("horse-", "equine ", "stallion-", "beast ");
 					break;
 				case CockTypesEnum.HUMAN:
-					cockWord += randomChoice("human cock", "humanoid cock", "cock", "cock", "cock", "humanoid prick", "prick", "pecker", "shaft", "shaft", "shaft");
+					if (rand(2) == 0) cockWord += randomChoice("human ", "humanoid ", "ordinary-looking ");
 					break;
 				case CockTypesEnum.KANGAROO:
-					cockWord += randomChoice("kangaroo-like dick", "pointed cock", "marsupial member", "tapered shaft", "curved pecker", "pointed prick", "squirming kangaroo-cock", "marsupial cock", "tapered kangaroo-dick", "curved kangaroo-cock", "squirming shaft");
+					if (rand(2) >= 1) cockWord += randomChoice("pointed ", "tapered ", "curved ", "squirming ");
+					if (rand(4) >= 1) cockWord += randomChoice("kangaroo-like ", "marsupial ");
 					break;
 				case CockTypesEnum.LIZARD:
-					cockWord += randomChoice("reptilian dick", "purple cock", "inhuman cock", "reptilian prick", "purple prick", "purple member", "serpentine member", "serpentine shaft", "reptilian shaft", "bulbous snake-shaft", "bulging snake-dick");
+					if (rand(2) >= 1) cockWord += randomChoice("purple ", "bulbous ", "bulging ");
+					cockWord += randomChoice("reptilian ", "inhuman ", "serpentine ", " snake-", " snake-");
 					break;
 				case CockTypesEnum.PIG:
-					cockWord += randomChoice("pig cock", "pig dick", "pig penis", "pig-like cock", "pig-like dick", "swine cock", "swine penis", "corkscrew-tipped cock", "hoggish cock", "pink pig-cock", "pink pecker");
+					cockWord += randomChoice("pig ", "swine ", "pig-like ", "corkscrew-tipped ", "hoggish ", "pink pig-", "pink ");
 					break;
 				case CockTypesEnum.RHINO:
-					cockWord += randomChoice("oblong cock", "oblong dick", "oblong prick", "rhino cock", "rhino dick", "rhino penis", "rhino pecker", "rhino prick", "bulged rhino cock", "bulged rhino dick");
+					cockWord += randomChoice("oblong ","rhino ", "bulged rhino ");
 					break;
 				case CockTypesEnum.TENTACLE:
-					cockWord += randomChoice("twisting tentacle-prick", "wriggling plant-shaft", "sinuous tentacle-cock", "squirming cock-tendril", "writhing tentacle-pecker", "wriggling plant-prick", "penile flora", "smooth shaft", "undulating tentacle-dick", "slithering vine-prick", "vine-shaped cock");
+					if (rand(2) >= 1) cockWord += randomChoice("twisting ", "wriggling ", "writhing", "sinuous ", "squirming ", "undulating ", "slithering ");
+					cockWord += randomChoice("tentacle-", "plant-", "tentacle-", "plant-", "flora ", "smooth ", "vine-", "vine-shaped ", "", "");
 					break;
 				case CockTypesEnum.WOLF:
-					cockWord += randomChoice("wolf-shaped dong", "canine shaft", "pointed prick", "knotty wolf-shaft", "bestial cock", "animalistic wolf-pecker", "pointed wolf-dick", "pointed shaft", "canine member", "canine cock", "knotted wolf-cock");
+					if (rand(3) >= 1) cockWord += randomChoice("knotted ", "knotty ", "animalistic ", "pointed ", "bestial ");
+					cockWord += randomChoice("wolf-shaped ", "wolf-", "wolf-", "wolf-", "canine ", "", "");
 					break;
 				default:
 					cockWord += "";
 			}
-			//cockWord += randomChoice("cock", "dick", "dong", "member", "pecker", "penis", "prick", "shaft", "tool");
+			cockWord += randomChoice("cock", "dick", "dong", "endowment", "mast", "member", "pecker", "penis", "prick", "shaft", "tool");
 			return cockWord;
 		}
 
