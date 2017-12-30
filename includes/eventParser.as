@@ -222,17 +222,17 @@ private function goNextWrapped(timeAmt:Number, needNext:Boolean):Boolean  {
 				}
 			}
 			//wormgasms
-			else if (flags[kFLAGS.EVER_INFESTED] == 1 && rand(100) <= 4 && player.hasCock() && !player.hasStatusEffect(StatusEffects.Infested)) {
-				if (player.hasCock() && !(player.hasStatusEffect(StatusEffects.JojoNightWatch) && player.hasStatusEffect(StatusEffects.PureCampJojo)) && (flags[kFLAGS.HEL_GUARDING] == 0 || !helFollower.followerHel()) && flags[kFLAGS.ANEMONE_WATCH] == 0 && (flags[kFLAGS.CAMP_CABIN_FURNITURE_BED] > 0 && flags[kFLAGS.SLEEP_WITH] == "")) {
+			else if (flags[kFLAGS.EVER_INFESTED] > 0 && rand(100) < 5 && !player.hasStatusEffect(StatusEffects.Infested)) {
+				if (kGAMECLASS.mountain.wormsScene.eligibleForWormInfestation()) {
 					kGAMECLASS.mountain.wormsScene.nightTimeInfestation();
 					return true;
 				}
 				else if (flags[kFLAGS.CAMP_CABIN_FURNITURE_BED] > 0 && flags[kFLAGS.SLEEP_WITH] == "") {
-					outputText("\n<b>You hear the sound of a horde of worms banging against the door. Good thing you locked it before you went to sleep!</b>\n");
-					needNext
+					outputText("\n<b>You hear the sounds of a horde of frustrated worms banging against the door. Good thing you locked your door before you went to sleep!</b>\n");
+					needNext = true;
 				}
 				else if (flags[kFLAGS.HEL_GUARDING] > 0 && helFollower.followerHel()) {
-					outputText("\n<b>Helia informs you over a mug of beer that she stomped a horde of gross worms into paste.  She shudders after at the memory.</b>\n");
+					outputText("\n<b>Helia informs you over a mug of beer that she stomped a horde of gross worms into paste. She shudders after at the memory.</b>\n");
 					needNext = true;
 				}
 				else if (player.gender > 0 && player.hasStatusEffect(StatusEffects.JojoNightWatch) && player.hasStatusEffect(StatusEffects.PureCampJojo)) {
