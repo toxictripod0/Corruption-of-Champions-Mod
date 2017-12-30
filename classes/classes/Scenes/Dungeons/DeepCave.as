@@ -1095,6 +1095,7 @@ package classes.Scenes.Dungeons
 			outputText("This room is clearly some kind of dining or gathering hall.  The chamber's shape has been hewn from the surrounding stone, and judging by the visible tool-marks, it wasn't done with a great deal of care.  Two long wooden tables fill out the room.  They're surprisingly well made, though it appears that part of their legs were hacked off with axes to lower their overall height.  You can't help but wonder where they were stolen from.  The tables haven't been cleaned in ages, as evidenced by their many stains and a number of half-rotten bones that still rest on their battered surfaces.  Two rows of crudely crafted chairs flank their better-made brethren, made to accommodate very short beings.");
 			//[Imp Mob Fight]
 			if (flags[kFLAGS.ZETAZ_IMP_HORDE_DEFEATED] == 0) {
+				spriteSelect(SpriteDb.s_impMob);
 				outputText("\n\nThe place is swarming with two dozen imps, and none of them look happy to see you.  A number of them take flight while the rest form a ring around you, trapping you!  It looks like you'll have to fight your way out!");
 				menu();
 				addButton(0, "FIGHT!", fightImpHorde);
