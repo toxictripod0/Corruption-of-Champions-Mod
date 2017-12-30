@@ -35,7 +35,7 @@ public function arriveWithLacticWaifuAtCamp():void {
 	//[Name Field.  If left empty, defaults to "Bath Slut"]
 	menu();
 	addButton(0, "Next", nameZeMilkBath);
-	mainView.nameBox.text = "";
+	mainView.promptCharacterName();
 }
 
 

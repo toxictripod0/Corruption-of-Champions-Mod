@@ -210,9 +210,7 @@ private function PCCarriedGooBackHomeII():void {
 	outputText("\n\nWhat will you name her?");
 	menu();
 	addButton(0,"Next",nameZeLatexGoo);
-	mainView.nameBox.text = "";
-	mainView.nameBox.visible = true;
-	mainView.nameBox.width = 165;
+	mainView.promptCharacterName();
 	mainView.nameBox.x = mainView.mainText.x + 5;
 	mainView.nameBox.y = mainView.mainText.y + 3 + mainView.mainText.textHeight;
 }

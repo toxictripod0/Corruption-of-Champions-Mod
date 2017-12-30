@@ -74,9 +74,7 @@
 			clearOutput();
 			outputText(images.showImage("location-ingnam"));
 			outputText("You grew up in the small village of Ingnam, a remote village with rich traditions, buried deep in the wilds.  Every year for as long as you can remember, your village has chosen a champion to send to the cursed Demon Realm.  Legend has it that in years Ingnam has failed to produce a champion, chaos has reigned over the countryside.  Children disappear, crops wilt, and disease spreads like wildfire.  This year, <b>you</b> have been selected to be the champion.\n\n");
-			//if (showSpecialNames) outputText("\n\n\n\n");			
 			outputText("What is your name?");
-
 			/*CODE FROM CMACLOAD HERE
 			Multiple line case. A text field GeneralTextField, positioning a movieclip AskQuestions below it
 			GeneralTextField.wordWrap = true;
@@ -91,13 +89,7 @@
 			addButton(0, "OK", chooseName);
 			mainView.nameBox.x = mainView.mainText.x + 5;
 			mainView.nameBox.y = mainView.mainText.y + 3 + mainView.mainText.textHeight;
-			//OLD
-			//mainView.nameBox.x = 510;
-			//mainView.nameBox.y = 265;
-			mainView.nameBox.text = "";
-			mainView.nameBox.maxChars = 16;
-			mainView.nameBox.restrict = null;
-
+			mainView.promptCharacterName();
 			var preList:Array = [];
 			//function _add(element:Array):void{preList.push({label: element[0], data:element});}
 			//if (CoC_Settings.debugBuild) preList.push( { label: "TestChar", data: [ "TestChar", customTestChar, true, "For debug." ]} );			
@@ -1395,11 +1387,8 @@
 		private function renamePrompt():void {
 			clearOutput();
 			outputText("You may choose to change your name.");
-			mainView.nameBox.visible = true;
-			mainView.nameBox.width = 165;
+			mainView.promptCharacterName();
 			mainView.nameBox.text = player.short;
-			mainView.nameBox.maxChars = 16;
-			mainView.nameBox.restrict = null;
 			menu();
 			addButton(0, "OK", chooseName);
 			addButton(4, "Back", ascensionMenu);

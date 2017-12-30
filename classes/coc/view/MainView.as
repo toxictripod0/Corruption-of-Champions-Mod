@@ -13,6 +13,7 @@
 
 package coc.view {
 import coc.view.UIUtils;
+import flash.text.TextFormat;
 
 import fl.controls.ComboBox;
 import fl.controls.ScrollBarDirection;
@@ -197,14 +198,17 @@ public class MainView extends Block {
 		}));
 		topRow.addElement(newGameButton = new CoCButton({
 			labelText  : 'New Game',
+			toolTipText: "Start a new game.",
 			bitmapClass: ButtonBackground1
 		}));
 		topRow.addElement(dataButton = new CoCButton({
 			labelText  : 'Data',
+			toolTipText: "Save or load your files.",
 			bitmapClass: ButtonBackground2
 		}));
 		topRow.addElement(statsButton = new CoCButton({
 			labelText  : 'Stats',
+			toolTipText: "View your stats.",
 			bitmapClass: ButtonBackground3
 		}));
 		topRow.addElement(levelButton = new CoCButton({
@@ -213,10 +217,12 @@ public class MainView extends Block {
 		}));
 		topRow.addElement(perksButton = new CoCButton({
 			labelText  : 'Perks',
+			toolTipText: "View your perks.",
 			bitmapClass: ButtonBackground5
 		}));
 		topRow.addElement(appearanceButton = new CoCButton({
 			labelText  : 'Appearance',
+			toolTipText: "View your detailed appearance.",
 			bitmapClass: ButtonBackground6
 		}));
 		addElement(textBGTranslucent = new BitmapDataSprite( {
@@ -758,8 +764,18 @@ public class MainView extends Block {
 	}
 	public function hideMainText():void {
 		this.clearTextBackground();
+		this.resetTextFormat();
 		this.mainText.visible = false;
 		this.scrollBar.visible = false;
+	}
+	public function resetTextFormat():void {
+		var normalFormat:TextFormat = new TextFormat();
+		normalFormat.font = "Times New Roman, serif";
+		normalFormat.bold = false;
+		normalFormat.italic = false;
+		normalFormat.underline = false;
+		normalFormat.bullet = false;
+		this.mainText.defaultTextFormat = normalFormat;
 	}
 	
 	public function clearTextBackground():void {
@@ -772,6 +788,14 @@ public class MainView extends Block {
 		if (selection == 0) this.textBGTranslucent.visible = true;
 		if (selection == 1) this.textBGWhite.visible = true;
 		if (selection == 2) this.textBGTan.visible = true;
+	}
+	
+	public function promptCharacterName():void {
+		this.nameBox.visible = true;
+		this.nameBox.width = 165
+		this.nameBox.text = "";
+		this.nameBox.maxChars = 16;
+		this.nameBox.restrict = "a-zA-Z0-9 .'\\-";
 	}
 }
 }

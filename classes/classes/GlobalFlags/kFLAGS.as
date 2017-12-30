@@ -2036,7 +2036,7 @@ public static const FACTORY_TAKEN_GROPLUS:int                                   
 public static const FACTORY_MILKER_BUILT:int                                        = 2028;
 public static const KELT_KILL_PLAN:int                                              = 2029;
 public static const KELT_KILLED:int                                                 = 2030;
-public static const WHITNEY_GONE:int                                                = 2031;
+public static const WHITNEY_GONE:int                                                = 2031; //If you murdered Whitney. You monster. Not yet implemented.
 public static const CODEX_CURRENT_ENTRY:int                                         = 2032;
 public static const CODEX_CURRENT_PAGE:int                                          = 2033;
 public static const CODEX_UNUSED_FLAG_1:int                                         = 2034;

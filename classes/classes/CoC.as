@@ -615,7 +615,17 @@ package classes
 		
 		public function run():void
 		{
+			//Set up stage
+			stage.focus = kGAMECLASS.mainView.mainText;
+			mainView.eventTestInput.x = -10207.5;
+			mainView.eventTestInput.y = -1055.1;
+			mainViewManager.startUpButtons();
+			saves.loadPermObject();
+			mainViewManager.setTheme();
+			mainView.setTextBackground(flags[kFLAGS.TEXT_BACKGROUND_STYLE]);
+			//Now enter the main menu.
 			mainMenu.mainMenu();
+			
 			this.stop();
 			
 			if (_updateHack)

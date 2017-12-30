@@ -17,25 +17,11 @@ package classes
 		//MainMenu - kicks player out to the main menu
 		public function mainMenu():void
 		{
-			kGAMECLASS.stage.focus = kGAMECLASS.mainView.mainText;
-			kGAMECLASS.mainView.eventTestInput.x = -10207.5;
-			kGAMECLASS.mainView.eventTestInput.y = -1055.1;
-			kGAMECLASS.mainViewManager.startUpButtons();
-			kGAMECLASS.saves.loadPermObject();
-			kGAMECLASS.mainViewManager.setTheme();
-			mainView.setTextBackground(flags[kFLAGS.TEXT_BACKGROUND_STYLE]);
 			hideStats();
 			hideMenus();
 			menu();
-			//Reset newgame buttons
-			mainView.newGameButton.hint("Start a new game.","New Game");
-			mainView.dataButton.hint("Save or load your files.","Data");
-			mainView.statsButton.hint("View your stats.","Stats");
-			mainView.perksButton.hint("View your perks.","Perks");
-			mainView.appearanceButton.hint("View your appearance.","Appearance");
 			//Sets game state to 3, used for determining back functionality of save/load menu.
-			kGAMECLASS.gameStateDirectSet(3);
-			clearOutput();
+			getGame().gameStateDirectSet(3);
 			mainView.hideMainText();
 			mainView.creditsBox.visible = false;
 			if (_mainMenu == null) {
@@ -48,7 +34,6 @@ package classes
 					if (player.str > 0) button.hint("Get back to gameplay?");
 				}
 				_mainMenu.visible = true;
-				
 			}
 		}
 
