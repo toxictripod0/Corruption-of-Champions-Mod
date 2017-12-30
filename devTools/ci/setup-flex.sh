@@ -24,6 +24,7 @@ FLEX_MIN_VERSION=$(grep -Po "(?<=<target-player>)(\d*\.\d*)(?=</target-player>)"
 if [ "$FLEX_MIN_VERSION" != "$PLAYER_VERSION" ]
 then
 	echo "Player version mismatch! Flex SDK min version: $FLEX_MIN_VERSION, script player version: $PLAYER_VERSION"
+	echo "Update the PLAYER_VERSION_* variables in devTools/ci/setup-flex.sh to match $FLEX_MIN_VERSION"
 	exit 1
 fi
 
