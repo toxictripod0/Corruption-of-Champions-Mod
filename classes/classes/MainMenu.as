@@ -33,6 +33,7 @@ package classes
 					button.disableIf(player.str <= 0, "Please start a new game or load an existing save file."); //Dirty checking, WHYYYYY?
 					if (player.str > 0) button.hint("Get back to gameplay?");
 				}
+				updateMainMenuTextColours();
 				_mainMenu.visible = true;
 			}
 		}
@@ -82,26 +83,29 @@ package classes
 				width: 60
 			});
 			var revampLogo:TextField = new TextField();
+			revampLogo.name = "revampLogo";
 			revampLogo.height = 40;
 			revampLogo.width = 210;
 			revampLogo.x = Math.floor(MainView.SCREEN_W / 2) + 145;
 			revampLogo.y = Math.floor(MainView.SCREEN_H / 2) - 25;
 			revampLogo.selectable = false;
 			revampLogo.embedFonts = true;
-			revampLogo.defaultTextFormat = new TextFormat(CoCButton.ButtonLabelFontName, 20, null, null, null, null, null, null, "center");
+			revampLogo.defaultTextFormat = new TextFormat(CoCButton.ButtonLabelFontName, 20, mainViewManager.isDarkText() ? 0xc0c0c0 : 0, null, null, null, null, null, "center");
 			revampLogo.htmlText = "With Revamp Mod!";
 			var miniCredit:TextField = new TextField();
+			miniCredit.name = "miniCredit";
 			miniCredit.multiline = true;
 			miniCredit.wordWrap = true;
 			miniCredit.height = 80;
 			miniCredit.width = 1000;
 			miniCredit.x = Math.floor(MainView.SCREEN_W / 2) - (miniCredit.width / 2);
 			miniCredit.y = Math.floor(MainView.SCREEN_H / 2) + 10;
-			miniCredit.defaultTextFormat = new TextFormat("Palatino Linotype, serif", 16, null, null, null, null, null, null, "center", null, null, null, -2);
+			miniCredit.defaultTextFormat = new TextFormat("Palatino Linotype, serif", 16, mainViewManager.isDarkText() ? 0xc0c0c0 : 0, null, null, null, null, null, "center", null, null, null, -2);
 			miniCredit.htmlText = "Created by Fenoxo, Game Mod by Kitteh6660\n";
 			miniCredit.htmlText += "<b>Edited by:</b> Ashi, SoS, Prisoner416, Zeikfried, et al";
 			miniCredit.htmlText += "<b>Open-source contributions by:</b> aimozg, Amygdala, Cmacleod42, Enterprise2001, Fake-Name, Gedan, Yoffy, et al";
 			var disclaimerInfo:TextField = new TextField();
+			disclaimerInfo.name = "disclaimerInfo";
 			disclaimerInfo.multiline = true;
 			disclaimerInfo.wordWrap = true;
 			disclaimerInfo.height = disclaimerBackground.height;
@@ -114,22 +118,24 @@ package classes
 			disclaimerInfo.htmlText += "Please don't play this game if you're under the age of 18 and certainly don't play if strange and exotic fetishes disgust you.\n";
 			disclaimerInfo.htmlText += "<font color=\"dark red\"><b>You have been warned!</b></font>"
 			var versionInfo:TextField = new TextField();
+			versionInfo.name = "versionInfo";
 			versionInfo.multiline = true;
 			versionInfo.height = 80;
 			versionInfo.width = 600;
 			versionInfo.x = MainView.SCREEN_W - versionInfo.width;
 			versionInfo.y = MainView.SCREEN_H - 80;
 			versionInfo.selectable = false;
-			versionInfo.defaultTextFormat = new TextFormat("Palatino Linotype, serif", 16, null, true, null, null, null, null, "right");
+			versionInfo.defaultTextFormat = new TextFormat("Palatino Linotype, serif", 16, mainViewManager.isDarkText() ? 0xc0c0c0 : 0, true, null, null, null, null, "right");
 			versionInfo.htmlText = kGAMECLASS.version + ", " + (CoC_Settings.debugBuild ? "Debug" : "Release") + " Build";
 			versionInfo.htmlText += "Original Game by Fenoxo\nGame Mod by Kitteh6660";
 			var websiteInfo:TextField = new TextField();
+			websiteInfo.name = "websiteInfo";
 			websiteInfo.height = 40;
 			websiteInfo.width = 200;
 			websiteInfo.x = Math.floor(MainView.SCREEN_W / 2) - (websiteInfo.width / 2);
 			websiteInfo.y = Math.floor(MainView.SCREEN_H / 2) + 260;
 			websiteInfo.selectable = false;
-			websiteInfo.defaultTextFormat = new TextFormat("Palatino Linotype, serif", 20, null, true, null, null, "www.fenoxo.com", null, "center");
+			websiteInfo.defaultTextFormat = new TextFormat("Palatino Linotype, serif", 20, mainViewManager.isDarkText() ? 0xc0c0c0 : 0, true, null, null, "www.fenoxo.com", null, "center");
 			websiteInfo.htmlText = "<a href=\"http://www.fenoxo.com/\">www.fenoxo.com</a>";
 			for (var i:int = 0; i < mainMenuButtons.length; i++) {
 				var button:CoCButton = new CoCButton();
@@ -154,6 +160,16 @@ package classes
 			mainMenuContent.addElement(versionInfo);
 			_mainMenu = mainMenuContent;
 			mainView.addElementAt(_mainMenu, 2);
+		}
+		private function updateMainMenuTextColours():void {
+			var elements:Array = ["revampLogo", "miniCredit", "websiteInfo", "versionInfo"];
+			for (var i:int = 0; i < elements.length; i++) {
+				var fmt:TextFormat = new TextFormat();
+				fmt.color = mainViewManager.isDarkText() ? 0xc0c0c0 : 0;
+				var tf:TextField = _mainMenu.getElementByName(elements[i]) as TextField;
+				tf.setTextFormat(fmt);
+			}
+			
 		}
 		public function hideMainMenu():void {
 			if (_mainMenu !== null)

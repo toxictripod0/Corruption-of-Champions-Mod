@@ -1919,10 +1919,8 @@ public function wakeFromBadEnd():void {
 	inDungeon = false;
 	inRoomedDungeon = false;
 	inRoomedDungeonResume = null;
-	if (getGame().inCombat) {
-		combat.clearStatuses();
-		getGame().inCombat = false;
-	}
+	combat.clearStatuses();
+	getGame().inCombat = false;
 	//Restore stats
 	player.HP = player.maxHP();
 	player.fatigue = 0;
