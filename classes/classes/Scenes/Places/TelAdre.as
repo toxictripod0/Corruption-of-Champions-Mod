@@ -1123,19 +1123,7 @@ private function weightLifting():void {
 	//Body changes here
 	//Muscleness boost!
 	outputText(player.modTone(85,5+rand(5)));
-	outputText("\n\nDo you want to hit the showers before you head back to camp?");
-	if (flags[kFLAGS.BROOKE_MET] == 1) {
-		menu();
-		if (flags[kFLAGS.DISABLED_SEX_MACHINE] == 0) {
-			addButton(0,"\"Showers\"",sexMachine.exploreShowers);
-			addButton(1,"Showers",brooke.repeatChooseShower);
-			addButton(4, "Leave", camp.returnToCampUseOneHour);
-		}
-		else {
-			doYesNo(brooke.repeatChooseShower,camp.returnToCampUseOneHour);
-		}
-	}
-	else doYesNo(sexMachine.exploreShowers,camp.returnToCampUseOneHour);
+	promptShowers();
 }
 
 private function goJogging():void {
@@ -1214,14 +1202,24 @@ private function goJogging():void {
 	outputText(player.modThickness(1,5+rand(2)));
 	//Muscleness boost!
 	outputText(player.modTone(100,2+rand(4)));
+	promptShowers();
+}
+
+private function promptShowers():void {
 	outputText("\n\nDo you want to hit the showers before you head back to camp?");
 	if (flags[kFLAGS.BROOKE_MET] == 1) {
 		menu();
-		addButton(0,"\"Showers\"",sexMachine.exploreShowers);
-		addButton(1,"Showers",brooke.repeatChooseShower);
-		addButton(4,"Leave",camp.returnToCampUseOneHour);
+		if (flags[kFLAGS.DISABLED_SEX_MACHINE] == 0) {
+			addButton(0,"\"Showers\"",sexMachine.exploreShowers);
+			addButton(1,"Showers",brooke.repeatChooseShower);
+			addButton(4, "Leave", camp.returnToCampUseOneHour);
+		}
+		else {
+			doYesNo(brooke.repeatChooseShower,camp.returnToCampUseOneHour);
+		}
 	}
-	else doYesNo(sexMachine.exploreShowers, camp.returnToCampUseOneHour);
+	else doYesNo(sexMachine.exploreShowers,camp.returnToCampUseOneHour);
 }
+
 }
 }
