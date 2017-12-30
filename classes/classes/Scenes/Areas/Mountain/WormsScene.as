@@ -246,7 +246,7 @@ package classes.Scenes.Areas.Mountain
 			if (flags[kFLAGS.CAMP_CABIN_FURNITURE_BED] > 0 && flags[kFLAGS.SLEEP_WITH] == "") isEligible = false;
 			if (flags[kFLAGS.ARIAN_MORNING] > 0 || flags[kFLAGS.EMBER_MORNING] > 0) isEligible = false;
 			if (player.hasStatusEffect(StatusEffects.PureCampJojo) && player.hasStatusEffect(StatusEffects.JojoNightWatch)) isEligible = false;
-			if (helFollower.followerHel() && flags[kFLAGS.HEL_GUARDING] > 0) isEligible = false;
+			if (getGame().helFollower.followerHel() && flags[kFLAGS.HEL_GUARDING] > 0) isEligible = false;
 			if (flags[kFLAGS.ANEMONE_WATCH] > 0) isEligible = false;
 			return isEligible;
 		}
