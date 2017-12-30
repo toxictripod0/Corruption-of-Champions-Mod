@@ -1,4 +1,4 @@
-package classes.Scenes 
+package classes 
 {
 	import classes.*
 	import classes.BaseContent;
@@ -17,15 +17,22 @@ package classes.Scenes
 			//If not specified, default to the locked description.
 			if (descUnlocked == "") descUnlocked = descLocked;
 			if (isShadow && achievements[achievement] <= 0) return;
-			//Set text.
-			outputText("<li><b>" + title + ":</b> ");
+			//Set text if unlocked or not.
+			var stringToPut:String = "";
+			stringToPut += "<li><b>" + title + ":</b> ";
 			if (achievements[achievement] > 0) {
-				outputText("<font color=\"#008000\">Unlocked</font> - " + descUnlocked);
+				stringToPut += "<font color=\"#008000\">Unlocked</font> - " + descUnlocked;
 				achievementsEarned++;
 			}
-			else outputText("<font color=\"#800000\">Locked</font> - " + descLocked);
-			if (isShadow) outputText(" - <font color=\"#660066\">Shadow Achievement</font>");
-			outputText("</li>");
+			else {
+				stringToPut += "<font color=\"#800000\">Locked</font> - " + descLocked;
+			}
+			//Shadow flair? Add that.
+			if (isShadow) {
+				stringToPut += " - <font color=\"#660066\">Shadow Achievement</font>";
+			}
+			stringToPut += "</li>";
+			outputText(stringToPut);
 			achievementsTotal++;
 		}
 		
@@ -38,7 +45,7 @@ package classes.Scenes
 			achievementsEarned = 0;
 			achievementsTotal = 0;
 			clearOutput();
-			kGAMECLASS.displayHeader("Achievements");
+			getGame().displayHeader("Achievements");
 			outputText("Note: Some achievements are contradictory and may require multiple playthroughs to obtain every achievement.\n");
 			titleAchievementSection("Storyline"); //4 achievements
 			addAchievement("Newcomer", kACHIEVEMENTS.STORY_NEWCOMER, "Enter the realm of Mareth.");

@@ -131,7 +131,7 @@ package classes
 			var versionInfo:TextField = new TextField();
 			versionInfo.multiline = true;
 			versionInfo.height = 80;
-			versionInfo.width = 400;
+			versionInfo.width = 600;
 			versionInfo.x = MainView.SCREEN_W - versionInfo.width;
 			versionInfo.y = MainView.SCREEN_H - 80;
 			versionInfo.selectable = false;

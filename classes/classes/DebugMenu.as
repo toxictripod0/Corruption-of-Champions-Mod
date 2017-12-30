@@ -1,4 +1,4 @@
-package classes.Scenes 
+package classes 
 {
 	import classes.*;
 	import classes.BodyParts.*;
