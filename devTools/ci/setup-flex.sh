@@ -1,5 +1,5 @@
 #!/bin/sh
-VERSION='4.16.0'
+FLEX_VERSION='4.16.0'
 PLAYER_VERSION_MAJOR='28'
 PLAYER_VERSION_MINOR='0'
 PLAYER_VERSION="$PLAYER_VERSION_MAJOR.$PLAYER_VERSION_MINOR"
@@ -10,12 +10,12 @@ GLOBAL_PLAYER_DIR="frameworks/libs/player/$PLAYER_VERSION"
 GLOBAL_PLAYER_PATH="$GLOBAL_PLAYER_DIR/playerglobal.swc"
 
 echo "==================================="
-echo "Setting up apache flex SDK $VERSION"
+echo "Setting up apache flex SDK $FLEX_VERSION"
 echo "==================================="
 
-wget -N "http://www-eu.apache.org/dist/flex/$VERSION/binaries/apache-flex-sdk-$VERSION-bin.tar.gz"
-tar zxf "apache-flex-sdk-$VERSION-bin.tar.gz"
-cp -r "apache-flex-sdk-$VERSION-bin" "flex"
+wget -N "http://www-eu.apache.org/dist/flex/$FLEX_VERSION/binaries/apache-flex-sdk-$FLEX_VERSION-bin.tar.gz"
+tar zxf "apache-flex-sdk-$FLEX_VERSION-bin.tar.gz"
+cp -r "apache-flex-sdk-$FLEX_VERSION-bin" "flex"
 cd "flex"
 ant -f installer.xml -Dflash.donot.ask=true -Dair.donot.ask=true -Dfontswf.donot.ask=true
 
