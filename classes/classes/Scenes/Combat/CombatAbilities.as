@@ -1403,7 +1403,7 @@ package classes.Scenes.Combat
 			var TheMonster:String      = monster.capitalA + monster.short;
 			var stareTraining:Number   = flags[kFLAGS.BASILISK_RESISTANCE_TRACKER] / 100;
 			var bse:BasiliskSlowDebuff = monster.createOrFindStatusEffect(StatusEffects.BasiliskSlow) as BasiliskSlowDebuff;
-			var slowEffect:Number      = -bse.buffValue('spe');
+			var slowEffect:Number      = bse.count;
 			var oldSpeed:Number        = monster.spe;
 			var speedDiff:int          = 0;
 			var message:String         = "";

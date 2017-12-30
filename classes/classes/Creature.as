@@ -3894,7 +3894,7 @@ package classes
 			return 10;
 		}
 		public function minLust():Number {
-			return 100;
+			return 0;
 		}
 
 		public function maxLust():Number
