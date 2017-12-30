@@ -26,7 +26,6 @@ public function exploreShowers():void {
 		
 		outputText("Do you use it or not?");
 		doYesNo(useTheSexMachine, leaveShowers);
-		addButton(2, "No way!", disableMachineForGood);
 		flags[kFLAGS.GYM_MACHINE_STATUS] = 1;
 	}
 	//Go directly to sex if you know what's in store!
