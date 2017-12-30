@@ -19,6 +19,14 @@ cp -r "apache-flex-sdk-$FLEX_VERSION-bin" "flex"
 cd "flex"
 ant -f installer.xml -Dflash.donot.ask=true -Dair.donot.ask=true -Dfontswf.donot.ask=true
 
+FLEX_MIN_VERSION=$(grep -Po "(?<=<target-player>)(\d*\.\d*)(?=</target-player>)" frameworks/flex-config.xml)
+
+if [ "$FLEX_MIN_VERSION" != "$PLAYER_VERSION" ]
+then
+	echo "Player version mismatch! Flex SDK min version: $FLEX_MIN_VERSION, script player version: $PLAYER_VERSION"
+	exit 1
+fi
+
 echo "Creating $GLOBAL_PLAYER_DIR"
 mkdir -vp $GLOBAL_PLAYER_DIR
 echo "==============================================="
