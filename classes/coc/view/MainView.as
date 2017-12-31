@@ -12,6 +12,8 @@
  ****/
 
 package coc.view {
+import classes.GlobalFlags.kFLAGS;
+import classes.GlobalFlags.kGAMECLASS;
 import coc.view.UIUtils;
 import flash.text.TextFormat;
 
@@ -775,6 +777,7 @@ public class MainView extends Block {
 		normalFormat.italic = false;
 		normalFormat.underline = false;
 		normalFormat.bullet = false;
+		normalFormat.size = kGAMECLASS.flags[kFLAGS.CUSTOM_FONT_SIZE] || 20;
 		this.mainText.defaultTextFormat = normalFormat;
 	}
 	
