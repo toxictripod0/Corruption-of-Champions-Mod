@@ -1846,6 +1846,97 @@ package classes {
 			return description;
 		}
 
+		public static function handsDescript(i_creature:Creature, plural:Boolean = true):String
+		{
+			var text:String = "";
+			var comma:String = "";
+
+			switch (i_creature.arms.type) {
+				case Arms.PREDATOR:
+					switch (i_creature.skin.type) {
+						case Skin.DRAGON_SCALES:
+						case Skin.LIZARD_SCALES:
+						case Skin.FISH_SCALES:
+							text += "scaley";
+							break;
+
+						case Skin.FUR:
+							text += "furry";
+							break;
+
+						case Skin.WOOL:
+							text += "wooly";
+							break;
+
+						case Skin.FEATHERED:
+							text += "feathery";
+							break;
+
+						case Skin.GOO:
+							text += "gooey";
+							break;
+
+						case Skin.PLAIN:
+						default:
+					}
+
+					if (text !== "")
+						comma = ", ";
+
+					switch (i_creature.claws.type) {
+						case Claws.NORMAL:
+							break;
+
+						case Claws.COCKATRICE:
+							text += comma + "taloned";
+							break;
+
+						case Claws.MANTIS:
+							text += comma + "sickle-bearing";
+							break;
+
+						case Claws.LIZARD:
+						case Claws.DRAGON:
+						case Claws.SALAMANDER:
+						case Claws.CAT:
+						case Claws.DOG:
+						case Claws.RAPTOR:
+						case Claws.IMP:
+						case Claws.RED_PANDA:
+						default:
+							text += comma + "clawed";
+					}
+					break;
+
+				case Arms.SPIDER:
+				case Arms.BEE:
+					text += "carapaced";
+					break;
+
+				case Arms.SALAMANDER:
+					text += "scaley, clawed";
+					break;
+
+				case Arms.WOLF:
+				case Arms.RED_PANDA:
+					text += "furry, clawed, paw-like";
+					break;
+
+				case Arms.COCKATRICE:
+					text += "scaley, taloned";
+					break;
+
+				case Arms.HARPY:
+				case Arms.HUMAN:
+				default:
+			}
+
+			if (text !== "")
+				text += " ";
+
+			return text + (plural ? "hands" : "hand");
+		}
+
 		public static function rearBodyDescript(i_creature:Creature):String
 		{
 			return DEFAULT_REAR_BODY_NAMES[i_creature.rearBody.type];
