@@ -1929,6 +1929,32 @@ package classes {
 				case Arms.HARPY:
 				case Arms.HUMAN:
 				default:
+					switch (i_creature.skin.type) {
+						case Skin.DRAGON_SCALES:
+						case Skin.LIZARD_SCALES:
+						case Skin.FISH_SCALES:
+							text += "scaley";
+							break;
+
+						case Skin.FUR:
+							text += "furry";
+							break;
+
+						case Skin.WOOL:
+							text += "wooly";
+							break;
+
+						case Skin.FEATHERED:
+							text += "feathery";
+							break;
+
+						case Skin.GOO:
+							text += "gooey";
+							break;
+
+						case Skin.PLAIN:
+						default:
+					}
 			}
 
 			if (text !== "")
