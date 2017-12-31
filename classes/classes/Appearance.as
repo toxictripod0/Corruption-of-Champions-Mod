@@ -1846,6 +1846,32 @@ package classes {
 			return description;
 		}
 
+		public static function skinnyText(i_creature:Creature, includePlain:Boolean = false):String
+		{
+			switch (i_creature.skin.type) {
+				case Skin.DRAGON_SCALES:
+				case Skin.LIZARD_SCALES:
+				case Skin.FISH_SCALES:
+					return "scaley";
+
+				case Skin.FUR:
+					return "furry";
+
+				case Skin.WOOL:
+					return "wooly";
+
+				case Skin.FEATHERED:
+					return "feathery";
+
+				case Skin.GOO:
+					return "gooey";
+
+				case Skin.PLAIN:
+				default:
+					return includePlain ? "skinny" : "";
+			}
+		}
+
 		public static function handsDescript(i_creature:Creature, plural:Boolean = true):String
 		{
 			var text:String = "";
@@ -1853,32 +1879,7 @@ package classes {
 
 			switch (i_creature.arms.type) {
 				case Arms.PREDATOR:
-					switch (i_creature.skin.type) {
-						case Skin.DRAGON_SCALES:
-						case Skin.LIZARD_SCALES:
-						case Skin.FISH_SCALES:
-							text += "scaley";
-							break;
-
-						case Skin.FUR:
-							text += "furry";
-							break;
-
-						case Skin.WOOL:
-							text += "wooly";
-							break;
-
-						case Skin.FEATHERED:
-							text += "feathery";
-							break;
-
-						case Skin.GOO:
-							text += "gooey";
-							break;
-
-						case Skin.PLAIN:
-						default:
-					}
+					text += skinnyText(i_creature);
 
 					if (text !== "")
 						comma = ", ";
@@ -1929,32 +1930,7 @@ package classes {
 				case Arms.HARPY:
 				case Arms.HUMAN:
 				default:
-					switch (i_creature.skin.type) {
-						case Skin.DRAGON_SCALES:
-						case Skin.LIZARD_SCALES:
-						case Skin.FISH_SCALES:
-							text += "scaley";
-							break;
-
-						case Skin.FUR:
-							text += "furry";
-							break;
-
-						case Skin.WOOL:
-							text += "wooly";
-							break;
-
-						case Skin.FEATHERED:
-							text += "feathery";
-							break;
-
-						case Skin.GOO:
-							text += "gooey";
-							break;
-
-						case Skin.PLAIN:
-						default:
-					}
+						text += skinnyText(i_creature);
 			}
 
 			if (text !== "")
