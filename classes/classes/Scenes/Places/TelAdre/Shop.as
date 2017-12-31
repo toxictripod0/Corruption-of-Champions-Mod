@@ -35,7 +35,7 @@ public class Shop extends TelAdreAbstractContent {
 	}
 
 	protected function confirmBuy(itype:ItemType = null, priceOverride:int = -1, keyItem:String = ""):void {
-		if (player.gems < priceOverride || player.gems < itype.value) {
+		if (player.gems < priceOverride || (itype && player.gems < itype.value)) {
 			outputText("\n\nYou count out your gems and realize it's beyond your price range.");
 			//Goto shop main menu
 			doNext(inside);
