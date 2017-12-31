@@ -686,14 +686,15 @@ public function loadPermObject():void {
 			if (saveFile.data.flags[kFLAGS.TEXT_BACKGROUND_STYLE] != undefined) flags[kFLAGS.TEXT_BACKGROUND_STYLE] = saveFile.data.flags[kFLAGS.TEXT_BACKGROUND_STYLE];
 			if (saveFile.data.flags[kFLAGS.CUSTOM_FONT_SIZE] != undefined) flags[kFLAGS.CUSTOM_FONT_SIZE] = saveFile.data.flags[kFLAGS.CUSTOM_FONT_SIZE];
 			if (saveFile.data.flags[kFLAGS.BACKGROUND_STYLE] != undefined) flags[kFLAGS.BACKGROUND_STYLE] = saveFile.data.flags[kFLAGS.BACKGROUND_STYLE];
-			if (saveFile.data.flags[kFLAGS.IMAGEPACK_ENABLED] != undefined) flags[kFLAGS.IMAGEPACK_ENABLED] = saveFile.data.flags[kFLAGS.IMAGEPACK_ENABLED];
+			if (saveFile.data.flags[kFLAGS.IMAGEPACK_ENABLED] != undefined) 
+				flags[kFLAGS.IMAGEPACK_ENABLED] = saveFile.data.flags[kFLAGS.IMAGEPACK_ENABLED];
+			else
+				flags[kFLAGS.IMAGEPACK_ENABLED] = 1;
 			if (saveFile.data.flags[kFLAGS.SFW_MODE] != undefined) flags[kFLAGS.SFW_MODE] = saveFile.data.flags[kFLAGS.SFW_MODE];
-			if (saveFile.data.flags[kFLAGS.ANIMATE_STATS_BARS] != undefined) {
+			if (saveFile.data.flags[kFLAGS.ANIMATE_STATS_BARS] != undefined)
 				flags[kFLAGS.ANIMATE_STATS_BARS] = saveFile.data.flags[kFLAGS.ANIMATE_STATS_BARS];
-			}
-			else {
+			else
 				flags[kFLAGS.ANIMATE_STATS_BARS] = 1; //Default to ON.
-			}
 			if (saveFile.data.flags[kFLAGS.USE_12_HOURS] != undefined) flags[kFLAGS.USE_12_HOURS] = saveFile.data.flags[kFLAGS.USE_12_HOURS];
 			if (saveFile.data.flags[kFLAGS.AUTO_LEVEL] != undefined) flags[kFLAGS.AUTO_LEVEL] = saveFile.data.flags[kFLAGS.AUTO_LEVEL];
 			if (saveFile.data.flags[kFLAGS.USE_METRICS] != undefined) flags[kFLAGS.USE_METRICS] = saveFile.data.flags[kFLAGS.USE_METRICS];
