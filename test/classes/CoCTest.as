@@ -17,6 +17,9 @@ package classes{
 		[Before]
 		public function runBeforeEveryTest():void {
 			assertThat(StageLocator.stage, not(nullValue()));
+			
+			cut = new CoC(StageLocator.stage);
+			cut.player.createVagina();
 		}
 
 		[Test] 
@@ -27,6 +30,11 @@ package classes{
 		[Test(expected="TypeError")] 
 		public function noInjectedStage():void {
 			cut = new CoC();
+		}
+		
+		[Test]
+		public function parserSmokeTest(): void {
+			cut.doThatTestingThang();
 		}
 	}
 }
