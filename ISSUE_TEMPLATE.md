@@ -3,6 +3,11 @@
 - [ ] Feature request
 - [ ] Other
 
+### Before reporting a bug, please check the following:
+- [ ] Check that the bug is still present in the latest release
+- [ ] Search existing issues first(please do not open duplicate issues!)
+- [ ] Fill out the template - it's there for a reason
+
 ### Overview
 	e.g.: When using a large number of y item the game crashes.
 	
