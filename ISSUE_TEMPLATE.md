@@ -1,3 +1,8 @@
+### Issue type
+- [ ] Bug report
+- [ ] Feature request
+- [ ] Other
+
 ### Overview
 	e.g.: When using a large number of y item the game crashes.
 	
