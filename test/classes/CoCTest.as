@@ -11,22 +11,22 @@ package classes{
 	import classes.CoC;
 	import classes.helper.StageLocator;
 	
-    public class CoCTest {
-        private var cut:CoC;
+	public class CoCTest {
+		private var cut:CoC;
 		
-        [Before]
-        public function runBeforeEveryTest():void {
+		[Before]
+		public function runBeforeEveryTest():void {
 			assertThat(StageLocator.stage, not(nullValue()));
-        }  
-     
-        [Test] 
-        public function injectStageForTest():void {
-            cut = new CoC(StageLocator.stage);
-        }
+		}
+
+		[Test] 
+		public function injectStageForTest():void {
+			cut = new CoC(StageLocator.stage);
+		}
 		
 		[Test(expected="TypeError")] 
-        public function noInjectedStage():void {
-            cut = new CoC();
-        }
-    }
+		public function noInjectedStage():void {
+			cut = new CoC();
+		}
+	}
 }
