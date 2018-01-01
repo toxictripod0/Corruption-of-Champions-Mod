@@ -15,8 +15,6 @@ package classes
 		//Piercing info
 		private var _isPierced:Boolean;
 		private var _pierced:Number;
-		//Not yet, sweet prince. PiercedType current has no uses. But it will, one day.
-		// private var _pierceType:PiercingTypesEnum;
 		private var _pShortDesc:String;
 		private var _pLongDesc:String;
 		
@@ -50,7 +48,6 @@ package classes
 			_pierced = 0;
 			_knotMultiplier = 1;
 			_isPierced = false;
-			//_pierceType = PiercingTypesEnum.NONE;
 			_pShortDesc = "";
 			_pLongDesc = "";
 			_sock = "";
@@ -275,19 +272,6 @@ package classes
 			_isPierced = value;
 		}
 		
-		/*
-		public function get pierceType():PiercingTypesEnum 
-		{
-			return _pierceType;
-		}
-		
-		public function set pierceType(value:PiercingTypesEnum):void 
-		{
-			_pierceType = value;
-		}
-		*/
-
-		//{ region Getter/Setters
 		public function get pShortDesc():String 
 		{
 			return _pShortDesc;
@@ -327,7 +311,5 @@ package classes
 		{
 			_pierced = value;
 		}
-		//} endregion
-
 	}
 }
