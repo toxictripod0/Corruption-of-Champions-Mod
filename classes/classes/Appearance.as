@@ -1852,7 +1852,7 @@ package classes {
 				case Skin.DRAGON_SCALES:
 				case Skin.LIZARD_SCALES:
 				case Skin.FISH_SCALES:
-					return "scaley";
+					return "scaly";
 
 				case Skin.FUR:
 					return "furry";
@@ -1893,7 +1893,7 @@ package classes {
 							break;
 
 						case Claws.MANTIS:
-							text += comma + "sickle-bearing";
+							text += comma + "scythe-bearing";
 							break;
 
 						case Claws.LIZARD:
@@ -1913,6 +1913,12 @@ package classes {
 				case Arms.BEE:
 					text += "carapaced";
 					break;
+
+				/* [INTERMOD: xianxia]
+				case Arms.MANTIS:
+					text += "carapaced, scythe-bearing";
+					break;
+				*/
 
 				case Arms.SALAMANDER:
 					text += "scaley, clawed";
