@@ -9,24 +9,24 @@
 - [ ] Fill out the template - it's there for a reason
 
 ### Overview
-	*e.g.: When using a large number of y item, the game crashes.*
+	e.g.: When using a large number of y item, the game crashes.
 	
 ### Game version
-	*e.g.: 1.0.2_mod_1.4*
+	e.g.: 1.0.2_mod_1.4
 	
 ### Expected behaviour
-	*e.g.: Can use as many y item as I want.*
+	e.g.: Can use as many y item as I want.
 	
 ### Actual behaviour
-	*e.g.: The game crashes after using around z number of item y.*
+	e.g.: The game crashes after using around z number of item y.
 
 ### How often can this be reproduced?
-	*e.g.: always, 4 out of 10 times, ect.*
+	e.g.: always, 4 out of 10 times, ect.
 
 ### Steps to reproduce the issue
 
-1. *e.g.: Switch to debug mode*
-2. *e.g.: Try to eat n number of item y*
+1. e.g.: Switch to debug mode
+2. e.g.: Try to eat n number of item y
 3.
 
 If possible, attach a save file that reproduces the issue.
