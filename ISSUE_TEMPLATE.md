@@ -9,13 +9,13 @@
 - [ ] Fill out the template - it's there for a reason
 
 ### Overview
-	e.g.: When using a large number of y item the game crashes.
+	e.g.: When using a large number of y item, the game crashes.
 	
 ### Game version
 	e.g.: 1.0.2_mod_1.4
 	
 ### Expected behaviour
-	e.g.: Can use as many y item as i want.
+	e.g.: Can use as many y item as I want.
 	
 ### Actual behaviour
 	e.g.: The game crashes after using around z number of item y.
@@ -30,4 +30,4 @@
 3.
 
 If possible, attach a save file that reproduces the issue.
-Please be aware that any files uploaded here are publicly accessible and cannot be deleted (but the link to them can be removed).
+Please be aware that any files uploaded here are publicly accessible and cannot be deleted (however, the link to them can be removed).
