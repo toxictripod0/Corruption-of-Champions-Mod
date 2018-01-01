@@ -2,9 +2,13 @@ package classes
 {
 	import classes.CockTypesEnum;
 	import classes.internals.Utils;
+	import mx.logging.ILogger;
+	import classes.internals.LoggerFactory;
 
 	public class Cock
-	{		
+	{
+		private static const LOGGER:ILogger = LoggerFactory.getLogger(Cock);
+		
 		private var _cockLength:Number;
 		private var _cockThickness:Number;		
 		private var _cockType:CockTypesEnum;	//See CockTypesEnum.as for all cock types
@@ -63,21 +67,19 @@ package classes
 		{
 			
 			if (lengthDelta === 0) {
-				//trace("Whoops! growCock called with 0, aborting...");
+				LOGGER.error("growCock called with 0, aborting...")
 				return lengthDelta;
 			}
 			
 			var threshhold:int = 0;
-			
-			//trace("growcock starting at:" +lengthDelta);
-
+			LOGGER.debug("growcock starting at: {0}", lengthDelta);
 
 			if (lengthDelta > 0) { // growing
-				//trace("and growing...");
+				LOGGER.debug("and growing...");
 				threshhold = 24;
 				// BigCock Perk increases incoming change by 50% and adds 12 to the length before diminishing returns set in
 				if (bigCock) {
-					//trace("growCock found BigCock Perk");
+					LOGGER.debug("growCock found BigCock Perk");
 					lengthDelta *= 1.5;
 					threshhold += 12;
 				}
@@ -86,11 +88,11 @@ package classes
 					threshhold *= 2;
 				// Modify growth for cock socks
 				if (sock === "scarlet") {
-					//trace("growCock found Scarlet sock");
+					LOGGER.debug("growCock found Scarlet sock");
 					lengthDelta *= 1.5;
 				}
 				else if (sock === "cobalt") {
-					//trace("growCock found Cobalt sock");
+					LOGGER.debug("growCock found Cobalt sock");
 					lengthDelta *= .5;
 				}
 				// Do diminishing returns
@@ -100,12 +102,12 @@ package classes
 					lengthDelta /= 2;
 			}
 			else {
-				//trace("and shrinking...");
+				LOGGER.debug("and shrinking...");
 				
 				threshhold = 0;
 				// BigCock Perk doubles the incoming change value and adds 12 to the length before diminishing returns set in
 				if (bigCock) {
-					//trace("growCock found BigCock Perk");
+					LOGGER.debug("growCock found BigCock Perk");
 					lengthDelta *= 0.5;
 					threshhold += 12;
 				}
@@ -114,11 +116,11 @@ package classes
 					threshhold += 12;
 				// Modify growth for cock socks
 				if (sock === "scarlet") {
-					//trace("growCock found Scarlet sock");
+					LOGGER.debug("growCock found Scarlet sock");
 					lengthDelta *= 0.5;
 				}
 				else if (sock === "cobalt") {
-					//trace("growCock found Cobalt sock");
+					LOGGER.debug("growCock found Cobalt sock");
 					lengthDelta *= 1.5;
 				}
 				// Do diminishing returns
@@ -128,7 +130,7 @@ package classes
 					lengthDelta /= 2;
 			}
 
-			//trace("then changing by: " + lengthDelta);
+			LOGGER.debug("then changing by: {0}", lengthDelta);
 
 			cockLength += lengthDelta;
 			
@@ -213,7 +215,7 @@ package classes
 					increase++;
 				}
 			}
-			//trace("thickenCock called and thickened by: " + amountGrown);
+			LOGGER.debug("thickenCock called and thickened by: {0}", amountGrown);
 			return amountGrown;
 		}	
 		
