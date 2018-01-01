@@ -10,9 +10,12 @@ package classes{
 	
 	import classes.CoC;
 	import classes.helper.StageLocator;
+	import classes.helper.FireButtonEvent;
+	import classes.GlobalFlags.kGAMECLASS;
 	
 	public class CoCTest {
 		private var cut:CoC;
+		private var fireButton:FireButtonEvent;
 		
 		[Before]
 		public function runBeforeEveryTest():void {
@@ -20,6 +23,8 @@ package classes{
 			
 			cut = new CoC(StageLocator.stage);
 			cut.player.createVagina();
+			
+			fireButton = new FireButtonEvent(kGAMECLASS.mainView, CoC.MAX_BUTTON_INDEX);
 		}
 
 		[Test] 
@@ -35,6 +40,14 @@ package classes{
 		[Test]
 		public function parserSmokeTest(): void {
 			cut.doThatTestingThang();
+		}
+		
+		[Test]
+		public function eventTesterSmokeTest(): void {
+			cut.eventTester();
+			
+			fireButton.fireButtonClick(0);
+			fireButton.fireButtonClick(4);
 		}
 	}
 }
