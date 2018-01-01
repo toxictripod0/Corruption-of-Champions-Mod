@@ -1846,6 +1846,105 @@ package classes {
 			return description;
 		}
 
+		public static function skinnyText(i_creature:Creature, includePlain:Boolean = false):String
+		{
+			switch (i_creature.skin.type) {
+				case Skin.DRAGON_SCALES:
+				case Skin.LIZARD_SCALES:
+				case Skin.FISH_SCALES:
+					return "scaly";
+
+				case Skin.FUR:
+					return "furry";
+
+				case Skin.WOOL:
+					return "wooly";
+
+				case Skin.FEATHERED:
+					return "feathery";
+
+				case Skin.GOO:
+					return "gooey";
+
+				case Skin.PLAIN:
+				default:
+					return includePlain ? "skinny" : "";
+			}
+		}
+
+		public static function handsDescript(i_creature:Creature, plural:Boolean = true):String
+		{
+			var text:String = "";
+			var comma:String = "";
+
+			switch (i_creature.arms.type) {
+				case Arms.PREDATOR:
+					text += skinnyText(i_creature);
+
+					if (text !== "")
+						comma = ", ";
+
+					switch (i_creature.claws.type) {
+						case Claws.NORMAL:
+							break;
+
+						case Claws.COCKATRICE:
+							text += comma + "taloned";
+							break;
+
+						case Claws.MANTIS:
+							text += comma + "scythe-bearing";
+							break;
+
+						case Claws.LIZARD:
+						case Claws.DRAGON:
+						case Claws.SALAMANDER:
+						case Claws.CAT:
+						case Claws.DOG:
+						case Claws.RAPTOR:
+						case Claws.IMP:
+						case Claws.RED_PANDA:
+						default:
+							text += comma + "clawed";
+					}
+					break;
+
+				case Arms.SPIDER:
+				case Arms.BEE:
+					text += "carapaced";
+					break;
+
+				/* [INTERMOD: xianxia]
+				case Arms.MANTIS:
+					text += "carapaced, scythe-bearing";
+					break;
+				*/
+
+				case Arms.SALAMANDER:
+					text += "scaley, clawed";
+					break;
+
+				case Arms.WOLF:
+				case Arms.RED_PANDA:
+					text += "furry, clawed, paw-like";
+					break;
+
+				case Arms.COCKATRICE:
+					text += "scaley, taloned";
+					break;
+
+				case Arms.HARPY:
+				case Arms.HUMAN:
+				default:
+						text += skinnyText(i_creature);
+			}
+
+			if (text !== "")
+				text += " ";
+
+			return text + (plural ? "hands" : "hand");
+		}
+
 		public static function rearBodyDescript(i_creature:Creature):String
 		{
 			return DEFAULT_REAR_BODY_NAMES[i_creature.rearBody.type];

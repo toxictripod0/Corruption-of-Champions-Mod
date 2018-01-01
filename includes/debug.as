@@ -101,6 +101,8 @@ public function doThatTestingThang():void
 * \[cockhead\] - [cockhead]
 * \[vagorass\] - [vagorass]
 * \[hairorfur\] - [hairorfur]
+* \[hand\] - [hand]
+* \[hands\] - [hands]
 * \[pg\] - [pg] (This is a shortcut to two newlines. This should be two lines below the \[pg\])
 
 

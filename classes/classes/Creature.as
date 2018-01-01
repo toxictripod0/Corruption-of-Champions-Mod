@@ -3602,7 +3602,12 @@ package classes
 
 			return description;
 		}
-		
+
+		public function handsDescript(plural:Boolean = true):String
+		{
+			return Appearance.handsDescript(this, plural);
+		}
+
 		public function assholeDescript():String
 		{
 			return Appearance.assholeDescript(this);
