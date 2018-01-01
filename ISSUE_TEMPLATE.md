@@ -20,6 +20,9 @@
 ### Actual behaviour
 	e.g.: The game crashes after using around z number of item y.
 
+### How often can this be reproduced?
+	e.g.: always, 4 out of 10 times, ect.
+
 ### Steps to reproduce the issue
 
 1. e.g.: Switch to debug mode
