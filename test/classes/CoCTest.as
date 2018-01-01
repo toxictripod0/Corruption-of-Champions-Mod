@@ -46,8 +46,9 @@ package classes{
 		public function eventTesterSmokeTest(): void {
 			cut.eventTester();
 			
-			fireButton.fireButtonClick(0);
-			fireButton.fireButtonClick(4);
+			//Button presses are required to stop the test from hanging
+			fireButton.fireButtonClick(0); //press 'proceed' button
+			fireButton.fireButtonClick(4); //press 'exit' button
 		}
 	}
 }
