@@ -234,6 +234,21 @@ package classes.internals
 			
 			assertThat(serializedObject, hasProperties({serializationVersion: SERIAL_VERSION}));
 		}
+
+		[Test(expected="RangeError")]
+		public function serializedVersionCheckThrowErrorGreater():void {
+			SerializationUtils.serializedVersionCheckThrowError(serializedObject, 1);
+		}
+		
+		[Test]
+		public function serializedVersionCheckThrowErrorEqual():void {
+			SerializationUtils.serializedVersionCheckThrowError(serializedObject, 2);
+		}
+		
+		[Test]
+		public function serializedVersionCheckThrowErrorLess():void {
+			SerializationUtils.serializedVersionCheckThrowError(serializedObject, 3);
+		}
 	}
 }
 
