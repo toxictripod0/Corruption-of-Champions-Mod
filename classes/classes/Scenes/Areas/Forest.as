@@ -262,7 +262,8 @@ package classes.Scenes.Areas
 			LOGGER.debug("Deserializing  {0}...", this);
 			relativeRootObject = SerializationUtils.initializeObject(relativeRootObject);
 			
-			SerializationUtils.serializedVersionCheck(relativeRootObject, SERIALIZATION_VERSION);
+			SerializationUtils.serializedVersionCheckThrowError(relativeRootObject, SERIALIZATION_VERSION);
+			
 			upgradeSerializationVersion(relativeRootObject);
 			
 			this._explorationCount = relativeRootObject[SERIALIZATION_EXPLORED_COUNTER_PROPERTY];

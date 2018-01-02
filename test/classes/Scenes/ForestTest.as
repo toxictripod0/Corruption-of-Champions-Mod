@@ -17,7 +17,7 @@ package classes.Scenes{
 	import classes.Scenes.Areas.Forest;
 	import classes.StatusEffects;
 	
-    public class ForestTest {
+	public class ForestTest {
 		private static const FOREST_EXPLORE_COUNT:int = 42;
 		
 		private static const FOREST_EXPLORE_PROPERTY:String = "exploredCounter";
@@ -125,5 +125,13 @@ package classes.Scenes{
 			
 			cut.deserialize(serializedObject);
 		}
-    }
+
+		[Test(expected="RangeError")]
+		public function deserializeFromNewerVersion():void {
+			serializedObject[VERSION_PROPERTY] = int.MAX_VALUE;
+			serializedObject[FOREST_EXPLORE_PROPERTY] = FOREST_EXPLORE_COUNT;
+			
+			cut.deserialize(serializedObject);
+		}
+	}
 }
