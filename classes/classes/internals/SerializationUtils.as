@@ -145,5 +145,32 @@ package classes.internals
 			
 			return true;
 		}
+		
+		/**
+		 * Check the version of the serialized data and compare it with the current version. Throws a Exception
+		 * if the version is newer.
+		 * @param	relativeRootObject object that contains serialized data
+		 * @throws RangeError if the stored version is newer than the current version
+		 */
+		public static function serializedVersionCheckThrowError(relativeRootObject:*, expectedVersion:int):void {
+			if (!SerializationUtils.serializedVersionCheck(relativeRootObject, expectedVersion)) {
+				throw new RangeError("Stored version is newer than the current version");
+			}
+		}
+		
+		/**
+		 * Check that the passed object is defined.
+		 * Will initalize with a empty array if undefined or null.
+		 * If the object is defined, then it will be returned.
+		 * @param	object to check and initialize
+		 * @return a valid object. Needed because of how ActionScript handles references
+		 */
+		public static function initializeObject(object:*):* {
+			if (object === undefined || object === null) {
+				object = [];
+			}
+			
+			return object;
+		}
 	}
 }

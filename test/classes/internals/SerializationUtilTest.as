@@ -209,6 +209,46 @@ package classes.internals
 		public function serializedVersionCheckSerializedLess():void {
 			assertThat(SerializationUtils.serializedVersionCheck(serializedObject, 3), equalTo(true));
 		}
+		
+		[Test]
+		public function checkAndInitializeObjectNull():void {
+			serializedObject = null;
+			
+			serializedObject = SerializationUtils.initializeObject(serializedObject);
+			
+			assertThat(serializedObject, notNullValue());
+		}
+		
+		[Test]
+		public function checkAndInitializeObjectUndefined():void {
+			serializedObject = undefined;
+			
+			serializedObject = SerializationUtils.initializeObject(serializedObject);
+			
+			assertThat(serializedObject, notNullValue());
+		}
+		
+		[Test]
+		public function checkAndInitializeObjectDefined():void {
+			serializedObject = SerializationUtils.initializeObject(serializedObject);
+			
+			assertThat(serializedObject, hasProperties({serializationVersion: SERIAL_VERSION}));
+		}
+
+		[Test(expected="RangeError")]
+		public function serializedVersionCheckThrowErrorGreater():void {
+			SerializationUtils.serializedVersionCheckThrowError(serializedObject, 1);
+		}
+		
+		[Test]
+		public function serializedVersionCheckThrowErrorEqual():void {
+			SerializationUtils.serializedVersionCheckThrowError(serializedObject, 2);
+		}
+		
+		[Test]
+		public function serializedVersionCheckThrowErrorLess():void {
+			SerializationUtils.serializedVersionCheckThrowError(serializedObject, 3);
+		}
 	}
 }
 
