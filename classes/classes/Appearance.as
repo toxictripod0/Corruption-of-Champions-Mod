@@ -508,7 +508,7 @@ package classes {
 					break;
 				case CockTypesEnum.ECHIDNA:
 					if (rand(2) >= 1) cockWord += randomChoice("strange ", "four-headed ", "exotic ", "unusual ");
-					if (rand(4) >= 1) cockWord += randomChoice("echidna");
+					if (rand(4) >= 1) cockWord += "echidna ";
 					break;
 				case CockTypesEnum.FOX:
 					if (rand(2) >= 1) cockWord += randomChoice("pointed ", "knotty ", "knotted", "bestial ", "animalistic ");
