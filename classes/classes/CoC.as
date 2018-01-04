@@ -662,7 +662,7 @@ package classes
 		{
 			// Inlined call from lib/src/coc/view/MainView.as
 			// TODO: When flags goes away, if it goes away, replace this with the appropriate settings thing.
-			if (choice <= 0 || choice == null || flags[kFLAGS.SHOW_SPRITES_FLAG] == 1)
+			if (choice <= 0 || choice == null || flags[kFLAGS.SHOW_SPRITES_FLAG] == 0)
 			{
 				mainViewManager.hideSprite();
 			}
