@@ -222,5 +222,10 @@
 				LOGGER.warn("Stretch counter was not loaded, setting to {0}", this.recoveryProgress);
 			}
 		}
+		
+		public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 
+		{
+			//TODO sort out legacy loading code
+		}
 	}
 }

@@ -4,6 +4,7 @@ package classes.internals
 	import flash.errors.IllegalOperationError;
 	import classes.internals.LoggerFactory;
 	import mx.logging.ILogger;
+	import classes.internals.ISerializable;
 	
 	/**
 	 * A class providing utility methods to make serialization and deserialization easier.
