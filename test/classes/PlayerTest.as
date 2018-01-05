@@ -23,6 +23,8 @@ package classes
 		private const MAX_SUPPORTED_VAGINAS:Number = 2;
 
 		private var impPlayer:Player;
+		private var minoPlayer:Player;
+		private var cowPlayer:Player;
 
 		private function createVaginas(numberOfVaginas:Number, instance:Player):void
 		{
@@ -60,6 +62,14 @@ package classes
 			instance.breastRows[0].breastRating = BreastCup.FLAT;
 		}
 
+		private function removeAllVags(instance:Player):void
+		{
+			if (instance.vaginas.length === 0)
+				return;
+
+			instance.removeVagina(0, instance.vaginas.length);
+		}
+
 		[BeforeClass]
 		public static function setUpClass():void
 		{
@@ -86,6 +96,25 @@ package classes
 			impPlayer.horns.type = Horns.IMP;
 			impPlayer.arms.type = Arms.PREDATOR;
 			impPlayer.claws.type = Claws.IMP;
+
+			minoPlayer = new Player();
+			minoPlayer.face.type = Face.COW_MINOTAUR;
+			minoPlayer.ears.type = Ears.COW;
+			minoPlayer.tail.type = Tail.COW;
+			minoPlayer.horns.type = Horns.COW_MINOTAUR;
+			minoPlayer.lowerBody.type = LowerBody.HOOFED;
+			minoPlayer.tallness = 100;
+			minoPlayer.createCock(5.5, 1, CockTypesEnum.HORSE);
+
+			cowPlayer = new Player();
+			cowPlayer.ears.type = Ears.COW;
+			cowPlayer.tail.type = Tail.COW;
+			cowPlayer.horns.type = Horns.COW_MINOTAUR;
+			cowPlayer.lowerBody.type = LowerBody.HOOFED;
+			cowPlayer.tallness = 73;
+			cowPlayer.createVagina();
+			cowPlayer.createBreastRow(5);
+			cowPlayer.breastRows[0].lactationMultiplier = 3;
 		}
 
 		[Test]
@@ -179,6 +208,39 @@ package classes
 			removeAllBreasts(humanPlayer); // auto-creates a breast row, if none exists
 
 			assertThat(humanPlayer.humanScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testMinoScore():void
+		{
+			removeAllVags(minoPlayer);
+
+			assertThat(minoPlayer.minoScore(), greaterThan(0));
+		}
+
+
+		[Test]
+		public function testVagMinoScore():void
+		{
+			minoPlayer.createVagina();
+
+			assertThat(minoPlayer.minoScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testCowScore():void
+		{
+			cowPlayer.face.type = Face.HUMAN;
+
+			assertThat(cowPlayer.cowScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testCowFaceCowScore():void
+		{
+			cowPlayer.face.type = Face.COW_MINOTAUR;
+
+			assertThat(cowPlayer.cowScore(), greaterThan(0));
 		}
 
 		[Test]
