@@ -22,7 +22,6 @@ package classes.Scenes
 	public class Exploration extends BaseContent implements ISerializable
 	{
 		private  static const SERIALIZATION_VERSION_PROPERTY:String = "serializationVersion";
-		private static const FOREST_EXPLORED_COUNTER_PROPERTY:String = "forestExploredCounter";
 		
 		private static const LOGGER:ILogger = LoggerFactory.getLogger(Exploration);
 		public static const SERIALIZATION_VERSION:int = 1;
