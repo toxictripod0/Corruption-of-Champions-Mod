@@ -263,8 +263,9 @@ package classes.Scenes.Areas
 			relativeRootObject = SerializationUtils.initializeObject(relativeRootObject);
 			
 			SerializationUtils.serializedVersionCheckThrowError(relativeRootObject, SERIALIZATION_VERSION);
+			var version:int = SerializationUtils.serializationVersion(relativeRootObject);
 			
-			upgradeSerializationVersion(relativeRootObject);
+			upgradeSerializationVersion(relativeRootObject, version);
 			
 			this._explorationCount = relativeRootObject[SERIALIZATION_EXPLORED_COUNTER_PROPERTY];
 			LOGGER.debug("Forest explore count: {0}", _explorationCount);
@@ -276,10 +277,8 @@ package classes.Scenes.Areas
 		 * deserialization code.
 		 * @param	relativeRootObject the loaded serialized data
 		 */
-		private function upgradeSerializationVersion(relativeRootObject:*):void {
-			var version:int = SerializationUtils.serializationVersion(relativeRootObject);
-			
-			switch (version) {
+		public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void {
+			switch (serializedDataVersion) {
 				case 0: {
 					LOGGER.debug("Version was 0, handling legacy data...");
 					relativeRootObject[SERIALIZATION_EXPLORED_COUNTER_PROPERTY] = flags[kFLAGS.TIMES_EXPLORED_FOREST];

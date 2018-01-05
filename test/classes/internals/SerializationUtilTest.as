@@ -282,6 +282,11 @@ class SerializationDummy implements ISerializable
 		this.foo = relativeRootObject.foo;
 		this.bar = relativeRootObject.bar;
 	}
+	
+	public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 
+	{
+		
+	}
 }
 
 class AMFSerializationDummy implements ISerializableAMF

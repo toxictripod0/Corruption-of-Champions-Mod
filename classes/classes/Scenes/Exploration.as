@@ -625,16 +625,16 @@ package classes.Scenes
 			relativeRootObject = SerializationUtils.initializeObject(relativeRootObject);
 			
 			SerializationUtils.serializedVersionCheck(relativeRootObject, SERIALIZATION_VERSION);
-			upgradeSerializationVersion(relativeRootObject);
+			var version:int = SerializationUtils.serializationVersion(relativeRootObject);
+			upgradeSerializationVersion(relativeRootObject, version);
 		}
 		
 		/**
 		 * Upgrade from an earlier version of the serialized data.
 		 * @param	relativeRootObject the loaded serialized data
 		 */
-		private function upgradeSerializationVersion(relativeRootObject:*):void {
-			var version:int = SerializationUtils.serializationVersion(relativeRootObject);
-			switch (version) {
+		public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void {
+			switch (serializedDataVersion) {
 				case 0: {
 					LOGGER.debug("Version was 0, handling legacy data...");
 				}
