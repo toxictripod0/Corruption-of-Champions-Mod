@@ -5,6 +5,7 @@ package classes
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.PerkLib;
 	import classes.Player;
+	import classes.Scenes.Areas.VolcanicCrag.BehemothScene;
 	import classes.helper.StageLocator;
 	import classes.internals.IRandomNumber;
 	import classes.internals.RandomNumber;
@@ -21,14 +22,17 @@ package classes
 	public class PlayerTest 
 	{
 		private const MAX_SUPPORTED_VAGINAS:Number = 2;
+		private const MAX_SUPPORTED_BREAST_ROWS:Number = 10;
 
 		private var impPlayer:Player;
 		private var minoPlayer:Player;
 		private var cowPlayer:Player;
+		private var wolfPlayer:Player;
+		private var dogPlayer:Player;
 
 		private function createVaginas(numberOfVaginas:Number, instance:Player):void
 		{
-			for(var i:Number = 0; i < numberOfVaginas; i++) {
+			for (var i:Number = 0; i < numberOfVaginas; i++) {
 				instance.createVagina();
 			}
 		}
@@ -36,6 +40,19 @@ package classes
 		private function createMaxVaginas(instance:Player):void
 		{
 			createVaginas(MAX_SUPPORTED_VAGINAS, instance);
+		}
+
+		private function createBreastRows(numberOfRows:Number, instance:Player):void
+		{
+			removeAllBreasts(instance);
+			for (var i:Number = 1; i < numberOfRows; i++) {
+				instance.createBreastRow();
+			}
+		}
+
+		private function createMaxBreastRows(instance:Player):void
+		{
+			createBreastRows(MAX_SUPPORTED_BREAST_ROWS, instance);
 		}
 
 		private function removeExtraBreastRows(instance:Player):void
@@ -126,6 +143,23 @@ package classes
 			cowPlayer.createVagina();
 			cowPlayer.createBreastRow(5);
 			cowPlayer.breastRows[0].lactationMultiplier = 3;
+
+			wolfPlayer = new Player();
+			createCock(CockTypesEnum.WOLF, wolfPlayer);
+			wolfPlayer.face.type = Face.WOLF;
+			wolfPlayer.ears.type = Ears.WOLF;
+			wolfPlayer.tail.type = Tail.WOLF;
+			wolfPlayer.lowerBody.type = LowerBody.WOLF;
+			wolfPlayer.eyes.type = Eyes.WOLF;
+			wolfPlayer.skin.type = Skin.FUR;
+
+			dogPlayer = new Player();
+			createCock(CockTypesEnum.DOG, dogPlayer);
+			dogPlayer.face.type = Face.DOG;
+			dogPlayer.ears.type = Ears.DOG;
+			dogPlayer.tail.type = Tail.DOG;
+			dogPlayer.lowerBody.type = LowerBody.DOG;
+			dogPlayer.skin.type = Skin.FUR;
 		}
 
 		[Test]
@@ -282,6 +316,126 @@ package classes
 			beePlayer.wings.type = Wings.BEE_LIKE_SMALL;
 
 			assertThat(beePlayer.beeScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testFerretScore():void
+		{
+			var ferretPlayer:Player = new Player();
+			ferretPlayer.face.type = Face.FERRET;
+			ferretPlayer.ears.type = Ears.FERRET;
+			ferretPlayer.tail.type = Tail.FERRET;
+			ferretPlayer.lowerBody.type = LowerBody.FERRET;
+			ferretPlayer.skin.type = Skin.FUR;
+
+			assertThat(ferretPlayer.ferretScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testMaleWolfScore():void
+		{
+			removeAllBreasts(wolfPlayer);
+
+			assertThat(wolfPlayer.wolfScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testHermWolfScore():void
+		{
+			createBreastRows(4, wolfPlayer);
+
+			assertThat(wolfPlayer.wolfScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testHermLottaBreastRowsWolfScore():void
+		{
+			createMaxBreastRows(wolfPlayer);
+
+			assertThat(wolfPlayer.wolfScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testMaleDogScore():void
+		{
+			removeAllBreasts(dogPlayer);
+
+			assertThat(dogPlayer.dogScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testHermDogScore():void
+		{
+			createBreastRows(3, dogPlayer);
+
+			assertThat(dogPlayer.dogScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testHermLottaBreastRowsDogScore():void
+		{
+			createMaxBreastRows(dogPlayer);
+
+			assertThat(dogPlayer.dogScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testMouseScore():void
+		{
+			var mousePlayer:Player = new Player();
+			mousePlayer.ears.type = Ears.MOUSE;
+			mousePlayer.tail.type = Tail.MOUSE;
+			mousePlayer.face.type = Face.MOUSE;
+			mousePlayer.skin.type = Skin.FUR;
+			mousePlayer.tallness = 30;
+
+			assertThat(mousePlayer.mouseScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testRaccoonScore():void
+		{
+			var raccoonPlayer:Player = new Player();
+			raccoonPlayer.face.type = Face.RACCOON;
+			raccoonPlayer.ears.type = Ears.RACCOON;
+			raccoonPlayer.tail.type = Tail.RACCOON;
+			raccoonPlayer.lowerBody.type = LowerBody.RACCOON;
+			raccoonPlayer.balls = 2;
+			raccoonPlayer.skin.type = Skin.FUR;
+
+			assertThat(raccoonPlayer.raccoonScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testFoxScore():void
+		{
+			// No need to test variations of breastrow-count yet
+			var foxPlayer:Player = new Player();
+			createBreastRows(4, foxPlayer);
+			createCock(CockTypesEnum.FOX, foxPlayer);
+			foxPlayer.face.type = Face.FOX;
+			foxPlayer.ears.type = Ears.FOX;
+			foxPlayer.tail.type = Tail.FOX;
+			foxPlayer.lowerBody.type = LowerBody.FOX;
+			foxPlayer.skin.type = Skin.FUR;
+
+			assertThat(foxPlayer.foxScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testCatScore():void
+		{
+			// No need to test variations of breastrow-count yet
+			var catPlayer:Player = new Player();
+			createBreastRows(3, catPlayer);
+			createCock(CockTypesEnum.CAT, catPlayer);
+			catPlayer.face.type = Face.CAT;
+			catPlayer.ears.type = Ears.CAT;
+			catPlayer.tail.type = Tail.CAT;
+			catPlayer.lowerBody.type = LowerBody.CAT;
+			catPlayer.skin.type = Skin.FUR;
+
+			assertThat(catPlayer.catScore(), greaterThan(0));
 		}
 
 		[Test]
