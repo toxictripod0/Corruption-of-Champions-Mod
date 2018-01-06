@@ -276,6 +276,24 @@ package classes.internals
 			
 			SerializationUtils.deserialize(serializedObject, dummy);
 		}
+		
+		[Test(expected = "ArgumentError")]
+		public function serializeWithInvalidRootObject():void {
+			SerializationUtils.serialize(null, dummy);
+		}
+		
+		
+		[Test(expected = "ArgumentError")]
+		public function serializeWithInvalidClassInstance():void {
+			SerializationUtils.serialize(serializedObject, null);
+		}
+		
+		[Test]
+		public function serialize():void {
+			SerializationUtils.serialize(serializedObject, dummy);
+			
+			assertThat(serializedObject, hasProperties({foo: -1, bar: -1, serializationVersion: SERIAL_VERSION}));
+		}
 	}
 }
 
