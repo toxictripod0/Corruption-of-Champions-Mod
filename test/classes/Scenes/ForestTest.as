@@ -94,13 +94,6 @@ package classes.Scenes{
 		}
 		
 		[Test]
-		public function serializeExplorationVersion():void {
-			cut.serialize(serializedObject);
-			
-			assertThat(serializedObject, hasProperties({serializationVersion: 1}));
-		}
-		
-		[Test]
 		public function deserializeFromVersion1():void {
 			serializedObject[VERSION_PROPERTY] = 1;
 			serializedObject[FOREST_EXPLORE_PROPERTY] = FOREST_EXPLORE_COUNT;

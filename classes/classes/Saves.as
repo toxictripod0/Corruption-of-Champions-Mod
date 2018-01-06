@@ -1265,7 +1265,7 @@ private function serializeExploration(saveFile:*):void {
 	saveFile.data.area.forest = [];
 	
 	SerializationUtils.serialize(saveFile.data.exploration, kGAMECLASS.exploration);
-	kGAMECLASS.forest.serialize(saveFile.data.area.forest);
+	SerializationUtils.serialize(saveFile.data.area.forest, kGAMECLASS.forest);
 }
 
 public function restore(slotName:String):void

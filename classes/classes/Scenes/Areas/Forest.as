@@ -251,9 +251,6 @@ package classes.Scenes.Areas
 		
 		public function serialize(relativeRootObject:*):void 
 		{
-			LOGGER.debug("Serializing {0}...", this);
-			relativeRootObject[SERIALIZATION_VERSION_PROPERTY] = SERIALIZATION_VERSION;
-			
 			relativeRootObject[SERIALIZATION_EXPLORED_COUNTER_PROPERTY] = _explorationCount;
 		}
 		
