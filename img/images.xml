@@ -497,13 +497,9 @@
 				<ImageFile>./img/badend-demonmob</ImageFile>
 				<ImageFile>./img/badend-demonmob_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="badend-farm-cockmilker-female">
-				<ImageFile>./img/badend-farm-cockmilker-female</ImageFile>
-				<ImageFile>./img/badend-farm-cockmilker-female_1</ImageFile>
-			</ImageSet>
-			<ImageSet id="badend-farm-cockmilker-male">
-				<ImageFile>./img/badend-farm-cockmilker-male</ImageFile>
-				<ImageFile>./img/badend-farm-cockmilker-male_1</ImageFile>
+			<ImageSet id="badend-factory">
+				<ImageFile>./img/badend-factory</ImageFile>
+				<ImageFile>./img/badend-factory_1</ImageFile>
 			</ImageSet>
 			<ImageSet id="badend-hBalls">
 				<ImageFile>./img/badend-hBalls</ImageFile>
@@ -588,6 +584,10 @@
 			<ImageSet id="badend-stimBelt">
 				<ImageFile>./img/badend-stimBelt</ImageFile>
 				<ImageFile>./img/badend-stimBelt_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="badend-tension">
+				<ImageFile>./img/badend-tension</ImageFile>
+				<ImageFile>./img/badend-tension_1</ImageFile>
 			</ImageSet>
 			<ImageSet id="badend-tentaclebeast">
 				<ImageFile>./img/badend-tentaclebeast</ImageFile>
@@ -1273,10 +1273,6 @@
 				<ImageFile>./img/dungeon-entrance-phoenixtower</ImageFile>
 				<ImageFile>./img/dungeon-entrance-phoenixtower_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="dungeon-entrance-stronghold">
-				<ImageFile>./img/dungeon-entrance-stronghold</ImageFile>
-				<ImageFile>./img/dungeon-entrance-stronghold_1</ImageFile>
-			</ImageSet>
 			<ImageSet id="edryn-bar-chat">
 				<ImageFile>./img/edryn-bar-chat</ImageFile>
 				<ImageFile>./img/edryn-bar-chat_1</ImageFile>
@@ -1397,10 +1393,6 @@
 				<ImageFile>./img/event-island</ImageFile>
 				<ImageFile>./img/event-island_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="event-lockedDoor">
-				<ImageFile>./img/event-lockedDoor</ImageFile>
-				<ImageFile>./img/event-lockedDoor_1</ImageFile>
-			</ImageSet>
 			<ImageSet id="event-lumi">
 				<ImageFile>./img/event-lumi</ImageFile>
 				<ImageFile>./img/event-lumi_1</ImageFile>
@@ -1421,13 +1413,89 @@
 				<ImageFile>./img/event-wagon</ImageFile>
 				<ImageFile>./img/event-wagon_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="farm-milking-breasts">
-				<ImageFile>./img/farm-milking-breasts</ImageFile>
-				<ImageFile>./img/farm-milking-breasts_1</ImageFile>
+			<ImageSet id="factory-break-room">
+				<ImageFile>./img/factory-break-room</ImageFile>
+				<ImageFile>./img/factory-break-room_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="farm-milking-cock">
-				<ImageFile>./img/farm-milking-cock</ImageFile>
-				<ImageFile>./img/farm-milking-cock_1</ImageFile>
+			<ImageSet id="factory-closed-overload">
+				<ImageFile>./img/factory-closed-overload</ImageFile>
+				<ImageFile>./img/factory-closed-overload_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="factory-closed-shutdown">
+				<ImageFile>./img/factory-closed-shutdown</ImageFile>
+				<ImageFile>./img/factory-closed-shutdown_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="factory-control-room">
+				<ImageFile>./img/factory-control-room</ImageFile>
+				<ImageFile>./img/factory-control-room_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="factory-door-exit">
+				<ImageFile>./img/factory-door-exit</ImageFile>
+				<ImageFile>./img/factory-door-exit_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="factory-door-glass">
+				<ImageFile>./img/factory-door-glass</ImageFile>
+				<ImageFile>./img/factory-door-glass_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="factory-door-iron">
+				<ImageFile>./img/factory-door-iron</ImageFile>
+				<ImageFile>./img/factory-door-iron_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="factory-door-supervisor">
+				<ImageFile>./img/factory-door-supervisor</ImageFile>
+				<ImageFile>./img/factory-door-supervisor_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="factory-foreman-office">
+				<ImageFile>./img/factory-foreman-office</ImageFile>
+				<ImageFile>./img/factory-foreman-office_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="factory-foyer">
+				<ImageFile>./img/factory-foyer</ImageFile>
+				<ImageFile>./img/factory-foyer_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="factory-furnace-room">
+				<ImageFile>./img/factory-furnace-room</ImageFile>
+				<ImageFile>./img/factory-furnace-room_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="factory-main-chamber">
+				<ImageFile>./img/factory-main-chamber</ImageFile>
+				<ImageFile>./img/factory-main-chamber_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="factory-milking-breasts">
+				<ImageFile>./img/factory-milking-breasts</ImageFile>
+				<ImageFile>./img/factory-milking-breasts_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="factory-milking-cock">
+				<ImageFile>./img/factory-milking-cock</ImageFile>
+				<ImageFile>./img/factory-milking-cock_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="factory-pump-room">
+				<ImageFile>./img/factory-pump-room</ImageFile>
+				<ImageFile>./img/factory-pump-room_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="factory-repair-closet">
+				<ImageFile>./img/factory-repair-closet</ImageFile>
+				<ImageFile>./img/factory-repair-closet_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="factory-storage">
+				<ImageFile>./img/factory-storage</ImageFile>
+				<ImageFile>./img/factory-storage_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="factory-tension-female">
+				<ImageFile>./img/factory-tension-female</ImageFile>
+				<ImageFile>./img/factory-tension-female_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="factory-tension-herm">
+				<ImageFile>./img/factory-tension-herm</ImageFile>
+				<ImageFile>./img/factory-tension-herm_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="factory-tension-male">
+				<ImageFile>./img/factory-tension-male</ImageFile>
+				<ImageFile>./img/factory-tension-male_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="factory-washroom">
+				<ImageFile>./img/factory-washroom</ImageFile>
+				<ImageFile>./img/factory-washroom_1</ImageFile>
 			</ImageSet>
 			<ImageSet id="frida-intro">
 				<ImageFile>./img/frida-intro</ImageFile>
@@ -1913,10 +1981,6 @@
 				<ImageFile>./img/item-bow</ImageFile>
 				<ImageFile>./img/item-bow_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="item-box">
-				<ImageFile>./img/item-box</ImageFile>
-				<ImageFile>./img/item-box_1</ImageFile>
-			</ImageSet>
 			<ImageSet id="item-cBread">
 				<ImageFile>./img/item-cBread</ImageFile>
 				<ImageFile>./img/item-cBread_1</ImageFile>
@@ -1940,6 +2004,10 @@
 			<ImageSet id="item-chitinArmor">
 				<ImageFile>./img/item-chitinArmor</ImageFile>
 				<ImageFile>./img/item-chitinArmor_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="item-coffee">
+				<ImageFile>./img/item-coffee</ImageFile>
+				<ImageFile>./img/item-coffee_1</ImageFile>
 			</ImageSet>
 			<ImageSet id="item-dDildo">
 				<ImageFile>./img/item-dDildo</ImageFile>
@@ -2029,13 +2097,37 @@
 				<ImageFile>./img/item-ebonVest</ImageFile>
 				<ImageFile>./img/item-ebonVest_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="item-egg">
-				<ImageFile>./img/item-egg</ImageFile>
-				<ImageFile>./img/item-egg_1</ImageFile>
-			</ImageSet>
 			<ImageSet id="item-egg-NP">
 				<ImageFile>./img/item-egg-NP</ImageFile>
 				<ImageFile>./img/item-egg-NP_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="item-egg-black">
+				<ImageFile>./img/item-egg-black</ImageFile>
+				<ImageFile>./img/item-egg-black_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="item-egg-blue">
+				<ImageFile>./img/item-egg-blue</ImageFile>
+				<ImageFile>./img/item-egg-blue_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="item-egg-brown">
+				<ImageFile>./img/item-egg-brown</ImageFile>
+				<ImageFile>./img/item-egg-brown_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="item-egg-pile">
+				<ImageFile>./img/item-egg-pile</ImageFile>
+				<ImageFile>./img/item-egg-pile_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="item-egg-pink">
+				<ImageFile>./img/item-egg-pink</ImageFile>
+				<ImageFile>./img/item-egg-pink_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="item-egg-purple">
+				<ImageFile>./img/item-egg-purple</ImageFile>
+				<ImageFile>./img/item-egg-purple_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="item-egg-white">
+				<ImageFile>./img/item-egg-white</ImageFile>
+				<ImageFile>./img/item-egg-white_1</ImageFile>
 			</ImageSet>
 			<ImageSet id="item-equinum">
 				<ImageFile>./img/item-equinum</ImageFile>
@@ -2073,10 +2165,6 @@
 				<ImageFile>./img/item-gems</ImageFile>
 				<ImageFile>./img/item-gems_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="item-groPlus">
-				<ImageFile>./img/item-groPlus</ImageFile>
-				<ImageFile>./img/item-groPlus_1</ImageFile>
-			</ImageSet>
 			<ImageSet id="item-hEgg">
 				<ImageFile>./img/item-hEgg</ImageFile>
 				<ImageFile>./img/item-hEgg_1</ImageFile>
@@ -2084,6 +2172,10 @@
 			<ImageSet id="item-hPill">
 				<ImageFile>./img/item-hPill</ImageFile>
 				<ImageFile>./img/item-hPill_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="item-honey-pure">
+				<ImageFile>./img/item-honey-pure</ImageFile>
+				<ImageFile>./img/item-honey-pure_1</ImageFile>
 			</ImageSet>
 			<ImageSet id="item-icicle">
 				<ImageFile>./img/item-icicle</ImageFile>
@@ -2096,6 +2188,18 @@
 			<ImageSet id="item-kFruit">
 				<ImageFile>./img/item-kFruit</ImageFile>
 				<ImageFile>./img/item-kFruit_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="item-key-iron">
+				<ImageFile>./img/item-key-iron</ImageFile>
+				<ImageFile>./img/item-key-iron_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="item-key-silver">
+				<ImageFile>./img/item-key-silver</ImageFile>
+				<ImageFile>./img/item-key-silver_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="item-key-silver-II">
+				<ImageFile>./img/item-key-silver-II</ImageFile>
+				<ImageFile>./img/item-key-silver-II_1</ImageFile>
 			</ImageSet>
 			<ImageSet id="item-lArmor">
 				<ImageFile>./img/item-lArmor</ImageFile>
@@ -2113,6 +2217,10 @@
 				<ImageFile>./img/item-lWhip</ImageFile>
 				<ImageFile>./img/item-lWhip_1</ImageFile>
 			</ImageSet>
+			<ImageSet id="item-lactaid">
+				<ImageFile>./img/item-lactaid</ImageFile>
+				<ImageFile>./img/item-lactaid_1</ImageFile>
+			</ImageSet>
 			<ImageSet id="item-letter">
 				<ImageFile>./img/item-letter</ImageFile>
 				<ImageFile>./img/item-letter_1</ImageFile>
@@ -2125,13 +2233,13 @@
 				<ImageFile>./img/item-lube</ImageFile>
 				<ImageFile>./img/item-lube_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="item-mPotion">
-				<ImageFile>./img/item-mPotion</ImageFile>
-				<ImageFile>./img/item-mPotion_1</ImageFile>
-			</ImageSet>
 			<ImageSet id="item-nails">
 				<ImageFile>./img/item-nails</ImageFile>
 				<ImageFile>./img/item-nails_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="item-numbOil">
+				<ImageFile>./img/item-numbOil</ImageFile>
+				<ImageFile>./img/item-numbOil_1</ImageFile>
 			</ImageSet>
 			<ImageSet id="item-oElixir">
 				<ImageFile>./img/item-oElixir</ImageFile>
@@ -2145,17 +2253,25 @@
 				<ImageFile>./img/item-pFruit</ImageFile>
 				<ImageFile>./img/item-pFruit_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="item-pHoney">
-				<ImageFile>./img/item-pHoney</ImageFile>
-				<ImageFile>./img/item-pHoney_1</ImageFile>
-			</ImageSet>
-			<ImageSet id="item-pPotion">
-				<ImageFile>./img/item-pPotion</ImageFile>
-				<ImageFile>./img/item-pPotion_1</ImageFile>
+			<ImageSet id="item-pPhiltr">
+				<ImageFile>./img/item-pPhiltr</ImageFile>
+				<ImageFile>./img/item-pPhiltr_1</ImageFile>
 			</ImageSet>
 			<ImageSet id="item-pigTruffle">
 				<ImageFile>./img/item-pigTruffle</ImageFile>
 				<ImageFile>./img/item-pigTruffle_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="item-proLactaid">
+				<ImageFile>./img/item-proLactaid</ImageFile>
+				<ImageFile>./img/item-proLactaid_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="item-purePotion">
+				<ImageFile>./img/item-purePotion</ImageFile>
+				<ImageFile>./img/item-purePotion_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="item-purity">
+				<ImageFile>./img/item-purity</ImageFile>
+				<ImageFile>./img/item-purity_1</ImageFile>
 			</ImageSet>
 			<ImageSet id="item-rBdyst">
 				<ImageFile>./img/item-rBdyst</ImageFile>
@@ -3725,6 +3841,10 @@
 				<ImageFile>./img/raphael-talk</ImageFile>
 				<ImageFile>./img/raphael-talk_1</ImageFile>
 			</ImageSet>
+			<ImageSet id="rathazul">
+				<ImageFile>./img/rathazul</ImageFile>
+				<ImageFile>./img/rathazul_1</ImageFile>
+			</ImageSet>
 			<ImageSet id="rathazul-accident">
 				<ImageFile>./img/rathazul-accident</ImageFile>
 				<ImageFile>./img/rathazul-accident_1</ImageFile>
@@ -3732,6 +3852,10 @@
 			<ImageSet id="rathazul-canopy">
 				<ImageFile>./img/rathazul-canopy</ImageFile>
 				<ImageFile>./img/rathazul-canopy_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="rathazul-dyes">
+				<ImageFile>./img/rathazul-dyes</ImageFile>
+				<ImageFile>./img/rathazul-dyes_1</ImageFile>
 			</ImageSet>
 			<ImageSet id="rathazul-himself">
 				<ImageFile>./img/rathazul-himself</ImageFile>
@@ -3741,13 +3865,13 @@
 				<ImageFile>./img/rathazul-lab</ImageFile>
 				<ImageFile>./img/rathazul-lab_1</ImageFile>
 			</ImageSet>
+			<ImageSet id="rathazul-lotions">
+				<ImageFile>./img/rathazul-lotions</ImageFile>
+				<ImageFile>./img/rathazul-lotions_1</ImageFile>
+			</ImageSet>
 			<ImageSet id="rathazul-oils">
 				<ImageFile>./img/rathazul-oils</ImageFile>
 				<ImageFile>./img/rathazul-oils_1</ImageFile>
-			</ImageSet>
-			<ImageSet id="rathazul-vials">
-				<ImageFile>./img/rathazul-vials</ImageFile>
-				<ImageFile>./img/rathazul-vials_1</ImageFile>
 			</ImageSet>
 			<ImageSet id="rubi-at-cafe">
 				<ImageFile>./img/rubi-at-cafe</ImageFile>
@@ -3809,61 +3933,13 @@
 				<ImageFile>./img/rubi-tease-buttjob</ImageFile>
 				<ImageFile>./img/rubi-tease-buttjob_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="sandtrap-badend">
-				<ImageFile>./img/sandtrap-badend</ImageFile>
-				<ImageFile>./img/sandtrap-badend_1</ImageFile>
-			</ImageSet>
-			<ImageSet id="sandtrap-female-vagbirth">
-				<ImageFile>./img/sandtrap-female-vagbirth</ImageFile>
-				<ImageFile>./img/sandtrap-female-vagbirth_1</ImageFile>
-			</ImageSet>
-			<ImageSet id="sandtrap-female-win-get-hj">
-				<ImageFile>./img/sandtrap-female-win-get-hj</ImageFile>
-				<ImageFile>./img/sandtrap-female-win-get-hj_1</ImageFile>
-			</ImageSet>
-			<ImageSet id="sandtrap-female-win-rideit">
-				<ImageFile>./img/sandtrap-female-win-rideit</ImageFile>
-				<ImageFile>./img/sandtrap-female-win-rideit_1</ImageFile>
-			</ImageSet>
-			<ImageSet id="sandtrap-femele-lose-get-analraped">
-				<ImageFile>./img/sandtrap-femele-lose-get-analraped</ImageFile>
-				<ImageFile>./img/sandtrap-femele-lose-get-analraped_1</ImageFile>
-			</ImageSet>
-			<ImageSet id="sandtrap-genderless-lose-get-analraped">
-				<ImageFile>./img/sandtrap-genderless-lose-get-analraped</ImageFile>
-				<ImageFile>./img/sandtrap-genderless-lose-get-analraped_1</ImageFile>
-			</ImageSet>
-			<ImageSet id="sandtrap-herm-win-get-hj">
-				<ImageFile>./img/sandtrap-herm-win-get-hj</ImageFile>
-				<ImageFile>./img/sandtrap-herm-win-get-hj_1</ImageFile>
+			<ImageSet id="sGardener-encounter">
+				<ImageFile>./img/sGardener-encounter</ImageFile>
+				<ImageFile>./img/sGardener-encounter_1</ImageFile>
 			</ImageSet>
 			<ImageSet id="sandtrap-loss">
 				<ImageFile>./img/sandtrap-loss</ImageFile>
 				<ImageFile>./img/sandtrap-loss_1</ImageFile>
-			</ImageSet>
-			<ImageSet id="sandtrap-male-analbirth">
-				<ImageFile>./img/sandtrap-male-analbirth</ImageFile>
-				<ImageFile>./img/sandtrap-male-analbirth_1</ImageFile>
-			</ImageSet>
-			<ImageSet id="sandtrap-male-lose-get-analraped">
-				<ImageFile>./img/sandtrap-male-lose-get-analraped</ImageFile>
-				<ImageFile>./img/sandtrap-male-lose-get-analraped_1</ImageFile>
-			</ImageSet>
-			<ImageSet id="sandtrap-male-win-get-hj">
-				<ImageFile>./img/sandtrap-male-win-get-hj</ImageFile>
-				<ImageFile>./img/sandtrap-male-win-get-hj_1</ImageFile>
-			</ImageSet>
-			<ImageSet id="sandtrap-male-win-vagsex">
-				<ImageFile>./img/sandtrap-male-win-vagsex</ImageFile>
-				<ImageFile>./img/sandtrap-male-win-vagsex_1</ImageFile>
-			</ImageSet>
-			<ImageSet id="sandtrap-nagafemale-win-3some-get-cunning">
-				<ImageFile>./img/sandtrap-nagafemale-win-3some-get-cunning</ImageFile>
-				<ImageFile>./img/sandtrap-nagafemale-win-3some-get-cunning_1</ImageFile>
-			</ImageSet>
-			<ImageSet id="sandtrap-nagamale-win-3some-get-bj">
-				<ImageFile>./img/sandtrap-nagamale-win-3some-get-bj</ImageFile>
-				<ImageFile>./img/sandtrap-nagamale-win-3some-get-bj_1</ImageFile>
 			</ImageSet>
 			<ImageSet id="sandtrap-win">
 				<ImageFile>./img/sandtrap-win</ImageFile>
@@ -4193,97 +4269,109 @@
 				<ImageFile>./img/spidermorph-male-loss-vag</ImageFile>
 				<ImageFile>./img/spidermorph-male-loss-vag_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="stronghold-Courtyard-N">
-				<ImageFile>./img/stronghold-Courtyard-N</ImageFile>
-				<ImageFile>./img/stronghold-Courtyard-N_1</ImageFile>
+			<ImageSet id="stronghold-Antechamber">
+				<ImageFile>./img/stronghold-Antechamber</ImageFile>
+				<ImageFile>./img/stronghold-Antechamber_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="stronghold-Courtyard-NE">
-				<ImageFile>./img/stronghold-Courtyard-NE</ImageFile>
-				<ImageFile>./img/stronghold-Courtyard-NE_1</ImageFile>
+			<ImageSet id="stronghold-Edge-of-Keep">
+				<ImageFile>./img/stronghold-Edge-of-Keep</ImageFile>
+				<ImageFile>./img/stronghold-Edge-of-Keep_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="stronghold-Courtyard-NW">
-				<ImageFile>./img/stronghold-Courtyard-NW</ImageFile>
-				<ImageFile>./img/stronghold-Courtyard-NW_1</ImageFile>
+			<ImageSet id="stronghold-Entrance-room">
+				<ImageFile>./img/stronghold-Entrance-room</ImageFile>
+				<ImageFile>./img/stronghold-Entrance-room_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="stronghold-Courtyard-S">
-				<ImageFile>./img/stronghold-Courtyard-S</ImageFile>
-				<ImageFile>./img/stronghold-Courtyard-S_1</ImageFile>
+			<ImageSet id="stronghold-Magpie-hall">
+				<ImageFile>./img/stronghold-Magpie-hall</ImageFile>
+				<ImageFile>./img/stronghold-Magpie-hall_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="stronghold-Courtyard-SE">
-				<ImageFile>./img/stronghold-Courtyard-SE</ImageFile>
-				<ImageFile>./img/stronghold-Courtyard-SE_1</ImageFile>
+			<ImageSet id="stronghold-Magpie-locked">
+				<ImageFile>./img/stronghold-Magpie-locked</ImageFile>
+				<ImageFile>./img/stronghold-Magpie-locked_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="stronghold-Courtyard-SW">
-				<ImageFile>./img/stronghold-Courtyard-SW</ImageFile>
-				<ImageFile>./img/stronghold-Courtyard-SW_1</ImageFile>
+			<ImageSet id="stronghold-Mirrors-room">
+				<ImageFile>./img/stronghold-Mirrors-room</ImageFile>
+				<ImageFile>./img/stronghold-Mirrors-room_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="stronghold-CourtyardSquare">
-				<ImageFile>./img/stronghold-CourtyardSquare</ImageFile>
-				<ImageFile>./img/stronghold-CourtyardSquare_1</ImageFile>
+			<ImageSet id="stronghold-North-entry">
+				<ImageFile>./img/stronghold-North-entry</ImageFile>
+				<ImageFile>./img/stronghold-North-entry_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="stronghold-Entry-N">
-				<ImageFile>./img/stronghold-Entry-N</ImageFile>
-				<ImageFile>./img/stronghold-Entry-N_1</ImageFile>
+			<ImageSet id="stronghold-Throne-room">
+				<ImageFile>./img/stronghold-Throne-room</ImageFile>
+				<ImageFile>./img/stronghold-Throne-room_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="stronghold-GreatLift">
-				<ImageFile>./img/stronghold-GreatLift</ImageFile>
-				<ImageFile>./img/stronghold-GreatLift_1</ImageFile>
+			<ImageSet id="stronghold-basilisks">
+				<ImageFile>./img/stronghold-basilisks</ImageFile>
+				<ImageFile>./img/stronghold-basilisks_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="stronghold-ThroneRoom">
-				<ImageFile>./img/stronghold-ThroneRoom</ImageFile>
-				<ImageFile>./img/stronghold-ThroneRoom_1</ImageFile>
+			<ImageSet id="stronghold-courtyard-NE">
+				<ImageFile>./img/stronghold-courtyard-NE</ImageFile>
+				<ImageFile>./img/stronghold-courtyard-NE_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="stronghold-Walk-E">
-				<ImageFile>./img/stronghold-Walk-E</ImageFile>
-				<ImageFile>./img/stronghold-Walk-E_1</ImageFile>
+			<ImageSet id="stronghold-courtyard-NW">
+				<ImageFile>./img/stronghold-courtyard-NW</ImageFile>
+				<ImageFile>./img/stronghold-courtyard-NW_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="stronghold-Walk-NE">
-				<ImageFile>./img/stronghold-Walk-NE</ImageFile>
-				<ImageFile>./img/stronghold-Walk-NE_1</ImageFile>
+			<ImageSet id="stronghold-courtyard-North">
+				<ImageFile>./img/stronghold-courtyard-North</ImageFile>
+				<ImageFile>./img/stronghold-courtyard-North_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="stronghold-Walk-NW">
-				<ImageFile>./img/stronghold-Walk-NW</ImageFile>
-				<ImageFile>./img/stronghold-Walk-NW_1</ImageFile>
+			<ImageSet id="stronghold-courtyard-SE">
+				<ImageFile>./img/stronghold-courtyard-SE</ImageFile>
+				<ImageFile>./img/stronghold-courtyard-SE_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="stronghold-Walk-SE">
-				<ImageFile>./img/stronghold-Walk-SE</ImageFile>
-				<ImageFile>./img/stronghold-Walk-SE_1</ImageFile>
+			<ImageSet id="stronghold-courtyard-SW">
+				<ImageFile>./img/stronghold-courtyard-SW</ImageFile>
+				<ImageFile>./img/stronghold-courtyard-SW_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="stronghold-Walk-SW">
-				<ImageFile>./img/stronghold-Walk-SW</ImageFile>
-				<ImageFile>./img/stronghold-Walk-SW_1</ImageFile>
+			<ImageSet id="stronghold-courtyard-South">
+				<ImageFile>./img/stronghold-courtyard-South</ImageFile>
+				<ImageFile>./img/stronghold-courtyard-South_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="stronghold-Walk-W">
-				<ImageFile>./img/stronghold-Walk-W</ImageFile>
-				<ImageFile>./img/stronghold-Walk-W_1</ImageFile>
+			<ImageSet id="stronghold-courtyard-square">
+				<ImageFile>./img/stronghold-courtyard-square</ImageFile>
+				<ImageFile>./img/stronghold-courtyard-square_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="stronghold-anteChamber">
-				<ImageFile>./img/stronghold-anteChamber</ImageFile>
-				<ImageFile>./img/stronghold-anteChamber_1</ImageFile>
+			<ImageSet id="stronghold-entrance">
+				<ImageFile>./img/stronghold-entrance</ImageFile>
+				<ImageFile>./img/stronghold-entrance_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="stronghold-edge">
-				<ImageFile>./img/stronghold-edge</ImageFile>
-				<ImageFile>./img/stronghold-edge_1</ImageFile>
+			<ImageSet id="stronghold-lift">
+				<ImageFile>./img/stronghold-lift</ImageFile>
+				<ImageFile>./img/stronghold-lift_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="stronghold-eggPile">
-				<ImageFile>./img/stronghold-eggPile</ImageFile>
-				<ImageFile>./img/stronghold-eggPile_1</ImageFile>
+			<ImageSet id="stronghold-tunnel-1">
+				<ImageFile>./img/stronghold-tunnel-1</ImageFile>
+				<ImageFile>./img/stronghold-tunnel-1_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="stronghold-entranceRoom">
-				<ImageFile>./img/stronghold-entranceRoom</ImageFile>
-				<ImageFile>./img/stronghold-entranceRoom_1</ImageFile>
+			<ImageSet id="stronghold-tunnel-2">
+				<ImageFile>./img/stronghold-tunnel-2</ImageFile>
+				<ImageFile>./img/stronghold-tunnel-2_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="stronghold-magpieHall">
-				<ImageFile>./img/stronghold-magpieHall</ImageFile>
-				<ImageFile>./img/stronghold-magpieHall_1</ImageFile>
+			<ImageSet id="stronghold-walk-East">
+				<ImageFile>./img/stronghold-walk-East</ImageFile>
+				<ImageFile>./img/stronghold-walk-East_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="stronghold-mirrorRoom">
-				<ImageFile>./img/stronghold-mirrorRoom</ImageFile>
-				<ImageFile>./img/stronghold-mirrorRoom_1</ImageFile>
+			<ImageSet id="stronghold-walk-NE">
+				<ImageFile>./img/stronghold-walk-NE</ImageFile>
+				<ImageFile>./img/stronghold-walk-NE_1</ImageFile>
 			</ImageSet>
-			<ImageSet id="stronghold-tunnel">
-				<ImageFile>./img/stronghold-tunnel</ImageFile>
-				<ImageFile>./img/stronghold-tunnel_1</ImageFile>
+			<ImageSet id="stronghold-walk-NW">
+				<ImageFile>./img/stronghold-walk-NW</ImageFile>
+				<ImageFile>./img/stronghold-walk-NW_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="stronghold-walk-SE">
+				<ImageFile>./img/stronghold-walk-SE</ImageFile>
+				<ImageFile>./img/stronghold-walk-SE_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="stronghold-walk-SW">
+				<ImageFile>./img/stronghold-walk-SW</ImageFile>
+				<ImageFile>./img/stronghold-walk-SW_1</ImageFile>
+			</ImageSet>
+			<ImageSet id="stronghold-walk-West">
+				<ImageFile>./img/stronghold-walk-West</ImageFile>
+				<ImageFile>./img/stronghold-walk-West_1</ImageFile>
 			</ImageSet>
 			<ImageSet id="tamani-dDildo">
 				<ImageFile>./img/tamani-dDildo</ImageFile>
