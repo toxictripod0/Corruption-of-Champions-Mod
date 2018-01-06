@@ -54,7 +54,7 @@ package classes
 			}
 
 			removeExtraBreastRows(instance);
-			instance.breastRows[0].breastRating = BreastCup.FLAT;
+			instance.breastRows[0].restore();
 		}
 
 		private function removeAllVags(instance:Player):void
@@ -63,6 +63,11 @@ package classes
 				return;
 
 			instance.removeVagina(0, instance.vaginas.length);
+		}
+
+		private function createCock(ctype:CockTypesEnum, instance:Player):void
+		{
+			instance.createCock(5.5, 1, ctype);
 		}
 
 		private function createPerk(perk:PerkType, instance:Player):void
@@ -110,7 +115,7 @@ package classes
 			minoPlayer.horns.type = Horns.COW_MINOTAUR;
 			minoPlayer.lowerBody.type = LowerBody.HOOFED;
 			minoPlayer.tallness = 100;
-			minoPlayer.createCock(5.5, 1, CockTypesEnum.HORSE);
+			createCock(CockTypesEnum.HORSE, minoPlayer);
 
 			cowPlayer = new Player();
 			cowPlayer.ears.type = Ears.COW;
@@ -155,7 +160,7 @@ package classes
 			cockatricePlayer.wings.type = Wings.FEATHERED_LARGE;
 			cockatricePlayer.skin.type = Skin.LIZARD_SCALES;
 			cockatricePlayer.underBody.type = UnderBody.COCKATRICE;
-			cockatricePlayer.createCock(5.5, 1, CockTypesEnum.LIZARD);
+			createCock(CockTypesEnum.LIZARD, cockatricePlayer);
 
 			assertThat(cockatricePlayer.cockatriceScore(), greaterThan(0));
 		}
@@ -194,7 +199,7 @@ package classes
 			demonPlayer.cor = 100;
 			demonPlayer.face.type = Face.HUMAN;
 			demonPlayer.lowerBody.type = LowerBody.DEMONIC_CLAWS;
-			demonPlayer.createCock(5.5, 1, CockTypesEnum.DEMON);
+			createCock(CockTypesEnum.DEMON, demonPlayer);
 
 			assertThat(demonPlayer.demonScore(), greaterThan(0));
 		}
@@ -210,7 +215,7 @@ package classes
 			humanPlayer.wings.type = Wings.NONE;
 			humanPlayer.lowerBody.type = LowerBody.HUMAN;
 			humanPlayer.skin.type = Skin.PLAIN;
-			humanPlayer.createCock(5.5, 1, CockTypesEnum.HUMAN);
+			createCock(CockTypesEnum.HUMAN, humanPlayer);
 			removeAllBreasts(humanPlayer); // auto-creates a breast row, if none exists
 
 			assertThat(humanPlayer.humanScore(), greaterThan(0));
@@ -275,8 +280,8 @@ package classes
 			lizardPlayer.arms.type = Arms.PREDATOR;
 			lizardPlayer.claws.type = Claws.LIZARD;
 			lizardPlayer.tongue.type = Tongue.LIZARD;
-			lizardPlayer.createCock(5.5, 1, CockTypesEnum.LIZARD);
-			lizardPlayer.createCock(5.5, 1, CockTypesEnum.LIZARD);
+			createCock(CockTypesEnum.LIZARD, lizardPlayer);
+			createCock(CockTypesEnum.LIZARD, lizardPlayer);
 			lizardPlayer.eyes.type = Eyes.LIZARD;
 			lizardPlayer.skin.type = Skin.LIZARD_SCALES;
 
