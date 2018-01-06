@@ -173,5 +173,23 @@ package classes.internals
 			
 			return object;
 		}
+		
+		/**
+		 * Deserialize a class. This method is intended to automate deserialization, in order to avoid
+		 * a lot of code duplication.
+		 * @param	relativeRootObject the object that contains the serialized classes data
+		 * @param	serialized class instance that should have it's state restored
+		 * @param	currentVersion the current serialization version for the class that is beeing deserialized
+		 */
+		public static function deserialize(relativeRootObject:*, serialized:ISerializable, currentVersion:int):void {
+			LOGGER.debug("Deserializing  {0}...", serialized);
+			relativeRootObject = SerializationUtils.initializeObject(relativeRootObject);
+			
+			SerializationUtils.serializedVersionCheckThrowError(relativeRootObject, currentVersion);
+			var serializedObjectVersion:int = SerializationUtils.serializationVersion(relativeRootObject);
+			
+			serialized.upgradeSerializationVersion(relativeRootObject, serializedObjectVersion);
+			serialized.deserialize(relativeRootObject);
+		}
 	}
 }

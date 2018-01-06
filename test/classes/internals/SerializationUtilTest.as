@@ -21,6 +21,7 @@ package classes.internals
 		private var testAMFVector:Vector.<ISerializableAMF>;
 		private var deserializedVector:Vector.<*>;
 		private var serializedObject:*;
+		private var dummy:SerializationDummy;
 		
 		private function buildVector(instances:int):void
 		{
@@ -52,6 +53,8 @@ package classes.internals
 			
 			serializedObject = [];
 			serializedObject.serializationVersion = SERIAL_VERSION;
+			
+			dummy = new SerializationDummy();
 			
 			buildVector(TEST_INSTANCES);
 			buildAmfVector(TEST_INSTANCES);
@@ -249,6 +252,30 @@ package classes.internals
 		public function serializedVersionCheckThrowErrorLess():void {
 			SerializationUtils.serializedVersionCheckThrowError(serializedObject, 3);
 		}
+		
+		[Test]
+		public function deserializeClass():void {
+			serializedObject['foo'] = 1;
+			serializedObject['bar'] = 2;
+			
+			SerializationUtils.deserialize(serializedObject, dummy, SERIAL_VERSION);
+			
+			assertThat(serializedObject, hasProperties({foo: 42}));
+		}
+		
+		[Test]
+		public function deserializeUndefined():void {
+			serializedObject = undefined;
+			
+			SerializationUtils.deserialize(serializedObject, dummy, SERIAL_VERSION);
+		}
+
+		[Test(expected="RangeError")]
+		public function deserializeFromNewerVersion():void {
+			serializedObject["serializationVersion"] = int.MAX_VALUE;
+			
+			SerializationUtils.deserialize(serializedObject, dummy, SERIAL_VERSION);
+		}
 	}
 }
 
@@ -285,7 +312,10 @@ class SerializationDummy implements ISerializable
 	
 	public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 
 	{
-		
+		switch(serializedDataVersion) {
+			case 2:
+				relativeRootObject.foo = 42;
+		}
 	}
 }
 
