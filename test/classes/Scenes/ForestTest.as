@@ -101,15 +101,6 @@ package classes.Scenes{
 		}
 		
 		[Test]
-		public function deserializeFromNoVersion():void {
-			player.flags[kFLAGS.TIMES_EXPLORED_FOREST] = FOREST_EXPLORE_COUNT;
-			
-			cut.deserialize(serializedObject);
-			
-			assertThat(cut.explorationCount, equalTo(FOREST_EXPLORE_COUNT));
-		}
-		
-		[Test]
 		public function deserializeFromVersion1():void {
 			serializedObject[VERSION_PROPERTY] = 1;
 			serializedObject[FOREST_EXPLORE_PROPERTY] = FOREST_EXPLORE_COUNT;
@@ -117,21 +108,6 @@ package classes.Scenes{
 			cut.deserialize(serializedObject);
 			
 			assertThat(cut.explorationCount, equalTo(FOREST_EXPLORE_COUNT));
-		}
-		
-		[Test]
-		public function deserializeUndefined():void {
-			serializedObject = undefined;
-			
-			cut.deserialize(serializedObject);
-		}
-
-		[Test(expected="RangeError")]
-		public function deserializeFromNewerVersion():void {
-			serializedObject[VERSION_PROPERTY] = int.MAX_VALUE;
-			serializedObject[FOREST_EXPLORE_PROPERTY] = FOREST_EXPLORE_COUNT;
-			
-			cut.deserialize(serializedObject);
 		}
 	}
 }

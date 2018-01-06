@@ -2350,7 +2350,7 @@ private function deserializeExploration(saveFile:*):void {
 		saveFile.data.area = [];
 	}
 	
-	kGAMECLASS.forest.deserialize(saveFile.data.area.forest);
+	SerializationUtils.deserialize(saveFile.data.area.forest, kGAMECLASS.forest);
 }
 
 public function unFuckSave():void

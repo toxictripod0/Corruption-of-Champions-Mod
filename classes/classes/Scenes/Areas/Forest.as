@@ -259,24 +259,10 @@ package classes.Scenes.Areas
 		
 		public function deserialize(relativeRootObject:*):void 
 		{
-			LOGGER.debug("Deserializing  {0}...", this);
-			relativeRootObject = SerializationUtils.initializeObject(relativeRootObject);
-			
-			SerializationUtils.serializedVersionCheckThrowError(relativeRootObject, SERIALIZATION_VERSION);
-			var version:int = SerializationUtils.serializationVersion(relativeRootObject);
-			
-			upgradeSerializationVersion(relativeRootObject, version);
-			
 			this._explorationCount = relativeRootObject[SERIALIZATION_EXPLORED_COUNTER_PROPERTY];
 			LOGGER.debug("Forest explore count: {0}", _explorationCount);
 		}
 		
-		/**
-		 * Upgrade from an earlier version of the serialized data.
-		 * This modifies the loaded object so it can be processed by the
-		 * deserialization code.
-		 * @param	relativeRootObject the loaded serialized data
-		 */
 		public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void {
 			switch (serializedDataVersion) {
 				case 0: {
