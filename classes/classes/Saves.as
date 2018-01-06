@@ -2343,7 +2343,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
  * @param	savegame the serialized data to load
  */
 private function deserializeExploration(saveFile:*):void {
-	kGAMECLASS.exploration.deserialize(saveFile.data.exploration);
+	SerializationUtils.deserialize(saveFile.data.exploration, kGAMECLASS.exploration);
 	
 	//TODO find a better way to do this. Util function?
 	if (!("area" in saveFile.data)) {

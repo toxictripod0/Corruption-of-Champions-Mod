@@ -620,13 +620,7 @@ package classes.Scenes
 		
 		public function deserialize(relativeRootObject:*):void 
 		{
-			LOGGER.debug("Deserializing {0}...", this);
-			
-			relativeRootObject = SerializationUtils.initializeObject(relativeRootObject);
-			
-			SerializationUtils.serializedVersionCheck(relativeRootObject, SERIALIZATION_VERSION);
-			var version:int = SerializationUtils.serializationVersion(relativeRootObject);
-			upgradeSerializationVersion(relativeRootObject, version);
+			//TODO deserialize exploration?
 		}
 		
 		/**

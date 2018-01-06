@@ -1,7 +1,7 @@
 package classes.Scenes{
 	import classes.DefaultDict;
 	import classes.Scenes.Areas.Forest;
-    import org.flexunit.asserts.*;
+	import org.flexunit.asserts.*;
 	import org.hamcrest.assertThat;
 	import org.hamcrest.core.*;
 	import org.hamcrest.number.*;
@@ -17,7 +17,7 @@ package classes.Scenes{
 	import classes.helper.StageLocator;
 	import classes.GlobalFlags.kGAMECLASS;
 	
-    public class ExplorationTest {
+	public class ExplorationTest {
 		private static const FOREST_EXPLORE_COUNT:int = 42;
 		
 		private static const FOREST_EXPLORE_PROPERTY:String = "forestExploredCounter";
@@ -26,16 +26,14 @@ package classes.Scenes{
 		private var player:Player;
 		private var forest:Forest;
 		private var cut:Exploration;
-		private var serializedObject:*;
-		
 		
 		[BeforeClass]
 		public static function setUpClass():void {
 			kGAMECLASS = new CoC(StageLocator.stage);
 		}
 		
-        [Before]
-        public function setUp():void {
+		[Before]
+		public function setUp():void {
 			player = new Player();
 			forest = new Forest();
 			
@@ -44,12 +42,10 @@ package classes.Scenes{
 			kGAMECLASS.forest = forest;
 			
 			cut = new Exploration(forest);
-			
-			serializedObject = [];
-        }
+		}
 		
-        [Test] 
-        public function explorerAchievmentAwarded():void {
+		[Test] 
+		public function explorerAchievmentAwarded():void {
 			kGAMECLASS.forest.discover();
 			
 			player.flags[kFLAGS.TIMES_EXPLORED_LAKE] = 1;
@@ -63,13 +59,6 @@ package classes.Scenes{
 			player.flags[kFLAGS.DISCOVERED_GLACIAL_RIFT] = 1;
 			
 			assertThat(cut.hasExploredAllZones(), equalTo(true));
-        }
-		
-		[Test]
-		public function deserializeUndefined():void {
-			serializedObject = undefined;
-			
-			cut.deserialize(serializedObject);
 		}
-    }
+	}
 }
