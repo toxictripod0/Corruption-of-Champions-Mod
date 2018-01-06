@@ -287,6 +287,11 @@ class SerializationDummy implements ISerializable
 	{
 		
 	}
+	
+	public function currentSerializationVerison():int 
+	{
+		return 2;
+	}
 }
 
 class AMFSerializationDummy implements ISerializableAMF
