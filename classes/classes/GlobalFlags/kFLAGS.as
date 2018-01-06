@@ -2303,7 +2303,7 @@ public static const ANZU_SUCKED_OFF_COUNTER:int                                 
 public static const ANZU_ANAL_PITCH_COUNTER:int                                     = 2295;	
 public static const ANZU_FED_COUNTER:int                                            = 2296; 
 public static const TIMES_EXPLORED:int                                              = 2297; // Replaces `player.explored`
-public static const TIMES_EXPLORED_FOREST:int                                       = 2298; // DEPRECATED now stored in Exploration
+public static const TIMES_EXPLORED_FOREST:int                                       = 2298; // DEPRECATED now stored in Forest
 public static const TIMES_EXPLORED_DESERT:int                                       = 2299; // Replaces `player.exploredDesert`
 public static const TIMES_EXPLORED_MOUNTAIN:int                                     = 2300; // Replaces `player.exploredMountain`
 public static const TIMES_EXPLORED_LAKE:int                                         = 2301; // Replaces `player.exploredLake`
