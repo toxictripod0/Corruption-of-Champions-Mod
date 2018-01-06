@@ -41,5 +41,11 @@ package classes.internals
 		 * @param	serializedDataVersion a non-negative integer indicating the version of the loaded data
 		 */
 		function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void;
+		
+		/**
+		 * Get the current serialization version for this class.
+		 * @return the current serialization version
+		 */
+		function currentSerializationVerison():int;
 	}
 }

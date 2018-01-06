@@ -24,7 +24,7 @@ package classes.Scenes
 		private  static const SERIALIZATION_VERSION_PROPERTY:String = "serializationVersion";
 		
 		private static const LOGGER:ILogger = LoggerFactory.getLogger(Exploration);
-		public static const SERIALIZATION_VERSION:int = 1;
+		private static const SERIALIZATION_VERSION:int = 1;
 		
 		public var exploreDebug:ExploreDebug = new ExploreDebug();
 		
@@ -639,6 +639,11 @@ package classes.Scenes
 					LOGGER.debug("Version was 0, handling legacy data...");
 				}
 			}
+		}
+		
+		public function currentSerializationVerison():int 
+		{
+			return SERIALIZATION_VERSION;
 		}
 	}
 }

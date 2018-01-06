@@ -179,13 +179,12 @@ package classes.internals
 		 * a lot of code duplication.
 		 * @param	relativeRootObject the object that contains the serialized classes data
 		 * @param	serialized class instance that should have it's state restored
-		 * @param	currentVersion the current serialization version for the class that is beeing deserialized
 		 */
-		public static function deserialize(relativeRootObject:*, serialized:ISerializable, currentVersion:int):void {
+		public static function deserialize(relativeRootObject:*, serialized:ISerializable):void {
 			LOGGER.debug("Deserializing  {0}...", serialized);
 			relativeRootObject = SerializationUtils.initializeObject(relativeRootObject);
 			
-			SerializationUtils.serializedVersionCheckThrowError(relativeRootObject, currentVersion);
+			SerializationUtils.serializedVersionCheckThrowError(relativeRootObject, serialized.currentSerializationVerison());
 			var serializedObjectVersion:int = SerializationUtils.serializationVersion(relativeRootObject);
 			
 			serialized.upgradeSerializationVersion(relativeRootObject, serializedObjectVersion);

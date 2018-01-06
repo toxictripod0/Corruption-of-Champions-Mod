@@ -25,7 +25,7 @@ package classes.Scenes.Areas
 		
 		private  static const SERIALIZATION_VERSION_PROPERTY:String = "serializationVersion";
 		private static const SERIALIZATION_EXPLORED_COUNTER_PROPERTY:String = "exploredCounter";
-		public static const SERIALIZATION_VERSION:int = 1;
+		private static const SERIALIZATION_VERSION:int = 1;
 		
 		public var akbalScene:AkbalScene = new AkbalScene();
 		public var beeGirlScene:BeeGirlScene = new BeeGirlScene();
@@ -288,6 +288,11 @@ package classes.Scenes.Areas
 					LOGGER.debug("Deleted old 'TIMES_EXPLORED_FOREST' flag");
 				}
 			}
+		}
+		
+		public function currentSerializationVerison():int 
+		{
+			return SERIALIZATION_VERSION;
 		}
 	}
 }

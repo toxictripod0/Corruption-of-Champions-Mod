@@ -227,5 +227,11 @@
 		{
 			//TODO sort out legacy loading code
 		}
+		
+		public function currentSerializationVerison():int 
+		{
+			//TODO correctly version class
+			return 0;
+		}
 	}
 }

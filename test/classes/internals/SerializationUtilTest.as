@@ -258,7 +258,7 @@ package classes.internals
 			serializedObject['foo'] = 1;
 			serializedObject['bar'] = 2;
 			
-			SerializationUtils.deserialize(serializedObject, dummy, SERIAL_VERSION);
+			SerializationUtils.deserialize(serializedObject, dummy);
 			
 			assertThat(serializedObject, hasProperties({foo: 42}));
 		}
@@ -267,14 +267,14 @@ package classes.internals
 		public function deserializeUndefined():void {
 			serializedObject = undefined;
 			
-			SerializationUtils.deserialize(serializedObject, dummy, SERIAL_VERSION);
+			SerializationUtils.deserialize(serializedObject, dummy);
 		}
 
 		[Test(expected="RangeError")]
 		public function deserializeFromNewerVersion():void {
 			serializedObject["serializationVersion"] = int.MAX_VALUE;
 			
-			SerializationUtils.deserialize(serializedObject, dummy, SERIAL_VERSION);
+			SerializationUtils.deserialize(serializedObject, dummy);
 		}
 	}
 }
@@ -316,6 +316,11 @@ class SerializationDummy implements ISerializable
 			case 2:
 				relativeRootObject.foo = 42;
 		}
+	}
+	
+	public function currentSerializationVerison():int 
+	{
+		return 2;
 	}
 }
 
