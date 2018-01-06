@@ -269,6 +269,22 @@ package classes
 		}
 
 		[Test]
+		public function testBeeScore():void
+		{
+			var beePlayer:Player = new Player();
+			beePlayer.hair.color = "black and yellow";
+			beePlayer.antennae.type = Antennae.BEE;
+			beePlayer.face.type = Face.HUMAN;
+			beePlayer.arms.type = Arms.BEE;
+			beePlayer.lowerBody.type = LowerBody.BEE;
+			beePlayer.createVagina();
+			beePlayer.tail.type = Tail.BEE_ABDOMEN;
+			beePlayer.wings.type = Wings.BEE_LIKE_SMALL;
+
+			assertThat(beePlayer.beeScore(), greaterThan(0));
+		}
+
+		[Test]
 		public function testLizardScore():void
 		{
 			var lizardPlayer:Player = new Player();
