@@ -61,7 +61,7 @@ package classes.internals
 			
 			for each(var element:Object in serializedVector) {
 				var instance:ISerializable = new type();
-				instance.deserialize(element);
+				SerializationUtils.deserialize(element, instance);
 				destinationVector.push(instance);
 			}
 		}
@@ -172,6 +172,23 @@ package classes.internals
 			}
 			
 			return object;
+		}
+		
+		/**
+		 * Deserialize a class. This method is intended to automate deserialization, in order to avoid
+		 * a lot of code duplication.
+		 * @param	relativeRootObject the object that contains the serialized classes data
+		 * @param	serialized class instance that should have it's state restored
+		 */
+		public static function deserialize(relativeRootObject:*, serialized:ISerializable):void {
+			LOGGER.debug("Deserializing  {0}...", serialized);
+			relativeRootObject = SerializationUtils.initializeObject(relativeRootObject);
+			
+			SerializationUtils.serializedVersionCheckThrowError(relativeRootObject, serialized.currentSerializationVerison());
+			var serializedObjectVersion:int = SerializationUtils.serializationVersion(relativeRootObject);
+			
+			serialized.upgradeSerializationVersion(relativeRootObject, serializedObjectVersion);
+			serialized.deserialize(relativeRootObject);
 		}
 	}
 }
