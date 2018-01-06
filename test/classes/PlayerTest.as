@@ -32,15 +32,10 @@ package classes
 				instance.createVagina();
 			}
 		}
-		
+
 		private function createMaxVaginas(instance:Player):void
 		{
 			createVaginas(MAX_SUPPORTED_VAGINAS, instance);
-		}
-		
-		private function createPerk(perk:PerkType, instance:Player):void
-		{
-			instance.createPerk(perk, 1, 1, 1, 1);
 		}
 
 		private function removeExtraBreastRows(instance:Player):void
@@ -68,6 +63,17 @@ package classes
 				return;
 
 			instance.removeVagina(0, instance.vaginas.length);
+		}
+
+		private function createPerk(perk:PerkType, instance:Player):void
+		{
+			instance.createPerk(perk, 1, 1, 1, 1);
+		}
+
+		private function createStatusEffect(stype:StatusEffectType, instance:Player):void
+		{
+			if (!instance.hasStatusEffect(stype))
+				instance.createStatusEffect(stype, 1, 1, 1, 1);
 		}
 
 		[BeforeClass]
@@ -241,6 +247,20 @@ package classes
 			cowPlayer.face.type = Face.COW_MINOTAUR;
 
 			assertThat(cowPlayer.cowScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testSandTrapScore():void
+		{
+			var sandTrapPlayer:Player = new Player();
+			createStatusEffect(StatusEffects.BlackNipples, sandTrapPlayer);
+			createStatusEffect(StatusEffects.Uniball, sandTrapPlayer);
+			sandTrapPlayer.createVagina();
+			sandTrapPlayer.vaginaType(5);
+			sandTrapPlayer.eyes.type = Eyes.BLACK_EYES_SAND_TRAP;
+			sandTrapPlayer.wings.type = Wings.GIANT_DRAGONFLY;
+
+			assertThat(sandTrapPlayer.sandTrapScore(), greaterThan(0));
 		}
 
 		[Test]
