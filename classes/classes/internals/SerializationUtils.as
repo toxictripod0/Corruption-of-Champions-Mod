@@ -5,6 +5,7 @@ package classes.internals
 	import classes.internals.LoggerFactory;
 	import mx.logging.ILogger;
 	import classes.internals.ISerializable;
+	import ArgumentError;
 	
 	/**
 	 * A class providing utility methods to make serialization and deserialization easier.
@@ -32,7 +33,7 @@ package classes.internals
 				var obj:Array = [];
 				serialized.push(obj);
 				
-				element.serialize(obj);
+				SerializationUtils.serialize(obj, element);
 			}
 			
 			return serialized;
@@ -189,6 +190,32 @@ package classes.internals
 			
 			serialized.upgradeSerializationVersion(relativeRootObject, serializedObjectVersion);
 			serialized.deserialize(relativeRootObject);
+		}
+		
+		/**
+		 * Serialize a class. This method is intended to automate serialization, in order to avoid
+		 * a lot of code duplication.
+		 * 
+		 * @param	relativeRootObject to write the classes data to
+		 * @param	toSerialize instance of class to serialize
+		 */
+		public static function serialize(relativeRootObject:*, toSerialize:ISerializable):void {
+			objectDefinedCheck(relativeRootObject, "Object used for storage must be defined. Did you forget to initialize e.g. foo = []; ?");
+			objectDefinedCheck(toSerialize, "Instance of class to store is not defined. Did you call the class constructor?");
+			
+			LOGGER.debug("Serializing {0}...", toSerialize);
+			
+			relativeRootObject = SerializationUtils.initializeObject(relativeRootObject);
+			relativeRootObject[SERIALIZATION_VERSION_PROPERTY] = toSerialize.currentSerializationVerison();
+			
+			toSerialize.serialize(relativeRootObject);
+		}
+		
+		private static function objectDefinedCheck(object:*, message:String):void {
+			if (object === null || object === undefined) {
+				LOGGER.error("Object failed defined check with message: {0}", message);
+				throw new ArgumentError(message);
+			}
 		}
 	}
 }

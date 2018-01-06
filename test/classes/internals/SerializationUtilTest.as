@@ -116,7 +116,7 @@ package classes.internals
 			
 			SerializationUtils.deserializeVector(deserializedVector, testObject, SerializationDummy);
 			
-			assertThat(deserializedVector[TEST_INSTANCES - 1], hasProperties({foo: TEST_INSTANCES - 1}));
+			assertThat(deserializedVector[TEST_INSTANCES - 1], hasProperties({foo: 42}));
 			assertThat((deserializedVector[TEST_INSTANCES - 1] as SerializationDummy).getBar(), equalTo(TEST_INSTANCES));
 		}
 		
@@ -275,6 +275,24 @@ package classes.internals
 			serializedObject["serializationVersion"] = int.MAX_VALUE;
 			
 			SerializationUtils.deserialize(serializedObject, dummy);
+		}
+		
+		[Test(expected = "ArgumentError")]
+		public function serializeWithInvalidRootObject():void {
+			SerializationUtils.serialize(null, dummy);
+		}
+		
+		
+		[Test(expected = "ArgumentError")]
+		public function serializeWithInvalidClassInstance():void {
+			SerializationUtils.serialize(serializedObject, null);
+		}
+		
+		[Test]
+		public function serialize():void {
+			SerializationUtils.serialize(serializedObject, dummy);
+			
+			assertThat(serializedObject, hasProperties({foo: -1, bar: -1, serializationVersion: SERIAL_VERSION}));
 		}
 	}
 }
