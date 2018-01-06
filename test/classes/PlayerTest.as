@@ -457,5 +457,33 @@ package classes
 
 			assertThat(lizardPlayer.lizardScore(), greaterThan(0));
 		}
+
+		[Test]
+		public function testSpiderScore():void
+		{
+			var driderPlayer:Player = new Player();
+			driderPlayer.eyes.setProps({type: Eyes.SPIDER, count: 4});
+			driderPlayer.face.type = Face.SPIDER_FANGS;
+			driderPlayer.arms.type = Arms.SPIDER;
+			driderPlayer.lowerBody.type = LowerBody.DRIDER;
+			driderPlayer.tail.type = Tail.SPIDER_ABDOMEN;
+			driderPlayer.skin.type = Skin.PLAIN;
+
+			assertThat(driderPlayer.spiderScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testHorseScore():void
+		{
+			var horsePlayer:Player = new Player();
+			createCock(CockTypesEnum.HORSE, horsePlayer);
+			horsePlayer.face.type = Face.HORSE;
+			horsePlayer.ears.type = Ears.HORSE;
+			horsePlayer.tail.type = Tail.HORSE;
+			horsePlayer.lowerBody.type = LowerBody.HOOFED;
+			horsePlayer.skin.type = Skin.FUR;
+
+			assertThat(horsePlayer.horseScore(), greaterThan(0));
+		}
 	}
 }
