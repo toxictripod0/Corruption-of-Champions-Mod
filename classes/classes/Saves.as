@@ -1264,7 +1264,7 @@ private function serializeExploration(saveFile:*):void {
 	saveFile.data.area = [];
 	saveFile.data.area.forest = [];
 	
-	kGAMECLASS.exploration.serialize(saveFile.data.exploration);
+	SerializationUtils.serialize(saveFile.data.exploration, kGAMECLASS.exploration);
 	kGAMECLASS.forest.serialize(saveFile.data.area.forest);
 }
 

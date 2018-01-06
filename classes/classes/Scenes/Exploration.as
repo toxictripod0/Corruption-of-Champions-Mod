@@ -614,8 +614,6 @@ package classes.Scenes
 		public function serialize(relativeRootObject:*):void 
 		{
 			//TODO serialize total exploration?
-			LOGGER.debug("Serializing {0}...", this);
-			relativeRootObject[SERIALIZATION_VERSION_PROPERTY] = Exploration.SERIALIZATION_VERSION;
 		}
 		
 		public function deserialize(relativeRootObject:*):void 
