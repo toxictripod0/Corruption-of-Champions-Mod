@@ -14,12 +14,13 @@ package classes.internals
 	public class SerializationUtilTest
 	{
 		private static const TEST_INSTANCES:int = 5;
+		private static const SERIAL_VERSION:int = 2;
 		
 		private var testObject:Array;
 		private var testVector:Vector.<ISerializable>;
 		private var testAMFVector:Vector.<ISerializableAMF>;
 		private var deserializedVector:Vector.<*>;
-		private var emptySerializedObject:*;
+		private var serializedObject:*;
 		
 		private function buildVector(instances:int):void
 		{
@@ -48,7 +49,9 @@ package classes.internals
 			testVector = new Vector.<ISerializable>();
 			testAMFVector = new Vector.<ISerializableAMF>();
 			deserializedVector = new Vector.<*>();
-			emptySerializedObject = [];
+			
+			serializedObject = [];
+			serializedObject.serializationVersion = SERIAL_VERSION;
 			
 			buildVector(TEST_INSTANCES);
 			buildAmfVector(TEST_INSTANCES);
@@ -181,15 +184,30 @@ package classes.internals
 		
 		[Test]
 		public function serializationVersionWithNoProperty():void {
-			assertThat(SerializationUtils.serializationVersion(emptySerializedObject), equalTo(0));
+			serializedObject = [];
+			
+			assertThat(SerializationUtils.serializationVersion(serializedObject), equalTo(0));
 		}
 		
 				
 		[Test]
 		public function serializationVersionWithProperty():void {
-			emptySerializedObject.serializationVersion = 42;
-			
-			assertThat(SerializationUtils.serializationVersion(emptySerializedObject), equalTo(42));
+			assertThat(SerializationUtils.serializationVersion(serializedObject), equalTo(SERIAL_VERSION));
+		}
+				
+		[Test]
+		public function serializedVersionCheckSerializedGreater():void {
+			assertThat(SerializationUtils.serializedVersionCheck(serializedObject, 1), equalTo(false));
+		}
+		
+		[Test]
+		public function serializedVersionCheckSerializedEqual():void {
+			assertThat(SerializationUtils.serializedVersionCheck(serializedObject, 2), equalTo(true));
+		}
+		
+		[Test]
+		public function serializedVersionCheckSerializedLess():void {
+			assertThat(SerializationUtils.serializedVersionCheck(serializedObject, 3), equalTo(true));
 		}
 	}
 }

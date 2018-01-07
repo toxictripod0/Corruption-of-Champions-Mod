@@ -2,11 +2,16 @@ package classes.internals
 {
 	import classes.Items.Armors.Nothing;
 	import flash.errors.IllegalOperationError;
+	import classes.internals.LoggerFactory;
+	import mx.logging.ILogger;
+	
 	/**
 	 * A class providing utility methods to make serialization and deserialization easier.
 	 */
 	public class SerializationUtils 
 	{
+		private static const LOGGER:ILogger = LoggerFactory.getLogger(SerializationUtils);
+		
 		private static const SERIALIZATION_VERSION_PROPERTY:String = "serializationVersion";
 		
 		public function SerializationUtils() 
@@ -121,6 +126,24 @@ package classes.internals
 		 */
 		public static function serializationVersion(relativeRootObject:*):int {
 			return relativeRootObject[SERIALIZATION_VERSION_PROPERTY];
+		}
+		
+		/**
+		 * Check the version of the serialized data and compare it with the current version.
+		 * @param	relativeRootObject object that contains serialized data
+		 * @return true if the serialized version is compatible with the current verison
+		 */
+		public static function serializedVersionCheck(relativeRootObject:*, expectedVersion:int):Boolean {
+			var version:int = SerializationUtils.serializationVersion(relativeRootObject);
+			
+			if (version > expectedVersion) {
+				LOGGER.error("Serialized version is {0}, but the current version is {1}. Backward compatibility is not guaranteed!", version, expectedVersion);
+				return false;
+			}else{
+				LOGGER.debug("Serialized version is {0}", version);
+			}
+			
+			return true;
 		}
 	}
 }
