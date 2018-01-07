@@ -17,6 +17,7 @@ package classes.BodyParts
 		public var color:String = "no";
 
 		private var _nlMax:Array = [];
+		public function get nlMax():Array { return _nlMax; }
 
 		public function Neck()
 		{

@@ -505,5 +505,28 @@ package classes
 
 			assertThat(kitsunePlayer.kitsuneScore(), greaterThan(0));
 		}
+
+		[Test]
+		public function testDragonScore():void
+		{
+			var dragonPlayer:Player = new Player();
+			createCock(CockTypesEnum.DRAGON, dragonPlayer);
+			createPerk(PerkLib.Dragonfire, dragonPlayer);
+			dragonPlayer.face.type = Face.DRAGON;
+			dragonPlayer.ears.type = Ears.DRAGON;
+			dragonPlayer.tail.type = Tail.DRACONIC;
+			dragonPlayer.tongue.type = Tongue.DRACONIC;
+			dragonPlayer.wings.type = Wings.DRACONIC_LARGE;
+			dragonPlayer.lowerBody.type = LowerBody.DRAGON;
+			dragonPlayer.skin.type = Skin.DRAGON_SCALES;
+			dragonPlayer.horns.type = Horns.DRACONIC_X4_12_INCH_LONG;
+			dragonPlayer.arms.type = Arms.PREDATOR;
+			dragonPlayer.claws.type = Claws.DRAGON;
+			dragonPlayer.eyes.type = Eyes.DRAGON;
+			dragonPlayer.neck.modify(Infinity, Neck.DRACONIC);
+			dragonPlayer.rearBody.type = RearBody.DRACONIC_SPIKES;
+
+			assertThat(dragonPlayer.dragonScore(), greaterThan(0));
+		}
 	}
 }
