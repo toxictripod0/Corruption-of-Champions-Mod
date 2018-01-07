@@ -8,6 +8,7 @@ package classes{
 	
 	
 	import classes.VaginaClass;
+	import classes.internals.SerializationUtils;
 	
     public class VaginaClassTest {
 		private static const LABIA_PIERCED:int = 1;
@@ -176,6 +177,31 @@ package classes{
 			cut.deserialize(serializedClass);
 			
 			assertThat(cut.recoveryProgress, equalTo(0));
+		}
+		
+		[Test]
+		public function deserializeNoVaginaType():void {
+			SerializationUtils.deserialize(serializedClass, cut);
+			
+			assertThat(cut.type, equalTo(0));
+		}
+		
+		[Test]
+		public function deserializeHumanVaginaType():void {
+			serializedClass.type = 0;
+			
+			SerializationUtils.deserialize(serializedClass, cut);
+			
+			assertThat(cut.type, equalTo(0));
+		}
+		
+		[Test]
+		public function deserializeEquineVaginaType():void {
+			serializedClass.type = 5;
+			
+			SerializationUtils.deserialize(serializedClass, cut);
+			
+			assertThat(cut.type, equalTo(5));
 		}
 	}
 }

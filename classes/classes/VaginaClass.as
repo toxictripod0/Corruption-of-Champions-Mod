@@ -7,6 +7,8 @@
 
 	public class VaginaClass implements ISerializable
 	{
+		private static const SERIALIZATION_VERSION:int = 1;
+		
 		public static const HUMAN:int                     =   0;
 		public static const EQUINE:int                    =   1;
 		public static const BLACK_SAND_TRAP:int           =   5;
@@ -176,18 +178,11 @@
 		
 		public function deserialize(relativeRootObject:*):void 
 		{
-			LOGGER.debug("Deserializing vagina...");
 			this.vaginalWetness = relativeRootObject.vaginalWetness;
 			this.vaginalLooseness = relativeRootObject.vaginalLooseness;
 			this.fullness = relativeRootObject.fullness;
 			this.virgin = relativeRootObject.virgin;
-			
-			if (relativeRootObject.type === undefined) {
-				this.type = 0;
-				LOGGER.warn("Vagina type not set, setting to {0}", this.type);
-			}else{
-				this.type = relativeRootObject.type;
-			}
+			this.type = relativeRootObject.type;
 			
 			if (relativeRootObject.labiaPierced === undefined) {
 				LOGGER.warn("Labia pierced not set, resetting labia and clit data");
@@ -225,13 +220,20 @@
 		
 		public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 
 		{
-			//TODO sort out legacy loading code
+			switch(serializedDataVersion) {
+				case 0:
+					LOGGER.info("Loaded legacy save format for {0}, upgrading...", this);
+					
+					if (relativeRootObject.type === undefined) {
+						relativeRootObject.type = 0;
+						LOGGER.warn("Vagina type not set, setting to {0}", relativeRootObject.type);
+					}
+			}
 		}
 		
 		public function currentSerializationVerison():int 
 		{
-			//TODO correctly version class
-			return 0;
+			return SERIALIZATION_VERSION;
 		}
 	}
 }
