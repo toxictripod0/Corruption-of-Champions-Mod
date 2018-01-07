@@ -30,6 +30,7 @@ package classes
 		private var cowPlayer:Player;
 		private var wolfPlayer:Player;
 		private var dogPlayer:Player;
+		private var mutantPlayer:Player;
 
 		private function createVaginas(numberOfVaginas:Number, instance:Player):void
 		{
@@ -161,6 +162,13 @@ package classes
 			dogPlayer.tail.type = Tail.DOG;
 			dogPlayer.lowerBody.type = LowerBody.DOG;
 			dogPlayer.skin.type = Skin.FUR;
+
+			mutantPlayer = new Player();
+			createBreastRows(2, mutantPlayer);
+			mutantPlayer.breastRows[0].fuckable = true;
+			mutantPlayer.createCock();
+			mutantPlayer.createCock();
+			mutantPlayer.createVagina();
 		}
 
 		[Test]
@@ -527,6 +535,208 @@ package classes
 			dragonPlayer.rearBody.type = RearBody.DRACONIC_SPIKES;
 
 			assertThat(dragonPlayer.dragonScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testGoblinScore():void
+		{
+			var goblinPlayer:Player = new Player();
+			goblinPlayer.createVagina();
+			goblinPlayer.ears.type = Ears.ELFIN;
+			goblinPlayer.skin.tone = "pale yellow"; // TODO: Move that to the ColorLists
+			goblinPlayer.face.type = Face.HUMAN;
+			goblinPlayer.tallness = 40;
+			goblinPlayer.lowerBody.type = LowerBody.HUMAN;
+
+			assertThat(goblinPlayer.goblinScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testGooScore():void
+		{
+			var gooPlayer:Player = new Player();
+			gooPlayer.hair.type = Hair.GOO;
+			gooPlayer.skin.adj = "slimy";
+			gooPlayer.lowerBody.type = LowerBody.GOO;
+			gooPlayer.createVagina();
+			gooPlayer.createStatusEffect(StatusEffects.BonusVCapacity, 9000, 0, 0, 0);
+			gooPlayer.createStatusEffect(StatusEffects.SlimeCraving, 0, 0, 0, 1);
+
+			assertThat(gooPlayer.gooScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testNagaScore():void
+		{
+			var nagaPlayer:Player = new Player();
+			nagaPlayer.face.type = Face.SNAKE_FANGS;
+			nagaPlayer.tongue.type = Tongue.SNAKE;
+			nagaPlayer.lowerBody.type = LowerBody.NAGA; // Not included in nagaScore, but just in case ...
+
+			assertThat(nagaPlayer.nagaScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testBunnyScore():void
+		{
+			var bunnyPlayer:Player = new Player();
+			bunnyPlayer.face.type = Face.BUNNY;
+			bunnyPlayer.tail.type = Tail.RABBIT;
+			bunnyPlayer.ears.type = Ears.BUNNY;
+			bunnyPlayer.lowerBody.type = LowerBody.BUNNY;
+
+			assertThat(bunnyPlayer.bunnyScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testHarpyScore():void
+		{
+			var harpyPlayer:Player = new Player();
+			harpyPlayer.arms.type = Arms.HARPY;
+			harpyPlayer.hair.type = Hair.FEATHER;
+			harpyPlayer.wings.type = Wings.FEATHERED_LARGE;
+			harpyPlayer.tail.type = Tail.HARPY;
+			harpyPlayer.lowerBody.type = LowerBody.HARPY;
+
+			assertThat(harpyPlayer.harpyScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testKangaScore():void
+		{
+			var kangaPlayer:Player = new Player();
+			createCock(CockTypesEnum.KANGAROO, kangaPlayer);
+			kangaPlayer.ears.type = Ears.KANGAROO;
+			kangaPlayer.tail.type = Tail.KANGAROO;
+			kangaPlayer.face.type = Face.KANGAROO;
+			kangaPlayer.lowerBody.type = LowerBody.KANGAROO;
+			kangaPlayer.skin.type = Skin.FUR;
+
+			assertThat(kangaPlayer.kangaScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testSheepScore():void
+		{
+			var sheepPlayer:Player = new Player();
+			sheepPlayer.ears.type = Ears.SHEEP;
+			sheepPlayer.horns.type = Horns.SHEEP;
+			sheepPlayer.tail.type = Tail.SHEEP;
+			sheepPlayer.lowerBody.setProps({type: LowerBody.CLOVEN_HOOFED, legCount: 2});
+			sheepPlayer.hair.type = Hair.WOOL;
+			sheepPlayer.skin.type = Skin.WOOL;
+
+			assertThat(sheepPlayer.sheepScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testSharkScore():void
+		{
+			var sharkPlayer:Player = new Player();
+			sharkPlayer.face.type = Face.SHARK_TEETH;
+			sharkPlayer.gills.type = Gills.FISH;
+			sharkPlayer.rearBody.type = RearBody.SHARK_FIN;
+			sharkPlayer.tail.type = Tail.SHARK;
+
+			assertThat(sharkPlayer.sharkScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testMutantScore():void
+		{
+			mutantPlayer.face.type = Face.WOLF;
+			mutantPlayer.tail.type = Tail.DRACONIC;
+			mutantPlayer.skin.type = Skin.PLAIN;
+
+			assertThat(mutantPlayer.mutantScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testHorseMutantScore():void
+		{
+			mutantPlayer.face.type = Face.HORSE;
+			mutantPlayer.tail.type = Tail.HORSE;
+			mutantPlayer.skin.type = Skin.FUR;
+
+			assertThat(mutantPlayer.mutantScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testDogMutantScore():void
+		{
+			mutantPlayer.face.type = Face.DOG;
+			mutantPlayer.tail.type = Tail.DOG;
+			mutantPlayer.skin.type = Skin.FUR;
+
+			assertThat(mutantPlayer.mutantScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testSalamanderScore():void
+		{
+			var salamanderPlayer:Player = new Player();
+			createPerk(PerkLib.Lustzerker, salamanderPlayer);
+			createCock(CockTypesEnum.LIZARD, salamanderPlayer);
+			salamanderPlayer.arms.type = Arms.SALAMANDER;
+			salamanderPlayer.lowerBody.type = LowerBody.SALAMANDER;
+			salamanderPlayer.tail.type = Tail.SALAMANDER;
+
+			assertThat(salamanderPlayer.salamanderScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testSirenScore():void
+		{
+			var sirenPlayer:Player = new Player();
+			sirenPlayer.createVagina();
+			sirenPlayer.face.type = Face.SHARK_TEETH;
+			sirenPlayer.tail.type = Tail.SHARK;
+			sirenPlayer.wings.type = Wings.FEATHERED_LARGE;
+			sirenPlayer.arms.type = Arms.HARPY;
+
+			assertThat(sirenPlayer.sirenScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testPigScore():void
+		{
+			var pigPlayer:Player = new Player();
+			createCock(CockTypesEnum.PIG, pigPlayer);
+			pigPlayer.ears.type = Ears.PIG;
+			pigPlayer.tail.type = Tail.PIG;
+			pigPlayer.face.type = Face.PIG;
+			pigPlayer.lowerBody.type = LowerBody.CLOVEN_HOOFED;
+
+			assertThat(pigPlayer.pigScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testSatyrScore():void
+		{
+			var satyrPlayer:Player = new Player();
+			satyrPlayer.lowerBody.type = LowerBody.CLOVEN_HOOFED;
+			satyrPlayer.tail.type = Tail.GOAT;
+			satyrPlayer.ears.type = Ears.ELFIN;
+			satyrPlayer.face.type = Face.HUMAN;
+			satyrPlayer.createCock();
+			satyrPlayer.balls = 2;
+			satyrPlayer.ballSize = 3;
+
+			assertThat(satyrPlayer.satyrScore(), greaterThanOrEqualTo(4)); // There was an issue with the satyrScore producing a too low score
+		}
+
+		[Test]
+		public function testRhinoScore():void
+		{
+			var rhinoPlayer:Player = new Player();
+			createCock(CockTypesEnum.RHINO, rhinoPlayer);
+			rhinoPlayer.ears.type = Ears.RHINO;
+			rhinoPlayer.tail.type = Tail.RHINO;
+			rhinoPlayer.face.type = Face.RHINO;
+			rhinoPlayer.horns.type = Horns.RHINO;
+			rhinoPlayer.skin.tone = "gray";
+
+			assertThat(rhinoPlayer.rhinoScore(), greaterThan(0));
 		}
 	}
 }
