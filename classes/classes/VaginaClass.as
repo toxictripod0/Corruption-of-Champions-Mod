@@ -193,13 +193,6 @@
 			this.clitLength = relativeRootObject.clitLength;
 			
 			this.recoveryProgress = relativeRootObject.recoveryProgress;
-			
-
-			
-			if(relativeRootObject.recoveryProgress === undefined) {
-				this.recoveryProgress = 0;
-				LOGGER.warn("Stretch counter was not loaded, setting to {0}", this.recoveryProgress);
-			}
 		}
 		
 		public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 
@@ -221,12 +214,16 @@
 						relativeRootObject.clitPierced = 0;
 						relativeRootObject.clitPShort = "";
 						relativeRootObject.clitPLong = "";
-						relativeRootObject.recoveryProgress = 0; //FIXME move this to recovery check
 					}
 					
 					if(relativeRootObject.clitLength === undefined) {
 						relativeRootObject.clitLength = VaginaClass.DEFAULT_CLIT_LENGTH;
 						LOGGER.warn("Clit length was not loaded, setting to default({0})", this.clitLength);
+					}
+					
+					if(relativeRootObject.recoveryProgress === undefined) {
+						relativeRootObject.recoveryProgress = 0;
+						LOGGER.warn("Stretch counter was not loaded, setting to {0}", this.recoveryProgress);
 					}
 			}
 		}

@@ -122,35 +122,6 @@ package classes{
 			serializedClass.recoveryProgress = RECOVERY_PROGRESS;
 		}
 		
-				
-		[Test]
-		public function deserializeRecoveryProgressWithLabiaPierced():void {
-			setLabiaPierced();
-			setRecoveryProgress();
-			
-			cut.deserialize(serializedClass);
-			
-			assertThat(cut.recoveryProgress, equalTo(RECOVERY_PROGRESS));
-		}
-		
-		[Test]
-		public function deserializeRecoveryProgressWithoutLabiaPierced():void {
-			setRecoveryProgress();
-			
-			SerializationUtils.deserialize(serializedClass, cut);
-			
-			assertThat(cut.recoveryProgress, equalTo(0));
-		}
-		
-		[Test]
-		public function deserializeRecoveryProgressWithtLabiaPiercedAndNotDefined():void {
-			setLabiaPierced();
-			
-			cut.deserialize(serializedClass);
-			
-			assertThat(cut.recoveryProgress, equalTo(0));
-		}
-		
 		[Test]
 		public function deserializeNoVaginaType():void {
 			SerializationUtils.deserialize(serializedClass, cut);
@@ -206,6 +177,22 @@ package classes{
 			SerializationUtils.deserialize(serializedClass, cut);
 			
 			assertThat(cut.clitLength, equalTo(CLIT_LENGTH));
+		}
+		
+		[Test]
+		public function deserializeRecoveryProgressUndefined():void {
+			SerializationUtils.deserialize(serializedClass, cut);
+			
+			assertThat(cut.recoveryProgress, equalTo(0));
+		}
+		
+		[Test]
+		public function deserializeRecoveryProgress():void {
+			setRecoveryProgress();
+			
+			SerializationUtils.deserialize(serializedClass, cut);
+			
+			assertThat(cut.recoveryProgress, equalTo(RECOVERY_PROGRESS));
 		}
 	}
 }
