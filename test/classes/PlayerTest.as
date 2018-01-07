@@ -2,16 +2,12 @@ package classes
 {
 	import classes.BodyParts.*;
 	import classes.CoC;
+	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.PerkLib;
 	import classes.Player;
-	import classes.Scenes.Areas.VolcanicCrag.BehemothScene;
 	import classes.helper.StageLocator;
-	import classes.internals.IRandomNumber;
-	import classes.internals.RandomNumber;
-	import classes.lists.BreastCup;
 	import classes.lists.ColorLists;
-	import classes.lists.Gender;
 	import org.flexunit.asserts.*;
 	import org.hamcrest.assertThat;
 	import org.hamcrest.collection.*;
@@ -797,6 +793,26 @@ package classes
 			manticorePlayer.skin.type = Skin.FUR;
 
 			assertThat(manticorePlayer.manticoreScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testBimboScore():void
+		{
+			var bimboPlayer:Player = new Player();
+			createPerk(PerkLib.BimboBrains, bimboPlayer);
+			createPerk(PerkLib.BimboBody, bimboPlayer);
+			bimboPlayer.createVagina(true, VaginaClass.WETNESS_SLICK);
+			bimboPlayer.createBreastRow(10);
+			bimboPlayer.setArmor(kGAMECLASS.armors.BIMBOSK);
+			kGAMECLASS.flags[kFLAGS.BIMBOSKIRT_MINIMUM_LUST] = 30;
+			bimboPlayer.femininity = 100;
+			bimboPlayer.hips.rating = 10;
+			bimboPlayer.butt.rating = 10;
+			bimboPlayer.tone = 10;
+			bimboPlayer.hair.setProps({color: "platinum blonde", length: 12});
+			bimboPlayer.inte = 10;
+
+			assertThat(bimboPlayer.bimboScore(), greaterThan(0));
 		}
 	}
 }
