@@ -1,6 +1,7 @@
 package {
 	import classes.HelperSuit;
 	import classes.InternalsSuit;
+	import classes.PlayerTest;
 	import classes.ScenesSuit;
 	import classes.ItemsSuit;
 
@@ -27,6 +28,7 @@ package {
 		 public var charCreationTest:CharCreationTest; 
 		 public var monsterTest:MonsterTest;
 		 public var creaturTest:CreatureTest;
+		 public var playerTest:PlayerTest;
 		 public var vaginaClass:VaginaClassTest;
 		 public var savesTest:SavesTest;
 		 public var playerEventsTest:PlayerEventsTest;
