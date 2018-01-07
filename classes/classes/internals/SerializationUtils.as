@@ -7,6 +7,8 @@ package classes.internals
 	 */
 	public class SerializationUtils 
 	{
+		private static const SERIALIZATION_VERSION_PROPERTY:String = "serializationVersion";
+		
 		public function SerializationUtils() 
 		{
 			throw new IllegalOperationError("This class cannot be instantiated");
@@ -110,6 +112,15 @@ package classes.internals
 			for each(var element:* in sourceVector) {
 				destinationVector.push(element as destinationType);
 			}
+		}
+		
+		/**
+		 * Get the serialization version from the object, if any.
+		 * @param	relativeRootObject that possibly contains a serialization version
+		 * @return the serialization version, or 0 if no version is found
+		 */
+		public static function serializationVersion(relativeRootObject:*):int {
+			return relativeRootObject[SERIALIZATION_VERSION_PROPERTY];
 		}
 	}
 }
