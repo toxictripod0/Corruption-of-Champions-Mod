@@ -738,5 +738,65 @@ package classes
 
 			assertThat(rhinoPlayer.rhinoScore(), greaterThan(0));
 		}
+
+		[Test]
+		public function testEchidnaScore():void
+		{
+			var echidnaPlayer:Player = new Player();
+			createCock(CockTypesEnum.ECHIDNA, echidnaPlayer);
+			echidnaPlayer.ears.type = Ears.ECHIDNA;
+			echidnaPlayer.tail.type = Tail.ECHIDNA;
+			echidnaPlayer.face.type = Face.ECHIDNA;
+			echidnaPlayer.tongue.type = Tongue.ECHIDNA;
+			echidnaPlayer.lowerBody.type = LowerBody.ECHIDNA;
+			echidnaPlayer.skin.type = Skin.FUR;
+
+			assertThat(echidnaPlayer.echidnaScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testDeerScore():void
+		{
+			var deerPlayer:Player = new Player();
+			createCock(CockTypesEnum.HORSE, deerPlayer);
+			deerPlayer.ears.type = Ears.DEER;
+			deerPlayer.tail.type = Tail.DEER;
+			deerPlayer.face.type = Face.DEER;
+			deerPlayer.lowerBody.type = LowerBody.CLOVEN_HOOFED;
+			deerPlayer.horns.setProps({type: Horns.ANTLERS, value: 4});
+			deerPlayer.skin.type = Skin.FUR;
+
+			assertThat(deerPlayer.deerScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testDragonneScore():void
+		{
+			var dragonnePlayer:Player = new Player();
+			dragonnePlayer.face.type = Face.CAT;
+			dragonnePlayer.ears.type = Ears.CAT;
+			dragonnePlayer.tail.type = Tail.CAT;
+			dragonnePlayer.tongue.type = Tongue.DRACONIC;
+			dragonnePlayer.wings.type = Wings.DRACONIC_LARGE;
+			dragonnePlayer.lowerBody.type = LowerBody.CAT;
+			dragonnePlayer.skin.type = Skin.DRAGON_SCALES;
+
+			assertThat(dragonnePlayer.dragonneScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testManticoreScore():void
+		{
+			var manticorePlayer:Player = new Player();
+			manticorePlayer.face.type = Face.CAT;
+			manticorePlayer.ears.type = Ears.CAT;
+			manticorePlayer.tail.type = Tail.SCORPION;
+			manticorePlayer.lowerBody.type = LowerBody.CAT;
+			manticorePlayer.horns.type = Horns.DEMON;
+			manticorePlayer.wings.type = Wings.BAT_LIKE_LARGE;
+			manticorePlayer.skin.type = Skin.FUR;
+
+			assertThat(manticorePlayer.manticoreScore(), greaterThan(0));
+		}
 	}
 }
