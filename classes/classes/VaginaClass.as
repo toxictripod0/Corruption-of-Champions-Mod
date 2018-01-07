@@ -194,10 +194,7 @@
 			
 			this.recoveryProgress = relativeRootObject.recoveryProgress;
 			
-			if(relativeRootObject.clitLength === undefined) {
-				this.clitLength = VaginaClass.DEFAULT_CLIT_LENGTH;
-				LOGGER.warn("Clit length was not loaded, setting to default({0})", this.clitLength);
-			}
+
 			
 			if(relativeRootObject.recoveryProgress === undefined) {
 				this.recoveryProgress = 0;
@@ -224,8 +221,12 @@
 						relativeRootObject.clitPierced = 0;
 						relativeRootObject.clitPShort = "";
 						relativeRootObject.clitPLong = "";
-						relativeRootObject.clitLength = VaginaClass.DEFAULT_CLIT_LENGTH;
 						relativeRootObject.recoveryProgress = 0; //FIXME move this to recovery check
+					}
+					
+					if(relativeRootObject.clitLength === undefined) {
+						relativeRootObject.clitLength = VaginaClass.DEFAULT_CLIT_LENGTH;
+						LOGGER.warn("Clit length was not loaded, setting to default({0})", this.clitLength);
 					}
 			}
 		}
