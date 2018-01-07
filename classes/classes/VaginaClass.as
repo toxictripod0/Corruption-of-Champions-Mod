@@ -184,28 +184,15 @@
 			this.virgin = relativeRootObject.virgin;
 			this.type = relativeRootObject.type;
 			
-			if (relativeRootObject.labiaPierced === undefined) {
-				LOGGER.warn("Labia pierced not set, resetting labia and clit data");
-				this.labiaPierced = 0;
-				this.labiaPShort = "";
-				this.labiaPLong = "";
-				this.clitPierced = 0;
-				this.clitPShort = "";
-				this.clitPLong = "";
-				this.clitLength = VaginaClass.DEFAULT_CLIT_LENGTH;
-				this.recoveryProgress = 0;
-			}
-			else
-			{
-				this.labiaPierced = relativeRootObject.labiaPierced;
-				this.labiaPShort = relativeRootObject.labiaPShort;
-				this.labiaPLong = relativeRootObject.labiaPLong;
-				this.clitPierced = relativeRootObject.clitPierced;
-				this.clitPShort = relativeRootObject.clitPShort;
-				this.clitPLong = relativeRootObject.clitPLong;
-				this.clitLength = relativeRootObject.clitLength;
-				this.recoveryProgress = relativeRootObject.recoveryProgress;
-			}
+			this.labiaPierced = relativeRootObject.labiaPierced;
+			this.labiaPShort = relativeRootObject.labiaPShort;
+			this.labiaPLong = relativeRootObject.labiaPLong;
+			this.clitPierced = relativeRootObject.clitPierced;
+			this.clitPShort = relativeRootObject.clitPShort;
+			this.clitPLong = relativeRootObject.clitPLong;
+			this.clitLength = relativeRootObject.clitLength;
+			
+			this.recoveryProgress = relativeRootObject.recoveryProgress;
 			
 			if(relativeRootObject.clitLength === undefined) {
 				this.clitLength = VaginaClass.DEFAULT_CLIT_LENGTH;
@@ -227,6 +214,18 @@
 					if (relativeRootObject.type === undefined) {
 						relativeRootObject.type = 0;
 						LOGGER.warn("Vagina type not set, setting to {0}", relativeRootObject.type);
+					}
+					
+					if (relativeRootObject.labiaPierced === undefined) {
+						LOGGER.warn("Labia pierced not set, resetting labia and clit data");
+						relativeRootObject.labiaPierced = 0;
+						relativeRootObject.labiaPShort = "";
+						relativeRootObject.labiaPLong = "";
+						relativeRootObject.clitPierced = 0;
+						relativeRootObject.clitPShort = "";
+						relativeRootObject.clitPLong = "";
+						relativeRootObject.clitLength = VaginaClass.DEFAULT_CLIT_LENGTH;
+						relativeRootObject.recoveryProgress = 0; //FIXME move this to recovery check
 					}
 			}
 		}

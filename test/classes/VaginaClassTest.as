@@ -96,7 +96,7 @@ package classes{
 		
 		[Test]
 		public function deserializeWithoutLabiaPierced():void {
-			cut.deserialize(serializedClass);
+			SerializationUtils.deserialize(serializedClass, cut);
 			
 			assertThat(cut.labiaPierced, equalTo(0));
 		}
@@ -132,7 +132,7 @@ package classes{
 		public function deserializeClitLengthWithoutLabiaPierced():void {
 			setClitLength();
 			
-			cut.deserialize(serializedClass);
+			SerializationUtils.deserialize(serializedClass, cut);
 			
 			assertThat(cut.clitLength, equalTo(VaginaClass.DEFAULT_CLIT_LENGTH));
 		}
@@ -165,7 +165,7 @@ package classes{
 		public function deserializeRecoveryProgressWithoutLabiaPierced():void {
 			setRecoveryProgress();
 			
-			cut.deserialize(serializedClass);
+			SerializationUtils.deserialize(serializedClass, cut);
 			
 			assertThat(cut.recoveryProgress, equalTo(0));
 		}
@@ -202,6 +202,22 @@ package classes{
 			SerializationUtils.deserialize(serializedClass, cut);
 			
 			assertThat(cut.type, equalTo(5));
+		}
+		
+		[Test]
+		public function deserializeLabiaPiercedUndefined():void {
+			SerializationUtils.deserialize(serializedClass, cut);
+			
+			assertThat(cut.labiaPierced, equalTo(0));
+		}
+		
+		[Test]
+		public function deserializeLabiaPierced():void {
+			setLabiaPierced();
+			
+			SerializationUtils.deserialize(serializedClass, cut);
+			
+			assertThat(cut.labiaPierced, equalTo(LABIA_PIERCED));
 		}
 	}
 }
