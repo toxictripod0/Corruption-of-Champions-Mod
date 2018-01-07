@@ -10,6 +10,7 @@ package classes
 	import classes.internals.IRandomNumber;
 	import classes.internals.RandomNumber;
 	import classes.lists.BreastCup;
+	import classes.lists.ColorLists;
 	import classes.lists.Gender;
 	import org.flexunit.asserts.*;
 	import org.hamcrest.assertThat;
@@ -484,6 +485,25 @@ package classes
 			horsePlayer.skin.type = Skin.FUR;
 
 			assertThat(horsePlayer.horseScore(), greaterThan(0));
+		}
+
+		[Test]
+		public function testKitsuneScore():void
+		{
+			// Avoiding randomness for hair and fur colors now. Maybe later?
+			var kitsunePlayer:Player = new Player();
+			kitsunePlayer.createVagina();
+			kitsunePlayer.createStatusEffect(StatusEffects.BonusVCapacity, 8000, 0, 0, 0);
+			kitsunePlayer.ears.type = Ears.FOX;
+			kitsunePlayer.tail.setProps({type: Tail.FOX, venom: 9});
+			kitsunePlayer.face.type = Face.FOX;
+			kitsunePlayer.hair.color = ColorLists.ELDER_KITSUNE[0];
+			kitsunePlayer.skin.type = Skin.FUR;
+			kitsunePlayer.setFurColor([ColorLists.ELDER_KITSUNE[0]], {type: UnderBody.FURRY}, true);
+			kitsunePlayer.femininity = 40;
+			kitsunePlayer.lowerBody.type = LowerBody.FOX;
+
+			assertThat(kitsunePlayer.kitsuneScore(), greaterThan(0));
 		}
 	}
 }
