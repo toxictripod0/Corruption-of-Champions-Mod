@@ -93,35 +93,8 @@ package classes.Items
 		
 		public function removeText():void {} //Produces any text seen when removing the armor normally
 		
-/*
-		override protected function equip(player:Player, returnOldItem:Boolean,output:Boolean):void
-		{
-			if (output) clearOutput();
-			if (canUse(player, true)) {
-				if (output) outputText("You equip your " + _name + ".  ");
-				var oldArmor:Armor = player.armor;
-				oldArmor.unequip(player, returnOldItem, output);
-				player.setArmorHiddenField(this);
-				equipped(player,output);
-			}
+		override public function getMaxStackSize():int {
+			return 1;
 		}
-
-		override public function unequip(player:Player, returnToInventory:Boolean, output:Boolean = false):void
-		{
-			while(player.findPerk(PerkLib.BulgeArmor) >= 0) player.removePerk(PerkLib.BulgeArmor);// TODO remove this Exgartuan hack
-			if (returnToInventory) {
-				var itype:ItemType = unequipReturnItem(player, output);
-				if (itype != null) {
-					game.itemSwapping = true;
-					if (output && itype == this)
-						outputText("You have your old set of " + longName + " left over.  ");
-					game.inventory.takeItem(this, false);
-				}
-			}
-			player.setArmorHiddenField(ArmorLib.COMFORTABLE_UNDERCLOTHES);
-			if (player.modArmorName.length > 0) player.modArmorName = "";
-			unequipped(player,output);
-		}
-*/
 	}
 }

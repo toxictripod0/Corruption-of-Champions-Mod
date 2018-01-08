@@ -851,7 +851,7 @@ package classes.Scenes
 			var orig:int = qty;
 			player.itemSlots[slotNum].emptySlot();
 			for (x = startSlot; x < endSlot && qty > 0; x++) { //Find any slots which already hold the item that is being stored
-				if (storage[x].itype == itype && storage[x].quantity < 5) {
+				if (storage[x].itype == itype && storage[x].quantity < itype.getMaxStackSize()) {
 					temp = 5 - storage[x].quantity;
 					if (qty < temp) temp = qty;
 					outputText("You add " + temp + "x " + itype.shortName + " into storage slot " + num2Text(x + 1 - startSlot) + ".\n");

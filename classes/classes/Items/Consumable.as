@@ -59,34 +59,8 @@ package classes.Items
 			game.dynStats.apply(null, args);
 		}
 		
-/*
-		public function canUse(player:Player,output:Boolean):Boolean
-		{
-			return true;
+		override public function getMaxStackSize():int {
+			return 10;
 		}
-*/
-		
-		/**
-		 * Perform effect on player WITHOUT requiring item being in player's inventory and removing it
-		 */
-/*
-		public function doEffect(player:Player,output:Boolean):void
-		{
-			CoC_Settings.errorAMC("Consumable","doEffect",id);
-		}
-*/
-		
-		/**
-		 * Removes item from player and does effect
-		 */
-/*
-		override public function useItem(player:Player, output:Boolean, external:Boolean):void
-		{
-			if (canUse(player,output)){
-				if (!external && !game.debug) player.consumeItem(this,1);
-				doEffect(player,output);
-			}
-		}
-*/
 	}
 }

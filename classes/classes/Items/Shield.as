@@ -64,5 +64,8 @@ public class Shield extends Useable //Equipable
 		
 		public function removeText():void {} //Produces any text seen when removing the armor normally
 		
+		override public function getMaxStackSize():int {
+			return 1;
+		}
 	}
 }
