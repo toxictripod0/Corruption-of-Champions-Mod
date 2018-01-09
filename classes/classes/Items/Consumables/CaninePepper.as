@@ -7,6 +7,7 @@ package classes.Items.Consumables
 	import classes.Items.*;
 	import classes.PerkLib;
 	import classes.StatusEffects;
+	import classes.lists.ColorLists;
 	
 	public class CaninePepper extends Consumable
 	{
@@ -690,7 +691,7 @@ package classes.Items.Consumables
 			}
 			//Become furred - requires paws and tail
 			if (rand(4) === 0 && changes < changeLimit && player.lowerBody.type == LowerBody.DOG && player.tail.type == Tail.DOG && !player.hasFur()) {
-				player.setFurColor(["brown", "chocolate", "auburn", "caramel", "orange", "black", "dark gray", "gray", "light gray", "silver", "white", "orange and white", "brown and white", "black and white"]);
+				player.setFurColor(ColorLists.DOG_FUR);
 				if (player.hasPlainSkin()) outputText("\n\nYour skin itches intensely.  You gaze down as more and more hairs break forth from your skin, quickly transforming into a soft coat of fur.  <b>You are now covered in " + player.skin.furColor + " fur from head to toe.</b>");
 				if (player.hasScales()) outputText("\n\nYour scales itch incessantly.  You scratch, feeling them flake off to reveal a coat of " + player.skin.furColor + " fur growing out from below!  <b>You are now covered in " + player.skin.furColor + " fur from head to toe.</b>");
 				player.skin.type = Skin.FUR;
