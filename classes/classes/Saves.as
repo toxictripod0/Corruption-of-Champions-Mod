@@ -750,7 +750,7 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 	var backupAborted:Boolean = false;
 	
 	CoC.saveAllAwareClasses(getGame()); //Informs each saveAwareClass that it must save its values in the flags array
-	var counter:Number = player.cocks.length;
+
 	//Initialize the save file
 	var saveFile:*;
 	var backup:SharedObject;
