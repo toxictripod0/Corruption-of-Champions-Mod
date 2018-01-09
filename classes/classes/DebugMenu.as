@@ -337,38 +337,38 @@ package classes
 			//Page 1
 			weaponArray.push(weapons.B_SCARB);
 			weaponArray.push(weapons.B_SWORD);
-			weaponArray.push(weapons.BLUNDER);
-			weaponArray.push(weapons.CLAYMOR);
-			weaponArray.push(weapons.CROSSBW);
+			weaponArray.push(weapons.BLUNDR0);
+			weaponArray.push(weapons.CLAYMR0);
+			weaponArray.push(weapons.CRSBOW0);
 			weaponArray.push(weapons.E_STAFF);
-			weaponArray.push(weapons.FLAIL);
-			weaponArray.push(weapons.FLINTLK);
+			weaponArray.push(weapons.FLAIL_0);
+			weaponArray.push(weapons.FLNTLK0);
 			weaponArray.push(weapons.URTAHLB);
 			weaponArray.push(weapons.H_GAUNT);
 			weaponArray.push(weapons.JRAPIER);
-			weaponArray.push(weapons.KATANA);
+			weaponArray.push(weapons.KATANA0);
 			//Page 2
-			weaponArray.push(weapons.L__AXE);
+			weaponArray.push(weapons.L__AXE0);
 			weaponArray.push(weapons.L_DAGGR);
-			weaponArray.push(weapons.L_HAMMR);
+			weaponArray.push(weapons.L_HAMR0);
 			weaponArray.push(weapons.L_STAFF);
 			weaponArray.push(weapons.L_WHIP);
-			weaponArray.push(weapons.MACE);
+			weaponArray.push(weapons.MACE__0);
 			weaponArray.push(weapons.MRAPIER);
 			weaponArray.push(weapons.PIPE);
 			weaponArray.push(weapons.PTCHFRK);			
-			weaponArray.push(weapons.RIDINGC);
+			weaponArray.push(weapons.RIDING0);
 			weaponArray.push(weapons.RRAPIER);
 			weaponArray.push(weapons.S_BLADE);
 			//Page 3
 			weaponArray.push(weapons.S_GAUNT);
 			weaponArray.push(weapons.SCARBLD);
-			weaponArray.push(weapons.SCIMITR);
-			weaponArray.push(weapons.SPEAR);
+			weaponArray.push(weapons.SCIMTR0);
+			weaponArray.push(weapons.SPEAR_0);
 			weaponArray.push(weapons.SUCWHIP);
 			weaponArray.push(weapons.W_STAFF);
-			weaponArray.push(weapons.WARHAMR);
-			weaponArray.push(weapons.WHIP);
+			weaponArray.push(weapons.WARHAM0);
+			weaponArray.push(weapons.WHIP__0);
 			weaponArray.push(weapons.U_SWORD);
 			
 			//------------

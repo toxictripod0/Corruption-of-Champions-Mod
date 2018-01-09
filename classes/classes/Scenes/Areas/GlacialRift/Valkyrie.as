@@ -173,7 +173,7 @@ package classes.Scenes.Areas.GlacialRift
 			this.level = 18;
 			this.gems = 30;
 			this.drop = new WeightedDrop()
-					.add(weapons.SPEAR, 1)
+					.add(weapons.SPEAR_0, 1)
 					.add(shields.GREATSH, 2)
 					.add(consumables.W__BOOK, 4)
 					.add(null, 18);

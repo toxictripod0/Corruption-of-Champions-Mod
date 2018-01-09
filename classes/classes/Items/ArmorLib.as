@@ -73,16 +73,7 @@ package classes.Items
 		public const W_ROBES:ArmorWithPerk = new ArmorWithPerk("W.Robes","W.Robes","wizard's robes","a wizard's robes",1,50,"These robes appear to have once belonged to a female wizard.  They're long with a slit up the side and full billowing sleeves.  The top is surprisingly low cut.  Somehow you know wearing it would aid your spellcasting.","Light",
 				PerkLib.WizardsEndurance,25,0,0,0);
 
-		/*
-		private static function mk(id:String,shortName:String,name:String,longName:String,def:Number,value:Number,description:String,perk:String=""):Armor {
-			return new Armor(id,shortName,name,longName,def,value,description,perk);
-		}
-		private static function mk2(id:String,shortName:String,name:String,longName:String,def:Number,value:Number,description:String,perk:String,
-				playerPerk:PerkType,playerPerkV1:Number,playerPerkV2:Number,playerPerkV3:Number,playerPerkV4:Number,playerPerkDesc:String=null):ArmorWithPerk{
-			return new ArmorWithPerk(id,shortName,name,longName,def,value,description,perk,
-					playerPerk,playerPerkV1,playerPerkV2,playerPerkV3,playerPerkV4);
-		}
-		*/
+
 		public function ArmorLib()
 		{
 		}

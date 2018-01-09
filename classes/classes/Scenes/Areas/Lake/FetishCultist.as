@@ -192,7 +192,7 @@ package classes.Scenes.Areas.Lake
 			this.level = 2;
 			this.gems = 5+rand(10);
 			this.drop = new WeightedDrop().add(consumables.LABOVA_,1)
-					.add(weapons.RIDINGC,1)
+					.add(weapons.RIDING0,1)
 					.add(consumables.OVIELIX,2)
 					.add(consumables.L_DRAFT,6);
 			this.special1 = cultistRaisePlayerLust;

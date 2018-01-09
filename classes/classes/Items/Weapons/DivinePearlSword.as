@@ -9,16 +9,16 @@ package classes.Items.Weapons
 	import classes.Items.Weapon;
 	import classes.Player;
 
-	public class BeautifulSword extends Weapon {
+	public class DivinePearlSword extends Weapon {
 		
-		public function BeautifulSword() {
+		public function DivinePearlSword() {
 			this.weightCategory = Weapon.WEIGHT_MEDIUM;
-			super("B.Sword", "B.Sword", "beautiful sword", "a beautiful shining sword", "slash", 7, 400, "This beautiful sword shines brilliantly in the light, showing the flawless craftsmanship of its blade.  The pommel and guard are heavily decorated in gold and brass.  Some craftsman clearly poured his heart and soul into this blade.", "holySword");
+			super("DPSword", "DPSword", "divine pearl sword", "a holy pearl-enhanced sword", "slash", 11, 2000, "This beautiful sword shines brilliantly in the light, showing the flawless craftsmanship of its blade. The pommel and guard are heavily decorated in gold, brass and pure pearls. Some craftsman clearly poured his heart and soul into this blade while this sword had been infused with the purity of the pearl and reinforced by a master forge.", "holySword");
 		}
 		
 		override public function get attack():Number { 
-			var temp:int = 7 + (10 - game.player.cor / 3);
-			if (temp < 5) temp = 5;
+			var temp:int = 11 + (10 - game.player.cor / 3);
+			if (temp < 10) temp = 10;
 			return temp; 
 		}
 		

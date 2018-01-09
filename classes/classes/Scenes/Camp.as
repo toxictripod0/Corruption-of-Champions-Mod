@@ -2609,7 +2609,7 @@ private function updateAchievements():void {
 		awardAchievement("Wannabe Wizard", kACHIEVEMENTS.FASHION_WANNABE_WIZARD);
 	if (player.previouslyWornClothes.length >= 10)
 		awardAchievement("Cosplayer", kACHIEVEMENTS.FASHION_COSPLAYER);
-	if ((player.armor == armors.RBBRCLT || player.armor == armors.BONSTRP || player.armor == armors.NURSECL) && (player.weapon == weapons.RIDINGC || player.weapon == weapons.WHIP || player.weapon == weapons.SUCWHIP || player.weapon == weapons.L_WHIP))
+	if ((player.armor == armors.RBBRCLT || player.armor == armors.BONSTRP || player.armor == armors.NURSECL) && (player.weapon == weapons.RIDING0 || player.weapon == weapons.WHIP__0 || player.weapon == weapons.SUCWHIP || player.weapon == weapons.L_WHIP))
 		awardAchievement("Dominatrix", kACHIEVEMENTS.FASHION_DOMINATRIX);
 	if (player.armor != ArmorLib.NOTHING && player.lowerGarment == UndergarmentLib.NOTHING && player.upperGarment == UndergarmentLib.NOTHING)
 		awardAchievement("Going Commando", kACHIEVEMENTS.FASHION_GOING_COMMANDO);

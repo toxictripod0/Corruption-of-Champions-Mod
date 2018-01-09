@@ -244,7 +244,7 @@ package classes.Scenes.Monsters
 					add(consumables.LABOVA_,3).
 					add(consumables.INCUBID,12).
 					add(consumables.SUCMILK,12).
-					add(weapons.SCIMITR, 1).
+					add(weapons.SCIMTR0, 1).
 					add(armors.BEEARMR, 1);
 			this.wings.type = Wings.IMP_LARGE;
 			checkMonster();

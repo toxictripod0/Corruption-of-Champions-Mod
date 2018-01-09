@@ -11,16 +11,11 @@ package coc.view {
 		keyboard events.
 	****/
 
-import classes.ItemType;
-import classes.internals.Utils;
-
-	import flash.display.MovieClip;
-import flash.display.Sprite;
-import flash.text.Font;
-import flash.text.TextField;
-	import flash.text.TextFormat;
-
+	import classes.ItemType;
+	import classes.internals.Utils;
 	import flash.events.MouseEvent;
+	import flash.text.Font;
+	import flash.text.TextField;
 
 	public class CoCButton extends Block {
 

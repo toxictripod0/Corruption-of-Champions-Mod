@@ -150,7 +150,7 @@ package classes.Scenes.Areas.Plains
 			this.temperment = TEMPERMENT_RANDOM_GRAPPLES;
 			this.level = 30;
 			this.additionalXP = 300;
-			this.drop = new WeightedDrop().add(weapons.SCIMITR, 1);
+			this.drop = new WeightedDrop().add(weapons.SCIMTR0, 1);
 			this.gems = 250;
 			this.special1 = scimitarSpecial;
 			checkMonster();

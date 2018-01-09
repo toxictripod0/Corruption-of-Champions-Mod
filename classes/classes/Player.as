@@ -278,7 +278,7 @@
 			if (arms.type == Arms.SPIDER) armorDef += 2;
 			if (lowerBody.type == LowerBody.CHITINOUS_SPIDER_LEGS || lowerBody.type == LowerBody.BEE) armorDef += 2;
 			//Bonus when being a samurai
-			if (armor == game.armors.SAMUARM && weapon == game.weapons.KATANA) {
+			if (armor == game.armors.SAMUARM && weapon == game.weapons.KATANA0) {
 				armorDef += 2;
 			}
 			//Agility boosts armor ratings!
@@ -340,7 +340,7 @@
 			if (hasPerk(PerkLib.IronFists3) && str >= 80 && weaponName == "fists")
 				attack += 3;
 			//Bonus for being samurai!
-			if (armor == game.armors.SAMUARM && weapon == game.weapons.KATANA)
+			if (armor == game.armors.SAMUARM && weapon == game.weapons.KATANA0)
 				attack += 2;
 			//Berserking bonus!
 			if (hasStatusEffect(StatusEffects.Berzerking)) attack += 30;

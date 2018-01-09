@@ -8,8 +8,34 @@ package classes.Items.Weapons
 
 	public class HugeWarhammer extends Weapon {
 		
-		public function HugeWarhammer() {
-			super("Warhamr", "Warhammer", "huge warhammer", "a huge warhammer", "smash", 15, 1600, "A huge war-hammer made almost entirely of steel that only the strongest warriors could use.  Requires 80 strength to use.  Getting hit with this might stun the victim.", "Large");
+		public function HugeWarhammer(tier:int) {
+			var id:String = "Warhamr";
+			var sname:String = "Warhammer";
+			var name:String = "huge warhammer";
+			var lname:String = "a huge warhammer";
+			var desc:String = "A huge war-hammer made almost entirely of steel that only the strongest warriors could use. Requires 80 strength to use. Getting hit with this might stun the victim.";
+			var attack:int = 15;
+			var value:int = 1600;
+			this.weightCategory = Weapon.WEIGHT_HEAVY;
+			if (tier == 1) {
+				id = "Warham1";
+				sname = "Warhammer+1";
+				name = "fine warhammer";
+				lname = "a fine warhammer";
+				desc += " This weapon has been upgraded to be of fine quality.";
+				attack += 2;
+				value *= 1.5;
+			}
+			if (tier == 2) {
+				id = "Warham2";
+				sname = "Warhammer+2";
+				name = "masterwork warhammer";
+				lname = "a masterwork warhammer";
+				desc += " This weapon has been upgraded to be of masterwork quality.";
+				attack += 4;
+				value *= 2;
+			}
+			super(id, sname, name, lname, "smash", attack, value, desc, "Large");
 		}
 		
 		override public function canUse():Boolean {

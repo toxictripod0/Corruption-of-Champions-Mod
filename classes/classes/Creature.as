@@ -3709,8 +3709,8 @@ package classes
 			}
 			//Modify armor rating based on weapons.
 			if (applyModifiers) {
-				if (game.player.weapon == game.weapons.JRAPIER || game.player.weapon == game.weapons.SPEAR || game.player.weaponName.indexOf("staff") != -1 && game.player.hasPerk(PerkLib.StaffChanneling)) armorMod = 0;
-				if (game.player.weapon == game.weapons.KATANA) armorMod -= 5;
+				if (game.player.weapon == game.weapons.JRAPIER || game.player.weapon == game.weapons.SPEAR_0 || game.player.weaponName.indexOf("staff") != -1 && game.player.hasPerk(PerkLib.StaffChanneling)) armorMod = 0;
+				if (game.player.weapon == game.weapons.KATANA0) armorMod -= 5;
 				if (game.player.hasPerk(PerkLib.LungingAttacks)) armorMod /= 2;
 				if (armorMod < 0) armorMod = 0;
 			}

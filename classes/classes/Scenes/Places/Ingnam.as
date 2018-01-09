@@ -110,21 +110,21 @@ package classes.Scenes.Places
 					hasWeapon = true;
 					player.setWeapon(WeaponLib.FISTS);
 				}
-				while (player.hasItem(weapons.DAGGER, 1)) {
+				while (player.hasItem(weapons.DAGGER0, 1)) {
 					hasWeapon = true;
-					player.destroyItems(weapons.DAGGER, 1);
+					player.destroyItems(weapons.DAGGER0, 1);
 				}
 				while (player.hasItem(weapons.PIPE, 1)) {
 					hasWeapon = true;
 					player.destroyItems(weapons.PIPE, 1);
 				}
-				while (player.hasItem(weapons.SPEAR, 1)) {
+				while (player.hasItem(weapons.SPEAR_0, 1)) {
 					hasWeapon = true;
-					player.destroyItems(weapons.SPEAR, 1);
+					player.destroyItems(weapons.SPEAR_0, 1);
 				}
-				while (player.hasItem(weapons.KATANA, 1)) {
+				while (player.hasItem(weapons.KATANA0, 1)) {
 					hasWeapon = true;
-					player.destroyItems(weapons.KATANA, 1);
+					player.destroyItems(weapons.KATANA0, 1);
 				}
 				if (hasWeapon) outputText("\n\n<b>Unfortunately, you were instructed to leave your weapon behind.</b>");
 			}
@@ -194,18 +194,18 @@ package classes.Scenes.Places
 			outputText("\n\n<b><u>Blacksmith's pricings</u></b>");
 			menu();
 			if (player.findPerk(PerkLib.HistoryFighter) >= 0) { //20% discount for History: Fighter
-				addShopItem(weapons.DAGGER, 32, 1);
+				addShopItem(weapons.DAGGER0, 32, 1);
 				addShopItem(weapons.PIPE, 40, 1);
-				addShopItem(weapons.SPEAR, 140, 1);
-				addShopItem(weapons.KATANA, 200, 1);
-				addShopItem(weapons.MACE, 80, 1);
+				addShopItem(weapons.SPEAR_0, 140, 1);
+				addShopItem(weapons.KATANA0, 200, 1);
+				addShopItem(weapons.MACE__0, 80, 1);
 			}
 			else {
-				addShopItem(weapons.DAGGER, 40, 1);
+				addShopItem(weapons.DAGGER0, 40, 1);
 				addShopItem(weapons.PIPE, 50, 1);
-				addShopItem(weapons.SPEAR, 175, 1);
-				addShopItem(weapons.KATANA, 250, 1);
-				addShopItem(weapons.MACE, 100, 1);
+				addShopItem(weapons.SPEAR_0, 175, 1);
+				addShopItem(weapons.KATANA0, 250, 1);
+				addShopItem(weapons.MACE__0, 100, 1);
 			}
 			if (player.findPerk(PerkLib.HistorySmith) >= 0) { //20% discount for History: Smith perk
 				addShopItem(armors.LEATHRA, 40, 2);

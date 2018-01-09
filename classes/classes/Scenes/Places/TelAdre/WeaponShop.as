@@ -1,9 +1,13 @@
 package classes.Scenes.Places.TelAdre {
 import classes.GlobalFlags.kFLAGS;
 import classes.ItemType;
+import classes.Scenes.ItemUpgrade;
+import classes.Items.Weapon;
+import classes.TimeAwareInterface;
 import classes.display.SpriteDb;
 
 public class WeaponShop extends Shop {
+	
 	public function WeaponShop() {
 		super();
 		sprite = SpriteDb.s_weaponsmith;
@@ -15,23 +19,24 @@ public class WeaponShop extends Shop {
 		outputText("His piercing blue eyes meet yours as he notices you, and he barks, \"<i>Buy something or fuck off.</i>\"\n\nWhat do you buy?");
 		menu();
 		addButton(0, consumables.W_STICK.shortName, confirmBuy, consumables.W_STICK);
-		addButton(1, weapons.CLAYMOR.shortName, confirmBuy, weapons.CLAYMOR);
-		addButton(2, weapons.WARHAMR.shortName, confirmBuy, weapons.WARHAMR);
-		addButton(3, weapons.KATANA.shortName, confirmBuy, weapons.KATANA);
-		addButton(4, weapons.SPEAR.shortName, confirmBuy, weapons.SPEAR);
-		addButton(5, weapons.WHIP.shortName, confirmBuy, weapons.WHIP);
+		addButton(1, weapons.CLAYMR0.shortName, confirmBuy, weapons.CLAYMR0);
+		addButton(2, weapons.WARHAM0.shortName, confirmBuy, weapons.WARHAM0);
+		addButton(3, weapons.KATANA0.shortName, confirmBuy, weapons.KATANA0);
+		addButton(4, weapons.SPEAR_0.shortName, confirmBuy, weapons.SPEAR_0);
+		addButton(5, weapons.WHIP__0.shortName, confirmBuy, weapons.WHIP__0);
 		addButton(6, weapons.W_STAFF.shortName, confirmBuy, weapons.W_STAFF);
 		addButton(7, weapons.S_GAUNT.shortName, confirmBuy, weapons.S_GAUNT);
-		addButton(8, weapons.DAGGER.shortName, confirmBuy, weapons.DAGGER);
-		addButton(9, weapons.SCIMITR.shortName, confirmBuy, weapons.SCIMITR);
-		addButton(10, weapons.MACE.shortName, confirmBuy, weapons.MACE);
-		addButton(11, weapons.FLAIL.shortName, confirmBuy, weapons.FLAIL);
+		addButton(8, weapons.DAGGER0.shortName, confirmBuy, weapons.DAGGER0);
+		addButton(9, weapons.SCIMTR0.shortName, confirmBuy, weapons.SCIMTR0);
+		addButton(10, weapons.MACE__0.shortName, confirmBuy, weapons.MACE__0);
+		addButton(11, weapons.FLAIL_0.shortName, confirmBuy, weapons.FLAIL_0);
 		if (player.hasKeyItem("Sheila's Lethicite") >= 0 || flags[kFLAGS.SHEILA_LETHICITE_FORGE_DAY] > 0) {
-			addButton(13, "ScarBlade", forgeScarredBlade);
+			addButton(12, "ScarBlade", forgeScarredBlade);
 		}
 		if (player.hasKeyItem("Sheila's Lethicite") >= 0 || flags[kFLAGS.SHEILA_LETHICITE_FORGE_DAY] > 0) {
-			addButton(13, "ScarBlade", forgeScarredBlade);
+			addButton(12, "ScarBlade", forgeScarredBlade);
 		}
+		addButton(13, "Upgrade", getGame().equipmentUpgrade.equipmentUpgradeMenu, ItemUpgrade.TELADRE_WEAPON_SHOP, inside);
 		addButton(14, "Leave", telAdre.telAdreMenu);
 	}
 
@@ -86,6 +91,6 @@ public class WeaponShop extends Shop {
 		flags[kFLAGS.SHEILA_LETHICITE_FORGE_DAY] = -1;
 		inside();
 	}
-
+	
 }
 }

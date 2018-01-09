@@ -68,7 +68,7 @@ package classes.Scenes.Camp
 				doNext(camp.returnToCampUseOneHour);
 				return;
 			}
-			if (player.hasItem(weapons.L__AXE) || player.weaponName == "large axe") 
+			if (player.hasItem(weapons.L__AXE0) || player.weaponName == "large axe") 
 			{
 				outputText("You are carrying a large axe with you.") 
 				addButton(0, "Axe", cutTreeTIMBER);
@@ -240,7 +240,7 @@ package classes.Scenes.Camp
 			if (player.hasKeyItem("Carpenter's Toolbox") >= 0) {
 				outputText("Luckily, you found that carpenter’s shop in Tel’Adre and picked up a tool kit. That has an axe, an adze, and a spud, and a bunch of other tools. Everything you need to turn logs into basic beams for a cabin. It’s quite a heavy kit, but you did manage to lug it back across the desert to your campsite. You might as well put it to good use!");
 			}
-			else if (player.hasItem(weapons.L__AXE) || player.weapon == weapons.L__AXE) {
+			else if (player.hasItem(weapons.L__AXE0) || player.weapon == weapons.L__AXE0) {
 				outputText("Good thing you found that big axe, right? That’ll make the job easy.\n\n");
 				outputText("Although when you think about it, an axe alone isn’t going to be enough. You’ll need at least an adze and a bark spud. Maybe there’s somewhere you can buy a toolkit with all the things you need. Tel’Adre maybe?\n\n");
 			}

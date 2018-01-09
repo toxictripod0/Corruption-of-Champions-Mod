@@ -324,7 +324,7 @@ public class CorruptedGlade extends BaseContent implements TimeAwareInterface,En
 			if (player.hasStatusEffect(StatusEffects.KnowsWhitefire) || player.hasStatusEffect(StatusEffects.KnowsBlackfire)) {
 				addButton(button++, "Fire", destroyTheCorruptedGlades, 2);
 			}
-			if (player.hasKeyItem("Carpenter's Toolbox") >= 0 || player.weapon == weapons.L__AXE) {
+			if (player.hasKeyItem("Carpenter's Toolbox") >= 0 || player.weapon == weapons.L__AXE0) {
 				addButton(button++, "Axe", destroyTheCorruptedGlades, 3);
 			}
 			if (player.weaponVerb == "stab" || player.weaponVerb == "slash" || player.weaponVerb == "cleave" || player.weaponVerb == "keen cut") {

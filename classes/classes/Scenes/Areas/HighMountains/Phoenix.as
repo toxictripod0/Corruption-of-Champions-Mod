@@ -145,7 +145,7 @@ package classes.Scenes.Areas.HighMountains
 			this.temperment = TEMPERMENT_RANDOM_GRAPPLES;
 			this.level = 23;
 			this.gems = 30 + rand(25);
-			this.drop = new ChainedDrop().add(weapons.SCIMITR,1/20)
+			this.drop = new ChainedDrop().add(weapons.SCIMTR0,1/20)
 					.add(useables.EBNFLWR, 1/10)
 					.elseDrop(NO_DROP);
 			this.wings.type = Wings.HARPY;

@@ -562,7 +562,7 @@ private function buyFlintlockConfirmation():void {
 	flags[kFLAGS.FLINTLOCK_PISTOL_AMMO] = 4;
 	player.gems -= 200;
 	statScreenRefresh();
-	inventory.takeItem(weapons.FLINTLK, benoitsBuyMenu);
+	inventory.takeItem(weapons.FLNTLK0, benoitsBuyMenu);
 }
 
 private function buyAlarmClock():void {

@@ -2,6 +2,7 @@
 import classes.GlobalFlags.kGAMECLASS;
 import classes.Player;
 import classes.Items.Consumable;
+import classes.Items.Weapons.*;
 import classes.Scenes.Areas.Lake;
 import classes.Scenes.Camp.ScarredBlade;
 import classes.internals.profiling.Begin;
@@ -371,22 +372,22 @@ private function goNextWrapped(timeAmt:Number, needNext:Boolean):Boolean  {
 	telAdre.umasShop.updateBonusDuration(timeAmt);
 	highMountains.izumiScenes.updateSmokeDuration(timeAmt);
 	//Drop axe if too short!
-	if ((player.tallness < 78 && player.str < 90) && player.weapon == weapons.L__AXE) {
+	if (player.weapon is LargeAxe && (player.tallness < 78 && player.str < 90)) {
 		outputText("<b>\nThis axe is too large for someone of your stature to use, though you can keep it in your inventory until you are big enough.</b>\n");
 		inventory.takeItem(player.setWeapon(WeaponLib.FISTS), playerMenu);
 		return true;
 	}
-	if ((player.tallness < 60 && player.str < 70) && player.weapon == weapons.L_HAMMR) {
+	if (player.weapon is LargeHammer && (player.tallness < 60 && player.str < 70)) {
 		outputText("<b>\nYou've become too short to use this hammer anymore.  You can still keep it in your inventory, but you'll need to be taller to effectively wield it.</b>\n");
 		inventory.takeItem(player.setWeapon(WeaponLib.FISTS), playerMenu);
 		return true;
 	}		
-	if (player.weapon == weapons.CLAYMOR && player.str < 40) {
+	if (player.weapon is LargeClaymore && player.str < 40) {
 		outputText("\n<b>You aren't strong enough to handle the weight of your weapon any longer, and you're forced to stop using it.</b>\n");
 		inventory.takeItem(player.setWeapon(WeaponLib.FISTS), playerMenu);
 		return true;
 	}
-	if (player.weapon == weapons.WARHAMR && player.str < 80) {
+	if (player.weapon is HugeWarhammer && player.str < 80) {
 		outputText("\n<b>You aren't strong enough to handle the weight of your weapon any longer!</b>\n");
 		inventory.takeItem(player.setWeapon(WeaponLib.FISTS), playerMenu);
 		return true;
@@ -399,12 +400,6 @@ private function goNextWrapped(timeAmt:Number, needNext:Boolean):Boolean  {
 	}
 	//Drop ugly sword if uncorrupt
 	if (player.weaponPerk == "uglySword" && !player.isCorruptEnough(70)) {
-		outputText("<b>\nThe <u>" + player.weaponName + "</u> grows hot in your hand, until you are forced to drop it. Whatever power inhabits this blade appears to be disgusted with your purity. Touching it gingerly, you realize it is no longer hot, but as soon as you go to grab the hilt, it nearly burns you.\n\nYou realize you won't be able to use it right now, but you could probably keep it in your inventory.</b>\n\n");
-		inventory.takeItem(player.setWeapon(WeaponLib.FISTS), playerMenu);
-		return true;
-	}
-	//Drop midnight rapier if uncorrupt
-	if (player.weaponPerk == "midnightRapier" && !player.isCorruptEnough(90)) {
 		outputText("<b>\nThe <u>" + player.weaponName + "</u> grows hot in your hand, until you are forced to drop it. Whatever power inhabits this blade appears to be disgusted with your purity. Touching it gingerly, you realize it is no longer hot, but as soon as you go to grab the hilt, it nearly burns you.\n\nYou realize you won't be able to use it right now, but you could probably keep it in your inventory.</b>\n\n");
 		inventory.takeItem(player.setWeapon(WeaponLib.FISTS), playerMenu);
 		return true;

@@ -8,10 +8,15 @@ package classes.Items
 
 	public class Weapon extends Useable //Equipable
 	{
+		public static const WEIGHT_LIGHT:String = "Light";
+		public static const WEIGHT_MEDIUM:String = "Medium";
+		public static const WEIGHT_HEAVY:String = "Heavy";
+		
 		private var _verb:String;
 		private var _attack:Number;
 		private var _perk:String;
 		private var _name:String;
+		private var _weight:String = WEIGHT_MEDIUM; //Defaults to medium
 		
 		public function Weapon(id:String, shortName:String, name:String,longName:String, verb:String, attack:Number, value:Number = 0, description:String = null, perk:String = "") {
 			super(id, shortName, longName, value, description);
@@ -32,7 +37,7 @@ package classes.Items
 		override public function get description():String {
 			var desc:String = _description;
 			//Type
-			desc += "\n\nType: Weapon ";
+			desc += "\n\nType: " + _weight + " Weapon ";
 			if (perk == "Large") desc += "(Large)";
 			else if (name.indexOf("staff") >= 0) desc += "(Staff)";
 			else if (verb.indexOf("whip") >= 0) desc += "(Whip)";
@@ -74,6 +79,14 @@ package classes.Items
 		
 		override public function getMaxStackSize():int {
 			return 1;
+		}
+		
+		public function set weightCategory(newWeight:String):void {
+			this._weight = newWeight;
+		}
+		
+		public function get weightCategory():String {
+			return this._weight;
 		}
 	}
 }

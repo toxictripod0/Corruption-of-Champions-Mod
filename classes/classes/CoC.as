@@ -192,6 +192,7 @@ package classes
 		public var camp:Camp = new Camp(campInitialize);
 		public var dreams:Dreams = new Dreams();
 		public var dungeons:DungeonCore = new DungeonCore();
+		public var equipmentUpgrade:ItemUpgrade = new ItemUpgrade();
 		public var followerInteractions:FollowerInteractions = new FollowerInteractions();
 		public var inventory:Inventory = new Inventory(saves);
 		public var masturbation:Masturbation = new Masturbation();
