@@ -539,7 +539,7 @@ package classes
 			var goblinPlayer:Player = new Player();
 			goblinPlayer.createVagina();
 			goblinPlayer.ears.type = Ears.ELFIN;
-			goblinPlayer.skin.tone = "pale yellow"; // TODO: Move that to the ColorLists
+			goblinPlayer.skin.tone = ColorLists.GOBLIN_SKIN[0];
 			goblinPlayer.face.type = Face.HUMAN;
 			goblinPlayer.tallness = 40;
 			goblinPlayer.lowerBody.type = LowerBody.HUMAN;

@@ -1632,7 +1632,7 @@
 			var horseCounter:Number = 0;
 			if (ears.type == Ears.ELFIN)
 				horseCounter++;
-			if (skin.tone == "pale yellow" || skin.tone == "grayish-blue" || skin.tone == "green" || skin.tone == "dark green")
+			if (ColorLists.GOBLIN_SKIN.indexOf(skin.tone) !== -1)
 				horseCounter++;
 			if (horseCounter > 0)
 			{

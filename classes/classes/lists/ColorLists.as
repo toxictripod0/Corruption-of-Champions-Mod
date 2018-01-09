@@ -17,6 +17,13 @@ package classes.lists
 			"russet",
 		];
 
+		public static const GOBLIN_SKIN:Array = [
+			"pale yellow",
+			"grayish-blue",
+			"green",
+			"dark green",
+		];
+
 		public static const SALAMANDER_SKIN:Array = [
 			"light",
 			"fair",
