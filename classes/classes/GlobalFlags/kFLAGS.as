@@ -922,7 +922,7 @@ public static const KAIJU_COCK:int                                              
 public static const KAIJU_BAD_END_COUNTER:int                                       =  914; // 
 public static const BROOKE_AFFECTION:int                                            =  915; // 
 public static const BROOKE_SHOWERED_WITH:int                                        =  916; // 
-public static const BROOKE_AND_HELIA_3SOME:int                                      =  917; // 
+public static const BROOKE_AND_HECKEL_3SOME:int                                     =  917; // 
 public static const TIMES_IN_BROOKES_BUTT:int                                       =  918; // 
 public static const BROOKE_MEDIUM_SCENE:int                                         =  919; // BROOKE_MEDIUM_SCENE" Description="Brooke fucked ya.
 public static const BROOKE_MET:int                                                  =  920; // 
