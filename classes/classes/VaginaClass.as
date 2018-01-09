@@ -218,12 +218,12 @@
 					
 					if(relativeRootObject.clitLength === undefined) {
 						relativeRootObject.clitLength = VaginaClass.DEFAULT_CLIT_LENGTH;
-						LOGGER.warn("Clit length was not loaded, setting to default({0})", this.clitLength);
+						LOGGER.warn("Clit length was not loaded, setting to default({0})", relativeRootObject.clitLength);
 					}
 					
 					if(relativeRootObject.recoveryProgress === undefined) {
 						relativeRootObject.recoveryProgress = 0;
-						LOGGER.warn("Stretch counter was not loaded, setting to {0}", this.recoveryProgress);
+						LOGGER.warn("Stretch counter was not loaded, setting to {0}", relativeRootObject.recoveryProgress);
 					}
 			}
 		}
