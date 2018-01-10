@@ -3181,7 +3181,7 @@ package classes.Items
 				outputText("\n\nYour scalp begins to tingle, and you gently grasp a strand, pulling it forward to check it.  Your hair has become the same " + player.hair.color + " as a kitsune's!");
 				changes++;
 			}
-			var tone:Array = mystic ? ["dark", "ebony", "ashen", "sable", "milky white"] : ["tan", "olive", "light"];
+			var tone:Array = mystic ? ColorLists.KITSUNE_SKIN_MYSTIC : ColorLists.KITSUNE_SKIN;
 			//[Change Skin Type: remove fur or scales, change skin to Tan, Olive, or Light]
 			var theFurColor:String = player.skin.furColor;
 			if (player.hasFur() && player.underBody.type == UnderBody.FURRY && player.skin.furColor !== player.underBody.skin.furColor)

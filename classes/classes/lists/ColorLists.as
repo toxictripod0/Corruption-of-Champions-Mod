@@ -17,6 +17,13 @@ package classes.lists
 			"russet",
 		];
 
+		public static const GOBLIN_SKIN:Array = [
+			"pale yellow",
+			"grayish-blue",
+			"green",
+			"dark green",
+		];
+
 		public static const SALAMANDER_SKIN:Array = [
 			"light",
 			"fair",
@@ -88,6 +95,23 @@ package classes.lists
 			["gray", "white"],
 		];
 
+		public static const DOG_FUR:Array = [
+			"brown",
+			"chocolate",
+			"auburn",
+			"caramel",
+			"orange",
+			"black",
+			"dark gray",
+			"gray",
+			"light gray",
+			"silver",
+			"white",
+			"orange and white",
+			"brown and white",
+			"black and white",
+		];
+
 		public static const FOX_FUR:Array = [
 			["orange", "white"],
 			["orange", "white"],
@@ -125,6 +149,20 @@ package classes.lists
 			"silver blonde",
 			"snow white",
 			"iridescent gray",
+		];
+
+		public static const KITSUNE_SKIN:Array = [
+			"tan",
+			"olive",
+			"light",
+		];
+
+		public static const KITSUNE_SKIN_MYSTIC:Array = [
+			"dark",
+			"ebony",
+			"ashen",
+			"sable",
+			"milky white",
 		];
 
 		public static const COCKATRICE:Array = [

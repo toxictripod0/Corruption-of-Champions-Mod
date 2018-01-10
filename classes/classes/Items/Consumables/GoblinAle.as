@@ -7,6 +7,7 @@ package classes.Items.Consumables
 	import classes.Items.ConsumableLib;
 	import classes.PerkLib;
 	import classes.StatusEffects;
+	import classes.lists.ColorLists;
 	
 	/**
 	 * Goblin transformative item.
@@ -164,7 +165,7 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//skinTone
-			if (player.skin.tone !== "green" && player.skin.tone !== "grayish-blue" && player.skin.tone !== "dark green" && player.skin.tone !== "pale yellow" && changes < changeLimit && rand(2) === 0) {
+			if (ColorLists.GOBLIN_SKIN.indexOf(player.skin.tone) === -1 && changes < changeLimit && rand(2) === 0) {
 				if (rand(10) !== 0) player.skin.tone = "dark green";
 				else {
 					if (rand(2) === 0) player.skin.tone = "pale yellow";
