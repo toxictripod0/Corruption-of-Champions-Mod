@@ -930,8 +930,10 @@
 				race = "demon-morph";
 			if (sharkScore() >= 3)
 				race = "shark-morph";
-			if (bunnyScore() >= 4)
+			if (bunnyScore() >= 4) {
 				race = "bunny-" + mf("boy", "girl");
+				if (horns.type == Horns.ANTLERS && horns.value > 0) race = "jackalope-" + mf("boy", "girl");
+			}
 			if (harpyScore() >= 4)
 			{
 				if (gender >= 2)
