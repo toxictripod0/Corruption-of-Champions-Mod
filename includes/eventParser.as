@@ -100,7 +100,8 @@ public function getCurrentStackTrace():String		// Fuck, stack-traces only work i
 
 public function errorPrint(details:* = null):void
 {
-	rawOutputText("<b>Congratulations, you've found a bug!</b>", true);
+	clearOutput();
+	rawOutputText("<b>Congratulations, you've found a bug!</b>");
 	rawOutputText("\nError: Unknown event!");
 	rawOutputText("\n\nPlease report that you had an issue with code: \"" + details + "\" ");
 	rawOutputText("\nGame version: \"" + ver + "\" (<b>THIS IS IMPORTANT! Please be sure you include it!</b>) ");
