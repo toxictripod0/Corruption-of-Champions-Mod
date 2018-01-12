@@ -1892,12 +1892,15 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			player.cocks[i].cockLength = saveFile.data.cocks[i].cockLength;
 			player.cocks[i].cockType = CockTypesEnum.ParseConstantByIndex(saveFile.data.cocks[i].cockType);
 			player.cocks[i].knotMultiplier = saveFile.data.cocks[i].knotMultiplier;
-			if (saveFile.data.cocks[i].sock == undefined)
+			if (saveFile.data.cocks[i].sock == undefined) {
 				player.cocks[i].sock = "";
+			}
 			else
 			{
 				player.cocks[i].sock = saveFile.data.cocks[i].sock;
-				if (player.cocks[i].sock == "viridian") hasViridianCockSock = true;
+				if (player.cocks[i].sock == "viridian") {
+					hasViridianCockSock = true;
+				}
 			}
 			if (saveFile.data.cocks[i].pierced == undefined)
 			{
