@@ -1380,7 +1380,6 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 	//Autosave stuff
 	player.slotName = slot;
 
-	var counter:Number = player.cocks.length;
 	//trace("Loading save!")
 	//Initialize the save file
 	//var saveFile:Object = loader.data.readObject();
