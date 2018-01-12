@@ -47,7 +47,6 @@ package classes.Items
 					else outputText("\n\nYour " + player.cockDescript(0) + " becomes shockingly hard.  It dribbles hot demon-like cum as it begins to grow.");
 					if (rand(4) === 0) temp = player.increaseCock(0, 3);
 					else temp = player.increaseCock(0, 1);
-					dynStats("int", 1, "lib", 2, "sen", 1, "lust", 5 + temp * 3, "cor", tainted ? 1 : 0);
 					if (temp < .5) outputText("  It stops almost as soon as it starts, growing only a tiny bit longer.");
 					if (temp >= .5 && temp < 1) outputText("  It grows slowly, stopping after roughly half an inch of growth.");
 					if (temp >= 1 && temp <= 2) outputText("  The sensation is incredible as more than an inch of lengthened dick-flesh grows in.");
@@ -67,7 +66,7 @@ package classes.Items
 							temp2 = temp;
 						}
 					}
-					if (int(Math.random() * 4) === 0) temp3 = player.increaseCock(temp2, 3);
+					if (rand(4) === 0) temp3 = player.increaseCock(temp2, 3);
 					else temp3 = player.increaseCock(temp2, 1);
 					if (tainted) dynStats("int", 1, "lib", 2, "sen", 1, "lus", 5 + temp * 3, "cor", 1);
 					else dynStats("int", 1, "lib", 2, "sen", 1, "lus", 5 + temp * 3);
@@ -160,7 +159,7 @@ package classes.Items
 			//High level change
 			if (rando >= 93) {
 				if (player.cockTotal() < 10) {
-					if (int(Math.random() * 10) < int(player.cor / 25)) {
+					if (rand(10) < int(player.cor / 25)) {
 						outputText("\n\n");
 						growDemonCock(rand(2) + 2);
 						if (tainted) dynStats("lib", 3, "sen", 5, "lus", 10, "cor", 5);
@@ -169,6 +168,8 @@ package classes.Items
 					else {
 						growDemonCock(1);
 					}
+					if (tainted) dynStats("lib", 3, "sen", 5, "lus", 10, "cor", 3);
+					else dynStats("lib", 3, "sen", 5, "lus", 10);
 				}
 				if (!flags[kFLAGS.HYPER_HAPPY])
 				{
@@ -276,7 +277,7 @@ package classes.Items
 					outputText("\n<b>(Lost Perk: Minotaur Cum Addict!)</b>");
 					player.removePerk(PerkLib.MinotaurCumAddict);
 				}
-				
+
 			}
 			player.refillHunger(25);
 		}
@@ -288,10 +289,9 @@ package classes.Items
 			player.slimeFeed();
 			var temp2:Number = 0;
 			var temp3:Number = 0;
-			var rando:Number = Math.random() * 100;
+			var rando:Number = rand(100);
 			if (player.hasPerk(PerkLib.HistoryAlchemist)) rando += 10;
 			if (player.hasPerk(PerkLib.TransformationResistance)) rando -= 10;
-			if (rando >= 90 && !tainted) rando -= 10;
 			clearOutput();
 			if (player.cor < 35) outputText("You wonder why in the gods' names you would drink such a thing, but you have to admit, it is the best thing you have ever tasted.");
 			if (player.cor >= 35 && player.cor < 70) {
@@ -440,20 +440,21 @@ package classes.Items
 					temp = player.vaginas.length;
 					while (temp > 0) {
 						temp--;
-						if (player.vaginas[0].vaginalWetness < VaginaClass.WETNESS_SLAVERING) player.vaginas[temp].vaginalWetness++;
+						if (player.vaginas[temp].vaginalWetness < VaginaClass.WETNESS_SLAVERING) player.vaginas[temp].vaginalWetness++;
 					}
 				}
 			}
 			if (rando >= 90) {
-				if (player.skin.tone == "blue" || player.skin.tone == "purple" || player.skin.tone == "indigo" || player.skin.tone == "shiny black") {
+				if (!tainted || player.skin.tone == "blue" || player.skin.tone == "purple" || player.skin.tone == "indigo" || player.skin.tone == "shiny black") {
 					if (player.vaginas.length > 0) {
 						outputText("\n\nYour heart begins beating harder and harder as heat floods to your groin.  You feel your clit peeking out from under its hood, growing larger and longer as it takes in more and more blood.");
 						if (player.getClitLength() > 3 && !player.hasPerk(PerkLib.BigClit)) outputText("  After some time it shrinks, returning to its normal aroused size.  You guess it can't get any bigger.");
 						if (player.getClitLength() > 5 && player.hasPerk(PerkLib.BigClit)) outputText("  Eventually it shrinks back down to its normal (but still HUGE) size.  You guess it can't get any bigger.");
 						if (((player.hasPerk(PerkLib.BigClit)) && player.getClitLength() < 6)
-								|| player.getClitLength() < 3) {
-							temp += 2;
-							player.changeClitLength((rand(4) + 2) / 10);
+							|| player.getClitLength() < 3) {
+							temp = 2; // minimum growth
+							if (player.hasPerk(PerkLib.BigClit)) temp += 2;
+							player.changeClitLength((rand(4) + temp) / 10);
 						}
 						dynStats("sen", 3, "lus", 8);
 					}
@@ -497,8 +498,8 @@ package classes.Items
 			}
 			player.refillHunger(20);
 		}
-		
-	
+
+
 		public function succubisDelight(tainted:Boolean,player:Player):void
 		{
 			player.slimeFeed();
@@ -605,7 +606,7 @@ package classes.Items
 				if (large) outputText(player.modThickness(100, 8));
 				else outputText(player.modThickness(95, 3));
 			}
-			
+
 		}
 
 //hip expansion
@@ -1440,7 +1441,7 @@ package classes.Items
 			outputText("\n\n");
 			player.refillHunger(5);
 		}
-		
+
 		public function neonPinkEgg(pregnantChange:Boolean,player:Player):void
 		{
 			var tfSource:String = "neonPinkEgg";
@@ -2462,15 +2463,15 @@ package classes.Items
 					} else {
 						outputText("them");
 					}
-					
+
 					outputText(" out, you look closely.  ");
-					
+
 					if (player.cockTotal() === 1) {
 						outputText("It's");
 					} else {
 						outputText("They're");
 					}
-					
+
 					outputText(" definitely thicker.");
 					var counter:Number;
 					changes++;
@@ -2500,7 +2501,7 @@ package classes.Items
 			if (rand(5) === 0) {
 				updateOvipositionPerk(tfSource);
 			}
-			
+
 			//***************
 			//Appearance Changes
 			//***************
@@ -2636,7 +2637,7 @@ package classes.Items
 
 		/**
 		 * Transformation for Fox Berry or (enhanced) Vixen's Vigor
-		 * 
+		 *
 		 * @param	enhanced if true, it's Vixen's Vigor
 		 * @param	player affected by the item
 		 */
@@ -3187,7 +3188,7 @@ package classes.Items
 			if (player.hasFur() && player.underBody.type == UnderBody.FURRY && player.skin.furColor !== player.underBody.skin.furColor)
 				theFurColor = player.skin.furColor + " and " + player.underBody.skin.furColor;
 
-			if ((player.hasFur() 
+			if ((player.hasFur()
 					&& player.face.type != Face.FOX
 					&& !InCollection(theFurColor, convertMixedToStringArray(ColorLists.BASIC_KITSUNE_FUR))
 					&& !InCollection(theFurColor, ColorLists.ELDER_KITSUNE)
@@ -3379,10 +3380,10 @@ package classes.Items
 				flags[kFLAGS.TIMES_TRANSFORMED]++;
 			}
 		}
-		
 
-		
 
-		
+
+
+
 	}
 }
