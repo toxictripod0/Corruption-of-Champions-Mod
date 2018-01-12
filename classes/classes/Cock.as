@@ -12,6 +12,9 @@ package classes
 		
 		private static const SERIALIZATION_VERSION:int = 1;
 		
+		public static const MAX_LENGTH:Number = 9999.9;
+		public static const MAX_THICKNESS:Number = 999.9;
+		
 		private var _cockLength:Number;
 		private var _cockThickness:Number;		
 		private var _cockType:CockTypesEnum;	//See CockTypesEnum.as for all cock types
@@ -346,12 +349,12 @@ package classes
 		
 		private function enforceCockSizeCaps():void 
 		{
-			if (this.cockLength > 9999.9) {
-				this.cockLength = 9999.9;
+			if (this.cockLength > MAX_LENGTH) {
+				this.cockLength = MAX_LENGTH;
 			}
 			
-			if (this.cockThickness > 999.9) {
-				this.cockThickness = 999.9;
+			if (this.cockThickness > MAX_THICKNESS) {
+				this.cockThickness = MAX_THICKNESS;
 			}
 		}
 		

@@ -131,7 +131,7 @@ package classes{
 			assertThat(cut.pierced, equalTo(PIERCING));
 		}
 		
-		[Test]
+		[Test(description="Not using Cock const is intentional")]
 		public function limitMaxCockLength():void {
 			serializedClass.cockLength = Number.MAX_VALUE;
 			
@@ -140,7 +140,7 @@ package classes{
 			assertThat(cut.cockLength, equalTo(9999.9));
 		}
 		
-		[Test]
+		[Test(description="Not using Cock const is intentional")]
 		public function limitMaxCockThickness():void {
 			serializedClass.cockThickness = Number.MAX_VALUE;
 			
