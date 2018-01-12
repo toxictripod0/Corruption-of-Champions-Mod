@@ -21,6 +21,14 @@ package classes{
 		private static const CLIT_LENGTH:Number = 5;
 		private static const VAGINA_RECOVERY_PROGRESS:int = 6;
 		
+		private static const NUMBER_OF_COCKS:int = 3;
+		private static const TEST_SOCK:String = "testSock";
+		private static const VIRIDIAN_SOCK:String = "viridian";
+		private static const PIERCING:int = 42;
+		private static const PIERCING_SHORT_DESCRIPTION:String = "piercing description";
+		private static const PIERCING_SHORT_NO_DESCRIPTION:String = "null";
+		
+		
 		private var player:Player;
 		private var cut:Saves;
 		
@@ -32,12 +40,37 @@ package classes{
 		[Before]
 		public function setUp():void {
 			player = new Player();
+		
+			createPlayerCocks();
+			
 			kGAMECLASS.player = player;
 			kGAMECLASS.ver = TEST_VERSION;
 			kGAMECLASS.version = TEST_VERSION;
-				
+			
 			cut = new Saves(kGAMECLASS.gameStateDirectGet, kGAMECLASS.gameStateDirectSet);
 			kGAMECLASS.inventory = new Inventory(cut);
+			
+			saveGame();
+		}
+		
+		private function saveGame():void {
+			cut.saveGame(TEST_SAVE_GAME, false);
+		}
+		
+		private function loadGame():void {
+			kGAMECLASS.player = new Player();
+			
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			this.player = kGAMECLASS.player;
+		}
+		
+		private function createPlayerCocks():void {
+			player.removeCock(0, int.MAX_VALUE);
+			
+			player.createCock(1, 1, CockTypesEnum.CAT);
+			player.createCock(2, 2, CockTypesEnum.DOG);
+			player.createCock(3, 3, CockTypesEnum.HORSE);
 		}
 		
 		[Test]
@@ -62,6 +95,118 @@ package classes{
 			cut.loadGame(TEST_SAVE_GAME);
 			
 			assertThat(kGAMECLASS.player.vaginas[0].recoveryProgress, equalTo(VAGINA_RECOVERY_PROGRESS));
+		}
+		
+		[Test]
+		public function playerHasThreeCocks():void {
+			assertThat(player.cocks.length, equalTo(NUMBER_OF_COCKS));
+		}
+		
+		[Test]
+		public function cocksAreStored():void {
+			player.removeCock(0, 3);
+			assertThat(player.cocks.length, equalTo(0));
+			
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.cocks.length, equalTo(NUMBER_OF_COCKS));
+		}
+
+		[Test]
+		public function cocksLoadOrder():void {
+			player.removeCock(0, 3);
+			assertThat(player.cocks.length, equalTo(0));
+			
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.cocks[0].cockType, equalTo(CockTypesEnum.CAT));
+			assertThat(kGAMECLASS.player.cocks[2].cockType, equalTo(CockTypesEnum.HORSE));
+		}
+		
+		[Test]
+		public function cockLoadUndefinedSock():void {
+			player.cocks[0].sock = undefined;
+			
+			saveGame();
+			loadGame();
+			
+			assertThat(player.cocks[0].sock, equalTo(""));
+		}
+		
+
+		[Test]
+		public function cockLoadDefinedSock():void {
+			player.cocks[0].sock = TEST_SOCK;
+			
+			saveGame();
+			loadGame();
+			
+			assertThat(player.cocks[0].sock, equalTo(TEST_SOCK));
+		}
+		
+		/**
+		 * The piercing == undefined if block is never called, as the check is performed before .pierced is loaded.
+		 * Thus, pierced will always be the value from the constructor, which is 0.
+		 */
+		[Test(description="Original behavior is a bug")]
+		public function cockLoadUndefinedPiercing():void {
+			//FIXME original behavior is a bug
+			player.cocks[0].pierced = undefined;
+			
+			saveGame();
+			loadGame();
+			
+			assertThat(player.cocks[0].pierced, equalTo(NaN));
+		}
+		
+		[Test]
+		public function cockLoadDefinedPiercing():void {
+			player.cocks[0].pierced = PIERCING;
+			
+			saveGame();
+			loadGame();
+			
+			assertThat(player.cocks[0].pierced, equalTo(PIERCING));
+		}
+		
+		[Test]
+		public function cockLoadNullPiercingDescription():void {
+			player.cocks[0].pShortDesc = PIERCING_SHORT_NO_DESCRIPTION;
+			
+			saveGame();
+			loadGame();
+			
+			assertThat(player.cocks[0].pShortDesc, equalTo(""));
+		}
+		
+		[Test]
+		public function cockLoadDefinedPiercingDescription():void {
+			player.cocks[0].pShortDesc = PIERCING_SHORT_DESCRIPTION;
+			
+			saveGame();
+			loadGame();
+			
+			assertThat(player.cocks[0].pShortDesc, equalTo(PIERCING_SHORT_DESCRIPTION));
+		}
+		
+		[Test]
+		public function cockLoadViridianSockGrantsLustyRegenerationPerk():void {
+			player.cocks[0].sock = VIRIDIAN_SOCK;
+			
+			saveGame();
+			loadGame();
+			
+			assertThat(player.hasPerk(PerkLib.LustyRegeneration), equalTo(true));
+		}
+		
+		[Test]
+		public function cockLoadNoLustyRegenerationPerkWithoutViridianSock():void {
+			player.cocks[0].sock = TEST_SOCK;
+			
+			saveGame();
+			loadGame();
+			
+			assertThat(player.hasPerk(PerkLib.LustyRegeneration), equalTo(false));
 		}
 	}
 }
