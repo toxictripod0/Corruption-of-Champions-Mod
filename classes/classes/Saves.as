@@ -735,6 +735,30 @@ public function loadPermObject():void {
 	}
 }
 
+
+private function saveCocks(saveFile:*):void 
+{
+	var i:int = 0;
+	saveFile.data.cocks = [];
+	//Set array
+	for (i = 0; i < player.cocks.length; i++)
+	{
+		saveFile.data.cocks.push([]);
+	}
+	//Populate Array
+	for (i = 0; i < player.cocks.length; i++)
+	{
+		saveFile.data.cocks[i].cockThickness = player.cocks[i].cockThickness;
+		saveFile.data.cocks[i].cockLength = player.cocks[i].cockLength;
+		saveFile.data.cocks[i].cockType = player.cocks[i].cockType.Index;
+		saveFile.data.cocks[i].knotMultiplier = player.cocks[i].knotMultiplier;
+		saveFile.data.cocks[i].pierced = player.cocks[i].pierced;
+		saveFile.data.cocks[i].pShortDesc = player.cocks[i].pShortDesc;
+		saveFile.data.cocks[i].pLongDesc = player.cocks[i].pLongDesc;
+		saveFile.data.cocks[i].sock = player.cocks[i].sock;
+	}
+}
+
 /*
 
 OH GOD SOMEONE FIX THIS DISASTER!!!!111one1ONE!
@@ -942,7 +966,7 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		 }*/
 
 		
-		saveFile.data.cocks = [];
+		
 		saveFile.data.breastRows = [];
 		saveFile.data.perks = [];
 		saveFile.data.statusAffects = [];
@@ -950,23 +974,8 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile.data.keyItems = [];
 		saveFile.data.itemStorage = [];
 		saveFile.data.gearStorage = [];
-		//Set array
-		for (i = 0; i < player.cocks.length; i++)
-		{
-			saveFile.data.cocks.push([]);
-		}
-		//Populate Array
-		for (i = 0; i < player.cocks.length; i++)
-		{
-			saveFile.data.cocks[i].cockThickness = player.cocks[i].cockThickness;
-			saveFile.data.cocks[i].cockLength = player.cocks[i].cockLength;
-			saveFile.data.cocks[i].cockType = player.cocks[i].cockType.Index;
-			saveFile.data.cocks[i].knotMultiplier = player.cocks[i].knotMultiplier;
-			saveFile.data.cocks[i].pierced = player.cocks[i].pierced;
-			saveFile.data.cocks[i].pShortDesc = player.cocks[i].pShortDesc;
-			saveFile.data.cocks[i].pLongDesc = player.cocks[i].pLongDesc;
-			saveFile.data.cocks[i].sock = player.cocks[i].sock;
-		}
+		
+		saveCocks(saveFile);
 		
 		saveFile.data.vaginas = SerializationUtils.serializeVector(player.vaginas as Vector.<*>);
 		
