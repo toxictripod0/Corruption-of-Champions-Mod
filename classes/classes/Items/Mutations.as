@@ -451,9 +451,10 @@ package classes.Items
 						if (player.getClitLength() > 3 && !player.hasPerk(PerkLib.BigClit)) outputText("  After some time it shrinks, returning to its normal aroused size.  You guess it can't get any bigger.");
 						if (player.getClitLength() > 5 && player.hasPerk(PerkLib.BigClit)) outputText("  Eventually it shrinks back down to its normal (but still HUGE) size.  You guess it can't get any bigger.");
 						if (((player.hasPerk(PerkLib.BigClit)) && player.getClitLength() < 6)
-								|| player.getClitLength() < 3) {
-							temp += 2;
-							player.changeClitLength((rand(4) + 2) / 10);
+							|| player.getClitLength() < 3) {
+							temp = 2; // minimum growth
+							if (player.hasPerk(PerkLib.BigClit)) temp += 2;
+							player.changeClitLength((rand(4) + temp) / 10);
 						}
 						dynStats("sen", 3, "lus", 8);
 					}
