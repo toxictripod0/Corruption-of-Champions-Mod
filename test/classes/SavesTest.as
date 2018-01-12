@@ -24,7 +24,6 @@ package classes{
 		private static const NUMBER_OF_COCKS:int = 3;
 		private static const TEST_SOCK:String = "testSock";
 		private static const VIRIDIAN_SOCK:String = "viridian";
-		private static const PIERCING:int = 42;
 		
 		private var player:Player;
 		private var cut:Saves;
@@ -118,31 +117,6 @@ package classes{
 			
 			assertThat(kGAMECLASS.player.cocks[0].cockType, equalTo(CockTypesEnum.CAT));
 			assertThat(kGAMECLASS.player.cocks[2].cockType, equalTo(CockTypesEnum.HORSE));
-		}
-		
-		/**
-		 * The piercing == undefined if block is never called, as the check is performed before .pierced is loaded.
-		 * Thus, pierced will always be the value from the constructor, which is 0.
-		 */
-		[Test(description="Original behavior is a bug")]
-		public function cockLoadUndefinedPiercing():void {
-			//FIXME original behavior is a bug
-			player.cocks[0].pierced = undefined;
-			
-			saveGame();
-			loadGame();
-			
-			assertThat(player.cocks[0].pierced, equalTo(NaN));
-		}
-		
-		[Test]
-		public function cockLoadDefinedPiercing():void {
-			player.cocks[0].pierced = PIERCING;
-			
-			saveGame();
-			loadGame();
-			
-			assertThat(player.cocks[0].pierced, equalTo(PIERCING));
 		}
 		
 		[Test]

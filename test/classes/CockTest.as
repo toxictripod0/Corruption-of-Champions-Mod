@@ -109,5 +109,23 @@ package classes{
 			
 			assertThat(cut.pLongDesc, equalTo(PIERCING_DESCRIPTION));
 		}
+		
+		[Test]
+		public function deserializeUpgradeNoPiercing():void {
+			serializedClass.pierced = undefined;
+			
+			cut.upgradeSerializationVersion(serializedClass, 0);
+			
+			assertThat(cut.pierced, equalTo(0));
+		}
+		
+		[Test]
+		public function deserializeUpgradePiercing():void {
+			serializedClass.pierced = PIERCING;
+			
+			SerializationUtils.deserialize(serializedClass, cut);
+			
+			assertThat(cut.pierced, equalTo(PIERCING));
+		}
 	}
 }

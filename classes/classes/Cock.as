@@ -337,16 +337,9 @@ package classes
 			this.knotMultiplier = relativeRootObject.knotMultiplier;
 			this.sock = relativeRootObject.sock;
 			
+			this.pierced = relativeRootObject.pierced;
 			this.pShortDesc = relativeRootObject.pShortDesc;
 			this.pLongDesc = relativeRootObject.pLongDesc;
-			if (relativeRootObject.pierced == undefined)
-			{
-				this.pierced = 0;
-			}
-			else
-			{
-				this.pierced = relativeRootObject.pierced;
-			}
 		}
 		
 		public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 
@@ -365,6 +358,12 @@ package classes
 						relativeRootObject.pShortDesc = "";
 						relativeRootObject.pLongDesc = "";
 						LOGGER.warn("Cock piercing description was null, setting to blank");
+					}
+					
+					if (relativeRootObject.pierced == undefined)
+					{
+						relativeRootObject.pierced = 0;
+						LOGGER.warn("Cock piercing was undefined, set to {0}", relativeRootObject.pierced);
 					}
 			}
 		}
