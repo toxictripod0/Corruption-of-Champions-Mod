@@ -2466,7 +2466,11 @@ package classes
 			return true;
 		}
 		
-		//Remove cocks
+		/**
+		 * Remove cocks from the creature. 
+		 * @param	arraySpot position of the cock in the array
+		 * @param	totalRemoved the number of cocks to remove, 0 means no cocks removed
+		 */
 		public function removeCock(arraySpot:int, totalRemoved:int):void
 		{
 			//Various Errors preventing action

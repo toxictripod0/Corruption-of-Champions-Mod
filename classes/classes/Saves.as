@@ -750,7 +750,7 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 	var backupAborted:Boolean = false;
 	
 	CoC.saveAllAwareClasses(getGame()); //Informs each saveAwareClass that it must save its values in the flags array
-	var counter:Number = player.cocks.length;
+
 	//Initialize the save file
 	var saveFile:*;
 	var backup:SharedObject;
@@ -942,7 +942,7 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		 }*/
 
 		
-		saveFile.data.cocks = [];
+		
 		saveFile.data.breastRows = [];
 		saveFile.data.perks = [];
 		saveFile.data.statusAffects = [];
@@ -950,24 +950,8 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile.data.keyItems = [];
 		saveFile.data.itemStorage = [];
 		saveFile.data.gearStorage = [];
-		//Set array
-		for (i = 0; i < player.cocks.length; i++)
-		{
-			saveFile.data.cocks.push([]);
-		}
-		//Populate Array
-		for (i = 0; i < player.cocks.length; i++)
-		{
-			saveFile.data.cocks[i].cockThickness = player.cocks[i].cockThickness;
-			saveFile.data.cocks[i].cockLength = player.cocks[i].cockLength;
-			saveFile.data.cocks[i].cockType = player.cocks[i].cockType.Index;
-			saveFile.data.cocks[i].knotMultiplier = player.cocks[i].knotMultiplier;
-			saveFile.data.cocks[i].pierced = player.cocks[i].pierced;
-			saveFile.data.cocks[i].pShortDesc = player.cocks[i].pShortDesc;
-			saveFile.data.cocks[i].pLongDesc = player.cocks[i].pLongDesc;
-			saveFile.data.cocks[i].sock = player.cocks[i].sock;
-		}
 		
+		saveFile.data.cocks = SerializationUtils.serializeVector(player.cocks as Vector.<*>);
 		saveFile.data.vaginas = SerializationUtils.serializeVector(player.vaginas as Vector.<*>);
 		
 		//NIPPLES
@@ -1374,6 +1358,16 @@ public function onDataLoaded(evt:Event):void
 	//playerMenu();
 }
 
+private function hasViridianCockSock(player:Player):Boolean {
+	for each (var cock:Cock in player.cocks) {
+		if (cock.sock === "viridian") {
+			return true;
+		}
+	}
+	
+	return false;
+}
+
 public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 {
 	var game:CoC = getGame();
@@ -1386,7 +1380,6 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 	//Autosave stuff
 	player.slotName = slot;
 
-	var counter:Number = player.cocks.length;
 	//trace("Loading save!")
 	//Initialize the save file
 	//var saveFile:Object = loader.data.readObject();
@@ -1877,50 +1870,9 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		player.knockUpForce(saveFile.data.pregnancyType, saveFile.data.pregnancyIncubation);
 		player.buttKnockUpForce(saveFile.data.buttPregnancyType, saveFile.data.buttPregnancyIncubation);
 		
-		var hasViridianCockSock:Boolean = false;
+		player.cocks = new Vector.<Cock>();
+		SerializationUtils.deserializeVector(player.cocks as Vector.<*>, saveFile.data.cocks, Cock);
 
-		//ARRAYS HERE!
-		//Set Cock array
-		for (i = 0; i < saveFile.data.cocks.length; i++)
-		{
-			player.createCock();
-		}
-		//Populate Cock Array
-		for (i = 0; i < saveFile.data.cocks.length; i++)
-		{
-			player.cocks[i].cockThickness = saveFile.data.cocks[i].cockThickness;
-			player.cocks[i].cockLength = saveFile.data.cocks[i].cockLength;
-			player.cocks[i].cockType = CockTypesEnum.ParseConstantByIndex(saveFile.data.cocks[i].cockType);
-			player.cocks[i].knotMultiplier = saveFile.data.cocks[i].knotMultiplier;
-			if (saveFile.data.cocks[i].sock == undefined)
-				player.cocks[i].sock = "";
-			else
-			{
-				player.cocks[i].sock = saveFile.data.cocks[i].sock;
-				if (player.cocks[i].sock == "viridian") hasViridianCockSock = true;
-			}
-			if (saveFile.data.cocks[i].pierced == undefined)
-			{
-				player.cocks[i].pierced = 0;
-				player.cocks[i].pShortDesc = "";
-				player.cocks[i].pLongDesc = "";
-			}
-			else
-			{
-				player.cocks[i].pierced = saveFile.data.cocks[i].pierced;
-				player.cocks[i].pShortDesc = saveFile.data.cocks[i].pShortDesc;
-				player.cocks[i].pLongDesc = saveFile.data.cocks[i].pLongDesc;
-				
-				if (player.cocks[i].pShortDesc == "null" || player.cocks[i].pLongDesc == "null")
-				{
-					player.cocks[i].pierced = 0;
-					player.cocks[i].pShortDesc = "";
-					player.cocks[i].pLongDesc = "";
-				}
-			}
-				//trace("LoadOne Cock i(" + i + ")");
-		}
-		
 		player.vaginas = new Vector.<VaginaClass>();
 		SerializationUtils.deserializeVector(player.vaginas as Vector.<*>, saveFile.data.vaginas, VaginaClass);
 		
@@ -2039,7 +1991,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		}
 		
 		// Fixup missing Lusty Regeneration perk, if the player has an equipped viridian cock sock and does NOT have the Lusty Regeneration perk
-		if (hasViridianCockSock == true && hasLustyRegenPerk == false)
+		if (hasViridianCockSock(kGAMECLASS.player) === true && hasLustyRegenPerk === false)
 		{
 			player.createPerk(PerkLib.LustyRegeneration, 0, 0, 0, 0);
 		}
@@ -2180,7 +2132,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 				storage.unlocked = saveFile.data.gearStorage[i].unlocked;
 			}
 		}
-		//player.cocks = saveFile.data.cocks;
+		
 		player.ass.analLooseness = saveFile.data.ass.analLooseness;
 		player.ass.analWetness = saveFile.data.ass.analWetness;
 		player.ass.fullness = saveFile.data.ass.fullness;
@@ -2558,13 +2510,7 @@ public function unFuckSave():void
 	if (player.perkv1(PerkLib.AscensionTolerance) > getGame().charCreation.MAX_TOLERANCE_LEVEL) player.setPerkValue(PerkLib.AscensionTolerance, 1, getGame().charCreation.MAX_TOLERANCE_LEVEL);
 	if (player.perkv1(PerkLib.AscensionVirility) > getGame().charCreation.MAX_VIRILITY_LEVEL) player.setPerkValue(PerkLib.AscensionVirility, 1, getGame().charCreation.MAX_VIRILITY_LEVEL);
 	if (player.perkv1(PerkLib.AscensionWisdom) > getGame().charCreation.MAX_WISDOM_LEVEL) player.setPerkValue(PerkLib.AscensionWisdom, 1, getGame().charCreation.MAX_WISDOM_LEVEL);
-	//Rigidly enforce cock size caps
-	if (player.hasCock()) {
-		for (var i:int = 0; i < player.cocks.length; i++) {
-			if (player.cocks[i].cockLength > 9999.9) player.cocks[i].cockLength = 9999.9;
-			if (player.cocks[i].cockThickness > 999.9) player.cocks[i].cockThickness = 999.9;
-		}
-	}
+
 	//If converting from vanilla, set Grimdark flag to 0.
 	if (flags[kFLAGS.MOD_SAVE_VERSION] == 0 || flags[kFLAGS.GRIMDARK_MODE] == 3) flags[kFLAGS.GRIMDARK_MODE] = 0;
 	//Set to Grimdark if doing kaizo unless locked
