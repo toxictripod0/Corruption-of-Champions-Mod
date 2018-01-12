@@ -335,13 +335,8 @@ package classes
 			this.cockLength = relativeRootObject.cockLength;
 			this.cockType = CockTypesEnum.ParseConstantByIndex(relativeRootObject.cockType);
 			this.knotMultiplier = relativeRootObject.knotMultiplier;
-			if (relativeRootObject.sock == undefined) {
-				this.sock = "";
-			}
-			else
-			{
-				this.sock = relativeRootObject.sock;
-			}
+			this.sock = relativeRootObject.sock;
+			
 			if (relativeRootObject.pierced == undefined)
 			{
 				this.pierced = 0;
@@ -365,7 +360,15 @@ package classes
 		
 		public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 
 		{
-			
+			switch(serializedDataVersion) {
+				case 0:
+					LOGGER.info("Upgrading legacy save format...");
+					
+					if (relativeRootObject.sock == undefined) {
+						relativeRootObject.sock = "";
+						LOGGER.warn("Cock was missing sock field, setting to {0}", relativeRootObject.sock);
+					}
+			}
 		}
 		
 		public function currentSerializationVerison():int 

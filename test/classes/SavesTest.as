@@ -123,27 +123,6 @@ package classes{
 			assertThat(kGAMECLASS.player.cocks[2].cockType, equalTo(CockTypesEnum.HORSE));
 		}
 		
-		[Test]
-		public function cockLoadUndefinedSock():void {
-			player.cocks[0].sock = undefined;
-			
-			saveGame();
-			loadGame();
-			
-			assertThat(player.cocks[0].sock, equalTo(""));
-		}
-		
-
-		[Test]
-		public function cockLoadDefinedSock():void {
-			player.cocks[0].sock = TEST_SOCK;
-			
-			saveGame();
-			loadGame();
-			
-			assertThat(player.cocks[0].sock, equalTo(TEST_SOCK));
-		}
-		
 		/**
 		 * The piercing == undefined if block is never called, as the check is performed before .pierced is loaded.
 		 * Thus, pierced will always be the value from the constructor, which is 0.
