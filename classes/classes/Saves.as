@@ -1991,7 +1991,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		}
 		
 		// Fixup missing Lusty Regeneration perk, if the player has an equipped viridian cock sock and does NOT have the Lusty Regeneration perk
-		if (hasViridianCockSock(kGAMECLASS.player) == true && hasLustyRegenPerk == false)
+		if (hasViridianCockSock(kGAMECLASS.player) === true && hasLustyRegenPerk === false)
 		{
 			player.createPerk(PerkLib.LustyRegeneration, 0, 0, 0, 0);
 		}

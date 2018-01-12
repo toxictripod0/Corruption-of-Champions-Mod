@@ -364,19 +364,19 @@ package classes
 				case 0:
 					LOGGER.info("Upgrading legacy save format...");
 					
-					if (relativeRootObject.sock == undefined) {
+					if (relativeRootObject.sock === undefined) {
 						relativeRootObject.sock = "";
 						LOGGER.warn("Cock was missing sock field, setting to {0}", relativeRootObject.sock);
 					}
 					
-					if (relativeRootObject.pShortDesc == "null" || relativeRootObject.pLongDesc == "null")
+					if (relativeRootObject.pShortDesc === "null" || relativeRootObject.pLongDesc === "null")
 					{
 						relativeRootObject.pShortDesc = "";
 						relativeRootObject.pLongDesc = "";
 						LOGGER.warn("Cock piercing description was null, setting to blank");
 					}
 					
-					if (relativeRootObject.pierced == undefined)
+					if (relativeRootObject.pierced === undefined)
 					{
 						relativeRootObject.pierced = 0;
 						LOGGER.warn("Cock piercing was undefined, set to {0}", relativeRootObject.pierced);
