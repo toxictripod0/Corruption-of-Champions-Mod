@@ -17,6 +17,9 @@ package classes{
 		private static const DEFAULT_KNOT_MULTIPLIER:Number = 1;
 		
 		private static const TEST_SOCK:String = "testSock";
+		private static const PIERCING:int = 42;
+		private static const PIERCING_DESCRIPTION:String = "piercing description";
+		private static const PIERCING_NO_DESCRIPTION:String = "null";
 		
 		private var cut:Cock;
 		private var serializedClass:*;
@@ -69,6 +72,42 @@ package classes{
 			SerializationUtils.deserialize(serializedClass, cut);
 			
 			assertThat(cut.sock, equalTo(TEST_SOCK));
+		}
+		
+		[Test]
+		public function deserializeUpgradeNoPiercingDescriptionShort():void {
+			serializedClass.pShortDesc = PIERCING_NO_DESCRIPTION;
+			
+			cut.upgradeSerializationVersion(serializedClass, 0);
+			
+			assertThat(cut.pShortDesc, equalTo(""));
+		}
+		
+		[Test]
+		public function deserializeUpgradePiercingDescriptionShort():void {
+			serializedClass.pShortDesc = PIERCING_DESCRIPTION;
+			
+			SerializationUtils.deserialize(serializedClass, cut);
+			
+			assertThat(cut.pShortDesc, equalTo(PIERCING_DESCRIPTION));
+		}
+		
+		[Test]
+		public function deserializeUpgradeNoPiercingDescriptionLong():void {
+			serializedClass.pLongDesc = PIERCING_NO_DESCRIPTION;
+			
+			cut.upgradeSerializationVersion(serializedClass, 0);
+			
+			assertThat(cut.pLongDesc, equalTo(""));
+		}
+		
+		[Test]
+		public function deserializeUpgradePiercingDescriptionLong():void {
+			serializedClass.pLongDesc = PIERCING_DESCRIPTION;
+			
+			SerializationUtils.deserialize(serializedClass, cut);
+			
+			assertThat(cut.pLongDesc, equalTo(PIERCING_DESCRIPTION));
 		}
 	}
 }

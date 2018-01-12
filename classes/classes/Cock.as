@@ -337,24 +337,15 @@ package classes
 			this.knotMultiplier = relativeRootObject.knotMultiplier;
 			this.sock = relativeRootObject.sock;
 			
+			this.pShortDesc = relativeRootObject.pShortDesc;
+			this.pLongDesc = relativeRootObject.pLongDesc;
 			if (relativeRootObject.pierced == undefined)
 			{
 				this.pierced = 0;
-				this.pShortDesc = "";
-				this.pLongDesc = "";
 			}
 			else
 			{
 				this.pierced = relativeRootObject.pierced;
-				this.pShortDesc = relativeRootObject.pShortDesc;
-				this.pLongDesc = relativeRootObject.pLongDesc;
-				
-				if (this.pShortDesc == "null" || this.pLongDesc == "null")
-				{
-					this.pierced = 0;
-					this.pShortDesc = "";
-					this.pLongDesc = "";
-				}
 			}
 		}
 		
@@ -367,6 +358,13 @@ package classes
 					if (relativeRootObject.sock == undefined) {
 						relativeRootObject.sock = "";
 						LOGGER.warn("Cock was missing sock field, setting to {0}", relativeRootObject.sock);
+					}
+					
+					if (relativeRootObject.pShortDesc == "null" || relativeRootObject.pLongDesc == "null")
+					{
+						relativeRootObject.pShortDesc = "";
+						relativeRootObject.pLongDesc = "";
+						LOGGER.warn("Cock piercing description was null, setting to blank");
 					}
 			}
 		}

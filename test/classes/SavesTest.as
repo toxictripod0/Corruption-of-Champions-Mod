@@ -25,9 +25,6 @@ package classes{
 		private static const TEST_SOCK:String = "testSock";
 		private static const VIRIDIAN_SOCK:String = "viridian";
 		private static const PIERCING:int = 42;
-		private static const PIERCING_SHORT_DESCRIPTION:String = "piercing description";
-		private static const PIERCING_SHORT_NO_DESCRIPTION:String = "null";
-		
 		
 		private var player:Player;
 		private var cut:Saves;
@@ -146,26 +143,6 @@ package classes{
 			loadGame();
 			
 			assertThat(player.cocks[0].pierced, equalTo(PIERCING));
-		}
-		
-		[Test]
-		public function cockLoadNullPiercingDescription():void {
-			player.cocks[0].pShortDesc = PIERCING_SHORT_NO_DESCRIPTION;
-			
-			saveGame();
-			loadGame();
-			
-			assertThat(player.cocks[0].pShortDesc, equalTo(""));
-		}
-		
-		[Test]
-		public function cockLoadDefinedPiercingDescription():void {
-			player.cocks[0].pShortDesc = PIERCING_SHORT_DESCRIPTION;
-			
-			saveGame();
-			loadGame();
-			
-			assertThat(player.cocks[0].pShortDesc, equalTo(PIERCING_SHORT_DESCRIPTION));
 		}
 		
 		[Test]
