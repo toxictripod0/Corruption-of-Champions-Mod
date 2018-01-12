@@ -340,6 +340,19 @@ package classes
 			this.pierced = relativeRootObject.pierced;
 			this.pShortDesc = relativeRootObject.pShortDesc;
 			this.pLongDesc = relativeRootObject.pLongDesc;
+			
+			enforceCockSizeCaps();
+		}
+		
+		private function enforceCockSizeCaps():void 
+		{
+			if (this.cockLength > 9999.9) {
+				this.cockLength = 9999.9;
+			}
+			
+			if (this.cockThickness > 999.9) {
+				this.cockThickness = 999.9;
+			}
 		}
 		
 		public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 

@@ -20,6 +20,9 @@ package classes{
 		private static const PIERCING:int = 42;
 		private static const PIERCING_DESCRIPTION:String = "piercing description";
 		private static const PIERCING_NO_DESCRIPTION:String = "null";
+
+		private static const COCK_LENGTH:Number = 12.3;
+		private static const COCK_THICKNESS:Number= 3.21;
 		
 		private var cut:Cock;
 		private var serializedClass:*;
@@ -126,6 +129,41 @@ package classes{
 			SerializationUtils.deserialize(serializedClass, cut);
 			
 			assertThat(cut.pierced, equalTo(PIERCING));
+		}
+		
+		[Test]
+		public function limitMaxCockLength():void {
+			serializedClass.cockLength = Number.MAX_VALUE;
+			
+			SerializationUtils.deserialize(serializedClass, cut);
+			
+			assertThat(cut.cockLength, equalTo(9999.9));
+		}
+		
+		[Test]
+		public function limitMaxCockThickness():void {
+			serializedClass.cockThickness = Number.MAX_VALUE;
+			
+			SerializationUtils.deserialize(serializedClass, cut);
+			
+			assertThat(cut.cockThickness, equalTo(999.9));
+		}
+		
+		public function deserializeCockLength():void {
+			serializedClass.cockLength = COCK_LENGTH;
+			
+			SerializationUtils.deserialize(serializedClass, cut);
+			
+			assertThat(cut.cockLength, equalTo(COCK_LENGTH));
+		}
+		
+		[Test]
+		public function deserializeCockThickness():void {
+			serializedClass.cockThickness = COCK_THICKNESS;
+			
+			SerializationUtils.deserialize(serializedClass, cut);
+			
+			assertThat(cut.cockThickness, equalTo(COCK_THICKNESS));
 		}
 	}
 }

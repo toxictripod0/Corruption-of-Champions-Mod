@@ -2510,13 +2510,7 @@ public function unFuckSave():void
 	if (player.perkv1(PerkLib.AscensionTolerance) > getGame().charCreation.MAX_TOLERANCE_LEVEL) player.setPerkValue(PerkLib.AscensionTolerance, 1, getGame().charCreation.MAX_TOLERANCE_LEVEL);
 	if (player.perkv1(PerkLib.AscensionVirility) > getGame().charCreation.MAX_VIRILITY_LEVEL) player.setPerkValue(PerkLib.AscensionVirility, 1, getGame().charCreation.MAX_VIRILITY_LEVEL);
 	if (player.perkv1(PerkLib.AscensionWisdom) > getGame().charCreation.MAX_WISDOM_LEVEL) player.setPerkValue(PerkLib.AscensionWisdom, 1, getGame().charCreation.MAX_WISDOM_LEVEL);
-	//Rigidly enforce cock size caps
-	if (player.hasCock()) {
-		for (var i:int = 0; i < player.cocks.length; i++) {
-			if (player.cocks[i].cockLength > 9999.9) player.cocks[i].cockLength = 9999.9;
-			if (player.cocks[i].cockThickness > 999.9) player.cocks[i].cockThickness = 999.9;
-		}
-	}
+
 	//If converting from vanilla, set Grimdark flag to 0.
 	if (flags[kFLAGS.MOD_SAVE_VERSION] == 0 || flags[kFLAGS.GRIMDARK_MODE] == 3) flags[kFLAGS.GRIMDARK_MODE] = 0;
 	//Set to Grimdark if doing kaizo unless locked
