@@ -1374,10 +1374,8 @@ public function onDataLoaded(evt:Event):void
 	//playerMenu();
 }
 
-private function loadCocks(saveFile:*):Boolean 
+private function loadCocks(saveFile:*):void 
 {
-	var hasViridianCockSock:Boolean = false;
-	
 	var i:int = 0;
 	//Set Cock array
 	for (i = 0; i < saveFile.data.cocks.length; i++)
@@ -1397,9 +1395,6 @@ private function loadCocks(saveFile:*):Boolean
 		else
 		{
 			player.cocks[i].sock = saveFile.data.cocks[i].sock;
-			if (player.cocks[i].sock == "viridian") {
-				hasViridianCockSock = true;
-			}
 		}
 		if (saveFile.data.cocks[i].pierced == undefined)
 		{
@@ -1422,8 +1417,16 @@ private function loadCocks(saveFile:*):Boolean
 		}
 			//trace("LoadOne Cock i(" + i + ")");
 	}
+}
+
+private function hasViridianCockSock(player:Player):Boolean {
+	for each (var cock:Cock in player.cocks) {
+		if (cock.sock === "viridian") {
+			return true;
+		}
+	}
 	
-	return hasViridianCockSock;
+	return false;
 }
 
 public function loadGameObject(saveData:Object, slot:String = "VOID"):void
@@ -1929,7 +1932,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		player.knockUpForce(saveFile.data.pregnancyType, saveFile.data.pregnancyIncubation);
 		player.buttKnockUpForce(saveFile.data.buttPregnancyType, saveFile.data.buttPregnancyIncubation);
 		
-		var hasViridianCockSock:Boolean = loadCocks(saveFile);
+		loadCocks(saveFile);
 
 		player.vaginas = new Vector.<VaginaClass>();
 		SerializationUtils.deserializeVector(player.vaginas as Vector.<*>, saveFile.data.vaginas, VaginaClass);
@@ -2049,7 +2052,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		}
 		
 		// Fixup missing Lusty Regeneration perk, if the player has an equipped viridian cock sock and does NOT have the Lusty Regeneration perk
-		if (hasViridianCockSock == true && hasLustyRegenPerk == false)
+		if (hasViridianCockSock(kGAMECLASS.player) == true && hasLustyRegenPerk == false)
 		{
 			player.createPerk(PerkLib.LustyRegeneration, 0, 0, 0, 0);
 		}
