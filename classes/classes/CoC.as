@@ -345,7 +345,32 @@ package classes
 		
 		public var kFLAGS_REF:*;
 		public var kACHIEVEMENTS_REF:*;
-		
+
+		public function clearOutput():void
+		{
+			output.clear(true);
+		}
+
+		public function rawOutputText(text:String):void
+		{
+			output.raw(text);
+		}
+
+		public function outputText(text:String):void
+		{
+			output.text(text);
+		}
+
+		public function displayHeader(string:String):void
+		{
+			output.text(output.formatHeader(string));
+		}
+
+		public function formatHeader(string:String):String
+		{
+			return output.formatHeader(string);
+		}
+
 		public function get inCombat():Boolean
 		{
 			return _gameState == 1;

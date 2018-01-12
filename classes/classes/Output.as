@@ -84,7 +84,18 @@ package classes
 		 */
 		public function header(headLine:String):Output
 		{
-			return text("<font size=\"36\" face=\"Georgia\"><u>" + headLine + "</u></font>\n");
+			return text(formatHeader(headLine));
+		}
+
+		/**
+		 * Returns the formatted headline
+		 *
+		 * @param	headLine    The headline to be formatted
+		 * @return  The formatted headline
+		 */
+		public function formatHeader(headLine:String):String
+		{
+			return "<font size=\"36\" face=\"Georgia\"><u>" + headLine + "</u></font>\n";
 		}
 
 		/**

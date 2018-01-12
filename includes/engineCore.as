@@ -92,39 +92,6 @@ public function clone(source:Object):* {
 	return(copier.readObject());
 }
 
-/**
- * Clear the text on screen.
- */
-public function clearOutput():void {
-	output.clear(true);
-}
-
-/**
- * Basically the same as outputText() but without the parser tags. Great for displaying square brackets on text.
- * @param	output The text to show. It can be formatted such as bold, italics, and underline tags.
- */
-public function rawOutputText(text:String):void
-{
-	output.raw(text);
-}
-
-/**
- * Output the text on main text interface.
- * @param	output The text to show. It can be formatted such as bold, italics, and underline tags.
- * @param	purgeText Clear the old text.
- */
-public function outputText(text:String):void
-{
-	output.text(text);
-}
-
-public function displayHeader(string:String):void {
-	outputText(formatHeader(string));
-}
-public function formatHeader(string:String):String {
-	return "<font size=\"36\" face=\"Georgia\"><u>" + string + "</u></font>\n";
-}
-
 public function buttonIsVisible(index:int):Boolean {
 	if ( index < 0 || index > MAX_BUTTON_INDEX ) {
 		return undefined;
