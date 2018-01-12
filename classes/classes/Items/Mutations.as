@@ -168,6 +168,8 @@ package classes.Items
 					else {
 						growDemonCock(1);
 					}
+					if (tainted) dynStats("lib", 3, "sen", 5, "lus", 10, "cor", 3);
+					else dynStats("lib", 3, "sen", 5, "lus", 10);
 				}
 				if (!flags[kFLAGS.HYPER_HAPPY])
 				{
