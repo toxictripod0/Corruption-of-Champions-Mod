@@ -276,7 +276,7 @@ package classes.Items
 					outputText("\n<b>(Lost Perk: Minotaur Cum Addict!)</b>");
 					player.removePerk(PerkLib.MinotaurCumAddict);
 				}
-				
+
 			}
 			player.refillHunger(25);
 		}
@@ -497,8 +497,8 @@ package classes.Items
 			}
 			player.refillHunger(20);
 		}
-		
-	
+
+
 		public function succubisDelight(tainted:Boolean,player:Player):void
 		{
 			player.slimeFeed();
@@ -605,7 +605,7 @@ package classes.Items
 				if (large) outputText(player.modThickness(100, 8));
 				else outputText(player.modThickness(95, 3));
 			}
-			
+
 		}
 
 //hip expansion
@@ -1440,7 +1440,7 @@ package classes.Items
 			outputText("\n\n");
 			player.refillHunger(5);
 		}
-		
+
 		public function neonPinkEgg(pregnantChange:Boolean,player:Player):void
 		{
 			var tfSource:String = "neonPinkEgg";
@@ -2462,15 +2462,15 @@ package classes.Items
 					} else {
 						outputText("them");
 					}
-					
+
 					outputText(" out, you look closely.  ");
-					
+
 					if (player.cockTotal() === 1) {
 						outputText("It's");
 					} else {
 						outputText("They're");
 					}
-					
+
 					outputText(" definitely thicker.");
 					var counter:Number;
 					changes++;
@@ -2500,7 +2500,7 @@ package classes.Items
 			if (rand(5) === 0) {
 				updateOvipositionPerk(tfSource);
 			}
-			
+
 			//***************
 			//Appearance Changes
 			//***************
@@ -2636,7 +2636,7 @@ package classes.Items
 
 		/**
 		 * Transformation for Fox Berry or (enhanced) Vixen's Vigor
-		 * 
+		 *
 		 * @param	enhanced if true, it's Vixen's Vigor
 		 * @param	player affected by the item
 		 */
@@ -3187,7 +3187,7 @@ package classes.Items
 			if (player.hasFur() && player.underBody.type == UnderBody.FURRY && player.skin.furColor !== player.underBody.skin.furColor)
 				theFurColor = player.skin.furColor + " and " + player.underBody.skin.furColor;
 
-			if ((player.hasFur() 
+			if ((player.hasFur()
 					&& player.face.type != Face.FOX
 					&& !InCollection(theFurColor, convertMixedToStringArray(ColorLists.BASIC_KITSUNE_FUR))
 					&& !InCollection(theFurColor, ColorLists.ELDER_KITSUNE)
@@ -3379,10 +3379,10 @@ package classes.Items
 				flags[kFLAGS.TIMES_TRANSFORMED]++;
 			}
 		}
-		
 
-		
 
-		
+
+
+
 	}
 }
