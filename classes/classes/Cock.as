@@ -1,13 +1,16 @@
 package classes
 {
 	import classes.CockTypesEnum;
+	import classes.internals.ISerializable;
 	import classes.internals.Utils;
 	import mx.logging.ILogger;
 	import classes.internals.LoggerFactory;
 
-	public class Cock
+	public class Cock implements ISerializable
 	{
 		private static const LOGGER:ILogger = LoggerFactory.getLogger(Cock);
+		
+		private static const SERIALIZATION_VERSION:int = 1;
 		
 		private var _cockLength:Number;
 		private var _cockThickness:Number;		
@@ -312,6 +315,62 @@ package classes
 		public function set pierced(value:Number):void 
 		{
 			_pierced = value;
+		}
+		
+		public function serialize(relativeRootObject:*):void 
+		{
+			relativeRootObject.cockThickness = this.cockThickness;
+			relativeRootObject.cockLength = this.cockLength;
+			relativeRootObject.cockType = this.cockType.Index;
+			relativeRootObject.knotMultiplier = this.knotMultiplier;
+			relativeRootObject.pierced = this.pierced;
+			relativeRootObject.pShortDesc = this.pShortDesc;
+			relativeRootObject.pLongDesc = this.pLongDesc;
+			relativeRootObject.sock = this.sock;
+		}
+		
+		public function deserialize(relativeRootObject:*):void 
+		{
+			this.cockThickness = relativeRootObject.cockThickness;
+			this.cockLength = relativeRootObject.cockLength;
+			this.cockType = CockTypesEnum.ParseConstantByIndex(relativeRootObject.cockType);
+			this.knotMultiplier = relativeRootObject.knotMultiplier;
+			if (relativeRootObject.sock == undefined) {
+				this.sock = "";
+			}
+			else
+			{
+				this.sock = relativeRootObject.sock;
+			}
+			if (relativeRootObject.pierced == undefined)
+			{
+				this.pierced = 0;
+				this.pShortDesc = "";
+				this.pLongDesc = "";
+			}
+			else
+			{
+				this.pierced = relativeRootObject.pierced;
+				this.pShortDesc = relativeRootObject.pShortDesc;
+				this.pLongDesc = relativeRootObject.pLongDesc;
+				
+				if (this.pShortDesc == "null" || this.pLongDesc == "null")
+				{
+					this.pierced = 0;
+					this.pShortDesc = "";
+					this.pLongDesc = "";
+				}
+			}
+		}
+		
+		public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 
+		{
+			
+		}
+		
+		public function currentSerializationVerison():int 
+		{
+			return SERIALIZATION_VERSION;
 		}
 	}
 }

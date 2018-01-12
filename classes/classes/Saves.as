@@ -735,28 +735,6 @@ public function loadPermObject():void {
 	}
 }
 
-
-private function saveCocks(saveFile:*):void 
-{
-	var i:int = 0;
-	saveFile.data.cocks = [];
-
-	//Populate Array
-	for (i = 0; i < player.cocks.length; i++)
-	{
-		saveFile.data.cocks.push([]);
-		
-		saveFile.data.cocks[i].cockThickness = player.cocks[i].cockThickness;
-		saveFile.data.cocks[i].cockLength = player.cocks[i].cockLength;
-		saveFile.data.cocks[i].cockType = player.cocks[i].cockType.Index;
-		saveFile.data.cocks[i].knotMultiplier = player.cocks[i].knotMultiplier;
-		saveFile.data.cocks[i].pierced = player.cocks[i].pierced;
-		saveFile.data.cocks[i].pShortDesc = player.cocks[i].pShortDesc;
-		saveFile.data.cocks[i].pLongDesc = player.cocks[i].pLongDesc;
-		saveFile.data.cocks[i].sock = player.cocks[i].sock;
-	}
-}
-
 /*
 
 OH GOD SOMEONE FIX THIS DISASTER!!!!111one1ONE!
@@ -973,8 +951,7 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile.data.itemStorage = [];
 		saveFile.data.gearStorage = [];
 		
-		saveCocks(saveFile);
-		
+		saveFile.data.cocks = SerializationUtils.serializeVector(player.cocks as Vector.<*>);
 		saveFile.data.vaginas = SerializationUtils.serializeVector(player.vaginas as Vector.<*>);
 		
 		//NIPPLES
@@ -1379,51 +1356,6 @@ public function onDataLoaded(evt:Event):void
 	loadPermObject();
 	statScreenRefresh();
 	//playerMenu();
-}
-
-private function loadCocks(saveFile:*):void 
-{
-	var i:int = 0;
-	//Set Cock array
-	for (i = 0; i < saveFile.data.cocks.length; i++)
-	{
-		player.createCock();
-	}
-	//Populate Cock Array
-	for (i = 0; i < saveFile.data.cocks.length; i++)
-	{
-		player.cocks[i].cockThickness = saveFile.data.cocks[i].cockThickness;
-		player.cocks[i].cockLength = saveFile.data.cocks[i].cockLength;
-		player.cocks[i].cockType = CockTypesEnum.ParseConstantByIndex(saveFile.data.cocks[i].cockType);
-		player.cocks[i].knotMultiplier = saveFile.data.cocks[i].knotMultiplier;
-		if (saveFile.data.cocks[i].sock == undefined) {
-			player.cocks[i].sock = "";
-		}
-		else
-		{
-			player.cocks[i].sock = saveFile.data.cocks[i].sock;
-		}
-		if (saveFile.data.cocks[i].pierced == undefined)
-		{
-			player.cocks[i].pierced = 0;
-			player.cocks[i].pShortDesc = "";
-			player.cocks[i].pLongDesc = "";
-		}
-		else
-		{
-			player.cocks[i].pierced = saveFile.data.cocks[i].pierced;
-			player.cocks[i].pShortDesc = saveFile.data.cocks[i].pShortDesc;
-			player.cocks[i].pLongDesc = saveFile.data.cocks[i].pLongDesc;
-			
-			if (player.cocks[i].pShortDesc == "null" || player.cocks[i].pLongDesc == "null")
-			{
-				player.cocks[i].pierced = 0;
-				player.cocks[i].pShortDesc = "";
-				player.cocks[i].pLongDesc = "";
-			}
-		}
-			//trace("LoadOne Cock i(" + i + ")");
-	}
 }
 
 private function hasViridianCockSock(player:Player):Boolean {
@@ -1939,7 +1871,8 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		player.knockUpForce(saveFile.data.pregnancyType, saveFile.data.pregnancyIncubation);
 		player.buttKnockUpForce(saveFile.data.buttPregnancyType, saveFile.data.buttPregnancyIncubation);
 		
-		loadCocks(saveFile);
+		player.cocks = new Vector.<Cock>();
+		SerializationUtils.deserializeVector(player.cocks as Vector.<*>, saveFile.data.cocks, Cock);
 
 		player.vaginas = new Vector.<VaginaClass>();
 		SerializationUtils.deserializeVector(player.vaginas as Vector.<*>, saveFile.data.vaginas, VaginaClass);
