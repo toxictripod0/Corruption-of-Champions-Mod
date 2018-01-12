@@ -292,7 +292,6 @@ package classes.Items
 			var rando:Number = rand(100);
 			if (player.hasPerk(PerkLib.HistoryAlchemist)) rando += 10;
 			if (player.hasPerk(PerkLib.TransformationResistance)) rando -= 10;
-			if (rando >= 90 && !tainted) rando -= 10;
 			clearOutput();
 			if (player.cor < 35) outputText("You wonder why in the gods' names you would drink such a thing, but you have to admit, it is the best thing you have ever tasted.");
 			if (player.cor >= 35 && player.cor < 70) {
@@ -446,7 +445,7 @@ package classes.Items
 				}
 			}
 			if (rando >= 90) {
-				if (player.skin.tone == "blue" || player.skin.tone == "purple" || player.skin.tone == "indigo" || player.skin.tone == "shiny black") {
+				if (!tainted || player.skin.tone == "blue" || player.skin.tone == "purple" || player.skin.tone == "indigo" || player.skin.tone == "shiny black") {
 					if (player.vaginas.length > 0) {
 						outputText("\n\nYour heart begins beating harder and harder as heat floods to your groin.  You feel your clit peeking out from under its hood, growing larger and longer as it takes in more and more blood.");
 						if (player.getClitLength() > 3 && !player.hasPerk(PerkLib.BigClit)) outputText("  After some time it shrinks, returning to its normal aroused size.  You guess it can't get any bigger.");
