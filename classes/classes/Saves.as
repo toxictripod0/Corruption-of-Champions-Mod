@@ -740,14 +740,12 @@ private function saveCocks(saveFile:*):void
 {
 	var i:int = 0;
 	saveFile.data.cocks = [];
-	//Set array
-	for (i = 0; i < player.cocks.length; i++)
-	{
-		saveFile.data.cocks.push([]);
-	}
+
 	//Populate Array
 	for (i = 0; i < player.cocks.length; i++)
 	{
+		saveFile.data.cocks.push([]);
+		
 		saveFile.data.cocks[i].cockThickness = player.cocks[i].cockThickness;
 		saveFile.data.cocks[i].cockLength = player.cocks[i].cockLength;
 		saveFile.data.cocks[i].cockType = player.cocks[i].cockType.Index;
