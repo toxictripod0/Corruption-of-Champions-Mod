@@ -66,7 +66,7 @@ package classes.Items
 							temp2 = temp;
 						}
 					}
-					if (int(Math.random() * 4) === 0) temp3 = player.increaseCock(temp2, 3);
+					if (rand(4) === 0) temp3 = player.increaseCock(temp2, 3);
 					else temp3 = player.increaseCock(temp2, 1);
 					if (tainted) dynStats("int", 1, "lib", 2, "sen", 1, "lus", 5 + temp * 3, "cor", 1);
 					else dynStats("int", 1, "lib", 2, "sen", 1, "lus", 5 + temp * 3);
@@ -159,7 +159,7 @@ package classes.Items
 			//High level change
 			if (rando >= 93) {
 				if (player.cockTotal() < 10) {
-					if (int(Math.random() * 10) < int(player.cor / 25)) {
+					if (rand(10) < int(player.cor / 25)) {
 						outputText("\n\n");
 						growDemonCock(rand(2) + 2);
 						if (tainted) dynStats("lib", 3, "sen", 5, "lus", 10, "cor", 5);
@@ -287,7 +287,7 @@ package classes.Items
 			player.slimeFeed();
 			var temp2:Number = 0;
 			var temp3:Number = 0;
-			var rando:Number = Math.random() * 100;
+			var rando:Number = rand(100);
 			if (player.hasPerk(PerkLib.HistoryAlchemist)) rando += 10;
 			if (player.hasPerk(PerkLib.TransformationResistance)) rando -= 10;
 			if (rando >= 90 && !tainted) rando -= 10;
