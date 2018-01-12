@@ -1374,6 +1374,58 @@ public function onDataLoaded(evt:Event):void
 	//playerMenu();
 }
 
+private function loadCocks(saveFile:*):Boolean 
+{
+	var hasViridianCockSock:Boolean = false;
+	
+	var i:int = 0;
+	//Set Cock array
+	for (i = 0; i < saveFile.data.cocks.length; i++)
+	{
+		player.createCock();
+	}
+	//Populate Cock Array
+	for (i = 0; i < saveFile.data.cocks.length; i++)
+	{
+		player.cocks[i].cockThickness = saveFile.data.cocks[i].cockThickness;
+		player.cocks[i].cockLength = saveFile.data.cocks[i].cockLength;
+		player.cocks[i].cockType = CockTypesEnum.ParseConstantByIndex(saveFile.data.cocks[i].cockType);
+		player.cocks[i].knotMultiplier = saveFile.data.cocks[i].knotMultiplier;
+		if (saveFile.data.cocks[i].sock == undefined) {
+			player.cocks[i].sock = "";
+		}
+		else
+		{
+			player.cocks[i].sock = saveFile.data.cocks[i].sock;
+			if (player.cocks[i].sock == "viridian") {
+				hasViridianCockSock = true;
+			}
+		}
+		if (saveFile.data.cocks[i].pierced == undefined)
+		{
+			player.cocks[i].pierced = 0;
+			player.cocks[i].pShortDesc = "";
+			player.cocks[i].pLongDesc = "";
+		}
+		else
+		{
+			player.cocks[i].pierced = saveFile.data.cocks[i].pierced;
+			player.cocks[i].pShortDesc = saveFile.data.cocks[i].pShortDesc;
+			player.cocks[i].pLongDesc = saveFile.data.cocks[i].pLongDesc;
+			
+			if (player.cocks[i].pShortDesc == "null" || player.cocks[i].pLongDesc == "null")
+			{
+				player.cocks[i].pierced = 0;
+				player.cocks[i].pShortDesc = "";
+				player.cocks[i].pLongDesc = "";
+			}
+		}
+			//trace("LoadOne Cock i(" + i + ")");
+	}
+	
+	return hasViridianCockSock;
+}
+
 public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 {
 	var game:CoC = getGame();
@@ -1877,53 +1929,8 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		player.knockUpForce(saveFile.data.pregnancyType, saveFile.data.pregnancyIncubation);
 		player.buttKnockUpForce(saveFile.data.buttPregnancyType, saveFile.data.buttPregnancyIncubation);
 		
-		var hasViridianCockSock:Boolean = false;
+		var hasViridianCockSock:Boolean = loadCocks(saveFile);
 
-		//ARRAYS HERE!
-		//Set Cock array
-		for (i = 0; i < saveFile.data.cocks.length; i++)
-		{
-			player.createCock();
-		}
-		//Populate Cock Array
-		for (i = 0; i < saveFile.data.cocks.length; i++)
-		{
-			player.cocks[i].cockThickness = saveFile.data.cocks[i].cockThickness;
-			player.cocks[i].cockLength = saveFile.data.cocks[i].cockLength;
-			player.cocks[i].cockType = CockTypesEnum.ParseConstantByIndex(saveFile.data.cocks[i].cockType);
-			player.cocks[i].knotMultiplier = saveFile.data.cocks[i].knotMultiplier;
-			if (saveFile.data.cocks[i].sock == undefined) {
-				player.cocks[i].sock = "";
-			}
-			else
-			{
-				player.cocks[i].sock = saveFile.data.cocks[i].sock;
-				if (player.cocks[i].sock == "viridian") {
-					hasViridianCockSock = true;
-				}
-			}
-			if (saveFile.data.cocks[i].pierced == undefined)
-			{
-				player.cocks[i].pierced = 0;
-				player.cocks[i].pShortDesc = "";
-				player.cocks[i].pLongDesc = "";
-			}
-			else
-			{
-				player.cocks[i].pierced = saveFile.data.cocks[i].pierced;
-				player.cocks[i].pShortDesc = saveFile.data.cocks[i].pShortDesc;
-				player.cocks[i].pLongDesc = saveFile.data.cocks[i].pLongDesc;
-				
-				if (player.cocks[i].pShortDesc == "null" || player.cocks[i].pLongDesc == "null")
-				{
-					player.cocks[i].pierced = 0;
-					player.cocks[i].pShortDesc = "";
-					player.cocks[i].pLongDesc = "";
-				}
-			}
-				//trace("LoadOne Cock i(" + i + ")");
-		}
-		
 		player.vaginas = new Vector.<VaginaClass>();
 		SerializationUtils.deserializeVector(player.vaginas as Vector.<*>, saveFile.data.vaginas, VaginaClass);
 		
