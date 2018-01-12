@@ -2132,7 +2132,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 				storage.unlocked = saveFile.data.gearStorage[i].unlocked;
 			}
 		}
-		//player.cocks = saveFile.data.cocks;
+		
 		player.ass.analLooseness = saveFile.data.ass.analLooseness;
 		player.ass.analWetness = saveFile.data.ass.analWetness;
 		player.ass.fullness = saveFile.data.ass.fullness;
