@@ -219,19 +219,19 @@
 
 		protected function displayHeader(text:String):void
 		{
-			kGAMECLASS.displayHeader(text);
+			kGAMECLASS.output.header(text);
 		}
 		
 		// Needed in a few rare cases for dumping text coming from a source that can't properly escape it's brackets
 		// (Mostly traceback printing, etc...)
-		protected function rawOutputText(output:String, purgeText:Boolean = false):void
+		protected function rawOutputText(text:String):void
 		{
-			kGAMECLASS.rawOutputText(output, purgeText);
+			kGAMECLASS.output.raw(text);
 		}
 
 		protected function outputText(output:String):void
 		{
-			kGAMECLASS.outputText(output);
+			kGAMECLASS.output.text(output);
 		}
 		
 		protected function clearOutput():void

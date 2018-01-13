@@ -47,7 +47,7 @@ package classes
 		 * @param   text    The text to be added
 		 * @return  The instance of the class to support the 'Fluent interface' aka method-chaining
 		 */
-		protected function _addText(text:String):Output
+		public function text(text:String):Output
 		{
 			// This is cleaup in case someone hits the Data or new-game button when the event-test window is shown. 
 			// It's needed since those buttons are available even when in the event-tester
@@ -59,19 +59,6 @@ package classes
 			//if (debug) mainView.setOutputText(_currentText);
 
 			return this;
-		}
-
-		/**
-		 * Add text to the output-buffer
-		 *
-		 * Actually this is a wrapper around _addText(text)
-		 *
-		 * @param   text    The text to be added
-		 * @return  The instance of the class to support the 'Fluent interface' aka method-chaining
-		 */
-		public function text(text:String):Output
-		{
-			return _addText(text);
 		}
 
 		/**
@@ -97,7 +84,18 @@ package classes
 		 */
 		public function header(headLine:String):Output
 		{
-			return text("<font size=\"36\" face=\"Georgia\"><u>" + headLine + "</u></font>\n");
+			return text(formatHeader(headLine));
+		}
+
+		/**
+		 * Returns the formatted headline
+		 *
+		 * @param	headLine    The headline to be formatted
+		 * @return  The formatted headline
+		 */
+		public function formatHeader(headLine:String):String
+		{
+			return "<font size=\"36\" face=\"Georgia\"><u>" + headLine + "</u></font>\n";
 		}
 
 		/**
