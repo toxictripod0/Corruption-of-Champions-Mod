@@ -818,7 +818,6 @@ package classes.Scenes.Areas.Bog
 		
 		protected function phoukaSexPregnate(postCombat:Boolean):void
 		{ //Whether by horse, bunny or (male) faerie sex it all ends up here if the PC has a vagina
-			clearOutput();
 			if (player.isPregnant()) {
 				if (phoukaForm == PHOUKA_FORM_HORSE)
 					outputText("\n\nYou just feel constant pressure against your sealed cervix.  The " + phoukaName() + "’s balls shows no signs of slowing down and the pressure continues to build.  Finally your vagina expands enough to allow an ocean of cum to jet out of you.");
