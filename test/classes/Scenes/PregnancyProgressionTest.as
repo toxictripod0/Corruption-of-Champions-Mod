@@ -22,6 +22,7 @@ package classes.Scenes
 		private static const COTTON_225_MESSAGE:String = "You stroke the orb and wonder with a half-grin if you'll have a daughter who takes after her 'daddy'.";
 		private static const FROG_ANAL_8_MESSAGE:String = "Your gut churns, and with a squelching noise,";
 		private static const HEAT_END:String = "It seems your heat has ended.";
+		private static const IMP_BIRTH_MESSAGE:String = "The pain begins to subside as your delivery continues...";
 		
 		private var cut:PregProgForTest;
 		private var player:Player;
@@ -87,6 +88,22 @@ package classes.Scenes
 		[Test]
 		public function updateFrogAnalPregnancyDisplayChange():void {
 			player.buttKnockUpForce(PregnancyStore.PREGNANCY_FROG_GIRL, 8);
+			
+			assertThat(cut.updatePregnancy(), equalTo(true));
+		}
+		
+		[Test]
+		public function updateImpBirthOutput():void {
+			player.knockUpForce(PregnancyStore.PREGNANCY_IMP, 1);
+			
+			cut.updatePregnancy();
+			
+			assertThat(cut.collectedOutput, hasItem(containsString(IMP_BIRTH_MESSAGE)));
+		}
+		
+		[Test]
+		public function updateImpBirthDisplayChange():void {
+			player.knockUpForce(PregnancyStore.PREGNANCY_IMP, 1);
 			
 			assertThat(cut.updatePregnancy(), equalTo(true));
 		}
