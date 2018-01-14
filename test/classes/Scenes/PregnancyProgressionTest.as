@@ -1,6 +1,7 @@
 package classes.Scenes
 {
 
+	import classes.DefaultDict;
 	import org.flexunit.asserts.*;
 	import org.hamcrest.assertThat;
 	import org.hamcrest.core.*;
@@ -14,6 +15,7 @@ package classes.Scenes
 	import classes.CoC;
 	import classes.Player;
 	import classes.GlobalFlags.kGAMECLASS;
+	import classes.GlobalFlags.kFLAGS;
 	import classes.PregnancyStore;
 	import classes.StatusEffects;
 	
@@ -23,6 +25,7 @@ package classes.Scenes
 		private static const FROG_ANAL_8_MESSAGE:String = "Your gut churns, and with a squelching noise,";
 		private static const HEAT_END:String = "It seems your heat has ended.";
 		private static const IMP_BIRTH_MESSAGE:String = "The pain begins to subside as your delivery continues...";
+		private static const MOUSE_BIRTH_MESSAGE:String = "Two emerge, then four, eight... you lose track.";
 		
 		private var cut:PregProgForTest;
 		private var player:Player;
@@ -38,6 +41,8 @@ package classes.Scenes
 			player = new Player();
 			player.createVagina();
 			kGAMECLASS.player = player;
+			
+			kGAMECLASS.flags = new DefaultDict();
 			
 			cut = new PregProgForTest();
 		}
@@ -106,6 +111,45 @@ package classes.Scenes
 			player.knockUpForce(PregnancyStore.PREGNANCY_IMP, 1);
 			
 			assertThat(cut.updatePregnancy(), equalTo(true));
+		}
+		
+		[Test]
+		public function amilyFailsafeCorruption():void {
+			player.knockUpForce(PregnancyStore.PREGNANCY_AMILY, 1);
+			kGAMECLASS.flags[kFLAGS.AMILY_FOLLOWER] = 2;
+			
+			cut.updatePregnancy();
+			
+			assertThat(cut.collectedOutput, hasItem(containsString(MOUSE_BIRTH_MESSAGE)));
+		}
+		
+		[Test]
+		public function amilyFailsafeUrtha():void {
+			player.knockUpForce(PregnancyStore.PREGNANCY_AMILY, 1);
+			kGAMECLASS.flags[kFLAGS.AMILY_VISITING_URTA] = 2;
+			
+			cut.updatePregnancy();
+			
+			assertThat(cut.collectedOutput, hasItem(containsString(MOUSE_BIRTH_MESSAGE)));
+		}
+		
+		[Test]
+		public function amilyFailsafePrison():void {
+			player.knockUpForce(PregnancyStore.PREGNANCY_AMILY, 1);
+			kGAMECLASS.flags[kFLAGS.IN_PRISON] = 1;
+			
+			cut.updatePregnancy();
+			
+			assertThat(cut.collectedOutput, hasItem(containsString(MOUSE_BIRTH_MESSAGE)));
+		}
+		
+		[Test]
+		public function amilyBirth():void {
+			player.knockUpForce(PregnancyStore.PREGNANCY_AMILY, 1);
+			
+			cut.updatePregnancy();
+			
+			assertThat(kGAMECLASS.flags[kFLAGS.PC_TIMES_BIRTHED_AMILYKIDS], equalTo(1));
 		}
 	}
 }

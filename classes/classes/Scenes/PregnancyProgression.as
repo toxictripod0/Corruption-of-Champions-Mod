@@ -46,24 +46,10 @@ package classes.Scenes
 				displayedUpdate = updateAnalPregnancy(displayedUpdate);
 			}
 			
+			amilyPregnancyFailsafe();
 			displayedUpdate = updateVaginalBirth(displayedUpdate);
 			displayedUpdate = updateAnalBirth(displayedUpdate);
 
-			//Amily failsafe - converts PC with pure babies to mouse babies if Amily is corrupted
-			if (player.pregnancyIncubation === 1 && player.pregnancyType === PregnancyStore.PREGNANCY_AMILY) 
-			{
-				if (flags[kFLAGS.AMILY_FOLLOWER] === 2 || flags[kFLAGS.AMILY_CORRUPTION] > 0) player.knockUpForce(PregnancyStore.PREGNANCY_MOUSE, player.pregnancyIncubation);
-			}
-			//Amily failsafe - converts PC with pure babies to mouse babies if Amily is with Urta
-			if (player.pregnancyIncubation === 1 && player.pregnancyType === PregnancyStore.PREGNANCY_AMILY) 
-			{
-				if (flags[kFLAGS.AMILY_VISITING_URTA] === 1 || flags[kFLAGS.AMILY_VISITING_URTA] === 2) player.knockUpForce(PregnancyStore.PREGNANCY_MOUSE, player.pregnancyIncubation);
-			}
-			//Amily failsafe - converts PC with pure babies to mouse babies if PC is in prison.
-			if (player.pregnancyIncubation === 1 && player.pregnancyType === PregnancyStore.PREGNANCY_AMILY) 
-			{
-				if (prison.inPrison) player.knockUpForce(PregnancyStore.PREGNANCY_MOUSE, player.pregnancyIncubation);
-			}
 			//Give birth if it's time (to an AMILY BITCH mouse!)
 			if (player.pregnancyIncubation === 1 && player.pregnancyType === PregnancyStore.PREGNANCY_AMILY) {
 				player.boostLactation(.01);
@@ -1572,6 +1558,36 @@ package classes.Scenes
 			}
 			
 			return displayedUpdate;
+		}
+
+		/**
+		 * Changes pregnancy type to Mouse if Amily is in a invalid state.
+		 */
+		private function amilyPregnancyFailsafe():void 
+		{
+			//Amily failsafe - converts PC with pure babies to mouse babies if Amily is corrupted
+			if (player.pregnancyIncubation === 1 && player.pregnancyType === PregnancyStore.PREGNANCY_AMILY) 
+			{
+				if (flags[kFLAGS.AMILY_FOLLOWER] === 2 || flags[kFLAGS.AMILY_CORRUPTION] > 0) {
+					player.knockUpForce(PregnancyStore.PREGNANCY_MOUSE, player.pregnancyIncubation);
+				}
+			}
+			
+			//Amily failsafe - converts PC with pure babies to mouse babies if Amily is with Urta
+			if (player.pregnancyIncubation === 1 && player.pregnancyType === PregnancyStore.PREGNANCY_AMILY) 
+			{
+				if (flags[kFLAGS.AMILY_VISITING_URTA] === 1 || flags[kFLAGS.AMILY_VISITING_URTA] === 2) {
+					player.knockUpForce(PregnancyStore.PREGNANCY_MOUSE, player.pregnancyIncubation);
+				}
+			}
+			
+			//Amily failsafe - converts PC with pure babies to mouse babies if PC is in prison.
+			if (player.pregnancyIncubation === 1 && player.pregnancyType === PregnancyStore.PREGNANCY_AMILY) 
+			{
+				if (prison.inPrison) {
+					player.knockUpForce(PregnancyStore.PREGNANCY_MOUSE, player.pregnancyIncubation);
+				}
+			}
 		}
 		
 		private function updateVaginalBirth(displayedUpdate:Boolean):Boolean 
