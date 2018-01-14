@@ -3249,13 +3249,13 @@
 			return totalGrowth;
 		}
 		
-		// Attempts to put the player in heat (or deeper in heat).
-		// Returns true if successful, false if not.
-		// The player cannot go into heat if she is already pregnant or is a he.
-		// 
-		// First parameter: boolean indicating if function should output standard text.
-		// Second parameter: intensity, an integer multiplier that can increase the 
-		// duration and intensity. Defaults to 1.
+		/**
+		 * Attempts to put the player in heat (or deeper in heat).
+		 * The player cannot go into heat if she is already pregnant or is a he.
+		 * @param	output if true, output standard text
+		 * @param	intensity multiplier that can increase the duration and intensity. Defaults to 1.
+		 * @return true if successful
+		 */
 		public function goIntoHeat(output:Boolean, intensity:int = 1):Boolean {
 			if (!hasVagina() || pregnancyIncubation != 0) {
 				// No vagina or already pregnant, can't go into heat.
