@@ -31,16 +31,9 @@ package classes.Scenes
 				(player.pregnancyType === 0 && player.buttPregnancyType === 0)) {
 				return false;
 			}
-			//Cancel Heat
-			if (player.inHeat) {
-				outputText("\nYou calm down a bit and realize you no longer fantasize about getting fucked constantly.  It seems your heat has ended.\n");
-				//Remove bonus libido from heat
-				dynStats("lib", -player.statusEffectv2(StatusEffects.Heat));
-				if (player.lib < 10) player.lib = 10;
-				statScreenRefresh();
-				player.removeStatusEffect(StatusEffects.Heat);
-				displayedUpdate = true;
-			}
+
+			displayedUpdate = cancelHeat();
+			
 			if (player.pregnancyIncubation === 1 && player.pregnancyType !== PregnancyStore.PREGNANCY_BENOIT) giveBirth();
 
 			if (player.pregnancyIncubation > 0 && player.pregnancyIncubation < 2) player.knockUpForce(player.pregnancyType, 1);
@@ -2103,6 +2096,26 @@ package classes.Scenes
 				}
 			}
 			return displayedUpdate;
+		}
+		
+		private function cancelHeat():Boolean 
+		{
+			if (player.inHeat) {
+				outputText("\nYou calm down a bit and realize you no longer fantasize about getting fucked constantly.  It seems your heat has ended.\n");
+				//Remove bonus libido from heat
+				dynStats("lib", -player.statusEffectv2(StatusEffects.Heat));
+				
+				if (player.lib < 10) {
+					player.lib = 10;
+				}
+				
+				statScreenRefresh();
+				player.removeStatusEffect(StatusEffects.Heat);
+				
+				return true;
+			}
+			
+			return false;
 		}
 		
 		private function pregnancyCotton():Boolean 

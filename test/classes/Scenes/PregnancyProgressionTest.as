@@ -15,10 +15,12 @@ package classes.Scenes
 	import classes.Player;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.PregnancyStore;
+	import classes.StatusEffects;
 	
 	public class PregnancyProgressionTest 
 	{
 		private static const COTTON_225_MESSAGE:String = "You stroke the orb and wonder with a half-grin if you'll have a daughter who takes after her 'daddy'.";
+		private static const HEAT_END:String = "It seems your heat has ended.";
 		
 		private var cut:PregProgForTest;
 		private var player:Player;
@@ -32,6 +34,7 @@ package classes.Scenes
 		[Before]
 		public function setUp():void {
 			player = new Player();
+			player.createVagina();
 			kGAMECLASS.player = player;
 			
 			cut = new PregProgForTest();
@@ -48,6 +51,24 @@ package classes.Scenes
 		
 		[Test]
 		public function updateCottonPregnancyDisplayChange():void {
+			player.knockUpForce(PregnancyStore.PREGNANCY_COTTON, 225);
+			
+			assertThat(cut.updatePregnancy(), equalTo(true));
+		}
+		
+		[Test]
+		public function cancelHeatOutput():void {
+			player.goIntoHeat(false);
+			player.knockUpForce(PregnancyStore.PREGNANCY_COTTON, 225);
+			
+			cut.updatePregnancy();
+			
+			assertThat(cut.collectedOutput, hasItem(containsString(HEAT_END)));
+		}
+		
+		[Test]
+		public function cancelHeatDisplayChange():void {
+			player.goIntoHeat(false);
 			player.knockUpForce(PregnancyStore.PREGNANCY_COTTON, 225);
 			
 			assertThat(cut.updatePregnancy(), equalTo(true));
