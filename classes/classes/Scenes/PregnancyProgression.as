@@ -50,70 +50,6 @@ package classes.Scenes
 			displayedUpdate = updateVaginalBirth(displayedUpdate);
 			displayedUpdate = updateAnalBirth(displayedUpdate);
 
-			//Give birth if it's time (to an AMILY BITCH mouse!)
-			if (player.pregnancyIncubation === 1 && player.pregnancyType === PregnancyStore.PREGNANCY_AMILY) {
-				player.boostLactation(.01);
-				outputText("\n");
-				if (player.vaginas.length === 0) {
-					outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.  ");
-					player.createVagina();
-				}
-				//FUCKING BIRTH SHIT HERE.
-				getGame().amilyScene.pcBirthsAmilysKidsQuestVersion();
-				player.cuntChange(60, true, true, false);
-				if (player.vaginas[0].vaginalWetness === VaginaClass.WETNESS_DRY) player.vaginas[0].vaginalWetness++;
-				player.orgasm('Vaginal');
-				dynStats("str", -1,"tou", -2, "spe", 3, "lib", 1, "sen", .5);
-				displayedUpdate = true;
-				outputText("\n");
-				player.knockUpForce(); //Clear Pregnancy
-			}
-			//Give birth if it's time (to a mouse!)
-			if (player.pregnancyIncubation === 1 && (player.pregnancyType === PregnancyStore.PREGNANCY_MOUSE || player.pregnancyType === PregnancyStore.PREGNANCY_JOJO)) {
-				player.boostLactation(.01);
-				outputText("\nYou wake up suddenly to strong pains and pressures in your gut. As your eyes shoot wide open, you look down to see your belly absurdly full and distended. You can feel movement underneath the skin, and watch as it is pushed out in many places, roiling and squirming in disturbing ways. The feelings you get from inside are just as disconcerting. You count not one, but many little things moving around inside you. There are so many, you can't keep track of them.\n\n");
-				if (player.vaginas.length === 0) {
-					outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.  ");
-					player.createVagina();
-				}		
-
-				//Main Text here
-				if (player.pregnancyType === PregnancyStore.PREGNANCY_JOJO && (flags[kFLAGS.JOJO_STATUS] < 0 || flags[kFLAGS.JOJO_BIMBO_STATE] >= 3) && !prison.inPrison) {
-					if (flags[kFLAGS.JOJO_BIMBO_STATE] >= 3) {
-						kGAMECLASS.joyScene.playerGivesBirthToJoyBabies();
-						return true;
-					}
-					else kGAMECLASS.jojoScene.giveBirthToPureJojoBabies();
-				}
-				else {
-					outputText("Pain shoots through you as they pull open your cervix forcefully. You grip the ground and pant and push as the pains of labor overwhelm you. You feel your hips being forceably widened by the collective mass of the creatures moving down your birth canal. You spread your legs wide, laying your head back with groans and cries of agony as little white figures begin to emerge from between the lips of your abused pussy. Large innocent eyes, even larger ears, cute little muzzles, long slender pink tails all appear as the figures emerge. Each could be no larger than six inches tall, but they seem as active and curious as if they were already developed children. \n\n");
-					outputText("Two emerge, then four, eight... you lose track. They swarm your body, scrambling for your chest, and take turns suckling at your nipples. Milk does their bodies good, making them grow rapidly, defining their genders as the girls grow cute little breasts and get broader hips and the boys develop their little mouse cocks and feel their balls swell. Each stops suckling when they reach two feet tall, and once every last one of them has departed your sore, abused cunt and drunk their fill of your milk, they give you a few grateful nuzzles, then run off towards the forest, leaving you alone to recover.\n");
-				}
-				player.knockUpForce(); //Clear Pregnancy
-				if (player.averageLactation() > 0 && player.averageLactation() < 5) {
-					outputText("Your [chest] won't seem to stop dribbling milk, lactating more heavily than before.");
-					player.boostLactation(.5);
-				}
-				player.cuntChange(60, true,true,false);
-				if (player.vaginas[0].vaginalWetness === VaginaClass.WETNESS_DRY) player.vaginas[0].vaginalWetness++;
-				player.orgasm('Vaginal');
-				dynStats("str", -1,"tou", -2, "spe", 3, "lib", 1, "sen", .5);
-				displayedUpdate = true;
-				//Butt increase
-				if (player.butt.rating < 14 && rand(2) === 0) {
-					if (player.butt.rating < 10) {
-						player.butt.rating++;
-						outputText("\n\nYou notice your " + player.buttDescript() + " feeling larger and plumper after the ordeal.");				
-					}
-					//Big butts grow slower!
-					else if (player.butt.rating < 14 && rand(2) === 0) {
-						player.butt.rating++;
-						outputText("\n\nYou notice your " + player.buttDescript() + " feeling larger and plumper after the ordeal.");
-					}
-				}
-				outputText("\n");
-			}
-
 			return displayedUpdate;
 		}
 		
@@ -2162,6 +2098,71 @@ package classes.Scenes
 					displayedUpdate = true;
 					player.knockUpForce(); //Clear Pregnancy
 				}
+			}
+			
+			//Give birth if it's time (to an AMILY BITCH mouse!)
+			if (player.pregnancyIncubation === 1 && player.pregnancyType === PregnancyStore.PREGNANCY_AMILY) {
+				player.boostLactation(.01);
+				outputText("\n");
+				if (player.vaginas.length === 0) {
+					outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.  ");
+					player.createVagina();
+				}
+				//FUCKING BIRTH SHIT HERE.
+				getGame().amilyScene.pcBirthsAmilysKidsQuestVersion();
+				player.cuntChange(60, true, true, false);
+				if (player.vaginas[0].vaginalWetness === VaginaClass.WETNESS_DRY) player.vaginas[0].vaginalWetness++;
+				player.orgasm('Vaginal');
+				dynStats("str", -1,"tou", -2, "spe", 3, "lib", 1, "sen", .5);
+				displayedUpdate = true;
+				outputText("\n");
+				player.knockUpForce(); //Clear Pregnancy
+			}
+			
+			//Give birth if it's time (to a mouse!)
+			if (player.pregnancyIncubation === 1 && (player.pregnancyType === PregnancyStore.PREGNANCY_MOUSE || player.pregnancyType === PregnancyStore.PREGNANCY_JOJO)) {
+				player.boostLactation(.01);
+				outputText("\nYou wake up suddenly to strong pains and pressures in your gut. As your eyes shoot wide open, you look down to see your belly absurdly full and distended. You can feel movement underneath the skin, and watch as it is pushed out in many places, roiling and squirming in disturbing ways. The feelings you get from inside are just as disconcerting. You count not one, but many little things moving around inside you. There are so many, you can't keep track of them.\n\n");
+				if (player.vaginas.length === 0) {
+					outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.  ");
+					player.createVagina();
+				}		
+
+				//Main Text here
+				if (player.pregnancyType === PregnancyStore.PREGNANCY_JOJO && (flags[kFLAGS.JOJO_STATUS] < 0 || flags[kFLAGS.JOJO_BIMBO_STATE] >= 3) && !prison.inPrison) {
+					if (flags[kFLAGS.JOJO_BIMBO_STATE] >= 3) {
+						kGAMECLASS.joyScene.playerGivesBirthToJoyBabies();
+						return true;
+					}
+					else kGAMECLASS.jojoScene.giveBirthToPureJojoBabies();
+				}
+				else {
+					outputText("Pain shoots through you as they pull open your cervix forcefully. You grip the ground and pant and push as the pains of labor overwhelm you. You feel your hips being forceably widened by the collective mass of the creatures moving down your birth canal. You spread your legs wide, laying your head back with groans and cries of agony as little white figures begin to emerge from between the lips of your abused pussy. Large innocent eyes, even larger ears, cute little muzzles, long slender pink tails all appear as the figures emerge. Each could be no larger than six inches tall, but they seem as active and curious as if they were already developed children. \n\n");
+					outputText("Two emerge, then four, eight... you lose track. They swarm your body, scrambling for your chest, and take turns suckling at your nipples. Milk does their bodies good, making them grow rapidly, defining their genders as the girls grow cute little breasts and get broader hips and the boys develop their little mouse cocks and feel their balls swell. Each stops suckling when they reach two feet tall, and once every last one of them has departed your sore, abused cunt and drunk their fill of your milk, they give you a few grateful nuzzles, then run off towards the forest, leaving you alone to recover.\n");
+				}
+				player.knockUpForce(); //Clear Pregnancy
+				if (player.averageLactation() > 0 && player.averageLactation() < 5) {
+					outputText("Your [chest] won't seem to stop dribbling milk, lactating more heavily than before.");
+					player.boostLactation(.5);
+				}
+				player.cuntChange(60, true,true,false);
+				if (player.vaginas[0].vaginalWetness === VaginaClass.WETNESS_DRY) player.vaginas[0].vaginalWetness++;
+				player.orgasm('Vaginal');
+				dynStats("str", -1,"tou", -2, "spe", 3, "lib", 1, "sen", .5);
+				displayedUpdate = true;
+				//Butt increase
+				if (player.butt.rating < 14 && rand(2) === 0) {
+					if (player.butt.rating < 10) {
+						player.butt.rating++;
+						outputText("\n\nYou notice your " + player.buttDescript() + " feeling larger and plumper after the ordeal.");				
+					}
+					//Big butts grow slower!
+					else if (player.butt.rating < 14 && rand(2) === 0) {
+						player.butt.rating++;
+						outputText("\n\nYou notice your " + player.buttDescript() + " feeling larger and plumper after the ordeal.");
+					}
+				}
+				outputText("\n");
 			}
 			
 			return displayedUpdate;
