@@ -20,6 +20,7 @@ package classes.Scenes
 	public class PregnancyProgressionTest 
 	{
 		private static const COTTON_225_MESSAGE:String = "You stroke the orb and wonder with a half-grin if you'll have a daughter who takes after her 'daddy'.";
+		private static const FROG_ANAL_8_MESSAGE:String = "Your gut churns, and with a squelching noise,";
 		private static const HEAT_END:String = "It seems your heat has ended.";
 		
 		private var cut:PregProgForTest;
@@ -70,6 +71,22 @@ package classes.Scenes
 		public function cancelHeatDisplayChange():void {
 			player.goIntoHeat(false);
 			player.knockUpForce(PregnancyStore.PREGNANCY_COTTON, 225);
+			
+			assertThat(cut.updatePregnancy(), equalTo(true));
+		}
+		
+		[Test]
+		public function updateFrogAnalPregnancyOutput():void {
+			player.buttKnockUpForce(PregnancyStore.PREGNANCY_FROG_GIRL, 8);
+			
+			cut.updatePregnancy();
+			
+			assertThat(cut.collectedOutput, hasItem(containsString(FROG_ANAL_8_MESSAGE)));
+		}
+		
+		[Test]
+		public function updateFrogAnalPregnancyDisplayChange():void {
+			player.buttKnockUpForce(PregnancyStore.PREGNANCY_FROG_GIRL, 8);
 			
 			assertThat(cut.updatePregnancy(), equalTo(true));
 		}
