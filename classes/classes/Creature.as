@@ -1697,7 +1697,6 @@ package classes
 			}
 			if (hasPerk(PerkLib.WetPussy))
 				bonus += 20;
-			}
 			if (hasPerk(PerkLib.HistorySlut))
 				bonus += 20;
 			if (hasPerk(PerkLib.OneTrackMind))
