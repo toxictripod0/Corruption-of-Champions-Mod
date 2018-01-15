@@ -61,6 +61,7 @@ private function doCamp():void { //Only called by playerMenu
 	if (player.slotName != "VOID" && mainView.getButtonText(0) != "Game Over" && flags[kFLAGS.HARDCORE_MODE] > 0) getGame().saves.saveGame(player.slotName);
 	//make sure gameState is cleared if coming from combat or giacomo
 	getGame().inCombat = false;
+	mainView.endCombatView();
 	//There were some problems with buttons not being overwritten and bleeding into other scenes
 	//No scenes should involve a button from a previous scene with a camp scene in the middle
 	mainView.clearBottomButtons();

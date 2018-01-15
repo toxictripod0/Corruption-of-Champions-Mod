@@ -66,6 +66,7 @@ public class Combat extends BaseContent
 		//Combat is over. Clear shit out and go to main. Also given different name to avoid conflicts with BaseContent.
 		public function cleanupAfterCombat(nextFunc:Function = null):void {
 			combatAbilities.fireMagicLastTurn = -100;
+			mainView.endCombatView();
 			if (nextFunc == null) nextFunc = camp.returnToCampUseOneHour;
 			if (prison.inPrison && prison.prisonCombatWinEvent != null) nextFunc = prison.prisonCombatWinEvent;
 			if (inCombat) {
@@ -1735,16 +1736,19 @@ public class Combat extends BaseContent
 		public function beginCombat(monster_:Monster, plotFight_:Boolean = false):void {
 			combatRound = 0;
 			plotFight = plotFight_;
+			mainView.monsterStatsView.refreshStats(getGame());
 			mainView.hideMenuButton( MainView.MENU_DATA );
 			mainView.hideMenuButton( MainView.MENU_APPEARANCE );
 			mainView.hideMenuButton( MainView.MENU_LEVEL );
 			mainView.hideMenuButton( MainView.MENU_PERKS );
 			mainView.hideMenuButton( MainView.MENU_STATS );
+			mainView.updateCombatView();
 			showStats();
 			//Flag the game as being "in combat"
 			inCombat = true;
 			monster = monster_;
-			
+			mainView.monsterStatsView.show();
+			mainView.updateCombatView();
 			//Set image once, at the beginning of combat
 			if (monster.imageName != "")
 			{

@@ -1695,7 +1695,6 @@ package classes
 			}else if (lowerBody.type == LowerBody.NAGA){
 				bonus += 20;
 			}
-
 			if (hasPerk(PerkLib.WetPussy))
 				bonus += 20;
 			if (hasPerk(PerkLib.HistorySlut))
@@ -2734,12 +2733,10 @@ package classes
 		{
 			return skin.hasFur();
 		}
-
 		public function hasWool():Boolean
 		{
 			return skin.hasWool();
 		}
-
 		public function isFurry():Boolean
 		{
 			return skin.isFurry();
@@ -3926,6 +3923,24 @@ package classes
 			lust = boundFloat(minLust(),lust+Math.round(lustDmg),maxLust());
 			return (lustDmg > 0 && lustDmg < 1) ? 1 : lustDmg;
 		}
+		
+		public function generateTooltip():String{
+			var retv:String = "<b>Corruption:</b>" +  cor + "\n<b>Armor:</b>" + armorDef +"\n";
+			if (hasStatusEffect(StatusEffects.IzmaBleed)) retv += "<b>Bleeding:</b> Target is bleeding and takes damage each turn.\n";
+			if (hasStatusEffect(StatusEffects.Stunned)) retv += "<b>Stunned</b> Target is stunned, and may not act for " + (statusEffectv1(StatusEffects.Stunned)+1) + " turns.\n";
+			//if (hasPerk(PerkLib.Invincible)) retv += "<b>INVINCIBLE:</b> Target is invincible, and will take no damage from any attack.\n";
+			//if (hasPerk(PerkLib.BleedImmune)) retv += "<b>Bleed Immune:</b> Target is immune to bleeding effects.\n";
+			if (hasStatusEffect(StatusEffects.Blind))  retv += "<b>Blinded:</b> Target is blinded and will miss much more often.\n";
+			if (hasStatusEffect(StatusEffects.Fear))  retv += "<b>Frightened </b> Target is frozen by fear, and cannot attack.\n";
+			if (hasStatusEffect(StatusEffects.NagaVenom))  retv += "<b>Poisoned(Naga):</b> Target is continuously losing speed and strength.\n";
+			if (hasStatusEffect(StatusEffects.Whispered))  retv += "<b>Whispered:</b> Target is addled by dark whisperings, and cannot attack.\n";
+			if (hasStatusEffect(StatusEffects.OnFire))  retv += "<b>Burning:</b> Target is burning, and takes damage every turn for " + statusEffectv1(StatusEffects.OnFire) +" turns.\n";
+			if (hasStatusEffect(StatusEffects.Shell))  retv += "<b>Shell:</b> Target is protected by a magical shell for " + statusEffectv1(StatusEffects.Shell) +" turns, and will absorb some magical attacks.\n";
+			//if (hasStatusEffect(StatusEffects.GuardAB))  retv += "<b>Guarded:</b> Target is guarded, and cannot be attacked directly.\n";
+			//if(hasPerk(PerkLib.PoisonImmune)) retv += "<b>Poison Immune:</b> Target is immune to poison effects.\n";
+			return retv;
+		}
+		
 		/**
 		 *Get the remaining fatigue of the Creature.
 		 *@return maximum amount of fatigue that still can be used
