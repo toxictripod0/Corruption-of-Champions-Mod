@@ -1,7 +1,9 @@
 package classes.Scenes.Areas.Bog 
 {
 	import classes.*;
-	import classes.internals.*;
+	import classes.BodyParts.*;
+import classes.StatusEffects.Combat.LizanBlowpipeDebuff;
+import classes.internals.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	
@@ -17,17 +19,7 @@ package classes.Scenes.Areas.Bog
 			}
 			else {
 				outputText("The lizan flings himself back.  In the air he puts his blowgun to his lips and fires a single dart into your neck.  As you pull it out your limbs begin to feel like wet noodles, it appears you’ve been poisoned.");
-				game.dynStats("str", -5, "spe", -5);
-				if (player.findStatusEffect(StatusEffects.LizanBlowpipe) < 0) player.createStatusEffect(StatusEffects.LizanBlowpipe, 5, 0, 5, 0);
-				else {
-					player.addStatusValue(StatusEffects.LizanBlowpipe, 1, 5);
-					player.addStatusValue(StatusEffects.LizanBlowpipe, 3, 5);
-				}
-				if (player.cor > 50) {
-					game.dynStats("str", -5, "spe", -5);
-					player.addStatusValue(StatusEffects.LizanBlowpipe, 1, 5);
-					player.addStatusValue(StatusEffects.LizanBlowpipe, 3, 5);					
-				}
+				(player.createOrFindStatusEffect(StatusEffects.LizanBlowpipe) as LizanBlowpipeDebuff).debuffStrSpe();
 			}
 			combatRoundOver();
 		}
@@ -39,16 +31,7 @@ package classes.Scenes.Areas.Bog
 			else {
 				outputText("The lizan rushes at you.  As you raise your [weapon] to defend yourself he dives to the side, using his blowgun to fire a single stinging dart into your neck.  You pull out the dart and your skin begins to feel hypersensitive, you’re going to have trouble defending yourself");
 				game.dynStats("tou", -5, "sens", 5);
-				if (player.findStatusEffect(StatusEffects.LizanBlowpipe) < 0) player.createStatusEffect(StatusEffects.LizanBlowpipe, 0, 5, 0, 5);
-				else {
-					player.addStatusValue(StatusEffects.LizanBlowpipe, 2, 5);
-					player.addStatusValue(StatusEffects.LizanBlowpipe, 4, 5);
-				}
-				if (player.cor > 50) {
-					game.dynStats("tou", -5, "sens", 5);
-					player.addStatusValue(StatusEffects.LizanBlowpipe, 2, 5);
-					player.addStatusValue(StatusEffects.LizanBlowpipe, 4, 5);					
-				}
+				(player.createOrFindStatusEffect(StatusEffects.LizanBlowpipe) as LizanBlowpipeDebuff).debuffTouSens();
 			}
 			combatRoundOver();
 		}
@@ -71,7 +54,7 @@ package classes.Scenes.Areas.Bog
 			}
 			else {
 				outputText("All you see is a flash of pink as the lizan’s long tongue hits your eyes. Some kind of chemical reaction causes your eyes to burn, you’ve been blinded!");
-				if (player.findStatusEffect(StatusEffects.Blind) < 0) player.createStatusEffect(StatusEffects.Blind, 1 + rand(2), 0, 0, 0)
+				if (!player.hasStatusEffect(StatusEffects.Blind)) player.createStatusEffect(StatusEffects.Blind, 1 + rand(2), 0, 0, 0)
 			}
 			combatRoundOver();
 		}
@@ -96,24 +79,24 @@ package classes.Scenes.Areas.Bog
 		public function LizanRogue() 
 		{
 			var skinToneAdj:String = randomChoice(SKIN_VARIATIONS);
-			this.skinTone = skinToneAdj;
-			this.skinType = SKIN_TYPE_LIZARD_SCALES;
+			this.skin.tone = skinToneAdj;
+			this.skin.setType(Skin.LIZARD_SCALES);
 			this.a = "the ";
 			this.short = "lizan rogue";
 			this.imageName = "lizanrogue";
-			this.long = "A rogue lizan male stands before you, watching your every move with quick yellow eyes. His slim body is covered in glistening " + skinTone + " scales. His strong tail swings back and forth as he shifts his weight, a fluid movement that hints at his speed.  He wears a simple loincloth to protect his modesty to which a small pack is belted.";
+			this.long = "A rogue lizan male stands before you, watching your every move with quick yellow eyes. His slim body is covered in glistening " + skin.tone + " scales. His strong tail swings back and forth as he shifts his weight, a fluid movement that hints at his speed.  He wears a simple loincloth to protect his modesty to which a small pack is belted.";
 			// this.plural = false;
 			createBreastRow(Appearance.breastCupInverse("flat"));
 			this.createCock(8, 3, CockTypesEnum.LIZARD);
 			this.createCock(8, 3, CockTypesEnum.LIZARD);
-			this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-			this.ass.analWetness = ANAL_WETNESS_MOIST;
+			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
+			this.ass.analWetness = AssClass.WETNESS_MOIST;
 			this.tallness = 60 + rand(10);
-			this.hipRating = HIP_RATING_BOYISH;
-			this.buttRating = BUTT_RATING_TIGHT;
-			this.skinDesc = "skin";
-			this.hairColor = "black";
-			this.hairLength = 15;
+			this.hips.rating = Hips.RATING_BOYISH;
+			this.butt.rating = Butt.RATING_TIGHT;
+			this.skin.desc = "skin";
+			this.hair.color = "black";
+			this.hair.length = 15;
 			initStrTouSpeInte(60, 70, 80, 55);
 			initLibSensCor(20, 10, 0);
 			this.weaponName = "claws";

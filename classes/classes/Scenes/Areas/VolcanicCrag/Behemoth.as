@@ -1,6 +1,9 @@
 package classes.Scenes.Areas.VolcanicCrag 
 {
 	import classes.*;
+	import classes.BodyParts.*;
+	import classes.BodyParts.Butt;
+	import classes.BodyParts.Hips;
 	import classes.internals.WeightedDrop;
 	import classes.GlobalFlags.kFLAGS;
 	
@@ -19,14 +22,14 @@ package classes.Scenes.Areas.VolcanicCrag
 				damage = player.reduceDamage(damage)
 				player.takeDamage(damage, true);
 			}
-			if (findStatusEffect(StatusEffects.TailWhip) >= 0) addStatusValue(StatusEffects.TailWhip, 1, 5);
+			if (hasStatusEffect(StatusEffects.TailWhip)) addStatusValue(StatusEffects.TailWhip, 1, 5);
 			else createStatusEffect(StatusEffects.TailWhip, 5, 0, 0, 0);
 			combatRoundOver();
 		}
 		
 		public function tease():void {
 			outputText("\"Want a piece of this?\" the behemoth says, and you avert your eyes as he flips up his loincloth, his huge cock alluring under the red silk and gold chains.");
-			game.dynStats("lus", 10 + (player.cor / 10) + (player.lib / 10));
+			player.takeLustDamage(10 + (player.cor / 10) + (player.lib / 10), true);
 			combatRoundOver();
 		}
 		
@@ -55,21 +58,21 @@ package classes.Scenes.Areas.VolcanicCrag
 			this.ballSize = 3;
 			this.cumMultiplier = 25;
 			createBreastRow(Appearance.breastCupInverse("flat"));
-			this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-			this.ass.analWetness = ANAL_WETNESS_NORMAL;
+			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
+			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.tallness = 9*12;
-			this.hipRating = HIP_RATING_BOYISH;
-			this.buttRating = BUTT_RATING_TIGHT;
-			this.skinTone = "purple";
-			this.skinType = SKIN_TYPE_FUR;
-			this.hairColor = "black";
-			this.hairLength = 8;
-			this.earType = EARS_ELFIN;
-			this.faceType = FACE_CAT;
-			this.horns = 7;
-			this.hornType = HORNS_DRACONIC_X2
-			this.lowerBody = LOWER_BODY_TYPE_CAT
-			this.tailType = TAIL_TYPE_BEHEMOTH
+			this.hips.rating = Hips.RATING_BOYISH;
+			this.butt.rating = Butt.RATING_TIGHT;
+			this.skin.tone = "purple";
+			this.skin.setType(Skin.FUR);
+			this.hair.color = "black";
+			this.hair.length = 8;
+			this.ears.type = Ears.ELFIN;
+			this.face.type = Face.CAT;
+			this.horns.value = 7;
+			this.horns.type = Horns.DRACONIC_X2
+			this.lowerBody.type = LowerBody.CAT
+			this.tail.type = Tail.BEHEMOTH
 			initStrTouSpeInte(125, 100, 80, 105);
 			initLibSensCor(35, 15, 15);
 			this.weaponName = "claws";

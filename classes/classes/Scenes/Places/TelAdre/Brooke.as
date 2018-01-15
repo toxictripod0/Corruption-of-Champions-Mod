@@ -2,10 +2,11 @@
 	import classes.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
+	import classes.display.SpriteDb;
 
 //  BROOKE_AFFECTION:int = 915;
 //  BROOKE_SHOWERED_WITH:int = 916;
-//  BROOKE_AND_HELIA_3SOME:int = 917;
+//  BROOKE_AND_HECKEL_3SOME:int = 917;
 //  TIMES_IN_BROOKES_BUTT:int = 918;
 //  BROOKE_MEDIUM_SCENE:int = 919;
 //  BROOKE_MET:int = 920;
@@ -56,6 +57,7 @@ public function brookeCapacity():Number {
 //Occurs automatically after the second time you choose to hit the showers after a workout.  From then, the choice to ‘hit the showers’ then becomes either visit the machine or to actually go to the shower.
 public function meetBrookeFirstTime():void {
 	clearOutput();
+	spriteSelect(SpriteDb.s_brooke);
 	outputText(images.showImage("brooke-first-meeting"));
 	outputText("After yet another successful, and rewarding, workout, you begin your way down the hallways of the gym back to your favorite machine in the building.  Even after putting in so much effort, you’ve yet to finish – you still have to work <i>every</i> muscle, after all.  However, as you walk down the halls, breath still heavy and feeling the sweat drip off your brow, you pause, taking a few sniffs.  Once you’re out of the gym and into somewhat fresher air, you smell something, and it smells <i>rank</i>.  Smelling around a bit, you lift an arm and whiff your pit – it’s you!  Maybe, for once, you should actually have a wash; as you are now, the monsters would smell you long before they’d see you.");
 
@@ -94,7 +96,21 @@ public function meetBrookeFirstTime():void {
 
 public function repeatChooseShower():void {
 	clearOutput();
-	if (model.time.hours < 16 || model.time.hours > 18 || player.tone < 30) {
+	if (flags[kFLAGS.PABLO_AFFECTION] >= 60 && telAdre.pablo.pabloIntro(false) && rand(2) == 0) {
+		if (flags[kFLAGS.PABLO_SECRET_LEARNED] == 0) {
+			telAdre.pablo.pabloSecret();
+			return;
+		}
+		else if (flags[kFLAGS.PABLO_AFFECTION] >= 100) {
+			telAdre.pablo.pabloShowerSexIntro();
+			return;
+		}
+		if (flags[kFLAGS.PABLO_FREAKED_OUT_OVER_WORMS] > 0 && !player.hasStatusEffect(StatusEffects.Infested)) {
+			telAdre.pablo.pabloComesBackAfterWormCure();
+			return;
+		}
+	}
+	if (getGame().time.hours < 16 || getGame().time.hours > 18 || player.tone < 30) {
 		//Before 16:00/after 18:00, affection <= 19
 		if (brookeAffection() <= 19) {
 			outputText("You head your way back to the showers, feeling the sweet ache of your muscles as you easily find your way there.  The showers are completely empty when you arrive.  On the one hand, you enjoy having the place to yourself and taking your time, but on the other, you can’t help but feel a little disappointed that the Shepherd girl Brooke wasn't there to greet you.");
@@ -142,6 +158,7 @@ public function repeatChooseShower():void {
 //Third encounter; body tone 30 minimum
 public function brookeThirdEncounter():void {
 	clearOutput();
+	spriteSelect(SpriteDb.s_brooke);
 	outputText("You head your way back to the showers after stopping at the lockers to store your [armor].  You wonder to yourself if you'll see Brooke there again.  She seems like the fond, friendly type, and you both have at least one mutual interest, after all.  If nothing else, she's certainly not hard on the eyes.");
 	outputText("\n\nYou walk into the showers, hearing one of the stalls going.  As you enter, you see Brooke, her head just poking over the walls of the stall, busy gently scrubbing at her fur.  You can't tell from your distance if she uses a shampoo or anything.  Again, you're both alone, and one of her ears perks up as she hears you approach.  She whips her shoulder-length hair back, swiping the water from her eyes, as she turns to your direction.  <i>\"Oh, hey [name],\"</i> she says, giving you a warm smile.  <i>\"How's it hanging today?\"</i> You answer that, so far, it's been more of the same, and she nods affirmatively.  She resumes her shower wordlessly while you take your own stall – you choose to take the third one down, leaving one between you in case she'd prefer the privacy.  You remove your towel and start the nozzle.");
 	outputText("\n\n<i>\"So, [name],\"</i> she says casually, going back to gently rubbing the water underneath her fur.  <i>\"Where ya from?  How'd you get to Tel'Adre?\"</i>  You decide to give her the short version: you're from a faraway place called Ingnam.  You found your way to Tel'Adre from wandering aimlessly in the desert for a bit, and were lucky enough to come across the city before a naga's den or something.  You consciously choose to leave out the whole 'Champion' business.  <i>\"Ingnam, huh?  Never heard of it. Must have been quite the journey from there to here.\"</i>");
@@ -163,6 +180,7 @@ public function brookeThirdEncounter():void {
 // Between 16:00 and 18:00, Affection <= 19
 public function lowAffectionBrookeMeeting():void {
 	clearOutput();
+	spriteSelect(SpriteDb.s_brooke);
 	outputText("You head your way back to the showers, feeling the sweet ache of your muscles as you easily find your way there.  Brooke is there, already rinsing the day's work out of her muscles.  She hears you coming in, and turns to give you a warm greeting, which you happily return.");
 
 	outputText("\n\nThe shower goes by smoothly, the both of you talking idly about whatever happens to come to mind.  Learning from your previous encounter, you try to keep the topics away from Tel'Adre while still asking her about herself, and answer her own questions about yourself whenever she asks.  All in all, things go by rather well, and once again she leaves the showers before you, giving you a wave before she leaves.");
@@ -174,6 +192,7 @@ public function lowAffectionBrookeMeeting():void {
 // Between 16:00 and 18:00, Affection >= 20, <= 39, body tone 40 minimum, one-time event
 public function mediumLowBrookeAffectionOneTime():void {
 	clearOutput();
+	spriteSelect(SpriteDb.s_brooke);
 	outputText("Another good workout and another fine sheen of sweat to wash off.  The day hasn't been so bad so far, and you start to whistle to yourself as you head to the showers, dropping your [armor] off in a locker beforehand.  Glancing out one of the windows, you guess that Brooke ought to be there around this time of day; and as you approach, you hear the sounds of rushing water.  Sure, it could actually be someone else, but you have a feeling it's the Shepherd girl.");
 
 	outputText("\n\nSure enough, there she is, although she's looking a little... melancholy.  She's staring down at her feet, letting the water rush over her body, not really moving or anything.  One of her ears perks as she hears you coming, and she turns to face you.  <i>\"Oh,\"</i> she sighs, <i>\"hey, [name].\"</i>");
@@ -247,7 +266,7 @@ public function helpBrookeOut():void {
 
 	outputText("\n\nBy the time she's long gone, the water is beginning to cool.  You've spent far too long in the shower as it is.  You quickly wash what you can before leaving the showers and fetching your gear, leaving the gym for now.");
 	// (Lust increased by 15)
-	dynStats("lus", 15 + player.lib/20, "resisted", false);
+	dynStats("lus", 15 + player.lib/20, "scale", false);
 	flags[kFLAGS.BROOKE_SHOWERED_WITH] = 1;
 	brookeAffection(4);
 	doNext(camp.returnToCampUseOneHour);
@@ -256,6 +275,7 @@ public function helpBrookeOut():void {
 // Between 16:00 and 18:00, Affection >= 20, <= 39
 public function mediumLowBrookeAffection():void {
 	clearOutput();
+	spriteSelect(SpriteDb.s_brooke);
 	outputText("After another workout session, you head back to the showers, stopping at the lockers to set down your [armor] and to grab a towel.  You hear the sound of rushing water as you approach and, as usual, you find Brooke in her usual stall.  She's busy lightly scrubbing at her fur, but she easily picks out the sound of your footsteps over the water.  <i>\"Hey, [name]!\"</i> she says, turning to face you with a smile.  <i>\"Right on time, sweetheart.  I could use some company to talk to.  Care to hear a gal pal out?\"</i>");
 
 	outputText("\n\nYou tell her that you'd be glad to.  You step into the stall next to her, lathering up your hands and begin to rub the suds into your [hair].  She finishes doing the same to her own, before crossing her arms over the wall of the stall between you, facing you with a smile.  She waits patiently while you lather yourself – you could take this opportunity to start the conversation yourself, for once.");
@@ -271,6 +291,7 @@ public function mediumLowBrookeAffection():void {
 //Between 16:00 and 18:00, Affection >=40, after first-time sex
 public function mediumBrookeAffectionMeetingAfterSex():void {
 	clearOutput();
+	spriteSelect(SpriteDb.s_brooke);
 	outputText("After another workout session, you head back to the showers, stopping at the lockers to set down your [armor] and to grab a towel.  You hear the sound of rushing water as you approach and, as usual, you find Brooke in her usual stall.  She's busy lightly scrubbing at her fur, but she easily picks out the sound of your footsteps over the water.  <i>\"Hey there, sexy!\"</i> she calls, turning to face you with a smile.  <i>\"You're just in time.  The water's plenty warm, but my stall is getting cold.  Care to help warm it up?\"</i>");
 
 	outputText("\n\nYou tell her that you'd be glad to.  You step into her stall, lathering up your hands and getting to work rubbing the suds into her sore shoulders.  She moans and leans into your touch, letting your now-practiced hands work their magic on her.");
@@ -316,8 +337,8 @@ public function talkWithBrookeAboutWorkingOut():void {
 	if (brookeAffection() <= 39) outputText("\n\nSharing a shower with a naked girl just a few feet away is an unusual experience.  Of course, though, you're certainly not complaining – Brooke's an interesting girl, and she takes very good care of herself physically.  You enjoy her company.");
 	else outputText("\n\nThat damn Shepherd knows all of your buttons and all your weaknesses.  Every shower, she teases you in just the right ways, and it gets harder and harder to not just fuck her there in the stall.  Not that she'd mind, you're sure... but, it's a game you two play.  She likes pushing your limits, knowing that, when that limit breaks, it'll be a much harder workout than anything the gym could give her.  Which is something you both wouldn't mind.");
 	// (Lust increases by 10, Int increases by 1 with a cap of 50)
-	dynStats("lus", 10, "resisted", false);
-	if (player.inte < 50) dynStats("int", .5);
+	dynStats("lus", 10, "scale", false);
+	if (player.inte100 < 50) dynStats("int", .5);
 	brookeAffection(4);
 	doNext(camp.returnToCampUseOneHour);
 }
@@ -333,26 +354,26 @@ public function talkToBrookeAboutGymFolks():void {
 	//[if {met Cotton}]
 	if (flags[kFLAGS.COTTON_MET_FUCKED] > 0) outputText("\n\nSpeaking of: Cotton, that horse-morph gal?  Cute as a button, sexy as a... well, as a big-titted ten-outta-ten.  Not really into that flowery yoga stuff, though, that's just not my style, and she's not into lifting the heavy stuff, so we don't really cross paths much.  I'd jump her bones if I didn't know that her horsecock of hers would split me in half.");
 
-	//[if {met Heckel}]
-	if (flags[kFLAGS.MET_HECKEL] > 0) outputText("\n\nHeckel's way too competitive and dominant.  I just wanna lift some weights, and she takes that as a personal challenge or something, and tries to outlift me.  Well, us Shepherds aren't too taken with being submissive, so I gotta outlift her right back.  Occasionally, we make it into competitions: whoever wins is the dom for the day, and whoever loses is the sub.  In the end, really, we both win – she's a damn good fuck either way – but it's more the principle of the thing.  We go more-or-less even, although she'd probably tell you otherwise.");
 
 	//[if {had Heckel/Brooke threeway between one and three times}
-	if (flags[kFLAGS.BROOKE_AND_HELIA_3SOME] > 0 && flags[kFLAGS.BROOKE_AND_HELIA_3SOME] < 4) outputText("\n\nHeckel's still just as competitive as always.  I walk into the gym and do my warmups, and there's the bitch, challenging me to something right off the bat.  Lately our 'games' have been going on a bit longer, and the 'aftermath' has been getting a lot more energetic and intense.  Don't tell her I said this, but that stuff we say, about one of us just wanting to fuck the other?  Usually that's just dirty, dominant talk, and I can't really speak for her, but, sometimes...");
+	if (flags[kFLAGS.BROOKE_AND_HECKEL_3SOME] > 0 && flags[kFLAGS.BROOKE_AND_HECKEL_3SOME] < 4) outputText("\n\nHeckel's still just as competitive as always.  I walk into the gym and do my warmups, and there's the bitch, challenging me to something right off the bat.  Lately our 'games' have been going on a bit longer, and the 'aftermath' has been getting a lot more energetic and intense.  Don't tell her I said this, but that stuff we say, about one of us just wanting to fuck the other?  Usually that's just dirty, dominant talk, and I can't really speak for her, but, sometimes...");
 	//[if {had Heckel/Brooke threeway between four and six times}
-	else if (flags[kFLAGS.BROOKE_AND_HELIA_3SOME] > 3 && flags[kFLAGS.BROOKE_AND_HELIA_3SOME] < 7) outputText("\n\nHeckel takes some getting used to, but she's actually an all right gal if you can prove you're on her level.  She takes working out very seriously and is quick to prove her superiority and dominance against anyone she thinks might threaten her status as 'alpha', but you can just fuck her a couple times and she'll calm right down.  Lately, she's actually been flirting with me – don't tell anyone I said this, but Heckel is the cutest thing ever when she's flustered.  I think she might be into me... you know, romantically.  And you know what?  I think I might be into her, too.  As long as she's into open relationships, of course.");
+	else if (flags[kFLAGS.BROOKE_AND_HECKEL_3SOME] >= 4 && flags[kFLAGS.BROOKE_AND_HECKEL_3SOME] < 7) outputText("\n\nHeckel takes some getting used to, but she's actually an all right gal if you can prove you're on her level.  She takes working out very seriously and is quick to prove her superiority and dominance against anyone she thinks might threaten her status as 'alpha', but you can just fuck her a couple times and she'll calm right down.  Lately, she's actually been flirting with me – don't tell anyone I said this, but Heckel is the cutest thing ever when she's flustered.  I think she might be into me... you know, romantically.  And you know what?  I think I might be into her, too.  As long as she's into open relationships, of course.");
 	//[if {had Heckel/Brooke threeway seven times or more}
-	else if (flags[kFLAGS.BROOKE_AND_HELIA_3SOME] > 6) outputText("\n\nHeckel's actually a pretty sweet girl if you take the time to get to know her out of the gym.  I mean, sure, <b>in</b> the gym, she's a huge control freak and an asshole to work with, but if you can get her out of it, you'd be surprised how relatable of a person she could be.  I should know; we're dating, so I've had the chance to see her softer side.  Sex with her is a marathon, as always, and we're both as aggressive as you've seen us, but mutual satisfaction is a priority with us both, so it's always its own reward.  Our relationship is very open, but we always wind up coming back to each other at the end of the day.");
+	else if (flags[kFLAGS.BROOKE_AND_HECKEL_3SOME] >= 7) outputText("\n\nHeckel's actually a pretty sweet girl if you take the time to get to know her out of the gym.  I mean, sure, <b>in</b> the gym, she's a huge control freak and an asshole to work with, but if you can get her out of it, you'd be surprised how relatable of a person she could be.  I should know; we're dating, so I've had the chance to see her softer side.  Sex with her is a marathon, as always, and we're both as aggressive as you've seen us, but mutual satisfaction is a priority with us both, so it's always its own reward.  Our relationship is very open, but we always wind up coming back to each other at the end of the day.");
+	//[if {met Heckel}]
+	else if (flags[kFLAGS.MET_HECKEL] > 0) outputText("\n\nHeckel's way too competitive and dominant.  I just wanna lift some weights, and she takes that as a personal challenge or something, and tries to outlift me.  Well, us Shepherds aren't too taken with being submissive, so I gotta outlift her right back.  Occasionally, we make it into competitions: whoever wins is the dom for the day, and whoever loses is the sub.  In the end, really, we both win – she's a damn good fuck either way – but it's more the principle of the thing.  We go more-or-less even, although she'd probably tell you otherwise.");
 
 	//[if {met Ifris}]
 	if (flags[kFLAGS.MET_IFRIS] > 0) outputText("\n\nIfris is a creeper.  Just hangs around the gym, watching everyone lift some weights or doing some laps or whatever.  She finds a cutie hard at work, then she makes 'em feel real good with all her sweet-talk, and then <b>bam!</b>  Getting laid on the benchpress.  I love when people notice my body, but the way she stalks like a predator around the gym just kind of gives me the creeps.");
 	//[if {met Jasun}
-	if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00179] > 0) outputText("\n\nYou know Jasun, the shark guy?  Hard as a rock, in every place, if you know what I mean.  Huge narcissist, if you ask me, which puts me off.  Big difference between admiring yourself and others admiring you.  I'm not a big fan of zero-percent-body-fat types, either – being fit and healthy and solid is great and a big turn-on, but being all muscle and all business is no fun, you know?  Kind of tough cuddling with a rock.  Besides, not a big fan of the taste of fish anyway.");
+	if (flags[kFLAGS.JASUN_MET] > 0) outputText("\n\nYou know Jasun, the shark guy?  Hard as a rock, in every place, if you know what I mean.  Huge narcissist, if you ask me, which puts me off.  Big difference between admiring yourself and others admiring you.  I'm not a big fan of zero-percent-body-fat types, either – being fit and healthy and solid is great and a big turn-on, but being all muscle and all business is no fun, you know?  Kind of tough cuddling with a rock.  Besides, not a big fan of the taste of fish anyway.");
 	//[if {met Loppe}]
 	if (flags[kFLAGS.LOPPE_MET] > 0) {
 		outputText("\n\nI've seen that bunny-girl show up a whole lot lately.  She's a pretty nice gal, all in all – lives and looks after her mom and wants to take up the family business, or something.  Whatever; she's got a smoking hot body and a face cute enough to give me cavities.  She fucks like a truck and cums like a geyser, too, which is always fun.");
 	}
 	//[if {met Lottie}]
-	if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00281] > 0) {
+	if (flags[kFLAGS.LOTTIE_ENCOUNTER_COUNTER] > 0) {
 		outputText("\n\nAs for Lottie, that little piglet chick... not the first of her 'body-type' to wander into the gym, and won't be the last.  Love seeing guys and gals like her – success stories in motion.  If you got the drive, you got the will, then you'll get the results.  She works for it, she works hard, but she's really indecisive and easy to put-off in front of company.  With the right push I can see a girl like her being the hottest thing on the block.");
 	}
 	outputText("\n\nAnd, uh... that's all the members, off the top of my head.\"</i>  She thinks to herself for a moment, humming, before her eyes light up.  <i>\"Oh wait,\"</i> she says softly, smiling, crooking her right index finger at you, gesturing you to approach the stall wall.  You oblige. <i>\"I forgot one.\"</i>  With deliberate slowness, she hooks her arm around your neck and pulls you to her.  She plants a long, lasting kiss on your lips, leaning into you, pressing herself against the wall.  She doesn't open her mouth, but her lips are nonetheless very active as she gets into it, letting her hands roam around your shoulders and upper back.  You lovingly reciprocate her every action.  Too soon, she pulls away, saying <i>\"there's my opinion of you, sweet thing.\"</i>");
@@ -364,7 +385,7 @@ public function talkToBrookeAboutGymFolks():void {
 	//[if {Brooke's Affection >= 40}]
 	else outputText("\n\nThat damn Shepherd knows all of your buttons and all your weaknesses.  Every shower, she teases you in just the right ways, and it gets harder and harder to not just fuck her there in the stall.  Not that she'd mind, you're sure... but, it's a game you two play.  She likes pushing your limits, knowing that, when that limit breaks, it'll be a much harder workout than anything the gym could give her.  Which is something you both wouldn't mind.");
 	// (Lust increases by 15)
-	dynStats("lus", 15, "resisted", false);
+	dynStats("lus", 15, "scale", false);
 	brookeAffection(4);
 	doNext(camp.returnToCampUseOneHour);
 }
@@ -394,7 +415,7 @@ public function brookesRockinBod():void {
 	//[if {Brooke's Affection >= 40}
 	else outputText("\n\nThat damn Shepherd knows all of your buttons and all your weaknesses.  Every shower, she teases you in just the right ways, and it gets harder and harder to not just fuck her there in the stall.  Not that she'd mind, you're sure... but, it's a game you two play.  She likes pushing your limits, knowing that, when that limit breaks, it'll be a much harder workout than anything the gym could give her.  Which is something you both wouldn't mind.");
 	//(Lust increases by 15)
-	dynStats("lus", 15, "resisted", false);
+	dynStats("lus", 15, "scale", false);
 	brookeAffection(15);
 	doNext(camp.returnToCampUseOneHour);
 }
@@ -420,16 +441,21 @@ public function gropeDatBrooke():void {
 	outputText(".  <i>\"I'm game.  Hope you're ready, though; you're gonna need more than a few laps around the track to keep up with me.\"</i>");
 
 	outputText("\n\nYou narrow your eyes determinedly and, with a grin, you accept her challenge.");
-	dynStats("lus", 33, "resisted", false);
+	dynStats("lus", 33, "scale", false);
 	outputText("\n\nWhat is your weapon of choice?");
 	//[=Penetrate her=] [=Anal=] [=Tribadism=] [=Down on her=] [=Get laid=] [=Double-dicked=]
 	menu();
-	if (player.hasCock() && player.cockThatFits(brookeCapacity()) >= 0) addButton(0,"Penetrate",penetrateBrooke);
-	if (player.hasCock()) addButton(1,"Anal",brookeAnal);
-	if (player.hasVagina()) addButton(2,"Tribadism",tribadism);
+	if (player.hasCock() && player.cockThatFits(brookeCapacity()) >= 0) addButton(0, "Penetrate", penetrateBrooke);
+	else addDisabledButton(0, "Penetrate", "This scene requires you to have fitting cock.");
+	if (player.hasCock()) addButton(1, "Anal", brookeAnal);
+	else addDisabledButton(1, "Anal", "This scene requires you to have cock.");
+	if (player.hasVagina()) addButton(2, "Tribadism", tribadism);
+	else addDisabledButton(2, "Tribadism", "This scene requires you to have vagina.");
 	addButton(3,"Go Down On",goDownOnBrooke);
-	if (player.hasCock() && player.cockThatFits(brookeCapacity()) >= 0) addButton(4,"Get Laid",getLaidByBrooke);
-	if (player.cockTotal() >= 2) addButton(5,"Double-Dick",doubleDicked);
+	if (player.hasCock() && player.cockThatFits(brookeCapacity()) >= 0) addButton(4, "Get Laid", getLaidByBrooke);
+	else addDisabledButton(4, "Get Laid", "This scene requires you to have fitting cock.");
+	if (player.cockTotal() >= 2) addButton(5, "Double-Dick", doubleDicked);
+	else addDisabledButton(5, "Double-Dick", "This scene requires you to have at least two cocks.");
 }
 
 //[=Penetrate her=]
@@ -477,7 +503,7 @@ public function penetrateBrooke():void {
 
 	outputText("\n\nYou two spend the next few minutes keeping each other warm in the frozen cold shower water while you finish cleaning up.  You get to drying each other off, flirting and groping some more, but it doesn't progress any farther than that.  She kisses you one last time after you slip on your [armor], and you both leave the gym, looking forward to next time.");
 	//Lust reduced to zero.
-	player.orgasm();
+	player.orgasm('Dick');
 	dynStats("sen", -2);
  	brookeAffection(10);
 	doNext(camp.returnToCampUseOneHour);
@@ -554,7 +580,7 @@ public function brookeAnal():void {
 
 	outputText("\n\nWith some reluctance, she eventually lets go of your spent, flaccid cock, conceding momentary defeat.  The water's long-since turned cold, and you spend the remainder of your time together washing and drying each other off.  She does all she can to entice you some more – she fondles your " + player.cockDescript(x) + " and kisses your neck sensually, eager for some more anal-play, but you're just too worn from her earlier energy.  She pouts, but gives in, finally allowing you to slip on your [armor] and leave the gym in peace.");
 	//Lust reduced to 0, fatigue increased by 15
-	player.orgasm();
+	player.orgasm('Dick');
 	player.changeFatigue(15);
 	flags[kFLAGS.TIMES_IN_BROOKES_BUTT]++;
 	brookeAffection(10);
@@ -609,7 +635,7 @@ public function tribadism():void {
 
 	outputText("\n\nYou use what's left of the shower water to clean yourselves of your lovemaking, and then you take turns playfully drying each other off.  You start to feel the familiar heat rise in your loins from the way she works your towel on you, and from the way she acts, you don't doubt she's getting randy again herself.  Sighing, you cut her off – you have other things to do today, unfortunately.  She understands, and before you know it, you have your [armor] back on and you're out the door.");
 	//Lust reduced to 0, fatigue increased by 15
-	player.orgasm();
+	player.orgasm('Vaginal');
 	dynStats("sen", -2);
 	player.changeFatigue(15);
 	brookeAffection(10);
@@ -785,7 +811,7 @@ public function getLaidByBrooke():void {
  	outputText("\n\nClean as a whistle and with your [armor] back on you, you wave farewell to your canine lover and leave the gym.");
 	//Lust reduced to 0
 	brookeAffection(10);
-	player.orgasm();
+	player.orgasm('Generic');
 	dynStats("sen", -2);
  	doNext(camp.returnToCampUseOneHour);
 }
@@ -881,7 +907,7 @@ public function doubleDicked():void {
 
 	outputText("\n\nThe rest of your drying continues without much incident, and before long, you have your [armor] back on you and you're out of the gym, heading back towards camp.");
 	//Lust reduced to 0
-	player.orgasm();
+	player.orgasm('Dick');
 	doNext(camp.returnToCampUseOneHour);
 	brookeAffection(10);
 }
@@ -954,7 +980,7 @@ public function brookeSpecialMediumSceneContinued():void {
 		if (player.cockTotal() >= 3) outputText("  Your other dicks swing freely, cold and alone in the shower between you, occasionally spurting pre into the air and onto Brooke's fur.  They're quickly washed away with the water.");
 
 		outputText("\n\nFrom the chorus of moans and excited grunts above you, Brooke seems to be enjoying herself.  She can't fix her arms on any other thing to grip: she tries the edge of the wall behind her, but her hands aren't strong enough.  She wraps them around your head, pressing your face into her cleavage, and that seems to work for a bit, but she simply can't stay still for too long.  With each thrust, her abs flex and her hips rock, going down to meet you halfway.  <i>\"Yeah, yeah!\"</i> she encourages, leaning forward once more");
-		if (player.hairLength >= 1) outputText(", running her fingers through your " + player.hairDescript());
+		if (player.hair.length >= 1) outputText(", running her fingers through your " + player.hairDescript());
 		outputText(".  <i>\"Fuck me, [name]!  Just like that!  Give me that hard dick!  Fuck me!\"</i>");
 
 		outputText("\n\nThe whole gym probably heard.  You might even have visitors by now.  You don't give the littlest damn.  You just grunt along with her, flexing your own stomach to reach up and drive more " + player.cockDescript(x) + " into her.  She grows louder and more active the farther up the wall you drive her, until eventually, she orgasms, holding you in her as she resists the urge to scream out.  She uses her hands to drive your face into her chest as her rocking begins to slow – even with her weak grip, she's still managing to pull you in fairly hard.");
@@ -985,7 +1011,7 @@ public function brookeSpecialMediumSceneContinued():void {
 		if (player.cockTotal() == 1) outputText("  She does you both the courtesy of shutting off the water, before you both turn to leave the stall, grabbing your towels on the way.  <i>\"It takes for-EVER to dry out fur after a good wash, [name], so don't wait up for me to finish.  You go run some more laps so you can fuck me longer next time.  You know when and where to find me.\"</i>[pg]You smile, wrapping your arms around her toned waist and planting another, closed-mouth kiss on her lips, promising her that it's a date.");
 		outputText("\n\nYou grab your towel just before you leave, and you wrap it around your upper body, knowing that Brooke won't be able to help but watch you as you leave.");
 		// Lust reduced to 0, sensitivity decreased by 2, fatigue increased by 10
-		player.orgasm();
+		player.orgasm('Dick');
 		dynStats("sen", 0-2);
 		player.changeFatigue(10);
 	}
@@ -1038,7 +1064,7 @@ public function brookeSpecialMediumSceneContinued():void {
 
 		outputText("\n\nAs tempting as the offer is, you doubt that that's a promise either of you can keep.  You're exhausted, beaten and sore, and you know she is too, but who knows if either of you can restrain yourselves.  <i>\"Yeah, that's probably the better call,\"</i> she laughs, facing back into the water.  You grab onto your towel, still miraculously hanging onto the stall wall, and wrap it around your upper body, knowing that the Shepherd girl's eyes will be glued to you as you leave.");
 		// Lust reduced to 0, sensitivity decreased by 2, fatigue increased by 10
-		player.orgasm();
+		player.orgasm('Vaginal');
 		dynStats("sen", -2);
 		player.changeFatigue(10);
 	}
@@ -1084,7 +1110,7 @@ public function brookeSpecialMediumSceneContinued():void {
 		//[if (hasBalls = true)
 		if (player.balls > 0)
 		{
-			if (player.findStatusEffect(StatusEffects.Uniball) < 0)
+			if (!player.hasStatusEffect(StatusEffects.Uniball))
 			{
 				outputText("  Your [sack] swings with every pump, slapping onto the firm skin of Brooke\'s vulva every time you bottom out.  You feel no pain, and in fact the smoothness of her fur around her genitals tickles the cum out of your [balls] all the faster.");
 			}
@@ -1135,7 +1161,7 @@ public function brookeSpecialMediumSceneContinued():void {
 
 		outputText("\n\nFinally turning the frigidly cold water off, you each make a show of drying yourselves off.  Despite how bow-legged Brooke is moving and despite the wear your " + player.cockDescript(x) + " is feeling after such a workout... well, to put it one way, you can't wait until you meet her again after this.  Miraculously, you both manage to keep your hands to yourselves, and the rest of your drying ends without incident.  She blows you a kiss before she leaves the locker room, and, after a vigorous dry, you put your [armor] back on and leave the gym.");
 		// Lust reduced to 0, sensitivity decreased by 2, fatigue increased by 10
-		player.orgasm();
+		player.orgasm('Generic');
 		dynStats("sen", -2);
 		player.changeFatigue(10);
 	}
@@ -1167,6 +1193,7 @@ public function leaveHeckelEncounter():void {
 //[=Butterfly=]
 public function butterflyMachinesGooooo():void {
 	clearOutput();
+	flags[kFLAGS.BROOKE_AND_HECKEL_3SOME]++;
 	outputText("You look to your left, seeing a group of people standing around a pair of the butterfly machines in the distance.  Anthromorphic animals of all shapes and sizes stand shoulder-to-shoulder, 'ooh'ing at whatever spectacle it is they're keeping you from seeing.  You approach, and you manage to worm your way between a pair of buff matrons, intent on getting a better look at what the fuss is.");
 
 	outputText("\n\nThere, one on each machine, is Heckel and Brooke, each gliding through their reps.  The muscles on their arms bulge and their tits press out into their tank-tops with each press, and, going from the movement in the back of the machines, they've both got an absurd amount of weight on, far too much for you to guess just by eyeballing them.  You turn to the dog on your right and ask how long they've been going at it; he answers, 'for too long'.");
@@ -1267,7 +1294,7 @@ public function submitHeckelXBrookeThreesome():void {
 	//[if (hasCock = true)]
 	if (player.hasCock()) outputText("Based on how you know Brooke to be such a cum-hungry bitch when she's really into it, you doubt she'd rather have it any other way.  ");
 	outputText("Heckel's orgasm begins to wind down, but her feminine moans and gasps don't stop even as she's finished.  It takes her a bit longer to finally stop, and, exhausted from this workout on top of the one from before, she finally collapses onto Brooke, letting her weight rest entirely on the Shepherd girl beneath her.");
-	player.orgasm();
+	player.orgasm('Generic');
 	dynStats("sen", 1);
  	menu();
 	addButton(0,"Next",brookeAndHeckelStuffPartThree);
@@ -1292,6 +1319,8 @@ public function brookeAndHeckelStuffPartThree():void {
 //[=Leg Press=]
 public function legPressInsteadOfThreesome():void {
 	clearOutput();
+	spriteSelect(SpriteDb.s_brooke);
+	flags[kFLAGS.BROOKE_AND_HECKEL_3SOME]++;
 	outputText("You look to your right, seeing a group of people standing around a pair of the leg press machines in the distance.  Anthromorphic animals and centaurs of all shapes and sizes stand shoulder-to-shoulder, 'ooh'ing at whatever spectacle it is they're keeping you from seeing.  You approach, and you manage to worm your way between a pair of buff matrons, intent on getting a better look at what the fuss is.");
 
 	outputText("\n\nThere, one on each machine, is Brooke and Heckel, each gliding through their reps.  The muscles on their legs bulge and their asses pull tight into their shorts with each press, and, going from the movement in the back of the machines, they've both got an absurd amount of weight on, far too much for you to guess just by eyeballing them.  You turn to the horse on your left and ask how long they've been going at it; he answers, 'for too long'.");
@@ -1352,7 +1381,7 @@ public function brookeVHeckelBrookeWins2():void {
 		outputText("\n\nHeckel cries out, partly in jubilation at finally getting some proper sex, and partly from you suddenly thrusting wantonly into her tunnel.  Her shouts are silenced when Brooke corks her mouth with her tongue, keeping the hyena's face occupied as they kiss and fight each other with their mouths.  The arrangement the three of you have is a little awkward to get used to at first: you and Heckel have no rhythm, randomly bucking against and away from each other, and Heckel has no strength in her legs, forcing you to take a good deal of her weight.  At least Brooke can stand on her own legs.  Despite all that, you three eventually get something going: you thrust your " + player.cockDescript(x) + " into Heckel, who thrusts into Brooke, who bucks against Heckel, as you withdraw from Heckel and she withdraws from Brooke.  It's a delightfully punishing threeway, with one tortured hyena caught between a cock and a hard place.");
 		if (player.gender == 3) outputText("  With every thrust into Heckel, you're reminded of your own empty pussy and you idly wish there was a spare cock around to fill you up too.");
 
-		outputText("\n\nHeckel does her part, trailing her hands down to Brooke's sides and gripping onto her hamstrings, pulling the dog into her with every thrust forward.  But it's no mistake that Brooke is the top between the two of them: she stnds tall over the weak-legged hyena, covering as much of Heckel's body as she can with her own, pumping her hips powerfully into the herm's own.  Every one of Brooke's humps are met with one of your own, and all too quickly the two of you are battering the poor hyena around with your genitals; the locker room echoing a cacophony of wet thrusts, hard fleshy slaps, and perverse moans and sexual grunts.");
+		outputText("\n\nHeckel does her part, trailing her hands down to Brooke's sides and gripping onto her hamstrings, pulling the dog into her with every thrust forward.  But it's no mistake that Brooke is the top between the two of them: she stands tall over the weak-legged hyena, covering as much of Heckel's body as she can with her own, pumping her hips powerfully into the herm's own.  Every one of Brooke's humps are met with one of your own, and all too quickly the two of you are battering the poor hyena around with your genitals; the locker room echoing a cacophony of wet thrusts, hard fleshy slaps, and perverse moans and sexual grunts.");
 
 		outputText("\n\nYou, for one, don't take the chance to fuck Heckel properly for granted.");
 		if (flags[kFLAGS.TIMES_FUCKED_HECKEL_BLOWJOB] > 0 || flags[kFLAGS.TIMES_FUCKED_HECKEL_ANAL] > 0)
@@ -1421,7 +1450,7 @@ public function brookeVHeckelBrookeWins2():void {
 	}
 	outputText("\n\nYour orgasm slowly winds down, with you panting with pleasure and exertion from the whole ordeal, but Brooke continues to fuck against Heckel, determined to squeeze out every last drop from the abused hyena.  Heckel whines and moans, unable to give any more or take any more, wordlessly begging Brooke to stop, but she doesn't: either determined to run her dominance-fueled lust to the last stop or just a bit of a whore for cum, you're not sure, but it's some time before Brooke feels satisfied and gives Heckel's abused, oversensitive dick a rest.");
 	//Lust reduced to 0, sensitivity increased by 1
-	player.orgasm();
+	player.orgasm('Generic');
 	dynStats("sen", 1);
 	//[=Next=]
 	menu();

@@ -45,7 +45,7 @@ package classes.Items
 						desc += "Reduces minimum lust by " + (-_effectMagnitude) + ".";
 					break;
 				case JewelryLib.MODIFIER_FERTILITY:
-					desc += "Increases cum production by " + _effectMagnitude + "% and ferility by " + _effectMagnitude + ".";
+					desc += "Increases cum production by " + _effectMagnitude + "% and fertility by " + _effectMagnitude + ".";
 					break;
 				case JewelryLib.MODIFIER_CRITICAL:
 					desc += "Increases critical chance by " + _effectMagnitude + "%.";
@@ -56,6 +56,9 @@ package classes.Items
 				case JewelryLib.MODIFIER_HP:
 					desc += "Increases maximum HP by " + _effectMagnitude + "."
 					break;
+				case JewelryLib.MODIFIER_ATTACK_POWER:
+					desc += "Increases attack power by " + _effectMagnitude + "%."
+					break;
 				case JewelryLib.MODIFIER_SPELL_POWER:
 					desc += "Increases spellpower by " + _effectMagnitude + "%, applies additively."
 					break;
@@ -65,6 +68,8 @@ package classes.Items
 				case JewelryLib.CORRUPTION:
 					desc += "Slowly corrupts the wearer over time.";
 					break;
+				default:
+					desc += "You shouldn't see this line at all. Something must be wrong with the coding.";
 			}
 			//Value
 			desc += "\nBase value: " + String(value);

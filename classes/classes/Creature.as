@@ -1695,9 +1695,9 @@ package classes
 			}else if (lowerBody.type == LowerBody.NAGA){
 				bonus += 20;
 			}
-
 			if (hasPerk(PerkLib.WetPussy))
 				bonus += 20;
+			}
 			if (hasPerk(PerkLib.HistorySlut))
 				bonus += 20;
 			if (hasPerk(PerkLib.OneTrackMind))
@@ -2466,7 +2466,11 @@ package classes
 			return true;
 		}
 		
-		//Remove cocks
+		/**
+		 * Remove cocks from the creature. 
+		 * @param	arraySpot position of the cock in the array
+		 * @param	totalRemoved the number of cocks to remove, 0 means no cocks removed
+		 */
 		public function removeCock(arraySpot:int, totalRemoved:int):void
 		{
 			//Various Errors preventing action
@@ -2730,12 +2734,10 @@ package classes
 		{
 			return skin.hasFur();
 		}
-
 		public function hasWool():Boolean
 		{
 			return skin.hasWool();
 		}
-
 		public function isFurry():Boolean
 		{
 			return skin.isFurry();
@@ -3709,8 +3711,8 @@ package classes
 			}
 			//Modify armor rating based on weapons.
 			if (applyModifiers) {
-				if (game.player.weapon == game.weapons.JRAPIER || game.player.weapon == game.weapons.SPEAR || game.player.weaponName.indexOf("staff") != -1 && game.player.hasPerk(PerkLib.StaffChanneling)) armorMod = 0;
-				if (game.player.weapon == game.weapons.KATANA) armorMod -= 5;
+				if (game.player.weapon == game.weapons.JRAPIER || game.player.weapon == game.weapons.SPEAR_0 || game.player.weaponName.indexOf("staff") != -1 && game.player.hasPerk(PerkLib.StaffChanneling)) armorMod = 0;
+				if (game.player.weapon == game.weapons.KATANA0) armorMod -= 5;
 				if (game.player.hasPerk(PerkLib.LungingAttacks)) armorMod /= 2;
 				if (armorMod < 0) armorMod = 0;
 			}

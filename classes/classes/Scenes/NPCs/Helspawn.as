@@ -1,9 +1,13 @@
 package classes.Scenes.NPCs
 {
 	import classes.*;
+	import classes.BodyParts.*;
+	import classes.BodyParts.Butt;
+	import classes.BodyParts.Hips;
 	import classes.GlobalFlags.kFLAGS;
+import classes.StatusEffects.Combat.CalledShotDebuff;
 
-	public class Helspawn extends Monster
+public class Helspawn extends Monster
 	{
 
 		override public function doAI():void
@@ -45,28 +49,8 @@ private function calledShot():void {
 	if (damage <= 0 || (rand(2) == 0 && (player.getEvasionRoll()))) outputText("\nYou avoid the hit!");
 	else {
 		outputText("\nOne of her arrows smacks right into your [leg], nearly bowling you over.  God DAMN that hurt! You're going to be limping for a while! ");
-		var affect:int = 20 + rand(5);
-		if (player.findStatusEffect(StatusEffects.CalledShot) >= 0) {
-			while(affect > 0 && player.spe >= 2) {
-				affect--;
-				player.addStatusValue(StatusEffects.CalledShot,1,1);
-				player.spe--;
-				showStatDown( 'spe' );
-				// speDown.visible = true;
-				// speUp.visible = false;
-			}
-		}
-		else {
-			player.createStatusEffect(StatusEffects.CalledShot,0,0,0,0);
-			while(affect > 0 && player.spe >= 2) {
-				affect--;
-				player.addStatusValue(StatusEffects.CalledShot,1,1);
-				player.spe--;
-				showStatDown( 'spe' );
-				// speDown.visible = true;
-				// speUp.visible = false;
-			}
-		}
+		var sec:CalledShotDebuff = player.createOrFindStatusEffect(StatusEffects.CalledShot) as CalledShotDebuff;
+		sec.increase();
 		damage = player.takeDamage(damage, true);
 	}
 }
@@ -90,7 +74,7 @@ private function calledShot():void {
 			else {
 				outputText("\nHer shield catches you right in the face, sending you tumbling to the ground and leaving you open to attack! ");
 				damage = player.takeDamage(damage, true);
-				if (rand(2) == 0 && player.findStatusEffect(StatusEffects.Stunned) < 0) {
+				if (rand(2) == 0 && !player.hasStatusEffect(StatusEffects.Stunned)) {
 					player.createStatusEffect(StatusEffects.Stunned,0,0,0,0);
 					outputText(" <b>The hit stuns you.</b>");
 				}
@@ -124,7 +108,7 @@ private function calledShot():void {
 				// lustDown.visible = false;
 				// lustUp.visible = true;
 				lustDelta = Math.round(lustDelta * 10)/10;
-				outputText(" (" + lustDelta + ")", false);
+				outputText(" (" + lustDelta + ")");
 			}
 		}
 
@@ -134,7 +118,7 @@ private function calledShot():void {
 			outputText("Seeing a momentary lull in the melee, " + flags[kFLAGS.HELSPAWN_NAME] + " slips out of reach, stumbling back and clutching at the bruises forming all over her body.  \"<i>Come on, " + flags[kFLAGS.HELSPAWN_NAME] + ", you can do this. Focus, focus,</i>\" she mutters, trying to catch her breath.  A moment later and she seems to have taken a second wind as she readies her weapon with a renewed vigor.");
 			lust -= 30;
 			if (lust < 0) lust = 0;
-			addHP(eMaxHP() / 3.0);
+			addHP(maxHP() / 3.0);
 		}
 
 		override public function defeated(hpVictory:Boolean):void
@@ -166,18 +150,18 @@ private function calledShot():void {
 							}[ weapon] +
 							".  Pacing around you, the well-built young warrior intently studies her mentor's defenses, readying for your next attack.";
 			// this.plural = false;
-			this.createVagina(false, VAGINA_WETNESS_NORMAL, VAGINA_LOOSENESS_NORMAL);
+			this.createVagina(false, VaginaClass.WETNESS_NORMAL, VaginaClass.LOOSENESS_NORMAL);
 			this.createStatusEffect(StatusEffects.BonusVCapacity, 85, 0, 0, 0);
 			createBreastRow(Appearance.breastCupInverse("E+"));
-			this.ass.analLooseness = ANAL_LOOSENESS_VIRGIN;
-			this.ass.analWetness = ANAL_WETNESS_DRY;
+			this.ass.analLooseness = AssClass.LOOSENESS_VIRGIN;
+			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,85,0,0,0);
 			this.tallness = 90;
-			this.hipRating = HIP_RATING_CURVY+2;
-			this.buttRating = BUTT_RATING_LARGE+1;
-			this.skinTone = "dusky";
-			this.hairColor = "red";
-			this.hairLength = 13;
+			this.hips.rating = Hips.RATING_CURVY+2;
+			this.butt.rating = Butt.RATING_LARGE+1;
+			this.skin.tone = "dusky";
+			this.hair.color = "red";
+			this.hair.length = 13;
 			initStrTouSpeInte(50, 50, 65, 40);
 			initLibSensCor(35, 55, 20);
 			this.weaponName = weapon;
@@ -196,8 +180,8 @@ private function calledShot():void {
 			this.temperment = TEMPERMENT_RANDOM_GRAPPLES;
 			this.level = 12;
 			this.gems = 10 + rand(5);
-			this.tailType = TAIL_TYPE_SALAMANDER;
-			this.tailRecharge = 0;
+			this.tail.type = Tail.SALAMANDER;
+			this.tail.recharge = 0;
 			this.createStatusEffect(StatusEffects.Keen, 0, 0, 0, 0);
 			this.drop = NO_DROP;
 			checkMonster();

@@ -9,15 +9,15 @@ package classes.Items.Armors
 	{
 		public function BeeArmor() 
 		{
-			super("BeeArmr","Bee Armor","sexy black chitin armor-plating","a set of chitinous armor",18,200,"A suit of armor cleverly fashioned from giant bee chitin. It comes with a silken loincloth to protect your modesty.");
+			super("BeeArmr","Bee Armor","sexy black chitin armor-plating","a set of chitinous armor",18,200,"A suit of armor cleverly fashioned from giant bee chitin. It comes with a silken loincloth to protect your modesty.","Heavy");
 		}
 		
 		override public function useText():void
 		{
-			outputText("\n\nYou" + game.player.clothedOrNaked(" first strip yourself naked and ") + " equip your armor, one piece at a time. \n\nFirst, you clamber into the breastplate. ");
+			outputText("You" + game.player.clothedOrNaked(" first strip yourself naked and ") + " equip your armor, one piece at a time. \n\nFirst, you clamber into the breastplate. ");
 			if (getGame().player.isBiped()) //Some variants.
 			{
-				if (getGame().player.lowerBody == 0) outputText("Then you put your feet into your boots. With the boots fully equipped, you move on to the next piece. ");
+				if (getGame().player.lowerBody.type == 0) outputText("Then you put your feet into your boots. With the boots fully equipped, you move on to the next piece. ");
 				else outputText("Then you attempt to put your feet into your boots. You realize that the boots are designed for someone with normal feet. You have to modify the boots to fit and when you do put on your boots, your feet are exposed. ");
 			}
 			outputText("Next, you put on your chitinous bracers to protect your arms.\n\n")

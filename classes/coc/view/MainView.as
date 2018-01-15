@@ -24,8 +24,10 @@ import fl.controls.UIScrollBar;
 import flash.display.Sprite;
 import flash.events.Event;
 import flash.events.MouseEvent;
+
 import flash.events.TimerEvent;
 import flash.utils.Timer;
+
 import flash.text.TextField;
 
 public class MainView extends Block {
@@ -139,11 +141,11 @@ public class MainView extends Block {
 	internal static const BOTTOM_W:Number         = TEXTZONE_W;
 	internal static const BOTTOM_HGAP:Number      = (BOTTOM_W - BTN_W * BOTTOM_COLS) / (2 * BOTTOM_COLS);
 	internal static const BOTTOM_Y:Number         = SCREEN_H - BOTTOM_H;
-	
 	internal static const MONSTER_X:Number        = TEXTZONE_X + MainView.TEXTZONE_W + GAP;
 	internal static const MONSTER_Y:Number        = TEXTZONE_Y;
 	internal static const MONSTER_W:Number        = 200;
 	internal static const MONSTER_H:Number        = TEXTZONE_H;
+
 
 	private var blackBackground:BitmapDataSprite;
 	public var textBGTranslucent:BitmapDataSprite;
@@ -158,6 +160,7 @@ public class MainView extends Block {
 	public var eventTestInput:TextField;
 	public var aCb:ComboBox;
 	public var monsterStatsView:MonsterStatsView;
+
 
 	public var toolTipView:ToolTipView;
 	public var statsView:StatsView;
@@ -330,9 +333,11 @@ public class MainView extends Block {
 		this.statsView.y = STATBAR_Y;
 		this.statsView.hide();
 		this.addElement(this.statsView);
+
 		this.monsterStatsView = new MonsterStatsView(this);
 		this.monsterStatsView.hide();
 		this.addElement(this.monsterStatsView);
+
 
 		this.formatMiscItems();
 
@@ -458,6 +463,7 @@ public class MainView extends Block {
 		b.addEventListener(MouseEvent.ROLL_OVER, this.hoverMonster);
 		b.addEventListener(MouseEvent.ROLL_OUT, this.dimButton);
 	}
+
 	//////// Internal(?) view update methods ////////
 
 	public function showBottomButton(index:int, label:String, callback:Function = null, toolTipViewText:String = '', toolTipViewHeader:String = ''):CoCButton {
@@ -544,6 +550,7 @@ public class MainView extends Block {
 			this.toolTipView.hide();
 		}
 	}
+
 	//////// Bottom Button Methods ////////
 
 	// TODO: Refactor button set-up code to use callback and toolTipViewText here.
@@ -827,7 +834,6 @@ public class MainView extends Block {
 		this.nameBox.maxChars = 16;
 		this.nameBox.restrict = "a-zA-Z0-9 .'\\-";
 	}
-	
 	public function moveCombatView(event:TimerEvent = null):void{
 		this.mainText.width -= 10;
 		this.scrollBar.x -= 10;

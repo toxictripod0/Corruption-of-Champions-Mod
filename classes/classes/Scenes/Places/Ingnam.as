@@ -2,6 +2,7 @@
 package classes.Scenes.Places 
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.*;
 	import classes.Items.*;
 	import classes.Scenes.Places.Ingnam.*;
@@ -24,18 +25,16 @@ package classes.Scenes.Places
 			//Force autosave
 			if (player.slotName != "VOID" && mainView.getButtonText(0) != "Game Over" && flags[kFLAGS.HARDCORE_MODE] > 0) 
 			{
-				trace("Autosaving to slot: " + player.slotName);
-				
 				getGame().saves.saveGame(player.slotName);
 			}
 			//Banished to Mareth.
-			if (model.time.days >= 0 && flags[kFLAGS.INGNAM_PROLOGUE_COMPLETE] <= 0 && flags[kFLAGS.KAIZO_MODE] < 1) {
+			if (getGame().time.days >= 0 && flags[kFLAGS.INGNAM_PROLOGUE_COMPLETE] <= 0 && flags[kFLAGS.GRIMDARK_MODE] < 1) {
 				getBanishedToMareth();
 				return;
 			}
 			clearOutput();
 			outputText(images.showImage("location-ingnam"));
-			if (flags[kFLAGS.KAIZO_MODE] > 0) {
+			if (flags[kFLAGS.GRIMDARK_MODE] > 0) {
 				outputText("Ingnam is a village well-defended against the tides of monsters outside. There is already a well-established array of shops though some of them seem to be abandoned and there's barely any activity. The temple sits within view of the patrons sitting at tables at the tavern which serves as a hub for people near and far to drink and dance. On the road leading out of the plaza that sits before the temple is a trail that meanders its way to a large farm in the distance.");
 				outputText("\n\nLooming ominously in the distance is a mountain known by the locals as Mount Ilgast.");
 			}
@@ -43,7 +42,7 @@ package classes.Scenes.Places
 				outputText("Ingnam is a rich and prosperous village despite its small size. There is already a well-established array of shops with a constant hum of tradesmen and merchants. The temple sits within view of the patrons sitting at tables at the tavern which serves as a hub for people near and far to drink and dance. On the road leading out of the plaza that sits before the temple is a trail that meanders its way to a large farm in the distance.");
 				outputText("\n\nLooming ominously in the distance is a mountain known by the locals as Mount Ilgast. Surrounding Ingnam is a vast expanse of wilderness.");
 			}
-			if (model.time.hours >= 21 || model.time.hours < 6) outputText("\n\nIt's dark outside. Stars dot the night sky and a moon casts the moonlight over the landscape, providing little light. Shops are closed at this time.");
+			if (getGame().time.hours >= 21 || getGame().time.hours < 6) outputText("\n\nIt's dark outside. Stars dot the night sky and a moon casts the moonlight over the landscape, providing little light. Shops are closed at this time.");
 			mainView.showMenuButton( MainView.MENU_NEW_MAIN );
 			mainView.showMenuButton( MainView.MENU_DATA );
 			mainView.showMenuButton( MainView.MENU_STATS );
@@ -51,12 +50,11 @@ package classes.Scenes.Places
 			mainView.showMenuButton( MainView.MENU_APPEARANCE );
 			showStats();
 			mainView.setMenuButton( MainView.MENU_NEW_MAIN, "Main Menu", kGAMECLASS.mainMenu.mainMenu );
-			mainView.newGameButton.toolTipText = "Return to main menu.";
-			mainView.newGameButton.toolTipHeader = "Main Menu";
+			mainView.newGameButton.hint("Return to main menu.","Main Menu");
 			if (camp.setLevelButton()) return;
 			hideUpDown();
 			menu();
-			if (flags[kFLAGS.KAIZO_MODE] == 0) {
+			if (flags[kFLAGS.GRIMDARK_MODE] == 0) {
 				addButton(0, "Explore", exploreIngnam);
 				addButton(1, "Shops", menuShops);
 			}
@@ -68,25 +66,36 @@ package classes.Scenes.Places
 			addButton(7, "Inventory", inventory.inventoryMenu);
 			if (player.lust >= 30) {
 				if (player.lust >= player.maxLust()) {
-					outputText("\n\n<b>You are debilitatingly aroused, and can think of doing nothing other than masturbating.</b>", false);
+					outputText("\n\n<b>You are debilitatingly aroused, and can think of doing nothing other than masturbating.</b>");
 					removeButton(0);
 					removeButton(4);
 				}
 				addButton(8, "Masturbate", kGAMECLASS.masturbation.masturbateMenu);
-				if (((player.findPerk(PerkLib.HistoryReligious) >= 0 && player.cor <= 66) || (player.findPerk(PerkLib.Enlightened) >= 0 && player.cor < 10)) && !(player.findStatusEffect(StatusEffects.Exgartuan) >= 0 && player.statusEffectv2(StatusEffects.Exgartuan) == 0) || flags[kFLAGS.SFW_MODE] >= 1) addButton(8, "Meditate", kGAMECLASS.masturbation.masturbateMenu);
+				if (
+						(
+								player.hasPerk(PerkLib.HistoryReligious) && player.isPureEnough(66)
+								||
+								player.findPerk(PerkLib.Enlightened) >= 0 && player.isPureEnough(10)
+						) && (
+								!player.hasStatusEffect(StatusEffects.Exgartuan)
+								||
+								player.statusEffectv2(StatusEffects.Exgartuan) != 0
+						)
+						|| flags[kFLAGS.SFW_MODE] >= 1
+				) addButton(8, "Meditate", kGAMECLASS.masturbation.masturbateMenu);
 			}
 			//Show wait/rest/sleep depending on conditions.
 			addButton(9, "Wait", kGAMECLASS.camp.doWait);
 			if (player.fatigue > 40 || player.HP / player.maxHP() <= .9) addButton(9, "Rest", getGame().camp.rest);
-			if (model.time.hours >= 21 || model.time.hours < 6) {
+			if (getGame().time.hours >= 21 || getGame().time.hours < 6) {
 				removeButton(0);
 				removeButton(1);
 				removeButton(2);
 				removeButton(4);
 				addButton(9, "Sleep", getGame().camp.doSleep);
 			}
-			if (flags[kFLAGS.KAIZO_MODE] > 0) {
-				addButton(14, "Leave", leaveIngnamKaizo);
+			if (flags[kFLAGS.GRIMDARK_MODE] > 0) {
+				addButton(14, "Leave", leaveIngnamGrimdark);
 			}
 		}
 		
@@ -101,21 +110,21 @@ package classes.Scenes.Places
 					hasWeapon = true;
 					player.setWeapon(WeaponLib.FISTS);
 				}
-				while (player.hasItem(weapons.DAGGER, 1)) {
+				while (player.hasItem(weapons.DAGGER0, 1)) {
 					hasWeapon = true;
-					player.destroyItems(weapons.DAGGER, 1);
+					player.destroyItems(weapons.DAGGER0, 1);
 				}
 				while (player.hasItem(weapons.PIPE, 1)) {
 					hasWeapon = true;
 					player.destroyItems(weapons.PIPE, 1);
 				}
-				while (player.hasItem(weapons.SPEAR, 1)) {
+				while (player.hasItem(weapons.SPEAR_0, 1)) {
 					hasWeapon = true;
-					player.destroyItems(weapons.SPEAR, 1);
+					player.destroyItems(weapons.SPEAR_0, 1);
 				}
-				while (player.hasItem(weapons.KATANA, 1)) {
+				while (player.hasItem(weapons.KATANA0, 1)) {
 					hasWeapon = true;
-					player.destroyItems(weapons.KATANA, 1);
+					player.destroyItems(weapons.KATANA0, 1);
 				}
 				if (hasWeapon) outputText("\n\n<b>Unfortunately, you were instructed to leave your weapon behind.</b>");
 			}
@@ -138,7 +147,7 @@ package classes.Scenes.Places
 			doNext(camp.returnToCampUseOneHour);
 		}
 		
-		public function leaveIngnamKaizo():void {
+		public function leaveIngnamGrimdark():void {
 			inRoomedDungeonResume = getGame().dungeons.resumeFromFight;
 			getGame().dungeons._currentRoom = "wasteland";
 			getGame().dungeons.move(getGame().dungeons._currentRoom);
@@ -154,7 +163,7 @@ package classes.Scenes.Places
 				return;
 			}
 			else {
-				outputText("You explore the village of Ingnam for a while but you don't find anything intersting.");
+				outputText("You explore the village of Ingnam for a while but you don't find anything interesting.");
 			}
 			doNext(camp.returnToCampUseOneHour);
 		}
@@ -185,18 +194,18 @@ package classes.Scenes.Places
 			outputText("\n\n<b><u>Blacksmith's pricings</u></b>");
 			menu();
 			if (player.findPerk(PerkLib.HistoryFighter) >= 0) { //20% discount for History: Fighter
-				addShopItem(weapons.DAGGER, 32, 1);
+				addShopItem(weapons.DAGGER0, 32, 1);
 				addShopItem(weapons.PIPE, 40, 1);
-				addShopItem(weapons.SPEAR, 140, 1);
-				addShopItem(weapons.KATANA, 200, 1);
-				addShopItem(weapons.MACE, 80, 1);
+				addShopItem(weapons.SPEAR_0, 140, 1);
+				addShopItem(weapons.KATANA0, 200, 1);
+				addShopItem(weapons.MACE__0, 80, 1);
 			}
 			else {
-				addShopItem(weapons.DAGGER, 40, 1);
+				addShopItem(weapons.DAGGER0, 40, 1);
 				addShopItem(weapons.PIPE, 50, 1);
-				addShopItem(weapons.SPEAR, 175, 1);
-				addShopItem(weapons.KATANA, 250, 1);
-				addShopItem(weapons.MACE, 100, 1);
+				addShopItem(weapons.SPEAR_0, 175, 1);
+				addShopItem(weapons.KATANA0, 250, 1);
+				addShopItem(weapons.MACE__0, 100, 1);
 			}
 			if (player.findPerk(PerkLib.HistorySmith) >= 0) { //20% discount for History: Smith perk
 				addShopItem(armors.LEATHRA, 40, 2);
@@ -375,15 +384,15 @@ package classes.Scenes.Places
 			if (flags[kFLAGS.INGNAM_PROLOGUE_COMPLETE] > 0 && flags[kFLAGS.INGNAM_GREETED_AFTER_LONGTIME] <= 0) {
 				welcomeBack();
 			}
-			if ((player.earType > 0 && player.earType != flags[kFLAGS.INGNAM_EARS_LAST_TYPE] && flags[kFLAGS.INGNAM_EARS_FREAKOUT] <= 0) || (player.tailType > 0 && player.tailType != flags[kFLAGS.INGNAM_TAIL_LAST_TYPE] && flags[kFLAGS.INGNAM_TAIL_FREAKOUT] <= 0) && flags[kFLAGS.INGNAM_PROLOGUE_COMPLETE] <= 0) {
+			if ((player.ears.type > 0 && player.ears.type != flags[kFLAGS.INGNAM_EARS_LAST_TYPE] && flags[kFLAGS.INGNAM_EARS_FREAKOUT] <= 0) || (player.tail.type > 0 && player.tail.type != flags[kFLAGS.INGNAM_TAIL_LAST_TYPE] && flags[kFLAGS.INGNAM_TAIL_FREAKOUT] <= 0) && flags[kFLAGS.INGNAM_PROLOGUE_COMPLETE] <= 0) {
 				appearanceFreakout();
 				return;
 			}
 			menu();
-			addButton(0, "Order Drink", orderDrink, null, null, null, "Buy some refreshing beverages.");
-			addButton(1, "Order Food", orderFood, null, null, null, "Buy some food" + (flags[kFLAGS.HUNGER_ENABLED] > 0 && player.hunger < 50 ? " and curb that hunger of yours!": ".") + "");
-			if (flags[kFLAGS.INGNAM_RUMORS] < 3) addButton(2, "Stories", hearRumors, null, null, null, "Hear the story the innkeeper has to offer.");
-			//if (player.findPerk(PerkLib.HistoryWhore) >= 0) addButton(5, "Prostitute", whoreForGems, null, null, null, "Seek someone who's willing to have sex with you for profit.");
+			addButton(0, "Order Drink", orderDrink).hint("Buy some refreshing beverages.");
+			addButton(1, "Order Food", orderFood).hint("Buy some food" + (flags[kFLAGS.HUNGER_ENABLED] > 0 && player.hunger < 50 ? " and curb that hunger of yours!": ".") + "");
+			if (flags[kFLAGS.INGNAM_RUMORS] < 3) addButton(2, "Stories", hearRumors).hint("Hear the story the innkeeper has to offer.");
+			//if (player.findPerk(PerkLib.HistoryWhore) >= 0) addButton(5, "Prostitute", whoreForGems).hint("Seek someone who's willing to have sex with you for profit.");
 			addButton(14, "Leave", menuIngnam);
 		}
 		
@@ -398,10 +407,10 @@ package classes.Scenes.Places
 			else {
 				outputText("The innkeeper looks at you and says, \"<i>I can see that you have changed quite a lot! Back then, before you left, you were a human. Now look at yourself!</i>\"");
 			}
-			if (player.horns > 0 && player.hornType > 0) {
-				outputText("\n\n\"<i>Are these " + (player.hornType == HORNS_ANTLERS ? "antlers" : "horns") + "? I can imagine they must be real,</i>\" The innkeeper says before touching your [horns]. You can already feel his fingers rubbing against your [horns]. \"<i>Yes, they're real and I think you look better,</i>\" he says. You thank him for complimenting on your horns.");
+			if (player.horns.value > 0 && player.horns.type > 0) {
+				outputText("\n\n\"<i>Are these " + (player.horns.type == Horns.ANTLERS ? "antlers" : "horns") + "? I can imagine they must be real,</i>\" The innkeeper says before touching your [horns]. You can already feel his fingers rubbing against your [horns]. \"<i>Yes, they're real and I think you look better,</i>\" he says. You thank him for complimenting on your horns.");
 			}
-			if (player.wingType > 0 && player.wingType != WING_TYPE_SHARK_FIN) {
+			if (player.wings.type != Wings.NONE) {
 				outputText("\n\nNext, he looks at your wings that sprout from your back and says, \"<i>Wings? I've never seen a person with wings before!</i>\" ");
 				if (player.canFly()) outputText("You tell him that you can fly. To demonstrate, you guide the innkeeper outside and you grit your teeth with effort as you flap your wings and you finally launch off from the ground and fly around the town! The people of Ingnam, including your family and friends, look at you in shock and some even say, \"<i>" + player.mf("He", "She") + " can fly!</i>\"");
 			}
@@ -413,26 +422,26 @@ package classes.Scenes.Places
 		public function appearanceFreakout():void {
 			clearOutput();
 			outputText("The innkeeper stands up to see that there's something unusual with your appearance.");
-			if (player.earType > 0) {
-				if (player.earType == EARS_HORSE) {
+			if (player.ears.type > 0) {
+				if (player.ears.type == Ears.HORSE) {
 					outputText("\n\nHe says, \"<i>Your ears... They look different! They look like horse's! I have no idea how your ears changed.</i>\"");
 				}
-				if (player.earType == EARS_DOG) {
+				if (player.ears.type == Ears.DOG) {
 					outputText("\n\nHe says, \"<i>Your ears... They look like dog's! I have no idea how your ears changed.</i>\"");
 				}
-				if (player.earType == EARS_CAT) {
+				if (player.ears.type == Ears.CAT) {
 					outputText("\n\nHe says, \"<i>Your ears... They look like cat's! I have no idea how your ears changed but other than that, you look much cuter with cat ears!</i>\" He walks over to you and scratch your cat-ears. \"<i>They look and feel so real,</i>\" he says.");
 				}
-				flags[kFLAGS.INGNAM_EARS_LAST_TYPE] = player.earType;
+				flags[kFLAGS.INGNAM_EARS_LAST_TYPE] = player.ears.type;
 				flags[kFLAGS.INGNAM_EARS_FREAKOUT] = 1;
 			}
-			if (player.earType > 0 && player.tailType > 0 && player.hasLongTail()) outputText("Next, he walks behind you, taking a glance at your tail.");
-			if (player.tailType > 0) {
+			if (player.ears.type > 0 && player.tail.type > 0 && player.hasLongTail()) outputText("Next, he walks behind you, taking a glance at your tail.");
+			if (player.tail.type > 0) {
 				if (player.hasLongTail()) {
 					outputText("\n\nHe says with a surprised look, \"<i>You have a tail now? Are you sure this is fake?</i>\" You tell him that your tail is not fake; it's real. \"<i>Prove it,</i>\" he says as he tugs your tail. Ouch! That hurts! \"<i>Sorry about that,</i>\" he says, \"<i>but that tail definitely looks and feels real! I think your tail does look nice.</i>\"");
 					outputText("\n\nYou wag your tail and thank him for the compliment and he walks behind the counter.");
 				}
-				flags[kFLAGS.INGNAM_TAIL_LAST_TYPE] = player.tailType;
+				flags[kFLAGS.INGNAM_TAIL_LAST_TYPE] = player.tail.type;
 				flags[kFLAGS.INGNAM_TAIL_FREAKOUT] = 1;
 			}
 			doNext(menuTavern);
@@ -466,7 +475,7 @@ package classes.Scenes.Places
 			outputText("\n\nYou kick back and drink the beer slowly. ");
 			dynStats("lus", 20);
 			player.refillHunger(10);
-			if (player.findStatusEffect(StatusEffects.Drunk) < 0) {
+			if (!player.hasStatusEffect(StatusEffects.Drunk)) {
 				player.createStatusEffect(StatusEffects.Drunk, 2, 1, 1, 0);
 				dynStats("str", 0.1);
 				dynStats("inte", -0.5);

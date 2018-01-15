@@ -49,13 +49,13 @@ package classes.Scenes.Places.Prison
 					break;
 				case "default":
 			}
-			prisonCaptor.updateNextRestraintCheckEvent(model.time.hours, model.time.days,rand(24));
-			prisonCaptor.updateNextFeedingEvent(model.time.hours, model.time.days,rand(8));
+			prisonCaptor.updateNextRestraintCheckEvent(getGame().time.hours, getGame().time.days,rand(24));
+			prisonCaptor.updateNextFeedingEvent(getGame().time.hours, getGame().time.days,rand(8));
 		}*/
 		
 		public function prisonCaptorScratch(valueNum:Number) : Number
 		{
-			if (player.findStatusEffect(StatusEffects.PrisonCaptorEllyScratch) < 0)
+			if (!player.hasStatusEffect(StatusEffects.PrisonCaptorEllyScratch))
 			{
 				player.createStatusEffect(StatusEffects.PrisonCaptorEllyScratch,0,0,0,0);
 			}
@@ -64,7 +64,7 @@ package classes.Scenes.Places.Prison
 		
 		public function prisonCaptorScratchSet(valueNum:Number, newVal:Number) : void
 		{
-			if (player.findStatusEffect(StatusEffects.PrisonCaptorEllyScratch) < 0)
+			if (!player.hasStatusEffect(StatusEffects.PrisonCaptorEllyScratch))
 			{
 				player.createStatusEffect(StatusEffects.PrisonCaptorEllyScratch,0,0,0,0);
 			}
@@ -74,7 +74,7 @@ package classes.Scenes.Places.Prison
 		public function prisonCaptorScratchChange(valueNum:Number, changeVal:Number) : void
 		{
 			var newVal:* = undefined;
-			if (player.findStatusEffect(StatusEffects.PrisonCaptorEllyScratch) < 0)
+			if (!player.hasStatusEffect(StatusEffects.PrisonCaptorEllyScratch))
 			{
 				player.createStatusEffect(StatusEffects.PrisonCaptorEllyScratch,0,0,0,0);
 			}
@@ -140,7 +140,7 @@ package classes.Scenes.Places.Prison
 		}
 		
 		public function timeForWaitRandomEvent(hours:int, days:int, goal:int):Boolean {
-			var timesPassed:int = model.time.totalTime;
+			var timesPassed:int = getGame().time.totalTime;
 			if (timesPassed % goal == 0) return true;
 			else return false;
 		}

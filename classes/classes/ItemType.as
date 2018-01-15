@@ -3,9 +3,10 @@
  */
 package classes
 {
+	import classes.internals.Utils;
 	import flash.utils.Dictionary;
 
-	public class ItemType
+	public class ItemType extends Utils
 	{
 		private static var ITEM_LIBRARY:Dictionary = new Dictionary();
 		private static var ITEM_SHORT_LIBRARY:Dictionary = new Dictionary();
@@ -92,7 +93,7 @@ package classes
 				CoC_Settings.error("Duplicate itemid "+_id+", old item is "+(ITEM_LIBRARY[_id] as ItemType).longName);
 			}
 			if (ITEM_SHORT_LIBRARY[_shortName] != null){
-				trace("WARNING: Item with duplicate shortname: '"+_id+"' and '"+(ITEM_SHORT_LIBRARY[this._shortName] as ItemType)._id+"' share "+this._shortName);
+				CoC_Settings.error("WARNING: Item with duplicate shortname: '"+_id+"' and '"+(ITEM_SHORT_LIBRARY[this._shortName] as ItemType)._id+"' share "+this._shortName);
 			}
 			ITEM_LIBRARY[_id] = this;
 			ITEM_SHORT_LIBRARY[this._shortName] = this;
@@ -102,6 +103,10 @@ package classes
 		public function toString():String
 		{
 			return "\""+_id+"\"";
+		}
+		
+		public function getMaxStackSize():int {
+			return 5;
 		}
 	}
 }

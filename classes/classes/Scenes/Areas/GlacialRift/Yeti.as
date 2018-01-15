@@ -1,6 +1,8 @@
 package classes.Scenes.Areas.GlacialRift 
 {
 	import classes.*;
+	import classes.BodyParts.*;
+	import classes.BodyParts.Hips;
 	import classes.internals.WeightedDrop;
 	
 	public class Yeti extends Monster
@@ -12,7 +14,7 @@ package classes.Scenes.Areas.GlacialRift
 				outputText("The yeti beast charges at you, though his claws only strike at air as you move nimbly over the ice flooring beneath you. The beast lets out an annoyed snarl.")
 			}
 			else {
-				if (findStatusEffect(StatusEffects.Blind) >= 0 && rand(3) > 0) {
+				if (hasStatusEffect(StatusEffects.Blind) && rand(3) > 0) {
 					outputText("The yeti furiously charges at you but blind as he is, he ends up running into the wall face-first instead. ");
 					var yetiDamage:Number = 30 + rand(50);
 					HP -= yetiDamage;
@@ -53,7 +55,7 @@ package classes.Scenes.Areas.GlacialRift
 				outputText("The beast steps back, magic condensing mist into ice within his hand. With narrow eyes you ready your body, and as soon as the ball of frost is whipped at you, you dart to the side avoiding it. The ice shatters uselessly against the wall, the ice yeti looking quite annoyed in your direction. ");
 			}
 			else {
-				if (findStatusEffect(StatusEffects.Blind) >= 0 && rand(3) > 0) {
+				if (hasStatusEffect(StatusEffects.Blind) && rand(3) > 0) {
 					outputText("The beast takes a step back, mist forming into a ball in his clenched fist. It condenses into a ball before your eyes, and with a growl the beast whips it at you. Blind as he is, the ball ends up missing you and hitting the wall instead.");
 					combatRoundOver();
 					return;
@@ -114,16 +116,15 @@ package classes.Scenes.Areas.GlacialRift
 			this.ballSize = 2;
 			this.cumMultiplier = 2;
 			createBreastRow(Appearance.breastCupInverse("flat"));
-			this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-			this.ass.analWetness = ANAL_WETNESS_NORMAL;
+			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
+			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.tallness = 8*12;
-			this.hipRating = HIP_RATING_BOYISH;
-			this.buttRating = BUTT_RATING_TIGHT;
-			this.skinTone = "light";
-			this.skinType = SKIN_TYPE_FUR;
-			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[SKIN_TYPE_FUR];
-			this.hairColor = "white";
-			this.hairLength = 8;
+			this.hips.rating = Hips.RATING_BOYISH;
+			this.butt.rating = Butt.RATING_TIGHT;
+			this.skin.tone = "light";
+			this.skin.setType(Skin.FUR);
+			this.hair.color = "white";
+			this.hair.length = 8;
 			initStrTouSpeInte(95, 80, 60, 50);
 			initLibSensCor(40, 20, 45);
 			this.weaponName = "fists";

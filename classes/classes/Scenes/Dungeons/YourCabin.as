@@ -6,6 +6,7 @@ package classes.Scenes.Dungeons
 	import classes.BaseContent;
 	import classes.Scenes.Dungeons.DungeonAbstractContent;
 	import classes.Scenes.Dungeons.DungeonCore;
+	import classes.Scenes.Inventory;
 	
 	public class YourCabin extends DungeonAbstractContent
 	{
@@ -19,6 +20,7 @@ package classes.Scenes.Dungeons
 			kGAMECLASS.dungeonLoc = -10;
 			menu();
 			clearOutput();
+			outputText(images.showImage("location-cabin"));
 			outputText("<b><u>Your Cabin</u></b>\n")
 			outputText("You are in your cabin.  Behind you is a door leading back to your camp.  Next to the door is a window to let the sunlight in. \n\n");
 			
@@ -38,13 +40,21 @@ package classes.Scenes.Dungeons
 			{
 				outputText("A nightstand is situated next to your bed. ");
 				if (flags[kFLAGS.BENOIT_CLOCK_BOUGHT] > 0) outputText("An alarm clock rests on your nightstand. It's currently set to go off at " + flags[kFLAGS.BENOIT_CLOCK_ALARM] + "am. ");
-				if (player.hasKeyItem("Equipment Storage - Jewelry Box") >= 0 && flags[kFLAGS.CAMP_CABIN_FURNITURE_DRESSER] <= 0) outputText("A jewelry box sits on your nightstand.");
+				
+				if (player.hasKeyItem(Inventory.STORAGE_JEWELRY_BOX) >= 0 && flags[kFLAGS.CAMP_CABIN_FURNITURE_DRESSER] <= 0) {
+					outputText("A jewelry box sits on your nightstand.");
+				}
+				
 				outputText("\n\n")
 			}
 			if (flags[kFLAGS.CAMP_CABIN_FURNITURE_DRESSER] > 0)
 			{
 				outputText("Your dresser is located at side opposite from your bed. ");
-				if (player.hasKeyItem("Equipment Storage - Jewelry Box") >= 0) outputText("A jewelry box sits on your dresser.");
+				
+				if (player.hasKeyItem(Inventory.STORAGE_JEWELRY_BOX) >= 0) {
+					outputText("A jewelry box sits on your dresser.");
+				}
+				
 				outputText("\n\n")
 			}
 			if (flags[kFLAGS.CAMP_CABIN_FURNITURE_TABLE] > 0)
@@ -89,12 +99,12 @@ package classes.Scenes.Dungeons
 			addButton(4, "Furniture", menuFurniture);
 			addButton(9, "Wait", camp.doWait); //You can wait/rest/sleep in cabin.
 			if (player.fatigue > 40 || player.HP / player.maxHP() <= .9) addButton(9, "Rest", getGame().camp.rest);
-			if (model.time.hours >= 21 || model.time.hours < 6) addButton(9, "Sleep", getGame().camp.doSleep);
+			if (getGame().time.hours >= 21 || getGame().time.hours < 6) addButton(9, "Sleep", getGame().camp.doSleep);
 			addButton(11, "South (Exit)", exitCabin);
 			addButton(14, "Codex", camp.codex.accessCodexMenu);
 			removeButton(7);
 			if (flags[kFLAGS.CAMP_CABIN_FURNITURE_BED] >= 1 && flags[kFLAGS.CAMP_CABIN_FURNITURE_NIGHTSTAND] >= 1 && flags[kFLAGS.CAMP_CABIN_FURNITURE_DRESSER] >= 1 && flags[kFLAGS.CAMP_CABIN_FURNITURE_TABLE] >= 1 && flags[kFLAGS.CAMP_CABIN_FURNITURE_CHAIR1] >= 1 && flags[kFLAGS.CAMP_CABIN_FURNITURE_CHAIR2] >= 1 && flags[kFLAGS.CAMP_CABIN_FURNITURE_BOOKSHELF] >= 1 && flags[kFLAGS.CAMP_CABIN_FURNITURE_DESK] >= 1 && flags[kFLAGS.CAMP_CABIN_FURNITURE_DESKCHAIR] >= 1) removeButton(2);
-			if (model.time.hours >= 23 || model.time.hours < 6) {
+			if (getGame().time.hours >= 23 || getGame().time.hours < 6) {
 				removeButton(0);
 			}
 		}

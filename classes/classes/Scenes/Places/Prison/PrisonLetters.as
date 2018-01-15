@@ -11,9 +11,9 @@ package classes.Scenes.Places.Prison
 		public function deliverChildWhileInPrison():Boolean {
 			if (flags[kFLAGS.IN_PRISON] == 0) return false;
 			if (player.vaginas.length == 0) {
-				outputText("\nYou feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.\n", false);
+				outputText(images.showImage("birth-prison"));
+				outputText("\nYou feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.\n");
 				player.createVagina();
-				player.genderCheck();
 			}
 			outputText("\nIt's time! You " + player.clothedOrNakedLower("remove your [lowergarment] and ") + "sit down at one of the corners and spread your [legs]. A sudden gush of fluids erupt from your [pussy] - your water just broke. You grunt painfully as you feel wriggling and squirming inside your belly, muscle contractions forcing it downwards. ");
 			//Various scenes
@@ -34,14 +34,14 @@ package classes.Scenes.Places.Prison
 				outputText("\n\n<b>Some time passes...</b>");
 				letterFromMinervaAfterGivingBirth();
 				flags[kFLAGS.BEHEMOTH_CHILDREN]++;
-				if (flags[kFLAGS.BEHEMOTH_CHILDREN] == 1) flags[kFLAGS.BEHEMOTH_CHILD_1_BIRTH_DAY] = model.time.days;
-				if (flags[kFLAGS.BEHEMOTH_CHILDREN] == 2) flags[kFLAGS.BEHEMOTH_CHILD_2_BIRTH_DAY] = model.time.days;
-				if (flags[kFLAGS.BEHEMOTH_CHILDREN] == 3) flags[kFLAGS.BEHEMOTH_CHILD_3_BIRTH_DAY] = model.time.days;
+				if (flags[kFLAGS.BEHEMOTH_CHILDREN] == 1) flags[kFLAGS.BEHEMOTH_CHILD_1_BIRTH_DAY] = getGame().time.days;
+				if (flags[kFLAGS.BEHEMOTH_CHILDREN] == 2) flags[kFLAGS.BEHEMOTH_CHILD_2_BIRTH_DAY] = getGame().time.days;
+				if (flags[kFLAGS.BEHEMOTH_CHILDREN] == 3) flags[kFLAGS.BEHEMOTH_CHILD_3_BIRTH_DAY] = getGame().time.days;
 			}
 			//Post-birthing
-			if (player.hipRating < 10) {
-				player.hipRating++;
-				outputText("\n\nAfter the birth your " + player.armorName + " fits a bit more snugly about your " + player.hipDescript() + ".", false);
+			if (player.hips.rating < 10) {
+				player.hips.rating++;
+				outputText("\n\nAfter the birth your " + player.armorName + " fits a bit more snugly about your " + player.hipDescript() + ".");
 			}
 			player.knockUpForce(); //CLEAR!
 			return true;
@@ -49,6 +49,7 @@ package classes.Scenes.Places.Prison
 		
 		public function initialMessage(npcName:String):void {
 			outputText("\nMistress Elly opens the door and hands you the letter. \"<i>This is for you, slave. It's from " + npcName + ",</i>\" she says as she walks out, leaving you in your cell with the letter. You open the letter and read. \n\n");
+			outputText(images.showImage("item-letter"));	
 		}
 		
 		//------------
@@ -81,11 +82,11 @@ package classes.Scenes.Places.Prison
 			initialMessage("Izma");
 			outputText("\"<i>Hello, my Alpha. Today I gave birth to a ");
 			if (rand(100) <= 59) {
-				outputText("shark-girl", false);
+				outputText("shark-girl");
 				flags[kFLAGS.IZMA_CHILDREN_SHARKGIRLS]++;
 			}
 			else {
-				outputText("tigershark", false);
+				outputText("tigershark");
 				flags[kFLAGS.IZMA_CHILDREN_TIGERSHARKS]++;
 			}
 			outputText("daughter and you should come. She has already grew up quite a bit.  -Izma.</i>\"");

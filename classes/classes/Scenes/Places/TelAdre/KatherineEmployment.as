@@ -1,6 +1,9 @@
 package classes.Scenes.Places.TelAdre{
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.*;
+	import classes.display.SpriteDb;
+	import classes.Scenes.Places.TelAdre.Katherine;
 	import classes.Scenes.NPCs.Urta;
 
 	public class KatherineEmployment extends TelAdreAbstractContent {
@@ -120,7 +123,7 @@ package classes.Scenes.Places.TelAdre{
 			outputText("You smile and thank the centauress for her help.  “<i>It was nothing,</i>” she replies, looking quite pleased at your thanks all the same.\n\n");
 			flags[kFLAGS.KATHERINE_TRAINING] |= KBIT_TRAINING_TALK_EDRYN; //Using a mask so it doesn’t matter what order you talk to Edryn and Urta in
 			var cockFitIndex:int = player.cockThatFits(300);
-			if ((cockFitIndex >= 0 && player.cockArea(cockFitIndex) >= 24) && (player.lowerBody == LOWER_BODY_TYPE_HOOFED || player.countCocksOfType(CockTypesEnum.HORSE) > 0 || player.cor > 50 || player.statusEffectv1(StatusEffects.Edryn) > 0)) {
+			if ((cockFitIndex >= 0 && player.cockArea(cockFitIndex) >= 24) && (player.lowerBody.type == LowerBody.HOOFED || player.countCocksOfType(CockTypesEnum.HORSE) > 0 || player.isCorruptEnough(50) || player.statusEffectv1(StatusEffects.Edryn) > 0)) {
 				outputText("“<i>So... I don’t suppose there’s anything else you might have on your mind...?</i>”  She gives you a coy look and fiddles with a nipple through her shirt.");
 				doYesNo((edryn.pregnancy.isPregnant ? pregnantEdrynSexSelector : edryn.edrynSexSelecter), telAdre.barTelAdre);
 			}
@@ -152,8 +155,10 @@ package classes.Scenes.Places.TelAdre{
 			flags[kFLAGS.KATHERINE_TRAINING] |= KBIT_TRAINING_TALK_URTA; //Using a mask so it doesn’t matter what order you talk to Edryn and Urta in
 			if (urta.urtaLove()) { //Lover Urta
 				outputText("She looks quietly at you for a few long moments, then sighs and shakes her head.  “<i>I should be so jealous of her... but, well, it’s not like either of us really went into this thing expecting monogamy, right?  Besides, you’re too noble and cute for me to stay mad at you.</i>”  She winks at you in a flirtatious manner.  “<i>In fact... how about this?  If you want to bring your little kitten to me, I’ll help you whip her into shape.  That’s all the help I can offer you, I’m afraid... But first...</i>”  She sets down her mug, then takes one of your hand and slides it into her lap, where you can feel the distinctive bulge swelling.  “<i>How about giving me a little appreciation for being so nice, hmm?</i>”  She asks, licking her lips and savoring your reaction.\n\n");
-			outputText("You figure it’s the least you can do to thank her; you can go and tell Katherine about it when you’re done here, and besides, it’s best to keep her in a good mood, right?");
-				simpleChoices("Suck Off", urta.blowUrtaUnderTheTableLuv, "Eat Out", urta.eatUrtaOutNomNomPussy, "", null, "", null, "", null);				
+				outputText("You figure it’s the least you can do to thank her; you can go and tell Katherine about it when you’re done here, and besides, it’s best to keep her in a good mood, right?");
+				menu();
+				addButton(0, "Suck Off", urta.blowUrtaUnderTheTableLuv);
+				addButton(1, "Eat Out", urta.eatUrtaOutNomNomPussy);
 			}
 			else { //Fuckbuddy Urta
 				outputText("She then sullenly starts gulping her mug down, one hand already waving to a bar attendant for a refill.  Looks like she might be a little jealous... You decide not to push your luck, instead thanking her for the advice and leaving her to her drinking.  Now, all you need to do is figure out how to convince Katherine to join the Watch...");
@@ -217,13 +222,15 @@ package classes.Scenes.Places.TelAdre{
 			}
 			clearOutput();
 			outputText("As you approach Katherine’s alleyway, you take a mental inventory of your preparations, to see if it’s time to begin her training.  You realize that once Kath’s training has begun, she will no longer have time to engage in your usual activities until her training is complete, so perhaps you should postpone the final preparations and just pay her a recreational visit instead?");
-			var withUrta:Function = trainKathWithUrta;
-			if (!urta.urtaLove() || (flags[kFLAGS.KATHERINE_TRAINING] & KBIT_TRAINING_TALK_URTA) == 0) withUrta = null; //Urta must be a lover and you must have talked about Kath
-			if (!urtaAvailable && withUrta != null) {
+			menu();
+			addButton(0, "Postpone", postpone);
+			addButton(1, "Train", trainKath);
+			addButton(2, "With Urta", trainKathWithUrta);
+			if (!urta.urtaLove() || (flags[kFLAGS.KATHERINE_TRAINING] & KBIT_TRAINING_TALK_URTA) == 0) addDisabledButton(2, "With Urta"); //Urta must be a lover and you must have talked about Kath
+			else if (!urtaAvailable) {
 				outputText("\n\nPerhaps you should wait for a time when you know Urta will be available " + (urta.pregnancy.isPregnant ? "" : "(and sober enough) ") + "to help.");
-				withUrta = null; //She has to be in the bar
+				addDisabledButton(2, "With Urta"); //She has to be in the bar
 			}
-			simpleChoices("Postpone", postpone, "Train", trainKath, "With Urta", withUrta, "", null, "", null);
 			return true;
 		}
 
@@ -263,7 +270,8 @@ package classes.Scenes.Places.TelAdre{
 			switch (rand(3)) {
 				case 0: doNext(katherineTrainingStage1Success); break;
 				case 1: doNext(katherineTrainingStage1Failure); break;
-				case 2: doNext(katherineTrainingStage1Horny);
+				case 2: doNext(katherineTrainingStage1Horny); break;
+				default: doNext(katherineTrainingStage1Success);
 			}
 		}
 
@@ -302,7 +310,9 @@ package classes.Scenes.Places.TelAdre{
 			outputText("She sits up, embarrassed despite the fact there’s no one else within a mile.  “<i>Come on " + player.short + " - You had me walking all over the place.  My cock" + katherine.cockMultiple("", "s") + " kept rubbing against my pants.  I need to do this to even think straight.</i>”\n\n");
 			outputText("You realize there is no way you’re going to get Kath to do anything useful out here.  On the other hand it’s a nice day and your girlfriend is very, very horny.  Might as well make the most of this trip.");
 			flags[kFLAGS.KATHERINE_LOCATION] = Katherine.KLOC_DESERT; //Makes sure the scene happens out in the dunes
-			simpleChoices("Oral", katherine.giveKatOralPenisWingWang, "Handjob", katherine.handjobbiesFurrDemCatFurries, "", null, "", null, "", null);
+			menu();
+			addButton(0, "Oral", katherine.giveKatOralPenisWingWang);
+			addButton(1, "Handjob", katherine.handjobbiesFurrDemCatFurries);
 		}
 
 		public function katherineTrainingStage2():void
@@ -312,7 +322,8 @@ package classes.Scenes.Places.TelAdre{
 			switch (rand(3)) {
 				case 0: doNext(katherineTrainingStage2Success); break;
 				case 1: doNext(katherineTrainingStage2Failure); break;
-				case 2: doNext(katherineTrainingStage2Horny);
+				case 2: doNext(katherineTrainingStage2Horny); break;
+				default: doNext(katherineTrainingStage2Success);
 			}
 		}
 
@@ -346,24 +357,32 @@ package classes.Scenes.Places.TelAdre{
 			outputText("You don’t need to go over to the bushes to find out what the smell is; it’s all over her.  It’s a sweet-yet-creamy scent, unlike anything back home.  It seems whisker fruits, or at least the blossoms of the tree it comes from, have a certain effect on your feline friend.\n\n");
 			outputText("As you smell Katherine she is likewise busy sniffing you.  She rubs her nose against your cheek, her whiskers tickling your face, and says, “<i>This place is really nice... I know what we could do.</i>”");
 			flags[kFLAGS.KATHERINE_LOCATION] = Katherine.KLOC_LAKE; //Makes sure the scene happens on the shores of the lake
-			var penKath:Function = null;       //Fuck and give options only available for males and herms
-			var penAnal:Function = null;
-			var penBoth:Function = null;
-			var takeVag:Function = null;       //Mount her option is only available to females and herms with a vaginal capacity >= 100
-			var takeAnal:Function = null;      //Take Anal option is only available when Kath’s knot size is less than 4</i>”
-			var takeVagAndAss:Function = null; //Take both is available for those who meet both the Mount Her and Take Anal requirements
+			menu();
+			addDisabledButton(0, "Fuck Her", "This scene requires you to have fitting cock.");
+			addDisabledButton(1, "Give Anal", "This scene requires you to have fitting cock.");
+			addDisabledButton(2, "Give Both", "This scene requires you to have two fitting cocks.");
+			// bath always available
+			addDisabledButton(5, "Mount Her", "This scene requires you to have vagina. You should be able to pull out her knot - this is not the best place to be in such vulnerable state.");
+			addDisabledButton(6, "Take Anal", "Her knot should not be overly large.");
+			addDisabledButton(7, "Take Both", "This scene requires you to have vagina. Her knot should not be overly large. You should be able to pull out her knot - this is not the best place to be in such vulnerable state.");
+			
+			addButton(4, "Bath", katherine.bathTime);
 			if (player.cockThatFits(70) > -1) {
-				penKath = katherine.penetrateKatsVag;
-				penAnal = katherine.pcPenetratesKatAnally;
-				if (player.cockThatFits2(70) > -1) penBoth = katherine.pcPenetratesKatDoubly;
+				addButton(0, "Fuck Her", katherine.penetrateKatsVag);
+				addButton(1, "Give Anal", katherine.pcPenetratesKatAnally);
+				if (player.cockThatFits2(70) > -1) {
+					addButton(2, "Give Both", katherine.pcPenetratesKatDoubly);
+				}
 			}
 			if (player.hasVagina() && player.vaginalCapacity() >= 100) { //Don't want to get knotted together out here at the lake
-				takeVag = katherine.letKatKnotYourCuntPussyFuck;
-				if (katherine.knotSize < 4 && katherine.cockNumber > 1) takeVagAndAss = katherine.getDoublePennedByKat;
+				addButton(5, "Mount Her", katherine.letKatKnotYourCuntPussyFuck);
+				if (katherine.knotSize < 4 && katherine.cockNumber > 1) {
+					addButton(7, "Take Both", katherine.getDoublePennedByKat);
+				}
 			}
-			if (katherine.knotSize < 4) takeAnal = katherine.getPenetrated;
-			choices("Fuck Her", penKath, "Give Anal", penAnal, "Give Both", penBoth, "Bath", katherine.bathTime, "", null,
-				"Nount Her", takeVag, "Take Anal", takeAnal, "Take Both", takeVagAndAss, "", null, "", null);
+			if (katherine.knotSize < 4) {
+				addButton(6, "Take Anal", katherine.getPenetrated);
+			}
 		}
 
 		public function katherineTrainingStage3():void
@@ -377,7 +396,8 @@ package classes.Scenes.Places.TelAdre{
 				switch (rand(3)) {
 					case 0: doNext(katherineTrainingStage3Success); break;
 					case 1: doNext(katherineTrainingStage3Failure); break;
-					case 2: doNext(katherineTrainingStage3Horny);
+					case 2: doNext(katherineTrainingStage3Horny); break;
+					default: doNext(katherineTrainingStage3Success);
 				}
 			}
 		}
@@ -424,36 +444,50 @@ package classes.Scenes.Places.TelAdre{
 		private function alleywaySexOptions():void
 		{
 			flags[kFLAGS.KATHERINE_LOCATION] = Katherine.KLOC_STREETS; //Makes sure the scene happens in a Tel’Adre alleyway
-			var penKath:Function = null;       //Fuck and give options only available for males and herms
-			var penAnal:Function = null;
-			var penBoth:Function = null;
-			var suckNFucks:Function = null;
-			var takeVag:Function = null;       //Mount her option is only available to females and herms with a vaginal capacity >= 100
-			var takeAnal:Function = null;      //Take Anal option is only available when Kath’s knot size is less than 4</i>”
-			var takeVagAndAss:Function = null; //Take both is available for those who meet both the Mount Her and Take Anal requirements
-			var suckNFucked:Function = null;
+			menu();
+			addDisabledButton(0, "Fuck Her", "This scene requires you to have fitting cock.");
+			addDisabledButton(1, "Give Anal", "This scene requires you to have fitting cock.");
+			addDisabledButton(2, "Give Both", "This scene requires you to have two fitting cocks.");
+			addDisabledButton(3, "SuckNFuck", "This scene requires you to have fitting cock. Her knot should not be overly large.");
+			addDisabledButton(4, "Bath", "This scene is only available after her training is over.");
+			addDisabledButton(5, "Mount Her", "This scene requires you to have vagina.");
+			addDisabledButton(6, "Take Anal", "Her knot should not be overly large.");
+			addDisabledButton(7, "Take Both", "This scene requires you to have vagina. Her knot should not be overly large.");
+			addDisabledButton(8, "SuckNFuckd", "This scene requires you to have cock. You should have some experience with her.");
+			
 			if (player.cockThatFits(70) > -1) {
-				penKath = katherine.penetrateKatsVag;
-				penAnal = katherine.pcPenetratesKatAnally;
-				if (player.cockThatFits2(70) > -1) penBoth = katherine.pcPenetratesKatDoubly;
-				if (katherine.knotSize <= 4) suckNFucks = katherine.suckNFuck;
+				addButton(0, "Fuck Her", katherine.penetrateKatsVag);
+				addButton(1, "Give Anal", katherine.pcPenetratesKatAnally);
+				if (player.cockThatFits2(70) > -1) {
+					addButton(2, "Give Both", katherine.pcPenetratesKatDoubly);
+				}
+				if (katherine.knotSize <= 4) {
+					addButton(3, "SuckNFuck", katherine.suckNFuck);
+				}
 			}
-			if (player.hasCock() && flags[kFLAGS.KATHERINE_TIMES_SEXED] > 0) suckNFucked = katherine.suckedNFuckedByKat;
+			if (flags[kFLAGS.KATHERINE_TRAINING] >= 100) {
+				addButton(4, "Bath", katherine.dateKathBath);
+			}
 			if (player.hasVagina()) {
-				takeVag = katherine.letKatKnotYourCuntPussyFuck;
-				if (katherine.knotSize < 4 && katherine.cockNumber > 1) takeVagAndAss = katherine.getDoublePennedByKat;
+				addButton(5, "Mount Her", katherine.letKatKnotYourCuntPussyFuck);
+				if (katherine.knotSize < 4 && katherine.cockNumber > 1) {
+					addButton(7, "Take Both", katherine.getDoublePennedByKat);
+				}
 			}
-			if (katherine.knotSize < 4) takeAnal = katherine.getPenetrated;
-			choices("Fuck Her", penKath, "Give Anal", penAnal, "Give Both", penBoth, "SuckNFuck", suckNFucks, "Bath", (flags[kFLAGS.KATHERINE_TRAINING] >= 100 ? katherine.dateKathBath : null),
-				"Mount Her", takeVag, "Take Anal", takeAnal, "Take Both", takeVagAndAss, "SuckNFuckd", suckNFucked, "", null);
+			if (katherine.knotSize < 4) {
+				addButton(6, "Take Anal", katherine.getPenetrated);
+			}
+			if (player.hasCock() && flags[kFLAGS.KATHERINE_TIMES_SEXED] > 0) {
+				addButton(8, "SuckNFuckd", katherine.suckedNFuckedByKat);
+			}
 		}
 
 		public function katherineTrainingComplete():void
 		{
 //Triggers when you visit Kath with her training score at or over 100
 //    (KATHERINE_UNLOCKED == 2) && (KATHERINE_TRAINING >= 100)
-			if (urta.urtaDrunk() || model.time.hours >= 15) {
-				if (model.time.hours >= 15)
+			if (urta.urtaDrunk() || getGame().time.hours >= 15) {
+				if (getGame().time.hours >= 15)
 					outputText("Although Kath is ready for testing you think it would be best to catch Urta while she’s filling out paperwork at the Wet Bitch.  That way you won’t risk interrupting her while she’s doing something important or on patrol.");
 				else outputText("Although Kath is ready for testing you don’t think the captain of Tel’Adre’s guard is going to be in any condition to test her.  You’re better off waiting until she’s sober.");
 				outputText("\n\nKath is pleased to see you anyway and even more pleased that you feel she’s ready.  “<i>I know I haven’t passed yet, but I’m so excited.  Maybe we could do something to celebrate the end of my training?</i>”  She leans back on the crate and runs her hands over her breasts suggestively.");
@@ -547,7 +581,10 @@ package classes.Scenes.Places.TelAdre{
 			outputText("She leads you over to her table and soon you’re " + (player.isPregnant() ? "drinking some hot chocolate while Urta sips some kind of hard liquor" : "sipping some harsh form of whiskey with her") + ".  Urta starts by complimenting you on Kath’s training.  It seems few candidates are that well prepared on their first attempt to take the tests.  She seems nervous, even acts bit deferential to you.\n\n");
 			outputText("From how she’s acting you feel there’s more to this talk than that but it takes a while, and several more drinks, for Urta to work up her courage.  Finally she says, “<i>From the way Katherine acted I know you two are together.</i>”  She tilts her glass and looks at the amber liquid.  “<i>From the testing I can tell Kath is a herm.  I mean, we did some combat tests, some grappling.  It’s kind of hard to miss.</i>”\n\n");
 			outputText("After a long pause she adds “<i>So... I think I misjudged you.  That time you saw me, just out back of this place.  A lot of people hate herms and I thought you must be like that.</i>”  She looks down again and adds, “<i>I guess I never gave you the chance to set the record straight.</i>”");
-			simpleChoices("Flirt", urta.flirtWithUrta, "Friends", friendsWithUrta, "Destroy Her", destroyUrta, "", null, "", null);
+			menu();
+			addButton(0, "Flirt", urta.flirtWithUrta);
+			addButton(1, "Friends", friendsWithUrta);
+			addButton(2, "Destroy Her", destroyUrta);
 		}
 
 		private function friendsWithUrta():void
@@ -577,7 +614,7 @@ package classes.Scenes.Places.TelAdre{
 			outputText("The fox steeples her clawed fingers in front of her face.  “<i>I’m listening,</i>” she tells you.\n\n");
 			outputText("Looking around, you suggest that perhaps it would be better to do this in a more private setting, it can’t be good for the people to know that the watch captain is going to be doing a personal favor for someone; this could impact her image.\n\n");
 			outputText("Urta looks surprised, then smiles hugely.  “<i>You really do care about me, don’t you?</i>” she asks, as if she almost doesn’t dare believe the idea.  “<i>Come on then, let’s go to my apartment,</i>” she tells you, pushing up from her seat and walking the familiar route to the back door.  There’s a little more of a swish in her hips when she walks than usual; maybe she has hopes of this progressing beyond a training exercise?  Either way, you follow the fox-herm eagerly... perhaps it wouldn’t be bad to mix business and pleasure.\n\n");
-			outputText("The route to Urta’s place is quite familiar to you by now, and she surprises you by opening the door and gallantly offering to let you inside first.  An invitation you’re only too happy to take.   You’re reminded of the practice of men holding doors open for ladies back in Ingnam by the gesture.  Once inside you take a seat on her couch and wait for her to sit next to you, so you can start planning.  The over-endowed fox takes a seat with a groan, rubbing her balls through her dress, then faking a yawn as an excuse to sling an arm around your back.  “<i>So... what do you have in mind?</i>” she asks.\n\n");
+			outputText("The route to Urta’s place is quite familiar to you by now, and she surprises you by opening the door and gallantly offering to let you inside first.  An invitation you’re only too happy to take.  You’re reminded of the practice of men holding doors open for ladies back in Ingnam by the gesture.  Once inside you take a seat on her couch and wait for her to sit next to you, so you can start planning.  The over-endowed fox takes a seat with a groan, rubbing her balls through her dress, then faking a yawn as an excuse to sling an arm around your back.  “<i>So... what do you have in mind?</i>” she asks.\n\n");
 			outputText("You lay a hand on her thigh and start sharing all you know about Kath; how she is currently homeless; how she lacks any combat experience beyond basic survival; how she tends to get pretty pent up sexually and how that frustration boils over... even giving the details of how you met in the first place...\n\n");
 			outputText("Urta nods her head and keeps quiet throughout, quietly digesting what you have to say.  Glancing at you with eyes half-lidded in thought, she quietly asks, “<i>So... do you just have a thing for herms with mismatched dicks?</i>”\n\n");
 			outputText("You tell her to focus on what actually matters.  The vulpine watch officer gives you a pleading look, hoping you’ll answer her first question.  With a sigh of defeat you finally ask her if she has a problem with it?  Maybe you do... maybe you don’t, but the fact is the two of you are together, you stress.  You assure her, that if she’s worried about this, you can put her mind at ease.  She’s more than just some fetish to you- you genuinely enjoy being with her.  But, you must admit, the fact that she’s a sexy herm is a definite plus...\n\n");
@@ -659,14 +696,14 @@ package classes.Scenes.Places.TelAdre{
 				outputText("You joke that maybe you should get your ghostbusting gear?  Just in case?\n\n");
 				outputText("“<i>There’s no such thing as ghosts!</i>” Urta snaps.");
 				if (kGAMECLASS.shouldraFollower.followerShouldra()) {
-					outputText("You would beg to differ, you happen to not only know one... but is also carrying one right at this instant...\n\n");
+					outputText("You would beg to differ, you happen to not only know one... but are also carrying one right at this instant...\n\n");
 					outputText("“<i>Oh? So why doesn’t he come out and say hello, huh?</i>” Urta snarks, clearly feeling very put out.\n\n");
 					outputText("“<i>Don’t mind if I do!</i>” an ethereal voice replies out of your chest.  A familiar face emerges, grinning widely.  “<i>Boo,</i>” Shouldra states, simply.\n\n");
-					outputText("Urta and Kath’s jaws drop in unision, both staring dumbfoundedly at Shouldra.  Looks like they’ve never seen a ghost before.  “<i>I can see at least two bodies I wouldn’t mind getting to know better... but first, let’s see what you’re packing...</i>”  Shouldra’s hand emerges from your chest and she makes a few arcane gestures, aimed at both Kath and Urta.  At once, the two’s outfits tent as their mismatched dicks swell as erect as they can between the ghost’s magic and their restraining garments.  Urta yelps in that way she has and tries to cover herself up; Kath just looks surprised, but doesn’t make any effort, figuring that it must be harmless.\n\n");
+					outputText("Urta and Kath’s jaws drop in unison, both staring dumbfoundedly at Shouldra.  Looks like they’ve never seen a ghost before.  “<i>I can see at least two bodies I wouldn’t mind getting to know better... but first, let’s see what you’re packing...</i>”  Shouldra’s hand emerges from your chest and she makes a few arcane gestures, aimed at both Kath and Urta.  At once, the two’s outfits tent as their mismatched dicks swell as erect as they can between the ghost’s magic and their restraining garments.  Urta yelps in that way she has and tries to cover herself up; Kath just looks surprised, but doesn’t make any effort, figuring that it must be harmless.\n\n");
 					outputText("“<i>Wow, jackpot!  Come here my swollen-dicked morsels, let’s have some fun!</i>”  Shouldra lunges after both Kath and Urta, who promptly scamper, not happy with the idea of becoming a ghost’s plaything.  You just watch the spectacle unfold and both the herms and Shouldra vanish from your sight...\n\n");
 					outputText("A few minutes later, both Urta and Kath return... panting and with their respective tents visibly absent...\n\n");
 					outputText("“<i>Oh, dear sweet Marae’s mercy, we finally lost that freaky ghoulie,</i>” Urta pants, tongue lolling out in a very canine fashion.\n\n");
-					outputText("“<i>That’s not funny, " + player.short + "! Kath shouts at you, tail jutting out like someone stuck a broom up her ass and swollen twice its usual girth with bristling hair.\n\n");
+					outputText("“<i>That’s not funny, " + player.short + "!</i>” Kath shouts at you, tail jutting out like someone stuck a broom up her ass and swollen twice its usual girth with bristling hair.\n\n");
 					outputText("You just shrug and tell them that - unfortunately - that one is out of your control.  “<i>So why do you put up with her?</i>” they promptly ask, even as they recompose themselves.  You shrug once more, replying that even you don’t know that...");
 				}
 				else if (flags[kFLAGS.TIMES_MET_SHOULDRA] > 0) {
@@ -689,7 +726,7 @@ package classes.Scenes.Places.TelAdre{
 			outputText("Urta pouts, clearly not too happy at having her thunder stolen, while Kath rolls her eyes.  “<i>Corny much, " + player.short + "?</i>”  Still, there’s a twinkle in her eyes that makes you feel you really have bolstered her spirits.  “<i>So, what does this training consist of, anyway?</i>”\n\n");
 			outputText("Upon hearing that, you grin evilly at Urta and ask her if you should get the package?\n\n");
 			outputText("Urta shakes her head and passes you the key, indicating silently that you should lock the front door instead.  Nodding in agreement, you concur that this is probably a good idea, there’s no telling how Kath will react.\n\n");
-			outputText("The cat-morph watches nervously as you and Urta head your seperate ways.  As the fox rummages amongst the junk on the side, she audibly professes, “<i>Why do I think I’m not going to like this?</i>”\n\n");
+			outputText("The cat-morph watches nervously as you and Urta head your separate ways.  As the fox rummages amongst the junk on the side, she audibly professes, “<i>Why do I think I’m not going to like this?</i>”\n\n");
 			outputText("You tell Kath to relax, this will all be over soon...\n\n");
 			outputText("“<i>Okay, now I’m really worried,</i>” she retorts, eyes flicking nervously between you and Urta.\n\n");
 			outputText("“<i>Before we begin, you should put this on,</i>” Urta says, holding the chastity belt towards Kath.\n\n");
@@ -710,7 +747,7 @@ package classes.Scenes.Places.TelAdre{
 			}
 			outputText("“<i>Okay, kitten.  Last chance to get over here and step into the belt,</i>” Urta threatens.\n\n");
 			outputText("“<i>Come and make me, voop.</i>” Kath spits, claws extended on all fingers now.\n\n");
-			outputText("Urta growls, and you think you hear her mutter “<i>gladly...</i>” under her breath.  Nevertheless Urta rushes Kath with tremendous speed, closing the distance between the two of them in mere moments.  Kath, barely has time to gasp in surprise, before Urta takes one of her arms, twists it and drops Kath facedown on the floor.  She wastes no time, quickly getting the belt in position and trying to close the latch on the dazed feline.  Kath instinctively tries to kick at the fox, but she easily pins her legs to the ground and closes the latch with a triumphant click.  Urta easily dodges a claw aimed at her side and smiles at her success.  “<i>This is what you get for insulting me.</i>”\n\n");
+			outputText("Urta growls, and you think you hear her mutter “<i>gladly...</i>” under her breath.  Nevertheless Urta rushes Kath with tremendous speed, closing the distance between the two of them in mere moments.  Kath barely has time to gasp in surprise, before Urta takes one of her arms, twists it and drops Kath facedown on the floor.  She wastes no time, quickly getting the belt in position and trying to close the latch on the dazed feline.  Kath instinctively tries to kick at the fox, but she easily pins her legs to the ground and closes the latch with a triumphant click.  Urta easily dodges a claw aimed at her side and smiles at her success.  “<i>This is what you get for insulting me.</i>”\n\n");
 			outputText("“<i>Insulting?</i>” you can’t resist asking.  You’ve never heard the word that Katherine used before.  “<i>It’s not really that bad, but rude all the same - it’s kind of like calling a dog or a wolf a bitch,</i>” Urta replies, gracefully dodging yet another swipe from the thrashing cat underneath.\n\n");
 			outputText("You make an understanding noise, then ask if Urta is going to make Katherine keep the belt on permanently - or at least until she gets through this training regime?  “<i>Just until her training is complete.  In fact, here, catch.</i>”  Urta tosses you the spare key to Kath’s bindings.  “<i>Don’t be too nice to her though,</i>” she warns.\n\n");
 			outputText("You clarify that you thought the original plan was Kath would wear the belt for a training session and then take it off; is she going to make her keep it on until the entire course of training is over, given how much of a fuss Kath just kicked up over putting it on?\n\n");
@@ -728,6 +765,7 @@ package classes.Scenes.Places.TelAdre{
 
 		public function katherineTrainingWithUrta():void {
 			clearOutput();
+			katherine.katherineSprite();
 			outputText("From Oswald's pawnshop you retrace your steps to the safehouse where Urta is getting Kath into shape and rap your knuckles against the door.\n\n");
 			if (flags[kFLAGS.KATHERINE_TRAINING] >= 100)
 				katherineTrainingWithUrtaComplete();
@@ -763,7 +801,8 @@ package classes.Scenes.Places.TelAdre{
 			switch (rand(3)) {
 				case 0: doNext(katherineTrainingWithUrtaStage1Success); break;
 				case 1: doNext(katherineTrainingWithUrtaStage1Failure); break;
-				case 2: doNext(katherineTrainingWithUrtaStage1Horny);
+				case 2: doNext(katherineTrainingWithUrtaStage1Horny); break;
+				default: doNext(katherineTrainingWithUrtaStage1Success);
 			}
 		}
 
@@ -837,9 +876,13 @@ package classes.Scenes.Places.TelAdre{
 			outputText("You smile at her, and motion for her to lead the way.  She nods, her prick bobbing before her.  Kath looks up in puzzlement as the two of you approach, while Urta tries to avoid blushing as she is exposed to her fellow mismatched herm.  “<i>Alright, seeing as how I’m in the mood too, I guess I can help you.</i>”\n\n");
 			outputText("The cat simply shrugs, as if to say ‘what the heck’, and then nods.  Urta produces the key and unlocks the belt, which Kath practically tears off, her " + katherine.cockMultiple("", "twin ") + "doggie-dongs stabbing fiercely into the air, dripping with their need.  She promptly sits herself down on the floor, waiting for Urta to do the same.  With surprising shyness, the herm fox seats herself beside the cat.  “<i>Now, let’s see... you’re " + (katherine.cockLength <= 10 ? "a lot " : "") + " smaller than me, so let’s see how works...</i>” Urta mutters, cracking her fingers.  She then reaches out a hand and closes her fingers gently around Kath’s " + katherine.cockMultiple("", "upper ") + "shaft...\n\n");
 			outputText("You could probably try and live up to your promise by giving Urta a handjob yourself, or just leave the two to pleasure each other.");
-			var helpThem:Function = katherineTrainingWithUrtaStage1HornyHelp;
-			if (player.gender == 0) helpThem = null;
-			simpleChoices("Help Out", helpThem, "Leave", katherineTrainingWithUrtaStage1HornyLeave, "", null, "", null, "", null);
+			menu();
+			if (!player.isGenderless()) {
+				addButton(0, "Help Out", katherineTrainingWithUrtaStage1HornyHelp);
+			} else {
+				addDisabledButton(0, "Help Out", "This scene requires you to have genitals.");
+			}
+			addButton(1, "Leave", katherineTrainingWithUrtaStage1HornyLeave);
 		}
 
 		private function katherineTrainingWithUrtaStage1HornyLeave():void
@@ -900,7 +943,8 @@ package classes.Scenes.Places.TelAdre{
 			switch (rand(3)) {
 				case 0: doNext(katherineTrainingWithUrtaStage2Success); break;
 				case 1: doNext(katherineTrainingWithUrtaStage2Failure); break;
-				case 2: doNext(katherineTrainingWithUrtaStage2Horny);
+				case 2: doNext(katherineTrainingWithUrtaStage2Horny); break;
+				default: doNext(katherineTrainingWithUrtaStage2Success);
 			}
 		}
 
@@ -936,14 +980,18 @@ package classes.Scenes.Places.TelAdre{
 			outputText("Urta rolls back on top of Kath and pins her firmly to the floor.  “<i>Well puss, that’s what happens when you think with your cock,</i>” Urta says, smiling. “<i>Expect to wake up in some alleyway missing some of your gems and all of your dignity.</i>”\n\n");
 			outputText("Urta tries to get up but Kath’s legs are still locked around her waist.  Kath grins and asks “<i>What happened to filling me up like a big condom if you win?</i>”\n\n");
 			outputText("“<i>That was <b>if</b> we were in the wasteland.  Get off already!</i>” Urta looks over at you and mutters “<i>You told her what to do, so I blame you for this.</i>”  While Urta uses the key to unlock Kath’s chastity belt you protest that this wasn’t what you suggested.  As Kath’s cock springs free, flicking some drops of pre across the floor Urta cuts you off.  “<i>You wanted to help with her training, so you can help me fill this little kitty.</i>”");
-			var spitroast:Function = threesome.spitroastKath;
-			if (player.gender == 0) spitroast = null;
-			simpleChoices("Spitroast", spitroast, "Leave", katherineTrainingWithUrtaStage2HornyLeave, "", null, "", null, "", null);
+			menu();
+			if (!player.isGenderless()) {
+				addButton(0, "Spitroast", threesome.spitroastKath);
+			} else {
+				addDisabledButton(0, "Spitroast", "This scene requires you to have genitals.");
+			}
+			addButton(1, "Leave", katherineTrainingWithUrtaStage2HornyLeave);
 		}
 
 		private function katherineTrainingWithUrtaStage2HornyLeave():void
 		{
-			if (player.gender == 0)
+			if (player.isGenderless())
 				outputText("\n\nYou gesture toward your featureless crotch and remind Urta that there's no way you're going to be able to help fill Kath.  You wish her the best of luck and wave goodbye as Kath, now free of her chastity belt, wraps herself around Urta once more.");
 			else
 				outputText("\n\nYou’ve already been away from camp for a while.  You need to get back there and check on the portal.  Besides, Kath and Urta are getting along with each other better every time they have sex.  Katherine starts to lick at one of Urta’s nipples.");
@@ -983,7 +1031,8 @@ package classes.Scenes.Places.TelAdre{
 				switch (rand(3)) {
 					case 0: doNext(katherineTrainingWithUrtaStage3Success); break;
 					case 1: doNext(katherineTrainingWithUrtaStage3Failure); break;
-					case 2: doNext(katherineTrainingWithUrtaStage3Horny);
+					case 2: doNext(katherineTrainingWithUrtaStage3Horny); break;
+					default: doNext(katherineTrainingWithUrtaStage3Success);
 				}
 			}
 		}
@@ -1022,7 +1071,7 @@ package classes.Scenes.Places.TelAdre{
 				outputText("“<i>...Haven’t you ever played games before?</i>” Kath finally asks, looking at Urta with a shocked expression on her face.\n\n");
 				outputText("Urta blushes.  “<i>I...er... well... oh, you two are just being ridiculous!</i>” she complains, throwing her arms up in exasperation.\n\n");
 				outputText("You and Kath look at each other and then burst out laughing.  Urta looks on with an annoyed expression, triangular ears twitching at the sound of your laughter.  With a mutter and a scowl she storms over and physically separates the pair of you.  “<i>Alright, kitty, that’s enough goofing off!  And you, " + player.short + "; if you aren’t going to help, then maybe you should just leave and let us get on with practicing,</i>” she growls.\n\n");
-				outputText("Still smiling, you tell Kath that you’ll stop by later to check up on her, encouraging her to keep trying until she’s able to properly get into the mindset.  “<i>I will, name, don’t you worry - I’m so close now, I won’t let you down!</i>” she vows.\n\n");
+				outputText("Still smiling, you tell Kath that you’ll stop by later to check up on her, encouraging her to keep trying until she’s able to properly get into the mindset.  “<i>I will, " + player.short + ", don’t you worry - I’m so close now, I won’t let you down!</i>” she vows.\n\n");
 				outputText("Then you turn to Urta and wink at her, telling her there’s no need to be such a killjoy... you’ll be happy to help her get over her grumpiness later, in bed.  “<i>I bet you will, " + player.short + ",</i>” Kath jokes.  “<i>But, you know, Urta, if if " + player.short + "’s not giving you enough love, I’ve got a pole you could use to loosen up with.</i>”\n\n");
 				outputText("You frown jokingly and tell Kath to find her own fox-herm, you got dibs on this one.  “<i>Dibs?  When did you call that?  And besides, she’s really kind of sexy now that I've got to know her - why shouldn’t I have some fun if she’s willing?</i>” the cat-herm jokes.  You smile confidently and boast of all the experience you have handling this particular piece of horse-dicked fox ass, and tell her of how overfilled Urta’s condoms get when the two of you happen to have some fun.\n\n");
 				outputText("“<i>Oh so the two of you have THAT much fun, huh?  Well now I just have to have a piece of that vixen all for myself...</i>” Kath laughs, licking her lips with an exaggerated leer.  Not if you can help it, you argue stepping in front of Urta and blocking Kath’s hungry eyes.  “<i>Move aside, " + player.short + ".  This is a free city, I’m allowed to look at whatever piece of ass I damn well please,</i>” Kath protests, grabbing your arm and trying to get you to move away playfully.\n\n");
@@ -1045,11 +1094,18 @@ package classes.Scenes.Places.TelAdre{
 			outputText("Urta moves in next to Kath and says “<i>We’re going to have to work on that.  It’s a sure bet that perps will <b>whoa!</b></i>”  Kath has got her hands on Urta’s breasts and is purring much more loudly now.  Urta swats her away and back up.  “<i>No Kath, fight it.  This is exactly what some perps will do.</i>”\n\n");
 			outputText("Kath starts to rub her own breasts as her torso and tail sway from side to side in a hypnotic dance.  Only her overly flexible spine allows her to move that way.\n\n");
 			outputText("Urta shakes her head and says “<i>Well she’s no good to anyone now.  It was your idea to tease her so now you’re going help me calm this kitty.</i>”");
-			var spitroast:Function = threesome.spitroastKath;
-			var three69:Function = threesome.threeSixtyNine;
-			if (player.gender == 0) spitroast = null;
-			if (!player.hasCock()) three69 = null;
-			simpleChoices("Spitroast", spitroast, "369", three69, "Try Leaving", threesome.roastYou, "", null, "", null);
+			menu();
+			if (!player.isGenderless()) {
+				addButton(0, "Spitroast", threesome.spitroastKath);
+			} else {
+				addDisabledButton(0, "Spitroast", "This scene requires you to have genitals.");
+			}
+			if (player.hasCock()) {
+				addButton(1, "369", threesome.threeSixtyNine);
+			} else {
+				addDisabledButton(1, "369", "This scene requires you to have cock.");
+			}
+			addButton(2, "Try Leaving", threesome.roastYou);
 		}
 
 		private function katherineTrainingWithUrtaComplete():void
@@ -1081,7 +1137,7 @@ package classes.Scenes.Places.TelAdre{
 		private function katherineTrainingWithUrtaCompleteContinued():void
 		{
 			clearOutput();
-			outputText("Later that " + (model.time.hours + 3 > 18 ? "evening" : "day") + "...\n\n");
+			outputText("Later that " + (getGame().time.hours + 3 > 18 ? "evening" : "day") + "...\n\n");
 			outputText("You laugh at Urta’s joke, indicating that if that were you, things would have been very different.  Then you take a sip of your drink.  Kath is currently gulping her way down a very large, fruity-smelling drink, while Urta, having finished her joke, is chugging down yet another " + (urta.pregnancy.isPregnant ? "virgin margarita.  You and Kath already had a laugh about how inappropriate it is for any of you to be drinking something 'virgin'" : "of her favorite bottles of alcohol, the strange amber-colored stuff with the JD label - odd, you can’t remember what it’s called") + ".  The two herms seem to be having a great time here.\n\n");
 			outputText("Once you finish your drink you announce that you will have to leave shortly.  “<i>Wha?  Already?  But we're just getting started!</i>” Urta protests.  “<i>Yeah, " + player.short + ".  Don’t be such a spoilsport!</i>” Kath protests alongside, stopping momentarily to sip her drink.  “<i>Wow... tish shtuff is really good... no wonder you’re always here drinking your face off prickvixen,</i>” Kath comments happily.  The vixen laughs drunkenly and retorts “<i>Look who’s slurring their words already!  You’re such a lightweight, my little pussy.</i>”\n\n");
 			outputText("You laugh and reply that as much as you’d love to stay, you have to return to your duties... speaking of which... don’t they have duties of their own to return to?  “<i>Not today, sexy!  I officially took the day off - and my little corporal pussy is taking it off with me,</i>” Urta laughs.  “<i>Yeah, you tell [him] boss,</i>” Kath giggles at that statement.  You click your tongue and shake your head... scolding them jokingly, saying that you didn’t get Kath off the streets so they could waste their days away at a bar.\n\n");
@@ -1091,12 +1147,15 @@ package classes.Scenes.Places.TelAdre{
 			flags[kFLAGS.KATHERINE_LOCATION] = Katherine.KLOC_KATHS_APT; //This ensures that after you talk Kath will disappear for the rest of the day due to stuff she needs to sort out
 			flags[kFLAGS.KATHERINE_URTA_AFFECTION] += 10; //Kath and Urta will like each other by the time they’re finished training
 			if (flags[kFLAGS.KATHERINE_URTA_AFFECTION] > 28) flags[kFLAGS.KATHERINE_URTA_AFFECTION] = 28; //Make sure they don't like each other too much
-			if (player.gender == 0)
-				doNext(katherineTrainingWithUrtaCompleteLeave);
-			else {
+			
+			menu();
+			if (player.isGenderless()) {
+				addDisabledButton(0, "Stay", "This scene requires you to have genitals.");
+			} else {
 				outputText("That’s an enticing sight... you should really get back to your duties... but on the other hand another hour with the two herm beauties wouldn’t be so bad, would it?  What to do...");
-				simpleChoices("Stay", katherineTrainingWithUrtaCompleteStay, "Leave", katherineTrainingWithUrtaCompleteLeave, "", null, "", null, "", null);
+				addButton(0, "Stay", katherineTrainingWithUrtaCompleteStay);
 			}
+			addButton(1, "Leave", katherineTrainingWithUrtaCompleteLeave);
 		}
 
 		private function katherineTrainingWithUrtaCompleteLeave():void
@@ -1123,8 +1182,13 @@ package classes.Scenes.Places.TelAdre{
 			outputText("The two herms look at each other, and nod silently, then hug each other and say, “<i>I’m sorry,</i>” in unison.  Then, with a wicked grin, they spring up and hug you, letting you feel the prominent bulges of their erect cocks against your belly.\n\n");
 			outputText("Okay, okay, you say, laughing at the two amorous herms.  You don’t know about them, but you really don’t feel like being charged with public indecency... so let’s go to the back-rooms? you suggest once more.\n\n");
 			outputText("“<i>Sounds good to me!</i>” they cheer at once.  You lead the girls away, arm in arm, followed by the envious stares of more than a few patrons...");
-			var dpKath:Function = (player.hasCock() ? threesome.doublePenetrateKath : null);
-			simpleChoices("Let 'em fuck", threesome.doubleStuffKath, "DP Kath", dpKath, "", null, "", null, "", null);
+			menu();
+			addButton(0, "Let 'em fuck", threesome.doubleStuffKath);
+			if (player.hasCock()) {
+				addButton(1, "DP Kath", threesome.doublePenetrateKath);
+			} else {
+				addDisabledButton(1, "DP Kath", "This scene requires you to have cock.");
+			}
 		}
 
 		public function katherineGetsEmployed():void
@@ -1148,6 +1212,7 @@ package classes.Scenes.Places.TelAdre{
 		public function postTrainingAlleyDescription():void
 		{
 			clearOutput();
+			spriteSelect(null);
 			outputText("You go into the alleyway behind Oswald's shop.  It seems empty without a happy cat-morph to greet you.\n\n");
 			outputText("Looking closely you notice a few of the secret hiding spots among the crates have been emptied.  Kath must have been here to collect some of her more sentimental possessions.\n\n");
 			if (!katherine.isAt(Katherine.KLOC_KATHS_APT)) { //Only possible if she's already been seen on guard duty at the gate and you've slept once since

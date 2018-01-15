@@ -1,6 +1,7 @@
 package classes.Scenes.Dungeons.HelDungeon
 {
 	import classes.*;
+	import classes.BodyParts.*;
 
 	public class PhoenixPlatoon extends Monster
 	{
@@ -26,12 +27,12 @@ package classes.Scenes.Dungeons.HelDungeon
 		public function phoenixPlatoonLustbang():void {
 			outputText("\"<i>LUSTBANG OUT!</i>\" one of the rear-most phoenixes shouts, causing all the other warriors to duck down behind their shields.  Oh, shit!  A large glass sphere rolls out from the shield wall, and immediately explodes in a great pink cloud.  You cough and wave your arms, but by the time the cloud has dissipated, you feel lightheaded and lusty, barely able to resist the urge to throw yourself at the phoenixes and beg for their cocks and cunts.");
 			//(Effect: Large lust increase)
-			game.dynStats("lus", 40);
+			player.takeLustDamage(40, true);
 			combatRoundOver();
 		}
 
 		public function phoenixPlatoonAI():void {
-			if (findStatusEffect(StatusEffects.Platoon) < 0) {
+			if (!hasStatusEffect(StatusEffects.Platoon)) {
 				phoenixPlatoonRush();
 				createStatusEffect(StatusEffects.Platoon,0,0,0,0);
 			}
@@ -74,17 +75,17 @@ package classes.Scenes.Dungeons.HelDungeon
 			this.balls = 2;
 			this.ballSize = 1;
 			this.cumMultiplier = 3;
-			this.createVagina(false, VAGINA_WETNESS_SLAVERING, VAGINA_LOOSENESS_LOOSE);
+			this.createVagina(false, VaginaClass.WETNESS_SLAVERING, VaginaClass.LOOSENESS_LOOSE);
 			createBreastRow(Appearance.breastCupInverse("D"));
-			this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
-			this.ass.analWetness = ANAL_WETNESS_DRY;
+			this.ass.analLooseness = AssClass.LOOSENESS_STRETCHED;
+			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.tallness = rand(8) + 70;
-			this.hipRating = HIP_RATING_AMPLE+2;
-			this.buttRating = BUTT_RATING_LARGE;
-			this.lowerBody = LOWER_BODY_TYPE_LIZARD;
-			this.skinTone = "red";
-			this.hairColor = "black";
-			this.hairLength = 15;
+			this.hips.rating = Hips.RATING_AMPLE+2;
+			this.butt.rating = Butt.RATING_LARGE;
+			this.lowerBody.type = LowerBody.LIZARD;
+			this.skin.tone = "red";
+			this.hair.color = "black";
+			this.hair.length = 15;
 			initStrTouSpeInte(70, 60, 120, 40);
 			initLibSensCor(40, 45, 50);
 			this.weaponName = "spears";
@@ -99,10 +100,10 @@ package classes.Scenes.Dungeons.HelDungeon
 			this.level = 20;
 			this.gems = rand(25) +160;
 			this.additionalXP = 50;
-			this.hornType = HORNS_DRACONIC_X2;
-			this.horns = 2;
-			this.tailType = TAIL_TYPE_HARPY;
-			this.wingType = WING_TYPE_FEATHERED_LARGE;
+			this.horns.type = Horns.DRACONIC_X2;
+			this.horns.value = 2;
+			this.tail.type = Tail.HARPY;
+			this.wings.type = Wings.FEATHERED_LARGE;
 			this.drop = NO_DROP;
 			checkMonster();
 		}

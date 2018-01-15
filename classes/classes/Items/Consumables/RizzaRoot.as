@@ -3,6 +3,7 @@
  */
 package classes.Items.Consumables
 {
+	import classes.GlobalFlags.kFLAGS;
     import classes.PerkLib;
     import classes.Player;
     import classes.internals.Utils;
@@ -29,13 +30,13 @@ package classes.Items.Consumables
 				else if (player.hasScales())
 					outputText("\n\nYour scales itch incessantly, so you scratch at them.  They start falling off wholesale, leaving you standing in a pile of scales after only a few moments. <b>You've lost your scales!</b>");
 				else if (player.hasGooSkin())
-					outputText("\n\nYour " + player.skinDesc + " itches incessantly, and as you scratch it shifts and changes, becoming normal human-like skin. <b>Your skin is once again normal!</b>");
-				player.skinDesc = "skin";
-				player.skinType = 0;
+					outputText("\n\nYour " + player.skin.desc + " itches incessantly, and as you scratch it shifts and changes, becoming normal human-like skin. <b>Your skin is once again normal!</b>");
+				player.skin.desc = "skin";
+				player.skin.type = 0;
 				changes += 2;
 			}
-			if ((changes < changeLimit) && (player.earType != 4) && (Utils.rand(4) == 0)){
-				player.earType = 4;
+			if ((changes < changeLimit) && (player.ears.type != 4) && (Utils.rand(4) == 0)){
+				player.ears.type = 4;
 				changes++;
 				outputText("\n\nA weird tingling runs through your scalp as your " + player.hairDescript() + " shifts slightly.  You reach up and your hand bumps against <b>your new pointed elfin ears</b>.  You bet they look cute!");
 			}
@@ -48,13 +49,12 @@ package classes.Items.Consumables
 			else if (player.tallness >= 108){
 				outputText("\n\nYou don’t feel anything happening along your spine.  Perhaps this is as tall as the rizza root can make you.");
 			}
-        }
-                
-        public function RizzaRoot()
-        {
-            super("RizzaRt", "Rizza Root", "a tube of rizza root strands", rizzaRootEffect, 10, "A small ceramic tube full of fine red root strands.  They smell something like citrus fruit.");
-        }
+			game.flags[kFLAGS.TIMES_TRANSFORMED] += changes;
+		}
 
-    }
-
+		public function RizzaRoot()
+		{
+			super("RizzaRt", "Rizza Root", "a tube of rizza root strands", rizzaRootEffect, 10, "A small ceramic tube full of fine red root strands.  They smell something like citrus fruit.");
+		}
+	}
 }

@@ -50,6 +50,8 @@ package classes.Items.Consumables
 					break;
 				case 3: //Child is a faerie, hates phouka whiskey
 					outputText("You feel queasy and want to throw up.  There's a pain in your belly and you realize the baby you're carrying didn't like that at all.");
+					break;
+				default:
 			}
 			game.flags[kFLAGS.PREGNANCY_CORRUPTION]++; //Faerie or phouka babies become more corrupted, no effect if the player is not pregnant or on other types of babies
 			phoukaWhiskeyAddStatus(game.player);
@@ -96,7 +98,7 @@ package classes.Items.Consumables
 			var sensChange:int = (player.sens < 10 ? player.sens : 10);
 			var speedChange:int = (player.spe < 20 ? player.spe : 20);
 			var intChange:int = (player.inte < 20 ? player.inte : 20);
-			if (player.findStatusEffect(StatusEffects.PhoukaWhiskeyAffect) >= 0) {
+			if (player.hasStatusEffect(StatusEffects.PhoukaWhiskeyAffect)) {
 				var drinksSoFar:int = player.statusEffectv2(StatusEffects.PhoukaWhiskeyAffect);
 				if (drinksSoFar < 4)
 					player.addStatusValue(StatusEffects.PhoukaWhiskeyAffect, 1, 8 - (2 * drinksSoFar));

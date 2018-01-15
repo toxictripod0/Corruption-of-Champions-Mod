@@ -1,4 +1,5 @@
 *.swf
+*.sol
 RECOVER_*
 Corruption-of-Champions.as3proj
 /img/*
@@ -10,11 +11,21 @@ Corruption-of-Champions.as3proj
 
 *.pyc
 /dist
+/generated
+.idea/shelf
 .idea/workspace.xml
 .idea/copyright/profiles_settings.xml
-*.sol
-*.swc
+/node_modules
 /out
 /tmp
 CoC-AIR-app.xml
 CoC-AIR.airi
+
+# build directory
+target/
+
+# vagrant generated files
+.vagrant
+
+# Ant generated file for single test targets
+test/SingleRunner.mxml

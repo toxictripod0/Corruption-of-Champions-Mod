@@ -13,7 +13,7 @@ package classes.Items.Armors
 	{
 		public function MaraeArmor() 
 		{
-			super("TB.Armr","T.B.Armor","tentacled bark armor","a suit of tentacled bark armor",35,1000,"This suit of armor is finely made from the white bark from corrupted Marae you've defeated. It comes with tentacles though.");
+			super("TB.Armr","T.B.Armor","tentacled bark armor","a suit of tentacled bark armor",35,1000,"This suit of armor is finely made from the white bark from corrupted Marae you've defeated. It comes with tentacles though.","Heavy");
 		}
 		
 		override public function get supportsBulge():Boolean { return true; }
@@ -30,7 +30,7 @@ package classes.Items.Armors
 			outputText("\n\nFirst, you clamber into the breastplate. ");
 			if (getGame().player.isBiped()) //Some variants.
 			{
-				if (getGame().player.lowerBody == 0) outputText("Then you put your feet into your boots. With the boots fully equipped, you move on to the next piece. ");
+				if (getGame().player.lowerBody.type == 0) outputText("Then you put your feet into your boots. With the boots fully equipped, you move on to the next piece. ");
 				else outputText("Then you attempt to put your feet into your boots. You realize that the boots are designed for someone with normal feet. You have to modify the boots to fit and when you do put on your boots, your feet are exposed. ");
 			}
 			outputText("Next, you put on your reinforced bark bracers to protect your arms.\n\n")
@@ -69,7 +69,7 @@ package classes.Items.Armors
 				outputText("You leave the silken loincloth in your possessions for the time being.");
 			}
 			outputText("You are suited up and all good to go. ");
-			if (getGame().player.lust < 20)
+			if (getGame().player.lust100< 20)
 			{
 				outputText("\n\nYou can feel the tentacles inside your breastplate slither their way and tease your [butt]. You " + (game.player.cor < 60 ? "gasp in surprise" : "moan in pleasure") + ".");
 				game.dynStats("lust", 30);

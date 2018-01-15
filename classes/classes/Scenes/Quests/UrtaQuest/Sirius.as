@@ -1,6 +1,7 @@
 package classes.Scenes.Quests.UrtaQuest
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Scenes.Areas.Desert.Naga;
 	import classes.internals.*;
@@ -32,7 +33,7 @@ package classes.Scenes.Quests.UrtaQuest
 		override protected function performCombatAction():void
 		{
 			var attack:int = rand(4);
-			if (player.findStatusEffect(StatusEffects.Blind) >= 0) attack = rand(3);
+			if (player.hasStatusEffect(StatusEffects.Blind)) attack = rand(3);
 			if (attack == 0) eAttack();
 			if (attack == 1) poisonBite();
 			if (attack == 2) manNagaTease();
@@ -48,7 +49,7 @@ package classes.Scenes.Quests.UrtaQuest
 				combatRoundOver();
 			}
 //Hit (Blind):
-			if (findStatusEffect(StatusEffects.Blind) >= 0) {
+			if (hasStatusEffect(StatusEffects.Blind)) {
 				outputText("  Though your vision is still blurry, you feel yourself being sucked into the golden depths of those pupils, making you forget all your worries, if only for an instant.  All you can focus on is your growing arousal as you sink deeper into his gaze.  You shake your head, clearing your mind of the hypnotising effects the snake-man's eyes seem to possess, though the arousal remains.");
 				kGAMECLASS.dynStats("lus", (5 + player.lib / 10 - player.inte / 20));
 			}
@@ -108,16 +109,16 @@ package classes.Scenes.Quests.UrtaQuest
 			this.plural = false;
 			this.createCock(14,2);
 			createBreastRow(0);
-			this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-			this.ass.analWetness = ANAL_WETNESS_DRY;
+			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
+			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,10,0,0,0);
 			this.tallness = 5*12+10;
-			this.hipRating = HIP_RATING_AMPLE+2;
-			this.buttRating = BUTT_RATING_LARGE;
-			this.lowerBody = LOWER_BODY_TYPE_NAGA;
-			this.skinTone = "mediterranean-toned";
-			this.hairColor = "orange";
-			this.hairLength = 16;
+			this.hips.rating = Hips.RATING_AMPLE+2;
+			this.butt.rating = Butt.RATING_LARGE;
+			this.lowerBody.type = LowerBody.NAGA;
+			this.skin.tone = "mediterranean-toned";
+			this.hair.color = "orange";
+			this.hair.length = 16;
 			initStrTouSpeInte(75, 70, 75, 92);
 			initLibSensCor(45, 35, 40);
 			this.weaponName = "fangs";

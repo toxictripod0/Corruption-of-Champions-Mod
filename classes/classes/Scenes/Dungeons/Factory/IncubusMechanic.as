@@ -1,6 +1,7 @@
 package classes.Scenes.Dungeons.Factory
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Items.Armors.LustyMaidensArmor;
 	import classes.Scenes.Dungeons.Factory;
@@ -28,34 +29,24 @@ package classes.Scenes.Dungeons.Factory
 			if (hpVictory)
 				outputText("You smile in satisfaction as the " + short + " collapses, unable to continue fighting.");
 			else outputText("You smile in satisfaction as the " + short + " collapses, masturbating happily.");
-			if (player.gender == 0) {
-				outputText("  Now would be the perfect opportunity to test his demonic tool...\n\nHow do you want to handle him?");
-				if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] >= 2 && flags[kFLAGS.FACTORY_INCUBUS_BRIBED] == 0) outputText("\n\n<b>You swear you can hear a clicking sound coming from the west.</b>");
-				game.addButton(0, "Anally", game.d3.incubusMechanic.doRideIncubusAnally, null, null, null, "Ride him anally.");
-				game.addButton(1, "Orally", game.d3.incubusMechanic.doOralIncubus, null, null, null, "Service the incubus orally.");
-				game.addButton(4, "Leave", game.combat.cleanupAfterCombat);
+			outputText("  Now would be the perfect opportunity to put his tool to use...\n\nWhat do you do?");
+			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] >= 2 && flags[kFLAGS.FACTORY_INCUBUS_BRIBED] == 0) outputText("\n\n<b>You swear you can hear a clicking sound coming from the west.</b>");
+			
+			if (!player.isGenderless()) {
+				game.addButton(0, "Rape", game.lethicesKeep.incubusMechanic.doRapeIncubus).hint(player.hasCock() ? "Fuck his butt." : "Ride him vaginally.");
+			} else {
+				game.addButtonDisabled(0, "Rape", "This scene requires you to have genitals.");
 			}
-			else {
-				game.dynStats("lus", 1);
-				if (hpVictory) {
-					outputText("  Now would be the perfect opportunity to put his tool to use...\n\nWhat do you do, rape him, service him, or let him take you anally?");
-					if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] >= 2 && flags[kFLAGS.FACTORY_INCUBUS_BRIBED] == 0) outputText("\n\n<b>You swear you can hear a clicking sound coming from the west.</b>");
-				}
-				else {
-					outputText("  Now would be the perfect opportunity to put his tool to use...\n\nWhat do you do?");
-					if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] >= 2 && flags[kFLAGS.FACTORY_INCUBUS_BRIBED] == 0) outputText("\n\n<b>You swear you can hear a clicking sound coming from the west.</b>");
-					if (player.hasVagina() && player.biggestTitSize() >= 4 && player.armor == armors.LMARMOR) game.addButton(3, "B.Titfuck", (player.armor as LustyMaidensArmor).lustyMaidenPaizuri, player, this);
-				}
-				game.addButton(0, "Rape", game.d3.incubusMechanic.doRapeIncubus, null, null, null, player.hasCock() ? "Fuck his butt." : "Ride him vaginally.");
-				game.addButton(1, "Service Him", game.d3.incubusMechanic.doOralIncubus, null, null, null, "Service the incubus orally.");
-				game.addButton(2, "Anal", game.d3.incubusMechanic.doRideIncubusAnally, null, null, null, "Ride him anally.");
-				game.addButton(4, "Nothing", game.combat.cleanupAfterCombat);
-			}
+			game.addButton(1, "Service Him", game.lethicesKeep.incubusMechanic.doOralIncubus).hint("Service the incubus orally.");
+			game.addButton(2, "AnalRide", game.lethicesKeep.incubusMechanic.doRideIncubusAnally).hint("Ride him anally.");
+			if (player.hasVagina() && player.biggestTitSize() >= 4 && player.armor == armors.LMARMOR) game.addButton(3, "B.Titfuck", (player.armor as LustyMaidensArmor).lustyMaidenPaizuri, player, this);
+			// no disabled button for this option
+			game.addButton(14, "Leave", game.combat.cleanupAfterCombat);
 		}
 		
 		private function defeatedInDungeon3(hpVictory:Boolean):void
 		{
-			game.d3.incubusMechanic.beatDaMechanic(hpVictory);
+			game.lethicesKeep.incubusMechanic.beatDaMechanic(hpVictory);
 		}
 
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
@@ -76,18 +67,18 @@ package classes.Scenes.Dungeons.Factory
 				outputText("\n\nYour foe doesn't seem to care...");
 				doNext(game.combat.endLustLoss);
 			} else {
-				game.d3.incubusMechanic.doLossIncubus();
+				game.lethicesKeep.incubusMechanic.doLossIncubus();
 			}
 		}
 		
 		private function wonInDungeon3(hpVictory:Boolean, pcCameWorms:Boolean):void
 		{
-			if (flags[kFLAGS.LETHICE_DEFEATED] > 0) game.d3.incubusMechanic.doLossIncubus();
-			else game.d3.incubusMechanic.mechanicFuckedYouUp(hpVictory, pcCameWorms);
+			if (flags[kFLAGS.LETHICE_DEFEATED] > 0) game.lethicesKeep.incubusMechanic.doLossIncubus();
+			else game.lethicesKeep.incubusMechanic.mechanicFuckedYouUp(hpVictory, pcCameWorms);
 		}
 		
 		private function cockTripAttack():void {
-			if (findStatusEffect(StatusEffects.Blind) >= 0) { //Blind dodge change
+			if (hasStatusEffect(StatusEffects.Blind)) { //Blind dodge change
 				outputText(capitalA + short + " suddenly grows it's dick to obscene lengths and tries to trip you with it.  Thankfully he's so blind he wasn't aiming anywhere near you!");
 				game.combat.combatRoundOver();
 				return;
@@ -98,17 +89,18 @@ package classes.Scenes.Dungeons.Factory
 			}
 			else { //Fall down go boom
 				outputText("  You land hard on your ass, momentarily stunned as the demonic cock-tentacle curls around your " + player.legs() + ", smearing them with oozing demonic fluids.");
-				if (player.lust >= 80 || player.cor >= 80) {
+				if (player.lust100 >= 80 || player.cor >= 80) {
 					outputText("  Moaning with desire, you lick your lips as you slide your well-lubricated " + player.legs() + " free.  You gather a dollop of cum and lick it seductively, winking at the incubus and hoping to make him cave into his desire.");
-					game.dynStats("lus", 13, "cor", 1);
+					player.takeLustDamage(13, true);
+					game.dynStats("cor", 1);
 				}
-				else if (player.lust >= 50 || player.cor >= 50) {
+				else if (player.lust100 >= 50 || player.cor >= 50) {
 					outputText("  Blushing at the scent and feel of cum on your " + player.legs() + ", you twist and pull free.  You find yourself wondering what this demon's dick would taste like.");
-					game.dynStats("lus", 8 + player.cor / 20);
+					player.takeLustDamage(8 + player.cor / 20, true);
 				}
 				else {
 					outputText("  Disgusted, you pull away from the purplish monstrosity, the act made easier by your well-slimed " + player.legs() + ".");
-					game.dynStats("lus", 5 + player.cor / 20);
+					player.takeLustDamage(5 + player.cor / 20, true);
 				}
 				player.takeDamage(5);
 			}
@@ -117,7 +109,7 @@ package classes.Scenes.Dungeons.Factory
 		}
 		
 		private function spoogeAttack():void {
-			if (findStatusEffect(StatusEffects.Blind) >= 0) { //Blind dodge change
+			if (hasStatusEffect(StatusEffects.Blind)) { //Blind dodge change
 				outputText(capitalA + short + " pumps and thrusts his hips lewdly before cumming with intense force in your direction!  Thankfully his aim was off due to the blindness currently affect him.");
 				game.combat.combatRoundOver();
 				return;
@@ -134,7 +126,7 @@ package classes.Scenes.Dungeons.Factory
 				case 0: //Face
 					outputText("face.  The gooey demon-seed oozes and slides over you with a mind of its own, forcing its way into your mouth and nose!  You can feel it moving around inside you, doing its best to prepare you for its master.");
 					game.dynStats("lus", 3);
-					if (player.findStatusEffect(StatusEffects.DemonSeed) < 0)
+					if (!player.hasStatusEffect(StatusEffects.DemonSeed))
 						player.createStatusEffect(StatusEffects.DemonSeed, 5, 0, 0, 0);
 					else player.addStatusValue(StatusEffects.DemonSeed, 1, 7);
 					player.slimeFeed();
@@ -143,7 +135,7 @@ package classes.Scenes.Dungeons.Factory
 					if (player.hasFuckableNipples()) {
 						outputText(allBreastsDescript() + ".  The gooey demon-seed oozes and slides over you with a mind of its own, forcing its way into your open nipples.  You can feel it moving around inside you, doing its best to prepare you for its master.");
 						game.dynStats("lus", 3);
-						if (player.findStatusEffect(StatusEffects.DemonSeed) < 0)
+						if (!player.hasStatusEffect(StatusEffects.DemonSeed))
 							player.createStatusEffect(StatusEffects.DemonSeed, 5, 0, 0, 0);
 						else player.addStatusValue(StatusEffects.DemonSeed, 1, 8);
 						player.slimeFeed();
@@ -154,7 +146,7 @@ package classes.Scenes.Dungeons.Factory
 					if (player.vaginas.length > 0) {
 						outputText("crotch.  The gooey demon-seed oozes and slides over you with a mind of its own, forcing its way past your " + player.armorName + " and into your " + player.vaginaDescript(0) + ".  You can feel it moving around inside you, doing its best to prepare you for its master.");
 						game.dynStats("lus", 3);
-						if (player.findStatusEffect(StatusEffects.DemonSeed) < 0)
+						if (!player.hasStatusEffect(StatusEffects.DemonSeed))
 							player.createStatusEffect(StatusEffects.DemonSeed, 5, 0, 0, 0);
 						else player.addStatusValue(StatusEffects.DemonSeed, 1, 8);
 						player.slimeFeed();
@@ -178,15 +170,15 @@ package classes.Scenes.Dungeons.Factory
 			this.cumMultiplier = 3;
 			// this.hoursSinceCum = 0;
 			createBreastRow(0);
-			this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
-			this.ass.analWetness = ANAL_WETNESS_SLIME_DROOLING;
+			this.ass.analLooseness = AssClass.LOOSENESS_STRETCHED;
+			this.ass.analWetness = AssClass.WETNESS_SLIME_DROOLING;
 			this.tallness = rand(9) + 70;
-			this.hipRating = HIP_RATING_AMPLE;
-			this.buttRating = BUTT_RATING_TIGHT;
-			this.lowerBody = LOWER_BODY_TYPE_DEMONIC_CLAWS;
-			this.skinTone = "light purple";
-			this.hairColor = "black";
-			this.hairLength = 12;
+			this.hips.rating = Hips.RATING_AMPLE;
+			this.butt.rating = Butt.RATING_TIGHT;
+			this.lowerBody.type = LowerBody.DEMONIC_CLAWS;
+			this.skin.tone = "light purple";
+			this.hair.color = "black";
+			this.hair.length = 12;
 			initStrTouSpeInte(65, 40, 45, 85);
 			initLibSensCor(80, 70, 80);
 			this.weaponName = "claws";
@@ -214,13 +206,12 @@ package classes.Scenes.Dungeons.Factory
 				this.spe += 15;
 				this.inte += 20;
 				this.weaponAttack += 5;
-				this.HP = eMaxHP();
+				this.HP = maxHP();
 			}
 			this.special1 = cockTripAttack;
 			this.special2 = spoogeAttack;
-			this.tailType = TAIL_TYPE_DEMONIC;
-			this.wingType = WING_TYPE_BAT_LIKE_TINY;
-			this.wingDesc = "tiny hidden";
+			this.tail.type = Tail.DEMONIC;
+			this.wings.type = Wings.BAT_LIKE_TINY;
 			checkMonster();
 		}
 	}

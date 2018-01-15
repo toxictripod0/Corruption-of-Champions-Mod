@@ -1,6 +1,7 @@
 package classes.Scenes.Areas.HighMountains 
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.internals.ChainedDrop;
@@ -30,17 +31,17 @@ package classes.Scenes.Areas.HighMountains
 		}
 		
 		protected function phoenixFireBreath():void {
-			if (findStatusEffect(StatusEffects.Uber) < 0) {
+			if (!hasStatusEffect(StatusEffects.Uber)) {
 				outputText("Suddenly the phoenix disengages from you and loops through the air, giving out a loud cry before she starts to barrel down at you. She’s clearly building up for something, so you’d better wait until she makes her move if you want a chance to dodge!");
 				createStatusEffect(StatusEffects.Uber, 0, 0, 0, 0);
 			}
 			else {
 				if (flags[kFLAGS.IN_COMBAT_USE_PLAYER_WAITED_FLAG] == 1) {
-					outputText("You dive to the ground just as the phoenix breathes a great gout of flame at you. The fire blooms over your back, singeing your [armor], but doesn’t harm you. As she swoops low you see the phoenix scowl, looking quite disappointed, but it’s clear she isn’t done yet!", false);
+					outputText("You dive to the ground just as the phoenix breathes a great gout of flame at you. The fire blooms over your back, singeing your [armor], but doesn’t harm you. As she swoops low you see the phoenix scowl, looking quite disappointed, but it’s clear she isn’t done yet!");
 				}
 				//MASSIVE DAMAGE!
 				else {
-					outputText("As she zooms over you a great gout of flame erupts from the phoenix’s mouth! You dive out of the way, but all too late. The wall of fire rolls over you as you leap through it, the brief contact with the inferno searing both you and your " + player.armorName + " badly. ", false);
+					outputText("As she zooms over you a great gout of flame erupts from the phoenix’s mouth! You dive out of the way, but all too late. The wall of fire rolls over you as you leap through it, the brief contact with the inferno searing both you and your " + player.armorName + " badly. ");
 					var damage:int = str + weaponAttack + 300 + rand(250);
 					damage = player.reduceDamage(damage);
 					player.takeDamage(damage, true);
@@ -61,9 +62,8 @@ package classes.Scenes.Areas.HighMountains
 				if (player.hasCock() && player.hasVagina()) outputText("whilst your");
 				if (player.hasVagina()) outputText("thighs are suddenly soaked by a torrent of girlcum as your body reacts to the potent chemicals");
 				outputText(".");
-				var lustDmg:Number = (30 + rand(30)) * (player.lustPercent() / 100);
-				game.dynStats("lus", lustDmg, "resisted", false);
-				outputText(" <b>(<font color=\"#ff00ff\">" + (Math.round(lustDmg*10)/10) + "</font>)</b>");
+				var lustDmg:Number = 30 + rand(30);
+				player.takeLustDamage(lustDmg, true);
 			}
 			combatRoundOver();
 		}
@@ -71,7 +71,7 @@ package classes.Scenes.Areas.HighMountains
 		override protected function performCombatAction():void
 		{
 			var choice:Number = rand(4);
-			if (findStatusEffect(StatusEffects.Uber) >= 0) {
+			if (hasStatusEffect(StatusEffects.Uber)) {
 				phoenixFireBreath();
 				return;
 			}
@@ -116,22 +116,22 @@ package classes.Scenes.Areas.HighMountains
 			this.long = "The figure facing you is one of the dangerous hybrids of the Salamander and Harpy races; a Phoenix created by the self proclaimed harpy \"Queen\". Her appearance is close to a normal, crimson-feathered harpy, save for a few noticeable additions. Wings larger than a normal harpy’s sprout from her back, probably to make up for the fact that the usual harpy armwings fade into scaled forearms, an obvious marker of her Salamander parentage. Her lower body is much the same, feather-covered hips and thighs merging with scales around the knee and ending in a clawed lizard foot; not to mention the long, fiery tail that swishes to and from behind her as she circles you. \n\nStanding perhaps six and a half feet tall, her large breasts strain against the tarnished metal of her vest, just as her ample hips threaten to burst free from her tight loincloth. A half-erect lizard cock pokes out pushing the cloth to one side and allowing for a clear view of her slick, puffy pussy just below it. Her scimitar cuts great swaths through the air as she darts through the air above you, taking full advantage of the open space you find yourselves in.";
 			// this.plural = false;
 			this.createCock(8, 1.2, CockTypesEnum.LIZARD);
-			this.createVagina(false, VAGINA_WETNESS_SLICK, VAGINA_LOOSENESS_LOOSE);
+			this.createVagina(false, VaginaClass.WETNESS_SLICK, VaginaClass.LOOSENESS_LOOSE);
 			this.createStatusEffect(StatusEffects.BonusVCapacity, 40, 0, 0, 0);
 			createBreastRow(Appearance.breastCupInverse("D"));
-			this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-			this.ass.analWetness = ANAL_WETNESS_MOIST;
+			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
+			this.ass.analWetness = AssClass.WETNESS_MOIST;
 			this.createStatusEffect(StatusEffects.BonusACapacity,20,0,0,0);
 			this.tallness = 6 * 12 + 6;
-			this.tailType = TAIL_TYPE_LIZARD;
-			this.hipRating = HIP_RATING_CURVY;
-			this.buttRating = BUTT_RATING_JIGGLY;
-			this.lowerBody = LOWER_BODY_TYPE_HARPY;
-			this.skinTone = "light";
-			this.skinType = SKIN_TYPE_LIZARD_SCALES;
-			this.skinDesc = "crimson";
-			this.hairColor = "red";
-			this.hairLength = 16;
+			this.tail.type = Tail.LIZARD;
+			this.hips.rating = Hips.RATING_CURVY;
+			this.butt.rating = Butt.RATING_JIGGLY;
+			this.lowerBody.type = LowerBody.HARPY;
+			this.skin.tone = "light";
+			this.skin.type = Skin.LIZARD_SCALES;
+			this.skin.desc = "crimson";
+			this.hair.color = "red";
+			this.hair.length = 16;
 			initStrTouSpeInte(100, 70, 100, 65);
 			initLibSensCor(50, 30, 45);
 			this.weaponName = "scimitar and shield";
@@ -145,9 +145,10 @@ package classes.Scenes.Areas.HighMountains
 			this.temperment = TEMPERMENT_RANDOM_GRAPPLES;
 			this.level = 23;
 			this.gems = 30 + rand(25);
-			this.drop = new ChainedDrop().add(weapons.SCIMITR,1/20)
+			this.drop = new ChainedDrop().add(weapons.SCIMTR0,1/20)
+					.add(useables.EBNFLWR, 1/10)
 					.elseDrop(NO_DROP);
-			this.wingType = WING_TYPE_HARPY;
+			this.wings.type = Wings.HARPY;
 			this.special1 = doubleSlash;
 			this.special2 = phoenixFireBreath;
 			this.special3 = lustBang;

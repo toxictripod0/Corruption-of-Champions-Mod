@@ -1,6 +1,8 @@
 package classes.Scenes.NPCs
 {
 	import classes.*;
+	import classes.BodyParts.*;
+	import classes.BodyParts.Hips;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Scenes.Areas.Lake.GooGirl;
 	import classes.internals.*;
@@ -8,7 +10,7 @@ package classes.Scenes.NPCs
 	public class GooArmor extends GooGirl
 	{
 		public function gooArmorAI():void {
-			if (rand(2) == 0 && player.findStatusEffect(StatusEffects.GooArmorSilence) < 0) gooSilenceAttack();
+			if (rand(2) == 0 && !player.hasStatusEffect(StatusEffects.GooArmorSilence)) gooSilenceAttack();
 			else if (rand(3) > 0) gooArmorAttackPhysical();
 			else gooArmorAttackTwoGooConsume();
 		}
@@ -51,7 +53,7 @@ package classes.Scenes.NPCs
 				//(If fail 5 times, go to defeat scene)
 				player.addStatusValue(StatusEffects.GooArmorBind,1,1);
 				if (player.statusEffectv1(StatusEffects.GooArmorBind) >= 5) {
-					if (findStatusEffect(StatusEffects.Spar) >= 0) game.valeria.pcWinsValeriaSparDefeat();
+					if (hasStatusEffect(StatusEffects.Spar)) game.valeria.pcWinsValeriaSparDefeat();
 					else game.dungeons.heltower.gooArmorBeatsUpPC();
 					return;
 				}
@@ -78,7 +80,7 @@ package classes.Scenes.NPCs
 		
 		override public function defeated(hpVictory:Boolean):void
 		{
-			if (findStatusEffect(StatusEffects.Spar) >= 0) game.valeria.pcWinsValeriaSpar();
+			if (hasStatusEffect(StatusEffects.Spar)) game.valeria.pcWinsValeriaSpar();
 			else game.dungeons.heltower.beatUpGooArmor();
 		}
 		
@@ -88,7 +90,7 @@ package classes.Scenes.NPCs
 				outputText("\n\nThe armored goo sighs while you exhaust yourself...");
 				doNext(game.combat.endLustLoss);
 			} else {
-				if (findStatusEffect(StatusEffects.Spar) >= 0) game.valeria.pcWinsValeriaSparDefeat();
+				if (hasStatusEffect(StatusEffects.Spar)) game.valeria.pcWinsValeriaSparDefeat();
 				else game.dungeons.heltower.gooArmorBeatsUpPC();
 			}
 		}
@@ -105,20 +107,19 @@ package classes.Scenes.NPCs
 			this.imageName = "gooarmor";
 			this.long = "Before you stands a suit of plated mail armor filled with a bright blue goo, standing perhaps six feet off the ground.  She has a beautiful, feminine face, and her scowl as she stands before you is almost cute.  She has formed a mighty greatsword from her goo, and has assumed the stance of a well-trained warrior.";
 			// this.plural = false;
-			this.createVagina(false, VAGINA_WETNESS_SLAVERING, VAGINA_LOOSENESS_GAPING_WIDE);
+			this.createVagina(false, VaginaClass.WETNESS_SLAVERING, VaginaClass.LOOSENESS_GAPING_WIDE);
 			createBreastRow(Appearance.breastCupInverse("C"));
-			this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
-			this.ass.analWetness = ANAL_WETNESS_SLIME_DROOLING;
+			this.ass.analLooseness = AssClass.LOOSENESS_STRETCHED;
+			this.ass.analWetness = AssClass.WETNESS_SLIME_DROOLING;
 			this.tallness = rand(8) + 70;
-			this.hipRating = HIP_RATING_AMPLE+2;
-			this.buttRating = BUTT_RATING_LARGE;
-			this.skinTone = "blue";
-			this.skinType = SKIN_TYPE_GOO;
-			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[SKIN_TYPE_GOO];
-			this.skinAdj = "goopey";
-			this.hairColor = "black";
-			this.hairLength = 15;
-			this.hairType = HAIR_GOO;
+			this.hips.rating = Hips.RATING_AMPLE+2;
+			this.butt.rating = Butt.RATING_LARGE;
+			this.skin.tone = "blue";
+			this.skin.setType(Skin.GOO);
+			this.skin.adj = "goopey";
+			this.hair.color = "black";
+			this.hair.length = 15;
+			this.hair.type = Hair.GOO;
 			initStrTouSpeInte(60, 50, 50, 40);
 			initLibSensCor(60, 35, 50);
 			this.weaponName = "goo sword";

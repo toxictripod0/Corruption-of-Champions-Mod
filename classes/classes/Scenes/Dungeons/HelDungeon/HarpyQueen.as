@@ -1,6 +1,7 @@
 package classes.Scenes.Dungeons.HelDungeon
 {
 	import classes.*;
+	import classes.BodyParts.*;
 
 	public class HarpyQueen extends Monster
 	{
@@ -39,7 +40,7 @@ package classes.Scenes.Dungeons.HelDungeon
 		public function lustSpikeAttack():void {
 			outputText("The Harpy Queen draws a strange arcane circle in the air, lines of magic remaining wherever the tip of her staff goes.  You try to rush her, but the circle seems to have created some kind of barrier around her.  You can only try to force it open - but too late!  A great pink bolt shoots out of the circle, slamming into your chest.  You suddenly feel light-headed and so very, very horny...");
 			//(Effect: Heavy Lust Damage)
-			game.dynStats("lus", 40);
+			player.takeLustDamage(40, true);
 			combatRoundOver();
 		}
 
@@ -74,19 +75,19 @@ package classes.Scenes.Dungeons.HelDungeon
 			this.imageName = "harpyqueen";
 			this.long = "You face the Harpy Queen, a broodmother of epic proportions - literally.  Her hips are amazingly wide, thrice her own width at the least, and the rest of her body is lushly voluptuous, with plush, soft thighs and a tremendous butt.  Her wide wings beat occasionally, sending ripples through her jiggly body.  She wields a towering whitewood staff in one hand, using the other to cast eldritch spells.";
 			// this.plural = false;
-			this.createVagina(false, VAGINA_WETNESS_SLAVERING, VAGINA_LOOSENESS_LOOSE);
+			this.createVagina(false, VaginaClass.WETNESS_SLAVERING, VaginaClass.LOOSENESS_LOOSE);
 			createBreastRow(Appearance.breastCupInverse("D"));
-			this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
-			this.ass.analWetness = ANAL_WETNESS_DRY;
+			this.ass.analLooseness = AssClass.LOOSENESS_STRETCHED;
+			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.tallness = rand(8) + 70;
-			this.hipRating = HIP_RATING_AMPLE+2;
-			this.buttRating = BUTT_RATING_LARGE;
-			this.lowerBody = LOWER_BODY_TYPE_HARPY;
-			this.skinTone = "red";
-			this.skinType = SKIN_TYPE_PLAIN;
-			this.skinDesc = "feathers";
-			this.hairColor = "black";
-			this.hairLength = 15;
+			this.hips.rating = Hips.RATING_AMPLE+2;
+			this.butt.rating = Butt.RATING_LARGE;
+			this.lowerBody.type = LowerBody.HARPY;
+			this.skin.tone = "red";
+			this.skin.type = Skin.PLAIN;
+			this.skin.desc = "feathers";
+			this.hair.color = "black";
+			this.hair.length = 15;
 			initStrTouSpeInte(70, 60, 120, 40);
 			initLibSensCor(40, 45, 50);
 			this.weaponName = "eldritch staff";
@@ -101,8 +102,8 @@ package classes.Scenes.Dungeons.HelDungeon
 			this.level = 20;
 			this.gems = rand(25) +160;
 			this.additionalXP = 50;
-			this.tailType = TAIL_TYPE_HARPY;
-			this.wingType = WING_TYPE_FEATHERED_LARGE;
+			this.tail.type = Tail.HARPY;
+			this.wings.type = Wings.FEATHERED_LARGE;
 			this.drop = NO_DROP;
 			this.createPerk(PerkLib.ImprovedSelfControl, 0, 0, 0, 0);
 			checkMonster();

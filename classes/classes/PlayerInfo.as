@@ -1,11 +1,13 @@
 package classes 
 {
-	import flash.events.Event;
-	import fl.controls.ComboBox;;
-	import fl.data.DataProvider;
 	import classes.*;
-	import classes.Scenes.NPCs.IsabellaScene;
 	import classes.GlobalFlags.*;
+	import classes.GlobalFlags.kGAMECLASS;
+	import classes.Scenes.NPCs.IsabellaScene;
+	import classes.internals.*;
+	import fl.controls.ComboBox;
+	import fl.data.DataProvider;
+	import flash.events.Event;
 	
 	/**
 	 * The new home of Stats and Perks
@@ -19,7 +21,7 @@ package classes
 		// STATS
 		//------------
 		public function displayStats():void {
-			spriteSelect(-1);
+			spriteSelect(null);
 			clearOutput();
 			displayHeader("Stats");
 			// Begin Combat Stats
@@ -28,6 +30,10 @@ package classes
 			if (player.hasKeyItem("Bow") >= 0 || player.hasKeyItem("Kelt's Bow") >= 0)
 				combatStats += "<b>Bow Skill:</b> " + Math.round(player.statusEffectv1(StatusEffects.Kelt)) + " / 100\n";
 				
+			combatStats += "<b>Critical Hit Chance:</b> " + Math.round(combat.getCritChance()) + "%\n";	
+				
+			combatStats += "<b>Dodge Chance:</b> " + Math.round(player.getEvasionChance()) + "% (W/o speed-based)\n";	
+			
 			combatStats += "<b>Damage Resistance:</b> " + (100 - Math.round(player.damagePercent(true))) + "-" + (100 - Math.round(player.damagePercent(true) - player.damageToughnessModifier(true))) + "% (Higher is better.)\n";
 
 			combatStats += "<b>Lust Resistance:</b> " + (100 - Math.round(player.lustPercent())) + "% (Higher is better.)\n";
@@ -45,7 +51,7 @@ package classes
 				combatStats += "<b>Tease Skill:</b>  " + player.teaseLevel + " / 5 (Exp: MAX)\n";	
 				
 			if (combatStats != "")
-				outputText("<b><u>Combat Stats</u></b>\n" + combatStats, false);
+				outputText("<b><u>Combat Stats</u></b>\n" + combatStats);
 			// End Combat Stats
 			
 			if (prison.inPrison || flags[kFLAGS.PRISON_CAPTURE_COUNTER] > 0) prison.displayPrisonStats();
@@ -170,11 +176,11 @@ package classes
 				childStats += "<b>Children With Urta:</b> " + getGame().urtaPregs.urtaKids() + "\n";
 				
 			//Mino sons
-			if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00326] > 0)
-				childStats += "<b>Number of Adult Minotaur Offspring:</b> " + flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00326] + "\n";
+			if (flags[kFLAGS.ADULT_MINOTAUR_OFFSPRINGS] > 0)
+				childStats += "<b>Number of Adult Minotaur Offspring:</b> " + flags[kFLAGS.ADULT_MINOTAUR_OFFSPRINGS] + "\n";
 			
 			if (childStats != "")
-				outputText("\n<b><u>Children</u></b>\n" + childStats, false);
+				outputText("\n<b><u>Children</u></b>\n" + childStats);
 			// End Children Stats
 
 			// Begin Body Stats
@@ -186,11 +192,11 @@ package classes
 				if (player.hunger <= 0) bodyStats += "<font color=\"#ff0000\">Dying</font>";
 				if (player.hunger > 0 && player.hunger < 10) bodyStats += "<font color=\"#C00000\">Starving</font>";
 				if (player.hunger >= 10 && player.hunger < 25) bodyStats += "<font color=\"#800000\">Very hungry</font>";
-				if (player.hunger >= 25 && player.hunger < 50) bodyStats += "Hungry";
-				if (player.hunger >= 50 && player.hunger < 75) bodyStats += "Not hungry";
-				if (player.hunger >= 75 && player.hunger < 90) bodyStats += "<font color=\"#008000\">Satiated</font>";
-				if (player.hunger >= 90 && player.hunger < 100) bodyStats += "<font color=\"#00C000\">Full</font>";
-				if (player.hunger >= 100) bodyStats += "<font color=\"#00C000\">Very full</font>";
+				if (player.hunger >= 25 && player.hunger100 < 50) bodyStats += "Hungry";
+				if (player.hunger100 >= 50 && player.hunger100 < 75) bodyStats += "Not hungry";
+				if (player.hunger100 >= 75 && player.hunger100 < 90) bodyStats += "<font color=\"#008000\">Satiated</font>";
+				if (player.hunger100 >= 90 && player.hunger100 < 100) bodyStats += "<font color=\"#00C000\">Full</font>";
+				if (player.hunger100 >= 100) bodyStats += "<font color=\"#00C000\">Very full</font>";
 				bodyStats += ")\n";
 			}
 
@@ -200,14 +206,15 @@ package classes
 			bodyStats += "<b>Fertility (Base) Rating:</b> " + Math.round(player.fertility) + "\n";
 			bodyStats += "<b>Fertility (With Bonuses) Rating:</b> " + Math.round(player.totalFertility()) + "\n";
 			
-			if (player.cumQ() > 0)
+			if (player.cumQ() > 0) {
 				bodyStats += "<b>Virility Rating:</b> " + Math.round(player.virilityQ() * 100) + "\n";
 				if (flags[kFLAGS.HUNGER_ENABLED] >= 1) bodyStats += "<b>Cum Production:</b> " + addComma(Math.round(player.cumQ())) + " / " + addComma(Math.round(player.cumCapacity())) + "mL (" + Math.round((player.cumQ() / player.cumCapacity()) * 100) + "%) \n";
 				else bodyStats += "<b>Cum Production:</b> " + addComma(Math.round(player.cumQ())) + "mL\n";
+			}
 			if (player.lactationQ() > 0)
 				bodyStats += "<b>Milk Production:</b> " + addComma(Math.round(player.lactationQ())) + "mL\n";
 			
-			if (player.findStatusEffect(StatusEffects.Feeder) >= 0) {
+			if (player.hasStatusEffect(StatusEffects.Feeder)) {
 				bodyStats += "<b>Hours Since Last Time Breastfed Someone:</b>  " + player.statusEffectv2(StatusEffects.Feeder);
 				if (player.statusEffectv2(StatusEffects.Feeder) >= 72)
 					bodyStats += " (Too long! Sensitivity Increasing!)";
@@ -250,7 +257,7 @@ package classes
 			if (player.findPerk(PerkLib.SpiderOvipositor) >= 0 || player.findPerk(PerkLib.BeeOvipositor) >= 0)
 				bodyStats += "<b>Ovipositor Total Egg Count: " + player.eggs() + "\nOvipositor Fertilized Egg Count: " + player.fertilizedEggs() + "</b>\n";
 				
-			if (player.findStatusEffect(StatusEffects.SlimeCraving) >= 0) {
+			if (player.hasStatusEffect(StatusEffects.SlimeCraving)) {
 				if (player.statusEffectv1(StatusEffects.SlimeCraving) >= 18)
 					bodyStats += "<b>Slime Craving:</b> Active! You are currently losing strength and speed.  You should find fluids.\n";
 				else {
@@ -262,8 +269,128 @@ package classes
 			}
 			
 			if (bodyStats != "")
-				outputText("\n<b><u>Body Stats</u></b>\n" + bodyStats, false);
+				outputText("\n<b><u>Body Stats</u></b>\n" + bodyStats);
 			// End Body Stats
+			
+			
+			// Begin Racial Scores display -Foxwells
+			var raceScores:String = "";
+			
+			if (player.humanScore() > 0) {
+				raceScores += "<b>Human Score:</b> " + player.humanScore() + "\n";
+			}
+			if (player.mutantScore() > 0) {
+				raceScores += "<b>Mutant Score:</b> " + player.mutantScore() + "\n";
+			}
+			if (player.demonScore() > 0) {
+				raceScores += "<b>Demon Score:</b> " + player.demonScore() + "\n";
+			}
+			if (player.goblinScore() > 0) {
+				raceScores += "<b>Goblin Score:</b> " + player.goblinScore() + "\n";
+			}
+			if (player.gooScore() > 0) {
+				raceScores += "<b>Goo Score:</b> " + player.gooScore() + "\n";
+			}
+			if (player.cowScore() > 0) {
+				raceScores += "<b>Cow Score:</b> " + player.cowScore() + "\n";
+			}
+			if (player.minoScore() > 0) {
+				raceScores += "<b>Minotaur Score:</b> " + player.minoScore() + "\n";
+			}
+			if (player.catScore() > 0) {
+				raceScores += "<b>Cat Score:</b> " + player.catScore() + "\n";
+			}
+			if (player.dragonneScore() > 0) {
+				raceScores += "<b>Dragonne Score:</b> " + player.dragonneScore() + "\n";
+			}
+			if (player.manticoreScore() > 0) {
+				raceScores += "<b>Manticore Score:</b> " + player.manticoreScore() + "\n";
+			}
+			if (player.lizardScore() > 0) {
+				raceScores += "<b>Lizard Score:</b> " + player.lizardScore() + "\n";
+			}
+			if (player.salamanderScore() > 0) {
+				raceScores += "<b>Salamander Score:</b> " + player.salamanderScore() + "\n";
+			}
+			if (player.dragonScore() > 0) {
+				raceScores += "<b>Dragon Score:</b> " + player.dragonScore() + "\n";
+			}
+			if (player.nagaScore() > 0) {
+				raceScores += "<b>Naga Score:</b> " + player.nagaScore() + "\n";
+			}
+			if (player.sandTrapScore() > 0) {
+				raceScores += "<b>Sand Trap Score:</b> " + player.sandTrapScore() + "\n";
+			}
+			if (player.harpyScore() > 0) {
+				raceScores += "<b>Avian Score:</b> " + player.harpyScore() + "\n";
+			}
+			if (player.sharkScore() > 0) {
+				raceScores += "<b>Shark Score:</b> " + player.sharkScore() + "\n";
+			}
+			if (player.sirenScore() > 0) {
+				raceScores += "<b>Siren Score:</b> " + player.sirenScore() + "\n";
+			}
+			if (player.dogScore() > 0) {
+				raceScores += "<b>Dog Score:</b> " + player.dogScore() + "\n";
+			}
+			if (player.wolfScore() > 0) {
+				raceScores += "<b>Wolf Score:</b> " + player.wolfScore() + "\n";
+			}
+			if (player.foxScore() > 0) {
+				raceScores += "<b>Fox Score:</b> " + player.foxScore() + "\n";
+			}
+			if (player.kitsuneScore() > 0) {
+				raceScores += "<b>Kitsune Score:</b> " + player.kitsuneScore() + "\n";
+			}
+			if (player.echidnaScore() > 0) {
+				raceScores += "<b>Echidna Score:</b> " + player.echidnaScore() + "\n";
+			}
+			if (player.mouseScore() > 0) {
+				raceScores += "<b>Mouse Score:</b> " + player.mouseScore() + "\n";
+			}
+			if (player.ferretScore() > 0) {
+				raceScores += "<b>Ferret Score:</b> " + player.ferretScore() + "\n";
+			}
+			if (player.raccoonScore() > 0) {
+				raceScores += "<b>Raccoon Score:</b> " + player.raccoonScore() + "\n";
+			}
+			if (player.bunnyScore() > 0) {
+				raceScores += "<b>Bunny Score:</b> " + player.bunnyScore() + "\n";
+			}
+			if (player.kangaScore() > 0) {
+				raceScores += "<b>Kangaroo Score:</b> " + player.kangaScore() + "\n";
+			}
+			if (player.horseScore() > 0) {
+				raceScores += "<b>Horse Score:</b> " + player.horseScore() + "\n";
+			}
+			if (player.deerScore() > 0) {
+				raceScores += "<b>Deer Score:</b> " + player.deerScore() + "\n";
+			}
+			if (player.satyrScore() > 0) {
+				raceScores += "<b>Satyr Score:</b> " + player.satyrScore() + "\n";
+			}
+			if (player.rhinoScore() > 0) {
+				raceScores += "<b>Rhino Score:</b> " + player.rhinoScore() + "\n";
+			}
+			if (player.spiderScore() > 0) {
+				raceScores += "<b>Spider Score:</b> " + player.spiderScore() + "\n";
+			}
+			if (player.pigScore() > 0) {
+				raceScores += "<b>Pig Score:</b> " + player.pigScore() + "\n";
+			}
+			if (player.beeScore() > 0) {
+				raceScores += "<b>Bee Score:</b> " + player.beeScore() + "\n";
+			}
+			if (player.cockatriceScore() > 0) {
+				raceScores += "<b>Cockatrice Score:</b> " + player.cockatriceScore() + "\n";
+			}
+			if (player.redPandaScore() > 0) {
+				raceScores += "<b>Red-Panda Score:</b> " + player.redPandaScore() + "\n";
+			}
+			
+			if (raceScores != "")
+				outputText("\n<b><u>Racial Scores</u></b>\n" + raceScores);
+			// End Racial Scores display -Foxwells
 
 			// Begin Misc Stats
 			var miscStats:String = "";
@@ -295,6 +422,21 @@ package classes
 			
 			if (flags[kFLAGS.TIMES_ORGASMED] > 0)
 				miscStats += "<b>Times Orgasmed:</b> " + flags[kFLAGS.TIMES_ORGASMED] + "\n";
+				
+			if (getGame().bimboProgress.ableToProgress()) {
+				if (flags[kFLAGS.TIMES_ORGASM_DICK] > 0) 
+					miscStats += "<i>Dick tension:</i> " + flags[kFLAGS.TIMES_ORGASM_DICK] + "\n";
+				if (flags[kFLAGS.TIMES_ORGASM_ANAL] > 0) 
+					miscStats += "<i>Butt tension:</i> " + flags[kFLAGS.TIMES_ORGASM_ANAL] + "\n";
+				if (flags[kFLAGS.TIMES_ORGASM_VAGINAL] > 0) 
+					miscStats += "<i>Pussy tension:</i> " + flags[kFLAGS.TIMES_ORGASM_VAGINAL] + "\n";
+				if (flags[kFLAGS.TIMES_ORGASM_TITS] > 0) 
+					miscStats += "<i>Tits tension:</i> " + flags[kFLAGS.TIMES_ORGASM_TITS] + "\n";
+				if (flags[kFLAGS.TIMES_ORGASM_LIPS] > 0) 
+					miscStats += "<i>Lips tension:</i> " + flags[kFLAGS.TIMES_ORGASM_LIPS] + "\n";
+				miscStats += "<i>Bimbo score:</i> " + Math.round(player.bimboScore() * 10) + "\n";
+			}
+
 			
 			if (miscStats != "")
 				outputText("\n<b><u>Miscellaneous Stats</u></b>\n" + miscStats);
@@ -319,7 +461,7 @@ package classes
 			}
 			
 			// Mino Cum Addiction
-			if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00340] > 0 || flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] > 0 || player.findPerk(PerkLib.MinotaurCumAddict) >= 0 || player.findPerk(PerkLib.MinotaurCumResistance) >= 0) {
+			if (flags[kFLAGS.MINOTAUR_CUM_INTAKE_COUNT] > 0 || flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] > 0 || player.findPerk(PerkLib.MinotaurCumAddict) >= 0 || player.findPerk(PerkLib.MinotaurCumResistance) >= 0) {
 				if (player.findPerk(PerkLib.MinotaurCumAddict) < 0)
 					addictStats += "<b>Minotaur Cum:</b> " + Math.round(flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] * 10)/10 + "%\n";
 				else if (player.findPerk(PerkLib.MinotaurCumResistance) >= 0)
@@ -329,14 +471,14 @@ package classes
 			}
 			
 			if (addictStats != "")
-				outputText("\n<b><u>Addictions</u></b>\n" + addictStats, false);
+				outputText("\n<b><u>Addictions</u></b>\n" + addictStats);
 			// End Addition Stats
 			
 			// Begin Interpersonal Stats
 			var interpersonStats:String = "";
 			
-			if (flags[kFLAGS.ANZU_RELATIONSHIP_LEVEL] > 0) {
-				interpersonStats += "<b>Anzu Affection:</b> " + flags[kFLAGS.ANZU_AFFECTION] + "%\n";
+			if (getGame().dungeons.palace.anzuScene.anzuRelationshipLevel() > 0) {
+				interpersonStats += "<b>Anzu's Affection:</b> " + flags[kFLAGS.ANZU_AFFECTION] + "%\n";
 				interpersonStats += "<b>Anzu's Relationship Level:</b> " + (flags[kFLAGS.ANZU_RELATIONSHIP_LEVEL] == 1 ? "Acquaintances" : flags[kFLAGS.ANZU_RELATIONSHIP_LEVEL] == 2 ? "Friend" : flags[kFLAGS.ANZU_RELATIONSHIP_LEVEL] == 3 ? "Close Friend" : flags[kFLAGS.ANZU_RELATIONSHIP_LEVEL] == 4 ? "Lover" : "Undefined") + "\n";
 			}
 			
@@ -350,25 +492,25 @@ package classes
 				interpersonStats += "<b>" + getGame().bazaar.benoit.benoitMF("Benoit", "Benoite") + " Affection:</b> " + Math.round(getGame().bazaar.benoit.benoitAffection()) + "%\n";
 			
 			if (flags[kFLAGS.BROOKE_MET] > 0)
-				interpersonStats += "<b>Brooke Affection:</b> " + Math.round(getGame().telAdre.brooke.brookeAffection()) + "\n";
+				interpersonStats += "<b>Brooke's Affection:</b> " + Math.round(getGame().telAdre.brooke.brookeAffection()) + "\n";
 				
-			if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00218] + flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00219] + flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00220] > 0)
-				interpersonStats += "<b>Body Parts Taken By Ceraph:</b> " + (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00218] + flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00219] + flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00220]) + "\n";
+			if (flags[kFLAGS.CERAPH_DICKS_OWNED] + flags[kFLAGS.CERAPH_PUSSIES_OWNED] + flags[kFLAGS.CERAPH_TITS_OWNED] > 0)
+				interpersonStats += "<b>Body Parts Taken By Ceraph:</b> " + (flags[kFLAGS.CERAPH_DICKS_OWNED] + flags[kFLAGS.CERAPH_PUSSIES_OWNED] + flags[kFLAGS.CERAPH_TITS_OWNED]) + "\n";
 				
 			if (getGame().emberScene.emberAffection() > 0)
-				interpersonStats += "<b>Ember Affection:</b> " + Math.round(getGame().emberScene.emberAffection()) + "%\n";
+				interpersonStats += "<b>Ember's Affection:</b> " + Math.round(getGame().emberScene.emberAffection()) + "%\n";
 			if (getGame().emberScene.emberSparIntensity() > 0)
 				interpersonStats += "<b>Ember Spar Intensity:</b> " + getGame().emberScene.emberSparIntensity() + "\n";
 				
 			if (getGame().helFollower.helAffection() > 0)
-				interpersonStats += "<b>Helia Affection:</b> " + Math.round(getGame().helFollower.helAffection()) + "%\n";
+				interpersonStats += "<b>Helia's Affection:</b> " + Math.round(getGame().helFollower.helAffection()) + "%\n";
 			if (getGame().helFollower.helAffection() >= 100)
 				interpersonStats += "<b>Helia Bonus Points:</b> " + Math.round(flags[kFLAGS.HEL_BONUS_POINTS]) + "\n";
 			if (getGame().helFollower.followerHel())
 				interpersonStats += "<b>Helia Spar Intensity:</b> " + getGame().helScene.heliaSparIntensity() + "\n";
 			
 			if (flags[kFLAGS.ISABELLA_AFFECTION] > 0) {
-				interpersonStats += "<b>Isabella Affection:</b> ";
+				interpersonStats += "<b>Isabella's Affection:</b> ";
 				
 				if (!getGame().isabellaFollowerScene.isabellaFollower())
 					interpersonStats += Math.round(flags[kFLAGS.ISABELLA_AFFECTION]) + "%\n", false;
@@ -383,10 +525,10 @@ package classes
 			}
 			
 			if (flags[kFLAGS.KATHERINE_UNLOCKED] >= 4) {
-				interpersonStats += "<b>Katherine Submissiveness:</b> " + getGame().telAdre.katherine.submissiveness() + "\n";
+				interpersonStats += "<b>Katherine's Submissiveness:</b> " + getGame().telAdre.katherine.submissiveness() + "\n";
 			}
 
-			if (player.findStatusEffect(StatusEffects.Kelt) >= 0 && flags[kFLAGS.KELT_BREAK_LEVEL] == 0 && flags[kFLAGS.KELT_KILLED] == 0) {
+			if (player.hasStatusEffect(StatusEffects.Kelt) && flags[kFLAGS.KELT_BREAK_LEVEL] == 0 && flags[kFLAGS.KELT_KILLED] == 0) {
 				if (player.statusEffectv2(StatusEffects.Kelt) >= 130)
 					interpersonStats += "<b>Submissiveness To Kelt:</b> " + 100 + "%\n";
 				else
@@ -397,21 +539,27 @@ package classes
 			if (flags[kFLAGS.ANEMONE_KID] > 0)
 				interpersonStats += "<b>Kid A's Confidence:</b> " + getGame().anemoneScene.kidAXP() + "%\n";
 
-			if (flags[kFLAGS.KIHA_AFFECTION_LEVEL] == 2) {
+			if (flags[kFLAGS.KIHA_AFFECTION_LEVEL] >= 2 || getGame().kihaFollower.followerKiha()) {
 				if (getGame().kihaFollower.followerKiha())
-					interpersonStats += "<b>Kiha Affection:</b> " + 100 + "%\n";
+					interpersonStats += "<b>Kiha's Affection:</b> " + 100 + "%\n";
 				else
-					interpersonStats += "<b>Kiha Affection:</b> " + Math.round(flags[kFLAGS.KIHA_AFFECTION]) + "%\n";
+					interpersonStats += "<b>Kiha's Affection:</b> " + Math.round(flags[kFLAGS.KIHA_AFFECTION]) + "%\n";
 			}
 			//Lottie stuff
-			if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00281] > 0)
+			if (flags[kFLAGS.LOTTIE_ENCOUNTER_COUNTER] > 0)
 				interpersonStats += "<b>Lottie's Encouragement:</b> " + getGame().telAdre.lottie.lottieMorale() + " (higher is better)\n" + "<b>Lottie's Figure:</b> " + getGame().telAdre.lottie.lottieTone() + " (higher is better)\n";
 			
 			if (getGame().mountain.salon.lynnetteApproval() != 0)
 				interpersonStats += "<b>Lynnette's Approval:</b> " + getGame().mountain.salon.lynnetteApproval() + "\n";
+			
+			if (player.statusEffectv1(StatusEffects.Marble) > 0)
+				interpersonStats += "<b>Marble's Affection:</b>" + player.statusEffectv1(StatusEffects.Marble) + "%\n";
 				
 			if (flags[kFLAGS.OWCAS_ATTITUDE] > 0)
 				interpersonStats += "<b>Owca's Attitude:</b> " + flags[kFLAGS.OWCAS_ATTITUDE] + "\n";
+
+			if (getGame().telAdre.pablo.pabloAffection() > 0)
+				interpersonStats += "<b>Pablo's Affection:</b> " + flags[kFLAGS.PABLO_AFFECTION] + "%\n";
 				
 			if (getGame().telAdre.rubi.rubiAffection() > 0)
 				interpersonStats += "<b>Rubi's Affection:</b> " + Math.round(getGame().telAdre.rubi.rubiAffection()) + "%\n" + "<b>Rubi's Orifice Capacity:</b> " + Math.round(getGame().telAdre.rubi.rubiCapacity()) + "%\n";
@@ -429,20 +577,20 @@ package classes
 			
 			if (flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] != 0) {
 				if (getGame().urta.urtaLove()) {
-					if (flags[kFLAGS.URTA_QUEST_STATUS] == -1) interpersonStats += "<b>Urta Status:</b> <font color=\"#800000\">Gone</font>\n";
-					if (flags[kFLAGS.URTA_QUEST_STATUS] == 0) interpersonStats += "<b>Urta Status:</b> Lover\n";
-					if (flags[kFLAGS.URTA_QUEST_STATUS] == 1) interpersonStats += "<b>Urta Status:</b> <font color=\"#008000\">Lover+</font>\n";
+					if (flags[kFLAGS.URTA_QUEST_STATUS] == -1) interpersonStats += "<b>Urta's Status:</b> <font color=\"#800000\">Gone</font>\n";
+					if (flags[kFLAGS.URTA_QUEST_STATUS] == 0) interpersonStats += "<b>Urta's Status:</b> Lover\n";
+					if (flags[kFLAGS.URTA_QUEST_STATUS] == 1) interpersonStats += "<b>Urta's Status:</b> <font color=\"#008000\">Lover+</font>\n";
 				}
 				else if (flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] == -1)
-					interpersonStats += "<b>Urta Status:</b> Ashamed\n";
+					interpersonStats += "<b>Urta's Status:</b> Ashamed\n";
 				else if (flags[kFLAGS.URTA_PC_AFFECTION_COUNTER] < 30)
 					interpersonStats += "<b>Urta's Affection:</b> " + Math.round(flags[kFLAGS.URTA_PC_AFFECTION_COUNTER] * 3.3333) + "%\n";
 				else
-					interpersonStats += "<b>Urta Status:</b> Ready To Confess Love\n";
+					interpersonStats += "<b>Urta's Status:</b> Ready To Confess Love\n";
 			}
 			
 			if (interpersonStats != "")
-				outputText("\n<b><u>Interpersonal Stats</u></b>\n" + interpersonStats, false);
+				outputText("\n<b><u>Interpersonal Stats</u></b>\n" + interpersonStats);
 			// End Interpersonal Stats
 			
 			// Begin Ongoing Stat Effects
@@ -479,14 +627,14 @@ package classes
 				statEffects += "Dysfunction - " + player.statusEffectv1(StatusEffects.Dysfunction) + " hours remaining. (Disables masturbation)\n";
 
 			if (statEffects != "")
-				outputText("\n<b><u>Ongoing Status Effects</u></b>\n" + statEffects, false);
+				outputText("\n<b><u>Ongoing Status Effects</u></b>\n" + statEffects);
 			// End Ongoing Stat Effects
 			menu();
+			addButton(0, "Next", playerMenu);
 			if (player.statPoints > 0) {
-				outputText("\n\n<b>You have " + num2Text(player.statPoints) + " attribute point" + (player.statPoints == 1 ? "" : "s") + " to distribute.");
+				outputText("\n\n<b>You have " + num2Text(player.statPoints) + " attribute point" + (player.statPoints == 1 ? "" : "s") + " to distribute.</b>");
 				addButton(1, "Stat Up", attributeMenu);
 			}
-			doNext(playerMenu);
 		}
 		
 		//------------
@@ -496,15 +644,15 @@ package classes
 			clearOutput();
 			displayHeader("Perks");
 			for (var i:int = 0; i < player.perks.length; i++) {
-				outputText("<b>" + player.perks[i].perkName + "</b> - " + player.perks[i].perkDesc + "\n", false);
+				outputText("<b>" + player.perks[i].perkName + "</b> - " + player.perks[i].perkDesc + "\n");
 			}
 			menu();
 			var button:int = 0;
 			addButton(button++, "Next", playerMenu);
 			if (player.perkPoints > 0) {
-				outputText("\n<b>You have " + num2Text(player.perkPoints) + " perk point", false);
-				if (player.perkPoints > 1) outputText("s", false);
-				outputText(" to spend.</b>", false);
+				outputText("\n<b>You have " + num2Text(player.perkPoints) + " perk point");
+				if (player.perkPoints > 1) outputText("s");
+				outputText(" to spend.</b>");
 				addButton(button++, "Perk Up", perkBuyMenu);
 			}
 			if (player.findPerk(PerkLib.DoubleAttack) >= 0) {
@@ -514,16 +662,17 @@ package classes
 		
 			if (player.findPerk(PerkLib.AscensionTolerance) >= 0){
 				outputText("\n<b>You can adjust your Corruption Tolerance threshold.</b>");
-				addButton(button++,"Tol. Options",ascToleranceOption,null,null,null,"Set whether or not Corruption Tolerance is applied.");
+				addButton(button++,"Tol. Options",ascToleranceOption).hint("Set whether or not Corruption Tolerance is applied.");
 			}
-}
+			addButton(9, "Database", perkDatabase);
+		}
 
 		public function doubleAttackOptions():void {
 			clearOutput();
 			menu();
 			if (flags[kFLAGS.DOUBLE_ATTACK_STYLE] == 0) {
 				outputText("You will currently always double attack in combat.  If your strength exceeds sixty, your double-attacks will be done at sixty strength in order to double-attack.");
-				outputText("\n\nYou can change it to double attack until sixty strength and then dynamicly switch to single attacks.");
+				outputText("\n\nYou can change it to double attack until sixty strength and then dynamically switch to single attacks.");
 				outputText("\nYou can change it to always single attack.");
 			}
 			else if (flags[kFLAGS.DOUBLE_ATTACK_STYLE] == 1) {
@@ -579,6 +728,40 @@ package classes
 			ascToleranceOption();
 		}
 
+		public function perkDatabase(page:int=0, count:int=20):void {
+			var allPerks:Array = PerkTree.obtainablePerks();
+			clearOutput();
+			var perks:Array = allPerks.slice(page*count,(page+1)*count);
+			displayHeader("All Perks ("+(1+page*count)+"-"+(page*count+perks.length)+
+					"/"+allPerks.length+")");
+			for each (var ptype:PerkType in perks) {
+				var pclass:PerkClass = player.perk(player.findPerk(ptype));
+
+				var color:String;
+				if (pclass) color='#000000'; // has perk
+				else if (ptype.available(player)) color='#228822'; // can take on next lvl
+				else color='#aa8822'; // requirements not met
+
+				outputText("<font color='" +color +"'><b>"+ptype.name+"</b></font>: ");
+				outputText(pclass?ptype.desc(pclass):ptype.longDesc);
+				if (!pclass && ptype.requirements.length>0) {
+					var reqs:Array = [];
+					for each (var cond:Object in ptype.requirements) {
+						if (cond.fn(player)) color='#000000';
+						else color='#aa2222';
+						reqs.push("<font color='"+color+"'>"+cond.text+"</font>");
+					}
+					outputText("<ul><li><b>Requires:</b> " + reqs.join(", ")+".</li></ul>");
+				} else {
+					outputText("\n");
+				}
+			}
+			if (page>0) addButton(0,"Prev",perkDatabase,page-1);
+			else addButtonDisabled(0,"Prev");
+			if ((page+1)*count<allPerks.length) addButton(1,"Next",perkDatabase,page+1);
+			else addButtonDisabled(1,"Next");
+			addButton(9, "Back", playerMenu);
+		}
 		
 		//------------
 		// LEVEL UP
@@ -727,9 +910,9 @@ package classes
 			}
 			if (player.tempStr + player.tempTou + player.tempSpe + player.tempInt <= 0 || player.statPoints > 0)
 			{
-				outputText("\nYou may allocate your remaining stat points later.", false);
+				outputText("\nYou may allocate your remaining stat points later.");
 			}
-			dynStats("str", player.tempStr, "tou", player.tempTou, "spe", player.tempSpe, "int", player.tempInt, "noBimbo", true); //Ignores bro/bimbo perks.
+			dynStats("str", player.tempStr, "tou", player.tempTou, "spe", player.tempSpe, "int", player.tempInt, "scale", false);
 			player.tempStr = 0;
 			player.tempTou = 0;
 			player.tempSpe = 0;
@@ -744,7 +927,7 @@ package classes
 		private function perkBuyMenu():void {
 			clearOutput();
 			var perkList:Array = buildPerkList();
-			
+			mainView.aCb.dataProvider = new DataProvider(perkList);
 			if (perkList.length == 0) {
 				outputText("<b>You do not qualify for any perks at present.  </b>In case you qualify for any in the future, you will keep your " + num2Text(player.perkPoints) + " perk point");
 				if (player.perkPoints > 1) outputText("s");
@@ -752,14 +935,14 @@ package classes
 				doNext(playerMenu);
 				return;
 			}
-			outputText("Please select a perk from the drop-down list, then click 'Okay'.  You can press 'Skip' to save your perk point for later.\n\n");
+			outputText("Please select a perk from the drop-down list, then click 'Okay'.  You can press 'Skip' to save your perk point for later.\n\n\n");
 			mainView.aCb.x = 210;
 			mainView.aCb.y = 112;
 			
 			if (mainView.aCb.parent == null) {
 				mainView.addChild(mainView.aCb);
-				mainView.aCb.visible = true;
 			}
+			mainView.aCb.visible = true;
 			menu();
 			addButton(1, "Skip", perkSkip);
 		}
@@ -783,286 +966,29 @@ package classes
 			clearOutput();
 			var selected:PerkClass = ComboBox(event.target).selectedItem.perk;
 			mainView.aCb.move(210, 85);
-			outputText("You have selected the following perk:\n\n");
-			outputText("<b>" + selected.perkName + ":</b> " + selected.perkLongDesc + "\n\nIf you would like to select this perk, click <b>Okay</b>.  Otherwise, select a new perk, or press <b>Skip</b> to make a decision later.");
+			outputText("You have selected the following perk:\n\n\n");
+			outputText("<b>" + selected.perkName + ":</b> " + selected.perkLongDesc);
+			var unlocks:Array = kGAMECLASS.perkTree.listUnlocks(selected.ptype);
+			if (unlocks.length>0){
+				outputText("\n\n<b>Unlocks:</b> <ul>");
+				for each (var pt:PerkType in unlocks) outputText("<li><b>"+pt.name+"</b> ("+pt.longDesc+")</li>");
+				outputText("</ul>");
+			}
+			outputText("\n\nIf you would like to select this perk, click <b>Okay</b>.  Otherwise, select a new perk, or press <b>Skip</b> to make a decision later.");
 			menu();
 			addButton(0, "Okay", perkSelect, selected);
 			addButton(1, "Skip", perkSkip);
 		}
 
 		public function buildPerkList():Array {
+			var player:Player  = kGAMECLASS.player;
+			var perks:Array = PerkTree.availablePerks(player);
 			var perkList:Array = [];
-			function _add(p:PerkClass):void{
-				perkList.push({label: p.perkName,perk:p});
+			for each(var perk:PerkType in perks) {
+				var p:PerkClass = new PerkClass(perk,
+						perk.defaultValue1, perk.defaultValue2, perk.defaultValue3, perk.defaultValue4);
+				perkList.push({label: p.perkName, perk: p});
 			}
-			//------------
-			// STRENGTH
-			//------------
-			if (player.str >= 25) {
-				_add(new PerkClass(PerkLib.StrongBack));
-			}
-			if (player.findPerk(PerkLib.StrongBack) >= 0 && player.str >= 50) {
-				_add(new PerkClass(PerkLib.StrongBack2));
-			}
-			//Tier 1 Strength Perks
-			if (player.level >= 6) {
-				//Thunderous Strikes - +20% basic attack damage while str > 80.
-				if (player.str >= 80) {
-					_add(new PerkClass(PerkLib.ThunderousStrikes));
-				}
-				//Weapon Mastery - Doubles weapon damage bonus of 'large' type weapons. (Minotaur Axe, M. Hammer, etc)
-				if (player.str > 60) {
-					_add(new PerkClass(PerkLib.WeaponMastery));
-				}
-				if (player.str >= 75)
-					_add(new PerkClass(PerkLib.BrutalBlows));
-				if (player.str >= 50)
-					_add(new PerkClass(PerkLib.IronFists));
-				if (player.str >= 65 && player.findPerk(PerkLib.IronFists) >= 0 && player.newGamePlusMod() >= 1)
-					_add(new PerkClass(PerkLib.IronFists2));
-				if (player.str >= 80 && player.findPerk(PerkLib.IronFists2) >= 0 && player.newGamePlusMod() >= 1)
-					_add(new PerkClass(PerkLib.IronFists3));
-				if (player.str >= 50 && player.spe >= 50)
-					_add(new PerkClass(PerkLib.Parry));
-			}
-			//Tier 2 Strength Perks
-			if (player.level >= 12) {
-				if (player.str >= 75)
-					_add(new PerkClass(PerkLib.Berzerker));
-				if (player.str >= 80)
-					_add(new PerkClass(PerkLib.HoldWithBothHands));
-				if (player.str >= 80 && player.tou >= 60)
-					_add(new PerkClass(PerkLib.ShieldSlam));
-			}
-			//Tier 3 Strength Perks
-			if (player.level >= 18) {
-				if (player.findPerk(PerkLib.Berzerker) >= 0 && player.findPerk(PerkLib.ImprovedSelfControl) >= 0 && player.str >= 75)
-					_add(new PerkClass(PerkLib.ColdFury));
-			}
-			//------------
-			// TOUGHNESS
-			//------------
-			//slot 2 - toughness perk 1
-			if (player.findPerk(PerkLib.Tank) < 0 && player.tou >= 25) {
-				_add(new PerkClass(PerkLib.Tank));
-			}
-			//slot 2 - regeneration perk
-			if (player.findPerk(PerkLib.Tank) >= 0 && player.tou >= 50) {
-				_add(new PerkClass(PerkLib.Regeneration));
-			}
-			if (player.tou >= 50 && player.str >= 50) {
-				_add(new PerkClass(PerkLib.ImprovedEndurance));
-			}
-			//Tier 1 Toughness Perks
-			if (player.level >= 6) {
-				if (player.findPerk(PerkLib.Tank) >= 0 && player.tou >= 60) {
-					_add(new PerkClass(PerkLib.Tank2));
-				}
-				if (player.findPerk(PerkLib.Regeneration) >= 0 && player.tou >= 70) {
-					_add(new PerkClass(PerkLib.Regeneration2));
-				}
-				if (player.tou >= 75) {
-					_add(new PerkClass(PerkLib.ImmovableObject));
-				}
-				if (player.tou >= 50) {
-					_add(new PerkClass(PerkLib.ShieldMastery));
-				}
-			}
-			//Tier 2 Toughness Perks
-			if (player.level >= 12) {
-				if (player.tou >= 75) {
-					_add(new PerkClass(PerkLib.Resolute));
-				}
-				if (player.tou >= 75) {
-					_add(new PerkClass(PerkLib.Juggernaut));
-				}
-				if (player.tou >= 60) {
-					_add(new PerkClass(PerkLib.IronMan));
-				}
-			}
-			//------------
-			// SPEED
-			//------------
-			//slot 3 - speed perk
-			if (player.spe >= 25) {
-					_add(new PerkClass(PerkLib.Evade));
-			}
-			//slot 3 - run perk
-			if (player.spe >= 25) {
-					_add(new PerkClass(PerkLib.Runner));
-			}
-			//slot 3 - Double Attack perk
-			if (player.findPerk(PerkLib.Evade) >= 0 && player.findPerk(PerkLib.Runner) >= 0 && player.spe >= 50) {
-					_add(new PerkClass(PerkLib.DoubleAttack));
-			}
-
-			//Tier 1 Speed Perks
-			if (player.level >= 6) {
-				//Speedy Recovery - Regain Fatigue 50% faster speed.
-				if (player.findPerk(PerkLib.Evade) >= 0 && player.spe >= 60) {
-					_add(new PerkClass(PerkLib.SpeedyRecovery));
-				}
-				//Agility - A small portion of your speed is applied to your defense rating when wearing light armors.
-				if (player.spe > 75 && player.findPerk(PerkLib.Runner) >= 0) {
-					_add(new PerkClass(PerkLib.Agility));
-				}
-				if (player.spe >= 75 && player.findPerk(PerkLib.Evade) >= 0 && player.findPerk(PerkLib.Agility) >= 0) {
-						_add(new PerkClass(PerkLib.Unhindered));
-				}
-				if (player.spe >= 60) {
-					_add(new PerkClass(PerkLib.LightningStrikes));
-				}
-				/*if (player.spe >= 60 && player.str >= 60) {
-					_add(new PerkClass(PerkLib.Brawler));
-				}*/ //Would it be fitting to have Urta teach you?
-			}
-			//Tier 2 Speed Perks
-			if (player.level >= 12) {
-				if (player.spe >= 75) {
-					_add(new PerkClass(PerkLib.LungingAttacks));
-				}
-				if (player.spe >= 80 && player.str >= 60) {
-					_add(new PerkClass(PerkLib.Blademaster));
-				}
-			}
-			//------------
-			// INTELLIGENCE
-			//------------
-			//Slot 4 - precision - -10 enemy toughness for damage calc
-			if (player.inte >= 25) {
-					_add(new PerkClass(PerkLib.Precision));
-			}
-			//Spellpower - boosts spell power
-			if (player.inte >= 50) {
-					_add(new PerkClass(PerkLib.Spellpower));
-			}
-			if (player.findPerk(PerkLib.Spellpower) >= 0 && player.inte >= 50) {
-					_add(new PerkClass(PerkLib.Mage));
-			}
-			//Tier 1 Intelligence Perks
-			if (player.level >= 6) {
-				if (player.inte >= 50)
-					_add(new PerkClass(PerkLib.Tactician));
-				if (player.spellCount() > 0 && player.findPerk(PerkLib.Spellpower) >= 0 && player.findPerk(PerkLib.Mage) >= 0 && player.inte >= 60) {
-					_add(new PerkClass(PerkLib.Channeling));
-				}
-				if (player.inte >= 60) {
-					_add(new PerkClass(PerkLib.Medicine));
-				}
-				if (player.findPerk(PerkLib.Channeling) >= 0 && player.inte >= 60) {
-						_add(new PerkClass(PerkLib.StaffChanneling));
-				}
-			}
-			//Tier 2 Intelligence perks
-			if (player.level >= 12) {
-				if (player.findPerk(PerkLib.Mage) >= 0 && player.inte >= 75) {
-					_add(new PerkClass(PerkLib.Archmage));
-				}
-				if (player.inte >= 75) {
-						if (player.findPerk(PerkLib.Mage) >= 0)
-							_add(new PerkClass(PerkLib.FocusedMind));
-						
-						if (player.findPerk(PerkLib.Archmage) >= 0 && player.findPerk(PerkLib.Channeling) >= 0  &&
-						(player.findStatusEffect(StatusEffects.KnowsWhitefire) >= 0
-						|| player.findPerk(PerkLib.FireLord) >= 0 
-						|| player.findPerk(PerkLib.Hellfire) >= 0 
-						|| player.findPerk(PerkLib.EnlightenedNinetails) >= 0
-						|| player.findPerk(PerkLib.CorruptedNinetails) >= 0))
-							_add(new PerkClass(PerkLib.RagingInferno));
-				}
-				// Spell-boosting perks
-				// Battlemage: auto-use Might
-				if (player.findPerk(PerkLib.Channeling) >= 0 && player.findStatusEffect(StatusEffects.KnowsMight) >= 0 && player.inte >= 80) {
-						_add(new PerkClass(PerkLib.Battlemage));
-				}
-				// Spellsword: auto-use Charge Weapon
-				if (player.findPerk(PerkLib.Channeling) >= 0 && player.findStatusEffect(StatusEffects.KnowsCharge) >= 0 && player.inte >= 80) {
-						_add(new PerkClass(PerkLib.Spellsword));
-				}
-			}
-			
-			//------------
-			// LIBIDO
-			//------------
-			//slot 5 - libido perks
-
-			//Slot 5 - Fertile+ increases cum production and fertility (+15%)
-			if (player.lib >= 25) {
-					_add(new PerkClass(PerkLib.FertilityPlus,15,1.75,0,0));
-			}
-			if (player.lib >= 25 && player.inte >= 50) {
-				_add(new PerkClass(PerkLib.ImprovedSelfControl));
-			}
-			//Slot 5 - minimum libido
-			if (player.minLust() >= 20) {
-					_add(new PerkClass(PerkLib.ColdBlooded,20,0,0,0));
-			}
-			if (player.lib >= 50) {
-					_add(new PerkClass(PerkLib.HotBlooded,20,0,0,0));
-			}
-			//Tier 1 Libido Perks
-			if (player.level >= 6) {
-				//Slot 5 - minimum libido
-				//Slot 5 - Fertility- decreases cum production and fertility.
-				if (player.lib < 25) {
-						_add(new PerkClass(PerkLib.FertilityMinus, 15, 0.7, 0, 0));
-				}
-				if (player.lib >= 60) {
-					_add(new PerkClass(PerkLib.WellAdjusted));
-				}
-				//Slot 5 - minimum libido
-				if (player.lib >= 60 && player.cor >= 50) {
-					_add(new PerkClass(PerkLib.Masochist));
-				}
-			}
-			//------------
-			// SENSITIVITY
-			//------------
-			//Nope.avi
-			//------------
-			// CORRUPTION
-			//------------
-			//Slot 7 - Corrupted Libido - lust raises 10% slower.
-			if (player.cor >= 25) {
-					_add(new PerkClass(PerkLib.CorruptedLibido,20,0,0,0));
-			}
-			//Slot 7 - Seduction (Must have seduced Jojo
-			if (player.cor >= 50) {
-					_add(new PerkClass(PerkLib.Seduction));
-			}
-			//Slot 7 - Nymphomania
-			if (player.findPerk(PerkLib.CorruptedLibido) >= 0 && player.cor >= 75) {
-					_add(new PerkClass(PerkLib.Nymphomania));
-			}
-			//Slot 7 - UNFINISHED :3
-			if (player.minLust() >= 20 && player.findPerk(PerkLib.CorruptedLibido) >= 0 && player.cor >= 50) {
-					_add(new PerkClass(PerkLib.Acclimation));
-			}
-			//Tier 1 Corruption Perks - acclimation over-rides
-			if (player.level >= 6)
-			{
-				if (player.cor >= 60 && player.findPerk(PerkLib.CorruptedLibido) >= 0) {
-					_add(new PerkClass(PerkLib.Sadist));
-				}
-				if (player.findPerk(PerkLib.CorruptedLibido) >= 0 && player.cor >= 70) {
-					_add(new PerkClass(PerkLib.ArousingAura));
-				}
-			}
-			//Tier 1 Misc Perks
-			if (player.level >= 6) {
-				_add(new PerkClass(PerkLib.Resistance));
-				if (flags[kFLAGS.HUNGER_ENABLED] > 0) _add(new PerkClass(PerkLib.Survivalist));
-			}
-			//Tier 2 Misc Perks
-			if (player.level >= 12 && player.findPerk(PerkLib.Survivalist) > 0) {
-				if (flags[kFLAGS.HUNGER_ENABLED] > 0) _add(new PerkClass(PerkLib.Survivalist2));
-			}
-			// FILTER PERKS
-			perkList = perkList.filter(
-					function(perk:*,idx:int,array:Array):Boolean{
-						return player.findPerk(perk.perk.ptype) < 0;
-					});
-			mainView.aCb.dataProvider = new DataProvider(perkList);
 			return perkList;
 		}
 		public function applyPerk(perk:PerkClass):void {

@@ -1,22 +1,12 @@
 ﻿package classes 
 {
 	import classes.display.BindingPane;
+	import classes.internals.LoggerFactory;
 	import coc.view.MainView;
-	import fl.controls.UIScrollBar;
-	import fl.containers.ScrollPane;
 	import flash.display.Stage;
-	import flash.events.Event;
 	import flash.events.KeyboardEvent;
 	import flash.text.TextField;
-	import flash.utils.ByteArray;
-	import flash.utils.Dictionary;
-	import flash.display.MovieClip;
-	import flash.utils.describeType;
-	import flash.ui.Keyboard;
-	import flash.utils.describeType;
-	import flash.utils.getDefinitionByName;
-	import flash.utils.getQualifiedClassName;
-	
+	import mx.logging.ILogger;
 	/**
 	 * Generic input manager
 	 * I feel sick writing some of these control functors; rather than having some form of queryable game state
@@ -26,6 +16,7 @@
 	 */
 	public class InputManager 
 	{
+		private static const LOGGER:ILogger = LoggerFactory.getLogger(InputManager);
 		// Declaring some consts for clarity when using some of the InputManager methods
 		public static const PRIMARYKEY:Boolean = true;
 		public static const SECONDARYKEY:Boolean = false;
@@ -55,8 +46,7 @@
 		// Visual shit
 		private var _mainView:MainView;
 		private var _mainText:TextField;
-		private var _mainTextScollBar:UIScrollBar;
-		
+
 		// A new UI element that we can embed buttons into to facilitate key rebinding
 		private var _bindingPane:BindingPane;
 		
@@ -68,25 +58,26 @@
 		/**
 		 * Init the InputManager. Attach the keyboard event listener to the stage and prepare the subobjects for usage.
 		 * @param	stage	Reference to core stage on which to add display objects
+		 * @param	_mainView
 		 * @param	debug	Emit debugging trace statements
 		 */
-		public function InputManager(stage:Stage, debug:Boolean = true)
+		public function InputManager(stage:Stage,
+									 _mainView: MainView,
+									 debug:Boolean = true)
 		{
 			_bindingMode = false;
 			_debug = debug;
 			
 			_stage = stage;
-			_mainView = _stage.getChildByName("mainView") as MainView;
+			this._mainView = _mainView;
 			_availableControlMethods = 0;
 			_availableCheatControlMethods = 0;
 			
 			_stage.addEventListener(KeyboardEvent.KEY_DOWN, this.KeyHandler);
 			
-			_mainView = _stage.getChildByName("mainView") as MainView;
-			_mainText = (_stage.getChildByName("mainView") as MovieClip).mainText as TextField;
-			_mainTextScollBar = (_stage.getChildByName("mainView") as MovieClip).scrollBar as UIScrollBar;
-			
-			_bindingPane = new BindingPane(this, _mainText.x, _mainText.y, _mainText.width, _mainText.height, _mainTextScollBar.width);
+			_mainText = _mainView.mainText as TextField;
+
+			_bindingPane = new BindingPane(this, _mainText.x, _mainText.y, _mainText.width + 16, _mainText.height);
 		}
 		
 		/**
@@ -112,7 +103,7 @@
 					slot = "Secondary";
 				}
 				
-				trace("Listening for a new " + slot + " bind for " + funcName);
+				LOGGER.debug("Listening for a new " + slot + " bind for " + funcName);
 			}
 			
 			_bindingMode = true;
@@ -208,7 +199,7 @@
 				}
 			}
 			
-			if (_debug) trace("Failed to bind control method [" + funcName + "] to keyCode [" + keyCode + "]");
+			if (_debug) LOGGER.debug("Failed to bind control method [" + funcName + "] to keyCode [" + keyCode + "]");
 		}
 		
 		/**
@@ -238,7 +229,7 @@
 		 */
 		public function KeyHandler(e:KeyboardEvent):void
 		{
-			if (_debug) trace("Got key input " + e.keyCode);
+			if (_debug) LOGGER.debug("Got key input " + e.keyCode);
 			
 			// Ignore key input during certain phases of gamestate
 			if (_mainView.eventTestInput.x == 207.5)
@@ -273,7 +264,7 @@
 		{
 			if (_keysToControlMethods[keyCode] != null)
 			{
-				if (_debug) trace("Attempting to exec func [" + _controlMethods[_keysToControlMethods[keyCode]].Name + "]");
+				if (_debug) LOGGER.debug("Attempting to exec func [" + _controlMethods[_keysToControlMethods[keyCode]].Name + "]");
 				
 				_controlMethods[_keysToControlMethods[keyCode]].ExecFunc();
 			}
@@ -291,12 +282,12 @@
 		public function DisplayBindingPane():void
 		{
 			_mainText.visible = false;
-			_mainTextScollBar.visible = false;
-			
+
 			_bindingPane.functions = this.GetAvailableFunctions();
 			_bindingPane.ListBindingOptions();
 			
-			_stage.addChild(_bindingPane);
+			_mainText.parent.addChild(_bindingPane);
+			_bindingPane.update();
 		}
 		
 		/**
@@ -305,8 +296,7 @@
 		public function HideBindingPane():void
 		{
 			_mainText.visible = true;
-			_mainTextScollBar.visible = true;
-			_stage.removeChild(_bindingPane);
+			_bindingPane.parent.removeChild(_bindingPane);
 		}
 		
 		/**
@@ -372,7 +362,7 @@
 			
 			for (var key:String in _controlMethods)
 			{
-				if (_debug) trace(key);
+				if (_debug) LOGGER.debug(key);
 				funcs.push(_controlMethods[key]);
 			}
 			funcs.sortOn( ["Index"], [Array.NUMERIC] );
@@ -445,7 +435,7 @@
 			
 			for (var key:String in _controlMethods)
 			{
-				if (_debug) trace(key);
+				if (_debug) LOGGER.debug(key);
 				var ctrlObj:* = new Object();
 				ctrlObj.PrimaryKey = _controlMethods[key].PrimaryKey;
 				ctrlObj.SecondaryKey = _controlMethods[key].SecondaryKey;

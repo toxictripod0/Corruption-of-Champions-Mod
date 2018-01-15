@@ -1,6 +1,9 @@
 package classes.Scenes.Areas.HighMountains
 {
 	import classes.*;
+	import classes.BodyParts.*;
+	import classes.BodyParts.Butt;
+	import classes.BodyParts.Hips;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.internals.*;
 
@@ -65,7 +68,7 @@ package classes.Scenes.Areas.HighMountains
 				if (player.armorDef > 0) outputText(", but your defense has been reduced");
 				outputText("! ");
 				player.takeDamage(damage, true);
-				if (findStatusEffect(StatusEffects.TailWhip) >= 0) addStatusValue(StatusEffects.TailWhip, 1, 10);
+				if (hasStatusEffect(StatusEffects.TailWhip)) addStatusValue(StatusEffects.TailWhip, 1, 10);
 				else createStatusEffect(StatusEffects.TailWhip, 10, 0, 0, 0);
 			}
 			combatRoundOver();
@@ -123,7 +126,7 @@ package classes.Scenes.Areas.HighMountains
 		private function bootyShortInYoFaceSon():void
 		{
 			outputText("The blue beauty turns around and bends over so far that she uses her halberd like a pole to support herself.  She lifts her shark tail up so you can see her short-shorts hugging perfectly against her ample bottom.  Her tail waves to the left and to the right as she does a little booty shake for you.  The siren gives her big ass a nice, hard slap that echoes off the tower walls, and making it jiggle even more.  She quickly turns around to face you, smirking at what she just did. ");
-			game.dynStats("lus", 20 + player.lib / 10 + rand(5));
+			player.takeLustDamage(20 + player.lib / 10 + rand(5), true);
 			combatRoundOver();
 		}
 
@@ -132,7 +135,7 @@ package classes.Scenes.Areas.HighMountains
 		private function lickDatPole():void
 		{
 			outputText("Minerva stands, holding her halberd straight up next to her as she looks it over with a seductive stare.  Giving you a suggestive look she rolls out a two-foot long tongue from her mouth, licking a good length of the massive weapon, even wrapping her tongue around it a few times.  Suddenly she sucks her tongue back into her mouth and gives you a little smirk, almost to say \"<i>Yeah, I can do that... and more.</i>\" ");
-			game.dynStats("lus", 20 + player.lib / 10 + rand(5));
+			player.takeLustDamage(20 + player.lib / 10 + rand(5), true);
 			combatRoundOver();
 		}
 
@@ -141,7 +144,7 @@ package classes.Scenes.Areas.HighMountains
 		{
 			//The Siren's Song (2-part attack) (Rarely used or when she's desperate aka: Less than 10% hp)
 			//[part 1]
-			if (findStatusEffect(StatusEffects.SirenSong) < 0) {
+			if (!hasStatusEffect(StatusEffects.SirenSong)) {
 				outputText("Minerva begins to hum a pleasant tune.  It might be better to stand back to see what she's up to!");
 				createStatusEffect(StatusEffects.SirenSong, 0, 0, 0, 0);
 			}
@@ -162,7 +165,7 @@ package classes.Scenes.Areas.HighMountains
 
 		override protected function performCombatAction():void
 		{
-			if (findStatusEffect(StatusEffects.SirenSong) >= 0) sirensSong();
+			if (hasStatusEffect(StatusEffects.SirenSong)) sirensSong();
 			else if (rand(25) == 0 || (HP < 100 && rand(2) == 0)) sirensSong();
 			//Else choose randomly!
 			else {
@@ -208,19 +211,19 @@ package classes.Scenes.Areas.HighMountains
 			if (flags[kFLAGS.MINERVA_PURIFICATION_PROGRESS] >= 10 || flags[kFLAGS.MINERVA_CORRUPTION_PROGRESS] >= 10) ballSize += 2;
 			this.cumMultiplier = 3;
 			// this.hoursSinceCum = 0;
-			this.createVagina(false, VAGINA_WETNESS_SLICK, VAGINA_LOOSENESS_NORMAL);
+			this.createVagina(false, VaginaClass.WETNESS_SLICK, VaginaClass.LOOSENESS_NORMAL);
 			//Set breast size based on pure/corrupt
 			if (flags[kFLAGS.MINERVA_PURIFICATION_PROGRESS] >= 10) createBreastRow(Appearance.breastCupInverse("G"));
 			else if (flags[kFLAGS.MINERVA_CORRUPTION_PROGRESS] >= 10) createBreastRow(Appearance.breastCupInverse("E"));
 			else createBreastRow(Appearance.breastCupInverse("DD"));
-			this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-			this.ass.analWetness = ANAL_WETNESS_DRY;
+			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
+			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.tallness = 8*12+4;
-			this.hipRating = HIP_RATING_CURVY;
-			this.buttRating = BUTT_RATING_LARGE+1;
-			this.skinTone = "blue";
-			this.hairColor = "red";
-			this.hairLength = 25;
+			this.hips.rating = Hips.RATING_CURVY;
+			this.butt.rating = Butt.RATING_LARGE+1;
+			this.skin.tone = "blue";
+			this.hair.color = "red";
+			this.hair.length = 25;
 			initStrTouSpeInte(50, 65, 95, 75);
 			initLibSensCor(30, 25, 45);
 			if (flags[kFLAGS.MINERVA_PURIFICATION_PROGRESS] >= 10) cor = 0; //Set to 0 corruption if purified.
@@ -242,8 +245,7 @@ package classes.Scenes.Areas.HighMountains
 			this.gems = rand(25) +10;
 			this.additionalXP = 50;
 			this.drop = new WeightedDrop(consumables.PURPEAC, 1);
-			this.wingType = WING_TYPE_HARPY;
-			this.wingDesc = "fluffy feathery";
+			this.wings.type = Wings.FEATHERED_LARGE;
 			checkMonster();
 		}
 		

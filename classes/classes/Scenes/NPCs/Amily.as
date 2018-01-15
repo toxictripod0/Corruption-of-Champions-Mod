@@ -1,8 +1,12 @@
-﻿package classes.Scenes.NPCs
+package classes.Scenes.NPCs
 {
 	import classes.*;
+	import classes.BodyParts.*;
+import classes.BodyParts.Butt;
+import classes.BodyParts.Hips;
+import classes.StatusEffects.Combat.AmilyVenomDebuff;
 
-	/**
+/**
 	 * ...
 	 * @author ...
 	 */
@@ -11,7 +15,7 @@
 
 		override protected function performCombatAction():void
 		{
-			if (findStatusEffect(StatusEffects.Concentration) < 0 && rand(4) == 0) amilyConcentration();
+			if (!hasStatusEffect(StatusEffects.Concentration) && rand(4) == 0) amilyConcentration();
 			else if (rand(3) == 0) amilyDartGo();
 			else if (rand(2) == 0) amilyDoubleAttack();
 			else amilyAttack();
@@ -24,8 +28,8 @@
 			//return to combat menu when finished
 			doNext(game.playerMenu);
 			//Blind dodge change
-			if (findStatusEffect(StatusEffects.Blind) >= 0 && rand(3) < 2) {
-				outputText(capitalA + short + " completely misses you with a blind attack!\n", false);
+			if (hasStatusEffect(StatusEffects.Blind) && rand(3) < 2) {
+				outputText(capitalA + short + " completely misses you with a blind attack!\n");
 				game.combat.combatRoundOver();
 				return;
 			}
@@ -35,27 +39,27 @@
 			damage = int((str + weaponAttack) - Math.random()*(player.tou+player.armorDef));
 			//Dodged
 			if (dodged != null) {
-				outputText("Amily dashes at you and swipes her knife, but you quickly sidestep the blow.", false);
+				outputText("Amily dashes at you and swipes her knife, but you quickly sidestep the blow.");
 				//Add tags for miss/evade/flexibility/etc.
 				switch(dodged) {
 					case EVASION_SPEED:
-						outputText(" [Dodge]", false);
+						outputText(" [Dodge]");
 						break;
 					case EVASION_EVADE:
-						outputText(" [Evade]", false);
+						outputText(" [Evade]");
 						break;
 					case EVASION_MISDIRECTION:
-						outputText(" [Misdirect]", false);
+						outputText(" [Misdirect]");
 						break;
 					case EVASION_FLEXIBILITY:
-						outputText(" [Flexibility]", false);
+						outputText(" [Flexibility]");
 						break;
 					case EVASION_UNHINDERED:
-						outputText(" [Unhindered]", false);
+						outputText(" [Unhindered]");
 						break;
 					default:
 						CoC_Settings.error();
-						outputText(" <b>[ERROR]</b>", false);
+						outputText(" <b>[ERROR]</b>");
 						break;
 				}
 			}
@@ -63,23 +67,23 @@
 			else if (damage <= 0) {
 				damage = 0;
 				//Due to toughness or amor...
-				if (rand(player.armorDef + player.tou) < player.armorDef) outputText("Your " + player.armorName + " absorb and deflect every " + weaponVerb + " from " + a + short + ".", false);
-				else outputText("You deflect and block every " + weaponVerb + " " + a + short + " throws at you.", false);
+				if (rand(player.armorDef + player.tou) < player.armorDef) outputText("Your " + player.armorName + " absorb and deflect every " + weaponVerb + " from " + a + short + ".");
+				else outputText("You deflect and block every " + weaponVerb + " " + a + short + " throws at you.");
 			}
 			//Got hit!
 			else {
-				outputText("Amily dashes at you and swipes her knife, cutting you. ", false);
+				outputText("Amily dashes at you and swipes her knife, cutting you. ");
 				damage = player.takeDamage(damage, true);
 			}
 			if (damage > 0) {
 				if (lustVuln > 0 && player.armorName == "barely-decent bondage straps") {
-					if (!plural) outputText("\n" + capitalA + short + " brushes against your exposed skin and jerks back in surprise, coloring slightly from seeing so much of you revealed.", false);
-					else outputText("\n" + capitalA + short + " brush against your exposed skin and jerk back in surprise, coloring slightly from seeing so much of you revealed.", false);
+					if (!plural) outputText("\n" + capitalA + short + " brushes against your exposed skin and jerks back in surprise, coloring slightly from seeing so much of you revealed.");
+					else outputText("\n" + capitalA + short + " brush against your exposed skin and jerk back in surprise, coloring slightly from seeing so much of you revealed.");
 					lust += 10 * lustVuln;
 				}
 			}
 			game.statScreenRefresh();
-			outputText("\n", false);
+			outputText("\n");
 			game.combat.combatRoundOver();
 		}
 
@@ -91,7 +95,7 @@
 			//return to combat menu when finished
 			doNext(game.playerMenu);
 			//Blind dodge change
-			if (findStatusEffect(StatusEffects.Blind) >= 0 && rand(3) < 2) {
+			if (hasStatusEffect(StatusEffects.Blind) && rand(3) < 2) {
 				dodged++;
 			}
 			//Determine if dodged!
@@ -118,18 +122,18 @@
 				if (dodged == 0) damage *= 2;
 				//Blocked?
 				if (damage == 0) {
-					outputText("Amily dashes at you and slashes at you twice in the time it would take most to throw a single blow, but she can't cut deep enough to wound you!", false);
+					outputText("Amily dashes at you and slashes at you twice in the time it would take most to throw a single blow, but she can't cut deep enough to wound you!");
 				}
 				//NOT BLOCKED!
 				else {
-					if (dodged > 0) outputText("Amily dashes at you and quickly slashes you twice; you manage to avoid the first blow, but the second one hits home, cutting you", false);
-					else outputText("Amily dashes at you and slashes at you twice in the time it would take most to throw a single blow", false);
-					outputText("! ", false);
+					if (dodged > 0) outputText("Amily dashes at you and quickly slashes you twice; you manage to avoid the first blow, but the second one hits home, cutting you");
+					else outputText("Amily dashes at you and slashes at you twice in the time it would take most to throw a single blow");
+					outputText("! ");
 					damage = player.takeDamage(damage, true);
 				}
 			}
 			//Dodge all!
-			else outputText("Amily dashes at you and quickly slashes you twice, but you quickly sidestep her first blow and jump back to avoid any follow-ups.", false);
+			else outputText("Amily dashes at you and quickly slashes you twice, but you quickly sidestep her first blow and jump back to avoid any follow-ups.");
 
 			game.combat.combatRoundOver();
 		}
@@ -139,8 +143,8 @@
 		{
 			var dodged:Number = 0;
 			//Blind dodge change
-			if (findStatusEffect(StatusEffects.Blind) >= 0 && rand(3) < 2) {
-				outputText(capitalA + short + " completely misses you with a blind attack from her dartgun!\n", false);
+			if (hasStatusEffect(StatusEffects.Blind) && rand(3) < 2) {
+				outputText(capitalA + short + " completely misses you with a blind attack from her dartgun!\n");
 				game.combat.combatRoundOver();
 				return;
 			}
@@ -162,53 +166,36 @@
 			}
 			//Dodged
 			if (dodged > 0) {
-				outputText("Amily dashes at you and swipes her knife rather slowly. You easily dodge the attack; but it was all a feint, her other hands tries to strike at you with a poisoned dart. Luckily you manage to avoid it.", false);
+				outputText("Amily dashes at you and swipes her knife rather slowly. You easily dodge the attack; but it was all a feint, her other hands tries to strike at you with a poisoned dart. Luckily you manage to avoid it.");
 				//Add tags for miss/evade/flexibility/etc.
 				switch (dodged) {
 					case 1:
-						outputText(" [Dodge]", false);
+						outputText(" [Dodge]");
 						break;
 					case 2:
-						outputText(" [Evade]", false);
+						outputText(" [Evade]");
 						break;
 					case 3:
-						outputText(" [Misdirect]", false);
+						outputText(" [Misdirect]");
 						break;
 					case 4:
-						outputText(" [Flexibility]", false);
+						outputText(" [Flexibility]");
 						break;
 					default:
 						CoC_Settings.error("");
-						outputText(" <b>[ERROR]</b>", false);
+						outputText(" <b>[ERROR]</b>");
 						break;
 				}
 			}
 			//Else hit!
 			else {
-				outputText("Amily dashes at you and swipes her knife at you, surprisingly slowly.  You easily dodge the attack; but it was a feint - her other hand tries to strike at you with a poisoned dart. However, she only manages to scratch you, only causing your muscles to grow slightly numb.", false);
+				outputText("Amily dashes at you and swipes her knife at you, surprisingly slowly.  You easily dodge the attack; but it was a feint - her other hand tries to strike at you with a poisoned dart. However, she only manages to scratch you, only causing your muscles to grow slightly numb.");
 				//Set status
-				if (player.findStatusEffect(StatusEffects.AmilyVenom) < 0) player.createStatusEffect(StatusEffects.AmilyVenom, 0, 0, 0, 0);
-				var poison:Number = 2 + rand(5);
-				while (poison > 0) {
-					poison--;
-					if (player.str >= 2) {
-						player.str--;
-						showStatDown("str");
-						// strDown.visible = true;
-						// strUp.visible = false;
-						player.addStatusValue(StatusEffects.AmilyVenom, 1, 1);
-					}
-					if (player.spe >= 2) {
-						player.spe--;
-						showStatDown("spe");
-						// speDown.visible = true;
-						// speUp.visible = false;
-						player.addStatusValue(StatusEffects.AmilyVenom, 2, 1);
-					}
-				}
+				var venom:AmilyVenomDebuff = player.createOrFindStatusEffect(StatusEffects.AmilyVenom) as AmilyVenomDebuff;
+				venom.increase();
 				//If PC is reduced to 0 Speed and Strength, normal defeat by HP plays.
 				if (player.spe <= 2 && player.str <= 2) {
-					outputText("  You've become so weakened that you can't even make an attempt to defend yourself, and Amily rains blow after blow down upon your helpless form.", false);
+					outputText("  You've become so weakened that you can't even make an attempt to defend yourself, and Amily rains blow after blow down upon your helpless form.");
 					player.takeDamage(8999);
 				}
 			}
@@ -217,7 +204,7 @@
 
 		//Concentrate: always avoids the next attack. Can be disrupted by tease/seduce.
 		private function amilyConcentration():void {
-			outputText("Amily takes a deep breath and attempts to concentrate on your movements.", false);
+			outputText("Amily takes a deep breath and attempts to concentrate on your movements.");
 			createStatusEffect(StatusEffects.Concentration,0,0,0,0);
 			game.combat.combatRoundOver();
 		}
@@ -226,8 +213,8 @@
 		//Deals big lust increase, despite her resistance.
 		override public function teased(lustDelta:Number):void
 		{
-			if (findStatusEffect(StatusEffects.Concentration) >= 0) {
-				outputText("Amily flushes hotly; her concentration only makes her pay more attention to your parts!", false);
+			if (hasStatusEffect(StatusEffects.Concentration)) {
+				outputText("Amily flushes hotly; her concentration only makes her pay more attention to your parts!");
 				lustDelta += 25+lustDelta;
 				removeStatusEffect(StatusEffects.Concentration);
 				applyTease(lustDelta);
@@ -248,19 +235,18 @@
 			this.imageName = "amily";
 			this.long = "You are currently fighting Amily. The mouse-morph is dressed in rags and glares at you in rage, knife in hand. She keeps herself close to the ground, ensuring she can quickly close the distance between you two or run away.";
 			// this.plural = false;
-			this.createVagina(false, VAGINA_WETNESS_NORMAL, VAGINA_LOOSENESS_NORMAL);
+			this.createVagina(false, VaginaClass.WETNESS_NORMAL, VaginaClass.LOOSENESS_NORMAL);
 			this.createStatusEffect(StatusEffects.BonusVCapacity, 48, 0, 0, 0);
 			createBreastRow(Appearance.breastCupInverse("C"));
-			this.ass.analLooseness = ANAL_LOOSENESS_VIRGIN;
-			this.ass.analWetness = ANAL_WETNESS_DRY;
+			this.ass.analLooseness = AssClass.LOOSENESS_VIRGIN;
+			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.tallness = 4*12;
-			this.hipRating = HIP_RATING_AMPLE;
-			this.buttRating = BUTT_RATING_TIGHT;
-			this.skinTone = "tawny";
-			this.skinType = SKIN_TYPE_FUR;
-			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[SKIN_TYPE_FUR];
-			this.hairColor = "brown";
-			this.hairLength = 5;
+			this.hips.rating = Hips.RATING_AMPLE;
+			this.butt.rating = Butt.RATING_TIGHT;
+			this.skin.tone = "tawny";
+			this.skin.setType(Skin.FUR);
+			this.hair.color = "brown";
+			this.hair.length = 5;
 			initStrTouSpeInte(30, 30, 85, 60);
 			initLibSensCor(45, 45, 10);
 			this.weaponName = "knife";

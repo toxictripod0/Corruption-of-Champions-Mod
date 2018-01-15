@@ -10,17 +10,18 @@ package classes.Items.Weapons
 		
 		public function ScarredBlade() 
 		{
+			this.weightCategory = Weapon.WEIGHT_MEDIUM;
 			super("ScarBld", "ScarBlade", "scarred blade", "a scarred blade", "slash", 10, 1000, "This saber, made from lethicite-imbued metal, eagerly seeks flesh; it resonates with disdain and delivers deep, jagged wounds as it tries to bury itself in the bodies of others. It only cooperates with the corrupt.");
 		}
 		
 		override public function get attack():Number { 
-			var temp:int = 10 + int((game.player.cor - 70) / 3)
+			var temp:int = 10 + int((game.player.corAdjustedUp() - 70) / 3)
 			if (temp < 10) temp = 10;
 			return temp; 
 		}
 		
 		override public function canUse():Boolean {
-			if (game.player.cor >= (70 - game.player.corruptionTolerance())) return true;
+			if (game.player.isCorruptEnough(70)) return true;
 			game.sheilaScene.rebellingScarredBlade(true);
 			return false;
 		}

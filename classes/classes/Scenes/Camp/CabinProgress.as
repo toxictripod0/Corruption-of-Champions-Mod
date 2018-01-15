@@ -1,15 +1,13 @@
 package classes.Scenes.Camp 
 {
 	import classes.*;
+	import classes.BaseContent;
+	import classes.GlobalFlags.kACHIEVEMENTS;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
-	import classes.GlobalFlags.kACHIEVEMENTS;
-	import classes.BaseContent;
-	
+	import classes.Scenes.API.Encounter;
+	import classes.Scenes.API.Encounters;
 	import classes.Scenes.NPCs.*;
-	import classes.Scenes.Camp;
-	
-	import coc.model.GameModel;
 	
 	/**
 	 * Lovely and comfortable cabin for you to sleep in peace.
@@ -17,9 +15,7 @@ package classes.Scenes.Camp
 	 */
 	public class CabinProgress extends BaseContent {
 		
-		public function CabinProgress() {
-			
-		}
+		public function CabinProgress() {}
 		
 		//------------
 		// VALUES
@@ -52,16 +48,27 @@ package classes.Scenes.Camp
 		//------------
 		// HARVESTING
 		//------------
+		private var _forestEncounter:Encounter=null;
+		public function get forestEncounter():Encounter {
+			return _forestEncounter ||= Encounters.build({
+				name: "lumber",
+				call: gatherWoods,
+				when: function ():Boolean {
+					return (flags[kFLAGS.CAMP_CABIN_PROGRESS] >= 4 || player.hasKeyItem("Carpenter's Toolbox") >= 0)
+						   && flags[kFLAGS.CAMP_CABIN_WOOD_RESOURCES] < maxWoodSupply();
+				}
+			});
+		}
 		public function gatherWoods():void {
 			combat.cleanupAfterCombat();
 			outputText("While exploring the forest, you survey the trees. The trees are at the right thickness. You could cut down the trees. \n\n");
 			menu();
-			if (player.fatigue > player.maxFatigue() - 30) {
+			if (player.fatigueLeft() < 30) {
 				outputText("<b>You are too tired to consider cutting down the trees. Perhaps some rest will suffice?</b>");
 				doNext(camp.returnToCampUseOneHour);
 				return;
 			}
-			if (player.hasItem(weapons.L__AXE) || player.weaponName == "large axe") 
+			if (player.hasItem(weapons.L__AXE0) || player.weaponName == "large axe") 
 			{
 				outputText("You are carrying a large axe with you.") 
 				addButton(0, "Axe", cutTreeTIMBER);
@@ -187,6 +194,8 @@ package classes.Scenes.Camp
 					case 10:
 						enterCabinFirstTime();
 						break;
+					default:
+						thinkOfCabin(); //This shouldn't happen, move along! Failsafe method.
 				}
 			}
 			else
@@ -228,10 +237,10 @@ package classes.Scenes.Camp
 		private function startThinkingOfMaterials():void {
 			outputText("Your site is nice and leveled now. Time to think about what you’ll make the cabin out of. The easiest thing would be wood. There isn’t a lot of fieldstone around here and there are plenty of trees. Wood would be the obvious choice.\n\n");
 			//Tool check!
-			if (player.hasKeyItem("Carpenter's Toolbox")) {
+			if (player.hasKeyItem("Carpenter's Toolbox") >= 0) {
 				outputText("Luckily, you found that carpenter’s shop in Tel’Adre and picked up a tool kit. That has an axe, an adze, and a spud, and a bunch of other tools. Everything you need to turn logs into basic beams for a cabin. It’s quite a heavy kit, but you did manage to lug it back across the desert to your campsite. You might as well put it to good use!");
 			}
-			else if (player.hasItem(weapons.L__AXE) || player.weapon == weapons.L__AXE) {
+			else if (player.hasItem(weapons.L__AXE0) || player.weapon == weapons.L__AXE0) {
 				outputText("Good thing you found that big axe, right? That’ll make the job easy.\n\n");
 				outputText("Although when you think about it, an axe alone isn’t going to be enough. You’ll need at least an adze and a bark spud. Maybe there’s somewhere you can buy a toolkit with all the things you need. Tel’Adre maybe?\n\n");
 			}
@@ -247,17 +256,16 @@ package classes.Scenes.Camp
 		}
 		
 		private function checkToolbox():void {
-			if (player.hasKeyItem("Carpenter's Toolbox") >= 0 && flags[kFLAGS.CAMP_CABIN_PROGRESS] == 4)
-			{
-				outputText("You should be able to work on your cabin as you have toolbox. \n\n");
+			if (player.hasKeyItem("Carpenter's Toolbox") >= 0) {
+				outputText("You should be able to work on your cabin as you have the toolbox. \n\n");
 				outputText("You take out the book included in your toolbox. It's titled \"Carpenter's Guide\" and you open the book. There are hundreds of pages, most of them have illustrations on how to use tools and how to build projects. You read through the book, page by page. \n\n");
 				dynStats("int", 1);
 				flags[kFLAGS.CAMP_CABIN_PROGRESS] = 5;
 			}
-			else
-			{
+			else {
 				outputText("You are missing a toolbox. Maybe one of the shops sell these? \n\n");
 			}
+			doNext(playerMenu);
 		}	
 		
 		private function noThanks():void {
@@ -272,7 +280,7 @@ package classes.Scenes.Camp
 		//STAGE 5 - Draw plans for your cabin.
 		private function drawCabinPlans():void {
 			outputText("Now that you’ve harvested some trees, you can now make some plans. You start with taking some of the inner bark of the trees you’ve harvested and pounding it flat. It makes primitive but useful paper. A chunk of charcoal from your campfire and a few moments with a blade make a nice point. Now you can draw up some plans for your cabin.\n\n");
-			outputText("You cast your mind back to the homes in Ingnam, trying to remember all the details you can about how they looked and how they were put together.");
+			outputText("You cast your mind back to the homes in Ingnam, trying to remember all the details you can about how they looked and how they were put together. ");
 			if (player.inte >= 60)
 				outputText("Fortunately, your early training in carpentry hasn’t been forgotten. It only takes a brief time before you have a complete set of plans.");
 			else
@@ -323,8 +331,8 @@ package classes.Scenes.Camp
 			//NPC comments, WIP
 			//if (kGAMECLASS.amilyScene.amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 1) outputText("\"<i>PLACEHOLDER</i>\" Amily asks. \n\n");
 			outputText("You start to construct a wooden frame according to the instructions. Using your hammer and nails, you put the wood frame together and put it up. You then add temporary supports to ensure it doesn't fall down. You make two more frames of the same shape. Lastly, you construct one more frame, this time the frame is designed to have door and window.\n\n");
-			if (player.findStatusEffect(StatusEffects.CampRathazul) >= 0) outputText("\"<i>My, my. What are you building?</i>\" Rathazul asks. \n\n");
-			if (player.findStatusEffect(StatusEffects.PureCampJojo) >= 0) outputText("\"<i>You're building something?</i>\" Jojo asks. \n\n");
+			if (player.hasStatusEffect(StatusEffects.CampRathazul)) outputText("\"<i>My, my. What are you building?</i>\" Rathazul asks. \n\n");
+			if (player.hasStatusEffect(StatusEffects.PureCampJojo)) outputText(flags[kFLAGS.JOJO_BIMBO_STATE] >= 3 ? "\"<i>Like, what are you building? House? Fun!</i>\" Joy quips and sticks her out at you playfully. \n\n" : "\"<i>You're building something?</i>\" Jojo asks. \n\n");
 			if (camp.marbleFollower()) outputText("\"<i>Sweetie, you're building a cabin? That's nice,</i>\" Marble says. \n\n");
 			if (camp.companionsCount() > 0) outputText("You announce that yes, you're building a cabin.\n\n");
 			//End of NPC comments
@@ -353,7 +361,7 @@ package classes.Scenes.Camp
 			outputText("Now that you have a solid foundation in place, it’s time to raise the walls and the roof. This is going to take a lot of nails, probably as much as the toolbox can carry. You’ll also need quite a bit of wood, around 75 units of it if your math is right.\n\n");
 			outputText("You know this is going to be a long, hard day of work.\n\n");
 			outputText("You’re going to need some paint too, for protection.\n\n");
-			outputText("Raise walls and the roof?");
+			outputText("Raise walls and the roof?\n\n");
 			checkMaterials();
 			if (player.hasKeyItem("Carpenter's Toolbox")) {
 				if (player.keyItemv1("Carpenter's Toolbox") >= 200 && flags[kFLAGS.CAMP_CABIN_WOOD_RESOURCES] >= 75){
@@ -381,8 +389,8 @@ package classes.Scenes.Camp
 		
 		private function doCabinWork2Part2():void {
 			clearOutput();
-			model.time.hours = 0;
-			model.time.days++;
+			getGame().time.hours = 0;
+			getGame().time.days++;
 			player.HP = player.maxHP();
 			player.fatigue = 0;
 			outputText("As soon as dawn hits and you’ve eaten, you head right back to work. Starting with the roof, you nail stretchers across your rafters. These provide the nailing surface for your primitive roof. You carefully balance yourself on the structure to nail boards one by one across the stretchers to seal up your roof. Then you do the same for the walls. It’s definitely primitive, but it’ll work for now.\n\n");
@@ -437,7 +445,7 @@ package classes.Scenes.Camp
 		//Stage 9 - Build cabin part 4 - Install flooring.
 		private function buildCabinPart4():void {
 			clearOutput();
-			outputText("You can continue working on your cabin. Do you start work on installing flooring for your cabin? (Cost: 200 nails and 50 wood.)\n"); //What about adding few stones here additionaly? 50 maybe?
+			outputText("You can continue working on your cabin. Do you start work on installing flooring for your cabin? (Cost: 200 nails and 50 wood.)\n\n"); //What about adding few stones here additionaly? 50 maybe?
 			checkMaterials();
 			if (player.hasKeyItem("Carpenter's Toolbox"))
 			{

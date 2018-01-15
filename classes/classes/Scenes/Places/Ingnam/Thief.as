@@ -1,6 +1,8 @@
 package classes.Scenes.Places.Ingnam 
 {
 	import classes.*;
+	import classes.BodyParts.Butt;
+	import classes.BodyParts.Hips;
 	import classes.internals.*;
 	import classes.GlobalFlags.*;
 	
@@ -22,14 +24,14 @@ package classes.Scenes.Places.Ingnam
 			// this.plural = false;
 			this.createCock();
 			createBreastRow(Appearance.breastCupInverse("flat"));
-			this.ass.analLooseness = ANAL_LOOSENESS_NORMAL;
-			this.ass.analWetness = ANAL_WETNESS_NORMAL;
+			this.ass.analLooseness = AssClass.LOOSENESS_NORMAL;
+			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.tallness = 5*12 + 5 + rand(4);
-			this.hipRating = HIP_RATING_BOYISH;
-			this.buttRating = BUTT_RATING_TIGHT;
-			this.skinTone = "light";
-			this.hairColor = "brown";
-			this.hairLength = 4;
+			this.hips.rating = Hips.RATING_BOYISH;
+			this.butt.rating = Butt.RATING_TIGHT;
+			this.skin.tone = "light";
+			this.hair.color = "brown";
+			this.hair.length = 4;
 			initStrTouSpeInte(17, 16, 16, 17);
 			initLibSensCor(20, 15, 20);
 			this.weaponName = "knife";
@@ -40,7 +42,7 @@ package classes.Scenes.Places.Ingnam
 			this.temperment = TEMPERMENT_LOVE_GRAPPLES;
 			this.level = 1;
 			this.gems = 5+rand(10);
-			this.drop = new WeightedDrop().add(weapons.DAGGER,1)
+			this.drop = new WeightedDrop().add(weapons.DAGGER0,1)
 					.add(armors.LEATHRA,1)
 					.add(null,8);
 			checkMonster();

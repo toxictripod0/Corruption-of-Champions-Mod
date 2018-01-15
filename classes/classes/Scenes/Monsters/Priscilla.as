@@ -1,6 +1,8 @@
 package classes.Scenes.Monsters 
 {
 	import classes.*;
+	import classes.BodyParts.Butt;
+	import classes.BodyParts.Hips;
 	import classes.internals.*;
 	import classes.GlobalFlags.*;
 	
@@ -19,15 +21,15 @@ package classes.Scenes.Monsters
 			//Makes sure to not stack spell effects.
 			if (lust < 50) spellChooser = rand(3);
 			if (lust > 75) spellChooser = rand(3) + 3;
-			if (spellChooser == 0 && findStatusEffect(StatusEffects.ChargeWeapon) >= 0) {
+			if (spellChooser == 0 && hasStatusEffect(StatusEffects.ChargeWeapon)) {
 				spellChooser = rand(5) + 1;
 			}
 			if (spellChooser == 4 && HPRatio() >= 0.7) {
 				spellChooser++;
 			}
-			if (spellChooser == 5 && findStatusEffect(StatusEffects.Might) >= 0) {
+			if (spellChooser == 5 && hasStatusEffect(StatusEffects.Might)) {
 				spellChooser = rand(5);
-				if (spellChooser == 0 && findStatusEffect(StatusEffects.ChargeWeapon) >= 0) spellChooser++;
+				if (spellChooser == 0 && hasStatusEffect(StatusEffects.ChargeWeapon)) spellChooser++;
 			}
 			//Spell time!
 			//Charge Weapon
@@ -68,7 +70,7 @@ package classes.Scenes.Monsters
 				outputText("She makes a series of arcane gestures, drawing on her lust to inflict it upon you! ");
 				var lustDamage:int = (inte / 10) + (player.lib / 10) + rand(10) * spellMultiplier();
 				lustDamage = lustDamage * (player.lustPercent() / 100);
-				game.dynStats("lus", lustDamage, "resisted", false);
+				game.dynStats("lus", lustDamage, "scale", false);
 				outputText(" <b>(<font color=\"#ff00ff\">" + (Math.round(lustDamage * 10) / 10) + "</font>)</b>");
 				fatigue += spellCostArouse;
 			}
@@ -76,14 +78,14 @@ package classes.Scenes.Monsters
 			else if (spellChooser == 4 && fatigue <= (100 - spellCostHeal)) {
 				outputText("She focuses on her body and her desire to end pain, trying to draw on her arousal without enhancing it.");
 				var temp:int = int(10 + (inte/2) + rand(inte/3)) * spellMultiplier();
-				outputText("She flushes with success as her wounds begin to knit! <b>(<font color=\"#008000\">+" + temp + "</font>)</b>.", false);
+				outputText("She flushes with success as her wounds begin to knit! <b>(<font color=\"#008000\">+" + temp + "</font>)</b>.");
 				addHP(temp);
 				fatigue += spellCostHeal;
 			}
 			//Might
 			else if (spellChooser == 5 && fatigue <= (100 - spellCostMight)) {
 				outputText("She flushes, drawing on her body's desires to empower her muscles and toughen her up.");
-				outputText("The rush of success and power flows through her body.  She feels like she can do anything!", false);
+				outputText("The rush of success and power flows through her body.  She feels like she can do anything!");
 				createStatusEffect(StatusEffects.Might, 15 * spellMultiplier(), 15 * spellMultiplier(), 0, 0);
 				str += 15 * spellMultiplier();
 				tou += 15 * spellMultiplier();
@@ -150,7 +152,7 @@ package classes.Scenes.Monsters
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
 		{
 			if (player.gender == 0 || flags[kFLAGS.SFW_MODE] > 0) {
-				outputText("You collapse in front of the goblin, too wounded to fight.  She growls and kicks you in the head, making your vision swim. As your sight fades, you hear her murmur, \"<i>Fucking dicks can't even bother to grow a dick or cunt.</i>\"", false);
+				outputText("You collapse in front of the goblin, too wounded to fight.  She growls and kicks you in the head, making your vision swim. As your sight fades, you hear her murmur, \"<i>Fucking dicks can't even bother to grow a dick or cunt.</i>\"");
 				game.combat.cleanupAfterCombat();
 			} 
 			else {
@@ -168,18 +170,18 @@ package classes.Scenes.Monsters
 			}
 			this.imageName = "goblinelder";
 			this.long = "The goblin before you stands a little over four feet tall. It's difficult to determine an age of goblin thanks to their corrupt nature but this one looks unusual. Her skin tone is yellowish-green skin and her hair is crimson black. Her body is painted in imp and minotaur blood to scare away anybody who would try to rape her. She's wearing a shark-tooth necklace and her ears are pierced with what appears to be lethicite. Her breasts look to be FF-cups despite her \"age\". Unlike most goblins, she's well armed. She's wielding a crudely fashioned metal sword and a large metal square shield. She's wearing a spider-silk loincloth and the imp skulls hang from the leather strap holding her loincloth together. Her helmet is fashioned out of a minotaur skull and her chestpiece appears to be carved from minotaur ribcage. Her pauldrons are also fashioned from bones. Despite how well-armored she is, her lethicite-pierced nipples are exposed. It's obvious she has travelled quite a lot and slain a lot of minotaurs and imps. She must have lived long thanks to Reducto to keep her breasts at normal size.";
-			this.createVagina(false, VAGINA_WETNESS_DROOLING, VAGINA_LOOSENESS_NORMAL);
+			this.createVagina(false, VaginaClass.WETNESS_DROOLING, VaginaClass.LOOSENESS_NORMAL);
 			this.createStatusEffect(StatusEffects.BonusVCapacity, 40, 0, 0, 0);
 			createBreastRow(Appearance.breastCupInverse("FF"));
-			this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-			this.ass.analWetness = ANAL_WETNESS_DRY;
+			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
+			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,30,0,0,0);
 			this.tallness = 48;
-			this.hipRating = HIP_RATING_AMPLE+2;
-			this.buttRating = BUTT_RATING_LARGE;
-			this.skinTone = "yellowish-green";
-			this.hairColor = "dark green";
-			this.hairLength = 4;
+			this.hips.rating = Hips.RATING_AMPLE+2;
+			this.butt.rating = Butt.RATING_LARGE;
+			this.skin.tone = "yellowish-green";
+			this.hair.color = "dark green";
+			this.hair.length = 4;
 			initStrTouSpeInte(95, 75, 70, 100);
 			initLibSensCor(55, 35, 45);
 			this.weaponName = "primal sword";

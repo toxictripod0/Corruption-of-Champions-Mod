@@ -1,29 +1,30 @@
 package classes.Scenes.Places.Boat 
 {
 	import classes.*;
-	import classes.internals.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.*;
+	import classes.internals.*;
 
 	public class Marae extends Monster
 	{
 		
 		//Corrupted Marae's specials
 		public function tentacleAttack():void {
-			outputText("You spot barrage of tentacles coming your way! You attempt to dodge your way out ", false);
+			outputText("You spot barrage of tentacles coming your way! You attempt to dodge your way out ");
 			var evade:String = player.getEvasionReason();
 			if (evade == EVASION_SPEED)
 			{
-				outputText("and you successfully dodge her tentacles!", false);
+				outputText("and you successfully dodge her tentacles!");
 			}
 			else if (evade != null)
 			{
-				outputText("and you successfully dodge her tentacles thanks to your superior evasion!", false);
+				outputText("and you successfully dodge her tentacles thanks to your superior evasion!");
 			}
 			else
 			{
-				outputText("but you fail and get hit instead! The feel of the tentacles left your groin slightly warmer. ", false);
+				outputText("but you fail and get hit instead! The feel of the tentacles left your groin slightly warmer. ");
 				var damage:int = ((str + 100) + rand(50))
-				game.dynStats("lust", rand(5) + 5);
+				player.takeLustDamage(rand(5) + 5, true);
 				damage = player.reduceDamage(damage);
 				player.takeDamage(damage, true);
 			}
@@ -32,22 +33,21 @@ package classes.Scenes.Places.Boat
 		
 		public function tentacleRape():void {
 			
-			outputText("You spot barrage of tentacles coming your way! The tentacles are coming your way, aiming for your groin! ", false);
+			outputText("You spot barrage of tentacles coming your way! The tentacles are coming your way, aiming for your groin! ");
 			var evade:String = player.getEvasionReason();
 			if (evade == EVASION_SPEED)
 			{
-				outputText("You manage to successfully run from her tentacles! ", false);
+				outputText("You manage to successfully run from her tentacles! ");
 			}
 			else if (evade != null)
 			{
-				outputText("You manage to avoid her tentacles thanks to your superior evasion!", false);
+				outputText("You manage to avoid her tentacles thanks to your superior evasion!");
 			}
 			else
 			{
-				outputText("You attempt to slap away the tentacles but it's too late! The tentacles tickle your groin and you can feel your [ass] being teased! \"<i>You know you want me!</i>\" Marae giggles. ", false);
+				outputText("You attempt to slap away the tentacles but it's too late! The tentacles tickle your groin and you can feel your [ass] being teased! \"<i>You know you want me!</i>\" Marae giggles. ");
 				var lustDmg:int = (20 + rand(player.cor / 10) + rand(player.sens / 5) + rand(player.lib / 10) + rand(10)) * (player.lustPercent() / 100);
-				game.dynStats("lust", lustDmg, "resisted", false);
-				outputText("<b>(<font color=\"#ff00ff\">" + lustDmg + "</font> lust)</b>");
+				player.takeLustDamage(lustDmg, true, false);
 				
 			}
 			combatRoundOver();
@@ -66,11 +66,11 @@ package classes.Scenes.Places.Boat
 			else {
 				outputText("Without warning, the lightning hits you! Surge of electricity rushes through you painfully. ");
 				if (player.cor >= 50) outputText("The intensity of the pain is unbearable. ");
-				var damage:int = 100 + str + (player.cor * 5);
+				var damage:int = 100 + str + (player.corAdjustedDown() * 5);
 				damage = player.reduceDamage(damage);
 				player.takeDamage(damage, true);
 			}
-			if (findStatusEffect(StatusEffects.Uber) >= 0) removeStatusEffect(StatusEffects.Uber);
+			if (hasStatusEffect(StatusEffects.Uber)) removeStatusEffect(StatusEffects.Uber);
 			combatRoundOver();
 		}
 		
@@ -85,9 +85,9 @@ package classes.Scenes.Places.Boat
 		}
 		
 		override public function doAI():void {
-			if (findStatusEffect(StatusEffects.Stunned) >= 0) {
-				outputText("Your foe is too dazed from your last hit to strike back!", false)
-				if (findStatusEffect(StatusEffects.Uber) >= 0) {
+			if (hasStatusEffect(StatusEffects.Stunned)) {
+				outputText("Your foe is too dazed from your last hit to strike back!")
+				if (hasStatusEffect(StatusEffects.Uber)) {
 					outputText(" You've managed to interrupt her smite attack!");
 					removeStatusEffect(StatusEffects.Uber);
 				}
@@ -96,12 +96,12 @@ package classes.Scenes.Places.Boat
 				combatRoundOver();
 				return;
 			}
-			if (findStatusEffect(StatusEffects.Fear) >= 0) {
+			if (hasStatusEffect(StatusEffects.Fear)) {
 				game.outputText("\"<i>You think I'm afraid of anything? Foolish mortal.</i>\" Marae snarls.\n\n");
 				removeStatusEffect(StatusEffects.Fear);
 			}
 			var chooser:int = rand(10);
-			if (findStatusEffect(StatusEffects.Uber) >= 0) {
+			if (hasStatusEffect(StatusEffects.Uber)) {
 				smiteHit();
 				return;
 			}
@@ -126,24 +126,23 @@ package classes.Scenes.Places.Boat
 			this.imageName = "marae";
 			if (game.flags[kFLAGS.FACTORY_SHUTDOWN] == 2) {
 				this.long = "This being is known as the goddess of Mareth. She is corrupted due to the aftermath of the factory valves being blown up. She's white all over and textured with bark. The \"flower\" below her belly button resembles more of a vagina than a flower. Her G-cup sized breasts jiggle with every motion."
-				this.createVagina(false, VAGINA_WETNESS_DROOLING, VAGINA_LOOSENESS_NORMAL);
+				this.createVagina(false, VaginaClass.WETNESS_DROOLING, VaginaClass.LOOSENESS_NORMAL);
 				createBreastRow(Appearance.breastCupInverse("G"));
 			}
 			else {
 				this.long = "This being is known as the goddess of Mareth. She is no longer corrupted thanks to your actions at the factory. She's white all over and textured with bark. Her breasts are modestly sized."
-				this.createVagina(false, VAGINA_WETNESS_WET, VAGINA_LOOSENESS_NORMAL);
+				this.createVagina(false, VaginaClass.WETNESS_WET, VaginaClass.LOOSENESS_NORMAL);
 				createBreastRow(Appearance.breastCupInverse("DD"));
 			}
 			this.ass.analLooseness = 1;
 			this.ass.analWetness = 1;
 			this.tallness = 10*12;
-			this.hipRating = 10;
-			this.buttRating = 8;
-			this.skinTone = "white";
-			this.skinType = 0;
-			//this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[SKIN_TYPE_FUR];
-			this.hairColor = "green";
-			this.hairLength = 36;
+			this.hips.rating = 10;
+			this.butt.rating = 8;
+			this.skin.tone = "white";
+			this.skin.setType(Skin.PLAIN);
+			this.hair.color = "green";
+			this.hair.length = 36;
 			if (game.flags[kFLAGS.FACTORY_SHUTDOWN] == 2) {
 				initStrTouSpeInte(150, 150, 70, 110);
 				initLibSensCor(60, 25, 100);

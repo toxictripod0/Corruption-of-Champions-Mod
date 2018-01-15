@@ -1,9 +1,11 @@
-﻿/**
+/**
  * Created by K.Quesom 11.06.14
  */
 package classes.Scenes.Areas.Bog
 {
 	import classes.*;
+	import classes.BodyParts.*;
+	import classes.BodyParts.Hips;
 	import classes.internals.WeightedDrop;
 
 	public class Phouka extends Monster
@@ -12,8 +14,8 @@ package classes.Scenes.Areas.Bog
 		{ 
 			var damage:int;
 			//Only the bunny, goat and horse forms make physical attacks
-			if (findStatusEffect(StatusEffects.Blind) >= 0 && rand(3) < 1) {
-				outputText(capitalA + short + " completely misses you due to his blindness!\n", false);
+			if (hasStatusEffect(StatusEffects.Blind) && rand(3) < 1) {
+				outputText(capitalA + short + " completely misses you due to his blindness!\n");
 			}
 			else if (PhoukaScene.phoukaForm == PhoukaScene.PHOUKA_FORM_BUNNY) {
 				damage = Math.round((60 + 30 + 10) - rand(player.tou) - player.armorDef); //60 == Bunny Strength, 30 == Bunny Weapon Attack
@@ -79,7 +81,7 @@ package classes.Scenes.Areas.Bog
 		protected function phoukaFightSilence():void
 		{ //Reuses the statusEffect Web-Silence from the spiders
 			outputText(this.capitalA + this.short + " scoops up some muck from the ground and rams it down over his cock.  After a few strokes he forms the lump of mud and precum into a ball and whips it at your face.  ");
-			if (findStatusEffect(StatusEffects.Blind) >= 0 && rand(3) < 2)
+			if (hasStatusEffect(StatusEffects.Blind) && rand(3) < 2)
 				outputText("Since he's blind the shot goes horribly wide, missing you entirely.");
 			else
 			{
@@ -104,8 +106,8 @@ package classes.Scenes.Areas.Bog
 
 		override protected function performCombatAction():void
 		{
-			var blinded:Boolean = findStatusEffect(StatusEffects.Blind) >= 0;
-			if ((!blinded) && player.findStatusEffect(StatusEffects.WebSilence) < 0 && rand(4) == 0) {
+			var blinded:Boolean = hasStatusEffect(StatusEffects.Blind);
+			if ((!blinded) && !player.hasStatusEffect(StatusEffects.WebSilence) && rand(4) == 0) {
 				phoukaTransformToPhouka(); //Change to faerie form so that it can lob the ball of muck at you
 				phoukaFightSilence();
 			}
@@ -118,7 +120,7 @@ package classes.Scenes.Areas.Bog
 				switch (transformChance){
 					case 0: phoukaTransformToBunny(); break;
 					case 1: phoukaTransformToGoat(); break;
-					case 2: phoukaTransformToHorse();
+					case 2: phoukaTransformToHorse(); break;
 					default:
 				}
 				if (PhoukaScene.phoukaForm == PhoukaScene.PHOUKA_FORM_FAERIE)
@@ -138,7 +140,7 @@ package classes.Scenes.Areas.Bog
 			else if (lustDelta >= 5)
 				outputText("\n\nThe " + this.short + " stops its assault for a moment.  A glob of precum oozes from its cock before it shakes its head and gets ready to attack again.");
 			else if (lustDelta > 0)
-				outputText("\n\nThe " + this.short + " hesitates and slows down.  You see its cock twitch and then it readies for the next attack.", false);
+				outputText("\n\nThe " + this.short + " hesitates and slows down.  You see its cock twitch and then it readies for the next attack.");
 			applyTease(lustDelta);
 		}
         
@@ -266,6 +268,7 @@ package classes.Scenes.Areas.Bog
 
 			this.a = "the ";
 			this.short = phoukaName;
+			this.imageName = "phouka";
 			this.long = "The " + this.short + " is flying around near you, waiting for an opening.  He has the general appearance of a faerie, though he is slightly larger and his skin and wings are coal black.  A large cock stands erect between his legs.  His cat-like green eyes, filled with lust, follow your every motion.";
 
 			this.createCock(1, 0.5, CockTypesEnum.HUMAN);
@@ -275,20 +278,20 @@ package classes.Scenes.Areas.Bog
 			this.hoursSinceCum = 20;
 
 			createBreastRow(0);
-			this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-			this.ass.analWetness = ANAL_WETNESS_NORMAL;
+			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
+			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 
 			this.tallness = 5;
-			this.hipRating = HIP_RATING_SLENDER;
-			this.buttRating = BUTT_RATING_TIGHT;
-			this.lowerBody = LOWER_BODY_TYPE_HUMAN
-			this.armType = ARM_TYPE_HUMAN;
+			this.hips.rating = Hips.RATING_SLENDER;
+			this.butt.rating = Butt.RATING_TIGHT;
+			this.lowerBody.type = LowerBody.HUMAN
+			this.arms.type = Arms.HUMAN;
 
-			this.skinTone = "black";
-			this.hairColor = "black";
-			this.hairLength = 1;
+			this.skin.tone = "black";
+			this.hair.color = "black";
+			this.hair.length = 1;
 
-			this.earType = EARS_ELFIN;
+			this.ears.type = Ears.ELFIN;
 
 			initStrTouSpeInte(55, 25, 80, 40);
 			initLibSensCor(75, 35, 100);
@@ -312,8 +315,8 @@ package classes.Scenes.Areas.Bog
 				.add(consumables.P_WHSKY, 35)
 				.add(null, 20);
 
-			this.wingType = WING_TYPE_GIANT_DRAGONFLY; //Maybe later, if the PC can get them, make a Faerie wing type.
-			this.wingDesc = "small black faerie wings";
+			this.wings.type = Wings.FAERIE_SMALL;
+			this.wings.color = "black";
 			checkMonster();
 		}
 

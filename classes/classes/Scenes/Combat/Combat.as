@@ -1200,7 +1200,7 @@ public class Combat extends BaseContent
 					if (rand(2) == 0) {
 						//50% breakage!
 						if (rand(2) == 0) {
-							itype = weapons.L__AXE;
+							itype = weapons.L__AXE0;
 							if (player.tallness < 78 && player.str < 90) {
 								outputText("\nYou find a large axe on the minotaur, but it is too big for a person of your stature to comfortably carry.  ");
 								if (rand(2) == 0) itype = null;

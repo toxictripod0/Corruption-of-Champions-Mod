@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Debug pane and related functions
 	Author: Fake-Name
 */
@@ -36,7 +36,7 @@ public function debugPane():void {
 	menu();
 	addButton(0, "Test Input", eventTester);
 	addButton(1, "Parser Tests", doThatTestingThang);
-	addButton(4, "Back", mainMenu.mainMenu);
+	addButton(4, "Back", gameSettings.exitSettings);
 }
 
 public function doThatTestingThang():void
@@ -46,6 +46,7 @@ public function doThatTestingThang():void
 	//
 	//
 
+	clearOutput();
 	outputText(<![CDATA[
 
 <b>Parser Tests!</b>
@@ -100,6 +101,8 @@ public function doThatTestingThang():void
 * \[cockhead\] - [cockhead]
 * \[vagorass\] - [vagorass]
 * \[hairorfur\] - [hairorfur]
+* \[hand\] - [hand]
+* \[hands\] - [hands]
 * \[pg\] - [pg] (This is a shortcut to two newlines. This should be two lines below the \[pg\])
 
 
@@ -168,10 +171,10 @@ public function doThatTestingThang():void
 * 15 [if (analcapacity > 0)  HERP|DERP]
 * 16 \[if (analcapacity > 0) HERP|DERP\]
 * 16 [if (analcapacity > 0) HERP|DERP]
-* 17 \[if (hasCock == True) HERP|DERP\]
-* 17 [if (hasCock == True) HERP|DERP]
-* 18 \[if (hasVagina == True) HERP|DERP\]
-* 18 [if (hasVagina == True) HERP|DERP]
+* 17 \[if (hasCock) HERP|DERP\]
+* 17 [if (hasCock) HERP|DERP]
+* 18 \[if (hasVagina) HERP|DERP\]
+* 18 [if (hasVagina) HERP|DERP]
 
 ** Member Accessors**
 
@@ -191,8 +194,19 @@ public function doThatTestingThang():void
 * 25 [if (player.isBiped == true) IS A BIPEDDDDD | not a biped. Wat?]
 * 26 \[if (player.isBiped) IS A BIPEDDDDD | not a biped. Wat?\]
 * 26 [if (player.isBiped) IS A BIPEDDDDD | not a biped. Wat?]
-* 27 \[if (player.isBipd) IS A BIPEDDDDD | not a biped. Wat?\]
-* 27 [if (player.isBipd) IS A BIPEDDDDD | not a biped. Wat?]
+* 27 \[if (player.canFly) can fly | can't fly\]
+* 27 [if (player.canFly) can fly | can't fly]
+* 28 \[if (player.tail.type != 0)wagging your \[tail\]\]
+* 28 [if (player.tail.type != 0)wagging your [tail]]
+* 29 \[if (player.tail.type != 0)wagging your \[tail\]|\[butt\] in the air\]
+* 29 [if (player.tail.type != 0)wagging your [tail]|[butt] in the air]
+* 30 \[if (tallness >= 100)tall|not very tall\]
+* 30 [if (tallness >= 100)tall|not very tall]
+* 31 you feel your \[if (tallness >= 120)frame|\[if (tallness >= 80)smaller frame|much smaller frame\]\] surrounded 
+* 31 you feel your [if (tallness >= 120)frame|[if (tallness >= 80)smaller frame|much smaller frame]] surrounded 
+* 32 \[if (bakeryTalkedRoot)talked about root|didn't talk about root\]
+* 32 [if (bakeryTalkedRoot)talked about root|didn't talk about root]
+
 
 
 
@@ -247,6 +261,18 @@ public function doThatTestingThang():void
 * \[arian Eirs\] - [arian Eirs]
 * \[arian Emself\] - [arian Emself]
 
+**Benoit**
+
+* \[benoit name\] - [benoit name]
+* \[benoit ey\] - [benoit ey]
+* \[benoit eir\] - [benoit eir]
+* \[benoit eirs\] - [benoit eirs]
+* \[benoit emself\] - [benoit emself]
+* \[benoit Ey\] - [benoit Ey]
+* \[benoit Eir\] - [benoit Eir]
+* \[benoit Eirs\] - [benoit Eirs]
+* \[benoit Emself\] - [benoit Emself]
+
 **NPC Aspect tests**
 
 * \[arian chest\] - [arian chest]
@@ -274,7 +300,7 @@ convert "
 "derp a herp"
 
 
-	]]>, true, true);
+	]]>);
 
 
 	menu();
@@ -300,7 +326,9 @@ public function eventTester():void {
 ]]>;
 
 	;
-	simpleChoices("Proceed",eventTesterGo,"",null,"",null,"",null,"Back",eventTesterExit);
+	menu();
+	addButton(0, "Proceed", eventTesterGo);
+	addButton(4, "Back", eventTesterExit);
 }
 
 public function eventTesterGo():void {
@@ -311,7 +339,8 @@ public function eventTesterGo():void {
 	trace("Temp = ", temp);
 
 	menu();
-	outputText(temp, true, true);
+	clearOutput();
+	outputText(temp);
 
 	addButton(14, "Back", eventTester);
 	output.flush();

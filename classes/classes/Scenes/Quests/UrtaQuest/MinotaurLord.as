@@ -1,6 +1,7 @@
 package classes.Scenes.Quests.UrtaQuest
 {
 	import classes.*;
+	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.internals.*;
@@ -17,8 +18,8 @@ package classes.Scenes.Quests.UrtaQuest
 		{
 			if (HP < 300 && statusEffectv1(StatusEffects.MinoMilk) < 4 && flags[kFLAGS.URTA_QUEST_STATUS] == 0.75) minotaurDrankMalk();
 			else if (rand(4) == 0 && player.weaponName != "fists") minotaurDisarm();
-			else if (findStatusEffect(StatusEffects.Timer) < 0) minotaurLordEntangle();
-			else if (findStatusEffect(StatusEffects.MinotaurEntangled) >= 0) minotaurCumPress();
+			else if (!hasStatusEffect(StatusEffects.Timer)) minotaurLordEntangle();
+			else if (hasStatusEffect(StatusEffects.MinotaurEntangled)) minotaurCumPress();
 			else {
 				if (rand(2) == 0) minotaurPrecumTease();
 				else eAttack();
@@ -33,7 +34,7 @@ package classes.Scenes.Quests.UrtaQuest
 				outputText("\"<i>Catch!</i>\"  The succubus throws a bottle containing a milky-white substance to the minotaur.  He grabs it and uncorks the bottle, quickly chugging its contents with obvious enjoyment.  After he is done he looks even more energetic and ready to fight, and his cock looks even harder!");
 				addHP(300);
 				lust += 10;
-				if (findStatusEffect(StatusEffects.MinoMilk) < 0)
+				if (!hasStatusEffect(StatusEffects.MinoMilk))
 					createStatusEffect(StatusEffects.MinoMilk, 1, 0, 0, 0);
 				else
 					addStatusValue(StatusEffects.MinoMilk, 1, 1);
@@ -94,7 +95,7 @@ package classes.Scenes.Quests.UrtaQuest
 				outputText("you realize what you've been doing.  Your embarrassment gives you the strength to re-adopt your fighting pose, but it's hard with how ");
 				if (player.hasCock()) {
 					outputText("rigid");
-					if (player.lust >= 80) outputText(" and drippy");
+					if (player.lust100 >= 80) outputText(" and drippy");
 					outputText(" your cock has become.  ")
 					
 				}
@@ -115,7 +116,7 @@ package classes.Scenes.Quests.UrtaQuest
 			outputText("The minotaur smiles at you and lifts his loincloth, flicking it at you.  Thick ropes of pre-cum fly through the air in a swarm,");
 			if (rand(2) == 0) {
 				outputText(" slapping into your face before you can react!  You wipe the slick snot-like stuff out of your eyes and nose, ");
-				if (player.lust >= 70) outputText("swallowing it into your mouth without thinking.  You greedily guzzle the potent, narcotic aphrodisiac down, even going so far as to lick it from each of your fingers in turn, sucking every drop into your waiting gullet.");
+				if (player.lust100 >= 70) outputText("swallowing it into your mouth without thinking.  You greedily guzzle the potent, narcotic aphrodisiac down, even going so far as to lick it from each of your fingers in turn, sucking every drop into your waiting gullet.");
 				else outputText("feeling your heart hammer lustily.");
 				kGAMECLASS.dynStats("lus", 15 + player.lib / 8 + player.sens / 8);
 			}
@@ -126,7 +127,7 @@ package classes.Scenes.Quests.UrtaQuest
 				kGAMECLASS.dynStats("lus", 11 + player.lib / 10);
 			}
 			//(1)
-			if (player.lust <= 75) outputText("  You shiver with need, wanting nothing more than to bury your face under that loincloth and slurp out every drop of goopey goodness.");
+			if (player.lust100 <= 75) outputText("  You shiver with need, wanting nothing more than to bury your face under that loincloth and slurp out every drop of goopey goodness.");
 			else outputText("  <b>You groan and lick your lips over and over, craving the taste of him in your mouth.</b>");
 			combatRoundOver();
 		}
@@ -167,19 +168,19 @@ package classes.Scenes.Quests.UrtaQuest
 			this.cumMultiplier = 1.5;
 			this.hoursSinceCum = this.ballSize * 10;
 			createBreastRow(0);
-			this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
-			this.ass.analWetness = ANAL_WETNESS_NORMAL;
+			this.ass.analLooseness = AssClass.LOOSENESS_STRETCHED;
+			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.createStatusEffect(StatusEffects.BonusACapacity,50,0,0,0);
 			this.tallness = 132;
-			this.hipRating = HIP_RATING_AVERAGE;
-			this.buttRating = BUTT_RATING_AVERAGE+1;
-			this.lowerBody = LOWER_BODY_TYPE_HOOFED;
-			this.skinTone = "red";
-			this.skinType = SKIN_TYPE_FUR;
-			this.skinDesc = "shaggy fur";
-			this.hairColor = randomChoice("black","brown");
-			this.hairLength = 3;
-			this.faceType = FACE_COW_MINOTAUR;
+			this.hips.rating = Hips.RATING_AVERAGE;
+			this.butt.rating = Butt.RATING_AVERAGE+1;
+			this.lowerBody.type = LowerBody.HOOFED;
+			this.skin.tone = "red";
+			this.skin.type = Skin.FUR;
+			this.skin.desc = "shaggy fur";
+			this.hair.color = randomChoice("black","brown");
+			this.hair.length = 3;
+			this.face.type = Face.COW_MINOTAUR;
 			initStrTouSpeInte(125, 90, 30, 30);
 			initLibSensCor(70, 25, 85);
 			this.weaponName = "chain";
@@ -199,7 +200,7 @@ package classes.Scenes.Quests.UrtaQuest
 						.elseDrop(null);
 			}
 			else this.drop = NO_DROP;
-			this.tailType = TAIL_TYPE_COW;
+			this.tail.type = Tail.COW;
 			this.special1 = game.mountain.minotaurScene.minoPheromones;
 			checkMonster();
 		}

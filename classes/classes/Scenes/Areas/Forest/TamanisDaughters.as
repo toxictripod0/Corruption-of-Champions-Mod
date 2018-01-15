@@ -1,6 +1,8 @@
 package classes.Scenes.Areas.Forest
 {
 	import classes.*;
+	import classes.BodyParts.Butt;
+	import classes.BodyParts.Hips;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Scenes.Monsters.Goblin;
 	import classes.internals.WeightedDrop;
@@ -10,23 +12,24 @@ package classes.Scenes.Areas.Forest
 		private function midRoundMadness():void {
 			var selector:Number = rand(4);
 			if (selector == 0) {
-				outputText("A slender hand reaches inside your " + player.armorName + " and gives your ", false);
+				outputText("A slender hand reaches inside your " + player.armorName + " and gives your ");
 				if (player.balls > 0) {
-					if (rand(2) == 0) outputText(player.multiCockDescriptLight(), false);
-					else outputText(player.ballsDescriptLight(), false);
+					if (rand(2) == 0) outputText(player.multiCockDescriptLight());
+					else outputText(player.ballsDescriptLight());
 				}
-				else outputText(player.multiCockDescriptLight(), false);
-				outputText(" a gentle squeeze.  You twist away but your breathing gets a little heavier.\n\n", false);
+				else outputText(player.multiCockDescriptLight());
+				outputText(" a gentle squeeze.  You twist away but your breathing gets a little heavier.\n\n");
 			}
 			else if (selector == 1) {
-				outputText("A girl latches onto your " + player.legs() + " and begins caressing your body lovingly, humming happily.  You quickly shake her loose but the attention makes you blush a little more.\n\n", false);
+				outputText("A girl latches onto your " + player.legs() + " and begins caressing your body lovingly, humming happily.  You quickly shake her loose but the attention makes you blush a little more.\n\n");
 			}
 			else if (selector == 2) {
-				outputText("One of your daughters launches onto your back and presses her hard, pierced nipples against your neck.  She whispers in your ear, \"<i>Twist my nipples dad!</i>\"\n\n", false);
-				outputText("You reach back and throw her off, but her perverted taunts still leave you feeling a little hot under the collar.\n\n", false);
+				outputText("One of your daughters launches onto your back and presses her hard, pierced nipples against your neck.  She whispers in your ear, \"<i>Twist my nipples dad!</i>\"\n\n");
+				outputText("You reach back and throw her off, but her perverted taunts still leave you feeling a little hot under the collar.\n\n");
 			}
-			else outputText("A daughter lays down in front of you and starts jilling herself on the spot.  It's impossible to not glance down and see her or hear her pleasured moans.  You step away to remove the distraction but it definitely causes some discomfort in your " + player.armorName + ".\n\n", false);
-			game.dynStats("lus", 1 + player.lib/15+rand(player.cor/30));
+			else outputText("A daughter lays down in front of you and starts jilling herself on the spot.  It's impossible to not glance down and see her or hear her pleasured moans.  You step away to remove the distraction but it definitely causes some discomfort in your " + player.armorName + ".\n\n");
+			var lustDmg:int = 1 + player.lib/15+rand(player.cor/30);
+			player.takeLustDamage(lustDmg, true);
 		}
 
 		private function tamaniShowsUp():void {
@@ -35,8 +38,8 @@ package classes.Scenes.Areas.Forest
 			}
 			else if (rand(6) == 0) {
 				TamainsDaughtersScene.tamaniPresent = true;
-				outputText("A high-pitched yet familiar voice calls out, \"<i><b>So this is where you skanks ran off to---wait a second.  Are you trying to poach Tamani's man!?</b></i>\"\n\n", false);
-				outputText("You can see Tamani lurking around the rear of the goblin pack, visibly berating her daughters.  On one hand it sounds like she might help you, but knowing goblins, she'll probably forget about her anger and help them subdue you for more cum...\n\n", false);
+				outputText("A high-pitched yet familiar voice calls out, \"<i><b>So this is where you skanks ran off to---wait a second.  Are you trying to poach Tamani's man!?</b></i>\"\n\n");
+				outputText("You can see Tamani lurking around the rear of the goblin pack, visibly berating her daughters.  On one hand it sounds like she might help you, but knowing goblins, she'll probably forget about her anger and help them subdue you for more cum...\n\n");
 				//(+5 mob strength)
 				str += 5;
 				//(+5 mob toughness)
@@ -80,7 +83,7 @@ package classes.Scenes.Areas.Forest
 
 		override public function defeated(hpVictory:Boolean):void
 		{
-			game.forest.tamaniDaughtersScene.combatWinAgainstDaughters();
+			game.forest.tamaniScene.tamaniDaughtersScene.combatWinAgainstDaughters();
 		}
 
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
@@ -89,7 +92,7 @@ package classes.Scenes.Areas.Forest
 				outputText("\n\nYour foes seem visibly disgusted and leave, telling you to, \"<i>quit being so fucking gross...</i>\"");
 				game.combat.cleanupAfterCombat();
 			} else {
-				game.forest.tamaniDaughtersScene.loseToDaughters();
+				game.forest.tamaniScene.tamaniDaughtersScene.loseToDaughters();
 			}
 		}
 
@@ -104,18 +107,18 @@ package classes.Scenes.Areas.Forest
 			this.pronoun1 = "they";
 			this.pronoun2 = "them";
 			this.pronoun3 = "their";
-			this.createVagina(false, VAGINA_WETNESS_DROOLING, VAGINA_LOOSENESS_TIGHT);
+			this.createVagina(false, VaginaClass.WETNESS_DROOLING, VaginaClass.LOOSENESS_TIGHT);
 			this.createStatusEffect(StatusEffects.BonusVCapacity, 40, 0, 0, 0);
 			createBreastRow(Appearance.breastCupInverse("D"));
-			this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-			this.ass.analWetness = ANAL_WETNESS_DRY;
+			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
+			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,25,0,0,0);
 			this.tallness = 40;
-			this.hipRating = HIP_RATING_AMPLE+1;
-			this.buttRating = BUTT_RATING_NOTICEABLE+1;
-			this.skinTone = "greenish gray";
-			this.hairColor = "pink";
-			this.hairLength = 16;
+			this.hips.rating = Hips.RATING_AMPLE+1;
+			this.butt.rating = Butt.RATING_NOTICEABLE+1;
+			this.skin.tone = "greenish gray";
+			this.hair.color = "pink";
+			this.hair.length = 16;
 			initStrTouSpeInte(55, 30, 45, 50);
 			initLibSensCor(70, 70, 50);
 			this.weaponName = "fists";

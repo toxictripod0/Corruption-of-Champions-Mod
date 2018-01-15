@@ -3,7 +3,8 @@
 	import classes.Image;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
-	
+
+	import coc.view.MainView;
 	import fl.controls.UIScrollBar;
 	import flash.display.Loader;
 	import flash.display.Stage;
@@ -16,12 +17,16 @@
 	import flash.text.TextField;
 	import flash.text.TextFormat;
 
+	import mx.logging.ILogger;
+	import classes.internals.LoggerFactory;
+	
 	/**
 	 * ...
 	 * @author Yoffy, Fake-Name
 	 */
 	public final class ImageManager
 	{
+		private static const LOGGER:ILogger = LoggerFactory.getLogger(ImageManager);
 		//Hashmap of all images
 		private static var _imageTable:Object = new Object();
 
@@ -44,10 +49,11 @@
 
 		private static const XML_IMAGES:Class;
 		private var _imgListXML:XML;
+		private var _mainView:MainView;
 
-		public function ImageManager(stage:Stage)
+		public function ImageManager(stage:Stage, mainView:MainView)
 		{
-
+			_mainView = mainView;
 			mStage = stage;
 			_imgListXML = new XML(new XML_IMAGES);
 			if (Security.sandboxType != Security.REMOTE)
@@ -142,7 +148,7 @@
 					{
 						// Programmatic extension concatenation! Woot.
 						var newPath:String = prefix+num+"."+_imgListXML.ExtensionList.ExtensionType[k];
-						trace("Trying to load sequential image at URL =", newPath, "Previous base URL = ", imPath);
+						if (logErrors) LOGGER.debug("Trying to load sequential image at URL =", newPath, "Previous base URL = ", imPath);
 						_allImagePaths[newPath] = imId;
 						loadImageAtPath(newPath);
 
@@ -153,7 +159,7 @@
 			}
 			else
 			{
-				trace("Error in image loading. Tried to load image that was not tried to load? Wat.")
+				if (logErrors) LOGGER.error("Error in image loading. Tried to load image that was not tried to load? Wat.")
 			}
 
 			//trace("Loaded file", e)
@@ -205,11 +211,11 @@
 		{
 			var imageString:String = "";
 			
-			if (kGAMECLASS.flags[kFLAGS.IMAGEPACK_OFF] > 0) {
+			if (kGAMECLASS.flags[kFLAGS.IMAGEPACK_ENABLED] <= 0) {
 				return "";
 			}
 			
-			if (logErrors) trace("showing imageID - ", imageID);
+			if (logErrors) LOGGER.error("showing imageID - ", imageID);
 			var imageIndex:int = 0;
 			var image:Image = null;
 			if (_imageTable[imageID] != undefined)
@@ -218,7 +224,7 @@
 				if (_imageTable[imageID].length > 0)
 				{
 					imageIndex = Math.floor( Math.random() * _imageTable[imageID].length );
-					if (logErrors) trace("Have multiple image possibilities. Displaying image", imageIndex, "selected randomly.");
+					if (logErrors) LOGGER.debug("Have multiple image possibilities. Displaying image", imageIndex, "selected randomly.");
 					image = _imageTable[imageID][imageIndex];
 				}
 			}
@@ -297,8 +303,8 @@
 			// Remove the Completion event listener
 			e.target.removeEventListener(Event.COMPLETE, doFixup);
 			var imgRef:Loader = e.target.loader as Loader;
-			var mainText:TextField = (mStage.getChildByName("mainView") as MovieClip).mainText as TextField;
-			var scrollBar:UIScrollBar = (mStage.getChildByName("mainView") as MovieClip).scrollBar as UIScrollBar;
+			var mainText:TextField = _mainView.mainText;
+			var scrollBar:UIScrollBar = _mainView.scrollBar;
 
 			var imgRefTopY:int = imgRef.getBounds(mainText).y; 							// 272
 			var imgHeight:int = getImageHeight(imgRef.contentLoaderInfo.url); 			// 400

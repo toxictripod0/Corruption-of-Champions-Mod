@@ -1,6 +1,8 @@
 ﻿package classes.Scenes.NPCs
 {
 	import classes.*;
+	import classes.BodyParts.*;
+	import classes.BodyParts.Butt;
 	import classes.GlobalFlags.*;
 
 	public class Jojo extends Monster
@@ -40,25 +42,25 @@
 					outputText("Jojo frantically jerks his " + player.cockDescriptShort(0) + ", stroking the " + player.cockDescriptShort(0) + " as it leaks pre-cum at the sight of you.  ");
 					lust += 15;
 			}
-			
-			if (lust >= eMaxLust()) {
+
+if (lust >= maxLust()) {
 				doNext(game.combat.endLustVictory);
 				return;
 			}
-			else if (lust >= 85)
+			else if (lust100 >= 85)
 				outputText("The mouse is panting and softly whining, each movement seeming to make his bulge more pronounced.  You don't think he can hold out much longer.  ");
-			else if (lust >= 70)
+			else if (lust100 >= 70)
 				outputText("The mouse is having trouble moving due to the rigid protrusion from his groin.  ");
-			else if (lust >= 60)
+			else if (lust100 >= 60)
 				outputText("The mouse's eyes constantly dart over your most sexual parts, betraying his lust.  ");
-			else if (lust > 50)
+			else if (lust100 > 50)
 				outputText("The mouse's skin remains flushed with the beginnings of arousal.  ");
 			doNext(game.playerMenu);
 		}
 		
 		public function Jojo()
 		{
-			trace("Jojo Constructor!");
+			//trace("Jojo Constructor!");
 			this.a = "";
 			this.short = "Jojo";
 			this.imageName = "jojo";
@@ -70,16 +72,16 @@
 			this.cumMultiplier = 1;
 			this.hoursSinceCum = 1000;
 			createBreastRow(0);
-			this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-			this.ass.analWetness = ANAL_WETNESS_NORMAL;
+			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
+			this.ass.analWetness = AssClass.WETNESS_NORMAL;
 			this.tallness = 4*12;
-			this.hipRating = HIP_RATING_SLENDER;
-			this.buttRating = BUTT_RATING_TIGHT;
-			this.skinTone = "white";
-			this.skinType = SKIN_TYPE_FUR;
-			this.skinDesc = "fur";
-			this.hairColor = "white";
-			this.hairLength = 2;
+			this.hips.rating = Hips.RATING_SLENDER;
+			this.butt.rating = Butt.RATING_TIGHT;
+			this.skin.tone = "white";
+			this.skin.type = Skin.FUR;
+			this.skin.desc = "fur";
+			this.hair.color = "white";
+			this.hair.length = 2;
 			initStrTouSpeInte(35, 40, 65, 55);
 			initLibSensCor(15, 40, flags[kFLAGS.JOJO_STATUS] * 15);
 			this.weaponName = "paw";

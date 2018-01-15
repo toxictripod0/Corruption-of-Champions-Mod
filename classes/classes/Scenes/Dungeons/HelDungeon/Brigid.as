@@ -1,13 +1,14 @@
 package classes.Scenes.Dungeons.HelDungeon
 {
 	import classes.*;
+	import classes.BodyParts.*;
 
 	public class Brigid extends Monster
 	{
 
 		//Attack One: Hot Poker, Right Up Your Ass!
 		private function brigidPoke():void {
-			outputText("Brigid stalks forward with confidence, her shield absorbing your defensive blows until she's right on top of you. She bats your [weapon] aside and thrashes you with her hot poker, scalding your " + player.skin() + " and sending you reeling. ");
+			outputText("Brigid stalks forward with confidence, her shield absorbing your defensive blows until she's right on top of you. She bats your [weapon] aside and thrashes you with her hot poker, scalding your [skin] and sending you reeling. ");
 			//(Effect: Heavy Damage)
 			var damage:Number = Math.round((str + weaponAttack) - rand(player.tou) - player.armorDef);
 			if (damage < 30) damage = 30;
@@ -29,12 +30,12 @@ package classes.Scenes.Dungeons.HelDungeon
 		//Attack Three: Harpy Ass Grind GO!
 		private function BrigidAssGrind():void {
 			outputText("Brigid grins as she approaches you.  She handily deflects a few defensive blows and grabs you by the shoulders.  She forces you onto your knees and before you can blink, has turned around and smashed your face into her ass!  \"<i>Mmm, you like that, don'tcha?</i>\" she growls, grinding her huge, soft ass across your face, giving you an up-close and personal feel of her egg-laying hips.");
-			game.dynStats("lus", 30);
+			player.takeLustDamage(30, true);
 			game.combat.combatRoundOver();
 		}
 		override protected function performCombatAction():void
 		{
-			if (player.findStatusEffect(StatusEffects.Stunned) >= 0) {
+			if (player.hasStatusEffect(StatusEffects.Stunned)) {
 				player.removeStatusEffect(StatusEffects.Stunned);
 				if (rand(2) == 0) BrigidAssGrind();
 				else brigidPoke();
@@ -63,19 +64,19 @@ package classes.Scenes.Dungeons.HelDungeon
 			this.imageName = "brigid";
 			this.long = "Brigid is a monster of a harpy, standing a foot taller than any other you've seen. She's covered in piercings, and her pink-dyed hair is shaved down to a long mohawk. She's nude, save for the hot poker in her right hand and the shield in her left, which jingles with every step she takes thanks to the cell keys beneath it.";
 			// this.plural = false;
-			this.createVagina(false, VAGINA_WETNESS_SLAVERING, VAGINA_LOOSENESS_LOOSE);
-			if (LOWER_BODY_TYPE_HARPY > 0) {
-				this.createStatusEffect(StatusEffects.BonusVCapacity, LOWER_BODY_TYPE_HARPY, 0, 0, 0);
+			this.createVagina(false, VaginaClass.WETNESS_SLAVERING, VaginaClass.LOOSENESS_LOOSE);
+			if (LowerBody.HARPY > 0) {
+				this.createStatusEffect(StatusEffects.BonusVCapacity, LowerBody.HARPY, 0, 0, 0);
 			}
 			createBreastRow(Appearance.breastCupInverse("D"));
-			this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
-			this.ass.analWetness = ANAL_WETNESS_DRY;
+			this.ass.analLooseness = AssClass.LOOSENESS_STRETCHED;
+			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.tallness = rand(8) + 70;
-			this.hipRating = HIP_RATING_AMPLE+2;
-			this.buttRating = BUTT_RATING_LARGE;
-			this.skinTone = "red";
-			this.hairColor = "black";
-			this.hairLength = 15;
+			this.hips.rating = Hips.RATING_AMPLE+2;
+			this.butt.rating = Butt.RATING_LARGE;
+			this.skin.tone = "red";
+			this.hair.color = "black";
+			this.hair.length = 15;
 			initStrTouSpeInte(90, 60, 120, 40);
 			initLibSensCor(40, 45, 50);
 			this.weaponName = "poker";
@@ -90,10 +91,10 @@ package classes.Scenes.Dungeons.HelDungeon
 			this.level = 19;
 			this.gems = rand(25) +140;
 			this.additionalXP = 50;
-			this.wingType = WING_TYPE_FEATHERED_LARGE;
-			this.tailType = TAIL_TYPE_DEMONIC;
-			this.hornType = HORNS_DEMON;
-			this.horns = 2;
+			this.wings.type = Wings.FEATHERED_LARGE;
+			this.tail.type = Tail.DEMONIC;
+			this.horns.type = Horns.DEMON;
+			this.horns.value = 2;
 			this.drop = NO_DROP;
 			checkMonster();
 		}

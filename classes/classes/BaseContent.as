@@ -1,19 +1,14 @@
 ﻿package classes 
 {
-	import classes.GlobalFlags.kFLAGS;
-	import classes.GlobalFlags.kGAMECLASS;
+	import classes.*;
+	import classes.GlobalFlags.*;
 	import classes.Items.*;
-	import classes.Scenes.Camp;
-	import classes.Scenes.Combat.Combat;
-	import classes.Scenes.Places.Ingnam;
-	import classes.Scenes.Places.Prison;
-	import classes.Scenes.Dungeons.D3.D3;
-	import classes.Scenes.Inventory;
-	import classes.internals.Utils;
-
-	import coc.model.GameModel;
-	import coc.model.TimeModel;
-	import coc.view.MainView;
+	import classes.Scenes.*;
+	import classes.Scenes.Combat.*;
+	import classes.Scenes.Dungeons.LethicesKeep.*;
+	import classes.Scenes.Places.*;
+	import classes.internals.*;
+	import coc.view.*;
 	/**
 	 * Quick hacky method to wrap new content in a class-based structure
 	 * BaseContent acts as an access wrapper around CoC, enabling children of BaseContent to interact with
@@ -24,9 +19,6 @@
 	 */
 	public class BaseContent extends Utils
 	{
-		// TODO remove when we have proper enums for this
-		include "../../includes/appearanceDefs.as";
-
 		public function BaseContent()
 		{
 			
@@ -44,6 +36,11 @@
 		protected function get output():Output
 		{
 			return kGAMECLASS.output;
+		}
+
+		protected function get credits():Credits
+		{
+			return kGAMECLASS.credits;
 		}
 
 		protected function get measurements():Measurements
@@ -68,8 +65,8 @@
 			return kGAMECLASS.prison;
 		}
 		
-		protected function get d3():D3 {
-			return kGAMECLASS.d3;
+		protected function get lethicesKeep():LethicesKeep {
+			return kGAMECLASS.lethicesKeep;
 		}
 
 		protected function get combat():Combat
@@ -150,8 +147,20 @@
 			kGAMECLASS.inRoomedDungeonResume = v;
 		}
 
-		/** Displays the sprite on the lower-left corner. */
-		protected function spriteSelect(choice:Number = 0):void
+		protected function get inRoomedDungeonName():String
+		{
+			return kGAMECLASS.inRoomedDungeonName;
+		}
+		protected function set inRoomedDungeonName(v:String):void
+		{
+			kGAMECLASS.inRoomedDungeonName = v;
+		}
+		
+		/**
+		 * Displays the sprite on the lower-left corner.
+		 * Can accept frame index or SpriteDb.s_xxx (class extends Bitmap)
+		 * */
+		protected function spriteSelect(choice:Object = 0):void
 		{
 			kGAMECLASS.spriteSelect(choice);
 		}
@@ -181,21 +190,17 @@
 		}
 
 		/** Create a function that will pass one argument. */
-		protected function createCallBackFunction(func:Function, arg:*):Function
+		protected function createCallBackFunction(func:Function, arg:*, arg2:* = null, arg3:* = null):Function
 		{
-			return kGAMECLASS.createCallBackFunction(func,arg);
-		}
-
-		/** Create a function that will pass multiple arguments. 
-		 * @deprecated	This function is deprecated.
-		 */
-		protected function createCallBackFunction2(func:Function, ...args):Function
-		{
-			return kGAMECLASS.createCallBackFunction2.apply(null,[func].concat(args));
+			return kGAMECLASS.createCallBackFunction(func, arg, arg2, arg3);
 		}
 
 		protected function doSFWloss():Boolean {
 			return kGAMECLASS.doSFWloss();
+		}
+		
+		protected function isPeaceful():Boolean {
+			return kGAMECLASS.isPeaceful();
 		}
 		
 		/**
@@ -214,24 +219,24 @@
 
 		protected function displayHeader(text:String):void
 		{
-			kGAMECLASS.displayHeader(text);
+			kGAMECLASS.output.header(text);
 		}
 		
 		// Needed in a few rare cases for dumping text coming from a source that can't properly escape it's brackets
 		// (Mostly traceback printing, etc...)
-		protected function rawOutputText(output:String, purgeText:Boolean = false):void
+		protected function rawOutputText(text:String):void
 		{
-			kGAMECLASS.rawOutputText(output, purgeText);
+			kGAMECLASS.output.raw(text);
 		}
 
-		protected function outputText(output:String, purgeText:Boolean = false, parseAsMarkdown:Boolean = false):void
+		protected function outputText(output:String):void
 		{
-			kGAMECLASS.outputText(output, purgeText, parseAsMarkdown);
+			kGAMECLASS.output.text(output);
 		}
 		
 		protected function clearOutput():void
 		{
-			kGAMECLASS.currentText = "";
+			kGAMECLASS.output.clear();
 			kGAMECLASS.mainView.clearOutputText();
 		}
 
@@ -240,6 +245,12 @@
 			kGAMECLASS.doNext(eventNo);
 		}
 		
+		/**
+		 * Hides all bottom buttons.
+		 * 
+		 * <b>Note:</b> Calling this with open formatting tags can result in strange behaviour, 
+		 * e.g. all text will be formatted instead of only a section.
+		 */
 		protected function menu():void
 		{
 			kGAMECLASS.menu();
@@ -250,70 +261,31 @@
 			kGAMECLASS.hideMenus();
 		}
 		
-		/** Creates a menu with 10 buttons. 
-		 * @deprecated	This is deprecated. Use a series of addButton instead.
-		 */
-		protected function choices(text1:String, butt1:Function,
-								text2:String, butt2:Function,
-								text3:String, butt3:Function,
-								text4:String, butt4:Function,
-								text5:String, butt5:Function,
-								text6:String, butt6:Function,
-								text7:String, butt7:Function,
-								text8:String, butt8:Function,
-								text9:String, butt9:Function,
-								text0:String, butt0:Function):void { //Now typesafe
-			kGAMECLASS.choices(
-					text1, butt1,
-					text2, butt2,
-					text3, butt3,
-					text4, butt4,
-					text5, butt5,
-					text6, butt6,
-					text7, butt7,
-					text8, butt8,
-					text9, butt9,
-					text0, butt0
-			);
-		}
-
-		/** Creates a menu with 5 buttons. 
-		 * @deprecated	This is deprecated. Use a series of addButton instead.
-		 */
-		protected function simpleChoices(text1:String, butt1:Function,
-								text2:String, butt2:Function,
-								text3:String, butt3:Function,
-								text4:String, butt4:Function,
-								text5:String, butt5:Function):void { //Now typesafe
-			kGAMECLASS.simpleChoices(text1, butt1,
-					text2, butt2,
-					text3, butt3,
-					text4, butt4,
-					text5, butt5);
-		}
-
 		protected function doYesNo(eventYes:Function, eventNo:Function):void { //Now typesafe
 			kGAMECLASS.doYesNo(eventYes, eventNo);
 		}
 
-		protected function addButton(pos:int, text:String = "", func1:Function = null, arg1:* = -9000, arg2:* = -9000, arg3:* = -9000, toolTipText:String = "", toolTipHeader:String = ""):void
+		protected function addButton(pos:int, text:String = "", func1:Function = null, arg1:* = -9000, arg2:* = -9000, arg3:* = -9000, toolTipText:String = "", toolTipHeader:String = ""):CoCButton
 		{
-			kGAMECLASS.addButton(pos, text, func1, arg1, arg2, arg3, toolTipText, toolTipHeader);
+			return kGAMECLASS.addButton(pos, text, func1, arg1, arg2, arg3, toolTipText, toolTipHeader);
 		}
 		
-		protected function addButtonDisabled(pos:int, text:String = "", toolTipText:String = "", toolTipHeader:String = ""):void
+		protected function addButtonDisabled(pos:int, text:String = "", toolTipText:String = "", toolTipHeader:String = ""):CoCButton
 		{
-			kGAMECLASS.addButtonDisabled(pos, text, toolTipText, toolTipHeader);
+			return kGAMECLASS.addButtonDisabled(pos, text, toolTipText, toolTipHeader);
+		}
+		protected function addDisabledButton(pos:int, text:String = "", toolTipText:String = "", toolTipHeader:String = ""):CoCButton
+		{
+			return kGAMECLASS.addButtonDisabled(pos, text, toolTipText, toolTipHeader);
+		}
+		protected function button(pos:int):CoCButton
+		{
+			return kGAMECLASS.button(pos);
 		}
 		
 		protected function removeButton(arg:*):void
 		{
 			kGAMECLASS.removeButton(arg);
-		}
-
-		protected function hasButton(arg:*):Boolean
-		{
-			return kGAMECLASS.hasButton(arg);
 		}
 		
 		protected function openURL(url:String):void{
@@ -334,11 +306,12 @@
 		 *     will add 1 to str, subtract 2 from tou, increase spe by 10%, decrease int by 50%, and set cor to 0
 		 * 
 		 * @param	... args
+		 * @return Object of (newStat-oldStat) with keys str, tou, spe, int, lib, sen, lus, cor
 		 */
-		protected function dynStats(... args):void
+		protected function dynStats(... args):Object
 		{
 			// Bullshit to unroll the incoming array
-			kGAMECLASS.dynStats.apply(null, args);
+			return kGAMECLASS.dynStats.apply(null, args);
 		}
 
 		protected function silly():Boolean
@@ -351,9 +324,20 @@
 			kGAMECLASS.HPChange(changeNum,display);
 		}
 		
-		protected function playerMenu():void { kGAMECLASS.playerMenu(); }
+		protected function playerMenu():void { 
+			kGAMECLASS.mainMenu.hideMainMenu();
+			kGAMECLASS.playerMenu();
+		}
 		
 		protected function get player():Player
+		{
+			return kGAMECLASS.player;
+		}
+		
+		/**
+		 * This is alias for player.
+		 */
+		protected function get pc():Player
 		{
 			return kGAMECLASS.player;
 		}
@@ -408,6 +392,14 @@
 			return kGAMECLASS.monster;
 		}
 		
+		/**
+		 * This is alias for monster.
+		 */
+		protected function get enemy():Monster
+		{
+			return kGAMECLASS.monster;
+		}
+		
 		protected function set monster(val:Monster):void
 		{
 			kGAMECLASS.monster = val;
@@ -438,12 +430,12 @@
 			return kGAMECLASS.inventory;
 		}
 		
-		protected function get time():TimeModel
+		protected function get time():Time
 		{
 			return kGAMECLASS.time;
 		}
 		
-		protected function set time(val:TimeModel):void
+		protected function set time(val:Time):void
 		{
 			kGAMECLASS.time = val;
 		}
@@ -482,20 +474,10 @@
 		{
 			return kGAMECLASS.mainView;
 		}
-		
-		protected function set mainView(val:*):void
+
+		protected function get mainViewManager():MainViewManager
 		{
-			kGAMECLASS.mainView = val;
-		}
-		
-		protected function get model():GameModel
-		{
-			return kGAMECLASS.model;
-		}
-		
-		protected function set model(val:GameModel):void
-		{
-			kGAMECLASS.model = val;
+			return kGAMECLASS.mainViewManager;
 		}
 		
 		protected function get flags():DefaultDict
