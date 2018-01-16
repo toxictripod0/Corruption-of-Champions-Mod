@@ -89,7 +89,7 @@ package classes.Scenes
 			menu();
 			for (x = 0; x < 10; x++) {
 				if (player.itemSlots[x].unlocked && player.itemSlots[x].quantity > 0) {
-					addButton(x, (player.itemSlots[x].itype.shortName + " x" + player.itemSlots[x].quantity), useItemInInventory, x);
+					addButton(x, (player.itemSlots[x].itype.shortName + " x" + player.itemSlots[x].quantity), useItemInInventory, x).hint(player.itemSlots[x].itype.description, capitalizeFirstLetter(player.itemSlots[x].itype.longName));
 					foundItem = true;
 				}
 			}

@@ -105,7 +105,7 @@ package classes.Scenes.Places.Bazaar {
 			outputText("You decide to take a look at the weapons that the shop stocks.\n");
 			menu();
 			addShopItem(0, weapons.PTCHFRK, 200, 1); //Listen, I just really want this released.
-			addShopItem(1, weapons.L_DAGGR, 150, 1);
+			addShopItem(1, weapons.L_DAGR0, 150, 1);
 			addShopItem(2, weapons.RIDING0, 50, 1);
 			addShopItem(3, weapons.SUCWHIP, 400, 1);
 			

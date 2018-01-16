@@ -28,8 +28,12 @@ package classes.Items
 		public function clearOutput():void{
 			kGAMECLASS.clearOutput();
 		}
-		public function outputText(text:String):void{
+		public function outputText(text:String):void {
 			kGAMECLASS.outputText(text);
+		}
+		
+		public function set description(newDesc:String):void {
+			this._description = newDesc;
 		}
 		
 		override public function get description():String {

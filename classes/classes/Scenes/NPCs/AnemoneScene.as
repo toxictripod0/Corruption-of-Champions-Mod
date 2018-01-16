@@ -1221,7 +1221,7 @@ package classes.Scenes.NPCs
 			}
 			else if (kidAXP() < 100) {
 				//Mino Blood/Large Axe/Comfortable Clothes/Lust Draft/Lust Dagger/Bro Brew(same odds as player drop)
-				itype = randomChoice(consumables.MINOBLO, weapons.L__AXE0, armors.C_CLOTH, consumables.L_DRAFT, weapons.L_DAGGR);
+				itype = randomChoice(consumables.MINOBLO, weapons.L__AXE0, armors.C_CLOTH, consumables.L_DRAFT, weapons.L_DAGR0);
 				if (rand(100) == 0) itype = consumables.BROBREW;
 			}
 			else {
@@ -1359,7 +1359,7 @@ package classes.Scenes.NPCs
 				kidAXP(6);
 			}
 			//[Lust Dagger]
-			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.L_DAGGR.id) {
+			else if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.L_DAGR0.id) {
 				outputText("\n\nThe enchanted dagger is light enough for the anemone to use one-handed, and she makes a good practice of turning aside your mock blows with it while reaching in to stimulate you with her other hand.  For good measure, she nicks you with the blade itself whenever her caress elicits a distracted flush.");
 				//(HP -5, lust +10, KidXP + 3)
 				HPChange(-5, false);

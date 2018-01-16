@@ -2,8 +2,6 @@ package classes.Scenes.Places.TelAdre {
 import classes.GlobalFlags.kFLAGS;
 import classes.ItemType;
 import classes.Scenes.ItemUpgrade;
-import classes.Items.Weapon;
-import classes.TimeAwareInterface;
 import classes.display.SpriteDb;
 
 public class WeaponShop extends Shop {

@@ -3,6 +3,7 @@ import classes.GlobalFlags.kFLAGS;
 import classes.GlobalFlags.kGAMECLASS;
 import classes.ItemType;
 import classes.Items.Armor;
+import classes.Scenes.ItemUpgrade;
 import classes.display.SpriteDb;
 
 public class YvonneArmorShop extends Shop {
@@ -24,10 +25,10 @@ public class YvonneArmorShop extends Shop {
 		addButton(4,	armors.LTHRROB.shortName,	confirmBuy, armors.LTHRROB);
 		addButton(5,	armors.SCALEML.shortName,	confirmBuy, armors.SCALEML);
 		addButton(6,	armors.SAMUARM.shortName,	confirmBuy, armors.SAMUARM);
-		addButton(7,	shields.BUCKLER.shortName,	confirmBuy, shields.BUCKLER);
-		addButton(8,	shields.KITE_SH.shortName,	confirmBuy, shields.KITE_SH);
-		addButton(9,	shields.GREATSH.shortName,	confirmBuy, shields.GREATSH);
-		addButton(10,	shields.TOWERSH.shortName,	confirmBuy, shields.TOWERSH);
+		addButton(7,	shields.BUCKLR0.shortName,	confirmBuy, shields.BUCKLR0);
+		addButton(8,	shields.KITESH0.shortName,	confirmBuy, shields.KITESH0);
+		addButton(9,	shields.GRTSHL0.shortName,	confirmBuy, shields.GRTSHL0);
+		addButton(10,	shields.TOWRSH0.shortName,	confirmBuy, shields.TOWRSH0);
 
 		if (player.hasKeyItem("Dragon Eggshell") >= 0) {
 			outputText("\n\nThough the pieces on display have their arguable attractions, none of them really interest you.  Yvonne taps her foot impatiently.  \"<i>Well, I could make you something to order... if you have any decent materials, cutie.  200 gems.</i>\"");
@@ -35,9 +36,10 @@ public class YvonneArmorShop extends Shop {
 				outputText("\n\nYou can't afford that!");
 			}
 			else {
-				addButton(12, "Eggshell", kGAMECLASS.emberScene.getSomeStuff);
+				addButton(11, "Eggshell", kGAMECLASS.emberScene.getSomeStuff);
 			}
 		}
+		addButton(12, "Upgrade", getGame().equipmentUpgrade.equipmentUpgradeMenu, ItemUpgrade.TELADRE_ARMOUR_SHOP, inside);
 		addButton(13, "Flirt", yvonneFlirt);
 		addButton(14, "Leave", telAdre.telAdreMenu);
 	}

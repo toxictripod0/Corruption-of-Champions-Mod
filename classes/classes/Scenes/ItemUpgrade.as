@@ -98,8 +98,11 @@ package classes.Scenes
 			//The main meat of this function
 			outputText("(Placeholder) What equipment would you like to reinforce?");
 			for (var i:int = 0; i < inventory.getMaxSlots(); i++) {
-				if (player.itemSlot(i).itype.id == "NOTHING") {
+				if (player.itemSlot(i).itype == ItemType.NOTHING) {
 					addButtonDisabled(i, "", "");
+				}
+				else if (player.itemSlot(i).itype is Weapon && (player.itemSlot(i).itype as Weapon).tier >= 2) {
+					addButtonDisabled(i, player.itemSlot(i).itype.shortName, "This equipment is already at its maximum tier.");
 				}
 				else if (isAValidItem(player.itemSlot(i).itype)) {
 					addButton(i, player.itemSlot(i).itype.shortName, equipmentUpgradePrompt, player.itemSlot(i).itype).hint(player.itemSlot(i).itype.description, capitalizeFirstLetter(player.itemSlot(i).itype.longName));
@@ -305,7 +308,7 @@ package classes.Scenes
 				//Unique Weapons
 				case weapons.B_SWORD:
 					gemCost = 2000;
-					itemToGet = weapons.PPSWORD;
+					itemToGet = weapons.DPSWORD;
 					break;
 				case weapons.U_SWORD:
 					gemCost = 2000;
@@ -322,6 +325,30 @@ package classes.Scenes
 				//Armours
 				// < NOT YET IMPLEMENTED >
 				//Shields
+				case shields.BUCKLR0:
+					itemToGet = shields.BUCKLR1;
+					break;
+				case shields.BUCKLR1:
+					itemToGet = shields.BUCKLR2;
+					break;
+				case shields.KITESH0:
+					itemToGet = shields.KITESH1;
+					break;
+				case shields.KITESH1:
+					itemToGet = shields.KITESH2;
+					break;
+				case shields.GRTSHL0:
+					itemToGet = shields.GRTSHL1;
+					break;
+				case shields.GRTSHL1:
+					itemToGet = shields.GRTSHL2;
+					break;
+				case shields.TOWRSH0:
+					itemToGet = shields.TOWRSH1;
+					break;
+				case shields.TOWRSH1:
+					itemToGet = shields.TOWRSH2;
+					break;
 				case shields.DRGNSHL:
 					itemToGet = shields.RUNESHL;
 					break;
@@ -329,6 +356,8 @@ package classes.Scenes
 			//Check to make sure item is valid.
 			if (itemToGet == null) {
 				outputText("(Placeholder) Sorry, it doesn't look like this one can be upgraded.");
+				doNext(returnFunc);
+				return;
 			}
 			//Set flags
 			outputText("(Placeholder) Your weapon upgrade has been commissioned. Come back later to pick it up");
