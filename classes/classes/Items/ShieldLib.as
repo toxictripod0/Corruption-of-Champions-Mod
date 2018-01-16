@@ -15,7 +15,7 @@ package classes.Items
 		public static const NOTHING:Nothing = new Nothing();
 		
 		//Regular Shields
-		public const WOODSHL:Shield = new WoodShield();
+		public const WOODSHL:Shield = new WoodenShield();
 		
 		public const BUCKLR0:Shield = new Buckler(0);
 		public const BUCKLR1:Shield = new Buckler(1);
