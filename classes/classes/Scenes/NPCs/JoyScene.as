@@ -495,7 +495,7 @@ package classes.Scenes.NPCs
 			outputText("\n\nHer weapon of choice is an unremarkable wooden staff, although you only see her use it to pose and tease you; running it between her breasts or between her legs and even licking it sometimes... Whenever she gets a reaction from you, she giggles girlishly.");
 			if (joyHasCock() && joySexCounter() > 0) outputText("\n\nFrom previous experience you can estimate she has a " + joyCockLength() + " inches long and " + joyCockGirth() + " inches thick dick. It looks surprisingly human, right underneath that, she has a pair of gonads that are about " + joyBallSize() + " " + (joyBallSize() == 1 ? "inch" : "inches") + " in diameter each.");
 			outputText("\n\nBetween her legs sits a " + joyPussyDescript() + ". Beads of lubricant occasionally form on her pink nether lips.");
-			outputText("\n\nBetween her squeezable jiggly bums she has " + joyAssDescript() + ", where it belong.");
+			outputText("\n\nBetween her squeezable jiggly bums she has " + joyAssDescript() + ", where it belongs.");
 			doNext(genericMenu);
 		}
 		
