@@ -256,8 +256,7 @@ package classes.Scenes.Dungeons  {
 			if (southFunction !== null) addButton(11, "South", navigateToRoom, southFunction);
 			if (westFunction !== null) addButton(10, "West", navigateToRoom, westFunction);
 			if (eastFunction !== null) addButton(12, "East", navigateToRoom, eastFunction);
-			if (player.lust >= 30) addButton(8, "Masturbate", getGame().masturbation.masturbateGo);
-			else addButtonDisabled(8, "Masturbate", "You are not horny enough to do that.");
+			getGame().masturbation.setMasturbateButton(true);
 			addButton(13, "Inventory", inventory.inventoryMenu).hint("The inventory allows you to use an item.  Be careful as this leaves you open to a counterattack when in combat.");
 			addButton(14, "Map", map.displayMap).hint("View the map of this dungeon.");
 			setTopButtons();
@@ -288,8 +287,7 @@ package classes.Scenes.Dungeons  {
 			}
 			addButton(13, "Inventory", inventory.inventoryMenu);
 			addButton(14, "Map", kGAMECLASS.dungeons.map.displayMap);
-			if (player.lust >= 30) addButton(8, "Masturbate", getGame().masturbation.masturbateGo);
-			else addButtonDisabled(8, "Masturbate", "You are not horny enough to consider that.");
+			getGame().masturbation.setMasturbateButton(true);
 		}
 
 		public function move(roomName:String, timeToPass:Number = 0):void {

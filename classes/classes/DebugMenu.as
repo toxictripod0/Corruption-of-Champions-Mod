@@ -565,7 +565,7 @@ package classes
 			menu();
 			clearOutput();
 			outputText("TEST STUFFZ");
-			addButton(0, "ASPLODE", styleHackMenu);
+			addButton(0, "ASPLODE", styleHackMenu).hint("MAKE SHIT ASPLODE");
 			addButton(1, "Scorpion Tail", changeScorpionTail);
 			addButton(2, "Be Manticore", getManticoreKit).hint("Gain everything needed to become a Manticore-morph.");
 			addButton(3, "Be Dragonne", getDragonneKit).hint("Gain everything needed to become a Dragonne-morph.");

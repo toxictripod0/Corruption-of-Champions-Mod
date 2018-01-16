@@ -6,7 +6,7 @@ package classes.Items.Weapons
 	{
 		public function Katana(tier:int) 
 		{
-			var ids:Array = ["Katana", "Katana1", "Katana2"];
+			var ids:Array = ["Katana ", "Katana1", "Katana2"];
 			var eqptNames:Array = ["katana", "fine katana", "masterwork katana"];
 			var longNames:Array = ["a katana", "a fine katana", "a masterwork katana"];
 			this.weightCategory = Weapon.WEIGHT_MEDIUM;

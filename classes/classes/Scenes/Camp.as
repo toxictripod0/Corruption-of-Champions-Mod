@@ -674,10 +674,7 @@ private function doCamp():void { //Only called by playerMenu
 	if (loversCount() > 0) addButton(6, "Lovers", campLoversMenu).hint("Check up on any lovers you have invited so far to your camp and interact with them.");
 	if (slavesCount() > 0) addButton(7, "Slaves", campSlavesMenu).hint("Check up on any slaves you have received and interact with them.");
 	var canFap:Boolean = !player.hasStatusEffect(StatusEffects.Dysfunction) && (flags[kFLAGS.UNABLE_TO_MASTURBATE_BECAUSE_CENTAUR] == 0 && !player.isTaur());
-	if (player.lust >= 30) {
-		addButton(8, "Masturbate", kGAMECLASS.masturbation.masturbateMenu);
-		if ((player.hasPerk(PerkLib.HistoryReligious) && player.isPureEnough(66)||player.hasPerk(PerkLib.Enlightened) && player.isPureEnough(10)) && (!player.hasStatusEffect(StatusEffects.Exgartuan)||player.statusEffectv2(StatusEffects.Exgartuan) != 0)|| flags[kFLAGS.SFW_MODE] >= 1) addButton(8, "Meditate", kGAMECLASS.masturbation.masturbateMenu);
-	}
+	getGame().masturbation.setMasturbateButton();
 	addButton(9, "Wait", doWait).hint("Wait for four hours.\n\nShift-click to wait until the night comes.");
 	if (player.fatigue > 40 || player.HP / player.maxHP() <= .9) addButton(9, "Rest", rest).hint("Rest for four hours.\n\nShift-click to rest until fully healed or night comes.");
 	if (getGame().time.hours >= 21 || getGame().time.hours < 6) addButton(9, "Sleep", doSleep).hint("Turn yourself in for the night.");

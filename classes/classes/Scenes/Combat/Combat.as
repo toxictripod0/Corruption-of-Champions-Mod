@@ -265,7 +265,8 @@ public class Combat extends BaseContent
 			addButton(7, "Wait", wait).hint("Take no action for this round.  Why would you do this?  This is a terrible idea.");
 			if (monster.hasStatusEffect(StatusEffects.Level)) addButton(7, "Climb", wait).hint("Climb the sand to move away from the sand trap.");
 			addButton(8, "Fantasize", fantasize).hint("Fantasize about your opponent in a sexual way.  Its probably a pretty bad idea to do this unless you want to end up getting raped.");
-			if (CoC_Settings.debugBuild && !debug) addButton(9, "Inspect", debugInspect).hint("Use your debug powers to inspect your enemy.");
+			//addButton(9, "Defend", defend).hint("Selecting defend will reduce the damage you take by 66 percent, but will not affect any lust incurred by your enemy's actions.");
+			if (CoC_Settings.debugBuild && !debug) addButton(14, "Inspect", debugInspect).hint("Use your debug powers to inspect your enemy.");
 			//Modify menus.
 			if (monster.hasStatusEffect(StatusEffects.AttackDisabled)) {
 				if (monster.short == "minotaur lord") {
