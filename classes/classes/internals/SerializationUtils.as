@@ -161,21 +161,6 @@ package classes.internals
 		}
 		
 		/**
-		 * Check that the passed object is defined.
-		 * Will initalize with a empty array if undefined or null.
-		 * If the object is defined, then it will be returned.
-		 * @param	object to check and initialize
-		 * @return a valid object. Needed because of how ActionScript handles references
-		 */
-		public static function initializeObject(object:*):* {
-			if (object === undefined || object === null) {
-				object = [];
-			}
-			
-			return object;
-		}
-		
-		/**
 		 * Deserialize a class. This method is intended to automate deserialization, in order to avoid
 		 * a lot of code duplication.
 		 * @param	relativeRootObject the object that contains the serialized classes data
