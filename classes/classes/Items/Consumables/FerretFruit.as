@@ -5,6 +5,7 @@ package classes.Items.Consumables
 	import classes.Items.Consumable;
 	import classes.Items.ConsumableLib;
 	import classes.PerkLib;
+	import classes.lists.ColorLists;
 	
 	/**
 	 * Ferret transformative item.
@@ -25,6 +26,7 @@ package classes.Items.Consumables
 			var x:int = 0;
 			
 			clearOutput();
+			credits.authorText = "Revised by Coalsack";
 			outputText("Feeling parched, you gobble down the fruit without much hesitation. Despite the skin being fuzzy like a peach, the inside is relatively hard, and its taste reminds you of that of an apple.  It even has a core like an apple. Finished, you toss the core aside.");
 
 			//BAD END:
@@ -151,30 +153,77 @@ package classes.Items.Consumables
 			if (player.hasGills() && rand(4) === 0 && changes < changeLimit) {
 				mutations.updateGills();
 			}
-			//	outputText("\n\nYou grit your teeth as a stinging sensation arises in your gills.  Within moments, the sensation passes, and <b>your gills are gone!</b>");
-			//If the PC has tentacle hair:
-			if (player.hair.type === Hair.ANEMONE && rand(4) === 0 && changes < changeLimit)
+			//Hair
+			var oldHairType:Number = player.hair.type;
+			var hasFerretHairColor:Boolean = ColorLists.FERRET_HAIR.indexOf(player.hair.color) !== -1;
+			if ((player.hair.type !== Hair.NORMAL || !hasFerretHairColor || player.hair.length <= 0) && rand(4) === 0 && changes < changeLimit)
 			{
-				outputText("\n\nYour head feels strange as the tentacles you have for hair begin to recede back into your scalp, eventually leaving you with a bald head.  Your head is not left bald for long, though.  Within moments, a full head of hair sprouts from the skin of your scalp.  <b>Your hair is normal again!</b>");
-				//Turn hair growth on.
+				if (!hasFerretHairColor)
+					player.hair.color = randomChoice(ColorLists.FERRET_HAIR);
+
 				flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] = 0;
 				player.hair.type = Hair.NORMAL;
-				changes++;
-			}
-			//If the PC has goo hair:
-			if (player.hair.type === Hair.GOO && rand(3) === 0 && changes < changeLimit)
-			{
-				outputText("\n\nYour gooey hair begins to fall out in globs, eventually leaving you with a bald head.  Your head is not left bald for long, though.  Within moments, a full head of hair sprouts from the skin of your scalp.  <b>Your hair is normal again!</b>");
-				//Turn hair growth on.
-				flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] = 0;
-				player.hair.type = Hair.NORMAL;
+
+				if (player.hair.length <= 0) {
+					player.hair.length = 1;
+					outputText("\n\nThe familiar sensation of hair returns to your head. After looking yourself on the stream,"
+					          +" you confirm that your once bald head now has normal, short [hairColor] hair.");
+				} else if (oldHairType === Hair.NORMAL && !hasFerretHairColor) {
+					outputText("\n\nA mild tingling on your scalp makes your check yourself on the stream. Seems like the fruit is changing your"
+					          +" hair this time, turning it into [hair].");
+				} else {
+					switch (oldHairType) {
+						case Hair.FEATHER:
+							outputText("\n\nWith the taste of the fruit still lingering, you start feeling an odd itch on your scalp."
+							          +" When you scratch it, you see how your feathered hair has begin to shed, downy feathers falling from your"
+							          +" head until you’re left bald. It doesn’t last long, fortunately, as you feel hairs sprouting from your scalp."
+							          +" Checking the changes on the nearby river, you get a glimpse of how your new [hairColor] hair begins to"
+							          +" rapidly grow. <b>You now have [hair]!</b>");
+							break;
+
+						case Hair.GOO:
+							player.hair.length = 1;
+							outputText("\n\nAfter having gulped down the fruit last bit, a lock of gooey hair falls over your forehead. When you try"
+							          +" to examine it, the bunch of goo falls to the ground and evaporates. As you tilt your head to see what"
+							          +" happened, more and more patches of goo start falling from your head, disappearing on the ground with the"
+							          +" same speed. Soon, your scalp is devoid of any kind of goo, albeit entirely bald.");
+							outputText("\n\nNot for long, it seems, as the familiar sensation of hair returns to your head a moment later."
+							          +" After looking yourself on the stream, you confirm that"
+							          +" your once bald head now has normal, short [hairColor] hair.");
+							break;
+
+						/* [INTERMOD: xianxia]
+						case Hair.GORGON:
+							player.hair.length = 1;
+							outputText("\n\nAs the fruit last juices run through your mouth, the scaled critters on your head shake wildly in pained"
+							          +" displeasure. Then, a sudden heat envelopes your scalp. The transformative effects of the sweet fruit meal"
+							          +" make themselves notorious, as the writhing mess of snakes start hissing uncontrollably."
+							          +" Many of them go rigid, any kind of life that they could had taken away by the root effects."
+							          +" Soon, all of the snakes that made your hair are limp and lifeless.");
+							outputText("\n\nTheir dead bodies are separated from you head by a scorching sensation, and start falling to the ground,"
+							          +" turning to dust in a matter of seconds. Examining your head on the stream, you realize that you have"
+							          +" a normal, healthy scalp, though devoid of any kind of hair.");
+							outputText("\n\nThe effects don’t end here, though as the familiar sensation of hair returns to your head a moment later."
+							          +" After looking yourself on the stream again, you confirm that"
+							          +" <b>your once bald head now has normal, short [hairColor] hair</b>.");
+							break;
+						*/
+
+						default:
+							outputText("\n\nA mild tingling on your scalp makes your check yourself on the stream. Seems like the fruit is changing"
+							          +" your hair this time, turning it into [hair].");
+					}
+				}
 				changes++;
 			}
 			//If the PC has four eyes:
 			if ((player.eyes.type === Eyes.FOUR_SPIDER_EYES || player.eyes.count > 2) && rand(3) === 0 && changes < changeLimit)
 			{
-				outputText("\n\nYour eyes start throbbing painfully, your sight in them eventually going dark.  You touch your head to inspect your eyes, only to find out that they have changed.  <b>You have human eyes now!</b>");
-				player.eyes.type = 0;
+				outputText("\n\nYou vision turns black, forcing you to freeze where you are as the sudden blindness put you in danger of hitting"
+				          +" something dangerous. Thank Marae, it doesn’t take long to your sight to return as usual, only with a little change."
+				          +" As your vision filed feels oddly changed, you check the changes in your visage, noting that the number of eyes in your"
+				          +" head has dropped to the average pair! <b>You have normal human eyes again!</b>");
+				player.eyes.type = Eyes.HUMAN;
 				player.eyes.count = 2;
 				changes++;
 			}
@@ -195,22 +244,36 @@ package classes.Items.Consumables
 			//Turn ferret mask to full furface.
 			if (player.face.type === Face.FERRET_MASK && player.hasFur() && player.ears.type === Ears.FERRET && player.tail.type === Tail.FERRET && player.lowerBody.type === LowerBody.FERRET && rand(4) === 0 && changes < changeLimit)
 			{
-				outputText("\n\nYou cry out in pain as the bones in your face begin to break and rearrange.  You rub your face furiously in an attempt to ease the pain, but to no avail.  As the sensations pass, you examine your face in a nearby puddle.  <b>You nearly gasp in shock at the sight of your new ferret face!</b>");
+				outputText("\n\nNumbness overcomes your lower face, while the rest of your head is caught by a tingling sensation."
+				          +" Every muscle on your face tenses and shifts, while the bones and tissue rearrange, radically changing the shape"
+				          +" of your head. You have troubles breathing as the changes reach your nose, but you manage to see as it changes into an"
+				          +" animalistic muzzle. At its top, your nose acquire a triangular shape, proper of a ferret and an adorable pink color."
+				          +" You jaw joins it and your teeth sharpen, reshaping in the way of belonging on a little carnivore,"
+				          +" albeit without looking menacing or intimidating.");
+				outputText("\n\nOnce you’re face and jaw has reshaped, fur covers the whole of your head. The soft sensation is quite pleasant."
+				          +" It has a [furColor] coloration, turning into white at your muzzle, cheeks and ears. The darkened skin around your eyes"
+				          +" also changes, turning into a mask of equally soft fur colored in a darker shade of [furColor]."
+				          +" Well, seems like <b>you now have an animalistic, ferret face!</b>");
 				player.face.type = Face.FERRET;
 				changes++;
 			}
 			//If face is human:
-			if (player.face.type === 0 && rand(3) === 0 && changes < changeLimit)
+			if (player.face.type === Face.HUMAN && rand(3) === 0 && changes < changeLimit)
 			{
-				outputText("\n\nA horrible itching begins to encompass the area around your eyes.  You grunt annoyedly, rubbing furiously at the afflicted area.  Once the feeling passes, you make your way to the nearest reflective surface to see if anything has changed.  Your suspicions are confirmed.  The [skinFurScales] around your eyes has darkened.  <b>You now have a ferret mask!</b>");
+				outputText("\n\nA sudden itching begins to encompass the area around your eyes. Grunting in annoyance, you rub furiously at the"
+				          +" afflicted area. Once the feeling passes, you make your way to the nearest reflective surface to see if anything"
+				          +" has changed. There, your suspicions are confirmed. The [skinFurScales] around your eyes has darkened."
+				          +" <b>You now have a ferret mask!</b>");
 				player.face.type = Face.FERRET_MASK;
 				changes++;
 			}
 			//If face is not ferret, has ferret ears, tail, and legs:
-			if (player.face.type !== Face.HUMAN && player.face.type !== Face.FERRET_MASK && player.face.type !== Face.FERRET && rand(3) === 0 && changes < changeLimit)
+			if ([Face.HUMAN, Face.FERRET_MASK, Face.FERRET].indexOf(player.face.type) === -1 && rand(3) === 0 && changes < changeLimit)
 			{
-				outputText("\n\nYou groan uncomfortably as the bones in your [face] begin to rearrange.  You grab your head with both hands, rubbing at your temples in an attempt to ease the pain.  As the shifting stops, you frantically feel at your face.  The familiar feeling is unmistakable.  <b>Your face is human again!</b>");
-				player.face.type = 0;
+				outputText("\n\nYou groan uncomfortably as the bones in your [face] begin to rearrange.  You grab your head with both hands,"
+				          +" rubbing at your temples in an attempt to ease the pain.  As the shifting stops, you frantically feel at your face."
+				          +" The familiar feeling is unmistakable. <b>Your face is human again!</b>");
+				player.face.type = Face.HUMAN;
 				changes++;
 			}
 			//No fur, has ferret ears, tail, and legs:
@@ -237,7 +300,7 @@ package classes.Items.Consumables
 			if (player.tail.type !== Tail.FERRET && player.ears.type === Ears.FERRET && rand(3) === 0 && changes < changeLimit)
 			{
 				//If ears are ferret, no tail:
-				if (player.tail.type === 0)
+				if (player.tail.type === Tail.NONE)
 				{
 					outputText("\n\nYou slump to the ground as you feel your spine lengthening and twisting, sprouting fur as it finishes growing.  Luckily the new growth does not seem to have ruined your [armor].  <b>You now have a ferret tail!</b>");
 				}
@@ -270,31 +333,106 @@ package classes.Items.Consumables
 				player.tail.type = Tail.FERRET;
 				changes++;
 			}
-			//If naga, has ferret ears:
-			//(NOTE: this is the only exception to the legs coming after the tail, as the ferret tail will only go away right after it appears because of your snake lower half)
-			else if (player.isNaga() && player.ears.type === Ears.FERRET && rand(4) === 0 && changes < changeLimit)
-			{
-				outputText("\n\nYou scream in agony as a horrible pain racks the entire length of your snake-like coils.  Unable to take it anymore, you pass out.  When you wake up, you’re shocked to find that you no longer have the lower body of a snake.  Instead, you have soft, furry legs that resemble that of a ferret’s.  <b>You now have ferret legs!</b>");
-				changes++;
-				player.lowerBody.type = LowerBody.FERRET;
-				player.lowerBody.legCount = 2;
-			}
 			//If legs are not ferret, has ferret ears and tail
 			if (player.lowerBody.type !== LowerBody.FERRET && player.ears.type === Ears.FERRET && player.tail.type === Tail.FERRET && rand(4) === 0 && changes < changeLimit)
 			{
 				//-If centaur, has ferret ears and tail:
-				if (player.isTaur()) outputText("\n\nYou scream in agony as a horrible pain racks your entire horse lower half.  Unable to take it anymore, you pass out.  When you wake up, you’re shocked to find that you no longer have the lower body of a horse.  Instead, you have soft, furry legs that resemble that of a ferret’s.  <b>You now have ferret legs!</b>");
+				if (player.isTaur()) {
+					outputText("\n\nYou legs tremble, forcing you to lie on the ground, as they don't seems to answer you anymore."
+					          +" A burning sensation in them is the last thing you remember before briefly blacking out. When it subsides"
+					          +" and you finally awaken, you look at them again, only to see that you’ve left with a single set of digitigrade legs,"
+					          +" and a much more humanoid backside. Soon enough, the feeling returns to your reformed legs, only to come with an"
+					          +" itching sensation. A thick [if (hasFurryUnderBody)[underBody.furColor]|black-brown] coat of fur sprouts from them."
+					          +" It’s soft and fluffy to the touch. Cute pink paw pads complete the transformation."
+					          +" <b>Seems like you’ve gained a set of ferret paws!</b>");
+				} else {
+					switch (player.lowerBody.type) {
+						case LowerBody.NAGA:
+							outputText("\n\nA strange feeling in your tail makes you have to lay on the ground. Then, the feeling becomes stronger,"
+							          +" as you feel an increasing pain in the middle of your coils. You gaze at them for a second, only to realize"
+							          +" that they’re dividing! In a matter of seconds, they’ve reformed into a more traditional set of legs,"
+							          +" with the peculiarity being that they’re fully digitigrade in shape. Soon, every scale on them falls off to"
+							          +" leave soft [skin] behind. That doesn’t last long, because soon a thick coat of"
+							          +" [if (hasFurryUnderBody)[underBody.furColor]|black-brown] fur covers them."
+							          +" It feels soft and fluffy to the touch. Cute pink paw pads complete the transformation."
+							          +" <b>Seems like you’ve gained a set of ferret paws!</b>");
+							break;
 
-				outputText("\n\nYou scream in agony as the bones in your legs begin to break and rearrange.  Even as the pain passes, an uncomfortable combination of heat and throbbing continues even after the transformation is over.  You rest for a moment, allowing the sensations to subside.  Now feeling more comfortable, <b>you stand up, ready to try out your new ferret legs!</b>");
+						case LowerBody.GOO:
+							outputText("\n\nYour usually fluid gooey appendage becomes strangely rigid, forcing you to stay still as you are."
+							          +" Then, in front of your eyes, you see how the goo on it concentrates and shapes into the usual shape of two"
+							          +" legs. Faster than you can would’ve imagined, the fluid turns into solid bones, that are instantly enveloped"
+							          +" by tissues, nerves and muscles, only to be finally covered in a layer of soft, human-looking skin."
+							          +" You test your re-gained feet, smiling when discovering"
+							          +" that you can use them as before without major issue.");
+							outputText("\n\nThen, a feeling of unease forces you to sit on a nearby rock, as you feel something within your [feet]"
+							          +" is changing. Numbness overcomes them, as muscles and bones change, softly shifting, melding and rearranging"
+							          +" themselves. After a couple of minutes, they leave you with a set of digitigrade legs with pink pawpads,"
+							          +" ending in short black claws and covered in a thick layer of"
+							          +"  fur. It feels quite soft and fluffy."
+							          +" <b>You’ve gained a set of ferret paws!</b>");
+							break;
+
+						case LowerBody.DRIDER:
+							outputText("\n\nYou eight spider-like legs tremble, forcing you to lie on the ground, as they doesn't seem to answer"
+							          +" you anymore. A burning sensation in them is the last thing you remember before briefly blacking out."
+							          +" When it subsides and you finally awaken, you look at them again, only to see that you’ve left with a single"
+							          +" set of digitigrade legs. Soon enough, the feeling returns to your reformed legs, only to come with an"
+							          +" itching sensation. A thick [if (hasFurryUnderBody)[underBody.furColor]|black-brown] coat of fur"
+							          +" sprouts from them. It’s soft and fluffy to the touch. Cute pink paw pads complete the transformation."
+							          +" <b>Seems like you’ve gained a set of ferret paws!</b>");
+							break;
+
+						case LowerBody.HUMAN:
+						case LowerBody.HOOFED:
+						case LowerBody.CLOVEN_HOOFED:
+						case LowerBody.DEMONIC_CLAWS:
+						case LowerBody.DEMONIC_HIGH_HEELS:
+						default:
+							outputText("\n\nA feeling of unease forces you to sit on a nearby rock, as you feel something within your [feet]"
+							          +" is changing. Numbness overcomes them, as muscles and bones change, softly shifting, melding and rearranging"
+							          +" themselves. After a couple of minutes, they leave you with a set of digitigrade legs with pink pawpads,"
+							          +" ending in short black claws and covered in a thick layer of"
+							          +" [if (hasFurryUnderBody)[underBody.furColor]|black-brown] fur. It feels quite soft and fluffy."
+							          +" <b>You’ve gained a set of ferret paws!</b>");
+					}
+				}
 				changes++;
 				player.lowerBody.type = LowerBody.FERRET;
 				player.lowerBody.legCount = 2;
 			}
-			//If ears are not ferret:
-			if (player.ears.type !== Ears.FERRET && rand(4) === 0 && changes < changeLimit && rand(2.5) === 0 && changes < changeLimit)
+			//Arms
+			if (player.arms.type !== Arms.FERRET && player.tail.type === Tail.FERRET && player.lowerBody.type === LowerBody.FERRET && rand(4) === 0 && changes < changeLimit)
 			{
-				outputText("\n\nYou squint as you feel a change in your ears.  Inspecting your reflection in a nearby puddle you find that <b>your ears have become small, fuzzy, and rounded, just like a ferret’s!</b>");
+				outputText("\n\nWeakness overcomes your arms, and no matter what you do, you can’t muster the strength to raise or move them."
+				          +" Did the fruit had some drug-like effects? Sitting on the ground, you wait for the limpness to end. As you do so,"
+				          +" you realize that the bones at your hands are changing, as well as the muscles on your arms. They’re soon covered,"
+				          +" from the shoulders to the tip of your digits, on a layer of soft,"
+				          +" fluffy [if (hasFurryUnderBody)[underBody.furColor]|black-brown] fur. Your hands gain pink, padded paws where your palms"
+				          +" were once, and your nails become short claws, not sharp enough to tear flesh, but nimble enough to make climbing and"
+				          +" exploring much easier. <b>Your arms have become like those of  a ferret!</b>");
+				player.arms.type = Arms.FERRET;
+				mutations.updateClaws(Claws.FERRET);
+				changes++;
+			}
+			//If ears are not ferret:
+			if (player.ears.type !== Ears.FERRET && rand(4) === 0 && changes < changeLimit)
+			{
+				outputText("\n\nYour ears twitch under the fruit transformative effects, and your hearing is diminished for a while when they change."
+				          +" As uncomfortable as it is, the process, luckily, doesn’t take too much time. The flesh on your ears shift and merges"
+				          +" into a couple of small, round ones. Then, [furColor] fur sprouts over them, as they locate themselves at the sides of"
+				          +" your head, ready to detect any nearby sound. At the end, you’re left with a pair of ferret ears, quite animalistic on"
+				          +" their shape and looks. <b>You’ve got ferret ears!</b>");
 				player.ears.type = Ears.FERRET;
+				changes++;
+			}
+			//Remove antennae, if insectile
+			if (player.hasInsectAntennae() && rand(4) === 0 && changes < changeLimit)
+			{
+				outputText("\n\nThe antennae parting your hair become suddenly numb, no doubt due the fruit effects, and they become thinner"
+				          +" and thinner. When they’re almost hair-width, the remaining flesh on them reabsorbs itself on your head."
+				          +" Seems like <b>your antennae are gone</b>.");
+				player.antennae.type = Antennae.NONE;
 				changes++;
 			}
 			//If no other effect occurred, fatigue decreases:
