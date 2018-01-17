@@ -263,7 +263,7 @@ package classes.internals
 			assertThat(serializedObject, hasProperties({foo: 42}));
 		}
 		
-		[Test]
+		[Test(expected="ArgumentError")]
 		public function deserializeUndefined():void {
 			serializedObject = undefined;
 			

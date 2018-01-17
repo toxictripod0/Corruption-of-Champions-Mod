@@ -183,7 +183,9 @@ package classes.internals
 		 */
 		public static function deserialize(relativeRootObject:*, serialized:ISerializable):void {
 			LOGGER.debug("Deserializing  {0}...", serialized);
-			relativeRootObject = SerializationUtils.initializeObject(relativeRootObject);
+
+			objectDefinedCheck(relativeRootObject, "Object passed for deserialization must be defined. Does the loaded property exist?")
+			objectDefinedCheck(relativeRootObject, "Instance of class to load is not defined. Did you call the class constructor?");
 			
 			SerializationUtils.serializedVersionCheckThrowError(relativeRootObject, serialized.currentSerializationVerison());
 			var serializedObjectVersion:int = SerializationUtils.serializationVersion(relativeRootObject);
@@ -204,8 +206,6 @@ package classes.internals
 			objectDefinedCheck(toSerialize, "Instance of class to store is not defined. Did you call the class constructor?");
 			
 			LOGGER.debug("Serializing {0}...", toSerialize);
-			
-			relativeRootObject = SerializationUtils.initializeObject(relativeRootObject);
 			relativeRootObject[SERIALIZATION_VERSION_PROPERTY] = toSerialize.currentSerializationVerison();
 			
 			toSerialize.serialize(relativeRootObject);
