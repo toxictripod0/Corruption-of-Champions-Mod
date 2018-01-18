@@ -505,6 +505,13 @@ public class SpriteDb {
 	public static function get s_kiha_nude(): Class {
 		return is8bit ? s_kiha_8bit : s_kiha_nude_16bit;
 	}
+	[Embed(source="../../../res/sprites/kiha_preg.png")]
+	public static const s_kiha_preg_16bit:Class;
+//	[Embed(source="../../../res/sprites8bit/kiha_preg-old.png")]
+//	public static const s_kiha_preg_8bit:Class;
+	public static function get s_kiha_preg(): Class {
+		return is8bit ? s_kiha_8bit : s_kiha_preg_16bit;
+	}
 	[Embed(source="../../../res/sprites/kitsune_black.png")]
 	public static const s_kitsune_black_16bit:Class;
 	[Embed(source="../../../res/sprites8bit/kitsune_black-old.png")]
