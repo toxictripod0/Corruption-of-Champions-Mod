@@ -30,8 +30,14 @@ package classes.Items.Consumables
 			outputText("Feeling parched, you gobble down the fruit without much hesitation. Despite the skin being fuzzy like a peach, the inside is relatively hard, and its taste reminds you of that of an apple.  It even has a core like an apple. Finished, you toss the core aside.");
 
 			//BAD END:
-			if (player.ferretScore() >= 6 && player.findPerk(PerkLib.TransformationResistance) < 0)
-			{
+			if (
+				player.face.type === Face.FERRET &&
+				player.ears.type === Ears.FERRET &&
+				player.tail.type === Tail.FERRET &&
+				player.lowerBody.type === LowerBody.FERRET &&
+				player.hasFur() &&
+				!player.hasPerk(PerkLib.TransformationResistance)
+			) {
 				//Get warned!
 				if (flags[kFLAGS.FERRET_BAD_END_WARNING] === 0) {
 					outputText("\n\nYou find yourself staring off into the distance, dreaming idly of chasing rabbits through a warren.  You shake your head, returning to reality.  <b>Perhaps you should cut back on all the Ferret Fruit?</b>");
