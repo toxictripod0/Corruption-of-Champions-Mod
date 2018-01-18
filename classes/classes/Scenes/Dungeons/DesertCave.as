@@ -1781,10 +1781,21 @@ package classes.Scenes.Dungeons
 				addButton(0,"North Door",openZeDoorToParadize);
 				addButton(1,"Fuck Her",fuckDatSphinx).hint("Use Sanura to get off.");
 				addButton(4,"Leave",exitDungeon);
-				
 			}
 		}
 
+		internal function sphinxAppearance():void {
+			clearOutput();
+			credits.authorText = "Stygs";
+			outputText("Standing before you is Sanura.  This daunting sphinx has the torso of a woman and the body of a lioness.");
+			outputText("\nShe has two feline ears on top of her otherwise humanoid head and shoulder length black hair, framing her face on each side and drawing your attention to her dark blue eyes.  Two large feathered wings sprout from her back below her shoulders.");
+			outputText("\nA blue bra and a similar loincloth cover her human body while golden bracelets and rings adorn her arms and fingers.  The colors of her attire create a nice contrast with her tan skin and the brown fur on her leonine half.");
+			outputText("\nEach of her four legs ends in paws, their claws hidden until she might need them.  A leonine tail swings back and forth behind her.");
+			outputText("\n\nSanura has a pair of soft, round C-cup breasts, each with a 0.5 inch nipple at their tip.");
+			outputText("\n\nBeneath her tail she has tight butthole and a moist pussy, right where they belong.");
+			menu();
+			addButton(0,"Next",roomEntrance);
+		}
 
 		//THE SPHINX BEAT YOU AT HER OWN -- WAIT A SECOND
 		public function answerWrong():void {
@@ -4150,6 +4161,7 @@ package classes.Scenes.Dungeons
 				//(Display Options: [Riddle Game] [Fight] [Leave])
 				addButton(0, "Riddle Game", riddleGameGo).hint("Start the riddle game.");
 				addButton(1, "Uh, FIGHT!", fuckItAttack).hint("Screw the riddles, fight her instead!");
+				addButton(5,"Appearance",sphinxAppearance).hint("Examine Sanura's appearance.");
 			}
 			else {
 				if (flags[kFLAGS.TIMES_SUBMITTED_TO_SANURA] + flags[kFLAGS.TIMES_WINFUCKED_SANURA] > 0) {
@@ -4170,6 +4182,7 @@ package classes.Scenes.Dungeons
 						addButton(1, "Fuck", fuckDatSphinx).hint("Use Sanura to get off.");
 					}
 				}
+				addButton(5,"Appearance",sphinxAppearance).hint("Examine Sanura's appearance.");
 			}
 			if (flags[kFLAGS.BEATEN_SANURA_COUNT] + flags[kFLAGS.SANURA_DISABLED] == 0) removeButton(6); //Locks north.
 			addButton(11, "Leave", exitDungeon);
