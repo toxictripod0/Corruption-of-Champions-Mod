@@ -64,7 +64,6 @@ package classes.Scenes
 		// function():void{assertThat(kGAMECLASS.player.fatigue, equalTo(40))}
 		[Parameters]
 		public static var testData:Array = [
-			[PregnancyStore.PREG_NOT_PREGANT, function():void{assertThat(kGAMECLASS.player.isPregnant(), equalTo(false))}, false, false],
 			[PregnancyStore.PREGNANCY_FAERIE, function():void{assertThat(kGAMECLASS.flags[kFLAGS.BIRTHS_FAERIE], equalTo(1))}, true, true],
 			[PregnancyStore.PREGNANCY_EMBER, function():void{assertThat(kGAMECLASS.flags[kFLAGS.EMBER_CHILDREN_MALES] + 
 																			kGAMECLASS.flags[kFLAGS.EMBER_CHILDREN_FEMALES] +
