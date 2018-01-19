@@ -17,6 +17,8 @@ package classes.Scenes
 	import classes.GlobalFlags.kFLAGS;
 	import classes.PregnancyStore;
 	import classes.StatusEffects;
+	import classes.VaginaClass;
+	import classes.StatusEffects;
 	
 	import org.flexunit.runners.Parameterized;
 	
@@ -33,7 +35,7 @@ package classes.Scenes
 		private var player:Player;
 		
 		private var pregnancyType:int;
-		private var childCounterFlagId:int;
+		private var testFunction:Function;
 		private var shouldDisplayText:Boolean;
 		
 		[BeforeClass]
@@ -44,7 +46,8 @@ package classes.Scenes
 		[Before]
 		public function setUp():void {
 			player = new Player();
-			player.createVagina();
+			player.createVagina(true, VaginaClass.WETNESS_NORMAL, VaginaClass.LOOSENESS_GAPING);
+			player.hips.rating = 3;
 			kGAMECLASS.player = player;
 			
 			kGAMECLASS.flags = new DefaultDict();
@@ -54,38 +57,44 @@ package classes.Scenes
 			cut = new PregProgForTest();
 		}
 		
+		/**
+		 * The test functions are required due to birth scenes being anything but uniform.
+		 */
+		// function():void{assertThat(kGAMECLASS.player.fatigue, equalTo(40))}
 		[Parameters]
 		public static var testData:Array = [
-			[PregnancyStore.PREGNANCY_FAERIE, kFLAGS.BIRTHS_FAERIE, true],
-			//[PregnancyStore.INCUBATION_EMBER, kFLAGS.EMBER_CHILDREN_MALES, true],
-			[PregnancyStore.PREGNANCY_URTA, kFLAGS.URTA_TIMES_PC_BIRTHED, true],
-			//[PregnancyStore.PREGNANCY_SAND_WITCH, -1, true],
-			//[PregnancyStore.PREGNANCY_IZMA, -1, true],
+			[PregnancyStore.PREGNANCY_FAERIE, function():void{assertThat(kGAMECLASS.flags[kFLAGS.BIRTHS_FAERIE], equalTo(1))}, true],
+			[PregnancyStore.PREGNANCY_EMBER, function():void{assertThat(kGAMECLASS.flags[kFLAGS.EMBER_CHILDREN_MALES] + 
+																			kGAMECLASS.flags[kFLAGS.EMBER_CHILDREN_FEMALES] +
+																			kGAMECLASS.flags[kFLAGS.EMBER_CHILDREN_HERMS], equalTo(1))}, true],
+			[PregnancyStore.PREGNANCY_URTA, function():void{assertThat(kGAMECLASS.flags[kFLAGS.URTA_TIMES_PC_BIRTHED], equalTo(1))}, true],
+			//[PregnancyStore.PREGNANCY_SAND_WITCH, function():void{assertThat(kGAMECLASS.player.fatigue, equalTo(40))}, true],
+			//[PregnancyStore.PREGNANCY_IZMA, function():void{assertThat(kGAMECLASS.player.vaginas[0].vaginalLooseness, equalTo(4))}, true],
 			//[PregnancyStore.PREGNANCY_SPIDER, -1, true],
 			//[PregnancyStore.PREGNANCY_DRIDER_EGGS, -1, true],
-			[PregnancyStore.PREGNANCY_GOO_GIRL, kFLAGS.GOOGIRL_BIRTHS, true],
+			[PregnancyStore.PREGNANCY_GOO_GIRL, function():void{assertThat(kGAMECLASS.flags[kFLAGS.GOOGIRL_BIRTHS], equalTo(1))}, true],
 			//[PregnancyStore.PREGNANCY_BASILISK, -1, true],
-			//[PregnancyStore.PREGNANCY_COCKATRICE, -1, true],
-			[PregnancyStore.PREGNANCY_SATYR, kFLAGS.SATYR_KIDS, true],
+			//[PregnancyStore.PREGNANCY_COCKATRICE, function():void{assertThat(kGAMECLASS.player.hips.rating, equalTo(4))}, true],
+			[PregnancyStore.PREGNANCY_SATYR, function():void{assertThat(kGAMECLASS.flags[kFLAGS.SATYR_KIDS], equalTo(1))}, true],
 			//[PregnancyStore.PREGNANCY_FROG_GIRL, -1, true],
 			//[PregnancyStore.PREGNANCY_BUNNY, -1, true],
 			//[PregnancyStore.PREGNANCY_ANEMONE, -1, true],
-			//[PregnancyStore.PREGNANCY_IMP, -1, true],
-			[PregnancyStore.PREGNANCY_MARBLE, kFLAGS.MARBLE_KIDS, true],
-			[PregnancyStore.PREGNANCY_MINOTAUR, kFLAGS.MINOTAUR_SONS_PENDING, true],
-			[PregnancyStore.PREGNANCY_BENOIT, kFLAGS.BENOIT_EGGS, true],
+			[PregnancyStore.PREGNANCY_IMP, function():void{assertThat(kGAMECLASS.player.statusEffectv1(StatusEffects.BirthedImps), equalTo(1))}, true],
+			[PregnancyStore.PREGNANCY_MARBLE, function():void{assertThat(kGAMECLASS.flags[kFLAGS.MARBLE_KIDS], equalTo(1))}, true],
+			[PregnancyStore.PREGNANCY_MINOTAUR, function():void{assertThat(kGAMECLASS.flags[kFLAGS.MINOTAUR_SONS_PENDING], equalTo(1))}, true],
+			[PregnancyStore.PREGNANCY_BENOIT, function():void{assertThat(kGAMECLASS.flags[kFLAGS.BENOIT_EGGS], equalTo(1))}, true],
 			//[PregnancyStore.PREGNANCY_CENTAUR, -1, true],
 			//[PregnancyStore.PREGNANCY_HELL_HOUND, -1, true],
-			[PregnancyStore.PREGNANCY_MINERVA, kFLAGS.TIMES_BIRTHED_SHARPIES, false],
-			[PregnancyStore.PREGNANCY_BEHEMOTH, kFLAGS.BEHEMOTH_CHILDREN, false],
-			//[PregnancyStore.PREGNANCY_OVIELIXIR_EGGS, -1, true],
-			[PregnancyStore.PREGNANCY_AMILY, kFLAGS.PC_TIMES_BIRTHED_AMILYKIDS, true]
+			[PregnancyStore.PREGNANCY_MINERVA, function():void{assertThat(kGAMECLASS.flags[kFLAGS.TIMES_BIRTHED_SHARPIES], equalTo(1))}, false],
+			[PregnancyStore.PREGNANCY_BEHEMOTH, function():void{assertThat(kGAMECLASS.flags[kFLAGS.BEHEMOTH_CHILDREN], equalTo(1))}, false],
+			[PregnancyStore.PREGNANCY_OVIELIXIR_EGGS, function():void{assertThat(kGAMECLASS.player.hasStatusEffect(StatusEffects.LootEgg), equalTo(true))}, true],
+			[PregnancyStore.PREGNANCY_AMILY, function():void{assertThat(kGAMECLASS.flags[kFLAGS.PC_TIMES_BIRTHED_AMILYKIDS], equalTo(1))}, true]
 			//[PregnancyStore.PREGNANCY_MOUSE, -1, true],
 			];
 
-		public function PregnancyProgressionVagBirthTest(pregnancyType:int, childCounterFlagId:int, shouldDisplayText:Boolean):void {
+		public function PregnancyProgressionVagBirthTest(pregnancyType:int, testFunction:Function, shouldDisplayText:Boolean):void {
 			this.pregnancyType = pregnancyType;
-			this.childCounterFlagId = childCounterFlagId;
+			this.testFunction = testFunction;
 			this.shouldDisplayText = shouldDisplayText;
 		}
 		
@@ -95,7 +104,7 @@ package classes.Scenes
 			
 			cut.updatePregnancy();
 			
-			assertThat(kGAMECLASS.flags[childCounterFlagId], equalTo(1));
+			testFunction();
 		}
 		
 		[Test]
