@@ -64,7 +64,11 @@ package classes.Scenes
 			}
 			
 			amilyPregnancyFailsafe();
-			displayedUpdate = updateVaginalBirth(displayedUpdate);
+			
+			if (player.pregnancyIncubation === 1) {
+				displayedUpdate = updateVaginalBirth(displayedUpdate);
+			}
+			
 			displayedUpdate = updateAnalBirth(displayedUpdate);
 
 			return displayedUpdate;
@@ -1546,30 +1550,30 @@ package classes.Scenes
 		private function updateVaginalBirth(displayedUpdate:Boolean):Boolean 
 		{
 			//Give birth to either a faerie or a phouka
-			if (player.pregnancyIncubation === 1 && player.pregnancyType === PregnancyStore.PREGNANCY_FAERIE) {
+			if (player.pregnancyType === PregnancyStore.PREGNANCY_FAERIE) {
 					getGame().bog.phoukaScene.phoukaPregBirth();
 					displayedUpdate = true;
 					player.knockUpForce(); //Clear Pregnancy
 			}
 			//Give birf to dragons
-			if (player.pregnancyIncubation === 1 && player.pregnancyType === PregnancyStore.PREGNANCY_EMBER) {
+			if (player.pregnancyType === PregnancyStore.PREGNANCY_EMBER) {
 				getGame().emberScene.giveBirthToEmberKids();
 				displayedUpdate = true;
 				player.knockUpForce(); //Clear Pregnancy
 			}
 			
-			if (player.pregnancyType === PregnancyStore.PREGNANCY_URTA && player.pregnancyIncubation === 1) {
+			if (player.pregnancyType === PregnancyStore.PREGNANCY_URTA) {
 				displayedUpdate = true;
 				getGame().urtaPregs.PCGivesBirf();
 				player.knockUpForce(); //Clear Pregnancy
 			}
-			if (player.pregnancyType === PregnancyStore.PREGNANCY_SAND_WITCH && player.pregnancyIncubation === 1) {
+			if (player.pregnancyType === PregnancyStore.PREGNANCY_SAND_WITCH) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_SAND_WITCH);
 				displayedUpdate = true;
 				getGame().dungeons.desertcave.birthAWitch();
 				player.knockUpForce(); //Clear Pregnancy
 			}
-			if (player.pregnancyType === PregnancyStore.PREGNANCY_IZMA && player.pregnancyIncubation === 1) {
+			if (player.pregnancyType === PregnancyStore.PREGNANCY_IZMA) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_IZMA);
 				displayedUpdate = true;
 				//Located in izma.as!
@@ -1578,52 +1582,52 @@ package classes.Scenes
 			}
 			
 			//SPOIDAH BIRF
-			if (player.pregnancyType === PregnancyStore.PREGNANCY_SPIDER && player.pregnancyIncubation === 1) {
+			if (player.pregnancyType === PregnancyStore.PREGNANCY_SPIDER) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_SPIDER);
 				player.knockUpForce(); //Clear Pregnancy
 				displayedUpdate = true;
 				getGame().swamp.maleSpiderMorphScene.spiderPregVagBirth();
 			}
 			//DRIDER BIRF
-			if (player.pregnancyType === PregnancyStore.PREGNANCY_DRIDER_EGGS && player.pregnancyIncubation === 1) {
+			if (player.pregnancyType === PregnancyStore.PREGNANCY_DRIDER_EGGS) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_DRIDER_EGGS);
 				player.knockUpForce(); //Clear Pregnancy
 				displayedUpdate = true;
 				getGame().swamp.corruptedDriderScene.driderPregVagBirth();
 			}
-			if (player.pregnancyType === PregnancyStore.PREGNANCY_COTTON && player.pregnancyIncubation === 1) {
+			if (player.pregnancyType === PregnancyStore.PREGNANCY_COTTON) {
 				player.knockUpForce(); //Clear Pregnancy
 				displayedUpdate = true;
 				getGame().telAdre.cotton.birthingCottonsKids();
 			}
 			//GOO BIRF
-			if (player.pregnancyType === PregnancyStore.PREGNANCY_GOO_GIRL && player.pregnancyIncubation === 1) {
+			if (player.pregnancyType === PregnancyStore.PREGNANCY_GOO_GIRL) {
 				player.knockUpForce(); //Clear Pregnancy
 				displayedUpdate = true;
 				getGame().lake.gooGirlScene.gooPregVagBirth();
 			}
 			
-			if (player.pregnancyType === PregnancyStore.PREGNANCY_BASILISK && player.pregnancyIncubation === 1) {
+			if (player.pregnancyType === PregnancyStore.PREGNANCY_BASILISK) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_BASILISK);
 				player.knockUpForce(); //Clear Pregnancy
 				displayedUpdate = true;
 				getGame().highMountains.basiliskScene.basiliskBirth();
 			}
-			if (player.pregnancyType === PregnancyStore.PREGNANCY_COCKATRICE && player.pregnancyIncubation === 1) {
+			if (player.pregnancyType === PregnancyStore.PREGNANCY_COCKATRICE) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_COCKATRICE);
 				player.knockUpForce(); //Clear Pregnancy
 				displayedUpdate = true;
 				getGame().highMountains.cockatriceScene.cockatriceBirth();
 			}
 			//Satyr vag preg
-			if (player.pregnancyType === PregnancyStore.PREGNANCY_SATYR && player.pregnancyIncubation === 1) {
+			if (player.pregnancyType === PregnancyStore.PREGNANCY_SATYR) {
 				player.knockUpForce(); //Clear Pregnancy
 				displayedUpdate = true;
 				getGame().plains.satyrScene.satyrBirth(true);
 			}
 			
 			//Give birf if its time... to FROG EGGS
-			if (player.pregnancyIncubation === 1 && player.pregnancyType === PregnancyStore.PREGNANCY_FROG_GIRL) {
+			if (player.pregnancyType === PregnancyStore.PREGNANCY_FROG_GIRL) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_FROG_GIRL);
 				getGame().bog.frogGirlScene.layFrogEggs();
 				displayedUpdate = true;
@@ -1632,7 +1636,7 @@ package classes.Scenes
 			
 			//BASILISK BIRF
 			//Bunbun birfs
-			if (player.pregnancyType === PregnancyStore.PREGNANCY_BUNNY && player.pregnancyIncubation === 1) {
+			if (player.pregnancyType === PregnancyStore.PREGNANCY_BUNNY) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_BUNNY);
 				outputText("\n");
 				displayedUpdate = true;
@@ -1667,7 +1671,7 @@ package classes.Scenes
 			
 			//Anemone birfs
 			//Anemone Pregnancy
-			if (player.pregnancyType === PregnancyStore.PREGNANCY_ANEMONE && player.pregnancyIncubation === 1) {
+			if (player.pregnancyType === PregnancyStore.PREGNANCY_ANEMONE) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_ANEMONE);
 				outputText(images.showImage("birth-anemone"));
 				outputText("\n");
@@ -1751,7 +1755,7 @@ package classes.Scenes
 			}
 			
 			//Give birth if it's time (to an imp!)
-			if (player.pregnancyIncubation === 1 && player.pregnancyType === PregnancyStore.PREGNANCY_IMP) {
+			if (player.pregnancyType === PregnancyStore.PREGNANCY_IMP) {
 				outputText(images.showImage("birth-imp"));
 				outputText("\n");
 				//Add imp birth status - used to control frequency of night imp gangbag
@@ -1811,7 +1815,7 @@ package classes.Scenes
 			}
 			
 			//Give birth if it's time (to a cowgirl!)
-			if (player.pregnancyIncubation === 1 && player.pregnancyType === PregnancyStore.PREGNANCY_MARBLE) {
+			if (player.pregnancyType === PregnancyStore.PREGNANCY_MARBLE) {
 				outputText(images.showImage("birth-cowgirl"));
 				if (prison.prisonLetter.deliverChildWhileInPrison()) return displayedUpdate;
 				player.knockUpForce(); //Clear Pregnancy
@@ -1886,7 +1890,7 @@ package classes.Scenes
 				displayedUpdate = true;
 			}
 			//Give birth if it's time (to a minotaur!)
-			if (player.pregnancyIncubation === 1 && player.pregnancyType === PregnancyStore.PREGNANCY_MINOTAUR) {
+			if (player.pregnancyType === PregnancyStore.PREGNANCY_MINOTAUR) {
 				outputText(images.showImage("birth-minotaur"));
 				if (player.vaginas.length === 0) {
 					outputText("\nYou feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.\n");
@@ -1937,7 +1941,7 @@ package classes.Scenes
 			}
 			
 						//Centaur Baby!
-			if (player.pregnancyIncubation === 1 && (player.pregnancyType === PregnancyStore.PREGNANCY_CENTAUR || player.pregnancyType === PregnancyStore.PREGNANCY_KELT)) {
+			if ((player.pregnancyType === PregnancyStore.PREGNANCY_CENTAUR || player.pregnancyType === PregnancyStore.PREGNANCY_KELT)) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_CENTAUR);
 				outputText("\nYou blink, feeling a sudden ache of need radiating from your massive stomach. You can't even get off the ground, it is so heavy... you simply lie on your side, panting with desire, as the convulsions start. New life moves beneath your stomach, ready to be born, and it is time to do your part.\n\n");
 				if (player.vaginas.length === 0) {
@@ -1978,7 +1982,7 @@ package classes.Scenes
 				outputText("\n");
 			}
 			//Give birth if it's time (to a hellhound!)
-			if (player.pregnancyIncubation === 1 && player.pregnancyType === PregnancyStore.PREGNANCY_HELL_HOUND) {
+			if (player.pregnancyType === PregnancyStore.PREGNANCY_HELL_HOUND) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_HELL_HOUND);
 				outputText("\nYou are suddenly awoken by the heat inside your womb suddenly flaring up rather intensely.  It gives you a sudden charge of energy and you feel a strong need to stand up.  You can feel the two heads moving inside of you and you know that a hellhound will soon be born.  Guided by your instincts, you spread your legs and squat down, but wonder how exactly you are going to pass a creature with two heads?\n\n");
 				if (player.vaginas.length === 0) {
@@ -2016,7 +2020,7 @@ package classes.Scenes
 			}
 			
 			//Give birth to sirens.
-			if (player.pregnancyType === PregnancyStore.PREGNANCY_MINERVA && player.pregnancyIncubation === 1) {
+			if (player.pregnancyType === PregnancyStore.PREGNANCY_MINERVA) {
 				if (prison.prisonLetter.deliverChildWhileInPrison()) return displayedUpdate;
 				if (player.vaginas.length === 0) {
 					outputText("\nYou feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.\n");
@@ -2032,7 +2036,7 @@ package classes.Scenes
 			}
 			
 			//Give birth to behemoth.
-			if (player.pregnancyType === PregnancyStore.PREGNANCY_BEHEMOTH && player.pregnancyIncubation === 1) {
+			if (player.pregnancyType === PregnancyStore.PREGNANCY_BEHEMOTH) {
 				if (prison.prisonLetter.deliverChildWhileInPrison()) return displayedUpdate;
 				if (player.vaginas.length === 0) {
 					outputText("\nYou feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.\n");
@@ -2129,7 +2133,7 @@ package classes.Scenes
 			}
 			
 			//Give birth if it's time (to an AMILY BITCH mouse!)
-			if (player.pregnancyIncubation === 1 && player.pregnancyType === PregnancyStore.PREGNANCY_AMILY) {
+			if (player.pregnancyType === PregnancyStore.PREGNANCY_AMILY) {
 				player.boostLactation(.01);
 				outputText("\n");
 				if (player.vaginas.length === 0) {
@@ -2148,7 +2152,7 @@ package classes.Scenes
 			}
 			
 			//Give birth if it's time (to a mouse!)
-			if (player.pregnancyIncubation === 1 && (player.pregnancyType === PregnancyStore.PREGNANCY_MOUSE || player.pregnancyType === PregnancyStore.PREGNANCY_JOJO)) {
+			if ((player.pregnancyType === PregnancyStore.PREGNANCY_MOUSE || player.pregnancyType === PregnancyStore.PREGNANCY_JOJO)) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_MOUSE);
 				player.boostLactation(.01);
 				outputText("\nYou wake up suddenly to strong pains and pressures in your gut. As your eyes shoot wide open, you look down to see your belly absurdly full and distended. You can feel movement underneath the skin, and watch as it is pushed out in many places, roiling and squirming in disturbing ways. The feelings you get from inside are just as disconcerting. You count not one, but many little things moving around inside you. There are so many, you can't keep track of them.\n\n");
