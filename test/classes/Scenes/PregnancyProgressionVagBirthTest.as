@@ -137,6 +137,14 @@ package classes.Scenes
 			
 			assertThat(player.hasVagina() , equalTo(autoCreatesVaginaOnBirth));
 		}
+		
+		[Test]
+		public function chainDisplayUpdate():void {
+			player.goIntoHeat(false);
+			player.knockUpForce(pregnancyType, 1);
+			
+			assertThat(cut.updatePregnancy(), equalTo(true));
+		}
 	}
 }
 
