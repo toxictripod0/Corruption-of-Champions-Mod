@@ -1577,31 +1577,25 @@ package classes.Scenes
 			//Give birth to either a faerie or a phouka
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_FAERIE) {
 					getGame().bog.phoukaScene.phoukaPregBirth();
-					displayedUpdate = true;
 					player.knockUpForce(); //Clear Pregnancy
 			}
 			//Give birf to dragons
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_EMBER) {
 				getGame().emberScene.giveBirthToEmberKids();
-				displayedUpdate = true;
 				player.knockUpForce(); //Clear Pregnancy
 			}
 			
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_URTA) {
-				displayedUpdate = true;
 				getGame().urtaPregs.PCGivesBirf();
 				player.knockUpForce(); //Clear Pregnancy
 			}
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_SAND_WITCH) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_SAND_WITCH);
-				displayedUpdate = true;
 				getGame().dungeons.desertcave.birthAWitch();
 				player.knockUpForce(); //Clear Pregnancy
 			}
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_IZMA) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_IZMA);
-				displayedUpdate = true;
-				//Located in izma.as!
 				getGame().izmaScene.pcPopsOutASharkTot();
 				player.knockUpForce(); //Clear Pregnancy
 			}
@@ -1610,44 +1604,37 @@ package classes.Scenes
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_SPIDER) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_SPIDER);
 				player.knockUpForce(); //Clear Pregnancy
-				displayedUpdate = true;
 				getGame().swamp.maleSpiderMorphScene.spiderPregVagBirth();
 			}
 			//DRIDER BIRF
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_DRIDER_EGGS) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_DRIDER_EGGS);
 				player.knockUpForce(); //Clear Pregnancy
-				displayedUpdate = true;
 				getGame().swamp.corruptedDriderScene.driderPregVagBirth();
 			}
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_COTTON) {
 				player.knockUpForce(); //Clear Pregnancy
-				displayedUpdate = true;
 				getGame().telAdre.cotton.birthingCottonsKids();
 			}
 			//GOO BIRF
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_GOO_GIRL) {
 				player.knockUpForce(); //Clear Pregnancy
-				displayedUpdate = true;
 				getGame().lake.gooGirlScene.gooPregVagBirth();
 			}
 			
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_BASILISK) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_BASILISK);
 				player.knockUpForce(); //Clear Pregnancy
-				displayedUpdate = true;
 				getGame().highMountains.basiliskScene.basiliskBirth();
 			}
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_COCKATRICE) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_COCKATRICE);
 				player.knockUpForce(); //Clear Pregnancy
-				displayedUpdate = true;
 				getGame().highMountains.cockatriceScene.cockatriceBirth();
 			}
 			//Satyr vag preg
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_SATYR) {
 				player.knockUpForce(); //Clear Pregnancy
-				displayedUpdate = true;
 				getGame().plains.satyrScene.satyrBirth(true);
 			}
 			
@@ -1655,7 +1642,6 @@ package classes.Scenes
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_FROG_GIRL) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_FROG_GIRL);
 				getGame().bog.frogGirlScene.layFrogEggs();
-				displayedUpdate = true;
 				player.knockUpForce(); //Clear Pregnancy
 			}
 			
@@ -1664,7 +1650,6 @@ package classes.Scenes
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_BUNNY) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_BUNNY);
 				outputText("\n");
-				displayedUpdate = true;
 				outputText(images.showImage("birth-bunny"));
 				if (player.vaginas.length === 0) {
 					outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  You look down and behold a vagina.  ");
@@ -1700,7 +1685,6 @@ package classes.Scenes
 				detectVaginalBirth(PregnancyStore.PREGNANCY_ANEMONE);
 				outputText(images.showImage("birth-anemone"));
 				outputText("\n");
-				displayedUpdate = true;
 				if (player.vaginas.length === 0) {
 					outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  You look down and behold a vagina.  ");
 					player.createVagina();
@@ -1836,7 +1820,6 @@ package classes.Scenes
 					outputText("\n\nAfter the birth your " + player.armorName + " fits a bit more snugly about your " + player.hipDescript() + ".");
 				}
 				outputText("\n");
-				displayedUpdate = true;
 			}
 			
 			//Give birth if it's time (to a cowgirl!)
@@ -1912,7 +1895,6 @@ package classes.Scenes
 					}
 				}
 				outputText("\n");
-				displayedUpdate = true;
 			}
 			//Give birth if it's time (to a minotaur!)
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_MINOTAUR) {
@@ -1934,7 +1916,6 @@ package classes.Scenes
 				if (player.vaginas[0].vaginalWetness === VaginaClass.WETNESS_DRY) player.vaginas[0].vaginalWetness++;
 				player.orgasm('Vaginal');
 				dynStats("str", -1,"tou", -2, "spe", 3, "lib", 1, "sen", .5);
-				displayedUpdate = true;
 				//Hip and butt increase
 				if (player.butt.rating < 12 && rand(2) === 0) {
 					player.butt.rating++;
@@ -1978,7 +1959,6 @@ package classes.Scenes
 				if (player.vaginas[0].vaginalWetness === VaginaClass.WETNESS_DRY) player.vaginas[0].vaginalWetness++;
 				player.orgasm('Vaginal');
 				dynStats("str", -1,"tou", -4, "spe", 2, "lib", 1, "sen", .5);
-				displayedUpdate = true;
 				//Butt increase
 				if (player.butt.rating < 14 && rand(2) === 0) {
 					if (player.butt.rating < 10) {
@@ -2016,7 +1996,6 @@ package classes.Scenes
 				if (player.vaginas[0].vaginalWetness === VaginaClass.WETNESS_DRY) player.vaginas[0].vaginalWetness++;
 				player.orgasm('Vaginal');
 				dynStats("str", -1,"tou", -1, "spe", 2, "lib", 1, "sen", .5);
-				displayedUpdate = true;
 				//Butt increase
 				if (player.butt.rating < 14 && rand(2) === 0) {
 					if (player.butt.rating < 10) {
@@ -2046,6 +2025,7 @@ package classes.Scenes
 				}
 				player.knockUpForce(); //Clear Pregnancy
 				outputText("\n");
+				return displayedUpdate;
 			}
 			
 			//Give birth to behemoth.
@@ -2062,6 +2042,7 @@ package classes.Scenes
 				}
 				player.knockUpForce(); //Clear Pregnancy
 				outputText("\n");
+				return displayedUpdate;
 			}
 			
 			//Egg status messages
@@ -2070,7 +2051,6 @@ package classes.Scenes
 					player.removeStatusEffect(StatusEffects.Eggs);
 					outputText("\n<b>Your pregnant belly suddenly begins shrinking, until it disappears.</b>\n");
 					player.knockUpForce(); //Clear Pregnancy
-					displayedUpdate = true;
 				}			
 				//Birth scenes
 				if (player.pregnancyIncubation === 1) {
@@ -2140,7 +2120,6 @@ package classes.Scenes
 					else outputText("but your body's intuition reminds you they shouldn't be fertile, and your belly rumbles with barely contained hunger.\n</b>");
 					player.cuntChange(20, true);
 					player.createStatusEffect(StatusEffects.LootEgg,0,0,0,0);
-					displayedUpdate = true;
 					player.knockUpForce(); //Clear Pregnancy
 				}
 			}
@@ -2159,7 +2138,6 @@ package classes.Scenes
 				if (player.vaginas[0].vaginalWetness === VaginaClass.WETNESS_DRY) player.vaginas[0].vaginalWetness++;
 				player.orgasm('Vaginal');
 				dynStats("str", -1,"tou", -2, "spe", 3, "lib", 1, "sen", .5);
-				displayedUpdate = true;
 				outputText("\n");
 				player.knockUpForce(); //Clear Pregnancy
 			}
@@ -2195,7 +2173,6 @@ package classes.Scenes
 				if (player.vaginas[0].vaginalWetness === VaginaClass.WETNESS_DRY) player.vaginas[0].vaginalWetness++;
 				player.orgasm('Vaginal');
 				dynStats("str", -1,"tou", -2, "spe", 3, "lib", 1, "sen", .5);
-				displayedUpdate = true;
 				//Butt increase
 				if (player.butt.rating < 14 && rand(2) === 0) {
 					if (player.butt.rating < 10) {
@@ -2211,7 +2188,7 @@ package classes.Scenes
 				outputText("\n");
 			}
 			
-			return displayedUpdate;
+			return true;
 		}
 
 		private function updateAnalBirth(displayedUpdate:Boolean):Boolean 
