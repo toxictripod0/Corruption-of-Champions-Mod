@@ -151,6 +151,31 @@ package classes.Scenes
 			
 			assertThat(kGAMECLASS.flags[kFLAGS.PC_TIMES_BIRTHED_AMILYKIDS], equalTo(1));
 		}
+		
+		[Test]
+		public function benoitTimeBasedResetIncubation():void {
+			player.knockUpForce(PregnancyStore.PREGNANCY_BENOIT, 1);
+			
+			cut.updatePregnancy();
+			
+			assertThat(kGAMECLASS.player.pregnancyIncubation, equalTo(3));
+		}
+		
+		[Test]
+		public function benoitTimeBasedResetIncubationTwo():void {
+			player.knockUpForce(PregnancyStore.PREGNANCY_BENOIT, 2);
+			
+			cut.updatePregnancy();
+			
+			assertThat(kGAMECLASS.player.pregnancyIncubation, equalTo(3));
+		}
+		
+		[Test]
+		public function benoitTimeBasedNoDisplayOutput():void {
+			player.knockUpForce(PregnancyStore.PREGNANCY_BENOIT, 1);
+			
+			assertThat(cut.updatePregnancy(), equalTo(false));
+		}
 	}
 }
 
