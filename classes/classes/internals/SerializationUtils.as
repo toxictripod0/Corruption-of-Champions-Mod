@@ -170,7 +170,7 @@ package classes.internals
 			LOGGER.debug("Deserializing  {0}...", serialized);
 
 			objectDefinedCheck(relativeRootObject, "Object passed for deserialization must be defined. Does the loaded property exist?")
-			objectDefinedCheck(relativeRootObject, "Instance of class to load is not defined. Did you call the class constructor?");
+			objectDefinedCheck(serialized, "Instance of class to load is not defined. Did you call the class constructor?");
 			
 			SerializationUtils.serializedVersionCheckThrowError(relativeRootObject, serialized.currentSerializationVerison());
 			var serializedObjectVersion:int = SerializationUtils.serializationVersion(relativeRootObject);
