@@ -239,10 +239,13 @@ package classes.internals
 		}
 		
 		[Test(expected="ArgumentError")]
-		public function deserializeUndefined():void {
-			serializedObject = undefined;
-			
-			SerializationUtils.deserialize(serializedObject, dummy);
+		public function deserializeWithInvalidRootObject():void {
+			SerializationUtils.deserialize(undefined, dummy);
+		}
+				
+		[Test(expected="ArgumentError")]
+		public function deserializeWithInvalidClassInstance():void {
+			SerializationUtils.deserialize(serializedObject, undefined);
 		}
 
 		[Test(expected="RangeError")]
