@@ -64,7 +64,7 @@ package classes.Scenes
 			}
 			
 			amilyPregnancyFailsafe();
-			
+			displayedUpdate = benoitBirth(displayedUpdate);
 			if (player.pregnancyIncubation === 1) {
 				displayedUpdate = updateVaginalBirth(displayedUpdate);
 			}
@@ -92,6 +92,31 @@ package classes.Scenes
 			}
 			
 			return false;
+		}
+		
+		/**
+		 * Benoit birth or incubation reset code.
+		 * Extracted because it does not behave like other birth code. 
+		 * @param	displayUpdate current display update variable state 
+		 * @return true if something in this function updates the displayed text,
+		 * 				otherwise returns the state that was passed as parameter
+		 */
+		private function benoitBirth(displayUpdate:Boolean):Boolean 
+		{
+			if (player.pregnancyType === PregnancyStore.PREGNANCY_BENOIT && player.pregnancyIncubation <= 2) {
+				if (getGame().time.hours !== 5 && getGame().time.hours !== 6) {
+					player.knockUpForce(player.pregnancyType, 3); //Make sure eggs are only birthed early in the morning
+				}
+				else {
+					player.knockUpForce(); //Clear Pregnancy
+					giveBirth();
+					getGame().bazaar.benoit.popOutBenoitEggs();
+					
+					return true;
+				}
+			}
+			
+			return displayUpdate;
 		}
 		
 		private function updateVaginalPregnancy(displayedUpdate:Boolean):Boolean
@@ -1926,18 +1951,6 @@ package classes.Scenes
 				//328 growup countdown
 				flags[kFLAGS.MINOTAUR_SONS_PENDING]++;
 				if (flags[kFLAGS.MINOTAUR_SONS_GROWUP_COUNTER] === 0) flags[kFLAGS.MINOTAUR_SONS_GROWUP_COUNTER] = 150;		
-			}
-			
-			if (player.pregnancyType === PregnancyStore.PREGNANCY_BENOIT && player.pregnancyIncubation <= 2) {
-				if (getGame().time.hours !== 5 && getGame().time.hours !== 6) {
-					player.knockUpForce(player.pregnancyType, 3); //Make sure eggs are only birthed early in the morning
-				}
-				else {
-					player.knockUpForce(); //Clear Pregnancy
-					displayedUpdate = true;
-					giveBirth();
-					getGame().bazaar.benoit.popOutBenoitEggs();
-				}
 			}
 			
 						//Centaur Baby!
