@@ -6,7 +6,24 @@ package classes.Scenes
 	
 	public class PregnancyProgression extends BaseContent
 	{
-		public function PregnancyProgression() {}
+		/**
+		 * This sensing variable is used by tests to detect if
+		 * the vaginal birth code has been called.
+		 */
+		public var senseVaginalBirth:Vector.<int>;
+		
+		public function PregnancyProgression() {
+			this.senseVaginalBirth = new Vector.<int>();
+		}
+		
+		/**
+		 * Record a call to a vaginal birth function.
+		 * This method is used for testing.
+		 * @param	pregnancyType to record
+		 */
+		private function detectVaginalBirth(pregnancyType:int):void {
+			senseVaginalBirth.push(pregnancyType);
+		}
 
 		private function giveBirth():void
 		{
@@ -1547,11 +1564,13 @@ package classes.Scenes
 				player.knockUpForce(); //Clear Pregnancy
 			}
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_SAND_WITCH && player.pregnancyIncubation === 1) {
+				detectVaginalBirth(PregnancyStore.PREGNANCY_SAND_WITCH);
 				displayedUpdate = true;
 				getGame().dungeons.desertcave.birthAWitch();
 				player.knockUpForce(); //Clear Pregnancy
 			}
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_IZMA && player.pregnancyIncubation === 1) {
+				detectVaginalBirth(PregnancyStore.PREGNANCY_IZMA);
 				displayedUpdate = true;
 				//Located in izma.as!
 				getGame().izmaScene.pcPopsOutASharkTot();
@@ -1560,12 +1579,14 @@ package classes.Scenes
 			
 			//SPOIDAH BIRF
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_SPIDER && player.pregnancyIncubation === 1) {
+				detectVaginalBirth(PregnancyStore.PREGNANCY_SPIDER);
 				player.knockUpForce(); //Clear Pregnancy
 				displayedUpdate = true;
 				getGame().swamp.maleSpiderMorphScene.spiderPregVagBirth();
 			}
 			//DRIDER BIRF
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_DRIDER_EGGS && player.pregnancyIncubation === 1) {
+				detectVaginalBirth(PregnancyStore.PREGNANCY_DRIDER_EGGS);
 				player.knockUpForce(); //Clear Pregnancy
 				displayedUpdate = true;
 				getGame().swamp.corruptedDriderScene.driderPregVagBirth();
@@ -1583,11 +1604,13 @@ package classes.Scenes
 			}
 			
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_BASILISK && player.pregnancyIncubation === 1) {
+				detectVaginalBirth(PregnancyStore.PREGNANCY_BASILISK);
 				player.knockUpForce(); //Clear Pregnancy
 				displayedUpdate = true;
 				getGame().highMountains.basiliskScene.basiliskBirth();
 			}
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_COCKATRICE && player.pregnancyIncubation === 1) {
+				detectVaginalBirth(PregnancyStore.PREGNANCY_COCKATRICE);
 				player.knockUpForce(); //Clear Pregnancy
 				displayedUpdate = true;
 				getGame().highMountains.cockatriceScene.cockatriceBirth();
@@ -1601,6 +1624,7 @@ package classes.Scenes
 			
 			//Give birf if its time... to FROG EGGS
 			if (player.pregnancyIncubation === 1 && player.pregnancyType === PregnancyStore.PREGNANCY_FROG_GIRL) {
+				detectVaginalBirth(PregnancyStore.PREGNANCY_FROG_GIRL);
 				getGame().bog.frogGirlScene.layFrogEggs();
 				displayedUpdate = true;
 				player.knockUpForce(); //Clear Pregnancy
@@ -1609,6 +1633,7 @@ package classes.Scenes
 			//BASILISK BIRF
 			//Bunbun birfs
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_BUNNY && player.pregnancyIncubation === 1) {
+				detectVaginalBirth(PregnancyStore.PREGNANCY_BUNNY);
 				outputText("\n");
 				displayedUpdate = true;
 				outputText(images.showImage("birth-bunny"));
@@ -1643,6 +1668,7 @@ package classes.Scenes
 			//Anemone birfs
 			//Anemone Pregnancy
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_ANEMONE && player.pregnancyIncubation === 1) {
+				detectVaginalBirth(PregnancyStore.PREGNANCY_ANEMONE);
 				outputText(images.showImage("birth-anemone"));
 				outputText("\n");
 				displayedUpdate = true;
@@ -1912,6 +1938,7 @@ package classes.Scenes
 			
 						//Centaur Baby!
 			if (player.pregnancyIncubation === 1 && (player.pregnancyType === PregnancyStore.PREGNANCY_CENTAUR || player.pregnancyType === PregnancyStore.PREGNANCY_KELT)) {
+				detectVaginalBirth(PregnancyStore.PREGNANCY_CENTAUR);
 				outputText("\nYou blink, feeling a sudden ache of need radiating from your massive stomach. You can't even get off the ground, it is so heavy... you simply lie on your side, panting with desire, as the convulsions start. New life moves beneath your stomach, ready to be born, and it is time to do your part.\n\n");
 				if (player.vaginas.length === 0) {
 					outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.  ");
@@ -1952,6 +1979,7 @@ package classes.Scenes
 			}
 			//Give birth if it's time (to a hellhound!)
 			if (player.pregnancyIncubation === 1 && player.pregnancyType === PregnancyStore.PREGNANCY_HELL_HOUND) {
+				detectVaginalBirth(PregnancyStore.PREGNANCY_HELL_HOUND);
 				outputText("\nYou are suddenly awoken by the heat inside your womb suddenly flaring up rather intensely.  It gives you a sudden charge of energy and you feel a strong need to stand up.  You can feel the two heads moving inside of you and you know that a hellhound will soon be born.  Guided by your instincts, you spread your legs and squat down, but wonder how exactly you are going to pass a creature with two heads?\n\n");
 				if (player.vaginas.length === 0) {
 					outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.\n\n");
@@ -2121,6 +2149,7 @@ package classes.Scenes
 			
 			//Give birth if it's time (to a mouse!)
 			if (player.pregnancyIncubation === 1 && (player.pregnancyType === PregnancyStore.PREGNANCY_MOUSE || player.pregnancyType === PregnancyStore.PREGNANCY_JOJO)) {
+				detectVaginalBirth(PregnancyStore.PREGNANCY_MOUSE);
 				player.boostLactation(.01);
 				outputText("\nYou wake up suddenly to strong pains and pressures in your gut. As your eyes shoot wide open, you look down to see your belly absurdly full and distended. You can feel movement underneath the skin, and watch as it is pushed out in many places, roiling and squirming in disturbing ways. The feelings you get from inside are just as disconcerting. You count not one, but many little things moving around inside you. There are so many, you can't keep track of them.\n\n");
 				if (player.vaginas.length === 0) {
