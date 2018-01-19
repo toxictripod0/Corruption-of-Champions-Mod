@@ -92,7 +92,8 @@ package classes.Scenes
 			[PregnancyStore.PREGNANCY_BEHEMOTH, function():void{assertThat(kGAMECLASS.flags[kFLAGS.BEHEMOTH_CHILDREN], equalTo(1))}, false, true],
 			[PregnancyStore.PREGNANCY_OVIELIXIR_EGGS, function():void{assertThat(kGAMECLASS.player.hasStatusEffect(StatusEffects.LootEgg), equalTo(true))}, true, false],
 			[PregnancyStore.PREGNANCY_AMILY, function():void{assertThat(kGAMECLASS.flags[kFLAGS.PC_TIMES_BIRTHED_AMILYKIDS], equalTo(1))}, true, true],
-			[PregnancyStore.PREGNANCY_MOUSE, function():void{assertThat(cut.senseVaginalBirth, hasItem(PregnancyStore.PREGNANCY_MOUSE))}, true, true]
+			[PregnancyStore.PREGNANCY_MOUSE, function():void{assertThat(cut.senseVaginalBirth, hasItem(PregnancyStore.PREGNANCY_MOUSE))}, true, true],
+			[PregnancyStore.PREGNANCY_JOJO, function():void{assertThat(cut.senseVaginalBirth, hasItem(PregnancyStore.PREGNANCY_MOUSE))}, true, true]
 			];
 
 		public function PregnancyProgressionVagBirthTest(pregnancyType:int, testFunction:Function, shouldDisplayText:Boolean, autoCreatesVaginaOnBirth:Boolean):void {
