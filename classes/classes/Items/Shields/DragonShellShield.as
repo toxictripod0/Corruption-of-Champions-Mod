@@ -16,6 +16,7 @@ package classes.Items.Shields
 			var ename:String = upgraded ? "runed dragon-shell shield" : "dragon-shell shield";
 			var lname:String = upgraded ? "a dragon-shell shield with rune markings" : "a dragon-shell shield";
 			var tier:int = upgraded ? 1 : 0;
+			this.weightCategory = Shield.WEIGHT_MEDIUM;
 			super(id, sname, ename, lname, 14, 1500, "", Shield.PERK_ABSORPTION);
 		}
 		
