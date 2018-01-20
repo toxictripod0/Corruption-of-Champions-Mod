@@ -3097,6 +3097,11 @@ package classes
 			return false;
 		}
 
+		public function hasOvipositor():Boolean
+		{
+			return hasPerk(PerkLib.SpiderOvipositor) || hasPerk(PerkLib.BeeOvipositor);
+		}
+
 		public function canOviposit():Boolean
 		{
 			if (canOvipositSpider() || canOvipositBee())

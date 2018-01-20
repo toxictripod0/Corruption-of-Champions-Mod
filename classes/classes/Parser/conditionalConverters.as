@@ -81,6 +81,7 @@
 				"hasnipplecunts"	: function():* {return  kGAMECLASS.player.hasFuckableNipples();},
 				"totalnipples"		: function():* {return  kGAMECLASS.player.totalNipples();},
 				"canfly"			: function():* {return  kGAMECLASS.player.canFly();},
+				"hasovipositor"		: function():* {return  kGAMECLASS.player.hasOvipositor();},
 				"islactating"		: function():* {return  (kGAMECLASS.player.lactationQ() > 0);},
 				"isbimbo"			: function():* {return  kGAMECLASS.player.isBimbo();},
 				"true"				: function():* {return  true;},

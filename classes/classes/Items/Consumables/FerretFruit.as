@@ -305,38 +305,61 @@ package classes.Items.Consumables
 			//Tail TFs!
 			if (player.tail.type !== Tail.FERRET && player.ears.type === Ears.FERRET && rand(3) === 0 && changes < changeLimit)
 			{
-				//If ears are ferret, no tail:
-				if (player.tail.type === Tail.NONE)
-				{
-					outputText("\n\nYou slump to the ground as you feel your spine lengthening and twisting, sprouting fur as it finishes growing.  Luckily the new growth does not seem to have ruined your [armor].  <b>You now have a ferret tail!</b>");
+				switch (player.tail.type) {
+					case Tail.NONE:
+						outputText("\n\nFeeling an uncomfortable sensation on your butt, you stretch yourself, attributing it to having sat on a"
+						          +" rough surface. An annoying feeling runs troughs your body, forcing you to sit down. When it migrates to your"
+						          +" back, your attention goes to a mass of fluff that has erupted from your backside. Before you can check it"
+						          +" properly, it seems to move on its own, following the odd feeling that now pulsates through your spine,"
+						          +" and once its twisting sensations have stopped, the appendage itself has become a long, fluffy tube."
+						          +" [if (hasArmor)Luckily, the transformative outburst doesn’t seem to have damaged your [armor].]");
+						outputText("\n\nShortly after, the lingering effects of the fruit return, the changes now focused on your tail proper,"
+						          +" which shakes wildly while it elongates and becomes more bushy. Soon it has become almost as long as you."
+						          +" A very thick mass of soft, fluffy fur covers it in a matter of seconds. It seems that you unconsciously make it"
+						          +" move excitedly or nervously when you feel the same, not unlike a ferret would do.");
+						break;
+
+					case Tail.BEE_ABDOMEN:
+					case Tail.SPIDER_ABDOMEN:
+						outputText("\n\nYour rounded abdomen feels oddly hot at the touch. In a matter of second, the hat withing propagates to the"
+						          +" rest of your body, and you ponder for a bit if you haven’t caught a fever. Weakened from a sudden, you have to"
+						          +" lean your overheated body against a nearby rock. But, as soon as it came, the heat goes away.");
+						outputText("\n\nIt didn't went away alone, it seems, because when you glimpse at your backside you notice that where once"
+						          +" there was a large, insectile abdomen[if (hasOvipositor) and an ovipositor], there only is a normal, human set of"
+						          +" normal-looking buttcheeks, covered in [skinfurScales].");
+						outputText("\n\nThen, a second later, an annoying feeling runs troughs your body, forcing you to sit down. When it migrates"
+						          +" to your back, your attention goes to a mass of fluff that has erupted from your backside. Before you can check"
+						          +" it properly, it seems to move on its own, following the odd feeling that now pulsates through your spine,"
+						          +" and once its twisting sensations have stopped, the appendage itself has become a long, fluffy tube.");
+						outputText("\n\nShortly after, the lingering effects of the fruit return, the changes now focused on your tail proper,"
+						          +" which shakes wildly while it elongates and becomes more bushy. Soon it has become almost as long as you."
+						          +" A very thick mass of soft, fluffy fur covers it in a matter of seconds. It seems that you unconsciously make it"
+						          +" move excitedly or nervously when you feel the same, not unlike a ferret would do.");
+						break;
+
+					default:
+						if (player.tail.type === Tail.FOX && player.tail.venom > 1) {// multi-tail
+							outputText("\n\nYour tails seem to move on their own, tangling together in a single mass. Before you can ever feel it"
+							          +" happening, you realize that they’re merging! An odd feeling, between a mild nausea and plain dizziness,"
+							          +" rushes through your body, and once that it fades, you realize that you now have a single tail.");
+							outputText("\n\nThe process doesn’t stop here though, as the lingering effects of the fruit return, the changes"
+							          +" now focused on your tail proper, which shakes wildly while it elongates and becomes more bushy."
+							          +" Soon it has become almost as long as you. A very thick mass of soft, fluffy fur covers it in a matter of"
+							          +" seconds. It seems that you unconsciously make it move excitedly or nervously when you feel the same,"
+							          +" not unlike a ferret would do.");
+							break;
+						}
+
+						// Other tails
+						outputText("\n\nThe lingering effects of the fruit return, the changes now focused on your tail proper, which shakes wildly"
+						          +" while it elongates and becomes more bushy. Soon it has become almost as long as you. A very thick mass of soft,"
+						          +" fluffy fur covers it in a matter of seconds. It seems that you unconsciously make it move excitedly or nervously"
+						          +" when you feel the same, not unlike a ferret would do.");
 				}
-				//Placeholder for any future TFs that will need to be made compatible with this one
-				//centaur, has ferret ears:
-				else if (player.tail.type === Tail.HORSE && player.isTaur()) outputText("\n\nYou shiver as the wind gets to your tail, all of its shiny bristles having fallen out.  Your tail then begins to lengthen, warming back up as it sprouts a new, shaggier coat of fur.  This new, mismatched tail looks a bit odd on your horse lower body.  <b>You now have a ferret tail!</b>");
-				//If tail is harpy, has ferret ears:
-				else if (player.tail.type === Tail.HARPY) outputText("\n\nYou feel a soft tingle as your tail feathers fall out one by one.  The little stump that once held the feathers down begins to twist and lengthen before sprouting soft, fluffy fur.  <b>You now have a ferret tail!</b>");
-				//If tail is bunny, has ferret ears:
-				else if (player.tail.type === Tail.RABBIT) outputText("\n\nYou feel a pressure at the base of your tiny, poofy bunny tail as it begins to lengthen, gaining at least another foot in length.  <b>You now have a ferret tail!</b>");
-				//If tail is reptilian/draconic, has ferret ears:
-				else if (player.tail.type === Tail.DRACONIC || player.tail.type === Tail.LIZARD) outputText("\n\nYou reach a hand behind yourself to rub at your backside as your tail begins to twist and warp, becoming much thinner than before.  It then sprouts a thick coat of fur.  <b>You now have a ferret tail!</b>");
-				//If tail is cow, has ferret ears:
-				else if (player.tail.type === Tail.COW) outputText("\n\nYour tail begins to itch slightly as the poof at the end of your tail begins to spread across its entire surface, making all of its fur much more dense than it was before. It also loses a tiny bit of its former length. <b>You now have a ferret tail!</b>");
-				//If tail is cat, has ferret ears:
-				else if (player.tail.type === Tail.CAT) outputText("\n\nYour tail begins to itch as its fur becomes much denser than it was before.  It also loses a tiny bit of its former length.  <b>You now have a ferret tail!</b>");
-				//If tail is dog, has ferret ears:
-				else if (player.tail.type === Tail.DOG) outputText("\n\nSomething about your tail feels... different.  You reach behind yourself, feeling it.  It feels a bit floppier than it was before, and the fur seems to have become a little more dense.  <b>You now have a ferret tail!</b>");
-				//If tail is kangaroo, has ferret ears:
-				else if (player.tail.type === Tail.KANGAROO) outputText("\n\nYour tail becomes uncomfortably tight as the entirety of its length begins to lose a lot of its former thickness.  The general shape remains tapered, but its fur has become much more dense and shaggy.  <b>You now have a ferret tail!</b>");
-				//If tail is fox, has ferret ears:
-				else if (player.tail.type === Tail.FOX) outputText("\n\nYour tail begins to itch as its fur loses a lot of its former density.  It also appears to have lost a bit of length.  <b>You now have a ferret tail!</b>");
-				//If tail is raccoon, has ferret ears:
-				else if (player.tail.type === Tail.RACCOON) outputText("\n\nYour tail begins to itch as its fur loses a lot of its former density, losing its trademark ring pattern as well.  It also appears to have lost a bit of length.  <b>You now have a ferret tail!</b>");
-				//If tail is horse, has ferret ears:
-				else if (player.tail.type === Tail.HORSE) outputText("\n\nYou shiver as the wind gets to your tail, all of its shiny bristles having fallen out.  Your tail then begins to lengthen, warming back up as it sprouts a new, shaggier coat of fur.  <b>You now have a ferret tail!</b>");
-				//If tail is mouse, has ferret ears:
-				else if (player.tail.type === Tail.MOUSE) outputText("\n\nYour tail begins to itch as its bald surface begins to sprout a thick layer of fur.  It also appears to have lost a bit of its former length.  <b>You now have a ferret tail!</b>");
-				else outputText("\n\nYour tail begins to itch a moment before it starts writhing, your back muscles spasming as it changes shape. Before you know it, <b>your tail has reformed into a narrow, ferret's tail.</b>");
-				player.tail.type = Tail.FERRET;
+				outputText("\n\nWhen the effects finally subside, you decide to test the tail, making it coil around your body,"
+				          +" realizing soon that you can control its movements with ease, and that its fur feels wonderful at the touch."
+				          +" Anyways, <b>you have now a long, bushy, ferret tail!</b>");
+				player.tail.setAllProps({type: Tail.FERRET});
 				changes++;
 			}
 			//If legs are not ferret, has ferret ears and tail
