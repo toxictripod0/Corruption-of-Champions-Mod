@@ -12,6 +12,7 @@ import classes.Scenes.API.FnHelpers;
 	import classes.Scenes.API.IExplorable;
 	import classes.Scenes.Areas.Forest.*;
 	
+	
 	use namespace kGAMECLASS;
 
 	public class Forest extends BaseContent implements IExplorable
@@ -25,6 +26,7 @@ import classes.Scenes.API.FnHelpers;
 		public var tamaniScene:TamaniScene = new TamaniScene();
 		public var tentacleBeastScene:TentacleBeastScene = new TentacleBeastScene();
 		public var erlkingScene:ErlKingScene = new ErlKingScene();
+		public var dryadScene:DryadScene = new DryadScene();
 		// public var dullahanScene:DullahanScene = new DullahanScene(); // [INTERMOD:8chan]
 
 		public function Forest() { }
