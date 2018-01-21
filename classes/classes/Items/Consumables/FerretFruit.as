@@ -282,25 +282,131 @@ package classes.Items.Consumables
 				player.face.type = Face.HUMAN;
 				changes++;
 			}
+			//Skin
+			function setFurrySkin():void
+			{
+				player.skin.type = Skin.FUR;
+				player.skin.adj = "";
+				player.skin.desc = "fur";
+				player.skin.furColor = randomChoice(ColorLists.FERRET_FUR);
+				player.underBody.type = UnderBody.FURRY;
+				player.copySkinToUnderBody({furColor: randomChoice(ColorLists.FERRET_UNDERBODY_FUR)});
+				changes++;
+			}
+			//Fix the underBody, if the skin is already furred
+			if (player.skin.type === Skin.FUR && player.underBody.type !== UnderBody.FURRY && changes < changeLimit && rand(3) === 0) {
+				setFurrySkin();
+				outputText("\n\nLooks, like the fruit has changed your fur colors."
+				          +" <b>You’re now covered from head to toe with [furColor] fur with [underBody.furColor] fur on your underside!</b>");
+			}
 			//No fur, has ferret ears, tail, and legs:
 			if (!player.hasFur() && player.ears.type === Ears.FERRET && player.tail.type === Tail.FERRET && player.lowerBody.type === LowerBody.FERRET && rand(4) === 0 && changes < changeLimit)
 			{
-				outputText("\n\nYour skin starts to itch like crazy as a thick coat of fur sprouts out of your skin.");
-				//If hair was not sandy brown, silver, white, or brown
-				if (player.hair.color !== "sandy brown" && player.hair.color !== "silver" && player.hair.color !== "white" && player.hair.color !== "brown")
-				{
-					outputText("\n\nOdder still, all of your hair changes to ");
-					if (rand(4) === 0) player.hair.color = "sandy brown";
-					else if (rand(3) === 0) player.hair.color = "silver";
-					else if (rand(2) === 0) player.hair.color = "white";
-					else player.hair.color = "brown";
-					outputText(".");
+				var oldSkinType:Number = player.skin.type;
+				if (["latex", "rubber"].indexOf(player.skin.adj) !== -1)
+					oldSkinType = -99; // Pseudo-skintype for rubbery skin
+				setFurrySkin();
+				switch (oldSkinType) {
+					case Skin.DRAGON_SCALES:
+					case Skin.FISH_SCALES:
+					case Skin.LIZARD_SCALES:
+						outputText("\n\nThe layer of scales covering your body feels weird for a second, almost looking like they’re moving"
+						          +" on their own, and that is when you realize that they changing!");
+						outputText("\n\nThe feeling is quite odd, a bit of an itching from the place where they join your skin, that quickly becomes"
+						          +" more intense as their transformation advances. Then a bunch of [skinTone] scales fall from your arm."
+						          +" Soon all the scales on your arm fall off, leaving behind a layer of healthy, normal, [skin]."
+						          +" The process continues overs the rest of your body, and before long you are covered in a layer of [skin].");
+						outputText("\n\nNot for long though, as an uncomfortable itching overcomes you. It’s quite annoying,"
+						          +" like the aftermath of being bitten for a bug, only all over your body at the same time.");
+						break;
+
+					case Skin.GOO:
+						outputText("\n\nYour usually wet and gooey skin suddenly a bit dry. Thinking that maybe the reason could be the dry weather"
+						          +" in the wastelands, you rush to the stream, washing your skin on the refreshing water.");
+						outputText("\n\nIt has the opposite effect of the one you intended, and you watch as a layer of [skinTone] colored slime"
+						          +" falls from your arm.. Alarmed, you try to put it back,but to no avail. Soon all the goo on your arm slides off,"
+						          +" leaving behind a layer of healthy, normal, [skin]. The process continues over the rest of your body, and before"
+						          +" you can react your body is covered in a layer of fresh new [skin], the odd sensation fading as your core is"
+						          +" expelled from your now perfectly solid body.");
+						outputText("\n\nThis doesn’t last long though, as an uncomfortable itching overcomes you. It’s quite annoying,"
+						          +" like the aftermath of being bitten for a bug, only all over your body at the same time.");
+						break;
+
+					case Skin.FEATHERED:
+						outputText("\n\nYou start to scratch your plumage, as an uncomfortable itching overcomes you. It’s quite annoying,"
+						          +" like the aftermath of being bitten by a bug, only that it’s all over at the same time,"
+						          +" and instead of coming from your skin, it originates from your feathers.");
+						break;
+
+					case Skin.WOOL:
+						outputText("\n\nYou start to scratch your wooly fur, as an uncomfortable itching overcomes you. It’s quite annoying,"
+						          +" like the aftermath of being bitten by a bug, only that it’s all over at the same time,"
+						          +" and instead of coming from your skin, it originates from your wool.");
+						break;
+
+					/* [INTERMOD: Revamp Dryad]
+					case Skin.BARK:
+						outputText("\n\nYour usually fresh and solid bark suddenly feels a bit dry. Thinking that maybe the reason could be the dry"
+						          +" weather in the wastelands, you rush to the stream, washing your barked skin in the refreshing water.");
+						outputText("\n\nIt has the opposite effect of the one you intended, and you watch as a layer of [skinTone] colored bark falls"
+						          +" from your arm. Soon all the barked surface on your arm melts off, leaving behind a layer of healthy, normal,"
+						          +" [skin] covered by a thin layer of sweet smelling resin, that it’s quickly washed off by the stream."
+						          +" The process continues over the rest of your body, and before you can react your body is covered"
+						          +" in a layer of fresh new [skin], the odd sensation fading.");
+						outputText("\n\nNot for long however, as an uncomfortable itching overcomes you. It’s quite annoying,"
+						          +" like the aftermath of being bitten for a bug, only all over your body at the same time.");
+						break;
+					*/
+
+					case -99:
+						outputText("\n\nYour usually oily and rubbery skin suddenly feels a bit dry. Thinking that maybe the reason could be the dry"
+						          +" weather in the wastelands, you rush to the stream, washing your skin in the refreshing water.");
+						outputText("\n\nIt has the opposite effect of the one you intended, and you watch as a layer of [skinTone] colored goopy"
+						          +" rubber falls from your arm. Soon all the rubber on your arm melts off, leaving behind a layer of healthy,"
+						          +" normal, [skin]. The process continues over the rest of your body, and before you can react your body is covered"
+						          +" in a layer of fresh new [skin], the odd sensation fading.");
+						outputText("\n\nNot for long however, as an uncomfortable itching overcomes you. It’s quite annoying,"
+						          +" like the aftermath of being bitten for a bug, only all over your body at the same time.");
+						break;
+
+					case Skin.PLAIN:
+					default:
+						outputText("\n\nYou start to scratch your [skin], as an uncomfortable itching overcomes you. It’s quite annoying,"
+						          +" like the aftermath of being bitten by a bug, only that it’s all over at the same time.");
+
 				}
-				player.skin.type = Skin.FUR;
-				player.skin.furColor = player.hair.color;
-				player.underBody.restore(); // Restore the underbody for now
-				outputText("  <b>You now have " + player.skin.furColor + " fur!</b>");
-				changes++;
+				switch (oldSkinType) {
+					case Skin.FEATHERED:
+						outputText("\n\nRubbing on of your arms to ease the itching, you’re somewhat alarmed at seeing some of the feathers falling,"
+						          +" but are soon relieved at discovering that they’re only changing, as they leave behind a patch of [furColor] fur."
+						          +" Similar changes happen over your legs, chest and back, not leaving an inch of your plumage unaffected. Fur grows"
+						          +" over your body as the feathers fall, the lone patches joining and closing as the layer of plumage disappears,"
+						          +" and in a matter of seconds, your entire body is covered with a lovely coat of thick fur. The soft and fluffy"
+						          +" sensation is quite pleasant to the touch."
+						          +"\n<b>Seems like you’re now covered from head to toe with [furColor] fur"
+						          +" with [underBody.furColor] fur on your underside!</b>");
+						break;
+
+					case Skin.WOOL:
+						outputText("\n\nRubbing on of your arms to ease the itching, you’re somewhat alarmed at seeing some of the wool falling,"
+						          +" but are soon relieved at discovering that they’re only changing, as they leave behind a patch of [furColor] fur,"
+						          +" much more shorter, but still quite fuzzy. Similar changes happen over your legs, chest and back, not leaving an"
+						          +" inch of your wool unaffected. Fur grows over your body as the strands of wool fall, the lone patches joining and"
+						          +" closing as the layer of wooly fur disappear, and in a matter of seconds, your entire body is covered with a"
+						          +" lovely coat of standard, fuzzy fur. The soft and fluffy sensation is quite pleasant to the touch."
+						          +"\n<b>Seems like you’re now covered from head to toe with [furColor] fur"
+						          +" with [underBody.furColor] fur on your underside!</b>");
+						break;
+
+					default:
+						outputText("\n\nSoon you realize that the sensation is coming from under your skin. After rubbing one of your arms"
+						          +" in annoyance, you feel something different, and when you lay your eyes on it, you realize that a patch of fur"
+						          +" is growing over your skin. Then you spot similar patches over your legs, chest and back. Fur grows over"
+						          +" your body, patches joining and closing over your skin, and in a matter of seconds, your entire body is covered"
+						          +" with a lovely coat of thick fur. The soft and fluffy sensation is quite pleasant to the touch."
+						          +"\n<b>Seems like you’re now covered from head to toe with [furColor] fur"
+						          +" with [underBody.furColor] fur on your underside!</b>");
+				}
 			}
 			//Tail TFs!
 			if (player.tail.type !== Tail.FERRET && player.ears.type === Ears.FERRET && rand(3) === 0 && changes < changeLimit)

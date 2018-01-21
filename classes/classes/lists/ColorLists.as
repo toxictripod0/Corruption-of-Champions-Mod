@@ -129,6 +129,19 @@ package classes.lists
 			"caramel",
 		];
 
+		public static const FERRET_FUR:Array = [
+			"white",
+			"brown and white",
+			"black-brown",
+			"brown",
+		];
+
+		public static const FERRET_UNDERBODY_FUR:Array = [
+			"black",
+			"white",
+			"light brown",
+		];
+
 		public static const BASIC_KITSUNE_HAIR:Array = [
 			"white",
 			"black",
