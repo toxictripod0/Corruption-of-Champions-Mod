@@ -342,12 +342,13 @@ package classes.Items.Consumables
 			//Skin
 			function setFurrySkin():void
 			{
+				var newFurColors:Array = randomChoice(ColorLists.FERRET_FUR);
 				player.skin.type = Skin.FUR;
 				player.skin.adj = "";
 				player.skin.desc = "fur";
-				player.skin.furColor = randomChoice(ColorLists.FERRET_FUR);
+				player.skin.furColor = newFurColors[0];
 				player.underBody.type = UnderBody.FURRY;
-				player.copySkinToUnderBody({furColor: randomChoice(ColorLists.FERRET_UNDERBODY_FUR)});
+				player.copySkinToUnderBody({furColor: newFurColors[1]});
 				changes++;
 			}
 			//Fix the underBody, if the skin is already furred

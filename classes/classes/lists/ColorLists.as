@@ -130,16 +130,15 @@ package classes.lists
 		];
 
 		public static const FERRET_FUR:Array = [
-			"white",
-			"brown and white",
-			"black-brown",
-			"brown",
-		];
-
-		public static const FERRET_UNDERBODY_FUR:Array = [
-			"black",
-			"white",
-			"light brown",
+			["brown",         "brown"],
+			["brown",         "black"],
+			["light brown",   "caramel"],
+			["caramel",       "caramel"],
+			["caramel",       "cream"],
+			["silver",        "silver"],
+			["white",         "white"],
+			["sandy brown",   "brown"],
+			["sapphire blue", "electric blue"],
 		];
 
 		public static const BASIC_KITSUNE_HAIR:Array = [
