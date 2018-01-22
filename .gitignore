@@ -32,3 +32,11 @@ test/SingleRunner.mxml
 
 # visual studio code configuration files
 .vscode/
+
+# osx misc files
+**/.DS_Store
+**/.AppleDouble
+**/.LSOverride
+
+# osx thumbnails
+**/._*
