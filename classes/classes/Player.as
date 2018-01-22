@@ -978,6 +978,10 @@
 			{
 				race = "satyr";
 			}
+			if (DryadScore() >= 3)
+			{
+				race = "dryad";
+			}
 			if (rhinoScore() >= 4)
 			{
 				race = "rhino-morph";
@@ -1848,6 +1852,25 @@
 		//------------
 		// Mod-Added
 		//------------
+		
+	    //dryad score
+		public function DryadScore():Number
+		{
+			var dryad:Number = 0;
+			if (hasCock())
+				dryad--;
+			if (arms.type != Arms.HUMAN)
+				dryad--;
+			if (hair.type == Hair.LEAF)
+				dryad++;
+			if (dryad >= 1 && ears.type == Ears.ELFIN)
+				dryad++;
+			if (skin.type == Skin.BARK)
+				dryad++;
+			
+			return dryad;
+		}
+
 		public function sirenScore():Number 
 		{
 			var sirenCounter:Number = 0;
