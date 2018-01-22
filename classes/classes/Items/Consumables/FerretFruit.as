@@ -1,10 +1,12 @@
 package classes.Items.Consumables 
 {
 	import classes.BodyParts.*;
+	import classes.CockTypesEnum;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Items.Consumable;
 	import classes.Items.ConsumableLib;
 	import classes.PerkLib;
+	import classes.StatusEffects;
 	import classes.lists.ColorLists;
 	
 	/**
@@ -29,6 +31,12 @@ package classes.Items.Consumables
 			credits.authorText = "Revised by Coalsack";
 			outputText("Feeling parched, you gobble down the fruit without much hesitation. Despite the skin being fuzzy like a peach, the inside is relatively hard, and its taste reminds you of that of an apple.  It even has a core like an apple. Finished, you toss the core aside.");
 
+			if (rand(100) === 0)
+			{
+				outputText("\n\nSeems like nothing else happened. Was the fruit spoiled?");
+				return false;
+			}
+
 			//BAD END:
 			if (
 				player.face.type === Face.FERRET &&
@@ -48,6 +56,7 @@ package classes.Items.Consumables
 				//BEEN WARNED! BAD END! DUN DUN DUN
 				else if (rand(3) === 0)
 				{
+					credits.authorText = "";
 					//-If you fail to heed the warning, it’s game over:
 					outputText("\n\nAs you down the fruit, you begin to feel all warm and fuzzy inside.  You flop over on your back, eagerly removing your clothes.  You laugh giddily, wanting nothing more than to roll about happily in the grass.  Finally finished, you attempt to get up, but something feels...  different.  Try as you may, you find yourself completely unable to stand upright for a long period of time.  You only manage to move about comfortably on all fours.  Your body now resembles that of a regular ferret.  That can’t be good!  As you attempt to comprehend your situation, you find yourself less and less able to focus on the problem.  Your attention eventually drifts to a rabbit in the distance.  You lick your lips. Nevermind that, you have warrens to raid!");
 					getGame().gameOver();
@@ -73,16 +82,18 @@ package classes.Items.Consumables
 				player.thickness -=2;
 				changes++;
 			}
-			//- If speed is > 80, increase speed:
-			if (player.spe100 < 80 && rand(3) === 0 && changes < changeLimit) {
-				outputText("\n\nYour muscles begin to twitch rapidly, but the feeling is not entirely unpleasant.  In fact, you feel like running.");
-				dynStats("spe",1);
-				//[removed:1.4.10]//changes++;
+			//- If speed is < 100, increase speed:
+			if (player.spe100 < 100 && rand(3) === 0 && changes < changeLimit) {
+				outputText("\n\nYour muscles begin to twitch rapidly under the fruit effects, but the feeling is not entirely unpleasant."
+				          +" In fact, you have the feeling that running will be now much easier.");
+				dynStats("spe", 2 + rand(2));
 			}
 			//- If male with a hip rating >4 or a female/herm with a hip rating >6:
-			if (((!player.hasCock() && player.hips.rating > 6) || (player.hasCock() && player.hips.rating > 4)) && rand(3) === 0 && changes< changeLimit)
+			if ((player.hips.rating > (player.isFemaleOrHerm() ? 6 : 4)) && rand(3) === 0 && changes < changeLimit)
 			{
-				outputText("\n\nA warm, tingling sensation arises in your [hips].  Immediately, you reach down to them, concerned.  You can feel a small portion of your [hips] dwindling away under your hands.");
+				outputText("\n\nA warm, tingling sensation arises in your [hips]. Immediately, you reach down to them, concerned."
+				          +" You can feel a small portion of your [hips] dwindling away under your hands. Seem like more voluptuous assets would be"
+				          +" cumbersome for you now streamlined frame.");
 				player.hips.rating--;
 				if (player.hips.rating > 10) player.hips.rating--;
 				if (player.hips.rating > 15) player.hips.rating--;
@@ -91,9 +102,11 @@ package classes.Items.Consumables
 				changes++;
 			}
 			//- If butt rating is greater than “petite”:
-			if (player.butt.rating >= 8 && rand(3) === 0 && changes < changeLimit)
+			if (player.butt.rating > 6 && rand(3) === 0 && changes < changeLimit)
 			{
-				outputText("\n\nYou cringe as your [butt] begins to feel uncomfortably tight.  Once the sensation passes, you look over your shoulder, inspecting yourself.  It would appear that your ass has become smaller!");
+				outputText("\n\nYou cringe as your [butt] begins to feel uncomfortably tight.  Once the sensation passes,"
+				          +" you look over your shoulder, inspecting yourself. It would appear that your ass has become smaller."
+				          +" While a bit of a disappointment, at least the loss of extra mass will make you light and faster.");
 				player.butt.rating--;
 				if (player.butt.rating > 10) player.butt.rating--;
 				if (player.butt.rating > 15) player.butt.rating--;
@@ -116,6 +129,40 @@ package classes.Items.Consumables
 				changes++;
 				//(this will occur incrementally until they become flat, manly breasts for males, or until they are A or B cups for females/herms)
 			}
+
+			//Remove additional cocks
+			if (player.cocks.length > 1 && rand(3) === 0 && changes < changeLimit) {
+				player.removeCock(1, 1);
+				outputText("\n\nYou have a strange feeling as your crotch tingles.  Opening your [armor],"
+				          +" <b>you realize that one of your cocks have vanished completely!</b>");
+				changes++;
+			}
+
+			//Remove additional balls/remove uniball
+			if ((player.balls > 0 || player.hasStatusEffect(StatusEffects.Uniball)) && rand(3) === 0 && changes < changeLimit) {
+				if (player.ballSize > 2) {
+					if (player.ballSize > 5) player.ballSize -= 1 + rand(3);
+					player.ballSize -= 1;
+					outputText("\n\nYour scrotum slowly shrinks, settling down at a smaller size. <b>Your " + player.ballsDescriptLight() + " ");
+					if (player.balls === 1 || player.hasStatusEffect(StatusEffects.Uniball)) outputText("is smaller now.</b>");
+					else outputText("are smaller now.</b>");
+					changes++;
+				}
+				else if (player.balls > 2) {
+					player.balls = 2;
+					//I have no idea if Uniball status effect sets balls to 1 or not so here's a just in case.
+					if (player.hasStatusEffect(StatusEffects.Uniball)) player.removeStatusEffect(StatusEffects.Uniball);
+					outputText("\n\nYour scrotum slowly shrinks until they seem to have reached a normal size. <b>You can feel as if your extra balls fused together, leaving you with a pair of balls.</b>");
+					changes++;
+				}
+				else if (player.balls === 1 || player.hasStatusEffect(StatusEffects.Uniball)) {
+					player.balls = 2;
+					if (player.hasStatusEffect(StatusEffects.Uniball)) player.removeStatusEffect(StatusEffects.Uniball);
+					outputText("\n\nYour scrotum slowly shrinks, and you feel a great pressure release in your groin. <b>Your uniball has split apart, leaving you with a pair of balls.</b>");
+					changes++;
+				}
+			}
+
 			//-If penis size is > 6 inches:
 			if (player.hasCock())
 			{
@@ -145,10 +192,20 @@ package classes.Items.Consumables
 					}
 				}
 			}
+			//Cock -> Ferret cock
+			if (player.hasCock() && player.cocks[0].cockType !== CockTypesEnum.FERRET && rand(3) === 0 && changes < changeLimit) {
+				outputText("\n\nThe skin surrounding your penis folds, encapsulating it and turning itself into a protective sheath."
+				          +" <b>You now have a ferret cock!</b>");
+				player.cocks[0].cockType = CockTypesEnum.FERRET;
+				changes++;
+			}
+
 			//-If the PC has quad nipples:
 			if (player.averageNipplesPerBreast() > 1 && rand(4) === 0 && changes < changeLimit)
 			{
-				outputText("\n\nA tightness arises in your nipples as three out of four on each breast recede completely, the leftover nipples migrating to the middle of your breasts.  <b>You are left with only one nipple on each breast.</b>");
+				outputText("\n\nA tightness arises in your nipples as three out of four on each breast recede completely,"
+				          +" the leftover nipples migrating to the middle of your breasts. It seems like the mustelid strain on the fruit isn’t"
+				          +" compatible with such an amount of them, so <b>you are left with only one nipple on each breast.</b>");
 				for(x = 0; x < player.bRows(); x++)
 				{
 					player.breastRows[x].nipplesPerBreast = 1;
@@ -574,8 +631,7 @@ package classes.Items.Consumables
 			if (changes === 0)
 			{
 				outputText("\n\nYour eyes widen.  With the consumption of the fruit, you feel much more energetic.  You’re wide awake now!");
-				changes++;
-				player.changeFatigue(-10);
+				player.changeFatigue(-20);
 			}
 			player.refillHunger(20);
 			flags[kFLAGS.TIMES_TRANSFORMED] += changes;
