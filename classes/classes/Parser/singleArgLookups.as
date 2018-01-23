@@ -54,6 +54,7 @@
 				"haircolor"					: function():* { return kGAMECLASS.player.hair.color; },
 				"hairorfur"					: function():* { return kGAMECLASS.player.hairOrFur(); },
 				"hairorfurcolors"			: function():* { return kGAMECLASS.player.hairOrFurColors; },
+				"hairorfurcolor"			: function():* { return kGAMECLASS.player.hairOrFurColor(); },
 				"hand"						: function():* { return kGAMECLASS.player.handsDescript(false); },
 				"hands"						: function():* { return kGAMECLASS.player.handsDescript(true); },
 				"he"						: function():* { return kGAMECLASS.player.mf("he", "she"); },
