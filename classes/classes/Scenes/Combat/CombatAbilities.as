@@ -1545,6 +1545,7 @@ package classes.Scenes.Combat
 				case Tail.LIZARD:
 				case Tail.KANGAROO:
 				case Tail.RACCOON:
+				case Tail.FERRET:
 					addButton(button++, "Tail Whip", tailWhipAttack).hint("Whip your foe with your tail to enrage them and lower their defense! \n\nFatigue Cost: " + player.physicalCost(15));
 					break;
 				case Tail.DRACONIC:

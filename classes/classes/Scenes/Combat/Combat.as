@@ -792,7 +792,11 @@ public class Combat extends BaseContent
 			
 			var damage:Number = 0;
 			//Determine if dodged!
-			if ((player.hasStatusEffect(StatusEffects.Blind) && rand(2) == 0) || (monster.spe - player.spe > 0 && int(Math.random() * (((monster.spe-player.spe) / 4) + 80)) > 80)) {
+			var dodgeChanceFactor:Number = 80;
+			//Handle War Dance dodge chance loss for enemys
+			if (player.weapon === WeaponLib.FISTS && player.hasPerk(PerkLib.WarDance))
+				dodgeChanceFactor /= 0.8; // -20% less chance for monsters to dodge you
+			if ((player.hasStatusEffect(StatusEffects.Blind) && rand(2) == 0) || (monster.spe - player.spe > 0 && int(Math.random() * (((monster.spe-player.spe) / 4) + 80)) > dodgeChanceFactor)) {
 				//Akbal dodges special education
 				if (monster.short == "Akbal") outputText("Akbal moves like lightning, weaving in and out of your furious strikes with the speed and grace befitting his jaguar body.\n");
 				else if (monster.short == "plain girl") outputText("You wait patiently for your opponent to drop her guard. She ducks in and throws a right cross, which you roll away from before smacking your " + player.weaponName + " against her side. Astonishingly, the attack appears to phase right through her, not affecting her in the slightest. You glance down to your " + player.weaponName + " as if betrayed.\n");
@@ -856,6 +860,9 @@ public class Combat extends BaseContent
 			if (damage < 10) damage = 10;
 			//Bonus sand trap damage!
 			if (monster.hasStatusEffect(StatusEffects.Level)) damage = Math.round(damage * 1.75);
+			// Handle War Dance extra damage
+			if (player.weapon === WeaponLib.FISTS && player.hasPerk(PerkLib.WarDance))
+				damage *= 1.15;
 			//Determine if critical hit!
 			var crit:Boolean = combatCritical();
 			if (crit)
