@@ -67,7 +67,7 @@ package classes
 					outputText("  Your face is an adorable cross between human and ferret features, complete with a wet nose and whiskers."
 					          +"  The only oddity is your lack of fur, leaving only [skin] visible on your ferret-like face.");
 				else
-					outputText("  Your face has mustelid muzzle, with a ferret-like visage and a a cute pink nose. It’s covered by a layer of soft,"
+					outputText("  Your face has mustelid muzzle, with a ferret-like visage and a cute pink nose. It’s covered by a layer of soft,"
 					          +" [furColor] colored fur, with patches of white on your muzzle and cheeks."
 					          +" A noticeable mask of [furColor] fur is shaped around your eyes.");
 			}
