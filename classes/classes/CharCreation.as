@@ -12,8 +12,7 @@
 	import classes.lists.PerkLists;
 	import classes.display.SpriteDb;
 	import coc.view.MainView;
-	import fl.controls.ComboBox;
-	import fl.data.DataProvider;
+	import com.bit101.components.ComboBox;
 	import flash.events.Event;
 
 
@@ -96,17 +95,16 @@
 			//if (CoC_Settings.debugBuild) preList.push( { label: "TestChar", data: [ "TestChar", customTestChar, true, "For debug." ]} );			
 			for (var t:int = 0; t < specialCharacters.customs.length; t++) preList.push( { label: specialCharacters.customs[t][0], data:specialCharacters.customs[t] } );
 			if (boxNames === null) {
-				boxNames = new ComboBox(); 
-				boxNames.dropdownWidth = 200; 
+				boxNames = new ComboBox();
 				boxNames.width = 200; 
 				boxNames.scaleY = 1.1;
-				boxNames.prompt = "Pre-defined characters";
+				boxNames.defaultLabel = "Pre-defined characters";
 				boxNames.x = mainView.nameBox.x + mainView.nameBox.width + 10;
 				boxNames.y = mainView.nameBox.y;
 				mainView.addChild(boxNames);
 			}
-			boxNames.addEventListener(Event.CHANGE, selectName); 
-			boxNames.dataProvider = new DataProvider(preList);
+			boxNames.addEventListener(Event.SELECT, selectName);
+			boxNames.items = preList;
 			if (showSpecialNames) boxNames.visible = true;
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] === 0) {
 				player.slotName = "VOID";

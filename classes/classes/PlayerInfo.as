@@ -5,8 +5,7 @@ package classes
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Scenes.NPCs.IsabellaScene;
 	import classes.internals.*;
-	import fl.controls.ComboBox;
-	import fl.data.DataProvider;
+	import com.bit101.components.ComboBox;
 	import flash.events.Event;
 	
 	/**
@@ -927,7 +926,7 @@ package classes
 		private function perkBuyMenu():void {
 			clearOutput();
 			var perkList:Array = buildPerkList();
-			mainView.aCb.dataProvider = new DataProvider(perkList);
+			mainView.aCb.items = perkList;
 			if (perkList.length == 0) {
 				outputText("<b>You do not qualify for any perks at present.  </b>In case you qualify for any in the future, you will keep your " + num2Text(player.perkPoints) + " perk point");
 				if (player.perkPoints > 1) outputText("s");

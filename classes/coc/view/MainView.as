@@ -17,9 +17,8 @@ import classes.GlobalFlags.kGAMECLASS;
 import coc.view.UIUtils;
 import flash.text.TextFormat;
 
-import fl.controls.ComboBox;
-import fl.controls.ScrollBarDirection;
-import fl.controls.UIScrollBar;
+import com.bit101.components.ComboBox;
+import com.bit101.components.VScrollBar;
 
 import flash.display.Sprite;
 import flash.events.Event;
@@ -177,7 +176,7 @@ public class MainView extends Block {
 	public var levelButton:CoCButton;
 	public var perksButton:CoCButton;
 	public var appearanceButton:CoCButton;
-	public var scrollBar:UIScrollBar;
+	public var scrollBar:VScrollBar;
 
 	protected var callbacks:Object = {};
 	protected var options:Object;
@@ -285,7 +284,7 @@ public class MainView extends Block {
 				font: 'Arial'
 			}
 		});
-		scrollBar = new UIScrollBar();
+		scrollBar = new VScrollBar();
 		UIUtils.setProperties(scrollBar,{
 			name: "scrollBar",
 			direction: "vertical",
@@ -386,11 +385,10 @@ public class MainView extends Block {
 		this.sideBarDecoration = getElementByName("statsBarMarker") as Sprite;
 
 		this.aCb               = new ComboBox();
-		this.aCb.dropdownWidth = 200;
 		this.aCb.width         = 200;
 		this.aCb.scaleY        = 1.1;
 		this.aCb.move(-1250, -1550);
-		this.aCb.prompt = "Choose a perk";
+		this.aCb.defaultLabel = "Choose a perk";
 		this.addChild(this.aCb);
 
 		this.hideSprite();
@@ -738,7 +736,7 @@ public class MainView extends Block {
 
 	public function clearOutputText():void {
 		this.mainText.htmlText = '';
-		this.scrollBar.update();
+		this.scrollBar.draw();
 	}
 
 	/**
@@ -746,7 +744,7 @@ public class MainView extends Block {
 	 */
 	public function appendOutputText(text:String):void {
 		this.mainText.htmlText += text;
-		this.scrollBar.update();
+		this.scrollBar.draw();
 	}
 
 	/**
@@ -756,7 +754,7 @@ public class MainView extends Block {
 		// Commenting out for now, because this is annoying to see flooding the trace.
 		// trace("MainView#setOutputText(): This is never called in the main outputText() function.  Possible bugs that were patched over by updating text manually?");
 		this.mainText.htmlText = text;
-		this.scrollBar.update();
+		this.scrollBar.draw();
 	}
 
 	public function hideSprite():void {
@@ -773,7 +771,7 @@ public class MainView extends Block {
 //		this.eventTestInput.type       = TextFieldType.INPUT;
 		this.eventTestInput.visible    = true;
 
-		this.scrollBar.scrollTarget = this.eventTestInput;
+		this.scrollBar.value = this.eventTestInput.y;
 
 	}
 
@@ -789,7 +787,7 @@ public class MainView extends Block {
 //		this.eventTestInput.type       = TextFieldType.DYNAMIC;
 		this.eventTestInput.visible    = false;
 
-		this.scrollBar.scrollTarget = this.mainText;
+		this.scrollBar.value = this.mainText.y;
 
 	}
 	
