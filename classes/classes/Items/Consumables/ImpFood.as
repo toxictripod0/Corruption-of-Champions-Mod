@@ -7,6 +7,7 @@ package classes.Items.Consumables
 	import classes.Items.Consumable;
 	import classes.Items.ConsumableLib;
 	import classes.PerkLib;
+	import classes.lists.ColorLists;
 	
 	/**
 	 * Imp transformative item
@@ -43,11 +44,10 @@ package classes.Items.Consumables
 				game.HPChange(30 + player.tou / 3, true);
 				dynStats("lus", 3, "cor", 1);
 				//Red or orange skin!
-				if (rand(30) === 0 && ["red", "orange"].indexOf(player.skin.tone) === -1) {
+				if (rand(30) === 0 && ColorLists.IMP_SKIN.indexOf(player.skin.tone) === -1) {
 					if (player.hasFur()) outputText("\n\nUnderneath your fur, your skin ");
 					else outputText("\n\nYour " + player.skin.desc + " ");
-					if (rand(2) === 0) player.skin.tone = "red";
-					else player.skin.tone = "orange";
+					player.skin.tone = randomChoice(ColorLists.IMP_SKIN);
 					outputText("begins to lose its color, fading until you're as white as an albino.  Then, starting at the crown of your head, a reddish hue rolls down your body in a wave, turning you completely " + player.skin.tone + ".");
 					player.arms.updateClaws(player.arms.claws.type);
 					kGAMECLASS.rathazul.addMixologyXP(20);
@@ -60,14 +60,14 @@ package classes.Items.Consumables
 				dynStats("lus", 3, "cor", 1);
 			}
 			//Red or orange skin!
-			if (rand(5) === 0 && ["red", "orange"].indexOf(player.skin.tone) === -1 && changes < changeLimit) {
+			if (rand(5) === 0 && ColorLists.IMP_SKIN.indexOf(player.skin.tone) === -1 && changes < changeLimit) {
 				if (player.hasFur()) outputText("\n\nUnderneath your fur, your skin ");
 				else outputText("\n\nYour " + player.skin.desc + " ");
-				if (rand(2) === 0) player.skin.tone = "red";
-				else player.skin.tone = "orange";
+				player.skin.tone = randomChoice(ColorLists.IMP_SKIN);
 				outputText("begins to lose its color, fading until you're as white as an albino.  Then, starting at the crown of your head, a reddish hue rolls down your body in a wave, turning you completely " + player.skin.tone + ".");
 				dynStats("cor", 2);
 				player.skin.type = Skin.PLAIN;
+				player.arms.updateClaws(player.arms.claws.type);
 				kGAMECLASS.rathazul.addMixologyXP(20);
 				changes++;
 			}

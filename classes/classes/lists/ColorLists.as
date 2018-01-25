@@ -24,6 +24,11 @@ package classes.lists
 			"dark green",
 		];
 
+		public static const IMP_SKIN:Array = [
+			"red",
+			"orange",
+		];
+
 		public static const SALAMANDER_SKIN:Array = [
 			"light",
 			"fair",
