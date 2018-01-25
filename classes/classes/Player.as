@@ -1132,7 +1132,7 @@
 				impCounter++;
 			if (horns.type == Horns.IMP)
 				impCounter++;
-			if (arms.type == Arms.PREDATOR && claws.type == Claws.IMP)
+			if (arms.type == Arms.PREDATOR && arms.claws.type == Claws.IMP)
 				impCounter++;
 			if (tallness <= 42)
 				impCounter++;
@@ -1489,7 +1489,7 @@
 				lizardCounter++;
 			if (hasDragonHorns(true))
 				lizardCounter++;
-			if (arms.type == Arms.PREDATOR && claws.type == Claws.LIZARD)
+			if (arms.type == Arms.PREDATOR && arms.claws.type == Claws.LIZARD)
 				lizardCounter++;
 			if (lizardCounter > 2) {
 				if ([Tongue.LIZARD, Tongue.SNAKE].indexOf(tongue.type) != -1)
@@ -1625,7 +1625,7 @@
 				dragonCounter++;
 			if (hasDragonfire())
 				dragonCounter++;
-			if (arms.type == Arms.PREDATOR && claws.type == Claws.DRAGON)
+			if (arms.type == Arms.PREDATOR && arms.claws.type == Claws.DRAGON)
 				dragonCounter++;
 			if (eyes.type == Eyes.DRAGON)
 				dragonCounter++;

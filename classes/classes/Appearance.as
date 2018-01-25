@@ -1888,7 +1888,7 @@ package classes {
 					if (text !== "")
 						comma = ", ";
 
-					switch (i_creature.claws.type) {
+					switch (i_creature.arms.claws.type) {
 						case Claws.NORMAL:
 							break;
 

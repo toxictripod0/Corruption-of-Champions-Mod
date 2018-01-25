@@ -604,8 +604,7 @@ package classes.Items.Consumables
 				          +" fluffy [if (hasFurryUnderBody)[underBody.furColor]|black-brown] fur. Your hands gain pink, padded paws where your palms"
 				          +" were once, and your nails become short claws, not sharp enough to tear flesh, but nimble enough to make climbing and"
 				          +" exploring much easier. <b>Your arms have become like those of  a ferret!</b>");
-				player.arms.type = Arms.FERRET;
-				mutations.updateClaws(Claws.FERRET);
+				player.arms.setType(Arms.FERRET);
 				changes++;
 			}
 			//If ears are not ferret:
