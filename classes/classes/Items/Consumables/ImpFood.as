@@ -175,9 +175,7 @@ package classes.Items.Consumables
 				} else { //has claws
 					outputText("\n\nYour claws suddenly begin to shift and change, starting to turn back into normal hands. But just before they do, they stretch out into three long claws, with a smaller one coming to form a pointed thumb. <b>You have imp claws!</b>");
 				}
-				player.arms.type = Arms.PREDATOR;
-				player.arms.claws.type = Claws.IMP;
-				player.arms.claws.tone = player.skin.tone;
+				player.arms.setType(Arms.PREDATOR, Claws.IMP);
 				dynStats("cor", 2);
 				changes++;
 			}

@@ -78,6 +78,10 @@ package classes.BodyParts
 						default:            clawTone = "gray";        break;
 					}
 					break;
+				case Claws.IMP:
+					if (_creature !== null)
+						clawTone = _creature.skin.tone;
+					break;
 				default:
 					clawTone = "";
 			}
