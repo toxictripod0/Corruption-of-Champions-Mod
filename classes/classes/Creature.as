@@ -3097,6 +3097,11 @@ package classes
 			return false;
 		}
 
+		public function hasOvipositor():Boolean
+		{
+			return hasPerk(PerkLib.SpiderOvipositor) || hasPerk(PerkLib.BeeOvipositor);
+		}
+
 		public function canOviposit():Boolean
 		{
 			if (canOvipositSpider() || canOvipositBee())
@@ -3425,6 +3430,8 @@ package classes
 				case CockTypesEnum.LIZARD:
 				case CockTypesEnum.PIG:
 				case CockTypesEnum.TENTACLE:
+				case CockTypesEnum.RED_PANDA:
+				case CockTypesEnum.FERRET:
 					if (countCocksOfType(cocks[0].cockType) == cocks.length) return Appearance.cockNoun(cocks[0].cockType) + "s";
 					break;
 				case CockTypesEnum.DOG:
@@ -3449,6 +3456,8 @@ package classes
 					case CockTypesEnum.KANGAROO:
 					case CockTypesEnum.AVIAN:
 					case CockTypesEnum.ECHIDNA:
+					case CockTypesEnum.RED_PANDA:
+					case CockTypesEnum.FERRET:
 						return true; //If there's even one cock of any of these types then return true
 					default:
 				}

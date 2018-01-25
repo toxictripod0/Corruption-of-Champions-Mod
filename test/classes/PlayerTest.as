@@ -331,6 +331,7 @@ package classes
 			ferretPlayer.ears.type = Ears.FERRET;
 			ferretPlayer.tail.type = Tail.FERRET;
 			ferretPlayer.lowerBody.type = LowerBody.FERRET;
+			ferretPlayer.arms.type = Arms.FERRET;
 			ferretPlayer.skin.type = Skin.FUR;
 
 			assertThat(ferretPlayer.ferretScore(), greaterThan(0));

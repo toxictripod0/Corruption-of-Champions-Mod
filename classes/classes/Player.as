@@ -1304,14 +1304,22 @@
 		//Determine Ferret Rating!
 		public function ferretScore():Number
 		{
-			var counter:int = 0;
-			if (face.type == Face.FERRET_MASK) counter++;
-			if (face.type == Face.FERRET) counter+=2;
-			if (ears.type == Ears.FERRET) counter++;
-			if (tail.type == Tail.FERRET) counter++;
-			if (lowerBody.type == LowerBody.FERRET) counter++;
-			if (hasFur() && counter > 0) counter++;
-			return counter;
+			var ferretCounter:int = 0;
+			if (face.type === Face.FERRET_MASK)
+				ferretCounter++;
+			if (face.type === Face.FERRET)
+				ferretCounter += 2;
+			if (ears.type === Ears.FERRET)
+				ferretCounter++;
+			if (tail.type === Tail.FERRET)
+				ferretCounter++;
+			if (lowerBody.type === LowerBody.FERRET)
+				ferretCounter++;
+			if (arms.type === Arms.FERRET)
+				ferretCounter++;
+			if (ferretCounter >= 2 && hasFur())
+				ferretCounter += 2;
+			return ferretCounter;
 		}
 		//Wolf Score
 		public function wolfScore():Number
