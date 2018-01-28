@@ -1297,13 +1297,13 @@ package classes
 			showChangeOptions(bodyPartEditorTorso, page, ARM_TYPE_CONSTANTS, changeArmType);
 		}
 		private function changeClawType(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.claws.type = setIdx;
+			if (setIdx>=0) player.arms.claws.type = setIdx;
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorTorso, page, CLAW_TYPE_CONSTANTS, changeClawType);
 		}
 		private function changeClawTone(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.claws.tone = SKIN_TONE_CONSTANTS[setIdx];
+			if (setIdx>=0) player.arms.claws.tone = SKIN_TONE_CONSTANTS[setIdx];
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorTorso, page, SKIN_TONE_CONSTANTS, changeClawTone);

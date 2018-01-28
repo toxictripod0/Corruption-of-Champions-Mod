@@ -168,7 +168,7 @@ package classes.Items.Consumables
 					player.skin.desc = "skin";
 					player.skin.tone = "rough gray";
 					player.underBody.restore();
-					mutations.updateClaws(player.claws.type);
+					player.arms.updateClaws(player.arms.claws.type);
 					getGame().rathazul.addMixologyXP(20);
 					changes++;
 				}
@@ -178,7 +178,7 @@ package classes.Items.Consumables
 					player.skin.desc = "skin";
 					player.skin.tone = "orange and black striped";
 					player.underBody.restore();
-					mutations.updateClaws(player.claws.type);
+					player.arms.updateClaws(player.arms.claws.type);
 					kGAMECLASS.rathazul.addMixologyXP(20);
 					changes++;
 				}

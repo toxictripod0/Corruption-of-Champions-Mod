@@ -153,7 +153,7 @@ package classes.Items.Consumables
 				}
 				outputText("\n\nYour skin tingles ever so slightly as you skin’s color changes before your eyes. As the tingling diminishes, you find that your skin has turned " + skinToBeChosen + ".");
 				player.skin.tone = skinToBeChosen;
-				mutations.updateClaws(player.claws.type);
+				player.arms.updateClaws(player.arms.claws.type);
 				getGame().rathazul.addMixologyXP(20);
 				changes++;
 			}
