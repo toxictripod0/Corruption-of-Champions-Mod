@@ -4161,7 +4161,7 @@ package classes.Scenes.Dungeons
 				//(Display Options: [Riddle Game] [Fight] [Leave])
 				addButton(0, "Riddle Game", riddleGameGo).hint("Start the riddle game.");
 				addButton(1, "Uh, FIGHT!", fuckItAttack).hint("Screw the riddles, fight her instead!");
-				addButton(5,"Appearance",sphinxAppearance).hint("Examine Sanura's appearance.");
+				addButton(10,"Appearance",sphinxAppearance).hint("Examine Sanura's appearance.");
 			}
 			else {
 				if (flags[kFLAGS.TIMES_SUBMITTED_TO_SANURA] + flags[kFLAGS.TIMES_WINFUCKED_SANURA] > 0) {
