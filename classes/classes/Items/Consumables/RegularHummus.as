@@ -74,7 +74,7 @@ package classes.Items.Consumables
 				player.skin.tone = randomChoice(ColorLists.HUMAN_SKIN);
 				outputText(player.skin.tone + " colored.</b>");
 				player.underBody.skin.tone = player.skin.tone;
-				mutations.updateClaws(player.claws.type);
+				player.arms.updateClaws(player.arms.claws.type);
 			}
 			//Change skin to normal
 			if (!player.hasPlainSkin() && (player.ears.type === Ears.HUMAN || player.ears.type === Ears.ELFIN) && rand(4) === 0 && changes < changeLimit) {

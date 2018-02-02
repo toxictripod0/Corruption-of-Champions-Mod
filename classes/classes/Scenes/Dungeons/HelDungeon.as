@@ -243,7 +243,7 @@ package classes.Scenes.Dungeons
 			flags[kFLAGS.HEL_DUNGEON_TAKEN_STRAPS] = 1;
 		}
 		public function takeDagger():void {
-			inventory.takeItem(weapons.L_DAGGR, roomDungeon);
+			inventory.takeItem(weapons.L_DAGR0, roomDungeon);
 			flags[kFLAGS.HEL_DUNGEON_TAKEN_DAGGER] = 1;
 		}
 		//[Armor]:

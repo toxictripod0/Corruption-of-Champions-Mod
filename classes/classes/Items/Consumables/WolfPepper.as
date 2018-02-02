@@ -66,7 +66,7 @@ package classes.Items.Consumables
 			//PRE-CHANGES: become biped, remove horns, remove wings, give human tongue, remove claws, remove antennea
 			//no claws
 			if (rand(4) === 0) {
-				mutations.updateClaws();
+				player.arms.claws.restore();
 			}
 			//remove antennae
 			if (player.antennae.type !== Antennae.NONE && rand(3) === 0 && changes < changeLimit) {

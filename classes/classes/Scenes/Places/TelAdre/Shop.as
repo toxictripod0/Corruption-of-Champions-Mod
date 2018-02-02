@@ -22,6 +22,17 @@ public class Shop extends TelAdreAbstractContent {
 		throw new IllegalOperationError("Method not implemented!");
 	}
 
+	public function addItemBuyButton(item:ItemType):void {
+		var firstEmptyButtonIndex:int = 0;
+		for (var i:int = 0; i < 14; i++) {
+			if (!mainView.bottomButtons[i].visible) {
+				firstEmptyButtonIndex = i;
+				break;
+			}
+		}
+		addButton(firstEmptyButtonIndex, item.shortName, confirmBuy, item).hint(item.description, capitalizeFirstLetter(item.longName));
+	}
+	
 	protected function debit(itype:ItemType = null, priceOverride:int = -1, keyItem:String = ""):void {
 		player.gems -= priceOverride >= 0 ? priceOverride : itype.value;
 		statScreenRefresh();

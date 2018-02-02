@@ -1472,6 +1472,12 @@ package classes.Scenes.Combat
 		//------------
 		// P. SPECIALS
 		//------------
+		public function addTailSlapButton(button:int):void {
+			addButton(button, "Tail Slap", tailSlapAttack).hint("Set your tail ablaze in red-hot flames to whip your foe with it to hurt and burn them! \n\nFatigue Cost: " + player.physicalCost(30));
+		}
+		public function addTailWhipButton(button:int):void {
+			addButton(button, "Tail Whip", tailWhipAttack).hint("Whip your foe with your tail to enrage them and lower their defense! \n\nFatigue Cost: " + player.physicalCost(15));
+		}
 		public function physicalSpecials():void {
 			if (getGame().urtaQuest.isUrta()) {
 				getGame().urtaQuest.urtaSpecials();
@@ -1539,13 +1545,15 @@ package classes.Scenes.Combat
 					addButton(button++, "Web", PCWebAttack).hint("Attempt to use your abdomen to spray sticky webs at an enemy and greatly slow them down.  Be aware it takes a while for your webbing to build up.  \n\nWeb Amount: " + Math.floor(player.tail.venom) + "/100");
 					break;
 				case Tail.SALAMANDER:
-					addButton(button++, "Tail Slap", tailSlapAttack).hint("Set your tail ablaze in red-hot flames to whip your foe with it to hurt and burn them! \n\nFatigue Cost: " + player.physicalCost(30));
+					addTailSlapButton(button++);
+					addTailWhipButton(button++);
 					break;
 				case Tail.SHARK:
 				case Tail.LIZARD:
 				case Tail.KANGAROO:
 				case Tail.RACCOON:
-					addButton(button++, "Tail Whip", tailWhipAttack).hint("Whip your foe with your tail to enrage them and lower their defense! \n\nFatigue Cost: " + player.physicalCost(15));
+				case Tail.FERRET:
+					addTailWhipButton(button++);
 					break;
 				case Tail.DRACONIC:
 					addButton(button++, "Tail Slam", tailSlamAttack).hint("Slam your foe with your mighty dragon tail! This attack causes grievous harm and can stun your opponent or let it bleed. \n\nFatigue Cost: " + player.physicalCost(20));
@@ -2623,8 +2631,9 @@ package classes.Scenes.Combat
 			else {
 				if(!monster.plural) outputText(" Twirling like a top, you bat your opponent with your tail.");
 				else outputText(" Twirling like a top, you bat your opponents with your tail.");
-				var damage:Number = int((player.str) - rand(monster.tou) - monster.armorDef);
+				var damage:Number = int(10 + (player.inte / 3 + rand(player.inte / 2)) * 0.6 * player.spellMod());
 				damage = calcInfernoMod(damage);
+				damage += int((player.str) - rand(monster.tou) - monster.armorDef);
 				damage = combat.doDamage(damage);
 				outputText("  Your tail slams against " + monster.a + monster.short + ", dealing <b><font color=\"#800000\">" + damage + "</font></b> damage! ");
 				combat.checkAchievementDamage(damage);

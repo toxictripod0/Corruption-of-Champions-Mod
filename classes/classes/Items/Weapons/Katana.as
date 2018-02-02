@@ -4,36 +4,14 @@ package classes.Items.Weapons
 
 	public class Katana extends Weapon
 	{
-		
 		public function Katana(tier:int) 
 		{
-			var id:String = "Katana ";
-			var sname:String = "Katana";
-			var name:String = "katana";
-			var lname:String = "a katana";
-			var desc:String = "A curved bladed weapon that cuts through flesh with the greatest of ease.";
-			var attack:int = 10;
-			var value:int = 500;
+			var ids:Array = ["Katana ", "Katana1", "Katana2"];
+			var eqptNames:Array = ["katana", "fine katana", "masterwork katana"];
+			var longNames:Array = ["a katana", "a fine katana", "a masterwork katana"];
 			this.weightCategory = Weapon.WEIGHT_MEDIUM;
-			if (tier == 1) {
-				id = "Katana1";
-				sname = "Katana+1";
-				name = "fine katana";
-				lname = "a fine katana";
-				desc += " This weapon has been upgraded to be of fine quality.";
-				attack += 2;
-				value *= 1.5;
-			}
-			if (tier == 2) {
-				id = "Katana2";
-				sname = "Katana+2";
-				name = "masterwork katana";
-				lname = "a masterwork katana";
-				desc += " This weapon has been upgraded to be of masterwork quality.";
-				attack += 4;
-				value *= 2;
-			}
-			super(id, sname, name, lname, "keen cut", attack, value, desc);
+			this.tier = tier;
+			super(ids[tier], "Katana", eqptNames[tier], longNames[tier], "keen cut", 10, 500, "A curved bladed weapon that cuts through flesh with the greatest of ease.", ""); 
 		}
 		
 	}

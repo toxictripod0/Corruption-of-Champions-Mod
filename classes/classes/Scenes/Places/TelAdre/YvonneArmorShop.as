@@ -3,6 +3,7 @@ import classes.GlobalFlags.kFLAGS;
 import classes.GlobalFlags.kGAMECLASS;
 import classes.ItemType;
 import classes.Items.Armor;
+import classes.Scenes.ItemUpgrade;
 import classes.display.SpriteDb;
 
 public class YvonneArmorShop extends Shop {
@@ -15,19 +16,18 @@ public class YvonneArmorShop extends Shop {
 		clearOutput();
 		outputText("The interior of the armory is blisteringly hot, filled with intense heat from the massive forge dominating the far side of the shop.  The bellows are blowing hard as a tall german-shepherd woman works the forge.  Incredibly, she's wearing nothing aside from a ragged leather apron.  It bulges from the front, barely containing her obscene proportions as it protects them from the heat of her forge.  She pulls a piece of metal from the forge and strikes it a few times with a hammer bigger than your head, then tosses it in a bucket filled with water, steam boiling out of it from the hot metal.  At last, the sweating forgemistress notices you and turns around, her breasts jiggling wildly.\n\n");
 		outputText("\"<i>What can I make for you?  Platemail?  Or something that breathes a little easier?</i>\" Yvonne asks, fanning herself.");
-
 		menu();
-		addButton(0,	armors.CHBIKNI.shortName,	confirmBuy, armors.CHBIKNI);
-		addButton(1,	armors.FULLCHN.shortName,	confirmBuy, armors.FULLCHN);
-		addButton(2,	armors.FULLPLT.shortName,	confirmBuy, armors.FULLPLT);
-		addButton(3,	armors.INDECST.shortName,	confirmBuy, armors.INDECST);
-		addButton(4,	armors.LTHRROB.shortName,	confirmBuy, armors.LTHRROB);
-		addButton(5,	armors.SCALEML.shortName,	confirmBuy, armors.SCALEML);
-		addButton(6,	armors.SAMUARM.shortName,	confirmBuy, armors.SAMUARM);
-		addButton(7,	shields.BUCKLER.shortName,	confirmBuy, shields.BUCKLER);
-		addButton(8,	shields.KITE_SH.shortName,	confirmBuy, shields.KITE_SH);
-		addButton(9,	shields.GREATSH.shortName,	confirmBuy, shields.GREATSH);
-		addButton(10,	shields.TOWERSH.shortName,	confirmBuy, shields.TOWERSH);
+		addItemBuyButton(armors.CHBIKNI);
+		addItemBuyButton(armors.FULLCHN);
+		addItemBuyButton(armors.FULLPLT);
+		addItemBuyButton(armors.INDECST);
+		addItemBuyButton(armors.LTHRROB);
+		addItemBuyButton(armors.SCALEML);
+		addItemBuyButton(armors.SAMUARM);
+		addItemBuyButton(shields.BUCKLR0);
+		addItemBuyButton(shields.KITESH0);
+		addItemBuyButton(shields.GRTSHL0);
+		addItemBuyButton(shields.TOWRSH0);
 
 		if (player.hasKeyItem("Dragon Eggshell") >= 0) {
 			outputText("\n\nThough the pieces on display have their arguable attractions, none of them really interest you.  Yvonne taps her foot impatiently.  \"<i>Well, I could make you something to order... if you have any decent materials, cutie.  200 gems.</i>\"");
@@ -35,9 +35,10 @@ public class YvonneArmorShop extends Shop {
 				outputText("\n\nYou can't afford that!");
 			}
 			else {
-				addButton(12, "Eggshell", kGAMECLASS.emberScene.getSomeStuff);
+				addButton(11, "Eggshell", kGAMECLASS.emberScene.getSomeStuff);
 			}
 		}
+		addButton(12, "Upgrade", getGame().equipmentUpgrade.equipmentUpgradeMenu, ItemUpgrade.TELADRE_ARMOUR_SHOP, inside);
 		addButton(13, "Flirt", yvonneFlirt);
 		addButton(14, "Leave", telAdre.telAdreMenu);
 	}

@@ -1297,7 +1297,7 @@ package classes.Scenes.Places
 					removeButton(0);
 					removeButton(4);
 				}
-				addButton(8, "Masturbate", getGame().masturbation.masturbateMenu);
+				getGame().masturbation.setMasturbateButton();
 				if (((player.findPerk(PerkLib.HistoryReligious) >= 0 && player.cor <= 66) || (player.findPerk(PerkLib.Enlightened) >= 0 && player.cor < 10)) && !(player.hasStatusEffect(StatusEffects.Exgartuan) && player.statusEffectv2(StatusEffects.Exgartuan) == 0) || flags[kFLAGS.SFW_MODE] >= 1) addButton(8, "Meditate", getGame().masturbation.masturbateMenu);
 			}
 			//Alter menu depending on punishment.
@@ -1312,7 +1312,7 @@ package classes.Scenes.Places
 				addButton(5, "Stand Up", punishments.prisonCaptorPunishmentConfinementStandup).hint("Try to stand up while inside the box.");
 				addButton(6, "Rest Legs", punishments.prisonCaptorPunishmentConfinementRestlegs).hint("Try to rest your legs while inside the box.");
 				addButton(7, "Break Box", punishments.prisonCaptorPunishmentConfinementBreak).hint("Attempt to break the box.\n\n" + prisonWillCostDescript(10));
-				if (player.lust >= 30) addButton(8, "Masturbate", punishments.prisonCaptorPunishmentConfinementMasturbate);
+				if (player.lust >= 30) addButton(8, "Masturbate", punishments.prisonCaptorPunishmentConfinementMasturbate).hint("Attempt to masturbate inside the box.");
 			}
 			if (flags[kFLAGS.PRISON_PUNISHMENT] == 3) {
 				outputText("\n\n");
@@ -1325,7 +1325,7 @@ package classes.Scenes.Places
 				addButton(2, "Call Out", trainingPet.prisonCaptorPetTrainingCrateCallOut);
 				addButton(3, "Leash", trainingPet.prisonCaptorPetTrainingCrateLeash);
 				//addButton(7, "Break Cage", trainingPet.prisonCaptorPetTrainingCrateBreak).hint("Attempt to break the cage?\n\n" + prisonWillCostDescript(10));
-				if (player.lust >= 70) addButton(8, "Masturbate", trainingPet.prisonCaptorPetTrainingCrateMasturbate);
+				if (player.lust >= 70) addButton(8, "Masturbate", trainingPet.prisonCaptorPetTrainingCrateMasturbate).hint("Attempt to masturbate inside the cage.");
 			}
 			//Show wait/rest/sleep depending on conditions.
 			addButton(9, "Wait", camp.doWait);

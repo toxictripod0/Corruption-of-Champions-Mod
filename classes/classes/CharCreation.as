@@ -1,4 +1,4 @@
-﻿package classes {
+package classes {
 	import classes.BodyParts.*;
 	import classes.GlobalFlags.kACHIEVEMENTS;
 	import classes.GlobalFlags.kFLAGS;
@@ -187,11 +187,30 @@
 			if (player.eyes.type === Eyes.BASILISK) player.eyes.type = Eyes.LIZARD; //Silently change them to be lizard eyes again. Simple and stupid ;)
 			//Default
 			player.skin.tone = "light";
-			player.claws.tone = "";
+			player.arms.claws.tone = "";
 			player.hair.color = "brown";
 			player.hair.type = Hair.NORMAL;
 			player.beard.length = 0;
 			player.beard.style = 0;
+			//PIERCINGS
+			player.nipplesPierced = 0;
+			player.nipplesPShort = "";
+			player.nipplesPLong = "";
+			player.lipPierced = 0;
+			player.lipPShort = "";
+			player.lipPLong = "";
+			player.tonguePierced = 0;
+			player.tonguePShort = "";
+			player.tonguePLong = "";
+			player.eyebrowPierced = 0;
+			player.eyebrowPShort = "";
+			player.eyebrowPLong = "";
+			player.earsPierced = 0;
+			player.earsPShort = "";
+			player.earsPLong = "";
+			player.nosePierced = 0;
+			player.nosePShort = "";
+			player.nosePLong = "";
 			//Exploration
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] === 0) {
 				//Inventory clear
@@ -205,25 +224,6 @@
 				player.itemSlot4.emptySlot();
 				player.itemSlot5.unlocked = false;
 				player.itemSlot5.emptySlot();
-				//PIERCINGS
-				player.nipplesPierced = 0;
-				player.nipplesPShort = "";
-				player.nipplesPLong = "";
-				player.lipPierced = 0;
-				player.lipPShort = "";
-				player.lipPLong = "";
-				player.tonguePierced = 0;
-				player.tonguePShort = "";
-				player.tonguePLong = "";
-				player.eyebrowPierced = 0;
-				player.eyebrowPShort = "";
-				player.eyebrowPLong = "";
-				player.earsPierced = 0;
-				player.earsPShort = "";
-				player.earsPLong = "";
-				player.nosePierced = 0;
-				player.nosePShort = "";
-				player.nosePLong = "";
 			}
 			//Init none-flag plot variables (The few there still are...)
 			kGAMECLASS.isabellaScene.isabellaOffspringData = []; //CLEAR!
@@ -669,7 +669,7 @@
 		}
 		private function setComplexion(choice:String):void {
 			player.skin.tone = choice;
-			player.claws.tone = "";
+			player.arms.claws.tone = "";
 			clearOutput();
 			outputText(images.showImage("event-question"));
 			outputText("You selected a " + choice + " complexion.\n\nWhat color is your hair?");

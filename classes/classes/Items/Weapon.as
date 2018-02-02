@@ -3,8 +3,6 @@
  */
 package classes.Items
 {
-	import classes.ItemType;
-	import classes.Player;
 
 	public class Weapon extends Useable //Equipable
 	{
@@ -12,11 +10,16 @@ package classes.Items
 		public static const WEIGHT_MEDIUM:String = "Medium";
 		public static const WEIGHT_HEAVY:String = "Heavy";
 		
+		public static const PERK_LARGE:String = "Large";
+		public static const PERK_RANGED:String = "Ranged";
+		public static const PERK_APHRODISIAC:String = "Aphrodisiac Weapon";
+		
 		private var _verb:String;
 		private var _attack:Number;
 		private var _perk:String;
 		private var _name:String;
 		private var _weight:String = WEIGHT_MEDIUM; //Defaults to medium
+		private var _tier:int = 0; //Defaults to 0.
 		
 		public function Weapon(id:String, shortName:String, name:String,longName:String, verb:String, attack:Number, value:Number = 0, description:String = null, perk:String = "") {
 			super(id, shortName, longName, value, description);
@@ -28,14 +31,32 @@ package classes.Items
 		
 		public function get verb():String { return _verb; }
 		
-		public function get attack():Number { return _attack; }
+		public function get attack():Number { return _attack + (_tier * 2); }
 		
 		public function get perk():String { return _perk; }
 		
 		public function get name():String { return _name; }
 		
+		override public function get value():Number {
+			return this._value * (1 + (_tier / 2));
+		}
+		
+		override public function get shortName():String {
+			return this._shortName + (_tier > 0 ? "+" + _tier : "");
+		}
+		
 		override public function get description():String {
 			var desc:String = _description;
+			switch(_tier) {
+				case 1:
+					desc += " This weapon has been upgraded to be of fine quality.";
+					break;
+				case 2:
+					desc += " This weapon has been upgraded to be of masterwork quality.";
+					break;
+				default:
+					desc += "";
+			}
 			//Type
 			desc += "\n\nType: " + _weight + " Weapon ";
 			if (perk == "Large") desc += "(Large)";
@@ -81,10 +102,16 @@ package classes.Items
 			return 1;
 		}
 		
+		public function set tier(num:int):void {
+			this._tier = num;
+		}
+		public function get tier():int {
+			return this._tier;
+		}
+		
 		public function set weightCategory(newWeight:String):void {
 			this._weight = newWeight;
 		}
-		
 		public function get weightCategory():String {
 			return this._weight;
 		}

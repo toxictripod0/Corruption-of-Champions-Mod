@@ -61,6 +61,16 @@ package coc.view {
 			this.visible = true;
 		}
 
+
+		public function showForMonster(button:DisplayObject):void {
+			var bx:Number = button.x,
+				by:Number = button.y;
+			this.x = bx + 450;
+			this.y = by + 50;
+			this.visible = true;
+		}
+		
+
 		public function hide():void {
 			this.visible = false;
 		}

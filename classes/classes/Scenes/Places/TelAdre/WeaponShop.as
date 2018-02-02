@@ -2,8 +2,6 @@ package classes.Scenes.Places.TelAdre {
 import classes.GlobalFlags.kFLAGS;
 import classes.ItemType;
 import classes.Scenes.ItemUpgrade;
-import classes.Items.Weapon;
-import classes.TimeAwareInterface;
 import classes.display.SpriteDb;
 
 public class WeaponShop extends Shop {
@@ -18,21 +16,19 @@ public class WeaponShop extends Shop {
 		outputText("The high pitched ring of a steel hammer slamming into hot metal assaults your ears as you walk up to the stand.  Sparks are flying with every blow the stand's owner strikes on his current work.  The metal is glowing red hot, and the hammer falls with the relentless, practiced precision of an experienced blacksmith's guiding hand.  Thick gray and white fur ruffles as the blacksmith stands up, revealing the details of his form to you.  He's one of the dog-people that inhabits this city, though his fur and ears remind you of a dog one of your friends had growing up called a husky.  The blacksmith is anything but husky.  He's fairly short, but lean and whip-cord tough.  His right arm is far more thickly muscled than his left thanks to his trade, and he walks with a self-assured gait that can only come with age and experience.\n\n");
 		outputText("His piercing blue eyes meet yours as he notices you, and he barks, \"<i>Buy something or fuck off.</i>\"\n\nWhat do you buy?");
 		menu();
-		addButton(0, consumables.W_STICK.shortName, confirmBuy, consumables.W_STICK);
-		addButton(1, weapons.CLAYMR0.shortName, confirmBuy, weapons.CLAYMR0);
-		addButton(2, weapons.WARHAM0.shortName, confirmBuy, weapons.WARHAM0);
-		addButton(3, weapons.KATANA0.shortName, confirmBuy, weapons.KATANA0);
-		addButton(4, weapons.SPEAR_0.shortName, confirmBuy, weapons.SPEAR_0);
-		addButton(5, weapons.WHIP__0.shortName, confirmBuy, weapons.WHIP__0);
-		addButton(6, weapons.W_STAFF.shortName, confirmBuy, weapons.W_STAFF);
-		addButton(7, weapons.S_GAUNT.shortName, confirmBuy, weapons.S_GAUNT);
-		addButton(8, weapons.DAGGER0.shortName, confirmBuy, weapons.DAGGER0);
-		addButton(9, weapons.SCIMTR0.shortName, confirmBuy, weapons.SCIMTR0);
-		addButton(10, weapons.MACE__0.shortName, confirmBuy, weapons.MACE__0);
-		addButton(11, weapons.FLAIL_0.shortName, confirmBuy, weapons.FLAIL_0);
-		if (player.hasKeyItem("Sheila's Lethicite") >= 0 || flags[kFLAGS.SHEILA_LETHICITE_FORGE_DAY] > 0) {
-			addButton(12, "ScarBlade", forgeScarredBlade);
-		}
+		addItemBuyButton(consumables.W_STICK);
+		addItemBuyButton(weapons.CLAYMR0);
+		addItemBuyButton(weapons.WARHAM0);
+		addItemBuyButton(weapons.KATANA0);
+		addItemBuyButton(weapons.SPEAR_0);
+		addItemBuyButton(weapons.WHIP__0);
+		addItemBuyButton(weapons.W_STAFF);
+		addItemBuyButton(weapons.S_GAUNT);
+		addItemBuyButton(weapons.DAGGER0);
+		addItemBuyButton(weapons.SCIMTR0);
+		addItemBuyButton(weapons.MACE__0);
+		addItemBuyButton(weapons.FLAIL_0);
+
 		if (player.hasKeyItem("Sheila's Lethicite") >= 0 || flags[kFLAGS.SHEILA_LETHICITE_FORGE_DAY] > 0) {
 			addButton(12, "ScarBlade", forgeScarredBlade);
 		}

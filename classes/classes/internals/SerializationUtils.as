@@ -161,21 +161,6 @@ package classes.internals
 		}
 		
 		/**
-		 * Check that the passed object is defined.
-		 * Will initalize with a empty array if undefined or null.
-		 * If the object is defined, then it will be returned.
-		 * @param	object to check and initialize
-		 * @return a valid object. Needed because of how ActionScript handles references
-		 */
-		public static function initializeObject(object:*):* {
-			if (object === undefined || object === null) {
-				object = [];
-			}
-			
-			return object;
-		}
-		
-		/**
 		 * Deserialize a class. This method is intended to automate deserialization, in order to avoid
 		 * a lot of code duplication.
 		 * @param	relativeRootObject the object that contains the serialized classes data
@@ -183,7 +168,9 @@ package classes.internals
 		 */
 		public static function deserialize(relativeRootObject:*, serialized:ISerializable):void {
 			LOGGER.debug("Deserializing  {0}...", serialized);
-			relativeRootObject = SerializationUtils.initializeObject(relativeRootObject);
+
+			objectDefinedCheck(relativeRootObject, "Object passed for deserialization must be defined. Does the loaded property exist?")
+			objectDefinedCheck(serialized, "Instance of class to load is not defined. Did you call the class constructor?");
 			
 			SerializationUtils.serializedVersionCheckThrowError(relativeRootObject, serialized.currentSerializationVerison());
 			var serializedObjectVersion:int = SerializationUtils.serializationVersion(relativeRootObject);
@@ -200,12 +187,11 @@ package classes.internals
 		 * @param	toSerialize instance of class to serialize
 		 */
 		public static function serialize(relativeRootObject:*, toSerialize:ISerializable):void {
+			LOGGER.debug("Serializing {0}...", toSerialize);
+			
 			objectDefinedCheck(relativeRootObject, "Object used for storage must be defined. Did you forget to initialize e.g. foo = []; ?");
 			objectDefinedCheck(toSerialize, "Instance of class to store is not defined. Did you call the class constructor?");
 			
-			LOGGER.debug("Serializing {0}...", toSerialize);
-			
-			relativeRootObject = SerializationUtils.initializeObject(relativeRootObject);
 			relativeRootObject[SERIALIZATION_VERSION_PROPERTY] = toSerialize.currentSerializationVerison();
 			
 			toSerialize.serialize(relativeRootObject);

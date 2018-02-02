@@ -213,31 +213,6 @@ package classes.internals
 			assertThat(SerializationUtils.serializedVersionCheck(serializedObject, 3), equalTo(true));
 		}
 		
-		[Test]
-		public function checkAndInitializeObjectNull():void {
-			serializedObject = null;
-			
-			serializedObject = SerializationUtils.initializeObject(serializedObject);
-			
-			assertThat(serializedObject, notNullValue());
-		}
-		
-		[Test]
-		public function checkAndInitializeObjectUndefined():void {
-			serializedObject = undefined;
-			
-			serializedObject = SerializationUtils.initializeObject(serializedObject);
-			
-			assertThat(serializedObject, notNullValue());
-		}
-		
-		[Test]
-		public function checkAndInitializeObjectDefined():void {
-			serializedObject = SerializationUtils.initializeObject(serializedObject);
-			
-			assertThat(serializedObject, hasProperties({serializationVersion: SERIAL_VERSION}));
-		}
-
 		[Test(expected="RangeError")]
 		public function serializedVersionCheckThrowErrorGreater():void {
 			SerializationUtils.serializedVersionCheckThrowError(serializedObject, 1);
@@ -263,11 +238,14 @@ package classes.internals
 			assertThat(serializedObject, hasProperties({foo: 42}));
 		}
 		
-		[Test]
-		public function deserializeUndefined():void {
-			serializedObject = undefined;
-			
-			SerializationUtils.deserialize(serializedObject, dummy);
+		[Test(expected="ArgumentError")]
+		public function deserializeWithInvalidRootObject():void {
+			SerializationUtils.deserialize(undefined, dummy);
+		}
+				
+		[Test(expected="ArgumentError")]
+		public function deserializeWithInvalidClassInstance():void {
+			SerializationUtils.deserialize(serializedObject, undefined);
 		}
 
 		[Test(expected="RangeError")]

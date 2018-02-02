@@ -176,7 +176,7 @@ package classes.Scenes.Areas.Lake
 			this.gems = 5+rand(10);
 			this.drop = new WeightedDrop().add(armors.C_CLOTH,1)
 					.add(consumables.L_DRAFT,4)
-					.add(weapons.L_DAGGR,1)
+					.add(weapons.L_DAGR0,1)
 					.add(null,4);
 			this.special1 = zealotSpecial1;
 			this.special2 = zealotSpecial2;

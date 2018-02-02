@@ -36,7 +36,7 @@ package classes.Items
 			//Type
 			desc += "\n\nType: Ring ";
 			//Special
-			if (_effectId > 0) desc += "\nSpecial: ";
+			if (_effectId > 0){ desc += "\nSpecial: ";
 			switch(_effectId) {
 				case JewelryLib.MODIFIER_MINIMUM_LUST:
 					if (_effectMagnitude >= 0)
@@ -70,6 +70,7 @@ package classes.Items
 					break;
 				default:
 					desc += "You shouldn't see this line at all. Something must be wrong with the coding.";
+				}
 			}
 			//Value
 			desc += "\nBase value: " + String(value);

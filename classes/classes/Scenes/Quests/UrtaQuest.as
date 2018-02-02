@@ -300,10 +300,22 @@ public function startUrtaQuest():void {
 	player.createPerk(PerkLib.HistoryFighter,0,0,0,0);
 
 	//GEAR!
-	player.setWeapon(weapons.URTAHLB);
+	switch(player.newGamePlusMod()) {
+		case 0:
+			player.setWeapon(weapons.HALBRD0);
+			break;
+		case 1:
+			player.setWeapon(weapons.HALBRD1);
+			break;
+		case 2:
+		case 3:
+		case 4:
+			player.setWeapon(weapons.HALBRD2);
+			break;
+		default:
+			player.setWeapon(weapons.HALBRD0);
+	}
 	player.setArmor(armors.URTALTA);
-//	player.weapon = weapons.URTAHLB;
-//	player.armor = armors.URTALTA;
 	
 	//DISPLAY SOME SHIT YO
 	clearOutput();
@@ -2480,7 +2492,7 @@ public function beatMinoLordOnToSuccubi():void {
 
 	outputText("\n\n<b>It's a fight!</b>");
 	kGAMECLASS.combat.clearStatuses();
-	player.setWeapon(weapons.URTAHLB);
+	player.setWeapon(weapons.HALBRD0);
 	//player.weapon = weapons.URTAHLB;
 	startCombat(new MilkySuccubus(),true);
 }

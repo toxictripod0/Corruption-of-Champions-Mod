@@ -14,13 +14,9 @@ public class ErlKingScene extends BaseContent implements Encounter {
 		protected function get changeLimit():int { return mutations.changeLimit; }
 		protected function set changeLimit(val:int):void { mutations.changeLimit = val; }
 
-	public function encounterName():String {
-		return "erlking";
-	}
+	public function encounterName():String { return "erlking"; }
 
-	public function encounterChance():Number {
-		return flags[kFLAGS.ERLKING_DISABLED] == 0 ? 2 : 0;
-	}
+	public function encounterChance():Number { return flags[kFLAGS.ERLKING_DISABLED] == 0 ? 2 : 0; }
 
 	public function execEncounter():void {
 			if (flags[kFLAGS.WILD_HUNT_ENCOUNTERS] == 0) firstWildHuntEncounter();
@@ -679,8 +675,10 @@ public class ErlKingScene extends BaseContent implements Encounter {
 			if (player.cocks[x].cockType == CockTypesEnum.TENTACLE) outputText(images.showImage("wildhunt-princess-anally-tentacle"));
 			else if (player.cocks[x].cockType == CockTypesEnum.LIZARD) outputText(images.showImage("wildhunt-princess-anally-lizard"));
 			else if (player.cocks[x].cockType == CockTypesEnum.DRAGON) outputText(images.showImage("wildhunt-princess-anally-dragon"));
+			else if (player.tail.type == Tail.DEER) outputText(images.showImage("wildhunt-princess-anally-cervine"));
 			else if (player.cocks[x].cockType == CockTypesEnum.HORSE) outputText(images.showImage("wildhunt-princess-anally-horse"));
 			else if (player.cocks[x].cockType == CockTypesEnum.HUMAN) outputText(images.showImage("wildhunt-princess-anally-human"));
+			else if (player.cocks[x].cockType == CockTypesEnum.RHINO) outputText(images.showImage("wildhunt-princess-anally-rhino"));
 			else if (player.cocks[x].cockType == CockTypesEnum.CAT) outputText(images.showImage("wildhunt-princess-anally-feline"));
 			else if (player.cocks[x].cockType == CockTypesEnum.DOG) outputText(images.showImage("wildhunt-princess-anally-canine"));
 			else if (player.cocks[x].cockType == CockTypesEnum.WOLF) {

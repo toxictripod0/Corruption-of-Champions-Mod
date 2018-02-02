@@ -1644,7 +1644,7 @@ package classes.Scenes.Places.Bazaar
 				player.skin.type = Skin.PLAIN;
 				player.skin.desc = "skin";
 				player.underBody.restore();
-				mutations.updateClaws(player.claws.type);
+				player.arms.updateClaws(player.arms.claws.type);
 				changes++;
 			}
 			//Arms change to regular
@@ -1658,8 +1658,7 @@ package classes.Scenes.Places.Bazaar
 						break;
 					default:
 				}
-				player.arms.type = Arms.HUMAN;
-				mutations.updateClaws();
+				player.arms.restore();
 				changes++;
 			}
 			//Change legs to normal

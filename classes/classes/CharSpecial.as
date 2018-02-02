@@ -1623,8 +1623,8 @@ package classes
 			
 			player.face.type = Face.FOX;
 			player.ears.type = Ears.FOX;
-			player.claws.type = Claws.DOG;
-			player.claws.tone = "ivory";
+			player.arms.claws.type = Claws.DOG;
+			player.arms.claws.tone = "ivory";
 			player.eyes.type = Eyes.DRAGON;
 			player.lowerBody.type = LowerBody.FOX;
 			player.tail.type = Tail.FOX; // soft fur feels so lovely...

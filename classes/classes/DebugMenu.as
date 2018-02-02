@@ -98,7 +98,7 @@ package classes
 			var buttonPos:int = 0; //Button positions 4 and 9 are reserved for next and previous.
 			for (var i:int = 0; i < 12; i++) {
 				if (array[((page-1) * 12) + i] != undefined) {
-					if (array[((page-1) * 12) + i] != null) addButton(buttonPos, array[((page-1) * 12) + i].shortName, inventory.takeItem, array[((page-1) * 12) + i], curry(displayItemPage, array, page));
+					if (array[((page-1) * 12) + i] != null) addButton(buttonPos, array[((page-1) * 12) + i].shortName, inventory.takeItem, array[((page-1) * 12) + i], curry(displayItemPage, array, page)).hint(array[((page-1) * 12) + i].description, capitalizeFirstLetter(array[((page-1) * 12) + i].longName));
 				}
 				buttonPos++;
 				if (buttonPos == 4 || buttonPos == 9) buttonPos++;
@@ -340,16 +340,18 @@ package classes
 			weaponArray.push(weapons.BLUNDR0);
 			weaponArray.push(weapons.CLAYMR0);
 			weaponArray.push(weapons.CRSBOW0);
+			weaponArray.push(weapons.DAGGER0);
 			weaponArray.push(weapons.E_STAFF);
 			weaponArray.push(weapons.FLAIL_0);
 			weaponArray.push(weapons.FLNTLK0);
-			weaponArray.push(weapons.URTAHLB);
+			weaponArray.push(weapons.HALBRD0);
 			weaponArray.push(weapons.H_GAUNT);
+			weaponArray.push(weapons.HNTCANE);
+			//Page 2
 			weaponArray.push(weapons.JRAPIER);
 			weaponArray.push(weapons.KATANA0);
-			//Page 2
 			weaponArray.push(weapons.L__AXE0);
-			weaponArray.push(weapons.L_DAGGR);
+			weaponArray.push(weapons.L_DAGR0);
 			weaponArray.push(weapons.L_HAMR0);
 			weaponArray.push(weapons.L_STAFF);
 			weaponArray.push(weapons.L_WHIP);
@@ -358,9 +360,10 @@ package classes
 			weaponArray.push(weapons.PIPE);
 			weaponArray.push(weapons.PTCHFRK);			
 			weaponArray.push(weapons.RIDING0);
-			weaponArray.push(weapons.RRAPIER);
-			weaponArray.push(weapons.S_BLADE);
 			//Page 3
+			weaponArray.push(weapons.RRAPIER);
+			weaponArray.push(weapons.RSBLADE);
+			weaponArray.push(weapons.S_BLADE);
 			weaponArray.push(weapons.S_GAUNT);
 			weaponArray.push(weapons.SCARBLD);
 			weaponArray.push(weapons.SCIMTR0);
@@ -375,11 +378,11 @@ package classes
 			// Shields
 			//------------
 			//Page 1, poor shield category is so lonely. :(
-			shieldArray.push(shields.BUCKLER);
+			shieldArray.push(shields.BUCKLR0);
 			shieldArray.push(shields.DRGNSHL);
-			shieldArray.push(shields.GREATSH);
-			shieldArray.push(shields.KITE_SH);
-			shieldArray.push(shields.TOWERSH);
+			shieldArray.push(shields.GRTSHL0);
+			shieldArray.push(shields.KITESH0);
+			shieldArray.push(shields.TOWRSH0);
 			
 			//------------
 			// Armours
@@ -562,7 +565,7 @@ package classes
 			menu();
 			clearOutput();
 			outputText("TEST STUFFZ");
-			addButton(0, "ASPLODE", styleHackMenu);
+			addButton(0, "ASPLODE", styleHackMenu).hint("MAKE SHIT ASPLODE");
 			addButton(1, "Scorpion Tail", changeScorpionTail);
 			addButton(2, "Be Manticore", getManticoreKit).hint("Gain everything needed to become a Manticore-morph.");
 			addButton(3, "Be Dragonne", getDragonneKit).hint("Gain everything needed to become a Dragonne-morph.");
@@ -1294,13 +1297,13 @@ package classes
 			showChangeOptions(bodyPartEditorTorso, page, ARM_TYPE_CONSTANTS, changeArmType);
 		}
 		private function changeClawType(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.claws.type = setIdx;
+			if (setIdx>=0) player.arms.claws.type = setIdx;
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorTorso, page, CLAW_TYPE_CONSTANTS, changeClawType);
 		}
 		private function changeClawTone(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.claws.tone = SKIN_TONE_CONSTANTS[setIdx];
+			if (setIdx>=0) player.arms.claws.tone = SKIN_TONE_CONSTANTS[setIdx];
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorTorso, page, SKIN_TONE_CONSTANTS, changeClawTone);

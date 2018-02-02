@@ -4,6 +4,9 @@ import classes.StatusEffects;
 import classes.display.SpriteDb;
 
 public class VictoriaTailorShop extends Shop {
+	
+	private var backOption:Function = clothesSection;
+	
 	public function VictoriaTailorShop() {
 		super();
 		sprite = SpriteDb.s_victoria;
@@ -30,24 +33,10 @@ public class VictoriaTailorShop extends Shop {
 			}
 			outputText("at Victoria the Corgi Tailor.  As usual, she's dressed in a stylish low-cut dress and sporting her feathery hat.");
 		}
-		outputText("\n\n(What do you want to buy?)");
 		menu();
-		addButton(0, armors.CLSSYCL.shortName, confirmBuy, armors.CLSSYCL);
-		addButton(1, armors.RBBRCLT.shortName, confirmBuy, armors.RBBRCLT);
-		addButton(2, armors.ADVCLTH.shortName, confirmBuy, armors.ADVCLTH);
-		addButton(3, armors.TUBETOP.shortName, confirmBuy, armors.TUBETOP);
-
-		addButton(5, armors.OVERALL.shortName, confirmBuy, armors.OVERALL);
-		addButton(6, armors.B_DRESS.shortName, confirmBuy, armors.B_DRESS);
-		addButton(7, armors.T_BSUIT.shortName, confirmBuy, armors.T_BSUIT);
-		addButton(8, armors.M_ROBES.shortName, confirmBuy, armors.M_ROBES);
-
-		addButton(10, armors.LTHRPNT.shortName, confirmBuy, armors.LTHRPNT);
-		addButton(11, armors.BIMBOSK.shortName, confirmBuy, armors.BIMBOSK);
-		addButton(12, armors.KIMONO.shortName, confirmBuy, armors.KIMONO);
-
-		addButton(4, "Next", undergarmentSection);
-		addButton(14, "Leave", telAdre.telAdreMenu);
+		addButton(0, "Full Clothes", clothesSection);
+		addButton(1, "Underwears", undergarmentSection);		
+		addButton(4, "Leave", telAdre.telAdreMenu);
 	}
 
 	protected override function confirmBuy(itype:ItemType = null, priceOverride:int = -1, keyItem:String = ""):void {
@@ -70,24 +59,46 @@ public class VictoriaTailorShop extends Shop {
 		}
 	}
 
-	private function undergarmentSection():void {
+	private function clothesSection():void {
+		clearOutput();
+		outputText("(What do you want to buy?)");
+		backOption = clothesSection;
 		menu();
-		addButton(0, undergarments.C_BRA.shortName, confirmBuy, undergarments.C_BRA);
-		addButton(1, undergarments.C_PANTY.shortName, confirmBuy, undergarments.C_PANTY);
-		addButton(2, undergarments.C_LOIN.shortName, confirmBuy, undergarments.C_LOIN);
-		addButton(3, undergarments.FUNDOSH.shortName, confirmBuy, undergarments.FUNDOSH);
-
-		addButton(5, undergarments.FURLOIN.shortName, confirmBuy, undergarments.FURLOIN);
-		addButton(6, undergarments.GARTERS.shortName, confirmBuy, undergarments.GARTERS);
-		addButton(7, undergarments.LTX_BRA.shortName, confirmBuy, undergarments.LTX_BRA);
-		addButton(8, undergarments.LTXSHRT.shortName, confirmBuy, undergarments.LTXSHRT);
-
-		addButton(10, undergarments.LTXTHNG.shortName, confirmBuy, undergarments.LTXTHNG);
-
-		addButton(9, "Previous", inside);
-		addButton(14, "Leave", telAdre.telAdreMenu);
+		addItemBuyButton(armors.CLSSYCL);
+		addItemBuyButton(armors.RBBRCLT);
+		addItemBuyButton(armors.ADVCLTH);
+		addItemBuyButton(armors.TUBETOP);
+		addItemBuyButton(armors.OVERALL);
+		addItemBuyButton(armors.B_DRESS);
+		addItemBuyButton(armors.T_BSUIT);
+		addItemBuyButton(armors.M_ROBES);
+		addItemBuyButton(armors.LTHRPNT);
+		addItemBuyButton(armors.BIMBOSK);
+		addItemBuyButton(armors.KIMONO);
+		addButton(14, "Back", inside);
+	}
+	
+	private function undergarmentSection():void {
+		clearOutput();
+		outputText("(What do you want to buy?)");
+		backOption = undergarmentSection;
+		menu();
+		addItemBuyButton(undergarments.C_BRA);
+		addItemBuyButton(undergarments.C_PANTY);
+		addItemBuyButton(undergarments.C_LOIN);
+		addItemBuyButton(undergarments.FUNDOSH);
+		addItemBuyButton(undergarments.FURLOIN);
+		addItemBuyButton(undergarments.GARTERS);
+		addItemBuyButton(undergarments.LTX_BRA);
+		addItemBuyButton(undergarments.LTXSHRT);
+		addItemBuyButton(undergarments.LTXTHNG);
+		addButton(14, "Back", inside);
 	}
 
+	override protected function noBuyOption(itype:ItemType = null, keyItem:String = ""):void {
+		backOption();
+	}
+	
 	//*Typical buy text goes here. Options are now Yes/No/Flirt*
 
 	//[Flirt]

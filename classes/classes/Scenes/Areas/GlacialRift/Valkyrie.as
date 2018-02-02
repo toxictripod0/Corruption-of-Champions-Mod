@@ -174,7 +174,7 @@ package classes.Scenes.Areas.GlacialRift
 			this.gems = 30;
 			this.drop = new WeightedDrop()
 					.add(weapons.SPEAR_0, 1)
-					.add(shields.GREATSH, 2)
+					.add(shields.GRTSHL0, 2)
 					.add(consumables.W__BOOK, 4)
 					.add(null, 18);
 			this.wings.type = Wings.FEATHERED_LARGE;

@@ -819,6 +819,11 @@ package classes
 			return Appearance.hairOrFur(this);
 		}
 		
+		public function hairOrFurColor():String
+		{
+			return Appearance.hairOrFurColor(this);
+		}
+		
 		public function hairDescript():String
 		{
 			return Appearance.hairDescription(this);

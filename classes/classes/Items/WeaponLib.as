@@ -37,8 +37,12 @@ package classes.Items
 		public const FLNTLK1:Weapon = new FlintlockPistol(1); //Tier 1
 		public const FLNTLK2:Weapon = new FlintlockPistol(2); //Tier 2
 		
-		public const S_GAUNT:Weapon = new Weapon("S.Gaunt","S.Gauntlet","spiked gauntlet","a spiked gauntlet","spiked punch",5,400,"This single metal gauntlet has the knuckles tipped with metal spikes.  Though it lacks the damaging potential of other weapons, the sheer pain of its wounds has a chance of stunning your opponent."); //Tier 1
+		public const S_GAUNT:Weapon = new Weapon("S.Gaunt", "S.Gauntlet", "spiked gauntlet", "a spiked gauntlet", "spiked punch", 5, 400, "This single metal gauntlet has the knuckles tipped with metal spikes. Though it lacks the damaging potential of other weapons, the sheer pain of its wounds has a chance of stunning your opponent."); //Tier 1
 		public const H_GAUNT:Weapon = new Weapon("H.Gaunt", "H.Gaunt", "hooked gauntlets", "a set of hooked gauntlets", "clawing punch", 8, 300, "These metal gauntlets are covered in nasty looking hooks that are sure to tear at your foes flesh and cause them harm."); //Tier 2
+		
+		public const HALBRD0:Weapon = new Halberd(0); //Tier 0, halberds currently restricted to Urta.
+		public const HALBRD1:Weapon = new Halberd(1); //Tier 1
+		public const HALBRD2:Weapon = new Halberd(2); //Tier 2
 		
 		public const KATANA0:Weapon = new Katana(0); //Tier 0
 		public const KATANA1:Weapon = new Katana(1); //Tier 1
@@ -72,13 +76,13 @@ package classes.Items
 		public const WARHAM1:Weapon = new HugeWarhammer(1); //Tier 1
 		public const WARHAM2:Weapon = new HugeWarhammer(2); //Tier 2
 		
-		public const WHIP__0:Weapon = new Whip(0);
-		public const WHIP__1:Weapon = new Whip(1);
-		public const WHIP__2:Weapon = new Whip(2);
+		public const WHIP__0:Weapon = new Whip(0); //Tier 0
+		public const WHIP__1:Weapon = new Whip(1); //Tier 1
+		public const WHIP__2:Weapon = new Whip(2); //Tier 2
 		
 		//Special, Unique Weapons
 		public const B_SWORD:Weapon = new BeautifulSword(); //Pure Weapon Tier 1
-		public const PPSWORD:Weapon = new DivinePearlSword(); //Pure Weapon Tier 2
+		public const DPSWORD:Weapon = new DivinePearlSword(); //Pure Weapon Tier 2
 		
 		public const B_SCARB:Weapon = new BrokenScarredBlade; //Corrupt Weapon Tier 0
 		public const U_SWORD:Weapon = new UglySword(); //Corrupt Weapon Tier 1
@@ -95,14 +99,16 @@ package classes.Items
 		public const E_STAFF:EldritchStaff = new EldritchStaff(); //Staff Tier 2
 		public const L_STAFF:LethiciteStaff = new LethiciteStaff(); //Staff Tier 3
 		
+		public const L_DAGR0:Weapon = new LustDagger(0); //Lust Dagger Tier 0
+		public const L_DAGR1:Weapon = new LustDagger(1); //Lust Dagger Tier 1
+		public const L_DAGR2:Weapon = new LustDagger(2); //Lust Dagger Tier 2
+		
 		//Currently not upgradable but they're special anyway.
 		public const D_SPEAR:Weapon = new Weapon("D.Spear", "Drgn Spear", "dragoon spear", "a dragoon spear", "stab", 20, 2000, "A powerful-looking spear once wielded by the ancient dragons before the kobold invasion. You took this from the Kobold Broodmother in the arena.");
-		public const HNTCANE:HuntsmansCane = new HuntsmansCane();
-		public const L_DAGGR:Weapon = new Weapon("L.Daggr","L.Daggr","lust-enchanted dagger","an aphrodisiac-coated dagger","stab",3,150,"A dagger with a short blade in a wavy pattern.  Its edge seems to have been enchanted to always be covered in a light aphrodisiac to arouse anything cut with it.","Aphrodisiac Weapon");
-		public const L_WHIP :Weapon = new LethicesWhip(); //Whip Tier 2
+		public const HNTCANE:Weapon = new HuntsmansCane();
 		public const KIHAAXE:Weapon = new KihasAxe();
+		public const L_WHIP :Weapon = new LethicesWhip(); //Whip Tier 2
 		public const SUCWHIP:Weapon = new Weapon("SucWhip","SucWhip","succubi whip","a succubi whip","sexy whipping",10,400,"This coiled length of midnight-black leather practically exudes lust. Though it looks like it could do a lot of damage, the feel of that slick leather impacting flesh is sure to inspire lust. However, it might slowly warp the mind of wielder."); //Whip Tier 1, bring masterwork whip for this one.
-		public const URTAHLB:Weapon = new Weapon("UrtaHlb", "UrtaHlb", "halberd", "a halberd", "slash", 11, 10, "Urta's halberd. How did you manage to get this?", "Large");
 		
 		//Unsorted Weapons
 		public const PIPE   :Weapon = new Weapon("Pipe   ","Pipe","pipe","a pipe","smash",5,25,"This is a simple rusted pipe of unknown origins.  It's hefty and could probably be used as an effective bludgeoning tool.");

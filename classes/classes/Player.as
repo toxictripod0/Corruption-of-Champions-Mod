@@ -1132,7 +1132,7 @@
 				impCounter++;
 			if (horns.type == Horns.IMP)
 				impCounter++;
-			if (arms.type == Arms.PREDATOR && claws.type == Claws.IMP)
+			if (arms.type == Arms.PREDATOR && arms.claws.type == Claws.IMP)
 				impCounter++;
 			if (tallness <= 42)
 				impCounter++;
@@ -1304,14 +1304,22 @@
 		//Determine Ferret Rating!
 		public function ferretScore():Number
 		{
-			var counter:int = 0;
-			if (face.type == Face.FERRET_MASK) counter++;
-			if (face.type == Face.FERRET) counter+=2;
-			if (ears.type == Ears.FERRET) counter++;
-			if (tail.type == Tail.FERRET) counter++;
-			if (lowerBody.type == LowerBody.FERRET) counter++;
-			if (hasFur() && counter > 0) counter++;
-			return counter;
+			var ferretCounter:int = 0;
+			if (face.type === Face.FERRET_MASK)
+				ferretCounter++;
+			if (face.type === Face.FERRET)
+				ferretCounter += 2;
+			if (ears.type === Ears.FERRET)
+				ferretCounter++;
+			if (tail.type === Tail.FERRET)
+				ferretCounter++;
+			if (lowerBody.type === LowerBody.FERRET)
+				ferretCounter++;
+			if (arms.type === Arms.FERRET)
+				ferretCounter++;
+			if (ferretCounter >= 2 && hasFur())
+				ferretCounter += 2;
+			return ferretCounter;
 		}
 		//Wolf Score
 		public function wolfScore():Number
@@ -1481,7 +1489,7 @@
 				lizardCounter++;
 			if (hasDragonHorns(true))
 				lizardCounter++;
-			if (arms.type == Arms.PREDATOR && claws.type == Claws.LIZARD)
+			if (arms.type == Arms.PREDATOR && arms.claws.type == Claws.LIZARD)
 				lizardCounter++;
 			if (lizardCounter > 2) {
 				if ([Tongue.LIZARD, Tongue.SNAKE].indexOf(tongue.type) != -1)
@@ -1617,7 +1625,7 @@
 				dragonCounter++;
 			if (hasDragonfire())
 				dragonCounter++;
-			if (arms.type == Arms.PREDATOR && claws.type == Claws.DRAGON)
+			if (arms.type == Arms.PREDATOR && arms.claws.type == Claws.DRAGON)
 				dragonCounter++;
 			if (eyes.type == Eyes.DRAGON)
 				dragonCounter++;

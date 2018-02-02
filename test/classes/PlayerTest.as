@@ -120,8 +120,7 @@ package classes
 			impPlayer.skin.type = Skin.PLAIN;
 			impPlayer.skin.tone = "red";
 			impPlayer.horns.type = Horns.IMP;
-			impPlayer.arms.type = Arms.PREDATOR;
-			impPlayer.claws.type = Claws.IMP;
+			impPlayer.arms.setType(Arms.PREDATOR, Claws.IMP);
 
 			minoPlayer = new Player();
 			minoPlayer.face.type = Face.COW_MINOTAUR;
@@ -331,6 +330,7 @@ package classes
 			ferretPlayer.ears.type = Ears.FERRET;
 			ferretPlayer.tail.type = Tail.FERRET;
 			ferretPlayer.lowerBody.type = LowerBody.FERRET;
+			ferretPlayer.arms.type = Arms.FERRET;
 			ferretPlayer.skin.type = Skin.FUR;
 
 			assertThat(ferretPlayer.ferretScore(), greaterThan(0));
@@ -452,8 +452,7 @@ package classes
 			lizardPlayer.tail.type = Tail.LIZARD;
 			lizardPlayer.lowerBody.type = LowerBody.LIZARD;
 			lizardPlayer.horns.type = Horns.DRACONIC_X4_12_INCH_LONG;
-			lizardPlayer.arms.type = Arms.PREDATOR;
-			lizardPlayer.claws.type = Claws.LIZARD;
+			lizardPlayer.arms.setType(Arms.PREDATOR, Claws.LIZARD);
 			lizardPlayer.tongue.type = Tongue.LIZARD;
 			createCock(CockTypesEnum.LIZARD, lizardPlayer);
 			createCock(CockTypesEnum.LIZARD, lizardPlayer);
@@ -524,8 +523,7 @@ package classes
 			dragonPlayer.lowerBody.type = LowerBody.DRAGON;
 			dragonPlayer.skin.type = Skin.DRAGON_SCALES;
 			dragonPlayer.horns.type = Horns.DRACONIC_X4_12_INCH_LONG;
-			dragonPlayer.arms.type = Arms.PREDATOR;
-			dragonPlayer.claws.type = Claws.DRAGON;
+			dragonPlayer.arms.setType(Arms.PREDATOR, Claws.DRAGON);
 			dragonPlayer.eyes.type = Eyes.DRAGON;
 			dragonPlayer.neck.modify(Infinity, Neck.DRACONIC);
 			dragonPlayer.rearBody.type = RearBody.DRACONIC_SPIKES;
