@@ -176,7 +176,7 @@ import classes.Scenes.API.FnHelpers;
 		}
 		public function explore():void {
 			clearOutput();
-			//Increment forest exploration counter.
+			//Increment forest exploration counter
 			flags[kFLAGS.TIMES_EXPLORED_FOREST]++;
 			forestEncounter.execEncounter();
 		}
