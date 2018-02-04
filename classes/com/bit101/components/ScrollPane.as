@@ -81,6 +81,8 @@ package com.bit101.components
 			_corner.graphics.drawRect(0, 0, 10, 10);
 			_corner.graphics.endFill();
 			addRawChild(_corner);
+			//hide the horizontal scrollbar by default
+			_hScrollbar.autoHide = true;
 		}
 		
 		
