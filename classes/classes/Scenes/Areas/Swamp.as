@@ -102,7 +102,7 @@ import classes.Scenes.Areas.Swamp.*;
 			outputText("You walk through the swamp lands for an hour, finding nothing.\n\n");
 			//Chance of boost == 50%
 			if (rand(2) == 0) {
-				if (rand(2) == 0 && player.str100 < 50) { //50/50 speed/toughness
+				if (rand(2) == 0 && player.spe100 < 50) { //50/50 speed/toughness
 					outputText("The effort of struggling with the uncertain footing has made you quicker.");
 					dynStats("spe", .5);
 				}
