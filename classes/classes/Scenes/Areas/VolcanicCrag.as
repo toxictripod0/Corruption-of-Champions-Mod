@@ -80,6 +80,7 @@ package classes.Scenes.Areas {
 			clearOutput();
 			outputText(images.showImage("area-volcaniccrag"));
 			outputText("You spend one hour exploring the infernal landscape but you don't manage to find anything interesting.");
+			dynStats("sen", .5);
 			doNext(camp.returnToCampUseOneHour);
 		}
 
