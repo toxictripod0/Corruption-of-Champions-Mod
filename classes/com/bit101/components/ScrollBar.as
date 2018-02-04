@@ -43,7 +43,7 @@ package com.bit101.components
 		protected const UP:String = "up";
 		protected const DOWN:String = "down";
 
-        protected var _autoHide:Boolean = true;
+        protected var _autoHide:Boolean = false;
 		protected var _upButton:PushButton;
 		protected var _downButton:PushButton;
 		protected var _scrollSlider:ScrollSlider;
