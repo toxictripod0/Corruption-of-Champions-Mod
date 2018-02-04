@@ -178,11 +178,11 @@ private function resistKeltsBSBreakHimIntro():void {
 		spriteSelect(SpriteDb.s_kelt);
 	}
 	else if (flags[kFLAGS.KELT_BREAK_LEVEL] == 3) {
-		spriteSelect(null);
+		spriteSelect(SpriteDb.s_kelly);
 		finalKeltBreaking();
 	}
 	else {
-		spriteSelect(null);
+		spriteSelect(SpriteDb.s_kelly);
 		approachKelly();
 	}
 }
@@ -353,7 +353,6 @@ private function secondKeltBreaking():void {
 	
 	outputText("\n\nIt's a fight!");
 	startCombat(new Kelt());
-	spriteSelect(SpriteDb.s_kelt);
 }
 
 
@@ -725,6 +724,7 @@ private function kellyAppearance():void {
 }
 private function approachKelly():void {
 	clearOutput();
+	spriteSelect(SpriteDb.s_kelly);
 	//Fix hair color!
 	if (flags[kFLAGS.KELLY_HAIR_COLOR] == 0) flags[kFLAGS.KELLY_HAIR_COLOR] = "chestnut brown";
 	//PUNISH SCENES IF APPROPRIATE
