@@ -1403,9 +1403,6 @@ package classes.Scenes.NPCs
 				case weapons.WARHAM0.id:
 				case weapons.WARHAM1.id:
 				case weapons.WARHAM2.id:
-				case weapons.L__AXE0.id:
-				case weapons.L__AXE1.id:
-				case weapons.L__AXE2.id:
 				case weapons.KIHAAXE.id:
 					outputText("\n\nShe can barely lift the weapon you've given her, although for a while she does manage to support one end with the ground and tilt it by the haft to ward off your blows with cleverness.  Distracting her by way of a feint, you part her from it and advance with a smile full of playful menace... whereupon she shrieks and pushes you backwards, causing you to trip over the weapon and fall with a crash.");
 					//(HP - 5, KidXP - 4)
