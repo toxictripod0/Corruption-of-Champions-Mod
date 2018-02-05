@@ -107,7 +107,9 @@ package classes.Scenes.Areas {
 						mods:[game.commonEncounters.furriteMod]
 					}, {
 						name:"factory",
-						when:function():Boolean { return flags[kFLAGS.MARAE_QUEST_START] >= 1 && flags[kFLAGS.FACTORY_FOUND] <= 0; },
+						when:function():Boolean {
+							return flags[kFLAGS.MARAE_QUEST_START] >= 1 && flags[kFLAGS.FACTORY_FOUND] <= 0;
+						},
 						call: game.dungeons.enterFactory
 					}, {
 						name:"ceraph",
