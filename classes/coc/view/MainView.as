@@ -18,7 +18,7 @@ import coc.view.UIUtils;
 import flash.text.TextFormat;
 
 import com.bit101.components.ComboBox;
-import com.bit101.components.VScrollBar;
+import com.bit101.components.TextFieldVScroll;
 
 import flash.display.Sprite;
 import flash.events.Event;
@@ -176,7 +176,7 @@ public class MainView extends Block {
 	public var levelButton:CoCButton;
 	public var perksButton:CoCButton;
 	public var appearanceButton:CoCButton;
-	public var scrollBar:VScrollBar;
+	public var scrollBar:TextFieldVScroll;
 
 	protected var callbacks:Object = {};
 	protected var options:Object;
@@ -284,11 +284,10 @@ public class MainView extends Block {
 				font: 'Arial'
 			}
 		});
-		scrollBar = new VScrollBar();
+		scrollBar = new TextFieldVScroll(mainText);
 		UIUtils.setProperties(scrollBar,{
 			name: "scrollBar",
 			direction: "vertical",
-			scrollTarget: mainText,
 			x: mainText.x + mainText.width,
 			y: mainText.y,
 			height: mainText.height,
