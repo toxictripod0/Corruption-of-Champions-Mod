@@ -131,3 +131,59 @@ Indent with single tabs (per indentation level) and align with spaces:
 ### Avoid extremely long lines of code
 While mode IDEs and editors may have word wrapping, GitHub hasn't and not everyone likes word-wrapping. Look at the screenshot above how extremely long lines of code could be wrapped.
 Many editors allow setting up a vertical line to assist you with that task. In FlashDevelop for example the settting for this is called 'Print Margin Column'. I have set mine to 150.
+
+### Use of spaces
+Operators should always be surrounded by spaces with the exception of `++` and `--`:
+
+```as3
+a = 1;
+b += a;
+c = a + b;
+d = b + "something" + c;
+e = d * b;
+f = e / a;
+g = (f + e) * b;
+h++;
+i--;
+```
+
+Function calls and definitions should not have a space before the opening parentheses:
+
+```as3
+outputText("blah, blah, yadda, yadda!");
+player.arms.setType(Arms.SPIDER);
+```
+
+Function arguments should have a space after each comma:
+
+```as3
+player.skin.tone = randomChoice("red", "green", "blue");
+```
+
+Unnecessary spaces around parentheses **should not** be used.<br>
+In other words: **Don't use:**
+
+```as3
+outputText( "blah, blah, yadda, yadda!" );
+player.arms.setType( Arms.SPIDER );
+```
+
+Control structures, like if, else, switch and for should have a space before the opening parentheses.
+
+```as3
+for (var i = 0; i < 10; i++) {
+    // do something
+}
+
+while (i < theArray.length) {
+    // do something
+}
+
+if (condition != "something") {
+    // do something
+} else {
+    // do something
+}
+```
+
+Curly braces (`{ }`) should be surrounded by a space as shown above.
