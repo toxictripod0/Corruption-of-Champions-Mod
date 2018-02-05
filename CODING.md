@@ -172,18 +172,85 @@ Control structures, like if, else, switch and for should have a space before the
 
 ```as3
 for (var i = 0; i < 10; i++) {
-    // do something
+	// do something
 }
 
 while (i < theArray.length) {
-    // do something
+	// do something
 }
 
 if (condition != "something") {
-    // do something
+	// do something
 } else {
-    // do something
+	// do something
 }
 ```
 
 Curly braces (`{ }`) should be surrounded by a space as shown above.
+
+### Commenting code
+Use the `//` comment type for single-line or short comments, and the `/* .... */` syntax for large block comments.
+
+```as3
+// this is a single line comment
+
+// this is a short comment that tells
+// you something about the following code
+
+/*
+this is a long comment
+and it
+goes on
+for several
+lines...
+*/
+```
+
+Comments should precede the code they describe, rather than following it.
+
+Avoid this:
+
+```as3
+var itemCount:int = 0; // initialize itemCount
+
+if (itemCount !== 0) // check itemCount
+```
+
+Instead use this:
+
+```as3
+// initialize itemCount
+var itemCount:int = 0;
+
+// check itemCount
+if (itemCount !== 0)
+```
+
+When commenting loops and branches, it is acceptable to put the comment inside the braces.
+
+```as3
+if (text !== "") {
+	// text is not empty so do the following code
+	outputText(text);
+}
+```
+
+Indent comments the same way as the code, that follows it:
+
+Avoid this:
+
+```as3
+	if (text !== "") {
+//		text is not empty so do the following code
+		outputText(text);
+	}
+```
+
+Instead use this:
+
+```as3
+	if (text !== "") {
+		// text is not empty so do the following code
+		outputText(text);
+	}
+```
