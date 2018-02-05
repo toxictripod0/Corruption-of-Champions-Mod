@@ -8,10 +8,6 @@ package classes.Scenes.Areas.HighMountains
 	import classes.display.SpriteDb;
 	import classes.internals.*;
 
-	/**
-	 * ...
-	 * @author ...
-	 */
 	public class MinotaurMob extends Monster
 	{
 		private function precumTease():void {
