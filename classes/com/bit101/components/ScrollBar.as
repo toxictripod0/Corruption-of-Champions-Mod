@@ -135,7 +135,8 @@ package com.bit101.components
 			else
 			{
 				setSize(10, 100);
-			}
+                this.scaleX += 0.5;
+            }
 			_delayTimer = new Timer(DELAY_TIME, 1);
 			_delayTimer.addEventListener(TimerEvent.TIMER_COMPLETE, onDelayComplete);
 			_repeatTimer = new Timer(REPEAT_TIME);

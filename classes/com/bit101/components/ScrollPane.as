@@ -103,7 +103,7 @@ package com.bit101.components
 			var vPercent:Number = (_height - 10) / content.height;
 			var hPercent:Number = (_width - 10) / content.width; 
 			
-			_vScrollbar.x = width - 10;
+			_vScrollbar.x = width - 5;
 			_hScrollbar.y = height - 10;
 			
 			if(hPercent >= 1)

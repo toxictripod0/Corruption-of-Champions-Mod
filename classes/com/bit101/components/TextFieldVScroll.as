@@ -20,6 +20,7 @@ package com.bit101.components {
         protected override function init():void {
             super.init();
             addEventListener(MouseEvent.MOUSE_WHEEL, onMouseWheel);
+            scrollTarget.width = scrollTarget.width - this.width;
         }
 
         /**
@@ -51,7 +52,7 @@ package com.bit101.components {
          */
         override public function draw():void {
             super.draw();
-            this.x = (scrollTarget.x + scrollTarget.width);
+            this.x = (scrollTarget.x + scrollTarget.width)+10;
             this.height = scrollTarget.height;
             this.maximum = scrollTarget.maxScrollV;
             addEventListener(Event.ENTER_FRAME, onTextScrollDelay);
