@@ -1,5 +1,4 @@
-package classes.Scenes.Areas.HighMountains
-{
+package classes.Scenes.Areas.HighMountains {
 	import classes.*;
 	import classes.BodyParts.*;
 	import classes.BodyParts.Butt;
@@ -7,33 +6,25 @@ package classes.Scenes.Areas.HighMountains
 	import classes.GlobalFlags.kFLAGS;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
-
-	/**
-	 * ...
-	 * @author ...
-	 */
-	public class MinotaurMob extends Monster 
-	{
+	/* @author Fake-Name */
+	public class MinotaurMob extends Monster {
 		private function precumTease():void {
 			var teased:Boolean = false;
 			var damage:Number = 0;
 			var oldLust:Number = player.lust;
 			game.spriteSelect(SpriteDb.s_minotaurSons);
-			//(Big taur pre-cum tease)
-			if (rand(2) == 0) {
+			if (rand(2) == 0) { //big taur pre-cum tease
 				teased = true;
 				if (rand(5) > 0) {
 					outputText("The biggest lifts his loincloth, giving you a perfect view of his veiny hardness.  Pre-cum visibly bubbles from his flared tip, splattering wetly on the rocks and filling the air with his bestial musk.  He says, \"<i>See how much I need you?</i>\"\n");
 					damage = 7 + player.lib/20;
 				}
-				//crit)
-				else {
+				else { //crit
 					outputText("The largest bull in the crowd flaps his cum-soaked loincloth up and wraps a massive, muscled hand around his incredible erection.  Shaking it back and forth, he flicks his bubbling pre-cum in your direction, letting it spatter noisily against the rocks around you.  A few droplets even land on your skin, fogging the air with minotaur pheromones.\n");
 					damage = 13 + player.lib/20;
 				}
 			}
-			//(Middle Taur pre-cum tease)
-			if (rand(2) == 0) {
+			if (rand(2) == 0) { //middle taur pre-cum tease
 				teased = true;
 				if (rand(5) > 0) {
 					outputText("\"<i>Hey, slut, look at this!</i>\" taunts one of the beast-men.  He shakes his hips lewdly, spinning his thick horse-cock in wide circles and sending his potent pre flying through the air.  Droplets rain down around you, filling the air with even more of that delicious smell.\n");
@@ -52,21 +43,18 @@ package classes.Scenes.Areas.HighMountains
 				}
 				outputText("\n");
 			}
-			//(Minitaur pre-cum tease)
-			if (!teased || rand(3) == 0) {
+			if (!teased || rand(3) == 0) { //minitaur pre-cum tease
 				outputText("The smallest of the beastmen, the minitaur, moans and begs, \"<i>Please Mom, can we please fuck you?  I... I need it so bad.</i>\"  He raises the edge of his loincloth to show exactly what he's talking about.  His member is limp but leaking.  What really catches your eyes sits behind that drizzling shaft - a pair of balls looking swollen and pent up beyond belief.  A sticky web of his leavings hangs between his genitals and his loincloth, showing you just how much he's been leaking at the thought of fucking you.  Fanning the sopping garment, he inadvertently blows a wave of his pheromones your way.\n");
 				damage = 9 + player.lib/20;
 			}
 			game.dynStats("lus", damage);
 			damage = player.lust - oldLust;
 			//UNIVERSAL pre-cum RESULT:
-			//(Low damage taken)
-			if (damage <= 8) {
+			if (damage <= 8) { //low damage taken
 				outputText("Though your body is tingling from the show the horny beasts are giving you, it doesn't effect you as much as it could have.");
 				if (player.lust >= player.maxLust()) outputText("  Still, you're too horny to fight any longer.");
 			}
-			//(Medium damage taken)
-			else if (damage <= 14) {
+			else if (damage <= 14) { //medium damage taken
 				outputText("The powerful pheromones and scents hanging in the air around you make your body flush hotly.  Your " + player.nippleDescript(0) + "s grow harder");
 				if (player.lust100 > 70) outputText(", though you didn't think such a thing was possible");
 				else outputText(", feeling like two bullets scraping along the inside of your " + player.armorName);
@@ -74,8 +62,7 @@ package classes.Scenes.Areas.HighMountains
 				if (player.lust >= player.maxLust()) outputText("  Fuck it, they smell so good.  You want, no, NEED more.");
 				else outputText("  A growing part of you wants to experience that.");
 			}
-			//(high damage taken)
-			else {
+			else { //high damage taken
 				outputText("All that potent pre-ejaculate makes your cunny ");
 				if (player.wetness() <= 1) outputText("moisten");
 				else if (player.wetness() <= 2) outputText("drip");
@@ -86,9 +73,7 @@ package classes.Scenes.Areas.HighMountains
 					outputText("  You need a fix so bad!");
 					player.takeLustDamage(5, true);
 				}
-				else {
-					outputText("  You can understand firsthand just how potent and addictive that fluid is...");
-				}
+				else outputText("  You can understand firsthand just how potent and addictive that fluid is...");
 				if (player.hasCock()) outputText("  " + player.SMultiCockDesc() + " twitches and dribbles its own pre-seed, but it doesn't smell anywhere near as good!");
 				outputText("  Shuddering and moaning, your body is wracked by ever-increasing arousal.  Fantasies of crawling under the beast-men's soaked legs and lapping at their drooling erections inundate your mind, your body shivering and shaking in response.  ");
 				if (player.lust100 <= 99) outputText("You pull back from the brink with a start.  It'll take more than a little drugged pre-cum to bring you down!");
@@ -96,7 +81,6 @@ package classes.Scenes.Areas.HighMountains
 			}
 			combatRoundOver();
 		}
-
 		//Grope
 		private function minotaurGangGropeAttack():void {
 			game.spriteSelect(SpriteDb.s_minotaurSons);
@@ -113,7 +97,7 @@ package classes.Scenes.Areas.HighMountains
 			player.takeLustDamage((15 + player.sens/10), true);
 			combatRoundOver();
 		}
-		//Waste  a turn
+		//Waste a turn
 		private function minotaurGangWaste():void {
 			flags[kFLAGS.MINOTAUR_SONS_WASTED_TURN] = 1;
 			game.spriteSelect(SpriteDb.s_minotaurSons);
@@ -121,8 +105,7 @@ package classes.Scenes.Areas.HighMountains
 			combatRoundOver();
 		}
 
-		override public function doAI():void
-		{
+		override public function doAI():void {
 			game.spriteSelect(SpriteDb.s_minotaurSons);
 			flags[kFLAGS.MINOTAUR_SONS_WASTED_TURN] = 0;
 			var select:Number = rand(7);
@@ -131,30 +114,21 @@ package classes.Scenes.Areas.HighMountains
 			else if (select == 5) minotaurGangGangGropeAttack();
 			else minotaurGangWaste();
 		}
+		override public function defeated(hpVictory:Boolean):void { game.highMountains.minotaurMobScene.victoryMinotaurGang(); }
 
-
-		override public function defeated(hpVictory:Boolean):void
-		{
-			game.highMountains.minotaurMobScene.victoryMinotaurGang();
-		}
-
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
-		{
+		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void {
 			if (pcCameWorms) {
 				outputText("\n\nThe minutaurs share a laugh while you cum, but their throbbing erections don't subside in the slightest.");
 				doNext(game.combat.endLustLoss);
-			} else {
-				game.highMountains.minotaurMobScene.minotaurDeFeet();
 			}
+			else game.highMountains.minotaurMobScene.minotaurDeFeet();
 		}
 
-		public function MinotaurMob()
-		{
+		public function MinotaurMob() {
 			this.a = "the ";
 			if (game.flags[kFLAGS.ADULT_MINOTAUR_OFFSPRINGS] < 20)
-				this.short = "minotaur gang";
-			else
-				this.short = "minotaur tribe";
+				 this.short = "minotaur gang";
+			else this.short = "minotaur tribe";
 			this.imageName = "minomob";
 			this.long = Num2Text(game.flags[kFLAGS.ADULT_MINOTAUR_OFFSPRINGS]) + " shaggy beastmen stand around you in a loose circle.  Their postures aren't exactly threatening.  If anything, they seem to be standing protectively around you, as if their presence would somehow shelter you from the rest of the mountain.  All of their features share a brotherly similarity, though there's still a fair bit of differences between your minotaur sons.  One of them is a head above the rest, a massive hulk of muscle so big he seems to dwarf the rest.  In stark contrast, a feminine minitaur keeps his distance in the rear."+(game.flags[kFLAGS.ADULT_MINOTAUR_OFFSPRINGS] >= 20?"  The tribe constantly makes hoots and cat-calls, fully expecting to be fucking you soon.":"");
 			this.plural = true;
@@ -203,5 +177,4 @@ package classes.Scenes.Areas.HighMountains
 			checkMonster();
 		}
 	}
-
 }
