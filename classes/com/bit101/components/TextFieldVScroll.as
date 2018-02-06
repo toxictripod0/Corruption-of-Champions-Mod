@@ -54,7 +54,6 @@ package com.bit101.components {
             super.draw();
             this.x = (scrollTarget.x + scrollTarget.width)+10;
             this.height = scrollTarget.height;
-            this.maximum = scrollTarget.maxScrollV;
             addEventListener(Event.ENTER_FRAME, onTextScrollDelay);
         }
 
@@ -102,7 +101,6 @@ package com.bit101.components {
             this.value -= event.delta;
             scrollTarget.scrollV = Math.round(this.value);
         }
-
         /**
          * Sets/gets whether this component is enabled or not.
          */
