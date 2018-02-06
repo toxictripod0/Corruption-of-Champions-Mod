@@ -271,3 +271,13 @@ When commenting out code blocks of 3 or more line, you may put the comments at t
 //				outputText("yadda, yadda, yadda\n");
 //			}
 ```
+
+### Naming conventions
+
+| **What**                              | **Convention**                                         | **Examples**                        |
+|---------------------------------------|--------------------------------------------------------|-------------------------------------|
+| class                                 | Use UpperCamelCase                                     | `MinotaurScene`, `PlayerAppearance` |
+| function / method                     | Use lowerCamelCase                                     | `setType`, `restoreLegs`            |
+| variables (including class variables) | Use lowerCamelCase                                     | `furColor`, `skinType`              |
+| constants                             | Use capital letters and words separated by underscores | `CAN_FLY_WINGS`, `RED_PANDA`        |
+
