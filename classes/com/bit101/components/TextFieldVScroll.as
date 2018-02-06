@@ -10,7 +10,7 @@ package com.bit101.components {
         public function TextFieldVScroll(_scrollTarget:TextField = null, parent:DisplayObjectContainer = null, xpos:Number = 0, ypos:Number = 0) {
             scrollTarget = _scrollTarget;
             super(parent, xpos, ypos, onScrollbarScroll);
-            this.autoHide =true;
+            this.autoHide = true;
         }
 
 
@@ -52,7 +52,7 @@ package com.bit101.components {
          */
         override public function draw():void {
             super.draw();
-            this.x = (scrollTarget.x + scrollTarget.width)+10;
+            this.x = (scrollTarget.x + scrollTarget.width) + 10;
             this.height = scrollTarget.height;
             addEventListener(Event.ENTER_FRAME, onTextScrollDelay);
         }
@@ -69,14 +69,6 @@ package com.bit101.components {
         protected function onTextScrollDelay(event:Event):void {
             removeEventListener(Event.ENTER_FRAME, onTextScrollDelay);
             updateScrollbar();
-        }
-
-        /**
-         * Called when the text in the text field is manually changed.
-         */
-        protected override function onChange(event:Event):void {
-            updateScrollbar();
-            super.onChange(event);
         }
 
         /**
@@ -101,6 +93,7 @@ package com.bit101.components {
             this.value -= event.delta;
             scrollTarget.scrollV = Math.round(this.value);
         }
+
         /**
          * Sets/gets whether this component is enabled or not.
          */
