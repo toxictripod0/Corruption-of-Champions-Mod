@@ -625,6 +625,7 @@ package classes
 					outputText("  Soft, [hairOrFurColor] fluff covers your arms, turning into"
 					          +" [if (hasFurryUnderBody)[underBody.furColor]|brown-black] fur from elbows to paws."
 					          +" The latter have cute, pink paw pads and short claws.");
+					break;
 				default:
 					//Nothing here, move along!
 			}
