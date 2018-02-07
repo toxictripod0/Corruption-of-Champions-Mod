@@ -488,8 +488,7 @@ package classes.Items.Consumables
 				          +" scales and dangerous looking talons tip your fingers. As suddenly as the itching came it fades, leaving you to marvel"
 				          +" over your new arms.");
 				outputText("\n<b>You now have cockatrice arms!</b>");
-				player.arms.type = Arms.COCKATRICE;
-				mutations.updateClaws(Claws.COCKATRICE);
+				player.arms.setType(Arms.COCKATRICE, Claws.COCKATRICE);
 				changes++;
 			}
 			//Neck loss, if not cockatrice neck

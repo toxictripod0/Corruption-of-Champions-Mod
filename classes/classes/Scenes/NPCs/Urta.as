@@ -4774,7 +4774,7 @@ private function urtasRuinedOrgasmsFromGooPartII():void {
 	if (player.skin.tone != "milky white") {
 		outputText("\n\nThen you catch sight of your body...  You hold up a hand in surprise.  Your skin has changed color!  Your time inside Urta's balls has taken its toll, it seems.  <b>You now have milky white skin!</b>");
 		player.skin.tone = "milky white";
-		mutations.updateClaws(player.claws.type);
+		player.arms.updateClaws(player.arms.claws.type);
 		player.cumMultiplier += 10;
 	}
 	outputText("\n\nUrta and ");

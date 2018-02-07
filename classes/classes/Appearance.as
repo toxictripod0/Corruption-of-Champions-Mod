@@ -21,6 +21,10 @@ package classes {
 			else return "hair";
 		}
 
+		public static function hairOrFurColor(i_creature:Creature):String {
+			return i_creature.isFluffy() ? i_creature.skin.furColor : i_creature.hair.color;
+		}
+
 		public static function hairDescription(i_creature:Creature):String {
 			var description:String = "";
 			var options:Array;
@@ -1884,7 +1888,7 @@ package classes {
 					if (text !== "")
 						comma = ", ";
 
-					switch (i_creature.claws.type) {
+					switch (i_creature.arms.claws.type) {
 						case Claws.NORMAL:
 							break;
 

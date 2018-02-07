@@ -109,10 +109,13 @@ public function farmExploreEncounter():void {
 		var cockMilk:Number = 0;
 		var marble:Number = 0;
 		if (player.hasStatusEffect(StatusEffects.Kelt) && !player.hasStatusEffect(StatusEffects.KeltOff) && flags[kFLAGS.KELT_KILLED] <= 0) {
-			if (flags[kFLAGS.KELT_BREAK_LEVEL] >= 4) addButton(1,"Kelly",kelly.breakingKeltOptions);
+			if (flags[kFLAGS.KELT_BREAK_LEVEL] >= 4) {
+				if (flags[kFLAGS.WHITNEY_FLIPPED_OUT_OVER_KELLY] == 1) addButton(0,"Kelly",kelly.breakingKeltOptions);
+				else addButton(3,"Kelly",kelly.breakingKeltOptions);
+			}
 			else addButton(3,"Kelt",kelly.breakingKeltOptions);
 		}
-		if (flags[kFLAGS.WHITNEY_FLIPPED_OUT_OVER_KELLY] == 0 || flags[kFLAGS.WHITNEY_GONE] > 0) {
+		if (flags[kFLAGS.WHITNEY_FLIPPED_OUT_OVER_KELLY] != 1 || flags[kFLAGS.WHITNEY_GONE] > 0) {
 			addButton(0, "Explore", exploreFarm).hint("Take a good hike around the extensive farm. Maybe you'll find anything of interest around here.");
 			addButton(1, "Talk", talkWhitney).hint("Strike up a conversation with Whitney the dog farmer.").disableIf(flags[kFLAGS.WHITNEY_GONE] > 0, "Whitney is dead so you cannot talk to her.");
 			addButton(2, "Work", workFarm).hint("Ask Whitney if she could use a hand. She would probably be grateful for that.").disableIf(player.fatigueLeft() < 20, "You are too tired to lend a helping hand.").disableIf(flags[kFLAGS.WHITNEY_GONE] > 0, "Whitney is dead so you cannot offer to help her.");

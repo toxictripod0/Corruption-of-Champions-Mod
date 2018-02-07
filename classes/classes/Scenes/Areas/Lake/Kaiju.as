@@ -414,7 +414,7 @@ private function fuckThisGiantYouDumbCunt():void {
 
 private function fuckThisGiantYouDumbCuntt():void {
 	clearOutput();
-	outputText("\n\nJust when you begin to think you can see her womb her hand drags you back down her slippery passage, before pushing you back up again.  Her fingers push you up and down, in and out of her trembling pussy, her wet and skillful muscles helping to speed you along as she steadily picks up her pace.  The closer she seems to get to climax, the more her pussy walls tremble and push, the more her juices gather, and the faster she sends you on your dizzying roller coaster ride through her female sex.");
+	outputText("Just when you begin to think you can see her womb her hand drags you back down her slippery passage, before pushing you back up again.  Her fingers push you up and down, in and out of her trembling pussy, her wet and skillful muscles helping to speed you along as she steadily picks up her pace.  The closer she seems to get to climax, the more her pussy walls tremble and push, the more her juices gather, and the faster she sends you on your dizzying roller coaster ride through her female sex.");
 	//[If PC's sensitivity is 50 or over]
 	if (player.sens >= 50) {
 		outputText("\n\nThe sensations of the giant's masterful cunt sends you into orgasm.");

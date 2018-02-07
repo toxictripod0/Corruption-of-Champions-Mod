@@ -14,13 +14,9 @@ public class ErlKingScene extends BaseContent implements Encounter {
 		protected function get changeLimit():int { return mutations.changeLimit; }
 		protected function set changeLimit(val:int):void { mutations.changeLimit = val; }
 
-	public function encounterName():String {
-		return "erlking";
-	}
+	public function encounterName():String { return "erlking"; }
 
-	public function encounterChance():Number {
-		return flags[kFLAGS.ERLKING_DISABLED] == 0 ? 2 : 0;
-	}
+	public function encounterChance():Number { return flags[kFLAGS.ERLKING_DISABLED] == 0 ? 2 : 0; }
 
 	public function execEncounter():void {
 			if (flags[kFLAGS.WILD_HUNT_ENCOUNTERS] == 0) firstWildHuntEncounter();
@@ -483,7 +479,8 @@ public class ErlKingScene extends BaseContent implements Encounter {
 					outputText("“<i>Take me, Huntsman,</i>” you moan.  His shaft is already poised, his equine dick sliding up into your [vagina], pushing deep inside you.");
 					if (player.tail.type == Tail.DOG || player.tail.type == Tail.WOLF) outputText(images.showImage("wildhunt-prey-female-canine"));
 					else if (player.tail.type == Tail.DEER) outputText(images.showImage("wildhunt-prey-female-cervine"));
-					else if (player.tail.type == Tail.CAT) outputText(images.showImage("wildhunt-prey-male-feline"));
+					else if (player.ears.type == Ears.HUMAN) outputText(images.showImage("wildhunt-prey-female-human"));
+					else if (player.tail.type == Tail.CAT) outputText(images.showImage("wildhunt-prey-female-feline"));
 					else outputText(images.showImage("wildhunt-prey-female"));
 					player.cuntChange(12 * 3, true, true, false);
 					outputText("\n\nYou gasp, shuddering in delight as he begins to push in and out of you.  His hands shift, holding you under the arms, fucking you against the tree.  The rough bark scratches your back as he thrusts deep inside you.  You feel the triple rings of his prepuce rubbing against your inner walls.\n\n");
@@ -502,6 +499,7 @@ public class ErlKingScene extends BaseContent implements Encounter {
 					else if (player.tail.type == Tail.DEER) outputText(images.showImage("wildhunt-prey-male-cervine"));
 					else if (player.tail.type == Tail.RABBIT) outputText(images.showImage("wildhunt-prey-male-bunny"));
 					else if (player.ears.type == Ears.HUMAN) outputText(images.showImage("wildhunt-prey-male-human"));
+					else if (player.tail.type == Tail.CAT) outputText(images.showImage("wildhunt-prey-male-feline"));
 					else outputText(images.showImage("wildhunt-prey-male"));
 					player.buttChange(12 * 3, true, true, false);
 					outputText("\n\nYou gasp, shuddering in delight as he begins to push in and out of you.  His hands shift, one at the small of your back, steadying you, fucking you against the tree.  The other squeezes tight around your dick, jacking you off, gloved hand stroking you roughly in time to his thrusts.  The coarse bark of the tree scratches at your back as you feel the triple rings of his prepuce rubbing against the inner walls of your [asshole].\n\n");
@@ -512,14 +510,12 @@ public class ErlKingScene extends BaseContent implements Encounter {
 				}
 			}
 			else {
-				outputText(images.showImage("wildhunt-prey-taur"));
 				outputText("The Erlking smiles at you, caressing your cheek.  “<i>I pride myself in keeping a proper stable,</i>” he says, delicately moving behind you.  With his strong hands on your flanks, he guides you to face up against a tree.\n\n");
 				if (player.hasVagina() && !player.hasCock()) {
-					outputText("With your [chest] against the rough bark, he lifts your [tail], exposing your [pussy] to the swelling head of his equine cock.  With a soft sound, he pushes between your lips, letting you feel each prepuce ring as they squeeze into you.");
+					outputText(images.showImage("wildhunt-prey-taur-female"));
+					outputText("With your [chest] against the rough bark, he lifts your [tail], exposing your [pussy] to the swelling head of his equine cock.  With a soft sound, he pushes between your lips, letting you feel each prepuce ring as they squeeze into you.  ");
 					player.cuntChange(12 * 3, true, true, false);
-					outputText("\n\n");
-
-					outputText("You wrap your arms around the trunk of the tree as his hands grip your flanks.  His own equine legs begin thrusting him against you, his ribbed cock sliding in and out of your [pussy], the ridges of his horselike shaft massaging you from the inside.  The force of his fucking grinds your [chest] against the tree.");
+					outputText("\n\nYou wrap your arms around the trunk of the tree as his hands grip your flanks.  His own equine legs begin thrusting him against you, his ribbed cock sliding in and out of your [pussy], the ridges of his horselike shaft massaging you from the inside.  The force of his fucking grinds your [chest] against the tree.");
 					if (player.biggestLactation() > 0) outputText("  The friction begins milking you, making you ooze milk down the trunk.");
 					outputText("  The mild pain of abrasion couples with the pleasure of his forceful fucking and you feel your climax approaching.\n\n");
 					outputText("With a moan, you cum, hugging the tree with all your might, thrusting back with your hindquarters.  With gentlemanly demeanor, the Erlking continues pumping his thick cock in and out of you until your orgasm recedes.  He then cums himself, filling your insides with his hot spunk.\n\n");
@@ -528,6 +524,7 @@ public class ErlKingScene extends BaseContent implements Encounter {
 					outputText("You wake up an hour later in the clearing, the Erlking gone and your chest unmarred.  You blink, sleepily, still feeling the Erlking’s arms around you and shakily climb to your feet, making your way back to camp.\n\n");
 				}
 				else if (player.hasCock()) {
+					outputText(images.showImage("wildhunt-prey-taur-male"));
 					outputText("With your [chest] against the rough bark, he crouches at your side, taking your already stiffening [oneCock] in his gloved hand.  From this angle, you feel, rather than see the cream he lathers on your [cock], working you to full hardness. One hand strokes your flank soothingly as the other wraps around your [cock], stroking you in his strong grip.\n\n");
 					outputText("You pant, fingertips gripping the bark of the tree as he jacks you off.  Your tongue lolls out as his gloved hand grips you firmly, moving faster and faster as he works his way up and down your length.  Whatever lube he used is incredible, and you feel a tingle on every down and up stroke.\n\n");
 					outputText("You can’t get enough of this feeling - being milked by the Erlking.  He even seems to be humming under his breath as he strokes your side and works you with deft fingers.  It’s like he’s calming some rutting stallion!  Your leg stamps reflexively, your [tail] swishing as your body announces your intent to cum.\n\n");
@@ -653,6 +650,7 @@ public class ErlKingScene extends BaseContent implements Encounter {
 			var x:int = 0;
 			if (player.cocks[x].cockType == CockTypesEnum.HORSE) outputText(images.showImage("wildhunt-princess-orally-horse"));
 			else if (player.cocks[x].cockType == CockTypesEnum.WOLF) outputText(images.showImage("wildhunt-princess-orally-wolf"));
+			else if (player.cocks[x].cockType == CockTypesEnum.DRAGON) outputText(images.showImage("wildhunt-princess-orally-dragon"));
 			else if (player.lowerBody.type == LowerBody.CLOVEN_HOOFED) outputText(images.showImage("wildhunt-princess-orally-deer"));
 			else if (player.lowerBody.type == LowerBody.HOOFED) outputText(images.showImage("wildhunt-princess-orally-bovine"));
 			else outputText(images.showImage("wildhunt-princess-orally"));
@@ -679,8 +677,10 @@ public class ErlKingScene extends BaseContent implements Encounter {
 			if (player.cocks[x].cockType == CockTypesEnum.TENTACLE) outputText(images.showImage("wildhunt-princess-anally-tentacle"));
 			else if (player.cocks[x].cockType == CockTypesEnum.LIZARD) outputText(images.showImage("wildhunt-princess-anally-lizard"));
 			else if (player.cocks[x].cockType == CockTypesEnum.DRAGON) outputText(images.showImage("wildhunt-princess-anally-dragon"));
+			else if (player.tail.type == Tail.DEER) outputText(images.showImage("wildhunt-princess-anally-cervine"));
 			else if (player.cocks[x].cockType == CockTypesEnum.HORSE) outputText(images.showImage("wildhunt-princess-anally-horse"));
 			else if (player.cocks[x].cockType == CockTypesEnum.HUMAN) outputText(images.showImage("wildhunt-princess-anally-human"));
+			else if (player.cocks[x].cockType == CockTypesEnum.RHINO) outputText(images.showImage("wildhunt-princess-anally-rhino"));
 			else if (player.cocks[x].cockType == CockTypesEnum.CAT) outputText(images.showImage("wildhunt-princess-anally-feline"));
 			else if (player.cocks[x].cockType == CockTypesEnum.DOG) outputText(images.showImage("wildhunt-princess-anally-canine"));
 			else if (player.cocks[x].cockType == CockTypesEnum.WOLF) {
@@ -699,7 +699,9 @@ public class ErlKingScene extends BaseContent implements Encounter {
 
 		protected function gwynnNomsDaCunts():void {
 			clearOutput();
-			outputText(images.showImage("wildhunt-princess-lickgina"));
+			if (player.vaginas[0].vaginalLooseness == VaginaClass.LOOSENESS_LEVEL_CLOWN_CAR) outputText(images.showImage("wildhunt-princess-lickgina-big"));
+			else if (player.vaginas[0].type == VaginaClass.EQUINE) outputText(images.showImage("wildhunt-princess-lickgina-equine"));
+			else outputText(images.showImage("wildhunt-princess-lickgina"));
 			outputText("“<i>Yes Ma’am,</i>” she says, licking her lips.  She points to a nearby stump, gesturing for you to have a seat on the soft moss.  As you do, she wastes no time in dropping her pink muzzle to your pussy.\n\n");
 			outputText("Her tongue eagerly plunges between your folds, running up and down the length of your pussy. Each time her muzzle bobs up, her candy-pink nose rubs against your clit, and she purrs, closing her eyes and nuzzling it.  She slowly laps at your slit, gradually building speed.\n\n");
 			outputText("You sigh happily, bracing yourself with your arms and leaning back.  Princess Gwynn slurps noisily at your muff, her tongue moving faster and faster.  You gasp, pleasure building in your whole body as she withdraws her tongue from your pussy, wrapping her lips around your pleasure button.\n\n");

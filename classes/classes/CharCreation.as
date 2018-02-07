@@ -1,4 +1,4 @@
-﻿package classes {
+package classes {
 	import classes.BodyParts.*;
 	import classes.GlobalFlags.kACHIEVEMENTS;
 	import classes.GlobalFlags.kFLAGS;
@@ -187,11 +187,30 @@
 			if (player.eyes.type === Eyes.BASILISK) player.eyes.type = Eyes.LIZARD; //Silently change them to be lizard eyes again. Simple and stupid ;)
 			//Default
 			player.skin.tone = "light";
-			player.claws.tone = "";
+			player.arms.claws.tone = "";
 			player.hair.color = "brown";
 			player.hair.type = Hair.NORMAL;
 			player.beard.length = 0;
 			player.beard.style = 0;
+			//PIERCINGS
+			player.nipplesPierced = 0;
+			player.nipplesPShort = "";
+			player.nipplesPLong = "";
+			player.lipPierced = 0;
+			player.lipPShort = "";
+			player.lipPLong = "";
+			player.tonguePierced = 0;
+			player.tonguePShort = "";
+			player.tonguePLong = "";
+			player.eyebrowPierced = 0;
+			player.eyebrowPShort = "";
+			player.eyebrowPLong = "";
+			player.earsPierced = 0;
+			player.earsPShort = "";
+			player.earsPLong = "";
+			player.nosePierced = 0;
+			player.nosePShort = "";
+			player.nosePLong = "";
 			//Exploration
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] === 0) {
 				//Inventory clear
@@ -205,25 +224,6 @@
 				player.itemSlot4.emptySlot();
 				player.itemSlot5.unlocked = false;
 				player.itemSlot5.emptySlot();
-				//PIERCINGS
-				player.nipplesPierced = 0;
-				player.nipplesPShort = "";
-				player.nipplesPLong = "";
-				player.lipPierced = 0;
-				player.lipPShort = "";
-				player.lipPLong = "";
-				player.tonguePierced = 0;
-				player.tonguePShort = "";
-				player.tonguePLong = "";
-				player.eyebrowPierced = 0;
-				player.eyebrowPShort = "";
-				player.eyebrowPLong = "";
-				player.earsPierced = 0;
-				player.earsPShort = "";
-				player.earsPLong = "";
-				player.nosePierced = 0;
-				player.nosePShort = "";
-				player.nosePLong = "";
 			}
 			//Init none-flag plot variables (The few there still are...)
 			kGAMECLASS.isabellaScene.isabellaOffspringData = []; //CLEAR!
@@ -669,7 +669,7 @@
 		}
 		private function setComplexion(choice:String):void {
 			player.skin.tone = choice;
-			player.claws.tone = "";
+			player.arms.claws.tone = "";
 			clearOutput();
 			outputText(images.showImage("event-question"));
 			outputText("You selected a " + choice + " complexion.\n\nWhat color is your hair?");
@@ -695,6 +695,7 @@
 			mainView.nameBox.visible = false;
 			mainView.nameBox.maxChars = 16;
 			mainView.nameBox.restrict = null;
+			outputText(images.showImage("event-creation"));
 			outputText("You can finalize your appearance customization before you proceed to perk selection. You will be able to alter your appearance through the usage of certain items.\n\n");
 			outputText("Height: " + Math.floor(player.tallness / 12) + "'" + player.tallness % 12 + "\"\n");
 			outputText("Skin tone: " + player.skin.tone + "\n");
@@ -1101,7 +1102,7 @@
 				return;
 			}
 			outputText("You are prepared for what is to come.  Most of the last year has been spent honing your body and mind to prepare for the challenges ahead.  You are the Champion of Ingnam.  The one who will journey to the demon realm and guarantee the safety of your friends and family, even though you'll never see them again.  You wipe away a tear as you enter the courtyard and see Elder Nomur waiting for you.  You are ready.\n\n");
-			outputText("The walk to the tainted cave is long and silent.  Elder Nomur does not speak.  There is nothing left to say.  The two of you journey in companionable silence.  Slowly the black rock of Mount Ilgast looms closer and closer, and the temperature of the air drops.  You shiver and glance at the Elder, noticing he doesn't betray any sign of the cold.  Despite his age of nearly 80, he maintains the vigor of a man half his age.  You're glad for his strength, as assisting him across this distance would be draining, and you must save your energy for the trials ahead.\n\n");
+			outputText("The walk to the tainted cave is long and silent.  Elder Nomur does not speak.  There is nothing left to say.  The two of you journey in companionable silence.  Slowly the black rock of Mount Ilgast looms closer and closer, and the temperature of the air drops.  You shiver and glance at the Elder, noticing he doesn't betray any sign of the cold.  Despite his age of nearly 80, he maintains the vigor of a man half his age.  You're glad for his strength, as assisting him across this distance would be draining, and you must save your energy for the trials ahead.\n");
 			outputText(images.showImage("camp-arrival"));
 			outputText("The entrance of the cave gapes open, sharp stalactites hanging over the entrance, giving it the appearance of a monstrous mouth.  Elder Nomur stops and nods to you, gesturing for you to proceed alone.\n\n");
 			outputText("The cave is unusually warm and damp, ");
@@ -1128,7 +1129,7 @@
 			clearOutput();
 			hideUpDown();
 			dynStats("lus", -30);
-			outputText(images.showImage("item-lDraft"));
+			outputText(images.showImage("item-draft-lust"));
 			outputText("The imp shakes the empty vial to emphasize his point.  You reel in shock at this revelation - you've just entered the demon realm and you've already been drugged!  You tremble with the aching need in your groin, but resist, righteous anger lending you strength.\n\nIn desperation you leap towards the imp, watching with glee as his cocky smile changes to an expression of sheer terror.  The smaller creature is no match for your brute strength as you pummel him mercilessly.  You pick up the diminutive demon and punt him into the air, frowning grimly as he spreads his wings and begins speeding into the distance.\n\n");
 			doNext(arrivalPartFour);
 		}
@@ -1155,7 +1156,6 @@
 			else flags[kFLAGS.GAME_DIFFICULTY] = 0;
 			chooseGameModes();
 		}
-
 		private function chooseModeSurvival():void {
 			if (flags[kFLAGS.HUNGER_ENABLED] < 1) {
 				flags[kFLAGS.HUNGER_ENABLED] += 0.5;
@@ -1167,13 +1167,11 @@
 			}
 			chooseGameModes();
 		}
-
 		private function chooseModeHardcore():void {
 			if (flags[kFLAGS.HARDCORE_MODE] === 0) flags[kFLAGS.HARDCORE_MODE] = 1;
 			else flags[kFLAGS.HARDCORE_MODE] = 0;
 			chooseGameModes();
 		}
-
 		private function chooseModeHardcoreSlot():void {
 			clearOutput();
 			outputText("You have chosen Hardcore Mode. In this mode, the game forces autosave and if you encounter a Bad End, your save file is <b>DELETED</b>! \n\nDebug Mode and Easy Mode are disabled in this game mode. \n\nPlease choose a slot to save in. You may not make multiple copies of saves.");
@@ -1200,29 +1198,26 @@
 		//Choose the game mode when called!
 		private function chooseGameModes():void {
 			clearOutput();
+			outputText(images.showImage("event-creation"));
 			outputText("Choose a game mode.\n\n");
 			outputText("<b>Survival:</b> ");
 			if (flags[kFLAGS.HUNGER_ENABLED] === 0) outputText("Normal Mode. You don't have to eat.\n");
 			if (flags[kFLAGS.HUNGER_ENABLED] === 0.5) outputText("Survival Mode. You get hungry from time to time.\n");
 			if (flags[kFLAGS.HUNGER_ENABLED] === 1) outputText("Realistic Mode. You get hungry from time to time and cum production is capped. In addition, it's a bad idea to have oversized parts.\n");
-
 			outputText("<b>Hardcore:</b> ");
 			if (flags[kFLAGS.HARDCORE_MODE] === 0) outputText("Normal Mode. You choose when you want to save and load.\n");
-			if (flags[kFLAGS.HARDCORE_MODE] === 1)
-				outputText("Hardcore Mode. The game forces save and if you get a Bad End, your save file is deleted. Disables difficulty selection, debug mode, Low Standarts and Hyper Happy mode once the game is started. For the veteran CoC players only.\n");
+			if (flags[kFLAGS.HARDCORE_MODE] === 1) outputText("Hardcore Mode. The game forces save and if you get a Bad End, your save file is deleted. Disables difficulty selection, debug mode, Low Standarts and Hyper Happy mode once the game is started. For the veteran CoC players only.\n");
 			outputText("<b>Difficulty:</b> ");
 			if (flags[kFLAGS.GAME_DIFFICULTY] === 0) outputText("Normal Mode. No stats changes. Game is nice and simple.\n");
 			if (flags[kFLAGS.GAME_DIFFICULTY] === 1) outputText("Hard Mode. Enemies have would have extra 25% HP and 15% damage.\n");
 			if (flags[kFLAGS.GAME_DIFFICULTY] === 2) outputText("Nightmare Mode. Enemies would have extra 50% HP and 30% damage.\n");
 			if (flags[kFLAGS.GAME_DIFFICULTY] === 3) outputText("Extreme Mode. Enemies would have extra 100% HP and 50% damage.\n");
-			if (debug)
-				outputText("<b>Grimdark mode:</b> (In dev) In the grimdark future, there are only rape and corruptions. Lots of things are changed and Lethice has sent out her minions to wall the borders and put up a lot of puzzles. Can you defeat her in this mode in as few bad ends as possible?\n");
+			if (debug) outputText("<b>Grimdark mode:</b> (In dev) In the grimdark future, there are only rape and corruptions. Lots of things are changed and Lethice has sent out her minions to wall the borders and put up a lot of puzzles. Can you defeat her in this mode in as few bad ends as possible?\n");
 			menu();
 			addButton(0, "Survival", chooseModeSurvival);
 			addButton(1, "Hardcore", chooseModeHardcore);
 			addButton(2, "Difficulty", chooseModeDifficulty);
-			if (debug)
-				addButton(3, "Grimdark", chooseModeGrimdark);
+			if (debug) addButton(3, "Grimdark", chooseModeGrimdark);
 			addButton(4, "Start!", flags[kFLAGS.HARDCORE_MODE] === 1 ? chooseModeHardcoreSlot : startTheGame);
 		}
 
@@ -1236,7 +1231,6 @@
 			chooseToPlay();
 			return;
 		}
-
 		public function chooseToPlay():void {
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] === 0) {
 				if (player.femininity >= 55) player.setUndergarment(undergarments.C_PANTY);

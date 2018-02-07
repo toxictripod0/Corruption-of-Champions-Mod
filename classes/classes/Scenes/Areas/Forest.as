@@ -24,7 +24,6 @@ import classes.Scenes.API.FnHelpers;
 //		public var dullahanScene:DullahanScene = new DullahanScene(); //[INTERMOD:8chan]
 		public var dryadScene:DryadScene = new DryadScene();
 
-
 		public function Forest() {}
 
 		public function isDiscovered():Boolean { return flags[kFLAGS.TIMES_EXPLORED_FOREST] > 0; }

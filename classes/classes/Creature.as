@@ -375,10 +375,9 @@ package classes
 		public function set tallness(value:Number):void { _tallness = value; }
 
 		public var antennae:Antennae = new Antennae();
-		public var arms:Arms = new Arms();
+		public var arms:Arms; // Set in the constructor ...
 		public var beard:Beard = new Beard();
 		public var butt:Butt = new Butt();
-		public var claws:Claws = new Claws();
 		public var ears:Ears = new Ears();
 		public var eyes:Eyes = new Eyes();
 		public var face:Face = new Face();
@@ -607,6 +606,7 @@ package classes
 			breastRows = new Vector.<BreastRowClass>();
 			_perks = [];
 			statusEffects = [];
+			arms = new Arms(this);
 			//keyItems = new Array();
 		}
 
@@ -2887,9 +2887,9 @@ package classes
 		// <mod name="Predator arms" author="Stadler76">
 		public function clawsDescript():String
 		{
-			var toneText:String = claws.tone == "" ? " " : (", " + claws.tone + " ");
+			var toneText:String = arms.claws.tone == "" ? " " : (", " + arms.claws.tone + " ");
 
-			switch (claws.type) {
+			switch (arms.claws.type) {
 				case Claws.NORMAL: return "fingernails";
 				case Claws.LIZARD: return "short curved" + toneText + "claws";
 				case Claws.DRAGON: return "powerful, thick curved" + toneText + "claws";
@@ -3095,6 +3095,11 @@ package classes
 			if (eggs() >= 10 && hasPerk(PerkLib.BeeOvipositor) && tail.type == Tail.BEE_ABDOMEN)
 				return true;
 			return false;
+		}
+
+		public function hasOvipositor():Boolean
+		{
+			return hasPerk(PerkLib.SpiderOvipositor) || hasPerk(PerkLib.BeeOvipositor);
 		}
 
 		public function canOviposit():Boolean
@@ -3425,6 +3430,8 @@ package classes
 				case CockTypesEnum.LIZARD:
 				case CockTypesEnum.PIG:
 				case CockTypesEnum.TENTACLE:
+				case CockTypesEnum.RED_PANDA:
+				case CockTypesEnum.FERRET:
 					if (countCocksOfType(cocks[0].cockType) == cocks.length) return Appearance.cockNoun(cocks[0].cockType) + "s";
 					break;
 				case CockTypesEnum.DOG:
@@ -3449,6 +3456,8 @@ package classes
 					case CockTypesEnum.KANGAROO:
 					case CockTypesEnum.AVIAN:
 					case CockTypesEnum.ECHIDNA:
+					case CockTypesEnum.RED_PANDA:
+					case CockTypesEnum.FERRET:
 						return true; //If there's even one cock of any of these types then return true
 					default:
 				}

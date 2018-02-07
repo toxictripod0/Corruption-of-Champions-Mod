@@ -189,6 +189,20 @@ package classes {
 				player.removePerk(PerkLib.Flexibility);
 				needNext = true;
 			}
+			//War Dance perk
+			if (player.ferretScore() >= 6) {
+				if (!player.hasPerk(PerkLib.WarDance)) {
+					outputText("\n\nDue how strong and agile the muscles on your legs and arms are, you’re able to hit your enemies with ease,"
+					          +" making your melee attacks stronger and harder to avoid.\n(<b>Gained Perk: War Dance</b>)\n");
+					player.createPerk(PerkLib.WarDance, 0, 0, 0, 0);
+					needNext = true;
+				}
+			} else if (player.hasPerk(PerkLib.WarDance)) {
+				outputText("\nYou notice that you aren't as strong and agile as you were when you had a more ferret-like body."
+				          +" Hand to hand combat would probably be harder for you now.\n\n(<b>Lost Perk: War Dance</b>)\n");
+				player.removePerk(PerkLib.WarDance);
+				needNext = true;
+			}
 			//Lustzerker perk
 			if (player.tail.type == Tail.SALAMANDER && player.lowerBody.type == LowerBody.SALAMANDER && player.arms.type == Arms.SALAMANDER) { //Check for gain of lustzerker - requires legs, arms and tail
 				if (player.findPerk(PerkLib.Lustzerker) < 0) {

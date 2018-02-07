@@ -386,8 +386,7 @@ package classes.Items.Consumables
 				          +" Your hands gain pink, padded paws where your palms were once, and your nails become short claws,"
 				          +" not sharp enough to tear flesh, but nimble enough to make climbing and exploring much easier."
 				          +" <b>Your arms have become like those of  a red-panda!</b>");
-				player.arms.type = Arms.RED_PANDA;
-				mutations.updateClaws(Claws.RED_PANDA);
+				player.arms.setType(Arms.RED_PANDA, Claws.RED_PANDA);
 			}
 
 			// Legs
