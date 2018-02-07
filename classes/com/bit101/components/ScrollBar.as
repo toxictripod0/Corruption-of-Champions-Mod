@@ -44,6 +44,7 @@ package com.bit101.components
 		protected const DOWN:String = "down";
 
         protected var _autoHide:Boolean = false;
+		protected var _activated:Boolean = true;
 		protected var _upButton:PushButton;
 		protected var _downButton:PushButton;
 		protected var _scrollSlider:ScrollSlider;
@@ -193,14 +194,21 @@ package com.bit101.components
 				_downButton.y = 0;
 			}
 			_scrollSlider.draw();
-            if(_autoHide)
-            {
-                visible = _scrollSlider.thumbPercent < 1.0;
-            }
-            else
-            {
-                visible = true;
-            }
+            if (_activated)
+			{
+				if (_autoHide)
+				{
+					visible = _scrollSlider.thumbPercent < 1.0;
+				}
+				else
+				{
+					visible = true;
+				}
+			}
+			else
+			{
+				visible = false;
+			}
 		}
 
 		
@@ -210,6 +218,19 @@ package com.bit101.components
 		///////////////////////////////////
 		// getter/setters
 		///////////////////////////////////
+
+        /**
+         * Sets / gets whether the scrollbar will be activated
+         */
+        public function set activated(value:Boolean):void
+        {
+            _activated = value;
+            invalidate();
+        }
+        public function get activated():Boolean
+        {
+            return _activated;
+        }
 
         /**
          * Sets / gets whether the scrollbar will auto hide when there is nothing to scroll.

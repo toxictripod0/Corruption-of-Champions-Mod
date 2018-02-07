@@ -793,13 +793,13 @@ public class MainView extends Block {
 	public function showMainText():void {
 		this.setTextBackground();
 		this.mainText.visible = true;
-		this.scrollBar.visible = true;
+		this.scrollBar.activated = true;
 	}
 	public function hideMainText():void {
 		this.clearTextBackground();
 		this.resetTextFormat();
 		this.mainText.visible = false;
-		this.scrollBar.visible = false;
+		this.scrollBar.activated = false;
 	}
 	public function resetTextFormat():void {
 		var normalFormat:TextFormat = new TextFormat();
