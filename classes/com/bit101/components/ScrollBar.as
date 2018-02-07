@@ -43,7 +43,7 @@ package com.bit101.components
 		protected const UP:String = "up";
 		protected const DOWN:String = "down";
 
-        protected var _autoHide:Boolean = false;
+		protected var _autoHide:Boolean = false;
 		protected var _activated:Boolean = true;
 		protected var _upButton:PushButton;
 		protected var _downButton:PushButton;
@@ -194,7 +194,11 @@ package com.bit101.components
 				_downButton.y = 0;
 			}
 			_scrollSlider.draw();
-            if (_activated)
+			if (!_activated)
+			{
+				visible = false;
+			}
+			else
 			{
 				if (_autoHide)
 				{
@@ -204,10 +208,6 @@ package com.bit101.components
 				{
 					visible = true;
 				}
-			}
-			else
-			{
-				visible = false;
 			}
 		}
 
@@ -219,31 +219,31 @@ package com.bit101.components
 		// getter/setters
 		///////////////////////////////////
 
-        /**
-         * Sets / gets whether the scrollbar will be activated
-         */
-        public function set activated(value:Boolean):void
-        {
-            _activated = value;
-            invalidate();
-        }
-        public function get activated():Boolean
-        {
-            return _activated;
-        }
+		/**
+		 * Sets / gets whether the scrollbar will be activated
+		 */
+		public function set activated(value:Boolean):void
+		{
+			_activated = value;
+			invalidate();
+		}
+		public function get activated():Boolean
+		{
+			return _activated;
+		}
 
-        /**
-         * Sets / gets whether the scrollbar will auto hide when there is nothing to scroll.
-         */
-        public function set autoHide(value:Boolean):void
-        {
-            _autoHide = value;
-            invalidate();
-        }
-        public function get autoHide():Boolean
-        {
-            return _autoHide;
-        }
+		/**
+		 * Sets / gets whether the scrollbar will auto hide when there is nothing to scroll.
+		 */
+		public function set autoHide(value:Boolean):void
+		{
+			_autoHide = value;
+			invalidate();
+		}
+		public function get autoHide():Boolean
+		{
+			return _autoHide;
+		}
 
 		/**
 		 * Sets / gets the current value of this scroll bar.
@@ -640,8 +640,8 @@ class ScrollSlider extends Slider
 		return _pageSize;
 	}
 
-    public function get thumbPercent():Number
-    {
-        return _thumbPercent;
-    }
+	public function get thumbPercent():Number
+	{
+		return _thumbPercent;
+	}
 }
