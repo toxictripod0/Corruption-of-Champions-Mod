@@ -58,7 +58,6 @@ package classes
 	import classes.internals.Utils;
 	import classes.Time;
 	import coc.view.MainView;
-	import fl.data.DataProvider;
 	import flash.display.DisplayObjectContainer;
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
@@ -613,8 +612,8 @@ package classes
 			
 			// ******************************************************************************************
 			
-			mainView.aCb.dataProvider = new DataProvider([{label: "TEMP", perk: new PerkClass(PerkLib.Acclimation)}]);
-			mainView.aCb.addEventListener(Event.CHANGE, playerInfo.changeHandler);
+			mainView.aCb.items = [{label: "TEMP", perk: new PerkClass(PerkLib.Acclimation)}];
+			mainView.aCb.addEventListener(Event.SELECT, playerInfo.changeHandler);
 			
 			//Register the classes we need to be able to serialize and reconstitute so
 			// they'll get reconstituted into the correct class when deserialized
