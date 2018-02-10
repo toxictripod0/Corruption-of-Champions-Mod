@@ -1577,64 +1577,53 @@ package classes.Scenes
 			//Give birth to either a faerie or a phouka
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_FAERIE) {
 					getGame().bog.phoukaScene.phoukaPregBirth();
-					player.knockUpForce(); //Clear Pregnancy
 			}
 			//Give birf to dragons
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_EMBER) {
 				getGame().emberScene.giveBirthToEmberKids();
-				player.knockUpForce(); //Clear Pregnancy
 			}
 			
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_URTA) {
 				getGame().urtaPregs.PCGivesBirf();
-				player.knockUpForce(); //Clear Pregnancy
 			}
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_SAND_WITCH) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_SAND_WITCH);
 				getGame().dungeons.desertcave.birthAWitch();
-				player.knockUpForce(); //Clear Pregnancy
 			}
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_IZMA) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_IZMA);
 				getGame().izmaScene.pcPopsOutASharkTot();
-				player.knockUpForce(); //Clear Pregnancy
+				
 			}
 			
 			//SPOIDAH BIRF
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_SPIDER) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_SPIDER);
-				player.knockUpForce(); //Clear Pregnancy
 				getGame().swamp.maleSpiderMorphScene.spiderPregVagBirth();
 			}
 			//DRIDER BIRF
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_DRIDER_EGGS) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_DRIDER_EGGS);
-				player.knockUpForce(); //Clear Pregnancy
 				getGame().swamp.corruptedDriderScene.driderPregVagBirth();
 			}
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_COTTON) {
-				player.knockUpForce(); //Clear Pregnancy
 				getGame().telAdre.cotton.birthingCottonsKids();
 			}
 			//GOO BIRF
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_GOO_GIRL) {
-				player.knockUpForce(); //Clear Pregnancy
 				getGame().lake.gooGirlScene.gooPregVagBirth();
 			}
 			
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_BASILISK) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_BASILISK);
-				player.knockUpForce(); //Clear Pregnancy
 				getGame().highMountains.basiliskScene.basiliskBirth();
 			}
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_COCKATRICE) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_COCKATRICE);
-				player.knockUpForce(); //Clear Pregnancy
 				getGame().highMountains.cockatriceScene.cockatriceBirth();
 			}
 			//Satyr vag preg
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_SATYR) {
-				player.knockUpForce(); //Clear Pregnancy
 				getGame().plains.satyrScene.satyrBirth(true);
 			}
 			
@@ -1642,7 +1631,6 @@ package classes.Scenes
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_FROG_GIRL) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_FROG_GIRL);
 				getGame().bog.frogGirlScene.layFrogEggs();
-				player.knockUpForce(); //Clear Pregnancy
 			}
 			
 			//BASILISK BIRF
@@ -1674,7 +1662,6 @@ package classes.Scenes
 					if (!player.hasStatusEffect(StatusEffects.BonusVCapacity)) player.createStatusEffect(StatusEffects.BonusVCapacity,0,0,0,0);
 					player.addStatusValue(StatusEffects.BonusVCapacity, 1, 10);
 				}
-				player.knockUpForce(); //Clear Pregnancy
 				player.orgasm('Vaginal');
 				dynStats("lib", 1, "sen", 10, "cor", -2);
 			}
@@ -1786,7 +1773,6 @@ package classes.Scenes
 					outputText("\n\n<b>Your cunt is painfully stretched from the ordeal, permanently enlarged.</b>");
 				}
 				
-				player.knockUpForce(); //Clear Pregnancy
 				outputText("\n\nWhen you wake you find a large number of tiny imp tracks... and a spattering of cum on your clothes and body.  They must be born fully-formed.");
 				if (player.averageLactation() > 0 && player.averageLactation() < 5) {
 					outputText("  Your breasts won't seem to stop dribbling milk, lactating more heavily than before.");
@@ -1826,7 +1812,6 @@ package classes.Scenes
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_MARBLE) {
 				outputText(images.showImage("birth-cowgirl"));
 				if (prison.prisonLetter.deliverChildWhileInPrison()) return displayedUpdate;
-				player.knockUpForce(); //Clear Pregnancy
 				player.boostLactation(.01);
 				if (player.vaginas.length === 0) {
 					outputText("\nYou feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  You look down and behold a vagina.\n");
@@ -1907,7 +1892,6 @@ package classes.Scenes
 				//Main Text here
 				outputText("\nYou wake up suddenly to strong pains and pressures in your gut. As your eyes shoot wide open, you look down to see your belly absurdly full and distended. You can feel movement underneath the skin, and watch as it bulges and shifts as another living being moves independently inside you. Instinctively, you spread your legs as you feel the creature press outward, parting your cervix.\n\nYou try to push with your vaginal muscles, but you feel the creature moving more of its own volition. Your lips part as a pair of black-furred hands grip your vulva and begin to spread them and pull. You cry out in agony as your hips are widened forcefully by the passing mass of the being exiting your womb. A bovine face appears, mercifully lacking in horns. Shoulders follow, muscles already rippling on the newborn's form. A thick barrel chest follows, narrow, masculine hips and powerful bovine legs and hooves.\n\nFinally the worst is over as the toddler-sized minotaur gets to his feet, apparently already able to stand and walk.  He clops around your legs and over to your upper body, and takes hold of one of your milk-swollen breasts. He wraps his bestial lips around your nipple and begins to suckle, relieving the pressure on the milk-swollen jug.\n\n");
 				outputText("He suckles and suckles and suckles, leaving you to wonder just how much milk you were actually holding, but even as you wonder this, your eyes grow wide as the newborn minotaur begins to grow. He gains inches at a time, his horns starting to grow from his skull, his muscles rippling and thickening, his cock lengthening, his balls swelling. He reaches four feet tall, but keeps growing, soon then five feet tall, starting to resemble more and more the monster who sired him. Finally, he pulls off your breasts, and finishes his milk-inspired growth spurt at six feet tall, looking practically full grown. His one gesture of gratitude for being brought into the world is a slobbery lick at your cheek, then he turns and runs off towards the mountain, leaving you to recover from the ordeal.  You swiftly pass out.\n\n");
-				player.knockUpForce(); //Clear Pregnancy
 				if (player.averageLactation() > 0 && player.averageLactation() < 5) {
 					outputText("Your breasts won't seem to stop dribbling milk, lactating more heavily than before.");
 					player.boostLactation(1);
@@ -1949,7 +1933,6 @@ package classes.Scenes
 				outputText("She cannot stand, at first, and stumbles over her own shaky legs in a cute, innocent way. She appears to be a six-year old girl, stuck on top of the body of a young foal, and your heart goes out to her involuntarily. She manages to stand at last, wobbling uncertainly, and moves immediately towards your prone form. Knowing her needs, you reveal a breast to her, and she nickers affectionately before latching on, drinking hungrily from your heavily lactating teat.\n\n");
 				outputText("She drinks endlessly, and seems more alive and stronger with every gulp. Hours pass in quiet, motherly bliss as she drains your breastmilk first from one breast, then the other. Her little stomach bulges slightly, but she does not stop, and you do not want her to. Even with the strange, soothing effect of the pregnancy wearing off, you feel nothing but affection for this child.\n\n");
 				outputText("By the time she is finished, the centaur girl is obviously stronger, able to stand and move about on her own. She explores her new body, jumping and prancing happily, while you lay back and watch, too exhausted to join her. Suddenly, though, her ears perk up, as she looks towards the horizon urgently. She hesitates just long enough to plant a sweet kiss on your cheek, then dashes off, smiling broadly. Exhausted, you are unable to follow... but that comforting sensation returns.  Somehow, you sense she will be all right.");
-				player.knockUpForce(); //Clear Pregnancy
 				if (player.averageLactation() > 0 && player.averageLactation() < 5) {
 					outputText("  Your " + player.allBreastsDescript() + " won't seem to stop dribbling milk, lactating more heavily than before.");
 					player.boostLactation(.5);
@@ -1987,7 +1970,6 @@ package classes.Scenes
 				outputText("You sit there in a state of euphoria for some time.  It's not until the child in front of you starts to become uncomfortably hot and heavy, that you are brought back to reality.  You look down to see that the hellhound pup has grown to three times its original size and even sprouted the distinctive layer of tough black fur.  The beast is licking contentedly at your breasts instead of sucking.  It was the now-full flames in its mouth that had broken your reverie, but before you get a real grasp of what had happened, the hellhound pulls away from you and gives you a few quick happy barks before turning around and running off into the wilds, dropping down onto four legs just before disappearing from view.  You feel the unnatural strength you gained during the birth fade away, and you fall into a deep contented sleep.\n\n");
 				player.boostLactation(.01);
 				//Main Text here
-				player.knockUpForce(); //Clear Pregnancy
 				if (player.averageLactation() > 0 && player.averageLactation() < 5) {
 					outputText("Your breasts won't seem to stop dribbling milk, lactating more heavily than before.  ");
 					player.boostLactation(.5);
@@ -2023,9 +2005,7 @@ package classes.Scenes
 					player.hips.rating++;
 					outputText("\n\nAfter the birth your " + player.armorName + " fits a bit more snugly about your " + player.hipDescript() + ".");
 				}
-				player.knockUpForce(); //Clear Pregnancy
 				outputText("\n");
-				return displayedUpdate;
 			}
 			
 			//Give birth to behemoth.
@@ -2040,9 +2020,7 @@ package classes.Scenes
 					player.hips.rating++;
 					outputText("\n\nAfter the birth your " + player.armorName + " fits a bit more snugly about your " + player.hipDescript() + ".");
 				}
-				player.knockUpForce(); //Clear Pregnancy
 				outputText("\n");
-				return displayedUpdate;
 			}
 			
 			//Egg status messages
@@ -2139,7 +2117,6 @@ package classes.Scenes
 				player.orgasm('Vaginal');
 				dynStats("str", -1,"tou", -2, "spe", 3, "lib", 1, "sen", .5);
 				outputText("\n");
-				player.knockUpForce(); //Clear Pregnancy
 			}
 			
 			//Give birth if it's time (to a mouse!)
@@ -2164,7 +2141,6 @@ package classes.Scenes
 					outputText("Pain shoots through you as they pull open your cervix forcefully. You grip the ground and pant and push as the pains of labor overwhelm you. You feel your hips being forceably widened by the collective mass of the creatures moving down your birth canal. You spread your legs wide, laying your head back with groans and cries of agony as little white figures begin to emerge from between the lips of your abused pussy. Large innocent eyes, even larger ears, cute little muzzles, long slender pink tails all appear as the figures emerge. Each could be no larger than six inches tall, but they seem as active and curious as if they were already developed children. \n\n");
 					outputText("Two emerge, then four, eight... you lose track. They swarm your body, scrambling for your chest, and take turns suckling at your nipples. Milk does their bodies good, making them grow rapidly, defining their genders as the girls grow cute little breasts and get broader hips and the boys develop their little mouse cocks and feel their balls swell. Each stops suckling when they reach two feet tall, and once every last one of them has departed your sore, abused cunt and drunk their fill of your milk, they give you a few grateful nuzzles, then run off towards the forest, leaving you alone to recover.\n");
 				}
-				player.knockUpForce(); //Clear Pregnancy
 				if (player.averageLactation() > 0 && player.averageLactation() < 5) {
 					outputText("Your [chest] won't seem to stop dribbling milk, lactating more heavily than before.");
 					player.boostLactation(.5);
@@ -2187,6 +2163,8 @@ package classes.Scenes
 				}
 				outputText("\n");
 			}
+			
+			player.knockUpForce();
 			
 			return true;
 		}
