@@ -1572,6 +1572,16 @@ package classes.Scenes
 			}
 		}
 		
+		/**
+		 * Check is the player has a vagina and create one if missing.
+		 */
+		private function createVaginaIfMissing(): void {
+			if (player.vaginas.length === 0) {
+				outputText("\nYou feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.\n");
+				player.createVagina();
+			}
+		}
+		
 		private function updateVaginalBirth(displayedUpdate:Boolean):Boolean 
 		{
 			//Give birth to either a faerie or a phouka
@@ -1637,12 +1647,8 @@ package classes.Scenes
 			//Bunbun birfs
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_BUNNY) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_BUNNY);
-				outputText("\n");
 				outputText(images.showImage("birth-bunny"));
-				if (player.vaginas.length === 0) {
-					outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  You look down and behold a vagina.  ");
-					player.createVagina();
-				}
+				createVaginaIfMissing();
 				outputText("A dangerous rumble comes from your womb, signaling that it's time to birth your body's cargo at last.  Your " + player.legs() + " wobble unsteadily as your strength ebbs with every gush that erupts  from your now-broken water until you collapse on your " + player.buttDescript() + ", grunting and groaning.  At first it goes slow – there's just a few small contractions that are more strange than anything else, rippling down your " + player.vaginaDescript(0) + " and squirting out more of your pregnancy's fluid.  All too soon the tempo kicks up, and you feel something starting to stretch you wider and wider.\n\n");
 				
 				outputText("You heave and push, instinctively driven to flex muscles you didn't even know you had to speed the super human labor you've entered into.  ");
@@ -1671,11 +1677,7 @@ package classes.Scenes
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_ANEMONE) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_ANEMONE);
 				outputText(images.showImage("birth-anemone"));
-				outputText("\n");
-				if (player.vaginas.length === 0) {
-					outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  You look down and behold a vagina.  ");
-					player.createVagina();
-				}
+				createVaginaIfMissing();
 				outputText("Your " + player.armorName + " feels damp around the groin and you reach down to check the area.  The  " + player.vaginaDescript(0) + " you feel is dilated and slick with unusual wetness; your water must have broken!\n\n");
 				
 				outputText("Hurriedly you strip off your gear and sit down with your back against a rock.  Focusing yourself, you attempt to prepare for labor; you try to remember your recent partners and worry about what kind of monstrous infant you might have to force out of your " + player.vaginaDescript(0) + ".  The first contraction comes and you push as hard as you can, to be rewarded with the feeling of something sliding out between your labia.  You attempt a few more pushes but nothing further seems forthcoming; curious, you look down at your crotch only to discover a blue stalk sticking proudly out of your vagina!\n\n");
@@ -1753,14 +1755,10 @@ package classes.Scenes
 			//Give birth if it's time (to an imp!)
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_IMP) {
 				outputText(images.showImage("birth-imp"));
-				outputText("\n");
 				//Add imp birth status - used to control frequency of night imp gangbag
 				if (player.hasStatusEffect(StatusEffects.BirthedImps)) player.addStatusValue(StatusEffects.BirthedImps,1,1);
 				else player.createStatusEffect(StatusEffects.BirthedImps,1,0,0,0);
-				if (player.vaginas.length === 0) {
-					outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  You look down and behold a vagina.  ");
-					player.createVagina();
-				}		
+				createVaginaIfMissing();
 				outputText("A sudden gush of fluids erupts from your vagina - your water just broke.  You grunt painfully as you feel wriggling and squirming inside your belly, muscle contractions forcing it downwards.  ");
 				if (player.cor < 50) outputText("You rue the day you encountered that hateful imp.  ");
 				outputText("The pain begins to subside as your delivery continues... replaced with a building sensation of pleasure.  Arousal spikes through you as the contractions intensify, and as you feel something pass you have a tiny orgasm.\n\nYet you feel more within you, and the contractions spike again, pushing you to orgasm as you pass something else.  It repeats, over and over, nearly a dozen times you birth and orgasm.  After an eternity of procreation and pleasure, you sense your ordeal is over and collapse, unconscious.");
@@ -1813,10 +1811,7 @@ package classes.Scenes
 				outputText(images.showImage("birth-cowgirl"));
 				if (prison.prisonLetter.deliverChildWhileInPrison()) return displayedUpdate;
 				player.boostLactation(.01);
-				if (player.vaginas.length === 0) {
-					outputText("\nYou feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  You look down and behold a vagina.\n");
-					player.createVagina();
-				}	
+				createVaginaIfMissing();
 				//If you like terrible outcomes
 				if (flags[kFLAGS.MARBLE_NURSERY_CONSTRUCTION] < 100) {
 					outputText("\nYou feel a clenching sensation in your belly and something shifts inside.  Your contractions start a few moments later and you realize that it's time for your child to be born.  You cry out mildly in pain and lie down, letting your body start to push the baby out.  Marble doesn't seem to be around right now, so you can do nothing but push.\n\n");
@@ -1884,10 +1879,7 @@ package classes.Scenes
 			//Give birth if it's time (to a minotaur!)
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_MINOTAUR) {
 				outputText(images.showImage("birth-minotaur"));
-				if (player.vaginas.length === 0) {
-					outputText("\nYou feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.\n");
-					player.createVagina();
-				}
+				createVaginaIfMissing();
 				player.boostLactation(.01);		
 				//Main Text here
 				outputText("\nYou wake up suddenly to strong pains and pressures in your gut. As your eyes shoot wide open, you look down to see your belly absurdly full and distended. You can feel movement underneath the skin, and watch as it bulges and shifts as another living being moves independently inside you. Instinctively, you spread your legs as you feel the creature press outward, parting your cervix.\n\nYou try to push with your vaginal muscles, but you feel the creature moving more of its own volition. Your lips part as a pair of black-furred hands grip your vulva and begin to spread them and pull. You cry out in agony as your hips are widened forcefully by the passing mass of the being exiting your womb. A bovine face appears, mercifully lacking in horns. Shoulders follow, muscles already rippling on the newborn's form. A thick barrel chest follows, narrow, masculine hips and powerful bovine legs and hooves.\n\nFinally the worst is over as the toddler-sized minotaur gets to his feet, apparently already able to stand and walk.  He clops around your legs and over to your upper body, and takes hold of one of your milk-swollen breasts. He wraps his bestial lips around your nipple and begins to suckle, relieving the pressure on the milk-swollen jug.\n\n");
@@ -1921,11 +1913,8 @@ package classes.Scenes
 						//Centaur Baby!
 			if ((player.pregnancyType === PregnancyStore.PREGNANCY_CENTAUR || player.pregnancyType === PregnancyStore.PREGNANCY_KELT)) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_CENTAUR);
-				outputText("\nYou blink, feeling a sudden ache of need radiating from your massive stomach. You can't even get off the ground, it is so heavy... you simply lie on your side, panting with desire, as the convulsions start. New life moves beneath your stomach, ready to be born, and it is time to do your part.\n\n");
-				if (player.vaginas.length === 0) {
-					outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.  ");
-					player.createVagina();
-				}		
+				outputText("\nYou blink, feeling a sudden ache of need radiating from your massive stomach. You can't even get off the ground, it is so heavy... you simply lie on your side, panting with desire, as the convulsions start. New life moves beneath your stomach, ready to be born, and it is time to do your part.\n");
+				createVaginaIfMissing();
 				//Main Text here
 				player.boostLactation(.01);
 				outputText("Perhaps strangely, there is no pain, just a steady, rhythmic compulsion that directs you to breathe steadily and spread your legs as wide as possible. You hardly have to push at all, as the child - no, your child, begins pressing against the walls of your womb, searching for escape. It finds it, and begins the arduous task of squeezing through your cervix, making you gasp with barely concealed pleasure.  It doesn't even hurt; there's only a dull little whisper of happiness followed by a tide of satisfaction.\n\n");
@@ -1960,11 +1949,8 @@ package classes.Scenes
 			//Give birth if it's time (to a hellhound!)
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_HELL_HOUND) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_HELL_HOUND);
-				outputText("\nYou are suddenly awoken by the heat inside your womb suddenly flaring up rather intensely.  It gives you a sudden charge of energy and you feel a strong need to stand up.  You can feel the two heads moving inside of you and you know that a hellhound will soon be born.  Guided by your instincts, you spread your legs and squat down, but wonder how exactly you are going to pass a creature with two heads?\n\n");
-				if (player.vaginas.length === 0) {
-					outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.\n\n");
-					player.createVagina();
-				}		
+				outputText("\nYou are suddenly awoken by the heat inside your womb suddenly flaring up rather intensely.  It gives you a sudden charge of energy and you feel a strong need to stand up.  You can feel the two heads moving inside of you and you know that a hellhound will soon be born.  Guided by your instincts, you spread your legs and squat down, but wonder how exactly you are going to pass a creature with two heads?\n");
+				createVaginaIfMissing();
 				outputText("Hearing a hiss, you look down to see drops of water hitting the ground and instantly turning to steam.  There is unnatural heat filling you, it's hot enough to boil water; but thanks to the creature inside you, you're barely feeling a thing!  More energy fills you and you begin to push down on the child within in earnest.  The process is painful, but satisfying; you feel like you could push out a mountain with the energy you have right now.  Within a minute, you can feel the heads emerge.  The heads are quickly followed by the rest of the body and you catch your hellhound child in your hands and lift it up to look at it.\n\n");
 				outputText("You can see the distinctive dog heads are wrapped around each other and yipping softly; a hint of flame can sometimes be seen inside their mouths.  Its cute paws are waving in the air looking for purchase, but the rest of its body looks entirely human except for the double dicks, and it even has your skin color.  Its mouths are aching for nutrition, and you realize that your breasts are filled with what this pup needs and pull it to your chest.  Each head quickly finds a nipple and begins to suckle.  Having finished the birthing, you contentedly sit back down and bask in the feeling of giving milk to your child, or is it children?\n\n");
 				outputText("You sit there in a state of euphoria for some time.  It's not until the child in front of you starts to become uncomfortably hot and heavy, that you are brought back to reality.  You look down to see that the hellhound pup has grown to three times its original size and even sprouted the distinctive layer of tough black fur.  The beast is licking contentedly at your breasts instead of sucking.  It was the now-full flames in its mouth that had broken your reverie, but before you get a real grasp of what had happened, the hellhound pulls away from you and gives you a few quick happy barks before turning around and running off into the wilds, dropping down onto four legs just before disappearing from view.  You feel the unnatural strength you gained during the birth fade away, and you fall into a deep contented sleep.\n\n");
@@ -1996,10 +1982,7 @@ package classes.Scenes
 			//Give birth to sirens.
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_MINERVA) {
 				if (prison.prisonLetter.deliverChildWhileInPrison()) return displayedUpdate;
-				if (player.vaginas.length === 0) {
-					outputText("\nYou feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.\n");
-					player.createVagina();
-				}
+				createVaginaIfMissing();
 				kGAMECLASS.highMountains.minervaScene.minervaPurification.playerGivesBirth();
 				if (player.hips.rating < 10) {
 					player.hips.rating++;
@@ -2011,10 +1994,7 @@ package classes.Scenes
 			//Give birth to behemoth.
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_BEHEMOTH) {
 				if (prison.prisonLetter.deliverChildWhileInPrison()) return displayedUpdate;
-				if (player.vaginas.length === 0) {
-					outputText("\nYou feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.\n");
-					player.createVagina();
-				}
+				createVaginaIfMissing();
 				kGAMECLASS.volcanicCrag.behemothScene.giveBirthToBehemoth();
 				if (player.hips.rating < 10) {
 					player.hips.rating++;
@@ -2032,11 +2012,7 @@ package classes.Scenes
 				}			
 				//Birth scenes
 				if (player.pregnancyIncubation === 1) {
-					outputText("\n");
-					if (player.vaginas.length === 0) {
-						outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.\n\n");
-						player.createVagina();
-					}
+					createVaginaIfMissing();
 					var oviMaxOverdoseGainedOviPerk:Boolean = false;
 					if (!player.hasPerk(PerkLib.Oviposition) && flags[kFLAGS.OVIMAX_OVERDOSE] > 0 && rand(3) < flags[kFLAGS.OVIMAX_OVERDOSE]) {
 						outputText("You instantly feel your body seize up and you know something is wrong."
@@ -2105,11 +2081,7 @@ package classes.Scenes
 			//Give birth if it's time (to an AMILY BITCH mouse!)
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_AMILY) {
 				player.boostLactation(.01);
-				outputText("\n");
-				if (player.vaginas.length === 0) {
-					outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.  ");
-					player.createVagina();
-				}
+				createVaginaIfMissing();
 				//FUCKING BIRTH SHIT HERE.
 				getGame().amilyScene.pcBirthsAmilysKidsQuestVersion();
 				player.cuntChange(60, true, true, false);
@@ -2123,11 +2095,8 @@ package classes.Scenes
 			if ((player.pregnancyType === PregnancyStore.PREGNANCY_MOUSE || player.pregnancyType === PregnancyStore.PREGNANCY_JOJO)) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_MOUSE);
 				player.boostLactation(.01);
-				outputText("\nYou wake up suddenly to strong pains and pressures in your gut. As your eyes shoot wide open, you look down to see your belly absurdly full and distended. You can feel movement underneath the skin, and watch as it is pushed out in many places, roiling and squirming in disturbing ways. The feelings you get from inside are just as disconcerting. You count not one, but many little things moving around inside you. There are so many, you can't keep track of them.\n\n");
-				if (player.vaginas.length === 0) {
-					outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.  ");
-					player.createVagina();
-				}		
+				outputText("\nYou wake up suddenly to strong pains and pressures in your gut. As your eyes shoot wide open, you look down to see your belly absurdly full and distended. You can feel movement underneath the skin, and watch as it is pushed out in many places, roiling and squirming in disturbing ways. The feelings you get from inside are just as disconcerting. You count not one, but many little things moving around inside you. There are so many, you can't keep track of them.\n");
+				createVaginaIfMissing();
 
 				//Main Text here
 				if (player.pregnancyType === PregnancyStore.PREGNANCY_JOJO && (flags[kFLAGS.JOJO_STATUS] < 0 || flags[kFLAGS.JOJO_BIMBO_STATE] >= 3) && !prison.inPrison) {
