@@ -1028,7 +1028,15 @@ public class SpriteDb {
 	public static function get s_zetaz(): Class {
 		return is8bit ? s_impOverlord_8bit : s_zetaz_16bit;
 	}
+	
 
+	[Embed(source="../../../res/sprites/dryad.png")]
+	public static const s_dryad_16bit:Class;
+	[Embed(source="../../../res/sprites/dryad.png")]
+	public static const s_dryad_8bit:Class;
+	public static function get s_dryad(): Class {
+		return is8bit ? s_dryad_8bit : s_dryad_16bit;
+	}
 	public static function bitmapData(clazz:Class):BitmapData {
 		if (!clazz) return null;
 		var e:Object = new clazz();
