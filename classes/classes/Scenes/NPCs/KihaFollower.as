@@ -64,7 +64,8 @@
 				if (nude) spriteSelect(SpriteDb.s_kiha_nude);
 				else spriteSelect(SpriteDb.s_kiha);
 			else  {
-				spriteSelect(SpriteDb.s_kiha_preg);
+				if (nude) spriteSelect(SpriteDb.s_kiha_nude_preg);
+				else spriteSelect(SpriteDb.s_kiha_preg);
 			}
 		}
 
