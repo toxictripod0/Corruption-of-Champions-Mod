@@ -109,6 +109,10 @@ package classes.Scenes.Areas {
 					}, {
 						name: "izumi",
 						call: izumiScenes.encounter
+					}, {
+						name:"hike",
+						chance:0.2,
+						call:hike
 					});
 			return _explorationEncounter;
 		}
@@ -208,9 +212,28 @@ package classes.Scenes.Areas {
 		public function leaveChickenx():void { //If No
 			clearOutput();
 			spriteSelect(SpriteDb.s_chickenHarpy);
+			outputText(images.showImage("area-highmountains"));
 			outputText("At the polite decline of her offer, the chicken harpy gives a warm smile before picking her cart back up and continuing along the path through the mountains.");
 			outputText("\n\nYou decide to take your own path, heading back to camp while you can.");
 			doNext(camp.returnToCampUseOneHour);
+		}
+
+		private function hike():void {
+			clearOutput();
+			outputText(images.showImage("area-highmountains"));
+			if (player.cor < 90) {
+				outputText("Your hike in the highmountains, while fruitless, reveals pleasant vistas and provides you with good exercise and relaxation.");
+				dynStats("tou", .25, "spe", .5, "lus", player.lib / 10 - 15);
+			}
+			else {
+				outputText("During your hike into the highmountains, your depraved mind keeps replaying your most obcenely warped sexual encounters, always imagining new perverse ways of causing pleasure.\n\nIt is a miracle no predator picked up on the strong sexual scent you are emitting.");
+				dynStats("tou", .25, "spe", .5, "lib", .25, "lus", player.lib / 10);
+			}
+			doNext(camp.returnToCampUseOneHour);
+		}
+
+		private function findOre():void { //Not used. Doubt if it will ever be added
+			var ore:int = rand(3); //0 = copper, 1 = tin, 2 = iron
 		}
 	}
 }
