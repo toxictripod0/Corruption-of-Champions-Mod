@@ -5,8 +5,7 @@ package classes
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Scenes.NPCs.IsabellaScene;
 	import classes.internals.*;
-	import fl.controls.ComboBox;
-	import fl.data.DataProvider;
+	import com.bit101.components.ComboBox;
 	import flash.events.Event;
 	
 	/**
@@ -553,7 +552,7 @@ package classes
 				interpersonStats += "<b>Lynnette's Approval:</b> " + getGame().mountain.salon.lynnetteApproval() + "\n";
 			
 			if (player.statusEffectv1(StatusEffects.Marble) > 0)
-				interpersonStats += "<b>Marble's Affection:</b>" + player.statusEffectv1(StatusEffects.Marble) + "%\n";
+				interpersonStats += "<b>Marble's Affection:</b> " + player.statusEffectv1(StatusEffects.Marble) + "%\n";
 				
 			if (flags[kFLAGS.OWCAS_ATTITUDE] > 0)
 				interpersonStats += "<b>Owca's Attitude:</b> " + flags[kFLAGS.OWCAS_ATTITUDE] + "\n";
@@ -926,7 +925,7 @@ package classes
 		private function perkBuyMenu():void {
 			clearOutput();
 			var perkList:Array = buildPerkList();
-			mainView.aCb.dataProvider = new DataProvider(perkList);
+			mainView.aCb.items = perkList;
 			if (perkList.length == 0) {
 				outputText(images.showImage("event-cross"));
 				outputText("<b>You do not qualify for any perks at present.  </b>In case you qualify for any in the future, you will keep your " + num2Text(player.perkPoints) + " perk point");
