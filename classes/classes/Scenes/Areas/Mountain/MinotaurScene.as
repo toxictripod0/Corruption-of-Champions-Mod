@@ -513,6 +513,16 @@ public function getRapedByMinotaur(autoRape:Boolean = false):void {
 			if (player.cockTotal() > 1) outputText("The bull-man bends forward a little, and grabs one of your " + player.cockDescript(0) + "s in a crushing grip. He makes short jerking motions as he keeps thrusting into you.");
 			outputText("\n\nFinally, you can feel he's ready to cum. His thrusts become shorter and faster, and just when you think you can't stand it anymore he starts shooting his sperm into you. Your stomach begins to round out from the sheer amount of bull seed being pumped into your belly.  ");
 			dynStats("lib", 1, "sen", -.5, "cor", 1);
+			if (player.cockTotal() > 0 && (player.sens + rand(40) > 50)) {
+				outputText("You orgasm, ");
+				if (player.cumQ() < 25) outputText("spurting your seed helplessly from the brutal rape.  ");
+				if (player.cumQ() >= 25 && player.cumQ() < 250) outputText("squirting thick ropes of cum over the cave.  ");
+				if (player.cumQ() >= 250 && player.cumQ() < 500) outputText("erupting potent ropes of seed in thick bursts, splattering the cave walls and floors.  ");
+				if (player.cumQ() >= 500) outputText("erupting a thick torrent of seed that seems to go on forever, spurred by the constant pressure of the huge minotaur cock.  You paint the cave wall with cum, the beast egging you on as it roughly jacks your " + player.cockDescript(0) + ".  You are vaguely aware of your orgasm dragging on and on, until eventually your orgasm stops, leaving a sizable puddle of cum on the floor.  ");
+				player.orgasm('Anal');
+				dynStats("lib", .5, "sen", 1, "cor", 1);
+			}
+			outputText("The bull-man relaxes for a moment, then shoves you off of him and to the cold ground. You pass out as a strange sense of euphoria washes over you while copious quantities of monstrous cum escape your distended asshole.");
 		}
 		else {  //normal RAEP
 			if (player.deerScore() >= 4) outputText(images.showImage("minotaur-loss-vag-deer"));
@@ -551,6 +561,16 @@ public function getRapedByMinotaur(autoRape:Boolean = false):void {
 				dynStats("tou", -.5, "sen", 1, "lus", -5, "cor", 1);
 			}
 			player.knockUp(PregnancyStore.PREGNANCY_MINOTAUR, PregnancyStore.INCUBATION_MINOTAUR); //preggers chance!
+			if (player.cockTotal() > 0 && (player.sens + rand(40) > 50)) {
+				outputText("You orgasm, ");
+				if (player.cumQ() < 25) outputText("spurting your seed helplessly from the brutal rape.  ");
+				if (player.cumQ() >= 25 && player.cumQ() < 250) outputText("squirting thick ropes of cum over the cave.  ");
+				if (player.cumQ() >= 250 && player.cumQ() < 500) outputText("erupting potent ropes of seed in thick bursts, splattering the cave walls and floors.  ");
+				if (player.cumQ() >= 500) outputText("erupting a thick torrent of seed that seems to go on forever, spurred by the constant pressure of the huge minotaur cock.  You paint the cave wall with cum, the beast egging you on as it roughly jacks your " + player.cockDescript(0) + ".  You are vaguely aware of your orgasm dragging on and on, until eventually your orgasm stops, leaving a sizable puddle of cum on the floor.  ");
+				player.orgasm('Anal');
+				dynStats("lib", .5, "sen", 1, "cor", 1);
+			}
+			outputText("The bull-man relaxes for a moment, then shoves you off of him and to the cold ground. You pass out as a strange sense of euphoria washes over you while copious quantities of monstrous cum escape your distended pussy.");
 		}
 	}
 	else { //BUTTSECKS!
@@ -574,19 +594,17 @@ public function getRapedByMinotaur(autoRape:Boolean = false):void {
 		if (player.cockTotal() > 1) outputText("The bull-man bends forward a little, and grabs one of your " + player.cockDescript(0) + "s in a crushing grip. He makes short jerking motions as he keeps thrusting into you.");
 		outputText("\n\nFinally, you can feel he's ready to cum. His thrusts become shorter and faster, and just when you think you can't stand it anymore he starts shooting his sperm into you. Your stomach begins to round out from the sheer amount of bull seed being pumped into your belly.  ");
 		dynStats("lib", 1, "sen", -.5, "cor", 1);
+		if (player.cockTotal() > 0 && (player.sens + rand(40) > 50)) {
+			outputText("You orgasm, ");
+			if (player.cumQ() < 25) outputText("spurting your seed helplessly from the brutal rape.  ");
+			if (player.cumQ() >= 25 && player.cumQ() < 250) outputText("squirting thick ropes of cum over the cave.  ");
+			if (player.cumQ() >= 250 && player.cumQ() < 500) outputText("erupting potent ropes of seed in thick bursts, splattering the cave walls and floors.  ");
+			if (player.cumQ() >= 500) outputText("erupting a thick torrent of seed that seems to go on forever, spurred by the constant pressure of the huge minotaur cock.  You paint the cave wall with cum, the beast egging you on as it roughly jacks your " + player.cockDescript(0) + ".  You are vaguely aware of your orgasm dragging on and on, until eventually your orgasm stops, leaving a sizable puddle of cum on the floor.  ");
+			player.orgasm('Anal');
+			dynStats("lib", .5, "sen", 1, "cor", 1);
+		}
+		outputText("The bull-man relaxes for a moment, then shoves you off of him and to the cold ground. You pass out as a strange sense of euphoria washes over you while copious quantities of monstrous cum escape your distended asshole.");
 	}
-	if (player.cockTotal() > 0 && (player.sens + rand(40) > 50)) {
-		outputText("You orgasm, ");
-		if (player.cumQ() < 25) outputText("spurting your seed helplessly from the brutal rape.  ");
-		if (player.cumQ() >= 25 && player.cumQ() < 250) outputText("squirting thick ropes of cum over the cave.  ");
-		if (player.cumQ() >= 250 && player.cumQ() < 500) outputText("erupting potent ropes of seed in thick bursts, splattering the cave walls and floors.  ");
-		if (player.cumQ() >= 500) outputText("erupting a thick torrent of seed that seems to go on forever, spurred by the constant pressure of the huge minotaur cock.  You paint the cave wall with cum, the beast egging you on as it roughly jacks your " + player.cockDescript(0) + ".  You are vaguely aware of your orgasm dragging on and on, until eventually your orgasm stops, leaving a sizable puddle of cum on the floor.  ");
-		player.orgasm('Anal');
-		dynStats("lib", .5, "sen", 1, "cor", 1);
-	}
-	outputText("The bull-man relaxes for a moment, then shoves you off of him and to the cold ground. You pass out as a strange sense of euphoria washes over you while copious quantities of monstrous cum escape your distended ");
-	if (player.hasVagina()) outputText("pussy.");
-	else outputText("asshole.");
 	if (getGame().inCombat) combat.cleanupAfterCombat();
 	else doNext(camp.returnToCampUseFourHours);
 }
