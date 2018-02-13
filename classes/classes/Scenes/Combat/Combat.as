@@ -240,7 +240,6 @@ public class Combat extends BaseContent
 			mainView.hideMenuButton(MainView.MENU_PERKS);
 			hideUpDown();
 			if (newRound) combatStatusesUpdate(); //Update Combat Statuses
-			if (newRound) combatAbilities.updateCooldowns();
 			display();
 			statScreenRefresh();
 		//This is now automatic - newRound arg defaults to true:	menuLoc = 0;
@@ -1756,9 +1755,8 @@ public class Combat extends BaseContent
 			//Flag the game as being "in combat"
 			inCombat = true;
 			monster = monster_;
-			mainView.monsterStatsView.show(monster.generateTooltip(),"Details");
+			mainView.monsterStatsView.show();
 			mainView.updateCombatView();
-			combatAbilities.setSpells();
 			//Set image once, at the beginning of combat
 			if (monster.imageName != "")
 			{
@@ -1883,7 +1881,7 @@ public class Combat extends BaseContent
 					if (monster.statusEffectv1(StatusEffects.NagaVenom) <= 1) {
 						outputText("You notice " + monster.pronoun1 + " are beginning to show signs of weakening, but there still appears to be plenty of fight left in " + monster.pronoun2 + ".  ");
 					}
-		    	    else {
+		    	    else {
 						outputText("You notice " + monster.pronoun1 + " are obviously affected by your venom, " + monster.pronoun3 + " movements become unsure, and " + monster.pronoun3 + " balance begins to fade. Sweat begins to roll on " + monster.pronoun3 + " skin. You wager " + monster.pronoun1 + " are probably beginning to regret provoking you.  ");
 					}
 				}
@@ -1892,7 +1890,7 @@ public class Combat extends BaseContent
 					if (monster.statusEffectv1(StatusEffects.NagaVenom) <= 1) {
 						outputText("You notice " + monster.pronoun1 + " is beginning to show signs of weakening, but there still appears to be plenty of fight left in " + monster.pronoun2 + ".  ");
 					}
-		    	    else {
+		    	    else {
 						outputText("You notice " + monster.pronoun1 + " is obviously affected by your venom, " + monster.pronoun3 + " movements become unsure, and " + monster.pronoun3 + " balance begins to fade. Sweat is beginning to roll on " + monster.pronoun3 + " skin. You wager " + monster.pronoun1 + " is probably beginning to regret provoking you.  ");
 					}
 				}

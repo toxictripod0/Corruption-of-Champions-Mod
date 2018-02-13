@@ -66,6 +66,53 @@ package classes.Scenes.Combat
 			}
 		}
 		
+		//MENU
+		public function magicMenu():void {
+			if (combat.inCombat && player.hasStatusEffect(StatusEffects.Sealed) && player.statusEffectv2(StatusEffects.Sealed) == 2) {
+				clearOutput();
+				outputText("You reach for your magic, but you just can't manage the focus necessary.  <b>Your ability to use magic was sealed, and now you've wasted a chance to attack!</b>\n\n");
+				monster.doAI();
+				return;
+			}
+			menu();
+			clearOutput();
+			outputText("What spell will you use?\n\n");
+			//WHITE SHITZ			
+			if (player.lust >= getWhiteMagicLustCap())
+				outputText("You are far too aroused to focus on white magic.\n\n");
+			else {
+				if (player.hasStatusEffect(StatusEffects.KnowsCharge)) {
+					if (!player.hasStatusEffect(StatusEffects.ChargeWeapon))
+						addButton(0, "Charge W.", spellChargeWeapon).hint("The Charge Weapon spell will surround your weapon in electrical energy, causing it to do even more damage.  The effect lasts for the entire combat.  \n\nFatigue Cost: " + player.spellCost(15) + "", "Charge Weapon");
+					else outputText("<b>Charge weapon is already active and cannot be cast again.</b>\n\n");
+				}
+				if (player.hasStatusEffect(StatusEffects.KnowsBlind)) {
+					if (!monster.hasStatusEffect(StatusEffects.Blind))
+						addButton(1, "Blind", spellBlind).hint("Blind is a fairly self-explanatory spell.  It will create a bright flash just in front of the victim's eyes, blinding them for a time.  However if they blink it will be wasted.  \n\nFatigue Cost: " + player.spellCost(20) + "");
+					else outputText("<b>" + monster.capitalA + monster.short + " is already affected by blind.</b>\n\n");
+				}
+				if (player.hasStatusEffect(StatusEffects.KnowsWhitefire)) addButton(2, "Whitefire", spellWhitefire).hint("Whitefire is a potent fire based attack that will burn your foe with flickering white flames, ignoring their physical toughness and most armors.  \n\nFatigue Cost: " + player.spellCost(30) + "");
+			}
+			//BLACK MAGICSKS
+			if (player.lust < 50)
+				outputText("You aren't turned on enough to use any black magics.\n\n");
+			else {
+				if (player.hasStatusEffect(StatusEffects.KnowsArouse)) addButton(5, "Arouse", spellArouse).hint("The arouse spell draws on your own inner lust in order to enflame the enemy's passions.  \n\nFatigue Cost: " + player.spellCost(15) + "");
+				if (player.hasStatusEffect(StatusEffects.KnowsHeal)) addButton(6, "Heal", spellHeal).hint("Heal will attempt to use black magic to close your wounds and restore your body, however like all black magic used on yourself, it has a chance of backfiring and greatly arousing you.  \n\nFatigue Cost: " + player.spellCost(20) + "");
+				if (player.hasStatusEffect(StatusEffects.KnowsMight)) {
+					if (!player.hasStatusEffect(StatusEffects.Might))
+						addButton(7, "Might", spellMight).hint("The Might spell draws upon your lust and uses it to fuel a temporary increase in muscle size and power.  It does carry the risk of backfiring and raising lust, like all black magic used on oneself.  \n\nFatigue Cost: " + player.spellCost(25) + "");
+					else outputText("<b>You are already under the effects of Might and cannot cast it again.</b>\n\n");
+				}
+				if (player.hasStatusEffect(StatusEffects.KnowsBlackfire)) addButton(8, "Blackfire", spellBlackfire).hint("Blackfire is the black magic variant of Whitefire. It is a potent fire based attack that will burn your foe with flickering black and purple flames, ignoring their physical toughness and most armors.\n\nFatigue Cost: " + player.spellCost(40) + "");
+			}
+			// JOJO ABILITIES -- kind makes sense to stuff it in here along side the white magic shit (also because it can't fit into M. Specials :|
+			if (player.findPerk(PerkLib.CleansingPalm) >= 0 && player.isPureEnough(10)) {
+				addButton(3, "C.Palm", spellCleansingPalm).hint("Unleash the power of your cleansing aura! More effective against corrupted opponents. Doesn't work on the pure.  \n\nFatigue Cost: " + player.spellCost(30) + "", "Cleansing Palm");
+			}
+			addButton(14, "Back", combat.combatMenu, false);
+		}
+		
 		//WHITE SPELLS
 		//(15) Charge Weapon – boosts your weapon attack value by 10 * player.spellMod till the end of combat.
 		public function spellChargeWeapon(silent:Boolean = false):void {
@@ -82,16 +129,41 @@ package classes.Scenes.Combat
 				return;
 			}
 			doNext(combat.combatMenu);
+			player.changeFatigue(15, 1);
+			if (monster is FrostGiant && player.hasStatusEffect(StatusEffects.GiantBoulder)) {
+				(monster as FrostGiant).giantBoulderHit(2);
+				monster.doAI();
+				return;
+			}
+				clearOutput();
 			outputText("You utter words of power, summoning an electrical charge around your " + player.weaponName + ".  It crackles loudly, ensuring you'll do more damage with it for the rest of the fight.\n\n");
 			var temp:int = 10 * player.spellMod();
 			if (temp > 100) temp = 100;
 			player.createStatusEffect(StatusEffects.ChargeWeapon, temp, 0, 0, 0);
+			statScreenRefresh();
+			flags[kFLAGS.SPELLS_CAST]++;
+			spellPerkUnlock();
 			monster.doAI();
 		}
 		
 		//(20) Blind – reduces your opponent's accuracy, giving an additional 50% miss chance to physical attacks.
 		public function spellBlind():void {
+			clearOutput();
+			if (player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + player.spellCost(20) > player.maxFatigue()) {
+				clearOutput();
+				outputText("You are too tired to cast this spell.");
+				doNext(magicMenu);
+				return;
+			}
 			doNext(combat.combatMenu);
+			player.changeFatigue(20,1);
+			if (monster.hasStatusEffect(StatusEffects.Shell)) {
+				outputText("As soon as your magic touches the multicolored shell around " + monster.a + monster.short + ", it sizzles and fades to nothing.  Whatever that thing is, it completely blocks your magic!\n\n");
+				flags[kFLAGS.SPELLS_CAST]++;
+				spellPerkUnlock();
+				monster.doAI();
+				return;
+			}
 			if (monster is JeanClaude)
 			{
 				outputText("Jean-Claude howls, reeling backwards before turning back to you, rage clenching his dragon-like face and enflaming his eyes. Your spell seemed to cause him physical pain, but did nothing to blind his lidless sight.");
@@ -114,6 +186,13 @@ package classes.Scenes.Combat
 					
 					player.createStatusEffect(StatusEffects.Blind, rand(4) + 1, 0, 0, 0);
 				}
+				if (monster is FrostGiant && player.hasStatusEffect(StatusEffects.GiantBoulder)) {
+					(monster as FrostGiant).giantBoulderHit(2);
+					monster.doAI();
+					return;
+				}
+				flags[kFLAGS.SPELLS_CAST]++;
+				spellPerkUnlock();
 				if (monster.HP < 1) doNext(combat.endHpVictory);
 				else monster.doAI();
 				return;
@@ -140,7 +219,9 @@ package classes.Scenes.Combat
 			}
 			else outputText(monster.capitalA + monster.short + " blinked!");	
 			outputText("\n\n");
-
+			flags[kFLAGS.SPELLS_CAST]++;
+			spellPerkUnlock();
+			statScreenRefresh();
 			monster.doAI();
 		}
 		
@@ -182,8 +263,21 @@ package classes.Scenes.Combat
 
 		public function spellWhitefire():void {
 			clearOutput();
-
+			if (player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + player.spellCost(30) > player.maxFatigue()) {
+				clearOutput();
+				outputText("You are too tired to cast this spell.");
+				doNext(magicMenu);
+				return;
+			}
 			doNext(combat.combatMenu);
+			player.changeFatigue(30, 1);
+			if (monster.hasStatusEffect(StatusEffects.Shell)) {
+				outputText("As soon as your magic touches the multicolored shell around " + monster.a + monster.short + ", it sizzles and fades to nothing.  Whatever that thing is, it completely blocks your magic!\n\n");
+				flags[kFLAGS.SPELLS_CAST]++;
+				spellPerkUnlock();
+				monster.doAI();
+				return;
+			}
 			if (monster is Doppleganger)
 			{
 				(monster as Doppleganger).handleSpellResistance("whitefire");
@@ -191,7 +285,12 @@ package classes.Scenes.Combat
 				spellPerkUnlock();
 				return;
 			}
-
+			if (monster is FrostGiant && player.hasStatusEffect(StatusEffects.GiantBoulder)) {
+				(monster as FrostGiant).giantBoulderHit(2);
+				monster.doAI();
+				return;
+			}
+				clearOutput();
 			outputText("You narrow your eyes, focusing your mind with deadly intent.  You snap your fingers and " + monster.a + monster.short + " is enveloped in a flash of white flames!\n");
 			temp = int(10 + (player.inte / 3 + rand(player.inte / 2)) * player.spellMod());
 			//High damage to goes.
@@ -208,14 +307,38 @@ package classes.Scenes.Combat
 			outputText("\n\n");
 		 	combat.checkAchievementDamage(temp);
 			flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
+			flags[kFLAGS.SPELLS_CAST]++;
+			spellPerkUnlock();
 			monster.HP -= temp;
+			statScreenRefresh();
 			if (monster.HP < 1) doNext(combat.endHpVictory);
 			else monster.doAI();
 		}
 		
 		//BLACK SPELLS
 		public function spellArouse():void {
+			if (player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + player.spellCost(15) > player.maxFatigue()) {
+				clearOutput();
+				outputText("You are too tired to cast this spell.");
+				doNext(magicMenu);
+				return;
+			}
 			doNext(combat.combatMenu);
+		//This is now automatic - newRound arg defaults to true:	menuLoc = 0;
+			player.changeFatigue(15,1);
+			statScreenRefresh();
+			if (monster is FrostGiant && player.hasStatusEffect(StatusEffects.GiantBoulder)) {
+				(monster as FrostGiant).giantBoulderHit(2);
+				monster.doAI();
+				return;
+			}
+			if (monster.hasStatusEffect(StatusEffects.Shell)) {
+				outputText("As soon as your magic touches the multicolored shell around " + monster.a + monster.short + ", it sizzles and fades to nothing.  Whatever that thing is, it completely blocks your magic!\n\n");
+				flags[kFLAGS.SPELLS_CAST]++;
+				spellPerkUnlock();
+				monster.doAI();
+				return;
+			}
 			clearOutput();
 			outputText("You make a series of arcane gestures, drawing on your own lust to inflict it upon your foe!\n");
 			//Worms be immune
@@ -271,12 +394,27 @@ package classes.Scenes.Combat
 			monster.teased(lustDmg);
 			outputText("\n\n");
 			doNext(playerMenu);
+			flags[kFLAGS.SPELLS_CAST]++;
+			spellPerkUnlock();
 			if (monster.lust >= monster.maxLust()) doNext(combat.endLustVictory);
 			else monster.doAI();
 			return;	
 		}
 		public function spellHeal():void {
+			if (/*player.findPerk(PerkLib.BloodMage) < 0 && */player.fatigue + player.spellCost(20) > player.maxFatigue()) {
+				clearOutput();
+				outputText("You are too tired to cast this spell.");
+				doNext(magicMenu);
+				return;
+			}
 			doNext(combat.combatMenu);
+		//This is now automatic - newRound arg defaults to true:	menuLoc = 0;
+			player.changeFatigue(20, 3);
+			if (monster is FrostGiant && player.hasStatusEffect(StatusEffects.GiantBoulder)) {
+				(monster as FrostGiant).giantBoulderHit(2);
+				monster.doAI();
+				return;
+			}
 			clearOutput();
 			outputText("You focus on your body and its desire to end pain, trying to draw on your arousal without enhancing it.\n");
 			//25% backfire!
@@ -300,6 +438,9 @@ package classes.Scenes.Combat
 			}
 			
 			outputText("\n\n");
+			statScreenRefresh();
+			flags[kFLAGS.SPELLS_CAST]++;
+			spellPerkUnlock();
 			if (player.lust >= player.maxLust()) doNext(combat.endLustLoss);
 			else monster.doAI();
 			return;
@@ -316,7 +457,19 @@ package classes.Scenes.Combat
 				return;
 			}
 			
+			if (player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + player.spellCost(25) > player.maxFatigue()) {
+				clearOutput();
+				outputText("You are too tired to cast this spell.");
+				doNext(magicMenu);
+				return;
+			}
 			doNext(combat.combatMenu);
+			player.changeFatigue(25,1);
+			if (monster is FrostGiant && player.hasStatusEffect(StatusEffects.GiantBoulder)) {
+				(monster as FrostGiant).giantBoulderHit(2);
+				monster.doAI();
+				return;
+			}
 			clearOutput();
 			outputText("You flush, drawing on your body's desires to empower your muscles and toughen you up.\n\n");
 			//25% backfire!
@@ -338,6 +491,8 @@ package classes.Scenes.Combat
 				player.addStatusEffect(new MightBuff());
 			}
 			outputText("\n\n");
+			flags[kFLAGS.SPELLS_CAST]++;
+			spellPerkUnlock();
 			if (player.lust >= player.maxLust()) doNext(combat.endLustLoss);
 			else monster.doAI();
 			return;
@@ -346,12 +501,31 @@ package classes.Scenes.Combat
 		//Blackfire. A stronger but more costly version of Whitefire.
 		public function spellBlackfire():void {
 			clearOutput();
+			if (player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + player.spellCost(40) > player.maxFatigue()) {
+				clearOutput();
+				outputText("You are too tired to cast this spell.");
+				doNext(magicMenu);
+				return;
+			}
 			doNext(combat.combatMenu);
+			player.changeFatigue(40, 1);
+			if (monster.hasStatusEffect(StatusEffects.Shell)) {
+				outputText("As soon as your magic touches the multicolored shell around " + monster.a + monster.short + ", it sizzles and fades to nothing.  Whatever that thing is, it completely blocks your magic!\n\n");
+				flags[kFLAGS.SPELLS_CAST]++;
+				spellPerkUnlock();
+				monster.doAI();
+				return;
+			}
 			if (monster is Doppleganger)
 			{
 				(monster as Doppleganger).handleSpellResistance("blackfire");
 				flags[kFLAGS.SPELLS_CAST]++;
 				spellPerkUnlock();
+				return;
+			}
+			if (monster is FrostGiant && player.hasStatusEffect(StatusEffects.GiantBoulder)) {
+				(monster as FrostGiant).giantBoulderHit(2);
+				monster.doAI();
 				return;
 			}
 			//Backfire calculation
@@ -388,7 +562,10 @@ package classes.Scenes.Combat
 				outputText("\n\n");
 				combat.checkAchievementDamage(temp);
 				flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
+				flags[kFLAGS.SPELLS_CAST]++;
+				spellPerkUnlock();
 				monster.HP -= temp;
+				statScreenRefresh();
 			}
 			if (player.lust >= player.maxLust()) doNext(combat.endLustLoss);
 			else if (monster.HP < 1) doNext(combat.endHpVictory);
@@ -399,7 +576,21 @@ package classes.Scenes.Combat
 		public function spellCleansingPalm():void
 		{
 			clearOutput();
+			if (player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + player.spellCost(30) > player.maxFatigue()) {
+				clearOutput();
+				outputText("You are too tired to cast this spell.");
+				doNext(magicMenu);
+				return;
+			}
 			doNext(combat.combatMenu);
+			player.changeFatigue(30,1);
+			if (monster.hasStatusEffect(StatusEffects.Shell)) {
+				outputText("As soon as your magic touches the multicolored shell around " + monster.a + monster.short + ", it sizzles and fades to nothing.  Whatever that thing is, it completely blocks your magic!\n\n");
+				flags[kFLAGS.SPELLS_CAST]++;
+				spellPerkUnlock();
+				monster.doAI();
+				return;
+			}
 			
 			if (monster.short == "Jojo")
 			{
@@ -417,6 +608,8 @@ package classes.Scenes.Combat
 			if (monster is LivingStatue)
 			{
 				outputText("You thrust your palm forward, causing a blast of pure energy to slam against the giant stone statue- to no effect!");
+				flags[kFLAGS.SPELLS_CAST]++;
+				spellPerkUnlock();
 				monster.doAI();
 				return;
 			}
@@ -444,7 +637,10 @@ package classes.Scenes.Combat
 				outputText("You thrust your palm forward, causing a blast of pure energy to slam against " + monster.a + monster.short + ", which they ignore. It is probably best you don’t use this technique against the pure.\n\n");
 			}
 			
+			flags[kFLAGS.SPELLS_CAST]++;
+			spellPerkUnlock();
 			monster.HP -= temp;
+			statScreenRefresh();
 			if (monster.HP < 1) doNext(combat.endHpVictory);
 			else monster.doAI();
 		}
@@ -541,7 +737,65 @@ package classes.Scenes.Combat
 		//------------
 		// M. SPECIALS
 		//------------
+		public function magicalSpecials():void {
+			if (combat.inCombat && player.hasStatusEffect(StatusEffects.Sealed) && player.statusEffectv2(StatusEffects.Sealed) == 6) {
+				clearOutput();
+				outputText("You try to ready a special ability, but wind up stumbling dizzily instead.  <b>Your ability to use magical special attacks was sealed, and now you've wasted a chance to attack!</b>\n\n");
+				monster.doAI();
+				return;
+			}
+			menu();
+			var button:int = 0;
+			//Berserk
+			if (player.findPerk(PerkLib.Berzerker) >= 0) {
+				addButton(button++, "Berserk", berzerk).hint("Throw yourself into a rage!  Greatly increases the strength of your weapon and increases lust resistance, but your armor defense is reduced to zero!");
+			}
+			//Lustzerk
+			if (player.findPerk(PerkLib.Lustzerker) >= 0) {
+				addButton(button++, "Lustserk", lustzerk).hint("Throw yourself into a lust rage!  Greatly increases the strength of your weapon and increases armor defense, but your lust resistance is halved!");
+			}
+			//Fire Breath
+			if (player.findPerk(PerkLib.Dragonfire) >= 0) {
+				addButton(button++, "DragonFire", dragonBreath).hint("Unleash fire from your mouth. This can only be done once a day. \n\nFatigue Cost: " + player.spellCost(20), "Dragon Fire");
+			}
+			if (player.findPerk(PerkLib.FireLord) >= 0) {
+				addButton(button++, "Terra Fire", fireballuuuuu).hint("Unleash terrestrial fire from your mouth. \n\nFatigue Cost: 20", "Terra Fire");
+			}
+			if (player.findPerk(PerkLib.Hellfire) >= 0) {
+				addButton(button++, "Hellfire", hellFire).hint("Unleash fire from your mouth. \n\nFatigue Cost: " + player.spellCost(20));
+			}
+			//Possess
+			if (player.findPerk(PerkLib.Incorporeality) >= 0) {
+				addButton(button++, "Possess", possess).hint("Attempt to temporarily possess a foe and force them to raise their own lusts.");
+			}
+			//Whisper
+			if (player.findPerk(PerkLib.Whispered) >= 0) {
+				addButton(button++, "Whisper", superWhisperAttack).hint("Whisper and induce fear in your opponent. \n\nFatigue Cost: " + player.spellCost(10) + "");
+			}
+			//Kitsune Spells
+			if (player.findPerk(PerkLib.CorruptedNinetails) >= 0) {
+				addButton(button++, "C.FoxFire", corruptedFoxFire).hint("Unleash a corrupted purple flame at your opponent for high damage. Less effective against corrupted enemies. \n\nFatigue Cost: " + player.spellCost(35), "Corrupted FoxFire");
+				addButton(button++, "Terror", kitsuneTerror).hint("Instill fear into your opponent with eldritch horrors. The more you cast this in a battle, the lesser effective it becomes. \n\nFatigue Cost: " + player.spellCost(20));
+			}
+			if (player.findPerk(PerkLib.EnlightenedNinetails) >= 0) {
+				addButton(button++, "FoxFire", foxFire).hint("Unleash an ethereal blue flame at your opponent for high damage. More effective against corrupted enemies. \n\nFatigue Cost: " + player.spellCost(35));
+				addButton(button++, "Illusion", kitsuneIllusion).hint("Warp the reality around your opponent, lowering their speed. The more you cast this in a battle, the lesser effective it becomes. \n\nFatigue Cost: " + player.spellCost(25));
+			}
+			if (player.canUseStare()) {
+				addButton(button++, "Stare", paralyzingStare).hint("Focus your gaze at your opponent, lowering their speed. The more you use this in a battle, the lesser effective it becomes. \n\nFatigue Cost: " + player.spellCost(20));
+			}
+			if (player.hasKeyItem("Arian's Charged Talisman") >= 0) {
+				if (player.keyItemv1("Arian's Charged Talisman") == 1) addButton(button++, "Dispel", dispellingSpell);
+				if (player.keyItemv1("Arian's Charged Talisman") == 2) addButton(button++, "Healing", healingSpell);
+				if (player.keyItemv1("Arian's Charged Talisman") == 3) addButton(button++, "Immolation", immolationSpell);
+				if (player.keyItemv1("Arian's Charged Talisman") == 4) addButton(button++, "Lust Reduc", lustReductionSpell);
+				if (player.keyItemv1("Arian's Charged Talisman") == 5) addButton(button++, "Shielding", shieldingSpell);
+			}
+			addButton(14, "Back", combat.combatMenu, false);
+		}
+		
 		public function berzerk():void {
+			clearOutput();
 			if (player.hasStatusEffect(StatusEffects.Berzerking)) {
 				outputText("You're already pretty goddamn mad!");
 				doNext(magicalSpecials);
@@ -553,6 +807,7 @@ package classes.Scenes.Combat
 		}
 		
 		public function lustzerk():void {
+			clearOutput();
 			if(player.hasStatusEffect(StatusEffects.Lustzerking)) {
 				clearOutput();
 				outputText("You're already pretty goddamn mad and lustful!");
@@ -569,6 +824,21 @@ package classes.Scenes.Combat
 		//Dragon Breath
 		//Effect of attack: Damages and stuns the enemy for the turn you used this attack on, plus 2 more turns. High chance of success.
 		public function dragonBreath():void {
+			clearOutput();
+			if (player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + player.spellCost(20) > player.maxFatigue())
+			{
+				clearOutput();
+				outputText("You are too tired to breathe fire.");
+				doNext(curry(combat.combatMenu,false));
+				return;
+			}
+			//Not Ready Yet:
+			if (player.hasStatusEffect(StatusEffects.DragonBreathCooldown)) {
+				outputText("You try to tap into the power within you, but your burning throat reminds you that you're not yet ready to unleash it again...");
+				doNext(curry(combat.combatMenu,false));
+				return;
+			}
+			player.changeFatigue(20, 1);
 			player.createStatusEffect(StatusEffects.DragonBreathCooldown,0,0,0,0);
 			var damage:Number = int(player.level * 8 + 25 + rand(10));
 			
@@ -577,6 +847,12 @@ package classes.Scenes.Combat
 			if (player.hasStatusEffect(StatusEffects.DragonBreathBoost)) {
 				player.removeStatusEffect(StatusEffects.DragonBreathBoost);
 				damage *= 1.5;
+			}
+			//Shell
+			if (monster.hasStatusEffect(StatusEffects.Shell)) {
+				outputText("As soon as your magic touches the multicolored shell around " + monster.a + monster.short + ", it sizzles and fades to nothing.  Whatever that thing is, it completely blocks your magic!\n\n");
+				monster.doAI();
+				return;
 			}
 			//Amily!
 			if (monster.hasStatusEffect(StatusEffects.Concentration)) {
@@ -651,6 +927,13 @@ package classes.Scenes.Combat
 		//* Terrestrial Fire
 		public function fireballuuuuu():void {
 			clearOutput();
+			if (player.fatigue + 20 > player.maxFatigue()) {
+				clearOutput();
+				outputText("You are too tired to breathe fire.");
+				doNext(curry(combat.combatMenu,false));
+				return;
+			}
+			player.changeFatigue(20);
 			
 			//[Failure]
 			//(high damage to self, +10 fatigue on top of ability cost)
@@ -668,6 +951,19 @@ package classes.Scenes.Combat
 			var damage:Number;
 			damage = int(player.level * 10 + 45 + rand(10));
 			damage = calcInfernoMod(damage);
+			
+			if (monster.hasStatusEffect(StatusEffects.Shell)) {
+				outputText("As soon as your magic touches the multicolored shell around " + monster.a + monster.short + ", it sizzles and fades to nothing.  Whatever that thing is, it completely blocks your magic!\n\n");
+				monster.doAI();
+				return;
+			}
+			//Amily!
+			if (monster.hasStatusEffect(StatusEffects.Concentration)) {
+				clearOutput();
+				outputText("Amily easily glides around your attack thanks to her complete concentration on your movements.");
+				monster.doAI();
+				return;
+			}
 			if (monster is LivingStatue)
 			{
 				outputText("The fire courses by the stone skin harmlessly. It does leave the surface of the statue glossier in its wake.");
@@ -730,6 +1026,7 @@ package classes.Scenes.Combat
 				monster.HP -= damage;
 				if (monster.short == "Holli" && !monster.hasStatusEffect(StatusEffects.HolliBurning)) (monster as Holli).lightHolliOnFireMagically();
 			}
+		 	combat.checkAchievementDamage(damage);
 			if (monster.HP < 1) {
 				doNext(combat.endHpVictory);
 			}
@@ -739,8 +1036,23 @@ package classes.Scenes.Combat
 		//Hellfire deals physical damage to completely pure foes, 
 		//lust damage to completely corrupt foes, and a mix for those in between.  Its power is based on the PC's corruption and level.  Appearance is slightly changed to mention that the PC's eyes and mouth occasionally show flicks of fire from within them, text could possibly vary based on corruption.
 		public function hellFire():void {
+			clearOutput();
+			if (player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + player.spellCost(20) > player.maxFatigue()) {
+				clearOutput();
+				outputText("You are too tired to breathe fire.\n");
+				doNext(combat.combatMenu);
+				return;
+			}
+			player.changeFatigue(20, 1);
 			var damage:Number = (player.level * 8 + rand(10) + player.inte / 2 + player.cor / 5);
 			damage = calcInfernoMod(damage);
+			//Amily!
+			if (monster.hasStatusEffect(StatusEffects.Concentration)) {
+				clearOutput();
+				outputText("Amily easily glides around your attack thanks to her complete concentration on your movements.\n\n");
+				monster.doAI();
+				return;
+			}
 			if (monster is LivingStatue)
 			{
 				outputText("The fire courses over the stone behemoths skin harmlessly. It does leave the surface of the statue glossier in its wake.");
@@ -843,6 +1155,13 @@ package classes.Scenes.Combat
 		//Whisper 
 		public function superWhisperAttack():void {
 			clearOutput();
+			if (player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + player.spellCost(10) > player.maxFatigue())
+			{
+				clearOutput();
+				outputText("You are too tired to focus this ability.");
+				doNext(curry(combat.combatMenu,false));
+				return;
+			}
 			if (player.hasStatusEffect(StatusEffects.ThroatPunch) || player.hasStatusEffect(StatusEffects.WebSilence)) {
 				clearOutput();
 				outputText("You cannot focus to reach the enemy's mind while you're having so much difficult breathing.");
@@ -863,6 +1182,12 @@ package classes.Scenes.Combat
 				monster.doAI();
 				return;
 			}
+			player.changeFatigue(10, 1);
+			if (monster.hasStatusEffect(StatusEffects.Shell)) {
+				outputText("As soon as your magic touches the multicolored shell around " + monster.a + monster.short + ", it sizzles and fades to nothing.  Whatever that thing is, it completely blocks your magic!\n\n");
+				monster.doAI();
+				return;
+			}
 			if (monster.findPerk(PerkLib.Focused) >= 0) {
 				if (!monster.plural) outputText(monster.capitalA + monster.short + " is too focused for your whispers to influence!\n\n");
 				monster.doAI();
@@ -871,6 +1196,7 @@ package classes.Scenes.Combat
 			//Enemy too strong or multiplesI think you 
 			if (player.inte < monster.inte || monster.plural) {
 				outputText("You reach for your enemy's mind, but can't break through.\n");
+				player.changeFatigue(10);
 				monster.doAI();
 				return;
 			}
@@ -888,12 +1214,20 @@ package classes.Scenes.Combat
 		
 		//Corrupted Fox Fire
 		public function corruptedFoxFire():void {
+			clearOutput();
+			if (player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + player.spellCost(35) > player.maxFatigue()) {
+				clearOutput();
+				outputText("You are too tired to use this ability.");
+				doNext(magicalSpecials);
+				return;
+			}
 			if (player.hasStatusEffect(StatusEffects.ThroatPunch) || player.hasStatusEffect(StatusEffects.WebSilence)) {
 				clearOutput();
 				outputText("You cannot focus to use this ability while you're having so much difficult breathing.");
 				doNext(magicalSpecials);
 				return;
 			}
+			player.changeFatigue(35,1);
 			//Deals direct damage and lust regardless of enemy defenses.  Especially effective against non-corrupted targets.
 			outputText("Holding out your palm, you conjure corrupted purple flame that dances across your fingertips.  You launch it at " + monster.a + monster.short + " with a ferocious throw, and it bursts on impact, showering dazzling lavender sparks everywhere.  ");
 
@@ -912,18 +1246,33 @@ package classes.Scenes.Combat
 				if (monster.findPerk(PerkLib.Acid) < 0) monster.createPerk(PerkLib.Acid,0,0,0,0);
 			}
 			dmg = combat.doDamage(dmg, true, true);
+			statScreenRefresh();
 			outputText("\n\n");
 			flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
+			flags[kFLAGS.SPELLS_CAST]++;
+			spellPerkUnlock();
 			if (monster.HP < 1) doNext(combat.endHpVictory);
 			else monster.doAI();
 		}
 		//Fox Fire
 		public function foxFire():void {
 			clearOutput();
+			if (player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + player.spellCost(35) > player.maxFatigue()) {
+				clearOutput();
+				outputText("You are too tired to use this ability.");
+				doNext(magicalSpecials);
+				return;
+			}
 			if (player.hasStatusEffect(StatusEffects.ThroatPunch) || player.hasStatusEffect(StatusEffects.WebSilence)) {
 				clearOutput();
 				outputText("You cannot focus to use this ability while you're having so much difficult breathing.");
 				doNext(magicalSpecials);
+				return;
+			}
+			player.changeFatigue(35,1);
+			if (monster.hasStatusEffect(StatusEffects.Shell)) {
+				outputText("As soon as your magic touches the multicolored shell around " + monster.a + monster.short + ", it sizzles and fades to nothing.  Whatever that thing is, it completely blocks your magic!\n\n");
+				monster.doAI();
 				return;
 			}
 			//Deals direct damage and lust regardless of enemy defenses.  Especially effective against corrupted targets.
@@ -943,13 +1292,29 @@ package classes.Scenes.Combat
 				if (monster.findPerk(PerkLib.Acid) < 0) monster.createPerk(PerkLib.Acid,0,0,0,0);
 			}
 			dmg = combat.doDamage(dmg, true, true);
+			statScreenRefresh();
 			outputText("\n\n");
 			flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
+			flags[kFLAGS.SPELLS_CAST]++;
+			spellPerkUnlock();
 			if (monster.HP < 1) doNext(combat.endHpVictory);
 			else monster.doAI();
 		}
 		//Terror
 		public function kitsuneTerror():void {
+			clearOutput();
+			//Fatigue Cost: 25
+			if (player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + player.spellCost(20) > player.maxFatigue()) {
+				clearOutput();
+				outputText("You are too tired to use this ability.");
+				doNext(magicalSpecials);
+				return;
+			}
+			if (monster.hasStatusEffect(StatusEffects.Shell)) {
+				outputText("As soon as your magic touches the multicolored shell around " + monster.a + monster.short + ", it sizzles and fades to nothing.  Whatever that thing is, it completely blocks your magic!\n\n");
+				monster.doAI();
+				return;
+			}
 			if (player.hasStatusEffect(StatusEffects.ThroatPunch) || player.hasStatusEffect(StatusEffects.WebSilence)) {
 				clearOutput();
 				outputText("You cannot focus to reach the enemy's mind while you're having so much difficult breathing.");
@@ -959,9 +1324,11 @@ package classes.Scenes.Combat
 			if (monster.short == "pod" || monster.inte == 0) {
 				clearOutput();
 				outputText("You reach for the enemy's mind, but cannot find anything.  You frantically search around, but there is no consciousness as you know it in the room.\n\n");
+				player.changeFatigue(1);
 				monster.doAI();
 				return;
 			}
+			player.changeFatigue(20,1);
 			//Inflicts fear and reduces enemy SPD.
 			outputText("The world goes dark, an inky shadow blanketing everything in sight as you fill " + monster.a + monster.short + "'s mind with visions of otherworldly terror that defy description.");
 			//(succeed)
@@ -985,6 +1352,14 @@ package classes.Scenes.Combat
 		}
 		//Illusion
 		public function kitsuneIllusion():void {
+			clearOutput();
+			//Fatigue Cost: 25
+			if (player.findPerk(PerkLib.BloodMage) < 0 && player.fatigue + player.spellCost(25) > player.maxFatigue()) {
+				clearOutput();
+				outputText("You are too tired to use this ability.");
+				doNext(magicalSpecials);
+				return;
+			}
 			if (player.hasStatusEffect(StatusEffects.ThroatPunch) || player.hasStatusEffect(StatusEffects.WebSilence)) {
 				clearOutput();
 				outputText("You cannot focus to use this ability while you're having so much difficult breathing.");
@@ -994,6 +1369,13 @@ package classes.Scenes.Combat
 			if (monster.short == "pod" || monster.inte == 0) {
 				clearOutput();
 				outputText("In the tight confines of this pod, there's no use making such an attack!\n\n");
+				player.changeFatigue(1);
+				monster.doAI();
+				return;
+			}
+			player.changeFatigue(25,1);
+			if (monster.hasStatusEffect(StatusEffects.Shell)) {
+				outputText("As soon as your magic touches the multicolored shell around " + monster.a + monster.short + ", it sizzles and fades to nothing.  Whatever that thing is, it completely blocks your magic!\n\n");
 				monster.doAI();
 				return;
 			}
@@ -1041,16 +1423,25 @@ package classes.Scenes.Combat
 			}
 			if (monster is EncapsulationPod || monster.inte == 0) {
 				output.text("In the tight confines of this pod, there's no use making such an attack!\n\n");
+				player.changeFatigue(1);
 				monster.doAI();
 				return;
 			}
 			if (monster is TentacleBeast) {
 				output.text("You try to find the beast's eyes to stare at them, but you soon realize, that it has none at all!\n\n");
+				player.changeFatigue(1);
 				monster.doAI();
 				return;
 			}
 			if (monster.findPerk(PerkLib.BasiliskResistance) >= 0) {
 				output.text("You attempt to apply your paralyzing stare at " + theMonster + ", but you soon realize, that " + monster.pronoun1 + " is immune to your eyes, so you quickly back up.\n\n");
+				player.changeFatigue(10, 1);
+				monster.doAI();
+				return;
+			}
+			player.changeFatigue(20, 1);
+			if (monster.hasStatusEffect(StatusEffects.Shell)) {
+				output.text("As soon as your magic touches the multicolored shell around " + theMonster + ", it sizzles and fades to nothing. Whatever that thing is, it completely blocks your magic!\n\n");
 				monster.doAI();
 				return;
 			}
@@ -1081,8 +1472,103 @@ package classes.Scenes.Combat
 		//------------
 		// P. SPECIALS
 		//------------
+		public function addTailSlapButton(button:int):void {
+			addButton(button, "Tail Slap", tailSlapAttack).hint("Set your tail ablaze in red-hot flames to whip your foe with it to hurt and burn them! \n\nFatigue Cost: " + player.physicalCost(30));
+		}
+		public function addTailWhipButton(button:int):void {
+			addButton(button, "Tail Whip", tailWhipAttack).hint("Whip your foe with your tail to enrage them and lower their defense! \n\nFatigue Cost: " + player.physicalCost(15));
+		}
+		public function physicalSpecials():void {
+			if (getGame().urtaQuest.isUrta()) {
+				getGame().urtaQuest.urtaSpecials();
+				return;
+			}
+			if (getGame().inCombat && player.hasStatusEffect(StatusEffects.Sealed) && player.statusEffectv2(StatusEffects.Sealed) == 5) {
+				clearOutput();
+				outputText("You try to ready a special attack, but wind up stumbling dizzily instead.  <b>Your ability to use physical special attacks was sealed, and now you've wasted a chance to attack!</b>\n\n");
+				monster.doAI();
+				return;
+			}
+			menu();
+			var button:int = 0;
+			//Anemone STINGZ!
+			if (player.hair.type == 4) {
+				addButton(button++, "AnemoneSting", anemoneSting).hint("Attempt to strike an opponent with the stinging tentacles growing from your scalp. Reduces enemy speed and increases enemy lust. \n\nNo Fatigue Cost", "Anemone Sting");
+			}
+			//Bitez
+			if (player.face.type == Face.SHARK_TEETH) {
+				addButton(button++, "Bite", bite).hint("Attempt to bite your opponent with your shark-teeth. \n\nFatigue Cost: " + player.physicalCost(25));
+			}
+			else if (player.face.type == Face.SNAKE_FANGS) {
+				addButton(button++, "Bite", nagaBiteAttack).hint("Attempt to bite your opponent and inject venom. \n\nFatigue Cost: " + player.physicalCost(10));
+			}
+			else if (player.face.type == Face.SPIDER_FANGS) {
+				addButton(button++, "Bite", spiderBiteAttack).hint("Attempt to bite your opponent and inject venom. \n\nFatigue Cost: " + player.physicalCost(10));
+			}
+			//Bow attack
+			if (player.hasKeyItem("Bow") >= 0 || player.hasKeyItem("Kelt's Bow") >= 0) {
+				addButton(button++, "Bow", fireBow).hint("Use a bow to fire an arrow at your opponent. \n\nFatigue Cost: " + player.physicalCost(25));
+			}
+			//Constrict
+			if (player.lowerBody.type == LowerBody.NAGA) {
+				addButton(button++, "Constrict", getGame().desert.nagaScene.nagaPlayerConstrict).hint("Attempt to bind an enemy in your long snake-tail. \n\nFatigue Cost: " + player.physicalCost(10));
+			}
+			//Kick attackuuuu
+			else if (player.isTaur() || player.lowerBody.type == LowerBody.HOOFED || player.lowerBody.type == LowerBody.BUNNY || player.lowerBody.type == LowerBody.KANGAROO) {
+				addButton(button++, "Kick", kick).hint("Attempt to kick an enemy using your powerful lower body. \n\nFatigue Cost: " + player.physicalCost(15));
+			}
+			//Gore if mino horns
+			if (player.horns.type == Horns.COW_MINOTAUR && player.horns.value >= 6) {
+				addButton(button++, "Gore", goreAttack).hint("Lower your head and charge your opponent, attempting to gore them on your horns. This attack is stronger and easier to land with large horns. \n\nFatigue Cost: " + player.physicalCost(15));
+			}
+			//Rams Attack - requires rams horns
+			if (player.horns.type == Horns.RAM && player.horns.value >= 2) {
+				addButton(button++, "Horn Stun", ramsStun).hint("Use a ramming headbutt to try and stun your foe. \n\nFatigue Cost: " + player.physicalCost(10));
+			}
+			//Upheaval - requires rhino horn
+			if (player.horns.type == Horns.RHINO && player.horns.value >= 2 && player.face.type == Face.RHINO) {
+				addButton(button++, "Upheaval", upheavalAttack).hint("Send your foe flying with your dual nose mounted horns. \n\nFatigue Cost: " + player.physicalCost(15));
+			}
+			//Infest if infested
+			if (player.hasStatusEffect(StatusEffects.Infested) && player.statusEffectv1(StatusEffects.Infested) == 5 && player.hasCock()) {
+				addButton(button++, "Infest", getGame().mountain.wormsScene.playerInfest).hint("The infest attack allows you to cum at will, launching a stream of semen and worms at your opponent in order to infest them. Unless your foe is very aroused they are likely to simply avoid it. Only works on males or herms. \n\nAlso great for reducing your lust. \n\nFatigue Cost: " + player.physicalCost(40));
+			}
+			//Kiss supercedes bite.
+			if (player.hasStatusEffect(StatusEffects.LustStickApplied)) {
+				addButton(button++, "Kiss", kissAttack).hint("Attempt to kiss your foe on the lips with drugged lipstick. It has no effect on those without a penis. \n\nNo Fatigue Cost");
+			}
+			switch (player.tail.type) {
+				case Tail.BEE_ABDOMEN:
+					addButton(button++, "Sting", playerStinger).hint("Attempt to use your venomous bee stinger on an enemy.  Be aware it takes quite a while for your venom to build up, so depending on your abdomen's refractory period, you may have to wait quite a while between stings.  \n\nVenom: " + Math.floor(player.tail.venom) + "/100");
+					break;
+				case Tail.SPIDER_ABDOMEN:
+					addButton(button++, "Web", PCWebAttack).hint("Attempt to use your abdomen to spray sticky webs at an enemy and greatly slow them down.  Be aware it takes a while for your webbing to build up.  \n\nWeb Amount: " + Math.floor(player.tail.venom) + "/100");
+					break;
+				case Tail.SALAMANDER:
+					addTailSlapButton(button++);
+					addTailWhipButton(button++);
+					break;
+				case Tail.SHARK:
+				case Tail.LIZARD:
+				case Tail.KANGAROO:
+				case Tail.RACCOON:
+				case Tail.FERRET:
+					addTailWhipButton(button++);
+					break;
+				case Tail.DRACONIC:
+					addButton(button++, "Tail Slam", tailSlamAttack).hint("Slam your foe with your mighty dragon tail! This attack causes grievous harm and can stun your opponent or let it bleed. \n\nFatigue Cost: " + player.physicalCost(20));
+					break;
+				default:
+					//Nothing here, move along.
+			}
+			if (player.shield != ShieldLib.NOTHING) {
+				addButton(button++, "Shield Bash", shieldBash).hint("Bash your opponent with a shield. Has a chance to stun. Bypasses stun immunity. \n\nThe more you stun your opponent, the harder it is to stun them again. \n\nFatigue Cost: " + player.physicalCost(20));
+			}
+			addButton(14, "Back", combat.combatMenu, false);
+		}
 		
 		public function anemoneSting():void {
+			clearOutput();
 			//-sting with hair (combines both bee-sting effects, but weaker than either one separately):
 			//Fail!
 			//25% base fail chance
@@ -1129,6 +1615,13 @@ package classes.Scenes.Combat
 		
 		//Mouf Attack
 		public function bite():void {
+			if (player.fatigue + player.physicalCost(25) > player.maxFatigue()) {
+				clearOutput();
+				outputText("You're too fatigued to use your shark-like jaws!");
+				menu();
+				addButton(0, "Next", combat.combatMenu, false);
+				return;
+			}
 			//Worms are special
 			if (monster.short == "worms") {
 				clearOutput();
@@ -1137,6 +1630,15 @@ package classes.Scenes.Combat
 				addButton(0, "Next", combat.combatMenu, false);
 				return;
 			}
+			player.changeFatigue(25,2);
+			//Amily!
+			if (monster.hasStatusEffect(StatusEffects.Concentration)) {
+				clearOutput();
+				outputText("Amily easily glides around your attack thanks to her complete concentration on your movements.\n\n");
+				monster.doAI();
+				return;
+			}
+			clearOutput();
 			outputText("You open your mouth wide, your shark teeth extending out. Snarling with hunger, you lunge at your opponent, set to bite right into them!  ");
 			if (player.hasStatusEffect(StatusEffects.Blind)) outputText("In hindsight, trying to bite someone while blind was probably a bad idea... ");
 			var damage:Number = 0;
@@ -1191,6 +1693,21 @@ package classes.Scenes.Combat
 		}
 		
 		public function nagaBiteAttack():void {
+			clearOutput();
+			//FATIIIIGUE
+			if (player.fatigue + player.physicalCost(10) > player.maxFatigue()) {
+				outputText("You just don't have the energy to bite something right now...");
+				menu();
+				addButton(0, "Next", combat.combatMenu, false);
+				return;
+			}
+			player.changeFatigue(10,2);
+			//Amily!
+			if (monster.hasStatusEffect(StatusEffects.Concentration)) {
+				outputText("Amily easily glides around your attack thanks to her complete concentration on your movements.");
+				monster.doAI();
+				return;
+			}
 			if (monster is LivingStatue)
 			{
 				outputText("Your fangs can't even penetrate the giant's flesh.");
@@ -1198,7 +1715,7 @@ package classes.Scenes.Combat
 				return;
 			}
 			//Works similar to bee stinger, must be regenerated over time. Shares the same poison-meter
-		    if (rand(player.spe/2 + 40) + 20 > monster.spe/1.5 || monster.hasStatusEffect(StatusEffects.Constricted)) {
+		    if (rand(player.spe/2 + 40) + 20 > monster.spe/1.5 || monster.hasStatusEffect(StatusEffects.Constricted)) {
 				//(if monster = demons)
 				if (monster.short == "demons") outputText("You look at the crowd for a moment, wondering which of their number you should bite. Your glance lands upon the leader of the group, easily spotted due to his snakeskin cloak. You quickly dart through the demon crowd as it closes in around you and lunge towards the broad form of the leader. You catch the demon off guard and sink your needle-like fangs deep into his flesh. You quickly release your venom and retreat before he, or the rest of the group manage to react.");
 				//(Otherwise) 
@@ -1229,7 +1746,7 @@ package classes.Scenes.Combat
 					monster.createStatusEffect(StatusEffects.NagaVenom,1,0,0,0);
 			}
 			else {
-		       outputText("You lunge headfirst, fangs bared. Your attempt fails horrendously, as " + monster.a + monster.short + " manages to counter your lunge, knocking your head away with enough force to make your ears ring.");
+		       outputText("You lunge headfirst, fangs bared. Your attempt fails horrendously, as " + monster.a + monster.short + " manages to counter your lunge, knocking your head away with enough force to make your ears ring.");
 			}
 			outputText("\n\n");
 			if (monster.HP < 1 || monster.lust >= monster.maxLust()) combat.combatRoundOver();
@@ -1237,6 +1754,21 @@ package classes.Scenes.Combat
 		}
 		
 		public function spiderBiteAttack():void {
+			clearOutput();
+			//FATIIIIGUE
+			if (player.fatigue + player.physicalCost(10) > player.maxFatigue()) {
+				outputText("You just don't have the energy to bite something right now...");
+				menu();
+				addButton(0, "Next", combat.combatMenu, false);
+				return;
+			}
+			player.changeFatigue(10,2);
+			//Amily!
+			if (monster.hasStatusEffect(StatusEffects.Concentration)) {
+				outputText("Amily easily glides around your attack thanks to her complete concentration on your movements.");
+				monster.doAI();
+				return;
+			}
 			if (monster is LivingStatue)
 			{
 				outputText("Your fangs can't even penetrate the giant's flesh.");
@@ -1244,7 +1776,7 @@ package classes.Scenes.Combat
 				return;
 			}
 			//Works similar to bee stinger, must be regenerated over time. Shares the same poison-meter
-		    if (rand(player.spe/2 + 40) + 20 > monster.spe/1.5) {
+		    if (rand(player.spe/2 + 40) + 20 > monster.spe/1.5) {
 				//(if monster = demons)
 				if (monster.short == "demons") outputText("You look at the crowd for a moment, wondering which of their number you should bite. Your glance lands upon the leader of the group, easily spotted due to his snakeskin cloak. You quickly dart through the demon crowd as it closes in around you and lunge towards the broad form of the leader. You catch the demon off guard and sink your needle-like fangs deep into his flesh. You quickly release your venom and retreat before he, or the rest of the group manage to react.");
 				//(Otherwise) 
@@ -1263,7 +1795,7 @@ package classes.Scenes.Combat
 				}
 			}
 			else {
-		       outputText("You lunge headfirst, fangs bared. Your attempt fails horrendously, as " + monster.a + monster.short + " manages to counter your lunge, pushing you back out of range.");
+		       outputText("You lunge headfirst, fangs bared. Your attempt fails horrendously, as " + monster.a + monster.short + " manages to counter your lunge, pushing you back out of range.");
 			}
 			outputText("\n\n");
 			if (monster.HP < 1 || monster.lust >= monster.maxLust()) combat.combatRoundOver();
@@ -1282,6 +1814,13 @@ package classes.Scenes.Combat
 				outputText("You can't use your bow right now!");
 				menu();
 				addButton(0, "Next", combat.combatMenu, false);
+				return;
+			}
+			player.changeFatigue(25, 2);
+			//Amily!
+			if (monster.hasStatusEffect(StatusEffects.Concentration)) {
+				outputText("Amily easily glides around your attack thanks to her complete concentration on your movements.\n\n");
+				monster.doAI();
 				return;
 			}
 			if (player.hasStatusEffect(StatusEffects.KnockedBack) && monster is Mimic) {
@@ -1392,6 +1931,13 @@ package classes.Scenes.Combat
 		
 		public function kick():void {
 			clearOutput();
+			if (player.fatigue + player.physicalCost(15) > player.maxFatigue()) {
+				outputText("You're too fatigued to use a charge attack!");
+				menu();
+				addButton(0, "Next", combat.combatMenu, false);
+				return;
+			}
+			player.changeFatigue(15,2);
 			//Variant start messages!
 			if (player.lowerBody.type == LowerBody.KANGAROO) {
 				//(tail)
@@ -1409,6 +1955,12 @@ package classes.Scenes.Combat
 
 			if (flags[kFLAGS.PC_FETISH] >= 3) {
 				outputText("You attempt to attack, but at the last moment your body wrenches away, preventing you from even coming close to landing a blow!  Ceraph's piercings have made normal attack impossible!  Maybe you could try something else?\n\n");
+				monster.doAI();
+				return;
+			}
+			//Amily!
+			if (monster.hasStatusEffect(StatusEffects.Concentration)) {
+				outputText("Amily easily glides around your attack thanks to her complete concentration on your movements.\n\n");
 				monster.doAI();
 				return;
 			}
@@ -1499,12 +2051,27 @@ package classes.Scenes.Combat
 		
 		//Gore Attack - uses 15 fatigue!
 		public function goreAttack():void {
+			clearOutput();
+		//This is now automatic - newRound arg defaults to true:	menuLoc = 0;
 			if (monster.short == "worms") {
 				outputText("Taking advantage of your new natural weapons, you quickly charge at the freak of nature. Sensing impending danger, the creature willingly drops its cohesion, causing the mass of worms to fall to the ground with a sick, wet 'thud', leaving your horns to stab only at air.\n\n");
 				monster.doAI();
 				return;
 			}
+			if (player.fatigue + player.physicalCost(15) > player.maxFatigue()) {
+				outputText("You're too fatigued to use a charge attack!");
+				menu();
+				addButton(0, "Next", combat.combatMenu, false);
+				return;
+			}
+			player.changeFatigue(15,2);
 			var damage:Number = 0;
+			//Amily!
+			if (monster.hasStatusEffect(StatusEffects.Concentration)) {
+				outputText("Amily easily glides around your attack thanks to her complete concentration on your movements.\n\n");
+				monster.doAI();
+				return;
+			}
 			//Bigger horns = better success chance.
 			//Small horns - 60% hit
 			if (player.horns.value >= 6 && player.horns.value < 12) {
@@ -1587,11 +2154,18 @@ package classes.Scenes.Combat
 		
 		 // Fingers crossed I did ram attack right -Foxwells
 		public function ramsStun():void { // More or less copy/pasted from upheaval
+			clearOutput();
 			if (monster.short == "worms") {
 				outputText("Taking advantage of your new natural weapon, you quickly charge at the freak of nature. Sensing impending danger, the creature willingly drops its cohesion, causing the mass of worms to fall to the ground with a sick, wet 'thud', leaving your horns to stab only at air.\n\n");
 				monster.doAI();
 				return;
 			}
+			if (player.fatigue + player.physicalCost(10) > player.maxFatigue()) {
+				outputText("You're too fatigued to use a charge attack!");
+				doNext(curry(combat.combatMenu,false));
+				return;
+			}
+			player.changeFatigue(10,2);
 			var damage:Number = 0;
 			//Amily!
 			if (monster.hasStatusEffect(StatusEffects.Concentration)) {
@@ -1677,11 +2251,18 @@ package classes.Scenes.Combat
 		
 		//Upheaval Attack
 		public function upheavalAttack():void {
+			clearOutput();
 			if (monster.short == "worms") {
 				outputText("Taking advantage of your new natural weapon, you quickly charge at the freak of nature. Sensing impending danger, the creature willingly drops its cohesion, causing the mass of worms to fall to the ground with a sick, wet 'thud', leaving your horns to stab only at air.\n\n");
 				monster.doAI();
 				return;
 			}
+			if (player.fatigue + player.physicalCost(15) > player.maxFatigue()) {
+				outputText("You're too fatigued to use a charge attack!");
+				doNext(combat.combatMenu);
+				return;
+			}
+			player.changeFatigue(15,2);
 			var damage:Number = 0;
 			//Amily!
 			if (monster.hasStatusEffect(StatusEffects.Concentration)) {
@@ -1744,6 +2325,12 @@ package classes.Scenes.Combat
 		
 		//Player sting attack
 		public function playerStinger():void {
+			clearOutput();
+			if (player.tail.venom < 33) {
+				outputText("You do not have enough venom to sting right now!");
+				doNext(physicalSpecials);
+				return;
+			}
 			//Worms are immune!
 			if (monster.short == "worms") {
 				outputText("Taking advantage of your new natural weapons, you quickly thrust your stinger at the freak of nature. Sensing impending danger, the creature willingly drops its cohesion, causing the mass of worms to fall to the ground with a sick, wet 'thud', leaving you to stab only at air.\n\n");
@@ -1751,6 +2338,12 @@ package classes.Scenes.Combat
 				return;
 			}
 			//Determine if dodged!
+			//Amily!
+			if (monster.hasStatusEffect(StatusEffects.Concentration)) {
+				outputText("Amily easily glides around your attack thanks to her complete concentration on your movements.\n\n");
+				monster.doAI();
+				return;
+			}
 			if (monster.spe - player.spe > 0 && int(Math.random()*(((monster.spe-player.spe)/4)+80)) > 80) {
 				if (monster.spe - player.spe < 8) outputText(monster.capitalA + monster.short + " narrowly avoids your stinger!\n\n");
 				if (monster.spe - player.spe >= 8 && monster.spe-player.spe < 20) outputText(monster.capitalA + monster.short + " dodges your stinger with superior quickness!\n\n");
@@ -1795,6 +2388,12 @@ package classes.Scenes.Combat
 				return;
 			}
 			player.tail.venom-= 33;
+			//Amily!
+			if (monster.hasStatusEffect(StatusEffects.Concentration)) {
+				outputText("Amily easily glides around your attack thanks to her complete concentration on your movements.\n\n");
+				monster.doAI();
+				return;
+			}
 			if (monster.short == "lizan rogue") {
 				outputText("As your webbing flies at him the lizan flips back, slashing at the adhesive strands with the claws on his hands and feet with practiced ease.  It appears he's used to countering this tactic.");
 				monster.doAI();
@@ -1936,6 +2535,13 @@ package classes.Scenes.Combat
 		//tiny damage and lower monster armor by ~75% for one turn
 		//hit
 		public function tailWhipAttack():void {
+			clearOutput();
+			if (player.fatigue + player.physicalCost(10) > player.maxFatigue()) {
+				outputText("You are too tired to perform a tail whip.");
+				doNext(curry(combat.combatMenu,false));
+				return;
+			}
+			//miss
 			if ((player.hasStatusEffect(StatusEffects.Blind) && rand(2) == 0) || (monster.spe - player.spe > 0 && int(Math.random()*(((monster.spe-player.spe)/4)+80)) > 80)) {
 				outputText("Twirling like a top, you swing your tail, but connect with only empty air.");
 			}
@@ -1952,11 +2558,19 @@ package classes.Scenes.Combat
 				monster.addStatusValue(StatusEffects.CoonWhip,2,2);
 				if (player.tail.type == Tail.RACCOON) monster.addStatusValue(StatusEffects.CoonWhip,2,2);
 			}
+			player.changeFatigue(15,2);
 			outputText("\n\n");
 			monster.doAI();
 		}
 		
 		public function tailSlamAttack():void {
+			clearOutput();
+			if (player.fatigue + player.physicalCost(20) > player.maxFatigue()) {
+				outputText("You are too exhausted to perform a tail slam.");
+				doNext(curry(combat.combatMenu,false));
+				return;
+			}
+			player.changeFatigue(20, 2);
 
 			//miss
 			if ((player.hasStatusEffect(StatusEffects.Blind) && rand(2) === 0) || (monster.spe - player.spe > 0 && int(Math.random() * (((monster.spe - player.spe) / 4) + 80)) > 80)) {
@@ -2003,6 +2617,12 @@ package classes.Scenes.Combat
 		}
 		
 		public function tailSlapAttack():void {
+			clearOutput();
+			if (player.fatigue + player.physicalCost(30) > player.maxFatigue()) {
+				outputText("You are too tired to perform a tail slap.");
+				doNext(curry(combat.combatMenu,false));
+				return;
+			}
 			outputText("With a simple thought you set your tail ablaze.");
 			//miss
 			if((player.hasStatusEffect(StatusEffects.Blind) && rand(2) == 0) || (monster.spe - player.spe > 0 && int(Math.random()*(((monster.spe-player.spe)/4)+80)) > 80)) {
@@ -2018,11 +2638,18 @@ package classes.Scenes.Combat
 				outputText("  Your tail slams against " + monster.a + monster.short + ", dealing <b><font color=\"#800000\">" + damage + "</font></b> damage! ");
 				combat.checkAchievementDamage(damage);
 			}
+			player.changeFatigue(30,2);
 			outputText("\n\n");
 			monster.doAI();
 		}
 
 		public function shieldBash():void {
+			clearOutput();
+			if (player.fatigue + player.physicalCost(20) > player.maxFatigue()) {
+				outputText("You are too tired to perform a shield bash.");
+				doNext(curry(combat.combatMenu,false));
+				return;
+			}
 			outputText("You ready your [shield] and prepare to slam it towards " + monster.a + monster.short + ".  ");
 			if ((player.hasStatusEffect(StatusEffects.Blind) && rand(2) == 0) || (monster.spe - player.spe > 0 && int(Math.random() * (((monster.spe-player.spe) / 4) + 80)) > 80)) {
 				if (monster.spe - player.spe < 8) outputText(monster.capitalA + monster.short + " narrowly avoids your attack!");
@@ -2046,656 +2673,10 @@ package classes.Scenes.Combat
 			}
 			flags[kFLAGS.LAST_ATTACK_TYPE] = 0;
 			combat.checkAchievementDamage(damage);
+			player.changeFatigue(20,2);
 			outputText("\n\n");
 			monster.doAI();
 		}
-		
-		public var allAbilities:Vector.<CombatAbility> = new Vector.<CombatAbility>;
-		public var magicSpells:Vector.<CombatAbility> = new Vector.<CombatAbility>;
-		public var physicalAbilities:Vector.<CombatAbility> = new Vector.<CombatAbility>;
-		public var magicAbilities:Vector.<CombatAbility> = new Vector.<CombatAbility>;
-		
-		public function updateCooldowns():void{
-			for each(var ability:CombatAbility in magicSpells){
-				if ((ability.currCooldown < ability.cooldown) && ability.cooldown != 0) ability.currCooldown += 1;
-			}
-			for each(var ability:CombatAbility in physicalAbilities){
-				if ((ability.currCooldown < ability.cooldown) && ability.cooldown != 0) ability.currCooldown += 1;
-			}
-			for each(var ability:CombatAbility in magicAbilities){
-				if ((ability.currCooldown < ability.cooldown) && ability.cooldown != 0) ability.currCooldown += 1;
-			}
-		}
-		
-		public function setSpells():void{
-		magicSpells = new Vector.<CombatAbility>;
-		magicSpells.push(new CombatAbility({
-				abilityFunc: spellChargeWeapon,
-				cost: 15,
-				tooltip: function ():String {
-											return "The Charge Weapon spell will surround your weapon in electrical energy, causing it to deal extra damage.  The effect lasts for the entire combat.";
-										},
-				availableWhen: function ():Boolean {
-											return player.hasStatusEffect(StatusEffects.KnowsCharge);
-										}, 
-				disabledWhen: function ():Boolean{
-											return player.hasStatusEffect(StatusEffects.ChargeWeapon);
-										},
-				disabledTooltip: "<b>Charge weapon is already active and cannot be cast again.</b>\n\n",
-				spellName: "Charge Weapon",
-				spellShort: "Charge W.",
-				isSelf: true,
-				abilityType: CombatAbility.WHITE_MAGIC
-		}),
-		new CombatAbility({
-				abilityFunc: spellBlind,
-				cost: 20,
-				tooltip: "Blind is a fairly self-explanatory spell. It will create a bright flash just in front of the victim's eyes, blinding them for a time. However, it will be wasted if they blink.",
-				availableWhen: function ():Boolean {
-					return player.hasStatusEffect(StatusEffects.KnowsBlind);
-					}, 
-				disabledWhen: function ():Boolean{
-					return monster.hasStatusEffect(StatusEffects.KnowsBlind);
-					},
-				disabledTooltip: "<b>" + monster.capitalA + monster.short + " is already affected by blind.</b>\n\n",
-				spellName: "Blind",
-				spellShort: "Blind",			
-				abilityType: CombatAbility.WHITE_MAGIC
-			}),
-		new CombatAbility({
-				abilityFunc: spellWhitefire,
-				cost: 30,
-				tooltip: function ():String {
-							return "Whitefire is a potent fire based attack that will burn your foe with flickering white flames, ignoring their physical toughness and most armors.";
-						},
-				availableWhen: function ():Boolean {
-					return player.hasStatusEffect(StatusEffects.KnowsWhitefire);
-					}, 
-				spellName: "Whitefire",
-				spellShort: "Whitefire",
-				abilityType: CombatAbility.WHITE_MAGIC
-			}),
-		new CombatAbility({
-				abilityFunc: spellArouse,
-				cost: 15,
-				tooltip: function ():String {
-											return "The arouse spell draws on your own inner lust in order to enflame the enemy's passions.";
-										},
-				availableWhen: function ():Boolean {
-											return player.hasStatusEffect(StatusEffects.KnowsArouse);
-										}, 
-				spellName: "Arouse",
-				spellShort: "Arouse",
-				abilityType: CombatAbility.BLACK_MAGIC
-		}),
-		new CombatAbility({
-				abilityFunc: spellHeal,
-				cost: 20,
-				tooltip: function ():String {
-											return "Heal will attempt to use black magic to close your wounds and restore your body, however like all black magic used on yourself, it has a chance of backfiring and greatly arousing you. \n\n";
-				},
-				availableWhen: function ():Boolean {
-											return player.hasStatusEffect(StatusEffects.KnowsHeal);
-										}, 
-				spellName: "Heal",
-				spellShort: "Heal",
-				isHeal: true,
-				isSelf: true,
-				abilityType: CombatAbility.BLACK_MAGIC
-		}),
-		new CombatAbility({
-				abilityFunc: spellMight,
-				cost: 25,
-				tooltip: function ():String {
-											return "The Might spell draws upon your lust and uses it to fuel a temporary increase in muscle size and power, raising Strength and Toughness. It does carry the risk of backfiring and raising lust, like all black magic used on oneself.";
-										},
-				availableWhen: function ():Boolean {
-											return player.hasStatusEffect(StatusEffects.KnowsMight);
-										}, 
-				disabledWhen: function ():Boolean{
-											return player.hasStatusEffect(StatusEffects.KnowsMight);
-										},
-				disabledTooltip: "Might is already active and cannot be cast again.\n\n",
-				spellName: "Might",
-				spellShort: "Might.",
-				isSelf: true,
-				abilityType: CombatAbility.BLACK_MAGIC
-		}),
-		new CombatAbility({
-				abilityFunc: spellBlackfire,
-				cost: 40,
-				tooltip: function ():String {
-											return "Blackfire is the black magic variant of Whitefire. It is a potent fire based attack that will burn your foe with flickering black and purple flames, ignoring their physical toughness and most armors. \n\n"
-										},
-				availableWhen: function ():Boolean {
-											return player.hasStatusEffect(StatusEffects.KnowsBlackfire);
-										}, 
-				spellName: "Blackfire",
-				spellShort: "Blackfire",
-				abilityType: CombatAbility.BLACK_MAGIC
-		}),
-		new CombatAbility({
-				abilityFunc: spellCleansingPalm,
-				cost: 30,
-				tooltip: function ():String {
-											return "Unleash the power of your cleansing aura! More effective against corrupted opponents. Doesn't work on the pure.";										
-										},
-				availableWhen: function ():Boolean {
-											return player.hasPerk(PerkLib.CleansingPalm);
-										}, 
-				disabledWhen: function ():Boolean{
-											return !player.isPureEnough(10);
-										},
-				disabledTooltip: "You are too corrupt to use this spell.",
-				spellName: "Cleansing Palm",
-				spellShort: "C. Palm",
-				abilityType: CombatAbility.MAGICAL
-		}));
-		
-		magicAbilities = new Vector.<CombatAbility>;
-		magicAbilities.push(new CombatAbility({
-				abilityFunc: dispellingSpell,
-				tooltip: "Remove most magical effects, positive or negative, from both you and the targeted enemy.",
-				availableWhen: function ():Boolean {
-											return player.keyItemv1("Arian's Charged Talisman") == 1;
-										}, 
-				spellName: "Arian's Talisman - Dispel",
-				spellShort: "Dispel",
-				isSelf: true,
-				abilityType: CombatAbility.MAGICAL
-		}),
-		new CombatAbility({
-				abilityFunc: healingSpell,
-				tooltip: function ():String {
-											return  "Use Arian's talisman to heal yourself."
-											},				
-				availableWhen: function ():Boolean {
-											return player.keyItemv1("Arian's Charged Talisman") == 2;
-										}, 
-				spellName: "Arian's Talisman - Heal",
-				spellShort: "Healing",
-				isSelf: true,				
-				abilityType: CombatAbility.MAGICAL
-		}),
-		new CombatAbility({
-				abilityFunc: immolationSpell,
-				tooltip: function ():String {
-											return  "Use Arian's talisman to immolate a target."
-											},				
-				availableWhen: function ():Boolean {
-											return player.keyItemv1("Arian's Charged Talisman") == 3;
-										}, 
-				spellName: "Arian's Talisman - Immolation",
-				spellShort: "Immolation",
-				abilityType: CombatAbility.MAGICAL
-		}),
-		new CombatAbility({
-				abilityFunc: lustReductionSpell,
-				tooltip: "Use Arian's talisman to calm yourself and reduce your lust.",
-				availableWhen: function ():Boolean {
-											return player.keyItemv1("Arian's Charged Talisman") == 4;
-										}, 
-				spellName: "Arian's Talisman - Lust",
-				spellShort: "Lust Reduc.",
-				isSelf: true,
-				abilityType: CombatAbility.MAGICAL
-		}),
-		new CombatAbility({
-				abilityFunc: shieldingSpell,
-				tooltip: "Use Arian's talisman to fortify yourself with a magical shield.",
-				availableWhen: function ():Boolean {
-											return player.keyItemv1("Arian's Charged Talisman") == 5;
-										}, 
-				spellName: "Arian's Talisman - Shield",
-				spellShort: "Shielding",
-				isSelf: true,
-				abilityType: CombatAbility.MAGICAL
-		}),
-		new CombatAbility({
-				abilityFunc: berzerk,
-				tooltip: "Throw yourself into a rage!  Greatly increases the strength of your weapon and increases lust resistance, but your armor defense is reduced to zero!",	
-				availableWhen: function ():Boolean {
-											return player.hasPerk(PerkLib.Berzerker);
-										}, 
-				spellName: "Berserk",
-				spellShort: "Berserk",
-				disabledWhen: function ():Boolean{
-											return player.hasStatusEffect(StatusEffects.Berzerking);
-										},
-				disabledTooltip: "You're already pretty goddamn mad!",
-				isSelf: true,
-				abilityType: CombatAbility.MAGICAL
-		}),
-		new CombatAbility({
-				abilityFunc: lustzerk,
-				tooltip: "Throw yourself into a lust rage!  Greatly increases the strength of your weapon and increases armor defense, but your lust resistance is halved!",	
-				availableWhen: function ():Boolean {
-											return player.hasPerk(PerkLib.Lustzerker);
-										}, 
-				disabledWhen: function ():Boolean{
-											return player.hasStatusEffect(StatusEffects.Lustzerking);
-										},
-				disabledTooltip: "You're already pretty goddamn mad!",
-				spellName: "Lustserk",
-				spellShort: "Lustserk",
-				isSelf: true,
-				abilityType: CombatAbility.MAGICAL
-		}),
-		new CombatAbility({
-				abilityFunc: dragonBreath,
-				cost: 20,
-				tooltip: function ():String {
-											return  "Unleash fire from your mouth. This can only be done once a day.";
-											},		
-				availableWhen: function ():Boolean {
-											return player.hasPerk(PerkLib.Dragonfire);
-										}, 
-				disabledWhen: function ():Boolean{
-											return player.hasStatusEffect(StatusEffects.DragonBreathCooldown);
-										},
-				disabledTooltip: "Your burning throat reminds you that you're not yet ready to unleash dragonfire again.",
-				spellName: "Dragon Breath",
-				spellShort: "Dragon B.",
-				isSelf: true,
-				abilityType: CombatAbility.MAGICAL
-		}),
-		new CombatAbility({
-				abilityFunc: fireballuuuuu,
-				cost: 20,
-				tooltip: function ():String {
-											return  "Unleash terrestrial fire from your mouth.";
-											},		
-				availableWhen: function ():Boolean {
-											return player.hasPerk(PerkLib.FireLord);
-										}, 
-				spellName: "Terra Fire",
-				spellShort: "Terra Fire",
-				abilityType: CombatAbility.MAGICAL
-		}),
-		new CombatAbility({
-				abilityFunc: hellFire,
-				cost: 20,
-				tooltip: function ():String {
-											return  "Unleash terrestrial fire from your mouth.";
-											},		
-				availableWhen: function ():Boolean {
-											return player.hasPerk(PerkLib.FireLord);
-										}, 
-				spellName: "Hellfire",
-				spellShort: "Hellfire",
-				abilityType: CombatAbility.MAGICAL
-		}),
-		new CombatAbility({
-				abilityFunc: possess,
-				tooltip: function ():String {
-											return  "Attempt to temporarily possess a foe and force them to raise their own lusts.";
-											},		
-				availableWhen: function ():Boolean {
-											return player.hasPerk(PerkLib.Incorporeality);
-										}, 
-				spellName: "Possess",
-				spellShort: "Possess",
-				abilityType: CombatAbility.MAGICAL
-		}),
-		new CombatAbility({
-				abilityFunc: superWhisperAttack,
-				cost: 10,
-				tooltip: "Whisper and induce fear in your opponent.",
-				availableWhen: function ():Boolean {
-											return player.hasPerk(PerkLib.Whispered);
-										}, 
-				disabledWhen: function ():Boolean{
-											return player.hasStatusEffect(StatusEffects.Whispered);
-										},
-				disabledTooltip: "Your target is already whispered!",
-				spellName: "Whisper",
-				spellShort: "Whisper",
-				abilityType: CombatAbility.MAGICAL
-		}),
-		new CombatAbility({
-				abilityFunc: corruptedFoxFire,
-				cost: 35,
-				tooltip: function ():String {
-											return "Unleash a corrupted purple flame at your opponent for high damage. Less effective against corrupted enemies, deals more damage the higher your target's lust.";
-											},		
-				availableWhen: function ():Boolean {
-											return player.hasPerk(PerkLib.CorruptedNinetails);
-										}, 
-				spellName: "Corrupted Foxfire",
-				spellShort: "C. Foxfire",
-				abilityType: CombatAbility.MAGICAL
-		}),
-		new CombatAbility({
-				abilityFunc: kitsuneTerror,
-				cost: 20,
-				tooltip: function ():String {
-											return "Instill fear into your opponent with eldritch horrors. The more you cast this in a battle, the lesser effective it becomes.";
-											},		
-				availableWhen: function ():Boolean {
-											return player.hasPerk(PerkLib.CorruptedNinetails);
-										}, 
-				spellName: "Terror",
-				spellShort: "Terror",
-				abilityType: CombatAbility.MAGICAL
-		}),
-		new CombatAbility({
-				abilityFunc: foxFire,
-				cost: 35,
-				tooltip: function ():String {
-											return "Unleash an ethereal blue flame at your opponent for high damage. ";
-											},		
-				availableWhen: function ():Boolean {
-											return player.hasPerk(PerkLib.EnlightenedNinetails);
-										}, 
-				spellName: "Foxfire",
-				spellShort: "Foxfire",
-				abilityType: CombatAbility.MAGICAL
-		}),
-		new CombatAbility({
-				abilityFunc: kitsuneIllusion,
-				cost: 25,
-				tooltip: function ():String {
-											return "Warp the reality around your opponent, lowering their speed. The more you cast this in a battle, the lesser effective it becomes.";
-											},		
-				availableWhen: function ():Boolean {
-											return player.hasPerk(PerkLib.EnlightenedNinetails);
-										}, 
-				spellName: "Illusion",
-				spellShort: "Illusion",
-				abilityType: CombatAbility.MAGICAL
-		}),
-		new CombatAbility({
-				abilityFunc: paralyzingStare,
-				cost: 20,
-				tooltip: function ():String {
-											return "Focus your gaze at your opponent, lowering their speed. The more you use this in a battle, the lesser effective it becomes.";
-											},		
-				availableWhen: function ():Boolean {
-											return player.canUseStare();
-										}, 
-				spellName: "Paralyzing Stare",
-				spellShort: "Stare",
-				abilityType: CombatAbility.MAGICAL
-		}));
-		
-		physicalAbilities = new Vector.<CombatAbility>;
-		physicalAbilities.push(new CombatAbility({
-				abilityFunc: anemoneSting,
-				tooltip: function ():String {
-											return "Attempt to strike an opponent with the stinging tentacles growing from your scalp. Increases enemy lust while reducing their speed.";
-										},
-				availableWhen: function ():Boolean {
-											return player.hair.type == 4;
-										}, 
-				spellName: "Anemone Sting",
-				spellShort: "AnemoneSting",
-				abilityType: CombatAbility.PHYSICAL
-		}),
-		new CombatAbility({
-				abilityFunc: bite,
-				cost: 25,
-				tooltip: function ():String {
-											return "Attempt to bite your opponent with your shark-teeth. May cause bleeding.";
-										},
-				availableWhen: function ():Boolean {
-											return player.face.type == Face.SHARK_TEETH;
-										}, 
-				spellName: "Shark Bite",
-				spellShort: "SharkBite",
-				abilityType: CombatAbility.PHYSICAL
-		}),
-		new CombatAbility({
-				abilityFunc: nagaBiteAttack,
-				cost: 10,
-				tooltip: function ():String {
-											return "Attempt to bite your opponent and inject venom, reducing Strength and Speed.";
-										},
-				availableWhen: function ():Boolean {
-											return player.face.type == Face.SNAKE_FANGS;
-										}, 
-				spellName: "Naga Bite",
-				spellShort: "Naga Bite",
-				abilityType: CombatAbility.PHYSICAL
-		}),
-		new CombatAbility({
-				abilityFunc: spiderBiteAttack,
-				cost: 10,
-				tooltip: function ():String {
-											return "Attempt to bite your opponent and inject venom.";
-										},
-				availableWhen: function ():Boolean {
-											return player.face.type == Face.SPIDER_FANGS;
-										}, 
-				spellName: "Spider Bite",
-				spellShort: "Sp. Bite",
-				abilityType: CombatAbility.PHYSICAL
-		}),
-		new CombatAbility({
-				abilityFunc: fireBow,
-				cost: 25,
-				tooltip: function ():String {
-											return  "Use a bow to fire an arrow at your opponent.";
-										},
-				availableWhen: function ():Boolean {
-											return player.hasKeyItem("Bow") >= 0 || player.hasKeyItem("Kelt's Bow") >= 0;
-										}, 
-				spellName: "Fire Bow",
-				spellShort: "Fire Bow",
-				abilityType: CombatAbility.PHYSICAL
-		}),
-		new CombatAbility({
-				abilityFunc: getGame().desert.nagaScene.nagaPlayerConstrict,
-				cost: 10,
-				tooltip: "Attempt to bind an enemy in your long snake-tail.",
-				availableWhen: function ():Boolean {
-											return player.lowerBody.type == LowerBody.NAGA;
-										}, 
-				spellName: "Constrict",
-				spellShort: "Constrict",
-				abilityType: CombatAbility.PHYSICAL
-		}),
-		new CombatAbility({
-				abilityFunc:kick,
-				cost: 15,
-				tooltip: function ():String {
-											return  "Attempt to kick an enemy using your powerful lower body.";
-										},				
-				availableWhen: function ():Boolean {
-											return player.isTaur() || player.lowerBody.type == LowerBody.HOOFED || player.lowerBody.type == LowerBody.BUNNY || player.lowerBody.type == LowerBody.KANGAROO;
-										}, 
-				spellName: "Kick",
-				spellShort: "Kick",
-				abilityType: CombatAbility.PHYSICAL
-		}),		
-		new CombatAbility({
-				abilityFunc: goreAttack,
-				cost: 15,
-				tooltip: function ():String {
-											return  "Lower your head and charge your opponent, attempting to gore them on your horns.  This attack is stronger and easier to land with large horns.";
-										},				
-				availableWhen: function ():Boolean {
-											return player.horns.type == Horns.COW_MINOTAUR && player.horns.value >= 6;
-										}, 
-				spellName: "Gore",
-				spellShort: "Gore",
-				abilityType: CombatAbility.PHYSICAL
-		}),
-		new CombatAbility({
-				abilityFunc: ramsStun,
-				cost: 15,
-				tooltip: function ():String {
-											return  "Use a ramming headbutt to try and stun your foe.";
-										},				
-				availableWhen: function ():Boolean {
-											return player.horns.type == Horns.RAM && player.horns.value >= 2;
-										}, 
-				spellName: "Horn Stun",
-				spellShort: "Horn Stun",
-				abilityType: CombatAbility.PHYSICAL
-		}),
-		new CombatAbility({
-				abilityFunc: getGame().mountain.wormsScene.playerInfest,
-				cost: 40,
-				tooltip: function ():String {
-											return  "The infest attack allows you to cum at will, launching a stream of semen and worms at your opponent in order to infest them.  Unless your foe is very aroused they are likely to simply avoid it.  Only works on males or herms. \n\nAlso great for reducing your lust.";
-										},				
-				availableWhen: function ():Boolean {
-											return player.hasStatusEffect(StatusEffects.Infested) && player.statusEffectv1(StatusEffects.Infested) == 5 && player.hasCock();
-										}, 
-				spellName: "Infest",
-				spellShort: "Infest",
-				abilityType: CombatAbility.PHYSICAL
-		}),
-		new CombatAbility({
-				abilityFunc: kissAttack,
-				tooltip: "Attempt to kiss your foe on the lips with drugged lipstick.  It has no effect on those without a penis.",			
-				availableWhen: function ():Boolean {
-											return player.hasStatusEffect(StatusEffects.LustStickApplied);
-										}, 
-				spellName: "Kiss",
-				spellShort: "Kiss",
-				abilityType: CombatAbility.PHYSICAL
-		}),
-		new CombatAbility({
-				abilityFunc: playerStinger,
-				tooltip: function ():String {
-											return "Attempt to use your venomous bee stinger on an enemy.";
-										},					
-				availableWhen: function ():Boolean {
-											return player.tail.type == Tail.BEE_ABDOMEN;
-										}, 
-				disabledWhen: function ():Boolean{
-					return player.tail.venom < 33;
-				},
-				disabledTooltip: "You do not have enough venom to sting right now!",
-				spellName: "Sting",
-				spellShort: "Sting",
-				abilityType: CombatAbility.PHYSICAL
-		}),
-		new CombatAbility({
-				abilityFunc: PCWebAttack,
-				tooltip: function ():String {
-											return "Attempt to use your venomous bee stinger on an enemy.";
-										},					
-				availableWhen: function ():Boolean {
-											return player.tail.type == Tail.SPIDER_ABDOMEN;
-										}, 
-				disabledWhen: function ():Boolean{
-					return player.tail.venom < 33;
-				},
-				disabledTooltip: "You do not have enough webbing to shoot right now!",
-				spellName: "Web",
-				spellShort: "Web",
-				abilityType: CombatAbility.PHYSICAL
-		}),
-		new CombatAbility({
-				abilityFunc: tailSlapAttack,
-				cost: 30,
-				tooltip: function ():String {
-											return "Set your tail ablaze in red-hot flames to whip your foe with it to hurt and burn them!";
-										},					
-				availableWhen: function ():Boolean {
-											return player.tail.type == Tail.SALAMANDER;
-										}, 
-				spellName: "Tail Slap",
-				spellShort: "Tail Slap",
-				abilityType: CombatAbility.PHYSICAL
-		}),
-		new CombatAbility({
-				abilityFunc: tailWhipAttack,
-				cost: 15,
-				tooltip: "Whip your foe with your tail to enrage them and lower their defense! Reduces armor by <b>75%</b>.",					
-				availableWhen: function ():Boolean {
-											return player.tail.type == Tail.SHARK || player.tail.type == Tail.LIZARD || player.tail.type == Tail.KANGAROO || player.tail.type == Tail.RACCOON || player.tail.type == Tail.FERRET;
-										}, 
-				spellName: "Tail Whip",
-				spellShort: "Tail Whip",
-				abilityType: CombatAbility.PHYSICAL
-		}),
-		new CombatAbility({
-				abilityFunc: tailSlamAttack,
-				cost: 20,
-				tooltip: function():String{
-					return "Slam your foe with your mighty dragon tail! This attack causes grievous harm and can stun your opponent or let it bleed.";
-				},
-				availableWhen: function ():Boolean {
-											return player.tail.type == Tail.DRACONIC;
-										}, 
-				spellName: "Tail Slam",
-				spellShort: "Tail Slam",
-				abilityType: CombatAbility.PHYSICAL
-		}),
-		new CombatAbility({
-				abilityFunc: shieldBash,
-				cost: 20,
-				tooltip: function():String{
-					return "Bash your opponent with a shield. Has a chance to stun. Bypasses stun immunity. ";
-				},
-				availableWhen: function ():Boolean {
-											return player.shield != ShieldLib.NOTHING;
-										}, 
-				spellName: "Shield Bash",
-				spellShort: "Shield Bash",
-				abilityType: CombatAbility.PHYSICAL
-		})		
-		);
-		
-		}
-		
-		public function magicMenu():void {
-			if (combat.inCombat && player.hasStatusEffect(StatusEffects.Sealed) && player.statusEffectv2(StatusEffects.Sealed) == 2) {
-				clearOutput();
-				outputText("You reach for your magic, but you just can't manage the focus necessary.  <b>Your ability to use magic was sealed, and now you've wasted a chance to attack!</b>\n\n");
-				monster.doAI();
-				return;
-			}
-			menu();
-			clearOutput();
-			var pos:int = 0;
-			outputText("What spell will you use?\n\n");
-			for each(var ability:CombatAbility in magicSpells){
-				pos = ability.createButton(pos);
-			}
-			addButton(14, "Back", combat.combatMenu, false);
-		}
-		
-		public function physicalSpecials():void {
-			if (getGame().urtaQuest.isUrta()) {
-				getGame().urtaQuest.urtaSpecials();
-				return;
-			}
-			if (getGame().inCombat && player.hasStatusEffect(StatusEffects.Sealed) && player.statusEffectv2(StatusEffects.Sealed) == 5) {
-				clearOutput();
-				outputText("You try to ready a special attack, but wind up stumbling dizzily instead.  <b>Your ability to use physical special attacks was sealed, and now you've wasted a chance to attack!</b>\n\n");
-				monster.doAI();
-				return;
-			}
-			menu();
-			var button:int = 0;
-			for each(var ability:CombatAbility in physicalAbilities){
-				button = ability.createButton(button);
-			}
-
-			addButton(14, "Back", combat.combatMenu, false);
-		}
-		
-		public function magicalSpecials():void {
-			if (combat.inCombat && player.hasStatusEffect(StatusEffects.Sealed) && player.statusEffectv2(StatusEffects.Sealed) == 6) {
-				clearOutput();
-				outputText("You try to ready a special ability, but wind up stumbling dizzily instead.  <b>Your ability to use magical special attacks was sealed, and now you've wasted a chance to attack!</b>\n\n");
-				monster.doAI();
-				return;
-			}
-			menu();
-			var button:int = 0;
-			for each(var ability:CombatAbility in magicAbilities){
-				button = ability.createButton(button);
-			}
-
-			addButton(14, "Back", combat.combatMenu, false);
-		}
-		
-
 		
 	}
 

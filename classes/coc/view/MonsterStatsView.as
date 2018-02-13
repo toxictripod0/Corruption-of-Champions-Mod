@@ -153,6 +153,11 @@ public class MonsterStatsView extends Block {
 		this.addEventListener(MouseEvent.ROLL_OUT, this.dim);
 	}
 
+
+	public function show():void {
+		this.visible = true;
+	}
+
 	public function hide():void {
 		this.visible = false;
 	}
@@ -236,7 +241,7 @@ public class MonsterStatsView extends Block {
 	
 	public function refreshStats(game:CoC):void {
 		var monster:Monster            = game.monster;
-		nameText.text         = Utils.capitalizeFirstLetter(monster.short);
+		nameText.htmlText     = "<b>Name: " + monster.short + "</b>";
 		strBar.value          = monster.str;
 		touBar.value          = monster.tou;
 		speBar.value          = monster.spe;
@@ -272,16 +277,9 @@ public class MonsterStatsView extends Block {
 		*/
 		toolTipHeader = "Details";
 		toolTipText = monster.generateTooltip();
-		
 		invalidateLayout();
 	}
 
-	public function show(toolTipText:String="",toolTipHeader:String=""):void {
-		this.visible = true;
-		this.alpha    = 1;
-		hint(toolTipText, toolTipHeader);
-	}
-	
 	public function setBackground(bitmapClass:Class):void {
 		sideBarBG.bitmapClass = bitmapClass;
 	}

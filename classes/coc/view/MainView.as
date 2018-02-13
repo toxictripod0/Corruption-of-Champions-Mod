@@ -1,10 +1,13 @@
 /****
  coc.view.MainView
+
  I have no real idea yet what eventTestInput is for,
  but its coordinates get tested for in places, and set in others.
  Perhaps some day I'll ask.
+
  It's for allowing people to test stuff in the parser. It gets moved into view, and you
  can enter stuff in the text window, which then gets fed through the parser.
+
  That's good to know.  Cheers.
  ****/
 
@@ -350,7 +353,6 @@ public class MainView extends Block {
 		// hook!
 		hookBottomButtons();
 		hookAllButtons();
-		hookMonster();
 		this.width  = SCREEN_W;
 		this.height = SCREEN_H;
 		this.scaleX = 1;
@@ -453,8 +455,10 @@ public class MainView extends Block {
 		b.addEventListener(MouseEvent.ROLL_OUT, this.dimButton);
 	}
 
-	public function hookMonster():void {
-		monsterStatsView.addEventListener(MouseEvent.ROLL_OVER, this.hoverMonster);
+	public function hookMonster(b:Sprite):void {
+		b.mouseChildren = false;
+		b.addEventListener(MouseEvent.ROLL_OVER, this.hoverMonster);
+		b.addEventListener(MouseEvent.ROLL_OUT, this.dimButton);
 	}
 
 	//////// Internal(?) view update methods ////////
@@ -828,37 +832,32 @@ public class MainView extends Block {
 		this.nameBox.restrict = "a-zA-Z0-9 .'\\-";
 	}
 	public function moveCombatView(event:TimerEvent = null):void{
-		this.scrollBar.x -= 200;
-		this.textBGTan.x -= 200;
-		this.textBGWhite.x -= 200;
-		this.textBGTranslucent.x -= 200;
-		this.monsterStatsView.x -=  200;	
-		this.mainText.width -= 200;
-		this.monsterStatsView.setBackground(StatsView.SidebarBackgrounds[kGAMECLASS.flags[kFLAGS.BACKGROUND_STYLE]])
-		/*this.mainText.width -= 10;
+		this.mainText.width -= 10;
 		this.scrollBar.x -= 10;
+		//this.scrollBar.x -= 200;
 		this.textBGTan.width -= 10;
+		//this.textBGTan.x -= 200;
 		this.textBGWhite.width -= 10;
+		//this.textBGWhite.x -= 200;
 		this.textBGTranslucent.width -= 10;
-		this.monsterStatsView.x -= 10;*/
+		//this.textBGTranslucent.x -= 200;
+		this.monsterStatsView.x -= 10;
 		this.monsterStatsView.refreshStats(kGAMECLASS);
 
 	
 	}
 	
 	public function moveCombatViewBack(event:TimerEvent = null):void{
-		/*this.mainText.width += 10;
+		this.mainText.width += 10;
 		this.scrollBar.x +=  10;
+		//this.scrollBar.x -= 200;
+		this.textBGTan.width +=  10 ;
+		//this.textBGTan.x -= 200;
 		this.textBGWhite.width +=  10;
+		//this.textBGWhite.x -= 200;
 		this.textBGTranslucent.width +=  10;
-		this.monsterStatsView.x+=  10;	
-		this.textBGTan.width +=  10;*/
-		this.scrollBar.x += 200;
-		this.textBGTan.x += 200;
-		this.textBGWhite.x += 200;
-		this.textBGTranslucent.x += 200;
-		this.monsterStatsView.x +=  200;	
-		this.mainText.width += 200;
+		//this.textBGTranslucent.x -= 200;
+		this.monsterStatsView.x+=  10;
 
 	
 	}
@@ -866,22 +865,27 @@ public class MainView extends Block {
 	public function endCombatView():void{
 		if (!monsterStatsView.moved) return;
 		else monsterStatsView.moved = false;
-		moveCombatViewBack();
 		//Now animate the bar.
-		/*var tmr:Timer = new Timer(5, 20);
+		var tmr:Timer = new Timer(30, 20);
 		tmr.addEventListener(TimerEvent.TIMER, moveCombatViewBack);
-		tmr.start();*/
+		/*tmr.addEventListener(TimerEvent.TIMER_COMPLETE, function ():void {
+				this.monsterStatsView.x -= 200;
+			});*/
+		tmr.start();
 		this.monsterStatsView.hide();
 	}
 	
 	public function updateCombatView():void {
+		monsterStatsView.show();
 		if (monsterStatsView.moved) return;
 		else monsterStatsView.moved = true;
-		moveCombatView();
 		//Now animate the bar.
-		/*var tmr:Timer = new Timer(5, 20);
+		var tmr:Timer = new Timer(30, 20);
 		tmr.addEventListener(TimerEvent.TIMER, moveCombatView);
-		tmr.start();*/
+		/*tmr.addEventListener(TimerEvent.TIMER_COMPLETE, function ():void {
+				this.monsterStatsView.x -= 200;
+			});*/
+		tmr.start();
 	}
 }
 }
