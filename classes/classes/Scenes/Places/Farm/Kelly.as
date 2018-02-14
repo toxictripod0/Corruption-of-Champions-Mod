@@ -1935,7 +1935,7 @@ private function giveKellyAppleSauce():void {
 	}
 	//Repeat:
 	else {
-		outputText("\n\nYou go to the barn and grab your trusty metal bowl.  Kelly knows what this means: she clasps her hands eagerly, her horse half clopping backwards and forwards impatiently as she watches you walk casually towards the forest.");
+		outputText("You go to the barn and grab your trusty metal bowl.  Kelly knows what this means: she clasps her hands eagerly, her horse half clopping backwards and forwards impatiently as she watches you walk casually towards the forest.");
 		outputText("\n\nThe small grove of apple trees has changed significantly from when you first found it.  Somebody has begun cutting the encroaching wild trees right back and pruned the rosaceae themselves so they aren't tangling into each other anymore- they look considerably happier.");
 		if (flags[kFLAGS.KELLY_KIDS] > 1) outputText("  Somebody has even cleared an oblong patch of earth alongside the trees- a piece of card stuck into it is scrawled with a childish hand which declares it to be “CAROTS”.  You marvel at it all.  Who would have imagined your lust for horse pussy would have turned a pointless asshole into a loving mother who gardens with her children?  Really, you deserve a medal for your efforts.");
 		
@@ -2022,12 +2022,12 @@ private function giveKellyAppleSauce():void {
 	
 	//First:
 	if (flags[kFLAGS.KELLY_TIMES_APPLESAUCED]  == 0) {
-		outputText("\n\n\"<i>That was the best treat ever [Master],</i>\" she murmurs when you break away, gazing into your eyes lovingly.  \"<i>I liked apples but never quite as much as that.  Wow.</i>\"  You hold her face and say she should look after that orchard: who knows, maybe she'll be good enough to deserve a second helping.  Kelly smiles eagerly.");
+		outputText("\"<i>That was the best treat ever [Master],</i>\" she murmurs when you break away, gazing into your eyes lovingly.  \"<i>I liked apples but never quite as much as that.  Wow.</i>\"  You hold her face and say she should look after that orchard: who knows, maybe she'll be good enough to deserve a second helping.  Kelly smiles eagerly.");
 		outputText("\n\n\"<i>I will be [Master], you watch!</i>\"  You dress yourself and amble out of the stable with her before sending her on her way with a loving, jiggling swat to her boobs.");
 	}
 	//Repeat:
 	else {
-		outputText("\n\n\"<i>That tastes better every time you make it [Master],</i>\" she purrs when you break away, gazing into your eyes lovingly.  \"<i>You should go into business with it.</i>\"  You grin at the idea and say who knows?  Maybe Mareth will eventually behave well enough to appreciate it as much as she does.  \"<i>I long for that day every moment of every day,</i>\" your slave replies fervently, stroking the hand you're holding her face with.");
+		outputText("\"<i>That tastes better every time you make it [Master],</i>\" she purrs when you break away, gazing into your eyes lovingly.  \"<i>You should go into business with it.</i>\"  You grin at the idea and say who knows?  Maybe Mareth will eventually behave well enough to appreciate it as much as she does.  \"<i>I long for that day every moment of every day,</i>\" your slave replies fervently, stroking the hand you're holding her face with.");
 		outputText("\n\nYou dress yourself and amble back out of the stable with her before sending her on her way with a loving, jiggling swat to her boobs.");
 	}
 	player.orgasm('Dick');
