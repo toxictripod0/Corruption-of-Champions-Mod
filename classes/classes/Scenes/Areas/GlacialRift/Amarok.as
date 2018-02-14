@@ -1,57 +1,47 @@
-// By Foxwells
-// Amarok, a big ass wolf from Inuit mythology. Idek. Glacial Rift is depressingly empty
-// Since it's a big ass god wolf, it's pretty hard to beat
-// Herm, since there's no set gender for it in its mythology
-// Comes with a unique bad end if you lose to it too many times, kinda like the Phoenix
-
-package classes.Scenes.Areas.GlacialRift 
-{
+//By Foxwells
+//Amarok, a big ass wolf from Inuit mythology. Idek. Glacial Rift is depressingly empty
+//Since it's a big ass god wolf, it's pretty hard to beat
+//Herm, since there's no set gender for it in its mythology
+//Comes with an unique bad end if you lose to it too many times, kinda like the Phoenix
+package classes.Scenes.Areas.GlacialRift {
 	import classes.*;
 	import classes.BodyParts.*;
 	import classes.BodyParts.Hips;
 	import classes.internals.WeightedDrop;
-	
-	public class Amarok extends Monster
-	{
-		
+
+	public class Amarok extends Monster {
+
 		protected function amarokClaw():void {
-			//Blind
-			if(hasStatusEffect(StatusEffects.Blind)) {
+			if(hasStatusEffect(StatusEffects.Blind)) { //blind
 				outputText("The Amarok lunges for you, attempting to slash you with one of its paws, but misses completely due to its blindness.");
 				combatRoundOver();
 			}
-			//Dodge that shit yo
-			if (player.getEvasionRoll()) {
+			if (player.getEvasionRoll()) { //dodge that shit yo
 				outputText("The Amarok throws itself at you, attempting to slash you with its claws. Luckily, you manage to move out of the way.");
 				combatRoundOver();
 			}
 			else {
-				//Damage roll
 				outputText("The Amarok throws itself at you and rakes one of its hefty paws across you. Its claws slice you open and draw blood.");
 				var damage:int = ((str + 50) + rand(100));
 				damage = player.reduceDamage(damage);
-				player.takeDamage(damage, true);
+				player.takeDamage(damage, true); //damage roll
 			}
 			combatRoundOver();
 		}
+		//AMAROK used TAIL SLAP!
 		protected function amarokTail():void {
-			//AMAROK used TAIL SLAP!
 			outputText("The Amarok rushes up to you and immediately turns heel, attempting to crash its tail into you. ");
-			//Blind check...
-			if(hasStatusEffect(StatusEffects.Blind)) {
+			if (hasStatusEffect(StatusEffects.Blind)) { //blind check...
 				outputText("Luckily, though, its blindness causes it to misjudge your location and it misses entirely.");
 				combatRoundOver();
 			}
-			//Evasioning
-			if (player.getEvasionRoll()) {
+			if (player.getEvasionRoll()) { //evasioning
 				outputText("You move out of the way before it can hit.");
 				combatRoundOver();
 			}
-			else {
-				//Damageeee + stun! Reference to the legend of it slapping a kid with its tail, except minus the bone breaking.
+			else { //Damageeee + stun! Reference to the legend of it slapping a kid with its tail, except minus the bone breaking
 				outputText("The hit sends you stumbling back");
-				if (player.findPerk(PerkLib.Resolute) <= 0 && rand(2) == 0) 
-				{
+				if (player.findPerk(PerkLib.Resolute) <= 0 && rand(2) == 0) {
 					outputText(", stunning you");
 					player.createStatusEffect(StatusEffects.Stunned, 0, 0, 0, 0);
 				}
@@ -62,32 +52,24 @@ package classes.Scenes.Areas.GlacialRift
 			}
 			combatRoundOver();
 		}
-		
-		override protected function performCombatAction():void
-		{
+
+		override protected function performCombatAction():void {
 			var chooser:Number = rand(10);
 			if (chooser < 6) amarokClaw(); //60% chance
 			else if (chooser >= 6 && chooser < 9) amarokTail(); //40% chance
 			else eAttack(); //when the hell was this removed?? Game just broke cuz it was .-.;;
 		}
-		
-		override public function defeated(hpVictory:Boolean):void
-		{
-			game.glacialRift.amarokScene.winAgainstAmarok();
-		}
-		
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
-		{
-			if(pcCameWorms){
+
+		override public function defeated(hpVictory:Boolean):void { game.glacialRift.amarokScene.winAgainstAmarok(); }
+		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void {
+			if (pcCameWorms) {
 				outputText("\n\nThe Amarok looks down at the worms you came, sniffs them, then snarls and walks away. It must consider you to be tainted meat.");
 				doNext(game.combat.endLustLoss);
-			} else {
-				game.glacialRift.amarokScene.amarokChowTime();
 			}
+			else game.glacialRift.amarokScene.amarokChowTime();
 		}
-		
-		public function Amarok() 
-		{
+
+		public function Amarok() {
 			this.a = "the ";
 			this.short = "Amarok";
 			this.imageName = "amarok";
@@ -136,13 +118,11 @@ package classes.Scenes.Areas.GlacialRift
 			this.special2 = amarokTail;
 			this.tail.type = Tail.WOLF;
 			if (!player.canFly()) {
+				//"Watching your movements" alluded to this. Its lore is stalking and hunting people, so I imagine you can't get away
 				this.createStatusEffect(StatusEffects.GenericRunDisabled, 0, 0, 0, 0);
-				//"Watching your movements" alluded to this. Its lore is stalking and hunting people, so I imagine you can't get away.
-				//Otherwise I'd suggest doing a hellhound knock-off of the scent tracking, which makes it harder to run.
+				//Otherwise I'd suggest doing a hellhound knock-off of the scent tracking, which makes it harder to run
 			}
 			checkMonster();
 		}
-		
 	}
-
 }
