@@ -8,6 +8,7 @@ package classes{
 	import classes.internals.IRandomNumber;
 	import classes.internals.RandomNumber;
 	import classes.lists.Gender;
+	import classes.lists.BreastCup;
 	import org.flexunit.asserts.*;
 	import org.hamcrest.assertThat;
 	import org.hamcrest.collection.*;
@@ -34,6 +35,7 @@ package classes{
 		private var noVagina:Creature;
 		private var oneVagina:Creature;
 		private var maxVagina:Creature;
+		private var fullEquip:Creature;
 		private var alwaysZero:IRandomNumber;
 		
 		private function createVaginas(numberOfVaginas:Number, instance:Creature):void {
@@ -83,6 +85,15 @@ package classes{
 				vag.recoveryProgress = RECOVERY_COUNT;		
 			}
 			
+			fullEquip = new Creature();
+			fullEquip.createCock();
+			fullEquip.createCock();
+			fullEquip.createVagina();
+			fullEquip.createVagina();
+			fullEquip.createBreastRow(BreastCup.B);
+			fullEquip.createBreastRow(BreastCup.B);
+			fullEquip.balls = 4;
+			
 			// verify created test instances
 			assertThat(noVagina.hasVagina(), equalTo(false));
 			
@@ -91,6 +102,8 @@ package classes{
 			
 			assertThat(maxVagina.hasVagina(),equalTo(true));
 			assertThat(maxVagina.vaginas, arrayWithSize(MAX_SUPPORTED_VAGINAS));
+			
+			assertThat(fullEquip.isHerm(), equalTo(true));
         }  
 		
 		[Test] 
@@ -600,7 +613,42 @@ package classes{
 		public function analStretchWithArea90PercentOfCapacity(): void {
 			assertThat(cut.buttChangeNoDisplay(ANAL_CAPACITY * 0.9), equalTo(true));
 		}
-    }
+		
+		[Test]
+		public function clearGenderRemovesCock(): void {
+			fullEquip.clearGender();
+			
+			assertThat(fullEquip.hasCock(), equalTo(false));
+		}
+		
+		[Test]
+		public function clearGenderRemovesVagina(): void {
+			fullEquip.clearGender();
+			
+			assertThat(fullEquip.hasVagina(), equalTo(false));
+		}
+		
+		[Test]
+		public function clearGenderRemovesBreasts(): void {
+			fullEquip.clearGender();
+			
+			assertThat(fullEquip.hasBreasts(), equalTo(false));
+		}
+		
+		[Test]
+		public function clearGenderRemovesBalls(): void {
+			fullEquip.clearGender();
+			
+			assertThat(fullEquip.balls, equalTo(0));
+		}
+		
+		[Test]
+		public function clearGenderNoBreasts(): void {
+			cut.clearGender();
+			
+			assertThat(cut.hasBreasts(), equalTo(false));
+		}
+	}
 }
 
 import classes.internals.IRandomNumber;
