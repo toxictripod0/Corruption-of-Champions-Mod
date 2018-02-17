@@ -1,6 +1,6 @@
 #!/bin/sh
 FLEX_VERSION='4.16.1'
-PLAYER_VERSION_MAJOR='27'
+PLAYER_VERSION_MAJOR='28'
 PLAYER_VERSION_MINOR='0'
 PLAYER_VERSION="$PLAYER_VERSION_MAJOR.$PLAYER_VERSION_MINOR"
 
@@ -17,10 +17,6 @@ wget -N "http://www-eu.apache.org/dist/flex/$FLEX_VERSION/binaries/apache-flex-s
 tar zxf "apache-flex-sdk-$FLEX_VERSION-bin.tar.gz"
 cp -r "apache-flex-sdk-$FLEX_VERSION-bin" "flex"
 cd "flex"
-
-## FIXME Dirty hack to get the build working again
-sed -i "s/{playerglobalHome}/libs\/player/g" frameworks/flex-config.xml
-
 ant -f installer.xml -Dflash.donot.ask=true -Dair.donot.ask=true -Dfontswf.donot.ask=true
 
 FLEX_MIN_VERSION=$(grep -Po "(?<=<target-player>)(\d*\.\d*)(?=</target-player>)" frameworks/flex-config.xml)
