@@ -381,6 +381,12 @@ package classes
 						relativeRootObject.pierced = 0;
 						LOGGER.warn("Cock piercing was undefined, set to {0}", relativeRootObject.pierced);
 					}
+					
+				default:
+					/*
+					 * The default block is left empty intentionally,
+					 * this switch case operates by using fall through behavior.
+					 */
 			}
 		}
 		
