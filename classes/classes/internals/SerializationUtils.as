@@ -4,7 +4,7 @@ package classes.internals
 	import flash.errors.IllegalOperationError;
 	import classes.internals.LoggerFactory;
 	import mx.logging.ILogger;
-	import classes.internals.ISerializable;
+	import classes.internals.Serializable;
 	import ArgumentError;
 	
 	/**
@@ -29,7 +29,7 @@ package classes.internals
 		public static function serializeVector(vector:Vector.<*>):Array {
 			var serialized:Array = [];
 			
-			for each(var element:ISerializable in vector) {
+			for each(var element:Serializable in vector) {
 				var obj:Array = [];
 				serialized.push(obj);
 				
@@ -48,7 +48,7 @@ package classes.internals
 		 */
 		public static function deserializeVector(destinationVector:Vector.<*>, serializedVector:Array, type:Class):void {
 			// 'is' will only work on an instance
-			if (!(new type() is ISerializable)) {
+			if (!(new type() is Serializable)) {
 				throw new ArgumentError("Type must implement Serializable");
 			}
 			
@@ -61,7 +61,7 @@ package classes.internals
 			}
 			
 			for each(var element:Object in serializedVector) {
-				var instance:ISerializable = new type();
+				var instance:Serializable = new type();
 				SerializationUtils.deserialize(element, instance);
 				destinationVector.push(instance);
 			}
@@ -129,7 +129,7 @@ package classes.internals
 		 * @param	relativeRootObject the object that contains the serialized classes data
 		 * @param	serialized class instance that should have it's state restored
 		 */
-		public static function deserialize(relativeRootObject:*, serialized:ISerializable):void {
+		public static function deserialize(relativeRootObject:*, serialized:Serializable):void {
 			LOGGER.debug("Deserializing  {0}...", serialized);
 
 			objectDefinedCheck(relativeRootObject, "Object passed for deserialization must be defined. Does the loaded property exist?")
@@ -149,7 +149,7 @@ package classes.internals
 		 * @param	relativeRootObject to write the classes data to
 		 * @param	toSerialize instance of class to serialize
 		 */
-		public static function serialize(relativeRootObject:*, toSerialize:ISerializable):void {
+		public static function serialize(relativeRootObject:*, toSerialize:Serializable):void {
 			LOGGER.debug("Serializing {0}...", toSerialize);
 			
 			objectDefinedCheck(relativeRootObject, "Object used for storage must be defined. Did you forget to initialize e.g. foo = []; ?");
