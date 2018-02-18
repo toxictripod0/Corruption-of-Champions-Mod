@@ -4,6 +4,7 @@ package classes.menus
 	import classes.internals.GuiOutput;
 	import classes.internals.UserInteractable;
 	import classes.lists.BreastCup;
+	import mx.utils.StringUtil;
 	
 	/**
 	 * Debug menu to add / remove gender related parts.
@@ -26,9 +27,32 @@ package classes.menus
 			this.onMenuExit = onMenuExit;
 		}
 		
+		private function printMenuHeader():void {
+			output.clear();
+			
+			output.header("Gender debug menu");
+			output.text("<b>Use at your own risk!</b>\n");
+			output.text("This menu allows you to create game states that are not possible during normal gameplay, you might want to create a backup save just to be sure.\n\n");
+		}
+		
+		private function printGenderStats():void {
+			output.text("Current body state:\n\n");
+			
+			output.text(StringUtil.substitute("You have {0} vagina(s)\n", player.vaginas.length));
+			output.text(StringUtil.substitute("You have {0} cock(s)\n", player.cocks.length));
+			output.text(StringUtil.substitute("You have {0} ball(s)\n", player.balls));
+			output.text(StringUtil.substitute("You have {0} breast row(s)\n", player.breastRows.length));
+		}
+		
+		private function refreshMenuText():void {
+			printMenuHeader();
+			printGenderStats();
+			output.flush();
+		}
+		
 		public function enter():void 
 		{
-			output.clear();
+			refreshMenuText();
 			gui.menu();
 			
 			gui.addButton(0, "Remove Vaginas", removeVaginas).hint("Removes ALL vaginas");
@@ -58,20 +82,26 @@ package classes.menus
 			while (player.hasVagina()) {
 				player.removeVagina();
 			}
+			
+			refreshMenuText();
 		}
 		
 		public function removeCocks(): void {
 			while (player.hasCock()) {
 				player.removeCock(0, 1);
 			}
+			
+			refreshMenuText();
 		}
 		
 		public function addCock(): void {
 			player.createCock();
+			refreshMenuText();
 		}
 		
 		public function addVagina(): void {
 			player.createVagina();
+			refreshMenuText();
 		}
 		
 		public function removeBalls(): void {
@@ -80,10 +110,13 @@ package classes.menus
 			if (player.balls < 0) {
 				player.balls = 0;
 			}
+			
+			refreshMenuText();
 		}
 		
 		public function addBalls(): void {
 			player.balls += 2;
+			refreshMenuText();
 		}
 		
 		public function removeBreasts():void {
@@ -95,10 +128,13 @@ package classes.menus
 			if (player.hasBreasts()) {
 				player.breastRows[0].breastRating = 0;
 			}
+			
+			refreshMenuText();
 		}
 		
 		public function addBreasts(): void {
 			player.createBreastRow(BreastCup.A);
+			refreshMenuText();
 		}
 	}
 }
