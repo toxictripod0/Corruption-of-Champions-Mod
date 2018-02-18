@@ -1,6 +1,7 @@
 package classes.menus 
 {
 	import classes.Player;
+	import classes.internals.GuiOutput;
 	import classes.internals.UserInteractable;
 	import classes.lists.BreastCup;
 	
@@ -14,12 +15,14 @@ package classes.menus
 		
 		private var player:Player;
 		private var gui:UserInteractable;
+		private var output:GuiOutput;
 		private var onMenuExit:Function;
 		
-		public function GenderDebug(gui:UserInteractable, player:Player, onMenuExit:Function)  
+		public function GenderDebug(gui:UserInteractable, output:GuiOutput, player:Player, onMenuExit:Function)  
 		{
 			this.player = player;
 			this.gui = gui;
+			this.output = output;
 			this.onMenuExit = onMenuExit;
 		}
 		

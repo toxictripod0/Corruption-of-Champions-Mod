@@ -44,7 +44,7 @@ package classes
 			if (!getGame().inCombat) {
 				
 				// initalizing the menu here due to order the required classes are inizalized
-				var genderDebugMenu:GenderDebug = new GenderDebug(kGAMECLASS, kGAMECLASS.player, accessDebugMenu);
+				var genderDebugMenu:GenderDebug = new GenderDebug(kGAMECLASS, kGAMECLASS.output, kGAMECLASS.player, accessDebugMenu);
 				
 				hideMenus();
 				mainView.nameBox.visible = false;

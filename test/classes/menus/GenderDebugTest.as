@@ -1,6 +1,7 @@
 package classes.menus 
 {
 	import classes.Player;
+	import classes.internals.GuiOutput;
 	import classes.lists.BreastCup;
 	
 	import org.flexunit.asserts.*;
@@ -38,8 +39,8 @@ package classes.menus
 			empty = new Player();
 			empty.clearGender();
 			
-			fullyEquippedPlayer = new GenderDebug(new DummyGUI(), full, exitFunction);
-			noEquipmentPlayer = new GenderDebug(new DummyGUI(), empty, exitFunction);
+			fullyEquippedPlayer = new GenderDebug(new DummyGUI(), new DummyOutput(), full, exitFunction);
+			noEquipmentPlayer = new GenderDebug(new DummyGUI(), new DummyOutput(), empty, exitFunction);
 		}
 		
 		private function exitFunction():void {
@@ -137,6 +138,7 @@ package classes.menus
 	}
 }
 
+import classes.internals.GuiOutput;
 import classes.internals.UserInteractable;
 import coc.view.CoCButton;
 
@@ -155,5 +157,30 @@ class DummyGUI implements UserInteractable {
 	public function clearOutput():void 
 	{
 		// clearOutput stub
+	}
+}
+
+class DummyOutput implements GuiOutput {
+	public function text(text:String):GuiOutput 
+	{
+		//text stub
+		return this;
+	}
+	
+	public function flush():void 
+	{
+		//flush stub
+	}
+	
+	public function header(headLine:String):GuiOutput 
+	{
+		//header stub
+		return this;
+	}
+	
+	public function clear(hideMenuButtons:Boolean = false):GuiOutput 
+	{
+		//clear stub
+		return this;
 	}
 }
