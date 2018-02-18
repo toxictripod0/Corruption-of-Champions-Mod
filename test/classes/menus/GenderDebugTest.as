@@ -139,10 +139,10 @@ package classes.menus
 }
 
 import classes.internals.GuiOutput;
-import classes.internals.UserInteractable;
+import classes.internals.GuiInput;
 import coc.view.CoCButton;
 
-class DummyGUI implements UserInteractable {
+class DummyGUI implements GuiInput {
 	public function addButton(pos:int, text:String = "", func1:Function = null, arg1:* = -9000, arg2:* = -9000, arg3:* = -9000, toolTipText:String = "", toolTipHeader:String = ""):CoCButton 
 	{
 		// addButton stub

@@ -2,7 +2,7 @@ package classes.menus
 {
 	import classes.Player;
 	import classes.internals.GuiOutput;
-	import classes.internals.UserInteractable;
+	import classes.internals.GuiInput;
 	import classes.lists.BreastCup;
 	import mx.utils.StringUtil;
 	
@@ -15,11 +15,11 @@ package classes.menus
 		public static const BUTTON_HINT:String = "Add and remove parts related to gender";
 		
 		private var player:Player;
-		private var gui:UserInteractable;
+		private var gui:GuiInput;
 		private var output:GuiOutput;
 		private var onMenuExit:Function;
 		
-		public function GenderDebug(gui:UserInteractable, output:GuiOutput, player:Player, onMenuExit:Function)  
+		public function GenderDebug(gui:GuiInput, output:GuiOutput, player:Player, onMenuExit:Function)  
 		{
 			this.player = player;
 			this.gui = gui;
