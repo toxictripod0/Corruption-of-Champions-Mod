@@ -5,8 +5,13 @@ package classes.internals
 {
 	import classes.*;
 	import coc.script.Eval;
+	import classes.internals.LoggerFactory;
+	import mx.logging.ILogger;
+	
 	public class Utils extends Object
 	{
+		private static const LOGGER:ILogger = LoggerFactory.getLogger(Utils);
+		
 		private static const NUMBER_WORDS_NORMAL:Array		= ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
 		private static const NUMBER_WORDS_CAPITAL:Array		= ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"];
 		private static const NUMBER_WORDS_POSITIONAL:Array	= ["zeroth", "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth"];
@@ -180,7 +185,7 @@ package classes.internals
 						skey = pd.skey;
 						dkey = pd.dkey;
 					} else {
-						//trace("WARNING: missing 'key' or 'skey'+'dkey' in property descriptor "+pd);
+						LOGGER.warn("Missing 'key' or 'skey'+'dkey' in property descriptor {0}", pd);
 						continue;
 					}
 					if (!forward) {
