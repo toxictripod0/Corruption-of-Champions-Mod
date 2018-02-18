@@ -5,7 +5,7 @@ package classes{
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.PerkLib;
 	import classes.helper.StageLocator;
-	import classes.internals.IRandomNumber;
+	import classes.internals.RandomNumberGenerator;
 	import classes.internals.RandomNumber;
 	import classes.lists.Gender;
 	import org.flexunit.asserts.*;
@@ -34,7 +34,7 @@ package classes{
 		private var noVagina:Creature;
 		private var oneVagina:Creature;
 		private var maxVagina:Creature;
-		private var alwaysZero:IRandomNumber;
+		private var alwaysZero:RandomNumberGenerator;
 		
 		private function createVaginas(numberOfVaginas:Number, instance:Creature):void {
 			var i:Number;
@@ -573,7 +573,7 @@ package classes{
 		
 		[Test]
 		public function setNewRng():void {
-			var rng:IRandomNumber = new RandomNumber();
+			var rng:RandomNumberGenerator = new RandomNumber();
 			
 			cut.rng = rng;
 			
@@ -603,9 +603,9 @@ package classes{
     }
 }
 
-import classes.internals.IRandomNumber;
+import classes.internals.RandomNumberGenerator;
 
-class AlwaysZeroRNG implements IRandomNumber {
+class AlwaysZeroRNG implements RandomNumberGenerator {
 	public function random(max:int):int 
 	{
 		return 0;

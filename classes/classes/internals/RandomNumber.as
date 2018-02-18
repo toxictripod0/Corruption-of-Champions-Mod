@@ -3,7 +3,7 @@ package classes.internals
 	/**
 	 * Class that provides random numbers.
 	 */
-	public class RandomNumber implements IRandomNumber
+	public class RandomNumber implements RandomNumberGenerator
 	{
 		/**
 		 * Returns a number that is between 0 and max exclusive.

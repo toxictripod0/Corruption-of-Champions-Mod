@@ -14,7 +14,7 @@ package classes.internals
 		/**
 		 * Default RNG instance. Uses Utils.rand internally.
 		 */
-		public static const DEFAULT_RNG:IRandomNumber = new RandomNumber();
+		public static const DEFAULT_RNG:RandomNumberGenerator = new RandomNumber();
 		
 		public function Utils()
 		{
