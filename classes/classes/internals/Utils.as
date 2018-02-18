@@ -298,10 +298,14 @@ package classes.internals
 			return (string.substr(0, 1).toUpperCase() + string.substr(1));
 		}
 		
-		// Basically, you pass an arbitrary-length list of arguments, and it returns one of them at random.
-		// Accepts any type.
-		// Can also accept a *single* array of items, in which case it picks from the array instead.
-		// This lets you pre-construct the argument, to make things cleaner
+		/**
+		 * Basically, you pass an arbitrary-length list of arguments, and it returns one of them at random. Accepts any type.
+		 * Can also accept a *single* array of items, in which case it picks from the array instead.
+		 * This lets you pre-construct the argument, to make things cleaner
+		 * 
+		 * @param	...args arguments to pick from
+		 * @return a randomly selected argument
+		 */
 		public static function randomChoice(...args):*
 		{
 			var tar:Array;
