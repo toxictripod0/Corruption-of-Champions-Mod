@@ -10,7 +10,5 @@ package classes.internals
 		function addButton(pos:int, text:String = "", func1:Function = null, arg1:* = -9000, arg2:* = -9000, arg3:* = -9000, toolTipText:String = "", toolTipHeader:String = ""):CoCButton;
 		
 		function menu():void;
-		
-		function clearOutput():void; // Actually delegated to the Output class, but lets de-clutter one step at a time
 	}
 }

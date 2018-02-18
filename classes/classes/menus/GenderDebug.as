@@ -28,7 +28,7 @@ package classes.menus
 		
 		public function enter():void 
 		{
-			gui.clearOutput();
+			output.clear();
 			gui.menu();
 			
 			gui.addButton(0, "Remove Vaginas", removeVaginas).hint("Removes ALL vaginas");

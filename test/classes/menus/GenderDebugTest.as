@@ -153,11 +153,6 @@ class DummyGUI implements UserInteractable {
 	{
 		// menu stub
 	}
-	
-	public function clearOutput():void 
-	{
-		// clearOutput stub
-	}
 }
 
 class DummyOutput implements GuiOutput {
