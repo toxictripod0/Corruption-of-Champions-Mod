@@ -67,43 +67,6 @@ package classes.internals
 			}
 		}
 		
-		
-		/**
-		 * Serializes a Vector into an array using AMF.
-		 * @param	vector to serialize
-		 * @return a array containing the serialized vector
-		 */
-		public static function serializeVectorWithAMF(vector:Vector.<ISerializableAMF>):Array {
-			var serialized:Array = [];
-			
-			for each(var element:ISerializableAMF in vector) {
-				serialized.push(element);
-			}
-			
-			return serialized;
-		}
-		
-		/**
-		 * Deserializes a Array into a Vector using AMF
-		 * @param	serializedVector an Array containing the serialized vector
-		 * @param	type of the serialized Vector
-		 * @return a deserialized Vector
-		 */
-		public static function deserializeVectorWithAMF(serializedVector:Array, type:Class):Vector.<ISerializableAMF> {
-			// 'is' will only work on an instance
-			if (!(new type() is ISerializableAMF)) {
-				throw new ArgumentError("Type must implement SerializableAMF");
-			}
-			
-			var deserialized:Vector.<ISerializableAMF> = new Vector.<ISerializableAMF>();
-			
-			for each(var element:Object in serializedVector) {
-				deserialized.push(element as type);
-			}
-			
-			return deserialized;
-		}
-		
 		/**
 		 * Casts a vector from one type to another. DOES NO VALIDATION.
 		 * @param	destinationVector vector where casted elements will be put
