@@ -269,13 +269,7 @@ package classes.internals
 		public static function num2Text2(number:int):String {
 			if (number < 0) return number.toString(); //Can't really have the -10th of something
 			if (number <= 10) return NUMBER_WORDS_POSITIONAL[number];
-			// For (number > 10) the method would return 11st, 12nd, 13rd and so on with the switch-case below (Stadler76)
-			/*switch (number % 10) {
-				case 1: return number.toString() + "st";
-				case 2: return number.toString() + "nd";
-				case 3: return number.toString() + "rd";
-				default:
-			}*/
+			
 			return number.toString() + "th";
 		}
 		
@@ -416,38 +410,5 @@ package classes.internals
 			while (n-->0) rslt += s;
 			return rslt;
 		}
-
-		/* None of these functions are called anymore
-		// lazy(obj,arg1,...,argN)() = obj[arg1]...[argN]
-		public static function lazyIndex(obj:*,...args):Function{
-			return function():*{
-				while(args.length>0)
-					obj=obj[args.shift()];
-				return obj;
-			};
-		}
-		// lazy2(func,arg1,...,argN)() = func()[arg1]...[argN]
-		public static function lazyCallIndex(func:Function,...args):Function{
-			var _args:Array = args.slice();
-			return function():*{
-				var obj:*=func();
-				var __args:Array = _args.slice();
-				while(__args.length>0)
-					obj=obj[__args.shift()];
-				return obj
-			};
-		}
-		// lazy2(func,arg1,...,argN)(args2) = func()[arg1]...[argN](args2)
-		public static function lazyCallIndexCall(func:Function,...args):Function{
-			var _args:Array = args.slice();
-			return function (...fargs):*{
-				var obj:*=func();
-				var __args:Array = _args.slice();
-				while(__args.length>0)
-					obj=obj[__args.shift()];
-				return obj.apply(null,fargs);
-			};
-		}
-		*/
 	}
 }
