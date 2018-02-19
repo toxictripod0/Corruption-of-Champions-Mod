@@ -37,12 +37,12 @@ package classes.Scenes.Areas.Mountain {
 		public function Minotaur(axe:Boolean=false) {
 			hasAxe = axe || rand(3)==0; //most times they dont have an axe
 			this.skin.furColor = randomChoice("black","brown");
-//			trace("Minotaur Constructor!");
+			//trace("Minotaur Constructor!");
 			this.a = "the ";
 			this.short = "minotaur";
 			this.imageName = hasAxe?"minoaxe":"minotaur";
 			this.long = "";
-//			this.plural = false;
+			//this.plural = false;
 			this.createCock(rand(13) + 24,2 + rand(3),CockTypesEnum.HORSE);
 			this.balls = 2;
 			this.ballSize = 2 + rand(13);

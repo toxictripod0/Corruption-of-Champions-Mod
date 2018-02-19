@@ -12,34 +12,40 @@ package classes.Scenes.Areas.GlacialRift {
 	public class Amarok extends Monster {
 
 		protected function amarokClaw():void {
-			if(hasStatusEffect(StatusEffects.Blind)) { //blind
+			//Blind
+			if(hasStatusEffect(StatusEffects.Blind)) {
 				outputText("The Amarok lunges for you, attempting to slash you with one of its paws, but misses completely due to its blindness.");
 				combatRoundOver();
 			}
-			if (player.getEvasionRoll()) { //dodge that shit yo
+			//Dodge that shit yo
+			if (player.getEvasionRoll()) {
 				outputText("The Amarok throws itself at you, attempting to slash you with its claws. Luckily, you manage to move out of the way.");
 				combatRoundOver();
 			}
 			else {
+				//Damage roll
 				outputText("The Amarok throws itself at you and rakes one of its hefty paws across you. Its claws slice you open and draw blood.");
 				var damage:int = ((str + 50) + rand(100));
 				damage = player.reduceDamage(damage);
-				player.takeDamage(damage, true); //damage roll
+				player.takeDamage(damage, true);
 			}
 			combatRoundOver();
 		}
 		//AMAROK used TAIL SLAP!
 		protected function amarokTail():void {
 			outputText("The Amarok rushes up to you and immediately turns heel, attempting to crash its tail into you. ");
-			if (hasStatusEffect(StatusEffects.Blind)) { //blind check...
+			//Blind check...
+			if (hasStatusEffect(StatusEffects.Blind)) {
 				outputText("Luckily, though, its blindness causes it to misjudge your location and it misses entirely.");
 				combatRoundOver();
 			}
-			if (player.getEvasionRoll()) { //evasioning
+			//Evasioning
+			if (player.getEvasionRoll()) {
 				outputText("You move out of the way before it can hit.");
 				combatRoundOver();
 			}
-			else { //Damageeee + stun! Reference to the legend of it slapping a kid with its tail, except minus the bone breaking
+			//Damageeee + stun! Reference to the legend of it slapping a kid with its tail, except minus the bone breaking
+			else {
 				outputText("The hit sends you stumbling back");
 				if (player.findPerk(PerkLib.Resolute) <= 0 && rand(2) == 0) {
 					outputText(", stunning you");

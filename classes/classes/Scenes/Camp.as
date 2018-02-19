@@ -278,7 +278,7 @@ private function doCamp():void { //only called by playerMenu
 			clearOutput();
 			outputText("More time passes...\n");
 			goNext(timeQ, false);
-		//	doNext(superLoop);
+			//doNext(superLoop);
 			return;
 		}
 		else {
@@ -1094,8 +1094,8 @@ private function campActions():void {
 	if (player.hasKeyItem("Carpenter's Toolbox") >= 0 && flags[kFLAGS.CAMP_WALL_PROGRESS] >= 100 && flags[kFLAGS.CAMP_WALL_GATE] <= 0) addButton(5, "Build Gate", buildCampGatePrompt).hint("Build a gate to complete your camp defense.");
 	if (flags[kFLAGS.CAMP_WALL_PROGRESS] >= 100 && player.hasItem(useables.IMPSKLL, 1)) addButton(6, "AddImpSkull", promptHangImpSkull).hint("Add an imp skull to decorate the wall and to serve as deterrent for imps.", "Add Imp Skull");
 	if (flags[kFLAGS.LETHICE_DEFEATED] > 0) addButton(7, "Ascension", promptAscend).hint("Perform an ascension? This will restart your adventures with your levels, items, and gems carried over. The game will also get harder.");
-//	addButton(8, "Build Misc", null).hint("Build other structures than walls or cabin for your camp");
-//	addButton(9, "Craft", kGAMECLASS.crafting.accessCraftingMenu).hint("Craft some items.");
+	//addButton(8, "Build Misc", null).hint("Build other structures than walls or cabin for your camp");
+	//addButton(9, "Craft", kGAMECLASS.crafting.accessCraftingMenu).hint("Craft some items.");
 	addButton(14, "Back", playerMenu);
 }
 
@@ -1313,7 +1313,7 @@ public function rest():void {
 		if (flags[kFLAGS.SHIFT_KEY_DOWN] > 0) { //rest until fully healed, midnight or hunger wake
 			while (player.HP < player.maxHP() || player.fatigue > 0) {
 				timeQ += 1;
-				HPChange(hpRecovery * multiplier, false); // no display since it is meant to be full rest anyway
+				HPChange(hpRecovery * multiplier, false); //no display since it is meant to be full rest anyway
 				player.changeFatigue( -fatRecovery * multiplier); 
 				if (timeQ + getGame().time.hours == 24 || flags[kFLAGS.HUNGER_ENABLED] > 0 && player.hunger < 5) break;
 			}
@@ -1337,7 +1337,7 @@ public function rest():void {
 			outputText("\nYour rest is very troubled, and you aren't able to settle down.  You get up feeling tired and unsatisfied, always thinking of Marble's milk.\n");
 			dynStats("tou", -.1, "int", -.1);
 		}
-		if (player.hasCock() && player.cocks[0].cockType == CockTypesEnum.BEE) //Bee cock
+		if (player.hasCock() && player.cocks[0].cockType == CockTypesEnum.BEE) //bee cock
 			outputText("\nThe desire to find the bee girl that gave you this cursed " + player.cockDescript(0) + " and have her spread honey all over it grows with each passing minute\n");
 		if (player.armor == armors.GOOARMR && flags[kFLAGS.VALERIA_FLUIDS] <= 0 && valeria.valeriaFluidsEnabled()) //starved goo armor
 			outputText("\nYou feel the fluid-starved goo rubbing all over your groin as if Valeria wants you to feed her.\n");
@@ -1352,7 +1352,7 @@ public function rest():void {
 		else outputText("You continue to rest for another hour.\n");
 	}
 	goNext(timeQ, true);
-//	doNext(superLoop);
+	//doNext(superLoop);
 }
 //----------------- WAIT -----------------
 public function doWait():void {
@@ -1386,7 +1386,7 @@ public function doWait():void {
 		else outputText("You continue to wait for another hour.\n");
 	}
 	goNext(timeQ, true);
-//	doNext(superLoop);
+	//doNext(superLoop);
 }
 //----------------- SLEEP -----------------
 public function doSleep(clrScreen:Boolean = true):void {
@@ -1409,7 +1409,7 @@ public function doSleep(clrScreen:Boolean = true):void {
 			outputText(". ");
 			sleepRecovery(true);
 			goNext(timeQ, true);
-		//	doNext(superLoop);
+			//doNext(superLoop);
 			return;
 		}
 		/******************************************************************/
@@ -1518,7 +1518,7 @@ public function doSleep(clrScreen:Boolean = true):void {
 		else outputText("You lie down to resume sleeping for the remaining hour.\n");
 	}
 	goNext(timeQ, true);
-//	doNext(superLoop);
+	//doNext(superLoop);
 }
 //For shit that breaks normal sleep processing
 public function sleepWrapper():void {
@@ -1530,7 +1530,7 @@ public function sleepWrapper():void {
 	else outputText("You lie down to resume sleeping for the remaining hour.\n");
 	sleepRecovery(true);
 	goNext(timeQ, true);
-//	doNext(superLoop);
+	//doNext(superLoop);
 }
 /*public function superLoop():void {
 	clearOutput();
@@ -1573,7 +1573,7 @@ public function sleepRecovery(display:Boolean = false):void {
 		if (display) outputText("\nYou spend much of the night tossing and turning, aching for a taste of minotaur cum.\n");
 		multiplier *= 0.75;
 	}
-	if (player.hasCock() && player.cocks[0].cockType == CockTypesEnum.BEE) //Bee cock
+	if (player.hasCock() && player.cocks[0].cockType == CockTypesEnum.BEE) //bee cock
 		outputText("\nThe desire to find the bee girl that gave you this cursed " + player.cockDescript(0) + " and have her spread honey all over it grows with each passing minute\n");
 	if (player.armor == armors.GOOARMR && flags[kFLAGS.VALERIA_FLUIDS] <= 0) //Starved goo armor
 		outputText("\nYou feel the fluid-starved goo rubbing all over your groin as if Valeria wants you to feed her.\n");
@@ -1726,10 +1726,10 @@ public function places():Boolean {
 	clearOutput();
 	outputText(images.showImage("camp-pathfinder"));
 	outputText("Which place would you like to visit?");
-//	if (flags[kFLAGS.PLACES_PAGE] != 0) {
-//		placesPage2();
-//		return;
-//	}
+	/*if (flags[kFLAGS.PLACES_PAGE] != 0) {
+		placesPage2();
+		return;
+	}*/
 	menu(); //build menu
 	if (flags[kFLAGS.BAZAAR_ENTERED] > 0) addButton(0, "Bazaar", kGAMECLASS.bazaar.enterTheBazaar).hint("Visit the Bizarre Bazaar where the demons and corrupted beings hang out.");
 	if (player.hasStatusEffect(StatusEffects.BoatDiscovery)) addButton(1, "Boat", kGAMECLASS.boat.boatExplore).hint("Get on the boat and explore the lake. \n\nRecommended level: 4");
@@ -1746,7 +1746,7 @@ public function places():Boolean {
 	if (flags[kFLAGS.AMILY_VILLAGE_ACCESSIBLE] > 0) addButton(11, "Town Ruins", kGAMECLASS.townRuins.exploreVillageRuin).hint("Visit the village ruins.");
 	if (flags[kFLAGS.PRISON_CAPTURE_COUNTER] > 0) addButton(12, "Prison", kGAMECLASS.prison.prisonIntro, false, null, null, "Return to the prison and continue your life as Elly's slave.");
 	if (debug) addButton(13, "Ingnam", kGAMECLASS.ingnam.returnToIngnam).hint("Return to Ingnam for debugging purposes. Night-time event weirdness might occur. You have been warned!");
-//	addButton(4, "Next", placesPage2);
+	//addButton(4, "Next", placesPage2);
 	addButton(14, "Back", playerMenu);
 	return true;
 }
@@ -1757,7 +1757,6 @@ public function places():Boolean {
 	addButton(9, "Previous", placesToPage1);
 	addButton(14, "Back", playerMenu);
 }
-
 private function placesToPage1():void {
 	flags[kFLAGS.PLACES_PAGE] = 0;
 	places();
@@ -2149,7 +2148,7 @@ public function getCampPopulation():int {
 	if (flags[kFLAGS.CLARA_IMPRISONED] > 0) pop++;
 	if (flags[kFLAGS.ANEMONE_KID] > 0) pop++;
 	if (flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 4) pop++;
-	//							Children check!
+	//						 Children check!
 	/******************************************************************/
 	/*							Followers							  */
 	/******************************************************************/
@@ -2362,7 +2361,7 @@ private function furColorSelection1():void {
 	addButton(1, "Chocolate", chooseFurColorSaveUpdate, "chocolate");
 	addButton(2, "Auburn", chooseFurColorSaveUpdate, "auburn");
 	addButton(3, "Orange", chooseFurColorSaveUpdate, "orange");
-	addButton(4, "Next", furColorSelection2); //Next
+	addButton(4, "Next", furColorSelection2); //next
 	addButton(5, "Caramel", chooseFurColorSaveUpdate, "caramel");
 	addButton(6, "Peach", chooseFurColorSaveUpdate, "peach");
 	addButton(7, "Sandy Brown", chooseFurColorSaveUpdate, "sandy brown");
@@ -2378,7 +2377,7 @@ private function furColorSelection2():void {
 	addButton(5, "Light gray", chooseFurColorSaveUpdate, "light gray");
 	addButton(6, "Silver", chooseFurColorSaveUpdate, "silver");
 	addButton(7, "White", chooseFurColorSaveUpdate, "white");
-	addButton(9, "Previous", furColorSelection1); //Previous
+	addButton(9, "Previous", furColorSelection1); //previous
 	addButton(10, "Orange&White", chooseFurColorSaveUpdate, "orange and white");
 	addButton(11, "Brown&White", chooseFurColorSaveUpdate, "brown and white");
 	addButton(12, "Black&White", chooseFurColorSaveUpdate, "black and white");
@@ -2399,10 +2398,10 @@ private function updateSaveFlags():void {
 	var current:int = 0;
 	var target:int = 65;
 	while (current < target) {
-	//	trace(flags[startOldIds + current])
+		//trace(flags[startOldIds + current])
 		if (flags[startOldIds + current] != 0) {
 			flags[startNewIds + current] = flags[startOldIds + current];
-		//	trace(flags[startNewIds + current])
+			//trace(flags[startNewIds + current])
 			flags[startOldIds + current] = 0;
 		}
 		current++;
@@ -2418,7 +2417,7 @@ private function updateSaveFlags():void {
 		flags[kFLAGS.CAMP_CABIN_WOOD_RESOURCES] += 50;
 		if (player.hasKeyItem("Carpenter's Toolbox") >= 0) player.addKeyValue("Carpenter's Toolbox", 1, 150);
 	}
-//	flags[kFLAGS.SHIFT_KEY_DOWN] = 0; //moved to unFuckSave()
+	//flags[kFLAGS.SHIFT_KEY_DOWN] = 0; //moved to unFuckSave()
 	outputText("Don't worry. Just save the game and you're good to go. I, Kitteh6660, will work out the bugs from time to time, while also bringing in cool new stuff!")
 	doNext(doCamp);
 }
@@ -2458,7 +2457,7 @@ private function updateAchievements():void {
 	if (player.level >= 30) awardAchievement("Master", kACHIEVEMENTS.LEVEL_MASTER);
 	if (player.level >= 45) awardAchievement("Grandmaster", kACHIEVEMENTS.LEVEL_GRANDMASTER);
 	if (player.level >= 60) awardAchievement("Illustrious", kACHIEVEMENTS.LEVEL_ILLUSTRIOUS);
-//	if (player.level >= 75) awardAchievement("Overlord", kACHIEVEMENTS.LEVEL_OVERLORD);
+	//if (player.level >= 75) awardAchievement("Overlord", kACHIEVEMENTS.LEVEL_OVERLORD);
 	if (player.level >= 100) awardAchievement("Are you a god?", kACHIEVEMENTS.LEVEL_ARE_YOU_A_GOD);
 	//Population
 	if (getCampPopulation() >= 2) awardAchievement("My First Companion", kACHIEVEMENTS.POPULATION_FIRST);
@@ -2599,7 +2598,7 @@ private function updateAchievements():void {
 	if (flags[kFLAGS.MET_KITSUNES] > 0 && flags[kFLAGS.redheadIsFuta] == 0) NPCsDedicked++;
 	if (flags[kFLAGS.KELT_BREAK_LEVEL] == 4) NPCsDedicked++;
 	if (NPCsDedicked >= 3) awardAchievement("Dick Banisher", kACHIEVEMENTS.GENERAL_DICK_BANISHER);
-	if (NPCsDedicked >= 7) awardAchievement("You Bastard", kACHIEVEMENTS.GENERAL_YOU_BASTARD); //take that, dedickers!
+	if (NPCsDedicked >= 7) awardAchievement("You Bastard!", kACHIEVEMENTS.GENERAL_YOU_BASTARD); //take that, dedickers!
 }
 
 /*private function fixHistory():void {
