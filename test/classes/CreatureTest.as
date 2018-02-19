@@ -6,7 +6,7 @@ package classes{
 	import classes.PerkLib;
 	import classes.helper.StageLocator;
 	import classes.internals.RandomNumberGenerator;
-	import classes.internals.RandomNumber;
+	import classes.internals.ActionScriptRNG;
 	import classes.lists.Gender;
 	import org.flexunit.asserts.*;
 	import org.hamcrest.assertThat;
@@ -573,7 +573,7 @@ package classes{
 		
 		[Test]
 		public function setNewRng():void {
-			var rng:RandomNumberGenerator = new RandomNumber();
+			var rng:RandomNumberGenerator = new ActionScriptRNG();
 			
 			cut.rng = rng;
 			

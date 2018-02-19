@@ -7,6 +7,7 @@ package classes.internals
 	import coc.script.Eval;
 	import classes.internals.LoggerFactory;
 	import mx.logging.ILogger;
+	import classes.internals.ActionScriptRNG;
 	
 	public class Utils extends Object
 	{
@@ -19,7 +20,7 @@ package classes.internals
 		/**
 		 * Default RNG instance. Uses Utils.rand internally.
 		 */
-		public static const DEFAULT_RNG:RandomNumberGenerator = new RandomNumber();
+		public static const DEFAULT_RNG:RandomNumberGenerator = new ActionScriptRNG();
 		
 		public function Utils()
 		{

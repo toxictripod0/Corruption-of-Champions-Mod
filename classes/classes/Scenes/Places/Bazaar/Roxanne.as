@@ -3,7 +3,7 @@ package classes.Scenes.Places.Bazaar{
 	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.internals.RandomNumberGenerator;
-	import classes.internals.RandomNumber;
+	import classes.internals.ActionScriptRNG;
 	import mx.logging.ILogger;
 	import classes.internals.LoggerFactory;
 	import classes.display.SpriteDb;
