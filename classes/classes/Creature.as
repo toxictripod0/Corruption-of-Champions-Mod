@@ -3950,6 +3950,23 @@ package classes
 			if (max > 9999) max = 9999;
 			return max;
 		}
+		
+		/**
+		 * Restore the HP of the creature.
+		 * @param amount the amount to heal. If omitted, heal to max HP. Value must not be negative.
+		 */
+		public function restoreHP(amount:Number = Number.MAX_VALUE): void {
+			if (amount < 0) {
+				throw new RangeError("Value must not be negative");
+			}
+			
+			HP += amount;
+			
+			if (HP > maxHP()) {
+				HP = maxHP();
+			}
+		}
+
 		public function maxLust():Number
 		{
 			var max:Number = 100;

@@ -71,6 +71,8 @@ package classes{
 			cut = new Creature();
 			cut.rng = alwaysZero;
 			cut.ass.analLooseness = ANAL_LOOSENESS;
+						cut.tou = 100;
+			cut.HP = 1;
 			
 			noVagina = new Creature();
 			
@@ -647,6 +649,34 @@ package classes{
 			cut.clearGender();
 			
 			assertThat(cut.hasBreasts(), equalTo(false));
+		}
+		
+		[Test]
+		public function healToMaxHP():void {
+			cut.restoreHP();
+
+			assertThat(cut.HP, equalTo(250));
+		}
+
+		[Test]
+		public function healByAmount():void {
+			cut.restoreHP(1);
+
+			assertThat(cut.HP, equalTo(2));
+		}
+
+		[Test]
+		public function healOverflowCheck():void {
+			cut.HP = 1000;
+			
+			cut.restoreHP();
+
+			assertThat(cut.HP, equalTo(250));
+		}
+		
+		[Test(expected="RangeError")]
+		public function healByNegativeAmount():void {
+			cut.restoreHP(-1);
 		}
 	}
 }
