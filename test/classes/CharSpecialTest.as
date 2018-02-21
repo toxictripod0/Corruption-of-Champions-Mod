@@ -343,5 +343,12 @@ package classes{
 			
 			assertThat(player.HP, equalTo(80));
 		}
+		
+		[Test]
+		public function etisHpRestored(): void {
+			createCharByName(CharSpecial.ETIS_NAME);
+			
+			assertThat(player.HP, equalTo(50));
+		}
 	}
 }
