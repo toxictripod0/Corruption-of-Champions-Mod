@@ -1263,7 +1263,7 @@ package classes
 			player.lib = 30;
 			player.cor = 71;
 			getGame().saves.notes = "Cheater!";
-			player.HP = kGAMECLASS.maxHP();
+			player.restoreHP();
 			player.hair.length = 10;
 			player.skin.type = Skin.PLAIN;
 			player.face.type = Face.HUMAN;
