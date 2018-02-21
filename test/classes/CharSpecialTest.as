@@ -336,5 +336,12 @@ package classes{
 			
 			assertThat(player.getClitLength(), equalTo(0.5));
 		}
+		
+		[Test]
+		public function vahdunbriiHpRestored(): void {
+			createCharByName(CharSpecial.VAHDUNBRII_NAME);
+			
+			assertThat(player.HP, equalTo(80));
+		}
 	}
 }

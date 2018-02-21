@@ -26,6 +26,7 @@ package classes
 		public static const MARA_NAME: String = "Mara";
 		public static const LEAH_NAME:String = "Leah"; 
 		public static const NIXI_NAME:String = "Nixi"; 
+		public static const VAHDUNBRII_NAME:String = "Vahdunbrii"; 
 		
 		
 		public function CharSpecial() {}
@@ -67,7 +68,7 @@ package classes
 			[ "Sera", customSera, true, "You're something of a shemale - three rows of C-cup breasts matched with three, plump, juicy cocks.  Some decent sized balls, bat wings, and cat-like ears round out the package." ],
 			[ "Siveen", customSiveen, true, "You are a literal angel from beyond, and you take the place of a vilage's champion for your own reasons..." ],
 			[ "Tyriana", customTyriana, true, "Your many, posh tits, incredible fertility, and well-used cunt made you more popular than the village bicycle.  With your cat-like ears, paws, and tail, you certainly had a feline appeal.  It's time to see how you fare in the next chapter of your life." ],
-			[ "Vahdunbrii", customVahdunbrii, true, "You're something of a powerhouse, and you wager that between your odd mutations, power strong enough to threaten the village order, and talents, you're the natural choice to send through the portal." ],
+			[ VAHDUNBRII_NAME, customVahdunbrii, true, "You're something of a powerhouse, and you wager that between your odd mutations, power strong enough to threaten the village order, and talents, you're the natural choice to send through the portal." ],
 		]
 		
 		private function customAnnetta():void {
@@ -1473,7 +1474,7 @@ package classes
 			player.lib = 15;
 			player.cor = 0;
 			getGame().saves.notes = "No Notes Available.";
-			player.HP = kGAMECLASS.maxHP();
+			player.restoreHP();
 			player.hair.length = 10;
 			player.skin.type = Skin.PLAIN;
 			player.face.type = Face.HUMAN;
