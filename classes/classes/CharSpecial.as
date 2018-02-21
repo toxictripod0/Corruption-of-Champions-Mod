@@ -25,6 +25,7 @@ package classes
 		public static const LUKAZ_NAME: String = "Lukaz";
 		public static const MARA_NAME: String = "Mara";
 		public static const LEAH_NAME:String = "Leah"; 
+		public static const NIXI_NAME:String = "Nixi"; 
 		
 		
 		public function CharSpecial() {}
@@ -60,7 +61,7 @@ package classes
 			[ "Mihari", customMihari, true, "The portal is not something you fear, not with your imposing armor and inscribed spellblade.  You're much faster and stronger than every champion that came before you, but will it be enough?" ],
 			[ MIRVANNA_NAME, customMirvanna, true, "You're an equine dragon-herm with a rather well-proportioned body.  Ingnam is certainly going to miss having you whoring yourself out around town.  You don't think they'll miss cleaning up all the messy sex, though." ],
 			[ "Nami", customNami, true, "Your exotic appearance caused you some trouble growing up, but you buried your nose in books until it came time to go through the portal." ],
-			[ "Nixi", customNixi, true, "As a German-Shepherd morph, the rest of the village never really knew what to do with you... until they sent you through the portal to face whatever's on the other side..." ],
+			[ NIXI_NAME, customNixi, true, "As a German-Shepherd morph, the rest of the village never really knew what to do with you... until they sent you through the portal to face whatever's on the other side..." ],
 			[ "Prismere", customPrismere, true, "You're more of a scout than a fighter, but you still feel confident you can handle your responsibilities as champion.  After all, what's to worry about when you can outrun everything you encounter?  You have olive skin, deep red hair, and a demonic tail and wings to blend in with the locals." ],
 			[ "Rann Rayla", customRannRayla, true, "You're a young, fiery redhead who\'s utterly feminine.  You've got C-cup breasts and long red hair.  Being a champion can\'t be that bad, right?" ],
 			[ "Sera", customSera, true, "You're something of a shemale - three rows of C-cup breasts matched with three, plump, juicy cocks.  Some decent sized balls, bat wings, and cat-like ears round out the package." ],
@@ -1025,7 +1026,7 @@ package classes
 			player.lib = 15;
 			player.cor = 0;
 			getGame().saves.notes = "No Notes Available.";
-			player.HP = kGAMECLASS.maxHP();
+			player.restoreHP();
 			
 			player.skin.type = Skin.PLAIN;
 			player.face.type = Face.HUMAN;

@@ -304,6 +304,13 @@ package classes{
 			assertThat(player.breastRows[3].nipplesPerBreast, equalTo(4));
 		}
 		
+		[Test]
+		public function nixiHpRestored(): void {
+			createCharByName(CharSpecial.NIXI_NAME);
+			
+			assertThat(player.HP, equalTo(80));
+		}
+		
 				
 		[Test]
 		public function testLukazIsMale() : void {
