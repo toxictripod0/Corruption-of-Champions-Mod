@@ -30,6 +30,12 @@ package classes{
 			return null;
 		}
 		
+		private function createCharByName(name:String):void {
+			var func:Function = findCharFunction(name);
+			
+			func();
+		}
+		
 		[BeforeClass]
 		public static function runOnceForTestClass():void { 
 			kGAMECLASS = new CoC(StageLocator.stage);
@@ -220,6 +226,13 @@ package classes{
 		}
 		
 		[Test]
+		public function leahHpRestored():void {
+			createCharByName(CharSpecial.LEAH_NAME);
+			
+			assertThat(player.HP, equalTo(80));
+		}
+		
+		[Test]
 		public function testKattiBreastFuckable() : void {
 			var func : Function = findCharFunction(CharSpecial.KATTI_NAME);
 			
@@ -309,5 +322,5 @@ package classes{
 			
 			assertThat(player.getClitLength(), equalTo(0.5));
 		}
-    }
+	}
 }
