@@ -350,5 +350,12 @@ package classes{
 			
 			assertThat(player.HP, equalTo(50));
 		}
+		
+		[Test]
+		public function chimeraHpRestored(): void {
+			createCharByName(CharSpecial.CHIMERA_NAME);
+			
+			assertThat(player.HP, equalTo(50));
+		}
 	}
 }

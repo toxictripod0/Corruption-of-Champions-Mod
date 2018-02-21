@@ -28,6 +28,7 @@ package classes
 		public static const NIXI_NAME:String = "Nixi"; 
 		public static const VAHDUNBRII_NAME:String = "Vahdunbrii"; 
 		public static const ETIS_NAME:String = "Etis"; 
+		public static const CHIMERA_NAME:String = "Chimera"; 
 		
 		
 		public function CharSpecial() {}
@@ -53,7 +54,7 @@ package classes
 			[ "Annetta", customAnnetta, true, "You're a rather well-endowed hermaphrodite that sports a thick, dog-knotted cock, an unused pussy, and a nice, stretchy butt-hole.  You've also got horns and demonic high-heels on your feet.  It makes you wonder why you would ever get chosen to be champion!" ],
 			[ "Ceveo", customCeveo, true, "As a wandering mage you had found your way into no small amount of trouble in the search for knowledge." ],
 			[ "Charlie", customCharlie, true, "You're strong, smart, fast, and tough.  It also helps that you've got four dongs well beyond what others have lurking in their trousers.  With your wings, bow, weapon, and tough armor, you're a natural for protecting the town." ],
-			[ "Chimera", customChimera, true, "Your body is wrecked by your own experiments with otherworldly transformation items, and now you have no more money to buy any more from smugglers... But you would make your body as strong as your will. Or die trying." ],
+			[ CHIMERA_NAME, customChimera, true, "Your body is wrecked by your own experiments with otherworldly transformation items, and now you have no more money to buy any more from smugglers... But you would make your body as strong as your will. Or die trying." ],
 			[ ETIS_NAME, customEtis, true, "Kitsune-dragon hybrid with 3 tentacle cocks, tentacle hair, tentacle (well, draconic) tongue and very strong magic affinity." ],
 			[ "Isaac", customIsaac, true, "Born of a disgraced priestess, Isaac was raised alone until she was taken by illness.  He worked a number of odd jobs until he was eventually chosen as champion." ],
 			//[ "Kitteh6660", customKitteh6660, true, "" ],
@@ -1937,7 +1938,7 @@ package classes
 
 			player.hoursSinceCum = 0;
 			player.fatigue = 0;
-			player.HP = kGAMECLASS.maxHP();
+			player.restoreHP();
 
 			player.gems += 15+ rand(55);
 			
