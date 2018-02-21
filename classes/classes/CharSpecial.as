@@ -638,7 +638,7 @@ package classes
 			player.lib = 15;
 			player.cor = 0;
 			getGame().saves.notes = "No Notes Available.";
-			player.HP = kGAMECLASS.maxHP();
+			player.restoreHP();
 			player.hair.length = 1;
 			player.skin.type = Skin.PLAIN;
 			player.skin.tone = "light";

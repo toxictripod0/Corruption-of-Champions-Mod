@@ -315,6 +315,13 @@ package classes{
 		}
 		
 		[Test]
+		public function lukazHPRestored():void {
+			createCharByName(CharSpecial.LUKAZ_NAME);
+			
+			assertThat(player.HP, equalTo(84));
+		}
+		
+		[Test]
 		public function testMaraClitLength() : void {
 			var func : Function = findCharFunction(CharSpecial.MARA_NAME);
 			
