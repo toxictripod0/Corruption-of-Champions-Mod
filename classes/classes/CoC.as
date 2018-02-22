@@ -110,7 +110,7 @@ package classes
 	
 	[SWF(width = "1000", height = "800", backgroundColor = "0x000000", pageTitle = "Corruption of Champions")]
 	
-	public class CoC extends MovieClip
+	public class CoC extends MovieClip implements GuiInput
 	{
 		{
 			/*

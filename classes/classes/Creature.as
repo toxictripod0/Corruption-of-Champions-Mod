@@ -2579,6 +2579,37 @@ package classes
 			}
 		}
 		
+		/**
+		 * Removes all gender releated parts: cocks, vaginas, breasts and balls.
+		 */
+		public function clearGender(): void {
+			LOGGER.info("Clearing gender...");
+			
+			LOGGER.debug("Removing balls");
+			balls = 0;
+			
+			while (hasCock()) {
+				LOGGER.debug("Removing cock {0}", cocks[0]);
+				removeCock(0, 1);
+			}
+			
+			while (hasVagina()) {
+				LOGGER.debug("Removing vagina {0}", vaginas[0]);
+				removeVagina(0, 1);
+			}
+			
+			// hasBreasts can currently not be used, as creatures must have at least one breast row
+			while (breastRows.length > 1) {
+				LOGGER.debug("Removing breast {0}", breastRows[0]);
+				removeBreastRow(0, 1);
+			}
+			
+			if (hasBreasts()) {
+				LOGGER.debug("Setting breast row {0}, size to flat (size 0)", breastRows[0]);
+				breastRows[0].breastRating = 0;
+			}
+		}
+		
 		// This is placeholder shit whilst I work out a good way of BURNING ENUM TO THE FUCKING GROUND
 		// and replacing it with something that will slot in and work with minimal changes and not be
 		// A FUCKING SHITSTAIN when it comes to intelligent de/serialization.

@@ -1,5 +1,6 @@
 package classes 
 {
+	import classes.internals.GuiOutput;
 	import flash.utils.setTimeout;
 
 	/**
@@ -7,7 +8,7 @@ package classes
 	 * @since  08.08.2016
 	 * @author Stadler76
 	 */
-	public class Output extends BaseContent
+	public class Output extends BaseContent implements GuiOutput
 	{
 		import flash.text.TextFormat;
 		import classes.GlobalFlags.kGAMECLASS;
@@ -47,7 +48,7 @@ package classes
 		 * @param   text    The text to be added
 		 * @return  The instance of the class to support the 'Fluent interface' aka method-chaining
 		 */
-		public function text(text:String):Output
+		public function text(text:String):GuiOutput
 		{
 			// This is cleaup in case someone hits the Data or new-game button when the event-test window is shown. 
 			// It's needed since those buttons are available even when in the event-tester
@@ -82,7 +83,7 @@ package classes
 		 * @param	headLine    The headline to be formatted and added
 		 * @return  The instance of the class to support the 'Fluent interface' aka method-chaining
 		 */
-		public function header(headLine:String):Output
+		public function header(headLine:String):GuiOutput
 		{
 			return text(formatHeader(headLine));
 		}
@@ -104,7 +105,7 @@ package classes
 		 * @param   hideMenuButtons   Set this to true to hide the menu-buttons (rarely used)
 		 * @return  The instance of the class to support the 'Fluent interface' aka method-chaining
 		 */
-		public function clear(hideMenuButtons:Boolean = false):Output
+		public function clear(hideMenuButtons:Boolean = false):GuiOutput
 		{
 			if (hideMenuButtons) {
 				forceUpdate();
