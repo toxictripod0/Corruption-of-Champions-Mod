@@ -10,10 +10,6 @@ import classes.internals.profiling.End;
 
 public static const MAX_BUTTON_INDEX:int = 14;
 
-public function maxHP():Number {
-	return player.maxHP();
-}
-
 public function silly():Boolean {
 	return flags[kFLAGS.SILLY_MODE_ENABLE_FLAG] == 1;
 }
@@ -41,8 +37,8 @@ public function HPChange(changeNum:Number, display:Boolean):Number
 			changeNum *= 1.1; //Increase by 10%!
 		}
 		
-		if (player.HP + int(changeNum) > maxHP()) {
-			if (player.HP >= maxHP()) {
+		if (player.HP + int(changeNum) > player.maxHP()) {
+			if (player.HP >= player.maxHP()) {
 				if (display) {
 					HPChangeNotify(changeNum);
 				}
@@ -54,7 +50,7 @@ public function HPChange(changeNum:Number, display:Boolean):Number
 				HPChangeNotify(changeNum);
 			}
 			
-			player.HP = maxHP();
+			player.HP = player.maxHP();
 		}
 		else
 		{
@@ -95,12 +91,12 @@ public function HPChange(changeNum:Number, display:Boolean):Number
 
 public function HPChangeNotify(changeNum:Number):void {
 	if (changeNum == 0) {
-		if (player.HP >= maxHP())
+		if (player.HP >= player.maxHP())
 			outputText("You're as healthy as you can be.\n");
 	}
 	else if (changeNum > 0) {
-		if (player.HP >= maxHP())
-			outputText("Your HP maxes out at " + maxHP() + ".\n");
+		if (player.HP >= player.maxHP())
+			outputText("Your HP maxes out at " + player.maxHP() + ".\n");
 		else
 			outputText("You gain <b><font color=\"#008000\">" + int(changeNum) + "</font></b> HP.\n");
 	}
