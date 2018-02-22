@@ -184,7 +184,7 @@ package classes.Items
 			//Ovi perk loss
 			if (rand(5) === 0) updateOvipositionPerk(tfSource);
 			//Demonic changes - higher chance with higher corruption.
-			if (rand(40) + player.cor / 3 > 35 && tainted) demonChanges(player);
+			if (rand(40) + player.cor / 3 > 35 && tainted) demonChanges(player, tfSource);
 			if (rand(4) === 0 && tainted) outputText(player.modFem(5, 2));
 			if (rand(4) === 0 && tainted) outputText(player.modThickness(30, 2));
 			player.refillHunger(10);
@@ -487,7 +487,7 @@ package classes.Items
 			//Ovi perk loss
 			if (rand(5) === 0) updateOvipositionPerk(tfSource);
 			//Demonic changes - higher chance with higher corruption.
-			if (rand(40) + player.cor / 3 > 35 && tainted) demonChanges(player);
+			if (rand(40) + player.cor / 3 > 35 && tainted) demonChanges(player, tfSource);
 			if (tainted) {
 				outputText(player.modFem(100, 2));
 				if (rand(3) === 0) outputText(player.modTone(15, 2));
@@ -1385,9 +1385,7 @@ package classes.Items
 			}
 			//Nipples Turn Back:
 			if (player.hasStatusEffect(StatusEffects.BlackNipples) && changes < changeLimit && rand(3) === 0) {
-				outputText("\n\nSomething invisible brushes against your " + player.nippleDescript(0) + ", making you twitch.  Undoing your clothes, you take a look at your chest and find that your nipples have turned back to their natural flesh colour.");
-				changes++;
-				player.removeStatusEffect(StatusEffects.BlackNipples);
+				removeBlackNipples(tfSource);
 			}
 			//Debugcunt
 			if (changes < changeLimit && rand(3) === 0 && player.vaginaType() == 5 && player.hasVagina()) {
@@ -2111,9 +2109,7 @@ package classes.Items
 			}
 			//Nipples Turn Back:
 			if (player.hasStatusEffect(StatusEffects.BlackNipples) && changes < changeLimit && rand(3) === 0) {
-				outputText("\n\nSomething invisible brushes against your " + player.nippleDescript(0) + ", making you twitch.  Undoing your clothes, you take a look at your chest and find that your nipples have turned back to their natural flesh colour.");
-				changes++;
-				player.removeStatusEffect(StatusEffects.BlackNipples);
+				removeBlackNipples(tfSource);
 			}
 			//Debugcunt
 			if (changes < changeLimit && rand(3) === 0 && player.vaginaType() == 5 && player.hasVagina()) {
@@ -3227,9 +3223,7 @@ package classes.Items
 			}
 			//Nipples Turn Back:
 			if (!player.hasFur() && player.hasStatusEffect(StatusEffects.BlackNipples) && changes < changeLimit && rand(3) === 0) {
-				outputText("\n\nSomething invisible brushes against your " + player.nippleDescript(0) + ", making you twitch.  Undoing your clothes, you take a look at your chest and find that your nipples have turned back to their natural flesh colour.");
-				changes++;
-				player.removeStatusEffect(StatusEffects.BlackNipples);
+				removeBlackNipples(tfSource);
 			}
 			//Debugcunt
 			if (!player.hasFur() && changes < changeLimit && rand(3) === 0 && player.vaginaType() == 5 && player.hasVagina()) {
@@ -3251,7 +3245,7 @@ package classes.Items
 		 * Changes shared by succubi milk and incubi draft
 		 * @param	player affected by the mutation
 		 */
-		private function demonChanges(player:Player):void
+		private function demonChanges(player:Player, tfSource:String = "demonChanges"):void
 		{
 			//Change tail if already horned.
 			if (player.tail.type !== Tail.DEMONIC && player.horns.value > 0) {
@@ -3264,7 +3258,7 @@ package classes.Items
 				else outputText("\n\nA pain builds in your backside... growing more and more pronounced.  The pressure suddenly disappears with a loud ripping and tearing noise.  <b>You realize you now have a demon tail</b>... complete with a cute little spade.");
 				dynStats("cor", 4);
 				player.tail.type = Tail.DEMONIC;
-				flags[kFLAGS.TIMES_TRANSFORMED]++;
+				changes++;
 			}
 			//grow horns!
 			if (player.horns.value == 0 || (rand(player.horns.value + 3) === 0)) {
@@ -3287,13 +3281,11 @@ package classes.Items
 					player.horns.type = Horns.DEMON;
 					dynStats("cor", 3);
 				}
-				flags[kFLAGS.TIMES_TRANSFORMED]++;
+				changes++;
 			}
 			//Nipples Turn Back:
 			if (player.hasStatusEffect(StatusEffects.BlackNipples) && rand(3) === 0) {
-				outputText("\n\nSomething invisible brushes against your " + player.nippleDescript(0) + ", making you twitch.  Undoing your clothes, you take a look at your chest and find that your nipples have turned back to their natural flesh colour.");
-				player.removeStatusEffect(StatusEffects.BlackNipples);
-				flags[kFLAGS.TIMES_TRANSFORMED]++;
+				removeBlackNipples(tfSource);
 			}
 			//remove fur
 			if ((player.face.type !== Face.HUMAN || !player.hasPlainSkin()) && rand(3) === 0) {
@@ -3312,13 +3304,13 @@ package classes.Items
 					player.skin.desc = "skin";
 					player.underBody.restore();
 				}
-				flags[kFLAGS.TIMES_TRANSFORMED]++;
+				changes++;
 			}
 			//Demon tongue
 			if (player.tongue.type == Tongue.SNAKE && rand(3) === 0) {
 				outputText("\n\nYour snake-like tongue tingles, thickening in your mouth until it feels more like your old human tongue, at least for the first few inches.  It bunches up inside you, and when you open up your mouth to release it, roughly two feet of tongue dangles out.  You find it easy to move and control, as natural as walking.  <b>You now have a long demon-tongue.</b>");
 				player.tongue.type = Tongue.DEMONIC;
-				flags[kFLAGS.TIMES_TRANSFORMED]++;
+				changes++;
 			}
 			//foot changes - requires furless
 			if (player.hasPlainSkin() && rand(4) === 0) {
@@ -3338,7 +3330,7 @@ package classes.Items
 					player.lowerBody.type = LowerBody.DEMONIC_HIGH_HEELS;
 					player.lowerBody.legCount = 2;
 				}
-				flags[kFLAGS.TIMES_TRANSFORMED]++;
+				changes++;
 			}
 			//Grow demon wings
 			if ((player.wings.type !== Wings.BAT_LIKE_LARGE || player.rearBody.type == RearBody.SHARK_FIN) && rand(8) === 0 && player.isCorruptEnough(50)) {
@@ -3375,8 +3367,9 @@ package classes.Items
 					}
 					outputText("<b>bat-like demon-wings!</b>");
 				}
-				flags[kFLAGS.TIMES_TRANSFORMED]++;
+				changes++;
 			}
+			flags[kFLAGS.TIMES_TRANSFORMED] += changes;
 		}
 
 

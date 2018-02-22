@@ -322,6 +322,20 @@ package classes.Items
 			return true;
 		}
 
+		public function removeBlackNipples(tfSource:String):Boolean
+		{
+			LOGGER.debug("called removeBlackNipples(\"{0}\")", tfSource);
+
+			if (!player.hasStatusEffect(StatusEffects.BlackNipples))
+				return false;
+
+			outputText("\n\nSomething invisible brushes against your [nipple], making you twitch.  Undoing your clothes, you take a look at your"
+			          +" chest and find that your nipples have turned back to their natural flesh colour.");
+			player.removeStatusEffect(StatusEffects.BlackNipples);
+			changes++;
+			return true;
+		}
+
 		public function newLizardSkinTone():Array
 		{
 			if (rand(10) == 0) {
