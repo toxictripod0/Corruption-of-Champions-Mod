@@ -24,7 +24,7 @@ public function HPChange(changeNum:Number, display:Boolean):Number
 {
 	var before:Number = player.HP;
 	
-	if (changeNum == 0) {
+	if (changeNum === 0) {
 		return 0;
 	}
 	
@@ -33,7 +33,7 @@ public function HPChange(changeNum:Number, display:Boolean):Number
 			changeNum *= 1.2; //Increase by 20%!
 		}
 		
-		if (player.armor.name == "skimpy nurse's outfit") {
+		if (player.armor.name === "skimpy nurse's outfit") {
 			changeNum *= 1.1; //Increase by 10%!
 		}
 		
@@ -90,7 +90,7 @@ public function HPChange(changeNum:Number, display:Boolean):Number
 }
 
 public function HPChangeNotify(changeNum:Number):void {
-	if (changeNum == 0) {
+	if (changeNum === 0) {
 		if (player.HP >= player.maxHP())
 			outputText("You're as healthy as you can be.\n");
 	}
