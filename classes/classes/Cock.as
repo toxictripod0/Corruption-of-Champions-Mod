@@ -1,12 +1,12 @@
 package classes
 {
 	import classes.CockTypesEnum;
-	import classes.internals.ISerializable;
+	import classes.internals.Serializable;
 	import classes.internals.Utils;
 	import mx.logging.ILogger;
 	import classes.internals.LoggerFactory;
 
-	public class Cock implements ISerializable
+	public class Cock implements Serializable
 	{
 		private static const LOGGER:ILogger = LoggerFactory.getLogger(Cock);
 		
