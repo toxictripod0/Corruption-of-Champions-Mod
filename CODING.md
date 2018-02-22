@@ -255,23 +255,6 @@ Instead use this:
 	}
 ```
 
-##### Exemption: Commenting out code blocks
-When commenting out code blocks of 3 or more line, you may put the comments at the beginning of the line(s) but leave the indentation of the code intact.
-
-```as3
-/*
-			if (foo == bar) {
-				outputText("blah, blah, blah\n");
-				outputText("yadda, yadda, yadda\n");
-			}
-*/
-
-//			if (foo == bar) {
-//				outputText("blah, blah, blah\n");
-//				outputText("yadda, yadda, yadda\n");
-//			}
-```
-
 ### Naming conventions
 
 | **What**                              | **Convention**                                         | **Examples**                        |
@@ -281,3 +264,20 @@ When commenting out code blocks of 3 or more line, you may put the comments at t
 | variables (including class variables) | Use lowerCamelCase                                     | `furColor`, `skinType`              |
 | constants                             | Use capital letters and words separated by underscores | `CAN_FLY_WINGS`, `RED_PANDA`        |
 
+### Arrays and trailing commas
+When adding elements to arrays where every array element is in it own line its common practice and recommended to add a trailing comma (`,`) to the new element, to reduce the noise of future diffs:
+```as3
+public static const DEFAULT_ARM_NAMES:Object = createMapFromPairs(
+		[
+			[Arms.HUMAN, "human"],
+			[Arms.HARPY, "harpy"],
+			[Arms.SPIDER, "spider"],
+			[Arms.WOLF, "wolf"],
+			[Arms.PREDATOR, "predator"],
+			[Arms.SALAMANDER, "salamander"],
+			[Arms.COCKATRICE, "cockatrice"],
+			[Arms.RED_PANDA, "red-panda"],
+			[Arms.OTTER, "otter"],
+		]
+);
+```

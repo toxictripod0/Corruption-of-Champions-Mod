@@ -275,15 +275,15 @@ private function goVisitUrtaBirfs(withUrta:Boolean = false):void {
 	pregnancy.knockUpForce(); //Clear Pregnancy
 	flags[kFLAGS.URTA_PREGNANT_DELIVERY_SCENE] = 0;
 	flags[kFLAGS.NEW_BABY_ANNOUNCED] = 0;
-	if (!withUrta) outputText("The trip to the clinic where Urta is giving birth to your child is a blur; all that matters is getting there as fast as possible.  The centaur abandons you at the hospital doors, and you make your own way inside, approaching the counter inside.");
+	if (!withUrta) outputText("The trip to the clinic where Urta is giving birth to your child is a blur; all that matters is getting there as fast as possible.  The centaur abandons you at the hospital doors, and you make your own way inside, approaching the counter inside.\n\n");
 	
 	//[1st time:
 	if (flags[kFLAGS.URTA_TIMES_BIRTHED] == 0) {
-		outputText("\n\nA perky-looking young female mouse-morph, her nurse's outfit stretched a little tighter over her breasts than is considered professional, a small name tag with \"Splinter\" clipped onto one hem, looks up at you with a welcoming grin.  \"<i>Hello, " + player.mf("mister","miss") + "; please state the nature of the problem.</i>\"  You explain your reason and her eyes widen with understanding.  \"<i>Ah, I see.  Please, follow me, [name]; I will take you to Urta's room.</i>\"  She promptly gets up out of her seat - allowing you to see a rather unladylike bulge at her crotch, though you have no idea if she's a herm or merely an effeminate male - and starts walking, with you following close behind.");
+		outputText("A perky-looking young female mouse-morph, her nurse's outfit stretched a little tighter over her breasts than is considered professional, a small name tag with \"Splinter\" clipped onto one hem, looks up at you with a welcoming grin.  \"<i>Hello, " + player.mf("mister","miss") + "; please state the nature of the problem.</i>\"  You explain your reason and her eyes widen with understanding.  \"<i>Ah, I see.  Please, follow me, [name]; I will take you to Urta's room.</i>\"  She promptly gets up out of her seat - allowing you to see a rather unladylike bulge at her crotch, though you have no idea if she's a herm or merely an effeminate male - and starts walking, with you following close behind.");
 	}
 	//Else:
 	else {
-		outputText("\n\nSplinter grins when she sees you.  \"<i>Back again, are we?  Here for Urta?  Wow, you two seem to really like popping them out - who'd of thought that the captain of the Watch wanted to be a baby-maker, huh?  Hmm... you know, I've been feeling a little broody myself...</i>\"  She laughs at your response.  \"<i>Just kidding; come on then, stud; Urta is this way.</i>\"  She sets off on the now-familiar route.");
+		outputText("Splinter grins when she sees you.  \"<i>Back again, are we?  Here for Urta?  Wow, you two seem to really like popping them out - who'd of thought that the captain of the Watch wanted to be a baby-maker, huh?  Hmm... you know, I've been feeling a little broody myself...</i>\"  She laughs at your response.  \"<i>Just kidding; come on then, stud; Urta is this way.</i>\"  She sets off on the now-familiar route.");
 	}
 	outputText("\n\nAs soon as you enter Urta's room, you spot the vixen lying on her back in a bed, naked save for a gown.  You greet her and ogle her bulging belly.");
 	
