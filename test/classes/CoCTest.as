@@ -2,6 +2,7 @@ package classes{
     import org.flexunit.asserts.*;
 	import org.hamcrest.assertThat;
 	import org.hamcrest.core.*;
+	import org.hamcrest.collection.*;
 	import org.hamcrest.number.*;
 	import org.hamcrest.object.*;
 	import org.hamcrest.text.*;
@@ -12,29 +13,38 @@ package classes{
 	import classes.helper.StageLocator;
 	import classes.helper.FireButtonEvent;
 	import classes.GlobalFlags.kGAMECLASS;
+	import classes.Items.ArmorLib;
 	
 	public class CoCTest {
-		private var cut:CoC;
+		private static const HP_OVER_HEAL:Number = 1000;
+		private static const PLAYER_MAX_HP:Number = 250;
+		
+		private var cut:CoCForTest;
 		private var fireButton:FireButtonEvent;
+		private var player:Player;
 		
 		[Before]
 		public function runBeforeEveryTest():void {
 			assertThat(StageLocator.stage, not(nullValue()));
 			
-			cut = new CoC(StageLocator.stage);
-			cut.player.createVagina();
+			cut = new CoCForTest(StageLocator.stage);
+			
+			this.player = cut.player;
+			player.createVagina();
+			player.HP = 1;
+			player.tou = 100;
 			
 			fireButton = new FireButtonEvent(kGAMECLASS.mainView, CoC.MAX_BUTTON_INDEX);
 		}
 
 		[Test] 
 		public function injectStageForTest():void {
-			cut = new CoC(StageLocator.stage);
+			var coc:CoC = new CoC(StageLocator.stage);
 		}
 		
 		[Test(expected="TypeError")] 
 		public function noInjectedStage():void {
-			cut = new CoC();
+			var coc:CoC = new CoC();
 		}
 		
 		[Test]
@@ -50,5 +60,141 @@ package classes{
 			fireButton.fireButtonClick(0); //press 'proceed' button
 			fireButton.fireButtonClick(4); //press 'exit' button
 		}
+		
+		[Test]
+		public function hpChangeZeroNoDelta(): void {
+			assertThat(cut.HPChange(0, false), equalTo(0));
+		}
+		
+		[Test]
+		public function hpChangeHealerBoost(): void {
+			player.createPerk(PerkLib.HistoryHealer, 0, 0, 0, 0);
+			
+			assertThat(cut.HPChange(100, false), equalTo(120));
+		}
+		
+		[Test]
+		public function hpChangeNurseOutfitBoost(): void {
+			player.setArmor(new ArmorLib().NURSECL);
+			
+			assertThat(cut.HPChange(100, false), equalTo(110));
+		}
+		
+		[Test]
+		public function hpChangeOverHeal(): void {
+			assertThat(cut.HPChange(HP_OVER_HEAL, false), equalTo(249));
+		}
+		
+		[Test]
+		public function hpChangeOverHealPlayerHp(): void {
+			cut.HPChange(HP_OVER_HEAL, false);
+			
+			assertThat(player.HP, equalTo(PLAYER_MAX_HP));
+		}
+		
+		[Test]
+		public function hpChangeOverHealDisplayHpChange(): void {
+			cut.HPChange(HP_OVER_HEAL, true);
+			
+			assertThat(cut.calls, arrayWithSize(1));
+			assertThat(cut.calls, hasItem(equalTo(HP_OVER_HEAL)));
+		}
+		
+		[Test]
+		public function hpChangePlayerHpOverMaxDelta(): void {
+			player.HP = HP_OVER_HEAL;
+			
+			assertThat(cut.HPChange(HP_OVER_HEAL, false), equalTo(0));
+		}
+		
+		[Test]
+		public function hpChangePlayerHpOverMaxPlayerHp(): void {
+			player.HP = HP_OVER_HEAL;
+			
+			cut.HPChange(HP_OVER_HEAL, false);
+			
+			assertThat(player.HP, equalTo(1000));
+		}
+		
+		[Test]
+		public function hpChangePlayerHpOverMaxDisplayHpChange(): void {
+			player.HP = HP_OVER_HEAL;
+			
+			cut.HPChange(HP_OVER_HEAL, true);
+			
+			assertThat(cut.calls, arrayWithSize(1));
+			assertThat(cut.calls, hasItem(equalTo(HP_OVER_HEAL)));
+		}
+		
+		[Test]
+		public function hpChangeHealDisplayHpChange(): void {
+			cut.HPChange(1, true);
+			
+			assertThat(cut.calls, arrayWithSize(1));
+			assertThat(cut.calls, hasItem(equalTo(1)));
+		}
+		
+		[Test]
+		public function hpChangeHealPlayerHP(): void {
+			cut.HPChange(1, true);
+			
+			assertThat(player.HP, equalTo(2));
+		}
+		
+		[Test]
+		public function hpChangeDamageDisplayHpChange(): void {
+			player.HP = 50;
+			
+			cut.HPChange(-1, true);
+			
+			assertThat(cut.calls, arrayWithSize(1));
+			assertThat(cut.calls, hasItem(equalTo(-1)));
+		}
+		
+		[Test]
+		public function hpChangeDamagePlayerHp(): void {
+			player.HP = 50;
+			
+			cut.HPChange(-1, false);
+			
+			assertThat(player.HP, equalTo(49));
+		}
+		
+		[Test]
+		public function hpChangeDamageBelowZeroDisplayHpChange(): void {
+			cut.HPChange(-HP_OVER_HEAL, true);
+			
+			assertThat(cut.calls, arrayWithSize(1));
+			assertThat(cut.calls, hasItem(equalTo(-HP_OVER_HEAL)));
+		}
+		
+		[Test]
+		public function hpChangeDamageBelowZeroPlayerHp(): void {
+			cut.HPChange(-HP_OVER_HEAL, false);
+			
+			assertThat(player.HP, equalTo(0));
+		}
+	}
+}
+
+import classes.CoC;
+import flash.display.Stage;
+
+class CoCForTest extends CoC {
+	public var calls:Vector.<Number> = new Vector.<Number>();
+	
+	public function CoCForTest(injectedStage:Stage) 
+	{
+		super(injectedStage);
+	}
+	
+	/**
+	 * Intercept calls to HPChangeNotify so we can sense them in tests.
+	 * 
+	 * @param	changeNum the value of the HP change?
+	 */
+	override public function HPChangeNotify(changeNum:Number):void {
+		calls.push(changeNum);
+		super.HPChangeNotify(changeNum);
 	}
 }
