@@ -132,9 +132,7 @@ package classes.Items.Consumables
 			}
 			//Nipples Turn Back:
 			if (player.hasStatusEffect(StatusEffects.BlackNipples) && changes < changeLimit && rand(3) === 0) {
-				outputText("\n\nSomething invisible brushes against your " + player.nippleDescript(0) + ", making you twitch.  Undoing your clothes, you take a look at your chest and find that your nipples have turned back to their natural flesh colour.");
-				changes++;
-				player.removeStatusEffect(StatusEffects.BlackNipples);
+				mutations.removeBlackNipples(tfSource);
 			}
 			//Hair turns normal
 			if (changes < changeLimit && player.hair.type !== Hair.NORMAL && rand(3) === 0) {

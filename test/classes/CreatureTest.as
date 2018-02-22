@@ -5,8 +5,8 @@ package classes{
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.PerkLib;
 	import classes.helper.StageLocator;
-	import classes.internals.IRandomNumber;
-	import classes.internals.RandomNumber;
+	import classes.internals.RandomNumberGenerator;
+	import classes.internals.ActionScriptRNG;
 	import classes.lists.Gender;
 	import classes.lists.BreastCup;
 	import org.flexunit.asserts.*;
@@ -586,7 +586,7 @@ package classes{
 		
 		[Test]
 		public function setNewRng():void {
-			var rng:IRandomNumber = new RandomNumber();
+			var rng:RandomNumberGenerator = new ActionScriptRNG();
 			
 			cut.rng = rng;
 			
@@ -651,9 +651,9 @@ package classes{
 	}
 }
 
-import classes.internals.IRandomNumber;
+import classes.internals.RandomNumberGenerator;
 
-class AlwaysZeroRNG implements IRandomNumber {
+class AlwaysZeroRNG implements RandomNumberGenerator {
 	public function random(max:int):int 
 	{
 		return 0;

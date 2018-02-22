@@ -829,7 +829,6 @@ public class MainView extends Block {
 		this.nameBox.width = 165
 		this.nameBox.text = "";
 		this.nameBox.maxChars = 16;
-		this.nameBox.restrict = "a-zA-Z0-9 .'\\-";
 	}
 	public function moveCombatView(event:TimerEvent = null):void{
 		this.mainText.width -= 10;
