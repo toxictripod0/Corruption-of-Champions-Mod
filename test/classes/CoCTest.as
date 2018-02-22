@@ -174,6 +174,54 @@ package classes{
 			
 			assertThat(player.HP, equalTo(0));
 		}
+		
+		[Test]
+		public function hpChangeNotifyNoChange(): void {
+			cut.HPChangeNotify(0);
+			
+			assertThat(cut.collectedOutput, emptyArray());
+		}
+		
+		[Test]
+		public function hpChangeNotifyNoChangeOverMaxHp(): void {
+			player.HP = HP_OVER_HEAL;
+			
+			cut.HPChangeNotify(0);
+			
+			assertThat(cut.collectedOutput, hasItem(startsWith("You're as healthy as you can be.")));
+		}
+		
+		[Test]
+		public function hpChangeNotifyHeal(): void {
+			cut.HPChangeNotify(1);
+			
+			assertThat(cut.collectedOutput, hasItem(startsWith("You gain")));
+		}
+		
+		[Test]
+		public function hpChangeNotifyHealOverMaxHp(): void {
+			player.HP = HP_OVER_HEAL;
+			
+			cut.HPChangeNotify(1);
+			
+			assertThat(cut.collectedOutput, hasItem(startsWith("Your HP maxes out at")));
+		}
+		
+		[Test]
+		public function hpChangeNotifyDamage(): void {
+			cut.HPChangeNotify(-1);
+			
+			assertThat(cut.collectedOutput, hasItem(containsString("damage.")));
+		}
+		
+		[Test]
+		public function hpChangeNotifyDamageHpBelowZero(): void {
+			player.HP = -1;
+			
+			cut.HPChangeNotify(-1);
+			
+			assertThat(cut.collectedOutput, hasItem(containsString("damage, dropping your HP to 0.")));
+		}
 	}
 }
 
@@ -182,6 +230,7 @@ import flash.display.Stage;
 
 class CoCForTest extends CoC {
 	public var calls:Vector.<Number> = new Vector.<Number>();
+	public var collectedOutput:Vector.<String> = new Vector.<String>();
 	
 	public function CoCForTest(injectedStage:Stage) 
 	{
@@ -196,5 +245,13 @@ class CoCForTest extends CoC {
 	override public function HPChangeNotify(changeNum:Number):void {
 		calls.push(changeNum);
 		super.HPChangeNotify(changeNum);
+	}
+	
+	/**
+	 * Redirect output to a vector instead of displaying it on the GUI.
+	 * @param	text to store
+	 */
+	override public function outputText(text:String):void {
+		collectedOutput.push(text);
 	}
 }
