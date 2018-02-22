@@ -2240,6 +2240,7 @@ private function definitelyBreakUpWithWithMarble():void {
 //Talk to Marble, she will give a quick talk about what the player should consider doing next, comment on how things are going in general, and she will eventually talk about the quest to purify her here once that has been implemented.  The topic of conversation changes if you are too corrupt.
 private function talkWithMarbleAtCamp():void {
 	spriteSelect(SpriteDb.s_marble);
+	clearOutput();
 	if (!player.hasStatusEffect(StatusEffects.MarbleSpecials)) {
 		player.createStatusEffect(StatusEffects.MarbleSpecials,0,0,0,0);
 	}
@@ -2428,6 +2429,7 @@ private function marbleGathered():void {
 //Gives general info on how Marble works, and what she can do for the player
 private function marbleInfo():void {
 	spriteSelect(SpriteDb.s_marble);
+	clearOutput();
 	outputText("Marble is a loyal friend and lover who has decided to help you with your quest.  She can be interacted with while she is at camp.  ");
 	outputText("She can share some of her thoughts and give advice on your current situation, or supply you with bottles of her milk and other useful items that she has found while scavenging.  You can also get Marble to consume some of the items you find.\n\n");
 	//explain morning drinking sessions if the player is an addict

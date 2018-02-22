@@ -707,18 +707,17 @@ private function kellyAppearance():void {
 			if (farm.farmCorruption.numTattoos("kelly") > 1) outputText("She has the following tattoos emblazoned across her body:\n");
 			else outputText("She has ");
 
-			if (flags[kFLAGS.KELLY_TATTOO_COLLARBONE] != 0) outputText(flags[kFLAGS.KELLY_TATTOO_COLLARBONE] + "\n");
-			if (flags[kFLAGS.KELLY_TATTOO_SHOULDERS] != 0) outputText(flags[kFLAGS.KELLY_TATTOO_SHOULDERS] + "\n");
-			if (flags[kFLAGS.KELLY_TATTOO_LOWERBACK] != 0) outputText(flags[kFLAGS.KELLY_TATTOO_LOWERBACK] + "\n");
-			if (flags[kFLAGS.KELLY_TATTOO_BUTT] != 0) outputText(flags[kFLAGS.KELLY_TATTOO_BUTT] + "\n");
-			outputText("\n");
+			if (flags[kFLAGS.KELLY_TATTOO_COLLARBONE] != 0) outputText(flags[kFLAGS.KELLY_TATTOO_COLLARBONE]);
+			if (flags[kFLAGS.KELLY_TATTOO_SHOULDERS] != 0) outputText(flags[kFLAGS.KELLY_TATTOO_SHOULDERS]);
+			if (flags[kFLAGS.KELLY_TATTOO_LOWERBACK] != 0) outputText(flags[kFLAGS.KELLY_TATTOO_LOWERBACK]);
+			if (flags[kFLAGS.KELLY_TATTOO_BUTT] != 0) outputText(flags[kFLAGS.KELLY_TATTOO_BUTT]);
 		}
 	}
 
 	//Kids flavour text
 	if (flags[kFLAGS.KELLY_KIDS] > 0) {
 		if (flags[kFLAGS.KELLY_KIDS] == 1) {
-			outputText("\nKelly's ");
+			outputText("\n\nKelly's ");
 			if (flags[kFLAGS.KELLY_FIRST_KID_GENDER] == 1) outputText("son");
 			else outputText("daughter");
 			outputText(" is off in a separate field; still very young, you can see ");
@@ -727,7 +726,6 @@ private function kellyAppearance():void {
 		}
 		else if (flags[kFLAGS.KELLY_KIDS] == 2) outputText("\n\nThe " + num2Text(flags[kFLAGS.KELLY_KIDS]) + " children you have had with Kelly are off in a separate field; the sound of their play drifts over the grasslands to your ears.  Kelly evidently prefers to keep her brood away from what you do with her, a remarkably sensible attitude coming from a centauress cumslut.  Maybe motherhood genuinely suits her?");
 		else outputText("\n\nThe " + num2Text(flags[kFLAGS.KELLY_KIDS]) + " children you have had with Kelly are as ever off in a separate field, the distance sounds of their acting out the wars and drama of childhood drifting out over the grasslands to your ears.");
-		outputText("\n");
 	}
 	menu();
 	addButton(0,"Next",approachKelly);
@@ -1935,7 +1933,7 @@ private function giveKellyAppleSauce():void {
 	}
 	//Repeat:
 	else {
-		outputText("\n\nYou go to the barn and grab your trusty metal bowl.  Kelly knows what this means: she clasps her hands eagerly, her horse half clopping backwards and forwards impatiently as she watches you walk casually towards the forest.");
+		outputText("You go to the barn and grab your trusty metal bowl.  Kelly knows what this means: she clasps her hands eagerly, her horse half clopping backwards and forwards impatiently as she watches you walk casually towards the forest.");
 		outputText("\n\nThe small grove of apple trees has changed significantly from when you first found it.  Somebody has begun cutting the encroaching wild trees right back and pruned the rosaceae themselves so they aren't tangling into each other anymore- they look considerably happier.");
 		if (flags[kFLAGS.KELLY_KIDS] > 1) outputText("  Somebody has even cleared an oblong patch of earth alongside the trees- a piece of card stuck into it is scrawled with a childish hand which declares it to be “CAROTS”.  You marvel at it all.  Who would have imagined your lust for horse pussy would have turned a pointless asshole into a loving mother who gardens with her children?  Really, you deserve a medal for your efforts.");
 		
