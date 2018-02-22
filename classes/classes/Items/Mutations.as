@@ -184,7 +184,7 @@ package classes.Items
 			//Ovi perk loss
 			if (rand(5) === 0) updateOvipositionPerk(tfSource);
 			//Demonic changes - higher chance with higher corruption.
-			if (rand(40) + player.cor / 3 > 35 && tainted) demonChanges(player);
+			if (rand(40) + player.cor / 3 > 35 && tainted) demonChanges(player, tfSource);
 			if (rand(4) === 0 && tainted) outputText(player.modFem(5, 2));
 			if (rand(4) === 0 && tainted) outputText(player.modThickness(30, 2));
 			player.refillHunger(10);
@@ -487,7 +487,7 @@ package classes.Items
 			//Ovi perk loss
 			if (rand(5) === 0) updateOvipositionPerk(tfSource);
 			//Demonic changes - higher chance with higher corruption.
-			if (rand(40) + player.cor / 3 > 35 && tainted) demonChanges(player);
+			if (rand(40) + player.cor / 3 > 35 && tainted) demonChanges(player, tfSource);
 			if (tainted) {
 				outputText(player.modFem(100, 2));
 				if (rand(3) === 0) outputText(player.modTone(15, 2));
@@ -3245,9 +3245,8 @@ package classes.Items
 		 * Changes shared by succubi milk and incubi draft
 		 * @param	player affected by the mutation
 		 */
-		private function demonChanges(player:Player):void
+		private function demonChanges(player:Player, tfSource:String = "demonChanges"):void
 		{
-			var tfSource:String = "demonChanges";
 			//Change tail if already horned.
 			if (player.tail.type !== Tail.DEMONIC && player.horns.value > 0) {
 				if (player.tail.type !== Tail.NONE) {
