@@ -31,12 +31,12 @@ package classes{
 		private const ANAL_LOOSENESS:Number = 1;
 		private const ANAL_CAPACITY:Number = 6;
 		
-        private var cut:Creature;
+        	private var cut:Creature;
 		private var noVagina:Creature;
 		private var oneVagina:Creature;
 		private var maxVagina:Creature;
 		private var fullEquip:Creature;
-		private var alwaysZero:IRandomNumber;
+		private var alwaysZero:RandomNumberGenerator;
 		
 		private function createVaginas(numberOfVaginas:Number, instance:Creature):void {
 			var i:Number;
