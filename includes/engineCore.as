@@ -27,21 +27,41 @@ public function silly():Boolean {
 public function HPChange(changeNum:Number, display:Boolean):Number
 {
 	var before:Number = player.HP;
-	if (changeNum == 0) return 0;
+	
+	if (changeNum == 0) {
+		return 0;
+	}
+	
 	if (changeNum > 0) {
-		if (player.findPerk(PerkLib.HistoryHealer) >= 0) changeNum *= 1.2; //Increase by 20%!
-		if (player.armor.name == "skimpy nurse's outfit") changeNum *= 1.1; //Increase by 10%!
+		if (player.findPerk(PerkLib.HistoryHealer) >= 0) {
+			changeNum *= 1.2; //Increase by 20%!
+		}
+		
+		if (player.armor.name == "skimpy nurse's outfit") {
+			changeNum *= 1.1; //Increase by 10%!
+		}
+		
 		if (player.HP + int(changeNum) > maxHP()) {
 			if (player.HP >= maxHP()) {
-			if (display) HPChangeNotify(changeNum);
+				if (display) {
+					HPChangeNotify(changeNum);
+				}
+				
 				return player.HP - before;
 			}
-			if (display) HPChangeNotify(changeNum);
+			
+			if (display) {
+				HPChangeNotify(changeNum);
+			}
+			
 			player.HP = maxHP();
 		}
 		else
 		{
-			if (display) HPChangeNotify(changeNum);
+			if (display) {
+				HPChangeNotify(changeNum);
+			}
+			
 			player.HP += int(changeNum);
 			mainView.statsView.showStatUp( 'hp' );
 			// hpUp.visible = true;
@@ -51,16 +71,23 @@ public function HPChange(changeNum:Number, display:Boolean):Number
 	else
 	{
 		if (player.HP + changeNum <= 0) {
-			if (display) HPChangeNotify(changeNum);
+			if (display) {
+				HPChangeNotify(changeNum);
+			}
+			
 			player.HP = 0;
 			mainView.statsView.showStatDown( 'hp' );
 		}
 		else {
-			if (display) HPChangeNotify(changeNum);
+			if (display) {
+				HPChangeNotify(changeNum);
+			}
+			
 			player.HP += changeNum;
 			mainView.statsView.showStatDown( 'hp' );
 		}
 	}
+	
 	player.dynStats("lust", 0, "scale", false); //Workaround to showing the arrow.
 	statScreenRefresh();
 	return player.HP - before;
