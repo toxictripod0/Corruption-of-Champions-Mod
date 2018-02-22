@@ -255,23 +255,6 @@ Instead use this:
 	}
 ```
 
-##### Exemption: Commenting out code blocks
-When commenting out code blocks of 3 or more line, you may put the comments at the beginning of the line(s) but leave the indentation of the code intact.
-
-```as3
-/*
-			if (foo == bar) {
-				outputText("blah, blah, blah\n");
-				outputText("yadda, yadda, yadda\n");
-			}
-*/
-
-//			if (foo == bar) {
-//				outputText("blah, blah, blah\n");
-//				outputText("yadda, yadda, yadda\n");
-//			}
-```
-
 ### Naming conventions
 
 | **What**                              | **Convention**                                         | **Examples**                        |
