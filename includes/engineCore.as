@@ -91,20 +91,21 @@ public function HPChange(changeNum:Number, display:Boolean):Number
 
 public function HPChangeNotify(changeNum:Number):void {
 	if (changeNum === 0) {
-		if (player.HP >= player.maxHP())
+		if (player.HP >= player.maxHP()) {
 			outputText("You're as healthy as you can be.\n");
-	}
-	else if (changeNum > 0) {
-		if (player.HP >= player.maxHP())
+		}
+	} else if (changeNum > 0) {
+		if (player.HP >= player.maxHP()) {
 			outputText("Your HP maxes out at " + player.maxHP() + ".\n");
-		else
+		} else {
 			outputText("You gain <b><font color=\"#008000\">" + int(changeNum) + "</font></b> HP.\n");
-	}
-	else {
-		if (player.HP <= 0)
+		}
+	} else {
+		if (player.HP <= 0) {
 			outputText("You take <b><font color=\"#800000\">" + int(changeNum*-1) + "</font></b> damage, dropping your HP to 0.\n");
-		else
+		} else {
 			outputText("You take <b><font color=\"#800000\">" + int(changeNum*-1) + "</font></b> damage.\n");
+		}
 	}
 }
 		
