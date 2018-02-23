@@ -117,7 +117,7 @@ package classes.Scenes.Combat
 		//(15) Charge Weapon – boosts your weapon attack value by 10 * player.spellMod till the end of combat.
 		public function spellChargeWeapon(silent:Boolean = false):void {
 			if (silent) {
-				player.createStatusEffect(StatusEffects.ChargeWeapon,10*player.spellMod(),0,0,0);
+				player.createStatusEffect(StatusEffects.ChargeWeapon, 10 * player.spellMod(), 0, 0, 0);
 				statScreenRefresh();
 				return;
 			}
@@ -140,7 +140,6 @@ package classes.Scenes.Combat
 			var temp:int = 10 * player.spellMod();
 			if (temp > 100) temp = 100;
 			player.createStatusEffect(StatusEffects.ChargeWeapon, temp, 0, 0, 0);
-			statScreenRefresh();
 			flags[kFLAGS.SPELLS_CAST]++;
 			spellPerkUnlock();
 			monster.doAI();
@@ -221,7 +220,6 @@ package classes.Scenes.Combat
 			outputText("\n\n");
 			flags[kFLAGS.SPELLS_CAST]++;
 			spellPerkUnlock();
-			statScreenRefresh();
 			monster.doAI();
 		}
 		
@@ -310,7 +308,6 @@ package classes.Scenes.Combat
 			flags[kFLAGS.SPELLS_CAST]++;
 			spellPerkUnlock();
 			monster.HP -= temp;
-			statScreenRefresh();
 			if (monster.HP < 1) doNext(combat.endHpVictory);
 			else monster.doAI();
 		}
@@ -325,8 +322,7 @@ package classes.Scenes.Combat
 			}
 			doNext(combat.combatMenu);
 		//This is now automatic - newRound arg defaults to true:	menuLoc = 0;
-			player.changeFatigue(15,1);
-			statScreenRefresh();
+			player.changeFatigue(15, 1);
 			if (monster is FrostGiant && player.hasStatusEffect(StatusEffects.GiantBoulder)) {
 				(monster as FrostGiant).giantBoulderHit(2);
 				monster.doAI();
@@ -438,7 +434,6 @@ package classes.Scenes.Combat
 			}
 			
 			outputText("\n\n");
-			statScreenRefresh();
 			flags[kFLAGS.SPELLS_CAST]++;
 			spellPerkUnlock();
 			if (player.lust >= player.maxLust()) doNext(combat.endLustLoss);
@@ -565,7 +560,6 @@ package classes.Scenes.Combat
 				flags[kFLAGS.SPELLS_CAST]++;
 				spellPerkUnlock();
 				monster.HP -= temp;
-				statScreenRefresh();
 			}
 			if (player.lust >= player.maxLust()) doNext(combat.endLustLoss);
 			else if (monster.HP < 1) doNext(combat.endHpVictory);
@@ -640,7 +634,6 @@ package classes.Scenes.Combat
 			flags[kFLAGS.SPELLS_CAST]++;
 			spellPerkUnlock();
 			monster.HP -= temp;
-			statScreenRefresh();
 			if (monster.HP < 1) doNext(combat.endHpVictory);
 			else monster.doAI();
 		}
@@ -1246,7 +1239,6 @@ package classes.Scenes.Combat
 				if (monster.findPerk(PerkLib.Acid) < 0) monster.createPerk(PerkLib.Acid,0,0,0,0);
 			}
 			dmg = combat.doDamage(dmg, true, true);
-			statScreenRefresh();
 			outputText("\n\n");
 			flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 			flags[kFLAGS.SPELLS_CAST]++;
@@ -1292,7 +1284,6 @@ package classes.Scenes.Combat
 				if (monster.findPerk(PerkLib.Acid) < 0) monster.createPerk(PerkLib.Acid,0,0,0,0);
 			}
 			dmg = combat.doDamage(dmg, true, true);
-			statScreenRefresh();
 			outputText("\n\n");
 			flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 			flags[kFLAGS.SPELLS_CAST]++;

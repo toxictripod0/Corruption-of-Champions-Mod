@@ -1326,5 +1326,17 @@
 			return 8; //This allows different monsters to delay the player by different amounts of time after a combat loss. Normal loss causes an eight hour blackout
 		}
 
+		override public function set HP(value:Number):void {
+			super.HP = value;
+			game.mainView.monsterStatsView.refreshStats(game);
+		}
+		override public function set lust(value:Number):void {
+			super.lust = value;
+			game.mainView.monsterStatsView.refreshStats(game);
+		}
+		override public function set fatigue(value:Number):void {
+			super.fatigue = value;
+			game.mainView.monsterStatsView.refreshStats(game);
+		}
 	}
 }

@@ -93,7 +93,6 @@ public class Combat extends BaseContent
 						outputText("\n\nYou have to lean on Isabella's shoulder while the two of your hike back to camp.  She clearly won.");
 						inCombat = false;
 						player.HP = 1;
-						statScreenRefresh();
 						doNext(nextFunc);
 						return;
 					}
@@ -101,13 +100,11 @@ public class Combat extends BaseContent
 					if (monster.hasStatusEffect(StatusEffects.PeachLootLoss)) {
 						inCombat = false;
 						player.HP = 1;
-						statScreenRefresh();
 						return;
 					}
 					if (monster.short == "Ember") {
 						inCombat = false;
 						player.HP = 1;
-						statScreenRefresh();
 						doNext(nextFunc);
 						return;
 					}
@@ -245,7 +242,6 @@ public class Combat extends BaseContent
 			hideUpDown();
 			if (newRound) combatStatusesUpdate(); //Update Combat Statuses
 			display();
-			statScreenRefresh();
 		//This is now automatic - newRound arg defaults to true:	menuLoc = 0;
 			if (combatRoundOver()) return;
 			menu();
@@ -385,7 +381,6 @@ public class Combat extends BaseContent
 					else outputText(monster.capitalA + monster.short + " <b>mutilates</b> you with powerful fists and " + monster.weaponVerb + "s! ");
 					takeDamage(temp, true);
 				}
-				statScreenRefresh();
 				outputText("\n");
 			}
 			combatRoundOver();
@@ -1177,7 +1172,6 @@ public class Combat extends BaseContent
 			//Keep shit in bounds.
 			if (monster.HP < 0) monster.HP = 0;
 			return damage;
-			statScreenRefresh();
 		}
 
 		public function takeDamage(damage:Number, display:Boolean = false):Number {
@@ -2030,7 +2024,6 @@ public class Combat extends BaseContent
 		//VICTORY OR DEATH?
 		public function combatRoundOver():Boolean { //Called after the monster's action. Given a different name to avoid conflicing with BaseContent.
 			combatRound++;
-			statScreenRefresh();
 			flags[kFLAGS.ENEMY_CRITICAL] = 0;
 			if (!inCombat) return false;
 			if (monster.HP < 1) {

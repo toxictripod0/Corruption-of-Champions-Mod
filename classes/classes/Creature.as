@@ -184,12 +184,10 @@ package classes
 		public var lib:Number = 0;
 		public var sens:Number = 0;
 		public var cor:Number = 0;
-		public var fatigue:Number = 0;
-		
 		//Combat Stats
-		public var HP:Number = 0;
-		public var lust:Number = 0;		
-		
+		private var _HP:Number = 0;
+		private var _lust:Number = 0;		
+		private var _fatigue:Number = 0;
 		//Level Stats
 		public var XP:Number = 0;
 		public var level:Number = 0;
@@ -3905,18 +3903,31 @@ package classes
 			return getEvasionReason(useMonster, attackSpeed) != null;
 		}
 		
-		public function maxFatigue():Number
-		{
-			var max:Number = 100;
-			if (findPerk(PerkLib.ImprovedEndurance) >= 0) max += 20;
-			if (findPerk(PerkLib.AscensionEndurance) >= 0) max += perkv1(PerkLib.AscensionEndurance) * 5;
-			if (max > 999) max = 999;
-			return max;
-		}
 		public function getMaxStats(stats:String):int {
 			return 100;
 		}
 
+		public function get HP():Number { return this._HP; }
+		public function set HP(value:Number):void { this._HP = value; }
+		
+		public function get lust():Number { return this._lust; }
+		public function set lust(value:Number):void { this._lust = value; }
+		
+		public function get fatigue():Number { return this._fatigue; }
+		public function set fatigue(value:Number):void { this._fatigue = value; }
+		
+		//Minimum Libido, Sensitivty, Lust
+		public function minLib():Number {
+			return 1;
+		}
+		public function minSens():Number {
+			return 10;
+		}
+		public function minLust():Number {
+			return 0;
+		}
+		
+		//Max HP, Lust, Fatigue
 		public function maxHP():Number
 		{
 			var max:Number = 0;
@@ -3934,17 +3945,6 @@ package classes
 			if (max > 9999) max = 9999;
 			return max;
 		}
-
-		public function minLib():Number {
-			return 1;
-		}
-		public function minSens():Number {
-			return 10;
-		}
-		public function minLust():Number {
-			return 0;
-		}
-
 		public function maxLust():Number
 		{
 			var max:Number = 100;
@@ -3956,6 +3956,15 @@ package classes
 			if (max > 999) max = 999;
 			return max;
 		}
+		public function maxFatigue():Number
+		{
+			var max:Number = 100;
+			if (findPerk(PerkLib.ImprovedEndurance) >= 0) max += 20;
+			if (findPerk(PerkLib.AscensionEndurance) >= 0) max += perkv1(PerkLib.AscensionEndurance) * 5;
+			if (max > 999) max = 999;
+			return max;
+		}
+		
 		public function takeDamage(damage:Number, display:Boolean = false):Number {
 			HP = boundFloat(0,HP-Math.round(damage),HP);
 			return (damage > 0 && damage < 1) ? 1 : damage;
@@ -3966,7 +3975,7 @@ package classes
 			return (lustDmg > 0 && lustDmg < 1) ? 1 : lustDmg;
 		}
 		
-		public function generateTooltip():String{
+		public function generateTooltip():String {
 			var retv:String = "<b>Corruption:</b>" +  cor + "\n<b>Armor:</b>" + armorDef +"\n";
 			if (hasStatusEffect(StatusEffects.IzmaBleed)) retv += "<b>Bleeding:</b> Target is bleeding and takes damage each turn.\n";
 			if (hasStatusEffect(StatusEffects.Stunned)) retv += "<b>Stunned</b> Target is stunned, and may not act for " + (statusEffectv1(StatusEffects.Stunned)+1) + " turns.\n";
