@@ -369,7 +369,7 @@ package classes
 			materialArray.push(useables.EBNFLWR);
 			materialArray.push(useables.IMPSKLL);
 			materialArray.push(useables.LETHITE);
-			materialArray.push(null);
+			materialArray.push(useables.OBSHARD);
 			materialArray.push(null);
 			materialArray.push(null);
 			materialArray.push(null);

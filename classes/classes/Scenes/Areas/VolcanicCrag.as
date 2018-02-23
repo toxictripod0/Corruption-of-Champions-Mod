@@ -59,6 +59,10 @@ package classes.Scenes.Areas {
 			call: corruptedSandWitchScene.corrWitchIntro
 			*/
 		}, {
+			name: "obsidianshard",
+			chance: 0.2,
+			call: lootObsidianShard
+		}, {
 			name: "walk",
 			call: walk
 		});
@@ -76,6 +80,18 @@ package classes.Scenes.Areas {
 			inventory.takeItem(consumables.DRAKHRT, camp.returnToCampUseOneHour);
 		}
 
+		private function lootObsidianShard():void {
+			clearOutput();
+			outputText(images.showImage("item-dHeart"));
+			outputText("While you're minding your own business, something shiny dazes you momentarily and you turn your head to spot the shining object. You walk over to it, pick it up and look it over. It's dark purple and smooth-feeling, moving your fingers confirm that. ");
+			if (player.inte <= rand(80)) {
+				outputText("Unfortunately, you cut your fingers over the sharp edge and you quickly jerk your fingers back painfully, looking at the minor bleeding cut that formed on your finger. Ouch! ");
+				player.takeDamage(Math.max(5, player.maxHP() / 50), false);
+			}
+			outputText("You do know that the obsidian shard is very sharp, maybe someone can use it to create deadly weapons?");
+			inventory.takeItem(useables.OBSHARD, camp.returnToCampUseOneHour);
+		}
+		
 		private function walk():void {
 			clearOutput();
 			outputText(images.showImage("area-volcaniccrag"));

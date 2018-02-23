@@ -78,7 +78,7 @@ package classes.Scenes
 			clearOutput();
 			kGAMECLASS.displayHeader("Inventory");
 			outputText("<b><u>Equipment:</u></b>\n");
-			outputText("<b>Weapon:</b> " + player.weapon.name + " (Attack: " + player.weaponAttack + ")" + (player.weapon.isDegradable() ? "(Durability: " + (player.weapon.durability - flags[kFLAGS.WEAPON_DURABILITY_DAMAGE]) + "/" + player.weapon.durability + ")" : "") + "\n");
+			outputText("<b>Weapon:</b> " + player.weapon.name + " (Attack: " + player.weaponAttack + (player.weapon.isDegradable() ? ", Durability: " + (player.weapon.durability - flags[kFLAGS.WEAPON_DURABILITY_DAMAGE]) + "/" + player.weapon.durability : "") + ")\n");
 			outputText("<b>Shield:</b> " + player.shield.name + " (Block Rating: " + player.shieldBlock + ")\n");
 			outputText("<b>Armour:</b> " + player.armor.name + " (Defense: " + player.armorDef + ")\n");
 			outputText("<b>Upper underwear:</b> " + player.upperGarment.name + "\n");
@@ -444,11 +444,14 @@ package classes.Scenes
 			}
 			else if (item is Weapon) {
 				player.weapon.removeText();
+				var temp:ItemSlotClass = new ItemSlotClass();
+				temp.quantity = - 1;
+				temp.damage = flags[kFLAGS.WEAPON_DURABILITY_DAMAGE];
 				item = player.setWeapon(item as Weapon); //Item is now the player's old weapon
 				flags[kFLAGS.WEAPON_DURABILITY_DAMAGE] = fromSlot.damage; //Set condition accordingly
 				if (item == null)
 					itemGoNext();
-				else takeItem(item, callNext);
+				else takeItem(item, callNext, null, temp);
 			}
 			else if (item is Jewelry) {
 				player.jewelry.removeText();
