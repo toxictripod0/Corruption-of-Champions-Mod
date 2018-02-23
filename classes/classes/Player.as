@@ -779,8 +779,8 @@
 			}
 			return desc;
 		}
-
-		public function race():String
+		
+		override public function get race():String
 		{
 			//Determine race type:
 			var race:String = "human";

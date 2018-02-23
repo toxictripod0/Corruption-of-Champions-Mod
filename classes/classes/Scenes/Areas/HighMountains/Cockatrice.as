@@ -172,6 +172,7 @@ package classes.Scenes.Areas.HighMountains
 			           +" exotic plumage and cream scaled belly."
 			           +" [if (monster.canFly) Every so often he spreads his large feathered wings in an attempt to intimidate you.]"
 			           +" His lizard like feet occasionally gouge into the rubble of the plateau, flinging it up as he shifts his stance. ";
+			this.race = "Cockatrice";
 			// this.plural = false;
 			this.createCock(8,2, CockTypesEnum.LIZARD);
 			this.balls = 2;

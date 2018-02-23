@@ -89,7 +89,7 @@
 				"onecock"					: function():* { return kGAMECLASS.player.oMultiCockDesc();},
 				"pg"						: function():* { return "\n\n";},
 				"pussy"						: function():* { return kGAMECLASS.player.vaginaDescript(); },
-				"race"						: function():* { return kGAMECLASS.player.race(); },
+				"race"						: function():* { return kGAMECLASS.player.race; },
 				"rearbody"					: function():* { return kGAMECLASS.player.rearBodyDescript(); },
 				"rearbodycolor"				: function():* { return kGAMECLASS.player.rearBody.color; },
 				"sack"						: function():* { return kGAMECLASS.player.sackDescript(); },

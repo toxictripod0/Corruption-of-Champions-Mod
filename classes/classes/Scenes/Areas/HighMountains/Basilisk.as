@@ -102,6 +102,7 @@ import classes.internals.ChainedAction;
 			this.short = "basilisk";
 			this.imageName = "basilisk";
 			this.long = ""; // Needs to be set to supress validation errors, but is handled by the override.
+			this.race = "Basilisk";
 			// this.plural = false;
 			this.createCock(6,2);
 			this.balls = 2;

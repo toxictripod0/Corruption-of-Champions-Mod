@@ -107,6 +107,7 @@ package classes.Scenes.Areas.Forest
 			this.short = "tentacle beast";
 			this.imageName = "tentaclebeast";
 			this.long = "You see the massive, shambling form of the tentacle beast before you.  Appearing as a large shrub, it shifts its bulbous mass and reveals a collection of thorny tendrils and cephalopodic limbs.";
+			this.race = "Abomination";
 			// this.plural = false;
 			this.createCock(40,1.5);
 			this.createCock(60,1.5);

@@ -35,20 +35,17 @@ public class MonsterStatsView extends Block {
 	private var nameText:TextField;
 	private var coreStatsText:TextField;
 	private var combatStatsText:TextField;
-	private var strBar:StatBar;
+	private var levelBar:StatBar;
+	private var genderBar:StatBar;
+	private var raceBar:StatBar;
+	/*private var strBar:StatBar;
 	private var touBar:StatBar;
 	private var speBar:StatBar;
 	private var intBar:StatBar;
-	/* [INTERMOD: xianxia]
-	private var wisBar:StatBar;
-	 */
 	private var libBar:StatBar;
 	private var senBar:StatBar;
-	private var corBar:StatBar;
+	private var corBar:StatBar;*/
 	private var hpBar:StatBar;
-	/* [INTERMOD: xianxia]
-	private var wrathBar:StatBar;
-	*/
 	private var lustBar:StatBar;
 	private var fatigueBar:StatBar;
 	public var toolTipHeader:String;
@@ -92,19 +89,28 @@ public class MonsterStatsView extends Block {
 			defaultTextFormat: LABEL_FORMAT
 		});
 		coreStatsText = addTextField({
-			text: 'Core stats:',
+			text: 'General info:',
 			defaultTextFormat: LABEL_FORMAT
 		},{before:1});
-		addElement(strBar = new StatBar({statName: "Strength:"}));
-		addElement(touBar = new StatBar({statName: "Toughness:"}));
-		addElement(speBar = new StatBar({statName: "Speed:"}));
-		addElement(intBar = new StatBar({statName: "Intelligence:"}));
-		/* [INTERMOD: xianxia]
-		addElement(wisBar = new StatBar({statName: "Wisdom:"}));
-		 */
-		addElement(libBar = new StatBar({statName: "Libido:", maxValue: 100}));
-		addElement(senBar = new StatBar({statName: "Sensitivity:", maxValue: 100}));
-		addElement(corBar = new StatBar({statName: "Corruption:", maxValue: 100}));
+		addElement(levelBar = new StatBar({
+			statName: "Level:",
+			hasBar  : false
+		}));
+		addElement(raceBar = new StatBar({
+			statName: "Race:",
+			hasBar  : false
+		}));
+		addElement(genderBar = new StatBar({
+			statName: "Gender:",
+			hasBar  : false
+		}));
+		/*addElement(strBar = new StatBar({statName: "Strength:", visible: false}));
+		addElement(touBar = new StatBar({statName: "Toughness:", visible: false}));
+		addElement(speBar = new StatBar({statName: "Speed:", visible: false}));
+		addElement(intBar = new StatBar({statName: "Intelligence:", visible: false}));
+		addElement(libBar = new StatBar({statName: "Libido:", maxValue: 100, visible: false}));
+		addElement(senBar = new StatBar({statName: "Sensitivity:", maxValue: 100, visible: false}));
+		addElement(corBar = new StatBar({statName: "Corruption:", maxValue: 100, visible: false}));*/
 		combatStatsText = addTextField({
 			text: 'Combat stats',
 			defaultTextFormat: LABEL_FORMAT
@@ -121,12 +127,6 @@ public class MonsterStatsView extends Block {
 			hasMinBar  : true,
 			showMax    : true
 		}));
-		/* [INTERMOD: xianxia]
-		addElement(wrathBar = new StatBar({
-			statName: "Wrath:",
-			showMax : true
-		}));
-		*/
 		addElement(fatigueBar = new StatBar({
 			statName: "Fatigue:",
 			showMax: true
@@ -134,12 +134,7 @@ public class MonsterStatsView extends Block {
 		/* [INTERMOD: xianxia]
 		addElement(manaBar = new StatBar({
 			statName: "Mana:",
-		//	barColor: '#0000ff',
-			showMax : true
-		}));
-		addElement(soulforceBar = new StatBar({
-			statName: "Soulforce:",
-		//	barColor: '#ffd700',
+			barColor: '#0000c0',
 			showMax : true
 		}));
 		*/
@@ -183,7 +178,7 @@ public class MonsterStatsView extends Block {
 
 	public function statByName(statName:String):StatBar {
 		switch (statName.toLowerCase()) {
-			case 'str':
+			/*case 'str':
 				return strBar;
 			case 'tou':
 				return touBar;
@@ -192,17 +187,13 @@ public class MonsterStatsView extends Block {
 			case 'inte':
 			case 'int':
 				return intBar;
-			/* [INTERMOD: xianxia]
-			case 'wis':
-				return wisBar;
-			*/
 			case 'lib':
 				return libBar;
 			case 'sens':
 			case 'sen':
 				return senBar;
 			case 'cor':
-				return corBar;
+				return corBar;*/
 			case 'hp':
 				return hpBar;
 			/* [INTERMOD: xianxia]
@@ -213,6 +204,12 @@ public class MonsterStatsView extends Block {
 				return lustBar;
 			case 'fatigue':
 				return fatigueBar;
+			case 'level':
+				return levelBar;
+			case 'race':
+				return raceBar;
+			case 'gender':
+				return genderBar;
 			/* [INTERMOD: xianxia]
 			case 'mana':
 				return manaBar;
@@ -241,26 +238,19 @@ public class MonsterStatsView extends Block {
 	
 	public function refreshStats(game:CoC):void {
 		var monster:Monster            = game.monster;
-		nameText.htmlText     = "<b>Name: " + monster.short + "</b>";
-		strBar.value          = monster.str;
+		nameText.htmlText     = "<b>Name: " + Utils.capitalizeFirstLetter(monster.short) + "</b>";
+		levelBar.value        = monster.level;
+		raceBar.valueText     = monster.race;
+		genderBar.valueText   = monster.plural ? "Multiple" : monster.genderText("Male", "Female", "Hermaphrodite", "???");
+		/*strBar.value          = monster.str;
 		touBar.value          = monster.tou;
 		speBar.value          = monster.spe;
 		intBar.value          = monster.inte;
-		/* [INTERMOD: xianxia]
-		wisBar.maxValue       = maxes.wis;
-		wisBar.value          = player.wis;
-		libBar.maxValue       = maxes.lib;
-		*/
 		libBar.value          = monster.lib;
 		senBar.value          = monster.sens;
-		corBar.value          = monster.cor;
+		corBar.value          = monster.cor;*/
 		hpBar.maxValue        = monster.maxHP();
 		animateBarChange(hpBar, monster.HP);
-		//hpBar.value           = player.HP;
-		/* [INTERMOD: xianxia]
-		wrathBar.maxValue 	  = player.maxWrath();
-		wrathBar.value    	  = player.wrath;
-		*/
 		lustBar.maxValue      = monster.maxLust();
 		lustBar.minValue      = monster.minLust();
 		animateBarChange(lustBar, monster.lust);
@@ -269,11 +259,6 @@ public class MonsterStatsView extends Block {
 		/* [INTERMOD: xianxia]
 		manaBar.maxValue 	  = player.maxMana();
 		manaBar.value    	  = player.mana;
-		soulforceBar.maxValue = player.maxSoulforce();
-		soulforceBar.value    = player.soulforce;
-	//	soulforceBar.valueText= (player.soulforce/player.maxSoulforce()).toFixed(2)+'%';
-		/* [INTERMOD: xianxia]
-		spiritstonesBar.visible       = !inPrison;
 		*/
 		toolTipHeader = "Details";
 		toolTipText = monster.generateTooltip();

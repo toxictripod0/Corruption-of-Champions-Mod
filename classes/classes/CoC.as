@@ -263,7 +263,7 @@ package classes
 		public var sophieBimbo:SophieBimbo = new SophieBimbo();
 		public var sophieFollowerScene:SophieFollowerScene = new SophieFollowerScene();
 		public var sophieScene:SophieScene = new SophieScene();
-		public var urta:Urta = new Urta();
+		public var urta:UrtaScene = new UrtaScene();
 		public var urtaHeatRut:UrtaHeatRut = new UrtaHeatRut();
 		public var urtaPregs:UrtaPregs = new UrtaPregs();
 		public var valeria:Valeria = new Valeria();

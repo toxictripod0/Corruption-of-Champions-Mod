@@ -22,7 +22,7 @@ package classes
 			var rando:Number = 0;
 			//Determine race type:
 			var race:String = "human";
-			race = player.race();
+			race = player.race;
 			//Discuss race
 			output.clear().header("Appearance");
 			if (race != player.startingRace)	output.text("You began your journey as a " + player.startingRace + ", but gave that up as you explored the dangers of this realm.  ");

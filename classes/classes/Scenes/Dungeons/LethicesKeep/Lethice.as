@@ -32,6 +32,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			this.short = "Lethice";
 			this.imageName = "lethice";
 			this.long = "";
+			this.race = "Demon";
 			this.tallness = 12 * 9;
 			this.createVagina(false,3,3);
 			this.createBreastRow(8);

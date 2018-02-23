@@ -1184,7 +1184,7 @@ package classes {
 		}
 
 		private function startTheGame():void {
-			player.startingRace = player.race();
+			player.startingRace = player.race;
 			if (flags[kFLAGS.HARDCORE_MODE] > 0) getGame().saves.saveGame(flags[kFLAGS.HARDCORE_SLOT])
 			if (flags[kFLAGS.GRIMDARK_MODE] > 0) flags[kFLAGS.BACKGROUND_STYLE] = 9;
 			kGAMECLASS.saves.loadPermObject();

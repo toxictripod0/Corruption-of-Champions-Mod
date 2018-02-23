@@ -61,6 +61,7 @@ package classes
 		//"a" refers to how the article "a" should appear in text. 
 		private var _short:String = "You";
 		private var _a:String = "a ";
+		private var _race:String = "";
 		
 		/**
 		 * Normally creatures do not need a unique RNG,
@@ -369,6 +370,8 @@ package classes
 			}
 			return Gender.NONE;
 		}
+		public function get race():String { return this._race; }
+		public function set race(value:String):void { this._race = value; }
 		private var _tallness:Number = 0;
 		public function get tallness():Number { return _tallness; }
 		public function set tallness(value:Number):void { _tallness = value; }
