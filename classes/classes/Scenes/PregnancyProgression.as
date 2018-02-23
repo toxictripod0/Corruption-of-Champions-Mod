@@ -3,6 +3,7 @@ package classes.Scenes
 	import classes.*;
 	import classes.GlobalFlags.*;
 	import classes.Items.ArmorLib;
+	import classes.internals.PregnancyUtils;
 	
 	public class PregnancyProgression extends BaseContent
 	{
@@ -1576,10 +1577,7 @@ package classes.Scenes
 		 * Check is the player has a vagina and create one if missing.
 		 */
 		private function createVaginaIfMissing(): void {
-			if (player.vaginas.length === 0) {
-				outputText("\nYou feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.\n");
-				player.createVagina();
-			}
+			PregnancyUtils.createVaginaIfMissing(output, player);
 		}
 		
 		private function updateVaginalBirth(displayedUpdate:Boolean):Boolean 
