@@ -1,7 +1,7 @@
 _Please prefix the title with the issue type: [Bug], [Enhancement], [Question], [Other]_
 
 ### I have checked the following before submitting this issue:
-_Remove this hint: these checkboxes can be checked like this: [x]_
+_Remove this hint: these checkboxes can be checked like this: [x] - Remove this line if you read and understood the checkboxes below_
 - [ ] The bug is still present in the latest release
 - [ ] Searched the existing issues so I do not open a duplicate issue
 - [ ] Filled out the template, so developers are less likely to ask for more info
