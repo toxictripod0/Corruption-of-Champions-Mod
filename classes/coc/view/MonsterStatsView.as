@@ -241,7 +241,7 @@ public class MonsterStatsView extends Block {
 		nameText.htmlText     = "<b>Name: " + Utils.capitalizeFirstLetter(monster.short) + "</b>";
 		levelBar.value        = monster.level;
 		raceBar.valueText     = monster.race;
-		genderBar.valueText   = monster.plural ? "Multiple" : monster.genderText("Male", "Female", "Hermaphrodite", "???");
+		genderBar.valueText   = monster.plural ? "Multiple" : monster.genderText("Male", "Female", "Herm", "???");
 		/*strBar.value          = monster.str;
 		touBar.value          = monster.tou;
 		speBar.value          = monster.spe;
