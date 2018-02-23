@@ -3,6 +3,7 @@
  */
 package classes.Items
 {
+	import classes.ItemType;
 
 	public class Weapon extends Useable //Equipable
 	{
@@ -42,7 +43,10 @@ package classes.Items
 		}
 		
 		override public function get shortName():String {
-			return this._shortName + (_tier > 0 ? "+" + _tier : "");
+			var sn:String = this._shortName;
+			if (_tier > 0 && !isObsidian()) sn += "+" + _tier;
+			if (isObsidian()) sn = "Ob." + sn; //For obsidian weapons, unless specified.
+			return sn;
 		}
 		
 		override public function get description():String {
@@ -54,6 +58,9 @@ package classes.Items
 				case 2:
 					desc += " This weapon has been upgraded to be of masterwork quality.";
 					break;
+				case 3:
+					if (_degradable) desc += "This weapon has been enhanced with reinforced obsidian " + (isSharp() ? "lining its blade that could deliver sharper blows" : "spikes carefully attached to deliver more painful attacks") + ".";
+					else desc += " This weapon has been upgraded to be of epic quality and takes on a more fearsome look.";
 				default:
 					desc += "";
 			}
@@ -115,5 +122,22 @@ package classes.Items
 		public function get weightCategory():String {
 			return this._weight;
 		}
+		
+		//For possible condition checking
+		public function isObsidian():Boolean {
+			return this.longName.toLowerCase().indexOf("obsidian") >= 0;
+		}
+		public function isSharp():Boolean {
+			return (verb == "slash" || verb == "keen cut" || verb == "stab");
+		}
+		
+		//For obsidian and breakable weapons.
+		public function setDegradation(durability:int, weaponToDegradeInto:ItemType):Weapon {
+			this._degradable = true;
+			this._durability = durability;
+			this._breaksInto = weaponToDegradeInto;
+			return this;
+		}
+		
 	}
 }

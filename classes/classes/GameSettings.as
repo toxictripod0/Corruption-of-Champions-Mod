@@ -42,7 +42,7 @@ package classes
 		}
 
 		private function setOrUpdateSettings(pane:SettingPane):void {
-			if (pane.name == PANES_CONFIG[0][0]) {
+			if (pane.name == PANES_CONFIG[0][0]) { //Gameplay
 				pane.addOrUpdateToggleSettings("Game Difficulty", [
 					["Choose", difficultySelectionMenu, getDifficultyText(), false],
 					"overridesLabel"
@@ -83,7 +83,7 @@ package classes
 				]);
 				pane.update();
 			}
-			else if (pane.name == PANES_CONFIG[1][0]) {
+			else if (pane.name == PANES_CONFIG[1][0]) { //Interface
 				pane.addOrUpdateToggleSettings("Main Background", [
 					["Choose", menuMainBackground, "", false]
 				]);
@@ -111,6 +111,10 @@ package classes
 					["ON", createCallBackFunction(toggleSetting, kFLAGS.ANIMATE_STATS_BARS, true), "The stats bars and numbers will be animated if changed.", flags[kFLAGS.ANIMATE_STATS_BARS] == true],
 					["OFF", createCallBackFunction(toggleSetting, kFLAGS.ANIMATE_STATS_BARS, false), "The stats will not animate. Basically classic.", flags[kFLAGS.ANIMATE_STATS_BARS] == false]
 				]);
+				pane.addOrUpdateToggleSettings("Show Enemy Stats Bars", [
+					["ON", createCallBackFunction(toggleSetting, kFLAGS.ENEMY_STATS_BARS_ENABLED, true), "Opponent's stat bars will be displayed in combat.", flags[kFLAGS.ENEMY_STATS_BARS_ENABLED] == true],
+					["OFF", createCallBackFunction(toggleSetting, kFLAGS.ENEMY_STATS_BARS_ENABLED, false), "Opponent's stat bars will not be displayed in combat, and classic enemy info display will be used.", flags[kFLAGS.ENEMY_STATS_BARS_ENABLED] == false]
+				]);
 				pane.addOrUpdateToggleSettings("Time Format", [
 					["12-hour", createCallBackFunction(toggleSetting, kFLAGS.USE_12_HOURS, true), "Time will be shown in 12-hour format. (AM/PM)", flags[kFLAGS.USE_12_HOURS] == true],
 					["24-hour", createCallBackFunction(toggleSetting, kFLAGS.USE_12_HOURS, false), "Time will be shown in 24-hour format.", flags[kFLAGS.USE_12_HOURS] == false]
@@ -129,11 +133,15 @@ package classes
 				]);
 				pane.update();
 			}
-			else if (pane.name == PANES_CONFIG[2][0]) {
+			else if (pane.name == PANES_CONFIG[2][0]) { //Fetishes
 				pane.addOrUpdateToggleSettings("Watersports (Urine)", [
 					["ON", createCallBackFunction(toggleSetting, kFLAGS.WATERSPORTS_ENABLED, true), "Watersports are enabled. You kinky person.", flags[kFLAGS.WATERSPORTS_ENABLED] == true],
 					["OFF", createCallBackFunction(toggleSetting, kFLAGS.WATERSPORTS_ENABLED, false), "You won't see watersports scenes.", flags[kFLAGS.WATERSPORTS_ENABLED] == false]
 				]);
+				/*pane.addOrUpdateToggleSettings("Addictions", [
+					["ON", createCallBackFunction(toggleSetting, kFLAGS.WATERSPORTS_ENABLED, true), "Watersports are enabled. You kinky person.", flags[kFLAGS.WATERSPORTS_ENABLED] == true],
+					["OFF", createCallBackFunction(toggleSetting, kFLAGS.WATERSPORTS_ENABLED, false), "You won't see watersports scenes.", flags[kFLAGS.WATERSPORTS_ENABLED] == false]
+				]);*/
 				pane.addOrUpdateToggleSettings("Worms", [
 					["ON", createCallBackFunction(setWorms, true, false), "You have chosen to encounter worms as you find the mountains.", player.hasStatusEffect(StatusEffects.WormsOn) && !player.hasStatusEffect(StatusEffects.WormsHalf)],
 					["ON (Half)", createCallBackFunction(setWorms, true, true), "You have chosen to encounter worms as you find the mountains, albeit at reduced rate.", player.hasStatusEffect(StatusEffects.WormsHalf)],

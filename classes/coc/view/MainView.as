@@ -875,6 +875,7 @@ public class MainView extends Block {
 	}
 	
 	public function updateCombatView():void {
+		if (kGAMECLASS.flags[kFLAGS.ENEMY_STATS_BARS_ENABLED] <= 0) return; //Cancel if disabled 
 		monsterStatsView.show();
 		if (monsterStatsView.moved) return;
 		else monsterStatsView.moved = true;

@@ -78,7 +78,7 @@ package classes.Scenes
 			clearOutput();
 			kGAMECLASS.displayHeader("Inventory");
 			outputText("<b><u>Equipment:</u></b>\n");
-			outputText("<b>Weapon:</b> " + player.weapon.name + " (Attack: " + player.weaponAttack + ")\n");
+			outputText("<b>Weapon:</b> " + player.weapon.name + " (Attack: " + player.weaponAttack + ")" + (player.weapon.isDegradable() ? "(Durability: " + (player.weapon.durability - flags[kFLAGS.WEAPON_DURABILITY_DAMAGE]) + "/" + player.weapon.durability + ")" : "") + "\n");
 			outputText("<b>Shield:</b> " + player.shield.name + " (Block Rating: " + player.shieldBlock + ")\n");
 			outputText("<b>Armour:</b> " + player.armor.name + " (Defense: " + player.armorDef + ")\n");
 			outputText("<b>Upper underwear:</b> " + player.upperGarment.name + "\n");
@@ -231,6 +231,8 @@ package classes.Scenes
 			temp = player.emptySlot();
 			if (temp >= 0) {
 				player.itemSlots[temp].setItemAndQty(itype, 1);
+				if (source != null) player.itemSlots[temp].damage = source.damage;
+				else player.itemSlots[temp].damage = 0;
 				outputText("You place " + itype.longName + " in your " + inventorySlotName[temp] + " pouch.");
 				itemGoNext();
 				return;
@@ -443,6 +445,7 @@ package classes.Scenes
 			else if (item is Weapon) {
 				player.weapon.removeText();
 				item = player.setWeapon(item as Weapon); //Item is now the player's old weapon
+				flags[kFLAGS.WEAPON_DURABILITY_DAMAGE] = fromSlot.damage; //Set condition accordingly
 				if (item == null)
 					itemGoNext();
 				else takeItem(item, callNext);
@@ -485,7 +488,7 @@ package classes.Scenes
 				if (player.itemSlots[x].unlocked)
 					addButton(x, (player.itemSlots[x].itype.shortName + " x" + player.itemSlots[x].quantity), replaceItem, itype, x);
 			}
-			if (source != null) {
+			if (source != null && source.quantity >= 0) {
 				currentItemSlot = source;
 				addButton(12, "Put Back", returnItemToInventory, itype, false);
 			}
@@ -514,19 +517,6 @@ package classes.Scenes
 			}
 			itemGoNext();
 		}
-		
-		//My unequip function is still superior, albeit rewritten.
-		//private function unequipWeapon():void {
-		//	clearOutput();
-		//	takeItem(player.setWeapon(WeaponLib.FISTS), inventoryMenu);
-		//}
-		
-/* Never called
-		public function hasItemsInRacks(itype:ItemType, armor:Boolean):Boolean {
-			if (armor) return itemTypeInStorage(gearStorage, 9, 18, itype);
-			return itemTypeInStorage(gearStorage, 0, 9, itype);
-		}
-*/
 		
 		public function armorRackDescription():Boolean {
 			if (itemAnyInStorage(gearStorage, 9, 18)) {
@@ -651,7 +641,11 @@ package classes.Scenes
 		}
 		//Unequip!
 		private function unequipWeapon():void {
-			takeItem(player.setWeapon(WeaponLib.FISTS), inventoryMenu);
+			var temp:ItemSlotClass = new ItemSlotClass();
+			temp.damage = flags[kFLAGS.WEAPON_DURABILITY_DAMAGE];
+			temp.quantity = -1;
+			takeItem(player.setWeapon(WeaponLib.FISTS), inventoryMenu, null, temp);
+			flags[kFLAGS.WEAPON_DURABILITY_DAMAGE] = 0;
 		}
 		public function unequipArmor():void {
 			if (player.armorName != "goo armor") takeItem(player.setArmor(ArmorLib.NOTHING), inventoryMenu); 

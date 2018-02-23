@@ -109,8 +109,9 @@ package classes.Scenes.Monsters
 			if (short == "goblin warrior") lustDmg *= 1.6;
 			if (short == "goblin shaman") lustDmg *= 1.6;
 			if (short == "goblin elder") lustDmg *= 2;
-			outputText("  The display distracts you long enough to prevent you from taking advantage of her awkward pose, leaving you more than a little flushed.\n\n");
+			outputText("  The display distracts you long enough to prevent you from taking advantage of her awkward pose, leaving you more than a little flushed.");
 			player.takeLustDamage(lustDmg, true);
+			outputText("\n\n");
 			combatRoundOver();
 		}
 		

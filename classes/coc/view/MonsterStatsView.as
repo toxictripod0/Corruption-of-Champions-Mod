@@ -284,9 +284,7 @@ public class MonsterStatsView extends Block {
 		sideBarBG.bitmapClass = bitmapClass;
 	}
 	
-	public function setTheme(font:String,
-							 textColor:uint,
-							 barAlpha:Number):void {
+	public function setTheme(font:String, textColor:uint, barAlpha:Number):void {
 		var dtf:TextFormat;
 		var shadowFilter:DropShadowFilter = new DropShadowFilter();
 		

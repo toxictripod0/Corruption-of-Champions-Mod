@@ -45,15 +45,19 @@ public class Combat extends BaseContent
 		
 		//Victory & Loss
 		public function endHpVictory():void { 
+			mainView.endCombatView();
 			monster.defeated_(true);
 		}
 		public function endLustVictory():void {
+			mainView.endCombatView();
 			monster.defeated_(false);
 		}
 		public function endHpLoss():void {
+			mainView.endCombatView();
 			monster.won_(true,false);
 		}
 		public function endLustLoss():void {
+			mainView.endCombatView();
 			if (player.hasStatusEffect(StatusEffects.Infested) && flags[kFLAGS.CAME_WORMS_AFTER_COMBAT] == 0) {
 				flags[kFLAGS.CAME_WORMS_AFTER_COMBAT] = 1;
 				getGame().mountain.wormsScene.infestOrgasm();
@@ -772,7 +776,7 @@ public class Combat extends BaseContent
 					temp = int(player.str/5 - rand(5));
 					if (temp == 0) temp = 1;
 					outputText("You strike at the amalgamation, crushing countless worms into goo, dealing <b><font color=\"" + mainViewManager.colorHpMinus() + "\">" + temp + "</font></b> damage.\n\n");
-					monster.HP -= temp;
+					doDamage(temp, true, false);
 					if (monster.HP <= 0) {
 						doNext(endHpVictory);
 						return;
@@ -962,13 +966,18 @@ public class Combat extends BaseContent
 				if (monster.armorDef - 10 > 0) monster.armorDef -= 10;
 				else monster.armorDef = 0;
 			}
-			//Damage cane.
-			if (player.weapon == weapons.HNTCANE) {
-				flags[kFLAGS.ERLKING_CANE_ATTACK_COUNTER]++;
-				//Break cane
-				if (flags[kFLAGS.ERLKING_CANE_ATTACK_COUNTER] >= 10 && rand(20) == 0) {
-					outputText("\n<b>The cane you're wielding finally snaps! It looks like you won't be able to use it anymore.</b>");
-					player.setWeapon(WeaponLib.FISTS);
+			//Damage weapon.
+			if (player.weapon.isDegradable()) {
+				flags[kFLAGS.WEAPON_DURABILITY_DAMAGE]++;
+				if (flags[kFLAGS.WEAPON_DURABILITY_DAMAGE] >= player.weapon.durability) {
+					//Text for weapon breaking
+					if (player.weapon.isObsidian()) 
+						outputText("\n<b>After sustained use, the obsidian that used to enhance your weapon has finally crumbled, leaving you with the masterwork weapon.</b>");
+					else if (player.weapon == weapons.HNTCANE) 
+						outputText("\n<b>The cane you're wielding finally snaps! It looks like you won't be able to use it anymore.</b>");
+					//Set weapon accordingly	
+					if (player.weapon.degradesInto != null)	player.setWeapon(player.weapon.degradesInto as Weapon);
+					else player.setWeapon(WeaponLib.FISTS);
 				}
 			}
 			if (damage > 0) {
@@ -1047,13 +1056,11 @@ public class Combat extends BaseContent
 				if (player.lust100 <= 30)
 				{
 					outputText("\n\nJean-Claude doesn’t even budge when you wade into him with your [weapon].");
-
 					outputText("\n\n“<i>Why are you attacking me, slave?</i>” he says. The basilisk rex sounds genuinely confused. His eyes pulse with hot, yellow light, reaching into you as he opens his arms, staring around as if begging the crowd for an explanation. “<i>You seem lost, unable to understand, lashing out at those who take care of you. Don’t you know who you are? Where you are?</i>” That compulsion in his eyes, that never-ending heat, it’s... it’s changing things. You need to finish this as fast as you can.");
 				}
 				else if (player.lust100 <= 50)
 				{
 					outputText("\n\nAgain your [weapon] thumps into Jean-Claude. Again it feels wrong. Again it sends an aching chime through you, that you are doing something that revolts your nature.");
-
 					outputText("\n\n“<i>Why are you fighting your master, slave?</i>” he says. He is bigger than he was before. Or maybe you are smaller. “<i>You are confused. Put your weapon down- you are no warrior, you only hurt yourself when you flail around with it. You have forgotten what you were trained to be. Put it down, and let me help you.</i>” He’s right. It does hurt. Your body murmurs that it would feel so much better to open up and bask in the golden eyes fully, let it move you and penetrate you as it may. You grit your teeth and grip your [weapon] harder, but you can’t stop the warmth the hypnotic compulsion is building within you.");
 				}
 				else if (player.lust100 <= 80)
@@ -1085,6 +1092,7 @@ public class Combat extends BaseContent
 				if (monster.HP <= 0) doNext(endHpVictory);
 				else doNext(endLustVictory);
 			}
+			
 		}
 		
 		public function combatMiss():Boolean {
@@ -1169,6 +1177,7 @@ public class Combat extends BaseContent
 			//Keep shit in bounds.
 			if (monster.HP < 0) monster.HP = 0;
 			return damage;
+			statScreenRefresh();
 		}
 
 		public function takeDamage(damage:Number, display:Boolean = false):Number {
@@ -1744,19 +1753,15 @@ public class Combat extends BaseContent
 		public function beginCombat(monster_:Monster, plotFight_:Boolean = false):void {
 			combatRound = 0;
 			plotFight = plotFight_;
-			mainView.monsterStatsView.refreshStats(getGame());
 			mainView.hideMenuButton( MainView.MENU_DATA );
 			mainView.hideMenuButton( MainView.MENU_APPEARANCE );
 			mainView.hideMenuButton( MainView.MENU_LEVEL );
 			mainView.hideMenuButton( MainView.MENU_PERKS );
 			mainView.hideMenuButton( MainView.MENU_STATS );
-			mainView.updateCombatView();
 			showStats();
 			//Flag the game as being "in combat"
 			inCombat = true;
 			monster = monster_;
-			mainView.monsterStatsView.show();
-			mainView.updateCombatView();
 			//Set image once, at the beginning of combat
 			if (monster.imageName != "")
 			{
@@ -1810,6 +1815,7 @@ public class Combat extends BaseContent
 		}
 		
 		public function display():void {
+			mainView.updateCombatView();
 			if (!monster.checkCalled){
 				outputText("<B>/!\\BUG! Monster.checkMonster() is not called! Calling it now...</B>\n");
 				monster.checkMonster();
@@ -1860,10 +1866,12 @@ public class Combat extends BaseContent
 					else outputText("You see " + monster.pronoun1 + " is unsteady and close to death.  ");
 				}
 				showMonsterLust();
-				outputText("\n\n<b><u>" + capitalizeFirstLetter(monster.short) + "'s Stats</u></b>\n")
-				outputText("Level: " + monster.level + "\n");
-				outputText("HP: " + hpDisplay + "\n");
-				outputText("Lust: " + lustDisplay + "\n");
+				if (flags[kFLAGS.ENEMY_STATS_BARS_ENABLED] <= 0) {
+					outputText("\n\n<b><u>" + capitalizeFirstLetter(monster.short) + "'s Stats</u></b>\n")
+					outputText("Level: " + monster.level + "\n");
+					outputText("HP: " + hpDisplay + "\n");
+					outputText("Lust: " + lustDisplay + "\n");
+				}
 			}
 			if (debug){
 				outputText("\n----------------------------\n");

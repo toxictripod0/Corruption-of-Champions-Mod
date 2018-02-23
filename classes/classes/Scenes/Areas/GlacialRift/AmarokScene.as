@@ -23,7 +23,6 @@ package classes.Scenes.Areas.GlacialRift {
 			}
 			else { //if you lust lost you kinda deserve it, he shouldn't tease if I did this right
 				outputText("You collapse into the snow, your lust uncontrollable. As your hand reaches for your loins, you silently curse yourself for bringing yourself to this state. You raise your head at the sound of footsteps and find yourself staring at the Amarok's nose as it sniffs you. You let your head drop and resign yourself to fate.");
-				amarokFlagCheck();
 			}
 		}
 
@@ -63,6 +62,7 @@ package classes.Scenes.Areas.GlacialRift {
 			outputText("\n\nYou writhe under its grasp as your throat closes in terror. Your efforts are fruitless, and the Amarok watches you in mild amusement. Your blood starts to pound in your ears. You need something-- anything --that'll help you get away. You flop an arm at the leg holding you down, praying it'll knock the Amarok off. It doesn't work. You try to get a foot under it and kick it off. You can't even roll your legs up. You try to scream for help in a futile hope anyone is nearby. You instead choke on your own breath. The Amarok's cruel gaze watches you with glee.");
 			outputText("\n\nYou stop thinking. You just want air.");
 			outputText("\n\nLines of pain well in your abdomen and you take in the biggest breath of your life-- only to promptly release it with a screech. You instinctively curl up to try and protect yourself, but the Amarok takes a hold of one of your arms and shakes you violently. It only releases you when it accidentally rips off part of your " + player.armorName + ". You get flung a bit away and take a small tumble. Before you can get up, though, the Amarok is on you. It holds you down with one of its paws and begins to tear off the rest of your " + player.armorName + ", carelessly tossing it aside. You jerk, and roll, and rip at its leg, but it refuses to release you. Instead, it opens its jaws and snaps them shut around your neck.");
+			player.takeDamage(player.HP, false);
 			getGame().gameOver();
 		}
 

@@ -450,8 +450,6 @@ private function doCamp():void { //only called by playerMenu
 	hideUpDown(); //clear up/down arrows
 	if (setLevelButton()) return; //level junk
 	//Build main menu
-	var exploreEvent:Function = getGame().exploration.doExplore;
-	var placesEvent:Function = (placesKnown() ? places : null);
 	clearOutput();
 	updateAchievements();
 	//Player's camp image
@@ -615,10 +613,10 @@ private function doCamp():void { //only called by playerMenu
 	}
 	dynStats(); //workaround for #484 'statbars do not fit in their place'
 	menu(); //menu
-	addButton(0, "Explore", exploreEvent).hint("Explore to find new regions and visit any discovered regions.");
-	addButton(1, "Places", placesEvent).hint("Visit any places you have discovered so far.").disableIf(placesEvent == null, "You haven't discovered any places yet...");
+	addButton(0, "Explore", getGame().exploration.doExplore).hint("Explore to find new regions and visit any discovered regions.");
+	addButton(1, "Places", places).hint("Visit any places you have discovered so far.").disableIf(placesKnown() <= 0, "You haven't discovered any places yet...");
 	addButton(2, "Inventory", inventory.inventoryMenu).hint("The inventory allows you to use an item.  Be careful as this leaves you open to a counterattack when in combat.");
-	if (inventory.showStash()) addButton(3, "Stash", inventory.stash).hint("The stash allows you to store your items safely until you need them later.");
+	addButton(3, "Stash", inventory.stash).hint("The stash allows you to store your items safely until you need them later.").disableIf(!inventory.showStash(), "You currently don't have any form of storage with you.");
 	addButton(4, "Camp Actions", campActions).hint("Interact with the camp surroundings and also read your codex.");
 	if (followersCount() > 0) addButton(5, "Followers", campFollowers).hint("Check up on any followers or companions who are joining you in or around your camp.  You'll probably just end up sleeping with them.");
 	if (loversCount() > 0) addButton(6, "Lovers", campLoversMenu).hint("Check up on any lovers you have invited so far to your camp and interact with them.");
