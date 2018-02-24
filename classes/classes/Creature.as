@@ -3937,6 +3937,7 @@ package classes
 			max += int(tou * 2 + 50);
 			if (findPerk(PerkLib.Tank) >= 0) max += 50;
 			if (findPerk(PerkLib.Tank2) >= 0) max += Math.round(tou);
+			if (findPerk(PerkLib.Tank3) >= 0) max += level * 5;
 			if (findPerk(PerkLib.ChiReflowDefense) >= 0) max += UmasShop.NEEDLEWORK_DEFENSE_EXTRA_HP;
 			if (flags[kFLAGS.GRIMDARK_MODE] >= 1)
 				max += level * 5;
@@ -3945,6 +3946,7 @@ package classes
 			if (jewelryEffectId == JewelryLib.MODIFIER_HP) max += jewelryEffectMagnitude;
 			max *= 1 + (countCockSocks("green") * 0.02);
 			max = Math.round(max);
+			if (max < 50) max = 50;
 			if (max > 9999) max = 9999;
 			return max;
 		}
@@ -3953,6 +3955,8 @@ package classes
 			var max:Number = 100;
 			if (this == game.player && game.player.demonScore() >= 4) max += 20;
 			if (findPerk(PerkLib.ImprovedSelfControl) >= 0) max += 20;
+			if (findPerk(PerkLib.ImprovedSelfControl2) >= 0) max += 10;
+			if (findPerk(PerkLib.ImprovedSelfControl3) >= 0) max += 10;
 			if (findPerk(PerkLib.BroBody) >= 0 || findPerk(PerkLib.BimboBody) >= 0 || findPerk(PerkLib.FutaForm) >= 0) max += 20;
 			if (findPerk(PerkLib.OmnibusGift) >= 0) max += 15;
 			if (findPerk(PerkLib.AscensionDesires) >= 0) max += perkv1(PerkLib.AscensionDesires) * 5;
@@ -3963,6 +3967,8 @@ package classes
 		{
 			var max:Number = 100;
 			if (findPerk(PerkLib.ImprovedEndurance) >= 0) max += 20;
+			if (findPerk(PerkLib.ImprovedEndurance2) >= 0) max += 10;
+			if (findPerk(PerkLib.ImprovedEndurance3) >= 0) max += 10;
 			if (findPerk(PerkLib.AscensionEndurance) >= 0) max += perkv1(PerkLib.AscensionEndurance) * 5;
 			if (max > 999) max = 999;
 			return max;

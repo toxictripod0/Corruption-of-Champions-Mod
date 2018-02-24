@@ -173,9 +173,21 @@ package classes
 		public static const ImprovedEndurance:PerkType = mk("Improved Endurance", "Improved Endurance",
 				"Increases maximum fatigue by 20.",
 				"You choose the 'Improved Endurance' perk. Thanks to your physical conditioning, your maximum fatigue has been increased by 20!</b>");
+		public static const ImprovedEndurance2:PerkType = mk("Improved Endurance 2", "Improved Endurance 2",
+				"Increases maximum fatigue by further 10.",
+				"You choose the 'Improved Endurance 2' perk. Thanks to your improved physical conditioning, your maximum fatigue has been increased by further 10!</b>");
+		public static const ImprovedEndurance3:PerkType = mk("Improved Endurance 3", "Improved Endurance 3",
+				"Increases maximum fatigue by further 10.",
+				"You choose the 'Improved Endurance 2' perk. Thanks to your superior physical conditioning, your maximum fatigue has been increased by further 10!</b>");
 		public static const ImprovedSelfControl:PerkType = mk("Improved Self-Control", "Improved Self-Control",
 				"Increases maximum lust by 20.",
 				"You choose the 'Improved Self-Control' perk. Thanks to your mental conditioning, your maximum lust has been increased by 20!</b>");
+		public static const ImprovedSelfControl2:PerkType = mk("Improved Self-Control 2", "Improved Self-Control 2",
+				"Increases maximum lust by further 10.",
+				"You choose the 'Improved Self-Control 2' perk. Thanks to your improved mental conditioning, your maximum lust has been increased by further 10!</b>");
+		public static const ImprovedSelfControl3:PerkType = mk("Improved Self-Control 3", "Improved Self-Control 3",
+				"Increases maximum lust by further 10.",
+				"You choose the 'Improved Self-Control 2' perk. Thanks to your superior mental conditioning, your maximum lust has been increased by further 10!</b>");
 		public static const IronFists:PerkType = mk("Iron Fists", "Iron Fists",
 				"Hardens your fists to increase attack rating by 5.",
 				"You choose the 'Iron Fists' perk, hardening your fists. This increases attack power by 5.");
@@ -298,6 +310,9 @@ package classes
 		public static const Tank2:PerkType = mk("Tank 2", "Tank 2",
 				"+1 extra HP per point of toughness.",
 				"You choose the 'Tank 2' perk, granting an extra maximum HP for each point of toughness.");
+		public static const Tank3:PerkType = mk("Tank 3", "Tank 3",
+				"+5 extra HP per character level.",
+				"You choose the 'Tank 3' perk, granting 5 extra maximum HP for each level.");
 		public static const ThunderousStrikes:PerkType = mk("Thunderous Strikes", "Thunderous Strikes",
 				"+20% 'Attack' damage while strength is at or above 80.",
 				"You choose the 'Thunderous Strikes' perk, increasing normal damage by 20% while your strength is over 80.");
@@ -517,10 +532,6 @@ package classes
 					  .requireLevel(6)
 					  .requireNGPlus(1)
 					  .requirePerk(IronFists);
-			IronFists3.requireStr(80)
-					  .requireLevel(6)
-					  .requireNGPlus(1)
-					  .requirePerk(IronFists2);
 			Parry.requireStr(50)
 				 .requireSpe(50)
 				 .requireLevel(6);
@@ -532,6 +543,10 @@ package classes
 			ShieldSlam.requireStr(80)
 					  .requireTou(60)
 					  .requireLevel(12);
+			IronFists3.requireStr(80)
+					  .requireLevel(12)
+					  .requireNGPlus(1)
+					  .requirePerk(IronFists2);
 			//Tier 3 Strength Perks
 			ColdFury.requireStr(75)
 					.requireLevel(18)
@@ -558,13 +573,24 @@ package classes
 						   .requireLevel(6);
 			ShieldMastery.requireTou(50)
 						 .requireLevel(6);
+			ImprovedEndurance2.requireLevel(6)
+							  .requireStr(60)
+							  .requireTou(60)
+							  .requirePerk(ImprovedEndurance);
 			//Tier 2 Toughness Perks
+			Tank3.requireTou(80)
+				 .requireLevel(12)
+				 .requirePerk(Tank2);
 			Resolute.requireTou(75)
 					.requireLevel(12);
 			Juggernaut.requireTou(75)
 					  .requireLevel(12);
 			IronMan.requireTou(60)
 				   .requireLevel(12);
+			ImprovedEndurance3.requireLevel(12)
+							  .requireStr(70)
+							  .requireTou(70)
+							  .requirePerk(ImprovedEndurance2);
 			//------------
 			// SPEED
 			//------------
@@ -680,8 +706,17 @@ package classes
 			FertilityMinus.defaultValue1 = 15;
 			FertilityMinus.defaultValue2 = 0.7;
 			WellAdjusted.requireLevel(6).requireLib(60);
+			ImprovedSelfControl2.requireLevel(6)
+			                    .requireInt(60)
+								.requireLib(50)
+								.requirePerk(ImprovedSelfControl);
 			//Slot 5 - minimum libido
 			Masochist.requireLevel(6).requireLib(60).requireCor(50);
+			//Tier 2 Libido Perks
+			ImprovedSelfControl3.requireLevel(12)
+			                    .requireInt(70)
+								.requireLib(75)
+								.requirePerk(ImprovedSelfControl2);
 			//------------
 			// SENSITIVITY
 			//------------
