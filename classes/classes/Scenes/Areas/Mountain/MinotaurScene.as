@@ -418,8 +418,6 @@ private function minotaurGetsRapedByHerms():void {
 }
 
 public function minoPheromones():void {
-	clearOutput();
-	spriteSelect(SpriteDb.s_minotaur);
 	outputText(images.showImage("minotaur-cumslut"));
 	outputText("The minotaur smiles at you and lifts his loincloth, flicking it at you.  Thick ropes of pre-cum fly through the air, ");
 	//sometimes get hit with the pre for stronger effect!
