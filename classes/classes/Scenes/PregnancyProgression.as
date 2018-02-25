@@ -190,9 +190,6 @@ package classes.Scenes
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_SAND_WITCH) {
 				displayedUpdate = getGame().dungeons.desertcave.sandPregUpdate();
 			}
-			if (player.pregnancyType === PregnancyStore.PREGNANCY_URTA) {
-				displayedUpdate = getGame().urtaPregs.urtaPregooUpdates();
-			}
 
 			//Imp Pregnancy!
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_IMP) {			
@@ -1463,9 +1460,6 @@ package classes.Scenes
 				LOGGER.debug("Could not find a mapped vaginal pregnancy scene for mother {0}, father {1} - using legacy pregnancy progression", PregnancyStore.PREGNANCY_PLAYER, player.pregnancyType);;
 			}
 
-			if (player.pregnancyType === PregnancyStore.PREGNANCY_URTA) {
-				getGame().urtaPregs.PCGivesBirf();
-			}
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_SAND_WITCH) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_SAND_WITCH);
 				getGame().dungeons.desertcave.birthAWitch();

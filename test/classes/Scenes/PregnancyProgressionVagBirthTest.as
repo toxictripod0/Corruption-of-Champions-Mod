@@ -1,6 +1,7 @@
 package classes.Scenes
 {
 	import classes.Scenes.NPCs.EmberScene;
+	import classes.Scenes.NPCs.UrtaPregs;
 	import classes.Scenes.Places.TelAdre;
 	import org.flexunit.asserts.*;
 	import org.hamcrest.assertThat;
@@ -61,6 +62,7 @@ package classes.Scenes
 			cut = new PregProgForTest();
 			kGAMECLASS.bog = new Bog(cut);
 			kGAMECLASS.emberScene = new EmberScene(cut);
+			kGAMECLASS.urtaPregs = new UrtaPregs(cut);
 			kGAMECLASS.telAdre = new TelAdre(cut);
 		}
 		

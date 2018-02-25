@@ -3,11 +3,14 @@ package classes.Scenes.NPCs{
 	import classes.GlobalFlags.*;
 	import classes.PregnancyStore;
 	import classes.display.SpriteDb;
+	import classes.Scenes.VaginalPregnancy;
+	import classes.Scenes.PregnancyProgression;
 
-	public class UrtaPregs extends NPCAwareContent {
+	public class UrtaPregs extends NPCAwareContent implements VaginalPregnancy {
 
-		public function UrtaPregs()
+		public function UrtaPregs(pregnancyProgression:PregnancyProgression)
 		{
+			pregnancyProgression.registerVaginalPregnancyScene(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.PREGNANCY_URTA, this);
 		}
 //const URTA_INCUBATION:int = 789;
 //const URTA_TIMES_BIRTHED:int = 790;
@@ -532,7 +535,7 @@ private function drinkSomeUrtaPostBirthTitMilk():void {
 
 //PC Pregnancy Stages
 //PC takes 3 days to progress from one pregnancy stage to the next
-public function urtaPregooUpdates():Boolean {
+public function updateVaginalPregnancy():Boolean {
 	if (player.pregnancyIncubation == 504) {
 		outputText("\n<b>You're feeling a bit nauseated.  Your mind floats to Urta and you wonder if maybe this means her seed took...</b>\n");
 		return true;
@@ -687,7 +690,7 @@ private function acceptUrtaLevelSixPreggoHelps():void {
 }
 	
 //PC Gives Birth
-public function PCGivesBirf():void {
+public function vaginalBirth():void {
 	outputText("\n");
 	flags[kFLAGS.URTA_PREGNANT_DELIVERY_SCENE] = 0;
 	flags[kFLAGS.NEW_BABY_ANNOUNCED] = 0;

@@ -265,7 +265,7 @@ package classes
 		public var sophieScene:SophieScene = new SophieScene();
 		public var urta:UrtaScene = new UrtaScene();
 		public var urtaHeatRut:UrtaHeatRut = new UrtaHeatRut();
-		public var urtaPregs:UrtaPregs = new UrtaPregs();
+		public var urtaPregs:UrtaPregs;
 		public var valeria:Valeria = new Valeria();
 		public var vapula:Vapula = new Vapula();
 		// Scenes/Places/
@@ -465,6 +465,7 @@ package classes
 			this.telAdre = new TelAdre(pregnancyProgress);
 			
 			this.emberScene = new EmberScene(pregnancyProgress);
+			this.urtaPregs = new UrtaPregs(pregnancyProgress);
 			
 			useables = new UseableLib();
 			
