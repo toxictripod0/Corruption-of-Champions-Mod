@@ -238,7 +238,7 @@ package classes
 		public var arianScene:ArianScene = new ArianScene();
 		public var ceraphScene:CeraphScene = new CeraphScene();
 		public var ceraphFollowerScene:CeraphFollowerScene = new CeraphFollowerScene();
-		public var emberScene:EmberScene = new EmberScene();
+		public var emberScene:EmberScene;
 		public var exgartuan:Exgartuan = new Exgartuan();
 		public var helFollower:HelFollower = new HelFollower();
 		public var helScene:HelScene = new HelScene();
@@ -461,6 +461,8 @@ package classes
 			
 			this.pregnancyProgress = new PregnancyProgression();
 			this.bog = new Bog(pregnancyProgress);
+			
+			this.emberScene = new EmberScene(pregnancyProgress);
 			
 			useables = new UseableLib();
 			
