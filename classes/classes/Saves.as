@@ -2120,8 +2120,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 				}
 				if (savedIS.quantity>0) {
 					storage.setItemAndQty(ItemType.lookupItem(savedIS.id || savedIS.shortName), savedIS.quantity);
-					if (savedIS.damage != undefined) storage.damage = savedIS.damage;
-					else storage.damage = 0;
+					storage.damage = savedIS.damage != undefined ? savedIS.damage : 0;
 				}
 				else
 					storage.emptySlot();
@@ -2150,10 +2149,10 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
                         || saveFile.data.gearStorage[i].quantity == undefined
 						|| saveFile.data.gearStorage[i].quantity == 0)
 					storage.emptySlot();
-				else
+				else {
 					storage.setItemAndQty(ItemType.lookupItem(saveFile.data.gearStorage[i].id || saveFile.data.gearStorage[i].shortName), saveFile.data.gearStorage[i].quantity);
-					if (saveFile.data.gearStorage[i].damage != undefined) storage.damage = saveFile.data.gearStorage[i].damage
-					else storage.damage = 0;
+					storage.damage = saveFile.data.gearStorage[i].damage != undefined ? saveFile.data.gearStorage[i].damage : 0;
+				}
 				storage.unlocked = saveFile.data.gearStorage[i].unlocked;
 			}
 		}

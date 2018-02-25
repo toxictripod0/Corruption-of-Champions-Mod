@@ -448,7 +448,7 @@ package classes.Scenes
 				temp.quantity = - 1;
 				temp.damage = flags[kFLAGS.WEAPON_DURABILITY_DAMAGE];
 				item = player.setWeapon(item as Weapon); //Item is now the player's old weapon
-				flags[kFLAGS.WEAPON_DURABILITY_DAMAGE] = fromSlot.damage; //Set condition accordingly
+				flags[kFLAGS.WEAPON_DURABILITY_DAMAGE] = fromSlot != null ? fromSlot.damage : 0; //Set condition accordingly
 				if (item == null)
 					itemGoNext();
 				else takeItem(item, callNext, null, temp);
