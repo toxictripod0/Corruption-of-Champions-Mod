@@ -2,6 +2,7 @@ package classes.Scenes
 {
 
 	import classes.DefaultDict;
+	import classes.Scenes.Areas.Bog;
 	import org.flexunit.asserts.*;
 	import org.hamcrest.assertThat;
 	import org.hamcrest.core.*;

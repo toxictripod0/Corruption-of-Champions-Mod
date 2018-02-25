@@ -195,13 +195,13 @@ package classes
 		public var followerInteractions:FollowerInteractions = new FollowerInteractions();
 		public var inventory:Inventory = new Inventory(saves);
 		public var masturbation:Masturbation = new Masturbation();
-		public var pregnancyProgress:PregnancyProgression = new PregnancyProgression();
+		public var pregnancyProgress:PregnancyProgression;
 		public var bimboProgress:BimboProgression = new BimboProgression();
 		
 		// Scenes/Areas/
 		public var commonEncounters:CommonEncounters = new CommonEncounters(); // Common dependencies go first
 		
-		public var bog:Bog = new Bog();
+		public var bog:Bog;
 		public var desert:Desert = new Desert();
 		public var forest:Forest = new Forest();
 		public var deepWoods:DeepWoods = new DeepWoods(forest);
@@ -458,6 +458,9 @@ package classes
 			
 			// Cheatmode.
 			kGAMECLASS = this;
+			
+			this.pregnancyProgress = new PregnancyProgression();
+			this.bog = new Bog(pregnancyProgress);
 			
 			useables = new UseableLib();
 			

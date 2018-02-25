@@ -189,9 +189,6 @@ package classes.Scenes
 				LOGGER.debug("Could not find a mapped vaginal pregnancy for mother {0}, father {1} - using legacy pregnancy progression", PregnancyStore.PREGNANCY_PLAYER, player.pregnancyType);;
 			}
 			
-			if (player.pregnancyType === PregnancyStore.PREGNANCY_FAERIE) {
-				displayedUpdate = getGame().bog.phoukaScene.phoukaPregUpdate();
-			}
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_SAND_WITCH) {
 				displayedUpdate = getGame().dungeons.desertcave.sandPregUpdate();
 			}
@@ -1655,10 +1652,6 @@ package classes.Scenes
 				LOGGER.debug("Could not find a mapped vaginal pregnancy scene for mother {0}, father {1} - using legacy pregnancy progression", PregnancyStore.PREGNANCY_PLAYER, player.pregnancyType);;
 			}
 			
-			//Give birth to either a faerie or a phouka
-			if (player.pregnancyType === PregnancyStore.PREGNANCY_FAERIE) {
-					getGame().bog.phoukaScene.phoukaPregBirth();
-			}
 			//Give birf to dragons
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_EMBER) {
 				getGame().emberScene.giveBirthToEmberKids();

@@ -19,6 +19,7 @@ package classes.Scenes
 	import classes.StatusEffects;
 	import classes.VaginaClass;
 	import classes.StatusEffects;
+	import classes.Scenes.Areas.Bog;
 	
 	import org.flexunit.runners.Parameterized;
 	
@@ -56,6 +57,7 @@ package classes.Scenes
 			kGAMECLASS.time.hours = 5;
 			
 			cut = new PregProgForTest();
+			kGAMECLASS.bog = new Bog(cut);
 		}
 		
 		/**
