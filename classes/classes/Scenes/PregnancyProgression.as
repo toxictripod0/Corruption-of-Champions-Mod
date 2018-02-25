@@ -4,17 +4,29 @@ package classes.Scenes
 	import classes.GlobalFlags.*;
 	import classes.Items.ArmorLib;
 	import classes.internals.PregnancyUtils;
+	import flash.utils.Dictionary;
+	import classes.internals.LoggerFactory;
+	import mx.logging.ILogger;
 	
 	public class PregnancyProgression extends BaseContent
 	{
+		private static const LOGGER:ILogger = LoggerFactory.getLogger(PregnancyProgression);
+		
 		/**
 		 * This sensing variable is used by tests to detect if
 		 * the vaginal birth code has been called.
 		 */
 		public var senseVaginalBirth:Vector.<int>;
 		
+		/**
+		 * Map pregnancy type to the class that contains the matching scenes.
+		 * Currently only stores player pregnancies.
+		 */
+		private var vaginalPregnancyScenes:Dictionary;
+		
 		public function PregnancyProgression() {
 			this.senseVaginalBirth = new Vector.<int>();
+			this.vaginalPregnancyScenes = new Dictionary();
 		}
 		
 		/**
@@ -25,7 +37,52 @@ package classes.Scenes
 		private function detectVaginalBirth(pregnancyType:int):void {
 			senseVaginalBirth.push(pregnancyType);
 		}
-
+		
+		/**
+		 * Register a scene for vaginal pregnancy. The registered scene will be used for pregnancy
+		 * progression and birth.
+		 * <b>Note:</b> Currently only the player is supported as the mother.
+		 * 
+		 * @param	pregnancyTypeMother The creature that is the mother
+		 * @param	pregnancyTypeFather The creature that is the father
+		 * @param	scenes The scene to register for the combination
+		 * @return true if an existing scene was overwritten
+		 * @throws ArgumentError If the mother is not the player
+		 */
+		public function registerVaginalPregnancyScene(pregnancyTypeMother:int, pregnancyTypeFather:int, scenes:VaginalPregnancy):Boolean {
+			if (pregnancyTypeMother !== PregnancyStore.PREGNANCY_PLAYER) {
+				LOGGER.error("Currently only the player is supported as mother");
+				throw new ArgumentError("Currently only the player is supported as mother");
+			}
+			
+			var previousReplaced:Boolean = false;
+			
+			if (hasRegisteredVaginalScene(pregnancyTypeMother, pregnancyTypeFather)) {
+				previousReplaced = true;
+				LOGGER.warn("Vaginal scene registration for mother {0}, father {1} will be replaced.", pregnancyTypeMother, pregnancyTypeFather);
+			}
+			
+			vaginalPregnancyScenes[pregnancyTypeFather] = scenes;
+			LOGGER.debug("Mapped pregancy scene {0} to mother {1}, father {2}", scenes, pregnancyTypeMother, pregnancyTypeFather);
+			
+			return previousReplaced;
+		}
+		
+		/**
+		 * Check if the given vaginal pregnancy combination has a registered scene.
+		 * @param	pregnancyTypeMother The creature that is the mother
+		 * @param	pregnancyTypeFather The creature that is the father
+		 * @return true if a scene is registered for the combination
+		 */
+		public function hasRegisteredVaginalScene(pregnancyTypeMother:int, pregnancyTypeFather:int):Boolean {
+			// currently only player pregnancies are supported
+			if (pregnancyTypeMother !== PregnancyStore.PREGNANCY_PLAYER) {
+				return false;
+			}
+			
+			return pregnancyTypeFather in vaginalPregnancyScenes;
+		}
+		
 		private function giveBirth():void
 		{
 			if (player.fertility < 15) player.fertility++;
@@ -123,6 +180,14 @@ package classes.Scenes
 		private function updateVaginalPregnancy(displayedUpdate:Boolean):Boolean
 		{
 			var pregText:String = "";
+			
+			if (hasRegisteredVaginalScene(PregnancyStore.PREGNANCY_PLAYER, player.pregnancyType)) {
+				var scene:VaginalPregnancy = vaginalPregnancyScenes[player.pregnancyType] as VaginalPregnancy;
+				LOGGER.debug("Updating pregnancy for mother {0}, father {1} by using class {2}", PregnancyStore.PREGNANCY_PLAYER, player.pregnancyType, scene);
+				return scene.updateVaginalPregnancy();
+			} else {
+				LOGGER.debug("Could not find a mapped vaginal pregnancy for mother {0}, father {1} - using legacy pregnancy progression", PregnancyStore.PREGNANCY_PLAYER, player.pregnancyType);;
+			}
 			
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_FAERIE) {
 				displayedUpdate = getGame().bog.phoukaScene.phoukaPregUpdate();
@@ -1582,6 +1647,14 @@ package classes.Scenes
 		
 		private function updateVaginalBirth(displayedUpdate:Boolean):Boolean 
 		{
+			if (hasRegisteredVaginalScene(PregnancyStore.PREGNANCY_PLAYER, player.pregnancyType)) {
+				var scene:VaginalPregnancy = vaginalPregnancyScenes[player.pregnancyType] as VaginalPregnancy;
+				LOGGER.debug("Updating vaginal birth for mother {0}, father {1} by using class {2}", PregnancyStore.PREGNANCY_PLAYER, player.pregnancyType, scene);
+				scene.vaginalBirth();
+			} else {
+				LOGGER.debug("Could not find a mapped vaginal pregnancy scene for mother {0}, father {1} - using legacy pregnancy progression", PregnancyStore.PREGNANCY_PLAYER, player.pregnancyType);;
+			}
+			
 			//Give birth to either a faerie or a phouka
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_FAERIE) {
 					getGame().bog.phoukaScene.phoukaPregBirth();

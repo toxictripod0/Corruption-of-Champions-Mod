@@ -29,6 +29,7 @@ package classes.Scenes
 		
 		private var cut:PregProgForTest;
 		private var player:Player;
+		private var scene:DummyScene;
 		
 		
 		[BeforeClass]
@@ -45,6 +46,7 @@ package classes.Scenes
 			kGAMECLASS.flags = new DefaultDict();
 			
 			cut = new PregProgForTest();
+			scene = new DummyScene();
 		}
 		
 		[Test]
@@ -176,6 +178,72 @@ package classes.Scenes
 			
 			assertThat(cut.updatePregnancy(), equalTo(false));
 		}
+		
+		[Test]
+		public function registerPlayerAsMotherVaginalPregnancy():void {
+			var replacedPrevious:Boolean = cut.registerVaginalPregnancyScene(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.PREGNANCY_IMP, scene);
+			
+			assertThat(replacedPrevious, equalTo(false));
+		}
+		
+		[Test]
+		public function registerPlayerAsMotherVaginalPregnancyReplaceExisting():void {
+			cut.registerVaginalPregnancyScene(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.PREGNANCY_IMP, scene);
+			var replacedPrevious:Boolean = cut.registerVaginalPregnancyScene(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.PREGNANCY_IMP, scene);
+			
+			assertThat(replacedPrevious, equalTo(true));
+		}
+		
+		[Test]
+		public function registerMultipleVaginalScenes():void {
+			var minoScene:DummyScene = new DummyScene();
+			
+			cut.registerVaginalPregnancyScene(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.PREGNANCY_IMP, scene);
+			cut.registerVaginalPregnancyScene(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.PREGNANCY_MINOTAUR, minoScene);
+			
+			player.knockUpForce(PregnancyStore.PREGNANCY_IMP, 1);
+			cut.updatePregnancy();
+			
+			assertThat(scene.birth, equalTo(true));
+			assertThat(minoScene.birth, equalTo(false));
+		}
+		
+		[Test(expected="ArgumentError")]
+		public function registerNonPlayerNotSupported():void {
+			cut.registerVaginalPregnancyScene(PregnancyStore.PREGNANCY_MARBLE, PregnancyStore.PREGNANCY_PLAYER, scene);
+		}
+		
+		[Test]
+		public function callsVaginalPregnancyUpdate():void {
+			cut.registerVaginalPregnancyScene(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.PREGNANCY_IMP, scene);
+			
+			player.knockUpForce(PregnancyStore.PREGNANCY_IMP, 337);
+			cut.updatePregnancy();
+			
+			assertThat(scene.updated, equalTo(true));
+		}
+		
+		[Test]
+		public function callsVaginalPregnancyBirth():void {
+			cut.registerVaginalPregnancyScene(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.PREGNANCY_IMP, scene);
+			
+			player.knockUpForce(PregnancyStore.PREGNANCY_IMP, 1);
+			cut.updatePregnancy();
+			
+			assertThat(scene.birth, equalTo(true));
+		}
+		
+		[Test]
+		public function hasNoRegistreredScene():void {
+			assertThat(cut.hasRegisteredVaginalScene(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.PREGNANCY_IMP), equalTo(false));
+		}
+		
+		[Test]
+		public function hasRegistreredScene():void {
+			cut.registerVaginalPregnancyScene(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.PREGNANCY_IMP, scene);
+			
+			assertThat(cut.hasRegisteredVaginalScene(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.PREGNANCY_IMP), equalTo(true));
+		}
 	}
 }
 
@@ -190,5 +258,23 @@ class PregProgForTest extends PregnancyProgression {
 	
 	public function pregUpdate():Boolean {
 		return updatePregnancy();
+	}
+}
+
+import classes.Scenes.VaginalPregnancy;
+
+class DummyScene implements VaginalPregnancy {
+	public var updated:Boolean = false;
+	public var birth:Boolean = false;
+	
+	public function updateVaginalPregnancy():Boolean 
+	{
+		this.updated = true;
+		return true;
+	}
+	
+	public function vaginalBirth():void 
+	{
+		this.birth = true;
 	}
 }
