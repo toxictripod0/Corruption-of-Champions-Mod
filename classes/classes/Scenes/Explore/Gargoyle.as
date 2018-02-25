@@ -124,10 +124,10 @@ private function nameZeGargoyle():void {
 		// Solution? Fuck you for naming your Gargoyle "0".
 		clearOutput();
 		outputText("<b>You must name her.</b>");
+		menu();
 		mainView.promptCharacterName();
 		mainView.nameBox.x = mainView.mainText.x + 5;
 		mainView.nameBox.y = mainView.mainText.y + 3 + mainView.mainText.textHeight;
-		menu();
 		addButton(0,"Next",nameZeGargoyle);
 		return;
 	}
