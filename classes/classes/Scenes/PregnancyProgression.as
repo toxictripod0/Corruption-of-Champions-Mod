@@ -34,7 +34,7 @@ package classes.Scenes
 		 * This method is used for testing.
 		 * @param	pregnancyType to record
 		 */
-		private function detectVaginalBirth(pregnancyType:int):void {
+		public function detectVaginalBirth(pregnancyType:int):void {
 			senseVaginalBirth.push(pregnancyType);
 		}
 		
@@ -1276,28 +1276,6 @@ package classes.Scenes
 					}
 				}
 			}
-			//Frog Eggs
-			else if (player.pregnancyType === PregnancyStore.PREGNANCY_FROG_GIRL) {
-				if (player.pregnancyIncubation === 8) {
-					//Egg Maturing
-					if (player.hasVagina()) {
-						outputText("\nYour gut churns, and with a squelching noise, a torrent of transparent slime gushes from your [vagina].  You immediately fall to your knees, landing wetly amidst the slime.  The world around briefly flashes with unbelievable colors, and you hear someone giggling.\n\nAfter a moment, you realize that it’s you.");
-						//pussy:
-						if (player.hasVagina()) outputText("  Against your [vagina], the slime feels warm and cold at the same time, coaxing delightful tremors from your [clit].");
-						//[balls:
-						else if (player.balls > 0) outputText("  Slathered in hallucinogenic frog slime, your balls tingle, sending warm pulses of pleasure all the way up into your brain.");
-						//genderless: 
-						else outputText("  Your [vagina] begins twitching, aching for something to push through it over and over again.");
-						outputText("  Seated in your own slime, you moan softly, unable to keep your hands off yourself.");
-						dynStats("lus=", player.maxLust(), "scale", false);
-						displayedUpdate = true;
-					}
-					else {
-						outputText("\nYour gut churns, but after a moment it settles. Your belly does seem a bit bigger and more gravid afterward, like you're filling up with fluid without any possible vent. You suddenly wonder if losing your pussy was such a great idea.");
-						displayedUpdate = true;
-					}
-				}
-			}
 			//Minerva Pregnancy
 			else if (player.pregnancyType === PregnancyStore.PREGNANCY_MINERVA) {
 				if (player.pregnancyIncubation === 216) {
@@ -1699,12 +1677,6 @@ package classes.Scenes
 			//Satyr vag preg
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_SATYR) {
 				getGame().plains.satyrScene.satyrBirth(true);
-			}
-			
-			//Give birf if its time... to FROG EGGS
-			if (player.pregnancyType === PregnancyStore.PREGNANCY_FROG_GIRL) {
-				detectVaginalBirth(PregnancyStore.PREGNANCY_FROG_GIRL);
-				getGame().bog.frogGirlScene.layFrogEggs();
 			}
 			
 			//BASILISK BIRF
