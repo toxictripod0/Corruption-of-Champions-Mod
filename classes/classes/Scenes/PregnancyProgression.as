@@ -193,10 +193,7 @@ package classes.Scenes
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_URTA) {
 				displayedUpdate = getGame().urtaPregs.urtaPregooUpdates();
 			}
-			//Cotton Pregnancy! - 350 days long
-			if (player.pregnancyType === PregnancyStore.PREGNANCY_COTTON) {			
-				displayedUpdate = pregnancyCotton();
-			}
+
 			//Imp Pregnancy!
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_IMP) {			
 				if (player.pregnancyIncubation === 336) {
@@ -1270,70 +1267,6 @@ package classes.Scenes
 			return displayedUpdate;
 		}
 		
-		private function pregnancyCotton():Boolean 
-		{
-			var displayedUpdate:Boolean = false;
-			
-			if (player.pregnancyIncubation === 320) {
-				outputText("\n<b>You realize your belly has gotten bigger. Maybe you should cut back on all the strange food.  Though you do have odd cravings for oats and grain.</b>\n");
-				displayedUpdate = true;
-			}
-			else if (player.pregnancyIncubation === 280) {
-				outputText("\n<b>Your belly is getting more noticeably distended. You are probably pregnant. The strong hankerings for oats and grains give you a very obvious clue as to who the 'father' might be.</b>\n");
-				displayedUpdate = true;	
-			}
-			else if (player.pregnancyIncubation === 225) {
-				outputText("\n<b>The unmistakable bulge of pregnancy is visible in your tummy.  You stroke the orb and wonder with a half-grin if you'll have a daughter who takes after her 'daddy'.</b>\n");
-				displayedUpdate = true;	
-			}
-			else if (player.pregnancyIncubation === 165) {
-				outputText("\n<b>The sudden impact of a tiny kick from inside your womb startles you.  Moments later it happens again, making you gasp.  The baby inside you really must be equine in nature; she's already got quite a wicked kick on her.</b>\n");
-				displayedUpdate = true;	
-			}
-			else if (player.pregnancyIncubation === 105) {
-				outputText("\n<b>You're already as big as any pregnant woman back home. Considering that what you're carrying is technically a foal, you wonder just how much bigger you're going to get...</b>\n");
-				displayedUpdate = true;	
-			}
-			else if (player.pregnancyIncubation === 80) {
-				outputText("\n<b>Your swollen stomach would bring queries about the possibility of twins back in Ingnam.  However, you can only feel one strong heart beating away inside your stretched midriff.  Cotton's foal is definitely growing up healthy...\n\nYou're glad, but a little worried about giving birth.</b>\n");
-				displayedUpdate = true;	
-			}
-			else if (player.pregnancyIncubation === 50) {
-				outputText("\n<b>Your belly is painfully distended and swollen; you feel like you're going to burst before you get much bigger.  You find yourself pacing around restlessly in the night, like the expectant mares back in the village.  You're anxious to finally give birth, as much to get this heavy baby out of you as to finally be able to cuddle your child.</b>\n");
-				displayedUpdate = true;	
-			}
-			//Tits
-			if (player.pregnancyIncubation === 32 || player.pregnancyIncubation === 64 || player.pregnancyIncubation === 85 || player.pregnancyIncubation === 150) {
-				displayedUpdate = true;
-				//Increase lactation!
-				if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() >= 1 && player.biggestLactation() < 2) {
-					outputText("\nYour breasts feel swollen with all the extra milk they're accumulating.  You wonder just what kind of creature they're getting ready to feed.\n");
-					player.boostLactation(.5);
-				}
-				if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() > 0 && player.biggestLactation() < 1) {
-					outputText("\nDrops of breastmilk escape your nipples as your body prepares for the coming birth.\n");
-					player.boostLactation(.5);
-				}				
-				//Lactate if large && not lactating
-				if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() === 0) {
-					outputText("\n<b>You realize your breasts feel full, and occasionally lactate</b>.  It must be due to the pregnancy.\n");
-					player.boostLactation(1);
-				}
-				//Enlarge if too small for lactation
-				if (player.biggestTitSize() === 2 && player.mostBreastsPerRow() > 1) {
-					outputText("\n<b>Your breasts have swollen to C-cups,</b> in light of your coming pregnancy.\n");
-					player.growTits(1, 1, false, 3);
-				}
-				//Enlarge if really small!
-				if (player.biggestTitSize() === 1 && player.mostBreastsPerRow() > 1) {
-					outputText("\n<b>Your breasts have grown to B-cups,</b> likely due to the hormonal changes of your pregnancy.\n");
-					player.growTits(1, 1, false, 3);
-				}
-			}
-			
-			return displayedUpdate;
-		}
-		
 		private function updateAnalPregnancy(displayedUpdate:Boolean):Boolean 
 		{
 			if (player.buttPregnancyType === PregnancyStore.PREGNANCY_FROG_GIRL) {
@@ -1553,9 +1486,7 @@ package classes.Scenes
 				detectVaginalBirth(PregnancyStore.PREGNANCY_DRIDER_EGGS);
 				getGame().swamp.corruptedDriderScene.driderPregVagBirth();
 			}
-			if (player.pregnancyType === PregnancyStore.PREGNANCY_COTTON) {
-				getGame().telAdre.cotton.birthingCottonsKids();
-			}
+
 			//GOO BIRF
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_GOO_GIRL) {
 				getGame().lake.gooGirlScene.gooPregVagBirth();

@@ -51,22 +51,6 @@ package classes.Scenes
 		}
 		
 		[Test]
-		public function updateCottonPregnancyOutput():void {
-			player.knockUpForce(PregnancyStore.PREGNANCY_COTTON, 225);
-			
-			cut.updatePregnancy();
-			
-			assertThat(cut.collectedOutput, hasItem(containsString(COTTON_225_MESSAGE)));
-		}
-		
-		[Test]
-		public function updateCottonPregnancyDisplayChange():void {
-			player.knockUpForce(PregnancyStore.PREGNANCY_COTTON, 225);
-			
-			assertThat(cut.updatePregnancy(), equalTo(true));
-		}
-		
-		[Test]
 		public function cancelHeatOutput():void {
 			player.goIntoHeat(false);
 			player.knockUpForce(PregnancyStore.PREGNANCY_COTTON, 225);

@@ -273,7 +273,7 @@ package classes
 		public var boat:Boat = new Boat();
 		public var farm:Farm = new Farm();
 		public var owca:Owca = new Owca();
-		public var telAdre:TelAdre = new TelAdre();
+		public var telAdre:TelAdre;
 		public var ingnam:Ingnam = new Ingnam();
 		public var prison:Prison = new Prison();
 		public var townRuins:TownRuins = new TownRuins();
@@ -461,6 +461,8 @@ package classes
 			
 			this.pregnancyProgress = new PregnancyProgression();
 			this.bog = new Bog(pregnancyProgress);
+			
+			this.telAdre = new TelAdre(pregnancyProgress);
 			
 			this.emberScene = new EmberScene(pregnancyProgress);
 			
