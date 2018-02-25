@@ -89,7 +89,7 @@ package classes.Scenes
 			menu();
 			for (x = 0; x < 10; x++) {
 				if (player.itemSlots[x].unlocked && player.itemSlots[x].quantity > 0) {
-					addButton(x, (player.itemSlots[x].itype.shortName + " x" + player.itemSlots[x].quantity), useItemInInventory, x).hint(player.itemSlots[x].itype.description, capitalizeFirstLetter(player.itemSlots[x].itype.longName));
+					addButton(x, (player.itemSlots[x].itype.shortName + " x" + player.itemSlots[x].quantity), useItemInInventory, x).hint(generateInventoryTooltip(player.itemSlots[x]), capitalizeFirstLetter(player.itemSlots[x].itype.longName));
 					foundItem = true;
 				}
 			}
@@ -867,6 +867,14 @@ package classes.Scenes
 			}
 			outputText("There is no room for " + (orig == qty ? "" : "the remaining ") + qty + "x " + itype.shortName + ".  You leave " + (qty > 1 ? "them" : "it") + " in your inventory.\n");
 			player.itemSlots[slotNum].setItemAndQty(itype, qty);
+		}
+		
+		public function generateInventoryTooltip(slot:ItemSlotClass):String {
+			var tt:String = slot.itype.description;
+			if (slot.itype.isDegradable()) {
+				tt += "\nDurability: " + (slot.itype.durability - slot.damage) + "/" + slot.itype.durability;
+			}
+			return tt;
 		}
 	}
 }
