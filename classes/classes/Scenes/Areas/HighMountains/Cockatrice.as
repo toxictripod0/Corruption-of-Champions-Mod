@@ -152,6 +152,12 @@ package classes.Scenes.Areas.HighMountains
 
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
 		{
+			clearOutput();
+			if (hpVictory) {
+				player.HP = 1;
+				outputText("Your wounds are too great to bear, and you fall unconscious.");
+			}
+
 			if (pcCameWorms) {
 				outputText("\n\nThe cockatrice smirks, but waits for you to finish...");
 				doNext(game.combat.endLustLoss);

@@ -2040,7 +2040,7 @@ public class Combat extends BaseContent
 					return true;
 				}
 			}
-			if (monster.short == "basilisk" && player.spe <= 1) {
+			if ((monster is Basilisk || monster is Cockatrice) && player.spe <= 1) {
 				doNext(endHpLoss);
 				return true;
 			}
