@@ -13,6 +13,7 @@
 	import classes.Scenes.Dungeons.Factory.SecretarialSuccubus;
 	import classes.Scenes.NPCs.Kiha;
 	import classes.Scenes.Quests.UrtaQuest.MilkySuccubus;
+	import classes.StatusEffects.Combat.BasiliskSlowDebuff;
 	import classes.internals.ChainedDrop;
 	import classes.internals.RandomDrop;
 	import classes.internals.Utils;
@@ -1186,6 +1187,25 @@
 					store = game.combat.doDamage(store);
 					if (plural) outputText(capitalA + short + " bleed profusely from the jagged wounds your weapon left behind. <b>(<font color=\"#800000\">" + store + "</font>)</b>\n\n");
 					else outputText(capitalA + short + " bleeds profusely from the jagged wounds your weapon left behind. <b>(<font color=\"#800000\">" + store + "</font>)</b>\n\n");
+				}
+			}
+			if (hasStatusEffect(StatusEffects.BasiliskCompulsion) && spe > 1) {
+				var oldSpeed:Number = spe;
+				var speedDiff:Number = 0;
+				var bse:BasiliskSlowDebuff = createOrFindStatusEffect(StatusEffects.BasiliskSlow) as BasiliskSlowDebuff;
+				bse.applyEffect(statusEffectv1(StatusEffects.BasiliskCompulsion));
+				speedDiff = Math.round(oldSpeed - spe);
+				if (plural) {
+					outputText(capitalA + short + "  still feel the spell of those grey eyes, making " + pronoun3 + " movements slow and difficult,"
+					          +" the remembered words tempting " + pronoun2 + " to look into your eyes again. "
+					          + Pronoun1 + " need to finish this fight as fast as " + pronoun3 + "  heavy limbs will allow."
+					          +" <b>(<font color=\"#800000\">" + Math.round(speedDiff) + "</font>)</b>\n\n");
+				} else {
+					outputText(capitalA + short + "  still feels the spell of those grey eyes, making " + pronoun3 + " movements slow and difficult,"
+					          +" the remembered words tempting " + pronoun2 + " to look into your eyes again. "
+					          + Pronoun1 + " needs to finish this fight as fast as " + pronoun3 + "  heavy limbs will allow."
+					          +" <b>(<font color=\"#800000\">" + Math.round(speedDiff) + "</font>)</b>\n\n");
+
 				}
 			}
 			if (hasStatusEffect(StatusEffects.OnFire)) {
