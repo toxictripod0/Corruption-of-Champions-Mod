@@ -42,7 +42,7 @@
 			itemSlots = [itemSlot1, itemSlot2, itemSlot3, itemSlot4, itemSlot5, itemSlot6, itemSlot7, itemSlot8, itemSlot9, itemSlot10];
 		}
 		
-		protected final function outputText(text:String):void
+		protected function outputText(text:String):void
 		{
 			game.outputText(text);
 		}
@@ -3369,6 +3369,101 @@
 		override public function set fatigue(value:Number):void {
 			super.fatigue = value;
 			game.mainView.statsView.refreshStats(game);
+		}
+		
+		/**
+		 * Alters player's HP.
+		 * @param	changeNum The amount to damage (negative) or heal (positive).
+		 * @param	display Show the damage or heal taken.
+		 * @return  effective delta
+		 */
+		public function HPChange(changeNum:Number, display:Boolean):Number
+		{
+			var before:Number = HP;
+			
+			if (changeNum === 0) {
+				return 0;
+			}
+			
+			if (changeNum > 0) {
+				if (findPerk(PerkLib.HistoryHealer) >= 0) {
+					changeNum *= 1.2; //Increase by 20%!
+				}
+				
+				if (armor.name === "skimpy nurse's outfit") {
+					changeNum *= 1.1; //Increase by 10%!
+				}
+				
+				if (HP + int(changeNum) > maxHP()) {
+					if (HP >= maxHP()) {
+						if (display) {
+							HPChangeNotify(changeNum);
+						}
+						
+						return HP - before;
+					}
+					
+					if (display) {
+						HPChangeNotify(changeNum);
+					}
+					
+					HP = maxHP();
+				}
+				else
+				{
+					if (display) {
+						HPChangeNotify(changeNum);
+					}
+					
+					HP += int(changeNum);
+					kGAMECLASS.mainView.statsView.showStatUp( 'hp' );
+					// hpUp.visible = true;
+				}
+			}
+			//Negative HP
+			else
+			{
+				if (HP + changeNum <= 0) {
+					if (display) {
+						HPChangeNotify(changeNum);
+					}
+					
+					HP = 0;
+					kGAMECLASS.mainView.statsView.showStatDown( 'hp' );
+				}
+				else {
+					if (display) {
+						HPChangeNotify(changeNum);
+					}
+					
+					HP += changeNum;
+					kGAMECLASS.mainView.statsView.showStatDown( 'hp' );
+				}
+			}
+			
+			dynStats("lust", 0, "scale", false); //Workaround to showing the arrow.
+			kGAMECLASS.statScreenRefresh();
+			return HP - before;
+		}
+
+		public function HPChangeNotify(changeNum:Number):void {
+			if (changeNum === 0) {
+				if (HP >= maxHP()) {
+					outputText("You're as healthy as you can be.\n");
+				}
+			} else if (changeNum > 0) {
+				if (HP >= maxHP()) {
+					outputText("Your HP maxes out at " + maxHP() + ".\n");
+				} else {
+					outputText("You gain <b><font color=\"#008000\">" + int(changeNum) + "</font></b> HP.\n");
+				}
+			} else {
+				if (HP <= 0) {
+					outputText("You take <b><font color=\"#800000\">" + int(changeNum*-1) + "</font></b> damage, dropping your HP to 0.\n");
+				} else {
+					outputText("You take <b><font color=\"#800000\">" + int(changeNum*-1) + "</font></b> damage.\n");
+				}
+			}
 		}
 	}
 }

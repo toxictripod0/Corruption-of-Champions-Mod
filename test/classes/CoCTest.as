@@ -21,18 +21,24 @@ package classes{
 		
 		private var cut:CoCForTest;
 		private var fireButton:FireButtonEvent;
-		private var player:Player;
+		private var player:DummyPlayer;
 		
 		[Before]
 		public function runBeforeEveryTest():void {
 			assertThat(StageLocator.stage, not(nullValue()));
 			
 			cut = new CoCForTest(StageLocator.stage);
+			player = new DummyPlayer();
+			cut.player = player;
 			
-			this.player = cut.player;
 			player.createVagina();
 			player.HP = 1;
 			player.tou = 100;
+			
+			// TODO clean up this fugly hack - exctract test into PlayerTest
+			// don't try this at home kids!
+			cut.calls = player.calls;
+			cut.collectedOutput = player.collectedOutput;
 			
 			fireButton = new FireButtonEvent(kGAMECLASS.mainView, CoC.MAX_BUTTON_INDEX);
 		}
@@ -252,6 +258,34 @@ class CoCForTest extends CoC {
 	 * @param	text to store
 	 */
 	override public function outputText(text:String):void {
+		collectedOutput.push(text);
+	}
+}
+
+import classes.Player;
+
+/**
+ * Yes, i'm a lazy git.
+ */
+class DummyPlayer extends Player {
+	public var calls:Vector.<Number> = new Vector.<Number>();
+	public var collectedOutput:Vector.<String> = new Vector.<String>();
+
+	/**
+	 * Intercept calls to HPChangeNotify so we can sense them in tests.
+	 * 
+	 * @param	changeNum the value of the HP change?
+	 */
+	override public function HPChangeNotify(changeNum:Number):void {
+		calls.push(changeNum);
+		super.HPChangeNotify(changeNum);
+	}
+	
+	/**
+	 * Redirect output to a vector instead of displaying it on the GUI.
+	 * @param	text to store
+	 */
+	override protected function outputText(text:String):void {
 		collectedOutput.push(text);
 	}
 }

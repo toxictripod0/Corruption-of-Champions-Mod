@@ -15,98 +15,15 @@ public function silly():Boolean {
 }
 
 /**
- * Alters player's HP.
- * @param	changeNum The amount to damage (negative) or heal (positive).
- * @param	display Show the damage or heal taken.
- * @return  effective delta
+ * @see Player#HPChange()
  */
 public function HPChange(changeNum:Number, display:Boolean):Number
 {
-	var before:Number = player.HP;
-	
-	if (changeNum === 0) {
-		return 0;
-	}
-	
-	if (changeNum > 0) {
-		if (player.findPerk(PerkLib.HistoryHealer) >= 0) {
-			changeNum *= 1.2; //Increase by 20%!
-		}
-		
-		if (player.armor.name === "skimpy nurse's outfit") {
-			changeNum *= 1.1; //Increase by 10%!
-		}
-		
-		if (player.HP + int(changeNum) > player.maxHP()) {
-			if (player.HP >= player.maxHP()) {
-				if (display) {
-					HPChangeNotify(changeNum);
-				}
-				
-				return player.HP - before;
-			}
-			
-			if (display) {
-				HPChangeNotify(changeNum);
-			}
-			
-			player.HP = player.maxHP();
-		}
-		else
-		{
-			if (display) {
-				HPChangeNotify(changeNum);
-			}
-			
-			player.HP += int(changeNum);
-			mainView.statsView.showStatUp( 'hp' );
-			// hpUp.visible = true;
-		}
-	}
-	//Negative HP
-	else
-	{
-		if (player.HP + changeNum <= 0) {
-			if (display) {
-				HPChangeNotify(changeNum);
-			}
-			
-			player.HP = 0;
-			mainView.statsView.showStatDown( 'hp' );
-		}
-		else {
-			if (display) {
-				HPChangeNotify(changeNum);
-			}
-			
-			player.HP += changeNum;
-			mainView.statsView.showStatDown( 'hp' );
-		}
-	}
-	
-	player.dynStats("lust", 0, "scale", false); //Workaround to showing the arrow.
-	statScreenRefresh();
-	return player.HP - before;
+	return player.HPChange(changeNum, display);
 }
 
 public function HPChangeNotify(changeNum:Number):void {
-	if (changeNum === 0) {
-		if (player.HP >= player.maxHP()) {
-			outputText("You're as healthy as you can be.\n");
-		}
-	} else if (changeNum > 0) {
-		if (player.HP >= player.maxHP()) {
-			outputText("Your HP maxes out at " + player.maxHP() + ".\n");
-		} else {
-			outputText("You gain <b><font color=\"#008000\">" + int(changeNum) + "</font></b> HP.\n");
-		}
-	} else {
-		if (player.HP <= 0) {
-			outputText("You take <b><font color=\"#800000\">" + int(changeNum*-1) + "</font></b> damage, dropping your HP to 0.\n");
-		} else {
-			outputText("You take <b><font color=\"#800000\">" + int(changeNum*-1) + "</font></b> damage.\n");
-		}
-	}
+	player.HPChangeNotify(changeNum);
 }
 		
 public function clone(source:Object):* {
