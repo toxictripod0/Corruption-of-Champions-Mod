@@ -134,7 +134,7 @@ package classes {
 				player.level = 1;
 				player.gems = flags[kFLAGS.NEW_GAME_PLUS_BONUS_STORED_ITEMS];
 			}
-			player.HP = player.maxHP();
+			player.restoreHP();
 			player.hair.length = 5;
 			player.skin.type = Skin.PLAIN;
 			player.underBody.restore();
@@ -899,7 +899,7 @@ package classes {
 			addButton(1, "No", chooseEndowment);
 		}
 
-		private function setEndowment(choice:PerkType):void {
+		protected function setEndowment(choice:PerkType):void {
 			switch(choice) {
 				//Attribute-specific
 				case PerkLib.Strong:
@@ -913,7 +913,7 @@ package classes {
 					player.tone += 5;
 					player.thickness += 5;
 					player.createPerk(PerkLib.Tough, 0.25, 0, 0, 0);
-					player.HP = kGAMECLASS.maxHP();
+					player.restoreHP();
 					break;
 				case PerkLib.Fast:
 					player.spe += 5;
