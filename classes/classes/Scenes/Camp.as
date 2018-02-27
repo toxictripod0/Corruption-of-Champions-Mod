@@ -1341,7 +1341,7 @@ public function rest():void {
 			outputText("\nYou feel the fluid-starved goo rubbing all over your groin as if Valeria wants you to feed her.\n");
 		if (flags[kFLAGS.HUNGER_ENABLED] > 0 && player.hunger < 25) //hungry
 			outputText("\nYou have difficulty resting as you toss and turn with your stomach growling.\n");
-		kGAMECLASS.HPChangeNotify(player.HP - hpBefore);
+		player.HPChangeNotify(player.HP - hpBefore);
 	}
 	else {
 		clearOutput();
