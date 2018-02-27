@@ -5,6 +5,7 @@ package classes.Scenes.Areas.HighMountains {
 	import classes.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Items.ArmorLib;
+	import classes.Scenes.Monsters.StareMonster;
 	import classes.lists.BreastCup;
 
 	public class CockatriceScene extends BaseContent {
@@ -50,7 +51,7 @@ package classes.Scenes.Areas.HighMountains {
 				          +"It jumps from rock to rock with ease, quickly closing in on you with a squawking shout. "
 				          +"You ready your [weapon] as the creature shows no sign of slowing. Looks like you have a fight on your hands!");
 				//(spd loss)
-				Basilisk.speedReduce(player, 5);
+				StareMonster.speedReduce(player, 5);
 			}
 			else { //Standard encounter:
 				if (rand(100) < 40) //40% chance of wings
