@@ -22,10 +22,6 @@ public function HPChange(changeNum:Number, display:Boolean):Number
 	return player.HPChange(changeNum, display);
 }
 
-public function HPChangeNotify(changeNum:Number):void {
-	player.HPChangeNotify(changeNum);
-}
-		
 public function clone(source:Object):* {
 	var copier:ByteArray = new ByteArray();
 	copier.writeObject(source);
