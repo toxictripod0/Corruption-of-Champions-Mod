@@ -14,14 +14,6 @@ public function silly():Boolean {
 	return flags[kFLAGS.SILLY_MODE_ENABLE_FLAG] == 1;
 }
 
-/**
- * @see Player#HPChange()
- */
-public function HPChange(changeNum:Number, display:Boolean):Number
-{
-	return player.HPChange(changeNum, display);
-}
-
 public function clone(source:Object):* {
 	var copier:ByteArray = new ByteArray();
 	copier.writeObject(source);
