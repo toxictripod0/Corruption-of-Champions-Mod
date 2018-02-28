@@ -321,7 +321,7 @@
 
 		protected function HPChange(changeNum:Number,display:Boolean):void
 		{
-			kGAMECLASS.HPChange(changeNum,display);
+			player.HPChange(changeNum,display);
 		}
 		
 		protected function playerMenu():void { 
