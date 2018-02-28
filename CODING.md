@@ -38,7 +38,7 @@ In addition to that use an empty line between function definitions like in the e
 Put the opening curly brace into **the same** line:
 
 ```as3
-if (foobar == "moo") {
+if (foobar === "moo") {
 	expression;
 	expression;
 } else {
@@ -66,12 +66,12 @@ If **both** the `if (expr)` and the `else`-branch contain a single expression yo
 ##### Do this
 ```as3
 
-if (foo == "bar")
+if (foo === "bar")
 	outputText("foobar");
 else
 	outputText("moo");
 
-if (foobar == "moo") {
+if (foobar === "moo") {
 	outputText("blah, blah");
 } else {
 	outputText("blah, blah");
@@ -81,11 +81,11 @@ if (foobar == "moo") {
 
 ##### But dont't do this:
 ```as3
-if (foo == "bar")
+if (foo === "bar")
 	outputText("foobar");
 else outputText("moo");
 
-if (foobar == "moo")
+if (foobar === "moo")
 	outputText("blah, blah");
 else {
 	outputText("blah, blah");
@@ -100,7 +100,7 @@ Try keeping the `else`-part of a conditional as near as possible to the `if`
 
 ##### Avoid this:
 ```as3
-if (foobar == "moo") {
+if (foobar === "moo") {
 	expression;
 	expression;
 	expression;
@@ -113,7 +113,7 @@ if (foobar == "moo") {
 
 ##### Instead use this:
 ```as3
-if (foobar != "moo") {
+if (foobar !== "moo") {
 	expression;
 } else {
 	expression;
@@ -124,7 +124,7 @@ if (foobar != "moo") {
 }
 ```
 
-As you can see there, I've changed the condition to the opposite. From `foobar == "moo"` to `foobar != "moo"` in that case.
+As you can see there, I've changed the condition to the opposite. From `foobar === "moo"` to `foobar !== "moo"` in that case.
 
 ### Indenting and aligning code
 Indent with single tabs (per indentation level) and align with spaces:
@@ -181,7 +181,7 @@ while (i < theArray.length) {
 	// do something
 }
 
-if (condition != "something") {
+if (condition !== "something") {
 	// do something
 } else {
 	// do something
