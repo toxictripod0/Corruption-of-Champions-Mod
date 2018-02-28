@@ -733,7 +733,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			{
 				temp = temp * 1.2;
 			}
-			game.HPChange(temp,false);
+			player.HPChange(temp,false);
 			beginPhase3(true);
 		}
 		

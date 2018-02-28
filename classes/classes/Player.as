@@ -595,7 +595,7 @@
 			// we return "1 damage received" if it is in (0..1) but deduce no HP
 			var returnDamage:int = (damage>0 && damage<1)?1:damage;
 			if (damage>0){
-				//game.HPChange(-damage, display);
+				//player.HPChange(-damage, display);
 				HP -= damage;
 				if (display) game.output.text(game.combat.getDamageText(damage));
 				game.mainView.statsView.showStatDown('hp');

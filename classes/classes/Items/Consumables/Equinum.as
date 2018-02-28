@@ -517,7 +517,7 @@ package classes.Items.Consumables
 			//FAILSAFE CHANGE
 			if (changes === 0) {
 				outputText("\n\nInhuman vitality spreads through your body, invigorating you!\n");
-				game.HPChange(20, true);
+				player.HPChange(20, true);
 				dynStats("lus", 3);
 			}
 			player.refillHunger(15);

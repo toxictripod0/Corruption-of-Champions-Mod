@@ -557,7 +557,7 @@ package classes.Items.Consumables
 				} else {
 					outputText("\n\nDespite how spicy it was, the root was nevertheless nutritious, as you can confirm by feeling how your body feels"
 					          +" now much more invigorated.\n");
-					game.HPChange(250, true);
+					player.HPChange(250, true);
 					dynStats("lus", 3);
 				}
 			}
