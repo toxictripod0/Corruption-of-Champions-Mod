@@ -1004,7 +1004,7 @@ package classes
 			if (perk.ptype == PerkLib.StrongBack2) player.itemSlot5.unlocked = true;
 			if (perk.ptype == PerkLib.StrongBack) player.itemSlot4.unlocked = true;
 			if (perk.ptype == PerkLib.Tank2) {
-				HPChange(player.tou, false);
+				player.HPChange(player.tou, false);
 				statScreenRefresh();
 			}
 			doNext(playerMenu);

@@ -3045,7 +3045,7 @@ private function giveArianLactaid():void {
 	}
 	else { //Lizard milk! Recover some HP and fatigue.
 		player.changeFatigue(-15);
-		HPChange(player.maxHP() * .2, false);
+		player.HPChange(player.maxHP() * .2, false);
 		outputText("\n\nAfter some time, Arian begins panting, sweating as [Arian eir] body temperature goes up.  \"<i>I feel... hot.</i>\"  In an attempt to lower [Arian eir] body temperature, Arian discards [Arian eir] robes and lays down on [Arian eir] bed, fanning herself with [Arian eir] clawed hands.");
 		
 		outputText("\n\nYou approach [Arian em] cautiously, asking if [Arian ey]'s okay.");

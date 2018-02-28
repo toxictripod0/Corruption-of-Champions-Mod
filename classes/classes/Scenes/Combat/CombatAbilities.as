@@ -430,7 +430,7 @@ package classes.Scenes.Combat
 			else {
 				temp = int((player.level + (player.inte / 1.5) + rand(player.inte)) * player.spellMod());
 				outputText("You flush with success as your wounds begin to knit. ");
-				HPChange(temp, true);
+				player.HPChange(temp, true);
 			}
 			
 			outputText("\n\n");
@@ -689,7 +689,7 @@ package classes.Scenes.Combat
 			clearOutput();
 			outputText("You gather energy in your Talisman and unleash the spell contained within.  A green aura washes over you and your wounds begin to close quickly. By the time the aura fully fades, you feel much better. ");
 			var temp:int = ((player.level * 5) + (player.inte / 1.5) + rand(player.inte)) * player.spellMod() * 1.5;
-			HPChange(temp, true);
+			player.HPChange(temp, true);
 			getGame().arianScene.clearTalisman();
 			monster.doAI();
 		}

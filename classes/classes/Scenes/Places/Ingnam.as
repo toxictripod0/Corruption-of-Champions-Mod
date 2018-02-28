@@ -502,7 +502,7 @@ package classes.Scenes.Places
 			outputText("\"<i>I'd like a glass of milk please,</i>\" you say. You hand over the two gems to the innkeeper and he pours you a glass of milk.");
 			outputText("\n\nYou drink the cup of milk. You feel calm and refreshed. ");
 			player.changeFatigue(-15);
-			HPChange(player.maxHP() / 4, false);
+			player.HPChange(player.maxHP() / 4, false);
 			player.refillHunger(10);
 			cheatTime(1/12);
 			doNext(menuTavern);
@@ -518,7 +518,7 @@ package classes.Scenes.Places
 			outputText("\"<i>I'd like a glass of root beer please,</i>\" you say. You hand over the three gems to the innkeeper and he pours you a glass of root beer.");
 			outputText("\n\nYou drink the cup of root beer. Refreshing! ");
 			player.changeFatigue(-15);
-			HPChange(player.maxHP() / 4, false);
+			player.HPChange(player.maxHP() / 4, false);
 			player.refillHunger(10);
 			cheatTime(1/12);
 			doNext(menuTavern);
@@ -550,7 +550,7 @@ package classes.Scenes.Places
 			player.gems -= 5;
 			outputText("You tell the innkeeper that you would like a sandwich and toss five gems at him. \"<i>Certainly, " + player.mf("sir", "madam") + ",</i>\" he says as he quickly grabs a plate and assembles a sandwich. Hey, it's your favorite type!");
 			outputText("\n\nYou eat the sandwich. Delicious!");
-			HPChange(player.maxHP() / 3, false);
+			player.HPChange(player.maxHP() / 3, false);
 			player.refillHunger(25);
 			cheatTime(1/12);
 			doNext(menuTavern);
@@ -566,7 +566,7 @@ package classes.Scenes.Places
 			player.gems -= 3;
 			outputText("You tell the innkeeper that you would like a bowl of soup and toss three gems at him. \"<i>Certainly, " + player.mf("sir", "madam") + ",</i>\" he says as he grabs a bowl and fills it with steaming soup. Hey, it's your favorite type!");
 			outputText("\n\nYou take one spoonful at a time, blowing to make sure the soup isn't too hot. You eventually finish the soup. Delicious!");
-			HPChange(player.maxHP() / 3, false);
+			player.HPChange(player.maxHP() / 3, false);
 			player.refillHunger(20);
 			cheatTime(1/12);
 			doNext(menuTavern);

@@ -743,7 +743,7 @@ package classes.Items.Consumables
 			//If no changes yay
 			if (changes == 0) {
 				outputText("\n\nInhuman vitality spreads through your body, invigorating you!\n");
-				getGame().HPChange(20, true);
+				player.HPChange(20, true);
 				dynStats("lus", 3);
 			}
 			player.refillHunger(15);

@@ -1726,7 +1726,7 @@ package classes.Scenes.Combat
 				if (player.armor == armors.GOOARMR) healingPercent += (getGame().valeria.valeriaFluidsEnabled() ? (flags[kFLAGS.VALERIA_FLUIDS] < 50 ? flags[kFLAGS.VALERIA_FLUIDS] / 25 : 2) : 2);
 				if (player.jewelry.effectId == JewelryLib.MODIFIER_REGENERATION) healingBonus += player.jewelry.effectMagnitude;
 				if (healingPercent > 5) healingPercent = 5;
-				HPChange(Math.round(player.maxHP() * healingPercent / 100) + healingBonus, false);
+				player.HPChange(Math.round(player.maxHP() * healingPercent / 100) + healingBonus, false);
 			}
 			else {
 				//Regeneration
@@ -1740,7 +1740,7 @@ package classes.Scenes.Combat
 				if (player.armorName == "goo armor") healingPercent += (getGame().valeria.valeriaFluidsEnabled() ? (flags[kFLAGS.VALERIA_FLUIDS] < 50 ? flags[kFLAGS.VALERIA_FLUIDS] / 16 : 3) : 3);
 				if (player.findPerk(PerkLib.LustyRegeneration) >= 0) healingPercent += 2;
 				if (healingPercent > 10) healingPercent = 10;
-				HPChange(Math.round(player.maxHP() * healingPercent / 100), false);
+				player.HPChange(Math.round(player.maxHP() * healingPercent / 100), false);
 			}
 		}
 		

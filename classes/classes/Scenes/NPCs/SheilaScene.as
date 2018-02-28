@@ -637,7 +637,7 @@ private function sheilaReallyMadStandGround():void {
 	if (silly()) {
 		monster.HP *= 1.2;
 		player.changeFatigue(-10);
-		HPChange(20,false);
+		player.HPChange(20,false);
 	}
 }
 
@@ -1240,7 +1240,7 @@ private function shielaXPThreeSexyTimePostSexStayII():void {
 	outputText("\n\nYou nod sagely and get up to dress.  Sheila, or Harriet, does the same, shimmying into her panties and shorts quickly and pulling her top on.  Finished, she drags you off to the night's lodgings anxiously, hat in hand and body language more closely resembling a giddy girl's on her first date than a grizzled, solitary hunter's.");
 	//advance time to 6:00, gain 3 hours rest
 	player.changeFatigue(-20);
-	HPChange(player.maxHP()/2,false);
+	player.HPChange(player.maxHP()/2,false);
 	if (getGame().time.hours > 6) getGame().time.days++;
 	getGame().time.hours = 6;
 	statScreenRefresh();
@@ -5120,7 +5120,7 @@ public function rebellingScarredBlade(wieldAttempt:Boolean = false):void {
 		var dmg:int = 20
 		dmg -= player.armorDef;
 		if (dmg < 1) dmg = 1;
-		HPChange(-dmg, false);
+		player.HPChange(-dmg, false);
 		player.setWeapon(WeaponLib.FISTS);
 		flags[kFLAGS.SCARRED_BLADE_STATUS] = 1;
 	}
