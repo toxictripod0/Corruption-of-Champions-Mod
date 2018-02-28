@@ -93,6 +93,8 @@ else {
 }
 ```
 
+**However:** If theres even the slightest possibility, that someone may add more expressions to it its recommended to add the curly braces anyway to avoid mistake like forgetting to add curly braces and to keep future diffs less noisy.
+
 #### Good practice for the `else` in conditionals
 Try keeping the `else`-part of a conditional as near as possible to the `if`
 
@@ -257,12 +259,13 @@ Instead use this:
 
 ### Naming conventions
 
-| **What**                              | **Convention**                                         | **Examples**                        |
-|---------------------------------------|--------------------------------------------------------|-------------------------------------|
-| class                                 | Use UpperCamelCase                                     | `MinotaurScene`, `PlayerAppearance` |
-| function / method                     | Use lowerCamelCase                                     | `setType`, `restoreLegs`            |
-| variables (including class variables) | Use lowerCamelCase                                     | `furColor`, `skinType`              |
-| constants                             | Use capital letters and words separated by underscores | `CAN_FLY_WINGS`, `RED_PANDA`        |
+| **What**                              | **Convention**                                                          | **Examples**                            |
+|---------------------------------------|-------------------------------------------------------------------------|-----------------------------------------|
+| class                                 | Use UpperCamelCase                                                      | `MinotaurScene`, `PlayerAppearance`     |
+| interface                             | Use UpperCamelCase<br>**Note:** No `I` or `Interface` prefix or suffix! | `RandomNumberGenerator`, `Serializable` |
+| function / method                     | Use lowerCamelCase                                                      | `setType`, `restoreLegs`                |
+| variables (including class variables) | Use lowerCamelCase                                                      | `furColor`, `skinType`                  |
+| constants                             | Use capital letters and words separated by underscores                  | `CAN_FLY_WINGS`, `RED_PANDA`            |
 
 ### Arrays and trailing commas
 When adding elements to arrays where every array element is in it own line its common practice and recommended to add a trailing comma (`,`) to the new element, to reduce the noise of future diffs:
