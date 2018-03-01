@@ -233,8 +233,6 @@ public function showUpDown():void { //Moved from StatsView.
 		oldStatName:String,
 		allStats:Array;
 
-//	mainView.statsView.upDownsContainer.visible = true;
-
 	allStats = ["str", "tou", "spe", "inte", "lib", "sens", "cor", "HP", "lust", "fatigue", "hunger"];
 
 	for each(statName in allStats) {
