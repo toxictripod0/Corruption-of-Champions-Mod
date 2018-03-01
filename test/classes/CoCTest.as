@@ -17,7 +17,6 @@ package classes{
 	public class CoCTest {
 		private var cut:CoCForTest;
 		private var fireButton:FireButtonEvent;
-		private var player:Player;
 		
 		[Before]
 		public function runBeforeEveryTest():void {
