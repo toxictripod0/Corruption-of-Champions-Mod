@@ -224,28 +224,6 @@ public function hideUpDown():void {
 	oldStats.oldHunger = 0;
 }
 
-public function showUpDown():void { //Moved from StatsView.
-	function _oldStatNameFor(statName:String):String {
-		return 'old' + statName.charAt(0).toUpperCase() + statName.substr(1);
-	}
-
-	var statName:String;
-	var	oldStatName:String;
-	var allStats:Array;
-
-	allStats = ["str", "tou", "spe", "inte", "lib", "sens", "cor", "HP", "lust", "fatigue", "hunger"];
-
-	for each(statName in allStats) {
-		oldStatName = _oldStatNameFor(statName);
-
-		if (player[statName] > oldStats[oldStatName]) {
-			mainView.statsView.showStatUp(statName);
-		}
-		if (player[statName] < oldStats[oldStatName]) {
-			mainView.statsView.showStatDown(statName);
-		}
-	}
-}
 ////////////	GUI CODE	////////////
 
 
