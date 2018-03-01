@@ -3407,7 +3407,7 @@
 						HPChangeNotify(changeNum);
 					}
 					
-					HP = maxHP();
+					restoreHP();
 				}
 				else
 				{
