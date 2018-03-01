@@ -21,26 +21,6 @@ public function buttonIsVisible(index:int):Boolean {
 	}
 }
 
-public function buttonText(buttonName:String):String {
-	var matches:*;
-	var	buttonIndex:int;
-
-	if (buttonName is String) {
-		if ( /^buttons\[[0-9]\]/.test( buttonName ) ) {
-			matches = /^buttons\[([0-9])\]/.exec( buttonName );
-			buttonIndex = parseInt( matches[ 1 ], 10 );
-		}
-		else if ( /^b[0-9]Text$/.test( buttonName ) ) {
-			matches = /^b([0-9])Text$/.exec( buttonName );
-			buttonIndex = parseInt( matches[ 1 ], 10 );
-
-			buttonIndex = buttonIndex === 0 ? 9 : buttonIndex - 1;
-		}
-	}
-
-	return (getButtonText(buttonIndex) || "NULL");
-}
-
 public function buttonTextIsOneOf(index:int, possibleLabels:Array):Boolean {
 	var label:String;
 	var buttonText:String;
