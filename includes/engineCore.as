@@ -8,18 +8,9 @@ import classes.internals.Profiling;
 import classes.internals.profiling.Begin;
 import classes.internals.profiling.End;
 
+
+////////////	GUI CODE	////////////
 public static const MAX_BUTTON_INDEX:int = 14;
-
-public function silly():Boolean {
-	return flags[kFLAGS.SILLY_MODE_ENABLE_FLAG] == 1;
-}
-
-public function clone(source:Object):* {
-	var copier:ByteArray = new ByteArray();
-	copier.writeObject(source);
-	copier.position = 0;
-	return(copier.readObject());
-}
 
 public function buttonIsVisible(index:int):Boolean {
 	if ( index < 0 || index > MAX_BUTTON_INDEX ) {
@@ -67,132 +58,6 @@ public function getButtonText(index:int):String {
 	}
 	else {
 		return button(index).labelText;
-	}
-}
-
-// Hah, finally a place where a dictionary is actually required!
-import flash.utils.Dictionary;
-private var funcLookups:Dictionary = null;
-
-
-private function buildFuncLookupDict(object:*=null,prefix:String=""):void
-{
-	import flash.utils.*;
-	//trace("Building function <-> function name mapping table for "+((object==null)?"CoC.":prefix));
-	// get all methods contained
-	if (object == null) object = this;
-	var typeDesc:XML = describeType(object);
-	//trace("TypeDesc - ", typeDesc)
-
-	for each (var node:XML in typeDesc..method) 
-	{
-		// return the method name if the thisObject of f (t) 
-		// has a property by that name 
-		// that is not null (null = doesn't exist) and 
-		// is strictly equal to the function we search the name of
-		//trace("this[node.@name] = ", this[node.@name], " node.@name = ", node.@name)
-		if (object[node.@name] != null)
-			this.funcLookups[object[node.@name]] = prefix+node.@name;
-	}
-	for each (node in typeDesc..variable)
-	{
-		if (node.@type.toString().indexOf("classes.Scenes.") == 0 ||
-				node.metadata.@name.contains("Scene")){
-			if (object[node.@name]!=null){
-				buildFuncLookupDict(object[node.@name],node.@name+".");
-			}
-		}
-	}
-}
-
-public function getFunctionName(f:Function):String
-{
-	// trace("Getting function name")
-	// get the object that contains the function (this of f)
-	//var t:Object = flash.sampler.getSavedThis(f); 
-	if (this.funcLookups == null)
-	{
-		//trace("Rebuilding lookup object");
-		this.funcLookups = new Dictionary();
-		this.buildFuncLookupDict();
-	}
-
-
-	if (f in this.funcLookups)
-		return(this.funcLookups[f]);
-	
-	// if we arrive here, we haven't found anything... 
-	// maybe the function is declared in the private namespace?
-	return null;
-}
-
-
-private function logFunctionInfo(func:Function, arg:* = null, arg2:* = null, arg3:* = null):void
-{
-	var logStr:String = "";
-	if (arg is Function)
-	{
-		logStr += "Calling = " + getFunctionName(func) + " Param = " +  getFunctionName(arg);
-	}
-	else
-	{
-		logStr += "Calling = " + getFunctionName(func) + " Param = " +  arg;
-	}
-	//CoC_Settings.appendButtonEvent(logStr);
-	//trace(logStr); 9999
-}
-
-
-// returns a function that takes no arguments, and executes function `func` with argument `arg`
-public function createCallBackFunction(func:Function, arg:*, arg2:* = null, arg3:* = null):Function
-{
-	if (func == null) {
-		CoC_Settings.error("createCallBackFunction(null," + arg + ")");
-	}
-	if ( arg == -9000 || arg == null )
-	{
-/*		if (func == eventParser){
-			CoC_Settings.error("createCallBackFunction(eventParser,"+arg+")");
-		} */
-		return function ():*
-		{ 
-			if (CoC_Settings.haltOnErrors) 
-				logFunctionInfo(func, arg);
-			return func(); 
-		};
-	}
-	else
-	{
-		if (arg2 == -9000 || arg2 == null)
-		{
-			return function ():*
-			{ 
-				if (CoC_Settings.haltOnErrors) 
-					logFunctionInfo(func, arg);
-				return func( arg ); 
-			};
-		}
-		else 
-		{
-			if (arg3 == -9000 || arg3 == null)
-			{
-				return function ():*
-				{ 
-					if (CoC_Settings.haltOnErrors) 
-						logFunctionInfo(func, arg, arg2);
-					return func(arg, arg2); 
-				};
-			}
-			else 
-			{
-				return function ():*
-				{ 
-					if (CoC_Settings.haltOnErrors) 
-						logFunctionInfo(func, arg, arg2, arg3);
-					return func(arg, arg2, arg3); 
-				};
-			}
-		}
 	}
 }
 
@@ -359,6 +224,169 @@ public function hideUpDown():void {
 	oldStats.oldHunger = 0;
 }
 
+public function showUpDown():void { //Moved from StatsView.
+	function _oldStatNameFor(statName:String):String {
+		return 'old' + statName.charAt(0).toUpperCase() + statName.substr(1);
+	}
+
+	var statName:String,
+		oldStatName:String,
+		allStats:Array;
+
+//	mainView.statsView.upDownsContainer.visible = true;
+
+	allStats = ["str", "tou", "spe", "inte", "lib", "sens", "cor", "HP", "lust", "fatigue", "hunger"];
+
+	for each(statName in allStats) {
+		oldStatName = _oldStatNameFor(statName);
+
+		if (player[statName] > oldStats[oldStatName]) {
+			mainView.statsView.showStatUp(statName);
+		}
+		if (player[statName] < oldStats[oldStatName]) {
+			mainView.statsView.showStatDown(statName);
+		}
+	}
+}
+////////////	GUI CODE	////////////
+
+
+public function silly():Boolean {
+	return flags[kFLAGS.SILLY_MODE_ENABLE_FLAG] == 1;
+}
+
+public function clone(source:Object):* {
+	var copier:ByteArray = new ByteArray();
+	copier.writeObject(source);
+	copier.position = 0;
+	return(copier.readObject());
+}
+
+// Hah, finally a place where a dictionary is actually required!
+import flash.utils.Dictionary;
+private var funcLookups:Dictionary = null;
+
+private function buildFuncLookupDict(object:*=null,prefix:String=""):void
+{
+	import flash.utils.*;
+	//trace("Building function <-> function name mapping table for "+((object==null)?"CoC.":prefix));
+	// get all methods contained
+	if (object == null) object = this;
+	var typeDesc:XML = describeType(object);
+	//trace("TypeDesc - ", typeDesc)
+
+	for each (var node:XML in typeDesc..method) 
+	{
+		// return the method name if the thisObject of f (t) 
+		// has a property by that name 
+		// that is not null (null = doesn't exist) and 
+		// is strictly equal to the function we search the name of
+		//trace("this[node.@name] = ", this[node.@name], " node.@name = ", node.@name)
+		if (object[node.@name] != null)
+			this.funcLookups[object[node.@name]] = prefix+node.@name;
+	}
+	for each (node in typeDesc..variable)
+	{
+		if (node.@type.toString().indexOf("classes.Scenes.") == 0 ||
+				node.metadata.@name.contains("Scene")){
+			if (object[node.@name]!=null){
+				buildFuncLookupDict(object[node.@name],node.@name+".");
+			}
+		}
+	}
+}
+
+public function getFunctionName(f:Function):String
+{
+	// trace("Getting function name")
+	// get the object that contains the function (this of f)
+	//var t:Object = flash.sampler.getSavedThis(f); 
+	if (this.funcLookups == null)
+	{
+		//trace("Rebuilding lookup object");
+		this.funcLookups = new Dictionary();
+		this.buildFuncLookupDict();
+	}
+
+
+	if (f in this.funcLookups)
+		return(this.funcLookups[f]);
+	
+	// if we arrive here, we haven't found anything... 
+	// maybe the function is declared in the private namespace?
+	return null;
+}
+
+
+private function logFunctionInfo(func:Function, arg:* = null, arg2:* = null, arg3:* = null):void
+{
+	var logStr:String = "";
+	if (arg is Function)
+	{
+		logStr += "Calling = " + getFunctionName(func) + " Param = " +  getFunctionName(arg);
+	}
+	else
+	{
+		logStr += "Calling = " + getFunctionName(func) + " Param = " +  arg;
+	}
+	//CoC_Settings.appendButtonEvent(logStr);
+	//trace(logStr); 9999
+}
+
+
+// returns a function that takes no arguments, and executes function `func` with argument `arg`
+public function createCallBackFunction(func:Function, arg:*, arg2:* = null, arg3:* = null):Function
+{
+	if (func == null) {
+		CoC_Settings.error("createCallBackFunction(null," + arg + ")");
+	}
+	if ( arg == -9000 || arg == null )
+	{
+/*		if (func == eventParser){
+			CoC_Settings.error("createCallBackFunction(eventParser,"+arg+")");
+		} */
+		return function ():*
+		{ 
+			if (CoC_Settings.haltOnErrors) 
+				logFunctionInfo(func, arg);
+			return func(); 
+		};
+	}
+	else
+	{
+		if (arg2 == -9000 || arg2 == null)
+		{
+			return function ():*
+			{ 
+				if (CoC_Settings.haltOnErrors) 
+					logFunctionInfo(func, arg);
+				return func( arg ); 
+			};
+		}
+		else 
+		{
+			if (arg3 == -9000 || arg3 == null)
+			{
+				return function ():*
+				{ 
+					if (CoC_Settings.haltOnErrors) 
+						logFunctionInfo(func, arg, arg2);
+					return func(arg, arg2); 
+				};
+			}
+			else 
+			{
+				return function ():*
+				{ 
+					if (CoC_Settings.haltOnErrors) 
+						logFunctionInfo(func, arg, arg2, arg3);
+					return func(arg, arg2, arg3); 
+				};
+			}
+		}
+	}
+}
+
 public function openURL(url:String):void
 {
     navigateToURL(new URLRequest(url), "_blank");
@@ -408,32 +436,6 @@ public function testDynStatsEvent():void {
  * */
 public function dynStats(... args):Object {
 	return player.dynStats.apply(player,args);
-}
-
-	
-public function showUpDown():void { //Moved from StatsView.
-	function _oldStatNameFor(statName:String):String {
-		return 'old' + statName.charAt(0).toUpperCase() + statName.substr(1);
-	}
-
-	var statName:String,
-		oldStatName:String,
-		allStats:Array;
-
-//	mainView.statsView.upDownsContainer.visible = true;
-
-	allStats = ["str", "tou", "spe", "inte", "lib", "sens", "cor", "HP", "lust", "fatigue", "hunger"];
-
-	for each(statName in allStats) {
-		oldStatName = _oldStatNameFor(statName);
-
-		if (player[statName] > oldStats[oldStatName]) {
-			mainView.statsView.showStatUp(statName);
-		}
-		if (player[statName] < oldStats[oldStatName]) {
-			mainView.statsView.showStatDown(statName);
-		}
-	}
 }
 
 /**
