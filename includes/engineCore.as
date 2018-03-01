@@ -22,8 +22,8 @@ public function buttonIsVisible(index:int):Boolean {
 }
 
 public function buttonText(buttonName:String):String {
-	var matches:*,
-		buttonIndex:int;
+	var matches:*;
+	var	buttonIndex:int;
 
 	if (buttonName is String) {
 		if ( /^buttons\[[0-9]\]/.test( buttonName ) ) {
@@ -42,8 +42,8 @@ public function buttonText(buttonName:String):String {
 }
 
 public function buttonTextIsOneOf(index:int, possibleLabels:Array):Boolean {
-	var label:String,
-	buttonText:String;
+	var label:String;
+	var buttonText:String;
 
 	buttonText = this.getButtonText(index);
 
@@ -229,9 +229,9 @@ public function showUpDown():void { //Moved from StatsView.
 		return 'old' + statName.charAt(0).toUpperCase() + statName.substr(1);
 	}
 
-	var statName:String,
-		oldStatName:String,
-		allStats:Array;
+	var statName:String;
+	var	oldStatName:String;
+	var allStats:Array;
 
 	allStats = ["str", "tou", "spe", "inte", "lib", "sens", "cor", "HP", "lust", "fatigue", "hunger"];
 
