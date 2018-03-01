@@ -3417,7 +3417,6 @@
 					
 					HP += int(changeNum);
 					kGAMECLASS.mainView.statsView.showStatUp( 'hp' );
-					// hpUp.visible = true;
 				}
 			}
 			//Negative HP
