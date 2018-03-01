@@ -7,6 +7,7 @@ package classes.Scenes.Areas.HighMountains
 	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
+	import classes.Scenes.Monsters.StareMonster;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
 
@@ -46,7 +47,7 @@ package classes.Scenes.Areas.HighMountains
 				}
 				var basilisk:Basilisk = new Basilisk();
 				//(spd loss)
-				Basilisk.speedReduce(player,5);
+				StareMonster.speedReduce(player, 5);
 				flags[kFLAGS.TIMES_ENCOUNTERED_BASILISK]++;
 				startCombat(basilisk);
 			}
