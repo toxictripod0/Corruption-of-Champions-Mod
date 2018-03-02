@@ -12,10 +12,6 @@ import classes.internals.profiling.End;
 ////////////	GUI CODE	////////////
 public static const MAX_BUTTON_INDEX:int = 14;
 
-public function button(pos:int):CoCButton {
-	return mainView.bottomButtons[pos];
-}
-
 /**
  * Removes a button.
  * @param	arg The position to remove a button. (First row is 0-4, second row is 5-9, third row is 10-14.)

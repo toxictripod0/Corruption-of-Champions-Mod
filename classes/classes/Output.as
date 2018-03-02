@@ -249,7 +249,7 @@ package classes
 				return undefined;
 			}
 			else {
-				return kGAMECLASS.button(index).visible;
+				return kGAMECLASS.output.button(index).visible;
 			}
 		}
 		
@@ -269,7 +269,7 @@ package classes
 				return '';
 			}
 			else {
-				return kGAMECLASS.button(index).labelText;
+				return kGAMECLASS.output.button(index).labelText;
 			}
 		}
 		
@@ -285,7 +285,7 @@ package classes
 		 * @param	toolTipHeader The text that will appear on the tooltip header. If not specified, it defaults to button text.
 		 */
 		public function addButton(pos:int, text:String = "", func1:Function = null, arg1:* = -9000, arg2:* = -9000, arg3:* = -9000, toolTipText:String = "", toolTipHeader:String = ""):CoCButton {
-			var btn:CoCButton = kGAMECLASS.button(pos);
+			var btn:CoCButton = kGAMECLASS.output.button(pos);
 			if (func1==null) {
 				return btn.hide();
 			}
@@ -305,7 +305,7 @@ package classes
 		}
 		
 		public function addButtonDisabled(pos:int, text:String = "", toolTipText:String = "", toolTipHeader:String = ""):CoCButton {
-			var btn:CoCButton = kGAMECLASS.button(pos);
+			var btn:CoCButton = kGAMECLASS.output.button(pos);
 			//Removes sex-related button in SFW mode.
 			if (kGAMECLASS.flags[kFLAGS.SFW_MODE] > 0) {
 				if (text.indexOf("Sex") != -1 || text.indexOf("Threesome") != -1 ||  text.indexOf("Foursome") != -1 || text == "Watersports" || text == "Make Love" || text == "Use Penis" || text == "Use Vagina" || text.indexOf("Fuck") != -1 || text.indexOf("Ride") != -1 || (text.indexOf("Mount") != -1 && text.indexOf("Mountain") == -1) || text.indexOf("Vagina") != -1) {
@@ -316,6 +316,10 @@ package classes
 
 			btn.showDisabled(text,toolTipText,toolTipHeader);
 			return btn;
+		}
+		
+		public function button(pos:int):CoCButton {
+			return kGAMECLASS.mainView.bottomButtons[pos];
 		}
 	}
 }

@@ -494,7 +494,7 @@ package classes
 			this.mainView.onStatsClick = playerInfo.displayStats;
 			this.mainView.onBottomButtonClick = function(i:int):void
 			{
-				output.record("<br>[" + button(i).labelText + "]<br>");
+				output.record("<br>[" + output.button(i).labelText + "]<br>");
 			};
 			
 			// Set up all the messy global stuff:

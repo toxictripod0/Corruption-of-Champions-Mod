@@ -280,7 +280,7 @@
 		}
 		protected function button(pos:int):CoCButton
 		{
-			return kGAMECLASS.button(pos);
+			return kGAMECLASS.output.button(pos);
 		}
 		
 		protected function removeButton(arg:*):void
