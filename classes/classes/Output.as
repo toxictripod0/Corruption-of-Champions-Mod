@@ -8,7 +8,7 @@ package classes
 	 * @since  08.08.2016
 	 * @author Stadler76
 	 */
-	public class Output extends BaseContent implements GuiOutput
+	public class Output implements GuiOutput
 	{
 		public static const MAX_BUTTON_INDEX:int = 14;
 		
@@ -54,7 +54,7 @@ package classes
 		{
 			// This is cleaup in case someone hits the Data or new-game button when the event-test window is shown. 
 			// It's needed since those buttons are available even when in the event-tester
-			mainView.hideTestInputPanel();
+			kGAMECLASS.mainView.hideTestInputPanel();
 
 			text = kGAMECLASS.parser.recursiveParser(text);
 			record(text);
@@ -75,8 +75,8 @@ package classes
 		 */
 		public function flush():void
 		{
-			mainViewManager.setText(_currentText);
-			credits.show();
+			kGAMECLASS.mainViewManager.setText(_currentText);
+			kGAMECLASS.credits.show();
 		}
 
 		/**
@@ -111,16 +111,16 @@ package classes
 		{
 			if (hideMenuButtons) {
 				forceUpdate();
-				if (kGAMECLASS.gameState != 3) mainView.hideMenuButton(MainView.MENU_DATA);
-				mainView.hideMenuButton(MainView.MENU_APPEARANCE);
-				mainView.hideMenuButton(MainView.MENU_LEVEL);
-				mainView.hideMenuButton(MainView.MENU_PERKS);
-				mainView.hideMenuButton(MainView.MENU_STATS);
+				if (kGAMECLASS.gameState != 3) kGAMECLASS.mainView.hideMenuButton(MainView.MENU_DATA);
+				kGAMECLASS.mainView.hideMenuButton(MainView.MENU_APPEARANCE);
+				kGAMECLASS.mainView.hideMenuButton(MainView.MENU_LEVEL);
+				kGAMECLASS.mainView.hideMenuButton(MainView.MENU_PERKS);
+				kGAMECLASS.mainView.hideMenuButton(MainView.MENU_STATS);
 			}
 			nextEntry();
 			_currentText = "";
-			mainView.clearOutputText();
-			credits.clear();
+			kGAMECLASS.mainView.clearOutputText();
+			kGAMECLASS.credits.clear();
 			return this;
 		}
 
@@ -205,7 +205,7 @@ package classes
 			clearCurrentEntry();
 			// On the next animation frame
 			setTimeout(function():void {
-				mainView.scrollBar.value = mainView.scrollBar.maximum;
+				kGAMECLASS.mainView.scrollBar.value = kGAMECLASS.mainView.scrollBar.maximum;
 			},0);
 			return this;
 		}
@@ -234,11 +234,11 @@ package classes
 			for each(statName in allStats) {
 				oldStatName = _oldStatNameFor(statName);
 
-				if (player[statName] > oldStats[oldStatName]) {
-					mainView.statsView.showStatUp(statName);
+				if (kGAMECLASS.player[statName] > oldStats[oldStatName]) {
+					kGAMECLASS.mainView.statsView.showStatUp(statName);
 				}
-				if (player[statName] < oldStats[oldStatName]) {
-					mainView.statsView.showStatDown(statName);
+				if (kGAMECLASS.player[statName] < oldStats[oldStatName]) {
+					kGAMECLASS.mainView.statsView.showStatDown(statName);
 				}
 			}
 		}
@@ -248,7 +248,7 @@ package classes
 				return undefined;
 			}
 			else {
-				return button(index).visible;
+				return kGAMECLASS.button(index).visible;
 			}
 		}
 		
@@ -268,7 +268,7 @@ package classes
 				return '';
 			}
 			else {
-				return button(index).labelText;
+				return kGAMECLASS.button(index).labelText;
 			}
 		}
 	}
