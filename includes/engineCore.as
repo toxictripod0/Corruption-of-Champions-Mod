@@ -12,20 +12,6 @@ import classes.internals.profiling.End;
 ////////////	GUI CODE	////////////
 public static const MAX_BUTTON_INDEX:int = 14;
 
-public function addButtonDisabled(pos:int, text:String = "", toolTipText:String = "", toolTipHeader:String = ""):CoCButton {
-	var btn:CoCButton = button(pos);
-	//Removes sex-related button in SFW mode.
-	if (flags[kFLAGS.SFW_MODE] > 0) {
-		if (text.indexOf("Sex") != -1 || text.indexOf("Threesome") != -1 ||  text.indexOf("Foursome") != -1 || text == "Watersports" || text == "Make Love" || text == "Use Penis" || text == "Use Vagina" || text.indexOf("Fuck") != -1 || text.indexOf("Ride") != -1 || (text.indexOf("Mount") != -1 && text.indexOf("Mountain") == -1) || text.indexOf("Vagina") != -1) {
-			//trace("Button removed due to SFW mode.");
-			return btn.hide();
-		}
-	}
-
-	btn.showDisabled(text,toolTipText,toolTipHeader);
-	return btn;
-}
-
 public function button(pos:int):CoCButton {
 	return mainView.bottomButtons[pos];
 }

@@ -132,8 +132,8 @@ package classes.Scenes.Areas.Lake
 			
 			game.menu();
 			
-			game.addButtonDisabled(0, "Sex", "This scene requires you to have genitals and sufficient arousal.");
-			game.addButtonDisabled(1, "B. Feed", "This scene requires you to have enough milk.");
+			kGAMECLASS.output.addButtonDisabled(0, "Sex", "This scene requires you to have genitals and sufficient arousal.");
+			kGAMECLASS.output.addButtonDisabled(1, "B. Feed", "This scene requires you to have enough milk.");
 			
 			if (player.lust >= 33 && !player.isGenderless()) {
 				outputText("  You realize she'd make a perfect receptacle for your lusts.  Do you have your way with her?");

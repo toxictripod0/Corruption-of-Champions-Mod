@@ -75,7 +75,7 @@ package classes.Scenes.Areas.Mountain
 			
 			game.menu();
 			
-			game.addButtonDisabled(0, "Lick", "Make him use his tongues. This scene requires you to have genitals and sufficient arousal. This scene requires lust victory.");
+			kGAMECLASS.output.addButtonDisabled(0, "Lick", "Make him use his tongues. This scene requires you to have genitals and sufficient arousal. This scene requires lust victory.");
 			
 			if (player.lust >= 33 && !player.isGenderless()) {
 				if (!hpVictory) {

@@ -78,8 +78,8 @@ package classes.Scenes.Areas.Mountain
 			}
 			game.menu();
 			
-			game.addButtonDisabled(0, "Fuck it", "Ride his twin cocks. This scene requires you to have vagina and sufficient arousal. This scene can not accommodate naga body.");
-			game.addButtonDisabled(1, "Lick", "Make him use his tongues. This scene requires you to have genitals and sufficient arousal. This scene requires lust victory.");
+			kGAMECLASS.output.addButtonDisabled(0, "Fuck it", "Ride his twin cocks. This scene requires you to have vagina and sufficient arousal. This scene can not accommodate naga body.");
+			kGAMECLASS.output.addButtonDisabled(1, "Lick", "Make him use his tongues. This scene requires you to have genitals and sufficient arousal. This scene requires lust victory.");
 			
 			if (player.lust >= 33 && !player.isGenderless()) {
 				if (player.hasVagina() && !player.isNaga()) {

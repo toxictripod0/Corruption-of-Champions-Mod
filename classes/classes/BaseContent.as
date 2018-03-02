@@ -272,11 +272,11 @@
 		
 		protected function addButtonDisabled(pos:int, text:String = "", toolTipText:String = "", toolTipHeader:String = ""):CoCButton
 		{
-			return kGAMECLASS.addButtonDisabled(pos, text, toolTipText, toolTipHeader);
+			return kGAMECLASS.output.addButtonDisabled(pos, text, toolTipText, toolTipHeader);
 		}
 		protected function addDisabledButton(pos:int, text:String = "", toolTipText:String = "", toolTipHeader:String = ""):CoCButton
 		{
-			return kGAMECLASS.addButtonDisabled(pos, text, toolTipText, toolTipHeader);
+			return kGAMECLASS.output.addButtonDisabled(pos, text, toolTipText, toolTipHeader);
 		}
 		protected function button(pos:int):CoCButton
 		{

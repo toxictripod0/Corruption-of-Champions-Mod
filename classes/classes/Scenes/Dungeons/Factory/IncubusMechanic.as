@@ -37,7 +37,7 @@ package classes.Scenes.Dungeons.Factory
 			if (!player.isGenderless()) {
 				kGAMECLASS.output.addButton(0, "Rape", game.lethicesKeep.incubusMechanic.doRapeIncubus).hint(player.hasCock() ? "Fuck his butt." : "Ride him vaginally.");
 			} else {
-				game.addButtonDisabled(0, "Rape", "This scene requires you to have genitals.");
+				kGAMECLASS.output.addButtonDisabled(0, "Rape", "This scene requires you to have genitals.");
 			}
 			kGAMECLASS.output.addButton(1, "Service Him", game.lethicesKeep.incubusMechanic.doOralIncubus).hint("Service the incubus orally.");
 			kGAMECLASS.output.addButton(2, "AnalRide", game.lethicesKeep.incubusMechanic.doRideIncubusAnally).hint("Ride him anally.");
