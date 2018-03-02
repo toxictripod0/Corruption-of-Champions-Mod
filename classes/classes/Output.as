@@ -260,5 +260,16 @@ package classes
 
 			return (possibleLabels.indexOf(buttonText) != -1);
 		}
+		
+		public function getButtonText(index:int):String {
+			var matches:*;
+
+			if (index < 0 || index > MAX_BUTTON_INDEX) {
+				return '';
+			}
+			else {
+				return button(index).labelText;
+			}
+		}
 	}
 }

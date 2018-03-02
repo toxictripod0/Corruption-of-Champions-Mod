@@ -505,10 +505,6 @@
 			kGAMECLASS.mainView.statsView.showStatUp(arg);
 		}
 		
-		protected function getButtonText(index:int):String {
-			return kGAMECLASS.getButtonText(index);
-		}
-		
 				
 		/**
 		 * PRIMO BULLSHIT FUNCTION ACCESS

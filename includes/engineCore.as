@@ -12,17 +12,6 @@ import classes.internals.profiling.End;
 ////////////	GUI CODE	////////////
 public static const MAX_BUTTON_INDEX:int = 14;
 
-public function getButtonText(index:int):String {
-	var matches:*;
-
-	if (index < 0 || index > MAX_BUTTON_INDEX) {
-		return '';
-	}
-	else {
-		return button(index).labelText;
-	}
-}
-
 /**
  * Adds a button.
  * @param	pos Determines the position. Starts at 0. (First row is 0-4, second row is 5-9, third row is 10-14.)
