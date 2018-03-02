@@ -484,7 +484,7 @@ public function getRapedByMinotaur(autoRape:Boolean = false):void {
 		if (player.isTaur()) outputText("against your buttocks");
 		else outputText("into the small of your back");
 		outputText(" as it grows larger and harder, smearing its pre-cum into your skin and making you shiver.  ");
-		if (/*rand(20) + player.str / 3 > 18*/ true || flags[kFLAGS.SFW_MODE]) { //high str escape
+		if (rand(20) + player.str / 3 > 18 || flags[kFLAGS.SFW_MODE]) { //high str escape
 			outputText("\n\nYou twist around using the additional lubrication and squirm free!  Rolling away, you come up in a crouch, ready to fight!");
 			startCombat(new Minotaur());
 			return;
