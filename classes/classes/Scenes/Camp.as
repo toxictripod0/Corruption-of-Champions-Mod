@@ -70,7 +70,6 @@ private function doCamp():void { //only called by playerMenu
 		flags[kFLAGS.HISTORY_PERK_SELECTED] = 2;
 		hideMenus();
 		getGame().charCreation.chooseHistory();
-		//fixHistory();
 		return;
 	}
 	fixFlags();
@@ -278,7 +277,6 @@ private function doCamp():void { //only called by playerMenu
 			clearOutput();
 			outputText("More time passes...\n");
 			goNext(timeQ, false);
-			//doNext(superLoop);
 			return;
 		}
 		else {
@@ -1092,8 +1090,6 @@ private function campActions():void {
 	if (player.hasKeyItem("Carpenter's Toolbox") >= 0 && flags[kFLAGS.CAMP_WALL_PROGRESS] >= 100 && flags[kFLAGS.CAMP_WALL_GATE] <= 0) addButton(5, "Build Gate", buildCampGatePrompt).hint("Build a gate to complete your camp defense.");
 	if (flags[kFLAGS.CAMP_WALL_PROGRESS] >= 100 && player.hasItem(useables.IMPSKLL, 1)) addButton(6, "AddImpSkull", promptHangImpSkull).hint("Add an imp skull to decorate the wall and to serve as deterrent for imps.", "Add Imp Skull");
 	if (flags[kFLAGS.LETHICE_DEFEATED] > 0) addButton(7, "Ascension", promptAscend).hint("Perform an ascension? This will restart your adventures with your levels, items, and gems carried over. The game will also get harder.");
-	//addButton(8, "Build Misc", null).hint("Build other structures than walls or cabin for your camp");
-	//addButton(9, "Craft", kGAMECLASS.crafting.accessCraftingMenu).hint("Craft some items.");
 	addButton(14, "Back", playerMenu);
 }
 
@@ -1149,16 +1145,9 @@ private function swimInStream():void {
 		doYesNo(swimInStreamPrank1, swimInStreamFinish); //Pranks!
 		return;
 	}
-/*	if (prankChooser == 1 && (camp.izmaFollower() || (camp.followerHel() && flags[kFLAGS.HEL_CAN_SWIM]) || camp.marbleFollower())) {
-		outputText("\n\nYou could play some pranks by grabbing the leg of one of them and surprise them. Do you?")
-		doYesNo(swimInStreamPrank2, swimInStreamFinish);
+	else {
+		doNext(swimInStreamFinish);
 	}
-	if (prankChooser == 2 && player.lust >= 33) {
-		outputText("\n\nYou're feeling horny right now. Do you masturbate in the stream?")
-		doYesNo(swimInStreamFap, swimInStreamFinish);
-		return;
-	} */
-	else doNext(swimInStreamFinish);
 }
 
 private function swimInStreamPrank1():void {
@@ -1185,10 +1174,7 @@ private function swimInStreamPrank1():void {
 		outputText("\n\nMarble is oblivious to the warm spot and when she swims over, she yells \"<i>Hey, sweetie! Did you just urinate in the stream?</i>\" You sheepishly smile and admit that yes, you did it. She says, \"<i>You're naughty, you know, sweetie!</i>\"");
 		pranked = true;
 	}
-/*	if (rand(prankRoll) == 0 && camp.amilyFollower() && flags[kFLAGS.AMILY_OWNS_BIKINI] > 0 && pranked == false && amilyJoinsStream == true) {
-		outputText("");
-		pranked = true;
-	} */
+
 	if (pranked == false) outputText("  No one managed to swim past where you left the warm spot before it dissipated. You feel a bit disappointed and just go back to swimming.");
 	else outputText("  You feel accomplished from the prank and resume swimming. ");
 	awardAchievement("Urine Trouble", kACHIEVEMENTS.GENERAL_URINE_TROUBLE);
@@ -1350,7 +1336,6 @@ public function rest():void {
 		else outputText("You continue to rest for another hour.\n");
 	}
 	goNext(timeQ, true);
-	//doNext(superLoop);
 }
 //----------------- WAIT -----------------
 public function doWait():void {
@@ -1384,7 +1369,6 @@ public function doWait():void {
 		else outputText("You continue to wait for another hour.\n");
 	}
 	goNext(timeQ, true);
-	//doNext(superLoop);
 }
 //----------------- SLEEP -----------------
 public function doSleep(clrScreen:Boolean = true):void {
@@ -1407,7 +1391,6 @@ public function doSleep(clrScreen:Boolean = true):void {
 			outputText(". ");
 			sleepRecovery(true);
 			goNext(timeQ, true);
-			//doNext(superLoop);
 			return;
 		}
 		/******************************************************************/
@@ -1516,7 +1499,6 @@ public function doSleep(clrScreen:Boolean = true):void {
 		else outputText("You lie down to resume sleeping for the remaining hour.\n");
 	}
 	goNext(timeQ, true);
-	//doNext(superLoop);
 }
 //For shit that breaks normal sleep processing
 public function sleepWrapper():void {
@@ -1528,18 +1510,8 @@ public function sleepWrapper():void {
 	else outputText("You lie down to resume sleeping for the remaining hour.\n");
 	sleepRecovery(true);
 	goNext(timeQ, true);
-	//doNext(superLoop);
 }
-/*public function superLoop():void {
-	clearOutput();
-	if (player.cor >= 95) outputText ("You can constantly enjoy pleasant smell of the sulfur in the air. It's so sweet!");
-	else if (player.cor >= 75) outputText ("You didn't happen to smell any sulfur, by chance?");
-	else if (player.cor >= 50) outputText ("You can smell the impure air. You don't like it...");
-	else if (player.cor >= 25) outputText ("There is some muggy in the air and you're worried about it.");
-	else outputText ("You can constantly enjoy pleasant freshness in the air. And it's wonderful!");
-	goNext(timeQ, false);
-	return
-}*/
+
 public function calculateHoursUntilHour(targetHour:int):int {
 	var currentHour:int = getGame().time.hours;
 	var amount:int = 0;
@@ -1724,10 +1696,7 @@ public function places():Boolean {
 	clearOutput();
 	outputText(images.showImage("camp-pathfinder"));
 	outputText("Which place would you like to visit?");
-	/*if (flags[kFLAGS.PLACES_PAGE] != 0) {
-		placesPage2();
-		return;
-	}*/
+
 	menu(); //build menu
 	if (flags[kFLAGS.BAZAAR_ENTERED] > 0) addButton(0, "Bazaar", kGAMECLASS.bazaar.enterTheBazaar).hint("Visit the Bizarre Bazaar where the demons and corrupted beings hang out.");
 	if (player.hasStatusEffect(StatusEffects.BoatDiscovery)) addButton(1, "Boat", kGAMECLASS.boat.boatExplore).hint("Get on the boat and explore the lake. \n\nRecommended level: 4");
@@ -1744,21 +1713,9 @@ public function places():Boolean {
 	if (flags[kFLAGS.AMILY_VILLAGE_ACCESSIBLE] > 0) addButton(11, "Town Ruins", kGAMECLASS.townRuins.exploreVillageRuin).hint("Visit the village ruins.");
 	if (flags[kFLAGS.PRISON_CAPTURE_COUNTER] > 0) addButton(12, "Prison", kGAMECLASS.prison.prisonIntro, false, null, null, "Return to the prison and continue your life as Elly's slave.");
 	if (debug) addButton(13, "Ingnam", kGAMECLASS.ingnam.returnToIngnam).hint("Return to Ingnam for debugging purposes. Night-time event weirdness might occur. You have been warned!");
-	//addButton(4, "Next", placesPage2);
 	addButton(14, "Back", playerMenu);
 	return true;
 }
-
-/*private function placesPage2():void {
-	menu();
-	flags[kFLAGS.PLACES_PAGE] = 1;
-	addButton(9, "Previous", placesToPage1);
-	addButton(14, "Back", playerMenu);
-}
-private function placesToPage1():void {
-	flags[kFLAGS.PLACES_PAGE] = 0;
-	places();
-}*/
 
 private function dungeons():void {
 	menu();
@@ -1773,7 +1730,6 @@ private function dungeons():void {
 	if (kGAMECLASS.dungeons.checkPhoenixTowerClear()) addButton(6, "Phoenix Tower", getGame().dungeons.heltower.returnToHeliaDungeon).hint("Re-visit the tower you went there as part of Helia's quest." + (kGAMECLASS.dungeons.checkPhoenixTowerClear() ? "\n\nYou've helped Helia in the quest and resolved the problems. \n\nCLEARED!" : ""));
 		//Fetish Church?
 		//Hellhound Dungeon?
-	//if (debug) addButton(9, "Dragon City", getGame().dungeons.dragoncity.enterDungeonDev).hint("This button is placed temporarily for testing purposes.");
 	//Non-hostile dungeons
 	if (flags[kFLAGS.ANZU_PALACE_UNLOCKED] > 0) addButton(10, "Anzu's Palace", getGame().dungeons.palace.enterDungeon).hint("Visit the palace in the Glacial Rift where Anzu the avian deity resides.");
 	addButton(14, "Back", places);
@@ -2399,7 +2355,6 @@ private function updateSaveFlags():void {
 		//trace(flags[startOldIds + current])
 		if (flags[startOldIds + current] != 0) {
 			flags[startNewIds + current] = flags[startOldIds + current];
-			//trace(flags[startNewIds + current])
 			flags[startOldIds + current] = 0;
 		}
 		current++;
@@ -2415,7 +2370,6 @@ private function updateSaveFlags():void {
 		flags[kFLAGS.CAMP_CABIN_WOOD_RESOURCES] += 50;
 		if (player.hasKeyItem("Carpenter's Toolbox") >= 0) player.addKeyValue("Carpenter's Toolbox", 1, 150);
 	}
-	//flags[kFLAGS.SHIFT_KEY_DOWN] = 0; //moved to unFuckSave()
 	outputText("Don't worry. Just save the game and you're good to go. I, Kitteh6660, will work out the bugs from time to time, while also bringing in cool new stuff!")
 	doNext(doCamp);
 }
@@ -2455,7 +2409,6 @@ private function updateAchievements():void {
 	if (player.level >= 30) awardAchievement("Master", kACHIEVEMENTS.LEVEL_MASTER);
 	if (player.level >= 45) awardAchievement("Grandmaster", kACHIEVEMENTS.LEVEL_GRANDMASTER);
 	if (player.level >= 60) awardAchievement("Illustrious", kACHIEVEMENTS.LEVEL_ILLUSTRIOUS);
-	//if (player.level >= 75) awardAchievement("Overlord", kACHIEVEMENTS.LEVEL_OVERLORD);
 	if (player.level >= 100) awardAchievement("Are you a god?", kACHIEVEMENTS.LEVEL_ARE_YOU_A_GOD);
 	//Population
 	if (getCampPopulation() >= 2) awardAchievement("My First Companion", kACHIEVEMENTS.POPULATION_FIRST);
@@ -2598,12 +2551,5 @@ private function updateAchievements():void {
 	if (NPCsDedicked >= 3) awardAchievement("Dick Banisher", kACHIEVEMENTS.GENERAL_DICK_BANISHER);
 	if (NPCsDedicked >= 7) awardAchievement("You Bastard!", kACHIEVEMENTS.GENERAL_YOU_BASTARD); //take that, dedickers!
 }
-
-/*private function fixHistory():void {
-	outputText("<b>New history perks are available during creation.  Since this character was created before they were available, you may choose one now!</b>");
-	flags[kFLAGS.HISTORY_PERK_SELECTED] = 2;
-	menu();
-	doNext(10036);
-}*/
 }
 }
