@@ -10,6 +10,8 @@ package classes
 	 */
 	public class Output extends BaseContent implements GuiOutput
 	{
+		public static const MAX_BUTTON_INDEX:int = 14;
+		
 		import flash.text.TextFormat;
 		import classes.GlobalFlags.kGAMECLASS;
 		import classes.GlobalFlags.kFLAGS;
@@ -238,6 +240,15 @@ package classes
 				if (player[statName] < oldStats[oldStatName]) {
 					mainView.statsView.showStatDown(statName);
 				}
+			}
+		}
+		
+		public function buttonIsVisible(index:int):Boolean {
+			if ( index < 0 || index > MAX_BUTTON_INDEX ) {
+				return undefined;
+			}
+			else {
+				return button(index).visible;
 			}
 		}
 	}

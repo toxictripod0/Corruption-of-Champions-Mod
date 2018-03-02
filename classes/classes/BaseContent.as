@@ -513,9 +513,6 @@
 			return kGAMECLASS.getButtonText(index);
 		}
 		
-		protected function buttonIsVisible(index:int):Boolean {
-			return kGAMECLASS.buttonIsVisible(index);
-		}
 				
 		/**
 		 * PRIMO BULLSHIT FUNCTION ACCESS

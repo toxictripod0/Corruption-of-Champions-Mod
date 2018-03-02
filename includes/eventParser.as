@@ -515,7 +515,7 @@ public function cheatTime(timeAmt:Number, needNext:Boolean = false):void {
 	if (time.minutes > 59) {
 		timeQ++;
 		time.minutes -= 60;
-		if (!buttonIsVisible(0)) goNext(timeQ, needNext);
+		if (!kGAMECLASS.output.buttonIsVisible(0)) goNext(timeQ, needNext);
 	}
 	timeAmt = Math.floor(timeAmt);
 	//Advance hours

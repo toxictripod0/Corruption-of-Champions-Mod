@@ -12,15 +12,6 @@ import classes.internals.profiling.End;
 ////////////	GUI CODE	////////////
 public static const MAX_BUTTON_INDEX:int = 14;
 
-public function buttonIsVisible(index:int):Boolean {
-	if ( index < 0 || index > MAX_BUTTON_INDEX ) {
-		return undefined;
-	}
-	else {
-		return button(index).visible;
-	}
-}
-
 public function buttonTextIsOneOf(index:int, possibleLabels:Array):Boolean {
 	var label:String;
 	var buttonText:String;
