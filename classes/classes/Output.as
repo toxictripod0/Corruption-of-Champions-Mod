@@ -251,5 +251,14 @@ package classes
 				return button(index).visible;
 			}
 		}
+		
+		public function buttonTextIsOneOf(index:int, possibleLabels:Array):Boolean {
+			var label:String;
+			var buttonText:String;
+
+			buttonText = this.getButtonText(index);
+
+			return (possibleLabels.indexOf(buttonText) != -1);
+		}
 	}
 }

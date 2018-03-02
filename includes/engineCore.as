@@ -12,15 +12,6 @@ import classes.internals.profiling.End;
 ////////////	GUI CODE	////////////
 public static const MAX_BUTTON_INDEX:int = 14;
 
-public function buttonTextIsOneOf(index:int, possibleLabels:Array):Boolean {
-	var label:String;
-	var buttonText:String;
-
-	buttonText = this.getButtonText(index);
-
-	return (possibleLabels.indexOf(buttonText) != -1);
-}
-
 public function getButtonText(index:int):String {
 	var matches:*;
 

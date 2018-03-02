@@ -115,7 +115,7 @@ inputManager.AddBindableControl(
 			return;
 		}
 		// Button 14
-		if (kGAMECLASS.output.buttonIsVisible(14) && kGAMECLASS.buttonTextIsOneOf(14, [ "Nevermind", "Abandon", "Next", "Return", "Back", "Leave", "Resume" ]))
+		if (kGAMECLASS.output.buttonIsVisible(14) && kGAMECLASS.output.buttonTextIsOneOf(14, [ "Nevermind", "Abandon", "Next", "Return", "Back", "Leave", "Resume" ]))
 		{
 			//trace( "keyboard(): processing space bar for button 9",
 			//	mainView.buttonIsVisible( 9 ) ? "(visible)" : "(hidden)",
