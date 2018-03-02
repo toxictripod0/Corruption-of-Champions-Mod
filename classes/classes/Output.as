@@ -2,7 +2,8 @@ package classes
 {
 	import classes.internals.GuiOutput;
 	import flash.utils.setTimeout;
-
+	import coc.view.CoCButton;
+	
 	/**
 	 * Class to replace the old and somewhat outdated output-system, which mostly uses the include-file includes/engineCore.as
 	 * @since  08.08.2016
@@ -270,6 +271,37 @@ package classes
 			else {
 				return kGAMECLASS.button(index).labelText;
 			}
+		}
+		
+		/**
+		 * Adds a button.
+		 * @param	pos Determines the position. Starts at 0. (First row is 0-4, second row is 5-9, third row is 10-14.)
+		 * @param	text Determines the text that will appear on button.
+		 * @param	func1 Determines what function to trigger.
+		 * @param	arg1 Pass argument #1 to func1 parameter.
+		 * @param	arg2 Pass argument #1 to func1 parameter.
+		 * @param	arg3 Pass argument #1 to func1 parameter.
+		 * @param	toolTipText The text that will appear on tooltip when the mouse goes over the button.
+		 * @param	toolTipHeader The text that will appear on the tooltip header. If not specified, it defaults to button text.
+		 */
+		public function addButton(pos:int, text:String = "", func1:Function = null, arg1:* = -9000, arg2:* = -9000, arg3:* = -9000, toolTipText:String = "", toolTipHeader:String = ""):CoCButton {
+			var btn:CoCButton = kGAMECLASS.button(pos);
+			if (func1==null) {
+				return btn.hide();
+			}
+			var callback:Function;
+
+			//Removes sex-related button in SFW mode.
+			if (kGAMECLASS.flags[kFLAGS.SFW_MODE] > 0) {
+				if (text.indexOf("Sex") != -1 || text.indexOf("Threesome") != -1 ||  text.indexOf("Foursome") != -1 || text == "Watersports" || text == "Make Love" || text == "Use Penis" || text == "Use Vagina" || text.indexOf("Fuck") != -1 || text.indexOf("Ride") != -1 || (text.indexOf("Mount") != -1 && text.indexOf("Mountain") == -1) || text.indexOf("Vagina") != -1) {
+					return btn.hide();
+				}
+			}
+			callback = kGAMECLASS.createCallBackFunction(func1, arg1, arg2, arg3);
+
+			btn.show(text,callback, toolTipText, toolTipHeader);
+			flush();
+			return btn;
 		}
 	}
 }

@@ -35,8 +35,8 @@ package classes
 				game.clearOutput();
 				game.outputText("You are about to quicksave the current game to <b>" + slotX + "</b>\n\nAre you sure?");
 				game.menu();
-				game.addButton(0, "No", game.playerMenu);
-				game.addButton(1, "Yes", doQuickSave);
+				kGAMECLASS.output.addButton(0, "No", game.playerMenu);
+				kGAMECLASS.output.addButton(1, "Yes", doQuickSave);
 			}
 		}
 
@@ -61,8 +61,8 @@ package classes
 					game.clearOutput();
 					game.outputText("You are about to quickload the current game from slot <b>" + slot + "</b>\n\nAre you sure?");
 					game.menu();
-					game.addButton(0, "No", game.playerMenu);
-					game.addButton(1, "Yes", doQuickLoad);
+					kGAMECLASS.output.addButton(0, "No", game.playerMenu);
+					kGAMECLASS.output.addButton(1, "Yes", doQuickLoad);
 				}
 			}
 		}

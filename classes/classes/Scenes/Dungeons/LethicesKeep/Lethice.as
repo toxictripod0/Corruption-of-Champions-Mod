@@ -7,6 +7,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 	import classes.PerkLib;
 	import classes.BodyParts.Butt;
 	import classes.BodyParts.Hips;
+	import classes.GlobalFlags.kGAMECLASS;
 	
 	public class Lethice extends Monster
 	{
@@ -569,13 +570,13 @@ package classes.Scenes.Dungeons.LethicesKeep
 			game.menu();
 			if (Boolean(player.hasCock()) || Boolean(player.hasVagina()))
 			{
-				game.addButton(0,"DemonFuck",p2DemonFuck,hpVictory);
+				kGAMECLASS.output.addButton(0,"DemonFuck",p2DemonFuck,hpVictory);
 			}
 			if (player.hasStatusEffect(StatusEffects.KnowsHeal))
 			{
-				game.addButton(1,"Heal",p2Heal);
+				kGAMECLASS.output.addButton(1,"Heal",p2Heal);
 			}
-			game.addButton(2,"Next",p2Next);
+			kGAMECLASS.output.addButton(2,"Next",p2Next);
 		}
 		
 		private function p2DemonFuck(hpVictory:Boolean):void
@@ -621,12 +622,12 @@ package classes.Scenes.Dungeons.LethicesKeep
 			}
 			outputText("\n\nAround you, spurred on by your face-fucking the omnibus, the defeated demon court undulates in waves of orgiastic pleasure, gleefully sucking each other’s cocks, penetrating any hole they can find, or simply rolling on the floor locked in each other’s sensual embraces. Those that didn’t join the fight hoot and holler from the stands, encouraging you to fuck the omnibus like the eager slut she is. For her part, the horny demon just smirks up at you between long, loving licks across your sex.");
 			game.menu();
-			game.addButton(0,"OralFinish",oralFinish);
+			kGAMECLASS.output.addButton(0,"OralFinish",oralFinish);
 			if (player.hasCock())
 			{
-				game.addButton(1,"FuckDemon",fuckDemon);
+				kGAMECLASS.output.addButton(1,"FuckDemon",fuckDemon);
 			}
-			game.addButton(2,"RideCock",rideCock);
+			kGAMECLASS.output.addButton(2,"RideCock",rideCock);
 		}
 		
 		private function oralFinish():void
@@ -769,7 +770,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			game.menu();
 			if (doLethNext)
 			{
-				game.addButton(0,"Next",p2Next);
+				kGAMECLASS.output.addButton(0,"Next",p2Next);
 			}
 			else
 			{

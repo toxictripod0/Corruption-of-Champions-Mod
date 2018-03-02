@@ -8,6 +8,7 @@ package classes.Items.Consumables
 	import classes.PerkLib;
 	import classes.Player;
 	import classes.internals.Utils;
+	import classes.GlobalFlags.kGAMECLASS;
 
 	public final class GroPlus extends Consumable {
 		
@@ -30,12 +31,12 @@ package classes.Items.Consumables
 			clearOutput();
 			outputText("You ponder the needle in your hand knowing it will enlarge the injection site.  What part of your body will you use it on?  ");
 			game.menu();
-			game.addButton(0, "Balls", gpBalls);
-			game.addButton(1, "Breasts", gpBreasts);
-			game.addButton(2, "Clit", gpClit);
-			game.addButton(3, "Cock", gpCock);
-			game.addButton(4, "Nipples", gpNipples);
-			game.addButton(14, "Nevermind", growPlusCancel);
+			kGAMECLASS.output.addButton(0, "Balls", gpBalls);
+			kGAMECLASS.output.addButton(1, "Breasts", gpBreasts);
+			kGAMECLASS.output.addButton(2, "Clit", gpClit);
+			kGAMECLASS.output.addButton(3, "Cock", gpCock);
+			kGAMECLASS.output.addButton(4, "Nipples", gpNipples);
+			kGAMECLASS.output.addButton(14, "Nevermind", growPlusCancel);
 			return(true);
 		}
 		

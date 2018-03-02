@@ -30,7 +30,7 @@ package classes.Items.Consumables
 			 
 			if (game.player.hair.length > 0) {
 				outputText("You have " + game.player.hair.color + " hair.");
-				if (game.player.hair.color != _color) game.addButton(0, "Hair", dyeHair);
+				if (game.player.hair.color != _color) kGAMECLASS.output.addButton(0, "Hair", dyeHair);
 				else game.addButtonDisabled(0, "Hair", "Your already have " + game.player.hair.color + " hair!");
 			} else {
 				outputText("You have no hair.");
@@ -39,11 +39,11 @@ package classes.Items.Consumables
 			
 			if (game.player.hasFur()) {
 				outputText("\n\nYou have " + game.player.skin.furColor + " fur.");
-				if (game.player.skin.furColor != _color) game.addButton(1, "Fur", dyeFur);
+				if (game.player.skin.furColor != _color) kGAMECLASS.output.addButton(1, "Fur", dyeFur);
 				else game.addButtonDisabled(1, "Fur", "Your already have " + _color + " fur!");
 			} else if (game.player.hasFeathers() || game.player.hasCockatriceSkin()) {
 				outputText("\n\nYou have " + game.player.skin.furColor + " feathers.");
-				if (game.player.skin.furColor != _color) game.addButton(1, "Feathers", dyeFeathers);
+				if (game.player.skin.furColor != _color) kGAMECLASS.output.addButton(1, "Feathers", dyeFeathers);
 				else game.addButtonDisabled(1, "Feathers", "Your already have " + _color + " feathers!");
 			} else {
 				outputText("\n\nYou have no fur.");
@@ -52,11 +52,11 @@ package classes.Items.Consumables
 
 			if (game.player.hasFurryUnderBody()) {
 				outputText("\n\nYou have " + game.player.underBody.skin.furColor + " fur on your underbody.");
-				if (game.player.underBody.skin.furColor != _color) game.addButton(2, "Under Fur", dyeUnderBodyFur);
+				if (game.player.underBody.skin.furColor != _color) kGAMECLASS.output.addButton(2, "Under Fur", dyeUnderBodyFur);
 				else game.addButtonDisabled(2, "Under Fur", "Your already have " + _color + " fur on your underbody!");
 			} else if (game.player.hasFeatheredUnderBody()) {
 				outputText("\n\nYou have " + game.player.underBody.skin.furColor + " feathers on your underbody.");
-				if (game.player.underBody.skin.furColor != _color) game.addButton(2, "Under Feathers", dyeUnderBodyFeathers);
+				if (game.player.underBody.skin.furColor != _color) kGAMECLASS.output.addButton(2, "Under Feathers", dyeUnderBodyFeathers);
 				else game.addButtonDisabled(2, "Under Feathers", "Your already have " + _color + " feathers on your underbody!");
 			} else {
 				outputText("\n\nYou have no special or furry underbody.");
@@ -65,7 +65,7 @@ package classes.Items.Consumables
 
 			if (game.player.wings.canDye()) {
 				outputText("\n\nYou have [wingColor] wings.");
-				if (!game.player.wings.hasDyeColor(_color)) game.addButton(3, "Wings", dyeWings);
+				if (!game.player.wings.hasDyeColor(_color)) kGAMECLASS.output.addButton(3, "Wings", dyeWings);
 				else game.addButtonDisabled(3, "Wings", "Your already have " + _color + " wings!");
 			} else {
 				outputText("\n\nYour wings can't be dyed.");
@@ -74,7 +74,7 @@ package classes.Items.Consumables
 
 			if (game.player.neck.canDye()) {
 				outputText("\n\nYou have a [neckColor] neck.");
-				if (!game.player.neck.hasDyeColor(_color)) game.addButton(5, "Neck", dyeNeck);
+				if (!game.player.neck.hasDyeColor(_color)) kGAMECLASS.output.addButton(5, "Neck", dyeNeck);
 				else game.addButtonDisabled(5, "Neck", "Your already have a " + _color + " neck!");
 			} else {
 				outputText("\n\nYour neck can't be dyed.");
@@ -83,14 +83,14 @@ package classes.Items.Consumables
 
 			if (game.player.rearBody.canDye()) {
 				outputText("\n\nYou have a [rearBodyColor] rear body.");
-				if (!game.player.rearBody.hasDyeColor(_color)) game.addButton(6, "Rear Body", dyeRearBody);
+				if (!game.player.rearBody.hasDyeColor(_color)) kGAMECLASS.output.addButton(6, "Rear Body", dyeRearBody);
 				else game.addButtonDisabled(6, "Rear Body", "Your already have a " + _color + " rear body!");
 			} else {
 				outputText("\n\nYour rear body can't be dyed.");
 				game.addButtonDisabled(6, "Rear Body", "Your rear body can't be dyed!");
 			}
 
-			game.addButton(4, "Nevermind", dyeCancel);
+			kGAMECLASS.output.addButton(4, "Nevermind", dyeCancel);
 			return true;
 		}
 		

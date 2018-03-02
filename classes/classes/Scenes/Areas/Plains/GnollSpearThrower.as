@@ -4,6 +4,7 @@ package classes.Scenes.Areas.Plains
 	import classes.BodyParts.*;
 import classes.StatusEffects.Combat.GnollSpearDebuff;
 import classes.internals.*;
+	import classes.GlobalFlags.kGAMECLASS;
 
 	/**
 	 * ...
@@ -307,9 +308,9 @@ import classes.internals.*;
 				game.clearOutput();
 				outputText("The gnoll alpha is defeated!  You could use her for a quick, willing fuck to sate your lusts before continuing on.  Hell, you could even dose her up with that succubi milk you took from the goblin first - it might make her even hotter.  Do you?");
 				game.menu();
-				game.addButton(0,"Fuck",	game.urtaQuest.winRapeHyenaPrincess);
-				game.addButton(1,"Succ Milk", game.urtaQuest.useSuccubiMilkOnGnollPrincesses);
-				game.addButton(4,"Leave",game.urtaQuest.urtaNightSleep);
+				kGAMECLASS.output.addButton(0,"Fuck",	game.urtaQuest.winRapeHyenaPrincess);
+				kGAMECLASS.output.addButton(1,"Succ Milk", game.urtaQuest.useSuccubiMilkOnGnollPrincesses);
+				kGAMECLASS.output.addButton(4,"Leave",game.urtaQuest.urtaNightSleep);
 			} else {
 				game.plains.gnollSpearThrowerScene.hyenaVictory();
 			}

@@ -74,8 +74,8 @@ public function gameOver(clear:Boolean = false):void { //Leaves text on screen u
 	flags[kFLAGS.TIMES_BAD_ENDED]++;
 	awardAchievement("Game Over!", kACHIEVEMENTS.GENERAL_GAME_OVER, true, true);
 	menu();
-	addButton(0, "Game Over", gameOverMenuOverride).hint("Your game has ended. Please load a saved file or start a new game.");
-	if (flags[kFLAGS.HARDCORE_MODE] <= 0) addButton(1, "Nightmare", camp.wakeFromBadEnd).hint("It's all just a dream. Wake up.");
+	output.addButton(0, "Game Over", gameOverMenuOverride).hint("Your game has ended. Please load a saved file or start a new game.");
+	if (flags[kFLAGS.HARDCORE_MODE] <= 0) output.addButton(1, "Nightmare", camp.wakeFromBadEnd).hint("It's all just a dream. Wake up.");
 	//addButton(3, "NewGamePlus", charCreation.newGamePlus).hint("Start a new game with your equipment, experience, and gems carried over.");
 	//if (flags[kFLAGS.EASY_MODE_ENABLE_FLAG] == 1 || debug) addButton(4, "Debug Cheat", playerMenu);
 	gameOverMenuOverride();

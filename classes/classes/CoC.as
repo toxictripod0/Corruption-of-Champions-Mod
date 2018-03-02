@@ -703,5 +703,10 @@ package classes
 				}
 			}
 		}
+		
+		// TODO remove once that GuiInput interface has been sorted
+		public function addButton(pos:int, text:String = "", func1:Function = null, arg1:* = -9000, arg2:* = -9000, arg3:* = -9000, toolTipText:String = "", toolTipHeader:String = ""):CoCButton {
+			return output.addButton(pos, text, func1, arg1, arg2, arg3, toolTipText, toolTipHeader);
+		}
 	}
 }

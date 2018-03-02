@@ -12,38 +12,6 @@ import classes.internals.profiling.End;
 ////////////	GUI CODE	////////////
 public static const MAX_BUTTON_INDEX:int = 14;
 
-/**
- * Adds a button.
- * @param	pos Determines the position. Starts at 0. (First row is 0-4, second row is 5-9, third row is 10-14.)
- * @param	text Determines the text that will appear on button.
- * @param	func1 Determines what function to trigger.
- * @param	arg1 Pass argument #1 to func1 parameter.
- * @param	arg2 Pass argument #1 to func1 parameter.
- * @param	arg3 Pass argument #1 to func1 parameter.
- * @param	toolTipText The text that will appear on tooltip when the mouse goes over the button.
- * @param	toolTipHeader The text that will appear on the tooltip header. If not specified, it defaults to button text.
- */
-public function addButton(pos:int, text:String = "", func1:Function = null, arg1:* = -9000, arg2:* = -9000, arg3:* = -9000, toolTipText:String = "", toolTipHeader:String = ""):CoCButton {
-	var btn:CoCButton = button(pos);
-	if (func1==null) {
-		return btn.hide();
-	}
-	var callback:Function;
-
-	//Removes sex-related button in SFW mode.
-	if (flags[kFLAGS.SFW_MODE] > 0) {
-		if (text.indexOf("Sex") != -1 || text.indexOf("Threesome") != -1 ||  text.indexOf("Foursome") != -1 || text == "Watersports" || text == "Make Love" || text == "Use Penis" || text == "Use Vagina" || text.indexOf("Fuck") != -1 || text.indexOf("Ride") != -1 || (text.indexOf("Mount") != -1 && text.indexOf("Mountain") == -1) || text.indexOf("Vagina") != -1) {
-			//trace("Button removed due to SFW mode.");
-			return btn.hide();
-		}
-	}
-	callback = createCallBackFunction(func1, arg1, arg2, arg3);
-
-	btn.show(text,callback, toolTipText, toolTipHeader);
-	output.flush();
-	return btn;
-}
-
 public function addButtonDisabled(pos:int, text:String = "", toolTipText:String = "", toolTipHeader:String = ""):CoCButton {
 	var btn:CoCButton = button(pos);
 	//Removes sex-related button in SFW mode.
@@ -98,8 +66,8 @@ public function menu():void { //The newer, simpler menu - blanks all buttons so 
  */
 public function doYesNo(eventYes:Function, eventNo:Function):void { //New typesafe version
 	menu();
-	addButton(0, "Yes", eventYes);
-	addButton(1, "No", eventNo);
+	output.addButton(0, "Yes", eventYes);
+	output.addButton(1, "No", eventNo);
 }
 
 /**
@@ -113,7 +81,7 @@ public function doNext(event:Function):void { //Now typesafe
 		return;
 	}
 	menu();
-	addButton(0, "Next", event);
+	output.addButton(0, "Next", event);
 }
 
 public function invertGo():void{ 
