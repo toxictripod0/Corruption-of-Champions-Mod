@@ -409,5 +409,24 @@ package classes
 		public function hideMenus():void {
 			kGAMECLASS.mainView.hideAllMenuButtons();
 		}
+		
+		/**
+		 * Hides the up/down arrow on stats pane.
+		 */
+		public function hideUpDown():void {
+			kGAMECLASS.mainView.statsView.hideUpDown();
+			//Clear storage values so up/down arrows can be properly displayed
+			kGAMECLASS.oldStats.oldStr = 0;
+			kGAMECLASS.oldStats.oldTou = 0;
+			kGAMECLASS.oldStats.oldSpe = 0;
+			kGAMECLASS.oldStats.oldInte = 0;
+			kGAMECLASS.oldStats.oldLib = 0;
+			kGAMECLASS.oldStats.oldSens = 0;
+			kGAMECLASS.oldStats.oldCor = 0;  
+			kGAMECLASS.oldStats.oldHP = 0;
+			kGAMECLASS.oldStats.oldLust = 0;
+			kGAMECLASS.oldStats.oldFatigue = 0;
+			kGAMECLASS.oldStats.oldHunger = 0;
+		}
 	}
 }

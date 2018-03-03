@@ -186,7 +186,7 @@
 		/** Hide the up/down arrows. */
 		protected function hideUpDown():void
 		{
-			kGAMECLASS.hideUpDown();
+			kGAMECLASS.output.hideUpDown();
 		}
 
 		/** Create a function that will pass one argument. */

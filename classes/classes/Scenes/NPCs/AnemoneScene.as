@@ -1251,7 +1251,7 @@ package classes.Scenes.NPCs
 				return item == consumables.W__BOOK || item == consumables.B__BOOK || item == consumables.W_STICK || item is Weapon;
 			}
 			menu();
-			kGAMECLASS.hideUpDown();
+			kGAMECLASS.output.hideUpDown();
 			var foundItem:Boolean = false;
 			for (var x:int = 0; x < inventory.getMaxSlots(); x++) {
 				if (player.itemSlots[x].quantity > 0 && giveableToAnemone(player.itemSlots[x].itype)) {

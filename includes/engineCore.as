@@ -12,25 +12,6 @@ import classes.internals.profiling.End;
 ////////////	GUI CODE	////////////
 public static const MAX_BUTTON_INDEX:int = 14;
 
-/**
- * Hides the up/down arrow on stats pane.
- */
-public function hideUpDown():void {
-	mainView.statsView.hideUpDown();
-	//Clear storage values so up/down arrows can be properly displayed
-	oldStats.oldStr = 0;
-	oldStats.oldTou = 0;
-	oldStats.oldSpe = 0;
-	oldStats.oldInte = 0;
-	oldStats.oldLib = 0;
-	oldStats.oldSens = 0;
-	oldStats.oldCor = 0;  
-	oldStats.oldHP = 0;
-	oldStats.oldLust = 0;
-	oldStats.oldFatigue = 0;
-	oldStats.oldHunger = 0;
-}
-
 ////////////	GUI CODE	////////////
 
 
