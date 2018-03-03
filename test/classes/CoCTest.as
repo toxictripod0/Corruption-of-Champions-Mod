@@ -25,7 +25,7 @@ package classes{
 			cut = new CoCForTest(StageLocator.stage);
 			cut.player.createVagina();
 			
-			fireButton = new FireButtonEvent(kGAMECLASS.mainView, CoC.MAX_BUTTON_INDEX);
+			fireButton = new FireButtonEvent(kGAMECLASS.mainView, Output.MAX_BUTTON_INDEX);
 		}
 
 		[Test] 

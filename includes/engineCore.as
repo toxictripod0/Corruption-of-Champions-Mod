@@ -8,13 +8,6 @@ import classes.internals.Profiling;
 import classes.internals.profiling.Begin;
 import classes.internals.profiling.End;
 
-
-////////////	GUI CODE	////////////
-public static const MAX_BUTTON_INDEX:int = 14;
-
-////////////	GUI CODE	////////////
-
-
 public function silly():Boolean {
 	return flags[kFLAGS.SILLY_MODE_ENABLE_FLAG] == 1;
 }
