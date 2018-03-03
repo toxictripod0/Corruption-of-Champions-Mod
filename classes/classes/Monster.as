@@ -49,7 +49,7 @@
 			game.statScreenRefresh();
 		}
 		protected final function doNext(eventNo:Function):void { //Now typesafe
-			game.doNext(eventNo);
+			kGAMECLASS.output.doNext(eventNo);
 		}
 		protected final function combatMiss():Boolean {
 			return game.combat.combatMiss();
@@ -896,7 +896,7 @@
 			if (temp > player.gems) temp = player.gems;
 			outputText("\n\nYou'll probably wake up in eight hours or so, missing " + temp + " gems.");
 			player.gems -= temp;
-			game.doNext(game.camp.returnToCampUseEightHours);
+			kGAMECLASS.output.doNext(game.camp.returnToCampUseEightHours);
 		}
 
 		/**

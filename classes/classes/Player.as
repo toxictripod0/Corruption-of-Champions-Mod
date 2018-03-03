@@ -606,7 +606,7 @@
 				//Prevent negatives
 				if (HP<=0){
 					HP = 0;
-					//This call did nothing. There is no event 5010: if (game.inCombat) game.doNext(5010);
+					//This call did nothing. There is no event 5010: if (game.inCombat) kGAMECLASS.output.doNext(5010);
 				}
 			}
 			return returnDamage;

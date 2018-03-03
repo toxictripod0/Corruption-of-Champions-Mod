@@ -242,7 +242,7 @@
 
 		protected function doNext(eventNo:Function):void //Now typesafe
 		{
-			kGAMECLASS.doNext(eventNo);
+			kGAMECLASS.output.doNext(eventNo);
 		}
 		
 		/**

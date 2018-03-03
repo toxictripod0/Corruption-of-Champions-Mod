@@ -26,7 +26,7 @@ package classes
 					game.saves.saveGame(slotX);
 					game.clearOutput();
 					game.outputText("Game saved to " + slotX + "!");
-					game.doNext(game.playerMenu);
+					kGAMECLASS.output.doNext(game.playerMenu);
 				};
 				if (flags[kFLAGS.DISABLE_QUICKSAVE_CONFIRM] !== 0) {
 					doQuickSave();
@@ -50,7 +50,7 @@ package classes
 						game.statScreenRefresh();
 						game.clearOutput();
 						game.outputText("Slot " + slot + " Loaded!");
-						game.doNext(game.playerMenu);
+						kGAMECLASS.output.doNext(game.playerMenu);
 					}
 				};
 				if (saveFile.data.exists) {

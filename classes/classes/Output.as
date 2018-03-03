@@ -361,5 +361,18 @@ package classes
 			addButton(0, "Yes", eventYes);
 			addButton(1, "No", eventNo);
 		}
+		
+		/**
+		 * Clears all button and adds a 'Next' button.
+		 * @param	event The event function to call if the button is pressed.
+		 */
+		public function doNext(event:Function):void { //Now typesafe
+			//Prevent new events in combat from automatically overwriting a game over. 
+			if (kGAMECLASS.mainView.getButtonText(0).indexOf("Game Over") != -1) {
+				return;
+			}
+			menu();
+			addButton(0, "Next", event);
+		}
 	}
 }

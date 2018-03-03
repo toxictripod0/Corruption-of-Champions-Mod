@@ -12,20 +12,6 @@ import classes.internals.profiling.End;
 ////////////	GUI CODE	////////////
 public static const MAX_BUTTON_INDEX:int = 14;
 
-/**
- * Clears all button and adds a 'Next' button.
- * @param	event The event function to call if the button is pressed.
- */
-public function doNext(event:Function):void { //Now typesafe
-	//Prevent new events in combat from automatically overwriting a game over. 
-	if (mainView.getButtonText(0).indexOf("Game Over") != -1) {
-		//trace("Do next setup cancelled by game over");
-		return;
-	}
-	output.menu();
-	output.addButton(0, "Next", event);
-}
-
 public function invertGo():void{ 
 	mainView.invert();
 }
@@ -251,7 +237,7 @@ public function testDynStatsEvent():void {
 	player.dynStats("tou", 1, "spe+", 2, "int-", 3, "lib*", 2, "sen=", 25,"lust/",2);
 	outputText("Mod: 0 1 +2 -3 *2 =25 /2\n");
 	outputText("New: "+player.str+" "+player.tou+" "+player.spe+" "+player.inte+" "+player.lib+" "+player.sens+" "+player.lust+"\n");
-	doNext(playerMenu);
+	output.doNext(playerMenu);
 }
 
 /**
@@ -278,7 +264,7 @@ public function doSFWloss():Boolean {
 		if (player.HP <= 0) outputText("You collapse from your injuries.");
 		else outputText("You collapse from your overwhelming desires.");
 		if (combat.inCombat) combat.cleanupAfterCombat();
-		else doNext(camp.returnToCampUseOneHour)
+		else output.doNext(camp.returnToCampUseOneHour)
 		return true;
 	}
 	else return false;

@@ -65,14 +65,14 @@ package classes.helper
 		
 		[Test]
 		public function doNextEventNotTriggered():void {
-			kGAMECLASS.doNext(setFlagEvent);
+			kGAMECLASS.output.doNext(setFlagEvent);
 			
 			assertThat(eventTriggeredFlag, equalTo(false));
 		}
 		
 		[Test]
 		public function doNextEventTriggered():void {
-			kGAMECLASS.doNext(setFlagEvent);
+			kGAMECLASS.output.doNext(setFlagEvent);
 			
 			cut.fireNextButtonEvent();
 			
