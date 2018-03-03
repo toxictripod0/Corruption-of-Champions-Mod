@@ -285,7 +285,7 @@
 		
 		protected function removeButton(arg:*):void
 		{
-			kGAMECLASS.removeButton(arg);
+			kGAMECLASS.output.removeButton(arg);
 		}
 		
 		protected function openURL(url:String):void{

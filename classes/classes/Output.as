@@ -321,5 +321,21 @@ package classes
 		public function button(pos:int):CoCButton {
 			return kGAMECLASS.mainView.bottomButtons[pos];
 		}
+		
+		/**
+		 * Removes a button.
+		 * @param	arg The position to remove a button. (First row is 0-4, second row is 5-9, third row is 10-14.)
+		 */
+		public function removeButton(arg:*):void {
+			var buttonToRemove:int = 0;
+			if (arg is String) {
+				buttonToRemove = kGAMECLASS.mainView.indexOfButtonWithLabel( arg as String );
+			}
+			if (arg is Number) {
+				if (arg < 0 || arg > MAX_BUTTON_INDEX) return;
+				buttonToRemove = int(arg);
+			}
+			kGAMECLASS.mainView.hideBottomButton( buttonToRemove );
+		}
 	}
 }

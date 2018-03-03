@@ -13,22 +13,6 @@ import classes.internals.profiling.End;
 public static const MAX_BUTTON_INDEX:int = 14;
 
 /**
- * Removes a button.
- * @param	arg The position to remove a button. (First row is 0-4, second row is 5-9, third row is 10-14.)
- */
-public function removeButton(arg:*):void {
-	var buttonToRemove:int = 0;
-	if (arg is String) {
-		buttonToRemove = mainView.indexOfButtonWithLabel( arg as String );
-	}
-	if (arg is Number) {
-		if (arg < 0 || arg > MAX_BUTTON_INDEX) return;
-		buttonToRemove = int(arg);
-	}
-	mainView.hideBottomButton( buttonToRemove );
-}
-
-/**
  * Hides all bottom buttons.
  * 
  * <b>Note:</b> Calling this with open formatting tags can result in strange behaviour, 
