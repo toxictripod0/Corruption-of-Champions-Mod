@@ -13,25 +13,12 @@ import classes.internals.profiling.End;
 public static const MAX_BUTTON_INDEX:int = 14;
 
 /**
- * Hides all bottom buttons.
- * 
- * <b>Note:</b> Calling this with open formatting tags can result in strange behaviour, 
- * e.g. all text will be formatted instead of only a section.
- */
-public function menu():void { //The newer, simpler menu - blanks all buttons so addButton can be used
-	for (var i:int = 0; i <= MAX_BUTTON_INDEX; i++) {
-		mainView.hideBottomButton(i);
-	}
-	output.flush();
-}
-
-/**
  * Clears all button and adds a 'Yes' and a 'No' button.
  * @param	eventYes The event parser or function to call if 'Yes' button is pressed.
  * @param	eventNo The event parser or function to call if 'No' button is pressed.
  */
 public function doYesNo(eventYes:Function, eventNo:Function):void { //New typesafe version
-	menu();
+	output.menu();
 	output.addButton(0, "Yes", eventYes);
 	output.addButton(1, "No", eventNo);
 }
@@ -46,7 +33,7 @@ public function doNext(event:Function):void { //Now typesafe
 		//trace("Do next setup cancelled by game over");
 		return;
 	}
-	menu();
+	output.menu();
 	output.addButton(0, "Next", event);
 }
 

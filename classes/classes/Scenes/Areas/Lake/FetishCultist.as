@@ -130,7 +130,7 @@ package classes.Scenes.Areas.Lake
 				return;
 			}
 			
-			game.menu();
+			kGAMECLASS.output.menu();
 			
 			kGAMECLASS.output.addButtonDisabled(0, "Sex", "This scene requires you to have genitals and sufficient arousal.");
 			kGAMECLASS.output.addButtonDisabled(1, "B. Feed", "This scene requires you to have enough milk.");

@@ -27,7 +27,7 @@ package classes.Scenes.Dungeons.Factory
 		
 		private function defeatedInDungeon1(hpVictory:Boolean):void {
 			clearOutput();
-			game.menu();
+			kGAMECLASS.output.menu();
 			if (hpVictory)
 				outputText("You smile in satisfaction as the " + short + " collapses, unable to continue fighting.");
 			else outputText("You smile in satisfaction as the " + short + " collapses, masturbating happily.");

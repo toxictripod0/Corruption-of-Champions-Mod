@@ -26,7 +26,7 @@ package classes.Items.Consumables
 		
 		override public function useItem():Boolean {
 			clearOutput();
-			game.menu();
+			kGAMECLASS.output.menu();
 			 
 			if (game.player.hair.length > 0) {
 				outputText("You have " + game.player.hair.color + " hair.");

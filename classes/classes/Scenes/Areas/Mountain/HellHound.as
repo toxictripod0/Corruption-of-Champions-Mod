@@ -76,7 +76,7 @@ package classes.Scenes.Areas.Mountain
 			} else {
 				outputText("Unable to bear hurting you anymore, the hellhound's flames dim as he stops his attack. The two heads look at you, whining plaintively.  The hellhound slowly pads over to you and nudges its noses at your crotch.  It seems he wishes to pleasure you.\n\n");
 			}
-			game.menu();
+			kGAMECLASS.output.menu();
 			
 			kGAMECLASS.output.addButtonDisabled(0, "Fuck it", "Ride his twin cocks. This scene requires you to have vagina and sufficient arousal. This scene can not accommodate naga body.");
 			kGAMECLASS.output.addButtonDisabled(1, "Lick", "Make him use his tongues. This scene requires you to have genitals and sufficient arousal. This scene requires lust victory.");

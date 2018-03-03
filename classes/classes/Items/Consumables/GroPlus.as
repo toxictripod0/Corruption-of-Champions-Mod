@@ -30,7 +30,7 @@ package classes.Items.Consumables
 			var gpNipples:Function	= (game.player.totalNipples() > 0 ? growPlusNipples : null);
 			clearOutput();
 			outputText("You ponder the needle in your hand knowing it will enlarge the injection site.  What part of your body will you use it on?  ");
-			game.menu();
+			kGAMECLASS.output.menu();
 			kGAMECLASS.output.addButton(0, "Balls", gpBalls);
 			kGAMECLASS.output.addButton(1, "Breasts", gpBreasts);
 			kGAMECLASS.output.addButton(2, "Clit", gpClit);

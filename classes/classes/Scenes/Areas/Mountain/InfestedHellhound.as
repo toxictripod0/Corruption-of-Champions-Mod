@@ -73,7 +73,7 @@ package classes.Scenes.Areas.Mountain
 				outputText("Unable to bear its unnatural arousal, the infested hellhound's flames dim as he stops his attack. The two heads look at you, whining plaintively.  The hellhound slowly pads over to you and nudges its noses at your crotch.  It seems he wishes to pleasure you.\n\n");
 			}
 			
-			game.menu();
+			kGAMECLASS.output.menu();
 			
 			kGAMECLASS.output.addButtonDisabled(0, "Lick", "Make him use his tongues. This scene requires you to have genitals and sufficient arousal. This scene requires lust victory.");
 			

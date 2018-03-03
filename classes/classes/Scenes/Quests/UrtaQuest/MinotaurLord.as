@@ -138,7 +138,7 @@ package classes.Scenes.Quests.UrtaQuest
 			outputText("The minotaur lord is defeated!  ");
 			if (flags[kFLAGS.URTA_QUEST_STATUS] == 0.75) {
 				outputText("  You could use him for a quick fuck to sate your lusts before continuing on.  Do you?");
-				game.menu();
+				kGAMECLASS.output.menu();
 				kGAMECLASS.output.addButton(0,"Fuck",game.urtaQuest.winRapeAMinoLordAsUrta);
 				kGAMECLASS.output.addButton(4, "Leave", game.urtaQuest.beatMinoLordOnToSuccubi);
 			}

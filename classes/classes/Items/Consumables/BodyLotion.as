@@ -45,7 +45,7 @@ package classes.Items.Consumables
 			clearOutput();
 			outputText("The skin on your underBody is different from the rest. Where do you want to apply the " + _adj + " body lotion?");
 
-			game.menu();
+			kGAMECLASS.output.menu();
 			kGAMECLASS.output.addButton(0, "Body", lotionSkin);
 			kGAMECLASS.output.addButton(1, "Underbody", lotionUnderBodySkin);
 			kGAMECLASS.output.addButton(4, "Nevermind", lotionCancel);

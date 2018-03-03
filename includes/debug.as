@@ -33,7 +33,7 @@ public function debugPane():void {
 
 	outputText(images.showImage("monster-ceraph"));
 
-	menu();
+	output.menu();
 	output.addButton(0, "Test Input", eventTester);
 	output.addButton(1, "Parser Tests", doThatTestingThang);
 	output.addButton(4, "Back", gameSettings.exitSettings);
@@ -303,7 +303,7 @@ convert "
 	]]>);
 
 
-	menu();
+	output.menu();
 	output.addButton(4, "Back", debugPane)
 
 }
@@ -326,7 +326,7 @@ public function eventTester():void {
 ]]>;
 
 	;
-	menu();
+	output.menu();
 	output.addButton(0, "Proceed", eventTesterGo);
 	output.addButton(4, "Back", eventTesterExit);
 }
@@ -338,7 +338,7 @@ public function eventTesterGo():void {
 
 	trace("Temp = ", temp);
 
-	menu();
+	output.menu();
 	clearOutput();
 	outputText(temp);
 

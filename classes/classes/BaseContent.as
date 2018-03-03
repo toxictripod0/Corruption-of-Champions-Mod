@@ -253,7 +253,7 @@
 		 */
 		protected function menu():void
 		{
-			kGAMECLASS.menu();
+			kGAMECLASS.output.menu();
 		}
 
 		protected function hideMenus():void
