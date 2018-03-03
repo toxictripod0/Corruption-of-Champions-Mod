@@ -12,10 +12,6 @@ import classes.internals.profiling.End;
 ////////////	GUI CODE	////////////
 public static const MAX_BUTTON_INDEX:int = 14;
 
-public function invertGo():void{ 
-	mainView.invert();
-}
-
 /**
  * Used to update the display of statistics
  */
