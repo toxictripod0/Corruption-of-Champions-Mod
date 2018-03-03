@@ -174,7 +174,7 @@
 		/** Displays the stats panel. */
 		protected function showStats():void
 		{
-			kGAMECLASS.showStats();
+			kGAMECLASS.output.showStats();
 		}
 
 		/** Hide the stats panel. */

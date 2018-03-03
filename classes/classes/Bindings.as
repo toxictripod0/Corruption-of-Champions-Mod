@@ -46,7 +46,7 @@ package classes
 				var saveFile:SharedObject = SharedObject.getLocal("CoC_" + slot, "/");
 				var doQuickLoad:Function = function():void {
 					if (game.saves.loadGame("CoC_" + slot)) {
-						game.showStats();
+						kGAMECLASS.output.showStats();
 						kGAMECLASS.output.statScreenRefresh();
 						game.clearOutput();
 						game.outputText("Slot " + slot + " Loaded!");

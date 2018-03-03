@@ -382,5 +382,14 @@ package classes
 			kGAMECLASS.mainView.statsView.show(); // show() method refreshes.
 			kGAMECLASS.mainViewManager.refreshStats();
 		}
+		
+		/**
+		 * Show the stats pane. (Name, stats and attributes)
+		 */
+		public function showStats():void {
+			kGAMECLASS.mainView.statsView.show();
+			kGAMECLASS.mainViewManager.refreshStats();
+			kGAMECLASS.mainViewManager.tweenInStats();
+		}
 	}
 }

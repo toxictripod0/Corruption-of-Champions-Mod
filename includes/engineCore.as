@@ -13,14 +13,6 @@ import classes.internals.profiling.End;
 public static const MAX_BUTTON_INDEX:int = 14;
 
 /**
- * Show the stats pane. (Name, stats and attributes)
- */
-public function showStats():void {
-	mainView.statsView.show();
-	mainViewManager.refreshStats();
-	mainViewManager.tweenInStats();
-}
-/**
  * Hide the stats pane. (Name, stats and attributes)
  */
 public function hideStats():void {

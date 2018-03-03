@@ -21,7 +21,7 @@ public function playerMenu():void {
 	if (!inCombat) spriteSelect(null);
 	mainView.setMenuButton(MainView.MENU_NEW_MAIN, "New Game", charCreation.newGameGo);
 	mainView.nameBox.visible = false;
-	showStats();
+	output.showStats();
 	if (_gameState == 1 || _gameState == 2) {
 		kGAMECLASS.combat.combatMenu();
 		return;
