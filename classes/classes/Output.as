@@ -402,5 +402,12 @@ package classes
 			
 			kGAMECLASS.mainViewManager.tweenOutStats();
 		}
+		
+		/**
+		 * Hide the top buttons.
+		 */
+		public function hideMenus():void {
+			kGAMECLASS.mainView.hideAllMenuButtons();
+		}
 	}
 }

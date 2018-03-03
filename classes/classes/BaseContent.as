@@ -258,7 +258,7 @@
 
 		protected function hideMenus():void
 		{
-			kGAMECLASS.hideMenus();
+			kGAMECLASS.output.hideMenus();
 		}
 		
 		protected function doYesNo(eventYes:Function, eventNo:Function):void { //Now typesafe

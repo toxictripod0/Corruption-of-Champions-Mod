@@ -13,13 +13,6 @@ import classes.internals.profiling.End;
 public static const MAX_BUTTON_INDEX:int = 14;
 
 /**
- * Hide the top buttons.
- */
-public function hideMenus():void {
-	mainView.hideAllMenuButtons();
-}
-
-/**
  * Hides the up/down arrow on stats pane.
  */
 public function hideUpDown():void {
