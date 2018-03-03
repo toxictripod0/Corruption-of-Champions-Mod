@@ -498,7 +498,7 @@ private function goNextWrapped(timeAmt:Number, needNext:Boolean):Boolean  {
 		prison.goBackToPrisonBecauseQuestTimeIsUp();
 		return true;
 	}
-	statScreenRefresh();
+	output.statScreenRefresh();
 	if (needNext) {
 		output.doNext(playerMenu);
 		return true;
@@ -527,5 +527,5 @@ public function cheatTime(timeAmt:Number, needNext:Boolean = false):void {
 			time.hours = 0;
 		}
 	}
-	statScreenRefresh();
+	output.statScreenRefresh();
 }

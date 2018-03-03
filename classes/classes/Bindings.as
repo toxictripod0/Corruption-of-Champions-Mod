@@ -47,7 +47,7 @@ package classes
 				var doQuickLoad:Function = function():void {
 					if (game.saves.loadGame("CoC_" + slot)) {
 						game.showStats();
-						game.statScreenRefresh();
+						kGAMECLASS.output.statScreenRefresh();
 						game.clearOutput();
 						game.outputText("Slot " + slot + " Loaded!");
 						kGAMECLASS.output.doNext(game.playerMenu);

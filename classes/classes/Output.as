@@ -374,5 +374,13 @@ package classes
 			menu();
 			addButton(0, "Next", event);
 		}
+		
+		/**
+		 * Used to update the display of statistics
+		 */
+		public function statScreenRefresh():void {
+			kGAMECLASS.mainView.statsView.show(); // show() method refreshes.
+			kGAMECLASS.mainViewManager.refreshStats();
+		}
 	}
 }

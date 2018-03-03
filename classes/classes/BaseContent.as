@@ -168,7 +168,7 @@
 		/** Refreshes the stats panel. */
 		protected function statScreenRefresh():void
 		{
-			kGAMECLASS.statScreenRefresh();
+			kGAMECLASS.output.statScreenRefresh();
 		}
 		
 		/** Displays the stats panel. */

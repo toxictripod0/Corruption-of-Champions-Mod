@@ -5,6 +5,7 @@ package classes.Scenes.NPCs
 import classes.BodyParts.Butt;
 import classes.BodyParts.Hips;
 import classes.StatusEffects.Combat.AmilyVenomDebuff;
+	import classes.GlobalFlags.kGAMECLASS;
 
 /**
 	 * ...
@@ -82,7 +83,7 @@ import classes.StatusEffects.Combat.AmilyVenomDebuff;
 					lust += 10 * lustVuln;
 				}
 			}
-			game.statScreenRefresh();
+			kGAMECLASS.output.statScreenRefresh();
 			outputText("\n");
 			game.combat.combatRoundOver();
 		}

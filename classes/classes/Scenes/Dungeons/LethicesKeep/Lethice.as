@@ -276,7 +276,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 			outputText("\n\n");
 			flags[kFLAGS.SPELLS_CAST]++;
 			game.combat.combatAbilities.spellPerkUnlock();
-			game.statScreenRefresh();
+			kGAMECLASS.output.statScreenRefresh();
 			doAI();
 		}
 		
@@ -944,7 +944,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 					damage = eOneAttack();
 					outputAttack(damage);
 					postAttack(damage);
-					game.statScreenRefresh();
+					kGAMECLASS.output.statScreenRefresh();
 					outputText("\n");
 				}
 				else

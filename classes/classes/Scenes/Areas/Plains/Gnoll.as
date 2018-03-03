@@ -3,6 +3,7 @@ package classes.Scenes.Areas.Plains
 	import classes.*;
 	import classes.BodyParts.*;
 	import classes.internals.*;
+	import classes.GlobalFlags.kGAMECLASS;
 
 	/**
 	 * ...
@@ -86,7 +87,7 @@ package classes.Scenes.Areas.Plains
 					outputText(" ");
 					player.takeDamage(damage, true);
 				}
-				game.statScreenRefresh();
+				kGAMECLASS.output.statScreenRefresh();
 			}
 		}
 		
@@ -199,7 +200,7 @@ package classes.Scenes.Areas.Plains
 					outputText(" ");
 					player.takeDamage(damage, true);
 				}
-				game.statScreenRefresh();
+				kGAMECLASS.output.statScreenRefresh();
 			}
 		}
 
@@ -338,7 +339,7 @@ package classes.Scenes.Areas.Plains
 						outputText(" ");
 						player.takeDamage(damage);
 					}
-					game.statScreenRefresh();
+					kGAMECLASS.output.statScreenRefresh();
 				}
 				gnollAttackText();
 			}

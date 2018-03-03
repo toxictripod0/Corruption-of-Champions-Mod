@@ -46,7 +46,7 @@
 			kGAMECLASS.mainView.statsView.showStatDown(a);
 		}
 		protected final function statScreenRefresh():void {
-			game.statScreenRefresh();
+			kGAMECLASS.output.statScreenRefresh();
 		}
 		protected final function doNext(eventNo:Function):void { //Now typesafe
 			kGAMECLASS.output.doNext(eventNo);
@@ -623,7 +623,7 @@
 				    var damage:int = eOneAttack();
 					outputAttack(damage);
 					postAttack(damage);
-					game.statScreenRefresh();
+					kGAMECLASS.output.statScreenRefresh();
 					outputText("\n");
 				}
 				if (statusEffectv1(StatusEffects.Attacks) >= 0) {
