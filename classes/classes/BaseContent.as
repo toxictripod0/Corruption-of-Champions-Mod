@@ -180,7 +180,7 @@
 		/** Hide the stats panel. */
 		protected function hideStats():void
 		{
-			kGAMECLASS.hideStats();
+			kGAMECLASS.output.hideStats();
 		}
 		
 		/** Hide the up/down arrows. */

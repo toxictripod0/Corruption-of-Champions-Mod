@@ -13,14 +13,6 @@ import classes.internals.profiling.End;
 public static const MAX_BUTTON_INDEX:int = 14;
 
 /**
- * Hide the stats pane. (Name, stats and attributes)
- */
-public function hideStats():void {
-	if (!mainViewManager.buttonsTweened) mainView.statsView.hide();
-	mainViewManager.tweenOutStats();
-}
-
-/**
  * Hide the top buttons.
  */
 public function hideMenus():void {

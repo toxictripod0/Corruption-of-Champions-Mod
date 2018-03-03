@@ -391,5 +391,16 @@ package classes
 			kGAMECLASS.mainViewManager.refreshStats();
 			kGAMECLASS.mainViewManager.tweenInStats();
 		}
+		
+		/**
+		 * Hide the stats pane. (Name, stats and attributes)
+		 */
+		public function hideStats():void {
+			if (!kGAMECLASS.mainViewManager.buttonsTweened) {
+				kGAMECLASS.mainView.statsView.hide();
+			}
+			
+			kGAMECLASS.mainViewManager.tweenOutStats();
+		}
 	}
 }
