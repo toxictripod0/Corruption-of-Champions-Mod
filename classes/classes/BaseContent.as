@@ -262,7 +262,7 @@
 		}
 		
 		protected function doYesNo(eventYes:Function, eventNo:Function):void { //Now typesafe
-			kGAMECLASS.doYesNo(eventYes, eventNo);
+			kGAMECLASS.output.doYesNo(eventYes, eventNo);
 		}
 
 		protected function addButton(pos:int, text:String = "", func1:Function = null, arg1:* = -9000, arg2:* = -9000, arg3:* = -9000, toolTipText:String = "", toolTipHeader:String = ""):CoCButton

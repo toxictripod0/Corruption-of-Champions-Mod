@@ -5,6 +5,7 @@ package classes.Scenes.Areas.Forest
 	import classes.internals.*;
 	import classes.GlobalFlags.kACHIEVEMENTS;
 	import classes.GlobalFlags.kFLAGS;
+	import classes.GlobalFlags.kGAMECLASS;
 
 	public class TentacleBeast extends Monster
 	{
@@ -64,7 +65,7 @@ package classes.Scenes.Areas.Forest
 			else {
 				if (!hpVictory && player.gender > 0 && flags[kFLAGS.SFW_MODE] <= 0) {
 					outputText("  Perhaps you could use it to sate yourself?");
-					game.doYesNo(game.forest.tentacleBeastScene.tentacleVictoryRape,game.combat.cleanupAfterCombat);
+					kGAMECLASS.output.doYesNo(game.forest.tentacleBeastScene.tentacleVictoryRape,game.combat.cleanupAfterCombat);
 				} else {
 					game.combat.cleanupAfterCombat();
 				}

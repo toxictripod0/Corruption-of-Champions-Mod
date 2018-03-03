@@ -350,5 +350,16 @@ package classes
 			}
 			flush();
 		}
+		
+		/**
+		 * Clears all button and adds a 'Yes' and a 'No' button.
+		 * @param	eventYes The event parser or function to call if 'Yes' button is pressed.
+		 * @param	eventNo The event parser or function to call if 'No' button is pressed.
+		 */
+		public function doYesNo(eventYes:Function, eventNo:Function):void { //New typesafe version
+			menu();
+			addButton(0, "Yes", eventYes);
+			addButton(1, "No", eventNo);
+		}
 	}
 }

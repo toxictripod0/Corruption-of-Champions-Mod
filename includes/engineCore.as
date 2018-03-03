@@ -13,17 +13,6 @@ import classes.internals.profiling.End;
 public static const MAX_BUTTON_INDEX:int = 14;
 
 /**
- * Clears all button and adds a 'Yes' and a 'No' button.
- * @param	eventYes The event parser or function to call if 'Yes' button is pressed.
- * @param	eventNo The event parser or function to call if 'No' button is pressed.
- */
-public function doYesNo(eventYes:Function, eventNo:Function):void { //New typesafe version
-	output.menu();
-	output.addButton(0, "Yes", eventYes);
-	output.addButton(1, "No", eventNo);
-}
-
-/**
  * Clears all button and adds a 'Next' button.
  * @param	event The event function to call if the button is pressed.
  */
