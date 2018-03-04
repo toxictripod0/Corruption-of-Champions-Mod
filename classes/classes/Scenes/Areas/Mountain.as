@@ -48,7 +48,7 @@ package classes.Scenes.Areas {
 					}, {
 						name: "highmountains",
 						when: function ():Boolean {
-							return !game.highMountains.isDiscovered() && (player.level >= 5 || flags[kFLAGS.TIMES_EXPLORED_MOUNTAIN] >= 40)
+							return !game.highMountains.isDiscovered() && (player.level >= 5 || flags[kFLAGS.TIMES_EXPLORED_MOUNTAIN] >= 40);
 						},
 						call: game.highMountains.discover
 					}, {
@@ -115,7 +115,7 @@ package classes.Scenes.Areas {
 						name:"ceraph",
 						chance:0.3,
 						when:function ():Boolean {
-							return !game.ceraphFollowerScene.ceraphIsFollower()
+							return !game.ceraphFollowerScene.ceraphIsFollower();
 								/* [INTERMOD:8chan]
 									&& flags[kFLAGS.CERAPH_KILLED] == 0 */
 								//	&& game.fetishManager.compare(FetishManager.FETISH_EXHIBITION);

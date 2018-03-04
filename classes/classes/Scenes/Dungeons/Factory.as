@@ -245,7 +245,7 @@ package classes.Scenes.Dungeons {
 				}
 				else { //3rd time, move on to bad end!
 					doBadEndTension();
-					return
+					return;
 				}
 			}
 			doNext(roomMainChamber);

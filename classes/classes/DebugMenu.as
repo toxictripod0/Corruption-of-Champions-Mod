@@ -95,7 +95,7 @@ package classes
 					outputText("<b><u>"+type.toUpperCase()+"</u></b>\n");
 				}
 				for each (var fun:* in funs) {
-					outputText("<u><a href=\"event:"+fun.@name+"\">"+fun.@name+"</a></u>\n")
+					outputText("<u><a href=\"event:" + fun.@name+"\">" + fun.@name+"</a></u>\n");
 				}
 			}
 			function linkhandler(e:TextEvent):void {
