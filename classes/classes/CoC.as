@@ -229,7 +229,7 @@ package classes
 		public var goblinWarriorScene:GoblinWarriorScene = new GoblinWarriorScene();
 		public var goblinShamanScene:GoblinShamanScene = new GoblinShamanScene();
 		public var goblinElderScene:PriscillaScene = new PriscillaScene();
-		public var impScene:ImpScene = new ImpScene();
+		public var impScene:ImpScene;
 		public var mimicScene:MimicScene = new MimicScene();
 		public var succubusScene:SuccubusScene = new SuccubusScene();
 		// Scenes/NPC/
@@ -464,6 +464,8 @@ package classes
 			
 			this.telAdre = new TelAdre(pregnancyProgress);
 			
+			this.impScene = new ImpScene(pregnancyProgress, Output.init());
+
 			this.emberScene = new EmberScene(pregnancyProgress);
 			this.urtaPregs = new UrtaPregs(pregnancyProgress);
 			

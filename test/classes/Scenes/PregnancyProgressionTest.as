@@ -3,6 +3,8 @@ package classes.Scenes
 
 	import classes.DefaultDict;
 	import classes.Scenes.Areas.Bog;
+	import classes.Scenes.Monsters.ImpScene;
+	import classes.helper.DummyOutput;
 	import org.flexunit.asserts.*;
 	import org.hamcrest.assertThat;
 	import org.hamcrest.core.*;
@@ -29,8 +31,10 @@ package classes.Scenes
 		private static const MOUSE_BIRTH_MESSAGE:String = "Two emerge, then four, eight... you lose track.";
 		
 		private var cut:PregProgForTest;
+		private var impReg:PregProgForTest;
 		private var player:Player;
 		private var scene:DummyScene;
+		private var output:DummyOutput;
 		
 		
 		[BeforeClass]
@@ -44,9 +48,14 @@ package classes.Scenes
 			player.createVagina();
 			kGAMECLASS.player = player;
 			
-			kGAMECLASS.flags = new DefaultDict();
+			output = new DummyOutput();
 			
 			cut = new PregProgForTest();
+			impReg = new PregProgForTest();
+			
+			kGAMECLASS.flags = new DefaultDict();
+			kGAMECLASS.impScene = new ImpScene(impReg, output);
+			
 			scene = new DummyScene();
 		}
 		
@@ -88,16 +97,16 @@ package classes.Scenes
 		public function updateImpBirthOutput():void {
 			player.knockUpForce(PregnancyStore.PREGNANCY_IMP, 1);
 			
-			cut.updatePregnancy();
+			impReg.updatePregnancy();
 			
-			assertThat(cut.collectedOutput, hasItem(containsString(IMP_BIRTH_MESSAGE)));
+			assertThat(output.collectedOutput, hasItem(containsString(IMP_BIRTH_MESSAGE)));
 		}
 		
 		[Test]
 		public function updateImpBirthDisplayChange():void {
 			player.knockUpForce(PregnancyStore.PREGNANCY_IMP, 1);
 			
-			assertThat(cut.updatePregnancy(), equalTo(true));
+			assertThat(impReg.updatePregnancy(), equalTo(true));
 		}
 		
 		[Test]

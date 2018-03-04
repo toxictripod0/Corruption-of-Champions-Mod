@@ -1,8 +1,11 @@
 package classes.Scenes
 {
+	import classes.Scenes.Monsters.ImpScene;
 	import classes.Scenes.NPCs.EmberScene;
 	import classes.Scenes.NPCs.UrtaPregs;
 	import classes.Scenes.Places.TelAdre;
+	import classes.helper.DummyOutput;
+	import classes.internals.GuiOutput;
 	import org.flexunit.asserts.*;
 	import org.hamcrest.assertThat;
 	import org.hamcrest.core.*;
@@ -37,6 +40,7 @@ package classes.Scenes
 		
 		private static var cut:PregProgForTest; // static so I can be lazy and don't need to pass it as a parameter
 		private var player:Player;
+		private var output:GuiOutput;
 		
 		private var pregnancyType:int;
 		private var testFunction:Function;
@@ -59,11 +63,14 @@ package classes.Scenes
 			kGAMECLASS.flags[kFLAGS.MARBLE_NURSERY_CONSTRUCTION] = 100;
 			kGAMECLASS.time.hours = 5;
 			
+			output = new DummyOutput();
+			
 			cut = new PregProgForTest();
 			kGAMECLASS.bog = new Bog(cut);
 			kGAMECLASS.emberScene = new EmberScene(cut);
 			kGAMECLASS.urtaPregs = new UrtaPregs(cut);
 			kGAMECLASS.telAdre = new TelAdre(cut);
+			kGAMECLASS.impScene = new ImpScene(cut, output);
 		}
 		
 		/**
