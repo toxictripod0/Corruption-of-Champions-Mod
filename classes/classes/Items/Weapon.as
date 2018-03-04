@@ -61,6 +61,7 @@ package classes.Items
 				case 3:
 					if (_degradable) desc += "This weapon has been enhanced with reinforced obsidian " + (isSharp() ? "lining its blade that could deliver sharper blows" : "spikes carefully attached to deliver more painful attacks") + ".";
 					else desc += " This weapon has been upgraded to be of epic quality and takes on a more fearsome look.";
+					break;
 				default:
 					desc += "";
 			}
