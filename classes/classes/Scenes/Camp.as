@@ -62,7 +62,7 @@ private function doCamp():void { //only called by playerMenu
 		return;
 	}
 	if (player.hasStatusEffect(StatusEffects.PostAnemoneBeatdown)) {
-		HPChange(Math.round(player.maxHP()/2),false);
+		player.HPChange(Math.round(player.maxHP()/2),false);
 		player.removeStatusEffect(StatusEffects.PostAnemoneBeatdown);
 	}
 	flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = ""; //clear out Izma's saved loot status
@@ -1311,7 +1311,7 @@ public function rest():void {
 		if (flags[kFLAGS.SHIFT_KEY_DOWN] > 0) { //rest until fully healed, midnight or hunger wake
 			while (player.HP < player.maxHP() || player.fatigue > 0) {
 				timeQ += 1;
-				HPChange(hpRecovery * multiplier, false); //no display since it is meant to be full rest anyway
+				player.HPChange(hpRecovery * multiplier, false); //no display since it is meant to be full rest anyway
 				player.changeFatigue( -fatRecovery * multiplier); 
 				if (timeQ + getGame().time.hours == 24 || flags[kFLAGS.HUNGER_ENABLED] > 0 && player.hunger < 5) break;
 			}
@@ -1320,7 +1320,7 @@ public function rest():void {
 		}
 		else {
 			timeQ = Math.min(4, 21 - getGame().time.hours);
-			HPChange(timeQ * hpRecovery * multiplier, false);
+			player.HPChange(timeQ * hpRecovery * multiplier, false);
 			player.changeFatigue(timeQ * -fatRecovery * multiplier); 
 		}
 		if (flags[kFLAGS.CAMP_BUILT_CABIN] > 0 && flags[kFLAGS.CAMP_CABIN_FURNITURE_BED] > 0 && !prison.inPrison && !ingnam.inIngnam) {
@@ -1341,7 +1341,7 @@ public function rest():void {
 			outputText("\nYou feel the fluid-starved goo rubbing all over your groin as if Valeria wants you to feed her.\n");
 		if (flags[kFLAGS.HUNGER_ENABLED] > 0 && player.hunger < 25) //hungry
 			outputText("\nYou have difficulty resting as you toss and turn with your stomach growling.\n");
-		kGAMECLASS.HPChangeNotify(player.HP - hpBefore);
+		player.HPChangeNotify(player.HP - hpBefore);
 	}
 	else {
 		clearOutput();
@@ -1575,7 +1575,7 @@ public function sleepRecovery(display:Boolean = false):void {
 		outputText("\nThe desire to find the bee girl that gave you this cursed " + player.cockDescript(0) + " and have her spread honey all over it grows with each passing minute\n");
 	if (player.armor == armors.GOOARMR && flags[kFLAGS.VALERIA_FLUIDS] <= 0) //Starved goo armor
 		outputText("\nYou feel the fluid-starved goo rubbing all over your groin as if Valeria wants you to feed her.\n");
-	HPChange(timeQ * hpRecovery * multiplier, display); //REGULAR HP/FATIGUE RECOVERY
+	player.HPChange(timeQ * hpRecovery * multiplier, display); //REGULAR HP/FATIGUE RECOVERY
 	player.changeFatigue(-(timeQ * fatRecovery * multiplier)); //Fatigue
 }
 //Bad End if your balls are too big. Only happens in Realistic Mode

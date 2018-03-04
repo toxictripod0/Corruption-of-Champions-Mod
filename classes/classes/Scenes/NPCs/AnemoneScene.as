@@ -1346,8 +1346,10 @@ package classes.Scenes.NPCs
 					else outputText("stick");
 					if (flags[kFLAGS.ANEMONE_WEAPON_ID] != weapons.MACE__0.id) outputText(" is still enough to bruise you a bit.");
 					else outputText(" manages to bruise you a lot.");
-					HPChange(-5, false);
-					if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.MACE__0.id) HPChange(-15, false);
+					player.HPChange(-5, false);
+					if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.MACE__0.id) {
+						player.HPChange(-15, false);
+					}
 					kidAXP(6);
 					break;
 				case weapons.RIDING0.id: //[Riding Crop]
@@ -1358,7 +1360,7 @@ package classes.Scenes.NPCs
 					else outputText("isn't");
 					outputText(" enough to keep you from thinking dirty thoughts about grabbing her naughty, teasing face and mashing it into your crotch.");
 					//(HP - 5, lust +5 if lib>=50, KidXP + 2)
-					HPChange(-5, false);
+					player.HPChange(-5, false);
 					if (player.lib >= 50) dynStats("lus", 5, "scale", false);
 					kidAXP(6);
 					break;
@@ -1367,7 +1369,7 @@ package classes.Scenes.NPCs
 				case weapons.L_DAGR2.id:
 					outputText("\n\nThe enchanted dagger is light enough for the anemone to use one-handed, and she makes a good practice of turning aside your mock blows with it while reaching in to stimulate you with her other hand.  For good measure, she nicks you with the blade itself whenever her caress elicits a distracted flush.");
 					//(HP -5, lust +10, KidXP + 3)
-					HPChange(-5, false);
+					player.HPChange(-5, false);
 					dynStats("lus", 10, "scale", false);
 					kidAXP(5);
 					break;
@@ -1376,7 +1378,7 @@ package classes.Scenes.NPCs
 				case weapons.DAGGER2.id:
 					outputText("\n\nThe dagger is light enough for the anemone to use one-handed, and she makes a good practice of turning aside your mock blows with it while reaching in to stimulate you with her other hand.  For good measure, she nicks you with the blade itself whenever her caress elicits a distracted flush.");
 					//(HP -5, lust +5, KidXP + 3)
-					HPChange(-5, false);
+					player.HPChange(-5, false);
 					dynStats("lus", 5, "scale", false);
 					kidAXP(5);
 					break;
@@ -1385,7 +1387,7 @@ package classes.Scenes.NPCs
 					outputText("\n\nThe sword seems to dance in the air, as though it were the perfect weight and balance for your daughter.  She delivers several playful thrusts at you and though you deflect all but the last, that one slips by your guard.  The girl's eyes widen as the point lunges at your breast, but it delivers barely a scratch before twisting away.");
 					outputText("\n\nPerhaps anemones are a bit too corrupt to use the sword effectively?");
 					//(HP -1, KidXP - 2)
-					HPChange(-1, false);
+					player.HPChange(-1, false);
 					kidAXP(-2);
 					break;
 				case weapons.RRAPIER.id: //[Jeweled Rapier] or [Raphael's Rapier] or [Midnight Rapier]
@@ -1407,7 +1409,7 @@ package classes.Scenes.NPCs
 					outputText("\n\nShe can barely lift the weapon you've given her, although for a while she does manage to support one end with the ground and tilt it by the haft to ward off your blows with cleverness.  Distracting her by way of a feint, you part her from it and advance with a smile full of playful menace... whereupon she shrieks and pushes you backwards, causing you to trip over the weapon and fall with a crash.");
 					//(HP - 5, KidXP - 4)
 					kidAXP(-4);
-					HPChange(-5, false);
+					player.HPChange(-5, false);
 					break;
 				case weapons.KATANA0.id: //[Katana], [Scimitar], or [Spellsword]
 				case weapons.KATANA1.id:
@@ -1421,7 +1423,7 @@ package classes.Scenes.NPCs
 					outputText("\n\nThe light sword and the light anemone seem to be a good match, and she actually manages to make several deft moves with it after your instruction.  One is a bit too deft, as she fails to rein in her swing and delivers a long, drawing cut that connects with your [leg].");
 					//(HP - 20, KidXP + 2)
 					kidAXP(4);
-					HPChange(-20, false);
+					player.HPChange(-20, false);
 					break;
 				case weapons.SPEAR_0.id: //[Spear] or [Dragoon Spear]
 				case weapons.SPEAR_1.id:
@@ -1430,7 +1432,7 @@ package classes.Scenes.NPCs
 					outputText("\n\nThe natural length of the spear and the anemone racial mindset to get close and communicate by touch don't mesh well; she chokes up well past halfway on the haft despite your repeated instruction and pokes at you from close range with very little force, the idle end of the weapon waggling through the air behind her.");
 					//(HP -5, KidXP - 1)
 					kidAXP(-1);
-					HPChange(-5, false);
+					player.HPChange(-5, false);
 					break;
 				case weapons.WHIP__0.id: //[Whip] or [Succubi's Whip]
 				case weapons.WHIP__1.id:
@@ -1457,7 +1459,7 @@ package classes.Scenes.NPCs
 				case consumables.W_STICK.id: //[Wingstick]
 					outputText("\n\nThe girl stares at the stick, still uncomprehending how you intend her to use it.  One last time, you take the weapon from her and make a throwing motion, then return it.  She looks from it back to you once more, then tosses it at your head.  As it impacts with a clunk and your vision jars, she clutches her stomach in laughter.");
 					//(HP - 10, set Kidweapon to empty, KidXP + 1)
-					HPChange(-10, false);
+					player.HPChange(-10, false);
 					flags[kFLAGS.ANEMONE_WEAPON_ID] = 0;
 					kidAXP(5);
 					break;
@@ -1512,11 +1514,11 @@ package classes.Scenes.NPCs
 					}
 					else if (dodgeScore >= 40 && dodgeScore < 70) {
 						outputText("You try to dodge the bullets that are coming towards you.  You manage to dodge some but unfortunately, you've got hit.  You see yourself bleeding.  You tell her to stop and she obeys.");
-						HPChange(-10, false);
+						player.HPChange(-10, false);
 					}
 					else {
 						outputText("You try your best to avoid but you're unable to at all.  Anemone stops firing when she sees that you're bleeding and gives you a sheepish grin.");
-						HPChange(-40, false);
+						player.HPChange(-40, false);
 					}
 					kidAXP(5);
 					break;
@@ -1529,11 +1531,11 @@ package classes.Scenes.NPCs
 					}
 					else if (dodgeScore >= 30 && dodgeScore < 60) {
 						outputText("You try to dodge the bolts that are coming towards you.  You manage to dodge some but unfortunately, you've got hit.  You see yourself bleeding.  You tell her to stop and she obeys.");
-						HPChange(-10, false);
+						player.HPChange(-10, false);
 					}
 					else {
 						outputText("You try your best to avoid but you're unable to at all.  Anemone stops firing when she sees that you're bleeding and gives you a sheepish grin.");
-						HPChange(-40, false);
+						player.HPChange(-40, false);
 					}
 					kidAXP(5);
 					break;
@@ -1541,7 +1543,7 @@ package classes.Scenes.NPCs
 				case weapons.FLAIL_1.id:
 				case weapons.FLAIL_2.id:
 					outputText("\n\nThe girl holds up the flail with no problem and you teach her how to use the weapon.  However, after dozens of swings, she accidentally hits herself with the spiked ball and looks at you with a whimper.  You tell her to stop; maybe this isn't the right weapon for her?");
-					HPChange(-10, false);
+					player.HPChange(-10, false);
 					kidAXP(-2);
 					return;
 				default:

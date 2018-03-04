@@ -2059,7 +2059,7 @@ package classes.Scenes.NPCs
 			if (emberAffection() < 75) dynStats("lus", 20);
 			player.changeFatigue( -50);
 			player.slimeFeed();
-			HPChange(player.maxHP() * .33, false);
+			player.HPChange(player.maxHP() * .33, false);
 			doNext(camp.returnToCampUseOneHour);
 		}
 
@@ -2171,7 +2171,7 @@ package classes.Scenes.NPCs
 				emberAffection(-5);
 			}
 			combat.cleanupAfterCombat();
-			HPChange(player.maxHP() * .33, false);
+			player.HPChange(player.maxHP() * .33, false);
 		}
 
 //[Catch Anal] - a dragon coq up the date (Z)

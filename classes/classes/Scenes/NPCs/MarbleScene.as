@@ -555,7 +555,7 @@ private function apologizetoWalkingTitsIMEANMARBLE():void {
 	//(apply the stat effect 'Marble's Milk' to the player)
 	applyMarblesMilk();
 	dynStats("lib", .2, "lus", (5 + player.lib/10));
-	HPChange(100,false);
+	player.HPChange(100,false);
 	player.changeFatigue(-50);
 	//increase PC lust (5+ lib/10), health (100), and lib (0.2), reduce fatigue by (50)
 	//end event
@@ -856,7 +856,7 @@ private function drinkMarbleMilk():void {
 	marbleStatusChange(5,0);
 	//(apply Marble's Milk status effect)
 	applyMarblesMilk();
-	HPChange(10, false);
+	player.HPChange(10, false);
 	player.refillHunger(20);
 	player.changeFatigue(-20);
 	//(increase player lust by a 20 and libido, if player lust is over a threshold like 60, trigger milk sex scene)

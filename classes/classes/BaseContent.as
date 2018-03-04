@@ -318,11 +318,6 @@
 		{
 			return kGAMECLASS.silly();
 		}
-
-		protected function HPChange(changeNum:Number,display:Boolean):void
-		{
-			kGAMECLASS.HPChange(changeNum,display);
-		}
 		
 		protected function playerMenu():void { 
 			kGAMECLASS.mainMenu.hideMainMenu();

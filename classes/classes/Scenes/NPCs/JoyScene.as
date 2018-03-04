@@ -1352,7 +1352,7 @@ package classes.Scenes.NPCs
 			if (refillAmount > (120 - player.hunger)) refillAmount = (120 - player.hunger); //Constrain max weight gain to +2.
 			player.refillHunger(refillAmount);
 			player.changeFatigue(-40);
-			HPChange(50 + player.maxHP() / 5, false);
+			player.HPChange(50 + player.maxHP() / 5, false);
 			dynStats("lus", 20 + (player.lib / 5));
 			//Libido reduction
 			dynStats("lib", -1);

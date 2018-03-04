@@ -262,7 +262,7 @@ package classes.Items
 			//(Healing – if hurt and uber-addicted (hasperk))
 			if (player.HP < player.maxHP() && player.hasPerk(PerkLib.MinotaurCumAddict)) {
 				outputText("\n\nThe fire of your arousal consumes your body, leaving vitality in its wake.  You feel much better!");
-				HPChange(int(player.maxHP() / 4), false);
+				player.HPChange(int(player.maxHP() / 4), false);
 			}
 			//Uber-addicted status!
 			if (player.hasPerk(PerkLib.MinotaurCumAddict) && flags[kFLAGS.MINOTAUR_CUM_REALLY_ADDICTED_STATE] <= 0 && !purified) {

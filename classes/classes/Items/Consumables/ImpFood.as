@@ -41,7 +41,7 @@ package classes.Items.Consumables
 					changes++;
 				}
 				outputText("\n\nInhuman vitality spreads through your body, invigorating you!\n");
-				game.HPChange(30 + player.tou / 3, true);
+				player.HPChange(30 + player.tou / 3, true);
 				dynStats("lus", 3, "cor", 1);
 				//Red or orange skin!
 				if (rand(30) === 0 && ColorLists.IMP_SKIN.indexOf(player.skin.tone) === -1) {
@@ -56,7 +56,7 @@ package classes.Items.Consumables
 			else {
 				outputText("The food tastes... corrupt, for lack of a better word.\n");
 				player.refillHunger(20);
-				game.HPChange(20 + player.tou / 3, true);
+				player.HPChange(20 + player.tou / 3, true);
 				dynStats("lus", 3, "cor", 1);
 			}
 			//Red or orange skin!
