@@ -31,6 +31,7 @@ package classes.Items
 		protected function get flags():DefaultDict { return kGAMECLASS.flags; }
 		protected function get camp():Camp { return kGAMECLASS.camp; }
 		protected function doNext(eventNo:Function):void { kGAMECLASS.doNext(eventNo); }
+		protected function tfChance(min:int, max:int):Boolean { return mutations.tfChance(min, max); }
 
 		public function Consumable(id:String, shortName:String = null, longName:String = null, value:Number = 0, description:String = null) {
 			super(id, shortName, longName, value, description);

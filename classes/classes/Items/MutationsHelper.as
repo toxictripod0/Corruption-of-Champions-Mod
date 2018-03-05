@@ -21,6 +21,18 @@ package classes.Items
 
 		public function MutationsHelper() {}
 
+		/**
+		 * Wrapper around rand(x) === 0 with a min and max value scaling with the changes value
+		 * @param   min  The minimum roll
+		 * @param   max  The maximum roll
+		 * @return  true, on success of the 'roll', false otherwise
+		 * @author  Stadler76
+		 */
+		public function tfChance(min:int, max:int):Boolean
+		{
+			return rand(Math.min(min + changes, max)) === 0;
+		}
+
 		public function restoreArms(tfSource:String):int
 		{
 			LOGGER.debug("called restoreArms(\"{0}\")", tfSource);
