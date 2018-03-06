@@ -66,10 +66,7 @@ package classes.Scenes
 			output = new DummyOutput();
 			
 			cut = new PregProgForTest();
-			kGAMECLASS.bog = new Bog(cut);
-			kGAMECLASS.emberScene = new EmberScene(cut);
-			kGAMECLASS.urtaPregs = new UrtaPregs(cut);
-			kGAMECLASS.telAdre = new TelAdre(cut);
+			kGAMECLASS.createScenes(cut);
 			kGAMECLASS.impScene = new ImpScene(cut, output);
 		}
 		

@@ -436,6 +436,21 @@ package classes
 			// let the logging begin!
 			Log.addTarget(traceTarget);
 		}
+
+		/**
+		 * Create scenes that use the new pregnancy system. This method is public to allow for simple testing.
+		 * @param pregnancyProgress Pregnancy progression to use for scenes, which they use to register themself
+		 */
+		public function createScenes(pregnancyProgress:PregnancyProgression): void {
+			this.bog = new Bog(pregnancyProgress);
+			
+			this.telAdre = new TelAdre(pregnancyProgress);
+			
+			this.impScene = new ImpScene(pregnancyProgress, output);
+
+			this.emberScene = new EmberScene(pregnancyProgress);
+			this.urtaPregs = new UrtaPregs(pregnancyProgress);
+		}
 		
 		/**
 		 * Create the main game instance.
@@ -460,14 +475,7 @@ package classes
 			kGAMECLASS = this;
 			
 			this.pregnancyProgress = new PregnancyProgression();
-			this.bog = new Bog(pregnancyProgress);
-			
-			this.telAdre = new TelAdre(pregnancyProgress);
-			
-			this.impScene = new ImpScene(pregnancyProgress, Output.init());
-
-			this.emberScene = new EmberScene(pregnancyProgress);
-			this.urtaPregs = new UrtaPregs(pregnancyProgress);
+			createScenes(pregnancyProgress);
 			
 			useables = new UseableLib();
 			
