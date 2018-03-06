@@ -208,7 +208,7 @@ package classes
 		public var glacialRift:GlacialRift = new GlacialRift();
 		public var highMountains:HighMountains = new HighMountains();
 		public var lake:Lake = new Lake();
-		public var mountain:Mountain = new Mountain();
+		public var mountain:Mountain;
 		public var plains:Plains = new Plains();
 		public var swamp:Swamp = new Swamp();
 		public var volcanicCrag:VolcanicCrag = new VolcanicCrag();
@@ -443,7 +443,7 @@ package classes
 		 */
 		public function createScenes(pregnancyProgress:PregnancyProgression): void {
 			this.bog = new Bog(pregnancyProgress);
-			
+			this.mountain = new Mountain(pregnancyProgress, output);
 			this.telAdre = new TelAdre(pregnancyProgress);
 			
 			this.impScene = new ImpScene(pregnancyProgress, output);
