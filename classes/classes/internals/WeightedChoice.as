@@ -34,7 +34,7 @@ package classes.internals
 			return this;
 		}
 
-		public function roll():*
+		public function choose():*
 		{
 			var random:Number = Math.random() * sum;
 			var choice:* = null;

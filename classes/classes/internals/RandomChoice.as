@@ -7,6 +7,6 @@ package classes.internals
 	 */
 	public interface RandomChoice
 	{
-		function roll():*;
+		function choose():*;
 	}
 }

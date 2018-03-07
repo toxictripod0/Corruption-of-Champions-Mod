@@ -88,7 +88,7 @@ package classes.Items.Consumables
 				}
 				if (ColorLists.GOO_MORPH.indexOf(player.hair.color) === -1) {
 					outputText("  Stranger still, the hue of your semi-liquid hair changes to ");
-					player.hair.color = colorChoice.roll();
+					player.hair.color = colorChoice.choose();
 					outputText(player.hair.color + ".");
 				}
 				dynStats("lus", 10);
@@ -105,7 +105,7 @@ package classes.Items.Consumables
 				player.underBody.restore();
 				if (ColorLists.GOO_MORPH.indexOf(player.skin.tone) === -1) {
 					outputText("  Stranger still, your skintone changes to ");
-					player.skin.tone = colorChoice.roll();
+					player.skin.tone = colorChoice.choose();
 					outputText(player.skin.tone + "!");
 					if (player.arms.type !== Arms.HUMAN || player.arms.claws.type !== Claws.NORMAL) {
 						mutations.restoreArms(tfSource);

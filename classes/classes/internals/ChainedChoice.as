@@ -34,7 +34,7 @@ package classes.internals
 			return this;
 		}
 
-		public function roll():*
+		public function choose():*
 		{
 			for (var i:int = 0; i < choices.length; i++) {
 				if (Math.random() < probs[i]) {
