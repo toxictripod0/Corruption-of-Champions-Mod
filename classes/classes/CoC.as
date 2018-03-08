@@ -254,7 +254,7 @@ package classes
 		public var kihaFollower:KihaFollower = new KihaFollower();
 		public var kihaScene:KihaScene = new KihaScene();
 		public var latexGirl:LatexGirl = new LatexGirl();
-		public var marbleScene:MarbleScene = new MarbleScene();
+		public var marbleScene:MarbleScene;
 		public var marblePurification:MarblePurification = new MarblePurification();
 		public var milkWaifu:MilkWaifu = new MilkWaifu();
 		public var raphael:Raphael = new Raphael();
@@ -450,6 +450,7 @@ package classes
 			
 			this.impScene = new ImpScene(pregnancyProgress, output);
 			this.anemoneScene = new AnemoneScene(pregnancyProgress, output);
+			this.marbleScene = new MarbleScene(pregnancyProgress, output);
 
 			// not assigned to a variable as it is self-registering, PregnancyProgress will keep a reference to the instance
 			new PlayerCentaurPregnancy(pregnancyProgress, output);
