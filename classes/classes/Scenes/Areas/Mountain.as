@@ -17,7 +17,7 @@ package classes.Scenes.Areas {
 	use namespace kGAMECLASS;
 
 	public class Mountain extends BaseContent implements IExplorable {
-		public var hellHoundScene:HellHoundScene = new HellHoundScene();
+		public var hellHoundScene:HellHoundScene;
 		public var infestedHellhoundScene:InfestedHellhoundScene = new InfestedHellhoundScene();
 		public var minotaurScene:MinotaurScene;
 		public var wormsScene:WormsScene = new WormsScene();
@@ -25,6 +25,7 @@ package classes.Scenes.Areas {
 
 		public function Mountain(pregnancyProgression:PregnancyProgression, output:GuiOutput) {
 			this.minotaurScene = new MinotaurScene(pregnancyProgression, output);
+			this.hellHoundScene = new HellHoundScene(pregnancyProgression, output);
 		}
 
 		public function isDiscovered():Boolean { return flags[kFLAGS.TIMES_EXPLORED_MOUNTAIN] > 0; }
