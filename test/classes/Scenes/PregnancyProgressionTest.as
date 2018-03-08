@@ -4,6 +4,7 @@ package classes.Scenes
 	import classes.DefaultDict;
 	import classes.Scenes.Areas.Bog;
 	import classes.Scenes.Monsters.ImpScene;
+	import classes.Scenes.NPCs.AmilyScene;
 	import classes.Scenes.NPCs.pregnancies.PlayerMousePregnancy;
 	import classes.helper.DummyOutput;
 	import org.flexunit.asserts.*;
@@ -56,6 +57,7 @@ package classes.Scenes
 			
 			kGAMECLASS.flags = new DefaultDict();
 			kGAMECLASS.impScene = new ImpScene(scenePregProg, output);
+			kGAMECLASS.amilyScene = new AmilyScene(scenePregProg, output);
 			new PlayerMousePregnancy(scenePregProg, output);
 			
 			scene = new DummyScene();
@@ -139,15 +141,6 @@ package classes.Scenes
 			scenePregProg.updatePregnancy();
 			
 			assertThat(output.collectedOutput, hasItem(containsString(MOUSE_BIRTH_MESSAGE)));
-		}
-		
-		[Test]
-		public function amilyBirth():void {
-			player.knockUpForce(PregnancyStore.PREGNANCY_AMILY, 1);
-			
-			cut.updatePregnancy();
-			
-			assertThat(kGAMECLASS.flags[kFLAGS.PC_TIMES_BIRTHED_AMILYKIDS], equalTo(1));
 		}
 		
 		[Test]
