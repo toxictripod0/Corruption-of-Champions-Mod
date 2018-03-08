@@ -4,6 +4,7 @@ package classes.Scenes
 	import classes.DefaultDict;
 	import classes.Scenes.Areas.Bog;
 	import classes.Scenes.Monsters.ImpScene;
+	import classes.Scenes.NPCs.pregnancies.PlayerMousePregnancy;
 	import classes.helper.DummyOutput;
 	import org.flexunit.asserts.*;
 	import org.hamcrest.assertThat;
@@ -31,7 +32,7 @@ package classes.Scenes
 		private static const MOUSE_BIRTH_MESSAGE:String = "Two emerge, then four, eight... you lose track.";
 		
 		private var cut:PregProgForTest;
-		private var impReg:PregProgForTest;
+		private var scenePregProg:PregProgForTest;
 		private var player:Player;
 		private var scene:DummyScene;
 		private var output:DummyOutput;
@@ -51,10 +52,11 @@ package classes.Scenes
 			output = new DummyOutput();
 			
 			cut = new PregProgForTest();
-			impReg = new PregProgForTest();
+			scenePregProg = new PregProgForTest();
 			
 			kGAMECLASS.flags = new DefaultDict();
-			kGAMECLASS.impScene = new ImpScene(impReg, output);
+			kGAMECLASS.impScene = new ImpScene(scenePregProg, output);
+			new PlayerMousePregnancy(scenePregProg, output);
 			
 			scene = new DummyScene();
 		}
@@ -97,7 +99,7 @@ package classes.Scenes
 		public function updateImpBirthOutput():void {
 			player.knockUpForce(PregnancyStore.PREGNANCY_IMP, 1);
 			
-			impReg.updatePregnancy();
+			scenePregProg.updatePregnancy();
 			
 			assertThat(output.collectedOutput, hasItem(containsString(IMP_BIRTH_MESSAGE)));
 		}
@@ -106,7 +108,7 @@ package classes.Scenes
 		public function updateImpBirthDisplayChange():void {
 			player.knockUpForce(PregnancyStore.PREGNANCY_IMP, 1);
 			
-			assertThat(impReg.updatePregnancy(), equalTo(true));
+			assertThat(scenePregProg.updatePregnancy(), equalTo(true));
 		}
 		
 		[Test]
@@ -114,9 +116,9 @@ package classes.Scenes
 			player.knockUpForce(PregnancyStore.PREGNANCY_AMILY, 1);
 			kGAMECLASS.flags[kFLAGS.AMILY_FOLLOWER] = 2;
 			
-			cut.updatePregnancy();
+			scenePregProg.updatePregnancy();
 			
-			assertThat(cut.collectedOutput, hasItem(containsString(MOUSE_BIRTH_MESSAGE)));
+			assertThat(output.collectedOutput, hasItem(containsString(MOUSE_BIRTH_MESSAGE)));
 		}
 		
 		[Test]
@@ -124,9 +126,9 @@ package classes.Scenes
 			player.knockUpForce(PregnancyStore.PREGNANCY_AMILY, 1);
 			kGAMECLASS.flags[kFLAGS.AMILY_VISITING_URTA] = 2;
 			
-			cut.updatePregnancy();
+			scenePregProg.updatePregnancy();
 			
-			assertThat(cut.collectedOutput, hasItem(containsString(MOUSE_BIRTH_MESSAGE)));
+			assertThat(output.collectedOutput, hasItem(containsString(MOUSE_BIRTH_MESSAGE)));
 		}
 		
 		[Test]
@@ -134,9 +136,9 @@ package classes.Scenes
 			player.knockUpForce(PregnancyStore.PREGNANCY_AMILY, 1);
 			kGAMECLASS.flags[kFLAGS.IN_PRISON] = 1;
 			
-			cut.updatePregnancy();
+			scenePregProg.updatePregnancy();
 			
-			assertThat(cut.collectedOutput, hasItem(containsString(MOUSE_BIRTH_MESSAGE)));
+			assertThat(output.collectedOutput, hasItem(containsString(MOUSE_BIRTH_MESSAGE)));
 		}
 		
 		[Test]
