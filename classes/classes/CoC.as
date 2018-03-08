@@ -40,6 +40,7 @@ package classes
 	import classes.Scenes.Dungeons.HelDungeon.*;
 	import classes.Scenes.Explore.*;
 	import classes.Scenes.Monsters.*;
+	import classes.Scenes.Monsters.pregnancies.PlayerCentaurPregnancy;
 	import classes.Scenes.NPCs.*;
 	import classes.Scenes.Places.*;
 	import classes.Scenes.Places.TelAdre.*;
@@ -447,6 +448,9 @@ package classes
 			this.telAdre = new TelAdre(pregnancyProgress);
 			
 			this.impScene = new ImpScene(pregnancyProgress, output);
+
+			// not assigned to a variable as it is self-registering, PregnancyProgress will keep a reference to the instance
+			new PlayerCentaurPregnancy(pregnancyProgress, output);
 
 			this.emberScene = new EmberScene(pregnancyProgress);
 			this.urtaPregs = new UrtaPregs(pregnancyProgress);
