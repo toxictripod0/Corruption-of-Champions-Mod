@@ -4,6 +4,7 @@ package classes.Items
 	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.internals.LoggerFactory;
+	import classes.internals.WeightedChoice;
 	import classes.lists.ColorLists;
 	import mx.logging.ILogger;
 	
@@ -18,6 +19,25 @@ package classes.Items
 		
 		public var changes:int = 0;
 		public var changeLimit:int = 1;
+
+		private var _lizardSkinToneChoices:WeightedChoice = null;
+		public function get lizardSkinToneChoices():WeightedChoice
+		{
+			if (_lizardSkinToneChoices === null) {
+				_lizardSkinToneChoices = new WeightedChoice()
+					// -> 10% * 1/2 =  5%
+					.add(["purple", "deep pink"],     5) 
+					.add(["silver", "light gray"],    5)
+					// -> 90% * 1/5 = 18%
+					.add(["red",    "orange"],       18)
+					.add(["green",  "yellow green"], 18)
+					.add(["white",  "light gray"],   18)
+					.add(["blue",   "ocean blue"],   18)
+					.add(["black",  "dark gray"],    18);
+			}
+
+			return _lizardSkinToneChoices;
+		}
 
 		public function MutationsHelper() {}
 
@@ -350,20 +370,7 @@ package classes.Items
 
 		public function newLizardSkinTone():Array
 		{
-			if (rand(10) == 0) {
-				//rare skinTone
-				return rand(2) == 0 ? ["purple", "deep pink"] : ["silver", "light gray"];
-			}
-
-			//non rare skinTone
-			switch (rand(5)) {
-				case 0: return ["red", "orange"];
-				case 1: return ["green", "yellow green"];
-				case 2: return ["white", "light gray"];
-				case 3: return ["blue", "ocean blue"];
-				case 4: return ["black", "dark gray"];
-				default: return ["invalid", "invalid"]; // Will never happen. Suppresses 'Error: Function does not return a value.' 
-			}
+			return lizardSkinToneChoices.choose();
 		}
 
 		public function newCockatriceColors():Array
