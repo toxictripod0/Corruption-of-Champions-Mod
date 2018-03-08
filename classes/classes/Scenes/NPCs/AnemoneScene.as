@@ -11,6 +11,8 @@ package classes.Scenes.NPCs
 	import classes.Items.Weapon;
 	import classes.Items.WeaponLib;
 	import classes.Items.Weapons.*;
+	import classes.Scenes.NPCs.pregnancies.PlayerAnemonePregnancy;
+	import classes.Scenes.PregnancyProgression;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
 
@@ -58,9 +60,11 @@ package classes.Scenes.NPCs
 		//  KID_SITTER:int = 757; //0 = no sitter, 1 = possible, 2 = doing dat shit
 		//  HAD_KID_A_DREAM:int = 758;
 
-		public function AnemoneScene()
+		public function AnemoneScene(pregnancyProgression:PregnancyProgression, output:GuiOutput)
 		{
 			CoC.timeAwareClassAdd(this);
+			
+			new PlayerAnemonePregnancy(pregnancyProgression, output);
 		}
 		
 		//Implementation of TimeAwareInterface

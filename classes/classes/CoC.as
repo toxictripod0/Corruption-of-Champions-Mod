@@ -236,7 +236,7 @@ package classes
 		public var succubusScene:SuccubusScene = new SuccubusScene();
 		// Scenes/NPC/
 		public var amilyScene:AmilyScene = new AmilyScene();
-		public var anemoneScene:AnemoneScene = new AnemoneScene();
+		public var anemoneScene:AnemoneScene;
 		public var arianScene:ArianScene = new ArianScene();
 		public var ceraphScene:CeraphScene = new CeraphScene();
 		public var ceraphFollowerScene:CeraphFollowerScene = new CeraphFollowerScene();
@@ -449,6 +449,7 @@ package classes
 			this.telAdre = new TelAdre(pregnancyProgress);
 			
 			this.impScene = new ImpScene(pregnancyProgress, output);
+			this.anemoneScene = new AnemoneScene(pregnancyProgress, output);
 
 			// not assigned to a variable as it is self-registering, PregnancyProgress will keep a reference to the instance
 			new PlayerCentaurPregnancy(pregnancyProgress, output);
