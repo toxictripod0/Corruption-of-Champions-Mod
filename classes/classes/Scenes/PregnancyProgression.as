@@ -187,41 +187,6 @@ package classes.Scenes
 				LOGGER.debug("Could not find a mapped vaginal pregnancy for mother {0}, father {1} - using legacy pregnancy progression", PregnancyStore.PREGNANCY_PLAYER, player.pregnancyType);;
 			}
 
-			//Pregnancy 4 Satyrs
-			if (player.pregnancyType === PregnancyStore.PREGNANCY_SATYR) {
-				//Stage 1: 
-				if (player.pregnancyIncubation === 150) {
-					outputText("\n<b>You find that you're feeling quite sluggish these days; you just don't have as much energy as you used to.  You're also putting on weight.</b>\n");
-					displayedUpdate = true;
-				}
-				//Stage 2: 
-				if (player.pregnancyIncubation === 125) {
-					outputText("\n<b>Your belly is getting bigger and bigger.  Maybe your recent urges are to blame for this development?</b>\n");
-					displayedUpdate = true;
-				}
-				//Stage 3: 
-				if (player.pregnancyIncubation === 100) {
-					outputText("\n<b>You can feel the strangest fluttering sensations in your distended belly; it must be a pregnancy.  You should eat more and drink plenty of wine so your baby can grow properly.  Wait, wine...?</b>\n");
-					displayedUpdate = true;
-				}
-				//Stage 4: 
-				if (player.pregnancyIncubation === 75) {
-					outputText("\n<b>Sometimes you feel a bump in your pregnant belly.  You wonder if it's your baby complaining about your moving about.</b>\n");
-					displayedUpdate = true;
-				}
-				//Stage 5: 
-				if (player.pregnancyIncubation === 50) {
-					outputText("\n<b>With your bloating gut, you are loathe to exert yourself in any meaningful manner; you feel horny and hungry all the time...</b>\n");
-					displayedUpdate = true;
-					//temp min lust up +5
-				}
-				//Stage 6: 
-				if (player.pregnancyIncubation === 30) {
-					outputText("\n<b>The baby you're carrying constantly kicks your belly in demand for food and wine, and you feel sluggish and horny.  You can't wait to birth this little one so you can finally rest for a while.</b>\n");
-					displayedUpdate = true;
-					//temp min lust up addl +5
-				}
-			}
 			//BASILISK Pregnancy!
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_BASILISK || player.pregnancyType === PregnancyStore.PREGNANCY_BENOIT) {	
 				if (player.pregnancyIncubation === 185) {
@@ -636,10 +601,6 @@ package classes.Scenes
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_COCKATRICE) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_COCKATRICE);
 				getGame().highMountains.cockatriceScene.cockatriceBirth();
-			}
-			//Satyr vag preg
-			if (player.pregnancyType === PregnancyStore.PREGNANCY_SATYR) {
-				getGame().plains.satyrScene.satyrBirth(true);
 			}
 			
 			//Give birth to sirens.
