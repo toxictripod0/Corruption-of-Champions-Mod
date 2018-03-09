@@ -192,7 +192,7 @@ package classes
 		public var achievementList:Achievements = new Achievements();
 		public var camp:Camp = new Camp(campInitialize);
 		public var dreams:Dreams = new Dreams();
-		public var dungeons:DungeonCore = new DungeonCore();
+		public var dungeons:DungeonCore;
 		public var equipmentUpgrade:ItemUpgrade = new ItemUpgrade();
 		public var followerInteractions:FollowerInteractions = new FollowerInteractions();
 		public var inventory:Inventory = new Inventory(saves);
@@ -444,6 +444,8 @@ package classes
 		 * @param pregnancyProgress Pregnancy progression to use for scenes, which they use to register themself
 		 */
 		public function createScenes(pregnancyProgress:PregnancyProgression): void {
+			this.dungeons = new DungeonCore(pregnancyProgress);
+			
 			this.bog = new Bog(pregnancyProgress);
 			this.mountain = new Mountain(pregnancyProgress, output);
 			this.swamp = new Swamp(pregnancyProgress, output);

@@ -186,10 +186,6 @@ package classes.Scenes
 			} else {
 				LOGGER.debug("Could not find a mapped vaginal pregnancy for mother {0}, father {1} - using legacy pregnancy progression", PregnancyStore.PREGNANCY_PLAYER, player.pregnancyType);;
 			}
-			
-			if (player.pregnancyType === PregnancyStore.PREGNANCY_SAND_WITCH) {
-				displayedUpdate = getGame().dungeons.desertcave.sandPregUpdate();
-			}
 
 			//Pregnancy 4 Satyrs
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_SATYR) {
@@ -631,11 +627,6 @@ package classes.Scenes
 				scene.vaginalBirth();
 			} else {
 				LOGGER.debug("Could not find a mapped vaginal pregnancy scene for mother {0}, father {1} - using legacy pregnancy progression", PregnancyStore.PREGNANCY_PLAYER, player.pregnancyType);;
-			}
-
-			if (player.pregnancyType === PregnancyStore.PREGNANCY_SAND_WITCH) {
-				detectVaginalBirth(PregnancyStore.PREGNANCY_SAND_WITCH);
-				getGame().dungeons.desertcave.birthAWitch();
 			}
 			
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_BASILISK) {
