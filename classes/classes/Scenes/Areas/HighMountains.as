@@ -21,10 +21,11 @@ package classes.Scenes.Areas {
 		public var minotaurMobScene:MinotaurMobScene = new MinotaurMobScene();
 		public var izumiScenes:IzumiScene = new IzumiScene();
 		public var phoenixScene:PhoenixScene = new PhoenixScene();
-		public var cockatriceScene:CockatriceScene = new CockatriceScene();
+		public var cockatriceScene:CockatriceScene;
 
 		public function HighMountains(pregnancyProgression:PregnancyProgression, output:GuiOutput) {
 			this.basiliskScene = new BasiliskScene(pregnancyProgression, output);
+			this.cockatriceScene = new CockatriceScene(pregnancyProgression, output);
 		}
 
 		public function isDiscovered():Boolean { return flags[kFLAGS.DISCOVERED_HIGH_MOUNTAIN] > 0; }

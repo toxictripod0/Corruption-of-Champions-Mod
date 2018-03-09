@@ -6,10 +6,15 @@ package classes.Scenes.Areas.HighMountains {
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Items.ArmorLib;
 	import classes.Scenes.Monsters.StareMonster;
+	import classes.Scenes.Monsters.pregnancies.PlayerCockatricePregnancy;
+	import classes.Scenes.PregnancyProgression;
+	import classes.internals.GuiOutput;
 	import classes.lists.BreastCup;
 
 	public class CockatriceScene extends BaseContent {
-		public function CockatriceScene() {}
+		public function CockatriceScene(pregnancyProgression:PregnancyProgression, output:GuiOutput) {
+			new PlayerCockatricePregnancy(pregnancyProgression, output);
+		}
 
 		//Intros and Fight Texts.
 		public function greeting():void {
