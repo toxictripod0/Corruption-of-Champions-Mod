@@ -43,6 +43,7 @@ package classes
 	import classes.Scenes.Monsters.pregnancies.PlayerBunnyPregnancy;
 	import classes.Scenes.Monsters.pregnancies.PlayerCentaurPregnancy;
 	import classes.Scenes.NPCs.*;
+	import classes.Scenes.NPCs.pregnancies.PlayerBenoitPregnancy;
 	import classes.Scenes.Places.*;
 	import classes.Scenes.Places.TelAdre.*;
 	import classes.Scenes.Quests.*;
@@ -208,7 +209,7 @@ package classes
 		public var forest:Forest = new Forest();
 		public var deepWoods:DeepWoods = new DeepWoods(forest);
 		public var glacialRift:GlacialRift = new GlacialRift();
-		public var highMountains:HighMountains = new HighMountains();
+		public var highMountains:HighMountains;
 		public var lake:Lake;
 		public var mountain:Mountain;
 		public var plains:Plains;
@@ -448,6 +449,7 @@ package classes
 			
 			this.bog = new Bog(pregnancyProgress);
 			this.mountain = new Mountain(pregnancyProgress, output);
+			this.highMountains = new HighMountains(pregnancyProgress, output);
 			this.swamp = new Swamp(pregnancyProgress, output);
 			this.plains = new Plains(pregnancyProgress, output);
 			this.telAdre = new TelAdre(pregnancyProgress);
@@ -463,7 +465,8 @@ package classes
 			// not assigned to a variable as it is self-registering, PregnancyProgress will keep a reference to the instance
 			new PlayerCentaurPregnancy(pregnancyProgress, output);
 			new PlayerBunnyPregnancy(pregnancyProgress, output, mutations);
-
+			new PlayerBenoitPregnancy(pregnancyProgress, output);
+			
 			this.emberScene = new EmberScene(pregnancyProgress);
 			this.urtaPregs = new UrtaPregs(pregnancyProgress);
 		}

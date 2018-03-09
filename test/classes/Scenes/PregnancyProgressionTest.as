@@ -6,6 +6,7 @@ package classes.Scenes
 	import classes.Scenes.Areas.Swamp;
 	import classes.Scenes.Monsters.ImpScene;
 	import classes.Scenes.NPCs.AmilyScene;
+	import classes.Scenes.NPCs.pregnancies.PlayerBenoitPregnancy;
 	import classes.Scenes.NPCs.pregnancies.PlayerMousePregnancy;
 	import classes.helper.DummyOutput;
 	import org.flexunit.asserts.*;
@@ -62,6 +63,7 @@ package classes.Scenes
 			kGAMECLASS.swamp = new Swamp(scenePregProg, output);
 			
 			new PlayerMousePregnancy(scenePregProg, output);
+			new PlayerBenoitPregnancy(scenePregProg, output);
 			
 			scene = new DummyScene();
 		}
@@ -150,7 +152,7 @@ package classes.Scenes
 		public function benoitTimeBasedResetIncubation():void {
 			player.knockUpForce(PregnancyStore.PREGNANCY_BENOIT, 1);
 			
-			cut.updatePregnancy();
+			scenePregProg.updatePregnancy();
 			
 			assertThat(kGAMECLASS.player.pregnancyIncubation, equalTo(3));
 		}
@@ -159,7 +161,7 @@ package classes.Scenes
 		public function benoitTimeBasedResetIncubationTwo():void {
 			player.knockUpForce(PregnancyStore.PREGNANCY_BENOIT, 2);
 			
-			cut.updatePregnancy();
+			scenePregProg.updatePregnancy();
 			
 			assertThat(kGAMECLASS.player.pregnancyIncubation, equalTo(3));
 		}
@@ -168,7 +170,7 @@ package classes.Scenes
 		public function benoitTimeBasedNoDisplayOutput():void {
 			player.knockUpForce(PregnancyStore.PREGNANCY_BENOIT, 1);
 			
-			assertThat(cut.updatePregnancy(), equalTo(false));
+			assertThat(scenePregProg.updatePregnancy(), equalTo(false));
 		}
 		
 		[Test]

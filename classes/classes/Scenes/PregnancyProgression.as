@@ -83,21 +83,6 @@ package classes.Scenes
 			return pregnancyTypeFather in vaginalPregnancyScenes;
 		}
 		
-		private function giveBirth():void
-		{
-			if (player.fertility < 15) player.fertility++;
-			if (player.fertility < 25) player.fertility++;
-			if (player.fertility < 40) player.fertility++;
-			if (!player.hasStatusEffect(StatusEffects.Birthed)) player.createStatusEffect(StatusEffects.Birthed,1,0,0,0);
-			else {
-				player.addStatusValue(StatusEffects.Birthed,1,1);
-				if (player.findPerk(PerkLib.BroodMother) < 0 && player.statusEffectv1(StatusEffects.Birthed) >= 10) {
-					output.text("\n<b>You have gained the Brood Mother perk</b> (Pregnancies progress twice as fast as a normal woman's).\n");
-					player.createPerk(PerkLib.BroodMother,0,0,0,0);
-				}
-			}
-		}
-		
 		public function updatePregnancy():Boolean
 		{
 			var displayedUpdate:Boolean = false;
@@ -109,8 +94,6 @@ package classes.Scenes
 
 			displayedUpdate = cancelHeat();
 			
-			if (player.pregnancyIncubation === 1 && player.pregnancyType !== PregnancyStore.PREGNANCY_BENOIT) giveBirth();
-
 			if (player.pregnancyIncubation > 0 && player.pregnancyIncubation < 2) player.knockUpForce(player.pregnancyType, 1);
 			//IF INCUBATION IS VAGINAL
 			if (player.pregnancyIncubation > 1) {
@@ -122,7 +105,7 @@ package classes.Scenes
 			}
 			
 			amilyPregnancyFailsafe();
-			displayedUpdate = benoitBirth(displayedUpdate);
+			
 			if (player.pregnancyIncubation === 1) {
 				displayedUpdate = updateVaginalBirth(displayedUpdate);
 			}
@@ -152,31 +135,6 @@ package classes.Scenes
 			return false;
 		}
 		
-		/**
-		 * Benoit birth or incubation reset code.
-		 * Extracted because it does not behave like other birth code. 
-		 * @param	displayUpdate current display update variable state 
-		 * @return true if something in this function updates the displayed text,
-		 * 				otherwise returns the state that was passed as parameter
-		 */
-		private function benoitBirth(displayUpdate:Boolean):Boolean 
-		{
-			if (player.pregnancyType === PregnancyStore.PREGNANCY_BENOIT && player.pregnancyIncubation <= 2) {
-				if (getGame().time.hours !== 5 && getGame().time.hours !== 6) {
-					player.knockUpForce(player.pregnancyType, 3); //Make sure eggs are only birthed early in the morning
-				}
-				else {
-					player.knockUpForce(); //Clear Pregnancy
-					giveBirth();
-					getGame().bazaar.benoit.popOutBenoitEggs();
-					
-					return true;
-				}
-			}
-			
-			return displayUpdate;
-		}
-		
 		private function updateVaginalPregnancy(displayedUpdate:Boolean):Boolean
 		{
 			if (hasRegisteredVaginalScene(PregnancyStore.PREGNANCY_PLAYER, player.pregnancyType)) {
@@ -187,64 +145,6 @@ package classes.Scenes
 				LOGGER.debug("Could not find a mapped vaginal pregnancy for mother {0}, father {1} - using legacy pregnancy progression", PregnancyStore.PREGNANCY_PLAYER, player.pregnancyType);;
 			}
 
-			//BASILISK Pregnancy!
-			if (player.pregnancyType === PregnancyStore.PREGNANCY_BASILISK || player.pregnancyType === PregnancyStore.PREGNANCY_BENOIT) {	
-				if (player.pregnancyIncubation === 185) {
-					outputText("\n<b>Your belly grumbles as if empty, even though you ate not long ago.  Perhaps with all the exercise you're getting you just need to eat a little bit more.</b>\n");
-					displayedUpdate = true;
-				}
-				if (player.pregnancyIncubation === 160) {
-					outputText("\n<b>Your belly looks a little pudgy");
-					if (player.thickness > 60 && player.tone < 40) outputText(" even for you");
-					outputText(", maybe you should cut back on all the food you've been consuming lately?</b>\n");
-					displayedUpdate = true;	
-				}
-				if (player.pregnancyIncubation === 140) {
-					outputText("\n<b>Your belly is definitely getting bigger, and no matter what you do, you can't seem to stop yourself from eating at the merest twinge of hunger.  The only explanation you can come up with is that you've gotten pregnant during your travels.  Hopefully it won't inconvenience your adventuring.</b>\n");
-					displayedUpdate = true;				
-				}
-				if (player.pregnancyIncubation === 110) {
-					outputText("\n<b>Your belly has gotten nice and big, perhaps as big as you remember the bellies of the pregnant women back home being.  The elders always did insist on everyone doing their part to keep the population high enough to sustain the loss of a champion every year.  You give yourself a little hug, getting a surge of happiness from your hormone-addled body.  Pregnancy sure is great!</b>\n");
-					displayedUpdate = true;
-				}
-				if (player.pregnancyIncubation === 72) {
-					outputText("\n<b>The huge size of your pregnant belly constantly impedes your movement, but the constant squirming and shaking of your unborn offspring makes you pretty sure you won't have to carry them much longer.  A sense of motherly pride wells up in your breast - you just know you'll have such wonderful babies.");
-					if (player.cor < 50) outputText("  You shudder and shake your head, wondering why you're thinking such unusual things.");
-					outputText("</b>\n");
-					displayedUpdate = true;
-				}
-				if (player.pregnancyIncubation === 32 || player.pregnancyIncubation === 64 || player.pregnancyIncubation === 85 || player.pregnancyIncubation === 150) {
-					//Increase lactation!
-					if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() >= 1 && player.biggestLactation() < 2) {
-						outputText("\nYour breasts feel swollen with all the extra milk they're accumulating.\n");
-						player.boostLactation(.5);
-						displayedUpdate = true;
-					}
-					if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() > 0 && player.biggestLactation() < 1) {
-						outputText("\nDrops of breastmilk escape your nipples as your body prepares for the coming birth.\n");
-						player.boostLactation(.5);
-						displayedUpdate = true;
-					}				
-					//Lactate if large && not lactating
-					if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() === 0) {
-						outputText("\n<b>You realize your breasts feel full, and occasionally lactate</b>.  It must be due to the pregnancy.\n");
-						player.boostLactation(1);
-						displayedUpdate = true;
-					}
-					//Enlarge if too small for lactation
-					if (player.biggestTitSize() === 2 && player.mostBreastsPerRow() > 1) {
-						outputText("\n<b>Your breasts have swollen to C-cups,</b> in light of your coming pregnancy.\n");
-						player.growTits(1, 1, false, 3);
-						displayedUpdate = true;
-					}
-					//Enlarge if really small!
-					if (player.biggestTitSize() === 1 && player.mostBreastsPerRow() > 1) {
-						outputText("\n<b>Your breasts have grown to B-cups,</b> likely due to the hormonal changes of your pregnancy.\n");
-						player.growTits(1, 1, false, 3);
-						displayedUpdate = true;
-					}
-				}
-			}
 			//COCKATRICE Pregnancy!
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_COCKATRICE) {	
 				if (player.pregnancyIncubation === 185) {
@@ -594,10 +494,12 @@ package classes.Scenes
 				LOGGER.debug("Could not find a mapped vaginal pregnancy scene for mother {0}, father {1} - using legacy pregnancy progression", PregnancyStore.PREGNANCY_PLAYER, player.pregnancyType);;
 			}
 			
-			if (player.pregnancyType === PregnancyStore.PREGNANCY_BASILISK) {
-				detectVaginalBirth(PregnancyStore.PREGNANCY_BASILISK);
-				getGame().highMountains.basiliskScene.basiliskBirth();
+			// TODO find a better way to do this
+			// due to non-conforming pregancy code
+			if (player.pregnancyType === PregnancyStore.PREGNANCY_BENOIT && player.pregnancyIncubation === 3) {
+				return displayedUpdate;
 			}
+			
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_COCKATRICE) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_COCKATRICE);
 				getGame().highMountains.cockatriceScene.cockatriceBirth();

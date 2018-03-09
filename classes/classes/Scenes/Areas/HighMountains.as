@@ -8,13 +8,14 @@ package classes.Scenes.Areas {
 	import classes.Scenes.API.FnHelpers;
 	import classes.Scenes.API.IExplorable;
 	import classes.Scenes.Areas.HighMountains.*;
+	import classes.Scenes.PregnancyProgression;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
 
 	use namespace kGAMECLASS;
 
 	public class HighMountains extends BaseContent implements IExplorable {
-		public var basiliskScene:BasiliskScene = new BasiliskScene();
+		public var basiliskScene:BasiliskScene;
 		public var harpyScene:HarpyScene = new HarpyScene();
 		public var minervaScene:MinervaScene = new MinervaScene();
 		public var minotaurMobScene:MinotaurMobScene = new MinotaurMobScene();
@@ -22,7 +23,9 @@ package classes.Scenes.Areas {
 		public var phoenixScene:PhoenixScene = new PhoenixScene();
 		public var cockatriceScene:CockatriceScene = new CockatriceScene();
 
-		public function HighMountains() {}
+		public function HighMountains(pregnancyProgression:PregnancyProgression, output:GuiOutput) {
+			this.basiliskScene = new BasiliskScene(pregnancyProgression, output);
+		}
 
 		public function isDiscovered():Boolean { return flags[kFLAGS.DISCOVERED_HIGH_MOUNTAIN] > 0; }
 		public function discover():void {
