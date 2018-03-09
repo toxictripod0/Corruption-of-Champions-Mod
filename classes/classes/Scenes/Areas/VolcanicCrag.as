@@ -10,16 +10,20 @@ package classes.Scenes.Areas {
 	import classes.Scenes.API.FnHelpers;
 	import classes.Scenes.API.IExplorable;
 	import classes.Scenes.Areas.VolcanicCrag.*;
+	import classes.Scenes.PregnancyProgression;
+	import classes.internals.GuiOutput;
 
 	use namespace kGAMECLASS;
 
 	public class VolcanicCrag extends BaseContent implements IExplorable {
-		public var behemothScene:BehemothScene = new BehemothScene();
+		public var behemothScene:BehemothScene;
 		/* [INTERMOD:8chan]
 		 public var volcanicGolemScene:VolcanicGolemScene           = new VolcanicGolemScene();
 		 public var corruptedSandWitchScene:CorruptedSandWitchScene = new CorruptedSandWitchScene();
 		 */
-		public function VolcanicCrag() {}
+		public function VolcanicCrag(pregnancyProgression:PregnancyProgression, output:GuiOutput) {
+			this.behemothScene = new BehemothScene(pregnancyProgression, output);
+		}
 
 		public function isDiscovered():Boolean { return flags[kFLAGS.DISCOVERED_VOLCANO_CRAG] > 0; }
 

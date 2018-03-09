@@ -214,7 +214,7 @@ package classes
 		public var mountain:Mountain;
 		public var plains:Plains;
 		public var swamp:Swamp;
-		public var volcanicCrag:VolcanicCrag = new VolcanicCrag();
+		public var volcanicCrag:VolcanicCrag;
 		
 		public var exploration:Exploration = new Exploration(); //Goes last in order to get it working.
 		// Scenes/Combat/
@@ -450,6 +450,7 @@ package classes
 			this.bog = new Bog(pregnancyProgress);
 			this.mountain = new Mountain(pregnancyProgress, output);
 			this.highMountains = new HighMountains(pregnancyProgress, output);
+			this.volcanicCrag = new VolcanicCrag(pregnancyProgress, output);
 			this.swamp = new Swamp(pregnancyProgress, output);
 			this.plains = new Plains(pregnancyProgress, output);
 			this.telAdre = new TelAdre(pregnancyProgress);
