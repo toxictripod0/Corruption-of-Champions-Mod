@@ -83,6 +83,10 @@ package classes.Scenes
 			return pregnancyTypeFather in vaginalPregnancyScenes;
 		}
 		
+		/**
+		 * Update the current vaginal and anal pregnancies (if any). Updates player status and outputs messages related to pregnancy or birth. 
+		 * @return true if the output needs to be updated
+		 */
 		public function updatePregnancy():Boolean
 		{
 			var displayedUpdate:Boolean = false;
