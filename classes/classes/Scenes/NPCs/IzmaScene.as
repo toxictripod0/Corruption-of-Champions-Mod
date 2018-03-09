@@ -3,6 +3,8 @@
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Scenes.API.Encounter;
+	import classes.Scenes.NPCs.pregnancies.PlayerIzmaPregnancy;
+	import classes.Scenes.PregnancyProgression;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
 
@@ -23,12 +25,14 @@ public class IzmaScene extends NPCAwareContent implements TimeAwareInterface, En
 		public var pregnancy:PregnancyStore;
 		public var izmaelScene:IzmaelScene = new IzmaelScene();
 		
-		public function IzmaScene()
+		public function IzmaScene(pregnancyProgression:PregnancyProgression, output:GuiOutput)
 		{
 			pregnancy = new PregnancyStore(kFLAGS.IZMA_PREGNANCY_TYPE, kFLAGS.IZMA_INCUBATION, 0, 0);
 			pregnancy.addPregnancyEventSet(PregnancyStore.PREGNANCY_PLAYER, 250, 200, 150, 100, 50);
 												//Event: 0 (= not pregnant),  1,   2,   3,   4,  5,  6 (< 50)
 			CoC.timeAwareClassAdd(this);
+			
+			new PlayerIzmaPregnancy(pregnancyProgression, output);
 		}
 		
 		private var checkedIzmaLatexy:int; //Make sure we test each of these events just once in timeChangeLarge
