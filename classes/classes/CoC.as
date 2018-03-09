@@ -209,7 +209,7 @@ package classes
 		public var deepWoods:DeepWoods = new DeepWoods(forest);
 		public var glacialRift:GlacialRift = new GlacialRift();
 		public var highMountains:HighMountains = new HighMountains();
-		public var lake:Lake = new Lake();
+		public var lake:Lake;
 		public var mountain:Mountain;
 		public var plains:Plains = new Plains();
 		public var swamp:Swamp;
@@ -455,6 +455,7 @@ package classes
 			this.jojoScene = new JojoScene(pregnancyProgress, output);
 			this.amilyScene = new AmilyScene(pregnancyProgress, output);
 			this.izmaScene = new IzmaScene(pregnancyProgress, output);
+			this.lake = new Lake(pregnancyProgress, output);
 
 			// not assigned to a variable as it is self-registering, PregnancyProgress will keep a reference to the instance
 			new PlayerCentaurPregnancy(pregnancyProgress, output);

@@ -8,6 +8,8 @@ package classes.Scenes.Areas {
 	import classes.Scenes.API.FnHelpers;
 	import classes.Scenes.API.IExplorable;
 	import classes.Scenes.Areas.Lake.*;
+	import classes.Scenes.PregnancyProgression;
+	import classes.internals.GuiOutput;
 
 	use namespace kGAMECLASS;
 
@@ -15,13 +17,15 @@ package classes.Scenes.Areas {
 
 		public var fetishCultistScene:FetishCultistScene = new FetishCultistScene();
 		public var fetishZealotScene:FetishZealotScene = new FetishZealotScene();
-		public var gooGirlScene:GooGirlScene = new GooGirlScene();
+		public var gooGirlScene:GooGirlScene;
 		public var greenSlimeScene:GreenSlimeScene = new GreenSlimeScene();
 		public var kaiju:Kaiju = new Kaiju();
 		public var calluScene:CalluScene = new CalluScene();
 		public var swordInStone:SwordInStone = new SwordInStone();
 
-		public function Lake() {}
+		public function Lake(pregnancyProgression:PregnancyProgression, output:GuiOutput) {
+			this.gooGirlScene = new GooGirlScene(pregnancyProgression, output);
+		}
 
 		public function isDiscovered():Boolean { return flags[kFLAGS.TIMES_EXPLORED_LAKE] > 0; }
 		public function discover():void {

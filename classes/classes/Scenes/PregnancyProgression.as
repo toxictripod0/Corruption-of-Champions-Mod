@@ -190,47 +190,6 @@ package classes.Scenes
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_SAND_WITCH) {
 				displayedUpdate = getGame().dungeons.desertcave.sandPregUpdate();
 			}
-			
-			//Goo Pregnancy!
-			if (player.pregnancyType === PregnancyStore.PREGNANCY_GOO_GIRL) {	
-				if (player.pregnancyIncubation === 72) {
-					outputText("\n<b>The huge size of your pregnant belly constantly impedes your movement, but the constant squirming and shaking of your slime-packed belly is reassuring in its own way.  You can't wait to see how it feels to have the slime flowing and gushing through your lips, stroking you intimately as you birth new life into this world.");
-					if (player.cor < 50) outputText("  You shudder and shake your head, wondering why you're thinking such unusual things.");
-					outputText("</b>\n");
-					displayedUpdate = true;
-				}
-				if (player.pregnancyIncubation === 32 || player.pregnancyIncubation === 64 || player.pregnancyIncubation === 82 || player.pregnancyIncubation === 16) {
-					//Increase lactation!
-					if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() >= 1 && player.biggestLactation() < 2) {
-						outputText("\nYour breasts feel swollen with all the extra milk they're accumulating.\n");
-						player.boostLactation(.5);
-						displayedUpdate = true;
-					}
-					if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() > 0 && player.biggestLactation() < 1) {
-						outputText("\nDrops of breastmilk escape your nipples as your body prepares for the coming birth.\n");
-						player.boostLactation(.5);
-						displayedUpdate = true;
-					}				
-					//Lactate if large && not lactating
-					if (player.biggestTitSize() >= 3 && player.mostBreastsPerRow() > 1 && player.biggestLactation() === 0) {
-						outputText("\n<b>You realize your breasts feel full, and occasionally lactate</b>.  It must be due to the pregnancy.\n");
-						player.boostLactation(1);
-						displayedUpdate = true;
-					}
-					//Enlarge if too small for lactation
-					if (player.biggestTitSize() === 2 && player.mostBreastsPerRow() > 1) {
-						outputText("\n<b>Your breasts have swollen to C-cups,</b> in light of your coming pregnancy.\n");
-						player.growTits(1, 1, false, 3);
-						displayedUpdate = true;
-					}
-					//Enlarge if really small!
-					if (player.biggestTitSize() === 1 && player.mostBreastsPerRow() > 1) {
-						outputText("\n<b>Your breasts have grown to B-cups,</b> likely due to the hormonal changes of your pregnancy.\n");
-						player.growTits(1, 1, false, 3);
-						displayedUpdate = true;
-					}
-				}
-			}
 
 			//Pregnancy 4 Satyrs
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_SATYR) {
@@ -677,11 +636,6 @@ package classes.Scenes
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_SAND_WITCH) {
 				detectVaginalBirth(PregnancyStore.PREGNANCY_SAND_WITCH);
 				getGame().dungeons.desertcave.birthAWitch();
-			}
-
-			//GOO BIRF
-			if (player.pregnancyType === PregnancyStore.PREGNANCY_GOO_GIRL) {
-				getGame().lake.gooGirlScene.gooPregVagBirth();
 			}
 			
 			if (player.pregnancyType === PregnancyStore.PREGNANCY_BASILISK) {
