@@ -44,6 +44,7 @@ package classes
 	import classes.Scenes.Monsters.pregnancies.PlayerCentaurPregnancy;
 	import classes.Scenes.NPCs.*;
 	import classes.Scenes.NPCs.pregnancies.PlayerBenoitPregnancy;
+	import classes.Scenes.NPCs.pregnancies.PlayerOviElixirPregnancy;
 	import classes.Scenes.Places.*;
 	import classes.Scenes.Places.TelAdre.*;
 	import classes.Scenes.Quests.*;
@@ -467,6 +468,7 @@ package classes
 			new PlayerCentaurPregnancy(pregnancyProgress, output);
 			new PlayerBunnyPregnancy(pregnancyProgress, output, mutations);
 			new PlayerBenoitPregnancy(pregnancyProgress, output);
+			new PlayerOviElixirPregnancy(pregnancyProgress, output);
 			
 			this.emberScene = new EmberScene(pregnancyProgress);
 			this.urtaPregs = new UrtaPregs(pregnancyProgress);
