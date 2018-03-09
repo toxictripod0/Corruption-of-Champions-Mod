@@ -212,7 +212,7 @@ package classes
 		public var lake:Lake = new Lake();
 		public var mountain:Mountain;
 		public var plains:Plains = new Plains();
-		public var swamp:Swamp = new Swamp();
+		public var swamp:Swamp;
 		public var volcanicCrag:VolcanicCrag = new VolcanicCrag();
 		
 		public var exploration:Exploration = new Exploration(); //Goes last in order to get it working.
@@ -446,6 +446,7 @@ package classes
 		public function createScenes(pregnancyProgress:PregnancyProgression): void {
 			this.bog = new Bog(pregnancyProgress);
 			this.mountain = new Mountain(pregnancyProgress, output);
+			this.swamp = new Swamp(pregnancyProgress, output);
 			this.telAdre = new TelAdre(pregnancyProgress);
 			
 			this.impScene = new ImpScene(pregnancyProgress, output);

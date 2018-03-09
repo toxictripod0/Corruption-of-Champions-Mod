@@ -8,6 +8,8 @@ package classes.Scenes.Areas.Swamp
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Items.Armors.LustyMaidensArmor;
+	import classes.Scenes.Monsters.pregnancies.PlayerDriderPregnancy;
+	import classes.Scenes.PregnancyProgression;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
 
@@ -15,8 +17,9 @@ package classes.Scenes.Areas.Swamp
 
 	public class CorruptedDriderScene extends BaseContent
 	{
-		public function CorruptedDriderScene()
+		public function CorruptedDriderScene(pregnancyProgression:PregnancyProgression, output:GuiOutput)
 		{
+			new PlayerDriderPregnancy(pregnancyProgression, output);
 		}
 
 //VARS
