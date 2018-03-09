@@ -17,7 +17,7 @@ package classes.Scenes.Areas {
 	public class HighMountains extends BaseContent implements IExplorable {
 		public var basiliskScene:BasiliskScene;
 		public var harpyScene:HarpyScene = new HarpyScene();
-		public var minervaScene:MinervaScene = new MinervaScene();
+		public var minervaScene:MinervaScene;
 		public var minotaurMobScene:MinotaurMobScene = new MinotaurMobScene();
 		public var izumiScenes:IzumiScene = new IzumiScene();
 		public var phoenixScene:PhoenixScene = new PhoenixScene();
@@ -26,6 +26,7 @@ package classes.Scenes.Areas {
 		public function HighMountains(pregnancyProgression:PregnancyProgression, output:GuiOutput) {
 			this.basiliskScene = new BasiliskScene(pregnancyProgression, output);
 			this.cockatriceScene = new CockatriceScene(pregnancyProgression, output);
+			this.minervaScene = new MinervaScene(pregnancyProgression,output);
 		}
 
 		public function isDiscovered():Boolean { return flags[kFLAGS.DISCOVERED_HIGH_MOUNTAIN] > 0; }
