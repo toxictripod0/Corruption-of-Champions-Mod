@@ -3,6 +3,7 @@ package classes.Scenes
 
 	import classes.DefaultDict;
 	import classes.Scenes.Areas.Bog;
+	import classes.Scenes.Areas.Swamp;
 	import classes.Scenes.Monsters.ImpScene;
 	import classes.Scenes.NPCs.AmilyScene;
 	import classes.Scenes.NPCs.pregnancies.PlayerMousePregnancy;
@@ -58,6 +59,8 @@ package classes.Scenes
 			kGAMECLASS.flags = new DefaultDict();
 			kGAMECLASS.impScene = new ImpScene(scenePregProg, output);
 			kGAMECLASS.amilyScene = new AmilyScene(scenePregProg, output);
+			kGAMECLASS.swamp = new Swamp(scenePregProg, output);
+			
 			new PlayerMousePregnancy(scenePregProg, output);
 			
 			scene = new DummyScene();
@@ -232,6 +235,26 @@ package classes.Scenes
 			cut.registerVaginalPregnancyScene(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.PREGNANCY_IMP, scene);
 			
 			assertThat(cut.hasRegisteredVaginalScene(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.PREGNANCY_IMP), equalTo(true));
+		}
+		
+		[Test]
+		public function spiderPregnancyText():void {
+			player.knockUpForce(PregnancyStore.PREGNANCY_SPIDER, 180);
+			
+			scenePregProg.updatePregnancy();
+			
+			assertThat(output.collectedOutput, hasItem(containsString("spider-morph")));
+			assertThat(output.collectedOutput, not(hasItem(containsString("driders"))));
+		}
+		
+		[Test]
+		public function driderPregnancyText():void {
+			player.knockUpForce(PregnancyStore.PREGNANCY_DRIDER_EGGS, 180);
+			
+			scenePregProg.updatePregnancy();
+			
+			assertThat(output.collectedOutput, hasItem(containsString("driders")));
+			assertThat(output.collectedOutput, not(hasItem(containsString("spider-morph"))));
 		}
 	}
 }

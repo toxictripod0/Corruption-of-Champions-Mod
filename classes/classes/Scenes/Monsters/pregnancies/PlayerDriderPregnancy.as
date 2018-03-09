@@ -71,15 +71,9 @@ package classes.Scenes.Monsters.pregnancies
 			if (player.pregnancyIncubation === 180) {
 				output.text(kGAMECLASS.images.showImage("spidermorph-male-loss-vag"));
 				output.text("\n<b>A hot flush works its way through you, and visions of aroused ");
-				
-				if (player.pregnancyType === PregnancyStore.PREGNANCY_SPIDER) {
-					output.text("spider-morphs ");
-				}
-				else {
-					output.text("driders ");
-				}
-				
+				output.text("driders ");
 				output.text("quickly come to dominate your thoughts.  You start playing with a nipple while you lose yourself in the fantasy, imagining being tied up in webs and mated with over and over, violated by a pack of horny males, each hoping to father your next brood.  You shake free of the fantasy and notice your hands rubbing over your slightly bloated belly.  Perhaps it wouldn't be so bad?</b>\n");
+				
 				kGAMECLASS.dynStats("lib", 1, "sen", 1, "lus", 20);
 				
 				displayedUpdate = true;
