@@ -14,7 +14,8 @@ package classes.Scenes
 		
 		/**
 		 * This sensing variable is used by tests to detect if
-		 * the vaginal birth code has been called.
+		 * the vaginal birth code has been called. This is used for pregnancies
+		 * that do not provide any other means of detection (e.g. counter variables).
 		 */
 		public var senseVaginalBirth:Vector.<int>;
 		
