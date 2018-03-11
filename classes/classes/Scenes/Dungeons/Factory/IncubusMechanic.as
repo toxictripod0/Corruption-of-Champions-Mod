@@ -9,6 +9,7 @@ package classes.Scenes.Dungeons.Factory
 	import classes.internals.*;
 	import flash.display.InteractiveObject;
 	import classes.GlobalFlags.kFLAGS;
+	import classes.GlobalFlags.kGAMECLASS;
 
 	public class IncubusMechanic extends Monster {
 		
@@ -26,7 +27,7 @@ package classes.Scenes.Dungeons.Factory
 		
 		private function defeatedInDungeon1(hpVictory:Boolean):void {
 			clearOutput();
-			game.menu();
+			kGAMECLASS.output.menu();
 			if (hpVictory)
 				outputText("You smile in satisfaction as the " + short + " collapses, unable to continue fighting.");
 			else outputText("You smile in satisfaction as the " + short + " collapses, masturbating happily.");
@@ -34,15 +35,15 @@ package classes.Scenes.Dungeons.Factory
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] >= 2 && flags[kFLAGS.FACTORY_INCUBUS_BRIBED] == 0) outputText("\n\n<b>You swear you can hear a clicking sound coming from the west.</b>");
 			
 			if (!player.isGenderless()) {
-				game.addButton(0, "Rape", game.lethicesKeep.incubusMechanic.doRapeIncubus).hint(player.hasCock() ? "Fuck his butt." : "Ride him vaginally.");
+				kGAMECLASS.output.addButton(0, "Rape", game.lethicesKeep.incubusMechanic.doRapeIncubus).hint(player.hasCock() ? "Fuck his butt." : "Ride him vaginally.");
 			} else {
-				game.addButtonDisabled(0, "Rape", "This scene requires you to have genitals.");
+				kGAMECLASS.output.addButtonDisabled(0, "Rape", "This scene requires you to have genitals.");
 			}
-			game.addButton(1, "Service Him", game.lethicesKeep.incubusMechanic.doOralIncubus).hint("Service the incubus orally.");
-			game.addButton(2, "AnalRide", game.lethicesKeep.incubusMechanic.doRideIncubusAnally).hint("Ride him anally.");
-			if (player.hasVagina() && player.biggestTitSize() >= 4 && player.armor == armors.LMARMOR) game.addButton(3, "B.Titfuck", (player.armor as LustyMaidensArmor).lustyMaidenPaizuri, player, this);
+			kGAMECLASS.output.addButton(1, "Service Him", game.lethicesKeep.incubusMechanic.doOralIncubus).hint("Service the incubus orally.");
+			kGAMECLASS.output.addButton(2, "AnalRide", game.lethicesKeep.incubusMechanic.doRideIncubusAnally).hint("Ride him anally.");
+			if (player.hasVagina() && player.biggestTitSize() >= 4 && player.armor == armors.LMARMOR) kGAMECLASS.output.addButton(3, "B.Titfuck", (player.armor as LustyMaidensArmor).lustyMaidenPaizuri, player, this);
 			// no disabled button for this option
-			game.addButton(14, "Leave", game.combat.cleanupAfterCombat);
+			kGAMECLASS.output.addButton(14, "Leave", game.combat.cleanupAfterCombat);
 		}
 		
 		private function defeatedInDungeon3(hpVictory:Boolean):void

@@ -17,6 +17,7 @@ package classes.Scenes.Places.Bazaar{
 	import classes.Player;
 	import classes.CoC;
 	import classes.GlobalFlags.kFLAGS;
+	import classes.Output;
      
     public class RoxanneTest {
 		private static const EVENT_ITERATIONS:int = 5;
@@ -40,7 +41,7 @@ package classes.Scenes.Places.Bazaar{
 			player.rng = rng;
 			kGAMECLASS.player = player;
 			
-			fireButtons = new FireButtonEvent(kGAMECLASS.mainView, CoC.MAX_BUTTON_INDEX);
+			fireButtons = new FireButtonEvent(kGAMECLASS.mainView, Output.MAX_BUTTON_INDEX);
 			
 			player.flags[kFLAGS.ROXANNE_TIME_WITHOUT_SEX] = 10;
 			player.flags[kFLAGS.ROXANNE_DRINKING_CONTEST_LOSE_ON_PURPOSE] = 1;

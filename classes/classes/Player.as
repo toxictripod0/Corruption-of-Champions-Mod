@@ -606,7 +606,7 @@
 				//Prevent negatives
 				if (HP<=0){
 					HP = 0;
-					//This call did nothing. There is no event 5010: if (game.inCombat) game.doNext(5010);
+					//This call did nothing. There is no event 5010: if (game.inCombat) kGAMECLASS.output.doNext(5010);
 				}
 			}
 			return returnDamage;
@@ -2184,7 +2184,7 @@
 				if (oldHunger >= 90) kGAMECLASS.awardAchievement("Glutton ", kACHIEVEMENTS.REALISTIC_GLUTTON);
 				if (hunger > oldHunger) kGAMECLASS.mainView.statsView.showStatUp("hunger");
 				game.dynStats("lus", 0, "scale", false);
-				kGAMECLASS.statScreenRefresh();
+				kGAMECLASS.output.statScreenRefresh();
 			}
 		}
 		
@@ -2352,7 +2352,7 @@
 			kGAMECLASS.dynStats("lus", 0, "scale", false); //Force display fatigue up/down by invoking zero lust change.
 			if (fatigue > maxFatigue()) fatigue = maxFatigue();
 			if (fatigue < 0) fatigue = 0;
-			kGAMECLASS.statScreenRefresh();
+			kGAMECLASS.output.statScreenRefresh();
 		}
 		
 		public function armorDescript(nakedText:String = "gear"):String
@@ -2793,8 +2793,8 @@
 				if (findPerk(PerkLib.Sensitive) >= 0 && dsens >= 0) dsens*= 1+ perk(findPerk(PerkLib.Sensitive)).value1;
 			}
 			super.modStats(dstr, dtou, dspe, dinte, dlib, dsens, dlust, dcor, false, max);
-			game.showUpDown();
-			game.statScreenRefresh();
+			game.output.showUpDown();
+			kGAMECLASS.output.statScreenRefresh();
 		}
 
 
@@ -2911,7 +2911,7 @@
 		{
 			if (kGAMECLASS.monster.hasStatusEffect(StatusEffects.TwuWuv)) {
 				inte += kGAMECLASS.monster.statusEffectv1(StatusEffects.TwuWuv);
-				kGAMECLASS.statScreenRefresh();
+				kGAMECLASS.output.statScreenRefresh();
 				kGAMECLASS.mainView.statsView.showStatUp( 'inte' );
 			}
 			if (hasStatusEffect(StatusEffects.Disarmed)) {
@@ -3441,7 +3441,7 @@
 			}
 			
 			dynStats("lust", 0, "scale", false); //Workaround to showing the arrow.
-			kGAMECLASS.statScreenRefresh();
+			kGAMECLASS.output.statScreenRefresh();
 			return HP - before;
 		}
 

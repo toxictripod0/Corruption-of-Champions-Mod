@@ -345,7 +345,7 @@ package classes.Scenes.Places
 			outputText("\n" + capitalizeFirstLetter(item.longName) + " - " + price + " gems");
 			var button:int = 0;
 			for (var i:int = 0; i < 14; i++) {
-				if (buttonIsVisible(i)) button++;
+				if (output.buttonIsVisible(i)) button++;
 			}
 			addButton(button, item.shortName, transactionItemConfirmation, item, price, shop);
 		}

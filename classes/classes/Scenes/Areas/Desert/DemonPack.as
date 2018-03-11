@@ -5,6 +5,7 @@ package classes.Scenes.Areas.Desert
 	import classes.BodyParts.Hips;
 	import classes.internals.WeightedDrop;
 	import classes.GlobalFlags.kFLAGS;
+	import classes.GlobalFlags.kGAMECLASS;
 
 	public class DemonPack extends Monster
 	{
@@ -33,7 +34,7 @@ package classes.Scenes.Areas.Desert
 				game.combat.cleanupAfterCombat();
 			} else {
 				outputText("  Do you rape them?");
-				game.doYesNo(rapeDemons, game.combat.cleanupAfterCombat);
+				kGAMECLASS.output.doYesNo(rapeDemons, game.combat.cleanupAfterCombat);
 			}
 		}
 

@@ -630,13 +630,13 @@ private function doCamp():void { //only called by playerMenu
 		addButton(12, "Cash Shop", getGame().aprilFools.pay2WinSelection).hint("Need more gems? Want to buy special items to give you the edge? Purchase with real money!");
 	//Remove buttons according to conditions
 	if (getGame().time.hours >= 21 || getGame().time.hours < 6) {
-		addDisabledButton(0, getButtonText(0), "It's too dark outside. It wouldn't be a good idea to explore when danger lurks in every corner of darkness."); //Explore
-		addDisabledButton(1, getButtonText(1), "It's too dark outside. It wouldn't be a good idea to explore when danger lurks in every corner of darkness."); //Explore
+		addDisabledButton(0, kGAMECLASS.output.getButtonText(0), "It's too dark outside. It wouldn't be a good idea to explore when danger lurks in every corner of darkness."); //Explore
+		addDisabledButton(1, kGAMECLASS.output.getButtonText(1), "It's too dark outside. It wouldn't be a good idea to explore when danger lurks in every corner of darkness."); //Explore
 		if (getGame().time.hours >= 23 || getGame().time.hours < 5) {
-			addDisabledButton(4, getButtonText(4), "You are too tired to perform any camp actions. All you can do right now is to sleep until morning."); //Camp Actions
-			if (followersCount() > 0) addDisabledButton(5, getButtonText(5), "Your followers are sleeping at the moment."); //Followers
-			if (loversCount() > 0) addDisabledButton(6, getButtonText(6), "Your lovers are sleeping at the moment."); //Followers
-			if (slavesCount() > 0) addDisabledButton(6, getButtonText(7), "Your slaves are sleeping at the moment. Even slaves need their sleepy times to recuperate."); //Followers
+			addDisabledButton(4, kGAMECLASS.output.getButtonText(4), "You are too tired to perform any camp actions. All you can do right now is to sleep until morning."); //Camp Actions
+			if (followersCount() > 0) addDisabledButton(5, kGAMECLASS.output.getButtonText(5), "Your followers are sleeping at the moment."); //Followers
+			if (loversCount() > 0) addDisabledButton(6, kGAMECLASS.output.getButtonText(6), "Your lovers are sleeping at the moment."); //Followers
+			if (slavesCount() > 0) addDisabledButton(6, kGAMECLASS.output.getButtonText(7), "Your slaves are sleeping at the moment. Even slaves need their sleepy times to recuperate."); //Followers
 		}
 	}
 	if (player.lust >= player.maxLust() && canFap) {

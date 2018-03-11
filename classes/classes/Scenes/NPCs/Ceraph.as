@@ -6,6 +6,7 @@ package classes.Scenes.NPCs
 	import classes.GlobalFlags.kFLAGS;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
+	import classes.GlobalFlags.kGAMECLASS;
 
 	public class Ceraph extends Monster
 	{
@@ -195,7 +196,7 @@ package classes.Scenes.NPCs
 				if (damage > 0) outputText("<b>(<font color=\"#800000\">" + damage + "</font>)</b>")
 				else outputText("<b>(<font color=\"#000080\">" + damage + "</font>)</b>")
 			}
-			game.statScreenRefresh();
+			kGAMECLASS.output.statScreenRefresh();
 			outputText("\n");
 			//SECOND ATTACK HERE------
 			//Blind dodge change
@@ -242,7 +243,7 @@ package classes.Scenes.NPCs
 				if (damage > 0) outputText("<b>(<font color=\"#800000\">" + damage + "</font>)</b>")
 				else outputText("<b>(<font color=\"#000080\">" + damage + "</font>)</b>")
 			}
-			game.statScreenRefresh();
+			kGAMECLASS.output.statScreenRefresh();
 			outputText("\n");
 			combatRoundOver();
 		}

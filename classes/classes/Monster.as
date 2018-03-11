@@ -46,10 +46,10 @@
 			kGAMECLASS.mainView.statsView.showStatDown(a);
 		}
 		protected final function statScreenRefresh():void {
-			game.statScreenRefresh();
+			kGAMECLASS.output.statScreenRefresh();
 		}
 		protected final function doNext(eventNo:Function):void { //Now typesafe
-			game.doNext(eventNo);
+			kGAMECLASS.output.doNext(eventNo);
 		}
 		protected final function combatMiss():Boolean {
 			return game.combat.combatMiss();
@@ -623,7 +623,7 @@
 				    var damage:int = eOneAttack();
 					outputAttack(damage);
 					postAttack(damage);
-					game.statScreenRefresh();
+					kGAMECLASS.output.statScreenRefresh();
 					outputText("\n");
 				}
 				if (statusEffectv1(StatusEffects.Attacks) >= 0) {
@@ -896,7 +896,7 @@
 			if (temp > player.gems) temp = player.gems;
 			outputText("\n\nYou'll probably wake up in eight hours or so, missing " + temp + " gems.");
 			player.gems -= temp;
-			game.doNext(game.camp.returnToCampUseEightHours);
+			kGAMECLASS.output.doNext(game.camp.returnToCampUseEightHours);
 		}
 
 		/**

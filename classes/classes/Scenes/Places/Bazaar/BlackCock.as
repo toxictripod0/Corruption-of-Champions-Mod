@@ -121,7 +121,7 @@ package classes.Scenes.Places.Bazaar
 		private function addFoodToGo(item:ItemType, price:int):void {
 			var button:int = 0;
 			for (var i:int = 0; i < 14; i++) {
-				if (buttonIsVisible(i)) button++;
+				if (output.buttonIsVisible(i)) button++;
 			}
 			outputText("\n" + capitalizeFirstLetter(item.longName) + " - " + price + " gems");
 			addButton(button, item.shortName, orderFoodToGo, item, price);
@@ -142,7 +142,7 @@ package classes.Scenes.Places.Bazaar
 		private function addFoodPlate(foodName:String, gems:int, tooltip:String, foodEatDesc:String):void {
 			var button:int = 0;
 			for (var i:int = 0; i < 14; i++) {
-				if (buttonIsVisible(i)) button++;
+				if (output.buttonIsVisible(i)) button++;
 			}
 			var header:String = "";
 			switch(foodName) {

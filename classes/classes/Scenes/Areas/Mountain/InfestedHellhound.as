@@ -3,6 +3,7 @@ package classes.Scenes.Areas.Mountain
 	import classes.*;
 	import classes.BodyParts.*;
 	import classes.internals.*;
+	import classes.GlobalFlags.kGAMECLASS;
 
 	/**
 	 * ...
@@ -72,17 +73,17 @@ package classes.Scenes.Areas.Mountain
 				outputText("Unable to bear its unnatural arousal, the infested hellhound's flames dim as he stops his attack. The two heads look at you, whining plaintively.  The hellhound slowly pads over to you and nudges its noses at your crotch.  It seems he wishes to pleasure you.\n\n");
 			}
 			
-			game.menu();
+			kGAMECLASS.output.menu();
 			
-			game.addButtonDisabled(0, "Lick", "Make him use his tongues. This scene requires you to have genitals and sufficient arousal. This scene requires lust victory.");
+			kGAMECLASS.output.addButtonDisabled(0, "Lick", "Make him use his tongues. This scene requires you to have genitals and sufficient arousal. This scene requires lust victory.");
 			
 			if (player.lust >= 33 && !player.isGenderless()) {
 				if (!hpVictory) {
-					game.addButton(0, "Lick", game.mountain.hellHoundScene.hellHoundGetsRaped, undefined, undefined, undefined, "Make him use his tongues.");
+					kGAMECLASS.output.addButton(0, "Lick", game.mountain.hellHoundScene.hellHoundGetsRaped, undefined, undefined, undefined, "Make him use his tongues.");
 				}
 			}
 			
-			game.addButton(14, "Leave", game.combat.cleanupAfterCombat);
+			kGAMECLASS.output.addButton(14, "Leave", game.combat.cleanupAfterCombat);
 		}
 
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void

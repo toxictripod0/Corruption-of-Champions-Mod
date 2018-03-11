@@ -5,6 +5,7 @@ package classes.Scenes.Dungeons.Factory
 	import classes.Scenes.Monsters.AbstractSuccubus;
 	import classes.Scenes.Dungeons.Factory;
 	import classes.internals.*;
+	import classes.GlobalFlags.kGAMECLASS;
 
 	public class SecretarialSuccubus extends AbstractSuccubus 
 	{
@@ -17,13 +18,13 @@ package classes.Scenes.Dungeons.Factory
 				if (hpVictory) {
 					outputText("You smile in satisfaction as the " + short + " collapses, unable to continue fighting.  Now would be the perfect opportunity to taste the fruits of her sex-ready form...\n\nDo you rape her?");
 					player.takeLustDamage(1, true);
-					game.doYesNo(factory.secretarialSuccubus.doRapeSuccubus, factory.secretarialSuccubus.doLeaveSuccubus)
-					if (player.hasKeyItem("Deluxe Dildo") >= 0) game.addButton(2, "Dildo Rape", factory.secretarialSuccubus.dildoSuccubus);
+					kGAMECLASS.output.doYesNo(factory.secretarialSuccubus.doRapeSuccubus, factory.secretarialSuccubus.doLeaveSuccubus)
+					if (player.hasKeyItem("Deluxe Dildo") >= 0) kGAMECLASS.output.addButton(2, "Dildo Rape", factory.secretarialSuccubus.dildoSuccubus);
 				} else if (player.lust >= 33) {	
 					outputText("You smile in satisfaction as the " + short + " gives up on fighting you and starts masturbating, begging for you to fuck her.  Now would be the perfect opportunity to taste the fruits of her sex-ready form...\n\nDo you fuck her?");
 					player.takeLustDamage(1, true);
-					game.doYesNo(factory.secretarialSuccubus.doRapeSuccubus, factory.secretarialSuccubus.doLeaveSuccubus)
-					if (player.hasKeyItem("Deluxe Dildo") >= 0) game.addButton(2, "Dildo Rape", factory.secretarialSuccubus.dildoSuccubus);
+					kGAMECLASS.output.doYesNo(factory.secretarialSuccubus.doRapeSuccubus, factory.secretarialSuccubus.doLeaveSuccubus)
+					if (player.hasKeyItem("Deluxe Dildo") >= 0) kGAMECLASS.output.addButton(2, "Dildo Rape", factory.secretarialSuccubus.dildoSuccubus);
 				} else {
 					doNext(factory.secretarialSuccubus.doLeaveSuccubus);
 				}
