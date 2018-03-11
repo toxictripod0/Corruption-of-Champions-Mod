@@ -38,6 +38,7 @@ package classes.internals
 		{
 			var random:Number = Math.random() * sum;
 			var choice:* = null;
+			var choices:Array = this.choices.slice();
 			while (random > 0 && choices.length > 0) {
 				var pair:Array = choices.shift();
 				choice = pair[0];
