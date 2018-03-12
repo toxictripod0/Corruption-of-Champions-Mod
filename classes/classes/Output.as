@@ -39,14 +39,7 @@ package classes
 		/**
 		 * Passes the text through the parser and adds it to the output-buffer 
 		 *
-		 * In debug-mode the output is directly flushed to the GUI.
 		 * If you want to clear the output before adding text, use clear(true) or just clear()
-		 * The old second param `purgeText:Boolean = false` from outputText(...) is not supported anymore
-		 * in favor of using clear() and will never return.
-		 * 
-		 * Unfortunately no one succeded to support markdown formatting for CoC, although this was attempted.
-		 *
-		 * This must not be made possible to be called directly from the outside, use wrapper-methods instead.
 		 *
 		 * @param   text    The text to be added
 		 * @return  The instance of the class to support the 'Fluent interface' aka method-chaining
@@ -60,7 +53,6 @@ package classes
 			text = kGAMECLASS.parser.recursiveParser(text);
 			record(text);
 			_currentText += text;
-			//if (debug) mainView.setOutputText(_currentText);
 
 			return this;
 		}
