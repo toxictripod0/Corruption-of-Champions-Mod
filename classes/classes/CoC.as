@@ -552,8 +552,8 @@ package classes
 			 * Debug, Version, etc
 			 */
 			debug = false; //DEBUG, used all over the place
-			ver = "1.0.2_mod_1.4.12b"; //Version NUMBER
-			version = ver + " (<b>Interface Prettiness!</b>)"; //Version TEXT
+			ver = "1.0.2_mod_1.4.13"; //Version NUMBER
+			version = ver + " (<b>Weapon Upgrading!</b>)"; //Version TEXT
 			
 			//Indicates if building for mobile?
 			mobile = false;
