@@ -489,7 +489,7 @@ package classes.Scenes
 			menu();
 			for (var x:int = 0; x < 10; x++) {
 				if (player.itemSlots[x].unlocked)
-					addButton(x, (player.itemSlots[x].itype.shortName + " x" + player.itemSlots[x].quantity), replaceItem, itype, x);
+					addButton(x, (player.itemSlots[x].itype.shortName + " x" + player.itemSlots[x].quantity), replaceItem, itype, x, source);
 			}
 			if (source != null && source.quantity >= 0) {
 				currentItemSlot = source;
@@ -509,7 +509,7 @@ package classes.Scenes
 			}
 		}
 		
-		private function replaceItem(itype:ItemType, slotNum:int):void {
+		private function replaceItem(itype:ItemType, slotNum:int, source:ItemSlotClass):void {
 			clearOutput();
 			if (player.itemSlots[slotNum].itype == itype) //If it is the same as what's in the slot...just throw away the new item
 				outputText("You discard " + itype.longName + " from the stack to make room for the new one.");
@@ -517,6 +517,7 @@ package classes.Scenes
 				if (player.itemSlots[slotNum].quantity == 1) outputText("You throw away " + player.itemSlots[slotNum].itype.longName + " and replace it with " + itype.longName + ".");
 				else outputText("You throw away " + player.itemSlots[slotNum].itype.longName + "(x" + player.itemSlots[slotNum].quantity + ") and replace it with " + itype.longName + ".");
 				player.itemSlots[slotNum].setItemAndQty(itype, 1);
+				if (source != null) player.itemSlots[slotNum].damage = source.damage;
 			}
 			itemGoNext();
 		}
