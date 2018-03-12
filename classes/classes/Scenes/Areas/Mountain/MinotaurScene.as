@@ -16,9 +16,6 @@ package classes.Scenes.Areas.Mountain {
 			new PlayerMinotaurPregnancy(pregnancyProgression, output);
 		}
 
-/*	private function minotaurAddicted():Boolean { return player.minotaurAddicted(); }
-	private function minotaurNeed():Boolean { return player.minotaurNeed(); } */
-
 public function minoVictoryRapeChoices():void {
 	clearOutput();
 	spriteSelect(SpriteDb.s_minotaur);

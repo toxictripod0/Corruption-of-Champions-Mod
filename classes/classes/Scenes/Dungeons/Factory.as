@@ -12,18 +12,6 @@ package classes.Scenes.Dungeons {
 	use namespace kGAMECLASS;
 
 	public class Factory extends DungeonAbstractContent {
-		/*
-		private static const DUNGEON_FACTORY_FOYER:int				= 0;
-		private static const DUNGEON_FACTORY_PUMP_ROOM:int			= 1;
-		private static const DUNGEON_FACTORY_BREAK_ROOM:int			= 2;
-		private static const DUNGEON_FACTORY_FURNACE_ROOM:int		= 3;
-		private static const DUNGEON_FACTORY_REPAIR_CLOSET:int		= 4;
-		private static const DUNGEON_FACTORY_MAIN_CHAMBER:int		= 5;
-		private static const DUNGEON_FACTORY_FOREMANS_OFFICE:int	= 6;
-		private static const DUNGEON_FACTORY_PUMP_CONTROL:int		= 7;
-		private static const DUNGEON_FACTORY_STORE_ROOM:int			= 8;
-		private static const DUNGEON_FACTORY_BATHROOM:int			= 9;
-		*/
 		public function Factory() {}
 
 		public var secretarialSuccubus:SecretarialSuccubusScene = new SecretarialSuccubusScene();
@@ -245,7 +233,7 @@ package classes.Scenes.Dungeons {
 				}
 				else { //3rd time, move on to bad end!
 					doBadEndTension();
-					return
+					return;
 				}
 			}
 			doNext(roomMainChamber);

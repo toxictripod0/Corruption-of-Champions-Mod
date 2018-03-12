@@ -16,15 +16,15 @@ package classes {
 	import flash.events.Event;
 
 	public class CharCreation extends BaseContent {
-		public const MAX_TOLERANCE_LEVEL:int = 20;
-		public const MAX_MORALSHIFTER_LEVEL:int = 10;
-		public const MAX_DESIRES_LEVEL:int = 10;
-		public const MAX_ENDURANCE_LEVEL:int = 10;
-		public const MAX_MYSTICALITY_LEVEL:int = 10;
-		public const MAX_WISDOM_LEVEL:int = 5;
-		public const MAX_FORTUNE_LEVEL:int = -1; //no max level
-		public const MAX_VIRILITY_LEVEL:int = 15;
-		public const MAX_FERTILITY_LEVEL:int = 15;
+		public static const MAX_TOLERANCE_LEVEL:int = 20;
+		public static const MAX_MORALSHIFTER_LEVEL:int = 10;
+		public static const MAX_DESIRES_LEVEL:int = 10;
+		public static const MAX_ENDURANCE_LEVEL:int = 10;
+		public static const MAX_MYSTICALITY_LEVEL:int = 10;
+		public static const MAX_WISDOM_LEVEL:int = 5;
+		public static const MAX_FORTUNE_LEVEL:int = -1; //no max level
+		public static const MAX_VIRILITY_LEVEL:int = 15;
+		public static const MAX_FERTILITY_LEVEL:int = 15;
 		public static const NEW_GAME_PLUS_RESET_CLIT_LENGTH_MAX:Number = 1.5;
 
 		private var specialCharacters:CharSpecial = new CharSpecial();
