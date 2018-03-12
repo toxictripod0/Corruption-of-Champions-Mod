@@ -4,12 +4,16 @@ package classes.Scenes.Areas.VolcanicCrag
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.GlobalFlags.kACHIEVEMENTS;
+	import classes.Scenes.NPCs.pregnancies.PlayerBehemothPregnancy;
+	import classes.Scenes.PregnancyProgression;
+	import classes.internals.GuiOutput;
 	
 	public class BehemothScene extends BaseContent
 	{
 		
-		public function BehemothScene() 
+		public function BehemothScene(pregnancyProgression:PregnancyProgression, output:GuiOutput) 
 		{
+			new PlayerBehemothPregnancy(pregnancyProgression, output);
 		}
 		
 		public function timesSexed():int {

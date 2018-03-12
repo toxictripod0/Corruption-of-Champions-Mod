@@ -8,13 +8,16 @@ package classes.Scenes.Areas.HighMountains
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Scenes.Monsters.StareMonster;
+	import classes.Scenes.Monsters.pregnancies.PlayerBasiliskPregnancy;
+	import classes.Scenes.PregnancyProgression;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
 
 	public class BasiliskScene extends BaseContent
 	{
-		public function BasiliskScene()
+		public function BasiliskScene(pregnancyProgression:PregnancyProgression, output:GuiOutput)
 		{
+			new PlayerBasiliskPregnancy(pregnancyProgression, output);
 		}
 		
 		//Vars

@@ -12,19 +12,24 @@ package classes.Scenes.Areas {
 	import classes.Scenes.API.FnHelpers;
 	import classes.Scenes.API.IExplorable;
 	import classes.Scenes.Areas.Bog.*;
+	import classes.Scenes.PregnancyProgression;
 
 	use namespace kGAMECLASS;
 
 	public class Bog extends BaseContent implements IExplorable {
-		public var frogGirlScene:FrogGirlScene = new FrogGirlScene();
+		public var frogGirlScene:FrogGirlScene;
 		public var chameleonGirlScene:ChameleonGirlScene = new ChameleonGirlScene();
-		public var phoukaScene:PhoukaScene = new PhoukaScene();
+		public var phoukaScene:PhoukaScene;
 		public var lizanScene:LizanRogueScene = new LizanRogueScene();
 		/* [INTERMOD:8chan]
 		public var parasiteScene:ParasiteScene = new ParasiteScene();
 		public var infestedChameleonGirlScene:InfestedChameleonGirlScene = new InfestedChameleonGirlScene();
 		*/
-		public function Bog() {}
+		public function Bog(pregnancyProgression:PregnancyProgression) {
+			this.phoukaScene = new PhoukaScene(pregnancyProgression);
+			this.frogGirlScene = new FrogGirlScene(pregnancyProgression);
+		}
+		
 		public function isDiscovered():Boolean { return flags[kFLAGS.BOG_EXPLORED] > 0; }
 		public function discover():void {
 			clearOutput();

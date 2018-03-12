@@ -6,10 +6,15 @@ package classes.Scenes.Areas.Mountain {
 	import classes.Items.Armors.LustyMaidensArmor;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
+	import classes.internals.GuiOutput;
+	import classes.Scenes.PregnancyProgression;
+	import classes.Scenes.Monsters.pregnancies.PlayerMinotaurPregnancy;
 
 	public class MinotaurScene extends BaseContent {
 
-		public function MinotaurScene() {}
+		public function MinotaurScene(pregnancyProgression:PregnancyProgression, output:GuiOutput) {
+			new PlayerMinotaurPregnancy(pregnancyProgression, output);
+		}
 
 /*	private function minotaurAddicted():Boolean { return player.minotaurAddicted(); }
 	private function minotaurNeed():Boolean { return player.minotaurNeed(); } */

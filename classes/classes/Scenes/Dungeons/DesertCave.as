@@ -9,10 +9,12 @@ package classes.Scenes.Dungeons
 	import classes.Scenes.Dungeons.DesertCave.*;
 	import classes.Scenes.Dungeons.DungeonAbstractContent;
 	import classes.Scenes.Dungeons.DungeonCore;
+	import classes.Scenes.PregnancyProgression;
+	import classes.Scenes.VaginalPregnancy;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
 	
-	public class DesertCave extends DungeonAbstractContent
+	public class DesertCave extends DungeonAbstractContent implements VaginalPregnancy
 	{
 		/*
 		private static const DUNGEON_WITCH_ENTRANCE_GATEWAY:int		= 23;
@@ -32,7 +34,15 @@ package classes.Scenes.Dungeons
 		private static const DUNGEON_WITCH_SACRIFICIAL_ALTAR:int	= 37;
 		private static const DUNGEON_WITCH_THRONE_ROOM:int			= 38;
 		*/
-		public function DesertCave() {}
+		
+		private var pregnancyProgression:PregnancyProgression;
+		
+		public function DesertCave(pregnancyProgression:PregnancyProgression) {
+			// needed as an instance variable for refactor test code (detectVaginalBirth)
+			this.pregnancyProgression = pregnancyProgression;
+			
+			pregnancyProgression.registerVaginalPregnancyScene(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.PREGNANCY_SAND_WITCH, this);
+		}
 		
 		// SANURA_DISABLED:int = 833;
 		// MET_SANURA:int = 834;
@@ -4046,7 +4056,7 @@ package classes.Scenes.Dungeons
 		120 == impossible to conceal
 		72 == painfully distended
 		48 == bulges with unclean spawn..blahblahblah*/
-		public function sandPregUpdate():Boolean {
+		public function updateVaginalPregnancy():Boolean {
 			//1: 
 			if (player.pregnancyIncubation == 336) {
 				outputText("\nYour breasts have felt unusually heavy recently, and a strange pulsing sensation occasionally emanates from them.  Your appetite is a little off; you could really go for some milk...\n");
@@ -4119,7 +4129,9 @@ package classes.Scenes.Dungeons
 		}
 
 		//*Witch Birth Scene:
-		public function birthAWitch():void {
+		public function vaginalBirth():void {
+			pregnancyProgression.detectVaginalBirth(PregnancyStore.PREGNANCY_SAND_WITCH);
+			
 			outputText("\n<b><u>Something amazing happens...</u></b>\n");
 			if (player.vaginas.length == 0) {
 				outputText("You feel a terrible pressure in your groin... then an incredible discomfort accompanied by the rending of flesh.  You look down and behold a vagina.  ");

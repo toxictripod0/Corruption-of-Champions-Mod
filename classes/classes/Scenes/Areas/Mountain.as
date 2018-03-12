@@ -12,17 +12,21 @@ package classes.Scenes.Areas {
 	import classes.Scenes.Quests.UrtaQuest.MinotaurLord;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
+	import classes.Scenes.PregnancyProgression;
 
 	use namespace kGAMECLASS;
 
 	public class Mountain extends BaseContent implements IExplorable {
-		public var hellHoundScene:HellHoundScene = new HellHoundScene();
+		public var hellHoundScene:HellHoundScene;
 		public var infestedHellhoundScene:InfestedHellhoundScene = new InfestedHellhoundScene();
-		public var minotaurScene:MinotaurScene = new MinotaurScene();
+		public var minotaurScene:MinotaurScene;
 		public var wormsScene:WormsScene = new WormsScene();
 		public var salon:Salon = new Salon();
 
-		public function Mountain() {}
+		public function Mountain(pregnancyProgression:PregnancyProgression, output:GuiOutput) {
+			this.minotaurScene = new MinotaurScene(pregnancyProgression, output);
+			this.hellHoundScene = new HellHoundScene(pregnancyProgression, output);
+		}
 
 		public function isDiscovered():Boolean { return flags[kFLAGS.TIMES_EXPLORED_MOUNTAIN] > 0; }
 		public function discover():void {

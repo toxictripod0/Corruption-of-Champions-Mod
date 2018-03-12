@@ -2,6 +2,8 @@
 	import classes.*;
 	import classes.BodyParts.*;
 	import classes.GlobalFlags.*;
+	import classes.Scenes.NPCs.pregnancies.PlayerMarblePregnancy;
+	import classes.Scenes.PregnancyProgression;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
 
@@ -42,12 +44,14 @@ Special abilities: A lightly corrupted creature with most of the corruption cent
 
 		public var pregnancy:PregnancyStore;
 
-		public function MarbleScene()
+		public function MarbleScene(pregnancyProgression:PregnancyProgression, output:GuiOutput)
 		{
 			pregnancy = new PregnancyStore(kFLAGS.MARBLE_PREGNANCY_TYPE, kFLAGS.MARBLE_PREGNANCY_INCUBATION, 0, 0);
 			pregnancy.addPregnancyEventSet(PregnancyStore.PREGNANCY_PLAYER, 648, 528, 432, 288, 144);
 												//Event: 0 (= not pregnant),  1,   2,   3,   4,   5,  6 (< 144)
 			CoC.timeAwareClassAdd(this);
+			
+			new PlayerMarblePregnancy(pregnancyProgression, output);
 		}
 		
 		private var checkedMarbleMilk:int; //Make sure we test each of these events just once in timeChangeLarge
