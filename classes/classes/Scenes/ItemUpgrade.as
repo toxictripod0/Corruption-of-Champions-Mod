@@ -124,6 +124,7 @@ package classes.Scenes
 			var isSpecial:Boolean = false;
 			//Special upgrades that will require certain items.
 			switch(item) {
+				case weapons.BBSWORD:
 				case weapons.B_SWORD:
 				case weapons.U_SWORD:
 				case weapons.S_BLADE:
@@ -338,6 +339,10 @@ package classes.Scenes
 					itemToGet = weapons.WHIP__2;
 					break;
 				//Unique Weapons
+				case weapons.BBSWORD:
+					gemCost = 1500;
+					itemToGet = weapons.B_SWORD;
+					break;
 				case weapons.B_SWORD:
 					gemCost = 2000;
 					if (confirmation) player.destroyItems(consumables.P_PEARL, 1);
