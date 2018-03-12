@@ -655,7 +655,7 @@ package classes.Scenes.Combat
 			if (lustDmg >= 20) outputText("The fantasy is so vivid and pleasurable you wish it was happening now.  You wonder if " + monster.a + monster.short + " can tell what you were thinking.\n\n");
 			else outputText("\n");
 			player.takeLustDamage(lustDmg, true, false);
-			if (player.lust >= player.maxLust()) {
+			if (player.lust >= player.maxLust()) { //Bypasses Indefatigable perk.
 				if (monster.short == "pod") {
 					outputText("<b>You nearly orgasm, but the terror of the situation reasserts itself, muting your body's need for release.  If you don't escape soon, you have no doubt you'll be too fucked up to ever try again!</b>");
 					player.lust = 99;
@@ -2048,7 +2048,7 @@ package classes.Scenes.Combat
 				doNext(endHpLoss);
 				return true;
 			}
-			if (player.lust >= player.maxLust()) {
+			if (player.lust >= player.maxLust() && !player.hasPerk(PerkLib.Indefatigable)) {
 				doNext(endLustLoss);
 				return true;
 			}

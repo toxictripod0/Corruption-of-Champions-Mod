@@ -155,9 +155,15 @@ package classes.Scenes
 			}
 			//Ugly Sword -> Scarred Blade
 			if (item == weapons.U_SWORD) {
-				outputText("(Placeholder) You'll need 4x regular lethicite or 1x large lethicite of any kind and 2000 gems for the upgrade.");
-				if ((player.hasKeyItem("Marae's Lethicite") >= 0 || player.hasKeyItem("Stone Statue Lethicite") >= 0 || player.hasKeyItem("Sheila's Lethicite") || player.hasItem(useables.LETHITE, 4)) && player.gems >= 2000) {
-					doYesNo(createCallBackFunction(equipmentUpgrade, item, true), equipmentUpgradeMenu);
+				outputText("(Placeholder) You'll need 5x regular lethicite or 1x large lethicite of any kind and 2000 gems for the upgrade.");
+				if ((player.hasKeyItem("Marae's Lethicite") >= 0 || player.hasKeyItem("Stone Statue Lethicite") >= 0 || player.hasKeyItem("Sheila's Lethicite") || player.hasItem(useables.LETHITE, 5)) && player.gems >= 2000) {
+					menu();
+					outputText("Which lethicite will you use?");
+					if (player.hasItem(useables.LETHITE, 5)) addButton(0, "Regular x5", routeLethiciteUpgrade, "Normal");
+					if (player.hasKeyItem("Marae's Lethicite") >= 0) addButton(1, "Marae", routeLethiciteUpgrade, "Marae");
+					if (player.hasKeyItem("Sheila's Lethicite") >= 0) addButton(2, "Sheila", routeLethiciteUpgrade, "Sheila");
+					if (player.hasKeyItem("Stone Statue Lethicite") >= 0) addButton(3, "Statue", routeLethiciteUpgrade, "Statue");
+					addButton(5, "Cancel", equipmentUpgradeMenu);
 				}
 				else {
 					outputText("\n\nUnfortunately, you don't have the required materials and gems.");
@@ -175,10 +181,9 @@ package classes.Scenes
 					doNext(equipmentUpgradeMenu);
 				}
 			}
-			//Eggshell Shield -> Runed Eggshell Shield
-			if (item == shields.DRGNSHL) {
-				outputText("(Placeholder) You'll need 5x dragon eggs, 2x lethicite and 1250 gems for the upgrade.");
-				if (player.hasItem(useables.LETHITE, 2) && player.hasItem(consumables.DRGNEGG, 2) && player.gems >= 1250) {
+			if (item == weapons.S_BLADE) {
+				outputText("(Placeholder) You'll need 1x regular lethicite, 1x fox jewel and 1500 gems for the upgrade.");
+				if (player.hasItem(useables.LETHITE, 1) && player.hasItem(consumables.FOXJEWL) && player.gems >= 1500) {
 					doYesNo(createCallBackFunction(equipmentUpgrade, item, true), equipmentUpgradeMenu);
 				}
 				else {
@@ -186,6 +191,33 @@ package classes.Scenes
 					doNext(equipmentUpgradeMenu);
 				}
 			}
+			//Eggshell Shield -> Runed Eggshell Shield
+			if (item == shields.DRGNSHL) {
+				outputText("(Placeholder) You'll need 2x dragon eggs, 1x lethicite and 1250 gems for the upgrade.");
+				if (player.hasItem(useables.LETHITE, 1) && player.hasItem(consumables.DRGNEGG, 2) && player.gems >= 1250) {
+					doYesNo(createCallBackFunction(equipmentUpgrade, item, true), equipmentUpgradeMenu);
+				}
+				else {
+					outputText("\n\nUnfortunately, you don't have the required materials and gems.");
+					doNext(equipmentUpgradeMenu);
+				}
+			}
+		}
+		private function routeLethiciteUpgrade(choice:String):void {
+			switch(choice) {
+				case "Marae":
+					player.removeKeyItem("Marae's Lethicite");
+					break;
+				case "Sheila":
+					player.removeKeyItem("Sheila's Lethicite");
+					break;
+				case "Statue":
+					player.removeKeyItem("Stone Statue Lethicite");
+					break;
+				default:
+					player.destroyItems(useables.LETHITE, 5);
+			}
+			equipmentUpgrade(weapons.U_SWORD, true);
 		}
 		private function equipmentUpgrade(item:ItemType, confirmation:Boolean = false):void {
 			clearOutput();
@@ -308,6 +340,7 @@ package classes.Scenes
 				//Unique Weapons
 				case weapons.B_SWORD:
 					gemCost = 2000;
+					if (confirmation) player.destroyItems(consumables.P_PEARL, 1);
 					itemToGet = weapons.DPSWORD;
 					break;
 				case weapons.U_SWORD:
@@ -316,10 +349,15 @@ package classes.Scenes
 					break;
 				case weapons.JRAPIER:
 					gemCost = 2000;
+					if (confirmation) player.destroyItems(useables.LETHITE, 5);
 					itemToGet = weapons.MRAPIER;
 					break;
 				case weapons.S_BLADE:
-					gemCost = 2000;
+					gemCost = 1500;
+					if (confirmation) {
+						player.destroyItems(useables.LETHITE, 1);
+						player.destroyItems(consumables.FOXJEWL, 2); //May change
+					}
 					itemToGet = weapons.RSBLADE;
 					break;
 				//Armours
@@ -350,6 +388,11 @@ package classes.Scenes
 					itemToGet = shields.TOWRSH2;
 					break;
 				case shields.DRGNSHL:
+					gemCost = 1250;
+					if (confirmation) {
+						player.destroyItems(useables.LETHITE, 1);
+						player.destroyItems(consumables.DRGNEGG, 2);
+					}
 					itemToGet = shields.RUNESHL;
 					break;
 			}

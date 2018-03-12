@@ -4,6 +4,7 @@
 package classes.Items
 {
 	import classes.ItemType;
+	import classes.PerkLib;
 
 	public class Weapon extends Useable //Equipable
 	{
@@ -84,7 +85,7 @@ package classes.Items
 		
 		override public function useText():void {
 			outputText("You equip " + longName + ".  ");
-			if (perk == "Large" && game.player.shield != ShieldLib.NOTHING) {
+			if (perk == "Large" && game.player.shield != ShieldLib.NOTHING && !(game.player.hasPerk(PerkLib.TitanGrip) && game.player.str >= 90)) {
 				outputText("Because the weapon requires the use of two hands, you have unequipped your shield. ");
 			}
 		}
@@ -94,7 +95,7 @@ package classes.Items
 		}
 		
 		public function playerEquip():Weapon { //This item is being equipped by the player. Add any perks, etc. - This function should only handle mechanics, not text output
-			if (perk == "Large" && game.player.shield != ShieldLib.NOTHING) {
+			if (perk == "Large" && game.player.shield != ShieldLib.NOTHING && !(game.player.hasPerk(PerkLib.TitanGrip) && game.player.str >= 90)) {
 				game.inventory.unequipShield();
 			}
 			return this;

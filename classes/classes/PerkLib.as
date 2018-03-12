@@ -188,6 +188,9 @@ package classes
 		public static const ImprovedSelfControl3:PerkType = mk("Improved Self-Control 3", "Improved Self-Control 3",
 				"Increases maximum lust by further 10.",
 				"You choose the 'Improved Self-Control 2' perk. Thanks to your superior mental conditioning, your maximum lust has been increased by further 10!</b>");
+		public static const Indefatigable:PerkType = mk("Indefatigable", "Indefatigable",
+				"Can no longer lose by lust. Can still submit manually at maximum lust via Fantasize.",
+				"You choose the 'Indefatigable' perk. Thanks to your sheer willpower, you can no longer lose when your lust reaches maximum. (Choosing Fantasize at maximum lust still allows you to submit.)")
 		public static const IronFists:PerkType = mk("Iron Fists", "Iron Fists",
 				"Hardens your fists to increase attack rating by 5.",
 				"You choose the 'Iron Fists' perk, hardening your fists. This increases attack power by 5.");
@@ -313,6 +316,9 @@ package classes
 		public static const Tank3:PerkType = mk("Tank 3", "Tank 3",
 				"+5 extra HP per character level.",
 				"You choose the 'Tank 3' perk, granting 5 extra maximum HP for each level.");
+		public static const TitanGrip:PerkType = mk("Titan Grip", "Titan Grip",
+				"Allows you to wield large weapons in one hand, granting shield usage.",
+				"You choose the 'Titan Grip' perk. Thanks to your incredible strength, you can now wield large weapons with one hand!");
 		public static const ThunderousStrikes:PerkType = mk("Thunderous Strikes", "Thunderous Strikes",
 				"+20% 'Attack' damage while strength is at or above 80.",
 				"You choose the 'Thunderous Strikes' perk, increasing normal damage by 20% while your strength is over 80.");
@@ -530,7 +536,6 @@ package classes
 					 .requireLevel(6);
 			IronFists2.requireStr(65)
 					  .requireLevel(6)
-					  .requireNGPlus(1)
 					  .requirePerk(IronFists);
 			Parry.requireStr(50)
 				 .requireSpe(50)
@@ -552,6 +557,9 @@ package classes
 					.requireLevel(18)
 					.requirePerk(Berzerker)
 					.requirePerk(ImprovedSelfControl);
+			TitanGrip.requireStr(90)
+					.requireLevel(18)
+					.requirePerk(StrongBack);
 			//------------
 			// TOUGHNESS
 			//------------
@@ -580,6 +588,7 @@ package classes
 			//Tier 2 Toughness Perks
 			Tank3.requireTou(80)
 				 .requireLevel(12)
+				 .requireNGPlus(1)
 				 .requirePerk(Tank2);
 			Resolute.requireTou(75)
 					.requireLevel(12);
@@ -590,6 +599,7 @@ package classes
 			ImprovedEndurance3.requireLevel(12)
 							  .requireStr(70)
 							  .requireTou(70)
+							  .requireNGPlus(1)
 							  .requirePerk(ImprovedEndurance2);
 			//------------
 			// SPEED
@@ -671,6 +681,11 @@ package classes
 									 || player.hasPerk(EnlightenedNinetails)
 									 || player.hasPerk(CorruptedNinetails);
 						 }, "Any Fire Spell");
+			//Tier 3 Intelligence perks
+			Indefatigable.requireInt(90)
+						 .requireLevel(18)
+						 .requirePerk(ImprovedSelfControl3)
+						 .requireNGPlus(1);
 			// Spell-boosting perks
 			// Battlemage: auto-use Might
 			Battlemage.requireInt(80)
@@ -716,6 +731,7 @@ package classes
 			ImprovedSelfControl3.requireLevel(12)
 			                    .requireInt(70)
 								.requireLib(75)
+								.requireNGPlus(1)
 								.requirePerk(ImprovedSelfControl2);
 			//------------
 			// SENSITIVITY

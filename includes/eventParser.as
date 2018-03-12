@@ -470,7 +470,7 @@ private function goNextWrapped(timeAmt:Number, needNext:Boolean):Boolean  {
 		return true;
 	}
 	//Unequip shield if you're wielding a large weapon.
-	if (player.weaponPerk == "Large" && player.shield != ShieldLib.NOTHING) {
+	if (player.weaponPerk == "Large" && player.shield != ShieldLib.NOTHING && !(player.hasPerk(PerkLib.TitanGrip) && player.str >= 90)) {
 		outputText("Your current weapon requires the use of two hands. As such, your shield has been unequipped automatically. ");
 		inventory.takeItem(player.setShield(ShieldLib.NOTHING), playerMenu);
 		return true;

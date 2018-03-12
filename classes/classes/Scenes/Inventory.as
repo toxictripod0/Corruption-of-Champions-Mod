@@ -509,7 +509,7 @@ package classes.Scenes
 			}
 		}
 		
-		private function replaceItem(itype:ItemType, slotNum:int, source:ItemSlotClass):void {
+		private function replaceItem(itype:ItemType, slotNum:int, source:ItemSlotClass = null):void {
 			clearOutput();
 			if (player.itemSlots[slotNum].itype == itype) //If it is the same as what's in the slot...just throw away the new item
 				outputText("You discard " + itype.longName + " from the stack to make room for the new one.");
