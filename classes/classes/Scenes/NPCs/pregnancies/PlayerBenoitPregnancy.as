@@ -134,12 +134,13 @@ package classes.Scenes.NPCs.pregnancies
 		 */
 		public function vaginalBirth():void 
 		{
-			if (incubationReset()) {
+			//TODO remove this once new Player calls have been removed
+			var player:Player = kGAMECLASS.player;
+
+			if (incubationReset() || player.pregnancyIncubation > 2) {
 				return;
 			}
 			
-			//TODO remove this once new Player calls have been removed
-			var player:Player = kGAMECLASS.player;
 			
 			pregnancyProgression.detectVaginalBirth(PregnancyStore.PREGNANCY_BASILISK);
 			
