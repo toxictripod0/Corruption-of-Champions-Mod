@@ -345,6 +345,12 @@ package classes.Scenes
 				var scene:VaginalPregnancy = vaginalPregnancyScenes[player.pregnancyType] as VaginalPregnancy;
 				LOGGER.debug("Updating vaginal birth for mother {0}, father {1} by using class {2}", PregnancyStore.PREGNANCY_PLAYER, player.pregnancyType, scene);
 				scene.vaginalBirth();
+				
+				// TODO find a cleaner way to solve this
+				// ignores Benoit pregnancy because that is a special case
+				if (player.pregnancyType !== PregnancyStore.PREGNANCY_BENOIT) {
+					giveBirth();
+				}
 			} else {
 				LOGGER.debug("Could not find a mapped vaginal pregnancy scene for mother {0}, father {1} - using legacy pregnancy progression", PregnancyStore.PREGNANCY_PLAYER, player.pregnancyType);;
 			}
@@ -358,6 +364,39 @@ package classes.Scenes
 			player.knockUpForce();
 			
 			return true;
+		}
+		
+		/**
+		 * Updates fertility and tracks number of births. If the player has birthed
+		 * enough children, gain the broodmother perk.
+		 */
+		public function giveBirth():void
+		{
+			//TODO remove this once new Player calls have been removed
+			var player:Player = kGAMECLASS.player;
+			
+			if (player.fertility < 15) {
+				player.fertility++;
+			}
+			
+			if (player.fertility < 25) {
+				player.fertility++;
+			}
+			
+			if (player.fertility < 40) {
+				player.fertility++;
+			}
+			
+			if (!player.hasStatusEffect(StatusEffects.Birthed)) {
+				player.createStatusEffect(StatusEffects.Birthed,1,0,0,0);
+			} else {
+				player.addStatusValue(StatusEffects.Birthed,1,1);
+				
+				if (player.findPerk(PerkLib.BroodMother) < 0 && player.statusEffectv1(StatusEffects.Birthed) >= 10) {
+					output.text("\n<b>You have gained the Brood Mother perk</b> (Pregnancies progress twice as fast as a normal woman's).\n");
+					player.createPerk(PerkLib.BroodMother,0,0,0,0);
+				}
+			}
 		}
 
 		private function updateAnalBirth(displayedUpdate:Boolean):Boolean 
