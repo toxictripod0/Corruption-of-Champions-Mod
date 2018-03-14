@@ -145,7 +145,7 @@ package classes.Scenes.NPCs.pregnancies
 			pregnancyProgression.detectVaginalBirth(PregnancyStore.PREGNANCY_BASILISK);
 			
 			player.knockUpForce(); //Clear Pregnancy
-			giveBirth();
+			pregnancyProgression.giveBirth();
 			kGAMECLASS.bazaar.benoit.popOutBenoitEggs();
 		}
 		
@@ -161,35 +161,6 @@ package classes.Scenes.NPCs.pregnancies
 			}
 			
 			return false;
-		}
-		
-		private function giveBirth():void
-		{
-			//TODO remove this once new Player calls have been removed
-			var player:Player = kGAMECLASS.player;
-			
-			if (player.fertility < 15) {
-				player.fertility++;
-			}
-			
-			if (player.fertility < 25) {
-				player.fertility++;
-			}
-			
-			if (player.fertility < 40) {
-				player.fertility++;
-			}
-			
-			if (!player.hasStatusEffect(StatusEffects.Birthed)) {
-				player.createStatusEffect(StatusEffects.Birthed,1,0,0,0);
-			} else {
-				player.addStatusValue(StatusEffects.Birthed,1,1);
-				
-				if (player.findPerk(PerkLib.BroodMother) < 0 && player.statusEffectv1(StatusEffects.Birthed) >= 10) {
-					output.text("\n<b>You have gained the Brood Mother perk</b> (Pregnancies progress twice as fast as a normal woman's).\n");
-					player.createPerk(PerkLib.BroodMother,0,0,0,0);
-				}
-			}
 		}
 	}
 }
