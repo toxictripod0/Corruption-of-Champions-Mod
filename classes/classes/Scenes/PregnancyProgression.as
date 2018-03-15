@@ -33,11 +33,18 @@ package classes.Scenes
 		 */
 		private var vaginalPregnancyScenes:Dictionary;
 		
+		/**
+		 * Map pregnancy type to the class that contains the matching scenes.
+		 * Currently only stores player pregnancies.
+		 */
+		private var analPregnancyScenes:Dictionary;
+		
 		public function PregnancyProgression() {
 			this.senseVaginalBirth = new Vector.<int>();
 			this.senseAnalBirth = new Vector.<int>();
 			
 			this.vaginalPregnancyScenes = new Dictionary();
+			this.analPregnancyScenes = new Dictionary();
 		}
 		
 		/**
@@ -90,6 +97,37 @@ package classes.Scenes
 		}
 		
 		/**
+		 * Register a scene for anal pregnancy. The registered scene will be used for pregnancy
+		 * progression and birth.
+		 * <b>Note:</b> Currently only the player is supported as the mother.
+		 * 
+		 * @param	pregnancyTypeMother The creature that is the mother
+		 * @param	pregnancyTypeFather The creature that is the father
+		 * @param	scenes The scene to register for the combination
+		 * @return true if an existing scene was overwritten
+		 * @throws ArgumentError If the mother is not the player
+		 */
+		public function registerAnalPregnancyScene(pregnancyTypeMother:int, pregnancyTypeFather:int, scenes:AnalPregnancy):Boolean
+		{
+			if (pregnancyTypeMother !== PregnancyStore.PREGNANCY_PLAYER) {
+				LOGGER.error("Currently only the player is supported as mother");
+				throw new ArgumentError("Currently only the player is supported as mother");
+			}
+			
+			var previousReplaced:Boolean = false;
+			
+			if (hasRegisteredAnalScene(pregnancyTypeMother, pregnancyTypeFather)) {
+				previousReplaced = true;
+				LOGGER.warn("Anal scene registration for mother {0}, father {1} will be replaced.", pregnancyTypeMother, pregnancyTypeFather);
+			}
+			
+			analPregnancyScenes[pregnancyTypeFather] = scenes;
+			LOGGER.debug("Mapped anal pregancy scene {0} to mother {1}, father {2}", scenes, pregnancyTypeMother, pregnancyTypeFather);
+			
+			return previousReplaced;
+		}
+		
+		/**
 		 * Check if the given vaginal pregnancy combination has a registered scene.
 		 * @param	pregnancyTypeMother The creature that is the mother
 		 * @param	pregnancyTypeFather The creature that is the father
@@ -102,6 +140,22 @@ package classes.Scenes
 			}
 			
 			return pregnancyTypeFather in vaginalPregnancyScenes;
+		}
+		
+		/**
+		 * Check if the given anal pregnancy combination has a registered scene.
+		 * @param	pregnancyTypeMother The creature that is the mother
+		 * @param	pregnancyTypeFather The creature that is the father
+		 * @return true if a scene is registered for the combination
+		 */
+		public function hasRegisteredAnalScene(pregnancyTypeMother:int, pregnancyTypeFather:int):Boolean
+		{
+			// currently only player pregnancies are supported
+			if (pregnancyTypeMother !== PregnancyStore.PREGNANCY_PLAYER) {
+				return false;
+			}
+			
+			return pregnancyTypeFather in analPregnancyScenes;
 		}
 		
 		/**
@@ -175,6 +229,16 @@ package classes.Scenes
 		
 		private function updateAnalPregnancy(displayedUpdate:Boolean):Boolean 
 		{
+			var analPregnancyType:int = player.buttPregnancyType;
+			
+			if (hasRegisteredAnalScene(PregnancyStore.PREGNANCY_PLAYER, analPregnancyType)) {
+				var scene:AnalPregnancy = analPregnancyScenes[analPregnancyType] as AnalPregnancy;
+				LOGGER.debug("Updating anal pregnancy for mother {0}, father {1} by using class {2}", PregnancyStore.PREGNANCY_PLAYER, analPregnancyType, scene);
+				return scene.updateAnalPregnancy();
+			} else {
+				LOGGER.debug("Could not find a mapped anal pregnancy for mother {0}, father {1} - using legacy pregnancy progression", PregnancyStore.PREGNANCY_PLAYER, analPregnancyType);
+			}
+			
 			if (player.buttPregnancyType === PregnancyStore.PREGNANCY_FROG_GIRL) {
 				if (player.buttPregnancyIncubation === 8) {
 					//Egg Maturing
@@ -421,6 +485,17 @@ package classes.Scenes
 
 		private function updateAnalBirth(displayedUpdate:Boolean):Boolean 
 		{
+			var analPregnancyType:int = player.buttPregnancyType;
+			
+			if (hasRegisteredAnalScene(PregnancyStore.PREGNANCY_PLAYER, analPregnancyType)) {
+				var scene:AnalPregnancy = analPregnancyScenes[analPregnancyType] as AnalPregnancy;
+				LOGGER.debug("Updating anal birth for mother {0}, father {1} by using class {2}", PregnancyStore.PREGNANCY_PLAYER, analPregnancyType, scene);
+				scene.analBirth();
+				displayedUpdate = true;
+			} else {
+				LOGGER.debug("Could not find a mapped anal pregnancy scene for mother {0}, father {1} - using legacy pregnancy progression", PregnancyStore.PREGNANCY_PLAYER, analPregnancyType);
+			}
+			
 			//Give birf if its time... to ANAL EGGS
 			if (player.buttPregnancyIncubation === 1 && player.buttPregnancyType === PregnancyStore.PREGNANCY_FROG_GIRL) {
 				getGame().bog.frogGirlScene.birthFrogEggsAnal();

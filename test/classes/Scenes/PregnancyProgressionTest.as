@@ -240,6 +240,80 @@ package classes.Scenes
 		}
 		
 		[Test]
+		public function registerPlayerAsMotherAnalPregnancy():void
+		{
+			var replacedPrevious:Boolean = cut.registerAnalPregnancyScene(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.PREGNANCY_IMP, scene);
+			
+			assertThat(replacedPrevious, equalTo(false));
+		}
+		
+		[Test]
+		public function registerPlayerAsMotherAnalPregnancyReplaceExisting():void
+		{
+			cut.registerAnalPregnancyScene(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.PREGNANCY_IMP, scene);
+			var replacedPrevious:Boolean = cut.registerAnalPregnancyScene(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.PREGNANCY_IMP, scene);
+			
+			assertThat(replacedPrevious, equalTo(true));
+		}
+		
+		[Test]
+		public function registerMultipleAnalScenes():void
+		{
+			var minoScene:DummyScene = new DummyScene();
+			
+			cut.registerAnalPregnancyScene(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.PREGNANCY_IMP, scene);
+			cut.registerAnalPregnancyScene(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.PREGNANCY_MINOTAUR, minoScene);
+			
+			player.buttKnockUpForce(PregnancyStore.PREGNANCY_IMP, 1);
+			cut.updatePregnancy();
+			
+			assertThat(scene.birthAnal, equalTo(true));
+			assertThat(minoScene.birthAnal, equalTo(false));
+		}
+		
+		[Test(expected="ArgumentError")]
+		public function registerAnalNonPlayerNotSupported():void
+		{
+			cut.registerAnalPregnancyScene(PregnancyStore.PREGNANCY_MARBLE, PregnancyStore.PREGNANCY_PLAYER, scene);
+		}
+		
+		[Test]
+		public function callsAnalPregnancyUpdate():void
+		{
+			cut.registerAnalPregnancyScene(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.PREGNANCY_IMP, scene);
+			
+			player.buttKnockUpForce(PregnancyStore.PREGNANCY_IMP, 337);
+			cut.updatePregnancy();
+			
+			assertThat(scene.updatedAnal, equalTo(true));
+		}
+		
+		[Test]
+		public function callsAnalPregnancyBirth():void
+		{
+			cut.registerAnalPregnancyScene(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.PREGNANCY_IMP, scene);
+			
+			player.buttKnockUpForce(PregnancyStore.PREGNANCY_IMP, 1);
+			cut.updatePregnancy();
+			
+			assertThat(scene.birthAnal, equalTo(true));
+		}
+		
+		[Test]
+		public function hasNoRegistreredAnalScene():void
+		{
+			assertThat(cut.hasRegisteredAnalScene(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.PREGNANCY_IMP), equalTo(false));
+		}
+		
+		[Test]
+		public function hasRegistreredAnalScene():void
+		{
+			cut.registerAnalPregnancyScene(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.PREGNANCY_IMP, scene);
+			
+			assertThat(cut.hasRegisteredAnalScene(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.PREGNANCY_IMP), equalTo(true));
+		}
+		
+		[Test]
 		public function spiderPregnancyText():void {
 			player.knockUpForce(PregnancyStore.PREGNANCY_SPIDER, 180);
 			
@@ -314,10 +388,13 @@ class PregProgForTest extends PregnancyProgression {
 }
 
 import classes.Scenes.VaginalPregnancy;
+import classes.Scenes.AnalPregnancy;
 
-class DummyScene implements VaginalPregnancy {
+class DummyScene implements VaginalPregnancy, AnalPregnancy {
 	public var updated:Boolean = false;
+	public var updatedAnal:Boolean = false;
 	public var birth:Boolean = false;
+	public var birthAnal:Boolean = false;
 	
 	public function updateVaginalPregnancy():Boolean 
 	{
@@ -328,5 +405,16 @@ class DummyScene implements VaginalPregnancy {
 	public function vaginalBirth():void 
 	{
 		this.birth = true;
+	}
+	
+	public function updateAnalPregnancy():Boolean 
+	{
+		this.updatedAnal = true;
+		return true;
+	}
+	
+	public function analBirth():void 
+	{
+		this.birthAnal = true;
 	}
 }
