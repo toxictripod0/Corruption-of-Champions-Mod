@@ -20,6 +20,14 @@ package classes.Scenes
 		public var senseVaginalBirth:Vector.<int>;
 		
 		/**
+		 * This sensing variable is used by tests to detect if
+		 * the anal birth code has been called. This is used for pregnancies
+		 * that do not provide any other means of detection (e.g. counter variables).
+		 */
+		public var senseAnalBirth:Vector.<int>;
+		
+		
+		/**
 		 * Map pregnancy type to the class that contains the matching scenes.
 		 * Currently only stores player pregnancies.
 		 */
@@ -27,6 +35,8 @@ package classes.Scenes
 		
 		public function PregnancyProgression() {
 			this.senseVaginalBirth = new Vector.<int>();
+			this.senseAnalBirth = new Vector.<int>();
+			
 			this.vaginalPregnancyScenes = new Dictionary();
 		}
 		
@@ -37,6 +47,16 @@ package classes.Scenes
 		 */
 		public function detectVaginalBirth(pregnancyType:int):void {
 			senseVaginalBirth.push(pregnancyType);
+		}
+		
+		/**
+		 * Record a call to a anal birth function.
+		 * This method is used for testing.
+		 * @param	pregnancyType to record
+		 */
+		public function detectAnalBirth(pregnancyType:int):void
+		{
+			senseAnalBirth.push(pregnancyType);
 		}
 		
 		/**
