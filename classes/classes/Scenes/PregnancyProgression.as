@@ -426,12 +426,14 @@ package classes.Scenes
 				getGame().bog.frogGirlScene.birthFrogEggsAnal();
 				displayedUpdate = true;
 				player.buttKnockUpForce(); //Clear Butt Pregnancy
+				detectAnalBirth(PregnancyStore.PREGNANCY_FROG_GIRL);
 			}
 			//Give birf if its time... to ANAL EGGS
 			if (player.buttPregnancyIncubation === 1 && player.buttPregnancyType === PregnancyStore.PREGNANCY_DRIDER_EGGS) {
 				getGame().swamp.corruptedDriderScene.birthSpiderEggsFromAnusITSBLEEDINGYAYYYYY();
 				displayedUpdate = true;
 				player.buttKnockUpForce(); //Clear Butt Pregnancy
+				detectAnalBirth(PregnancyStore.PREGNANCY_DRIDER_EGGS);
 			}
 			//GIVE BIRF TO TRAPS
 			if (player.buttPregnancyIncubation === 1 && player.buttPregnancyType === PregnancyStore.PREGNANCY_SANDTRAP_FERTILE) {
@@ -450,6 +452,7 @@ package classes.Scenes
 					}
 				}
 				displayedUpdate = true;
+				detectAnalBirth(PregnancyStore.PREGNANCY_SANDTRAP_FERTILE);
 			}	
 			//Give birth (if it's time) to beeeeeeez
 			if (player.buttPregnancyIncubation === 1 && player.buttPregnancyType === PregnancyStore.PREGNANCY_BEE_EGGS) {
@@ -485,6 +488,8 @@ package classes.Scenes
 				}
 				outputText("\n");
 				displayedUpdate = true;
+				
+				detectAnalBirth(PregnancyStore.PREGNANCY_BEE_EGGS);
 			}
 
 			//Satyr butt preg
@@ -492,6 +497,7 @@ package classes.Scenes
 				player.buttKnockUpForce(); //Clear Butt Pregnancy
 				displayedUpdate = true;
 				getGame().plains.satyrScene.satyrBirth(false);
+				detectAnalBirth(PregnancyStore.PREGNANCY_SATYR);
 			}
 			
 			return displayedUpdate;

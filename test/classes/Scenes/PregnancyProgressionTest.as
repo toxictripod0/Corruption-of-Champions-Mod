@@ -258,6 +258,44 @@ package classes.Scenes
 			assertThat(output.collectedOutput, hasItem(containsString("driders")));
 			assertThat(output.collectedOutput, not(hasItem(containsString("spider-morph"))));
 		}
+		
+		[Test]
+		public function sandTrapAnalNormalNoBirth():void
+		{
+			player.buttKnockUpForce(PregnancyStore.PREGNANCY_SANDTRAP, 1);
+			
+			scenePregProg.updatePregnancy();
+			
+			assertThat(scenePregProg.senseAnalBirth, not(hasItem(PregnancyStore.PREGNANCY_SANDTRAP)));
+		}
+		
+		[Test]
+		public function sandTrapAnalNormalClearsPregnancy():void
+		{
+			player.buttKnockUpForce(PregnancyStore.PREGNANCY_SANDTRAP, 36);
+			
+			scenePregProg.updatePregnancy();
+			
+			assertThat(player.isButtPregnant(), false);
+		}
+		
+		[Test]
+		public function bunnyAnalClearedWithoutBirth():void
+		{
+			player.buttKnockUpForce(PregnancyStore.PREGNANCY_BUNNY, 745);
+			
+			scenePregProg.updatePregnancy();
+			
+			assertThat(player.isButtPregnant(), false);
+		}
+		
+		[Test]
+		public function bunnyAnalUpdateText():void
+		{
+			player.buttKnockUpForce(PregnancyStore.PREGNANCY_BUNNY, 745);
+			
+			assertThat(scenePregProg.updatePregnancy(), true);
+		}
 	}
 }
 
