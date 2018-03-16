@@ -502,20 +502,17 @@ package classes.Scenes
 			if (player.buttPregnancyType === PregnancyStore.PREGNANCY_FROG_GIRL) {
 				getGame().bog.frogGirlScene.birthFrogEggsAnal();
 				displayedUpdate = true;
-				player.buttKnockUpForce(); //Clear Butt Pregnancy
 				detectAnalBirth(PregnancyStore.PREGNANCY_FROG_GIRL);
 			}
 			//Give birf if its time... to ANAL EGGS
 			if (player.buttPregnancyType === PregnancyStore.PREGNANCY_DRIDER_EGGS) {
 				getGame().swamp.corruptedDriderScene.birthSpiderEggsFromAnusITSBLEEDINGYAYYYYY();
 				displayedUpdate = true;
-				player.buttKnockUpForce(); //Clear Butt Pregnancy
 				detectAnalBirth(PregnancyStore.PREGNANCY_DRIDER_EGGS);
 			}
 			//GIVE BIRF TO TRAPS
 			if (player.buttPregnancyType === PregnancyStore.PREGNANCY_SANDTRAP_FERTILE) {
 				getGame().desert.sandTrapScene.birfSandTarps();
-				player.buttKnockUpForce(); //Clear Butt Pregnancy
 				if (player.butt.rating < 17) {
 					//Guaranteed increase up to level 10
 					if (player.butt.rating < 13) {
@@ -547,7 +544,6 @@ package classes.Scenes
 				if (player.cor >= 35 && player.cor < 65) outputText("You are amazed you could lay so many eggs, and while the act was strange there was something definitely arousing about it.");
 				if (player.cor >= 65 && player.cor < 90) outputText("You stretch languidly, noting that most of the drugged honey is gone.  Maybe you can find the Bee again and remember to bottle it next time.");
 				if (player.cor >= 90) outputText("You lick your lips, savoring the honeyed residue on them as you admire your thousands of children.  If only every night could be like this...\n");
-				player.buttKnockUpForce(); //Clear Butt Pregnancy
 				player.orgasm('Anal');
 				dynStats("int", 1, "lib", 4, "sen", 3);
 				if (player.buttChange(20, true)) outputText("\n");
@@ -571,11 +567,12 @@ package classes.Scenes
 
 			//Satyr butt preg
 			if (player.buttPregnancyType === PregnancyStore.PREGNANCY_SATYR) {
-				player.buttKnockUpForce(); //Clear Butt Pregnancy
 				displayedUpdate = true;
 				getGame().plains.satyrScene.satyrBirth(false);
 				detectAnalBirth(PregnancyStore.PREGNANCY_SATYR);
 			}
+			
+			player.buttKnockUpForce();
 			
 			return displayedUpdate;
 		}
