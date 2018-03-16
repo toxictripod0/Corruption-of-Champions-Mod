@@ -61,6 +61,7 @@ package classes.Scenes
 			kGAMECLASS.impScene = new ImpScene(scenePregProg, output);
 			kGAMECLASS.amilyScene = new AmilyScene(scenePregProg, output);
 			kGAMECLASS.swamp = new Swamp(scenePregProg, output);
+			kGAMECLASS.bog = new Bog(scenePregProg, output);
 			
 			new PlayerMousePregnancy(scenePregProg, output);
 			new PlayerBenoitPregnancy(scenePregProg, output);
@@ -90,16 +91,16 @@ package classes.Scenes
 		public function updateFrogAnalPregnancyOutput():void {
 			player.buttKnockUpForce(PregnancyStore.PREGNANCY_FROG_GIRL, 8);
 			
-			cut.updatePregnancy();
+			scenePregProg.updatePregnancy();
 			
-			assertThat(cut.collectedOutput, hasItem(containsString(FROG_ANAL_8_MESSAGE)));
+			assertThat(output.collectedOutput, hasItem(containsString(FROG_ANAL_8_MESSAGE)));
 		}
 		
 		[Test]
 		public function updateFrogAnalPregnancyDisplayChange():void {
 			player.buttKnockUpForce(PregnancyStore.PREGNANCY_FROG_GIRL, 8);
 			
-			assertThat(cut.updatePregnancy(), equalTo(true));
+			assertThat(scenePregProg.updatePregnancy(), equalTo(true));
 		}
 		
 		[Test]

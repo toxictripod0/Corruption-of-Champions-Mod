@@ -448,7 +448,7 @@ package classes
 		public function createScenes(pregnancyProgress:PregnancyProgression): void {
 			this.dungeons = new DungeonCore(pregnancyProgress);
 			
-			this.bog = new Bog(pregnancyProgress);
+			this.bog = new Bog(pregnancyProgress, output);
 			this.mountain = new Mountain(pregnancyProgress, output);
 			this.highMountains = new HighMountains(pregnancyProgress, output);
 			this.volcanicCrag = new VolcanicCrag(pregnancyProgress, output);
