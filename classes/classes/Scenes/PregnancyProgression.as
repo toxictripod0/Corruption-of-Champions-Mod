@@ -189,7 +189,9 @@ package classes.Scenes
 				displayedUpdate = updateVaginalBirth(displayedUpdate);
 			}
 			
-			displayedUpdate = updateAnalBirth(displayedUpdate);
+			if (player.buttPregnancyIncubation === 1) {
+				displayedUpdate = updateAnalBirth(displayedUpdate);
+			}
 
 			return displayedUpdate;
 		}
@@ -497,21 +499,21 @@ package classes.Scenes
 			}
 			
 			//Give birf if its time... to ANAL EGGS
-			if (player.buttPregnancyIncubation === 1 && player.buttPregnancyType === PregnancyStore.PREGNANCY_FROG_GIRL) {
+			if (player.buttPregnancyType === PregnancyStore.PREGNANCY_FROG_GIRL) {
 				getGame().bog.frogGirlScene.birthFrogEggsAnal();
 				displayedUpdate = true;
 				player.buttKnockUpForce(); //Clear Butt Pregnancy
 				detectAnalBirth(PregnancyStore.PREGNANCY_FROG_GIRL);
 			}
 			//Give birf if its time... to ANAL EGGS
-			if (player.buttPregnancyIncubation === 1 && player.buttPregnancyType === PregnancyStore.PREGNANCY_DRIDER_EGGS) {
+			if (player.buttPregnancyType === PregnancyStore.PREGNANCY_DRIDER_EGGS) {
 				getGame().swamp.corruptedDriderScene.birthSpiderEggsFromAnusITSBLEEDINGYAYYYYY();
 				displayedUpdate = true;
 				player.buttKnockUpForce(); //Clear Butt Pregnancy
 				detectAnalBirth(PregnancyStore.PREGNANCY_DRIDER_EGGS);
 			}
 			//GIVE BIRF TO TRAPS
-			if (player.buttPregnancyIncubation === 1 && player.buttPregnancyType === PregnancyStore.PREGNANCY_SANDTRAP_FERTILE) {
+			if (player.buttPregnancyType === PregnancyStore.PREGNANCY_SANDTRAP_FERTILE) {
 				getGame().desert.sandTrapScene.birfSandTarps();
 				player.buttKnockUpForce(); //Clear Butt Pregnancy
 				if (player.butt.rating < 17) {
@@ -530,7 +532,7 @@ package classes.Scenes
 				detectAnalBirth(PregnancyStore.PREGNANCY_SANDTRAP_FERTILE);
 			}	
 			//Give birth (if it's time) to beeeeeeez
-			if (player.buttPregnancyIncubation === 1 && player.buttPregnancyType === PregnancyStore.PREGNANCY_BEE_EGGS) {
+			if (player.buttPregnancyType === PregnancyStore.PREGNANCY_BEE_EGGS) {
 				outputText("\n");
 				outputText(images.showImage("birth-beegirl"));
 				outputText("There is a sudden gush of honey-colored fluids from your ass.  Before panic can set in, a wonderful scent overtakes you, making everything ok.  ");
@@ -568,7 +570,7 @@ package classes.Scenes
 			}
 
 			//Satyr butt preg
-			if (player.buttPregnancyType === PregnancyStore.PREGNANCY_SATYR && player.buttPregnancyIncubation === 1) {
+			if (player.buttPregnancyType === PregnancyStore.PREGNANCY_SATYR) {
 				player.buttKnockUpForce(); //Clear Butt Pregnancy
 				displayedUpdate = true;
 				getGame().plains.satyrScene.satyrBirth(false);
