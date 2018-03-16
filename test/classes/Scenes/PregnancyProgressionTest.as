@@ -370,6 +370,14 @@ package classes.Scenes
 			
 			assertThat(scenePregProg.updatePregnancy(), true);
 		}
+		
+		[Test]
+		public function noTextDisplayUnsupportedAnalPregnancy():void
+		{
+			player.buttKnockUpForce(PregnancyStore.INCUBATION_IMP, 1);
+			
+			assertThat(cut.updatePregnancy(), equalTo(false));
+		}
 	}
 }
 
