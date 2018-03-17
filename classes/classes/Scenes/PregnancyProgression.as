@@ -241,33 +241,6 @@ package classes.Scenes
 				LOGGER.debug("Could not find a mapped anal pregnancy for mother {0}, father {1} - using legacy pregnancy progression", PregnancyStore.PREGNANCY_PLAYER, analPregnancyType);
 			}
 			
-			//Bunny TF buttpreggoz
-			if (player.buttPregnancyType === PregnancyStore.PREGNANCY_BUNNY) {
-				if (player.buttPregnancyIncubation === 800) {
-					outputText("\nYour gut gurgles strangely.\n");
-					displayedUpdate = true;
-				}
-				if (player.buttPregnancyIncubation === 785) {
-					getGame().mutations.neonPinkEgg(true,player);
-					outputText("\n");
-					displayedUpdate = true;
-				}
-				if (player.buttPregnancyIncubation === 776) {
-					outputText("\nYour gut feels full and bloated.\n");
-					displayedUpdate = true;
-				}
-				if (player.buttPregnancyIncubation === 765) {
-					getGame().mutations.neonPinkEgg(true,player);
-					outputText("\n");
-					displayedUpdate = true;
-				}
-				if (player.buttPregnancyIncubation === 745) {
-					outputText("\n<b>After dealing with the discomfort and bodily changes for the past day or so, you finally get the feeling that the eggs in your ass have dissolved.</b>\n");
-					displayedUpdate = true;
-					player.buttKnockUpForce(); //Clear Butt Pregnancy
-				}
-			}
-			
 			return displayedUpdate;
 		}
 

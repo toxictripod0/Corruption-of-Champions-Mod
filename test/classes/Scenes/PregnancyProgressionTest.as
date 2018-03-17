@@ -2,10 +2,12 @@ package classes.Scenes
 {
 
 	import classes.DefaultDict;
+	import classes.Items.Mutations;
 	import classes.Scenes.Areas.Bog;
 	import classes.Scenes.Areas.Desert;
 	import classes.Scenes.Areas.Swamp;
 	import classes.Scenes.Monsters.ImpScene;
+	import classes.Scenes.Monsters.pregnancies.PlayerBunnyPregnancy;
 	import classes.Scenes.NPCs.AmilyScene;
 	import classes.Scenes.NPCs.pregnancies.PlayerBenoitPregnancy;
 	import classes.Scenes.NPCs.pregnancies.PlayerMousePregnancy;
@@ -67,6 +69,7 @@ package classes.Scenes
 			
 			new PlayerMousePregnancy(scenePregProg, output);
 			new PlayerBenoitPregnancy(scenePregProg, output);
+			new PlayerBunnyPregnancy(scenePregProg, output, Mutations.init());
 			
 			scene = new DummyScene();
 		}
