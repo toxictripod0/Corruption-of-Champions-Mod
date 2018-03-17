@@ -218,26 +218,36 @@ package classes.Scenes.Monsters.pregnancies
 			
 			if (player.buttPregnancyIncubation === 800) {
 				output.text("\nYour gut gurgles strangely.\n");
+				
 				displayedUpdate = true;
 			}
+			
 			if (player.buttPregnancyIncubation === 785) {
 				kGAMECLASS.mutations.neonPinkEgg(true,player);
 				output.text("\n");
+				
 				displayedUpdate = true;
 			}
+			
 			if (player.buttPregnancyIncubation === 776) {
 				output.text("\nYour gut feels full and bloated.\n");
+				
 				displayedUpdate = true;
 			}
+			
 			if (player.buttPregnancyIncubation === 765) {
 				kGAMECLASS.mutations.neonPinkEgg(true,player);
 				output.text("\n");
+				
 				displayedUpdate = true;
 			}
+			
 			if (player.buttPregnancyIncubation === 745) {
 				output.text("\n<b>After dealing with the discomfort and bodily changes for the past day or so, you finally get the feeling that the eggs in your ass have dissolved.</b>\n");
+				
 				displayedUpdate = true;
-				player.buttKnockUpForce(); //Clear Butt Pregnancy
+				
+				player.buttKnockUpForce();
 			}
 			
 			return displayedUpdate;
