@@ -206,7 +206,7 @@ package classes
 		public var commonEncounters:CommonEncounters = new CommonEncounters(); // Common dependencies go first
 		
 		public var bog:Bog;
-		public var desert:Desert = new Desert();
+		public var desert:Desert;
 		public var forest:Forest;
 		public var deepWoods:DeepWoods = new DeepWoods(forest);
 		public var glacialRift:GlacialRift = new GlacialRift();
@@ -455,6 +455,7 @@ package classes
 			this.swamp = new Swamp(pregnancyProgress, output);
 			this.plains = new Plains(pregnancyProgress, output);
 			this.forest = new Forest(pregnancyProgress, output);
+			this.desert = new Desert(pregnancyProgress, output);
 			
 			this.telAdre = new TelAdre(pregnancyProgress);
 			

@@ -241,26 +241,6 @@ package classes.Scenes
 				LOGGER.debug("Could not find a mapped anal pregnancy for mother {0}, father {1} - using legacy pregnancy progression", PregnancyStore.PREGNANCY_PLAYER, analPregnancyType);
 			}
 			
-			//Sand Traps in butt pregnancy
-			if (player.buttPregnancyType === PregnancyStore.PREGNANCY_SANDTRAP || player.buttPregnancyType === PregnancyStore.PREGNANCY_SANDTRAP_FERTILE) {
-				if (player.buttPregnancyIncubation === 36) {
-					//(Eggs take 2-3 days to lay)
-					outputText("<b>\nYour bowels make a strange gurgling noise and shift uneasily.  You feel ");
-					if (player.buttPregnancyType === PregnancyStore.PREGNANCY_SANDTRAP_FERTILE) outputText(" bloated and full; the sensation isn't entirely unpleasant.");
-					else {
-						outputText("increasingly empty, as though some obstructions inside you were being broken down.");
-						player.buttKnockUpForce(); //Clear Butt Pregnancy
-					}
-					outputText("</b>\n");
-					displayedUpdate = true;
-				}
-				if (player.buttPregnancyIncubation === 20) {
-					//end eggpreg here if unfertilized
-					outputText("\nSomething oily drips from your sphincter, staining the ground.  You suppose you should feel worried about this, but the overriding emotion which simmers in your gut is one of sensual, yielding calm.  The pressure in your bowels which has been building over the last few days feels right somehow, and the fact that your back passage is dribbling lubricant makes you incredibly, perversely hot.  As you stand there and savor the wet, soothing sensation a fantasy pushes itself into your mind, one of being on your hands and knees and letting any number of beings use your ass, of being bred over and over by beautiful, irrepressible insect creatures.  With some effort you suppress these alien emotions and carry on, trying to ignore the oil which occasionally beads out of your " + player.assholeDescript() + " and stains your [armor].\n");
-					dynStats("int", -.5, "lus", 500);
-					displayedUpdate = true;
-				}
-			}
 			//Bunny TF buttpreggoz
 			if (player.buttPregnancyType === PregnancyStore.PREGNANCY_BUNNY) {
 				if (player.buttPregnancyIncubation === 800) {
@@ -400,25 +380,6 @@ package classes.Scenes
 			} else {
 				LOGGER.debug("Could not find a mapped anal pregnancy scene for mother {0}, father {1} - using legacy pregnancy progression", PregnancyStore.PREGNANCY_PLAYER, analPregnancyType);
 			}
-			
-			//GIVE BIRF TO TRAPS
-			if (player.buttPregnancyType === PregnancyStore.PREGNANCY_SANDTRAP_FERTILE) {
-				getGame().desert.sandTrapScene.birfSandTarps();
-				if (player.butt.rating < 17) {
-					//Guaranteed increase up to level 10
-					if (player.butt.rating < 13) {
-						player.butt.rating++;
-						outputText("\nYou notice your " + player.buttDescript() + " feeling larger and plumper after the ordeal.\n");
-					}
-					//Big butts only increase 50% of the time.
-					else if (rand(2) === 0){
-						player.butt.rating++;
-						outputText("\nYou notice your " + player.buttDescript() + " feeling larger and plumper after the ordeal.\n");				
-					}
-				}
-				displayedUpdate = true;
-				detectAnalBirth(PregnancyStore.PREGNANCY_SANDTRAP_FERTILE);
-			}	
 			
 			player.buttKnockUpForce();
 			

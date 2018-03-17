@@ -3,6 +3,7 @@ package classes.Scenes
 
 	import classes.DefaultDict;
 	import classes.Scenes.Areas.Bog;
+	import classes.Scenes.Areas.Desert;
 	import classes.Scenes.Areas.Swamp;
 	import classes.Scenes.Monsters.ImpScene;
 	import classes.Scenes.NPCs.AmilyScene;
@@ -62,6 +63,7 @@ package classes.Scenes
 			kGAMECLASS.amilyScene = new AmilyScene(scenePregProg, output);
 			kGAMECLASS.swamp = new Swamp(scenePregProg, output);
 			kGAMECLASS.bog = new Bog(scenePregProg, output);
+			kGAMECLASS.desert = new Desert(scenePregProg, output);
 			
 			new PlayerMousePregnancy(scenePregProg, output);
 			new PlayerBenoitPregnancy(scenePregProg, output);
