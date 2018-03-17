@@ -45,12 +45,16 @@ package classes.Scenes.Monsters.pregnancies
 				output.text("<b>\nYour bowels make a strange gurgling noise and shift uneasily.  You feel ");
 				output.text(" bloated and full; the sensation isn't entirely unpleasant.");
 				output.text("</b>\n");
+				
 				displayedUpdate = true;
 			}
+			
 			if (player.buttPregnancyIncubation === 20) {
 				//end eggpreg here if unfertilized
 				output.text("\nSomething oily drips from your sphincter, staining the ground.  You suppose you should feel worried about this, but the overriding emotion which simmers in your gut is one of sensual, yielding calm.  The pressure in your bowels which has been building over the last few days feels right somehow, and the fact that your back passage is dribbling lubricant makes you incredibly, perversely hot.  As you stand there and savor the wet, soothing sensation a fantasy pushes itself into your mind, one of being on your hands and knees and letting any number of beings use your ass, of being bred over and over by beautiful, irrepressible insect creatures.  With some effort you suppress these alien emotions and carry on, trying to ignore the oil which occasionally beads out of your " + player.assholeDescript() + " and stains your [armor].\n");
+				
 				kGAMECLASS.dynStats("int", -.5, "lus", 500);
+				
 				displayedUpdate = true;
 			}
 			
@@ -68,18 +72,19 @@ package classes.Scenes.Monsters.pregnancies
 			
 			kGAMECLASS.desert.sandTrapScene.birfSandTarps();
 			if (player.butt.rating < 17) {
-				//Guaranteed increase up to level 10
 				if (player.butt.rating < 13) {
+					//Guaranteed increase up to level 10
+					player.butt.rating++;
+					output.text("\nYou notice your " + player.buttDescript() + " feeling larger and plumper after the ordeal.\n");
+				} else if (Utils.rand(2) === 0) {
+					//Big butts only increase 50% of the time.
 					player.butt.rating++;
 					output.text("\nYou notice your " + player.buttDescript() + " feeling larger and plumper after the ordeal.\n");
 				}
-				//Big butts only increase 50% of the time.
-				else if (Utils.rand(2) === 0){
-					player.butt.rating++;
-					output.text("\nYou notice your " + player.buttDescript() + " feeling larger and plumper after the ordeal.\n");				
-				}
 			}
+			
 			displayedUpdate = true;
+			
 			pregnancyProgression.detectAnalBirth(PregnancyStore.PREGNANCY_SANDTRAP_FERTILE);
 		}
 	}
