@@ -241,28 +241,6 @@ package classes.Scenes
 				LOGGER.debug("Could not find a mapped anal pregnancy for mother {0}, father {1} - using legacy pregnancy progression", PregnancyStore.PREGNANCY_PLAYER, analPregnancyType);
 			}
 			
-			//DRIDAH BUTT Pregnancy!
-			if (player.buttPregnancyType === PregnancyStore.PREGNANCY_DRIDER_EGGS) {	
-				if (player.buttPregnancyIncubation === 199) {
-					outputText("\n<b>After your session with the drider, you feel so nice and... full.  There is no outward change on your body, aside from the egg-packed bulge of your belly, but your " + player.assholeDescript() + " tingles slightly and leaks green goop from time to time. Hopefully it's nothing to be alarmed about.</b>\n");
-					displayedUpdate = true;
-				}
-				if (player.buttPregnancyIncubation === 180) {
-					outputText(images.showImage("cDrider-loss-butt"));
-					outputText("\n<b>A hot flush works its way through you, and visions of aroused driders quickly come to dominate your thoughts.  You start playing with a nipple while you lose yourself in the fantasy, imagining being tied up in webs and packed completely full of eggs, stuffing your belly completely with burgeoning spheres of love.  You shake free of the fantasy and notice your hands rubbing over your slightly bloated belly.  Perhaps it wouldn't be so bad?</b>\n");
-					dynStats("lib", 1, "sen", 1, "lus", 20);
-					displayedUpdate = true;				
-				}
-				if (player.buttPregnancyIncubation === 120) {
-					outputText("\n<b>Your belly is bulging from the size of the eggs growing inside you and gurgling just about any time you walk.  Green goo runs down your " + player.legs() + " frequently, drooling out of your pregnant asshole.</b>\n");
-					displayedUpdate = true;
-				}
-				if (player.buttPregnancyIncubation === 72) {
-					outputText("\n<b>The huge size of your pregnant belly constantly impedes your movement, but the constant squirming and shaking of your unborn offspring makes you pretty sure you won't have to carry them much longer.");
-					outputText("</b>\n");
-					displayedUpdate = true;
-				}
-			}
 			//Bee Egg's in butt pregnancy
 			if (player.buttPregnancyType === PregnancyStore.PREGNANCY_BEE_EGGS) {
 				if (player.buttPregnancyIncubation === 36) {
@@ -446,12 +424,6 @@ package classes.Scenes
 				LOGGER.debug("Could not find a mapped anal pregnancy scene for mother {0}, father {1} - using legacy pregnancy progression", PregnancyStore.PREGNANCY_PLAYER, analPregnancyType);
 			}
 			
-			//Give birf if its time... to ANAL EGGS
-			if (player.buttPregnancyType === PregnancyStore.PREGNANCY_DRIDER_EGGS) {
-				getGame().swamp.corruptedDriderScene.birthSpiderEggsFromAnusITSBLEEDINGYAYYYYY();
-				displayedUpdate = true;
-				detectAnalBirth(PregnancyStore.PREGNANCY_DRIDER_EGGS);
-			}
 			//GIVE BIRF TO TRAPS
 			if (player.buttPregnancyType === PregnancyStore.PREGNANCY_SANDTRAP_FERTILE) {
 				getGame().desert.sandTrapScene.birfSandTarps();
