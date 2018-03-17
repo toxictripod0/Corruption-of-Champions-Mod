@@ -241,29 +241,6 @@ package classes.Scenes
 				LOGGER.debug("Could not find a mapped anal pregnancy for mother {0}, father {1} - using legacy pregnancy progression", PregnancyStore.PREGNANCY_PLAYER, analPregnancyType);
 			}
 			
-			//Bee Egg's in butt pregnancy
-			if (player.buttPregnancyType === PregnancyStore.PREGNANCY_BEE_EGGS) {
-				if (player.buttPregnancyIncubation === 36) {
-					outputText("<b>\nYou feel bloated, your bowels shifting uncomfortably from time to time.</b>\n");
-					displayedUpdate = true;
-				}
-				if (player.buttPregnancyIncubation === 20) {
-					outputText("<b>\nA honey-scented fluid drips from your rectum.</b>  At first it worries you, but as the smell fills the air around you, you realize anything with such a beautiful scent must be good.  ");
-					if (player.cockTotal() > 0) outputText("The aroma seems to permeate your very being, slowly congregating in your ");
-					if (player.cockTotal() === 1) {
-						outputText(player.cockDescript(0));
-						if (player.countCocksOfType(CockTypesEnum.HORSE) === 1) outputText(", each inhalation making it bigger, harder, and firmer.  You suck in huge lungfuls of air, until your " + player.cockDescript(0) + " is twitching and dripping, the flare swollen and purple.  ");
-						if (player.dogCocks() === 1) outputText(", each inhalation making it thicker, harder, and firmer.  You suck in huge lungfuls of air, desperate for more, until your " + player.cockDescript(0) + " is twitching and dripping, its knot swollen to the max.  ");
-						if (player.countCocksOfType(CockTypesEnum.HUMAN) === 1) outputText(", each inhalation making it bigger, harder, and firmer.  You suck in huge lungfuls of air, until your " + player.cockDescript(0) + " is twitching and dripping, the head swollen and purple.  ");
-						//FAILSAFE FOR NEW COCKS
-						if (player.countCocksOfType(CockTypesEnum.HUMAN) === 0 && player.dogCocks() === 0 && player.countCocksOfType(CockTypesEnum.HORSE) === 0) outputText(", each inhalation making it bigger, harder, and firmer.  You suck in huge lungfuls of air until your " + player.cockDescript(0) + " is twitching and dripping.  ");
-					}
-					if (player.cockTotal() > 1) outputText("groin.  Your " + player.multiCockDescriptLight() + " fill and grow with every lungful of the stuff you breathe in.  You suck in great lungfuls of the tainted air, desperate for more, your cocks twitching and dripping with need.  ");
-					outputText("You smile knowing you couldn't stop from masturbating if you wanted to.\n");
-					dynStats("int", -.5, "lus", 500);
-					displayedUpdate = true;
-				}
-			}
 			//Sand Traps in butt pregnancy
 			if (player.buttPregnancyType === PregnancyStore.PREGNANCY_SANDTRAP || player.buttPregnancyType === PregnancyStore.PREGNANCY_SANDTRAP_FERTILE) {
 				if (player.buttPregnancyIncubation === 36) {
@@ -442,42 +419,6 @@ package classes.Scenes
 				displayedUpdate = true;
 				detectAnalBirth(PregnancyStore.PREGNANCY_SANDTRAP_FERTILE);
 			}	
-			//Give birth (if it's time) to beeeeeeez
-			if (player.buttPregnancyType === PregnancyStore.PREGNANCY_BEE_EGGS) {
-				outputText("\n");
-				outputText(images.showImage("birth-beegirl"));
-				outputText("There is a sudden gush of honey-colored fluids from your ass.  Before panic can set in, a wonderful scent overtakes you, making everything ok.  ");
-				if (player.cockTotal() > 0) outputText("The muzzy feeling that fills your head seems to seep downwards, making your equipment hard and tight.  ");
-				if (player.vaginas.length > 0) outputText("Your " + player.vaginaDescript(0) + " becomes engorged and sensitive.  ");
-				outputText("Your hand darts down to the amber, scooping up a handful of the sticky stuff.  You wonder what your hand is doing as it brings it up to your mouth, which instinctively opens.  You shudder in revulsion as you swallow the sweet-tasting stuff, your mind briefly wondering why it would do that.  The stuff seems to radiate warmth, quickly pushing those nagging thoughts away as you scoop up more.\n\n");
-				outputText("A sudden slip from below surprises you; a white sphere escapes from your anus along with another squirt of honey.  Your drugged brain tries to understand what's happening, but it gives up, your hands idly slathering honey over your loins.  The next orb pops out moments later, forcing a startled moan from your mouth.  That felt GOOD.  You begin masturbating to the thought of laying more eggs... yes, that's what those are.  You nearly cum as egg number three squeezes out.  ");
-				if (player.averageLactation() >= 1 && player.biggestTitSize() > 2) outputText("Seeking even greater sensation, your hands gather the honey and massage it into your " + player.breastDescript(0) + ", slowly working up to your nipples.  Milk immediately begins pouring out from the attention, flooding your chest with warmth.  ");
-				outputText("Each egg seems to come out closer on the heels of the one before, and each time your conscious mind loses more of its ability to do anything but masturbate and wallow in honey.\n\n");
-				outputText("Some time later, your mind begins to return, brought to wakefulness by an incredibly loud buzzing...  You sit up and see a pile of dozens of eggs resting in a puddle of sticky honey.  Most are empty, but a few have hundreds of honey-bees emptying from them, joining the massive swarms above you.  ");
-				if (player.cor < 35) outputText("You are disgusted, but glad you were not stung during the ordeal.  You stagger away and find a brook to wash out your mouth with.");
-				if (player.cor >= 35 && player.cor < 65) outputText("You are amazed you could lay so many eggs, and while the act was strange there was something definitely arousing about it.");
-				if (player.cor >= 65 && player.cor < 90) outputText("You stretch languidly, noting that most of the drugged honey is gone.  Maybe you can find the Bee again and remember to bottle it next time.");
-				if (player.cor >= 90) outputText("You lick your lips, savoring the honeyed residue on them as you admire your thousands of children.  If only every night could be like this...\n");
-				player.orgasm('Anal');
-				dynStats("int", 1, "lib", 4, "sen", 3);
-				if (player.buttChange(20, true)) outputText("\n");
-				if (player.butt.rating < 17) {
-					//Guaranteed increase up to level 10
-					if (player.butt.rating < 13) {
-						player.butt.rating++;
-						outputText("\nYou notice your " + player.buttDescript() + " feeling larger and plumper after the ordeal.");
-					}
-					//Big butts only increase 50% of the time.
-					else if (rand(2) === 0){
-						player.butt.rating++;
-						outputText("\nYou notice your " + player.buttDescript() + " feeling larger and plumper after the ordeal.");				
-					}
-				}
-				outputText("\n");
-				displayedUpdate = true;
-				
-				detectAnalBirth(PregnancyStore.PREGNANCY_BEE_EGGS);
-			}
 			
 			player.buttKnockUpForce();
 			

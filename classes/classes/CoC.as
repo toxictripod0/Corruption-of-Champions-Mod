@@ -207,7 +207,7 @@ package classes
 		
 		public var bog:Bog;
 		public var desert:Desert = new Desert();
-		public var forest:Forest = new Forest();
+		public var forest:Forest;
 		public var deepWoods:DeepWoods = new DeepWoods(forest);
 		public var glacialRift:GlacialRift = new GlacialRift();
 		public var highMountains:HighMountains;
@@ -454,6 +454,8 @@ package classes
 			this.volcanicCrag = new VolcanicCrag(pregnancyProgress, output);
 			this.swamp = new Swamp(pregnancyProgress, output);
 			this.plains = new Plains(pregnancyProgress, output);
+			this.forest = new Forest(pregnancyProgress, output);
+			
 			this.telAdre = new TelAdre(pregnancyProgress);
 			
 			this.impScene = new ImpScene(pregnancyProgress, output);
