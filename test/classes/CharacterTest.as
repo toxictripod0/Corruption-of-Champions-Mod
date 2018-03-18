@@ -32,5 +32,12 @@ package classes
 			
 			assertThat(cut.isPregnant(), equalTo(false));
 		}
+		
+		[Test]
+		public function clearAnalPregnancy():void {
+			cut.clearButtPregnancy();
+			
+			assertThat(cut.isButtPregnant(), equalTo(false));
+		}
 	}
 }

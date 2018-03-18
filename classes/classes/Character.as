@@ -462,6 +462,15 @@ package classes
 			_buttPregnancyType = type;
 			_buttPregnancyIncubation = (type == 0 ? 0 : incubation); //Won't allow incubation time without pregnancy type
 		}
+		
+		/**
+		 * Clears anal pregnancy. This method is an alias for Character#buttKnockUpForce(), to make
+		 * the code more readable.
+		 */
+		public function clearButtPregnancy():void
+		{
+			buttKnockUpForce();
+		}
 
 		public function pregnancyAdvance():Boolean {
 			if (_pregnancyIncubation > 0) _pregnancyIncubation--;
