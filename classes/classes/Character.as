@@ -426,6 +426,15 @@ package classes
 			_pregnancyType = type;
 			_pregnancyIncubation = (type == 0 ? 0 : incubationDuration); //Won't allow incubation time without pregnancy type
 		}
+		
+		/**
+		 * Clears vaginal pregnancy. This method is an alias for Character#knockUpForce(), to make
+		 * the code more readable.
+		 */
+		public function clearPregnancy():void
+		{
+			knockUpForce();
+		}
 	
 		//fertility must be >= random(0-beat)
 		public function buttKnockUp(type:int = 0, incubation:int = 0, beat:int = 100, arg:int = 0):void
