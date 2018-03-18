@@ -445,37 +445,37 @@ package classes
 		 * Create scenes that use the new pregnancy system. This method is public to allow for simple testing.
 		 * @param pregnancyProgress Pregnancy progression to use for scenes, which they use to register themself
 		 */
-		public function createScenes(pregnancyProgress:PregnancyProgression): void {
-			this.dungeons = new DungeonCore(pregnancyProgress);
+		public function createScenes(pregnancyProgression:PregnancyProgression): void {
+			this.dungeons = new DungeonCore(pregnancyProgression);
 			
-			this.bog = new Bog(pregnancyProgress, output);
-			this.mountain = new Mountain(pregnancyProgress, output);
-			this.highMountains = new HighMountains(pregnancyProgress, output);
-			this.volcanicCrag = new VolcanicCrag(pregnancyProgress, output);
-			this.swamp = new Swamp(pregnancyProgress, output);
-			this.plains = new Plains(pregnancyProgress, output);
-			this.forest = new Forest(pregnancyProgress, output);
+			this.bog = new Bog(pregnancyProgression, output);
+			this.mountain = new Mountain(pregnancyProgression, output);
+			this.highMountains = new HighMountains(pregnancyProgression, output);
+			this.volcanicCrag = new VolcanicCrag(pregnancyProgression, output);
+			this.swamp = new Swamp(pregnancyProgression, output);
+			this.plains = new Plains(pregnancyProgression, output);
+			this.forest = new Forest(pregnancyProgression, output);
 			this.deepWoods = new DeepWoods(forest);
-			this.desert = new Desert(pregnancyProgress, output);
+			this.desert = new Desert(pregnancyProgression, output);
 			
-			this.telAdre = new TelAdre(pregnancyProgress);
+			this.telAdre = new TelAdre(pregnancyProgression);
 			
-			this.impScene = new ImpScene(pregnancyProgress, output);
-			this.anemoneScene = new AnemoneScene(pregnancyProgress, output);
-			this.marbleScene = new MarbleScene(pregnancyProgress, output);
-			this.jojoScene = new JojoScene(pregnancyProgress, output);
-			this.amilyScene = new AmilyScene(pregnancyProgress, output);
-			this.izmaScene = new IzmaScene(pregnancyProgress, output);
-			this.lake = new Lake(pregnancyProgress, output);
+			this.impScene = new ImpScene(pregnancyProgression, output);
+			this.anemoneScene = new AnemoneScene(pregnancyProgression, output);
+			this.marbleScene = new MarbleScene(pregnancyProgression, output);
+			this.jojoScene = new JojoScene(pregnancyProgression, output);
+			this.amilyScene = new AmilyScene(pregnancyProgression, output);
+			this.izmaScene = new IzmaScene(pregnancyProgression, output);
+			this.lake = new Lake(pregnancyProgression, output);
 
 			// not assigned to a variable as it is self-registering, PregnancyProgress will keep a reference to the instance
-			new PlayerCentaurPregnancy(pregnancyProgress, output);
-			new PlayerBunnyPregnancy(pregnancyProgress, output, mutations);
-			new PlayerBenoitPregnancy(pregnancyProgress, output);
-			new PlayerOviElixirPregnancy(pregnancyProgress, output);
+			new PlayerCentaurPregnancy(pregnancyProgression, output);
+			new PlayerBunnyPregnancy(pregnancyProgression, output, mutations);
+			new PlayerBenoitPregnancy(pregnancyProgression, output);
+			new PlayerOviElixirPregnancy(pregnancyProgression, output);
 			
-			this.emberScene = new EmberScene(pregnancyProgress);
-			this.urtaPregs = new UrtaPregs(pregnancyProgress);
+			this.emberScene = new EmberScene(pregnancyProgression);
+			this.urtaPregs = new UrtaPregs(pregnancyProgression);
 		}
 		
 		/**
