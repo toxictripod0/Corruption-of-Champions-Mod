@@ -53,6 +53,33 @@ package classes.Items
 			return rand(Math.min(min + changes, max)) === 0;
 		}
 
+		/**
+		 * Initializes the transformation. Meaning: changes is set to 0 and the initial changeLimit is being determined.
+		 * @param   rolls             An array or the rolls to randomly increase the changeLimit. e. g.: [2, 3, 4]
+		 * @param   startChangeLimit  The initial changeLimit
+		 * @param   minChangeLimit    The minimum changeLimit
+		 * @author  Stadler76
+		 */
+		public function initTransformation(rolls:Array = null, startChangeLimit:int = 1, minChangeLimit:int = 1):void
+		{
+			changes = 0;
+			changeLimit = startChangeLimit;
+			if (player.hasPerk(PerkLib.HistoryAlchemist)) changeLimit++;
+			if (player.hasPerk(PerkLib.TransformationResistance)) changeLimit--;
+
+			if (rolls is Array && rolls.length > 0) {
+				for each (var roll:int in rolls) {
+					if (rand(roll) === 0) {
+						changeLimit++;
+					}
+				}
+			}
+
+			if (changeLimit < minChangeLimit) {
+				changeLimit = minChangeLimit;
+			}
+		}
+
 		public function restoreArms(tfSource:String):int
 		{
 			LOGGER.debug("called restoreArms(\"{0}\")", tfSource);

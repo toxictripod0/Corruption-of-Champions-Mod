@@ -1406,10 +1406,7 @@ package classes.Scenes.Places.Bazaar
 		public function satyrTFs():void
 		{
 			var tfSource:String = "satyrTFs";
-			changes = 0;
-			changeLimit = 3;
-			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
-			if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
+			mutations.initTransformation(null, 3);
 			//Stats and genital changes
 			if (rand(2) == 0) {
 				outputText("\n\nHeat floods your loins as thoughts of tight round asses and dripping pussies flood your mind.");
@@ -1548,14 +1545,10 @@ package classes.Scenes.Places.Bazaar
 		public function rhinoTFs():void
 		{
 			var tfSource:String = "rhinoTFs";
-			changes = 0;
-			changeLimit = 3;
-			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
-			if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
+			mutations.initTransformation(null, 3);
 			// Stats Changes
 			//------------
 			if (rand(3) == 0 && player.str100 < 100) {
-				//[removed:1.4.10]//changes++;
 				if (player.str100 < 50) {
 					outputText("\n\nShivering, you feel a feverish sensation that reminds you of the last time you got sick. Thankfully, it passes swiftly, leaving slightly enhanced strength in its wake.");
 					dynStats("str", .5);
@@ -1856,10 +1849,7 @@ package classes.Scenes.Places.Bazaar
 		public function echidnaTFs():void
 		{
 			var tfSource:String = "echidnaTFs";
-			changes = 0;
-			changeLimit = 3;
-			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
-			if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
+			mutations.initTransformation(null, 3);
 			var i:int = 0;
 			// Stats Changes
 			//------------
