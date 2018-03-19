@@ -178,9 +178,9 @@ package classes.Items
 				}
 			}
 			//Neck restore
-			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) restoreNeck(tfSource);
 			//Rear body restore
-			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) mutations.restoreRearBody(tfSource);
+			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) restoreRearBody(tfSource);
 			//Ovi perk loss
 			if (rand(5) === 0) updateOvipositionPerk(tfSource);
 			//Demonic changes - higher chance with higher corruption.
@@ -481,9 +481,9 @@ package classes.Items
 				}
 			}
 			//Neck restore
-			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) restoreNeck(tfSource);
 			//Rear body restore
-			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) mutations.restoreRearBody(tfSource);
+			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) restoreRearBody(tfSource);
 			//Ovi perk loss
 			if (rand(5) === 0) updateOvipositionPerk(tfSource);
 			//Demonic changes - higher chance with higher corruption.
@@ -506,7 +506,7 @@ package classes.Items
 			var crit:Number = 1;
 			//Determine crit multiplier (x2 or x3)
 			if (rand(4) === 0) crit += rand(2) + 1;
-			mutations.initTransformation([2, 2]);
+			initTransformation([2, 2]);
 			//Generic drinking text
 			clearOutput();
 			outputText("You uncork the bottle and drink down the strange substance, struggling to down the thick liquid.");
@@ -993,7 +993,7 @@ package classes.Items
 		{
 			var tfSource:String = "laBova";
 			player.slimeFeed();
-			mutations.initTransformation([2, 3, 3], enhanced ? 3 : 1);
+			initTransformation([2, 3, 3], enhanced ? 3 : 1);
 			//Temporary storage
 			var temp:Number = 0;
 			var temp2:Number = 0;
@@ -1229,9 +1229,9 @@ package classes.Items
 				}
 			}
 			//Neck restore
-			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) restoreNeck(tfSource);
 			//Rear body restore
-			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) mutations.restoreRearBody(tfSource);
+			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) restoreRearBody(tfSource);
 			//Ovi perk loss
 			if (tainted && rand(5) === 0) updateOvipositionPerk(tfSource);
 			//General Appearance (Tail -> Ears -> Paws(fur stripper) -> Face -> Horns
@@ -1424,7 +1424,7 @@ package classes.Items
 		public function neonPinkEgg(pregnantChange:Boolean,player:Player):void
 		{
 			var tfSource:String = "neonPinkEgg";
-			mutations.initTransformation([2, 2]);
+			initTransformation([2, 2]);
 			//If this is a pregnancy change, only 1 change per proc.
 			if (pregnantChange) changeLimit = 1;
 			else clearOutput();
@@ -1572,9 +1572,9 @@ package classes.Items
 			}
 			//-VAGs
 			//Neck restore
-			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) restoreNeck(tfSource);
 			//Rear body restore
-			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) mutations.restoreRearBody(tfSource);
+			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) restoreRearBody(tfSource);
 			//Ovi perk loss
 			if (rand(4) === 0) updateOvipositionPerk(tfSource);
 			if (player.hasVagina() && player.findPerk(PerkLib.BunnyEggs) < 0 && changes < changeLimit && rand(4) === 0 && player.bunnyScore() > 3) {
@@ -1764,7 +1764,7 @@ package classes.Items
 			//'type' refers to the variety of seed.
 			//0 == standard.
 			//1 == enhanced - increase change limit and no pre-reqs for TF
-			mutations.initTransformation([2, 2], type === 1 ? 3 : 1);
+			initTransformation([2, 2], type === 1 ? 3 : 1);
 			//Generic eating text:
 			clearOutput();
 			outputText("You pop the nut into your mouth, chewing the delicious treat and swallowing it quickly.  No wonder harpies love these things so much!");
@@ -1913,9 +1913,9 @@ package classes.Items
 				}
 			}
 			//Neck restore
-			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) restoreNeck(tfSource);
 			//Rear body restore
-			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) mutations.restoreRearBody(tfSource);
+			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) restoreRearBody(tfSource);
 			//Ovi perk
 			if (rand(5) === 0) updateOvipositionPerk(tfSource);
 			//****************
@@ -2109,7 +2109,7 @@ package classes.Items
 		public function kangaFruit(type:Number,player:Player):void
 		{
 			var tfSource:String = "kangaFruit";
-			mutations.initTransformation([2, 2], type === 1 ? 3 : 1);
+			initTransformation([2, 2], type === 1 ? 3 : 1);
 			clearOutput();
 			outputText("You squeeze the pod around the middle, forcing the end open.  Scooping out a handful of the yeasty-smelling seeds, you shovel them in your mouth.  Blech!  Tastes like soggy burnt bread... and yet, you find yourself going for another handful...");
 			//Used as a holding variable for biggest dicks and the like
@@ -2222,9 +2222,9 @@ package classes.Items
 				}
 			}
 			//Neck restore
-			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) restoreNeck(tfSource);
 			//Rear body restore
-			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) mutations.restoreRearBody(tfSource);
+			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) restoreRearBody(tfSource);
 			//Ovi perk loss
 			if (rand(5) === 0) updateOvipositionPerk(tfSource);
 			//****************
@@ -2314,7 +2314,7 @@ package classes.Items
 		{
 			var tfSource:String = "sweetGossamer";
 			if (type == 1) tfSource += "-drider";
-			mutations.initTransformation([2, 2]);
+			initTransformation([2, 2]);
 			clearOutput();
 			//Consuming Text
 			if (type == 0) outputText("You wad up the sweet, pink gossamer and eat it, finding it to be delicious and chewy, almost like gum.  Munching away, your mouth generates an enormous amount of spit until you're drooling all over yourself while you devour the sweet treat.");
@@ -2429,11 +2429,11 @@ package classes.Items
 			}
 			//Neck restore
 			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) {
-				mutations.restoreNeck(tfSource);
+				restoreNeck(tfSource);
 			}
 			//Rear body restore
 			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) {
-				mutations.restoreRearBody(tfSource);
+				restoreRearBody(tfSource);
 			}
 			//Ovi perk loss
 			if (rand(5) === 0) {
@@ -2581,7 +2581,7 @@ package classes.Items
 		public function foxTF(enhanced:Boolean,player:Player):void
 		{
 			var tfSource:String = "foxTF";
-			mutations.initTransformation([2, 2], enhanced ? 3 : 1);
+			initTransformation([2, 2], enhanced ? 3 : 1);
 			clearOutput();
 			if (!enhanced) outputText("You examine the berry a bit, rolling the orangish-red fruit in your hand for a moment before you decide to take the plunge and chow down.  It's tart and sweet at the same time, and the flavors seem to burst across your tongue with potent strength.  Juice runs from the corners of your lips as you finish the tasty snack.");
 			else outputText("You pop the cap on the enhanced \"Vixen's Vigor\" and decide to take a swig of it.  Perhaps it will make you as cunning as the crude fox Lumi drew on the front?");
@@ -2810,9 +2810,9 @@ package classes.Items
 				}
 			}
 			//Neck restore
-			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) restoreNeck(tfSource);
 			//Rear body restore
-			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) mutations.restoreRearBody(tfSource);
+			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) restoreRearBody(tfSource);
 			//Ovi perk loss
 			if (rand(5) === 0) updateOvipositionPerk(tfSource);
 			//[Grow Fur]
@@ -2913,7 +2913,7 @@ package classes.Items
 		{
 			var tfSource:String = "foxJewel";
 			if (mystic) tfSource += "-mystic";
-			mutations.initTransformation([2, 2, 3], mystic ? 3 : 1);
+			initTransformation([2, 2, 3], mystic ? 3 : 1);
 			clearOutput();
 			if (mystic) outputText("You examine the jewel for a bit, rolling it around in your hand as you ponder its mysteries.  You hold it up to the light with fascinated curiosity, watching the eerie purple flame dancing within.  Without warning, the gem splits down the center, dissolving into nothing in your hand.  As the pale lavender flames swirl around you, the air is filled with a sickly sweet scent that drips with the bitter aroma of licorice, filling you with a dire warmth.");
 			else outputText("You examine the jewel for a bit, rolling it around in your hand as you ponder its mysteries.  You hold it up to the light with fascinated curiosity, watching the eerie blue flame dancing within.  Without warning, the gem splits down the center, dissolving into nothing in your hand.  As the pale azure flames swirl around you, the air is filled with a sweet scent that drips with the aroma of wintergreen, sending chills down your spine.");
@@ -3035,9 +3035,9 @@ package classes.Items
 			//BIG APPEARANCE CHANGES
 			//**********************
 			//Neck restore
-			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) restoreNeck(tfSource);
 			//Rear body restore
-			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) mutations.restoreRearBody(tfSource);
+			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) restoreRearBody(tfSource);
 			//Ovi perk loss
 			if (rand(5) === 0) updateOvipositionPerk(tfSource);
 			//[Grow Fox Tail]
