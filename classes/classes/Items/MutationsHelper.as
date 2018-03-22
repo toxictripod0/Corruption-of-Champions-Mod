@@ -55,7 +55,7 @@ package classes.Items
 
 		/**
 		 * Initializes the transformation. Meaning: changes is set to 0 and the initial changeLimit is being determined.
-		 * @param   rolls             An array or the rolls to randomly increase the changeLimit. e. g.: [2, 3, 4]
+		 * @param   rolls             An array of the rolls to randomly increase the changeLimit. e. g.: [2, 3, 4]
 		 * @param   startChangeLimit  The initial changeLimit
 		 * @param   minChangeLimit    The minimum changeLimit
 		 * @author  Stadler76
