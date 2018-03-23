@@ -56,9 +56,10 @@ package classes.Items
 		/**
 		 * Initializes the transformation. Meaning: changes is set to 0 and the initial changeLimit is being determined.
 		 * This is done by performing rolls, applying modifiers from Perks and enforcing the minimum number of changes.
+		 * changeLimit is an internal value that controls the maximum amount of changes per use of a transformative.
 		 * @param   rolls             An array of the rolls to randomly increase the changeLimit. e. g.: [2, 3, 4]
-		 * @param   startChangeLimit  The initial amount of changes to start with before rolls or perks
-		 * @param   minChangeLimit    The enforced minimum amount of changes, i.e. at least this many changes will be performed
+		 * @param   startChangeLimit  The initial changeLimit to start with before rolls or perks
+		 * @param   minChangeLimit    The enforced minimum changeLimit, i.e. at least this many changes may be performed
 		 * @author  Stadler76
 		 */
 		public function initTransformation(rolls:Array = null, startChangeLimit:int = 1, minChangeLimit:int = 1):void
