@@ -65,8 +65,11 @@ package classes.Items
 		{
 			changes = 0;
 			changeLimit = startChangeLimit;
-			if (player.hasPerk(PerkLib.HistoryAlchemist)) changeLimit++;
-			if (player.hasPerk(PerkLib.TransformationResistance)) changeLimit--;
+
+			if (player.hasPerk(PerkLib.HistoryAlchemist))
+				changeLimit++;
+			if (player.hasPerk(PerkLib.TransformationResistance))
+				changeLimit--;
 
 			if (rolls is Array && rolls.length > 0) {
 				for each (var roll:int in rolls) {
