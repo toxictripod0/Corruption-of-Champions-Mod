@@ -749,12 +749,7 @@ public class ErlKingScene extends BaseContent implements Encounter {
 			var tfSource:String = "deerTFs";
 			var temp:int = 0;
 			var x:int = 0;
-			changes = 0;
-			changeLimit = 2;
-			if (rand(2) == 0) changeLimit++;
-			if (rand(3) == 0) changeLimit++;
-			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
-			if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
+			mutations.initTransformation([2, 3], 2);
 			//Main TFs
 			if (player.neck.type != Neck.NORMAL && changes < changeLimit && rand(4) == 0) //neck restore
 				mutations.restoreNeck(tfSource);
