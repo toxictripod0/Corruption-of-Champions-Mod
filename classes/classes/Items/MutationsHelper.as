@@ -819,6 +819,157 @@ package classes.Items
 			}
 		}
 
+		public function demonChanges(tfSource:String):void
+		{
+			LOGGER.debug("called demonChanges(\"{0}\")", tfSource);
+
+			//Change tail if already horned.
+			if (player.tail.type !== Tail.DEMONIC && player.horns.value > 0) {
+				if (player.tail.type !== Tail.NONE) {
+					outputText("\n\n");
+					if (player.tail.type == Tail.SPIDER_ABDOMEN || player.tail.type == Tail.BEE_ABDOMEN) outputText("You feel a tingling in your insectile abdomen as it stretches, narrowing, the exoskeleton flaking off as it transforms into a flexible demon-tail, complete with a round spaded tip.  ");
+					else outputText("You feel a tingling in your tail.  You are amazed to discover it has shifted into a flexible demon-tail, complete with a round spaded tip.  ");
+					outputText("<b>Your tail is now demonic in appearance.</b>");
+				}
+				else outputText("\n\nA pain builds in your backside... growing more and more pronounced.  The pressure suddenly disappears with a loud ripping and tearing noise.  <b>You realize you now have a demon tail</b>... complete with a cute little spade.");
+				dynStats("cor", 4);
+				player.tail.type = Tail.DEMONIC;
+				changes++;
+			}
+			//grow horns!
+			if (player.horns.value == 0 || (rand(player.horns.value + 3) === 0)) {
+				if (player.horns.value < 12 && (player.horns.type == Horns.NONE || player.horns.type == Horns.DEMON)) {
+					outputText("\n\n");
+					if (player.horns.value == 0) {
+						outputText("A small pair of demon horns erupts from your forehead.  They actually look kind of cute.  <b>You have horns!</b>");
+					}
+					else outputText("Another pair of demon horns, larger than the last, forms behind the first row.");
+					if (player.horns.type == Horns.NONE) player.horns.type = Horns.DEMON;
+					player.horns.value++;
+					player.horns.value++;
+					dynStats("cor", 3);
+				}
+				//Text for shifting horns
+				else if (player.horns.type > Horns.DEMON) {
+					outputText("\n\n");
+					outputText("Your horns shift, shrinking into two small demonic-looking horns.");
+					player.horns.value = 2;
+					player.horns.type = Horns.DEMON;
+					dynStats("cor", 3);
+				}
+				changes++;
+			}
+			//Nipples Turn Back:
+			if (player.hasStatusEffect(StatusEffects.BlackNipples) && rand(3) === 0) {
+				removeBlackNipples(tfSource);
+			}
+			//remove fur
+			if ((player.face.type !== Face.HUMAN || !player.hasPlainSkin()) && rand(3) === 0) {
+				//Remove face before fur!
+				if (player.face.type !== Face.HUMAN) {
+					outputText("\n\n");
+					outputText("Your visage twists painfully, returning to a more normal human shape, albeit with flawless skin.  <b>Your face is human again!</b>");
+					player.face.type = Face.HUMAN;
+				}
+				//De-fur
+				else if (!player.hasPlainSkin()) {
+					outputText("\n\n");
+					if (player.hasFur()) outputText("Your skin suddenly feels itchy as your fur begins falling out in clumps, <b>revealing inhumanly smooth skin</b> underneath.");
+					if (player.hasScales()) outputText("Your scales begin to itch as they begin falling out in droves, <b>revealing your inhumanly smooth " + player.skin.tone + " skin</b> underneath.");
+					player.skin.type = Skin.PLAIN;
+					player.skin.desc = "skin";
+					player.underBody.restore();
+				}
+				changes++;
+			}
+			//Demon tongue
+			if (player.tongue.type == Tongue.SNAKE && rand(3) === 0) {
+				outputText("\n\nYour snake-like tongue tingles, thickening in your mouth until it feels more like your old human tongue, at least for the first few inches.  It bunches up inside you, and when you open up your mouth to release it, roughly two feet of tongue dangles out.  You find it easy to move and control, as natural as walking.  <b>You now have a long demon-tongue.</b>");
+				player.tongue.type = Tongue.DEMONIC;
+				changes++;
+			}
+			//foot changes - requires furless
+			if (player.hasPlainSkin() && rand(4) === 0) {
+				//Males/genderless get clawed feet
+				if (player.gender <= 1 || (player.gender == 3 && player.mf("m", "f") == "m")) {
+					if (player.lowerBody.type !== LowerBody.DEMONIC_CLAWS) {
+						outputText("\n\n");
+						outputText("Every muscle and sinew below your hip tingles and you begin to stagger. Seconds after you sit down, pain explodes in your " + player.feet() + ". Something hard breaks through your sole from the inside out as your toes splinter and curve cruelly. The pain slowly diminishes and your eyes look along a human leg that splinters at the foot into a claw with sharp black nails. When you relax, your feet grip the ground easily. <b>Your feet are now formed into demonic claws.</b>");
+						player.lowerBody.type = LowerBody.DEMONIC_CLAWS;
+						player.lowerBody.legCount = 2;
+					}
+				}
+				//Females/futa get high heels
+				else if (player.lowerBody.type !== LowerBody.DEMONIC_HIGH_HEELS) {
+					outputText("\n\n");
+					outputText("Every muscle and sinew below your hip tingles and you begin to stagger. Seconds after you sit down, pain explodes in your " + player.feet() + ". Something hard breaks through your sole from the inside out. The pain slowly diminishes and your eyes look along a human leg to a thin and sharp horn protruding from the heel. When you relax, your feet are pointing down and their old posture is only possible with an enormous effort. <b>Your feet are now formed into demonic high-heels.</b> Tentatively you stand up and try to take a few steps. To your surprise you feel as if you were born with this and stride vigorously forward, hips swaying.");
+					player.lowerBody.type = LowerBody.DEMONIC_HIGH_HEELS;
+					player.lowerBody.legCount = 2;
+				}
+				changes++;
+			}
+			//Grow demon wings
+			if ((player.wings.type !== Wings.BAT_LIKE_LARGE || player.rearBody.type == RearBody.SHARK_FIN) && rand(8) === 0 && player.isCorruptEnough(50)) {
+				//grow smalls to large
+				if (player.wings.type == Wings.BAT_LIKE_TINY && player.cor >= (75 - player.corruptionTolerance())) {
+					outputText("\n\n");
+					outputText("Your small demonic wings stretch and grow, tingling with the pleasure of being attached to such a tainted body.  You stretch over your shoulder to stroke them as they unfurl, turning into full-sized demon-wings.  <b>Your demonic wings have grown!</b>");
+					player.wings.type = Wings.BAT_LIKE_LARGE;
+				}
+				else if (player.rearBody.type == RearBody.SHARK_FIN) {
+					outputText("\n\nThe muscles around your shoulders bunch up uncomfortably, changing to support the new bat-like wings growing from"
+					          +" your back.  You twist your head as far as you can for a look"
+					          +" and realize your fin has changed into small bat-like demon-wings!");
+					player.rearBody.restore();
+					player.wings.type = Wings.BAT_LIKE_TINY;
+				}
+				//No wings
+				else if (player.wings.type == Wings.NONE) {
+					outputText("\n\n");
+					outputText("A knot of pain forms in your shoulders as they tense up.  With a surprising force, a pair of small demonic wings sprout from your back, ripping a pair of holes in the back of your " + player.armorName + ".  <b>You now have tiny demonic wings</b>.");
+					player.wings.type = Wings.BAT_LIKE_TINY;
+				}
+				//Other wing types
+				else {
+					outputText("\n\n");
+					outputText("The muscles around your shoulders bunch up uncomfortably, changing to support your wings as you feel their weight increasing.  You twist your head as far as you can for a look and realize they've changed into ");
+					if ([Wings.BEE_LIKE_SMALL, Wings.HARPY, Wings.IMP, Wings.DRACONIC_SMALL].indexOf(player.wings.type) !== -1) {
+						outputText("small ");
+						player.wings.type = Wings.BAT_LIKE_TINY;
+					}
+					else {
+						outputText("large ");
+						player.wings.type = Wings.BAT_LIKE_LARGE;
+					}
+					outputText("<b>bat-like demon-wings!</b>");
+				}
+				changes++;
+			}
+		}
+
+		public function growDemonCock(growCocks:Number):void
+		{
+			temp = 0;
+			while (growCocks > 0) {
+				player.createCock();
+				//trace("COCK LENGTH: " + player.cocks[length - 1].cockLength);
+				player.cocks[player.cocks.length - 1].cockLength = rand(3) + 4;
+				player.cocks[player.cocks.length - 1].cockThickness = .75;
+				//trace("COCK LENGTH: " + player.cocks[length - 1].cockLength);
+				growCocks--;
+				temp++;
+			}
+			outputText("\n\nYou shudder as a pressure builds in your crotch, peaking painfully as a large bulge begins to push out from your body.  ");
+			if (temp == 1) {
+				outputText("The skin seems to fold back as a fully formed demon-cock bursts forth from your loins, drizzling hot cum everywhere as it orgasms.  In time it fades to a more normal coloration and human-like texture.  ");
+			}
+			else {
+				outputText("The skin bulges obscenely, darkening and splitting around " + num2Text(temp) + " of your new dicks.  For an instant they turn a demonic purple and dribble in thick spasms of scalding demon-cum.  After, they return to a more humanoid coloration.  ");
+			}
+			if (temp > 4) outputText("Your tender bundle of new cocks feels deliciously sensitive, and you cannot stop yourself from wrapping your hands around the slick demonic bundle and pleasuring them.\n\nNearly an hour later, you finally pull your slick body away from the puddle you left on the ground.  When you look back, you notice it has already been devoured by the hungry earth.");
+			player.orgasm('Dick');
+		}
+
 		public function removeExtraBreastRow(tfSource:String):void
 		{
 			LOGGER.debug("called removeExtraBreastRow(\"{0}\")", tfSource);
