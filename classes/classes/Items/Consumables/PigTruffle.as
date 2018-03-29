@@ -24,16 +24,9 @@ package classes.Items.Consumables
 		{
 			var tfSource:String = "pigTruffle";
 			if (boar) tfSource += "-boar";
-			changes = 0;
-			changeLimit = 1;
 			var temp:int = 0;
 			var x:int = 0;
-			if (rand(2) === 0) changeLimit++;
-			if (rand(2) === 0) changeLimit++;
-			if (rand(3) === 0) changeLimit++;
-			if (boar) changeLimit++;
-			if (player.hasPerk(PerkLib.HistoryAlchemist)) changeLimit++;
-			if (player.hasPerk(PerkLib.TransformationResistance)) changeLimit--;
+			mutations.initTransformation([2, 2, 3], boar ? 2 : 1);
 			outputText("You take a bite into the pigtail truffle. It oddly tastes like bacon. You eventually finish eating. ");
 			player.refillHunger(20);
 			//-----------------------
@@ -153,7 +146,7 @@ package classes.Items.Consumables
 				}
 				outputText("\n\nYour skin tingles ever so slightly as you skin’s color changes before your eyes. As the tingling diminishes, you find that your skin has turned " + skinToBeChosen + ".");
 				player.skin.tone = skinToBeChosen;
-				mutations.updateClaws(player.claws.type);
+				player.arms.updateClaws(player.arms.claws.type);
 				getGame().rathazul.addMixologyXP(20);
 				changes++;
 			}

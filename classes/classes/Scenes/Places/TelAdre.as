@@ -7,6 +7,7 @@
 	import classes.Scenes.Places.TelAdre.*;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
+	import classes.Scenes.PregnancyProgression;
 
 	/**
  * The lovely town of Tel Adre
@@ -17,7 +18,7 @@
 		public var auntNancy:AuntNancy = new AuntNancy();
 		public var bakeryScene:BakeryScene = new BakeryScene();
 		public var brooke:Brooke = new Brooke();
-		public var cotton:Cotton = new Cotton();
+		public var cotton:Cotton;
 		public var dominika:Dominika = new Dominika();
 		public var edryn:Edryn = new Edryn();
 		public var frosty:Frosty = new Frosty();
@@ -40,9 +41,9 @@
 
 		public var vala:ValaScene = new ValaScene();
 		
-		public function TelAdre()
+		public function TelAdre(pregnancyProgression:PregnancyProgression)
 		{
-			
+			this.cotton = new Cotton(pregnancyProgression);
 		}
 
 //const YVONNE_FUCK_COUNTER:int = 437;
@@ -642,7 +643,7 @@ public function gymDesc():void {
 		cotton.cottonPregnantAlert();
 		return;
 	}
-
+	spriteSelect(null);
 	clearOutput();
 	outputText("Even though Ingnam, your hometown, was a large, prosperous village, you never saw a gym before coming to Tel'Adre.  The structure itself has numerous architectural differences from the surrounding buildings: short, waist-high walls, an arched ceiling supported by simple columns, and a sand-covered floor.  Perhaps the only 'normal' rooms inside are the changing stands and bathrooms, which ");
 	if (player.cor < 35) outputText("thankfully ");

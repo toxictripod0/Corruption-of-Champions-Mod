@@ -21,27 +21,19 @@ package classes.Items.Consumables
 		{
 			var tfSource:String = "shriveledTentacle";
 			var temp:int = 0;
-			
+			mutations.initTransformation([2, 3]);
 			clearOutput();
 			outputText("You chew on the rubbery tentacle; its texture and taste are somewhat comparable to squid, but the half-dormant nematocysts cause your mouth to tingle sensitively.");
-			changes = 0;
-			changeLimit = 1;
-			if (rand(2) === 0) changeLimit++;
-			if (rand(3) === 0) changeLimit++;
-			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
-			if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
 
 			//possible use effects:
 			//- toughess up, sensitivity down
 			if (rand(3) === 0 && player.tou100 < 50 && changes < changeLimit) {
 				outputText("\n\nYour skin feels clammy and a little rubbery.  You touch yourself experimentally and notice that you can barely feel the pressure from your fingertips.  Consumed with curiosity, you punch yourself lightly in the arm; the most you feel is a dull throb!");
 				dynStats("tou", 1, "sen", -1);
-				//[removed:1.4.10]//changes++;
 			}
 			//- speed down
 			if (rand(3) === 0 && player.spe100 > 40 && changes < changeLimit) {
 				outputText("\n\nA pinprick sensation radiates from your stomach down to your knees, as though your legs were falling asleep.  Wobbling slightly, you stand up and take a few stumbling steps to work the blood back into them.  The sensation fades, but your grace fails to return and you stumble again.  You'll have to be a little more careful moving around for a while.");
-				//[removed:1.4.10]//changes++;
 				dynStats("spe", -1);
 			}
 			//- corruption increases by 1 up to low threshold (~20)
@@ -100,7 +92,7 @@ package classes.Items.Consumables
 			if (rand(5) === 0 && changes < changeLimit && player.skin.tone !== "aphotic blue-black") {
 				outputText("\n\nYou absently bite down on the last of the tentacle, then pull your hand away, wincing in pain.  How did you bite your finger so hard?  Looking down, the answer becomes obvious; <b>your hand, along with the rest of your skin, is now the same aphotic color as the dormant tentacle was!</b>");
 				player.skin.tone = "aphotic blue-black";
-				mutations.updateClaws(player.claws.type);
+				player.arms.updateClaws(player.arms.claws.type);
 				kGAMECLASS.rathazul.addMixologyXP(20);
 				changes++;
 			}

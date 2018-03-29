@@ -178,13 +178,13 @@ package classes.Items
 				}
 			}
 			//Neck restore
-			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) restoreNeck(tfSource);
 			//Rear body restore
-			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) mutations.restoreRearBody(tfSource);
+			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) restoreRearBody(tfSource);
 			//Ovi perk loss
 			if (rand(5) === 0) updateOvipositionPerk(tfSource);
 			//Demonic changes - higher chance with higher corruption.
-			if (rand(40) + player.cor / 3 > 35 && tainted) demonChanges(player);
+			if (rand(40) + player.cor / 3 > 35 && tainted) demonChanges(player, tfSource);
 			if (rand(4) === 0 && tainted) outputText(player.modFem(5, 2));
 			if (rand(4) === 0 && tainted) outputText(player.modThickness(30, 2));
 			player.refillHunger(10);
@@ -262,7 +262,7 @@ package classes.Items
 			//(Healing – if hurt and uber-addicted (hasperk))
 			if (player.HP < player.maxHP() && player.hasPerk(PerkLib.MinotaurCumAddict)) {
 				outputText("\n\nThe fire of your arousal consumes your body, leaving vitality in its wake.  You feel much better!");
-				HPChange(int(player.maxHP() / 4), false);
+				player.HPChange(int(player.maxHP() / 4), false);
 			}
 			//Uber-addicted status!
 			if (player.hasPerk(PerkLib.MinotaurCumAddict) && flags[kFLAGS.MINOTAUR_CUM_REALLY_ADDICTED_STATE] <= 0 && !purified) {
@@ -474,20 +474,20 @@ package classes.Items
 					if (temp == 3 || temp == 4 || temp == 5) player.skin.tone = "purple";
 					if (temp > 5) player.skin.tone = "blue";
 					outputText("\n\nA tingling sensation runs across your skin in waves, growing stronger as <b>your skin's tone slowly shifts, darkening to become " + player.skin.tone + " in color.</b>");
-					updateClaws(player.claws.type);
+					player.arms.updateClaws(player.arms.claws.type);
 					if (tainted) dynStats("cor", 1);
 					else dynStats("cor", 0);
 					kGAMECLASS.rathazul.addMixologyXP(20);
 				}
 			}
 			//Neck restore
-			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) restoreNeck(tfSource);
 			//Rear body restore
-			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) mutations.restoreRearBody(tfSource);
+			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) restoreRearBody(tfSource);
 			//Ovi perk loss
 			if (rand(5) === 0) updateOvipositionPerk(tfSource);
 			//Demonic changes - higher chance with higher corruption.
-			if (rand(40) + player.cor / 3 > 35 && tainted) demonChanges(player);
+			if (rand(40) + player.cor / 3 > 35 && tainted) demonChanges(player, tfSource);
 			if (tainted) {
 				outputText(player.modFem(100, 2));
 				if (rand(3) === 0) outputText(player.modTone(15, 2));
@@ -503,16 +503,10 @@ package classes.Items
 		public function succubisDelight(tainted:Boolean,player:Player):void
 		{
 			player.slimeFeed();
-			changes = 0;
 			var crit:Number = 1;
 			//Determine crit multiplier (x2 or x3)
 			if (rand(4) === 0) crit += rand(2) + 1;
-			changeLimit = 1;
-			//Chances to up the max number of changes
-			if (rand(2) === 0) changeLimit++;
-			if (rand(2) === 0) changeLimit++;
-			if (player.hasPerk(PerkLib.HistoryAlchemist)) changeLimit++;
-			if (player.hasPerk(PerkLib.TransformationResistance)) changeLimit--;
+			initTransformation([2, 2]);
 			//Generic drinking text
 			clearOutput();
 			outputText("You uncork the bottle and drink down the strange substance, struggling to down the thick liquid.");
@@ -579,7 +573,6 @@ package classes.Items
 			if (changes == 0) {
 				outputText("\n\nYour groin tingles, making it feel as if you haven't cum in a long time.");
 				player.hoursSinceCum += 100;
-				//[removed:1.4.10]//changes++;
 			}
 			if (player.balls > 0 && rand(3) === 0) {
 				outputText(player.modFem(12, 3));
@@ -898,7 +891,7 @@ package classes.Items
 					if (player.skin.tone == "rough gray") player.skin.tone = "gray";
 					player.skin.type = Skin.PLAIN;
 					player.underBody.restore();
-					updateClaws(player.claws.type);
+					player.arms.updateClaws(player.arms.claws.type);
 				}
 				//chance of hair change
 				else {
@@ -953,7 +946,7 @@ package classes.Items
 					if (player.skin.tone == "rough gray") player.skin.tone = "gray";
 					player.skin.type = Skin.PLAIN;
 					player.underBody.restore();
-					updateClaws(player.claws.type);
+					player.arms.updateClaws(player.arms.claws.type);
 				}
 				//chance of hair change
 				else {
@@ -1000,16 +993,7 @@ package classes.Items
 		{
 			var tfSource:String = "laBova";
 			player.slimeFeed();
-			//Changes done
-			changes = 0;
-			//Change limit
-			changeLimit = 1;
-			if (rand(2) === 0) changeLimit++;
-			if (rand(3) === 0) changeLimit++;
-			if (rand(3) === 0) changeLimit++;
-			if (player.hasPerk(PerkLib.HistoryAlchemist)) changeLimit++;
-			if (player.hasPerk(PerkLib.TransformationResistance)) changeLimit--;
-			if (enhanced) changeLimit += 2;
+			initTransformation([2, 3, 3], enhanced ? 3 : 1);
 			//Temporary storage
 			var temp:Number = 0;
 			var temp2:Number = 0;
@@ -1032,7 +1016,6 @@ package classes.Items
 					if (rand(2) === 0) outputText("\n\nThere is a slight pain as you feel your muscles shift somewhat.  Their appearance does not change much, but you feel much stronger.");
 					else outputText("\n\nYou feel your muscles tighten and clench as they become slightly more pronounced.");
 					dynStats("str", temp / 10);
-					//[removed:1.4.10]//changes++;
 				}
 			}
 			//Increase player tou:
@@ -1043,7 +1026,6 @@ package classes.Items
 					if (rand(2) === 0) outputText("\n\nYou feel your insides toughening up; it feels like you could stand up to almost any blow.");
 					else outputText("\n\nYour bones and joints feel sore for a moment, and before long you realize they've gotten more durable.");
 					dynStats("tou", temp / 10);
-					//[removed:1.4.10]//changes++;
 
 				}
 			}
@@ -1051,7 +1033,6 @@ package classes.Items
 			if (changes < changeLimit && rand(3) === 0) {
 				if (player.spe100 > 30) {
 					outputText("\n\nThe body mass you've gained is making your movements more sluggish.");
-					//[removed:1.4.10]//changes++;
 					temp = (player.spe - 30) / 10;
 					dynStats("spe", -temp);
 				}
@@ -1248,9 +1229,9 @@ package classes.Items
 				}
 			}
 			//Neck restore
-			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) restoreNeck(tfSource);
 			//Rear body restore
-			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) mutations.restoreRearBody(tfSource);
+			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) restoreRearBody(tfSource);
 			//Ovi perk loss
 			if (tainted && rand(5) === 0) updateOvipositionPerk(tfSource);
 			//General Appearance (Tail -> Ears -> Paws(fur stripper) -> Face -> Horns
@@ -1385,9 +1366,7 @@ package classes.Items
 			}
 			//Nipples Turn Back:
 			if (player.hasStatusEffect(StatusEffects.BlackNipples) && changes < changeLimit && rand(3) === 0) {
-				outputText("\n\nSomething invisible brushes against your " + player.nippleDescript(0) + ", making you twitch.  Undoing your clothes, you take a look at your chest and find that your nipples have turned back to their natural flesh colour.");
-				changes++;
-				player.removeStatusEffect(StatusEffects.BlackNipples);
+				removeBlackNipples(tfSource);
 			}
 			//Debugcunt
 			if (changes < changeLimit && rand(3) === 0 && player.vaginaType() == 5 && player.hasVagina()) {
@@ -1445,12 +1424,7 @@ package classes.Items
 		public function neonPinkEgg(pregnantChange:Boolean,player:Player):void
 		{
 			var tfSource:String = "neonPinkEgg";
-			changes = 0;
-			changeLimit = 1;
-			if (rand(2) === 0) changeLimit++;
-			if (rand(2) === 0) changeLimit++;
-			if (player.hasPerk(PerkLib.HistoryAlchemist)) changeLimit++;
-			if (player.hasPerk(PerkLib.TransformationResistance)) changeLimit--;
+			initTransformation([2, 2]);
 			//If this is a pregnancy change, only 1 change per proc.
 			if (pregnantChange) changeLimit = 1;
 			else clearOutput();
@@ -1475,13 +1449,11 @@ package classes.Items
 				else if (player.spe100 < 50) outputText("\n\nYou feel tingles running through your body, and after a moment, it's clear that you're getting faster.");
 				else if (player.spe100 < 65) outputText("\n\nThe tight, ready feeling you've grown accustomed to seems to intensify, and you know in the back of your mind that you've become even faster.");
 				else outputText("\n\nSomething changes in your physique, and you grunt, chopping an arm through the air experimentally.  You seem to move even faster than before, confirming your suspicions.");
-				//[removed:1.4.10]//changes++;
 				if (player.spe100 < 35) dynStats("spe", 1);
 				dynStats("spe", 1);
 			}
 			//Boost libido
 			if (changes < changeLimit && rand(5) === 0) {
-				//[removed:1.4.10]//changes++;
 				dynStats("lib", 1, "lus", (5 + player.lib / 7));
 				if (player.lib100 < 30) dynStats("lib", 1);
 				if (player.lib100 < 40) dynStats("lib", 1);
@@ -1538,7 +1510,6 @@ package classes.Items
 			}
 			//BIG sensitivity gains to 60.
 			if (player.sens100 < 60 && changes < changeLimit && rand(3) === 0) {
-				//[removed:1.4.10]//changes++;
 				outputText("\n\n");
 				//(low)
 				if (rand(3) !== 2) {
@@ -1601,9 +1572,9 @@ package classes.Items
 			}
 			//-VAGs
 			//Neck restore
-			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) restoreNeck(tfSource);
 			//Rear body restore
-			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) mutations.restoreRearBody(tfSource);
+			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) restoreRearBody(tfSource);
 			//Ovi perk loss
 			if (rand(4) === 0) updateOvipositionPerk(tfSource);
 			if (player.hasVagina() && player.findPerk(PerkLib.BunnyEggs) < 0 && changes < changeLimit && rand(4) === 0 && player.bunnyScore() > 3) {
@@ -1793,13 +1764,7 @@ package classes.Items
 			//'type' refers to the variety of seed.
 			//0 == standard.
 			//1 == enhanced - increase change limit and no pre-reqs for TF
-			changes = 0;
-			changeLimit = 1;
-			if (type == 1) changeLimit += 2;
-			if (rand(2) === 0) changeLimit++;
-			if (rand(2) === 0) changeLimit++;
-			if (player.hasPerk(PerkLib.HistoryAlchemist)) changeLimit++;
-			if (player.hasPerk(PerkLib.TransformationResistance)) changeLimit--;
+			initTransformation([2, 2], type === 1 ? 3 : 1);
 			//Generic eating text:
 			clearOutput();
 			outputText("You pop the nut into your mouth, chewing the delicious treat and swallowing it quickly.  No wonder harpies love these things so much!");
@@ -1808,7 +1773,6 @@ package classes.Items
 			//****************
 			//-Speed increase to 100.
 			if (player.spe100 < 100 && rand(3) === 0) {
-				//[removed:1.4.10]//changes++;
 				if (player.spe100 >= 75) outputText("\n\nA familiar chill runs down your spine. Your muscles feel like well oiled machinery, ready to snap into action with lightning speed.");
 				else outputText("\n\nA chill runs through your spine, leaving you feeling like your reflexes are quicker and your body faster.");
 				//Speed gains diminish as it rises.
@@ -1818,7 +1782,6 @@ package classes.Items
 			}
 			//-Toughness decrease to 50
 			if (player.tou100 > 50 && rand(3) === 0 && changes < changeLimit) {
-				//[removed:1.4.10]//changes++;
 				if (rand(2) === 0) outputText("\n\nA nice, slow warmth rolls from your gut out to your limbs, flowing through them before dissipating entirely. As it leaves, you note that your body feels softer and less resilient.");
 				else outputText("\n\nYou feel somewhat lighter, but consequently more fragile.  Perhaps your bones have changed to be more harpy-like in structure?");
 				dynStats("tou", -1);
@@ -1832,7 +1795,6 @@ package classes.Items
 			}
 			//-Strength increase to 70
 			if (player.str100 < 70 && rand(3) === 0 && changes < changeLimit) {
-				//[removed:1.4.10]//changes++;
 				//(low str)
 				if (player.str100 < 40) outputText("\n\nShivering, you feel a feverish sensation that reminds you of the last time you got sick. Thankfully, it passes swiftly, leaving slightly enhanced strength in its wake.");
 				//(hi str – 50+)
@@ -1843,7 +1805,6 @@ package classes.Items
 			}
 			//-Libido increase to 90
 			if ((player.lib100 < 90 || rand(3) === 0) && rand(3) === 0 && changes < changeLimit) {
-				//[removed:1.4.10]//changes++;
 				if (player.lib100 < 90) dynStats("lib", 1);
 				//(sub 40 lib)
 				if (player.lib100 < 40) {
@@ -1952,9 +1913,9 @@ package classes.Items
 				}
 			}
 			//Neck restore
-			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) restoreNeck(tfSource);
 			//Rear body restore
-			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) mutations.restoreRearBody(tfSource);
+			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) restoreRearBody(tfSource);
 			//Ovi perk
 			if (rand(5) === 0) updateOvipositionPerk(tfSource);
 			//****************
@@ -1978,7 +1939,7 @@ package classes.Items
 				else if (temp == 2) player.skin.tone = "dark";
 				else if (temp == 3) player.skin.tone = "light";
 				outputText(player.skin.tone + " colored.</b>");
-				updateClaws(player.claws.type);
+				player.arms.updateClaws(player.arms.claws.type);
 			}
 			//-Grow hips out if narrow.
 			if (player.hips.rating < 10 && changes < changeLimit && rand(3) === 0) {
@@ -2074,8 +2035,7 @@ package classes.Items
 			if (player.arms.type !== Arms.HARPY && changes < changeLimit && (type == 1 || player.hair.type == 1) && rand(4) === 0) {
 				outputText("\n\nYou smile impishly as you lick the last bits of the nut from your teeth, but when you go to wipe your mouth, instead of the usual texture of your " + player.skin.desc + " on your lips, you feel feathers! You look on in horror while more of the avian plumage sprouts from your " + player.skin.desc + ", covering your forearms until <b>your arms look vaguely like wings</b>. Your hands remain unchanged thankfully. It'd be impossible to be a champion without hands! The feathery limbs might help you maneuver if you were to fly, but there's no way they'd support you alone.");
 				changes++;
-				player.arms.type = Arms.HARPY;
-				updateClaws();
+				player.arms.setType(Arms.HARPY);
 			}
 			//-Feathery Hair
 			if (player.hair.type !== Hair.FEATHER && changes < changeLimit && (type == 1 || player.face.type == Face.HUMAN) && rand(4) === 0) {
@@ -2112,9 +2072,7 @@ package classes.Items
 			}
 			//Nipples Turn Back:
 			if (player.hasStatusEffect(StatusEffects.BlackNipples) && changes < changeLimit && rand(3) === 0) {
-				outputText("\n\nSomething invisible brushes against your " + player.nippleDescript(0) + ", making you twitch.  Undoing your clothes, you take a look at your chest and find that your nipples have turned back to their natural flesh colour.");
-				changes++;
-				player.removeStatusEffect(StatusEffects.BlackNipples);
+				removeBlackNipples(tfSource);
 			}
 			//Debugcunt
 			if (changes < changeLimit && rand(3) === 0 && player.vaginaType() == 5 && player.hasVagina()) {
@@ -2151,16 +2109,9 @@ package classes.Items
 		public function kangaFruit(type:Number,player:Player):void
 		{
 			var tfSource:String = "kangaFruit";
+			initTransformation([2, 2], type === 1 ? 3 : 1);
 			clearOutput();
 			outputText("You squeeze the pod around the middle, forcing the end open.  Scooping out a handful of the yeasty-smelling seeds, you shovel them in your mouth.  Blech!  Tastes like soggy burnt bread... and yet, you find yourself going for another handful...");
-			//Used to track changes and the max
-			changes = 0;
-			changeLimit = 1;
-			if (type == 1) changeLimit += 2;
-			if (rand(2) === 0) changeLimit++;
-			if (rand(2) === 0) changeLimit++;
-			if (player.hasPerk(PerkLib.HistoryAlchemist)) changeLimit++;
-			if (player.hasPerk(PerkLib.TransformationResistance)) changeLimit--;
 			//Used as a holding variable for biggest dicks and the like
 			var biggestCock:Number;
 			//****************
@@ -2184,11 +2135,9 @@ package classes.Items
 				if (player.spe100 < 40) dynStats("spe", 1);
 				dynStats("spe", 1);
 				outputText("\n\nYour legs fill with energy as you eat the kanga fruit.  You feel like you could set a long-jump record!  You give a few experimental bounds, both standing and running, with your newfound vigor.  Your stride seems longer too; you even catch a bit of air as you push off with every powerful step.");
-				//[removed:1.4.10]//changes++;
 			}
 			//-Int to 10
 			if (player.inte > 2 && rand(3) === 0 && changes < changeLimit) {
-				//[removed:1.4.10]//changes++;
 				//Gain dumb (smart!)
 				if (player.inte > 30) outputText("\n\nYou feel... antsy. You momentarily forget your other concerns as you look around you, trying to decide which direction you'd be most likely to find more food in.  You're about to set out on the search when your mind refocuses and you realize you already have some stored at camp.");
 				//gain dumb (30-10 int):
@@ -2273,9 +2222,9 @@ package classes.Items
 				}
 			}
 			//Neck restore
-			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) restoreNeck(tfSource);
 			//Rear body restore
-			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) mutations.restoreRearBody(tfSource);
+			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) restoreRearBody(tfSource);
 			//Ovi perk loss
 			if (rand(5) === 0) updateOvipositionPerk(tfSource);
 			//****************
@@ -2365,13 +2314,8 @@ package classes.Items
 		{
 			var tfSource:String = "sweetGossamer";
 			if (type == 1) tfSource += "-drider";
+			initTransformation([2, 2]);
 			clearOutput();
-			changes = 0;
-			changeLimit = 1;
-			if (rand(2) === 0) changeLimit++;
-			if (rand(2) === 0) changeLimit++;
-			if (player.hasPerk(PerkLib.HistoryAlchemist)) changeLimit++;
-			if (player.hasPerk(PerkLib.TransformationResistance)) changeLimit--;
 			//Consuming Text
 			if (type == 0) outputText("You wad up the sweet, pink gossamer and eat it, finding it to be delicious and chewy, almost like gum.  Munching away, your mouth generates an enormous amount of spit until you're drooling all over yourself while you devour the sweet treat.");
 			else if (type == 1) outputText("You wad up the sweet, black gossamer and eat it, finding it to be delicious and chewy, almost like licorice.  Munching away, your mouth generates an enormous amount of spit until you're drooling all over yourself while you devour the sweet treat.");
@@ -2383,31 +2327,26 @@ package classes.Items
 			if (player.spe100 < 70 && changes < changeLimit && rand(3) === 0) {
 				outputText("\n\nYour reflexes feel much faster. Experimentally, you make a grab at a fly on a nearby rock and quickly snatch it out of the air.  A compulsion to stuff it in your mouth and eat it surfaces, but you resist the odd desire.  Why would you ever want to do something like that?");
 				dynStats("spe", 1.5);
-				//[removed:1.4.10]//changes++;
 			}
 			//(If speed>80, decreases speed down to minimum of 80)
 			if (player.spe100 > 80 && changes < changeLimit && rand(3) === 0) {
 				outputText("\n\nYou feel like resting high in the trees and waiting for your unsuspecting prey to wander below so you can take them without having to exert yourself.  What an odd thought!");
 				dynStats("spe", -1.5);
-				//[removed:1.4.10]//changes++;
 			}
 			//(increases sensitivity)
 			if (changes < changeLimit && rand(3) === 0) {
 				outputText("\n\nThe hairs on your arms and legs stand up straight for a few moments, detecting the airflow around you. Touch appears to be more receptive from now on.");
 				dynStats("sen", 1);
-				//[removed:1.4.10]//changes++;
 			}
 			//(Increase libido)
 			if (changes < changeLimit && rand(3) === 0) {
 				outputText("\n\nYou suddenly feel slightly needier, and your loins stir in quiet reminder that they could be seen to. The aftertaste hangs on your tongue and your teeth.  You wish there had been more.");
 				dynStats("lib", 1);
-				//[removed:1.4.10]//changes++;
 			}
 			//(increase toughness to 60)
 			if (changes < changeLimit && rand(3) === 0 && player.tou100 < 60) {
 				outputText("\n\nStretching languidly, you realize you're feeling a little tougher than before, almost as if you had a full-body shell of armor protecting your internal organs.  How strange.  You probe at yourself, and while your " + player.skinFurScales() + " doesn't feel much different, the underlying flesh does seem tougher.");
 				dynStats("tou", 1);
-				//[removed:1.4.10]//changes++;
 			}
 			//(decrease strength to 70)
 			if (player.str100 > 70 && rand(3) === 0) {
@@ -2415,7 +2354,6 @@ package classes.Items
 				if (player.spiderScore() < 4) outputText("Wait, you're not a spider, that doesn't make any sense!");
 				else outputText("Well, maybe you should put your nice, heavy abdomen to work.");
 				dynStats("str", -1);
-				//[removed:1.4.10]//changes++;
 			}
 			//****************
 			//Sexual Changes
@@ -2491,11 +2429,11 @@ package classes.Items
 			}
 			//Neck restore
 			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) {
-				mutations.restoreNeck(tfSource);
+				restoreNeck(tfSource);
 			}
 			//Rear body restore
 			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) {
-				mutations.restoreRearBody(tfSource);
+				restoreRearBody(tfSource);
 			}
 			//Ovi perk loss
 			if (rand(5) === 0) {
@@ -2522,7 +2460,7 @@ package classes.Items
 				player.skin.type = Skin.PLAIN;
 				player.skin.desc = "skin";
 				player.underBody.restore();
-				updateClaws(player.claws.type);
+				player.arms.updateClaws(player.arms.claws.type);
 				changes++;
 			}
 			//(Gain human face)
@@ -2572,8 +2510,7 @@ package classes.Items
 				//(Bird pretext)
 				if (player.arms.type == Arms.HARPY) outputText("The feathers covering your arms fall away, leaving them to return to a far more human appearance.  ");
 				outputText("You watch, spellbound, while your forearms gradually become shiny.  The entire outer structure of your arms tingles while it divides into segments, <b>turning the " + player.skinFurScales() + " into a shiny black carapace</b>.  You touch the onyx exoskeleton and discover to your delight that you can still feel through it as naturally as your own skin.");
-				player.arms.type = Arms.SPIDER;
-				updateClaws();
+				player.arms.setType(Arms.SPIDER);
 				changes++;
 			}
 			if (rand(4) === 0 && changes < changeLimit && player.lowerBody.type !== LowerBody.DRIDER && player.lowerBody.type !== LowerBody.CHITINOUS_SPIDER_LEGS) restoreLegs(tfSource);
@@ -2644,16 +2581,10 @@ package classes.Items
 		public function foxTF(enhanced:Boolean,player:Player):void
 		{
 			var tfSource:String = "foxTF";
+			initTransformation([2, 2], enhanced ? 3 : 1);
 			clearOutput();
 			if (!enhanced) outputText("You examine the berry a bit, rolling the orangish-red fruit in your hand for a moment before you decide to take the plunge and chow down.  It's tart and sweet at the same time, and the flavors seem to burst across your tongue with potent strength.  Juice runs from the corners of your lips as you finish the tasty snack.");
 			else outputText("You pop the cap on the enhanced \"Vixen's Vigor\" and decide to take a swig of it.  Perhaps it will make you as cunning as the crude fox Lumi drew on the front?");
-			changes = 0;
-			changeLimit = 1;
-			if (enhanced) changeLimit += 2;
-			if (rand(2) === 0) changeLimit++;
-			if (rand(2) === 0) changeLimit++;
-			if (player.hasPerk(PerkLib.HistoryAlchemist)) changeLimit++;
-			if (player.hasPerk(PerkLib.TransformationResistance)) changeLimit--;
 			//Used for dick and boob TFs
 			var counter:int = 0;
 
@@ -2683,7 +2614,6 @@ package classes.Items
 				if (player.sens100 < 80) dynStats("sen", 1);
 				//gain small lust also
 				dynStats("lus", 10);
-				//[removed:1.4.10]//changes++;
 			}
 			//[decrease Strength] (to some floor) // I figured 15 was fair, but you're in a better position to judge that than I am.
 			if (changes < changeLimit && rand(3) === 0 && player.str100 > 40) {
@@ -2692,7 +2622,6 @@ package classes.Items
 				if (player.str100 > 60) dynStats("str", -1);
 				if (player.str100 > 80) dynStats("str", -1);
 				if (player.str100 > 90) dynStats("str", -1);
-				//[removed:1.4.10]//changes++;
 			}
 			//[decrease Toughness] (to some floor) // 20 or so was my thought here
 			if (changes < changeLimit && rand(3) === 0 && player.tou100 > 30) {
@@ -2702,7 +2631,6 @@ package classes.Items
 				if (player.tou100 > 60) dynStats("tou", -1);
 				if (player.tou100 > 80) dynStats("tou", -1);
 				if (player.tou100 > 90) dynStats("tou", -1);
-				//[removed:1.4.10]//changes++;
 			}
 
 			//[Change Hair Color: Golden-blonde or Reddish-orange]
@@ -2882,9 +2810,9 @@ package classes.Items
 				}
 			}
 			//Neck restore
-			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) restoreNeck(tfSource);
 			//Rear body restore
-			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) mutations.restoreRearBody(tfSource);
+			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) restoreRearBody(tfSource);
 			//Ovi perk loss
 			if (rand(5) === 0) updateOvipositionPerk(tfSource);
 			//[Grow Fur]
@@ -2985,15 +2913,8 @@ package classes.Items
 		{
 			var tfSource:String = "foxJewel";
 			if (mystic) tfSource += "-mystic";
+			initTransformation([2, 2, 3], mystic ? 3 : 1);
 			clearOutput();
-			changes = 0;
-			changeLimit = 1;
-			if (rand(2) === 0) changeLimit++;
-			if (rand(2) === 0) changeLimit++;
-			if (rand(3) === 0) changeLimit++;
-			if (mystic) changeLimit += 2;
-			if (player.hasPerk(PerkLib.HistoryAlchemist)) changeLimit++;
-			if (player.hasPerk(PerkLib.TransformationResistance)) changeLimit--;
 			if (mystic) outputText("You examine the jewel for a bit, rolling it around in your hand as you ponder its mysteries.  You hold it up to the light with fascinated curiosity, watching the eerie purple flame dancing within.  Without warning, the gem splits down the center, dissolving into nothing in your hand.  As the pale lavender flames swirl around you, the air is filled with a sickly sweet scent that drips with the bitter aroma of licorice, filling you with a dire warmth.");
 			else outputText("You examine the jewel for a bit, rolling it around in your hand as you ponder its mysteries.  You hold it up to the light with fascinated curiosity, watching the eerie blue flame dancing within.  Without warning, the gem splits down the center, dissolving into nothing in your hand.  As the pale azure flames swirl around you, the air is filled with a sweet scent that drips with the aroma of wintergreen, sending chills down your spine.");
 
@@ -3005,7 +2926,6 @@ package classes.Items
 				outputText("\n\nYou close your eyes, smirking to yourself mischievously as you suddenly think of several new tricks to try on your opponents; you feel quite a bit more cunning.  The mental image of them helpless before your cleverness makes you shudder a bit, and you lick your lips and stroke yourself as you feel your skin tingling from an involuntary arousal.");
 				//Raise INT, Lib, Sens. and +10 LUST
 				dynStats("int", 2, "lib", 1, "sen", 2, "lus", 10);
-				//[removed:1.4.10]//changes++;
 			}
 			//[decrease Strength toward 15]
 			if (player.str100 > 15 && changes < changeLimit && ((mystic && rand(2) === 0) || (!mystic && rand(3) === 0))) {
@@ -3014,7 +2934,6 @@ package classes.Items
 				if (player.str100 > 70) dynStats("str", -1);
 				if (player.str100 > 50) dynStats("str", -1);
 				if (player.str100 > 30) dynStats("str", -1);
-				//[removed:1.4.10]//changes++;
 			}
 			//[decrease Toughness toward 20]
 			if (player.tou100 > 20 && changes < changeLimit && ((mystic && rand(2) === 0) || (!mystic && rand(3) === 0))) {
@@ -3024,7 +2943,6 @@ package classes.Items
 				else outputText("\n\nYou feel your " + player.skinFurScales() + " becoming noticeably softer.  A gentle exploratory pinch on your arm confirms it - your hide isn't quite as tough as it used to be.");
 				dynStats("tou", -1);
 				if (player.tou100 > 66) dynStats("tou", -1);
-				//[removed:1.4.10]//changes++;
 			}
 			if (mystic && changes < changeLimit && rand(2) === 0 && player.cor < 100) {
 				if (player.cor < 33) outputText("\n\nA sense of dirtiness comes over you, like the magic of this gem is doing some perverse impropriety to you.");
@@ -3117,9 +3035,9 @@ package classes.Items
 			//BIG APPEARANCE CHANGES
 			//**********************
 			//Neck restore
-			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) mutations.restoreNeck(tfSource);
+			if (player.neck.type !== Neck.NORMAL && changes < changeLimit && rand(4) === 0) restoreNeck(tfSource);
 			//Rear body restore
-			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) mutations.restoreRearBody(tfSource);
+			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) === 0) restoreRearBody(tfSource);
 			//Ovi perk loss
 			if (rand(5) === 0) updateOvipositionPerk(tfSource);
 			//[Grow Fox Tail]
@@ -3206,7 +3124,7 @@ package classes.Items
 				if (!InCollection(player.skin.tone, tone)) player.skin.tone = randomChoice(tone);
 				outputText(player.skin.tone + " complexion.");
 				outputText("  <b>You now have [skin]!</b>");
-				updateClaws(player.claws.type);
+				player.arms.updateClaws(player.arms.claws.type);
 				changes++;
 			}
 			//Change skin tone if not changed you!
@@ -3214,7 +3132,7 @@ package classes.Items
 				outputText("\n\nYou feel a crawling sensation on the surface of your skin, starting at the small of your back and spreading to your extremities, ultimately reaching your face.  Holding an arm up to your face, you discover that <b>you now have ");
 				player.skin.tone = randomChoice(tone);
 				outputText("[skin]!</b>");
-				updateClaws(player.claws.type);
+				player.arms.updateClaws(player.arms.claws.type);
 				changes++;
 			}
 			//[Change Skin Color: add "Tattoos"]
@@ -3229,9 +3147,7 @@ package classes.Items
 			}
 			//Nipples Turn Back:
 			if (!player.hasFur() && player.hasStatusEffect(StatusEffects.BlackNipples) && changes < changeLimit && rand(3) === 0) {
-				outputText("\n\nSomething invisible brushes against your " + player.nippleDescript(0) + ", making you twitch.  Undoing your clothes, you take a look at your chest and find that your nipples have turned back to their natural flesh colour.");
-				changes++;
-				player.removeStatusEffect(StatusEffects.BlackNipples);
+				removeBlackNipples(tfSource);
 			}
 			//Debugcunt
 			if (!player.hasFur() && changes < changeLimit && rand(3) === 0 && player.vaginaType() == 5 && player.hasVagina()) {
@@ -3253,7 +3169,7 @@ package classes.Items
 		 * Changes shared by succubi milk and incubi draft
 		 * @param	player affected by the mutation
 		 */
-		private function demonChanges(player:Player):void
+		private function demonChanges(player:Player, tfSource:String = "demonChanges"):void
 		{
 			//Change tail if already horned.
 			if (player.tail.type !== Tail.DEMONIC && player.horns.value > 0) {
@@ -3266,7 +3182,7 @@ package classes.Items
 				else outputText("\n\nA pain builds in your backside... growing more and more pronounced.  The pressure suddenly disappears with a loud ripping and tearing noise.  <b>You realize you now have a demon tail</b>... complete with a cute little spade.");
 				dynStats("cor", 4);
 				player.tail.type = Tail.DEMONIC;
-				flags[kFLAGS.TIMES_TRANSFORMED]++;
+				changes++;
 			}
 			//grow horns!
 			if (player.horns.value == 0 || (rand(player.horns.value + 3) === 0)) {
@@ -3289,13 +3205,11 @@ package classes.Items
 					player.horns.type = Horns.DEMON;
 					dynStats("cor", 3);
 				}
-				flags[kFLAGS.TIMES_TRANSFORMED]++;
+				changes++;
 			}
 			//Nipples Turn Back:
 			if (player.hasStatusEffect(StatusEffects.BlackNipples) && rand(3) === 0) {
-				outputText("\n\nSomething invisible brushes against your " + player.nippleDescript(0) + ", making you twitch.  Undoing your clothes, you take a look at your chest and find that your nipples have turned back to their natural flesh colour.");
-				player.removeStatusEffect(StatusEffects.BlackNipples);
-				flags[kFLAGS.TIMES_TRANSFORMED]++;
+				removeBlackNipples(tfSource);
 			}
 			//remove fur
 			if ((player.face.type !== Face.HUMAN || !player.hasPlainSkin()) && rand(3) === 0) {
@@ -3314,13 +3228,13 @@ package classes.Items
 					player.skin.desc = "skin";
 					player.underBody.restore();
 				}
-				flags[kFLAGS.TIMES_TRANSFORMED]++;
+				changes++;
 			}
 			//Demon tongue
 			if (player.tongue.type == Tongue.SNAKE && rand(3) === 0) {
 				outputText("\n\nYour snake-like tongue tingles, thickening in your mouth until it feels more like your old human tongue, at least for the first few inches.  It bunches up inside you, and when you open up your mouth to release it, roughly two feet of tongue dangles out.  You find it easy to move and control, as natural as walking.  <b>You now have a long demon-tongue.</b>");
 				player.tongue.type = Tongue.DEMONIC;
-				flags[kFLAGS.TIMES_TRANSFORMED]++;
+				changes++;
 			}
 			//foot changes - requires furless
 			if (player.hasPlainSkin() && rand(4) === 0) {
@@ -3340,7 +3254,7 @@ package classes.Items
 					player.lowerBody.type = LowerBody.DEMONIC_HIGH_HEELS;
 					player.lowerBody.legCount = 2;
 				}
-				flags[kFLAGS.TIMES_TRANSFORMED]++;
+				changes++;
 			}
 			//Grow demon wings
 			if ((player.wings.type !== Wings.BAT_LIKE_LARGE || player.rearBody.type == RearBody.SHARK_FIN) && rand(8) === 0 && player.isCorruptEnough(50)) {
@@ -3377,8 +3291,9 @@ package classes.Items
 					}
 					outputText("<b>bat-like demon-wings!</b>");
 				}
-				flags[kFLAGS.TIMES_TRANSFORMED]++;
+				changes++;
 			}
+			flags[kFLAGS.TIMES_TRANSFORMED] += changes;
 		}
 
 

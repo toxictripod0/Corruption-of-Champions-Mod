@@ -26,13 +26,7 @@ package classes.Items.Consumables
 			var tfSource:String = "regularHummus";
 			var temp:int = 0;
 			
-			clearOutput();
-			changes = 0;
-			changeLimit = 1;
-			if (rand(2) === 0) changeLimit++;
-			if (rand(2) === 0) changeLimit++;
-			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
-			if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
+			mutations.initTransformation([2, 2]);
 			clearOutput();
 			outputText("You crack open the small clay jar to reveal a lightly colored paste that smells surprisingly delicious. You begin eating it with your fingers, wishing all the while for some crackers...");
 			player.refillHunger(10);
@@ -74,7 +68,7 @@ package classes.Items.Consumables
 				player.skin.tone = randomChoice(ColorLists.HUMAN_SKIN);
 				outputText(player.skin.tone + " colored.</b>");
 				player.underBody.skin.tone = player.skin.tone;
-				mutations.updateClaws(player.claws.type);
+				player.arms.updateClaws(player.arms.claws.type);
 			}
 			//Change skin to normal
 			if (!player.hasPlainSkin() && (player.ears.type === Ears.HUMAN || player.ears.type === Ears.ELFIN) && rand(4) === 0 && changes < changeLimit) {
@@ -132,9 +126,7 @@ package classes.Items.Consumables
 			}
 			//Nipples Turn Back:
 			if (player.hasStatusEffect(StatusEffects.BlackNipples) && changes < changeLimit && rand(3) === 0) {
-				outputText("\n\nSomething invisible brushes against your " + player.nippleDescript(0) + ", making you twitch.  Undoing your clothes, you take a look at your chest and find that your nipples have turned back to their natural flesh colour.");
-				changes++;
-				player.removeStatusEffect(StatusEffects.BlackNipples);
+				mutations.removeBlackNipples(tfSource);
 			}
 			//Hair turns normal
 			if (changes < changeLimit && player.hair.type !== Hair.NORMAL && rand(3) === 0) {

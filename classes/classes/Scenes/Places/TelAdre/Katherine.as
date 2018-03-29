@@ -2160,7 +2160,7 @@ private function giveKatherineAnItem(page:int = 0):void {
 	addButton(14, "Back", giveKatherineAnItem);
 	// list pages
 	if (page == 0) {
-		addButton(button++, "Transformatives", giveKatherineAnItem, 1);
+		addButton(button++, "TFs", giveKatherineAnItem, 1);
 		
 		if (hasJob) addButton(button++, "Clothes", giveKatherineAnItem, 2);
 		else addDisabledButton(button++, "Clothes", "She has no place to store her clothes.");
@@ -2246,23 +2246,35 @@ private function giveKatherineAnItem(page:int = 0):void {
 		else addDisabledButton(button++, "Tube Top", "You think she can use a tube top.");
 	}
 	//Dyes
-	if (page == 3) {
+	if (page == 3 || page == 4) {
 		var dyeButton:Function = function(color:String, item:ItemType, func:Function):void {
 			if (hairColor == color) addDisabledButton(button++,  item.shortName, "Her hair is already " + color + ".");
 			else if (!player.hasItem(item)) addDisabledButton(button++,  item.shortName, "You think she would look good with " + color + " hair if you could find a dye.");
-			else addButton(button++, item.shortName, func, undefined, undefined, undefined, "Offer her " + item.longName + ".");
+else addButton(button++, item.shortName, func, undefined, undefined, undefined, "Offer her " + item.longName + ".");
 		};
-		
-		dyeButton("rich auburn", consumables.AUBURND, giveKatDyeAuburn);
-		dyeButton("jet black", consumables.BLACK_D, giveKatDyeBlack);
-		dyeButton("light blonde", consumables.BLOND_D, giveKatDyeBlonde);
-		dyeButton("bright blue", consumables.BLUEDYE, giveKatDyeBlue);
-		dyeButton("lime green", consumables.GREEN_D, giveKatDyeGreen);
-		dyeButton("vibrant orange", consumables.ORANGDY, giveKatDyeOrange);
-		dyeButton("neon pink", consumables.PINKDYE, giveKatDyePink);
-		dyeButton("deep purple", consumables.PURPDYE, giveKatDyePurple);
-		dyeButton("flaming red", consumables.RED_DYE, giveKatDyeRed);
-		dyeButton("snow white", consumables.WHITEDY, giveKatDyeWhite);
+		if (page == 3) {
+			dyeButton("rich auburn", consumables.AUBURND, giveKatDyeAuburn);
+			dyeButton("jet black", consumables.BLACK_D, giveKatDyeBlack);
+			dyeButton("light blonde", consumables.BLOND_D, giveKatDyeBlonde);
+			dyeButton("bright blue", consumables.BLUEDYE, giveKatDyeBlue);
+			dyeButton("chestnut brown", consumables.BROWN_D, giveKatDyeBrown);
+			dyeButton("cloud gray", consumables.GRAYDYE, giveKatDyeGray);
+			dyeButton("lime green", consumables.GREEN_D, giveKatDyeGreen);
+			dyeButton("vibrant orange", consumables.ORANGDY, giveKatDyeOrange);
+			dyeButton("neon pink", consumables.PINKDYE, giveKatDyePink);
+			dyeButton("deep purple", consumables.PURPDYE, giveKatDyePurple);
+
+			addButton(13, "Next", giveKatherineAnItem, 4);
+		}
+		else {
+			dyeButton("rainbow colored", consumables.RAINDYE, giveKatDyeRainbow);
+			dyeButton("flaming red", consumables.RED_DYE, giveKatDyeRed);
+			dyeButton("russet red", consumables.RUSSDYE, giveKatDyeRusset);
+			dyeButton("sunflower yellow", consumables.YELLODY, giveKatDyeYellow);
+			dyeButton("snow white", consumables.WHITEDY, giveKatDyeWhite);
+
+			addButton(13, "Previous" , giveKatherineAnItem, 3);
+		}
 	}
 }
 
@@ -3476,6 +3488,29 @@ private function giveKatDyeBlue():void {
 	giveKatDyeEnd();
 }
 
+// Stygs - new 02/04/18
+private function giveKatDyeBrown():void {
+	giveKatDyeBegin("chestnut brown");
+	player.consumeItem(consumables.BROWN_D);
+	outputText(".\n\nKath takes a look in the mirror and tries combing her hair several different ways.  “<i>Well, it’s not that flashy, but I think it fits me.  There’s a nice contrast with my " + catGirl("skin", "fur") + ".</i>”\n\n");
+	giveKatDyeEnd();
+}
+
+// Stygs - new 02/04/18
+private function giveKatDyeGray():void {
+	giveKatDyeBegin("cloud gray");
+	player.consumeItem(consumables.GRAYDYE);
+	outputText(".\n\nKath takes a look in the mirror and tries combing her hair several different ways.  “<i>I was afraid it would be a bit to dull and make me look like a wallflower... but I am starting to like it.  There’s a nice contrast with my " + catGirl("skin", "fur") + ".</i>”\n\n");
+	giveKatDyeEnd();
+}
+
+private function giveKatDyeGreen():void {
+	giveKatDyeBegin("lime green");
+	player.consumeItem(consumables.GREEN_D);
+	outputText(".\n\nKath takes a look in the mirror and runs her fingers through her hair.  “<i>That's something unique! There are no other cat" + catGirl("-girl", "") + " with green hair in whole Tel'Adre, and it looks great with my green eyes!</i>”\n\n");
+	giveKatDyeEnd();
+}
+
 private function giveKatDyeOrange():void {
 	giveKatDyeBegin("vibrant orange");
 	player.consumeItem(consumables.ORANGDY);
@@ -3497,6 +3532,14 @@ private function giveKatDyePurple():void {
 	giveKatDyeEnd();
 }
 
+// Stygs - new 02/04/18
+private function giveKatDyeRainbow():void {
+	giveKatDyeBegin("rainbow colored");
+	player.consumeItem(consumables.RAINDYE);
+	outputText(".\n\nKath takes a look in the mirror and tries combing her hair several different ways.  “<i>Reminds me of an old fairy tale about a flying horse that controlls the weather. Takes some getting used to the colors, but it’s certainly a unique style that makes me stand out. I love it!</i>”\n\n");
+	giveKatDyeEnd();
+}
+
 private function giveKatDyeRed():void {
 	giveKatDyeBegin("flaming red");
 	player.consumeItem(consumables.RED_DYE);
@@ -3504,17 +3547,26 @@ private function giveKatDyeRed():void {
 	giveKatDyeEnd();
 }
 
+// Stygs - new 02/04/18
+private function giveKatDyeRusset():void {
+	giveKatDyeBegin("russet red");
+	player.consumeItem(consumables.RUSSDYE);
+	outputText(".\n\nKath takes a look in the mirror and tries combing her hair several different ways.  “<i>Say what you want, but I always felt like this color has a bit of a criminal vibe to it.</i>”  She giggles a bit and says, “<i>I always wanted to try it for myself and I think it looks great!</i>”\n\n");
+	giveKatDyeEnd();
+}
+
+// Stygs - new 02/04/18
+private function giveKatDyeYellow():void {
+	giveKatDyeBegin("sunflower yellow");
+	player.consumeItem(consumables.YELLODY);
+	outputText(".\n\nKath takes a look in the mirror and runs her fingers through her hair.  “<i>Talk about a signal color. With hair like this, I don’t think anyone is ever going to overlook me again.</i>”  She giggles a bit and says, “<i>Really appropriate for an officer of the city watch!</i>”\n\n");
+	giveKatDyeEnd();
+}
+
 private function giveKatDyeWhite():void {
 	giveKatDyeBegin("snow white");
 	player.consumeItem(consumables.WHITEDY);
 	outputText(".\n\nKath takes a look in the mirror and tries combing her hair several different ways.  “<i>When I was a little kitty I was always jealous of felines with lighter colored fur.  " + catGirl("Now I’ve got snow white hair and only a little bit of black fur on my ears and tail.  They’re the ones who ought to be jealous now.  In this desert heat I win!", "I think it looks good on me but the contrast is something else.  It almost hurts my eyes looking at my shoulders and it’s going to be even worse in sunlight.  No one is going to walk into me now.") + "</i>”\n\n");
-	giveKatDyeEnd();
-}
-
-private function giveKatDyeGreen():void {
-	giveKatDyeBegin("lime green");
-	player.consumeItem(consumables.GREEN_D);
-	outputText(".\n\nKath takes a look in the mirror and runs her fingers through her hair.  “<i>That's something unique! There are no other cat" + catGirl("-girl", "") + " with green hair in whole Tel'Adre, and it looks great with my green eyes!</i>”\n\n");
 	giveKatDyeEnd();
 }
 

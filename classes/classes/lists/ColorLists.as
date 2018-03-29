@@ -24,6 +24,19 @@ package classes.lists
 			"dark green",
 		];
 
+		public static const GOO_MORPH:Array = [
+			"green",
+			"purple",
+			"blue",
+			"cerulean",
+			"emerald",
+		];
+
+		public static const IMP_SKIN:Array = [
+			"red",
+			"orange",
+		];
+
 		public static const SALAMANDER_SKIN:Array = [
 			"light",
 			"fair",
@@ -121,6 +134,24 @@ package classes.lists
 			"white",
 			"tan",
 			"brown",
+		];
+
+		public static const FERRET_HAIR:Array = [
+			"white",
+			"brown",
+			"caramel",
+		];
+
+		public static const FERRET_FUR:Array = [
+			["brown",         "brown"],
+			["brown",         "black"],
+			["light brown",   "caramel"],
+			["caramel",       "caramel"],
+			["caramel",       "cream"],
+			["silver",        "silver"],
+			["white",         "white"],
+			["sandy brown",   "brown"],
+			["sapphire blue", "electric blue"],
 		];
 
 		public static const BASIC_KITSUNE_HAIR:Array = [

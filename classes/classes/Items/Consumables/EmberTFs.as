@@ -45,10 +45,7 @@ package classes.Items.Consumables
 			var tfSource:String = "EmberTFs-" + shortName;
 			var temp:int;
 			var drakesHeart:Boolean = tfSource == "EmberTFs-DrakeHeart";
-			changes = 0;
-			changeLimit = 2;
-			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
-			if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
+			mutations.initTransformation(null, 2);
 
 			if (drakesHeart) {
 				output.text("You bring the flower up to your nose and smell it. It has exquisite smell."
@@ -291,14 +288,13 @@ package classes.Items.Consumables
 			if (player.arms.type != Arms.PREDATOR && player.hasDragonScales() && player.lowerBody.type == LowerBody.DRAGON && changes < changeLimit && rand(3) == 0) {
 				output.text("\n\nYou scratch your biceps absentmindedly, but no matter how much you scratch, you can't get rid of the itch.  After a longer moment of ignoring it you finally glance down in irritation, only to discover that your arms former appearance has changed into those of some reptilian killer with shield-shaped " + player.skin.tone + " scales and powerful, thick, curved steel-gray claws replacing your fingernails.");
 				output.text("\n<b>You now have dragon arms.</b>");
-				player.arms.type = Arms.PREDATOR;
-				mutations.updateClaws(Claws.DRAGON);
+				player.arms.setType(Arms.PREDATOR, Claws.DRAGON);
 				changes++
 			}
 			//Claw transition
-			if (player.arms.type == Arms.PREDATOR && player.hasDragonScales() && player.claws.type != Claws.DRAGON && changes < changeLimit && rand(3) == 0) {
+			if (player.arms.type == Arms.PREDATOR && player.hasDragonScales() && player.arms.claws.type != Claws.DRAGON && changes < changeLimit && rand(3) == 0) {
 				output.text("\n\nYour [claws] change  a little to become more dragon-like.");
-				mutations.updateClaws(Claws.DRAGON);
+				player.arms.updateClaws(Claws.DRAGON);
 				output.text(" <b>You now have [claws].</b>");
 				changes++
 			}

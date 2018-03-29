@@ -3,7 +3,8 @@ package classes.display
 	import classes.display.BindDisplay;
 	import coc.view.Block;
 	import coc.view.CoCButton;
-	import fl.containers.ScrollPane;
+	import coc.view.MainView;
+	import com.bit101.components.ScrollPane;
 	import flash.display.DisplayObject;
 	import flash.display.MovieClip;
 	import flash.display.Stage;
@@ -12,6 +13,7 @@ package classes.display
 	import flash.text.TextField;
 	import flash.text.TextFieldAutoSize;
 	import flash.text.TextFormat;
+	import flash.display.Bitmap;
 
 	/**
 	 * Provides a scrollable container for game settings.
@@ -39,11 +41,12 @@ package classes.display
 		{
 			move(xPos,yPos);
 			setSize(width,height);
-			
 			// Cheap hack to remove the stupid styling elements of the stock ScrollPane
-			var blank:MovieClip = new MovieClip();
-			this.setStyle("upSkin", blank);
-			
+			var pic:Bitmap = new MainView.Background1();
+			pic.width = width;
+			pic.height = height;
+			_alpha =0;
+			_background.addChild(pic);
 			// Initiate a new container for content that will be placed in the scroll pane
 			_content = new Block({layoutConfig:{
 				type: Block.LAYOUT_FLOW,
@@ -52,7 +55,7 @@ package classes.display
 			}});
 			_content.name = "controlContent";
 			_content.addEventListener(Block.ON_LAYOUT,function(e:Event):void{
-				if (source) {
+				if (content) {
 					update();
 				}
 			});
@@ -60,7 +63,7 @@ package classes.display
 
 			// Hook into some stuff so that we can fix some bugs that ScrollPane has
 			this.addEventListener(Event.ADDED_TO_STAGE, AddedToStage);
-			this.source = _content;
+			this.content.addChild(_content);
 		}
 		
 		/**
@@ -87,7 +90,8 @@ package classes.display
 		
 		private function MouseScrollEvent(e:MouseEvent):void
 		{
-			this.verticalScrollPosition += -( e.delta * 8 );
+			this._vScrollbar.value += -( e.delta * 8 );
+			update();
 		}
 		
 		public function get initialized():Boolean { return _initialized; }

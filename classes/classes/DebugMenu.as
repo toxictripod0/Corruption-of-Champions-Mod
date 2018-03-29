@@ -6,6 +6,7 @@ package classes
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Items.*;
 	import classes.internals.Profiling;
+	import classes.menus.GenderDebug;
 	import flash.events.TimerEvent;
 	import flash.utils.*;
 	import flash.utils.describeType;
@@ -41,6 +42,10 @@ package classes
 			//buildArray();
 			Profiling.LogProfilingReport();
 			if (!getGame().inCombat) {
+				
+				// initalizing the menu here due to order the required classes are inizalized
+				var genderDebugMenu:GenderDebug = new GenderDebug(kGAMECLASS, kGAMECLASS.output, kGAMECLASS.player, accessDebugMenu);
+				
 				hideMenus();
 				mainView.nameBox.visible = false;
 				mainView.nameBox.text = "";
@@ -58,6 +63,7 @@ package classes
 				addButton(5, "DumpEffects", dumpEffectsMenu).hint("Display your status effects");
 				addButton(7, "HACK STUFFZ", styleHackMenu).hint("H4X0RZ");
 				addButton(8, "Scene Test", testScene).hint("Manually Proc a Scene.");
+				addButton(9, genderDebugMenu.getButtonText(), genderDebugMenu.enter).hint(genderDebugMenu.getButtonHint());
 				addButton(14, "Exit", playerMenu);
 			}
 			if (getGame().inCombat) {
@@ -89,7 +95,7 @@ package classes
 					outputText("<b><u>"+type.toUpperCase()+"</u></b>\n");
 				}
 				for each (var fun:* in funs) {
-					outputText("<u><a href=\"event:"+fun.@name+"\">"+fun.@name+"</a></u>\n")
+					outputText("<u><a href=\"event:" + fun.@name+"\">" + fun.@name+"</a></u>\n");
 				}
 			}
 			function linkhandler(e:TextEvent):void {
@@ -146,7 +152,7 @@ package classes
 			var buttonPos:int = 0; //Button positions 4 and 9 are reserved for next and previous.
 			for (var i:int = 0; i < 12; i++) {
 				if (array[((page-1) * 12) + i] != undefined) {
-					if (array[((page-1) * 12) + i] != null) addButton(buttonPos, array[((page-1) * 12) + i].shortName, inventory.takeItem, array[((page-1) * 12) + i], curry(displayItemPage, array, page));
+					if (array[((page-1) * 12) + i] != null) addButton(buttonPos, array[((page-1) * 12) + i].shortName, inventory.takeItem, array[((page-1) * 12) + i], curry(displayItemPage, array, page)).hint(array[((page-1) * 12) + i].description, capitalizeFirstLetter(array[((page-1) * 12) + i].longName));
 				}
 				buttonPos++;
 				if (buttonPos == 4 || buttonPos == 9) buttonPos++;
@@ -247,6 +253,7 @@ package classes
 			transformativeArray.push(consumables.W_FRUIT);
 			transformativeArray.push(consumables.WETCLTH);
 			transformativeArray.push(consumables.WOLF_PP);
+			transformativeArray.push(consumables.UBMBOTT);
 			
 			//------------
 			// Consumables
@@ -362,7 +369,7 @@ package classes
 			materialArray.push(useables.EBNFLWR);
 			materialArray.push(useables.IMPSKLL);
 			materialArray.push(useables.LETHITE);
-			materialArray.push(null);
+			materialArray.push(useables.OBSHARD);
 			materialArray.push(null);
 			materialArray.push(null);
 			materialArray.push(null);
@@ -1346,13 +1353,13 @@ package classes
 			showChangeOptions(bodyPartEditorTorso, page, ARM_TYPE_CONSTANTS, changeArmType);
 		}
 		private function changeClawType(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.claws.type = setIdx;
+			if (setIdx>=0) player.arms.claws.type = setIdx;
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorTorso, page, CLAW_TYPE_CONSTANTS, changeClawType);
 		}
 		private function changeClawTone(page:int=0,setIdx:int=-1):void {
-			if (setIdx>=0) player.claws.tone = SKIN_TONE_CONSTANTS[setIdx];
+			if (setIdx>=0) player.arms.claws.tone = SKIN_TONE_CONSTANTS[setIdx];
 			menu();
 			dumpPlayerData();
 			showChangeOptions(bodyPartEditorTorso, page, SKIN_TONE_CONSTANTS, changeClawTone);

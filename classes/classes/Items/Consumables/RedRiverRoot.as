@@ -32,15 +32,7 @@ package classes.Items.Consumables
 			var tfSource:String = "RedRiverRoot";
 			var i:int;
 			player.slimeFeed();
-			// init stuff
-			changes = 0;
-			changeLimit = 1;
-			// Randomly choose affects limit
-			if (rand(2) == 0) changeLimit++;
-			if (rand(2) == 0) changeLimit++;
-			if (rand(4) == 0) changeLimit++;
-			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
-			if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
+			mutations.initTransformation([2, 2, 4]);
 
 			clearOutput();
 			credits.authorText = "Coalsack";
@@ -386,8 +378,7 @@ package classes.Items.Consumables
 				          +" Your hands gain pink, padded paws where your palms were once, and your nails become short claws,"
 				          +" not sharp enough to tear flesh, but nimble enough to make climbing and exploring much easier."
 				          +" <b>Your arms have become like those of  a red-panda!</b>");
-				player.arms.type = Arms.RED_PANDA;
-				mutations.updateClaws(Claws.RED_PANDA);
+				player.arms.setType(Arms.RED_PANDA, Claws.RED_PANDA);
 			}
 
 			// Legs
@@ -558,7 +549,7 @@ package classes.Items.Consumables
 				} else {
 					outputText("\n\nDespite how spicy it was, the root was nevertheless nutritious, as you can confirm by feeling how your body feels"
 					          +" now much more invigorated.\n");
-					game.HPChange(250, true);
+					player.HPChange(250, true);
 					dynStats("lus", 3);
 				}
 			}

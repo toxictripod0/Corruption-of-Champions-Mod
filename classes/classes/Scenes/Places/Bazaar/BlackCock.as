@@ -121,7 +121,7 @@ package classes.Scenes.Places.Bazaar
 		private function addFoodToGo(item:ItemType, price:int):void {
 			var button:int = 0;
 			for (var i:int = 0; i < 14; i++) {
-				if (buttonIsVisible(i)) button++;
+				if (output.buttonIsVisible(i)) button++;
 			}
 			outputText("\n" + capitalizeFirstLetter(item.longName) + " - " + price + " gems");
 			addButton(button, item.shortName, orderFoodToGo, item, price);
@@ -142,7 +142,7 @@ package classes.Scenes.Places.Bazaar
 		private function addFoodPlate(foodName:String, gems:int, tooltip:String, foodEatDesc:String):void {
 			var button:int = 0;
 			for (var i:int = 0; i < 14; i++) {
-				if (buttonIsVisible(i)) button++;
+				if (output.buttonIsVisible(i)) button++;
 			}
 			var header:String = "";
 			switch(foodName) {
@@ -1406,10 +1406,7 @@ package classes.Scenes.Places.Bazaar
 		public function satyrTFs():void
 		{
 			var tfSource:String = "satyrTFs";
-			changes = 0;
-			changeLimit = 3;
-			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
-			if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
+			mutations.initTransformation(null, 3);
 			//Stats and genital changes
 			if (rand(2) == 0) {
 				outputText("\n\nHeat floods your loins as thoughts of tight round asses and dripping pussies flood your mind.");
@@ -1548,14 +1545,10 @@ package classes.Scenes.Places.Bazaar
 		public function rhinoTFs():void
 		{
 			var tfSource:String = "rhinoTFs";
-			changes = 0;
-			changeLimit = 3;
-			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
-			if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
+			mutations.initTransformation(null, 3);
 			// Stats Changes
 			//------------
 			if (rand(3) == 0 && player.str100 < 100) {
-				//[removed:1.4.10]//changes++;
 				if (player.str100 < 50) {
 					outputText("\n\nShivering, you feel a feverish sensation that reminds you of the last time you got sick. Thankfully, it passes swiftly, leaving slightly enhanced strength in its wake.");
 					dynStats("str", .5);
@@ -1644,7 +1637,7 @@ package classes.Scenes.Places.Bazaar
 				player.skin.type = Skin.PLAIN;
 				player.skin.desc = "skin";
 				player.underBody.restore();
-				mutations.updateClaws(player.claws.type);
+				player.arms.updateClaws(player.arms.claws.type);
 				changes++;
 			}
 			//Arms change to regular
@@ -1658,8 +1651,7 @@ package classes.Scenes.Places.Bazaar
 						break;
 					default:
 				}
-				player.arms.type = Arms.HUMAN;
-				mutations.updateClaws();
+				player.arms.restore();
 				changes++;
 			}
 			//Change legs to normal
@@ -1857,10 +1849,7 @@ package classes.Scenes.Places.Bazaar
 		public function echidnaTFs():void
 		{
 			var tfSource:String = "echidnaTFs";
-			changes = 0;
-			changeLimit = 3;
-			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
-			if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
+			mutations.initTransformation(null, 3);
 			var i:int = 0;
 			// Stats Changes
 			//------------

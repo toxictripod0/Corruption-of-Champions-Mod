@@ -14,14 +14,8 @@ public class ErlKingScene extends BaseContent implements Encounter {
 		protected function get changeLimit():int { return mutations.changeLimit; }
 		protected function set changeLimit(val:int):void { mutations.changeLimit = val; }
 
-	public function encounterName():String {
-		return "erlking";
-	}
-
-	public function encounterChance():Number {
-		return flags[kFLAGS.ERLKING_DISABLED] == 0 ? 2 : 0;
-	}
-
+	public function encounterName():String { return "erlking"; }
+	public function encounterChance():Number { return flags[kFLAGS.ERLKING_DISABLED] == 0 ? 2 : 0; }
 	public function execEncounter():void {
 			if (flags[kFLAGS.WILD_HUNT_ENCOUNTERS] == 0) firstWildHuntEncounter();
 			else if (player.hasKeyItem("Golden Antlers") < 0) repeatWildHuntEncounter();
@@ -30,10 +24,10 @@ public class ErlKingScene extends BaseContent implements Encounter {
 		}
 
 		public function playerHuntScore():int {
-//			trace("Calculating Wild Hunt score.");
-//			trace("Int + Spd = " + String(player.inte + player.spe));
+		//	trace("Calculating Wild Hunt score.");
+		//	trace("Int + Spd = " + String(player.inte + player.spe));
 			var baseVal:int = (player.inte + player.spe) - (player.fatigue - player.maxFatigue() + 100) * 2;
-//			trace("Base = " + baseVal);
+		//	trace("Base = " + baseVal);
 			/*
 			Conditional modifiers: +20 for Evade
                     +20 for Runner
@@ -116,7 +110,7 @@ public class ErlKingScene extends BaseContent implements Encounter {
 			//	trace("-10 for Taur");
 			}
 			if (baseVal < 0) baseVal = 0;
-//			if (debug) outputText("DEBUG: Wild Hunt Points = " + baseVal);
+		//	if (debug) outputText("DEBUG: Wild Hunt Points = " + baseVal);
 			return baseVal;
 		}
 
@@ -155,7 +149,8 @@ public class ErlKingScene extends BaseContent implements Encounter {
 					}
 					else outputText("  Your asshole twitches in response, aching to be filled.");
 				}
-			} doNext(firstWildHuntChaseII);
+			}
+			doNext(firstWildHuntChaseII);
 		}
 		private function firstWildHuntChaseII(waited:Boolean = false):void {
 			clearOutput();
@@ -251,7 +246,7 @@ public class ErlKingScene extends BaseContent implements Encounter {
 				doNext(repeatWildHuntGivenToTheHounds);
 //				menu();
 //				addButton(0, "Next", repeatWildHuntGivenToTheHounds);
-//				addButton(1, "FIGHT!", fightTheHounds); (If I have time)
+//				addButton(1, "FIGHT!", fightTheHounds); //if I have time
 			}
 		}
 
@@ -285,8 +280,8 @@ public class ErlKingScene extends BaseContent implements Encounter {
 			else outputText(" chin");
 			outputText(", turning it toward his massive, slimy dog cock.  You get a brief glimpse of a crystal-clear bead of pre before the tip is forced between your lips.\n\n");
 			if (player.hasVagina()) {
-				if (player.isGoo()) outputText(images.showImage("wildhunt-catched-female-goo"));
-				else if (player.tail.type == Tail.WOLF || player.tail.type == Tail.DOG) outputText(images.showImage("wildhunt-catched-female-canine"));
+				if (player.tail.type == Tail.WOLF || player.tail.type == Tail.DOG || player.tail.type == Tail.FOX) outputText(images.showImage("wildhunt-catched-female-canine"));
+				else if (player.isGoo()) outputText(images.showImage("wildhunt-catched-female-goo"));
 				else if (player.tail.type == Tail.DRACONIC) outputText(images.showImage("wildhunt-catched-female-dragon"));
 				else if (player.tail.type == Tail.SHARK) outputText(images.showImage("wildhunt-catched-female-shark"));
 				else if (player.tail.type == Tail.HORSE) outputText(images.showImage("wildhunt-catched-female-horse"));
@@ -294,8 +289,7 @@ public class ErlKingScene extends BaseContent implements Encounter {
 				else outputText(images.showImage("wildhunt-catched-female"));
 			}
 			else {
-				if (player.tail.type == Tail.DOG) outputText(images.showImage("wildhunt-catched-male-canine"));
-				else if (player.tail.type == Tail.WOLF) outputText(images.showImage("wildhunt-catched-male-wolf"));
+				if (player.tail.type == Tail.WOLF || player.tail.type == Tail.DOG || player.tail.type == Tail.FOX) outputText(images.showImage("wildhunt-catched-male-canine"));
 				else if (player.tail.type == Tail.DRACONIC) outputText(images.showImage("wildhunt-catched-male-dragon"));
 				else if (player.tail.type == Tail.SHARK) outputText(images.showImage("wildhunt-catched-male-shark"));
 				else if (player.tail.type == Tail.HORSE) outputText(images.showImage("wildhunt-catched-male-horse"));
@@ -307,7 +301,6 @@ public class ErlKingScene extends BaseContent implements Encounter {
 			player.buttChange(12 * 3, true, false, false);
 			outputText(" You yelp, realizing what’s to come, and try to wriggle away, but, pinned between the two Hounds, there’s no escape.  The Hounds growl in unison and you freeze, cowed by the two powerful males who want their way with your frightened, vulnerable body.\n\n");
 			outputText("After all, comes a thought in your fog-addled head, they’ve earned the right to do whatever they want to their prey.\n\n");
-
 			outputText("It doesn’t take the two dog men long.  They rock back and forth, shoving their thick cocks in and out of your submissive, helpless body.  The one in front grabs your head, burying your [face] into his crotch, so deep that your tongue licks against the throbbing bulge of his knot, your nose buried in the thick fur above his shaft.");
 			if (player.tail.type != Tail.NONE) outputText("  The Hound behind grabs you by [onetail], using it as a handhold as he thrusts over and over into your [asshole].");
 			else outputText("  The Hound behind grabs you by your [ass], thrusting into you again and again.");
@@ -375,7 +368,7 @@ public class ErlKingScene extends BaseContent implements Encounter {
 		}
 		public function takeNeonPinkEgg():void {
 			clearOutput();
-			outputText(images.showImage("item-egg-NP"));
+			outputText(images.showImage("item-egg-neon"));
 			inventory.takeItem(consumables.NPNKEGG, camp.returnToCampUseOneHour);
 		}
 		public function takeGoldenRing():void {
@@ -404,8 +397,7 @@ public class ErlKingScene extends BaseContent implements Encounter {
 			outputText("“<i>My poor hind,</i>” he mutters.  You feel his gloved hand on your head, running through your [hair] as your shoulders slump.  “<i>Perhaps I hounded you too fiercely,</i>” he murmurs, cupping your cheek.\n\n");
 			outputText("You shiver at his touch, completely broken.\n\n");
 			outputText(images.showImage("wildhunt-surrender-I"));
-			outputText("“<i>Look at me,</i>” he commands.  Completely obedient to the Hunter’s words, you look up, meeting his red-ember eyes.  “<i>I shall make amends,</i>” he says softly. \n\n");
-
+			outputText("“<i>Look at me,</i>” he commands.  Completely obedient to the Hunter’s words, you look up, meeting his red-ember eyes.  “<i>I shall make amends,</i>” he says softly.\n\n");
 			outputText("The words rumble through you, and you feel a warm heat building in your stomach.  Something about your arms and legs feel... off... but you can’t take your eyes away from the Erlking’s, not even when pain lances through your body, your muscles swelling, your [armor] tearing and falling away.  The Erlking releases his hold on you and you look down immediately at your body.\n\n");
 			if (player.hasFur()) outputText("Your fur turns jet black.");
 			else outputText("Black fur runs down your body like a tide coming in.");
@@ -415,7 +407,6 @@ public class ErlKingScene extends BaseContent implements Encounter {
 			outputText(" taut muscles fill in your entire frame.");
 			if (player.lowerBody.type == LowerBody.DOG) outputText("  Your doggie paws tingle as muscles build there, rebuilding them as stocky, athletic hound legs.");
 			else outputText("  Your [legs] bend and crack, making you howl in pain as they rebuild themselves as onyx-clawed canine paws.");
-
 			outputText("\n\nBetween your bestial legs, your genitals rearrange themselves.");
 			if (player.hasVagina() && !player.hasCock()) outputText("  Your clit swells to incredible size, throbbing a dull red, run through with purple veins.  You pant heavily, your tongue hanging out of your mouth, as the rest of your pussy closes, sealing as if it were never there, only to be replaced a moment later with the swelling of two massive testicles.");
 			else if (player.hasCock() && !player.hasVagina()) {
@@ -446,15 +437,13 @@ public class ErlKingScene extends BaseContent implements Encounter {
 			if (player.face.type != Face.DOG) outputText("  The world bends alarmingly as your nose pushes out, creating a black-furred muzzle where your mouth once was.");
 			outputText("  You whine, looking directly at your pointed dog cock, and the trickle of pre running from its tip, but even your");
 			if (player.face.type != Face.DOG) outputText(" new");
-			outputText(" muzzle and broad, flat tongue can’t reach it.\n\n");
-
-			outputText("The Erlking... The Master, your mind corrects itself.  The Master murmurs softly to you.  “<i>Patience, Hound,</i>” he commands, pressing a strong, gloved hand against your chest, holding you down on the ground.  You go still, submissive to the Master as he kneels next to your prone form.  His other hand grasps your dick slowly, and your mind melts.\n\n");
+			outputText(" muzzle and broad, flat tongue can’t reach it.");
+			outputText("\n\nThe Erlking... The Master, your mind corrects itself.  The Master murmurs softly to you.  “<i>Patience, Hound,</i>” he commands, pressing a strong, gloved hand against your chest, holding you down on the ground.  You go still, submissive to the Master as he kneels next to your prone form.  His other hand grasps your dick slowly, and your mind melts.\n\n");
 			outputText("You’re in absolute heaven as the Master pins you down, stroking your dick.  His gloved fingers work your shaft with elegant efficiency, running down your length, and squeezing in a delicious rhythm.  The hand on your chest stays firm, but runs through your fur, petting your broad, muscular chest.\n\n");
 			outputText("Your eyes roll back, tongue lolling as the Master squeezes the base of your cock.  Your");
 			if (!player.hasKnot()) outputText(" new");
-			outputText(" knot swells, and his firm hand on it feels sooo good.  At some point the two other Hounds have appeared, and you can feel, rather than see, their presence nearby.\n\n");
-
-			outputText("You whimper and groan in absolute bliss, and begin bucking without meaning to.  You want to stay still and submissive for the Master, but your body has other ideas.  You whine, wriggling and writhing against the Master’s hand.  He grunts, hand moving faster and faster, squeezing tighter around your doggie cock.\n\n");
+			outputText(" knot swells, and his firm hand on it feels sooo good.  At some point the two other Hounds have appeared, and you can feel, rather than see, their presence nearby.");
+			outputText("\n\nYou whimper and groan in absolute bliss, and begin bucking without meaning to.  You want to stay still and submissive for the Master, but your body has other ideas.  You whine, wriggling and writhing against the Master’s hand.  He grunts, hand moving faster and faster, squeezing tighter around your doggie cock.\n\n");
 			outputText("With a woods-shaking howl, you climax, spraying your belly and chest with cum.  Your limbs go wobbly, and your eyes cross, barely able to see the Master’s spooge-spattered hand in front of your face.  You know what he wants and you obediently clean his glove with your tongue, slurping down your own cum from his fingers.\n\n");
 			outputText("The Master stands up, and as you wobble to your feet, the two other Hounds move forwards, their broad tongue licking your chest, stomach, and dick, cleaning the cum from your fur.\n\n");
 			doNext(surrenderToTheHoundsIII);
@@ -465,7 +454,7 @@ public class ErlKingScene extends BaseContent implements Encounter {
 			outputText("<b>The Master sounds his horn, and your ears perk up.  Astride his horse, he gallops off into the fog-haunted woods, and, like the rest of the Hounds, you follow.</b>\n\n");
 			getGame().gameOver();
 //			menu();
-//			doNext(5025); // Find out the gameover shits
+//			doNext(5025); //find out the gameover shits
 		}
 
 		protected function predatoryPrey():void {
@@ -481,9 +470,9 @@ public class ErlKingScene extends BaseContent implements Encounter {
 					else if (player.isNaga()) outputText(" tail up, letting your coils wrap around his back.");
 					outputText("  One hand grasps firmly under your [ass], holding you up, while the other plays softly across your chest, squeezing and caressing each of your [chest] in turn.  He tweaks your nipples, one by one, sending shockwaves of pleasure through your body.\n\n");
 					outputText("“<i>Take me, Huntsman,</i>” you moan.  His shaft is already poised, his equine dick sliding up into your [vagina], pushing deep inside you.");
-					if (player.tail.type == Tail.DOG || player.tail.type == Tail.WOLF) outputText(images.showImage("wildhunt-prey-female-canine"));
+					if (player.tail.type == Tail.DOG || player.tail.type == Tail.WOLF || player.tail.type == Tail.FOX) outputText(images.showImage("wildhunt-prey-female-canine"));
 					else if (player.tail.type == Tail.DEER) outputText(images.showImage("wildhunt-prey-female-cervine"));
-					else if (player.tail.type == Tail.CAT) outputText(images.showImage("wildhunt-prey-male-feline"));
+					else if (player.tail.type == Tail.CAT) outputText(images.showImage("wildhunt-prey-female-feline"));
 					else outputText(images.showImage("wildhunt-prey-female"));
 					player.cuntChange(12 * 3, true, true, false);
 					outputText("\n\nYou gasp, shuddering in delight as he begins to push in and out of you.  His hands shift, holding you under the arms, fucking you against the tree.  The rough bark scratches your back as he thrusts deep inside you.  You feel the triple rings of his prepuce rubbing against your inner walls.\n\n");
@@ -498,10 +487,10 @@ public class ErlKingScene extends BaseContent implements Encounter {
 					else if (player.isNaga()) outputText(" tail up, letting your coils wrap around his back.");
 					outputText("  One hand grasps firmly under your [ass], holding you up, while the other plays softly across your chest, tweaking each nipple before trailing down your stomach, grasping [oneCock]\n\n");
 					outputText("“<i>Take me, Huntsman,</i>” you groan.  His shaft is already at your [ass].  His equine dick pushing up into your [asshole], pushing deep inside you.");
-					if (player.tail.type == Tail.DOG || player.tail.type == Tail.WOLF) outputText(images.showImage("wildhunt-prey-male-canine"));
+					if (player.tail.type == Tail.DOG || player.tail.type == Tail.WOLF || player.tail.type == Tail.FOX) outputText(images.showImage("wildhunt-prey-male-canine"));
 					else if (player.tail.type == Tail.DEER) outputText(images.showImage("wildhunt-prey-male-cervine"));
 					else if (player.tail.type == Tail.RABBIT) outputText(images.showImage("wildhunt-prey-male-bunny"));
-					else if (player.ears.type == Ears.HUMAN) outputText(images.showImage("wildhunt-prey-male-human"));
+					else if (player.tail.type == Tail.CAT) outputText(images.showImage("wildhunt-prey-male-feline"));
 					else outputText(images.showImage("wildhunt-prey-male"));
 					player.buttChange(12 * 3, true, true, false);
 					outputText("\n\nYou gasp, shuddering in delight as he begins to push in and out of you.  His hands shift, one at the small of your back, steadying you, fucking you against the tree.  The other squeezes tight around your dick, jacking you off, gloved hand stroking you roughly in time to his thrusts.  The coarse bark of the tree scratches at your back as you feel the triple rings of his prepuce rubbing against the inner walls of your [asshole].\n\n");
@@ -512,14 +501,12 @@ public class ErlKingScene extends BaseContent implements Encounter {
 				}
 			}
 			else {
-				outputText(images.showImage("wildhunt-prey-taur"));
 				outputText("The Erlking smiles at you, caressing your cheek.  “<i>I pride myself in keeping a proper stable,</i>” he says, delicately moving behind you.  With his strong hands on your flanks, he guides you to face up against a tree.\n\n");
 				if (player.hasVagina() && !player.hasCock()) {
-					outputText("With your [chest] against the rough bark, he lifts your [tail], exposing your [pussy] to the swelling head of his equine cock.  With a soft sound, he pushes between your lips, letting you feel each prepuce ring as they squeeze into you.");
+					outputText(images.showImage("wildhunt-prey-taur-female"));
+					outputText("With your [chest] against the rough bark, he lifts your [tail], exposing your [pussy] to the swelling head of his equine cock.  With a soft sound, he pushes between your lips, letting you feel each prepuce ring as they squeeze into you.  ");
 					player.cuntChange(12 * 3, true, true, false);
-					outputText("\n\n");
-
-					outputText("You wrap your arms around the trunk of the tree as his hands grip your flanks.  His own equine legs begin thrusting him against you, his ribbed cock sliding in and out of your [pussy], the ridges of his horselike shaft massaging you from the inside.  The force of his fucking grinds your [chest] against the tree.");
+					outputText("\n\nYou wrap your arms around the trunk of the tree as his hands grip your flanks.  His own equine legs begin thrusting him against you, his ribbed cock sliding in and out of your [pussy], the ridges of his horselike shaft massaging you from the inside.  The force of his fucking grinds your [chest] against the tree.");
 					if (player.biggestLactation() > 0) outputText("  The friction begins milking you, making you ooze milk down the trunk.");
 					outputText("  The mild pain of abrasion couples with the pleasure of his forceful fucking and you feel your climax approaching.\n\n");
 					outputText("With a moan, you cum, hugging the tree with all your might, thrusting back with your hindquarters.  With gentlemanly demeanor, the Erlking continues pumping his thick cock in and out of you until your orgasm recedes.  He then cums himself, filling your insides with his hot spunk.\n\n");
@@ -528,6 +515,7 @@ public class ErlKingScene extends BaseContent implements Encounter {
 					outputText("You wake up an hour later in the clearing, the Erlking gone and your chest unmarred.  You blink, sleepily, still feeling the Erlking’s arms around you and shakily climb to your feet, making your way back to camp.\n\n");
 				}
 				else if (player.hasCock()) {
+					outputText(images.showImage("wildhunt-prey-taur-male"));
 					outputText("With your [chest] against the rough bark, he crouches at your side, taking your already stiffening [oneCock] in his gloved hand.  From this angle, you feel, rather than see the cream he lathers on your [cock], working you to full hardness. One hand strokes your flank soothingly as the other wraps around your [cock], stroking you in his strong grip.\n\n");
 					outputText("You pant, fingertips gripping the bark of the tree as he jacks you off.  Your tongue lolls out as his gloved hand grips you firmly, moving faster and faster as he works his way up and down your length.  Whatever lube he used is incredible, and you feel a tingle on every down and up stroke.\n\n");
 					outputText("You can’t get enough of this feeling - being milked by the Erlking.  He even seems to be humming under his breath as he strokes your side and works you with deft fingers.  It’s like he’s calming some rutting stallion!  Your leg stamps reflexively, your [tail] swishing as your body announces your intent to cum.\n\n");
@@ -554,7 +542,7 @@ public class ErlKingScene extends BaseContent implements Encounter {
 			outputText("“<i>Please... my cane...</i>” he pleads.  On his knees, his trembling arms hold him up.  He seems to be telling the truth - without the cane, he’s as weak as a newborn.\n\n");
 			outputText("“<i>You taunt me, you hunt me, and now you ask for favors?</i>”  you snort.  “<i>No, no, you’re about to be taught a very lasting lesson,</i>” you snarl.\n\n");
 			outputText("“<i>What do yo-</i>” begins the Erlking, looking up at you.  You slap his face, cutting off the end of the question.\n\n");
-			doNext (howDareYouII);
+			doNext(howDareYouII);
 		}
 		protected function howDareYouII():void {
 			clearOutput();
@@ -585,7 +573,6 @@ public class ErlKingScene extends BaseContent implements Encounter {
 				outputText("He shivers below you, tensing, as he grinds his hips back against you on every downstroke.  He bucks and moans, and you hear a splashing noise from beneath him.  From the looks of the sticky white pool growing, the slut is shooting his load HARD.\n\n");
 				outputText("The sight of his total submission turns you on so much that you shudder, cumming deep inside his ass, filling him up with your hot, sticky seed.  As you grip his ass, you pant, driving in as deep as possible, marking him as your bitch forever.\n\n");
 				outputText("He moans, slumping down, cheek to the ground, and you bend over him, grinding his face to the ground.\n\n");
-
 				outputText("“<i>Dirty little slut,</i>” you growl.  “<i>Did you like that?</i>”\n\n");
 				outputText("“<i>Y-yes...</i>” purrs the once-Lord.  “<i>I... I loved it...</i>” He shudders again, and you notice that the lighter fur is no illusion.  Your new doe princess is no longer midnight black, but a sandy-tan, and still slowly lightening.\n\n");
 				outputText("“<i>I don’t expect we’ll have any more problems, will we?</i>” you ask, sliding out of him.  You rise, watching as his fur takes on a curiously pink hue.\n\n");
@@ -626,13 +613,13 @@ public class ErlKingScene extends BaseContent implements Encounter {
 			if (flags[kFLAGS.TIMES_ENCOUNTERED_PRINCESS_GWYNN] == 0) {
 				outputText("“<i>I’m so happy you helped me get rid of that nasty old cane,</i>” she says, waving a pink-furred arm vaguely at the forest.  “<i>It may have kept out the corruption, but it was giving me a </i>weird<i> idea of fun,</i>” she bubbles.  “<i>No more hunting for me - no, sir!</i>”\n\n");
 				outputText("She touches her white fingers to her chest and purrs demurely, “<i>You can call me Gwynn, now.  But I’ll still be your princess!</i>”\n\n");
-			} flags[kFLAGS.TIMES_ENCOUNTERED_PRINCESS_GWYNN]++;
+			}
+			flags[kFLAGS.TIMES_ENCOUNTERED_PRINCESS_GWYNN]++;
 			outputText("“<i>What can I do to repay you?</i>” Gwynn chirps cutely, kissing your cheek.  ");
 			if (player.hasCock()) outputText("“<i>I could suck your dick, or you could fuck my princess pussy, or ");
 			else outputText("“<i>")
 			if (player.hasVagina()) outputText("I could eat your pussy, ");
 			outputText(" or I could share some of my special potion with you,</i>” she counts the options off on her slim fingers.\n\n");
-
 			outputText("You run through the options in your head, even briefly considering ‘getting some of her potion’ on your own terms.\n\n");
 			menu();
 			addDisabledButton(0, "Suck Me");
@@ -652,7 +639,8 @@ public class ErlKingScene extends BaseContent implements Encounter {
 			clearOutput();
 			var x:int = 0;
 			if (player.cocks[x].cockType == CockTypesEnum.HORSE) outputText(images.showImage("wildhunt-princess-orally-horse"));
-			else if (player.cocks[x].cockType == CockTypesEnum.WOLF) outputText(images.showImage("wildhunt-princess-orally-wolf"));
+			else if (player.cocks[x].cockType == CockTypesEnum.WOLF || player.cocks[x].cockType == CockTypesEnum.DOG || player.cocks[x].cockType == CockTypesEnum.FOX) outputText(images.showImage("wildhunt-princess-orally-canine"));
+			else if (player.cocks[x].cockType == CockTypesEnum.DRAGON) outputText(images.showImage("wildhunt-princess-orally-dragon"));
 			else if (player.lowerBody.type == LowerBody.CLOVEN_HOOFED) outputText(images.showImage("wildhunt-princess-orally-deer"));
 			else if (player.lowerBody.type == LowerBody.HOOFED) outputText(images.showImage("wildhunt-princess-orally-bovine"));
 			else outputText(images.showImage("wildhunt-princess-orally"));
@@ -663,7 +651,7 @@ public class ErlKingScene extends BaseContent implements Encounter {
 			outputText("“<i>Oooooo...</i>” she moans, shivering in delight, her tongue lapping at the dripping cum, her fingers delicately wiping the thick spooge from her cheeks and depositing it in her mouth.  You notice that she’s shoved two of her slim fingers up her cute, perky ass as she slurps away at your spilled seed.\n\n");
 			outputText("Satisfied, you pat her head, ruffling her short, pink hair, leaving her happy and smiling.\n\n");
 			outputText("“<i>Thank you, M’lord!</i>” she calls as you walk off.\n\n");
-			dynStats("lib+", 2, "lus=", 0); //[Libido + 2]
+			dynStats("lib+", 2, "lus=", 0); //libido + 2
 			player.orgasm('Dick');
 			menu();
 			doNext(camp.returnToCampUseOneHour);
@@ -679,8 +667,10 @@ public class ErlKingScene extends BaseContent implements Encounter {
 			if (player.cocks[x].cockType == CockTypesEnum.TENTACLE) outputText(images.showImage("wildhunt-princess-anally-tentacle"));
 			else if (player.cocks[x].cockType == CockTypesEnum.LIZARD) outputText(images.showImage("wildhunt-princess-anally-lizard"));
 			else if (player.cocks[x].cockType == CockTypesEnum.DRAGON) outputText(images.showImage("wildhunt-princess-anally-dragon"));
+			else if (player.tail.type == Tail.DEER) outputText(images.showImage("wildhunt-princess-anally-cervine"));
 			else if (player.cocks[x].cockType == CockTypesEnum.HORSE) outputText(images.showImage("wildhunt-princess-anally-horse"));
 			else if (player.cocks[x].cockType == CockTypesEnum.HUMAN) outputText(images.showImage("wildhunt-princess-anally-human"));
+			else if (player.cocks[x].cockType == CockTypesEnum.RHINO) outputText(images.showImage("wildhunt-princess-anally-rhino"));
 			else if (player.cocks[x].cockType == CockTypesEnum.CAT) outputText(images.showImage("wildhunt-princess-anally-feline"));
 			else if (player.cocks[x].cockType == CockTypesEnum.DOG) outputText(images.showImage("wildhunt-princess-anally-canine"));
 			else if (player.cocks[x].cockType == CockTypesEnum.WOLF) {
@@ -691,7 +681,7 @@ public class ErlKingScene extends BaseContent implements Encounter {
 			outputText("“<i>Oh Master, yes!  Fuck my lovely cunt!</i>” she moans as you bury yourself inside her.  Her hole twitches and tightens, and you realize you needn’t have worried.  As you begin thrusting in and out of her, her hole begins squeezing tighter and tighter around your cock.  Her ass milks your dick as you plunge deep inside her and draw out.\n\n");
 			outputText("She moans and purrs, eyes rolled back and tongue hanging out as you have your way with her.  When you finally cum, her pink-and-white cock spills out her own load, strangely raspberry-scented, onto the forest floor.  Her hole doesn’t stop squeezing you, and continues to milk you until you’re completely spent.\n\n");
 			outputText("You withdraw from her and she sits up, giggling, spinning on her knees to slurp at your cock, cleaning you off.  Just as when you first turned her, she cleans you completely, then helps you dress, giggling happily as you kiss her cheek farewell.\n\n");
-			dynStats("sen-", 2, "lus=", 0); //[Sensitivity -2]
+			dynStats("sen-", 2, "lus=", 0); //sensitivity -2
 			player.orgasm('Dick');
 			menu();
 			doNext(camp.returnToCampUseOneHour);
@@ -699,7 +689,9 @@ public class ErlKingScene extends BaseContent implements Encounter {
 
 		protected function gwynnNomsDaCunts():void {
 			clearOutput();
-			outputText(images.showImage("wildhunt-princess-lickgina"));
+			if (player.vaginas[0].vaginalLooseness == VaginaClass.LOOSENESS_LEVEL_CLOWN_CAR && player.tail.type == Tail.DRACONIC) outputText(images.showImage("wildhunt-princess-lickgina-dragon"));
+			else if (player.vaginas[0].type == VaginaClass.EQUINE) outputText(images.showImage("wildhunt-princess-lickgina-equine"));
+			else outputText(images.showImage("wildhunt-princess-lickgina"));
 			outputText("“<i>Yes Ma’am,</i>” she says, licking her lips.  She points to a nearby stump, gesturing for you to have a seat on the soft moss.  As you do, she wastes no time in dropping her pink muzzle to your pussy.\n\n");
 			outputText("Her tongue eagerly plunges between your folds, running up and down the length of your pussy. Each time her muzzle bobs up, her candy-pink nose rubs against your clit, and she purrs, closing her eyes and nuzzling it.  She slowly laps at your slit, gradually building speed.\n\n");
 			outputText("You sigh happily, bracing yourself with your arms and leaning back.  Princess Gwynn slurps noisily at your muff, her tongue moving faster and faster.  You gasp, pleasure building in your whole body as she withdraws her tongue from your pussy, wrapping her lips around your pleasure button.\n\n");
@@ -708,7 +700,7 @@ public class ErlKingScene extends BaseContent implements Encounter {
 			if (player.hasBreasts()) outputText(" between your breasts");
 			outputText(" to see her smiling and elegantly licking her slim fingers clean. You shudder as she begins lapping at your pussy, cleaning you methodically.");
 			outputText("When you can finally move again, Princess is kneeling next to you obediently.  She closes her eyes, smiling as you pat her head, ruffling her pink hair.  When you stand, she rises to help dress you, blowing you a kiss as you leave the forest behind.\n\n");
-			dynStats("sen-", 2, "lib+", 2, "lus=", 0); //[Sensitivity -2, Libido +2]
+			dynStats("sen-", 2, "lib+", 2, "lus=", 0); //sensitivity -2, libido +2
 			player.orgasm('Vaginal');
 			menu();
 			doNext(camp.returnToCampUseOneHour);
@@ -728,7 +720,7 @@ public class ErlKingScene extends BaseContent implements Encounter {
 			outputText("Her cock spurts into her own mouth, immediately ballooning out her cheeks.  Her eyes roll back in her head as she gurgles around her cock.  Slightly-pink, raspberry-scented cum spills out from her pouty lips, as she coughs and nearly chokes on her own cum.\n\n");
 			outputText("You drop her tail, letting it thump to the ground, her hooves digging tiny furrows in the dirt as her cock arcs out a trail of thick spooge down her flat chest.  She moans, pink spooge drooling out from her mouth.  You watch, both amused and surprised, as her first act upon regaining her senses is to begin scooping up her own cum and licking it off her fingers.\n\n");
 			outputText("Satisfied that she’ll be fine, you stand up, leaving the slutty doe to clean herself up.\n\n");
-			dynStats("lus+", 20, "lib+", 2); //[Lust +20, Libido +2]
+			dynStats("lus+", 20, "lib+", 2); //lust +20, libido +2
 			menu();
 			doNext(camp.returnToCampUseOneHour);
 		}
@@ -757,18 +749,13 @@ public class ErlKingScene extends BaseContent implements Encounter {
 			var tfSource:String = "deerTFs";
 			var temp:int = 0;
 			var x:int = 0;
-			changes = 0;
-			changeLimit = 2;
-			if (rand(2) == 0) changeLimit++;
-			if (rand(3) == 0) changeLimit++;
-			if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
-			if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
+			mutations.initTransformation([2, 3], 2);
 			//Main TFs
-			if (player.neck.type != Neck.NORMAL && changes < changeLimit && rand(4) == 0) //Neck restore
+			if (player.neck.type != Neck.NORMAL && changes < changeLimit && rand(4) == 0) //neck restore
 				mutations.restoreNeck(tfSource);
-			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) //Rear body restore
+			if (player.hasNonSharkRearBody() && changes < changeLimit && rand(5) == 0) //rear body restore
 				mutations.restoreRearBody(tfSource);
-			if (rand(5) == 0) //Ovi perk loss
+			if (rand(5) == 0) //ovi perk loss
 				mutations.updateOvipositionPerk(tfSource);
 			if (rand(3) == 0 && changes < changeLimit && player.ears.type != Ears.DEER) {
 				if (player.ears.type == -1) outputText("\n\nTwo painful lumps sprout on the top of your head, forming into tear-drop shaped ears, covered with short fur.  ");
@@ -776,38 +763,37 @@ public class ErlKingScene extends BaseContent implements Encounter {
 				if (player.ears.type == Ears.DOG) outputText("\n\nYour ears change shape, morphing into from their doglike shape into deer-like ears!  ");
 				if (player.ears.type > Ears.DOG) outputText("\n\nYour ears change shape, morphing into teardrop-shaped deer ears!  ");
 				outputText("<b>You now have deer ears.</b>");
-				player.ears.type = Ears.DEER; //Gain deer ears
+				player.ears.type = Ears.DEER; //gain deer ears
 				changes++;
 			}
 			if (rand(3) == 0 && changes < changeLimit && player.ears.type == Ears.DEER && player.tail.type != Tail.DEER) {
 				outputText("\n\nYou feel a tightening just above your ass, as if a massive hand was pinching you.  It releases with a curious “pomf”-ing noise.  You turn this way and that, finally managing to crane your neck to see your <b>fluffy, flicking deer tail.</b>");
-				player.tail.type = Tail.DEER; //Gain deer tail
+				player.tail.type = Tail.DEER; //gain deer tail
 				changes++;
 			}
-			//Gain deer horns AKA antlers
 			if (rand(3) == 0 && changes < changeLimit && player.horns.type == Horns.NONE) {
 				outputText("\n\nYou feel an immense pressure from your forehead, and you reach up, feeling the nubs of two new horns.");
-				player.horns.type = Horns.ANTLERS;
+				player.horns.type = Horns.ANTLERS; //gain deer horns AKA antlers
 				player.horns.value = 1;
 				changes++;
 			}
 			if (rand(3) == 0 && changes < changeLimit && player.horns.value > 0 && player.horns.type != Horns.ANTLERS) {
 				outputText("\n\nYou feel a strange twisting sensation from your horns as they extend outwards.  You reach up to feel them and realize that you’ve now got <b>pronged, stag-like horns.</b>");
-				player.horns.type = Horns.ANTLERS;
+				player.horns.type = Horns.ANTLERS; //gain deer horns AKA antlers
 				player.horns.value = 4;
 				changes++;
 			}
 			if (rand(3) == 0 && changes < changeLimit && player.horns.type == Horns.ANTLERS && player.horns.value < 30) {
 				outputText("\n\nYou feel a strange twisting sensation from your antlers as they extend and split outwards.  You reach up to feel them and realize that your antlers are now even more branched out.");
 				if (player.horns.value < 20 && rand(2) == 0) player.horns.value += (1 + rand(4));
-				player.horns.value++; //Increase points on deer antlers
+				player.horns.value++; //increase points on deer antlers
 				outputText("  After counting the number of points you have on your antlers, <b>you have " + player.horns.value + " points.</b>");
 				if (player.horns.value >= 30) outputText("<b>  It seems that your antlers can't get any more pointier.</b>");
 				changes++;
 			}
 			if (rand(4) == 0 && changes < changeLimit && player.horns.value > 0 && !player.hasFur()) {
 				outputText("\n\nFor a moment, it looks like a ray of sunlight has shimmered through the canopy. You blink and realize that your fur has become dappled, with lighter, sun-speckled spots highlighting it.");
-				player.skin.type = Skin.FUR; //Gain fur
+				player.skin.type = Skin.FUR; //gain fur
 				player.skin.adj = "";
 				player.skin.desc = "fur";
 				player.skin.furColor = "brown";
@@ -817,33 +803,32 @@ public class ErlKingScene extends BaseContent implements Encounter {
 			}
 			if (rand(3) == 0 && changes < changeLimit && player.ears.type == Ears.DEER && (player.face.type != Face.HUMAN && player.face.type != Face.DEER)) {
 				outputText("\n\nYour face grows warm as suddenly your vision is engulfed in smoke, coughing and beating the smoke back you noticed a marked change in your features. Touching yourself you confirm you have a <b>normal human shaped face once again</b>.");
-				player.face.type = Face.HUMAN; //Change face to human
+				player.face.type = Face.HUMAN; //change face to human
 				changes++;
 			}
 			if (rand(4) == 0 && changes < changeLimit && player.hasFur() && player.ears.type == Ears.DEER && player.tail.type == Tail.DEER && player.face.type != Face.DEER) {
 				outputText("\n\nYou feel a grinding noise from your jaw, and a massive pressure in your sinuses, as your cheeks pinch in, followed immediately by a pointing of the lower half of your face.  You frantically (and gently) feel your face, discovering, to your surprise, that you’ve <b>gained the delicate facial features of a deer.</b>");
-				player.face.type = Face.DEER; //Gain deer face
+				player.face.type = Face.DEER; //gain deer face
 				changes++;
 			}
 			if (rand(4) == 0 && changes < changeLimit && player.ears.type == Ears.DEER && player.tail.type == Tail.DEER && player.hasFur() && player.lowerBody.type != LowerBody.CLOVEN_HOOFED) {
 				if (player.lowerBody.type == LowerBody.HOOFED)
 					 outputText("\n\nYou feel a sharp stinging sensation from your hooves, accompanied by a loud CRACK.  You look down in alarm, prancing from one hooved foot to another, realizing that your solid, heavy hooves have been replaced with delicate, cloven hooves.  You squint, also noting a subtle thinness across your legs in general--if you had to guess, you’d hazard that you’re looking <b>more deer-like than horse-like</b>.");
 				else outputText("\n\nYou feel a strange tightness from your feet and nearly topple over as your balance shifts.  You’re balancing on your toes for some reason.  You look down in amazement as your legs slim and lengthen, your feet elongating and darkening at the ends until you’re balancing on <b>two, graceful deer legs</b>.");
-				player.lowerBody.type = LowerBody.CLOVEN_HOOFED; //Change legs to cloven hooves
+				player.lowerBody.type = LowerBody.CLOVEN_HOOFED; //change legs to cloven hooves
 				if (!player.isTaur() && !player.isBiped()) player.lowerBody.legCount = 2;
 				changes++;
 			}
 			//Genital Changes
-			//Morph dick to horsediiiiick
-			if (rand(3) == 0 && changes < changeLimit && player.cocks.length > 0) {
-				var selectedCockValue:int = -1; //Changed as selectedCock and i caused duplicate var warnings
+			if (rand(3) == 0 && changes < changeLimit && player.cocks.length > 0) { //morph dick to horsediiiiick
+				var selectedCockValue:int = -1; //changed as selectedCock and i caused duplicate var warnings
 				for (var indexI:int = 0; indexI < player.cocks.length; indexI++) {
 					if (player.cocks[indexI].cockType != CockTypesEnum.HORSE) { selectedCockValue = indexI; break; }
 				}
 				if (selectedCockValue != -1) {
-					if (player.cocks[selectedCockValue].cockType == CockTypesEnum.HUMAN || player.cocks[selectedCockValue].cockType.Index > 2) //Text for humandicks or others
+					if (player.cocks[selectedCockValue].cockType == CockTypesEnum.HUMAN || player.cocks[selectedCockValue].cockType.Index > 2) //text for humandicks or others
 						outputText("\n\nYour " + player.cockDescript(selectedCockValue) + " begins to feel strange... you pull down your pants to take a look and see it darkening as you feel a tightness near the base where your skin seems to be bunching up.  A sheath begins forming around your cock's base, tightening and pulling your cock inside its depths.  A hot feeling envelops your member as it suddenly grows into a horse penis, dwarfing its old size.  The skin is mottled brown and black and feels more sensitive than normal.  Your hands are irresistibly drawn to it, and you jerk yourself off, splattering cum with intense force.");
-					if (player.cocks[selectedCockValue].cockType == CockTypesEnum.DOG) //Text for dogdicks
+					if (player.cocks[selectedCockValue].cockType == CockTypesEnum.DOG) //text for dogdicks
 						outputText("\n\nYour " + Appearance.cockNoun(CockTypesEnum.DOG) + " begins to feel odd...  You pull down your clothes to take a look and see it darkening.  You feel a growing tightness in the tip of your " + Appearance.cockNoun(CockTypesEnum.DOG) + " as it flattens, flaring outwards.  Your cock pushes out of your sheath, inch after inch of animal-flesh growing beyond its traditional size.  You notice your knot vanishing, the extra flesh pushing more fresh horsecock out from your sheath.  <b>Your hands are drawn to the strange new " + Appearance.cockNoun(CockTypesEnum.HORSE) + "</b>, and you jerk yourself off, splattering thick ropes of cum with intense force.");
 					player.cocks[selectedCockValue].cockType = CockTypesEnum.HORSE;
 					player.increaseCock(selectedCockValue, 4);
@@ -862,7 +847,8 @@ public class ErlKingScene extends BaseContent implements Encounter {
 			if (rand(3) == 0 && player.thickness > 20) {
 				if (player.thickness > 50) player.modThickness(20, 2 + rand(3));
 				else player.modThickness(20, 2);
-			} flags[kFLAGS.TIMES_TRANSFORMED] += changes;
+			}
+			flags[kFLAGS.TIMES_TRANSFORMED] += changes;
 		}
 	}
 }
