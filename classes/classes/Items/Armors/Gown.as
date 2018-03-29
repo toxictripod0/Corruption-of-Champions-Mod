@@ -10,6 +10,7 @@ package classes.Items.Armors
 	import classes.lists.Gender;
 	import classes.lists.BreastCup;
 	import classes.CoC;
+	import classes.Items.MutationsHelper;
 
 	public class Gown extends Armor implements TimeAwareInterface {
 
