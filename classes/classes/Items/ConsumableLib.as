@@ -69,19 +69,19 @@ package classes.Items {
 		public const SMTH_LN:BodyLotion = new BodyLotion("SmthLtn", "Smooth", "smooth thick creamy liquid");
 //		EGGS
 		//Small
-		public const BLACKEG:SimpleConsumable = mk("BlackEg","BlackEg", "a rubbery black egg", curry(m.blackRubberEgg, false), "This is an oblong egg, not much different from a chicken egg in appearance (save for the color).  Something tells you it's more than just food.");
-		public const BLUEEGG:SimpleConsumable = mk("BlueEgg","BlueEgg", "a blue and white mottled egg", curry(m.blueEgg, false), "This is an oblong egg, not much different from a chicken egg in appearance (save for the color).  Something tells you it's more than just food.");
-		public const BROWNEG:SimpleConsumable = mk("BrownEg","BrownEg", "a brown and white mottled egg", curry(m.brownEgg, false), "This is an oblong egg, not much different from a chicken egg in appearance (save for the color).  Something tells you it's more than just food.");
-		public const PINKEGG:SimpleConsumable = mk("PinkEgg","PinkEgg", "a pink and white mottled egg", curry(m.pinkEgg, false),"This is an oblong egg, not much different from a chicken egg in appearance (save for the color).  Something tells you it's more than just food.");
-		public const PURPLEG:SimpleConsumable = mk("PurplEg","PurplEg", "a purple and white mottled egg", curry(m.purpleEgg, false),"This is an oblong egg, not much different from a chicken egg in appearance (save for the color).  Something tells you it's more than just food.");
-		public const WHITEEG:SimpleConsumable = mk("WhiteEg", "WhiteEg", "a milky-white egg", curry(m.whiteEgg, false), "This is an oblong egg, not much different from a chicken egg in appearance.  Something tells you it's more than just food.");
+		public const BLACKEG:Consumable = new BlackRubberEgg(BlackRubberEgg.SMALL);
+		public const BLUEEGG:Consumable = new BlueEgg(BlueEgg.SMALL);
+		public const BROWNEG:Consumable = new BrownEgg(BrownEgg.SMALL);
+		public const PINKEGG:Consumable = new PinkEgg(PinkEgg.SMALL);
+		public const PURPLEG:Consumable = new PurpleEgg(PurpleEgg.SMALL);
+		public const WHITEEG:Consumable = new WhiteEgg(WhiteEgg.SMALL);
 		//Large
-		public const L_BLKEG:SimpleConsumable = mk("L.BlkEg","L.BlkEg", "a large rubbery black egg", curry(m.blackRubberEgg, true), "This is an oblong egg, not much different from an ostrich egg in appearance (save for the color).  Something tells you it's more than just food.  For all you know, it could turn you into rubber!");
-		public const L_BLUEG:SimpleConsumable = mk("L.BluEg","L.BluEg", "a large blue and white mottled egg", curry(m.blueEgg, true),"This is an oblong egg, not much different from an ostrich egg in appearance (save for the color).  Something tells you it's more than just food.");
-		public const L_BRNEG:SimpleConsumable = mk("L.BrnEg","L.BrnEg", "a large brown and white mottled egg", curry(m.brownEgg, true),"This is an oblong egg, not much different from an ostrich egg in appearance (save for the color).  Something tells you it's more than just food.");
-		public const L_PNKEG:SimpleConsumable = mk("L.PnkEg","L.PnkEg", "a large pink and white mottled egg", curry(m.pinkEgg, true),"This is an oblong egg, not much different from an ostrich egg in appearance (save for the color).  Something tells you it's more than just food.");
-		public const L_PRPEG:SimpleConsumable = mk("L.PrpEg","L.PrpEg", "a large purple and white mottled egg", curry(m.purpleEgg, true),"This is an oblong egg, not much different from an ostrich egg in appearance (save for the color).  Something tells you it's more than just food.");
-		public const L_WHTEG:SimpleConsumable = mk("L.WhtEg","L.WhtEg", "a large white egg", curry(m.whiteEgg, true), "This is an oblong egg, not much different from an ostrich egg in appearance.  Something tells you it's more than just food.");
+		public const L_BLKEG:Consumable = new BlackRubberEgg(BlackRubberEgg.LARGE);
+		public const L_BLUEG:Consumable = new BlueEgg(BlueEgg.LARGE);
+		public const L_BRNEG:Consumable = new BrownEgg(BrownEgg.LARGE);
+		public const L_PNKEG:Consumable = new PinkEgg(PinkEgg.LARGE);
+		public const L_PRPEG:Consumable = new PurpleEgg(PurpleEgg.LARGE);
+		public const L_WHTEG:Consumable = new WhiteEgg(WhiteEgg.LARGE);
 		//Others
 		public const DRGNEGG:Consumable = new EmberEgg();
 		public const NPNKEGG:Consumable = new NeonPinkEgg();
