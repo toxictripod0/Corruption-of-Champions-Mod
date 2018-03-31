@@ -1,10 +1,9 @@
 /**
  * Created by aimozg on 10.01.14.
  */
-package classes.Items {
+package classes.Items
+{
 	import classes.BaseContent;
-	import classes.CoC;
-	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Items.Consumables.*;
 	import classes.Player;
 
@@ -211,7 +210,6 @@ package classes.Items {
 
 		public const LARGE_EGGS:Array = [L_BLKEG,L_BLUEG,L_BRNEG,L_PNKEG,L_PRPEG,L_WHTEG];
 		public const SMALL_EGGS:Array = [BLACKEG,BLUEEGG,BROWNEG,PINKEGG,PURPLEG,WHITEEG];
-		private function get m():Mutations { return Mutations.init(); }
 		/**
 		 * A handy function to create SimpleConsumables (useable by any player, effect is a function accepting player:Player,
 		 * shortName, longName, description and value are const)
