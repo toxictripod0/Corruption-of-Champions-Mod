@@ -45,6 +45,7 @@ package classes.Items.Consumables
 					description = "A yellow, fibrous, tubular pod.  A split in the end reveals many lumpy, small seeds inside."
 					             +" The smell of mild fermentation wafts from them. It glows slightly from Lumi's enhancements.";
 					value = ConsumableLib.DEFAULT_VALUE;
+					break;
 
 				default: // Remove this if someone manages to get SonarQQbe to not whine about a missing default ... ~Stadler76
 			}

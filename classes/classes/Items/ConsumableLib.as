@@ -13,14 +13,14 @@ package classes.Items {
 		public static const DEFAULT_VALUE:Number = 6;
 //		DEMONIC POTIONS
 		//Tainted
-		public const INCUBID:SimpleConsumable = mk("IncubiD","IncubiD", "an Incubi draft", curry(m.incubiDraft, true), "The cork-topped flask swishes with a slimy looking off-white fluid, purported to give incubi-like powers.  A stylized picture of a humanoid with a huge penis is etched into the glass.");
+		public const INCUBID:Consumable = new IncubiDraft(IncubiDraft.TAINTED);
 		public const S_DREAM:Consumable = new SuccubisDream();
-		public const SDELITE:SimpleConsumable = mk("SDelite","S.Delite", "a bottle of 'Succubi's Delight'", curry(m.succubisDelight, true),"This precious fluid is often given to men a succubus intends to play with for a long time.");
-		public const SUCMILK:SimpleConsumable = mk("SucMilk","SucMilk", "a bottle of Succubi milk", curry(m.succubiMilk, true), "This milk-bottle is filled to the brim with a creamy white milk of dubious origin.  A pink label proudly labels it as \"<i>Succubi Milk</i>\".  In small text at the bottom of the label it reads: \"<i>To bring out the succubus in YOU!</i>\"");
+		public const SDELITE:Consumable = new SuccubisDelight(SuccubisDelight.TAINTED);
+		public const SUCMILK:Consumable = new SuccubiMilk(SuccubiMilk.TAINTED);
 		//Untainted
-		public const P_DRAFT:SimpleConsumable = mk("P.Draft","P.Draft", "an untainted Incubi draft", curry(m.incubiDraft, false), "The cork-topped flask swishes with a slimy looking off-white fluid, purported to give incubi-like powers.  A stylized picture of a humanoid with a huge penis is etched into the glass. Rathazul has purified this to prevent corruption upon use.", 20);
-		public const P_S_MLK:SimpleConsumable = mk("P.S.Mlk","P.S.Mlk", "an untainted bottle of Succubi milk", curry(m.succubiMilk, false), "This milk-bottle is filled to the brim with a creamy white milk of dubious origin.  A pink label proudly labels it as \"<i>Succubi Milk</i>\".  In small text at the bottom of the label it reads: \"<i>To bring out the succubus in YOU!</i>\"  Purified by Rathazul to prevent corruption.", 20);
-		public const PSDELIT:SimpleConsumable = mk("PSDelit","PSDelit", "an untainted bottle of \"Succubi's Delight\"", curry(m.succubisDelight, false),  "This precious fluid is often given to men a succubus intends to play with for a long time.  It has been partially purified by Rathazul to prevent corruption.", 20);
+		public const P_DRAFT:Consumable = new IncubiDraft(IncubiDraft.PURIFIED);
+		public const P_S_MLK:Consumable = new SuccubiMilk(SuccubiMilk.PURIFIED);
+		public const PSDELIT:Consumable = new SuccubisDelight(SuccubisDelight.PURIFIED);
 //		DYES
 		public const AUBURND:HairDye = new HairDye("AuburnD", "Auburn");
 		public const BLACK_D:HairDye = new HairDye("Black D", "Black");
@@ -84,7 +84,9 @@ package classes.Items {
 		public const L_WHTEG:SimpleConsumable = mk("L.WhtEg","L.WhtEg", "a large white egg", curry(m.whiteEgg, true), "This is an oblong egg, not much different from an ostrich egg in appearance.  Something tells you it's more than just food.");
 		//Others
 		public const DRGNEGG:Consumable = new EmberEgg();
-		public const NPNKEGG:SimpleConsumable = mk("NPnkEgg","NPnkEgg", "a neon pink egg", curry(m.neonPinkEgg,false), "This is an oblong egg with an unnatural neon pink coloration.  It tingles in your hand with odd energies that make you feel as if you could jump straight into the sky.");
+		public const NPNKEGG:Consumable = new NeonPinkEgg();
+		public const NPEPREG:Consumable = new NeonPinkEgg(true);
+
 //		FOOD & BEVERAGES
 		public const BC_BEER:SimpleConsumable = mk("BC Beer", "BC Beer", "a mug of Black Cat Beer", function(player:Player):void { getGame().telAdre.niamh.blackCatBeerEffects(player) }, "A capped mug containing an alcoholic drink secreted from the breasts of Niamh.  It smells tasty.", 1);
 		public const BHMTCUM:Consumable = new BehemothCum();
@@ -97,9 +99,9 @@ package classes.Items {
 		public const H_BISCU:Consumable = new HardBiscuits();
 		public const IZYMILK:Consumable = new IsabellaMilk();
 		public const M__MILK:Consumable = new MarbleMilk();
-		public const MINOCUM:SimpleConsumable = mk("MinoCum", "MinoCum", "a sealed bottle of minotaur cum", curry(m.minotaurCum, false), "This bottle of minotaur cum looks thick and viscous.  You know it has narcotic properties, but aside from that its effects are relatively unknown.", 60);
+		public const MINOCUM:Consumable = new MinotaurCum(MinotaurCum.STANDARD);
 		public const P_BREAD:Consumable = new PrisonBread();
-		public const P_M_CUM:SimpleConsumable = mk("P.M.Cum","P.MinoCum", "a sealed bottle of purified minotaur cum", curry(m.minotaurCum, true), "This bottle of minotaur cum looks thick and viscous.  You know it has narcotic properties, but aside from that its effects are relatively unknown.  This bottle of cum has been purified to prevent corruption and addiction.", 80);
+		public const P_M_CUM:Consumable = new MinotaurCum(MinotaurCum.PURIFIED);
 		public const P_WHSKY:PhoukaWhiskey = new PhoukaWhiskey();
 		public const PROMEAD:Consumable = new ProMead();
 		public const PURPEAC:Consumable = new PurityPeach();
@@ -127,12 +129,12 @@ package classes.Items {
 		public const COAL___:Consumable = new Coal();
 		public const DEBIMBO:DeBimbo = new DeBimbo();
 		public const EXTSERM:HairExtensionSerum = new HairExtensionSerum();
-		public const F_DRAFT:SimpleConsumable = mk("F.Draft","FuckDraft", "a vial of roiling red fluid labeled \"Fuck Draft\"", curry(m.lustDraft, true), "This vial of red fluid bubbles constantly inside the glass, as if eager to escape.  It smells very strongly, though its odor is difficult to identify.  The word \"Fuck\" is inscribed on the side of the vial.");
+		public const F_DRAFT:Consumable = new LustDraft(LustDraft.ENHANCED);
 		public const H_PILL:Consumable = new HealPill();
 		public const HRBCNT:Consumable = new HerbalContraceptive();
 		public const ICICLE_:Consumable = new IceShard();
 		public const KITGIFT:KitsuneGift = new KitsuneGift();
-		public const L_DRAFT:SimpleConsumable = mk("L.Draft","LustDraft", "a vial of roiling bubble-gum pink fluid", curry(m.lustDraft,false), "This vial of bright pink fluid bubbles constantly inside the glass, as if eager to escape.  It smells very sweet, and has \"Lust\" inscribed on the side of the vial.", 20);
+		public const L_DRAFT:Consumable = new LustDraft(LustDraft.STANDARD);
 		public const LACTAID:Consumable = new Lactaid();
 		public const LUSTSTK:LustStick = new LustStick();
 		public const MILKPTN:Consumable = new MilkPotion();
@@ -158,23 +160,23 @@ package classes.Items {
 		public const EQUINUM:Consumable = new Equinum();
 		public const FOXBERY:Consumable = new FoxBerry(FoxBerry.STANDARD);
 		public const FRRTFRT:Consumable = new FerretFruit();
-		public const FOXJEWL:SimpleConsumable = mk("FoxJewl", "Fox Jewel", "a fox jewel", curry(m.foxJewel, false), "A shining teardrop-shaped jewel.  An eerie blue flame dances beneath the surface.");
+		public const FOXJEWL:Consumable = new FoxJewel(FoxJewel.STANDARD);
 		public const GLDRIND:GoldenRind = new GoldenRind();
 		public const GLDSEED:Consumable = new GoldenSeed(GoldenSeed.STANDARD);
 		public const GOB_ALE:Consumable = new GoblinAle();
 		public const HUMMUS_:Consumable = new RegularHummus();
 		public const IMPFOOD:Consumable = new ImpFood();
 		public const KANGAFT:Consumable = new KangaFruit(KangaFruit.STANDARD);
-		public const LABOVA_:SimpleConsumable = mk("LaBova ","La Bova", "a bottle containing a misty fluid labeled \"LaBova\"", curry(m.laBova,true,false), "A bottle containing a misty fluid with a grainy texture, it has a long neck and a ball-like base.  The label has a stylized picture of a well endowed cowgirl nursing two guys while they jerk themselves off.");
+		public const LABOVA_:Consumable = new LaBova(LaBova.STANDARD);
 		public const MAGSEED:Consumable = new GoldenSeed(GoldenSeed.ENHANCED);
 		public const MGHTYVG:Consumable = new KangaFruit(KangaFruit.ENHANCED);
 		public const MOUSECO:Consumable = new MouseCocoa();
 		public const MINOBLO:Consumable = new MinotaurBlood();
-		public const MYSTJWL:SimpleConsumable = mk("MystJwl","MystJwl", "a mystic jewel", curry(m.foxJewel, true), "The flames within this jewel glow brighter than before, and have taken on a sinister purple hue.  It has been enhanced to increase its potency, allowing it to transform you more easily, but may have odd side-effects...", 20);
-		public const P_LBOVA:SimpleConsumable = mk("P.LBova", "P.LBova", "a bottle containing a white fluid labeled \"Pure LaBova\"", curry(m.laBova, false, false), "A bottle containing a misty fluid with a grainy texture; it has a long neck and a ball-like base.  The label has a stylized picture of a well-endowed cow-girl nursing two guys while they jerk themselves off. It has been purified by Rathazul.");
+		public const MYSTJWL:Consumable = new FoxJewel(FoxJewel.MYSTIC);
+		public const P_LBOVA:Consumable = new LaBova(LaBova.PURIFIED);
 		public const PIGTRUF:Consumable = new PigTruffle(false);
 		public const PRFRUIT:Consumable = new PurpleFruit();
-		public const PROBOVA:SimpleConsumable = mk("ProBova","ProBova", "a bottle containing a misty fluid labeled \"ProBova\"", curry(m.laBova, true, true), "This cloudy potion has been enhanced by the alchemist Lumi to imbue its drinker with cow-like attributes.");
+		public const PROBOVA:Consumable = new LaBova(LaBova.ENHANCED);
 		public const RDRROOT:Consumable = new RedRiverRoot();
 		public const REPTLUM:Consumable = new Reptilum();
 		public const RHINOST:Consumable = new RhinoSteak();

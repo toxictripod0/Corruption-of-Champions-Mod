@@ -46,6 +46,7 @@ package classes.Items.Consumables
 					description = "This seed glows with power.  It's been enhanced by Lumi to unlock its full potential,"
 					             +" allowing it to transform you more easily.";
 					value = ConsumableLib.DEFAULT_VALUE;
+					break;
 
 				default: // Remove this if someone manages to get SonarQQbe to not whine about a missing default ... ~Stadler76
 			}

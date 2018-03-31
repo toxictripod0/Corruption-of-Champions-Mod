@@ -45,6 +45,7 @@ package classes.Items.Consumables
 					description = "These strands of gooey black gossamer seem quite unlike the normal silk that driders produce."
 					             +" It smells sweet and is clearly edible, but who knows what it might do to you?";
 					value = ConsumableLib.DEFAULT_VALUE;
+					break;
 
 				default: // Remove this if someone manages to get SonarQQbe to not whine about a missing default ... ~Stadler76
 			}

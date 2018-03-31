@@ -49,6 +49,7 @@ package classes.Items.Consumables
 					             +' fox-berries. It is supposed to be a great deal more potent, and a small warning label warns of "extra boobs",'
 					             +' whatever that means.';
 					value = 30;
+					break;
 
 				default: // Remove this if someone manages to get SonarQQbe to not whine about a missing default ... ~Stadler76
 			}
@@ -372,7 +373,7 @@ package classes.Items.Consumables
 			//should work from any face, including other muzzles
 			if (player.hasFur() && player.face.type !== Face.FOX && changes < changeLimit && rand(5) === 0) {
 				outputText("\n\nYour face pinches and you clap your hands to it.  Within seconds, your nose is poking through those hands, pushing them slightly to the side as new flesh and bone build and shift behind it, until it stops in a clearly defined, tapered, and familiar point you can see even without the aid of a mirror.  <b>Looks like you now have a fox's face.</b>");
-				if (kGAMECLASS.silly()) outputText("  And they called you crazy...");
+				if (game.silly()) outputText("  And they called you crazy...");
 				changes++;
 				player.face.type = Face.FOX;
 			}
