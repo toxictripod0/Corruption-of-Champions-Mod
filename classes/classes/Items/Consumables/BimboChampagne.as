@@ -87,7 +87,14 @@ package classes.Items.Consumables
 					//player.changeStatusValue(StatusEffects.BimboChampagne, 4, 12 - player.butt.rating);
 					champagneEffect.value4 = 12 - player.butt.rating;
 					player.butt.rating = 12;
-					if (player.hips.rating < 10) player.hips.rating = 10;
+					if (player.hips.rating < 12) {
+						// A wrapper around this for later use would be great, I guess... ~Stadler76
+						if (champagneEffect.dataStore === null) {
+							champagneEffect.dataStore = {};
+						}
+						champagneEffect.dataStore['hipRatingChange'] = 12 - player.hips.rating;
+						player.hips.rating = 12;
+					}
 				}
 				dynStats("spe", -10, "lib", 1, "lus", 25);
 			}
@@ -110,9 +117,13 @@ package classes.Items.Consumables
 				outputText("  At the same time, your [vagina] slowly seals itself up, disappearing as quickly as it came.  Goodbye womanhood.");
 				player.removeVagina();
 			}
-			if (champagneEffect.value4) {
+			if (champagneEffect.value4 > 0) {
 				player.butt.rating -= champagneEffect.value4;
 				outputText("  Of course, the added junk in your trunk fades too, leaving you back to having a [butt].");
+			}
+			// A wrapper around this for later use would be great, I guess... ~Stadler76
+			if (champagneEffect.dataStore !== null && champagneEffect.dataStore.hasOwnProperty('hipRatingChange') && champagneEffect.dataStore.hipRatingChange > 0) {
+				player.hips.rating -= champagneEffect.dataStore.hipRatingChange;
 			}
 			player.removeStatusEffect(StatusEffects.BimboChampagne);
 			outputText("\n");
