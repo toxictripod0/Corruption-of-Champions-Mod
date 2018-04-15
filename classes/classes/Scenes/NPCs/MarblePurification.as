@@ -903,7 +903,7 @@ package classes.Scenes.NPCs {
 		}
 	 	outputText("The frustration of not being able to nurse, someone, anyone, but especially my mate is tearing me apart!</i>\"  Marble stops screaming and her head drops.  All that's coming out of her now is heavy breathing.");
 
-	 	outputText("\n\n\"<i>There, you see?  Now I'm sure you understand why me and " + player.short + " here belong toogether.  I won't deny the proper order of things, and I'll make sure that " + player.mf("he","she") + " leads a fulfilling life as my milk slave.  " + player.mf("He","She") + "'ll even be my first husband!</i>\"");
+	 	outputText("\n\n\"<i>There, you see?  Now I'm sure you understand why me and " + player.short + " here belong toogether.  I won't deny the proper order of things, and I'll make sure that " + player.mf("he","she") + " leads a fulfilling life as my milk slave.  " + player.mf("He","She") + "'ll even by my first husband!</i>\"");
 	 	outputText("\n\nTentatively you ask what Clara means by first husband?");
 
 	 	outputText("\n\nClara laughs at your question, \"<i>Of course!  I deserve more than the typical Lacta Bovine.  You're going to help me find at least two more husbands, build me the perfect hoome, care for my young, and take care of my every need.  You should feel hoonoored.</i>\"");
@@ -1267,7 +1267,7 @@ package classes.Scenes.NPCs {
 		clearOutput();
 	 	outputText("You ask Marble for the bottle of Rathazul's formula.  She nods, hands it to you and says, \"<i>Yeah, I think that's the best choice too.</i>\"");
 	 	outputText("\n\nYou approach the bound form of Clara and inform her that you're prepared to untie her.  She just has to drink a few drops from the bottle you're holding.");
-	 	outputText("\n\nShe considers the bottle, then curls her lip.  \"<i>What, you got something in there to break my mind?  Some sort of corrupt juice?  Whatever, it isn't like I've got much of a choice,</i>\" comes the sarcastic reply.  Nevertheless, she does drink several drops without complaint.");
+	 	outputText("\n\nShe considers the bottle, then curls her lip.  \"<i>What, yoou got something in there to break my mind?  Some sort of corrupt juice?  Whatever, it isn't like I've got much of a choice,</i>\" comes the sarcastic reply.  Nevertheless, she does drink several drops without complaint.");
 	 	outputText("\n\nA few moments later, you calmly inform Clara that she just drank the fluid that was used to purify Marble.  Since it was made partially from her milk, it should be quite effective on her.  A look of absolute horror slowly spreads across her face and she panics, struggling against her bonds with all her strength, desperate to stop what is about to happen.");
 	 	outputText("\n\nEvidently, the purified LaBova did get Marble through the worst of purification.  A huge gush of milk starts to pour out of the bound bovine's breasts, flooding the ground around her.  At the same time, she lets out a huge, \"<i>Noooooo!</i>\" as the corruption is banished from her body along with the precious addictive nature of her milk.  \"<i>You can't do this to me!  This is who I am!  You have no right to take that away!</i>\"");
 	 	outputText("\n\nGiven that she just tried to take away someone else's life, any right she might have had to choose her own life is probably gone.  This will give her plenty of time to reflect on what she's done, and is probably far more effective than any form of sexual punishment would have been.  You don't hesitate to tell her this.");
