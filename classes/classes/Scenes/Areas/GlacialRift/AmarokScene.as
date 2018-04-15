@@ -16,15 +16,14 @@ package classes.Scenes.Areas.GlacialRift {
 			clearOutput();
 			spriteSelect(SpriteDb.s_amarok);
 			credits.authorText = "Foxwells";
+			outputText(images.showImage("amarok-defeat"));
 			flags[kFLAGS.AMAROK_LOSSES]++;
 			if (player.HP <= 0) {
 				outputText("Your legs give out under you and your " + player.weaponName + " falls into the snow. The Amarok has you beat. Your face crashes into the snow, a refreshing cool on the heat of your wounds. You raise your head at the sound of footsteps and find yourself staring at the Amarok's nose as it sniffs you. You let your head drop and resign yourself to fate.");
 				amarokFlagCheck();
 			}
-			else { //if you lust lost you kinda deserve it, he shouldn't tease if I did this right
+			else //if you lust lost you kinda deserve it, he shouldn't tease if I did this right
 				outputText("You collapse into the snow, your lust uncontrollable. As your hand reaches for your loins, you silently curse yourself for bringing yourself to this state. You raise your head at the sound of footsteps and find yourself staring at the Amarok's nose as it sniffs you. You let your head drop and resign yourself to fate.");
-				amarokFlagCheck();
-			}
 		}
 
 		public function amarokFlagCheck():void {
@@ -37,6 +36,7 @@ package classes.Scenes.Areas.GlacialRift {
 			clearOutput();
 			spriteSelect(SpriteDb.s_amarok);
 			credits.authorText = "Foxwells";
+			outputText(images.showImage("area-glacialrift"));
 			outputText("\n\nMuch to your surprise, however, the Amarok suddenly backs away with a low growl. It resumes sniffing you at a distance, eventually coming over to your lower half. The worms inside you wriggle about, and you let out a low groan of discomfort. As though on cue, the Amarok take a sniff of your crotch, then promptly backs off with another snarl. It must be able to detect your worm infestation, and more importantly, not like it! It turns away and kicks snow on you with one of its back back, letting out a huff of irritation. You watch it walk off as blackness washes over your vision.");
 			combat.cleanupAfterCombat();
 		}
@@ -63,6 +63,7 @@ package classes.Scenes.Areas.GlacialRift {
 			outputText("\n\nYou writhe under its grasp as your throat closes in terror. Your efforts are fruitless, and the Amarok watches you in mild amusement. Your blood starts to pound in your ears. You need something-- anything --that'll help you get away. You flop an arm at the leg holding you down, praying it'll knock the Amarok off. It doesn't work. You try to get a foot under it and kick it off. You can't even roll your legs up. You try to scream for help in a futile hope anyone is nearby. You instead choke on your own breath. The Amarok's cruel gaze watches you with glee.");
 			outputText("\n\nYou stop thinking. You just want air.");
 			outputText("\n\nLines of pain well in your abdomen and you take in the biggest breath of your life-- only to promptly release it with a screech. You instinctively curl up to try and protect yourself, but the Amarok takes a hold of one of your arms and shakes you violently. It only releases you when it accidentally rips off part of your " + player.armorName + ". You get flung a bit away and take a small tumble. Before you can get up, though, the Amarok is on you. It holds you down with one of its paws and begins to tear off the rest of your " + player.armorName + ", carelessly tossing it aside. You jerk, and roll, and rip at its leg, but it refuses to release you. Instead, it opens its jaws and snaps them shut around your neck.");
+			player.takeDamage(player.HP, false);
 			getGame().gameOver();
 		}
 
@@ -72,6 +73,7 @@ package classes.Scenes.Areas.GlacialRift {
 				flags[kFLAGS.AMAROK_LOSSES] = 0;
 			clearOutput();
 			credits.authorText = "Foxwells";
+			outputText(images.showImage("amarok-victory"));
 			outputText("The Amarok collapses, unable to withstand any more.");
 			combat.cleanupAfterCombat();
 		}

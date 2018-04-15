@@ -3,11 +3,14 @@ package classes.Scenes.NPCs{
 	import classes.GlobalFlags.*;
 	import classes.PregnancyStore;
 	import classes.display.SpriteDb;
+	import classes.Scenes.VaginalPregnancy;
+	import classes.Scenes.PregnancyProgression;
 
-	public class UrtaPregs extends NPCAwareContent {
+	public class UrtaPregs extends NPCAwareContent implements VaginalPregnancy {
 
-		public function UrtaPregs()
+		public function UrtaPregs(pregnancyProgression:PregnancyProgression)
 		{
+			pregnancyProgression.registerVaginalPregnancyScene(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.PREGNANCY_URTA, this);
 		}
 //const URTA_INCUBATION:int = 789;
 //const URTA_TIMES_BIRTHED:int = 790;
@@ -433,7 +436,7 @@ private function wakeUpWithUrtaAfterStaying():void {
 	statScreenRefresh();
 	player.orgasm('Generic');
 	camp.sleepRecovery(false);
-	HPChange(player.maxHP(), true);
+	player.HPChange(player.maxHP(), true);
 	//PC Wakes with Urta
 	awardAchievement("Getaway", kACHIEVEMENTS.GENERAL_GETAWAY);
 	outputText("As the morning sun shines on the blinds, you open your eyes.  Then you remember the events of the last day.  You spent the whole day with Urta, not having sex, just walking together and buying stuff for your newborn ");
@@ -532,7 +535,7 @@ private function drinkSomeUrtaPostBirthTitMilk():void {
 
 //PC Pregnancy Stages
 //PC takes 3 days to progress from one pregnancy stage to the next
-public function urtaPregooUpdates():Boolean {
+public function updateVaginalPregnancy():Boolean {
 	if (player.pregnancyIncubation == 504) {
 		outputText("\n<b>You're feeling a bit nauseated.  Your mind floats to Urta and you wonder if maybe this means her seed took...</b>\n");
 		return true;
@@ -687,7 +690,7 @@ private function acceptUrtaLevelSixPreggoHelps():void {
 }
 	
 //PC Gives Birth
-public function PCGivesBirf():void {
+public function vaginalBirth():void {
 	outputText("\n");
 	flags[kFLAGS.URTA_PREGNANT_DELIVERY_SCENE] = 0;
 	flags[kFLAGS.NEW_BABY_ANNOUNCED] = 0;
@@ -2338,7 +2341,7 @@ public function visitTheHouse():void {
 		outputText("\n\n\"<i>Now about that thing I wanted to talk to you about, [name]...</i>\"");
 		
 		//If PC is still human:
-		if (player.race() == "human") outputText("\n\n\"<i>I can't help but notice that you're a human.</i>\"  You are indeed - it is how you were born, you note.");
+		if (player.race == "human") outputText("\n\n\"<i>I can't help but notice that you're a human.</i>\"  You are indeed - it is how you were born, you note.");
 		else outputText("\n\nShe twitches her nose.  \"<i>You smell like a human, but you aren't a human...?</i>\"  You figure it can't hurt and explain you were human before coming to Mareth, but gave up your humanity with the magical items that abound in this land.  She nods her head in realisation.");
 		
 		outputText("\n\nYou ask her what business she has with you.");

@@ -16,15 +16,15 @@ package classes {
 	import flash.events.Event;
 
 	public class CharCreation extends BaseContent {
-		public const MAX_TOLERANCE_LEVEL:int = 20;
-		public const MAX_MORALSHIFTER_LEVEL:int = 10;
-		public const MAX_DESIRES_LEVEL:int = 10;
-		public const MAX_ENDURANCE_LEVEL:int = 10;
-		public const MAX_MYSTICALITY_LEVEL:int = 10;
-		public const MAX_WISDOM_LEVEL:int = 5;
-		public const MAX_FORTUNE_LEVEL:int = -1; //no max level
-		public const MAX_VIRILITY_LEVEL:int = 15;
-		public const MAX_FERTILITY_LEVEL:int = 15;
+		public static const MAX_TOLERANCE_LEVEL:int = 20;
+		public static const MAX_MORALSHIFTER_LEVEL:int = 10;
+		public static const MAX_DESIRES_LEVEL:int = 10;
+		public static const MAX_ENDURANCE_LEVEL:int = 10;
+		public static const MAX_MYSTICALITY_LEVEL:int = 10;
+		public static const MAX_WISDOM_LEVEL:int = 5;
+		public static const MAX_FORTUNE_LEVEL:int = -1; //no max level
+		public static const MAX_VIRILITY_LEVEL:int = 15;
+		public static const MAX_FERTILITY_LEVEL:int = 15;
 		public static const NEW_GAME_PLUS_RESET_CLIT_LENGTH_MAX:Number = 1.5;
 
 		private var specialCharacters:CharSpecial = new CharSpecial();
@@ -134,7 +134,7 @@ package classes {
 				player.level = 1;
 				player.gems = flags[kFLAGS.NEW_GAME_PLUS_BONUS_STORED_ITEMS];
 			}
-			player.HP = player.maxHP();
+			player.restoreHP();
 			player.hair.length = 5;
 			player.skin.type = Skin.PLAIN;
 			player.underBody.restore();
@@ -899,7 +899,7 @@ package classes {
 			addButton(1, "No", chooseEndowment);
 		}
 
-		private function setEndowment(choice:PerkType):void {
+		protected function setEndowment(choice:PerkType):void {
 			switch(choice) {
 				//Attribute-specific
 				case PerkLib.Strong:
@@ -913,7 +913,7 @@ package classes {
 					player.tone += 5;
 					player.thickness += 5;
 					player.createPerk(PerkLib.Tough, 0.25, 0, 0, 0);
-					player.HP = kGAMECLASS.maxHP();
+					player.restoreHP();
 					break;
 				case PerkLib.Fast:
 					player.spe += 5;
@@ -1184,7 +1184,7 @@ package classes {
 		}
 
 		private function startTheGame():void {
-			player.startingRace = player.race();
+			player.startingRace = player.race;
 			if (flags[kFLAGS.HARDCORE_MODE] > 0) getGame().saves.saveGame(flags[kFLAGS.HARDCORE_SLOT])
 			if (flags[kFLAGS.GRIMDARK_MODE] > 0) flags[kFLAGS.BACKGROUND_STYLE] = 9;
 			kGAMECLASS.saves.loadPermObject();

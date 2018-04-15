@@ -12,18 +12,6 @@ package classes.Scenes.Dungeons {
 	use namespace kGAMECLASS;
 
 	public class Factory extends DungeonAbstractContent {
-		/*
-		private static const DUNGEON_FACTORY_FOYER:int				= 0;
-		private static const DUNGEON_FACTORY_PUMP_ROOM:int			= 1;
-		private static const DUNGEON_FACTORY_BREAK_ROOM:int			= 2;
-		private static const DUNGEON_FACTORY_FURNACE_ROOM:int		= 3;
-		private static const DUNGEON_FACTORY_REPAIR_CLOSET:int		= 4;
-		private static const DUNGEON_FACTORY_MAIN_CHAMBER:int		= 5;
-		private static const DUNGEON_FACTORY_FOREMANS_OFFICE:int	= 6;
-		private static const DUNGEON_FACTORY_PUMP_CONTROL:int		= 7;
-		private static const DUNGEON_FACTORY_STORE_ROOM:int			= 8;
-		private static const DUNGEON_FACTORY_BATHROOM:int			= 9;
-		*/
 		public function Factory() {}
 
 		public var secretarialSuccubus:SecretarialSuccubusScene = new SecretarialSuccubusScene();
@@ -154,7 +142,7 @@ package classes.Scenes.Dungeons {
 			outputText(images.showImage("item-coffee"));
 			outputText("You take a sip of the rich creamy coffee and suddenly feel refreshed. As you replace the coffeepot, the busty coffee-maker comes to life, grabbing her thick dusky nipples and squeezing out a trickle of scaldingly hot liquid. You can see her eyes roll up into her head from what you assume to be pleasure as she automatically refills the missing coffee, mouth open with ecstasy.  Her movements gradually slow as she quivers almost imperceptibly. A contented smile graces her features as immobility overtakes her, freezing her back in place.  You wonder if 'Mrs. Coffee' was created, or a victim of this place's dark master.");
 			dynStats("lus", 1);
-			HPChange(35, false);
+			player.HPChange(35, false);
 			player.refillHunger(10);
 			doNext(roomBreakRoom);
 		}
@@ -245,7 +233,7 @@ package classes.Scenes.Dungeons {
 				}
 				else { //3rd time, move on to bad end!
 					doBadEndTension();
-					return
+					return;
 				}
 			}
 			doNext(roomMainChamber);

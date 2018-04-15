@@ -26,7 +26,6 @@ package classes.Scenes.Places.TelAdre {
 		public function timeChange():Boolean
 		{
 			pregnancy.pregnancyAdvance();
-			//trace("\nEdryn time change: Time is " + getGame().time.hours + ", incubation: " + pregnancy.incubation + ", event: " + pregnancy.event);
 			if (pregnancy.isPregnant && flags[kFLAGS.EDRYN_PREGNANT_AND_NOT_TOLD_PC_YET] == 0 && pregnancy.type != PregnancyStore.PREGNANCY_TAOTH) {
 				flags[kFLAGS.EDRYN_PREGNANCY_INCUBATION]++; //Pregnancy on hold until the PC discovers it
 			}
@@ -57,8 +56,6 @@ package classes.Scenes.Places.TelAdre {
 public function edrynSprite(nude:Boolean = false):void {
 	if (!pregnancy.isPregnant)
 		spriteSelect(SpriteDb.s_edryn);
-	//	if (nude) spriteSelect(SpriteDb.s_edryn_nude);
-	//	else spriteSelect(SpriteDb.s_edryn);
 	else  {
 		spriteSelect(SpriteDb.s_edryn_preg);
 	}
@@ -1037,15 +1034,7 @@ private function edrynPregChance():void {
 
 	//See if any of the scenarios get her preg
 	var preg:Boolean = false;
-	/*
-	//25% chance if 'stud'
-	if (player.hasPerk("Marae's Gift - Stud") >= 0 && rand(4) == 0) {
-		preg = true;
-	}
-	//10% chance if elf xmas
-	if (player.hasPerk("Elven Bounty") >= 0 && rand(10) == 0) {
-		preg = true;
-	}*/
+
 	//1% chance per 500mLs of cum, max 5%
 	temp = player.cumQ()/500;
 	if (temp > 5) temp = 5;

@@ -6,13 +6,15 @@ package classes.Scenes.Areas.Mountain {
 	import classes.Items.Armors.LustyMaidensArmor;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
+	import classes.internals.GuiOutput;
+	import classes.Scenes.PregnancyProgression;
+	import classes.Scenes.Monsters.pregnancies.PlayerMinotaurPregnancy;
 
 	public class MinotaurScene extends BaseContent {
 
-		public function MinotaurScene() {}
-
-/*	private function minotaurAddicted():Boolean { return player.minotaurAddicted(); }
-	private function minotaurNeed():Boolean { return player.minotaurNeed(); } */
+		public function MinotaurScene(pregnancyProgression:PregnancyProgression, output:GuiOutput) {
+			new PlayerMinotaurPregnancy(pregnancyProgression, output);
+		}
 
 public function minoVictoryRapeChoices():void {
 	clearOutput();
@@ -418,8 +420,6 @@ private function minotaurGetsRapedByHerms():void {
 }
 
 public function minoPheromones():void {
-	clearOutput();
-	spriteSelect(SpriteDb.s_minotaur);
 	outputText(images.showImage("minotaur-cumslut"));
 	outputText("The minotaur smiles at you and lifts his loincloth, flicking it at you.  Thick ropes of pre-cum fly through the air, ");
 	//sometimes get hit with the pre for stronger effect!
@@ -486,7 +486,7 @@ public function getRapedByMinotaur(autoRape:Boolean = false):void {
 		if (player.isTaur()) outputText("against your buttocks");
 		else outputText("into the small of your back");
 		outputText(" as it grows larger and harder, smearing its pre-cum into your skin and making you shiver.  ");
-		if (/*rand(20) + player.str / 3 > 18*/ true || flags[kFLAGS.SFW_MODE]) { //high str escape
+		if (rand(20) + player.str / 3 > 18 || flags[kFLAGS.SFW_MODE]) { //high str escape
 			outputText("\n\nYou twist around using the additional lubrication and squirm free!  Rolling away, you come up in a crouch, ready to fight!");
 			startCombat(new Minotaur());
 			return;
@@ -1263,7 +1263,7 @@ private function minoMutualPt3(x:Number):void { //pt3-1
 	outputText("\n\nThe minotaur practically screams as the dual sensations cause his dick to really bring on the seminal fluid. It floods your mouth as his scent fills your nostrils. You’re hungry for his cum, for his ass, for his nipples and his lips. You want to fuck and fuck and fuck until his balls are sore from exhaustion. You want to breed this big masculine bitch until he looks pregnant from the titanic amount of seed you’ve fucked into his shivering bowels. You want him to give you a bittersweet meal of raw man juice from the source. You want to tug his balls and slap his ass and twist his nipples in every way you know he likes. You want to cum so many times that he’ll be able to taste your seed on his tongue.");
 	outputText("\n\nYour desires well up inside you and you find yourself tugging the bull man’s nipple, a diamond hard bundle of flesh that stretches toward you as if beckoning. You tug and twist hard enough to make your point but not so hard as to hurt. His voice strains as you fuck suck and tug. Then your free hand rises and comes down on his burly ass with a resounding clap. This makes his already blissfully tight hole squeeze you. You accept the physical invitation and fuck him hard while occasionally smacking his ass and twisting his nipple.");
 	outputText("\n\nYou’re giving the minotaur everything you’ve got and you can tell that the both of you are nearing the end of your coital interaction. So you suck and fuck with creamy white baby batter leaking from the corners of your mouth. The squelching sounds of your sucking are nearly drowned out by the fleshy clap, clap, clap of your trunk slamming into the bull man’s burly ass. As you continue to split his ass wide open while deep throating his segmented cock, the minotaur calls out in a sound easily confused with agony. You feel his rectal sleeve tighten around your [cock] and you force your [cock] through his convulsing hole, knowing exactly what is to come.");
-	doNext(createCallBackFunction(minoMutualPt3, x));
+	doNext(createCallBackFunction(minoMutualPt3MoneyShots, x));
 }
 private function minoMutualPt3MoneyShots(x:Number):void { //pt3-2
 	clearOutput();

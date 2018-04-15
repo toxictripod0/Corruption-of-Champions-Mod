@@ -42,6 +42,7 @@ package classes.Scenes.Areas.Mountain {
 			this.short = "minotaur";
 			this.imageName = hasAxe?"minoaxe":"minotaur";
 			this.long = "";
+			this.race = "Minotaur";
 			//this.plural = false;
 			this.createCock(rand(13) + 24,2 + rand(3),CockTypesEnum.HORSE);
 			this.balls = 2;
