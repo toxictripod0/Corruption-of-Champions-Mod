@@ -909,7 +909,7 @@ package classes.Scenes.NPCs {
 		}
 	 	outputText("The frustration of not being able to nurse, someone, anyone, but especially my mate is tearing me apart!</i>\"  Marble stops screaming and her head drops.  All that's coming out of her now is heavy breathing.");
 
-	 	outputText("\n\n\"<i>There, you see?  Now I'm sure you understand why me and " + player.short + " here belong toogether.  I won't deny the proper order of things, and I'll make sure that " + player.mf("he","she") + " leads a fulfilling life as my milk slave.  " + player.mf("He","She") + "'ll even by my first husband!</i>\"");
+	 	outputText("\n\n\"<i>There, you see?  Now I'm sure you understand why me and " + player.short + " here belong toogether.  I won't deny the proper order of things, and I'll make sure that " + player.mf("he","she") + " leads a fulfilling life as my milk slave.  " + player.mf("He","She") + "'ll even be my first husband!</i>\"");
 	 	outputText("\n\nTentatively you ask what Clara means by first husband?");
 
 	 	outputText("\n\nClara laughs at your question, \"<i>Of course!  I deserve more than the typical Lacta Bovine.  You're going to help me find at least two more husbands, build me the perfect hoome, care for my young, and take care of my every need.  You should feel hoonoored.</i>\"");
