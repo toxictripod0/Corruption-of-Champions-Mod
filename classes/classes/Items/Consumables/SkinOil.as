@@ -36,6 +36,25 @@ package classes.Items.Consumables
 			kGAMECLASS.output.menu();
 			kGAMECLASS.output.addButton(0, "Body", oilSkin);
 			kGAMECLASS.output.addButton(1, "Underbody", oilUnderBodySkin);
+			if (game.player.wings.canOil()) {
+				outputText("\n\nYou have [wingColor] wings.");
+				if (!game.player.wings.hasOilColor(_color))
+					kGAMECLASS.output.addButton(2, "Wings", oilWings).hint("Apply oil to your wings.");
+				else
+					kGAMECLASS.output.addButtonDisabled(2, "Wings", "Your already have " + _color + " wings!");
+			} else {
+				outputText("\n\nYour wings can't be oiled.");
+				kGAMECLASS.output.addButtonDisabled(2, "Wings", "Your wings can't be oiled!");
+			}
+			if (game.player.wings.canOil2()) {
+				outputText("\n\nYou have [wingColor2] (secondary color) wings.");
+				if (!game.player.wings.hasOil2Color(_color))
+					kGAMECLASS.output.addButton(3, "Wings 2", oil2Wings).hint("Apply oil to your secondary wing color.");
+				else
+					kGAMECLASS.output.addButtonDisabled(3, "Wings 2", "Your secondary wing color already is " + _color + "!");
+			} else {
+				kGAMECLASS.output.addButtonDisabled(3, "Wings 2", "Your wings have no secondary color to apply skin oil to!");
+			}
 			kGAMECLASS.output.addButton(4, "Nevermind", oilCancel);
 			return true;
 		}
@@ -102,6 +121,24 @@ package classes.Items.Consumables
 						outputText("You " + game.player.clothedOrNaked("take a second to disrobe before uncorking the bottle of oil and rubbing", "uncork the bottle of oil and rub") + " the smooth liquid across your underbody. Even before you’ve covered your [chest] your skin begins to tingle pleasantly all over. After your skin darkens a little, it begins to change until you have " + _color + " skin on your underbody.");
 				}
 			}
+			game.inventory.itemGoNext();
+		}
+
+		private function oilWings():void
+		{
+			clearOutput();
+			outputText("You rub the oil into your [wings].  ");
+			game.player.wings.applyOil(_color);
+			outputText("You now have [wingColor] wings.");
+			game.inventory.itemGoNext();
+		}
+
+		private function oil2Wings():void
+		{
+			clearOutput();
+			outputText("You rub the oil into your [wings] (secondary color).  ");
+			game.player.wings.applyOil2(_color);
+			outputText("You now have [wingColor2] (secondary color) wings.");
 			game.inventory.itemGoNext();
 		}
 

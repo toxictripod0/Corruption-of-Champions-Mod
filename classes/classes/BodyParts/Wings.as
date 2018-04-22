@@ -25,17 +25,20 @@ package classes.BodyParts
 
 		public var type:Number  = NONE;
 		public var color:String = "no";
+		public var color2:String = "no";
 
 		public function restore():void
 		{
 			type  = NONE;
 			color = "no";
+			color2 = "no";
 		}
 
 		public function setProps(p:Object):void
 		{
 			if (p.hasOwnProperty('type'))  type  = p.type;
 			if (p.hasOwnProperty('color')) color = p.color;
+			if (p.hasOwnProperty('color2')) color2 = p.color2;
 		}
 
 		public function setAllProps(p:Object):void
@@ -57,6 +60,36 @@ package classes.BodyParts
 		override public function applyDye(_color:String):void
 		{
 			color = _color;
+		}
+
+		override public function canOil():Boolean
+		{
+			return [DRACONIC_SMALL, DRACONIC_LARGE].indexOf(type) !== -1;
+		}
+
+		override public function hasOilColor(_color:String):Boolean
+		{
+			return color === _color;
+		}
+
+		override public function applyOil(_color:String):void
+		{
+			color = _color;
+		}
+
+		override public function canOil2():Boolean
+		{
+			return [DRACONIC_SMALL, DRACONIC_LARGE].indexOf(type) !== -1;
+		}
+
+		override public function hasOil2Color(_color2:String):Boolean
+		{
+			return color2 === _color2;
+		}
+
+		override public function applyOil2(_color2:String):void
+		{
+			color2 = _color2;
 		}
 	}
 }

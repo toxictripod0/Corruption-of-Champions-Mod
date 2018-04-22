@@ -126,6 +126,7 @@
 				"guy"						: function():* { return kGAMECLASS.player.mf("guy", "girl"); },
 				"wings"						: function():* { return kGAMECLASS.player.wingsDescript(); },
 				"wingcolor"					: function():* { return kGAMECLASS.player.wings.color; },
+				"wingcolor2"				: function():* { return kGAMECLASS.player.wings.color2; },
 				"tail"						: function():* { return kGAMECLASS.player.tailDescript(); },
 				"onetail"					: function():* { return kGAMECLASS.player.oneTailDescript(); },
 

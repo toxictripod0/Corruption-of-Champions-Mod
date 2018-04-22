@@ -30,5 +30,17 @@ package classes.BodyParts
 		}
 
 		public function applyOil(_color:String):void {}
+
+		public function canOil2():Boolean
+		{
+			return false;
+		}
+
+		public function hasOil2Color(_color2:String):Boolean
+		{
+			return true;
+		}
+
+		public function applyOil2(_color2:String):void {}
 	}
 }
