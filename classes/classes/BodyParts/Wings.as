@@ -23,9 +23,39 @@ package classes.BodyParts
 		public static const FAERIE_SMALL:int    =  14; // currently for monsters only
 		public static const FAERIE_LARGE:int    =  15; // currently for monsters only
 
+		public static const COLOR_ID_MAIN:int      = 1;
+		public static const COLOR_ID_SECONDARY:int = 2;
+
 		public var type:Number  = NONE;
 		public var color:String = "no";
 		public var color2:String = "no";
+
+		/**
+		 * Returns a string that describes, what the actual color number (=id) is for.
+		 * e. g.: Dragon Wings main color => "webbings" and secondary color => "bones"
+		 * @param   id  The 'number' of the chosen color (main = color, secondary = color2)
+		 * @return  The resulting description string
+		 */
+		public function getColorDesc(id:int):String
+		{
+			switch (type) {
+				case DRACONIC_SMALL:
+				case DRACONIC_LARGE:
+					switch (id) {
+						case COLOR_ID_MAIN:
+							return "webbings";
+
+						case COLOR_ID_SECONDARY:
+							return "bones";
+
+						default: 
+							return "";
+					}
+
+				default:
+					return "";
+			}
+		}
 
 		public function restore():void
 		{

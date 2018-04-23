@@ -25,33 +25,46 @@ package classes.Items.Consumables
 		}
 		
 		override public function useItem():Boolean {
-			if (!game.player.hasUnderBody()) {
+			if (!game.player.hasUnderBody() && !game.player.wings.canOil()) {
 				oilSkin();
 				return true;
 			}
 
 			clearOutput();
-			outputText("The skin on your underBody is different from the rest. Where do you want to apply the " + _color + " skin oil?");
+			if (game.player.hasUnderBody()) {
+				outputText("The skin on your underbody is different from the rest. ");
+			}
+			outputText("Where do you want to apply the " + _color + " skin oil?");
 
 			kGAMECLASS.output.menu();
 			kGAMECLASS.output.addButton(0, "Body", oilSkin);
-			kGAMECLASS.output.addButton(1, "Underbody", oilUnderBodySkin);
-			if (game.player.wings.canOil()) {
-				outputText("\n\nYou have [wingColor] wings.");
+			if (game.player.hasUnderBody()) {
+				kGAMECLASS.output.addButton(1, "Underbody", oilUnderBodySkin);
+			} else {
+				kGAMECLASS.output.addButtonDisabled(1, "Underbody", "You have no special underbody");
+			}
+			if (game.player.wings.type === Wings.NONE) {
+				outputText("\n\nYou have no wings.");
+				kGAMECLASS.output.addButtonDisabled(2, "Wings", "You have no wings.");
+			} else if (game.player.wings.canOil()) {
+				outputText("\n\nYour wings have [wingColor] [wingColorDesc].");
 				if (!game.player.wings.hasOilColor(_color))
-					kGAMECLASS.output.addButton(2, "Wings", oilWings).hint("Apply oil to your wings.");
+					kGAMECLASS.output.addButton(2, "Wings", oilWings).hint("Apply oil to your wings' " + game.player.wings.getColorDesc(Wings.COLOR_ID_MAIN) + ".");
 				else
-					kGAMECLASS.output.addButtonDisabled(2, "Wings", "Your already have " + _color + " wings!");
+					kGAMECLASS.output.addButtonDisabled(2, "Wings", "Your wings' " + game.player.wings.getColorDesc(Wings.COLOR_ID_MAIN) + " already are " + _color + " colored!");
 			} else {
 				outputText("\n\nYour wings can't be oiled.");
 				kGAMECLASS.output.addButtonDisabled(2, "Wings", "Your wings can't be oiled!");
 			}
-			if (game.player.wings.canOil2()) {
-				outputText("\n\nYou have [wingColor2] (secondary color) wings.");
+			if (game.player.wings.type === Wings.NONE) {
+				outputText("\n\nYou have no wings.");
+				kGAMECLASS.output.addButtonDisabled(3, "Wings 2", "You have no wings.");
+			} else if (game.player.wings.canOil2()) {
+				outputText("\n\nYour wings have [wingColor2] [wingColor2Desc].");
 				if (!game.player.wings.hasOil2Color(_color))
-					kGAMECLASS.output.addButton(3, "Wings 2", oil2Wings).hint("Apply oil to your secondary wing color.");
+					kGAMECLASS.output.addButton(3, "Wings 2", oil2Wings).hint("Apply oil to your wings' " + game.player.wings.getColorDesc(Wings.COLOR_ID_SECONDARY) + ".");
 				else
-					kGAMECLASS.output.addButtonDisabled(3, "Wings 2", "Your secondary wing color already is " + _color + "!");
+					kGAMECLASS.output.addButtonDisabled(3, "Wings 2", "Your wings' " + game.player.wings.getColorDesc(Wings.COLOR_ID_SECONDARY) + " already are " + _color + " colored!");
 			} else {
 				kGAMECLASS.output.addButtonDisabled(3, "Wings 2", "Your wings have no secondary color to apply skin oil to!");
 			}
@@ -127,18 +140,18 @@ package classes.Items.Consumables
 		private function oilWings():void
 		{
 			clearOutput();
-			outputText("You rub the oil into your [wings].  ");
+			outputText("You rub the oil into the [wingColorDesc] of your [wings].  ");
 			game.player.wings.applyOil(_color);
-			outputText("You now have [wingColor] wings.");
+			outputText("Your wings now have [wingColor] [wingColorDesc].");
 			game.inventory.itemGoNext();
 		}
 
 		private function oil2Wings():void
 		{
 			clearOutput();
-			outputText("You rub the oil into your [wings] (secondary color).  ");
+			outputText("You rub the oil into the [wingColor2Desc] of your [wings].  ");
 			game.player.wings.applyOil2(_color);
-			outputText("You now have [wingColor2] (secondary color) wings.");
+			outputText("Your wings now have [wingColor] [wingColor2Desc].");
 			game.inventory.itemGoNext();
 		}
 
