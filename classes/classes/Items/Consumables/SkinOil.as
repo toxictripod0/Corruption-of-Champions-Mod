@@ -41,7 +41,7 @@ package classes.Items.Consumables
 			if (game.player.hasUnderBody()) {
 				kGAMECLASS.output.addButton(1, "Underbody", oilUnderBodySkin);
 			} else {
-				kGAMECLASS.output.addButtonDisabled(1, "Underbody", "You have no special underbody");
+				kGAMECLASS.output.addButtonDisabled(1, "Underbody", "You have no special underbody!");
 			}
 			if (game.player.wings.type === Wings.NONE) {
 				outputText("\n\nYou have no wings.");
@@ -151,7 +151,7 @@ package classes.Items.Consumables
 			clearOutput();
 			outputText("You rub the oil into the [wingColor2Desc] of your [wings].  ");
 			game.player.wings.applyOil2(_color);
-			outputText("Your wings now have [wingColor] [wingColor2Desc].");
+			outputText("Your wings now have [wingColor2] [wingColor2Desc].");
 			game.inventory.itemGoNext();
 		}
 
