@@ -32,7 +32,7 @@ package classes.BodyParts
 
 		/**
 		 * Returns a string that describes, what the actual color number (=id) is for.
-		 * e. g.: Dragon Wings main color => "webbings" and secondary color => "bones"
+		 * e. g.: Dragon Wings main color => "membranes" and secondary color => "bones"
 		 * @param   id  The 'number' of the chosen color (main = color, secondary = color2)
 		 * @return  The resulting description string
 		 */
@@ -43,7 +43,7 @@ package classes.BodyParts
 				case DRACONIC_LARGE:
 					switch (id) {
 						case COLOR_ID_MAIN:
-							return "webbings";
+							return "membranes";
 
 						case COLOR_ID_SECONDARY:
 							return "bones";
