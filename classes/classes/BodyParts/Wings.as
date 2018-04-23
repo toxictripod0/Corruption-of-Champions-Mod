@@ -23,9 +23,6 @@ package classes.BodyParts
 		public static const FAERIE_SMALL:int    =  14; // currently for monsters only
 		public static const FAERIE_LARGE:int    =  15; // currently for monsters only
 
-		public static const COLOR_ID_MAIN:int      = 1;
-		public static const COLOR_ID_SECONDARY:int = 2;
-
 		public var type:Number  = NONE;
 		public var color:String = "no";
 		public var color2:String = "no";
@@ -36,7 +33,7 @@ package classes.BodyParts
 		 * @param   id  The 'number' of the chosen color (main = color, secondary = color2)
 		 * @return  The resulting description string
 		 */
-		public function getColorDesc(id:int):String
+		override public function getColorDesc(id:int):String
 		{
 			switch (type) {
 				case DRACONIC_SMALL:
@@ -45,7 +42,7 @@ package classes.BodyParts
 						case COLOR_ID_MAIN:
 							return "membranes";
 
-						case COLOR_ID_SECONDARY:
+						case COLOR_ID_2ND:
 							return "bones";
 
 						default: 

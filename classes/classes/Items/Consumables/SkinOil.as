@@ -49,9 +49,9 @@ package classes.Items.Consumables
 			} else if (game.player.wings.canOil()) {
 				outputText("\n\nYour wings have [wingColor] [wingColorDesc].");
 				if (!game.player.wings.hasOilColor(_color))
-					kGAMECLASS.output.addButton(2, "Wings", oilWings).hint("Apply oil to your wings' " + game.player.wings.getColorDesc(Wings.COLOR_ID_MAIN) + ".");
+					kGAMECLASS.output.addButton(2, "Wings", oilWings).hint("Apply oil to your wings' " + game.player.wings.getColorDesc(BaseBodyPart.COLOR_ID_MAIN) + ".");
 				else
-					kGAMECLASS.output.addButtonDisabled(2, "Wings", "Your wings' " + game.player.wings.getColorDesc(Wings.COLOR_ID_MAIN) + " already are " + _color + " colored!");
+					kGAMECLASS.output.addButtonDisabled(2, "Wings", "Your wings' " + game.player.wings.getColorDesc(BaseBodyPart.COLOR_ID_MAIN) + " already are " + _color + " colored!");
 			} else {
 				outputText("\n\nYour wings can't be oiled.");
 				kGAMECLASS.output.addButtonDisabled(2, "Wings", "Your wings can't be oiled!");
@@ -62,9 +62,9 @@ package classes.Items.Consumables
 			} else if (game.player.wings.canOil2()) {
 				outputText("\n\nYour wings have [wingColor2] [wingColor2Desc].");
 				if (!game.player.wings.hasOil2Color(_color))
-					kGAMECLASS.output.addButton(3, "Wings 2", oil2Wings).hint("Apply oil to your wings' " + game.player.wings.getColorDesc(Wings.COLOR_ID_SECONDARY) + ".");
+					kGAMECLASS.output.addButton(3, "Wings 2", oil2Wings).hint("Apply oil to your wings' " + game.player.wings.getColorDesc(BaseBodyPart.COLOR_ID_2ND) + ".");
 				else
-					kGAMECLASS.output.addButtonDisabled(3, "Wings 2", "Your wings' " + game.player.wings.getColorDesc(Wings.COLOR_ID_SECONDARY) + " already are " + _color + " colored!");
+					kGAMECLASS.output.addButtonDisabled(3, "Wings 2", "Your wings' " + game.player.wings.getColorDesc(BaseBodyPart.COLOR_ID_2ND) + " already are " + _color + " colored!");
 			} else {
 				kGAMECLASS.output.addButtonDisabled(3, "Wings 2", "Your wings have no secondary color to apply skin oil to!");
 			}

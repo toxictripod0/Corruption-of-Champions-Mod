@@ -7,6 +7,14 @@ package classes.BodyParts
 	 */
 	public class BaseBodyPart 
 	{
+		public static const COLOR_ID_MAIN:int = 1;
+		public static const COLOR_ID_2ND:int  = 2;
+
+		public function getColorDesc(id:int):String
+		{
+			return "";
+		}
+
 		public function canDye():Boolean
 		{
 			return false;
