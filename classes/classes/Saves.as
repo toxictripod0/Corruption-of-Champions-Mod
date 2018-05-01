@@ -919,6 +919,7 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		// </mod>
 		saveFile.data.wingType = player.wings.type;
 		saveFile.data.wingColor = player.wings.color;
+		saveFile.data.wingColor2 = player.wings.color2;
 		saveFile.data.lowerBody = player.lowerBody.type;
 		saveFile.data.legCount = player.lowerBody.legCount;
 		saveFile.data.tailType = player.tail.type;
@@ -1010,6 +1011,9 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 			saveFile.data.statusAffects[i].value2 = player.statusEffect(i).value2;
 			saveFile.data.statusAffects[i].value3 = player.statusEffect(i).value3;
 			saveFile.data.statusAffects[i].value4 = player.statusEffect(i).value4;
+			if (player.statusEffect(i).dataStore !== null) {
+				saveFile.data.statusAffects[i].dataStore = player.statusEffect(i).dataStore;
+			}
 		}
 		//Set keyItem Array
 		for (i = 0; i < player.keyItems.length; i++)
@@ -1807,13 +1811,18 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 
 		player.wings.type = saveFile.data.wingType;
 		player.wings.color = saveFile.data.wingColor || "no";
+		player.wings.color2 = saveFile.data.wingColor2 || "no";
 		player.lowerBody.type = saveFile.data.lowerBody;
 		player.tail.type = saveFile.data.tailType;
 		player.tail.venom = saveFile.data.tailVenum;
 		player.tail.recharge = saveFile.data.tailRecharge;
 		player.hips.rating = saveFile.data.hipRating;
 		player.butt.rating = saveFile.data.buttRating;
-		
+
+		if (player.hasDragonWings() && (["", "no"].indexOf(player.wings.color) !== -1 || ["", "no"].indexOf(player.wings.color2) !== -1)) {
+			player.wings.color = player.skin.tone;
+			player.wings.color2 = player.skin.tone;
+		}
 
 		if (player.wings.type == 8) {
 			player.wings.restore();
@@ -2070,13 +2079,18 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 				CoC_Settings.error("Cannot find status affect '"+saveFile.data.statusAffects[i].statusAffectName+"'");
 				continue;
 			}
-			player.createStatusEffect(stype,
-					saveFile.data.statusAffects[i].value1,
-					saveFile.data.statusAffects[i].value2,
-					saveFile.data.statusAffects[i].value3,
-					saveFile.data.statusAffects[i].value4,
-					false);
-				//trace("StatusEffect " + player.statusEffect(i).stype.id + " loaded.");
+			var sec:StatusEffectClass = player.createStatusEffect(
+				stype,
+				saveFile.data.statusAffects[i].value1,
+				saveFile.data.statusAffects[i].value2,
+				saveFile.data.statusAffects[i].value3,
+				saveFile.data.statusAffects[i].value4,
+				false
+			);
+			if (saveFile.data.statusAffects[i].dataStore !== undefined) {
+				sec.dataStore = saveFile.data.statusAffects[i].dataStore;
+			}
+			//trace("StatusEffect " + player.statusEffect(i).stype.id + " loaded.");
 		}
 		//Make sure keyitems exist!
 		if (saveFile.data.keyItems != undefined)

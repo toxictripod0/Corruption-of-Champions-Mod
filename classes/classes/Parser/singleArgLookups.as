@@ -6,6 +6,7 @@
 		// tags not present in the singleArgConverters object return an error message.
 		//
 		//Calls are now made through kGAMECLASS rather than thisPtr. This allows the compiler to detect if/when a function is inaccessible.
+		import classes.BodyParts.BaseBodyPart;
 		import classes.GlobalFlags.kFLAGS;
 		import classes.GlobalFlags.kGAMECLASS;
 		import classes.Measurements;
@@ -126,6 +127,9 @@
 				"guy"						: function():* { return kGAMECLASS.player.mf("guy", "girl"); },
 				"wings"						: function():* { return kGAMECLASS.player.wingsDescript(); },
 				"wingcolor"					: function():* { return kGAMECLASS.player.wings.color; },
+				"wingcolor2"				: function():* { return kGAMECLASS.player.wings.color2; },
+				"wingcolordesc"				: function():* { return kGAMECLASS.player.wings.getColorDesc(BaseBodyPart.COLOR_ID_MAIN); },
+				"wingcolor2desc"			: function():* { return kGAMECLASS.player.wings.getColorDesc(BaseBodyPart.COLOR_ID_2ND); },
 				"tail"						: function():* { return kGAMECLASS.player.tailDescript(); },
 				"onetail"					: function():* { return kGAMECLASS.player.oneTailDescript(); },
 
