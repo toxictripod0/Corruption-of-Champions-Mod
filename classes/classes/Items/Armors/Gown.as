@@ -8,7 +8,6 @@ package classes.Items.Armors
 	import classes.Scenes.BimboProgression;
 	import classes.TimeAwareInterface;
 	import classes.lists.Gender;
-	import classes.lists.BreastCup;
 	import classes.CoC;
 	import classes.Items.MutationsHelper;
 
