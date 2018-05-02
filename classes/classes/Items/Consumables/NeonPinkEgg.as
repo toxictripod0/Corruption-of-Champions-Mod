@@ -5,6 +5,7 @@ package classes.Items.Consumables
 	import classes.Items.Consumable;
 	import classes.Items.ConsumableLib;
 	import classes.PerkLib;
+	import classes.Player;
 	import classes.PregnancyStore;
 
 	/**
@@ -13,12 +14,8 @@ package classes.Items.Consumables
 	 */
 	public class NeonPinkEgg extends Consumable 
 	{
-		private var pregnantChange:Boolean;
-
-		public function NeonPinkEgg(_pregnantChange:Boolean = false) 
+		public function NeonPinkEgg() 
 		{
-			pregnantChange = _pregnantChange;
-
 			super(
 				"NPnkEgg",
 				"NPnkEgg",
@@ -29,7 +26,7 @@ package classes.Items.Consumables
 			);
 		}
 
-		override public function useItem():Boolean
+		public function applyEffect(player:Player, pregnantChange:Boolean = false):Boolean
 		{
 			var tfSource:String = "neonPinkEgg";
 			mutations.initTransformation([2, 2]);
@@ -373,6 +370,11 @@ package classes.Items.Consumables
 			flags[kFLAGS.TIMES_TRANSFORMED] += changes;
 
 			return false;
+		}
+
+		override public function useItem():Boolean
+		{
+			return applyEffect(player);
 		}
 	}
 }
