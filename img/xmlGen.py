@@ -13,7 +13,9 @@ def getImageIDList():
 	ret = set()
 
 	scanPath = "../"
-	for root, dirs, files in os.walk(scanPath):
+	excludeDirs = set(["build-dep", "test", "bit101"])
+	for root, dirs, files in os.walk(scanPath, topdown=True):
+		dirs[:] = [d for d in dirs if d not in excludeDirs]
 		#print root, dir#, files
 		for fileN in files:
 			if fileN.endswith(".as"):
