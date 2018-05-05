@@ -467,9 +467,17 @@ package classes.Items.Consumables
 			if (rand(4) === 0 && player.hasGills() && changes < changeLimit) {
 				mutations.updateGills();
 			}
+			// Remove antennae
+			if (player.antennae.type !== Antennae.NONE && rand(3) === 0 && changes < changeLimit) {
+				mutations.removeAntennae();
+			}
+			// Remove wings
+			if ((player.wings.type !== Wings.NONE || player.rearBody.type === RearBody.SHARK_FIN) && rand(4) === 0 && changes < changeLimit) {
+				mutations.removeWings(tfSource);
+			}
 			//Bunny Breeder Perk?
 			//FAILSAAAAFE
-			if (changes == 0) {
+			if (changes === 0) {
 				if (player.lib100 < 100) changes++;
 				dynStats("lib", 1, "lus", (5 + player.lib / 7));
 				if (player.lib100 < 30) dynStats("lib", 1);
