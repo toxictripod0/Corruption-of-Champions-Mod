@@ -67,7 +67,8 @@ if (lust >= maxLust()) {
 			this.long = "Jojo is an anthropomorphic mouse with immaculate white fur.  Though he stands only four feet tall, he is covered in lean muscle and moves with incredible speed.  He wears loose white clothes wrapped in prayer beads and tattered prayer papers.";
 			this.race = "Mouse-Morph";
 			// this.plural = false;
-			this.createCock(7.5,1.8);
+			this.createCock(7.5, 1.8);
+			this.cocks[0].cockType = CockTypesEnum.HUMAN;
 			this.balls = 2;
 			this.ballSize = 1;
 			this.cumMultiplier = 1;
