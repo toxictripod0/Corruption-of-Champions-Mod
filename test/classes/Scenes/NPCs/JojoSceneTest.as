@@ -1,4 +1,5 @@
 package classes.Scenes.NPCs{
+	import classes.GlobalFlags.kFLAGS;
 	import classes.Scenes.PregnancyProgression;
 	import classes.helper.DummyOutput;
     import org.flexunit.asserts.*;
@@ -53,8 +54,21 @@ package classes.Scenes.NPCs{
 			
 			assertThat(cut.collectedOutput, hasItem(startsWith(ALWAYS_EXPECTED_TEXT)));
 			assertThat(cut.collectedOutput, hasItem(startsWith(WET_ONLY_EXPECTED_TEXT)));
-		} 
-    }
+		}
+		
+		[Test]
+		public function jojoCorruptFemalePCrapeUsesCockArea(): void {
+			kGAMECLASS.flags[kFLAGS.JOJO_STATUS] = 5;
+			kGAMECLASS.monster = new Jojo();
+			
+			player.createVagina(false, 1, 2);
+			player.lust = player.maxLust();
+			
+			cut.loseToJojo();
+			
+			assertThat(player.vaginas[0].vaginalLooseness, equalTo(3));
+		}
+	}
 }
 
 import classes.Scenes.NPCs.JojoScene;

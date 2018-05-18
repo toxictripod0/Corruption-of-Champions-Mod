@@ -1630,7 +1630,7 @@ public function jojoFollowerMeditate():void {
 						if (player.cockTotal() > 1) outputText("Your " + player.cockDescript(0) + " splatters the ground with cum repeatedly, until both your genders are raw and sore.  ");
 						else outputText("Your " + player.vaginaDescript(0) + " cums on him many more times it until it is sore and tender, dripping with spunk.  ");
 						outputText("You black out as Jojo cums AGAIN, forcing a river of spunk from your already over-filled uterus.");
-						player.cuntChange(monster.cocks[0].cockThickness, true);
+						player.cuntChange(monster.cockArea(0), true);
 						//Preggers chance!
 						player.knockUp(PregnancyStore.PREGNANCY_MOUSE, PregnancyStore.INCUBATION_MOUSE + 82, 101); //Jojo's kids take longer for some reason
 					}
