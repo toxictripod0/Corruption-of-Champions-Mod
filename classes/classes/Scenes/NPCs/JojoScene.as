@@ -130,7 +130,7 @@ public function tentacleJojo():Boolean {
 
 }
 override public function campCorruptJojo():Boolean {
-	return flags[kFLAGS.JOJO_STATUS] >= 5 && !player.hasStatusEffect(StatusEffects.NoJojo) && flags[kFLAGS.JOJO_DEAD_OR_GONE] == 0;
+	return flags[kFLAGS.JOJO_STATUS] >= 6 && !player.hasStatusEffect(StatusEffects.NoJojo) && flags[kFLAGS.JOJO_DEAD_OR_GONE] == 0;
 }
 
 private function jojoMutationOffer():void {
@@ -1596,6 +1596,8 @@ public function jojoFollowerMeditate():void {
 				outputText("When you're done you feel more clear-headed, but Jojo looks hornier than ever.");
 				dynStats("lib", -4);
 			}
+			
+			flags[kFLAGS.JOJO_STATUS] += 1;
 		}
 		
 		public function loseToJojo():void {

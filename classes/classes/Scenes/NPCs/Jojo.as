@@ -4,10 +4,16 @@
 	import classes.BodyParts.*;
 	import classes.BodyParts.Butt;
 	import classes.GlobalFlags.*;
+	import classes.internals.LoggerFactory;
+	import classes.internals.Serializable;
+	import mx.logging.ILogger;
 
-	public class Jojo extends Monster
+	public class Jojo extends Monster implements Serializable
 	{
+		private static const LOGGER:ILogger = LoggerFactory.getLogger(Jojo);
 
+		private static const SERIALIZATION_VERSION:int = 1;
+		
 		override public function defeated(hpVictory:Boolean):void
 		{
 			game.jojoScene.defeatedJojo(hpVictory);
@@ -122,6 +128,34 @@ if (lust >= maxLust()) {
 			}
 			this.drop = NO_DROP;
 			checkMonster();
+		}
+		
+		public function serialize(relativeRootObject:*):void 
+		{
+			
+		}
+		
+		public function deserialize(relativeRootObject:*):void 
+		{
+			
+		}
+		
+		public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 
+		{
+			switch(serializedDataVersion) {
+				case 0:
+					LOGGER.debug("Converting jojo from legacy save");
+					
+					if (flags[kFLAGS.JOJO_STATUS] === 5) {
+						LOGGER.info("Correcting jojo status (slave status is now 6)");
+						flags[kFLAGS.JOJO_STATUS] = 6;
+					}
+			}
+		}
+		
+		public function currentSerializationVerison():int 
+		{
+			return SERIALIZATION_VERSION;
 		}
 
 	}
