@@ -45,7 +45,7 @@
 					lust += 10;
 					break;
 				default:
-					outputText("Jojo frantically jerks his " + player.cockDescriptShort(0) + ", stroking the " + player.cockDescriptShort(0) + " as it leaks pre-cum at the sight of you.  ");
+					outputText("Jojo frantically jerks his " + this.cockDescriptShort(0) + ", stroking the " + this.cockDescriptShort(0) + " as it leaks pre-cum at the sight of you.  ");
 					lust += 15;
 			}
 
