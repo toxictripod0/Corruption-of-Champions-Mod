@@ -58,6 +58,13 @@ package classes.Scenes.NPCs{
 			
 			assertThat(cut.cocks[0].cockLength, equalTo(JOJO_FULL_CORRUPTION_COCK_LENGTH));
 		}
+		
+		[Test]
+		public function jojoSlaveCockLength(): void {
+			createCut(6);
+			
+			assertThat(cut.cocks[0].cockLength, equalTo(JOJO_FULL_CORRUPTION_COCK_LENGTH));
+		}
 	}
 }
 

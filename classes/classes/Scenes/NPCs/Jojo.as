@@ -115,7 +115,7 @@ if (lust >= maxLust()) {
 				this.cocks[0].cockLength += 3.5;
 				if (player.gender == 1 || player.gender == 3) this.ass.analLooseness = 3;
 			}
-			if (flags[kFLAGS.JOJO_STATUS] == 5) {
+			if (flags[kFLAGS.JOJO_STATUS] >= 5) {
 				this.lust += 50;
 				this.cocks[0].cockThickness += 1;
 				this.cocks[0].cockLength += 5.5;
