@@ -10,7 +10,11 @@
 	import classes.internals.*;
 
 	public class JojoScene extends NPCAwareContent implements TimeAwareInterface {
-
+		/**
+		 * If jojo's status reaches this, he is now the PCs slave.
+		 */
+		public static const JOJO_FULL_CORRUPTION_STATUS:int = 6;
+		
 		public var pregnancy:PregnancyStore;
 
 		public function JojoScene(pregnancyProgression:PregnancyProgression, output:GuiOutput)
@@ -130,7 +134,16 @@ public function tentacleJojo():Boolean {
 
 }
 override public function campCorruptJojo():Boolean {
-	return flags[kFLAGS.JOJO_STATUS] >= 6 && !player.hasStatusEffect(StatusEffects.NoJojo) && flags[kFLAGS.JOJO_DEAD_OR_GONE] == 0;
+	return isJojoCorrupted() && !player.hasStatusEffect(StatusEffects.NoJojo) && flags[kFLAGS.JOJO_DEAD_OR_GONE] == 0;
+}
+
+/**
+ * Has the PC completly corrupted jojo (jojo as slave)?
+ * <b>Note:</b> Based soley on NPC status, other flags and status effects are not checked. Used for legacy code.
+ * @return true if jojo is corrupted
+ */
+public function isJojoCorrupted(): Boolean {
+	return flags[kFLAGS.JOJO_STATUS] >= JOJO_FULL_CORRUPTION_STATUS;
 }
 
 private function jojoMutationOffer():void {

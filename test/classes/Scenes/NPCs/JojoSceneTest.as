@@ -68,6 +68,18 @@ package classes.Scenes.NPCs{
 			
 			assertThat(player.vaginas[0].vaginalLooseness, equalTo(3));
 		}
+		
+		[Test]
+		public function jojoNotFullyCorrupted(): void {
+			assertThat(cut.isJojoCorrupted(), equalTo(false));
+		}
+		
+		[Test]
+		public function jojoFullyCorrupted(): void {
+			kGAMECLASS.flags[kFLAGS.JOJO_STATUS] = 6;
+			
+			assertThat(cut.isJojoCorrupted(), equalTo(true));
+		}
 	}
 }
 
