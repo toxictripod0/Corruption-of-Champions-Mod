@@ -82,6 +82,15 @@ public class MainView extends Block {
 		ButtonBackground9,
 	];
 
+	/*
+	 * Feature switches
+	 */
+	
+	/*
+	 * Feature switch for sliding monster stat window.
+	 * Was disabled due to main text view issues.
+	 */
+	private static const FEATURE_ANIMATED_MONSTER_STATS: Boolean = false;
 
 	// Menu button names.
 	public static const MENU_NEW_MAIN:String   = 'newGame';
@@ -864,13 +873,15 @@ public class MainView extends Block {
 	public function endCombatView():void{
 		if (!monsterStatsView.moved) return;
 		else monsterStatsView.moved = false;
-		//Now animate the bar.
-		//var tmr:Timer = new Timer(30, 20);
-		//tmr.addEventListener(TimerEvent.TIMER, moveCombatViewBack);
-		//tmr.addEventListener(TimerEvent.TIMER_COMPLETE, function ():void {
+		
+		if (FEATURE_ANIMATED_MONSTER_STATS) {
+			var tmr:Timer = new Timer(30, 20);
+			tmr.addEventListener(TimerEvent.TIMER, moveCombatViewBack);
+			tmr.start();
+		}else{
 			nonCombatView();
-		//});
-		//tmr.start();
+		}
+
 		this.monsterStatsView.hide();
 	}
 	
@@ -889,13 +900,14 @@ public class MainView extends Block {
 		monsterStatsView.show();
 		if (monsterStatsView.moved) return;
 		else monsterStatsView.moved = true;
-		//Now animate the bar.
-		//var tmr:Timer = new Timer(30, 20);
-		//tmr.addEventListener(TimerEvent.TIMER, moveCombatView);
-		//tmr.addEventListener(TimerEvent.TIMER_COMPLETE, function ():void {
+		
+		if (FEATURE_ANIMATED_MONSTER_STATS) {
+			var tmr:Timer = new Timer(30, 20);
+			tmr.addEventListener(TimerEvent.TIMER, moveCombatView);
+			tmr.start();
+		}else{
 			combatView();
-		//});
-		//tmr.start();
+		}
 	}
 	
 	private function combatView(): void {
