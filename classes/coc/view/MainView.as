@@ -868,16 +868,20 @@ public class MainView extends Block {
 		//var tmr:Timer = new Timer(30, 20);
 		//tmr.addEventListener(TimerEvent.TIMER, moveCombatViewBack);
 		//tmr.addEventListener(TimerEvent.TIMER_COMPLETE, function ():void {
-			this.mainText.x = TEXTZONE_X;
-			this.mainText.width = TEXTZONE_W;
-			this.scrollBar.x = TEXTZONE_X + TEXTZONE_W;
-			this.textBGTan.width = TEXTZONE_W;
-			this.textBGWhite.width = TEXTZONE_W;
-			this.textBGTranslucent.width = TEXTZONE_W;
-			this.monsterStatsView.x = MONSTER_X;
+			nonCombatView();
 		//});
 		//tmr.start();
 		this.monsterStatsView.hide();
+	}
+	
+	private function nonCombatView(): void {
+		this.mainText.x = TEXTZONE_X;
+		this.mainText.width = TEXTZONE_W;
+		this.scrollBar.x = TEXTZONE_X + TEXTZONE_W;
+		this.textBGTan.width = TEXTZONE_W;
+		this.textBGWhite.width = TEXTZONE_W;
+		this.textBGTranslucent.width = TEXTZONE_W;
+		this.monsterStatsView.x = MONSTER_X;
 	}
 
 	public function updateCombatView():void {
@@ -889,16 +893,20 @@ public class MainView extends Block {
 		//var tmr:Timer = new Timer(30, 20);
 		//tmr.addEventListener(TimerEvent.TIMER, moveCombatView);
 		//tmr.addEventListener(TimerEvent.TIMER_COMPLETE, function ():void {
-			this.mainText.x = TEXTZONE_X;
-			this.mainText.width = TEXTZONE_W - MONSTER_W;
-			this.scrollBar.x = TEXTZONE_X + TEXTZONE_W - MONSTER_W;
-			this.textBGTan.width = TEXTZONE_W - MONSTER_W;
-			this.textBGWhite.width = TEXTZONE_W - MONSTER_W;
-			this.textBGTranslucent.width = TEXTZONE_W - MONSTER_W;
-			this.monsterStatsView.x = MONSTER_X - MONSTER_W;
-			this.monsterStatsView.refreshStats(kGAMECLASS);
+			combatView();
 		//});
 		//tmr.start();
+	}
+	
+	private function combatView(): void {
+		this.mainText.x = TEXTZONE_X;
+		this.mainText.width = TEXTZONE_W - MONSTER_W;
+		this.scrollBar.x = TEXTZONE_X + TEXTZONE_W - MONSTER_W;
+		this.textBGTan.width = TEXTZONE_W - MONSTER_W;
+		this.textBGWhite.width = TEXTZONE_W - MONSTER_W;
+		this.textBGTranslucent.width = TEXTZONE_W - MONSTER_W;
+		this.monsterStatsView.x = MONSTER_X - MONSTER_W;
+		this.monsterStatsView.refreshStats(kGAMECLASS);
 	}
 }
 }
