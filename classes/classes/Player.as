@@ -603,6 +603,9 @@
 				if (flags[kFLAGS.MINOTAUR_CUM_REALLY_ADDICTED_STATE] > 0) {
 					game.dynStats("lus", int(damage / 2));
 				}
+				if (flags[kFLAGS.YAMATA_MASOCHIST]>1 && flags[kFLAGS.AIKO_BOSS_COMPLETE] < 1) {
+					game.dynStats("lus", int(damage / 8));
+				}
 				//Prevent negatives
 				if (HP<=0){
 					HP = 0;
