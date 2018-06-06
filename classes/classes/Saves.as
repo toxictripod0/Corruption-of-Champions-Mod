@@ -90,14 +90,14 @@ public function loadSaveDisplay(saveFile:Object, slotName:String):String
 		holding += saveFile.data.short;
 		holding += "</b> - <i>" + saveFile.data.notes + "</i>\r";
 		holding += "    Days - " + saveFile.data.days + " | Gender - ";
-		if (saveFile.data.gender == 0)
-			holding += "U";
-		if (saveFile.data.gender == 1)
-			holding += "M";
-		if (saveFile.data.gender == 2)
-			holding += "F";
-		if (saveFile.data.gender == 3)
+		if (saveFile.data.cocks.length > 0 && saveFile.data.vaginas.length > 0)
 			holding += "H";
+		else if (saveFile.data.cocks.length > 0)
+			holding += "M";
+		else if (saveFile.data.vaginas.length > 0)
+			holding += "F";
+		else
+			holding += "U";
 		if (saveFile.data.flags != undefined) {
 			holding += " | Difficulty - ";
 			if (saveFile.data.flags[kFLAGS.GAME_DIFFICULTY] != undefined) { //Handles undefined
