@@ -141,6 +141,13 @@ package classes.Scenes.Areas.Forest
 			outputText("Yamata’s hair whips toward you with a blinding speed, each of the snakes sinking its fangs into a different part of you and lifting you into the air. “You’re MINE!” she yells, bringing you in close as her hair begins to constrict around you. You can feel the bite wounds begin to tingle, and look in horror as you see that each of the snakes is injecting her corrupted purple flames directly into your body! If you can’t escape soon, you’ll be reduced to a gibbering masochistic heap in no time!\n\n"
 			+"You are bound by Yamata’s snake-like hair. The only thing you can do is try to struggle free!\n\n"
 			+"As the venomous flames course through your system, you start to become more and more turned on by the thought of being abused and degraded...");
+			
+			player.dynStats("cor", 2);
+			player.addCombatBuff('str',-10);
+			player.addCombatBuff('spe',-10);
+			var damage:int = 40+25/(rand(3)+1);
+			player.takeDamage(damage, true);
+			yamataSodomasochistApply(damage);
 			this.createStatusEffect(StatusEffects.YamataEntwine, 0, 0, 0, 0);
 			combatRoundOver();
 		}
@@ -177,6 +184,7 @@ package classes.Scenes.Areas.Forest
 		{
 			outputText("You lash out with reserves of strength you didn’t know you had, tearing yourself away from her with a few stray hairs clinging to your body still as you tumble away. As you move back into a defensive stance, Yamata looks incredulously at the frayed clump of hair where you broke free from her, then shouts, “You fucking did it now! I’m gonna carve you to ribbons!” In spite of her threats, her hair seems to repair itself, easily growing back into its monstrous snake form.\n\n");
 			player.removeStatusEffect(StatusEffects.YamataEntwine);
+			outputText("<b>You feel relief as Yamata's serpents finally release their hold, though you can still feel their corruption pulsing in your veins.</b>\n\n");
 		}
 		
 		public function entwineWait():void

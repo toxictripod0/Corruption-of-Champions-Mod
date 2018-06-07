@@ -1575,6 +1575,28 @@ package classes.Scenes.Combat
 					outputText("\n\n");
 				}
 			}
+			if (player.hasStatusEffect(StatusEffects.AikoLightningArrow)) {
+				if (player.statusEffectv1(StatusEffects.AikoLightningArrow) <= 0) {
+					player.removeStatusEffect(StatusEffects.AikoLightningArrow);
+					outputText("<b>You feel stronger as Aiko's lightning finally fades, though the arrow is still lodged in your side.</b>\n\n");
+					player.addCombatBuff('str',6);
+					player.addCombatBuff('spe',6);
+				}
+				//Shock effect:
+				else {
+					outputText("You fall to one knee as Aiko's Lighting pulses through your limbs, Oh how this hurts...");
+					player.takeDamage(15, true);
+					outputText("\n\n");
+				}
+			}
+			if (player.hasStatusEffect(StatusEffects.YamataEntwine)) {
+				//Corrupting entwine effect:
+				outputText("Yamata's serpentine hair continues to pump their corrupted flames into you!  ");
+				player.takeDamage(8);
+				player.takeLustDamage(7, true);
+				player.dynStats("cor", 1);
+				flags[kFLAGS.YAMATA_MASOCHIST]++;
+			}
 			//Harpy lip gloss
 			if (player.hasCock() && player.hasStatusEffect(StatusEffects.Luststick) && (monster.short == "harpy" || monster.short == "Sophie")) {
 				//Chance to cleanse!

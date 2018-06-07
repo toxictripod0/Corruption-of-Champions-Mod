@@ -86,7 +86,7 @@ package classes.Scenes.Areas.Forest
 				+"<i>“Oh. Right…”</i> Aiko says, making a show of trying to look innocent. <i>“What can I say, I just couldn’t resist! Like I said, you’re the first newcomer I’ve seen in quite some time. There’s only so much amusement to be found when your only company is a tree. So then, newcomer, I’ve given you my name, why don’t you tell me yours?”</i>\n\n"
 				+"You give her your name, somewhat relieved to find another resident of this world that is interested in more than beating you into submission and raping you—at least so far.\n\n<i>“[name], huh? Well, [name], would it be terribly too much trouble for you to give me back my Ball?”</i> she says, pointing to the white ball in your hand. Wary of simply taking anything at face value, you ask her why it’s so important to her, and what exactly she’s guarding all the way out here in the wilderness."
 				+"s the chosen guardian of my clan, it’s my duty to protect these woods, and all the kitsune who reside in it,”</i> she explains, gesturing around. <i>“It’s not as glamorous as it all sounds,”</i> she assures you, <i>“I mostly just use my illusions to scare off imps and other demonic vermin. And tourists. Like you!”</i>"
-				+"You are a little irritated about being called a <i>“tourist”</i> of all things,"
+				+"You are a little irritated about being called a “tourist” of all things,"
 				+(player.cor>20?"and tell her as much with a slight scowl,":"") + " but you nod your head " + (player.cor<=20?"politely":"")
 				+", now understanding that the giant was merely an illusion cast by this girl.\n\n"
 				+"<i>“Of course, I’m not afraid to get rough when I have to. So tell me, [name], do I have to get rough?”</i>");
@@ -226,7 +226,7 @@ package classes.Scenes.Areas.Forest
 		else if (flags[kFLAGS.AIKO_BOSS_COMPLETE] >0 && flags[kFLAGS.AIKO_BOSS_OUTRO] == 0) {
 			outputText("As you make your way into the bioluminescent deepwoods, you remember you had a discussion to do with Aiko, she was "+(flags[kFLAGS.AIKO_BOSS_COMPLETE] == 1 ? "really glad the nightmare was over":"really angry you let her sister go")+".\n\n"
 			+"You move across the bushes and you notice a familiar presence. You lean your back on a tree as you see a blue flame moving towards you. Immediately after that, the flame explodes and Aiko materializes in front of you. She's very happy to see you/she looks bittersweet."
-			+"<i>“Hey, playerName... I... I want to thank you again for your help down there... I'm a failure as a guardian, it was my duty to prevent Yamata from going back there and I got outsmarted... Don't worry, I'm not letting it happen again. Look here.”</i> She solemnly states as she extend her tails. With a hint of surprise, you notice she has one more.\n\n"
+			+"<i>“Hey, [name]... I... I want to thank you again for your help down there... I'm a failure as a guardian, it was my duty to prevent Yamata from going back there and I got outsmarted... Don't worry, I'm not letting it happen again. Look here.”</i> She solemnly states as she extend her tails. With a hint of surprise, you notice she has one more.\n\n"
 			+"You smile and congratulate with the now eight-tails as she tries to hide a deep crimson blush on her face. She seems to be really convinced to become a nine tails and you are very happy for her. You spend the remaining time happily chatting with your kitsune girl."
 			+"<i>“See you around, [name].”</i> She lets you go after a quick peck on the cheek. As you see her rush away, you notice she still has that Muramasa katana tied to her hip. That blade is as strong as ever, but it seems that Aiko's unaffected. Her magic is really strong indeed. Still, you are still worried, you better keep an eye on that.");
 			flags[kFLAGS.AIKO_BOSS_OUTRO]++;
@@ -351,7 +351,7 @@ package classes.Scenes.Areas.Forest
 					addButton(2, "Both", aikoTalkAndSex).hint("Have a chat and then some fun times with foxy Aiko after!");
 					addButton(3, "Spar", aikoSpar).hint("Exchange some friendly blows.");
 					addButton(4, "Fight", aikoFight).hint("Attack that fox bitch!");
-					addButton(9, "Toggle Corruption", toggleCorruption).hint(flags[kFLAGS.AIKO_CORRUPTION_ACTIVE] == 0 ? "Aiko's corruption is disabled":"Aiko's corruption is enabled");
+					addButton(9, "Corruption "+(flags[kFLAGS.AIKO_CORRUPTION_ACTIVE] ==0?"off":"on"), toggleCorruption).hint(flags[kFLAGS.AIKO_CORRUPTION_ACTIVE] == 0 ? "Aiko's corruption is disabled":"Aiko's corruption is enabled");
 					addButton(14, "Leave", leave).hint("Leave the clearing");
 			
 			}
@@ -424,11 +424,7 @@ package classes.Scenes.Areas.Forest
 	
 	private function toggleCorruption():void
 	{
-		if (flags[kFLAGS.AIKO_CORRUPTION_ACTIVE] == 0) {
-			flags[kFLAGS.AIKO_CORRUPTION_ACTIVE] = 1;
-		} else {
-			flags[kFLAGS.AIKO_CORRUPTION_ACTIVE] = 0;
-		}
+		flags[kFLAGS.AIKO_CORRUPTION_ACTIVE] ^= 1;
 		flags[kFLAGS.AIKO_TIMES_MET]--;
 		doNext(encounterAiko);
 	}
@@ -607,28 +603,16 @@ package classes.Scenes.Areas.Forest
 		doNext(camp.returnToCampUseOneHour);
 	}
 	
-	private function aikoE1Fight():void
-	{
-		clearOutput();
-		spriteSelect(SpriteDb.s_aiko);		
-		outputText("When it becomes apparent that you won’t be talked out of fighting, Aiko lets out a disappointed sigh.\n\n"
-		+"<i>“I was really hoping to avoid a fight,”</i> she says, holding her hands up defensively, taking a few small steps backward. <i>“But I really need that ball back, and if I can’t convince you... I’ll just have to force you to give it up.”</i>");
-		flags[kFLAGS.AIKO_FIRST_CHOICE] = 5;
-		flags[kFLAGS.AIKO_HAS_FOUGHT] = 1;
-		flags[kFLAGS.AIKO_AFFECTION] -= 2;
-		startCombat(new Aiko());
-	}
-	
 	private function aikoTouchFluffTail():void
 	{
 		clearOutput();
 		spriteSelect(SpriteDb.s_aiko);
 		outputText("<i>“Wh-what?!”</i> Aiko shouts, a deep crimson blush on her cheeks.\n\n"
 		+"You calmly repeat that you’d like to pet her fluffy tails, which only seems to deepen her blush.\n\n"
-		+"<i>“O-oh… th-that’s what I thought you said,”</i> she says, trying to hide her blush with her hands, looking [if (player.weapon != WeaponLib.FISTS]> 64)up|down] at you cutely between her fingers. <i>“W-well… I suppose… you could touch my tails… for just a little while…”</i>\n\n"
-		+"You aren’t sure what about your request prompted such a drastic change in behavior from her, but the way she suddenly began acting so shy is quite cute. Aiko meekly strolls over to you, and politely instructs you to sit down, fidgeting apprehensively. You obey her request, lowering yourself down to the ground, and Aiko gently turns around, her many fluffy tails stroking along your body as she does so. She reaches back and pulls the bundle aside, which gives you a perfect line of sight to her gorgeous, voluptuous ass and the bright red spiral tattoos that adorn it, just before she daintily drops herself [if (![isbipedal]||[tallness]<48)onto the ground next to you|into your lap].\n\n"
+		+"<i>“O-oh… th-that’s what I thought you said,”</i> she says, trying to hide her blush with her hands, looking [if ("+"[tallness]"+"> 64)up|down] at you cutely between her fingers. <i>“W-well… I suppose… you could touch my tails… for just a little while…”</i>\n\n"
+		+"You aren’t sure what about your request prompted such a drastic change in behavior from her, but the way she suddenly began acting so shy is quite cute. Aiko meekly strolls over to you, and politely instructs you to sit down, fidgeting apprehensively. You obey her request, lowering yourself down to the ground, and Aiko gently turns around, her many fluffy tails stroking along your body as she does so. She reaches back and pulls the bundle aside, which gives you a perfect line of sight to her gorgeous, voluptuous ass and the bright red spiral tattoos that adorn it, just before she daintily drops herself [if (!player.isBiped()|| player.tallness < 48)onto the ground next to you|into your lap].\n\n"
 		+"<i>“O-okay… please be gentle… it’s my first time,”</i> she says, drawing the soft and bushy cluster of tails into her lap where you can reach them easily.\n\n"
-		+"You have no idea what she’s talking about, but who cares, fluffy tails! Your hands move down to gently caress them, and a giddy grin crosses your lips as you begin to stroke each tail, feeling the luxurious softness tickle your palms as your fingers slide along the silvery fur. In your oblivious excitement, you barely register as Aiko’s head thuds heavily against your [if (![isbipedal]||[tallness]<64)shoulder|chest]. You are entirely engrossed in how incredibly soft these tails are, gently sliding your hand from base to tip over and over again, even occasionally lifting one up to rub your cheek against it.\n\n"
+		+"You have no idea what she’s talking about, but who cares, fluffy tails! Your hands move down to gently caress them, and a giddy grin crosses your lips as you begin to stroke each tail, feeling the luxurious softness tickle your palms as your fingers slide along the silvery fur. In your oblivious excitement, you barely register as Aiko’s head thuds heavily against your [if (!player.isBiped()|| player.tallness < 64)shoulder|chest]. You are entirely engrossed in how incredibly soft these tails are, gently sliding your hand from base to tip over and over again, even occasionally lifting one up to rub your cheek against it.\n\n"
 		+"When you finally take a moment to look at Aiko, you are shocked to find her practically comatose, her eyes rolled back in pleasure and a thin trail of spittle dripping down her chin. <i>“nn… don’t stop…”</i> she whispers, gently sucking the spittle back into her mouth, her fingers softly clawing at your chest.\n\n"
 		+"Understanding dawns on you now as you take her tails into your hands once more, running your fingertips through the fur and grinning a little. It seems Aiko is enjoying this a lot more than you would have thought! You can hardly complain, cradling the cute fox girl and her many tails in your arms and stroking them as you laugh lightly, one hand moving to gently scratch her ears."
 		+"You continue to pet her for the better part of an hour, feeling as if the weight of this world’s corruption is being lifted from your shoulders. Finally, sadly, you tell her that you need to return and check up on your camp. Honoring your end of the bargain, you place her ball back into her hands and begin on your way.\n\n"
@@ -640,6 +624,18 @@ package classes.Scenes.Areas.Forest
 		player.dynStats("lus", 10+rand(11), "cor", -5);
 		doNext(camp.returnToCampUseOneHour);
 	}
+	
+	private function aikoE1Fight():void
+	{
+		clearOutput();
+		spriteSelect(SpriteDb.s_aiko);		
+		outputText("When it becomes apparent that you won’t be talked out of fighting, Aiko lets out a disappointed sigh.\n\n"
+		+"<i>“I was really hoping to avoid a fight,”</i> she says, holding her hands up defensively, taking a few small steps backward. <i>“But I really need that ball back, and if I can’t convince you... I’ll just have to force you to give it up.”</i>");
+		flags[kFLAGS.AIKO_FIRST_CHOICE] = 5;
+		flags[kFLAGS.AIKO_HAS_FOUGHT] = 1;
+		flags[kFLAGS.AIKO_AFFECTION] -= 2;
+		startCombat(new Aiko());
+	}
 		
 	internal function aikoLosesIntro():void
 	{
@@ -648,7 +644,7 @@ package classes.Scenes.Areas.Forest
 		outputText("Aiko drops to one knee, panting heavily and supporting herself with her bow. Mustering up the last reserves of her willpower, she lines up one last arrow and releases it, but her strength is clearly spent—the arrow lobs through the air with all the grace of a drunken bumblebee, flying wide and clattering against the trunk of a tree.\n\n"
 		+"<i>“You… you’re a lot stronger than I thought… I admit, I underestimated you...”</i> she says between breaths, collapsing as her longbow disappears out from under her.\n\n"
 		+"<i>“Wha… what are you going to do?”</i>\n\n"
-		+"That’s a good question. She’s at your mercy now, so you could do just about whatever you want to her. [if (player.cor >= 40)An evil smirk crosses your face as you think about teaching this little bitch a lesson for crossing you.]\n\n Will you rape her, and if so what will you do?");
+		+"That’s a good question. She’s at your mercy now, so you could do just about whatever you want to her. [if (player.isCorruptEnough(40))An evil smirk crosses your face as you think about teaching this little bitch a lesson for crossing you.]\n\n Will you rape her, and if so what will you do?");
 		
 		flags[kFLAGS.AIKO_FIGHT_WON] = 1;
 		doNext(aikoRapeSex);
@@ -728,20 +724,22 @@ package classes.Scenes.Areas.Forest
 		combat.cleanupAfterCombat();
 	}
 	
-		
+	/////////////////////////////////////////////////////////////////////
+	////////////////////////ENCOUNTER TWO////////////////////////////////
 	private function aikoTalkE2():void
 	{
 		clearOutput();
 		spriteSelect(SpriteDb.s_aiko);
 		outputText("You smile and tell her you’d just like to talk. She smiles back, suppressing a slight look of disappointment, and nods, saying, <i>“Oh, really? Well, I guess I could use the company.”</i>\n\n"
 		+"She takes a seat on the grass, gesturing for you to do the same. <i>“Are you hungry?”</i> she asks, snapping her fingers and causing a small wooden box to appear in her hands with a puff of smoke. <i>“I don’t have much, but I’ll share with you.”</i>\n\n"
-		+"You thank her for her offer, looking into the box as she opens it for you. Raw fish and cold rice? You’re not sure if that sounds very appetizing to you, [if(player.isPureEnough(33))"+ (flags[kFLAGS.AIKO_AFFECTION]>=57?"but you don’t want to be impolite, so you carefully pick out a few pieces that look tasty and give her a smile. It’s surprisingly good, and she seems pleased that you liked it.":"but you don’t want to be impolite, so you carefully take a piece and put it in your mouth and... SPICY!! Aiko giggles at your unfortunate circumstances as you fan your mouth desperately to no avail, and you can’t help feeling she may have planned it from the start. At least she’s nice enough to offer you a drink.")+"|so you give her a slightly disgusted look and push the box back over to her. She seems a little insulted, but doesn’t bring it up again.\n\n"
+		+"You thank her for her offer, looking into the box as she opens it for you. Raw fish and cold rice? You’re not sure if that sounds very appetizing to you, [if(player.isPureEnough(33))"+ (flags[kFLAGS.AIKO_AFFECTION]>=57?"but you don’t want to be impolite, so you carefully pick out a few pieces that look tasty and give her a smile. It’s surprisingly good, and she seems pleased that you liked it.":"but you don’t want to be impolite, so you carefully take a piece and put it in your mouth and... SPICY!! Aiko giggles at your unfortunate circumstances as you fan your mouth desperately to no avail, and you can’t help feeling she may have planned it from the start. At least she’s nice enough to offer you a drink.")+"|so you give her a slightly disgusted look and push the box back over to her. She seems a little insulted, but doesn’t bring it up again.]\n\n"
 		+"You regale her with tales of your adventures, and Aiko returns in kind with a few anecdotes about her life growing up in the kitsune village, and what it’s like to be its protector. The two of you talk for nearly an hour, but eventually you tell her that you should be going back to check on your camp soon."
 		+"<i>“Okay,”</i> she says cheerfully, taking care of the cleanup with a snap of her fingers. <i>“Be sure to visit again soon!”</i>"
 		+"You tell her you’ll certainly try, and wave to her as you set off.");
 		
 		flags[kFLAGS.AIKO_AFFECTION] += 3;
 		if (flags[kFLAGS.AIKO_CORRUPTION_ACTIVE]==1) flags[kFLAGS.AIKO_CORRUPTION] -= 5;
+		if (flags[kFLAGS.AIKO_CORRUPTION]<0) flags[kFLAGS.AIKO_CORRUPTION] = 0;
 		doNext(camp.returnToCampUseOneHour);
 	}
 		
@@ -753,11 +751,11 @@ package classes.Scenes.Areas.Forest
 		if (flags[kFLAGS.AIKO_AFFECTION]>=55) {
 			outputText("She smiles a bit in return, giggling at your forwardness.\n\n" 
 			+"<i>“Oh [name], what kind of girl do you take me for?”</i> she teases, waving her hand nonchalantly. Seeing your slightly disappointed expression, she smiles and says, <i>“Relax, I’m only kidding... Truthfully, I could use a little stress relief.”</i>\n\n"
-			+"She walks over to you, [if (player.weapon != WeaponLib.FISTS]>64)leaning up and] placing a small kiss on your cheek that leaves behind a light tingling sensation as she starts to help you out of your [armor] carefully.");
+			+"She walks over to you and [if ("+"[tallness]"+" >64)standing on tiptoes,] gives you a peck on your cheek that leaves behind a light tingling sensation as she starts to help you out of your [armor] carefully.");
 			aikoConsSex();
 		}
 		else if(flags[kFLAGS.AIKO_AFFECTION]>=50) {
-			outputText("She gives you a big grin and says <i>“Straight to the point, huh? Well, at least you’re a [man] who knows what [he] wants.”</i>\n\n"
+			outputText("She gives you a big grin and says <i>“Straight to the point, huh? Well, at least you’re a "+player.mf("man", "woman")+" who knows what "+player.mf("he", "she")+" wants.”</i>\n\n"
 			+"She stops for a moment and makes a big show of <i>“thinking about it,”</i> then finally puts a hand on her hip, letting one shoulder of her robe drop down, exposing the silky tan flesh to tease you. You can make a few guesses about what her final answer is as she saunters up to you and begins to help you out of your armorName, her seven tails swaying around hypnotically while she works.");
 			aikoConsSex();
 		} else {
@@ -799,7 +797,7 @@ package classes.Scenes.Areas.Forest
 		player.dynStats("cor", -5);
 		flags[kFLAGS.AIKO_AFFECTION] = 50;
 		if (flags[kFLAGS.AIKO_CORRUPTION_ACTIVE]==1) flags[kFLAGS.AIKO_CORRUPTION] -= 5;
-
+		if (flags[kFLAGS.AIKO_CORRUPTION]<0) flags[kFLAGS.AIKO_CORRUPTION] = 0;
 		doNext(camp.returnToCampUseOneHour);
 	}
 	
@@ -874,7 +872,7 @@ package classes.Scenes.Areas.Forest
 			"<i>“Fine, but you stay over there. You better not try anything.”</i>\n\n":
 			"<i>“Really, just talk? Give me one good reason why I should trust you.”</i>\n\n"+
 			"You hold up your hands and remind her that she’s the one with her bow trained on you. "+
-			"[if (player.weapon != WeaponLib.FISTS)Your weapon isn’t even in your hand, and she’d have already shot you by the time you could reach it.|You don’t even have a weapon."+
+			"[if (player.weapon != WeaponLib.FISTS)Your weapon isn’t even in your hand, and she’d have already shot you by the time you could reach it.|You don’t even have a weapon.]"+
 			"\n\nThis seems to relax her a bit, but she still keeps her bow aimed at your chest, her finger gently twitching as if waiting for you to make a move.\n\n"+
 			"<i>“Fine, but you stay over there. You better not try anything.”</i>\n\n")
 			+"You agree to her terms, keeping your distance from her. An awkward silence stretches on for some time before you finally decide to break the tension, mentioning Aiko’s skills with a bow.\n\n"
@@ -894,6 +892,7 @@ package classes.Scenes.Areas.Forest
 		
 		flags[kFLAGS.AIKO_AFFECTION] += 3;
 		if (flags[kFLAGS.AIKO_CORRUPTION_ACTIVE]==1) flags[kFLAGS.AIKO_CORRUPTION] -= 5;
+		if (flags[kFLAGS.AIKO_CORRUPTION]<0) flags[kFLAGS.AIKO_CORRUPTION] = 0;
 		doNext(camp.returnToCampUseOneHour);
 	}
 	
@@ -931,7 +930,7 @@ package classes.Scenes.Areas.Forest
 		flags[kFLAGS.AIKO_AFFECTION] += 3;
 		if (flags[kFLAGS.AIKO_CORRUPTION_ACTIVE] == 1)
 			flags[kFLAGS.AIKO_CORRUPTION] -= 5;
-		
+		if (flags[kFLAGS.AIKO_CORRUPTION]<0) flags[kFLAGS.AIKO_CORRUPTION] = 0;
 		//[Giant Bees][Tentacle Beasts][Goblins][Akbal][Kitsune Culture][Aiko][Mansion Sisters][?Ayane?][Nine-Tails][Aiko's Family] [Archery]--[Leave]
 		menu();
 		addButton(0, "Giant Bees", talkBees).hint("Ask her about the Giant Bees in the forest");
@@ -997,8 +996,8 @@ package classes.Scenes.Areas.Forest
 		outputText("You decide to ask Aiko about some of the local fauna. You ask whether she’s ever had any interactions with the ubiquitous goblin-folk that seem to be all over the place.\n\n"
 		+"<i>“Goblins... boy, that’s a sad story. It’s a real shame what happened to them; they used to be so smart. Nowadays, as I’m sure you’ve noticed, they’re really only interested in one thing. There’s still a few who do the science thing, but even that is just geared toward making them better at screwing.”</i>\n\n"
 		+"She shrugs, shaking her head sadly.\n\n"
-		+"<i>“They don’t really bother us much, but there’s this one in particular that occasionally comes around to make vague passive-aggressive threats. She talks a big game, but I honestly doubt she’s interested in a fight. Anyway, I’d just try to steer clear of them. They’re really not that threatening, but they’re kind of territorial, [if (player.hasCock()) especially when ‘fresh meat’ moves in, if you catch my meaning.|especially if a female encroaches on what they think is ‘their turf’.]”\n\n"
-		+"The two of you discuss some of your run-ins with goblinfolk back and forth for a while, and then you ");
+		+"<i>“They don’t really bother us much, but there’s this one in particular that occasionally comes around to make vague passive-aggressive threats. She talks a big game, but I honestly doubt she’s interested in a fight. Anyway, I’d just try to steer clear of them. They’re really not that threatening, but they’re kind of territorial, [if (player.hasCock()) especially when “fresh meat” moves in, if you catch my meaning.|especially if a female encroaches on what they think of as “their turf”.]”\n\n"
+		+"The two of you discuss some of your run-ins with goblin-folk back and forth for a while, and then you ");
 		if (talkAndSex) {
 			outputText("bring up your previous proposal, asking if she’s still interested.");
 			doNext(aikoSex);
@@ -1024,7 +1023,7 @@ package classes.Scenes.Areas.Forest
 			doNext(camp.returnToCampUseOneHour);
 		}
 	}
-	private function  talkCulture():void
+	private function talkCulture():void
 	{
 		clearOutput();
 		spriteSelect(SpriteDb.s_aiko);
@@ -1041,7 +1040,7 @@ package classes.Scenes.Areas.Forest
 		(flags[kFLAGS.AIKO_AFFECTION]>=65?"She blushes a little and says, <i>“Well, that’s a strong possibility...”</i>":"She grins and replies back just as coyly, <i>“Could be... Maybe you’re just gullible.”</i>")+"\n\n":"")
 		+"A thought suddenly comes to mind, and you realize that you’ve never encountered a male of her species. You ask whether all kitsune are female, or if you’ve just been unlucky.\n\n"
 		+"<i>“Yes. No... um, both? I mean... Yes, most kitsune are... ‘female’ by birth, I suppose, but gender doesn’t really mean anything to us. The distinction between males and females is... a difficult concept for most kitsune to grasp. To us, it’s more like deciding what clothes to wear today. Just like how people can prefer certain styles of clothes, most kitsune prefer spending their time in one form or another. Vaginas are just all the rage right now.”</i>\n\n"
-		+"You snort a bit, nodding, and tell her that you feel like you understand a bit more about her people now. ");
+		+"You snort a bit, nodding, and tell her that you feel like you understand a bit more about her people now.\n\n");
 		flags[kFLAGS.AIKO_TALK_CULTURE]++;
 		if (talkAndSex) {
 			outputText("The conversation gradually drifts toward other topics before you remind her of your other proposal again.");
@@ -1059,11 +1058,11 @@ package classes.Scenes.Areas.Forest
 		+"<i>“Go ahead. No guarantees that I’ll answer them all though,”</i> she replies, crossing her arms and grinning coyly.\n\n"
 		+"You start by asking her about the strange ball that you found the first time you met her. It seemed pretty important to her; what exactly was so significant about it?\n\n"
 		+(player.kitsuneScore() > 0? "<i>“My Ball? You are a kitsune yourself, shouldn't you know how our spirit vessel works?”</i> she says, widening her eyes. You tell her that you forgot how it works. She giggles a bit and then she playfully and lightly hits your forehead like she's knocking on a door. <i>“Forgetful, aren't we? hehehe. It's very important for us, let's see, where should I begin?\n\n":
-		"<i>“Oh, my Ball... [if (flags[kFLAGS.AIKO_TALK_AIKO]>0)I thought I explained that already?]\n\n"+
+		"<i>“Oh, my Ball... [if (flags[kFLAGS.AIKO_TALK_AIKO]>0)I thought I explained that already? ]"+
 		"Every kitsune has one,”</i> she explains. <i>“It’s difficult to explain to a non-kitsune, but... Let me see if this works.\n\n")
 		+"The Ball is like a... spirit vessel. If someone takes it from us, our link to it slowly fades away until...”</i> She shivers, pausing for a moment. <i>“Let me put it this way. The Ball contains a part of our soul... losing our link to it is... traumatic.”</i>\n\n"
 		+"She doesn’t seem to be too keen on elaborating, but you grimace, imagining the implications. You decide to change the subject, bringing up her tails. She certainly has a lot of them; more than you’ve seen on the other kitsune you’ve encountered.\n\n"
-		+"<i>“[if (flags[kFLAGS.AIKO_TALK_AIKO]>0)Yeah, did you forget?] That’s because I’m a [if (flags[kFLAGS.AIKO_BOSS_COMPLETE] >0)eight|seven]-tails.”</i> she explains, smiling as she runs a hand along the length of one of her tails. <i>“We’re born with just one, but it splits as we grow older and our magic and wisdom gets stronger. The number of tails we have is something of a status symbol. My [if (flags[kFLAGS.AIKO_BOSS_COMPLETE] >0)seventh|last] tail came in just a little while after the demons showed up[if (flags[kFLAGS.AIKO_BOSS_COMPLETE] >0), and my last one after we beat my sister as you should know].”</i>\n\n"
+		+"<i>“[if (flags[kFLAGS.AIKO_TALK_AIKO]>0)Yeah, did you forget? ]That’s because I’m [if (flags[kFLAGS.AIKO_BOSS_COMPLETE] >0)an eight|a seven]-tails.”</i> she explains, smiling as she runs a hand along the length of one of her tails. <i>“We’re born with just one, but it splits as we grow older and our magic and wisdom gets stronger. The number of tails we have is something of a status symbol. My [if (flags[kFLAGS.AIKO_BOSS_COMPLETE] >0)seventh|eighth] tail came in just a little while after the demons showed up[if (flags[kFLAGS.AIKO_BOSS_COMPLETE] >0), and my last one after we beat my sister as you well know].”</i>\n\n"
 		+"You pause for a moment, wondering if your next question might be too insulting. Taking a deep breath, you resolve to take the risk, and you ask her if kitsune are some type of demon.\n\n"
 		+"<i>“What? No!”</i> she blurts, then stops, composing herself. <i>“Sorry, sorry... [if (flags[kFLAGS.AIKO_TALK_AIKO]>0)I’ll explain it again. Try to keep up this time, okay?] No, we’re not. At least... we’re not like THEM,”</i> she says, wrapping her arms around herself reflexively, almost as a defensive gesture. <i>“Thinking about the similarities is uncomfortable to say the least, but it’s just our nature. We don’t mean any harm by it, I promise. We get a bad rap because our magic is sustained on life energy, and sometimes we get it from... well, sex. Alright, more than just sometimes, if I’m being honest. The demons though, they use their power to corrupt, they steal away people’s souls and do everything in their power to turn the whole world into their twisted playground.”</i>\n\n"
 		+"You nod in understanding, [if (flags[kFLAGS.AIKO_AFFECTION]>=65)telling her that you know she’s more than just some succubus looking for a fix, and that you’re sorry if you offended her.|glad to know that she’s not just a succubus looking for a fix.] She seems to cheer up a bit, and says, <i>“Don’t worry... It’s something I’ve gotten used to. We had a bad reputation long before the demons arrived.”</i>\n\n"
@@ -1087,7 +1086,7 @@ package classes.Scenes.Areas.Forest
 		+"<i>“Th-that’s different! I’m the guardian, I HAVE to be out here to protect the village! I... It’s my responsibility to act as a liaison!”</i> she says, blushing terribly.\n\n"
 		+"<i>“A-anyway, at least I don’t go overboard like they do.”</i>\n\n"
 		+"You ask what she means by “overboard.”\n\n"
-		+"<i>“Those three just don’t know when enough is enough. They lure travellers to that mansion of theirs, and... well once you’re past the threshold, you’re already a part of the illusion. If they wanted to keep you there, there’s nothing you can do about it. You wouldn’t be the first hapless traveller to get spirited away by amorous kitsune, you know. We’re not all as nice as I am.”</i>\n\n"
+		+"<i>“Those three just don’t know when enough is enough. They lure travelers to that mansion of theirs, and... well once you’re past the threshold, you’re already a part of the illusion. If they wanted to keep you there, there’s nothing you can do about it. You wouldn’t be the first hapless traveler to get spirited away by amorous kitsune, you know. We’re not all as nice as I am.”</i>\n\n"
 		+"You chuckle a bit, thanking Aiko for the warning. It seems you still have a lot to learn when it comes to kitsune.");
 		if (talkAndSex) {
 			outputText("You tell her that you might be in the mood for some mischief yourself and remind her of your other proposition.");
@@ -1110,7 +1109,7 @@ package classes.Scenes.Areas.Forest
 		+"With a grin, you giggle at her obvious distaste for her time as a servant, earning a raspberry from her irritated form before sharing a laugh.\n\n"
 		//Kitsune retainers are a potential future expansion
 		/*+((player.tail.type == Tail.FOX && player.tail.venom == 9)?"<i>“So, if I may ask, who are your retainers? If you have been to Taoth's shrine, you have certainly met the apprentices eager to serve you? [If (flags[kFLAGS.AIKO_AFFECTION]>80) <i>“if I weren't a guardian... I wouldn't mind becoming your retainer.”</i> She says while playfully spanking your ass, lighting a grin on your lips. Maybe you seriously will take her as a retainer when she is released of her duty.]\n\n":"")
-		+"You tell her you didn't even know you could have retainers before hearing it from her. <i>“That's fun to hear... I'll be curious to see who you will pick, and if they can please you properly...”</i> She seductively moves a finger onto your [if (player.armor != ArmorLib.NOTHING)[armor]|[skin]], grinning.\n\n"*/);
+		+"You tell her you didn't even know you could have retainers before hearing it from her. <i>“That's fun to hear... I'll be curious to see who you will pick, and if they can please you properly...”</i> She seductively moves a finger onto your "+((player.armor != ArmorLib.NOTHING)"[armor]":"[skin]")+", grinning.\n\n"*/);
 		if (talkAndSex) {
 			outputText("Thanking her for the information, you decide to change the subject, bringing up your previous proposition again.");
 			doNext(aikoSex);
@@ -1129,7 +1128,7 @@ package classes.Scenes.Areas.Forest
 		+"<i>“Family? Y...yeah, I do. My mother is one of the elders, and the previous guardian. She taught me everything I know. Her mate is a kitsune from another hidden village; she met him way back when she was just a three-tails. I don’t know whether he’s my father though.”</i>\n\n"
 		+"Seeing your puzzled look, she adds, <i>“Oh, it’s not that uncommon in kitsune villages. Most kitsune don’t know for sure who their fathers are. When I was younger, I just figured it was that way everywhere.”</i>\n\n"
 		+"You nod, and then ask if she has any siblings, figuring that if kitsune society is so supportive of free love that large families must be commonplace.\n\n"
-		+"<i>“I... well, yes...[if (flags[kFLAGS.AIKO_BOSS_INTRO]>0)Well obviously you dumbass, remember Yamata? My half-sister?”</i>|”</i> Aiko’s demeanor suddenly becomes melancholy, and you ask her if it was something you said.\n\n“No, I just... I did have a half-sister, but I haven’t seen or spoken to her in years. I’m not sure where she is, or if she’s even still alive—she disappeared a short while after the demons appeared. Though... we didn’t really get along very well in the time leading up to that.”</i>]\n\n"
+		+"<i>“I... well, yes... [if (flags[kFLAGS.AIKO_BOSS_INTRO]>0)Well obviously you dumbass, remember Yamata? My half-sister?”</i>|”</i> Aiko’s demeanor suddenly becomes melancholy, and you ask her if it was something you said.\n\n“No, I just... I did have a half-sister, but I haven’t seen or spoken to her in years. I’m not sure where she is, or if she’s even still alive—she disappeared a short while after the demons appeared. Though... we didn’t really get along very well in the time leading up to that.”</i>]\n\n"
 		+"You nod a bit, gently rubbing your chin. You tell Aiko that she doesn’t need to divulge anything too personal if it’s making her uncomfortable, ");
 		if (talkAndSex) {
 			outputText("saying that you can drop the conversation here if she wants.\n\n"
@@ -1172,41 +1171,33 @@ package classes.Scenes.Areas.Forest
 				}
 				else {
 					outputText("You tell her you were wondering if she’d be willing to give you another lesson.\n\n"
-					+(flags[kFLAGS.AIKO_AFFECTION] >= 50 ?"She nods happily and gives you a cheerful nod, saying, <i>“Of course, I’ll go set up the targets!”</i>":"he thinks about it for a second and then finally says "+(flags[kFLAGS.AIKO_AFFECTION] >= 35 ?"<i>“Okay, I’ll teach you some more.”</i>\n\n":"<i>“No, not today. You want free archery lessons, maybe you should try being nicer.”</i>\n\n")));
+					+(flags[kFLAGS.AIKO_AFFECTION] >= 50 ?"She nods happily and gives you a cheerful nod, saying, <i>“Of course, I’ll go set up the targets!”</i>\n\n":"She thinks about it for a second and then finally says "+(flags[kFLAGS.AIKO_AFFECTION] >= 35 ?"<i>“Okay, I’ll teach you some more.”</i>\n\n":"<i>“No, not today. You want free archery lessons, maybe you should try being nicer.”</i>\n\n")));
 				}
 			}
 			if (flags[kFLAGS.AIKO_AFFECTION] >= 35) {
-				outputText("The two of you take turns shooting at the targets, swapping stories back and forth in between shots. Even if Kelt is a little more skilled, Aiko’s cheery disposition more than makes up for it, and you find yourself grateful to have found an archery partner that isn’t as arrogant, crude, and snide as he.");
+				outputText("The two of you take turns shooting at the targets, swapping stories back and forth in between shots. Even if Kelt is a little more skilled, Aiko’s cheery disposition more than makes up for it, and you find yourself grateful to have found an archery partner that isn’t as arrogant, crude, and snide as he. ");
 				if (player.statusEffectv1(StatusEffects.Kelt) < 33) {
-					outputText("In the end, she still proves more than a match for you, but thankfully she doesn’t rub it in your face. You come away feeling like you’ve learned a lot in your short time with her");
+					outputText("In the end, she still proves more than a match for you, but thankfully she doesn’t rub it in your face. You come away feeling like you’ve learned a lot in your short time with her.\n\n");
 					player.addStatusValue(StatusEffects.Kelt,1,3);
 				}
 				else if (player.statusEffectv1(StatusEffects.Kelt) <= 75) {
-					outputText("In the end you give her a decent run for her money, but ultimately it is apparent you still have much to learn from her. You feel like you’ve picked up a few good tips and tricks from her");
+					outputText("In the end you give her a decent run for her money, but ultimately it is apparent you still have much to learn from her. You feel like you’ve picked up a few good tips and tricks from her.\n\n");
 					player.addStatusValue(StatusEffects.Kelt,1,1);
 					
 				} else {
 					outputText("In the end, she was right; you beat her fair and square, and you can’t say you learned anything new, but it was fun. And you feel a bit closer to her for the experience");
 				}
-				
-				if (talkAndSex){
-					outputText(".\n\nYour previous offer still stands... work hard AND play hard!");
-					doNext(aikoSex);
-				} else {
-					outputText(", but unfortunately, you should be getting back to camp soon.");
-					doNext(camp.returnToCampUseOneHour);
-				}
 			}
 		} else {
 			outputText("You tell her you would be interested in learning to use a bow as well, if she felt like teaching you. She grins sheepishly, taking out her longbow and holding it close, gently running her hand along it.\n\n"
 			+(flags[kFLAGS.AIKO_AFFECTION] >= 50 ?"<i>“I would love to, believe me, but... I don’t really have one for you to use, and this one is sort of really important to me. It’s not that I don’t trust you with it, but... I’d be devastated if anything happened to it. Sorry... If you can find one somewhere though, I’d be happy to help you learn to use it!”</i>":"<i>“Sorry, no can do. I don’t have a spare, and I’m not going to let just anyone touch mine... It’s really important to me, and I’d be devastated if anything happened to it. If you get your own, maybe I’d be willing to give you a few pointers.”</i>")
-			+"You nod and apologize for wasting her time.")
+			+"You nod and apologize for wasting her time")
 		}
 		if (talkAndSex) {
-			outputText("Your previous offer still stands though...");
+			outputText(".\n\nYour previous offer still stands though...");
 			doNext(aikoSex);
 		} else {
-			outputText("Unfortunately, you should be getting back to camp now.");
+			outputText(", but unfortunately, you should be getting back to camp now.");
 			doNext(camp.returnToCampUseOneHour);
 		}
 	}	
@@ -1365,11 +1356,11 @@ package classes.Scenes.Areas.Forest
 			+"She continues to have her way with your body, her nails gently carving their way across your exposed flesh. Leaning forward, she takes a firm, painful grip on your earType ear, and whispers, <i>“I’m going to enjoy this.”</i>\n\n"
 			+"You wince in pain as she pulls hard on your ear for a moment, and then begin to gasp for breath as you feel her thin but surprisingly strong fingers slowly wrap around your windpipe. She leans forward, pursing her lips, and forces a deep, utterly wrong kiss onto your mouth, violating your mouth with her tongue as she slowly exhales. The bittersweet poison of licorice fills your throat, and you can slowly feel yourself succumbing to the pleasures of her torture, your wounds tingling as her corrupted flames spread through your body.\n\n"
 			+"Suddenly, you are putty in her hands. You know you would do anything just to feel the sweet release brought on by Aiko’s wonderful cruelty… for just one more moment of sweet torment.\n\n"
-			+"To your "+(player.findPerk(PerkLib.Masochist) >= 0?"delight":"horror")+", your foxy dominatrix's hands both clasp firmly around your neck, bearing down on you. You choke and thrash weakly, staring up at her vindictive grin as darkness begins to enclose on your vision. At the edges of your consciousness, you can feel Aiko’s tails slowly sliding down toward your groin, "+(player.hasCock()?"wrapping around your [cocks]":"")+(player.hasVagina() && player.hasCock() ?" and ":"")+(player.hasVagina()?"beginning to tease your [clit] with their furry bottlebrush tips":"")+".\n\n"
+			+"To your "+(player.findPerk(PerkLib.Masochist) >= 0?"delight":"horror")+", your foxy dominatrix's hands both clasp firmly around your neck, bearing down on you. You choke and thrash weakly, staring up at her vindictive grin as darkness begins to enclose on your vision. At the edges of your consciousness, you can feel Aiko’s tails slowly sliding down toward your groin, "+(player.hasCock()?"wrapping around your [cocks]":"")+(player.hasVagina() && player.hasCock() ?" and ":"")+(player.hasVagina()?"beginning to tease your [clit] with their furry bottle-brush tips":"")+".\n\n"
 			+"You gasp violently as her hands let up just enough to pull you back from the brink, filling your lungs with sweet fresh air at the exact moment that she begins to pump her tails "+(player.hasCock()?"up and down your [cocks]":"")+(player.hasVagina() && player.hasCock() ?" and ":"")+(player.hasVagina()?"into your [vagina]. The worst part is that it feels so GOOD":"") +", the combination of the sensations pulling you toward your climax by leaps and bounds while Aiko laughs derisively at your pathetic struggles underneath her.\n\n"
 			+"<i>“Oh, silly [name]... Did you think I was going to strangle you?”</i> she says, bearing down on your windpipe again and licking her lips. <i>“I’m not gonna kill you, sweet thing... but surely you don't think I’m going to let you get off that easy? That’s no fun at all.”</i>\n\n"
 			+"Your mind screams in protest, your hips weakly wiggling underneath her, willing yourself toward an orgasm that simply won’t arrive. Each time she pulls you to the brink, she backs off, forcing you to endure the blissful agony of being on the edge of consciousness and climax all at once.\n\n"
-			+(player.hasCock()?"As your vision darkens once more, you can feel the heat of Aiko’s sopping cunt against the tip of your [cock "+x+1+"], teasing you with their slick depths. The soft, warm lips dilate tantalizingly around your head, and with an abrupt drop, she mounts your member,[if (player.hasKnot("+x+")) careful not to let your knot slip in and] squeezing down tightly!\n\n":"")
+			+(player.hasCock()?"As your vision darkens once more, you can feel the heat of Aiko’s sopping cunt against the tip of your [cock "+(x+1)+"], teasing you with their slick depths. The soft, warm lips dilate tantalizingly around your head, and with an abrupt drop, she mounts your member,[if (player.hasKnot("+x+")) careful not to let your knot slip in and] squeezing down tightly!\n\n":"")
 			+(player.hasVagina() ? "The tails in your [vagina] double their effort, pounding you mercilessly as Aiko’s pleasure begins to boil over.\n\n":"")
 			+"Her hands suddenly release their grip on your throat entirely, and as you hoarsely fill your lungs with sweet, wonderful fresh air, your body is wracked with a tremendous orgasm, sending you into a frenzy from head to toe. Aiko’s tails frizz up with pleasure as she seems to synchronize with you, clawing at her own body with both hands as she rides the wave of her own climax. "+(player.cumQ() > 350 && player.hasCock() ?"Her abdomen swells with seed as your orgasm goes on for even longer than usual, a side effect of the strange asphyxiation-play that she put you through.":"")+"\n\n"
 			+"Released from your pleasurable torment and finally able to climax, you lay panting on the ground, gasping for breath as Aiko slowly dismounts you"+(player.cumQ() > 350 && player.hasCock() ?", allowing the pent-up seed to gush out over your lower body":"")+". Your last sight is that of her retrieving her robes just before you pass out from exhaustion.");
@@ -1413,8 +1404,8 @@ package classes.Scenes.Areas.Forest
 			outputText("<i>“I… please, I didn't want to fight you!”</i> she pleads, looking up at you as you turn her onto her back. "+(player.isCorruptEnough(50) || player.hasPerk(PerkLib.Sadist) ?"You give the impertinent girl a hearty slap across the cheek, telling her to quit blubbering and shut her whore mouth.":"")+" Eagerly tossing her robes aside, you spread her legs to reveal a moist little slit bearing a cute little lotus tattoo just above her pubic mound. With a lascivious grin, you remove your [armor], revealing your [cocks], and begin to rub against her pervertedly.\n\n"
 			+"<i>“P-please! Why are you doing this?!”</i> she says, small tears welling ");
 		outputText("up at the corners of her eyes as your hands tug at her chest wrap, letting her perky D-cups bounce free. "+(player.isCorruptEnough(50) ||player.hasPerk(PerkLib.Sadist)? "You smack her around a bit more, telling her to shut up"+ (flags[kFLAGS.AIKO_TIMES_MET] ==1 ?" about her stupid ball":"") +". You could have sworn you told this bitch to keep her damn trap shut! ":"You do your best to shrug off the pangs of guilt, knowing that you’re in it too deep to turn back now.")+" She sniffles a little, biting her lip. It seems she’s prepared to suffer through whatever you plan to do to her, not that she had much choice in the matter."+(player.isCorruptEnough(50) ||player.hasPerk(PerkLib.Sadist)?" At least now, perhaps she’ll stop whining long enough for you to get off!":"")+"\n\n"
-		+"You place the tip of your [cock "+x+1+"] against her quivering snatch, bearing down on her just a bit. Her moist love-hole is tight, but yields to you with relative ease. You let out a moan as you sink into her little by little, her soft, muscular walls wrapping around you and enveloping you with an almost ethereal warmth. [if (player.cocks["+x+1+"].length >= 40) Just when you are certain that she should be unable to take any more of your enormous manhood, a slurping contraction draws you even deeper.] "
-		+(player.hasKnot(x)?"When you feel your knot pushing against her lips, you shift your weight to lean over her and begin to pound her pussy with your [cock "+x+1+"].":"When you feel your hips rocking against hers, you shift your weight to lean over her and begin to pound her pussy with your [cock "+x+1+"].")
+		+"You place the tip of your [cock "+(x+1)+"] against her quivering snatch, bearing down on her just a bit. Her moist love-hole is tight, but yields to you with relative ease. You let out a moan as you sink into her little by little, her soft, muscular walls wrapping around you and enveloping you with an almost ethereal warmth. [if (player.cocks["+(x+1)+"].length >= 40) Just when you are certain that she should be unable to take any more of your enormous manhood, a slurping contraction draws you even deeper.] "
+		+(player.hasKnot(x)?"When you feel your knot pushing against her lips, you shift your weight to lean over her and begin to pound her pussy with your [cock "+(x+1)+"].":"When you feel your hips rocking against hers, you shift your weight to lean over her and begin to pound her pussy with your [cock "+(x+1)+"].")
 		+" You shift focus to toying with her breasts, [if (player.hasPerk(PerkLib.Sadist)) biting her nipples painfully| pinching her nipples] while your hips roughly slam against her. As you begin to ramp up your furious thrusting, Aiko bites her lip and looks off to the side, her cheeks a glowering red. You can tell by the way her throat muscles tense up that she is doing her best to suppress her moans.\n\n"
 		+"[if (player.isCorruptEnough(50)||player.hasPerk(PerkLib.Sadist))Roughly, you grasp her by the hair and yank her back to facing you, barking at her that you like to look your sluts in the eyes when you fuck them. She meekly complies, blinking away tears in her eyes. Yes, that’s a good slut… \n\n]"
 		+"If one thing can be said in her favor, it’s that she knows how to please a cock—her pussy ripples around you with an incredible degree of control, squeezing, pulling and kneading your shaft with what can only be a practiced skill. You can only assume that she is trying to get you to cum quickly so she can get this over with, and she may just get her way if this keeps up.\n\n"
@@ -1424,7 +1415,7 @@ package classes.Scenes.Areas.Forest
 		"You let out a loud moan when your climax finally hits you, "+(player.hasKnot(x)?"thrusting your knot just that bit deeper, to Aiko's pleasured moans and let your inhumanely large orgasm spill forth into Aiko's abused pussy and womb. Her belly begins to distend visibly, growing into an obscenely rounded bulge, but none of your cum can escape past your tightly sealing knot. You are locked together until after your orgasm ends and a few minutes thereafter, your knot too well lodged to just pull free. Once it begins deflating you forcefully yank out your knot, much to Aiko's displeasure and she screams from the pain of the forceful extraction.":"slamming your hips into her once more and letting your messy orgasm spurt into Aiko’s abused pussy. Her belly begins to distend visibly, growing into an obscenely rounded bulge before you pull out, your [cock] still firing streamers of semen through the air. Your hot spunk coats her body, leaving her thoroughly soaked through with your musky man-butter.")+"\n\n")
 		+"You get up, brushing yourself off and collecting your armorName. Aiko looks up at you, her legs still splayed out in a lewd display, your cum spilling out of her vagina and pooling between her two cushiony ass cheeks on the ground.\n\n"
 		+(flags[kFLAGS.AIKO_BALL_RETURNED] == 0 ?"<i>“You got what you wanted…”</i> she says, almost whispering. <i>“Now will you give me back my Ball?”</i>\n\n"
-		+"You have no use for it, you reason, and she was a decent fuck, so you reach into your pouch and pull out the ball, haphazardly tossing it over. It lands in the sticky pool of cum forming between Aiko’s legs, a bit of it splattering up onto her thighs [if (player.isCorruptEnough(50) ||player.hasPerk(PerkLib.Sadist)), and for good measure, you hock a wad of spit onto it as well]. ":"")
+		+"You have no use for it, you reason, and she was a decent fuck, so you reach into your pouch and pull out the ball, haphazardly tossing it over. It lands in the sticky pool of cum forming between Aiko’s legs, a bit of it splattering up onto her thighs[if (player.isCorruptEnough(50) ||player.hasPerk(PerkLib.Sadist)), and for good measure, you hock a wad of spit onto it as well]. ":"")
 		+"You leave her to figure out how to untie herself as you head back for camp.");
 		flags[kFLAGS.AIKO_BALL_RETURNED] = 1;
 		if (flags[kFLAGS.AIKO_CORRUPTION] >= 50 && flags[kFLAGS.AIKO_CORRUPTION_ACTIVE]>0) {
@@ -1455,15 +1446,15 @@ package classes.Scenes.Areas.Forest
 		outputText("Your eyes trail lasciviously down the fallen priestess’s body, and finally come to rest on the plump cheeks of her ass, exposed by her immodest robes. Making up your mind, you reach down to pull off the lower portion of her robes away, bearing down on her to prevent her from struggling.\n\n"
 		+"<i>“Wha, wait, no, what are you—“</i>\n\n"
 		+(player.isCorruptEnough(50) ||player.hasPerk(PerkLib.Sadist) ?"You backhand her across the face, reminding her to shut up and be a good little whore if she wants her ball back.":"You give her a disciplinary tap, reminding her to sit still if she wants to get her ball back.")+" She shrinks away from you and obediently raises her plump hind quarters into the air, her tails rising out of the way, revealing her glistening slit and cute pucker. Giving her a firm exploratory slap on the ass, you turn almost giddy with delight as the pillowy cheeks ripple and jiggle for an extended period of time.\n\n"
-		+"The large spiral-shaped tattoos adorning her ass seem to be the perfect place for you to grab hold of both cheeks as you run your [c] along her slit, getting coated in her slick juices in preparation. She lets out a soft whimper as she feels you push your [cock "+x+1+"] flush against her pucker, lowering her shoulders toward the ground and gripping the dirt.\n\n"
-		+"<i>“Please be gentle…”</i> she says as the tight ring of flesh begins to expand around your tip. Her face turns a deep crimson as you sink the first inch inside her, squeezing her ample cheeks around your [cock"+x+1+"] and moaning needily.\n\n"
+		+"The large spiral-shaped tattoos adorning her ass seem to be the perfect place for you to grab hold of both cheeks as you run your [c] along her slit, getting coated in her slick juices in preparation. She lets out a soft whimper as she feels you push your [cock "+(x+1)+"] flush against her pucker, lowering her shoulders toward the ground and gripping the dirt.\n\n"
+		+"<i>“Please be gentle…”</i> she says as the tight ring of flesh begins to expand around your tip. Her face turns a deep crimson as you sink the first inch inside her, squeezing her ample cheeks around your [cock"+(x+1)+"] and moaning needily.\n\n"
 		+"[if (player.cockArea("+x+") >= 40)<i>“AH! N..no, no more, it’s not going to…iieah!”</i> She cuts off mid sentence as you easily sink another four inches into her. Not fit? Hardly, you tell her, giving her a firm spank. Her slutty asshole begs to differ, you say—it’s practically swallowing your dick!\n\n]"
 		+"You give one last firm shove forward with your hips, forcing a cry from Aiko’s throat as she is finally speared "+(player.hasKnot(x)?"on your full length up to the knot, and that starting to spread her pucker rather wide.":"on the full length of your cock.")+" You’re barely able to control yourself as you squeeze her delicious ass, beginning to pump in and out with a reckless haste.\n\n"
-		+"Aiko squeals, but from pain or pleasure, it is difficult to tell. [if (player.isCorruptEnough(50) ||player.hasPerk(PerkLib.Sadist))You find yourself hoping that it is the former, making a point of roughly abusing her ass for your own selfish pleasure.] The way her rectum constricts your shaft is exquisite, the inner flesh feeling pillowy soft and warm as it ripples across your [cock"+x+1+"] with every thrust.\n\n"
-		+"You lose yourself in the pleasure, your ears deaf to the lovely priestess’s cries as her ass is impaled on your rod again and again, pulling you closer and closer to climax with every thrust. [if(player.isCorruptEnough(50) ||player.hasPerk(PerkLib.Sadist))Smiling vindictively, you lean over her, digging your nails into her back painfully as you pound her ass harder still, her pained yelps filling you with delight.] Finally, you can take it no longer, "+(player.hasKnot(x)?"shoving your hips forward with all your might and burying your knot in her ass as,":"")+" your shaft distending with cum as you begin to pour out your lusts into the girl’s abused fuckhole. "+(player.cumQ() >350 ?"Her belly begins to swell with your seed, gurgling audibly as you dump load after load into her innards. When your cock’s spasms finally end, she is significantly rounder and heavier than previously, weighed down by the enormous volume of semen you filled her with.":"")+"\n\n"
+		+"Aiko squeals, but from pain or pleasure, it is difficult to tell. [if (player.isCorruptEnough(50) ||player.hasPerk(PerkLib.Sadist))You find yourself hoping that it is the former, making a point of roughly abusing her ass for your own selfish pleasure.] The way her rectum constricts your shaft is exquisite, the inner flesh feeling pillowy soft and warm as it ripples across your [cock"+(x+1)+"] with every thrust.\n\n"
+		+"You lose yourself in the pleasure, your ears deaf to the lovely priestess’s cries as her ass is impaled on your rod again and again, pulling you closer and closer to climax with every thrust.[if(player.isCorruptEnough(50) || player.hasPerk(PerkLib.Sadist)) Smiling vindictively, you lean over her, digging your nails into her back painfully as you pound her ass harder still, her pained yelps filling you with delight.] Finally, you can take it no longer, "+(player.hasKnot(x)?"shoving your hips forward with all your might and burying your knot in her ass as,":"")+" your shaft distending with cum as you begin to pour out your lusts into the girl’s abused fuckhole. "+(player.cumQ() >350 ?"Her belly begins to swell with your seed, gurgling audibly as you dump load after load into her innards. When your cock’s spasms finally end, she is significantly rounder and heavier than previously, weighed down by the enormous volume of semen you filled her with.":"")+"\n\n"
 		+(player.hasKnot(x)?"You are held together for a while longer by your distended and sensitive knot, which only starts deflating after several minutes.\n\n":"")
-		+"When you pull out, her ass makes a sloppy slurping noise around your shaft, a glob of jism spilling out after it and splashing to the ground. [if(player.isCorruptEnough(50) ||player.hasPerk(PerkLib.Sadist))Aiko lays in a puddle comprised mainly of her own pussy juices, tears, and shame, weeping softly.] You stand and brush yourself off, giving the kitsune priestess a hearty smack on the ass"+
-		(flags[kFLAGS.AIKO_BALL_RETURNED] == 0 ?", and [if(player.isCorruptEnough(50) ||player.hasPerk(PerkLib.Sadist)) pull out her ball, smirking evilly as a despicable idea comes into your mind. You place the ball up against Aiko’s brutalized anus and push it in, eliciting another shameful groan from her throat. Well, she said she wanted it back, and now she has it, you think to yourself with a terrible grin as you set off for camp. |gently drop her ball on the ground next to her, setting off for camp.]":" and set off back to camp."));
+		+"When you pull out, her ass makes a sloppy slurping noise around your shaft, a glob of jism spilling out after it and splashing to the ground. [if(player.isCorruptEnough(50) ||player.hasPerk(PerkLib.Sadist))Aiko lays in a puddle comprised mainly of her own pussy juices, tears, and shame, weeping softly. ]You stand and brush yourself off, giving the kitsune priestess a hearty smack on the ass"+
+		(flags[kFLAGS.AIKO_BALL_RETURNED] == 0 ?", and [if(player.isCorruptEnough(50) ||player.hasPerk(PerkLib.Sadist))pull out her ball, smirking evilly as a despicable idea comes into your mind. You place the ball up against Aiko’s brutalized anus and push it in, eliciting another shameful groan from her throat. Well, she said she wanted it back, and now she has it, you think to yourself with a terrible grin as you set off for camp. |gently drop her ball on the ground next to her, setting off for camp.]":" and set off back to camp."));
 		flags[kFLAGS.AIKO_BALL_RETURNED] = 1;
 		if (flags[kFLAGS.AIKO_CORRUPTION] >= 50 && flags[kFLAGS.AIKO_CORRUPTION_ACTIVE]>0) {
 			flags[kFLAGS.AIKO_AFFECTION] += 5;
@@ -1493,10 +1484,10 @@ package classes.Scenes.Areas.Forest
 		+"She cuts off in mid-sentence as your fingers lightly stroke her ears, her neck twitching back involuntarily as her words turn to whimpers. You tell her that if she wants her ball back, she’ll behave like a good pet. After rubbing her ears and running your fingers through her soft silver-blonde hair for a few moments, Aiko looks up and gives you a tearful nod, hanging her head shamefully as she accepts your degrading treatment.\n\n"
 		+"As you gradually begin to disrobe her, you pay special attention to her plush breasts and ever-stiffening nipples, grinning lasciviously as she begins to moan softly under your gentle ministrations. When your fingertips begin to drift down her spine, her low moans and pants slowly begin to turn frantic and fearful. The closer your hands move to her bundle of fluffy tails, the more labored her breathing becomes, and you slowly begin to put two and two together.\n\n"
 		+"Teasing her, you begin to hover your hand over the collection of her tails, and she blurts out in protest, <i>“P-p-please, no! No one’s ever touched my tails before!”</i>\n\n"
-		+"You [if(player.isCorruptEnough(50) ||player.hasPerk(PerkLib.Sadist))promptly slap her|give her a small disciplinary tap on the nose], silencing the meager defiance—you let her know that [if (player.isPureEnough(50))for now] she belongs to you, regardless of her past experiences, especially if she ever hopes to get her ball back. Commanding her to get on all fours, the defeated fox girl can do nothing but obey as she hesitantly gets in position, blushing meekly [if(player.isCorruptEnough(50) ||player.hasPerk(PerkLib.Sadist))and tearing up] as she whimpers on.\n\n"
+		+"You [if(player.isCorruptEnough(50) ||player.hasPerk(PerkLib.Sadist))promptly slap her|give her a small disciplinary tap on the nose], silencing the meager defiance—you let her know that [if (player.isPureEnough(50))for now] she belongs to you, regardless of her past experiences, especially if she ever hopes to get her ball back. Commanding her to get on all fours, the defeated fox girl can do nothing but obey as she hesitantly gets in position, blushing meekly[if(player.isCorruptEnough(50) || player.hasPerk(PerkLib.Sadist)) and tearing up] as she whimpers on.\n\n"
 		+"<i>“Please...all I ask is that you be gentle with me.”</i>\n\n"
 		+"You let her know that her request is duly noted, but only for as long as your will allows. Your hand finally makes contact, and the stroking begins, curious to fully test her sensitivity. You begin with a gentle motion, and Aiko’s reaction exceeds your wildest expectations. Her eyes roll back into her head as her tongue starts to loll out, body bucking and twitching in time with the rhythm of your strokes as she suffers through the telltale signs of a rapidly-approaching orgasm. It’s quite clear that she’s enjoying her treatment, but unfortunately for her, you are reaching the end of your mercy. You turn your gently-stroking palm into a [if(player.isCorruptEnough(50) ||player.hasPerk(PerkLib.Sadist))clenched fist |firm grip ]around one of the furry limbs, and Aiko arches her back in response, releasing a howl. Her confused yelps alternate between pleasure and pain, but as her dripping pussy begins to turn into a torrential flood, you can easily tell which feeling has higher priority. Her wetness drenches her thighs as her knees buckle, and she collapses onto the ground, unable to support her own weight from the convulsions brought on by her climax.\n\n"
-		+"After her body finally stops twitching, Aiko lays utterly defeated,[if(player.isCorruptEnough(50) ||player.hasPerk(PerkLib.Sadist)) meagerly crying in a pool of her own shame], but you are far from finished. You turn her around so you can plant your lips firmly against hers, shoving your tongue down her throat and moaning lewdly into her mouth as your hand roughly grips the hair on the back of her head. You break your kiss only to begin breathing hotly into her ear, and as she melts from the brief moment of passion, you whisper promises that her pain will only give way to greater pleasure. Aiko, already broken by her shame, hangs her head and prepares herself to suffer through whatever it takes to get her ball back.\n\n");
+		+"After her body finally stops twitching, Aiko lays utterly defeated,[if(player.isCorruptEnough(50) ||player.hasPerk(PerkLib.Sadist)) meagerly crying in a pool of her own shame,] but you are far from finished. You turn her around so you can plant your lips firmly against hers, shoving your tongue down her throat and moaning lewdly into her mouth as your hand roughly grips the hair on the back of her head. You break your kiss only to begin breathing hotly into her ear, and as she melts from the brief moment of passion, you whisper promises that her pain will only give way to greater pleasure. Aiko, already broken by her shame, hangs her head and prepares herself to suffer through whatever it takes to get her ball back.\n\n");
 
 		if (player.hasVagina()) {
 			outputText("You pull her head back by her hair, standing over her with lust in your eyes as you lower your [pussy] toward her lips, ignoring her whimpers of protest. With a sudden, forceful shove, you press her lips against your [clit], letting out a moan as she reluctantly begins to lick at your slit. You slowly begin to force her down onto her back using the weight of your [hips], shifting your position to turn around once she is fully splayed on the ground so that you can lean down and grasp one of her tails.\n\n"
@@ -1513,13 +1504,13 @@ package classes.Scenes.Areas.Forest
 			if (!player.hasVagina())
 				outputText("You roughly drag her onto her back by the hair, ignoring the pained cries she lets out as you position yourself over her, head to toe, slowly lowering yourself down to pin her shoulders with your knees. Grasping one of her tails, you begin to coil it up, aiming it toward her glistening twat, and with a [if (player.isCorruptEnough(50))cruel] smirk you force the fuzzy appendage inside.\n\n")
 			else
-				outputText("You raise your hips and angle your [cock "+x+1+"] toward her mouth, pressing the head against her tightly pursed lips. Reaching down, you pinch her nose tightly, forcing her to open her mouth lest she suffocate, and she reluctantly begins swallow your mass[if (player.cocks["+x+1+"].cockThickness >= 3), gagging on your girth].\n\n"
+				outputText("You raise your hips and angle your [cock "+(x+1)+"] toward her mouth, pressing the head against her tightly pursed lips. Reaching down, you pinch her nose tightly, forcing her to open her mouth lest she suffocate, and she reluctantly begins swallow your mass[if (player.cocks["+(x+1)+"].cockThickness >= 3), gagging on your girth].\n\n"
 
 				+"You begin to ramp up the ferocity of your pumping, both your [cock] in her throat and the tail pummeling her pussy, and Aiko lets out a scream that vibrates around the tip of your member.\n\n");
 
 			if (player.cockArea(x) <= 50)
 				outputText("You begin to ride her throat with an animalistic passion, your hands glued to her tail as you pound her mercilessly from both ends. She gurgles and twitches beneath you, desperately trying to catch her breath in between thrusts, and you have to tighten your thighs against the sides of her head [if (player.isHerm())again] to keep her from flailing around too much, feeling your orgasm begin to well up.\n\n"
-				+"You let out a strong moan as you feel your pleasure begin to boil over, and thrust yourself down in one last time. Aiko gags on your [cock "+x+1+"] as the shaft begins to swell with the onrush of cum, and "+ ((player.cumQ() <= 150) ?"you fire a few sticky streamers down the convulsing passage, making her cough and sputter.":(player.cumQ() > 150 && player.cumQ() <= 350 ?"you unleash a thick wave of jism into her throat, making her choke and sputter as it begins to back up and foam around the corners of her mouth":"you flood her gullet with your thick, virile spunk, forcing so much down her throat that her belly begins to distend from the sheer volume of it."))+"\n\n");
+				+"You let out a strong moan as you feel your pleasure begin to boil over, and thrust yourself down in one last time. Aiko gags on your [cock "+(x+1)+"] as the shaft begins to swell with the onrush of cum, and "+ ((player.cumQ() <= 150) ?"you fire a few sticky streamers down the convulsing passage, making her cough and sputter.":(player.cumQ() > 150 && player.cumQ() <= 350 ?"you unleash a thick wave of jism into her throat, making her choke and sputter as it begins to back up and foam around the corners of her mouth":"you flood her gullet with your thick, virile spunk, forcing so much down her throat that her belly begins to distend from the sheer volume of it."))+"\n\n");
 			else
 				outputText("You bear down on her forcefully, but as the girl’s struggles grow more and more desperate, you at last concede that you simply won’t be able to cram any more of your massive member into her throat. Displeased with her failure to perform up to your standards, you pull your shaft from her throat, giving her a moment to cough up a wad of precum, and then give her a [if(player.isCorruptEnough(50) ||player.hasPerk(PerkLib.Sadist))firm swat on the side of the face. If she’s too inept to please you with her mouth, then you’ll have to find another way for her to get you off...|gentle smack on the behind, playing up your dominance by scolding her]\n\n"
 				+"You move your shaft down in between the perky tanned globes of her breasts, instructing her to pleasure you with them like a good pet. She obediently raises her hands up to squash them against the sides of your [cocks], pressing and kneading them back and forth as she moans out in shameful ecstasy from the torture of you fucking her with her own tail. With a pleased nod, you return your attentions to punishing the little slut, thrusting her tail in and out of her sopping twat [if(player.isCorruptEnough(50) ||player.hasPerk(PerkLib.Sadist))with an unnecessarily cruel amount of force].\n\n"
@@ -1527,7 +1518,7 @@ package classes.Scenes.Areas.Forest
 			player.orgasm('Dick');
 		}
 		
-		outputText("You stand back to take a look at your handiwork, [if(player.isCorruptEnough(50) ||player.hasPerk(PerkLib.Sadist))taking a twisted pride in what you’ve done, smirking in satisfaction.|feeling a little disgraceful about your cruel treatment of the poor girl as a nagging guilt descends in your gut.]\n\n"
+		outputText("You stand back to take a look at your handiwork,[if(player.isCorruptEnough(50) || player.hasPerk(PerkLib.Sadist)) taking a twisted pride in what you’ve done, smirking in satisfaction.| feeling a little disgraceful about your cruel treatment of the poor girl as a nagging guilt descends in your gut.]\n\n"
 		+(flags[kFLAGS.AIKO_BALL_RETURNED] == 0?"You decide that you should reward her obedience, pulling the ball from your pouch and smearing it in some of your leftover essences before [if(player.isCorruptEnough(50) ||player.hasPerk(PerkLib.Sadist))shoving it|placing it gently] in her mouth, then petting and praising her as if she was a dog. You spot a few of her tails wag limply in response to your degrading treatment, her spirit broken, at least for now.":"You pet and praise her as if she was a dog, and spot a few of her tails wag limply in response to your degrading treatment. Her spirit is broken, at least for now.")
 		+"\n\n[if(player.isCorruptEnough(50) ||player.hasPerk(PerkLib.Sadist))Feeling immensely proud of yourself|Feeling a bit disgusted with yourself], you turn and head back to camp.");
 		
@@ -1583,16 +1574,16 @@ package classes.Scenes.Areas.Forest
 	{
 		clearOutput();
 		spriteSelect(SpriteDb.s_aiko);
-		outputText("You grin at the fallen priestess, slowly stripping out of your [armor][if (player.hasCock()), lifting your [cocks] [if(player.balls > 0)and [balls]] out of the way] and displaying your [pussy] to her proudly. You explain to her that as the victor you’re entitled to the spoils, and what you want is her pride. To emphasize this fact, you place a hand on her head and begin to slowly stroke her head patronizingly.\n\n"
+		outputText("You grin at the fallen priestess, slowly stripping out of your [armor]"+(player.hasCock()?", lifting your [cocks] [if(player.balls > 0)and player.ballsDescriptLight()] out of the way":"")+" and displaying your [pussy] to her proudly. You explain to her that as the victor you’re entitled to the spoils, and what you want is her pride. To emphasize this fact, you place a hand on her head and begin to slowly stroke her head patronizingly.\n\n"
 		+"<i>“S-stop treating me like I’m your pet d—”</i>\n\n"
 		+"You silence her protest by thrusting her face into your pelvis, forcing her lips against your [pussy] with a moan. Too weakened and humiliated to resist, she only lets out a yelp at first and then resigns herself to begin running her velvety-soft tongue up and down your labia. Letting out a moan, you move your hands to the back of her head and force her deeper into your cunt with a crushing force, your juices dribbling down her chin freely.\n\n");
 		if (player.hasCock()) {
 			var x:int = rand(player.cocks.length);
-			outputText("You take hold of her arm and lift it up, pressing her hand up against the side of your [cock"+x+1+"]. She seems to understand what you’re getting at, and instinctively begins to stroke back and forth, whimpering pathetically. [if (player.cocks.length > 1)Her other hand rises up to take hold of another of your shafts, and with a pleased smirk, you begin to grind your pelvis into her face eagerly.]\n\n"
+			outputText("You take hold of her arm and lift it up, pressing her hand up against the side of your [cock"+(x+1)+"]. She seems to understand what you’re getting at, and instinctively begins to stroke back and forth, whimpering pathetically. [if (player.cocks.length > 1)Her other hand rises up to take hold of another of your shafts, and with a pleased smirk, you begin to grind your pelvis into her face eagerly.]\n\n"
 			+"You pull her back by the hair for a moment and she lets out a gasp as she breathes in fresh air, her face drenched with your juices. Her cheeks are bright red, and you can tell that drinking in your scent and juices has aroused her quite effectively. She is still panting desperately when you shove her face-deep into your crotch again, riding her tongue eagerly as you rise ever closer to your orgasm.\n\n");
 			player.orgasm('Dick');
 		}
-		outputText("She glares up at you [if (player.hasCock())[if (player.cocks.length > 1)between|around] your [cocks]], tonguing your [pussy] eagerly as her nine tails swish back and forth behind her. Regardless of any spite she may feel against you, her moans vibrate through your body, and it isn’t long before you can’t stand it any more. You bear down on her face with all your weight, drowning her in your slick girlcum, and she has no choice but to swallow it as quickly as she can. [if(player.hasCock())At the same time, your [cocks] swell with pleasure from her continuous stroking, releasing jets of cum that spray onto the ground behind her.]\n\n"
+		outputText("She glares up at you "+(player.hasCock()?"[if (player.cocks.length > 1)between|around] your [cocks]":"")+", tonguing your [pussy] eagerly as her nine tails swish back and forth behind her. Regardless of any spite she may feel against you, her moans vibrate through your body, and it isn’t long before you can’t stand it any more. You bear down on her face with all your weight, drowning her in your slick girlcum, and she has no choice but to swallow it as quickly as she can. "+(player.hasCock()?"At the same time, your [cocks] swell with pleasure from her continuous stroking, releasing jets of cum that spray onto the ground behind her.":"")+"\n\n"
 		+"You shiver with satisfaction and dismount her, giving her a light shove that she accepts easily, falling onto her back. Her face and the upper portion of her robes are drenched in your essence, mouth open wide and tongue hanging out. Her legs open in a shameful display, slightly twitching as a small puddle slowly spreads out from between them. Leaning down, pat her on the head and tell her she’s a <i>“good girl,”</i> chuckling to yourself as you pick up your [armor] and set off, leaving the priestess to her shame.");
 		
 		flags[kFLAGS.AIKO_BALL_RETURNED] = 1;
@@ -1624,12 +1615,12 @@ package classes.Scenes.Areas.Forest
 		outputText((playerchoice?"You tell Aiko that you want to do it the old-fashioned way today, slowly beginning to take off your [armor].":"<i>“Today... we’re gonna do it old-school,”</i> Aiko says matter-of-factly, looking you over with a lusty smirk as she begins to remove your [armor].")
 		+"\n\nOnce you are fully nude, Aiko begins to disrobe herself, moving at a slow, sensual pace. She puts on a show, not quite a striptease, slowly tugging the sash that holds the lower half of her robes up and letting it fall to her ankles in a heap. Her upper robes follow soon after as she shoulders out of them, and she steps out of the pile of her clothes to step toward you. The last article of clothing to remove is her tight chest binding, which falls to ribbons on the ground, allowing her firm, silky tan breasts to jiggle freely.\n\n"
 		+"The sight of her beautiful form standing nude in front of you has you rock hard already, and she places a hand on your shoulder [if (flags[kFLAGS.AIKO_AFFECTION]>64), looking deep into your eyes.|, giving you a slight smirk.] She begins to tug down on you lightly, leading you down toward the ground and laying herself flat on her back with her tails spread out beneath her.\n\n"
-		+"Her legs spread out, revealing her glistening pussy lips, and she begins to play with her breasts and clitoris, preparing herself for you. Her fingertips slowly slide down your [allbreasts], then drift down to your groin, caressing your [cocks] lightly.) She wraps her hand around your [cock "+x+1+"] softly and begins to rub the head against her netherlips, rocking her hips up to slide along it sensually.\n\n"
-		+"Taking a firmer hold of your shaft with both hands, she lifts her hips up and pulls you down inside, letting out a husky moan. She rocks her hips forward again and again, each small motion pulling more and more of your hot man meat inside. You can feel her hips pressed up against you now, your [cock "+x+1+"] buried up to the hilt in her silky soft pussy, the muscular walls squeezing you skillfully.\n\n"
+		+"Her legs spread out, revealing her glistening pussy lips, and she begins to play with her breasts and clitoris, preparing herself for you. Her fingertips slowly slide down your [allbreasts], then drift down to your groin, caressing your [cocks] lightly. She wraps her hand around your [cock "+(x+1)+"] softly and begins to rub the head against her netherlips, rocking her hips up to slide along it sensually.\n\n"
+		+"Taking a firmer hold of your shaft with both hands, she lifts her hips up and pulls you down inside, letting out a husky moan. She rocks her hips forward again and again, each small motion pulling more and more of your hot man meat inside. You can feel her hips pressed up against you now, your [cock "+(x+1)+"] buried up to the hilt in her silky soft pussy, the muscular walls squeezing you skillfully.\n\n"
 		+"Letting out a soft moan, you begin to move your hips, thrusting slowly and passionately in time with the lovely priestess. Her legs slide up to wrap around you, and she pulls you against her tightly, letting out a soft whimper of pleasure as she surrounds your body with her tails. Your sensibilities slowly succumb to baser instincts as you begin to increase the pace of your thrusting. Aiko doesn’t seem to mind it, though, as she grinds her hips up to meet you, raising her luscious ass off the ground a few inches in order to impale herself on you again and again.\n\n"
 		+"[if (!player.isCentaur())You move your hands down her sides, groping at the delicious globes of her derriere lightly. The soft, jiggly cheeks feel incredibly plump and juicy, like perfectly ripened fruit, and you can’t help but let out a soft moan as the warm flesh spills over your fingers.\n\n]"
 		+"You continue your vigorous pace, passionately plowing the beautiful fox girl, feeling her warm juices spilling out around your shaft with each thrust. Her moans become stronger with each passing moment, and the way her sopping, incredibly soft pussy is squeezing you now, you can tell that it won’t be long before you both are sent over the edge.\n\n"
-		+"Her walls give one final muscular contraction, clamping down on your [cock "+x+1+"] with unbelievable tightness and pulling you in with an incredible suction. "
+		+"Her walls give one final muscular contraction, clamping down on your [cock "+(x+1)+"] with unbelievable tightness and pulling you in with an incredible suction. "
 		+(flags[kFLAGS.AIKO_AFFECTION]>=65?"\n\nMoaning to the heavens, Aiko throws her arms around you and pulls herself up to kiss you passionately, screaming her pleasure into your lips as her body trembles and shakes.":"")
 		+(player.hasKnot(x)?"\n\nYou ram your knot home and it swells to its full capacity, sealing her tight moments before your orgasm hits. ":"")
 		+"Your shaft swells within her as you are thrown into your climax, "
@@ -1650,6 +1641,10 @@ package classes.Scenes.Areas.Forest
 		flags[kFLAGS.AIKO_AFFECTION] += 4;
 		if (player.isCorruptEnough(50) && flags[kFLAGS.AIKO_CORRUPTION_ACTIVE] > 0)
 			flags[kFLAGS.AIKO_CORRUPTION] += 4;
+		if (flags[kFLAGS.AIKO_CORRUPTION_ACTIVE]>0 && flags[kFLAGS.AIKO_CORRUPTION] >= 50 && player.isPureEnough(flags[kFLAGS.AIKO_CORRUPTION])) {
+			player.cor += 2;
+			flags[kFLAGS.AIKO_CORRUPTION] -= 2;
+		}
 		if (player.hasStatusEffect(StatusEffects.Spar)) {
 			player.removeStatusEffect(StatusEffects.Spar);
 			if (player.hasStatusEffect(StatusEffects.DomFight))
@@ -1668,20 +1663,20 @@ package classes.Scenes.Areas.Forest
 		while (y==x && player.cocks.length >1)
 			x = rand(player.cocks.length);
 		outputText((playerchoice?"You tell Aiko that this time, you want to take her doggy style.":"Aiko looks you over for a bit, an uncharacteristic lust in her eyes as her gaze lingers over your groin for a moment. <i>“Mn... I’m in the mood for something a bit ‘wild’ today... if you know what I mean,”</i> she says, giving you a coy smirk.")
-		+"\n\nYou strip out of your [armor] eagerly, smiling as the lovely kitsune lowers herself down to the ground, reaching up to take hold of your [multicock]. Her hands begin to stroke and knead, and your shaft[if (player.cocks.length>1)s] soon grow[if (player.cocks.length==1)s] hard under her skillful technique. She gives the tip of your [cock "+x+1+"] a playful lick, and then changes position, moving down to her hands and knees in front of you with her luscious ass raised high in the air, tails fanned out like a peacock.\n\n"
-		+"With a grin, you lower yourself down, placing your palms on the exotic spiral tattoos that adorn her heavy, jiggling butt cheeks and positioning yourself behind her. The tip of your [cock "+x+1+"] gently brushes up against her lady lips, and you can feel a veritable fountain of juices spilling out over it. You can see Aiko blush in embarrassment from how wet she is already, but she quickly deflects your attention back to her loins as she backs up onto your shaft a few inches, letting out a lewd moan.\n\n"
+		+"\n\nYou strip out of your [armor] eagerly, smiling as the lovely kitsune lowers herself down to the ground, reaching up to take hold of your [cocks]. Her hands begin to stroke and knead, and your shaft[if (player.cocks.length>1)s] soon grow[if (player.cocks.length==1)s] hard under her skillful technique. She gives the tip of your [cock "+(x+1)+"] a playful lick, and then changes position, moving down to her hands and knees in front of you with her luscious ass raised high in the air, tails fanned out like a peacock.\n\n"
+		+"With a grin, you lower yourself down, placing your palms on the exotic spiral tattoos that adorn her heavy, jiggling butt cheeks and positioning yourself behind her. The tip of your [cock "+(x+1)+"] gently brushes up against her lady lips, and you can feel a veritable fountain of juices spilling out over it. You can see Aiko blush in embarrassment from how wet she is already, but she quickly deflects your attention back to her loins as she backs up onto your shaft a few inches, letting out a lewd moan.\n\n"
 		+"The wonderful warmth of her insides wraps around you like a glove, and your hips fall forward involuntarily, "+(player.hasKnot(x)?"driving the full length of your shaft up till the knot":"driving every last inch of your shaft")+" inside in one stroke. Aiko’s mouth opens wide in a powerful moan, and she begins to rock her hips back and forth, slamming her bountiful bottom against your "+(player.hasKnot(x)?"knot":"hips")+" over and over again.\n\n"
 		+"<i>“OOhh, yes, GODS, yes! I needed this so bad…”</i> she alternately yells and pants, working herself into a good rhythm. You move your hands up her sides to hold onto her hips, and her unrestrained ass cheeks begin to jiggle and bounce freely. Dropping forward onto her shoulders, Aiko reaches back and begins to fiddle with her clit while you continue to pound her pussy, and the rush of fluids that pours from her drooling gash begins to form a puddle on the ground.\n\n"
 		//possible play with aiko tails on pc pussy
 		+"<i>“Go, go go! Ah, yes!”</i>\n\n"
 		+"You begin to worry if her yelps are going to attract a forest predator, but you push the thought away and resolve to focus on the task at hand.\n\n"
-		+(y != 0 ?"While you passionately fuck her pussy, your [cock "+y+1+"] slides between her buttocks, significantly lubed up by the seemingly never-ending gush of fluids. Whenever you take a particularly long draw, it occasionally presses up against her pursed anus for a moment before moving along. Aiko looks back at you with a deep blush on her face and says, <i>“NN… ah! You can… Ooh! … If…. youuuUAuuh… want… F-fuck… my… a-ass, I m-meeeeeaAAhhn….”</i>"+"With her permission, you draw back and press up against her tight pucker, leaning forward to pierce her ass with your [cock "+y+1+"]! Aiko lets out a deep moan, wincing a little at first, but her warm innards are quite receptive to your shaft and her pain turns into pleasure within moments. Her anus begins to squeeze and suck you further in with every push, and the dual sensations of her holes drives you mad with pleasure.\n\n":"")
-		+"Impaled on your shaft[if ("+y+1+" != 0)s], Aiko starts to buck back into you with redoubled passion, pressing her cheek into the grass as she continues to flick and squeeze her clitoris.\n\n"
+		+(y != 0 ?"While you passionately fuck her pussy, your [cock "+(y+1)+"] slides between her buttocks, significantly lubed up by the seemingly never-ending gush of fluids. Whenever you take a particularly long draw, it occasionally presses up against her pursed anus for a moment before moving along. Aiko looks back at you with a deep blush on her face and says, <i>“NN… ah! You can… Ooh! … If…. youuuUAuuh… want… F-fuck… my… a-ass, I m-meeeeeaAAhhn….”</i>"+"With her permission, you draw back and press up against her tight pucker, leaning forward to pierce her ass with your [cock "+(y+1)+"]! Aiko lets out a deep moan, wincing a little at first, but her warm innards are quite receptive to your shaft and her pain turns into pleasure within moments. Her anus begins to squeeze and suck you further in with every push, and the dual sensations of her holes drives you mad with pleasure.\n\n":"")
+		+"Impaled on your shaft[if ("+(y+1)+" != 0)s], Aiko starts to buck back into you with redoubled passion, pressing her cheek into the grass as she continues to flick and squeeze her clitoris.\n\n"
 		+(player.hasKnot(x) && player.hasKnot(y) ?"You slam home your knots into her pussy and tight ass, extracting a high pitched, excited screech from her throat at the overly stuffed sensation she is now being subjected to. Your knots swell and locks you thoroughly in place. ":(player.hasKnot(x)?"You slam home your knot into her pussy and she moans at the now very stuffed feeling in her pussy as your knot swells and locks you in place. ":(player.hasKnot(y) ?"You slam home your knot into her tight ass and she screams at the now very stuffed feeling in her ass as your knot swells and locks you in place.\n\n":"")))
-		+"She cums HARD, and the effect is immediate and intense—her pussy [if ("+y+1+" != 0)and asshole] squeeze[if ("+y+1+" == 0)s] down on your cock[if ("+y+1+" != 0)s], and the heat inside her becomes almost unbearably pleasurable. You can’t hold back any longer, and have no reason to, squeezing her hips and thrusting with one final moan as you release your load inside her.\n\n"
-		+(player.cumQ() > 350 ? "Her hole[if ("+y+1+" != 0)s] gurgle[if ("+y+1+" == 0)s] audibly as you pump your virile baby cream into [if ("+y+1+" != 0)both] her fuckhole[if ("+y+1+" != 0)s], feeling her abdomen start to swell up. She looks heavily pregnant by the time you finish dumping your load into her, letting her tongue loll out in pure bliss.\n\n":"")
-		+(flags[kFLAGS.AIKO_AFFECTION] >= 50 ?"<i>“Th-that… was great…”</i> she says, falling forward "+(player.hasKnot(x)||player.hasKnot(y)?"and dragging you with her by your knotted cock before turning onto her side on the grass, both of you panting tiredly.\n\n":"off your cock[if ("+y+1+" != 0)s] to lay on her side on the grass. You follow soon after her, flopping down beside her with your arms splayed out tiredly, you both panting softly.\n\n")+
-		(flags[kFLAGS.AIKO_AFFECTION] >= 65?(player.hasKnot(x)||player.hasKnot(y)?"She wiggles her ass tighter into you, still linked tightly by your knot":"She curls up against you")+", as all [if (flags[kFLAGS.AIKO_BOSS_COMPLETE] >0)eight|seven] of her tails wrapping around you like a large blanket. She then presses her "+(player.hasKnot(x)||player.hasKnot(y)?"nose":"head")+" into your shoulder sweetly, closing her eyes. The two of you cuddle together on the grass for the remainder of the hour, but you finally have to tell her you need to go back to camp. "+(player.hasKnot(x)||player.hasKnot(y)?"You pull out of her, your knot finally having deflated and stand up. ":"")+"She waves goodbye, curling up underneath the tree and wrapping her tails around herself with a warm smile on her face.\n\n":
+		+"She cums HARD, and the effect is immediate and intense—her pussy [if ("+(y+1)+" != 0)and asshole] squeeze[if ("+(y+1)+" == 0)s] down on your cock[if ("+(y+1)+" != 0)s], and the heat inside her becomes almost unbearably pleasurable. You can’t hold back any longer, and have no reason to, squeezing her hips and thrusting with one final moan as you release your load inside her.\n\n"
+		+(player.cumQ() > 350 ? "Her hole[if ("+(y+1)+" != 0)s] gurgle[if ("+(y+1)+" == 0)s] audibly as you pump your virile baby cream into [if ("+(y+1)+" != 0)both] her fuckhole[if ("+(y+1)+" != 0)s], feeling her abdomen start to swell up. She looks heavily pregnant by the time you finish dumping your load into her, letting her tongue loll out in pure bliss.\n\n":"")
+		+(flags[kFLAGS.AIKO_AFFECTION] >= 50 ?"<i>“Th-that… was great…”</i> she says, falling forward "+(player.hasKnot(x)||player.hasKnot(y)?"and dragging you with her by your knotted cock before turning onto her side on the grass, both of you panting tiredly.\n\n":"off your cock[if ("+(y+1)+" != 0)s] to lay on her side on the grass. You follow soon after her, flopping down beside her with your arms splayed out tiredly, you both panting softly.\n\n")+
+		(flags[kFLAGS.AIKO_AFFECTION] >= 65?(player.hasKnot(x)||player.hasKnot(y)?"She wiggles her ass tighter into you, still linked tightly by your knot":"She curls up against you")+", as all [if (flags[kFLAGS.AIKO_BOSS_COMPLETE] >0)eight|seven] of her tails wrap around you like a large blanket. She then presses her "+(player.hasKnot(x)||player.hasKnot(y)?"nose":"head")+" into your shoulder sweetly, closing her eyes. The two of you cuddle together on the grass for the remainder of the hour, but you finally have to tell her you need to go back to camp. "+(player.hasKnot(x)||player.hasKnot(y)?"You pull out of her, your knot finally having deflated and stand up. ":"")+"She waves goodbye, curling up underneath the tree and wrapping her tails around herself with a warm smile on her face.\n\n":
 		(player.hasKnot(x)||player.hasKnot(y)?"You pull out of her, your knot finally having deflated and stand up. ":"You sit up slowly,")+" and tell Aiko that you should be heading back to camp soon. She nods in understanding, and then sighs a bit, curling up under the tree and wrapping her tails around herself.\n\n"):
 		(player.hasKnot(x)||player.hasKnot(y)?"A few minutes later you pull out of her, your knot having finally deflated enough to allow it. ":"")+"She pulls away from you, dragging herself up into a seated position, and wraps her tails around herself, catching her breath.\n\n"
 		+"<i>“Hah… hah… That… wasn’t half bad,”</i> she admits, smiling meekly. <i>“Maybe if you’re nice and behave yourself… I’ll let you do it again sometime.”</i>\n\n"
@@ -1692,6 +1687,10 @@ package classes.Scenes.Areas.Forest
 		flags[kFLAGS.AIKO_AFFECTION] += 4;
 		if (player.isCorruptEnough(50) && flags[kFLAGS.AIKO_CORRUPTION_ACTIVE] > 0)
 			flags[kFLAGS.AIKO_CORRUPTION] += 4;
+		if (flags[kFLAGS.AIKO_CORRUPTION_ACTIVE]>0 && flags[kFLAGS.AIKO_CORRUPTION] >= 50 && player.isPureEnough(flags[kFLAGS.AIKO_CORRUPTION])) {
+			player.cor += 2;
+			flags[kFLAGS.AIKO_CORRUPTION] -= 2;
+		}
 		player.orgasm('Dick');
 		if (y != 0)
 			player.orgasm('Dick');
@@ -1710,26 +1709,26 @@ package classes.Scenes.Areas.Forest
 		spriteSelect(SpriteDb.s_aiko);
 		var x:int = rand(player.cocks.length);
 		outputText((playerchoice?"You tell Aiko you want her to pleasure you with her mouth this time, eagerly stripping down so you can get things started.":"Pulling you out of your [armor] and setting it aside, Aiko gives you a wry grin as she watches you with lust in her eyes. ")
-		+"\n\nShe smirks as your [cocks] bob[if (player.cocks.length==1)s] up into view, looking up to you with a mischievous smirk as she wraps her fingers around your [cock "+x+1+"], beginning to stroke it gently. <i>“Mmm… you’re already so hard,”</i> she says, gently rubbing her cheek into your groin, moving her nose to the base of your [cocks] and taking in your scent.\n\n"
-		+"She purses her lips against your base, sucking on the side of your shaft gently as her palm wraps around the head, squeezing drops of pre out and using them to lubricate her hand as she lavishes your [cocks] with passionate kisses and strokes. She pulls her hand away for a moment, summoning a pale blue flame into her palm, and returns it to your main shaft, coating it with cool wisps of fire that send shudders up your spine. [if (player.balls > 0)Her other hand gently lifts your [balls], squeezing them softly as she runs her tongue up the underside of your [cock "+x+1+"].]\n\n");
+		+"\n\nShe smirks as your [cocks] bob[if (player.cocks.length==1)s] up into view, looking up to you with a mischievous smirk as she wraps her fingers around your [cock "+(x+1)+"], beginning to stroke it gently. <i>“Mmm… you’re already so hard,”</i> she says, gently rubbing her cheek into your groin, moving her nose to the base of your [cocks] and taking in your scent.\n\n"
+		+"She purses her lips against your base, sucking on the side of your shaft gently as her palm wraps around the head, squeezing drops of pre out and using them to lubricate her hand as she lavishes your [cocks] with passionate kisses and strokes. She pulls her hand away for a moment, summoning a pale blue flame into her palm, and returns it to your main shaft, coating it with cool wisps of fire that send shudders up your spine. "+(player.balls > 0?"Her other hand gently lifts your [balls], squeezing them softly as she runs her tongue up the underside of your [cock "+(x+1)+"].":"")+"\n\n");
 		if (player.cockArea(x) < 40) {
-			outputText("Her lips smack loudly as she plants kisses up and down your shaft, sending your senses into a frenzy as her hand works its way up and down your [cock "+x+1+"], dragging her fingertips along the length. [if (player.balls > 0)Cupping your [balls],] Aiko gently glides her tongue up the underside of your shaft one last time, opening her lips into a wide O and engulfing you in her warm, moist mouth.\n\n"
-			+"Keeping one hand wrapped tightly around the base, she begins to bob her head forward and back, letting your [cock "+x+1+"] hit the back of her throat with each gentle thrust. Her crystal blue eyes stare up at you coyly as she does so, her mouth curled into a smile around your quivering manhood. Pressing you against the back of her mouth, she swallows several times, the gentle rippling of her throat muscles massaging the head of your [cock "+x+1+"].\n\n"
+			outputText("Her lips smack loudly as she plants kisses up and down your shaft, sending your senses into a frenzy as her hand works its way up and down your [cock "+(x+1)+"], dragging her fingertips along the length. [if (player.balls > 0)Cupping your player.ballsDescriptLight(),] Aiko gently glides her tongue up the underside of your shaft one last time, opening her lips into a wide O and engulfing you in her warm, moist mouth.\n\n"
+			+"Keeping one hand wrapped tightly around the base, she begins to bob her head forward and back, letting your [cock "+(x+1)+"] hit the back of her throat with each gentle thrust. Her crystal blue eyes stare up at you coyly as she does so, her mouth curled into a smile around your quivering manhood. Pressing you against the back of her mouth, she swallows several times, the gentle rippling of her throat muscles massaging the head of your [cock "+(x+1)+"].\n\n"
 			+"<i>“Mmm….. mm….”</i> Aiko moans softly into your cock, sending gentle vibrations down the shaft, and you can feel something bushy and soft begin to wrap around your legs. Her hands move around your [hips], where she digs her fingertips into the flesh of your [ass], and several of her tails coil tightly around your ankles and up to your thighs.\n\n"
-			+"You hover your hands above her head momentarily, hesitating, but Aiko looks up at you with her glittering blue eyes and nods softly, her lips squeezing down tightly around your [cock "+x+1+"]. With her permission, you bury your fingertips in her silvery mane and begin to thrust your hips forward, driving your shaft down her throat. She moans, slurping and making lewd gulping noises as you start to throat-fuck her, her eyes rolling back a bit as spittle and precum begins to dribble down her chin.\n\n"
+			+"You hover your hands above her head momentarily, hesitating, but Aiko looks up at you with her glittering blue eyes and nods softly, her lips squeezing down tightly around your [cock "+(x+1)+"]. With her permission, you bury your fingertips in her silvery mane and begin to thrust your hips forward, driving your shaft down her throat. She moans, slurping and making lewd gulping noises as you start to throat-fuck her, her eyes rolling back a bit as spittle and precum begins to dribble down her chin.\n\n"
 			+"Though she is making a good show of being letting you take command, you can feel her still bobbing her head rhythmically in your grip, her throat muscles contracting around your shaft strongly as she gulps down your throbbing meat. She’s definitely doing her share of the work, and you can soon feel your pleasure coming to a head.\n\n"
-			+"Letting out an obscene moan, you lose yourself in pleasure as your [cock "+x+1+"] shoots hot ropes of semen into Aiko’s mouth, coating her throat with your virile jizz. She moans, closing her eyes, and presses her lips to the base of your shaft, her throat contracting rhythmically as she endeavors to swallow your load. "+(player.cumQ() >150 ?"She puts up a good effort, but ultimately fails as jets of cum spurt from the corners of her mouth"+(player.cumQ() >350 ?". As more and more of your semen cascades down her throat, her stomach begins to bulge a little, though far more of it gets on her than in her as it oozes messily down her chin":""):"")
-			+"[if (player.cocks.length>1) the rest of your [cocks] spilling their spunk all over Aiko's chest and the ground below you][if (player.hasVagina()), and your vagina spasming, dripping your excretions down the sides of your thighs and onto the ground, forming a messy puddle of combined sexual fluids]"
-			+".\n\nOnce your orgasm is finished, she locks her mouth tightly around your deflating shaft and pulls back, squeezing the last bits of cum from your urethra and leaving your [cock "+x+1+"] clean as a whistle as her lips leave it with a soft smack. Using the corner of one of her sleeves, she cleans the remainder of your cum off her face, and then lets out a cute burp, patting her chest and saying <i>“Mn, oh, excuse me.</i>");
+			+"Letting out an obscene moan, you lose yourself in pleasure as your [cock "+(x+1)+"] shoots hot ropes of semen into Aiko’s mouth, coating her throat with your virile jizz. She moans, closing her eyes, and presses her lips to the base of your shaft, her throat contracting rhythmically as she endeavors to swallow your load. "+(player.cumQ() >150 ?"She puts up a good effort, but ultimately fails as jets of cum spurt from the corners of her mouth"+(player.cumQ() >350 ?". As more and more of your semen cascades down her throat, her stomach begins to bulge a little, though far more of it gets on her than in her as it oozes messily down her chin":""):"")
+			+(player.cocks.length>1 ?", the rest of your [cocks] spilling their spunk all over Aiko's chest and the ground below you":"")+"[if (player.hasVagina()), and your vagina spasming, dripping your excretions down the sides of your thighs and onto the ground, forming a messy puddle of combined sexual fluids]"
+			+".\n\nOnce your orgasm is finished, she locks her mouth tightly around your deflating shaft and pulls back, squeezing the last bits of cum from your urethra and leaving your [cock "+(x+1)+"] clean as a whistle as her lips leave it with a soft smack. Using the corner of one of her sleeves, she cleans the remainder of your cum off her face, and then lets out a cute burp, patting her chest and saying <i>“Mn, oh, excuse me.</i>");
 		} else {
-			outputText("Her lips smack loudly as she plants kisses up and down your shaft, sending your senses into a frenzy as her hand works its way up and down your [cock "+x+1+"], dragging her fingertips along the length. [if (player.balls > 0)Cupping your [balls], ] Aiko gently glides her tongue up the underside of your shaft one last time, opening her lips into a wide O and wrapping them around the head."
+			outputText("Her lips smack loudly as she plants kisses up and down your shaft, sending your senses into a frenzy as her hand works its way up and down your [cock "+(x+1)+"], dragging her fingertips along the length. [if (player.balls > 0)Cupping your player.ballsDescriptLight(), ] Aiko gently glides her tongue up the underside of your shaft one last time, opening her lips into a wide O and wrapping them around the head."
 			+"Keeping one hand wrapped tightly around the base, her other hand begins to slide along the exposed portion of the shaft, while her warm, moist tongue slides out underneath the head. She slurps up each drop of precum enthusiastically, her crystal blue eyes staring up at you coyly as she does so, and her mouth curls into a smile as she begins to pump your shaft faster.\n\n"
-			+"Squeezing your base tightly, she clamps down on your [cock "+x+1+"], causing your already engorged member to swell with the added pressure. She sucks on the head lavishly, allowing a mixture of spittle and precum to dribble down your shaft, which she gathers with her other hand to lubricate her strokes. One of her tails slides up to wrap around the base of your cock, constricting it tightly as it takes the place of her hand, and she begins to stroke you at a feverish pace using a double-fisted technique.\n\n"
+			+"Squeezing your base tightly, she clamps down on your [cock "+(x+1)+"], causing your already engorged member to swell with the added pressure. She sucks on the head lavishly, allowing a mixture of spittle and precum to dribble down your shaft, which she gathers with her other hand to lubricate her strokes. One of her tails slides up to wrap around the base of your cock, constricting it tightly as it takes the place of her hand, and she begins to stroke you at a feverish pace using a double-fisted technique.\n\n"
 			+"She giggles a bit at the look of pleasure that crosses your face, and redoubles her efforts, alternating between stroking you with both hands and kissing your shaft hungrily. The pleasure is getting to be too much to take, but her tail is blocking the only avenue for your release, and you can tell by her smirk that she knows exactly what she is doing to you.\n\n"
-			+"Her hands continue to run up and down your [cock "+x+1+"] for what seems like forever, her tail wrapped tightly around the base to ensure that your release can never come, and all the while you feel your pleasure mounting higher and higher. You find yourself trembling from head to toe, begging her to let you cum, your muscles taut with the pressure of an orgasm that simply won’t arrive."
+			+"Her hands continue to run up and down your [cock "+(x+1)+"] for what seems like forever, her tail wrapped tightly around the base to ensure that your release can never come, and all the while you feel your pleasure mounting higher and higher. You find yourself trembling from head to toe, begging her to let you cum, your muscles taut with the pressure of an orgasm that simply won’t arrive."
 			+"<i>“Mn… Oh, I suppose,”</i> she teases, leaning back and pushing her chest out. One hand continues to stroke you while the other reaches behind her back, and you eye her lustfully as the bandages binding her breasts fall to ribbons, her gorgeous, perky breasts bouncing free. She opens her mouth and closes her eyes, and you can feel the grip of her tail suddenly loosen, your orgasm forcing its way to the top instantly."
-			+"Letting out an obscene moan, you lose yourself in pleasure as your [cock "+x+1+"] shoots out hot ropes of semen all over Aiko’s face and chest, twitching like mad. Stream after stream spills out, several orgasms’ worth of cum finally allowed to fly free, making a thick, warm mess all over her face and breasts. "+(player.cumQ() >350 ?"Your orgasm seems to go on forever, and by the time it is all over, Aiko’s face is almost unrecognizable, hidden under a sticky mask of your cum.":"")+"\n\n"
-			+"[if (player.cocks.length>1) the rest of your [cocks] spilling their spunk all over Aiko's chest and the ground below you][if (player.hasVagina()), and your vagina spasming, dripping your excretions down the sides of your thighs and onto the ground, forming a messy puddle of combined sexual fluids]"
+			+"Letting out an obscene moan, you lose yourself in pleasure as your [cock "+(x+1)+"] shoots out hot ropes of semen all over Aiko’s face and chest, twitching like mad. Stream after stream spills out, several orgasms’ worth of cum finally allowed to fly free, making a thick, warm mess all over her face and breasts. "+(player.cumQ() >350 ?"Your orgasm seems to go on forever, and by the time it is all over, Aiko’s face is almost unrecognizable, hidden under a sticky mask of your cum.":"")+"\n\n"
+			+(player.cocks.length>1 ?"The rest of your [cocks] spilling their spunk all over Aiko's chest and the ground below you"+(player.hasVagina()?", and your":""):(player.hasVagina()?"Your":""))+"[if (player.hasVagina()) vagina spasming, dripping your excretions down the sides of your thighs and onto the ground, forming a messy puddle of combined sexual fluids.\n\n]"
 			+(player.cumQ() <= 350 ?" <i>“Mmmm...”</i> Aiko lets out a soft moan, swallowing the cum that landed in her mouth and beginning to clean herself off with the corner of her sleeve.":"<i>“Mn… You can stop now,”</i> Aiko teases, grinning girlishly as she sloughs off a layer of cum, giggling to herself. <i>“Damn, you made a mess,”</i>she adds, starting to clean herself off with the corner of her sleeve."));
 		}
 		
@@ -1741,6 +1740,10 @@ package classes.Scenes.Areas.Forest
 		flags[kFLAGS.AIKO_AFFECTION] += 4;
 		if (player.isCorruptEnough(50) && flags[kFLAGS.AIKO_CORRUPTION_ACTIVE] > 0)
 			flags[kFLAGS.AIKO_CORRUPTION] += 4;
+		if (flags[kFLAGS.AIKO_CORRUPTION_ACTIVE]>0 && flags[kFLAGS.AIKO_CORRUPTION] >= 50 && player.isPureEnough(flags[kFLAGS.AIKO_CORRUPTION])) {
+			player.cor += 2;
+			flags[kFLAGS.AIKO_CORRUPTION] -= 2;
+		}
 		player.orgasm('Dick');
 		if (flags[kFLAGS.AIKO_TIMES_MET == 1])
 			doNext(aikoE1SexPart2)
@@ -1776,6 +1779,10 @@ package classes.Scenes.Areas.Forest
 		flags[kFLAGS.AIKO_AFFECTION] += 4;
 		if (player.isCorruptEnough(50) && flags[kFLAGS.AIKO_CORRUPTION_ACTIVE] > 0)
 			flags[kFLAGS.AIKO_CORRUPTION] += 4;
+		if (flags[kFLAGS.AIKO_CORRUPTION_ACTIVE]>0 && flags[kFLAGS.AIKO_CORRUPTION] >= 50 && player.isPureEnough(flags[kFLAGS.AIKO_CORRUPTION])) {
+			player.cor += 2;
+			flags[kFLAGS.AIKO_CORRUPTION] -= 2;
+		}
 		player.orgasm('Vagina');
 		if (flags[kFLAGS.AIKO_TIMES_MET == 1])
 			doNext(aikoE1SexPart2);
@@ -1793,22 +1800,26 @@ package classes.Scenes.Areas.Forest
 		clearOutput();
 		spriteSelect(SpriteDb.s_aiko);
 		var x:int = rand(player.cocks.length);
-		outputText((playerchoice?"You ask Aiko if she can use her tails this time as you seductively let your [armor] slide off your body, exposing to the skittish kitsune your [cock "+x+1+"]. She instantly blushes and lowers her ears, aww.\n\n"
+		outputText((playerchoice?"You ask Aiko if she can use her tails this time as you seductively let your [armor] slide off your body, exposing to the skittish kitsune your [cock "+(x+1)+"]. She instantly blushes and lowers her ears, aww.\n\n"
 		+"<i>“I... W-we use our tails only with a person we really like... and I do like you...”</i> You see her progressively return to her usual self, spotting a mischievous grin as she guides you into a sitting position.\n\n":
-		"<i>“I... really like you, [name], so I am going to do something we very rarely do, except to our closest companions and lovers.”</i> She seductively starts stripping your [armor], letting each piece fall to the floor and looking into your eyes before starting on the next piece, tracing her fingers along your shoulders, stomach and sides as she goes. as your [cock "+x+1+"] is exposed she gives a deep blush, drawing a finger down its' length and pulling away as soon as it jumps.\n\n")
+		"<i>“I... really like you, [name], so I am going to do something we very rarely do, except to our closest companions and lovers.”</i> She seductively starts stripping your [armor], letting each piece fall to the floor and looking into your eyes before starting on the next piece, tracing her fingers along your shoulders, stomach and sides as she goes. As your [cock "+(x+1)+"] is exposed she gives a deep blush, drawing a finger down its' length and pulling away as soon as it jumps.\n\n")
 		+"<i>“Just relax... and enjoy my fluffy tails, big boy.”</i> She says coyly as you see her [if (flags[kFLAGS.AIKO_BOSS_COMPLETE] >0)eight|seven] tails start moving and stretching out like the feathers of a peacock. You already feel hard just at looking at them.\n\n"
-		+"Aiko climbs onto your legs and seductively crawls toward your face with a grin, she then passionately kisses your lips and searches for your tongue; her tails slowly caress your lower body with their soft, warm fur. You slowly encircle her with your arms as the kiss becomes more passionate, until you feel one of her tails wrapping gently around your [cock "+x+1+"].\n\n"
+		+"Aiko climbs onto your legs and seductively crawls toward your face with a grin, she then passionately kisses your lips and searches for your tongue; her tails slowly caress your lower body with their soft, warm fur. You slowly encircle her with your arms as the kiss becomes more passionate, until you feel one of her tails wrapping gently around your [cock "+(x+1)+"].\n\n"
 		+"The skittish kitsune giggles playfully, earning a soft moan from your throat. She gently caresses your ample rod, covering all of its length with one of her tails, moving it gently as you feel the warm fur enveloping you with a comfortable glow, like a camp-side fire caressing your cock.\n\n"
 		+"You moan from the masterful touch of your kitsune lover, her tail will drive you to the edge very soon, it is so soft, luxurious and oh so dexterous! You kiss her profusely and you feel her crotch leaning onto your lower abdomen, covering it with female juice.\n\n"
-		+"As the kitsune continues to torment your rod, you notice that a second tail has joined the action, encircling the tip of your [cock "+x+1+"] while the other one firmly remains wrapped around the base[if (player.balls > 0), caressing your balls]. "
-		+((player.cocks.length>1) ?"The "+((player.cocks.length>2) ?"rest":"other")+" of your [cocks] are quickly enveloped and caressed by Aiko's other tails, being subtly teased and rubbed by the feather-like silky fur of her tails"+(!player.hasVagina()?".\n\n":", and your"):(player.hasVagina()?" Your":""))
-		+(player.hasVagina() ?" [vagina] is tickled by the continuous motion of the tail caressing your [if (player.balls > 0)balls|cock]. Occasionally one of her tails push against your mound, the silky texture feeling quite exquisite against your folds.\n\n":"")
+		+"As the kitsune continues to torment your rod, you notice that a second tail has joined the action, encircling the tip of your [cock "+(x+1)+"] while the other one firmly remains wrapped around the base[if (player.balls > 0), caressing your balls]. "
+		+((player.cocks.length>1) ?"The "+((player.cocks.length>2) ?"rest":"other")+" of your [cocks] are quickly enveloped and caressed by Aiko's tails, being subtly teased and rubbed by the feather-like silky fur of her tails"+(!player.hasVagina()?".\n\n":", and your"):(player.hasVagina()?" Your":""))
+		+(player.hasVagina() ?" [vagina] is tickled by the continuous motion of the tail caressing your [if (player.balls > 0)balls|cock]. Occasionally one of her tails push against your mound, the silky texture feeling quite exquisite against your folds.\n\n":"\n\n")
 		+"You blush and let a deep moan into Aiko's mouth as ecstasy envelops your body like an electric shot, your orgasm exploding onto her belly, breasts and the tails of your kitsune companion.\n\n"
 		+"Aiko giggles as she stands covered in your hot, thick sperm. She then hides her mouth behind one of her soaked tails before seductively licking it clean, watching you panting with pleasure.\n\n"
 		+"<i>“Few people get to enjoy my tails like this... and you definitely seem to appreciate it, [name]... next time, I'll see to it that you even the odds...”</i> She giggles as you pull her close for another kiss, earning a playful grin. Breaking it with a sigh, you tell her you have to return to your camp, but you promise next time you bathe her in pleasure.");
 		
 		flags[kFLAGS.AIKO_SEXED]++;
 		flags[kFLAGS.AIKO_AFFECTION] += 4;
+		if (flags[kFLAGS.AIKO_CORRUPTION_ACTIVE]>0 && flags[kFLAGS.AIKO_CORRUPTION] >= 50 && player.isPureEnough(flags[kFLAGS.AIKO_CORRUPTION])) {
+			player.cor += 2;
+			flags[kFLAGS.AIKO_CORRUPTION] -= 2;
+		}
 		player.orgasm('Dick');
 		if (player.hasStatusEffect(StatusEffects.Spar)) {
 			player.removeStatusEffect(StatusEffects.Spar);
@@ -1825,7 +1836,7 @@ package classes.Scenes.Areas.Forest
 		spriteSelect(SpriteDb.s_aiko);
 		outputText("You tell her that you’re just itching for a little "+(player.findPerk(PerkLib.Masochist) >= 0 ?"release":"abuse")+", and you’re not really looking to fight her for it.\n\n"
 		+"She scowls a little, her nose scrunching up a bit as she growls, <i>“It’s rude to ask lady for a fuck without offering a little foreplay in exchange.”</i>\n\n"
-		+"You are worried she won’t take no for an answer, but thankfully she drops her billhook and walks up to you[if (player.weapon != WeaponLib.FISTS), gently taking your [weapon] from you and tossing it aside.] <i>“But I suppose it can’t be helped...”</i>");
+		+"You are worried she won’t take no for an answer, but thankfully she drops her billhook and walks up to you[if ("+"[hasweapon]"+"), gently taking your "+"[weapon]"+" from you and tossing it aside.] <i>“But I suppose it can’t be helped...”</i>");
 		switch (player.gender) {
 			case 1: doNext(aikoFootjob);
 				break;
@@ -1847,7 +1858,7 @@ package classes.Scenes.Areas.Forest
 		outputText("You fall back easily as Aiko shoves you to the ground, grinning smugly. She takes a twisted pleasure in slowly removing your armorName, punctuating her dominant position with an almost blasé approach to undressing you. When you are fully exposed to her “tender mercies,” she begins to drag her nails along your [breast], leaving behind a lingering sting that pushes a shamefully aroused whimper from your chest. Her tails snake out, twisting themselves around your arms and "+(!player.isNaga()?"legs":"naga tail")+" to hold you firmly in place. For good measure, another tail wraps firmly around your neck, not tight enough to restrict air flow, but seeming to serve as a warning if you were to resist.\n\n"
 		+"<i>“Comfortable? I hope so,”</i> she says, her voice dripping with a sadistic venom.\n\n"
 		+"She stands over you, raising one of her bare feet up to slide across your chest. Her toes slide down your body slowly, working their way gradually to your groin, and she skillfully uses her foot to lift your [cocks], flipping [if(player.cocks.length>1)them|it] back and pinning [if(player.cocks.length>1)them|it] against your body under her heel. In spite of walking around barefoot all the time, Aiko’s soles are silky smooth, and the feeling of her foot pressing into the underside of your shaft[if(player.cocks.length>1)s] is far more wonderful than you ever imagined. Her toes slide up to coat themselves in the pools of precum that are leaking out, wetting her entire foot with the slick fluid.\n\n"
-		+"<i>“Heheh… you’re such a pathetic loser, getting off on something this.... You’re just a twisted perv, aren’t you?”,/i> she says with a grin, leaning down closer so that she can put more pressure on your groin. As her foot slides back and forth along the length of your [cock "+x+1+"], she begins to drag her nails along your chest and shoulders, eliciting a moan of pain and pleasure from your throat. <i>“Isn’t that right? You can talk a big game but you’re just a big masochist who gets off on having your dick rubbed up against my foot!”</i>\n\n"
+		+"<i>“Heheh… you’re such a pathetic loser, getting off on something this.... You’re just a twisted perv, aren’t you?”,/i> she says with a grin, leaning down closer so that she can put more pressure on your groin. As her foot slides back and forth along the length of your [cock "+(x+1)+"], she begins to drag her nails along your chest and shoulders, eliciting a moan of pain and pleasure from your throat. <i>“Isn’t that right? You can talk a big game but you’re just a big masochist who gets off on having your dick rubbed up against my foot!”</i>\n\n"
 		+(player.findPerk(PerkLib.Masochist) < 0 ? "Before you can protest, ":"")+"Aiko begins to increase the speed of her degrading footjob, kneading your groin firmly and forcing a weak groan from your throat. Tongues of vile purple flame begin to lick around her sole, coating your groin in an unbearable warmth. You cringe from the near-scalding heat of the flame, but your pain soon turns to pleasure. "+(player.findPerk(PerkLib.Masochist) < 0 ? "A look of horror graces your face as you realize that her flames are turning you into a masochist!":"")+"\n\n"
 		+"The fuzzy bonds that hold you begin to constrict painfully, sending pleasurable spasms through you as the effects of Aiko’s flame spread over the rest of your body.\n\n"
 		+"<i>“It’s wonderful, isn’t it? The pain… it’s just… exquisite… You want it don’t you? So, so badly…”</i>\n\n"
@@ -1858,12 +1869,21 @@ package classes.Scenes.Areas.Forest
 			+"You grasp at your [cocks] and desperately try to finish yourself off, but your own furious strokes can’t seem to compare to the degrading ministrations of Aiko’s foot. With a growl of despair, you throw yourself back, realizing that ordinary pleasure just won’t be able to cut it for you until the effects of her flames wear off. You lay there for a long while before making your way back to camp, your painful arousal making it a bit awkward to walk the way your [cocks] [if(player.cocks.length>1)are|is] pressing up against the inside of your [armor].");
 			player.dynStats("lus", 50);
 		} else {
-			outputText("<i>“That’s a good little masochist…”</i> she says quietly, wrapping [if(player.cocks.length==1)one of] her free tails around the base[if(player.cocks.length>1)s] of your [cocks] and constricting tightly like [if(player.cocks.length==1)a ]fluffy cock ring[if(player.cocks.length>1)s], increasing the speed of her rough stroking. Her toes curl around your [cock "+x+1+"], her foot becoming a blur as it vibrates across your [cock "+x+1+"] with a furious speed that would chafe if not for the copious amounts of lubrication acting as a buffer. The base[if(player.cocks.length>1)s] of your [cocks]distends as more and more cum pools into your shaft[if(player.cocks.length>1)s] below the tight grip of her tail[if(player.cocks.length>1)s].\n\n"
-			+"Your [cocks] twitch[if(player.cocks.length==1)es] in vain as you feel load after load backing up inside you. Aiko laughs at your suffering, sliding her foot down to the base of your [cock "+x+1+"] and experimentally prodding at the swollen flesh. The feeling sends a shock of pleasure up your spine, and you begin to beg her to end this torment and let you cum!\n\n"
+			outputText("<i>“That’s a good little masochist…”</i> she says quietly, wrapping [if(player.cocks.length==1)one of] her free tails around the base[if(player.cocks.length>1)s] of your [cocks] and constricting tightly like [if(player.cocks.length==1)a ]fluffy cock ring[if(player.cocks.length>1)s], increasing the speed of her rough stroking. Her toes curl around your [cock "+(x+1)+"], her foot becoming a blur as it vibrates across your [cock "+(x+1)+"] with a furious speed that would chafe if not for the copious amounts of lubrication acting as a buffer. The base[if(player.cocks.length>1)s] of your [cocks]distends as more and more cum pools into your shaft[if(player.cocks.length>1)s] below the tight grip of her tail[if(player.cocks.length>1)s].\n\n"
+			+"Your [cocks] twitch[if(player.cocks.length==1)es] in vain as you feel load after load backing up inside you. Aiko laughs at your suffering, sliding her foot down to the base of your [cock "+(x+1)+"] and experimentally prodding at the swollen flesh. The feeling sends a shock of pleasure up your spine, and you begin to beg her to end this torment and let you cum!\n\n"
 			+"<i>“Oh, fine, deny a girl her fun, you selfish little pervert,”</i> she says, grinning vindictively as her tail[if(player.cocks.length>1)s] recede, and at the same time she squeezes your shaft down with her foot, using the motion to aid your body in expelling your load. Your cum spurts across your chest, splattering up into your face with incredible force[if (player.balls > 0) as the contents of your balls empty themselves all over you].\n\n"
 			+"Thoroughly coated in your own spunk, you lay on the ground as Aiko releases you from her grip. <i>“Mn… that’s a good look for you”</i> she says, rubbing her foot against your sensitive crotch some more and then turning to walk away. You lie in your own shame for a time before finally cleaning yourself off and gathering your things to return to camp.");
 			player.orgasm('Dick');
+			
+			flags[kFLAGS.AIKO_AFFECTION] += 4;
+			if (player.isCorruptEnough(50) && flags[kFLAGS.AIKO_CORRUPTION_ACTIVE] > 0)
+				flags[kFLAGS.AIKO_CORRUPTION] += 4;
+			if (flags[kFLAGS.AIKO_CORRUPTION_ACTIVE]>0 && flags[kFLAGS.AIKO_CORRUPTION] >= 50 && player.isPureEnough(flags[kFLAGS.AIKO_CORRUPTION])) {
+				player.cor += 2;
+				flags[kFLAGS.AIKO_CORRUPTION] -= 2;
+			}
 		}
+		flags[kFLAGS.AIKO_SEXED]++;
 
 		doNext(camp.returnToCampUseOneHour);
 	}
@@ -1902,7 +1922,16 @@ package classes.Scenes.Areas.Forest
 			player.orgasm('Vagina');
 			player.dynStats("tou", 2, "sen", -2);
 			player.changeFatigue(30);
+			
+			flags[kFLAGS.AIKO_AFFECTION] += 4;
+			if (player.isCorruptEnough(50) && flags[kFLAGS.AIKO_CORRUPTION_ACTIVE] > 0)
+				flags[kFLAGS.AIKO_CORRUPTION] += 4;
+			if (flags[kFLAGS.AIKO_CORRUPTION_ACTIVE]>0 && flags[kFLAGS.AIKO_CORRUPTION] >= 50 && player.isPureEnough(flags[kFLAGS.AIKO_CORRUPTION])) {
+				player.cor += 2;
+				flags[kFLAGS.AIKO_CORRUPTION] -= 2;
+			}
 		}
+		flags[kFLAGS.AIKO_SEXED]++;
 
 		doNext(camp.returnToCampUseOneHour);
 	}
