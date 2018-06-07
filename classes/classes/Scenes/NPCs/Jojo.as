@@ -64,15 +64,21 @@ if (lust >= maxLust()) {
 			doNext(game.playerMenu);
 		}
 		
-		public function Jojo()
+		public function Jojo() {
+			this.init();
+		}
+		
+		/**
+		 * This function initializes the class.
+		 * This is done to keep the constructor as light weight as possible, as it is interpreted each time, instead of compiled.
+		 */
+		public function init(): void 
 		{
-			//trace("Jojo Constructor!");
 			this.a = "";
 			this.short = "Jojo";
 			this.imageName = "jojo";
 			this.long = "Jojo is an anthropomorphic mouse with immaculate white fur.  Though he stands only four feet tall, he is covered in lean muscle and moves with incredible speed.  He wears loose white clothes wrapped in prayer beads and tattered prayer papers.";
 			this.race = "Mouse-Morph";
-			// this.plural = false;
 			this.createCock(7.5, 1.8);
 			this.cocks[0].cockType = CockTypesEnum.HUMAN;
 			this.balls = 2;
