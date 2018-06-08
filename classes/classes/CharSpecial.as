@@ -1634,7 +1634,7 @@ package classes
 			
 			player.face.type = Face.FOX;
 			player.ears.type = Ears.FOX;
-			player.arms.claws.type = Claws.DOG;
+			player.arms.setType(Arms.FOX);
 			player.arms.claws.tone = "ivory";
 			player.eyes.type = Eyes.DRAGON;
 			player.lowerBody.type = LowerBody.FOX;
@@ -1644,6 +1644,8 @@ package classes
 			player.horns.type = Horns.DRACONIC_X2; // draconic horns adds to your exotic look, counts towards dragon score and keeps your tentacle hair out of your face! and your partners can use them as handles on occasions, letting your delicate ears uncrumpled!
 			player.horns.value = 8;
 			player.wings.type = Wings.DRACONIC_LARGE; // wings! to fly!
+			player.wings.color = "snow white";
+			player.wings.color2 = "snow white";
 			
 			player.str += -10; // strength? not a kitsune way, besides, you are small and really neglected physical training
 			player.tou += 0; // still, your dragon blood makes you surprisingly tough for your size and condition

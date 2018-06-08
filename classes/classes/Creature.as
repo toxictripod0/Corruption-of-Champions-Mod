@@ -2738,6 +2738,11 @@ package classes
 			return [Face.BEAK, Face.COCKATRICE].indexOf(face.type) != -1;
 		}
 
+		public function hasClaws():Boolean
+		{
+			return arms.claws.type !== Claws.NORMAL;
+		}
+
 		public function hasGills():Boolean
 		{
 			return gills.type != Gills.NONE;
@@ -2940,9 +2945,12 @@ package classes
 
 			switch (arms.claws.type) {
 				case Claws.NORMAL: return "fingernails";
-				case Claws.LIZARD: return "short curved" + toneText + "claws";
 				case Claws.DRAGON: return "powerful, thick curved" + toneText + "claws";
 				case Claws.IMP:    return "long" + toneText + "claws";
+				case Claws.CAT:    return "long, thin curved" + toneText + "claws";
+				case Claws.LIZARD:
+				case Claws.DOG:
+				case Claws.FOX:    return "short curved" + toneText + "claws";
 				default: // Since mander and cockatrice arms are hardcoded and the others are NYI, we're done here for now
 			}
 			return "fingernails";

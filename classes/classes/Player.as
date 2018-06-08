@@ -1361,6 +1361,8 @@
 				dogCounter++;
 			if (lowerBody.type == LowerBody.DOG)
 				dogCounter++;
+			if (arms.type == Arms.DOG)
+				dogCounter++;
 			if (dogCocks() > 0)
 				dogCounter++;
 			//Fur only counts if some canine features are present
@@ -1433,6 +1435,8 @@
 				foxCounter++;
 			if (lowerBody.type == LowerBody.FOX)
 				foxCounter++;
+			if (arms.type == Arms.FOX)
+				foxCounter++;
 			if (dogCocks() > 0 && foxCounter > 0)
 				foxCounter++;
 			if (breastRows.length > 1 && foxCounter > 0)
@@ -1458,6 +1462,8 @@
 			if (tail.type == Tail.CAT)
 				catCounter++;
 			if (lowerBody.type == LowerBody.CAT)
+				catCounter++;
+			if (arms.type == Arms.CAT)
 				catCounter++;
 			if (countCocksOfType(CockTypesEnum.CAT) > 0)
 				catCounter++;
