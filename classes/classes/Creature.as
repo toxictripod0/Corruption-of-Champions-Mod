@@ -2738,6 +2738,11 @@ package classes
 			return [Face.BEAK, Face.COCKATRICE].indexOf(face.type) != -1;
 		}
 
+		public function hasClaws():Boolean
+		{
+			return arms.claws.type !== Claws.NORMAL;
+		}
+
 		public function hasGills():Boolean
 		{
 			return gills.type != Gills.NONE;
