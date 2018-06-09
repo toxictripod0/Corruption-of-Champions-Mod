@@ -197,7 +197,7 @@ package classes.Scenes.Areas.Forest
 					addButton(0, "Talk", aikoTalkE3).hint("Talk with the foxy girl.");
 					addButton(1, "Sex", aikoSex).hint("Have some fun times with foxy Aiko!");
 					addButton(3, "Spar", aikoSpar).hint("Exchange some friendly blows.");
-					addButton(4, "Fight", aikoFight).hint("Attack that fox bitch!");
+					addButton(4, "Fight", aikoFight).hint("Attack that fox bitch!").disableIf(player.isPureEnough(40), "You are not corrupt enough to just attack her out of the blue.");
 					addButton(14, "Leave", leave).hint("Leave the clearing");
 				} else {
 					outputText("She nods, but seems to shrink back from you uneasily. You notice she hasn’t dismissed her bow yet, even though it isn’t pointed at you anymore.\n\n"
@@ -208,7 +208,7 @@ package classes.Scenes.Areas.Forest
 					menu();
 					addButton(0, "Talk", aikoTalkE3).hint("Talk with the foxy girl.");
 					addButton(1, "Sex", aikoSex).hint("Have some fun times with foxy Aiko!");
-					addButton(4, "Fight", aikoFight).hint("Attack that fox bitch!");
+					addButton(4, "Fight", aikoFight).hint("Attack that fox bitch!").disableIf(player.isPureEnough(60), "You are not corrupt enough to just attack her out of the blue.");;
 					addButton(14, "Leave", leave).hint("Leave the clearing");
 				}
 			} else {
@@ -225,11 +225,12 @@ package classes.Scenes.Areas.Forest
 		}
 		else if (flags[kFLAGS.AIKO_BOSS_COMPLETE] >0 && flags[kFLAGS.AIKO_BOSS_OUTRO] == 0) {
 			outputText("As you make your way into the bioluminescent deepwoods, you remember you had a discussion to do with Aiko, she was "+(flags[kFLAGS.AIKO_BOSS_COMPLETE] == 1 ? "really glad the nightmare was over":"really angry you let her sister go")+".\n\n"
-			+"You move across the bushes and you notice a familiar presence. You lean your back on a tree as you see a blue flame moving towards you. Immediately after that, the flame explodes and Aiko materializes in front of you. She's very happy to see you/she looks bittersweet."
-			+"<i>“Hey, [name]... I... I want to thank you again for your help down there... I'm a failure as a guardian, it was my duty to prevent Yamata from going back there and I got outsmarted... Don't worry, I'm not letting it happen again. Look here.”</i> She solemnly states as she extend her tails. With a hint of surprise, you notice she has one more.\n\n"
-			+"You smile and congratulate with the now eight-tails as she tries to hide a deep crimson blush on her face. She seems to be really convinced to become a nine tails and you are very happy for her. You spend the remaining time happily chatting with your kitsune girl."
-			+"<i>“See you around, [name].”</i> She lets you go after a quick peck on the cheek. As you see her rush away, you notice she still has that Muramasa katana tied to her hip. That blade is as strong as ever, but it seems that Aiko's unaffected. Her magic is really strong indeed. Still, you are still worried, you better keep an eye on that.");
-			flags[kFLAGS.AIKO_BOSS_OUTRO]++;
+			+"You move across the bushes and you notice a familiar presence. You lean your back on a tree as you see a blue flame moving towards you. Immediately after that, the flame explodes and Aiko materializes in front of you. "+(flags[kFLAGS.AIKO_BOSS_COMPLETE] == 1 ?"She's very happy to see you":"She looks bittersweet.")+"\n\n"
+			+"<i>“Hey, [name]... I... I want to thank you again for your help down there... I'm a failure as a guardian, it was my duty to prevent Yamata from getting to the village but I was outsmarted... Don't worry, I'm not letting it happen again. Look here.”</i> She solemnly states as she extends her tails. With a hint of surprise, you notice she has one more.\n\n"
+			+"You smile and congratulate the now eight-tails as she tries to hide a deep crimson blush on her face. She seems to be really convinced to become a nine tails and you are very happy that she is making it a reality. You spend the remaining time happily chatting with your kitsune girl.\n\n"
+			+"<i>“See you around, [name].”</i> She lets you go after a quick peck on the cheek. As you see her rush away, you notice she still has Yamata's Muramasa katana tied to her hip. That blade is as strong as ever, but it seems that Aiko is as yet unaffected. Her magic has however grown very strong indeed. Still, you are worried, you better keep an eye on her state from now on, lest she become corrupted like her half-sister.");
+			flags[kFLAGS.AIKO_BOSS_OUTRO] = 1;
+			doNext(camp.returnToCampUseOneHour);
 		}
 		else if (flags[kFLAGS.AIKO_BOSS_COMPLETE] ==0 && player.level >= 25 && flags[kFLAGS.AIKO_AFFECTION] > 90 && flags[kFLAGS.AIKO_TIMES_MET] > 3) {
 			if (flags[kFLAGS.AIKO_BOSS_INTRO] > 0) {
@@ -312,8 +313,8 @@ package classes.Scenes.Areas.Forest
 					addButton(1, "Sex", aikoSex).hint("Have some fun times with foxy Aiko!");
 					addButton(2, "Both", aikoTalkAndSex).hint("Have a chat and then some fun times with foxy Aiko after!");
 					addButton(3, "Spar", aikoSpar).hint("Exchange some friendly blows.");
-					addButton(4, "Fight", aikoFight).hint("Attack that fox bitch!");
-					addButton(9, "Toggle Corruption", toggleCorruption).hint(flags[kFLAGS.AIKO_CORRUPTION_ACTIVE] == 0 ? "Aiko's corruption is disabled":"Aiko's corruption is enabled");
+					addButton(4, "Fight", aikoFight).hint("Attack that fox bitch!").disableIf(player.isPureEnough(75), "You are not corrupt enough to just attack her out of the blue.");
+					addButton(9, "Corruption "+(flags[kFLAGS.AIKO_CORRUPTION_ACTIVE] ==0?"off":"on"), toggleCorruption).hint(flags[kFLAGS.AIKO_CORRUPTION_ACTIVE] == 0 ? "Aiko's corruption is disabled":"Aiko's corruption is enabled");
 					addButton(14, "Leave", leave).hint("Leave the clearing");
 				} else {
 					outputText("You have to duck when an arrow goes whizzing by your head, sticking into a tree behind you with a thud. Aiko marches out of the underbrush and pulls out another arrow, walking up to stand by the Ancient Tree. "+((flags[kFLAGS.AIKO_CORRUPTION] <= 20 || flags[kFLAGS.AIKO_CORRUPTION_ACTIVE]==0) ?"You can see that same spark of life and pride in her eyes as always." : (flags[kFLAGS.AIKO_CORRUPTION] <= 40 ? "The spark of pride and life is gone from her eyes, replaced with something colder. You have your suspicions that she has you to thank for that." : "She seems to have an unsettling sway in her gait, like she’s just a little off balance. There is a look in her eye that suggests her mind might be going slightly unhinged as well."))+" Ethereal blue flames dance around the clearing, casting everything in a pale, ghostly light.\n\n"
@@ -325,7 +326,7 @@ package classes.Scenes.Areas.Forest
 					addButton(1, "Submit", submitToAiko).hint("Have some fun times with foxy Aiko!\nThough in her current state who knows what she'll get up to!");
 					addButton(2, "Talk&Sex", aikoTalkAndSex).hint("Have a chat and then some fun times with foxy Aiko after!");
 					addButton(3, "Fight4Rape", aikoFight).hint("She likes it when you try to rape her!");
-					addButton(9, "Toggle Corruption", toggleCorruption).hint(flags[kFLAGS.AIKO_CORRUPTION_ACTIVE] == 0 ? "Aiko's corruption is disabled":"Aiko's corruption is enabled");
+					addButton(9, "Corruption "+(flags[kFLAGS.AIKO_CORRUPTION_ACTIVE] ==0?"off":"on"), toggleCorruption).hint(flags[kFLAGS.AIKO_CORRUPTION_ACTIVE] == 0 ? "Aiko's corruption is disabled":"Aiko's corruption is enabled");
 					addButton(14, "Leave", leave).hint("Leave the clearing");
 				}
 			}
@@ -1897,7 +1898,7 @@ package classes.Scenes.Areas.Forest
 		+"She raises one of her hands and suddenly claws you across the cheek, your face stinging from the sharp slap accompanying it. As fresh blood begins to seep from the wounds and drip down your chin, Aiko grabs you by the "+ (!player.hair.length === 0?"hair":"ear") +", holding your head back so she can run her tongue across your face. Her lips are stained cherry red from your blood, a small droplet dribbling from the corner of her mouth when she pulls away, flashing an evil grin.\n\n"
 		+"Her hand rises up again, and you instinctively recoil from the expected slap, but it never comes. Instead, tongues of a sickly purple flame begin to dance across her knuckles, coating her fingertips in their eerie corrupted glow. You cry out in pain as she sticks her fingers against your chest, the hot flames searing and sizzling as she rakes them across you in a long drag. You scream out in pain as they burn, but suddenly become aware that you are moaning with nothing short of orgasmic pleasure! The pain is unbearable, but the more terrible it becomes, the more you lust for it, longing to feel more and more!\n\n"
 		+"<i>“Mm... isn’t it wonderful? The pain... the exquisite, excruciating pain...”</i>\n\n"
-		+(player.findPerk(PerkLib.Masochist) < 0 ?"With a look of horror, you realize that her flame is slowly turning you into a masochist! ":"")+"You can’t help but give a terrified nod of agreement, your vaginal juices already spilling out over the ground. Your lungs let out a shameless moan to accompany your quickly approaching release, but you trail off into a frustrated pant, realizing that Aiko is not quite ready to finish you yet.\n\n"
+		+"[if (player.findPerk(PerkLib.Masochist) < 0)With a look of horror, you realize that her flame is slowly turning you into a masochist! ]You can’t help but give a terrified nod of agreement, your vaginal juices already spilling out over the ground. Your lungs let out a shameless moan to accompany your quickly approaching release, but you trail off into a frustrated pant, realizing that Aiko is not quite ready to finish you yet.\n\n"
 		+"With a malicious grin, she raises one of the tails that doesn’t bind your limbs, and brings it down to lash out at your [breast], grazing across one of your burns. Her tail feels like a whip, stinging your flesh, and the first lash is soon followed by another, then another. The brutal whipping brings you closer and closer to your climax with each blow, but Aiko shows her skill at torment, holding back just enough to keep you from going over the edge.\n\n"
 		+"<i>“HAHAhaHA! Like it?! Love it?! Admit it! Under the surface you’re just a twisted maso-pig!!”</i>\n\n"
 		+"You squeal, twitch, turn, and convulse underneath her torture, your body burning as if it is on the brink of the most incredible climax of your life. Every lash feels like it will be the one that will send you there, yet each time it fails to deliver. Your only solace is that the pleasure drags on and on — given the choice, you might well lay there for days taking her abuse, moaning like a bitch in heat.\n\n"
@@ -1918,7 +1919,7 @@ package classes.Scenes.Areas.Forest
 			+"She grabs you by the throat and thrusts her lips against yours, forcing her tongue inside to clear the way as she exhales a bittersweet venom-purple flame into your mouth. The toxic taste of licorice cascades down your throat, and your pleasures are suddenly doubled over, at last pushed past your limit!\n\n"
 			+"Every muscle in your body tenses up as your orgasm finally rips through you, reduced to a shameless, pathetic heap underneath your kitsune dominatrix.\n\n"
 			+"<i>“Don’t say I never gave you anything,”</i> she whispers into your ear, gently licking a little dried blood from your cheek wounds. You simply black out from exhaustion, your whole body still shaking from the afterglow of the wonderful torture.\n\n"
-			+"When you come to about an hour later, Aiko is nowhere to be seen. Your muscles are agonizingly sore, but you already know you’ll be a bit tougher for the ordeal."+(player.findPerk(PerkLib.Masochist) < 0 ?" You shudder a little, remembering with disgust how willingly you subjected yourself to this treatment.":""));
+			+"When you come to about an hour later, Aiko is nowhere to be seen. Your muscles are agonizingly sore, but you already know you’ll be a bit tougher for the ordeal.[if(player.findPerk(PerkLib.Masochist) < 0 ) You shudder a little, remembering with disgust how willingly you subjected yourself to this treatment.]");
 			player.orgasm('Vagina');
 			player.dynStats("tou", 2, "sen", -2);
 			player.changeFatigue(30);
