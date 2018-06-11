@@ -122,7 +122,7 @@ only corrupt siren daughters that the PC themselves father or birth stay at the 
 				flags[kFLAGS.MINERVA_CORRUPTION_PROGRESS]++;
 			}
 			else if (flags[kFLAGS.MINERVA_CORRUPTION_PROGRESS] == 4) { //The process of corruption, third visit.
-				minervaPreCorruptionProcess();
+				minervaPreCorruptionQuestBegin();
 				return;
 			}
 			getGame().highMountains.minervaScene.genericMenu();
