@@ -118,6 +118,10 @@ package classes.Scenes.Areas.Forest
 						+"Yamata pauses for a moment, placing a hand on her taut abs and sliding her fingers downward slowly, gazing deep into your eyes. Her tails fan out around her, curling around her limbs seductively, and she gives you a flirtatious leer as she watches your body tremble with desire.  ");
 						player.takeLustDamage(lustDmg*2);
 						break;
+						
+					default:
+						outputText("This is a bug, please report it - yamataIllusionLust");
+						break;
 				}
 			outputText("\n\nYamata takes a moment to stretch out her limber body, thrusting out her bound chest as she stretches her arms toward the sky. She twirls around, head slightly askew, and then bows forward to give you a good angle at her cleavage, packed tightly into her chest wrap, all the while with a sickly grin on her face.\n\n"
 			+"<i>“Why dont you just surrender already? We can have so much fun in my torture devices, it will feel so good! We might even have some fun on the side if you scream prettily enough, hehehe.”</i> Yamata whispers sultrily, running a hand along her tails and making them fan out around her seductively.\n\n");

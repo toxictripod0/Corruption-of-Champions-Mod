@@ -247,6 +247,15 @@ package classes.Scenes.Areas.Forest
 			combatRoundOver();
 		}
 		
+		/**
+		 * Prints a text message that the user should report a bug.
+		 *
+		 * @param bugId a string to help developers find whatever triggered the bug
+		 */
+		private function reportABug(bugId:String): void {
+			outputText("This is probably a bug. Please open a issue so it can be fixed - " + bugId);
+		}
+
 		private function aikoTease():void
 		{
 			var temp:int = rand(4);
@@ -262,6 +271,10 @@ package classes.Scenes.Areas.Forest
 					break;
 				case 3:
 					outputText("<i>“You know, we don’t have to fight... Wouldn’t you rather come pet my super fluffy tails?”</i> Aiko teases, running a hand along her tails and making them fan out around her seductively. You find yourself nodding before you can even think to stop yourself — yes, you <i>DO</i> want the fluffy tails!  ");
+					break;
+
+				default:
+					reportABug("Aiko Tease");
 					break;
 			}
 			
@@ -293,6 +306,10 @@ package classes.Scenes.Areas.Forest
 							addCombatBuff("spe", -7);
 							castIllusion += 2;
 						}
+						break;
+
+					default:
+						reportABug("Aiko Illusion");
 						break;
 				}
 			}
