@@ -121,7 +121,7 @@ only corrupt siren daughters that the PC themselves father or birth stay at the 
 				outputText("\n\nMinerva sighs and pulls out of her bound companion and lets the ample hipped bird woman flop to the side, the harpy’s gaping pussy leaking thick globs of sperm as she pants and coos in a sex induced daze, licking her golden lips. Your siren lover turns her attention back to you before approaching you, her generous hips swaying back and forth enticingly as she struts toward you, her anemone dick clearly still bloated with lust. “Oh, good! [player name] I’ve missed you so much... have you come to spend some time with little old me? Would you like to help me get this hunger of mine under control?”");
 				flags[kFLAGS.MINERVA_CORRUPTION_PROGRESS]++;
 			}
-			else (flags[kFLAGS.MINERVA_CORRUPTION_PROGRESS] == 4) { //The process of corruption, third visit.
+			else if (flags[kFLAGS.MINERVA_CORRUPTION_PROGRESS] == 4) { //The process of corruption, third visit.
 				minervaPreCorruptionProcess();
 				return;
 			}
