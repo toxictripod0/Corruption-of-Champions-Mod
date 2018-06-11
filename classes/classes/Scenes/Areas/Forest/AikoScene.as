@@ -208,7 +208,7 @@ package classes.Scenes.Areas.Forest
 					menu();
 					addButton(0, "Talk", aikoTalkE3).hint("Talk with the foxy girl.");
 					addButton(1, "Sex", aikoSex).hint("Have some fun times with foxy Aiko!");
-					addButton(4, "Fight", aikoFight).hint("Attack that fox bitch!").disableIf(player.isPureEnough(60), "You are not corrupt enough to just attack her out of the blue.");;
+					addButton(4, "Fight", aikoFight).hint("Attack that fox bitch!").disableIf(player.isPureEnough(60), "You are not corrupt enough to just attack her out of the blue.");
 					addButton(14, "Leave", leave).hint("Leave the clearing");
 				}
 			} else {
