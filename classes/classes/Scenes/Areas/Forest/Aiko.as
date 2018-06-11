@@ -10,7 +10,60 @@ package classes.Scenes.Areas.Forest
 	{
 		private var castIllusion:int = 0;
 
-		
+		public function Aiko() {
+			init();
+		}
+
+		/**
+		 * Constructor code extracted into function to make use of the JIT compiler.
+		 * Code in the constructor is always interpreted.
+		 */
+		private function init(): void
+		{
+			this.a = "";
+			this.short = "Aiko";
+			this.imageName = "aiko";
+			if (game.flags[kFLAGS.AIKO_CORRUPTION] < 50 || game.flags[kFLAGS.AIKO_CORRUPTION_ACTIVE]==0)
+				this.long = "Aiko stands before you, a little over 5’4 tall. She has a head of short silver-blond hair that ends above her shoulders, parted by two large, furry fox ears. "+(flags[kFLAGS.AIKO_BOSS_COMPLETE] > 0 ? "Eight":"Seven")+" luxurious fox tails sway behind her, the silky fur shimmering as they move. She wears a set of revealing blue and white robes, neatly pressed and hung off her features with care, her D-cup breasts bound by a cloth chest wrap that is just a little too tight. She sports a number of red “tattoos” adorning her face and body; the most prominent of which are the spiral-shaped patterns on her palms and buttocks, and a stylized lotus flower on her lower back.  She wields a longbow almost as tall as she is that she can summon and dismiss with a snap of her fingers, and stares you down with a determined fire in her glittering blue eyes.";
+			else
+				this.long = "Aiko stands before you, a little over 5’4 tall. She has a head of short, unkempt silver-blond hair that ends above her shoulders, parted by two large, furry fox ears. "+(flags[kFLAGS.AIKO_BOSS_COMPLETE] > 0 ? "Eight":"Seven")+" fox tails sway behind her, their fur shaggy and matted down. She wears a set of ragged, bloodied robes that show a lot of skin, her D-cup breasts haphazardly bound by a set of bandages in dire need of changing, and you can smell sex and violence on her even from here. She sports a number of red “tattoos” adorning her face and body; the most prominent of which are the spiral-shaped patterns on her palms and buttocks, and a stylized lotus flower on her lower back. She is wielding an over-sized bill-hook hatchet that she can summon and dismiss with a snap of her fingers, and stares you down with a maniacal fire in her crazed blue eyes."
+			this.race = "Kitsune";
+			this.createVagina(false, VaginaClass.WETNESS_NORMAL, VaginaClass.LOOSENESS_TIGHT);
+			this.createStatusEffect(StatusEffects.BonusVCapacity, 200, 0, 0, 0);
+			createBreastRow(Appearance.breastCupInverse("D"));
+			this.ass.analLooseness = AssClass.LOOSENESS_VIRGIN;
+			this.ass.analWetness = AssClass.WETNESS_DRY;
+			this.createStatusEffect(StatusEffects.BonusACapacity,40,0,0,0);
+			this.tallness = 64;
+			this.hips.rating = Hips.RATING_AMPLE;
+			this.butt.rating = Butt.RATING_AVERAGE+1;
+			this.skin.tone = "light tan";			//might need to change to russet
+			this.hair.color = "silver-blonde";
+			this.hair.length = 10;
+			initStrTouSpeInte(25, 30, 90, 100);
+			initLibSensCor(40, 65, game.flags[kFLAGS.AIKO_CORRUPTION]);
+			this.weaponName = (cor >= 50 && game.flags[kFLAGS.AIKO_CORRUPTION_ACTIVE]==1 ? "bill-hook hatchet" : "longbow");
+			this.weaponVerb = (cor >= 50 && game.flags[kFLAGS.AIKO_CORRUPTION_ACTIVE]==1 ? "slash" : "shoot");
+			this.armorName = (cor >= 50 && game.flags[kFLAGS.AIKO_CORRUPTION_ACTIVE]==1 ? "ragged, bloodied robes" : "revealing blue and white robes");
+			this.armorDef = 16;
+			this.bonusHP = 350;
+			this.lust = 25;
+			this.lustVuln = 0.4;
+			this.temperment = (cor >= 50 && game.flags[kFLAGS.AIKO_CORRUPTION_ACTIVE]==1 ? TEMPERMENT_LOVE_GRAPPLES : TEMPERMENT_LUSTY_GRAPPLES);
+			if (flags[kFLAGS.AIKO_BOSS_COMPLETE] >0) {			
+				this.level = 28;
+				this.tail.venom = 8;
+			} else {
+				this.level = 18;
+				this.tail.venom = 7;
+			}
+			this.gems = rand(10) + 30;
+			this.drop = new WeightedDrop(consumables.FOXJEWL, 1);
+			this.tail.type = Tail.FOX;
+			this.ears.type = Ears.FOX;
+			checkMonster();
+		}
+
 		private function aikoBasic():void
 		{
 			var damage:int = int(str) + rand(15);
@@ -553,52 +606,6 @@ package classes.Scenes.Areas.Forest
 			} else {
 				game.forest.aikoScene.aikoWinsIntro();
 			}
-		}
-
-		public function Aiko()
-		{
-			this.a = "";
-			this.short = "Aiko";
-			this.imageName = "aiko";
-			if (game.flags[kFLAGS.AIKO_CORRUPTION] < 50 || game.flags[kFLAGS.AIKO_CORRUPTION_ACTIVE]==0)
-				this.long = "Aiko stands before you, a little over 5’4 tall. She has a head of short silver-blond hair that ends above her shoulders, parted by two large, furry fox ears. "+(flags[kFLAGS.AIKO_BOSS_COMPLETE] > 0 ? "Eight":"Seven")+" luxurious fox tails sway behind her, the silky fur shimmering as they move. She wears a set of revealing blue and white robes, neatly pressed and hung off her features with care, her D-cup breasts bound by a cloth chest wrap that is just a little too tight. She sports a number of red “tattoos” adorning her face and body; the most prominent of which are the spiral-shaped patterns on her palms and buttocks, and a stylized lotus flower on her lower back.  She wields a longbow almost as tall as she is that she can summon and dismiss with a snap of her fingers, and stares you down with a determined fire in her glittering blue eyes.";
-			else
-				this.long = "Aiko stands before you, a little over 5’4 tall. She has a head of short, unkempt silver-blond hair that ends above her shoulders, parted by two large, furry fox ears. "+(flags[kFLAGS.AIKO_BOSS_COMPLETE] > 0 ? "Eight":"Seven")+" fox tails sway behind her, their fur shaggy and matted down. She wears a set of ragged, bloodied robes that show a lot of skin, her D-cup breasts haphazardly bound by a set of bandages in dire need of changing, and you can smell sex and violence on her even from here. She sports a number of red “tattoos” adorning her face and body; the most prominent of which are the spiral-shaped patterns on her palms and buttocks, and a stylized lotus flower on her lower back. She is wielding an over-sized bill-hook hatchet that she can summon and dismiss with a snap of her fingers, and stares you down with a maniacal fire in her crazed blue eyes."
-			this.race = "Kitsune";
-			this.createVagina(false, VaginaClass.WETNESS_NORMAL, VaginaClass.LOOSENESS_TIGHT);
-			this.createStatusEffect(StatusEffects.BonusVCapacity, 200, 0, 0, 0);
-			createBreastRow(Appearance.breastCupInverse("D"));
-			this.ass.analLooseness = AssClass.LOOSENESS_VIRGIN;
-			this.ass.analWetness = AssClass.WETNESS_DRY;
-			this.createStatusEffect(StatusEffects.BonusACapacity,40,0,0,0);
-			this.tallness = 64;
-			this.hips.rating = Hips.RATING_AMPLE;
-			this.butt.rating = Butt.RATING_AVERAGE+1;
-			this.skin.tone = "light tan";			//might need to change to russet
-			this.hair.color = "silver-blonde";
-			this.hair.length = 10;
-			initStrTouSpeInte(25, 30, 90, 100);
-			initLibSensCor(40, 65, game.flags[kFLAGS.AIKO_CORRUPTION]);
-			this.weaponName = (cor >= 50 && game.flags[kFLAGS.AIKO_CORRUPTION_ACTIVE]==1 ? "bill-hook hatchet" : "longbow");
-			this.weaponVerb = (cor >= 50 && game.flags[kFLAGS.AIKO_CORRUPTION_ACTIVE]==1 ? "slash" : "shoot");
-			this.armorName = (cor >= 50 && game.flags[kFLAGS.AIKO_CORRUPTION_ACTIVE]==1 ? "ragged, bloodied robes" : "revealing blue and white robes");
-			this.armorDef = 16;
-			this.bonusHP = 350;
-			this.lust = 25;
-			this.lustVuln = 0.4;
-			this.temperment = (cor >= 50 && game.flags[kFLAGS.AIKO_CORRUPTION_ACTIVE]==1 ? TEMPERMENT_LOVE_GRAPPLES : TEMPERMENT_LUSTY_GRAPPLES);
-			if (flags[kFLAGS.AIKO_BOSS_COMPLETE] >0) {			
-				this.level = 28;
-				this.tail.venom = 8;
-			} else {
-				this.level = 18;
-				this.tail.venom = 7;
-			}
-			this.gems = rand(10) + 30;
-			this.drop = new WeightedDrop(consumables.FOXJEWL, 1);
-			this.tail.type = Tail.FOX;
-			this.ears.type = Ears.FOX;
-			checkMonster();
 		}
 	}
 }
