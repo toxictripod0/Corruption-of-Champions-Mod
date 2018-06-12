@@ -2,22 +2,22 @@
 package classes.Items.Armors {
 import classes.Items.Armor;
 import classes.TimeAwareInterface;
-import classes.EventParser;
 import classes.Player;
 import classes.CoC;
-import classes.Scenes.SceneLib;
+import classes.GlobalFlags.kGAMECLASS;
+import classes.Items.ConsumableLib;
 
 public class NagaSilkDress extends Armor implements TimeAwareInterface {
     private var _name:String;
 	private function get player():Player{ //need the instance of player
-			return CoC.instance.player;
+			return kGAMECLASS.player;
 	}
     public function NagaSilkDress() {
         super("NagaDress","Naga Dress","","a desert naga silk dress",0,0,
                 "",
         "",false,false);
         setColor();
-		EventParser.timeAwareClassAdd(this);
+		CoC.timeAwareClassAdd(this);
     }
     public function setColor(color:String="purple"):void
     {
@@ -33,7 +33,7 @@ public class NagaSilkDress extends Armor implements TimeAwareInterface {
 	public function timeChangeLarge():Boolean {	return false;	}
 		
 	public function timeChange():Boolean {
-		if (player.armor is NagaSilkDress && CoC.instance.model.time.hours == 5) { //only call function once per day as time change is called every hour
+		if (player.armor is NagaSilkDress && kGAMECLASS.time.hours == 5) { //only call function once per day as time change is called every hour
 			Progression(); 
 			return true;
 		}
@@ -100,7 +100,6 @@ public class NagaSilkDress extends Armor implements TimeAwareInterface {
 		clearOutput();
 		outputText("\n\n" + dreams[rand(dreams.length)] + "\n\n");
 		outputText("Lucky Day!   You find a vial of snake oil in your dress and quicky quaff it down.\n\n");
-		SceneLib.mutationsTable.snakeOil(player,false);
-		
+		kGAMECLASS.consumables.SNAKOIL.useItem();
 	}
 }}
