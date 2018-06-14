@@ -1107,10 +1107,7 @@ package classes.Scenes.Areas.Forest
 		+"<i>“When a kitsune gets their last tail, a ceremony is induced and all of the village celebrates at their newly acquired leader. During said ceremony, the new nine tails can select one or more retainers who will act as their servants and lieutenants, these retainers need to have five or more tails and may even be from other clans. It is a very high honor to be selected.”</i>\n\n"
 		+"You nod as you see her lips stop moving. You ask if she has ever became a retainer, noting that she has [if (flags[kFLAGS.AIKO_BOSS_COMPLETE] >0)eight|seven] tails. You see her with an irritated grin immediately after you finished talking, it's clear something is up.\n\n"
 		+"<i>“Well... yes. I was a retainer, to the last nine tails ever created in my village. Her name is “Ginko” ... let's just say she loved nagging us and had... somewhat of a passion for sexually dominating us. That is until I became the guardian of my village.”</i>\n\n"
-		+"With a grin, you giggle at her obvious distaste for her time as a servant, earning a raspberry from her irritated form before sharing a laugh.\n\n"
-		//Kitsune retainers are a potential future expansion
-		/*+((player.tail.type == Tail.FOX && player.tail.venom == 9)?"<i>“So, if I may ask, who are your retainers? If you have been to Taoth's shrine, you have certainly met the apprentices eager to serve you? [If (flags[kFLAGS.AIKO_AFFECTION]>80) <i>“if I weren't a guardian... I wouldn't mind becoming your retainer.”</i> She says while playfully spanking your ass, lighting a grin on your lips. Maybe you seriously will take her as a retainer when she is released of her duty.]\n\n":"")
-		+"You tell her you didn't even know you could have retainers before hearing it from her. <i>“That's fun to hear... I'll be curious to see who you will pick, and if they can please you properly...”</i> She seductively moves a finger onto your "+((player.armor != ArmorLib.NOTHING)"[armor]":"[skin]")+", grinning.\n\n"*/);
+		+"With a grin, you giggle at her obvious distaste for her time as a servant, earning a raspberry from her irritated form before sharing a laugh.\n\n");
 		if (talkAndSex) {
 			outputText("Thanking her for the information, you decide to change the subject, bringing up your previous proposition again.");
 			doNext(aikoSex);
