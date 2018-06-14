@@ -1374,7 +1374,6 @@ package classes.Scenes.Areas.Forest
 	
 	public function aikoRapeSex():void {
 		//[Fuck Vagina][Fuck Ass][Humiliate][Leave]
-		//apply //flags[kFLAGS.AIKO_SEXED]++;
 		menu();
 		addButton(0, "Fuck Vag", aikoRapeFuckVag).hint("Pound ze foxy pussy!").disableIf(!player.hasCock(),"Requires a dick you moron!");
 		addButton(1, "Fuck Ass", aikoRapeFuckAss).hint("Get some of that tight, juicy ass!").disableIf(!player.hasCock(),"Requires a dick you moron!").disableIf(player.cockThatFits(50) < 0,"You dick too huge man, She be delicate in the heinie");
