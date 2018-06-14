@@ -625,18 +625,6 @@ package classes.Scenes.Areas.Forest
 		player.dynStats("lus", 10+rand(11), "cor", -5);
 		doNext(camp.returnToCampUseOneHour);
 	}
-	
-	private function aikoE1Fight():void
-	{
-		clearOutput();
-		spriteSelect(SpriteDb.s_aiko);		
-		outputText("When it becomes apparent that you won’t be talked out of fighting, Aiko lets out a disappointed sigh.\n\n"
-		+"<i>“I was really hoping to avoid a fight,”</i> she says, holding her hands up defensively, taking a few small steps backward. <i>“But I really need that ball back, and if I can’t convince you... I’ll just have to force you to give it up.”</i>");
-		flags[kFLAGS.AIKO_FIRST_CHOICE] = 5;
-		flags[kFLAGS.AIKO_HAS_FOUGHT] = 1;
-		flags[kFLAGS.AIKO_AFFECTION] -= 2;
-		startCombat(new Aiko());
-	}
 		
 	internal function aikoLosesIntro():void
 	{
