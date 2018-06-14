@@ -559,11 +559,9 @@ package classes.Scenes.Areas.Forest
 			if (player.hasStatusEffect(StatusEffects.Illusion))
 				resistIllusion();
 			
-			if (rand(12) == 0)
+			if ((rand(12) == 0) && (!this.hasStatusEffect(StatusEffects.AikoArcaneArcher)))
 			{
-				if (!this.hasStatusEffect(StatusEffects.AikoArcaneArcher)) {
 					arcaneArcherActivate();
-				}
 			}
 			
 			//basic attack has 2x chance unless arcane archer active
