@@ -51,7 +51,7 @@ package classes.Scenes.Areas.Forest
 			combatRoundOver();
 		}
 		
-		private function YamataNightmare():void
+		private function yamataNightmare():void
 		{
 			outputText("You can hear a whispering voice clouding the edges of your mind, and begin to shrink back as darkness begins to close in on you. As the all-consuming blackness fills your field of vision, you are beset on all sides by unimaginable horrors too terrifying to describe! You feel yourself falling deeper and deeper into a void of despair, but somehow you know that you could end all the suffering if you would only submit yourself to Yamata...  ");
 			//Resist: - successfully resisting deals small health & lust damage to Yamata
@@ -333,7 +333,7 @@ package classes.Scenes.Areas.Forest
 			
 			//basic attack has 2x chance unless arcane archer active
 			var moves:Array;
-				moves = [yamataBasic, yamataDarkFoxfire, YamataNightmare, yamataBasic, yamataIllusionLust, yamataLustAttack, kitsuneSealAttack];
+				moves = [yamataBasic, yamataDarkFoxfire, yamataNightmare, yamataBasic, yamataIllusionLust, yamataLustAttack, kitsuneSealAttack];
 			if (player.getEvasionRoll()) {
 				moves = [yamataMiss];
 			}
