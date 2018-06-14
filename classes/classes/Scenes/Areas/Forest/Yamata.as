@@ -200,14 +200,14 @@ package classes.Scenes.Areas.Forest
 			combatRoundOver();
 		}
 				
-		private function FoxfireCanon1():void
+		private function foxfireCanon1():void
 		{
 			outputText("Yamata’s hair snakes begin to fan themselves out, curling toward you with their jaws unhinged and open wide. They seem to be drawing in energy as bright balls of purple flame begin to build up in each of their mouths. It looks like Yamata is charging up for something big!");
 			this.createStatusEffect(StatusEffects.YamataCanon, 0, 0, 0, 0);
 			combatRoundOver();
 		}
 		
-		private function FoxfireCanon2():void
+		private function foxfireCanon2():void
 		{
 			var totaldmg:int = 0;
 			if (flags[kFLAGS.IN_COMBAT_USE_PLAYER_WAITED_FLAG] == 1) {
@@ -339,10 +339,10 @@ package classes.Scenes.Areas.Forest
 			}
 			
 			if (this.hasStatusEffect(StatusEffects.YamataCanon)) {
-				FoxfireCanon2();
+				foxfireCanon2();
 			}
 			else if (rand(15) == 0) {
-				FoxfireCanon1();
+				foxfireCanon1();
 			}
 			else if (rand(10) == 0) {
 				if (!this.hasStatusEffect(StatusEffects.YamataEntwine)) {
