@@ -1747,7 +1747,6 @@ package classes.Scenes.Areas.Forest
 	{
 		clearOutput();
 		spriteSelect(SpriteDb.s_aiko);
-		var x:int = rand(player.cocks.length);
 		outputText((playerchoice?"You tell Aiko you want her to eat you out this time, eagerly stripping down so you can get things started.":"<i>“Pulling you out of your [armor] and setting it aside, Aiko gives you a wry grin as she watches you with lust in her eyes.")
 		+"\n\nShe smirks a little as your [vagina] comes into view, running her tongue along the edges of her upper teeth. Her tails wrap around your ankles, and you find yourself on the receiving end of a playful shove. Your heart skips a beat, but you soon find yourself sliding down onto a blanket of writhing fox tails that catch you and lower you gently onto your back.\n\n"
 		+"Aiko stands over you, undoing the sash that holds her robes together and letting them drop to the ground in a pile. Turning around, she lowers herself daintily across your prone form, giving you a good view of her supple ass cheeks and the red spiral tattoos that adorn them. Settling her head between your thighs, she presses her moist snatch against your lips, her tails moving beneath your neck to form a pillow. She wraps her arms around your thighs, lowering her lips to your quivering [vagina], while her tails lift your head up into her sweet-smelling honeypot.\n\n"
