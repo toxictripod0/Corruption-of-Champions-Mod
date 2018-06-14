@@ -392,7 +392,7 @@ package classes.Scenes.Areas.Forest
 	
 	/////////////////////////////////////////////////////////////////////
 	//////////////////////AIKO CORRUPTION SETTINGS///////////////////////
-	private var init_scene:String = "Peace";
+	private var initScene:String = "Peace";
 	private function initialCorruptionSetting():void
 	{
 		clearOutput();
@@ -407,7 +407,7 @@ package classes.Scenes.Areas.Forest
 	{
 		flags[kFLAGS.AIKO_CORRUPTION_ACTIVE] = 1;
 		outputText("Aiko's corruption has been enabled and will progress as normal with certain interactions.");
-		if (init_scene == "Aggro")
+		if (initScene == "Aggro")
 			 doNext(aikoAggroGreeting);
 		else 
 			doNext(aikoPeaceGreeeting);
@@ -417,7 +417,7 @@ package classes.Scenes.Areas.Forest
 	{
 		flags[kFLAGS.AIKO_CORRUPTION_ACTIVE] = 0;
 		outputText("Aiko's corruption has been disabled and will not progress regardless of interactions.");
-		if (init_scene == "Aggro")
+		if (initScene == "Aggro")
 			 doNext(aikoAggroGreeting);
 		else 
 			doNext(aikoPeaceGreeeting);
@@ -440,7 +440,7 @@ package classes.Scenes.Areas.Forest
 		+"<i>“Heheh… well… you know, maybe I was hasty. Perhaps we could strike a deal? What do you say? My Ball in exchange for anything your heart desires. Riches, power… I could help take the edge off things, if you know what I mean,”</i> she says coyly, wiggling her hips seductively.\n\n"
 		+"Whatever this ball is for, it seems like it is very important to her. Maybe you should reconsider—you could probably get her to do anything… but it might be a trick. What will you ask for?");
 		
-		init_scene = "Aggro";
+		initScene = "Aggro";
 		//[Riches][Power][Sex][Nothing][Fight][TouchFluffTail]
 		menu();
 		addButton(0, "Riches", aikoE1Riches).hint("GIVE ME ALL THE GOLD!!!");
@@ -461,7 +461,7 @@ package classes.Scenes.Areas.Forest
 		+"<i>“Okay, listen up, I’ll tell you what. I like you, so I’m willing to make a deal with you. Besides, it was fun messing with you, so… What’ll it take to get my Ball back, hm? Riches? Power? Maybe a little… release?”</i> she says coyly, turning around and slapping her own plump, juicy rear playfully, revealing two spiral-shaped tattoos on her buttocks.\n\n"
 		+"Whatever this ball is for, it seems like it is very important to her. You could probably get her to do just about anything… What will you ask for?");
 		
-		init_scene = "Peace";
+		initScene = "Peace";
 		//[Riches][Power][Sex][Nothing][TouchFluffTail]
 		menu();
 		addButton(0, "Riches", aikoE1Riches).hint("GIVE ME ALL THE GOLD!!!");
