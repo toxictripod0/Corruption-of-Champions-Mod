@@ -290,15 +290,16 @@ package classes.Scenes.Areas.Forest
 			if (player.hasStatusEffect(StatusEffects.Illusion)) {
 				outputText("A series of Aiko's illusions surround you! You try to find the real one but you're too slow! An arrow comes from the side, impaling you!  ");
 				player.takeDamage(int(str/2) + rand(15), true);
-				switch (x) {
-					case 0:
+				
+				if (x === 0) {
 						outputText("\n\nYou attack Aiko, but her figure was just an illusion! She appears behind you and rapidly shoots an arrow, she got you! But.... what has she done?! You feel a tingling sensation in your groin, the arrow was poisoned with some kind of lust-inducing venom!  ");
+						
 						if (!player.hasStatusEffect(StatusEffects.lustvenom))
 							player.createStatusEffect(StatusEffects.lustvenom, 0, 0, 0, 0);
-						break;
-					case 1:
+				} else if (x === 1) {
 						outputText("\n\n<i>“This is my realm... and in my realm... you get to feel good...”</i> her strange words entice you as you widen your eyes, you try to hit her but you always seem to miss. A mischievous grin comes from her figure as you feel something rubbing your crotch, is one of her tails! Oh damn, it feels so good!  ");
 						player.takeLustDamage(lustDmg);
+						
 						if (player.hasStatusEffect(StatusEffects.Illusion)) {
 							player.addCombatBuff("spe", -3);
 						} else {
@@ -306,11 +307,8 @@ package classes.Scenes.Areas.Forest
 							addCombatBuff("spe", -7);
 							castIllusion += 2;
 						}
-						break;
-
-					default:
-						reportABug("Aiko Illusion");
-						break;
+				} else {
+					reportABug("Aiko Illusion");
 				}
 			}
 			else if (x==3) {
