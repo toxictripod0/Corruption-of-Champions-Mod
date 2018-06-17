@@ -6,7 +6,7 @@ package classes.Scenes.Areas.Forest
 	import classes.GlobalFlags.kFLAGS;
 	import classes.internals.*;
 
-	public class Kitsune extends Monster
+	public class Kitsune extends BaseKitsune
 	{
 
 

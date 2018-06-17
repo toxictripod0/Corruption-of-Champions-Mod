@@ -5,7 +5,7 @@ package classes.Scenes.Areas.Forest
 	import classes.GlobalFlags.kFLAGS;
 	import classes.internals.*;
 
-	public class Yamata extends Monster
+	public class Yamata extends BaseKitsune
 	{				
 		//Corrupted Yamata Attacks
 		private function yamataBasic():void

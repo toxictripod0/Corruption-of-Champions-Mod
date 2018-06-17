@@ -6,7 +6,7 @@ package classes.Scenes.Areas.Forest
 	import classes.internals.*;
 	import classes.Items.ArmorLib;
 
-	public class Aiko extends Monster
+	public class Aiko extends BaseKitsune
 	{
 		private static const PHYSICAL_SKILL:String = "physical";
 		private static const MAGICAL_SKILL:String = "magical";
