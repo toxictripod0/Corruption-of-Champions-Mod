@@ -98,21 +98,6 @@ only corrupt siren daughters that the PC themselves father or birth stay at the 
 			doNext(createCallBackFunction(getGame().highMountains.minervaScene.genericMenu, true));
 		}
 		
-		//Copy-paste functions for ease of adding content
-		private function corruptionMinervaFunc1():void {
-			clearOutput();
-			outputText("");
-			outputText("");
-			outputText("");
-		}
-		
-		private function corruptionMinervaFunc2():void {
-			clearOutput();
-			outputText("");
-			outputText("");
-			outputText("");
-		}
-		
 		//Post-taint, pre-corruption encounter
 		public function lustfulMinervaEncounter():void {
 			clearOutput();
@@ -1426,3 +1411,4 @@ Male/herm:(if loose by damage start with this: It’s too much, the corrupted si
 	}
 
 }
+
