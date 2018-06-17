@@ -102,6 +102,14 @@ package classes.Scenes.Areas.Forest
 		}
 		
 		/**
+		 * Seals the players spells, preventing them from using magic.
+		 */
+		protected function sealPlayerSpells(): void {
+			outputText("\"<i>Oh silly, trying to beat me at my own game are you?</i>\"  the kitsune says with a smirk, surprising you as she appears right in front of you.  She traces a small circle around your mouth, and you find yourself stricken mute!  You try to remember the arcane gestures to cast your spell and find that you've forgotten them too.  <b>The kitsune's spell has sealed your magic!</b>  You won't be able to cast any spells until it wears off.");
+			player.createStatusEffect(StatusEffects.Sealed, 4, 2, 0, 0);
+		}
+		
+		/**
 		 * The player resists the seal attempt.
 		 */
 		protected function resistSeal():void {
@@ -124,10 +132,8 @@ package classes.Scenes.Areas.Forest
 			else if (select == 1) {
 				sealPlayerTease();
 			}
-			//Spells:
 			else if (select == 2) {
-				outputText("\"<i>Oh silly, trying to beat me at my own game are you?</i>\"  the kitsune says with a smirk, surprising you as she appears right in front of you.  She traces a small circle around your mouth, and you find yourself stricken mute!  You try to remember the arcane gestures to cast your spell and find that you've forgotten them too.  <b>The kitsune's spell has sealed your magic!</b>  You won't be able to cast any spells until it wears off.");
-				player.createStatusEffect(StatusEffects.Sealed, 4, 2, 0, 0);
+				sealPlayerSpells();
 			}
 			else if (select == 3) {
 				sealPlayerItems();

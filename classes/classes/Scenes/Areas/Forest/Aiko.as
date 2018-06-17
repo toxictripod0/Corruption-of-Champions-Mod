@@ -486,8 +486,7 @@ package classes.Scenes.Areas.Forest
 			//Spells:
 			var select:int = rand(3);
 			if (select == 0) {
-				outputText("\"<i>Oh silly, trying to beat me at my own game are you?</i>\"  the kitsune says with a smirk, surprising you as she appears right in front of you.  She traces a small circle around your mouth, and you find yourself stricken mute!  You try to remember the arcane gestures to cast your spell and find that you've forgotten them too.  <b>The kitsune's spell has sealed your magic!</b>  You won't be able to cast any spells until it wears off.");
-				player.createStatusEffect(StatusEffects.Sealed, 4, 2, 0, 0);
+				sealPlayerSpells();
 			}
 			//Run:
 			else if (select == 1) {
