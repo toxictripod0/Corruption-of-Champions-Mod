@@ -453,11 +453,6 @@ package classes.Scenes.Areas.Forest
 			player.createStatusEffect(StatusEffects.Sealed, 4, 4, 0, 0);
 		}
 		
-		private function resistSeal():void {
-			outputText("\n\nUpon your touch, the seal dissipates, and you are free of the kitsune's magic!  She pouts in disappointment, looking thoroughly irritated, but quickly resumes her coy trickster facade.");
-			player.removeStatusEffect(StatusEffects.Sealed);
-		}
-		
 		override protected function kitsuneSealAttack():void
 		{
 			var resist:int = calculateAttackResist();

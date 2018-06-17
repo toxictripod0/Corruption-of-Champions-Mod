@@ -102,6 +102,14 @@ package classes.Scenes.Areas.Forest
 		}
 		
 		/**
+		 * The player resists the seal attempt.
+		 */
+		protected function resistSeal():void {
+			outputText("\n\nUpon your touch, the seal dissipates, and you are free of the kitsune's magic!  She pouts in disappointment, looking thoroughly irritated, but quickly resumes her coy trickster facade.");
+			player.removeStatusEffect(StatusEffects.Sealed);
+		}
+		
+		/**
 		 * Cancels and disables whatever command the player uses this round. Lasts 3 rounds, cannot seal more than one command at a time.
 		 * PCs with "Religious" background and < 20 corruption have up to 20% resistance to sealing at 0 corruption, losing 1% per corruption.
 		 */
@@ -139,8 +147,7 @@ package classes.Scenes.Areas.Forest
 			}
 			
 			if (resist >= rand(100)) {
-				outputText("\n\nUpon your touch, the seal dissipates, and you are free of the kitsune's magic!  She pouts in disappointment, looking thoroughly irritated, but quickly resumes her coy trickster facade.");
-				player.removeStatusEffect(StatusEffects.Sealed);
+				resistSeal();
 			}
 			combatRoundOver();
 		}
