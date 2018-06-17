@@ -94,6 +94,14 @@ package classes.Scenes.Areas.Forest
 		}
 		
 		/**
+		 * Seals the players ability to use items during combat.
+		 */
+		protected function sealPlayerItems(): void {
+			outputText("\"<i>Tsk tsk, using items?  That's cheating!</i>\"  the kitsune says as she appears right in front of you, taking you off guard.  Her finger traces a small circle on your pouch, leaving behind a glowing rune made of crackling flames.  No matter how hard you try, you can't seem to pry it open.  <b>The kitsune's spell has sealed your item pouch!</b>  Looks like you won't be using any items until the spell wears off.");
+			player.createStatusEffect(StatusEffects.Sealed, 4, 3, 0, 0);
+		}
+		
+		/**
 		 * Cancels and disables whatever command the player uses this round. Lasts 3 rounds, cannot seal more than one command at a time.
 		 * PCs with "Religious" background and < 20 corruption have up to 20% resistance to sealing at 0 corruption, losing 1% per corruption.
 		 */
@@ -113,10 +121,8 @@ package classes.Scenes.Areas.Forest
 				outputText("\"<i>Oh silly, trying to beat me at my own game are you?</i>\"  the kitsune says with a smirk, surprising you as she appears right in front of you.  She traces a small circle around your mouth, and you find yourself stricken mute!  You try to remember the arcane gestures to cast your spell and find that you've forgotten them too.  <b>The kitsune's spell has sealed your magic!</b>  You won't be able to cast any spells until it wears off.");
 				player.createStatusEffect(StatusEffects.Sealed, 4, 2, 0, 0);
 			}
-			//Items:
 			else if (select == 3) {
-				outputText("\"<i>Tsk tsk, using items?  That's cheating!</i>\"  the kitsune says as she appears right in front of you, taking you off guard.  Her finger traces a small circle on your pouch, leaving behind a glowing rune made of crackling flames.  No matter how hard you try, you can't seem to pry it open.  <b>The kitsune's spell has sealed your item pouch!</b>  Looks like you won't be using any items until the spell wears off.");
-				player.createStatusEffect(StatusEffects.Sealed, 4, 3, 0, 0);
+				sealPlayerItems();
 			}
 			//Run:
 			else if (select == 4) {

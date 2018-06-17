@@ -468,11 +468,8 @@ package classes.Scenes.Areas.Forest
 			}
 			else if (select == 1) {
 				sealPlayerTease();
-			}
-			//Items:
-			else if (select == 2) {
-				outputText("\"<i>Tsk tsk, using items?  That's cheating!</i>\"  the kitsune says as she appears right in front of you, taking you off guard.  Her finger traces a small circle on your pouch, leaving behind a glowing rune made of crackling flames.  No matter how hard you try, you can't seem to pry it open.  <b>The kitsune's spell has sealed your item pouch!</b>  Looks like you won't be using any items until the spell wears off.");
-				player.createStatusEffect(StatusEffects.Sealed, 4, 3, 0, 0);
+			} else if (select == 2) {
+				sealPlayerItems();
 			}
 			//Run:
 			else if (select == 3) {
