@@ -47,8 +47,7 @@ only corrupt siren daughters that the PC themselves father or birth stay at the 
 				outputText("\n\nAfter a steamy, tongue-tangling make out session you pull back to see her happy blushing expression. [if pc corruption is 50-60 use this: A small part of you feels bad for what you're going to do and that it’s cruel to use her feelings for you like this and trick her into taking some potion. But you came here with the potion in hand for a reason and it’s too late to stop now.] [if pc corruption is 60-80 use this: A small voice, almost like a whisper in the back of your mind, tells you this is wrong and you shouldn’t take advantage of Minerva’s feelings for you like this... But you came here with the potion in hand for a reason and it’s too late to stop now.] [if pc corruption is 80-100 use this: You know it’s wrong to trick such a sweet woman that loves you like this, but fortunately for you your corrupted mind giggles at the thought of how horny and fun she will be after getting a dose of this potion.] You reach into your pack and pull out a red bubbling vial and show it to your companion. In a preemptive act of cunning you have scratched off its label to hide its intentions.");
 				outputText("\n\nMinerva looks at it curiously and with a bit of nervousness. “What’s that, love? Is that one of your spoils from battles with the beasts of the land?” she asks you, clearly wondering why you would show her something like that. You shake your head and tell her it’s something you had cooked up by an alchemist you know, something that would make your already passionate lovemaking even more amazing and that she told you the two of you could add it to the pure spring and take a bath in the new mixture. You assure her that it's safe and won't cause any harm to the spring.");
 				if (player.inte < 50) { //Not smart enough, take you back.
-					outputText("\n\nAs you explain what you have in mind and show Minerva the potion, she looks at you with worry and bites her pierced lip slowly. “I don't know... I don't think it would be good to chance it. The spring is too important to risk exposing it to things from the corruption-infested outside world.” She leans in and nuzzles you gently. “I'm sorry love. I just can’t risk it.” She says, as she gently pushes the vial back into your hands.");
-					doNext(createCallBackFunction(getGame().highMountains.minervaScene.genericMenu, true));
+					usePotionFail();
 					return;
 				}
 				else {
@@ -65,8 +64,7 @@ only corrupt siren daughters that the PC themselves father or birth stay at the 
 				outputText("\n\nNow that she believes you, it's time to go through with your plan. Reaching behind yourself, you delve into your back and pull out a vial filled with a rolling red liquid. You hold the fuckdraft in your hands and show it to Minerva. Thankfully, you had the forethought to scratch off the label so she wouldn't know what was inside.");
 				outputText("\n\nMinerva looks at it curiously and with a bit of nervousness. “What’s that, love? Is that one of your spoils from battles with the beasts of the land?” she asks you, clearly wondering why you would show her something like that. You shake your head and tell her it’s something you had cooked up by an alchemist you know, something that would make your already passionate lovemaking even more amazing, that she told you the two of you could add it to the pure spring and take a bath in the new mixture. You assure her that it's safe and won't cause any harm to the spring.");
 				if (player.inte < 50) { //Not smart enough!
-					outputText("As you explain what you have in mind and show Minerva the potion, she looks at you with worry and bites her pierced lip slowly. “I don't know... I don't think it would be good to chance it. The spring is too important to risk exposing it to things from the corruption-infested outside world.” She leans in and nuzzles you gently. “I'm sorry love. i just can’t risk it.” she says as she gently pushes the vial back into your hands.");
-					doNext(createCallBackFunction(getGame().highMountains.minervaScene.genericMenu, true));
+					usePotionFail();
 					return;
 				}
 				else {
@@ -88,6 +86,15 @@ only corrupt siren daughters that the PC themselves father or birth stay at the 
 			dynStats("cor", 1);
 			player.destroyItems(consumables.F_DRAFT, 1);
 			flags[kFLAGS.MINERVA_CORRUPTION_PROGRESS] = 1; //The start of corruption.
+			doNext(createCallBackFunction(getGame().highMountains.minervaScene.genericMenu, true));
+		}
+		
+		/**
+		 * Fail to convince Minerva to use the potion.
+		 */
+		private function usePotionFail(): void
+		{
+			outputText("As you explain what you have in mind and show Minerva the potion, she looks at you with worry and bites her pierced lip slowly. “I don't know... I don't think it would be good to chance it. The spring is too important to risk exposing it to things from the corruption-infested outside world.” She leans in and nuzzles you gently. “I'm sorry love. I just can’t risk it.” She says, as she gently pushes the vial back into your hands.");
 			doNext(createCallBackFunction(getGame().highMountains.minervaScene.genericMenu, true));
 		}
 		
