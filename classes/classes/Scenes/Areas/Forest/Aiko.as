@@ -448,15 +448,30 @@ package classes.Scenes.Areas.Forest
 			combatRoundOver();
 		}
 		
+		private function calculateAttackResist(): int {
+			var resist:int = 0;
+			
+			if (player.inte < 30) {
+				
+				resist = Math.round(player.inte);
+			} else {
+				resist = 30;
+			}
+			
+			if (player.findPerk(PerkLib.Whispered) >= 0) {
+				resist += 20;
+			}
+			
+			if (player.findPerk(PerkLib.HistoryReligious) >= 0 && player.isPureEnough(20)) {
+				resist += 20 - player.corAdjustedDown();
+			}
+			
+			return resist;
+		}
+		
 		private function kitsuneSealAttack():void
 		{
-			var resist:int = 0;
-			if (player.inte < 30)
-				resist = Math.round(player.inte);
-			else
-				resist = 30;
-			if (player.findPerk(PerkLib.Whispered) >= 0) resist += 20;
-			if (player.findPerk(PerkLib.HistoryReligious) >= 0 && player.isPureEnough(20)) resist += 20 - player.corAdjustedDown();
+			var resist:int = calculateAttackResist();
 			var select:int = rand(5);
 			//Attack:
 			if (select == 0) {
@@ -497,13 +512,7 @@ package classes.Scenes.Areas.Forest
 		
 		private function kitsuneSealMagic():void
 		{
-			var resist:int = 0;
-			if (player.inte < 30)
-				resist = Math.round(player.inte);
-			else
-				resist = 30;
-			if (player.findPerk(PerkLib.Whispered) >= 0) resist += 20;
-			if (player.findPerk(PerkLib.HistoryReligious) >= 0 && player.isPureEnough(20)) resist += 20 - player.corAdjustedDown();
+			var resist:int = calculateAttackResist();
 			//Spells:
 			var select:int = rand(3);
 			if (select == 0) {
