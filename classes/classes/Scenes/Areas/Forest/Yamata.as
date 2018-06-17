@@ -235,51 +235,6 @@ package classes.Scenes.Areas.Forest
 			this.removeStatusEffect(StatusEffects.YamataCanon);
 			combatRoundOver();
 		}
-
-		private function kitsuneSealAttack():void
-		{
-			var resist:int = calculateAttackResist();
-			var select:int = rand(7);
-			//Attack:
-			if (select == 0) {
-				sealPlayerAttack();
-			}
-			else if (select == 1) {
-				//Tease:
-				outputText("You are taken by surprise when the kitsune appears in front of you out of nowhere, trailing a fingertip down your chest.  She draws a small circle, leaving behind a glowing, sparking rune made of flames.  You suddenly find that all your knowledge of seduction and titillation escapes you.  <b>The kitsune's spell has sealed your ability to tease!</b>  Seems you won't be getting anyone hot and bothered until it wears off.");
-				player.createStatusEffect(StatusEffects.Sealed, 4, 1, 0, 0);
-			}
-			//Spells:
-			else if (select == 2) {
-				outputText("\"<i>Oh silly, trying to beat me at my own game are you?</i>\"  the kitsune says with a smirk, surprising you as she appears right in front of you.  She traces a small circle around your mouth, and you find yourself stricken mute!  You try to remember the arcane gestures to cast your spell and find that you've forgotten them too.  <b>The kitsune's spell has sealed your magic!</b>  You won't be able to cast any spells until it wears off.");
-				player.createStatusEffect(StatusEffects.Sealed, 4, 2, 0, 0);
-			}
-			//Items:
-			else if (select == 3) {
-				outputText("\"<i>Tsk tsk, using items?  That's cheating!</i>\"  the kitsune says as she appears right in front of you, taking you off guard.  Her finger traces a small circle on your pouch, leaving behind a glowing rune made of crackling flames.  No matter how hard you try, you can't seem to pry it open.  <b>The kitsune's spell has sealed your item pouch!</b>  Looks like you won't be using any items until the spell wears off.");
-				player.createStatusEffect(StatusEffects.Sealed, 4, 3, 0, 0);
-			}
-			//Run:
-			else if (select == 4) {
-				outputText("\"<i>Tsk tsk, leaving so soon?</i>\"  the kitsune says, popping up in front of you suddenly as you attempt to make your escape.  Before you can react, she draws a small circle on your chest with her fingertip, leaving behind a glowing rune made of crackling blue flames.  You try to run the other way, but your " + player.legs() + " won't budge!\n\n\"<i>Sorry baby, you'll just have to stay and play~.</i>\" she says in a singsong tone, appearing in front of you again.  <b>The kitsune's spell prevents your escape!</b>  You'll have to tough it out until the spell wears off.");
-				player.createStatusEffect(StatusEffects.Sealed, 4, 4, 0, 0);
-			}
-			//P.Special:
-			else if (select == 5) {
-				sealPlayerPhysicalSpecialSkills();
-			}
-			//M.Special:
-			else {
-				sealPlayerMagicSpecialSkills();
-			}
-			
-			if (resist >= rand(100)) {
-				outputText("\n\nUpon your touch, the seal dissipates, and you are free of the kitsune's magic!  She pouts in disappointment, looking thoroughly irritated, but quickly resumes her coy trickster facade.");
-				player.removeStatusEffect(StatusEffects.Sealed);
-			}
-			combatRoundOver();
-		}
-
 		
 		private function yamataMiss():void
 		{

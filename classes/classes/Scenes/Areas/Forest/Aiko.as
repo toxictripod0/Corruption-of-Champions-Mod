@@ -458,7 +458,7 @@ package classes.Scenes.Areas.Forest
 			player.removeStatusEffect(StatusEffects.Sealed);
 		}
 		
-		private function kitsuneSealAttack():void
+		override protected function kitsuneSealAttack():void
 		{
 			var resist:int = calculateAttackResist();
 			var select:int = rand(5);
