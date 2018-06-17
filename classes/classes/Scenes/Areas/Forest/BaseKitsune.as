@@ -118,6 +118,14 @@ package classes.Scenes.Areas.Forest
 		}
 		
 		/**
+		 * Seal the players movements, preventing them from escaping.
+		 */
+		protected function sealPlayerMovement():void {
+			outputText("\"<i>Tsk tsk, leaving so soon?</i>\"  the kitsune says, popping up in front of you suddenly as you attempt to make your escape.  Before you can react, she draws a small circle on your chest with her fingertip, leaving behind a glowing rune made of crackling blue flames.  You try to run the other way, but your " + player.legs() + " won't budge!\n\n\"<i>Sorry baby, you'll just have to stay and play~.</i>\" she says in a singsong tone, appearing in front of you again.  <b>The kitsune's spell prevents your escape!</b>  You'll have to tough it out until the spell wears off.");
+			player.createStatusEffect(StatusEffects.Sealed, 4, 4, 0, 0);
+		}
+		
+		/**
 		 * Cancels and disables whatever command the player uses this round. Lasts 3 rounds, cannot seal more than one command at a time.
 		 * PCs with "Religious" background and < 20 corruption have up to 20% resistance to sealing at 0 corruption, losing 1% per corruption.
 		 */
@@ -140,8 +148,7 @@ package classes.Scenes.Areas.Forest
 			}
 			//Run:
 			else if (select == 4) {
-				outputText("\"<i>Tsk tsk, leaving so soon?</i>\"  the kitsune says, popping up in front of you suddenly as you attempt to make your escape.  Before you can react, she draws a small circle on your chest with her fingertip, leaving behind a glowing rune made of crackling blue flames.  You try to run the other way, but your " + player.legs() + " won't budge!\n\n\"<i>Sorry baby, you'll just have to stay and play~.</i>\" she says in a singsong tone, appearing in front of you again.  <b>The kitsune's spell prevents your escape!</b>  You'll have to tough it out until the spell wears off.");
-				player.createStatusEffect(StatusEffects.Sealed, 4, 4, 0, 0);
+				sealPlayerMovement();
 			}
 			//P.Special:
 			else if (select == 5) {
