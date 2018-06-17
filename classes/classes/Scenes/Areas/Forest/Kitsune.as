@@ -75,11 +75,8 @@ package classes.Scenes.Areas.Forest
 		{
 			outputText("You struggle to keep your eyes on the kitsune, ghostly laughter echoing all around you as you turn to and fro, trying to track her movements.  It almost seems like the edges of reality are blurring around her, severely distorting your perceptions and making it hard to follow her.  It's going to be much harder to hit her if she keeps this up!");
 			//Resist: - successfully resisting deals small health & lust damage to kitsune
-			var resist:int = 0;
-			if (player.inte < 30) resist = Math.round(player.inte);
-			else resist = 30;
-			if (player.findPerk(PerkLib.Whispered) >= 0) resist += 20;
-			if (player.findPerk(PerkLib.HistoryReligious) >= 0 && player.isPureEnough(20)) resist += 20 - player.corAdjustedDown();
+			var resist:int = calculateAttackResist();
+			
 			if (rand(100) < resist) {
 				outputText("\n\nThe kitsune seems to melt away before your eyes for a moment, as though the edges of reality are blurring around her.  You tighten your focus, keeping your eyes trained on her, and she suddenly reels in pain, clutching her forehead as she is thrust back into view.  She lets out a frustrated huff of disappointment, realizing that you have resisted her illusions.");
 			}
@@ -94,11 +91,7 @@ package classes.Scenes.Areas.Forest
 //PCs with "Religious" background and < 20 corruption have up to 20% resistance to sealing at 0 corruption, losing 1% per corruption.
 		private function kitsuneSealAttack():void
 		{
-			var resist:int = 0;
-			if (player.inte < 30) resist = Math.round(player.inte);
-			else resist = 30;
-			if (player.findPerk(PerkLib.Whispered) >= 0) resist += 20;
-			if (player.findPerk(PerkLib.HistoryReligious) >= 0 && player.isPureEnough(20)) resist += 20 - player.corAdjustedDown();
+			var resist:int = calculateAttackResist();
 			var select:int = rand(7);
 			//Attack:
 			if (select == 0) {
