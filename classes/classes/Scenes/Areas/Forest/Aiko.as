@@ -467,9 +467,7 @@ package classes.Scenes.Areas.Forest
 				sealPlayerAttack();
 			}
 			else if (select == 1) {
-				//Tease:
-				outputText("You are taken by surprise when the kitsune appears in front of you out of nowhere, trailing a fingertip down your chest.  She draws a small circle, leaving behind a glowing, sparking rune made of flames.  You suddenly find that all your knowledge of seduction and titillation escapes you.  <b>The kitsune's spell has sealed your ability to tease!</b>  Seems you won't be getting anyone hot and bothered until it wears off.");
-				player.createStatusEffect(StatusEffects.Sealed, 4, 1, 0, 0);
+				sealPlayerTease();
 			}
 			//Items:
 			else if (select == 2) {

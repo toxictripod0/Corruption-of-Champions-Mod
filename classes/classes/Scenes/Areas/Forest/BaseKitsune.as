@@ -86,6 +86,14 @@ package classes.Scenes.Areas.Forest
 		}
 		
 		/**
+		 * Seals the players ability to use the tease skill.
+		 */
+		protected function sealPlayerTease(): void {
+			outputText("You are taken by surprise when the kitsune appears in front of you out of nowhere, trailing a fingertip down your chest.  She draws a small circle, leaving behind a glowing, sparking rune made of flames.  You suddenly find that all your knowledge of seduction and titillation escapes you.  <b>The kitsune's spell has sealed your ability to tease!</b>  Seems you won't be getting anyone hot and bothered until it wears off.");
+			player.createStatusEffect(StatusEffects.Sealed, 4, 1, 0, 0);
+		}
+		
+		/**
 		 * Cancels and disables whatever command the player uses this round. Lasts 3 rounds, cannot seal more than one command at a time.
 		 * PCs with "Religious" background and < 20 corruption have up to 20% resistance to sealing at 0 corruption, losing 1% per corruption.
 		 */
@@ -98,9 +106,7 @@ package classes.Scenes.Areas.Forest
 				sealPlayerAttack();
 			}
 			else if (select == 1) {
-				//Tease:
-				outputText("You are taken by surprise when the kitsune appears in front of you out of nowhere, trailing a fingertip down your chest.  She draws a small circle, leaving behind a glowing, sparking rune made of flames.  You suddenly find that all your knowledge of seduction and titillation escapes you.  <b>The kitsune's spell has sealed your ability to tease!</b>  Seems you won't be getting anyone hot and bothered until it wears off.");
-				player.createStatusEffect(StatusEffects.Sealed, 4, 1, 0, 0);
+				sealPlayerTease();
 			}
 			//Spells:
 			else if (select == 2) {
