@@ -8,6 +8,9 @@ package classes.Scenes.Areas.Forest
 
 	public class Aiko extends Monster
 	{
+		private static const PHYSICAL_SKILL:String = "physical";
+		private static const MAGICAL_SKILL:String = "magical";
+		
 		private var castIllusion:int = 0;
 
 		public function Aiko() {
@@ -474,6 +477,33 @@ package classes.Scenes.Areas.Forest
 			player.createStatusEffect(StatusEffects.Sealed, 4, 4, 0, 0);
 		}
 		
+		private function sealPlayerPhysicalSpecialSkills(): void {
+			sealPlayerSpecial(PHYSICAL_SKILL);
+		}
+		
+		private function sealPlayerMagicSpecialSkills(): void {
+			sealPlayerSpecial(MAGICAL_SKILL);
+		}
+		
+		/**
+		 * Seals the players special skill. Prints the matching text and applies a status effect.
+		 * @param	skillType the type of skill to seal (physical, magical)
+		 * @throws ArgumentError if the selected skill is invalid
+		 */
+		private function sealPlayerSpecial(skillType:String):void {
+			outputText("You jump with surprise as the kitsune appears in front of you, grinning coyly.  As she draws a small circle on your forehead with her fingertip, you find that you suddenly can't remember how to use any of your " + skillType + " skills!");
+			outputText("\n\n\"<i>Oh no darling, </i>I'm<i> the one with all the tricks here.</i>\"");
+			outputText("\n\n<b>The kitsune's spell has sealed your " + skillType + " skills!</b>  You won't be able to use any of them until the spell wears off.");
+			
+			if (skillType === PHYSICAL_SKILL) {
+				player.createStatusEffect(StatusEffects.Sealed, 4, 5, 0, 0);
+			} else if (skillType === MAGICAL_SKILL) {
+				player.createStatusEffect(StatusEffects.Sealed, 4, 6, 0, 0);
+			} else {
+				throw new ArgumentError("Invalid skill type!");
+			}
+		}
+		
 		private function resistSeal():void {
 			outputText("\n\nUpon your touch, the seal dissipates, and you are free of the kitsune's magic!  She pouts in disappointment, looking thoroughly irritated, but quickly resumes her coy trickster facade.");
 			player.removeStatusEffect(StatusEffects.Sealed);
@@ -507,10 +537,7 @@ package classes.Scenes.Areas.Forest
 			}
 			//P.Special:
 			else {
-				outputText("You jump with surprise as the kitsune appears in front of you, grinning coyly.  As she draws a small circle on your forehead with her fingertip, you find that you suddenly can't remember how to use any of your physical skills!");
-				outputText("\n\n\"<i>Oh no darling, </i>I'm<i> the one with all the tricks here.</i>\"");
-				outputText("\n\n<b>The kitsune's spell has sealed your physical skills!</b>  You won't be able to use any of them until the spell wears off.");
-				player.createStatusEffect(StatusEffects.Sealed, 4, 5, 0, 0);
+				sealPlayerPhysicalSpecialSkills();
 			}
 			if (resist >= rand(100)) {
 				resistSeal();
@@ -533,10 +560,7 @@ package classes.Scenes.Areas.Forest
 			}
 			//M.Special:
 			else {
-				outputText("You jump with surprise as the kitsune appears in front of you, grinning coyly.  As she draws a small circle on your forehead with her fingertip, you find that you suddenly can't remember how to use any of your magical skills!");
-				outputText("\n\n\"<i>Oh no darling, </i>I'm<i> the one with all the tricks here.</i>\"");
-				outputText("\n\n<b>The kitsune's spell has sealed your magical skills!</b>  You won't be able to use any of them until the spell wears off.");
-				player.createStatusEffect(StatusEffects.Sealed, 4, 6, 0, 0);
+				sealPlayerMagicSpecialSkills();
 			}
 			
 			if (resist >= rand(100)) {
