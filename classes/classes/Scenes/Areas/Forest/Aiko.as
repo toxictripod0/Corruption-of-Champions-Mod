@@ -494,11 +494,7 @@ package classes.Scenes.Areas.Forest
 			var select:int = rand(5);
 			//Attack:
 			if (select == 0) {
-				outputText("The kitsune playfully darts around you, grinning coyly.  She somehow slips in under your reach, and before you can react, draws a small circle on your chest with her fingertip.  As you move to strike again, the flaming runic symbol she left on you glows brightly, and your movements are halted mid-swing.");
-				outputText("\n\n\"<i>Naughty naughty, you should be careful with that.</i>\"");
-
-				outputText("\n\nDespite your best efforts, every time you attempt to attack her, your muscles recoil involuntarily and prevent you from going through with it.  <b>The kitsune's spell has sealed your attack!</b>  You'll have to wait for it to wear off before you can use your basic attacks.");
-				player.createStatusEffect(StatusEffects.Sealed, 4, 0, 0, 0);
+				sealPlayerAttack();
 			}
 			else if (select == 1) {
 				//Tease:
