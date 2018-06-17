@@ -51,14 +51,8 @@ only corrupt siren daughters that the PC themselves father or birth stay at the 
 					doNext(createCallBackFunction(getGame().highMountains.minervaScene.genericMenu, true));
 					return;
 				}
-				else { //Success!
-					outputText("\n\nYour explanation of the situation as well as the pros of using the vial’s contents seems to work. Making sure to calm the worried siren by telling her that you worked with an expert alchemist on this to ensure it would be safe for you doesn’t hurt either. As you intelligently speak about the delights of using the vial, Minerva’s face brightens more and more until she is grinning widely and her eyes are shining brightly like precious gems. Without waiting, Minerva grabs the vial and looks it over. “It will make things even better, huh? Well, what are we waiting for, " + player.mf("stud", "sexy") + "?” she asks, but doesn't wait for the answer before practically bouncing over to her pure spring and uncorking the vial. She sniffs it, smelling the strongly sweet-scented potion before pouring the roiling red liquid into the pool.");
-					outputText("\n\nThe new fluid turns the spring cloudy red for a moment, before settling into the pure water and giving it a very slight, reddish tinge. The new lust-enhancing steam starts flowing off the water and mixes with the air. You can already feel its effects seeping into you, first causing a tingling on your skin, the a heat surges in your loins, your [player cock] swelling in your [player armor] / your [player pussy] quivering and grow wet. If this is what's happening to you so soon, Minerva must been feeling much more. Licking your lips, you approach your shark-harpy and pull her against you. Kissing her neck, you whisper to her, suggesting that the two of you take that bath now.");
-					outputText("\n\nMinerva gulps and looks over to you with a blushing face. She then smiles and nods before pulling away just long enough to strip her tube top and short shorts off and step into the soothing waters. The tall redhead looks over her shoulder, beckoning for you to join her.");
-					dynStats("cor", 1);
-					player.destroyItems(consumables.F_DRAFT, 1);
-					flags[kFLAGS.MINERVA_CORRUPTION_PROGRESS] = 1; //The start of corruption.
-					doNext(createCallBackFunction(getGame().highMountains.minervaScene.genericMenu, true));
+				else {
+					usePotionSuccess(true);
 				}
 			}
 			else { //Or not? Just friends...
@@ -75,16 +69,26 @@ only corrupt siren daughters that the PC themselves father or birth stay at the 
 					doNext(createCallBackFunction(getGame().highMountains.minervaScene.genericMenu, true));
 					return;
 				}
-				else { //Success!
-					outputText("\n\nYour explanation of the situation as well as the pros of using the vial’s contents seem to work. Making sure to calm the worried siren that you worked with an expert alchemist on this to ensure it would be safe for you doesn’t hurt either. As you intelligently speak about the delights of using the vial, Minerva’s face brightens more and more until she is grinning widely and her eyes are shining brightly like precious gems. Without waiting, Minerva grabs the vial and looks it over. “It will make things even better huh? Well, what are we waiting for, " + player.mf("stud", "sexy") + "? I promised I would do anything for you, my love.” she says, but doesn't wait for your response before practically bouncing over to her pure spring and uncorking the vial. She sniffs it, smelling the strongly sweet-scented potion before pouring the roiling red liquid into the pool.");
-					outputText("\n\nThe new fluid turns the spring cloudy red for a moment, before settling into the pure water and giving it a very slight reddish tinge. The new lust-enhancing steam starts flowing off the water and mixes with the air. You can already feel its effects seeping into you, first causing a tingling on your skin, then a heat surges in your loins, your [player cock] swelling in your [player armor] / your [player pussy] quivering and grow wet. If this is what's happening to you so soon, Minerva must been feeling much more. Licking your lips, you approach your shark-harpy and pull her against you. Kissing her neck,you whisper to her, suggesting that the two of you get started on your new romance.");
-					outputText("\n\nMinerva gulps and looks over to you with a blushing face, but then she smiles and nods, before pulling away just long enough to strip her tube top and short shorts off and step into the soothing waters. The tall redhead looks over her shoulder, beckoning for you to join her.");
-					dynStats("cor", 1);
-					player.destroyItems(consumables.F_DRAFT, 1);
-					flags[kFLAGS.MINERVA_CORRUPTION_PROGRESS] = 1; //The start of corruption.
-					doNext(createCallBackFunction(getGame().highMountains.minervaScene.genericMenu, true)); //TODO: Replace with whatever's appropriate
+				else {
+					usePotionSuccess(false);
 				}
 			}
+		}
+		
+		/**
+		 * Convince Minerva to use the potion. Text based on lover status.
+		 * @param	isLover is Minerva already the players lover?
+		 */
+		private function usePotionSuccess(isLover:Boolean): void
+		{
+			outputText("\n\nYour explanation of the situation as well as the pros of using the vial’s contents seems to work. Making sure to calm the worried siren by telling her that you worked with an expert alchemist on this to ensure it would be safe for you doesn’t hurt either. As you intelligently speak about the delights of using the vial, Minerva’s face brightens more and more until she is grinning widely and her eyes are shining brightly like precious gems. Without waiting, Minerva grabs the vial and looks it over. “It will make things even better, huh? Well, what are we waiting for, " + player.mf("stud", "sexy") + "?” she asks, but doesn't wait for the answer before practically bouncing over to her pure spring and uncorking the vial. She sniffs it, smelling the strongly sweet-scented potion before pouring the roiling red liquid into the pool.");
+			outputText("\n\nThe new fluid turns the spring cloudy red for a moment, before settling into the pure water and giving it a very slight, reddish tinge. The new lust-enhancing steam starts flowing off the water and mixes with the air. You can already feel its effects seeping into you, first causing a tingling on your skin, then a heat surges in your loins, your [player cock] swelling in your [player armor] / your [player pussy] quivering and grow wet. If this is what's happening to you so soon, Minerva must been feeling much more. Licking your lips, you approach your shark-harpy and pull her against you. Kissing her neck, you whisper to her, suggesting that the two of you " + isLover ? "take that bath now." : "get started on your new romance.");
+			outputText("\n\nMinerva gulps and looks over to you with a blushing face. She then smiles and nods before pulling away just long enough to strip her tube top and short shorts off and step into the soothing waters. The tall redhead looks over her shoulder, beckoning for you to join her.");
+			
+			dynStats("cor", 1);
+			player.destroyItems(consumables.F_DRAFT, 1);
+			flags[kFLAGS.MINERVA_CORRUPTION_PROGRESS] = 1; //The start of corruption.
+			doNext(createCallBackFunction(getGame().highMountains.minervaScene.genericMenu, true));
 		}
 		
 		//Copy-paste functions for ease of adding content
