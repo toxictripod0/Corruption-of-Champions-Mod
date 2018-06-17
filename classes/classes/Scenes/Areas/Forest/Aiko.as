@@ -452,49 +452,44 @@ package classes.Scenes.Areas.Forest
 		{
 			var resist:int = calculateAttackResist();
 			var select:int = rand(5);
-			//Attack:
+
 			if (select == 0) {
 				sealPlayerAttack();
-			}
-			else if (select == 1) {
+			} else if (select == 1) {
 				sealPlayerTease();
 			} else if (select == 2) {
 				sealPlayerItems();
-			}
-			//Run:
-			else if (select == 3) {
+			} else if (select == 3) {
 				sealPlayerMovement();
 			}
-			//P.Special:
 			else {
 				sealPlayerPhysicalSpecialSkills();
 			}
+			
 			if (resist >= rand(100)) {
 				resistSeal();
 			}
+			
 			combatRoundOver();
 		}
 		
 		private function kitsuneSealMagic():void
 		{
 			var resist:int = calculateAttackResist();
-			//Spells:
 			var select:int = rand(3);
+			
 			if (select == 0) {
 				sealPlayerSpells();
-			}
-			//Run:
-			else if (select == 1) {
+			} else if (select == 1) {
 				sealPlayerMovement();
-			}
-			//M.Special:
-			else {
+			} else {
 				sealPlayerMagicSpecialSkills();
 			}
 			
 			if (resist >= rand(100)) {
 				resistSeal();
 			}
+			
 			combatRoundOver();
 		}
 		
