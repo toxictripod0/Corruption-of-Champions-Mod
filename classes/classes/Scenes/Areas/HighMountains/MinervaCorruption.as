@@ -1415,4 +1415,3 @@ Male/herm:(if loose by damage start with this: It’s too much, the corrupted si
 	}
 
 }
-
