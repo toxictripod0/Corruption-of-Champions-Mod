@@ -287,6 +287,7 @@ package classes.Scenes.Areas.Forest
 		{
 			var x:int = rand(6);
 			var lustDmg:int = 11 + int(player.sens / 5);
+			
 			if (player.hasStatusEffect(StatusEffects.Illusion)) {
 				outputText("A series of Aiko's illusions surround you! You try to find the real one but you're too slow! An arrow comes from the side, impaling you!  ");
 				player.takeDamage(int(str/2) + rand(15), true);
@@ -294,8 +295,9 @@ package classes.Scenes.Areas.Forest
 				if (x === 0) {
 						outputText("\n\nYou attack Aiko, but her figure was just an illusion! She appears behind you and rapidly shoots an arrow, she got you! But.... what has she done?! You feel a tingling sensation in your groin, the arrow was poisoned with some kind of lust-inducing venom!  ");
 						
-						if (!player.hasStatusEffect(StatusEffects.lustvenom))
+						if (!player.hasStatusEffect(StatusEffects.lustvenom)) {
 							player.createStatusEffect(StatusEffects.lustvenom, 0, 0, 0, 0);
+						}
 				} else if (x === 1) {
 						outputText("\n\n<i>“This is my realm... and in my realm... you get to feel good...”</i> her strange words entice you as you widen your eyes, you try to hit her but you always seem to miss. A mischievous grin comes from her figure as you feel something rubbing your crotch, is one of her tails! Oh damn, it feels so good!  ");
 						player.takeLustDamage(lustDmg);
@@ -319,17 +321,19 @@ package classes.Scenes.Areas.Forest
 			else if (x==4) {
 				outputText("Aiko devilishly looks at you, you find yourself surrounded by many Aikos! <i>“Would you like a reverse gangbang, big boy?”</i> all of the Aikos' seductively grab one bound breast and lower their pants, the tatoo on their pubic mounds drawing your attention to their most private parts.\n\n"
 				+"In your distraction you don't notice the illusion Aiko has cast over you!  ");
-				player.takeLustDamage(lustDmg*2);
+				player.takeLustDamage(lustDmg * 2);
+				
 				if (player.hasStatusEffect(StatusEffects.Illusion)) {
 					player.addCombatBuff("spe", -3);
 				} else {
 					player.createStatusEffect(StatusEffects.Illusion, 0, 0, 0, 0);
 					addCombatBuff("spe", -7);
-				}				
+				}
 			} else {
 				outputText("Aiko takes a moment to stretch out her limber body, thrusting out her chest as she stretches her arms toward the sky. She spins girlishly, giving you a come-hither glare, and then bows forward to give you a good angle at her cleavage, packed tightly into her too-small chest wrap."
 				+"\n\n<i>“You know, we don’t have to fight... Wouldn’t you rather come pet my super fluffy tails?”</i> Aiko teases, running a hand along her tails and making them fan out around her seductively. You find yourself nodding before you can even think to stop yourself—yes, you DO want the fluffy tails!  ");
 			}
+			
 			player.takeLustDamage(lustDmg);
 			combatRoundOver();
 		}
