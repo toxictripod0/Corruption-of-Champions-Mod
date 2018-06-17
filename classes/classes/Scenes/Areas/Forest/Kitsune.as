@@ -123,17 +123,11 @@ package classes.Scenes.Areas.Forest
 			}
 			//P.Special:
 			else if (select == 5) {
-				outputText("You jump with surprise as the kitsune appears in front of you, grinning coyly.  As she draws a small circle on your forehead with her fingertip, you find that you suddenly can't remember how to use any of your physical skills!");
-				outputText("\n\n\"<i>Oh no darling, </i>I'm<i> the one with all the tricks here.</i>\"");
-				outputText("\n\n<b>The kitsune's spell has sealed your physical skills!</b>  You won't be able to use any of them until the spell wears off.");
-				player.createStatusEffect(StatusEffects.Sealed, 4, 5, 0, 0);
+				sealPlayerPhysicalSpecialSkills();
 			}
 			//M.Special:
 			else {
-				outputText("You jump with surprise as the kitsune appears in front of you, grinning coyly.  As she draws a small circle on your forehead with her fingertip, you find that you suddenly can't remember how to use any of your magical skills!");
-				outputText("\n\n\"<i>Oh no darling, </i>I'm<i> the one with all the tricks here.</i>\"");
-				outputText("\n\n<b>The kitsune's spell has sealed your magical skills!</b>  You won't be able to use any of them until the spell wears off.");
-				player.createStatusEffect(StatusEffects.Sealed, 4, 6, 0, 0);
+				sealPlayerMagicSpecialSkills();
 			}
 			if (resist >= rand(100)) {
 				outputText("\n\nUpon your touch, the seal dissipates, and you are free of the kitsune's magic!  She pouts in disappointment, looking thoroughly irritated, but quickly resumes her coy trickster facade.");

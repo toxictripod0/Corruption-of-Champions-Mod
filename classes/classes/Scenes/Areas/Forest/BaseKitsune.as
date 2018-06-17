@@ -9,11 +9,12 @@ package classes.Scenes.Areas.Forest
 	 */
 	public class BaseKitsune extends Monster 
 	{
+		protected static const PHYSICAL_SKILL:String = "physical";
+		protected static const MAGICAL_SKILL:String = "magical";
 		
 		public function BaseKitsune() 
 		{
 			super();
-			
 		}
 		
 		/**
@@ -49,6 +50,39 @@ package classes.Scenes.Areas.Forest
 
 			outputText("\n\nDespite your best efforts, every time you attempt to attack her, your muscles recoil involuntarily and prevent you from going through with it.  <b>The kitsune's spell has sealed your attack!</b>  You'll have to wait for it to wear off before you can use your basic attacks.");
 			player.createStatusEffect(StatusEffects.Sealed, 4, 0, 0, 0);
+		}
+		
+		/**
+		 * Seal the players physical special attacks. Prints text and creates the matching status effect.
+		 */
+		protected function sealPlayerPhysicalSpecialSkills(): void {
+			sealPlayerSpecial(PHYSICAL_SKILL);
+		}
+		
+		/**
+		 * Seal the players magical special attacks. Prints text and creates the matching status effect.
+		 */
+		protected function sealPlayerMagicSpecialSkills(): void {
+			sealPlayerSpecial(MAGICAL_SKILL);
+		}
+		
+		/**
+		 * Seals the players special skill. Prints the matching text and applies a status effect.
+		 * @param	skillType the type of skill to seal (physical, magical)
+		 * @throws ArgumentError if the selected skill is invalid
+		 */
+		private function sealPlayerSpecial(skillType:String):void {
+			outputText("You jump with surprise as the kitsune appears in front of you, grinning coyly.  As she draws a small circle on your forehead with her fingertip, you find that you suddenly can't remember how to use any of your " + skillType + " skills!");
+			outputText("\n\n\"<i>Oh no darling, </i>I'm<i> the one with all the tricks here.</i>\"");
+			outputText("\n\n<b>The kitsune's spell has sealed your " + skillType + " skills!</b>  You won't be able to use any of them until the spell wears off.");
+			
+			if (skillType === PHYSICAL_SKILL) {
+				player.createStatusEffect(StatusEffects.Sealed, 4, 5, 0, 0);
+			} else if (skillType === MAGICAL_SKILL) {
+				player.createStatusEffect(StatusEffects.Sealed, 4, 6, 0, 0);
+			} else {
+				throw new ArgumentError("Invalid skill type!");
+			}
 		}
 	}
 }

@@ -8,9 +8,6 @@ package classes.Scenes.Areas.Forest
 
 	public class Aiko extends BaseKitsune
 	{
-		private static const PHYSICAL_SKILL:String = "physical";
-		private static const MAGICAL_SKILL:String = "magical";
-		
 		private var castIllusion:int = 0;
 
 		public function Aiko() {
@@ -454,33 +451,6 @@ package classes.Scenes.Areas.Forest
 		private function sealPlayerMovement():void {
 			outputText("\"<i>Tsk tsk, leaving so soon?</i>\"  the kitsune says, popping up in front of you suddenly as you attempt to make your escape.  Before you can react, she draws a small circle on your chest with her fingertip, leaving behind a glowing rune made of crackling blue flames.  You try to run the other way, but your " + player.legs() + " won't budge!\n\n\"<i>Sorry baby, you'll just have to stay and play~.</i>\" she says in a singsong tone, appearing in front of you again.  <b>The kitsune's spell prevents your escape!</b>  You'll have to tough it out until the spell wears off.");
 			player.createStatusEffect(StatusEffects.Sealed, 4, 4, 0, 0);
-		}
-		
-		private function sealPlayerPhysicalSpecialSkills(): void {
-			sealPlayerSpecial(PHYSICAL_SKILL);
-		}
-		
-		private function sealPlayerMagicSpecialSkills(): void {
-			sealPlayerSpecial(MAGICAL_SKILL);
-		}
-		
-		/**
-		 * Seals the players special skill. Prints the matching text and applies a status effect.
-		 * @param	skillType the type of skill to seal (physical, magical)
-		 * @throws ArgumentError if the selected skill is invalid
-		 */
-		private function sealPlayerSpecial(skillType:String):void {
-			outputText("You jump with surprise as the kitsune appears in front of you, grinning coyly.  As she draws a small circle on your forehead with her fingertip, you find that you suddenly can't remember how to use any of your " + skillType + " skills!");
-			outputText("\n\n\"<i>Oh no darling, </i>I'm<i> the one with all the tricks here.</i>\"");
-			outputText("\n\n<b>The kitsune's spell has sealed your " + skillType + " skills!</b>  You won't be able to use any of them until the spell wears off.");
-			
-			if (skillType === PHYSICAL_SKILL) {
-				player.createStatusEffect(StatusEffects.Sealed, 4, 5, 0, 0);
-			} else if (skillType === MAGICAL_SKILL) {
-				player.createStatusEffect(StatusEffects.Sealed, 4, 6, 0, 0);
-			} else {
-				throw new ArgumentError("Invalid skill type!");
-			}
 		}
 		
 		private function resistSeal():void {
