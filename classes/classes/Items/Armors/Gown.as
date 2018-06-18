@@ -13,7 +13,7 @@ package classes.Items.Armors
 	public class Gown extends Armor implements TimeAwareInterface {
 
 		public function Gown():void {
-			super("FrsGown","FrsGown","Forest Gown","A Forest Gown.",1,10,"This the very earthy gown commonly worn by dryads.   It is made from a mixture of plants.   The predominate fabric looks like a weave of fresh grass.   It is decorated by simple flowers that are attached to it.   Strangely, everything seems alive like it was still planted.   There must be some peculiar magic at work here.","Light");
+			super("FrsGown","FrsGown","forest gown","a forest gown",1,10,"This the very earthy gown commonly worn by dryads.   It is made from a mixture of plants.   The predominate fabric looks like a weave of fresh grass.   It is decorated by simple flowers that are attached to it.   Strangely, everything seems alive like it was still planted.   There must be some peculiar magic at work here.","Light");
 		}
 
 		override public function useText():void{ //Produces any text seen when equipping the armor normally
