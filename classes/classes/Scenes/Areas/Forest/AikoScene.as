@@ -1405,9 +1405,22 @@ package classes.Scenes.Areas.Forest
 		if (flags[kFLAGS.AIKO_CORRUPTION] > 100) {
 			flags[kFLAGS.AIKO_CORRUPTION] = 100;
 		}
+	}
+	
+	/**
+	 * Update Aiko's flags and the players corruption after consensual sex.
+	 */
+	private function postSexUpdate(): void {
+		flags[kFLAGS.AIKO_AFFECTION] += 4;
 		
-		player.orgasm('Dick');
-		combat.cleanupAfterCombat();
+		if (player.isCorruptEnough(50) && flags[kFLAGS.AIKO_CORRUPTION_ACTIVE] > 0) {
+			flags[kFLAGS.AIKO_CORRUPTION] += 4;
+		}
+		
+		if (flags[kFLAGS.AIKO_CORRUPTION_ACTIVE] > 0 && flags[kFLAGS.AIKO_CORRUPTION] >= 50 && player.isPureEnough(flags[kFLAGS.AIKO_CORRUPTION])) {
+			player.cor += 2;
+			flags[kFLAGS.AIKO_CORRUPTION] -= 2;
+		}
 	}
 	
 	private function aikoRapeFuckVag():void
@@ -1640,13 +1653,9 @@ package classes.Scenes.Areas.Forest
 		+"Gathering your things, you put on your [armor] and head back to camp.");
 		
 		flags[kFLAGS.AIKO_SEXED]++;
-		flags[kFLAGS.AIKO_AFFECTION] += 4;
-		if (player.isCorruptEnough(50) && flags[kFLAGS.AIKO_CORRUPTION_ACTIVE] > 0)
-			flags[kFLAGS.AIKO_CORRUPTION] += 4;
-		if (flags[kFLAGS.AIKO_CORRUPTION_ACTIVE]>0 && flags[kFLAGS.AIKO_CORRUPTION] >= 50 && player.isPureEnough(flags[kFLAGS.AIKO_CORRUPTION])) {
-			player.cor += 2;
-			flags[kFLAGS.AIKO_CORRUPTION] -= 2;
-		}
+		
+		postSexUpdate();
+		
 		player.orgasm('Dick');
 		if (y != 0)
 			player.orgasm('Dick');
@@ -1693,13 +1702,9 @@ package classes.Scenes.Areas.Forest
 		+"<i>“Ah, that was fun,”</i> she says, stretching out and letting out a cute sigh.");
 		
 		flags[kFLAGS.AIKO_SEXED]++;
-		flags[kFLAGS.AIKO_AFFECTION] += 4;
-		if (player.isCorruptEnough(50) && flags[kFLAGS.AIKO_CORRUPTION_ACTIVE] > 0)
-			flags[kFLAGS.AIKO_CORRUPTION] += 4;
-		if (flags[kFLAGS.AIKO_CORRUPTION_ACTIVE]>0 && flags[kFLAGS.AIKO_CORRUPTION] >= 50 && player.isPureEnough(flags[kFLAGS.AIKO_CORRUPTION])) {
-			player.cor += 2;
-			flags[kFLAGS.AIKO_CORRUPTION] -= 2;
-		}
+		
+		postSexUpdate();
+		
 		player.orgasm('Dick');
 		if (flags[kFLAGS.AIKO_TIMES_MET == 1])
 			doNext(aikoE1SexPart2)
@@ -1731,13 +1736,9 @@ package classes.Scenes.Areas.Forest
 		+(flags[kFLAGS.AIKO_TIMES_MET] >1 ?"You can only nod your agreement as you lay there in satisfied exhaustion for some time, until you finally push yourself up and begin to gather your [armor]. Bidding Aiko farewell, you head back to camp.":""));
 		
 		flags[kFLAGS.AIKO_SEXED]++;
-		flags[kFLAGS.AIKO_AFFECTION] += 4;
-		if (player.isCorruptEnough(50) && flags[kFLAGS.AIKO_CORRUPTION_ACTIVE] > 0)
-			flags[kFLAGS.AIKO_CORRUPTION] += 4;
-		if (flags[kFLAGS.AIKO_CORRUPTION_ACTIVE]>0 && flags[kFLAGS.AIKO_CORRUPTION] >= 50 && player.isPureEnough(flags[kFLAGS.AIKO_CORRUPTION])) {
-			player.cor += 2;
-			flags[kFLAGS.AIKO_CORRUPTION] -= 2;
-		}
+		
+		postSexUpdate();
+		
 		player.orgasm('Vagina');
 		if (flags[kFLAGS.AIKO_TIMES_MET == 1])
 			doNext(aikoE1SexPart2);
@@ -1830,13 +1831,7 @@ package classes.Scenes.Areas.Forest
 			+"Thoroughly coated in your own spunk, you lay on the ground as Aiko releases you from her grip. <i>“Mn… that’s a good look for you”</i> she says, rubbing her foot against your sensitive crotch some more and then turning to walk away. You lie in your own shame for a time before finally cleaning yourself off and gathering your things to return to camp.");
 			player.orgasm('Dick');
 			
-			flags[kFLAGS.AIKO_AFFECTION] += 4;
-			if (player.isCorruptEnough(50) && flags[kFLAGS.AIKO_CORRUPTION_ACTIVE] > 0)
-				flags[kFLAGS.AIKO_CORRUPTION] += 4;
-			if (flags[kFLAGS.AIKO_CORRUPTION_ACTIVE]>0 && flags[kFLAGS.AIKO_CORRUPTION] >= 50 && player.isPureEnough(flags[kFLAGS.AIKO_CORRUPTION])) {
-				player.cor += 2;
-				flags[kFLAGS.AIKO_CORRUPTION] -= 2;
-			}
+			postSexUpdate();
 		}
 		flags[kFLAGS.AIKO_SEXED]++;
 
@@ -1878,13 +1873,7 @@ package classes.Scenes.Areas.Forest
 			player.dynStats("tou", 2, "sen", -2);
 			player.changeFatigue(30);
 			
-			flags[kFLAGS.AIKO_AFFECTION] += 4;
-			if (player.isCorruptEnough(50) && flags[kFLAGS.AIKO_CORRUPTION_ACTIVE] > 0)
-				flags[kFLAGS.AIKO_CORRUPTION] += 4;
-			if (flags[kFLAGS.AIKO_CORRUPTION_ACTIVE]>0 && flags[kFLAGS.AIKO_CORRUPTION] >= 50 && player.isPureEnough(flags[kFLAGS.AIKO_CORRUPTION])) {
-				player.cor += 2;
-				flags[kFLAGS.AIKO_CORRUPTION] -= 2;
-			}
+			postSexUpdate();
 		}
 		flags[kFLAGS.AIKO_SEXED]++;
 
