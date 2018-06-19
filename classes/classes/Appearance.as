@@ -72,6 +72,12 @@ package classes {
 						"soft wool",
 						"untameable woolen hair",
 					];
+				case Hair.LEAF:
+					options = [
+						"leafy hair",
+						"grassy hair",
+						"pine needle hair",
+					];
 					return description + randomChoice(options);
 				default:
 					//Move along.
@@ -1871,6 +1877,8 @@ package classes {
 					return "gooey";
 
 				case Skin.PLAIN:
+				case Skin.BARK:
+					return "bark";
 				default:
 					return includePlain ? "skinny" : "";
 			}
