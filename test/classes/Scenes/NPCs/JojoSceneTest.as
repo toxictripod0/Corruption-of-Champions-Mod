@@ -33,6 +33,7 @@ package classes.Scenes.NPCs{
 			cut = new JojoSceneForTest(new PregnancyProgression(), new DummyOutput());
 			player = new Player();
 			kGAMECLASS.player = player;
+			kGAMECLASS.flags[kFLAGS.JOJO_STATUS] = 1;
         }
 		
 		[Test] 
