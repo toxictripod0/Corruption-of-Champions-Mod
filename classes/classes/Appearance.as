@@ -2394,7 +2394,6 @@ package classes {
 				else descript += "breasts";
 			}
 			if (temp14 === 3) {
-				//if (creature.breastRows[temp142].breastRating > 6) descript += "rack";
 				descript += "breasts";
 			}
 			if (temp14 === 4) descript += "tits";
