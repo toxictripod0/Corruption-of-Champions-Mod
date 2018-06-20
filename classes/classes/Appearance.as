@@ -2631,7 +2631,6 @@ package classes {
 			var descripted:Boolean = false;
 			//Count cocks & Prep average totals
 			while (currCock <= totCock - 1) {
-				//trace("Counting cocks!");
 				if (creature.cocks[currCock].cockType === CockTypesEnum.HUMAN) {
 					normalCocks++;
 					normalCockKey = currCock;
