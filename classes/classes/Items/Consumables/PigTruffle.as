@@ -75,14 +75,14 @@ package classes.Items.Consumables
 			// TRANSFORMATIONS
 			//-----------------------
 			//Gain pig cock, independent of other pig TFs.
-			if (rand(4) === 0 && changes < changeLimit && player.cocks.length > 0 && player.cocks[0].cockType !== CockTypesEnum.PIG) {
+			if (rand(4) === 0 && changes < changeLimit && player.cocks.length > 0 && player.countCocksOfType(CockTypesEnum.PIG) < player.cocks.length) {
 				if (player.cocks.length == 1) { //Single cock
 					outputText("\n\nYou feel an uncomfortable pinching sensation in your [cock]. " + player.clothedOrNakedLower("You pull open your [armor]", "You look down at your exposed groin") + ", watching as it warps and changes. As the transformation completes, you’re left with a shiny, pinkish red pecker ending in a prominent corkscrew at the tip. <b>You now have a pig penis!</b>");
 					player.cocks[0].cockType = CockTypesEnum.PIG;
 				}
 				else { //Multiple cocks
 					outputText("\n\nYou feel an uncomfortable pinching sensation in one of your cocks. You pull open your [armor], watching as it warps and changes. As the transformation completes, you’re left with a shiny pinkish red pecker ending in a prominent corkscrew at the tip. <b>You now have a pig penis!</b>");
-					player.cocks[rand(player.cocks.length+1)].cockType = CockTypesEnum.PIG;
+					player.cocks[player.findFirstCockNotOfType(CockTypesEnum.PIG)].cockType = CockTypesEnum.PIG;
 				}
 				changes++;
 			}

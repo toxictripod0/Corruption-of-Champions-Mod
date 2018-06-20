@@ -2127,7 +2127,16 @@ package classes
 			if (cocks.length == 0) return 0;
 			return countCocksOfType(CockTypesEnum.WOLF);
 		}
-		
+
+		public function findFirstCockNotOfType(ctype:CockTypesEnum):Number
+		{
+			for (var i:int = 0; i < cocks.length; i++) {
+				if (cocks[i].cockType != ctype)
+					return i;
+			}
+			return -1;
+		}
+
 		public function findFirstCockType(ctype:CockTypesEnum):Number
 		{
 			var index:Number = 0;
