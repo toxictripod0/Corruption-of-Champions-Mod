@@ -699,13 +699,6 @@ package classes {
 
 		public static function cockMultiNoun(cockType:CockTypesEnum):String
 		{
-			/*
-			if (cockType is int) {
-				trace("Someone is still calling cockNoun with an integer cock type");
-				trace("Fix this shit already, dammit!");
-				cockType = CockTypesEnum.ParseConstantByIndex(cockType);
-			}
-			*/
 			var options:Array;
 			var description:String = "";
 			if (cockType === CockTypesEnum.HUMAN) {
