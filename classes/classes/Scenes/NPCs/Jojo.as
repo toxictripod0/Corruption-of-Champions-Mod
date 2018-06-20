@@ -179,6 +179,12 @@ if (lust >= maxLust()) {
 						LOGGER.info("Correcting jojo status (slave status is now 6)");
 						flags[kFLAGS.JOJO_STATUS] = 6;
 					}
+					
+				default:
+					/*
+					 * The default block is left empty intentionally,
+					 * this switch case operates by using fall through behavior.
+					 */
 			}
 		}
 		
