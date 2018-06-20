@@ -986,9 +986,6 @@ package classes {
 				"ball",
 				"ball"];
 
-			// I don't know how this was ever supposed to work.
-			//if (i_creature.balls === 4 && i_plural) options.push("quads", "quads", "quads");
-
 			description += randomChoice(options);
 			if (i_plural) description += "s";
 
