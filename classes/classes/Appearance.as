@@ -650,15 +650,7 @@ package classes {
 				}
 				descripts = 1;
 			}
-			//Length/Thickness done.  Moving on to special animal characters/lust stuff.
-			/*Animal Fillers - turned off due to duplication in noun segment
-			 else if (type === 1 && descripts === 0 && rand(2) === 0) {
-			 if (rand(2) === 0) descript += "flared ";
-			 else descript += "musky ";
-			 }
-			 else if (type === 2 && descripts === 0 && rand(2) === 0) {
-			 descript += "musky ";
-			 }*/
+
 			//FINAL FALLBACKS - lust descriptors
 			//Lust stuff
 			else if (i_creature.lust100 > 90) {
