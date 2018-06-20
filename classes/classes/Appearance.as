@@ -2284,7 +2284,6 @@ package classes {
 			var storage:String = "";
 			if (creature.breastRows.length === 0) return "unremarkable chest muscles ";
 			if (creature.breastRows.length === 2) {
-				//if (creature.totalBreasts() === 4) storage += "quartet of ";
 				storage += "two rows of ";
 			}
 			if (creature.breastRows.length === 3) {
