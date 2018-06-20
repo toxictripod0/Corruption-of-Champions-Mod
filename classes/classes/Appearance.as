@@ -1020,14 +1020,6 @@ package classes {
 			return description;
 		}
 
-/* Moved to Creature.as
-		public static function sheathDescript(i_character:Character):String
-		{
-			if (i_character.hasSheath()) return "sheath";
-			else return "base";
-		}
-*/
-
 		public static function vaginaDescript(i_creature:Creature, i_vaginaIndex:Number = 0, forceDesc:Boolean=false):String
 		{
 			if (i_vaginaIndex > (i_creature.vaginas.length - 1)) {
