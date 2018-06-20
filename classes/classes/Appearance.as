@@ -351,28 +351,6 @@ package classes {
 				else description += "nipple";
 			}
 			return description;
-			/*OLD
-			 if (creature.breastRows[rowNum].lactationMultiplier >= 1.5 && creature.breastRows[rowNum].lactationMultiplier < 1.75) {
-			 if (creature.breastRows[rowNum].milkFullness > 75) return "over-full leaking teat";
-			 if (rand(2) === 0) return "milky teat";
-			 else return "milk spout";
-			 }
-			 if (creature.breastRows[rowNum].lactationMultiplier >= 1.75) {
-			 if (creature.breastRows[rowNum].milkFullness > 75) return "over-full leaking teat";
-			 if (rand(2) === 0) return "milk-drooling teat";
-			 else return "drippy cow-teat";
-			 }
-			 if (creature.lust > 75) {
-			 if (rand(2) === 0) return "painfully hard nipple";
-			 else return "over-stimulated nipple";
-			 }
-			 if (creature.lust > 50) {
-			 if (rand(2) === 0) return "erect nipple";
-			 else return "hard nipple";
-			 }
-			 if (creature.breastRows[rowNum].milkFullness > 75) return "milky over-full nipple";
-			 return "nipple";
-			 */
 		}
 
 		public static function hipDescription(i_character:Character):String {
