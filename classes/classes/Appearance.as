@@ -96,12 +96,7 @@ package classes {
 				description += "mane";
 				return description;
 			}
-			//if medium length refer to as locks sometimes
-			//CUT - locks is plural and screws up tense.
-			/*if (creature.hair.length >= 3 && creature.hair.length < 16 && rand(2) === 0) {
-			 descript += "locks of hair";
-			 return descript;
-			 }*/
+
 			//If nothing else used, use hair!
 			if (i_creature.hair.type === Hair.FEATHER) description += "feather-";
 			else if (i_creature.hair.type === Hair.GHOST) description += "transparent ";
