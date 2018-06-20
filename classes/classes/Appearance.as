@@ -2307,7 +2307,6 @@ package classes {
 		{
 			if (i_creature.tail.type === Tail.NONE)
 			{
-				//trace("WARNING: Creature has no tails to describe.");
 				return "<b>!Creature has no tails to describe!</b>";
 			}
 			
@@ -2341,7 +2340,6 @@ package classes {
 		{
 			if (i_creature.tail.type === Tail.NONE)
 			{
-				//trace("WARNING: Creature has no tails to describe.");
 				return "<b>!Creature has no tails to describe!</b>";
 			}
 			
