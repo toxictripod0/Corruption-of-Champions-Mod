@@ -1533,7 +1533,6 @@ package classes {
 						"bottom"];
 			
 			description += randomChoice(options);
-			//if (rando === 2) desc += "cheeks";
 			return description;
 		}
 
