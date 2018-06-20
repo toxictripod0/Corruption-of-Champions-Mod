@@ -2454,14 +2454,6 @@ package classes {
 			}
 			return descript;
 		}
-		
-/* Moved to Creature.as
-		public static function chestDesc(creature:Creature):String
-		{
-			if (creature.biggestTitSize() < 1) return "chest";
-			else return biggestBreastSizeDescript(creature);
-		}
-*/
 
 		public static function assholeOrPussy(creature:Creature):String
 		{
