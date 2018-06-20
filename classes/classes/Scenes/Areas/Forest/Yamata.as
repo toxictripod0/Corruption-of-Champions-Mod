@@ -6,7 +6,50 @@ package classes.Scenes.Areas.Forest
 	import classes.internals.*;
 
 	public class Yamata extends BaseKitsune
-	{				
+	{
+		public function Yamata()
+		{
+			init();
+		}
+
+		private function init()
+		{
+			this.a = "";
+			this.short = "Yamata";
+			this.imageName = "yamata";
+			this.long = "Yamata stands before you, grinning psychotically as her nine fox tails flare out behind her. Her jet black hair twists and writhes in the air, forming eight serpentine heads that snap at anything within reach. A pair of demonic horns curves up in front of her ears, and she is wielding a cursed black sword that resembles an oversized billhook bathed in demonic power. Just looking at her for too long causes strange thoughts to enter your mind, urging you to submit to her and become her loyal masochistic pet. You’ll have to keep your wits about you, or you might start enjoying the pain!";
+			this.race = "Kitsune";
+			this.createVagina(false, VaginaClass.WETNESS_WET, VaginaClass.LOOSENESS_LOOSE);
+			this.createStatusEffect(StatusEffects.BonusVCapacity, 8000, 0, 0, 0);
+			createBreastRow(Appearance.breastCupInverse("E"));
+			this.ass.analLooseness = AssClass.LOOSENESS_NORMAL;
+			this.ass.analWetness = AssClass.WETNESS_MOIST;
+			this.createStatusEffect(StatusEffects.BonusACapacity,200,0,0,0);
+			this.tallness = 69;
+			this.hips.rating = Hips.RATING_AMPLE;
+			this.butt.rating = Butt.RATING_AVERAGE+1;
+			this.skin.tone = "light tan";			//might need to change to russet
+			this.hair.color = "black";
+			this.hair.length = 22;
+			initStrTouSpeInte(60, 70, 90, 100);
+			initLibSensCor(60, 65, 100);
+			this.weaponName = "Muramasa";
+			this.weaponVerb = "slash"
+			this.armorName = "tight chest wrap and baggy pants";
+			this.armorDef = 16;
+			this.bonusHP = 2400;
+			this.lust = 25;
+			this.bonusLust = 150;
+			this.lustVuln = 0.35;
+			this.temperment = TEMPERMENT_LUSTY_GRAPPLES;
+			this.level = 30;
+			this.gems = rand(20) + 30;
+			this.drop = new WeightedDrop(consumables.MYSTJWL, 1);
+			this.tail.type = Tail.FOX;
+			this.tail.venom = 9;
+			checkMonster();
+		}
+		
 		//Corrupted Yamata Attacks
 		private function yamataBasic():void
 		{
@@ -302,44 +345,6 @@ package classes.Scenes.Areas.Forest
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
 		{
 			game.forest.aikoScene.yamataWins();
-		}
-
-		public function Yamata()
-		{
-			this.a = "";
-			this.short = "Yamata";
-			this.imageName = "yamata";
-			this.long = "Yamata stands before you, grinning psychotically as her nine fox tails flare out behind her. Her jet black hair twists and writhes in the air, forming eight serpentine heads that snap at anything within reach. A pair of demonic horns curves up in front of her ears, and she is wielding a cursed black sword that resembles an oversized billhook bathed in demonic power. Just looking at her for too long causes strange thoughts to enter your mind, urging you to submit to her and become her loyal masochistic pet. You’ll have to keep your wits about you, or you might start enjoying the pain!";
-			this.race = "Kitsune";
-			this.createVagina(false, VaginaClass.WETNESS_WET, VaginaClass.LOOSENESS_LOOSE);
-			this.createStatusEffect(StatusEffects.BonusVCapacity, 8000, 0, 0, 0);
-			createBreastRow(Appearance.breastCupInverse("E"));
-			this.ass.analLooseness = AssClass.LOOSENESS_NORMAL;
-			this.ass.analWetness = AssClass.WETNESS_MOIST;
-			this.createStatusEffect(StatusEffects.BonusACapacity,200,0,0,0);
-			this.tallness = 69;
-			this.hips.rating = Hips.RATING_AMPLE;
-			this.butt.rating = Butt.RATING_AVERAGE+1;
-			this.skin.tone = "light tan";			//might need to change to russet
-			this.hair.color = "black";
-			this.hair.length = 22;
-			initStrTouSpeInte(60, 70, 90, 100);
-			initLibSensCor(60, 65, 100);
-			this.weaponName = "Muramasa";
-			this.weaponVerb = "slash"
-			this.armorName = "tight chest wrap and baggy pants";
-			this.armorDef = 16;
-			this.bonusHP = 2400;
-			this.lust = 25;
-			this.bonusLust = 150;
-			this.lustVuln = 0.35;
-			this.temperment = TEMPERMENT_LUSTY_GRAPPLES;
-			this.level = 30;
-			this.gems = rand(20) + 30;
-			this.drop = new WeightedDrop(consumables.MYSTJWL, 1);
-			this.tail.type = Tail.FOX;
-			this.tail.venom = 9;
-			checkMonster();
 		}
 	}
 }
