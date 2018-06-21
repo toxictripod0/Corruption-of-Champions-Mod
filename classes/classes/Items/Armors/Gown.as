@@ -149,7 +149,8 @@ package classes.Items.Armors
 						outputText("Heat builds in chest and your boobs become bigger.\n\n<b>You now have [breasts]</b>");
 						changed = 1;
 					}
-
+				break;
+				
 				case "girlyness":
 					text = kGAMECLASS.player.modFem(70, 2);
 					if (text == "") break;

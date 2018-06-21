@@ -11,6 +11,8 @@ package classes.Items.Armors
 	
 	public class GownTest 
 	{
+		private static const PLAYER_FEMININITY:Number = 100;
+		
 		private var cut:Gown;
 		private var player:Player;
 		
@@ -31,7 +33,7 @@ package classes.Items.Armors
 			player.hips.rating = 5;
 			player.butt.rating = 5;
 			player.createBreastRow(BreastCup.D);
-			player.femininity = 100;
+			player.femininity = PLAYER_FEMININITY;
 		}
 		
 		[Test]
@@ -53,6 +55,16 @@ package classes.Items.Armors
 			cut.dryadProgression();
 			
 			assertThat(player.bRows(), equalTo(1));
+		}
+		
+		[Test]
+		public function dryadProgressionBreastRatingIncreaseDoesNotChangeFemininity(): void
+		{
+			player.breastRows[0].breastRating = BreastCup.B;
+			
+			cut.dryadProgression();
+			
+			assertThat(player.femininity, equalTo(PLAYER_FEMININITY));
 		}
 	}
 }
