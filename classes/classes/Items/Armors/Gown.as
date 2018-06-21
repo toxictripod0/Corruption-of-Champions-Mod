@@ -78,7 +78,7 @@ package classes.Items.Armors
 				tfChoice.push("butt");
 			if (kGAMECLASS.player.hasCock() != false )
 				tfChoice.push("cock");
-			if (kGAMECLASS.player.breastRows[0].breastRating != 4)
+			if (kGAMECLASS.player.breastRows[0].breastRating != 4 || kGAMECLASS.player.bRows() > 1)
 				tfChoice.push("breasts");
 			if (kGAMECLASS.player.femininity < 70)
 				tfChoice.push("girlyness");
@@ -129,13 +129,13 @@ package classes.Items.Armors
 	case "breasts":
 		outputText("You feel like a beautful flower in your gown.  Dawn approaches and you place your hands on your chest as if expecting your nipples to bloom to greet the rising sun.\n");
 		
-				if (kGAMECLASS.player.bRows() > 1) {
+				if (kGAMECLASS.player.bRows() > 1)
+				{
 					x = 1;
 					outputText("Some of your breasts shrink back into your body leaving you with just two.");
-					while (x < kGAMECLASS.player.bRows()) {
-						if (kGAMECLASS.player.breastRows[x].breastRating < 1) kGAMECLASS.player.breastRows[x].breastRating = 1;
-						x++;
-					}
+					kGAMECLASS.player.breastRows.length = 1;
+				}
+				
 				if (kGAMECLASS.player.breastRows[0].breastRating > BreastCup.D )
 					{
 						kGAMECLASS.player.breastRows[0].breastRating = BreastCup.D;
@@ -149,7 +149,6 @@ package classes.Items.Armors
 						outputText("Heat builds in chest and your boobs become bigger.\n\n<b>You now have [breasts]</b>");
 						changed = 1;
 					}
-				}
 
 				case "girlyness":
 					text = kGAMECLASS.player.modFem(70, 2);
