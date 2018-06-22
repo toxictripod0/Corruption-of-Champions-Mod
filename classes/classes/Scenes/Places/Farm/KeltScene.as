@@ -8,8 +8,13 @@ package classes.Scenes.Places.Farm {
 	public class KeltScene extends AbstractFarmContent {
 
 		public var kelly:Kelly = new Kelly();
+		
+		private var outputLocal:GuiOutput;
 
-	public function KeltScene() {}
+		public function KeltScene(output:GuiOutput)
+		{
+			this.outputLocal = output;
+		}
 
 	/*Kelt the Centaur Archer
 A Corruption of Champions Event by Ourakun

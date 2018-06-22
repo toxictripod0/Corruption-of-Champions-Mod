@@ -15,8 +15,8 @@ package classes.Scenes.Places{
 	public var kelly:Kelly;
 	public var farmCorruption:FarmCorruption;
 
-	public function Farm(){
-		keltScene = new KeltScene();
+	public function Farm(output:GuiOutput){
+		keltScene = new KeltScene(output);
 		kelly = new Kelly();
 		farmCorruption = new FarmCorruption();
 	}
