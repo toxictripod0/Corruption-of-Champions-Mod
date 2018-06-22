@@ -11,13 +11,14 @@ package classes.Scenes.Places{
 	use namespace kGAMECLASS;
 
 	public class Farm extends BaseContent{
-	public var keltScene:KeltScene = new KeltScene();
-	public var kelly:Kelly = new Kelly();
-
-	public var farmCorruption:FarmCorruption = new FarmCorruption();
+	public var keltScene:KeltScene;
+	public var kelly:Kelly;
+	public var farmCorruption:FarmCorruption;
 
 	public function Farm(){
-
+		keltScene = new KeltScene();
+		kelly = new Kelly();
+		farmCorruption = new FarmCorruption();
 	}
 	
 	private function get marbleScene():MarbleScene
