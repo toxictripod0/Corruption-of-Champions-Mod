@@ -521,7 +521,6 @@ private function keltMainEncounterAfterNakedReq():void {
 }
 //Normal Encounter 2
 private function keltMainEncounter2():void {
-	clearOutput();
 	//Used for randomization
 	var temporary:Number = 0;
 	if (player.hasKeyItem("Bow") < 0) { //No bow equipped
