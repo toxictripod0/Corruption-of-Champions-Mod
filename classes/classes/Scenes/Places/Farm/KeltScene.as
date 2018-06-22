@@ -59,6 +59,22 @@ STATUSES:
 "Kelt" - v1 = Archery, v2 = Submissiveness, v3 = total encounters.
 "KeltOff" - Turns off Kelt */
 
+		/**
+		 * Redirtect the output to injected output instance.
+		 * @param	output text to output
+		 */
+		override protected function outputText(output:String):void {
+			outputLocal.text(output);
+		}
+		
+		/**
+		 * Redirect the clear output call to the injected output instance.
+		 */
+		override protected function clearOutput():void
+		{
+			outputLocal.clear();
+		}
+
 private function bowSkill(diff:Number):Number {
 	player.addStatusValue(StatusEffects.Kelt,1,diff);
 	if (player.statusEffectv1(StatusEffects.Kelt) >= 100) player.changeStatusValue(StatusEffects.Kelt,1,100);
