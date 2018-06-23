@@ -72,6 +72,7 @@ package classes {
 						"soft wool",
 						"untameable woolen hair",
 					];
+					return description + randomChoice(options);
 				case Hair.LEAF:
 					options = [
 						"leafy hair",
