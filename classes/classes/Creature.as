@@ -2128,6 +2128,20 @@ package classes
 			return countCocksOfType(CockTypesEnum.WOLF);
 		}
 
+		public function hasCockNotOfType(ctype:CockTypesEnum):Boolean
+		{
+			if (!hasCock())
+				return false;
+
+			for each (var cock:Cock in cocks) {
+				if (cock.cockType != ctype) {
+					return true;
+				}
+			}
+
+			return false;
+		}
+
 		public function findFirstCockNotOfType(ctype:CockTypesEnum):Number
 		{
 			for (var i:int = 0; i < cocks.length; i++) {
@@ -2135,6 +2149,20 @@ package classes
 					return i;
 			}
 			return -1;
+		}
+
+		public function setFirstCockNotOfType(ctype:CockTypesEnum, newType:CockTypesEnum = null):Boolean
+		{
+			var wrongCock:Number = findFirstCockNotOfType(ctype);
+
+			if (wrongCock === -1)
+				return false;
+
+			if (newType === null)
+				newType = ctype;
+
+			cocks[wrongCock].cockType = newType;
+			return true;
 		}
 
 		public function findFirstCockType(ctype:CockTypesEnum):Number

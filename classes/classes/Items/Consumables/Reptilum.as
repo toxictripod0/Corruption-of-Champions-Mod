@@ -115,7 +115,7 @@ package classes.Items.Consumables
 			}
 			//(CHANGE OTHER DICK)
 			//Requires 1 lizard cock, multiple cocks
-			if (player.cockTotal() > 1 && player.countCocksOfType(CockTypesEnum.LIZARD) > 0 && player.cockTotal() > player.countCocksOfType(CockTypesEnum.LIZARD) && tfChance(2, 4) && changes < changeLimit) {
+			if (player.cockTotal() > 1 && player.countCocksOfType(CockTypesEnum.LIZARD) > 0 && player.hasCockNotOfType(CockTypesEnum.LIZARD) && tfChance(2, 4) && changes < changeLimit) {
 				outputText("\n\nA familiar tingle starts in your crotch, and before you can miss the show, you pull open your " + player.armorName + ".  As if operating on a cue, ");
 				temp2 = player.findFirstCockNotOfType(CockTypesEnum.LIZARD);
 				if (player.cockTotal() === 2) outputText("your other dick");
