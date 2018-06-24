@@ -2195,21 +2195,6 @@ package classes
 			return 0;
 		}
 		
-		/*public function findFirstCockType(type:Number = 0):Number
-		{
-			var index:Number = 0;
-			if (cocks[index].cockType == type)
-				return index;
-			while (index < cocks.length)
-			{
-				index++;
-				if (cocks[index].cockType == type)
-					return index;
-			}
-			//trace("Creature.findFirstCockType ERROR - searched for cocktype: " + type + " and could not find it.");
-			return 0;
-		}*/
-		
 		//Change first normal cock to horsecock!
 		//Return number of affected cock, otherwise -1
 		public function addHorseCock():Number
