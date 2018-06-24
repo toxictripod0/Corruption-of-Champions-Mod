@@ -2127,7 +2127,12 @@ package classes
 			if (cocks.length == 0) return 0;
 			return countCocksOfType(CockTypesEnum.WOLF);
 		}
-
+		
+		/**
+		 * Checks if the creature has a cock that is <b>not</b> of the given type.
+		 * @param	ctype Cock type to ignore
+		 * @return true if the creature has a cock that is <b>not</b> of the given type
+		 */
 		public function hasCockNotOfType(ctype:CockTypesEnum):Boolean
 		{
 			if (!hasCock())
@@ -2142,6 +2147,11 @@ package classes
 			return false;
 		}
 
+		/**
+		 * Find and return the first cock that is <b>not</b> of the give type.
+		 * @param	ctype cock type to ignore
+		 * @return The first cock that is <b>not</b> of the given type, or -1 if none are found
+		 */
 		public function findFirstCockNotOfType(ctype:CockTypesEnum):Number
 		{
 			for (var i:int = 0; i < cocks.length; i++) {
@@ -2151,6 +2161,13 @@ package classes
 			return -1;
 		}
 
+		/**
+		 * Set the first cock that does <b>not</b> not of the given type to the new type.
+		 * If all cocks are of the ignored type, this function does nothing.
+		 * @param	ctype the cock type ignore
+		 * @param	newType the cock type to set the first non-ignored cock to
+		 * @return true if a cock was changed
+		 */
 		public function setFirstCockNotOfType(ctype:CockTypesEnum, newType:CockTypesEnum = null):Boolean
 		{
 			var wrongCock:Number = findFirstCockNotOfType(ctype);
