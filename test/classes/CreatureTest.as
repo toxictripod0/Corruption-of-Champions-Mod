@@ -717,6 +717,29 @@ package classes{
 			
 			assertThat(cut.hasCockNotOfType(CockTypesEnum.HUMAN), equalTo(true));
 		}
+		
+		[Test]
+		public function findFirstCockNotOfTypeWithNoCock(): void
+		{
+			assertThat(cut.findFirstCockNotOfType(CockTypesEnum.HUMAN), equalTo(-1));
+		}
+		
+		[Test]
+		public function findFirstCockNotOfTypeWithMatchingCock(): void
+		{
+			createCocks(CockTypesEnum.HUMAN, 1, cut);
+			
+			assertThat(cut.findFirstCockNotOfType(CockTypesEnum.HUMAN), equalTo(-1));
+		}
+		
+		[Test]
+		public function findFirstCockNotOfTypeWithNonMatchingCock(): void
+		{
+			createCocks(CockTypesEnum.HUMAN, 1, cut);
+			createCocks(CockTypesEnum.HORSE, 1, cut);
+			
+			assertThat(cut.findFirstCockNotOfType(CockTypesEnum.HUMAN), equalTo(1));
+		}
 	}
 }
 
