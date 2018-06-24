@@ -2190,7 +2190,7 @@ package classes
 					return index;
 			}
 			LOGGER.debug("Creature.findFirstCockType ERROR - searched for cocktype: {0} and could not find it.", ctype);
-			return 0;
+			return -1;
 		}
 		
 		//Change first normal cock to horsecock!
