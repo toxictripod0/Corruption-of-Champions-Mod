@@ -13,7 +13,7 @@ package classes.Scenes.Areas.Forest
 			init(hairColor);
 		}
 		
-		private function init(hairColor:String)
+		private function init(hairColor:String):void
 		{
 			if (rand(3) != 2) game.flags[kFLAGS.redheadIsFuta] = 1;
 			this.a = "a ";

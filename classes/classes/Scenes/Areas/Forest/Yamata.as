@@ -12,7 +12,7 @@ package classes.Scenes.Areas.Forest
 			init();
 		}
 
-		private function init()
+		private function init():void
 		{
 			this.a = "";
 			this.short = "Yamata";
