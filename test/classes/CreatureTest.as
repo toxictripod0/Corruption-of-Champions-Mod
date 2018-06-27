@@ -786,6 +786,23 @@ package classes{
 			assertThat(cut.cocks[2].cockType, equalTo(CockTypesEnum.HORSE));
 			assertThat(cut.cocks[3].cockType, equalTo(CockTypesEnum.DOG));
 		}
+
+		[Test]
+		public function findFirstCocktOfTypeFoundType(): void
+		{
+			createCocks(CockTypesEnum.HUMAN, 2, cut);
+			createCocks(CockTypesEnum.DOG, 2, cut);
+			
+			assertThat(cut.findFirstCockType(CockTypesEnum.DOG), equalTo(2));
+		}
+
+		[Test]
+		public function findFirstCocktOfTypeNotFound(): void
+		{
+			createCocks(CockTypesEnum.HUMAN, 2, cut);
+			
+			assertThat(cut.findFirstCockType(CockTypesEnum.HORSE), equalTo(-1));
+		}
 	}
 }
 
