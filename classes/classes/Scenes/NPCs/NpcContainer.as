@@ -13,6 +13,12 @@ package classes.Scenes.NPCs
         private static const LOGGER:ILogger = LoggerFactory.getLogger(NpcContainer);
         private static const SERIALIZATION_VERSION:int = 1;
 
+		/**
+		 * Setting instance to private until it is clear how persistent NPCs should be handled (HP reset after combat, new game, status effects).
+		 * Not using constructor because a const cannot be assigned in the constructor.
+		 */
+		private const jojo:Jojo = new Jojo();
+
 		public function serialize(relativeRootObject:*):void 
 		{
 			var npcs:Object = relativeRootObject.npcs;

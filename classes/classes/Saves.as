@@ -2339,24 +2339,13 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 }
 
 /**
- * Load NPCs from the save file. The NPC data is loaded from the 'npcs' object (saveFile.data.npcs).
- * Creates empty dummy structure if the NPC data is missing, to avoid errors on loading.
+ * Load NPCs from the save file.
  * This method is protected instead of private to allow for testing.
  * @param	saveFile the file to save the NPC data to.
  */
 protected function loadNPCs(saveFile:*):void 
 {
-	var npcs:* = saveFile.data.npcs;
-	//TODO change safeFile structure with versioning of the saveFile itself.
-	if (npcs === undefined) {
-		npcs = [];
-	}
-	
-	if (npcs.jojo === undefined) {
-		npcs.jojo = [];
-	}
-	
-	SerializationUtils.deserialize(npcs.jojo, new Jojo());
+	kGAMECLASS.npcContainer.deserialize(saveFile.data);
 }
 
 public function unFuckSave():void

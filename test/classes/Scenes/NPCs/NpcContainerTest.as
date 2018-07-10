@@ -12,7 +12,7 @@ package classes.Scenes.NPCs
         [Before]
         public function setUp():void
         {
-            saveObject = [];
+            saveObject = new Object();
             cut = new NpcContainer();
         }
 

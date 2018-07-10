@@ -237,6 +237,8 @@ package classes
 		public var mimicScene:MimicScene = new MimicScene();
 		public var succubusScene:SuccubusScene = new SuccubusScene();
 		// Scenes/NPC/
+		public var npcContainer:NpcContainer;
+
 		public var amilyScene:AmilyScene;
 		public var anemoneScene:AnemoneScene;
 		public var arianScene:ArianScene = new ArianScene();
@@ -440,6 +442,11 @@ package classes
 			Log.addTarget(traceTarget);
 		}
 
+		private function createNpcs(): void
+		{
+			npcContainer = new NpcContainer();
+		}
+
 		/**
 		 * Create scenes that use the new pregnancy system. This method is public to allow for simple testing.
 		 * @param pregnancyProgress Pregnancy progression to use for scenes, which they use to register themself
@@ -501,6 +508,8 @@ package classes
 			kGAMECLASS = this;
 			
 			this.pregnancyProgress = new PregnancyProgression();
+			
+			createNpcs();
 			createScenes(pregnancyProgress);
 			
 			useables = new UseableLib();
