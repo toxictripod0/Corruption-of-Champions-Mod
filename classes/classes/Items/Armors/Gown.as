@@ -57,7 +57,7 @@ package classes.Items.Armors
 			var verb:String; 
 			var text:String;
 			var x:int;
-			var changed:int = 0;
+			var changed:Boolean = false;
 			var tfChoice:Array = [];
 			var dryadDreams:Array = [
 				"In your dream you find yourself in a lush forest standing next to a tree. The tree seems like your best friend and You give it a hug before sitting down next to it. Looking around, there is grass and flowers all about. You can’t help but hum a cheery tune enjoying nature as a bright butterfly flutters nearby, holding out your hand the butterfly lands softly on your finger and smile sweetly to it.",
@@ -106,13 +106,13 @@ package classes.Items.Armors
 					if (kGAMECLASS.player.hips.rating == 5)
 						break;
 					outputText("You feel them slowly " + verb + ".<b>  You now have [hips].</b>\n");
-					changed = 1;
+					changed = true;
 					break;
 
 				case "butt":
 					outputText("You wiggle around in your gown, the pleasant feeling of flower petals rubbing against your skin washes over you."
 					          +"The feeling settles on your [butt].\n");
-				
+
 					if (kGAMECLASS.player.butt.rating < 5) {
 						verb = "enlarge";
 						kGAMECLASS.player.butt.rating++;
@@ -125,13 +125,13 @@ package classes.Items.Armors
 						break;
 
 					outputText("You feel them slowly " + verb + ". <b>You now have a [butt].</b>");
-					changed = 1;
+					changed = true;
 					break;
 
 				case "cock":
 					outputText("Your [cock] feels strange as it brushes against the fabric of your gown.\n");
 					(new BimboProgression).shrinkCock();
-					changed = 1;
+					changed = true;
 					break;
 
 				case "breasts":
@@ -147,13 +147,13 @@ package classes.Items.Armors
 					if (kGAMECLASS.player.breastRows[0].breastRating > BreastCup.D) {
 						kGAMECLASS.player.breastRows[0].breastRating = BreastCup.D;
 						outputText("A chill runs against your chest and <b>your boobs become smaller. You now have [breasts]</b>\n\n");
-						changed = 1;
+						changed = true;
 					}
 
 					if (kGAMECLASS.player.smallestTitSize() < BreastCup.D) {
 						kGAMECLASS.player.breastRows[0].breastRating = BreastCup.D;
 						outputText("Heat builds in chest and your boobs become bigger.\n\n<b>You now have [breasts]</b>");
-						changed = 1;
+						changed = true;
 					}
 					break;
 
@@ -163,14 +163,16 @@ package classes.Items.Armors
 					outputText("You run your [hands] across the fabric of your Gown, then against your face as it feels like"
 					          +" there is something you need to wipe off.\n");
 					outputText(text);
-					changed = 1;
+					changed = true;
 					break;
 
 				default:
-					outputText("\nERROR: this forest gown TF choice shouldn't ever get called.");
+					// no error, intended
 			}
 			outputText("\n\n"); //spacing issues
-			if (changed !== 1) dryadProg(); //if no small changes, start big changes
+			if (!changed) {
+				dryadProg(); //if no small changes, start big changes
+			}
 		}
 
 		public function dryadProg():void
