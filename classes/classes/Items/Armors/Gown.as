@@ -56,7 +56,6 @@ package classes.Items.Armors
 		{
 			var verb:String; 
 			var text:String;
-			var x:int;
 			var changed:Boolean = false;
 			var tfChoice:Array = [];
 			var dryadDreams:Array = [
@@ -103,8 +102,7 @@ package classes.Items.Armors
 						verb = "shrink";
 						kGAMECLASS.player.hips.rating--;
 					}
-					if (kGAMECLASS.player.hips.rating == 5)
-						break;
+
 					outputText("You feel them slowly " + verb + ".<b>  You now have [hips].</b>\n");
 					changed = true;
 					break;
@@ -121,8 +119,6 @@ package classes.Items.Armors
 						verb = "shrink";
 						kGAMECLASS.player.butt.rating--;
 					} 
-					if (kGAMECLASS.player.butt.rating == 5)
-						break;
 
 					outputText("You feel them slowly " + verb + ". <b>You now have a [butt].</b>");
 					changed = true;
@@ -139,7 +135,6 @@ package classes.Items.Armors
 					          +" as if expecting your nipples to bloom to greet the rising sun.\n");
 
 					if (kGAMECLASS.player.bRows() > 1) {
-						x = 1;
 						outputText("Some of your breasts shrink back into your body leaving you with just two.");
 						kGAMECLASS.player.breastRows.length = 1;
 					}
