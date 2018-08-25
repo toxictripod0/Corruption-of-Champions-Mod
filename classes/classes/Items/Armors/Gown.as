@@ -91,14 +91,13 @@ package classes.Items.Armors
 			//progress slowly to the ideal dryad build
 			switch (randomChoice(tfChoice)) {
 				case "hips":
-					outputText("You wiggle around in your gown, pleasant feeling of flower petals rubbing against your skin washes over you."
+					outputText("You wiggle around in your gown, the pleasant feeling of flower petals rubbing against your skin washes over you."
 					          +" The feeling settles on your [hips].\n");
 
 					if (kGAMECLASS.player.hips.rating < 5) {
 						verb = "enlarge";
 						kGAMECLASS.player.hips.rating++;
-					}
-					if (kGAMECLASS.player.hips.rating > 5) {
+					} else {
 						verb = "shrink";
 						kGAMECLASS.player.hips.rating--;
 					}
@@ -114,8 +113,7 @@ package classes.Items.Armors
 					if (kGAMECLASS.player.butt.rating < 5) {
 						verb = "enlarge";
 						kGAMECLASS.player.butt.rating++;
-					}
-					if (kGAMECLASS.player.butt.rating > 5) {
+					} else {
 						verb = "shrink";
 						kGAMECLASS.player.butt.rating--;
 					} 
@@ -139,15 +137,14 @@ package classes.Items.Armors
 						kGAMECLASS.player.breastRows.length = 1;
 					}
 
-					if (kGAMECLASS.player.breastRows[0].breastRating > BreastCup.D) {
+					if (kGAMECLASS.player.breastRows[0].breastRating !== BreastCup.D) {
+						if (kGAMECLASS.player.breastRows[0].breastRating > BreastCup.D) {
+							outputText("\nA chill runs against your chest and your boobs become smaller.");
+						} else {
+							outputText("\nHeat builds in chest and your boobs become bigger.");
+						}
+						outputText("\n<b>You now have [breasts]</b>");
 						kGAMECLASS.player.breastRows[0].breastRating = BreastCup.D;
-						outputText("A chill runs against your chest and <b>your boobs become smaller. You now have [breasts]</b>\n\n");
-						changed = true;
-					}
-
-					if (kGAMECLASS.player.smallestTitSize() < BreastCup.D) {
-						kGAMECLASS.player.breastRows[0].breastRating = BreastCup.D;
-						outputText("Heat builds in chest and your boobs become bigger.\n\n<b>You now have [breasts]</b>");
 						changed = true;
 					}
 					break;
