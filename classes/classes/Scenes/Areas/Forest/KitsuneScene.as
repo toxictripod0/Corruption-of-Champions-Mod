@@ -1126,7 +1126,7 @@ package classes.Scenes.Areas.Forest
 			//Blonde-exclusive
 			if (monster.hair.color == "blonde") {
 				//[Fuck Draft]
-				if (player.hasItem(consumables.F_DRAFT)) {
+				if (player.hasItem(consumables.F_DRAFT) && player.hasCock()) {
 					addButton(button++, "Use F.Draft", fuckDraftBlond, undefined, undefined, undefined, "You could dose her with a fuck draft...");
 				} else 
 					addDisabledButton(button++, "Use F.Draft", "This scene requires you to have cock and a bottle of fuck draft.", "Use Fuck Draft");
