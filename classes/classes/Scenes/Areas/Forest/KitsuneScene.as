@@ -1127,17 +1127,17 @@ package classes.Scenes.Areas.Forest
 			if (monster.hair.color == "blonde") {
 				//[Fuck Draft]
 				if (player.hasItem(consumables.F_DRAFT) && player.hasCock()) {
-					addButton(button++, "Use F.Draft", fuckDraftBlond, undefined, undefined, undefined, "You could dose her with a fuck draft...");
+					addButton(button++, "Use F.Draft", fuckDraftBlond).hint("You could dose her with a fuck draft...");
 				} else 
 					addDisabledButton(button++, "Use F.Draft", "This scene requires you to have cock and a bottle of fuck draft.", "Use Fuck Draft");
 				//[Lactaid]
-				if (player.hasItem(consumables.LACTAID)) {
-					addButton(button++, "Use L-Aid", lactaidDoseAKitSune, undefined, undefined, undefined, "You could dose her with lactad...");
+				if (player.hasItem(consumables.LACTAID) && player.hasCock()) {
+					addButton(button++, "Use L-Aid", lactaidDoseAKitSune).hint("You could dose her with lactad...");
 				} else 
 					addDisabledButton(button++, "Use L-Aid", "This scene requires you to have cock and a bottle of lactaid.", "Use LactAid");
 				//[Ovi Elixir]
-				if (player.hasItem(consumables.OVIELIX) && player.isMaleOrHerm()) {
-					addButton(button++, "Use OviElix", doseAKitsuneWithOviElixirs, undefined, undefined, undefined, "You could use an oviposition elixir on her...");
+				if (player.hasItem(consumables.OVIELIX) && player.hasCock()) {
+					addButton(button++, "Use OviElix", doseAKitsuneWithOviElixirs).hint("You could use an oviposition elixir on her...");
 				} else 
 					addDisabledButton(button++, "Use OviElix", "This scene requires you to have cock and a bottle of ovi elixir.", "Use Ovi Elixir");
 			}
