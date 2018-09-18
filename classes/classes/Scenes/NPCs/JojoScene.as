@@ -419,7 +419,6 @@ public function useTentacleJojo():void {
 	jojoSprite();
 	player.slimeFeed();
 	var nippleSucking:Boolean = false;
-	var clitSucking:Boolean = false;
 	var mouthFucking:Boolean = false;
 	var titFucking:Boolean = false;
 	var cumPuddle:Boolean = false;
