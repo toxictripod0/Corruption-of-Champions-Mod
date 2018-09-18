@@ -20,6 +20,7 @@ package classes.Scenes.NPCs{
 		private const ALWAYS_EXPECTED_TEXT:String = "You crawl further up his body and grin down at him as you press";
 		private const WET_ONLY_EXPECTED_TEXT:String = "You moan as he works, your juices flowing liberally across his muzzle and into his";
 		private const JOJO_FIRST_RAPE_TEXT:String = "You pretend to agree, and follow Jojo into the woods.  You bide your time, waiting for him to relax.";
+		private const JOJO_FIFTH_RAPE_TEXT:String = "Jojo smiles serenely, pleased at the outcome,";
 		
         private var cut:JojoSceneForTest;
 		private var player:Player;
@@ -94,6 +95,16 @@ package classes.Scenes.NPCs{
 			cut.testJojoRape();
 			
 			assertThat(cut.collectedOutput, hasItem(startsWith(JOJO_FIRST_RAPE_TEXT)));
+		}
+		
+		[Test(description="Check that the fith rape scene is triggered if Jojo's state is 5")]
+		public function jojoStage5RapeScene(): void
+		{
+			kGAMECLASS.flags[kFLAGS.JOJO_STATUS] = 5;
+			
+			cut.testJojoRape();
+			
+			assertThat(cut.collectedOutput, hasItem(startsWith(JOJO_FIFTH_RAPE_TEXT)));
 		}
 	}
 }

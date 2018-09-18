@@ -1204,8 +1204,11 @@ public function jojoFollowerMeditate():void {
 				case 4:
 					jojosFourthRape();
 					break;
-				default:
+				case 5:
 					jojosFifthRape();
+					break;
+				default: 
+					outputText("<b>This is a bug! Please report it!</b> Jojo rape with state" + flags[kFLAGS.JOJO_STATUS]);
 			}
 			doNext(camp.returnToCampUseOneHour);
 			if (postCombat) combat.cleanupAfterCombat();
