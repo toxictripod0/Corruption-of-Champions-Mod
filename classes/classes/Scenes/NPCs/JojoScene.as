@@ -43,7 +43,7 @@
 
 	private var _jojoForest:Encounter = null;
 	public function get jojoForest():Encounter {
-		const game:CoC = kGAMECLASS;
+		const GAME:CoC = kGAMECLASS;
 		if (_jojoForest == null) _jojoForest = Encounters.build({
 			name  : "jojo",
 			call  : jojoEncounterFn,
@@ -57,7 +57,7 @@
 				);
 			},
 			chance: function ():Number {
-				if (flags[kFLAGS.JOJO_STATUS] >= 2) return game.commonEncounters.furriteMod();
+				if (flags[kFLAGS.JOJO_STATUS] >= 2) return GAME.commonEncounters.furriteMod();
 				return 1;
 			}
 		});
