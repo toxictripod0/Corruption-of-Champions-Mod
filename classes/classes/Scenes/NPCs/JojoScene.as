@@ -68,8 +68,6 @@
 		public function timeChange():Boolean
 		{
 			pregnancy.pregnancyAdvance();
-			//if (flags[kFLAGS.JOJO_BIMBO_STATE] >= 3) trace("\nJoy time change: Time is " + getGame().time.hours + ", incubation: " + pregnancy.incubation);
-			//else trace("\nJojo time change: Time is " + getGame().time.hours + ", butt incubation: " + pregnancy.buttIncubation);
 			if (flags[kFLAGS.JOJO_COCK_MILKING_COOLDOWN] > 0) flags[kFLAGS.JOJO_COCK_MILKING_COOLDOWN]--;
 			if (player.hasStatusEffect(StatusEffects.NoJojo)) player.removeStatusEffect(StatusEffects.NoJojo);
 			if (pregnancy.isButtPregnant && pregnancy.buttIncubation == 0) {
@@ -1181,8 +1179,6 @@ public function jojoFollowerMeditate():void {
 		}
 
 		public function jojoRape(postCombat:Boolean = false):void {
-			//trace("jojoRape called");
-			
 			jojoSprite();
 			player.slimeFeed();
 			//Track Jojo rapeage
@@ -1362,7 +1358,6 @@ public function jojoFollowerMeditate():void {
 		
 		private function jojosThirdRape():void {
 			clearOutput();
-			//trace("Monk(3) rape");
 			outputText("It's no wonder the monk's body has betrayed him so thoroughly, his " + monster.cockDescriptShort(0) + " is nearly ten inches long, pulsing with hot need.\n\n");
 			if (player.gender == 1) {
 				outputText("You yank Jojo up from the ground and onto his knees, ");
@@ -2759,7 +2754,6 @@ public function apparantlyJojoDOESlift():void
 	}
 
 	flags[kFLAGS.TIMES_TRAINED_WITH_JOJO]++;
-	//trace(flags[kFLAGS.TIMES_TRAINED_WITH_JOJO]);
 
 	// {If everything is cool}
 	if (player.findPerk(PerkLib.ControlledBreath) < 0 && player.findPerk(PerkLib.CleansingPalm) < 0 && player.findPerk(PerkLib.Enlightened) < 0)
@@ -2774,7 +2768,6 @@ public function apparantlyJojoDOESlift():void
 
 		if (flags[kFLAGS.TIMES_TRAINED_WITH_JOJO] == 5)
 		{
-			//trace("ADDING FIRST PERK");
 			outputText("“<i>Breathing is key.</i>”\n\n");
 			outputText("Jojo’s constantly repeated words resonate within you as you realize you’ve learned to control your breathing. It takes you less time to rest than normal and you feel as though you are bursting with energy because of it.  Your [fullChest]");
 			if (player.biggestTitSize() == 0) outputText(" rises and falls");
@@ -2796,7 +2789,6 @@ public function apparantlyJojoDOESlift():void
 
 		if (flags[kFLAGS.TIMES_TRAINED_WITH_JOJO] == 10)
 		{
-			//trace("ADDING SECOND PERK");
 			outputText("The repeated movements are slowly starting to sink in, your muscles becoming accustomed to Jojo’s training.\n\n");
 			outputText("By the end of the training session with the mouse, you think that you may have picked up something that might help against the denizens of this world.\n\n");
 
@@ -2816,7 +2808,6 @@ public function apparantlyJojoDOESlift():void
 
 		if (flags[kFLAGS.TIMES_TRAINED_WITH_JOJO] >= 16 && player.inte >= 70)
 		{
-			//trace("ADDING THIRD PERK");
 			//{text shows after generic 16th technique training session}
 			outputText("As you finish training you decide to meditate alone; returning to your " + camp.bedDesc() + ", you close your eyes and begin to breathe.  Then the world around you begins to sing.\n\n");
 			outputText("The camp is alive with the sounds of voices on the wind, of the ominous sizzling of the great scar between worlds that is the portal that brought you here.  You feel open to the universe as if it were a lady in a dress sitting next to you, that you could easily reach out and touch.  You feel liberated and free despite the fact that you are not moving a muscle.  You are ready for anything but expecting nothing.  You are neither thinking nor dreaming, you simply are.\n\n");
