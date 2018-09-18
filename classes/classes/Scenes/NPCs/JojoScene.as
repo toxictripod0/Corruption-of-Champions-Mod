@@ -1137,9 +1137,6 @@ public function jojoFollowerMeditate():void {
 			doNext(jojoCamp);
 		}
 
-// Hurray var/function hoisting.
-//this.semiglobalReferencer.jojoRape = jojoRape;
-
 		public function jojoAtCampRape():void {
 			jojoSprite();
 			player.removeStatusEffect(StatusEffects.JojoNightWatch);
