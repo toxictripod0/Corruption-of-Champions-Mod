@@ -1190,6 +1190,8 @@ public function jojoFollowerMeditate():void {
 				player.createStatusEffect(StatusEffects.EverRapedJojo, 1, 0, 0, 0);
 			else player.addStatusValue(StatusEffects.EverRapedJojo, 1, 1);
 			switch (flags[kFLAGS.JOJO_STATUS]) {
+				case 0:
+					// deliberate fall through to handle unmolested jojo
 				case 1:
 					jojosFirstRape();
 					break;

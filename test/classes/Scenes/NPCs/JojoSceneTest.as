@@ -19,9 +19,11 @@ package classes.Scenes.NPCs{
     public class JojoSceneTest {
 		private const ALWAYS_EXPECTED_TEXT:String = "You crawl further up his body and grin down at him as you press";
 		private const WET_ONLY_EXPECTED_TEXT:String = "You moan as he works, your juices flowing liberally across his muzzle and into his";
+		private const JOJO_FIRST_RAPE_TEXT:String = "You pretend to agree, and follow Jojo into the woods.  You bide your time, waiting for him to relax.";
 		
         private var cut:JojoSceneForTest;
 		private var player:Player;
+		private var output:DummyOutput;
 		
 		[BeforeClass]
 		public static function setUpClass():void {
@@ -29,9 +31,11 @@ package classes.Scenes.NPCs{
 		}
          
         [Before]
-        public function setUp():void {  
-			cut = new JojoSceneForTest(new PregnancyProgression(), new DummyOutput());
+        public function setUp():void {
+			output = new DummyOutput();
+			cut = new JojoSceneForTest(new PregnancyProgression(), output);
 			player = new Player();
+			
 			kGAMECLASS.player = player;
 			kGAMECLASS.flags[kFLAGS.JOJO_STATUS] = 1;
         }
@@ -81,6 +85,16 @@ package classes.Scenes.NPCs{
 			
 			assertThat(cut.isJojoCorrupted(), equalTo(true));
 		}
+		
+		[Test(description="Check that the first rape scene is triggered if Jojo's state is 0")]
+		public function jojoState0RapeScene(): void
+		{
+			kGAMECLASS.flags[kFLAGS.JOJO_STATUS] = 0;
+			
+			cut.testJojoRape();
+			
+			assertThat(cut.collectedOutput, hasItem(startsWith(JOJO_FIRST_RAPE_TEXT)));
+		}
 	}
 }
 
@@ -98,6 +112,11 @@ class JojoSceneForTest extends JojoScene {
 	
 	public function testCorruptJojoVaginalSmother():void {
 		corruptJojoVaginalSmother();
+	}
+	
+	public function testJojoRape():void
+	{
+		jojoRape();
 	}
 	
 	override protected function outputText(output:String):void {
