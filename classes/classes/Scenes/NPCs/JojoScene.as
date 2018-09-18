@@ -1984,11 +1984,11 @@ public function lowCorruptionJojoEncounter():void
 
 	outputText("Tired of exploring the forest for the moment, you decide to head back to camp.  Not feeling like taking the scenic route, you move to step through some bushes, but immediately your mind registers a yelp.  The instant you move to look at the source of the noise, a white blur smacks you right on your head.");
 
-	if (player.tou >= 50 && player.isBiped() == true)
+	if (player.tou >= 50 && player.isBiped())
 	{
 		outputText("  You take a few steps back, momentarily dazed.  Shaking it off, you ready your [weapon] and assume a fighting stance.\n\n");
 	}
-	else if (player.tou < 50 && player.isBiped() == false)
+	else if (player.tou < 50 && player.isBiped())
 	{
 		outputText("The force of the blow knocks you flat on your [ass].  Shaking it off, you immediately climb to your feet and take on a fighting stance.\n\n");
 	}
