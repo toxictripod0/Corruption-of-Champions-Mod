@@ -991,12 +991,12 @@ private function amilyTeachingJojoBJ():void {
 	else outputText(" Do you want to watch them fuck?");
 	
 	menu();
-	if (player.hasCock()) addButton(0, "Demonstrate", BJRidesGETYOUONE);
+	if (player.hasCock()) addButton(0, "Demonstrate", amilyDemonstratesBlowjob);
 	addButton(1, "Watch", amilyAndJojoFuck);
 	addButton(4, "Leave", playerMenu);
 }
 //Scene 1 Result: Male Gets BJ (Z)
-private function BJRidesGETYOUONE():void {
+private function amilyDemonstratesBlowjob():void {
 	amilyScene.amilySprite();
 	clearOutput();
 	outputText("You step into view and knowingly ask just what all the fuss is about.  Amily meekly prostrates herself before you, apologizing, \"<i>I'm sorry, [master], I merely wanted to help your boyslut learn to satisfy your needs better.</i>\"  You wait, just long enough to make her nervous.  The pregnant pause hangs in the air as both your murine whores look increasingly worried, their large, radar-like ears twitching fitfully about as they await your response.  Laughing, you undo your [armor] and ask Amily how she planned to teach without a proper 'teaching tool'.");
