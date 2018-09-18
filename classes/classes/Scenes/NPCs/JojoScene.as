@@ -3043,7 +3043,6 @@ private function getAnallyFuckedByMouseYouSlut():void {
 }
 
 private function getVagFuckedByMouse():void {
-	var isVirgin:Boolean = (player.looseness(true) == 0);
 	jojoSprite();
 	clearOutput();
 	outputText("You finally make up your mind; you want his mouse-cock in your [vagina]. " + player.clothedOrNaked("You remove your [armor] and ") + "and Jojo " + (flags[kFLAGS.JOJO_SEX_COUNTER] < 4 ? "hesitantly " : "") + " strips out of his robe, revealing his naked form.");
