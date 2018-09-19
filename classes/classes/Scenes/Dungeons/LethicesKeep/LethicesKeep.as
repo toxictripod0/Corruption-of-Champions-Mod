@@ -211,19 +211,16 @@ package classes.Scenes.Dungeons.LethicesKeep {
 			getGame().dungeons.rooms[tRoom.RoomName] = tRoom;
 		}
 		//Entrance/Exit
-		public function discoverD3():Boolean {
-			if (flags[kFLAGS.D3_DISCOVERED] == 0 && player.hasKeyItem("Zetaz's Map") >= 0 && rand(5) == 0) {
-				flags[kFLAGS.D3_DISCOVERED] = 1;
-				clearOutput();
-				outputText(images.showImage("stronghold-entrance"));
-				outputText("During your exploration, you come across a familiar looking patch of ground. In fact... you pull out Zetaz’s map, your eyes widening as they realize what you’ve just found: Lethice’s Keep. You follow a concealed trail past several harpy nests directly to an almost invisible cave entrance. You never would’ve found it without the map.");
-				outputText("\n\n<b>You’ve discovered a hidden entrance to Lethice’s lair. It can be accessed from the Dungeons submenu in the future.</b>");
-				outputText("\n\nDo you step inside, or wait until you’re better prepared?");
-				menu();
-				addButton(0, "Enter", enterD3);
-				addButton(1, "Leave", camp.returnToCampUseOneHour);
-				return true;
-			} return false;
+		public function discoverD3():void {
+			flags[kFLAGS.D3_DISCOVERED] = 1;
+			clearOutput();
+			outputText(images.showImage("stronghold-entrance"));
+			outputText("During your exploration, you come across a familiar looking patch of ground. In fact... you pull out Zetaz’s map, your eyes widening as they realize what you’ve just found: Lethice’s Keep. You follow a concealed trail past several harpy nests directly to an almost invisible cave entrance. You never would’ve found it without the map.");
+			outputText("\n\n<b>You’ve discovered a hidden entrance to Lethice’s lair. It can be accessed from the Dungeons submenu in the future.</b>");
+			outputText("\n\nDo you step inside, or wait until you’re better prepared?");
+			menu();
+			addButton(0, "Enter", enterD3);
+			addButton(1, "Leave", camp.returnToCampUseOneHour);
 		}
 
 		public function enterD3():void {

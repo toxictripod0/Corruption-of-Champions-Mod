@@ -46,7 +46,7 @@ package classes.Scenes.Areas {
 					Encounters.group(game.commonEncounters, {
 						name: "d3",
 						when: function ():Boolean {
-							return flags[kFLAGS.D3_DISCOVERED] == 0 && player.hasKeyItem("Zetaz's Map") >= 0;
+							return flags[kFLAGS.D3_DISCOVERED] == 0 && player.hasKeyItem("Zetaz's Map") >= 0 && rand(5) == 0;
 						},
 						call: game.lethicesKeep.discoverD3
 					}, {

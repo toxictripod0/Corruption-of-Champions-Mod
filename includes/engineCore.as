@@ -198,16 +198,24 @@ public function dynStats(... args):Object {
 /**
  * Returns true if you're on SFW mode.
  */
-public function doSFWloss():Boolean {
-	clearOutput();
+public function doSFWloss(forceClearOutput:Boolean = false):Boolean
+{
+	if (forceClearOutput || flags[kFLAGS.SFW_MODE] > 0) {
+		clearOutput();
+	}
+
 	if (flags[kFLAGS.SFW_MODE] > 0) {
-		if (player.HP <= 0) outputText("You collapse from your injuries.");
-		else outputText("You collapse from your overwhelming desires.");
-		if (combat.inCombat) combat.cleanupAfterCombat();
-		else output.doNext(camp.returnToCampUseOneHour)
+		outputText("You collapse from your " + (player.HP <= 0 ? "injuries." : "overwhelming desires."));
+
+		if (combat.inCombat) {
+			combat.cleanupAfterCombat();
+		} else {
+			output.doNext(camp.returnToCampUseOneHour)
+		}
 		return true;
 	}
-	else return false;
+
+	return false;
 }
 
 public function isPeaceful():Boolean {
