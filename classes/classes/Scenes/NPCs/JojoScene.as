@@ -1988,7 +1988,7 @@ public function lowCorruptionJojoEncounter():void
 	{
 		outputText("  You take a few steps back, momentarily dazed.  Shaking it off, you ready your [weapon] and assume a fighting stance.\n\n");
 	}
-	else if (player.tou < 50 && player.isBiped())
+	else if (player.tou < 50 && !player.isBiped())
 	{
 		outputText("The force of the blow knocks you flat on your [ass].  Shaking it off, you immediately climb to your feet and take on a fighting stance.\n\n");
 	}
