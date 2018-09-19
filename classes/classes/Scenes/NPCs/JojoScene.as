@@ -1190,6 +1190,8 @@ public function jojoFollowerMeditate():void {
 				player.createStatusEffect(StatusEffects.EverRapedJojo, 1, 0, 0, 0);
 			else player.addStatusValue(StatusEffects.EverRapedJojo, 1, 1);
 			switch (flags[kFLAGS.JOJO_STATUS]) {
+				case 0:
+					// deliberate fall through to handle unmolested jojo
 				case 1:
 					jojosFirstRape();
 					break;
@@ -1202,8 +1204,11 @@ public function jojoFollowerMeditate():void {
 				case 4:
 					jojosFourthRape();
 					break;
-				default:
+				case 5:
 					jojosFifthRape();
+					break;
+				default: 
+					outputText("<b>This is a bug! Please report it!</b> Jojo rape with state" + flags[kFLAGS.JOJO_STATUS]);
 			}
 			doNext(camp.returnToCampUseOneHour);
 			if (postCombat) combat.cleanupAfterCombat();
