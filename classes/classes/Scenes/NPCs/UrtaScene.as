@@ -2130,8 +2130,8 @@ private function urtasCoochiNeedsFuckedLove():void {
 	urtaSprite();
 	urtaLove(1.5);
 	flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] = 2 + rand(2);
-	var x:Number = player.cockThatFits(urtaCapacity());
-	if (x < 0) x = 0;
+	var largestUsableCockIndex:Number = player.cockThatFits(urtaCapacity());
+	if (largestUsableCockIndex < 0) largestUsableCockIndex = 0;
 	clearOutput();
 	outputText(images.showImage("urta-fills-her-condom"));
 	outputText("Urta gives you a knowing look as she spreads her legs and lifts her bulging sack to expose the glistening black lips of her sex.  She asks with a sultry expression, \"<i>Is that what you need, lover, a slick, wet cock-sleeve to sheath yourself in?</i>\"\n\n");
@@ -2142,13 +2142,13 @@ private function urtasCoochiNeedsFuckedLove():void {
 	if (player.cockTotal() > 1) outputText("s");
 	outputText(".\n\n");
 
-	if (player.cockArea(x) > urtaCapacity()) {
+	if (player.cockArea(largestUsableCockIndex) > urtaCapacity()) {
 		outputText("Urta whines a little as you press forward and scooches backwards, \"<i>I'm sorry " + player.mf("stud","baby") + ", you're just too big for my poor little pussy to take.  Maybe we could do something else?</i>\"\n\n");
 		doNext(urtaHomeLuvLuvinsMenu);
 		return;
 	}
 	outputText(images.showImage("urta-home-male-fuck"));
-	outputText("You push forwards, slowly sliding into the moist tunnel, feeling its warmth covering every inch of your " + player.cockDescript(x) + ". It caresses and squeezes you, surrounding you in perfect pleasure.  Urta stretches out languidly, her engorged horse-cock flopping down between her sizable breasts as it reaches a twitching, trembling hardness.  You bottom out, feeling the ");
+	outputText("You push forwards, slowly sliding into the moist tunnel, feeling its warmth covering every inch of your " + player.cockDescript(largestUsableCockIndex) + ". It caresses and squeezes you, surrounding you in perfect pleasure.  Urta stretches out languidly, her engorged horse-cock flopping down between her sizable breasts as it reaches a twitching, trembling hardness.  You bottom out, feeling the ");
 	if (player.hasSheath()) outputText("sensitive skin of your sheath rubbing her exterior pussy-lips");
 	else outputText("wetness of her pussy rubbing against your groin");
 	outputText(". Urta moans, \"<i>By Marae, you make my cunt feel good, lover.  I'm getting so wet... fuuuck, I'm going to need to change my furs and sheets again.</i>\"\n\n");
@@ -2164,10 +2164,10 @@ private function urtasCoochiNeedsFuckedLove():void {
 	outputText(".  You grab her ass and slam in a final time, reaching your own peak.\n\n");
 
 	//[DAWG]
-	if (player.hasKnot(x)) {
+	if (player.hasKnot(largestUsableCockIndex)) {
 		outputText("Your knot flares wide, locking itself inside her convulsing cunt as your seed begins pumping into her womb.  Urta cries, \"<i>oooooooOOOOHHhhh YESSSS... You've plugged my cunt with your doggie dick!  It's squirting and pumping into my wooooomb...</i>\"\n\n");
 
-		outputText("You rock back and forth, unable to pull out yet stimulating the sensitive bulb of your knot.  Your " + player.cockDescript(x) + " dumps its gooey cargo directly into your lover's stopped-up sex with barely audible squishing noises.  ");
+		outputText("You rock back and forth, unable to pull out yet stimulating the sensitive bulb of your knot.  Your " + player.cockDescript(largestUsableCockIndex) + " dumps its gooey cargo directly into your lover's stopped-up sex with barely audible squishing noises.  ");
 		if (player.cumQ() < 250) {}
 		else if (player.cumQ() < 700) outputText("Her belly puffs up slightly by the time you finish, thanks to your body's copious cum production.  ");
 		else if (player.cumQ() < 1000) outputText("Her belly swells larger and larger as you continue to pump your seemingly endless seed into her.  Urta groans, looking a few months pregnant by the time your overproductive " + Appearance.cockNoun(CockTypesEnum.HUMAN) + " stops spewing inside her.  ");
@@ -2176,7 +2176,7 @@ private function urtasCoochiNeedsFuckedLove():void {
 			if (player.cumQ() < 3000) outputText("By the time you finish, she looks VERY pregnant and is moaning with a mixture of pleasure and discomfort.  ");
 			else {
 				outputText("Your seemingly never-ending orgasm pumps her up until she looks on the verge of giving birth, and you just keep going.  The pressure builds and Urta moans in discomfort and pleasure.  Eventually the pressure is too much, and your cum begins spraying out around your knot, soaking the pair of you as you both continue to cum hard.  ");
-				if (player.cumQ() > 5000) outputText("Not content with such an easy release, your " + player.cockDescript(x) + " unloads the last of its cream until the bed and floor are both covered under inches of your canine cum.  ");
+				if (player.cumQ() > 5000) outputText("Not content with such an easy release, your " + player.cockDescript(largestUsableCockIndex) + " unloads the last of its cream until the bed and floor are both covered under inches of your canine cum.  ");
 			}
 		}
 		outputText("You finally feel your " + Appearance.cockNoun(CockTypesEnum.HUMAN) + "'s knot shrinking and pull free with a loud and messy pop.  ");
@@ -2184,9 +2184,9 @@ private function urtasCoochiNeedsFuckedLove():void {
 		outputText("Urta's glazed pussy-lips clench reflexively at their sudden emptiness and you hear a very satisfied sigh from the far end of the bed.\n\n");
 	}
 	//[HORSE]
-	else if (player.cocks[x].cockType == CockTypesEnum.HORSE) {
+	else if (player.cocks[largestUsableCockIndex].cockType == CockTypesEnum.HORSE) {
 		outputText("You feel your flare filling with blood as it ");
-		if (player.cocks[x].cockLength >= 10) outputText("prods against Urta's cervix.");
+		if (player.cocks[largestUsableCockIndex].cockLength >= 10) outputText("prods against Urta's cervix.");
 		else outputText("seats itself deep inside Urta's passage.");
 		outputText("  Your crotch muscles clench in an unconscious rhythm as orgasm wracks your body.  You begin spurting hard inside her, splattering it into her cervix, even allowing it to flow into her womb.  Urta cries, \"<i>ooooOOOHHHH YESSS... is this what you feel when I cum inside you?  YesYESYES- Ohhh I can feel the flare stroking and flexing inside me...</i>\"\n\n");
 
@@ -2198,7 +2198,7 @@ private function urtasCoochiNeedsFuckedLove():void {
 			outputText("Her belly swells larger and larger, bloating out as you blast thick torrents of seed inside her, stuffing her completely.  Every squirt of the stuff is met with a leaking back-blast that soaks her thighs and bed in your jism.  ");
 			if (player.cumQ() < 3000) outputText("By the time you've finished, she looks heavily pregnant and cum soaks the bed.  ");
 			else outputText("Your seemingly endless orgasm pumps more and more into her until she looks ready to give birth, and  you just keep going.  She moans in pleasure and discomfort as each blast of your horse-cum forces thick runners to squirt from between her thighs.  ");
-			if (player.cumQ() > 5000) outputText("Not content with such an easy release, your " + player.cockDescript(x) + " unloads the last of its cream until the bed and floor are covered in several inches of thick equine cum.  ");
+			if (player.cumQ() > 5000) outputText("Not content with such an easy release, your " + player.cockDescript(largestUsableCockIndex) + " unloads the last of its cream until the bed and floor are covered in several inches of thick equine cum.  ");
 		}
 		outputText("You finally feel your flare returning to normal and pull out with a prolonged 'sluuuuurp'.  ");
 		if (player.cumQ() >= 2000) outputText("Spunk rushes out in a torrent, splattering everywhere.  ");
