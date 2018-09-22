@@ -16,6 +16,8 @@ package coc.view {
 	import flash.events.MouseEvent;
 	import flash.text.Font;
 	import flash.text.TextField;
+	import flash.text.TextFieldAutoSize;
+	import flash.text.TextFormat;
 
 	public class CoCButton extends Block {
 
@@ -48,9 +50,11 @@ package coc.view {
 			});
 			_labelField        = addTextField({
 				width            : MainView.BTN_W,
-				embedFonts       : true,
-				y                : 8,
 				height           : MainView.BTN_H - 8,
+				//x                : 0,
+				y                : 8,
+				embedFonts       : true,
+				autoSize         : TextFieldAutoSize.CENTER,
 				defaultTextFormat: {
 					font : ButtonLabelFontName,
 					size : 18,
@@ -62,7 +66,12 @@ package coc.view {
 			this.buttonMode    = true;
 			this.visible       = true;
 			UIUtils.setProperties(this, options);
-
+			if (this.width < 150) { //A workaround for squashed text on narrower buttons.
+				this._labelField.width = this.width;
+				this._labelField.x = -(this._labelField.width / 7);
+				this._labelField.scaleX = (MainView.BTN_W / this._labelField.width) - 0.15; 
+			} 
+			
 			this.addEventListener(MouseEvent.ROLL_OVER, this.hover);
 			this.addEventListener(MouseEvent.ROLL_OUT, this.dim);
 			this.addEventListener(MouseEvent.CLICK, this.click);
