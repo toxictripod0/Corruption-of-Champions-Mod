@@ -126,6 +126,7 @@ package classes.Scenes
 			switch(item) {
 				case weapons.BBSWORD:
 				case weapons.B_SWORD:
+				case weapons.B_SCARB:
 				case weapons.U_SWORD:
 				case weapons.S_BLADE:
 				case weapons.JRAPIER:
@@ -347,6 +348,10 @@ package classes.Scenes
 					gemCost = 2000;
 					if (confirmation) player.destroyItems(consumables.P_PEARL, 1);
 					itemToGet = weapons.DPSWORD;
+					break;
+				case weapons.B_SCARB:
+					gemCost = 1500;
+					itemToGet = weapons.SCARBLD;
 					break;
 				case weapons.U_SWORD:
 					gemCost = 2000;
