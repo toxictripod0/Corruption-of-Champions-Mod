@@ -266,6 +266,11 @@ package classes
 		public function set cockType(value:CockTypesEnum):void 
 		{
 			_cockType = value;
+
+			if(!supportsKnot(value)) {
+				this.knotMultiplier = 1;
+				LOGGER.debug("Cock type {0} does not support knots, setting knot knotMultiplier to {1}", value, knotMultiplier);
+			}
 		}
 		
 		public function hasKnot():Boolean
