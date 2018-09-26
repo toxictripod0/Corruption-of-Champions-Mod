@@ -12,12 +12,15 @@ package classes
 		
 		private static const SERIALIZATION_VERSION:int = 1;
 		
+		private static const OBJECT_NOT_FOUND:int = -1;
+
 		public static const MAX_LENGTH:Number = 9999.9;
 		public static const MAX_THICKNESS:Number = 999.9;
 		
 		private var _cockLength:Number;
 		private var _cockThickness:Number;		
 		private var _cockType:CockTypesEnum;	//See CockTypesEnum.as for all cock types
+		private static const cockTypesWithKnots:Vector.<CockTypesEnum> = new <CockTypesEnum> [CockTypesEnum.DOG, CockTypesEnum.FOX, CockTypesEnum.WOLF, CockTypesEnum.DRAGON];
 		
 		//Used to determine thickness of knot relative to normal thickness
 		private var _knotMultiplier:Number;
@@ -223,7 +226,17 @@ package classes
 			}
 			LOGGER.debug("thickenCock called and thickened by: {0}", amountGrown);
 			return amountGrown;
-		}	
+		}
+
+		/**
+		 * Check if the given cockType supports a knot.
+		 * @param cockType the cockType to check
+		 * @return true if the cockType supports a knot
+		 */
+		public static function supportsKnot(cockType:CockTypesEnum):Boolean
+		{
+			return cockTypesWithKnots.indexOf(cockType) != OBJECT_NOT_FOUND;
+		}
 		
 		public function get cockLength():Number 
 		{
