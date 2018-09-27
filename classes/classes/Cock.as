@@ -29,7 +29,9 @@ package classes
 		 */
 		private static const cockTypesWithKnots:Vector.<CockTypesEnum> = new <CockTypesEnum> [CockTypesEnum.DOG, CockTypesEnum.FOX, CockTypesEnum.WOLF, CockTypesEnum.DRAGON];
 		
-		//Used to determine thickness of knot relative to normal thickness
+		/**
+		 * Used to determine thickness of knot relative to normal thickness
+		 */
 		private var _knotMultiplier:Number;
 		
 		//Piercing info
