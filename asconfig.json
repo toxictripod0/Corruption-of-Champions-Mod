@@ -3,7 +3,8 @@
     "config": "flex",
     "compilerOptions": {
         "library-path": [
-            "lib/bin"
+            "lib/bin",
+            "lib/bin/flexunit/"
         ],
         "source-path": [
             "classes",
