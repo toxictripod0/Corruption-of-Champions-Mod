@@ -6,7 +6,8 @@
             "lib/bin"
         ],
         "source-path": [
-            "classes"
+            "classes",
+            "test"
         ],
         "output": "target/Main.swf",
         "define": [
