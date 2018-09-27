@@ -187,5 +187,21 @@ package classes{
 
 			assertThat(cut.knotMultiplier, equalTo(DEFAULT_KNOT_MULTIPLIER));
 		}
+		
+		[Test]
+		public function checkHasKnot():void
+		{
+			cut.knotMultiplier = KNOT_MULTIPLIER;
+
+			assertThat(cut.hasKnot(), equalTo(true));
+		}
+		
+		[Test]
+		public function checkHasNoKnot():void
+		{
+			cut.knotMultiplier = Cock.KNOTMULTIPLIER_NO_KNOT;
+
+			assertThat(cut.hasKnot(), equalTo(false));
+		}
 	}
 }
