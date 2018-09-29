@@ -274,7 +274,7 @@ package classes
 		{
 			_cockType = value;
 
-			if(!supportsKnot(value)) {
+			if (!supportsKnot(value) && this.knotMultiplier !== KNOTMULTIPLIER_NO_KNOT) {
 				this.knotMultiplier = KNOTMULTIPLIER_NO_KNOT;
 				LOGGER.debug("Cock type {0} does not support knots, setting knot knotMultiplier to {1}", value, knotMultiplier);
 			}
