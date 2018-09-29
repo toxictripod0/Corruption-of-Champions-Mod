@@ -18,6 +18,7 @@ package classes.lists
 			CockTypesEnum.FOX,
 			CockTypesEnum.WOLF,
 			CockTypesEnum.DRAGON,
+			CockTypesEnum.DISPLACER,
 		];
 	}
 }

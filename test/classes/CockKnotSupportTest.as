@@ -21,6 +21,7 @@ package classes{
 			[CockTypesEnum.DRAGON, 		true],
 			[CockTypesEnum.FOX, 		true],
 			[CockTypesEnum.WOLF, 		true],
+			[CockTypesEnum.DISPLACER, 	true],
 
 			[CockTypesEnum.HUMAN, 		false],
 			[CockTypesEnum.HORSE, 		false],
@@ -30,7 +31,6 @@ package classes{
 			[CockTypesEnum.LIZARD, 		false],
 			[CockTypesEnum.ANEMONE, 	false],
 			[CockTypesEnum.KANGAROO, 	false],
-			[CockTypesEnum.DISPLACER, 	false],
 			[CockTypesEnum.BEE, 		false],
 			[CockTypesEnum.PIG, 		false],
 			[CockTypesEnum.AVIAN, 		false],
