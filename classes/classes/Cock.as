@@ -361,8 +361,8 @@ package classes
 		{
 			this.cockThickness = relativeRootObject.cockThickness;
 			this.cockLength = relativeRootObject.cockLength;
-			this.cockType = CockTypesEnum.ParseConstantByIndex(relativeRootObject.cockType);
 			this.knotMultiplier = relativeRootObject.knotMultiplier;
+			this.cockType = CockTypesEnum.ParseConstantByIndex(relativeRootObject.cockType);
 			this.sock = relativeRootObject.sock;
 			
 			this.pierced = relativeRootObject.pierced;
