@@ -1405,7 +1405,19 @@ package classes.Scenes.Monsters
 			}
 			//HP or insta-loss
 			else {
-				outputText("\n<b>You fall, defeated by the imp!</b>\nThe last thing you see before losing consciousness is the creature undoing its crude loincloth to reveal a rather disproportionately-sized member.");
+				outputText("\n<b>You fall, defeated by the imp!</b>\nThe last thing you see before losing consciousness is the creature undoing its crude loincloth to reveal a "+ monster.cockDescript() + ". ");
+				outputText("Before completly slipping into the darkness, you feel a " + monster.cockHead() + " pressing against your ")
+				
+				if (player.isFemaleOrHerm()) {
+					outputText(player.vaginaDescript());
+					player.cuntChange(monster.cockArea(0), false);
+					player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP);
+				} else {
+					outputText(player.assholeDescript());
+					player.buttChange(monster.cockArea(0), false);
+				}
+				
+				outputText(".");
 			}
 			combat.cleanupAfterCombat();
 		}
