@@ -3,6 +3,7 @@ package classes
 	import classes.CockTypesEnum;
 	import classes.internals.Serializable;
 	import classes.internals.Utils;
+	import classes.lists.GenitalLists;
 	import mx.logging.ILogger;
 	import classes.internals.LoggerFactory;
 
@@ -21,13 +22,6 @@ package classes
 		private var _cockLength:Number;
 		private var _cockThickness:Number;		
 		private var _cockType:CockTypesEnum;	//See CockTypesEnum.as for all cock types
-		
-		/**
-		 * Contains cock types that support knots.
-		 * This is used for the supportsKnot method and with that to decide if a knot is reset when the cock type changes
-		 * e.g. player.cocks[0].cockType = CockTypesEnum.HORSE
-		 */
-		private static const cockTypesWithKnots:Vector.<CockTypesEnum> = new <CockTypesEnum> [CockTypesEnum.DOG, CockTypesEnum.FOX, CockTypesEnum.WOLF, CockTypesEnum.DRAGON];
 		
 		/**
 		 * Used to determine thickness of knot relative to normal thickness
@@ -244,7 +238,7 @@ package classes
 		 */
 		public static function supportsKnot(cockType:CockTypesEnum):Boolean
 		{
-			return cockTypesWithKnots.indexOf(cockType) != OBJECT_NOT_FOUND;
+			return GenitalLists.KNOTTED_COCKS.indexOf(cockType) != OBJECT_NOT_FOUND;
 		}
 		
 		public function get cockLength():Number 
