@@ -313,8 +313,7 @@ package classes.Scenes.Areas.Forest
 			player.buttChange(25,true,true,false);
 			
 			//PC asshole is virgin/tight: 
-			if (player.analCapacity() < 20) outputText("  You moan again from the pain and clamp down, causing your captor to
-		shudder from the sensation of your [asshole]'s tightness.  Once the floral creature regains her composure, she begins to pump in and out of your ass at a gradually faster pace.");
+			if (player.analCapacity() < 20) outputText("  You moan again from the pain and clamp down, causing your captor to shudder from the sensation of your [asshole]'s tightness.  Once the floral creature regains her composure, she begins to pump in and out of your ass at a gradually faster pace.");
 			//PC asshole is loose:  
 			else if (player.analCapacity() < 60) outputText("  Her bulbous cock works its way into your [asshole] with some difficulty, but as it continues you feel the walls of your anus fit snugly around her, causing her to shudder from the sensation.  The vibrations from her trembling can be felt in your ass, traveling through your pelvis and into the rest of your body...  Once the plant woman regains her composure, she begins to pump in and out of your ass at a gradually faster pace.");
 			//PC asshole is gaping: Her member slides in with no resistance whatsoever.  
