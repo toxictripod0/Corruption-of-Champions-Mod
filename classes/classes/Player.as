@@ -2152,11 +2152,13 @@
 			var wasVirgin:Boolean = vaginas[0].virgin;
 			var stretched:Boolean = cuntChangeNoDisplay(cArea);
 			var devirgined:Boolean = wasVirgin && !vaginas[0].virgin;
-			if (devirgined){
+			
+			if (display && devirgined){
 				if (spacingsF) outputText("  ");
 				outputText("<b>Your hymen is torn, robbing you of your virginity.</b>");
 				if (spacingsB) outputText("  ");
 			}
+			
 			//STRETCH SUCCESSFUL - begin flavor text if outputting it!
 			if (display && stretched) {
 				//Virgins get different formatting
