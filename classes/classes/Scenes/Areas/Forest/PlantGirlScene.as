@@ -1121,8 +1121,13 @@ package classes.Scenes.Areas.Forest
 			//[If cock is shorter than 48 inches]
 			if (player.cocks[x].cockLength < 48) {
 				outputText("\n\n\"<i>Hmmrph</i>\", you hear the plant girl grunt.  You pause and wonder what creature is complaining about.  Her hand darts out, grasps your ");
-				if (player.balls > 0) "[sack]");
-				else outputText(nippleDescript(0));
+				
+				if (player.balls > 0) {
+					outputText("[sack]");
+				} else {
+					outputText(nippleDescript(0));
+				}
+				
 				outputText(" and begins to squeeze tighter and tighter.  “Owww! Owww! Okay, Okay! I get it!” you cry out as you once again ram your " + player.cockDescript(x) + " down her throat.  The plant woman responds by massaging your ");
 				if (player.balls > 0) outputText("balls");
 				else outputText("nipples");
