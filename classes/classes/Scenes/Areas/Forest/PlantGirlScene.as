@@ -1008,8 +1008,15 @@ package classes.Scenes.Areas.Forest
 			else doNext(camp.returnToCampUseOneHour);
 		}
 
-		//[Victory: Vaginal w/ cock (corrupted), Vc 1.1] 
-		public function victoryOverPlantGalWithPCCockCorrupted():void {
+		//[Yes] - goofuck
+		public function corruptDomWinFuckGooGal():void {
+			clearOutput();
+			outputText("Taking the slimy mass that is your lower body, you push against her tight ass and let it ooze into her anus.  The wet and sloppy intrusion at her pucker causes a cry of fulfilled desire to escape from her mouth.  Her tongue - not content with being the odd one out - hangs past her open mouth as she giggles like a whore, the creature overwhelmed and utterly obedient to your desires as you fuck her roughly and cause her to leak her sexual fluids like a boat with a hole in it.");
+			victoryOverPlantGalWithPCCockCorrupted(false);
+		}
+		
+				//[Victory: Vaginal w/ cock (corrupted), Vc 1.1] 
+		public function victoryOverPlantGalWithPCCockCorruptedStart():void {
 			clearOutput();
 			outputText("You gloat down at your defeated foe and laugh at her audacity to try and force you to fuck her.  With a devilish smile on your face, you remark to her that things didn't work out the way she planned.  The plant woman, on all fours, turns her head towards you and looks at you with a desperate, fearful expression on her face.  You continue as you tell her that it's time she learned a valuable lesson about trying to have her way with you.  The plant woman can't understand what you are saying, but the malice that radiates from you is clear enough.  You grab an assortment of vines from the bush behind you and begin to wrap them around the feminine creature.  She struggles, unsure if what you have planned for her will be pleasurable or painful.  A few twists of vines later, you successfully bind her arms behind her back and then knot her bindings up. You push her ample bottom up in the air and crack a smirk as you disrobe.  The plant woman stares intently at you, now understanding what you plan to do as she coyfully waves her rear in the air.  With little warning, you plunge your " + player.cockDescript(x) + " into her pussy.");
 			outputText("\n\nThe plant woman howls at the sudden intrusion and squirms under you.  As you tower over her, you lower your mouth to her ear.  You maliciously exclaim that she likely had a similar idea and to get ready for the fun part to start.  The creature moans as you slide your " + player.cockDescript(x) + " in and out of her pussy, and you grab her hair and pin her head down against the cold dirt.  Each thrust in her fuck hole makes loud slapping noises as thighs smash off one another, the feeling of dominating this woman driving you forward as you savagely hone her vagina.  You can feel something brushing past your " + player.cockDescript(x) + " with every savage thrust;  Given the nature of this creature, you reckon that the walls of her pussy are similar to that of the barbed internode on a plant without any cutting or pain, pure pleasure instead in their place.  Taking the time to pull out on occasion, you smash her clit with your " + player.cockDescript(x) + " and pinching her nipples in the process.  She cries out in a mix of pain and ecstasy with every strike, and a little more pussy juice runs out of her each time.  You place a few fingers in her mouth, and she begins to suck them sensually in-between moans.  Deciding that slapping her clit has gone on long enough, you ram your " + player.cockDescript(x) + " back into her, soliciting yet another flurry of moans and thrashing.");
@@ -1025,13 +1032,7 @@ package classes.Scenes.Areas.Forest
 			}
 			else victoryOverPlantGalWithPCCockCorrupted(false);	
 		}
-		//[Yes] - goofuck
-		public function corruptDomWinFuckGooGal():void {
-			clearOutput();
-			outputText("Taking the slimy mass that is your lower body, you push against her tight ass and let it ooze into her anus.  The wet and sloppy intrusion at her pucker causes a cry of fulfilled desire to escape from her mouth.  Her tongue - not content with being the odd one out - hangs past her open mouth as she giggles like a whore, the creature overwhelmed and utterly obedient to your desires as you fuck her roughly and cause her to leak her sexual fluids like a boat with a hole in it.");
-			victoryOverPlantGalWithPCCockCorrupted(false);
-		}
-			
+		
 		//End scene for Vc 1.1
 		public function victoryOverPlantGalWithPCCockCorrupted(newl:Boolean = false):void {
 			if (newl) clearOutput();
@@ -1409,9 +1410,9 @@ package classes.Scenes.Areas.Forest
 			flags[kFLAGS.TIMES_GOT_CORRUPT_BJ_ANAL_PLANTGIRL_SCENE]++;
 			doNext(camp.returnToCampUseOneHour);
 		}
-
+		
 		//Victory and Dominant: Fuck her cock w/ your pussy (light side)
-		public function defeatPlantgirlBlowAndButtfuckPure():void {
+		public function defeatPlantgirlBlowAndButtfuckPureStart():void {
 			//V 1.6 and D 1.6
 			clearOutput();
 			outputText("With your hands on your hips you " + player.mf("walk","sway"));
