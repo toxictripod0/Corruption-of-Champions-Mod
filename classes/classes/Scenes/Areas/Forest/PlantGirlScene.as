@@ -273,7 +273,7 @@ package classes.Scenes.Areas.Forest
 				outputText(" out of the way.  She's misses, but it's obvious she will not take no for an answer. Looks like you have a fight on your hands...");
 				//(leads to Fight 1.0]
 				startCombat(monster);// TODO create PlantGirl
-				doNext(1);
+				doNext(null); //FIXME was 1
 			}
 		}
 
@@ -418,7 +418,7 @@ package classes.Scenes.Areas.Forest
 			clearOutput();
 			outputText("For whatever reason, you don't want this plant woman's cunt anywhere near your " + player.multiCockDescriptLight() + ".  Pulling your pelvis back, you try to show that you don't want to be mating in the traditional sense.  Stopping her efforts to mount you, she stares at your display and attempts to convince you, through more cock on clit teasing, that you'll enjoy this and to give it a chance.  Your mind is made up however, and you once again attempt to pull away.  Realizing that you are dead set against this the plant woman withdraws and crosses her arms.  The plant woman glares out of the corner of her eye as she rifles her fingers along her forearms... as if she is waiting for you to make up your mind.");
 			//(Taken back to tied sex menu)
-			doNext(9999);
+			doNext(null); // FIXME was 9999
 		}
 
 		//Failure: Straddle fuck 
@@ -506,7 +506,7 @@ package classes.Scenes.Areas.Forest
 			clearOutput();
 			outputText("It may seem she wants to take your [oneCock] and suck on it like a sugar cane, but you aren't keen on her choice of how to pleasure you.  Remaining flaccid, you stare down at the plant woman and tell her you aren't interest in a little oral love for your " + player.multiCockDescriptLight() + ", aware of the fact that she can't understand you.  Despite your words likely sounding like jibberish, the plant woman understands your intent and motions for you to make up your mind; given the slightly annoyed expression on her face, you had better make it quick.");
 			//(taken back to sex menu)
-			doNext(9999);
+			doNext(null); // FIXME was 9999
 		}
 
 		//[Blow me!, TsI: 1.4a] 
@@ -678,7 +678,7 @@ package classes.Scenes.Areas.Forest
 			outputText("Maybe you just don't want to take her back door, but the thought of fucking this creature anally isn't one that sits well with you.  Given that you don't know much about these creatures, any number of things could go wrong if you stuck your " + player.cockDescript(0) + " in her ass.  You attempt to stretch your legs out to catch the ground, but you hover just out of reach.  Your impromptu struggling causes the plant woman to turn around and see what the fuss is all about.  Seeing you trying to get AWAY from her ass confuses the woman of nature.  You make it clear through your limited body language that you are willing to fuck her... maybe... just, not in the ass.");
 			outputText("\n\nCrossing her arms, she rolls her eyes and leaves it up to you on how she will fuck you.");
 			//(leads to tied sex menu)
-			doNext(9999);
+			doNext(null); // FIXME was 9999
 		}
 
 		//[Fuck her ass, or TsI: 1.5a)
@@ -771,7 +771,7 @@ package classes.Scenes.Areas.Forest
 			if (player.hasVagina()) outputText("[clit]");
 			outputText(" that you still want to fool around.  Conveying your preference, you gesture to her that she should... ");
 			//(leads to trapped scene selection)
-			doNext(9999);
+			doNext(null); // FIXME was 9999
 		}
 
 		//[69! pussy, service both, leads to TsI: 1.6a]
@@ -914,7 +914,7 @@ package classes.Scenes.Areas.Forest
 			
 			outputText("don't want to have sex with this bizarre creature, or simply that you aren't in the mood, you thrash wildly in your vine prison and attempt to knock her hands free.  The flabbergasted creature stumbles back in pain as one of her fingers gets caught in your [armor], hissing as she waves her hand around in the air. It seems certain that she's going to give you a solid punch to the face for your efforts... but it never happens.  Instead, the woman of nature look upon you with a quizzical, annoyed look; seemingly as if to ask you what you WOULD like to do.  She even withdraws her appendage back into her body, confused at how you want her to appear; whether sporting a prick is going to be a dealbreaker or not.");
 			//(Player is taken to the TsI sex select screen)
-			doNext(9999);
+			doNext(null); // FIXME was 9999
 		}
 
 		//[Allow her, TsI. 1.7a]
