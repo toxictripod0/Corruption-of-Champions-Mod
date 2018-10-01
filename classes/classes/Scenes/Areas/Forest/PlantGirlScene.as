@@ -2,8 +2,10 @@
 package classes.Scenes.Areas.Forest 
 {
 	import classes.BaseContent;
-	import classes.GlobalFlags.kFLAGS;
 	import classes.StatusEffects;
+	import classes.CockTypesEnum;
+
+	import flash.utils.Dictionary;
 	/**
 	 * ...
 	 * @author ...
@@ -11,8 +13,10 @@ package classes.Scenes.Areas.Forest
 	public class PlantGirlScene extends BaseContent
 	{
 		//Help Wanted
-		
-		
+
+		private var x:int; //FIXME this is a dummy to avoid compile errors due to copy-pasted code.
+		private var y:int; //FIXME this is a dummy to avoid compile errors due to copy-pasted code.
+
 		// D: Defeat | V: Victory | Sd: Sex Dominant | Ss: Sex Submissive | TsI: Trapped submissive
 		
 		public function PlantGirlScene() {}
@@ -1635,4 +1639,13 @@ package classes.Scenes.Areas.Forest
 		*/
 	}
 
+}
+
+/**
+ * This is a kFLAGS dummy to provide consts without messing with the actual flags.
+ */
+class kFLAGS {
+	public static const TIMES_MET_PLANTGIRL:int = -1000;	
+	public static const TIMES_FUCKED_PLANTGIRLS_ASS:int = -1001;	
+	public static const TIMES_GOT_CORRUPT_BJ_ANAL_PLANTGIRL_SCENE:int = -1002;	
 }
