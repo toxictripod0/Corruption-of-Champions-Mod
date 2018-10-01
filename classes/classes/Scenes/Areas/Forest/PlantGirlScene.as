@@ -154,7 +154,7 @@ package classes.Scenes.Areas.Forest
 					outputText("sending blood rushing down to your ");
 					if (player.hasCock()) outputText(multiCockDescriptLight());
 					if (player.gender == 3) outputText(" and ");
-					if (player.hasVagina()) outputText([vagina]);
+					if (player.hasVagina()) outputText("[vagina]");
 					outputText(".  She lowers her other hand down towards your genitalia, and begins to massage ");
 					if (player.gender == 3 || (player.vaginas.length + player.cockTotal() > 1)) outputText("them")
 					else outputText("it");
