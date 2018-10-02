@@ -5,6 +5,8 @@ package classes.Scenes.Areas.Forest
 	import classes.StatusEffects;
 	import classes.CockTypesEnum;
 	import classes.Appearance;
+	import classes.BodyParts.Tongue;
+	import classes.BodyParts.Horns;
 
 	import flash.utils.Dictionary;
 	/**
