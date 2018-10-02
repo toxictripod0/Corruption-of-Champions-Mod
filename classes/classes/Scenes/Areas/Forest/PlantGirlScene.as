@@ -333,7 +333,7 @@ package classes.Scenes.Areas.Forest
 				outputText(player.cockDescript(player.shortestCockIndex()) + " flap");
 				if (player.balls > 0) outputText("s");
 				outputText(" against your thighs as she fucks you harder and harder as her hand finds its way down to your prick");
-				if (player.totalCock() > 1) outputText("s");
+				if (player.totalCocks() > 1) outputText("s");
 				outputText(".  The creature twists and jerks at the head of your cock and works diligently to stimulate your rock hard " + player.multiCockDescriptLight() + ", intent on making you moan out for her.");
 			}
 			//PC has a vagina: 
@@ -1002,7 +1002,7 @@ package classes.Scenes.Areas.Forest
 			outputText(", but looking back at the heap of a woman behind you, you concur that it was totally worth it.");
 			//(scene ends if no injuries were sustained during the fight and HP remained maxed; otherwise, scene goes to V & D 1.1inj. end)
 			//(V & D 1.1inj. end, If wounded/Injured during the fight): 
-			if (player.HP < hpMax()) {
+			if (player.HP < player.maxHP()) {
 				outputText("Upon returning to camp, you notice that some of the wounds the plant creature kissed have actually healed.  You're not sure how exactly this worked, but at least you don't have to put up with too many cut and bruises now.");
 				player.HPChange(50);
 			}
@@ -1186,7 +1186,7 @@ package classes.Scenes.Areas.Forest
 				//Anatomy Check
 				//Testicle check:
 				//([balls]/pelvis)
-				if (player.balls > 0) ouptutText("Your [balls] slap");
+				if (player.balls > 0) outputText("Your [balls] slap");
 				else outputText("Your pelvis slaps");
 				outputText(" against her pussy, causing wet slapping sounds and coating your [sack] liberally with her sexual secretions.  The plant woman moans weakly");
 				if (player.cockTotal() > 1) outputText(" grabs a hold of your penis and guides it to her vagina.");
