@@ -236,6 +236,14 @@ package classes
 		public var impScene:ImpScene;
 		public var mimicScene:MimicScene = new MimicScene();
 		public var succubusScene:SuccubusScene = new SuccubusScene();
+		
+		/**
+		 * DO NOT REMOVE OR COMMENT OUT!
+		 * 
+		 * This definition causes the class to be compiled,
+		 * so breaking changes will cause the build to fail.
+		 */
+		private var plantGirlScene:PlantGirlScene;
 		// Scenes/NPC/
 		public var amilyScene:AmilyScene;
 		public var anemoneScene:AnemoneScene;
