@@ -10,7 +10,6 @@ package classes.Scenes.Monsters
 	
 	public class GoblinQueen extends Goblin
 	{
-		
 		public function GoblinQueen() 
 		{
 			this.a = "the ";
@@ -60,7 +59,5 @@ package classes.Scenes.Monsters
 			this.special3 = null; // FIXME this was 'castspell'
 			checkMonster();
 		}
-		
 	}
-
 }
