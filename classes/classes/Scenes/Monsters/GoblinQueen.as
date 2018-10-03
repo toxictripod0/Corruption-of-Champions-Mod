@@ -57,7 +57,7 @@ package classes.Scenes.Monsters
 							consumables.PURPDYE);
 			this.special1 = goblinDrugAttack;
 			this.special2 = goblinTeaseAttack;
-			this.special3 = castSpell;
+			this.special3 = null; // FIXME this was 'castspell'
 			checkMonster();
 		}
 		
