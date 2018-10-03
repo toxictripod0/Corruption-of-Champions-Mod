@@ -244,6 +244,14 @@ package classes
 		 * so breaking changes will cause the build to fail.
 		 */
 		private var plantGirlScene:PlantGirlScene;
+		/**
+		 * DO NOT REMOVE OR COMMENT OUT!
+		 * 
+		 * This definition causes the class to be compiled,
+		 * so breaking changes will cause the build to fail.
+		 */
+		private var goblinQueen:GoblinQueen;
+
 		// Scenes/NPC/
 		public var amilyScene:AmilyScene;
 		public var anemoneScene:AnemoneScene;
