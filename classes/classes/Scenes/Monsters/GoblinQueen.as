@@ -8,6 +8,9 @@ package classes.Scenes.Monsters
 	import classes.Items.JewelryLib;
 	import classes.Items.Armors.FurLoincloth;
 	
+	/**
+	 * An unused monster. Still included in the build to detect breaking changes to this class.
+	 */
 	public class GoblinQueen extends Goblin
 	{
 		public function GoblinQueen() 
