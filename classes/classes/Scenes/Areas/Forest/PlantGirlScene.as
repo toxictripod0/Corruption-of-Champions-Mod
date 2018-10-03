@@ -1,4 +1,4 @@
-//Encounter with the Plant Woman, still unused and unfinished. Help wanted.
+
 package classes.Scenes.Areas.Forest 
 {
 	import classes.BaseContent;
@@ -10,8 +10,9 @@ package classes.Scenes.Areas.Forest
 
 	import flash.utils.Dictionary;
 	/**
-	 * ...
-	 * @author ...
+	 * Encounter with the Plant Woman, still unused and unfinished.
+	 * Help wanted.
+	 * 
 	 */
 	public class PlantGirlScene extends BaseContent
 	{
