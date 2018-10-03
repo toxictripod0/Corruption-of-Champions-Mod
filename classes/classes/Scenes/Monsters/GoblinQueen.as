@@ -5,6 +5,8 @@ package classes.Scenes.Monsters
 	import classes.BodyParts.Hips;
 	import classes.internals.*;
 	import classes.GlobalFlags.*;
+	import classes.Items.JewelryLib;
+	import classes.Items.Armors.FurLoincloth;
 	
 	public class GoblinQueen extends Goblin
 	{
@@ -45,8 +47,8 @@ package classes.Scenes.Monsters
 			this.drop = new WeightedDrop().
 					add(consumables.GOB_ALE,5).
 					add(weapons.W_STAFF,1).
-					add(armors.FURLOIN,1).
-					add(jewelries.MYSTRNG,1).
+					add(new FurLoincloth(),1).
+					add(game.jewelries.MYSTRN1,1).
 					addMany(1,consumables.L_DRAFT,
 							consumables.PINKDYE,
 							consumables.BLUEDYE,
