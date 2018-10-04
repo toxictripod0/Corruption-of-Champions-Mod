@@ -56,7 +56,6 @@ package classes
 	import classes.Scenes.Seasonal.XmasBase;
 	import classes.StatusEffectClass;
 	import classes.VaginaClass;
-	import classes.content.*;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
 	import classes.internals.Utils;
