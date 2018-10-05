@@ -5,10 +5,14 @@ package classes.Scenes.Monsters
 	import classes.BodyParts.Hips;
 	import classes.internals.*;
 	import classes.GlobalFlags.*;
+	import classes.Items.JewelryLib;
+	import classes.Items.Armors.FurLoincloth;
 	
+	/**
+	 * An unused monster. Still included in the build to detect breaking changes to this class.
+	 */
 	public class GoblinQueen extends Goblin
 	{
-		
 		public function GoblinQueen() 
 		{
 			this.a = "the ";
@@ -45,8 +49,8 @@ package classes.Scenes.Monsters
 			this.drop = new WeightedDrop().
 					add(consumables.GOB_ALE,5).
 					add(weapons.W_STAFF,1).
-					add(armors.FURLOIN,1).
-					add(jewelries.MYSTRNG,1).
+					add(new FurLoincloth(),1).
+					add(game.jewelries.MYSTRN1,1).
 					addMany(1,consumables.L_DRAFT,
 							consumables.PINKDYE,
 							consumables.BLUEDYE,
@@ -55,10 +59,8 @@ package classes.Scenes.Monsters
 							consumables.PURPDYE);
 			this.special1 = goblinDrugAttack;
 			this.special2 = goblinTeaseAttack;
-			this.special3 = castSpell;
+			this.special3 = null; // FIXME this was 'castspell'
 			checkMonster();
 		}
-		
 	}
-
 }
