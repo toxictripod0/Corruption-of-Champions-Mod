@@ -2136,16 +2136,29 @@
 			return false;
 		}
 
+		/**
+		 * Attempt to stretch the players cunt. The chance for stretching is based on how close the cock size is to the players vagina capacity.
+		 * In case of a stretching an appropriate message will be displayed. If the player was a virgin, the appropriate message will be displayed.
+		 * If display is disabled, no messages will be displayed.
+		 * 
+		 * @param	cArea the area of the cock, will be checked againt vagina capacity
+		 * @param	display if true, output messages else do not display anything
+		 * @param	spacingsF add spaces at the front of the text?
+		 * @param	spacingsB add spaces at the back of the text?
+		 * @return true if a vagina stretch was performed
+		 */
 		public function cuntChange(cArea:Number, display:Boolean, spacingsF:Boolean = false, spacingsB:Boolean = true):Boolean {
 			if (vaginas.length==0) return false;
 			var wasVirgin:Boolean = vaginas[0].virgin;
 			var stretched:Boolean = cuntChangeNoDisplay(cArea);
 			var devirgined:Boolean = wasVirgin && !vaginas[0].virgin;
-			if (devirgined){
+			
+			if (display && devirgined){
 				if (spacingsF) outputText("  ");
 				outputText("<b>Your hymen is torn, robbing you of your virginity.</b>");
 				if (spacingsB) outputText("  ");
 			}
+			
 			//STRETCH SUCCESSFUL - begin flavor text if outputting it!
 			if (display && stretched) {
 				//Virgins get different formatting
