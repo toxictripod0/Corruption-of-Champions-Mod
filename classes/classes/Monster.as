@@ -1041,7 +1041,7 @@
 				result += Pronoun3+(i>0?(" #"+(i+1)):"")+" "+cock.cockType.toString().toLowerCase()+" cock is ";
 				result += Appearance.inchesAndFeetsAndInches(cock.cockLength)+" long and "+cock.cockThickness+"\" thick";
 				if (cock.isPierced) result += ", pierced with " + cock.pLongDesc;
-				if (cock.knotMultiplier !== 1) result += ", with knot of size " + cock.knotMultiplier;
+				if (cock.knotMultiplier !== Cock.KNOTMULTIPLIER_NO_KNOT) result += ", with knot of size " + cock.knotMultiplier;
 				result+=".\n";
 			}
 			if (balls > 0 || ballSize > 0) result += Hehas + numberOfThings(balls, "ball") + " of size " + ballSize+".\n";

@@ -17,6 +17,7 @@ package {
 	import classes.PlayerEventsTest;
 	import classes.PlayerEventsVaginaLoosenessRecoveryTest;
 	import classes.MenusSuit;
+	import classes.CockKnotSupportTest;
 
 [Suite]
 [RunWith("org.flexunit.runners.Suite")]
@@ -40,5 +41,6 @@ package {
 		 public var internalsSuit:InternalsSuit;
 		 public var menusSuit:MenusSuit;
 		 public var appearanceTest:AppearanceTest;
+		 public var cockKnotSupportTest:CockKnotSupportTest;
 	}
 }

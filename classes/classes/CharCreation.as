@@ -456,7 +456,6 @@ package classes {
 			player.cocks[0].cockLength = 5.5;
 			player.cocks[0].cockThickness = 1;
 			player.cocks[0].cockType = CockTypesEnum.HUMAN;
-			player.cocks[0].knotMultiplier = 1;
 			player.createBreastRow(); //breasts
 			clearOutput();
 			outputText(images.showImage("event-question"));
@@ -513,7 +512,6 @@ package classes {
 			player.cocks[0].cockLength = 5.5;
 			player.cocks[0].cockThickness = 1;
 			player.cocks[0].cockType = CockTypesEnum.HUMAN;
-			player.cocks[0].knotMultiplier = 1;
 			player.createBreastRow(); //breasts
 			clearOutput();
 			outputText(images.showImage("event-question"));
