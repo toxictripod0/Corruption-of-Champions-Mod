@@ -26,8 +26,8 @@ package coc.view {
 				advancedAntiAliasing='true',
 				fontName='ShrewsburyTitlingBold',
 				embedAsCFF='false')]
-		private static const ButtonLabelFont:Class;
-		public static const ButtonLabelFontName:String = (new ButtonLabelFont() as Font).fontName;
+		private static const BUTTON_LABEL_FONT:Class;
+		public static const BUTTON_LABEL_FONT_NAME:String = (new BUTTON_LABEL_FONT() as Font).fontName;
 
 
 		private var _labelField:TextField,
@@ -67,7 +67,7 @@ package coc.view {
 				x                : 0,
 				y                : 8,
 				defaultTextFormat: {
-					font : ButtonLabelFontName,
+					font : BUTTON_LABEL_FONT_NAME,
 					size : 18,
 					align: 'center'
 				}
