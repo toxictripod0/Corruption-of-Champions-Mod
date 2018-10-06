@@ -4,9 +4,6 @@ package classes.Scenes.Dungeons {
 	import classes.Scenes.Dungeons.*;
 
 	public class DungeonMap extends BaseContent {
-
-		public function DungeonMap() {}
-
 		//Declare those map variables. They're set in such a way that the map can be updated as flags change
 		public var MAP_FACTORY_F1:Array;
 		public var MAP_FACTORY_F2:Array;
