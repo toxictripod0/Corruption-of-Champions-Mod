@@ -2,6 +2,7 @@ package classes.Scenes.Dungeons {
 	import classes.*;
 	import classes.GlobalFlags.*;
 	import classes.Scenes.Dungeons.*;
+	import flash.errors.IllegalOperationError;
 
 	public class DungeonMap extends BaseContent {
 		//Declare those map variables. They're set in such a way that the map can be updated as flags change
@@ -249,6 +250,9 @@ package classes.Scenes.Dungeons {
 							case -4: rawOutputText("—"); break;
 							case -5: rawOutputText(" L "); break;
 							case -6: rawOutputText("L"); break;
+						default:
+							throw new IllegalOperationError("Unhandled negative value " + map[i][j]);
+							break;
 						}
 					}
 					else if (getGame().inDungeon && map[i][j] is int && map[i][j] >= 0) {
