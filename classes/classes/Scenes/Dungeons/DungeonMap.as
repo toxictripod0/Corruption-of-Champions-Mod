@@ -236,8 +236,10 @@ package classes.Scenes.Dungeons {
 		public function buildMapDisplay(map:Array):void {
 			displayHeader(map[0] + "\n");
 			outputText("<font face=\"Consolas, _typewriter\">");
-			for (var i:int = 1; i < map.length; i++) {
-				for (var j:int = 0; j < map[i].length; j++) {
+			var outerMapLength:int = map.length;
+			for (var i:int = 1; i < outerMapLength; i++) {
+				var innerMapLength:int = map[i].length;
+				for (var j:int = 0; j < innerMapLength; j++) {
 					//Negative numbers are special
 					if (map[i][j] is int && map[i][j] < 0) {
 						switch(map[i][j]) {
