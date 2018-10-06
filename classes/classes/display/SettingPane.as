@@ -57,7 +57,7 @@ package classes.display
 			_contentChildren = 0;
 
 			// Hook into some stuff so that we can fix some bugs that ScrollPane has
-			this.addEventListener(Event.ADDED_TO_STAGE, AddedToStage);
+			this.addEventListener(Event.ADDED_TO_STAGE, addedToStage);
 			this.content.addChild(_content);
 		}
 		
@@ -65,9 +65,9 @@ package classes.display
 		 * Cleanly get us a reference to the stage to add/remove other event listeners
 		 * @param	e
 		 */
-		private function AddedToStage(e:Event):void
+		private function addedToStage(e:Event):void
 		{
-			this.removeEventListener(Event.ADDED_TO_STAGE, AddedToStage);
+			this.removeEventListener(Event.ADDED_TO_STAGE, addedToStage);
 			this.addEventListener(Event.REMOVED_FROM_STAGE, RemovedFromStage);
 			
 			_stage = this.stage;
@@ -78,7 +78,7 @@ package classes.display
 		private function RemovedFromStage(e:Event):void
 		{
 			this.removeEventListener(Event.REMOVED_FROM_STAGE, RemovedFromStage);
-			this.addEventListener(Event.ADDED_TO_STAGE, AddedToStage);
+			this.addEventListener(Event.ADDED_TO_STAGE, addedToStage);
 			
 			_stage.removeEventListener(MouseEvent.MOUSE_WHEEL, MouseScrollEvent);
 		}
