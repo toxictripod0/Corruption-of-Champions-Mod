@@ -44,6 +44,16 @@ package coc.view {
 		 */
 		public function CoCButton(options:Object = null) {
 			super();
+			initButton(options);
+		}
+
+		/**
+		 * Extracted constructor to make use of the JIT compiler.
+		 * 
+		 * @param	options See constructor.
+		 */
+		private function initButton(options:Object):void
+		{
 			_backgroundGraphic = addBitmapDataSprite({
 				stretch: true,
 				width  : MainView.BTN_W,
@@ -77,7 +87,6 @@ package coc.view {
 			this.addEventListener(MouseEvent.ROLL_OUT, this.dim);
 			this.addEventListener(MouseEvent.CLICK, this.click);
 		}
-
 
 
 		//////// Mouse Events... ////////
