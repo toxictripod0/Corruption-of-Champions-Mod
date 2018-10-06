@@ -222,7 +222,7 @@ package coc.view {
 		 * @return this
 		 */
 		public function call(fn:Function,...args:Array):CoCButton {
-			this.callback = Utils.curry.apply(null,args);
+			this.callback = Utils.curry.apply(fn,args);
 			return this;
 		}
 		/**
