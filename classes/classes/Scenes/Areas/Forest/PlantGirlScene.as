@@ -23,8 +23,6 @@ package classes.Scenes.Areas.Forest
 
 		// D: Defeat | V: Victory | Sd: Sex Dominant | Ss: Sex Submissive | TsI: Trapped submissive
 		
-		public function PlantGirlScene() {}
-		
 		//Encounter with the Plant Woman (Intro 1, requires having seen corrupted glade) 
 		public function encounterPlantWoman():void {
 			if (rand(2) == 0) {
