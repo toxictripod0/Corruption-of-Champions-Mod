@@ -39,17 +39,17 @@ package classes.Scenes.Dungeons {
 			//Factory
 			MAP_FACTORY_F1 = [ //Room 00-05 + 06
 				"Factory, Floor 1",
-				[-1, -2, 04, -2, -1],
+				[-1, -2,  4, -2, -1],
 				[-1, -2, -3, -2, -1],
-				[05, -4, 02, -4, 03],
+				[ 5, -4,  2, -4,  3],
 				[-1, -2, d1, -2, -1],
-				[09, -4, 00, -4, 01],
+				[ 9, -4,  0, -4,  1],
 				[-1, -2, -3, -2, -1]];
 			MAP_FACTORY_F2 = [ //Room 06-08
 				"Factory, Floor 2",
-				[06, -4, 07],
+				[ 6, -4,  7],
 				[d2, -2, -1],
-				[08, -2, -1]];
+				[ 8, -2, -1]];
 			//Deep Cave
 			MAP_DEEPCAVE = [ //Room 10-16
 				"Zetaz's Lair",
@@ -256,11 +256,11 @@ package classes.Scenes.Dungeons {
 					else if (getGame().inDungeon && map[i][j] is int && map[i][j] >= 0) {
 						switch(map[i][j]) {
 							case getGame().dungeonLoc: rawOutputText("[<u>@</u>]"); break;
-							case 05:
+							case  5:
 							case 18:
 							case 20:
 							case 53: rawOutputText("[<u>^</u>]"); break;
-							case 06:
+							case  6:
 							case 17:
 							case 22:
 							case 52: rawOutputText("[<u>v</u>]"); break;
