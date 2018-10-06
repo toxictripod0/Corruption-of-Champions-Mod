@@ -78,12 +78,6 @@ package classes.Scenes.Areas.Forest
 			clearOutput();
 			outputText("Throwing caution to the wind, you decide to engage in a little 'carnal' pleasure with this creature. How to do you want to sex the plant woman?");
 			//(let's fuck scenes lead to victory/loss sex scenes (depending on dominant/submission choices, with variations)
-			if (player.hasCock()) {
-				
-			}
-			if (player.hasVagina()) {
-				
-			}
 			
 			/* Im not sure how the fuck any of this is supposed to work.
 			Tied:
