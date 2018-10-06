@@ -194,7 +194,6 @@ package classes.Scenes.Dungeons {
 		public function chooseRoomToDisplay():void {
 			updateMap();
 			if (getGame().inRoomedDungeon) {
-			//	if (getGame().inRoomedDungeonName == "GrimdarkMareth") buildMapDisplay(MAP_MARETH);
 				if (getGame().inRoomedDungeonName == "BasiliskCave") buildMapDisplay(MapStrongholdP1);
 				if (getGame().inRoomedDungeonName == "LethicesKeep") buildMapDisplay(MapStrongholdP2);
 			}
