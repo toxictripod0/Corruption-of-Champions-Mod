@@ -422,11 +422,11 @@ package classes.Scenes.Areas.Forest
 		public function trappedPlantSexPussyGOOO():void {
 			clearOutput();
 			outputText("The vines around you begin to shift, and you fear that she might have misinterpreted your preferences for sex, gritting your teeth as you await the inevitable violation of your body.  The continuing sound of cracking vines and growth intrigues you enough to open your eyes, witnessing both yourself and the plant woman being lifted off of the ground by her cabal of creepers.  Lifting you further and further into the air, the vegetation draw her close to your restrained, naked body.  The floral beauty's petal like vagina is soaked in anticipation and glistening in the warm glow of the sun.");
-			var x:int = player.cockThatFits(9999); //Undefined capacity for now.
-			if (x < 0) x = player.smallestCockIndex();
+			var cockIndex:int = player.cockThatFits(9999); //Undefined capacity for now.
+			if (cockIndex < 0) cockIndex = player.smallestCockIndex();
 			//(If  cock(s) are 4 inches or less)  
-			if (player.cocks[x].cockLength < 4) {
-				outputText("\n\nThe plant woman goes to massage your " + player.cockDescript(x) + ", but stops when she sees how small you are.  Rather than dumping you on your ass, one of the vines that holds you wraps itself around [eachCock] and then proceeds to pierce the sensitive flesh of your glans with what you assume are barbs.  Unconsciously, you scream out in pain; it isn't the worst agony you have ever felt, but the sharp stinging that floods your sensitive member is enough to be a mood killer. In increasing agony, you gaze down at your " + player.multiCockDescriptLight() + " to witness your member");
+			if (player.cocks[cockIndex].cockLength < 4) {
+				outputText("\n\nThe plant woman goes to massage your " + player.cockDescript(cockIndex) + ", but stops when she sees how small you are.  Rather than dumping you on your ass, one of the vines that holds you wraps itself around [eachCock] and then proceeds to pierce the sensitive flesh of your glans with what you assume are barbs.  Unconsciously, you scream out in pain; it isn't the worst agony you have ever felt, but the sharp stinging that floods your sensitive member is enough to be a mood killer. In increasing agony, you gaze down at your " + player.multiCockDescriptLight() + " to witness your member");
 				if (player.cockTotal() > 1) outputText("s");
 				outputText(" swelling up. The head");
 				if (player.cockTotal() > 1) outputText("s");
@@ -445,11 +445,11 @@ package classes.Scenes.Areas.Forest
 				else outputText(" is now ");
 				outputText("of sufficient length to penetrate this creature; though, you suspect the effects are temporary.");
 				//(cock size temporarily increased to 7 inches)
-				player.cocks[x].cockLength += 7;
+				player.cocks[cockIndex].cockLength += 7;
 			}
 			//(if > 4 inches) 
 			else outputText("\n\nShe presses her body against yours, causing your rock hard player.multiCockDescriptLight() to jut upward against her leafy stomach.");
-			outputText("\n\nRaising herself ever so slightly, the plant woman wraps her legs around and straddles you as she lowers her pussy onto the tip of " + player.cockDescript(x) + ".  The female perversion of nature slowly takes the entirety of your cock in her, causing your prick to sensually ease through her tight cunt like a mole crawling through the fertile earth.  The sensation is too much, causing you to shudder and twitch uncontrollably.  Your dominant partner rests her ");
+			outputText("\n\nRaising herself ever so slightly, the plant woman wraps her legs around and straddles you as she lowers her pussy onto the tip of " + player.cockDescript(cockIndex) + ".  The female perversion of nature slowly takes the entirety of your cock in her, causing your prick to sensually ease through her tight cunt like a mole crawling through the fertile earth.  The sensation is too much, causing you to shudder and twitch uncontrollably.  Your dominant partner rests her ");
 			//(If height is 36 inches to 72 inches: 
 			if (player.tallness < 72) outputText("raises her face to yours ");
 			//If height is greater than 72 inches, but less than 96 inches: 
@@ -458,7 +458,7 @@ package classes.Scenes.Areas.Forest
 			else if (player.tallness < 96) outputText("forehead against your chest, sniffing you intensely as she takes in your musk.  The creature of flora and warped flesh moans and shivers as she acquires your " + player.mf("manly","feminine") + " scent, and ");
 			//(If height is greater than 96 inches: 
 			else outputText("places her head against your stomach, eyes closing as the creature takes in the rising and descent of your stomach ");
-			outputText(" as she slowly begins to work her hips, grinding the innards of her hot and moist sex against your " +  player.cockDescript(x) + ".");
+			outputText(" as she slowly begins to work her hips, grinding the innards of her hot and moist sex against your " +  player.cockDescript(cockIndex) + ".");
 			//(if one cock:
 			if (player.cockTotal() == 1) outputText("  The plant creature begins to speed up her thrusting against your cock, eager to drive you over the edge with the tightness of her hole.");
 			else {
