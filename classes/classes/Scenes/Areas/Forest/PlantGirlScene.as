@@ -104,7 +104,6 @@ package classes.Scenes.Areas.Forest
 			//[If Intro 1.1 is chosen: Step two of Let's Fuck!]
 			if (from == 1.1) {
 				outputText("\n\nWill you be dominant or submissive?");
-				//menu();
 				//[Dominant (leads to Sd. 1]  [Submissive (leads to Ss.1]
 				addButton(0, "Dominant", null); //FIXME value was 9999
 				addButton(1, "Submissive", null); //FIXME value was 9999
