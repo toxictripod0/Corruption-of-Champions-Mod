@@ -42,12 +42,6 @@ package classes.display
 		{
 			move(xPos,yPos);
 			setSize(width,height);
-			// Cheap hack to remove the stupid styling elements of the stock ScrollPane
-			/*var pic:Bitmap = new MainView.Background1();
-			pic.width = width;
-			pic.height = height;
-			_alpha =0;
-			_background.addChild(pic);*/
 			// Initiate a new container for content that will be placed in the scroll pane
 			_content = new Block({layoutConfig:{
 				type: Block.LAYOUT_FLOW,
