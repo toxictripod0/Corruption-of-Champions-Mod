@@ -68,16 +68,16 @@ package classes.display
 		private function addedToStage(e:Event):void
 		{
 			this.removeEventListener(Event.ADDED_TO_STAGE, addedToStage);
-			this.addEventListener(Event.REMOVED_FROM_STAGE, RemovedFromStage);
+			this.addEventListener(Event.REMOVED_FROM_STAGE, removedFromStage);
 			
 			_stage = this.stage;
 			
 			_stage.addEventListener(MouseEvent.MOUSE_WHEEL, MouseScrollEvent);
 		}
 		
-		private function RemovedFromStage(e:Event):void
+		private function removedFromStage(e:Event):void
 		{
-			this.removeEventListener(Event.REMOVED_FROM_STAGE, RemovedFromStage);
+			this.removeEventListener(Event.REMOVED_FROM_STAGE, removedFromStage);
 			this.addEventListener(Event.ADDED_TO_STAGE, addedToStage);
 			
 			_stage.removeEventListener(MouseEvent.MOUSE_WHEEL, MouseScrollEvent);
