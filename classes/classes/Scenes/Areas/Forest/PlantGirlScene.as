@@ -274,7 +274,9 @@ package classes.Scenes.Areas.Forest
 			clearOutput();
 			outputText("The plant woman stops and looks around at the surrounding foliage, smiling.  You look at her with a hunger in your eyes and moan, snapping her attention back to you.  She uses the vines to flip you around and expose your [butt] to her.  With a snap of her fingers,  phallic stamen sprout out of her body, and she proceeds to walk behind you...  Wait... is she going for your ass?  The confusion on your face gives the creature pause as she awaits a response from you.");
 			//[fuck my ass (leads to TsI: 1.1a]  [hey, exit only! (leads to TsI: 1.1r]
-			//simpleChoices("Fuck My Ass",9999,"Exit Only",9999,"",0,"",0,"",0);
+			
+			addButton(0, "Fuck My Ass", null); //FIXME was commented out simpleChoices with 9999
+			addButton(1, "Exit Only", null); //FIXME was commented out simpleChoices with 9999
 		}
 
 		//[Failure anal: considerate of your needs, or TsI: 1.1r]
@@ -362,7 +364,9 @@ package classes.Scenes.Areas.Forest
 			//(//You're not sure what this act is supposed to mean exactly, but you hope that it doesn't involve impaling your heart.)
 			outputText("  The vines that entrap you suddenly lower you to the ground and force you to your knees.  Eager to see what the plant girl has in store for you, you lick your lips and smile.  The plant girl returns your smile and pets the back of your head. Suddenly something begins to shake in her pelvis, and within seconds a cock bursts forth.  She coos playfully and tilts your head back, opening her mouth in what seems to be ecstasy.  Your eyes go wide as her cock bobs up and down, drooling golden, sappy pre-cum.  The sly look on her face conveys to you her belief that you both might enjoy this... but this IS a plant monster with a cock.  Maybe you should exercise caution?");
 			//[Open wide (leads to TsI: 1.2a)]      [Put that thing away! (leads to TsI 1.2b)]
-			//simpleChoices("Open Wide",9999,"Put That Away",9999,"",0,"",0,"",0);
+			
+			addButton(0, "Open Wide", null); //FIXME was commented out simpleChoices with 9999
+			addButton(1, "Put That Away", null); //FIXME was commented out simpleChoices with 9999
 		}
 
 		//(Failure blowjob: or TsI 1.2r)
