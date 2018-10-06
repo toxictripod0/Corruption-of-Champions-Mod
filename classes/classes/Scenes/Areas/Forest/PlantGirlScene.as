@@ -67,7 +67,6 @@ package classes.Scenes.Areas.Forest
 			outputText("\n\nThe form you gaze upon is covered in plant matter; in fact, it looks just like the same matter that strung you up earlier.  Though, a surprisingly sleek and feminine body becomes visible as it slowly closes the distance.  The woman sports a pair of average breasts; your best guess would be B-cups.  Her eyes are jewel red and she looks your body up and down, she flushes a bit; clearly she likes what she sees.  Trying her best to seduce you through body language and the swaying of her curved hips, she seductively closes the distance and grins at you with a confident, flirty smile.  Feeling a sudden touch at your waistline, you look down to see that the creature is playfully tugging at your [armor], almost in a probing fashion as if to non-verbally ask if you are into this just as much as she is.");
 			//[Let's fuck! (leads to choosing how to sex the plant woman)] [Decline] [Try to escape] 
 			//(Decline and try to escape choices are dependent on initial mood, follows partial and completely successful struggle scenarios for subsequent scenes)
-			//simpleChoices("Let's Fuck!",,"Decline",,"Escape",,"",0,"",0);
 			menu();
 			addButton(0,"Let's Fuck!",plantLadyLetsFuck,1.1);
 			addButton(1,"Decline",declinePlantSmex);
@@ -138,7 +137,6 @@ package classes.Scenes.Areas.Forest
 				//(Decisions, Decisions) (only if you get success or partial success)
 				//What do you do?
 				//[Sex]      [decline]     [Try to escape]
-				//simpleChoices("Sex",9999, "Decline", 9999,"",0,"",0, "Try to Run",9999);
 				menu();
 				//addButton(0,"Sex",9999);
 				addButton(1, "Decline", declinePlantSmex);
@@ -176,7 +174,6 @@ package classes.Scenes.Areas.Forest
 			outputText("With you tightly confined in your vine prison, the plant woman shifts forward through the bush and comes face to face with you.  She smirks playfully and begins to take your [armor] off.  Your musings about what this creature has in mind are interrupted when the plant woman starts caressing your face and necking you.  Starting at the lower base of your neck, she slowly licks upwards until she reaches your ear, intimately exploring the insides.   Her breathing heavy and sporadic as she caresses your earlobe, aroused to no end as she intimately explores your body. She then proceeds back down to your lower neck, suckling around the base, as she makes her way to your other ear. It's obvious she's getting off on this, the intimate act causing her to shudder repeatedly.");
 			outputText("\n\nThis goes on for a few moments before she brings her face back to yours, and begins to tease you by going in for a kiss and pulling away. She looks into your eyes and is waiting for you to reciprocate.");
 			//[Do it! (leads to Trapped sex intro]   [Decline (leads to Decline 1.0)]    [Seriously, get lost (leads to GL 1.0]
-			//simpleChoices("Do It!",,"Decline",,"Get Lost",,"",0,"",0);
 			menu();
 			addButton(0,"Do It!",struggleFailDoItPlantSmex);
 			addButton(1,"Decline",declinePlantSmex);
