@@ -36,8 +36,8 @@ package coc.view {
 				_callback:Function = null,
 				_preCallback:Function = null;
 
-		public var toolTipHeader:String,
-				   toolTipText:String;
+		public var toolTipHeaderInstance:String;
+		public var toolTipTextInstance:String;
 
 		/**
 		 * @param options  enabled, labelText, bitmapClass, callback
@@ -195,8 +195,8 @@ package coc.view {
 		 * @return this
 		 */
 		public function hint(toolTipText:String = "",toolTipHeader:String=""):CoCButton {
-			this.toolTipText   = toolTipText   || getToolTipText(this.labelText);
-			this.toolTipHeader = toolTipHeader || getToolTipHeader(this.labelText);
+			this.toolTipTextInstance   = toolTipText   || getToolTipText(this.labelText);
+			this.toolTipHeaderInstance = toolTipHeader || getToolTipHeader(this.labelText);
 			return this;
 		}
 		/**
@@ -205,7 +205,7 @@ package coc.view {
 		 */
 		public function disableIf(condition:Boolean, toolTipText:String=null):CoCButton {
 			enabled = !condition;
-			if (toolTipText !== null) this.toolTipText = condition?toolTipText:this.toolTipText;
+			if (toolTipText !== null) this.toolTipTextInstance = condition?toolTipText:this.toolTipTextInstance;
 			return this;
 		}
 		/**
@@ -214,7 +214,7 @@ package coc.view {
 		 */
 		public function disable(toolTipText:String=null):CoCButton {
 			enabled = false;
-			if (toolTipText!==null) this.toolTipText = toolTipText;
+			if (toolTipText!==null) this.toolTipTextInstance = toolTipText;
 			return this;
 		}
 		/**
