@@ -374,7 +374,7 @@ package classes.Scenes.Areas.Forest
 			outputText("You push against the plant girl's thighs and shake your head, telling her that you are interested in THAT. You comment on how you wouldn't mind playing with something else though, as you begin to stroke your finger around the plant woman's labia.  She stops and ponders for a moment, and then giggles as her appendage disappears back into her body.");
 			outputText("\n\nIt looks like it's up to you how you want to be sexed.");
 			//(Taken back to tied sex menu)
-			//doNext(9999);
+			doNext(null); //FIXME was 9999 instead of null
 		}
 
 		//(Failure blowjob: I. Said. OPEN. WIDE!, or TsI: 1.2a)
