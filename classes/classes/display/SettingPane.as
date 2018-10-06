@@ -72,7 +72,7 @@ package classes.display
 			
 			_stage = this.stage;
 			
-			_stage.addEventListener(MouseEvent.MOUSE_WHEEL, MouseScrollEvent);
+			_stage.addEventListener(MouseEvent.MOUSE_WHEEL, mouseScrollEvent);
 		}
 		
 		private function removedFromStage(e:Event):void
@@ -80,10 +80,10 @@ package classes.display
 			this.removeEventListener(Event.REMOVED_FROM_STAGE, removedFromStage);
 			this.addEventListener(Event.ADDED_TO_STAGE, addedToStage);
 			
-			_stage.removeEventListener(MouseEvent.MOUSE_WHEEL, MouseScrollEvent);
+			_stage.removeEventListener(MouseEvent.MOUSE_WHEEL, mouseScrollEvent);
 		}
 		
-		private function MouseScrollEvent(e:MouseEvent):void
+		private function mouseScrollEvent(e:MouseEvent):void
 		{
 			this._vScrollbar.value += -( e.delta * 8 );
 			update();
