@@ -111,9 +111,10 @@ package classes.display
 		
 		public function addOrUpdateToggleSettings(label:String, args:Array):BindDisplay {
 			var i:int;
+			var numberOfArgs:int = args.length;
 			if (_content.getElementByName(label) != null) {
 				var existingSetting:BindDisplay = _content.getElementByName(label) as BindDisplay;
-				for (i = 0; i < args.length; i++) {
+				for (i = 0; i < numberOfArgs; i++) {
 					if (args[i] is String) {
 						if (args[i] == "overridesLabel") {
 							existingSetting.htmlText = args[i-1][2];
@@ -133,7 +134,7 @@ package classes.display
 				newSetting.label.multiline = true;
 				newSetting.label.wordWrap = true;
 				newSetting.htmlText = "<b>" + label + ":</b>\n";
-				for (i = 0; i < args.length; i++) {
+				for (i = 0; i < numberOfArgs; i++) {
 					if (args[i] is String) {
 						if (args[i] == "overridesLabel") {
 							newSetting.htmlText = args[i-1][2];
