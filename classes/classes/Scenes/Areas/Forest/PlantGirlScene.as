@@ -112,8 +112,8 @@ package classes.Scenes.Areas.Forest
 				outputText("\n\nWill you be dominant or submissive?");
 				//menu();
 				//[Dominant (leads to Sd. 1]  [Submissive (leads to Ss.1]
-				//addButton(0, "Dominant", 9999);
-				//addButton(1, "Submissive", 9999);
+				addButton(0, "Dominant", null); //FIXME value was 9999
+				addButton(1, "Submissive", null); //FIXME value was 9999
 			}
 		}
 
@@ -138,9 +138,9 @@ package classes.Scenes.Areas.Forest
 				//What do you do?
 				//[Sex]      [decline]     [Try to escape]
 				menu();
-				//addButton(0,"Sex",9999);
+				addButton(0,"Sex", null); //FIXME value was 9999
 				addButton(1, "Decline", declinePlantSmex);
-				//addButton(4,"Try to Run",9999);
+				addButton(4,"Try to Run", null); //FIXME value was 9999
 			}
 			//(struggle: failure, or Intro 1.2.3) (< 40 STR)
 			else {
