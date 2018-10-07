@@ -11,7 +11,7 @@ package {
 	import classes.CharSpecialTest;
 	import classes.CharCreationTest;
 	import classes.MonsterTest;
-	import classes.VaginaClassTest;
+	import classes.VaginaTest;
 	import classes.CockTest;
 	import classes.SavesTest;
 	import classes.PlayerEventsTest;
@@ -33,7 +33,7 @@ package {
 		 public var monsterTest:MonsterTest;
 		 public var creaturTest:CreatureTest;
 		 public var playerTest:PlayerTest;
-		 public var vaginaClass:VaginaClassTest;
+		 public var vaginaClass:VaginaTest;
 		 public var cockTest:CockTest;
 		 public var savesTest:SavesTest;
 		 public var playerEventsTest:PlayerEventsTest;

@@ -117,7 +117,7 @@ package classes.Scenes.Areas.HighMountains
 			this.race = "Phoenix";
 			// this.plural = false;
 			this.createCock(8, 1.2, CockTypesEnum.LIZARD);
-			this.createVagina(false, VaginaClass.WETNESS_SLICK, VaginaClass.LOOSENESS_LOOSE);
+			this.createVagina(false, Vagina.WETNESS_SLICK, Vagina.LOOSENESS_LOOSE);
 			this.createStatusEffect(StatusEffects.BonusVCapacity, 40, 0, 0, 0);
 			createBreastRow(Appearance.breastCupInverse("D"));
 			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;

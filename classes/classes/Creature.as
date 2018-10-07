@@ -30,7 +30,7 @@ package classes
 	import classes.StatusEffects.Combat.CombatSpeBuff;
 	import classes.StatusEffects.Combat.CombatStrBuff;
 	import classes.StatusEffects.Combat.CombatTouBuff;
-	import classes.VaginaClass;
+	import classes.Vagina;
 	import classes.internals.RandomNumberGenerator;
 	import classes.internals.LoggerFactory;
 	import classes.internals.Utils;
@@ -440,7 +440,7 @@ package classes
 		
 		//FEMALE STUFF
 		//TODO: Box into Female genital class?
-		public var vaginas:Vector.<VaginaClass>;
+		public var vaginas:Vector.<Vagina>;
 		//Fertility is a % out of 100. 
 		public var fertility:Number = 10;
 		public var nippleLength:Number = .25;
@@ -550,7 +550,7 @@ package classes
 			for each (var cock:Cock in cocks) {
 				error += cock.validate();
 			}
-			for each (var vagina:VaginaClass in vaginas) {
+			for each (var vagina:Vagina in vaginas) {
 				error += vagina.validate();
 			}
 			for each (var row:BreastRowClass in breastRows) {
@@ -605,7 +605,7 @@ package classes
 			//cocks = new Array();
 			//The world isn't ready for typed Arrays just yet.
 			cocks = new Vector.<Cock>();
-			vaginas = new Vector.<VaginaClass>();
+			vaginas = new Vector.<Vagina>();
 			breastRows = new Vector.<BreastRowClass>();
 			_perks = [];
 			statusEffects = [];
@@ -2517,7 +2517,7 @@ package classes
 		{
 			if (vaginas.length >= 2)
 				return false;
-			var newVagina:VaginaClass = new VaginaClass(vaginalWetness,vaginalLooseness,virgin);
+			var newVagina:Vagina = new Vagina(vaginalWetness,vaginalLooseness,virgin);
 			vaginas.push(newVagina);
 			return true;
 		}

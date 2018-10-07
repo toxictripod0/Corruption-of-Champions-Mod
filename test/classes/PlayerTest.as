@@ -810,7 +810,7 @@ package classes
 			var bimboPlayer:Player = new Player();
 			createPerk(PerkLib.BimboBrains, bimboPlayer);
 			createPerk(PerkLib.BimboBody, bimboPlayer);
-			bimboPlayer.createVagina(true, VaginaClass.WETNESS_SLICK);
+			bimboPlayer.createVagina(true, Vagina.WETNESS_SLICK);
 			bimboPlayer.createBreastRow(10);
 			bimboPlayer.setArmor(kGAMECLASS.armors.BIMBOSK);
 			kGAMECLASS.flags[kFLAGS.BIMBOSKIRT_MINIMUM_LUST] = 30;

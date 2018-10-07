@@ -960,7 +960,7 @@ package classes {
 					break;
 				case PerkLib.WetPussy:
 					player.femininity += 7;
-					player.vaginas[0].vaginalWetness = VaginaClass.WETNESS_WET;
+					player.vaginas[0].vaginalWetness = Vagina.WETNESS_WET;
 					player.createPerk(PerkLib.WetPussy, 2, 0, 0, 0);
 					break;
 				default: //move along, nothing happens in this defaultness
@@ -1014,7 +1014,7 @@ package classes {
 			if (choice === PerkLib.HistorySlut || choice === PerkLib.HistoryWhore) {
 				if (player.hasVagina()) {
 					player.vaginas[0].virgin = false;
-					player.vaginas[0].vaginalLooseness = VaginaClass.LOOSENESS_LOOSE;
+					player.vaginas[0].vaginalLooseness = Vagina.LOOSENESS_LOOSE;
 				}
 				player.ass.analLooseness = 1;
 			}
@@ -1386,7 +1386,7 @@ package classes {
 			outputText("\n\nAfter looking around the room for a while, you look into the mirror and begin to recollect who you are...");
 			player.breastRows = new Vector.<BreastRowClass>();
 			player.cocks = new Vector.<Cock>();
-			player.vaginas = new Vector.<VaginaClass>();
+			player.vaginas = new Vector.<Vagina>();
 			doNext(routeToGenderChoiceReincarnation);
 		}
 		private function routeToGenderChoiceReincarnation():void {

@@ -150,7 +150,7 @@ package classes.Scenes.Areas.HighMountains {
 			outputText("You begin to rise up his length, the bumps rubbing firmly against your clit with each inch that leaves you. "
 			          +"As you reach the tip you slam your hips back down, relishing the feeling of his length rapidly stretching you as the tip pokes your womb. "
 			          +"You keep this pace as you break the kiss, the regular ascent and rapid descent making lewd ");
-			if (player.vaginas[0].vaginalWetness >= VaginaClass.WETNESS_WET) outputText("squelching");
+			if (player.vaginas[0].vaginalWetness >= Vagina.WETNESS_WET) outputText("squelching");
 			else outputText("slapping");
 			outputText(" noises as you get closer to your peak. As you ride him the cockatrice suddenly lunges his forward, trapping one of you [nipples] in his mouth."
 			          +" He sucks hungrily as he feels your walls tightening around him, eager to bring you to a climax. His hand goes to ");

@@ -7,38 +7,38 @@ package classes{
 	import org.hamcrest.text.*;
 	
 	
-	import classes.VaginaClass;
+	import classes.Vagina;
 	import classes.internals.SerializationUtils;
 	
-    public class VaginaClassTest {
+    public class VaginaTest {
 		private static const LABIA_PIERCED:int = 1;
 		private static const CLIT_LENGTH:Number = 2.5;
 		private static const RECOVERY_PROGRESS:int = 42;
 		
-        private var cut:VaginaClass;
+        private var cut:Vagina;
 		private var serializedClass:*;
 		
         [Before]
         public function runBeforeEveryTest():void {
-			cut = new VaginaClass();
+			cut = new Vagina();
 			serializedClass = [];
         }  
      
         [Test(description="Default clit length const is not used so that changes to the default value will cause this test to fail")] 
-        public function testVaginaClassDefaultValueForClitLength():void {
+        public function testVaginaDefaultValueForClitLength():void {
 			assertThat(cut.clitLength, equalTo(0.5));
         }
 		
 		[Test] 
         public function testValidateClitLengthNegative():void {
-			cut = new VaginaClass(1, 0, true, -1);
+			cut = new Vagina(1, 0, true, -1);
 			
 			assertThat(cut.validate(), containsString("clitLength"));
         }
 		
 		[Test] 
         public function testValidateClitLengthPositive():void {
-			cut = new VaginaClass(1, 0, true, 2);
+			cut = new Vagina(1, 0, true, 2);
 			
 			assertThat(cut.validate(), not(containsString("clitLength")));
         }
@@ -52,7 +52,7 @@ package classes{
 		
 		[Test] 
         public function testValidateRecoveryProgressNotNegative():void {
-			cut = new VaginaClass();
+			cut = new Vagina();
 			
 			assertThat(cut.validate(), not(containsString("recoveryProgress")));
         }
@@ -167,7 +167,7 @@ package classes{
 		public function deserializeClitLengthUndefined():void {
 			SerializationUtils.deserialize(serializedClass, cut);
 			
-			assertThat(cut.clitLength, equalTo(VaginaClass.DEFAULT_CLIT_LENGTH));
+			assertThat(cut.clitLength, equalTo(Vagina.DEFAULT_CLIT_LENGTH));
 		}
 
 		[Test]

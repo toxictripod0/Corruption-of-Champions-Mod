@@ -60,7 +60,7 @@ import classes.internals.WeightedDrop;
 			this.race = "Anemone";
 			// this.plural = false;
 			this.createCock(7,1,CockTypesEnum.ANEMONE);
-			this.createVagina(false, VaginaClass.WETNESS_SLICK, VaginaClass.LOOSENESS_LOOSE);
+			this.createVagina(false, Vagina.WETNESS_SLICK, Vagina.LOOSENESS_LOOSE);
 			this.createStatusEffect(StatusEffects.BonusVCapacity, 5, 0, 0, 0);
 			createBreastRow(Appearance.breastCupInverse("B"));
 			this.ass.analLooseness = AssClass.LOOSENESS_NORMAL;

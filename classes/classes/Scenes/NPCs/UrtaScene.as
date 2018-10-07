@@ -675,7 +675,7 @@ private function dualUrtaMasturbation():void {
 		outputText("  ");
 	}
 	if (player.hasVagina()) {
-		if (player.vaginas[0].vaginalWetness > VaginaClass.WETNESS_SLICK) outputText("A trickle of wetness escapes your nether-lips, starting to puddle underneath you.");
+		if (player.vaginas[0].vaginalWetness > Vagina.WETNESS_SLICK) outputText("A trickle of wetness escapes your nether-lips, starting to puddle underneath you.");
 		else outputText("Quickly engorging, your lower lips begin to part around your " + player.clitDescript() + ".");
 		outputText("  ");
 	}
@@ -712,7 +712,7 @@ private function dualUrtaMasturbation():void {
 	}
 	if (player.hasVagina()) {
 		outputText("Your sex squishes wetly around a finger, clenching down tightly");
-		if (player.vaginas[0].vaginalWetness == VaginaClass.WETNESS_SLAVERING) outputText(" and gushing everywhere");
+		if (player.vaginas[0].vaginalWetness == Vagina.WETNESS_SLAVERING) outputText(" and gushing everywhere");
 		outputText(".  ");
 	}
 	else outputText("Your sphincter clenches down tightly around your invading digit as you get off, and the rapt attention of your audience certainly helps.  ");
@@ -1002,8 +1002,8 @@ internal function takeUrtaInTheButtPublically():void {
 		if (player.getClitLength() < 2) outputText("peep out");
 		else outputText("grow to its full size");
 		outputText(".  ");
-		if (player.vaginas[0].vaginalWetness < VaginaClass.WETNESS_SLICK) outputText("Moisture beads on your lips, signaling just how turned on this total violation is making you.");
-		else if (player.vaginas[0].vaginalWetness < VaginaClass.WETNESS_SLAVERING) outputText("Moisture begins dripping onto Urta's thighs, signaling just how turned on this total violation is making you.");
+		if (player.vaginas[0].vaginalWetness < Vagina.WETNESS_SLICK) outputText("Moisture beads on your lips, signaling just how turned on this total violation is making you.");
+		else if (player.vaginas[0].vaginalWetness < Vagina.WETNESS_SLAVERING) outputText("Moisture begins dripping onto Urta's thighs, signaling just how turned on this total violation is making you.");
 		else outputText("Moisture puddles on the seat under Urta as your juices flood her thighs, revealing just how turned on this violation is making you.");
 		outputText("  ");
 	}
@@ -1218,8 +1218,8 @@ private function rideUrtaTenderFemale():void {
 	if (player.cor < 50 || player.lib100 < 50) outputText("sheepishly ");
 	else outputText("eagerly ");
 	outputText("and grab ahold of her latex-wrapped member, giving it gentle strokes along the underside.  Urta moans loudly and twitches her hips, already eager for more, and the ");
-	if (player.vaginas[0].vaginalWetness < VaginaClass.WETNESS_WET) outputText("growing moistness in your loins");
-	else if (player.vaginas[0].vaginalWetness < VaginaClass.WETNESS_DROOLING) outputText("sopping wetness in your loins");
+	if (player.vaginas[0].vaginalWetness < Vagina.WETNESS_WET) outputText("growing moistness in your loins");
+	else if (player.vaginas[0].vaginalWetness < Vagina.WETNESS_DROOLING) outputText("sopping wetness in your loins");
 	else outputText("flood of moisture leaking from your crotch");
 	outputText(" signals your readiness to take her.");
 	if (player.totalCocks() > 0) {
@@ -1805,8 +1805,8 @@ private function rideUrtasCoochLoveyDovey():void {
 	outputText("You climb in next to her, snuggling under the blankets and stroking her shaft, feeling yourself grow more and more ready as you tease your vulpine lover.  Urta doesn't move beyond rolling her eyes back and squirming her hips into your hand, trying to enhance the sensation.  She whines, \"<i>I thought you were going to fuck meee-</i>\"\n\n");
 
 	outputText("Her cries are muted as you launch yourself over her, brutalizing her eager lips with a ferocious kiss.  You roughly tongue-fuck her as you adjust yourself, balancing yourself with one hand while your other guides her trembling shaft closer and closer to the entrance of your " + player.vaginaDescript(0) + ".  You sigh happily and rub the pre-filled bulb against your opening, ");
-	if (player.vaginas[0].vaginalWetness < VaginaClass.WETNESS_WET) outputText("growing moist");
-	else if (player.vaginas[0].vaginalWetness < VaginaClass.WETNESS_DROOLING) outputText("growing wetter and wetter as you lubricate the tip of her condom");
+	if (player.vaginas[0].vaginalWetness < Vagina.WETNESS_WET) outputText("growing moist");
+	else if (player.vaginas[0].vaginalWetness < Vagina.WETNESS_DROOLING) outputText("growing wetter and wetter as you lubricate the tip of her condom");
 	else outputText("soaking her condom-covered cock with your copious cunt-secretions");
 	outputText(".  Urta's body goes limp under your sexual assault, totally caving in to the feelings you're stoking inside her.  The only thing she manages to keep up is the twisting of her hips as she tries to enhance the sensations radiating through her massive, flared prick.\n\n");
 
@@ -1922,7 +1922,7 @@ private function rideUrtaInButtAtHomeLove():void {
 	}
 	if (player.hasVagina()) {
 		outputText("  Neglected and unused, your " + player.vaginaDescript(0) + " ");
-		if (player.vaginas[0].vaginalWetness < VaginaClass.WETNESS_DROOLING) outputText("dampens");
+		if (player.vaginas[0].vaginalWetness < Vagina.WETNESS_DROOLING) outputText("dampens");
 		else outputText("floods");
 		outputText(" the fox underneath you with moisture, puffy and aching for the slightest touch.");
 	}
@@ -1939,8 +1939,8 @@ private function rideUrtaInButtAtHomeLove():void {
 		outputText("You cry out with pleasure, feeling your body cum from the invading warmth in your " + player.assholeDescript() + ".  Shivering as the strength drains from your arms and " + player.legs() + ", you let the intruding and still cumming cock support your body.");
 		if (player.hasVagina()) {
 			outputText("  Your " + player.vaginaDescript(0) + " clenches desperately, peaking without a single touch, but hungry for something to milk.");
-			if (player.vaginas[0].vaginalWetness > VaginaClass.WETNESS_WET && player.vaginas[0].vaginalWetness < VaginaClass.WETNESS_SLAVERING) outputText("  Fluids soak Urta's crotch with lust with feminine drool, though the fox barely seems to notice.");
-			else if (player.vaginas[0].vaginalWetness == VaginaClass.WETNESS_SLAVERING) outputText("  An explosion of feminine fluids spatters Urta's crotch and bed, completely soaking her groin in your need, but the distracted fox barely notices.");
+			if (player.vaginas[0].vaginalWetness > Vagina.WETNESS_WET && player.vaginas[0].vaginalWetness < Vagina.WETNESS_SLAVERING) outputText("  Fluids soak Urta's crotch with lust with feminine drool, though the fox barely seems to notice.");
+			else if (player.vaginas[0].vaginalWetness == Vagina.WETNESS_SLAVERING) outputText("  An explosion of feminine fluids spatters Urta's crotch and bed, completely soaking her groin in your need, but the distracted fox barely notices.");
 		}
 		if (player.totalCocks() > 0) {
 			outputText("  The warmth spreads deep inside you, firing off a series of contractions just inside your groin.  You can feel yourself about to cum, and look down just in time to see yourself squirting against your condom, deforming it from the pressure of the orgasm and slowly inflating it further.");
@@ -1985,7 +1985,7 @@ private function oralFiestyUberExplosionUrta():void {
 		outputText("You smile and let Urta know you want to sixty-nine her.  She raises an eyebrow and teases, \"<i>I hope you don't mind having a full belly and a sore throat!</i>\" as you disrobe and climb atop her.  You turn about, straddling your legs across her face and exposing the hungry lips of your sex.  Smirking over your shoulder, you snatch her discarded dress from the floor and tie the shimmering fabric into an impromptu cock-ring.  The gray fox shudders with excitement and you watch, enraptured, as her mottled horse-cock grows larger and larger, even flaring wide at the tip.\n\n");
 
 		outputText("The musky scent of Urta's forearm-sized horse-prick wafts into your nostrils as it wobbles just below your " + player.faceDescript() + ", visibly twitching and throbbing from all the extra blood.  She whines plaintively, nuzzling her moist nose against your ");
-		if (player.vaginas[0].vaginalWetness < VaginaClass.WETNESS_DROOLING) outputText("equally wet");
+		if (player.vaginas[0].vaginalWetness < Vagina.WETNESS_DROOLING) outputText("equally wet");
 		else outputText("sopping wet");
 		outputText(" cunt.  Shivering from the air on your bare skin and the unexpected touches on your nethers, you open wide, extend your tongue, and give Urta's flare a long, slow lick.  You pause at her urethra, slip ever-so-slightly inside, and then pull out as you slather the flare in spit.\n\n");
 
@@ -2001,7 +2001,7 @@ private function oralFiestyUberExplosionUrta():void {
 		if (player.cor <= 50) outputText("mouth");
 		else outputText("throat");
 		outputText(", clamping your " + player.legs() + " onto Urta's head as you orgasm.  ");
-		if (player.vaginas[0].vaginalWetness > VaginaClass.WETNESS_DROOLING) outputText("Fluids rush from your folds, splattering her face with sex fluid.  The fox opens wide, gulping it down like someone in a desert who has just found an oasis.");
+		if (player.vaginas[0].vaginalWetness > Vagina.WETNESS_DROOLING) outputText("Fluids rush from your folds, splattering her face with sex fluid.  The fox opens wide, gulping it down like someone in a desert who has just found an oasis.");
 		else outputText("Wetness slowly coats her muzzle as your canal squeezes and wriggles with involuntary pleasure-spasms.  Urta never lets up, sucking and licking your " + player.clitDescript() + " in a rhythm that matches your own orgasmic contractions.");
 		if (player.totalCocks() > 0) {
 			outputText("  ");

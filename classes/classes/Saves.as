@@ -1924,8 +1924,8 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		player.cocks = new Vector.<Cock>();
 		SerializationUtils.deserializeVector(player.cocks as Vector.<*>, saveFile.data.cocks, Cock);
 
-		player.vaginas = new Vector.<VaginaClass>();
-		SerializationUtils.deserializeVector(player.vaginas as Vector.<*>, saveFile.data.vaginas, VaginaClass);
+		player.vaginas = new Vector.<Vagina>();
+		SerializationUtils.deserializeVector(player.vaginas as Vector.<*>, saveFile.data.vaginas, Vagina);
 		
 		loadNPCs(saveFile);
 		

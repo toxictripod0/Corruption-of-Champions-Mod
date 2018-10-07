@@ -151,7 +151,7 @@ private function calledShot():void {
 							".  Pacing around you, the well-built young warrior intently studies her mentor's defenses, readying for your next attack.";
 			this.race = "Salamander";
 			// this.plural = false;
-			this.createVagina(false, VaginaClass.WETNESS_NORMAL, VaginaClass.LOOSENESS_NORMAL);
+			this.createVagina(false, Vagina.WETNESS_NORMAL, Vagina.LOOSENESS_NORMAL);
 			this.createStatusEffect(StatusEffects.BonusVCapacity, 85, 0, 0, 0);
 			createBreastRow(Appearance.breastCupInverse("E+"));
 			this.ass.analLooseness = AssClass.LOOSENESS_VIRGIN;

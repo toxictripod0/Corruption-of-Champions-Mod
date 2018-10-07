@@ -5,7 +5,7 @@
 	import mx.logging.ILogger;
 	import classes.internals.LoggerFactory;
 
-	public class VaginaClass implements Serializable
+	public class Vagina implements Serializable
 	{
 		private static const SERIALIZATION_VERSION:int = 1;
 		
@@ -28,10 +28,10 @@
 		public static const LOOSENESS_LEVEL_CLOWN_CAR:int =   5;
 
 		public static const DEFAULT_CLIT_LENGTH:Number = 0.5;
-		private static const LOGGER:ILogger = LoggerFactory.getLogger(VaginaClass);
+		private static const LOGGER:ILogger = LoggerFactory.getLogger(Vagina);
 		
 		//constructor
-		public function VaginaClass(vaginalWetness:Number = 1, vaginalLooseness:Number = 0, virgin:Boolean = false, clitLength:Number = DEFAULT_CLIT_LENGTH)
+		public function Vagina(vaginalWetness:Number = 1, vaginalLooseness:Number = 0, virgin:Boolean = false, clitLength:Number = DEFAULT_CLIT_LENGTH)
 		{
 			this.virgin=virgin;
 			this.vaginalWetness=vaginalWetness;
@@ -69,7 +69,7 @@
 		public function validate():String
 		{
 			var error:String = "";
-			error += Utils.validateNonNegativeNumberFields(this, "VaginaClass.validate", [
+			error += Utils.validateNonNegativeNumberFields(this, "Vagina.validate", [
 				"vaginalWetness", "vaginalLooseness", "type",
 				"fullness", "labiaPierced", "clitPierced", "clitLength", "recoveryProgress"
 			]);
@@ -132,7 +132,7 @@
 		public function stretch(cArea:Number, bonusCapacity:Number = 0, hasFeraMilkingTwat:Boolean = false):Boolean {
 			var stretched:Boolean = false;
 			LOGGER.debug("Vaginal stretch check, cock area {0} vs vagina capacity {1}", cArea, capacity(bonusCapacity));
-			if (!hasFeraMilkingTwat || vaginalLooseness <= VaginaClass.LOOSENESS_NORMAL) {
+			if (!hasFeraMilkingTwat || vaginalLooseness <= Vagina.LOOSENESS_NORMAL) {
 				//cArea > capacity = autostreeeeetch.
 				if (cArea >= capacity(bonusCapacity)) {
 					vaginalLooseness++;
@@ -149,8 +149,8 @@
 					stretched = true;
 				}
 			}
-			if (vaginalLooseness > VaginaClass.LOOSENESS_LEVEL_CLOWN_CAR) vaginalLooseness = VaginaClass.LOOSENESS_LEVEL_CLOWN_CAR;
-			if (hasFeraMilkingTwat && vaginalLooseness > VaginaClass.LOOSENESS_LOOSE) vaginalLooseness = VaginaClass.LOOSENESS_LOOSE;
+			if (vaginalLooseness > Vagina.LOOSENESS_LEVEL_CLOWN_CAR) vaginalLooseness = Vagina.LOOSENESS_LEVEL_CLOWN_CAR;
+			if (hasFeraMilkingTwat && vaginalLooseness > Vagina.LOOSENESS_LOOSE) vaginalLooseness = Vagina.LOOSENESS_LOOSE;
 
 			if (virgin) {
 				virgin = false;
@@ -218,7 +218,7 @@
 					}
 					
 					if(relativeRootObject.clitLength === undefined) {
-						relativeRootObject.clitLength = VaginaClass.DEFAULT_CLIT_LENGTH;
+						relativeRootObject.clitLength = Vagina.DEFAULT_CLIT_LENGTH;
 						LOGGER.warn("Clit length was not loaded, setting to default({0})", relativeRootObject.clitLength);
 					}
 					

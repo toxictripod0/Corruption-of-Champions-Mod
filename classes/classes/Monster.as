@@ -277,7 +277,7 @@
 			///*OPTIONAL*/ //this.cumMultiplier = ; // default 1
 			///*OPTIONAL*/ //this.hoursSinceCum = ; // default 0
 			//// 2.2. Female
-			///*REQUIRED*/ this.createVagina(virgin=true|false,VaginaClass.WETNESS_,VaginaClass.LOOSENESS_); // default true,normal,tight
+			///*REQUIRED*/ this.createVagina(virgin=true|false,Vagina.WETNESS_,Vagina.LOOSENESS_); // default true,normal,tight
 			///*OPTIONAL*/ //this.createStatusEffect(StatusEffects.BonusVCapacity, bonus, 0, 0, 0);
 			//// 2.3. Hermaphrodite
 			//// Just create cocks and vaginas. Last call determines pronouns.
@@ -523,7 +523,7 @@
 		protected function initGenderless():void
 		{
 			this.cocks = new Vector.<Cock>();
-			this.vaginas = new Vector.<VaginaClass>();
+			this.vaginas = new Vector.<Vagina>();
 			initedGenitals = true;
 			if (plural) {
 				this.pronoun1 = "they";
@@ -1048,7 +1048,7 @@
 			if (cumMultiplier !== 1 || cocks.length > 0) result += Pronoun1 + " " + have+" cum multiplier " + cumMultiplier + ". ";
 			if (hoursSinceCum > 0 || cocks.length > 0) result += "It were " + hoursSinceCum + " hours since " + pronoun1 + " came.\n\n";
 			for (i = 0; i < vaginas.length; i++) {	
-				var vagina:VaginaClass = (vaginas[i] as VaginaClass);
+				var vagina:Vagina = (vaginas[i] as Vagina);
 				result += Pronoun3+ (i>0?(" #"+(i+1)):"")+" "+(Appearance.DEFAULT_VAGINA_TYPE_NAMES[vagina.type]||("vaginaType#"+vagina.type))+(vagina.virgin?" ":" non-")+"virgin vagina is ";
 				result += Appearance.describeByScale(vagina.vaginalLooseness,Appearance.DEFAULT_VAGINA_LOOSENESS_SCALES,"tighter than","looser than");
 				result += ", "+Appearance.describeByScale(vagina.vaginalWetness,Appearance.DEFAULT_VAGINA_WETNESS_SCALES,"drier than","wetter than");

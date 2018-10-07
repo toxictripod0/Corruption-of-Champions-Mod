@@ -175,33 +175,33 @@ public class CorruptedGlade extends BaseContent implements TimeAwareInterface,En
 				if (tentacle == 0) { //Small
 					outputText("a little small for your ");
 					switch (player.vaginas[0].vaginalLooseness) {
-						case VaginaClass.LOOSENESS_TIGHT:		tentacleSize =   0; break;
-						case VaginaClass.LOOSENESS_NORMAL:		tentacleSize =   4; break;
-						case VaginaClass.LOOSENESS_LOOSE:		tentacleSize =  16; break;
-						case VaginaClass.LOOSENESS_GAPING:		tentacleSize =  40; break;
-						case VaginaClass.LOOSENESS_GAPING_WIDE:	tentacleSize =  65; break;
+						case Vagina.LOOSENESS_TIGHT:		tentacleSize =   0; break;
+						case Vagina.LOOSENESS_NORMAL:		tentacleSize =   4; break;
+						case Vagina.LOOSENESS_LOOSE:		tentacleSize =  16; break;
+						case Vagina.LOOSENESS_GAPING:		tentacleSize =  40; break;
+						case Vagina.LOOSENESS_GAPING_WIDE:	tentacleSize =  65; break;
 						default:							tentacleSize = 100;
 					}
 				}
 				if (tentacle == 1) { //Normal
 					outputText("well suited to your ");
 					switch (player.vaginas[0].vaginalLooseness) {
-						case VaginaClass.LOOSENESS_TIGHT:		tentacleSize =   3; break;
-						case VaginaClass.LOOSENESS_NORMAL:		tentacleSize =   7; break;
-						case VaginaClass.LOOSENESS_LOOSE:		tentacleSize =  26; break;
-						case VaginaClass.LOOSENESS_GAPING:		tentacleSize =  60; break;
-						case VaginaClass.LOOSENESS_GAPING_WIDE:	tentacleSize = 115; break;
+						case Vagina.LOOSENESS_TIGHT:		tentacleSize =   3; break;
+						case Vagina.LOOSENESS_NORMAL:		tentacleSize =   7; break;
+						case Vagina.LOOSENESS_LOOSE:		tentacleSize =  26; break;
+						case Vagina.LOOSENESS_GAPING:		tentacleSize =  60; break;
+						case Vagina.LOOSENESS_GAPING_WIDE:	tentacleSize = 115; break;
 						default:							tentacleSize = 175;
 					}
 				}
 				if (tentacle == 2) { //Large
 					outputText("almost too big to cram in your ");
 					switch (player.vaginas[0].vaginalLooseness) {
-						case VaginaClass.LOOSENESS_TIGHT:		tentacleSize =   6; break;
-						case VaginaClass.LOOSENESS_NORMAL:		tentacleSize =   9; break;
-						case VaginaClass.LOOSENESS_LOOSE:		tentacleSize =  34; break;
-						case VaginaClass.LOOSENESS_GAPING:		tentacleSize =  78; break;
-						case VaginaClass.LOOSENESS_GAPING_WIDE:	tentacleSize = 135; break;
+						case Vagina.LOOSENESS_TIGHT:		tentacleSize =   6; break;
+						case Vagina.LOOSENESS_NORMAL:		tentacleSize =   9; break;
+						case Vagina.LOOSENESS_LOOSE:		tentacleSize =  34; break;
+						case Vagina.LOOSENESS_GAPING:		tentacleSize =  78; break;
+						case Vagina.LOOSENESS_GAPING_WIDE:	tentacleSize = 135; break;
 						default:							tentacleSize = 210;
 					}
 				}

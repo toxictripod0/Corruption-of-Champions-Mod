@@ -4,7 +4,7 @@ package classes.Scenes.Dungeons.LethicesKeep
 	import classes.BreastRowClass;
 	import classes.Cock;
 	import classes.Monster;
-	import classes.VaginaClass;
+	import classes.Vagina;
 	import classes.StatusEffects;
 	
 	/**
@@ -258,17 +258,17 @@ package classes.Scenes.Dungeons.LethicesKeep
 			if (player.vaginas.length > 0)
 			{
 				this.createVagina();
-				(this.vaginas[0] as VaginaClass).vaginalLooseness = player.vaginas[0].vaginalLooseness;
-				(this.vaginas[0] as VaginaClass).vaginalWetness = player.vaginas[0].vaginalWetness;
-				(this.vaginas[0] as VaginaClass).virgin = player.vaginas[0].virgin;
+				(this.vaginas[0] as Vagina).vaginalLooseness = player.vaginas[0].vaginalLooseness;
+				(this.vaginas[0] as Vagina).vaginalWetness = player.vaginas[0].vaginalWetness;
+				(this.vaginas[0] as Vagina).virgin = player.vaginas[0].virgin;
 			}
 			//Genderless get forced to have a cunny
 			if (player.vaginas.length == 0 && player.cocks.length == 0)
 			{
 				this.createVagina();
-				(this.vaginas[0] as VaginaClass).vaginalLooseness = 2;
-				(this.vaginas[0] as VaginaClass).vaginalWetness = 6;
-				(this.vaginas[0] as VaginaClass).virgin = false;
+				(this.vaginas[0] as Vagina).vaginalLooseness = 2;
+				(this.vaginas[0] as Vagina).vaginalWetness = 6;
+				(this.vaginas[0] as Vagina).virgin = false;
 			}
 			this.breastRows = new Vector.<BreastRowClass>();
 			
