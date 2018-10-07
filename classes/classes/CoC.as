@@ -683,7 +683,7 @@ package classes
 			registerClassAlias("Enum", Enum);
 			registerClassAlias("Creature", Creature);
 			registerClassAlias("ItemSlot", ItemSlot);
-			registerClassAlias("KeyItemClass", KeyItemClass);
+			registerClassAlias("KeyItem", KeyItem);
 			registerClassAlias("Monster", Monster);
 			registerClassAlias("Player", Player);
 			registerClassAlias("StatusEffectClass", StatusEffectClass);
