@@ -585,7 +585,7 @@ package classes
 		//Monsters have few perks, which I think should be a status effect for clarity's sake.
 		//TODO: Move perks into monster status effects.
 		private var _perks:Array;
-		public function perk(i:int):PerkClass{
+		public function perk(i:int):Perk{
 			return _perks[i];
 		}
 		public function get perks():Array {
@@ -692,7 +692,7 @@ package classes
 		//Create a perk
 		public function createPerk(ptype:PerkType, value1:Number = 0, value2:Number = 0, value3:Number = 0, value4:Number = 0):void
 		{
-			var newKeyItem:PerkClass = new PerkClass(ptype);
+			var newKeyItem:Perk = new Perk(ptype);
 			//used to denote that the array has already had its new spot pushed on.
 			var arrayed:Boolean = false;
 			//used to store where the array goes
@@ -802,7 +802,7 @@ package classes
 		}
 		
 		/**
-		 * Find an array element number for a perk. Useful when you want to work with a PerkClass instance.
+		 * Find an array element number for a perk. Useful when you want to work with a Perk instance.
 		 */
 		public function findPerk(ptype:PerkType):Number
 		{

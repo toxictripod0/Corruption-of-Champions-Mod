@@ -1393,7 +1393,7 @@ package classes {
 			clearOutput();
 			genericGenderChoice();
 		}
-		private function isAscensionPerk(perk:PerkClass, respec:Boolean = false):Boolean { return perk.ptype.keepOnAscension(respec) || perk.value4 > 0; }
+		private function isAscensionPerk(perk:Perk, respec:Boolean = false):Boolean { return perk.ptype.keepOnAscension(respec) || perk.value4 > 0; }
 		private function isSpecialKeyItem(keyName:* = null):Boolean { return (keyName === "Camp - Chest" || keyName === "Camp - Murky Chest" || keyName === "Camp - Ornate Chest" || keyName === "Equipment Rack - Weapons" || keyName === "Equipment Rack - Armor" || keyName === "Equipment Rack - Shields" || keyName === Inventory.STORAGE_JEWELRY_BOX || keyName === "Backpack" || keyName === "Nieve's Tear"); }
 		private function isSpell(statusEffect:* = null):Boolean { return (statusEffect === StatusEffects.KnowsCharge || statusEffect === StatusEffects.KnowsBlind || statusEffect === StatusEffects.KnowsWhitefire || statusEffect === StatusEffects.KnowsArouse || statusEffect === StatusEffects.KnowsHeal || statusEffect === StatusEffects.KnowsMight || statusEffect === StatusEffects.KnowsBlackfire); }
 	}

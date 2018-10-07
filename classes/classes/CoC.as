@@ -20,7 +20,7 @@ package classes
 	import classes.ItemSlot;
 	import classes.Items.*;
 	import classes.Parser.Parser;
-	import classes.PerkClass;
+	import classes.Perk;
 	import classes.PerkLib;
 	import classes.Player;
 	import classes.Scenes.*;
@@ -671,7 +671,7 @@ package classes
 			
 			// ******************************************************************************************
 			
-			mainView.aCb.items = [{label: "TEMP", perk: new PerkClass(PerkLib.Acclimation)}];
+			mainView.aCb.items = [{label: "TEMP", perk: new Perk(PerkLib.Acclimation)}];
 			mainView.aCb.addEventListener(Event.SELECT, playerInfo.changeHandler);
 			
 			//Register the classes we need to be able to serialize and reconstitute so
