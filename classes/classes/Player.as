@@ -29,16 +29,16 @@
 		
 		public function Player() {
 			//Item things
-			itemSlot1 = new ItemSlotClass();
-			itemSlot2 = new ItemSlotClass();
-			itemSlot3 = new ItemSlotClass();
-			itemSlot4 = new ItemSlotClass();
-			itemSlot5 = new ItemSlotClass();
-			itemSlot6 = new ItemSlotClass();
-			itemSlot7 = new ItemSlotClass();
-			itemSlot8 = new ItemSlotClass();
-			itemSlot9 = new ItemSlotClass();
-			itemSlot10 = new ItemSlotClass();
+			itemSlot1 = new ItemSlot();
+			itemSlot2 = new ItemSlot();
+			itemSlot3 = new ItemSlot();
+			itemSlot4 = new ItemSlot();
+			itemSlot5 = new ItemSlot();
+			itemSlot6 = new ItemSlot();
+			itemSlot7 = new ItemSlot();
+			itemSlot8 = new ItemSlot();
+			itemSlot9 = new ItemSlot();
+			itemSlot10 = new ItemSlot();
 			itemSlots = [itemSlot1, itemSlot2, itemSlot3, itemSlot4, itemSlot5, itemSlot6, itemSlot7, itemSlot8, itemSlot9, itemSlot10];
 		}
 		
@@ -85,17 +85,17 @@
 		}
 
 		// Inventory
-		public var itemSlot1:ItemSlotClass;
-		public var itemSlot2:ItemSlotClass;
-		public var itemSlot3:ItemSlotClass;
-		public var itemSlot4:ItemSlotClass;
-		public var itemSlot5:ItemSlotClass;
-		public var itemSlot6:ItemSlotClass;
-		public var itemSlot7:ItemSlotClass;
-		public var itemSlot8:ItemSlotClass;
-		public var itemSlot9:ItemSlotClass;
-		public var itemSlot10:ItemSlotClass;
-		public var itemSlots:/*ItemSlotClass*/Array;
+		public var itemSlot1:ItemSlot;
+		public var itemSlot2:ItemSlot;
+		public var itemSlot3:ItemSlot;
+		public var itemSlot4:ItemSlot;
+		public var itemSlot5:ItemSlot;
+		public var itemSlot6:ItemSlot;
+		public var itemSlot7:ItemSlot;
+		public var itemSlot8:ItemSlot;
+		public var itemSlot9:ItemSlot;
+		public var itemSlot10:ItemSlot;
+		public var itemSlots:/*ItemSlot*/Array;
 		
 		public var prisonItemSlots:Array = [];
 		public var previouslyWornClothes:/*String*/Array = []; //For tracking achievement.
@@ -3134,7 +3134,7 @@
 				return false;
 			}
 			//From here we can be sure the player has enough of the item in inventory
-			var slot:ItemSlotClass;
+			var slot:ItemSlot;
 			while (amount > 0) {
 				slot = getLowestSlot(itype); //Always draw from the least filled slots first
 				if (slot.quantity > amount) {
@@ -3149,7 +3149,7 @@
 			return true;
 /*			
 			var consumed:Boolean = false;
-			var slot:ItemSlotClass;
+			var slot:ItemSlot;
 			while (amount > 0)
 			{
 				if (!hasItem(itype,1))
@@ -3175,10 +3175,10 @@
 */
 		}
 
-		public function getLowestSlot(itype:ItemType):ItemSlotClass
+		public function getLowestSlot(itype:ItemType):ItemSlot
 		{
-			var minslot:ItemSlotClass = null;
-			for each (var slot:ItemSlotClass in itemSlots) {
+			var minslot:ItemSlot = null;
+			for each (var slot:ItemSlot in itemSlots) {
 				if (slot.itype == itype) {
 					if (minslot == null || slot.quantity < minslot.quantity) {
 						minslot = slot;
@@ -3194,7 +3194,7 @@
 		
 		public function itemCount(itype:ItemType):int {
 			var count:int = 0;
-			for each (var itemSlot:ItemSlotClass in itemSlots){
+			for each (var itemSlot:ItemSlot in itemSlots){
 				if (itemSlot.itype == itype) count += itemSlot.quantity;
 			}
 			return count;
@@ -3209,7 +3209,7 @@
 			return -1;
 		}
 
-		public function itemSlot(idx:int):ItemSlotClass
+		public function itemSlot(idx:int):ItemSlot
 		{
 			return itemSlots[idx];
 		}

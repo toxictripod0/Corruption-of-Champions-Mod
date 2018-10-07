@@ -17,7 +17,7 @@ package classes
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.ImageManager;
 	import classes.InputManager;
-	import classes.ItemSlotClass;
+	import classes.ItemSlot;
 	import classes.Items.*;
 	import classes.Parser.Parser;
 	import classes.PerkClass;
@@ -682,7 +682,7 @@ package classes
 			registerClassAlias("CockTypesEnum", CockTypesEnum);
 			registerClassAlias("Enum", Enum);
 			registerClassAlias("Creature", Creature);
-			registerClassAlias("ItemSlotClass", ItemSlotClass);
+			registerClassAlias("ItemSlot", ItemSlot);
 			registerClassAlias("KeyItemClass", KeyItemClass);
 			registerClassAlias("Monster", Monster);
 			registerClassAlias("Player", Player);

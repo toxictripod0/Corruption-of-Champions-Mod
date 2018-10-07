@@ -1,9 +1,9 @@
 ﻿package classes
 {
-	public class ItemSlotClass extends Object
+	public class ItemSlot extends Object
 	{
 		//constructor
-		public function ItemSlotClass()
+		public function ItemSlot()
 		{
 		}
 		
@@ -51,7 +51,7 @@
 			return _quantity;
 		}
 		public function set quantity(value:int):void {
-			if (value > 0 && _itype == null) CoC_Settings.error("ItemSlotClass.quantity set with no item; use setItemAndQty instead!");
+			if (value > 0 && _itype == null) CoC_Settings.error("ItemSlot.quantity set with no item; use setItemAndQty instead!");
 			if (value == 0) _itype = ItemType.NOTHING;
 			_quantity = value;
 		}

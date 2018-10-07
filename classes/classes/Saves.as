@@ -2147,7 +2147,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			{
 				//trace("Populating a storage slot save with data");
 				inventory.createStorage();
-				var storage:ItemSlotClass = itemStorageGet()[i];
+				var storage:ItemSlot = itemStorageGet()[i];
 				var savedIS:* = saveFile.data.itemStorage[i];
 				if (savedIS.shortName)
 				{
@@ -2175,7 +2175,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		{
 			for (i = 0; i < saveFile.data.gearStorage.length && gearStorageGet().length < 45; i++)
 			{
-				gearStorageGet().push(new ItemSlotClass());
+				gearStorageGet().push(new ItemSlot());
 					//trace("Initialize a slot for one of the item storage locations to load.");
 			}
 			//Populate storage slot array
@@ -2588,7 +2588,7 @@ public function unFuckSave():void
 	if (flags[kFLAGS.LETHICE_DEFEATED] > 0 && flags[kFLAGS.D3_JEAN_CLAUDE_DEFEATED] == 0) flags[kFLAGS.D3_JEAN_CLAUDE_DEFEATED] = 1; 
 	if (gearStorageGet().length < 45) {
 		while (gearStorageGet().length < 45) {
-			gearStorageGet().push(new ItemSlotClass());
+			gearStorageGet().push(new ItemSlot());
 		}
 	}
 	if (player.hasKeyItem("Laybans") >= 0) {
