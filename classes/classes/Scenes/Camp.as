@@ -2066,16 +2066,16 @@ public function setLevelButton():Boolean {
 		if (player.XP < player.requiredXP() || player.level >= kGAMECLASS.levelCap) {
 			if (player.statPoints > 0) {
 				mainView.setMenuButton (MainView.MENU_LEVEL, "Stat Up");
-				mainView.levelButton.toolTipText = "Distribute your stats points. \n\nYou currently have " + String(player.statPoints) + ".";
+				mainView.levelButton.toolTipTextInstance = "Distribute your stats points. \n\nYou currently have " + String(player.statPoints) + ".";
 			}
 			else {
 				mainView.setMenuButton (MainView.MENU_LEVEL, "Perk Up");
-				mainView.levelButton.toolTipText = "Spend your perk points on a new perk. \n\nYou currently have " + String(player.perkPoints) + ".";
+				mainView.levelButton.toolTipTextInstance = "Spend your perk points on a new perk. \n\nYou currently have " + String(player.perkPoints) + ".";
 			}
 		}
 		else {
 			mainView.setMenuButton (MainView.MENU_LEVEL, "Level Up");
-			mainView.levelButton.toolTipText = "Level up to increase your maximum HP by 15 and gain 5 attribute points and 1 perk points.";
+			mainView.levelButton.toolTipTextInstance = "Level up to increase your maximum HP by 15 and gain 5 attribute points and 1 perk points.";
 			if (flags[kFLAGS.AUTO_LEVEL] > 0) {
 				kGAMECLASS.playerInfo.levelUpGo();
 				return true; //true indicates that you should be routed to level-up
