@@ -504,7 +504,7 @@ package classes
 		private var _femininity:Number = 50;
 		public function get femininity():Number {
 			var fem:Number = _femininity;
-			const effect:StatusEffectClass = statusEffectByType(StatusEffects.UmasMassage);
+			const effect:StatusEffect = statusEffectByType(StatusEffects.UmasMassage);
 			if (effect != null && effect.value1 == UmasShop.MASSAGE_MODELLING_BONUS) {
 				fem += effect.value2;
 			}
@@ -975,21 +975,21 @@ package classes
 		
 		*/
 		//{region StatusEffects
-		public function createOrFindStatusEffect(stype:StatusEffectType):StatusEffectClass
+		public function createOrFindStatusEffect(stype:StatusEffectType):StatusEffect
 		{
-			var sec:StatusEffectClass = statusEffectByType(stype);
+			var sec:StatusEffect = statusEffectByType(stype);
 			if (!sec) sec = createStatusEffect(stype,0,0,0,0);
 			return sec;
 		}
 		//Create a status
-		public function createStatusEffect(stype:StatusEffectType, value1:Number, value2:Number, value3:Number, value4:Number, fireEvent:Boolean = true):StatusEffectClass
+		public function createStatusEffect(stype:StatusEffectType, value1:Number, value2:Number, value3:Number, value4:Number, fireEvent:Boolean = true):StatusEffect
 		{
-			var newStatusEffect:StatusEffectClass = stype.create(value1,value2,value3,value4);
+			var newStatusEffect:StatusEffect = stype.create(value1,value2,value3,value4);
 			statusEffects.push(newStatusEffect);
 			newStatusEffect.addedToHostList(this,fireEvent);
 			return newStatusEffect;
 		}
-		public function addStatusEffect(sec:StatusEffectClass/*,fireEvent:Boolean = true*/):void {
+		public function addStatusEffect(sec:StatusEffect/*,fireEvent:Boolean = true*/):void {
 			if (sec.host != this) {
 				sec.remove();
 				sec.attach(this/*,fireEvent*/);
@@ -999,16 +999,16 @@ package classes
 			}
 		}
 		//Remove a status
-		public function removeStatusEffect(stype:StatusEffectType/*, fireEvent:Boolean = true*/):StatusEffectClass
+		public function removeStatusEffect(stype:StatusEffectType/*, fireEvent:Boolean = true*/):StatusEffect
 		{
 			var counter:Number = indexOfStatusEffect(stype);
 			if (counter < 0) return null;
-			var sec:StatusEffectClass = statusEffects[counter];
+			var sec:StatusEffect = statusEffects[counter];
 			statusEffects.splice(counter, 1);
 			sec.removedFromHostList(true);
 			return sec;
 		}
-		public function removeStatusEffectInstance(sec:StatusEffectClass/*, fireEvent:Boolean = true*/):void {
+		public function removeStatusEffectInstance(sec:StatusEffect/*, fireEvent:Boolean = true*/):void {
 			var i:int = statusEffects.indexOf(sec);
 			if (i < 0) return;
 			statusEffects.splice(i, 1);
@@ -1017,13 +1017,13 @@ package classes
 		
 		public function indexOfStatusEffect(stype:StatusEffectType):int {
 			for (var counter:int = 0; counter < statusEffects.length; counter++) {
-				if ((statusEffects[counter] as StatusEffectClass).stype == stype)
+				if ((statusEffects[counter] as StatusEffect).stype == stype)
 					return counter;
 			}
 			return -1;
 		}
 
-		public function statusEffectByType(stype:StatusEffectType):StatusEffectClass {
+		public function statusEffectByType(stype:StatusEffectType):StatusEffect {
 			var idx:int = indexOfStatusEffect(stype);
 			return idx<0 ? null : statusEffects[idx];
 		}
@@ -1033,7 +1033,7 @@ package classes
 		//}endregion
 		
 		public function changeStatusValue(stype:StatusEffectType, statusValueNum:Number = 1, newNum:Number = 0):void {
-			var effect:StatusEffectClass = statusEffectByType(stype);
+			var effect:StatusEffect = statusEffectByType(stype);
 			//Various Errors preventing action
 			if (effect == null)return;
 			if (statusValueNum < 1 || statusValueNum > 4) {
@@ -1053,7 +1053,7 @@ package classes
 		public function addStatusValue(stype:StatusEffectType, statusValueNum:Number = 1, bonus:Number = 0):void
 		{
 			//Various Errors preventing action
-			var effect:StatusEffectClass = statusEffectByType(stype);
+			var effect:StatusEffect = statusEffectByType(stype);
 			if (effect == null) return;
 			if (statusValueNum < 1 || statusValueNum > 4)
 			{
@@ -1070,38 +1070,38 @@ package classes
 				effect.value4 += bonus;
 		}
 		
-		public function statusEffect(idx:int):StatusEffectClass
+		public function statusEffect(idx:int):StatusEffect
 		{
 			return statusEffects [idx];
 		}
 		
 		public function statusEffectv1(stype:StatusEffectType,defaultValue:Number=0):Number
 		{
-			var effect:StatusEffectClass = statusEffectByType(stype);
+			var effect:StatusEffect = statusEffectByType(stype);
 			return (effect==null)?defaultValue:effect.value1;
 		}
 		
 		public function statusEffectv2(stype:StatusEffectType,defaultValue:Number=0):Number
 		{
-			var effect:StatusEffectClass = statusEffectByType(stype);
+			var effect:StatusEffect = statusEffectByType(stype);
 			return (effect==null)?defaultValue:effect.value2;
 		}
 
 		public function statusEffectv3(stype:StatusEffectType,defaultValue:Number=0):Number
 		{
-			var effect:StatusEffectClass = statusEffectByType(stype);
+			var effect:StatusEffect = statusEffectByType(stype);
 			return (effect==null)?defaultValue:effect.value3;
 		}
 
 		public function statusEffectv4(stype:StatusEffectType,defaultValue:Number=0):Number
 		{
-			var effect:StatusEffectClass = statusEffectByType(stype);
+			var effect:StatusEffect = statusEffectByType(stype);
 			return (effect==null)?defaultValue:effect.value4;
 		}
 
 		public function removeStatuses(fireEvent:Boolean):void
 		{
-			var a:/*StatusEffectClass*/Array=statusEffects.splice(0,statusEffects.length);
+			var a:/*StatusEffect*/Array=statusEffects.splice(0,statusEffects.length);
 			for (var n:int=a.length,i:int=0;i<n;i++) {
 				a[i].removedFromHostList(fireEvent);
 			}
@@ -3854,7 +3854,7 @@ package classes
 			if (statusEffectv1(StatusEffects.BlackCatBeer) > 0)
 				mult *= 0.75;
 			// Uma's Massage bonuses
-			var effect:StatusEffectClass = statusEffectByType(StatusEffects.UmasMassage);
+			var effect:StatusEffect = statusEffectByType(StatusEffects.UmasMassage);
 			if (effect != null && effect.value1 == UmasShop.MASSAGE_RELAXATION) {
 				mult *= effect.value2;
 			}
@@ -3923,7 +3923,7 @@ package classes
 			if (weaponName == game.weapons.HNTCANE.name) lust *= 0.75;
 			// Lust mods from Uma's content -- Given the short duration and the gem cost, I think them being multiplicative is justified.
 			// Changing them to an additive bonus should be pretty simple (check the static values in UmasShop.as)
-			var effect:StatusEffectClass = statusEffectByType(StatusEffects.UmasMassage);
+			var effect:StatusEffect = statusEffectByType(StatusEffects.UmasMassage);
 			if (effect != null) {
 				if (effect.value1 == UmasShop.MASSAGE_RELIEF || effect.value1 == UmasShop.MASSAGE_LUST) {
 					lust *= effect.value2;

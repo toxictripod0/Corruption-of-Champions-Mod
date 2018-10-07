@@ -54,7 +54,7 @@ package classes
 	import classes.Scenes.Seasonal.Thanksgiving;
 	import classes.Scenes.Seasonal.Valentines;
 	import classes.Scenes.Seasonal.XmasBase;
-	import classes.StatusEffectClass;
+	import classes.StatusEffect;
 	import classes.Vagina;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
@@ -686,7 +686,7 @@ package classes
 			registerClassAlias("KeyItem", KeyItem);
 			registerClassAlias("Monster", Monster);
 			registerClassAlias("Player", Player);
-			registerClassAlias("StatusEffectClass", StatusEffectClass);
+			registerClassAlias("StatusEffect", StatusEffect);
 			registerClassAlias("Vagina", Vagina);
 			
 			//Hide sprites

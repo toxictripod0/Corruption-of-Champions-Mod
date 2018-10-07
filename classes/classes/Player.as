@@ -3122,7 +3122,7 @@
 					flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = flags[kFLAGS.PLAYER_DISARMED_WEAPON_ID];
 				}
 			}
-			for (var a:/*StatusEffectClass*/Array=statusEffects.slice(),n:int=a.length,i:int=0;i<n;i++) {
+			for (var a:/*StatusEffect*/Array=statusEffects.slice(),n:int=a.length,i:int=0;i<n;i++) {
 				// Using a copy of array in case effects are removed/added in handler
 				if (statusEffects.indexOf(a[i])>=0) a[i].onCombatEnd();
 			}
@@ -3464,7 +3464,7 @@
 				if (output) {
 					outputText("\n\nYour mind clouds as your " + vaginaDescript(0) + " moistens.  Despite already being in heat, the desire to copulate constantly grows even larger.");
 				}
-				const effect:StatusEffectClass = statusEffectByType(StatusEffects.Heat);
+				const effect:StatusEffect = statusEffectByType(StatusEffects.Heat);
 				effect.value1 += 5 * intensity;
 				effect.value2 += 5 * intensity;
 				effect.value3 += 48 * intensity;

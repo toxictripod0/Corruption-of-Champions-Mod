@@ -282,7 +282,7 @@ internal function tentacleLossRape():void {
 	}
 	//Bad end + counter here
 	if (player.lust >= player.maxLust()) {
-		var tbec:StatusEffectClass = player.statusEffectByType(StatusEffects.TentacleBadEndCounter);
+		var tbec:StatusEffect = player.statusEffectByType(StatusEffects.TentacleBadEndCounter);
 		if (tbec == null) {
 			player.createStatusEffect(StatusEffects.TentacleBadEndCounter,0,0,0,0);
 		} else {

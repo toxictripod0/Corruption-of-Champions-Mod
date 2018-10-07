@@ -1110,7 +1110,7 @@
 				game.urtaQuest.milkyUrtaTic();
 			}
 			//Countdown
-			var tcd:StatusEffectClass = statusEffectByType(StatusEffects.TentacleCoolDown);
+			var tcd:StatusEffect = statusEffectByType(StatusEffects.TentacleCoolDown);
 			if (tcd!=null) {
 				tcd.value1-=1;
 				if (tcd.value1 <= 0) {

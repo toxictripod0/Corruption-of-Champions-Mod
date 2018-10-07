@@ -368,7 +368,7 @@ package classes.Scenes.Areas.HighMountains
 		// Update the duration of the pipe smoke effect
 		public function updateSmokeDuration(hours:int):void
 		{
-			var effect:StatusEffectClass = player.statusEffectByType(StatusEffects.IzumisPipeSmoke);
+			var effect:StatusEffect = player.statusEffectByType(StatusEffects.IzumisPipeSmoke);
 			if (effect != null) {
 				effect.value1 -= hours;
 				if (effect.value1 <= 0) {
@@ -380,7 +380,7 @@ package classes.Scenes.Areas.HighMountains
 		// Method to contain removal mechanics + scene text to spit out
 		protected function smokeEffectWearsOff():void
 		{
-			var effect:StatusEffectClass = player.statusEffectByType(StatusEffects.IzumisPipeSmoke);
+			var effect:StatusEffect = player.statusEffectByType(StatusEffects.IzumisPipeSmoke);
 
 			if (effect != null) {
 				player.spe += Math.abs(effect.value2);

@@ -3,10 +3,10 @@
 import classes.GlobalFlags.kGAMECLASS;
 import classes.internals.Utils;
 
-	public class StatusEffectClass extends Utils
+	public class StatusEffect extends Utils
 	{
 		//constructor
-		public function StatusEffectClass(stype:StatusEffectType)
+		public function StatusEffect(stype:StatusEffectType)
 		{
 			this._stype = stype;
 		}
@@ -87,7 +87,7 @@ import classes.internals.Utils;
 		}
 
 		protected static function register(id:String,statusEffectClass:Class,arity:int=0):StatusEffectType {
-			return new StatusEffectType(id,statusEffectClass || StatusEffectClass,arity);
+			return new StatusEffectType(id,statusEffectClass || StatusEffect,arity);
 		}
 		protected static function get game():CoC {
 			return kGAMECLASS;

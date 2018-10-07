@@ -2103,7 +2103,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 				CoC_Settings.error("Cannot find status affect '"+saveFile.data.statusAffects[i].statusAffectName+"'");
 				continue;
 			}
-			var sec:StatusEffectClass = player.createStatusEffect(
+			var sec:StatusEffect = player.createStatusEffect(
 				stype,
 				saveFile.data.statusAffects[i].value1,
 				saveFile.data.statusAffects[i].value2,
