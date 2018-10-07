@@ -3,7 +3,7 @@
 	import classes.internals.Utils;
 	import classes.lists.BreastCup;
 
-	public class BreastRowClass
+	public class BreastRow
 	{
 		public var breasts:Number = 2;
 		public var nipplesPerBreast:Number = 1;
@@ -19,7 +19,7 @@
 		public function validate():String
 		{
 			var error:String = "";
-			error += Utils.validateNonNegativeNumberFields(this, "BreastRowClass.validate", [
+			error += Utils.validateNonNegativeNumberFields(this, "BreastRow.validate", [
 					"breasts", "nipplesPerBreast", "breastRating", "lactationMultiplier",
 					"milkFullness", "fullness"
 			]);

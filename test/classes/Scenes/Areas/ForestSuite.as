@@ -4,7 +4,7 @@ package classes.Scenes.Areas
 	
 	[Suite]
 	[RunWith("org.flexunit.runners.Suite")]
-	public class ForestSuit
+	public class ForestSuite
 	{
 		public var faerieTest:FaerieTest;
 	}

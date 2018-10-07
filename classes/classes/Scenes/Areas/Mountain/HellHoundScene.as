@@ -65,7 +65,7 @@ package classes.Scenes.Areas.Mountain
 				if (player.vaginas[0].virgin) outputText("<b>You are no longer a virgin!  </b>");
 				if (player.cuntChange(monster.cockArea(0), false)) outputText("The beast howls as your " + player.vaginaDescript(0) + " is stretched to accommodate the large shaft.  ");
 				outputText("The hellhound pants for a few seconds before continuing.  ");
-				if (player.vaginas[0].vaginalWetness < VaginaClass.WETNESS_WET) outputText("The pause gives your " + player.vaginaDescript(0) + " time to moisten, ensuring the next thrust won't be quite as rough.  ");
+				if (player.vaginas[0].vaginalWetness < Vagina.WETNESS_WET) outputText("The pause gives your " + player.vaginaDescript(0) + " time to moisten, ensuring the next thrust won't be quite as rough.  ");
 				outputText("This time the beast starts pumping in and out more gently, only a short distance at a time as the hellhound continues panting.  As the pain in your " + player.assholeDescript() + " fades, you start feeling pleasure to match the sensations rising from your " + player.vaginaDescript(0) + ". Each thrust of the beast's twin manhoods bring you closer and closer to your peak.\n\n");
 				//Cum
 				outputText("As you reach your climax, the beast howls and you feel its incredibly hot seed pour into you.  ");
@@ -287,7 +287,7 @@ package classes.Scenes.Areas.Mountain
 					}
 					else outputText("Y");
 					//stretch vag to very loose
-					player.vaginas[0].vaginalLooseness = VaginaClass.LOOSENESS_GAPING;
+					player.vaginas[0].vaginalLooseness = Vagina.LOOSENESS_GAPING;
 					outputText("our two cunts quickly stretch larger to accommodate the intruders.\n\n");
 				}
 				outputText("You let out a moan of pleasure from the pleasure of being filled.  The hound doesn't hesitate at all, and just thrusts into you with abandon.  You can't believe the feral feeling of it all, and that your twin womanhoods manage to so easily take the members and flow around them.\n\n");

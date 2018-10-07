@@ -1924,8 +1924,8 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		player.cocks = new Vector.<Cock>();
 		SerializationUtils.deserializeVector(player.cocks as Vector.<*>, saveFile.data.cocks, Cock);
 
-		player.vaginas = new Vector.<VaginaClass>();
-		SerializationUtils.deserializeVector(player.vaginas as Vector.<*>, saveFile.data.vaginas, VaginaClass);
+		player.vaginas = new Vector.<Vagina>();
+		SerializationUtils.deserializeVector(player.vaginas as Vector.<*>, saveFile.data.vaginas, Vagina);
 		
 		loadNPCs(saveFile);
 		
@@ -2103,7 +2103,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 				CoC_Settings.error("Cannot find status affect '"+saveFile.data.statusAffects[i].statusAffectName+"'");
 				continue;
 			}
-			var sec:StatusEffectClass = player.createStatusEffect(
+			var sec:StatusEffect = player.createStatusEffect(
 				stype,
 				saveFile.data.statusAffects[i].value1,
 				saveFile.data.statusAffects[i].value2,
@@ -2147,7 +2147,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			{
 				//trace("Populating a storage slot save with data");
 				inventory.createStorage();
-				var storage:ItemSlotClass = itemStorageGet()[i];
+				var storage:ItemSlot = itemStorageGet()[i];
 				var savedIS:* = saveFile.data.itemStorage[i];
 				if (savedIS.shortName)
 				{
@@ -2175,7 +2175,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		{
 			for (i = 0; i < saveFile.data.gearStorage.length && gearStorageGet().length < 45; i++)
 			{
-				gearStorageGet().push(new ItemSlotClass());
+				gearStorageGet().push(new ItemSlot());
 					//trace("Initialize a slot for one of the item storage locations to load.");
 			}
 			//Populate storage slot array
@@ -2588,7 +2588,7 @@ public function unFuckSave():void
 	if (flags[kFLAGS.LETHICE_DEFEATED] > 0 && flags[kFLAGS.D3_JEAN_CLAUDE_DEFEATED] == 0) flags[kFLAGS.D3_JEAN_CLAUDE_DEFEATED] = 1; 
 	if (gearStorageGet().length < 45) {
 		while (gearStorageGet().length < 45) {
-			gearStorageGet().push(new ItemSlotClass());
+			gearStorageGet().push(new ItemSlot());
 		}
 	}
 	if (player.hasKeyItem("Laybans") >= 0) {

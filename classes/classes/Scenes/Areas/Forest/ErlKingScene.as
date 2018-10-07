@@ -689,8 +689,8 @@ public class ErlKingScene extends BaseContent implements Encounter {
 
 		protected function gwynnNomsDaCunts():void {
 			clearOutput();
-			if (player.vaginas[0].vaginalLooseness == VaginaClass.LOOSENESS_LEVEL_CLOWN_CAR && player.tail.type == Tail.DRACONIC) outputText(images.showImage("wildhunt-princess-lickgina-dragon"));
-			else if (player.vaginas[0].type == VaginaClass.EQUINE) outputText(images.showImage("wildhunt-princess-lickgina-equine"));
+			if (player.vaginas[0].vaginalLooseness == Vagina.LOOSENESS_LEVEL_CLOWN_CAR && player.tail.type == Tail.DRACONIC) outputText(images.showImage("wildhunt-princess-lickgina-dragon"));
+			else if (player.vaginas[0].type == Vagina.EQUINE) outputText(images.showImage("wildhunt-princess-lickgina-equine"));
 			else outputText(images.showImage("wildhunt-princess-lickgina"));
 			outputText("“<i>Yes Ma’am,</i>” she says, licking her lips.  She points to a nearby stump, gesturing for you to have a seat on the soft moss.  As you do, she wastes no time in dropping her pink muzzle to your pussy.\n\n");
 			outputText("Her tongue eagerly plunges between your folds, running up and down the length of your pussy. Each time her muzzle bobs up, her candy-pink nose rubs against your clit, and she purrs, closing her eyes and nuzzling it.  She slowly laps at your slit, gradually building speed.\n\n");

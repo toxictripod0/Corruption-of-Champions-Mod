@@ -396,7 +396,7 @@ package classes.Scenes.NPCs
 
 			outputText("The overwhelming sensations drive you over the edge and your " + player.vaginaDescript(0) + " contracts hungrily around the heat radiating from the anemone's cock.  As your orgasming pussy ");
 			//(squirter)
-			if (player.vaginas[0].vaginalWetness >= VaginaClass.WETNESS_DROOLING) outputText("soaks her crotch with juice and ");
+			if (player.vaginas[0].vaginalWetness >= Vagina.WETNESS_DROOLING) outputText("soaks her crotch with juice and ");
 			outputText("wrings her penis, the blue shaft responds enthusiastically; she pushes deeply into you as it begins spasming and squirting its load.  Your partner's mouth hangs open as you squeeze the cum out of her; with all her muscle control taken away, her head hangs limply");
 			if (player.isTaur()) outputText(" on your back");
 			//[(notits)
@@ -1725,7 +1725,7 @@ package classes.Scenes.NPCs
 
 				outputText("\n\nLaughable as her reaction is, the venom now coursing through your " + player.vaginaDescript(0) + " ensures not a giggle escapes you; your hips begin writhing in her lap, trying to find purchase on the blue girl to better pump her shaft for its seed.");
 				//[(if pc is loose)
-				if (player.vaginas[0].vaginalLooseness >= VaginaClass.LOOSENESS_GAPING) outputText("  You can barely feel her little shaft in your stretched cunt, but the chemical stimulation from the tentacles stroking your insides goes a long way toward making up for that.");
+				if (player.vaginas[0].vaginalLooseness >= Vagina.LOOSENESS_GAPING) outputText("  You can barely feel her little shaft in your stretched cunt, but the chemical stimulation from the tentacles stroking your insides goes a long way toward making up for that.");
 				outputText("  Emboldened, she picks up your legs haltingly, then begins to work herself in and out of your depths.");
 
 				outputText("\n\nWith all the grace of a first-timer, the girl clumsily leans down to kiss you, but falls short and can only plant a smooch on your still-clad [chest].  Still, she continues pumping enthusiastically, worry and shame evaporating from her brow as you moan lustily instead of rebuking her temerity.  Pausing to support you with one hand as she spreads your lips wider with her fingers, she exposes your " + player.clitDescript() + " to the air.");

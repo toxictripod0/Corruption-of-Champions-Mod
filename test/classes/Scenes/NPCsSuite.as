@@ -7,7 +7,7 @@ import classes.Scenes.NPCs.JojoTest;
 
 [Suite]
 [RunWith("org.flexunit.runners.Suite")]
-	public class NPCsSuit
+	public class NPCsSuite
 	{
 		 public var jojoSceneTest:JojoSceneTest;
 		 public var isabellaSceneTest : IsabellaSceneTest;

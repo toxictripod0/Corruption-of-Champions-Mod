@@ -6,7 +6,7 @@ package classes {
 
 [Suite]
 [RunWith("org.flexunit.runners.Suite")]
-	public class ItemsSuit
+	public class ItemsSuite
 	{
 		 public var mutationsTest:MutationsTest;
 		 public var consumableTest:ConsumableTest;

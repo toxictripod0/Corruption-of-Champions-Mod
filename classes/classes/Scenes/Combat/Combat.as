@@ -1154,7 +1154,7 @@ package classes.Scenes.Combat
 			}
 			
 			// Uma's Massage Bonuses
-			var stat:StatusEffectClass = player.statusEffectByType(StatusEffects.UmasMassage);
+			var stat:StatusEffect = player.statusEffectByType(StatusEffects.UmasMassage);
 			if (stat != null) {
 				if (stat.value1 == UmasShop.MASSAGE_POWER) {
 					damage *= stat.value2;
@@ -1375,7 +1375,7 @@ package classes.Scenes.Combat
 		//Clear statuses
 		public function clearStatuses():void {
 			player.clearStatuses();
-			for (var a:/*StatusEffectClass*/Array=monster.statusEffects.slice(),n:int=a.length,i:int=0;i<n;i++) {
+			for (var a:/*StatusEffect*/Array=monster.statusEffects.slice(),n:int=a.length,i:int=0;i<n;i++) {
 				// Using a copy of array because some effects will be removed
 				a[i].onCombatEnd();
 			}
@@ -1725,7 +1725,7 @@ package classes.Scenes.Combat
 					player.removeStatusEffect(StatusEffects.WhipSilence);
 				}
 			}
-			for (var a:/*StatusEffectClass*/Array=player.statusEffects.slice(),n:int=a.length,i:int=0;i<n;i++) {
+			for (var a:/*StatusEffect*/Array=player.statusEffects.slice(),n:int=a.length,i:int=0;i<n;i++) {
 				// Using a copy of array because some effects will be removed
 				a[i].onCombatRound();
 			}
