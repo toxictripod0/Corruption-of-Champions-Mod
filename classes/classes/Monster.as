@@ -1063,7 +1063,7 @@
 				var nipple:String = nippleLength+"\" ";
 				if (nipplesPierced) nipple+="pierced by "+nipplesPLong;
 				for (i = 0; i < breastRows.length; i++) {
-					var row:BreastRowClass = (breastRows[i] as BreastRowClass);
+					var row:BreastRow = (breastRows[i] as BreastRow);
 					result += Pronoun3+(i>0?(" #"+(i+1)):"") + " breast row has " + row.breasts;
 					result += " " + row.breastRating.toFixed(2) + "-size (" + Appearance.breastCup(row.breastRating) + ") breasts with ";
 					result += numberOfThings(row.nipplesPerBreast, nipple+(row.fuckable ? "fuckable nipple" : "unfuckable nipple")) + " on each.\n";

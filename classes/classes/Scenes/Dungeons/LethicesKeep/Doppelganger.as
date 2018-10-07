@@ -1,7 +1,7 @@
 package classes.Scenes.Dungeons.LethicesKeep 
 {
 	import classes.BodyParts.*;
-	import classes.BreastRowClass;
+	import classes.BreastRow;
 	import classes.Cock;
 	import classes.Monster;
 	import classes.Vagina;
@@ -270,13 +270,13 @@ package classes.Scenes.Dungeons.LethicesKeep
 				(this.vaginas[0] as Vagina).vaginalWetness = 6;
 				(this.vaginas[0] as Vagina).virgin = false;
 			}
-			this.breastRows = new Vector.<BreastRowClass>();
+			this.breastRows = new Vector.<BreastRow>();
 			
 			for (i = 0; i < player.breastRows.length; i++)
 			{
 				this.createBreastRow();
-				var tbr:BreastRowClass = this.breastRows[i];
-				var sbr:BreastRowClass = player.breastRows[i];
+				var tbr:BreastRow = this.breastRows[i];
+				var sbr:BreastRow = player.breastRows[i];
 				
 				tbr.breastRating = sbr.breastRating;
 				tbr.breasts = sbr.breasts;

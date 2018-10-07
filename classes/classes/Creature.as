@@ -444,7 +444,7 @@ package classes
 		//Fertility is a % out of 100. 
 		public var fertility:Number = 10;
 		public var nippleLength:Number = .25;
-		public var breastRows:Vector.<BreastRowClass>;
+		public var breastRows:Vector.<BreastRow>;
 		public var ass:Ass = new Ass();
 		
 		/**
@@ -553,7 +553,7 @@ package classes
 			for each (var vagina:Vagina in vaginas) {
 				error += vagina.validate();
 			}
-			for each (var row:BreastRowClass in breastRows) {
+			for each (var row:BreastRow in breastRows) {
 				error += row.validate();
 			}
 			error += ass.validate();
@@ -606,7 +606,7 @@ package classes
 			//The world isn't ready for typed Arrays just yet.
 			cocks = new Vector.<Cock>();
 			vaginas = new Vector.<Vagina>();
-			breastRows = new Vector.<BreastRowClass>();
+			breastRows = new Vector.<BreastRow>();
 			_perks = [];
 			statusEffects = [];
 			arms = new Arms(this);
@@ -2527,7 +2527,7 @@ package classes
 		{
 			if (breastRows.length >= 10)
 				return false;
-			var newBreastRow:BreastRowClass = new BreastRowClass();
+			var newBreastRow:BreastRow = new BreastRow();
 			newBreastRow.breastRating = size;
 			newBreastRow.nipplesPerBreast = nipplesPerBreast;
 			breastRows.push(newBreastRow);

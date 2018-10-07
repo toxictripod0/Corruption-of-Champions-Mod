@@ -251,7 +251,7 @@ package classes {
 					player.removeVagina(0,1); //clear vaginas
 				//	trace("1 vagina purged.");
 				}
-				player.breastRows = new Vector.<BreastRowClass>(); //clear breasts
+				player.breastRows = new Vector.<BreastRow>(); //clear breasts
 			}
 			else {
 				var hadOldCock:Boolean = player.hasCock();
@@ -1384,7 +1384,7 @@ package classes {
 				}
 			}
 			outputText("\n\nAfter looking around the room for a while, you look into the mirror and begin to recollect who you are...");
-			player.breastRows = new Vector.<BreastRowClass>();
+			player.breastRows = new Vector.<BreastRow>();
 			player.cocks = new Vector.<Cock>();
 			player.vaginas = new Vector.<Vagina>();
 			doNext(routeToGenderChoiceReincarnation);
