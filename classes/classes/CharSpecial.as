@@ -1604,8 +1604,8 @@ package classes
 			player.balls = 0;
 			player.cumMultiplier = 500; // don't ask how it works, copyright for this potion was sold for Joey
 
-			player.ass.analWetness = AssClass.WETNESS_MOIST; // moist
-			player.ass.analLooseness = AssClass.LOOSENESS_TIGHT; // not virgin
+			player.ass.analWetness = Ass.WETNESS_MOIST; // moist
+			player.ass.analLooseness = Ass.LOOSENESS_TIGHT; // not virgin
 			player.createStatusEffect(StatusEffects.BonusACapacity, 100, 0, 0, 0);			
 
 			player.createCock(12, 1.3, CockTypesEnum.TENTACLE);

@@ -1618,12 +1618,12 @@ package classes {
 			
 			// 66% Wetness Descript
 			var ANAL_WETNESS_DESCRIPTORS:Object = new Object(); 
-			ANAL_WETNESS_DESCRIPTORS[AssClass.WETNESS_DRY] = "";
-			ANAL_WETNESS_DESCRIPTORS[AssClass.WETNESS_NORMAL] = "";
-			ANAL_WETNESS_DESCRIPTORS[AssClass.WETNESS_MOIST] = "moist ";
-			ANAL_WETNESS_DESCRIPTORS[AssClass.WETNESS_SLIMY] = "slimy ";
-			ANAL_WETNESS_DESCRIPTORS[AssClass.WETNESS_DROOLING] = "drooling ";
-			ANAL_WETNESS_DESCRIPTORS[AssClass.WETNESS_SLIME_DROOLING] = "slime-drooling ";
+			ANAL_WETNESS_DESCRIPTORS[Ass.WETNESS_DRY] = "";
+			ANAL_WETNESS_DESCRIPTORS[Ass.WETNESS_NORMAL] = "";
+			ANAL_WETNESS_DESCRIPTORS[Ass.WETNESS_MOIST] = "moist ";
+			ANAL_WETNESS_DESCRIPTORS[Ass.WETNESS_SLIMY] = "slimy ";
+			ANAL_WETNESS_DESCRIPTORS[Ass.WETNESS_DROOLING] = "drooling ";
+			ANAL_WETNESS_DESCRIPTORS[Ass.WETNESS_SLIME_DROOLING] = "slime-drooling ";
 			
 			if (forceDesc || rand(3) <= 1)
 			{
@@ -1631,12 +1631,12 @@ package classes {
 			}
 			
 			var ANAL_TIGHTNESS_DESCRIPTORS:Object = new Object();
-			ANAL_TIGHTNESS_DESCRIPTORS[AssClass.LOOSENESS_VIRGIN] = "virgin ";
-			ANAL_TIGHTNESS_DESCRIPTORS[AssClass.LOOSENESS_TIGHT] = "tight ";
-			ANAL_TIGHTNESS_DESCRIPTORS[AssClass.LOOSENESS_NORMAL] = "loose ";
-			ANAL_TIGHTNESS_DESCRIPTORS[AssClass.LOOSENESS_LOOSE] = "roomy ";
-			ANAL_TIGHTNESS_DESCRIPTORS[AssClass.LOOSENESS_STRETCHED] = "stretched ";
-			ANAL_TIGHTNESS_DESCRIPTORS[AssClass.LOOSENESS_GAPING] = "gaping ";
+			ANAL_TIGHTNESS_DESCRIPTORS[Ass.LOOSENESS_VIRGIN] = "virgin ";
+			ANAL_TIGHTNESS_DESCRIPTORS[Ass.LOOSENESS_TIGHT] = "tight ";
+			ANAL_TIGHTNESS_DESCRIPTORS[Ass.LOOSENESS_NORMAL] = "loose ";
+			ANAL_TIGHTNESS_DESCRIPTORS[Ass.LOOSENESS_LOOSE] = "roomy ";
+			ANAL_TIGHTNESS_DESCRIPTORS[Ass.LOOSENESS_STRETCHED] = "stretched ";
+			ANAL_TIGHTNESS_DESCRIPTORS[Ass.LOOSENESS_GAPING] = "gaping ";
 			
 			//25% tightness description
 			if (forceDesc || rand(4) === 0 || (i_creature.ass.analLooseness <= 1 && rand(4) <= 2) || i_creature.ass.analLooseness === 0) 
@@ -2185,20 +2185,20 @@ package classes {
 			[Vagina.LOOSENESS_LEVEL_CLOWN_CAR, "clown-car level"],
 		];
 		public static const DEFAULT_ANAL_WETNESS_SCALES:Array = [
-			[AssClass.WETNESS_DRY, "dry"],
-			[AssClass.WETNESS_NORMAL, "normal"],
-			[AssClass.WETNESS_MOIST, "moist"],
-			[AssClass.WETNESS_SLIMY, "slimy"],
-			[AssClass.WETNESS_DROOLING, "drooling"],
-			[AssClass.WETNESS_SLIME_DROOLING, "slime-drooling"],
+			[Ass.WETNESS_DRY, "dry"],
+			[Ass.WETNESS_NORMAL, "normal"],
+			[Ass.WETNESS_MOIST, "moist"],
+			[Ass.WETNESS_SLIMY, "slimy"],
+			[Ass.WETNESS_DROOLING, "drooling"],
+			[Ass.WETNESS_SLIME_DROOLING, "slime-drooling"],
 		];
 		public static const DEFAULT_ANAL_LOOSENESS_SCALES:Array = [
-			[AssClass.LOOSENESS_VIRGIN, "virgin"],
-			[AssClass.LOOSENESS_TIGHT, "tight"],
-			[AssClass.LOOSENESS_NORMAL, "normal"],
-			[AssClass.LOOSENESS_LOOSE, "loose"],
-			[AssClass.LOOSENESS_STRETCHED, "stretched"],
-			[AssClass.LOOSENESS_GAPING, "gaping"],
+			[Ass.LOOSENESS_VIRGIN, "virgin"],
+			[Ass.LOOSENESS_TIGHT, "tight"],
+			[Ass.LOOSENESS_NORMAL, "normal"],
+			[Ass.LOOSENESS_LOOSE, "loose"],
+			[Ass.LOOSENESS_STRETCHED, "stretched"],
+			[Ass.LOOSENESS_GAPING, "gaping"],
 		];
 		public static const DEFAULT_HIP_RATING_SCALES:Array = [
 			[Hips.RATING_BOYISH, "boyish"],

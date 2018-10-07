@@ -110,8 +110,8 @@ package classes.Scenes.NPCs
 			// this.plural = false;
 			this.createVagina(false, Vagina.WETNESS_SLAVERING, Vagina.LOOSENESS_GAPING_WIDE);
 			createBreastRow(Appearance.breastCupInverse("C"));
-			this.ass.analLooseness = AssClass.LOOSENESS_STRETCHED;
-			this.ass.analWetness = AssClass.WETNESS_SLIME_DROOLING;
+			this.ass.analLooseness = Ass.LOOSENESS_STRETCHED;
+			this.ass.analWetness = Ass.WETNESS_SLIME_DROOLING;
 			this.tallness = rand(8) + 70;
 			this.hips.rating = Hips.RATING_AMPLE+2;
 			this.butt.rating = Butt.RATING_LARGE;

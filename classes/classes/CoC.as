@@ -8,7 +8,7 @@
 package classes
 {
 	// BREAKING ALL THE RULES.
-	import classes.AssClass;
+	import classes.Ass;
 	import classes.CoC_Settings;
 	import classes.Cock;
 	import classes.Creature;
@@ -80,7 +80,7 @@ package classes
 	/*
 	   One very important thing to know about descriptions in this game is that many words are based on hidden integer values.
 	   These integers are compared to tables or queried directly to get the words used for particular parts of descriptions. For instance,
-	   AssClass below has variables for wetness, looseness, fullness, and virginity. You'll often find little tables like this
+	   Ass below has variables for wetness, looseness, fullness, and virginity. You'll often find little tables like this
 	   scattered through the code:
 	   butt looseness
 	   0 - virgin
@@ -676,7 +676,7 @@ package classes
 			
 			//Register the classes we need to be able to serialize and reconstitute so
 			// they'll get reconstituted into the correct class when deserialized
-			registerClassAlias("AssClass", AssClass);
+			registerClassAlias("Ass", Ass);
 			registerClassAlias("Character", Character);
 			registerClassAlias("Cock", Cock);
 			registerClassAlias("CockTypesEnum", CockTypesEnum);

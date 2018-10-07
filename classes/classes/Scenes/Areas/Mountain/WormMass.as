@@ -96,8 +96,8 @@ package classes.Scenes.Areas.Mountain
 			this.pronoun2 = "them";
 			this.pronoun3 = "their";
 			this.createBreastRow(0,0);
-			this.ass.analLooseness = AssClass.LOOSENESS_VIRGIN;
-			this.ass.analWetness = AssClass.WETNESS_DRY;
+			this.ass.analLooseness = Ass.LOOSENESS_VIRGIN;
+			this.ass.analWetness = Ass.WETNESS_DRY;
 			this.tallness = 1;
 			this.hips.rating = Hips.RATING_SLENDER;
 			this.butt.rating = Butt.RATING_BUTTLESS;

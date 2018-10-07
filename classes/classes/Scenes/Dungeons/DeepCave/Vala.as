@@ -109,8 +109,8 @@ package classes.Scenes.Dungeons.DeepCave
 			this.createVagina(false, Vagina.WETNESS_SLICK, Vagina.LOOSENESS_GAPING_WIDE);
 			this.createStatusEffect(StatusEffects.BonusVCapacity, 25, 0, 0, 0);
 			createBreastRow(Appearance.breastCupInverse("E"));
-			this.ass.analLooseness = AssClass.LOOSENESS_STRETCHED;
-			this.ass.analWetness = AssClass.WETNESS_DRY;
+			this.ass.analLooseness = Ass.LOOSENESS_STRETCHED;
+			this.ass.analWetness = Ass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,10,0,0,0);
 			this.tallness = 4*12;
 			this.hips.rating = Hips.RATING_CURVY;

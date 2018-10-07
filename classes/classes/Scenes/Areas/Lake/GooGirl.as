@@ -158,8 +158,8 @@ package classes.Scenes.Areas.Lake
 			this.createVagina(false, Vagina.WETNESS_SLAVERING, Vagina.LOOSENESS_NORMAL);
 			this.createStatusEffect(StatusEffects.BonusVCapacity, 9001, 0, 0, 0);
 			this.createBreastRow(playerHasBigBoobs ? player.biggestTitSize() : 3);
-			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
-			this.ass.analWetness = AssClass.WETNESS_SLIME_DROOLING;
+			this.ass.analLooseness = Ass.LOOSENESS_TIGHT;
+			this.ass.analWetness = Ass.WETNESS_SLIME_DROOLING;
 			this.createStatusEffect(StatusEffects.BonusACapacity,9001,0,0,0);
 			this.tallness = rand(8) + 70;
 			this.hips.rating = Hips.RATING_AMPLE;

@@ -2,7 +2,7 @@
 {
 	import classes.internals.Utils;
 
-	public class AssClass
+	public class Ass
 	{
 		public static const WETNESS_DRY:int            =   0;
 		public static const WETNESS_NORMAL:int         =   1;
@@ -19,7 +19,7 @@
 		public static const LOOSENESS_GAPING:int       =   5;
 
 		//constructor
-		public function AssClass()
+		public function Ass()
 		{
 		}
 		
@@ -41,7 +41,7 @@
 		
 		public function validate():String {
 			var error:String = "";
-			error += Utils.validateNonNegativeNumberFields(this, "AssClass.validate",[
+			error += Utils.validateNonNegativeNumberFields(this, "Ass.validate",[
 					"analWetness", "analLooseness", "fullness"
 			]);
 			return error;

@@ -20,8 +20,8 @@ package classes.Scenes.Areas.HighMountains
 			// this.plural = false;
 			this.createVagina(false, Vagina.WETNESS_SLICK, Vagina.LOOSENESS_NORMAL);
 			createBreastRow(Appearance.breastCupInverse("FF")); // The doc mentions her breasts would be around D/DD on a "normal human" so err, winging this shit
-			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
-			this.ass.analWetness = AssClass.WETNESS_DRY;
+			this.ass.analLooseness = Ass.LOOSENESS_TIGHT;
+			this.ass.analWetness = Ass.WETNESS_DRY;
 			this.tallness = 9*12+0;
 			this.hips.rating = Hips.RATING_AVERAGE;
 			this.butt.rating = Butt.RATING_TIGHT;

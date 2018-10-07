@@ -445,7 +445,7 @@ package classes
 		public var fertility:Number = 10;
 		public var nippleLength:Number = .25;
 		public var breastRows:Vector.<BreastRowClass>;
-		public var ass:AssClass = new AssClass();
+		public var ass:Ass = new Ass();
 		
 		/**
 		 * Check if the Creature has a vagina. If not, throw an informative Error.

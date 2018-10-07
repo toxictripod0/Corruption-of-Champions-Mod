@@ -133,8 +133,8 @@ package classes.Scenes.Areas.Bog
 			// this.plural = false;
 			this.createVagina(false, Vagina.WETNESS_SLAVERING, Vagina.LOOSENESS_LOOSE);
 			createBreastRow(Appearance.breastCupInverse("B"));
-			this.ass.analLooseness = AssClass.LOOSENESS_NORMAL;
-			this.ass.analWetness = AssClass.WETNESS_DRY;
+			this.ass.analLooseness = Ass.LOOSENESS_NORMAL;
+			this.ass.analWetness = Ass.WETNESS_DRY;
 			this.tallness = rand(2) + 68;
 			this.hips.rating = Hips.RATING_AMPLE + 2;
 			this.butt.rating = Butt.RATING_LARGE;

@@ -124,8 +124,8 @@ package classes.Scenes.Dungeons.DesertCave
 			this.createStatusEffect(StatusEffects.BonusVCapacity, 70, 0, 0, 0);
 			this.createBreastRow(Appearance.breastCupInverse("DD"));
 			this.createBreastRow(Appearance.breastCupInverse("DD"));
-			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
-			this.ass.analWetness = AssClass.WETNESS_NORMAL;
+			this.ass.analLooseness = Ass.LOOSENESS_TIGHT;
+			this.ass.analWetness = Ass.WETNESS_NORMAL;
 			this.createStatusEffect(StatusEffects.BonusACapacity,50,0,0,0);
 			this.tallness = 8*12+6;
 			this.hips.rating = Hips.RATING_CURVY;

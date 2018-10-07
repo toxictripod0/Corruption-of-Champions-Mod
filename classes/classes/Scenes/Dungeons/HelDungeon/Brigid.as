@@ -70,8 +70,8 @@ package classes.Scenes.Dungeons.HelDungeon
 				this.createStatusEffect(StatusEffects.BonusVCapacity, LowerBody.HARPY, 0, 0, 0);
 			}
 			createBreastRow(Appearance.breastCupInverse("D"));
-			this.ass.analLooseness = AssClass.LOOSENESS_STRETCHED;
-			this.ass.analWetness = AssClass.WETNESS_DRY;
+			this.ass.analLooseness = Ass.LOOSENESS_STRETCHED;
+			this.ass.analWetness = Ass.WETNESS_DRY;
 			this.tallness = rand(8) + 70;
 			this.hips.rating = Hips.RATING_AMPLE+2;
 			this.butt.rating = Butt.RATING_LARGE;

@@ -206,10 +206,10 @@ package classes.Scenes.Areas.HighMountains {
 			          +"You rock your hips a couple more times, spreading his pre over your entrance before pushing down.\n\n");
 			outputText(images.showImage("cockatrice-ridehim-anal"));
 			outputText("As his thick tip slides into your pucker ");
-			if (player.ass.analLooseness <= AssClass.LOOSENESS_TIGHT) outputText("stretching your tight passage open ");
+			if (player.ass.analLooseness <= Ass.LOOSENESS_TIGHT) outputText("stretching your tight passage open ");
 			outputText("you can’t help but moan. "
 			          +"The nubs along his shaft each rub against your sensitive pucker as you slowly take his whole length, and you can’t help but ");
-			if (player.ass.analLooseness <= AssClass.LOOSENESS_TIGHT) outputText("feel full.");
+			if (player.ass.analLooseness <= Ass.LOOSENESS_TIGHT) outputText("feel full.");
 			else outputText("enjoy his size in your practised asshole.");
 			outputText(" His hands come to rest on your ass, squeezing your cheeks lightly as he leans forward and draws you into an open mouthed kiss."
 			          +" He gently rocks his hips, making sure he’s snuggly inside you before he urges you to move with a gentle lift.\n\n");

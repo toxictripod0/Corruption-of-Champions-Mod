@@ -31,8 +31,8 @@ package classes.Scenes.Areas.Forest
 			this.createVagina(false, Vagina.WETNESS_NORMAL, Vagina.LOOSENESS_TIGHT);
 			this.createStatusEffect(StatusEffects.BonusVCapacity, 200, 0, 0, 0);
 			createBreastRow(Appearance.breastCupInverse("D"));
-			this.ass.analLooseness = AssClass.LOOSENESS_VIRGIN;
-			this.ass.analWetness = AssClass.WETNESS_DRY;
+			this.ass.analLooseness = Ass.LOOSENESS_VIRGIN;
+			this.ass.analWetness = Ass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,40,0,0,0);
 			this.tallness = 64;
 			this.hips.rating = Hips.RATING_AMPLE;

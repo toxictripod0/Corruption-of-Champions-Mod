@@ -175,8 +175,8 @@ package classes.Scenes.Areas.Lake
 			// this.plural = false;
 			this.createVagina(false, Vagina.LOOSENESS_GAPING, Vagina.WETNESS_WET);
 			createBreastRow(Appearance.breastCupInverse("DD"));
-			this.ass.analLooseness = AssClass.LOOSENESS_NORMAL;
-			this.ass.analWetness = AssClass.WETNESS_NORMAL;
+			this.ass.analLooseness = Ass.LOOSENESS_NORMAL;
+			this.ass.analWetness = Ass.WETNESS_NORMAL;
 			this.tallness = 5*12+7;
 			this.hips.rating = Hips.RATING_AMPLE;
 			this.butt.rating = Butt.RATING_LARGE;
