@@ -3,7 +3,7 @@ package classes {
 
 	[Suite]
 	[RunWith("org.flexunit.runners.Suite")]
-	public class MenusSuit
+	public class MenusSuite
 	{
 		public var genderDebugTest:GenderDebugTest
 	}

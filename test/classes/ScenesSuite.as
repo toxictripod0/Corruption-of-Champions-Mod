@@ -1,18 +1,18 @@
 package classes {
-	import classes.Scenes.NPCsSuit;
-	import classes.Scenes.PlacesSuit;
-	import classes.Scenes.AreasSuit;
+	import classes.Scenes.NPCsSuite;
+	import classes.Scenes.PlacesSuite;
+	import classes.Scenes.AreasSuite;
 	import classes.Scenes.PregnancyProgressionAnalBirthTest;
 	import classes.Scenes.PregnancyProgressionTest;
 	import classes.Scenes.PregnancyProgressionVagBirthTest;
 
 	[Suite]
 	[RunWith("org.flexunit.runners.Suite")]
-	public class ScenesSuit
+	public class ScenesSuite
 	{
-		 public var placesSuit:PlacesSuit;
-		 public var npcsSuit:NPCsSuit;
-		 public var areasSuit:AreasSuit;
+		 public var placesSuit:PlacesSuite;
+		 public var npcsSuit:NPCsSuite;
+		 public var areasSuit:AreasSuite;
 		 public var pregnancyProgressionTest:PregnancyProgressionTest
 		 public var pregnancyProgressionVagBirthTest:PregnancyProgressionVagBirthTest
 		 public var pregnancyProgressionAnalBirthTest:PregnancyProgressionAnalBirthTest;

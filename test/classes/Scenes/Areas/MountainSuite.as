@@ -4,7 +4,7 @@ package classes.Scenes.Areas
 	
 	[Suite]
 	[RunWith("org.flexunit.runners.Suite")]
-	public class MountainSuit
+	public class MountainSuite
 	{
 		public var infestedHellhoundSceneTest:InfestedHellhoundSceneTest;
 	}
