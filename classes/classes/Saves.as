@@ -7,6 +7,7 @@ package classes
 	import classes.Items.*;
 	import classes.Scenes.NPCs.Jojo;
 	import classes.internals.LoggerFactory;
+	import classes.internals.Serializable;
 	import classes.internals.SerializationUtils;
 	import classes.lists.BreastCup;
 	import flash.events.Event;
@@ -28,7 +29,7 @@ package classes
 	
 
 
-public class Saves extends BaseContent {
+public class Saves extends BaseContent implements Serializable {
 	private static const LOGGER:ILogger = LoggerFactory.getLogger(Saves);
 
 	private static const SAVE_FILE_CURRENT_INTEGER_FORMAT_VERSION:int		= 816;
@@ -2754,6 +2755,26 @@ public function loadText(saveText:String):void
 	
 	//Load the object
 	loadGameObject(obj);
+}
+
+public function serialize(relativeRootObject:*):void 
+{
+	
+}
+
+public function deserialize(relativeRootObject:*):void 
+{
+	
+}
+
+public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 
+{
+	
+}
+
+public function currentSerializationVerison():int 
+{
+	
 }
 
 //*******
