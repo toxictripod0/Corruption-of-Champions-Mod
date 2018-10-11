@@ -31,7 +31,8 @@ package classes
 
 public class Saves extends BaseContent implements Serializable {
 	private static const LOGGER:ILogger = LoggerFactory.getLogger(Saves);
-
+	
+	private static const SERIALIZATION_VERSION:int = 1;
 	private static const SAVE_FILE_CURRENT_INTEGER_FORMAT_VERSION:int		= 816;
 		//Didn't want to include something like this, but an integer is safer than depending on the text version number from the CoC class.
 		//Also, this way the save file version doesn't need updating unless an important structural change happens in the save file.
@@ -792,6 +793,8 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 	//Set a single variable that tells us if this save exists
 	
 	saveFile.data.exists = true;
+	
+	SerializationUtils.serialize(saveFile.data, this);
 	saveFile.data.version = ver;
 	flags[kFLAGS.SAVE_FILE_INTEGER_FORMAT_VERSION] = SAVE_FILE_CURRENT_INTEGER_FORMAT_VERSION;
 
@@ -978,8 +981,6 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		
 		saveFile.data.cocks = SerializationUtils.serializeVector(player.cocks as Vector.<*>);
 		saveFile.data.vaginas = SerializationUtils.serializeVector(player.vaginas as Vector.<*>);
-		
-		saveNPCs(saveFile);
 		
 		//NIPPLES
 		saveFile.data.nippleLength = player.nippleLength;
@@ -1283,8 +1284,8 @@ public function saveGameObject(slot:String, isFile:Boolean):void
  * @param	saveFile the file to save the NPC data to.
  */
 protected function saveNPCs(saveFile:*): void {
-	saveFile.data.npcs = [];
-	var npcs:* = saveFile.data.npcs;
+	saveFile.npcs = [];
+	var npcs:* = saveFile.npcs;
 	
 	npcs.jojo = [];
 	
@@ -1448,6 +1449,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		player = new Player();
 		flags = new DefaultDict();	
 		
+		SerializationUtils.deserialize(saveFile.data, this);
 		//trace("Type of saveFile.data = ", getClass(saveFile.data));
 		
 		inventory.clearStorage();
@@ -1938,7 +1940,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		player.vaginas = new Vector.<Vagina>();
 		SerializationUtils.deserializeVector(player.vaginas as Vector.<*>, saveFile.data.vaginas, Vagina);
 		
-		loadNPCs(saveFile);
+		loadWithSerializer(saveFile);
 		
 		if (player.hasVagina() && player.vaginaType() != 5 && player.vaginaType() != 0)
 			player.vaginaType(0);
@@ -2350,6 +2352,15 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 }
 
 /**
+ * Load save game by using serialization. 
+ * @param	saveFile the file that contains the serialized savegame.
+ */
+protected function loadWithSerializer(saveFile:*):void
+{
+	SerializationUtils.deserialize(saveFile.data, this);
+}
+
+/**
  * Load NPCs from the save file. The NPC data is loaded from the 'npcs' object (saveFile.data.npcs).
  * Creates empty dummy structure if the NPC data is missing, to avoid errors on loading.
  * This method is protected instead of private to allow for testing.
@@ -2357,15 +2368,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
  */
 protected function loadNPCs(saveFile:*):void 
 {
-	var npcs:* = saveFile.data.npcs;
-	//TODO change safeFile structure with versioning of the saveFile itself.
-	if (npcs === undefined) {
-		npcs = [];
-	}
-	
-	if (npcs.jojo === undefined) {
-		npcs.jojo = [];
-	}
+	var npcs:* = saveFile.npcs;
 	
 	SerializationUtils.deserialize(npcs.jojo, new Jojo());
 }
@@ -2759,22 +2762,43 @@ public function loadText(saveText:String):void
 
 public function serialize(relativeRootObject:*):void 
 {
-	
+	saveNPCs(relativeRootObject);
 }
 
 public function deserialize(relativeRootObject:*):void 
 {
-	
+	loadNPCs(relativeRootObject);
 }
 
 public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 
 {
-	
+	switch(serializedDataVersion) {
+		case 0:
+			upgradeUnversionedSave(relativeRootObject);
+		default:
+		/*
+		 * The default block is left empty intentionally,
+		 * this switch case operates by using fall through behavior.
+		 */
+	}
 }
 
 public function currentSerializationVerison():int 
 {
+	return SERIALIZATION_VERSION;
+}
+
+private function upgradeUnversionedSave(relativeRootObject:*): void
+{
+	if (relativeRootObject.npcs === undefined) {
+		relativeRootObject.npcs = [];
+	}
 	
+	var npcs:* = relativeRootObject.npcs;
+	
+	if (npcs.jojo === undefined) {
+		npcs.jojo = [];
+	}
 }
 
 //*******

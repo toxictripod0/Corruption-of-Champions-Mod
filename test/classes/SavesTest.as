@@ -206,6 +206,6 @@ class SavesForTest extends Saves {
 	}
 
 	public function loadNPCstest(saveFile:*):void {
-		this.loadNPCs(saveFile);
+		this.loadWithSerializer(saveFile);
 	}
 }
