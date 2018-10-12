@@ -16,6 +16,7 @@
 	import classes.Items.WeaponLib;
 	import classes.Scenes.Areas.Forest.KitsuneScene;
 	import classes.Scenes.Places.TelAdre.UmasShop;
+	import classes.internals.Serializable;
 	import classes.lists.BreastCup;
 	import classes.lists.ColorLists;
 
@@ -25,7 +26,8 @@
 	 * ...
 	 * @author Yoffy
 	 */
-	public class Player extends PlayerHelper {
+	public class Player extends PlayerHelper implements Serializable {
+		private static const SERIALIZATION_VERSION:int = 1;
 		
 		public function Player() {
 			//Item things
@@ -3666,6 +3668,26 @@
 					outputText("You take <b><font color=\"#800000\">" + int(changeNum*-1) + "</font></b> damage.\n");
 				}
 			}
+		}
+		
+		public function serialize(relativeRootObject:*):void 
+		{
+			
+		}
+		
+		public function deserialize(relativeRootObject:*):void 
+		{
+			
+		}
+		
+		public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 
+		{
+			
+		}
+		
+		public function currentSerializationVerison():int 
+		{
+			return SERIALIZATION_VERSION;
 		}
 	}
 }
