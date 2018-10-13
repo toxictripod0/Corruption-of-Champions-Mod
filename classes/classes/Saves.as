@@ -794,7 +794,7 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 	
 	saveFile.data.exists = true;
 	
-	SerializationUtils.serialize(saveFile.data, this);
+	saveWithSerializer(saveFile);
 	saveFile.data.version = ver;
 	flags[kFLAGS.SAVE_FILE_INTEGER_FORMAT_VERSION] = SAVE_FILE_CURRENT_INTEGER_FORMAT_VERSION;
 
@@ -978,9 +978,6 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile.data.keyItems = [];
 		saveFile.data.itemStorage = [];
 		saveFile.data.gearStorage = [];
-		
-		saveFile.data.cocks = SerializationUtils.serializeVector(player.cocks as Vector.<*>);
-		saveFile.data.vaginas = SerializationUtils.serializeVector(player.vaginas as Vector.<*>);
 		
 		saveWithSerializer(saveFile);
 		
@@ -1936,14 +1933,6 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		player.knockUpForce(saveFile.data.pregnancyType, saveFile.data.pregnancyIncubation);
 		player.buttKnockUpForce(saveFile.data.buttPregnancyType, saveFile.data.buttPregnancyIncubation);
 		
-		player.cocks = new Vector.<Cock>();
-		SerializationUtils.deserializeVector(player.cocks as Vector.<*>, saveFile.data.cocks, Cock);
-
-		player.vaginas = new Vector.<Vagina>();
-		SerializationUtils.deserializeVector(player.vaginas as Vector.<*>, saveFile.data.vaginas, Vagina);
-		
-		loadWithSerializer(saveFile);
-		
 		if (player.hasVagina() && player.vaginaType() != 5 && player.vaginaType() != 0)
 			player.vaginaType(0);
 		
@@ -2773,11 +2762,13 @@ public function loadText(saveText:String):void
 
 public function serialize(relativeRootObject:*):void 
 {
+	SerializationUtils.serialize(relativeRootObject, player);
 	saveNPCs(relativeRootObject);
 }
 
 public function deserialize(relativeRootObject:*):void 
 {
+	SerializationUtils.deserialize(relativeRootObject, player);
 	loadNPCs(relativeRootObject);
 }
 

@@ -76,6 +76,14 @@ package classes{
 			player.createCock(3, 3, CockTypesEnum.HORSE);
 		}
 		
+		private function buildDummySaveForJojoTest():void
+		{
+			saveFile.data.npcs = [];
+			saveFile.data.npcs.jojo = [];
+			saveFile.data.cocks = [];
+			saveFile.data.vaginas = [];
+		}
+		
 		[Test]
 		public function testClitLengthSaved():void {
 			player.createVagina();
@@ -148,6 +156,8 @@ package classes{
 
 		[Test]
 		public function jojoLegacyStatusLoadJojoIsSlave():void {
+			buildDummySaveForJojoTest();
+			
 			cut.loadNPCstest(saveFile);
 
 			assertThat(kGAMECLASS.flags[kFLAGS.JOJO_STATUS], equalTo(6));
@@ -155,6 +165,8 @@ package classes{
 
 		[Test]
 		public function jojoLegacyStatusLoadJojoEncountersInProgress():void {
+			buildDummySaveForJojoTest();
+			
 			var jojoStatus:int = 3;
 			kGAMECLASS.flags[kFLAGS.JOJO_STATUS] = jojoStatus;
 			
@@ -165,8 +177,7 @@ package classes{
 
 		[Test]
 		public function jojoNewStatusLoadUpdateSlaveStatus():void {
-			saveFile.data.npcs = [];
-			saveFile.data.npcs.jojo = [];
+			buildDummySaveForJojoTest();
 			saveFile.data.npcs.jojo.serializationVersion = 1;
 
 			cut.loadNPCstest(saveFile);
@@ -176,7 +187,8 @@ package classes{
 
 		[Test]
 		public function loadWithMissingNpcs():void {
-			saveFile.data = [];
+			buildDummySaveForJojoTest();
+			saveFile.data.npcs = undefined;
 
 			cut.loadNPCstest(saveFile);
 
@@ -185,6 +197,7 @@ package classes{
 
 		[Test]
 		public function loadWithMissingJojoNpc():void {
+			buildDummySaveForJojoTest();
 			saveFile.data.npcs = [];
 
 			cut.loadNPCstest(saveFile);

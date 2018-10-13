@@ -3672,12 +3672,12 @@
 		
 		override public function serialize(relativeRootObject:*):void 
 		{
-			
+			super.serialize(relativeRootObject);
 		}
 		
 		override public function deserialize(relativeRootObject:*):void 
 		{
-			
+			super.deserialize(relativeRootObject);
 		}
 		
 		override public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 

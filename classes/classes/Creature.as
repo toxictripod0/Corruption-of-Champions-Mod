@@ -34,6 +34,7 @@ package classes
 	import classes.internals.RandomNumberGenerator;
 	import classes.internals.LoggerFactory;
 	import classes.internals.Serializable;
+	import classes.internals.SerializationUtils;
 	import classes.internals.Utils;
 	import classes.internals.profiling.Begin;
 	import classes.internals.profiling.End;
@@ -4252,12 +4253,14 @@ package classes
 		
 		public function serialize(relativeRootObject:*):void 
 		{
-			
+			relativeRootObject.cocks = SerializationUtils.serializeVector(this.cocks as Vector.<*>);
+			relativeRootObject.vaginas = SerializationUtils.serializeVector(this.vaginas as Vector.<*>);
 		}
 		
 		public function deserialize(relativeRootObject:*):void 
 		{
-			
+			SerializationUtils.deserializeVector(this.cocks as Vector.<*>, relativeRootObject.cocks, Cock);
+			SerializationUtils.deserializeVector(this.vaginas as Vector.<*>, relativeRootObject.vaginas, Vagina);
 		}
 		
 		public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 
