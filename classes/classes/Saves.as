@@ -982,6 +982,8 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile.data.cocks = SerializationUtils.serializeVector(player.cocks as Vector.<*>);
 		saveFile.data.vaginas = SerializationUtils.serializeVector(player.vaginas as Vector.<*>);
 		
+		saveWithSerializer(saveFile);
+		
 		//NIPPLES
 		saveFile.data.nippleLength = player.nippleLength;
 		//Set Breast Array
@@ -1283,7 +1285,7 @@ public function saveGameObject(slot:String, isFile:Boolean):void
  * This method is protected instead of private to allow for testing.
  * @param	saveFile the file to save the NPC data to.
  */
-protected function saveNPCs(saveFile:*): void {
+private function saveNPCs(saveFile:*): void {
 	saveFile.npcs = [];
 	var npcs:* = saveFile.npcs;
 	
@@ -2361,12 +2363,21 @@ protected function loadWithSerializer(saveFile:*):void
 }
 
 /**
+ * Save the game by using serialization
+ * @param	saveFile the file that the game should be saved to
+ */
+protected function saveWithSerializer(saveFile:*):void
+{
+	SerializationUtils.serialize(saveFile.data, this);
+}
+
+/**
  * Load NPCs from the save file. The NPC data is loaded from the 'npcs' object (saveFile.data.npcs).
  * Creates empty dummy structure if the NPC data is missing, to avoid errors on loading.
  * This method is protected instead of private to allow for testing.
  * @param	saveFile the file to save the NPC data to.
  */
-protected function loadNPCs(saveFile:*):void 
+private function loadNPCs(saveFile:*):void 
 {
 	var npcs:* = saveFile.npcs;
 	
