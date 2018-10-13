@@ -1,10 +1,13 @@
 ﻿package classes
 {
+	import classes.internals.Serializable;
 	import classes.internals.Utils;
 	import classes.lists.BreastCup;
 
-	public class BreastRow
+	public class BreastRow implements Serializable
 	{
+		private static const SERIALIZATION_VERSION:int = 1;
+		
 		public var breasts:Number = 2;
 		public var nipplesPerBreast:Number = 1;
 		public var breastRating:Number = BreastCup.FLAT;
@@ -54,6 +57,40 @@
 		{
 			restore();
 			setProps(p);
+		}
+		
+		public function serialize(relativeRootObject:*):void 
+		{
+			relativeRootObject.breasts = this.breasts;
+			relativeRootObject.breastRating = this.breastRating;
+			relativeRootObject.nipplesPerBreast = this.nipplesPerBreast;
+			relativeRootObject.lactationMultiplier = this.lactationMultiplier;
+			relativeRootObject.milkFullness = this.milkFullness;
+			relativeRootObject.fuckable = this.fuckable;
+			relativeRootObject.fullness = this.fullness;
+			relativeRootObject.nippleCocks = this.nippleCocks;
+		}
+		
+		public function deserialize(relativeRootObject:*):void 
+		{
+			this.breasts = relativeRootObject.breasts;
+			this.breastRating = relativeRootObject.breastRating;
+			this.nipplesPerBreast = relativeRootObject.nipplesPerBreast;
+			this.lactationMultiplier = relativeRootObject.lactationMultiplier;
+			this.milkFullness = relativeRootObject.milkFullness;
+			this.fuckable = relativeRootObject.fuckable;
+			this.fullness = relativeRootObject.fullness;
+			this.nippleCocks = relativeRootObject.nippleCocks;
+		}
+		
+		public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 
+		{
+			
+		}
+		
+		public function currentSerializationVerison():int 
+		{
+			return SERIALIZATION_VERSION;
 		}
 	}
 }

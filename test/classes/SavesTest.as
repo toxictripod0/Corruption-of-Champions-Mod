@@ -1,4 +1,5 @@
 package classes{
+	import classes.lists.BreastCup;
 	import org.flexunit.asserts.*;
 	import org.hamcrest.assertThat;
 	import org.hamcrest.core.*;
@@ -26,6 +27,8 @@ package classes{
 		private static const TEST_SOCK:String = "testSock";
 		private static const VIRIDIAN_SOCK:String = "viridian";
 		
+		private static const NUMBER_OF_BREAST_ROWS:int = 3;
+		
 		private var player:Player;
 		private var cut:SavesForTest;
 
@@ -41,6 +44,7 @@ package classes{
 			player = new Player();
 		
 			createPlayerCocks();
+			createPlayerBreasts();
 			
 			kGAMECLASS.player = player;
 			kGAMECLASS.ver = TEST_VERSION;
@@ -74,6 +78,14 @@ package classes{
 			player.createCock(1, 1, CockTypesEnum.CAT);
 			player.createCock(2, 2, CockTypesEnum.DOG);
 			player.createCock(3, 3, CockTypesEnum.HORSE);
+		}
+		
+		private function createPlayerBreasts():void {
+			player.removeBreastRow(0, int.MAX_VALUE);
+			
+			player.createBreastRow(BreastCup.A);
+			player.createBreastRow(BreastCup.B);
+			player.createBreastRow(BreastCup.C);
 		}
 		
 		private function buildDummySaveForJojoTest():void
@@ -203,6 +215,28 @@ package classes{
 			cut.loadNPCstest(saveFile);
 
 			assertThat(kGAMECLASS.flags[kFLAGS.JOJO_STATUS], equalTo(6));
+		}
+		
+		[Test]
+		public function breastRowsAreStored():void
+		{
+			player.breastRows.length = 0;
+			assertThat(player.breastRows.length, equalTo(0));
+			
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.breastRows.length, equalTo(NUMBER_OF_BREAST_ROWS));
+		}
+		
+		[Test]
+		public function breastRowLoadOrder():void {
+			player.breastRows.length = 0;
+			assertThat(player.breastRows.length, equalTo(0));
+			
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.breastRows[0].breastRating, equalTo(BreastCup.A));
+			assertThat(kGAMECLASS.player.breastRows[2].breastRating, equalTo(BreastCup.C));
 		}
 	}
 }

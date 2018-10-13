@@ -971,7 +971,6 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 
 		
 		
-		saveFile.data.breastRows = [];
 		saveFile.data.perks = [];
 		saveFile.data.statusAffects = [];
 		saveFile.data.ass = [];
@@ -983,24 +982,7 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		
 		//NIPPLES
 		saveFile.data.nippleLength = player.nippleLength;
-		//Set Breast Array
-		for (i = 0; i < player.breastRows.length; i++)
-		{
-			saveFile.data.breastRows.push([]);
-				//trace("Saveone breastRow");
-		}
-		//Populate Breast Array
-		for (i = 0; i < player.breastRows.length; i++)
-		{
-			//trace("Populate One BRow");
-			saveFile.data.breastRows[i].breasts = player.breastRows[i].breasts;
-			saveFile.data.breastRows[i].breastRating = player.breastRows[i].breastRating;
-			saveFile.data.breastRows[i].nipplesPerBreast = player.breastRows[i].nipplesPerBreast;
-			saveFile.data.breastRows[i].lactationMultiplier = player.breastRows[i].lactationMultiplier;
-			saveFile.data.breastRows[i].milkFullness = player.breastRows[i].milkFullness;
-			saveFile.data.breastRows[i].fuckable = player.breastRows[i].fuckable;
-			saveFile.data.breastRows[i].fullness = player.breastRows[i].fullness;
-		}
+		saveFile.data.breastRows = SerializationUtils.serializeVector(player.breastRows as Vector.<*>);
 		//Set Perk Array
 		//Populate Perk Array
 		for (i = 0; i < player.perks.length; i++)
