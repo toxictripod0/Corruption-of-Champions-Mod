@@ -214,5 +214,38 @@ package classes{
 		{
 			assertThat(deserialized.nippleCocks, equalTo(DESERIALIZE_NIPPLE_COCKS));
 		}
+		
+		[Test]
+		public function breastRowFixNoNipples():void
+		{
+			serializedClass.serializationVersion = 0;
+			serializedClass.nipplesPerBreast = 0;
+			
+			SerializationUtils.deserialize(serializedClass, deserialized);
+			
+			assertThat(deserialized.nipplesPerBreast, equalTo(1));
+		}
+		
+		[Test]
+		public function breastRowFixNegativeLactationMultiplier():void
+		{
+			serializedClass.serializationVersion = 0;
+			serializedClass.lactationMultiplier = -42;
+			
+			SerializationUtils.deserialize(serializedClass, deserialized);
+			
+			assertThat(deserialized.lactationMultiplier, equalTo(0));
+		}
+		
+		[Test]
+		public function breastRowFixNegativeBreastRating():void
+		{
+			serializedClass.serializationVersion = 0;
+			serializedClass.breastRating = -42;
+			
+			SerializationUtils.deserialize(serializedClass, deserialized);
+			
+			assertThat(deserialized.breastRating, equalTo(BreastCup.FLAT));
+		}
 	}
 }

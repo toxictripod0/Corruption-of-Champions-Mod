@@ -1923,30 +1923,8 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			player.nippleLength = .25;
 		else
 			player.nippleLength = saveFile.data.nippleLength;
-		//Set Breast Array
-		for (i = 0; i < saveFile.data.breastRows.length; i++)
-		{
-			player.createBreastRow();
-				//trace("LoadOne BreastROw i(" + i + ")");
-		}
-		//Populate Breast Array
-		for (i = 0; i < saveFile.data.breastRows.length; i++)
-		{
-			player.breastRows[i].breasts = saveFile.data.breastRows[i].breasts;
-			player.breastRows[i].nipplesPerBreast = saveFile.data.breastRows[i].nipplesPerBreast;
-			//Fix nipplesless breasts bug
-			if (player.breastRows[i].nipplesPerBreast == 0)
-				player.breastRows[i].nipplesPerBreast = 1;
-			player.breastRows[i].breastRating = saveFile.data.breastRows[i].breastRating;
-			player.breastRows[i].lactationMultiplier = saveFile.data.breastRows[i].lactationMultiplier;
-			if (player.breastRows[i].lactationMultiplier < 0)
-				player.breastRows[i].lactationMultiplier = 0;
-			player.breastRows[i].milkFullness = saveFile.data.breastRows[i].milkFullness;
-			player.breastRows[i].fuckable = saveFile.data.breastRows[i].fuckable;
-			player.breastRows[i].fullness = saveFile.data.breastRows[i].fullness;
-			if (player.breastRows[i].breastRating < 0)
-				player.breastRows[i].breastRating = 0;
-		}
+
+		SerializationUtils.deserializeVector(player.breastRows as Vector.<*>, saveFile.data.breastRows, BreastRow);
 		
 		// Force the creation of the default breast row onto the player if it's no longer present
 		if (player.breastRows.length == 0) player.createBreastRow();

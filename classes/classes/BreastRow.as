@@ -1,11 +1,15 @@
 ﻿package classes
 {
+	import classes.internals.LoggerFactory;
 	import classes.internals.Serializable;
 	import classes.internals.Utils;
 	import classes.lists.BreastCup;
+	import mx.logging.ILogger;
 
 	public class BreastRow implements Serializable
 	{
+		private static const LOGGER:ILogger = LoggerFactory.getLogger(BreastRow);
+		
 		private static const SERIALIZATION_VERSION:int = 1;
 		
 		public var breasts:Number = 2;
@@ -85,7 +89,34 @@
 		
 		public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 
 		{
-			
+			switch (serializedDataVersion) {
+				case 0:
+					LOGGER.debug("Upgrading legacy breast row")
+					
+					// fix breasts without nipples
+					if (relativeRootObject.nipplesPerBreast === 0) {
+						LOGGER.warn("Breasts did not have any nipples, fixing...");
+						relativeRootObject.nipplesPerBreast = 1;
+					}
+					
+					// fix negative lactation muliplier
+					if (relativeRootObject.lactationMultiplier < 0) {
+						LOGGER.warn("Lactation multiplier was {0}, resetting to 0", relativeRootObject.lactationMultiplier);
+						relativeRootObject.lactationMultiplier = 0;
+					}
+					
+					// fix negative breast rating
+					if (relativeRootObject.breastRating < 0) {
+						LOGGER.warn("Breast rating was {0}, resetting to {1}", relativeRootObject.breastRating, BreastCup.FLAT);
+						relativeRootObject.breastRating = BreastCup.FLAT;
+					}
+					
+				default:
+					/*
+					 * The default block is left empty intentionally,
+					 * this switch case operates by using fall through behavior.
+					 */
+			}
 		}
 		
 		public function currentSerializationVerison():int 
