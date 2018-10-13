@@ -94,6 +94,7 @@ package classes{
 			saveFile.data.npcs.jojo = [];
 			saveFile.data.cocks = [];
 			saveFile.data.vaginas = [];
+			saveFile.data.breastRows = [];
 		}
 		
 		[Test]

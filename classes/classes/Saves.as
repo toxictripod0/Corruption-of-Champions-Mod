@@ -980,7 +980,7 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		
 		//NIPPLES
 		saveFile.data.nippleLength = player.nippleLength;
-		saveFile.data.breastRows = SerializationUtils.serializeVector(player.breastRows as Vector.<*>);
+		
 		//Set Perk Array
 		//Populate Perk Array
 		for (i = 0; i < player.perks.length; i++)
@@ -1921,8 +1921,6 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			player.nippleLength = .25;
 		else
 			player.nippleLength = saveFile.data.nippleLength;
-
-		SerializationUtils.deserializeVector(player.breastRows as Vector.<*>, saveFile.data.breastRows, BreastRow);
 		
 		// Force the creation of the default breast row onto the player if it's no longer present
 		if (player.breastRows.length == 0) player.createBreastRow();
