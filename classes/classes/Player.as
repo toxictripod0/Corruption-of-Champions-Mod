@@ -3670,22 +3670,22 @@
 			}
 		}
 		
-		public function serialize(relativeRootObject:*):void 
+		override public function serialize(relativeRootObject:*):void 
 		{
 			
 		}
 		
-		public function deserialize(relativeRootObject:*):void 
+		override public function deserialize(relativeRootObject:*):void 
 		{
 			
 		}
 		
-		public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 
+		override public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 
 		{
-			
+		
 		}
 		
-		public function currentSerializationVerison():int 
+		override public function currentSerializationVerison():int 
 		{
 			return SERIALIZATION_VERSION;
 		}

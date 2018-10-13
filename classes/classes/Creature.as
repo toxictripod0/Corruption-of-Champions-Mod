@@ -33,6 +33,7 @@ package classes
 	import classes.Vagina;
 	import classes.internals.RandomNumberGenerator;
 	import classes.internals.LoggerFactory;
+	import classes.internals.Serializable;
 	import classes.internals.Utils;
 	import classes.internals.profiling.Begin;
 	import classes.internals.profiling.End;
@@ -44,10 +45,12 @@ package classes
 	import mx.logging.ILogger;
 
 
-	public class Creature extends Utils
+	public class Creature extends Utils implements Serializable
 	{
 		private static const LOGGER:ILogger = LoggerFactory.getLogger(Creature);
 
+		private static const SERIALIZATION_VERSION:int = 1;
+		
 		public function get game():CoC {
 			return kGAMECLASS;
 		}
@@ -4245,6 +4248,29 @@ package classes
 				scale   : argDefs.scale[0],
 				max     : argDefs.max[0]
 			};
+		}
+		
+		public function serialize(relativeRootObject:*):void 
+		{
+			
+		}
+		
+		public function deserialize(relativeRootObject:*):void 
+		{
+			
+		}
+		
+		public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 
+		{
+			/**
+			 * be aware that sub-classes might override this function and may not call the super-class version.
+			 * e.g. no super.upgradeSerializationVersion(relativeRootObject, serializedDataVersion)
+			 */
+		}
+		
+		public function currentSerializationVerison():int 
+		{
+			return SERIALIZATION_VERSION;
 		}
 	}
 }

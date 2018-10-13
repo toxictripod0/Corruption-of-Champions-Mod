@@ -159,17 +159,17 @@ if (lust >= maxLust()) {
 			}
 		}
 		
-		public function serialize(relativeRootObject:*):void 
+		override public function serialize(relativeRootObject:*):void 
 		{
 			
 		}
 		
-		public function deserialize(relativeRootObject:*):void 
+		override public function deserialize(relativeRootObject:*):void 
 		{
 			
 		}
 		
-		public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 
+		override public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 
 		{
 			if (serializedDataVersion == 0) { //Changed to eliminate blocker code smell.
 				LOGGER.debug("Converting jojo from legacy save");
@@ -180,7 +180,7 @@ if (lust >= maxLust()) {
 			}
 		}
 		
-		public function currentSerializationVerison():int 
+		override public function currentSerializationVerison():int 
 		{
 			return SERIALIZATION_VERSION;
 		}
