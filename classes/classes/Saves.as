@@ -794,7 +794,7 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 	
 	saveFile.data.exists = true;
 	
-	saveWithSerializer(saveFile);
+	SerializationUtils.serialize(saveFile.data, this);
 	saveFile.data.version = ver;
 	flags[kFLAGS.SAVE_FILE_INTEGER_FORMAT_VERSION] = SAVE_FILE_CURRENT_INTEGER_FORMAT_VERSION;
 
@@ -977,8 +977,6 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile.data.keyItems = [];
 		saveFile.data.itemStorage = [];
 		saveFile.data.gearStorage = [];
-		
-		saveWithSerializer(saveFile);
 		
 		//NIPPLES
 		saveFile.data.nippleLength = player.nippleLength;
