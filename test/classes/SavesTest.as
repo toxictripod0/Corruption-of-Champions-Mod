@@ -272,6 +272,17 @@ package classes{
 
 			assertThat(kGAMECLASS.player.vaginas[0].type, equalTo(Vagina.BLACK_SAND_TRAP));
 		}
+		
+		[Test]
+		public function playerForceOneBreastRow():void {
+			player.breastRows.length = 0;
+			assertThat(player.breastRows.length, equalTo(0));
+			
+			cut.saveGame(TEST_SAVE_GAME);
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.breastRows.length, equalTo(1));
+		}
 	}
 }
 

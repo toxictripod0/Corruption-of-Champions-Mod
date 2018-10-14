@@ -3688,6 +3688,12 @@
 				LOGGER.warn("Player vagina type is {0}, resetting to human {1}.", vaginaType(), Vagina.HUMAN);
 				vaginaType(Vagina.HUMAN);
 			}
+			
+			// Force the creation of the default breast row onto the player if it's no longer present
+			if (breastRows.length === 0) {
+				LOGGER.warn("Player has no breast row, this is an invalid state. Creating breast row...");
+				createBreastRow();
+			}
 		}
 		
 		override public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 
