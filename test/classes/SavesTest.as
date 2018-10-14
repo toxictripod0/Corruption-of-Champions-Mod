@@ -31,6 +31,10 @@ package classes{
 		
 		private static const TEST_PLAYER_A:String = "foo";
 		private static const TEST_PLAYER_SHORT:String = "bar";
+		
+		private static const ASS_WETTNESS:int = 1;
+		private static const ASS_LOOSENESS:int = 2;
+		private static const ASS_FULLNESS:int = 3;
 
 		
 		private var player:Player;
@@ -51,6 +55,7 @@ package classes{
 		
 			createPlayerCocks();
 			createPlayerBreasts();
+			createPlayerAss();
 			
 			kGAMECLASS.player = player;
 			kGAMECLASS.ver = TEST_VERSION;
@@ -94,6 +99,13 @@ package classes{
 			player.createBreastRow(BreastCup.C);
 		}
 		
+		private function createPlayerAss():void
+		{
+			player.ass.analWetness = ASS_WETTNESS;
+			player.ass.analLooseness = ASS_LOOSENESS;
+			player.ass.fullness = ASS_FULLNESS;
+		}
+		
 		private function buildDummySaveForJojoTest():void
 		{
 			saveFile.data.npcs = [];
@@ -101,6 +113,7 @@ package classes{
 			saveFile.data.cocks = [];
 			saveFile.data.vaginas = [];
 			saveFile.data.breastRows = [];
+			saveFile.data.ass = [];
 		}
 		
 		[Test]
@@ -306,6 +319,30 @@ package classes{
 			cut.loadGame(TEST_SAVE_GAME);
 			
 			assertThat(kGAMECLASS.player.a, equalTo(TEST_PLAYER_A));
+		}
+		
+		[Test]
+		public function playerAssWetnessLoaded():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.ass.analWetness, equalTo(ASS_WETTNESS));
+		}
+		
+		[Test]
+		public function playerAssLoosenessLoaded():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.ass.analLooseness, equalTo(ASS_LOOSENESS));
+		}
+		
+		[Test]
+		public function playerAssFullnessLoaded():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.ass.fullness, equalTo(ASS_FULLNESS));
 		}
 	}
 }

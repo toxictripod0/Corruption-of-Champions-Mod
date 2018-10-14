@@ -4259,6 +4259,9 @@ package classes
 			relativeRootObject.cocks = SerializationUtils.serializeVector(this.cocks as Vector.<*>);
 			relativeRootObject.vaginas = SerializationUtils.serializeVector(this.vaginas as Vector.<*>);
 			relativeRootObject.breastRows = SerializationUtils.serializeVector(this.breastRows as Vector.<*>);
+			
+			relativeRootObject.ass = [];
+			SerializationUtils.serialize(relativeRootObject.ass, this.ass);
 		}
 		
 		public function deserialize(relativeRootObject:*):void 
@@ -4269,6 +4272,7 @@ package classes
 			SerializationUtils.deserializeVector(this.cocks as Vector.<*>, relativeRootObject.cocks, Cock);
 			SerializationUtils.deserializeVector(this.vaginas as Vector.<*>, relativeRootObject.vaginas, Vagina);
 			SerializationUtils.deserializeVector(this.breastRows as Vector.<*>, relativeRootObject.breastRows, BreastRow);
+			SerializationUtils.deserialize(relativeRootObject.ass, this.ass);
 		}
 		
 		public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 

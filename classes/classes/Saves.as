@@ -966,7 +966,6 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		
 		saveFile.data.perks = [];
 		saveFile.data.statusAffects = [];
-		saveFile.data.ass = [];
 		saveFile.data.keyItems = [];
 		saveFile.data.itemStorage = [];
 		saveFile.data.gearStorage = [];
@@ -1055,10 +1054,6 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 			saveFile.data.gearStorage[i].unlocked = gearStorageGet()[i].unlocked;
 			saveFile.data.gearStorage[i].damage = gearStorageGet()[i].damage;
 		}
-		saveFile.data.ass.push([]);
-		saveFile.data.ass.analWetness = player.ass.analWetness;
-		saveFile.data.ass.analLooseness = player.ass.analLooseness;
-		saveFile.data.ass.fullness = player.ass.fullness;
 
 		saveFile.data.gameState = gameStateGet(); // Saving game state?
 		
@@ -2139,10 +2134,6 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 				storage.unlocked = saveFile.data.gearStorage[i].unlocked;
 			}
 		}
-		
-		player.ass.analLooseness = saveFile.data.ass.analLooseness;
-		player.ass.analWetness = saveFile.data.ass.analWetness;
-		player.ass.fullness = saveFile.data.ass.fullness;
 		
 		gameStateSet(saveFile.data.gameState);  // Loading game state
 		
