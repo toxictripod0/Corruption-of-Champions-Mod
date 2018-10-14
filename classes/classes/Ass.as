@@ -17,11 +17,6 @@
 		public static const LOOSENESS_LOOSE:int        =   3;
 		public static const LOOSENESS_STRETCHED:int    =   4;
 		public static const LOOSENESS_GAPING:int       =   5;
-
-		//constructor
-		public function Ass()
-		{
-		}
 		
 		//data
 		//butt wetness
