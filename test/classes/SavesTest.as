@@ -1,4 +1,5 @@
 package classes{
+	import classes.internals.SerializationUtils;
 	import classes.lists.BreastCup;
 	import org.flexunit.asserts.*;
 	import org.hamcrest.assertThat;
@@ -108,12 +109,10 @@ package classes{
 		
 		private function buildDummySaveForJojoTest():void
 		{
+			SerializationUtils.serialize(saveFile.data, new Player());
+			saveFile.data.serializationVersion = undefined;
 			saveFile.data.npcs = [];
 			saveFile.data.npcs.jojo = [];
-			saveFile.data.cocks = [];
-			saveFile.data.vaginas = [];
-			saveFile.data.breastRows = [];
-			saveFile.data.ass = [];
 		}
 		
 		[Test]
