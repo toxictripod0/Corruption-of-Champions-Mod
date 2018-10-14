@@ -2293,24 +2293,6 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 }
 
 /**
- * Load save game by using serialization. 
- * @param	saveFile the file that contains the serialized savegame.
- */
-protected function loadWithSerializer(saveFile:*):void
-{
-	SerializationUtils.deserialize(saveFile.data, this);
-}
-
-/**
- * Save the game by using serialization
- * @param	saveFile the file that the game should be saved to
- */
-protected function saveWithSerializer(saveFile:*):void
-{
-	SerializationUtils.serialize(saveFile.data, this);
-}
-
-/**
  * Load NPCs from the save file. The NPC data is loaded from the 'npcs' object (saveFile.data.npcs).
  * Creates empty dummy structure if the NPC data is missing, to avoid errors on loading.
  * This method is protected instead of private to allow for testing.

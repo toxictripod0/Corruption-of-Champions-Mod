@@ -287,6 +287,7 @@ package classes{
 }
 
 import classes.Saves
+import classes.internals.SerializationUtils;
 
 class SavesForTest extends Saves {
 	public function SavesForTest(gameStateDirectGet:Function, gameStateDirectSet:Function) {
@@ -294,10 +295,10 @@ class SavesForTest extends Saves {
 	}
 
 	public function saveNPCstest(saveFile:*):void {
-		this.saveWithSerializer(saveFile);
+		SerializationUtils.serialize(saveFile.data, this);
 	}
 
 	public function loadNPCstest(saveFile:*):void {
-		this.loadWithSerializer(saveFile);
+		SerializationUtils.deserialize(saveFile.data, this);
 	}
 }
