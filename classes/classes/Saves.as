@@ -798,13 +798,6 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 	saveFile.data.version = ver;
 	flags[kFLAGS.SAVE_FILE_INTEGER_FORMAT_VERSION] = SAVE_FILE_CURRENT_INTEGER_FORMAT_VERSION;
 
-	//CLEAR OLD ARRAYS
-	
-	//Save sum dataz
-	//trace("SAVE DATAZ");
-	saveFile.data.short = player.short;
-	saveFile.data.a = player.a;
-	
 	//Notes
 	if (mainView.nameBox.text != "")
 	{
@@ -1433,8 +1426,6 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		
 		inventory.clearStorage();
 		inventory.clearGearStorage();
-		player.short = saveFile.data.short;
-		player.a = saveFile.data.a;
 		notes = saveFile.data.notes;
 		
 		//flags

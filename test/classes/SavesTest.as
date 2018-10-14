@@ -29,6 +29,10 @@ package classes{
 		
 		private static const NUMBER_OF_BREAST_ROWS:int = 3;
 		
+		private static const TEST_PLAYER_A:String = "foo";
+		private static const TEST_PLAYER_SHORT:String = "bar";
+
+		
 		private var player:Player;
 		private var cut:SavesForTest;
 
@@ -42,6 +46,8 @@ package classes{
 		[Before]
 		public function setUp():void {
 			player = new Player();
+			player.short = TEST_PLAYER_SHORT;
+			player.a = TEST_PLAYER_A;
 		
 			createPlayerCocks();
 			createPlayerBreasts();
@@ -282,6 +288,24 @@ package classes{
 			cut.loadGame(TEST_SAVE_GAME);
 			
 			assertThat(kGAMECLASS.player.breastRows.length, equalTo(1));
+		}
+		
+		[Test]
+		public function serializePlayerShortName():void {
+			kGAMECLASS.player.short = "";
+			
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.short, equalTo(TEST_PLAYER_SHORT));
+		}
+		
+		[Test]
+		public function serializePlayerA():void {
+			kGAMECLASS.player.a = "";
+			
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.a, equalTo(TEST_PLAYER_A));
 		}
 	}
 }
