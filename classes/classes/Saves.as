@@ -1913,9 +1913,6 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		player.knockUpForce(saveFile.data.pregnancyType, saveFile.data.pregnancyIncubation);
 		player.buttKnockUpForce(saveFile.data.buttPregnancyType, saveFile.data.buttPregnancyIncubation);
 		
-		if (player.hasVagina() && player.vaginaType() != 5 && player.vaginaType() != 0)
-			player.vaginaType(0);
-		
 		//NIPPLES
 		if (saveFile.data.nippleLength == undefined)
 			player.nippleLength = .25;

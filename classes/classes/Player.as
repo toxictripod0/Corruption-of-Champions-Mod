@@ -16,9 +16,11 @@
 	import classes.Items.WeaponLib;
 	import classes.Scenes.Areas.Forest.KitsuneScene;
 	import classes.Scenes.Places.TelAdre.UmasShop;
+	import classes.internals.LoggerFactory;
 	import classes.internals.Serializable;
 	import classes.lists.BreastCup;
 	import classes.lists.ColorLists;
+	import mx.logging.ILogger;
 
 	use namespace kGAMECLASS;
 
@@ -27,6 +29,8 @@
 	 * @author Yoffy
 	 */
 	public class Player extends PlayerHelper implements Serializable {
+		private static const LOGGER:ILogger = LoggerFactory.getLogger(Player);
+		
 		private static const SERIALIZATION_VERSION:int = 1;
 		
 		public function Player() {
@@ -3678,6 +3682,12 @@
 		override public function deserialize(relativeRootObject:*):void 
 		{
 			super.deserialize(relativeRootObject);
+			
+			// reset vagina to human if it is an unsupported type
+			if (hasVagina() && vaginaType() !== Vagina.BLACK_SAND_TRAP && vaginaType() !== Vagina.HUMAN) {
+				LOGGER.warn("Player vagina type is {0}, resetting to human {1}.", vaginaType(), Vagina.HUMAN);
+				vaginaType(Vagina.HUMAN);
+			}
 		}
 		
 		override public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 

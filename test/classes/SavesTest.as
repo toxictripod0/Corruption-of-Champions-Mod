@@ -239,6 +239,39 @@ package classes{
 			assertThat(kGAMECLASS.player.breastRows[0].breastRating, equalTo(BreastCup.A));
 			assertThat(kGAMECLASS.player.breastRows[2].breastRating, equalTo(BreastCup.C));
 		}
+		
+		[Test]
+		public function vaginaTypeReset():void {
+			player.createVagina(true, 1, 0);
+			player.vaginas[0].type = Vagina.EQUINE;
+			
+			cut.saveGame(TEST_SAVE_GAME);
+			cut.loadGame(TEST_SAVE_GAME);
+
+			assertThat(kGAMECLASS.player.vaginas[0].type, equalTo(Vagina.HUMAN));
+		}
+		
+		[Test]
+		public function humanVaginaIsOK():void {
+			player.createVagina(true, 1, 0);
+			player.vaginas[0].type = Vagina.HUMAN;
+			
+			cut.saveGame(TEST_SAVE_GAME);
+			cut.loadGame(TEST_SAVE_GAME);
+
+			assertThat(kGAMECLASS.player.vaginas[0].type, equalTo(Vagina.HUMAN));
+		}
+		
+		[Test]
+		public function sandTrapVaginaIsOK():void {
+			player.createVagina(true, 1, 0);
+			player.vaginas[0].type = Vagina.BLACK_SAND_TRAP;
+			
+			cut.saveGame(TEST_SAVE_GAME);
+			cut.loadGame(TEST_SAVE_GAME);
+
+			assertThat(kGAMECLASS.player.vaginas[0].type, equalTo(Vagina.BLACK_SAND_TRAP));
+		}
 	}
 }
 
