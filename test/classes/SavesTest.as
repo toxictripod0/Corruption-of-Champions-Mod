@@ -36,8 +36,16 @@ package classes{
 		private static const ASS_WETTNESS:int = 1;
 		private static const ASS_LOOSENESS:int = 2;
 		private static const ASS_FULLNESS:int = 3;
-
 		
+		private static const PLAYER_STR:int = 42;
+		private static const PLAYER_TOU:int = 43;
+		private static const PLAYER_SPE:int = 44;
+		private static const PLAYER_INT:int = 45;
+		private static const PLAYER_LIB:int = 46;
+		private static const PLAYER_SENS:int = 47;
+		private static const PLAYER_COR:int = 48;
+		private static const PLAYER_FATIGUE:int = 49;
+
 		private var player:Player;
 		private var cut:SavesForTest;
 
@@ -57,6 +65,7 @@ package classes{
 			createPlayerCocks();
 			createPlayerBreasts();
 			createPlayerAss();
+			setPlayerStats();
 			
 			kGAMECLASS.player = player;
 			kGAMECLASS.ver = TEST_VERSION;
@@ -105,6 +114,18 @@ package classes{
 			player.ass.analWetness = ASS_WETTNESS;
 			player.ass.analLooseness = ASS_LOOSENESS;
 			player.ass.fullness = ASS_FULLNESS;
+		}
+		
+		private function setPlayerStats():void
+		{
+			player.str = PLAYER_STR;
+			player.tou = PLAYER_TOU;
+			player.spe = PLAYER_SPE;
+			player.inte = PLAYER_INT;
+			player.lib = PLAYER_LIB;
+			player.sens = PLAYER_SENS;
+			player.cor = PLAYER_COR;
+			player.fatigue = PLAYER_FATIGUE;
 		}
 		
 		private function buildDummySaveForJojoTest():void
@@ -342,6 +363,70 @@ package classes{
 			cut.loadGame(TEST_SAVE_GAME);
 			
 			assertThat(kGAMECLASS.player.ass.fullness, equalTo(ASS_FULLNESS));
+		}
+		
+		[Test]
+		public function playerStrStatLoaded():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.str, equalTo(PLAYER_STR));
+		}
+		
+		[Test]
+		public function playerTouStatLoaded():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.tou, equalTo(PLAYER_TOU));
+		}
+		
+		[Test]
+		public function playerSpeStatLoaded():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.spe, equalTo(PLAYER_SPE));
+		}
+		
+		[Test]
+		public function playerIntStatLoaded():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.inte, equalTo(PLAYER_INT));
+		}
+		
+		[Test]
+		public function playerLibStatLoaded():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.lib, equalTo(PLAYER_LIB));
+		}
+		
+		[Test]
+		public function playerSensStatLoaded():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.sens, equalTo(PLAYER_SENS));
+		}
+		
+		[Test]
+		public function playerCorStatLoaded():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.cor, equalTo(PLAYER_COR));
+		}
+		
+		[Test]
+		public function playerFatigueStatLoaded():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.fatigue, equalTo(PLAYER_FATIGUE));
 		}
 	}
 }

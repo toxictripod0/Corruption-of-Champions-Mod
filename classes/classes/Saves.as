@@ -866,16 +866,7 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile.data.nosePierced = player.nosePierced;
 		saveFile.data.nosePShort = player.nosePShort;
 		saveFile.data.nosePLong = player.nosePLong;
-		
-		//MAIN STATS
-		saveFile.data.str = player.str;
-		saveFile.data.tou = player.tou;
-		saveFile.data.spe = player.spe;
-		saveFile.data.inte = player.inte;
-		saveFile.data.lib = player.lib;
-		saveFile.data.sens = player.sens;
-		saveFile.data.cor = player.cor;
-		saveFile.data.fatigue = player.fatigue;
+
 		//Combat STATS
 		saveFile.data.HP = player.HP;
 		saveFile.data.lust = player.lust;
@@ -1456,16 +1447,6 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		player.nosePierced = saveFile.data.nosePierced;
 		player.nosePShort = saveFile.data.nosePShort;
 		player.nosePLong = saveFile.data.nosePLong;
-		
-		//MAIN STATS
-		player.str = saveFile.data.str;
-		player.tou = saveFile.data.tou;
-		player.spe = saveFile.data.spe;
-		player.inte = saveFile.data.inte;
-		player.lib = saveFile.data.lib;
-		player.sens = saveFile.data.sens;
-		player.cor = saveFile.data.cor;
-		player.fatigue = saveFile.data.fatigue;
 
 		//CLOTHING/ARMOR
 		var found:Boolean = false;

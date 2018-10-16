@@ -4262,6 +4262,20 @@ package classes
 			
 			relativeRootObject.ass = [];
 			SerializationUtils.serialize(relativeRootObject.ass, this.ass);
+			
+			serializeStats(relativeRootObject);
+		}
+		
+		private function serializeStats(relativeRootObject:*):void
+		{
+			relativeRootObject.str = this.str;
+			relativeRootObject.tou = this.tou;
+			relativeRootObject.spe = this.spe;
+			relativeRootObject.inte = this.inte;
+			relativeRootObject.lib = this.lib;
+			relativeRootObject.sens = this.sens;
+			relativeRootObject.cor = this.cor;
+			relativeRootObject.fatigue = this.fatigue;
 		}
 		
 		public function deserialize(relativeRootObject:*):void 
@@ -4273,6 +4287,19 @@ package classes
 			SerializationUtils.deserializeVector(this.vaginas as Vector.<*>, relativeRootObject.vaginas, Vagina);
 			SerializationUtils.deserializeVector(this.breastRows as Vector.<*>, relativeRootObject.breastRows, BreastRow);
 			SerializationUtils.deserialize(relativeRootObject.ass, this.ass);
+			deserializeStats(relativeRootObject);
+		}
+		
+		private function deserializeStats(relativeRootObject:*):void
+		{
+			this.str = relativeRootObject.str;
+			this.tou = relativeRootObject.tou;
+			this.spe = relativeRootObject.spe;
+			this.inte = relativeRootObject.inte;
+			this.lib = relativeRootObject.lib;
+			this.sens = relativeRootObject.sens;
+			this.cor = relativeRootObject.cor;
+			this.fatigue = relativeRootObject.fatigue;
 		}
 		
 		public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 
