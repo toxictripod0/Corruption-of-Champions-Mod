@@ -9,7 +9,7 @@ package classes {
 	
 	[Suite]
 	[RunWith("org.flexunit.runners.Suite")]
-	public class InternalsSuit
+	public class InternalsSuite
 	{
 		public var loggerFactoryTest:LoggerFactoryTest;
 		public var serializationUtilTest:SerializationUtilTest;

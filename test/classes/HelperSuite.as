@@ -7,7 +7,7 @@ import classes.helper.StageLocatorTest;
 
 [Suite]
 [RunWith("org.flexunit.runners.Suite")]
-	public class HelperSuit
+	public class HelperSuite
 	{
 		 public var stageLocatorTest:StageLocatorTest;
 		 public var memoryLogTargetTest:MemoryLogTargetTest;

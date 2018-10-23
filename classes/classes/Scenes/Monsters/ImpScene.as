@@ -426,7 +426,7 @@ package classes.Scenes.Monsters
 			outputText(images.showImage("player-centaur-herm"));
 			outputText("As the imp lays beaten its hands stroke its " + monster.cockDescriptShort(0) + " as its eyes look over you in the hope that you might abuse it in some manner.  You lick your lips as you stare at the large member and you turn around to display your " + player.vaginaDescript(0) + ".  ");
 			//Not gaping?
-			if (player.vaginas[0].vaginalLooseness <= VaginaClass.LOOSENESS_GAPING) {
+			if (player.vaginas[0].vaginalLooseness <= Vagina.LOOSENESS_GAPING) {
 				//Penetration for non-gape cases
 				outputText("With a lascivious grin the imp hops forward, gripping your flanks as it drives its member forward into your " + player.vaginaDescript(0) + ".  ");
 				//<<If Pussy Virgin>> 
@@ -1405,7 +1405,19 @@ package classes.Scenes.Monsters
 			}
 			//HP or insta-loss
 			else {
-				outputText("\n<b>You fall, defeated by the imp!</b>\nThe last thing you see before losing consciousness is the creature undoing its crude loincloth to reveal a rather disproportionately-sized member.");
+				outputText("\n<b>You fall, defeated by the imp!</b>\nThe last thing you see before losing consciousness is the creature undoing its crude loincloth to reveal a "+ monster.cockDescript() + ". ");
+				outputText("Before completly slipping into the darkness, you feel a " + monster.cockHead() + " pressing against your ")
+				
+				if (player.isFemaleOrHerm()) {
+					outputText(player.vaginaDescript());
+					player.cuntChange(monster.cockArea(0), false);
+					player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP);
+				} else {
+					outputText(player.assholeDescript());
+					player.buttChange(monster.cockArea(0), false);
+				}
+				
+				outputText(".");
 			}
 			combat.cleanupAfterCombat();
 		}

@@ -527,9 +527,9 @@ public function useTentacleJojo():void {
 	else {
 		//With cunt
 		if (player.hasVagina()) {
-			if (player.vaginas[0].vaginalLooseness >= VaginaClass.LOOSENESS_GAPING_WIDE) outputText(" practically falling into your oversized cum-receptacles");
+			if (player.vaginas[0].vaginalLooseness >= Vagina.LOOSENESS_GAPING_WIDE) outputText(" practically falling into your oversized cum-receptacles");
 			else {
-				if (player.vaginas[0].vaginalWetness >= VaginaClass.WETNESS_SLICK) outputText(" sliding inside easily thanks to your copious lubrication");
+				if (player.vaginas[0].vaginalWetness >= Vagina.WETNESS_SLICK) outputText(" sliding inside easily thanks to your copious lubrication");
 				else outputText("forcing their way inside your " + player.vaginaDescript(0) + " and " + player.assholeDescript());
 			}
 		}
@@ -597,8 +597,8 @@ public function useTentacleJojo():void {
 		if (player.pregnancyIncubation == 0) outputText("mildly pregnant");
 		else outputText("even more pregnant");
 		outputText(".  Your body spasms around them, locked in the throes of orgasm");
-		if (player.vaginas[0].vaginalWetness == VaginaClass.WETNESS_SLAVERING) outputText(", and soaks him with a wave of puss juice.  ");
-		else if (player.vaginas[0].vaginalWetness >= VaginaClass.WETNESS_SLICK) outputText(", as your drooling cunt forms a slick puddle.  ");
+		if (player.vaginas[0].vaginalWetness == Vagina.WETNESS_SLAVERING) outputText(", and soaks him with a wave of puss juice.  ");
+		else if (player.vaginas[0].vaginalWetness >= Vagina.WETNESS_SLICK) outputText(", as your drooling cunt forms a slick puddle.  ");
 		else outputText(".  ");
 		//(If big clit being sucked – 
 		if (player.cockTotal() <= 2 && player.balls == 0) {

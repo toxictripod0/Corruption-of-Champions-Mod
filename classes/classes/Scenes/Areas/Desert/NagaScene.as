@@ -238,13 +238,13 @@ private function gooNagaRape():void {
 	else if (player.gender == 2) {
 		outputText("You shriek in delight as wave after wave of orgasms rush over you");
 		//(if squirter)
-		if (player.vaginas[0].vaginalWetness == VaginaClass.WETNESS_SLAVERING) outputText(", your girlcum gushing out and pooling on the stomach of the naga");
+		if (player.vaginas[0].vaginalWetness == Vagina.WETNESS_SLAVERING) outputText(", your girlcum gushing out and pooling on the stomach of the naga");
 		outputText(".");
 	}
 	//(if herm)
 	if (player.gender == 3) {
 		outputText("You scream in ecstasy as you hit your peak, your girlcum ");
-		if (player.vaginas[0].vaginalWetness < VaginaClass.WETNESS_SLAVERING) outputText("leaking out");
+		if (player.vaginas[0].vaginalWetness < Vagina.WETNESS_SLAVERING) outputText("leaking out");
 		else outputText("gushing out to form a pool on the naga's stomach");
 		outputText(" and your " + player.multiCockDescriptLight());
 		//(normal)

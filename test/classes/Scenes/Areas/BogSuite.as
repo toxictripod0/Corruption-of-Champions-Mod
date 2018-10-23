@@ -4,7 +4,7 @@ package classes.Scenes.Areas
 	
 	[Suite]
 	[RunWith("org.flexunit.runners.Suite")]
-	public class BogSuit
+	public class BogSuite
 	{
 		public var phoukaSceneTest:PhoukaSceneTest
 	}

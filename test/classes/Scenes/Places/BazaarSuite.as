@@ -4,7 +4,7 @@ package classes.Scenes.Places {
 
 [Suite]
 [RunWith("org.flexunit.runners.Suite")]
-	public class BazaarSuit
+	public class BazaarSuite
 	{
 		 public var blackCockTest:BlackCockTest;
 		 public var roxanneTest:RoxanneTest;

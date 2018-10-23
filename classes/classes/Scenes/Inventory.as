@@ -40,7 +40,7 @@ package classes.Scenes
 		private var prisonStorage:Array;
 		private var callNext:Function;		//These are used so that we know what has to happen once the player finishes with an item
 		private var callOnAbandon:Function;	//They simplify dealing with items that have a sub menu. Set in inventoryMenu and in takeItem
-		private var currentItemSlot:ItemSlotClass;	//The slot previously occupied by the current item - only needed for stashes and items with a sub menu.
+		private var currentItemSlot:ItemSlot;	//The slot previously occupied by the current item - only needed for stashes and items with a sub menu.
 		
 		public function Inventory(saveSystem:Saves) {
 			itemStorage = [];
@@ -209,7 +209,7 @@ package classes.Scenes
 			addButton(14, "Back", playerMenu);
 		}
 			
-		public function takeItem(itype:ItemType, nextAction:Function, overrideAbandon:Function = null, source:ItemSlotClass = null):void {
+		public function takeItem(itype:ItemType, nextAction:Function, overrideAbandon:Function = null, source:ItemSlot = null):void {
 			if (itype == null) {
 				CoC_Settings.error("takeItem(null)");
 				return;
@@ -316,7 +316,7 @@ package classes.Scenes
 		//Create a storage slot
 		public function createStorage():Boolean {
 			if (itemStorage.length >= 16) return false;
-			var newSlot:ItemSlotClass = new ItemSlotClass();
+			var newSlot:ItemSlot = new ItemSlot();
 			itemStorage.push(newSlot);
 			return true;
 		}
@@ -355,9 +355,9 @@ package classes.Scenes
 				gearStorage.splice(0, gearStorage.length);
 			}
 			//Rebuild a new one!
-			var newSlot:ItemSlotClass;
+			var newSlot:ItemSlot;
 			while (gearStorage.length < 45) {
-				newSlot = new ItemSlotClass();
+				newSlot = new ItemSlot();
 				gearStorage.push(newSlot);
 			}
 		}
@@ -433,7 +433,7 @@ package classes.Scenes
 			doNext(inventoryMenu);
 		}
 		
-		private function useItem(item:Useable, fromSlot:ItemSlotClass):void {
+		private function useItem(item:Useable, fromSlot:ItemSlot):void {
 			item.useText();
 			if (item is Armor) {
 				player.armor.removeText();
@@ -444,7 +444,7 @@ package classes.Scenes
 			}
 			else if (item is Weapon) {
 				player.weapon.removeText();
-				var temp:ItemSlotClass = new ItemSlotClass();
+				var temp:ItemSlot = new ItemSlot();
 				temp.quantity = - 1;
 				temp.damage = flags[kFLAGS.WEAPON_DURABILITY_DAMAGE];
 				item = player.setWeapon(item as Weapon); //Item is now the player's old weapon
@@ -484,7 +484,7 @@ package classes.Scenes
 			}
 		}
 		
-		private function takeItemFull(itype:ItemType, showUseNow:Boolean, source:ItemSlotClass):void {
+		private function takeItemFull(itype:ItemType, showUseNow:Boolean, source:ItemSlot):void {
 			outputText("There is no room for " + itype.longName + " in your inventory.  You may replace the contents of a pouch with " + itype.longName + " or abandon it.");
 			menu();
 			for (var x:int = 0; x < 10; x++) {
@@ -499,7 +499,7 @@ package classes.Scenes
 			addButton(14, "Abandon", callOnAbandon); //Does not doNext - immediately executes the callOnAbandon function
 		}
 		
-		private function useItemNow(item:Useable, source:ItemSlotClass = null):void {
+		private function useItemNow(item:Useable, source:ItemSlot = null):void {
 			clearOutput();
 			if (item.canUse()) { //If an item cannot be used then canUse should provide a description of why the item cannot be used
 				useItem(item, source);
@@ -509,7 +509,7 @@ package classes.Scenes
 			}
 		}
 		
-		private function replaceItem(itype:ItemType, slotNum:int, source:ItemSlotClass = null):void {
+		private function replaceItem(itype:ItemType, slotNum:int, source:ItemSlot = null):void {
 			clearOutput();
 			if (player.itemSlots[slotNum].itype == itype) //If it is the same as what's in the slot...just throw away the new item
 				outputText("You discard " + itype.longName + " from the stack to make room for the new one.");
@@ -645,7 +645,7 @@ package classes.Scenes
 		}
 		//Unequip!
 		private function unequipWeapon():void {
-			var temp:ItemSlotClass = new ItemSlotClass();
+			var temp:ItemSlot = new ItemSlot();
 			temp.damage = flags[kFLAGS.WEAPON_DURABILITY_DAMAGE];
 			temp.quantity = -1;
 			takeItem(player.setWeapon(WeaponLib.FISTS), inventoryMenu, null, temp);
@@ -870,7 +870,7 @@ package classes.Scenes
 			player.itemSlots[slotNum].setItemAndQty(itype, qty);
 		}
 		
-		public function generateInventoryTooltip(slot:ItemSlotClass):String {
+		public function generateInventoryTooltip(slot:ItemSlot):String {
 			var tt:String = slot.itype.description;
 			if (slot.itype.isDegradable()) {
 				tt += "\nDurability: " + (slot.itype.durability - slot.damage) + "/" + slot.itype.durability;

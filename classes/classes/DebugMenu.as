@@ -120,7 +120,7 @@ package classes
 		}
 		private function  dumpEffectsMenu():void {
 			clearOutput();
-			for each (var effect:StatusEffectClass in player.statusEffects) {
+			for each (var effect:StatusEffect in player.statusEffects) {
 				outputText("'"+effect.stype.id+"': "+effect.value1+" "+effect.value2+" "+effect.value3+" "+effect.value4+"\n");
 			}
 			doNext(accessDebugMenu);

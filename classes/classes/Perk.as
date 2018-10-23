@@ -1,9 +1,9 @@
 ﻿package classes
 {
-	public class PerkClass
+	public class Perk
 	{
 		//constructor
-		public function PerkClass(perk:PerkType,value1:Number=0,value2:Number=0,value3:Number=0,value4:Number=0)
+		public function Perk(perk:PerkType,value1:Number=0,value2:Number=0,value3:Number=0,value4:Number=0)
 		{
 			_ptype = perk;
 			this.value1 = value1;

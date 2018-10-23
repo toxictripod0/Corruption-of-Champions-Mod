@@ -180,7 +180,6 @@ package classes.Items.Consumables
 				}
 				else outputText("Then, it disappears back into your sheath.");
 				player.cocks[i].cockType = CockTypesEnum.CAT;
-				player.cocks[i].knotMultiplier = 1;
 				changes++;
 			}
 			//Cat penorz shrink
