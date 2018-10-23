@@ -171,12 +171,12 @@ package classes.Scenes.NPCs
 						outputText("  She sniffs the air and immediately glances towards your groin.");
 						if (player.cocks[player.shortestCockIndex()].cockLength < 9) {
 							outputText("The cow's eyes practically fog with lust when she sees the size of your diminutive bulge.  Isabella begs, \"<i>V-vould you come closer?  I-ah have a fondness for 'small' lovers, and I like to... 'lick'.</i>\"  To emphasize, she rolls out her tongue, showing you nearly eight inches of flat, wide, and pink flesh.");
-							suck = izzyGivesSmallWangsFreeOral;
+							suck = true;
 						} else outputText("  The cow's eyes close, disappointment visible on her face when she sees the sheer size of your bulge.");
 					}
 					//[Talk – real conversations] [Drink – leads to breastfeeding] [Get Licks – leads to oral for small fries] [Rape?]
 					menu();
-					preFollowerMenus();
+					preFollowerMenus(suck);
 					removeButton(4);
 				}
 				return;
@@ -250,7 +250,7 @@ package classes.Scenes.NPCs
 				}
 			}
 			menu();
-			getGame().isabellaScene.preFollowerMenus();
+			preFollowerMenus(suck);
 		}
 		
 		private function isabellaGreetingFirstTime():void {

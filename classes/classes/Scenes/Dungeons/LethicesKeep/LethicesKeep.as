@@ -278,7 +278,7 @@ package classes.Scenes.Dungeons.LethicesKeep {
 				outputText("\n\nNear the back, next to the broken stack is a white stand, displaying what appear to be a number of dark shades.");
 				if (flags[kFLAGS.D3_ENTERED_MAGPIEHALL] == 1) outputText("  Your spirits rise. They look like they may very well be made of the same material as the screen in the basilisk hall.");
 				if (player.inte >= 70 || player.sens >= 70) outputText("  Disquiet edges down your spine. Something about this place doesn’t feel right. The room seems faded at the corners, as if it’s not quite there.");
-				addButton(2, "Glasses", doppelganger.getDemGlasses);
+				addButton(2, "Glasses", doppelganger.getDemGlasses).hint("Take the interesting pair of glasses." + (flags[kFLAGS.D3_ENTERED_MAGPIEHALL] > 0 ? " This would certainly help you with traversing the hall full of basilisks." : ""));
 			}
 			return false;
 		}
@@ -309,13 +309,13 @@ package classes.Scenes.Dungeons.LethicesKeep {
 					outputText("\n\n<b>New codex entry unlocked: Basilisks!</b>")
 				}
 				menu();
-				addButton(0, "Go!", jeanClaude.gogoFuckTheseBasilisks);
-				addButton(1, "Fall Back", fallbackFromMagpieHallS);
+				addButton(0, "Go!", jeanClaude.gogoFuckTheseBasilisks).hint("Just RUN! Run like the wind while avoiding the basilisks!");
+				addButton(1, "Fall Back", fallbackFromMagpieHallS).hint("Retreat! You're not ready to face the basilisks yet.");
 				return true;
 			}
 			outputText("You are back in the southern end of the Magpie Hall.  Without the bustle of activity below it is a gapingly empty and quiet place, the only sound the murmur of activity from elsewhere. There is a vast amount of collected junk below but it would take, well, an army of basilisks to sort through it to find anything worthwhile. You could check out the massive pile of eggs, though.");
 			if (eggsAvailable() > 0)
-				addButton(2, "Eggs", goToEggPile);
+				addButton(2, "Eggs", goToEggPile).hint("Inspect the nearby pile of eggs of varying colours.");
 			return false;
 		}
 
@@ -392,12 +392,12 @@ package classes.Scenes.Dungeons.LethicesKeep {
 			if (flags[kFLAGS.D3_JEAN_CLAUDE_DEFEATED] == 0) {
 				outputText("You find yourself back in the small booth, with the locked door leading out into the Magpie Hall. Just like the one on the opposite side, there is a darkened screen here through which you can see hundreds of basilisks milling down below, sorting through the vast amount of junk and eggs they have collected from the mountainside. They don’t seem to have taken any extra precautions following your narrow escape of them- the gantry remains free of any guards, and the door on the other side looks open.");
 				menu();
-				addButton(0, "Go!", jeanClaude.gogoFuckTheseBasilisksNorth);
-				addButton(1, "Stronghold", getGame().dungeons.move, "tunnel2");
+				addButton(0, "Go!", jeanClaude.gogoFuckTheseBasilisksNorth).hint("Just RUN! Run like the wind while avoiding the basilisks!");
+				addButton(1, "Stronghold", getGame().dungeons.move, "tunnel2").hint("Retreat back to the tunnel.");
 				return true;
 			}
 			outputText("You are back in the northern end of the Magpie Hall. Without the bustle of activity below it is a gapingly empty and quiet place, the only sound the murmur of activity from elsewhere. There is a vast amount of collected junk below but it would take, well, an army of basilisks to sort through it to find anything worthwhile. You could check out the massive pile of eggs, though.");
-			if (eggsAvailable() > 0) addButton(2, "Eggs", goToEggPile);
+			if (eggsAvailable() > 0) addButton(2, "Eggs", goToEggPile).hint("Inspect the nearby pile of eggs of varying colours.");
 			return false;
 		}
 
@@ -452,8 +452,8 @@ package classes.Scenes.Dungeons.LethicesKeep {
 				outputText("\n\n<i>\"Why hello there,\"</i> the corrupt temptress says with a tone that's the auditory equivalent to a pat on the head. <i>\"You must be [name]. Did you come all this way just to join my garden?\"</i> The corner of the succubus' mouth curls ever so slightly, her lips gleaming invitingly. <i>\"Or perhaps you could be my first non-floral pet. Would you like that?\"</i> She arches her back to present her breasts to you, held aloft by their own incredible, perfect shape and framed by a skimpy underbust covering that only serves to highlight her hard, perky nipples. They gleam with moisture - milk you suppose.");
 				outputText("\n\nShe smiles encouragingly. <i>\"What'll it be?\"</i>");
 				menu();
-				addButton(0, "Fight", startCombatImmediate, new SuccubusGardener());
-				addButton(1, "Surrender", succubusGardener.surrenderToTheGardener);
+				addButton(0, "Fight", startCombatImmediate, new SuccubusGardener()).hint("She's not going to take you today!");
+				addButton(1, "Surrender", succubusGardener.surrenderToTheGardener).hint("Submit to the succubus? This will certainly lead to a bad end.");
 				return true;
 			}
 			return false;
