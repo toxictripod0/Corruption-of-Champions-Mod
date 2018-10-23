@@ -351,7 +351,7 @@
 						addButton(5, "Fuck Her", fuckIsabella).hint("Of course, you've got the classical penetrative sex option. Put that dick of yours to a good use.");
 					}
 					else addButtonDisabled(5, "Fuck Her").hint(player.cockTotal() == 1 ? "Your dick is too big to fit." : "None of your dicks would fit inside her!");
-					if (player.countCocksOfType(CockTypesEnum.TENTACLE) >= 3) {
+					if (izzyTentacleRapeBool()) {
 						outputText("  Or you could take advantage of your numerous tentacles to show her a truly grand time.");
 						addButton(6, "TentacleSex", tentacleBoneFollowerIzzy).hint("Have some kinky fun with the cow-girl with those tentacles of yours!");
 					}
