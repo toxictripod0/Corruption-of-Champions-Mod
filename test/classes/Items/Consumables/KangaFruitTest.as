@@ -32,6 +32,7 @@ package classes.Items.Consumables
 		public static function setUpClass():void
 		{
 			kGAMECLASS = new CoC(StageLocator.stage);
+			kGAMECLASS.saves.setPermObjectFilename("TestPermObject");
 		}
 
 		[Before]

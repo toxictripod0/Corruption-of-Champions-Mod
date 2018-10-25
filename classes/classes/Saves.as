@@ -1,4 +1,4 @@
-﻿package classes
+package classes
 {
 	import classes.BodyParts.*;
 	import classes.GlobalFlags.kACHIEVEMENTS;
@@ -39,6 +39,7 @@ public class Saves extends BaseContent {
 	private var gameStateSet:Function;
 	private var itemStorageGet:Function;
 	private var gearStorageGet:Function;
+	private var permObjectFileName:String = "CoC_Main";
 	
 	public function Saves(gameStateDirectGet:Function, gameStateDirectSet:Function) {
 		gameStateGet = gameStateDirectGet; //This is so that the save game functions (and nothing else) get direct access to the gameState variable
@@ -588,6 +589,18 @@ public function loadGame(slot:String):void
 	}
 }
 
+/**
+ * Set the filename that is used to save and load the perm object,
+ * which permanently stores data accross games, e.g. achievments.
+ * This file will show up in the same directory as the save games.
+ * @param	filename to use for the perm object file
+ */
+public function setPermObjectFilename(filename:String):void
+{
+	this.permObjectFileName = filename;
+	LOGGER.debug("Filename for perm object was set to {0}", filename);
+}
+
 //Used for tracking achievements.
 public function savePermObject(isFile:Boolean):void {
 	//Initialize the save file
@@ -601,7 +614,7 @@ public function savePermObject(isFile:Boolean):void {
 	}
 	else
 	{
-		saveFile = SharedObject.getLocal("CoC_Main", "/");
+		saveFile = SharedObject.getLocal(permObjectFileName, "/");
 	}
 	
 	saveFile.data.exists = true;
@@ -666,7 +679,6 @@ public function savePermObject(isFile:Boolean):void {
 }
 
 public function loadPermObject():void {
-	var permObjectFileName:String = "CoC_Main";
 	var saveFile:* = SharedObject.getLocal(permObjectFileName, "/");
 	LOGGER.info("Loading achievements from {0}!", permObjectFileName);
 	//Initialize the save file
