@@ -6,6 +6,7 @@ package classes.Items.Consumables
 	import classes.Items.Consumable;
 	import classes.Player;
 	import classes.helper.StageLocator;
+	import classes.internals.CocBuilder;
 	
 	import org.hamcrest.assertThat;
 	import org.hamcrest.object.equalTo;
@@ -31,8 +32,7 @@ package classes.Items.Consumables
 		[BeforeClass]
 		public static function setUpClass():void
 		{
-			kGAMECLASS = new CoC(StageLocator.stage);
-			kGAMECLASS.saves.setPermObjectFilename("TestPermObject");
+			kGAMECLASS = CocBuilder.getInstance();
 		}
 
 		[Before]
