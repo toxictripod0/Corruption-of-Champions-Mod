@@ -12,7 +12,7 @@ package classes.Scenes.Areas
 	
 	import classes.CoC;
 	import classes.GlobalFlags.kGAMECLASS;
-	import classes.helper.StageLocator;
+	import classes.internals.CocBuilder;
 	
 	public class DeepWoodsTest 
 	{

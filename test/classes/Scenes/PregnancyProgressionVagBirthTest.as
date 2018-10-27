@@ -5,6 +5,7 @@ package classes.Scenes
 	import classes.Scenes.NPCs.UrtaPregs;
 	import classes.Scenes.Places.TelAdre;
 	import classes.helper.DummyOutput;
+	import classes.internals.CocBuilder;
 	import classes.internals.GuiOutput;
 	import org.flexunit.asserts.*;
 	import org.hamcrest.assertThat;
@@ -14,7 +15,7 @@ package classes.Scenes
 	import org.hamcrest.text.*;
 	import org.hamcrest.collection.*;
 	
-	import classes.helper.StageLocator;
+	import classes.internals.CocBuilder;
 	
 	import classes.DefaultDict;
 	import classes.CoC;
@@ -50,7 +51,7 @@ package classes.Scenes
 		
 		[BeforeClass]
 		public static function setUpClass():void {
-			kGAMECLASS = new CoC(StageLocator.stage);
+			kGAMECLASS = CocBuilder.getInstance();
 		}
 		
 		[Before]

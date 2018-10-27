@@ -10,7 +10,7 @@ package classes{
 	
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.CoC;
-	import classes.helper.StageLocator;
+	import classes.internals.CocBuilder;
 	import classes.PlayerEvents;
 	import classes.Player;
 	
@@ -22,7 +22,7 @@ package classes{
 		
 		[BeforeClass]
 		public static function setUpClass():void {
-			kGAMECLASS = new CoC(StageLocator.stage);
+			kGAMECLASS = CocBuilder.getInstance();
 		}
 		
         [Before]

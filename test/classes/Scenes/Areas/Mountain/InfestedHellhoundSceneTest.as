@@ -12,7 +12,7 @@ package classes.Scenes.Areas.Mountain
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Player;
 	import classes.PregnancyStore;
-	import classes.helper.StageLocator;
+	import classes.internals.CocBuilder;
 	public class InfestedHellhoundSceneTest 
 	{
 		private var cut:InfestedHellhoundScene;
@@ -25,7 +25,7 @@ package classes.Scenes.Areas.Mountain
 		
 		[BeforeClass]
 		public static function setUpClass():void {
-			kGAMECLASS = new CoC(StageLocator.stage);
+			kGAMECLASS = CocBuilder.getInstance();
 		}
 		
 		[Before]

@@ -11,7 +11,7 @@ package classes{
 	import classes.CoC;
 	import classes.Player;
 	import classes.GlobalFlags.kGAMECLASS;
-	import classes.helper.StageLocator;
+	import classes.internals.CocBuilder;
 	import classes.CharCreation;
 	import classes.GlobalFlags.kFLAGS;
 	
@@ -21,7 +21,7 @@ package classes{
 		
 		[BeforeClass]
 		public static function runOnceForTestClass():void { 
-			kGAMECLASS = new CoC(StageLocator.stage);
+			kGAMECLASS = CocBuilder.getInstance();
 		}
 		
         [Before]

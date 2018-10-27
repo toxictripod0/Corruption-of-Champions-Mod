@@ -4,7 +4,7 @@ package classes{
 	import classes.Creature;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.PerkLib;
-	import classes.helper.StageLocator;
+	import classes.internals.CocBuilder;
 	import classes.internals.RandomNumberGenerator;
 	import classes.internals.ActionScriptRNG;
 	import classes.lists.Gender;
@@ -69,7 +69,7 @@ package classes{
 		  * Seriously people, DONT use global variables.
 		  */
 		  
-			kGAMECLASS = new CoC(StageLocator.stage);
+			kGAMECLASS = CocBuilder.getInstance();
 		}
          
         [Before]

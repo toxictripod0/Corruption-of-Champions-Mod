@@ -5,7 +5,6 @@ package classes.Items.Consumables
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Items.Consumable;
 	import classes.Player;
-	import classes.helper.StageLocator;
 	import classes.internals.CocBuilder;
 	
 	import org.hamcrest.assertThat;

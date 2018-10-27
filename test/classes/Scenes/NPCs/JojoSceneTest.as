@@ -10,7 +10,7 @@ package classes.Scenes.NPCs{
 	import org.hamcrest.text.*;
 	import org.hamcrest.collection.*;
 	
-	import classes.helper.StageLocator;
+	import classes.internals.CocBuilder;
 	
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Player;
@@ -28,7 +28,7 @@ package classes.Scenes.NPCs{
 		
 		[BeforeClass]
 		public static function setUpClass():void {
-			kGAMECLASS = new CoC(StageLocator.stage);
+			kGAMECLASS = CocBuilder.getInstance();
 		}
          
         [Before]

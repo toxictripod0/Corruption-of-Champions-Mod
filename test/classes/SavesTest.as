@@ -11,7 +11,7 @@ package classes{
 	import classes.CoC;
 	import classes.Scenes.Inventory;
 	import classes.Saves;
-	import classes.helper.StageLocator;
+	import classes.internals.CocBuilder;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.GlobalFlags.kFLAGS;
 	
@@ -33,7 +33,7 @@ package classes{
 		
 		[BeforeClass]
 		public static function setUpClass():void {
-			kGAMECLASS = new CoC(StageLocator.stage);
+			kGAMECLASS = CocBuilder.getInstance();
 		}
 		
 		[Before]

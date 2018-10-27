@@ -6,7 +6,7 @@ package classes
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.PerkLib;
 	import classes.Player;
-	import classes.helper.StageLocator;
+	import classes.internals.CocBuilder;
 	import classes.lists.ColorLists;
 	import org.flexunit.asserts.*;
 	import org.hamcrest.assertThat;
@@ -108,7 +108,7 @@ package classes
 			 * Seriously people, DONT use global variables.
 			 */
 
-			kGAMECLASS = new CoC(StageLocator.stage);
+			kGAMECLASS = CocBuilder.getInstance();
 		}
 
 		[Before]

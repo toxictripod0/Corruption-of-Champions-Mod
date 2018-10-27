@@ -1,5 +1,6 @@
 package classes.helper
 {
+	import classes.internals.CocBuilder;
 	import org.flexunit.asserts.*;
 	import org.flexunit.Assert;
 	import org.hamcrest.assertThat;
@@ -25,7 +26,7 @@ package classes.helper
 		[BeforeClass]
 		public static function setUpClass():void
 		{
-			kGAMECLASS = new CoC(StageLocator.stage);
+			kGAMECLASS = CocBuilder.getInstance();
 		}
 		
 		[Before]

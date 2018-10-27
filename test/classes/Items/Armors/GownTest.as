@@ -3,7 +3,7 @@ package classes.Items.Armors
 	import classes.CoC;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Player;
-	import classes.helper.StageLocator;
+	import classes.internals.CocBuilder;
 	import classes.lists.BreastCup;
 	
 	import org.hamcrest.assertThat;
@@ -19,7 +19,7 @@ package classes.Items.Armors
 		[BeforeClass]
 		public static function setUpClass():void
 		{
-			kGAMECLASS = new CoC(StageLocator.stage);
+			kGAMECLASS = CocBuilder.getInstance();
 		}
 		
 		[Before]

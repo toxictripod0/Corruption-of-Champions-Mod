@@ -11,7 +11,7 @@ package classes.Scenes.Areas.Forest
 	import classes.CoC;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Player;
-	import classes.helper.StageLocator;
+	import classes.internals.CocBuilder;
 	
 	public class FaerieTest
 	{
@@ -25,7 +25,7 @@ package classes.Scenes.Areas.Forest
 		[BeforeClass]
 		public static function setUpClass():void
 		{
-			kGAMECLASS = new CoC(StageLocator.stage);
+			kGAMECLASS = CocBuilder.getInstance();
 		}
 		
 		[Before]

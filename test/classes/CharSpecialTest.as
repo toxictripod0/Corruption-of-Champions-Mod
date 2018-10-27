@@ -11,7 +11,7 @@ package classes{
 	import classes.CoC;
 	import classes.Player;
 	import classes.GlobalFlags.kGAMECLASS;
-	import classes.helper.StageLocator;
+	import classes.internals.CocBuilder;
 	
     public class CharSpecialTest {
 		private static const CHAR_NAME_INDEX:int = 0;
@@ -40,7 +40,7 @@ package classes{
 		
 		[BeforeClass]
 		public static function runOnceForTestClass():void { 
-			kGAMECLASS = new CoC(StageLocator.stage);
+			kGAMECLASS = CocBuilder.getInstance();
 		}
 		
         [Before]

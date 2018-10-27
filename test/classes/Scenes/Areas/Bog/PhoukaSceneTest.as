@@ -1,5 +1,6 @@
 package classes.Scenes.Areas.Bog
 {
+	import classes.internals.CocBuilder;
 	import org.flexunit.asserts.*;
 	import org.hamcrest.assertThat;
 	import org.hamcrest.core.*;
@@ -11,7 +12,7 @@ package classes.Scenes.Areas.Bog
 	import classes.CoC;
 	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Player;
-	import classes.helper.StageLocator;
+	import classes.internals.CocBuilder;
 	
 	public class PhoukaSceneTest
 	{
@@ -23,7 +24,7 @@ package classes.Scenes.Areas.Bog
 		[BeforeClass]
 		public static function setUpClass():void
 		{
-			kGAMECLASS = new CoC(StageLocator.stage);
+			kGAMECLASS = CocBuilder.getInstance();
 		}
 		
 		[Before]

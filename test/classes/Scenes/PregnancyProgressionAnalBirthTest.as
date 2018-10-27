@@ -14,7 +14,7 @@ package classes.Scenes
 	import org.hamcrest.text.*;
 	import org.hamcrest.collection.*;
 	
-	import classes.helper.StageLocator;
+	import classes.internals.CocBuilder;
 	
 	import classes.DefaultDict;
 	import classes.CoC;
@@ -41,7 +41,7 @@ package classes.Scenes
 		[BeforeClass]
 		public static function setUpClass():void
 		{
-			kGAMECLASS = new CoC(StageLocator.stage);
+			kGAMECLASS = CocBuilder.getInstance();
 		}
 		
 		[Parameters]
