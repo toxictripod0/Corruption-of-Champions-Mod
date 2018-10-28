@@ -308,7 +308,7 @@ package classes
 			{
 				if (int(Math.random() * 3) == 0 && face.type == Face.HORSE)
 					stringo = "long ";
-				if (int(Math.random() * 3) == 0 && face.type == Face.CAT)
+				if (int(Math.random() * 3) == 0 && hasCatFace())
 					stringo = "feline ";
 				if (int(Math.random() * 3) == 0 && face.type == Face.RHINO)
 					stringo = "rhino ";

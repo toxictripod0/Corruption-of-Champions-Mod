@@ -791,12 +791,12 @@
 			{
 				if (isTaur() && lowerBody.type == LowerBody.CAT) {
 					race = "cat-taur";
-					if (face.type == 0)
+					if (face.type === Face.HUMAN || (hasCatFace() && !isFurryOrScaley()))
 						race = "sphinx-morph"; // no way to be fully feral anyway
 				}
 				else {
 					race = "cat-morph";
-					if (face.type == 0)
+					if (face.type === Face.HUMAN || (hasCatFace() && !isFurryOrScaley()))
 						race = "cat-" + mf("boy", "girl");
 				}
 			}
@@ -1462,7 +1462,9 @@
 		public function catScore():Number
 		{
 			var catCounter:Number = 0;
-			if (face.type == Face.CAT)
+			if (hasCatFace())
+				catCounter++;
+			if (tongue.type == Tongue.CAT)
 				catCounter++;
 			if (ears.type == Ears.CAT)
 				catCounter++;
@@ -2019,7 +2021,7 @@
 		public function manticoreScore():Number
 		{
 			var catCounter:Number = 0;
-			if (face.type == Face.CAT)
+			if (hasCatFace())
 				catCounter++;
 			if (ears.type == Ears.CAT)
 				catCounter++;
