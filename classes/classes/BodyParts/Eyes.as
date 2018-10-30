@@ -21,6 +21,26 @@ package classes.BodyParts
 		public var type:Number  = HUMAN;
 		public var count:Number = 2;
 
+		public function setType(eyeType:Number, eyeCount:Number = NaN):void
+		{
+			type = eyeType;
+
+			if (!isNaN(eyeCount)) {
+				count = eyeCount;
+				return;
+			}
+
+			switch (eyeType) {
+				case FOUR_SPIDER_EYES:
+				case SPIDER:
+					count = 4;
+					break;
+
+				default:
+					count = 2;
+			}
+		}
+
 		public function restore():void
 		{
 			type  = HUMAN;

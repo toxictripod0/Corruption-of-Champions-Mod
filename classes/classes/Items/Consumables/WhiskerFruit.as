@@ -314,7 +314,7 @@ package classes.Items.Consumables
 				          +" You walk around disoriented until the luminosity fades back to normal."
 				          +" You run to a puddle of water to check your reflection and quickly notice your pupils have become cat-like.");
 				outputText("\n<b>You now have cat-eyes!</b>");
-				player.eyes.type = Eyes.CAT;
+				player.eyes.setType(Eyes.CAT);
 				changes++;
 			}
 			//CAT-FACE!  FULL ON FURRY!  RAGE AWAY NEKOZ

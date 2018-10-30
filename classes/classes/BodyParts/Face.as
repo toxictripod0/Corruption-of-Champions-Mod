@@ -55,14 +55,14 @@ package classes.BodyParts
 			}
 
 			if (!isNaN(eyeType)) {
-				_creature.eyes.type = eyeType;
+				_creature.eyes.setType(eyeType);
 				return;
 			}
 
-			switch(faceType) {
+			switch (faceType) {
 				case Face.CAT:
 				case Face.CATGIRL:
-					_creature.eyes.type = Eyes.CAT;
+					_creature.eyes.setType(Eyes.CAT);
 					break;
 
 				default:
