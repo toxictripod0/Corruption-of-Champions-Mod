@@ -36,6 +36,7 @@ public function deserialize{0}():void
 
 
 parser = argparse.ArgumentParser()
+parser.add_argument('--start-value', '-s', help='The start value to use for constants, default is 1', type=int, action='store', default='1')
 parser.add_argument('variable', help='Variables for which tests should be generated', nargs='+', action='store')
 
 args = parser.parse_args()
@@ -44,7 +45,7 @@ serialize_tests = []
 deserialize_tests = []
 constants = []
 
-constant_value = 0
+constant_value = args.start_value
 
 for var in args.variable:
     variations = build_variations(var)
