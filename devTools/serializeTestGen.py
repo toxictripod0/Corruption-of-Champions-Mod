@@ -15,6 +15,28 @@ def build_constants(const_definition, value):
     return "private static const {0}:int = {1};".format(const_definition, value)
 
 
+def build_definitions(class_name):
+    return '''private var deserialized: {0};
+private var serializedClass: *;
+private var cut: {0};
+'''.format(class_name)
+
+
+def build_setup(class_name):
+    setup_test = '''[Before]
+public function setUp():void {{
+    cut = new {0}();
+
+    deserialized = new {0}();
+    serializedClass = [];
+
+    SerializationUtils.serialize(serializedClass, cut);
+    SerializationUtils.deserialize(serializedClass, deserialized);
+}}
+'''
+    return setup_test.format(class_name)
+
+
 def build_serialize_test(variations):
     serialize_test = '''[Test]
 public function serialize{0}():void
@@ -37,6 +59,7 @@ public function deserialize{0}():void
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--start-value', '-s', help='The start value to use for constants, default is 1', type=int, action='store', default='1')
+parser.add_argument('--setup', help='Generate serialization test variables and setup code, the parameter is the class name', action='store')
 parser.add_argument('variable', help='Variables for which tests should be generated', nargs='+', action='store')
 
 args = parser.parse_args()
@@ -57,5 +80,9 @@ for var in args.variable:
     deserialize_tests.append(build_deserialize_test(variations))
 
 print('\n'.join(constants) + '\n')
+if args.setup is not None:
+    print(build_definitions(args.setup))
+    print(build_setup(args.setup))
+
 print('\n'.join(serialize_tests))
 print('\n'.join(deserialize_tests))
