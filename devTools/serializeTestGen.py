@@ -15,6 +15,18 @@ def build_constants(const_definition, value):
     return "private static const {0}:int = {1};".format(const_definition, value)
 
 
+def import_hint():
+    return '''/*
+* required imports:
+* 
+import classes.internals.SerializationUtils;
+import org.hamcrest.assertThat;
+import org.hamcrest.object.equalTo;
+import org.hamcrest.object.hasProperty;
+*/
+'''
+
+
 def build_definitions(class_name):
     return '''private var deserialized: {0};
 private var serializedClass: *;
@@ -81,6 +93,7 @@ for var in args.variable:
 
 print('\n'.join(constants) + '\n')
 if args.setup is not None:
+    print(import_hint())
     print(build_definitions(args.setup))
     print(build_setup(args.setup))
 
