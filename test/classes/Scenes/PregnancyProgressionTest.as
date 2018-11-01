@@ -11,6 +11,7 @@ package classes.Scenes
 	import classes.Scenes.NPCs.AmilyScene;
 	import classes.Scenes.NPCs.pregnancies.PlayerBenoitPregnancy;
 	import classes.Scenes.NPCs.pregnancies.PlayerMousePregnancy;
+	import classes.Time;
 	import classes.helper.DummyOutput;
 	import org.flexunit.asserts.*;
 	import org.hamcrest.assertThat;
@@ -46,7 +47,6 @@ package classes.Scenes
 		
 		[BeforeClass]
 		public static function setUpClass():void {
-			CocBuilder.resetInstance();
 			kGAMECLASS = CocBuilder.getInstance();
 		}
 		
@@ -55,6 +55,8 @@ package classes.Scenes
 			player = new Player();
 			player.createVagina();
 			kGAMECLASS.player = player;
+			
+			kGAMECLASS.time = new Time();
 			
 			output = new DummyOutput();
 			
