@@ -4,7 +4,6 @@ package classes {
 	import classes.Scenes.AreasSuite;
 	import classes.Scenes.PregnancyProgressionAnalBirthTest;
 	import classes.Scenes.PregnancyProgressionTest;
-	import classes.Scenes.PregnancyProgressionVagBirthTest;
 
 	[Suite]
 	[RunWith("org.flexunit.runners.Suite")]
@@ -14,7 +13,6 @@ package classes {
 		 public var npcsSuit:NPCsSuite;
 		 public var areasSuit:AreasSuite;
 		 public var pregnancyProgressionTest:PregnancyProgressionTest
-		 public var pregnancyProgressionVagBirthTest:PregnancyProgressionVagBirthTest
 		 public var pregnancyProgressionAnalBirthTest:PregnancyProgressionAnalBirthTest;
 	}
 }

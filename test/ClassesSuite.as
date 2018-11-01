@@ -7,7 +7,6 @@ package {
 	import classes.ItemsSuite;
 
 	import classes.CreatureTest;
-	import classes.CoCTest;
 	import classes.CharSpecialTest;
 	import classes.CharCreationTest;
 	import classes.MonsterTest;
@@ -27,7 +26,6 @@ package {
 		 public var scenesSuit:ScenesSuite;
 		 public var itemsSuit:ItemsSuite;
 		
-		 public var coCTest:CoCTest;
 		 public var charSpecialTest:CharSpecialTest;
 		 public var charCreationTest:CharCreationTest; 
 		 public var monsterTest:MonsterTest;
