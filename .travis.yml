@@ -25,7 +25,7 @@ install:
  
 script:
     # this is where the build happens. A separate build is started for every entry in the matrix element
-  - travis_wait ant test-$BUILD
+  - travis_wait ant test-single -Dtestclass=$CLASS
   - devTools/ci/update-sonar-version.sh
 
 after_success:
@@ -44,8 +44,8 @@ env:
     - DISPLAY=":1"
   matrix:
     # different configurations that should be built
-    - BUILD="release"
-    - BUILD="debug"
+    - CLASS="ClassesSuite"
+    - CLASS="SlowTestsSuite"
 
 # Just so Travis.CI won't complain about Vanilla+ failing, since V+ wasn't intended to use Travis.
 branches:
