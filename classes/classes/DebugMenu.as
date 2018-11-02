@@ -917,7 +917,7 @@ package classes
 			[Face.COW_MINOTAUR,"(3) COW_MINOTAUR"],
 			[Face.SHARK_TEETH,"(4) SHARK_TEETH"],
 			[Face.SNAKE_FANGS,"(5) SNAKE_FANGS"],
-			[Face.CAT,"(6) CAT"],
+			[Face.CATGIRL,"(6) CATGIRL"],
 			[Face.LIZARD,"(7) LIZARD"],
 			[Face.BUNNY,"(8) BUNNY"],
 			[Face.KANGAROO,"(9) KANGAROO"],
@@ -939,6 +939,7 @@ package classes
 			[Face.COCKATRICE,"(25) COCKATRICE"],
 			//[Face.BEAK,"(26) BEAK"], // Unused placeholder
 			[Face.RED_PANDA,"(27) RED_PANDA"],
+			[Face.CAT,"(28) CAT"],
 			/* [INTERMOD: xianxia]
 			[Face.MANTICORE,"(25) MANTICORE"],
 			[Face.SALAMANDER_FANGS,"(26) SALAMANDER_FANGS"],
@@ -965,6 +966,7 @@ package classes
 			[Tongue.DRACONIC, "(3) DRACONIC"],
 			[Tongue.ECHIDNA, "(4) ECHIDNA"],
 			[Tongue.LIZARD, "(5) LIZARD"],
+			[Tongue.CAT, "(6) CAT"],
 			/* [INTERMOD: xianxia]
 			[Tongue.CAT, "(5) CAT"],
 			*/
@@ -988,6 +990,7 @@ package classes
 			[Eyes.WOLF, "(6) WOLF"],
 			[Eyes.SPIDER, "(7) SPIDER"],
 			[Eyes.COCKATRICE, "(8) COCKATRICE"],
+			[Eyes.CAT, "(9) CAT"],
 		];
 		private static const EAR_TYPE_CONSTANTS:Array    = [
 			[Ears.HUMAN, "(0) HUMAN"],

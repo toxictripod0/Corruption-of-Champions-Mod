@@ -444,7 +444,8 @@ package classes
 			var catPlayer:Player = new Player();
 			createBreastRows(3, catPlayer);
 			createCock(CockTypesEnum.CAT, catPlayer);
-			catPlayer.face.type = Face.CAT;
+			catPlayer.face.setType(Face.CAT);
+			catPlayer.tongue.type = Tongue.CAT;
 			catPlayer.ears.type = Ears.CAT;
 			catPlayer.tail.type = Tail.CAT;
 			catPlayer.lowerBody.type = LowerBody.CAT;
