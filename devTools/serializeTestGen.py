@@ -34,19 +34,23 @@ private var cut: {0};
 '''.format(class_name)
 
 
-def build_setup(class_name):
+def build_cut_intit(variations):
+    return '''cut.{0} = {1};'''.format(variations[NORMAL], variations[CAPS])
+
+def build_setup(class_name, cut_init):
     setup_test = '''[Before]
 public function setUp():void {{
     cut = new {0}();
+{1}
 
     deserialized = new {0}();
     serializedClass = [];
-
+    
     SerializationUtils.serialize(serializedClass, cut);
     SerializationUtils.deserialize(serializedClass, deserialized);
 }}
 '''
-    return setup_test.format(class_name)
+    return setup_test.format(class_name, cut_init)
 
 
 def build_serialize_test(variations):
@@ -78,6 +82,7 @@ args = parser.parse_args()
 
 serialize_tests = []
 deserialize_tests = []
+cut_init = []
 constants = []
 
 constant_value = args.start_value
@@ -90,12 +95,13 @@ for var in args.variable:
 
     serialize_tests.append(build_serialize_test(variations))
     deserialize_tests.append(build_deserialize_test(variations))
+    cut_init.append(build_cut_intit(variations))
 
 print('\n'.join(constants) + '\n')
 if args.setup is not None:
     print(import_hint())
     print(build_definitions(args.setup))
-    print(build_setup(args.setup))
+    print(build_setup(args.setup, '\n'.join(cut_init)))
 
 print('\n'.join(serialize_tests))
 print('\n'.join(deserialize_tests))
