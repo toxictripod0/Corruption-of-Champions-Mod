@@ -221,13 +221,14 @@ package classes
 			transformativeArray.push(consumables.MOUSECO);
 			transformativeArray.push(consumables.MINOBLO);
 			transformativeArray.push(consumables.MYSTJWL);
+			transformativeArray.push(consumables.OCULUMA);
 			transformativeArray.push(consumables.P_LBOVA);
 			transformativeArray.push(consumables.PIGTRUF);
 			transformativeArray.push(consumables.PRFRUIT);
 			transformativeArray.push(consumables.PROBOVA);
 			transformativeArray.push(consumables.P_DRAFT);
-			transformativeArray.push(consumables.P_S_MLK);
 			//Page 4
+			transformativeArray.push(consumables.P_S_MLK);
 			transformativeArray.push(consumables.PSDELIT);
 			transformativeArray.push(consumables.PURHONY);
 			transformativeArray.push(consumables.SATYR_W);
@@ -239,8 +240,8 @@ package classes
 			transformativeArray.push(consumables.RINGFIG);
 			transformativeArray.push(consumables.RIZZART);
 			transformativeArray.push(consumables.S_GOSSR);
-			transformativeArray.push(consumables.SALAMFW);
 			//Page 5
+			transformativeArray.push(consumables.SALAMFW);
 			transformativeArray.push(consumables.SHARK_T);
 			transformativeArray.push(consumables.SNAKOIL);
 			transformativeArray.push(consumables.SPHONEY);
@@ -252,6 +253,7 @@ package classes
 			transformativeArray.push(consumables.VIXVIGR);
 			transformativeArray.push(consumables.W_FRUIT);
 			transformativeArray.push(consumables.WETCLTH);
+			//Page 6
 			transformativeArray.push(consumables.WOLF_PP);
 			transformativeArray.push(consumables.UBMBOTT);
 			
