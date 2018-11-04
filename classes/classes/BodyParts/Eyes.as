@@ -33,6 +33,7 @@ package classes.BodyParts
 			switch (eyeType) {
 				case FOUR_SPIDER_EYES:
 				case SPIDER:
+					type = SPIDER; // Failsafe just in case ...
 					count = 4;
 					break;
 
