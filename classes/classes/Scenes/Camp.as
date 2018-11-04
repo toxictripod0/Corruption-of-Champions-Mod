@@ -218,7 +218,7 @@ private function doCamp():void { //only called by playerMenu
 			}
 		}
 	}
-	if (flags[kFLAGS.HELSPAWN_AGE] == 1 && flags[kFLAGS.HELSPAWN_GROWUP_COUNTER] == 7) {
+	if (flags[kFLAGS.HELSPAWN_AGE] == 1 && flags[kFLAGS.HELSPAWN_GROWUP_COUNTER] >= 7) {
 		hideMenus();
 		helSpawnScene.helSpawnGraduation();
 		return;
