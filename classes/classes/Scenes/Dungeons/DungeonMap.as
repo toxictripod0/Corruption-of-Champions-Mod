@@ -152,8 +152,8 @@ package classes.Scenes.Dungeons {
 			//Hellhound Master Dungeon
 			mapHellcomplex = [
 				"Hellhound Complex",
-				[-1, -2, 74, -2, 73],
-				[-1, -2, -3, -2, -3],
+				[74, -2, 75, -2, 73],
+				[-3, -2, -3, -2, -3],
 				[70, -4, 67, -4, 71],
 				[-3, -2, -3, -2, -1],
 				[69, -4, 66, -4, 72],
