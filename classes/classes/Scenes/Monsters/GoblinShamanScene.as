@@ -53,7 +53,7 @@ package classes.Scenes.Monsters
 			flags[kFLAGS.TIMES_ENCOUNTERED_GOBLIN_SHAMAN]++;
 			if (flags[kFLAGS.CODEX_ENTRY_GOBLINS] <= 0) {
 				flags[kFLAGS.CODEX_ENTRY_GOBLINS] = 1;
-				outputText("\n\n<b>New codex entry unlocked: Goblins!</b>")
+				outputText("\n\n<b>New codex entry unlocked: Goblins!</b>");
 			}
 			startCombat(new GoblinShaman());
 		}
