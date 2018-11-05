@@ -69,7 +69,7 @@ package classes.Scenes.Dungeons
 		}
 		
 		public function roomLivingQuarters():void {
-			kGAMECLASS.dungeonLoc = DungeonCore.DUNGEON_HELLHOUND_LIVING_QUARTERS;
+			kGAMECLASS.dungeonLoc = DungeonCore.DUNGEON_HELLHOUND_QUARTERS;
 			clearOutput();
 			outputText(images.showImage("location-living-quarters"));
 			outputText("<b><u>Living Quarters</u></b>\n");

@@ -57,9 +57,9 @@ package classes.Scenes.Areas.Swamp
 			//Menu for either
 			outputText("What do you do?");
 			menu();
-			addButton(0, "Fight", fightFSpiderMorph);
-			addButton(1, "Try to Talk", talkToFSpiderMorph);
-			addButton(14, "Leave", runFromFSpiderMorph);
+			addButton(0, "Fight", fightFSpiderMorph).hint("Defend yourself and fight the spider-girl!");
+			addButton(1, "Try to Talk", talkToFSpiderMorph).hint("See if she's willing to stop and have a talk. This might not always work.");
+			addButton(4, "Leave", runFromFSpiderMorph).hint("Book it! Attempt to avoid the conflict and run away from her.");
 			//Incremement 'times encountered spider-girls'
 			flags[kFLAGS.TIMES_ENCOUNTERED_FEMALE_SPIDERMORPHS]++;
 			if (flags[kFLAGS.CODEX_ENTRY_ARACHNES] <= 0) {
@@ -113,7 +113,7 @@ package classes.Scenes.Areas.Swamp
 					outputText("Do you let her fuck you?");
 					menu();
 					addButton(0, "Yes", voluntaryFemaleSpiderMorphRapesYou);
-					addButton(14, "Leave", declinedCrazyFemaleSpiderMorphSexFunTimes);
+					addButton(1, "No", declinedCrazyFemaleSpiderMorphSexFunTimes);
 				}
 				//(OPTION 2 - GIFT) 
 				else {
@@ -504,14 +504,14 @@ package classes.Scenes.Areas.Swamp
 				
 				if (player.hasCock()) {
 					if (player.cockThatFits(monster.analCapacity()) != -1) {
-						addButton(0, "Fuck Ass", evilSpiderGirlVictoryAnal);
+						addButton(0, "Fuck Ass", evilSpiderGirlVictoryAnal).hint("Give the spider-girl a good dicking in her rear entrance.");
 					}
 					if (player.cockThatFits(monster.vaginalCapacity()) != -1) {
-						addButton(1, "Fuck Pussy", fSpiderMorphRapeDude);
+						addButton(1, "Fuck Pussy", fSpiderMorphRapeDude).hint("Breed the spider-girl vaginally and make it good. Real good.");
 					}
 				}
 				if (player.hasVagina()) {
-					addButton(2, "Scissor", fSpiderMorphRape);
+					addButton(2, "Scissor", fSpiderMorphRape).hint("Get on a hot girl-on-girl action rubbing your womanhood against hers.");
 				}
 			}
 			
