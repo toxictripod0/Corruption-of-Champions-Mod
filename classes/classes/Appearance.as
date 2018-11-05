@@ -1930,6 +1930,7 @@ package classes {
 					[Face.SHARK_TEETH, "shark"],
 					[Face.SNAKE_FANGS, "snake"],
 					[Face.CAT, "cat"],
+					[Face.CATGIRL, "cat"],
 					[Face.LIZARD, "lizard"],
 					[Face.BUNNY, "bunny"],
 					[Face.KANGAROO, "kangaroo"],
@@ -1959,6 +1960,7 @@ package classes {
 					[Tongue.DRACONIC, "draconic"],
 					[Tongue.ECHIDNA, "echidna"],
 					[Tongue.LIZARD, "lizard"],
+					[Tongue.CAT, "cat"],
 				]
 		);
 		public static const DEFAULT_EYES_NAMES:Object = createMapFromPairs(
@@ -1972,6 +1974,7 @@ package classes {
 					[Eyes.BASILISK, "basilisk"],
 					[Eyes.SPIDER, "spider"],
 					[Eyes.COCKATRICE, "cockatrice"],
+					[Eyes.CAT, "cat"],
 				]
 		);
 		public static const DEFAULT_EARS_NAMES:Object = createMapFromPairs(

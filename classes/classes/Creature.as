@@ -382,7 +382,7 @@ package classes
 		public var butt:Butt = new Butt();
 		public var ears:Ears = new Ears();
 		public var eyes:Eyes = new Eyes();
-		public var face:Face = new Face();
+		public var face:Face; // Set in the constructor ...
 		public var gills:Gills = new Gills();
 		public var hair:Hair = new Hair();
 		public var hips:Hips = new Hips();
@@ -610,6 +610,7 @@ package classes
 			_perks = [];
 			statusEffects = [];
 			arms = new Arms(this);
+			face = new Face(this);
 			//keyItems = new Array();
 		}
 
@@ -2792,6 +2793,16 @@ package classes
 		public function hasBeak():Boolean
 		{
 			return [Face.BEAK, Face.COCKATRICE].indexOf(face.type) != -1;
+		}
+
+		public function hasCatFace():Boolean
+		{
+			return [Face.CAT, Face.CATGIRL].indexOf(face.type) != -1;
+		}
+
+		public function hasCatEyes():Boolean
+		{
+			return eyes.type === Eyes.CAT;
 		}
 
 		public function hasClaws():Boolean
