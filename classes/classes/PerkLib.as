@@ -364,9 +364,9 @@ package classes
 				"Increases the gems awarded from victory in battle.");
 		public static const PentUp:PentUpPerk = new PentUpPerk();
 		public static const PhallicPotential:PerkType = mk("Phallic Potential", "Phallic Potential",
-				"Increases the effects of penis-enlarging transformations.");
+				"Increases the effects of penis-enlarging transformations. This only affects cocks covered by scarlet cock-socks.");
 		public static const PhallicRestraint:PerkType = mk("Phallic Restraint", "Phallic Restraint",
-				"Reduces the effects of penis-enlarging transformations.");
+				"Reduces the effects of penis-enlarging transformations. This only affects cocks covered by cobalt cock-socks.");
 
 		// Armor perks
 		public static const BloodMage:PerkType = mk("Blood Mage", "Blood Mage",
