@@ -65,7 +65,7 @@ package classes.Scenes.NPCs{
 				return true;
 			}
 			//Helspawn night smex!
-			if (flags[kFLAGS.HELSPAWN_AGE] == 2 && (getGame().time.hours == 2 || getGame().time.hours == 3 || getGame().time.hours == 4) && flags[kFLAGS.HELSPAWN_GROWUP_COUNTER] == 7 && flags[kFLAGS.HELSPAWN_FUCK_INTERRUPTUS] == 0) {
+			if (flags[kFLAGS.HELSPAWN_AGE] == 2 && (getGame().time.hours == 2 || getGame().time.hours == 3 || getGame().time.hours == 4) && flags[kFLAGS.HELSPAWN_GROWUP_COUNTER] >= 7 && flags[kFLAGS.HELSPAWN_FUCK_INTERRUPTUS] == 0) {
 				helSpawnScene.helspawnIsASlut();
 				return true;
 			}
