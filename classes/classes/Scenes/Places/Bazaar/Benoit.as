@@ -1775,6 +1775,7 @@
 			outputText("\n\n\"<i>Sank you for zat, [name],</i>\" she says huskily. \"<i>Of course, I will need you to do zat again if it doesn't take. And again, once ze first clutch is done. Basically we will be doing zis a lot. Purely for ze purpose of procreation, you understand.</i>\" Grinning, you lead her back inside the shop and after squeezing her hand, take your leave.");
 
 			player.orgasm('Dick');
+			benoitKnockUp();
 			menu();
 			doNext(camp.returnToCampUseOneHour);
 		}
