@@ -171,20 +171,12 @@ if (lust >= maxLust()) {
 		
 		public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 
 		{
-			switch(serializedDataVersion) {
-				case 0:
-					LOGGER.debug("Converting jojo from legacy save");
-					
-					if (flags[kFLAGS.JOJO_STATUS] === 5) {
-						LOGGER.info("Correcting jojo status (slave status is now 6)");
-						flags[kFLAGS.JOJO_STATUS] = 6;
-					}
-					
-				default:
-					/*
-					 * The default block is left empty intentionally,
-					 * this switch case operates by using fall through behavior.
-					 */
+			if (serializedDataVersion == 0) { //Changed to eliminate blocker code smell.
+				LOGGER.debug("Converting jojo from legacy save");
+				if (flags[kFLAGS.JOJO_STATUS] === 5) {
+					LOGGER.info("Correcting jojo status (slave status is now 6)");
+					flags[kFLAGS.JOJO_STATUS] = 6;
+				}
 			}
 		}
 		
