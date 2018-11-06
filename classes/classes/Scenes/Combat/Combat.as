@@ -5,6 +5,9 @@ package classes.Scenes.Combat
 	import classes.BodyParts.*;
 	import classes.GlobalFlags.*;
 	import classes.Items.*;
+	import classes.Items.Weapons.Blunderbuss;
+	import classes.Items.Weapons.Crossbow;
+	import classes.Items.Weapons.FlintlockPistol;
 	import classes.Scenes.Areas.Desert.*;
 	import classes.Scenes.Areas.Forest.*;
 	import classes.Scenes.Areas.GlacialRift.*;
@@ -159,7 +162,7 @@ package classes.Scenes.Combat
 			while (player.hasStatusEffect(StatusEffects.KnockedBack)) {
 				player.removeStatusEffect(StatusEffects.KnockedBack);
 			}
-			if (player.weaponName == "flintlock pistol") {
+			if (player.weapon is FlintlockPistol) {
 				if (flags[kFLAGS.FLINTLOCK_PISTOL_AMMO] <= 0) {
 					flags[kFLAGS.FLINTLOCK_PISTOL_AMMO] = 4;
 					outputText("At the same time, you open the chamber of your pistol to reload the ammunition.  This takes up a turn.\n\n");
@@ -172,7 +175,12 @@ package classes.Scenes.Combat
 					return;
 				}
 			}
-			if (player.weaponName == "crossbow") {
+			if (player.weapon is Blunderbuss) { //Dirty code, will put ammo later.
+				outputText("At the same time, you fire a round at " + monster.short + ". ");
+				attack();
+				return;
+			}
+			if (player.weapon is Crossbow) {
 				outputText("At the same time, you fire a bolt at " + monster.short + ". ");
 				attack();
 				return;
@@ -290,7 +298,7 @@ package classes.Scenes.Combat
 			{
 				outputText("\n<b>You'll need to close some distance before you can use any physical attacks!</b>");
 				if (isWieldingRangedWeapon()) {
-					if (flags[kFLAGS.FLINTLOCK_PISTOL_AMMO] <= 0 && player.weaponName == "flintlock pistol") addButton(10, "Reload&Approach", approachAfterKnockback).hint("Reload your flintlock pistol while approaching.", "Reload and Approach");
+					if (flags[kFLAGS.FLINTLOCK_PISTOL_AMMO] <= 0 && player.weapon is FlintlockPistol) addButton(10, "Reload&Approach", approachAfterKnockback).hint("Reload your flintlock pistol while approaching.", "Reload and Approach");
 					else addButton(10, "Fire&Approach", approachAfterKnockback).hint("Land a shot at your opponent and approach.", "Fire and Approach");
 				}
 				else addButton(0, "Approach", approachAfterKnockback).hint("Close some distance between you and your opponent.");
@@ -705,7 +713,7 @@ package classes.Scenes.Combat
 			}
 			flags[kFLAGS.LAST_ATTACK_TYPE] = 0;
 			//Reload
-			if (player.weaponName == "flintlock pistol") {
+			if (player.weapon is FlintlockPistol) {
 				if (flags[kFLAGS.FLINTLOCK_PISTOL_AMMO] <= 0) {
 					flags[kFLAGS.FLINTLOCK_PISTOL_AMMO] = 4;
 					outputText("You open the chamber of your pistol to reload the ammunition.  This takes up a turn.\n\n");
@@ -1130,7 +1138,7 @@ package classes.Scenes.Combat
 			else return false;
 		}
 		public function isWieldingRangedWeapon():Boolean {
-			if (player.weaponName == "flintlock pistol" || player.weaponName == "crossbow" || player.weaponName == "blunderbuss rifle" || (player.weaponName.indexOf("staff") != -1 && player.findPerk(PerkLib.StaffChanneling) >= 0)) return true;
+			if (player.weapon is FlintlockPistol || player.weapon is Blunderbuss || player.weapon is Crossbow || (player.weaponName.indexOf("staff") != -1 && player.findPerk(PerkLib.StaffChanneling) >= 0)) return true;
 			else return false;
 		}
 
@@ -2410,3 +2418,4 @@ package classes.Scenes.Combat
 	}
 
 }
+
