@@ -131,18 +131,12 @@
 			if (!benoitInClutch()) return false;
 
 			// Calc the number of eggs
-			var cumQ:int = player.cumQ();
-			
-			var bounty:Boolean = (player.findPerk(PerkLib.ElvenBounty) >= 0) ? true : false;
-			var stud:Boolean = (player.findPerk(PerkLib.MaraesGiftStud) >= 0) ? true : false;
-			var alpha:Boolean = (player.findPerk(PerkLib.FerasBoonAlpha) >= 0) ? true : false;
-
 			var eggMod:int = 0;
-			if (bounty) eggMod += 1;
-			if (stud) eggMod += 2;
-			if (alpha) eggMod += 1;
+			if (player.hasPerk(PerkLib.ElvenBounty)) eggMod += 1;
+			if (player.hasPerk(PerkLib.MaraesGiftStud)) eggMod += 2;
+			if (player.hasPerk(PerkLib.FerasBoonAlpha)) eggMod += 1;
 
-			var numEggs:int = cumQ / 200;
+			var numEggs:int = player.cumQ() / 200;
 			var minEggs:int = 1 + eggMod;
 			if (numEggs > 12) numEggs = 12;
 			if (numEggs < minEggs) numEggs = minEggs;
@@ -1791,7 +1785,7 @@
 		{
 			clearOutput();
 			outputText("Once again, you take Benoite's hand and lead her into the back room. Your free hand roams underneath her apron as you carefully pick out a path through the junk and Benoite is swiftly in on the game too; her fingers slide downwards to pinch and fondle at her favorite parts of you. By the time you make it into the storage space you are practically falling over each other, laughing as you fumble off each other's clothes.");
-
+			flags[kFLAGS.TIMES_FUCKED_FEMOIT]++;
 			if (!benoitPreggers())
 			{
 				outputText("\n\nBenoite's fingers travel down your sides as you lift her apron off her, her warm, smooth touch eventually falling upon your [cock]; already aware of every inch of you she rubs and coils you expertly, softly pumping you until your flesh is straining in her grasp. She circles a feather-light touch around your [cockHead] with one finger ever so gently, grinning slyly as she does. Grunting with need, you push her insistently down onto the packed soil, shaking out of the last of your underclothes; Benoite spreads her thighs for you, her genital lips widened and moist with readiness.");
