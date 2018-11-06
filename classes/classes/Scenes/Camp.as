@@ -2555,7 +2555,7 @@ private function updateAchievements():void {
 		awardAchievement("Home Sweet Home", kACHIEVEMENTS.GENERAL_HOME_SWEET_HOME);
 	if (flags[kFLAGS.CAMP_WALL_GATE] > 0) awardAchievement("Make Mareth Great Again", kACHIEVEMENTS.GENERAL_MAKE_MARETH_GREAT_AGAIN);
 	if (flags[kFLAGS.CAMP_WALL_STATUES] >= 100) awardAchievement("Terracotta Impy", kACHIEVEMENTS.GENERAL_TERRACOTTA_IMPY);
-	if (player.tallness >= 132) awardAchievement("Up to Eleven", kACHIEVEMENTS.GENERAL_UP_TO_11);
+	if (Math.ceil(player.tallness) >= 132) awardAchievement("Up to Eleven", kACHIEVEMENTS.GENERAL_UP_TO_11);
 	//Check how many NPCs are dedicked
 	var NPCsDedicked:int = 0;
 	if (flags[kFLAGS.IZMA_NO_COCK] > 0) NPCsDedicked++;
@@ -2569,5 +2569,6 @@ private function updateAchievements():void {
 	if (NPCsDedicked >= 3) awardAchievement("Dick Banisher", kACHIEVEMENTS.GENERAL_DICK_BANISHER);
 	if (NPCsDedicked >= 7) awardAchievement("You Bastard!", kACHIEVEMENTS.GENERAL_YOU_BASTARD); //take that, dedickers!
 }
+
 }
 }
