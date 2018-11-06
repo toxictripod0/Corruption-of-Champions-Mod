@@ -1455,8 +1455,14 @@ package classes.Scenes.NPCs
 					if (flags[kFLAGS.ANEMONE_WEAPON_ID] == weapons.SUCWHIP.id) dynStats("lus", 10, "scale", false);
 					kidAXP(6);
 					break;
-				case weapons.S_GAUNT.id: //[Spiked Gauntlets] or [Hooked Gauntlets]
-				case weapons.H_GAUNT.id:
+				case weapons.S_GAUN0.id: //[Spiked Gauntlets] or [Hooked Gauntlets]
+				case weapons.S_GAUN1.id:
+				case weapons.S_GAUN2.id:
+				case weapons.S_GAUNO.id:
+				case weapons.H_GAUN0.id:
+				case weapons.H_GAUN1.id:
+				case weapons.H_GAUN2.id:
+				case weapons.H_GAUNO.id:
 					outputText("\n\nThe anemone wears the gauntlets easily and comfortably, but doesn't seem to understand that to attack she needs to ball up her fists and swing them, no matter how many times you tell her.  The most she manages is to deflect a few of your mock lunges by batting them aside with the metal atop her knuckles.");
 					//(no tigereffect)
 					break;
@@ -1557,8 +1563,8 @@ package classes.Scenes.NPCs
 			//if hp = 0 after tutor, override any other result and output new PG:
 			if (player.HP < 1) {
 				outputText("\n\nWith a groan, you fall flat on your back and close your eyes.  As if from far away, you hear ");
-				if (flags[kFLAGS.ANEMONE_WEAPON_ID] != weapons.S_GAUNT.id &&
-						flags[kFLAGS.ANEMONE_WEAPON_ID] != weapons.H_GAUNT.id) outputText("the thump of something hitting the ground and ");
+				if (flags[kFLAGS.ANEMONE_WEAPON_ID] != weapons.S_GAUN0.id && flags[kFLAGS.ANEMONE_WEAPON_ID] != weapons.S_GAUN1.id && flags[kFLAGS.ANEMONE_WEAPON_ID] != weapons.S_GAUN2.id && 
+					flags[kFLAGS.ANEMONE_WEAPON_ID] != weapons.H_GAUN0.id && flags[kFLAGS.ANEMONE_WEAPON_ID] != weapons.H_GAUN1.id && flags[kFLAGS.ANEMONE_WEAPON_ID] != weapons.H_GAUN2.id) outputText("the thump of something hitting the ground and ");
 				outputText("the anemone gasp, and then the world slips away from you.");
 
 				outputText("\n\n<b>Eight hours later...</b>");
@@ -1977,3 +1983,4 @@ package classes.Scenes.NPCs
 
 	}
 }
+

@@ -279,8 +279,17 @@ package classes.Scenes
 				case weapons.FLNTLK1:
 					itemToGet = weapons.FLNTLK2;
 					break;
-				case weapons.S_GAUNT:
-					itemToGet = weapons.H_GAUNT;
+				case weapons.S_GAUN0:
+					itemToGet = weapons.S_GAUN1;
+					break;
+				case weapons.S_GAUN1:
+					itemToGet = weapons.S_GAUN2;
+					break;
+				case weapons.H_GAUN0:
+					itemToGet = weapons.H_GAUN1;
+					break;
+				case weapons.H_GAUN1:
+					itemToGet = weapons.H_GAUN2;
 					break;
 				case weapons.RRAPIER:
 					itemToGet = weapons.JRAPIER;
@@ -482,6 +491,13 @@ package classes.Scenes
 					shardCost = 6;
 					itemToGet = weapons.HALBRDO;
 					break;
+				case weapons.H_GAUN0:
+				case weapons.H_GAUN1:
+				case weapons.H_GAUN2:
+					gemCost = 500 / gemCostDivided;
+					shardCost = 4;
+					itemToGet = weapons.H_GAUNO;
+					break;
 				case weapons.KATANA0:
 				case weapons.KATANA1:
 				case weapons.KATANA2:
@@ -523,6 +539,13 @@ package classes.Scenes
 					gemCost = 1000 / gemCostDivided;
 					shardCost = 6;
 					itemToGet = weapons.SPEAR_O;
+					break;
+				case weapons.S_GAUN0:
+				case weapons.S_GAUN1:
+				case weapons.S_GAUN2:
+					gemCost = 500 / gemCostDivided;
+					shardCost = 4;
+					itemToGet = weapons.S_GAUNO;
 					break;
 				case weapons.WARHAM0:
 				case weapons.WARHAM1:

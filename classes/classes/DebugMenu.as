@@ -402,7 +402,7 @@ package classes
 			weaponArray.push(weapons.FLAIL_0);
 			weaponArray.push(weapons.FLNTLK0);
 			weaponArray.push(weapons.HALBRD0);
-			weaponArray.push(weapons.H_GAUNT);
+			weaponArray.push(weapons.H_GAUN0);
 			weaponArray.push(weapons.HNTCANE);
 			//Page 2
 			weaponArray.push(weapons.JRAPIER);
@@ -421,8 +421,7 @@ package classes
 			weaponArray.push(weapons.RRAPIER);
 			weaponArray.push(weapons.RSBLADE);
 			weaponArray.push(weapons.S_BLADE);
-			//Page 3
-			weaponArray.push(weapons.S_GAUNT);
+			weaponArray.push(weapons.S_GAUN0);
 			weaponArray.push(weapons.SCARBLD);
 			weaponArray.push(weapons.SCIMTR0);
 			weaponArray.push(weapons.SPEAR_0);

@@ -113,7 +113,7 @@ package classes
 			player.breastRows[0].lactationMultiplier += 20;
 			
 			//Equipment: Starts with spiked fist
-			player.setWeapon(weapons.S_GAUNT);
+			player.setWeapon(weapons.S_GAUN0);
 			//Perks: Fighter and Lotsa Jizz"	Annetta
 			player.createPerk(PerkLib.HistoryFighter,0,0,0,0);
 			player.createPerk(PerkLib.MessyOrgasms, 1.25, 0, 0, 0);
