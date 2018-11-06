@@ -3,6 +3,7 @@ package classes.Scenes.Areas.Forest {
 	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
+	import classes.GlobalFlags.kACHIEVEMENTS;
 	import classes.Items.Mutations;
 	import classes.Scenes.API.Encounter;
 
@@ -578,6 +579,7 @@ public class ErlKingScene extends BaseContent implements Encounter {
 				outputText("“<i>I don’t expect we’ll have any more problems, will we?</i>” you ask, sliding out of him.  You rise, watching as his fur takes on a curiously pink hue.\n\n");
 				outputText("“<i>No, my Lord,</i>” She croons, rising up to her knees, lapping at your dick.  Once she’s finished cleaning, she helps you with your [armor].  You nod a goodbye to her and begin walking, smirking in amusement at the trickle of cum running down her taut cheeks and down her legs as she waves farewell.\n\n");
 			}
+			awardAchievement("The Hunter Becomes the Hunted", kACHIEVEMENTS.GENERAL_HUNTER_IS_HUNTED, true, true, false);
 			player.orgasm('Generic');
 			dynStats("lust=", 0);
 			menu();

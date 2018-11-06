@@ -6,6 +6,7 @@ package classes.Scenes
 	import classes.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
+	import classes.GlobalFlags.kACHIEVEMENTS;
 	import classes.Items.Armor;
 	import classes.Items.Useable;
 	import classes.Items.Weapon;
@@ -207,6 +208,20 @@ package classes.Scenes
 				outputText("\n\n");
 			}
 			addButton(14, "Back", playerMenu);
+			//Achievement time!
+			var isAchievementEligible:Boolean = true;
+			var i:int = 0;
+			if (getMaxSlots() < 10) isAchievementEligible = false;
+			if (getOccupiedSlots() < 10) isAchievementEligible = false;
+			if (itemStorage.length < 14) isAchievementEligible = false; //Need to have all the chests!
+			for (i = 0; i < itemStorage.length; i++) {
+				if (itemStorage[i].quantity <= 0) isAchievementEligible = false;
+			}
+			if (gearStorage.length < 45) isAchievementEligible = false; //Need to have all the storage!
+			for (i = 0; i < gearStorage.length; i++) {
+				if (gearStorage[i].quantity <= 0) isAchievementEligible = false;
+			}
+			if (isAchievementEligible) awardAchievement("Item Vault", kACHIEVEMENTS.WEALTH_ITEM_VAULT, true);
 		}
 			
 		public function takeItem(itype:ItemType, nextAction:Function, overrideAbandon:Function = null, source:ItemSlot = null):void {

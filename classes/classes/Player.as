@@ -612,6 +612,10 @@
 					//This call did nothing. There is no event 5010: if (game.inCombat) kGAMECLASS.output.doNext(5010);
 				}
 			}
+			if (damage > 0 && display) {
+				flags[kFLAGS.ACHIEVEMENT_PROGRESS_DAMAGE_SPONGE] += damage;
+				if (flags[kFLAGS.ACHIEVEMENT_PROGRESS_DAMAGE_SPONGE] >= 10000) kGAMECLASS.awardAchievement("Damage Sponge", kACHIEVEMENTS.COMBAT_DAMAGE_SPONGE, true, true, true);
+			}
 			return returnDamage;
 		}
 

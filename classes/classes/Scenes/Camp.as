@@ -2375,6 +2375,40 @@ private function updateSaveFlags():void {
 	doNext(doCamp);
 }
 
+//Unique NPCs killed
+public function getUniqueKills():int {
+	var count:int = 0;
+	if (flags[kFLAGS.D1_OMNIBUS_KILLED] > 0) count++;
+	if (flags[kFLAGS.ZETAZ_DEFEATED_AND_KILLED] > 0) count++;
+	if (flags[kFLAGS.HARPY_QUEEN_EXECUTED] > 0) count++;
+	if (flags[kFLAGS.KELT_KILLED] > 0) count++;
+	if (flags[kFLAGS.JOJO_DEAD_OR_GONE] == 2) count++;
+	if (flags[kFLAGS.CORRUPTED_MARAE_KILLED] > 0) count++;
+	if (flags[kFLAGS.FUCK_FLOWER_KILLED] > 0) count++;
+	if (flags[kFLAGS.TAMANI_BAD_ENDED] > 0) count++;
+	//Lethice Keep encounters
+	if (flags[kFLAGS.D3_GARDENER_DEFEATED] == 3) count++;
+	if (flags[kFLAGS.D3_CENTAUR_DEFEATED] == 1) count++;
+	if (flags[kFLAGS.D3_MECHANIC_FIGHT_RESULT] == 1) count++;
+	if (flags[kFLAGS.DRIDERINCUBUS_KILLED] > 0) count++;
+	if (flags[kFLAGS.MINOTAURKING_KILLED] > 0) count++;
+	if (flags[kFLAGS.LETHICE_KILLED] > 0) count++;
+	return count;
+}
+
+//Total NPCs killed
+public function getTotalKills():int {
+	var count:int = 0;
+	count += getUniqueKills();
+	count += flags[kFLAGS.IMPS_KILLED];
+	count += flags[kFLAGS.GOBLINS_KILLED];
+	count += flags[kFLAGS.TENTACLE_BEASTS_KILLED];
+	count += flags[kFLAGS.HELLHOUNDS_KILLED];
+	count += flags[kFLAGS.MINOTAURS_KILLED];
+	count += flags[kFLAGS.WORMS_MASS_KILLED];
+	return count;
+}
+
 private function updateAchievements():void {
 	//Story
 	awardAchievement("Newcomer", kACHIEVEMENTS.STORY_NEWCOMER);
@@ -2486,24 +2520,7 @@ private function updateAchievements():void {
 	if (flags[kFLAGS.DEMONS_DEFEATED] >= 25 && getGame().time.days >= 10) awardAchievement("Portal Defender", kACHIEVEMENTS.GENERAL_PORTAL_DEFENDER);
 	if (flags[kFLAGS.LETHICE_KILLED] == 2) awardAchievement("Off With Her Head!", kACHIEVEMENTS.GENERAL_OFF_WITH_HER_HEAD);
 	//Check how many NPCs got bad-ended
-	var NPCsBadEnds:int = 0;
-	if (flags[kFLAGS.D1_OMNIBUS_KILLED] > 0) NPCsBadEnds++;
-	if (flags[kFLAGS.ZETAZ_DEFEATED_AND_KILLED] > 0) NPCsBadEnds++;
-	if (flags[kFLAGS.HARPY_QUEEN_EXECUTED] > 0) NPCsBadEnds++;
-	if (flags[kFLAGS.KELT_KILLED] > 0 || flags[kFLAGS.KELT_BREAK_LEVEL] >= 4) NPCsBadEnds++;
-	if (flags[kFLAGS.JOJO_DEAD_OR_GONE] == 2) NPCsBadEnds++;
-	if (flags[kFLAGS.CORRUPTED_MARAE_KILLED] > 0) NPCsBadEnds++;
-	if (flags[kFLAGS.FUCK_FLOWER_KILLED] > 0) NPCsBadEnds++;
-	if (flags[kFLAGS.TAMANI_BAD_ENDED] > 0) NPCsBadEnds++;
-		//Lethice Keep encounters
-		if (flags[kFLAGS.D3_GARDENER_DEFEATED] == 3) NPCsBadEnds++;
-		if (flags[kFLAGS.D3_CENTAUR_DEFEATED] == 1) NPCsBadEnds++;
-		if (flags[kFLAGS.D3_MECHANIC_FIGHT_RESULT] == 1) NPCsBadEnds++;
-		if (flags[kFLAGS.DRIDERINCUBUS_KILLED] > 0) NPCsBadEnds++;
-		if (flags[kFLAGS.MINOTAURKING_KILLED] > 0) NPCsBadEnds++;
-		if (flags[kFLAGS.LETHICE_KILLED] > 0) NPCsBadEnds++;
-	if (NPCsBadEnds >= 3) //Lord of Bad Ends
-		awardAchievement("Bad Ender", kACHIEVEMENTS.GENERAL_BAD_ENDER);
+	if (getUniqueKills() >= 3) awardAchievement("Bad Ender", kACHIEVEMENTS.GENERAL_BAD_ENDER);
 	//Transformations
 	if (flags[kFLAGS.TIMES_TRANSFORMED] >= 1) awardAchievement("What's Happening to Me?", kACHIEVEMENTS.GENERAL_WHATS_HAPPENING_TO_ME);
 	if (flags[kFLAGS.TIMES_TRANSFORMED] >= 10) awardAchievement("Transformer", kACHIEVEMENTS.GENERAL_TRANSFORMER);

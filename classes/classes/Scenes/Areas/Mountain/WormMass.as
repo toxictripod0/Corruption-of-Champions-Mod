@@ -77,6 +77,12 @@ package classes.Scenes.Areas.Mountain
 			game.mountain.wormsScene.infest1();
 		}
 		
+		override public function defeated(hpVictory:Boolean):void
+		{
+			if (hpVictory) flags[kFLAGS.WORMS_MASS_KILLED]++;
+			game.combat.finishCombat();
+		}
+		
 		override public function maxHP():Number
 		{
 			return 40 + (player.newGamePlusMod() * 20);

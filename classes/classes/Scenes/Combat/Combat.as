@@ -84,6 +84,7 @@ package classes.Scenes.Combat
 		//No longer used:		itemSwapping = false;
 				//Player won
 				if (monster.HP < 1 || monster.lust >= monster.maxLust()) {
+					if (monster.HP < 1) flags[kFLAGS.TOTAL_HP_VICTORIES]++;
 					awardPlayer(nextFunc);
 				}
 				//Player lost

@@ -239,6 +239,7 @@ package classes.Scenes.Places.Bazaar
 			}
 			if (!player.hasStatusEffect(StatusEffects.Fullness)) player.createStatusEffect(StatusEffects.Fullness, 4, 0, 0, 0);
 			else player.changeStatusValue(StatusEffects.Fullness, 1, 4);
+			awardAchievement("Dining In", kACHIEVEMENTS.GENERAL_DINING_IN, true, true, false);
 			doNext(camp.returnToCampUseOneHour);
 		}
 		
