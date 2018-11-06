@@ -324,7 +324,7 @@
 			if (flags[kFLAGS.BENOIT_STATUS] > 0 && flags[kFLAGS.BENOIT_STATUS] < 3)
 				addButton(3, "Herminize", benoitHerminise);
 			//Basilisk Womb
-			if (flags[kFLAGS.BENOIT_WOMB_TALK_UNLOCKED] == 1 && player.findPerk(PerkLib.BasiliskWomb) < 0 && flags[kFLAGS.BENOIT_TESTED_BASILISK_WOMB] == 0 && [0, 3].indexOf(flags[kFLAGS.BENOIT_STATUS]) >= 0)
+			if (flags[kFLAGS.BENOIT_WOMB_TALK_UNLOCKED] == 1 && flags[kFLAGS.BENOIT_TESTED_BASILISK_WOMB] == 0 && [0, 3].indexOf(flags[kFLAGS.BENOIT_STATUS]) >= 0 && !player.hasPerk(PerkLib.BasiliskWomb))
 				addButton(4, "Basil. Womb", tryToConvertToBassyWomb);
 			//Suggest & sex
 			if (flags[kFLAGS.BENOIT_SUGGEST_UNLOCKED] > 0 && player.hasVagina() && (flags[kFLAGS.BENOIT_STATUS] == 0 || flags[kFLAGS.BENOIT_STATUS] == 3))
