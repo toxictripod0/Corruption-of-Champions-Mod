@@ -61,7 +61,7 @@ package classes.Scenes.Areas.Swamp
 				outputText("You've yet to meet a wild drider that let you walk away without some sadistic display of power, and this one looks to be no different.");
 			}
 			flags[kFLAGS.TIMES_ENCOUNTERED_DRIDER]++;
-			unlockCodexEntry("Arachnes, Spider-Morphs, and Driders", kFLAGS.CODEX_ENTRY_ARACHNES);
+			unlockCodexEntry("Arachnes, Spider-Morphs and Driders", kFLAGS.CODEX_ENTRY_ARACHNES);
 			startCombat(drider);
 		}
 
