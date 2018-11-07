@@ -50,7 +50,7 @@ package classes.Scenes.Monsters
 		
 		override public function defeated(hpVictory:Boolean):void
 		{
-			game.goblinWarriorScene.goblinWarriorRapeIntro();
+			game.goblinSpecialScene.gobboSpecialRapeIntro(hpVictory);
 		}
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
 		{
@@ -59,7 +59,7 @@ package classes.Scenes.Monsters
 				game.combat.cleanupAfterCombat();
 			} 
 			else {
-				game.goblinWarriorScene.gobboWarriorBeatYaUp();
+				game.goblinSpecialScene.gobboSpecialBeatYaUp();
 			}
 		}
 		

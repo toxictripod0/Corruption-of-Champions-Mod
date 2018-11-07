@@ -64,17 +64,17 @@ public class CommonEncounters extends BaseContent implements Encounter {
 				call  : goblinCombatEncounter
 			}, {
 				name  : "gobass",
-				call  : kGAMECLASS.goblinAssassinScene.goblinAssassinEncounter,
+				call  : curry(kGAMECLASS.goblinSpecialScene.goblinSpecialEncounter, 0),
 				when  : fn.ifLevelMin(10),
 				chance: fn.lineByLevel(10, 14, 0.5, 2.0) // x0.5 at level 10, x2 at level 16+
 			}, {
 				name  : "gobwar",
-				call  : kGAMECLASS.goblinWarriorScene.goblinWarriorEncounter,
+				call  : curry(kGAMECLASS.goblinSpecialScene.goblinSpecialEncounter, 1),
 				when  : fn.ifLevelMin(12),
 				chance: fn.lineByLevel(12, 18, 0.5, 3.0) // x0.5 at level 12, x3 at level 18+
 			}, {
 				name  : "gobsha",
-				call  : kGAMECLASS.goblinShamanScene.goblinShamanEncounter,
+				call  : curry(kGAMECLASS.goblinSpecialScene.goblinSpecialEncounter, 2),
 				when  : fn.ifLevelMin(12),
 				chance: fn.lineByLevel(12, 18, 0.5, 3.0) // x0.5 at level 12, x3 at level 18+
 			}, {

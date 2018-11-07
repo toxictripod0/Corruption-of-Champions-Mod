@@ -228,9 +228,7 @@ package classes
 		public var giacomoShop:Giacomo = new Giacomo();
 		// Scenes/Monsters/
 		public var goblinScene:GoblinScene = new GoblinScene();
-		public var goblinAssassinScene:GoblinAssassinScene = new GoblinAssassinScene();
-		public var goblinWarriorScene:GoblinWarriorScene = new GoblinWarriorScene();
-		public var goblinShamanScene:GoblinShamanScene = new GoblinShamanScene();
+		public var goblinSpecialScene:GoblinSpecialScene = new GoblinSpecialScene();
 		public var goblinElderScene:PriscillaScene = new PriscillaScene();
 		public var impScene:ImpScene;
 		public var mimicScene:MimicScene = new MimicScene();

@@ -166,26 +166,14 @@ package classes.Scenes
 			else {
 				var goblinChooser:int = rand(100);
 				//Level modifier
-				if (player.level < 20) goblinChooser += player.level;
-				else goblinChooser += 20;
+				goblinChooser += Math.min(player.level, 20);
 				//Limit chooser range
 				if (goblinChooser > 100) goblinChooser = 100;
-				if (player.level < 10 && goblinChooser >= 20) goblinChooser = 29;
-				else if (player.level < 12 && goblinChooser >= 60) goblinChooser = 49;
-				else if (player.level < 16 && goblinChooser >= 80) goblinChooser = 79;
+				if (player.level < 8 && goblinChooser >= 30) goblinChooser = 29;
+				else if (player.level < 14 && goblinChooser >= 80) goblinChooser = 79;
 				//Goblin assassin!
-				if (goblinChooser >= 30 && goblinChooser < 50) {
-					kGAMECLASS.goblinAssassinScene.goblinAssassinEncounter();
-					return;
-				}
-				//Goblin warrior! (Equal chance with Goblin Shaman)
-				else if (goblinChooser >= 50 && goblinChooser < 65) {
-					kGAMECLASS.goblinWarriorScene.goblinWarriorEncounter();
-					return;
-				}
-				//Goblin shaman!
-				else if (goblinChooser >= 65 && goblinChooser < 80) {
-					kGAMECLASS.goblinShamanScene.goblinShamanEncounter();
+				if (goblinChooser >= 30 && goblinChooser < 80) {
+					kGAMECLASS.goblinSpecialScene.goblinSpecialEncounter();
 					return;
 				}
 				//Goblin elder!

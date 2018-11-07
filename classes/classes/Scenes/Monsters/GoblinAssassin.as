@@ -105,7 +105,7 @@ package classes.Scenes.Monsters
 		}
 		override public function defeated(hpVictory:Boolean):void
 		{
-			game.goblinAssassinScene.gobboAssassinRapeIntro();
+			game.goblinSpecialScene.gobboSpecialRapeIntro(hpVictory);
 			
 		}
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
@@ -115,7 +115,7 @@ package classes.Scenes.Monsters
 				game.combat.cleanupAfterCombat();
 			} 
 			else {
-				game.goblinAssassinScene.gobboAssassinBeatYaUp();
+				game.goblinSpecialScene.gobboSpecialBeatYaUp();
 			}
 		}
 		public function GoblinAssassin(noInit:Boolean=false)
