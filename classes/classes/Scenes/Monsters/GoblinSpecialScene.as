@@ -126,10 +126,13 @@ package classes.Scenes.Monsters
 			switch(gobtype) {
 				case "goblin assassin":
 					spriteSelect(SpriteDb.s_goblin);
+					break;
 				case "goblin shaman":
 					spriteSelect(SpriteDb.s_goblinShaman);
+					break;
 				case "goblin warrior":
 					spriteSelect(SpriteDb.s_goblinWarrior);
+					break;
 				default:
 					spriteSelect(SpriteDb.s_goblin);
 			}
