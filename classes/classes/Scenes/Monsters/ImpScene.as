@@ -1519,10 +1519,7 @@ package classes.Scenes.Monsters
 			outputText(images.showImage("monster-implord"));
 			if (flags[kFLAGS.IMP_LORD_MALEHERM_PROGRESS] != 1) {
 				outputText("A large corrupted imp crosses your path. He flashes a cruel smile your way.  No way around it, you ready your " + player.weaponName + " for the fight.");
-				if (flags[kFLAGS.CODEX_ENTRY_IMPS] <= 0) {
-					flags[kFLAGS.CODEX_ENTRY_IMPS] = 1;
-					outputText("\n\n<b>New codex entry unlocked: Imps!</b>")
-				}
+				unlockCodexEntry("Imps", kFLAGS.CODEX_ENTRY_IMPS);
 				startCombat(new ImpLord());
 				return;
 			}
@@ -1531,10 +1528,7 @@ package classes.Scenes.Monsters
 				dynStats("lus", 20);
 				flags[kFLAGS.IMP_LORD_MALEHERM_PROGRESS] = 10;
 			}
-			if (flags[kFLAGS.CODEX_ENTRY_IMPS] <= 0) {
-				flags[kFLAGS.CODEX_ENTRY_IMPS] = 1;
-				outputText("\n\n<b>New codex entry unlocked: Imps!</b>")
-			}
+			unlockCodexEntry("Imps", kFLAGS.CODEX_ENTRY_IMPS);
 			doNext(camp.returnToCampUseOneHour);
 		}
 		
@@ -1546,10 +1540,7 @@ package classes.Scenes.Monsters
 			outputText("A large corrupted imp crosses your path.  He is wearing armor, unlike most of the imps.  He is also wielding a sword in his right hand.  He flashes a cruel smile your way.  No way around it, you ready your " + player.weaponName + " for the fight.");
 			flags[kFLAGS.TIMES_ENCOUNTERED_IMP_WARLORD]++;
 			startCombat(new ImpWarlord());
-			if (flags[kFLAGS.CODEX_ENTRY_IMPS] <= 0) {
-				flags[kFLAGS.CODEX_ENTRY_IMPS] = 1;
-				outputText("\n\n<b>New codex entry unlocked: Imps!</b>")
-			}
+			unlockCodexEntry("Imps", kFLAGS.CODEX_ENTRY_IMPS);
 			doNext(playerMenu);
 		}
 		
@@ -1561,10 +1552,7 @@ package classes.Scenes.Monsters
 			outputText("A large corrupted imp crosses your path but he is no ordinary imp.  Glowing veins line his body.  He is clad in bee-chitin armor and he's wearing a shark-tooth necklace.  He is also wielding a scimitar in his right hand.  He must be an Imp Overlord!  He flashes a cruel smile your way.  No way around it, you ready your " + player.weaponName + " for the fight.");
 			flags[kFLAGS.TIMES_ENCOUNTERED_IMP_OVERLORD]++;
 			startCombat(new ImpOverlord());
-			if (flags[kFLAGS.CODEX_ENTRY_IMPS] <= 0) {
-				flags[kFLAGS.CODEX_ENTRY_IMPS] = 1;
-				outputText("\n\n<b>New codex entry unlocked: Imps!</b>")
-			}
+			unlockCodexEntry("Imps", kFLAGS.CODEX_ENTRY_IMPS);
 			doNext(playerMenu);
 		}
 			

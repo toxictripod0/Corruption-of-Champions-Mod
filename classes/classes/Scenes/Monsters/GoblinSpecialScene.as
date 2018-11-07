@@ -95,10 +95,7 @@ package classes.Scenes.Monsters
 				startCombat(new GoblinWarrior()); //[Initiate combat encounter – goblin warrior]
 				flags[kFLAGS.TIMES_ENCOUNTERED_GOBLIN_WARRIOR]++;
 			}
-			if (flags[kFLAGS.CODEX_ENTRY_GOBLINS] <= 0) {
-				flags[kFLAGS.CODEX_ENTRY_GOBLINS] = 1;
-				outputText("\n\n<b>New codex entry unlocked: Goblins!</b>");
-			}
+			unlockCodexEntry("Goblins", kFLAGS.CODEX_ENTRY_GOBLINS);
 		}
 
 		private function goblinClassName():String {

@@ -153,10 +153,7 @@ public function encounterAJerkInThePlains():void {
 
 		outputText("\"<i>Hey there, ace!</i>\" she says, grinning through her teeth as she assumes a battle stance.  \"<i>Who's ready for a re-match!?</i>\"");
 	}
-	if (flags[kFLAGS.CODEX_ENTRY_SALAMANDERS] <= 0) {
-		flags[kFLAGS.CODEX_ENTRY_SALAMANDERS] = 1;
-		outputText("<b>New codex entry unlocked: Salamanders!</b>")
-	}
+	unlockCodexEntry("Salamanders", kFLAGS.CODEX_ENTRY_SALAMANDERS);
 	//FIRST COMBAT – Main Screen
 	startCombat(new Hel());
 }
@@ -1969,3 +1966,4 @@ private function pussyOutOfHelSexAmbush():void {
 }
 	}
 }
+

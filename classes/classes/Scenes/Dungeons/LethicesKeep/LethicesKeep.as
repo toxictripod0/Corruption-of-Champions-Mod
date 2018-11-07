@@ -304,10 +304,7 @@ package classes.Scenes.Dungeons.LethicesKeep {
 					if (player.hasKeyItem("Laybans") < 0) outputText("  Are you going to try this?");
 					else outputText("  You take the Laybans out of your pocket, turning them around in your hands as you consider. Are you going to try this?");
 				}
-				if (flags[kFLAGS.CODEX_ENTRY_BASILISKS] <= 0) {
-					flags[kFLAGS.CODEX_ENTRY_BASILISKS] = 1;
-					outputText("\n\n<b>New codex entry unlocked: Basilisks!</b>")
-				}
+				unlockCodexEntry("Basilisks", kFLAGS.CODEX_ENTRY_BASILISKS);
 				menu();
 				addButton(0, "Go!", jeanClaude.gogoFuckTheseBasilisks).hint("Just RUN! Run like the wind while avoiding the basilisks!");
 				addButton(1, "Fall Back", fallbackFromMagpieHallS).hint("Retreat! You're not ready to face the basilisks yet.");

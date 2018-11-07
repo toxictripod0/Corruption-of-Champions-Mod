@@ -131,10 +131,7 @@ package classes.Scenes.Areas {
 			clearOutput();
 			outputText(images.showImage("encounter-harpy"));
 			outputText("A harpy wings out of the sky and attacks!");
-			if (flags[kFLAGS.CODEX_ENTRY_HARPIES] <= 0) {
-				flags[kFLAGS.CODEX_ENTRY_HARPIES] = 1;
-				outputText("\n\n<b>New codex entry unlocked: Harpies!</b>")
-			}
+			unlockCodexEntry("Harpies", kFLAGS.CODEX_ENTRY_HARPIES);
 			startCombat(new Harpy());
 			spriteSelect(SpriteDb.s_harpy);
 		}

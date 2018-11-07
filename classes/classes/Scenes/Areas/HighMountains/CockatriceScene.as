@@ -75,10 +75,7 @@ package classes.Scenes.Areas.HighMountains {
 				          +"It approaches squawking with excitement, not slowing in the slightest as it reaches the plateau. "
 				          +"You now see it clearly, it's a cockatrice, and you know it won’t or can’t halt in such an excitable state. Looks like you’ll have to fight!");
 			}
-			if (flags[kFLAGS.CODEX_ENTRY_COCKATRICES] <= 0) {
-				flags[kFLAGS.CODEX_ENTRY_COCKATRICES] = 1;
-				outputText("\n\n<b>New codex entry unlocked: Cockatrices!</b>")
-			}
+			unlockCodexEntry("Cockatrices", kFLAGS.CODEX_ENTRY_COCKATRICES);
 			startCombat(cockatrice);
 			flags[kFLAGS.TIMES_ENCOUNTERED_COCKATRICES]++;
 		}

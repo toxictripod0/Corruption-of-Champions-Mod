@@ -306,11 +306,7 @@
 			}
 
 			flags[kFLAGS.TIMES_IN_BENOITS]++;
-
-			if (flags[kFLAGS.CODEX_ENTRY_BASILISKS] <= 0) {
-				flags[kFLAGS.CODEX_ENTRY_BASILISKS] = 1;
-				outputText("\n\n<b>New codex entry unlocked: Basilisks!</b>")
-			}
+			unlockCodexEntry("Basilisks", kFLAGS.CODEX_ENTRY_BASILISKS);
 
 			menu();
 			//Core buttons

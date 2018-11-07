@@ -419,10 +419,7 @@ public class CorruptedGlade extends BaseContent implements TimeAwareInterface,En
 		outputText("As you wander through the woods, you find yourself straying into yet another corrupt glade.  However, this time the perverse grove isn't unoccupied; loud bleatings and brayings of pleasure split the air, and as you push past a bush covered in dripping, glans-shaped berries, you spot the source.\n\n");
 
 		outputText("A humanoid figure with a set of goat-like horns and legs - a satyr - is currently buried balls-deep in one of the vagina-flowers that scatter the grove, whooping in delight as he hungrily pounds into its ravenously sucking depths.  He stops on occasion to turn and take a slobbering suckle from a nearby breast-like growth; evidently, he doesn't care that he's stuck there until the flower's done with him.\n\n");
-		if (flags[kFLAGS.CODEX_ENTRY_SATYRS] <= 0) {
-			flags[kFLAGS.CODEX_ENTRY_SATYRS] = 1;
-			outputText("<b>New codex entry unlocked: Satyrs!</b>\n\n")
-		}
+		unlockCodexEntry("Satyrs", kFLAGS.CODEX_ENTRY_SATYRS, false, true);
 		//(Player lacks a penis:
 		if (!player.hasCock()) {
 			outputText("You can't really see any way to take advantage of this scenario, so you simply turn back and leave the way you came.");

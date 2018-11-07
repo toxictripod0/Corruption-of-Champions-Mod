@@ -156,11 +156,8 @@ public class CommonEncounters extends BaseContent implements Encounter {
 	}
 
 	private function unlockCodexImps():void {
-//Unlock if haven't already.
-		if (flags[kFLAGS.CODEX_ENTRY_IMPS] <= 0) {
-			flags[kFLAGS.CODEX_ENTRY_IMPS] = 1;
-			outputText("\n\n<b>New codex entry unlocked: Imps!</b>");
-		}
+		//Unlock if haven't already.
+		unlockCodexEntry("Imps", kFLAGS.CODEX_ENTRY_IMPS);
 	}
 
 	private function twoImpsClashing():void {
@@ -190,10 +187,7 @@ public class CommonEncounters extends BaseContent implements Encounter {
 			clearOutput();
 			outputText("A goblin saunters out of the bushes with a dangerous glint in her eyes.\n\nShe says, \"<i>Time to get fuc-oh shit, you don't even have anything to play with!  This is for wasting my time!</i>\"");
 		}
-		if (flags[kFLAGS.CODEX_ENTRY_GOBLINS] <= 0) {
-			flags[kFLAGS.CODEX_ENTRY_GOBLINS] = 1;
-			outputText("\n\n<b>New codex entry unlocked: Goblins!</b>");
-		}
+		unlockCodexEntry("Goblins", kFLAGS.CODEX_ENTRY_GOBLINS);
 		startCombat(new Goblin());
 		spriteSelect(SpriteDb.s_goblin);
 	}

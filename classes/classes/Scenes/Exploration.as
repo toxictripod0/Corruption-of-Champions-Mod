@@ -155,10 +155,7 @@ package classes.Scenes
 						spriteSelect(SpriteDb.s_imp);
 					}
 					//Unlock if haven't already.
-					if (flags[kFLAGS.CODEX_ENTRY_IMPS] <= 0) {
-						flags[kFLAGS.CODEX_ENTRY_IMPS] = 1;
-						outputText("\n\n<b>New codex entry unlocked: Imps!</b> ");
-					}
+					unlockCodexEntry("Imps", kFLAGS.CODEX_ENTRY_IMPS);
 				}
 				return;
 			}
@@ -185,10 +182,7 @@ package classes.Scenes
 					clearOutput();
 					outputText(images.showImage("monster-goblin"));
 					outputText("A goblin saunters out of the bushes with a dangerous glint in her eyes.\n\nShe says, \"<i>Time to get fucked, " + player.mf("stud", "slut") + ".</i>\"");
-					if (flags[kFLAGS.CODEX_ENTRY_GOBLINS] <= 0) {
-						flags[kFLAGS.CODEX_ENTRY_GOBLINS] = 1;
-						outputText("\n\n<b>New codex entry unlocked: Goblins!</b>");
-					}
+					unlockCodexEntry("Goblins", kFLAGS.CODEX_ENTRY_GOBLINS);
 					startCombat(new Goblin());
 					spriteSelect(SpriteDb.s_goblin);
 					return;
@@ -196,10 +190,7 @@ package classes.Scenes
 				else {
 					clearOutput();
 					outputText("A goblin saunters out of the bushes with a dangerous glint in her eyes.\n\nShe says, \"<i>Time to get fuc-oh shit, you don't even have anything to play with!  This is for wasting my time!</i>\"");
-					if (flags[kFLAGS.CODEX_ENTRY_GOBLINS] <= 0) {
-						flags[kFLAGS.CODEX_ENTRY_GOBLINS] = 1;
-						outputText("\n\n<b>New codex entry unlocked: Goblins!</b>");
-					}
+					unlockCodexEntry("Goblins", kFLAGS.CODEX_ENTRY_GOBLINS);
 					startCombat(new Goblin());
 					spriteSelect(SpriteDb.s_goblin);
 					return;

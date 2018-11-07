@@ -262,10 +262,7 @@ public function meetSophie():void {
 	else outputText("Desiring to spread your name throughout all of this land, ");
 	outputText("you wrench your gaze away from her breasts and introduce yourself.  It's hard to stay focused on introduction while she's wrapping her wing-like arms around her tits and squeezing them together, amplifying her cleavage.  The matronly harpy is looking at you expectantly, and it occurs to you that she's still waiting on an answer to her question.  Why did you come here?\n\n");
 
-	if (flags[kFLAGS.CODEX_ENTRY_HARPIES] <= 0) {
-		flags[kFLAGS.CODEX_ENTRY_HARPIES] = 1;
-		outputText("\n\n<b>New codex entry unlocked: Harpies!</b>")
-	}
+	unlockCodexEntry("Harpies", kFLAGS.CODEX_ENTRY_HARPIES, false, true);
 
 	//[Looking for Demons] [Sex] [Got Lost] [Foraging]
 	menu();
@@ -282,6 +279,7 @@ public function meetSophieRepeat():void {
 	//(Pissed)
 	if (flags[kFLAGS.SOPHIE_ANGRY_AT_PC_COUNTER] > 0) {
 		outputText("During your exploration of the mountains you wind up passing close to the harpy nests again.  Uh oh.  There's a constant, irritating buzz in the background that makes it hard to focus on what you're doing.  You crest a ledge and find yourself back on the edge of Sophie's nest.  Shit.  She glowers at you and raises one of her talons.  It's a fight!\n\n");
+		unlockCodexEntry("Harpies", kFLAGS.CODEX_ENTRY_HARPIES, false, true);
 		startCombat(new Sophie());
 		return;
 	}

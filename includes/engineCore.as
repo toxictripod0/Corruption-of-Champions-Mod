@@ -170,6 +170,13 @@ public function awardAchievement(title:String, achievement:int, display:Boolean 
 	else outputText("\n<b>ERROR: Invalid achievement!</b>");
 }
 
+public function unlockCodexEntry(title:String, codexFlag:int, nlBefore:Boolean = true, nlAfter:Boolean = false):void {
+	if (flags[codexFlag] <= 0) {
+		flags[codexFlag] = 1;
+		outputText((nlBefore ? "\n\n" : "") + "<b>New codex entry unlocked: " + title + "!</b>" + (nlAfter ? "\n\n" : ""));
+	}
+}
+
 
 public function testDynStatsEvent():void {
 	clearOutput();

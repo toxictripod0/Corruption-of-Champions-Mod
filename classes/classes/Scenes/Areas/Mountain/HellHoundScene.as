@@ -36,10 +36,7 @@ package classes.Scenes.Areas.Mountain
 			clearOutput();
 			outputText(images.showImage("monster-hellhound"));
 			outputText("You hear a fiery howl as a demonic, two-headed beast-man leaps out in front of you!");
-			if (flags[kFLAGS.CODEX_ENTRY_HELLHOUNDS] <= 0) {
-				flags[kFLAGS.CODEX_ENTRY_HELLHOUNDS] = 1;
-				outputText("\n\n<b>New codex entry unlocked: Hellhounds!</b>")
-			}
+			unlockCodexEntry("Hellhound", kFLAGS.CODEX_ENTRY_HELLHOUNDS);
 			startCombat(new HellHound());
 			spriteSelect(SpriteDb.s_hellhound);
 		}

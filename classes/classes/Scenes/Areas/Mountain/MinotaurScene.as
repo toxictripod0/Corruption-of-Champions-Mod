@@ -475,10 +475,7 @@ public function getRapedByMinotaur(autoRape:Boolean = false):void {
 		dynStats("lus", 10 + player.lib / 5);
 		if (rand(30) + player.inte / 5 > 18 || flags[kFLAGS.SFW_MODE] > 0) { //detect minotaur coming
 			outputText("You spot a shadow moving and spin around to see a minotaur lumbering after you from the back of the cave!");
-			if (flags[kFLAGS.CODEX_ENTRY_MINOTAURS] <= 0) {
-				flags[kFLAGS.CODEX_ENTRY_MINOTAURS] = 1;
-				outputText("\n\n<b>New codex entry unlocked: Minotaurs!</b>")
-			}
+			unlockCodexEntry("Minotaurs", kFLAGS.CODEX_ENTRY_MINOTAURS);
 			startCombat(new Minotaur());
 			return;
 		}

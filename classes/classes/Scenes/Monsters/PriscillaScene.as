@@ -49,10 +49,7 @@ package classes.Scenes.Monsters
 				}
 			}
 			flags[kFLAGS.TIMES_ENCOUNTERED_GOBLIN_ELDER]++;
-			if (flags[kFLAGS.CODEX_ENTRY_GOBLINS] <= 0) {
-				flags[kFLAGS.CODEX_ENTRY_GOBLINS] = 1;
-				outputText("\n\n<b>New codex entry unlocked: Goblins!</b>")
-			}
+			unlockCodexEntry("Goblins", kFLAGS.CODEX_ENTRY_GOBLINS);
 			menu();
 			addButton(0, "Fight", startFight);
 			if (flags[kFLAGS.GOBLIN_ELDER_TALK_COUNTER] < 2) addButton(1, "Talk", talkToGoblinElder);
@@ -1071,3 +1068,4 @@ package classes.Scenes.Monsters
 		}
 	}
 }
+

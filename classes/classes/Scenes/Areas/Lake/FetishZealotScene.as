@@ -60,10 +60,7 @@ package classes.Scenes.Areas.Lake
 			player.changeStatusValue(StatusEffects.FetishOn, 1, 1);
 			clearOutput();
 			outputText("As you get close to your boat, you are surprised to find someone standing at the end of the dock.  As you get closer, you see that it's a man wearing some kind of bizarre religious outfit.  He turns to face you as you approach and says \"<i>This has been claimed by the Followers of the Fetish for security reasons, leave at once.</i>\"\n\n\"<i>What?  This is my boat!</i>\" you cry out in surprise.  The zealot seems to take this as an aggressive action on your part and moves to attack you.");
-			if (flags[kFLAGS.CODEX_ENTRY_FETISHFOLLOWERS] <= 0) {
-				flags[kFLAGS.CODEX_ENTRY_FETISHFOLLOWERS] = 1;
-				outputText("\n\n<b>New codex entry unlocked: Followers of the Fetish!</b>")
-			}
+			unlockCodexEntry("Followers of the Fetish", kFLAGS.CODEX_ENTRY_FETISHFOLLOWERS);
 			//next button, go to zealot fight
 			startCombat(new FetishZealot());
 			spriteSelect(SpriteDb.s_fetish_zealot);

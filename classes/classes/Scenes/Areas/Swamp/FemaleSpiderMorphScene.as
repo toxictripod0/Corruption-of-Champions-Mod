@@ -62,10 +62,7 @@ package classes.Scenes.Areas.Swamp
 			addButton(4, "Leave", runFromFSpiderMorph).hint("Book it! Attempt to avoid the conflict and run away from her.");
 			//Incremement 'times encountered spider-girls'
 			flags[kFLAGS.TIMES_ENCOUNTERED_FEMALE_SPIDERMORPHS]++;
-			if (flags[kFLAGS.CODEX_ENTRY_ARACHNES] <= 0) {
-				flags[kFLAGS.CODEX_ENTRY_ARACHNES] = 1;
-				outputText("\n\n<b>New codex entry unlocked: Arachnes, Spider-Morphs, and Driders!</b>")
-			}
+			unlockCodexEntry("Arachnes, Spider-Morphs, and Driders", kFLAGS.CODEX_ENTRY_ARACHNES);
 		}
 
 		//Selecting fight starts combat and eventParsers to 1 to display the combat menu and enemy description.

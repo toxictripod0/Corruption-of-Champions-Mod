@@ -120,10 +120,7 @@ public class GooGirlScene extends AbstractLakeContent implements Encounter {
 			outputText("waters. You pause, trying to figure out what the shape might be. Just under the surface of the water, there appears to be a fist-sized heart shedding a crimson glow. Leaning closer, you gaze down into your reflection only to find your face rising up with pursed lips, trying to kiss you! You jerk backwards and the pseudo-head quivers, resolving its face into a gooey-looking girl, her ");
 			startCombat(new GooGirl());
 			outputText(gooColor() + " slime body sculpting itself into a humanoid shape. The girl curiously tilts her head to one side, as if trying to figure out why you're backing away, before she happily surges forward!");
-			if (flags[kFLAGS.CODEX_ENTRY_GOOGIRLS] <= 0) {
-				flags[kFLAGS.CODEX_ENTRY_GOOGIRLS] = 1;
-				outputText("\n\n<b>New codex entry unlocked: Goo Girls!</b>")
-			}
+			unlockCodexEntry("Goo Girls", kFLAGS.CODEX_ENTRY_GOOGIRLS);
 			doNext(playerMenu);
 		}
 
