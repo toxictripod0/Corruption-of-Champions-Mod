@@ -86,7 +86,7 @@
 		
 		protected function unlockCodexEntry(title:String, codexEntry:int, nlBefore:Boolean = true, nlAfter:Boolean = false):void
 		{
-			return kGAMECLASS.awardAchievement(title, codexEntry, nlBefore, nlAfter);
+			return kGAMECLASS.unlockCodexEntry(title, codexEntry, nlBefore, nlAfter);
 		}
 		
 		//SEASONAL EVENTS!

@@ -40,7 +40,7 @@ package classes.Scenes.Areas.Swamp
 				addButton(1, "Talk", talkToSpiderBoy).hint("Why not just sit down and have a talk with the spider-morph instead?");
 				addButton(4, "Leave", camp.returnToCampUseOneHour).hint("The spider-boy isn't of your interest? You're sure the spider-morph won't even attempt to chase you given his friendly demeanor so you could leave without any troubles.");
 			}
-			unlockCodexEntry("Arachnes, Spider-Morphs, and Driders", kFLAGS.CODEX_ENTRY_ARACHNES);
+			unlockCodexEntry("Arachnes, Spider-Morphs and Driders", kFLAGS.CODEX_ENTRY_ARACHNES);
 		}
 		
 		private function fightSpiderBoy():void {
