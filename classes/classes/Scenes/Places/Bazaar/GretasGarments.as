@@ -5,7 +5,34 @@ package classes.Scenes.Places.Bazaar
 
 	public class GretasGarments extends BazaarAbstractContent 
 	{
-		public function GretasGarments() {}
+		public function GretasGarments() {
+			//No parameters here...
+		}
+		
+		private var cockSockDb:Array = [
+			["Wool",      "wool",       10, "Just an ordinary woolen cock-sock. All it does is keep your cock nice and warm.",
+				"You spy a thick, woolen sock sitting on a counter and take it up to Greta. \"<i>Ah, yes. That's our basic sock. Warm and cozy, great for those chilly nights. That one's a mere 10 gems. A steal, of course.</i>\""],
+			["Cockring",  "cockring",  100, "This black latex cock-sock is said to help keep your arousal running.",
+				"You pick up one sock, surprised to find how heavy it is. Large metal rings encircle the base of the smooth cock-sock, with one loose ring dangling down, no doubt intending to wrap around the base of your ball sack. \"<i>Oh yes, that's a fun one. Those rings will constantly constrict your manhood, so you'll always be hard and ready to go.</i>\" She giggles and waves a hand, \"<i>That's actually a very popular sock... so many demons come in to get these for their harems. It's 100 gems.</i>\""],
+			["Alabaster", "alabaster",  25, "This white cock-sock supposedly would help to improve the cleansing effects.",
+				"This white cock-sock supposedly would help to improve the cleansing effects."],
+			["Viridian",  "viridian", 1000, "This rich green cock-sock supposedly makes you feel healthier over time.",
+				"You pick up one sock and inspect it. The whole thing is a rich, natural green color and completely lace, accentuated with vivid red roses. Just touching it makes you feel healthier and more alive. \"<i>Ahh, that's a fun one right there. It hastens your natural healing. Very useful, and pretty, too, if I say so myself. It's 1,000 gems.</i>\" You pale at the price, but Greta waves a hand, \"<i>Trust me, honey, it's worth it.</i>\""],
+			["Scarlet",   "scarlet",   250, "This plush red cock-sock looks smaller. Supposedly would make your endowment grow easier.",
+				"You pick up one sock and inspect it. It's an incredible plush red, and made of soft satin and detailed with red lace. It seems smaller than the other socks you've seen, and you can't help but wonder how tight it will feel on your dick. \"<i>Mmm, that one's special. It increases the blood flow to your little dick, enabling it to grow a lot faster. This one goes quick. Everyone wants to be a minotaur! It's 250 gems.</i>\""],
+			["Cobalt",    "cobalt",    250, "This soft blue cock-sock looks extremely small. Supposedly this would inhibit your endowment growth.",
+				"You pick up one sock and inspect it. It's a cool, soft blue color, made from satin and detailed in light blue lace. It seems extremely small, compared to the other socks in the shop, and you can't help but think it must be extremely uncomfortable to wear. \"<i>Oho, that's a fun one right there. The cute little femboys go crazy for it. As you can see, it's a bit small, and it will actually inhibit your cock from growing too big. It's 250 gems.</i>\""],
+			["Purple", "amaranthine", 1000, "This smooth lavish purple cock-sock seems like an oddity with its unusual shape.",
+				"You pick up one sock and inspect it. It's a silky smooth lavish purple color, with fine lace depicting some kind of six-legged wolf-like creature. Overall, though, the sock is an odd shape, seemingly intended for someone with a knot AND some kind of equine-like flare. Greta's eyebrows raise as she sees the item you're holding, \"<i>Ohh, that one. That, honey, was an experiment. I took some magic channeled down from the stars themselves and infused it into a new sock, and that was the result. Truth be told, I'm not entirely sure what it does, but I'll sell it to you for 1,000 gems.</i>\""],
+			["Gilded",    "gilded",   3000, "An extremely expensive-looking cock-sock with intricate decorations.",
+				"You pick up one sock and inspect it, surprised to see how rigid and heavy it is. Unlike the others in the shop, this one seems to be made of a cool golden metallic material. Glittering gems are embedded into the top side, while the bottom is cinched closed with leather cords. \"<i>You've got a good eye,</i>\" Greta says, her eyes twinkling greedily. \"<i>With that bad boy, you can actually convert some of your... sweet cum into even sweeter gems. Of course, with that kind of awesome power, you've got to understand that it'll cost you 3,000 gems.</i>\""],
+			["Mtl. Green", "green",    500, "This metallic green cock-sock supposedly looks like it'll bolster your HP from the look of the label.",
+				"You pick up one sock and inspect it. It's dark, metallic green in color and interlaced with brighter green highlights. Greta's eyebrows raise as she sees the item you're holding, \"<i>Ohh, that one.  It's one of my newest lineup of cock-socks. If you're unsure of your endurance, this might help as the magic bolsters your overall health capacity. I'll sell it to you for 500 gems.</i>\""],
+			["Mtl. Red",  "red",       500, "This metallic red cock-sock supposedly looks like it'll improve your physical prowess from the look of the label.",
+				"You pick up one sock and inspect it. It's dark, metallic red in color and interlaced with brighter red highlights. Overall, it looks a bit menacing. Greta's eyebrows raise as she sees the item you're holding, \"<i>Ohh, that one. It's one of my newest lineup of cock-socks. This cock-sock will enhance your power so you can physically beat tougher opponents. I'll sell it to you for 500 gems.</i>\""],
+			["Mtl. Blue", "blue",      500, "This metallic blue cock-sock supposedly looks like it'll magnify your spellpower from the look of the label.",
+				"You pick up one sock and inspect it. It's dark, metallic blue in color and interlaced with brighter blue highlights that seems to glow in the dark. Greta's eyebrows raise as she sees the item you're holding, \"<i>Ohh, that one.  It's one of my newest lineup of cock-socks. This cock-sock will enhance your spellpower. I'll sell it to you for 500 gems.</i>\""]
+		]
 		
 		//"Greta's Garments" - Interior
 		public function gretasGarments():void {
@@ -106,83 +133,28 @@ package classes.Scenes.Places.Bazaar
 			outputText("What type of cock-sock do you want to look at?");
 			//Cock-sock Menu
 			menu();
-			addButton(0, "Wool", chooseCockSock, "wool").hint("Just an ordinary woolen cock-sock. All it does is keep your cock nice and warm.");
-			addButton(1, "Cockring", chooseCockSock, "cockring").hint("This cock-sock is said to help keep your arousal running.");
-			addButton(2, "Alabaster", chooseCockSock, "alabaster").hint("This white cock-sock supposedly would help to improve the cleansing effects.");
-			addButton(3, "Viridian", chooseCockSock, "viridian").hint("This rich green cock-sock supposedly makes you feel healthier over time.");
-			addButton(4, "Scarlet", chooseCockSock, "scarlet").hint("This plush red cock-sock looks smaller. Supposedly would make your endowment grow easier.");
-			addButton(5, "Cobalt", chooseCockSock, "cobalt").hint("This soft blue cock-sock looks extremely small. Supposedly this would inhibit your endowment growth.");
-			addButton(6, "Amaranth.", chooseCockSock, "amaranthine").hint("This smooth lavish purple cock-sock seems like an oddity with its unusual shape.");
-			addButton(7, "Gilded", chooseCockSock, "gilded").hint("An extremely expensive-looking cock-sock with intricate decorations.");
-			addButton(8, "Mtl. Green", chooseCockSock, "green").hint("This metallic green cock-sock supposedly looks like it'll bolster your HP from the look of the label.");
-			addButton(9, "Mtl. Red", chooseCockSock, "red").hint("This metallic red cock-sock supposedly looks like it'll improve your physical prowess from the look of the label.");
-			addButton(10,"Mtl. Blue", chooseCockSock, "blue").hint("This metallic blue cock-sock supposedly looks like it'll magnify your spellpower from the look of the label.");
+			for (var i:int = 0; i < cockSockDb.length; i++) {
+				addButton(i, cockSockDb[i][0], chooseCockSock, cockSockDb[i]).hint(cockSockDb[i][3]);
+			}
 			addButton(14,"Back", gretasGarments);
 		}
 
-		private function chooseCockSock(selection:String):void {
+		private function chooseCockSock(selection:Array):void {
 			clearOutput();
-			var price:int = 0;
-			switch(selection) {
-				case "wool": //Ordinary cocksock, nothing special.
-					outputText("You spy a thick, woolen sock sitting on a counter and take it up to Greta. \"<i>Ah, yes. That's our basic sock. Warm and cozy, great for those chilly nights. That one's a mere 10 gems. A steal, of course.</i>\"");
-					price = 10;
-					break;
-				case "cockring": //Cockring, increases minimum lust while worn. Minimum lost lost if cocksock is removed.
-					outputText("You pick up one sock, surprised to find how heavy it is. Large metal rings encircle the base of the smooth cock-sock, with one loose ring dangling down, no doubt intending to wrap around the base of your ball sack. \"<i>Oh yes, that's a fun one. Those rings will constantly constrict your manhood, so you'll always be hard and ready to go.</i>\" She giggles and waves a hand, \"<i>That's actually a very popular sock... so many demons come in to get these for their harems. It's 100 gems.</i>\"");
-					price = 100;
-					break;
-				case "alabaster": //Fancy name for off-white. Purity effect.
-					outputText("You pick up a one sock and inspect it. It's a pure white cock sock, edged with delicate lace. It almost appears to be some kind of bridal wear... although you don't know of any kind of bride that would wear something like this. \"<i>Ah yeah, that's a popular one. Some folks like the purity that it suggests... though I can't guess why. It's 25 gems, though.</i>\"");
-					price = 25;
-					break;
-				case "viridian": //Fancy name for green. Improves healing.
-					outputText("You pick up one sock and inspect it. The whole thing is a rich, natural green color and completely lace, accentuated with vivid red roses. Just touching it makes you feel healthier and more alive. \"<i>Ahh, that's a fun one right there. It hastens your natural healing. Very useful, and pretty, too, if I say so myself. It's 1,000 gems.</i>\" You pale at the price, but Greta waves a hand, \"<i>Trust me, honey, it's worth it.</i>\"");
-					price = 1000;
-					break;
-				case "scarlet": //Fancy name for red. Makes cock growth faster.
-					outputText("You pick up one sock and inspect it. It's an incredible plush red, and made of soft satin and detailed with red lace. It seems smaller than the other socks you've seen, and you can't help but wonder how tight it will feel on your dick. \"<i>Mmm, that one's special. It increases the blood flow to your little dick, enabling it to grow a lot faster. This one goes quick. Everyone wants to be a minotaur! It's 250 gems.</i>\"");
-					price = 250;
-					break;
-				case "cobalt": //Fancy name for blue. Slows down cock growth.
-					outputText("You pick up one sock and inspect it. It's a cool, soft blue color, made from satin and detailed in light blue lace. It seems extremely small, compared to the other socks in the shop, and you can't help but think it must be extremely uncomfortable to wear. \"<i>Oho, that's a fun one right there. The cute little femboys go crazy for it. As you can see, it's a bit small, and it will actually inhibit your cock from growing too big. It's 250 gems.</i>\"");
-					price = 250;
-					break;
-				case "amaranthine": //Fancy name for purple.
-					outputText("You pick up one sock and inspect it. It's a silky smooth lavish purple color, with fine lace depicting some kind of six-legged wolf-like creature. Overall, though, the sock is an odd shape, seemingly intended for someone with a knot AND some kind of equine-like flare. Greta's eyebrows raise as she sees the item you're holding, \"<i>Ohh, that one. That, honey, was an experiment. I took some magic channeled down from the stars themselves and infused it into a new sock, and that was the result. Truth be told, I'm not entirely sure what it does, but I'll sell it to you for 1,000 gems.</i>\"");
-					price = 1000;
-					break;
-				case "gilded": //Metallic golden. Grants Midas' Cock effect.
-					outputText("You pick up one sock and inspect it, surprised to see how rigid and heavy it is. Unlike the others in the shop, this one seems to be made of a cool golden metallic material. Glittering gems are embedded into the top side, while the bottom is cinched closed with leather cords. \"<i>You've got a good eye,</i>\" Greta says, her eyes twinkling greedily. \"<i>With that bad boy, you can actually convert some of your... sweet cum into even sweeter gems. Of course, with that kind of awesome power, you've got to understand that it'll cost you 3,000 gems.</i>\"");
-					price = 3000;
-					break;
-				case "green":
-					outputText("You pick up one sock and inspect it. It's dark, metallic green in color and interlaced with brighter green highlights. Greta's eyebrows raise as she sees the item you're holding, \"<i>Ohh, that one.  It's one of my newest lineup of cock-socks. If you're unsure of your endurance, this might help as the magic bolsters your overall health capacity. I'll sell it to you for 500 gems.</i>\"");
-					price = 500;
-					break;
-				case "red":
-					outputText("You pick up one sock and inspect it. It's dark, metallic red in color and interlaced with brighter red highlights. Overall, it looks a bit menacing. Greta's eyebrows raise as she sees the item you're holding, \"<i>Ohh, that one. It's one of my newest lineup of cock-socks. This cock-sock will enhance your power so you can physically beat tougher opponents. I'll sell it to you for 500 gems.</i>\"");
-					price = 500;
-					break;
-				case "blue":
-					outputText("You pick up one sock and inspect it. It's dark, metallic blue in color and interlaced with brighter blue highlights that seems to glow in the dark. Greta's eyebrows raise as she sees the item you're holding, \"<i>Ohh, that one.  It's one of my newest lineup of cock-socks. This cock-sock will enhance your spellpower. I'll sell it to you for 500 gems.</i>\"");
-					price = 500;
-					break;
-				default:
-					outputText("<b>Error. This shouldn't happen.</b>");
-			}
-			flags[kFLAGS.SOCK_HOLDING] = selection;
+			var price:int = selection[2];
+			outputText(selection[4]);
+			flags[kFLAGS.SOCK_HOLDING] = selection[1];
 			cockSelectionMenu(price);
 		}
 
 		private function cockSelectionMenu(price:int):void {
 			menu();
-			if (player.gems >= price) addButton(0, "Buy", pickACockForSock);
+			if (player.gems >= price) addButton(0, "Buy", pickACockForSock, price);
 			else outputText("\n\n<b>You can't afford that.</b>");
 			addButton(4, "Back", browseDemSocksSon);
 		}
 
-		private function pickACockForSock():void {
+		private function pickACockForSock(price:int = 0):void {
 			//Buy Cock-sock
 			clearOutput();
 			outputText("You take the cock-sock over to the counter where Greta sits, knitting even more garments and place down the gems required. \"<i>Aha, good choice, honey!</i>\" the succubus says, snatching up the money and stashing it away. \"<i>Now let's get that bad boy fitted on you.</i>\"");
@@ -198,13 +170,13 @@ package classes.Scenes.Places.Bazaar
 				var button:int = 0;
 				menu();
 				while(button < player.cockTotal()) {
-					if (player.cocks[button].sock == "") addButton(button,String(button+1),cockSockTarget,button);
+					if (player.cocks[button].sock == "") addButton(button, String(button + 1), cockSockTarget, button, price);
 					button++;
 				}
 			}
 		}
 
-		private function cockSockTarget(target:int):void {
+		private function cockSockTarget(target:int, price:int = 0):void {
 			clearOutput();
 			flags[kFLAGS.SOCKS_BOUGHT]++;
 			//Putting it On - First Time
@@ -221,32 +193,23 @@ package classes.Scenes.Places.Bazaar
 				outputText("\n\nWell? Do you want this cock-sock attached to your penis semi-permanently?");
 			}
 			menu();
-			addButton(0,"Yes",yesPutDatSockOnMe,target);
-			addButton(1,"No",noCockSock);
+			addButton(0, "Yes", yesPutDatSockOnMe, target, price);
+			addButton(1, "No", noCockSock);
 		}
 
 		//Yes
-		private function yesPutDatSockOnMe(target:int):void {
+		private function yesPutDatSockOnMe(target:int, price:int = 0):void {
 			clearOutput();
 			var conflict:Boolean = false;
-			var price:int = 0;
 			
 			switch(flags[kFLAGS.SOCK_HOLDING]) {
-				case "wool":
-					price = 10;
-					break;
 				case "cockring":
-					price = 10;
 					if (player.findPerk(PerkLib.PentUp) < 0) player.createPerk(PerkLib.PentUp, 10, 0, 0, 0);
 					else player.addPerkValue(PerkLib.PentUp, 1, 5);
-					break;
-				case "alabaster":
-					price = 25;
 					break;
 				case "viridian":
 					if (player.findPerk(PerkLib.LustyRegeneration) < 0) {
 						player.createPerk(PerkLib.LustyRegeneration, 0, 0, 0, 0);
-						price = 1000;
 					}
 					else {
 						conflict = true;
@@ -256,29 +219,18 @@ package classes.Scenes.Places.Bazaar
 					if (player.findPerk(PerkLib.PhallicPotential) < 0) {
 						player.createPerk(PerkLib.PhallicPotential, 0, 0, 0, 0);
 					}
-					price = 250;
 					break;
 				case "cobalt":
 					if (player.findPerk(PerkLib.PhallicRestraint) < 0) {
 						player.createPerk(PerkLib.PhallicRestraint, 0, 0, 0, 0);
 					}
-					price = 250;
-					break;
-				case "amaranthine":
-					price = 1000;
 					break;
 				case "gilded":
 					if (player.findPerk(PerkLib.PentUp) < 0) player.createPerk(PerkLib.MidasCock, 5, 0, 0, 0);
 					else player.addPerkValue(PerkLib.MidasCock, 1, 5);
-					price = 3000
-					break;
-				case "red":
-				case "green":
-				case "blue":
-					price = 500;
 					break;
 				default:
-					price = 0;
+					//Nothing here...
 			}
 			player.gems -= price;
 			outputText("You nod to the busty succubus and strip off your [armor], revealing your naked body. Greta's eyes light up as she looks over your body with barely-contained lust. Finally her eyes settle onto your " + player.cockDescript(target) + ", and she licks her lips. ");
