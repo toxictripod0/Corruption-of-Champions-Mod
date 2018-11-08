@@ -193,11 +193,11 @@ package classes.Scenes.Areas.Mountain
 			//Player chooses to either give Merae's full Lethicite, or a regular piece of Lethicite.  Limited by what they have, of course.  They cannot choose to leave at this point.  Merae's Lethicite -> G, Regular Lethicite -> H.
 			menu();
 			if (player.keyItemv2("Marae's Lethicite") == 0) {
-				addButton(0, "Give All", giveALLTHELETHICITES);
+				addButton(0, "Give All", giveALLTHELETHICITES).hint("With so much divine lethicite you're carrying, maybe you'll receive some great rewards if you offer the whole chunk?");
 			} else {
 				addDisabledButton(0, "Give All");
 			}
-			addButton(1, "Give Part", giveLethicitePiece);
+			addButton(1, "Give Part", giveLethicitePiece).hint("The lethicite could definitely be saved for some uses but maybe you can part with some of the divine lethicite.");
 		}
 
 //Regular Lethicite

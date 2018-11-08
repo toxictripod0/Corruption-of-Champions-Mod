@@ -79,7 +79,7 @@ package classes.Scenes.Areas.Mountain
 			
 			if (player.lust >= 33 && !player.isGenderless()) {
 				if (!hpVictory) {
-					kGAMECLASS.output.addButton(0, "Lick", game.mountain.hellHoundScene.hellHoundGetsRaped, undefined, undefined, undefined, "Make him use his tongues.");
+					kGAMECLASS.output.addButton(0, "Lick", game.mountain.hellHoundScene.hellHoundGetsRaped).hint("Make him use his tongues. Two heads are better than one, so to speak.");
 				}
 			}
 			
