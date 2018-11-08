@@ -307,33 +307,33 @@ package classes.Scenes.Monsters
 			}
 			else {
 				//cunt stuff
-				if (player.hasVagina()) addButton(7, "Pussies", gobboGetsRapedFem);
+				if (player.hasVagina()) addButton(7, "Pussies", gobboGetsRapedFem).hint("Get on a girl-on-girl action with the goblin!");
 				//Dick stuff:
 				if (player.hasCock()) {
 					//Corrupt too big scene
 					if (player.cockArea(player.biggestCockIndex()) > monster.vaginalCapacity() && (player.isCorruptEnough(80) || player.findPerk(PerkLib.Sadist) >= 0))
-						addButton(2, "CorruptDick", rapeAGoblinCorruptTooBig);
+						addButton(2, "CorruptDick", rapeAGoblinCorruptTooBig).hint("You definitely could go rough on the goblin with a big dick that would be sure to leave her sore all day.", "Corrupt Dick Too Big");
 					//Regular too big scene
 					if (player.cockArea(player.biggestCockIndex()) > monster.vaginalCapacity())
-						addButton(1, "DickTooBig", manRapesGoblinTooBig);
+						addButton(1, "DickTooBig", manRapesGoblinTooBig).hint("Your dick is too big to fit but maybe you can figure a way to gain pleasure from the goblin.", "Dick Too Big");
 					//It fits!
 					if (player.cockThatFits(monster.vaginalCapacity()) >= 0) {
-						addButton(0, "Dick Fuck", gatsGoblinBoners);
-						addButton(4, "Jog Fuck", gobboGetsRapedMaleFits);
+						addButton(0, "Dick Fuck", gatsGoblinBoners).hint("Give what the goblin craves: a good dick-stuffing.");
+						addButton(4, "Jog Fuck", gobboGetsRapedMaleFits).hint("It's a good exercise move. Walk around while ramming her good!");
 					}
 					//Buttsex toggle
 					if (player.cockThatFits(monster.analCapacity()) >= 0 && (player.isCorruptEnough(70) || player.findPerk(PerkLib.Sadist) >= 0)) addButton(3, "Dick In Ass", gobboButtSecks);
 					//Spidercondom
 					if (player.tail.type == Tail.SPIDER_ABDOMEN && player.cockThatFits(monster.vaginalCapacity()) >= 0)
-						addButton(6, "Web Condom", goblinCondomed, 0);
+						addButton(6, "Web Condom", goblinCondomed, 0).hint("You could make a condom using your webbings and fool her into giving her the pleasure without the impregnation!");
 					else if (player.hasItem(useables.CONDOM) && player.cockThatFits(monster.vaginalCapacity()) >= 0)
-						addButton(6, "Use Condom", goblinCondomed, 1);
+						addButton(6, "Use Condom", goblinCondomed, 1).hint("You could use a condom you have in your inventory and and fool her into giving her the pleasure without the impregnation!");
 				}
 			}
 			//Spider egg laying
-			if (player.canOvipositSpider()) addButton(8, "Lay Eggs", laySomeDriderEggsInGobboTwat);
+			if (player.canOvipositSpider()) addButton(8, "Lay Eggs", laySomeDriderEggsInGobboTwat).hint("Use your ovipositor to stuff the goblin's twat with eggs.");
 			//Breastfeed adds an option
-			if (player.lactationQ() >= 500 || player.hasStatusEffect(StatusEffects.Feeder)) addButton(5, "Breastfeed", giveGoblinAMilkMustache);
+			if (player.lactationQ() >= 500 || player.hasStatusEffect(StatusEffects.Feeder)) addButton(5, "Breastfeed", giveGoblinAMilkMustache).hint("You could give the goblin a taste of your milk. It's only in your desire to breastfeed someone.");
 		}
 		private function giveGoblinAMilkMustache():void {
 			clearOutput();
