@@ -96,7 +96,7 @@ package classes.Scenes.Areas.Swamp
 				if (player.hasVagina()) {
 					addButton(0, "Mount", victoryCowgirlRidingOnSpiderBoi).hint("Ride the spider-morph, cowgirl style!");
 					if (player.biggestTitSize() >= 4 && player.armorName == "lusty maiden's armor") {
-						addButton(3, "B.Titfuck", (player.armor as LustyMaidensArmor).lustyMaidenPaizuri, player, monster).hint("Take advantage of the properties of your special armour and get the spider-morph to give you a good titfuck.", "Bikini Titfuck");
+						addButton(3, "B.Titfuck", (player.armor as LustyMaidensArmor).lustyMaidenPaizuri, player, monster).hint("Take advantage of the properties of your special armour and get the spider-morph to give you a good titfuck.", "Bikini Titfuck/Paizuri");
 					}
 				}
 				if (player.hasCock()) {

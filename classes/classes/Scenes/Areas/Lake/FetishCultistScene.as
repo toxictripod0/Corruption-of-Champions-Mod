@@ -487,12 +487,12 @@ public class FetishCultistScene extends AbstractLakeContent implements Encounter
 				//player chooses between; penetrate vagina, vibrator vagina, nevermind.  Options as appropriate.
 				menu();
 				if (player.hasCock()) {
-					addButton(0, "FuckHerVag", plugSwimsuitVag);
+					addButton(0, "FuckHerVag", plugSwimsuitVag).hint("You could penetrate the cultist vaginally.");
 				} else {
 					addDisabledButton(0, "FuckHerVag", "This scene requires you to have cock.");
 				}
 				if (player.hasVagina()) {
-					addButton(1, "Vibrator", swimsuitVibrators);
+					addButton(1, "Vibrator", swimsuitVibrators).hint("Since she mentioned the vibrators, it wouldn't hurt to make good use of them for pleasure.");
 				} else {
 					addDisabledButton(1, "Vibrator", "This scene requires you to have vagina.");
 				}

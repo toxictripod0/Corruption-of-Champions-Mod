@@ -266,10 +266,10 @@ package classes.Scenes.Areas.Lake
 			
 			if (player.lust >= 33 && !player.isGenderless()) {
 				outputText("\n\nDo you want to take advantage of his vulnerable state to sate your lusts?");
-				addButton(0, "Sex", zealotWinRape);
+				addButton(0, "Sex", zealotWinRape).hint("Have your way with the defeated zealot. Teach him a good lesson that he won't forget!");
 				
 				if (player.hasVagina() && player.biggestTitSize() >= 4 && player.armorName == "lusty maiden's armor")
-					addButton(1, "B.Titfuck", (player.armor as LustyMaidensArmor).lustyMaidenPaizuri, player, monster);
+					addButton(1, "B.Titfuck", (player.armor as LustyMaidensArmor).lustyMaidenPaizuri, player, monster).hint("Take advantage of the properties of your special armour and get the spider-morph to give you a good titfuck.", "Bikini Titfuck/Paizuri");
 			}
 			
 			addButton(14, "Leave", combat.cleanupAfterCombat);

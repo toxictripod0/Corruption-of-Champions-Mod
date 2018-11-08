@@ -137,11 +137,11 @@ package classes.Scenes.Areas.Lake
 			
 			if (player.lust >= 33 && !player.isGenderless()) {
 				outputText("  You realize she'd make a perfect receptacle for your lusts.  Do you have your way with her?");
-				kGAMECLASS.output.addButton(0, "Sex", game.lake.fetishCultistScene.playerRapesCultist);
+				kGAMECLASS.output.addButton(0, "Sex", game.lake.fetishCultistScene.playerRapesCultist).hint("Have your way with the defeated cultist. She might be full of surprises!");
 			}
 			
 			if (player.hasStatusEffect(StatusEffects.Feeder) || player.lactationQ() >= 500) {
-				kGAMECLASS.output.addButton(1, "B. Feed", game.lake.fetishCultistScene.fetishCultistHasAMilkFetish);
+				kGAMECLASS.output.addButton(1, "B. Feed", game.lake.fetishCultistScene.fetishCultistHasAMilkFetish).hint("You could empty your milk-filled breasts. Maybe she will enjoy the taste of your milk?", "Breastfeed");
 			}
 		
 			kGAMECLASS.output.addButton(14, "Leave", game.combat.cleanupAfterCombat);
