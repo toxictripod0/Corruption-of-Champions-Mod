@@ -730,17 +730,17 @@ internal function nagaRapeChoice():void {
 	if (player.lust >= 33) {
 		outputText("Your body aches for further satisfaction - do you rape the snake woman?");
 		if (player.hasCock())
-			addButton(0, "Male Rape", nagaVictoryMale);
+			addButton(0, "Male Rape", nagaVictoryMale).hint("Ravage the naga vaginally.");
 		if (player.hasVagina())
-			addButton(1, "Female Rape", nagaVictoryFemale);
+			addButton(1, "Female Rape", nagaVictoryFemale).hint("Get on some girl-on-girl action. Sit on her face and give her pussy some pleasuring.");
 		if (player.isGenderless())
-			addButton(2, "Genderless", nagaVictoryGenderless);
+			addButton(2, "Genderless", nagaVictoryGenderless).hint("You could find a way to get some pleasure even though you're devoid of sexes.");
 		if (player.lowerBody.type == LowerBody.GOO)
-			addButton(3, "Gooey Rape", gooNagaRape);
+			addButton(3, "Gooey Rape", gooNagaRape).hint("You could use your gooey form to fill her vaginally.");
 	}
 	
-	if (player.canOvipositSpider()) addButton(4, "Lay Eggs", eggUpANagaSpiderLike);
-	if (player.canOvipositBee() && !player.isGenderless())  addButton(4, "Lay Eggs", beePositANagaPlease);
+	if (player.canOvipositSpider()) addButton(4, "Lay Eggs", eggUpANagaSpiderLike).hint("Use your spider ovipositor to lay eggs inside her.");
+	if (player.canOvipositBee() && !player.isGenderless())  addButton(4, "Lay Eggs", beePositANagaPlease).hint("Use your bee ovipositor to lay eggs inside her.");
 	
 	addButton(14, "Leave", combat.cleanupAfterCombat);
 }
