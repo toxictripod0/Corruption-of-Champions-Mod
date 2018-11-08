@@ -78,6 +78,7 @@ package classes.Items
 			else if (verb == "smash") desc += "(Blunt)";
 			//Attack
 			desc += "\nAttack: " + String(attack);
+			desc += appendStatsDifference(attack - (game.player.weapon.attack));
 			//Value
 			desc += "\nBase value: " + String(value);
 			return desc;
