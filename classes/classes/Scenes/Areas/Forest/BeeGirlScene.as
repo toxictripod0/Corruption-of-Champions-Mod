@@ -62,8 +62,7 @@ package classes.Scenes.Areas.Forest
 				outputText("You suddenly remember a passage from the Traveler's Guide about monstrous bees that lay eggs in unmentionable places.  Of course, a brave champion would face any danger.\n\n<b>Do you proceed?</b>");
 				//Yes goes to beeEncounterLevel2(), no goes to camp
 				menu();
-				addButton(0, "Yes", beeEncounterSelect);
-				addButton(14, "Back", camp.returnToCampUseOneHour);
+				doYesNo(beeEncounterSelect, camp.returnToCampUseOneHour);
 			}
 			//If not smart enough, proceed.
 			else beeEncounterSelect(false);
@@ -117,9 +116,9 @@ package classes.Scenes.Areas.Forest
 						if ((player.lib100 + player.corAdjustedDown() < 140) || rand(2) == 0) {
 							outputText("You barely stop yourself from gleefully throwing yourself into her arms.  You realize the harmonic buzzing of her wings and the unearthly scent of her honey briefly robbed you of your reason.  Feeling momentarily more clear-headed, what do you do?");
 							menu();
-							addButton(0, "Fight", fightTheBeeGirl);
-							addButton(1, "Talk", beeTalk);
-							addButton(14, "Leave", camp.returnToCampUseOneHour);
+							addButton(0, "Fight", fightTheBeeGirl).hint("No, the bee-girl is not going to take you today!");
+							addButton(1, "Talk", beeTalk).hint("Try to talk to the bee-girl. What could go wrong in the entirety of Mareth?");
+							addButton(4, "Leave", camp.returnToCampUseOneHour);
 						}
 						else beeEncounterClassic(false);
 				}
@@ -138,9 +137,9 @@ package classes.Scenes.Areas.Forest
 				unlockCodexEntry("Giant Bees", kFLAGS.CODEX_ENTRY_GIANTBEES);
 				outputText("\n\nYou just barely hold yourself back and shake your head to clear the smell and buzzing from your mind.  Something about your " + (isBeeMorph ? "new bee body seems to have drawn" : "massive member has attracted") + " her attention, and she is staring at your crotch in anticipation.  You steady yourself and decide what you should do next.");
 				menu();
-				addButton(0, "Fight", fightTheBeeGirl);
-				addButton(1, "Sex", beeSexForCocks);
-				addButton(14, "Leave", camp.returnToCampUseOneHour);
+				addButton(0, "Fight", fightTheBeeGirl).hint("No, the bee-girl is not going to take you today!");
+				addButton(1, "Sex", beeSexForCocks).hint("Try to talk to the bee-girl. What could go wrong in the entirety of Mareth?");
+				addButton(4, "Leave", camp.returnToCampUseOneHour);
 			}
 			else beeSexForCocks(false);
 		}
@@ -155,9 +154,9 @@ package classes.Scenes.Areas.Forest
 			else outputText("You grin at the thought, it would certainly be fun fucking her, but maybe it would be even more fun to force yourself on her?");
 			outputText("  What will you do?");
 			menu();
-			addButton(0, "Fight", fightTheBeeGirl);
-			addButton(1, "Play", beeMaidenPlay);
-			addButton(14, "Leave", beeEncounterAsBeeMorphFemaleLeave);
+			addButton(0, "Fight", fightTheBeeGirl).hint("No, the bee-girl is not going to take you today!");
+			addButton(1, "Play", beeMaidenPlay).hint("Sure, that could be so fun! Take up the offer and engage in some bee play.");
+			addButton(4, "Leave", beeEncounterAsBeeMorphFemaleLeave);
 		}
 		
 		private function beeEncounterAsBeeMorphFemaleLeave():void {
@@ -170,9 +169,9 @@ package classes.Scenes.Areas.Forest
 			outputText(" in the light.\n\n");
 			outputText("Her face breaks into a smile at the sight of you.  Her buzzing dies down and you notice that the mind numbing smell in the glade isn’t as strong as you were last here.  The handmaiden turns to the side and shows you that her bee abdomen is quite slender today; it doesn’t look like she has any eggs this time.  <i>“Zzzo, the queen hazzz zzzaid that we can try a little experiment with you, if thingzzz work out, maybe we won’t use zzzo much buzzzing and honey.”</i>  She giggles, <i>“Firzzzt time, no eggzzz, zzzo you don’t have to worry.  Are you ready to have zzzome fun?”</i>");
 			menu();
-			addButton(0, "Fight", fightTheBeeGirl);
-			addButton(1, "Have Sex", beeEncounterAfraidFirstTimeSex);
-			addButton(14, "Leave", camp.returnToCampUseOneHour);
+			addButton(0, "Fight", fightTheBeeGirl).hint("No, the bee-girl is not going to take you today!");
+			addButton(1, "Have Sex", beeEncounterAfraidFirstTimeSex).hint("You could take up the offer on sex now that she won't lay her eggs into you.");
+			addButton(4, "Leave", camp.returnToCampUseOneHour);
 		}
 		
 		private function beeEncounterAfraidFirstTimeSex():void {
@@ -216,9 +215,9 @@ package classes.Scenes.Areas.Forest
 			outputText(" in the light.\n\n");
 			outputText("Her face breaks into a smile at the sight of you and her buzzing dies down.  Once again, the smell in the grove is much weaker than it was when you first came to this grove.  Those same flowers have been scattered around to ease off on the scent’s mind affecting powers.  She turns to the side to give you a full view of her now swollen abdomen and gives it a gentle pat.  <i>“Are you ready to carry zzzome eggzzz now?  I won’t hurt you, and I promizzzizz I won’t uzzze my buzzzing and honey to make you do it.  Thezzze where zzzaved zzzpecially for you, and I’ve got a little gift for you too if you zzzay yezzz.  Are you up for a little zzzex and eggzzz up your butt?”</i>");
 			menu();
-			addButton(0, "Fight", fightTheBeeGirl);
-			addButton(1, "Have Sex", beeEncounterAfraidRepeatSex);
-			addButton(14, "Leave", camp.returnToCampUseOneHour);
+			addButton(0, "Fight", fightTheBeeGirl).hint("No, the bee-girl is not going to take you today!");
+			addButton(1, "Have Sex", beeEncounterAfraidRepeatSex).hint("You could take up the offer on sex now that she won't lay her eggs into you.");
+			addButton(4, "Leave", camp.returnToCampUseOneHour);
 		}
 		
 		private function beeEncounterAfraidRepeatSex():void {
@@ -278,17 +277,17 @@ package classes.Scenes.Areas.Forest
 			outputText(" in the light.\n\n");
 			outputText("Her face breaks into a frown at the sight of you.  At once her buzzing stops and she looks at you and says <i>“Oh, it’zzz you again, juzzzt go away; I need to find zzzomeone that actually will carry my queen’zzz eggzzz.”</i>  Your mind is pulled from its stupor, as she directs you out of the clearing with a dismissive look.");
 			menu();
-			addButton(0, "Fight", fightTheBeeGirl);
-			addButton(14, "Leave", camp.returnToCampUseOneHour);
+			addButton(0, "Fight", fightTheBeeGirl).hint("You could fight the bee-girl but why would you hurt her? She doesn't seem that interested in you. What do you want? Get some chitin so you can make some armour?");
+			addButton(4, "Leave", camp.returnToCampUseOneHour);
 		}
 		
 		private function beeEncounterDuty():void {
 			outputText(" in the light.\n\n");
 			outputText("Her face breaks into a smile and her buzzing dies down.  You shake your head slightly to clear away the effect that you were under and look back at the smiling bee girl.");
 			menu();
-			addButton(0, "Fight", fightTheBeeGirl);
-			addButton(1, "Talk", beeEncounterDutyTalk);
-			addButton(14, "Leave", camp.returnToCampUseOneHour);
+			addButton(0, "Fight", fightTheBeeGirl).hint("You could engage in a battle against the bee-girl but for what purpose? Gathering bee chitin for armour?");
+			addButton(1, "Talk", beeEncounterDutyTalk).hint("See if the bee-girl is up for talking.");
+			addButton(4, "Leave", camp.returnToCampUseOneHour);
 		}
 		
 		private function beeEncounterDutyTalk():void {
@@ -313,8 +312,8 @@ package classes.Scenes.Areas.Forest
 			outputText("Her mouth opens wide in panic as she catches sight of you.  She drops the flower and starts to draw back yelling <i>“Pleazzze don't hurt me again!  I won't try to lay eggzzz in you any more, just let me go!”</i>\n\n");
 			outputText("What will you do with her?");
 			menu();
-			addButton(0, "Fight", fightTheBeeGirl);
-			addButton(14, "Leave", camp.returnToCampUseOneHour);
+			addButton(0, "Fight", fightTheBeeGirl).hint("You could fight the bee-girl but why would you hurt her? She already fears you. What do you want? Get some chitin so you can make some armour? You cruel monster.");
+			addButton(4, "Leave", camp.returnToCampUseOneHour);
 		}
 		
 		private function beeEncounterSheDesiresYou():void {
@@ -322,8 +321,8 @@ package classes.Scenes.Areas.Forest
 			outputText("Her mouth opens wide in panic as she catches sight of you.  She drops the flower and starts to draw back yelling <i>“No!  I won't give in to the dezzzire!  Go away!”</i>\n\n");
 			outputText("What will you do with her?");
 			menu();
-			addButton(0, "Fight", fightTheBeeGirl);
-			addButton(14, "Leave", camp.returnToCampUseOneHour);
+			addButton(0, "Fight", fightTheBeeGirl).hint("You could fight the bee-girl but why would you hurt her? She already fears you. What do you want? Get some chitin so you can make some armour? You cruel monster.");
+			addButton(4, "Leave", camp.returnToCampUseOneHour);
 		}
 		
 		private function beeEncounterSheBeatsYouRegularly():void {
@@ -332,9 +331,9 @@ package classes.Scenes.Areas.Forest
 			if ((player.lib100 + player.corAdjustedDown() < 70) || rand(4) == 0) { //Chance to avoid raaaaeeeeep
 				outputText("With great difficulty you manage to stop yourself from throwing yourself into her arms.  Losing to this girl isn’t helping you resist her charms at all.  You’re finding It harder and harder to fight the call of her incredible song and unnatural scent, it may be wise to run now; but what will you do now that you have your senses again?");
 				menu();
-				addButton(0, "Fight", fightTheBeeGirl);
-				addButton(1, "Talk", beeEncounterSheBeatsYouRegularlyTalk);
-				addButton(14, "Leave", camp.returnToCampUseOneHour);
+				addButton(0, "Fight", fightTheBeeGirl).hint("No, the bee-girl is not going to take you today!");
+				addButton(1, "Talk", beeEncounterSheBeatsYouRegularlyTalk).hint("See if the bee-girl is up for talking.");
+				addButton(4, "Leave", camp.returnToCampUseOneHour);
 			}
 			else {
 				outputText("Unable to control yourself in her presence, you throw yourself into her arms and she lifts you up a little into the air before setting you face down onto the flower and landing on your back.  <i>“That’zzz the way it should be, it’zzz zzzo much easier when you juzzzt let go.  Are you ready?”</i>");
@@ -845,10 +844,10 @@ package classes.Scenes.Areas.Forest
 					outputText("You stop for a moment and wonder exactly why you’ve refused her up until now.  Is it because you are afraid of her and the effect she has on your mind?  Is it because the idea of her eggs inside you is disgusting?  Is it because of your duty as a champion?  Or are you just going to leave her there wondering?");
 					dynStats("lus", 5 + player.lib / 25);
 					menu();
-					addButton(0, "Afraid", beeEncounterRefusedHerEggsAfraid);
-					addButton(1, "Disgusted", beeEncounterRefusedHerEggsDisgusted);
-					addButton(2, "Duty", beeEncounterRefusedHerEggsDuty);
-					addButton(14, "Leave", beeEncounterRefusedHerEggsLeave);
+					addButton(0, "Afraid", beeEncounterRefusedHerEggsAfraid).hint("You have the fear of eggs being put inside you. The mere thoughts of eggs hatching inside you and seeing all those bees crawl out of you make you shiver with fear.");
+					addButton(1, "Disgusted", beeEncounterRefusedHerEggsDisgusted).hint("The thought of eggs disgust you, you do not want any more of those offers.");
+					addButton(2, "Duty", beeEncounterRefusedHerEggsDuty).hint("You have a duty as a Champion and you cannot give it up.");
+					addButton(4, "Leave", beeEncounterRefusedHerEggsLeave).hint("Screw it, you're outta here!");
 					return;
 				case BEE_GIRL_TALKED_AND_LEFT:
 					attitude = BEE_GIRL_TALKED_AND_LEFT_TWICE; //Same text as for first time you talked and left, just update attitude
@@ -1385,33 +1384,33 @@ package classes.Scenes.Areas.Forest
 			addDisabledButton(8, "LayYourEggs", "This scene requires you to have spider ovipositor and fangs.", "Lay Your Eggs");
 			
 			if (player.hasCock()) {
-				addButton(0, "Use Cock", rapeTheBeeGirlWithADick, undefined, undefined, undefined, "You could fuck her with " + player.oMultiCockDesc() + ".", "Use Cock");
+				addButton(0, "Use Cock", rapeTheBeeGirlWithADick).hint("You could fuck her with " + player.oMultiCockDesc() + ".", "Use Cock");
 			}
 			if (player.cockTotal() > 1) {
-				addButton(1, "Use Cocks", rapeTheBeeMultiCockStuff, undefined, undefined, undefined, "You could use more than one of your " + player.multiCockDescriptLight() + " on her.", "Use Cocks");
+				addButton(1, "Use Cocks", rapeTheBeeMultiCockStuff).hint("You could use more than one of your " + player.multiCockDescriptLight() + " on her.", "Use Cocks");
 			}
 			if (player.hasVagina()) {
-				addButton(2, "Use Vagina", rapeABeeGirlWithYourVagina, undefined, undefined, undefined, "You could make her get off your " + player.vaginaDescript() + ".", "Use Vagina");
+				addButton(2, "Use Vagina", rapeABeeGirlWithYourVagina).hint("You could make her get off your " + player.vaginaDescript() + ".", "Use Vagina");
 			}
 			if (player.isHerm()) {
-				addButton(3, "Herm Style", futaRapesBeeGirl, undefined, undefined, undefined, "You could try to please both your 'male' and 'female' halves on the bee.", "Herm Style");
+				addButton(3, "Herm Style", futaRapesBeeGirl).hint("You could try to please both your 'male' and 'female' halves on the bee.", "Herm Style");
 			}
 			if (player.hasKeyItem("Deluxe Dildo") >= 0) {
-				addButton(4, "Dildo Rape", beeGirlsGetsDildoed, undefined, undefined, undefined, "You could play with your toy.", "Dildo Rape");
+				addButton(4, "Dildo Rape", beeGirlsGetsDildoed).hint("You could play with your toy.", "Dildo Rape");
 			}
 			if (player.hasStatusEffect(StatusEffects.Feeder) || player.lactationQ() >= 500) {
-				addButton(5, "B. Feed", milkAndHoneyAreKindaFunny, undefined, undefined, undefined, "You could have some relief.", "Breastfeed");
+				addButton(5, "B. Feed", milkAndHoneyAreKindaFunny).hint("You could have some relief.", "Breastfeed");
 			}
 			if (player.isNaga() && player.face.type == Face.SNAKE_FANGS) {
-				addButton(6, "Naga", corruptNagaBitchesRapeABee, undefined, undefined, undefined, "You could focus on your snakelike, 'naga' attributes.", "Naga");
+				addButton(6, "Naga", corruptNagaBitchesRapeABee).hint("You could focus on your snakelike, 'naga' attributes.", "Naga");
 			}
 			if ((player.isCorruptEnough(75) || player.findPerk(PerkLib.Pervert) >= 0 || player.findPerk(PerkLib.Sadist) >= 0)
 					&& player.str >= 60
 					&& (player.tongue.type == Tongue.SNAKE || player.hasCock() || player.hasVagina() || player.biggestTitSize() >= 4)) {
-				addButton(7, "Self-Egg", beeGirlRapeForTheDistinguishedGentleman, undefined, undefined, undefined, "You could play with her a bit and try to make her lay eggs into herself.", "Self-Egg");
+				addButton(7, "Self-Egg", beeGirlRapeForTheDistinguishedGentleman).hint("You could play with her a bit and try to make her lay eggs into herself.", "Self-Egg");
 			}
 			if (player.canOvipositSpider() && (player.face.type == Face.SNAKE_FANGS || player.face.type == Face.SPIDER_FANGS)) {
-				addButton(8, "LayYourEggs", layEggsInABeeSpiderLike, undefined, undefined, undefined, "You could dose her with venom and lay YOUR eggs in her.", "Lay Your Eggs");
+				addButton(8, "LayYourEggs", layEggsInABeeSpiderLike).hint("You could dose her with venom and lay YOUR eggs in her.", "Lay Your Eggs");
 			}
 			
 			addButton(14, "Leave", leaveAfterDefeating, hpVictory);
