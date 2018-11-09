@@ -462,6 +462,17 @@ package classes{
 			
 			assertThat(kGAMECLASS.player.gems, equalTo(0));
 		}
+		
+		[Test]
+		public function loadPlayerNipplelengthUndefined():void
+		{
+			kGAMECLASS.player.nippleLength = undefined;
+			
+			cut.saveGame(TEST_SAVE_GAME);
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.nippleLength, equalTo(0.25));
+		}
 	}
 }
 

@@ -4264,6 +4264,7 @@ package classes
 			SerializationUtils.serialize(relativeRootObject.ass, this.ass);
 			
 			serializeStats(relativeRootObject);
+			serializeSexualStats(relativeRootObject);
 		}
 		
 		private function serializeStats(relativeRootObject:*):void
@@ -4288,6 +4289,17 @@ package classes
 			relativeRootObject.tallness = this.tallness
 		}
 		
+		private function serializeSexualStats(relativeRootObject:*):void
+		{
+			relativeRootObject.balls = this.balls;
+			relativeRootObject.cumMultiplier = this.cumMultiplier;
+			relativeRootObject.ballSize = this.ballSize;
+			relativeRootObject.hoursSinceCum = this.hoursSinceCum;
+			relativeRootObject.ballSize = this.ballSize;
+			relativeRootObject.fertility = this.fertility;
+			relativeRootObject.nippleLength = this.nippleLength;
+		}
+		
 		public function deserialize(relativeRootObject:*):void 
 		{
 			this.short = relativeRootObject.short;
@@ -4298,6 +4310,7 @@ package classes
 			SerializationUtils.deserializeVector(this.breastRows as Vector.<*>, relativeRootObject.breastRows, BreastRow);
 			SerializationUtils.deserialize(relativeRootObject.ass, this.ass);
 			deserializeStats(relativeRootObject);
+			deserializeSexualStats(relativeRootObject);
 		}
 		
 		private function deserializeStats(relativeRootObject:*):void
@@ -4326,6 +4339,19 @@ package classes
 			fixMissingFemininity();
 		}
 		
+		private function deserializeSexualStats(relativeRootObject:*):void
+		{
+			this.balls = relativeRootObject.balls;
+			this.cumMultiplier = relativeRootObject.cumMultiplier;
+			this.ballSize = relativeRootObject.ballSize;
+			this.hoursSinceCum = relativeRootObject.hoursSinceCum;
+			this.ballSize = relativeRootObject.ballSize;
+			this.fertility = relativeRootObject.fertility;
+			this.nippleLength = relativeRootObject.nippleLength;
+			
+			fixMissingNippleLength();
+		}
+		
 		private function fixInvalidGems():void
 		{
 			// TODO move this to upgrade code
@@ -4339,6 +4365,14 @@ package classes
 			// TODO move this to upgrade code
 			if (isNaN(this.femininity)) {
 				this.femininity = 50;
+			}
+		}
+		
+		private function fixMissingNippleLength():void
+		{
+			// TODO move this to upgrade code
+			if (isNaN(this.nippleLength)) {
+				this.nippleLength = 0.25;
 			}
 		}
 		
@@ -4356,3 +4390,4 @@ package classes
 		}
 	}
 }
+

@@ -41,6 +41,13 @@ package classes{
 		
 		private static const FEMININITY:int = 11;
 		private static const TALLNESS:int = 12;
+		
+		private static const BALLS:int = 13;
+		private static const CUMMULTIPLIER:int = 14;
+		private static const BALLSIZE:int = 15;
+		private static const HOURSSINCECUM:int = 16;
+		private static const FERTILITY:int = 17;
+		private static const NIPPLE_LENGTH:int = 18;
 			
 		private var cut:Creature;
 		private var noVagina:Creature;
@@ -101,6 +108,13 @@ package classes{
 			cut.lust = LUST;
 			cut.femininity = FEMININITY;
 			cut.tallness = TALLNESS;
+			
+			cut.balls = BALLS;
+			cut.cumMultiplier = CUMMULTIPLIER;
+			cut.ballSize = BALLSIZE;
+			cut.hoursSinceCum = HOURSSINCECUM;
+			cut.fertility = FERTILITY;
+			cut.nippleLength = NIPPLE_LENGTH;
 			
 			deserialized = new Creature();
 			serializedClass = [];
@@ -911,6 +925,89 @@ package classes{
 		public function deserializeTallness():void
 		{
 			assertThat(deserialized.tallness, equalTo(TALLNESS));
+		}
+		
+		[Test]
+		public function serializeBalls():void
+		{
+			assertThat(serializedClass, hasProperty("balls", BALLS));
+		}
+
+		[Test]
+		public function serializeCummultiplier():void
+		{
+			assertThat(serializedClass, hasProperty("cumMultiplier", CUMMULTIPLIER));
+		}
+
+		[Test]
+		public function serializeBallsize():void
+		{
+			assertThat(serializedClass, hasProperty("ballSize", BALLSIZE));
+		}
+
+		[Test]
+		public function serializeHourssincecum():void
+		{
+			assertThat(serializedClass, hasProperty("hoursSinceCum", HOURSSINCECUM));
+		}
+
+		[Test]
+		public function serializeFertility():void
+		{
+			assertThat(serializedClass, hasProperty("fertility", FERTILITY));
+		}
+
+		[Test]
+		public function deserializeBalls():void
+		{
+			assertThat(deserialized.balls, equalTo(BALLS));
+		}
+
+		[Test]
+		public function deserializeCummultiplier():void
+		{
+			assertThat(deserialized.cumMultiplier, equalTo(CUMMULTIPLIER));
+		}
+
+		[Test]
+		public function deserializeBallsize():void
+		{
+			assertThat(deserialized.ballSize, equalTo(BALLSIZE));
+		}
+
+		[Test]
+		public function deserializeHourssincecum():void
+		{
+			assertThat(deserialized.hoursSinceCum, equalTo(HOURSSINCECUM));
+		}
+
+		[Test]
+		public function deserializeFertility():void
+		{
+			assertThat(deserialized.fertility, equalTo(FERTILITY));
+		}
+		
+		[Test]
+		public function serializeNippleLength():void
+		{
+			assertThat(serializedClass, hasProperty("nippleLength", NIPPLE_LENGTH));
+		}
+		
+		[Test]
+		public function deserializeNippleLength():void
+		{
+			assertThat(deserialized.nippleLength, equalTo(NIPPLE_LENGTH));
+		}
+		
+		[Test]
+		public function deserializeNippleLengthUndefined():void
+		{
+			delete(serializedClass.nippleLength);
+			deserialized = new Creature();
+			
+			SerializationUtils.deserialize(serializedClass, deserialized);
+			
+			assertThat(deserialized.nippleLength, equalTo(0.25));
 		}
 	}
 }

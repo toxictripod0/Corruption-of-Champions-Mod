@@ -927,12 +927,6 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile.data.hipRating = player.hips.rating;
 		saveFile.data.buttRating = player.butt.rating;
 		saveFile.data.udder = player.udder.toObject();
-		//Sexual Stuff
-		saveFile.data.balls = player.balls;
-		saveFile.data.cumMultiplier = player.cumMultiplier;
-		saveFile.data.ballSize = player.ballSize;
-		saveFile.data.hoursSinceCum = player.hoursSinceCum;
-		saveFile.data.fertility = player.fertility;
 		
 		//Preggo stuff
 		saveFile.data.pregnancyIncubation = player.pregnancyIncubation;
@@ -946,16 +940,11 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		   myLocalData.data.girlEffectArray.push(new Array());
 		 }*/
 
-		
-		
 		saveFile.data.perks = [];
 		saveFile.data.statusAffects = [];
 		saveFile.data.keyItems = [];
 		saveFile.data.itemStorage = [];
 		saveFile.data.gearStorage = [];
-		
-		//NIPPLES
-		saveFile.data.nippleLength = player.nippleLength;
 		
 		//Set Perk Array
 		//Populate Perk Array
@@ -1852,22 +1841,9 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
         if (isObject(saveFile.data.udder))
 			player.udder.setAllProps(saveFile.data.udder);
 
-		//Sexual Stuff
-		player.balls = saveFile.data.balls;
-		player.cumMultiplier = saveFile.data.cumMultiplier;
-		player.ballSize = saveFile.data.ballSize;
-		player.hoursSinceCum = saveFile.data.hoursSinceCum;
-		player.fertility = saveFile.data.fertility;
-		
 		//Preggo stuff
 		player.knockUpForce(saveFile.data.pregnancyType, saveFile.data.pregnancyIncubation);
 		player.buttKnockUpForce(saveFile.data.buttPregnancyType, saveFile.data.buttPregnancyIncubation);
-		
-		//NIPPLES
-		if (saveFile.data.nippleLength == undefined)
-			player.nippleLength = .25;
-		else
-			player.nippleLength = saveFile.data.nippleLength;
 		
 		var hasHistoryPerk:Boolean = false;
 		var hasLustyRegenPerk:Boolean = false;
