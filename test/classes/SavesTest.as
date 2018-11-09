@@ -45,6 +45,8 @@ package classes{
 		private static const PLAYER_SENS:int = 47;
 		private static const PLAYER_COR:int = 48;
 		private static const PLAYER_FATIGUE:int = 49;
+		
+		private static const PLAYER_XP:int = 7;
 
 		private var player:Player;
 		private var cut:SavesForTest;
@@ -126,6 +128,8 @@ package classes{
 			player.sens = PLAYER_SENS;
 			player.cor = PLAYER_COR;
 			player.fatigue = PLAYER_FATIGUE;
+			
+			player.XP = PLAYER_XP;
 		}
 		
 		private function buildDummySaveForJojoTest():void
@@ -427,6 +431,36 @@ package classes{
 			cut.loadGame(TEST_SAVE_GAME);
 			
 			assertThat(kGAMECLASS.player.fatigue, equalTo(PLAYER_FATIGUE));
+		}
+		
+		[Test]
+		public function playerXPLoaded():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.XP, equalTo(PLAYER_XP));
+		}
+		
+		[Test]
+		public function undefinedGemsShouldBeZero():void
+		{
+			kGAMECLASS.player.gems = undefined;
+			
+			cut.saveGame(TEST_SAVE_GAME);
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.gems, equalTo(0));
+		}
+		
+		[Test]
+		public function negativeGemsShouldBeZero():void
+		{
+			kGAMECLASS.player.gems = -10;
+			
+			cut.saveGame(TEST_SAVE_GAME);
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.gems, equalTo(0));
 		}
 	}
 }

@@ -7,6 +7,7 @@ package classes{
 	import classes.helper.StageLocator;
 	import classes.internals.RandomNumberGenerator;
 	import classes.internals.ActionScriptRNG;
+	import classes.internals.SerializationUtils;
 	import classes.lists.Gender;
 	import classes.lists.BreastCup;
 	import org.flexunit.asserts.*;
@@ -31,12 +32,25 @@ package classes{
 		private const ANAL_LOOSENESS:Number = 1;
 		private const ANAL_CAPACITY:Number = 6;
 		
-        	private var cut:Creature;
+		private static const MAX_HP:Number = 370;
+		
+		private static const XP:int = 7;
+		private static const LEVEL:int = 8;
+		private static const GEMS:int = 9;
+		private static const LUST:int = 10;
+		
+		private static const FEMININITY:int = 11;
+		private static const TALLNESS:int = 12;
+			
+		private var cut:Creature;
 		private var noVagina:Creature;
 		private var oneVagina:Creature;
 		private var maxVagina:Creature;
 		private var fullEquip:Creature;
 		private var alwaysZero:RandomNumberGenerator;
+		
+		private var deserialized: Creature;
+		private var serializedClass: *;
 		
 		private function createVaginas(numberOfVaginas:Number, instance:Creature):void {
 			var i:Number;
@@ -81,6 +95,18 @@ package classes{
 			cut.ass.analLooseness = ANAL_LOOSENESS;
 						cut.tou = 100;
 			cut.HP = 1;
+			cut.XP = XP;
+			cut.level = LEVEL;
+			cut.gems = GEMS;
+			cut.lust = LUST;
+			cut.femininity = FEMININITY;
+			cut.tallness = TALLNESS;
+			
+			deserialized = new Creature();
+			serializedClass = [];
+
+			SerializationUtils.serialize(serializedClass, cut);
+			SerializationUtils.deserialize(serializedClass, deserialized);
 			
 			noVagina = new Creature();
 			
@@ -664,7 +690,7 @@ package classes{
 		public function healToMaxHP():void {
 			cut.restoreHP();
 
-			assertThat(cut.HP, equalTo(250));
+			assertThat(cut.HP, equalTo(MAX_HP));
 		}
 
 		[Test]
@@ -680,7 +706,7 @@ package classes{
 			
 			cut.restoreHP();
 
-			assertThat(cut.HP, equalTo(250));
+			assertThat(cut.HP, equalTo(MAX_HP));
 		}
 		
 		[Test(expected="RangeError")]
@@ -802,6 +828,89 @@ package classes{
 			createCocks(CockTypesEnum.HUMAN, 2, cut);
 			
 			assertThat(cut.findFirstCockType(CockTypesEnum.HORSE), equalTo(-1));
+		}
+
+		[Test]
+		public function serializeLevel():void
+		{
+			assertThat(serializedClass, hasProperty("level", LEVEL));
+		}
+
+		[Test]
+		public function serializeGems():void
+		{
+			assertThat(serializedClass, hasProperty("gems", GEMS));
+		}
+
+		[Test]
+		public function deserializeXp():void
+		{
+			assertThat(deserialized.XP, equalTo(XP));
+		}
+
+		[Test]
+		public function deserializeLevel():void
+		{
+			assertThat(deserialized.level, equalTo(LEVEL));
+		}
+
+		[Test]
+		public function deserializeGems():void
+		{
+			assertThat(deserialized.gems, equalTo(GEMS));
+		}
+
+		[Test]
+		public function serializeXp():void
+		{
+			assertThat(serializedClass, hasProperty("XP", XP));
+		}
+
+		[Test]
+		public function serializeLust():void
+		{
+			assertThat(serializedClass, hasProperty("lust", LUST));
+		}
+
+		[Test]
+		public function deserializeLust():void
+		{
+			assertThat(deserialized.lust, equalTo(LUST));
+		}
+		
+		[Test]
+		public function serializeFemininity():void
+		{
+			assertThat(serializedClass, hasProperty("femininity", FEMININITY));
+		}
+
+		[Test]
+		public function serializeTallness():void
+		{
+			assertThat(serializedClass, hasProperty("tallness", TALLNESS));
+		}
+
+		[Test]
+		public function deserializeFemininity():void
+		{
+			assertThat(deserialized.femininity, equalTo(FEMININITY));
+		}
+		
+		[Test]
+		public function deserializeFemininityUndefined():void
+		{
+			delete(serializedClass.femininity);
+			deserialized = new Creature();
+			
+			SerializationUtils.deserialize(serializedClass, deserialized);
+			
+			assertThat(deserialized.femininity, equalTo(50));
+		}
+
+		[Test]
+		public function deserializeTallness():void
+		{
+			assertThat(deserialized.tallness, equalTo(TALLNESS));
 		}
 	}
 }

@@ -4276,6 +4276,16 @@ package classes
 			relativeRootObject.sens = this.sens;
 			relativeRootObject.cor = this.cor;
 			relativeRootObject.fatigue = this.fatigue;
+			
+			relativeRootObject.XP = this.XP;
+			relativeRootObject.level = this.level;
+			relativeRootObject.gems = this.gems;
+			
+			relativeRootObject.HP = this.HP;
+			relativeRootObject.lust = this.lust;
+			
+			relativeRootObject.femininity = this.femininity;
+			relativeRootObject.tallness = this.tallness
 		}
 		
 		public function deserialize(relativeRootObject:*):void 
@@ -4300,6 +4310,36 @@ package classes
 			this.sens = relativeRootObject.sens;
 			this.cor = relativeRootObject.cor;
 			this.fatigue = relativeRootObject.fatigue;
+			
+			this.XP = relativeRootObject.XP
+			this.level = relativeRootObject.level;
+			this.gems = relativeRootObject.gems;
+			
+			fixInvalidGems();
+			
+			this.HP = relativeRootObject.HP
+			this.lust = relativeRootObject.lust;
+
+			this.femininity = relativeRootObject.femininity;
+			this.tallness = relativeRootObject.tallness;
+			
+			fixMissingFemininity();
+		}
+		
+		private function fixInvalidGems():void
+		{
+			// TODO move this to upgrade code
+			if (isNaN(this.gems) || this.gems < 0) {
+				this.gems = 0;
+			}
+		}
+		
+		private function fixMissingFemininity(): void
+		{
+			// TODO move this to upgrade code
+			if (isNaN(this.femininity)) {
+				this.femininity = 50;
+			}
 		}
 		
 		public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 

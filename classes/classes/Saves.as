@@ -868,8 +868,6 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile.data.nosePLong = player.nosePLong;
 
 		//Combat STATS
-		saveFile.data.HP = player.HP;
-		saveFile.data.lust = player.lust;
 		saveFile.data.teaseLevel = player.teaseLevel;
 		saveFile.data.teaseXP = player.teaseXP;
 		//Prison STATS
@@ -883,18 +881,13 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		//saveFile.data.prisonArmor = prison.prisonItemSlotArmor;
 		//saveFile.data.prisonWeapon = prison.prisonItemSlotWeapon;
 		//LEVEL STATS
-		saveFile.data.XP = player.XP;
-		saveFile.data.level = player.level;
-		saveFile.data.gems = player.gems;
 		saveFile.data.perkPoints = player.perkPoints;
 		saveFile.data.statPoints = player.statPoints;
 		saveFile.data.ascensionPerkPoints = player.ascensionPerkPoints;
 		//Appearance
 		saveFile.data.startingRace = player.startingRace;
-		saveFile.data.femininity = player.femininity;
 		saveFile.data.thickness = player.thickness;
 		saveFile.data.tone = player.tone;
-		saveFile.data.tallness = player.tallness;
 		saveFile.data.furColor = player.skin.furColor;
 		saveFile.data.hairColor = player.hair.color;
 		saveFile.data.hairType = player.hair.type;
@@ -1545,8 +1538,6 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		}
 
 		//Combat STATS
-		player.HP = saveFile.data.HP;
-		player.lust = saveFile.data.lust;
 		if (saveFile.data.teaseXP == undefined)
 			player.teaseXP = 0;
 		else
@@ -1612,10 +1603,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 				prison.prisonItemSlotWeapon = saveFile.data.prisonWeapon;
 			}
 		}*/
-		//LEVEL STATS
-		player.XP = saveFile.data.XP;
-		player.level = saveFile.data.level;
-		player.gems = saveFile.data.gems || 0;
+		
 		if (saveFile.data.perkPoints == undefined)
 			player.perkPoints = 0;
 		else
@@ -1634,10 +1622,6 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		//Appearance
 		if (saveFile.data.startingRace != undefined)
 			player.startingRace = saveFile.data.startingRace;
-		if (saveFile.data.femininity == undefined)
-			player.femininity = 50;
-		else
-			player.femininity = saveFile.data.femininity;
 		//EYES
 		if (saveFile.data.eyeType == undefined)
 			player.eyes.type = Eyes.HUMAN;
@@ -1662,7 +1646,6 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		else
 			player.thickness = saveFile.data.thickness;
 		
-		player.tallness = saveFile.data.tallness;
 		if (saveFile.data.furColor == undefined || saveFile.data.furColor == "no")
 			player.skin.furColor = saveFile.data.hairColor;
 		else
@@ -2300,8 +2283,6 @@ public function unFuckSave():void
 	if (isNaN(getGame().time.minutes)) getGame().time.minutes = 0;
 	if (isNaN(getGame().time.hours)) getGame().time.hours = 0;
 	if (isNaN(getGame().time.days)) getGame().time.days = 0;
-
-	if (player.gems < 0) player.gems = 0; //Force fix gems
 	
 	if (player.hasStatusEffect(StatusEffects.SlimeCraving) && player.statusEffectv4(StatusEffects.SlimeCraving) == 1) {
 		player.changeStatusValue(StatusEffects.SlimeCraving, 3, player.statusEffectv2(StatusEffects.SlimeCraving)); //Duplicate old combined strength/speed value
