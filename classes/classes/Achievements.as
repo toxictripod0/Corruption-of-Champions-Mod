@@ -72,7 +72,7 @@ package classes
 			addAchievement("Farmer", kACHIEVEMENTS.ZONE_FARMER, "Visit Whitney's farm 30 times.");
 			addAchievement("Sea-Legs", kACHIEVEMENTS.ZONE_SEA_LEGS, "Use the lake boat 15 times.");
 			
-			titleAchievementSection("Levels"); //8/10 achievements
+			titleAchievementSection("Levels"); //10 achievements
 			addAchievement("Level up!", kACHIEVEMENTS.LEVEL_LEVEL_UP, "Get to level 2.");
 			addAchievement("Novice", kACHIEVEMENTS.LEVEL_NOVICE, "Get to level 5.");
 			addAchievement("Apprentice", kACHIEVEMENTS.LEVEL_APPRENTICE, "Get to level 10.");
@@ -81,7 +81,8 @@ package classes
 			addAchievement("Master", kACHIEVEMENTS.LEVEL_MASTER, "Get to level 30.");
 			addAchievement("Grandmaster", kACHIEVEMENTS.LEVEL_GRANDMASTER, "Get to level 45.");
 			addAchievement("Illustrious", kACHIEVEMENTS.LEVEL_ILLUSTRIOUS, "Get to level 60.");
-			addAchievement("Are you a god?", kACHIEVEMENTS.LEVEL_ARE_YOU_A_GOD, "Get to level 100.", "Get to level 100. (Your powers would have surpassed Marae's by now.)", true);
+			addAchievement("Overlord", kACHIEVEMENTS.LEVEL_OVERLORD, "Get to level 90.");
+			addAchievement("Are you a god?", kACHIEVEMENTS.LEVEL_ARE_YOU_A_GOD, "Get to the level cap of 120.", "Get to the level cap of 120. (Your powers would have surpassed Marae's by now.)", true);
 			
 			titleAchievementSection("Population"); //10 achievements
 			addAchievement("My First Companion", kACHIEVEMENTS.POPULATION_FIRST, "Have a camp population of 2.");
@@ -228,6 +229,7 @@ package classes
 			addAchievement("Allahu Akbal", kACHIEVEMENTS.GENERAL_ALLAHU_AKBAL, "Submit to Akbal until you receive the associated perks.");
 			addAchievement("Dining In", kACHIEVEMENTS.GENERAL_DINING_IN, "Eat any food at The Black Cock.");
 			addAchievement("Prisoner", kACHIEVEMENTS.GENERAL_PRISONER, "Get captured and sent to the Prison.", "", true);
+			addAchievement("Jojo's Bizarre Adventure", kACHIEVEMENTS.GENERAL_JOJOS_BIZARRE_ADVENTURE, "Have Jojo in your camp, through either methods.");
 			
 			doNext(getGame().mainMenu.mainMenu);
 			addButton(1, "" + achievementsEarned + "/" + achievementsTotal + " earned", kGAMECLASS.doNothing).hint("This is how many achievements you have obtained in the game so far.", "Total Achievements Earned");

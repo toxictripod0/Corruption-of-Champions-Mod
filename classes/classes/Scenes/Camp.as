@@ -2444,7 +2444,8 @@ private function updateAchievements():void {
 	if (player.level >= 30) awardAchievement("Master", kACHIEVEMENTS.LEVEL_MASTER);
 	if (player.level >= 45) awardAchievement("Grandmaster", kACHIEVEMENTS.LEVEL_GRANDMASTER);
 	if (player.level >= 60) awardAchievement("Illustrious", kACHIEVEMENTS.LEVEL_ILLUSTRIOUS);
-	if (player.level >= 100) awardAchievement("Are you a god?", kACHIEVEMENTS.LEVEL_ARE_YOU_A_GOD);
+	if (player.level >= 90) awardAchievement("Overlord", kACHIEVEMENTS.LEVEL_OVERLORD);
+	if (player.level >= 120) awardAchievement("Are you a god?", kACHIEVEMENTS.LEVEL_ARE_YOU_A_GOD);
 	//Population
 	if (getCampPopulation() >= 2) awardAchievement("My First Companion", kACHIEVEMENTS.POPULATION_FIRST);
 	if (getCampPopulation() >= 5) awardAchievement("Hamlet", kACHIEVEMENTS.POPULATION_HAMLET);
@@ -2556,6 +2557,7 @@ private function updateAchievements():void {
 	if (flags[kFLAGS.CAMP_WALL_GATE] > 0) awardAchievement("Make Mareth Great Again", kACHIEVEMENTS.GENERAL_MAKE_MARETH_GREAT_AGAIN);
 	if (flags[kFLAGS.CAMP_WALL_STATUES] >= 100) awardAchievement("Terracotta Impy", kACHIEVEMENTS.GENERAL_TERRACOTTA_IMPY);
 	if (Math.ceil(player.tallness) >= 132) awardAchievement("Up to Eleven", kACHIEVEMENTS.GENERAL_UP_TO_11);
+	if (player.hasStatusEffect(StatusEffects.PureCampJojo)) awardAchievement("Up to Eleven", kACHIEVEMENTS.GENERAL_JOJOS_BIZARRE_ADVENTURE);
 	//Check how many NPCs are dedicked
 	var NPCsDedicked:int = 0;
 	if (flags[kFLAGS.IZMA_NO_COCK] > 0) NPCsDedicked++;

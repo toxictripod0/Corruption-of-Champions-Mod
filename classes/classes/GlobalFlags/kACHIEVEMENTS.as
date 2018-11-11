@@ -209,6 +209,7 @@ package classes.GlobalFlags
 		public static const GENERAL_HUNTER_IS_HUNTED:int		= 179; //Turn the tables on Erlking
 		public static const GENERAL_ALLAHU_AKBAL:int			= 180; //Get all the perks from Akbal.
 		public static const GENERAL_PRISONER:int				= 181; //Get captured and go to prison.
+		public static const GENERAL_JOJOS_BIZARRE_ADVENTURE:int	= 182; //Have Jojo in your camp.
 	}
 
 }
