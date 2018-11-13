@@ -2,12 +2,6 @@
 {
 	public class ItemSlot extends Object
 	{
-		//constructor
-		public function ItemSlot()
-		{
-		}
-		
-		//data
 		private var _quantity:int = 0;
 		private var _itype:ItemType = ItemType.NOTHING;
 		private var _unlocked:Boolean = false;
