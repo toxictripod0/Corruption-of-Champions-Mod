@@ -1,7 +1,11 @@
 ﻿package classes
 {
-	public class ItemSlot extends Object
+	import classes.internals.Serializable;
+	
+	public class ItemSlot extends Object implements Serializable
 	{
+		private static const SERIALIZATION_VERSION:int = 1;
+		
 		private var _quantity:int = 0;
 		private var _itype:ItemType = ItemType.NOTHING;
 		private var _unlocked:Boolean = false;
@@ -67,6 +71,32 @@
 		public function isEmpty():Boolean
 		{
 			return _quantity<=0;
+		}
+		
+		public function serialize(relativeRootObject:*):void 
+		{
+			relativeRootObject.quantity = this._quantity;
+			relativeRootObject.id = this.itype.id;
+			relativeRootObject.unlocked = this._unlocked;
+			relativeRootObject.damage = this._damage;
+		}
+		
+		public function deserialize(relativeRootObject:*):void 
+		{
+			this._quantity = relativeRootObject.quantity;
+			this._itype = ItemType.lookupItem(relativeRootObject.id);
+			this._unlocked = relativeRootObject.unlocked;
+			this._damage = relativeRootObject.damage;
+		}
+		
+		public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 
+		{
+			
+		}
+		
+		public function currentSerializationVerison():int 
+		{
+			return SERIALIZATION_VERSION;
 		}
 		
 		public function set damage(value:int):void {
