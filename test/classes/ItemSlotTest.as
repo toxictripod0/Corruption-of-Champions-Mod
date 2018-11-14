@@ -9,10 +9,14 @@ package classes
 	
 	public class ItemSlotTest
 	{
+		private static var consumables:ConsumableLib = new ConsumableLib();
+		
 		private static const QUANTITY:int = 3;
-		private static const ITYPE:ItemType = new ConsumableLib().CANINEP;
+		private static const ITYPE:ItemType = consumables.CANINEP;
 		private static const UNLOCKED:Boolean = false;
 		private static const DAMAGE:int = 6;
+		
+		
 		
 		private var deserialized:ItemSlot;
 		private var serializedClass:*;
@@ -72,10 +76,37 @@ package classes
 		[Test]
 		public function deserializeItypeWithLegacyShortName():void
 		{
-			delete serializedClass['id'];
+			delete serializedClass["serializationVersion"];
+			delete serializedClass["id"];
 			serializedClass.shortName = ITYPE.shortName;
 			
+			SerializationUtils.deserialize(serializedClass, deserialized);
+			
 			assertThat(deserialized.itype.id, equalTo(ITYPE.id));
+		}
+		
+		[Test]
+		public function upgradeLegacyGroPlusShortName():void
+		{
+			delete serializedClass["serializationVersion"];
+			delete serializedClass["id"];
+			serializedClass.shortName = "Gro+";
+			
+			SerializationUtils.deserialize(serializedClass, deserialized);
+			
+			assertThat(deserialized.itype.id, equalTo(consumables.GROPLUS.id));
+		}
+		
+		[Test]
+		public function upgradeLegacySpecialHoneyShortName():void
+		{
+			delete serializedClass["serializationVersion"];
+			delete serializedClass["id"];
+			serializedClass.shortName = "Sp Honey";
+			
+			SerializationUtils.deserialize(serializedClass, deserialized);
+			
+			assertThat(deserialized.itype.id, equalTo(consumables.SPHONEY.id));
 		}
 		
 		[Test]

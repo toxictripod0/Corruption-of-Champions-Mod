@@ -6,6 +6,9 @@
 	{
 		private static const SERIALIZATION_VERSION:int = 1;
 		
+		private static const LEGACY_SHORTNAME_GROPLUS:String = "Gro+";
+		private static const LEGACY_SHORTNAME_SPECIAL_HONEY:String = "Sp Honey";
+		
 		private var _quantity:int = 0;
 		private var _itype:ItemType = ItemType.NOTHING;
 		private var _unlocked:Boolean = false;
@@ -91,7 +94,31 @@
 		
 		public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 
 		{
+			switch (serializedDataVersion) {
+				case 0:
+					convertLegacyShortNameToId(relativeRootObject);
+					
+				default:
+					/*
+					 * The default block is left empty intentionally,
+					 * this switch case operates by using fall through behavior.
+					 */
+			}
+		}
+		
+		private function convertLegacyShortNameToId(relativeRootObject:*):void
+		{
+			if (!relativeRootObject.shortName) {
+				return;
+			}
 			
+			if (relativeRootObject.shortName.indexOf("Gro+") != -1) {
+				relativeRootObject.id = "GroPlus";
+			} else if (relativeRootObject.shortName.indexOf("Sp Honey") != -1) {
+				relativeRootObject.id = "SpHoney";
+			} else {
+				relativeRootObject.id = ItemType.lookupItemByShort(relativeRootObject.shortName).id;
+			}
 		}
 		
 		public function currentSerializationVerison():int 
