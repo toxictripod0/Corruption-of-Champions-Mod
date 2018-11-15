@@ -32,20 +32,22 @@ package classes
 		private static const LOGGER:ILogger = LoggerFactory.getLogger(Player);
 		
 		private static const SERIALIZATION_VERSION:int = 1;
+		private static const NUMBER_OF_ITEMSLOTS:int = 10;
 		
 		public function Player() {
-			//Item things
-			itemSlot1 = new ItemSlot();
-			itemSlot2 = new ItemSlot();
-			itemSlot3 = new ItemSlot();
-			itemSlot4 = new ItemSlot();
-			itemSlot5 = new ItemSlot();
-			itemSlot6 = new ItemSlot();
-			itemSlot7 = new ItemSlot();
-			itemSlot8 = new ItemSlot();
-			itemSlot9 = new ItemSlot();
-			itemSlot10 = new ItemSlot();
-			itemSlots = new <ItemSlot>[itemSlot1, itemSlot2, itemSlot3, itemSlot4, itemSlot5, itemSlot6, itemSlot7, itemSlot8, itemSlot9, itemSlot10];
+			itemSlots = new Vector.<classes.ItemSlot>();
+			initializeItemSlots();
+		}
+		
+		private function initializeItemSlots():void
+		{
+			for (var i:int = 0; i < NUMBER_OF_ITEMSLOTS; i++) {
+				itemSlots.push(new ItemSlot());
+			}
+			
+			itemSlot(0).unlocked = true;
+			itemSlot(1).unlocked = true;
+			itemSlot(2).unlocked = true;
 		}
 		
 		protected function outputText(text:String):void
@@ -89,18 +91,65 @@ package classes
 		override public function pregnancyUpdate():Boolean {
 			return game.pregnancyProgress.updatePregnancy(); //Returns true if we need to make sure pregnancy texts aren't hidden
 		}
-
-		// Inventory
-		public var itemSlot1:ItemSlot;
-		public var itemSlot2:ItemSlot;
-		public var itemSlot3:ItemSlot;
-		public var itemSlot4:ItemSlot;
-		public var itemSlot5:ItemSlot;
-		public var itemSlot6:ItemSlot;
-		public var itemSlot7:ItemSlot;
-		public var itemSlot8:ItemSlot;
-		public var itemSlot9:ItemSlot;
-		public var itemSlot10:ItemSlot;
+		
+		/**
+		 * deprecated legacy itemSlots
+		 * 
+		 * Do not use these for new code, use itemSlot(index:int) instead.
+		 */
+		
+		public function get itemSlot1():ItemSlot
+		{
+			return itemSlot(0);
+		}
+		
+		public function get itemSlot2():ItemSlot
+		{
+			return itemSlot(1);
+		}
+		
+		public function get itemSlot3():ItemSlot
+		{
+			return itemSlot(2);
+		}
+		
+		public function get itemSlot4():ItemSlot
+		{
+			return itemSlot(3);
+		}
+		
+		public function get itemSlot5():ItemSlot
+		{
+			return itemSlot(4);
+		}
+		
+		public function get itemSlot6():ItemSlot
+		{
+			return itemSlot(5);
+		}
+		
+		public function get itemSlot7():ItemSlot
+		{
+			return itemSlot(6);
+		}
+		
+		public function get itemSlot8():ItemSlot
+		{
+			return itemSlot(7);
+		}
+		
+		public function get itemSlot9():ItemSlot
+		{
+			return itemSlot(8);
+		}
+		
+		public function get itemSlot10():ItemSlot
+		{
+			return itemSlot(9);
+		}
+		
+		// end of legacy item slots
+		
 		public var itemSlots:Vector.<ItemSlot>;
 		
 		public var prisonItemSlots:Array = [];
@@ -3710,4 +3759,3 @@ package classes
 		}
 	}
 }
-
