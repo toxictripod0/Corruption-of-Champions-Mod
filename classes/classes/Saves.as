@@ -1050,10 +1050,7 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		//ITEMZ.
 		//TODO: DRY this.
 		saveFile.data.itemSlot1 = [];
-		saveFile.data.itemSlot1.quantity = player.itemSlot1.quantity;
-		saveFile.data.itemSlot1.id = player.itemSlot1.itype.id;
-		saveFile.data.itemSlot1.damage = player.itemSlot1.damage;
-		saveFile.data.itemSlot1.unlocked = true; 
+		SerializationUtils.serialize(saveFile.data.itemSlot1, player.itemSlot1);
 		
 		saveFile.data.itemSlot2 = [];
 		saveFile.data.itemSlot2.quantity = player.itemSlot2.quantity;

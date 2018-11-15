@@ -45,7 +45,7 @@ package classes
 			itemSlot8 = new ItemSlot();
 			itemSlot9 = new ItemSlot();
 			itemSlot10 = new ItemSlot();
-			itemSlots = [itemSlot1, itemSlot2, itemSlot3, itemSlot4, itemSlot5, itemSlot6, itemSlot7, itemSlot8, itemSlot9, itemSlot10];
+			itemSlots = new <ItemSlot>[itemSlot1, itemSlot2, itemSlot3, itemSlot4, itemSlot5, itemSlot6, itemSlot7, itemSlot8, itemSlot9, itemSlot10];
 		}
 		
 		protected function outputText(text:String):void
@@ -101,7 +101,7 @@ package classes
 		public var itemSlot8:ItemSlot;
 		public var itemSlot9:ItemSlot;
 		public var itemSlot10:ItemSlot;
-		public var itemSlots:/*ItemSlot*/Array;
+		public var itemSlots:Vector.<ItemSlot>;
 		
 		public var prisonItemSlots:Array = [];
 		public var previouslyWornClothes:/*String*/Array = []; //For tracking achievement.
@@ -3710,3 +3710,4 @@ package classes
 		}
 	}
 }
+
