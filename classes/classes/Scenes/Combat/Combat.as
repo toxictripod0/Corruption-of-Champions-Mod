@@ -1131,17 +1131,14 @@ package classes.Scenes.Combat
 				critChance += 3;
 			}
 			// Special eyes calculations
-			if (player.hasSpiderEyes()) {
-				critChance += 4;
-			} else {
-				switch (player.eyes.type) {
-					case Eyes.DRAGON: critChance += 8; break;
-					case Eyes.CAT:    critChance += 5; break;
-					default: // The default is a lie!
-				}
-				if (player.eyes.count >= 4) {
-					critChance += 2;
-				}
+			switch (player.eyes.type) {
+				case Eyes.DRAGON: critChance += 8; break;
+				case Eyes.CAT:    critChance += 5; break;
+				case Eyes.SPIDER: critChance += 2; break;
+				default: // The default is a lie!
+			}
+			if (player.eyes.count >= 4) {
+				critChance += 2;
 			}
 			// Other calculations
 			if (player.findPerk(PerkLib.Tactician) >= 0 && player.inte >= 50) critChance += (player.inte - 50) / 5;
