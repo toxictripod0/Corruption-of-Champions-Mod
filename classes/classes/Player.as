@@ -18,6 +18,7 @@ package classes
 	import classes.Scenes.Places.TelAdre.UmasShop;
 	import classes.internals.LoggerFactory;
 	import classes.internals.Serializable;
+	import classes.internals.SerializationUtils;
 	import classes.lists.BreastCup;
 	import classes.lists.ColorLists;
 	import mx.logging.ILogger;
@@ -3729,6 +3730,8 @@ package classes
 		override public function serialize(relativeRootObject:*):void 
 		{
 			super.serialize(relativeRootObject);
+			
+			relativeRootObject.itemSlots = SerializationUtils.serializeVector(this.itemSlots as Vector.<*>);
 		}
 		
 		override public function deserialize(relativeRootObject:*):void 
@@ -3746,11 +3749,51 @@ package classes
 				LOGGER.warn("Player has no breast row, this is an invalid state. Creating breast row...");
 				createBreastRow();
 			}
+			
+			this.itemSlots.length = 0;
+			SerializationUtils.deserializeVector(this.itemSlots as Vector.<*>, relativeRootObject.itemSlots, ItemSlot);
 		}
 		
 		override public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 
 		{
+			switch (serializedDataVersion) {
+				case 0:
+					upgradeLegacyItemSlots(relativeRootObject);
+					
+				default:
+					/*
+					 * The default block is left empty intentionally,
+					 * this switch case operates by using fall through behavior.
+					 */
+			}
+		}
 		
+		private function upgradeLegacyItemSlots(relativeRootObject:*):void
+		{
+			LOGGER.info("Upgrading legacy item slots...");
+			var slots:Vector.<ItemSlot> = new Vector.<classes.ItemSlot>();
+			
+			var slotname:String = "itemSlot";
+			
+			for (var i:int = 1; i < 11; i++) {
+				var slot:String = slotname + i;
+				
+				slots.push(legacyItemSlotFromSave(relativeRootObject, slot));
+			}
+			
+			relativeRootObject.itemSlots = SerializationUtils.serializeVector(slots as Vector.<*>);
+			LOGGER.info("Finished upgrading legacy item slots!");
+		}
+		
+		private function legacyItemSlotFromSave(relativeRootObject:*, slotName:String):ItemSlot
+		{
+			var itemSlot:ItemSlot = new ItemSlot();
+			
+			if (relativeRootObject[slotName] !== undefined) {
+				SerializationUtils.deserialize(relativeRootObject[slotName], itemSlot);
+			}
+			
+			return itemSlot;
 		}
 		
 		override public function currentSerializationVerison():int 
