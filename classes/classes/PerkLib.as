@@ -188,6 +188,15 @@ package classes
 		public static const ImprovedSelfControl3:PerkType = mk("Improved Self-Control 3", "Improved Self-Control 3",
 				"Increases maximum lust by further 10.",
 				"You choose the 'Improved Self-Control 2' perk. Thanks to your superior mental conditioning, your maximum lust has been increased by further 10!</b>");
+		public static const ImprovedVision:PerkType = mk("Improved Vision", "Improved Vision",
+				"Improves your vision allowing you to see openings most wouldn't (+3% Crit)",
+				"You've chosen the 'Improved Vision' perk, which raises your critical strike chance by 3%.");
+		public static const ImprovedVision2:PerkType = mk("Improved Vision 2", "Improved Vision 2",
+				"Improves your vision allowing you to see openings most wouldn't (+7% Crit)",
+				"You've chosen the 'Improved Vision 2' perk, which raises your critical strike chance by 7%.");
+		public static const ImprovedVision3:PerkType = mk("Improved Vision 3", "Improved Vision 3",
+				"Improves your vision allowing you to see openings most wouldn't (+10% Crit)",
+				"You've chosen the 'Improved Vision 3' perk, which raises your critical strike chance by 10%.");
 		public static const Indefatigable:PerkType = mk("Indefatigable", "Indefatigable",
 				"Can no longer lose by lust. Can still submit manually at maximum lust via Fantasize.",
 				"You choose the 'Indefatigable' perk. Thanks to your sheer willpower, you can no longer lose when your lust reaches maximum. (Choosing Fantasize at maximum lust still allows you to submit.)")
@@ -239,15 +248,6 @@ package classes
 						"<b>You are not durable enough to gain benefit from this perk.</b>" +
 						"]",
 				"You choose the 'Parry' perk, giving you a chance to deflect blow with your weapon. (Speed-based).");
-		public static const Perception:PerkType = mk("Perception", "Perception",
-				"Raises your perception allowing you to see openings most wouldn't (+3% Crit)",
-				"You've chosen the 'Perception' perk, which raises your critical strike chance by 3%.");
-		public static const Perception2:PerkType = mk("Perception 2", "Perception 2",
-				"Raises your perception allowing you to see openings most wouldn't (+7% Crit)",
-				"You've chosen the 'Perception 2' perk, which raises your critical strike chance by 7%.");
-		public static const Perception3:PerkType = mk("Perception 3", "Perception 3",
-				"Raises your perception allowing you to see openings most wouldn't (+10% Crit)",
-				"You've chosen the 'Perception 3' perk, which raises your critical strike chance by 10%.");
 		public static const Precision:PerkType = mk("Precision", "Precision",
 				"Reduces enemy armor by 10. (Req's 25+ Intelligence)",
 				"You've chosen the 'Precision' perk.  Thanks to your intelligence, you're now more adept at finding and striking an enemy's weak points, reducing their damage resistance from armor by 10.  If your intelligence ever drops below 25 you'll no longer be smart enough to benefit from this perk.");
@@ -777,12 +777,12 @@ package classes
 						.requirePerk(Survivalist)
 						.requireHungerEnabled();
 			//Other Misc Perks
-			Perception.requireLevel(30)
+			ImprovedVision.requireLevel(30)
 			          .requirePerk(Tactician);
-			Perception2.requireLevel(60)
-			          .requirePerk(Perception);
-			Perception3.requireLevel(90)
-			          .requirePerk(Perception2);
+			ImprovedVision2.requireLevel(60)
+			          .requirePerk(ImprovedVision);
+			ImprovedVision3.requireLevel(90)
+			          .requirePerk(ImprovedVision2);
 		}
 		{
 			initRequirements();

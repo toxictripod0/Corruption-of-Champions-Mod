@@ -1123,11 +1123,11 @@ package classes.Scenes.Combat
 		public function getCritChance():Number {
 			var critChance:Number = 5;
 			// Perception calculations
-			if (player.hasPerk(PerkLib.Perception3)) {
+			if (player.hasPerk(PerkLib.ImprovedVision3)) {
 				critChance += 10;
-			} else if (player.hasPerk(PerkLib.Perception2)) {
+			} else if (player.hasPerk(PerkLib.ImprovedVision2)) {
 				critChance += 7;
-			} else if (player.hasPerk(PerkLib.Perception)) {
+			} else if (player.hasPerk(PerkLib.ImprovedVision)) {
 				critChance += 3;
 			}
 			// Special eyes calculations
