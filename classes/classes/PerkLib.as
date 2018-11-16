@@ -239,6 +239,15 @@ package classes
 						"<b>You are not durable enough to gain benefit from this perk.</b>" +
 						"]",
 				"You choose the 'Parry' perk, giving you a chance to deflect blow with your weapon. (Speed-based).");
+		public static const Perception:PerkType = mk("Perception", "Perception",
+				"Raises your perception allowing you to see openings most wouldn't (+3% Crit)",
+				"You've chosen the 'Perception' perk, which raises your critical strike chance by 3%.");
+		public static const Perception2:PerkType = mk("Perception 2", "Perception 2",
+				"Raises your perception allowing you to see openings most wouldn't (+7% Crit)",
+				"You've chosen the 'Perception 2' perk, which raises your critical strike chance by 7%.");
+		public static const Perception3:PerkType = mk("Perception 3", "Perception 3",
+				"Raises your perception allowing you to see openings most wouldn't (+10% Crit)",
+				"You've chosen the 'Perception 3' perk, which raises your critical strike chance by 10%.");
 		public static const Precision:PerkType = mk("Precision", "Precision",
 				"Reduces enemy armor by 10. (Req's 25+ Intelligence)",
 				"You've chosen the 'Precision' perk.  Thanks to your intelligence, you're now more adept at finding and striking an enemy's weak points, reducing their damage resistance from armor by 10.  If your intelligence ever drops below 25 you'll no longer be smart enough to benefit from this perk.");
@@ -302,11 +311,11 @@ package classes
 				"You choose the 'Strong Back 2: Strong Harder' perk, enabling a fifth item slot.");
 		public static const Tactician:PerkType = mk("Tactician", "Tactician",
 				"[if (player.inte>=50)" +
-						"Increases critical hit chance by up to 10% (Intelligence-based)." +
+						"Increases critical hit chance by 1% per 5 points intelligence above 50." +
 						"|" +
 						"<b>You are too dumb to gain benefit from this perk.</b>" +
 						"]",
-				"You choose the 'Tactician' perk, increasing critical hit chance by up to 10% (Intelligence-based).");
+				"You choose the 'Tactician' perk, increasing critical hit chance by 1% per 5 points intelligence above 50.");
 		public static const Tank:PerkType = mk("Tank", "Tank",
 				"Raises max HP by 50.",
 				"You choose the 'Tank' perk, giving you an additional 50 HP!");
@@ -767,6 +776,13 @@ package classes
 			Survivalist2.requireLevel(12)
 						.requirePerk(Survivalist)
 						.requireHungerEnabled();
+			//Other Misc Perks
+			Perception.requireLevel(30)
+			          .requirePerk(Tactician);
+			Perception2.requireLevel(60)
+			          .requirePerk(Perception);
+			Perception3.requireLevel(90)
+			          .requirePerk(Perception2);
 		}
 		{
 			initRequirements();
