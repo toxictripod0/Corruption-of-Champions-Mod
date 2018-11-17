@@ -1411,7 +1411,7 @@ package classes
 		 * @param	type check cock for area or length, defaults to area
 		 * @return the index of the first matching cock, or -1 if no cock fits
 		 */
-		public function cockThatFits(i_fits:Number = 0, type:String = "area"):Number
+		public function cockThatFits(i_fits:Number = 0, type:String = "area"):int
 		{
 			if (cocks.length <= 0)
 				return -1;
