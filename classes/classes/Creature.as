@@ -1404,7 +1404,13 @@ package classes
 			return cocks[index].cockLength;
 		}
 		
-		//Find the biggest cock that fits inside a given value
+		/**
+		 * Find the biggest cock index that fits inside a given value.
+		 * This function defaults to checking the area.
+		 * @param	i_fits the value to check for, in combination with type.
+		 * @param	type check cock for area or length, defaults to area
+		 * @return the index of the first matching cock, or -1 if no cock fits
+		 */
 		public function cockThatFits(i_fits:Number = 0, type:String = "area"):Number
 		{
 			if (cocks.length <= 0)
