@@ -347,7 +347,7 @@
 						addButton(4, "Get Sucked", isabellaScene.izzyGivesSmallWangsFreeOral).hint("Put the cow's tongue to a good use pleasuring your dick!");
 					}
 					else addButtonDisabled(4, "Get Sucked").hint("She likes to lick small cocks.");
-					if (player.cockThatFits(164)) {
+					if (player.cockThatFits(164) !== -1) {
 						addButton(5, "Fuck Her", fuckIsabella).hint("Of course, you've got the classical penetrative sex option. Put that dick of yours to a good use.");
 					}
 					else addButtonDisabled(5, "Fuck Her").hint(player.cockTotal() == 1 ? "Your dick is too big to fit." : "None of your dicks would fit inside her!");
