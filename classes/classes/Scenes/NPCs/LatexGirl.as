@@ -115,6 +115,11 @@ public function gooGetCockType():CockTypesEnum {
 	return CockTypesEnum.ParseConstantByIndex(flags[kFLAGS.GOO_DICK_TYPE]);
 }
 
+private function setCockType(cockType:CockTypesEnum):void
+{
+	flags[kFLAGS.GOO_DICK_TYPE] = cockType.Index;
+}
+
 public override function latexGooFollower():Boolean {
 	return flags[kFLAGS.GOO_SLAVE_RECRUITED] > 0;
 
@@ -693,7 +698,7 @@ private function changeGooDick():void {
 	}
 	addButton(14,"Back",approachLatexy);
 }
-	
+
 private function latexyEatsADickItem(item:ItemType):void {
 	player.consumeItem(item,1);
 	clearOutput();
@@ -704,11 +709,11 @@ private function latexyEatsADickItem(item:ItemType):void {
 		else outputText("bulbous crown");
 		outputText(".  The newborn cock-tip thickens, spreading her wider as it gradually droops out of the female flesh surrounding it.  ");
 		flags[kFLAGS.GOO_DICK_LENGTH] = 8;
-		flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.HUMAN;
+		setCockType(CockTypesEnum.HUMAN);
 		if (item == consumables.MINOBLO) {
 			outputText("On and on it comes.  She's truly going to be hung like a stallion at this rate!   ");
 			flags[kFLAGS.GOO_DICK_LENGTH] = 13;
-			flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.HORSE;
+			setCockType(CockTypesEnum.HORSE);
 		}
 		outputText("Then, it begins to stiffen, arching up into full arousal.  The new-grown cock appears to have grown from her clit, but as you lean down to examine her vagina, you realize her cunt has shifted down slightly, and a new clit has grown to replace the old.");
 		outputText("\n\n\"<i>You're making it harder!</i>\" " + flags[kFLAGS.GOO_NAME] + " whines, trying to cover it with her hands.  Of course, that only makes it harder, and a bead of oily pre-cum beads at the tip.  You could get used to this.  <b>" + flags[kFLAGS.GOO_NAME] + " now has a " + num2Text(flags[kFLAGS.GOO_DICK_LENGTH]) + "-inch ");
@@ -727,12 +732,12 @@ private function latexyEatsADickItem(item:ItemType):void {
 		}
 		else {
 			outputText("Her " + gooCock() + " rapidly erects, rising to full tumescence in seconds.  The veins begin to shift, crawling around under her onyx skin like little worms as her penis reshapes it.  A muffled moan escapes from " + flags[kFLAGS.GOO_NAME] + "'s lips along with a discharge of black pre-cum from her tip and slit.  Then, with a powerful flex, the latex woman's penis solidifies into a new shape.  <b>" + flags[kFLAGS.GOO_NAME] + "'s maleness is now a ");
-			if (item == consumables.CANINEP) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.DOG;
-			if (item == consumables.EQUINUM) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.HORSE;
-			if (item == consumables.P_DRAFT) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.HUMAN;
-			if (item == consumables.W_FRUIT) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.CAT;
-			if (item == consumables.INCUBID) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.DEMON;
-			if (item == consumables.MINOBLO) flags[kFLAGS.GOO_DICK_TYPE] = CockTypesEnum.HORSE;
+			if (item == consumables.CANINEP) setCockType(CockTypesEnum.DOG);
+			if (item == consumables.EQUINUM) setCockType(CockTypesEnum.HORSE);
+			if (item == consumables.P_DRAFT) setCockType(CockTypesEnum.HUMAN);
+			if (item == consumables.W_FRUIT) setCockType(CockTypesEnum.CAT);
+			if (item == consumables.INCUBID) setCockType(CockTypesEnum.DEMON);
+			if (item == consumables.MINOBLO) setCockType(CockTypesEnum.HORSE);
 			outputText(gooCock() + "!</b>");
 		}
 		gooObedience(2);
