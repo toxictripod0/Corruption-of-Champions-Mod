@@ -111,7 +111,8 @@ private function gooTits():String {
 private function gooCock():String {
 	return Appearance.cockDescription(CockTypesEnum.ParseConstantByIndex(flags[kFLAGS.GOO_DICK_TYPE]), flags[kFLAGS.GOO_DICK_LENGTH], flags[kFLAGS.GOO_DICK_LENGTH] / 6, 50, 100);
 }
-public function gooGetCockType():CockTypesEnum {
+
+private function getCockType():CockTypesEnum {
 	return CockTypesEnum.ParseConstantByIndex(flags[kFLAGS.GOO_DICK_TYPE]);
 }
 
