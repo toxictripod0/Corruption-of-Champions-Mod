@@ -109,7 +109,7 @@ private function gooTits():String {
 }
 
 private function gooCock():String {
-	return Appearance.cockDescription(CockTypesEnum.ParseConstantByIndex(flags[kFLAGS.GOO_DICK_TYPE]), flags[kFLAGS.GOO_DICK_LENGTH], flags[kFLAGS.GOO_DICK_LENGTH] / 6, 50, 100);
+	return Appearance.cockDescription(getCockType(), flags[kFLAGS.GOO_DICK_LENGTH], flags[kFLAGS.GOO_DICK_LENGTH] / 6, 50, 100);
 }
 
 private function getCockType():CockTypesEnum {
@@ -683,12 +683,12 @@ private function changeGooDick():void {
 	}
 	menu();
 	if (flags[kFLAGS.GOO_DICK_LENGTH] > 0) {
-		if (player.hasItem(consumables.CANINEP) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.DOG) addButton(2,"Canine Pepper",latexyEatsADickItem,consumables.CANINEP);
-		if (player.hasItem(consumables.EQUINUM) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.HORSE) addButton(3,"Equinum",latexyEatsADickItem,consumables.EQUINUM);
-		if (player.hasItem(consumables.P_DRAFT) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.HUMAN) addButton(4,"Pure Draft",latexyEatsADickItem,consumables.P_DRAFT);
-		if (player.hasItem(consumables.W_FRUIT) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.CAT) addButton(5,"Whisker Fruit",latexyEatsADickItem,consumables.W_FRUIT);
-		if (player.hasItem(consumables.INCUBID) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.DEMON) addButton(0,"Incubi Draft",latexyEatsADickItem,consumables.INCUBID);
-		if (player.hasItem(consumables.MINOBLO) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.HORSE) addButton(1,"Mino Blood",latexyEatsADickItem,consumables.MINOBLO);
+		if (player.hasItem(consumables.CANINEP) && getCockType() != CockTypesEnum.DOG) addButton(2,"Canine Pepper",latexyEatsADickItem,consumables.CANINEP);
+		if (player.hasItem(consumables.EQUINUM) && getCockType() != CockTypesEnum.HORSE) addButton(3,"Equinum",latexyEatsADickItem,consumables.EQUINUM);
+		if (player.hasItem(consumables.P_DRAFT) && getCockType() != CockTypesEnum.HUMAN) addButton(4,"Pure Draft",latexyEatsADickItem,consumables.P_DRAFT);
+		if (player.hasItem(consumables.W_FRUIT) && getCockType() != CockTypesEnum.CAT) addButton(5,"Whisker Fruit",latexyEatsADickItem,consumables.W_FRUIT);
+		if (player.hasItem(consumables.INCUBID) && getCockType() != CockTypesEnum.DEMON) addButton(0,"Incubi Draft",latexyEatsADickItem,consumables.INCUBID);
+		if (player.hasItem(consumables.MINOBLO) && getCockType() != CockTypesEnum.HORSE) addButton(1,"Mino Blood",latexyEatsADickItem,consumables.MINOBLO);
 		if (player.hasItem(consumables.GROPLUS) && flags[kFLAGS.GOO_DICK_LENGTH] < 24 + (flags[kFLAGS.HYPER_HAPPY] ? 0 : 36)) addButton(6,"Gro Plus",latexyEatsADickItem,consumables.GROPLUS);
 		if (player.hasItem(consumables.REDUCTO) && flags[kFLAGS.GOO_DICK_LENGTH] >= 5) addButton(7,"Reducto",latexyEatsADickItem,consumables.REDUCTO);
 	}	
@@ -1461,7 +1461,7 @@ private function femalePCDomFucksLatexGooFuta():void {
 	outputText("\n\nYou bounce atop " + flags[kFLAGS.GOO_NAME] + " faster and faster");
 	if (flags[kFLAGS.GOO_DICK_LENGTH] * flags[kFLAGS.GOO_DICK_LENGTH]/6 <= player.vaginalCapacity()) outputText(", your [butt] clapping wetly against her onyx thighs");
 	outputText(".  All too soon, you feel a telltale twitching of the " + gooCock() + " inside you, and before you can stop it, a thick, slick feeling of warmth radiates outward from your womb.  Accompanying the explosion of moisture and bodily heat, a gradual pressure wells up in your womb, culminating in an explosion of slick sable goop that ");
-	if (flags[kFLAGS.GOO_DICK_TYPE] == CockTypesEnum.DOG) outputText("stays trapped inside you thanks to your pet's thick knot");
+	if (getCockType() == CockTypesEnum.DOG) outputText("stays trapped inside you thanks to your pet's thick knot");
 	else outputText("sprays out of your [vagina]");
 	outputText(".  You look over your shoulder and scold, \"<i>I didn't give you permission to cum!</i>\"");
 	
@@ -1501,7 +1501,7 @@ private function femalePCDomFucksLatexGooFuta():void {
 	if (player.hasCock()) outputText("  White erupts from your " + player.multiCockDescriptLight() + " with abandon.  You don't even care that it stains " + flags[kFLAGS.GOO_NAME] + "'s " + gooTits() + ".  It feels so good and she looks so pretty with strands of icing spattering over top of her.");
 	if (player.hasCock() && player.cumQ() >= 750) outputText("  Of course, you quickly bury those strands in a wave of alabaster.");
 	outputText("\n\n" + flags[kFLAGS.GOO_NAME] + " hugs you tight as she finishes unloading inside you.  Those last few squirts of sable spunk make your cunny feel like a mush of pleasure.  Sighing contentedly, you rise up off of your conquest");
-	if (flags[kFLAGS.GOO_DICK_TYPE] == CockTypesEnum.DOG) outputText(", ignoring the loud 'pop' of her knot slipping free,");
+	if (getCockType() == CockTypesEnum.DOG) outputText(", ignoring the loud 'pop' of her knot slipping free,");
 	outputText(" and present your stained vagina to her face.  She knows what to do, and immediately sets to cleaning it with her tongue.  Over two feet of flexible mouth muscle burrow into your [vagina], and the pleasant caresses let you know just much your pet enjoys this task.  She devours her sticky spunk and your female fluids with ardor, never slowing in her task.  Even when you're sure that you're clean, she keeps going, inciting tingles of fresh lust from your body.");
 	outputText("\n\nThat will not do.  You command her to stop");
 	if (flags[kFLAGS.LATEX_GOO_TIMES_FEMDOMMED_BY_PC] > 0) outputText(", and obediently, she does.  To reward her for being a good pet, you give her a deep tongue kiss.");
