@@ -1898,20 +1898,18 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		}
 		else
 			player.lowerBody.legCount = saveFile.data.legCount;
-			
-		if (saveFile.data.eyeCount == undefined) {
-			if (player.eyes.type == Eyes.SPIDER) {
-				player.eyes.count = 4;
-			}
-			else if (player.eyes.type == Eyes.FOUR_SPIDER_EYES) {
-				player.eyes.type = Eyes.SPIDER;
-				player.eyes.count = 4;
-			}
-			else player.eyes.count = 2;
+
+		if (player.eyes.type === Eyes.FOUR_SPIDER_EYES) {
+			player.eyes.type = Eyes.SPIDER;
 		}
-		else
+		if (saveFile.data.eyeCount == undefined) {
+			player.eyes.count = player.eyes.type === Eyes.SPIDER ? 4 : 2;
+		} else {
 			player.eyes.count = saveFile.data.eyeCount;
-			
+		}
+		if (player.eyes.type === Eyes.SPIDER && player.eyes.count < 4) {
+			player.eyes.count = 4;
+		}
 
 		// Fix deprecated and merged underBody-types
 		switch (player.underBody.type) {

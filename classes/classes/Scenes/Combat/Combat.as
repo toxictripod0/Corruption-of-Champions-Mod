@@ -1122,6 +1122,25 @@ package classes.Scenes.Combat
 		
 		public function getCritChance():Number {
 			var critChance:Number = 5;
+			// Perception calculations
+			if (player.hasPerk(PerkLib.ImprovedVision3)) {
+				critChance += 10;
+			} else if (player.hasPerk(PerkLib.ImprovedVision2)) {
+				critChance += 7;
+			} else if (player.hasPerk(PerkLib.ImprovedVision)) {
+				critChance += 3;
+			}
+			// Special eyes calculations
+			switch (player.eyes.type) {
+				case Eyes.DRAGON: critChance += 8; break;
+				case Eyes.CAT:    critChance += 5; break;
+				case Eyes.SPIDER: critChance += 2; break;
+				default: // The default is a lie!
+			}
+			if (player.eyes.count >= 4) {
+				critChance += 2;
+			}
+			// Other calculations
 			if (player.findPerk(PerkLib.Tactician) >= 0 && player.inte >= 50) critChance += (player.inte - 50) / 5;
 			if (player.findPerk(PerkLib.Blademaster) >= 0 && (player.weaponVerb.search("slash") >= 0 || player.weaponVerb.search("cleave") >= 0 || player.weaponVerb == "keen cut") && player.shield == ShieldLib.NOTHING) critChance += 5;
 			if (player.jewelry.effectId == JewelryLib.MODIFIER_CRITICAL) critChance += player.jewelry.effectMagnitude;
