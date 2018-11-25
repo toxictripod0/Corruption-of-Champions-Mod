@@ -9,6 +9,7 @@ package classes.Scenes.Monsters
 	import classes.internals.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
+	import classes.GlobalFlags.kACHIEVEMENTS;
 	import classes.Items.Armors.LustyMaidensArmor;
 	import classes.Scenes.Camp.ImpGang;
 	import classes.internals.GuiOutput;
@@ -47,6 +48,7 @@ package classes.Scenes.Monsters
 						addButton(0, (pc.isTaur() ? "Centaur Rape" : "Male Rape"), (pc.isTaur() ? centaurOnImpStart : rapeImpWithDick)).hint("Teach the imp a lesson and ram his butt with your dick!");
 						if (pc.hasItem(useables.CONDOM) && !pc.isTaur()) addButton(4, "Use Condom", rapeImpWithDick, 1).hint("Teach the imp a lesson and ram his butt with your dick! But safety first, of course. A condom a day keeps the corruption away, so to speak.");
 					}
+					if (flags[kFLAGS.WATERSPORTS_ENABLED] >= 1 && !pc.isTaur()) addButton(6, "Fuck & Piss", pissDom).hint("Fuck the Imp's ass, and relieve yourself. What's a better way to leave your scent and mark on him?");
 				}
 				if (pc.hasVagina()) {
 					if (pc.isTaur())
@@ -55,7 +57,8 @@ package classes.Scenes.Monsters
 						addButton(1, "Female Rape", rapeImpWithPussy).hint("Ride the imp's large dick vaginally. Pregnancy is definitely a possibility.");
 				}
 				if (pc.hasFuckableNipples()) addButton(2, "NippleFuck", noogaisNippleRape).hint("Have the imp fuck your perfectly fuckable nipples.", "Nipple Fuck");
-				if (player.hasVagina() && player.biggestTitSize() >= 4 && player.armor is LustyMaidensArmor) addButton(6, "B.Titfuck", (pc.armor as LustyMaidensArmor).lustyMaidenPaizuri).hint("Take advantage of the properties of your special armour and get the imp to give you a good titfuck.", "Bikini Titfuck");
+				
+				if (player.hasVagina() && player.biggestTitSize() >= 4 && player.armor is LustyMaidensArmor) addButton(7, "B.Titfuck", (pc.armor as LustyMaidensArmor).lustyMaidenPaizuri).hint("Take advantage of the properties of your special armour and get the imp to give you a good titfuck.", "Bikini Titfuck");
 			} else {
 				outputText("\n\n<b>You aren't horny enough to rape him.</b>");
 			}
@@ -1587,6 +1590,7 @@ package classes.Scenes.Monsters
 						if (player.hasCock()) {
 							if (player.cockThatFits(monster.analCapacity()) >= 0) addButton(0, "FuckHisAss", impLordBumPlug).hint("Teach the imp a lesson and ram his butt with your dick!", "Fuck His Ass");
 							addButton(1, "Get Blown", getBlownByAnImpLord).hint("Have the imp put his tongue to a good use pleasuring your manhood.");
+							if (flags[kFLAGS.WATERSPORTS_ENABLED] >= 1 && !pc.isTaur()) addButton(5, "Fuck & Piss", pissDom).hint("Fuck the Imp's ass, and relieve yourself. What's a better way to leave your scent and mark on him?");
 						}
 						if (player.hasVagina()) addButton(2, "Ride Cock", femaleVagRape).hint("Ride the imp's big dick vaginally. Pregnancy is definitely a possibility.");
 						if ((player.findPerk(PerkLib.Feeder) >= 0 || pc.lactationQ() >= 500) && monster.short != "imp overlord" && monster.short != "imp warlord") addButton(3, "Breastfeed", feederBreastfeedRape).hint("Give him a good fill of your milk. See if the imp is lactose tolerant.");
@@ -2043,6 +2047,21 @@ package classes.Scenes.Monsters
 			combat.cleanupAfterCombat();
 		}
 
+		public function pissDom():void{
+			clearOutput();
+			outputText("The imp, defeated, lies spread out wide as his little hands grip his cock. Tugging the skin of his demonic shaft up and down with his strokes, the pint-sized demon has utterly forgotten about you as his mind clouds with lust. Feeling your urges building within you, blood surges to your [cock] as you approach the diminuitive creature. His eyes roll back in his head as his strokes begin to quicken, still completely unaware of your presence.");
+			outputText("\n\n<i>*THWHACK!*</i> You deliver a swift kick to his face, sending the imp tumbling the other direction. Caught unaware, the imp sputters and groans, removing his hands from his throbbing, twitching demon cock to nurse his fresh wound. You take your cock in your hand, half-erect now, and point it to his face. Sensing your approach, he looks up as you let your bladder loose and piss in his face. The imp flinches as your hot urine coats his face, rivulents and streams running down his chin and across his body."); 
+			outputText("\n\nYou swing the head of your [cock] around and soak his back. Piss runs down his back, between his tight ass cheeks, and begins to collect in a puddle around him. With your free hand, you grab the little creature by one of his horns to hold him in place as you spray his face with the last of your stream. The imp shrieks and howls in protest; you release your cock and backhand him, before casting him face-first into the warm piss puddle between your feet.");
+			outputText("\n\nThe demon's cock still twitches beneath him, left unsatisfied from his earlier masturbation. The sight causes your dick to swell to full mast. You see your victim, facing away from you, begin to get his footing; you eye his puckered red asshole between his ass cheeks, still shimmering from the golden shower. You grasp the creature by his ankles and position your cock head up to his back door. The pressure makes his cock twitch again, and he quiets down a bit. You push the imp down again, face first into the pissy mud puddle as you bury your cock deep in his ass.");
+			outputText("\n\nYou continue the buttfuck at a languid pace, feeling the imp's asshole grip your manhood tight with each thrust. The smell of your piss lingers in the air and mixes with the stink of sweat and sex. After several minutes, the imp's insides clench as his orgasm takes hold, spattering a few strands of demon seed into the mud. The rhythm of your buttfucking increases as the imp's groans of protest are matched with the sloppy sloshes of the mud.");
+			outputText("\nYour senses overwhelm you as your orgasm arrives in turn. Your " + (player.balls > 0 ? "ballsack" : "prostate") + " clenches as you empty your seed into the demon's well-fucked asshole. You shudder from the sensation as you pull your cock free, the last of your seed lewdly dripping down the imp's thighs.");
+			outputText("\n\nYou redress and leave the creature, nearly unconscious from the abuse.");
+			player.orgasm('Dick');
+			awardAchievement("Urine Trouble", kACHIEVEMENTS.GENERAL_URINE_TROUBLE, true, true, false);
+			dynStats("cor", 3);
+			combat.cleanupAfterCombat();
+		}
+		
 		private function impPetrifyable():Boolean
 		{
 			return player.isBasilisk() && flags[kFLAGS.CAMP_WALL_PROGRESS] >= 100;

@@ -7,6 +7,7 @@ package classes.Scenes.Monsters
 	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
+	import classes.GlobalFlags.kACHIEVEMENTS;
 	import classes.display.SpriteDb;
 	import classes.internals.*;
 
@@ -251,6 +252,7 @@ package classes.Scenes.Monsters
 					addButton(6, "Web Condom", goblinCondomed, 0).hint("You could make a condom using your webbings and fool her into giving her the pleasure without the impregnation!");
 				else if (player.hasItem(useables.CONDOM) && player.cockThatFits(monster.vaginalCapacity()) >= 0)
 					addButton(6, "Use Condom", goblinCondomed, 1).hint("You could use a condom you have in your inventory and and fool her into giving her the pleasure without the impregnation!");
+				if (flags[kFLAGS.WATERSPORTS_ENABLED] >= 1 && player.cockThatFits(60) >= 0) addButton(9, "Facefuck & Piss", facefuckPiss).hint("Facefuck the goblin. And relieve yourself. What's a better way to mark the goblin with your scent too?");
 			}
 			if (player.canOvipositSpider()) {
 				addButton(8, "Lay Eggs", laySomeDriderEggsInGobboTwat).hint("Use your ovipositor to stuff the goblin's twat with eggs.");
@@ -744,5 +746,24 @@ package classes.Scenes.Monsters
 			player.orgasm('Ovi');
 			combat.cleanupAfterCombat();
 		}
+		
+		public function facefuckPiss():void{
+			clearOutput();
+			outputText("The goblin, depleted from the fight, drops down to her knees. A sheen of sweat glimmers on her green skin. She's panting rapidly, and each inhale presses the flesh of her breasts tight against the leather straps of her outfit. She turns away from you and lowers her head to the forest floor, presenting herself to you. She waits a moment, her head cocked to the side, with a wide eye cast toward you in surruptitious hope that you'll come to claim your prize. Her thighs quiver as little beads of moisture collect around the outer lips of her well-used pussy.");
+			outputText("\n\nAfter a few moments, the goblin grows impatient. She growls and turns toward you. Still weary from the fight, she stumbles a few steps toward you, her eyes locked on the package between your legs. She licks her lips hungrily as she reaches you, catching herself around one of your [legs].");
+			outputText("\n\nYou smirk to yourself and grab the girl by her hair, pulling her to the side by her head. Mumbling feebly in protest, her footing begins to give way as you hold her upright. You loosen the clasp on your [armor] and allow your [cock] to swing free. The goblin's expression brightens and she lets out an intemperate moan as she begins to paw down your thighs, as if to encourage you to drop her into the mud and slake her thirst for your seed.");
+			outputText("\nThe urge to fuck the little goblin grows within you, but a lecherous grin crosses your face; she won't be getting what she wants right away.");
+			outputText("\n\nYour right hand still grasps the girl's short purple hair. You give it a forceful tug and bring her face to meet your half-erect [cock]. She takes the hint and goes to work with her hands, working her palms up and down your shaft. A bead of precum forms at the tip of your cock, which she greedily laps up with an outstretched tongue. She runs her slavering mouth over your dick, and little rivulets of her spit send a tingling sensation as they travel toward your [balls]. Her hands slow down as her head begins to bob rhythmically down your manhood, the tip moving further down the bitch's throat with each repetition. Fully erect now, you place your hands over each of her pointed ears and begin to rock your hips, increasing the pace of the face-fucking: before long, she's taking the full length of your [cock], her lips brushing against your pelvis.");
+			outputText("\n\nSpittle runs down your ballsack and collects on the goblin's chin as she sputters for breath at every opportunity. Your heart rate, still heightened from the battle, quickens as the lust builds in you, and your [skinfurscales] shines in the light as you pound your cock down the green slut's throat. You feel contractions on the head of your member as the goblin's attempts to breathe and cough contort her neck muscles around you.");
+			if (player.tallness >= 80) outputText(" Attempting to keep the voracious pace of your thrusting, you readjust your footing. In doing so, you raise up the goblin girl until her feet are off the ground entirely, her bodly limply swinging back and forth in the air by your knees as she half-consciously receives your abuse.");
+			outputText("\n\nSoon, you reach your peak and your balls begin to tighten. You let out a low groan as thick cum spurts from your shaft and down the goblin girl's throat. Your grip loosens from the goblin's head, and she slips about two-thirds of your length from her insides, but greedily swallows each spurt of seed. As your orgasm subsides, you feel her tongue lazily swirl around your tip as your shaft begins to relax.");
+			outputText("\n\nYour sexual urge dims down, but you feel another urge as your bladder presses against your pelvis. A wicked grin crosses your face once more, and you place your hands around her head again, forcing your cock down the goblin's well-fucked throat once more. You feel a hum as she protests, her hands pressing weakly against your thighs in an attempt to push you back. The opposition slows as you begin to relieve yourself, warm urine flowing from your [cock] and into the goblin. Once again you feel her throat muscles contract as she attempts to swallow your piss. She sputters, and a few spurts of the salty liquid leak from around her lips and nose, spattering your legs and her face with piss. The stimulation to your still-sensitive cock overwhelms you and your knees begin to shake.");
+			outputText("\nAs the last of your bladder empties into the green cock-sleeve, you collapse back into a patch of lush grass, pulling the goblin girl down with you. Your hands fall to your sides and the goblin's lips pop free of your dick. Unconscious from the rough treatment, her mouth hangs open as a crude mixture of cum, piss and spit flows out and clings to a patch of grasses.");
+			outputText("\n\nYou catch your breath for a bit. Feeling utterly satisfied and relieved, you gather your equipment and redress. As you move to leave, you see the goblin girl's tongue lewdly lapping at a few of the blades of grass.");
+			player.orgasm('Dick');
+			awardAchievement("Urine Trouble", kACHIEVEMENTS.GENERAL_URINE_TROUBLE, true, true, false);
+			combat.cleanupAfterCombat();
+		}
+
 	}
 }

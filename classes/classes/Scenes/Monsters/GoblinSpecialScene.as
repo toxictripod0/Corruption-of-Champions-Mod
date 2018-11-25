@@ -328,6 +328,7 @@ package classes.Scenes.Monsters
 						addButton(6, "Web Condom", goblinCondomed, 0).hint("You could make a condom using your webbings and fool her into giving her the pleasure without the impregnation!");
 					else if (player.hasItem(useables.CONDOM) && player.cockThatFits(monster.vaginalCapacity()) >= 0)
 						addButton(6, "Use Condom", goblinCondomed, 1).hint("You could use a condom you have in your inventory and and fool her into giving her the pleasure without the impregnation!");
+					if (flags[kFLAGS.WATERSPORTS_ENABLED] >= 1 && player.cockThatFits(60) >= 0) addButton(9, "Facefuck & Piss", getGame().goblinScene.facefuckPiss).hint("Facefuck the goblin. And relieve yourself. What's a better way to mark the goblin with your scent too?");
 				}
 			}
 			//Spider egg laying
@@ -812,6 +813,7 @@ package classes.Scenes.Monsters
 			player.orgasm('Ovi');
 			combat.cleanupAfterCombat();
 		}
+		
 	}
 
 }
