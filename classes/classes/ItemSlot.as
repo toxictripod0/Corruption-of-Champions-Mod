@@ -2,6 +2,9 @@
 {
 	import classes.internals.Serializable;
 	
+	/**
+	 * Tracks item type and quantity. 
+	 */
 	public class ItemSlot extends Object implements Serializable
 	{
 		private static const SERIALIZATION_VERSION:int = 1;
@@ -14,6 +17,12 @@
 		private var _unlocked:Boolean = false;
 		private var _damage:int = 0; //Used for durability
 		
+		/**
+		 * Set the type of item and quantity of items in this slot.
+		 * 
+		 * @param	itype type of item in this slot. If null, the slot will be empty
+		 * @param	quant amount of the item in this slot, must be greater than zero or the slot will be empty
+		 */
 		public function setItemAndQty(itype:ItemType, quant:int):void
 		{
 			if (itype == null) itype = ItemType.NOTHING;
@@ -30,13 +39,21 @@
 			this._itype = itype;
 		}
 		
-
+		/**
+		 * Clears this slot, removing all items contained in it.
+		 */
 		public function emptySlot():void
 		{
 			this._quantity = 0;
 			this._itype = ItemType.NOTHING;
 		}
 
+		/**
+		 * Removes one item from the stack of items in this slot.
+		 * The item count in this slot will be decremented and if the last item is removed the slot will
+		 * be set to empty.
+		 * Will output an error if trying to remove an item from an empty slot.
+		 */
 		public function removeOneItem():void
 		{
 			if (this._quantity == 0)
@@ -48,22 +65,45 @@
 				this._itype = ItemType.NOTHING;
 		}
 
+		/**
+		 * Get the number of items in this slot.
+		 * @return the number of items / size of the item stack. Returns 0 if empty.
+		 */
 		public function get quantity():int {
 			return _quantity;
 		}
+		
+		/**
+		 * Set the number of items in this slot / item stack size.
+		 * @param value the size of the item stack
+		 */
 		public function set quantity(value:int):void {
 			if (value > 0 && _itype == null) CoC_Settings.error("ItemSlot.quantity set with no item; use setItemAndQty instead!");
 			if (value == 0) _itype = ItemType.NOTHING;
 			_quantity = value;
 		}
 
+		/**
+		 * Get the item type that is stored in this slot.
+		 * @return the item type in the slot. Returns ItemType.NOTHING if empty.
+		 */
 		public function get itype():ItemType {
 			return _itype;
 		}
-
+		
+		/**
+		 * Check if this slot has been unlocked.
+		 * 
+		 * @return true if the slot has been unloked and is available
+		 */
 		public function get unlocked():Boolean {
 			return _unlocked;
 		}
+		
+		/**
+		 * Set the unlocked state of the slot, which is used to determine if items can be stored in the slot.
+		 * @param value if true, the slot is unlocked
+		 */
 		public function set unlocked(value:Boolean):void {
 			if (_unlocked != value){
 				emptySlot();
@@ -71,6 +111,10 @@
 			_unlocked = value;
 		}
 		
+		/**
+		 * Check if the slot is empty, i.e. contains no items.
+		 * @return true if empty
+		 */
 		public function isEmpty():Boolean
 		{
 			return _quantity<=0;
@@ -126,9 +170,18 @@
 			return SERIALIZATION_VERSION;
 		}
 		
+		/**
+		 * Set the damage of the item(s)? Used for item degredation?
+		 * @param value unknown what range value this should be, or how the value reflects damage
+		 */
 		public function set damage(value:int):void {
 			this._damage = value;
 		}
+		
+		/**
+		 * Get the damage of the item(s)? Used for item degredation?
+		 * @return unknown what range value this should be, or how the value reflects damage
+		 */
 		public function get damage():int {
 			return this._damage;
 		}
