@@ -1,4 +1,4 @@
-﻿package classes
+package classes
 {
 	import classes.internals.Serializable;
 	import classes.internals.Utils;

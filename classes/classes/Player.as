@@ -1,4 +1,4 @@
-﻿package classes
+package classes
 {
 	import classes.BodyParts.*;
 	import classes.GlobalFlags.kACHIEVEMENTS;
