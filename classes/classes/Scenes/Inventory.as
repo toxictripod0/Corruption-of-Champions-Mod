@@ -36,12 +36,30 @@ package classes.Scenes
 		//TODO refactor storage into own type?
 		public static const STORAGE_JEWELRY_BOX:String = "Equipment Storage - Jewelry Box";
 		
+		/**
+		 * Stores items that are not gear, using chests?
+		 */
 		private var itemStorage:Array;
+		/**
+		 * Stores various gear, such as armor, weapons, shields, etc. Used with different types of racks.
+		 */
 		private var gearStorage:Array;
+		/**
+		 * Stores items when in prison?
+		 */
 		private var prisonStorage:Array;
-		private var callNext:Function;		//These are used so that we know what has to happen once the player finishes with an item
-		private var callOnAbandon:Function;	//They simplify dealing with items that have a sub menu. Set in inventoryMenu and in takeItem
-		private var currentItemSlot:ItemSlot;	//The slot previously occupied by the current item - only needed for stashes and items with a sub menu.
+		/**
+		 * These are used so that we know what has to happen once the player finishes with an item
+		 */
+		private var callNext:Function;
+		/**
+		 * They simplify dealing with items that have a sub menu. Set in inventoryMenu and in takeItem
+		 */
+		private var callOnAbandon:Function;
+		/**
+		 * The slot previously occupied by the current item - only needed for stashes and items with a sub menu.
+		 */
+		private var currentItemSlot:ItemSlot;
 		
 		public function Inventory(saveSystem:Saves) {
 			itemStorage = [];
