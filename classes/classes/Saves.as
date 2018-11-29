@@ -640,6 +640,7 @@ public function savePermObject(isFile:Boolean):void {
 		saveFile.data.flags[kFLAGS.SILLY_MODE_ENABLE_FLAG] = flags[kFLAGS.SILLY_MODE_ENABLE_FLAG];
 		saveFile.data.flags[kFLAGS.PRISON_ENABLED] = flags[kFLAGS.PRISON_ENABLED];
 		saveFile.data.flags[kFLAGS.WATERSPORTS_ENABLED] = flags[kFLAGS.WATERSPORTS_ENABLED];
+		saveFile.data.flags[kFLAGS.ADDICTIONS_ENABLED] = flags[kFLAGS.ADDICTIONS_ENABLED];
 		
 		saveFile.data.flags[kFLAGS.USE_OLD_INTERFACE] = flags[kFLAGS.USE_OLD_INTERFACE];
 		saveFile.data.flags[kFLAGS.USE_OLD_FONT] = flags[kFLAGS.USE_OLD_FONT];
@@ -697,6 +698,10 @@ public function loadPermObject():void {
 			if (saveFile.data.flags[kFLAGS.SILLY_MODE_ENABLE_FLAG] != undefined) flags[kFLAGS.SILLY_MODE_ENABLE_FLAG] = saveFile.data.flags[kFLAGS.SILLY_MODE_ENABLE_FLAG];
 			if (saveFile.data.flags[kFLAGS.PRISON_ENABLED] != undefined) flags[kFLAGS.PRISON_ENABLED] = saveFile.data.flags[kFLAGS.PRISON_ENABLED];
 			if (saveFile.data.flags[kFLAGS.WATERSPORTS_ENABLED] != undefined) flags[kFLAGS.WATERSPORTS_ENABLED] = saveFile.data.flags[kFLAGS.WATERSPORTS_ENABLED];
+			if (saveFile.data.flags[kFLAGS.ADDICTIONS_ENABLED] != undefined) 
+				flags[kFLAGS.ADDICTIONS_ENABLED] = saveFile.data.flags[kFLAGS.ADDICTIONS_ENABLED];
+			else
+				flags[kFLAGS.ADDICTIONS_ENABLED] = 1;
 			
 			if (saveFile.data.flags[kFLAGS.USE_OLD_INTERFACE] != undefined) flags[kFLAGS.USE_OLD_INTERFACE] = saveFile.data.flags[kFLAGS.USE_OLD_INTERFACE];
 			if (saveFile.data.flags[kFLAGS.USE_OLD_FONT] != undefined) flags[kFLAGS.USE_OLD_FONT] = saveFile.data.flags[kFLAGS.USE_OLD_FONT];

@@ -715,7 +715,7 @@ package classes.Scenes.Areas.Mountain
 			if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] == 0) return false;
 			var output:Boolean = false;
 			//Your addicted enough for it to be official!
-			if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] == 0 && flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] >= 50) {
+			if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] == 0 && flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] >= 50 && flags[kFLAGS.ADDICTIONS_ENABLED] > 0) {
 				outputText("\nYou find yourself becoming aroused at the merest thought of minotaurs and their delicious cum.  Immediately you remember how great it made you feel, and you want more.  <b>You're now addicted to minotaur cum!</b>\n");
 				flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] = 1;
 				output = true;

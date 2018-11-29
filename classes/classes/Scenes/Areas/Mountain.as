@@ -180,7 +180,7 @@ package classes.Scenes.Areas {
 
 		private function minotaurRouter():void {
 			spriteSelect(SpriteDb.s_minotaur);
-			if (flags[kFLAGS.TIMES_EXPLORED_MOUNTAIN] % 16 == 0 && player.findPerk(PerkLib.MinotaurCumAddict) >= 0 && rand(3) == 0)
+			if (flags[kFLAGS.TIMES_EXPLORED_MOUNTAIN] % 16 == 0 && player.findPerk(PerkLib.MinotaurCumAddict) >= 0 && rand(3) == 0 && flags[kFLAGS.ADDICTIONS_ENABLED] > 0)
 				minotaurScene.minoAddictionBadEndEncounter(); //Every 16 explorations chance at mino bad-end!
 			else {
 				if (!player.hasStatusEffect(StatusEffects.TF2) && player.level <= 1 && player.str <= 40) {

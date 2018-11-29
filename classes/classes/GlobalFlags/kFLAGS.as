@@ -2978,7 +2978,7 @@ public static const UNKNOWN_FLAG_NUMBER_02969:int                               
 public static const UNKNOWN_FLAG_NUMBER_02970:int                                   = 2970;
 public static const UNKNOWN_FLAG_NUMBER_02971:int                                   = 2971;
 public static const UNKNOWN_FLAG_NUMBER_02972:int                                   = 2972;
-public static const UNKNOWN_FLAG_NUMBER_02973:int                                   = 2973;
+public static const ADDICTIONS_ENABLED:int                                          = 2973; // 1 by default. Can be disabled.
 public static const LEGACY_RACIAL_STATS_ENABLED:int                                 = 2974;
 public static const ENEMY_STATS_BARS_ENABLED:int                                    = 2975; // 0 if enemy sidebar is disabled.
 public static const ANIMATE_STATS_BARS:int                                          = 2976;

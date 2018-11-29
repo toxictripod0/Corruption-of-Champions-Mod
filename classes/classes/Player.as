@@ -2306,12 +2306,15 @@
 			//PUT SOME CAPS ON DAT' SHIT
 			if (raw > 50) raw = 50;
 			if (raw < -50) raw = -50;
+			if (flags[kFLAGS.ADDICTIONS_ENABLED] <= 0) { //Disables addiction if set to OFF.
+				flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] = 1;
+				raw = 0; 
+			}
 			flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] += raw;
 			//Recheck to make sure shit didn't break
 			if (hasPerk(PerkLib.MinotaurCumResistance)) flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] = 0; //Never get addicted!
 			if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] > 120) flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] = 120;
 			if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] < 0) flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] = 0;
-
 		}
 		
 		public function hasSpells():Boolean
@@ -3104,10 +3107,10 @@
 		}
 		
 		public function minotaurAddicted():Boolean {
-			return !hasPerk(PerkLib.MinotaurCumResistance) && (hasPerk(PerkLib.MinotaurCumAddict) || flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] >= 1);
+			return flags[kFLAGS.ADDICTIONS_ENABLED] > 0 && !hasPerk(PerkLib.MinotaurCumResistance) && (hasPerk(PerkLib.MinotaurCumAddict) || flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] >= 1);
 		}
 		public function minotaurNeed():Boolean {
-			return !hasPerk(PerkLib.MinotaurCumResistance) && flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] > 1;
+			return flags[kFLAGS.ADDICTIONS_ENABLED] > 0 && !hasPerk(PerkLib.MinotaurCumResistance) && flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] > 1;
 		}
 
 		public function clearStatuses():void

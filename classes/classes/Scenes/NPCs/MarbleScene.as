@@ -158,7 +158,7 @@ Special abilities: A lightly corrupted creature with most of the corruption cent
 				}			
 			}
 			//Go into withdrawl if your addicted and don't have a reason not to be withdrawn.
-			if (player.statusEffectv3(StatusEffects.Marble) > 0 && player.findPerk(PerkLib.MarbleResistant) < 0 && player.findPerk(PerkLib.MarblesMilk) < 0 && player.statusEffectv2(StatusEffects.Marble) > 25) {
+			if (player.statusEffectv3(StatusEffects.Marble) > 0 && player.findPerk(PerkLib.MarbleResistant) < 0 && player.findPerk(PerkLib.MarblesMilk) < 0 && player.statusEffectv2(StatusEffects.Marble) > 25 && flags[kFLAGS.ADDICTIONS_ENABLED] > 0) {
 				//If player does not have marble's milk or bottled milk, go into withdrawl
 				if (!player.hasStatusEffect(StatusEffects.MarblesMilk) && !player.hasStatusEffect(StatusEffects.BottledMilk)) {
 					//If player is not yet in withdrawl
@@ -388,25 +388,16 @@ Special abilities: A lightly corrupted creature with most of the corruption cent
 						marbleAddictionSex(false);
 						outputText("\n");
 						//(Marble now appears at the camp)
-						player.createStatusEffect(StatusEffects.CampMarble, 0, 0, 0, 0);
-						flags[kFLAGS.FOLLOWER_AT_FARM_MARBLE] = 0;
-						if (kGAMECLASS.isabellaFollowerScene.isabellaFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 0) flags[kFLAGS.ISABELLA_MURBLE_BLEH] = 1;
-						player.createStatusEffect(StatusEffects.NoMoreMarble,0,0,0,0);
-						//(every morning, the player goes to Marble for milk, since she is at the camp, it does not cost them the first hour of the day)
-						//if amily is there, tag it for freakout
-						if (flags[kFLAGS.AMILY_FOLLOWER] > 0 && flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 0) {
-							flags[kFLAGS.MARBLE_OR_AMILY_FIRST_FOR_FREAKOUT] = 2;
-						}
-						else flags[kFLAGS.MARBLE_OR_AMILY_FIRST_FOR_FREAKOUT] = 1;
-						//if Izma is there, tag for freakout!
-						if (flags[kFLAGS.IZMA_FOLLOWER_STATUS] == 1 && flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] == 0) {
-							flags[kFLAGS.IZMA_MARBLE_FREAKOUT_STATUS] = 1;
-						}
+						setMarbleMovedToCamp();
 					}
 				}
 				outputText("\n(You gain the <b>Marble's Milk</b> perk.  It boosts your strength and toughness, but requires that you drink Marble's Milk every day.)\n");
 				doNext(playerMenu);
 				return true;
+			}
+			//Help wanted: Alternate route, just need high affection to move Marble in camp.
+			if (flags[kFLAGS.ADDICTIONS_ENABLED] <= 0 && 9999 == 0) {
+				setMarbleMovedToCamp();
 			}
 			if (checkedMarbleMilk++ == 0 && getGame().time.hours == 6 && player.findPerk(PerkLib.MarblesMilk) >= 0) {
 				//In prison
@@ -467,6 +458,23 @@ public function marbleBreastSize():String
 	{
 		if (player.statusEffectv4(StatusEffects.Marble) > 30) return "HH cup";
 		else return "G cup"
+	}
+}
+
+private function setMarbleMovedToCamp():void {
+	player.createStatusEffect(StatusEffects.CampMarble, 0, 0, 0, 0);
+	flags[kFLAGS.FOLLOWER_AT_FARM_MARBLE] = 0;
+	if (kGAMECLASS.isabellaFollowerScene.isabellaFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 0) flags[kFLAGS.ISABELLA_MURBLE_BLEH] = 1;
+	player.createStatusEffect(StatusEffects.NoMoreMarble,0,0,0,0);
+	//(every morning, the player goes to Marble for milk, since she is at the camp, it does not cost them the first hour of the day)
+	//if amily is there, tag it for freakout
+	if (flags[kFLAGS.AMILY_FOLLOWER] > 0 && flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 0) {
+		flags[kFLAGS.MARBLE_OR_AMILY_FIRST_FOR_FREAKOUT] = 2;
+	}
+	else flags[kFLAGS.MARBLE_OR_AMILY_FIRST_FOR_FREAKOUT] = 1;
+	//if Izma is there, tag for freakout!
+	if (flags[kFLAGS.IZMA_FOLLOWER_STATUS] == 1 && flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] == 0) {
+		flags[kFLAGS.IZMA_MARBLE_FREAKOUT_STATUS] = 1;
 	}
 }
 
@@ -840,7 +848,7 @@ private function drinkMarbleMilk():void {
 	//(first increase addiction by 10,
 	marbleStatusChange(0,10);
 	//if addiction is now over 50, skip straight to addiction event without doing anything else)
-	if (player.statusEffectv2(StatusEffects.Marble) >= 50) {
+	if (player.statusEffectv2(StatusEffects.Marble) >= 50 && flags[kFLAGS.ADDICTIONS_ENABLED] > 0) {
 		marbleAddiction(false);
 		//(increase affection by 5)
 		marbleStatusChange(8,0);
@@ -1933,7 +1941,7 @@ public function marbleStatusChange(affection:Number, addiction:Number, isAddicte
 	//Values only change if not brought to conclusion
 	if (player.findPerk(PerkLib.MarblesMilk) < 0 && player.findPerk(PerkLib.MarbleResistant) < 0) {
 		player.addStatusValue(StatusEffects.Marble,1,affection);
-		player.addStatusValue(StatusEffects.Marble,2,addiction);
+		if (flags[kFLAGS.ADDICTIONS_ENABLED] > 0) player.addStatusValue(StatusEffects.Marble,2,addiction);
 	}
 	if (isAddicted != -1) player.changeStatusValue(StatusEffects.Marble, 3, isAddicted);
 	
