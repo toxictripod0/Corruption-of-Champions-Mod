@@ -417,7 +417,7 @@ package classes.Scenes.Areas.Swamp
 
 
 //*Victory Rape: Ride Ovi Anal sex-insenitive (done)
-		private function victoryVSDriderRideOviAnal():void
+		public function victoryVSDriderRideOviAnal():void
 		{
 			spriteSelect(SpriteDb.s_drider);
 			//*Summary: Force the drider onto her back and then fish out her ovipositor, jerk it off, then climb on top for some egg-based buttlovin'
@@ -463,7 +463,7 @@ package classes.Scenes.Areas.Swamp
 			outputText("  Yet you are not denied the anal pleasure you crave, as the widening bands now filling you are each pushing out harder than the one before.  At the stimulation, her own demonic clit swells as if possessed, nodulates, and hardens into dick form, poking up from her pussy and drooling a slime of pre-cum onto her abdomen.  The second ring rolls over your anal g-spot and you gasp, nearly losing your grip.  The third knocks your " + player.legs() + " out from under you, and you collapse atop your partner, squeezing oozing dick");
 			if (player.hasCock()) outputText("s");
 			outputText(" between you");
-			if (player.getClitLength() >= 4 && player.hasVagina()) outputText(", and pressing your monster chick-stick into it; the gooey heat sends a tingle of shock up your spine and your pussy convulses");
+			if (player.hasVagina() && player.getClitLength() >= 4) outputText(", and pressing your monster chick-stick into it; the gooey heat sends a tingle of shock up your spine and your pussy convulses");
 			outputText(".");
 			player.buttChange(50, true, true, false);
 			outputText("\n\n");
