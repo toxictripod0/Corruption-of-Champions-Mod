@@ -7,6 +7,7 @@ package classes
 	import classes.Items.*;
 	import classes.Scenes.NPCs.Jojo;
 	import classes.internals.LoggerFactory;
+	import classes.internals.Serializable;
 	import classes.internals.SerializationUtils;
 	import classes.lists.BreastCup;
 	import flash.events.Event;
@@ -28,9 +29,10 @@ package classes
 	
 
 
-public class Saves extends BaseContent {
+public class Saves extends BaseContent implements Serializable {
 	private static const LOGGER:ILogger = LoggerFactory.getLogger(Saves);
-
+	
+	private static const SERIALIZATION_VERSION:int = 1;
 	private static const SAVE_FILE_CURRENT_INTEGER_FORMAT_VERSION:int		= 816;
 		//Didn't want to include something like this, but an integer is safer than depending on the text version number from the CoC class.
 		//Also, this way the save file version doesn't need updating unless an important structural change happens in the save file.
@@ -796,16 +798,11 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 	//Set a single variable that tells us if this save exists
 	
 	saveFile.data.exists = true;
+	
+	SerializationUtils.serialize(saveFile.data, this);
 	saveFile.data.version = ver;
 	flags[kFLAGS.SAVE_FILE_INTEGER_FORMAT_VERSION] = SAVE_FILE_CURRENT_INTEGER_FORMAT_VERSION;
 
-	//CLEAR OLD ARRAYS
-	
-	//Save sum dataz
-	//trace("SAVE DATAZ");
-	saveFile.data.short = player.short;
-	saveFile.data.a = player.a;
-	
 	//Notes
 	if (mainView.nameBox.text != "")
 	{
@@ -874,19 +871,8 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile.data.nosePierced = player.nosePierced;
 		saveFile.data.nosePShort = player.nosePShort;
 		saveFile.data.nosePLong = player.nosePLong;
-		
-		//MAIN STATS
-		saveFile.data.str = player.str;
-		saveFile.data.tou = player.tou;
-		saveFile.data.spe = player.spe;
-		saveFile.data.inte = player.inte;
-		saveFile.data.lib = player.lib;
-		saveFile.data.sens = player.sens;
-		saveFile.data.cor = player.cor;
-		saveFile.data.fatigue = player.fatigue;
+
 		//Combat STATS
-		saveFile.data.HP = player.HP;
-		saveFile.data.lust = player.lust;
 		saveFile.data.teaseLevel = player.teaseLevel;
 		saveFile.data.teaseXP = player.teaseXP;
 		//Prison STATS
@@ -900,18 +886,13 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		//saveFile.data.prisonArmor = prison.prisonItemSlotArmor;
 		//saveFile.data.prisonWeapon = prison.prisonItemSlotWeapon;
 		//LEVEL STATS
-		saveFile.data.XP = player.XP;
-		saveFile.data.level = player.level;
-		saveFile.data.gems = player.gems;
 		saveFile.data.perkPoints = player.perkPoints;
 		saveFile.data.statPoints = player.statPoints;
 		saveFile.data.ascensionPerkPoints = player.ascensionPerkPoints;
 		//Appearance
 		saveFile.data.startingRace = player.startingRace;
-		saveFile.data.femininity = player.femininity;
 		saveFile.data.thickness = player.thickness;
 		saveFile.data.tone = player.tone;
-		saveFile.data.tallness = player.tallness;
 		saveFile.data.furColor = player.skin.furColor;
 		saveFile.data.hairColor = player.hair.color;
 		saveFile.data.hairType = player.hair.type;
@@ -951,12 +932,6 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile.data.hipRating = player.hips.rating;
 		saveFile.data.buttRating = player.butt.rating;
 		saveFile.data.udder = player.udder.toObject();
-		//Sexual Stuff
-		saveFile.data.balls = player.balls;
-		saveFile.data.cumMultiplier = player.cumMultiplier;
-		saveFile.data.ballSize = player.ballSize;
-		saveFile.data.hoursSinceCum = player.hoursSinceCum;
-		saveFile.data.fertility = player.fertility;
 		
 		//Preggo stuff
 		saveFile.data.pregnancyIncubation = player.pregnancyIncubation;
@@ -970,41 +945,12 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		   myLocalData.data.girlEffectArray.push(new Array());
 		 }*/
 
-		
-		
-		saveFile.data.breastRows = [];
 		saveFile.data.perks = [];
 		saveFile.data.statusAffects = [];
-		saveFile.data.ass = [];
 		saveFile.data.keyItems = [];
 		saveFile.data.itemStorage = [];
 		saveFile.data.gearStorage = [];
 		
-		saveFile.data.cocks = SerializationUtils.serializeVector(player.cocks as Vector.<*>);
-		saveFile.data.vaginas = SerializationUtils.serializeVector(player.vaginas as Vector.<*>);
-		
-		saveNPCs(saveFile);
-		
-		//NIPPLES
-		saveFile.data.nippleLength = player.nippleLength;
-		//Set Breast Array
-		for (i = 0; i < player.breastRows.length; i++)
-		{
-			saveFile.data.breastRows.push([]);
-				//trace("Saveone breastRow");
-		}
-		//Populate Breast Array
-		for (i = 0; i < player.breastRows.length; i++)
-		{
-			//trace("Populate One BRow");
-			saveFile.data.breastRows[i].breasts = player.breastRows[i].breasts;
-			saveFile.data.breastRows[i].breastRating = player.breastRows[i].breastRating;
-			saveFile.data.breastRows[i].nipplesPerBreast = player.breastRows[i].nipplesPerBreast;
-			saveFile.data.breastRows[i].lactationMultiplier = player.breastRows[i].lactationMultiplier;
-			saveFile.data.breastRows[i].milkFullness = player.breastRows[i].milkFullness;
-			saveFile.data.breastRows[i].fuckable = player.breastRows[i].fuckable;
-			saveFile.data.breastRows[i].fullness = player.breastRows[i].fullness;
-		}
 		//Set Perk Array
 		//Populate Perk Array
 		for (i = 0; i < player.perks.length; i++)
@@ -1086,10 +1032,6 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 			saveFile.data.gearStorage[i].unlocked = gearStorageGet()[i].unlocked;
 			saveFile.data.gearStorage[i].damage = gearStorageGet()[i].damage;
 		}
-		saveFile.data.ass.push([]);
-		saveFile.data.ass.analWetness = player.ass.analWetness;
-		saveFile.data.ass.analLooseness = player.ass.analLooseness;
-		saveFile.data.ass.fullness = player.ass.fullness;
 
 		saveFile.data.gameState = gameStateGet(); // Saving game state?
 		
@@ -1286,9 +1228,9 @@ public function saveGameObject(slot:String, isFile:Boolean):void
  * This method is protected instead of private to allow for testing.
  * @param	saveFile the file to save the NPC data to.
  */
-protected function saveNPCs(saveFile:*): void {
-	saveFile.data.npcs = [];
-	var npcs:* = saveFile.data.npcs;
+private function saveNPCs(saveFile:*): void {
+	saveFile.npcs = [];
+	var npcs:* = saveFile.npcs;
 	
 	npcs.jojo = [];
 	
@@ -1452,12 +1394,11 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		player = new Player();
 		flags = new DefaultDict();	
 		
+		SerializationUtils.deserialize(saveFile.data, this);
 		//trace("Type of saveFile.data = ", getClass(saveFile.data));
 		
 		inventory.clearStorage();
 		inventory.clearGearStorage();
-		player.short = saveFile.data.short;
-		player.a = saveFile.data.a;
 		notes = saveFile.data.notes;
 		
 		//flags
@@ -1493,16 +1434,6 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		player.nosePierced = saveFile.data.nosePierced;
 		player.nosePShort = saveFile.data.nosePShort;
 		player.nosePLong = saveFile.data.nosePLong;
-		
-		//MAIN STATS
-		player.str = saveFile.data.str;
-		player.tou = saveFile.data.tou;
-		player.spe = saveFile.data.spe;
-		player.inte = saveFile.data.inte;
-		player.lib = saveFile.data.lib;
-		player.sens = saveFile.data.sens;
-		player.cor = saveFile.data.cor;
-		player.fatigue = saveFile.data.fatigue;
 
 		//CLOTHING/ARMOR
 		var found:Boolean = false;
@@ -1601,8 +1532,6 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		}
 
 		//Combat STATS
-		player.HP = saveFile.data.HP;
-		player.lust = saveFile.data.lust;
 		if (saveFile.data.teaseXP == undefined)
 			player.teaseXP = 0;
 		else
@@ -1668,10 +1597,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 				prison.prisonItemSlotWeapon = saveFile.data.prisonWeapon;
 			}
 		}*/
-		//LEVEL STATS
-		player.XP = saveFile.data.XP;
-		player.level = saveFile.data.level;
-		player.gems = saveFile.data.gems || 0;
+		
 		if (saveFile.data.perkPoints == undefined)
 			player.perkPoints = 0;
 		else
@@ -1690,10 +1616,6 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		//Appearance
 		if (saveFile.data.startingRace != undefined)
 			player.startingRace = saveFile.data.startingRace;
-		if (saveFile.data.femininity == undefined)
-			player.femininity = 50;
-		else
-			player.femininity = saveFile.data.femininity;
 		//EYES
 		if (saveFile.data.eyeType == undefined)
 			player.eyes.type = Eyes.HUMAN;
@@ -1718,7 +1640,6 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		else
 			player.thickness = saveFile.data.thickness;
 		
-		player.tallness = saveFile.data.tallness;
 		if (saveFile.data.furColor == undefined || saveFile.data.furColor == "no")
 			player.skin.furColor = saveFile.data.hairColor;
 		else
@@ -1925,60 +1846,9 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
         if (isObject(saveFile.data.udder))
 			player.udder.setAllProps(saveFile.data.udder);
 
-		//Sexual Stuff
-		player.balls = saveFile.data.balls;
-		player.cumMultiplier = saveFile.data.cumMultiplier;
-		player.ballSize = saveFile.data.ballSize;
-		player.hoursSinceCum = saveFile.data.hoursSinceCum;
-		player.fertility = saveFile.data.fertility;
-		
 		//Preggo stuff
 		player.knockUpForce(saveFile.data.pregnancyType, saveFile.data.pregnancyIncubation);
 		player.buttKnockUpForce(saveFile.data.buttPregnancyType, saveFile.data.buttPregnancyIncubation);
-		
-		player.cocks = new Vector.<Cock>();
-		SerializationUtils.deserializeVector(player.cocks as Vector.<*>, saveFile.data.cocks, Cock);
-
-		player.vaginas = new Vector.<Vagina>();
-		SerializationUtils.deserializeVector(player.vaginas as Vector.<*>, saveFile.data.vaginas, Vagina);
-		
-		loadNPCs(saveFile);
-		
-		if (player.hasVagina() && player.vaginaType() != 5 && player.vaginaType() != 0)
-			player.vaginaType(0);
-		
-		//NIPPLES
-		if (saveFile.data.nippleLength == undefined)
-			player.nippleLength = .25;
-		else
-			player.nippleLength = saveFile.data.nippleLength;
-		//Set Breast Array
-		for (i = 0; i < saveFile.data.breastRows.length; i++)
-		{
-			player.createBreastRow();
-				//trace("LoadOne BreastROw i(" + i + ")");
-		}
-		//Populate Breast Array
-		for (i = 0; i < saveFile.data.breastRows.length; i++)
-		{
-			player.breastRows[i].breasts = saveFile.data.breastRows[i].breasts;
-			player.breastRows[i].nipplesPerBreast = saveFile.data.breastRows[i].nipplesPerBreast;
-			//Fix nipplesless breasts bug
-			if (player.breastRows[i].nipplesPerBreast == 0)
-				player.breastRows[i].nipplesPerBreast = 1;
-			player.breastRows[i].breastRating = saveFile.data.breastRows[i].breastRating;
-			player.breastRows[i].lactationMultiplier = saveFile.data.breastRows[i].lactationMultiplier;
-			if (player.breastRows[i].lactationMultiplier < 0)
-				player.breastRows[i].lactationMultiplier = 0;
-			player.breastRows[i].milkFullness = saveFile.data.breastRows[i].milkFullness;
-			player.breastRows[i].fuckable = saveFile.data.breastRows[i].fuckable;
-			player.breastRows[i].fullness = saveFile.data.breastRows[i].fullness;
-			if (player.breastRows[i].breastRating < 0)
-				player.breastRows[i].breastRating = 0;
-		}
-		
-		// Force the creation of the default breast row onto the player if it's no longer present
-		if (player.breastRows.length == 0) player.createBreastRow();
 		
 		var hasHistoryPerk:Boolean = false;
 		var hasLustyRegenPerk:Boolean = false;
@@ -2210,10 +2080,6 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			}
 		}
 		
-		player.ass.analLooseness = saveFile.data.ass.analLooseness;
-		player.ass.analWetness = saveFile.data.ass.analWetness;
-		player.ass.fullness = saveFile.data.ass.fullness;
-		
 		gameStateSet(saveFile.data.gameState);  // Loading game state
 		
 		//Days
@@ -2359,17 +2225,9 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
  * This method is protected instead of private to allow for testing.
  * @param	saveFile the file to save the NPC data to.
  */
-protected function loadNPCs(saveFile:*):void 
+private function loadNPCs(saveFile:*):void 
 {
-	var npcs:* = saveFile.data.npcs;
-	//TODO change safeFile structure with versioning of the saveFile itself.
-	if (npcs === undefined) {
-		npcs = [];
-	}
-	
-	if (npcs.jojo === undefined) {
-		npcs.jojo = [];
-	}
+	var npcs:* = saveFile.npcs;
 	
 	SerializationUtils.deserialize(npcs.jojo, new Jojo());
 }
@@ -2406,8 +2264,6 @@ public function unFuckSave():void
 	if (isNaN(getGame().time.minutes)) getGame().time.minutes = 0;
 	if (isNaN(getGame().time.hours)) getGame().time.hours = 0;
 	if (isNaN(getGame().time.days)) getGame().time.days = 0;
-
-	if (player.gems < 0) player.gems = 0; //Force fix gems
 	
 	if (player.hasStatusEffect(StatusEffects.SlimeCraving) && player.statusEffectv4(StatusEffects.SlimeCraving) == 1) {
 		player.changeStatusValue(StatusEffects.SlimeCraving, 3, player.statusEffectv2(StatusEffects.SlimeCraving)); //Duplicate old combined strength/speed value
@@ -2759,6 +2615,49 @@ public function loadText(saveText:String):void
 	
 	//Load the object
 	loadGameObject(obj);
+}
+
+public function serialize(relativeRootObject:*):void 
+{
+	SerializationUtils.serialize(relativeRootObject, player);
+	saveNPCs(relativeRootObject);
+}
+
+public function deserialize(relativeRootObject:*):void 
+{
+	SerializationUtils.deserialize(relativeRootObject, player);
+	loadNPCs(relativeRootObject);
+}
+
+public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 
+{
+	switch(serializedDataVersion) {
+		case 0:
+			upgradeUnversionedSave(relativeRootObject);
+		default:
+		/*
+		 * The default block is left empty intentionally,
+		 * this switch case operates by using fall through behavior.
+		 */
+	}
+}
+
+public function currentSerializationVerison():int 
+{
+	return SERIALIZATION_VERSION;
+}
+
+private function upgradeUnversionedSave(relativeRootObject:*): void
+{
+	if (relativeRootObject.npcs === undefined) {
+		relativeRootObject.npcs = [];
+	}
+	
+	var npcs:* = relativeRootObject.npcs;
+	
+	if (npcs.jojo === undefined) {
+		npcs.jojo = [];
+	}
 }
 
 //*******

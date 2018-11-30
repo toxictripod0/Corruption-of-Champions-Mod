@@ -1,5 +1,7 @@
 package {
 	import classes.AppearanceTest;
+	import classes.AssTest;
+	import classes.BreastRowTest;
 	import classes.HelperSuite;
 	import classes.InternalsSuite;
 	import classes.PlayerTest;
@@ -35,6 +37,8 @@ package {
 		 public var playerTest:PlayerTest;
 		 public var vaginaClass:VaginaTest;
 		 public var cockTest:CockTest;
+		 public var breastRowTest:BreastRowTest;
+		 public var assTest:AssTest;
 		 public var savesTest:SavesTest;
 		 public var playerEventsTest:PlayerEventsTest;
 		 public var playerEventsVaginaLoosenessRecoveryTest:PlayerEventsVaginaLoosenessRecoveryTest;
