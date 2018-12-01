@@ -1,4 +1,4 @@
-﻿//CoC Creature.as
+//CoC Creature.as
 package classes
 {
 	import classes.BodyParts.Antennae;
@@ -33,6 +33,8 @@ package classes
 	import classes.Vagina;
 	import classes.internals.RandomNumberGenerator;
 	import classes.internals.LoggerFactory;
+	import classes.internals.Serializable;
+	import classes.internals.SerializationUtils;
 	import classes.internals.Utils;
 	import classes.internals.profiling.Begin;
 	import classes.internals.profiling.End;
@@ -44,10 +46,12 @@ package classes
 	import mx.logging.ILogger;
 
 
-	public class Creature extends Utils
+	public class Creature extends Utils implements Serializable
 	{
 		private static const LOGGER:ILogger = LoggerFactory.getLogger(Creature);
 
+		private static const SERIALIZATION_VERSION:int = 1;
+		
 		public function get game():CoC {
 			return kGAMECLASS;
 		}
@@ -4245,6 +4249,144 @@ package classes
 				scale   : argDefs.scale[0],
 				max     : argDefs.max[0]
 			};
+		}
+		
+		public function serialize(relativeRootObject:*):void 
+		{
+			relativeRootObject.short = this.short;
+			relativeRootObject.a = this.a;
+	
+			relativeRootObject.cocks = SerializationUtils.serializeVector(this.cocks as Vector.<*>);
+			relativeRootObject.vaginas = SerializationUtils.serializeVector(this.vaginas as Vector.<*>);
+			relativeRootObject.breastRows = SerializationUtils.serializeVector(this.breastRows as Vector.<*>);
+			
+			relativeRootObject.ass = [];
+			SerializationUtils.serialize(relativeRootObject.ass, this.ass);
+			
+			serializeStats(relativeRootObject);
+			serializeSexualStats(relativeRootObject);
+		}
+		
+		private function serializeStats(relativeRootObject:*):void
+		{
+			relativeRootObject.str = this.str;
+			relativeRootObject.tou = this.tou;
+			relativeRootObject.spe = this.spe;
+			relativeRootObject.inte = this.inte;
+			relativeRootObject.lib = this.lib;
+			relativeRootObject.sens = this.sens;
+			relativeRootObject.cor = this.cor;
+			relativeRootObject.fatigue = this.fatigue;
+			
+			relativeRootObject.XP = this.XP;
+			relativeRootObject.level = this.level;
+			relativeRootObject.gems = this.gems;
+			
+			relativeRootObject.HP = this.HP;
+			relativeRootObject.lust = this.lust;
+			
+			relativeRootObject.femininity = this.femininity;
+			relativeRootObject.tallness = this.tallness
+		}
+		
+		private function serializeSexualStats(relativeRootObject:*):void
+		{
+			relativeRootObject.balls = this.balls;
+			relativeRootObject.cumMultiplier = this.cumMultiplier;
+			relativeRootObject.ballSize = this.ballSize;
+			relativeRootObject.hoursSinceCum = this.hoursSinceCum;
+			relativeRootObject.ballSize = this.ballSize;
+			relativeRootObject.fertility = this.fertility;
+			relativeRootObject.nippleLength = this.nippleLength;
+		}
+		
+		public function deserialize(relativeRootObject:*):void 
+		{
+			this.short = relativeRootObject.short;
+			this.a = relativeRootObject.a;
+			
+			SerializationUtils.deserializeVector(this.cocks as Vector.<*>, relativeRootObject.cocks, Cock);
+			SerializationUtils.deserializeVector(this.vaginas as Vector.<*>, relativeRootObject.vaginas, Vagina);
+			SerializationUtils.deserializeVector(this.breastRows as Vector.<*>, relativeRootObject.breastRows, BreastRow);
+			SerializationUtils.deserialize(relativeRootObject.ass, this.ass);
+			deserializeStats(relativeRootObject);
+			deserializeSexualStats(relativeRootObject);
+		}
+		
+		private function deserializeStats(relativeRootObject:*):void
+		{
+			this.str = relativeRootObject.str;
+			this.tou = relativeRootObject.tou;
+			this.spe = relativeRootObject.spe;
+			this.inte = relativeRootObject.inte;
+			this.lib = relativeRootObject.lib;
+			this.sens = relativeRootObject.sens;
+			this.cor = relativeRootObject.cor;
+			this.fatigue = relativeRootObject.fatigue;
+			
+			this.XP = relativeRootObject.XP
+			this.level = relativeRootObject.level;
+			this.gems = relativeRootObject.gems;
+			
+			fixInvalidGems();
+			
+			this.HP = relativeRootObject.HP
+			this.lust = relativeRootObject.lust;
+
+			this.femininity = relativeRootObject.femininity;
+			this.tallness = relativeRootObject.tallness;
+			
+			fixMissingFemininity();
+		}
+		
+		private function deserializeSexualStats(relativeRootObject:*):void
+		{
+			this.balls = relativeRootObject.balls;
+			this.cumMultiplier = relativeRootObject.cumMultiplier;
+			this.ballSize = relativeRootObject.ballSize;
+			this.hoursSinceCum = relativeRootObject.hoursSinceCum;
+			this.ballSize = relativeRootObject.ballSize;
+			this.fertility = relativeRootObject.fertility;
+			this.nippleLength = relativeRootObject.nippleLength;
+			
+			fixMissingNippleLength();
+		}
+		
+		private function fixInvalidGems():void
+		{
+			// TODO move this to upgrade code
+			if (isNaN(this.gems) || this.gems < 0) {
+				this.gems = 0;
+			}
+		}
+		
+		private function fixMissingFemininity(): void
+		{
+			// TODO move this to upgrade code
+			if (isNaN(this.femininity)) {
+				this.femininity = 50;
+			}
+		}
+		
+		private function fixMissingNippleLength():void
+		{
+			// TODO move this to upgrade code
+			if (isNaN(this.nippleLength)) {
+				this.nippleLength = 0.25;
+			}
+		}
+		
+		public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 
+		{
+			/**
+			 * be aware that sub-classes might override this function and may not call the super-class version.
+			 * e.g. no super.upgradeSerializationVersion(relativeRootObject, serializedDataVersion)
+			 */
+		}
+		
+		public function currentSerializationVerison():int 
+		{
+			return SERIALIZATION_VERSION;
 		}
 	}
 }

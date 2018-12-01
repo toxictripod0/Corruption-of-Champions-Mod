@@ -1,9 +1,12 @@
-﻿package classes
+package classes
 {
+	import classes.internals.Serializable;
 	import classes.internals.Utils;
 
-	public class Ass
+	public class Ass implements Serializable
 	{
+		private static const SERIALIZATION_VERSION:int = 1;
+		
 		public static const WETNESS_DRY:int            =   0;
 		public static const WETNESS_NORMAL:int         =   1;
 		public static const WETNESS_MOIST:int          =   2;
@@ -17,11 +20,6 @@
 		public static const LOOSENESS_LOOSE:int        =   3;
 		public static const LOOSENESS_STRETCHED:int    =   4;
 		public static const LOOSENESS_GAPING:int       =   5;
-
-		//constructor
-		public function Ass()
-		{
-		}
 		
 		//data
 		//butt wetness
@@ -45,6 +43,30 @@
 					"analWetness", "analLooseness", "fullness"
 			]);
 			return error;
+		}
+		
+		public function serialize(relativeRootObject:*):void 
+		{
+			relativeRootObject.analLooseness = this.analLooseness;
+			relativeRootObject.analWetness = this.analWetness;
+			relativeRootObject.fullness = this.fullness;
+		}
+		
+		public function deserialize(relativeRootObject:*):void 
+		{
+			this.analLooseness = relativeRootObject.analLooseness;
+			this.analWetness = relativeRootObject.analWetness;
+			this.fullness = relativeRootObject.fullness;
+		}
+		
+		public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 
+		{
+			// nothing to upgrade yet
+		}
+		
+		public function currentSerializationVerison():int 
+		{
+			return SERIALIZATION_VERSION;
 		}
 	}
 }
