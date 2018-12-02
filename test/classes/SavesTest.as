@@ -85,11 +85,15 @@ package classes{
 			player.itemSlot(2).setItemAndQty(consumables.EQUINUM, 8);
 			player.itemSlot(2).damage = 9;
 			
+			initInventory();
+			
 			saveGame();
 
 			kGAMECLASS.flags[kFLAGS.JOJO_STATUS] = 5;
 			saveFile = [];
 			saveFile.data = [];
+			
+			kGAMECLASS.inventory.clearStorage();
 		}
 		
 		private function saveGame():void {
@@ -147,6 +151,19 @@ package classes{
 			saveFile.data.serializationVersion = undefined;
 			saveFile.data.npcs = [];
 			saveFile.data.npcs.jojo = [];
+		}
+		
+		private function initInventory():void
+		{
+			//TODO remove after inventory tests are moved
+			var items:Array = kGAMECLASS.inventory.itemStorageDirectGet();
+			
+			kGAMECLASS.inventory.createStorage();
+			kGAMECLASS.inventory.createStorage();
+			
+			// this is completely safe, trust me!  /s
+			(items[0] as ItemSlot).setItemAndQty(consumables.PURPDYE, 3);
+			(items[1] as ItemSlot).setItemAndQty(consumables.PURHONY, 5);
 		}
 		
 		[Test]
@@ -569,6 +586,45 @@ package classes{
 			assertThat(kGAMECLASS.player.itemSlot2.itype, equalTo(ItemType.NOTHING));
 			assertThat(kGAMECLASS.player.itemSlot3.itype, equalTo(consumables.EQUINUM));
 		}
+		
+		// GEAR STORAGE TESTS START
+		// TODO remove most tests once code and tests have been moved to inventory
+		
+		[Test]
+		public function itemStorageLoaded():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.inventory.hasItemInStorage(consumables.PURPDYE), equalTo(true));
+			assertThat(kGAMECLASS.inventory.hasItemInStorage(consumables.PURHONY), equalTo(true));
+		}
+		
+		[Test]
+		public function itemStorageQuantityLoaded():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.inventory.itemStorageDirectGet()[0].quantity, equalTo(3));
+			assertThat(kGAMECLASS.inventory.itemStorageDirectGet()[1].quantity, equalTo(5));
+		}
+		
+		[Test]
+		public function emptyItemStorageSlotIsNull():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.inventory.itemStorageDirectGet()[2], nullValue());
+		}
+		
+		[Test]
+		public function itemStorageMustBeInitializedAfterLoad():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.inventory.itemStorageDirectGet(), notNullValue());
+		}
+		
+		// GEAR STORAGE TESTS END
 	}
 }
 

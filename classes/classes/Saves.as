@@ -1959,6 +1959,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 					//trace("KeyItem " + player.keyItems[i].keyName + " loaded.");
 			}
 		}
+
 		//Set storage slot array
 		if (saveFile.data.itemStorage == undefined)
 		{
@@ -1989,6 +1990,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 				storage.unlocked = savedIS.unlocked;
 			}
 		}
+
 		//Set gear slot array
 		if (saveFile.data.gearStorage == undefined)
 		{
