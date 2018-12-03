@@ -130,5 +130,15 @@ package classes
 		{
 			assertThat(deserialized.damage, equalTo(DAMAGE));
 		}
+		
+		[Test]
+		public function missingDamageShouldBeZero():void
+		{
+			delete serializedClass['damage'];
+			
+			SerializationUtils.deserialize(serializedClass, deserialized);
+			
+			assertThat(deserialized.damage, equalTo(0));
+		}
 	}
 }
