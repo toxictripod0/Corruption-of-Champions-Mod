@@ -294,6 +294,7 @@ package classes
 		public var ingnam:Ingnam = new Ingnam();
 		public var prison:Prison = new Prison();
 		public var townRuins:TownRuins = new TownRuins();
+		public var betaZone:BetaZone = new BetaZone();
 		// Scenes/Seasonal/
 		public var aprilFools:AprilFools = new AprilFools();
 		public var fera:Fera = new Fera();
