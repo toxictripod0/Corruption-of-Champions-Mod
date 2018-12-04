@@ -160,10 +160,15 @@ package classes{
 			
 			kGAMECLASS.inventory.createStorage();
 			kGAMECLASS.inventory.createStorage();
+			kGAMECLASS.inventory.createStorage();
+			kGAMECLASS.inventory.createStorage();
+			kGAMECLASS.inventory.createStorage();
 			
 			// this is completely safe, trust me!  /s
 			(items[0] as ItemSlot).setItemAndQty(consumables.PURPDYE, 3);
 			(items[1] as ItemSlot).setItemAndQty(consumables.PURHONY, 5);
+			(items[2] as ItemSlot).setItemAndQty(ItemType.NOTHING, 0);
+			(items[2] as ItemSlot).unlocked = false;
 		}
 		
 		[Test]
@@ -613,7 +618,7 @@ package classes{
 		{
 			cut.loadGame(TEST_SAVE_GAME);
 			
-			assertThat(kGAMECLASS.inventory.itemStorageDirectGet()[2], nullValue());
+			assertThat(kGAMECLASS.inventory.itemStorageDirectGet()[5], nullValue());
 		}
 		
 		[Test]
@@ -622,6 +627,14 @@ package classes{
 			cut.loadGame(TEST_SAVE_GAME);
 			
 			assertThat(kGAMECLASS.inventory.itemStorageDirectGet(), notNullValue());
+		}
+		
+		[Test]
+		public function itemStorageSlotIsLocked():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.inventory.itemStorageDirectGet()[2].unlocked, equalTo(false));
 		}
 		
 		// GEAR STORAGE TESTS END

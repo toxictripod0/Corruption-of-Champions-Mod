@@ -1003,21 +1003,21 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 			saveFile.data.keyItems[i].value3 = player.keyItems[i].value3;
 			saveFile.data.keyItems[i].value4 = player.keyItems[i].value4;
 		}
-		//Set storage slot array
-		for (i = 0; i < itemStorageGet().length; i++)
-		{
-			saveFile.data.itemStorage.push([]);
-		}
+		
+		// because a function reference is not helpful for debugging, I want to see values!
+		var itemStorage:Array = itemStorageGet();
 
 		//Populate storage slot array
-		for (i = 0; i < itemStorageGet().length; i++)
+		for (i = 0; i < itemStorage.length; i++)
 		{
-			//saveFile.data.itemStorage[i].shortName = itemStorage[i].itype.id;// For backward compatibility
-			saveFile.data.itemStorage[i].id = (itemStorageGet()[i].itype == null) ? null : itemStorageGet()[i].itype.id;
-			saveFile.data.itemStorage[i].quantity = itemStorageGet()[i].quantity;
-			saveFile.data.itemStorage[i].unlocked = itemStorageGet()[i].unlocked;
-			saveFile.data.itemStorage[i].damage = itemStorageGet()[i].damage;
+			if (itemStorage[i].itype == null) {
+				saveFile.data.itemStorage.push(null);
+			} else {
+				saveFile.data.itemStorage.push([]);
+				SerializationUtils.serialize(saveFile.data.itemStorage[i], itemStorage[i]);
+			}
 		}
+		
 		//Set gear slot array
 		for (i = 0; i < gearStorageGet().length; i++)
 		{
