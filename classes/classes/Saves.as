@@ -1970,24 +1970,15 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			//Populate storage slot array
 			for (i = 0; i < saveFile.data.itemStorage.length; i++)
 			{
-				//trace("Populating a storage slot save with data");
 				inventory.createStorage();
 				var storage:ItemSlot = itemStorageGet()[i];
 				var savedIS:* = saveFile.data.itemStorage[i];
-				if (savedIS.shortName)
-				{
-					if (savedIS.shortName.indexOf("Gro+") != -1)
-						savedIS.id = "GroPlus";
-					else if (savedIS.shortName.indexOf("Sp Honey") != -1)
-						savedIS.id = "SpHoney";
-				}
+				
 				if (savedIS.quantity>0) {
-					storage.setItemAndQty(ItemType.lookupItem(savedIS.id || savedIS.shortName), savedIS.quantity);
-					storage.damage = savedIS.damage != undefined ? savedIS.damage : 0;
-				}
-				else
+					SerializationUtils.deserialize(savedIS, storage);
+				} else {
 					storage.emptySlot();
-				storage.unlocked = savedIS.unlocked;
+				}
 			}
 		}
 
