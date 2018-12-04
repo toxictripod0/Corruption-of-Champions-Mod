@@ -86,6 +86,16 @@ package classes
 		}
 		
 		[Test]
+		public function deserializeItypeWithUnversionedID():void
+		{
+			delete serializedClass["serializationVersion"];
+			
+			SerializationUtils.deserialize(serializedClass, deserialized);
+			
+			assertThat(deserialized.itype.id, equalTo(ITYPE.id));
+		}
+		
+		[Test]
 		public function upgradeLegacyGroPlusShortName():void
 		{
 			delete serializedClass["serializationVersion"];
