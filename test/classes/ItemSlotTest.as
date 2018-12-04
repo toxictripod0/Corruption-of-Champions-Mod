@@ -140,5 +140,16 @@ package classes
 			
 			assertThat(deserialized.damage, equalTo(0));
 		}
+		
+		[Test]
+		public function zeroQuantityShouldLoadAsEmpty():void
+		{
+			serializedClass['serializationVersion'] = 1;
+			serializedClass['quantity'] = 0;
+			
+			SerializationUtils.deserialize(serializedClass, deserialized);
+			
+			assertThat(deserialized.itype.id, equalTo(ItemType.NOTHING.id));
+		}
 	}
 }
