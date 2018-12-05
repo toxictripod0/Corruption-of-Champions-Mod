@@ -28,7 +28,8 @@ package classes.Scenes
 
 	use namespace kGAMECLASS;
 
-	public class Inventory extends BaseContent {
+	public class Inventory extends BaseContent implements Serializable {
+		private static const SERIALIZATION_VERSION:int = 1;
 		private static const LOGGER:ILogger = LoggerFactory.getLogger(Inventory);
 		
 		private static const inventorySlotName:Array = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth"];
@@ -65,7 +66,7 @@ package classes.Scenes
 			itemStorage = [];
 			gearStorage = [];
 			prisonStorage = [];
-			saveSystem.linkToInventory(itemStorageDirectGet, gearStorageDirectGet);
+			saveSystem.linkToInventory(gearStorageDirectGet);
 		}
 		
 		public function showStash():Boolean {
@@ -909,6 +910,74 @@ package classes.Scenes
 				tt += "\nDurability: " + (slot.itype.durability - slot.damage) + "/" + slot.itype.durability;
 			}
 			return tt;
+		}
+		
+		public function serialize(relativeRootObject:*):void 
+		{
+			relativeRootObject.itemStorage = [];
+			serializeItemStorage(relativeRootObject.itemStorage);
+		}
+		
+		private function serializeItemStorage(saveFileItemStorage:*):void
+		{
+			for (var i:int = 0; i < itemStorage.length; i++)
+			{
+				if (itemStorage[i].itype == null) {
+					saveFileItemStorage.push(null);
+				} else {
+					saveFileItemStorage.push([]);
+					SerializationUtils.serialize(saveFileItemStorage[i], itemStorage[i]);
+				}
+			}
+		}
+		
+		public function deserialize(relativeRootObject:*):void 
+		{
+			deserializeItemStorage(relativeRootObject.itemStorage);
+		}
+		
+		private function deserializeItemStorage(saveFileItemStorage:*):void
+		{
+			for (var i:int = 0; i < saveFileItemStorage.length; i++)
+			{
+				createStorage();
+				var storage:ItemSlot = this.itemStorage[i];
+				var savedIS:* = saveFileItemStorage[i];
+				
+				if (savedIS.quantity>0) {
+					SerializationUtils.deserialize(savedIS, storage);
+				} else {
+					storage.emptySlot();
+				}
+			}
+		}
+		
+		public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 
+		{
+			switch (serializedDataVersion) {
+				case 0:
+					upgradeLegacyItemStorage(relativeRootObject);
+				
+				default:
+					/*
+					 * The default block is left empty intentionally,
+					 * this switch case operates by using fall through behavior.
+					 */
+			}
+		}
+		
+		private function upgradeLegacyItemStorage(relativeRootObject:*):void
+		{
+			LOGGER.debug("Upgrading legacy item storage");
+			
+			if (relativeRootObject.itemStorage === undefined) {
+				relativeRootObject.itemStorage  = [];
+			}
+		}
+		
+		public function currentSerializationVerison():int 
+		{
+			return SERIALIZATION_VERSION;
 		}
 	}
 }

@@ -39,7 +39,6 @@ public class Saves extends BaseContent implements Serializable {
 
 	private var gameStateGet:Function;
 	private var gameStateSet:Function;
-	private var itemStorageGet:Function;
 	private var gearStorageGet:Function;
 	private var permObjectFileName:String = "CoC_Main";
 
@@ -48,8 +47,7 @@ public class Saves extends BaseContent implements Serializable {
 		gameStateSet = gameStateDirectSet;
 	}
 
-	public function linkToInventory(itemStorageDirectGet:Function, gearStorageDirectGet:Function):void {
-		itemStorageGet = itemStorageDirectGet;
+	public function linkToInventory(gearStorageDirectGet:Function):void {
 		gearStorageGet = gearStorageDirectGet;
 	}
 
@@ -949,7 +947,6 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile.data.perks = [];
 		saveFile.data.statusAffects = [];
 		saveFile.data.keyItems = [];
-		saveFile.data.itemStorage = [];
 		saveFile.data.gearStorage = [];
 
 		//Set Perk Array
@@ -1004,19 +1001,7 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 			saveFile.data.keyItems[i].value4 = player.keyItems[i].value4;
 		}
 		
-		// because a function reference is not helpful for debugging, I want to see values!
-		var itemStorage:Array = itemStorageGet();
-
-		//Populate storage slot array
-		for (i = 0; i < itemStorage.length; i++)
-		{
-			if (itemStorage[i].itype == null) {
-				saveFile.data.itemStorage.push(null);
-			} else {
-				saveFile.data.itemStorage.push([]);
-				SerializationUtils.serialize(saveFile.data.itemStorage[i], itemStorage[i]);
-			}
-		}
+		SerializationUtils.serialize(saveFile.data, inventory);
 		
 		//Set gear slot array
 		for (i = 0; i < gearStorageGet().length; i++)
@@ -1960,28 +1945,10 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			}
 		}
 
-		//Set storage slot array
-		if (saveFile.data.itemStorage == undefined)
-		{
-			//trace("OLD SAVES DO NOT CONTAIN ITEM STORAGE ARRAY");
-		}
-		else
-		{
-			//Populate storage slot array
-			for (i = 0; i < saveFile.data.itemStorage.length; i++)
-			{
-				inventory.createStorage();
-				var storage:ItemSlot = itemStorageGet()[i];
-				var savedIS:* = saveFile.data.itemStorage[i];
-				
-				if (savedIS.quantity>0) {
-					SerializationUtils.deserialize(savedIS, storage);
-				} else {
-					storage.emptySlot();
-				}
-			}
-		}
+		SerializationUtils.deserialize(saveFile.data, inventory);
 
+		var storage:ItemSlot;
+		
 		//Set gear slot array
 		if (saveFile.data.gearStorage == undefined)
 		{
