@@ -18,6 +18,7 @@ package classes
 	import classes.Scenes.Places.TelAdre.UmasShop;
 	import classes.internals.LoggerFactory;
 	import classes.internals.Serializable;
+	import classes.internals.SerializationUtils;
 	import classes.lists.BreastCup;
 	import classes.lists.ColorLists;
 	import mx.logging.ILogger;
@@ -32,20 +33,22 @@ package classes
 		private static const LOGGER:ILogger = LoggerFactory.getLogger(Player);
 		
 		private static const SERIALIZATION_VERSION:int = 1;
+		private static const NUMBER_OF_ITEMSLOTS:int = 10;
 		
 		public function Player() {
-			//Item things
-			itemSlot1 = new ItemSlot();
-			itemSlot2 = new ItemSlot();
-			itemSlot3 = new ItemSlot();
-			itemSlot4 = new ItemSlot();
-			itemSlot5 = new ItemSlot();
-			itemSlot6 = new ItemSlot();
-			itemSlot7 = new ItemSlot();
-			itemSlot8 = new ItemSlot();
-			itemSlot9 = new ItemSlot();
-			itemSlot10 = new ItemSlot();
-			itemSlots = [itemSlot1, itemSlot2, itemSlot3, itemSlot4, itemSlot5, itemSlot6, itemSlot7, itemSlot8, itemSlot9, itemSlot10];
+			itemSlots = new Vector.<classes.ItemSlot>();
+			initializeItemSlots();
+		}
+		
+		private function initializeItemSlots():void
+		{
+			for (var i:int = 0; i < NUMBER_OF_ITEMSLOTS; i++) {
+				itemSlots.push(new ItemSlot());
+			}
+			
+			itemSlot(0).unlocked = true;
+			itemSlot(1).unlocked = true;
+			itemSlot(2).unlocked = true;
 		}
 		
 		protected function outputText(text:String):void
@@ -89,19 +92,66 @@ package classes
 		override public function pregnancyUpdate():Boolean {
 			return game.pregnancyProgress.updatePregnancy(); //Returns true if we need to make sure pregnancy texts aren't hidden
 		}
-
-		// Inventory
-		public var itemSlot1:ItemSlot;
-		public var itemSlot2:ItemSlot;
-		public var itemSlot3:ItemSlot;
-		public var itemSlot4:ItemSlot;
-		public var itemSlot5:ItemSlot;
-		public var itemSlot6:ItemSlot;
-		public var itemSlot7:ItemSlot;
-		public var itemSlot8:ItemSlot;
-		public var itemSlot9:ItemSlot;
-		public var itemSlot10:ItemSlot;
-		public var itemSlots:/*ItemSlot*/Array;
+		
+		/**
+		 * deprecated legacy itemSlots
+		 * 
+		 * Do not use these for new code, use itemSlot(index:int) instead.
+		 */
+		
+		public function get itemSlot1():ItemSlot
+		{
+			return itemSlot(0);
+		}
+		
+		public function get itemSlot2():ItemSlot
+		{
+			return itemSlot(1);
+		}
+		
+		public function get itemSlot3():ItemSlot
+		{
+			return itemSlot(2);
+		}
+		
+		public function get itemSlot4():ItemSlot
+		{
+			return itemSlot(3);
+		}
+		
+		public function get itemSlot5():ItemSlot
+		{
+			return itemSlot(4);
+		}
+		
+		public function get itemSlot6():ItemSlot
+		{
+			return itemSlot(5);
+		}
+		
+		public function get itemSlot7():ItemSlot
+		{
+			return itemSlot(6);
+		}
+		
+		public function get itemSlot8():ItemSlot
+		{
+			return itemSlot(7);
+		}
+		
+		public function get itemSlot9():ItemSlot
+		{
+			return itemSlot(8);
+		}
+		
+		public function get itemSlot10():ItemSlot
+		{
+			return itemSlot(9);
+		}
+		
+		// end of legacy item slots
+		
+		public var itemSlots:Vector.<ItemSlot>;
 		
 		public var prisonItemSlots:Array = [];
 		public var previouslyWornClothes:/*String*/Array = []; //For tracking achievement.
@@ -3680,6 +3730,8 @@ package classes
 		override public function serialize(relativeRootObject:*):void 
 		{
 			super.serialize(relativeRootObject);
+			
+			relativeRootObject.itemSlots = SerializationUtils.serializeVector(this.itemSlots as Vector.<*>);
 		}
 		
 		override public function deserialize(relativeRootObject:*):void 
@@ -3697,11 +3749,51 @@ package classes
 				LOGGER.warn("Player has no breast row, this is an invalid state. Creating breast row...");
 				createBreastRow();
 			}
+			
+			this.itemSlots.length = 0;
+			SerializationUtils.deserializeVector(this.itemSlots as Vector.<*>, relativeRootObject.itemSlots, ItemSlot);
 		}
 		
 		override public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 
 		{
+			switch (serializedDataVersion) {
+				case 0:
+					upgradeLegacyItemSlots(relativeRootObject);
+					
+				default:
+					/*
+					 * The default block is left empty intentionally,
+					 * this switch case operates by using fall through behavior.
+					 */
+			}
+		}
 		
+		private function upgradeLegacyItemSlots(relativeRootObject:*):void
+		{
+			LOGGER.info("Upgrading legacy item slots...");
+			var slots:Vector.<ItemSlot> = new Vector.<classes.ItemSlot>();
+			
+			var slotname:String = "itemSlot";
+			
+			for (var i:int = 1; i < 11; i++) {
+				var slot:String = slotname + i;
+				
+				slots.push(legacyItemSlotFromSave(relativeRootObject, slot));
+			}
+			
+			relativeRootObject.itemSlots = SerializationUtils.serializeVector(slots as Vector.<*>);
+			LOGGER.info("Finished upgrading legacy item slots!");
+		}
+		
+		private function legacyItemSlotFromSave(relativeRootObject:*, slotName:String):ItemSlot
+		{
+			var itemSlot:ItemSlot = new ItemSlot();
+			
+			if (relativeRootObject[slotName] !== undefined) {
+				SerializationUtils.deserialize(relativeRootObject[slotName], itemSlot);
+			}
+			
+			return itemSlot;
 		}
 		
 		override public function currentSerializationVerison():int 
