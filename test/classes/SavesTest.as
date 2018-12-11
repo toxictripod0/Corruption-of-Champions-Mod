@@ -155,7 +155,7 @@ package classes{
 		
 		private function initInventory():void
 		{
-			//TODO remove after inventory tests are moved
+			//TODO remove this once the saves serialization has been completed
 			var items:Array = kGAMECLASS.inventory.itemStorageDirectGet();
 			
 			kGAMECLASS.inventory.createStorage();
@@ -592,52 +592,21 @@ package classes{
 			assertThat(kGAMECLASS.player.itemSlot3.itype, equalTo(consumables.EQUINUM));
 		}
 		
-		// GEAR STORAGE TESTS START
-		// TODO remove most tests once code and tests have been moved to inventory
-		
 		[Test]
+		public function inventoryMustBeValid():void
+		{
+			assertThat(kGAMECLASS.inventory, notNullValue());
+		}
+		
+		[Test(description="This is to test that the inventory is correctly serialized")]
 		public function itemStorageLoaded():void
 		{
+			//TODO remove this once the saves serialization has been completed
 			cut.loadGame(TEST_SAVE_GAME);
 			
 			assertThat(kGAMECLASS.inventory.hasItemInStorage(consumables.PURPDYE), equalTo(true));
 			assertThat(kGAMECLASS.inventory.hasItemInStorage(consumables.PURHONY), equalTo(true));
 		}
-		
-		[Test]
-		public function itemStorageQuantityLoaded():void
-		{
-			cut.loadGame(TEST_SAVE_GAME);
-			
-			assertThat(kGAMECLASS.inventory.itemStorageDirectGet()[0].quantity, equalTo(3));
-			assertThat(kGAMECLASS.inventory.itemStorageDirectGet()[1].quantity, equalTo(5));
-		}
-		
-		[Test]
-		public function emptyItemStorageSlotIsNull():void
-		{
-			cut.loadGame(TEST_SAVE_GAME);
-			
-			assertThat(kGAMECLASS.inventory.itemStorageDirectGet()[5], nullValue());
-		}
-		
-		[Test]
-		public function itemStorageMustBeInitializedAfterLoad():void
-		{
-			cut.loadGame(TEST_SAVE_GAME);
-			
-			assertThat(kGAMECLASS.inventory.itemStorageDirectGet(), notNullValue());
-		}
-		
-		[Test]
-		public function itemStorageSlotIsLocked():void
-		{
-			cut.loadGame(TEST_SAVE_GAME);
-			
-			assertThat(kGAMECLASS.inventory.itemStorageDirectGet()[2].unlocked, equalTo(false));
-		}
-		
-		// GEAR STORAGE TESTS END
 	}
 }
 
