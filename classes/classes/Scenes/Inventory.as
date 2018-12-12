@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Created by aimozg on 12.01.14.
  */
 package classes.Scenes
