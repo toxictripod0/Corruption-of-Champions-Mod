@@ -920,6 +920,7 @@ package classes.Scenes
 		
 		private function serializeItemStorage(saveFileItemStorage:*):void
 		{
+			LOGGER.debug("Serializing {0} slots in itemStorage...", itemStorage.length);
 			for (var i:int = 0; i < itemStorage.length; i++)
 			{
 				if (itemStorage[i].itype == null) {
@@ -938,6 +939,7 @@ package classes.Scenes
 		
 		private function deserializeItemStorage(saveFileItemStorage:*):void
 		{
+			LOGGER.debug("Deserializing {0} slots from itemStorage...", saveFileItemStorage.length);
 			for (var i:int = 0; i < saveFileItemStorage.length; i++)
 			{
 				createStorage();
@@ -968,7 +970,7 @@ package classes.Scenes
 		
 		private function upgradeLegacyItemStorage(relativeRootObject:*):void
 		{
-			LOGGER.debug("Upgrading legacy item storage");
+			LOGGER.info("Upgrading legacy item storage");
 			
 			if (relativeRootObject.itemStorage === undefined) {
 				relativeRootObject.itemStorage  = [];
