@@ -1,5 +1,7 @@
 package classes{
+	import classes.Items.ArmorLib;
 	import classes.Items.ConsumableLib;
+	import classes.Items.WeaponLib;
 	import classes.internals.SerializationUtils;
 	import classes.lists.BreastCup;
 	import org.flexunit.asserts.*;
@@ -54,6 +56,9 @@ package classes{
 		private var cut:SavesForTest;
 		private static var consumables:ConsumableLib;
 		
+		private var weapons:WeaponLib = new WeaponLib;
+		private var armor:ArmorLib = new ArmorLib();
+		
 		private var saveFile:*;
 		private var serializedSave:* = [];
 		private var TEST_SAVE_GAME:String;
@@ -92,6 +97,7 @@ package classes{
 			player.itemSlot(2).damage = 9;
 			
 			initInventory();
+			initGearStorage();
 			
 			saveGame();
 
@@ -100,6 +106,7 @@ package classes{
 			saveFile.data = [];
 			
 			kGAMECLASS.inventory.clearStorage();
+			kGAMECLASS.inventory.clearGearStorage();
 		}
 		
 		[After]
@@ -201,6 +208,19 @@ package classes{
 			(items[1] as ItemSlot).setItemAndQty(consumables.PURHONY, 5);
 			(items[2] as ItemSlot).setItemAndQty(ItemType.NOTHING, 0);
 			(items[2] as ItemSlot).unlocked = false;
+		}
+		
+		private function initGearStorage():void
+		{
+			var gear:Array = kGAMECLASS.inventory.gearStorageDirectGet();
+			
+			kGAMECLASS.inventory.initializeGearStorage();
+			
+			// don't try this at home kids!
+			(gear[0] as ItemSlot).setItemAndQty(weapons.B_SWORD, 1);
+			(gear[1] as ItemSlot).setItemAndQty(weapons.PIPE, 2);
+			(gear[9] as ItemSlot).setItemAndQty(armor.GOOARMR, 3);
+			(gear[35] as ItemSlot).setItemAndQty(armor.B_DRESS, 4);
 		}
 		
 		[Test]
@@ -672,6 +692,42 @@ package classes{
 			assertThat("Item storage did not contain purple dye", kGAMECLASS.inventory.hasItemInStorage(consumables.PURPDYE), equalTo(true));
 			assertThat("Item storage did not contain pure honey", kGAMECLASS.inventory.hasItemInStorage(consumables.PURHONY), equalTo(true));
 		}
+		
+		// GEAR TESTS START
+		
+		[Test]
+		public function gearStorageIsCreated():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.inventory.gearStorageDirectGet(), notNullValue());
+		}
+		
+		[Test]
+		public function weaponRackLoaded():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.inventory.gearStorageDirectGet()[0].itype.id, weapons.B_SWORD.id);
+		}
+		
+		[Test]
+		public function dresserLoaded():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.inventory.gearStorageDirectGet()[35].itype.id, armor.B_DRESS.id);
+		}
+		
+		[Test]
+		public function emptySlotIsLoaded():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+
+			assertThat(kGAMECLASS.inventory.gearStorageDirectGet()[40].isEmpty(), equalTo(true));
+		}
+		
+		// GEAR TESTS END
 	}
 }
 
