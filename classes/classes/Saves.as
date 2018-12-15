@@ -1003,22 +1003,7 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		
 		saveFile.data.inventory = [];
 		SerializationUtils.serialize(saveFile.data.inventory, inventory);
-		
-		//Set gear slot array
-		for (i = 0; i < gearStorageGet().length; i++)
-		{
-			saveFile.data.gearStorage.push([]);
-		}
-
-		//Populate gear slot array
-		for (i = 0; i < gearStorageGet().length; i++)
-		{
-			//saveFile.data.gearStorage[i].shortName = gearStorage[i].itype.id;// uncomment for backward compatibility
-			saveFile.data.gearStorage[i].id = (gearStorageGet()[i].isEmpty()) ? null : gearStorageGet()[i].itype.id;
-			saveFile.data.gearStorage[i].quantity = gearStorageGet()[i].quantity;
-			saveFile.data.gearStorage[i].unlocked = gearStorageGet()[i].unlocked;
-			saveFile.data.gearStorage[i].damage = gearStorageGet()[i].damage;
-		}
+		inventory.serializeGearStorage(saveFile);
 
 		saveFile.data.gameState = gameStateGet(); // Saving game state?
 
@@ -1947,39 +1932,9 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		}
 
 		SerializationUtils.deserialize(saveFile.data.inventory, inventory);
-
-		var storage:ItemSlot;
 		
-		//Set gear slot array
-		if (saveFile.data.gearStorage == undefined)
-		{
-			//trace("OLD SAVES DO NOT CONTAIN ITEM STORAGE ARRAY - Creating new!");
-			inventory.initializeGearStorage();
-		}
-		else
-		{
-			for (i = 0; i < saveFile.data.gearStorage.length && gearStorageGet().length < 45; i++)
-			{
-				gearStorageGet().push(new ItemSlot());
-					//trace("Initialize a slot for one of the item storage locations to load.");
-			}
-			//Populate storage slot array
-			for (i = 0; i < saveFile.data.gearStorage.length && i < gearStorageGet().length; i++)
-			{
-				//trace("Populating a storage slot save with data");
-				storage = gearStorageGet()[i];
-				if ((saveFile.data.gearStorage[i].shortName == undefined && saveFile.data.gearStorage[i].id == undefined)
-                        || saveFile.data.gearStorage[i].quantity == undefined
-						|| saveFile.data.gearStorage[i].quantity == 0)
-					storage.emptySlot();
-				else {
-					storage.setItemAndQty(ItemType.lookupItem(saveFile.data.gearStorage[i].id || saveFile.data.gearStorage[i].shortName), saveFile.data.gearStorage[i].quantity);
-					storage.damage = saveFile.data.gearStorage[i].damage != undefined ? saveFile.data.gearStorage[i].damage : 0;
-				}
-				storage.unlocked = saveFile.data.gearStorage[i].unlocked;
-			}
-		}
-
+		inventory.deserializeGearStorage(saveFile);
+		
 		gameStateSet(saveFile.data.gameState);  // Loading game state
 
 		//Days

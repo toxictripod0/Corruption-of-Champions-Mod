@@ -981,5 +981,62 @@ package classes.Scenes
 		{
 			return SERIALIZATION_VERSION;
 		}
+		
+		public function serializeGearStorage(saveFile:*):void
+		{
+			var i:int;
+			
+			//Set gear slot array
+				for (i = 0; i < gearStorage.length; i++)
+				{
+					saveFile.data.gearStorage.push([]);
+				}
+				
+				//Populate gear slot array
+				for (i = 0; i < gearStorage.length; i++)
+				{
+					//saveFile.data.gearStorage[i].shortName = gearStorage[i].itype.id;// uncomment for backward compatibility
+					saveFile.data.gearStorage[i].id = (gearStorage[i].isEmpty()) ? null : gearStorage[i].itype.id;
+					saveFile.data.gearStorage[i].quantity = gearStorage[i].quantity;
+					saveFile.data.gearStorage[i].unlocked = gearStorage[i].unlocked;
+					saveFile.data.gearStorage[i].damage = gearStorage[i].damage;
+				}
+		}
+
+		public function deserializeGearStorage(saveFile:*):void
+		{
+				var storage:ItemSlot;
+				var i:int;
+				
+				//Set gear slot array
+				if (saveFile.data.gearStorage == undefined)
+				{
+					//trace("OLD SAVES DO NOT CONTAIN ITEM STORAGE ARRAY - Creating new!");
+					inventory.initializeGearStorage();
+				}
+				else
+				{
+					for (i = 0; i < saveFile.data.gearStorage.length && gearStorage.length < 45; i++)
+					{
+						gearStorage.push(new ItemSlot());
+							//trace("Initialize a slot for one of the item storage locations to load.");
+					}
+					//Populate storage slot array
+					for (i = 0; i < saveFile.data.gearStorage.length && i < gearStorage.length; i++)
+					{
+						//trace("Populating a storage slot save with data");
+						storage = gearStorage[i];
+						if ((saveFile.data.gearStorage[i].shortName == undefined && saveFile.data.gearStorage[i].id == undefined)
+								|| saveFile.data.gearStorage[i].quantity == undefined
+								|| saveFile.data.gearStorage[i].quantity == 0)
+							storage.emptySlot();
+						else {
+							storage.setItemAndQty(ItemType.lookupItem(saveFile.data.gearStorage[i].id || saveFile.data.gearStorage[i].shortName), saveFile.data.gearStorage[i].quantity);
+							storage.damage = saveFile.data.gearStorage[i].damage != undefined ? saveFile.data.gearStorage[i].damage : 0;
+						}
+						storage.unlocked = saveFile.data.gearStorage[i].unlocked;
+					}
+				}
+		}
 	}
 }
