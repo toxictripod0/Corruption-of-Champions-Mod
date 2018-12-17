@@ -947,8 +947,7 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile.data.perks = [];
 		saveFile.data.statusAffects = [];
 		saveFile.data.keyItems = [];
-		saveFile.data.gearStorage = [];
-
+		
 		//Set Perk Array
 		//Populate Perk Array
 		for (i = 0; i < player.perks.length; i++)
@@ -1003,7 +1002,6 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		
 		saveFile.data.inventory = [];
 		SerializationUtils.serialize(saveFile.data.inventory, inventory);
-		inventory.serializeGearStorage(saveFile);
 
 		saveFile.data.gameState = gameStateGet(); // Saving game state?
 
@@ -1931,8 +1929,6 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		}
 
 		SerializationUtils.deserialize(saveFile.data.inventory, inventory);
-		
-		inventory.deserializeGearStorage(saveFile);
 		
 		gameStateSet(saveFile.data.gameState);  // Loading game state
 

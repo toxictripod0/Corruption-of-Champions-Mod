@@ -915,7 +915,10 @@ package classes.Scenes
 		public function serialize(relativeRootObject:*):void 
 		{
 			relativeRootObject.itemStorage = [];
+			relativeRootObject.gearStorage = [];
+			
 			serializeItemStorage(relativeRootObject.itemStorage);
+			serializeGearStorage(relativeRootObject.gearStorage);
 		}
 		
 		private function serializeItemStorage(saveFileItemStorage:*):void
@@ -935,6 +938,7 @@ package classes.Scenes
 		public function deserialize(relativeRootObject:*):void 
 		{
 			deserializeItemStorage(relativeRootObject.itemStorage);
+			deserializeGearStorage(relativeRootObject.gearStorage);
 		}
 		
 		private function deserializeItemStorage(saveFileItemStorage:*):void
@@ -982,28 +986,28 @@ package classes.Scenes
 			return SERIALIZATION_VERSION;
 		}
 		
-		public function serializeGearStorage(saveFile:*):void
+		public function serializeGearStorage(saveFileGearStorage:*):void
 		{
 			var i:int;
 			
 			//Set gear slot array
 				for (i = 0; i < gearStorage.length; i++)
 				{
-					saveFile.data.gearStorage.push([]);
+					saveFileGearStorage.push([]);
 				}
 				
 				//Populate gear slot array
 				for (i = 0; i < gearStorage.length; i++)
 				{
-					//saveFile.data.gearStorage[i].shortName = gearStorage[i].itype.id;// uncomment for backward compatibility
-					saveFile.data.gearStorage[i].id = (gearStorage[i].isEmpty()) ? null : gearStorage[i].itype.id;
-					saveFile.data.gearStorage[i].quantity = gearStorage[i].quantity;
-					saveFile.data.gearStorage[i].unlocked = gearStorage[i].unlocked;
-					saveFile.data.gearStorage[i].damage = gearStorage[i].damage;
+					//saveFileGearStorage[i].shortName = gearStorage[i].itype.id;// uncomment for backward compatibility
+					saveFileGearStorage[i].id = (gearStorage[i].isEmpty()) ? null : gearStorage[i].itype.id;
+					saveFileGearStorage[i].quantity = gearStorage[i].quantity;
+					saveFileGearStorage[i].unlocked = gearStorage[i].unlocked;
+					saveFileGearStorage[i].damage = gearStorage[i].damage;
 				}
 		}
 
-		public function deserializeGearStorage(saveFile:*):void
+		public function deserializeGearStorage(saveFileGearStorage:*):void
 		{
 				var storage:ItemSlot;
 				var i:int;
@@ -1011,32 +1015,32 @@ package classes.Scenes
 				clearGearStorage();
 				
 				//Set gear slot array
-				if (saveFile.data.gearStorage == undefined)
+				if (saveFileGearStorage == undefined)
 				{
 					//trace("OLD SAVES DO NOT CONTAIN ITEM STORAGE ARRAY - Creating new!");
 					inventory.initializeGearStorage();
 				}
 				else
 				{
-					for (i = 0; i < saveFile.data.gearStorage.length && gearStorage.length < 45; i++)
+					for (i = 0; i < saveFileGearStorage.length && gearStorage.length < 45; i++)
 					{
 						gearStorage.push(new ItemSlot());
 							//trace("Initialize a slot for one of the item storage locations to load.");
 					}
 					//Populate storage slot array
-					for (i = 0; i < saveFile.data.gearStorage.length && i < gearStorage.length; i++)
+					for (i = 0; i < saveFileGearStorage.length && i < gearStorage.length; i++)
 					{
 						//trace("Populating a storage slot save with data");
 						storage = gearStorage[i];
-						if ((saveFile.data.gearStorage[i].shortName == undefined && saveFile.data.gearStorage[i].id == undefined)
-								|| saveFile.data.gearStorage[i].quantity == undefined
-								|| saveFile.data.gearStorage[i].quantity == 0)
+						if ((saveFileGearStorage[i].shortName == undefined && saveFileGearStorage[i].id == undefined)
+								|| saveFileGearStorage[i].quantity == undefined
+								|| saveFileGearStorage[i].quantity == 0)
 							storage.emptySlot();
 						else {
-							storage.setItemAndQty(ItemType.lookupItem(saveFile.data.gearStorage[i].id || saveFile.data.gearStorage[i].shortName), saveFile.data.gearStorage[i].quantity);
-							storage.damage = saveFile.data.gearStorage[i].damage != undefined ? saveFile.data.gearStorage[i].damage : 0;
+							storage.setItemAndQty(ItemType.lookupItem(saveFileGearStorage[i].id || saveFileGearStorage[i].shortName), saveFileGearStorage[i].quantity);
+							storage.damage = saveFileGearStorage[i].damage != undefined ? saveFileGearStorage[i].damage : 0;
 						}
-						storage.unlocked = saveFile.data.gearStorage[i].unlocked;
+						storage.unlocked = saveFileGearStorage[i].unlocked;
 					}
 				}
 		}
