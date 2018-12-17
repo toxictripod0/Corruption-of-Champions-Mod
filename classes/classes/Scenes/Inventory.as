@@ -1008,6 +1008,8 @@ package classes.Scenes
 				var storage:ItemSlot;
 				var i:int;
 				
+				clearGearStorage();
+				
 				//Set gear slot array
 				if (saveFile.data.gearStorage == undefined)
 				{

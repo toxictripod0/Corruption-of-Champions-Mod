@@ -1307,7 +1307,6 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		//trace("Type of saveFile.data = ", getClass(saveFile.data));
 
 		inventory.clearStorage();
-		inventory.clearGearStorage();
 		notes = saveFile.data.notes;
 
 		//flags

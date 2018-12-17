@@ -727,6 +727,18 @@ package classes{
 			assertThat(kGAMECLASS.inventory.gearStorageDirectGet()[40].isEmpty(), equalTo(true));
 		}
 		
+		[Test]
+		public function gearStorageIsClearedOnLoad():void
+		{
+			kGAMECLASS.inventory.initializeGearStorage();
+			var gear:Array = kGAMECLASS.inventory.gearStorageDirectGet();
+			(gear[42] as ItemSlot).setItemAndQty(armor.DBARMOR, 6);
+			
+			cut.loadGame(TEST_SAVE_GAME);
+
+			assertThat(kGAMECLASS.inventory.gearStorageDirectGet()[42].isEmpty(), equalTo(true));
+		}
+		
 		// GEAR TESTS END
 	}
 }
