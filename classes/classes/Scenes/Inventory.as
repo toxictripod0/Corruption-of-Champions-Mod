@@ -29,7 +29,8 @@ package classes.Scenes
 	use namespace kGAMECLASS;
 
 	public class Inventory extends BaseContent implements Serializable {
-		private static const SERIALIZATION_VERSION:int = 1;
+		private static const SERIALIZATION_VERSION:int = 2;
+		private static const GEAR_STORAGE_ARRAY_LENGTH:int = 45;
 		private static const LOGGER:ILogger = LoggerFactory.getLogger(Inventory);
 		
 		private static const inventorySlotName:Array = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth"];
@@ -963,7 +964,9 @@ package classes.Scenes
 			switch (serializedDataVersion) {
 				case 0:
 					upgradeLegacyItemStorage(relativeRootObject);
-				
+				case 1:
+					upgradeLegacyGearStorage(relativeRootObject);
+					
 				default:
 					/*
 					 * The default block is left empty intentionally,
@@ -978,6 +981,34 @@ package classes.Scenes
 			
 			if (relativeRootObject.itemStorage === undefined) {
 				relativeRootObject.itemStorage  = [];
+			}
+		}
+		
+		/**
+		 * Guarantees that the gear storage array has a length of GEAR_STORAGE_ARRAY_LENGTH.
+		 * <b>Note:</b>
+		 * The original implementation with '.push(new ItemSlot())' does not work,
+		 * the gear slot loading code will crash.
+		 * Eihter the loading code was changed, which caused it to no longer work with the
+		 * this code or it never worked to begin with.
+		 * 
+		 * @param	relativeRootObject object reference to the root of the savegame data
+		 */
+		private function upgradeLegacyGearStorage(relativeRootObject:*):void
+		{
+			var gear:Array = relativeRootObject.gearStorage;
+			
+			if (gear.length < GEAR_STORAGE_ARRAY_LENGTH) {
+				LOGGER.warn("Gear storage size is {0}, extending to {1}", gear.length, GEAR_STORAGE_ARRAY_LENGTH);
+				
+				var templateSlot:ItemSlot = new ItemSlot();
+				
+				while (gear.length < GEAR_STORAGE_ARRAY_LENGTH) {
+					var slot:* = [];
+					SerializationUtils.serialize(slot, templateSlot); 
+					
+					gear.push(slot);
+				}
 			}
 		}
 		
