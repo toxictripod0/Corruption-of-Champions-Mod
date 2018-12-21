@@ -31,8 +31,7 @@ package classes
 
 public class Saves extends BaseContent implements Serializable {
 	private static const LOGGER:ILogger = LoggerFactory.getLogger(Saves);
-
-	private static const SERIALIZATION_VERSION:int = 1;
+	private static const SERIALIZATION_VERSION:int = 2;
 	private static const SAVE_FILE_CURRENT_INTEGER_FORMAT_VERSION:int		= 816;
 		//Didn't want to include something like this, but an integer is safer than depending on the text version number from the CoC class.
 		//Also, this way the save file version doesn't need updating unless an important structural change happens in the save file.
@@ -1001,7 +1000,7 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 			saveFile.data.keyItems[i].value4 = player.keyItems[i].value4;
 		}
 		
-		SerializationUtils.serialize(saveFile.data, inventory);
+		SerializationUtils.serialize(saveFile.data.inventory, inventory);
 		
 		//Set gear slot array
 		for (i = 0; i < gearStorageGet().length; i++)
@@ -1945,7 +1944,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			}
 		}
 
-		SerializationUtils.deserialize(saveFile.data, inventory);
+		SerializationUtils.deserialize(saveFile.data.inventory, inventory);
 
 		var storage:ItemSlot;
 		
@@ -2442,6 +2441,8 @@ public function upgradeSerializationVersion(relativeRootObject:*, serializedData
 	switch(serializedDataVersion) {
 		case 0:
 			upgradeUnversionedSave(relativeRootObject);
+		case 1:
+			moveItemStorageToInventory(relativeRootObject);
 		default:
 		/*
 		 * The default block is left empty intentionally,
@@ -2465,6 +2466,30 @@ private function upgradeUnversionedSave(relativeRootObject:*): void
 
 	if (npcs.jojo === undefined) {
 		npcs.jojo = [];
+	}
+}
+
+/**
+ * Move the item storage to inventory object, as the serialization versions will collide
+ * (Saves and Inventory write version to saveFile.data).
+ * 
+ * @param	relativeRootObject the root savefile data storage (saveFile.data)
+ */
+private function moveItemStorageToInventory(relativeRootObject:*):void
+{
+	LOGGER.info("Upgrading item storage to use inventory instead of the save game root...");
+	
+	if (relativeRootObject.inventory === undefined) {
+		LOGGER.debug("No inventory in save game, creating...");
+		
+		relativeRootObject.inventory = [];
+	}
+	
+	if (relativeRootObject.itemStorage !== undefined) {
+		LOGGER.debug("Found item storage in save root, moving to inventory...");
+		
+		relativeRootObject.inventory.itemStorage = relativeRootObject.itemStorage;
+		delete relativeRootObject["itemStorage"];
 	}
 }
 

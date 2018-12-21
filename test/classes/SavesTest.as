@@ -54,6 +54,7 @@ package classes{
 		private static var consumables:ConsumableLib;
 		
 		private var saveFile:*;
+		private var serializedSave:* = [];
 		
 		[BeforeClass]
 		public static function setUpClass():void {
@@ -71,6 +72,7 @@ package classes{
 			createPlayerBreasts();
 			createPlayerAss();
 			setPlayerStats();
+			createDummySerializedObject();
 			
 			kGAMECLASS.player = player;
 			kGAMECLASS.ver = TEST_VERSION;
@@ -151,6 +153,22 @@ package classes{
 			saveFile.data.serializationVersion = undefined;
 			saveFile.data.npcs = [];
 			saveFile.data.npcs.jojo = [];
+		}
+		
+		private function createDummySerializedObject():void
+		{
+			serializedSave["serializationVersion"] = 1;
+			serializedSave.itemStorage = [];
+			
+			var slot1:ItemSlot = new ItemSlot();
+			slot1.setItemAndQty(consumables.CANINEP, 2);
+			
+			var slot2:ItemSlot = new ItemSlot();
+			slot2.setItemAndQty(consumables.EQUINUM, 3);
+			
+			
+			serializedSave.itemStorage.push(slot1);
+			serializedSave.itemStorage.push(slot2);
 		}
 		
 		private function initInventory():void
@@ -590,6 +608,39 @@ package classes{
 			assertThat(kGAMECLASS.player.itemSlot1.itype, equalTo(consumables.CANINEP));
 			assertThat(kGAMECLASS.player.itemSlot2.itype, equalTo(ItemType.NOTHING));
 			assertThat(kGAMECLASS.player.itemSlot3.itype, equalTo(consumables.EQUINUM));
+		}
+		
+		[Test]
+		public function upgradeCreatesInventory():void
+		{	
+			cut.upgradeSerializationVersion(serializedSave, 1);
+			
+			assertThat(serializedSave, hasProperty("inventory"));
+		}
+		
+		[Test]
+		public function upgradeCreatesItemStorageInInventory():void
+		{	
+			cut.upgradeSerializationVersion(serializedSave, 1);
+			
+			assertThat(serializedSave.inventory, hasProperty("itemStorage"));
+		}
+		
+		[Test]
+		public function upgradeCopiesItemStorageData():void
+		{	
+			cut.upgradeSerializationVersion(serializedSave, 1);
+			
+			assertThat(serializedSave.inventory.itemStorage[0].itype.id, equalTo(consumables.CANINEP.id));
+			assertThat(serializedSave.inventory.itemStorage[1].itype.id, equalTo(consumables.EQUINUM.id));
+		}
+		
+		[Test]
+		public function upgradeDeletesItemStorageFromSaveRoot():void
+		{	
+			cut.upgradeSerializationVersion(serializedSave, 1);
+			
+			assertThat(serializedSave, not(hasProperty("itemStorage")));
 		}
 		
 		[Test]
