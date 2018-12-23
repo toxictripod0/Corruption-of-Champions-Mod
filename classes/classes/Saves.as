@@ -39,16 +39,11 @@ public class Saves extends BaseContent implements Serializable {
 
 	private var gameStateGet:Function;
 	private var gameStateSet:Function;
-	private var gearStorageGet:Function;
 	private var permObjectFileName:String = "CoC_Main";
 
 	public function Saves(gameStateDirectGet:Function, gameStateDirectSet:Function) {
 		gameStateGet = gameStateDirectGet; //This is so that the save game functions (and nothing else) get direct access to the gameState variable
 		gameStateSet = gameStateDirectSet;
-	}
-
-	public function linkToInventory(gearStorageDirectGet:Function):void {
-		gearStorageGet = gearStorageDirectGet;
 	}
 
 CONFIG::AIR {

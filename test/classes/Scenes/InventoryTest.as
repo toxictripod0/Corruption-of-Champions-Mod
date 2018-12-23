@@ -34,11 +34,10 @@ package classes.Scenes
 		[Before]
 		public function setUp():void
 		{
-			var dummySaves:Saves = new DummySaves();
-			cut = new Inventory(dummySaves);
+			cut = new Inventory();
 			
 			serializedClass = [];
-			deserialized = new Inventory(dummySaves);
+			deserialized = new Inventory();
 			
 			initInventory();
 			initGearStorage();
@@ -129,24 +128,5 @@ package classes.Scenes
 			
 			assertThat(deserialized.gearStorageDirectGet().length, equalTo(45));
 		}
-	}
-}
-
-import classes.Saves;
-
-/**
- * A minimalistic dummy to satisfy the constructor.
- */
-class DummySaves extends Saves
-{
-	public function DummySaves()
-	{
-		var noop:Function = new Function();
-		
-		super(noop, noop);
-	}
-	
-	override public function linkToInventory(gearStorageDirectGet:Function):void {
-		// do nothing, this is just to satisfy the dependency
 	}
 }

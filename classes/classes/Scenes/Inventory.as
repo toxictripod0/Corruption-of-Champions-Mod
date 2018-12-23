@@ -63,11 +63,10 @@ package classes.Scenes
 		 */
 		private var currentItemSlot:ItemSlot;
 		
-		public function Inventory(saveSystem:Saves) {
+		public function Inventory() {
 			itemStorage = [];
 			gearStorage = [];
 			prisonStorage = [];
-			saveSystem.linkToInventory(gearStorageDirectGet);
 		}
 		
 		public function showStash():Boolean {

@@ -88,7 +88,7 @@ package classes{
 			kGAMECLASS.version = TEST_VERSION;
 			
 			cut = new SavesForTest(kGAMECLASS.gameStateDirectGet, kGAMECLASS.gameStateDirectSet);
-			kGAMECLASS.inventory = new Inventory(cut);
+			kGAMECLASS.inventory = new Inventory();
 			
 			player.itemSlot(0).setItemAndQty(consumables.CANINEP, 6);
 			player.itemSlot(0).damage = 7;

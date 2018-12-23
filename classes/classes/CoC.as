@@ -196,7 +196,7 @@ package classes
 		public var dungeons:DungeonCore;
 		public var equipmentUpgrade:ItemUpgrade = new ItemUpgrade();
 		public var followerInteractions:FollowerInteractions = new FollowerInteractions();
-		public var inventory:Inventory = new Inventory(saves);
+		public var inventory:Inventory = new Inventory();
 		public var masturbation:Masturbation = new Masturbation();
 		public var pregnancyProgress:PregnancyProgression;
 		public var bimboProgress:BimboProgression = new BimboProgression();
