@@ -32,7 +32,7 @@ package classes
 public class Saves extends BaseContent implements Serializable {
 	private static const LOGGER:ILogger = LoggerFactory.getLogger(Saves);
 	
-	private static const SERIALIZATION_VERSION:int = 2;
+	private static const SERIALIZATION_VERSION:int = 3;
 	private static const SAVE_FILE_CURRENT_INTEGER_FORMAT_VERSION:int		= 816;
 		//Didn't want to include something like this, but an integer is safer than depending on the text version number from the CoC class.
 		//Also, this way the save file version doesn't need updating unless an important structural change happens in the save file.
@@ -2391,6 +2391,8 @@ public function upgradeSerializationVersion(relativeRootObject:*, serializedData
 			upgradeUnversionedSave(relativeRootObject);
 		case 1:
 			moveItemStorageToInventory(relativeRootObject);
+		case 2:
+			moveGearStorageToInventory(relativeRootObject);
 		default:
 		/*
 		 * The default block is left empty intentionally,
@@ -2438,6 +2440,24 @@ private function moveItemStorageToInventory(relativeRootObject:*):void
 		
 		relativeRootObject.inventory.itemStorage = relativeRootObject.itemStorage;
 		delete relativeRootObject["itemStorage"];
+	}
+}
+
+/**
+ * Move the gear storage to inventory object, as the serialization versions will collide
+ * (Saves and Inventory write version to saveFile.data).
+ * 
+ * @param	relativeRootObject the root savefile data storage (saveFile.data)
+ */
+private function moveGearStorageToInventory(relativeRootObject:*):void
+{
+	LOGGER.info("Upgrading gear storage to use inventory instead of the save game root...");
+	
+	if (relativeRootObject.gearStorage !== undefined) {
+		LOGGER.debug("Found gear storage in save root, moving to inventory...");
+		
+		relativeRootObject.inventory.gearStorage = relativeRootObject.gearStorage;
+		delete relativeRootObject["gearStorage"];
 	}
 }
 

@@ -190,6 +190,20 @@ package classes{
 			
 			serializedSave.itemStorage.push(slot1);
 			serializedSave.itemStorage.push(slot2);
+			
+			serializedSave.gearStorage = [];
+			
+			var gear0:ItemSlot = new ItemSlot();
+			var gear9:ItemSlot = new ItemSlot();
+			var gear35:ItemSlot = new ItemSlot();
+			
+			gear0.setItemAndQty(weapons.B_SWORD, 1);
+			gear9.setItemAndQty(armor.GOOARMR, 1);
+			gear35.setItemAndQty(armor.B_DRESS, 1);
+			
+			serializedSave.gearStorage[0] = gear0;
+			serializedSave.gearStorage[9] = gear9;
+			serializedSave.gearStorage[35] = gear35;
 		}
 		
 		private function initInventory():void
@@ -737,6 +751,32 @@ package classes{
 			cut.loadGame(TEST_SAVE_GAME);
 
 			assertThat(kGAMECLASS.inventory.gearStorageDirectGet()[42].isEmpty(), equalTo(true));
+		}
+		
+		[Test]
+		public function upgradeCreatesGearStorageInInventory():void
+		{
+			cut.upgradeSerializationVersion(serializedSave, 1);
+			
+			assertThat(serializedSave.inventory, hasProperty("gearStorage"));
+		}
+		
+		[Test]
+		public function upgradeCopiesGearStorageData():void
+		{	
+			cut.upgradeSerializationVersion(serializedSave, 1);
+			
+			assertThat(serializedSave.inventory.gearStorage[0].itype.id, equalTo(weapons.B_SWORD.id));
+			assertThat(serializedSave.inventory.gearStorage[9].itype.id, equalTo(armor.GOOARMR.id));
+			assertThat(serializedSave.inventory.gearStorage[35].itype.id, equalTo(armor.B_DRESS.id));
+		}
+		
+		[Test]
+		public function upgradeDeletesGearStorageFromSaveRoot():void
+		{	
+			cut.upgradeSerializationVersion(serializedSave, 1);
+			
+			assertThat(serializedSave, not(hasProperty("gearStorage")));
 		}
 		
 		// GEAR TESTS END
