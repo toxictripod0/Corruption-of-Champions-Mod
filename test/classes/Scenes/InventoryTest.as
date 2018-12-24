@@ -128,5 +128,47 @@ package classes.Scenes
 			
 			assertThat(deserialized.gearStorageDirectGet().length, equalTo(45));
 		}
+		
+		[Test]
+		public function emptyGearStorageSlotIsSerializedWithNullId():void
+		{
+			assertThat(serializedClass.gearStorage[10].id, nullValue());
+		}
+		
+		[Test]
+		public function weaponRackLoaded():void
+		{
+			assertThat(deserialized.gearStorageDirectGet()[0].itype.id, weapons.B_SWORD.id);
+		}
+		
+		[Test]
+		public function dresserLoaded():void
+		{
+			assertThat(deserialized.gearStorageDirectGet()[35].itype.id, armor.B_DRESS.id);
+		}
+		
+		[Test]
+		public function emptySlotIsLoaded():void
+		{
+			assertThat(deserialized.gearStorageDirectGet()[40].isEmpty(), equalTo(true));
+		}
+		
+		[Test]
+		public function gearStorageIsClearedOnLoad():void
+		{
+			deserialized.initializeGearStorage();
+			var gear:Array = deserialized.gearStorageDirectGet();
+			(gear[42] as ItemSlot).setItemAndQty(armor.DBARMOR, 6);
+			
+			SerializationUtils.deserialize(serializedClass, deserialized);
+
+			assertThat(deserialized.gearStorageDirectGet()[42].isEmpty(), equalTo(true));
+		}
+		
+		[Test]
+		public function gearStorageIsCreated():void
+		{
+			assertThat(deserialized.gearStorageDirectGet(), notNullValue());
+		}
 	}
 }

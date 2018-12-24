@@ -707,52 +707,6 @@ package classes{
 			assertThat("Item storage did not contain pure honey", kGAMECLASS.inventory.hasItemInStorage(consumables.PURHONY), equalTo(true));
 		}
 		
-		// GEAR TESTS START
-		
-		[Test]
-		public function gearStorageIsCreated():void
-		{
-			cut.loadGame(TEST_SAVE_GAME);
-			
-			assertThat(kGAMECLASS.inventory.gearStorageDirectGet(), notNullValue());
-		}
-		
-		[Test]
-		public function weaponRackLoaded():void
-		{
-			cut.loadGame(TEST_SAVE_GAME);
-			
-			assertThat(kGAMECLASS.inventory.gearStorageDirectGet()[0].itype.id, weapons.B_SWORD.id);
-		}
-		
-		[Test]
-		public function dresserLoaded():void
-		{
-			cut.loadGame(TEST_SAVE_GAME);
-			
-			assertThat(kGAMECLASS.inventory.gearStorageDirectGet()[35].itype.id, armor.B_DRESS.id);
-		}
-		
-		[Test]
-		public function emptySlotIsLoaded():void
-		{
-			cut.loadGame(TEST_SAVE_GAME);
-
-			assertThat(kGAMECLASS.inventory.gearStorageDirectGet()[40].isEmpty(), equalTo(true));
-		}
-		
-		[Test]
-		public function gearStorageIsClearedOnLoad():void
-		{
-			kGAMECLASS.inventory.initializeGearStorage();
-			var gear:Array = kGAMECLASS.inventory.gearStorageDirectGet();
-			(gear[42] as ItemSlot).setItemAndQty(armor.DBARMOR, 6);
-			
-			cut.loadGame(TEST_SAVE_GAME);
-
-			assertThat(kGAMECLASS.inventory.gearStorageDirectGet()[42].isEmpty(), equalTo(true));
-		}
-		
 		[Test]
 		public function upgradeCreatesGearStorageInInventory():void
 		{
@@ -778,8 +732,6 @@ package classes{
 			
 			assertThat(serializedSave, not(hasProperty("gearStorage")));
 		}
-		
-		// GEAR TESTS END
 	}
 }
 
