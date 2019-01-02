@@ -74,6 +74,7 @@ package classes.Scenes
 			(gear[1] as ItemSlot).setItemAndQty(weapons.PIPE, 2);
 			(gear[9] as ItemSlot).setItemAndQty(armor.GOOARMR, 3);
 			(gear[35] as ItemSlot).setItemAndQty(armor.B_DRESS, 4);
+			(gear[36] as ItemSlot).unlocked = true;
 		}
 		
 		[Test]
@@ -169,6 +170,82 @@ package classes.Scenes
 		public function gearStorageIsCreated():void
 		{
 			assertThat(deserialized.gearStorageDirectGet(), notNullValue());
+		}
+		
+		[Test]
+		public function slotWithNoShortNameOrIdIsEmpty():void
+		{
+			serializedClass.gearStorage[1].shortName = undefined;
+			serializedClass.gearStorage[1].id = undefined;
+			
+			SerializationUtils.deserialize(serializedClass, deserialized);
+			
+			assertThat(deserialized.gearStorageDirectGet()[1].isEmpty(), equalTo(true));
+		}
+		
+		[Test]
+		public function slotWithUndefinedQunatityIsEmpty():void
+		{
+			serializedClass.gearStorage[1].quantity = undefined;
+			
+			SerializationUtils.deserialize(serializedClass, deserialized);
+			
+			assertThat(deserialized.gearStorageDirectGet()[1].isEmpty(), equalTo(true));
+		}
+		
+		[Test]
+		public function slotWithZeroQunatityIsEmpty():void
+		{
+			serializedClass.gearStorage[1].quantity = 0;
+			
+			SerializationUtils.deserialize(serializedClass, deserialized);
+			
+			assertThat(deserialized.gearStorageDirectGet()[1].isEmpty(), equalTo(true));
+		}
+		
+		[Test]
+		public function gearSlotUnlockIsLoaded():void
+		{
+			assertThat(deserialized.gearStorageDirectGet()[36].unlocked, equalTo(true));
+		}
+		
+		[Test]
+		public function gearSlotCanLoadWithShortName():void
+		{
+			delete serializedClass.gearStorage[1]["id"];
+			serializedClass.gearStorage[1].shortName = "S.Blade";
+			
+			SerializationUtils.deserialize(serializedClass, deserialized);
+			
+			assertThat(deserialized.gearStorageDirectGet()[1].itype.id, equalTo(weapons.S_BLADE.id));
+		}
+		
+		[Test]
+		public function gearSlotUndefinedDamageIsSetToZero():void
+		{
+			serializedClass.gearStorage[1].damage = undefined;
+			
+			SerializationUtils.deserialize(serializedClass, deserialized);
+			
+			assertThat(deserialized.gearStorageDirectGet()[1].damage, equalTo(0));
+		}
+		
+		[Test]
+		public function gearSlotDamageIsLoaded():void
+		{
+			var damage:int = 42;
+			
+			serializedClass.gearStorage[1].damage = damage;
+			
+			SerializationUtils.deserialize(serializedClass, deserialized);
+			
+			assertThat(deserialized.gearStorageDirectGet()[1].damage, equalTo(damage));
+		}
+		
+		[Test]
+		public function gearSlotQuantityIsLoaded():void
+		{
+			assertThat(deserialized.gearStorageDirectGet()[35].quantity, equalTo(4));
 		}
 	}
 }
