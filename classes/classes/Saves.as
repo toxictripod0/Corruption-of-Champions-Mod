@@ -36,7 +36,9 @@ public class Saves extends BaseContent implements Serializable {
 	private static const SAVE_FILE_CURRENT_INTEGER_FORMAT_VERSION:int		= 816;
 		//Didn't want to include something like this, but an integer is safer than depending on the text version number from the CoC class.
 		//Also, this way the save file version doesn't need updating unless an important structural change happens in the save file.
-
+	
+	private static const GEAR_STORAGE_ARRAY_SIZE:int = 45;
+		
 	private var gameStateGet:Function;
 	private var gameStateSet:Function;
 	private var permObjectFileName:String = "CoC_Main";
@@ -2446,6 +2448,14 @@ private function moveItemStorageToInventory(relativeRootObject:*):void
  */
 private function moveGearStorageToInventory(relativeRootObject:*):void
 {
+	if (relativeRootObject.gearStorage === undefined) {
+		relativeRootObject.gearStorage = [];
+		
+		for (var i:int = 0; i < GEAR_STORAGE_ARRAY_SIZE; i++ ) {
+			relativeRootObject.gearStorage[i] = new ItemSlot();
+		}
+	}
+	
 	LOGGER.info("Upgrading gear storage to use inventory instead of the save game root...");
 	
 	if (relativeRootObject.gearStorage !== undefined) {

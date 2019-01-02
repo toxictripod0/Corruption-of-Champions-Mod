@@ -732,6 +732,19 @@ package classes{
 			
 			assertThat(serializedSave, not(hasProperty("gearStorage")));
 		}
+
+		[Test]
+		public function upgradeCreatesMissingGearStorage():void
+		{
+			delete serializedSave["gearStorage"];
+			// guard assert
+			assertThat(serializedSave, not(hasProperty("gearStorage")));
+			
+			cut.upgradeSerializationVersion(serializedSave, 1);
+			
+			assertThat(serializedSave.inventory.gearStorage, notNullValue());
+			assertThat(serializedSave.inventory.gearStorage.length, equalTo(45));
+		}
 	}
 }
 
