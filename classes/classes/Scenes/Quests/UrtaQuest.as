@@ -1,4 +1,4 @@
-﻿package classes.Scenes.Quests{
+package classes.Scenes.Quests{
 	import classes.*;
 	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
@@ -38,16 +38,6 @@
 //You play as Urta, which copies everyone about you into this new variable. Very clumsy.
 //TODO: Figure out this whole thing. You play as Urta but the whole quest saves you state into this variable and swaps back and forth
 //whenever you "leave" the quest
-public var urtaQItems1:ItemSlot = new ItemSlot();
-public var urtaQItems2:ItemSlot = new ItemSlot();
-public var urtaQItems3:ItemSlot = new ItemSlot();
-public var urtaQItems4:ItemSlot = new ItemSlot();
-public var urtaQItems5:ItemSlot = new ItemSlot();
-public var urtaQItems6:ItemSlot = new ItemSlot();
-public var urtaQItems7:ItemSlot = new ItemSlot();
-public var urtaQItems8:ItemSlot = new ItemSlot();
-public var urtaQItems9:ItemSlot = new ItemSlot();
-public var urtaQItems10:ItemSlot = new ItemSlot();
 
 public function urtaBusy():Boolean {
 	return (telAdre.edryn.pregnancy.type == PregnancyStore.PREGNANCY_TAOTH || flags[kFLAGS.URTA_QUEST_STATUS] == -1);
@@ -180,16 +170,6 @@ public function infertilityQuestions():void {
 
 private function resetToPC():void {
 	player = player2;
-	player.itemSlot1 = urtaQItems1;
-	player.itemSlot2 = urtaQItems2;
-	player.itemSlot3 = urtaQItems3;
-	player.itemSlot4 = urtaQItems4;
-	player.itemSlot5 = urtaQItems5;
-	player.itemSlot6 = urtaQItems6;
-	player.itemSlot7 = urtaQItems7;
-	player.itemSlot8 = urtaQItems8;
-	player.itemSlot9 = urtaQItems9;
-	player.itemSlot10 = urtaQItems10;
 
 	// See called method comment.
 	player.fixFuckingCockTypesEnum();
@@ -202,26 +182,7 @@ public function startUrtaQuest():void {
 	clearOutput();
 	//trace("Cloning PC's items")
 	// *SERIALIZE* out the players current Player object + items
-	urtaQItems1 = player.itemSlot1;
-	urtaQItems2 = player.itemSlot2;
-	urtaQItems3 = player.itemSlot3;
-	urtaQItems4 = player.itemSlot4;
-	urtaQItems5 = player.itemSlot5;
-	urtaQItems6 = player.itemSlot6;
-	urtaQItems7 = player.itemSlot7;
-	urtaQItems8 = player.itemSlot8;
-	urtaQItems9 = player.itemSlot9;
-	urtaQItems10 = player.itemSlot10;
-	player.itemSlot1 = new ItemSlot();
-	player.itemSlot2 = new ItemSlot();
-	player.itemSlot3 = new ItemSlot();
-	player.itemSlot4 = new ItemSlot();
-	player.itemSlot5 = new ItemSlot();
-	player.itemSlot6 = new ItemSlot();
-	player.itemSlot7 = new ItemSlot();
-	player.itemSlot8 = new ItemSlot();
-	player.itemSlot9 = new ItemSlot();
-	player.itemSlot10 = new ItemSlot();
+
 	player2 = player;
 
 	player = new Player();

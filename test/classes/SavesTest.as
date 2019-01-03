@@ -1,4 +1,5 @@
 package classes{
+	import classes.Items.ConsumableLib;
 	import classes.internals.SerializationUtils;
 	import classes.lists.BreastCup;
 	import org.flexunit.asserts.*;
@@ -50,12 +51,14 @@ package classes{
 
 		private var player:Player;
 		private var cut:SavesForTest;
-
+		private static var consumables:ConsumableLib;
+		
 		private var saveFile:*;
 		
 		[BeforeClass]
 		public static function setUpClass():void {
 			kGAMECLASS = new CoC(StageLocator.stage);
+			consumables = new ConsumableLib();
 		}
 		
 		[Before]
@@ -75,6 +78,12 @@ package classes{
 			
 			cut = new SavesForTest(kGAMECLASS.gameStateDirectGet, kGAMECLASS.gameStateDirectSet);
 			kGAMECLASS.inventory = new Inventory(cut);
+			
+			player.itemSlot(0).setItemAndQty(consumables.CANINEP, 6);
+			player.itemSlot(0).damage = 7;
+			
+			player.itemSlot(2).setItemAndQty(consumables.EQUINUM, 8);
+			player.itemSlot(2).damage = 9;
 			
 			saveGame();
 
@@ -472,6 +481,93 @@ package classes{
 			cut.loadGame(TEST_SAVE_GAME);
 			
 			assertThat(kGAMECLASS.player.nippleLength, equalTo(0.25));
+		}
+		
+		[Test]
+		public function loadItemSlot1Type():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.itemSlot1.itype, equalTo(consumables.CANINEP));
+		}
+		
+		[Test]
+		public function loadItemSlot1Quantity():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.itemSlot1.quantity, equalTo(6));
+		}
+		
+		[Test]
+		public function loadItemSlot1Unlocked():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.itemSlot1.unlocked, equalTo(true));
+		}
+		
+		public function loadItemSlot1Damage():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.itemSlot1.damage, equalTo(7));
+		}
+		
+		[Test]
+		public function firstItemSlotUnlocked():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.itemSlot(0).unlocked, equalTo(true));
+		}
+		
+		[Test]
+		public function secondItemSlotUnlocked():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.itemSlot(1).unlocked, equalTo(true));
+		}
+		
+		[Test]
+		public function thirdItemSlotUnlocked():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.itemSlot(2).unlocked, equalTo(true));
+		}
+		
+		[Test]
+		public function fourthItemSlotLocked():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.itemSlot(3).unlocked, equalTo(false));
+		}
+		
+		[Test]
+		public function tenththItemSlotLocked():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.itemSlot(9).unlocked, equalTo(false));
+		}
+		
+		[Test(expected=RangeError)]
+		public function accessOutOfBoundsItemSlot():void
+		{
+			assertThat(kGAMECLASS.player.itemSlot(10), nullValue());
+		}
+		
+		[Test]
+		public function itemSlotLoadOrder():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.itemSlot1.itype, equalTo(consumables.CANINEP));
+			assertThat(kGAMECLASS.player.itemSlot2.itype, equalTo(ItemType.NOTHING));
+			assertThat(kGAMECLASS.player.itemSlot3.itype, equalTo(consumables.EQUINUM));
 		}
 	}
 }

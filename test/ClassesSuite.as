@@ -4,6 +4,7 @@ package {
 	import classes.BreastRowTest;
 	import classes.HelperSuite;
 	import classes.InternalsSuite;
+	import classes.ItemSlotTest;
 	import classes.PlayerTest;
 	import classes.ScenesSuite;
 	import classes.ItemsSuite;
@@ -46,5 +47,6 @@ package {
 		 public var menusSuit:MenusSuite;
 		 public var appearanceTest:AppearanceTest;
 		 public var cockKnotSupportTest:CockKnotSupportTest;
+		 public var itemSlotTest:ItemSlotTest;
 	}
 }
