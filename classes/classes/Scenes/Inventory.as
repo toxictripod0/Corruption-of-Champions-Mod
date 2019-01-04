@@ -1062,7 +1062,7 @@ package classes.Scenes
 					{
 						//trace("Populating a storage slot save with data");
 						storage = gearStorage[i];
-						if ((saveFileGearStorage[i].shortName == undefined && saveFileGearStorage[i].id == undefined)
+						if ((!("shortName" in saveFileGearStorage[i]) && !("id" in saveFileGearStorage[i]))
 								|| saveFileGearStorage[i].quantity == undefined
 								|| saveFileGearStorage[i].quantity == 0)
 							storage.emptySlot();
