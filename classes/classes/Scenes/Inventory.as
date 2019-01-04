@@ -1042,13 +1042,8 @@ package classes.Scenes
 				var storage:ItemSlot;
 				var i:int;
 				
-				clearGearStorage();
+				initializeGearStorage();
 				
-					for (i = 0; i < saveFileGearStorage.length && gearStorage.length < 45; i++)
-					{
-						gearStorage.push(new ItemSlot());
-							//trace("Initialize a slot for one of the item storage locations to load.");
-					}
 					//Populate storage slot array
 					for (i = 0; i < saveFileGearStorage.length && i < gearStorage.length; i++)
 					{
