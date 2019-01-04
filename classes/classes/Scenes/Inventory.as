@@ -1044,14 +1044,6 @@ package classes.Scenes
 				
 				clearGearStorage();
 				
-				//Set gear slot array
-				if (saveFileGearStorage == undefined)
-				{
-					//trace("OLD SAVES DO NOT CONTAIN ITEM STORAGE ARRAY - Creating new!");
-					inventory.initializeGearStorage();
-				}
-				else
-				{
 					for (i = 0; i < saveFileGearStorage.length && gearStorage.length < 45; i++)
 					{
 						gearStorage.push(new ItemSlot());
@@ -1072,7 +1064,6 @@ package classes.Scenes
 						}
 						storage.unlocked = saveFileGearStorage[i].unlocked;
 					}
-				}
 		}
 	}
 }
