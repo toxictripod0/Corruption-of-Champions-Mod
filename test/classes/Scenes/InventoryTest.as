@@ -175,12 +175,12 @@ package classes.Scenes
 		[Test]
 		public function slotWithNoShortNameOrIdIsEmpty():void
 		{
-			serializedClass.gearStorage[1].shortName = undefined;
-			serializedClass.gearStorage[1].id = undefined;
+			serializedClass.gearStorage[2].shortName = undefined;
+			serializedClass.gearStorage[2].id = undefined;
 			
 			SerializationUtils.deserialize(serializedClass, deserialized);
 			
-			assertThat(deserialized.gearStorageDirectGet()[1].isEmpty(), equalTo(true));
+			assertThat(deserialized.gearStorageDirectGet()[2].isEmpty(), equalTo(true));
 		}
 		
 		[Test]
@@ -213,6 +213,7 @@ package classes.Scenes
 		public function gearSlotCanLoadWithShortName():void
 		{
 			delete serializedClass.gearStorage[1]["id"];
+			delete serializedClass.gearStorage[1]["serializationVersion"];
 			serializedClass.gearStorage[1].shortName = "S.Blade";
 			
 			SerializationUtils.deserialize(serializedClass, deserialized);
