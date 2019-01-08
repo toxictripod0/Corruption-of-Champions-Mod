@@ -5,6 +5,7 @@ package {
 	import classes.HelperSuite;
 	import classes.InternalsSuite;
 	import classes.ItemSlotTest;
+	import classes.KeyItemTest;
 	import classes.PlayerTest;
 	import classes.ScenesSuite;
 	import classes.ItemsSuite;
@@ -48,5 +49,6 @@ package {
 		 public var appearanceTest:AppearanceTest;
 		 public var cockKnotSupportTest:CockKnotSupportTest;
 		 public var itemSlotTest:ItemSlotTest;
+		 public var keyItemTest:KeyItemTest;
 	}
 }
