@@ -87,7 +87,10 @@ public class ExecContext {
 	 * For debugging
 	 */
 	public function debug(where:*,s:String):void {
-		LOGGER.debug(''+where+' '+s);
+		if (DEBUG_LOG_ENABLED) {
+			LOGGER.debug('' + where + ' ' + s);
+		}
 	}
+	public static const DEBUG_LOG_ENABLED:Boolean = false;
 }
 }
