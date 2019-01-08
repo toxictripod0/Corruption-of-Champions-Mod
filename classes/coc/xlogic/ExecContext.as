@@ -87,7 +87,7 @@ public class ExecContext {
 	 * For debugging
 	 */
 	public function debug(where:*,s:String):void {
-		trace(''+where+' '+s);
+		LOGGER.debug(''+where+' '+s);
 	}
 }
 }
