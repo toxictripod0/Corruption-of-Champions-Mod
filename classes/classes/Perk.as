@@ -1,4 +1,4 @@
-﻿package classes
+package classes
 {
 	/**
 	 * Stores a perk type and additional values for a perk.
