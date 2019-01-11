@@ -32,7 +32,7 @@ package classes
 public class Saves extends BaseContent implements Serializable {
 	private static const LOGGER:ILogger = LoggerFactory.getLogger(Saves);
 	
-	private static const SERIALIZATION_VERSION:int = 3;
+	private static const SERIALIZATION_VERSION:int = 4;
 	private static const SAVE_FILE_CURRENT_INTEGER_FORMAT_VERSION:int		= 816;
 		//Didn't want to include something like this, but an integer is safer than depending on the text version number from the CoC class.
 		//Also, this way the save file version doesn't need updating unless an important structural change happens in the save file.
@@ -980,24 +980,9 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 				saveFile.data.statusAffects[i].dataStore = player.statusEffect(i).dataStore;
 			}
 		}
-		//Set keyItem Array
-		for (i = 0; i < player.keyItems.length; i++)
-		{
-			saveFile.data.keyItems.push([]);
-				//trace("Saveone keyItem");
-		}
-		//Populate keyItem Array
-		for (i = 0; i < player.keyItems.length; i++)
-		{
-			//trace("Populate One keyItemzzzzzz");
-			saveFile.data.keyItems[i].keyName = player.keyItems[i].keyName;
-			saveFile.data.keyItems[i].value1 = player.keyItems[i].value1;
-			saveFile.data.keyItems[i].value2 = player.keyItems[i].value2;
-			saveFile.data.keyItems[i].value3 = player.keyItems[i].value3;
-			saveFile.data.keyItems[i].value4 = player.keyItems[i].value4;
-		}
 		
 		saveFile.data.inventory = [];
+		saveFile.data.keyItems = SerializationUtils.serializeVector(player.keyItems as Vector.<*>);
 		SerializationUtils.serialize(saveFile.data.inventory, inventory);
 
 		saveFile.data.gameState = gameStateGet(); // Saving game state?
@@ -1905,26 +1890,8 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			}
 			//trace("StatusEffect " + player.statusEffect(i).stype.id + " loaded.");
 		}
-		//Make sure keyitems exist!
-		if (saveFile.data.keyItems != undefined)
-		{
-			//Set keyItems Array
-			for (i = 0; i < saveFile.data.keyItems.length; i++)
-			{
-				player.createKeyItem("TEMP", 0, 0, 0, 0);
-			}
-			//Populate keyItems Array
-			for (i = 0; i < saveFile.data.keyItems.length; i++)
-			{
-				player.keyItems[i].keyName = saveFile.data.keyItems[i].keyName;
-				player.keyItems[i].value1 = saveFile.data.keyItems[i].value1;
-				player.keyItems[i].value2 = saveFile.data.keyItems[i].value2;
-				player.keyItems[i].value3 = saveFile.data.keyItems[i].value3;
-				player.keyItems[i].value4 = saveFile.data.keyItems[i].value4;
-					//trace("KeyItem " + player.keyItems[i].keyName + " loaded.");
-			}
-		}
 
+		SerializationUtils.deserializeVector(player.keyItems as Vector.<*>, saveFile.data.keyItems, KeyItem);
 		SerializationUtils.deserialize(saveFile.data.inventory, inventory);
 		
 		gameStateSet(saveFile.data.gameState);  // Loading game state
@@ -2390,6 +2357,8 @@ public function upgradeSerializationVersion(relativeRootObject:*, serializedData
 			moveItemStorageToInventory(relativeRootObject);
 		case 2:
 			moveGearStorageToInventory(relativeRootObject);
+		case 3:
+			createKeyItemsIfMissing(relativeRootObject);
 		default:
 		/*
 		 * The default block is left empty intentionally,
@@ -2463,6 +2432,13 @@ private function moveGearStorageToInventory(relativeRootObject:*):void
 		
 		relativeRootObject.inventory.gearStorage = relativeRootObject.gearStorage;
 		delete relativeRootObject["gearStorage"];
+	}
+}
+
+private function createKeyItemsIfMissing(relativeRootObject:*): void
+{
+	if (!("keyItems" in relativeRootObject)) {
+		relativeRootObject.keyItems = [];
 	}
 }
 

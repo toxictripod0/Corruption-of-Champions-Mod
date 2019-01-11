@@ -33,11 +33,11 @@ package classes
 
 		
 		//Key items
-		public var keyItems:/*KeyItem*/Array;
+		public var keyItems:Vector.<KeyItem>;
 		
 		public function Character()
 		{
-			keyItems = [];
+			keyItems = new Vector.<classes.KeyItem>();
 		}
 		
 		//Return bonus fertility

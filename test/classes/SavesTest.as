@@ -10,6 +10,8 @@ package classes{
 	import org.hamcrest.number.*;
 	import org.hamcrest.object.*;
 	import org.hamcrest.text.*;
+	import org.hamcrest.collection.hasItem;
+	import org.hamcrest.collection.emptyArray;
 	
 	import flash.display.Stage;
 	import mx.utils.UIDUtil;
@@ -63,6 +65,9 @@ package classes{
 		private var serializedSave:* = [];
 		private var TEST_SAVE_GAME:String;
 		
+		private var key1:KeyItem;
+		private var key2:KeyItem;
+		
 		[BeforeClass]
 		public static function setUpClass():void {
 			kGAMECLASS = new CoC(StageLocator.stage);
@@ -98,6 +103,7 @@ package classes{
 			
 			initInventory();
 			initGearStorage();
+			initKeyItems();
 			
 			saveGame();
 
@@ -107,6 +113,7 @@ package classes{
 			
 			kGAMECLASS.inventory.clearStorage();
 			kGAMECLASS.inventory.clearGearStorage();
+			kGAMECLASS.player.keyItems.length = 0;
 		}
 		
 		[After]
@@ -235,6 +242,27 @@ package classes{
 			(gear[1] as ItemSlot).setItemAndQty(weapons.PIPE, 2);
 			(gear[9] as ItemSlot).setItemAndQty(armor.GOOARMR, 3);
 			(gear[35] as ItemSlot).setItemAndQty(armor.B_DRESS, 4);
+		}
+		
+		private function initKeyItems():void
+		{
+			key1 = new KeyItem();
+			key2 = new KeyItem();
+		
+			key1.keyName = "key1";
+			key1.value1 = 1.0;
+			key1.value2 = 2.0;
+			key1.value3 = 3.0;
+			key1.value4 = 4.0;
+			
+			key2.keyName = "key2";
+			key2.value1 = 5.0;
+			key2.value2 = 6.0;
+			key2.value3 = 7.0;
+			key2.value4 = 8.0;
+			
+			kGAMECLASS.player.keyItems.push(key1);
+			kGAMECLASS.player.keyItems.push(key2);
 		}
 		
 		[Test]
@@ -744,6 +772,49 @@ package classes{
 			
 			assertThat(serializedSave.inventory.gearStorage, notNullValue());
 			assertThat(serializedSave.inventory.gearStorage.length, equalTo(45));
+		}
+		
+		[Test]
+		public function loadedKeyItemsCount():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.keyItems.length, equalTo(2));
+		}
+		
+		[Test]
+		public function loadedKeyItemsHasKey1():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.keyItems, hasItem(hasProperties({keyName: "key1", value1: 1, value2: 2, value3: 3, value4: 4})));
+		}
+		
+		[Test]
+		public function loadedKeyItemsHasKey2():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.keyItems, hasItem(hasProperties({keyName: "key2", value1: 5, value2: 6, value3: 7, value4: 8})));
+		}
+		
+		[Test]
+		public function loadedKeyItemsOrder():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.keyItems[0], hasProperty("keyName", "key1"));
+			assertThat(kGAMECLASS.player.keyItems[1], hasProperty("keyName", "key2"));
+		}
+		
+		[Test]
+		public function missingKeyItemsCreated():void
+		{
+			var saveWithoutKeyItems:* = [];
+			
+			cut.upgradeSerializationVersion(saveWithoutKeyItems, 3)
+			
+			assertThat(saveWithoutKeyItems, hasProperty("keyItems", emptyArray()))
 		}
 	}
 }
