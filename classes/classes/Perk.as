@@ -1,8 +1,19 @@
 ﻿package classes
 {
+	/**
+	 * Stores a perk type and additional values for a perk.
+	 */
 	public class Perk
 	{
-		//constructor
+		/**
+		 * Create a new Perk with the initial values given in the constructor.
+		 * 
+		 * @param	perk identifies what perk this is
+		 * @param	value1 additional data for this perk, depends on the perk type
+		 * @param	value2 additional data for this perk, depends on the perk type
+		 * @param	value3 additional data for this perk, depends on the perk type
+		 * @param	value4 additional data for this perk, depends on the perk type
+		 */
 		public function Perk(perk:PerkType,value1:Number=0,value2:Number=0,value3:Number=0,value4:Number=0)
 		{
 			_ptype = perk;
@@ -11,14 +22,12 @@
 			this.value3 = value3;
 			this.value4 = value4;
 		}
-		//data
+		
 		private var _ptype:PerkType;
 		public var value1:Number;
 		public var value2:Number;
 		public var value3:Number;
 		public var value4:Number;
-		//MEMBER FUNCTIONS
-
 
 		public function get ptype():PerkType
 		{
