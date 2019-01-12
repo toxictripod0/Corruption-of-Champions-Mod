@@ -1,46 +1,130 @@
-package classes 
+package classes
 {
+	import classes.internals.SerializationUtils;
 	import org.hamcrest.assertThat;
 	import org.hamcrest.object.equalTo;
+	import org.hamcrest.object.hasProperty;
 	
-	public class PerkTest 
+	public class PerkTest
 	{
+		private static const PTYPE:PerkType = PerkLib.Agility;
+		private static const VALUE1:int = 6;
+		private static const VALUE2:int = 7;
+		private static const VALUE3:int = 8;
+		private static const VALUE4:int = 9;
+		
+		private var deserialized:Perk;
+		private var serializedClass:*;
+		
 		private var cut:Perk;
+		private var defaultConstructor:Perk;
 		
 		[Before]
 		public function setUp():void
 		{
-			cut = new Perk();
+			cut = new Perk(PTYPE);
+			defaultConstructor = new Perk();
+			
+			cut.value1 = VALUE1;
+			cut.value2 = VALUE2;
+			cut.value3 = VALUE3;
+			cut.value4 = VALUE4;
+			
+			deserialized = new Perk();
+			serializedClass = [];
+			
+			SerializationUtils.serialize(serializedClass, cut);
+			SerializationUtils.deserialize(serializedClass, deserialized);
 		}
 		
 		[Test]
 		public function defaultPerkTypeIsNothing():void
 		{
-			assertThat(cut.ptype.id, equalTo(Perk.NOTHING.id));
+			assertThat(defaultConstructor.ptype.id, equalTo(Perk.NOTHING.id));
 		}
 		
 		[Test]
 		public function defaultPerkValue1():void
 		{
-			assertThat(cut.value1, equalTo(0));
+			assertThat(defaultConstructor.value1, equalTo(0));
 		}
 		
 		[Test]
 		public function defaultPerkValue2():void
 		{
-			assertThat(cut.value2, equalTo(0));
+			assertThat(defaultConstructor.value2, equalTo(0));
 		}
 		
 		[Test]
 		public function defaultPerkValue3():void
 		{
-			assertThat(cut.value3, equalTo(0));
+			assertThat(defaultConstructor.value3, equalTo(0));
 		}
 		
 		[Test]
 		public function defaultPerkValue4():void
 		{
-			assertThat(cut.value4, equalTo(0));
+			assertThat(defaultConstructor.value4, equalTo(0));
+		}
+		
+		[Test]
+		public function serializePtype():void
+		{
+			assertThat(serializedClass, hasProperty("id", PTYPE.id));
+		}
+		
+		[Test]
+		public function serializeValue1():void
+		{
+			assertThat(serializedClass, hasProperty("value1", VALUE1));
+		}
+		
+		[Test]
+		public function serializeValue2():void
+		{
+			assertThat(serializedClass, hasProperty("value2", VALUE2));
+		}
+		
+		[Test]
+		public function serializeValue3():void
+		{
+			assertThat(serializedClass, hasProperty("value3", VALUE3));
+		}
+		
+		[Test]
+		public function serializeValue4():void
+		{
+			assertThat(serializedClass, hasProperty("value4", VALUE4));
+		}
+		
+		[Test]
+		public function deserializePtype():void
+		{
+			assertThat(deserialized.ptype, equalTo(PTYPE));
+		}
+		
+		[Test]
+		public function deserializeValue1():void
+		{
+			assertThat(deserialized.value1, equalTo(VALUE1));
+		}
+		
+		[Test]
+		public function deserializeValue2():void
+		{
+			assertThat(deserialized.value2, equalTo(VALUE2));
+		}
+		
+		[Test]
+		public function deserializeValue3():void
+		{
+			assertThat(deserialized.value3, equalTo(VALUE3));
+		}
+		
+		[Test]
+		public function deserializeValue4():void
+		{
+			assertThat(deserialized.value4, equalTo(VALUE4));
 		}
 	}
 }

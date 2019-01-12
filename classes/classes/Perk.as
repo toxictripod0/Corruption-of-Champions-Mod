@@ -1,11 +1,14 @@
 package classes
 {
 	import classes.Perks.Nothing;
+	import classes.internals.Serializable;
 	/**
 	 * Stores a perk type and additional values for a perk.
 	 */
-	public class Perk
+	public class Perk implements Serializable
 	{
+		private static const SERIALIZATION_VERSION:int = 1;
+		
 		public static const NOTHING:PerkType = new Nothing();
 		
 		/**
@@ -29,6 +32,36 @@ package classes
 			this.value2 = value2;
 			this.value3 = value3;
 			this.value4 = value4;
+		}
+		
+		public function serialize(relativeRootObject:*):void 
+		{
+			relativeRootObject.id = _ptype.id;
+			
+			relativeRootObject.value1 = value1;
+			relativeRootObject.value2 = value2;
+			relativeRootObject.value3 = value3;
+			relativeRootObject.value4 = value4;
+		}
+		
+		public function deserialize(relativeRootObject:*):void 
+		{
+			_ptype = PerkType.lookupPerk(relativeRootObject.id);
+			
+			value1 = relativeRootObject.value1;
+			value2 = relativeRootObject.value2;
+			value3 = relativeRootObject.value3;
+			value4 = relativeRootObject.value4;
+		}
+		
+		public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 
+		{
+			
+		}
+		
+		public function currentSerializationVerison():int 
+		{
+			return SERIALIZATION_VERSION;
 		}
 		
 		private var _ptype:PerkType;
