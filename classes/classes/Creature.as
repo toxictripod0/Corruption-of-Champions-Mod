@@ -591,11 +591,12 @@ import flash.errors.IllegalOperationError;
 		
 		//Monsters have few perks, which I think should be a status effect for clarity's sake.
 		//TODO: Move perks into monster status effects.
-		private var _perks:Array;
+		private var _perks:Vector.<Perk>;
+		
 		public function perk(i:int):Perk{
 			return _perks[i];
 		}
-		public function get perks():Array {
+		public function get perks():Vector.<Perk> {
 			return _perks;
 		}
 		public function get numPerks():int {
@@ -614,7 +615,7 @@ import flash.errors.IllegalOperationError;
 			cocks = new Vector.<Cock>();
 			vaginas = new Vector.<Vagina>();
 			breastRows = new Vector.<BreastRow>();
-			_perks = [];
+			_perks = new Vector.<classes.Perk>();
 			statusEffects = [];
 			arms = new Arms(this);
 			face = new Face(this);
@@ -873,10 +874,12 @@ import flash.errors.IllegalOperationError;
 			return (timesFound > 1);
 		}
 		
-		//remove all perks
+		/**
+		 * Removes all perks.
+		 */
 		public function removePerks():void
 		{
-			_perks = [];
+			_perks.length = 0;
 		}
 		
 		public function addPerkValue(ptype:PerkType, valueIdx:Number = 1, bonus:Number = 0): void

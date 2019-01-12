@@ -144,6 +144,9 @@ package classes{
 			fullEquip.createBreastRow(BreastCup.B);
 			fullEquip.balls = 4;
 			
+			cut.createPerk(PerkLib.Androgyny);
+			cut.createPerk(PerkLib.Fertile);
+			cut.createPerk(PerkLib.FertilityPlus);
 			
 			// verify created test instances
 			assertThat(noVagina.hasVagina(), equalTo(false));
@@ -155,6 +158,8 @@ package classes{
 			assertThat(maxVagina.vaginas, arrayWithSize(MAX_SUPPORTED_VAGINAS));
 			
 			assertThat(fullEquip.isHerm(), equalTo(true));
+			
+			assertThat(cut.numPerks, equalTo(3));
         }  
 		
 		[Test] 
@@ -1008,6 +1013,12 @@ package classes{
 			SerializationUtils.deserialize(serializedClass, deserialized);
 			
 			assertThat(deserialized.nippleLength, equalTo(0.25));
+		}
+		
+		[Test]
+		public function shouldRemoveAllPerks():void
+		{
+			cut.removePerks();
 		}
 	}
 }
