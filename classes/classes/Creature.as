@@ -811,8 +811,15 @@ import flash.errors.IllegalOperationError;
 		}
 		
 		/**
-		 * Find an array element number for a perk. Useful when you want to work with a Perk instance.
+		 * 
 		 */
+		
+		 /**
+		  * Find an array element number for a perk. Useful when you want to work with a Perk instance.
+		  * 
+		  * @param	ptype the perk type to find
+		  * @return the index of the perk, -1 if the perk is not found or -2 if there are no perks
+		  */
 		public function findPerk(ptype:PerkType):Number
 		{
 			if (perks.length <= 0)
