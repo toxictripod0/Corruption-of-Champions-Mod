@@ -926,6 +926,11 @@ import flash.errors.IllegalOperationError;
 				perk(counter).value4 = newNum;
 		}
 		
+		/**
+		 * Returns the value stored in value1 for the perk, or 0 if there is no such perk.
+		 * @param	ptype perk type to get the value for
+		 * @return the stored value, or 0 if not found
+		 */
 		public function perkv1(ptype:PerkType):Number
 		{
 			var counter:Number = findPerk(ptype);
@@ -936,7 +941,12 @@ import flash.errors.IllegalOperationError;
 			}
 			return perk(counter).value1;
 		}
-		
+	
+		/**
+		 * Returns the value stored in value2 for the perk, or 0 if there is no such perk.
+		 * @param	ptype perk type to get the value for
+		 * @return the stored value, or 0 if not found
+		 */
 	public function perkv2(ptype:PerkType):Number
 	{
 		var counter:Number = findPerk(ptype);
@@ -948,6 +958,11 @@ import flash.errors.IllegalOperationError;
 		return perk(counter).value2;
 	}
 		
+		/**
+		 * Returns the value stored in value3 for the perk, or 0 if there is no such perk.
+		 * @param	ptype perk type to get the value for
+		 * @return the stored value, or 0 if not found
+		 */
 	public function perkv3(ptype:PerkType):Number
 	{
 		var counter:Number = findPerk(ptype);
@@ -958,7 +973,12 @@ import flash.errors.IllegalOperationError;
 		}
 		return perk(counter).value3;
 	}
-		
+	
+		/**
+		 * Returns the value stored in value4 for the perk, or 0 if there is no such perk.
+		 * @param	ptype perk type to get the value for
+		 * @return the stored value, or 0 if not found
+		 */
 	public function perkv4(ptype:PerkType):Number
 	{
 		var counter:Number = findPerk(ptype);
