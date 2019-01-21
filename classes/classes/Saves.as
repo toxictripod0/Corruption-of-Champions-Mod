@@ -941,25 +941,12 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		   myLocalData.data.girlEffectArray.push(new Array());
 		 }*/
 
-		saveFile.data.perks = [];
+		
 		saveFile.data.statusAffects = [];
 		saveFile.data.keyItems = [];
 		
-		//Set Perk Array
-		//Populate Perk Array
-		for (i = 0; i < player.perks.length; i++)
-		{
-			saveFile.data.perks.push([]);
-			//trace("Saveone Perk");
-			//trace("Populate One Perk");
-			saveFile.data.perks[i].id = player.perk(i).ptype.id;
-			//saveFile.data.perks[i].perkName = player.perk(i).ptype.id; //uncomment for backward compatibility
-			saveFile.data.perks[i].value1 = player.perk(i).value1;
-			saveFile.data.perks[i].value2 = player.perk(i).value2;
-			saveFile.data.perks[i].value3 = player.perk(i).value3;
-			saveFile.data.perks[i].value4 = player.perk(i).value4;
-			//saveFile.data.perks[i].perkDesc = player.perk(i).perkDesc; // uncomment for backward compatibility
-		}
+		
+		savePerks(saveFile);
 
 		//Set Status Array
 		for (i = 0; i < player.statusEffects.length; i++)
@@ -1739,91 +1726,9 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		player.knockUpForce(saveFile.data.pregnancyType, saveFile.data.pregnancyIncubation);
 		player.buttKnockUpForce(saveFile.data.buttPregnancyType, saveFile.data.buttPregnancyIncubation);
 
-		var hasHistoryPerk:Boolean = false;
-		var hasLustyRegenPerk:Boolean = false;
 		var addedSensualLover:Boolean = false;
 
-		//Populate Perk Array
-		for (i = 0; i < saveFile.data.perks.length; i++)
-		{
-			var id:String = saveFile.data.perks[i].id || saveFile.data.perks[i].perkName;
-			var value1:Number = saveFile.data.perks[i].value1;
-			var value2:Number = saveFile.data.perks[i].value2;
-			var value3:Number = saveFile.data.perks[i].value3;
-			var value4:Number = saveFile.data.perks[i].value4;
-
-			// Fix saves where the Whore perk might have been malformed.
-			if (id == "History: Whote") {
-				id = "History: Whore";
-			}
-
-			// Fix saves where the Lusty Regeneration perk might have been malformed.
-			if (id == "Lusty Regeneration")
-			{
-				hasLustyRegenPerk = true;
-			}
-			else if (id == "LustyRegeneration")
-			{
-				id = "Lusty Regeneration";
-				hasLustyRegenPerk = true;
-			}
-
-			// Some shit checking to track if the incoming data has an available History perk
-			if (id.indexOf("History:") != -1)
-			{
-				hasHistoryPerk = true;
-			}
-
-			var ptype:PerkType = PerkType.lookupPerk(id);
-
-			if (ptype == null || ptype === Perk.NOTHING)
-			{
-				//trace("ERROR: Unknown perk id="+id);
-				LOGGER.warn("Skipping Null or Empty perk");
-				//(saveFile.data.perks as Array).splice(i,1);
-				// NEVER EVER EVER MODIFY DATA IN THE SAVE FILE LIKE THIS. EVER. FOR ANY REASON.
-			}
-			else
-			{
-				//trace("Creating perk : " + ptype);
-				player.createPerk(ptype,value1,value2,value3,value4);
-
-				if (isNaN(player.perk(player.numPerks - 1).value1))
-				{
-					if (player.perk(player.numPerks - 1).perkName == "Wizard's Focus")
-					{
-						player.perk(player.numPerks - 1).value1 = .3;
-					}
-					else
-					{
-						player.perk(player.numPerks).value1 = 0;
-					}
-
-					//trace("NaN byaaaatch: " + player.perk(player.numPerks - 1).value1);
-				}
-
-				if (player.perk(player.numPerks - 1).perkName == "Wizard's Focus")
-				{
-					if (player.perk(player.numPerks - 1).value1 == 0 || player.perk(player.numPerks - 1).value1 < 0.1)
-					{
-						//trace("Wizard's Focus boosted up to par (.5)");
-						player.perk(player.numPerks - 1).value1 = .5;
-					}
-				}
-			}
-		}
-
-		// Fixup missing History: Whore perk IF AND ONLY IF the flag used to track the prior selection of a history perk has been set
-		if (hasHistoryPerk == false && flags[kFLAGS.HISTORY_PERK_SELECTED] != 0)
-		{
-			player.createPerk(PerkLib.HistoryWhore, 0, 0, 0, 0);
-		}
-
-		// Fixup missing Lusty Regeneration perk, if the player has an equipped viridian cock sock and does NOT have the Lusty Regeneration perk
-		if (hasViridianCockSock(kGAMECLASS.player) === true && hasLustyRegenPerk === false)
-		{
-			player.createPerk(PerkLib.LustyRegeneration, 0, 0, 0, 0);
-		}
+		loadPerks(saveFile);
 
 		if (flags[kFLAGS.TATTOO_SAVEFIX_APPLIED] == 0)
 		{
@@ -2441,6 +2346,115 @@ private function createKeyItemsIfMissing(relativeRootObject:*): void
 {
 	if (!("keyItems" in relativeRootObject)) {
 		relativeRootObject.keyItems = [];
+	}
+}
+
+private function loadPerks(saveFile:*):void 
+{
+	
+	var hasHistoryPerk:Boolean = false;
+	var hasLustyRegenPerk:Boolean = false;
+	
+	//Populate Perk Array
+	for (var i:int = 0; i < saveFile.data.perks.length; i++)
+	{
+		var id:String = saveFile.data.perks[i].id || saveFile.data.perks[i].perkName;
+		var value1:Number = saveFile.data.perks[i].value1;
+		var value2:Number = saveFile.data.perks[i].value2;
+		var value3:Number = saveFile.data.perks[i].value3;
+		var value4:Number = saveFile.data.perks[i].value4;
+
+		// Fix saves where the Whore perk might have been malformed.
+		if (id == "History: Whote") {
+			id = "History: Whore";
+		}
+
+		// Fix saves where the Lusty Regeneration perk might have been malformed.
+		if (id == "Lusty Regeneration")
+		{
+			hasLustyRegenPerk = true;
+		}
+		else if (id == "LustyRegeneration")
+		{
+			id = "Lusty Regeneration";
+			hasLustyRegenPerk = true;
+		}
+
+		// Some shit checking to track if the incoming data has an available History perk
+		if (id.indexOf("History:") != -1)
+		{
+			hasHistoryPerk = true;
+		}
+
+		var ptype:PerkType = PerkType.lookupPerk(id);
+
+		if (ptype == null || ptype === Perk.NOTHING)
+		{
+			//trace("ERROR: Unknown perk id="+id);
+			LOGGER.warn("Skipping Null or Empty perk");
+			//(saveFile.data.perks as Array).splice(i,1);
+			// NEVER EVER EVER MODIFY DATA IN THE SAVE FILE LIKE THIS. EVER. FOR ANY REASON.
+		}
+		else
+		{
+			//trace("Creating perk : " + ptype);
+			player.createPerk(ptype,value1,value2,value3,value4);
+
+			if (isNaN(player.perk(player.numPerks - 1).value1))
+			{
+				if (player.perk(player.numPerks - 1).perkName == "Wizard's Focus")
+				{
+					player.perk(player.numPerks - 1).value1 = .3;
+				}
+				else
+				{
+					player.perk(player.numPerks).value1 = 0;
+				}
+
+				//trace("NaN byaaaatch: " + player.perk(player.numPerks - 1).value1);
+			}
+
+			if (player.perk(player.numPerks - 1).perkName == "Wizard's Focus")
+			{
+				if (player.perk(player.numPerks - 1).value1 == 0 || player.perk(player.numPerks - 1).value1 < 0.1)
+				{
+					//trace("Wizard's Focus boosted up to par (.5)");
+					player.perk(player.numPerks - 1).value1 = .5;
+				}
+			}
+		}
+	}
+	
+	// Fixup missing History: Whore perk IF AND ONLY IF the flag used to track the prior selection of a history perk has been set
+	if (hasHistoryPerk == false && flags[kFLAGS.HISTORY_PERK_SELECTED] != 0)
+	{
+		player.createPerk(PerkLib.HistoryWhore, 0, 0, 0, 0);
+	}
+	
+	// Fixup missing Lusty Regeneration perk, if the player has an equipped viridian cock sock and does NOT have the Lusty Regeneration perk
+	if (hasViridianCockSock(kGAMECLASS.player) === true && hasLustyRegenPerk === false)
+	{
+		player.createPerk(PerkLib.LustyRegeneration, 0, 0, 0, 0);
+	}
+}
+
+public function savePerks(saveFile:*):void 
+{
+	saveFile.data.perks = [];
+	//Set Perk Array
+	//Populate Perk Array
+	for (var i:int = 0; i < player.perks.length; i++)
+	{
+		saveFile.data.perks.push([]);
+		//trace("Saveone Perk");
+		//trace("Populate One Perk");
+		saveFile.data.perks[i].id = player.perk(i).ptype.id;
+		//saveFile.data.perks[i].perkName = player.perk(i).ptype.id; //uncomment for backward compatibility
+		saveFile.data.perks[i].value1 = player.perk(i).value1;
+		saveFile.data.perks[i].value2 = player.perk(i).value2;
+		saveFile.data.perks[i].value3 = player.perk(i).value3;
+		saveFile.data.perks[i].value4 = player.perk(i).value4;
+		//saveFile.data.perks[i].perkDesc = player.perk(i).perkDesc; // uncomment for backward compatibility
 	}
 }
 
