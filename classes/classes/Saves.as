@@ -2349,7 +2349,7 @@ private function createKeyItemsIfMissing(relativeRootObject:*): void
 	}
 }
 
-private function loadPerks(saveFile:*):void 
+public function loadPerks(saveFile:*):void 
 {
 	
 	var hasHistoryPerk:Boolean = false;

@@ -278,15 +278,6 @@ package classes{
 			kGAMECLASS.player.createPerk(PerkLib.Agility, 1, 2, 3, 4);
 			kGAMECLASS.player.createPerk(PerkLib.WizardsFocus, NaN, NaN, NaN, NaN);
 			kGAMECLASS.player.perks.push(new Perk());
-			
-			/*
-			var perk:* = [];
-			SerializationUtils.serialize(perk, new Perk(PerkLib.ArousingAura));
-			perk.perkName = perk.id;
-			delete perk["serializationVersion"];
-			delete perk["id"];
-			kGAMECLASS.player.perks[5] = (perk);
-			*/
 		}
 		
 		[Test]
@@ -960,11 +951,25 @@ package classes{
 			assertThat(kGAMECLASS.player.hasPerk(PerkLib.HistoryWhore), equalTo(true));
 		}
 		
-		[Ignore]
 		[Test]
 		public function upgradePerksWithPerkName():void
 		{
-			cut.loadGame(TEST_SAVE_GAME);
+			var perk:* = [];
+			SerializationUtils.serialize(perk, new Perk(PerkLib.ArousingAura));
+			perk.perkName = perk.id;
+			delete perk["serializationVersion"];
+			delete perk["id"];
+			
+			var perks:* = [];
+			perks.push(perk);
+			
+			var data:* = [];
+			data.perks = perks;
+			saveFile = [];
+			
+			saveFile.data = data;
+			
+			cut.loadPerks(saveFile);
 			
 			assertThat(kGAMECLASS.player.hasPerk(PerkLib.ArousingAura), equalTo(true));
 		}
