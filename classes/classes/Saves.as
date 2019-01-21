@@ -1753,7 +1753,9 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			var value4:Number = saveFile.data.perks[i].value4;
 
 			// Fix saves where the Whore perk might have been malformed.
-			if (id == "History: Whote") id = "History: Whore";
+			if (id == "History: Whote") {
+				id = "History: Whore";
+			}
 
 			// Fix saves where the Lusty Regeneration perk might have been malformed.
 			if (id == "Lusty Regeneration")
@@ -1774,10 +1776,10 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 
 			var ptype:PerkType = PerkType.lookupPerk(id);
 
-			if (ptype == null)
+			if (ptype == null || ptype === Perk.NOTHING)
 			{
 				//trace("ERROR: Unknown perk id="+id);
-
+				LOGGER.warn("Skipping Null or Empty perk");
 				//(saveFile.data.perks as Array).splice(i,1);
 				// NEVER EVER EVER MODIFY DATA IN THE SAVE FILE LIKE THIS. EVER. FOR ANY REASON.
 			}

@@ -104,6 +104,7 @@ package classes{
 			initInventory();
 			initGearStorage();
 			initKeyItems();
+			initPerks();
 			
 			saveGame();
 
@@ -265,6 +266,29 @@ package classes{
 			kGAMECLASS.player.keyItems.push(key2);
 		}
 		
+		private function initPerks():void
+		{
+			kGAMECLASS.player.removePerks();
+			
+			var oldHistoryType:PerkType = new PerkType("History: Whote", "", "");
+			var oldLustyRegenType:PerkType = new PerkType("LustyRegeneration", "", "");
+			
+			kGAMECLASS.player.createPerk(oldHistoryType);
+			kGAMECLASS.player.createPerk(oldLustyRegenType);
+			kGAMECLASS.player.createPerk(PerkLib.Agility, 1, 2, 3, 4);
+			kGAMECLASS.player.createPerk(PerkLib.WizardsFocus, NaN, NaN, NaN, NaN);
+			kGAMECLASS.player.perks.push(new Perk());
+			
+			/*
+			var perk:* = [];
+			SerializationUtils.serialize(perk, new Perk(PerkLib.ArousingAura));
+			perk.perkName = perk.id;
+			delete perk["serializationVersion"];
+			delete perk["id"];
+			kGAMECLASS.player.perks[5] = (perk);
+			*/
+		}
+		
 		[Test]
 		public function testClitLengthSaved():void {
 			player.createVagina();
@@ -314,9 +338,10 @@ package classes{
 			assertThat(kGAMECLASS.player.cocks[0].cockType, equalTo(CockTypesEnum.CAT));
 			assertThat(kGAMECLASS.player.cocks[2].cockType, equalTo(CockTypesEnum.HORSE));
 		}
-		
+
 		[Test]
 		public function cockLoadViridianSockGrantsLustyRegenerationPerk():void {
+			player.removePerks();
 			player.cocks[0].sock = VIRIDIAN_SOCK;
 			
 			saveGame();
@@ -327,6 +352,7 @@ package classes{
 		
 		[Test]
 		public function cockLoadNoLustyRegenerationPerkWithoutViridianSock():void {
+			player.removePerks();
 			player.cocks[0].sock = TEST_SOCK;
 			
 			saveGame();
@@ -816,6 +842,146 @@ package classes{
 			
 			assertThat(saveWithoutKeyItems, hasProperty("keyItems", emptyArray()))
 		}
+		
+		[Test]
+		public function historyPerkFixed():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.hasPerk(PerkLib.HistoryWhore), equalTo(true));
+		}
+		
+		[Test]
+		public function lustyRegenPerkFixed():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.hasPerk(PerkLib.LustyRegeneration), equalTo(true));
+		}
+		
+		[Test]
+		public function perkIdLoaded():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.hasPerk(PerkLib.Agility), equalTo(true));
+		}
+		
+		[Test]
+		public function perkValue1Loaded():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.perkv1(PerkLib.Agility), equalTo(1));
+		}
+		
+		[Test]
+		public function perkValue2Loaded():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.perkv2(PerkLib.Agility), equalTo(2));
+		}
+		
+		[Test]
+		public function perkValue3Loaded():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.perkv3(PerkLib.Agility), equalTo(3));
+		}
+		
+		[Test]
+		public function perkValue4Loaded():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.perkv4(PerkLib.Agility), equalTo(4));
+		}
+		
+		[Test]
+		public function wizardFocusFixOnLoad():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			var perkIndex:int = kGAMECLASS.player.findPerk(PerkLib.WizardsFocus);
+			
+			assertThat(perkIndex, greaterThan(0));
+			assertThat(kGAMECLASS.player.perk(perkIndex).value1, equalTo(0.3));
+		}
+		
+		[Test]
+		public function wizardFocusFix2OnLoad():void
+		{
+			kGAMECLASS.player.perk(kGAMECLASS.player.findPerk(PerkLib.WizardsFocus)).value1 = 0.05;
+			
+			cut.saveGame(TEST_SAVE_GAME);
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			var perkIndex:int = kGAMECLASS.player.findPerk(PerkLib.WizardsFocus);
+			
+			assertThat(perkIndex, greaterThanOrEqualTo(0));
+			assertThat(kGAMECLASS.player.perk(perkIndex).value1, equalTo(0.5));
+		}
+		
+		[Ignore]
+		[Test]
+		public function nanValue1SetTo0():void
+		{
+			var testPerk:PerkType = new PerkType("Wizb", "Wizb", "Wizb");
+			kGAMECLASS.player.createPerk(testPerk, NaN);
+			
+			cut.saveGame(TEST_SAVE_GAME);
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			var perkIndex:int = kGAMECLASS.player.findPerk(testPerk);
+			
+			assertThat(perkIndex, greaterThanOrEqualTo(0));
+			assertThat(kGAMECLASS.player.perk(perkIndex).value1, equalTo(0));
+		}
+		
+		[Test]
+		public function nullPerkNotLoaded():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.numPerks, equalTo(4));
+		}
+		
+		[Test]
+		public function getDefaultHistoryPerkIfHistorySelected():void
+		{
+			kGAMECLASS.player.removePerks();
+			kGAMECLASS.player.flags[kFLAGS.HISTORY_PERK_SELECTED] = 1;
+			
+			cut.saveGame(TEST_SAVE_GAME);
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.hasPerk(PerkLib.HistoryWhore), equalTo(true));
+		}
+		
+		[Ignore]
+		[Test]
+		public function upgradePerksWithPerkName():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.hasPerk(PerkLib.ArousingAura), equalTo(true));
+		}
+		
+		[Test]
+		public function loadsLustyRegenPerk():void
+		{
+			// for completeness, cover all code branches
+			kGAMECLASS.player.removePerks();
+			kGAMECLASS.player.createPerk(PerkLib.LustyRegeneration);
+			
+			cut.saveGame(TEST_SAVE_GAME);
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(kGAMECLASS.player.hasPerk(PerkLib.LustyRegeneration), equalTo(true));
+		}
+		
 	}
 }
 
