@@ -3,6 +3,7 @@ package classes
 	import classes.internals.SerializationUtils;
 	import org.hamcrest.assertThat;
 	import org.hamcrest.object.equalTo;
+	import org.hamcrest.number.isNumber;
 	import org.hamcrest.object.hasProperty;
 	
 	public class PerkTest
@@ -15,9 +16,12 @@ package classes
 		
 		private var deserialized:Perk;
 		private var serializedClass:*;
+		private var serializedNaNValues:*;
 		
 		private var cut:Perk;
 		private var defaultConstructor:Perk;
+		
+		//TODO add test that loaded NaN values are converted to 0
 		
 		[Before]
 		public function setUp():void
@@ -29,6 +33,13 @@ package classes
 			cut.value2 = VALUE2;
 			cut.value3 = VALUE3;
 			cut.value4 = VALUE4;
+			
+			serializedNaNValues = [];
+			serializedNaNValues.id = "JustNaN";
+			serializedNaNValues.value1 = NaN;
+			serializedNaNValues.value2 = NaN;
+			serializedNaNValues.value3 = NaN;
+			serializedNaNValues.value4 = NaN;
 			
 			deserialized = new Perk();
 			serializedClass = [];
@@ -125,6 +136,71 @@ package classes
 		public function deserializeValue4():void
 		{
 			assertThat(deserialized.value4, equalTo(VALUE4));
+		}
+		
+		[Test]
+		public function upgradeFixesHistoryPerk():void
+		{
+			serializedClass = [];
+			serializedClass["id"] = "History: Whote";
+			
+			SerializationUtils.deserialize(serializedClass, deserialized);
+			
+			assertThat(deserialized.ptype.id, equalTo("History: Whore"));
+		}
+		
+		[Test]
+		public function upgradeFixesLustyPerk():void
+		{
+			serializedClass = [];
+			serializedClass["id"] = "LustyRegeneration";
+			
+			SerializationUtils.deserialize(serializedClass, deserialized);
+			
+			assertThat(deserialized.ptype.id, equalTo("Lusty Regeneration"));
+		}
+		
+		[Test]
+		public function upgradePerkNameToId():void
+		{
+			serializedClass = [];
+			serializedClass["perkName"] = PerkLib.Agility.id;
+
+			SerializationUtils.deserialize(serializedClass, deserialized);
+			
+			assertThat(deserialized.ptype.id, equalTo(PerkLib.Agility.id));
+		}
+		
+		[Test]
+		public function upgradeConvertsNaNtoZeroValue1():void
+		{
+			SerializationUtils.deserialize(serializedNaNValues, deserialized);
+			
+			assertThat(deserialized.value1, isNumber());
+		}
+		
+		[Test]
+		public function upgradeConvertsNaNtoZeroValue2():void
+		{
+			SerializationUtils.deserialize(serializedNaNValues, deserialized);
+			
+			assertThat(deserialized.value2, isNumber());
+		}
+		
+		[Test]
+		public function upgradeConvertsNaNtoZeroValue3():void
+		{
+			SerializationUtils.deserialize(serializedNaNValues, deserialized);
+			
+			assertThat(deserialized.value3, isNumber());
+		}
+		
+		[Test]
+		public function upgradeConvertsNaNtoZeroValue4():void
+		{
+			SerializationUtils.deserialize(serializedNaNValues, deserialized);
+			
+			assertThat(deserialized.value4, isNumber());
 		}
 	}
 }
