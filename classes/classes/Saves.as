@@ -2390,35 +2390,33 @@ public function loadPerks(saveFile:*):void
 
 		if (ptype == null || ptype === Perk.NOTHING)
 		{
-			//trace("ERROR: Unknown perk id="+id);
 			LOGGER.warn("Skipping Null or Empty perk");
-			//(saveFile.data.perks as Array).splice(i,1);
-			// NEVER EVER EVER MODIFY DATA IN THE SAVE FILE LIKE THIS. EVER. FOR ANY REASON.
 		}
 		else
 		{
-			//trace("Creating perk : " + ptype);
+			LOGGER.debug("Loading perk {0}", ptype);
 			player.createPerk(ptype,value1,value2,value3,value4);
 
 			if (isNaN(player.perk(player.numPerks - 1).value1))
 			{
+				LOGGER.warn("Perk {0} value1 was NaN, fixing...", ptype);
 				if (player.perk(player.numPerks - 1).perkName == "Wizard's Focus")
 				{
 					player.perk(player.numPerks - 1).value1 = .3;
+					LOGGER.warn("Value1 set to .3");
 				}
 				else
 				{
 					player.perk(player.numPerks - 1).value1 = 0;
+					LOGGER.warn("Value1 set to 0");
 				}
-
-				//trace("NaN byaaaatch: " + player.perk(player.numPerks - 1).value1);
 			}
 
 			if (player.perk(player.numPerks - 1).perkName == "Wizard's Focus")
 			{
 				if (player.perk(player.numPerks - 1).value1 == 0 || player.perk(player.numPerks - 1).value1 < 0.1)
 				{
-					//trace("Wizard's Focus boosted up to par (.5)");
+					LOGGER.info("Fixing Wizard's Focus, setting value1 to 0.5");
 					player.perk(player.numPerks - 1).value1 = .5;
 				}
 			}
