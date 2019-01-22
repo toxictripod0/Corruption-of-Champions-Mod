@@ -915,19 +915,29 @@ package classes{
 			assertThat(kGAMECLASS.player.perk(perkIndex).value1, equalTo(0.5));
 		}
 		
-		[Ignore]
 		[Test]
 		public function nanValue1SetTo0():void
 		{
-			var testPerk:PerkType = new PerkType("Wizb", "Wizb", "Wizb");
-			kGAMECLASS.player.createPerk(testPerk, NaN);
+			player.removePerks();
 			
-			cut.saveGame(TEST_SAVE_GAME);
-			cut.loadGame(TEST_SAVE_GAME);
+			var perk:* = [];
+			SerializationUtils.serialize(perk, new Perk(PerkLib.ArousingAura, NaN, NaN, NaN, NaN));
+			delete perk["serializationVersion"];
 			
-			var perkIndex:int = kGAMECLASS.player.findPerk(testPerk);
+			var perks:* = [];
+			perks.push(perk);
 			
-			assertThat(perkIndex, greaterThanOrEqualTo(0));
+			var data:* = [];
+			data.perks = perks;
+			saveFile = [];
+			
+			saveFile.data = data;
+			
+			cut.loadPerks(saveFile);
+			
+			var perkIndex:int = kGAMECLASS.player.findPerk(PerkLib.ArousingAura);
+			
+			assertThat("Could not find perk" ,perkIndex, greaterThanOrEqualTo(0));
 			assertThat(kGAMECLASS.player.perk(perkIndex).value1, equalTo(0));
 		}
 		

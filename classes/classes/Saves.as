@@ -2408,7 +2408,7 @@ public function loadPerks(saveFile:*):void
 				}
 				else
 				{
-					player.perk(player.numPerks).value1 = 0;
+					player.perk(player.numPerks - 1).value1 = 0;
 				}
 
 				//trace("NaN byaaaatch: " + player.perk(player.numPerks - 1).value1);
