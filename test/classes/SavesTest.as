@@ -927,13 +927,7 @@ package classes{
 			var perks:* = [];
 			perks.push(perk);
 			
-			var data:* = [];
-			data.perks = perks;
-			saveFile = [];
-			
-			saveFile.data = data;
-			
-			cut.loadPerks(saveFile);
+			cut.loadPerks(perks);
 			
 			var perkIndex:int = kGAMECLASS.player.findPerk(PerkLib.ArousingAura);
 			
@@ -973,13 +967,7 @@ package classes{
 			var perks:* = [];
 			perks.push(perk);
 			
-			var data:* = [];
-			data.perks = perks;
-			saveFile = [];
-			
-			saveFile.data = data;
-			
-			cut.loadPerks(saveFile);
+			cut.loadPerks(perks);
 			
 			assertThat(kGAMECLASS.player.hasPerk(PerkLib.ArousingAura), equalTo(true));
 		}

@@ -946,7 +946,8 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile.data.keyItems = [];
 		
 		
-		savePerks(saveFile);
+		saveFile.data.perks = [];
+		savePerks(saveFile.data.perks);
 
 		//Set Status Array
 		for (i = 0; i < player.statusEffects.length; i++)
@@ -1728,7 +1729,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 
 		var addedSensualLover:Boolean = false;
 
-		loadPerks(saveFile);
+		loadPerks(saveFile.data.perks);
 
 		if (flags[kFLAGS.TATTOO_SAVEFIX_APPLIED] == 0)
 		{
@@ -2349,20 +2350,20 @@ private function createKeyItemsIfMissing(relativeRootObject:*): void
 	}
 }
 
-public function loadPerks(saveFile:*):void 
+public function loadPerks(perks:*):void 
 {
 	
 	var hasHistoryPerk:Boolean = false;
 	var hasLustyRegenPerk:Boolean = false;
 	
 	//Populate Perk Array
-	for (var i:int = 0; i < saveFile.data.perks.length; i++)
+	for (var i:int = 0; i < perks.length; i++)
 	{
-		var id:String = saveFile.data.perks[i].id || saveFile.data.perks[i].perkName;
-		var value1:Number = saveFile.data.perks[i].value1;
-		var value2:Number = saveFile.data.perks[i].value2;
-		var value3:Number = saveFile.data.perks[i].value3;
-		var value4:Number = saveFile.data.perks[i].value4;
+		var id:String = perks[i].id || perks[i].perkName;
+		var value1:Number = perks[i].value1;
+		var value2:Number = perks[i].value2;
+		var value3:Number = perks[i].value3;
+		var value4:Number = perks[i].value4;
 
 		// Fix saves where the Whore perk might have been malformed.
 		if (id == "History: Whote") {
@@ -2436,23 +2437,22 @@ public function loadPerks(saveFile:*):void
 	}
 }
 
-public function savePerks(saveFile:*):void 
+public function savePerks(perks:*):void 
 {
-	saveFile.data.perks = [];
 	//Set Perk Array
 	//Populate Perk Array
 	for (var i:int = 0; i < player.perks.length; i++)
 	{
-		saveFile.data.perks.push([]);
+		perks.push([]);
 		//trace("Saveone Perk");
 		//trace("Populate One Perk");
-		saveFile.data.perks[i].id = player.perk(i).ptype.id;
-		//saveFile.data.perks[i].perkName = player.perk(i).ptype.id; //uncomment for backward compatibility
-		saveFile.data.perks[i].value1 = player.perk(i).value1;
-		saveFile.data.perks[i].value2 = player.perk(i).value2;
-		saveFile.data.perks[i].value3 = player.perk(i).value3;
-		saveFile.data.perks[i].value4 = player.perk(i).value4;
-		//saveFile.data.perks[i].perkDesc = player.perk(i).perkDesc; // uncomment for backward compatibility
+		perks[i].id = player.perk(i).ptype.id;
+		//perks[i].perkName = player.perk(i).ptype.id; //uncomment for backward compatibility
+		perks[i].value1 = player.perk(i).value1;
+		perks[i].value2 = player.perk(i).value2;
+		perks[i].value3 = player.perk(i).value3;
+		perks[i].value4 = player.perk(i).value4;
+		//perks[i].perkDesc = player.perk(i).perkDesc; // uncomment for backward compatibility
 	}
 }
 
