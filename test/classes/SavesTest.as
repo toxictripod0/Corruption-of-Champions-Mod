@@ -335,8 +335,7 @@ package classes{
 			player.removePerks();
 			player.cocks[0].sock = VIRIDIAN_SOCK;
 			
-			saveGame();
-			loadGame();
+			cut.loadPerks([]);
 			
 			assertThat(player.hasPerk(PerkLib.LustyRegeneration), equalTo(true));
 		}
@@ -346,8 +345,7 @@ package classes{
 			player.removePerks();
 			player.cocks[0].sock = TEST_SOCK;
 			
-			saveGame();
-			loadGame();
+			cut.loadPerks([]);
 			
 			assertThat(player.hasPerk(PerkLib.LustyRegeneration), equalTo(false));
 		}
