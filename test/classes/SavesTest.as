@@ -655,8 +655,8 @@ package classes{
 			//TODO remove this once the saves serialization has been completed
 			cut.loadGame(TEST_SAVE_GAME);
 			
-			assertThat(kGAMECLASS.inventory.hasItemInStorage(consumables.PURPDYE), equalTo(true));
-			assertThat(kGAMECLASS.inventory.hasItemInStorage(consumables.PURHONY), equalTo(true));
+			assertThat("Item storage did not contain purple dye", kGAMECLASS.inventory.hasItemInStorage(consumables.PURPDYE), equalTo(true));
+			assertThat("Item storage did not contain pure honey", kGAMECLASS.inventory.hasItemInStorage(consumables.PURHONY), equalTo(true));
 		}
 	}
 }
