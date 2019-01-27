@@ -1000,6 +1000,7 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 			saveFile.data.keyItems[i].value4 = player.keyItems[i].value4;
 		}
 		
+		saveFile.data.inventory = [];
 		SerializationUtils.serialize(saveFile.data.inventory, inventory);
 		
 		//Set gear slot array
