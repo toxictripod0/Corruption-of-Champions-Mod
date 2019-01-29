@@ -53,6 +53,9 @@ package classes{
 		private static const PLAYER_FATIGUE:int = 49;
 		
 		private static const PLAYER_XP:int = 7;
+		
+		private static const oldHistoryType:PerkType = new PerkType("History: Whote", "", "");
+		private static const oldLustyRegenType:PerkType = new PerkType("LustyRegeneration", "", "");
 
 		private var player:Player;
 		private var cut:SavesForTest;
@@ -269,9 +272,6 @@ package classes{
 		private function initPerks():void
 		{
 			kGAMECLASS.player.removePerks();
-			
-			var oldHistoryType:PerkType = new PerkType("History: Whote", "", "");
-			var oldLustyRegenType:PerkType = new PerkType("LustyRegeneration", "", "");
 			
 			kGAMECLASS.player.createPerk(oldHistoryType);
 			kGAMECLASS.player.createPerk(oldLustyRegenType);
