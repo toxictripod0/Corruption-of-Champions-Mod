@@ -945,9 +945,7 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile.data.statusAffects = [];
 		saveFile.data.keyItems = [];
 		
-		
-		saveFile.data.perks = [];
-		savePerks(saveFile.data.perks);
+		saveFile.data.perks = SerializationUtils.serializeVector(player.perks as Vector.<*>);
 
 		//Set Status Array
 		for (i = 0; i < player.statusEffects.length; i++)
@@ -2434,25 +2432,6 @@ public function loadPerks(perks:*):void
 	if (hasViridianCockSock(kGAMECLASS.player) === true && hasLustyRegenPerk === false)
 	{
 		player.createPerk(PerkLib.LustyRegeneration, 0, 0, 0, 0);
-	}
-}
-
-public function savePerks(perks:*):void 
-{
-	//Set Perk Array
-	//Populate Perk Array
-	for (var i:int = 0; i < player.perks.length; i++)
-	{
-		perks.push([]);
-		//trace("Saveone Perk");
-		//trace("Populate One Perk");
-		perks[i].id = player.perk(i).ptype.id;
-		//perks[i].perkName = player.perk(i).ptype.id; //uncomment for backward compatibility
-		perks[i].value1 = player.perk(i).value1;
-		perks[i].value2 = player.perk(i).value2;
-		perks[i].value3 = player.perk(i).value3;
-		perks[i].value4 = player.perk(i).value4;
-		//perks[i].perkDesc = player.perk(i).perkDesc; // uncomment for backward compatibility
 	}
 }
 
