@@ -280,6 +280,15 @@ package classes{
 			kGAMECLASS.player.perks.push(new Perk());
 		}
 		
+		private function createUnversionedPerk(perkType:PerkType, value1:Number = 0, value2:Number = 0, value3:Number = 0, value4:Number = 0):Array
+		{
+			var perk:* = [];
+			SerializationUtils.serialize(perk, new Perk(perkType, value1, value2, value3, value4));
+			delete perk["serializationVersion"];
+			
+			return perk;
+		}
+		
 		[Test]
 		public function testClitLengthSaved():void {
 			player.createVagina();
