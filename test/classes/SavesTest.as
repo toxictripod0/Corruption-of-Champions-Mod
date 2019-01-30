@@ -953,11 +953,9 @@ package classes{
 		[Test]
 		public function getDefaultHistoryPerkIfHistorySelected():void
 		{
-			kGAMECLASS.player.removePerks();
 			kGAMECLASS.player.flags[kFLAGS.HISTORY_PERK_SELECTED] = 1;
 			
-			cut.saveGame(TEST_SAVE_GAME);
-			cut.loadGame(TEST_SAVE_GAME);
+			cut.loadPerks([]);
 			
 			assertThat(kGAMECLASS.player.hasPerk(PerkLib.HistoryWhore), equalTo(true));
 		}
