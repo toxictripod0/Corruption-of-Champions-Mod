@@ -2350,8 +2350,6 @@ private function createKeyItemsIfMissing(relativeRootObject:*): void
 
 public function loadPerks(perks:*):void 
 {
-	var hasLustyRegenPerk:Boolean = false;
-	
 	//Populate Perk Array
 	for (var i:int = 0; i < perks.length; i++)
 	{
@@ -2366,15 +2364,9 @@ public function loadPerks(perks:*):void
 			id = "History: Whore";
 		}
 
-		// Fix saves where the Lusty Regeneration perk might have been malformed.
-		if (id == "Lusty Regeneration")
-		{
-			hasLustyRegenPerk = true;
-		}
-		else if (id == "LustyRegeneration")
+		if (id == "LustyRegeneration")
 		{
 			id = "Lusty Regeneration";
-			hasLustyRegenPerk = true;
 		}
 
 		var ptype:PerkType = PerkType.lookupPerk(id);
@@ -2421,7 +2413,7 @@ public function loadPerks(perks:*):void
 	}
 	
 	// Fixup missing Lusty Regeneration perk, if the player has an equipped viridian cock sock and does NOT have the Lusty Regeneration perk
-	if (hasViridianCockSock(kGAMECLASS.player) === true && hasLustyRegenPerk === false)
+	if (hasViridianCockSock(kGAMECLASS.player) === true && !player.hasPerk(PerkLib.LustyRegeneration))
 	{
 		player.createPerk(PerkLib.LustyRegeneration, 0, 0, 0, 0);
 	}
