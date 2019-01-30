@@ -2350,8 +2350,6 @@ private function createKeyItemsIfMissing(relativeRootObject:*): void
 
 public function loadPerks(perks:*):void 
 {
-	
-	var hasHistoryPerk:Boolean = false;
 	var hasLustyRegenPerk:Boolean = false;
 	
 	//Populate Perk Array
@@ -2377,12 +2375,6 @@ public function loadPerks(perks:*):void
 		{
 			id = "Lusty Regeneration";
 			hasLustyRegenPerk = true;
-		}
-
-		// Some shit checking to track if the incoming data has an available History perk
-		if (id.indexOf("History:") != -1)
-		{
-			hasHistoryPerk = true;
 		}
 
 		var ptype:PerkType = PerkType.lookupPerk(id);
@@ -2423,7 +2415,7 @@ public function loadPerks(perks:*):void
 	}
 	
 	// Fixup missing History: Whore perk IF AND ONLY IF the flag used to track the prior selection of a history perk has been set
-	if (hasHistoryPerk == false && flags[kFLAGS.HISTORY_PERK_SELECTED] != 0)
+	if (!player.hasHistoryPerk() && flags[kFLAGS.HISTORY_PERK_SELECTED] != 0)
 	{
 		player.createPerk(PerkLib.HistoryWhore, 0, 0, 0, 0);
 	}
