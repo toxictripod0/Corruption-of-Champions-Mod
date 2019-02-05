@@ -2350,61 +2350,9 @@ private function createKeyItemsIfMissing(relativeRootObject:*): void
 
 public function loadPerks(perks:*):void 
 {
-	//Populate Perk Array
-	for (var i:int = 0; i < perks.length; i++)
-	{
-		var id:String = perks[i].id || perks[i].perkName;
-		var value1:Number = perks[i].value1;
-		var value2:Number = perks[i].value2;
-		var value3:Number = perks[i].value3;
-		var value4:Number = perks[i].value4;
-
-		// Fix saves where the Whore perk might have been malformed.
-		if (id == "History: Whote") {
-			id = "History: Whore";
-		}
-
-		if (id == "LustyRegeneration")
-		{
-			id = "Lusty Regeneration";
-		}
-
-		var ptype:PerkType = PerkType.lookupPerk(id);
-
-		if (ptype == null || ptype === Perk.NOTHING)
-		{
-			LOGGER.warn("Skipping Null or Empty perk");
-		}
-		else
-		{
-			LOGGER.debug("Loading perk {0}", ptype);
-			player.createPerk(ptype,value1,value2,value3,value4);
-
-			if (isNaN(player.perk(player.numPerks - 1).value1))
-			{
-				LOGGER.warn("Perk {0} value1 was NaN, fixing...", ptype);
-				if (player.perk(player.numPerks - 1).perkName == "Wizard's Focus")
-				{
-					player.perk(player.numPerks - 1).value1 = .3;
-					LOGGER.warn("Value1 set to .3");
-				}
-				else
-				{
-					player.perk(player.numPerks - 1).value1 = 0;
-					LOGGER.warn("Value1 set to 0");
-				}
-			}
-
-			if (player.perk(player.numPerks - 1).perkName == "Wizard's Focus")
-			{
-				if (player.perk(player.numPerks - 1).value1 == 0 || player.perk(player.numPerks - 1).value1 < 0.1)
-				{
-					LOGGER.info("Fixing Wizard's Focus, setting value1 to 0.5");
-					player.perk(player.numPerks - 1).value1 = .5;
-				}
-			}
-		}
-	}
+	player.removePerks();
+	
+	SerializationUtils.deserializeVector(player.perks as Vector.<*>, perks, Perk);
 	
 	// Fixup missing History: Whore perk IF AND ONLY IF the flag used to track the prior selection of a history perk has been set
 	if (!player.hasHistoryPerk() && flags[kFLAGS.HISTORY_PERK_SELECTED] != 0)
@@ -2416,6 +2364,18 @@ public function loadPerks(perks:*):void
 	if (hasViridianCockSock(kGAMECLASS.player) === true && !player.hasPerk(PerkLib.LustyRegeneration))
 	{
 		player.createPerk(PerkLib.LustyRegeneration, 0, 0, 0, 0);
+	}
+	
+	var emptyPerkRemoveLoopWatchdog:int = 1000;
+	
+	while (player.removePerk(Perk.NOTHING)) {
+		emptyPerkRemoveLoopWatchdog--;
+		
+		if (emptyPerkRemoveLoopWatchdog <= 0) {
+			LOGGER.error("Got stuck in an endless loop while removing empty perks, aborting loop...");
+			break;
+		}
+		
 	}
 }
 

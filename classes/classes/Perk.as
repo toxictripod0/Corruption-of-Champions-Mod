@@ -1,12 +1,17 @@
 package classes
 {
+	import classes.GlobalFlags.kGAMECLASS;
 	import classes.Perks.Nothing;
+	import classes.internals.LoggerFactory;
 	import classes.internals.Serializable;
+	import mx.logging.ILogger;
 	/**
 	 * Stores a perk type and additional values for a perk.
 	 */
 	public class Perk implements Serializable
 	{
+		private static const LOGGER:ILogger = LoggerFactory.getLogger(Perk);
+		
 		private static const SERIALIZATION_VERSION:int = 1;
 		
 		public static const NOTHING:PerkType = new Nothing();
@@ -75,7 +80,13 @@ package classes
 		
 		private function fixLegacyPerks(relativeRootObject:*):void
 		{
+			// move legacy perk name to id
 			relativeRootObject.id = relativeRootObject.id || relativeRootObject.perkName;
+			
+			if (relativeRootObject.id == null){
+				LOGGER.warn("Converting null perk to empty perk");
+				relativeRootObject.id = Perk.NOTHING.id;
+			}
 			
 			// Fix saves where the Whore perk might have been malformed.
 			if (relativeRootObject.id === "History: Whote") {
@@ -87,7 +98,36 @@ package classes
 				relativeRootObject.id = "Lusty Regeneration";
 			}
 			
-			//TODO add wizard perk fixes here
+			if (relativeRootObject.id === Perk.NOTHING.id)
+			{
+				LOGGER.warn("Skipping further processing for empty perk");
+			}
+			else
+			{
+				if (isNaN(relativeRootObject.value1))
+				{
+					LOGGER.warn("Perk {0} value1 was NaN, fixing...", relativeRootObject.id);
+					if (relativeRootObject.id == "Wizard's Focus")
+					{
+						relativeRootObject.value1 = .3;
+						LOGGER.warn("Value1 set to .3");
+					}
+					else
+					{
+						relativeRootObject.value1 = 0;
+						LOGGER.warn("Value1 set to 0");
+					}
+				}
+
+				if (relativeRootObject.id == "Wizard's Focus")
+				{
+					if (relativeRootObject.value1 == 0 || relativeRootObject.value1 < 0.1)
+					{
+						LOGGER.info("Fixing Wizard's Focus, setting value1 to 0.5");
+						relativeRootObject.value1 = .5;
+					}
+				}
+			}
 			
 			// Fix loaded values that are NaN
 			var valueIndex:String = "value";

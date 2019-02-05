@@ -70,6 +70,7 @@ package classes{
 		
 		private var key1:KeyItem;
 		private var key2:KeyItem;
+		private var perks:*;
 		
 		[BeforeClass]
 		public static function setUpClass():void {
@@ -81,6 +82,7 @@ package classes{
 		public function setUp():void {
 			TEST_SAVE_GAME = TEST_SAVE_GAME_PREFIX + UIDUtil.createUID();
 			
+			perks = [];
 			player = new Player();
 			player.short = TEST_PLAYER_SHORT;
 			player.a = TEST_PLAYER_A;
@@ -844,7 +846,9 @@ package classes{
 		[Test]
 		public function historyPerkFixed():void
 		{
-			cut.loadGame(TEST_SAVE_GAME);
+			perks.push(createUnversionedPerk(oldHistoryType));
+			
+			cut.loadPerks(perks);
 			
 			assertThat(kGAMECLASS.player.hasPerk(PerkLib.HistoryWhore), equalTo(true));
 		}
@@ -852,7 +856,9 @@ package classes{
 		[Test]
 		public function lustyRegenPerkFixed():void
 		{
-			cut.loadGame(TEST_SAVE_GAME);
+			perks.push(createUnversionedPerk(oldLustyRegenType));
+			
+			cut.loadPerks(perks);
 			
 			assertThat(kGAMECLASS.player.hasPerk(PerkLib.LustyRegeneration), equalTo(true));
 		}
@@ -900,21 +906,27 @@ package classes{
 		[Test]
 		public function wizardFocusFixOnLoad():void
 		{
-			cut.loadGame(TEST_SAVE_GAME);
+			
+			perks.push(createUnversionedPerk(PerkLib.WizardsFocus));
+			
+			perks[0].value1 = NaN;
+			
+			cut.loadPerks(perks);
 			
 			var perkIndex:int = kGAMECLASS.player.findPerk(PerkLib.WizardsFocus);
 			
-			assertThat(perkIndex, greaterThan(0));
-			assertThat(kGAMECLASS.player.perk(perkIndex).value1, equalTo(0.3));
+			assertThat(perkIndex, greaterThanOrEqualTo(0));
+			assertThat(player.perk(perkIndex).value1, equalTo(0.3));
 		}
 		
 		[Test]
 		public function wizardFocusFix2OnLoad():void
 		{
-			kGAMECLASS.player.perk(kGAMECLASS.player.findPerk(PerkLib.WizardsFocus)).value1 = 0.05;
+			perks.push(createUnversionedPerk(PerkLib.WizardsFocus));
 			
-			cut.saveGame(TEST_SAVE_GAME);
-			cut.loadGame(TEST_SAVE_GAME);
+			perks[0].value1 = 0.05;
+			
+			cut.loadPerks(perks);
 			
 			var perkIndex:int = kGAMECLASS.player.findPerk(PerkLib.WizardsFocus);
 			
@@ -945,9 +957,18 @@ package classes{
 		[Test]
 		public function nullPerkNotLoaded():void
 		{
-			cut.loadGame(TEST_SAVE_GAME);
+			perks.push(createUnversionedPerk(PerkLib.Agility));
+			perks.push(createUnversionedPerk(null));
+			perks.push(createUnversionedPerk(PerkLib.Archmage));
+			perks.push(createUnversionedPerk(null));
+			perks[3].id = null;
+			perks.push(createUnversionedPerk(null));
+			perks[4].id = undefined;
 			
-			assertThat(kGAMECLASS.player.numPerks, equalTo(4));
+			cut.loadPerks(perks);
+			var playerPerks:Vector.<Perk> = kGAMECLASS.player.perks;
+			
+			assertThat(kGAMECLASS.player.hasPerk(Perk.NOTHING), equalTo(false));
 		}
 		
 		[Test]
@@ -990,6 +1011,17 @@ package classes{
 			assertThat(kGAMECLASS.player.hasPerk(PerkLib.LustyRegeneration), equalTo(true));
 		}
 		
+		[Test(description="Check that the test does not time out")]
+		public function emptyPerkRemoverAborts():void
+		{
+			for (var i:int = 0; i < 1010; i++ ) {
+				perks.push(createUnversionedPerk(new PerkType(UIDUtil.createUID(),"","")));
+			}
+			
+			cut.loadPerks(perks);
+			
+			assertThat(player.numPerks, greaterThanOrEqualTo(1000));
+		}
 	}
 }
 

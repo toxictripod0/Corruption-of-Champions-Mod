@@ -5,6 +5,7 @@ package classes
 	import org.hamcrest.object.equalTo;
 	import org.hamcrest.number.isNumber;
 	import org.hamcrest.object.hasProperty;
+	import org.hamcrest.object.notNullValue;
 	
 	public class PerkTest
 	{
@@ -45,6 +46,9 @@ package classes
 			serializedClass = [];
 			
 			SerializationUtils.serialize(serializedClass, cut);
+			
+			delete serializedClass["serializationVersion"];
+			
 			SerializationUtils.deserialize(serializedClass, deserialized);
 		}
 		
@@ -176,7 +180,7 @@ package classes
 		{
 			SerializationUtils.deserialize(serializedNaNValues, deserialized);
 			
-			assertThat(deserialized.value1, isNumber());
+			assertThat(deserialized.value1, equalTo(0));
 		}
 		
 		[Test]
@@ -184,7 +188,7 @@ package classes
 		{
 			SerializationUtils.deserialize(serializedNaNValues, deserialized);
 			
-			assertThat(deserialized.value2, isNumber());
+			assertThat(deserialized.value2, equalTo(0));
 		}
 		
 		[Test]
@@ -192,7 +196,7 @@ package classes
 		{
 			SerializationUtils.deserialize(serializedNaNValues, deserialized);
 			
-			assertThat(deserialized.value3, isNumber());
+			assertThat(deserialized.value3, equalTo(0));
 		}
 		
 		[Test]
@@ -200,7 +204,18 @@ package classes
 		{
 			SerializationUtils.deserialize(serializedNaNValues, deserialized);
 			
-			assertThat(deserialized.value4, isNumber());
+			assertThat(deserialized.value4, equalTo(0));
+		}
+		
+		[Test]
+		public function upgradeConvertsNullIdToNothing():void
+		{
+			serializedClass.id = null;
+			
+			SerializationUtils.deserialize(serializedClass, deserialized);
+			
+			assertThat(deserialized.ptype, notNullValue());
+			assertThat(deserialized.ptype.id, equalTo(Perk.NOTHING.id));
 		}
 	}
 }
