@@ -24,6 +24,12 @@ package classes
 		
 		//TODO add test that loaded NaN values are converted to 0
 		
+		private function cleanSerializaton(): void
+		{
+			serializedClass = [];
+			deserialized = new Perk();
+		}
+		
 		[Before]
 		public function setUp():void
 		{
@@ -216,6 +222,31 @@ package classes
 			
 			assertThat(deserialized.ptype, notNullValue());
 			assertThat(deserialized.ptype.id, equalTo(Perk.NOTHING.id));
+		}
+		
+		[Test]
+		public function wizardFocusFixOnLoad():void
+		{
+			cleanSerializaton();
+			serializedClass["id"] = PerkLib.WizardsFocus.id;
+			serializedClass["value1"] = NaN;
+			
+			SerializationUtils.deserialize(serializedClass, deserialized);
+			
+			assertThat(serializedClass.value1, equalTo(0.3));
+		}
+		
+		[Test]
+		public function wizardFocusFix2OnLoad():void
+		{
+			cleanSerializaton();
+			
+			serializedClass["id"] = PerkLib.WizardsFocus.id;
+			serializedClass["value1"] = 0.05;
+			
+			SerializationUtils.deserialize(serializedClass, deserialized);
+			
+			assertThat(deserialized.value1, equalTo(0.5));
 		}
 	}
 }
