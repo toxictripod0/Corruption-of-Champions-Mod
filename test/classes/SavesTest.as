@@ -871,7 +871,7 @@ package classes{
 		}
 		
 		[Test(description="Check that the test does not time out")]
-		public function emptyPerkRemoverAborts():void
+		public function emptyPerkRemoverDoesNotHang():void
 		{
 			for (var i:int = 0; i < 1010; i++ ) {
 				perks.push(createUnversionedPerk(new PerkType(UIDUtil.createUID(),"","")));
@@ -880,6 +880,18 @@ package classes{
 			cut.loadPerks(perks);
 			
 			assertThat(player.numPerks, greaterThanOrEqualTo(1000));
+		}
+		
+		[Test]
+		public function emptyPerkRemoverAborts():void
+		{
+			for (var i:int = 0; i < 2000; i++ ) {
+				perks.push(createUnversionedPerk(Perk.NOTHING));
+			}
+			
+			cut.loadPerks(perks);
+			
+			assertThat(player.numPerks, lessThanOrEqualTo(1050));
 		}
 	}
 }
