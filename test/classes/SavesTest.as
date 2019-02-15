@@ -893,6 +893,37 @@ package classes{
 			
 			assertThat(player.numPerks, lessThanOrEqualTo(1050));
 		}
+		
+		[Test]
+		public function fixElvenBountyPerk():void
+		{
+			perks.push(createUnversionedPerk(PerkLib.ElvenBounty));
+			perks[0].value1 = 15;
+			perks[0].value2 = 0;
+			
+			cut.loadPerks(perks);
+			
+			var perkIndex:int = kGAMECLASS.player.findPerk(PerkLib.ElvenBounty);
+			
+			assertThat(perkIndex, greaterThanOrEqualTo(0));
+			assertThat(kGAMECLASS.player.perk(perkIndex).value1, equalTo(0));
+			assertThat(kGAMECLASS.player.perk(perkIndex).value2, equalTo(15));
+		}
+		
+		[Test]
+		public function fixDuplicateElvenBountyPerks():void
+		{
+			perks.push(createUnversionedPerk(PerkLib.ElvenBounty));
+			perks.push(createUnversionedPerk(PerkLib.ElvenBounty));
+			perks.push(createUnversionedPerk(PerkLib.ElvenBounty));
+			
+			kGAMECLASS.player.flags[kFLAGS.HISTORY_PERK_SELECTED] = 0;
+			
+			cut.loadPerks(perks);
+			
+			assertThat(kGAMECLASS.player.hasPerk(PerkLib.ElvenBounty), equalTo(true));
+			assertThat(kGAMECLASS.player.numPerks, equalTo(1));
+		}
 	}
 }
 

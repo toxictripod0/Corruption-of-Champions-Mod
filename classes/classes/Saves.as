@@ -1869,17 +1869,6 @@ public function unFuckSave():void
 		player.wings.color = player.hasFur() ? player.skin.furColor : player.hair.color;
 	}
 
-	// Fix duplicate elven bounty perks
-	if (player.findPerk(PerkLib.ElvenBounty) >= 0) {
-		//CLear duplicates
-		while(player.perkDuplicated(PerkLib.ElvenBounty)) player.removePerk(PerkLib.ElvenBounty);
-		//Fix fudged preggers value
-		if (player.perkv1(PerkLib.ElvenBounty) == 15) {
-			player.setPerkValue(PerkLib.ElvenBounty,1,0);
-			player.addPerkValue(PerkLib.ElvenBounty,2,15);
-		}
-	}
-
 	while (player.hasStatusEffect(StatusEffects.KnockedBack))
 	{
 		player.removeStatusEffect(StatusEffects.KnockedBack);
@@ -2364,6 +2353,12 @@ public function loadPerks(perks:*):void
 	if (hasViridianCockSock(kGAMECLASS.player) === true && !player.hasPerk(PerkLib.LustyRegeneration))
 	{
 		player.createPerk(PerkLib.LustyRegeneration, 0, 0, 0, 0);
+	}
+	
+	// Fix duplicate elven bounty perks
+	if (player.findPerk(PerkLib.ElvenBounty) >= 0) {
+		//CLear duplicates
+		while(player.perkDuplicated(PerkLib.ElvenBounty)) player.removePerk(PerkLib.ElvenBounty);
 	}
 	
 	var emptyPerkRemoveLoopWatchdog:int = 1000;

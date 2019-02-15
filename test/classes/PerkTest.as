@@ -248,5 +248,20 @@ package classes
 			
 			assertThat(deserialized.value1, equalTo(0.5));
 		}
+		
+		[Test]
+		public function elvenBountyFixOnLOad():void
+		{
+			cleanSerializaton();
+			
+			serializedClass["id"] = PerkLib.ElvenBounty.id;
+			serializedClass["value1"] = 15;
+			serializedClass["value2"] = 0;
+			
+			SerializationUtils.deserialize(serializedClass, deserialized);
+			
+			assertThat(deserialized.value1, equalTo(0));
+			assertThat(deserialized.value2, equalTo(15));
+		}
 	}
 }

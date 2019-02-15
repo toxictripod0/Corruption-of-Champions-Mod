@@ -98,6 +98,14 @@ package classes
 				relativeRootObject.id = "Lusty Regeneration";
 			}
 			
+			//Fix fudged preggers value
+			if (relativeRootObject.id === "Elven Bounty"){
+				if (relativeRootObject.value1 === 15) {
+					relativeRootObject.value1 = 0;
+					relativeRootObject.value2 = 15;
+				}
+			}
+			
 			if (relativeRootObject.id === Perk.NOTHING.id)
 			{
 				LOGGER.warn("Skipping further processing for empty perk");
