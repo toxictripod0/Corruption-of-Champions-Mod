@@ -11,6 +11,7 @@ package {
 	import classes.SavesStatusEffectTest;
 	import classes.ScenesSuite;
 	import classes.ItemsSuite;
+	import classes.StatusEffectTest;
 
 	import classes.CreatureTest;
 	import classes.CoCTest;
@@ -54,5 +55,6 @@ package {
 		 public var itemSlotTest:ItemSlotTest;
 		 public var keyItemTest:KeyItemTest;
 		 public var perkTest:PerkTest;
+		 public var statusEffectTest:StatusEffectTest;
 	}
 }

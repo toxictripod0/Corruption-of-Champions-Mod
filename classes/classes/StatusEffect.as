@@ -1,10 +1,16 @@
 ﻿package classes
 {
 import classes.GlobalFlags.kGAMECLASS;
+import classes.internals.LoggerFactory;
+import classes.internals.Serializable;
 import classes.internals.Utils;
+import mx.logging.ILogger;
 
-	public class StatusEffect extends Utils
+	public class StatusEffect extends Utils implements Serializable
 	{
+		private static const LOGGER:ILogger = LoggerFactory.getLogger(StatusEffect);
+		private static const SERIALIZATION_VERSION:int = 1;
+		
 		//constructor
 		public function StatusEffect(stype:StatusEffectType)
 		{
@@ -84,6 +90,44 @@ import classes.internals.Utils;
 			if (_host != null) remove();
 			_host = host;
 			host.addStatusEffect(this/*,fireEvent*/);
+		}
+		
+		public function serialize(relativeRootObject:*):void 
+		{
+			relativeRootObject.statusAffectName = _stype.id;
+			
+			relativeRootObject.value1 = value1;
+			relativeRootObject.value2 = value2;
+			relativeRootObject.value3 = value3;
+			relativeRootObject.value4 = value4;
+			
+			if (dataStore !== null) {
+				relativeRootObject.dataStore = dataStore;
+			}
+		}
+		
+		public function deserialize(relativeRootObject:*):void 
+		{
+			_stype = StatusEffectType.lookupStatusEffect(relativeRootObject.statusAffectName);
+			
+			value1 = relativeRootObject.value1;
+			value2 = relativeRootObject.value2;
+			value3 = relativeRootObject.value3;
+			value4 = relativeRootObject.value4;
+			
+			if (relativeRootObject.dataStore !== undefined) {
+				dataStore = relativeRootObject.dataStore;
+			}
+		}
+		
+		public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 
+		{
+			
+		}
+		
+		public function currentSerializationVerison():int 
+		{
+			return SERIALIZATION_VERSION;
 		}
 
 		protected static function register(id:String,statusEffectClass:Class,arity:int=0):StatusEffectType {
