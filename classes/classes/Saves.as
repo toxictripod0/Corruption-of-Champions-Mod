@@ -1783,18 +1783,11 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 				CoC_Settings.error("Cannot find status affect '"+saveFile.data.statusAffects[i].statusAffectName+"'");
 				continue;
 			}
-			var sec:StatusEffect = player.createStatusEffect(
-				stype,
-				saveFile.data.statusAffects[i].value1,
-				saveFile.data.statusAffects[i].value2,
-				saveFile.data.statusAffects[i].value3,
-				saveFile.data.statusAffects[i].value4,
-				false
-			);
-			if (saveFile.data.statusAffects[i].dataStore !== undefined) {
-				sec.dataStore = saveFile.data.statusAffects[i].dataStore;
-			}
-			//trace("StatusEffect " + player.statusEffect(i).stype.id + " loaded.");
+			
+			
+			var sec:StatusEffect = new StatusEffect(null);
+			SerializationUtils.deserialize(saveFile.data.statusAffects[i], sec);
+			player.loadStatusEffectFromSave(sec, false);
 		}
 
 		SerializationUtils.deserializeVector(player.keyItems as Vector.<*>, saveFile.data.keyItems, KeyItem);
