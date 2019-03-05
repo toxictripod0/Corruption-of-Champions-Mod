@@ -1019,6 +1019,22 @@ import flash.errors.IllegalOperationError;
 			if (!sec) sec = createStatusEffect(stype,0,0,0,0);
 			return sec;
 		}
+		
+		/**
+		 * This method is used to load deserialized status effects, as there is much more going on
+		 * than just loading values.
+		 * This is a wraper for createStatusEffect.
+		 * 
+		 * @param	statusEffect the effect to load
+		 * @param	fireEvent if true, fire the onAttach event on load
+		 * @return the loaded and initialized statuseffect.
+		 */
+		public function loadStatusEffectFromSave(statusEffect:StatusEffect, fireEvent:Boolean):StatusEffect
+		{
+			var nse:StatusEffect = createStatusEffect(statusEffect.stype, statusEffect.value1, statusEffect.value2, statusEffect.value3, statusEffect.value4);
+			nse.dataStore = statusEffect.dataStore;
+			return nse;
+		}
 
 		/**
 		 * Create a new StatusEffect and adds it to the creature. Fires the associated event if enabled. 
