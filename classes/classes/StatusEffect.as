@@ -81,6 +81,11 @@ import mx.logging.ILogger;
 			if (fireEvent) onRemove();
 			_host = null;
 		}
+		/**
+		 * Called when a status effect is added to a Creature. Fires the onAttach event if enabled.
+		 * @param	host the Creature the status effect is applied to
+		 * @param	fireEvent if true, the onAttach event will be fired when the effect is added
+		 */
 		public function addedToHostList(host:Creature,fireEvent:Boolean):void {
 			_host = host;
 			if (fireEvent) onAttach();
