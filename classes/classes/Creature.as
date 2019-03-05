@@ -1019,7 +1019,17 @@ import flash.errors.IllegalOperationError;
 			if (!sec) sec = createStatusEffect(stype,0,0,0,0);
 			return sec;
 		}
-		//Create a status
+
+		/**
+		 * Create a new StatusEffect and adds it to the creature. Fires the associated event if enabled. 
+		 * @param	stype The type of the status effect
+		 * @param	value1 first value of the effect
+		 * @param	value2 second value of the effect
+		 * @param	value3 third value of the effect
+		 * @param	value4 fourth value of the effect
+		 * @param	fireEvent if true, the onAttach event will be fired
+		 * @return the newly created status effect instance
+		 */
 		public function createStatusEffect(stype:StatusEffectType, value1:Number, value2:Number, value3:Number, value4:Number, fireEvent:Boolean = true):StatusEffect
 		{
 			var newStatusEffect:StatusEffect = stype.create(value1,value2,value3,value4);
