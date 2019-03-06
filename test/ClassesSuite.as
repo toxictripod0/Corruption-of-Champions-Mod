@@ -8,6 +8,7 @@ package {
 	import classes.KeyItemTest;
 	import classes.PerkTest;
 	import classes.PlayerTest;
+	import classes.SavesStatusEffectTest;
 	import classes.ScenesSuite;
 	import classes.ItemsSuite;
 
@@ -43,6 +44,7 @@ package {
 		 public var breastRowTest:BreastRowTest;
 		 public var assTest:AssTest;
 		 public var savesTest:SavesTest;
+		 public var savesStatusEffectTest:SavesStatusEffectTest;
 		 public var playerEventsTest:PlayerEventsTest;
 		 public var playerEventsVaginaLoosenessRecoveryTest:PlayerEventsVaginaLoosenessRecoveryTest;
 		 public var internalsSuit:InternalsSuite;
