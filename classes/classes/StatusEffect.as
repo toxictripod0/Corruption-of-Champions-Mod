@@ -1,4 +1,4 @@
-﻿package classes
+package classes
 {
 import classes.GlobalFlags.kGAMECLASS;
 import classes.internals.LoggerFactory;
