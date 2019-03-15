@@ -1053,6 +1053,12 @@ import flash.errors.IllegalOperationError;
 			newStatusEffect.addedToHostList(this,fireEvent);
 			return newStatusEffect;
 		}
+		
+		/**
+		 * Add an existing status effect to the creature. If the creature is not the host,
+		 * it will be removed from the existing host and added to this creature.
+		 * @param	sec the status effect to add
+		 */
 		public function addStatusEffect(sec:StatusEffect/*,fireEvent:Boolean = true*/):void {
 			if (sec.host != this) {
 				sec.remove();
