@@ -5,6 +5,7 @@ package classes
 	import org.hamcrest.assertThat;
 	import org.hamcrest.object.equalTo;
 	import org.hamcrest.object.hasProperty;
+	import org.hamcrest.object.nullValue;
 	
 	public class StatusEffectTest
 	{
@@ -107,6 +108,14 @@ package classes
 		public function deserializeStatusaffectname():void
 		{
 			assertThat(deserialized.stype.id, equalTo(STATUSAFFECTNAME));
+		}
+		
+		[Test]
+		public function noArgsConstructorIsNullType():void
+		{
+			var noArgs:StatusEffect = new StatusEffect();
+			
+			assertThat(noArgs.stype, nullValue());
 		}
 	}
 }

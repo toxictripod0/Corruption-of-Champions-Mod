@@ -11,8 +11,14 @@ import mx.logging.ILogger;
 		private static const LOGGER:ILogger = LoggerFactory.getLogger(StatusEffect);
 		private static const SERIALIZATION_VERSION:int = 1;
 		
-		//constructor
-		public function StatusEffect(stype:StatusEffectType)
+		/**
+		 * Create a new StatusEffect. The type for a no-arg constructor is null,
+		 * this is so serialization code can create instances.
+		 * Note that the type cannot be changed after the instance is created (with the exception of
+		 * serialization code).
+		 * @param	stype the type of the StatusEffect
+		 */
+		public function StatusEffect(stype:StatusEffectType = null)
 		{
 			this._stype = stype;
 		}
