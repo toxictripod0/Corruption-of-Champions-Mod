@@ -1773,22 +1773,8 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			flags[kFLAGS.FOLLOWER_AT_FARM_MARBLE] = 0;
 			//trace("Force-reverting Marble At Farm flag to 0.");
 		}
-
-		//Set Status Array
-		for (i = 0; i < saveFile.data.statusAffects.length; i++)
-		{
-			if (saveFile.data.statusAffects[i].statusAffectName == "Lactation EnNumbere") continue; // ugh...
-			var stype:StatusEffectType = StatusEffectType.lookupStatusEffect(saveFile.data.statusAffects[i].statusAffectName);
-			if (stype == null){
-				CoC_Settings.error("Cannot find status affect '"+saveFile.data.statusAffects[i].statusAffectName+"'");
-				continue;
-			}
-			
-			
-			var sec:StatusEffect = new StatusEffect(null);
-			SerializationUtils.deserialize(saveFile.data.statusAffects[i], sec);
-			player.loadStatusEffectFromSave(sec, false);
-		}
+		
+		loadStatusEffects(saveFile);
 
 		SerializationUtils.deserializeVector(player.keyItems as Vector.<*>, saveFile.data.keyItems, KeyItem);
 		SerializationUtils.deserialize(saveFile.data.inventory, inventory);
@@ -1839,6 +1825,27 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		}
 		doNext(playerMenu);
 	}
+}
+
+private function loadStatusEffects(saveFile:*):void
+{
+	var stagedStatusEffect:Vector.<StatusEffect> = new Vector.<classes.StatusEffect>();
+	SerializationUtils.deserializeVector(stagedStatusEffect as Vector.<*>, saveFile.data.statusAffects, StatusEffect);
+	
+	stagedStatusEffect = stagedStatusEffect.filter(this.filterInvalidStatusEffects);
+	stagedStatusEffect.forEach(player.addStatusEffect);
+}
+
+/**
+ * Filter function to remove invalid StatusEffect objects.
+ * @param	toTest the instance to test
+ * @param	index the index of the array this was called on
+ * @param	source the array that the filter function is running on
+ * @return true if the instance is valid
+ */
+private function filterInvalidStatusEffects(toTest:StatusEffect, index:int, source:Array):Boolean
+{
+	return !(toTest.stype === null)
 }
 
 /**
