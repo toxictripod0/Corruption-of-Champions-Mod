@@ -1858,6 +1858,11 @@ private function statusEffectLoadPostProcessing():void
 	{
 		player.removeStatusEffect(StatusEffects.Tentagrappled);
 	}
+	
+	if (player.hasStatusEffect(StatusEffects.SlimeCraving) && player.statusEffectv4(StatusEffects.SlimeCraving) == 1) {
+		player.changeStatusValue(StatusEffects.SlimeCraving, 3, player.statusEffectv2(StatusEffects.SlimeCraving)); //Duplicate old combined strength/speed value
+		player.changeStatusValue(StatusEffects.SlimeCraving, 4, 1); //Value four indicates this tracks strength and speed separately
+	}
 }
 
 /**
@@ -1908,11 +1913,6 @@ public function unFuckSave():void
 	if (isNaN(getGame().time.minutes)) getGame().time.minutes = 0;
 	if (isNaN(getGame().time.hours)) getGame().time.hours = 0;
 	if (isNaN(getGame().time.days)) getGame().time.days = 0;
-
-	if (player.hasStatusEffect(StatusEffects.SlimeCraving) && player.statusEffectv4(StatusEffects.SlimeCraving) == 1) {
-		player.changeStatusValue(StatusEffects.SlimeCraving, 3, player.statusEffectv2(StatusEffects.SlimeCraving)); //Duplicate old combined strength/speed value
-		player.changeStatusValue(StatusEffects.SlimeCraving, 4, 1); //Value four indicates this tracks strength and speed separately
-	}
 
 	// Fix issues with corrupt cockTypes caused by a error in the serialization code.
 
