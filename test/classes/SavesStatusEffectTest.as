@@ -101,6 +101,7 @@ package classes{
 			player.createStatusEffect(StatusEffects.KnockedBack, 2, 3, 4, 5, false);
 			
 			player.createStatusEffect(StatusEffects.Tentagrappled, 2, 3, 4, 5, false);
+			player.createStatusEffect(StatusEffects.Tentagrappled, 2, 3, 4, 5, false);
 			
 			player.createStatusEffect(StatusEffects.SlimeCraving, 0, 42, 0, 1, false);
 			
@@ -211,12 +212,21 @@ package classes{
 		}
 		
 		[Test]
-		public function tentaGrappledEffectRemovedOnLoad():void
+		public function oneTentaGrappledEffectRemovedOnLoad():void
 		{
 			// the code only removed one entry for this status effect, check with author if this was intended
 			cut.loadGame(TEST_SAVE_GAME);
 			
-			assertThat(kGAMECLASS.player.hasStatusEffect(StatusEffects.Tentagrappled), equalTo(false));
+			assertThat(kGAMECLASS.player.hasStatusEffect(StatusEffects.Tentagrappled), equalTo(true));
+		}
+		
+		[Test]
+		public function onlyOneTentagrarappledEffectAfterLoad():void
+		{
+			cut.loadGame(TEST_SAVE_GAME);
+			player.removeStatusEffect(StatusEffects.Tentagrappled);
+			
+			assertThat(kGAMECLASS.player.hasStatusEffect(StatusEffects.Tentagrappled), equalTo(true));
 		}
 		
 		[Test]
