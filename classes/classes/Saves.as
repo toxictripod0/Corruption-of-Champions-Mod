@@ -1833,7 +1833,7 @@ private function loadStatusEffects(saveFile:*):void
 	SerializationUtils.deserializeVector(stagedStatusEffect as Vector.<*>, saveFile.data.statusAffects, StatusEffect);
 	
 	stagedStatusEffect = stagedStatusEffect.filter(this.filterInvalidStatusEffects);
-	stagedStatusEffect.forEach(player.addStatusEffect);
+	stagedStatusEffect.forEach(this.addStatusEffectWrapper);
 }
 
 /**
@@ -1843,9 +1843,21 @@ private function loadStatusEffects(saveFile:*):void
  * @param	source the array that the filter function is running on
  * @return true if the instance is valid
  */
-private function filterInvalidStatusEffects(toTest:StatusEffect, index:int, source:Array):Boolean
+private function filterInvalidStatusEffects(toTest:StatusEffect, index:int, source:Vector.<StatusEffect>):Boolean
 {
 	return !(toTest.stype === null)
+}
+
+/**
+ * Wrapper function to create a callback function that has the required signature.
+ * 
+ * @param	toAdd the current item of the iteration
+ * @param	index the matching index of the current item
+ * @param	source the source vector for this iteration
+ */
+private function addStatusEffectWrapper(toAdd:StatusEffect, index:int, source:Vector.<StatusEffect>):void
+{
+	player.addStatusEffect(toAdd);
 }
 
 /**

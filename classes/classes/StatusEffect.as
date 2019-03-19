@@ -133,7 +133,19 @@ import mx.logging.ILogger;
 		
 		public function upgradeSerializationVersion(relativeRootObject:*, serializedDataVersion:int):void 
 		{
-			
+			switch(serializedDataVersion) {
+				case 0:
+					upgradeLegacyStatusEffect(relativeRootObject);
+			}
+		}
+		
+		
+		private function upgradeLegacyStatusEffect(relativeRootObject:*):void
+		{
+			// set name to null so it will be removed by the filter
+			if (relativeRootObject.statusAffectName === "Lactation EnNumbere") {
+				relativeRootObject.statusAffectName = null;
+			}
 		}
 		
 		public function currentSerializationVerison():int 
