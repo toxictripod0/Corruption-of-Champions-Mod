@@ -1839,6 +1839,25 @@ private function loadStatusEffects(saveFile:*):void
 	
 	stagedStatusEffect = stagedStatusEffect.filter(this.filterInvalidStatusEffects);
 	stagedStatusEffect.forEach(this.addStatusEffectWrapper);
+	
+	statusEffectLoadPostProcessing();
+}
+
+/**
+ * After loading, StatusEffects need to be fixed.
+ * if deserialization ever gets a post load hook, add this there.
+ */
+private function statusEffectLoadPostProcessing():void
+{
+	while (player.hasStatusEffect(StatusEffects.KnockedBack))
+	{
+		player.removeStatusEffect(StatusEffects.KnockedBack);
+	}
+
+	if (player.hasStatusEffect(StatusEffects.Tentagrappled))
+	{
+		player.removeStatusEffect(StatusEffects.Tentagrappled);
+	}
 }
 
 /**
@@ -1884,16 +1903,6 @@ public function unFuckSave():void
 	if (player.wings.type == Wings.FEATHERED_LARGE && player.wings.color == "no") {
 		// Player has harpy wings from an old save, let's fix its color
 		player.wings.color = player.hasFur() ? player.skin.furColor : player.hair.color;
-	}
-
-	while (player.hasStatusEffect(StatusEffects.KnockedBack))
-	{
-		player.removeStatusEffect(StatusEffects.KnockedBack);
-	}
-
-	if (player.hasStatusEffect(StatusEffects.Tentagrappled))
-	{
-		player.removeStatusEffect(StatusEffects.Tentagrappled);
 	}
 
 	if (isNaN(getGame().time.minutes)) getGame().time.minutes = 0;
