@@ -1407,7 +1407,7 @@ package classes.Scenes.Combat
 		//Clear statuses
 		public function clearStatuses():void {
 			player.clearStatuses();
-			for (var a:/*StatusEffect*/Array=monster.statusEffects.slice(),n:int=a.length,i:int=0;i<n;i++) {
+			for (var a:Vector.<StatusEffect>=monster.statusEffects.slice(),n:int=a.length,i:int=0;i<n;i++) {
 				// Using a copy of array because some effects will be removed
 				a[i].onCombatEnd();
 			}
@@ -1757,11 +1757,11 @@ package classes.Scenes.Combat
 					player.removeStatusEffect(StatusEffects.WhipSilence);
 				}
 			}
-			for (var a:/*StatusEffect*/Array=player.statusEffects.slice(),n:int=a.length,i:int=0;i<n;i++) {
+			for (var a:Vector.<StatusEffect>=player.statusEffects.slice(), n:int=a.length, i:int=0; i<n; i++) {
 				// Using a copy of array because some effects will be removed
 				a[i].onCombatRound();
 			}
-			for (a=monster.statusEffects.slice(),n=a.length,i=0;i<n;i++) {
+			for (var a:Vector.<StatusEffect>= monster.statusEffects.slice(), n:int = a.length, i = 0; i < n; i++) {
 				a[i].onCombatRound();
 			}
 			regeneration(true);

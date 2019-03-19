@@ -3187,7 +3187,7 @@ package classes
 					flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = flags[kFLAGS.PLAYER_DISARMED_WEAPON_ID];
 				}
 			}
-			for (var a:/*StatusEffect*/Array=statusEffects.slice(),n:int=a.length,i:int=0;i<n;i++) {
+			for (var a:Vector.<StatusEffect> = statusEffects.slice(),n:int=a.length,i:int=0;i<n;i++) {
 				// Using a copy of array in case effects are removed/added in handler
 				if (statusEffects.indexOf(a[i])>=0) a[i].onCombatEnd();
 			}

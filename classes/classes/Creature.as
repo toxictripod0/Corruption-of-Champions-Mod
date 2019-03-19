@@ -605,7 +605,7 @@ import flash.errors.IllegalOperationError;
 		//Current status effects. This has got very muddy between perks and status effects. Will have to look into it.
 		//Someone call the grammar police!
 		//TODO: Move monster status effects into perks. Needs investigation though.
-		public var statusEffects:Array;
+		public var statusEffects:Vector.<StatusEffect>;
 
 		//Constructor
 		public function Creature()
@@ -616,7 +616,7 @@ import flash.errors.IllegalOperationError;
 			vaginas = new Vector.<Vagina>();
 			breastRows = new Vector.<BreastRow>();
 			_perks = new Vector.<classes.Perk>();
-			statusEffects = [];
+			statusEffects = new Vector.<StatusEffect>();
 			arms = new Arms(this);
 			face = new Face(this);
 			//keyItems = new Array();
@@ -1155,7 +1155,7 @@ import flash.errors.IllegalOperationError;
 
 		public function removeStatuses(fireEvent:Boolean):void
 		{
-			var a:/*StatusEffect*/Array=statusEffects.splice(0,statusEffects.length);
+			var a:Vector.<StatusEffect>=statusEffects.splice(0,statusEffects.length);
 			for (var n:int=a.length,i:int=0;i<n;i++) {
 				a[i].removedFromHostList(fireEvent);
 			}
