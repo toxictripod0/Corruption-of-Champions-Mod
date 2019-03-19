@@ -1827,6 +1827,11 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 	}
 }
 
+/**
+ * StatusEffects require processing after deserialization, this is handled in this
+ * method.
+ * @param	saveFile the savefile to load status effects from
+ */
 private function loadStatusEffects(saveFile:*):void
 {
 	var stagedStatusEffect:Vector.<StatusEffect> = new Vector.<classes.StatusEffect>();
