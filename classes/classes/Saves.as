@@ -779,12 +779,17 @@ public function loadPermObject():void {
 	}
 }
 
-/*
-
-OH GOD SOMEONE FIX THIS DISASTER!!!!111one1ONE!
-
-*/
-//FURNITURE'S JUNK
+/**
+ * Save the current game state to the given save game slot. This can be any string, 
+ * but the game only will list slot1 to slot15 for loading in the GUI.
+ * 
+ * The menu handles loading from and saving to saves and Files, deleting saves and recovering
+ * savegames from backups.
+ * Creates backup saves on save. Contains error handling code for failed saves and loads.
+ * 
+ * @param	slot the file name to save to
+ * @param	isFile true if the save is a file, if false a SharedObject is used
+ */
 public function saveGameObject(slot:String, isFile:Boolean):void
 {
 	//Autosave stuff
