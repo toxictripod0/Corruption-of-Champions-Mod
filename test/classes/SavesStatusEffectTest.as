@@ -4,6 +4,7 @@ package classes{
 	import classes.Items.WeaponLib;
 	import classes.internals.SerializationUtils;
 	import classes.lists.BreastCup;
+	import flash.net.SharedObject;
 	import org.flexunit.asserts.*;
 	import org.hamcrest.assertThat;
 	import org.hamcrest.core.*;
@@ -63,7 +64,17 @@ package classes{
 			initStatuseffects();
 			
 			saveGame();
+			
+			var versionFixup:SharedObject = SharedObject.getLocal(TEST_SAVE_GAME,"/");
 
+			versionFixup.data.statusAffects.forEach(
+				function(item:*, index:int, source:Array):void{
+					delete item["serializationVersion"];
+				}
+			);
+			
+			versionFixup.flush();
+			
 			saveFile = [];
 			saveFile.data = [];
 		}

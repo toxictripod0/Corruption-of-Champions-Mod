@@ -942,30 +942,10 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		 }*/
 
 		
-		saveFile.data.statusAffects = [];
 		saveFile.data.keyItems = [];
 		
 		saveFile.data.perks = SerializationUtils.serializeVector(player.perks as Vector.<*>);
-
-		//Set Status Array
-		for (i = 0; i < player.statusEffects.length; i++)
-		{
-			saveFile.data.statusAffects.push([]);
-				//trace("Saveone statusEffects");
-		}
-		//Populate Status Array
-		for (i = 0; i < player.statusEffects.length; i++)
-		{
-			//trace("Populate One statusEffects");
-			saveFile.data.statusAffects[i].statusAffectName = player.statusEffect(i).stype.id;
-			saveFile.data.statusAffects[i].value1 = player.statusEffect(i).value1;
-			saveFile.data.statusAffects[i].value2 = player.statusEffect(i).value2;
-			saveFile.data.statusAffects[i].value3 = player.statusEffect(i).value3;
-			saveFile.data.statusAffects[i].value4 = player.statusEffect(i).value4;
-			if (player.statusEffect(i).dataStore !== null) {
-				saveFile.data.statusAffects[i].dataStore = player.statusEffect(i).dataStore;
-			}
-		}
+		saveFile.data.statusAffects = SerializationUtils.serializeVector(player.statusEffects as Vector.<*>);
 		
 		saveFile.data.inventory = [];
 		saveFile.data.keyItems = SerializationUtils.serializeVector(player.keyItems as Vector.<*>);
