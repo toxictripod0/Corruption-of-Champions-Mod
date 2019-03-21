@@ -33,6 +33,9 @@ package classes
 public class Saves extends BaseContent implements Serializable {
 	private static const LOGGER:ILogger = LoggerFactory.getLogger(Saves);
 	private static const SERIALIZATION_VERSION:int = 2;
+	private static const SERIALIZATION_UUID:String = "377de6d1-a593-43f8-a87c-61a51ab3e58e";
+	
+	
 	private static const SAVE_FILE_CURRENT_INTEGER_FORMAT_VERSION:int		= 816;
 		//Didn't want to include something like this, but an integer is safer than depending on the text version number from the CoC class.
 		//Also, this way the save file version doesn't need updating unless an important structural change happens in the save file.
@@ -2469,6 +2472,11 @@ public function upgradeSerializationVersion(relativeRootObject:*, serializedData
 public function currentSerializationVerison():int
 {
 	return SERIALIZATION_VERSION;
+}
+
+public function serializationUUID():String 
+{
+	return SERIALIZATION_UUID;
 }
 
 private function upgradeUnversionedSave(relativeRootObject:*): void

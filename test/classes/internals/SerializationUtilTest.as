@@ -14,6 +14,7 @@ package classes.internals
 	{
 		private static const TEST_INSTANCES:int = 5;
 		private static const SERIAL_VERSION:int = 2;
+		private static const SERIAL_UUID:String = "11111111-2222-3333-4444-555555555555";
 		
 		private var testObject:Array;
 		private var testVector:Vector.<Serializable>;
@@ -267,5 +268,10 @@ class SerializationDummy implements Serializable
 	public function currentSerializationVerison():int 
 	{
 		return 2;
+	}
+	
+	public function serializationUUID():String 
+	{
+		return "11111111-2222-3333-4444-555555555555"
 	}
 }
