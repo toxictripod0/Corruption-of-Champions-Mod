@@ -15,6 +15,7 @@ package classes.internals
 		private static const LOGGER:ILogger = LoggerFactory.getLogger(SerializationUtils);
 		
 		private static const SERIALIZATION_VERSION_PROPERTY:String = "serializationVersion";
+		private static const SERIALIZATION_VERSION2_PROPERTY:String = "serializationVersionDictionary";
 		
 		public function SerializationUtils() 
 		{
@@ -85,11 +86,12 @@ package classes.internals
 		}
 		
 		/**
+		 * Legacy method, do not use for new code
 		 * Get the serialization version from the object, if any.
 		 * @param	relativeRootObject that possibly contains a serialization version
 		 * @return the serialization version, or 0 if no version is found
 		 */
-		public static function serializationVersion(relativeRootObject:*):int {
+		public static function legacySerializationVersion(relativeRootObject:*):int {
 			return relativeRootObject[SERIALIZATION_VERSION_PROPERTY];
 		}
 		
@@ -99,7 +101,7 @@ package classes.internals
 		 * @return true if the serialized version is compatible with the current verison
 		 */
 		public static function serializedVersionCheck(relativeRootObject:*, expectedVersion:int):Boolean {
-			var version:int = SerializationUtils.serializationVersion(relativeRootObject);
+			var version:int = SerializationUtils.legacySerializationVersion(relativeRootObject);
 			
 			if (version > expectedVersion) {
 				LOGGER.error("Serialized version is {0}, but the current version is {1}. Backward compatibility is not guaranteed!", version, expectedVersion);
@@ -136,7 +138,7 @@ package classes.internals
 			objectDefinedCheck(serialized, "Instance of class to load is not defined. Did you call the class constructor?");
 			
 			SerializationUtils.serializedVersionCheckThrowError(relativeRootObject, serialized.currentSerializationVerison());
-			var serializedObjectVersion:int = SerializationUtils.serializationVersion(relativeRootObject);
+			var serializedObjectVersion:int = SerializationUtils.legacySerializationVersion(relativeRootObject);
 			
 			serialized.upgradeSerializationVersion(relativeRootObject, serializedObjectVersion);
 			serialized.deserialize(relativeRootObject);
@@ -174,7 +176,7 @@ package classes.internals
 		 */
 		public static function isUsingV1Serialization(relativeRootObject:*):Boolean
 		{
-			return serializationVersion(relativeRootObject) !== 0;
+			return legacySerializationVersion(relativeRootObject) !== 0;
 		}
 	}
 }

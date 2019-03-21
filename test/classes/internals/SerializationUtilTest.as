@@ -130,13 +130,13 @@ package classes.internals
 		public function serializationVersionWithNoProperty():void {
 			serializedObject = [];
 			
-			assertThat(SerializationUtils.serializationVersion(serializedObject), equalTo(0));
+			assertThat(SerializationUtils.legacySerializationVersion(serializedObject), equalTo(0));
 		}
 		
 				
 		[Test]
 		public function serializationVersionWithProperty():void {
-			assertThat(SerializationUtils.serializationVersion(serializedObject), equalTo(SERIAL_VERSION));
+			assertThat(SerializationUtils.legacySerializationVersion(serializedObject), equalTo(SERIAL_VERSION));
 		}
 				
 		[Test]
