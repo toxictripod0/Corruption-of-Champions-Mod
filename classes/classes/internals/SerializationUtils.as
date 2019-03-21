@@ -96,6 +96,16 @@ package classes.internals
 		}
 		
 		/**
+		 * Get the serialization version from the object for the matching ID, if any.
+		 * @param	relativeRootObject that possibly contains a serialization version
+		 * @param	serialized the class for which the version should be queried
+		 * @return the serialization version, or 0 if no version is found
+		 */
+		public static function serializationVersion(relativeRootObject:*, serialized:Serializable):int {
+			return relativeRootObject[SERIALIZATION_VERSION2_PROPERTY][serialized.serializationUUID()];
+		}
+		
+		/**
 		 * Check the version of the serialized data and compare it with the current version.
 		 * @param	relativeRootObject object that contains serialized data
 		 * @return true if the serialized version is compatible with the current verison

@@ -14,6 +14,7 @@ package classes.internals
 	{
 		private static const TEST_INSTANCES:int = 5;
 		private static const SERIAL_VERSION:int = 2;
+		private static const SERIAL_VERSION_V2:int = 7;
 		private static const SERIAL_UUID:String = "11111111-2222-3333-4444-555555555555";
 		
 		private var testObject:Array;
@@ -223,6 +224,26 @@ package classes.internals
 		[Test]
 		public function objectIsNotUsingV1Serialization():void {
 			assertThat(SerializationUtils.isUsingV1Serialization([]), false);
+		}
+		
+		[Test]
+		public function serializationVersionV2WithEntry():void {
+			serializedObject = [];
+			serializedObject.serializationVersionDictionary = [];
+			serializedObject.serializationVersionDictionary[SERIAL_UUID] = SERIAL_VERSION_V2;
+			
+			
+			assertThat(SerializationUtils.serializationVersion(serializedObject,dummy), SERIAL_VERSION_V2);
+		}
+		
+		[Test]
+		public function serializationVersionV2WithoutEntry():void {
+			serializedObject = [];
+			serializedObject.serializationVersionDictionary = [];
+			serializedObject.serializationVersionDictionary["abc"] = SERIAL_VERSION_V2;
+			
+			
+			assertThat(SerializationUtils.serializationVersion(serializedObject,dummy), 0);
 		}
 	}
 }
