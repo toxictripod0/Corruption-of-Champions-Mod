@@ -166,5 +166,15 @@ package classes.internals
 				throw new ArgumentError(message);
 			}
 		}
+		
+		/**
+		 * Check if the object is using version 1 serialization.
+		 * @param	relativeRootObject the object to check
+		 * @return true if using version 1
+		 */
+		public static function isUsingV1Serialization(relativeRootObject:*):Boolean
+		{
+			return serializationVersion(relativeRootObject) !== 0;
+		}
 	}
 }

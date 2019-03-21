@@ -213,6 +213,16 @@ package classes.internals
 			
 			assertThat(serializedObject, hasProperties({foo: -1, bar: -1, serializationVersion: SERIAL_VERSION}));
 		}
+		
+		[Test]
+		public function objectIsUsingV1Serialization():void {
+			assertThat(SerializationUtils.isUsingV1Serialization(serializedObject), true);
+		}
+		
+		[Test]
+		public function objectIsNotUsingV1Serialization():void {
+			assertThat(SerializationUtils.isUsingV1Serialization([]), false);
+		}
 	}
 }
 
