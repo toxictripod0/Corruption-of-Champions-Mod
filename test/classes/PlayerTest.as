@@ -1034,7 +1034,7 @@ package classes
 		[Test]
 		public function upgradeLegacyItemSlots():void
 		{
-			delete serializedClass["itemSlots"];
+			delete serializedClass["serializationVersionDictionary"];
 			delete serializedClass["serializationVersion"];
 			
 			buildLegacySaveSlots(serializedClass);
@@ -1047,7 +1047,7 @@ package classes
 		public function upgradeLegacyItemSlotsFromVanilla():void
 		{
 			delete serializedClass["itemSlots"];
-			delete serializedClass["serializationVersion"];
+			delete serializedClass["serializationVersionDictionary"];
 			
 			buildLegacySaveSlots(serializedClass);
 			

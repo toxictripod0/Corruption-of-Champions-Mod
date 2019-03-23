@@ -44,6 +44,8 @@ package classes.internals
 			
 			serializedObject = [];
 			serializedObject.serializationVersion = SERIAL_VERSION;
+			serializedObject.serializationVersionDictionary = [];
+			serializedObject.serializationVersionDictionary[SERIAL_UUID] = SERIAL_VERSION_V2;
 			
 			dummy = new SerializationDummy();
 			
@@ -129,46 +131,57 @@ package classes.internals
 		}
 		
 		[Test]
-		public function serializationVersionWithNoProperty():void {
+		public function legacySerializationVersionWithNoProperty():void {
 			serializedObject = [];
 			
 			assertThat(SerializationUtils.legacySerializationVersion(serializedObject), equalTo(0));
 		}
 		
-				
 		[Test]
-		public function serializationVersionWithProperty():void {
+		public function legacySerializationVersionWithProperty():void {
 			assertThat(SerializationUtils.legacySerializationVersion(serializedObject), equalTo(SERIAL_VERSION));
 		}
-				
+		
+		[Test]
+		public function serializationVersionWithNoProperty():void {
+			serializedObject = [];
+			
+			assertThat(SerializationUtils.serializationVersion(serializedObject, dummy), equalTo(0));
+		}
+		
+		[Test]
+		public function serializationVersionWithProperty():void {
+			assertThat(SerializationUtils.serializationVersion(serializedObject, dummy), equalTo(SERIAL_VERSION_V2));
+			}
+		
 		[Test]
 		public function serializedVersionCheckSerializedGreater():void {
-			assertThat(SerializationUtils.serializedVersionCheck(serializedObject, 1), equalTo(false));
+			assertThat(SerializationUtils.serializedVersionCheck(serializedObject, 1, dummy), equalTo(false));
 		}
 		
 		[Test]
 		public function serializedVersionCheckSerializedEqual():void {
-			assertThat(SerializationUtils.serializedVersionCheck(serializedObject, 2), equalTo(true));
+			assertThat(SerializationUtils.serializedVersionCheck(serializedObject, 7, dummy), equalTo(true));
 		}
 		
 		[Test]
 		public function serializedVersionCheckSerializedLess():void {
-			assertThat(SerializationUtils.serializedVersionCheck(serializedObject, 3), equalTo(true));
+			assertThat(SerializationUtils.serializedVersionCheck(serializedObject, 8, dummy), equalTo(true));
 		}
 		
 		[Test(expected="RangeError")]
 		public function serializedVersionCheckThrowErrorGreater():void {
-			SerializationUtils.serializedVersionCheckThrowError(serializedObject, 1);
+			SerializationUtils.serializedVersionCheckThrowError(serializedObject, 1, dummy);
 		}
 		
 		[Test]
 		public function serializedVersionCheckThrowErrorEqual():void {
-			SerializationUtils.serializedVersionCheckThrowError(serializedObject, 2);
+			SerializationUtils.serializedVersionCheckThrowError(serializedObject, 7, dummy);
 		}
 		
 		[Test]
 		public function serializedVersionCheckThrowErrorLess():void {
-			SerializationUtils.serializedVersionCheckThrowError(serializedObject, 3);
+			SerializationUtils.serializedVersionCheckThrowError(serializedObject, 8, dummy);
 		}
 		
 		[Test]
