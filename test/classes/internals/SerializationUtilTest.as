@@ -258,6 +258,27 @@ package classes.internals
 			
 			assertThat(SerializationUtils.serializationVersion(serializedObject,dummy), 0);
 		}
+		
+		[Test]
+		public function serializationVersionUpgradeCopiesVersion():void {
+			serializedObject['foo'] = 1;
+			serializedObject['bar'] = 2;
+			
+			SerializationUtils.deserialize(serializedObject, dummy);
+			
+			//TODO using the UUID variable gets interpreted as literal, is there a way to use variables?
+			assertThat(serializedObject.serializationVersionDictionary, hasProperties({"11111111-2222-3333-4444-555555555555": 2}));
+		}
+		
+		[Test]
+		public function serializationVersionUpgradeRemovesV1SerializationVersion():void {
+			serializedObject['foo'] = 1;
+			serializedObject['bar'] = 2;
+			
+			SerializationUtils.deserialize(serializedObject, dummy);
+			
+			assertThat(serializedObject, not(hasProperty("serializationVersion")));
+		}
 	}
 }
 
