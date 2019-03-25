@@ -1032,7 +1032,7 @@ package classes
 		}
 		
 		[Test]
-		public function upgradeLegacyItemSlots():void
+		public function upgradeLegacyItemSlotsType():void
 		{
 			delete serializedClass["serializationVersionDictionary"];
 			delete serializedClass["serializationVersion"];
@@ -1041,6 +1041,18 @@ package classes
 			SerializationUtils.deserialize(serializedClass, deserialized);
 			
 			assertThat(deserialized.itemSlot(1).itype.id, equalTo(new ConsumableLib().W_FRUIT.id));
+		}
+		
+		[Test]
+		public function upgradeLegacyItemSlotsUnlocked():void
+		{
+			delete serializedClass["serializationVersionDictionary"];
+			delete serializedClass["serializationVersion"];
+			
+			buildLegacySaveSlots(serializedClass);
+			SerializationUtils.deserialize(serializedClass, deserialized);
+			
+			assertThat(deserialized.itemSlot(1).unlocked, equalTo(true));
 		}
 		
 		[Test(description="Vanilla only has slots 1 to 5")]
