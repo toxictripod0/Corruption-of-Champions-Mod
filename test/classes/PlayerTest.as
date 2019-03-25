@@ -1036,6 +1036,7 @@ package classes
 		{
 			delete serializedClass["serializationVersionDictionary"];
 			delete serializedClass["serializationVersion"];
+			delete serializedClass["itemSlots"];
 			
 			buildLegacySaveSlots(serializedClass);
 			SerializationUtils.deserialize(serializedClass, deserialized);
@@ -1048,6 +1049,7 @@ package classes
 		{
 			delete serializedClass["serializationVersionDictionary"];
 			delete serializedClass["serializationVersion"];
+			delete serializedClass["itemSlots"];
 			
 			buildLegacySaveSlots(serializedClass);
 			SerializationUtils.deserialize(serializedClass, deserialized);
@@ -1055,11 +1057,37 @@ package classes
 			assertThat(deserialized.itemSlot(1).unlocked, equalTo(true));
 		}
 		
+		[Test]
+		public function upgradeExisitingItemSlotsUnlocked():void
+		{
+			delete serializedClass["serializationVersionDictionary"];
+			delete serializedClass["serializationVersion"];
+			
+			SerializationUtils.deserialize(serializedClass, deserialized);
+			
+			assertThat(deserialized.itemSlot(1).unlocked, equalTo(true));
+		}
+		
+		[Test]
+		public function upgradeDeletesLegacyItemSlots():void
+		{
+			delete serializedClass["serializationVersionDictionary"];
+			delete serializedClass["serializationVersion"];
+			delete serializedClass["itemSlots"];
+			
+			buildLegacySaveSlots(serializedClass);
+			SerializationUtils.deserialize(serializedClass, deserialized);
+			
+			assertThat(serializedClass, not(hasProperty("itemSlot1")));
+			assertThat(serializedClass, not(hasProperty("itemSlot5")));
+		}
+		
 		[Test(description="Vanilla only has slots 1 to 5")]
 		public function upgradeLegacyItemSlotsFromVanilla():void
 		{
 			delete serializedClass["itemSlots"];
 			delete serializedClass["serializationVersionDictionary"];
+			delete serializedClass["itemSlots"];
 			
 			buildLegacySaveSlots(serializedClass);
 			
