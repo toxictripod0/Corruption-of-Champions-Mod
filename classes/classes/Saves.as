@@ -837,221 +837,7 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 
 	try
 	{
-		//flags
-		saveFile.data.flags = [];
-		for (var i:int = 0; i < flags.length; i++)
-		{
-			// Don't save unset/default flags
-			if (flags[i] != 0)
-			{
-				saveFile.data.flags[i] = flags[i];
-			}
-		}
-
-		//CLOTHING/ARMOR
-		saveFile.data.armorId = player.armor.id;
-		saveFile.data.weaponId = player.weapon.id;
-		saveFile.data.jewelryId = player.jewelry.id;
-		saveFile.data.shieldId = player.shield.id;
-		saveFile.data.upperGarmentId = player.upperGarment.id;
-		saveFile.data.lowerGarmentId = player.lowerGarment.id;
-		saveFile.data.armorName = player.modArmorName;
-
-		//saveFile.data.weaponName = player.weaponName;// uncomment for backward compatibility
-		//saveFile.data.weaponVerb = player.weaponVerb;// uncomment for backward compatibility
-		//saveFile.data.armorDef = player.armorDef;// uncomment for backward compatibility
-		//saveFile.data.armorPerk = player.armorPerk;// uncomment for backward compatibility
-		//saveFile.data.weaponAttack = player.weaponAttack;// uncomment for backward compatibility
-		//saveFile.data.weaponPerk = player.weaponPerk;// uncomment for backward compatibility
-		//saveFile.data.weaponValue = player.weaponValue;// uncomment for backward compatibility
-		//saveFile.data.armorValue = player.armorValue;// uncomment for backward compatibility
-
-		//PIERCINGS
-		saveFile.data.nipplesPierced = player.nipplesPierced;
-		saveFile.data.nipplesPShort = player.nipplesPShort;
-		saveFile.data.nipplesPLong = player.nipplesPLong;
-		saveFile.data.lipPierced = player.lipPierced;
-		saveFile.data.lipPShort = player.lipPShort;
-		saveFile.data.lipPLong = player.lipPLong;
-		saveFile.data.tonguePierced = player.tonguePierced;
-		saveFile.data.tonguePShort = player.tonguePShort;
-		saveFile.data.tonguePLong = player.tonguePLong;
-		saveFile.data.eyebrowPierced = player.eyebrowPierced;
-		saveFile.data.eyebrowPShort = player.eyebrowPShort;
-		saveFile.data.eyebrowPLong = player.eyebrowPLong;
-		saveFile.data.earsPierced = player.earsPierced;
-		saveFile.data.earsPShort = player.earsPShort;
-		saveFile.data.earsPLong = player.earsPLong;
-		saveFile.data.nosePierced = player.nosePierced;
-		saveFile.data.nosePShort = player.nosePShort;
-		saveFile.data.nosePLong = player.nosePLong;
-
-		//Combat STATS
-		saveFile.data.teaseLevel = player.teaseLevel;
-		saveFile.data.teaseXP = player.teaseXP;
-		//Prison STATS
-		saveFile.data.hunger = player.hunger;
-		saveFile.data.esteem = player.esteem;
-		saveFile.data.obey = player.obey;
-		saveFile.data.obeySoftCap = player.obeySoftCap;
-		saveFile.data.will = player.will;
-
-		saveFile.data.prisonItems = player.prisonItemSlots;
-		//saveFile.data.prisonArmor = prison.prisonItemSlotArmor;
-		//saveFile.data.prisonWeapon = prison.prisonItemSlotWeapon;
-		//LEVEL STATS
-		saveFile.data.perkPoints = player.perkPoints;
-		saveFile.data.statPoints = player.statPoints;
-		saveFile.data.ascensionPerkPoints = player.ascensionPerkPoints;
-		//Appearance
-		saveFile.data.startingRace = player.startingRace;
-		saveFile.data.thickness = player.thickness;
-		saveFile.data.tone = player.tone;
-		saveFile.data.furColor = player.skin.furColor;
-		saveFile.data.hairColor = player.hair.color;
-		saveFile.data.hairType = player.hair.type;
-		saveFile.data.gillType = player.gills.type;
-		saveFile.data.armType = player.arms.type;
-		saveFile.data.hairLength = player.hair.length;
-		saveFile.data.beardLength = player.beard.length;
-		saveFile.data.eyeType = player.eyes.type;
-		saveFile.data.eyeCount = player.eyes.count;
-		saveFile.data.beardStyle = player.beard.style;
-		saveFile.data.skinType = player.skin.type;
-		saveFile.data.skinTone = player.skin.tone;
-		saveFile.data.skinDesc = player.skin.desc;
-		saveFile.data.skinAdj = player.skin.adj;
-		saveFile.data.faceType = player.face.type;
-		saveFile.data.tongueType = player.tongue.type;
-		saveFile.data.earType = player.ears.type;
-		saveFile.data.earValue = player.ears.value;
-		saveFile.data.antennae = player.antennae.type;
-		saveFile.data.horns = player.horns.value;
-		saveFile.data.hornType = player.horns.type;
-		saveFile.data.underBody = player.underBody.toObject();
-		saveFile.data.neck = player.neck.toObject();
-		saveFile.data.rearBody = player.rearBody.toObject();
-		// <mod name="Predator arms" author="Stadler76">
-		saveFile.data.clawTone = player.arms.claws.tone;
-		saveFile.data.clawType = player.arms.claws.type;
-		// </mod>
-		saveFile.data.wingType = player.wings.type;
-		saveFile.data.wingColor = player.wings.color;
-		saveFile.data.wingColor2 = player.wings.color2;
-		saveFile.data.lowerBody = player.lowerBody.type;
-		saveFile.data.legCount = player.lowerBody.legCount;
-		saveFile.data.incorporeal = player.lowerBody.incorporeal;
-		saveFile.data.tailType = player.tail.type;
-		saveFile.data.tailVenum = player.tail.venom;
-		saveFile.data.tailRecharge = player.tail.recharge;
-		saveFile.data.hipRating = player.hips.rating;
-		saveFile.data.buttRating = player.butt.rating;
-		saveFile.data.udder = player.udder.toObject();
-
-		//Preggo stuff
-		saveFile.data.pregnancyIncubation = player.pregnancyIncubation;
-		saveFile.data.pregnancyType = player.pregnancyType;
-		saveFile.data.buttPregnancyIncubation = player.buttPregnancyIncubation;
-		saveFile.data.buttPregnancyType = player.buttPregnancyType;
-
-		/*myLocalData.data.furnitureArray = new Array();
-		   for (var i:Number = 0; i < GameArray.length; i++) {
-		   myLocalData.data.girlArray.push(new Array());
-		   myLocalData.data.girlEffectArray.push(new Array());
-		 }*/
-
-		saveFile.data.perks = [];
-		saveFile.data.statusAffects = [];
-		saveFile.data.keyItems = [];
-		saveFile.data.gearStorage = [];
-
-		//Set Perk Array
-		//Populate Perk Array
-		for (i = 0; i < player.perks.length; i++)
-		{
-			saveFile.data.perks.push([]);
-			//trace("Saveone Perk");
-			//trace("Populate One Perk");
-			saveFile.data.perks[i].id = player.perk(i).ptype.id;
-			//saveFile.data.perks[i].perkName = player.perk(i).ptype.id; //uncomment for backward compatibility
-			saveFile.data.perks[i].value1 = player.perk(i).value1;
-			saveFile.data.perks[i].value2 = player.perk(i).value2;
-			saveFile.data.perks[i].value3 = player.perk(i).value3;
-			saveFile.data.perks[i].value4 = player.perk(i).value4;
-			//saveFile.data.perks[i].perkDesc = player.perk(i).perkDesc; // uncomment for backward compatibility
-		}
-
-		//Set Status Array
-		for (i = 0; i < player.statusEffects.length; i++)
-		{
-			saveFile.data.statusAffects.push([]);
-				//trace("Saveone statusEffects");
-		}
-		//Populate Status Array
-		for (i = 0; i < player.statusEffects.length; i++)
-		{
-			//trace("Populate One statusEffects");
-			saveFile.data.statusAffects[i].statusAffectName = player.statusEffect(i).stype.id;
-			saveFile.data.statusAffects[i].value1 = player.statusEffect(i).value1;
-			saveFile.data.statusAffects[i].value2 = player.statusEffect(i).value2;
-			saveFile.data.statusAffects[i].value3 = player.statusEffect(i).value3;
-			saveFile.data.statusAffects[i].value4 = player.statusEffect(i).value4;
-			if (player.statusEffect(i).dataStore !== null) {
-				saveFile.data.statusAffects[i].dataStore = player.statusEffect(i).dataStore;
-			}
-		}
-		//Set keyItem Array
-		for (i = 0; i < player.keyItems.length; i++)
-		{
-			saveFile.data.keyItems.push([]);
-				//trace("Saveone keyItem");
-		}
-		//Populate keyItem Array
-		for (i = 0; i < player.keyItems.length; i++)
-		{
-			//trace("Populate One keyItemzzzzzz");
-			saveFile.data.keyItems[i].keyName = player.keyItems[i].keyName;
-			saveFile.data.keyItems[i].value1 = player.keyItems[i].value1;
-			saveFile.data.keyItems[i].value2 = player.keyItems[i].value2;
-			saveFile.data.keyItems[i].value3 = player.keyItems[i].value3;
-			saveFile.data.keyItems[i].value4 = player.keyItems[i].value4;
-		}
-		
-		saveFile.data.inventory = [];
-		SerializationUtils.serialize(saveFile.data.inventory, inventory);
-		
-		//Set gear slot array
-		for (i = 0; i < gearStorageGet().length; i++)
-		{
-			saveFile.data.gearStorage.push([]);
-		}
-
-		//Populate gear slot array
-		for (i = 0; i < gearStorageGet().length; i++)
-		{
-			//saveFile.data.gearStorage[i].shortName = gearStorage[i].itype.id;// uncomment for backward compatibility
-			saveFile.data.gearStorage[i].id = (gearStorageGet()[i].isEmpty()) ? null : gearStorageGet()[i].itype.id;
-			saveFile.data.gearStorage[i].quantity = gearStorageGet()[i].quantity;
-			saveFile.data.gearStorage[i].unlocked = gearStorageGet()[i].unlocked;
-			saveFile.data.gearStorage[i].damage = gearStorageGet()[i].damage;
-		}
-
-		saveFile.data.gameState = gameStateGet(); // Saving game state?
-
-		//Time and Items
-		saveFile.data.minutes = getGame().time.minutes;
-		saveFile.data.hours = getGame().time.hours;
-		saveFile.data.days = getGame().time.days;
-		saveFile.data.autoSave = player.autoSave;
-
-		// Save non-flag plot variables.
-		saveFile.data.isabellaOffspringData = [];
-		for (i = 0; i < kGAMECLASS.isabellaScene.isabellaOffspringData.length; i++) {
-			saveFile.data.isabellaOffspringData.push(kGAMECLASS.isabellaScene.isabellaOffspringData[i]);
-		}
-
-		// Keybinds
-		saveFile.data.controls = getGame().inputManager.SaveBindsToObj();
+		writeGameStateToObject(saveFile);
 	}
 	catch (error:Error)
 	{
@@ -1161,6 +947,232 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		addButton(9, "Restore", restore, slot);
 	}
 
+}
+
+/**
+ * Method to write the game state to an object, it is agnostic to the source of the object.
+ * Method is protected for easy use in testing, as save files do not have to be used.
+ * This allows for easier crafting of savegame states.
+ * 
+ * @param	saveFile the object where the game state should be written to
+ */
+protected function writeGameStateToObject(saveFile:*):void
+{
+	//flags
+	saveFile.data.flags = [];
+	for (var i:int = 0; i < flags.length; i++)
+	{
+		// Don't save unset/default flags
+		if (flags[i] != 0)
+		{
+			saveFile.data.flags[i] = flags[i];
+		}
+	}
+
+	//CLOTHING/ARMOR
+	saveFile.data.armorId = player.armor.id;
+	saveFile.data.weaponId = player.weapon.id;
+	saveFile.data.jewelryId = player.jewelry.id;
+	saveFile.data.shieldId = player.shield.id;
+	saveFile.data.upperGarmentId = player.upperGarment.id;
+	saveFile.data.lowerGarmentId = player.lowerGarment.id;
+	saveFile.data.armorName = player.modArmorName;
+
+	//saveFile.data.weaponName = player.weaponName;// uncomment for backward compatibility
+	//saveFile.data.weaponVerb = player.weaponVerb;// uncomment for backward compatibility
+	//saveFile.data.armorDef = player.armorDef;// uncomment for backward compatibility
+	//saveFile.data.armorPerk = player.armorPerk;// uncomment for backward compatibility
+	//saveFile.data.weaponAttack = player.weaponAttack;// uncomment for backward compatibility
+	//saveFile.data.weaponPerk = player.weaponPerk;// uncomment for backward compatibility
+	//saveFile.data.weaponValue = player.weaponValue;// uncomment for backward compatibility
+	//saveFile.data.armorValue = player.armorValue;// uncomment for backward compatibility
+
+	//PIERCINGS
+	saveFile.data.nipplesPierced = player.nipplesPierced;
+	saveFile.data.nipplesPShort = player.nipplesPShort;
+	saveFile.data.nipplesPLong = player.nipplesPLong;
+	saveFile.data.lipPierced = player.lipPierced;
+	saveFile.data.lipPShort = player.lipPShort;
+	saveFile.data.lipPLong = player.lipPLong;
+	saveFile.data.tonguePierced = player.tonguePierced;
+	saveFile.data.tonguePShort = player.tonguePShort;
+	saveFile.data.tonguePLong = player.tonguePLong;
+	saveFile.data.eyebrowPierced = player.eyebrowPierced;
+	saveFile.data.eyebrowPShort = player.eyebrowPShort;
+	saveFile.data.eyebrowPLong = player.eyebrowPLong;
+	saveFile.data.earsPierced = player.earsPierced;
+	saveFile.data.earsPShort = player.earsPShort;
+	saveFile.data.earsPLong = player.earsPLong;
+	saveFile.data.nosePierced = player.nosePierced;
+	saveFile.data.nosePShort = player.nosePShort;
+	saveFile.data.nosePLong = player.nosePLong;
+
+	//Combat STATS
+	saveFile.data.teaseLevel = player.teaseLevel;
+	saveFile.data.teaseXP = player.teaseXP;
+	//Prison STATS
+	saveFile.data.hunger = player.hunger;
+	saveFile.data.esteem = player.esteem;
+	saveFile.data.obey = player.obey;
+	saveFile.data.obeySoftCap = player.obeySoftCap;
+	saveFile.data.will = player.will;
+
+	saveFile.data.prisonItems = player.prisonItemSlots;
+	//saveFile.data.prisonArmor = prison.prisonItemSlotArmor;
+	//saveFile.data.prisonWeapon = prison.prisonItemSlotWeapon;
+	//LEVEL STATS
+	saveFile.data.perkPoints = player.perkPoints;
+	saveFile.data.statPoints = player.statPoints;
+	saveFile.data.ascensionPerkPoints = player.ascensionPerkPoints;
+	//Appearance
+	saveFile.data.startingRace = player.startingRace;
+	saveFile.data.thickness = player.thickness;
+	saveFile.data.tone = player.tone;
+	saveFile.data.furColor = player.skin.furColor;
+	saveFile.data.hairColor = player.hair.color;
+	saveFile.data.hairType = player.hair.type;
+	saveFile.data.gillType = player.gills.type;
+	saveFile.data.armType = player.arms.type;
+	saveFile.data.hairLength = player.hair.length;
+	saveFile.data.beardLength = player.beard.length;
+	saveFile.data.eyeType = player.eyes.type;
+	saveFile.data.eyeCount = player.eyes.count;
+	saveFile.data.beardStyle = player.beard.style;
+	saveFile.data.skinType = player.skin.type;
+	saveFile.data.skinTone = player.skin.tone;
+	saveFile.data.skinDesc = player.skin.desc;
+	saveFile.data.skinAdj = player.skin.adj;
+	saveFile.data.faceType = player.face.type;
+	saveFile.data.tongueType = player.tongue.type;
+	saveFile.data.earType = player.ears.type;
+	saveFile.data.earValue = player.ears.value;
+	saveFile.data.antennae = player.antennae.type;
+	saveFile.data.horns = player.horns.value;
+	saveFile.data.hornType = player.horns.type;
+	saveFile.data.underBody = player.underBody.toObject();
+	saveFile.data.neck = player.neck.toObject();
+	saveFile.data.rearBody = player.rearBody.toObject();
+	// <mod name="Predator arms" author="Stadler76">
+	saveFile.data.clawTone = player.arms.claws.tone;
+	saveFile.data.clawType = player.arms.claws.type;
+	// </mod>
+	saveFile.data.wingType = player.wings.type;
+	saveFile.data.wingColor = player.wings.color;
+	saveFile.data.wingColor2 = player.wings.color2;
+	saveFile.data.lowerBody = player.lowerBody.type;
+	saveFile.data.legCount = player.lowerBody.legCount;
+	saveFile.data.incorporeal = player.lowerBody.incorporeal;
+	saveFile.data.tailType = player.tail.type;
+	saveFile.data.tailVenum = player.tail.venom;
+	saveFile.data.tailRecharge = player.tail.recharge;
+	saveFile.data.hipRating = player.hips.rating;
+	saveFile.data.buttRating = player.butt.rating;
+	saveFile.data.udder = player.udder.toObject();
+
+	//Preggo stuff
+	saveFile.data.pregnancyIncubation = player.pregnancyIncubation;
+	saveFile.data.pregnancyType = player.pregnancyType;
+	saveFile.data.buttPregnancyIncubation = player.buttPregnancyIncubation;
+	saveFile.data.buttPregnancyType = player.buttPregnancyType;
+
+	/*myLocalData.data.furnitureArray = new Array();
+	   for (var i:Number = 0; i < GameArray.length; i++) {
+	   myLocalData.data.girlArray.push(new Array());
+	   myLocalData.data.girlEffectArray.push(new Array());
+	 }*/
+
+	saveFile.data.perks = [];
+	saveFile.data.statusAffects = [];
+	saveFile.data.keyItems = [];
+	saveFile.data.gearStorage = [];
+
+	//Set Perk Array
+	//Populate Perk Array
+	for (i = 0; i < player.perks.length; i++)
+	{
+		saveFile.data.perks.push([]);
+		//trace("Saveone Perk");
+		//trace("Populate One Perk");
+		saveFile.data.perks[i].id = player.perk(i).ptype.id;
+		//saveFile.data.perks[i].perkName = player.perk(i).ptype.id; //uncomment for backward compatibility
+		saveFile.data.perks[i].value1 = player.perk(i).value1;
+		saveFile.data.perks[i].value2 = player.perk(i).value2;
+		saveFile.data.perks[i].value3 = player.perk(i).value3;
+		saveFile.data.perks[i].value4 = player.perk(i).value4;
+		//saveFile.data.perks[i].perkDesc = player.perk(i).perkDesc; // uncomment for backward compatibility
+	}
+
+	//Set Status Array
+	for (i = 0; i < player.statusEffects.length; i++)
+	{
+		saveFile.data.statusAffects.push([]);
+			//trace("Saveone statusEffects");
+	}
+	//Populate Status Array
+	for (i = 0; i < player.statusEffects.length; i++)
+	{
+		//trace("Populate One statusEffects");
+		saveFile.data.statusAffects[i].statusAffectName = player.statusEffect(i).stype.id;
+		saveFile.data.statusAffects[i].value1 = player.statusEffect(i).value1;
+		saveFile.data.statusAffects[i].value2 = player.statusEffect(i).value2;
+		saveFile.data.statusAffects[i].value3 = player.statusEffect(i).value3;
+		saveFile.data.statusAffects[i].value4 = player.statusEffect(i).value4;
+		if (player.statusEffect(i).dataStore !== null) {
+			saveFile.data.statusAffects[i].dataStore = player.statusEffect(i).dataStore;
+		}
+	}
+	//Set keyItem Array
+	for (i = 0; i < player.keyItems.length; i++)
+	{
+		saveFile.data.keyItems.push([]);
+			//trace("Saveone keyItem");
+	}
+	//Populate keyItem Array
+	for (i = 0; i < player.keyItems.length; i++)
+	{
+		//trace("Populate One keyItemzzzzzz");
+		saveFile.data.keyItems[i].keyName = player.keyItems[i].keyName;
+		saveFile.data.keyItems[i].value1 = player.keyItems[i].value1;
+		saveFile.data.keyItems[i].value2 = player.keyItems[i].value2;
+		saveFile.data.keyItems[i].value3 = player.keyItems[i].value3;
+		saveFile.data.keyItems[i].value4 = player.keyItems[i].value4;
+	}
+	
+	saveFile.data.inventory = [];
+	SerializationUtils.serialize(saveFile.data.inventory, inventory);
+	
+	//Set gear slot array
+	for (i = 0; i < gearStorageGet().length; i++)
+	{
+		saveFile.data.gearStorage.push([]);
+	}
+
+	//Populate gear slot array
+	for (i = 0; i < gearStorageGet().length; i++)
+	{
+		//saveFile.data.gearStorage[i].shortName = gearStorage[i].itype.id;// uncomment for backward compatibility
+		saveFile.data.gearStorage[i].id = (gearStorageGet()[i].isEmpty()) ? null : gearStorageGet()[i].itype.id;
+		saveFile.data.gearStorage[i].quantity = gearStorageGet()[i].quantity;
+		saveFile.data.gearStorage[i].unlocked = gearStorageGet()[i].unlocked;
+		saveFile.data.gearStorage[i].damage = gearStorageGet()[i].damage;
+	}
+
+	saveFile.data.gameState = gameStateGet(); // Saving game state?
+
+	//Time and Items
+	saveFile.data.minutes = getGame().time.minutes;
+	saveFile.data.hours = getGame().time.hours;
+	saveFile.data.days = getGame().time.days;
+	saveFile.data.autoSave = player.autoSave;
+
+	// Save non-flag plot variables.
+	saveFile.data.isabellaOffspringData = [];
+	for (i = 0; i < kGAMECLASS.isabellaScene.isabellaOffspringData.length; i++) {
+		saveFile.data.isabellaOffspringData.push(kGAMECLASS.isabellaScene.isabellaOffspringData[i]);
+	}
+
+	// Keybinds
+	saveFile.data.controls = getGame().inputManager.SaveBindsToObj();
 }
 
 /**
