@@ -49,6 +49,10 @@ package classes{
 		private static const PLAYER_FATIGUE:int = 49;
 		
 		private static const PLAYER_XP:int = 7;
+		
+		private static const SAVEGAME_NOTE_GUI:String = "This is a note from the GUI";
+		private static const SAVEGAME_NOTE_CLASS:String = "This is a note from the class";
+		private static const SAVEGAME_NOTE_HARDCORE:String = "<font color=\"#ff0000\">HARDCORE MODE</font>";
 
 		private var player:Player;
 		private var cut:SavesForTest;
@@ -673,6 +677,44 @@ package classes{
 			
 			assertThat("Item storage did not contain purple dye", kGAMECLASS.inventory.hasItemInStorage(consumables.PURPDYE), equalTo(true));
 			assertThat("Item storage did not contain pure honey", kGAMECLASS.inventory.hasItemInStorage(consumables.PURHONY), equalTo(true));
+		}
+		
+		[Test]
+		public function addSaveGameNoteFromGui():void
+		{
+			kGAMECLASS.mainView.nameBox.text = SAVEGAME_NOTE_GUI;
+			cut.saveGame(TEST_SAVE_GAME);
+			
+			cut.notes = "";
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(cut.notes, equalTo(SAVEGAME_NOTE_GUI));
+		}
+		
+		[Test]
+		public function addSaveGameNoteFromClass():void
+		{
+			kGAMECLASS.mainView.nameBox.text = "";
+			cut.notes = SAVEGAME_NOTE_CLASS;
+			cut.saveGame(TEST_SAVE_GAME);
+			
+			cut.notes = "";
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(cut.notes, equalTo(SAVEGAME_NOTE_CLASS));
+		}
+		
+		[Test]
+		public function hardcoreModeOverridesSaveGameNote():void
+		{
+			kGAMECLASS.flags[kFLAGS.HARDCORE_MODE] = 1;
+			kGAMECLASS.mainView.nameBox.text = SAVEGAME_NOTE_GUI;
+			cut.saveGame(TEST_SAVE_GAME);
+			
+			cut.notes = "";
+			cut.loadGame(TEST_SAVE_GAME);
+			
+			assertThat(cut.notes, equalTo(SAVEGAME_NOTE_HARDCORE));
 		}
 	}
 }

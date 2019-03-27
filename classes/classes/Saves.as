@@ -817,18 +817,17 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 	//Notes
 	if (mainView.nameBox.text != "")
 	{
-		saveFile.data.notes = mainView.nameBox.text;
 		notes = mainView.nameBox.text;
 	}
 	else
 	{
-		saveFile.data.notes = notes;
 		mainView.nameBox.visible = false;
 	}
 	if (flags[kFLAGS.HARDCORE_MODE] > 0)
 	{
-		saveFile.data.notes = "<font color=\"#ff0000\">HARDCORE MODE</font>";
+		notes = "<font color=\"#ff0000\">HARDCORE MODE</font>";
 	}
+	
 	var processingError:Boolean = false;
 	var dataError:Error;
 
@@ -958,6 +957,8 @@ protected function writeGameStateToObject(saveFile:*):void
 	//Set a single variable that tells us if this save exists
 
 	saveFile.data.exists = true;
+	
+	saveFile.data.notes = notes;
 
 	SerializationUtils.serialize(saveFile.data, this);
 	saveFile.data.version = ver;
