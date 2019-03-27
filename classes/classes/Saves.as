@@ -814,14 +814,6 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 		saveFile = SharedObject.getLocal(slot, "/");
 	}
 
-	//Set a single variable that tells us if this save exists
-
-	saveFile.data.exists = true;
-
-	SerializationUtils.serialize(saveFile.data, this);
-	saveFile.data.version = ver;
-	flags[kFLAGS.SAVE_FILE_INTEGER_FORMAT_VERSION] = SAVE_FILE_CURRENT_INTEGER_FORMAT_VERSION;
-
 	//Notes
 	if (mainView.nameBox.text != "")
 	{
@@ -963,6 +955,14 @@ public function saveGameObject(slot:String, isFile:Boolean):void
  */
 protected function writeGameStateToObject(saveFile:*):void
 {
+	//Set a single variable that tells us if this save exists
+
+	saveFile.data.exists = true;
+
+	SerializationUtils.serialize(saveFile.data, this);
+	saveFile.data.version = ver;
+	flags[kFLAGS.SAVE_FILE_INTEGER_FORMAT_VERSION] = SAVE_FILE_CURRENT_INTEGER_FORMAT_VERSION;
+	
 	//flags
 	saveFile.data.flags = [];
 	for (var i:int = 0; i < flags.length; i++)
