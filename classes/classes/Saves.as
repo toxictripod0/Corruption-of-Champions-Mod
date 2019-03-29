@@ -798,8 +798,6 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 
 	var backupAborted:Boolean = false;
 
-	CoC.saveAllAwareClasses(getGame()); //Informs each saveAwareClass that it must save its values in the flags array
-
 	//Initialize the save file
 	var saveFile:*;
 	var backup:SharedObject;
@@ -954,6 +952,8 @@ public function saveGameObject(slot:String, isFile:Boolean):void
  */
 protected function writeGameStateToObject(saveFile:*):void
 {
+	CoC.saveAllAwareClasses(getGame()); //Informs each saveAwareClass that it must save its values in the flags array
+	
 	//Set a single variable that tells us if this save exists
 
 	saveFile.data.exists = true;
