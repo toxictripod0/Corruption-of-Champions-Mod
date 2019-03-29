@@ -82,6 +82,7 @@ package classes{
 			kGAMECLASS.player = player;
 			kGAMECLASS.ver = TEST_VERSION;
 			kGAMECLASS.version = TEST_VERSION;
+			kGAMECLASS.flags = new DefaultDict();
 			
 			cut = new SavesForTest(kGAMECLASS.gameStateDirectGet, kGAMECLASS.gameStateDirectSet);
 			kGAMECLASS.inventory = new Inventory(cut);
