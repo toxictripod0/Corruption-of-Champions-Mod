@@ -126,6 +126,7 @@ package classes.Scenes.NPCs{
 //Introduction – First Encounter
 public function encounterAJerkInThePlains():void {
 	spriteChooser();
+	credits.authorText = "Savin";
 	flags[kFLAGS.HEL_TIMES_ENCOUNTERED]++;
 	//Mino threesome proc
 	if (flags[kFLAGS.HEL_AFFECTION] > 0 && flags[kFLAGS.HEL_AFFECTION] % 5 == 0 && flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 0) {

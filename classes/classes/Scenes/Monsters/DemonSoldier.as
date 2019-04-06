@@ -99,6 +99,27 @@ package classes.Scenes.Monsters
 				else if (this.hasCock()) this.demonGender = DEMON_GENDER_MALE;
 				else if (this.hasVagina()) this.demonGender = DEMON_GENDER_CUNTBOY;
 			}
+			//Set pronouns.
+			switch(this.demonGender) {
+				case DEMON_GENDER_MALE:
+				case DEMON_GENDER_MALEHERM:
+				case DEMON_GENDER_CUNTBOY:
+					this.pronoun1 = "he";
+					this.pronoun2 = "him";
+					this.pronoun3 = "his";
+					break;
+				case DEMON_GENDER_FEMALE:
+				case DEMON_GENDER_HERM:
+				case DEMON_GENDER_SHEMALE:
+					this.pronoun1 = "he";
+					this.pronoun2 = "him";
+					this.pronoun3 = "his";
+					break;
+				default: //Normally never happens, failsafe nonetheless.
+					this.pronoun1 = "it";
+					this.pronoun2 = "its";
+					this.pronoun3 = "its";
+			}
 			//Adjust image.
 			switch(this.demonGender) {
 				case DEMON_GENDER_GENDERLESS:
@@ -122,8 +143,9 @@ package classes.Scenes.Monsters
 				case DEMON_GENDER_MALEHERM:
 					this.imageName = "demon-maleherm"
 					break;
-				
 			}
+			
+			
 		}
 		
 		//Demon Physical Attack.
@@ -282,10 +304,10 @@ package classes.Scenes.Monsters
 			this.short = "Demon Soldier";
 			this.imageName = "demon";
 			
-			this.long = "You are fighting " + (this.demonGender == DEMON_GENDER_MALEHERM ? "what, at first appears to be a manly Incubus, but a glimpse of drooling, demonic snatch reveals to be an unusually masculine Omnibus" : this.demonTitle(1)) + ", which appears to be some form of soldier, as " + this.mf("He", "She") + "'s wearing a suit of bronze armour... of a sort:"
-			this.long += "A helmet with holes cut for the creature's horns; a sculpted breastplate with a stylised 'L' in the middle of it and jeweled nipples (naturally) and a pair of armoured bracers and shin-guards, etched with scenes of orgiastic debauchery. ";
-			if (game.flags[kFLAGS.SFW_MODE] > 0) {
-				this.long += "A ragged, off-white and stained loincloth covers the demon's crotch in spite of " + this.mf("his", "her") + " corrupted nature. Judging from the looks, it looks like it's barely doing its job.";
+			this.long = "You are fighting " + (this.demonGender == DEMON_GENDER_MALEHERM ? "what, at first appears to be a manly Incubus, but a glimpse of drooling, demonic snatch reveals to be an unusually masculine Omnibus" : this.demonTitle(1)) + ", which appears to be some form of soldier, as " + this.mf("He", "She") + "'s wearing a suit of bronze armour... of a sort: "
+			this.long += "a helmet with holes cut for the creature's horns; a sculpted breastplate with a stylised 'L' in the middle of it and jeweled nipples (naturally) and a pair of armoured bracers and shin-guards, etched with scenes of orgiastic debauchery. ";
+			if (game.flags[kFLAGS.SFW_MODE] > 0 || rand(2) == 0) {
+				this.long += "A ragged, off-white and stained loincloth covers the demon's crotch in spite of " + this.mf("his", "her") + " corrupted nature. Judging from the looks, it looks like it's barely doing its job and already features a damp spot.";
 			}
 			else {
 				this.long += "Apart from various piercings and items of jewelry the Demon is completely naked under " + this.mf("his", "her") + " armour, leaving "; 
@@ -301,7 +323,7 @@ package classes.Scenes.Monsters
 			
 			this.ass.analLooseness = Ass.LOOSENESS_STRETCHED;
 			this.ass.analWetness = Ass.WETNESS_NORMAL;
-			this.tallness = rand(37) + 48;
+			this.tallness = rand(31) + 54;
 			this.hips.rating = Hips.RATING_BOYISH;
 			this.butt.rating = Butt.RATING_TIGHT;
 			this.hair.color = "black";
@@ -331,7 +353,7 @@ package classes.Scenes.Monsters
 			this.gems = rand(5) + 5;
 			this.drop = new WeightedDrop().
 					add(weapons.SCIMTR0, 1).
-					add(useables.LETHITE, 3);
+					add(useables.LETHITE, 2);
 			if (this.demonGender == DEMON_GENDER_CUNTBOY || this.demonGender == DEMON_GENDER_MALE) {
 				(this.drop as WeightedDrop).add(consumables.INCUBID, 6);
 			}
