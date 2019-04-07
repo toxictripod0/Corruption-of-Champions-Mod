@@ -1997,6 +1997,7 @@ internal function pcWinsDomFight():void {
 
 private function kihaDestroyGladesToggle():void {
 	clearOutput();
+	credits.modContent = true;
 	if (flags[kFLAGS.KIHA_DESTROYING_CORRUPTED_GLADES] == 0) {
 		outputText("You ask Kiha if she's willing to put her fire breath to use and cleanse the forest of the foul glades. After all, the forest could be cleansed.");
 		outputText("\n\n\"<i>I will, my doofus,</i>\" Kiha says. She grins and exhales a puff of fire for emphasis.");
@@ -2026,6 +2027,7 @@ private function guardMyCampKiha():void {
 
 		private function giveKihaUndergarmentsPrompt():void {
 			clearOutput();
+			credits.modContent = true;
 			outputText("You ask Kiha if she's willing to wear something to cover that nether regions of hers. She could use a bit of modesty after all. ");
 			//if ((flags[kFLAGS.MARBLE_KIDS] > 0 && camp.marbleFollower()) || (flags[kFLAGS.IZMA_CHILDREN_SHARKGIRLS] + flags[kFLAGS.IZMA_CHILDREN_TIGERSHARKS] > 0 && camp.izmaFollower()) || flags[kFLAGS.HELSPAWN_AGE]) outputText("Even better, the children won't be traumatized.");
 			outputText("\n\n\"<i>So you want me to wear something, Doofus? Fine.</i>\"");
@@ -2038,6 +2040,7 @@ private function guardMyCampKiha():void {
 
 		private function giveKihaUndergarments(type:int):void {
 			clearOutput();
+			credits.modContent = true;
 			outputText("You tell Kiha that you have something for her. She crosses her arms across her breasts and taps one of her feet on the ground. ");
 			//Spider-silk panties
 			if (type == 1) {
@@ -2059,6 +2062,7 @@ private function guardMyCampKiha():void {
 
 		public function kihasFirstClutch():void {
 			clearOutput();
+			credits.modContent = true;
 			outputText("As you approach the part of the camp that Kiha claims as her own, you hear the faint sound of moaning and unfeminine curses. Worried that Kiha may be hurt, you pick up the pace, but when you find her, the dragon-girl seems to be unharmed as far as you can tell. She is gingerly holding a visibly bloated belly, however; maybe she's got some kind of stomach ache from overindulging.  You call out to her, asking if she's okay?");
 			outputText("\n\nThe dragon-girl looks at you with a puzzled expression.  \"<i>Yeah, I'm fine; why do you ask?</i>\"");
 			outputText("\n\nYou tell her that you heard her complaining; you were just worried it might be something important.  After all, it looks like all that's wrong with her is that she's eaten too much, but what kind of " + player.mf("boyfriend", "girlfriend") + " would you be if you didn't make sure she was alright?");
@@ -2168,6 +2172,7 @@ private function guardMyCampKiha():void {
 				return;
 			}
 			clearOutput();
+			credits.modContent = true;
 			outputText("Kiha walks over to you and says, \"<i>Could you please sit with me please, [name]? I want to tell my " + (totalKihaChildren() == 1 ? "kid" : "kids") + " a story,</i>\" she says. You tell her that it would be a wonderful idea! Kiha escorts you to her nest.");
 			outputText("\n\nYou sit on the crudely made seat while Kiha sits on the another seat. ");
 			if (totalKihaChildren() == 1) outputText("Kiha gestures for her only child to sit on her lap. ");

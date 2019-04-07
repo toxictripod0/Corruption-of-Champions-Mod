@@ -11,6 +11,8 @@ package classes.Scenes.Places
 		
 		public function betaZoneEntry():void {
 			clearOutput();
+			credits.modContent = true;
+			credits.authorText = "Kitteh6660";
 			outputText("The bizarre zone is unlike anything you've ever experienced. Looking up, you make out the " + (time.hours < 20 ? "black" : "green") + " zeros and ones in Consolas covering the otherwise-" + (time.hours < 20 ? "white" : "black") + " sky.");
 			outputText("\n\nWhile the grassy terrain looks normal, it appears completely flat with no signs of hills nearby. Interestingly, paths run from where you originally entered to the various points of interest.");
 			outputText("\n\nThe nearest object that catches your attention is a large sign. A bit further but still on your left is a camp consisting of a few tents. Occasionally, the purple-skinned horned creature steps out of a large tent for a breath of fresh debug-filled air."); 
