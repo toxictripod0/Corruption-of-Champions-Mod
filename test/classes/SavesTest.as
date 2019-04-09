@@ -59,6 +59,7 @@ package classes{
 		private static var consumables:ConsumableLib;
 		
 		private var saveFile:*;
+		private var saveGameObject:*;
 		private var serializedSave:* = [];
 		
 		[BeforeClass]
@@ -95,6 +96,8 @@ package classes{
 			
 			initInventory();
 			
+			saveGameObject = [];
+			saveGameObject.data = [];
 			saveGame();
 
 			kGAMECLASS.flags[kFLAGS.JOJO_STATUS] = 5;
@@ -113,6 +116,7 @@ package classes{
 		
 		private function saveGame():void {
 			cut.saveGame(TEST_SAVE_GAME, false);
+			cut.writeStateToObject(saveGameObject);
 		}
 		
 		private function loadGame():void {
@@ -200,6 +204,26 @@ package classes{
 			(items[1] as ItemSlot).setItemAndQty(consumables.PURHONY, 5);
 			(items[2] as ItemSlot).setItemAndQty(ItemType.NOTHING, 0);
 			(items[2] as ItemSlot).unlocked = false;
+		}
+		
+		/**
+		 * Creates a new empty saveFile instance with a .data object, then
+		 * writes the current state of the CUT to it.
+		 */
+		private function writeObject():void
+		{
+			saveFile = [];
+			saveFile.data = [];
+			
+			cut.writeStateToObject(saveFile);
+		}
+		
+		/**
+		 * Loads the state from saveGame into the CUT. Does ON validity checks.
+		 */
+		private function loadObject():void
+		{
+			cut.loadGameObject(saveFile);
 		}
 		
 		[Test]
@@ -734,5 +758,10 @@ class SavesForTest extends Saves {
 
 	public function loadNPCstest(saveFile:*):void {
 		SerializationUtils.deserialize(saveFile.data, this);
+	}
+	
+	public function writeStateToObject(object:*):void
+	{
+		this.writeGameStateToObject(object);
 	}
 }
