@@ -52,6 +52,7 @@ package classes{
 		
 		private static const SAVEGAME_NOTE_GUI:String = "This is a note from the GUI";
 		private static const SAVEGAME_NOTE_CLASS:String = "This is a note from the class";
+		private static const SAVEGAME_NOTE_OBJECT:String = "This is a note from the savegame object";
 		private static const SAVEGAME_NOTE_HARDCORE:String = "<font color=\"#ff0000\">HARDCORE MODE</font>";
 
 		private var player:Player;
@@ -708,12 +709,10 @@ package classes{
 		public function addSaveGameNoteFromGui():void
 		{
 			kGAMECLASS.mainView.nameBox.text = SAVEGAME_NOTE_GUI;
-			cut.saveGame(TEST_SAVE_GAME);
+
+			saveGame();
 			
-			cut.notes = "";
-			cut.loadGame(TEST_SAVE_GAME);
-			
-			assertThat(cut.notes, equalTo(SAVEGAME_NOTE_GUI));
+			assertThat(saveGameObject.data.notes, equalTo(SAVEGAME_NOTE_GUI));
 		}
 		
 		[Test]
@@ -721,12 +720,19 @@ package classes{
 		{
 			kGAMECLASS.mainView.nameBox.text = "";
 			cut.notes = SAVEGAME_NOTE_CLASS;
-			cut.saveGame(TEST_SAVE_GAME);
+			saveGame();
 			
-			cut.notes = "";
-			cut.loadGame(TEST_SAVE_GAME);
+			assertThat(saveGameObject.data.notes, equalTo(SAVEGAME_NOTE_CLASS));
+		}
+		
+		[Test]
+		public function loadSaveGameNote():void
+		{
+			saveGameObject.data.notes = SAVEGAME_NOTE_OBJECT;
 			
-			assertThat(cut.notes, equalTo(SAVEGAME_NOTE_CLASS));
+			cut.loadGameObject(saveGameObject);
+			
+			assertThat(cut.notes, equalTo(SAVEGAME_NOTE_OBJECT));
 		}
 		
 		[Test]
@@ -734,12 +740,10 @@ package classes{
 		{
 			kGAMECLASS.flags[kFLAGS.HARDCORE_MODE] = 1;
 			kGAMECLASS.mainView.nameBox.text = SAVEGAME_NOTE_GUI;
-			cut.saveGame(TEST_SAVE_GAME);
 			
-			cut.notes = "";
-			cut.loadGame(TEST_SAVE_GAME);
+			saveGame();
 			
-			assertThat(cut.notes, equalTo(SAVEGAME_NOTE_HARDCORE));
+			assertThat(saveGameObject.data.notes, equalTo(SAVEGAME_NOTE_HARDCORE));
 		}
 	}
 }
