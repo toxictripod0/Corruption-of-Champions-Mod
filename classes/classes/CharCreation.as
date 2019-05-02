@@ -251,7 +251,7 @@ package classes {
 					player.removeVagina(0,1); //clear vaginas
 				//	trace("1 vagina purged.");
 				}
-				player.breastRows = new Vector.<BreastRowClass>(); //clear breasts
+				player.breastRows = new Vector.<BreastRow>(); //clear breasts
 			}
 			else {
 				var hadOldCock:Boolean = player.hasCock();
@@ -456,7 +456,6 @@ package classes {
 			player.cocks[0].cockLength = 5.5;
 			player.cocks[0].cockThickness = 1;
 			player.cocks[0].cockType = CockTypesEnum.HUMAN;
-			player.cocks[0].knotMultiplier = 1;
 			player.createBreastRow(); //breasts
 			clearOutput();
 			outputText(images.showImage("event-question"));
@@ -513,7 +512,6 @@ package classes {
 			player.cocks[0].cockLength = 5.5;
 			player.cocks[0].cockThickness = 1;
 			player.cocks[0].cockType = CockTypesEnum.HUMAN;
-			player.cocks[0].knotMultiplier = 1;
 			player.createBreastRow(); //breasts
 			clearOutput();
 			outputText(images.showImage("event-question"));
@@ -962,7 +960,7 @@ package classes {
 					break;
 				case PerkLib.WetPussy:
 					player.femininity += 7;
-					player.vaginas[0].vaginalWetness = VaginaClass.WETNESS_WET;
+					player.vaginas[0].vaginalWetness = Vagina.WETNESS_WET;
 					player.createPerk(PerkLib.WetPussy, 2, 0, 0, 0);
 					break;
 				default: //move along, nothing happens in this defaultness
@@ -1016,7 +1014,7 @@ package classes {
 			if (choice === PerkLib.HistorySlut || choice === PerkLib.HistoryWhore) {
 				if (player.hasVagina()) {
 					player.vaginas[0].virgin = false;
-					player.vaginas[0].vaginalLooseness = VaginaClass.LOOSENESS_LOOSE;
+					player.vaginas[0].vaginalLooseness = Vagina.LOOSENESS_LOOSE;
 				}
 				player.ass.analLooseness = 1;
 			}
@@ -1386,16 +1384,16 @@ package classes {
 				}
 			}
 			outputText("\n\nAfter looking around the room for a while, you look into the mirror and begin to recollect who you are...");
-			player.breastRows = new Vector.<BreastRowClass>();
+			player.breastRows = new Vector.<BreastRow>();
 			player.cocks = new Vector.<Cock>();
-			player.vaginas = new Vector.<VaginaClass>();
+			player.vaginas = new Vector.<Vagina>();
 			doNext(routeToGenderChoiceReincarnation);
 		}
 		private function routeToGenderChoiceReincarnation():void {
 			clearOutput();
 			genericGenderChoice();
 		}
-		private function isAscensionPerk(perk:PerkClass, respec:Boolean = false):Boolean { return perk.ptype.keepOnAscension(respec) || perk.value4 > 0; }
+		private function isAscensionPerk(perk:Perk, respec:Boolean = false):Boolean { return perk.ptype.keepOnAscension(respec) || perk.value4 > 0; }
 		private function isSpecialKeyItem(keyName:* = null):Boolean { return (keyName === "Camp - Chest" || keyName === "Camp - Murky Chest" || keyName === "Camp - Ornate Chest" || keyName === "Equipment Rack - Weapons" || keyName === "Equipment Rack - Armor" || keyName === "Equipment Rack - Shields" || keyName === Inventory.STORAGE_JEWELRY_BOX || keyName === "Backpack" || keyName === "Nieve's Tear"); }
 		private function isSpell(statusEffect:* = null):Boolean { return (statusEffect === StatusEffects.KnowsCharge || statusEffect === StatusEffects.KnowsBlind || statusEffect === StatusEffects.KnowsWhitefire || statusEffect === StatusEffects.KnowsArouse || statusEffect === StatusEffects.KnowsHeal || statusEffect === StatusEffects.KnowsMight || statusEffect === StatusEffects.KnowsBlackfire); }
 	}
